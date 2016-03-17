@@ -24,6 +24,8 @@ REQUIREMENTS
 
 PyBooster should work on all operating systems that support Python3. The make-files and shell scripts will only work on most Unixoid systems. However, it is not mandatory that the source code be built (the Python script will still work).
 
+The scripts `./_MISC/get-build-dependencies.sh` and `./_MISC/get-dependencies.sh` can be executed to install the needed software packages (Debian-based Linux distros only).
+
 
 BUILDING
 --------
