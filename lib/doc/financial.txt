@@ -1,0 +1,67 @@
+Help on module pybooster.financial in pybooster:
+
+NAME
+    pybooster.financial
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.financial
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.financial
+    -- --
+    Functions related to finances, banking, economics, accounting, etc.
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    compounded_ending_balance(principal:float, interest:float, compound_frequency:float) -> float
+        Return the ending balance of compounded interest earned given the principal, interest, and compound frequency
+    
+    compounded_interest(principal:float, interest:float, compound_frequency:float) -> float
+        Return the compounded interest earned given the principal, interest, and compound frequency
+    
+    simple_ending_balance(principal:float, interest:float, time:float) -> float
+        Return the ending balance of simple interest given the principal, interest, and time
+    
+    simple_interest(principal:float, interest:float, time:float) -> float
+        Return the simple interest earned given the principal, interest, and time
+
+DATA
+    __all__ = ['compounded_interest', 'compounded_ending_balance', 'simple...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.10
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/financial.py
+
+

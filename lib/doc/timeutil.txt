@@ -1,0 +1,120 @@
+Help on module pybooster.timeutil in pybooster:
+
+NAME
+    pybooster.timeutil
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.timeutil
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.timeutil
+    -- --
+    Time Utilities
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    clock() -> str
+        Return the time
+    
+    currentseason(_hemisphere:str='n') -> str
+        Return the current season
+    
+    date() -> str
+        Return the date
+    
+    date_time() -> str
+        Return the date and time
+    
+    dateandtime() -> str
+        Return the date and time
+    
+    day() -> str
+        Return the day
+    
+    fulltime() -> str
+        Return the time, month, year, etc.
+    
+    hour() -> str
+        Return the hour
+    
+    istoday(_weekday:str) -> bool
+        Test if today is a particular weekday
+    
+    istodayfriday() -> bool
+        Test if today is Friday
+    
+    istodaymonday() -> bool
+        Test if today is Monday
+    
+    istodaysaturday() -> bool
+        Test if today is Saturday
+    
+    istodaysunday() -> bool
+        Test if today is Sunday
+    
+    istodaythursday() -> bool
+        Test if today is Thursday
+    
+    istodaytuesday() -> bool
+        Test if today is Tuesday
+    
+    istodaywednesday() -> bool
+        Test if today is Wednesday
+    
+    isyear(_year:str) -> bool
+        Test if today is a particular year
+    
+    month() -> str
+        Return the name of the month
+    
+    sysuptime() -> str
+        Return the system's uptime
+    
+    weekday() -> str
+        Return the name of the weekday
+    
+    year() -> str
+        Return the year
+
+DATA
+    SEASONS = ('spring', 'summer', 'autumn', 'winter')
+    YEAR = 2016
+    __all__ = ['SEASONS', 'YEAR', 'istoday', 'istodaysunday', 'istodaymond...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/timeutil.py
+
+

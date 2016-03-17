@@ -1,0 +1,67 @@
+Help on module pybooster.convtime in pybooster:
+
+NAME
+    pybooster.convtime
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.convtime
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.convtime
+    -- --
+    Measurement (Time) Conversions
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    day2second(_time:int, _round:int=3) -> float
+        Days -> Seconds
+    
+    second2day(_time:int, _round:int=3) -> float
+        Seconds -> Days
+
+DATA
+    DAYS_IN_WEEK = 7
+    HOURS_IN_DAY = 24
+    MINUTES_IN_HOUR = 60
+    SECONDS_IN_DAY = 86400
+    SECONDS_IN_HOUR = 360
+    SECONDS_IN_MINUTE = 60
+    __all__ = ['DAYS_IN_WEEK', 'HOURS_IN_DAY', 'MINUTES_IN_HOUR', 'SECONDS...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/convtime.py
+
+

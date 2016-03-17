@@ -1,0 +1,47 @@
+Help on module pybooster.physics in pybooster:
+
+NAME
+    pybooster.physics - Physics Functions
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.physics
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+FUNCTIONS
+    density(...)
+        density(mass: float, volume: float) -> float
+        Return density given mass and volume
+    
+    distance(...)
+        distance(speed: float, time: float) -> float
+        Return distance given speed and time
+    
+    force(...)
+        force(mass: float, acceleration: float) -> float
+        Return the force given mass and acceleration
+    
+    impulse(...)
+        impulse(force: float, time: float) -> float
+        Return impulse given force and time
+    
+    momentum(...)
+        momentum(mass: float, velocity: float) -> float
+        Return momentum given mass and velocity
+    
+    pressure(...)
+        pressure(force: float, area: float) -> float
+        Return pressure given force and area
+    
+    speed(...)
+        speed(distance: float, time: float) -> float
+        Return speed/velocity given the distance and time
+
+FILE
+    /usr/lib/python3.4/pybooster/physics.cpython-34m.so
+
+

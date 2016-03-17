@@ -1,0 +1,79 @@
+Help on module pybooster.pipx in pybooster:
+
+NAME
+    pybooster.pipx
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.pipx
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.pipx
+    -- --
+    PIP Extras
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    install(package) -> int
+        Install PIP package
+    
+    listcurrent() -> str
+        List up-to-dated PIP packages
+    
+    listinstalled() -> str
+        List installed PIP packages
+    
+    listoutdated() -> str
+        List outdated PIP packages
+    
+    numpkg() -> int
+        Return the number of installed PIP packages
+    
+    pkginfo(package) -> str
+        Display package info
+    
+    pkgsearch(keyword) -> str
+        Search the database by keyword
+    
+    uninstall(package) -> int
+        Uninstall a PIP package
+
+DATA
+    __all__ = ['install', 'uninstall', 'listinstalled', 'listoutdated', 'l...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/pipx.py
+
+

@@ -1,0 +1,84 @@
+Help on module pybooster.metric in pybooster:
+
+NAME
+    pybooster.metric
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.metric
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.metric
+    -- --
+    Metric related functions
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    siunits2base(_measurement:tuple) -> tuple
+        Convert SI units to base unit
+    
+    str2tupleunit(_str:str) -> tuple
+        Convert measurement units from string to tuple
+
+DATA
+    ATTO_UNITS = ('am', 'aV', 'aA', 'aΩ')
+    CENTI_UNITS = ('cm', 'cV', 'cA', 'cΩ')
+    DECA_UNITS = ('dam', 'daV', 'daA', 'daΩ')
+    DECI_UNITS = ('dm', 'dV', 'dA', 'dΩ')
+    EXA_UNITS = ('Em', 'EV', 'EA', 'EΩ')
+    FEMTO_UNITS = ('fm', 'fV', 'fA', 'fΩ')
+    GIGA_UNITS = ('Gm', 'GV', 'GA', 'GΩ')
+    HECTO_UNITS = ('hm', 'hV', 'hA', 'hΩ')
+    KILO_UNITS = ('km', 'kV', 'kA', 'kΩ')
+    MEGA_UNITS = ('Mm', 'MV', 'MA', 'MΩ')
+    METRIC_PREFIX = {'atto': ('a', 1e-18), 'centi': ('c', 0.01), 'deca': (...
+    MICRO_UNITS = ('μm', 'μV', 'μA', 'μΩ')
+    MILLI_UNITS = ('mm', 'mV', 'mA', 'mΩ')
+    NANO_UNITS = ('nm', 'nV', 'nA', 'nΩ')
+    NON_STANDARD_PREFIX = {'hella': ('H', 1000000000000000000000000000), '...
+    PETA_UNITS = ('Pm', 'PV', 'PA', 'PΩ')
+    PICO_UNITS = ('pm', 'pV', 'pA', 'pΩ')
+    SIUNITS = (('ym', 'yV', 'yA', 'yΩ'), ('zm', 'zV', 'zA', 'zΩ'), ('am', ...
+    TERA_UNITS = ('Tm', 'TV', 'TA', 'TΩ')
+    YOCTO_UNITS = ('ym', 'yV', 'yA', 'yΩ')
+    YOTTA_UNITS = ('Ym', 'YV', 'YA', 'YΩ')
+    ZEPTO_UNITS = ('zm', 'zV', 'zA', 'zΩ')
+    ZETTA_UNITS = ('Zm', 'ZV', 'ZA', 'ZΩ')
+    __all__ = ['YOCTO_UNITS', 'ZEPTO_UNITS', 'ATTO_UNITS', 'FEMTO_UNITS', ...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/metric.py
+
+

@@ -1,0 +1,503 @@
+Help on module pybooster.tools in pybooster:
+
+NAME
+    pybooster.tools - Miscellaneous Functions
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.tools
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+FUNCTIONS
+    CSTD(...)
+        CSTD() -> int
+        Return the value of the current C Standard
+    
+    POSIXSTD(...)
+        POSIXSTD() -> int
+        Return the value of the current POSIX Standard
+    
+    endianness(...)
+        endianness() -> str
+        Return the system's endianness
+    
+    get_cpu_stepping(...)
+        get_cpu_stepping() -> int
+        Get the stepping value of the CPU
+    
+    get_vendor_id(...)
+        get_vendor_id() -> str
+        Return the vendor ID of the x86 CPU (Assumes little-endian)
+    
+    getarch(...)
+        getarch() -> str
+        Get the system's architecture type
+    
+    getos(...)
+        getos() -> str
+        Get the system's operating-system name
+    
+    getsyshostname(...)
+        getsyshostname() -> str
+        Return the system's hostname
+    
+    is_acpi_aval(...)
+        is_acpi_aval() -> bool
+        Test if the CPU supports `acpi` (Onboard thermal control MSRs for ACPI)
+    
+    is_adx_aval(...)
+        is_adx_aval() -> bool
+        Test if the CPU supports `adx` (Intel Multi-Precision Add-Carry Instruction Extensions)
+    
+    is_aes_aval(...)
+        is_aes_aval() -> bool
+        Test if the CPU supports `aes` (AES instruction set)
+    
+    is_apic_aval(...)
+        is_apic_aval() -> bool
+        Test if the CPU supports `apic` (Onboard Advanced Programmable Interrupt Controller)
+    
+    is_avx2_aval(...)
+        is_avx2_aval() -> bool
+        Test if the CPU supports `avx2` (Advanced Vector Extensions 2)
+    
+    is_avx512bw_aval(...)
+        is_avx512bw_aval() -> bool
+        Test if the CPU supports `avx512bw` (AVX-512 Byte and Word Instructions)
+    
+    is_avx512cd_aval(...)
+        is_avx512cd_aval() -> bool
+        Test if the CPU supports `avx512cd` (AVX-512 Conflict Detection Instructions)
+    
+    is_avx512dq_aval(...)
+        is_avx512dq_aval() -> bool
+        Test if the CPU supports `avx512dq` (AVX-512 Doubleword and Quadword Instructions)
+    
+    is_avx512er_aval(...)
+        is_avx512er_aval() -> bool
+        Test if the CPU supports `avx512er` (AVX-512 Exponential and Reciprocal Instructions)
+    
+    is_avx512f_aval(...)
+        is_avx512f_aval() -> bool
+        Test if the CPU supports `avx512f` (AVX-512)
+    
+    is_avx512ifma_aval(...)
+        is_avx512ifma_aval() -> bool
+        Test if the CPU supports `avx512ifma` (AVX-512 Integer Fused Multiply-Add Instructions)
+    
+    is_avx512pf_aval(...)
+        is_avx512pf_aval() -> bool
+        Test if the CPU supports `avx512pf` (AVX-512 Prefetch Instructions)
+    
+    is_avx512vbmi_aval(...)
+        is_avx512vbmi_aval() -> bool
+        Test if the CPU supports `avx512vbmi` (AVX-512 Vector Bit Manipulation Instructions)
+    
+    is_avx512vl_aval(...)
+        is_avx512vl_aval() -> bool
+        Test if the CPU supports `avx512vl` (AVX-512 Vector Length Extensions)
+    
+    is_avx_aval(...)
+        is_avx_aval() -> bool
+        Test if the CPU supports `avx` (Advanced Vector Extensions)
+    
+    is_bmi1_aval(...)
+        is_bmi1_aval() -> bool
+        Test if the CPU supports `bmi1` (Bit Manipulation Instruction Set 1)
+    
+    is_bmi2_aval(...)
+        is_bmi2_aval() -> bool
+        Test if the CPU supports `bmi2` (Bit Manipulation Instruction Set 2)
+    
+    is_clflushopt_aval(...)
+        is_clflushopt_aval() -> bool
+        Test if the CPU supports `clflushopt` (CLFLUSHOPT Instruction)
+    
+    is_clfsh_aval(...)
+        is_clfsh_aval() -> bool
+        Test if the CPU supports `clfsh` (CLFLUSH instruction (SSE2))
+    
+    is_clwb_aval(...)
+        is_clwb_aval() -> bool
+        Test if the CPU supports `clwb` (CLWB Instruction)
+    
+    is_cmov_aval(...)
+        is_cmov_aval() -> bool
+        Test if the CPU supports `cmov` (Conditional move and FCMOV instructions)
+    
+    is_cnxtid_aval(...)
+        is_cnxtid_aval() -> bool
+        Test if the CPU supports `cnxt-id` (L1 Context ID)
+    
+    is_cx16_aval(...)
+        is_cx16_aval() -> bool
+        Test if the CPU supports `cx16` (CMPXCHG16B Instruction)
+    
+    is_cx8_aval(...)
+        is_cx8_aval() -> bool
+        Test if the CPU supports `cx8` (CMPXCHG8/compare-and-swap instruction)
+    
+    is_dca_aval(...)
+        is_dca_aval() -> bool
+        Test if the CPU supports `dca` (Direct cache access for DMA writes)
+    
+    is_de_aval(...)
+        is_de_aval() -> bool
+        Test if the CPU supports `de` (Debugging extensions (CR4 bit 3))
+    
+    is_ds_aval(...)
+        is_ds_aval() -> bool
+        Test if the CPU supports `ds` (Debug store: save trace of executed jumps)
+    
+    is_dscpl_aval(...)
+        is_dscpl_aval() -> bool
+        Test if the CPU supports `ds-cpl` (CPL qualified debug store)
+    
+    is_dtes64_aval(...)
+        is_dtes64_aval() -> bool
+        Test if the CPU supports `dtes64` (64-bit debug store (edx bit 21))
+    
+    is_erms_aval(...)
+        is_erms_aval() -> bool
+        Test if the CPU supports `erms` (Enhanced REP MOVSB/STOSB)
+    
+    is_est_aval(...)
+        is_est_aval() -> bool
+        Test if the CPU supports `est` (Enhanced SpeedStep)
+    
+    is_f16c_aval(...)
+        is_f16c_aval() -> bool
+        Test if the CPU supports `f16c` (F16C (half-precision) FP support)
+    
+    is_fma_aval(...)
+        is_fma_aval() -> bool
+        Test if the CPU supports `fma` (Fused multiply-add (FMA3))
+    
+    is_fpu_aval(...)
+        is_fpu_aval() -> bool
+        Test if the CPU supports `fpu`
+    
+    is_fsgsbase_aval(...)
+        is_fsgsbase_aval() -> bool
+        Test if the CPU supports `fsgsbase`
+    
+    is_fxsr_aval(...)
+        is_fxsr_aval() -> bool
+        Test if the CPU supports `fxsr` (FXSAVE, FXRESTOR instructions, CR4 bit 9)
+    
+    is_hle_aval(...)
+        is_hle_aval() -> bool
+        Test if the CPU supports `hle` (Bit Manipulation Instruction Set 1)
+    
+    is_htt_aval(...)
+        is_htt_aval() -> bool
+        Test if the CPU supports `htt` (Hyper-threading)
+    
+    is_hypervisor_aval(...)
+        is_hypervisor_aval() -> bool
+        Test if the system is running in a hypervisor (always 0 on a real CPU, but also with some hypervisors)
+    
+    is_ia32_tsc_adjust_aval(...)
+        is_ia32_tsc_adjust_aval() -> bool
+        Test if the CPU supports `IA32_TSC_ADJUST`
+    
+    is_ia64_aval(...)
+        is_ia64_aval() -> bool
+        Test if the CPU supports `ia64` (IA64 processor emulating x86)
+    
+    is_invpcid_aval(...)
+        is_invpcid_aval() -> bool
+        Test if the CPU supports `invpcid` (INVPCID Instruction)
+    
+    is_mca_aval(...)
+        is_mca_aval() -> bool
+        Test if the CPU supports `mca` (Machine check architecture)
+    
+    is_mce_aval(...)
+        is_mce_aval() -> bool
+        Test if the CPU supports `mce` (Machine Check Exception)
+    
+    is_mmx_aval(...)
+        is_mmx_aval() -> bool
+        Test if the CPU supports `mmx` (MMX Instructions)
+    
+    is_monitor_aval(...)
+        is_monitor_aval() -> bool
+        Test if the CPU supports `monitor` (MONITOR and MWAIT instructions (SSE3))
+    
+    is_movbe_aval(...)
+        is_movbe_aval() -> bool
+        Test if the CPU supports `movbe` (MOVBE instruction (big-endian))
+    
+    is_mpx_aval(...)
+        is_mpx_aval() -> bool
+        Test if the CPU supports `mpx` (Intel Memory Protection Extensions)
+    
+    is_msr_aval(...)
+        is_msr_aval() -> bool
+        Test if the CPU supports `msr` (Model-specific registers)
+    
+    is_mtrr_aval(...)
+        is_mtrr_aval() -> bool
+        Test if the CPU supports `mtrr` (Memory Type Range Registers)
+    
+    is_osxsave_aval(...)
+        is_osxsave_aval() -> bool
+        Test if the OS supports `xsave` (CPU cache supports self-snoop)
+    
+    is_pae_aval(...)
+        is_pae_aval() -> bool
+        Test if the CPU supports `pae` (Physical Address Extension)
+    
+    is_pat_aval(...)
+        is_pat_aval() -> bool
+        Test if the CPU supports `pat` (Page Attribute Table)
+    
+    is_pbe_aval(...)
+        is_pbe_aval() -> bool
+        Test if the CPU supports `pbe` (Pending Break Enable (PBE# pin) wakeup support)
+    
+    is_pcid_aval(...)
+        is_pcid_aval() -> bool
+        Test if the CPU supports `pcid` (Process context identifiers (CR4 bit 17))
+    
+    is_pclmulqdq_aval(...)
+        is_pclmulqdq_aval() -> bool
+        Test if the CPU supports `pclmulqdq` (PCLMULQDQ support)
+    
+    is_pcommit_aval(...)
+        is_pcommit_aval() -> bool
+        Test if the CPU supports `pcommit` (PCOMMIT Instruction)
+    
+    is_pdcm_aval(...)
+        is_pdcm_aval() -> bool
+        Test if the CPU supports `pdcm` (Perfmon & debug capability)
+    
+    is_pge_aval(...)
+        is_pge_aval() -> bool
+        Test if the CPU supports `pge` (Page Global Enable bit in CR4)
+    
+    is_popcnt_aval(...)
+        is_popcnt_aval() -> bool
+        Test if the CPU supports `popcnt` (POPCNT Instruction)
+    
+    is_pqe_aval(...)
+        is_pqe_aval() -> bool
+        Test if the CPU supports `pqe` (Platform Quality of Service Enforcement)
+    
+    is_pqm_aval(...)
+        is_pqm_aval() -> bool
+        Test if the CPU supports `pqm` (Platform Quality of Service Monitoring)
+    
+    is_prefetchwt1_aval(...)
+        is_prefetchwt1_aval() -> bool
+        Test if the CPU supports `prefetchwt1` (PREFETCHWT1 Instruction)
+    
+    is_processor_trace_aval(...)
+        is_processor_trace_aval() -> bool
+        Test if the CPU supports Intel Processor Trace
+    
+    is_pse36_aval(...)
+        is_pse36_aval() -> bool
+        Test if the CPU supports `pse-36` (36-bit page size extension)
+    
+    is_pse_aval(...)
+        is_pse_aval() -> bool
+        Test if the CPU supports `pse` (Page Size Extension)
+    
+    is_psn_aval(...)
+        is_psn_aval() -> bool
+        Test if the CPU supports `psn` (Processor Serial Number)
+    
+    is_rdrnd_aval(...)
+        is_rdrnd_aval() -> bool
+        Test if the CPU supports `rdrnd` (RDRAND (on-chip random number generator) support)
+    
+    is_rdseed_aval(...)
+        is_rdseed_aval() -> bool
+        Test if the CPU supports `rdseed` (RDSEED Instruction)
+    
+    is_rtm_aval(...)
+        is_rtm_aval() -> bool
+        Test if the CPU supports `rtm` (Transactional Synchronization Extensions)
+    
+    is_sdbg_aval(...)
+        is_sdbg_aval() -> bool
+        Test if the CPU supports `sdbg` (Silicon Debug interface)
+    
+    is_sep_aval(...)
+        is_sep_aval() -> bool
+        Test if the CPU supports `sep` (SYSENTER and SYSEXIT Instructions)
+    
+    is_sgx_aval(...)
+        is_sgx_aval() -> bool
+        Test if the CPU supports `sgx` (Software Guard Extensions)
+    
+    is_sha_aval(...)
+        is_sha_aval() -> bool
+        Test if the CPU supports `sha` (Intel SHA extensions)
+    
+    is_smap_aval(...)
+        is_smap_aval() -> bool
+        Test if the CPU supports `smap` (Supervisor Mode Access Prevention)
+    
+    is_smep_aval(...)
+        is_smep_aval() -> bool
+        Test if the CPU supports `smep` (Supervisor-Mode Execution Prevention)
+    
+    is_smx_aval(...)
+        is_smx_aval() -> bool
+        Test if the CPU supports `smx` (Safer Mode Extensions (LaGrande))
+    
+    is_ss_aval(...)
+        is_ss_aval() -> bool
+        Test if the CPU supports `ss` (CPU cache supports self-snoop)
+    
+    is_sse2_aval(...)
+        is_sse2_aval() -> bool
+        Test if the CPU supports `sse2` (SSE2 Instructions)
+    
+    is_sse3_aval(...)
+        is_sse3_aval() -> bool
+        Test if the CPU supports `sse3` (Prescott New Instructions-SSE3 (PNI))
+    
+    is_sse41_aval(...)
+        is_sse41_aval() -> bool
+        Test if the CPU supports `sse41` (SSE4.1 Instructions)
+    
+    is_sse42_aval(...)
+        is_sse42_aval() -> bool
+        Test if the CPU supports `sse42` (SSE4.2 Instructions)
+    
+    is_sse_aval(...)
+        is_sse_aval() -> bool
+        Test if the CPU supports `sse` (SSE instructions)
+    
+    is_ssse3_aval(...)
+        is_ssse3_aval() -> bool
+        Test if the CPU supports `ssse3` (Supplemental SSE3 Instructions)
+    
+    is_tm2_aval(...)
+        is_tm2_aval() -> bool
+        Test if the CPU supports `tm2` (Thermal Monitor 2)
+    
+    is_tm_aval(...)
+        is_tm_aval() -> bool
+        Test if the CPU supports `tm` (Thermal monitor automatically limits temperature)
+    
+    is_tsc_aval(...)
+        is_tsc_aval() -> bool
+        Test if the CPU supports `tsc` (Time Stamp Counter)
+    
+    is_tscdeadline_aval(...)
+        is_tscdeadline_aval() -> bool
+        Test if the CPU supports `tsc-deadline` (APIC supports one-shot operation using a TSC deadline value)
+    
+    is_vme_aval(...)
+        is_vme_aval() -> bool
+        Test if the CPU supports `vme` (Virtual 8086 Mode Extensions, such as VIF, VIP, and PIV)
+    
+    is_vmx_aval(...)
+        is_vmx_aval() -> bool
+        Test if the CPU supports `vmx` (Virtual Machine eXtensions)
+    
+    is_x2apic_aval(...)
+        is_x2apic_aval() -> bool
+        Test if the CPU supports `x2apic` (x2APIC support)
+    
+    is_xsave_aval(...)
+        is_xsave_aval() -> bool
+        Test if the CPU supports `xsave` (XSAVE, XRESTOR, XSETBV, XGETBV)
+    
+    is_xtpr_aval(...)
+        is_xtpr_aval() -> bool
+        Test if the CPU supports `xtpr` (Can disable sending task priority messages)
+    
+    isandroid(...)
+        isandroid() -> bool
+        Test if this system is Android
+    
+    isstralnum(...)
+        isstralnum(STR: str) -> bool
+        Check if the string only contains alphanumeric characters
+    
+    isstralpha(...)
+        isstralpha(STR: str) -> bool
+        Check if the string only contains alphabetic characters
+    
+    isstrgraphical(...)
+        isstrgraphical(STR: str) -> bool
+        Check if the string only contains printable characters and not whitespace
+    
+    isstrhex(...)
+        isstrhex(STR: str) -> bool
+        Check if the string only contains hexadecimal characters
+    
+    isstrlowercase(...)
+        isstrlowercase(STR: str) -> bool
+        Check if the string only contains lowercase letters
+    
+    isstrnum(...)
+        isstrnum(STR: str) -> bool
+        Check if the string only contains numbers
+    
+    isstrprintable(...)
+        isstrprintable(STR: str) -> bool
+        Check if the string only contains printable characters
+    
+    isstrpunctuation(...)
+        isstrpunctuation(STR: str) -> bool
+        Check if the string only contains punctuation characters
+    
+    isstruppercase(...)
+        isstruppercase(STR: str) -> bool
+        Check if the string only contains uppercase letters
+    
+    isstrwhitespace(...)
+        isstrwhitespace(STR: str) -> bool
+        Check if the string only contains whitespace characters
+    
+    lowercasestr(...)
+        lowercasestr(STR: str) -> str
+        Convert a string to all lowercase letters
+    
+    lowercasestr15(...)
+        lowercasestr15(STR: str) -> str
+        Convert a string 15-character string to all lowercase letters
+    
+    nop(...)
+        nop() -> None
+        Do nothing (faster than Python's `pass` command)
+    
+    printline(...)
+        printline() -> None
+        Print a newline character
+    
+    rdtsc(...)
+        rdtsc() -> int
+        The rdtsc (Read Time-Stamp Counter) instruction is used to determine how many CPU ticks occurred since the processor was reset
+    
+    rmgravequote(...)
+        rmgravequote(string: str) -> str
+        Find and remove grave-quotes (`)
+    
+    strreplace(...)
+        strreplace(orig_string: str, find: str, replace_with: str) -> str
+        Find and replace all occurrences of "find" with "replace_with"
+    
+    strreplace_once(...)
+        strreplace_once(orig_string: str, find: str, replace_with: str) -> str
+        Replace first occurrence of "find" with "replace_with"
+    
+    uppercasestr(...)
+        uppercasestr(STR: str) -> str
+        Convert a string to all uppercase letters
+
+FILE
+    /usr/lib/python3.4/pybooster/tools.cpython-34m.so
+
+

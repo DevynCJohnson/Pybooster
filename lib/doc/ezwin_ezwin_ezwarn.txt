@@ -1,0 +1,6 @@
+Help on function ezwarn in pybooster.ezwin.ezwin:
+
+pybooster.ezwin.ezwin.ezwarn = ezwarn(_msg:str='Warning') -> None
+    Warning Dialog
+    Display a warning message
+

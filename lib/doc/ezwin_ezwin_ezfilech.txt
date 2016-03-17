@@ -1,0 +1,6 @@
+Help on function ezfilech in pybooster.ezwin.ezwin:
+
+pybooster.ezwin.ezwin.ezfilech = ezfilech(_select_file:bool=True, _select_dir:bool=False, _multiple:bool=False, _save:bool=False, _viewhidden:bool=False, _file_exten:bool=True, _init_path:str='', _local:bool=True, _return_uri:bool=True, _return_dtype:str='list') -> list
+    File Chooser Dialog
+    Select a file or folder
+

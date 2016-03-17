@@ -1,0 +1,76 @@
+Help on module pybooster.net in pybooster:
+
+NAME
+    pybooster.net
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.net
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.net
+    -- --
+    Network-related functions
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    findgw() -> str
+        Get the Gateway IP address
+    
+    hasnet() -> bool
+        Return True if the Internet is available
+    
+    ints2ipv6(*args:int) -> str
+        When given eight separate integers, a hex IPv6 address is returned
+    
+    isdomain(_address:str) -> bool
+        Test if a Domain Name resolves to an IP address
+    
+    lst2ipv6(_list:list) -> str
+        When given eight separate integers, a hex IPv6 address is returned
+    
+    name2ip(_address:str='localhost') -> str
+        Convert a domain name to an IPv4 address
+    
+    ping(_address:str='localhost') -> bool
+        Specify an IP address or a domain name
+
+DATA
+    __all__ = ['ints2ipv6', 'lst2ipv6', 'isdomain', 'name2ip', 'ping', 'fi...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/net.py
+
+

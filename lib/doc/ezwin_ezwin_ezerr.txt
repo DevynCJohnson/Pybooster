@@ -1,0 +1,6 @@
+Help on function ezerr in pybooster.ezwin.ezwin:
+
+pybooster.ezwin.ezwin.ezerr = ezerr(_msg:str='Error Message') -> None
+    Error Dialog
+    Display an error message
+

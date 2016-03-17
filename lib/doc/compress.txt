@@ -1,0 +1,124 @@
+Help on module pybooster.compress in pybooster:
+
+NAME
+    pybooster.compress
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.compress
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.compress
+    -- --
+    Compression Algorithms and Interfaces
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    bzipvar(data:str, _encoding:str='utf-8') -> bytes
+        Bzip the contents of a variable
+    
+    createbzipfile(_filename:str) -> None
+        Bzip an existing file
+    
+    creategzipfile(_filename:str) -> None
+        Gzip an existing file
+    
+    createlzmafile(_filename:str) -> None
+        LZMA an existing file
+    
+    createtarfile(_filenames:list, _tarfile:str) -> None
+        Tar existing files into the specified Tar-file
+    
+    createxzfile(_filename:str) -> None
+        XZ an existing file
+    
+    extracttar(_filename:str) -> None
+        Extract files from a Tar file in the directory
+    
+    getbzip(_filename:str) -> str
+        Open and get the contents of a bzip2 file
+    
+    getbzipvar(data:bytes) -> str
+        Get the contents of a Bzipped variable
+    
+    getgzip(_filename:str) -> str
+        Open and get the contents of a gzip file
+    
+    getgzipvar(data:bytes) -> str
+        Get the contents of a Gzipped variable
+    
+    getlzma(_filename:str) -> str
+        Open and get the contents of a LZMA file
+    
+    gettar(_filename:str) -> str
+        Open and get the contents of a tar file
+    
+    getxz(_filename:str) -> str
+        Open and get the contents of a XZ file
+    
+    getxzvar(data:bytes) -> str
+        Get the contents of a XZ variable
+    
+    gzipvar(data:str, _encoding:str='utf-8') -> bytes
+        Gzip the contents of a variable
+    
+    lzmavar(data:str, _encoding:str='utf-8') -> bytes
+        LZMA the contents of a variable
+    
+    write2bzip(_filename:str, _write:str) -> None
+        Compress data using bzip2 and write it to a file
+    
+    write2gzip(_filename:str, _write:str) -> None
+        Compress data using gzip and write it to a file
+    
+    write2lzma(_filename:str, _write:str) -> None
+        Compress data using LZMA and write it to a file
+    
+    write2tar(_filename:str, _write:str) -> None
+        Archive data using tar and write it to a file
+    
+    write2xz(_filename:str, _write:str) -> None
+        Compress data using XZ and write it to a file
+    
+    xzvar(data:str, _encoding:str='utf-8') -> bytes
+        XZ the contents of a variable
+
+DATA
+    __all__ = ['getgzip', 'write2gzip', 'creategzipfile', 'gzipvar', 'getg...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/compress.py
+
+

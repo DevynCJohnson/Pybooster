@@ -1,0 +1,31 @@
+Help on module pybooster.chemistry in pybooster:
+
+NAME
+    pybooster.chemistry - Chemistry-related Functions
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.chemistry
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+FUNCTIONS
+    iselement(...)
+        iselement(name: str) -> bool
+        Check if the string is a name of a chemical element
+    
+    pka(...)
+        pka(ka: float) -> float
+        Calculate the pKa from Ka (Acid Dissociation Constant)
+    
+    pkb(...)
+        pkb(kb: float) -> float
+        Calculate the pKb from Kb (Base Dissociation Constant)
+
+FILE
+    /usr/lib/python3.4/pybooster/chemistry.cpython-34m.so
+
+

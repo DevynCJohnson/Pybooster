@@ -1,0 +1,139 @@
+Help on module pybooster.convtemp in pybooster:
+
+NAME
+    pybooster.convtemp
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.convtemp
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.convtemp
+    -- --
+    Measurement (Temperature) Conversions
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    celsius2delisle(_temp:int, _round:int=3) -> float
+        Celsius  - > Delisle
+    
+    celsius2fahrenheit(_temp:int, _round:int=3) -> float
+        Celsius  - > Fahrenheit
+    
+    celsius2kelvin(_temp:int, _round:int=3) -> float
+        Celsius  - > Kelvin
+    
+    celsius2rankine(_temp:int, _round:int=3) -> float
+        Celsius  - > Rankine
+    
+    centigrade2delisle(_temp:int, _round:int=3) -> float
+        Centigrade  - > Delisle
+    
+    centigrade2fahrenheit(_temp:int, _round:int=3) -> float
+        Centigrade  - > Fahrenheit
+    
+    centigrade2kelvin(_temp:int, _round:int=3) -> float
+        Centigrade  - > Kelvin
+    
+    centigrade2rankine(_temp:int, _round:int=3) -> float
+        Centigrade  - > Rankine
+    
+    delisle2celsius(_temp:int, _round:int=3) -> float
+        Delisle  - > Celsius
+    
+    delisle2centigrade(_temp:int, _round:int=3) -> float
+        Delisle  - > Centigrade
+    
+    delisle2fahrenheit(_temp:int, _round:int=3) -> float
+        Delisle  - > Fahrenheit
+    
+    delisle2kelvin(_temp:int, _round:int=3) -> float
+        Delisle  - > Kelvin
+    
+    delisle2rankine(_temp:int, _round:int=3) -> float
+        Delisle  - > Rankine
+    
+    fahrenheit2celsius(_temp:int, _round:int=3) -> float
+        Fahrenheit  - > Celsius
+    
+    fahrenheit2centigrade(_temp:int, _round:int=3) -> float
+        Fahrenheit  - > Centigrade
+    
+    fahrenheit2delisle(_temp:int, _round:int=3) -> float
+        Fahrenheit  - > Delisle
+    
+    fahrenheit2kelvin(_temp:int, _round:int=3) -> float
+        Fahrenheit  - > Kelvin
+    
+    fahrenheit2rankine(_temp:int, _round:int=3) -> float
+        Fahrenheit  - > Rankine
+    
+    kelvin2celsius(_temp:int, _round:int=3) -> float
+        Kelvin  - > Celsius
+    
+    kelvin2centigrade(_temp:int, _round:int=3) -> float
+        Kelvin  - > Centigrade
+    
+    kelvin2delisle(_temp:int, _round:int=3) -> float
+        Kelvin  - > Delisle
+    
+    kelvin2fahrenheit(_temp:int, _round:int=3) -> float
+        Kelvin  - > Fahrenheit
+    
+    kelvin2rankine(_temp:int, _round:int=3) -> float
+        Kelvin  - > Rankine
+    
+    rankine2celsius(_temp:int, _round:int=3) -> float
+        Rankine  - > Celsius
+    
+    rankine2centigrade(_temp:int, _round:int=3) -> float
+        Rankine  - > Centigrade
+    
+    rankine2delisle(_temp:int, _round:int=3) -> float
+        Rankine  - > Delisle
+    
+    rankine2fahrenheit(_temp:int, _round:int=3) -> float
+        Rankine  - > Fahrenheit
+    
+    rankine2kelvin(_temp:int, _round:int=3) -> float
+        Rankine  - > Kelvin
+
+DATA
+    __all__ = ['celsius2delisle', 'celsius2fahrenheit', 'celsius2kelvin', ...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/convtemp.py
+
+

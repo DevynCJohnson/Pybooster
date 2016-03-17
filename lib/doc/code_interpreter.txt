@@ -1,0 +1,103 @@
+Help on module pybooster.code_interpreter in pybooster:
+
+NAME
+    pybooster.code_interpreter
+
+MODULE REFERENCE
+    http://docs.python.org/3.4/library/pybooster.code_interpreter
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Created by Devyn Collier Johnson
+    <DevynCJohnson@Gmail.com>
+    LGPLv3 License
+    -- --
+    PyBooster - Various Extras for Python3
+    pybooster.code_interpreter
+    -- --
+    Interpret various computer languages using installed interpreters
+    -- --
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    execclispfile(_filename:str) -> str
+        Execute a CLisp file given as a str and return the output as a str
+    
+    execjs(_code:str) -> str
+        Execute JavaScript code given as a str and return the output as a str
+    
+    execjsfile(_filename:str) -> str
+        Execute a JavaScript file given as a str and return the output as a str
+    
+    execlua(_code:str) -> str
+        Execute Lua code given as a str and return the output as a str
+    
+    execluafile(_filename:str) -> str
+        Execute a Lua script given as a str and return the output as a str
+    
+    execperl(_code:str) -> str
+        Execute Perl code given as a str and return the output as a str
+    
+    execperlfile(_filename:str) -> str
+        Execute a Perl script given as a str and return the output as a str
+    
+    execphp(_code:str) -> str
+        Execute PHP code given as a str and return the output as a str
+    
+    execphpfile(_filename:str) -> str
+        Execute a PHP script given as a str and return the output as a str
+    
+    execruby(_code:str) -> str
+        Execute Ruby code given as a str and return the output as a str
+    
+    execrubyfile(_filename:str) -> str
+        Execute a Ruby script given as a str and return the output as a str
+    
+    execscala(_code:str) -> str
+        Execute Scala code given as a str and return the output as a str
+    
+    execsh(_code:str) -> str
+        Execute Shell code given as a str and return the output as a str
+    
+    execshfile(_filename:str) -> str
+        Execute a Shell script given as a str and return the output as a str
+    
+    initperl() -> None
+        Run a Perl REP-Loop (Read-Evaluate-Print-Loop)
+    
+    initsh() -> None
+        Run a shell REP-Loop (Read-Evaluate-Print-Loop)
+
+DATA
+    __all__ = ['execclispfile', 'execcoffee', 'execjs', 'execjsfile', 'exe...
+    __copyright__ = 'LGPLv3'
+
+VERSION
+    2016.03.09
+
+AUTHOR
+    Devyn Collier Johnson
+
+FILE
+    /usr/lib/python3.4/pybooster/code_interpreter.py
+
+
