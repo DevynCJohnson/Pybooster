@@ -1,7 +1,5 @@
-PyBooster
-=========
-Various Extras for Python3
---------------------------
+PyBooster - Various Extras for Python3
+======================================
 
  * **Developer (Primary):** Devyn Collier Johnson
  * **Email:** DevynCJohnson@Gmail.com
@@ -16,7 +14,8 @@ The C-libraries can be compiled as Python modules or linked in other projects.
 EzWin is also included in PyBooster. Ezwin is a collection of GTK windows.
 
 
-### REQUIREMENTS
+REQUIREMENTS
+------------
 
  * Python3.4 or greater
  * A C compiler (if the C source code will be built)
@@ -26,7 +25,8 @@ EzWin is also included in PyBooster. Ezwin is a collection of GTK windows.
 PyBooster should work on all operating systems that support Python3. The make-files and shell scripts will only work on most Unixoid systems. However, it is not mandatory that the source code be built (the Python script will still work).
 
 
-### BUILDING
+BUILDING
+--------
 
 To perform the listed build commands, open a terminal and type the given command:
 
@@ -42,15 +42,19 @@ To perform the listed build commands, open a terminal and type the given command
  * To build the code for a 64-bit system, type "make all BITS=64".
 
 
-### INSTALLING
+INSTALLING
+----------
 
  * To install Pybooster, open a terminal and type "make install".
  * To uninstall PyBooster, open a terminal and type "make uninstall".
 
 
-### DEVELOPING
+DEVELOPING
+----------
 
-#### Code
+Follow the below guidelines when assisting the development of PyBooster.
+
+### Code ###
 
  * Keep code organized
  * Keep files organized
@@ -66,21 +70,20 @@ To perform the listed build commands, open a terminal and type the given command
  * Use the proper license header (see templates under ./_MISC) for each src file
  * Version numbers use the format YYYY.MM.DD or %Y.%m.%d
 
-##### C
+#### C ####
 
  * Standard - Use C11 or newer
 
-##### Python
+#### Python ####
 
  * Check code - Check the code using "pep8", "pylint", and "flake8"
  * Formatting - Follow the PEP8 standard
 
-#### Adding new modules
+### Adding new modules ###
 
- * When adding a new *.py file, add the name of the module to "__all__" in __init__.py and "lib" in ./makedoc.sh
- * When adding a new *.so Python module,
-  * Add the name of the module to "__all__" in __init__.py and "lib" in ./makedoc.sh
-  * Create a "setup()" entry in setup.py for the module; use an existing "setup()" as a template
+ * When adding a new *.py file, add the name of the module to ``__all__`` in ``__init__.py`` and "lib" in **./makedoc.sh**
+ * When adding a new `*.so` Python module,
+  * Add the name of the module to ``__all__`` in ``__init__.py`` and `lib` in **./makedoc.sh**
  * When adding a new C-library,
-  * Add a rule to "makefile" under "Library Compiling" in "RULES"
-  * List the added rule name to "makefile" with "lib : " under "BUILD COMMANDS"
+  * Add a rule to **makefile** under `Library Compiling` in the **RULES** section
+  * List the added rule name to **makefile** with **lib : ** under **BUILD COMMANDS**
