@@ -1,4 +1,4 @@
-PyBooster - Various Extras for Python3
+PyBooster - collection of Python3 and C libraries
 ======================================
 
  * **Lead Developer:** Devyn Collier Johnson
@@ -7,11 +7,11 @@ PyBooster - Various Extras for Python3
  * **GitHub:** https://github.com/DevynCJohnson/Pybooster
  * **Documentation:** http://dcjtech.info/Pybooster/
 
-PyBooster is a collection of Python and C libraries.
-
 The C-libraries can be compiled as Python modules or linked in other projects.
 
 EzWin is also included in PyBooster. Ezwin is a collection of GTK windows.
+
+Please consider donating to http://dcjtech.info/ to help development (click the **Donate** button).
 
 
 REQUIREMENTS
