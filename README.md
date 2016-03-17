@@ -58,16 +58,16 @@ Follow the below guidelines when assisting the development of PyBooster.
 
  * Keep code organized
  * Keep files organized
-  * C-src: ./lib/clib-src/
-  * C-libraries: ./lib/clib/
-  * Python modules (`*.py` and `*.so`): ./lib/
+  * C-src: `./lib/clib-src/`
+  * Compiled C libraries: `./lib/clib/`
+  * Python modules (`*.py` and `*.so`): `./lib/`
  * Document/explain complicated algorithms
  * Languages: C11 (or newer) and Python3
   * There are some shell-scripts, Glade files (XML), makefiles, and perhaps some Assembly files (`*.S`)
  * License code under LGPLv3
  * Optimize the code
- * Templates can be found in ./_MISC
- * Use the proper license header (see templates under ./_MISC) for each src file
+ * Templates can be found in `./_MISC`
+ * Use the proper license header (see templates under `./_MISC`) for each src file
  * Version numbers use the format YYYY.MM.DD or %Y.%m.%d
 
 #### C ####
