@@ -1,0 +1,10 @@
+# Languages
+*.s linguist-language=Assembly
+*.S linguist-language=Assembly
+*.c linguist-language=C
+*.h linguist-language=C
+*.py linguist-language=Python
+
+# Documentation
+./lib/doc/* linguist-documentation
+./_MISC/* linguist-documentation

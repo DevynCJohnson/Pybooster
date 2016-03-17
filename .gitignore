@@ -1,0 +1,117 @@
+*.cache
+*.tmp
+*.todo.txt
+
+# Translations
+*.mo
+*.pot
+
+
+## C ##
+
+
+# LLVM/Clang
+*.bc
+*.ll
+*.ast
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i386
+*.i486
+*.i586
+*.i686
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+
+# Profiling
+*.gcda
+
+
+## PYTHON ##
+
+
+# Byte-compiled
+__pycache__/
+*.py[cod]
+
+# Distribution
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+*.logs
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+*.pytb
+
+# PyBuilder
+target/
+
+# IPython Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+ENV/
