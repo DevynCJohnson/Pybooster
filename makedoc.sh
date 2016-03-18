@@ -6,6 +6,8 @@
 # -- --
 # Generate PyBooster documentation in ./doc/
 
+rm -frd ./lib/doc/*
+
 python3 -m pydoc pybooster.astronomy > ./lib/doc/astronomy.txt
 python3 -m pydoc pybooster.basic > ./lib/doc/basic.txt
 python3 -m pydoc pybooster.bitwise > ./lib/doc/bitwise.txt
@@ -59,6 +61,12 @@ python3 -m pydoc pybooster.typesize > ./lib/doc/typesize.txt
 python3 -m pydoc pybooster.unix > ./lib/doc/unix.txt
 python3 -m pydoc pybooster.xmath > ./lib/doc/xmath.txt
 
-doxygen ./Doxyfile  # && make --directory=./lib/doc/latex/ all
+doxygen ./Doxyfile
+
+chmod --quiet 644 ./lib/doc/*.txt
+chmod --quiet 755 ./lib/doc/html/
+chmod --quiet 644 ./lib/doc/html/*
+chmod --quiet 755 ./lib/doc/html/search
+chmod --quiet 644 ./lib/doc/html/search/*
 
 exit 0

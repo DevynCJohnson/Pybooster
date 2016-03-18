@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # Makefile for pylibc and PyBooster
-# Version 2016.03.16
+# Version 2016.03.18
 
 
 ifdef DCJ
@@ -161,7 +161,7 @@ default:
 ## PHONY ##
 
 
-.PHONY : all ast backup byte clean cleanall doc everything fixperm install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp static strip uninstall
+.PHONY : all ast backup byte clean cleanall commit doc everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp stat static strip submit uninstall
 
 
 ## BUILD COMMANDS ##
@@ -244,7 +244,7 @@ doc :
 	-@./makedoc.sh
 
 rmtmp :
-	@rm -f $(DIR)/*.o $(CLIBSRC)/*.o $(DIR)/*.s $(CLIBSRC)/*.s $(DIR)/*.bc $(CLIBSRC)/*.bc $(DIR)/*.ll $(CLIBSRC)/*.ll $(DIR)/*.ast $(CLIBSRC)/*.ast $(DIR)/*.i $(CLIBSRC)/*.i  $(DIR)/*.ii $(CLIBSRC)/*.ii $(DIR)/*.pch $(CLIBSRC)/*.pch; rm -vfrd --one-file-system $(DIR)/build/ $(CLIBSRC)/build/
+	-@rm -f $(DIR)/*.o $(CLIBSRC)/*.o $(DIR)/*.s $(CLIBSRC)/*.s $(DIR)/*.bc $(CLIBSRC)/*.bc $(DIR)/*.ll $(CLIBSRC)/*.ll $(DIR)/*.ast $(CLIBSRC)/*.ast $(DIR)/*.i $(CLIBSRC)/*.i  $(DIR)/*.ii $(CLIBSRC)/*.ii $(DIR)/*.pch $(CLIBSRC)/*.pch; rm -frd --one-file-system $(DIR)/build/ $(CLIBSRC)/build/
 
 rmcache :
 	-@rm -frd --one-file-system $(DIR)/__pycache__/; rm -frd --one-file-system $(DIR)/ezwin/__pycache__/
@@ -252,18 +252,18 @@ rmcache :
 clean : rmtmp rmcache
 
 cleandoc :
-	-@rm -vfrd $(DIR)/doc/*
+	-@rm -frd $(DIR)/doc/*
 
 cleanall : clean
 	@rm -f $(DIR)/*.so $(CLIB)/*.so $(CLIB)/*.dll $(CLIB)/*.a $(DIR)/*.pyc $(DIR)/*.pyo
 
 uninstall :
-	rm -vfrd --one-file-system /opt/pybooster/*; rm -f /opt/bin/ezwin; rm -f /usr/lib/python$(PYVERSION)/pybooster $(SYSPYCLIB); rm -f /etc/ld.so.conf.d/pyclib.conf; ldconfig
+	rm -frd --one-file-system /opt/pybooster/*; rm -f /opt/bin/ezwin; rm -f /usr/lib/python$(PYVERSION)/pybooster $(SYSPYCLIB); rm -f /etc/ld.so.conf.d/pyclib.conf; ldconfig
 
 install : rmtmp
 	cd $(DIR); \
 	# Prepare installation directory \
-	rm -vfrd --one-file-system /opt/pybooster/*; \
+	rm -frd --one-file-system /opt/pybooster/*; \
 	mkdir -vp /opt/pybooster$(CLIBDIR) /opt/pybooster$(CLIBSRCDIR); \
 	mkdir -vp /opt/pybooster/doc /opt/pybooster/ezwin; \
 	# Copy files to installation directory \
@@ -291,7 +291,11 @@ install : rmtmp
 	echo ""; echo "Installation Complete (PyBooster)!"; \
 
 fixperm : rmtmp
-	$(CHMOD) 644 $(DIR)/doc/*; \
+	$(CHMOD) 644 $(DIR)/doc/*.txt; \
+	$(CHMOD) 755 $(DIR)/doc/html; \
+	$(CHMOD) 644 $(DIR)/doc/html/*; \
+	$(CHMOD) 755 $(DIR)/doc/html/search; \
+	$(CHMOD) 644 $(DIR)/doc/html/search/*; \
 	$(CHMOD) 644 $(DIR)/*.py; \
 	$(CHMOD) 644 $(DIR)/*.glade; \
 	$(CHMOD) 755 $(DIR)/*.so; \
@@ -302,6 +306,22 @@ fixperm : rmtmp
 	$(CHMOD) 644 $(DIR)/ezwin/__pycache__/*; \
 	$(CHMOD) 755 $(DIR)/ezwin/*.py; \
 	$(CHMOD) 644 $(DIR)/ezwin/*.glade; \
+
+
+## GIT COMMANDS ##
+
+
+gitall : clean
+	git add -A
+
+commit : | clean fixperm
+	git commit -m "$(M)"
+
+stat : clean
+	git status -s
+
+submit :
+	git push origin master
 
 
 ## RULES ##
