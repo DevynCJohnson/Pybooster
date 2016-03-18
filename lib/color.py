@@ -28,6 +28,8 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+# pylint: disable=C0103
+
 from math import acos, cos, sqrt
 
 
@@ -90,7 +92,7 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 # CONSTANTS
@@ -516,10 +518,11 @@ def rgb2hsv(_red: float, _green: float, _blue: float) -> tuple:
     _value = maxc
     if minc == maxc:
         return 0.0, 0.0, _value
-    _sat = (maxc - minc) / maxc
-    rc = (maxc - _red) / (maxc - minc)
-    gc = (maxc - _green) / (maxc - minc)
-    bc = (maxc - _blue) / (maxc - minc)
+    minmaxc = maxc - minc
+    _sat = minmaxc / maxc
+    rc = (maxc - _red) / minmaxc
+    gc = (maxc - _green) / minmaxc
+    bc = (maxc - _blue) / minmaxc
     if _red == maxc:
         _hue = bc - gc
     elif _green == maxc:
@@ -580,12 +583,12 @@ def rgb2yiq(_red: float, _green: float, _blue: float) -> tuple:
 def rgb2rgba(_red: float, _green: float, _blue: float, _bytearray: bool=False) -> tuple:
     """RGB -> RGBA"""
     if _bytearray is False:
-        return _red, _green, _blue, 1.000000
+        return _red, _green, _blue, 1.0000
     else:
         return _red, _green, _blue, 255
 
 
-def rgba2rgb(_red: float, _green: float, _blue: float, _alpha: int=255) -> tuple:
+def rgba2rgb(_red: float, _green: float, _blue: float) -> tuple:
     """RGBA -> RGB"""
     return _red, _green, _blue
 
@@ -595,26 +598,17 @@ def rgba2rgb(_red: float, _green: float, _blue: float, _alpha: int=255) -> tuple
 
 def rgb2rgbf(_red: float, _green: float, _blue: float) -> tuple:
     """RGB Integer -> RGB Float"""
-    _red = _red / 255.0
-    _green = _green / 255.0
-    _blue = _blue / 255.0
-    return _red, _green, _blue
+    return (_red / 255.0, _green / 255.0, _blue / 255.0)
 
 
 def rgbf2rgb(_red: float, _green: float, _blue: float) -> tuple:
     """RGB Float -> RGB Integer"""
-    _red = _red * 255.0
-    _green = _green * 255.0
-    _blue = _blue * 255.0
-    return _red, _green, _blue
+    return (_red * 255.0, _green * 255.0, _blue * 255.0)
 
 
 def roundrgb(_r: float, _g: float, _b: float) -> tuple:
     """Round RGB float-points (like 245.649915) to integer (246)"""
-    _r = round(_r)
-    _g = round(_g)
-    _b = round(_b)
-    return _r, _g, _b
+    return (round(_r), round(_g), round(_b))
 
 
 # XYZ
@@ -680,19 +674,19 @@ def xyz2rgb_int(_x: float, _y: float, _z: float) -> tuple:
 
 def yiq2rgb(_y: float, _i: float, _q: float) -> tuple:
     """YIQ -> RGB"""
-    _r = _y + 0.9468822170900693 * _i + 0.6235565819861433 * _q
-    _g = _y - 0.27478764629897834 * _i - 0.6356910791873801 * _q
-    _b = _y - 1.1085450346420322 * _i + 1.7090069284064666 * _q
-    if _r < 0.0:
-        _r = 0.0
-    elif _r > 1.0:
-        _r = 1.0
-    if _g < 0.0:
-        _g = 0.0
-    elif _g > 1.0:
-        _g = 1.0
-    if _b < 0.0:
-        _b = 0.0
-    elif _b > 1.0:
-        _b = 1.0
-    return (_r, _g, _b)
+    _red = _y + 0.9468822170900693 * _i + 0.6235565819861433 * _q
+    _green = _y - 0.27478764629897834 * _i - 0.6356910791873801 * _q
+    _blue = _y - 1.1085450346420322 * _i + 1.7090069284064666 * _q
+    if _red < 0.0:
+        _red = 0.0
+    elif _red > 1.0:
+        _red = 1.0
+    if _green < 0.0:
+        _green = 0.0
+    elif _green > 1.0:
+        _green = 1.0
+    if _blue < 0.0:
+        _blue = 0.0
+    elif _blue > 1.0:
+        _blue = 1.0
+    return (_red, _green, _blue)

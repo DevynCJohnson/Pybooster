@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Chemistry-related Functions
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 Chemistry-specific functions that perform calculations or truth-tests

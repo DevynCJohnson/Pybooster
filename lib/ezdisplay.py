@@ -28,6 +28,8 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+# pylint: disable=R0903
+
 from sys import stdin
 
 from gi.repository import Gtk
@@ -35,7 +37,7 @@ from gi.repository import Gtk
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 _GUI = """<?xml version="1.0" encoding="UTF-8"?>
@@ -162,35 +164,27 @@ def readpipe() -> str:
     """Read from pipe"""
     while True:
         _input = ''
-        c = stdin.read(1)
-        while c:
-            _input += c
-            c = stdin.read(1)
+        _character = stdin.read(1)
+        while _character:
+            _input += _character
+            _character = stdin.read(1)
         return str(_input)
 
 
 class MainWin():
     """Main Window"""
     def __init__(self):
-        self.ui = Gtk.Builder()
-        self.ui.add_from_string(buffer=_GUI)
-        # Match signal to function (handler)
-        dic = {'_winexit': Gtk.main_quit}
-        self.ui.connect_signals(dic)
-        _label = self.ui.get_object('viewing_label')
-        _label.set_text('EzDisplay')
-        _textview = self.ui.get_object('textview')
+        self.interface = Gtk.Builder()
+        self.interface.add_from_string(buffer=_GUI)
+        dic = {'_winexit': Gtk.main_quit}  # Match signal to function (handler)
+        self.interface.connect_signals(dic)
+        _label = self.interface.get_object(r'viewing_label')
+        _label.set_text(r'EzDisplay')
+        _textview = self.interface.get_object(r'textview')
         _textbuffer = _textview.get_buffer()
         _textbuffer.set_text(readpipe())
 
 
-def main() -> None:
-    """Open window and run program"""
-    window = MainWin()
-    Gtk.main()
-    return
-
-
 if __name__ == '__main__':
-    main()
-    raise SystemExit(0)
+    WINDOW = MainWin()
+    Gtk.main()

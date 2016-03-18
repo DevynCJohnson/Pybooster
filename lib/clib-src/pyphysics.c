@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Physics Functions
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from physics.c

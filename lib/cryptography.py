@@ -45,7 +45,7 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 # FUNCTIONS
@@ -56,7 +56,7 @@ def encrypt_xor(_data: bytes) -> bytearray:
     Return the encrypted data as a bytearray
     Decrypt with decrypt_xor()
     """
-    return bytearray([b^0xA8 for b in bytearray(_data)])
+    return bytearray([b ^ 0xA8 for b in bytearray(_data)])
 
 
 def decrypt_xor(_data: bytearray) -> str:
@@ -64,7 +64,7 @@ def decrypt_xor(_data: bytearray) -> str:
     Return the decrypted data as a str
     Encrypt with encrypt_xor()
     """
-    return str(bytearray([b^0xA8 for b in bytearray(_data)]), 'utf-8')
+    return str(bytearray([b ^ 0xA8 for b in bytearray(_data)]), 'utf-8')
 
 
 def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:

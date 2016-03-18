@@ -222,14 +222,14 @@ pylibc : pychemistry pygeometry pymathconstants pymathfunc pyphysics pytools pyt
 pyclibc : pylibc
 
 strip :
-	$(STRIP) $(STRIP_PARAMS) $(CLIB)/*.so && $(STRIP) $(STRIP_PARAMS) $(DIR)/*.so
+	-@$(STRIP) $(STRIP_PARAMS) $(CLIB)/*.so && $(STRIP) $(STRIP_PARAMS) $(DIR)/*.so
 
 
 ## SPECIAL COMMANDS ##
 
 
 backup : rmtmp
-	cd ../; tar -cf - PyBooster | gzip -9 > ./PyBooster.tar.gz; cd ./PyBooster
+	@cd ../; tar -cf - PyBooster | gzip -9 > ./PyBooster.tar.gz; cd ./PyBooster
 
 package : rmtmp
 	@cd ../; tar -cf - PyBooster | gzip -9 > ./PyBooster_v`date +"%Y.%m.%d"`.tar.gz; cd ./PyBooster
@@ -238,7 +238,7 @@ package7z : rmtmp
 	@cd ../; 7za a ./PyBooster_v`date +"%Y.%m.%d"`.7z PyBooster; cd ./PyBooster
 
 packagezip : rmtmp
-	cd ../; zip -r ./PyBooster_v`date +"%Y.%m.%d"`.zip PyBooster; cd ./PyBooster
+	@cd ../; zip -r ./PyBooster_v`date +"%Y.%m.%d"`.zip PyBooster; cd ./PyBooster
 
 doc :
 	-@./makedoc.sh
@@ -291,7 +291,7 @@ install : rmtmp
 	echo ""; echo "Installation Complete (PyBooster)!"; \
 
 fixperm : rmtmp
-	$(CHMOD) 644 $(DIR)/doc/*.txt; \
+	-@$(CHMOD) 644 $(DIR)/doc/*.txt; \
 	$(CHMOD) 755 $(DIR)/doc/html; \
 	$(CHMOD) 644 $(DIR)/doc/html/*; \
 	$(CHMOD) 755 $(DIR)/doc/html/search; \
@@ -312,10 +312,10 @@ fixperm : rmtmp
 
 
 gitall : clean
-	git add -A
+	-@git add -A
 
 commit : | clean fixperm
-	git commit -m "$(M)"
+	-@git commit -m "$(M)"
 
 stat : clean
 	git status -s

@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Standard Header Macros (header)
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 This file defines various macros functions, names, and tests.

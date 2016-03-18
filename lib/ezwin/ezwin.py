@@ -28,6 +28,9 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+# pylint: disable=C0103,E1101,W0613
+# flake8: ignore=42cc
+
 from os.path import dirname, join as pathjoin, normcase, realpath
 from signal import SIGINT, SIG_DFL, signal
 from sys import argv
@@ -51,7 +54,7 @@ __all__ = [
 
 __author__ = r'Devyn Collier Johnson'
 __copyright__ = r'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 __about__ = (
     '\n\n=====ABOUT=====\n\n'
@@ -596,11 +599,7 @@ def ezcolor(_datatype: str='list') -> type:
             _lst.append(_a)
             return _lst
         elif _datatype.lower() in {r'dict', r'dic'}:
-            _dict = {}
-            _dict['red'] = _r
-            _dict['green'] = _g
-            _dict['blue'] = _b
-            _dict['alpha'] = _a
+            _dict = {'red': _r, 'green': _g, 'blue': _b, 'alpha': _a}
             return _dict
         elif _datatype.lower() in {r'str', r'string'}:
             _x = str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
@@ -678,7 +677,7 @@ def ezpswd(_msg: str='Message', _type: str='') -> str:
     return _out
 
 
-def ezfilech(
+def ezfilech(  # noqa C901
         _select_file: bool=True,
         _select_dir: bool=False,
         _multiple: bool=False,
@@ -689,7 +688,7 @@ def ezfilech(
         _local: bool=True,
         _return_uri: bool=True,
         _return_dtype: str='list',
-) -> list or str:
+) -> list or str:  # noqa C901
     """File Chooser Dialog
     Select a file or folder
     """
@@ -883,120 +882,120 @@ def ezfilech(
     return _out
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # noqa C901
     # Command help/info
     if len(argv) is 2 and argv[1].lower() in {r'-h', r'--help'}:
-        print(__help__)
+        print(__help__)  # noqa
         raise SystemExit(0)
     elif len(argv) is 2 and argv[1].lower() == '--api':
-        print(__api__)
+        print(__api__)  # noqa
         raise SystemExit(0)
     elif len(argv) is 2 and argv[1].lower() in {r'-v', r'--version'}:
-        print(__version__)
+        print(__version__)  # noqa
         raise SystemExit(0)
     elif len(argv) is 2 and argv[1].lower() in {r'-d', r'--doc'}:
-        print(__doc__)
-        print(__version__)
-        print(__copyright__)
-        print(__help__)
-        print(__api__)
+        print(__doc__)  # noqa
+        print(__version__)  # noqa
+        print(__copyright__)  # noqa
+        print(__help__)  # noqa
+        print(__api__)  # noqa
         raise SystemExit(0)
     # Windows/GUI
     elif argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
         # File chooser
-        _multiple = False
-        _viewhidden = False
-        _save = False
-        _return_uri = True
-        _init_path = ''
-        _return_dtype = 'list'
-        _local = True
-        _file_exten = True
+        multiple = False
+        viewhidden = False
+        save = False
+        return_uri = True
+        init_path = ''
+        return_dtype = 'list'
+        __local = True
+        file_exten = True
         if len(argv) > 2:
             if r'-m' in argv[2:]:
                 # Select multiple files
-                _multiple = True
+                multiple = True
             if r'-h' in argv[2:]:
                 # Show hidden files
-                _viewhidden = True
+                viewhidden = True
             if r'--save' in argv[2:]:
                 # Enable save-mode
-                _save = True
+                save = True
             if r'--local' in argv[2:]:
                 # Local files only (no samba, ftp, etc.)
-                _local = True
+                __local = True
             if r'-n' in argv[2:] and r'--uri' not in argv[2:]:
                 # -n = return name
                 # --uri = return URI
-                _return_uri = False
+                return_uri = False
             if r'--str' in argv[2:] and r'--list' not in argv[2:]:
                 # --str = return as a string
                 # --list = return as a list
-                _return_dtype = 'str'
+                return_dtype = 'str'
             if r'--ext' in argv[2:]:
                 # Disable the "choose filetype" menu
-                _file_exten = False
+                file_exten = False
             if r'--path' in argv[-2:] or r'-p' in argv[-2:]:
                 # Specify initial path
                 # This must be the last parameter (--path PATH)
-                _init_path = argv[-1]
+                init_path = argv[-1]
         if argv[1].lower() in {r'-f', r'--file'}:
             print(ezfilech(
-                True, False, _multiple, _save, _viewhidden,
-                _file_exten, _init_path, _local,
-                _return_uri, _return_dtype
-            ))
+                True, False, multiple, save, viewhidden,
+                file_exten, init_path, __local,
+                return_uri, return_dtype
+            ))  # noqa
         elif argv[1].lower() in {r'--dir', r'--folder'}:
             print(ezfilech(
-                False, True, _multiple, _save, _viewhidden,
-                _file_exten, _init_path, _local,
-                _return_uri, _return_dtype
-            ))
+                False, True, multiple, save, viewhidden,
+                file_exten, init_path, __local,
+                return_uri, return_dtype
+            ))  # noqa
         raise SystemExit(0)
     elif argv[1].lower() in {r'--color', r'--colour'}:
         # Color selector
         if len(argv) is 3 and argv[2].lower() in {r'list', r'lst'}:
-            print(ezcolor('list'))
+            print(ezcolor('list'))  # noqa
         elif len(argv) is 3 and argv[2].lower() in {r'dict', r'dic'}:
-            print(ezcolor('dict'))
+            print(ezcolor('dict'))  # noqa
         elif len(argv) is 3 and argv[2].lower() in {r'str', r'string'}:
-            print(ezcolor('str'))
+            print(ezcolor('str'))  # noqa
         else:
-            print(ezcolor('rgba'))
+            print(ezcolor('rgba'))  # noqa
         raise SystemExit(0)
     elif len(argv) >= 3:
         _wintype = argv[1].lower()
-        _msg = ' '.join(
+        MESSAGE = ' '.join(
             str(i) for i in argv[2:]
         ).replace('\\n', '\n').replace('\\t', '\t')
         if _wintype in {r'-i', r'--info'}:
-            ezinfo(_msg)  # Info window
+            ezinfo(MESSAGE)  # Info window
         elif _wintype in {r'-m', r'--msg'}:
-            ezmsg(_msg)  # Message window
+            ezmsg(MESSAGE)  # Message window
         elif _wintype in {r'-w', r'--warn'}:
-            ezwarn(_msg)  # Warning window
+            ezwarn(MESSAGE)  # Warning window
         elif _wintype in {r'-e', r'--err'}:
-            ezerr(_msg)  # Error window
+            ezerr(MESSAGE)  # Error window
         elif _wintype in {r'-u', r'--up', r'--update'}:
-            ezupd(_msg)  # Update-info window
+            ezupd(MESSAGE)  # Update-info window
         elif _wintype in {r'-s', r'--security'}:
-            ezsecurity(_msg)  # Security-info window
+            ezsecurity(MESSAGE)  # Security-info window
         elif _wintype in {r'-q', r'--yn'}:
-            print(ezq(_msg, 'yesno'))  # Question window
+            print(ezq(MESSAGE, 'yesno'))  # noqa  # Question window
         elif _wintype in {r'--ync', r'--ynclose'}:
-            print(ezq(_msg, 'close'))  # Question window
+            print(ezq(MESSAGE, 'close'))  # noqa  # Question window
         elif _wintype in {r'--ynq', r'--ynquit'}:
-            print(ezq(_msg, 'quit'))  # Question window
+            print(ezq(MESSAGE, 'quit'))  # noqa  # Question window
         elif _wintype in {r'-c', r'--yncancel'}:
-            print(ezq(_msg, 'cancel'))  # Question window
+            print(ezq(MESSAGE, 'cancel'))  # noqa  # Question window
         elif _wintype in {r'-x', r'-t', r'--text'}:
-            print(eztext(_msg))  # Text-input window
+            print(eztext(MESSAGE))  # noqa  # Text-input window
         elif _wintype in {r'--tc', r'--textcancel', r'--canceltext'}:
-            print(eztext(_msg, 'c'))  # Text-input window
+            print(eztext(MESSAGE, 'c'))  # noqa  # Text-input window
         elif _wintype in {r'-p', r'--pw', r'--pwd', r'--pswd', r'--password'}:
-            print(ezpswd(_msg))  # Password-input window
+            print(ezpswd(MESSAGE))  # noqa  # Password-input window
         elif _wintype in {r'--pc', r'--pwdc', r'--passwordcancel'}:
-            print(ezpswd(_msg, 'c'))  # Password-input window
+            print(ezpswd(MESSAGE, 'c'))  # noqa  # Password-input window
         else:
             raise Exception(_EXCEPTION_MSG)
         raise SystemExit(0)

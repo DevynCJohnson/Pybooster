@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Fuzzy Logic (header)
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 Light-weight Fuzzy-Logic library and conversions between fuzzy and boolean datatypes

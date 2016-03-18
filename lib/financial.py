@@ -39,7 +39,7 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.10'
+__version__ = '2016.03.18'
 
 
 # FUNCTIONS

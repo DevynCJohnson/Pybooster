@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Constants
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 Both common and rare mathematical and number constants are provided in many datatypes.

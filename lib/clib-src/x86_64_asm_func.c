@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief x86-64 Assembly Functions
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 C-functions containing inlined x86-64 Assembly (AT&T syntax)

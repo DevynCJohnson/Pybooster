@@ -68,12 +68,12 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 # GZIP
 
-
+#    Use the format `open(FILE, mode='rt')`
 def getgzip(_filename: str) -> str:
     """Open and get the contents of a gzip file"""
     with gzip.open(_filename, 'rb') as _file:
@@ -84,7 +84,7 @@ def getgzip(_filename: str) -> str:
 def write2gzip(_filename: str, _write: str) -> None:
     """Compress data using gzip and write it to a file"""
     with gzip.open(_filename, 'wb') as _file:
-        _file.write(str(_write).encode('utf-8'))
+        _file.write(str(_write).encode(r'utf-8'))
     return
 
 

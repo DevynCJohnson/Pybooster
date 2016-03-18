@@ -51,46 +51,46 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 # LISTS
 
 
 PLANETS = (
-    'Mercury',
-    'Venus',
-    'Earth',
-    'Mars',
-    'Jupiter',
-    'Saturn',
-    'Uranus',
-    'Neptune'
+    r'Mercury',
+    r'Venus',
+    r'Earth',
+    r'Mars',
+    r'Jupiter',
+    r'Saturn',
+    r'Uranus',
+    r'Neptune'
 )
 
 
 DWARF_PLANETS = (
-    'Ceres',
-    'Pluto',
-    'Haumea',
-    'Makemake',
-    'Eris'
+    r'Ceres',
+    r'Pluto',
+    r'Haumea',
+    r'Makemake',
+    r'Eris'
 )
 
 
 PLANET_SYMBOLS = {
-    'SUN': '☉',
-    'MOON': '☽',
-    'MERCURY': '☿',
-    'VENUS': '♀',
-    'EARTH': '♁',
-    'MARS': '♂',
-    'CERES': '⚳',
-    'JUPITER': '♃',
-    'SATURN': '♄',
-    'URANUS': '♅',
-    'NEPTUNE': '♆',
-    'PLUTO': '♇'
+    r'SUN': r'☉',
+    r'MOON': r'☽',
+    r'MERCURY': r'☿',
+    r'VENUS': r'♀',
+    r'EARTH': r'♁',
+    r'MARS': r'♂',
+    r'CERES': r'⚳',
+    r'JUPITER': r'♃',
+    r'SATURN': r'♄',
+    r'URANUS': r'♅',
+    r'NEPTUNE': r'♆',
+    r'PLUTO': r'♇'
 }
 
 
@@ -98,82 +98,82 @@ PLANET_SYMBOLS = {
 
 
 MERCURY = {
-    'symbol': '☿',
-    'aphelion': (0.466697, 'AU'),
-    'perihelion': (0.307499, 'AU'),
-    'semimajor_axis': (0.387098, 'AU'),
-    'eccentricity': 0.205630,
+    r'symbol': r'☿',
+    r'aphelion': (0.466697, r'AU'),
+    r'perihelion': (0.307499, r'AU'),
+    r'semimajor_axis': (0.387098, r'AU'),
+    r'eccentricity': 0.205630,
 }
 
 
 VENUS = {
-    'symbol': '♀',
-    'aphelion': (0.728213, 'AU'),
-    'perihelion': (0.718440, 'AU'),
-    'semimajor_axis': (0.723327, 'AU'),
-    'eccentricity': 0.0067,
+    r'symbol': r'♀',
+    r'aphelion': (0.728213, r'AU'),
+    r'perihelion': (0.718440, r'AU'),
+    r'semimajor_axis': (0.723327, r'AU'),
+    r'eccentricity': 0.0067,
 }
 
 
 EARTH = {
-    'symbol': '♁',
-    'aphelion': (1.01559, 'AU'),
-    'perihelion': (0.9832687, 'AU'),
-    'semimajor_axis': (1.00000261, 'AU'),
-    'eccentricity': 0.01671123,
+    r'symbol': r'♁',
+    r'aphelion': (1.01559, r'AU'),
+    r'perihelion': (0.9832687, r'AU'),
+    r'semimajor_axis': (1.00000261, r'AU'),
+    r'eccentricity': 0.01671123,
 }
 
 
 MARS = {
-    'symbol': '♂',
-    'aphelion': (1.6660, 'AU'),
-    'perihelion': (1.3814, 'AU'),
-    'semimajor_axis': (1.523679, 'AU'),
-    'eccentricity': 0.0935,
+    r'symbol': r'♂',
+    r'aphelion': (1.6660, r'AU'),
+    r'perihelion': (1.3814, r'AU'),
+    r'semimajor_axis': (1.523679, r'AU'),
+    r'eccentricity': 0.0935,
 }
 
 
 CERES = {
-    'symbol': '⚳',
+    r'symbol': r'⚳',
 }
 
 
 JUPITER = {
-    'symbol': '♃',
-    'aphelion': (5.458104, 'AU'),
-    'perihelion': (4.950429, 'AU'),
-    'semimajor_axis': (5.204267, 'AU'),
-    'eccentricity': 0.048775,
+    r'symbol': r'♃',
+    r'aphelion': (5.458104, r'AU'),
+    r'perihelion': (4.950429, r'AU'),
+    r'semimajor_axis': (5.204267, r'AU'),
+    r'eccentricity': 0.048775,
 }
 
 
 SATURN = {
-    'symbol': '♄',
-    'aphelion': (10.11595804, 'AU'),
-    'perihelion': (9.04807635, 'AU'),
-    'semimajor_axis': (9.5820172, 'AU'),
-    'eccentricity': 0.055723219,
+    r'symbol': r'♄',
+    r'aphelion': (10.11595804, r'AU'),
+    r'perihelion': (9.04807635, r'AU'),
+    r'semimajor_axis': (9.5820172, r'AU'),
+    r'eccentricity': 0.055723219,
 }
 
 
 URANUS = {
-    'symbol': '♅',
-    'aphelion': (20.095371, 'AU'),
-    'perihelion': (18.283135, 'AU'),
-    'semimajor_axis': (19.189253, 'AU'),
-    'eccentricity': 0.047220087,
+    r'symbol': r'♅',
+    r'aphelion': (20.095371, r'AU'),
+    r'perihelion': (18.283135, r'AU'),
+    r'semimajor_axis': (19.189253, r'AU'),
+    r'eccentricity': 0.047220087,
 }
 
 
 NEPTUNE = {
-    'symbol': '♆',
-    'aphelion': (30.331855, 'AU'),
-    'perihelion': (29.809946, 'AU'),
-    'semimajor_axis': (30.070900, 'AU'),
-    'eccentricity': 0.00867797,
+    r'symbol': r'♆',
+    r'aphelion': (30.331855, r'AU'),
+    r'perihelion': (29.809946, r'AU'),
+    r'semimajor_axis': (30.070900, r'AU'),
+    r'eccentricity': 0.00867797,
 }
 
 
 PLUTO = {
-    'symbol': '♇',
+    r'symbol': r'♇',
 }

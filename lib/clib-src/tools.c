@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 Various functions that do not fit in other categories.

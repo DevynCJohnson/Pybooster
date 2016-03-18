@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Compression Functions
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 This library provides compression and decompression functions

@@ -46,13 +46,13 @@ __all__ = [
 
 __author__ = 'Devyn Collier Johnson'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 
 # SPACE/STORAGE
 
 
-def dt() -> float:
+def dt() -> float:  # pylint: disable=C0103
     """Return total disk space of current filesystem
     The returned value is a float of metric gigabytes (GB)
     """
@@ -61,20 +61,20 @@ def dt() -> float:
     return round(total * 0.000000001, 3)
 
 
-def df() -> float:
+def df() -> float:  # pylint: disable=C0103
     """Return free disk space of current filesystem
     The returned value is a float of metric gigabytes (GB)
     """
-    _disk = statvfs('/')
+    _disk = statvfs(r'/')
     free = _disk.f_bavail * _disk.f_frsize
     return round(free * 0.000000001, 3)
 
 
-def du() -> float:
+def du() -> float:  # pylint: disable=C0103
     """Return used disk space of current filesystem
     The returned value is a float of metric gigabytes (GB)
     """
-    _disk = statvfs('/')
+    _disk = statvfs(r'/')
     used = (_disk.f_blocks - _disk.f_bfree) * _disk.f_frsize
     return round(used * 0.000000001, 3)
 
@@ -85,7 +85,7 @@ def du() -> float:
 def getetcfstab() -> str:
     """Get the contents of /etc/fstab"""
     _out = []
-    with open('/etc/fstab', mode='rt', encoding='utf-8') as _file:
+    with open(r'/etc/fstab', mode='rt', encoding='utf-8') as _file:
         _out.append(''.join(_file.readlines()).strip())
     return ''.join(_out)
 
@@ -93,7 +93,7 @@ def getetcfstab() -> str:
 def getetchosts() -> str:
     """Get the contents of /etc/hosts"""
     _out = []
-    with open('/etc/hosts', mode='rt', encoding='utf-8') as _file:
+    with open(r'/etc/hosts', mode='rt', encoding='utf-8') as _file:
         _out.append(''.join(_file.readlines()).strip())
     return ''.join(_out)
 
@@ -101,10 +101,10 @@ def getetchosts() -> str:
 def thumbnail_cleaner() -> None:
     """Delete thumbnails from the user's home folder"""
     try:
-        rmtree(expanduser('~/.thumbnails'))
-        rmtree(expanduser('~/.cache/thumbnails'))
+        rmtree(expanduser(r'~/.thumbnails'))
+        rmtree(expanduser(r'~/.cache/thumbnails'))
     except OSError as _err:
-        print('Error: {} - {}.'.format(_err.filename, _err.strerror))
-    except Exception:
+        print('Error: {} - {}.'.format(_err.filename, _err.strerror))  # noqa
+    except Exception:  # pylint: disable=W0703
         return None
     return None

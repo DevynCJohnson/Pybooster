@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Standard Python Header Macros (header)
-@version 2016.03.09
+@version 2016.03.18
 
 @section DESCRIPTION
 This file defines constants used by Python modules that are coded in C.

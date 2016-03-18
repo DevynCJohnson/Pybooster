@@ -30,7 +30,7 @@ License along with this library.
 
 __author__ = r'Devyn Collier Johnson'
 __copyright__ = r'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 __all__ = [
     'ezwin'
