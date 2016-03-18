@@ -318,7 +318,7 @@ commit : | clean fixperm
 	-@git commit -m "$(M)"
 
 stat : clean
-	git status -s
+	-@git status -s
 
 submit :
 	git push origin master

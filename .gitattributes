@@ -4,11 +4,12 @@
 *.c linguist-language=C
 *.h linguist-language=C
 *.py linguist-language=Python
+*.glade linguist-language=XML
 
 # Documentation
-./lib/doc/* linguist-documentation
-./lib/doc/html/* linguist-documentation
-./lib/doc/html/search/* linguist-documentation
-# ./lib/doc/* linguist-vendored
-./_MISC/* linguist-documentation
-# ./_MISC/* linguist-vendored
+/lib/doc/* linguist-documentation
+# /lib/doc/html/* linguist-documentation
+# /lib/doc/html/search/* linguist-documentation
+# /lib/doc/* linguist-vendored
+/_MISC/* linguist-documentation
+# /_MISC/* linguist-vendored
