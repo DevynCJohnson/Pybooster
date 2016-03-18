@@ -1,5 +1,7 @@
-./.git
-./.git/*
+.git
+.git/*
+python/
+python/*
 *.cache
 *.tmp
 *.todo.txt

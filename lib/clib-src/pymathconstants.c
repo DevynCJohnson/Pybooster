@@ -36,7 +36,7 @@ License along with this library.
 
 #define MODNAME   "mathconstants"
 #define MODINIT   PyMODINIT_FUNC PyInit_mathconstants(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
 
 
 /* DOCSTRINGS */

@@ -36,7 +36,8 @@ License along with this library.
 
 #define MODNAME   "geometry"
 #define MODINIT   PyMODINIT_FUNC PyInit_geometry(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
+
 
 #define PY_DOUBLE_PRECISION   ((double)0.00002)
 

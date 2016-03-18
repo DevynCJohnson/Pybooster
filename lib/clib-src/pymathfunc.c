@@ -38,7 +38,7 @@ License along with this library.
 
 #define MODNAME    "mathfunc"
 #define MODINIT    PyMODINIT_FUNC PyInit_mathfunc(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
 
 
 #if (defined(__GNUC__) && !defined(__clang__))  // Hard-code some optimizations

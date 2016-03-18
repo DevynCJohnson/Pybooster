@@ -261,13 +261,13 @@ uninstall :
 	rm -frd --one-file-system /opt/pybooster/*; rm -f /opt/bin/ezwin; rm -f /usr/lib/python$(PYVERSION)/pybooster $(SYSPYCLIB); rm -f /etc/ld.so.conf.d/pyclib.conf; ldconfig
 
 install : rmtmp
-	cd $(DIR); \
+	@cd $(DIR); \
 	# Prepare installation directory \
 	rm -frd --one-file-system /opt/pybooster/*; \
-	mkdir -vp /opt/pybooster$(CLIBDIR) /opt/pybooster$(CLIBSRCDIR); \
-	mkdir -vp /opt/pybooster/doc /opt/pybooster/ezwin; \
+	mkdir -p /opt/pybooster$(CLIBDIR) /opt/pybooster$(CLIBSRCDIR); \
+	mkdir -p /opt/pybooster/doc /opt/pybooster/ezwin; \
 	# Copy files to installation directory \
-	cp -vRf ./* /opt/pybooster/; \
+	cp -Rf ./* /opt/pybooster/; \
 	# Ensure that the proper permissions are set \
 	$(CHMOD) 644 /opt/pybooster/doc/*; \
 	$(CHMOD) 644 /opt/pybooster/*.py; \
@@ -280,11 +280,11 @@ install : rmtmp
 	$(CHMOD) 755 /opt/pybooster/ezwin/*.py; \
 	$(CHMOD) 644 /opt/pybooster/ezwin/*.glade; \
 	# Make a link to ezwin.py in /opt/bin/ \
-	ln -fsv -T /opt/pybooster/ezwin/ezwin.py /opt/bin/ezwin; \
+	ln -fs -T /opt/pybooster/ezwin/ezwin.py /opt/bin/ezwin; \
 	# Make Pybooster accessible to Python3 \
-	ln -fsv -T /opt/pybooster $(PYPATH)$(PYVERSION)/pybooster; \
+	ln -fs -T /opt/pybooster $(PYPATH)$(PYVERSION)/pybooster; \
 	# Add PyCLib library \
-	ln -fsv -T $(PYCLIB) $(SYSPYCLIB); \
+	ln -fs -T $(PYCLIB) $(SYSPYCLIB); \
 	sh -c "echo '$(SYSPYCLIB)' > /etc/ld.so.conf.d/pyclib.conf"; \
 	ldconfig; \
 	# END \

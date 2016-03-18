@@ -36,7 +36,7 @@ License along with this library.
 
 #define MODNAME   "physics"
 #define MODINIT   PyMODINIT_FUNC PyInit_physics(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
 
 
 #if (defined(__GNUC__) && !defined(__clang__))  // Hard-code some optimizations

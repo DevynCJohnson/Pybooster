@@ -223,19 +223,78 @@ int iselement(const char *__restrict__ name) {
     char elementname[16] = { 0 };
     memmove(elementname, name, len);
     register size_t i;
-#   ifdef __IVDEP__
-#   pragma GCC ivdep
-    for (i = len; --i;) { elementname[i] = ((elementname[i] > 0x5A || elementname[i] < 0x41) ? elementname[i] : (char)((uint8_t)elementname[i] + 0x20u)); }
-#   elif defined(__INTEL_COMPILER)
-#   pragma ivdep
-    for (i = len; --i;) { elementname[i] = ((elementname[i] > 0x5A || elementname[i] < 0x41) ? elementname[i] : (char)((uint8_t)elementname[i] + 0x20u)); }
-#   elif defined(__clang__)
-#   pragma clang loop unroll(full) vectorize(enable)
-    for (i = len; --i;) { elementname[i] = ((elementname[i] > 0x5A || elementname[i] < 0x41) ? elementname[i] : (char)((uint8_t)elementname[i] + 0x20u)); }
-#   else
-    for (i = len; --i;) { elementname[i] = ((elementname[i] > 0x5A || elementname[i] < 0x41) ? elementname[i] : (char)((uint8_t)elementname[i] + 0x20u)); }
-#   endif
-    elementname[0] = ((elementname[0] > 0x5A || elementname[0] < 0x41) ? elementname[0] : (char)((uint8_t)elementname[0] + 0x20u));
+    for (i = len; --i;) {
+        if (elementname[i] < 'A' || elementname[i] > 'Z') {  // elementname[i] is not uppercase
+            if (elementname[i] < 'a' || elementname[i] > 'z') { return 0; }  // Not a letter
+            else { continue; }
+        }
+        // No element name contains 'j' or 'q'
+        switch (elementname[i]) {  // elementname[0] is uppercase
+            case 'N': elementname[i] = 'n'; break;
+            case 'U': elementname[i] = 'u'; break;
+            case 'I': elementname[i] = 'i'; break;
+            case 'M': elementname[i] = 'm'; break;
+            case 'O': elementname[i] = 'o'; break;
+            case 'E': elementname[i] = 'e'; break;
+            case 'R': elementname[i] = 'r'; break;
+            case 'S': elementname[i] = 's'; break;
+            case 'T': elementname[i] = 't'; break;
+            case 'B': elementname[i] = 'b'; break;
+            case 'C': elementname[i] = 'c'; break;
+            case 'D': elementname[i] = 'd'; break;
+            case 'L': elementname[i] = 'l'; break;
+            default:
+                switch (elementname[i]) {
+                    case 'F': elementname[i] = 'f'; break;
+                    case 'A': elementname[i] = 'a'; break;
+                    case 'P': elementname[i] = 'p'; break;
+                    case 'G': elementname[i] = 'g'; break;
+                    case 'K': elementname[i] = 'k'; break;
+                    case 'H': elementname[i] = 'h'; break;
+                    case 'V': elementname[i] = 'v'; break;
+                    case 'W': elementname[i] = 'w'; break;
+                    case 'Y': elementname[i] = 'y'; break;
+                    case 'Z': elementname[i] = 'z'; break;
+                    default: elementname[i] = 'x'; break;
+                }
+                break;
+        }
+    }
+    // Convert the final character in the string
+    if (elementname[0] < 'A' || elementname[0] > 'Z') {  // elementname[0] is not uppercase
+        if (elementname[0] < 'a' || elementname[0] > 'z') { return 0; }  // Not a letter
+    } else {  // elementname[0] is uppercase
+        // No element name contains 'j' or 'q', and none begins with a 'w'
+        switch (elementname[0]) {
+            case 'N': elementname[0] = 'n'; break;
+            case 'O': elementname[0] = 'o'; break;
+            case 'L': elementname[0] = 'l'; break;
+            case 'M': elementname[0] = 'm'; break;
+            case 'B': elementname[0] = 'b'; break;
+            case 'C': elementname[0] = 'c'; break;
+            case 'E': elementname[0] = 'e'; break;
+            case 'R': elementname[0] = 'r'; break;
+            case 'S': elementname[0] = 's'; break;
+            case 'T': elementname[0] = 't'; break;
+            case 'U': elementname[0] = 'u'; break;
+            default:
+                switch (elementname[0]) {
+                    case 'I': elementname[0] = 'i'; break;
+                    case 'F': elementname[0] = 'f'; break;
+                    case 'D': elementname[0] = 'd'; break;
+                    case 'A': elementname[0] = 'a'; break;
+                    case 'P': elementname[0] = 'p'; break;
+                    case 'G': elementname[0] = 'g'; break;
+                    case 'K': elementname[0] = 'k'; break;
+                    case 'H': elementname[0] = 'h'; break;
+                    case 'V': elementname[0] = 'v'; break;
+                    case 'X': elementname[0] = 'x'; break;
+                    case 'Z': elementname[0] = 'z'; break;
+                    default: elementname[0] = 'y'; break;
+                }
+                break;
+        }
+    }
 #   ifdef __IVDEP__
 #   pragma GCC ivdep
     for (i = 0x0; i < 120; ++i) {

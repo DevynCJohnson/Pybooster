@@ -470,8 +470,7 @@ unsigned long long int pow_ten_int_fast(const unsigned int num) {
             case (unsigned int)16: return (ullint)10000000000000000ULL;
             case (unsigned int)17: return (ullint)100000000000000000ULL;
             case (unsigned int)18: return (ullint)1000000000000000000ULL;
-            case (unsigned int)19: return (ullint)10000000000000000000ULL;
-            default: return 0;
+            default: return (ullint)10000000000000000000ULL;  // 10^19
         }
     }
     return 0;
@@ -787,7 +786,7 @@ uint16_t sqrt32(const uint32_t num) {
     for (;;) {
         if ((uint32_t)(y * y) > num) { y ^= x; }
         x >>= 0x01;
-        if (x == 0x00) { return y; }
+        if (x == 0x0) { return y; }
         y |= x;
     }
 }
@@ -844,10 +843,10 @@ uint32_t isqrt32(const uint32_t num) {
     while (place) {
         if (remainder >= (root + place)) {
             remainder = (uint32_t)((remainder - root) - place);
-            root += (uint32_t)(place << 0x01);
+            root += (uint32_t)(place << 0x1);
         }
-        root >>= 0x01;
-        place >>= 0x02;
+        root >>= 0x1;
+        place >>= 0x2;
     }
     return root;
 }
@@ -1028,22 +1027,33 @@ ullint superfactorial(const unsigned int num) {
 
 /** Super-Factorial; return 0 on error */
 sllint superfactoriallonglong(const sllint num) {
-#if (defined(ENV64BIT))
-    if (num > (sllint)9) { return 0; }
-#elif (defined(ENV32BIT))
-    if (num > (sllint)4) { return 0; }
-#endif
-    else if (num == (sllint)0 || num == (sllint)1) { return (sllint)1; }
-    register sllint i, j, fct = 1;
-    for (i = (sllint)num; --i;) { for (j = i; --j;) fct *= j; }
-    return fct;
+    switch (num) {
+        case 0: return 1;
+        case 1: return 1;
+        case 2: return 2;
+        case 3: return 12;
+        case 4: return 288;
+        case 5: return 34560;
+        case 6: return 24883200;
+#       if (defined(ENV64BIT))
+        case 7: return 125411328000;
+        case 8: return 5056584744960000;
+#       elif (defined(ENV128BIT))
+        case 9: return 1834933472251084800000;
+        case 10: return 6658606584104736522240000000;
+        case 11: return 265790267296391946810949632000000000;
+        //case 12: return 127313963299399416749559771247411200000000000;
+#       endif
+        default: return 0;
+    }
+    return 0;
 }
 
 
 /** Find the number used to produce the factorial */
 int unfactorial(const int num) {
     register int x, y = num;
-    for (x = 0x01; y != x; ++x) { y /= x; }
+    for (x = 0x1; y != x; ++x) { y /= x; }
     return x;
 }
 
@@ -1051,7 +1061,7 @@ int unfactorial(const int num) {
 /** Find the number used to produce the factorial */
 uint64_t unfactorial64(const uint64_t num) {
     register uint64_t x, y = num;
-    for (x = 0x01; y != x; ++x) { y /= x; }
+    for (x = 0x1; y != x; ++x) { y /= x; }
     return x;
 }
 

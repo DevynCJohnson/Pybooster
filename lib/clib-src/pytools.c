@@ -38,16 +38,16 @@ License along with this library.
 
 #define MODNAME   "tools"
 #define MODINIT   PyMODINIT_FUNC PyInit_tools(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
 
 
 /* FUNCTION DEFINITIONS */
 
 
 #ifdef __GNUC__
-static PyObject *tools_lowercasestr(FUNCARGS) __attribute__((flatten));
-static PyObject *tools_lowercasestr15(FUNCARGS) __attribute__((flatten));
-static PyObject *tools_uppercasestr(FUNCARGS) __attribute__((flatten));
+static PyObject *tools_lowercasestr(FUNCARGS) __attribute__((flatten, nonnull));
+static PyObject *tools_lowercasestr15(FUNCARGS) __attribute__((flatten, nonnull));
+static PyObject *tools_uppercasestr(FUNCARGS) __attribute__((flatten, nonnull));
 static PyObject *tools_isstrlowercase(FUNCARGS) __attribute__((flatten));
 static PyObject *tools_isstruppercase(FUNCARGS) __attribute__((flatten));
 static PyObject *tools_isstralnum(FUNCARGS) __attribute__((flatten));
@@ -632,9 +632,76 @@ static PyObject *tools_lowercasestr(FUNCARGS) {
     if (str != (char *)NULL) {
         register size_t i;
         for (i = strlenx(str); --i;) {
-            str[i] = ((str[i] > 0x5A || str[i] < 0x41) ? str[i] : (char)((uint8_t)str[i] + 0x20u));
+            if (str[i] < 'A' || str[i] > 'Z') { continue; }  // str[i] is not uppercase
+            switch (str[i]) {
+                case 'A': str[i] = 'a'; break;
+                case 'B': str[i] = 'b'; break;
+                case 'C': str[i] = 'c'; break;
+                case 'D': str[i] = 'd'; break;
+                case 'E': str[i] = 'e'; break;
+                case 'R': str[i] = 'r'; break;
+                case 'S': str[i] = 's'; break;
+                case 'T': str[i] = 't'; break;
+                case 'F': str[i] = 'f'; break;
+                case 'H': str[i] = 'h'; break;
+                case 'I': str[i] = 'i'; break;
+                case 'L': str[i] = 'l'; break;
+                case 'M': str[i] = 'm'; break;
+                default:
+                    switch (str[i]) {
+                        case 'N': str[i] = 'n'; break;
+                        case 'O': str[i] = 'o'; break;
+                        case 'P': str[i] = 'p'; break;
+                        case 'Q': str[i] = 'q'; break;
+                        case 'G': str[i] = 'g'; break;
+                        case 'J': str[i] = 'j'; break;
+                        case 'K': str[i] = 'k'; break;
+                        case 'U': str[i] = 'u'; break;
+                        case 'V': str[i] = 'v'; break;
+                        case 'W': str[i] = 'w'; break;
+                        case 'X': str[i] = 'x'; break;
+                        case 'Y': str[i] = 'y'; break;
+                        case 'Z': str[i] = 'z'; break;
+                        default: break;
+                    }
+                    break;
+            }
         }
-        str[0] = ((str[0] > 0x5A || str[0] < 0x41) ? str[0] : (char)((uint8_t)str[0] + 0x20u));
+        switch (str[0]) {  // Final character to convert
+            case '.':
+            case ' ': break;
+            case 'A': str[0] = 'a'; break;
+            case 'B': str[0] = 'b'; break;
+            case 'C': str[0] = 'c'; break;
+            case 'D': str[0] = 'd'; break;
+            case 'E': str[0] = 'e'; break;
+            case 'R': str[0] = 'r'; break;
+            case 'S': str[0] = 's'; break;
+            case 'T': str[0] = 't'; break;
+            case 'F': str[0] = 'f'; break;
+            case 'H': str[0] = 'h'; break;
+            case 'I': str[0] = 'i'; break;
+            case 'L': str[0] = 'l'; break;
+            case 'M': str[0] = 'm'; break;
+            default:
+                switch (str[0]) {
+                    case 'N': str[0] = 'n'; break;
+                    case 'O': str[0] = 'o'; break;
+                    case 'P': str[0] = 'p'; break;
+                    case 'Q': str[0] = 'q'; break;
+                    case 'G': str[0] = 'g'; break;
+                    case 'J': str[0] = 'j'; break;
+                    case 'K': str[0] = 'k'; break;
+                    case 'U': str[0] = 'u'; break;
+                    case 'V': str[0] = 'v'; break;
+                    case 'W': str[0] = 'w'; break;
+                    case 'X': str[0] = 'x'; break;
+                    case 'Y': str[0] = 'y'; break;
+                    case 'Z': str[0] = 'z'; break;
+                    default: break;
+                }
+                break;
+        }
     }
     return STR(str);
 }
@@ -671,9 +738,76 @@ static PyObject *tools_uppercasestr(FUNCARGS) {
     if (str != (char *)NULL) {
         register size_t i;
         for (i = strlenx(str); --i;) {
-            str[i] = ((str[i] > 0x7A || str[i] < 0x61) ? str[i] : (char)((uint8_t)str[i] - 0x20u));
+            if (str[i] < 'a' || str[i] > 'z') { continue; }  // str[i] is not lowercase
+            switch (str[i]) {
+                case 'a': str[i] = 'A'; break;
+                case 'b': str[i] = 'B'; break;
+                case 'c': str[i] = 'C'; break;
+                case 'd': str[i] = 'D'; break;
+                case 'e': str[i] = 'E'; break;
+                case 'r': str[i] = 'R'; break;
+                case 's': str[i] = 'S'; break;
+                case 't': str[i] = 'T'; break;
+                case 'f': str[i] = 'F'; break;
+                case 'h': str[i] = 'H'; break;
+                case 'i': str[i] = 'I'; break;
+                case 'l': str[i] = 'L'; break;
+                case 'm': str[i] = 'M'; break;
+                default:
+                    switch (str[i]) {
+                        case 'n': str[i] = 'N'; break;
+                        case 'o': str[i] = 'O'; break;
+                        case 'p': str[i] = 'P'; break;
+                        case 'q': str[i] = 'Q'; break;
+                        case 'g': str[i] = 'G'; break;
+                        case 'j': str[i] = 'J'; break;
+                        case 'k': str[i] = 'K'; break;
+                        case 'u': str[i] = 'U'; break;
+                        case 'v': str[i] = 'V'; break;
+                        case 'w': str[i] = 'W'; break;
+                        case 'x': str[i] = 'X'; break;
+                        case 'y': str[i] = 'Y'; break;
+                        case 'z': str[i] = 'Z'; break;
+                        default: break;
+                    }
+                    break;
+            }
         }
-        str[0] = ((str[0] > 0x7A || str[0] < 0x61) ? str[0] : (char)((uint8_t)str[0] - 0x20u));
+        switch (str[0]) {  // Final character to convert
+            case '.':
+            case ' ': break;
+            case 'a': str[0] = 'A'; break;
+            case 'b': str[0] = 'B'; break;
+            case 'c': str[0] = 'C'; break;
+            case 'd': str[0] = 'D'; break;
+            case 'e': str[0] = 'E'; break;
+            case 'r': str[0] = 'R'; break;
+            case 's': str[0] = 'S'; break;
+            case 't': str[0] = 'T'; break;
+            case 'f': str[0] = 'F'; break;
+            case 'h': str[0] = 'H'; break;
+            case 'i': str[0] = 'I'; break;
+            case 'l': str[0] = 'L'; break;
+            case 'm': str[0] = 'M'; break;
+            default:
+                switch (str[0]) {
+                    case 'n': str[0] = 'N'; break;
+                    case 'o': str[0] = 'O'; break;
+                    case 'p': str[0] = 'P'; break;
+                    case 'q': str[0] = 'Q'; break;
+                    case 'g': str[0] = 'G'; break;
+                    case 'j': str[0] = 'J'; break;
+                    case 'k': str[0] = 'K'; break;
+                    case 'u': str[0] = 'U'; break;
+                    case 'v': str[0] = 'V'; break;
+                    case 'w': str[0] = 'W'; break;
+                    case 'x': str[0] = 'X'; break;
+                    case 'y': str[0] = 'Y'; break;
+                    case 'z': str[0] = 'Z'; break;
+                    default: break;
+                }
+                break;
+        }
     }
     return STR(str);
 }
@@ -686,7 +820,7 @@ static PyObject *tools_isstrlowercase(FUNCARGS) {
     const char *str;
     ASSERT_STRING_ARG(str);
     register size_t i;
-    for (i = (strlenx(str) + 0x01); --i;) { if (ISLOWERASCII(str[i - 0x01]) == 0) { Py_RETURN_FALSE; } }
+    for (i = (strlenx(str) + 0x01); --i;) { if (ISLOWERASCII(str[i - 0x01]) == 0x0) { Py_RETURN_FALSE; } }
     Py_RETURN_TRUE;
 }
 

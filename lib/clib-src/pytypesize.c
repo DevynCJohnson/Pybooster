@@ -36,7 +36,7 @@ License along with this library.
 
 #define MODNAME   "typesize"
 #define MODINIT   PyMODINIT_FUNC PyInit_typesize(void)
-MODINIT __attribute__((flatten));
+MODINIT __attribute__((flatten, hot));
 
 
 /* FUNCTION DEFINITIONS */
