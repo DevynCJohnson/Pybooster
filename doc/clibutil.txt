@@ -67,6 +67,6 @@ DATA
     __all__ = ['getlibc', 'getlibm', 'list_elf_lib_funcs', 'list_elf_lib_c...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/clibutil.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/clibutil.py
 
 

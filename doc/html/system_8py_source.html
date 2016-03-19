@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="title">system.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="system_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
+<a href="system_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">pass</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#aa4a022e6ddacd362b83964da5cc5d044">   44</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#aa4a022e6ddacd362b83964da5cc5d044">   44</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment"># HOME-RELATED FUNCTIONS</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="stringliteral">&#39;home&#39;</span>,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="stringliteral">&#39;exporthome&#39;</span>,</div>
@@ -175,15 +175,15 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"># HOME-RELATED FUNCTIONS</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a136372aac30e47663f051b96e13ab8cb">   69</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a136372aac30e47663f051b96e13ab8cb">home</a>() -&gt; str:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return user&#39;s home directory as a string&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a154061b6909b5240e3505ff4a14a4662">home</a>() -&gt; str:</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a154061b6909b5240e3505ff4a14a4662">   70</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return user&#39;s home directory as a string&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> path.expanduser(<span class="stringliteral">r&#39;~&#39;</span>)</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a0670ce1a2e2fa483e78bc3adf3ff90d8">   74</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a0670ce1a2e2fa483e78bc3adf3ff90d8">exporthome</a>() -&gt; None:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a9391779ebfe3a7c416746435699ce3c2">exporthome</a>() -&gt; None:</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Make a global variable called &#39;HOME&#39;</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    The variable is a str of the user&#39;s home directory path</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a9391779ebfe3a7c416746435699ce3c2">   77</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">global</span> HOME</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    HOME = path.expanduser(<span class="stringliteral">r&#39;~&#39;</span>)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
@@ -191,31 +191,31 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"># ENVIRONMENT-RELATED FUNCTIONS</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#afece5d46bfa4d764c20dff18820a32aa">   85</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#afece5d46bfa4d764c20dff18820a32aa">exportenv</a>() -&gt; None:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a8f43372b21f745464bf14e9d35e96960">exportenv</a>() -&gt; None:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Make a global variable called &#39;ENVKEY&#39;</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">    The variable is a dictionary of the environment variables</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a8f43372b21f745464bf14e9d35e96960">   88</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">global</span> ENVKEY</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    ENVKEY = dict(environ)</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#afe62757cff14336f5c458e35ea891580">   93</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#afe62757cff14336f5c458e35ea891580">envdict</a>() -&gt; dict:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a473d2a8ff982b315850580484b8436e2">envdict</a>() -&gt; dict:</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the system&#39;s environment variables</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">    A dictionary is returned in the form { &#39;VAR&#39;: &#39;VAL&#39;}</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a473d2a8ff982b315850580484b8436e2">   96</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> dict(environ)</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a79402a17e6b1485aebb8a486efe000f4">  100</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a79402a17e6b1485aebb8a486efe000f4">envlist</a>() -&gt; list:</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return a list of the system&#39;s environment variables&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a80141d58a5f3e2d2a5ead49d308fcc37">envlist</a>() -&gt; list:</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a80141d58a5f3e2d2a5ead49d308fcc37">  101</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return a list of the system&#39;s environment variables&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    sysenv = []</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> zip(environ.keys(), environ.values()):</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        sysenv.append(k + <span class="stringliteral">r&#39;=&#39;</span> + v)</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> sysenv</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#ab6616d0c05de805c650101625f1d4939">  108</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#ab6616d0c05de805c650101625f1d4939">printenv</a>() -&gt; None:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Print the system&#39;s environment variables&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a3488be267271452fb1e7581b38aa46fd">printenv</a>() -&gt; None:</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a3488be267271452fb1e7581b38aa46fd">  109</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Print the system&#39;s environment variables&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> zip(environ.keys(), environ.values()):</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        print(k, <span class="stringliteral">r&#39;=&#39;</span>, v)  <span class="comment"># noqa</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
@@ -224,19 +224,19 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"># PROCESS-RELATED FUNCTION</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#aa188e529fba8f62fbda58ff8a21d0e85">  118</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#aa188e529fba8f62fbda58ff8a21d0e85">isthread</a>(_thead) -&gt; bool:</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if object is a thread, or if the thread is alive/present&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a00e4ac0b7055f87813ec467847c41b61">isthread</a>(_thead) -&gt; bool:</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a00e4ac0b7055f87813ec467847c41b61">  119</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if object is a thread, or if the thread is alive/present&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span> hasattr(_thead, <span class="stringliteral">&#39;is_alive&#39;</span>):</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a5692ed800cb2c44d7a23585f50f20101">  125</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a5692ed800cb2c44d7a23585f50f20101">ckill</a>(_process) -&gt; None:</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a91b16c6a62d65dbc5bb4366c5d8d1eb3">ckill</a>(_process) -&gt; None:</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Cross-platform Kill</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">    Kill process specified by process-object or PID</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="stringliteral">    ckill(PID)</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral">    ckill(process-obj)</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a91b16c6a62d65dbc5bb4366c5d8d1eb3">  130</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> _platform == <span class="stringliteral">&#39;win32&#39;</span>:</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        _handle = kernel32.OpenProcess(1, <span class="keyword">False</span>, _process.pid)</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        kernel32.TerminateProcess(_handle, -1)</div>
@@ -252,11 +252,11 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment"># MACHINE-RELATED FUNCTIONS</span></div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#afe5a552524eb9ed7598c06f58cda0db5">  146</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#afe5a552524eb9ed7598c06f58cda0db5">bitness</a>() -&gt; str:</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a3dc5dfe89c170c450cd82a36f61ec427">bitness</a>() -&gt; str:</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return a string indicating the bitness of the system&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> maxsize == 32767:  <span class="comment"># 2 ** 15 - 1</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;16&#39;</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">elif</span> maxsize == 2147483647:  <span class="comment"># 2 ** 31 - 1</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a3dc5dfe89c170c450cd82a36f61ec427">  150</a></span>&#160;    <span class="keywordflow">elif</span> maxsize == 2147483647:  <span class="comment"># 2 ** 31 - 1</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;32&#39;</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">elif</span> maxsize == 9223372036854775807:  <span class="comment"># 2 ** 63 - 1</span></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;64&#39;</span></div>
@@ -266,22 +266,22 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;Unknown&#39;</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a2151ce188102e6d7e6c33740026d9ec8">  160</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a2151ce188102e6d7e6c33740026d9ec8">cintsize</a>() -&gt; int:</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#af955183733f3d668301ff1bf080cd6f1">cintsize</a>() -&gt; int:</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the C/C++ size of an int for the current system</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="stringliteral">    The returned value is an integer for the number of bytes</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">    cintsize() =&gt; 4  # The system uses 4 bytes for integers</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> Struct(<span class="stringliteral">&#39;i&#39;</span>).size</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#af955183733f3d668301ff1bf080cd6f1">  167</a></span>&#160;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"># SYSTEM INFO</span></div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#a9585cc81f427921b13ecefdf810da758">  171</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#a9585cc81f427921b13ecefdf810da758">idsys</a>() -&gt; None:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a6637cab7031a0a0ccffc02e09a50300c">idsys</a>() -&gt; None:</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Identify system and display specific info&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keyword">def </span>_spinfo():</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;Specific system info&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        _platsys = platform.system().lower()</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a6637cab7031a0a0ccffc02e09a50300c">  175</a></span>&#160;        _platsys = platform.system().lower()</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> _platsys == <span class="stringliteral">&#39;windows&#39;</span>:</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">return</span> platform.win32_ver()</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">elif</span> _platsys == <span class="stringliteral">&#39;linux&#39;</span>:</div>
@@ -326,7 +326,7 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"># MISCELLANEOUS</span></div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
-<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="namespacelib_1_1system.html#ae59341027da53ddad76cd8ea09044611">  220</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1system.html#ae59341027da53ddad76cd8ea09044611">which</a>(program: str) -&gt; str:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1system.html#a8433bd1a8340759e08af650556133472">which</a>(program: str) -&gt; str:</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the path of the specified application (if it exists)</span></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="stringliteral">    An empty string is returned if the program does not exist</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
@@ -337,28 +337,28 @@ $(document).ready(function(){initNavTree('system_8py_source.html','');});
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        envpath = environ[<span class="stringliteral">&#39;PATH&#39;</span>].split(pathsep)</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">for</span> filepath <span class="keywordflow">in</span> envpath:</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            exe_file = path.join(filepath.strip(<span class="stringliteral">&#39;&quot;&#39;</span>), program)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">if</span> path.isfile(exe_file) <span class="keywordflow">and</span> access(exe_file, X_OK):</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1system.html#a8433bd1a8340759e08af650556133472">  231</a></span>&#160;            <span class="keywordflow">if</span> path.isfile(exe_file) <span class="keywordflow">and</span> access(exe_file, X_OK):</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                <span class="keywordflow">return</span> exe_file</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span></div>
-<div class="ttc" id="namespacelib_1_1system_html_ab6616d0c05de805c650101625f1d4939"><div class="ttname"><a href="namespacelib_1_1system.html#ab6616d0c05de805c650101625f1d4939">lib.system.printenv</a></div><div class="ttdeci">def printenv()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00108">system.py:108</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a2151ce188102e6d7e6c33740026d9ec8"><div class="ttname"><a href="namespacelib_1_1system.html#a2151ce188102e6d7e6c33740026d9ec8">lib.system.cintsize</a></div><div class="ttdeci">def cintsize()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00160">system.py:160</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a136372aac30e47663f051b96e13ab8cb"><div class="ttname"><a href="namespacelib_1_1system.html#a136372aac30e47663f051b96e13ab8cb">lib.system.home</a></div><div class="ttdeci">def home()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00069">system.py:69</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a0670ce1a2e2fa483e78bc3adf3ff90d8"><div class="ttname"><a href="namespacelib_1_1system.html#a0670ce1a2e2fa483e78bc3adf3ff90d8">lib.system.exporthome</a></div><div class="ttdeci">def exporthome()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00074">system.py:74</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a9585cc81f427921b13ecefdf810da758"><div class="ttname"><a href="namespacelib_1_1system.html#a9585cc81f427921b13ecefdf810da758">lib.system.idsys</a></div><div class="ttdeci">def idsys()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00171">system.py:171</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_ae59341027da53ddad76cd8ea09044611"><div class="ttname"><a href="namespacelib_1_1system.html#ae59341027da53ddad76cd8ea09044611">lib.system.which</a></div><div class="ttdeci">def which</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00220">system.py:220</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_afece5d46bfa4d764c20dff18820a32aa"><div class="ttname"><a href="namespacelib_1_1system.html#afece5d46bfa4d764c20dff18820a32aa">lib.system.exportenv</a></div><div class="ttdeci">def exportenv()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00085">system.py:85</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_aa188e529fba8f62fbda58ff8a21d0e85"><div class="ttname"><a href="namespacelib_1_1system.html#aa188e529fba8f62fbda58ff8a21d0e85">lib.system.isthread</a></div><div class="ttdeci">def isthread(_thead)</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00118">system.py:118</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_afe62757cff14336f5c458e35ea891580"><div class="ttname"><a href="namespacelib_1_1system.html#afe62757cff14336f5c458e35ea891580">lib.system.envdict</a></div><div class="ttdeci">def envdict()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00093">system.py:93</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a79402a17e6b1485aebb8a486efe000f4"><div class="ttname"><a href="namespacelib_1_1system.html#a79402a17e6b1485aebb8a486efe000f4">lib.system.envlist</a></div><div class="ttdeci">def envlist()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00100">system.py:100</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_afe5a552524eb9ed7598c06f58cda0db5"><div class="ttname"><a href="namespacelib_1_1system.html#afe5a552524eb9ed7598c06f58cda0db5">lib.system.bitness</a></div><div class="ttdeci">def bitness()</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00146">system.py:146</a></div></div>
-<div class="ttc" id="namespacelib_1_1system_html_a5692ed800cb2c44d7a23585f50f20101"><div class="ttname"><a href="namespacelib_1_1system.html#a5692ed800cb2c44d7a23585f50f20101">lib.system.ckill</a></div><div class="ttdeci">def ckill(_process)</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00125">system.py:125</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_af955183733f3d668301ff1bf080cd6f1"><div class="ttname"><a href="namespacepybooster_1_1system.html#af955183733f3d668301ff1bf080cd6f1">pybooster.system.cintsize</a></div><div class="ttdeci">def cintsize()</div><div class="ttdoc">Return the C/C++ size of an int for the current system The returned value is an integer for the numbe...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00167">system.py:167</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a3dc5dfe89c170c450cd82a36f61ec427"><div class="ttname"><a href="namespacepybooster_1_1system.html#a3dc5dfe89c170c450cd82a36f61ec427">pybooster.system.bitness</a></div><div class="ttdeci">def bitness()</div><div class="ttdoc">Return a string indicating the bitness of the system. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00150">system.py:150</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a6637cab7031a0a0ccffc02e09a50300c"><div class="ttname"><a href="namespacepybooster_1_1system.html#a6637cab7031a0a0ccffc02e09a50300c">pybooster.system.idsys</a></div><div class="ttdeci">def idsys()</div><div class="ttdoc">Identify system and display specific info. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00175">system.py:175</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a91b16c6a62d65dbc5bb4366c5d8d1eb3"><div class="ttname"><a href="namespacepybooster_1_1system.html#a91b16c6a62d65dbc5bb4366c5d8d1eb3">pybooster.system.ckill</a></div><div class="ttdeci">def ckill(_process)</div><div class="ttdoc">Cross-platform Kill Kill process specified by process-object or PID ckill(PID) ckill(process-obj) ...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00130">system.py:130</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a8f43372b21f745464bf14e9d35e96960"><div class="ttname"><a href="namespacepybooster_1_1system.html#a8f43372b21f745464bf14e9d35e96960">pybooster.system.exportenv</a></div><div class="ttdeci">def exportenv()</div><div class="ttdoc">Make a global variable called &#39;ENVKEY&#39; The variable is a dictionary of the environment variables...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00088">system.py:88</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a80141d58a5f3e2d2a5ead49d308fcc37"><div class="ttname"><a href="namespacepybooster_1_1system.html#a80141d58a5f3e2d2a5ead49d308fcc37">pybooster.system.envlist</a></div><div class="ttdeci">def envlist()</div><div class="ttdoc">Return a list of the system&#39;s environment variables. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00101">system.py:101</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a8433bd1a8340759e08af650556133472"><div class="ttname"><a href="namespacepybooster_1_1system.html#a8433bd1a8340759e08af650556133472">pybooster.system.which</a></div><div class="ttdeci">def which</div><div class="ttdoc">Return the path of the specified application (if it exists) An empty string is returned if the progra...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00231">system.py:231</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a3488be267271452fb1e7581b38aa46fd"><div class="ttname"><a href="namespacepybooster_1_1system.html#a3488be267271452fb1e7581b38aa46fd">pybooster.system.printenv</a></div><div class="ttdeci">def printenv()</div><div class="ttdoc">Print the system&#39;s environment variables. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00109">system.py:109</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a00e4ac0b7055f87813ec467847c41b61"><div class="ttname"><a href="namespacepybooster_1_1system.html#a00e4ac0b7055f87813ec467847c41b61">pybooster.system.isthread</a></div><div class="ttdeci">def isthread(_thead)</div><div class="ttdoc">Test if object is a thread, or if the thread is alive/present. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00119">system.py:119</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a9391779ebfe3a7c416746435699ce3c2"><div class="ttname"><a href="namespacepybooster_1_1system.html#a9391779ebfe3a7c416746435699ce3c2">pybooster.system.exporthome</a></div><div class="ttdeci">def exporthome()</div><div class="ttdoc">Make a global variable called &#39;HOME&#39; The variable is a str of the user&#39;s home directory path...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00077">system.py:77</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a154061b6909b5240e3505ff4a14a4662"><div class="ttname"><a href="namespacepybooster_1_1system.html#a154061b6909b5240e3505ff4a14a4662">pybooster.system.home</a></div><div class="ttdeci">def home()</div><div class="ttdoc">Return user&#39;s home directory as a string. </div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00070">system.py:70</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1system_html_a473d2a8ff982b315850580484b8436e2"><div class="ttname"><a href="namespacepybooster_1_1system.html#a473d2a8ff982b315850580484b8436e2">pybooster.system.envdict</a></div><div class="ttdeci">def envdict()</div><div class="ttdoc">Return the system&#39;s environment variables A dictionary is returned in the form { &#39;VAR&#39;: &#39;VAL&#39;}...</div><div class="ttdef"><b>Definition:</b> <a href="system_8py_source.html#l00096">system.py:96</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="system_8py.html">system.py</a></li>
-    <li class="footer">Generated on Fri Mar 18 2016 22:37:01 for PyBooster by
+    <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="system_8py.html">system.py</a></li>
+    <li class="footer">Generated on Sat Mar 19 2016 17:05:49 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

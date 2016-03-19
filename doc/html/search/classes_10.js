@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samefileerror',['SameFileError',['../classlib_1_1basic_1_1SameFileError.html',1,'lib::basic']]],
+  ['samefileerror',['SameFileError',['../classpybooster_1_1basic_1_1SameFileError.html',1,'pybooster::basic']]],
   ['semicircle',['semicircle',['../math__types_8h.html#structsemicircle',1,'']]],
   ['semicirclef',['semicirclef',['../math__types_8h.html#structsemicirclef',1,'']]],
   ['semicirclel',['semicirclel',['../math__types_8h.html#structsemicirclel',1,'']]],

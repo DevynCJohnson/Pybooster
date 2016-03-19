@@ -78,6 +78,6 @@ DATA
     __all__ = ['home', 'exporthome', 'exportenv', 'envdict', 'envlist', 'p...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/system.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/system.py
 
 

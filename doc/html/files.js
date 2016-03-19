@@ -1,7 +1,7 @@
 var files =
 [
-    [ "__init__.py", "____init_____8py.html", "____init_____8py" ],
     [ "ezwin/__init__.py", "ezwin_2____init_____8py.html", "ezwin_2____init_____8py" ],
+    [ "__init__.py", "____init_____8py.html", "____init_____8py" ],
     [ "astronomy.py", "astronomy_8py.html", "astronomy_8py" ],
     [ "basic.py", "basic_8py.html", "basic_8py" ],
     [ "bitwise.py", "bitwise_8py.html", "bitwise_8py" ],

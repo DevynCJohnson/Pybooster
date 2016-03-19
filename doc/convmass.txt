@@ -36,6 +36,6 @@ DATA
     __all__ = ['kilogram2pound']
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convmass.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convmass.py
 
 

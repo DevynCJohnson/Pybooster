@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('geo__services_8py_source.html','');});
 <div class="title">geo_services.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="geo__services_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
+<a href="geo__services_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('geo__services_8py_source.html','');});
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#aa4a022e6ddacd362b83964da5cc5d044">   35</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#aa4a022e6ddacd362b83964da5cc5d044">   35</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="stringliteral">&#39;getgeodata&#39;</span>,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;getcity&#39;</span>,</div>
@@ -158,81 +158,81 @@ $(document).ready(function(){initNavTree('geo__services_8py_source.html','');});
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#a610fd3ec50de69330d2dc593461dc8df">   52</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#a610fd3ec50de69330d2dc593461dc8df">getgeodata</a>() -&gt; dict:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current geographical location based on the ISP&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#aceb5f62a058b74d4c66954c5a3b29ce1">getgeodata</a>() -&gt; dict:</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#aceb5f62a058b74d4c66954c5a3b29ce1">   53</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current geographical location based on the ISP&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> loads(urlopen(<span class="stringliteral">r&#39;http://ip-api.com/json&#39;</span>).read().decode(<span class="stringliteral">r&#39;utf-8&#39;</span>))</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#afee2573f6b52061255b240b63d169d42">   57</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#afee2573f6b52061255b240b63d169d42">getcity</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a3b533c9122c39c85b6d833c2ab21b2d3">getcity</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current city based on the ISP</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a3b533c9122c39c85b6d833c2ab21b2d3">   60</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;city&#39;</span>]</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#aba7f930e6184918b11649ff28eac9ccf">   64</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#aba7f930e6184918b11649ff28eac9ccf">getcountry</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#aa10d8257fbadb6688735d6a1972eb127">getcountry</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current country based on the ISP</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#aa10d8257fbadb6688735d6a1972eb127">   67</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;country&#39;</span>]</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#a5a588ec2e20c02a5dfe6c6a55c90b1cf">   71</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#a5a588ec2e20c02a5dfe6c6a55c90b1cf">getisp</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a2898e38e8e73a3b2d0c8c9a3b50624af">getisp</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current ISP</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a2898e38e8e73a3b2d0c8c9a3b50624af">   74</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;isp&#39;</span>]</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#abe70937ed2186bce776d69988127cfaf">   78</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#abe70937ed2186bce776d69988127cfaf">getlatitude</a>(_loc: dict) -&gt; float:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#ac0245b6d827252cb4e350a4b20fbb5dc">getlatitude</a>(_loc: dict) -&gt; float:</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current latitude based on the ISP</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#ac0245b6d827252cb4e350a4b20fbb5dc">   81</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;lat&#39;</span>]</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#aa43a10cc6ff5dde1f85cd9737aed3bad">   85</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#aa43a10cc6ff5dde1f85cd9737aed3bad">getlongitude</a>(_loc: dict) -&gt; float:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a82f940a42d38eb8615a1d85348067b61">getlongitude</a>(_loc: dict) -&gt; float:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current longitude based on the ISP</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a82f940a42d38eb8615a1d85348067b61">   88</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;lon&#39;</span>]</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#a9643980bc0ec072569c86e508f4888df">   92</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#a9643980bc0ec072569c86e508f4888df">gettimezone</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a054afea79f9493637a8d7d192971fda4">gettimezone</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current timezone based on the ISP</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a054afea79f9493637a8d7d192971fda4">   95</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;timezone&#39;</span>]</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#a23d07349813109830461751fad45a236">   99</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#a23d07349813109830461751fad45a236">getzipcode</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a575c07722823f93d8872d09facf3204b">getzipcode</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current zipcode based on the ISP</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a575c07722823f93d8872d09facf3204b">  102</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> _loc[<span class="stringliteral">r&#39;zip&#39;</span>]</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="namespacelib_1_1geo__services.html#a6b403fdedc3c15bd0fccd26b3e450f37">  106</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1geo__services.html#a6b403fdedc3c15bd0fccd26b3e450f37">getzipcode_int</a>(_loc: dict) -&gt; str:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1geo__services.html#a9fbe2b5d7bdc2a27cbf51d496a356305">getzipcode_int</a>(_loc: dict) -&gt; str:</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Retrieve the system&#39;s current zipcode based on the ISP</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">    Prerequisite: data from getgeodata()</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1geo__services.html#a9fbe2b5d7bdc2a27cbf51d496a356305">  109</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> int(_loc[<span class="stringliteral">r&#39;zip&#39;</span>])</div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_afee2573f6b52061255b240b63d169d42"><div class="ttname"><a href="namespacelib_1_1geo__services.html#afee2573f6b52061255b240b63d169d42">lib.geo_services.getcity</a></div><div class="ttdeci">def getcity</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00057">geo_services.py:57</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_aba7f930e6184918b11649ff28eac9ccf"><div class="ttname"><a href="namespacelib_1_1geo__services.html#aba7f930e6184918b11649ff28eac9ccf">lib.geo_services.getcountry</a></div><div class="ttdeci">def getcountry</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00064">geo_services.py:64</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_abe70937ed2186bce776d69988127cfaf"><div class="ttname"><a href="namespacelib_1_1geo__services.html#abe70937ed2186bce776d69988127cfaf">lib.geo_services.getlatitude</a></div><div class="ttdeci">def getlatitude</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00078">geo_services.py:78</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_a9643980bc0ec072569c86e508f4888df"><div class="ttname"><a href="namespacelib_1_1geo__services.html#a9643980bc0ec072569c86e508f4888df">lib.geo_services.gettimezone</a></div><div class="ttdeci">def gettimezone</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00092">geo_services.py:92</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_aa43a10cc6ff5dde1f85cd9737aed3bad"><div class="ttname"><a href="namespacelib_1_1geo__services.html#aa43a10cc6ff5dde1f85cd9737aed3bad">lib.geo_services.getlongitude</a></div><div class="ttdeci">def getlongitude</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00085">geo_services.py:85</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_a23d07349813109830461751fad45a236"><div class="ttname"><a href="namespacelib_1_1geo__services.html#a23d07349813109830461751fad45a236">lib.geo_services.getzipcode</a></div><div class="ttdeci">def getzipcode</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00099">geo_services.py:99</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_a5a588ec2e20c02a5dfe6c6a55c90b1cf"><div class="ttname"><a href="namespacelib_1_1geo__services.html#a5a588ec2e20c02a5dfe6c6a55c90b1cf">lib.geo_services.getisp</a></div><div class="ttdeci">def getisp</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00071">geo_services.py:71</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_a6b403fdedc3c15bd0fccd26b3e450f37"><div class="ttname"><a href="namespacelib_1_1geo__services.html#a6b403fdedc3c15bd0fccd26b3e450f37">lib.geo_services.getzipcode_int</a></div><div class="ttdeci">def getzipcode_int</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00106">geo_services.py:106</a></div></div>
-<div class="ttc" id="namespacelib_1_1geo__services_html_a610fd3ec50de69330d2dc593461dc8df"><div class="ttname"><a href="namespacelib_1_1geo__services.html#a610fd3ec50de69330d2dc593461dc8df">lib.geo_services.getgeodata</a></div><div class="ttdeci">def getgeodata()</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00052">geo_services.py:52</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_ac0245b6d827252cb4e350a4b20fbb5dc"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#ac0245b6d827252cb4e350a4b20fbb5dc">pybooster.geo_services.getlatitude</a></div><div class="ttdeci">def getlatitude</div><div class="ttdoc">Retrieve the system&#39;s current latitude based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00081">geo_services.py:81</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_aa10d8257fbadb6688735d6a1972eb127"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#aa10d8257fbadb6688735d6a1972eb127">pybooster.geo_services.getcountry</a></div><div class="ttdeci">def getcountry</div><div class="ttdoc">Retrieve the system&#39;s current country based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00067">geo_services.py:67</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a3b533c9122c39c85b6d833c2ab21b2d3"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a3b533c9122c39c85b6d833c2ab21b2d3">pybooster.geo_services.getcity</a></div><div class="ttdeci">def getcity</div><div class="ttdoc">Retrieve the system&#39;s current city based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00060">geo_services.py:60</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a2898e38e8e73a3b2d0c8c9a3b50624af"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a2898e38e8e73a3b2d0c8c9a3b50624af">pybooster.geo_services.getisp</a></div><div class="ttdeci">def getisp</div><div class="ttdoc">Retrieve the system&#39;s current ISP Prerequisite data from getgeodata() </div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00074">geo_services.py:74</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a054afea79f9493637a8d7d192971fda4"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a054afea79f9493637a8d7d192971fda4">pybooster.geo_services.gettimezone</a></div><div class="ttdeci">def gettimezone</div><div class="ttdoc">Retrieve the system&#39;s current timezone based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00095">geo_services.py:95</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a575c07722823f93d8872d09facf3204b"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a575c07722823f93d8872d09facf3204b">pybooster.geo_services.getzipcode</a></div><div class="ttdeci">def getzipcode</div><div class="ttdoc">Retrieve the system&#39;s current zipcode based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00102">geo_services.py:102</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a9fbe2b5d7bdc2a27cbf51d496a356305"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a9fbe2b5d7bdc2a27cbf51d496a356305">pybooster.geo_services.getzipcode_int</a></div><div class="ttdeci">def getzipcode_int</div><div class="ttdoc">Retrieve the system&#39;s current zipcode based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00109">geo_services.py:109</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_aceb5f62a058b74d4c66954c5a3b29ce1"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#aceb5f62a058b74d4c66954c5a3b29ce1">pybooster.geo_services.getgeodata</a></div><div class="ttdeci">def getgeodata()</div><div class="ttdoc">Retrieve the system&#39;s current geographical location based on the ISP. </div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00053">geo_services.py:53</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1geo__services_html_a82f940a42d38eb8615a1d85348067b61"><div class="ttname"><a href="namespacepybooster_1_1geo__services.html#a82f940a42d38eb8615a1d85348067b61">pybooster.geo_services.getlongitude</a></div><div class="ttdeci">def getlongitude</div><div class="ttdoc">Retrieve the system&#39;s current longitude based on the ISP Prerequisite data from getgeodata() ...</div><div class="ttdef"><b>Definition:</b> <a href="geo__services_8py_source.html#l00088">geo_services.py:88</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="geo__services_8py.html">geo_services.py</a></li>
-    <li class="footer">Generated on Fri Mar 18 2016 22:37:01 for PyBooster by
+    <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="geo__services_8py.html">geo_services.py</a></li>
+    <li class="footer">Generated on Sat Mar 19 2016 17:05:48 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

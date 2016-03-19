@@ -1,7 +1,7 @@
 var metric_8py =
 [
-    [ "siunits2base", "metric_8py.html#a09c1d2b0ab901583ab1a73d9e952c7e4", null ],
-    [ "str2tupleunit", "metric_8py.html#a16e53326886896807f5db2a77701a200", null ],
+    [ "siunits2base", "metric_8py.html#a18dd847fd54cbf498bde23d1eee1642f", null ],
+    [ "str2tupleunit", "metric_8py.html#abc078efa56229344f03d904942bffc4c", null ],
     [ "__all__", "metric_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ],
     [ "ATTO_UNITS", "metric_8py.html#aac6f30a351e34ffed9094dd4ceafc3e7", null ],
     [ "CENTI_UNITS", "metric_8py.html#a978c62a235993a1de27e7489f04551a0", null ],

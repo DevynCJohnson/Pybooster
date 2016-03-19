@@ -46,6 +46,6 @@ DATA
     __all__ = ['OHMS', 'current', 'resistance', 'voltage', 'power']
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/electronics.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/electronics.py
 
 

@@ -54,6 +54,6 @@ DATA
     __all__ = ['ints2ipv6', 'lst2ipv6', 'isdomain', 'name2ip', 'ping', 'fi...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/net.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/net.py
 
 

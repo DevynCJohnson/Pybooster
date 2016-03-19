@@ -1,6 +1,6 @@
 var annotated =
 [
-    [ "lib", "namespacelib.html", "namespacelib" ],
+    [ "pybooster", "namespacepybooster.html", "namespacepybooster" ],
     [ "aminoacid", "chemistry__types_8h.html#structaminoacid", "chemistry__types_8h_structaminoacid" ],
     [ "atom", "chemistry__types_8h.html#structatom", "chemistry__types_8h_structatom" ],
     [ "BaseException", "classBaseException.html", null ],

@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classlib_1_1basic_1_1SameFileError.html" target="_top" xlink:title="SameFileError">
+<g id="a_node2"><a xlink:href="classpybooster_1_1basic_1_1SameFileError.html" target="_top" xlink:title="Raised when source and target are the same file. ">
 <polygon fill="white" stroke="black" points="-7.10543e-15,-0.5 -7.10543e-15,-19.5 79,-19.5 79,-0.5 -7.10543e-15,-0.5"/>
 <text text-anchor="middle" x="39.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">SameFileError</text>
 </a>

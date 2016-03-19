@@ -57,6 +57,6 @@ DATA
     stdin = <_io.TextIOWrapper name='<stdin>' mode='r' encoding='UTF-8'>
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/ezdisplay.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/ezdisplay.py
 
 

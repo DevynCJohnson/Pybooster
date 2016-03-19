@@ -45,6 +45,6 @@ DATA
     __all__ = ['DAYS_IN_WEEK', 'HOURS_IN_DAY', 'MINUTES_IN_HOUR', 'SECONDS...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convtime.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convtime.py
 
 

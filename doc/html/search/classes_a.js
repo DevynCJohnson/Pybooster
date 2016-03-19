@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mainwin',['MainWin',['../classlib_1_1ezdisplay_1_1MainWin.html',1,'lib::ezdisplay']]]
+  ['mainwin',['MainWin',['../classpybooster_1_1ezdisplay_1_1MainWin.html',1,'pybooster::ezdisplay']]]
 ];

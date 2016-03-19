@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('sing_8py_source.html','');});
 <div class="title">sing.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="sing_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacelib_1_1sing.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
+<a href="sing_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1sing.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('sing_8py_source.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacelib_1_1sing.html#aa4a022e6ddacd362b83964da5cc5d044">   31</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1sing.html#aa4a022e6ddacd362b83964da5cc5d044">   31</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="stringliteral">&#39;banana_song&#39;</span>,</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;]</div>
@@ -146,18 +146,18 @@ $(document).ready(function(){initNavTree('sing_8py_source.html','');});
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespacelib_1_1sing.html#a2bed122d70c066b9cdcf6ab518124287">   40</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1sing.html#a2bed122d70c066b9cdcf6ab518124287">banana_song</a>(_name: str) -&gt; str:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the lyrics of the Banana Song using the given name&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1sing.html#ab77b675c64f0d9a981c3f1f21779f063">banana_song</a>(_name: str) -&gt; str:</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1sing.html#ab77b675c64f0d9a981c3f1f21779f063">   41</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the lyrics of the Banana Song using the given name&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    _name = _name.capitalize()</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> _name + <span class="stringliteral">r&#39;, &#39;</span> + _name + <span class="stringliteral">r&#39;, bo-b&#39;</span> + _name[1:] + <span class="stringliteral">r&#39;, Banana-fana fo-f&#39;</span> + _name[1:] + <span class="stringliteral">r&#39;, Fee-Fi-mo-m&#39;</span> + _name[1:] + <span class="stringliteral">r&#39;, &#39;</span> + _name + <span class="stringliteral">r&#39;!&#39;</span></div>
-<div class="ttc" id="namespacelib_1_1sing_html_a2bed122d70c066b9cdcf6ab518124287"><div class="ttname"><a href="namespacelib_1_1sing.html#a2bed122d70c066b9cdcf6ab518124287">lib.sing.banana_song</a></div><div class="ttdeci">def banana_song</div><div class="ttdef"><b>Definition:</b> <a href="sing_8py_source.html#l00040">sing.py:40</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1sing_html_ab77b675c64f0d9a981c3f1f21779f063"><div class="ttname"><a href="namespacepybooster_1_1sing.html#ab77b675c64f0d9a981c3f1f21779f063">pybooster.sing.banana_song</a></div><div class="ttdeci">def banana_song</div><div class="ttdoc">Return the lyrics of the Banana Song using the given name. </div><div class="ttdef"><b>Definition:</b> <a href="sing_8py_source.html#l00041">sing.py:41</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="sing_8py.html">sing.py</a></li>
-    <li class="footer">Generated on Fri Mar 18 2016 22:37:01 for PyBooster by
+    <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="sing_8py.html">sing.py</a></li>
+    <li class="footer">Generated on Sat Mar 19 2016 17:05:49 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

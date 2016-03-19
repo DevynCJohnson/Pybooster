@@ -91,7 +91,7 @@ DATA
     __help__ = "\n=====EZ-Win Documentation=====\n\n\n=====ABOUT====...rn_...
     __usage_py__ = "\n\n=====USAGE (Python)=====\n\n    import ezwin\n    ...
     __usage_sh__ = '\n\n=====USAGE (Shell/Terminal)=====\n\n    ezwin [-.....
-    __warningregistry__ = {'version': 126, ('Gtk was imported without spec...
+    __warningregistry__ = {('Gtk was imported without specifying a version...
 
 VERSION
     2016.03.18
@@ -100,6 +100,6 @@ AUTHOR
     Devyn Collier Johnson
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/ezwin/ezwin.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/ezwin/ezwin.py
 
 

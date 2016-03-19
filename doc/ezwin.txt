@@ -43,6 +43,6 @@ AUTHOR
     Devyn Collier Johnson
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/ezwin/__init__.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/ezwin/__init__.py
 
 

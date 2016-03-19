@@ -6,11 +6,11 @@ var NAVTREE =
       [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
       [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ]
     ] ],
-    [ "Classes", null, [
-      [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", null ],
+    [ "Data Structures", null, [
+      [ "Data Structures", "annotated.html", "annotated" ],
+      [ "Data Structure Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
+      [ "Data Fields", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
@@ -18,7 +18,7 @@ var NAVTREE =
     ] ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
+      [ "Globals", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Variables", "globals_vars.html", "globals_vars" ],
@@ -39,9 +39,9 @@ var NAVTREEINDEX =
 "chemistry__types_8c.html#a760467b7ce71d5b743f0110771098003",
 "chemistry__types_8h.html#a88d246b99d9e05629ec5978a3e9f2ed4",
 "chemistry__types_8h.html#afb87ae249a718c49f1ee903fe9f6bf4e",
-"convlength_8py.html#a9abb9286356557bfce7ed76e6e397695",
+"convlength_8py.html#a9c054a50477052773721c7f354196228",
 "cryptx_8h.html#a77bcad7dcf9e96bbc174edfc4bd53701",
-"ezwin_8py.html#a78c8aeaf9f702a69691ab847581e7e6a",
+"ezwin_8py.html#a6c9763b4c007077fd0c2a6f76c5eb89a",
 "geometry_8c.html#afcca43a95c4cfd565f87d4e28b6a5b8e",
 "math__types_8h.html#a0bc0b7e4601a935e3dd2021bc7a145fb",
 "mathconstants_8c.html#aa8c8a6530050b8139e5f6d0130ed63b1",
@@ -49,7 +49,7 @@ var NAVTREEINDEX =
 "mathfunc_8c.html#a885aecd1d34fcb300f0ac418433ca0df",
 "mathfunc_8h.html#a04367d95051c34654a123a7a987fd891",
 "mathfunc_8h.html#a885aecd1d34fcb300f0ac418433ca0df",
-"metric_8py.html#a4c4211f78717210c77588a8b29e09a3a",
+"metric_8py.html#a500ed626e88515b162e1521b75223917",
 "pygeometry_8c.html#a6cc05a9af48e34b6d4862893cc0ecc59",
 "pymathfunc_8c.html#a946fe7d2f0235f78ed7cd99f6bb09fc5",
 "pytypesize_8c.html#a9e8adde5c1a92a241393370a5b26d22a",

@@ -144,6 +144,6 @@ DATA
     __all__ = ['ONE_THIRD', 'ONE_SIXTH', 'TWO_THIRD', 'cmy2cmyk', 'cmy2rgb...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/color.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/color.py
 
 

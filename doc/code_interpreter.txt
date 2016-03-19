@@ -81,6 +81,6 @@ DATA
     __all__ = ['execclispfile', 'execcoffee', 'execjs', 'execjsfile', 'exe...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/code_interpreter.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/code_interpreter.py
 
 

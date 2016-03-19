@@ -68,6 +68,6 @@ DATA
     __all__ = ['getgeodata', 'getcity', 'getcountry', 'getisp', 'getlatitu...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/geo_services.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/geo_services.py
 
 

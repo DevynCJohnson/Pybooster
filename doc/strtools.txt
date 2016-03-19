@@ -797,6 +797,6 @@ DATA
     __all__ = ['ORDINAL_LIST', 'NUMBER_LIST', 'INCOMPLETE_REF', 'ENTITY_RE...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/strtools.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/strtools.py
 
 

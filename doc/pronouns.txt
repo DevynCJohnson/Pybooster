@@ -61,6 +61,6 @@ DATA
     __all__ = ['FIRST_THIRD', 'FIRST_SECOND', 'SECOND_THIRD', 'GENDER_SWAP...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/pronouns.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/pronouns.py
 
 

@@ -4,8 +4,10 @@
 *.c linguist-language=C
 *.h linguist-language=C
 *.py linguist-language=Python
+*.pyw linguist-language=Python
+*.pygtk linguist-language=Python
 *.glade linguist-language=XML
 
 # Documentation
 /doc/* linguist-documentation
-/_MISC/* linguist-documentation
+/tools/* linguist-documentation

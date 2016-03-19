@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classlib_1_1basic_1_1NullException.html" target="_top" xlink:title="NullException">
+<g id="a_node2"><a xlink:href="classpybooster_1_1basic_1_1NullException.html" target="_top" xlink:title="Null Exception. ">
 <polygon fill="white" stroke="black" points="3,-0.5 3,-19.5 80,-19.5 80,-0.5 3,-0.5"/>
 <text text-anchor="middle" x="41.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">NullException</text>
 </a>

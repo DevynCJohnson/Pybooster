@@ -132,6 +132,6 @@ DATA
     __all__ = ['LARGE_NUMBERS', 'SMALL_NUMBERS', 'PI2', 'HALFPI', 'PIPI', ...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/xmath.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/xmath.py
 
 

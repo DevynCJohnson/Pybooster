@@ -117,6 +117,6 @@ DATA
     __all__ = ['celsius2delisle', 'celsius2fahrenheit', 'celsius2kelvin', ...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convtemp.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convtemp.py
 
 

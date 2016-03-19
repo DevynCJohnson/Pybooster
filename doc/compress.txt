@@ -102,6 +102,6 @@ DATA
     __all__ = ['getgzip', 'write2gzip', 'creategzipfile', 'gzipvar', 'getg...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/compress.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/compress.py
 
 

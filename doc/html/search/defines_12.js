@@ -15,7 +15,7 @@ var searchData=
   ['toupper',['TOUPPER',['../MACROS_8h.html#ab54417c7c018570043920af66ba7457f',1,'MACROS.h']]],
   ['treyfer_5fnumrounds',['TREYFER_NUMROUNDS',['../cryptx_8h.html#ae0d04b8a04cb27ef3403923499176596',1,'cryptx.h']]],
   ['treyfer_5frotl',['TREYFER_ROTL',['../cryptx_8c.html#a710c897ba1015dfb15de366288fc6420',1,'cryptx.c']]],
-  ['true',['True',['../MACROS_8h.html#add3ca9eefe3b5b754426f51d3043e579',1,'True():&#160;MACROS.h'],['../MACROS_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'true():&#160;MACROS.h'],['../MACROS_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;MACROS.h']]],
+  ['true',['true',['../MACROS_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'true():&#160;MACROS.h'],['../MACROS_8h.html#add3ca9eefe3b5b754426f51d3043e579',1,'True():&#160;MACROS.h'],['../MACROS_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;MACROS.h']]],
   ['twin_5fprimes_5fconstant',['TWIN_PRIMES_CONSTANT',['../MATH__MACROS_8h.html#a46d41bfb71319e9b2e4a5f2044605c9e',1,'MATH_MACROS.h']]],
   ['type_5faliases_5fseen',['TYPE_ALIASES_SEEN',['../MACROS_8h.html#af9426d2120733e48b5cea9f33620498e',1,'MACROS.h']]],
   ['typename',['typename',['../MACROS_8h.html#aec8d69b888934142f2435239e59dfbdc',1,'MACROS.h']]],

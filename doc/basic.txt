@@ -606,6 +606,6 @@ DATA
     __all__ = ['SameFileError', 'ObjectError', 'NullException', 'rmfalse',...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/basic.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/basic.py
 
 

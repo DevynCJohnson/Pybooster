@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('financial_8py_source.html','');});
 <div class="title">financial.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="financial_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
+<a href="financial_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('financial_8py_source.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html#aa4a022e6ddacd362b83964da5cc5d044">   31</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html#aa4a022e6ddacd362b83964da5cc5d044">   31</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="stringliteral">&#39;compounded_interest&#39;</span>,</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="stringliteral">&#39;compounded_ending_balance&#39;</span>,</div>
@@ -149,35 +149,35 @@ $(document).ready(function(){initNavTree('financial_8py_source.html','');});
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"># FUNCTIONS</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html#a0e54e0ef0095a7a9d9379a116efc04fd">   43</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1financial.html#a0e54e0ef0095a7a9d9379a116efc04fd">compounded_interest</a>(principal: float, interest: float, compound_frequency: float) -&gt; float:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the compounded interest earned given the principal, interest, and compound frequency&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1financial.html#aa4d2b1eee1c2fe1f08a47f02be5b2f4e">compounded_interest</a>(principal: float, interest: float, compound_frequency: float) -&gt; float:</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html#aa4d2b1eee1c2fe1f08a47f02be5b2f4e">   44</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the compounded interest earned given the principal, interest, and compound frequency&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> principal * (((1 + compound_frequency) ** interest) - 1)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html#a173151fd154fafb680ef4e1b623e1944">   48</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1financial.html#a173151fd154fafb680ef4e1b623e1944">compounded_ending_balance</a>(principal: float, interest: float, compound_frequency: float) -&gt; float:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the ending balance of compounded interest earned given the principal, interest, and compound frequency&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1financial.html#a9ff65eae57a0196f39094f4efdf33aa8">compounded_ending_balance</a>(principal: float, interest: float, compound_frequency: float) -&gt; float:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html#a9ff65eae57a0196f39094f4efdf33aa8">   49</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the ending balance of compounded interest earned given the principal, interest, and compound frequency&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> principal * (((1 + compound_frequency) ** interest))</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html#a523976eabc1db196393b052c6cbce371">   53</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1financial.html#a523976eabc1db196393b052c6cbce371">simple_interest</a>(principal: float, interest: float, time: float) -&gt; float:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the simple interest earned given the principal, interest, and time&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1financial.html#a24201554f7bbc78598f19f16b93f0a0e">simple_interest</a>(principal: float, interest: float, time: float) -&gt; float:</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html#a24201554f7bbc78598f19f16b93f0a0e">   54</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the simple interest earned given the principal, interest, and time&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> principal * time * interest</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespacelib_1_1financial.html#a1e6562ae076fb99a671bc3f31d07b841">   58</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1financial.html#a1e6562ae076fb99a671bc3f31d07b841">simple_ending_balance</a>(principal: float, interest: float, time: float) -&gt; float:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the ending balance of simple interest given the principal, interest, and time&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1financial.html#ab0a712538c21149f10a2b664b37386f6">simple_ending_balance</a>(principal: float, interest: float, time: float) -&gt; float:</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1financial.html#ab0a712538c21149f10a2b664b37386f6">   59</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the ending balance of simple interest given the principal, interest, and time&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> principal * (1 + (time * interest))</div>
-<div class="ttc" id="namespacelib_1_1financial_html_a523976eabc1db196393b052c6cbce371"><div class="ttname"><a href="namespacelib_1_1financial.html#a523976eabc1db196393b052c6cbce371">lib.financial.simple_interest</a></div><div class="ttdeci">def simple_interest</div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00053">financial.py:53</a></div></div>
-<div class="ttc" id="namespacelib_1_1financial_html_a0e54e0ef0095a7a9d9379a116efc04fd"><div class="ttname"><a href="namespacelib_1_1financial.html#a0e54e0ef0095a7a9d9379a116efc04fd">lib.financial.compounded_interest</a></div><div class="ttdeci">def compounded_interest</div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00043">financial.py:43</a></div></div>
-<div class="ttc" id="namespacelib_1_1financial_html_a173151fd154fafb680ef4e1b623e1944"><div class="ttname"><a href="namespacelib_1_1financial.html#a173151fd154fafb680ef4e1b623e1944">lib.financial.compounded_ending_balance</a></div><div class="ttdeci">def compounded_ending_balance</div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00048">financial.py:48</a></div></div>
-<div class="ttc" id="namespacelib_1_1financial_html_a1e6562ae076fb99a671bc3f31d07b841"><div class="ttname"><a href="namespacelib_1_1financial.html#a1e6562ae076fb99a671bc3f31d07b841">lib.financial.simple_ending_balance</a></div><div class="ttdeci">def simple_ending_balance</div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00058">financial.py:58</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1financial_html_a9ff65eae57a0196f39094f4efdf33aa8"><div class="ttname"><a href="namespacepybooster_1_1financial.html#a9ff65eae57a0196f39094f4efdf33aa8">pybooster.financial.compounded_ending_balance</a></div><div class="ttdeci">def compounded_ending_balance</div><div class="ttdoc">Return the ending balance of compounded interest earned given the principal, interest, and compound frequency. </div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00049">financial.py:49</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1financial_html_aa4d2b1eee1c2fe1f08a47f02be5b2f4e"><div class="ttname"><a href="namespacepybooster_1_1financial.html#aa4d2b1eee1c2fe1f08a47f02be5b2f4e">pybooster.financial.compounded_interest</a></div><div class="ttdeci">def compounded_interest</div><div class="ttdoc">Return the compounded interest earned given the principal, interest, and compound frequency...</div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00044">financial.py:44</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1financial_html_ab0a712538c21149f10a2b664b37386f6"><div class="ttname"><a href="namespacepybooster_1_1financial.html#ab0a712538c21149f10a2b664b37386f6">pybooster.financial.simple_ending_balance</a></div><div class="ttdeci">def simple_ending_balance</div><div class="ttdoc">Return the ending balance of simple interest given the principal, interest, and time. </div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00059">financial.py:59</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1financial_html_a24201554f7bbc78598f19f16b93f0a0e"><div class="ttname"><a href="namespacepybooster_1_1financial.html#a24201554f7bbc78598f19f16b93f0a0e">pybooster.financial.simple_interest</a></div><div class="ttdeci">def simple_interest</div><div class="ttdoc">Return the simple interest earned given the principal, interest, and time. </div><div class="ttdef"><b>Definition:</b> <a href="financial_8py_source.html#l00054">financial.py:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="financial_8py.html">financial.py</a></li>
-    <li class="footer">Generated on Fri Mar 18 2016 22:37:01 for PyBooster by
+    <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="financial_8py.html">financial.py</a></li>
+    <li class="footer">Generated on Sat Mar 19 2016 17:05:48 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

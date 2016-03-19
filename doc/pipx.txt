@@ -57,6 +57,6 @@ DATA
     __all__ = ['install', 'uninstall', 'listinstalled', 'listoutdated', 'l...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/pipx.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/pipx.py
 
 

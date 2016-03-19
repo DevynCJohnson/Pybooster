@@ -234,6 +234,6 @@ DATA
     __all__ = ['centimeter2chain', 'centimeter2decimeter', 'centimeter2foo...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convlength.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convlength.py
 
 

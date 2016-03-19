@@ -138,6 +138,6 @@ DATA
     __all__ = ['cuin2cancups', 'cuin2cum', 'cuin2dryqt', 'cuin2l', 'cuin2m...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convvolume.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convvolume.py
 
 

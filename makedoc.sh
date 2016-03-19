@@ -7,7 +7,7 @@
 
 rm -frd ./doc/*
 
-cd ./lib/
+cd ./pybooster
 
 python3 -m pydoc astronomy > ../doc/astronomy.txt
 python3 -m pydoc basic > ../doc/basic.txt

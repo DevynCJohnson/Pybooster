@@ -36,6 +36,6 @@ DATA
     __all__ = ['mph2kph']
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convspeed.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convspeed.py
 
 

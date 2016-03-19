@@ -48,6 +48,6 @@ DATA
     __all__ = ['bit_and', 'bit_or', 'bit_xor']
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/bitwise.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/bitwise.py
 
 

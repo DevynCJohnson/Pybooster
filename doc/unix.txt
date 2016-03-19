@@ -54,6 +54,6 @@ DATA
     __all__ = ['dt', 'df', 'du', 'getetcfstab', 'getetchosts', 'thumbnail_...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/unix.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/unix.py
 
 

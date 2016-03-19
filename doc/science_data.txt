@@ -143,6 +143,6 @@ DATA
     __all__ = ['ATOM_MOLAR_MASS', 'MOLECULE_MOLAR_MASS', 'SMILES', 'ALPHA_...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/science_data.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/science_data.py
 
 

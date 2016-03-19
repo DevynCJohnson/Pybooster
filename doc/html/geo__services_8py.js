@@ -1,13 +1,13 @@
 var geo__services_8py =
 [
-    [ "getcity", "geo__services_8py.html#afee2573f6b52061255b240b63d169d42", null ],
-    [ "getcountry", "geo__services_8py.html#aba7f930e6184918b11649ff28eac9ccf", null ],
-    [ "getgeodata", "geo__services_8py.html#a610fd3ec50de69330d2dc593461dc8df", null ],
-    [ "getisp", "geo__services_8py.html#a5a588ec2e20c02a5dfe6c6a55c90b1cf", null ],
-    [ "getlatitude", "geo__services_8py.html#abe70937ed2186bce776d69988127cfaf", null ],
-    [ "getlongitude", "geo__services_8py.html#aa43a10cc6ff5dde1f85cd9737aed3bad", null ],
-    [ "gettimezone", "geo__services_8py.html#a9643980bc0ec072569c86e508f4888df", null ],
-    [ "getzipcode", "geo__services_8py.html#a23d07349813109830461751fad45a236", null ],
-    [ "getzipcode_int", "geo__services_8py.html#a6b403fdedc3c15bd0fccd26b3e450f37", null ],
+    [ "getcity", "geo__services_8py.html#a3b533c9122c39c85b6d833c2ab21b2d3", null ],
+    [ "getcountry", "geo__services_8py.html#aa10d8257fbadb6688735d6a1972eb127", null ],
+    [ "getgeodata", "geo__services_8py.html#aceb5f62a058b74d4c66954c5a3b29ce1", null ],
+    [ "getisp", "geo__services_8py.html#a2898e38e8e73a3b2d0c8c9a3b50624af", null ],
+    [ "getlatitude", "geo__services_8py.html#ac0245b6d827252cb4e350a4b20fbb5dc", null ],
+    [ "getlongitude", "geo__services_8py.html#a82f940a42d38eb8615a1d85348067b61", null ],
+    [ "gettimezone", "geo__services_8py.html#a054afea79f9493637a8d7d192971fda4", null ],
+    [ "getzipcode", "geo__services_8py.html#a575c07722823f93d8872d09facf3204b", null ],
+    [ "getzipcode_int", "geo__services_8py.html#a9fbe2b5d7bdc2a27cbf51d496a356305", null ],
     [ "__all__", "geo__services_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ]
 ];

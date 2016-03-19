@@ -180,6 +180,6 @@ DATA
     __all__ = ['acre2hectare', 'acre2sqfoot', 'acre2sqinch', 'acre2sqkilom...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convarea.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/convarea.py
 
 

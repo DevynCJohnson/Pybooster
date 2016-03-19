@@ -247,7 +247,7 @@ var NAVTREEINDEX15 =
 "mathfunc_8h_source.html":[2,0,45],
 "metric_8py.html":[2,0,46],
 "metric_8py.html#a09589e86e20af8c133eef4b95d72fdb5":[2,0,46,12],
-"metric_8py.html#a09c1d2b0ab901583ab1a73d9e952c7e4":[2,0,46,0],
-"metric_8py.html#a16e53326886896807f5db2a77701a200":[2,0,46,1],
-"metric_8py.html#a3f5a5f0f7b72f9eeb9a0ba696d705c33":[2,0,46,5]
+"metric_8py.html#a18dd847fd54cbf498bde23d1eee1642f":[2,0,46,0],
+"metric_8py.html#a3f5a5f0f7b72f9eeb9a0ba696d705c33":[2,0,46,5],
+"metric_8py.html#a4c4211f78717210c77588a8b29e09a3a":[2,0,46,6]
 };

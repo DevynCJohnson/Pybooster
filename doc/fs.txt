@@ -205,6 +205,6 @@ DATA
     __all__ = ['GIGABYTE', 'GIGIBYTE', 'convumask', 'lsfiles', 'getfileext...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/fs.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/fs.py
 
 

@@ -3,7 +3,7 @@ var hierarchy =
     [ "aminoacid", "chemistry__types_8h.html#structaminoacid", null ],
     [ "atom", "chemistry__types_8h.html#structatom", null ],
     [ "BaseException", "classBaseException.html", [
-      [ "NullException", "classlib_1_1basic_1_1NullException.html", null ]
+      [ "NullException", "classpybooster_1_1basic_1_1NullException.html", null ]
     ] ],
     [ "bytepair_t", "MACROS_8h.html#structbytepair__t", null ],
     [ "circle", "math__types_8h.html#structcircle", null ],
@@ -22,7 +22,7 @@ var hierarchy =
     [ "ellipsoidf", "math__types_8h.html#structellipsoidf", null ],
     [ "ellipsoidl", "math__types_8h.html#structellipsoidl", null ],
     [ "Exception", "classException.html", [
-      [ "SameFileError", "classlib_1_1basic_1_1SameFileError.html", null ]
+      [ "SameFileError", "classpybooster_1_1basic_1_1SameFileError.html", null ]
     ] ],
     [ "floatpair_t", "MACROS_8h.html#structfloatpair__t", null ],
     [ "floattriplet_t", "MACROS_8h.html#structfloattriplet__t", null ],
@@ -43,9 +43,9 @@ var hierarchy =
     [ "linel", "math__types_8h.html#structlinel", null ],
     [ "linked_stack_node", "extra__datatypes_8h.html#structlinked__stack__node", null ],
     [ "longdoublepair_t", "MACROS_8h.html#structlongdoublepair__t", null ],
-    [ "MainWin", "classlib_1_1ezdisplay_1_1MainWin.html", null ],
+    [ "MainWin", "classpybooster_1_1ezdisplay_1_1MainWin.html", null ],
     [ "NameError", "classNameError.html", [
-      [ "ObjectError", "classlib_1_1basic_1_1ObjectError.html", null ]
+      [ "ObjectError", "classpybooster_1_1basic_1_1ObjectError.html", null ]
     ] ],
     [ "nucleobase", "chemistry__types_8h.html#structnucleobase", null ],
     [ "point", "math__types_8h.html#structpoint", null ],
@@ -80,14 +80,14 @@ var hierarchy =
     [ "trianglef", "math__types_8h.html#structtrianglef", null ],
     [ "trianglel", "math__types_8h.html#structtrianglel", null ],
     [ "TypeError", "classTypeError.html", [
-      [ "ObjectError", "classlib_1_1basic_1_1ObjectError.html", null ]
+      [ "ObjectError", "classpybooster_1_1basic_1_1ObjectError.html", null ]
     ] ],
     [ "ulintpair_t", "MACROS_8h.html#structulintpair__t", null ],
     [ "ullintpair_t", "MACROS_8h.html#structullintpair__t", null ],
     [ "umix32_t", "extra__datatypes_8h.html#unionumix32__t", null ],
     [ "USARTDriver_t", "structUSARTDriver__t.html", null ],
     [ "ValueError", "classValueError.html", [
-      [ "ObjectError", "classlib_1_1basic_1_1ObjectError.html", null ]
+      [ "ObjectError", "classpybooster_1_1basic_1_1ObjectError.html", null ]
     ] ],
     [ "_Bool(*)(GPIO_PinInitStruct_t *initStruct)", null, null ],
     [ "_Bool(*)(int16_t pinIndex, GPIO_Direction_t dir)", null, null ],
@@ -105,8 +105,8 @@ var hierarchy =
     [ "b2a_qp", null, null ],
     [ "byteorder", null, null ],
     [ "bz2", null, null ],
-    [ "CDLL", null, null ],
     [ "cdll", null, null ],
+    [ "CDLL", null, null ],
     [ "char", null, null ],
     [ "choice", null, null ],
     [ "cos", null, null ],

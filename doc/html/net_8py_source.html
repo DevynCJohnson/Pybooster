@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="title">net.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="net_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
+<a href="net_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
@@ -143,7 +143,7 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#aa4a022e6ddacd362b83964da5cc5d044">   37</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#aa4a022e6ddacd362b83964da5cc5d044">   37</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment"># IPV4/6 CONVERTIONS</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;ints2ipv6&#39;</span>,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;lst2ipv6&#39;</span>,</div>
@@ -159,8 +159,8 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"># IPV4/6 CONVERTIONS</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#aecc5ff5675a8d95751092177e5e89c98">   53</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#aecc5ff5675a8d95751092177e5e89c98">ints2ipv6</a>(*args: int) -&gt; str:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">ints2ipv6</a>(*args: int) -&gt; str:</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">   54</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> len(args) <span class="keywordflow">is</span> 8:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> args:</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
@@ -170,8 +170,8 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classValueError.html">ValueError</a>(<span class="stringliteral">r&#39;The given data must have eight groups of integers.&#39;</span>)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#a9a7b045d50f18d13b2825192b694ec0c">   64</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#a9a7b045d50f18d13b2825192b694ec0c">lst2ipv6</a>(_list: list) -&gt; str:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">lst2ipv6</a>(_list: list) -&gt; str:</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">   65</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> len(_list) <span class="keywordflow">is</span> 8:</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> _list:</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
@@ -184,13 +184,13 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"># MISCELLANEOUS</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#a42844db6dbb130bcf65d80684eaf7273">   78</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#a42844db6dbb130bcf65d80684eaf7273">name2ip</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; str:</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Convert a domain name to an IPv4 address&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">name2ip</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; str:</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">   79</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Convert a domain name to an IPv4 address&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> gethostbyname(_address)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#aa96cc5b2c12b27cb41fbd2eb8f174ff1">   83</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#aa96cc5b2c12b27cb41fbd2eb8f174ff1">isdomain</a>(_address: str) -&gt; bool:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if a Domain Name resolves to an IP address&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">isdomain</a>(_address: str) -&gt; bool:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">   84</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if a Domain Name resolves to an IP address&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">try</span>:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        gethostbyname(_address)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">except</span> gaierror:</div>
@@ -198,8 +198,8 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#abcf8521834c9b79613b0f6033fefadec">   92</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#abcf8521834c9b79613b0f6033fefadec">ping</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; bool:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Specify an IP address or a domain name&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">ping</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; bool:</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">   93</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Specify an IP address or a domain name&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">try</span>:</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        child = Popen([<span class="stringliteral">&#39;ping&#39;</span>, <span class="stringliteral">&#39;-c 1&#39;</span>, _address], stdout=PIPE, stderr=PIPE, shell=<span class="keyword">False</span>)</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        _results = child.communicate(timeout=3)[0]  <span class="comment"># Wait for results and get return code</span></div>
@@ -210,40 +210,40 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#a5963d0b56e2b5ab0fc2826f1698d9492">  104</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#a5963d0b56e2b5ab0fc2826f1698d9492">findgw</a>() -&gt; str:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">findgw</a>() -&gt; str:</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Get the Gateway IP address&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    with open(<span class="stringliteral">&#39;/proc/net/route&#39;</span>, mode=<span class="stringliteral">&#39;rt&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> _file:</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">for</span> _line <span class="keywordflow">in</span> _file:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            _field = _line.strip().split()</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">  108</a></span>&#160;            _field = _line.strip().split()</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> _field[1] != <span class="stringliteral">&#39;00000000&#39;</span> <span class="keywordflow">or</span> <span class="keywordflow">not</span> int(_field[3], 16) &amp; 2:</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">continue</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span> inet_ntoa(pack(<span class="stringliteral">&#39;&lt;L&#39;</span>, int(_field[2], 16)))</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="namespacelib_1_1net.html#ad00d628cbd587165ad1394071b0a64a2">  114</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacelib_1_1net.html#ad00d628cbd587165ad1394071b0a64a2">hasnet</a>() -&gt; bool:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">hasnet</a>() -&gt; bool:</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return True if the Internet is available&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> urlopen(<span class="stringliteral">&#39;http://google.com&#39;</span>).getcode() == 200:</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">&#39;https://www.wikipedia.org&#39;</span>).getcode() == 200:</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">&#39;https://docs.python.org&#39;</span>).getcode() == 200:</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">  121</a></span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="ttc" id="namespacelib_1_1net_html_ad00d628cbd587165ad1394071b0a64a2"><div class="ttname"><a href="namespacelib_1_1net.html#ad00d628cbd587165ad1394071b0a64a2">lib.net.hasnet</a></div><div class="ttdeci">def hasnet()</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00114">net.py:114</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_a5963d0b56e2b5ab0fc2826f1698d9492"><div class="ttname"><a href="namespacelib_1_1net.html#a5963d0b56e2b5ab0fc2826f1698d9492">lib.net.findgw</a></div><div class="ttdeci">def findgw()</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00104">net.py:104</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_a42844db6dbb130bcf65d80684eaf7273"><div class="ttname"><a href="namespacelib_1_1net.html#a42844db6dbb130bcf65d80684eaf7273">lib.net.name2ip</a></div><div class="ttdeci">def name2ip</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00078">net.py:78</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_abcf8521834c9b79613b0f6033fefadec"><div class="ttname"><a href="namespacelib_1_1net.html#abcf8521834c9b79613b0f6033fefadec">lib.net.ping</a></div><div class="ttdeci">def ping</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00092">net.py:92</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_a9a7b045d50f18d13b2825192b694ec0c"><div class="ttname"><a href="namespacelib_1_1net.html#a9a7b045d50f18d13b2825192b694ec0c">lib.net.lst2ipv6</a></div><div class="ttdeci">def lst2ipv6</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00064">net.py:64</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_aa96cc5b2c12b27cb41fbd2eb8f174ff1"><div class="ttname"><a href="namespacelib_1_1net.html#aa96cc5b2c12b27cb41fbd2eb8f174ff1">lib.net.isdomain</a></div><div class="ttdeci">def isdomain</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00083">net.py:83</a></div></div>
-<div class="ttc" id="namespacelib_1_1net_html_aecc5ff5675a8d95751092177e5e89c98"><div class="ttname"><a href="namespacelib_1_1net.html#aecc5ff5675a8d95751092177e5e89c98">lib.net.ints2ipv6</a></div><div class="ttdeci">def ints2ipv6</div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00053">net.py:53</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a458ab912057448498c8d7080f1e88e8e"><div class="ttname"><a href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">pybooster.net.hasnet</a></div><div class="ttdeci">def hasnet()</div><div class="ttdoc">Return True if the Internet is available. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00121">net.py:121</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1b3db66fba2f7daaebcb9deb3fcdccf4"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">pybooster.net.isdomain</a></div><div class="ttdeci">def isdomain</div><div class="ttdoc">Test if a Domain Name resolves to an IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00084">net.py:84</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1861797e7413b251c2efaf5ee930b255"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">pybooster.net.name2ip</a></div><div class="ttdeci">def name2ip</div><div class="ttdoc">Convert a domain name to an IPv4 address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00079">net.py:79</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1bdd3d8d95eb851d8cb84d78b1f3e537"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">pybooster.net.ping</a></div><div class="ttdeci">def ping</div><div class="ttdoc">Specify an IP address or a domain name. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00093">net.py:93</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a72dc4b083f2e0c992861a6d61ebab440"><div class="ttname"><a href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">pybooster.net.findgw</a></div><div class="ttdeci">def findgw()</div><div class="ttdoc">Get the Gateway IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00108">net.py:108</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a097c09e42984d21ff8146d3d888fc558"><div class="ttname"><a href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">pybooster.net.lst2ipv6</a></div><div class="ttdeci">def lst2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00065">net.py:65</a></div></div>
 <div class="ttc" id="classValueError_html"><div class="ttname"><a href="classValueError.html">ValueError</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a7d86753ed90451125dac01b0dfdb5441"><div class="ttname"><a href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">pybooster.net.ints2ipv6</a></div><div class="ttdeci">def ints2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00054">net.py:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="net_8py.html">net.py</a></li>
-    <li class="footer">Generated on Fri Mar 18 2016 22:37:01 for PyBooster by
+    <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="net_8py.html">net.py</a></li>
+    <li class="footer">Generated on Sat Mar 19 2016 17:05:49 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

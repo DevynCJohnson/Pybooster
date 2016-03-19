@@ -74,6 +74,6 @@ DATA
     __all__ = ['encrypt_xor', 'decrypt_xor', 'encrypt_xor_bytes_key_str', ...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/cryptography.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/cryptography.py
 
 

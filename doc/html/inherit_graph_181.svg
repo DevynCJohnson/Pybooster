@@ -19,7 +19,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classlib_1_1basic_1_1ObjectError.html" target="_top" xlink:title="ObjectError">
+<g id="a_node2"><a xlink:href="classpybooster_1_1basic_1_1ObjectError.html" target="_top" xlink:title="Raised when an object cannot be found, used, or manipulated. ">
 <polygon fill="white" stroke="black" points="100,-38.5 100,-57.5 166,-57.5 166,-38.5 100,-38.5"/>
 <text text-anchor="middle" x="133" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">ObjectError</text>
 </a>

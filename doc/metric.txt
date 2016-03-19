@@ -62,6 +62,6 @@ DATA
     __all__ = ['YOCTO_UNITS', 'ZEPTO_UNITS', 'ATTO_UNITS', 'FEMTO_UNITS', ...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/metric.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/metric.py
 
 

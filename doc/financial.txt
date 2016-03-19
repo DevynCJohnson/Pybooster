@@ -45,6 +45,6 @@ DATA
     __all__ = ['compounded_interest', 'compounded_ending_balance', 'simple...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/financial.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/financial.py
 
 

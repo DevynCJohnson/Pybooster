@@ -50,6 +50,6 @@ DATA
     __all__ = ['PLANETS', 'DWARF_PLANETS', 'PLANET_SYMBOLS', 'MERCURY', 'V...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/astronomy.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/astronomy.py
 
 

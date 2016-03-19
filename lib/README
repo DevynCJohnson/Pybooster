@@ -1,3 +1,0 @@
-This directory contains the Python libraries.
-
-./clib-src contains the C source code. The compiled libraries are placed in ./clib

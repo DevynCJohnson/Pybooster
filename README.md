@@ -11,7 +11,7 @@ The C-libraries can be compiled as Python modules or linked in other projects.
 
 EzWin is also included in PyBooster. Ezwin is a collection of GTK windows.
 
-Please consider donating to http://dcjtech.info/ to help development (click the **Donate** button).
+Please consider donating to <http://dcjtech.info/> to help development (click the **Donate** button).
 
 
 REQUIREMENTS
@@ -24,7 +24,7 @@ REQUIREMENTS
 
 PyBooster should work on all operating systems that support Python3. The make-files and shell scripts will only work on most Unixoid systems. However, it is not mandatory that the source code be built (the Python script will still work).
 
-The scripts `./_MISC/get-build-dependencies.sh` and `./_MISC/get-dependencies.sh` can be executed to install the needed software packages (Debian-based Linux distros only).
+The scripts `./tools/get-build-dependencies.sh` and `./tools/get-dependencies.sh` can be executed to install the needed software packages (Debian-based Linux distros only).
 
 
 BUILDING
@@ -60,9 +60,10 @@ Follow the below guidelines when assisting the development of PyBooster.
 
 - Keep code organized
 - Keep files organized
-  - C source code belongs in `./lib/clib-src/`
-  - Compiled C libraries belong in `./lib/clib/`
-  - Python modules (`*.py` and `*.so`) belong in `./lib/`
+  - C source code belongs in `./src/`
+  - Compiled C libraries belong in `./clib/`
+  - Python modules (`*.py` and `*.so`) belong in `./pybooster/`
+  - Project tools belong in `./tools/`
 - Document/explain complicated algorithms using comments
   - C src uses Doxygen to document the code. In-line comments are also used
 - Languages: C-Standard-2011 (C11), Python3.4 (or newer), and Assembly (AT&T Syntax)
@@ -70,8 +71,8 @@ Follow the below guidelines when assisting the development of PyBooster.
 - License code under LGPLv3
 - Optimize the code
   - Use `const` in function parameters if the parameter is never changed
-- Use the proper license header (see templates under `./_MISC`) for each src file
-  - Templates can be found in `./_MISC`
+- Use the proper license header (see templates under `./tools`) for each src file
+  - Templates can be found in `./tools`
 - Version numbers use the format `YYYY.MM.DD` or `%Y.%m.%d`
 
 #### C ####

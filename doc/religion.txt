@@ -35,6 +35,6 @@ DATA
     __all__ = ['CHRISTIAN_BIBLE_OT_BOOKS', 'CHRISTIAN_BIBLE_NT_BOOKS', 'CH...
 
 FILE
-    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/religion.py
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/religion.py
 
 
