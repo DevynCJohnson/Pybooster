@@ -1,0 +1,143 @@
+Help on module convvolume:
+
+NAME
+    convvolume
+
+DESCRIPTION
+    @file convvolume.py
+    @package pybooster.convvolume
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Measurement (Volume) Conversions
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    cuin2cancups(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Canadian Cups
+    
+    cuin2cum(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Cubic Meters
+    
+    cuin2dryqt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Dry Quarts
+    
+    cuin2l(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Liters
+    
+    cuin2metriccups(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Metric Cups
+    
+    cuin2metrictbl(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Metric Tablespoons
+    
+    cuin2metrictsp(_volume:int, _round:int=3) -> float
+        Cubic Inches -> Metric Teaspoons
+    
+    cuin2ukfloz(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Fluid Ounces
+    
+    cuin2ukgal(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Gallons
+    
+    cuin2ukgills(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Gills
+    
+    cuin2ukpt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Pints
+    
+    cuin2ukqt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Quarts
+    
+    cuin2uktbl(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Tablespoons
+    
+    cuin2uktsp(_volume:int, _round:int=3) -> float
+        Cubic Inches -> UK Teaspoons
+    
+    cuin2uscups(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Cups
+    
+    cuin2usdrygal(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Dry Gallons
+    
+    cuin2usdrypt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Dry Pints
+    
+    cuin2usfloz(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Fluid Ounces
+    
+    cuin2usgills(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Gills
+    
+    cuin2usliqgal(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Liquid Gallons
+    
+    cuin2usliqpt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Liquid Pints
+    
+    cuin2usqt(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US (Liquid) Quarts
+    
+    cuin2ustbl(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Tablespoons
+    
+    cuin2ustsp(_volume:int, _round:int=3) -> float
+        Cubic Inches -> US Teaspoons
+    
+    cum2cuin(_volume:int, _round:int=3) -> float
+        Cubic Meters -> Cubic Inches
+    
+    l2cuin(_volume:int, _round:int=3) -> float
+        Liters -> Cubic Inches
+    
+    ukpt2ukgal(_volume:int, _round:int=3) -> float
+        UK Pints -> UK Gallons
+    
+    ukpt2usdrygal(_volume:int, _round:int=3) -> float
+        UK Pints -> US Dry Gallons
+    
+    ukpt2usliqgal(_volume:int, _round:int=3) -> float
+        UK Pints -> US Liquid Gallons
+    
+    usdrypt2ukgal(_volume:int, _round:int=3) -> float
+        US Dry Pints -> UK Gallons
+    
+    usdrypt2usdrygal(_volume:int, _round:int=3) -> float
+        US Dry Pints -> US Dry Gallons
+    
+    usdrypt2usliqgal(_volume:int, _round:int=3) -> float
+        US Dry Pints -> US Liquid Gallons
+    
+    usliqpt2ukgal(_volume:int, _round:int=3) -> float
+        US Liquid Pints -> UK Gallons
+    
+    usliqpt2usdrygal(_volume:int, _round:int=3) -> float
+        US Liquid Pints -> US Dry Gallons
+    
+    usliqpt2usliqgal(_volume:int, _round:int=3) -> float
+        US Liquid Pints -> US Liquid Gallons
+
+DATA
+    __all__ = ['cuin2cancups', 'cuin2cum', 'cuin2dryqt', 'cuin2l', 'cuin2m...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convvolume.py
+
+

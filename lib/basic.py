@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.basic
--- --
-Basic functions for most uses
--- --
+@file basic.py
+@package pybooster.basic
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Basic functions for most uses
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -27,6 +26,7 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
+
 
 import os
 
@@ -106,10 +106,6 @@ __all__ = [
     'int2bitlen',
     'char2bitlen',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # CLASSES

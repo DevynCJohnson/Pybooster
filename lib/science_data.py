@@ -2,15 +2,17 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.science_data
--- --
-Scientific Data
--- --
+@file science_data.py
+@package pybooster.science_data
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Scientific Constants
+@version 2016.03.18
+
+@section DESCRIPTION
+All molar-mass constants are in grams per mole.
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -26,9 +28,8 @@ Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
--- --
-All molar masses are in grams per mole
 """
+
 
 __all__ = [
     'ATOM_MOLAR_MASS',
@@ -140,10 +141,6 @@ __all__ = [
     'ELECTRON_MUON_MASS_RATIO',
     'ELECTRON_NEUTRON_MAGNETIC_MOMENT_RATIO',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 ATOM_MOLAR_MASS = {  # NOTE: All molar masses are in grams per mole

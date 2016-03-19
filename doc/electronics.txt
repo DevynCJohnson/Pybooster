@@ -1,0 +1,51 @@
+Help on module electronics:
+
+NAME
+    electronics
+
+DESCRIPTION
+    @file electronics.py
+    @package pybooster.electronics
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Electronics equations
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    current(_voltage:float, _resistance:float) -> float
+        I=E/Ω
+    
+    power(_current:float=None, _resistance:float=None, _voltage:float=None) -> float
+        Power (Wattage)
+    
+    resistance(_voltage:float, _current:float) -> float
+        Ω=E/I
+    
+    voltage(_current:float, _resistance:float) -> float
+        E=IΩ
+
+DATA
+    OHMS = 'Ω'
+    __all__ = ['OHMS', 'current', 'resistance', 'voltage', 'power']
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/electronics.py
+
+

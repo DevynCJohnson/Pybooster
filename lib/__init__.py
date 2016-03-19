@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
--- --
+@file __init__.py
+@package pybooster.__init__
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief PyBooster Initialization
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -24,6 +26,7 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
+
 
 __all__ = [
     'astronomy',
@@ -68,8 +71,9 @@ __all__ = [
     'xmath',
 ]
 
+
 __author__ = r'Devyn Collier Johnson'
 __email__ = r'DevynCJohnson@Gmail.com'
 __copyright__ = r'LGPLv3'
 __version__ = '2016.03.18'
-__description__ = r'Various Extras for Python3'
+__description__ = r'Collection of libraries for Python3'

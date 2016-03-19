@@ -1,9 +1,15 @@
+// -*- coding: utf-8 -*-
+// vim:fileencoding=utf-8
 /**
+@file FILE.c
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief DESCRIPTION
+@brief SUMMARY
 @version 2016.03.09
+
+@section DESCRIPTION
+TEXT
 
 @section LICENSE
 GNU Lesser General Public License v3

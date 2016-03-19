@@ -1,0 +1,6 @@
+Help on function ezupd in ezwin.ezwin:
+
+ezwin.ezwin.ezupd = ezupd(_msg:str='Message') -> None
+    Update Dialog
+    Display information on an update
+

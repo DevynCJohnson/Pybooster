@@ -2,15 +2,47 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.strtools
--- --
-Functions for various string and character manipulations
--- --
+@file strtools.py
+@package pybooster.strtools
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Functions for various string and character manipulations
+@version 2016.03.18
+
+@section DESCRIPTION
+This library contains\n
+ - Constants for various characters and character ranges\n
+ - Functions for various string and character manipulations\n
+ - Ascii, Hex (\\x*), UTF-8 (\\u*), UTF-16BE/UTF-32 (\\U*), HTML-Entities (&#*;)\n
+
+C-escapes = JS-escapes = HTML-named-ref = decimal ncr = hex ncr\n
+'\\U0001d4c3' = '\\ud835\\udcc3' = &nscr; =  &#120003; =  &#x1D4C3;\n
+'\\U0001d4a9' = '\\ud835\\udca9' = &Nscr; = &#119977; = &#x1D4A9;\n
+
+unicode+hex = 0x notation = css = utf16 = utf8 = uri%\n
+U+1D4C3 = 0x1D4C3 = \01D4C3 = D835 DCC3 = F0 9D 93 83 = %F0%9D%93%83\n
+U+1D4A9 = 0x1D4A9 = \01D4A9 = D835 DCA9 = F0 9D 92 A9 = %F0%9D%92%A9\n
+
+@section VARIABLES
+ - _refnum: stores an HTML reference number as a string (&#38;)\n
+ - _refname: stores an HTML name entity as a string (&amp;)\n
+ - _name: stores an unicode character name\n
+ - _char: stores a single character or an escape sequence (\\x26)\n
+ - _str: stores a string/text\n
+ - _int: stores an integer\n
+ - _hex: stores a hex sequence as an integer, str, or escape sequence\n
+ - _oct: stores an octal sequence as an integer, str, or escape sequence\n
+ - _bin: stores a binary sequence as an integer, str, or escape sequence\n
+ - _bytes: stores a bytes-type object\n
+ - _dict: specify a dictionary\n
+ - _search: a value to find\n
+ - _assert: indicate that some condition be met\n
+ - _numbase: specify the base of the number ('2'=binary; '16'=hex; etc.)\n
+ - _escape: boolean; "True" (the default) makes a function escape the output\n
+ - _endian: specify endian (little/big); default is the native value\n
+ - _encoding: specify encoding; the default value is "utf8"\n
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -26,43 +58,11 @@ Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
--- --
-This library contains:
-* Constants for various characters and character ranges
-* Functions for various string and character manipulations
-* Ascii, Hex (\\x*), UTF-8 (\\u*), UTF-16BE/UTF-32 (\\U*), HTML-Entities (&#*;)
--- --
-C-escapes = JS-escapes = HTML-named-ref = decimal ncr = hex ncr
-'\\U0001d4c3' = '\\ud835\\udcc3' = &nscr; =  &#120003; =  &#x1D4C3;
-'\\U0001d4a9' = '\\ud835\\udca9' = &Nscr; = &#119977; = &#x1D4A9;
-
-unicode+hex = 0x notation = css = utf16 = utf8 = uri%
-U+1D4C3 = 0x1D4C3 = \01D4C3 = D835 DCC3 = F0 9D 93 83 = %F0%9D%93%83
-U+1D4A9 = 0x1D4A9 = \01D4A9 = D835 DCA9 = F0 9D 92 A9 = %F0%9D%92%A9
--- --
-API
-
-Variables
-    _refnum - stores an HTML reference number as a string (&#38;)
-    _refname - stores an HTML name entity as a string (&amp;)
-    _name - stores an unicode character name
-    _char - stores a single character or an escape sequence (\\x26)
-    _str - stores a string/text
-    _int - stores an integer
-    _hex - stores a hex sequence as an integer, str, or escape sequence
-    _oct - stores an octal sequence as an integer, str, or escape sequence
-    _bin - stores a binary sequence as an integer, str, or escape sequence
-    _bytes - stores a bytes-type object
-    _dict - specify a dictionary
-    _search - a value to find
-    _assert - indicate that some condition be met
-    _numbase - specify the base of the number ('2'=binary; '16'=hex; etc.)
-    _escape - boolean; "True" (the default) makes a function escape the output
-    _endian - specify endian (little/big); default is the native value
-    _encoding - specify encoding; the default value is "utf8"
 """
 
+
 # pylint: disable=C0302,R0912,R0915,W0105,W0123
+
 
 from sys import byteorder
 
@@ -302,10 +302,6 @@ __all__ = [
     'text2square',
     'square2text',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # CONSTANTS

@@ -1,6 +1,0 @@
-Help on function ezsecurity in pybooster.ezwin.ezwin:
-
-pybooster.ezwin.ezwin.ezsecurity = ezsecurity(_msg:str='Security Message') -> None
-    Security Dialog
-    Display a security-related message
-

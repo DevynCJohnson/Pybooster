@@ -1,0 +1,62 @@
+Help on module pipx:
+
+NAME
+    pipx
+
+DESCRIPTION
+    @file pipx.py
+    @package pybooster.pipx
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief PIP Extras
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    install(package) -> int
+        Install PIP package
+    
+    listcurrent() -> str
+        List up-to-dated PIP packages
+    
+    listinstalled() -> str
+        List installed PIP packages
+    
+    listoutdated() -> str
+        List outdated PIP packages
+    
+    numpkg() -> int
+        Return the number of installed PIP packages
+    
+    pkginfo(package) -> str
+        Display package info
+    
+    pkgsearch(keyword) -> str
+        Search the database by keyword
+    
+    uninstall(package) -> int
+        Uninstall a PIP package
+
+DATA
+    __all__ = ['install', 'uninstall', 'listinstalled', 'listoutdated', 'l...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/pipx.py
+
+

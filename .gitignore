@@ -2,6 +2,7 @@
 .git/*
 python/
 python/*
+clib/
 *.cache
 *.tmp
 *.todo.txt
@@ -64,6 +65,7 @@ python/*
 
 # Byte-compiled
 __pycache__/
+*__pycache__
 *.py[cod]
 
 # Distribution

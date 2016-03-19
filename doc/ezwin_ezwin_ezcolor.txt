@@ -1,0 +1,6 @@
+Help on function ezcolor in ezwin.ezwin:
+
+ezwin.ezwin.ezcolor = ezcolor(_datatype:str='list') -> type
+    Color Dialog
+    Select a color
+

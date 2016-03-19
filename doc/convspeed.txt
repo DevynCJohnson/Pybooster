@@ -1,0 +1,41 @@
+Help on module convspeed:
+
+NAME
+    convspeed
+
+DESCRIPTION
+    @file convspeed.py
+    @package pybooster.convspeed
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Measurement (Speed) Conversions
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    mph2kph(_speed:int, _round:int=3) -> float
+        Miles per Hour -> Kilometers per Hour
+
+DATA
+    __all__ = ['mph2kph']
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convspeed.py
+
+

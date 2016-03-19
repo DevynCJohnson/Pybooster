@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.fs
--- --
-Filesystem and file related functions
--- --
+@file fs.py
+@package pybooster.fs
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Filesystem and file related functions
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -27,6 +26,7 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
+
 
 from binascii import b2a_qp, hexlify
 from glob import glob
@@ -83,10 +83,6 @@ __all__ = [
     'rmfile',
     'rmdir',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # CONSTANTS

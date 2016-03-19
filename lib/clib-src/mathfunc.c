@@ -11,13 +11,13 @@
 @section DESCRIPTION
 Numerous mathematical and trigonometric functions.
 This extends the standard math library by providing by offering faster alternatives.
-Such functions include squareroot, fractorial, fib, haversin, isprime, ishexagonal, etc.
-math.h contains\n
-cos, sin, tan  // General (Radians)\n
-acos, asin, atan, atan2  // Arcs\n
-cosh, sinh, tanh  // Hyperbolics\n
-acosh, asinh, atanh  // Arc-Hyperbolics\n
-hypot\n
+Such functions include squareroot, fractorial, fib, haversin, isprime, ishexagonal, etc.\n
+<math.h> contains
+ - cos, sin, tan  // General (Radians)
+ - acos, asin, atan, atan2  // Arcs
+ - cosh, sinh, tanh  // Hyperbolics
+ - acosh, asinh, atanh  // Arc-Hyperbolics
+ - hypot
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -40,35 +40,21 @@ License along with this library.
 
 https://en.wikipedia.org/wiki/List_of_types_of_numbers
 
-* NATURAL/CARDINAL NUMBER (ℕ): Counting numbers {0, 1, 2, 3, …}, are called natural numbers. (https://en.wikipedia.org/wiki/Natural_number)
-
-* INTEGER (ℤ): A number that can be written without a fractional component. For example, 17, 3, 0, and -1024 are integers, while 9.73, 5 1⁄2, and √2 are not integers. (https://en.wikipedia.org/wiki/Integer)
-
-* RATIONAL NUMBER (ℚ): Any number that can be expressed as the quotient or fraction p/q of two integers, p and q, with the denominator, q, not equal to zero. Since q may be equal to 1, every integer is a rational number. The decimal expansion of a rational number always either terminates after a finite number of digits or begins to repeat the same finite sequence of digits over and over. (https://en.wikipedia.org/wiki/Rational_number)
-
-* TRANSCENDENTAL NUMBER: A real or complex number that is not algebraic; that is, it is not a root of a non-zero polynomial equation with rational coefficients. The best-known transcendental numbers are π and e. (https://en.wikipedia.org/wiki/Transcendental_number)
-
-* REAL NUMBER (ℝ): A value that represents a quantity along a continuous line. The real numbers include all the rational numbers, such as the integer -5 and the fraction 4/3, all the irrational numbers, such as √2 (1.41421356…) and all transcendental numbers, such as π (3.14159265…). (https://en.wikipedia.org/wiki/Real_number)
-
-* IRRATIONAL NUMBER (𝕀): Any real number that cannot be expressed as a ratio of integers. Irrational numbers cannot be represented as terminating or repeating decimals. As a consequence of Cantor's proof that the real numbers are uncountable and the rationals countable, almost all real numbers are irrational. Irrational numbers include √2, π, e, and φ. (https://en.wikipedia.org/wiki/Irrational_number)
-
-* IMAGINARY NUMBER: A complex number that can be written as a real number multiplied by the imaginary unit 𝕚. (https://en.wikipedia.org/wiki/Imaginary_number)
-
-* COMPLEX NUMBER (ℂ): A number that can be expressed in the form a + b𝕚, where a and b are real numbers and 𝕚 is the imaginary unit, that satisfies the equation 𝕚^2=-1. In this expression, a is the real part and b is the imaginary part of the complex number. (https://en.wikipedia.org/wiki/Complex_number)
-
-* TESSARINE OR BICOMPLEX-NUMBER: A hypercomplex number in a commutative, associative algebra over real numbers with two imaginary units (designated i and k). (https://en.wikipedia.org/wiki/Bicomplex_number)
-
-* HYPERCOMPLEX NUMBER: An element of a unital algebra over the field of real numbers. Hypercomplex numbers include quaternions, octonions, sedenions, tessarines, coquaternions, and biquaternions. (https://en.wikipedia.org/wiki/Hypercomplex_number)
-
-* QUATERNION (ℍ): A number system that extends the complex numbers and applied to mechanics in three-dimensional space. A feature of quaternions is that multiplication of two quaternions is noncommutative. Hamilton defined a quaternion as the quotient of two directed lines in a three-dimensional space or equivalently as the quotient of two vectors. Quaternions form a four-dimensional associative normed division algebra over the real numbers, and therefore also a domain. In fact, the quaternions were the first noncommutative division algebra to be discovered. (https://en.wikipedia.org/wiki/Quaternion)
-
-* SPLIT-QUATERNION OR COQUATERNION: Elements of a 4-dimensional associative algebra. Unlike the quaternion algebra, the split-quaternions contain zero divisors, nilpotent elements, and nontrivial idempotents. As a mathematical structure, they form an algebra over the real numbers, which is isomorphic to the algebra of 2 × 2 real matrices. A coquaternion equals `w + xi + yj + zk`. (https://en.wikipedia.org/wiki/Split-quaternion)
-
-* BIQUATERNION: Are the numbers w + x i + y j + z k, where w, x, y, and z are complex numbers and the elements of {1, i, j, k} multiply as in the quaternion group. As there are three types of complex numbers, so there are three types of biquaternions (Ordinary Biquaternions, Split-biquaternions, and Dual quaternions). (https://en.wikipedia.org/wiki/Biquaternion)
-
-* OCTONION (𝕆): Normed division algebra over the real numbers. Octonions have eight dimensions; twice the number of dimensions of the quaternions. They are noncommutative and nonassociative, but satisfy a weaker form of associativity. (https://en.wikipedia.org/wiki/Octonion)
-
-* SEDENION (𝕊): 16-dimensional noncommutative and nonassociative numbers over the reals and obtained by applying the Cayley–Dickson construction to the octonions. (https://en.wikipedia.org/wiki/Sedenion)
+ - NATURAL/CARDINAL NUMBER (ℕ): Counting numbers {0, 1, 2, 3, …}, are called natural numbers. (https://en.wikipedia.org/wiki/Natural_number)
+ - INTEGER (ℤ): A number that can be written without a fractional component. For example, 17, 3, 0, and -1024 are integers, while 9.73, 5 1⁄2, and √2 are not integers. (https://en.wikipedia.org/wiki/Integer)
+ - RATIONAL NUMBER (ℚ): Any number that can be expressed as the quotient or fraction p/q of two integers, p and q, with the denominator, q, not equal to zero. Since q may be equal to 1, every integer is a rational number. The decimal expansion of a rational number always either terminates after a finite number of digits or begins to repeat the same finite sequence of digits over and over. (https://en.wikipedia.org/wiki/Rational_number)
+ - TRANSCENDENTAL NUMBER: A real or complex number that is not algebraic; that is, it is not a root of a non-zero polynomial equation with rational coefficients. The best-known transcendental numbers are π and e. (https://en.wikipedia.org/wiki/Transcendental_number)
+ - REAL NUMBER (ℝ): A value that represents a quantity along a continuous line. The real numbers include all the rational numbers, such as the integer -5 and the fraction 4/3, all the irrational numbers, such as √2 (1.41421356…) and all transcendental numbers, such as π (3.14159265…). (https://en.wikipedia.org/wiki/Real_number)
+ - IRRATIONAL NUMBER (𝕀): Any real number that cannot be expressed as a ratio of integers. Irrational numbers cannot be represented as terminating or repeating decimals. As a consequence of Cantor's proof that the real numbers are uncountable and the rationals countable, almost all real numbers are irrational. Irrational numbers include √2, π, e, and φ. (https://en.wikipedia.org/wiki/Irrational_number)
+ - IMAGINARY NUMBER: A complex number that can be written as a real number multiplied by the imaginary unit 𝕚. (https://en.wikipedia.org/wiki/Imaginary_number)
+ - COMPLEX NUMBER (ℂ): A number that can be expressed in the form a + b𝕚, where a and b are real numbers and 𝕚 is the imaginary unit, that satisfies the equation 𝕚^2=-1. In this expression, a is the real part and b is the imaginary part of the complex number. (https://en.wikipedia.org/wiki/Complex_number)
+ - TESSARINE OR BICOMPLEX-NUMBER: A hypercomplex number in a commutative, associative algebra over real numbers with two imaginary units (designated i and k). (https://en.wikipedia.org/wiki/Bicomplex_number)
+ - HYPERCOMPLEX NUMBER: An element of a unital algebra over the field of real numbers. Hypercomplex numbers include quaternions, octonions, sedenions, tessarines, coquaternions, and biquaternions. (https://en.wikipedia.org/wiki/Hypercomplex_number)
+ - QUATERNION (ℍ): A number system that extends the complex numbers and applied to mechanics in three-dimensional space. A feature of quaternions is that multiplication of two quaternions is noncommutative. Hamilton defined a quaternion as the quotient of two directed lines in a three-dimensional space or equivalently as the quotient of two vectors. Quaternions form a four-dimensional associative normed division algebra over the real numbers, and therefore also a domain. In fact, the quaternions were the first noncommutative division algebra to be discovered. (https://en.wikipedia.org/wiki/Quaternion)
+ - SPLIT-QUATERNION OR COQUATERNION: Elements of a 4-dimensional associative algebra. Unlike the quaternion algebra, the split-quaternions contain zero divisors, nilpotent elements, and nontrivial idempotents. As a mathematical structure, they form an algebra over the real numbers, which is isomorphic to the algebra of 2 × 2 real matrices. A coquaternion equals `w + xi + yj + zk`. (https://en.wikipedia.org/wiki/Split-quaternion)
+ - BIQUATERNION: Are the numbers w + x i + y j + z k, where w, x, y, and z are complex numbers and the elements of {1, i, j, k} multiply as in the quaternion group. As there are three types of complex numbers, so there are three types of biquaternions (Ordinary Biquaternions, Split-biquaternions, and Dual quaternions). (https://en.wikipedia.org/wiki/Biquaternion)
+ - OCTONION (𝕆): Normed division algebra over the real numbers. Octonions have eight dimensions; twice the number of dimensions of the quaternions. They are noncommutative and nonassociative, but satisfy a weaker form of associativity. (https://en.wikipedia.org/wiki/Octonion)
+ - SEDENION (𝕊): 16-dimensional noncommutative and nonassociative numbers over the reals and obtained by applying the Cayley–Dickson construction to the octonions. (https://en.wikipedia.org/wiki/Sedenion)
 */
 
 

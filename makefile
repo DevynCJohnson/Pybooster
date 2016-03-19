@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
-# Makefile for pylibc and PyBooster
-# Version 2016.03.18
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# @brief Makefile for PyBooster
+# @version 2016.03.18
 
 
 ifdef DCJ
@@ -161,7 +163,7 @@ default:
 ## PHONY ##
 
 
-.PHONY : all ast backup byte clean cleanall commit doc everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp stat static strip submit uninstall
+.PHONY : all ast backup byte clean cleanall commit doc doxy everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp stat static strip submit uninstall
 
 
 ## BUILD COMMANDS ##
@@ -243,6 +245,9 @@ packagezip : rmtmp
 doc :
 	-@./makedoc.sh
 
+doxy :
+	-@doxywizard ./Doxyfile; chmod --quiet 644 ./Doxyfile
+
 rmtmp :
 	-@rm -f $(DIR)/*.o $(CLIBSRC)/*.o $(DIR)/*.s $(CLIBSRC)/*.s $(DIR)/*.bc $(CLIBSRC)/*.bc $(DIR)/*.ll $(CLIBSRC)/*.ll $(DIR)/*.ast $(CLIBSRC)/*.ast $(DIR)/*.i $(CLIBSRC)/*.i  $(DIR)/*.ii $(CLIBSRC)/*.ii $(DIR)/*.pch $(CLIBSRC)/*.pch; rm -frd --one-file-system $(DIR)/build/ $(CLIBSRC)/build/
 
@@ -252,10 +257,10 @@ rmcache :
 clean : rmtmp rmcache
 
 cleandoc :
-	-@rm -frd $(DIR)/doc/*
+	-@rm -frd ./doc/*
 
 cleanall : clean
-	@rm -f $(DIR)/*.so $(CLIB)/*.so $(CLIB)/*.dll $(CLIB)/*.a $(DIR)/*.pyc $(DIR)/*.pyo
+	-@rm -f $(DIR)/*.so $(CLIB)/*.so $(CLIB)/*.dll $(CLIB)/*.a $(DIR)/*.pyc $(DIR)/*.pyo
 
 uninstall :
 	rm -frd --one-file-system /opt/pybooster/*; rm -f /opt/bin/ezwin; rm -f /usr/lib/python$(PYVERSION)/pybooster $(SYSPYCLIB); rm -f /etc/ld.so.conf.d/pyclib.conf; ldconfig
@@ -270,13 +275,15 @@ install : rmtmp
 	cp -Rf ./* /opt/pybooster/; \
 	# Ensure that the proper permissions are set \
 	$(CHMOD) 644 /opt/pybooster/doc/*; \
-	$(CHMOD) 644 /opt/pybooster/*.py; \
-	$(CHMOD) 644 /opt/pybooster/*.glade; \
-	$(CHMOD) 755 /opt/pybooster/*.so; \
+	$(CHMOD) 755 /opt/pybooster/doc/html; \
+	$(CHMOD) 644 /opt/pybooster/doc/html/*; \
+	$(CHMOD) 755 /opt/pybooster/doc/html/search; \
+	$(CHMOD) 644 /opt/pybooster/doc/html/search/*; \
+	$(CHMOD) 644 /opt/pybooster/*.py /opt/pybooster/*.glade; \
+	$(CHMOD) 755 /opt/pybooster/*.so /opt/pybooster/*.dll; \
 	$(CHMOD) 755 /opt/pybooster$(CLIBDIR)/*; \
 	$(CHMOD) 644 /opt/pybooster$(CLIBSRCDIR)/*; \
-	$(CHMOD) 644 /opt/pybooster/__pycache__/*; \
-	$(CHMOD) 644 /opt/pybooster/ezwin/__pycache__/*; \
+	$(CHMOD) 644 /opt/pybooster/__pycache__/* /opt/pybooster/ezwin/__pycache__/*; \
 	$(CHMOD) 755 /opt/pybooster/ezwin/*.py; \
 	$(CHMOD) 644 /opt/pybooster/ezwin/*.glade; \
 	# Make a link to ezwin.py in /opt/bin/ \
@@ -291,33 +298,29 @@ install : rmtmp
 	echo ""; echo "Installation Complete (PyBooster)!"; \
 
 fixperm : rmtmp
-	-@$(CHMOD) 644 $(DIR)/doc/*.txt; \
-	$(CHMOD) 755 $(DIR)/doc/html; \
-	$(CHMOD) 644 $(DIR)/doc/html/*; \
-	$(CHMOD) 755 $(DIR)/doc/html/search; \
-	$(CHMOD) 644 $(DIR)/doc/html/search/*; \
-	$(CHMOD) 644 $(DIR)/*.py; \
-	$(CHMOD) 644 $(DIR)/*.glade; \
-	$(CHMOD) 755 $(DIR)/*.so; \
-	$(CHMOD) 755 $(DIR)/*.dll; \
+	-@$(CHMOD) 644 ./doc/*.txt; \
+	$(CHMOD) 755 ./doc/html; \
+	$(CHMOD) 644 ./doc/html/*; \
+	$(CHMOD) 755 ./doc/html/search; \
+	$(CHMOD) 644 ./doc/html/search/*; \
+	$(CHMOD) 644 $(DIR)/*.py $(DIR)/*.pyw $(DIR)/*.glade; \
+	$(CHMOD) 755 $(DIR)/*.so $(DIR)/*.dll; \
 	$(CHMOD) 755 $(DIR)$(CLIBDIR)/*; \
 	$(CHMOD) 644 $(DIR)$(CLIBSRCDIR)/*; \
-	$(CHMOD) 644 $(DIR)/__pycache__/*; \
-	$(CHMOD) 644 $(DIR)/ezwin/__pycache__/*; \
-	$(CHMOD) 755 $(DIR)/ezwin/*.py; \
-	$(CHMOD) 644 $(DIR)/ezwin/*.glade; \
+	$(CHMOD) 644 $(DIR)/__pycache__/* $(DIR)/ezwin/__pycache__/*; \
+	$(CHMOD) 644 $(DIR)/ezwin/*.py $(DIR)/ezwin/*.glade; \
 
 
 ## GIT COMMANDS ##
 
 
-gitall : clean
+gitall : cleanall
 	-@git add -A
 
-commit : | clean fixperm
+commit : | cleanall fixperm
 	-@git commit -m "$(M)"
 
-stat : clean
+stat : cleanall
 	-@git status -s
 
 submit :

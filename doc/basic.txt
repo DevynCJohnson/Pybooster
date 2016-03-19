@@ -1,0 +1,611 @@
+Help on module basic:
+
+NAME
+    basic
+
+DESCRIPTION
+    @file basic.py
+    @package pybooster.basic
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Basic functions for most uses
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+CLASSES
+    builtins.BaseException(builtins.object)
+        NullException
+    builtins.Exception(builtins.BaseException)
+        SameFileError
+    builtins.NameError(builtins.Exception)
+        ObjectError(builtins.NameError, builtins.TypeError, builtins.ValueError)
+    builtins.TypeError(builtins.Exception)
+        ObjectError(builtins.NameError, builtins.TypeError, builtins.ValueError)
+    builtins.ValueError(builtins.Exception)
+        ObjectError(builtins.NameError, builtins.TypeError, builtins.ValueError)
+    
+    class NullException(builtins.BaseException)
+     |  Null Exception
+     |  
+     |  Method resolution order:
+     |      NullException
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  __reduce__(...)
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  __str__(self, /)
+     |      Return str(self).
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+    
+    class ObjectError(builtins.NameError, builtins.TypeError, builtins.ValueError)
+     |  Raised when an object cannot be found, used, or manipulated
+     |  
+     |  Method resolution order:
+     |      ObjectError
+     |      builtins.NameError
+     |      builtins.TypeError
+     |      builtins.ValueError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, msg:str='The object is malformed.')
+     |  
+     |  __str__(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.NameError:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+    
+    class SameFileError(builtins.Exception)
+     |  Raised when source and target are the same file
+     |  
+     |  Method resolution order:
+     |      SameFileError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, msg:str='The source and target file are the same.')
+     |  
+     |  __str__(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.Exception:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+
+FUNCTIONS
+    cache(_action:str, _ckey:str='', _cval=None)
+        Store data in cache in the form of a dict
+    
+    char2bitlen(_char:str) -> int
+        Return the number of bits needed to represent a character
+    
+    clearscr() -> None
+        Clear Terminal
+    
+    csv2json(_filepath:str) -> str
+        Convert a specified CSV file to a json string
+    
+    doeskeymvalue(_dict:dict) -> bool
+        Test if any key matches any dict value
+        Return True if a key matches a value in the dict
+        Examples - doeskeymvalue(DICT)
+        -{ 'A': 'x', 'B': 'A', 'C': 'z'} => True
+        -{ 'A': 'A', 'B': 'y', 'C': 'z'} => True
+        -{ 1: 'x', 2: 'y', 'C': 1} => True
+        -{ 'A': 'x', 'B': 'y', 'C': 'z'} => False
+        -{ 'A': 'x', 'B': 'a', 'C': 'z'} => False
+        Only int and str types are supported
+        -{ 'A': 'x', 'B': ['A', 'y'], 'C': 'z'} => False
+    
+    eny(_iter:<built-in function iter>) -> bool
+        Enhanced any()
+        >>> eny([1, 0, 2, 'str'])
+        True
+        >>> eny(['str', 'x', 'y'])
+        False
+        >>> eny(('str', 'x', 'y'))
+        False
+    
+    evaliter(_iter:<built-in function iter>) -> list
+        Evaluate values in iterable and return evaluated list of booleans
+    
+    execfile(_filename:str)
+        Execute Python script and get output
+    
+    ezcompile(_code:str)
+        Easily compile code that is in the form of a string
+        Example 1 -
+        c = '''print(''.join([line for line in open('/etc/passwd')]))'''
+        bytecode = ezcompile(c)
+        exec(bytecode) # or eval(bytecode)
+        .
+        Example 2 -
+        c2 = 'x = 45 * 37; import math; y = math.cos(37); print(x); print(y)'
+        bytecode = ezcompile(c2)
+    
+    finddictkey(_dict:dict, search_val) -> str
+        Search a dictionary by value and stop on first instance
+        Return the key containing the value
+        Else, return an empty string
+    
+    finddictkeys(_dict:dict, search_val) -> list
+        Search a dictionary by value and find all instances
+        Return a list of keys - ['key1', 'key2']
+        Else, return an empty list - []
+    
+    getlinenum() -> int
+        Return the script's line number where this method executes
+    
+    getwebpage(_address:str) -> str
+        Return a webpage's HTML code as a string
+        Usage:
+        getwebpage('http://website.com/')
+    
+    imported() -> list
+        List imports that are in 'modules' and 'globals()'
+    
+    imports() -> list
+        List all imports
+    
+    incde(i:int, j:int, delta:int=1) -> None
+        Increment and Deincrement
+        for i, j in incde(i=3, j=7): print(i, j)
+    
+    int2bitlen(_int:int) -> int
+        Return the number of bits needed to represent an integer
+    
+    ipygrep(_find:str, _text:str) -> bool
+        Case-insensitive reverse REGEX search
+        Test if a plain-string matches a regex string
+    
+    isbetween(_lo:int, _hi:int, _num:int) -> bool
+        Tests if a float/integer is between two other floats/integers
+        'float' and 'int' types may be compared to each other
+        >>> isbetween(2, 7, 5)
+        True
+        >>> isbetween(2.3, 9, 3.145149)
+        True
+        >>> isbetween(2.3, 9.1, 3.145149)
+        True
+        >>> isbetween(2, 7, 5.34)
+        True
+        >>> isbetween(2, 7, 13)
+        False
+        >>> isbetween(2, 7, 1.9)
+        False
+    
+    isbin(_bin:str) -> bool
+        Is the string binary
+        >>> isbin('01010101')
+        True
+        >>> isbin('0b1')
+        True
+        >>> isbin('0b1010')
+        True
+        >>> isbin('x')
+        False
+        >>> isbin('0bY')
+        False
+        >>> isbin('STR0b1100')
+        False
+        >>> isbin('0b7')
+        False
+        >>> isbin('0o10')
+        False
+    
+    iscomplex(_obj) -> bool
+        Is the object a complex number (37+54j)
+        >>> iscomplex(37+54j)
+        True
+        >>> iscomplex(37-54j)
+        True
+        >>> iscomplex(27j)
+        True
+        >>> iscomplex("37+54j")
+        True
+        >>> iscomplex('37+54j')
+        True
+        >>> iscomplex('37-54j')
+        True
+        >>> iscomplex(37+0j)
+        True
+        >>> iscomplex('37-54J')
+        False
+        >>> iscomplex(37)
+        False
+        >>> iscomplex('37')
+        False
+    
+    iscomplextype(_obj) -> bool
+        Is the object a complex type
+        >>> iscomplextype(37+54j)
+        True
+        >>> iscomplextype(37-54j)
+        True
+        >>> iscomplextype(27j)
+        True
+        >>> iscomplextype(-23j)
+        True
+        >>> iscomplextype('37+54j')
+        False
+        >>> iscomplextype("37+54j")
+        False
+    
+    isdefined(_var_name:str) -> bool
+        Test if the named variable is defined in current scope
+    
+    isexe(fpath:str) -> bool
+        Test if the specified file is executable
+        >>> isexe('/bin/sh')
+        True
+        >>> isexe('/usr/bin/env')
+        True
+        >>> isexe('/usr/bin')
+        False
+        >>> isexe('/etc/mime.types')
+        False
+    
+    isfrozen() -> bool
+        Test if the modules are built into the interpreter
+        (As seen in py2exe and others)
+    
+    ishex(_hex:str) -> bool
+        Is the string hexadecimal
+        >>> ishex('2c')
+        True
+        >>> ishex('0x2c')
+        True
+        >>> ishex('0xfFf')
+        True
+        >>> ishex('x')
+        False
+        >>> ishex('0xY')
+        False
+        >>> ishex('STR0xff')
+        False
+        >>> ishex('0o7')
+        False
+    
+    isinpath(program:str) -> bool
+        Test if the specified application is in the system PATH
+        >>> isinpath('sh')
+        True
+        >>> isinpath('env')
+        True
+        >>> isinpath('firefox')
+        True
+        >>> isinpath('FIREFOX')
+        False
+        >>> isinpath('not_in_path')
+        False
+        >>> isinpath('/usr/bin')
+        False
+        >>> isinpath('/usr/bin/')
+        False
+        >>> isinpath('/usr')
+        False
+    
+    isiter(_iter:<built-in function iter>) -> bool
+        Test if the object is iterable
+        >>> isiter('str')
+        True
+        >>> isiter('')
+        True
+        >>> isiter((0, 1))
+        True
+        >>> isiter(('str', [1, 2]))
+        True
+        >>> isiter(1)
+        False
+    
+    ismodfrozen(module_name:str) -> bool
+        Test if the specified module is frozen (built into the interpreter)
+    
+    ismodloaded(_module:str) -> bool
+        Test if the named module is imported
+    
+    isoct(_oct:str) -> bool
+        Is the string octal
+        >>> isoct('45')
+        True
+        >>> isoct('0o27')
+        True
+        >>> isoct('0o237')
+        True
+        >>> isoct('x')
+        False
+        >>> isoct('0oY')
+        False
+        >>> isoct('STR0o77')
+        False
+        >>> isoct('0x7')
+        False
+        >>> isoct('0o8')
+        False
+    
+    isvalidcode(_code:str) -> bool
+        Test if the given string is valid Python code
+        >>> isvalidcode('print("True")')
+        True
+        >>> isvalidcode('_str = Invalid"')
+        False
+    
+    listkeys(dict1:dict, dict2:dict) -> set
+        Make a list (as a 'set') of the keys from two dicts
+        listkeys({'KEY': [1, 2, 3], 'key2': [1, 2, 3]}, {'x': 1, 'y': 2})
+        {'key2', 'KEY', 'x', 'y'}
+    
+    lsmods() -> list
+        List loaded modules
+    
+    mergestrdict(dict1:dict, dict2:dict) -> dict
+        Merge two string dictionaries
+    
+    modexist(_module:str) -> bool
+        Test if module exists on system
+    
+    modpath(module:'ModuleType') -> str
+        Output module's file pathname
+    
+    playmusic(_file:str) -> None
+        Play an MP3, WAV, or other audio file via Pygame3
+    
+    pygrep(_find:str, _text:str) -> bool
+        Case-ensitive reverse REGEX search
+        Test if a plain-string matches a regex string
+    
+    rmdupkey(_dict:dict) -> dict
+        Remove duplicate keys
+        >>> rmdupkey({'key': [1, 2, 3], 'key': [4, 5, 6]})
+        {'key': [4, 5, 6]}
+        >>> rmdupkey({'key': [4, 5, 6], 'key': [1, 2, 3]})
+        {'key': [1, 2, 3]}
+    
+    rmdupkey_casein(_dict:dict) -> dict
+        Remove duplicate keys case-insensitively
+        Values of duplicate keys (besides one instance) are removed
+        >>> rmdupkey_casein({'KEY': [1, 2, 3], 'key': [1, 2, 3]})
+        {'key': [1, 2, 3]}
+        >>> rmdupkey_casein({'key': [1, 2, 3], 'KEY': [1, 2, 3]})
+        {'key': [1, 2, 3]}
+    
+    rmduplist(_list:list) -> list
+        Remove duplicate items from a list
+        rmduplist(['xz', 'xyz', 'xz', 'y'])
+        ['xyz', 'xz', 'y']
+    
+    rmduplist_frozenset(_list:list) -> frozenset
+        Remove duplicate items from a list and return a frozenset
+        rmduplist_frozenset(['xz', 'xyz', 'xz', 'y'])
+        frozenset{'xyz', 'xz', 'y'}
+    
+    rmduplist_set(_list:list) -> set
+        Remove duplicate items from a list and return a set
+        rmduplist_set(['xz', 'xyz', 'xz', 'y'])
+        {'xyz', 'xz', 'y'}
+    
+    rmduplist_tuple(_list:list) -> tuple
+        Remove duplicate items from a list and return a tuple
+        rmduplist_tuple(['xz', 'xyz', 'xz', 'y'])
+        ('xyz', 'xz', 'y')
+    
+    rmdupval(_dict:dict) -> dict
+        Remove duplicate values from a dict
+        rmdupval({'key': [1, 2, 3], 'key1': [1, 2, 3]})
+        {'key': [1, 2, 3]} or {'key1': [1, 2, 3]}
+    
+    rmfalse(_iter:<built-in function iter>) -> list
+        Remove False values from iterable and return evaluated list
+    
+    rmmod(_modname:str)
+        Remove module from the running instance
+    
+    sortlistlong2short(_list:list) -> None
+        Re-order a list (in-place) with longer strings first
+        >>> sortlistlong2short(['xz', 'xyz', 'x'])
+    
+    sortlistshort2long(_list:list) -> None
+        Re-order a list (in-place) with shorter strings first
+        >>> sortlistshort2long(['xz', 'xyz', 'x'])
+    
+    wherecurmods() -> list
+        List locations of current/present modules
+    
+    wheremods() -> list
+        List locations of imported modules
+    
+    wlong(_int32) -> bytes
+        Convert a 32-bit integer to little-endian
+    
+    words_in_str(_text:str, _wordlist:list) -> bool
+        Test if any of the listed words are in the given string
+        >>> words_in_str('This is a test.', ['test'])
+        True
+        >>> words_in_str('This is a test.', ['exam', 'test'])
+        True
+        >>> words_in_str('This is a test.', ['exam'])
+        False
+    
+    words_not_in_str(_text:str, _wordlist:list) -> bool
+        Test if any of the listed words are not in the given string
+        >>> words_not_in_str('This is a test.', ['exam', 'test'])
+        True
+        >>> words_not_in_str('This is a test.', ['exam'])
+        True
+        >>> words_not_in_str('This is a test.', ['test'])
+        False
+
+DATA
+    __all__ = ['SameFileError', 'ObjectError', 'NullException', 'rmfalse',...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/basic.py
+
+

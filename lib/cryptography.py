@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various cryptography functions
-pybooster.cryptography
--- --
-Bitwise Operations
--- --
+@file cryptography.py
+@package pybooster.cryptography
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Various cryptography functions
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,6 +27,7 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 from itertools import cycle
 
 
@@ -42,10 +42,6 @@ __all__ = [
     'decrypt_xor_bytes_key_bytes',
     'decrypt_xor_bytes_key_str',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # FUNCTIONS

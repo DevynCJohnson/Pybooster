@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+
 # python3 setup.py build_ext --inplace
 """Distutils setup file for building C-based modules"""
 
@@ -34,7 +37,7 @@ __author__ = 'Devyn Collier Johnson'
 __email__ = 'DevynCJohnson@Gmail.com'
 __url__ = 'http://dcjtech.info/'
 __copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
+__version__ = '2016.03.18'
 
 SRCDIR = './clib-src/'
 INCLUDE_DIRS = [SRCDIR]

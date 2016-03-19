@@ -1,0 +1,6 @@
+Help on function ezinfo in ezwin.ezwin:
+
+ezwin.ezwin.ezinfo = ezinfo(_msg:str='Information') -> None
+    Information Dialog
+    Display some information
+

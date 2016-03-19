@@ -2,15 +2,18 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.astronomy
--- --
-Astronomy Data
--- --
+@file astronomy.py
+@package pybooster.astronomy
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Astronomy Data
+@version 2016.03.18
+
+@section DESCRIPTION
+The planet properties are dictionaries that use lowercase key names.\n
+PLANET_SYMBOLS is a dictionary that uses uppercase key names.
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -26,10 +29,8 @@ Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
--- --
-The planet properties are dictionaries that use lowercase key names.
-PLANET_SYMBOLS is a dictionary that uses uppercase key names.
 """
+
 
 __all__ = [
     # LISTS
@@ -48,10 +49,6 @@ __all__ = [
     'NEPTUNE',
     'PLUTO',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # LISTS

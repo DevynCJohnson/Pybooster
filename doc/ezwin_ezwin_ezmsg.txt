@@ -1,0 +1,6 @@
+Help on function ezmsg in ezwin.ezwin:
+
+ezwin.ezwin.ezmsg = ezmsg(_msg:str='Message') -> None
+    Message Dialog
+    Display a message
+

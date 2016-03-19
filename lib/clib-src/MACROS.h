@@ -5,7 +5,7 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Standard Header Macros (header)
+@brief Standard Macros Header
 @version 2016.03.18
 
 @section DESCRIPTION
@@ -39,115 +39,64 @@ or execute "man feature_test_macros"
 
 Helpful Commands
 
- * gcc -dM -E -x c /dev/null
-
- * clang -dM -E -x c /dev/null
-
- * x86_64-w64-mingw32-gcc -m64 -dM -E -x c /dev/null
-
- * arm-linux-gnueabihf-gcc -march=armv6zk -mtune=arm1176jzf-s -mfloat-abi=hard -mlittle-endian -mfpu=vfp -marm -mtp=auto -dM -E -x c /dev/null
-
- * strings `which gcc`
-
- * gcc --print-search-dirs
-
- * gcc --print-multiarch
-
- * pkg-config --cflags --libs cairo
-
- * pkg-config --cflags --libs pango
-
- * pkg-config --cflags --libs glib-2.0
-
- * pkg-config --cflags --libs gobject-2.0
-
- * pkg-config --cflags --libs gobject-introspection-1.0
-
+ - gcc -dM -E -x c /dev/null
+ - clang -dM -E -x c /dev/null
+ - x86_64-w64-mingw32-gcc -m64 -dM -E -x c /dev/null
+ - arm-linux-gnueabihf-gcc -march=armv6zk -mtune=arm1176jzf-s -mfloat-abi=hard -mlittle-endian -mfpu=vfp -marm -mtp=auto -dM -E -x c /dev/null
+ - strings `which gcc`
+ - gcc --print-search-dirs
+ - gcc --print-multiarch
+ - pkg-config --cflags --libs cairo
+ - pkg-config --cflags --libs pango
+ - pkg-config --cflags --libs glib-2.0
+ - pkg-config --cflags --libs gobject-2.0
+ - pkg-config --cflags --libs gobject-introspection-1.0
 
 Macros Documentation
 
- * http://sourceforge.net/p/predef/wiki/Home/
-
- * https://gcc.gnu.org/onlinedocs/cpp/Predefined-Macros.html
-
- * https://msdn.microsoft.com/en-us/library/b0084kay.aspx
-
- * http://clang.llvm.org/docs/LanguageExtensions.html
-
+ - http://sourceforge.net/p/predef/wiki/Home/
+ - https://gcc.gnu.org/onlinedocs/cpp/Predefined-Macros.html
+ - https://msdn.microsoft.com/en-us/library/b0084kay.aspx
+ - http://clang.llvm.org/docs/LanguageExtensions.html
 
 Machine Modes
 
- * BI - 1 Bit
-
- * QI - Quarter Integer; 1 byte
-
- * HI - Half Integer; 2 bytes
-
- * PSI - Partial Single Integer; 4 bytes; not all bits used
-
- * SI - Single Integer; 4 bytes
-
- * PDI - Partial Double Integer; 8 bytes; not all bits used
-
- * DI - Double Integer; 8 bytes
-
- * TI - Tetra Integer; 16 bytes
-
- * OI - Octa Integer; 32 bytes
-
- * QF - Quarter Floating; 1 byte quarter-precision float-point
-
- * HF - Half Floating; 2 byte half-precision float-point
-
- * TQF - Three Quarter Floating; 3 byte three-quarter-precision float-point
-
- * SF - Single Floating; 4 byte single-precision float-point
-
- * DF - Double Floating; 8 byte double-precision float-point
-
- * XF - Extended Floating; 12 byte extended-precision float-point
-
- * TF - Tetra Floating; 16 byte tetra-precision float-point
-
- * CQI - Complex Quarter Integer; 1 byte
-
- * CHI - Complex Half Integer; 2 bytes
-
- * CSI - Complex Single Integer; 4 bytes
-
- * CDI - Complex Double Integer; 8 bytes
-
- * CTI - Complex Tetra Integer; 16 bytes
-
- * COI - Complex Octa Integer; 32 bytes
-
- * QC - Quarter Complex; 1 byte quarter-precision complex float-point
-
- * HC - Half Complex; 2 byte half-precision complex float-point
-
- * SC - Single Complex; 4 byte single-precision complex float-point
-
- * DC - Double Complex; 8 byte double-precision complex float-point
-
- * XC - Extended Complex; 12 byte extended-precision complex float-point
-
- * TC - Tetra Complex; 16 byte tetra-precision complex float-point
-
- * CC - Condition Code
-
- * BLK - Block
-
- * VOID - Void
-
- * P - Address mode
-
- * V4SI - Vector; 4 single integers
-
- * V8QI - Vector; 8 single-byte integers
-
- * BND32 - 32-bit pointer bound
-
- * BND64 - 32-bit pointer bound
+ - BI - 1 Bit
+ - QI - Quarter Integer; 1 byte
+ - HI - Half Integer; 2 bytes
+ - PSI - Partial Single Integer; 4 bytes; not all bits used
+ - SI - Single Integer; 4 bytes
+ - PDI - Partial Double Integer; 8 bytes; not all bits used
+ - DI - Double Integer; 8 bytes
+ - TI - Tetra Integer; 16 bytes
+ - OI - Octa Integer; 32 bytes
+ - QF - Quarter Floating; 1 byte quarter-precision float-point
+ - HF - Half Floating; 2 byte half-precision float-point
+ - TQF - Three Quarter Floating; 3 byte three-quarter-precision float-point
+ - SF - Single Floating; 4 byte single-precision float-point
+ - DF - Double Floating; 8 byte double-precision float-point
+ - XF - Extended Floating; 12 byte extended-precision float-point
+ - TF - Tetra Floating; 16 byte tetra-precision float-point
+ - CQI - Complex Quarter Integer; 1 byte
+ - CHI - Complex Half Integer; 2 bytes
+ - CSI - Complex Single Integer; 4 bytes
+ - CDI - Complex Double Integer; 8 bytes
+ - CTI - Complex Tetra Integer; 16 bytes
+ - COI - Complex Octa Integer; 32 bytes
+ - QC - Quarter Complex; 1 byte quarter-precision complex float-point
+ - HC - Half Complex; 2 byte half-precision complex float-point
+ - SC - Single Complex; 4 byte single-precision complex float-point
+ - DC - Double Complex; 8 byte double-precision complex float-point
+ - XC - Extended Complex; 12 byte extended-precision complex float-point
+ - TC - Tetra Complex; 16 byte tetra-precision complex float-point
+ - CC - Condition Code
+ - BLK - Block
+ - VOID - Void
+ - P - Address mode
+ - V4SI - Vector; 4 single integers
+ - V8QI - Vector; 8 single-byte integers
+ - BND32 - 32-bit pointer bound
+ - BND64 - 32-bit pointer bound
 */
 
 

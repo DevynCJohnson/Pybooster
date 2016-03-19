@@ -1,0 +1,5 @@
+<map id="ObjectError" name="ObjectError">
+<area shape="rect" id="node2" href="$classNameError.html" title="NameError" alt="" coords="5,5,91,32"/>
+<area shape="rect" id="node3" href="$classTypeError.html" title="TypeError" alt="" coords="115,5,194,32"/>
+<area shape="rect" id="node4" href="$classValueError.html" title="ValueError" alt="" coords="219,5,301,32"/>
+</map>

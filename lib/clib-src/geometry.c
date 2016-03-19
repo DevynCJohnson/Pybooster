@@ -29,14 +29,14 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 
 @section FUNCTION_NAMING_SCHEME
-func() -> double
-funcl() -> long double
-funcf() -> float
-func_int() -> unsigned long int
-func_ull() -> unsigned long long int
-func_signed() -> signed long long int
-func_shape() -> shape (double)
-func_shapel() -> shapel (long double)
+ - func() -> double
+ - funcl() -> long double
+ - funcf() -> float
+ - func_int() -> unsigned long int
+ - func_ull() -> unsigned long long int
+ - func_signed() -> signed long long int
+ - func_shape() -> shape (double)
+ - func_shapel() -> shapel (long double)
 */
 
 

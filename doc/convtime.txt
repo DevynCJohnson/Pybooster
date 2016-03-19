@@ -1,0 +1,50 @@
+Help on module convtime:
+
+NAME
+    convtime
+
+DESCRIPTION
+    @file convtime.py
+    @package pybooster.convtime
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Measurement (Time) Conversions
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    day2second(_time:int, _round:int=3) -> float
+        Days -> Seconds
+    
+    second2day(_time:int, _round:int=3) -> float
+        Seconds -> Days
+
+DATA
+    DAYS_IN_WEEK = 7
+    HOURS_IN_DAY = 24
+    MINUTES_IN_HOUR = 60
+    SECONDS_IN_DAY = 86400
+    SECONDS_IN_HOUR = 360
+    SECONDS_IN_MINUTE = 60
+    __all__ = ['DAYS_IN_WEEK', 'HOURS_IN_DAY', 'MINUTES_IN_HOUR', 'SECONDS...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convtime.py
+
+

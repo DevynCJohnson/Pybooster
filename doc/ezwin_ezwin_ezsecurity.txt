@@ -1,0 +1,6 @@
+Help on function ezsecurity in ezwin.ezwin:
+
+ezwin.ezwin.ezsecurity = ezsecurity(_msg:str='Security Message') -> None
+    Security Dialog
+    Display a security-related message
+

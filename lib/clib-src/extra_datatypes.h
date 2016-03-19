@@ -1,7 +1,7 @@
 // -*- coding: utf-8 -*-
 // vim:fileencoding=utf-8
 /**
-@file datatype_queue.c
+@file extra_datatypes.h
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -9,12 +9,12 @@
 @version 2016.03.18
 
 @section DESCRIPTION
-Additional datatypes such as -\n
-Syscall Enums for Various Operating Systems\n
-Light-weight queue datatype (FIFO Stack)\n
-Light-weight FILO stack datatype\n
-Light-weight linked-stack datatype (dynamically growing/shrinking FILO Stack)\n
-and more
+Additional datatypes such as -
+ - Syscall Enums for Various Operating Systems
+ - Light-weight queue datatype (FIFO Stack)
+ - Light-weight FILO stack datatype
+ - Light-weight linked-stack datatype (dynamically growing/shrinking FILO Stack)
+ - and more
 
 @section LICENSE
 GNU Lesser General Public License v3

@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.MODULE
--- --
-MODULE_DESCRIPTION
--- --
+@file FILE.py
+@package pybooster.MODULE
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief MODULE_DESCRIPTION
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,22 +27,20 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 IMPORTS
+
 
 __all__ = [
     'FUNCTION',
 ]
 
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.09'
-
 
 # CONSTANTS
 
 
-CONSTANT1='OBJECT1'
-CONSTANT2='OBJECT2'
+CONSTANT1 = 'OBJECT1'
+CONSTANT2 = 'OBJECT2'
 
 
 # FUNCTIONS

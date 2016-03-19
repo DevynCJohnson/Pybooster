@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.geo_services
--- --
-Functions related to obtaining or processing current/local geographic data
--- --
+@file geo_services.py
+@package pybooster.geo_services
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Functions related to obtaining or processing current/local geographic data
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,6 +27,7 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 from json import loads
 from urllib.request import urlopen
 
@@ -44,10 +44,6 @@ __all__ = [
     'getzipcode',
     'getzipcode_int',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # FUNCTIONS

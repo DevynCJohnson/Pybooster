@@ -1,0 +1,55 @@
+Help on module astronomy:
+
+NAME
+    astronomy
+
+DESCRIPTION
+    @file astronomy.py
+    @package pybooster.astronomy
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Astronomy Data
+    @version 2016.03.18
+    
+    @section DESCRIPTION
+    The planet properties are dictionaries that use lowercase key names.
+    
+    PLANET_SYMBOLS is a dictionary that uses uppercase key names.
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+DATA
+    CERES = {'symbol': '⚳'}
+    DWARF_PLANETS = ('Ceres', 'Pluto', 'Haumea', 'Makemake', 'Eris')
+    EARTH = {'aphelion': (1.01559, 'AU'), 'eccentricity': 0.01671123, 'per...
+    JUPITER = {'aphelion': (5.458104, 'AU'), 'eccentricity': 0.048775, 'pe...
+    MARS = {'aphelion': (1.666, 'AU'), 'eccentricity': 0.0935, 'perihelion...
+    MERCURY = {'aphelion': (0.466697, 'AU'), 'eccentricity': 0.20563, 'per...
+    NEPTUNE = {'aphelion': (30.331855, 'AU'), 'eccentricity': 0.00867797, ...
+    PLANETS = ('Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', '...
+    PLANET_SYMBOLS = {'CERES': '⚳', 'EARTH': '♁', 'JUPITER': '♃', 'MARS': ...
+    PLUTO = {'symbol': '♇'}
+    SATURN = {'aphelion': (10.11595804, 'AU'), 'eccentricity': 0.055723219...
+    URANUS = {'aphelion': (20.095371, 'AU'), 'eccentricity': 0.047220087, ...
+    VENUS = {'aphelion': (0.728213, 'AU'), 'eccentricity': 0.0067, 'perihe...
+    __all__ = ['PLANETS', 'DWARF_PLANETS', 'PLANET_SYMBOLS', 'MERCURY', 'V...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/astronomy.py
+
+

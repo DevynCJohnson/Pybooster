@@ -1,6 +1,0 @@
-Help on function ezupd in pybooster.ezwin.ezwin:
-
-pybooster.ezwin.ezwin.ezupd = ezupd(_msg:str='Message') -> None
-    Update Dialog
-    Display information on an update
-

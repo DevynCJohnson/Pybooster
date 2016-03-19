@@ -1,6 +1,0 @@
-Help on function eztext in pybooster.ezwin.ezwin:
-
-pybooster.ezwin.ezwin.eztext = eztext(_msg:str='Message', _type:str='') -> str
-    Input Text Dialog
-    Get text from the user
-

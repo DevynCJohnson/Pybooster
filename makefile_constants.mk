@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
-# Makefile constants header (contains common code)
-# Version 2016.03.18
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# @brief Makefile constants header (contains common code)
+# @version 2016.03.18
 
 
 ## VERSION TIMESTAMP ##
@@ -11,11 +13,6 @@ __MODULE_VERSION__=\"`date +"%Y.%m.%d"`\"
 
 ## CONSTANTS ##
 
-
-.PHONY : doxy
-
-doxy :
-	-@doxywizard ./Doxyfile; chmod --quiet 644 ./lib/Doxyfile
 
 ifndef OS
 	override OS::=

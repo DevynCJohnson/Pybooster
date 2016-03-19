@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.unix
--- --
-Miscellaneous functions specific to Unix systems
--- --
+@file unix.py
+@package pybooster.unix
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Miscellaneous functions specific to Unix systems
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,6 +27,7 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 from os import statvfs
 from os.path import expanduser
 from shutil import rmtree
@@ -43,10 +43,6 @@ __all__ = [
     'getetchosts',
     'thumbnail_cleaner',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # SPACE/STORAGE

@@ -1,0 +1,239 @@
+Help on module convlength:
+
+NAME
+    convlength
+
+DESCRIPTION
+    @file convlength.py
+    @package pybooster.convlength
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Measurement (Length) Conversions
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    centimeter2chain(_length:int, _round:int=3) -> float
+        Centimeters -> Chains
+    
+    centimeter2decimeter(_length:int, _round:int=3) -> float
+        Centimeters -> Decimeters
+    
+    centimeter2foot(_length:int, _round:int=3) -> float
+        Centimeters -> Feet
+    
+    centimeter2inch(_length:int, _round:int=3) -> float
+        Centimeters -> Inches
+    
+    centimeter2kilometer(_length:int, _round:int=3) -> float
+        Centimeters -> Kilometers
+    
+    centimeter2meter(_length:int, _round:int=3) -> float
+        Centimeters -> Meters
+    
+    centimeter2microinch(_length:int, _round:int=3) -> float
+        Centimeters -> Microinches
+    
+    centimeter2micron(_length:int, _round:int=3) -> float
+        Centimeters -> Microns
+    
+    centimeter2millimeter(_length:int, _round:int=3) -> float
+        Centimeters -> Millimeters
+    
+    centimeter2yard(_length:int, _round:int=3) -> float
+        Centimeters -> Yards
+    
+    foot2centimeter(_length:int, _round:int=3) -> float
+        Feet -> Centimeters
+    
+    foot2chain(_length:int, _round:int=3) -> float
+        Feet -> Chains
+    
+    foot2decimeter(_length:int, _round:int=3) -> float
+        Feet -> Decimeters
+    
+    foot2furlong(_length:int, _round:int=3) -> float
+        Feet -> Furlongs
+    
+    foot2inch(_length:int, _round:int=3) -> float
+        Feet -> Inches
+    
+    foot2kilometer(_length:int, _round:int=3) -> float
+        Feet -> Kilometers
+    
+    foot2meter(_length:int, _round:int=3) -> float
+        Feet -> Meters
+    
+    foot2microinch(_length:int, _round:int=3) -> float
+        Feet -> Microinches
+    
+    foot2mile(_length:int, _round:int=3) -> float
+        Feet -> Miles
+    
+    foot2millimeter(_length:int, _round:int=3) -> float
+        Feet -> Millimeters
+    
+    foot2yard(_length:int, _round:int=3) -> float
+        Feet -> Yards
+    
+    inch2centimeter(_length:int, _round:int=3) -> float
+        Inches -> Centimeters
+    
+    inch2chain(_length:int, _round:int=3) -> float
+        Inches -> Chains
+    
+    inch2decimeter(_length:int, _round:int=3) -> float
+        Inches -> Decimeters
+    
+    inch2foot(_length:int, _round:int=3) -> float
+        Inches -> Feet
+    
+    inch2furlong(_length:int, _round:int=3) -> float
+        Inches -> Furlong
+    
+    inch2kilometer(_length:int, _round:int=3) -> float
+        Inches -> Kilometers
+    
+    inch2meter(_length:int, _round:int=3) -> float
+        Inches -> Meters
+    
+    inch2microinch(_length:int, _round:int=3) -> float
+        Inches -> Microinches
+    
+    inch2millimeter(_length:int, _round:int=3) -> float
+        Inches -> Millimeters
+    
+    inch2yard(_length:int, _round:int=3) -> float
+        Inches -> Yards
+    
+    kilometer2centimeter(_length:int, _round:int=3) -> float
+        Kilometers -> Centimeters
+    
+    kilometer2chain(_length:int, _round:int=3) -> float
+        Kilometers -> Chains
+    
+    kilometer2decimeter(_length:int, _round:int=3) -> float
+        Kilometers -> Decimeters
+    
+    kilometer2foot(_length:int, _round:int=3) -> float
+        Kilometers -> Feet
+    
+    kilometer2furlong(_length:int, _round:int=3) -> float
+        Kilometers -> Furlongs
+    
+    kilometer2inch(_length:int, _round:int=3) -> float
+        Kilometers -> Inches
+    
+    kilometer2lightyear(_length:int, _round:int=3) -> float
+        Kilometers -> Lightyears
+    
+    kilometer2meter(_length:int, _round:int=3) -> float
+        Kilometers -> Meters
+    
+    kilometer2microinch(_length:int, _round:int=3) -> float
+        Kilometers -> Microinches
+    
+    kilometer2mile(_length:int, _round:int=3) -> float
+        Kilometers -> Miles
+    
+    kilometer2millimeter(_length:int, _round:int=3) -> float
+        Kilometers -> Millimeters
+    
+    kilometer2nauticalmile(_length:int, _round:int=3) -> float
+        Kilometers -> Nautical Miles
+    
+    kilometer2parsec(_length:int, _round:int=3) -> float
+        Kilometers -> Parsecs
+    
+    kilometer2yard(_length:int, _round:int=3) -> float
+        Kilometers -> Yards
+    
+    meter2foot(_length:int, _round:int=3) -> float
+        Meters -> Feet
+    
+    meter2inch(_length:int, _round:int=3) -> float
+        Meters -> Inches
+    
+    meter2yard(_length:int, _round:int=3) -> float
+        Meters -> Yards
+    
+    mile2chain(_length:int, _round:int=3) -> float
+        Miles -> Chains
+    
+    mile2foot(_length:int, _round:int=3) -> float
+        Miles -> Feet
+    
+    mile2furlong(_length:int, _round:int=3) -> float
+        Miles -> Furlongs
+    
+    mile2inch(_length:int, _round:int=3) -> float
+        Miles -> Inches
+    
+    mile2kilometer(_length:int, _round:int=3) -> float
+        Miles -> Kilometers
+    
+    mile2meter(_length:int, _round:int=3) -> float
+        Miles -> Meters
+    
+    mile2microinch(_length:int, _round:int=3) -> float
+        Miles -> Microinches
+    
+    mile2yard(_length:int, _round:int=3) -> float
+        Miles -> Yards
+    
+    yard2centimeter(_length:int, _round:int=3) -> float
+        Yards -> Centimeters
+    
+    yard2chain(_length:int, _round:int=3) -> float
+        Yards -> Chains
+    
+    yard2decimeter(_length:int, _round:int=3) -> float
+        Yards -> Decimeters
+    
+    yard2foot(_length:int, _round:int=3) -> float
+        Yards -> Feet
+    
+    yard2furlong(_length:int, _round:int=3) -> float
+        Yards -> Furlongs
+    
+    yard2inch(_length:int, _round:int=3) -> float
+        Yards -> Inches
+    
+    yard2kilometer(_length:int, _round:int=3) -> float
+        Yards -> Kilometers
+    
+    yard2meter(_length:int, _round:int=3) -> float
+        Yards -> Meters
+    
+    yard2microinch(_length:int, _round:int=3) -> float
+        Yards -> Microinches
+    
+    yard2mile(_length:int, _round:int=3) -> float
+        Yards -> Miles
+    
+    yard2millimeter(_length:int, _round:int=3) -> float
+        Yards -> Millimeters
+
+DATA
+    __all__ = ['centimeter2chain', 'centimeter2decimeter', 'centimeter2foo...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convlength.py
+
+

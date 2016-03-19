@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.convspeed
--- --
-Measurement (Speed) Conversions
--- --
+@file convspeed.py
+@package pybooster.convspeed
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief Measurement (Speed) Conversions
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,14 +27,11 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 __all__ = [
     # MILES PER HOUR
     'mph2kph',
 ]
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 # MILES PER HOUR

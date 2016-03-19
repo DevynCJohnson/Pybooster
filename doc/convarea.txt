@@ -1,0 +1,185 @@
+Help on module convarea:
+
+NAME
+    convarea
+
+DESCRIPTION
+    @file convarea.py
+    @package pybooster.convarea
+    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+    @copyright LGPLv3
+    @brief Measurement (Area) Conversions
+    @version 2016.03.18
+    
+    @section LICENSE
+    GNU Lesser General Public License v3
+    Copyright (c) Devyn Collier Johnson, All rights reserved.
+    
+    The PyBooster Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+FUNCTIONS
+    acre2hectare(_area:int, _round:int=3) -> float
+        Acres -> Hectares
+    
+    acre2sqfoot(_area:int, _round:int=3) -> float
+        Acres -> Square Feet
+    
+    acre2sqinch(_area:int, _round:int=3) -> float
+        Acres -> Square Inches
+    
+    acre2sqkilometer(_area:int, _round:int=3) -> float
+        Acres -> Square Kilometers
+    
+    acre2sqmeter(_area:int, _round:int=3) -> float
+        Acres -> Square Meters
+    
+    acre2sqmile(_area:int, _round:int=3) -> float
+        Acres -> Square Miles
+    
+    acre2sqyard(_area:int, _round:int=3) -> float
+        Acres -> Square Yards
+    
+    hectare2acre(_area:int, _round:int=3) -> float
+        Hectares -> Acres
+    
+    hectare2sqfoot(_area:int, _round:int=3) -> float
+        Hectares -> Square Feet
+    
+    hectare2sqinch(_area:int, _round:int=3) -> float
+        Hectares -> Square Inches
+    
+    hectare2sqkilometer(_area:int, _round:int=3) -> float
+        Hectares -> Square Kilometers
+    
+    hectare2sqmeter(_area:int, _round:int=3) -> float
+        Hectares -> Square Meters
+    
+    hectare2sqmile(_area:int, _round:int=3) -> float
+        Hectares -> Square Miles
+    
+    hectare2sqyard(_area:int, _round:int=3) -> float
+        Hectares -> Square Yards
+    
+    sqfoot2acre(_area:int, _round:int=3) -> float
+        Square Feet -> Acres
+    
+    sqfoot2hectare(_area:int, _round:int=3) -> float
+        Square Feet -> Hectares
+    
+    sqfoot2sqcentimeter(_area:int, _round:int=3) -> float
+        Square Feet -> Square Centimeters
+    
+    sqfoot2sqinch(_area:int, _round:int=3) -> float
+        Square Feet -> Square Inches
+    
+    sqfoot2sqkilometer(_area:int, _round:int=3) -> float
+        Square Feet -> Square Kilometers
+    
+    sqfoot2sqmeter(_area:int, _round:int=3) -> float
+        Square Feet -> Square Meters
+    
+    sqfoot2sqmicroinch(_area:int, _round:int=3) -> float
+        Square Feet -> Square Microinches
+    
+    sqfoot2sqmile(_area:int, _round:int=3) -> float
+        Square Feet -> Square Miles
+    
+    sqfoot2sqmillimeter(_area:int, _round:int=3) -> float
+        Square Feet -> Square Millimeters
+    
+    sqfoot2sqyard(_area:int, _round:int=3) -> float
+        Square Feet -> Square Yards
+    
+    sqkilometer2acre(_area:int, _round:int=3) -> float
+        Square Kilometers -> Acres
+    
+    sqkilometer2hectare(_area:int, _round:int=3) -> float
+        Square Kilometers -> Hectares
+    
+    sqkilometer2sqcentimeter(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Centimeters
+    
+    sqkilometer2sqfoot(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Feet
+    
+    sqkilometer2sqinch(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Inches
+    
+    sqkilometer2sqmeter(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Meters
+    
+    sqkilometer2sqmicrometer(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Micrometers
+    
+    sqkilometer2sqmile(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Miles
+    
+    sqkilometer2sqmillimeter(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Millimeters
+    
+    sqkilometer2sqyard(_area:int, _round:int=3) -> float
+        Square Kilometers -> Square Yards
+    
+    sqmeter2acre(_area:int, _round:int=3) -> float
+        Square Meters -> Acres
+    
+    sqmeter2hectare(_area:int, _round:int=3) -> float
+        Square Meters -> Hectares
+    
+    sqmeter2sqcentimeter(_area:int, _round:int=3) -> float
+        Square Meters -> Square Centimeters
+    
+    sqmeter2sqfoot(_area:int, _round:int=3) -> float
+        Square Meters -> Square Feet
+    
+    sqmeter2sqinch(_area:int, _round:int=3) -> float
+        Square Meters -> Square Inches
+    
+    sqmeter2sqkilometer(_area:int, _round:int=3) -> float
+        Square Meters -> Square Kilometers
+    
+    sqmeter2sqyard(_area:int, _round:int=3) -> float
+        Square Meters -> Square Yards
+    
+    sqmile2acre(_area:int, _round:int=3) -> float
+        Square Miles -> Acres
+    
+    sqmile2hectare(_area:int, _round:int=3) -> float
+        Square Miles -> Hectares
+    
+    sqmile2sqcentimeter(_area:int, _round:int=3) -> float
+        Square Miles -> Square Centimeters
+    
+    sqmile2sqfoot(_area:int, _round:int=3) -> float
+        Square Miles -> Square Feet
+    
+    sqmile2sqinch(_area:int, _round:int=3) -> float
+        Square Miles -> Square Inches
+    
+    sqmile2sqkilometer(_area:int, _round:int=3) -> float
+        Square Miles -> Square Kilometers
+    
+    sqmile2sqmeter(_area:int, _round:int=3) -> float
+        Square Miles -> Square Meters
+    
+    sqmile2sqyard(_area:int, _round:int=3) -> float
+        Square Miles -> Square Yards
+
+DATA
+    __all__ = ['acre2hectare', 'acre2sqfoot', 'acre2sqinch', 'acre2sqkilom...
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/lib/convarea.py
+
+

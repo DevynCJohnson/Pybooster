@@ -7,5 +7,5 @@
 *.glade linguist-language=XML
 
 # Documentation
-/lib/doc/* linguist-documentation
+/doc/* linguist-documentation
 /_MISC/* linguist-documentation

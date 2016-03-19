@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 """
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPLv3 License
--- --
-PyBooster - Various Extras for Python3
-pybooster.ezdisplay
--- --
-EzDisplay - View text
--- --
+@file ezdisplay.py
+@package pybooster.ezdisplay
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@brief EzDisplay: View text in a GTK window
+@version 2016.03.18
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,16 +27,13 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 # pylint: disable=R0903
+
 
 from sys import stdin
 
 from gi.repository import Gtk
-
-
-__author__ = 'Devyn Collier Johnson'
-__copyright__ = 'LGPLv3'
-__version__ = '2016.03.18'
 
 
 _GUI = """<?xml version="1.0" encoding="UTF-8"?>

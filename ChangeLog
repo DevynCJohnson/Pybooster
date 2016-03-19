@@ -2,9 +2,11 @@
 
 	* PyBooster: Optimizations, enhanced cross-platform support, and fixed bugs
 
-	* PyBooster: Added Doxygen Documentation
+	* PyBooster: Added Doxygen-Documentation and set a new file-comment standard
 
 	* PyBooster: Added financial.py
+
+	* PyBooster: Moved ./lib/doc to ./doc
 
 	* PyBooster: Merged datatype_*.c files into extra_datatypes.c
 

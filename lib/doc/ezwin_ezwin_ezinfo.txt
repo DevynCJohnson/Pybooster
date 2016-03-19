@@ -1,6 +1,0 @@
-Help on function ezinfo in pybooster.ezwin.ezwin:
-
-pybooster.ezwin.ezwin.ezinfo = ezinfo(_msg:str='Information') -> None
-    Information Dialog
-    Display some information
-

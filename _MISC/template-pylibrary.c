@@ -1,9 +1,15 @@
+// -*- coding: utf-8 -*-
+// vim:fileencoding=utf-8
 /**
+@file FILE.c
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief DESCRIPTION
+@brief SUMMARY
 @version 2016.03.09
+
+@section DESCRIPTION
+TEXT
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -29,7 +35,7 @@ License along with this library.
 
 #define MODNAME "MODNAME"
 #define MODINIT PyMODINIT_FUNC PyInit_MODNAME(void)
-MODINIT __attribute__((flatten));;
+MODINIT __attribute__((flatten, hot));;
 
 
 /* FUNCTION DEFINITIONS */
@@ -72,7 +78,6 @@ static struct PyModuleDef module = {  // Module Definition
 MODINIT {  // Initialize module
     PyObject *m;
     m = PyModule_Create(&module);
-    //PyModule_AddObject(m, "__all__", create_all());
 #   ifndef NOAUTHOR
     PyModule_AddStringConstant(m, "__author__", __author__);
 #   endif

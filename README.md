@@ -77,6 +77,7 @@ Follow the below guidelines when assisting the development of PyBooster.
 #### C ####
 
 - **Standard** - Use C11 or newer
+- **Documentation** - Use Doxygen syntax for documentation [http://www.stack.nl/~dimitri/doxygen/manual/config.html](http://www.stack.nl/~dimitri/doxygen/manual/config.html)
 
 #### Python ####
 
