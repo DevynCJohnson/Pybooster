@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Functions related to obtaining or processing current/local geographic data
 @file geo_services.py
 @package pybooster.geo_services
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Functions related to obtaining or processing current/local geographic data
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -56,6 +55,7 @@ def getgeodata() -> dict:
 
 def getcity(_loc: dict) -> str:
     """Retrieve the system's current city based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'city']
@@ -63,6 +63,7 @@ def getcity(_loc: dict) -> str:
 
 def getcountry(_loc: dict) -> str:
     """Retrieve the system's current country based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'country']
@@ -70,6 +71,7 @@ def getcountry(_loc: dict) -> str:
 
 def getisp(_loc: dict) -> str:
     """Retrieve the system's current ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'isp']
@@ -77,6 +79,7 @@ def getisp(_loc: dict) -> str:
 
 def getlatitude(_loc: dict) -> float:
     """Retrieve the system's current latitude based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'lat']
@@ -84,6 +87,7 @@ def getlatitude(_loc: dict) -> float:
 
 def getlongitude(_loc: dict) -> float:
     """Retrieve the system's current longitude based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'lon']
@@ -91,6 +95,7 @@ def getlongitude(_loc: dict) -> float:
 
 def gettimezone(_loc: dict) -> str:
     """Retrieve the system's current timezone based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'timezone']
@@ -98,6 +103,7 @@ def gettimezone(_loc: dict) -> str:
 
 def getzipcode(_loc: dict) -> str:
     """Retrieve the system's current zipcode based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return _loc[r'zip']
@@ -105,6 +111,7 @@ def getzipcode(_loc: dict) -> str:
 
 def getzipcode_int(_loc: dict) -> str:
     """Retrieve the system's current zipcode based on the ISP
+
     Prerequisite: data from getgeodata()
     """
     return int(_loc[r'zip'])

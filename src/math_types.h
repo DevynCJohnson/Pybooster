@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math-related Data-types (header)
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 Special math, geometry, and number datatypes such as quaternions and circles

@@ -36,8 +36,5 @@ var color_8py =
     [ "xyz2rgb", "color_8py.html#a2ec665511312001b07cb18d522a64f34", null ],
     [ "xyz2rgb_int", "color_8py.html#ae239e3b05e3b529b9d1fc546ef950ee8", null ],
     [ "yiq2rgb", "color_8py.html#a6b943faf2db3e41e1386bdfdae0199e6", null ],
-    [ "__all__", "color_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ],
-    [ "ONE_SIXTH", "color_8py.html#ab8338bdd227b2c0bab71221656ec827c", null ],
-    [ "ONE_THIRD", "color_8py.html#ab2ecfe9c8950e84b291c5cbc96f3624a", null ],
-    [ "TWO_THIRD", "color_8py.html#a043c72a2824c59bd785940016f1b5655", null ]
+    [ "__all__", "color_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ]
 ];

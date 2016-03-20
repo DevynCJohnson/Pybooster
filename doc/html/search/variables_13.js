@@ -7,6 +7,7 @@ var searchData=
   ['save',['save',['../namespacepybooster_1_1ezwin_1_1ezwin.html#afe343e9c5415974b74f2804f52eaaaab',1,'pybooster::ezwin::ezwin']]],
   ['sbox',['Sbox',['../cryptx_8c.html#a7054217d7fb2ce79e793a37638c594f3',1,'Sbox():&#160;cryptx.c'],['../cryptx_8h.html#a7054217d7fb2ce79e793a37638c594f3',1,'Sbox():&#160;cryptx.c']]],
   ['scandium',['scandium',['../chemistry__types_8c.html#a93d96b2e318dbae2cf2760183017d16e',1,'scandium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a93d96b2e318dbae2cf2760183017d16e',1,'scandium():&#160;chemistry_types.c']]],
+  ['science',['SCIENCE',['../namespacepybooster_1_1strtools.html#ae8c131dfcd7793451fe962cba44d1299',1,'pybooster::strtools']]],
   ['seaborgium',['seaborgium',['../chemistry__types_8c.html#ab2251674d3c07715f168374751f166ff',1,'seaborgium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab2251674d3c07715f168374751f166ff',1,'seaborgium():&#160;chemistry_types.c']]],
   ['seasons',['SEASONS',['../namespacepybooster_1_1timeutil.html#afa26cce770d11b4b6b2498ba4e32e9ec',1,'pybooster::timeutil']]],
   ['second_5fthird',['SECOND_THIRD',['../namespacepybooster_1_1pronouns.html#a8aaff99f9f1fd936dffdd3f71ab39ad0',1,'pybooster::pronouns']]],
@@ -64,9 +65,11 @@ var searchData=
   ['sqrt_5fpi',['SQRT_PI',['../mathconstants_8c.html#a7477e8f618e55155827d512dc7a0f098',1,'SQRT_PI():&#160;mathconstants.c'],['../mathconstants_8h.html#a7477e8f618e55155827d512dc7a0f098',1,'SQRT_PI():&#160;mathconstants.c']]],
   ['sqrt_5fpif',['SQRT_PIf',['../mathconstants_8c.html#ab511933a0ef4163fe96b26d4ff184813',1,'SQRT_PIf():&#160;mathconstants.c'],['../mathconstants_8h.html#ab511933a0ef4163fe96b26d4ff184813',1,'SQRT_PIf():&#160;mathconstants.c']]],
   ['sqrt_5fpil',['SQRT_PIl',['../mathconstants_8c.html#a5b16be21f887ab0a9ae1cd9b87f93914',1,'SQRT_PIl():&#160;mathconstants.c'],['../mathconstants_8h.html#a5b16be21f887ab0a9ae1cd9b87f93914',1,'SQRT_PIl():&#160;mathconstants.c']]],
+  ['square',['SQUARE',['../namespacepybooster_1_1strtools.html#ad6d5ff0887748c0fe98506fdc25bd698',1,'pybooster::strtools']]],
   ['strange',['strange',['../chemistry__types_8c.html#a24760c5f3d882b6214ef9bb62aa16ea1',1,'strange():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a24760c5f3d882b6214ef9bb62aa16ea1',1,'strange():&#160;chemistry_types.c']]],
   ['strontium',['strontium',['../chemistry__types_8c.html#ac94fdeaf75c22540cfb52064c2677764',1,'strontium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ac94fdeaf75c22540cfb52064c2677764',1,'strontium():&#160;chemistry_types.c']]],
   ['sulfur',['sulfur',['../chemistry__types_8c.html#ac75bd2b6dc2049c33e7ba3f920b619d4',1,'sulfur():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ac75bd2b6dc2049c33e7ba3f920b619d4',1,'sulfur():&#160;chemistry_types.c']]],
+  ['superscript_5fnum',['SUPERSCRIPT_NUM',['../namespacepybooster_1_1strtools.html#a2882b7f2f571a9546c19837a62cd18a1',1,'pybooster::strtools']]],
   ['sym',['sym',['../chemistry__types_8h.html#abce3ab0eb614ee4ab25babbb04d7c8a1',1,'aminoacid']]],
   ['symbol',['symbol',['../chemistry__types_8h.html#a6f43c2375bd1120b94b1cbe51e959407',1,'subatomicparticle::symbol()'],['../chemistry__types_8h.html#af7565614b2ea8e3f98b39303ae09ebca',1,'quark::symbol()'],['../chemistry__types_8h.html#a6f43c2375bd1120b94b1cbe51e959407',1,'atom::symbol()'],['../chemistry__types_8h.html#a829a4e899d0ca2a38dcdaf2f23bf7583',1,'nucleobase::symbol()'],['../chemistry__types_8h.html#a6f43c2375bd1120b94b1cbe51e959407',1,'aminoacid::symbol()']]]
 ];

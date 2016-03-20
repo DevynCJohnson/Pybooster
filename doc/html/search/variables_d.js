@@ -6,6 +6,8 @@ var searchData=
   ['manganese',['manganese',['../chemistry__types_8c.html#afba920008f679ae38b83a5befa1e8e56',1,'manganese():&#160;chemistry_types.c'],['../chemistry__types_8h.html#afba920008f679ae38b83a5befa1e8e56',1,'manganese():&#160;chemistry_types.c']]],
   ['mars',['MARS',['../namespacepybooster_1_1astronomy.html#a125dcfcd022145024daacc6e01aaa6ad',1,'pybooster::astronomy']]],
   ['mass',['mass',['../chemistry__types_8h.html#a7b2fa2b4300edd7ec1c54209a6a20258',1,'quark']]],
+  ['math',['MATH',['../namespacepybooster_1_1strtools.html#a0248ff03f2dd5965d5172752b00b4cfa',1,'pybooster::strtools']]],
+  ['medicine',['MEDICINE',['../namespacepybooster_1_1strtools.html#a2fe2131786cdd00e3eb234b50dff938b',1,'pybooster::strtools']]],
   ['mega_5funits',['MEGA_UNITS',['../namespacepybooster_1_1metric.html#a09589e86e20af8c133eef4b95d72fdb5',1,'pybooster::metric']]],
   ['meitnerium',['meitnerium',['../chemistry__types_8c.html#acf3c89f26157b2d2b46025934684a578',1,'meitnerium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#acf3c89f26157b2d2b46025934684a578',1,'meitnerium():&#160;chemistry_types.c']]],
   ['mendelevium',['mendelevium',['../chemistry__types_8c.html#af601e26b4b6a4760166a16f05555b258',1,'mendelevium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af601e26b4b6a4760166a16f05555b258',1,'mendelevium():&#160;chemistry_types.c']]],
@@ -25,5 +27,6 @@ var searchData=
   ['molybdenum',['molybdenum',['../chemistry__types_8c.html#aa1e8e5bad4bb7e25ab3cf306eb27a9c7',1,'molybdenum():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa1e8e5bad4bb7e25ab3cf306eb27a9c7',1,'molybdenum():&#160;chemistry_types.c']]],
   ['msg',['msg',['../classpybooster_1_1basic_1_1SameFileError.html#a10a0f35066079abd150539d0d13dbf3e',1,'pybooster.basic.SameFileError.msg()'],['../classpybooster_1_1basic_1_1ObjectError.html#a10a0f35066079abd150539d0d13dbf3e',1,'pybooster.basic.ObjectError.msg()']]],
   ['multiple',['multiple',['../namespacepybooster_1_1ezwin_1_1ezwin.html#aba67201659b4a0447ccc973f22027431',1,'pybooster::ezwin::ezwin']]],
-  ['murata_5fconstant',['MURATA_CONSTANT',['../mathconstants_8c.html#a4e5ad5a4a61196b46f0cdb6d3b57a859',1,'MURATA_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a4e5ad5a4a61196b46f0cdb6d3b57a859',1,'MURATA_CONSTANT():&#160;mathconstants.c']]]
+  ['murata_5fconstant',['MURATA_CONSTANT',['../mathconstants_8c.html#a4e5ad5a4a61196b46f0cdb6d3b57a859',1,'MURATA_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a4e5ad5a4a61196b46f0cdb6d3b57a859',1,'MURATA_CONSTANT():&#160;mathconstants.c']]],
+  ['music',['MUSIC',['../namespacepybooster_1_1strtools.html#ae11976a3ac0c0ac042250327b8cab951',1,'pybooster::strtools']]]
 ];

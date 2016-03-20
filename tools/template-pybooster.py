@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief MODULE_DESCRIPTION
 @file FILE.py
 @package pybooster.MODULE
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief MODULE_DESCRIPTION
 @version 2016.03.18
 
 @section LICENSE

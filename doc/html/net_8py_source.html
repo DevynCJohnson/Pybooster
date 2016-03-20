@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -110,140 +111,139 @@ $(document).ready(function(){initNavTree('net_8py_source.html','');});
 <a href="net_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;@brief Network-related functions</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">@file net.py</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral">@package pybooster.net</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">@author Devyn Collier Johnson &lt;DevynCJohnson@Gmail.com&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@copyright LGPLv3</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@brief Network-related functions</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@version 2016.03.18</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">License along with this library.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@version 2016.03.20</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">License along with this library.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">from</span> socket <span class="keyword">import</span> gaierror, gethostbyname, inet_ntoa</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">from</span> struct <span class="keyword">import</span> pack</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">from</span> subprocess <span class="keyword">import</span> PIPE, Popen, TimeoutExpired</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">from</span> socket <span class="keyword">import</span> gaierror, gethostbyname, inet_ntoa</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">from</span> struct <span class="keyword">import</span> pack</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">from</span> subprocess <span class="keyword">import</span> PIPE, Popen, TimeoutExpired</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#aa4a022e6ddacd362b83964da5cc5d044">   37</a></span>&#160;__all__ = [</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment"># IPV4/6 CONVERTIONS</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;ints2ipv6&#39;</span>,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;lst2ipv6&#39;</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment"># MISCELLANEOUS</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;isdomain&#39;</span>,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="stringliteral">&#39;name2ip&#39;</span>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="stringliteral">&#39;ping&#39;</span>,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="stringliteral">&#39;findgw&#39;</span>,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="stringliteral">&#39;hasnet&#39;</span>,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;]</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#aa4a022e6ddacd362b83964da5cc5d044">   36</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment"># IPV4/6 CONVERTIONS</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;ints2ipv6&#39;</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;lst2ipv6&#39;</span>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment"># MISCELLANEOUS</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&#39;isdomain&#39;</span>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;name2ip&#39;</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="stringliteral">&#39;ping&#39;</span>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="stringliteral">&#39;findgw&#39;</span>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="stringliteral">&#39;hasnet&#39;</span>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;]</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"># IPV4/6 CONVERTIONS</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"># IPV4/6 CONVERTIONS</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">ints2ipv6</a>(*args: int) -&gt; str:</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">   54</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> len(args) <span class="keywordflow">is</span> 8:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> args:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="stringliteral">&#39;One of the given integers is larger than 65535!&#39;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;:&#39;</span>.join(<span class="stringliteral">&#39;{:02x}&#39;</span>.format(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> args)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classValueError.html">ValueError</a>(<span class="stringliteral">r&#39;The given data must have eight groups of integers.&#39;</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">ints2ipv6</a>(*args: int) -&gt; str:</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">   53</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> len(args) <span class="keywordflow">is</span> 8:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> args:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="stringliteral">&#39;One of the given integers is larger than 65535!&#39;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;:&#39;</span>.join(<span class="stringliteral">&#39;{:02x}&#39;</span>.format(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> args)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classValueError.html">ValueError</a>(<span class="stringliteral">r&#39;The given data must have eight groups of integers.&#39;</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">lst2ipv6</a>(_list: list) -&gt; str:</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">   65</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> len(_list) <span class="keywordflow">is</span> 8:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> _list:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="stringliteral">&#39;One of the given integers is larger than 65535!&#39;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;:&#39;</span>.join(<span class="stringliteral">&#39;{:02x}&#39;</span>.format(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> _list)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classValueError.html">ValueError</a>(<span class="stringliteral">r&#39;The given data must have eight groups of integers.&#39;</span>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">lst2ipv6</a>(_list: list) -&gt; str:</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">   64</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;When given eight separate integers, a hex IPv6 address is returned&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> len(_list) <span class="keywordflow">is</span> 8:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> _list:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">assert</span> i &lt;= 65535, \</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="stringliteral">&#39;One of the given integers is larger than 65535!&#39;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;:&#39;</span>.join(<span class="stringliteral">&#39;{:02x}&#39;</span>.format(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> _list)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classValueError.html">ValueError</a>(<span class="stringliteral">r&#39;The given data must have eight groups of integers.&#39;</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"># MISCELLANEOUS</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"># MISCELLANEOUS</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">name2ip</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; str:</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">   79</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Convert a domain name to an IPv4 address&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> gethostbyname(_address)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">name2ip</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; str:</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">   78</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Convert a domain name to an IPv4 address&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> gethostbyname(_address)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">isdomain</a>(_address: str) -&gt; bool:</div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">   84</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if a Domain Name resolves to an IP address&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        gethostbyname(_address)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">except</span> gaierror:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">isdomain</a>(_address: str) -&gt; bool:</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">   83</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if a Domain Name resolves to an IP address&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        gethostbyname(_address)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">except</span> gaierror:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">ping</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; bool:</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">   93</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Specify an IP address or a domain name&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        child = Popen([<span class="stringliteral">&#39;ping&#39;</span>, <span class="stringliteral">&#39;-c 1&#39;</span>, _address], stdout=PIPE, stderr=PIPE, shell=<span class="keyword">False</span>)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        _results = child.communicate(timeout=3)[0]  <span class="comment"># Wait for results and get return code</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">except</span> TimeoutExpired:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> len(_results) <span class="keywordflow">and</span> child.returncode <span class="keywordflow">is</span> 0:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">ping</a>(_address: str=<span class="stringliteral">&#39;localhost&#39;</span>) -&gt; bool:</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">   92</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Specify an IP address or a domain name&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        child = Popen([<span class="stringliteral">&#39;ping&#39;</span>, <span class="stringliteral">&#39;-c 1&#39;</span>, _address], stdout=PIPE, stderr=PIPE, shell=<span class="keyword">False</span>)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        _results = child.communicate(timeout=3)[0]  <span class="comment"># Wait for results and get return code</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">except</span> TimeoutExpired:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> len(_results) <span class="keywordflow">and</span> child.returncode <span class="keywordflow">is</span> 0:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">findgw</a>() -&gt; str:</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Get the Gateway IP address&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    with open(<span class="stringliteral">&#39;/proc/net/route&#39;</span>, mode=<span class="stringliteral">&#39;rt&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> _file:</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">for</span> _line <span class="keywordflow">in</span> _file:</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">  108</a></span>&#160;            _field = _line.strip().split()</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> _field[1] != <span class="stringliteral">&#39;00000000&#39;</span> <span class="keywordflow">or</span> <span class="keywordflow">not</span> int(_field[3], 16) &amp; 2:</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">continue</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span> inet_ntoa(pack(<span class="stringliteral">&#39;&lt;L&#39;</span>, int(_field[2], 16)))</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">findgw</a>() -&gt; str:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Get the Gateway IP address&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    with open(<span class="stringliteral">r&#39;/proc/net/route&#39;</span>, mode=<span class="stringliteral">&#39;rt&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> _file:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">for</span> _line <span class="keywordflow">in</span> _file:</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">  107</a></span>&#160;            _field = _line.strip().split()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> _field[1] != <span class="stringliteral">&#39;00000000&#39;</span> <span class="keywordflow">or</span> <span class="keywordflow">not</span> int(_field[3], 16) &amp; 2:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">continue</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> inet_ntoa(pack(<span class="stringliteral">&#39;&lt;L&#39;</span>, int(_field[2], 16)))</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">hasnet</a>() -&gt; bool:</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return True if the Internet is available&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> urlopen(<span class="stringliteral">&#39;http://google.com&#39;</span>).getcode() == 200:</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">&#39;https://www.wikipedia.org&#39;</span>).getcode() == 200:</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">&#39;https://docs.python.org&#39;</span>).getcode() == 200:</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">  121</a></span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a458ab912057448498c8d7080f1e88e8e"><div class="ttname"><a href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">pybooster.net.hasnet</a></div><div class="ttdeci">def hasnet()</div><div class="ttdoc">Return True if the Internet is available. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00121">net.py:121</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a1b3db66fba2f7daaebcb9deb3fcdccf4"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">pybooster.net.isdomain</a></div><div class="ttdeci">def isdomain</div><div class="ttdoc">Test if a Domain Name resolves to an IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00084">net.py:84</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a1861797e7413b251c2efaf5ee930b255"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">pybooster.net.name2ip</a></div><div class="ttdeci">def name2ip</div><div class="ttdoc">Convert a domain name to an IPv4 address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00079">net.py:79</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a1bdd3d8d95eb851d8cb84d78b1f3e537"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">pybooster.net.ping</a></div><div class="ttdeci">def ping</div><div class="ttdoc">Specify an IP address or a domain name. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00093">net.py:93</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a72dc4b083f2e0c992861a6d61ebab440"><div class="ttname"><a href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">pybooster.net.findgw</a></div><div class="ttdeci">def findgw()</div><div class="ttdoc">Get the Gateway IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00108">net.py:108</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a097c09e42984d21ff8146d3d888fc558"><div class="ttname"><a href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">pybooster.net.lst2ipv6</a></div><div class="ttdeci">def lst2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00065">net.py:65</a></div></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">hasnet</a>() -&gt; bool:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return True if the Internet is available&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> urlopen(<span class="stringliteral">r&#39;http://google.com&#39;</span>).getcode() == 200:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">r&#39;https://www.wikipedia.org&#39;</span>).getcode() == 200:</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">elif</span> urlopen(<span class="stringliteral">r&#39;https://docs.python.org&#39;</span>).getcode() == 200:</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">  120</a></span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a458ab912057448498c8d7080f1e88e8e"><div class="ttname"><a href="namespacepybooster_1_1net.html#a458ab912057448498c8d7080f1e88e8e">pybooster.net.hasnet</a></div><div class="ttdeci">def hasnet()</div><div class="ttdoc">Return True if the Internet is available. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00120">net.py:120</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1b3db66fba2f7daaebcb9deb3fcdccf4"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1b3db66fba2f7daaebcb9deb3fcdccf4">pybooster.net.isdomain</a></div><div class="ttdeci">def isdomain</div><div class="ttdoc">Test if a Domain Name resolves to an IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00083">net.py:83</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1861797e7413b251c2efaf5ee930b255"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1861797e7413b251c2efaf5ee930b255">pybooster.net.name2ip</a></div><div class="ttdeci">def name2ip</div><div class="ttdoc">Convert a domain name to an IPv4 address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00078">net.py:78</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a1bdd3d8d95eb851d8cb84d78b1f3e537"><div class="ttname"><a href="namespacepybooster_1_1net.html#a1bdd3d8d95eb851d8cb84d78b1f3e537">pybooster.net.ping</a></div><div class="ttdeci">def ping</div><div class="ttdoc">Specify an IP address or a domain name. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00092">net.py:92</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a72dc4b083f2e0c992861a6d61ebab440"><div class="ttname"><a href="namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440">pybooster.net.findgw</a></div><div class="ttdeci">def findgw()</div><div class="ttdoc">Get the Gateway IP address. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00107">net.py:107</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a097c09e42984d21ff8146d3d888fc558"><div class="ttname"><a href="namespacepybooster_1_1net.html#a097c09e42984d21ff8146d3d888fc558">pybooster.net.lst2ipv6</a></div><div class="ttdeci">def lst2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00064">net.py:64</a></div></div>
 <div class="ttc" id="classValueError_html"><div class="ttname"><a href="classValueError.html">ValueError</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1net_html_a7d86753ed90451125dac01b0dfdb5441"><div class="ttname"><a href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">pybooster.net.ints2ipv6</a></div><div class="ttdeci">def ints2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00054">net.py:54</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1net_html_a7d86753ed90451125dac01b0dfdb5441"><div class="ttname"><a href="namespacepybooster_1_1net.html#a7d86753ed90451125dac01b0dfdb5441">pybooster.net.ints2ipv6</a></div><div class="ttdeci">def ints2ipv6</div><div class="ttdoc">When given eight separate integers, a hex IPv6 address is returned. </div><div class="ttdef"><b>Definition:</b> <a href="net_8py_source.html#l00053">net.py:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="net_8py.html">net.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:49 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:31 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

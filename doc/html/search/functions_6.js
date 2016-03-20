@@ -25,9 +25,11 @@ var searchData=
   ['filewritable',['filewritable',['../tools_8c.html#a29ca7c22158448a1a72c3b61c04a9382',1,'filewritable(const char *__restrict__ filename):&#160;tools.c'],['../tools_8h.html#a29ca7c22158448a1a72c3b61c04a9382',1,'filewritable(const char *__restrict__ filename):&#160;tools.c']]],
   ['finddictkey',['finddictkey',['../namespacepybooster_1_1basic.html#a157e47224c396b750e0d051d5683c9ad',1,'pybooster::basic']]],
   ['finddictkeys',['finddictkeys',['../namespacepybooster_1_1basic.html#a55e2a9c27190fdc8f481de839ed2df38',1,'pybooster::basic']]],
+  ['findescapes',['findescapes',['../namespacepybooster_1_1strtools.html#ab175316bfc68a529184b8e217b67da08',1,'pybooster::strtools']]],
   ['findgw',['findgw',['../namespacepybooster_1_1net.html#a72dc4b083f2e0c992861a6d61ebab440',1,'pybooster::net']]],
   ['findmin_5fheap',['findmin_heap',['../extra__datatypes_8c.html#af6892c235601af47a8620eb2da592c6a',1,'findmin_heap(PriorityQueue H):&#160;extra_datatypes.c'],['../extra__datatypes_8h.html#af6892c235601af47a8620eb2da592c6a',1,'findmin_heap(PriorityQueue H):&#160;extra_datatypes.c']]],
   ['firstchars',['firstchars',['../namespacepybooster_1_1fs.html#a58a903d8f8a81d86fecd7982a20c1b8a',1,'pybooster::fs']]],
+  ['firstletters',['firstletters',['../namespacepybooster_1_1strtools.html#ae01ba866b2cdd68ccfe43e2801a87bd8',1,'pybooster::strtools']]],
   ['fletcher16',['fletcher16',['../cryptx_8c.html#ac4ea027da1176877b8f4478f352ff5ce',1,'fletcher16(const uint8_t *__restrict__ data, const size_t count):&#160;cryptx.c'],['../cryptx_8h.html#ac4ea027da1176877b8f4478f352ff5ce',1,'fletcher16(const uint8_t *__restrict__ data, const size_t count):&#160;cryptx.c']]],
   ['fletcher16fast',['fletcher16fast',['../cryptx_8c.html#a18bd78889176cb1444fc212b50d1852f',1,'fletcher16fast(const uint8_t *__restrict__ data, const size_t words):&#160;cryptx.c'],['../cryptx_8h.html#a18bd78889176cb1444fc212b50d1852f',1,'fletcher16fast(const uint8_t *__restrict__ data, const size_t words):&#160;cryptx.c']]],
   ['fletcher32',['fletcher32',['../cryptx_8c.html#aa57cbd8645e16ea363ccf407d43e0172',1,'fletcher32(const uint16_t *__restrict__ data, const size_t count):&#160;cryptx.c'],['../cryptx_8h.html#aa57cbd8645e16ea363ccf407d43e0172',1,'fletcher32(const uint16_t *__restrict__ data, const size_t count):&#160;cryptx.c']]],
@@ -48,10 +50,13 @@ var searchData=
   ['foot2millimeter',['foot2millimeter',['../namespacepybooster_1_1convlength.html#ae898cba08ae799c5c9441b1740c6caf7',1,'pybooster::convlength']]],
   ['foot2yard',['foot2yard',['../namespacepybooster_1_1convlength.html#a0ca81d94fc2c0800621d28965d0a4dd4',1,'pybooster::convlength']]],
   ['force',['force',['../physics_8c.html#abc6b185f0b43d6ddb18f2d17cd76a61f',1,'force(const double mass, const double acceleration):&#160;physics.c'],['../physics_8h.html#abc6b185f0b43d6ddb18f2d17cd76a61f',1,'force(const double mass, const double acceleration):&#160;physics.c']]],
+  ['formal',['formal',['../namespacepybooster_1_1strtools.html#a1619200e9a44d120d4b3b0073aaab77d',1,'pybooster::strtools']]],
   ['freefall_5fdistance',['freefall_distance',['../physics_8c.html#a9c84e3ffef341d578608ab592cc99afc',1,'freefall_distance(const double time_sec):&#160;physics.c'],['../physics_8h.html#a9c84e3ffef341d578608ab592cc99afc',1,'freefall_distance(const double time_sec):&#160;physics.c']]],
   ['freefall_5fvelocity',['freefall_velocity',['../physics_8c.html#a675f3a430eff856428cbebfa98befac3',1,'freefall_velocity(const double time_sec):&#160;physics.c'],['../physics_8h.html#a675f3a430eff856428cbebfa98befac3',1,'freefall_velocity(const double time_sec):&#160;physics.c']]],
   ['fulltime',['fulltime',['../namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f',1,'pybooster::timeutil']]],
   ['fuzzy2bool',['fuzzy2bool',['../fuzzy__logic_8c.html#a877d01a3fe5a0ddb2aee481edca06965',1,'fuzzy2bool(const fuzzy logic):&#160;fuzzy_logic.c'],['../fuzzy__logic_8h.html#a877d01a3fe5a0ddb2aee481edca06965',1,'fuzzy2bool(const fuzzy logic):&#160;fuzzy_logic.c']]],
   ['fuzzymax',['fuzzymax',['../fuzzy__logic_8c.html#ac136bd7288d00a2533aa60814a430030',1,'fuzzymax(const int count,...):&#160;fuzzy_logic.c'],['../fuzzy__logic_8h.html#ac136bd7288d00a2533aa60814a430030',1,'fuzzymax(const int count,...):&#160;fuzzy_logic.c']]],
-  ['fuzzymin',['fuzzymin',['../fuzzy__logic_8c.html#a29b83eb63d21598db7e0ea075e0a6278',1,'fuzzymin(const int count,...):&#160;fuzzy_logic.c'],['../fuzzy__logic_8h.html#a29b83eb63d21598db7e0ea075e0a6278',1,'fuzzymin(const int count,...):&#160;fuzzy_logic.c']]]
+  ['fuzzymin',['fuzzymin',['../fuzzy__logic_8c.html#a29b83eb63d21598db7e0ea075e0a6278',1,'fuzzymin(const int count,...):&#160;fuzzy_logic.c'],['../fuzzy__logic_8h.html#a29b83eb63d21598db7e0ea075e0a6278',1,'fuzzymin(const int count,...):&#160;fuzzy_logic.c']]],
+  ['fval',['fval',['../namespacepybooster_1_1strtools.html#abfb56508662efc75ee87c636fde0ffc3',1,'pybooster::strtools']]],
+  ['fvalhtml',['fvalhtml',['../namespacepybooster_1_1strtools.html#a79b2faa128c46287ed21d69ee1e664c3',1,'pybooster::strtools']]]
 ];

@@ -1,13 +1,4 @@
 Help on function ezq in ezwin.ezwin:
 
 ezwin.ezwin.ezq = ezq(_msg:str='Question', _type:str='yn') -> str
-    Question Dialog
-    Ask the user a question
-    '_type' is a string that may have one of several values and effects.
-    Each choice determines the buttons on the window.
-    'Yes' and 'No' are included in all choices
-    'yn' || 'yesno': Only use 'Yes' and 'No' buttons
-    'ynq' || 'quit': Add a 'Quit' button
-    'ynclose' || 'close': Add a 'Close' button
-    'yncancel' || 'cancel': Add a 'Cancel' button
 

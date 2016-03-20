@@ -2,7 +2,7 @@ var searchData=
 [
   ['valine',['valine',['../chemistry__types_8c.html#a5fe31c991ec5af17e8c91dca91604f18',1,'valine():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a5fe31c991ec5af17e8c91dca91604f18',1,'valine():&#160;chemistry_types.c']]],
   ['valueerror',['ValueError',['../classValueError.html',1,'']]],
-  ['vanadium',['VANADIUM',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca3faa4b82982d496eef3b011b8520d117',1,'VANADIUM():&#160;chemistry_types.h'],['../chemistry__types_8c.html#ab0e08c1a0700bb0bae255786a8ca22be',1,'vanadium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab0e08c1a0700bb0bae255786a8ca22be',1,'vanadium():&#160;chemistry_types.c']]],
+  ['vanadium',['vanadium',['../chemistry__types_8c.html#ab0e08c1a0700bb0bae255786a8ca22be',1,'vanadium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab0e08c1a0700bb0bae255786a8ca22be',1,'vanadium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca3faa4b82982d496eef3b011b8520d117',1,'VANADIUM():&#160;chemistry_types.h']]],
   ['vardi_5fconstant',['VARDI_CONSTANT',['../MATH__MACROS_8h.html#a7cf05d1f1b21b0ea17b6db060e7674bc',1,'VARDI_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8c.html#a7598189811a828996b3acebc77fac94a',1,'VARDI_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a7598189811a828996b3acebc77fac94a',1,'VARDI_CONSTANT():&#160;mathconstants.c']]],
   ['vcs',['vcs',['../mathfunc_8h.html#adf5f1d97245f37779955b6926bb70090',1,'mathfunc.h']]],
   ['venus',['VENUS',['../namespacepybooster_1_1astronomy.html#a2239cc1f28170beeee47c8c3c87201e2',1,'pybooster::astronomy']]],

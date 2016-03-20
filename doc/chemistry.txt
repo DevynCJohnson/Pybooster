@@ -1,2 +1,22 @@
-no Python documentation found for 'chemistry'
+Help on module chemistry:
+
+NAME
+    chemistry - Chemistry-related Functions
+
+FUNCTIONS
+    iselement(...)
+        iselement(name: str) -> bool
+        Check if the string is a name of a chemical element
+    
+    pka(...)
+        pka(ka: float) -> float
+        Calculate the pKa from Ka (Acid Dissociation Constant)
+    
+    pkb(...)
+        pkb(kb: float) -> float
+        Calculate the pKb from Kb (Base Dissociation Constant)
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/chemistry.cpython-34m.so
+
 

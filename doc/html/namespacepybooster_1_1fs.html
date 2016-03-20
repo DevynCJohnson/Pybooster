@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,6 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
       <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
@@ -109,9 +111,6 @@ $(document).ready(function(){initNavTree('namespacepybooster_1_1fs.html','');});
 <div class="title">pybooster.fs Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Filesystem and file related functions.  
-<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -119,10 +118,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ae295bbf67fcbcbd5ce6ad23793569cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to new file or append to an existing file.  <a href="#ae295bbf67fcbcbd5ce6ad23793569cd9">More...</a><br /></td></tr>
 <tr class="separator:ae295bbf67fcbcbd5ce6ad23793569cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287415110a7e72dd3ab09baa1bae6e44"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a287415110a7e72dd3ab09baa1bae6e44">convumask</a> (_oct)</td></tr>
-<tr class="memdesc:a287415110a7e72dd3ab09baa1bae6e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;') From octal permissions notation (int, str, or list of str+int) To Posix permissions notation as a str Input may be in any of the following forms - &gt; '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'], &gt; [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4] &gt;&gt;&gt; convumask(644) 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask('644') 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask(654) 'rw-r-xr&ndash;'.  <a href="#a287415110a7e72dd3ab09baa1bae6e44">More...</a><br /></td></tr>
+<tr class="memdesc:a287415110a7e72dd3ab09baa1bae6e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;')  <a href="#a287415110a7e72dd3ab09baa1bae6e44">More...</a><br /></td></tr>
 <tr class="separator:a287415110a7e72dd3ab09baa1bae6e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a7a3acd918b9c9bd5bc0d683b9a67df3d">expandhome</a></td></tr>
-<tr class="memdesc:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace 'HOME', '$HOME', or '~' with the literal value Supported OS 'HOME' shortcuts - * Linux, POSIX, Unix, and Unixoid systems * Windows (MS and Pirated) * OS X (Apple) &gt;&gt;&gt; expandhome('~/file') '/home/username/file' &gt;&gt;&gt; expandhome('HOME/file') '/home/username/file' &gt;&gt;&gt; expandhome('$HOME/file') '/home/username/file'.  <a href="#a7a3acd918b9c9bd5bc0d683b9a67df3d">More...</a><br /></td></tr>
+<tr class="memdesc:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace 'HOME', '$HOME', or '~' with the literal value.  <a href="#a7a3acd918b9c9bd5bc0d683b9a67df3d">More...</a><br /></td></tr>
 <tr class="separator:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58a903d8f8a81d86fecd7982a20c1b8a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a58a903d8f8a81d86fecd7982a20c1b8a">firstchars</a></td></tr>
 <tr class="memdesc:a58a903d8f8a81d86fecd7982a20c1b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the first x characters in a file.  <a href="#a58a903d8f8a81d86fecd7982a20c1b8a">More...</a><br /></td></tr>
@@ -140,7 +139,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa29f7c9ffa309ff556170af85f6c21ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents and return a byte-str of binary words.  <a href="#aa29f7c9ffa309ff556170af85f6c21ef">More...</a><br /></td></tr>
 <tr class="separator:aa29f7c9ffa309ff556170af85f6c21ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30850efb308d99b177adaa0177d299bf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a30850efb308d99b177adaa0177d299bf">getfileext</a></td></tr>
-<tr class="memdesc:a30850efb308d99b177adaa0177d299bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file's extension &gt;&gt;&gt; getfileext('/etc/mime.types') 'types' &gt;&gt;&gt; getfileext('/bin/sh') ''.  <a href="#a30850efb308d99b177adaa0177d299bf">More...</a><br /></td></tr>
+<tr class="memdesc:a30850efb308d99b177adaa0177d299bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file's extension.  <a href="#a30850efb308d99b177adaa0177d299bf">More...</a><br /></td></tr>
 <tr class="separator:a30850efb308d99b177adaa0177d299bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae476c64d8a81b36f3de04ce6c9700070"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ae476c64d8a81b36f3de04ce6c9700070">getfilehexbytes</a></td></tr>
 <tr class="memdesc:ae476c64d8a81b36f3de04ce6c9700070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents as bytes in hex.  <a href="#ae476c64d8a81b36f3de04ce6c9700070">More...</a><br /></td></tr>
@@ -158,31 +157,31 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5cd5876a43d9867918ae9b69d0bca944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents and return a str of hex.  <a href="#a5cd5876a43d9867918ae9b69d0bca944">More...</a><br /></td></tr>
 <tr class="separator:a5cd5876a43d9867918ae9b69d0bca944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17659517f1f74634f547f8dc138a667b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a17659517f1f74634f547f8dc138a667b">getfilename</a></td></tr>
-<tr class="memdesc:a17659517f1f74634f547f8dc138a667b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename without path or extension The path and extension are removed from the given string &gt;&gt;&gt; getfilename('/etc/mime.types') 'mime' &gt;&gt;&gt; getfilename('/bin/sh') 'sh'.  <a href="#a17659517f1f74634f547f8dc138a667b">More...</a><br /></td></tr>
+<tr class="memdesc:a17659517f1f74634f547f8dc138a667b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename without path or extension.  <a href="#a17659517f1f74634f547f8dc138a667b">More...</a><br /></td></tr>
 <tr class="separator:a17659517f1f74634f547f8dc138a667b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ea7468c65e00b38520ff8d12d9f401"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#aa2ea7468c65e00b38520ff8d12d9f401">getfilenameext</a></td></tr>
-<tr class="memdesc:aa2ea7468c65e00b38520ff8d12d9f401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename with extension, but without path The path is removed from the given string &gt;&gt;&gt; getfilenameext('/etc/mime.types') 'mime.types' &gt;&gt;&gt; getfilenameext('/bin/sh') 'sh'.  <a href="#aa2ea7468c65e00b38520ff8d12d9f401">More...</a><br /></td></tr>
+<tr class="memdesc:aa2ea7468c65e00b38520ff8d12d9f401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename with extension, but without path.  <a href="#aa2ea7468c65e00b38520ff8d12d9f401">More...</a><br /></td></tr>
 <tr class="separator:aa2ea7468c65e00b38520ff8d12d9f401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068b64d119628853b955f73117ca53ac"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a068b64d119628853b955f73117ca53ac">getfilenameexttup</a></td></tr>
-<tr class="memdesc:a068b64d119628853b955f73117ca53ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename (as a tuple) without path The path is removed from the given string &gt;&gt;&gt; getfilenameexttup('/etc/mime.types') ('mime', '.types') &gt;&gt;&gt; getfilenameexttup('/bin/sh') ('sh', '')  <a href="#a068b64d119628853b955f73117ca53ac">More...</a><br /></td></tr>
+<tr class="memdesc:a068b64d119628853b955f73117ca53ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename (as a tuple) without path.  <a href="#a068b64d119628853b955f73117ca53ac">More...</a><br /></td></tr>
 <tr class="separator:a068b64d119628853b955f73117ca53ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ac77c20170625d1c1ea1f6269e22c5b1e">getfilepath</a></td></tr>
-<tr class="memdesc:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path without filename The filename is removed from the given string &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'.  <a href="#ac77c20170625d1c1ea1f6269e22c5b1e">More...</a><br /></td></tr>
+<tr class="memdesc:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path without filename &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'.  <a href="#ac77c20170625d1c1ea1f6269e22c5b1e">More...</a><br /></td></tr>
 <tr class="separator:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a58d7416f64b2d8fea3ee9931d7b1c037">getfilepathext</a></td></tr>
-<tr class="memdesc:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path and filename+extension as a tuple &gt;&gt;&gt; getfilepathext('/etc/mime.types') ('/etc', 'mime.types') &gt;&gt;&gt; getfilepathext('/bin/sh') ('/bin', 'sh')  <a href="#a58d7416f64b2d8fea3ee9931d7b1c037">More...</a><br /></td></tr>
+<tr class="memdesc:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path and filename+extension as a tuple.  <a href="#a58d7416f64b2d8fea3ee9931d7b1c037">More...</a><br /></td></tr>
 <tr class="separator:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#aa8b16f6c59fdd08e9dfafd46dc8cc13e">getfilepathextlist</a></td></tr>
-<tr class="memdesc:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path, filename, and extension as a list &gt;&gt;&gt; getfilepathextlist('/etc/mime.types') ['/etc', 'mime', '.types'] &gt;&gt;&gt; getfilepathextlist('/bin/sh') ['/bin', 'sh', ''].  <a href="#aa8b16f6c59fdd08e9dfafd46dc8cc13e">More...</a><br /></td></tr>
+<tr class="memdesc:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path, filename, and extension as a list.  <a href="#aa8b16f6c59fdd08e9dfafd46dc8cc13e">More...</a><br /></td></tr>
 <tr class="separator:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19aca5c18aec74425189967793dfbdfd"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a19aca5c18aec74425189967793dfbdfd">getfileraw_list</a></td></tr>
 <tr class="memdesc:a19aca5c18aec74425189967793dfbdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents as a list of byte-objects.  <a href="#a19aca5c18aec74425189967793dfbdfd">More...</a><br /></td></tr>
 <tr class="separator:a19aca5c18aec74425189967793dfbdfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21512e89151ff2a4d082ce7166f9fb76"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a21512e89151ff2a4d082ce7166f9fb76">getfiles</a></td></tr>
-<tr class="memdesc:a21512e89151ff2a4d082ce7166f9fb76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files Return a str containing each file's content Example Usage - getfiles1(['file0', 'file1', 'file2']) Output 'file0 contents file1 contents file2 contents'.  <a href="#a21512e89151ff2a4d082ce7166f9fb76">More...</a><br /></td></tr>
+<tr class="memdesc:a21512e89151ff2a4d082ce7166f9fb76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files.  <a href="#a21512e89151ff2a4d082ce7166f9fb76">More...</a><br /></td></tr>
 <tr class="separator:a21512e89151ff2a4d082ce7166f9fb76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a96f2ca0c1ec900ce7dbf425620fd1e54">getfiles_list</a></td></tr>
-<tr class="memdesc:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files Return a list containing items as strings The contents of one file is placed in one entry Example Usage - getfiles(['file0', 'file1', 'file2']) Output ['file0 contents', 'file1 contents', 'file2 contents'].  <a href="#a96f2ca0c1ec900ce7dbf425620fd1e54">More...</a><br /></td></tr>
+<tr class="memdesc:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files.  <a href="#a96f2ca0c1ec900ce7dbf425620fd1e54">More...</a><br /></td></tr>
 <tr class="separator:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42f72160b635da1f9a38652441b2614d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a42f72160b635da1f9a38652441b2614d">getstdin</a> ()</td></tr>
 <tr class="memdesc:a42f72160b635da1f9a38652441b2614d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get data from stdin.  <a href="#a42f72160b635da1f9a38652441b2614d">More...</a><br /></td></tr>
@@ -197,7 +196,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a95b707e92faf5e724e911ef599aaedc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emulates the Unix "head" command.  <a href="#a95b707e92faf5e724e911ef599aaedc1">More...</a><br /></td></tr>
 <tr class="separator:a95b707e92faf5e724e911ef599aaedc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ac7edbc638c723aa971cbb887dbbaa3c1">pyheadstdin</a> ()</td></tr>
-<tr class="memdesc:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pyhead for stdin/stdout Emulates the Unix "head" command.  <a href="#ac7edbc638c723aa971cbb887dbbaa3c1">More...</a><br /></td></tr>
+<tr class="memdesc:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pyhead for stdin/stdout; Emulates the Unix "head" command.  <a href="#ac7edbc638c723aa971cbb887dbbaa3c1">More...</a><br /></td></tr>
 <tr class="separator:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d8521164cd01011100d64e8e13b517c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a1d8521164cd01011100d64e8e13b517c">readpipe</a> ()</td></tr>
 <tr class="memdesc:a1d8521164cd01011100d64e8e13b517c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from a pipe.  <a href="#a1d8521164cd01011100d64e8e13b517c">More...</a><br /></td></tr>
@@ -206,10 +205,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a61376e1d856d72777efe75cd7de27f25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get data from an open file stream.  <a href="#a61376e1d856d72777efe75cd7de27f25">More...</a><br /></td></tr>
 <tr class="separator:a61376e1d856d72777efe75cd7de27f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5a4c7c399e419c05da1fd746d548b1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a9e5a4c7c399e419c05da1fd746d548b1">rmdir</a></td></tr>
-<tr class="memdesc:a9e5a4c7c399e419c05da1fd746d548b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a directory Return True on success and False on failure.  <a href="#a9e5a4c7c399e419c05da1fd746d548b1">More...</a><br /></td></tr>
+<tr class="memdesc:a9e5a4c7c399e419c05da1fd746d548b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a directory; Return True on success and False on failure.  <a href="#a9e5a4c7c399e419c05da1fd746d548b1">More...</a><br /></td></tr>
 <tr class="separator:a9e5a4c7c399e419c05da1fd746d548b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a102ba695cfeee81feddab2ed7e5092db"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a102ba695cfeee81feddab2ed7e5092db">rmfile</a></td></tr>
-<tr class="memdesc:a102ba695cfeee81feddab2ed7e5092db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a file Return True on success or False on failure.  <a href="#a102ba695cfeee81feddab2ed7e5092db">More...</a><br /></td></tr>
+<tr class="memdesc:a102ba695cfeee81feddab2ed7e5092db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a file; Return True on success or False on failure.  <a href="#a102ba695cfeee81feddab2ed7e5092db">More...</a><br /></td></tr>
 <tr class="separator:a102ba695cfeee81feddab2ed7e5092db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c89cfbf3d538e4a06b09d7d99ac161a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a2c89cfbf3d538e4a06b09d7d99ac161a">write2file</a></td></tr>
 <tr class="memdesc:a2c89cfbf3d538e4a06b09d7d99ac161a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to new file or overwrite file.  <a href="#a2c89cfbf3d538e4a06b09d7d99ac161a">More...</a><br /></td></tr>
@@ -231,10 +230,9 @@ Variables</h2></td></tr>
 <tr class="separator:aa34f16f9af8c69b7c645c6610f37f610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Filesystem and file related functions. </p>
-<dl class="section author"><dt>Author</dt><dd>Devyn Collier Johnson <a href="#" onclick="location.href='mai'+'lto:'+'Dev'+'yn'+'CJo'+'hn'+'son'+'@G'+'mai'+'l.'+'com'; return false;">Devyn<span style="display: none;">.nosp@m.</span>CJoh<span style="display: none;">.nosp@m.</span>nson@<span style="display: none;">.nosp@m.</span>Gmai<span style="display: none;">.nosp@m.</span>l.com</a> </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Devyn Collier Johnson <a href="#" onclick="location.href='mai'+'lto:'+'Dev'+'yn'+'CJo'+'hn'+'son'+'@G'+'mai'+'l.'+'com'; return false;">Devyn<span style="display: none;">.nosp@m.</span>CJoh<span style="display: none;">.nosp@m.</span>nson@<span style="display: none;">.nosp@m.</span>Gmai<span style="display: none;">.nosp@m.</span>l.com</a> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>LGPLv3 </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>2016.03.18</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2016.03.20</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
 <p>GNU Lesser General Public License v3 Copyright (c) Devyn Collier Johnson, All rights reserved.</p>
@@ -258,7 +256,7 @@ LICENSE</h1>
 
 <p>Send data to new file or append to an existing file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00525">525</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00536">536</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -286,9 +284,12 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;') From octal permissions notation (int, str, or list of str+int) To Posix permissions notation as a str Input may be in any of the following forms - &gt; '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'], &gt; [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4] &gt;&gt;&gt; convumask(644) 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask('644') 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask(654) 'rw-r-xr&ndash;'. </p>
+<p>Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;') </p>
+<p>From octal permissions notation (int, str, or list of str+int) To Posix permissions notation as a str</p>
+<p>Input may be in any of the following forms. &gt; '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'], &gt; [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4]</p>
+<p>&gt;&gt;&gt; convumask(644) 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask('644') 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask(654) 'rw-r-xr&ndash;' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00118">118</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00120">120</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -306,9 +307,15 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Replace 'HOME', '$HOME', or '~' with the literal value Supported OS 'HOME' shortcuts - * Linux, POSIX, Unix, and Unixoid systems * Windows (MS and Pirated) * OS X (Apple) &gt;&gt;&gt; expandhome('~/file') '/home/username/file' &gt;&gt;&gt; expandhome('HOME/file') '/home/username/file' &gt;&gt;&gt; expandhome('$HOME/file') '/home/username/file'. </p>
+<p>Replace 'HOME', '$HOME', or '~' with the literal value. </p>
+<p>Supported OS 'HOME' shortcuts:</p><ul>
+<li>Linux, POSIX, Unix, and Unixoid systems</li>
+<li>Windows (MS and Pirated)</li>
+<li>OS X (Apple)</li>
+</ul>
+<p>&gt;&gt;&gt; expandhome('~/file') '/home/username/file' &gt;&gt;&gt; expandhome('HOME/file') '/home/username/file' &gt;&gt;&gt; expandhome('$HOME/file') '/home/username/file' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00242">242</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00252">252</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -328,7 +335,7 @@ LICENSE</h1>
 
 <p>Return the first x characters in a file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00463">463</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00474">474</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -348,7 +355,7 @@ LICENSE</h1>
 
 <p>Get file contents and return as a st. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00258">258</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00268">268</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -368,7 +375,7 @@ LICENSE</h1>
 
 <p>Get file contents and return as a list. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00392">392</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00402">402</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -388,7 +395,7 @@ LICENSE</h1>
 
 <p>Get file contents and return binary as st. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00322">322</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00332">332</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -408,7 +415,7 @@ LICENSE</h1>
 
 <p>Get file contents and return a byte-str of binary words. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00336">336</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00346">346</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -426,9 +433,10 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Get the file's extension &gt;&gt;&gt; getfileext('/etc/mime.types') 'types' &gt;&gt;&gt; getfileext('/bin/sh') ''. </p>
+<p>Get the file's extension. </p>
+<p>&gt;&gt;&gt; getfileext('/etc/mime.types') 'types' &gt;&gt;&gt; getfileext('/bin/sh') '' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00150">150</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00153">153</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -448,7 +456,7 @@ LICENSE</h1>
 
 <p>Get file contents as bytes in hex. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00269">269</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00279">279</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -468,7 +476,7 @@ LICENSE</h1>
 
 <p>Get file contents as a str of bytes in hex with spaces between each byte. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00297">297</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00307">307</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -488,7 +496,7 @@ LICENSE</h1>
 
 <p>Get file contents as a str of bytes in hex. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00283">283</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00293">293</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -508,7 +516,7 @@ LICENSE</h1>
 
 <p>Get file contents and return a str of hex. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00350">350</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00360">360</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -528,7 +536,7 @@ LICENSE</h1>
 
 <p>Get file contents and return a str of hex. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00364">364</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00374">374</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -546,9 +554,11 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the filename without path or extension The path and extension are removed from the given string &gt;&gt;&gt; getfilename('/etc/mime.types') 'mime' &gt;&gt;&gt; getfilename('/bin/sh') 'sh'. </p>
+<p>Return the filename without path or extension. </p>
+<p>The path and extension are removed from the given string</p>
+<p>&gt;&gt;&gt; getfilename('/etc/mime.types') 'mime' &gt;&gt;&gt; getfilename('/bin/sh') 'sh' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00163">163</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00168">168</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -566,9 +576,11 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the filename with extension, but without path The path is removed from the given string &gt;&gt;&gt; getfilenameext('/etc/mime.types') 'mime.types' &gt;&gt;&gt; getfilenameext('/bin/sh') 'sh'. </p>
+<p>Return the filename with extension, but without path. </p>
+<p>The path is removed from the given string</p>
+<p>&gt;&gt;&gt; getfilenameext('/etc/mime.types') 'mime.types' &gt;&gt;&gt; getfilenameext('/bin/sh') 'sh' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00174">174</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00181">181</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -586,9 +598,10 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the filename (as a tuple) without path The path is removed from the given string &gt;&gt;&gt; getfilenameexttup('/etc/mime.types') ('mime', '.types') &gt;&gt;&gt; getfilenameexttup('/bin/sh') ('sh', '') </p>
+<p>Return the filename (as a tuple) without path. </p>
+<p>&gt;&gt;&gt; getfilenameexttup('/etc/mime.types') ('mime', '.types') &gt;&gt;&gt; getfilenameexttup('/bin/sh') ('sh', '') </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00185">185</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00192">192</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -606,9 +619,9 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the path without filename The filename is removed from the given string &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'. </p>
+<p>Return the path without filename &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00196">196</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00202">202</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -626,9 +639,10 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the path and filename+extension as a tuple &gt;&gt;&gt; getfilepathext('/etc/mime.types') ('/etc', 'mime.types') &gt;&gt;&gt; getfilepathext('/bin/sh') ('/bin', 'sh') </p>
+<p>Return the path and filename+extension as a tuple. </p>
+<p>&gt;&gt;&gt; getfilepathext('/etc/mime.types') ('/etc', 'mime.types') &gt;&gt;&gt; getfilepathext('/bin/sh') ('/bin', 'sh') </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00206">206</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00213">213</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -646,9 +660,10 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Return the path, filename, and extension as a list &gt;&gt;&gt; getfilepathextlist('/etc/mime.types') ['/etc', 'mime', '.types'] &gt;&gt;&gt; getfilepathextlist('/bin/sh') ['/bin', 'sh', '']. </p>
+<p>Return the path, filename, and extension as a list. </p>
+<p>&gt;&gt;&gt; getfilepathextlist('/etc/mime.types') ['/etc', 'mime', '.types'] &gt;&gt;&gt; getfilepathextlist('/bin/sh') ['/bin', 'sh', ''] </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00216">216</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00224">224</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -668,7 +683,7 @@ LICENSE</h1>
 
 <p>Get file contents as a list of byte-objects. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00378">378</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00388">388</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -686,9 +701,10 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Get the contents of multiple files Return a str containing each file's content Example Usage - getfiles1(['file0', 'file1', 'file2']) Output 'file0 contents file1 contents file2 contents'. </p>
+<p>Get the contents of multiple files. </p>
+<p>Return a str containing each file's content Example getfiles1(['file0', 'file1', 'file2']) Output 'file0 contents file1 contents file2 contents' </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00407">407</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00417">417</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -706,9 +722,11 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Get the contents of multiple files Return a list containing items as strings The contents of one file is placed in one entry Example Usage - getfiles(['file0', 'file1', 'file2']) Output ['file0 contents', 'file1 contents', 'file2 contents']. </p>
+<p>Get the contents of multiple files. </p>
+<p>Return a list containing items as strings The contents of one file is placed in one entry</p>
+<p>Example getfiles(['file0', 'file1', 'file2']) Output ['file0 contents', 'file1 contents', 'file2 contents'] </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00437">437</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00448">448</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -728,7 +746,7 @@ LICENSE</h1>
 
 <p>Get data from stdin. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00517">517</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00528">528</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -748,7 +766,7 @@ LICENSE</h1>
 
 <p>List files in the specified directory with named file extension. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00098">98</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00097">97</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -768,7 +786,7 @@ LICENSE</h1>
 
 <p>Print the contents of a file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00458">458</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00469">469</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -788,7 +806,7 @@ LICENSE</h1>
 
 <p>Emulates the Unix "head" command. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00472">472</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00483">483</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -806,9 +824,9 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Pyhead for stdin/stdout Emulates the Unix "head" command. </p>
+<p>Pyhead for stdin/stdout; Emulates the Unix "head" command. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00555">555</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00564">564</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -828,7 +846,7 @@ LICENSE</h1>
 
 <p>Read from a pipe. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00497">497</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00508">508</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -858,7 +876,7 @@ LICENSE</h1>
 
 <p>Get data from an open file stream. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00492">492</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00503">503</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -876,9 +894,9 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Try to remove a directory Return True on success and False on failure. </p>
+<p>Try to remove a directory; Return True on success and False on failure. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00582">582</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00587">587</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -896,9 +914,9 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Try to remove a file Return True on success or False on failure. </p>
+<p>Try to remove a file; Return True on success or False on failure. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00566">566</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00573">573</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -918,7 +936,7 @@ LICENSE</h1>
 
 <p>Send data to new file or overwrite file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00532">532</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00543">543</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -938,7 +956,7 @@ LICENSE</h1>
 
 <p>Write binary data to a new file or overwrite the file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00539">539</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00550">550</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -958,7 +976,7 @@ LICENSE</h1>
 
 <p>Write a string as binary data to a new file or overwrite the file. </p>
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00546">546</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00557">557</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -1008,8 +1026,8 @@ LICENSE</h1>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="stringliteral">&#39;pyhead&#39;</span>,</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment"># READ/GET DATA</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="stringliteral">&#39;readstream&#39;</span>,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="stringliteral">&#39;readpipe&#39;</span>,</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1fs.html#aa4a022e6ddacd362b83964da5cc5d044">   38</a></span>&#160;    <span class="stringliteral">&#39;getstdin&#39;</span>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1fs.html#aa4a022e6ddacd362b83964da5cc5d044">   37</a></span>&#160;    <span class="stringliteral">&#39;readpipe&#39;</span>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;getstdin&#39;</span>,</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment"># WRITE/SEND DATA</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;append2file&#39;</span>,</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&#39;write2file&#39;</span>,</div>
@@ -1021,7 +1039,7 @@ LICENSE</h1>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="stringliteral">&#39;rmdir&#39;</span>,</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;]</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00038">38</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00037">37</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -1035,7 +1053,7 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00090">90</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00089">89</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1067,7 @@ LICENSE</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="fs_8py_source.html#l00091">91</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+<p>Definition at line <a class="el" href="fs_8py_source.html#l00090">90</a> of file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1077,7 @@ LICENSE</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepybooster.html">pybooster</a></li><li class="navelem"><a class="el" href="namespacepybooster_1_1fs.html">fs</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:50 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:32 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

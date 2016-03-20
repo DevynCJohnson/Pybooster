@@ -4,112 +4,61 @@ NAME
     xmath
 
 DESCRIPTION
-    @file xmath.py
-    @package pybooster.xmath
-    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-    @copyright LGPLv3
-    @brief Extra Math Functions
-    @version 2016.03.18
-    
-    @section LICENSE
-    GNU Lesser General Public License v3
-    Copyright (c) Devyn Collier Johnson, All rights reserved.
-    
-    The PyBooster Library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3.0 of the License, or (at your option) any later version.
-    
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-    Lesser General Public License for more details.
-    
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.
+    # -*- coding: utf-8 -*-
+    # vim:fileencoding=utf-8
 
 FUNCTIONS
     arccot(_num:int) -> float
-        Arccotangent
     
     arccsc(_num:int) -> float
-        Arccosecant
     
     arcsec(_num:int) -> float
-        Arcsecant
     
     coinflip() -> str
-        Flip a coin and return a string of heads or tails
     
     curt(_num:int) -> float
-        Cubed Root
     
     degrees2radians(_degrees:float) -> float
-        Convert Degrees to Radians
-        (PI / 180) * Degrees
     
     dice() -> int
-        Roll a die and return a random integer (1-6)
     
     dice8() -> int
-        Roll an 8-sided die and return a random integer (1-8)
     
     factors(_num:int) -> set
-        Find prime factors
     
     flipcoin() -> str
-        Flip a coin and return a string of heads or tails
     
     int2many(_int:int) -> str
-        Convert a decimal number to mulitple number base types
-        The returned value is a table as a string
     
     ln(_num:int) -> float
-        Natural/Napierian Logarithm (Base = Euler's Number)
     
     napierianlog(_num:int) -> float
-        Natural/Napierian Logarithm (Base = Euler's Number)
     
     naturallog(_num:int) -> float
-        Natural/Napierian Logarithm (Base = Euler's Number)
     
     radians2degrees(_radians:float) -> float
-        Convert Radians to Degrees
-        (180 / PI) * Radians
     
     root10(_num:int) -> float
-        10th Root
     
     root11(_num:int) -> float
-        11th Root
     
     root12(_num:int) -> float
-        12th Root
     
     root13(_num:int) -> float
-        13th Root
     
     root4(_num:int) -> float
-        Hypercubed Root
     
     root5(_num:int) -> float
-        5th Root
     
     root6(_num:int) -> float
-        6th Root
     
     root7(_num:int) -> float
-        7th Root
     
     root8(_num:int) -> float
-        8th Root
     
     root9(_num:int) -> float
-        9th Root
     
     showpercent(_portion:int, _total:int=100) -> str
-        Convert a portion and total to a percentage
-        Input int and/or float types and get a string
 
 DATA
     HALFPI = 1.5707963267948966

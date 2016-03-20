@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -110,254 +111,253 @@ $(document).ready(function(){initNavTree('timeutil_8py_source.html','');});
 <a href="timeutil_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;@brief Time Utilities</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">@file timeutil.py</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral">@package pybooster.timeutil</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">@author Devyn Collier Johnson &lt;DevynCJohnson@Gmail.com&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@copyright LGPLv3</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@brief Time Utilities</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@version 2016.03.18</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">License along with this library.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@version 2016.03.20</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">License along with this library.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">import</span> datetime</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">import</span> sys</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">import</span> time <span class="keyword">as</span> pytime</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">import</span> datetime</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">import</span> sys</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">import</span> time <span class="keyword">as</span> pytime</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#aa4a022e6ddacd362b83964da5cc5d044">   37</a></span>&#160;__all__ = [</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment"># CONSTANTS</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;SEASONS&#39;</span>,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;YEAR&#39;</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment"># BOOLEAN FUNCTIONS</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;istoday&#39;</span>,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="stringliteral">&#39;istodaysunday&#39;</span>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="stringliteral">&#39;istodaymonday&#39;</span>,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="stringliteral">&#39;istodaytuesday&#39;</span>,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="stringliteral">&#39;istodaywednesday&#39;</span>,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="stringliteral">&#39;istodaythursday&#39;</span>,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="stringliteral">&#39;istodayfriday&#39;</span>,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="stringliteral">&#39;istodaysaturday&#39;</span>,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="stringliteral">&#39;isyear&#39;</span>,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="stringliteral">&#39;currentseason&#39;</span>,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="stringliteral">&#39;weekday&#39;</span>,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="stringliteral">&#39;month&#39;</span>,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="stringliteral">&#39;year&#39;</span>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="stringliteral">&#39;date&#39;</span>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="stringliteral">&#39;clock&#39;</span>,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="stringliteral">&#39;date_time&#39;</span>,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="stringliteral">&#39;dateandtime&#39;</span>,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="stringliteral">&#39;day&#39;</span>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="stringliteral">&#39;hour&#39;</span>,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="stringliteral">&#39;fulltime&#39;</span>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="stringliteral">&#39;sysuptime&#39;</span>,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;]</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#aa4a022e6ddacd362b83964da5cc5d044">   36</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment"># CONSTANTS</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;SEASONS&#39;</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;YEAR&#39;</span>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment"># BOOLEAN FUNCTIONS</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&#39;istoday&#39;</span>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;istodaysunday&#39;</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="stringliteral">&#39;istodaymonday&#39;</span>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="stringliteral">&#39;istodaytuesday&#39;</span>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="stringliteral">&#39;istodaywednesday&#39;</span>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="stringliteral">&#39;istodaythursday&#39;</span>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="stringliteral">&#39;istodayfriday&#39;</span>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="stringliteral">&#39;istodaysaturday&#39;</span>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="stringliteral">&#39;isyear&#39;</span>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="stringliteral">&#39;currentseason&#39;</span>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="stringliteral">&#39;weekday&#39;</span>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="stringliteral">&#39;month&#39;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="stringliteral">&#39;year&#39;</span>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="stringliteral">&#39;date&#39;</span>,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="stringliteral">&#39;clock&#39;</span>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="stringliteral">&#39;date_time&#39;</span>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="stringliteral">&#39;dateandtime&#39;</span>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="stringliteral">&#39;day&#39;</span>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="stringliteral">&#39;hour&#39;</span>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="stringliteral">&#39;fulltime&#39;</span>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="stringliteral">&#39;sysuptime&#39;</span>,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;]</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"># CONSTANTS</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"># CONSTANTS</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#afa26cce770d11b4b6b2498ba4e32e9ec">   70</a></span>&#160;SEASONS = (</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="stringliteral">r&#39;spring&#39;</span>,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="stringliteral">r&#39;summer&#39;</span>,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="stringliteral">r&#39;autumn&#39;</span>,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="stringliteral">r&#39;winter&#39;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;)</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#afa26cce770d11b4b6b2498ba4e32e9ec">   69</a></span>&#160;SEASONS = (</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="stringliteral">r&#39;spring&#39;</span>,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="stringliteral">r&#39;summer&#39;</span>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="stringliteral">r&#39;autumn&#39;</span>,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="stringliteral">r&#39;winter&#39;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a90306d4afae20eed48e0b2c52b989164">   78</a></span>&#160;YEAR = int(pytime.strftime(<span class="stringliteral">&#39;%Y&#39;</span>))</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a90306d4afae20eed48e0b2c52b989164">   77</a></span>&#160;YEAR = int(pytime.strftime(<span class="stringliteral">&#39;%Y&#39;</span>))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"># BOOLEAN FUNCTIONS</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"># BOOLEAN FUNCTIONS</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">istoday</a>(_weekday: str) -&gt; bool:</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">   85</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is a particular weekday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> _weekday.lower() == pytime.strftime(<span class="stringliteral">&#39;%A&#39;</span>).lower()</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">istoday</a>(_weekday: str) -&gt; bool:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">   84</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is a particular weekday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> _weekday.lower() == pytime.strftime(<span class="stringliteral">&#39;%A&#39;</span>).lower()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">istodaysunday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">   90</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Sunday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Sunday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">istodaysunday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">   89</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Sunday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Sunday&#39;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">istodaymonday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">   95</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Monday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Monday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">istodaymonday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">   94</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Monday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Monday&#39;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">istodaytuesday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">  100</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Tuesday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Tuesday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">istodaytuesday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">   99</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Tuesday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Tuesday&#39;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">istodaywednesday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">  105</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Wednesday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Wednesday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">istodaywednesday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">  104</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Wednesday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Wednesday&#39;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">istodaythursday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">  110</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Thursday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Thursday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">istodaythursday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">  109</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Thursday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Thursday&#39;</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">istodayfriday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">  115</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Friday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Friday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">istodayfriday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">  114</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Friday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Friday&#39;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">istodaysaturday</a>() -&gt; bool:</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">  120</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Saturday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">r&#39;Saturday&#39;</span> == pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">istodaysaturday</a>() -&gt; bool:</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">  119</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is Saturday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>) == <span class="stringliteral">r&#39;Saturday&#39;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">isyear</a>(_year: str <span class="keywordflow">or</span> int) -&gt; bool:</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">  125</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is a particular year&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> isinstance(_year, int):</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        _year = str(_year)</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> _year == pytime.strftime(<span class="stringliteral">&#39;%Y&#39;</span>)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">isyear</a>(_year: str <span class="keywordflow">or</span> int) -&gt; bool:</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">  124</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Test if today is a particular year&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> isinstance(_year, int):</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        _year = str(_year)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%Y&#39;</span>) == _year</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">currentseason</a>(_hemisphere: str=<span class="stringliteral">&#39;n&#39;</span>) -&gt; str:</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the current season&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    _day = pytime.localtime().tm_yday</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">if</span> _day <span class="keywordflow">in</span> range(80, 172):  <span class="comment"># Spring</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">  138</a></span>&#160;        season = <span class="stringliteral">&#39;spring&#39;</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">elif</span> _day <span class="keywordflow">in</span> range(172, 264):  <span class="comment"># Summer</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        season = <span class="stringliteral">&#39;summer&#39;</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">elif</span> _day <span class="keywordflow">in</span> range(264, 355):  <span class="comment"># Fall</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        season = <span class="stringliteral">&#39;fall&#39;</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">else</span>:  <span class="comment"># Winter</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        season = <span class="stringliteral">&#39;winter&#39;</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    _hemisphere = _hemisphere.lower()</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> _hemisphere != <span class="stringliteral">&#39;n&#39;</span>:</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">if</span> season <span class="keywordflow">is</span> <span class="stringliteral">&#39;spring&#39;</span>:</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&#39;fall&#39;</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">&#39;fall&#39;</span>:</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&#39;spring&#39;</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">&#39;summer&#39;</span>:</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&#39;winter&#39;</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">&#39;winter&#39;</span>:</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&#39;summer&#39;</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> season</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">currentseason</a>(_hemisphere: str=<span class="stringliteral">&#39;n&#39;</span>) -&gt; str:</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the current season&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    _day = pytime.localtime().tm_yday</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">if</span> _day <span class="keywordflow">in</span> range(80, 172):  <span class="comment"># Spring</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">  137</a></span>&#160;        season = <span class="stringliteral">r&#39;spring&#39;</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">elif</span> _day <span class="keywordflow">in</span> range(172, 264):  <span class="comment"># Summer</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        season = <span class="stringliteral">r&#39;summer&#39;</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">elif</span> _day <span class="keywordflow">in</span> range(264, 355):  <span class="comment"># Fall</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        season = <span class="stringliteral">r&#39;fall&#39;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">else</span>:  <span class="comment"># Winter</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        season = <span class="stringliteral">r&#39;winter&#39;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    _hemisphere = _hemisphere.lower()</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">if</span> _hemisphere != <span class="stringliteral">&#39;n&#39;</span>:</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">if</span> season <span class="keywordflow">is</span> <span class="stringliteral">r&#39;spring&#39;</span>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">r&#39;fall&#39;</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">r&#39;fall&#39;</span>:</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">r&#39;spring&#39;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">r&#39;summer&#39;</span>:</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">r&#39;winter&#39;</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">elif</span> season <span class="keywordflow">is</span> <span class="stringliteral">r&#39;winter&#39;</span>:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">r&#39;summer&#39;</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> season</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">weekday</a>() -&gt; str:</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the name of the weekday&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">weekday</a>() -&gt; str:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the name of the weekday&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A&#39;</span>)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">month</a>() -&gt; str:</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the name of the month&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%B&#39;</span>)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">month</a>() -&gt; str:</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the name of the month&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%B&#39;</span>)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">  168</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">year</a>() -&gt; str:</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the year&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%Y&#39;</span>)</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">  167</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">year</a>() -&gt; str:</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the year&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%Y&#39;</span>)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">  173</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">date</a>() -&gt; str:</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%x&#39;</span>)</div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">  172</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">date</a>() -&gt; str:</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%x&#39;</span>)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">  178</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">clock</a>() -&gt; str:</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the time&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%X&#39;</span>)</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">  177</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">clock</a>() -&gt; str:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the time&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%X&#39;</span>)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">  183</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">date_time</a>() -&gt; str:</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date and time&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%x %X&#39;</span>)</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">  182</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">date_time</a>() -&gt; str:</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date and time&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%x %X&#39;</span>)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">  188</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">dateandtime</a>() -&gt; str:</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date and time&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%x %X&#39;</span>)</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">  187</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">dateandtime</a>() -&gt; str:</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the date and time&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%x %X&#39;</span>)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">  193</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">day</a>() -&gt; str:</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the day&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%d&#39;</span>)</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">  192</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">day</a>() -&gt; str:</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the day&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%d&#39;</span>)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">  198</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">hour</a>() -&gt; str:</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the hour&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%I&#39;</span>)</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">  197</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">hour</a>() -&gt; str:</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the hour&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%I&#39;</span>)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">  203</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">fulltime</a>() -&gt; str:</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the time, month, year, etc.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">&#39;%A %b %d, %Y, %X&#39;</span>)</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">  202</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">fulltime</a>() -&gt; str:</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the time, month, year, etc.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> pytime.strftime(<span class="stringliteral">r&#39;%A %b %d, %Y, %X&#39;</span>)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">  208</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">sysuptime</a>() -&gt; str:</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the system&#39;s uptime&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> sys.platform.startswith(<span class="stringliteral">&#39;win&#39;</span>):</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keyword">import</span> win32api</div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">  213</a></span>&#160;            _uptime = win32api.GetTickCount()</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">except</span> ImportError:</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            _uptime = <span class="stringliteral">&#39;Unknown&#39;</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">  218</a></span>&#160;            with open(<span class="stringliteral">&#39;/proc/uptime&#39;</span>, <span class="stringliteral">&#39;</span><span class="stringliteral">r&#39;) as _file:</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="stringliteral">                _seconds = float(_file.readline().split()[0])</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="stringliteral">                _uptime = str(datetime.timedelta(seconds=_seconds))</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="stringliteral">        </span><span class="keywordflow">except</span> FileNotFoundError:</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            _uptime = <span class="stringliteral">&#39;Unknown&#39;</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> _uptime</div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_ab89e3491529d0918ffdff7ac3d86cca7"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">pybooster.timeutil.hour</a></div><div class="ttdeci">def hour()</div><div class="ttdoc">Return the ho. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00208">timeutil.py:208</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a0a252e8b1c60d0a6b31b8d8cef4112e2"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">pybooster.timeutil.month</a></div><div class="ttdeci">def month()</div><div class="ttdoc">Return the name of the month. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00173">timeutil.py:173</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_af9eb6424af1ca08ef8373df551edbcbf"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">pybooster.timeutil.day</a></div><div class="ttdeci">def day()</div><div class="ttdoc">Return the day. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00203">timeutil.py:203</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a73fca984808c9f86f57c490b282aa23f"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">pybooster.timeutil.sysuptime</a></div><div class="ttdeci">def sysuptime()</div><div class="ttdoc">Return the system&#39;s uptime. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00218">timeutil.py:218</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a2c7a8112ca71c73f94ada6c17c12e261"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">pybooster.timeutil.weekday</a></div><div class="ttdeci">def weekday()</div><div class="ttdoc">Return the name of the weekday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00168">timeutil.py:168</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a579cf9fcde1f6e1514db66c413eedd91"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">pybooster.timeutil.isyear</a></div><div class="ttdeci">def isyear</div><div class="ttdoc">Test if today is a particular yea. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00125">timeutil.py:125</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a17e37d0d657a03f0395cfb7817d0e373"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">pybooster.timeutil.date_time</a></div><div class="ttdeci">def date_time()</div><div class="ttdoc">Return the date and time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00193">timeutil.py:193</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_aa37037a69eb5a21c2c63d3f743cd6b11"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">pybooster.timeutil.clock</a></div><div class="ttdeci">def clock()</div><div class="ttdoc">Return the time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00188">timeutil.py:188</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a7a15e650101810cccf233abe98d94058"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">pybooster.timeutil.istodaywednesday</a></div><div class="ttdeci">def istodaywednesday()</div><div class="ttdoc">Test if today is Wednesday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00105">timeutil.py:105</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a1ee2ecb9c5632af2100abb16cdb0d2bc"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">pybooster.timeutil.istodaythursday</a></div><div class="ttdeci">def istodaythursday()</div><div class="ttdoc">Test if today is Thursday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00110">timeutil.py:110</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a183f977a07a9bae5f0a4d5480c32a5de"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">pybooster.timeutil.istodaysunday</a></div><div class="ttdeci">def istodaysunday()</div><div class="ttdoc">Test if today is Sunday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00090">timeutil.py:90</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a000e896de57619b02a830b3568dd7c89"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">pybooster.timeutil.year</a></div><div class="ttdeci">def year()</div><div class="ttdoc">Return the yea. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00178">timeutil.py:178</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a97a3199d43efbc18cf10559f27647ed0"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">pybooster.timeutil.istodayfriday</a></div><div class="ttdeci">def istodayfriday()</div><div class="ttdoc">Test if today is Friday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00115">timeutil.py:115</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a30a09e008c18717623dfe0c24e431b05"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">pybooster.timeutil.istodaysaturday</a></div><div class="ttdeci">def istodaysaturday()</div><div class="ttdoc">Test if today is Saturday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00120">timeutil.py:120</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a5ed04a34b4e31965e13ac5c98390eaf5"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">pybooster.timeutil.istodaytuesday</a></div><div class="ttdeci">def istodaytuesday()</div><div class="ttdoc">Test if today is Tuesday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00100">timeutil.py:100</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a9d4673d0d9fb346107470e434136923f"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">pybooster.timeutil.fulltime</a></div><div class="ttdeci">def fulltime()</div><div class="ttdoc">Return the time, month, year, etc. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00213">timeutil.py:213</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a8c4cc4c339976ba8debbcef4dcb2c2a9"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">pybooster.timeutil.istodaymonday</a></div><div class="ttdeci">def istodaymonday()</div><div class="ttdoc">Test if today is Monday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00095">timeutil.py:95</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a3590172dbc6bb9d04c6bba43ff5f4c9e"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">pybooster.timeutil.date</a></div><div class="ttdeci">def date()</div><div class="ttdoc">Return the date. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00183">timeutil.py:183</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a05c735f801f1889ae3d7aff9a27aeab9"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">pybooster.timeutil.dateandtime</a></div><div class="ttdeci">def dateandtime()</div><div class="ttdoc">Return the date and time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00198">timeutil.py:198</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_a0efbb7bb79c201d57ca942347883352d"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">pybooster.timeutil.currentseason</a></div><div class="ttdeci">def currentseason</div><div class="ttdoc">Return the current season. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00138">timeutil.py:138</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1timeutil_html_ac9765b3e634d6437eb3fc8250d604446"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">pybooster.timeutil.istoday</a></div><div class="ttdeci">def istoday</div><div class="ttdoc">Test if today is a particular weekday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00085">timeutil.py:85</a></div></div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">  207</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">sysuptime</a>() -&gt; str:</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Return the system&#39;s uptime&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">if</span> sys.platform.startswith(<span class="stringliteral">r&#39;win&#39;</span>):</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keyword">import</span> win32api</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">  212</a></span>&#160;            _uptime = win32api.GetTickCount()</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">except</span> ImportError:</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            _uptime = <span class="stringliteral">r&#39;Unknown&#39;</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">  217</a></span>&#160;            with open(<span class="stringliteral">r&#39;/proc/uptime&#39;</span>, mode=<span class="stringliteral">&#39;rt&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> _file:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                _seconds = float(_file.readline().split()[0])</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                _uptime = str(datetime.timedelta(seconds=_seconds))</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">except</span> FileNotFoundError:</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            _uptime = <span class="stringliteral">r&#39;Unknown&#39;</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">return</span> _uptime</div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_ab89e3491529d0918ffdff7ac3d86cca7"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#ab89e3491529d0918ffdff7ac3d86cca7">pybooster.timeutil.hour</a></div><div class="ttdeci">def hour()</div><div class="ttdoc">Return the ho. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00207">timeutil.py:207</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a0a252e8b1c60d0a6b31b8d8cef4112e2"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2">pybooster.timeutil.month</a></div><div class="ttdeci">def month()</div><div class="ttdoc">Return the name of the month. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00172">timeutil.py:172</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_af9eb6424af1ca08ef8373df551edbcbf"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#af9eb6424af1ca08ef8373df551edbcbf">pybooster.timeutil.day</a></div><div class="ttdeci">def day()</div><div class="ttdoc">Return the day. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00202">timeutil.py:202</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a73fca984808c9f86f57c490b282aa23f"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a73fca984808c9f86f57c490b282aa23f">pybooster.timeutil.sysuptime</a></div><div class="ttdeci">def sysuptime()</div><div class="ttdoc">Return the system&#39;s uptime. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00217">timeutil.py:217</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a2c7a8112ca71c73f94ada6c17c12e261"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a2c7a8112ca71c73f94ada6c17c12e261">pybooster.timeutil.weekday</a></div><div class="ttdeci">def weekday()</div><div class="ttdoc">Return the name of the weekday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00167">timeutil.py:167</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a579cf9fcde1f6e1514db66c413eedd91"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a579cf9fcde1f6e1514db66c413eedd91">pybooster.timeutil.isyear</a></div><div class="ttdeci">def isyear</div><div class="ttdoc">Test if today is a particular yea. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00124">timeutil.py:124</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a17e37d0d657a03f0395cfb7817d0e373"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373">pybooster.timeutil.date_time</a></div><div class="ttdeci">def date_time()</div><div class="ttdoc">Return the date and time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00192">timeutil.py:192</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_aa37037a69eb5a21c2c63d3f743cd6b11"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#aa37037a69eb5a21c2c63d3f743cd6b11">pybooster.timeutil.clock</a></div><div class="ttdeci">def clock()</div><div class="ttdoc">Return the time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00187">timeutil.py:187</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a7a15e650101810cccf233abe98d94058"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a7a15e650101810cccf233abe98d94058">pybooster.timeutil.istodaywednesday</a></div><div class="ttdeci">def istodaywednesday()</div><div class="ttdoc">Test if today is Wednesday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00104">timeutil.py:104</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a1ee2ecb9c5632af2100abb16cdb0d2bc"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a1ee2ecb9c5632af2100abb16cdb0d2bc">pybooster.timeutil.istodaythursday</a></div><div class="ttdeci">def istodaythursday()</div><div class="ttdoc">Test if today is Thursday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00109">timeutil.py:109</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a183f977a07a9bae5f0a4d5480c32a5de"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a183f977a07a9bae5f0a4d5480c32a5de">pybooster.timeutil.istodaysunday</a></div><div class="ttdeci">def istodaysunday()</div><div class="ttdoc">Test if today is Sunday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00089">timeutil.py:89</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a000e896de57619b02a830b3568dd7c89"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89">pybooster.timeutil.year</a></div><div class="ttdeci">def year()</div><div class="ttdoc">Return the yea. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00177">timeutil.py:177</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a97a3199d43efbc18cf10559f27647ed0"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a97a3199d43efbc18cf10559f27647ed0">pybooster.timeutil.istodayfriday</a></div><div class="ttdeci">def istodayfriday()</div><div class="ttdoc">Test if today is Friday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00114">timeutil.py:114</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a30a09e008c18717623dfe0c24e431b05"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a30a09e008c18717623dfe0c24e431b05">pybooster.timeutil.istodaysaturday</a></div><div class="ttdeci">def istodaysaturday()</div><div class="ttdoc">Test if today is Saturday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00119">timeutil.py:119</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a5ed04a34b4e31965e13ac5c98390eaf5"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a5ed04a34b4e31965e13ac5c98390eaf5">pybooster.timeutil.istodaytuesday</a></div><div class="ttdeci">def istodaytuesday()</div><div class="ttdoc">Test if today is Tuesday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00099">timeutil.py:99</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a9d4673d0d9fb346107470e434136923f"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a9d4673d0d9fb346107470e434136923f">pybooster.timeutil.fulltime</a></div><div class="ttdeci">def fulltime()</div><div class="ttdoc">Return the time, month, year, etc. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00212">timeutil.py:212</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a8c4cc4c339976ba8debbcef4dcb2c2a9"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a8c4cc4c339976ba8debbcef4dcb2c2a9">pybooster.timeutil.istodaymonday</a></div><div class="ttdeci">def istodaymonday()</div><div class="ttdoc">Test if today is Monday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00094">timeutil.py:94</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a3590172dbc6bb9d04c6bba43ff5f4c9e"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e">pybooster.timeutil.date</a></div><div class="ttdeci">def date()</div><div class="ttdoc">Return the date. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00182">timeutil.py:182</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a05c735f801f1889ae3d7aff9a27aeab9"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9">pybooster.timeutil.dateandtime</a></div><div class="ttdeci">def dateandtime()</div><div class="ttdoc">Return the date and time. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00197">timeutil.py:197</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_a0efbb7bb79c201d57ca942347883352d"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#a0efbb7bb79c201d57ca942347883352d">pybooster.timeutil.currentseason</a></div><div class="ttdeci">def currentseason</div><div class="ttdoc">Return the current season. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00137">timeutil.py:137</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1timeutil_html_ac9765b3e634d6437eb3fc8250d604446"><div class="ttname"><a href="namespacepybooster_1_1timeutil.html#ac9765b3e634d6437eb3fc8250d604446">pybooster.timeutil.istoday</a></div><div class="ttdeci">def istoday</div><div class="ttdoc">Test if today is a particular weekday. </div><div class="ttdef"><b>Definition:</b> <a href="timeutil_8py_source.html#l00084">timeutil.py:84</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="timeutil_8py.html">timeutil.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:49 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:32 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

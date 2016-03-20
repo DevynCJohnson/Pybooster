@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Bitwise Operation Functions
 @file bitwise.py
 @package pybooster.bitwise
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Bitwise Operations
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -41,22 +40,22 @@ __all__ = [
 
 def bit_and(_num0: str, _num1: str, _base: int) -> str:
     """Bitwise ANDing
-    Given the decimal representation of two numbers as a string,
-    return the ANDed number as a string
+
+    Given the decimal representation of two numbers as a string, return the ANDed number as a string
     """
     if not isinstance(_num0, str) or not isinstance(_num0, str):
         return None
     if _base == 2:  # Binary
         _num = int(_num0, 2) & int(_num1, 2)
-        _num = bin(_num).replace('0b', '')
+        _num = bin(_num).replace(r'0b', r'')
     elif _base == 8:  # Octal
         _num = int(_num0, 8) & int(_num1, 8)
-        _num = oct(_num).replace('0o', '')
+        _num = oct(_num).replace(r'0o', r'')
     elif _base == 10:  # Decimal
         _num = int(_num0) & int(_num1)
     elif _base == 16:  # Hexadecimal
         _num = int(_num0, 16) & int(_num1, 16)
-        _num = hex(_num).replace('0x', '')
+        _num = hex(_num).replace(r'0x', r'')
     else:
         return None
     return _num
@@ -64,22 +63,22 @@ def bit_and(_num0: str, _num1: str, _base: int) -> str:
 
 def bit_or(_num0: str, _num1: str, _base: int) -> str:
     """Bitwise ORing
-    Given the decimal representation of two numbers as a string,
-    return the ORed number as a string
+
+    Given the decimal representation of two numbers as a string, return the ORed number as a string
     """
     if not isinstance(_num0, str) or not isinstance(_num0, str):
         return None
     if _base == 2:  # Binary
         _num = int(_num0, 2) | int(_num1, 2)
-        _num = bin(_num).replace('0b', '')
+        _num = bin(_num).replace(r'0b', r'')
     elif _base == 8:  # Octal
         _num = int(_num0, 8) | int(_num1, 8)
-        _num = oct(_num).replace('0o', '')
+        _num = oct(_num).replace(r'0o', r'')
     elif _base == 10:  # Decimal
         _num = int(_num0) | int(_num1)
     elif _base == 16:  # Hexadecimal
         _num = int(_num0, 16) | int(_num1, 16)
-        _num = hex(_num).replace('0x', '')
+        _num = hex(_num).replace(r'0x', r'')
     else:
         return None
     return _num
@@ -87,22 +86,22 @@ def bit_or(_num0: str, _num1: str, _base: int) -> str:
 
 def bit_xor(_num0: str, _num1: str, _base: int) -> str:
     """Bitwise XORing
-    Given the decimal representation of two numbers as a string,
-    return the XORed number as a string
+
+    Given the decimal representation of two numbers as a string, return the XORed number as a string
     """
     if not isinstance(_num0, str) or not isinstance(_num0, str):
         return None
     if _base == 2:  # Binary
         _num = int(_num0, 2) ^ int(_num1, 2)
-        _num = bin(_num).replace('0b', '')
+        _num = bin(_num).replace(r'0b', r'')
     elif _base == 8:  # Octal
         _num = int(_num0, 8) ^ int(_num1, 8)
-        _num = oct(_num).replace('0o', '')
+        _num = oct(_num).replace(r'0o', r'')
     elif _base == 10:  # Decimal
         _num = int(_num0) ^ int(_num1)
     elif _base == 16:  # Hexadecimal
         _num = int(_num0, 16) ^ int(_num1, 16)
-        _num = hex(_num).replace('0x', '')
+        _num = hex(_num).replace(r'0x', r'')
     else:
         return None
     return _num

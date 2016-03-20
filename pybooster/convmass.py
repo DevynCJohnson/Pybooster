@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Measurement (Mass) Conversions
 @file convmass.py
 @package pybooster.convmass
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Measurement (Mass) Conversions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3

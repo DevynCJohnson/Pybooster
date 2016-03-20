@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Astronomy Data
 @file astronomy.py
 @package pybooster.astronomy
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Astronomy Data
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
-The planet properties are dictionaries that use lowercase key names.\n
-PLANET_SYMBOLS is a dictionary that uses uppercase key names.
+The planet properties are dictionaries that use lowercase key names.
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -75,6 +73,7 @@ DWARF_PLANETS = (
 )
 
 
+"""PLANET_SYMBOLS is a dictionary that uses uppercase key names."""
 PLANET_SYMBOLS = {
     r'SUN': r'☉',
     r'MOON': r'☽',

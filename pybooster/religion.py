@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Data Pertaining to Religious Topics
 @file religion.py
 @package pybooster.religion
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Data Pertaining to Religious Topics
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3

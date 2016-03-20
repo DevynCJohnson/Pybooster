@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Chemistry-related Data-types
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 Various chemistry-specific datatypes from amino-acids, to elements, to quarks, to subatomic particles

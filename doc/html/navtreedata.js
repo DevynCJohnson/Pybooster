@@ -1,10 +1,13 @@
 var NAVTREE =
 [
   [ "PyBooster", "index.html", [
-    [ "Namespace Members", "namespacemembers.html", [
-      [ "All", "namespacemembers.html", "namespacemembers_dup" ],
-      [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
-      [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ]
+    [ "Namespaces", null, [
+      [ "Namespace List", "namespaces.html", "namespaces" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
+        [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
+        [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ]
+      ] ]
     ] ],
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
@@ -36,25 +39,26 @@ var NAVTREEINDEX =
 "MACROS_8h.html",
 "MATH__MACROS_8h.html#a2e5ced11433a8681f971feb598198d45",
 "PY__MACROS_8h.html#a916b9973ee7daba4eb682cc548476733",
-"chemistry__types_8c.html#a760467b7ce71d5b743f0110771098003",
-"chemistry__types_8h.html#a88d246b99d9e05629ec5978a3e9f2ed4",
-"chemistry__types_8h.html#afb87ae249a718c49f1ee903fe9f6bf4e",
-"convlength_8py.html#a9c054a50477052773721c7f354196228",
-"cryptx_8h.html#a77bcad7dcf9e96bbc174edfc4bd53701",
-"ezwin_8py.html#a6c9763b4c007077fd0c2a6f76c5eb89a",
-"geometry_8c.html#afcca43a95c4cfd565f87d4e28b6a5b8e",
-"math__types_8h.html#a0bc0b7e4601a935e3dd2021bc7a145fb",
-"mathconstants_8c.html#aa8c8a6530050b8139e5f6d0130ed63b1",
-"mathfunc_8c.html#a025cee145a709a2e0355b69f2fd8a7e7",
-"mathfunc_8c.html#a885aecd1d34fcb300f0ac418433ca0df",
-"mathfunc_8h.html#a04367d95051c34654a123a7a987fd891",
-"mathfunc_8h.html#a885aecd1d34fcb300f0ac418433ca0df",
-"metric_8py.html#a500ed626e88515b162e1521b75223917",
-"pygeometry_8c.html#a6cc05a9af48e34b6d4862893cc0ecc59",
-"pymathfunc_8c.html#a946fe7d2f0235f78ed7cd99f6bb09fc5",
-"pytypesize_8c.html#a9e8adde5c1a92a241393370a5b26d22a",
-"system_8py_source.html",
-"tools_8h.html#af7cc08f752feb4f12ca0fe052eaf93b4"
+"chemistry__types_8c.html#a7656dbbbbab426a550433380b351914f",
+"chemistry__types_8h.html#a8a8eb876224249b9aee81538c5af9abe",
+"chemistry__types_8h.html#afba920008f679ae38b83a5befa1e8e56",
+"convlength_8py.html#aa2bcb9a0a3fe9a9d8772de45b7656ffd",
+"cryptx_8h.html#a8fd9b6dba94f21ed3865ea2bec22eeb7",
+"ezwin_8py.html#a840c236977310545ea6b1227fb2644e0",
+"geometry_8c_source.html",
+"math__types_8h.html#a1e15f2a33bea2d911b1eec592c5cb4e1",
+"mathconstants_8c.html#aaa12e1443c663e0aa7c362884c48354c",
+"mathfunc_8c.html#a0287b3d5d74858722234be1e5dd38b8a",
+"mathfunc_8c.html#a88c4358ff82bcf608218ab731f9b9470",
+"mathfunc_8h.html#a05683b1fe45b679b75cbc9200599b9b6",
+"mathfunc_8h.html#a88a06de17ee882b284bcb159f46db22c",
+"metric_8py.html#a5b18c1cfe665488b2f34c27fd7ae4c56",
+"pygeometry_8c.html#a011979823cf1b06587f41418ca313c7f",
+"pymathfunc_8c.html#a664ab1cf69fc4e5c958146785ac89410",
+"pytypesize_8c.html#a6a4066e7ecf7cb504aa9b2c20f3ea001",
+"strtools_8py.html#a323113650ce51e441f7a3d212e0944a1",
+"timeutil_8py_source.html",
+"typesize_8c.html#a46dbc02778d9487e493bcefc63869656"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

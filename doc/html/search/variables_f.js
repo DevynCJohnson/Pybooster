@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ohms',['OHMS',['../namespacepybooster_1_1electronics.html#a64cb97de230685775be91f2950100a14',1,'pybooster::electronics']]],
+  ['ohms',['OHMS',['../namespacepybooster_1_1electronics.html#a64cb97de230685775be91f2950100a14',1,'pybooster.electronics.OHMS()'],['../namespacepybooster_1_1strtools.html#a64cb97de230685775be91f2950100a14',1,'pybooster.strtools.OHMS()']]],
   ['omega',['OMEGA',['../mathconstants_8c.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c'],['../mathconstants_8h.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c']]],
   ['one_5feighth',['ONE_EIGHTH',['../namespacepybooster_1_1xmath.html#a38187aee96eacf4244b700c59200d5aa',1,'pybooster::xmath']]],
   ['one_5feleventh',['ONE_ELEVENTH',['../namespacepybooster_1_1xmath.html#a26d0e3987859f45a6e1cdf5df50be641',1,'pybooster::xmath']]],
@@ -8,9 +8,9 @@ var searchData=
   ['one_5ffourth',['ONE_FOURTH',['../namespacepybooster_1_1xmath.html#a7530f94e5df73f7c5615f0a5592b6b08',1,'pybooster::xmath']]],
   ['one_5fninth',['ONE_NINTH',['../namespacepybooster_1_1xmath.html#af37b7d6dfd2b8a5afb504d9e9f8372c7',1,'pybooster::xmath']]],
   ['one_5fseventh',['ONE_SEVENTH',['../namespacepybooster_1_1xmath.html#aeef0ddd32e0690faeae22a63691e9307',1,'pybooster::xmath']]],
-  ['one_5fsixth',['ONE_SIXTH',['../namespacepybooster_1_1color.html#ab8338bdd227b2c0bab71221656ec827c',1,'pybooster.color.ONE_SIXTH()'],['../namespacepybooster_1_1xmath.html#ab8338bdd227b2c0bab71221656ec827c',1,'pybooster.xmath.ONE_SIXTH()']]],
+  ['one_5fsixth',['ONE_SIXTH',['../namespacepybooster_1_1xmath.html#ab8338bdd227b2c0bab71221656ec827c',1,'pybooster::xmath']]],
   ['one_5ftenth',['ONE_TENTH',['../namespacepybooster_1_1xmath.html#a20dab1bfecaa8f06c14e71724421b662',1,'pybooster::xmath']]],
-  ['one_5fthird',['ONE_THIRD',['../namespacepybooster_1_1color.html#ab2ecfe9c8950e84b291c5cbc96f3624a',1,'pybooster.color.ONE_THIRD()'],['../namespacepybooster_1_1xmath.html#ab2ecfe9c8950e84b291c5cbc96f3624a',1,'pybooster.xmath.ONE_THIRD()']]],
+  ['one_5fthird',['ONE_THIRD',['../namespacepybooster_1_1xmath.html#ab2ecfe9c8950e84b291c5cbc96f3624a',1,'pybooster::xmath']]],
   ['one_5fthirteenth',['ONE_THIRTEENTH',['../namespacepybooster_1_1xmath.html#a2a82c8d17d7b911e7548bf56c9fae3f1',1,'pybooster::xmath']]],
   ['one_5ftwelfth',['ONE_TWELFTH',['../namespacepybooster_1_1xmath.html#ac0b1fd15f58382cbc51129ad9d20ceae',1,'pybooster::xmath']]],
   ['ordinal_5flist',['ORDINAL_LIST',['../namespacepybooster_1_1strtools.html#a7648cca27145c7e89f9f9fbc0b42c30d',1,'pybooster::strtools']]],

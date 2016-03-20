@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Miscellaneous functions specific to Unix systems
 @file unix.py
 @package pybooster.unix
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Miscellaneous functions specific to Unix systems
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -50,15 +49,17 @@ __all__ = [
 
 def dt() -> float:  # pylint: disable=C0103
     """Return total disk space of current filesystem
+
     The returned value is a float of metric gigabytes (GB)
     """
-    _disk = statvfs('/')
+    _disk = statvfs(r'/')
     total = _disk.f_blocks * _disk.f_frsize
     return round(total * 0.000000001, 3)
 
 
 def df() -> float:  # pylint: disable=C0103
     """Return free disk space of current filesystem
+
     The returned value is a float of metric gigabytes (GB)
     """
     _disk = statvfs(r'/')
@@ -68,6 +69,7 @@ def df() -> float:  # pylint: disable=C0103
 
 def du() -> float:  # pylint: disable=C0103
     """Return used disk space of current filesystem
+
     The returned value is a float of metric gigabytes (GB)
     """
     _disk = statvfs(r'/')

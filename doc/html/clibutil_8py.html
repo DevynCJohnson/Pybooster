@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -112,12 +113,14 @@ $(document).ready(function(){initNavTree('clibutil_8py.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Interface for system libraries via ctypes (mostly for Unixoid systems)  
+<a href="#details">More...</a></p>
+
 <p><a href="clibutil_8py_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacepybooster_1_1clibutil"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html">pybooster.clibutil</a></td></tr>
-<tr class="memdesc:namespacepybooster_1_1clibutil"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for system libraries via ctypes (mostly for Unixoid systems) <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -129,25 +132,25 @@ Functions</h2></td></tr>
 <tr class="memdesc:abd415af33cb5fc97a0c172dca947853d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the file name of libm.  <a href="#abd415af33cb5fc97a0c172dca947853d">More...</a><br /></td></tr>
 <tr class="separator:abd415af33cb5fc97a0c172dca947853d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9559c3813b23c40f3b44b3295936a6b3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a9559c3813b23c40f3b44b3295936a6b3">list_elf_lib_consts</a></td></tr>
-<tr class="memdesc:a9559c3813b23c40f3b44b3295936a6b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of non-static constants in a shared ELF library Requires 'nm'.  <a href="#a9559c3813b23c40f3b44b3295936a6b3">More...</a><br /></td></tr>
+<tr class="memdesc:a9559c3813b23c40f3b44b3295936a6b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of non-static constants in a shared ELF library; Requires 'nm".  <a href="#a9559c3813b23c40f3b44b3295936a6b3">More...</a><br /></td></tr>
 <tr class="separator:a9559c3813b23c40f3b44b3295936a6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7543a74d9bc7859d3c30a6486ba20b17"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a7543a74d9bc7859d3c30a6486ba20b17">list_elf_lib_funcs</a></td></tr>
-<tr class="memdesc:a7543a74d9bc7859d3c30a6486ba20b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of functions in a shared ELF library Requires 'nm'.  <a href="#a7543a74d9bc7859d3c30a6486ba20b17">More...</a><br /></td></tr>
+<tr class="memdesc:a7543a74d9bc7859d3c30a6486ba20b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of functions in a shared ELF library; Requires 'nm".  <a href="#a7543a74d9bc7859d3c30a6486ba20b17">More...</a><br /></td></tr>
 <tr class="separator:a7543a74d9bc7859d3c30a6486ba20b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac73629c6d15b335cb2f8e4caa20bb925"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#ac73629c6d15b335cb2f8e4caa20bb925">list_elf_lib_objs</a></td></tr>
-<tr class="memdesc:ac73629c6d15b335cb2f8e4caa20bb925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of functions and non-static constants in a shared ELF library Requires 'nm".  <a href="#ac73629c6d15b335cb2f8e4caa20bb925">More...</a><br /></td></tr>
+<tr class="memdesc:ac73629c6d15b335cb2f8e4caa20bb925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of functions and non-static constants in a shared ELF library; Requires 'nm".  <a href="#ac73629c6d15b335cb2f8e4caa20bb925">More...</a><br /></td></tr>
 <tr class="separator:ac73629c6d15b335cb2f8e4caa20bb925"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a520ee3acf6349d40dc59f12b582840e2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a520ee3acf6349d40dc59f12b582840e2">loadlib</a></td></tr>
-<tr class="memdesc:a520ee3acf6349d40dc59f12b582840e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the specified library by name Usage library = loadlib('m')  <a href="#a520ee3acf6349d40dc59f12b582840e2">More...</a><br /></td></tr>
+<tr class="memdesc:a520ee3acf6349d40dc59f12b582840e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the specified library by name; Usage: library = loadlib('m')  <a href="#a520ee3acf6349d40dc59f12b582840e2">More...</a><br /></td></tr>
 <tr class="separator:a520ee3acf6349d40dc59f12b582840e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04d8cb25d9133b865426cca6e3eff844"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a04d8cb25d9133b865426cca6e3eff844">loadlibc</a> ()</td></tr>
-<tr class="memdesc:a04d8cb25d9133b865426cca6e3eff844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load libc Usage libc = <a class="el" href="namespacepybooster_1_1clibutil.html#a04d8cb25d9133b865426cca6e3eff844" title="Load libc Usage libc = loadlibc() ">loadlibc()</a>  <a href="#a04d8cb25d9133b865426cca6e3eff844">More...</a><br /></td></tr>
+<tr class="memdesc:a04d8cb25d9133b865426cca6e3eff844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load libc; Usage: libc = <a class="el" href="namespacepybooster_1_1clibutil.html#a04d8cb25d9133b865426cca6e3eff844" title="Load libc; Usage: libc = loadlibc() ">loadlibc()</a>  <a href="#a04d8cb25d9133b865426cca6e3eff844">More...</a><br /></td></tr>
 <tr class="separator:a04d8cb25d9133b865426cca6e3eff844"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a794d589daf2009a5bf63b1d14c5a83f5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a794d589daf2009a5bf63b1d14c5a83f5">loadlibm</a> ()</td></tr>
-<tr class="memdesc:a794d589daf2009a5bf63b1d14c5a83f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load libm (Math) Usage libm = <a class="el" href="namespacepybooster_1_1clibutil.html#a794d589daf2009a5bf63b1d14c5a83f5" title="Load libm (Math) Usage libm = loadlibm() ">loadlibm()</a>  <a href="#a794d589daf2009a5bf63b1d14c5a83f5">More...</a><br /></td></tr>
+<tr class="memdesc:a794d589daf2009a5bf63b1d14c5a83f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load libm (Math); Usage: libm = <a class="el" href="namespacepybooster_1_1clibutil.html#a794d589daf2009a5bf63b1d14c5a83f5" title="Load libm (Math); Usage: libm = loadlibm() ">loadlibm()</a>  <a href="#a794d589daf2009a5bf63b1d14c5a83f5">More...</a><br /></td></tr>
 <tr class="separator:a794d589daf2009a5bf63b1d14c5a83f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73c04d569a05cb826953e2edbcbc2b54"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#a73c04d569a05cb826953e2edbcbc2b54">loadlibpath</a></td></tr>
-<tr class="memdesc:a73c04d569a05cb826953e2edbcbc2b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the specified library by pathname Usage library = loadlibpath('/DIR/libFILE.so')  <a href="#a73c04d569a05cb826953e2edbcbc2b54">More...</a><br /></td></tr>
+<tr class="memdesc:a73c04d569a05cb826953e2edbcbc2b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the specified library by pathname; Usage: library = loadlibpath('/DIR/libFILE.so')  <a href="#a73c04d569a05cb826953e2edbcbc2b54">More...</a><br /></td></tr>
 <tr class="separator:a73c04d569a05cb826953e2edbcbc2b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -155,13 +158,17 @@ Variables</h2></td></tr>
 <tr class="memitem:aa4a022e6ddacd362b83964da5cc5d044"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1clibutil.html#aa4a022e6ddacd362b83964da5cc5d044">__all__</a></td></tr>
 <tr class="separator:aa4a022e6ddacd362b83964da5cc5d044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for system libraries via ctypes (mostly for Unixoid systems) </p>
+
+<p>Definition in file <a class="el" href="clibutil_8py_source.html">clibutil.py</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="clibutil_8py.html">clibutil.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:50 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:32 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

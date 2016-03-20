@@ -1,7 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"mathfunc_8h.html#a885aecd1d34fcb300f0ac418433ca0df":[2,0,45,105],
-"mathfunc_8h.html#a88672147e684f5bbc5af5b4859bf7349":[2,0,45,346],
 "mathfunc_8h.html#a88a06de17ee882b284bcb159f46db22c":[2,0,45,3],
 "mathfunc_8h.html#a88c4358ff82bcf608218ab731f9b9470":[2,0,45,476],
 "mathfunc_8h.html#a896df4bc694058b37cfdc3da7a6c272c":[2,0,45,373],
@@ -249,5 +247,7 @@ var NAVTREEINDEX15 =
 "metric_8py.html#a09589e86e20af8c133eef4b95d72fdb5":[2,0,46,12],
 "metric_8py.html#a18dd847fd54cbf498bde23d1eee1642f":[2,0,46,0],
 "metric_8py.html#a3f5a5f0f7b72f9eeb9a0ba696d705c33":[2,0,46,5],
-"metric_8py.html#a4c4211f78717210c77588a8b29e09a3a":[2,0,46,6]
+"metric_8py.html#a4c4211f78717210c77588a8b29e09a3a":[2,0,46,6],
+"metric_8py.html#a500ed626e88515b162e1521b75223917":[2,0,46,19],
+"metric_8py.html#a5151341b3677bb52e19120a0419572de":[2,0,46,24]
 };

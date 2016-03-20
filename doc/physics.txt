@@ -1,2 +1,38 @@
-no Python documentation found for 'physics'
+Help on module physics:
+
+NAME
+    physics - Physics Functions
+
+FUNCTIONS
+    density(...)
+        density(mass: float, volume: float) -> float
+        Return density given mass and volume
+    
+    distance(...)
+        distance(speed: float, time: float) -> float
+        Return distance given speed and time
+    
+    force(...)
+        force(mass: float, acceleration: float) -> float
+        Return the force given mass and acceleration
+    
+    impulse(...)
+        impulse(force: float, time: float) -> float
+        Return impulse given force and time
+    
+    momentum(...)
+        momentum(mass: float, velocity: float) -> float
+        Return momentum given mass and velocity
+    
+    pressure(...)
+        pressure(force: float, area: float) -> float
+        Return pressure given force and area
+    
+    speed(...)
+        speed(distance: float, time: float) -> float
+        Return speed/velocity given the distance and time
+
+FILE
+    /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/physics.cpython-34m.so
+
 

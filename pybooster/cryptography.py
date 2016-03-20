@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Various cryptography functions
 @file cryptography.py
 @package pybooster.cryptography
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Various cryptography functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -49,6 +48,7 @@ __all__ = [
 
 def encrypt_xor(_data: bytes) -> bytearray:
     """XOR Encryption
+
     Return the encrypted data as a bytearray
     Decrypt with decrypt_xor()
     """
@@ -57,6 +57,7 @@ def encrypt_xor(_data: bytes) -> bytearray:
 
 def decrypt_xor(_data: bytearray) -> str:
     """XOR Decryption
+
     Return the decrypted data as a str
     Encrypt with encrypt_xor()
     """
@@ -65,6 +66,7 @@ def decrypt_xor(_data: bytearray) -> str:
 
 def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
     """XOR encryption with custom key
+
     Encrypt the bytes and return the data as a str
     Decrypt with decrypt_xor_str_key_bytes()
     """
@@ -73,6 +75,7 @@ def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
 
 def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
     """XOR decryption with custom key
+
     Decrypt the str and return the data as bytes
     Encrypt with encrypt_xor_bytes_key_str()
     """
@@ -81,6 +84,7 @@ def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
 
 def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
     """XOR decryption with custom key
+
     Decrypt the str and return the data as a str
     Encrypt with encrypt_xor_bytes_key_str()
     """
@@ -89,6 +93,7 @@ def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
 
 def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
     """XOR encryption with custom key
+
     Return the encrypted str data as bytes
     Encrypt the str and return the data as bytes
     Decrypt with decrypt_xor_bytes_key_bytes() or decrypt_xor_bytes_key_str()
@@ -98,6 +103,7 @@ def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
 
 def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
     """XOR decryption with custom key
+
     Decrypt the bytes and return the data as bytes
     Encrypt with encrypt_xor_str_key_bytes()
     """
@@ -106,6 +112,7 @@ def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
 
 def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
     """XOR decryption with custom key
+
     Decrypt the bytes and return the data as a str
     Encrypt with encrypt_xor_str_key_bytes()
     """

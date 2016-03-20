@@ -1,6 +1,4 @@
 Help on function ezwarn in ezwin.ezwin:
 
 ezwin.ezwin.ezwarn = ezwarn(_msg:str='Warning') -> None
-    Warning Dialog
-    Display a warning message
 

@@ -7,7 +7,7 @@
 
 cd ..
 
-VERSION=2016.03.19
+VERSION=2016.03.20
 
 
 find ./pybooster/ -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$VERSION'/" '{}' \;

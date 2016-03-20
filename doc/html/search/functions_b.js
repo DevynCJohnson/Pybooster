@@ -2,6 +2,7 @@ var searchData=
 [
   ['l2cuin',['l2cuin',['../namespacepybooster_1_1convvolume.html#a5f418aaa2b1cdc789d617f8196f54754',1,'pybooster::convvolume']]],
   ['lanczos_5fsum',['lanczos_sum',['../mathfunc_8c.html#a4da85ea916fa4a9d3a5cd75016537a5d',1,'lanczos_sum(const double x):&#160;mathfunc.c'],['../mathfunc_8h.html#a4da85ea916fa4a9d3a5cd75016537a5d',1,'lanczos_sum(const double x):&#160;mathfunc.c']]],
+  ['lastletters',['lastletters',['../namespacepybooster_1_1strtools.html#a52230c38bd4b045d441408accd582264',1,'pybooster::strtools']]],
   ['lengtharc',['lengtharc',['../geometry_8c.html#aaf3a586a475fd5d1d54a66bb495ee693',1,'lengtharc(const double radius, const double angle_radians):&#160;geometry.c'],['../geometry_8h.html#aaf3a586a475fd5d1d54a66bb495ee693',1,'lengtharc(const double radius, const double angle_radians):&#160;geometry.c']]],
   ['lengtharcf',['lengtharcf',['../geometry_8c.html#aa240c4c1be6f2006706be7644fe3c35e',1,'lengtharcf(const float radius, const float angle_radians):&#160;geometry.c'],['../geometry_8h.html#aa240c4c1be6f2006706be7644fe3c35e',1,'lengtharcf(const float radius, const float angle_radians):&#160;geometry.c']]],
   ['lengtharcl',['lengtharcl',['../geometry_8c.html#aa756996e91f408c2c76d2205f3cd2b51',1,'lengtharcl(const long double radius, const long double angle_radians):&#160;geometry.c'],['../geometry_8h.html#aa756996e91f408c2c76d2205f3cd2b51',1,'lengtharcl(const long double radius, const long double angle_radians):&#160;geometry.c']]],
@@ -27,6 +28,7 @@ var searchData=
   ['longfib',['longfib',['../mathfunc_8c.html#a9628ccd742af1194fed09a2daa247610',1,'longfib(const unsigned long int num):&#160;mathfunc.c'],['../mathfunc_8h.html#a9628ccd742af1194fed09a2daa247610',1,'longfib(const unsigned long int num):&#160;mathfunc.c']]],
   ['longlongfib',['longlongfib',['../mathfunc_8c.html#af99ebb1b6aa79d4c7a037ca9336cbaac',1,'longlongfib(const sllint num):&#160;mathfunc.c'],['../mathfunc_8h.html#af99ebb1b6aa79d4c7a037ca9336cbaac',1,'longlongfib(const sllint num):&#160;mathfunc.c']]],
   ['longmean',['longmean',['../mathfunc_8c.html#a88672147e684f5bbc5af5b4859bf7349',1,'longmean(const slint count,...):&#160;mathfunc.c'],['../mathfunc_8h.html#a88672147e684f5bbc5af5b4859bf7349',1,'longmean(const slint count,...):&#160;mathfunc.c']]],
+  ['lowercase',['lowercase',['../namespacepybooster_1_1strtools.html#a942d5fe4e955513a8612378777831a49',1,'pybooster::strtools']]],
   ['lowercasestr',['lowercasestr',['../tools_8c.html#a40abe4bb201beb18627d12ee514cfb46',1,'lowercasestr(char *__restrict__ str):&#160;tools.c'],['../tools_8h.html#a40abe4bb201beb18627d12ee514cfb46',1,'lowercasestr(char *__restrict__ str):&#160;tools.c']]],
   ['lowercasestrx',['lowercasestrx',['../tools_8c.html#aee3d7fc750589b4e2b8e72e797b14040',1,'lowercasestrx(char *__restrict__ str, const size_t len):&#160;tools.c'],['../tools_8h.html#aee3d7fc750589b4e2b8e72e797b14040',1,'lowercasestrx(char *__restrict__ str, const size_t len):&#160;tools.c']]],
   ['lsfiles',['lsfiles',['../namespacepybooster_1_1fs.html#adb7006513d9b6af7d0edcf487805aac6',1,'pybooster::fs']]],

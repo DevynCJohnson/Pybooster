@@ -24,9 +24,10 @@ var searchData=
   ['deuteron_5fproton_5fmagnetic_5fmoment_5fratio',['DEUTERON_PROTON_MAGNETIC_MOMENT_RATIO',['../namespacepybooster_1_1science__data.html#aab8fe8b6b7d898dffafe84e5c7e718a4',1,'pybooster::science_data']]],
   ['deuteron_5fproton_5fmass_5fratio',['DEUTERON_PROTON_MASS_RATIO',['../namespacepybooster_1_1science__data.html#a42095b9a73e847eb7ef918fe51dd02bb',1,'pybooster::science_data']]],
   ['deuteron_5frms_5fcharge_5fradius',['DEUTERON_RMS_CHARGE_RADIUS',['../namespacepybooster_1_1science__data.html#a6364f7b504bb8b319740ee8380d5442c',1,'pybooster::science_data']]],
+  ['dice',['DICE',['../namespacepybooster_1_1strtools.html#a5137f8894ffb6fbb252997ae5e80adf8',1,'pybooster::strtools']]],
   ['direction',['direction',['../extra__datatypes_8h.html#ae2e27031dd0d1a6e56cc3531a28933f4',1,'GPIO_PinInitStruct_t']]],
   ['double_5ffactorial_5fconstant',['DOUBLE_FACTORIAL_CONSTANT',['../mathconstants_8c.html#a5f9583f55ab827bb6190b20586dc2dab',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a5f9583f55ab827bb6190b20586dc2dab',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.c']]],
-  ['down',['down',['../chemistry__types_8c.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c']]],
+  ['down',['down',['../chemistry__types_8c.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c'],['../namespacepybooster_1_1strtools.html#a5a898d8474b30c92bed37fd5cddbc588',1,'pybooster.strtools.DOWN()']]],
   ['dubnium',['dubnium',['../chemistry__types_8c.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c']]],
   ['dwarf_5fplanets',['DWARF_PLANETS',['../namespacepybooster_1_1astronomy.html#a5e9af89173b46caaf2f4318c5585dbad',1,'pybooster::astronomy']]],
   ['dysprosium',['dysprosium',['../chemistry__types_8c.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c']]]

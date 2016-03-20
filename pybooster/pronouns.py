@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Pronoun-related functions and constants
 @file pronouns.py
 @package pybooster.pronouns
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Pronoun-related functions and constants
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -28,7 +27,10 @@ License along with this library.
 """
 
 
-import re
+try:  # Regular Expression module
+    import regex as re  # noqa  # pylint: disable=C0411
+except ImportError:
+    import re  # noqa  # pylint: disable=C0411
 
 
 __all__ = [
@@ -53,53 +55,53 @@ __all__ = [
 
 
 FIRST_THIRD = (
-    ('I', 'he or she'),
-    ('me', 'him or her'),
-    ('mine', 'his or hers'),
-    ('my', 'his or her'),
-    ('myself', 'him or herself'),
-    ('he', 'I'),
-    ('she', 'I'),
-    ('his', 'mine'),
-    ('hers', 'mine'),
-    ('himself', 'myself'),
-    ('herself', 'myself'),
-    ('they', 'we'),
-    ('we', 'they'),
+    (r'I', r'he or she'),
+    (r'me', r'him or her'),
+    (r'mine', r'his or hers'),
+    (r'my', r'his or her'),
+    (r'myself', r'him or herself'),
+    (r'he', r'I'),
+    (r'she', r'I'),
+    (r'his', r'mine'),
+    (r'hers', r'mine'),
+    (r'himself', r'myself'),
+    (r'herself', r'myself'),
+    (r'they', r'we'),
+    (r'we', r'they'),
 )
 
 
 FIRST_SECOND = (
-    ('me', 'you'),
-    ('you', 'me'),
-    ('I', 'you'),
-    ('you are', 'I am'),
-    ('are you', 'am I'),
-    ('your', 'my'),
-    ('my', 'your'),
-    ('yours', 'mine'),
-    ('mine', 'yours'),
-    ('you were', 'I was'),
-    ('yourself', 'myself'),
-    ('myself', 'yourself'),
+    (r'me', r'you'),
+    (r'you', r'me'),
+    (r'I', r'you'),
+    (r'you are', r'I am'),
+    (r'are you', r'am I'),
+    (r'your', r'my'),
+    (r'my', r'your'),
+    (r'yours', r'mine'),
+    (r'mine', r'yours'),
+    (r'you were', r'I was'),
+    (r'yourself', r'myself'),
+    (r'myself', r'yourself'),
 )
 
 
 SECOND_THIRD = (
-    ('you', 'them'),
-    ('them', 'you'),
-    ('yours', 'theirs'),
-    ('theirs', 'yours'),
-    ('yourself', 'themselves'),
-    ('themselves', 'yourself'),
-    ('you are', 'they are'),
-    ('they are', 'you are'),
-    ('you were', 'they were'),
-    ('they were', 'you were'),
-    ('you have', 'they have'),
-    ('they have', 'you have'),
-    ('you had', 'they had'),
-    ('they had', 'you had'),
+    (r'you', r'them'),
+    (r'them', r'you'),
+    (r'yours', r'theirs'),
+    (r'theirs', r'yours'),
+    (r'yourself', r'themselves'),
+    (r'themselves', r'yourself'),
+    (r'you are', r'they are'),
+    (r'they are', r'you are'),
+    (r'you were', r'they were'),
+    (r'they were', r'you were'),
+    (r'you have', r'they have'),
+    (r'they have', r'you have'),
+    (r'you had', r'they had'),
+    (r'they had', r'you had'),
 )
 
 

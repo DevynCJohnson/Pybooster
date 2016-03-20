@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Interpret various computer languages using installed interpreters
 @file code_interpreter.py
 @package pybooster.code_interpreter
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Interpret various computer languages using installed interpreters
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -35,7 +34,7 @@ __all__ = [
     # CLISP
     'execclispfile',
     # COFFEESCRIPT
-    'execcoffee',
+    'execcoffeescript',
     # JAVASCRIPT
     'execjs',
     'execjsfile',
@@ -67,7 +66,7 @@ __all__ = [
 
 def execclispfile(_filename: str) -> str:
     """Execute a CLisp file given as a str and return the output as a str"""
-    return getoutput('clisp ' + _filename)
+    return getoutput(r'clisp ' + _filename)
 
 
 # COFFEESCRIPT
@@ -88,7 +87,7 @@ def execjs(_code: str) -> str:
 
 def execjsfile(_filename: str) -> str:
     """Execute a JavaScript file given as a str and return the output as a str"""
-    return getoutput('jsc -e ' + _filename)
+    return getoutput(r'jsc -e ' + _filename)
 
 
 # LUA
@@ -101,7 +100,7 @@ def execlua(_code: str) -> str:
 
 def execluafile(_filename: str) -> str:
     """Execute a Lua script given as a str and return the output as a str"""
-    return getoutput('lua ' + _filename)
+    return getoutput(r'lua ' + _filename)
 
 
 # PERL
@@ -114,18 +113,18 @@ def execperl(_code: str) -> str:
 
 def execperlfile(_filename: str) -> str:
     """Execute a Perl script given as a str and return the output as a str"""
-    return getoutput('perl ' + _filename)
+    return getoutput(r'perl ' + _filename)
 
 
 def initperl() -> None:
     """Run a Perl REP-Loop (Read-Evaluate-Print-Loop)"""
     _input = ''
     while 1:
-        _input = input('Perl > ').replace('\'', '\\\'')
+        _input = input(r'Perl > ').replace('\'', '\\\'')
         if _input == 'exit' or _input == 'quit':
             break
         _output = getoutput('perl -e \'' + _input + '\'')
-        print(_output)
+        print(_output)  # noqa
     return
 
 
@@ -139,7 +138,7 @@ def execphp(_code: str) -> str:
 
 def execphpfile(_filename: str) -> str:
     """Execute a PHP script given as a str and return the output as a str"""
-    return getoutput('php -f ' + _filename)
+    return getoutput(r'php -f ' + _filename)
 
 
 # RUBY
@@ -152,7 +151,7 @@ def execruby(_code: str) -> str:
 
 def execrubyfile(_filename: str) -> str:
     """Execute a Ruby script given as a str and return the output as a str"""
-    return getoutput('ruby ' + _filename)
+    return getoutput(r'ruby ' + _filename)
 
 
 # SCALA
@@ -165,7 +164,7 @@ def execscala(_code: str) -> str:
 
 def execscalafile(_filename: str) -> str:
     """Execute a Scala file given as a str and return the output as a str"""
-    return getoutput('scala ' + _filename)
+    return getoutput(r'scala ' + _filename)
 
 
 # SHELL
@@ -178,16 +177,16 @@ def execsh(_code: str) -> str:
 
 def execshfile(_filename: str) -> str:
     """Execute a Shell script given as a str and return the output as a str"""
-    return getoutput('sh ' + _filename)
+    return getoutput(r'sh ' + _filename)
 
 
 def initsh() -> None:
     """Run a shell REP-Loop (Read-Evaluate-Print-Loop)"""
-    _input = ''
+    _input = r''
     while 1:
-        _input = input('Shell: $ ').replace('\'', '\\\'')
+        _input = input(r'Shell: $ ').replace('\'', '\\\'')
         if _input == 'exit' or _input == 'quit':
             break
         _output = getoutput('sh -c \'' + _input + '\'')
-        print(_output)
+        print(_output)  # noqa
     return

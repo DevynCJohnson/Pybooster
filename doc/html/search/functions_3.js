@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['cache',['cache',['../namespacepybooster_1_1basic.html#a0a6676201415fa0eabcba86598fdba7a',1,'pybooster::basic']]],
   ['cacot',['cacot',['../mathfunc_8c.html#a00e0d30acd1864292185f9a3e7182749',1,'cacot(const double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a00e0d30acd1864292185f9a3e7182749',1,'cacot(const double complex radians):&#160;mathfunc.c']]],
   ['cacotf',['cacotf',['../mathfunc_8c.html#a4e7758876eb0a4c123e7581a388cc53a',1,'cacotf(const float complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a4e7758876eb0a4c123e7581a388cc53a',1,'cacotf(const float complex radians):&#160;mathfunc.c']]],
   ['cacoth',['cacoth',['../mathfunc_8c.html#a37683b29c568af799bd1ef198f859b5d',1,'cacoth(const double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a37683b29c568af799bd1ef198f859b5d',1,'cacoth(const double complex radians):&#160;mathfunc.c']]],
@@ -14,6 +13,7 @@ var searchData=
   ['cacschl',['cacschl',['../mathfunc_8c.html#a2572b876bdd37f86acfc1ef38d0ba2dd',1,'cacschl(const long double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a2572b876bdd37f86acfc1ef38d0ba2dd',1,'cacschl(const long double complex radians):&#160;mathfunc.c']]],
   ['cacscl',['cacscl',['../mathfunc_8c.html#a902a1d3421948ec1b187e5895e9f0b46',1,'cacscl(const long double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a902a1d3421948ec1b187e5895e9f0b46',1,'cacscl(const long double complex radians):&#160;mathfunc.c']]],
   ['caesar_5fcipher',['caesar_cipher',['../cryptx_8c.html#a77bcad7dcf9e96bbc174edfc4bd53701',1,'caesar_cipher(char *__restrict__ data, const ulint shift):&#160;cryptx.c'],['../cryptx_8h.html#a77bcad7dcf9e96bbc174edfc4bd53701',1,'caesar_cipher(char *__restrict__ data, const ulint shift):&#160;cryptx.c']]],
+  ['cap',['cap',['../namespacepybooster_1_1strtools.html#a663084ce4b35fccfdde0eacac14891ec',1,'pybooster::strtools']]],
   ['carccot',['carccot',['../mathfunc_8c.html#a1966a9e198bbe18ee7d1333023f9e077',1,'carccot(const double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a1966a9e198bbe18ee7d1333023f9e077',1,'carccot(const double complex radians):&#160;mathfunc.c']]],
   ['carccotf',['carccotf',['../mathfunc_8c.html#af9c6c083ec95932785552fff1e8a7d7b',1,'carccotf(const float complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#af9c6c083ec95932785552fff1e8a7d7b',1,'carccotf(const float complex radians):&#160;mathfunc.c']]],
   ['carccoth',['carccoth',['../mathfunc_8c.html#a2b324fa996a9566425999da9395142d4',1,'carccoth(const double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a2b324fa996a9566425999da9395142d4',1,'carccoth(const double complex radians):&#160;mathfunc.c']]],
@@ -129,6 +129,10 @@ var searchData=
   ['chacoversinf',['chacoversinf',['../mathfunc_8c.html#a022a3597180a46d99f401aba55e6e5f9',1,'chacoversinf(const float complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#a022a3597180a46d99f401aba55e6e5f9',1,'chacoversinf(const float complex radians):&#160;mathfunc.c']]],
   ['chacoversinl',['chacoversinl',['../mathfunc_8c.html#afd0070fb2531ce22aeca9216262d2c57',1,'chacoversinl(const long double complex radians):&#160;mathfunc.c'],['../mathfunc_8h.html#afd0070fb2531ce22aeca9216262d2c57',1,'chacoversinl(const long double complex radians):&#160;mathfunc.c']]],
   ['char2bitlen',['char2bitlen',['../namespacepybooster_1_1basic.html#af3a8195ce73e45ea9fc612aa8a3eb79d',1,'pybooster::basic']]],
+  ['char2hexstr',['char2hexstr',['../namespacepybooster_1_1strtools.html#a9374258a25141c8d652f5fac51dc51f4',1,'pybooster::strtools']]],
+  ['char2int',['char2int',['../namespacepybooster_1_1strtools.html#a07dcbbd8b99a9a62a806034e96219ada',1,'pybooster::strtools']]],
+  ['char2intstr',['char2intstr',['../namespacepybooster_1_1strtools.html#a5279d82ade18da55a0b006b17f9a23f5',1,'pybooster::strtools']]],
+  ['char2noeschex',['char2noeschex',['../namespacepybooster_1_1strtools.html#aebb6e3e35d7751ea916168a3a340c7f5',1,'pybooster::strtools']]],
   ['char_5fin_5fstr',['char_in_str',['../tools_8c.html#a8d40289be12672e7adbb752d37d86bd0',1,'char_in_str(const char *__restrict__ str, const char _char):&#160;tools.c'],['../tools_8h.html#a8d40289be12672e7adbb752d37d86bd0',1,'char_in_str(const char *__restrict__ str, const char _char):&#160;tools.c']]],
   ['chararray_5frotl',['chararray_rotl',['../cryptx_8c.html#a7e90b4e3156c9bb9925e772fd02429e4',1,'chararray_rotl(char *__restrict__ array, const size_t len, const uint32_t num_shifts):&#160;cryptx.c'],['../cryptx_8h.html#a7e90b4e3156c9bb9925e772fd02429e4',1,'chararray_rotl(char *__restrict__ array, const size_t len, const uint32_t num_shifts):&#160;cryptx.c']]],
   ['chararray_5frotl64',['chararray_rotl64',['../cryptx_8c.html#a3717aecd9851334babfd9fe74794d2ef',1,'chararray_rotl64(char *__restrict__ array, const uint64_t len, const uint64_t num_shifts):&#160;cryptx.c'],['../cryptx_8h.html#a3717aecd9851334babfd9fe74794d2ef',1,'chararray_rotl64(char *__restrict__ array, const uint64_t len, const uint64_t num_shifts):&#160;cryptx.c']]],

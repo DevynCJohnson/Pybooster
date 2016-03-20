@@ -4,99 +4,56 @@ NAME
     compress
 
 DESCRIPTION
-    @file compress.py
-    @package pybooster.compress
-    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-    @copyright LGPLv3
-    @brief Compression Algorithms and Interfaces
-    @version 2016.03.18
-    
-    @section LICENSE
-    GNU Lesser General Public License v3
-    Copyright (c) Devyn Collier Johnson, All rights reserved.
-    
-    The PyBooster Library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3.0 of the License, or (at your option) any later version.
-    
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-    Lesser General Public License for more details.
-    
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.
+    # -*- coding: utf-8 -*-
+    # vim:fileencoding=utf-8
 
 FUNCTIONS
     bzipvar(data:str, _encoding:str='utf-8') -> bytes
-        Bzip the contents of a variable
     
     createbzipfile(_filename:str) -> None
-        Bzip an existing file
     
     creategzipfile(_filename:str) -> None
-        Gzip an existing file
     
     createlzmafile(_filename:str) -> None
-        LZMA an existing file
     
     createtarfile(_filenames:list, _tarfile:str) -> None
-        Tar existing files into the specified Tar-file
     
     createxzfile(_filename:str) -> None
-        XZ an existing file
     
     extracttar(_filename:str) -> None
-        Extract files from a Tar file in the directory
     
     getbzip(_filename:str) -> str
-        Open and get the contents of a bzip2 file
     
     getbzipvar(data:bytes) -> str
-        Get the contents of a Bzipped variable
     
     getgzip(_filename:str) -> str
-        Open and get the contents of a gzip file
+        #    Use the format `open(FILE, mode='rt')`
     
     getgzipvar(data:bytes) -> str
-        Get the contents of a Gzipped variable
     
     getlzma(_filename:str) -> str
-        Open and get the contents of a LZMA file
     
     gettar(_filename:str) -> str
-        Open and get the contents of a tar file
     
     getxz(_filename:str) -> str
-        Open and get the contents of a XZ file
     
     getxzvar(data:bytes) -> str
-        Get the contents of a XZ variable
     
     gzipvar(data:str, _encoding:str='utf-8') -> bytes
-        Gzip the contents of a variable
     
     lzmavar(data:str, _encoding:str='utf-8') -> bytes
-        LZMA the contents of a variable
     
     write2bzip(_filename:str, _write:str) -> None
-        Compress data using bzip2 and write it to a file
     
     write2gzip(_filename:str, _write:str) -> None
-        Compress data using gzip and write it to a file
     
     write2lzma(_filename:str, _write:str) -> None
-        Compress data using LZMA and write it to a file
     
     write2tar(_filename:str, _write:str) -> None
-        Archive data using tar and write it to a file
     
     write2xz(_filename:str, _write:str) -> None
-        Compress data using XZ and write it to a file
     
     xzvar(data:str, _encoding:str='utf-8') -> bytes
-        XZ the contents of a variable
 
 DATA
     __all__ = ['getgzip', 'write2gzip', 'creategzipfile', 'gzipvar', 'getg...

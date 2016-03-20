@@ -1,6 +1,4 @@
 Help on function ezpswd in ezwin.ezwin:
 
 ezwin.ezwin.ezpswd = ezpswd(_msg:str='Message', _type:str='') -> str
-    Password Dialog
-    Get a password from the user
 

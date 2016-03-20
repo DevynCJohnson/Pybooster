@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from mathfunc.c
@@ -661,25 +661,25 @@ static PyObject *mathfunc_fib(FUNCARGS) {
             default: return ll2int((sllint)377);  // case (sllint)14
         }
     }
-    sllint fval[92];
-    fval[0] = (sllint)0;
-    fval[1] = (sllint)1;
-    fval[2] = (sllint)1;
-    fval[3] = (sllint)2;
-    fval[4] = (sllint)3;
-    fval[5] = (sllint)5;
-    fval[6] = (sllint)8;
-    fval[7] = (sllint)13;
-    fval[8] = (sllint)21;
-    fval[9] = (sllint)34;
-    fval[10] = (sllint)55;
-    fval[11] = (sllint)89;
-    fval[12] = (sllint)144;
-    fval[13] = (sllint)233;
-    fval[14] = (sllint)377;
+    sllint fibval[92];
+    fibval[0] = (sllint)0;
+    fibval[1] = (sllint)1;
+    fibval[2] = (sllint)1;
+    fibval[3] = (sllint)2;
+    fibval[4] = (sllint)3;
+    fibval[5] = (sllint)5;
+    fibval[6] = (sllint)8;
+    fibval[7] = (sllint)13;
+    fibval[8] = (sllint)21;
+    fibval[9] = (sllint)34;
+    fibval[10] = (sllint)55;
+    fibval[11] = (sllint)89;
+    fibval[12] = (sllint)144;
+    fibval[13] = (sllint)233;
+    fibval[14] = (sllint)377;
     register sllint i;
-    for (i = (sllint)15; i <= (sllint)num; ++i) { fval[i] = (sllint)(fval[i - (sllint)1] + fval[i - (sllint)2]); if (i >= num) { break; } }
-    return ll2int(fval[num]);
+    for (i = (sllint)15; i <= (sllint)num; ++i) { fibval[i] = (sllint)(fibval[i - (sllint)1] + fibval[i - (sllint)2]); if (i >= num) { break; } }
+    return ll2int(fibval[num]);
 }
 
 

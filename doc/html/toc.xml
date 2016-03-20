@@ -1,83 +1,126 @@
 <toc label="PyBooster" topic="index.html">
-  <topic label="Namespace Members" href="namespacemembers.html">
-    <topic label="All" href="namespacemembers.html">
-      <topic label="_" href="namespacemembers.html"/>
-      <topic label="a" href="namespacemembers_a.html"/>
-      <topic label="b" href="namespacemembers_b.html"/>
-      <topic label="c" href="namespacemembers_c.html"/>
-      <topic label="d" href="namespacemembers_d.html"/>
-      <topic label="e" href="namespacemembers_e.html"/>
-      <topic label="f" href="namespacemembers_f.html"/>
-      <topic label="g" href="namespacemembers_g.html"/>
-      <topic label="h" href="namespacemembers_h.html"/>
-      <topic label="i" href="namespacemembers_i.html"/>
-      <topic label="j" href="namespacemembers_j.html"/>
-      <topic label="k" href="namespacemembers_k.html"/>
-      <topic label="l" href="namespacemembers_l.html"/>
-      <topic label="m" href="namespacemembers_m.html"/>
-      <topic label="n" href="namespacemembers_n.html"/>
-      <topic label="o" href="namespacemembers_o.html"/>
-      <topic label="p" href="namespacemembers_p.html"/>
-      <topic label="r" href="namespacemembers_r.html"/>
-      <topic label="s" href="namespacemembers_s.html"/>
-      <topic label="t" href="namespacemembers_t.html"/>
-      <topic label="u" href="namespacemembers_u.html"/>
-      <topic label="v" href="namespacemembers_v.html"/>
-      <topic label="w" href="namespacemembers_w.html"/>
-      <topic label="x" href="namespacemembers_x.html"/>
-      <topic label="y" href="namespacemembers_y.html"/>
-      <topic label="z" href="namespacemembers_z.html"/>
+  <topic label="Namespaces">
+    <topic label="Namespace List" href="namespaces.html">
+      <topic label="pybooster" href="namespacepybooster.html">
+        <topic label="__init__" href="namespacepybooster_1_1____init____.html"/>
+        <topic label="astronomy" href="namespacepybooster_1_1astronomy.html"/>
+        <topic label="basic" href="namespacepybooster_1_1basic.html"/>
+        <topic label="bitwise" href="namespacepybooster_1_1bitwise.html"/>
+        <topic label="clibutil" href="namespacepybooster_1_1clibutil.html"/>
+        <topic label="code_interpreter" href="namespacepybooster_1_1code__interpreter.html"/>
+        <topic label="color" href="namespacepybooster_1_1color.html"/>
+        <topic label="compress" href="namespacepybooster_1_1compress.html"/>
+        <topic label="convarea" href="namespacepybooster_1_1convarea.html"/>
+        <topic label="convlength" href="namespacepybooster_1_1convlength.html"/>
+        <topic label="convmass" href="namespacepybooster_1_1convmass.html"/>
+        <topic label="convspeed" href="namespacepybooster_1_1convspeed.html"/>
+        <topic label="convtemp" href="namespacepybooster_1_1convtemp.html"/>
+        <topic label="convtime" href="namespacepybooster_1_1convtime.html"/>
+        <topic label="convvolume" href="namespacepybooster_1_1convvolume.html"/>
+        <topic label="cryptography" href="namespacepybooster_1_1cryptography.html"/>
+        <topic label="electronics" href="namespacepybooster_1_1electronics.html"/>
+        <topic label="ezdisplay" href="namespacepybooster_1_1ezdisplay.html"/>
+        <topic label="ezwin" href="namespacepybooster_1_1ezwin.html">
+          <topic label="ezwin" href="namespacepybooster_1_1ezwin_1_1ezwin.html"/>
+        </topic>
+        <topic label="financial" href="namespacepybooster_1_1financial.html"/>
+        <topic label="fs" href="namespacepybooster_1_1fs.html"/>
+        <topic label="geo_services" href="namespacepybooster_1_1geo__services.html"/>
+        <topic label="metric" href="namespacepybooster_1_1metric.html"/>
+        <topic label="net" href="namespacepybooster_1_1net.html"/>
+        <topic label="pipx" href="namespacepybooster_1_1pipx.html"/>
+        <topic label="pronouns" href="namespacepybooster_1_1pronouns.html"/>
+        <topic label="religion" href="namespacepybooster_1_1religion.html"/>
+        <topic label="science_data" href="namespacepybooster_1_1science__data.html"/>
+        <topic label="sing" href="namespacepybooster_1_1sing.html"/>
+        <topic label="strtools" href="namespacepybooster_1_1strtools.html"/>
+        <topic label="system" href="namespacepybooster_1_1system.html"/>
+        <topic label="timeutil" href="namespacepybooster_1_1timeutil.html"/>
+        <topic label="unix" href="namespacepybooster_1_1unix.html"/>
+        <topic label="xmath" href="namespacepybooster_1_1xmath.html"/>
+      </topic>
     </topic>
-    <topic label="Functions" href="namespacemembers_func.html">
-      <topic label="a" href="namespacemembers_func.html"/>
-      <topic label="b" href="namespacemembers_func_b.html"/>
-      <topic label="c" href="namespacemembers_func_c.html"/>
-      <topic label="d" href="namespacemembers_func_d.html"/>
-      <topic label="e" href="namespacemembers_func_e.html"/>
-      <topic label="f" href="namespacemembers_func_f.html"/>
-      <topic label="g" href="namespacemembers_func_g.html"/>
-      <topic label="h" href="namespacemembers_func_h.html"/>
-      <topic label="i" href="namespacemembers_func_i.html"/>
-      <topic label="k" href="namespacemembers_func_k.html"/>
-      <topic label="l" href="namespacemembers_func_l.html"/>
-      <topic label="m" href="namespacemembers_func_m.html"/>
-      <topic label="n" href="namespacemembers_func_n.html"/>
-      <topic label="p" href="namespacemembers_func_p.html"/>
-      <topic label="r" href="namespacemembers_func_r.html"/>
-      <topic label="s" href="namespacemembers_func_s.html"/>
-      <topic label="t" href="namespacemembers_func_t.html"/>
-      <topic label="u" href="namespacemembers_func_u.html"/>
-      <topic label="v" href="namespacemembers_func_v.html"/>
-      <topic label="w" href="namespacemembers_func_w.html"/>
-      <topic label="x" href="namespacemembers_func_x.html"/>
-      <topic label="y" href="namespacemembers_func_y.html"/>
-    </topic>
-    <topic label="Variables" href="namespacemembers_vars.html">
-      <topic label="_" href="namespacemembers_vars.html"/>
-      <topic label="a" href="namespacemembers_vars_a.html"/>
-      <topic label="b" href="namespacemembers_vars_b.html"/>
-      <topic label="c" href="namespacemembers_vars_c.html"/>
-      <topic label="d" href="namespacemembers_vars_d.html"/>
-      <topic label="e" href="namespacemembers_vars_e.html"/>
-      <topic label="f" href="namespacemembers_vars_f.html"/>
-      <topic label="g" href="namespacemembers_vars_g.html"/>
-      <topic label="h" href="namespacemembers_vars_h.html"/>
-      <topic label="i" href="namespacemembers_vars_i.html"/>
-      <topic label="j" href="namespacemembers_vars_j.html"/>
-      <topic label="k" href="namespacemembers_vars_k.html"/>
-      <topic label="l" href="namespacemembers_vars_l.html"/>
-      <topic label="m" href="namespacemembers_vars_m.html"/>
-      <topic label="n" href="namespacemembers_vars_n.html"/>
-      <topic label="o" href="namespacemembers_vars_o.html"/>
-      <topic label="p" href="namespacemembers_vars_p.html"/>
-      <topic label="r" href="namespacemembers_vars_r.html"/>
-      <topic label="s" href="namespacemembers_vars_s.html"/>
-      <topic label="t" href="namespacemembers_vars_t.html"/>
-      <topic label="u" href="namespacemembers_vars_u.html"/>
-      <topic label="v" href="namespacemembers_vars_v.html"/>
-      <topic label="w" href="namespacemembers_vars_w.html"/>
-      <topic label="y" href="namespacemembers_vars_y.html"/>
-      <topic label="z" href="namespacemembers_vars_z.html"/>
+    <topic label="Namespace Members" href="namespacemembers.html">
+      <topic label="All" href="namespacemembers.html">
+        <topic label="_" href="namespacemembers.html"/>
+        <topic label="a" href="namespacemembers_a.html"/>
+        <topic label="b" href="namespacemembers_b.html"/>
+        <topic label="c" href="namespacemembers_c.html"/>
+        <topic label="d" href="namespacemembers_d.html"/>
+        <topic label="e" href="namespacemembers_e.html"/>
+        <topic label="f" href="namespacemembers_f.html"/>
+        <topic label="g" href="namespacemembers_g.html"/>
+        <topic label="h" href="namespacemembers_h.html"/>
+        <topic label="i" href="namespacemembers_i.html"/>
+        <topic label="j" href="namespacemembers_j.html"/>
+        <topic label="k" href="namespacemembers_k.html"/>
+        <topic label="l" href="namespacemembers_l.html"/>
+        <topic label="m" href="namespacemembers_m.html"/>
+        <topic label="n" href="namespacemembers_n.html"/>
+        <topic label="o" href="namespacemembers_o.html"/>
+        <topic label="p" href="namespacemembers_p.html"/>
+        <topic label="r" href="namespacemembers_r.html"/>
+        <topic label="s" href="namespacemembers_s.html"/>
+        <topic label="t" href="namespacemembers_t.html"/>
+        <topic label="u" href="namespacemembers_u.html"/>
+        <topic label="v" href="namespacemembers_v.html"/>
+        <topic label="w" href="namespacemembers_w.html"/>
+        <topic label="x" href="namespacemembers_x.html"/>
+        <topic label="y" href="namespacemembers_y.html"/>
+        <topic label="z" href="namespacemembers_z.html"/>
+      </topic>
+      <topic label="Functions" href="namespacemembers_func.html">
+        <topic label="a" href="namespacemembers_func.html"/>
+        <topic label="b" href="namespacemembers_func_b.html"/>
+        <topic label="c" href="namespacemembers_func_c.html"/>
+        <topic label="d" href="namespacemembers_func_d.html"/>
+        <topic label="e" href="namespacemembers_func_e.html"/>
+        <topic label="f" href="namespacemembers_func_f.html"/>
+        <topic label="g" href="namespacemembers_func_g.html"/>
+        <topic label="h" href="namespacemembers_func_h.html"/>
+        <topic label="i" href="namespacemembers_func_i.html"/>
+        <topic label="k" href="namespacemembers_func_k.html"/>
+        <topic label="l" href="namespacemembers_func_l.html"/>
+        <topic label="m" href="namespacemembers_func_m.html"/>
+        <topic label="n" href="namespacemembers_func_n.html"/>
+        <topic label="o" href="namespacemembers_func_o.html"/>
+        <topic label="p" href="namespacemembers_func_p.html"/>
+        <topic label="r" href="namespacemembers_func_r.html"/>
+        <topic label="s" href="namespacemembers_func_s.html"/>
+        <topic label="t" href="namespacemembers_func_t.html"/>
+        <topic label="u" href="namespacemembers_func_u.html"/>
+        <topic label="v" href="namespacemembers_func_v.html"/>
+        <topic label="w" href="namespacemembers_func_w.html"/>
+        <topic label="x" href="namespacemembers_func_x.html"/>
+        <topic label="y" href="namespacemembers_func_y.html"/>
+      </topic>
+      <topic label="Variables" href="namespacemembers_vars.html">
+        <topic label="_" href="namespacemembers_vars.html"/>
+        <topic label="a" href="namespacemembers_vars_a.html"/>
+        <topic label="b" href="namespacemembers_vars_b.html"/>
+        <topic label="c" href="namespacemembers_vars_c.html"/>
+        <topic label="d" href="namespacemembers_vars_d.html"/>
+        <topic label="e" href="namespacemembers_vars_e.html"/>
+        <topic label="f" href="namespacemembers_vars_f.html"/>
+        <topic label="g" href="namespacemembers_vars_g.html"/>
+        <topic label="h" href="namespacemembers_vars_h.html"/>
+        <topic label="i" href="namespacemembers_vars_i.html"/>
+        <topic label="j" href="namespacemembers_vars_j.html"/>
+        <topic label="k" href="namespacemembers_vars_k.html"/>
+        <topic label="l" href="namespacemembers_vars_l.html"/>
+        <topic label="m" href="namespacemembers_vars_m.html"/>
+        <topic label="n" href="namespacemembers_vars_n.html"/>
+        <topic label="o" href="namespacemembers_vars_o.html"/>
+        <topic label="p" href="namespacemembers_vars_p.html"/>
+        <topic label="r" href="namespacemembers_vars_r.html"/>
+        <topic label="s" href="namespacemembers_vars_s.html"/>
+        <topic label="t" href="namespacemembers_vars_t.html"/>
+        <topic label="u" href="namespacemembers_vars_u.html"/>
+        <topic label="v" href="namespacemembers_vars_v.html"/>
+        <topic label="w" href="namespacemembers_vars_w.html"/>
+        <topic label="y" href="namespacemembers_vars_y.html"/>
+        <topic label="z" href="namespacemembers_vars_z.html"/>
+      </topic>
     </topic>
   </topic>
   <topic label="Data Structures">
@@ -651,6 +694,8 @@
         <topic label="__all__" href="ezwin_2____init_____8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
         <topic label="__author__" href="ezwin_2____init_____8py.html#a629d61dfe4da763164a4d1a2d85b0afd"/>
         <topic label="__copyright__" href="ezwin_2____init_____8py.html#a8059a06eedd3cdbc5dba35cd130df7f5"/>
+        <topic label="__description__" href="ezwin_2____init_____8py.html#ae16078446746fa0a4e1b6cee9590de8d"/>
+        <topic label="__email__" href="ezwin_2____init_____8py.html#a8a6f8bbfc4fa66850dd1092ec13ac75a"/>
         <topic label="__version__" href="ezwin_2____init_____8py.html#a4ab58d4bcf214e227cb35538617e6add"/>
       </topic>
       <topic label="__init__.py" href="____init_____8py.html">
@@ -689,7 +734,6 @@
           <topic label="__str__" href="classpybooster_1_1basic_1_1SameFileError.html#a23e8041ce1015febe4fdace3225714f9"/>
           <topic label="msg" href="classpybooster_1_1basic_1_1SameFileError.html#a10a0f35066079abd150539d0d13dbf3e"/>
         </topic>
-        <topic label="cache" href="basic_8py.html#a0a6676201415fa0eabcba86598fdba7a"/>
         <topic label="char2bitlen" href="basic_8py.html#af3a8195ce73e45ea9fc612aa8a3eb79d"/>
         <topic label="clearscr" href="basic_8py.html#ad3176421ee1b943cf114937f7130fa07"/>
         <topic label="csv2json" href="basic_8py.html#a102cbd57e0d81566404818d77e0ccc06"/>
@@ -725,7 +769,7 @@
         <topic label="lsmods" href="basic_8py.html#acb6f4cf1512d01d9b057f5baf84f0150"/>
         <topic label="mergestrdict" href="basic_8py.html#a88478d0c5757377d3b66b42791ed8b3f"/>
         <topic label="modexist" href="basic_8py.html#a492dca165ef5554a93bf428783493d57"/>
-        <topic label="modpath" href="basic_8py.html#a19c17e175d2034b3079e8d7875ff933c"/>
+        <topic label="modpath" href="basic_8py.html#a7863c35423db9e81e68dd5b8346f6b59"/>
         <topic label="playmusic" href="basic_8py.html#a25c07091f6a58d2061ed5b4b7175d366"/>
         <topic label="pygrep" href="basic_8py.html#aa9beb5efc108a432f0e40464cc8c5f08"/>
         <topic label="rmdupkey" href="basic_8py.html#abba08c78690993aa60ddb21ff7e7ee08"/>
@@ -741,7 +785,7 @@
         <topic label="sortlistshort2long" href="basic_8py.html#a1014caa603b24659d3194b5668d7e91f"/>
         <topic label="wherecurmods" href="basic_8py.html#af103b0300ec3545992622bb1ebc89a0e"/>
         <topic label="wheremods" href="basic_8py.html#ac87e99e5094945a37bc36b04b3fc3ecf"/>
-        <topic label="wlong" href="basic_8py.html#ada4a71ab9118fa77d07875c7a2849c78"/>
+        <topic label="wlong" href="basic_8py.html#aa6261c315b4b528072e0d56b6a9f9dba"/>
         <topic label="words_in_str" href="basic_8py.html#a8e5450b5a5d44a9ce5607c8e19de9233"/>
         <topic label="words_not_in_str" href="basic_8py.html#af6faab72869b32c863f480c0b53f6c0a"/>
         <topic label="__all__" href="basic_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
@@ -1450,9 +1494,6 @@
         <topic label="xyz2rgb_int" href="color_8py.html#ae239e3b05e3b529b9d1fc546ef950ee8"/>
         <topic label="yiq2rgb" href="color_8py.html#a6b943faf2db3e41e1386bdfdae0199e6"/>
         <topic label="__all__" href="color_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
-        <topic label="ONE_SIXTH" href="color_8py.html#ab8338bdd227b2c0bab71221656ec827c"/>
-        <topic label="ONE_THIRD" href="color_8py.html#ab2ecfe9c8950e84b291c5cbc96f3624a"/>
-        <topic label="TWO_THIRD" href="color_8py.html#a043c72a2824c59bd785940016f1b5655"/>
       </topic>
       <topic label="compress.py" href="compress_8py.html">
         <topic label="bzipvar" href="compress_8py.html#aacbc57dc50e8bc81753b697c1260d471"/>
@@ -5471,26 +5512,214 @@
         <topic label="__all__" href="sing_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
       </topic>
       <topic label="strtools.py" href="strtools_8py.html">
+        <topic label="binint2char" href="strtools_8py.html#ac76fbf0f8b269c9125ad170b7902f09f"/>
+        <topic label="binstr2char" href="strtools_8py.html#a6a483b0ebfd714c9e4f5ebdff616b376"/>
+        <topic label="bubble2text" href="strtools_8py.html#a4884be67ff2846756eb2952d647741ea"/>
+        <topic label="bytes2str" href="strtools_8py.html#a46f24ef7f0a78fec1bcfaafc48283117"/>
+        <topic label="cap" href="strtools_8py.html#a663084ce4b35fccfdde0eacac14891ec"/>
+        <topic label="char2hexstr" href="strtools_8py.html#a9374258a25141c8d652f5fac51dc51f4"/>
+        <topic label="char2int" href="strtools_8py.html#a07dcbbd8b99a9a62a806034e96219ada"/>
+        <topic label="char2intstr" href="strtools_8py.html#a5279d82ade18da55a0b006b17f9a23f5"/>
+        <topic label="char2noeschex" href="strtools_8py.html#aebb6e3e35d7751ea916168a3a340c7f5"/>
+        <topic label="endletters" href="strtools_8py.html#ae24c098611de78d46151eaa7e2ec89b9"/>
+        <topic label="escape" href="strtools_8py.html#a1d777fd859b176697a64cd4dc6cea1cd"/>
+        <topic label="expandhexescape" href="strtools_8py.html#a383a5bade99a2bb345fbc4aa0656b8ab"/>
+        <topic label="explode" href="strtools_8py.html#ac044213306282bcfd8f134883ecf0d9c"/>
+        <topic label="findescapes" href="strtools_8py.html#ab175316bfc68a529184b8e217b67da08"/>
+        <topic label="firstletters" href="strtools_8py.html#ae01ba866b2cdd68ccfe43e2801a87bd8"/>
+        <topic label="formal" href="strtools_8py.html#a1619200e9a44d120d4b3b0073aaab77d"/>
+        <topic label="fval" href="strtools_8py.html#abfb56508662efc75ee87c636fde0ffc3"/>
+        <topic label="fvalhtml" href="strtools_8py.html#a79b2faa128c46287ed21d69ee1e664c3"/>
+        <topic label="hasbraille" href="strtools_8py.html#afee8e03b0ee37b40c6f8fd4fe7c36bfc"/>
+        <topic label="hasgreek" href="strtools_8py.html#af6429336cb32337abcf63e04df6b26f5"/>
+        <topic label="hashexescape" href="strtools_8py.html#a6289550f86c62ba23cdc9d9791ef54bf"/>
+        <topic label="hex2cssnot" href="strtools_8py.html#ad58485f0c68796c32b59c667099f7930"/>
+        <topic label="hex2unicodehex" href="strtools_8py.html#a5d1142cd879f22cfdaaa10b0b3a0a436"/>
+        <topic label="hexint2char" href="strtools_8py.html#a5a56a3d0fb7c7bbe91bfc691d25d9fc1"/>
+        <topic label="hexncr2char" href="strtools_8py.html#a69d359effee0e165efddc7093c79647e"/>
+        <topic label="hexstr2bytearray" href="strtools_8py.html#a101247a294c1176db2ba3a8ba99f4132"/>
+        <topic label="hexstr2char" href="strtools_8py.html#a609c057e36a11ac50be4cf35d1f26337"/>
+        <topic label="htmlentities" href="strtools_8py.html#a9a20dbf3d7baf420f7ed8608059de269"/>
+        <topic label="htmlescape" href="strtools_8py.html#a881ce41498c7f629cbad59a0838ab365"/>
+        <topic label="htmlunescape" href="strtools_8py.html#a15e4e510a9e4bfcb2eee0dbfdc85b0f6"/>
+        <topic label="implode" href="strtools_8py.html#a91d4ffa6f8eb3d1772cbb2557d0b76bb"/>
+        <topic label="insert_character" href="strtools_8py.html#aeec62ae6883687a98aa2326e89350df0"/>
+        <topic label="int2char" href="strtools_8py.html#a0ad71a1882e13d8900c458f281504f65"/>
+        <topic label="int2hexbytes" href="strtools_8py.html#aaca2934df8252d8883e64d32ce959385"/>
+        <topic label="int2ncr" href="strtools_8py.html#aae4be1b2dcecc2c3e9b0ff5bdb92225c"/>
+        <topic label="int2refnum" href="strtools_8py.html#a89422bd7ac7158ef5db4b739479b5bdf"/>
+        <topic label="int2utf16" href="strtools_8py.html#a886e66d8464c93f35d168bfd20567505"/>
+        <topic label="int2utf32" href="strtools_8py.html#a14b7f38db368b2010563b93b80049b05"/>
+        <topic label="isascii" href="strtools_8py.html#ab83cb54b54670e06ed5cdefae61024a6"/>
+        <topic label="isbraille" href="strtools_8py.html#a402f1a670143525b462daa070a8c7589"/>
+        <topic label="isctrlascii" href="strtools_8py.html#a6aad9e3551639b2dec9bfc861cd7e62b"/>
+        <topic label="isextascii" href="strtools_8py.html#ae2acda57327faf62191171f19057fe42"/>
+        <topic label="isgreek" href="strtools_8py.html#acb3b8c0ef3c32265d147eeee5d16f5e8"/>
+        <topic label="isprntascii" href="strtools_8py.html#a45cb04f20019df08c7a963967edd0f9e"/>
+        <topic label="isstrascii" href="strtools_8py.html#af70899267c4d674aa1e50645447682bd"/>
+        <topic label="isstrbraille" href="strtools_8py.html#aa20ec96e88eb620923df001deb533b65"/>
+        <topic label="isstrctrlascii" href="strtools_8py.html#ae58e86e57a6915bf5a3d3e29633c1cfd"/>
+        <topic label="isstrextascii" href="strtools_8py.html#a3f78c169d0449b9e64da30d44ffa8b28"/>
+        <topic label="isstrgreek" href="strtools_8py.html#aeb8fee9b0a505430cbee3f6e5c941f2a"/>
+        <topic label="isstrprntascii" href="strtools_8py.html#a4bc6818da1017c4e572f73f156fbedac"/>
+        <topic label="isunicode" href="strtools_8py.html#abaa562eef07c1f7cccd8cddc96f68582"/>
+        <topic label="isutf16" href="strtools_8py.html#a613191c7315ba80cd6bb1482a38a98f6"/>
+        <topic label="isutf8" href="strtools_8py.html#ab68dbca5231d16dfd343a6a8f284e5f3"/>
+        <topic label="lastletters" href="strtools_8py.html#a52230c38bd4b045d441408accd582264"/>
+        <topic label="lowercase" href="strtools_8py.html#a942d5fe4e955513a8612378777831a49"/>
+        <topic label="middleletters" href="strtools_8py.html#a8255c461e432a0b2ae2d8ed1f5e9fd60"/>
+        <topic label="name2char" href="strtools_8py.html#aac6352c823d62a41b16d49d000ed5b48"/>
+        <topic label="ncr2char" href="strtools_8py.html#a31e38e2ac59a7e3190ee5ef977dad66d"/>
+        <topic label="ncr2int" href="strtools_8py.html#abf680995d1e4afc7ae80edd6a2492545"/>
+        <topic label="ncr2refname" href="strtools_8py.html#a1471a54bd8dc2dafa4c808c86158d0c1"/>
+        <topic label="noescape" href="strtools_8py.html#a687fb58aa47be2f8a260be7df69a98a7"/>
+        <topic label="noescutf8hex" href="strtools_8py.html#a74900a331d77331b74b353157f8b1f38"/>
+        <topic label="num2ordinal" href="strtools_8py.html#aad7de72840d03a739574813807230c12"/>
+        <topic label="octint2char" href="strtools_8py.html#a74c6c586019df8eead9e669ef962b5f7"/>
+        <topic label="octstr2char" href="strtools_8py.html#a093dacd888b22e61f8eeaa3d397b2d8f"/>
+        <topic label="ordinal2num" href="strtools_8py.html#a36615ed4117ee6aeab15115b06ace7cd"/>
+        <topic label="presentlist" href="strtools_8py.html#a9efab38585c0f76cd5622bf7bc10db01"/>
+        <topic label="refname2char" href="strtools_8py.html#afcc08ff981cc296e786c5ebadfa71d14"/>
+        <topic label="refname2ncr" href="strtools_8py.html#a3c52f5dbf61adf1537e0aadd9a13a250"/>
+        <topic label="refname2refnum" href="strtools_8py.html#a11017a62e3dbe20993776e2ee73c8695"/>
+        <topic label="refnum2char" href="strtools_8py.html#ac124a5ee6c655fb7fa09e8d1ba901335"/>
+        <topic label="refnum2int" href="strtools_8py.html#a8321572fc0e036040bd4b0286b4b3c36"/>
+        <topic label="refnum2refname" href="strtools_8py.html#a614c09d3c834b0f916e6b9e8c6b075f4"/>
+        <topic label="replacecurlycommas" href="strtools_8py.html#a4589e84777a1255cd9e20b0bf2987cc4"/>
+        <topic label="replacecurlyquotes" href="strtools_8py.html#af6abdffc3a67012752b204d8f922b1eb"/>
+        <topic label="replacespecialwhitespace" href="strtools_8py.html#a152aa5e41c732bb74475c4c67a52bc90"/>
+        <topic label="rmbyteshexesc" href="strtools_8py.html#a47f55f50ca5243fe9bd546cb1cba996c"/>
+        <topic label="rmcurlycommas" href="strtools_8py.html#a4bf6b2fad190d8da1b012ed9e09dd696"/>
+        <topic label="rmcurlyquotes" href="strtools_8py.html#a808a482be70eb03fce26b9b6d7329cbf"/>
+        <topic label="rmpunct" href="strtools_8py.html#a650a6e3b4ddaf77fd101e948f1f7003e"/>
+        <topic label="rmspecialwhitespace" href="strtools_8py.html#ad4d2b543c0e861737cc31fa92fcaef46"/>
+        <topic label="rplbyteshexesc" href="strtools_8py.html#a46fde647201d73578bf9aaf277567a42"/>
+        <topic label="sentence" href="strtools_8py.html#a9cc7c3dbc0a26c004f4a220c43cfbb98"/>
+        <topic label="shrink_esc_utf16to8" href="strtools_8py.html#a323113650ce51e441f7a3d212e0944a1"/>
+        <topic label="shrink_esc_utf32to16" href="strtools_8py.html#ad222272fd86102c5a2f524672f301065"/>
+        <topic label="shrink_esc_utf32to8" href="strtools_8py.html#a054c36d5e0cb62caaf52ae42ca127115"/>
+        <topic label="splitsentencesstr" href="strtools_8py.html#aba24d2d43aababc1cffbeeab38c71b78"/>
+        <topic label="sqlstr" href="strtools_8py.html#af71bf970151127349757f433ab197b8a"/>
+        <topic label="square2text" href="strtools_8py.html#aa352321283dc94ed657130d21c9a26b7"/>
+        <topic label="str2bytes" href="strtools_8py.html#ac7ef2557e9f6ae30405cced5ad51e46f"/>
+        <topic label="str2hexcolon" href="strtools_8py.html#a861b4bee65c8f3f388d7bc12158ce1ca"/>
+        <topic label="str2noeschex" href="strtools_8py.html#aac9b40f5c7dbd921a6743133e06a71f1"/>
+        <topic label="testref" href="strtools_8py.html#a02359295d3f5a7a6c80d3585ac24c6d6"/>
+        <topic label="text2bubble" href="strtools_8py.html#a7a55c65dbfbdbaf63aeee09fd4521632"/>
+        <topic label="text2square" href="strtools_8py.html#a7733fc68787decdf9a012d3490571110"/>
+        <topic label="togglecase" href="strtools_8py.html#a8c5d10f5a9b59e3459c65648ee7c8202"/>
+        <topic label="unescape" href="strtools_8py.html#a51492c60087742e182231fc1c4eefd60"/>
+        <topic label="uppercase" href="strtools_8py.html#a1d9ab909ce88dac17807f3994e9c3f83"/>
+        <topic label="utf16len" href="strtools_8py.html#a01c7de49bd1f2a6f0cab362817db6c7f"/>
+        <topic label="utf32len" href="strtools_8py.html#a5a4cccdd9f8cbbd1eb25ad7b96755846"/>
+        <topic label="utf7len" href="strtools_8py.html#ac8283a874bc3e5d42fd4959079fb97c8"/>
+        <topic label="utf8convchar2hexescape" href="strtools_8py.html#a374241c4ee8c8e27b613d4945d2fe913"/>
+        <topic label="utf8convchar2hexstr" href="strtools_8py.html#ab90ae5acaabf49dfd10dafb3fd654001"/>
+        <topic label="utf8convchar2intstr" href="strtools_8py.html#a228b700ebbbc9fd457e2689ce0a35d1c"/>
+        <topic label="utf8convchar2uri" href="strtools_8py.html#a5b1cad723fd3520fc559c0a034db595d"/>
+        <topic label="utf8len" href="strtools_8py.html#a3a63ac2850a1879708943dad28ecd291"/>
         <topic label="__all__" href="strtools_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
+        <topic label="AIRPLANE" href="strtools_8py.html#a12e049cc3091fa0aa6d819c22b9d389f"/>
+        <topic label="ARROWS" href="strtools_8py.html#aabcfcb0cc57abb33b4c506d6d7f9480c"/>
+        <topic label="ASTROLOGY" href="strtools_8py.html#ae6ce718ea626a5579b7b53991bdb06bb"/>
+        <topic label="BIOHAZARD" href="strtools_8py.html#a49d7bf9826bf60d6d8b2f109b0c48f7b"/>
+        <topic label="BRAILLE" href="strtools_8py.html#ab68c4aa2e9b4431f6871a2480172f4c8"/>
+        <topic label="BUBBLE" href="strtools_8py.html#a89521c614457bc1dbde90a1a6c65921e"/>
+        <topic label="BUBBLE_TEXT" href="strtools_8py.html#a7930cdaa82e49b3bd6883a89402d5e3c"/>
+        <topic label="CARD_REVERSE" href="strtools_8py.html#afaa9648ff5e66684a249ce6803a2c4d9"/>
+        <topic label="CARDS" href="strtools_8py.html#a4d4dfca6a8ad894cd908fd7f2faeb35f"/>
+        <topic label="CARDS_10" href="strtools_8py.html#afb522f573c0dcad14a47746970b8a058"/>
+        <topic label="CARDS_2" href="strtools_8py.html#a5a04865c743fa308d9e78d0a224f9956"/>
+        <topic label="CARDS_3" href="strtools_8py.html#a935d029b96ad0ef782d678a4f3fdaeaa"/>
+        <topic label="CARDS_4" href="strtools_8py.html#a4273e70be903f3999005f96d83f1265e"/>
+        <topic label="CARDS_5" href="strtools_8py.html#a7cd5e91cf20a111b849964faab0aaa27"/>
+        <topic label="CARDS_6" href="strtools_8py.html#a2167f791b212f9609aac293ce0da0da3"/>
+        <topic label="CARDS_7" href="strtools_8py.html#ac9707ff2c5f2efeeed0febc50a71b940"/>
+        <topic label="CARDS_8" href="strtools_8py.html#ae07fc985712f48b61de997bb1f8c0927"/>
+        <topic label="CARDS_9" href="strtools_8py.html#a20a5aa2974041f267ea303ef132e768d"/>
+        <topic label="CARDS_ACE" href="strtools_8py.html#ae0a81a811798ce83f7e9aa2abde60cb0"/>
+        <topic label="CARDS_CHEVALIER" href="strtools_8py.html#a51140b4121608109a384b9fd54a04974"/>
+        <topic label="CARDS_JACK" href="strtools_8py.html#acdd2bfa0f51086d6532509fd28e58313"/>
+        <topic label="CARDS_JOKER" href="strtools_8py.html#a77aa792c717404625ea6eb1de14e24b0"/>
+        <topic label="CARDS_KING" href="strtools_8py.html#ac42eb9625fb7f73459a921236e44692b"/>
+        <topic label="CARDS_QUEEN" href="strtools_8py.html#a474d7760a5bee1821494d5cd538feb4e"/>
         <topic label="CHAR_REF" href="strtools_8py.html#aabe488f08ef76468bb4c3cbc8c9b8228"/>
         <topic label="CHAR_REF2" href="strtools_8py.html#a2e0ea5f62d90397ee354a9b2189e89b9"/>
+        <topic label="CHESS" href="strtools_8py.html#afc1d66398a7b91ecaedaa77f094a0725"/>
+        <topic label="CHESS_BLACK" href="strtools_8py.html#a4b8ced2397a5f472e5508b70a861fba7"/>
+        <topic label="CHESS_WHITE" href="strtools_8py.html#aaaab9a338c53d3918f27e125be9fb47d"/>
+        <topic label="CODES" href="strtools_8py.html#a43461a97d160fb081af54fe962e2a7a5"/>
+        <topic label="CONTROL_SYM" href="strtools_8py.html#a4c48de40157b6514d656c871b8ef6d31"/>
+        <topic label="CONTROL_SYM_NAME" href="strtools_8py.html#a61161c6e4070be8320fda1212d32e60c"/>
+        <topic label="CURRENCY" href="strtools_8py.html#aab26bfd42546d96a849b966c0f337b5f"/>
+        <topic label="CYRILLIC_ALPHABET" href="strtools_8py.html#a0e0e005fc68af5b105315e14021da9f3"/>
+        <topic label="DICE" href="strtools_8py.html#a5137f8894ffb6fbb252997ae5e80adf8"/>
+        <topic label="DOWN" href="strtools_8py.html#a5a898d8474b30c92bed37fd5cddbc588"/>
+        <topic label="EJECT" href="strtools_8py.html#a8ebae94da86218edc0b7da70b04e92b7"/>
+        <topic label="END_PUNCT" href="strtools_8py.html#af76011bd9f959fa9e870b71c6cd68eb6"/>
         <topic label="ENTITY_REF" href="strtools_8py.html#a09c2815c0cc1e60e4d15331ec8586db9"/>
+        <topic label="ESCTAB" href="strtools_8py.html#a844a3295f577c15e97e0cdf2b5925bd0"/>
+        <topic label="FACES" href="strtools_8py.html#aacae4f24e4afc6b5bd2ec89d2492c69f"/>
+        <topic label="FUEL_PUMP" href="strtools_8py.html#a48be703d5cc39ef5fed17e9e7a87ab41"/>
+        <topic label="GREEK" href="strtools_8py.html#ac59fc1da987f02979366abb33dc8da2a"/>
+        <topic label="GREEK_ACCENT" href="strtools_8py.html#a1cbd1d1d58d66dc19974f31e061444f0"/>
+        <topic label="GREEK_ACCENT_LOWER" href="strtools_8py.html#abc21790bb2aac35b8a27de06e7149252"/>
+        <topic label="GREEK_ACCENT_UPPER" href="strtools_8py.html#a96eaae866da5ecd8afba81e380b70cea"/>
+        <topic label="GREEK_ALL" href="strtools_8py.html#aecb9228078de97fb45da759de24991b9"/>
+        <topic label="GREEK_ARCHAIC" href="strtools_8py.html#aa48c7580ad36ccf37baf2d3adff715f0"/>
+        <topic label="GREEK_ARCHAIC_LOWER" href="strtools_8py.html#a96dd8360434b5a5c049cc270d8f03180"/>
+        <topic label="GREEK_ARCHAIC_UPPER" href="strtools_8py.html#a2243ce8b4be0ffeb3021f2316b28fe0e"/>
+        <topic label="GREEK_EXTENDED" href="strtools_8py.html#af9dad01f945a03ea2a71e50aa3f0e9e1"/>
+        <topic label="GREEK_LOWER" href="strtools_8py.html#ad13e2f6b3bb783c2530d6a7d12cf1e2d"/>
+        <topic label="GREEK_UPPER" href="strtools_8py.html#a9836afe9475eb865152824149e193c77"/>
+        <topic label="HTML5_REF" href="strtools_8py.html#a41b65002802b2748fb304b603b64b624"/>
         <topic label="INCOMPLETE_REF" href="strtools_8py.html#ab3aebc349492bac151dab9bb01e29904"/>
+        <topic label="INTELLECTUAL_PROPERTY" href="strtools_8py.html#aecad4991cc9250dc19d3f06ec23c2a76"/>
+        <topic label="INVALID_CHARREFS" href="strtools_8py.html#a9823ef6fc0471ac9d0e9aad8afca84e8"/>
+        <topic label="KEYBOARD" href="strtools_8py.html#a679e7c833378e99a3e1f8a004057dcdd"/>
         <topic label="LEADING_SURROGATE" href="strtools_8py.html#a7b308315a2c5c14d9fffd1338d6b60f4"/>
+        <topic label="LEFT" href="strtools_8py.html#ab54276a3a9d3e0cffcef184bd5d0dd3c"/>
+        <topic label="LOADING" href="strtools_8py.html#a3301afddeea55350cc9a9436c69731bf"/>
+        <topic label="LOGIC" href="strtools_8py.html#afebd7b3572c991a746a4dfb2be2e4cb7"/>
         <topic label="LOWER_LIMIT_ASCII_CTRL" href="strtools_8py.html#a55da48b0cbee2bf9f6c2b413e3235508"/>
         <topic label="LOWER_LIMIT_ASCII_EXT" href="strtools_8py.html#a541387fde36dbc849999bf637826b940"/>
         <topic label="LOWER_LIMIT_ASCII_PRNT" href="strtools_8py.html#a74197756f8ce87939eaaa37f0540238f"/>
         <topic label="LOWER_LIMIT_MS_LATIN1" href="strtools_8py.html#ae70d5d64f0ce342080a22176fef8ac32"/>
+        <topic label="MATH" href="strtools_8py.html#a0248ff03f2dd5965d5172752b00b4cfa"/>
+        <topic label="MEDICINE" href="strtools_8py.html#a2fe2131786cdd00e3eb234b50dff938b"/>
+        <topic label="MUSIC" href="strtools_8py.html#ae11976a3ac0c0ac042250327b8cab951"/>
+        <topic label="NAME2INT" href="strtools_8py.html#aad71cc429074fec133978689e060b400"/>
         <topic label="NUMBER_LIST" href="strtools_8py.html#aab851ef8dcecac601105bf7f42c2e979"/>
+        <topic label="OHMS" href="strtools_8py.html#a64cb97de230685775be91f2950100a14"/>
         <topic label="ORDINAL_LIST" href="strtools_8py.html#a7648cca27145c7e89f9f9fbc0b42c30d"/>
+        <topic label="PARENTHESIS_CHAR" href="strtools_8py.html#ae76dbfb866dd4231117e3c58f20308a9"/>
+        <topic label="PLAIN_TEXT" href="strtools_8py.html#a3d1da5d0411cb339d5360cf77524ce9b"/>
+        <topic label="PLANETS" href="strtools_8py.html#a686e5f8ea794ab0d6ddaf8a5131d9a16"/>
+        <topic label="PLAYING_CARDS" href="strtools_8py.html#a21091520e4d1e24bceb9f587f94d8b41"/>
+        <topic label="PLAYING_CARDS_52" href="strtools_8py.html#a692df00c65dea1e6c0b7b75362509340"/>
+        <topic label="PLAYING_CARDS_56" href="strtools_8py.html#a013c62b2cb453c468f7eb6aa6507f029"/>
         <topic label="PRINTABLE" href="strtools_8py.html#a71cc7c3249d18f73d0008773d098289e"/>
+        <topic label="RADIATION" href="strtools_8py.html#ae9dc7bb7771c526d96640260e98cd3bb"/>
+        <topic label="RECYCLE" href="strtools_8py.html#a1d4d2625ea40655211162f1806d112f1"/>
+        <topic label="RIGHT" href="strtools_8py.html#adffd7bc9edb2e5f5fc42a634bbcd695e"/>
+        <topic label="SCIENCE" href="strtools_8py.html#ae8c131dfcd7793451fe962cba44d1299"/>
+        <topic label="SQUARE" href="strtools_8py.html#ad6d5ff0887748c0fe98506fdc25bd698"/>
+        <topic label="SUPERSCRIPT_NUM" href="strtools_8py.html#a2882b7f2f571a9546c19837a62cd18a1"/>
+        <topic label="TELEPHONE" href="strtools_8py.html#a6d0afbc18ba3f76674075ca78a40efd0"/>
+        <topic label="TOXIC" href="strtools_8py.html#a5404728c7fdd4dd547508870ec064899"/>
         <topic label="TRAILING_SURROGATE" href="strtools_8py.html#adfc5c263885ecb0fde03ee8937b74190"/>
+        <topic label="TRANS_TAB_BUBBLE2TEST" href="strtools_8py.html#a72511bfdf01e1fcb90c89d375a9ab9dc"/>
+        <topic label="TRANS_TAB_TEXT2BUBBLE" href="strtools_8py.html#ac5e54d65a928c8e80ea31295c2be71d6"/>
+        <topic label="UP" href="strtools_8py.html#ae822765cb30178dca4519b55bf346d76"/>
         <topic label="UPPER_LIMIT_ASCII_CTRL" href="strtools_8py.html#a5f2b0e8b00433499fdb0e02fa511fc84"/>
         <topic label="UPPER_LIMIT_ASCII_EXT" href="strtools_8py.html#a533694a6b49261bd0ffba0eacd46b5df"/>
         <topic label="UPPER_LIMIT_ASCII_PRNT" href="strtools_8py.html#ab772176102b4e36b9c0ea83f8bdf64ae"/>
         <topic label="UPPER_LIMIT_MS_LATIN1" href="strtools_8py.html#a05fda9ac3343f44ea077d51f425532d0"/>
         <topic label="UPPER_LIMIT_UNICODE" href="strtools_8py.html#a6b85f69c0c453f8894da0f8eb3926a8e"/>
         <topic label="UPPER_LIMIT_UTF8" href="strtools_8py.html#a0576c7a353b81f97961d9c1b9a7ace91"/>
+        <topic label="WARNING" href="strtools_8py.html#a93bb20810d83fb8742ba55ad8af4e467"/>
+        <topic label="ZODIAC" href="strtools_8py.html#a512f75fa692c08e2b52c039e5fbdc4a2"/>
+        <topic label="ZODIAC_SIGNS" href="strtools_8py.html#ad1b402931989313b77f9b6050db7633c"/>
       </topic>
       <topic label="system.py" href="system_8py.html">
         <topic label="bitness" href="system_8py.html#a3dc5dfe89c170c450cd82a36f61ec427"/>
@@ -5498,14 +5727,14 @@
         <topic label="ckill" href="system_8py.html#a91b16c6a62d65dbc5bb4366c5d8d1eb3"/>
         <topic label="envdict" href="system_8py.html#a473d2a8ff982b315850580484b8436e2"/>
         <topic label="envlist" href="system_8py.html#a80141d58a5f3e2d2a5ead49d308fcc37"/>
-        <topic label="exportenv" href="system_8py.html#a8f43372b21f745464bf14e9d35e96960"/>
-        <topic label="exporthome" href="system_8py.html#a9391779ebfe3a7c416746435699ce3c2"/>
         <topic label="home" href="system_8py.html#a154061b6909b5240e3505ff4a14a4662"/>
         <topic label="idsys" href="system_8py.html#a6637cab7031a0a0ccffc02e09a50300c"/>
         <topic label="isthread" href="system_8py.html#a00e4ac0b7055f87813ec467847c41b61"/>
         <topic label="printenv" href="system_8py.html#a3488be267271452fb1e7581b38aa46fd"/>
         <topic label="which" href="system_8py.html#a8433bd1a8340759e08af650556133472"/>
         <topic label="__all__" href="system_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
+        <topic label="ENVKEY" href="system_8py.html#a698d20c5e7b0b6709c4c37912f526db0"/>
+        <topic label="HOME" href="system_8py.html#ae9175f62604375e430b3b14aa6a198dd"/>
       </topic>
       <topic label="timeutil.py" href="timeutil_8py.html">
         <topic label="clock" href="timeutil_8py.html#aa37037a69eb5a21c2c63d3f743cd6b11"/>

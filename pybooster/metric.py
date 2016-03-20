@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Metric related functions
 @file metric.py
 @package pybooster.metric
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Metric related functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -26,6 +25,9 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
+
+
+# pylint: disable=R0911,R0912
 
 
 from re import sub as resub
@@ -66,162 +68,162 @@ __all__ = [
 
 
 YOCTO_UNITS = (
-    'ym',
-    'yV',
-    'yA',
-    'yΩ',
+    r'ym',
+    r'yV',
+    r'yA',
+    r'yΩ',
 )
 
 
 ZEPTO_UNITS = (
-    'zm',
-    'zV',
-    'zA',
-    'zΩ',
+    r'zm',
+    r'zV',
+    r'zA',
+    r'zΩ',
 )
 
 
 ATTO_UNITS = (
-    'am',
-    'aV',
-    'aA',
-    'aΩ',
+    r'am',
+    r'aV',
+    r'aA',
+    r'aΩ',
 )
 
 
 FEMTO_UNITS = (
-    'fm',
-    'fV',
-    'fA',
-    'fΩ',
+    r'fm',
+    r'fV',
+    r'fA',
+    r'fΩ',
 )
 
 
 PICO_UNITS = (
-    'pm',
-    'pV',
-    'pA',
-    'pΩ',
+    r'pm',
+    r'pV',
+    r'pA',
+    r'pΩ',
 )
 
 
 NANO_UNITS = (
-    'nm',
-    'nV',
-    'nA',
-    'nΩ',
+    r'nm',
+    r'nV',
+    r'nA',
+    r'nΩ',
 )
 
 
 MICRO_UNITS = (
-    'μm',
-    'μV',
-    'μA',
-    'μΩ',
+    r'μm',
+    r'μV',
+    r'μA',
+    r'μΩ',
 )
 
 
 MILLI_UNITS = (
-    'mm',
-    'mV',
-    'mA',
-    'mΩ',
+    r'mm',
+    r'mV',
+    r'mA',
+    r'mΩ',
 )
 
 
 CENTI_UNITS = (
-    'cm',
-    'cV',
-    'cA',
-    'cΩ',
+    r'cm',
+    r'cV',
+    r'cA',
+    r'cΩ',
 )
 
 
 DECI_UNITS = (
-    'dm',
-    'dV',
-    'dA',
-    'dΩ',
+    r'dm',
+    r'dV',
+    r'dA',
+    r'dΩ',
 )
 
 
 DECA_UNITS = (
-    'dam',
-    'daV',
-    'daA',
-    'daΩ',
+    r'dam',
+    r'daV',
+    r'daA',
+    r'daΩ',
 )
 
 
 HECTO_UNITS = (
-    'hm',
-    'hV',
-    'hA',
-    'hΩ',
+    r'hm',
+    r'hV',
+    r'hA',
+    r'hΩ',
 )
 
 
 KILO_UNITS = (
-    'km',
-    'kV',
-    'kA',
-    'kΩ',
+    r'km',
+    r'kV',
+    r'kA',
+    r'kΩ',
 )
 
 
 MEGA_UNITS = (
-    'Mm',
-    'MV',
-    'MA',
-    'MΩ',
+    r'Mm',
+    r'MV',
+    r'MA',
+    r'MΩ',
 )
 
 
 GIGA_UNITS = (
-    'Gm',
-    'GV',
-    'GA',
-    'GΩ',
+    r'Gm',
+    r'GV',
+    r'GA',
+    r'GΩ',
 )
 
 
 TERA_UNITS = (
-    'Tm',
-    'TV',
-    'TA',
-    'TΩ',
+    r'Tm',
+    r'TV',
+    r'TA',
+    r'TΩ',
 )
 
 
 PETA_UNITS = (
-    'Pm',
-    'PV',
-    'PA',
-    'PΩ',
+    r'Pm',
+    r'PV',
+    r'PA',
+    r'PΩ',
 )
 
 
 EXA_UNITS = (
-    'Em',
-    'EV',
-    'EA',
-    'EΩ',
+    r'Em',
+    r'EV',
+    r'EA',
+    r'EΩ',
 )
 
 
 ZETTA_UNITS = (
-    'Zm',
-    'ZV',
-    'ZA',
-    'ZΩ',
+    r'Zm',
+    r'ZV',
+    r'ZA',
+    r'ZΩ',
 )
 
 
 YOTTA_UNITS = (
-    'Ym',
-    'YV',
-    'YA',
-    'YΩ',
+    r'Ym',
+    r'YV',
+    r'YA',
+    r'YΩ',
 )
 
 
@@ -289,7 +291,7 @@ def str2tupleunit(_str: str) -> tuple:
     return (_num, _unit)
 
 
-def siunits2base(_measurement: tuple) -> tuple:
+def siunits2base(_measurement: tuple) -> tuple:  # noqa
     """Convert SI units to base unit"""
     if _measurement[1] in YOCTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000000001, _measurement[1][1:])

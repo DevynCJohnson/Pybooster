@@ -92,6 +92,7 @@ var searchData=
   ['meter2foot',['meter2foot',['../namespacepybooster_1_1convlength.html#aba276e84136d2438e5bb5de9512f0e5c',1,'pybooster::convlength']]],
   ['meter2inch',['meter2inch',['../namespacepybooster_1_1convlength.html#adcfd1504e891a832ddbeb4190b1cb768',1,'pybooster::convlength']]],
   ['meter2yard',['meter2yard',['../namespacepybooster_1_1convlength.html#a0692500cfbc32c46ad81a0d4ad62589b',1,'pybooster::convlength']]],
+  ['middleletters',['middleletters',['../namespacepybooster_1_1strtools.html#a8255c461e432a0b2ae2d8ed1f5e9fd60',1,'pybooster::strtools']]],
   ['mile2chain',['mile2chain',['../namespacepybooster_1_1convlength.html#a89a831dfc10342afe66228b98db7f07e',1,'pybooster::convlength']]],
   ['mile2foot',['mile2foot',['../namespacepybooster_1_1convlength.html#abef4d68e8b4e95093d5f85732f610777',1,'pybooster::convlength']]],
   ['mile2furlong',['mile2furlong',['../namespacepybooster_1_1convlength.html#a42b16a60a494119951d6617ea4b4baca',1,'pybooster::convlength']]],
@@ -107,7 +108,7 @@ var searchData=
   ['mod_5fpow',['mod_pow',['../mathfunc_8c.html#a63689fa134bb8885425052997a03a3b4',1,'mod_pow(const signed int base, const signed int exponent, const signed int modulus):&#160;mathfunc.c'],['../mathfunc_8h.html#a63689fa134bb8885425052997a03a3b4',1,'mod_pow(const signed int base, const signed int exponent, const signed int modulus):&#160;mathfunc.c']]],
   ['mod_5fpow_5flonglong',['mod_pow_longlong',['../mathfunc_8c.html#a37f329083168cdbf72d61949cddb6996',1,'mod_pow_longlong(const sllint base, const sllint exponent, const sllint modulus):&#160;mathfunc.c'],['../mathfunc_8h.html#a37f329083168cdbf72d61949cddb6996',1,'mod_pow_longlong(const sllint base, const sllint exponent, const sllint modulus):&#160;mathfunc.c']]],
   ['modexist',['modexist',['../namespacepybooster_1_1basic.html#a492dca165ef5554a93bf428783493d57',1,'pybooster::basic']]],
-  ['modpath',['modpath',['../namespacepybooster_1_1basic.html#a19c17e175d2034b3079e8d7875ff933c',1,'pybooster::basic']]],
+  ['modpath',['modpath',['../namespacepybooster_1_1basic.html#a7863c35423db9e81e68dd5b8346f6b59',1,'pybooster::basic']]],
   ['momentum',['momentum',['../physics_8c.html#a6d3ef97ebee616e50bcf9e28a95016ae',1,'momentum(const double mass, const double velocity):&#160;physics.c'],['../physics_8h.html#a6d3ef97ebee616e50bcf9e28a95016ae',1,'momentum(const double mass, const double velocity):&#160;physics.c']]],
   ['month',['month',['../namespacepybooster_1_1timeutil.html#a0a252e8b1c60d0a6b31b8d8cef4112e2',1,'pybooster::timeutil']]],
   ['mph2kph',['mph2kph',['../namespacepybooster_1_1convspeed.html#a9111e28841729410b8123aed0b66cfaa',1,'pybooster::convspeed']]]

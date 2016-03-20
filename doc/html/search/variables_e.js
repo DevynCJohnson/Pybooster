@@ -1,6 +1,7 @@
 var searchData=
 [
   ['name',['name',['../chemistry__types_8h.html#acd328517a6cf718155c2e6e22b671ca9',1,'subatomicparticle::name()'],['../chemistry__types_8h.html#a6bccb8d69041825bceb9c678a8d1134d',1,'quark::name()'],['../chemistry__types_8h.html#acd328517a6cf718155c2e6e22b671ca9',1,'atom::name()'],['../chemistry__types_8h.html#acd328517a6cf718155c2e6e22b671ca9',1,'nucleobase::name()'],['../chemistry__types_8h.html#abc1e86d7c344fe34ff09e72d4595ab7e',1,'aminoacid::name()']]],
+  ['name2int',['NAME2INT',['../namespacepybooster_1_1strtools.html#aad71cc429074fec133978689e060b400',1,'pybooster::strtools']]],
   ['nano_5funits',['NANO_UNITS',['../namespacepybooster_1_1metric.html#ad616e5ed3c43659064b2bd67a2f1f449',1,'pybooster::metric']]],
   ['neodymium',['neodymium',['../chemistry__types_8c.html#a4d7736eee45171598c33329b7041e2a2',1,'neodymium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a4d7736eee45171598c33329b7041e2a2',1,'neodymium():&#160;chemistry_types.c']]],
   ['neon',['neon',['../chemistry__types_8c.html#a90a291b4260f1600edc1b87e4971e441',1,'neon():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a90a291b4260f1600edc1b87e4971e441',1,'neon():&#160;chemistry_types.c']]],

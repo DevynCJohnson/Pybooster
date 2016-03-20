@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief System-related functions
 @file system.py
 @package pybooster.system
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief System-related functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -42,11 +41,12 @@ except ImportError:
 
 
 __all__ = [
+    # CONSTANTS
+    'HOME',
+    'ENVKEY',
     # HOME-RELATED FUNCTIONS
     'home',
-    'exporthome',
     # ENVIRONMENT-RELATED FUNCTIONS
-    'exportenv',
     'envdict',
     'envlist',
     'printenv',
@@ -63,6 +63,13 @@ __all__ = [
 ]
 
 
+# CONSTANTS
+
+
+HOME = path.expanduser(r'~')
+ENVKEY = dict(environ)
+
+
 # HOME-RELATED FUNCTIONS
 
 
@@ -71,27 +78,12 @@ def home() -> str:
     return path.expanduser(r'~')
 
 
-def exporthome() -> None:
-    """Make a global variable called 'HOME'
-    The variable is a str of the user's home directory path
-    """
-    global HOME
-    HOME = path.expanduser(r'~')
-
-
 # ENVIRONMENT-RELATED FUNCTIONS
-
-
-def exportenv() -> None:
-    """Make a global variable called 'ENVKEY'
-    The variable is a dictionary of the environment variables
-    """
-    global ENVKEY
-    ENVKEY = dict(environ)
 
 
 def envdict() -> dict:
     """Return the system's environment variables
+
     A dictionary is returned in the form { 'VAR': 'VAL'}
     """
     return dict(environ)
@@ -124,6 +116,7 @@ def isthread(_thead) -> bool:
 
 def ckill(_process) -> None:
     """Cross-platform Kill
+
     Kill process specified by process-object or PID
     ckill(PID)
     ckill(process-obj)
@@ -135,7 +128,7 @@ def ckill(_process) -> None:
     else:
         try:
             _kill(_process, SIGKILL)
-        except Exception:
+        except Exception:  # pylint: disable=W0703
             _kill(_process.pid, SIGKILL)
     return None
 
@@ -146,19 +139,20 @@ def ckill(_process) -> None:
 def bitness() -> str:
     """Return a string indicating the bitness of the system"""
     if maxsize == 32767:  # 2 ** 15 - 1
-        return '16'
+        return r'16'
     elif maxsize == 2147483647:  # 2 ** 31 - 1
-        return '32'
+        return r'32'
     elif maxsize == 9223372036854775807:  # 2 ** 63 - 1
-        return '64'
+        return r'64'
     elif maxsize == 170141183460469231731687303715884105727:  # 2 ** 127 - 1
-        return '128'
+        return r'128'
     else:
         return 'Unknown'
 
 
 def cintsize() -> int:
     """Return the C/C++ size of an int for the current system
+
     The returned value is an integer for the number of bytes
     cintsize() => 4  # The system uses 4 bytes for integers
     """
@@ -219,6 +213,7 @@ def idsys() -> None:
 
 def which(program: str) -> str:
     """Return the path of the specified application (if it exists)
+
     An empty string is returned if the program does not exist
     """
     fpath = path.split(program)[0]

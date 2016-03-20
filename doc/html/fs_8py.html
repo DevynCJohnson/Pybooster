@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -112,12 +113,14 @@ $(document).ready(function(){initNavTree('fs_8py.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Filesystem and file related functions.  
+<a href="#details">More...</a></p>
+
 <p><a href="fs_8py_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacepybooster_1_1fs"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html">pybooster.fs</a></td></tr>
-<tr class="memdesc:namespacepybooster_1_1fs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filesystem and file related functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -126,10 +129,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ae295bbf67fcbcbd5ce6ad23793569cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to new file or append to an existing file.  <a href="#ae295bbf67fcbcbd5ce6ad23793569cd9">More...</a><br /></td></tr>
 <tr class="separator:ae295bbf67fcbcbd5ce6ad23793569cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287415110a7e72dd3ab09baa1bae6e44"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a287415110a7e72dd3ab09baa1bae6e44">convumask</a> (_oct)</td></tr>
-<tr class="memdesc:a287415110a7e72dd3ab09baa1bae6e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;') From octal permissions notation (int, str, or list of str+int) To Posix permissions notation as a str Input may be in any of the following forms - &gt; '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'], &gt; [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4] &gt;&gt;&gt; convumask(644) 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask('644') 'rw-r&ndash;r&ndash;' &gt;&gt;&gt; convumask(654) 'rw-r-xr&ndash;'.  <a href="#a287415110a7e72dd3ab09baa1bae6e44">More...</a><br /></td></tr>
+<tr class="memdesc:a287415110a7e72dd3ab09baa1bae6e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert file permissions/umask (644 -&gt; 'rw-r&ndash;r&ndash;')  <a href="#a287415110a7e72dd3ab09baa1bae6e44">More...</a><br /></td></tr>
 <tr class="separator:a287415110a7e72dd3ab09baa1bae6e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a7a3acd918b9c9bd5bc0d683b9a67df3d">expandhome</a></td></tr>
-<tr class="memdesc:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace 'HOME', '$HOME', or '~' with the literal value Supported OS 'HOME' shortcuts - * Linux, POSIX, Unix, and Unixoid systems * Windows (MS and Pirated) * OS X (Apple) &gt;&gt;&gt; expandhome('~/file') '/home/username/file' &gt;&gt;&gt; expandhome('HOME/file') '/home/username/file' &gt;&gt;&gt; expandhome('$HOME/file') '/home/username/file'.  <a href="#a7a3acd918b9c9bd5bc0d683b9a67df3d">More...</a><br /></td></tr>
+<tr class="memdesc:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace 'HOME', '$HOME', or '~' with the literal value.  <a href="#a7a3acd918b9c9bd5bc0d683b9a67df3d">More...</a><br /></td></tr>
 <tr class="separator:a7a3acd918b9c9bd5bc0d683b9a67df3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58a903d8f8a81d86fecd7982a20c1b8a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a58a903d8f8a81d86fecd7982a20c1b8a">firstchars</a></td></tr>
 <tr class="memdesc:a58a903d8f8a81d86fecd7982a20c1b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the first x characters in a file.  <a href="#a58a903d8f8a81d86fecd7982a20c1b8a">More...</a><br /></td></tr>
@@ -147,7 +150,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa29f7c9ffa309ff556170af85f6c21ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents and return a byte-str of binary words.  <a href="#aa29f7c9ffa309ff556170af85f6c21ef">More...</a><br /></td></tr>
 <tr class="separator:aa29f7c9ffa309ff556170af85f6c21ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30850efb308d99b177adaa0177d299bf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a30850efb308d99b177adaa0177d299bf">getfileext</a></td></tr>
-<tr class="memdesc:a30850efb308d99b177adaa0177d299bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file's extension &gt;&gt;&gt; getfileext('/etc/mime.types') 'types' &gt;&gt;&gt; getfileext('/bin/sh') ''.  <a href="#a30850efb308d99b177adaa0177d299bf">More...</a><br /></td></tr>
+<tr class="memdesc:a30850efb308d99b177adaa0177d299bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file's extension.  <a href="#a30850efb308d99b177adaa0177d299bf">More...</a><br /></td></tr>
 <tr class="separator:a30850efb308d99b177adaa0177d299bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae476c64d8a81b36f3de04ce6c9700070"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ae476c64d8a81b36f3de04ce6c9700070">getfilehexbytes</a></td></tr>
 <tr class="memdesc:ae476c64d8a81b36f3de04ce6c9700070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents as bytes in hex.  <a href="#ae476c64d8a81b36f3de04ce6c9700070">More...</a><br /></td></tr>
@@ -165,31 +168,31 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5cd5876a43d9867918ae9b69d0bca944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents and return a str of hex.  <a href="#a5cd5876a43d9867918ae9b69d0bca944">More...</a><br /></td></tr>
 <tr class="separator:a5cd5876a43d9867918ae9b69d0bca944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17659517f1f74634f547f8dc138a667b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a17659517f1f74634f547f8dc138a667b">getfilename</a></td></tr>
-<tr class="memdesc:a17659517f1f74634f547f8dc138a667b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename without path or extension The path and extension are removed from the given string &gt;&gt;&gt; getfilename('/etc/mime.types') 'mime' &gt;&gt;&gt; getfilename('/bin/sh') 'sh'.  <a href="#a17659517f1f74634f547f8dc138a667b">More...</a><br /></td></tr>
+<tr class="memdesc:a17659517f1f74634f547f8dc138a667b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename without path or extension.  <a href="#a17659517f1f74634f547f8dc138a667b">More...</a><br /></td></tr>
 <tr class="separator:a17659517f1f74634f547f8dc138a667b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ea7468c65e00b38520ff8d12d9f401"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#aa2ea7468c65e00b38520ff8d12d9f401">getfilenameext</a></td></tr>
-<tr class="memdesc:aa2ea7468c65e00b38520ff8d12d9f401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename with extension, but without path The path is removed from the given string &gt;&gt;&gt; getfilenameext('/etc/mime.types') 'mime.types' &gt;&gt;&gt; getfilenameext('/bin/sh') 'sh'.  <a href="#aa2ea7468c65e00b38520ff8d12d9f401">More...</a><br /></td></tr>
+<tr class="memdesc:aa2ea7468c65e00b38520ff8d12d9f401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename with extension, but without path.  <a href="#aa2ea7468c65e00b38520ff8d12d9f401">More...</a><br /></td></tr>
 <tr class="separator:aa2ea7468c65e00b38520ff8d12d9f401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068b64d119628853b955f73117ca53ac"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a068b64d119628853b955f73117ca53ac">getfilenameexttup</a></td></tr>
-<tr class="memdesc:a068b64d119628853b955f73117ca53ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename (as a tuple) without path The path is removed from the given string &gt;&gt;&gt; getfilenameexttup('/etc/mime.types') ('mime', '.types') &gt;&gt;&gt; getfilenameexttup('/bin/sh') ('sh', '')  <a href="#a068b64d119628853b955f73117ca53ac">More...</a><br /></td></tr>
+<tr class="memdesc:a068b64d119628853b955f73117ca53ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename (as a tuple) without path.  <a href="#a068b64d119628853b955f73117ca53ac">More...</a><br /></td></tr>
 <tr class="separator:a068b64d119628853b955f73117ca53ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ac77c20170625d1c1ea1f6269e22c5b1e">getfilepath</a></td></tr>
-<tr class="memdesc:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path without filename The filename is removed from the given string &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'.  <a href="#ac77c20170625d1c1ea1f6269e22c5b1e">More...</a><br /></td></tr>
+<tr class="memdesc:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path without filename &gt;&gt;&gt; getfilepath('/etc/mime.types') '/etc' &gt;&gt;&gt; getfilepath('/bin/sh') '/bin'.  <a href="#ac77c20170625d1c1ea1f6269e22c5b1e">More...</a><br /></td></tr>
 <tr class="separator:ac77c20170625d1c1ea1f6269e22c5b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a58d7416f64b2d8fea3ee9931d7b1c037">getfilepathext</a></td></tr>
-<tr class="memdesc:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path and filename+extension as a tuple &gt;&gt;&gt; getfilepathext('/etc/mime.types') ('/etc', 'mime.types') &gt;&gt;&gt; getfilepathext('/bin/sh') ('/bin', 'sh')  <a href="#a58d7416f64b2d8fea3ee9931d7b1c037">More...</a><br /></td></tr>
+<tr class="memdesc:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path and filename+extension as a tuple.  <a href="#a58d7416f64b2d8fea3ee9931d7b1c037">More...</a><br /></td></tr>
 <tr class="separator:a58d7416f64b2d8fea3ee9931d7b1c037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#aa8b16f6c59fdd08e9dfafd46dc8cc13e">getfilepathextlist</a></td></tr>
-<tr class="memdesc:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path, filename, and extension as a list &gt;&gt;&gt; getfilepathextlist('/etc/mime.types') ['/etc', 'mime', '.types'] &gt;&gt;&gt; getfilepathextlist('/bin/sh') ['/bin', 'sh', ''].  <a href="#aa8b16f6c59fdd08e9dfafd46dc8cc13e">More...</a><br /></td></tr>
+<tr class="memdesc:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the path, filename, and extension as a list.  <a href="#aa8b16f6c59fdd08e9dfafd46dc8cc13e">More...</a><br /></td></tr>
 <tr class="separator:aa8b16f6c59fdd08e9dfafd46dc8cc13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19aca5c18aec74425189967793dfbdfd"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a19aca5c18aec74425189967793dfbdfd">getfileraw_list</a></td></tr>
 <tr class="memdesc:a19aca5c18aec74425189967793dfbdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file contents as a list of byte-objects.  <a href="#a19aca5c18aec74425189967793dfbdfd">More...</a><br /></td></tr>
 <tr class="separator:a19aca5c18aec74425189967793dfbdfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21512e89151ff2a4d082ce7166f9fb76"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a21512e89151ff2a4d082ce7166f9fb76">getfiles</a></td></tr>
-<tr class="memdesc:a21512e89151ff2a4d082ce7166f9fb76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files Return a str containing each file's content Example Usage - getfiles1(['file0', 'file1', 'file2']) Output 'file0 contents file1 contents file2 contents'.  <a href="#a21512e89151ff2a4d082ce7166f9fb76">More...</a><br /></td></tr>
+<tr class="memdesc:a21512e89151ff2a4d082ce7166f9fb76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files.  <a href="#a21512e89151ff2a4d082ce7166f9fb76">More...</a><br /></td></tr>
 <tr class="separator:a21512e89151ff2a4d082ce7166f9fb76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a96f2ca0c1ec900ce7dbf425620fd1e54">getfiles_list</a></td></tr>
-<tr class="memdesc:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files Return a list containing items as strings The contents of one file is placed in one entry Example Usage - getfiles(['file0', 'file1', 'file2']) Output ['file0 contents', 'file1 contents', 'file2 contents'].  <a href="#a96f2ca0c1ec900ce7dbf425620fd1e54">More...</a><br /></td></tr>
+<tr class="memdesc:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of multiple files.  <a href="#a96f2ca0c1ec900ce7dbf425620fd1e54">More...</a><br /></td></tr>
 <tr class="separator:a96f2ca0c1ec900ce7dbf425620fd1e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42f72160b635da1f9a38652441b2614d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a42f72160b635da1f9a38652441b2614d">getstdin</a> ()</td></tr>
 <tr class="memdesc:a42f72160b635da1f9a38652441b2614d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get data from stdin.  <a href="#a42f72160b635da1f9a38652441b2614d">More...</a><br /></td></tr>
@@ -204,7 +207,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a95b707e92faf5e724e911ef599aaedc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emulates the Unix "head" command.  <a href="#a95b707e92faf5e724e911ef599aaedc1">More...</a><br /></td></tr>
 <tr class="separator:a95b707e92faf5e724e911ef599aaedc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#ac7edbc638c723aa971cbb887dbbaa3c1">pyheadstdin</a> ()</td></tr>
-<tr class="memdesc:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pyhead for stdin/stdout Emulates the Unix "head" command.  <a href="#ac7edbc638c723aa971cbb887dbbaa3c1">More...</a><br /></td></tr>
+<tr class="memdesc:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pyhead for stdin/stdout; Emulates the Unix "head" command.  <a href="#ac7edbc638c723aa971cbb887dbbaa3c1">More...</a><br /></td></tr>
 <tr class="separator:ac7edbc638c723aa971cbb887dbbaa3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d8521164cd01011100d64e8e13b517c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a1d8521164cd01011100d64e8e13b517c">readpipe</a> ()</td></tr>
 <tr class="memdesc:a1d8521164cd01011100d64e8e13b517c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from a pipe.  <a href="#a1d8521164cd01011100d64e8e13b517c">More...</a><br /></td></tr>
@@ -213,10 +216,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a61376e1d856d72777efe75cd7de27f25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get data from an open file stream.  <a href="#a61376e1d856d72777efe75cd7de27f25">More...</a><br /></td></tr>
 <tr class="separator:a61376e1d856d72777efe75cd7de27f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5a4c7c399e419c05da1fd746d548b1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a9e5a4c7c399e419c05da1fd746d548b1">rmdir</a></td></tr>
-<tr class="memdesc:a9e5a4c7c399e419c05da1fd746d548b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a directory Return True on success and False on failure.  <a href="#a9e5a4c7c399e419c05da1fd746d548b1">More...</a><br /></td></tr>
+<tr class="memdesc:a9e5a4c7c399e419c05da1fd746d548b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a directory; Return True on success and False on failure.  <a href="#a9e5a4c7c399e419c05da1fd746d548b1">More...</a><br /></td></tr>
 <tr class="separator:a9e5a4c7c399e419c05da1fd746d548b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a102ba695cfeee81feddab2ed7e5092db"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a102ba695cfeee81feddab2ed7e5092db">rmfile</a></td></tr>
-<tr class="memdesc:a102ba695cfeee81feddab2ed7e5092db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a file Return True on success or False on failure.  <a href="#a102ba695cfeee81feddab2ed7e5092db">More...</a><br /></td></tr>
+<tr class="memdesc:a102ba695cfeee81feddab2ed7e5092db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove a file; Return True on success or False on failure.  <a href="#a102ba695cfeee81feddab2ed7e5092db">More...</a><br /></td></tr>
 <tr class="separator:a102ba695cfeee81feddab2ed7e5092db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c89cfbf3d538e4a06b09d7d99ac161a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#a2c89cfbf3d538e4a06b09d7d99ac161a">write2file</a></td></tr>
 <tr class="memdesc:a2c89cfbf3d538e4a06b09d7d99ac161a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to new file or overwrite file.  <a href="#a2c89cfbf3d538e4a06b09d7d99ac161a">More...</a><br /></td></tr>
@@ -237,13 +240,17 @@ Variables</h2></td></tr>
 <tr class="memitem:aa34f16f9af8c69b7c645c6610f37f610"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepybooster_1_1fs.html#aa34f16f9af8c69b7c645c6610f37f610">GIGIBYTE</a> = 1073741824</td></tr>
 <tr class="separator:aa34f16f9af8c69b7c645c6610f37f610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Filesystem and file related functions. </p>
+
+<p>Definition in file <a class="el" href="fs_8py_source.html">fs.py</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="fs_8py.html">fs.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:50 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:32 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

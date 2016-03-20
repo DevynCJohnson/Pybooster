@@ -1,6 +1,7 @@
 var searchData=
 [
   ['palladium',['palladium',['../chemistry__types_8c.html#a4d8888338a732268c820f8cc6ca5a327',1,'palladium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a4d8888338a732268c820f8cc6ca5a327',1,'palladium():&#160;chemistry_types.c']]],
+  ['parenthesis_5fchar',['PARENTHESIS_CHAR',['../namespacepybooster_1_1strtools.html#ae76dbfb866dd4231117e3c58f20308a9',1,'pybooster::strtools']]],
   ['paris_5fconstant',['PARIS_CONSTANT',['../mathconstants_8c.html#a035d4dda5327c350e0eb24efd1c6b06d',1,'PARIS_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a035d4dda5327c350e0eb24efd1c6b06d',1,'PARIS_CONSTANT():&#160;mathconstants.c']]],
   ['parity',['parity',['../chemistry__types_8h.html#a6be89d4d039384d0907185450dcf7b7c',1,'subatomicparticle']]],
   ['peek',['peek',['../structIOStream__t.html#a0b3c230384921d8c793da18edb9096b0',1,'IOStream_t']]],
@@ -37,9 +38,13 @@ var searchData=
   ['pil',['PIl',['../mathconstants_8c.html#a0045f8e249aa0a4cf501fa8e7bb78248',1,'PIl():&#160;mathconstants.c'],['../mathconstants_8h.html#a0045f8e249aa0a4cf501fa8e7bb78248',1,'PIl():&#160;mathconstants.c']]],
   ['pin',['pin',['../extra__datatypes_8h.html#a5e0fde01c31ebf8e526860faa089a99e',1,'GPIO_PinInitStruct_t']]],
   ['pipi',['PIPI',['../namespacepybooster_1_1xmath.html#a22b7731711ae30236ceacc64e5a0e449',1,'pybooster::xmath']]],
+  ['plain_5ftext',['PLAIN_TEXT',['../namespacepybooster_1_1strtools.html#a3d1da5d0411cb339d5360cf77524ce9b',1,'pybooster::strtools']]],
   ['planet_5fsymbols',['PLANET_SYMBOLS',['../namespacepybooster_1_1astronomy.html#a65ba34ddd20768dbee7de3069c8b324b',1,'pybooster::astronomy']]],
-  ['planets',['PLANETS',['../namespacepybooster_1_1astronomy.html#aec3058710cceb7cd05f1541382d2c2aa',1,'pybooster::astronomy']]],
+  ['planets',['PLANETS',['../namespacepybooster_1_1astronomy.html#aec3058710cceb7cd05f1541382d2c2aa',1,'pybooster.astronomy.PLANETS()'],['../namespacepybooster_1_1strtools.html#a686e5f8ea794ab0d6ddaf8a5131d9a16',1,'pybooster.strtools.PLANETS()']]],
   ['platinum',['platinum',['../chemistry__types_8c.html#aa8e8898547bfc4e54e50b0a5ca21fbe3',1,'platinum():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa8e8898547bfc4e54e50b0a5ca21fbe3',1,'platinum():&#160;chemistry_types.c']]],
+  ['playing_5fcards',['PLAYING_CARDS',['../namespacepybooster_1_1strtools.html#a21091520e4d1e24bceb9f587f94d8b41',1,'pybooster::strtools']]],
+  ['playing_5fcards_5f52',['PLAYING_CARDS_52',['../namespacepybooster_1_1strtools.html#a692df00c65dea1e6c0b7b75362509340',1,'pybooster::strtools']]],
+  ['playing_5fcards_5f56',['PLAYING_CARDS_56',['../namespacepybooster_1_1strtools.html#a013c62b2cb453c468f7eb6aa6507f029',1,'pybooster::strtools']]],
   ['pluto',['PLUTO',['../namespacepybooster_1_1astronomy.html#a9840ce7fe8b6968aa323026760d7b52e',1,'pybooster::astronomy']]],
   ['plutonium',['plutonium',['../chemistry__types_8c.html#ac6f33967675ad82a0b7d1979ad295bee',1,'plutonium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ac6f33967675ad82a0b7d1979ad295bee',1,'plutonium():&#160;chemistry_types.c']]],
   ['polonium',['polonium',['../chemistry__types_8c.html#adcd928dd59192845e35e3c2b7db6ca39',1,'polonium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#adcd928dd59192845e35e3c2b7db6ca39',1,'polonium():&#160;chemistry_types.c']]],

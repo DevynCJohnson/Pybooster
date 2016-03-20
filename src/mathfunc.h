@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Functions (header)
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 Numerous mathematical and trigonometric functions.

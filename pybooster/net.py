@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Network-related functions
 @file net.py
 @package pybooster.net
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Network-related functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -103,7 +102,7 @@ def ping(_address: str='localhost') -> bool:
 
 def findgw() -> str:
     """Get the Gateway IP address"""
-    with open('/proc/net/route', mode='rt', encoding='utf-8') as _file:
+    with open(r'/proc/net/route', mode='rt', encoding='utf-8') as _file:
         for _line in _file:
             _field = _line.strip().split()
             if _field[1] != '00000000' or not int(_field[3], 16) & 2:
@@ -113,10 +112,10 @@ def findgw() -> str:
 
 def hasnet() -> bool:
     """Return True if the Internet is available"""
-    if urlopen('http://google.com').getcode() == 200:
+    if urlopen(r'http://google.com').getcode() == 200:
         return True
-    elif urlopen('https://www.wikipedia.org').getcode() == 200:
+    elif urlopen(r'https://www.wikipedia.org').getcode() == 200:
         return True
-    elif urlopen('https://docs.python.org').getcode() == 200:
+    elif urlopen(r'https://docs.python.org').getcode() == 200:
         return True
     return False

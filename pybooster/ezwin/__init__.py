@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPL3
--- --
-PyBooster - Various Extras for Python3
-pybooster.ezwin
--- --
-EZ-Win - Pre-built windows using GTK3 for Python3
--- --
+"""@brief EZ-Win: Pre-built windows using GTK3 for Python3
+@file __init__.py
+@package pybooster.ezwin
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@version 2016.03.20
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,10 +26,14 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
-__author__ = r'Devyn Collier Johnson'
-__copyright__ = r'LGPLv3'
-__version__ = '2016.03.18'
 
 __all__ = [
     'ezwin'
 ]
+
+
+__author__ = r'Devyn Collier Johnson'
+__email__ = r'DevynCJohnson@Gmail.com'
+__copyright__ = r'LGPLv3'
+__version__ = '2016.03.20'
+__description__ = r'EZ-Win - Pre-built windows using GTK3 for Python3'

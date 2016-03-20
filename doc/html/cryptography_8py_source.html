@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -110,54 +111,54 @@ $(document).ready(function(){initNavTree('cryptography_8py_source.html','');});
 <a href="cryptography_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;@brief Various cryptography functions</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">@file cryptography.py</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral">@package pybooster.cryptography</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">@author Devyn Collier Johnson &lt;DevynCJohnson@Gmail.com&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@copyright LGPLv3</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@brief Various cryptography functions</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@version 2016.03.18</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">License along with this library.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@version 2016.03.20</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">License along with this library.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">from</span> itertools <span class="keyword">import</span> cycle</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">from</span> itertools <span class="keyword">import</span> cycle</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#aa4a022e6ddacd362b83964da5cc5d044">   34</a></span>&#160;__all__ = [</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="stringliteral">&#39;encrypt_xor&#39;</span>,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="stringliteral">&#39;decrypt_xor&#39;</span>,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;encrypt_xor_bytes_key_str&#39;</span>,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_str_key_bytes&#39;</span>,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_str_key_str&#39;</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&#39;encrypt_xor_str_key_bytes&#39;</span>,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_bytes_key_bytes&#39;</span>,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_bytes_key_str&#39;</span>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;]</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#aa4a022e6ddacd362b83964da5cc5d044">   33</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="stringliteral">&#39;encrypt_xor&#39;</span>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="stringliteral">&#39;decrypt_xor&#39;</span>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="stringliteral">&#39;encrypt_xor_bytes_key_str&#39;</span>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_str_key_bytes&#39;</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_str_key_str&#39;</span>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="stringliteral">&#39;encrypt_xor_str_key_bytes&#39;</span>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_bytes_key_bytes&#39;</span>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="stringliteral">&#39;decrypt_xor_bytes_key_str&#39;</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;]</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"># FUNCTIONS</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a26d95580144c161f3afea8e168202808">encrypt_xor</a>(_data: bytes) -&gt; bytearray:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR Encryption</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a26d95580144c161f3afea8e168202808">encrypt_xor</a>(_data: bytes) -&gt; bytearray:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR Encryption</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">    Return the encrypted data as a bytearray</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">    Decrypt with decrypt_xor()</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a26d95580144c161f3afea8e168202808">   54</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
@@ -166,74 +167,81 @@ $(document).ready(function(){initNavTree('cryptography_8py_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a64e56c40d23742da401d0faacc21fb81">decrypt_xor</a>(_data: bytearray) -&gt; str:</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR Decryption</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">    Return the decrypted data as a str</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor()</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a64e56c40d23742da401d0faacc21fb81">   62</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> str(bytearray([b ^ 0xA8 <span class="keywordflow">for</span> b <span class="keywordflow">in</span> bytearray(_data)]), <span class="stringliteral">&#39;utf-8&#39;</span>)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">    Return the decrypted data as a str</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor()</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a64e56c40d23742da401d0faacc21fb81">   63</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> str(bytearray([b ^ 0xA8 <span class="keywordflow">for</span> b <span class="keywordflow">in</span> bytearray(_data)]), <span class="stringliteral">&#39;utf-8&#39;</span>)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">encrypt_xor_bytes_key_str</a>(_data: bytes, _key: str) -&gt; str:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR encryption with custom key</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">    Encrypt the bytes and return the data as a str</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">    Decrypt with decrypt_xor_str_key_bytes()</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">   70</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key)))</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">decrypt_xor_str_key_bytes</a>(_data: str, _key: str) -&gt; bytes:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    Decrypt the str and return the data as bytes</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_bytes_key_str()</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">   78</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">decrypt_xor_str_key_str</a>(_data: str, _key: str) -&gt; str:</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">    Decrypt the str and return the data as a str</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_bytes_key_str()</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">   86</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key)))</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">encrypt_xor_str_key_bytes</a>(_data: str, _key: str) -&gt; bytes:</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR encryption with custom key</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">    Return the encrypted str data as bytes</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">    Encrypt the str and return the data as bytes</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">    Decrypt with decrypt_xor_bytes_key_bytes() or decrypt_xor_bytes_key_str()</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">   95</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">decrypt_xor_bytes_key_bytes</a>(_data: bytes, _key: str) -&gt; bytes:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">    Decrypt the bytes and return the data as bytes</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_str_key_bytes()</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">  103</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">decrypt_xor_bytes_key_str</a>(_data: bytes, _key: str) -&gt; str:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">    Decrypt the bytes and return the data as a str</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_str_key_bytes()</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">  111</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key)))</div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a51c648459a99ac89e1bf96807a873b4a"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">pybooster.cryptography.decrypt_xor_bytes_key_bytes</a></div><div class="ttdeci">def decrypt_xor_bytes_key_bytes</div><div class="ttdoc">XOR decryption with custom key Decrypt the bytes and return the data as bytes Encrypt with encrypt_xo...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00103">cryptography.py:103</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a985a93d193b2d0a4955f165abe4a31e0"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">pybooster.cryptography.decrypt_xor_str_key_str</a></div><div class="ttdeci">def decrypt_xor_str_key_str</div><div class="ttdoc">XOR decryption with custom key Decrypt the str and return the data as a str Encrypt with encrypt_xor_...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00086">cryptography.py:86</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a26d95580144c161f3afea8e168202808"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a26d95580144c161f3afea8e168202808">pybooster.cryptography.encrypt_xor</a></div><div class="ttdeci">def encrypt_xor</div><div class="ttdoc">XOR Encryption Return the encrypted data as a bytearray Decrypt with decrypt_xor() ...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00054">cryptography.py:54</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a8f526c64a957190b327f5cad77f8b7f7"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">pybooster.cryptography.decrypt_xor_bytes_key_str</a></div><div class="ttdeci">def decrypt_xor_bytes_key_str</div><div class="ttdoc">XOR decryption with custom key Decrypt the bytes and return the data as a str Encrypt with encrypt_xo...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00111">cryptography.py:111</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a0f5e2c694191d1ba18bb414deae55eb4"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">pybooster.cryptography.encrypt_xor_bytes_key_str</a></div><div class="ttdeci">def encrypt_xor_bytes_key_str</div><div class="ttdoc">XOR encryption with custom key Encrypt the bytes and return the data as a str Decrypt with decrypt_xo...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00070">cryptography.py:70</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_acea06bea3c26dfad1b777e284fd2c98b"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">pybooster.cryptography.encrypt_xor_str_key_bytes</a></div><div class="ttdeci">def encrypt_xor_str_key_bytes</div><div class="ttdoc">XOR encryption with custom key Return the encrypted str data as bytes Encrypt the str and return the ...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00095">cryptography.py:95</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_a64e56c40d23742da401d0faacc21fb81"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a64e56c40d23742da401d0faacc21fb81">pybooster.cryptography.decrypt_xor</a></div><div class="ttdeci">def decrypt_xor</div><div class="ttdoc">XOR Decryption Return the decrypted data as a str Encrypt with encrypt_xor() </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00062">cryptography.py:62</a></div></div>
-<div class="ttc" id="namespacepybooster_1_1cryptography_html_af292fc8f870ad2ad02b853c98f9818b5"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">pybooster.cryptography.decrypt_xor_str_key_bytes</a></div><div class="ttdeci">def decrypt_xor_str_key_bytes</div><div class="ttdoc">XOR decryption with custom key Decrypt the str and return the data as bytes Encrypt with encrypt_xor_...</div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00078">cryptography.py:78</a></div></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">encrypt_xor_bytes_key_str</a>(_data: bytes, _key: str) -&gt; str:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR encryption with custom key</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">    Encrypt the bytes and return the data as a str</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">    Decrypt with decrypt_xor_str_key_bytes()</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">   72</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key)))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">decrypt_xor_str_key_bytes</a>(_data: str, _key: str) -&gt; bytes:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">    Decrypt the str and return the data as bytes</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_bytes_key_str()</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">   81</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">decrypt_xor_str_key_str</a>(_data: str, _key: str) -&gt; str:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">    Decrypt the str and return the data as a str</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_bytes_key_str()</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">   90</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key)))</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">encrypt_xor_str_key_bytes</a>(_data: str, _key: str) -&gt; bytes:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR encryption with custom key</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">    Return the encrypted str data as bytes</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">    Encrypt the str and return the data as bytes</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">    Decrypt with decrypt_xor_bytes_key_bytes() or decrypt_xor_bytes_key_str()</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">  100</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data.encode(<span class="stringliteral">&#39;utf-8&#39;</span>), cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">decrypt_xor_bytes_key_bytes</a>(_data: bytes, _key: str) -&gt; bytes:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral">    Decrypt the bytes and return the data as bytes</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_str_key_bytes()</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">  109</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key))).encode(<span class="stringliteral">&#39;utf-8&#39;</span>)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">decrypt_xor_bytes_key_str</a>(_data: bytes, _key: str) -&gt; str:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;XOR decryption with custom key</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">    Decrypt the bytes and return the data as a str</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="stringliteral">    Encrypt with encrypt_xor_str_key_bytes()</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">  118</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>.join(chr(a ^ ord(b)) <span class="keywordflow">for</span> (a, b) <span class="keywordflow">in</span> zip(_data, cycle(_key)))</div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a51c648459a99ac89e1bf96807a873b4a"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a51c648459a99ac89e1bf96807a873b4a">pybooster.cryptography.decrypt_xor_bytes_key_bytes</a></div><div class="ttdeci">def decrypt_xor_bytes_key_bytes</div><div class="ttdoc">XOR decryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00109">cryptography.py:109</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a985a93d193b2d0a4955f165abe4a31e0"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a985a93d193b2d0a4955f165abe4a31e0">pybooster.cryptography.decrypt_xor_str_key_str</a></div><div class="ttdeci">def decrypt_xor_str_key_str</div><div class="ttdoc">XOR decryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00090">cryptography.py:90</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a26d95580144c161f3afea8e168202808"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a26d95580144c161f3afea8e168202808">pybooster.cryptography.encrypt_xor</a></div><div class="ttdeci">def encrypt_xor</div><div class="ttdoc">XOR Encryption. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00054">cryptography.py:54</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a8f526c64a957190b327f5cad77f8b7f7"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a8f526c64a957190b327f5cad77f8b7f7">pybooster.cryptography.decrypt_xor_bytes_key_str</a></div><div class="ttdeci">def decrypt_xor_bytes_key_str</div><div class="ttdoc">XOR decryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00118">cryptography.py:118</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a0f5e2c694191d1ba18bb414deae55eb4"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a0f5e2c694191d1ba18bb414deae55eb4">pybooster.cryptography.encrypt_xor_bytes_key_str</a></div><div class="ttdeci">def encrypt_xor_bytes_key_str</div><div class="ttdoc">XOR encryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00072">cryptography.py:72</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_acea06bea3c26dfad1b777e284fd2c98b"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#acea06bea3c26dfad1b777e284fd2c98b">pybooster.cryptography.encrypt_xor_str_key_bytes</a></div><div class="ttdeci">def encrypt_xor_str_key_bytes</div><div class="ttdoc">XOR encryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00100">cryptography.py:100</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_a64e56c40d23742da401d0faacc21fb81"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#a64e56c40d23742da401d0faacc21fb81">pybooster.cryptography.decrypt_xor</a></div><div class="ttdeci">def decrypt_xor</div><div class="ttdoc">XOR Decryption. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00063">cryptography.py:63</a></div></div>
+<div class="ttc" id="namespacepybooster_1_1cryptography_html_af292fc8f870ad2ad02b853c98f9818b5"><div class="ttname"><a href="namespacepybooster_1_1cryptography.html#af292fc8f870ad2ad02b853c98f9818b5">pybooster.cryptography.decrypt_xor_str_key_bytes</a></div><div class="ttdeci">def decrypt_xor_str_key_bytes</div><div class="ttdoc">XOR decryption with custom key. </div><div class="ttdef"><b>Definition:</b> <a href="cryptography_8py_source.html#l00081">cryptography.py:81</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="cryptography_8py.html">cryptography.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:48 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:30 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

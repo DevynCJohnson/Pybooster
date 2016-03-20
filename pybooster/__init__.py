@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief PyBooster Initialization
 @file __init__.py
 @package pybooster.__init__
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief PyBooster Initialization
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -75,5 +74,5 @@ __all__ = [
 __author__ = r'Devyn Collier Johnson'
 __email__ = r'DevynCJohnson@Gmail.com'
 __copyright__ = r'LGPLv3'
-__version__ = '2016.03.18'
+__version__ = '2016.03.20'
 __description__ = r'Collection of libraries for Python3'

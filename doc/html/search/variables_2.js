@@ -5,6 +5,7 @@ var searchData=
   ['berkelium',['berkelium',['../chemistry__types_8c.html#a7fa816ba3197b3628a9426c7bae06610',1,'berkelium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a7fa816ba3197b3628a9426c7bae06610',1,'berkelium():&#160;chemistry_types.c']]],
   ['bernsteins_5fconstant',['BERNSTEINS_CONSTANT',['../mathconstants_8c.html#a4222ec158fad13c5ea6597c56fe7380b',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a4222ec158fad13c5ea6597c56fe7380b',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.c']]],
   ['beryllium',['beryllium',['../chemistry__types_8c.html#a52a26cd6e445a1bffab43d3eb3dd6bcf',1,'beryllium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a52a26cd6e445a1bffab43d3eb3dd6bcf',1,'beryllium():&#160;chemistry_types.c']]],
+  ['biohazard',['BIOHAZARD',['../namespacepybooster_1_1strtools.html#a49d7bf9826bf60d6d8b2f109b0c48f7b',1,'pybooster::strtools']]],
   ['bismuth',['bismuth',['../chemistry__types_8c.html#a0750835421730ee00bac0b41f522c6eb',1,'bismuth():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a0750835421730ee00bac0b41f522c6eb',1,'bismuth():&#160;chemistry_types.c']]],
   ['bit',['bit',['../extra__datatypes_8h.html#a07d22a0c3113c2c06940fb2d3f9290ef',1,'GPIO_Pin_t']]],
   ['block',['block',['../extra__datatypes_8h.html#a8b14b87ec66185f41f7b6590c0605e18',1,'GPIO_Pin_t']]],
@@ -21,7 +22,10 @@ var searchData=
   ['boltzmann_5fconstant_5fin_5fkelvin',['BOLTZMANN_CONSTANT_IN_KELVIN',['../namespacepybooster_1_1science__data.html#a60b2cd91ff496b1aa08db3f27561ae13',1,'pybooster::science_data']]],
   ['boron',['boron',['../chemistry__types_8c.html#a133d4588adc855e55559d1867f3f53ad',1,'boron():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a133d4588adc855e55559d1867f3f53ad',1,'boron():&#160;chemistry_types.c']]],
   ['bottom',['bottom',['../chemistry__types_8c.html#af210c174e95f6a66ef909e47fd66cf1c',1,'bottom():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af210c174e95f6a66ef909e47fd66cf1c',1,'bottom():&#160;chemistry_types.c']]],
+  ['braille',['BRAILLE',['../namespacepybooster_1_1strtools.html#ab68c4aa2e9b4431f6871a2480172f4c8',1,'pybooster::strtools']]],
   ['bromine',['bromine',['../chemistry__types_8c.html#afb87ae249a718c49f1ee903fe9f6bf4e',1,'bromine():&#160;chemistry_types.c'],['../chemistry__types_8h.html#afb87ae249a718c49f1ee903fe9f6bf4e',1,'bromine():&#160;chemistry_types.c']]],
+  ['bubble',['BUBBLE',['../namespacepybooster_1_1strtools.html#a89521c614457bc1dbde90a1a6c65921e',1,'pybooster::strtools']]],
+  ['bubble_5ftext',['BUBBLE_TEXT',['../namespacepybooster_1_1strtools.html#a7930cdaa82e49b3bd6883a89402d5e3c',1,'pybooster::strtools']]],
   ['buf_5fsize',['buf_size',['../tone_8h.html#a4c813abab25e4df4e95d8f0b0ca61500',1,'tone']]],
   ['buffer',['buffer',['../tone_8h.html#aac9f887030804f50f0030a589b4c5f13',1,'tone']]],
   ['bytesavailabletoread',['bytesAvailableToRead',['../structIOStream__t.html#a53b3ffe3c4c9e8776ed88f29c900456a',1,'IOStream_t']]]

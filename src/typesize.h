@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Get the size (in bytes) of various C data-types (header)
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 Functions that return the size (in bytes) of commonly used (and rare) C data-types

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Interface for system libraries via ctypes (mostly for Unixoid systems)
 @file clibutil.py
 @package pybooster.clibutil
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Interface for system libraries via ctypes (mostly for Unixoid systems)
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -55,89 +54,76 @@ __all__ = [
 
 def getlibc() -> str:
     """Return the file name of libc"""
-    return util.find_library('c')
+    return util.find_library(r'c')
 
 
 def getlibm() -> str:
     """Return the file name of libm"""
-    return util.find_library('m')
+    return util.find_library(r'm')
 
 
 # LIST LIBRARY OBJECTS
 
 
 def list_elf_lib_funcs(libfile_path: str) -> list:
-    """Return a list of functions in a shared ELF library
-    Requires 'nm'
-    """
+    """Return a list of functions in a shared ELF library; Requires 'nm'"""
     if isfile(libfile_path):
-        libobj = getoutput('nm -D --defined-only ' + libfile_path)
+        libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) T (?!_)(.+)', libobj)
         lst = []
         for i in objs:
             lst.append(i[1])
         return lst
     else:
-        raise FileNotFoundError('Library file (' + libfile_path + ') not found!')
+        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
 def list_elf_lib_consts(libfile_path: str) -> list:
-    """Return a list of non-static constants in a shared ELF library
-    Requires 'nm'
-    """
+    """Return a list of non-static constants in a shared ELF library; Requires 'nm'"""
     if isfile(libfile_path):
-        libobj = getoutput('nm -D --defined-only ' + libfile_path)
+        libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) R (?!_)(.+)', libobj)
         lst = []
         for i in objs:
             lst.append(i[1])
         return lst
     else:
-        raise FileNotFoundError('Library file (' + libfile_path + ') not found!')
+        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
 def list_elf_lib_objs(libfile_path: str) -> list:
-    """Return a list of functions and non-static constants in a shared ELF library
-    Requires 'nm'"""
+    """Return a list of functions and non-static constants in a shared ELF library; Requires 'nm'"""
     if isfile(libfile_path):
-        libobj = getoutput('nm -D --defined-only ' + libfile_path)
+        libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) ([RT]+) (?!_)(.+)', libobj)
         lst = []
         for i in objs:
             lst.append(i[2])
         return lst
     else:
-        raise FileNotFoundError('Library file (' + libfile_path + ') not found!')
+        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
 # LOAD LIBRARIES
 
 
 def loadlib(library: str) -> CDLL:
-    """Load the specified library by name
-    Usage: library = loadlib('m')
-    """
+    """Load the specified library by name; Usage: library = loadlib('m')"""
     if library[:3] == 'lib':
         library = library[3:]
     return cdll.LoadLibrary(util.find_library(library))
 
 
 def loadlibpath(libpath: str) -> CDLL:
-    """Load the specified library by pathname
-    Usage: library = loadlibpath('/DIR/libFILE.so')
-    """
+    """Load the specified library by pathname; Usage: library = loadlibpath('/DIR/libFILE.so')"""
     return cdll.LoadLibrary(libpath)
 
 
 def loadlibc() -> CDLL:
-    """Load libc
-    Usage: libc = loadlibc()
-    """
-    return cdll.LoadLibrary(util.find_library('c'))
+    """Load libc; Usage: libc = loadlibc()"""
+    return cdll.LoadLibrary(util.find_library(r'c'))
 
 
 def loadlibm() -> CDLL:
-    """Load libm (Math)
-    Usage: libm = loadlibm()
-    """
-    return cdll.LoadLibrary(util.find_library('m'))
+    """Load libm (Math); Usage: libm = loadlibm()"""
+    return cdll.LoadLibrary(util.find_library(r'm'))

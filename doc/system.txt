@@ -4,78 +4,34 @@ NAME
     system
 
 DESCRIPTION
-    @file system.py
-    @package pybooster.system
-    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-    @copyright LGPLv3
-    @brief System-related functions
-    @version 2016.03.18
-    
-    @section LICENSE
-    GNU Lesser General Public License v3
-    Copyright (c) Devyn Collier Johnson, All rights reserved.
-    
-    The PyBooster Library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3.0 of the License, or (at your option) any later version.
-    
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-    Lesser General Public License for more details.
-    
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.
+    # -*- coding: utf-8 -*-
+    # vim:fileencoding=utf-8
 
 FUNCTIONS
     bitness() -> str
-        Return a string indicating the bitness of the system
     
     cintsize() -> int
-        Return the C/C++ size of an int for the current system
-        The returned value is an integer for the number of bytes
-        cintsize() => 4  # The system uses 4 bytes for integers
     
     ckill(_process) -> None
-        Cross-platform Kill
-        Kill process specified by process-object or PID
-        ckill(PID)
-        ckill(process-obj)
     
     envdict() -> dict
-        Return the system's environment variables
-        A dictionary is returned in the form { 'VAR': 'VAL'}
     
     envlist() -> list
-        Return a list of the system's environment variables
-    
-    exportenv() -> None
-        Make a global variable called 'ENVKEY'
-        The variable is a dictionary of the environment variables
-    
-    exporthome() -> None
-        Make a global variable called 'HOME'
-        The variable is a str of the user's home directory path
     
     home() -> str
-        Return user's home directory as a string
     
     idsys() -> None
-        Identify system and display specific info
     
     isthread(_thead) -> bool
-        Test if object is a thread, or if the thread is alive/present
     
     printenv() -> None
-        Print the system's environment variables
     
     which(program:str) -> str
-        Return the path of the specified application (if it exists)
-        An empty string is returned if the program does not exist
 
 DATA
-    __all__ = ['home', 'exporthome', 'exportenv', 'envdict', 'envlist', 'p...
+    ENVKEY = {'CLUTTER_IM_MODULE': 'xim', 'COMPIZ_CONFIG_PROFILE': 'ubuntu...
+    HOME = '/home/collier'
+    __all__ = ['HOME', 'ENVKEY', 'home', 'envdict', 'envlist', 'printenv',...
 
 FILE
     /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/system.py

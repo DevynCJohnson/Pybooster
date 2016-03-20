@@ -4,200 +4,79 @@ NAME
     fs
 
 DESCRIPTION
-    @file fs.py
-    @package pybooster.fs
-    @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-    @copyright LGPLv3
-    @brief Filesystem and file related functions
-    @version 2016.03.18
-    
-    @section LICENSE
-    GNU Lesser General Public License v3
-    Copyright (c) Devyn Collier Johnson, All rights reserved.
-    
-    The PyBooster Library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3.0 of the License, or (at your option) any later version.
-    
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-    Lesser General Public License for more details.
-    
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.
+    # -*- coding: utf-8 -*-
+    # vim:fileencoding=utf-8
 
 FUNCTIONS
     append2file(_filename:str, _write) -> None
-        Send data to new file or append to an existing file
     
     convumask(_oct) -> str
-        Convert file permissions/umask (644 -> 'rw-r--r--')
-        From octal permissions notation (int, str, or list of str+int)
-        To Posix permissions notation as a str
-        Input may be in any of the following forms -
-        > '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'],
-        > [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4]
-        >>> convumask(644)
-        'rw-r--r--'
-        >>> convumask('644')
-        'rw-r--r--'
-        >>> convumask(654)
-        'rw-r-xr--'
     
     expandhome(_pathname:str) -> str
-        Replace 'HOME', '$HOME', or '~' with the literal value
-        Supported OS 'HOME' shortcuts -
-        * Linux, POSIX, Unix, and Unixoid systems
-        * Windows (MS and Pirated)
-        * OS X (Apple)
-        >>> expandhome('~/file')
-        '/home/username/file'
-        >>> expandhome('HOME/file')
-        '/home/username/file'
-        >>> expandhome('$HOME/file')
-        '/home/username/file'
     
     firstchars(_filepath:str, _numchars:int=10) -> str
-        Return the first x characters in a file
     
     getfile(_filename:str) -> str
-        Get file contents and return as a str
     
     getfile_list(_filename:str) -> list
-        Get file contents and return as a list
     
     getfilebinbytes(_filename:str) -> str
-        Get file contents and return binary as str
     
     getfilebinwords(_filename:str) -> bytes
-        Get file contents and return a byte-str of binary words
     
     getfileext(_filename:str) -> str
-        Get the file's extension
-        >>> getfileext('/etc/mime.types')
-        'types'
-        >>> getfileext('/bin/sh')
-        ''
     
     getfilehexbytes(_filename:str) -> bytes
-        Get file contents as bytes in hex
     
     getfilehexbytes_spaced(_filename:str) -> str
-        Get file contents as a str of bytes in hex with spaces between each byte
     
     getfilehexbytesstr(_filename:str) -> str
-        Get file contents as a str of bytes in hex
     
     getfilehexstr(_filename:str) -> str
-        Get file contents and return a str of hex
     
     getfilehexstr2(_filename:str) -> str
-        Get file contents and return a str of hex
     
     getfilename(_pathname:str) -> str
-        Return the filename without path or extension
-        The path and extension are removed from the given string
-        >>> getfilename('/etc/mime.types')
-        'mime'
-        >>> getfilename('/bin/sh')
-        'sh'
     
     getfilenameext(_pathname:str) -> str
-        Return the filename with extension, but without path
-        The path is removed from the given string
-        >>> getfilenameext('/etc/mime.types')
-        'mime.types'
-        >>> getfilenameext('/bin/sh')
-        'sh'
     
     getfilenameexttup(_pathname:str) -> tuple
-        Return the filename (as a tuple) without path
-        The path is removed from the given string
-        >>> getfilenameexttup('/etc/mime.types')
-        ('mime', '.types')
-        >>> getfilenameexttup('/bin/sh')
-        ('sh', '')
     
     getfilepath(_pathname:str) -> str
-        Return the path without filename
-        The filename is removed from the given string
-        >>> getfilepath('/etc/mime.types')
-        '/etc'
-        >>> getfilepath('/bin/sh')
-        '/bin'
     
     getfilepathext(_pathname:str) -> tuple
-        Return the path and filename+extension as a tuple
-        >>> getfilepathext('/etc/mime.types')
-        ('/etc', 'mime.types')
-        >>> getfilepathext('/bin/sh')
-        ('/bin', 'sh')
     
     getfilepathextlist(_pathname:str) -> list
-        Return the path, filename, and extension as a list
-        >>> getfilepathextlist('/etc/mime.types')
-        ['/etc', 'mime', '.types']
-        >>> getfilepathextlist('/bin/sh')
-        ['/bin', 'sh', '']
     
     getfileraw_list(_filename:str) -> list
-        Get file contents as a list of byte-objects
     
     getfiles(_filelist:list) -> str
-        Get the contents of multiple files
-        Return a str containing each file's content
-        Example Usage -
-        getfiles1(['file0', 'file1', 'file2'])
-        Output - 'file0 contents file1 contents file2 contents'
     
     getfiles_list(*_pathnames:str) -> list
-        Get the contents of multiple files
-        Return a list containing items as strings
-        The contents of one file is placed in one entry
-        Example Usage -
-        getfiles(['file0', 'file1', 'file2'])
-        Output - ['file0 contents', 'file1 contents', 'file2 contents']
     
     getstdin() -> str
-        Get data from stdin
     
     lsfiles(_path:str, _extension:str) -> list
-        List files in the specified directory with named file extension
     
     printfile(_filepath:str)
-        Print the contents of a file
     
     pyhead(_filepath:str, _numlines:int=10) -> str
-        Emulates the Unix "head" command
     
     pyheadstdin() -> None
-        Pyhead for stdin/stdout
-        Emulates the Unix "head" command
     
     readpipe() -> str
-        Read from a pipe
     
     readstream(open_file_stream) -> str
-        Get data from an open file stream
     
     rmdir(_dir:str) -> bool
-        Try to remove a directory
-        Return True on success and False on failure
     
     rmfile(_file:str) -> bool
-        Try to remove a file
-        Return True on success or False on failure
     
     write2file(_filename:str, _write) -> None
-        Send data to new file or overwrite file
     
     writebin2file(_filename:str, _write:bytes) -> None
-        Write binary data to a new file or overwrite the file
     
     writestr2binfile(_filename:str, _write:str) -> None
-        Write a string as binary data to a new file or overwrite the file
 
 DATA
     GIGABYTE = 1000000000

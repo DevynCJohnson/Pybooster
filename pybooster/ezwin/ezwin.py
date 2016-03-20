@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
-Created by Devyn Collier Johnson
-<DevynCJohnson@Gmail.com>
-LGPL3
--- --
-PyBooster - Various Extras for Python3
-pybooster.ezwin
--- --
-EZ-Win - Pre-built windows using GTK3 for Python3
--- --
+"""@brief EZ-Win: Pre-built windows using GTK3 for Python3
+@file ezwin.py
+@package pybooster.ezwin.ezwin
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+@version 2016.03.20
+
+@section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
@@ -28,8 +26,10 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library.
 """
 
+
 # pylint: disable=C0103,E1101,W0613
 # flake8: ignore=42cc
+
 
 from os.path import dirname, join as pathjoin, normcase, realpath
 from signal import SIGINT, SIG_DFL, signal
@@ -52,9 +52,11 @@ __all__ = [
     'ezwarn'
 ]
 
+
 __author__ = r'Devyn Collier Johnson'
 __copyright__ = r'LGPLv3'
-__version__ = '2016.03.18'
+__version__ = '2016.03.20'
+
 
 __about__ = (
     '\n\n=====ABOUT=====\n\n'
@@ -65,6 +67,7 @@ __about__ = (
     '    EZ-Win - Pre-built windows using GTK3 for Python3\n'
     '    Version - ' + __version__ + '\n\n'
 )
+
 
 __usage_sh__ = """\n\n=====USAGE (Shell/Terminal)=====\n
     ezwin [-h|--help|--api|-v|--version|-d|--doc]
@@ -116,12 +119,14 @@ __usage_sh__ = """\n\n=====USAGE (Shell/Terminal)=====\n
 
 """
 
+
 __usage_py__ = """\n\n=====USAGE (Python)=====
 
     import ezwin
     ezwin.ezinfo('This is an example.')
 
 """
+
 
 __flags__ = """\n\n=====FLAGS (Shell/Terminal)=====
 
@@ -214,6 +219,7 @@ __flags__ = """\n\n=====FLAGS (Shell/Terminal)=====
 
 """
 
+
 __examples__ = """\n\n=====BASIC PYTHON EXAMPLES=====
 
     import ezwin
@@ -275,10 +281,12 @@ __examples__ = """\n\n=====BASIC PYTHON EXAMPLES=====
 
 """
 
+
 __help__ = (
     '\n=====EZ-Win Documentation=====\n' +
     __about__ + __usage_sh__ + __usage_py__ + __flags__ + __examples__
 )
+
 
 __api__ = """\n\n=====EZ-Win API=====
 
@@ -364,7 +372,6 @@ __api__ = """\n\n=====EZ-Win API=====
 
 
 _EXCEPTION_MSG = (r'INVALID PARAMETERS!' + __usage_sh__)
-
 _PATH = normcase(dirname(realpath(normcase(__file__))))
 
 
@@ -407,9 +414,7 @@ signal(SIGINT, SIG_DFL)
 
 
 def ezinfo(_msg: str='Information') -> None:
-    """Information Dialog
-    Display some information
-    """
+    """Information Dialog: Display some information"""
     ui = Gtk.Builder()
     ui.add_from_file(_GINFO)
     ui.connect_signals({'_winexit': Gtk.main_quit})
@@ -420,9 +425,7 @@ def ezinfo(_msg: str='Information') -> None:
 
 
 def ezmsg(_msg: str='Message') -> None:
-    """Message Dialog
-    Display a message
-    """
+    """Message Dialog: Display a message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GMSG)
     ui.connect_signals({'_winexit': Gtk.main_quit})
@@ -433,9 +436,7 @@ def ezmsg(_msg: str='Message') -> None:
 
 
 def ezwarn(_msg: str='Warning') -> None:
-    """Warning Dialog
-    Display a warning message
-    """
+    """Warning Dialog: Display a warning message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GWARN)
     ui.connect_signals({'_winexit': Gtk.main_quit})
@@ -446,9 +447,7 @@ def ezwarn(_msg: str='Warning') -> None:
 
 
 def ezerr(_msg: str='Error Message') -> None:
-    """Error Dialog
-    Display an error message
-    """
+    """Error Dialog: Display an error message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GERR)
     ui.connect_signals({'_winexit': Gtk.main_quit})
@@ -459,9 +458,7 @@ def ezerr(_msg: str='Error Message') -> None:
 
 
 def ezupd(_msg: str='Message') -> None:
-    """Update Dialog
-    Display information on an update
-    """
+    """Update Dialog: Display information on an update"""
     ui = Gtk.Builder()
     ui.add_from_file(_GUPD)
     ui.connect_signals({'_winexit': Gtk.main_quit})
@@ -472,9 +469,7 @@ def ezupd(_msg: str='Message') -> None:
 
 
 def ezsecurity(_msg: str='Security Message') -> None:
-    """Security Dialog
-    Display a security-related message
-    """
+    """Security Dialog: Display a security-related message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GSECURITY)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -485,8 +480,8 @@ def ezsecurity(_msg: str='Security Message') -> None:
 
 
 def ezq(_msg: str='Question', _type: str='yn') -> str:
-    """Question Dialog
-    Ask the user a question
+    """Question Dialog: Ask the user a question
+
     '_type' is a string that may have one of several values and effects.
     Each choice determines the buttons on the window.
     'Yes' and 'No' are included in all choices
@@ -563,18 +558,14 @@ def ezq(_msg: str='Question', _type: str='yn') -> str:
 
 
 def ezcolor(_datatype: str='list') -> type:
-    """Color Dialog
-    Select a color
-    """
+    """Color Dialog: Select a color"""
     ui = Gtk.Builder()
     ui.add_from_file(_GCOLOR)
     _cc = ui.get_object(r'cc')
     _rgba = {}
 
     def _submit_color(*_x) -> None:
-        """SUBMIT Button
-        Submit color values for processing
-        """
+        """SUBMIT Button: Submit color values for processing"""
         nonlocal _rgba
         _rgba = _cc.get_rgba()
         Gtk.main_quit()
@@ -612,9 +603,7 @@ def ezcolor(_datatype: str='list') -> type:
 
 
 def eztext(_msg: str='Message', _type: str='') -> str:
-    """Input Text Dialog
-    Get text from the user
-    """
+    """Input Text Dialog: Get text from the user"""
     ui = Gtk.Builder()
     if 'c' in _type.lower():
         _gf = _GTEXTC
@@ -625,9 +614,7 @@ def eztext(_msg: str='Message', _type: str='') -> str:
     _out = ''
 
     def _submit_text(*_x) -> None:
-        """SUBMIT Button
-        Submit text for processing
-        """
+        """SUBMIT Button: Submit text for processing"""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
@@ -645,11 +632,9 @@ def eztext(_msg: str='Message', _type: str='') -> str:
 
 
 def ezpswd(_msg: str='Message', _type: str='') -> str:
-    """Password Dialog
-    Get a password from the user
-    """
+    """Password Dialog: Get a password from the user"""
     ui = Gtk.Builder()
-    if 'c' in _type.lower():
+    if r'c' in _type.lower():
         _gf = _GPSWDC
     else:
         _gf = _GPSWD
@@ -658,9 +643,7 @@ def ezpswd(_msg: str='Message', _type: str='') -> str:
     _out = ''
 
     def _submit_text(*_x) -> None:
-        """SUBMIT Button
-        Submit password for processing
-        """
+        """SUBMIT Button: Submit password for processing"""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
@@ -689,9 +672,7 @@ def ezfilech(  # noqa C901
         _return_uri: bool=True,
         _return_dtype: str='list',
 ) -> list or str:  # noqa C901
-    """File Chooser Dialog
-    Select a file or folder
-    """
+    """File Chooser Dialog: Select a file or folder"""
     ui = Gtk.Builder()
     ui.add_from_file(_GFILECH)
     _filew = ui.get_object(r'filechooser')
@@ -840,9 +821,7 @@ def ezfilech(  # noqa C901
         return
 
     def _select(*_x) -> None:
-        """SELECT Button
-        Submit selection for processing
-        """
+        """SELECT Button: Submit selection for processing"""
         nonlocal _out
         if _select_dir and not _multiple and _chkbtn_dir.get_active():
             if _return_uri and _return_dtype == 'str':
@@ -866,9 +845,7 @@ def ezfilech(  # noqa C901
         return
 
     def _hidden(_widget, *_x) -> None:
-        """HIDDEN Checkbox
-        Toggle the visibility of hidden files
-        """
+        """HIDDEN Checkbox: Toggle the visibility of hidden files"""
         _widget.set_show_hidden(not _widget.get_show_hidden())
         return
 

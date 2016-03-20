@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Basic functions for most uses
 @file basic.py
 @package pybooster.basic
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Basic functions for most uses
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -102,7 +101,6 @@ __all__ = [
     'csv2json',
     'getwebpage',
     'wlong',
-    'cache',
     'int2bitlen',
     'char2bitlen',
 ]
@@ -113,7 +111,7 @@ __all__ = [
 
 class SameFileError(Exception):
     """Raised when source and target are the same file"""
-    def __init__(self, msg: str='The source and target file are the same.'):
+    def __init__(self, msg: str=r'The source and target file are the same.'):
         super(SameFileError, self).__init__(msg)
         self.msg = msg
 
@@ -123,7 +121,7 @@ class SameFileError(Exception):
 
 class ObjectError(NameError, TypeError, ValueError):
     """Raised when an object cannot be found, used, or manipulated"""
-    def __init__(self, msg: str='The object is malformed.'):
+    def __init__(self, msg: str=r'The object is malformed.'):
         super(ObjectError, self).__init__(msg)
         self.msg = msg
 
@@ -151,6 +149,7 @@ def evaliter(_iter: iter) -> list:
 
 def eny(_iter: iter) -> bool:
     """Enhanced any()
+
     >>> eny([1, 0, 2, 'str'])
     True
     >>> eny(['str', 'x', 'y'])
@@ -163,6 +162,7 @@ def eny(_iter: iter) -> bool:
 
 def isiter(_iter: iter) -> bool:
     """Test if the object is iterable
+
     >>> isiter('str')
     True
     >>> isiter('')
@@ -182,6 +182,7 @@ def isiter(_iter: iter) -> bool:
 
 def ishex(_hex: str) -> bool:
     """Is the string hexadecimal
+
     >>> ishex('2c')
     True
     >>> ishex('0x2c')
@@ -206,6 +207,7 @@ def ishex(_hex: str) -> bool:
 
 def isoct(_oct: str) -> bool:
     """Is the string octal
+
     >>> isoct('45')
     True
     >>> isoct('0o27')
@@ -232,6 +234,7 @@ def isoct(_oct: str) -> bool:
 
 def isbin(_bin: str) -> bool:
     """Is the string binary
+
     >>> isbin('01010101')
     True
     >>> isbin('0b1')
@@ -258,6 +261,7 @@ def isbin(_bin: str) -> bool:
 
 def iscomplex(_obj) -> bool:
     """Is the object a complex number (37+54j)
+
     >>> iscomplex(37+54j)
     True
     >>> iscomplex(37-54j)
@@ -284,7 +288,7 @@ def iscomplex(_obj) -> bool:
             return True
         elif _obj.__class__ is int:
             return False
-        elif _obj.__class__ is str and 'j' not in _obj:
+        elif _obj.__class__ is str and r'j' not in _obj:
             return False
         elif complex(''.join(_obj.split())).__class__ is complex:
             return True
@@ -296,6 +300,7 @@ def iscomplex(_obj) -> bool:
 
 def iscomplextype(_obj) -> bool:
     """Is the object a complex type
+
     >>> iscomplextype(37+54j)
     True
     >>> iscomplextype(37-54j)
@@ -314,7 +319,7 @@ def iscomplextype(_obj) -> bool:
 
 def isbetween(_lo: int or float, _hi: int or float, _num: int or float) -> bool:
     """Tests if a float/integer is between two other floats/integers
-    'float' and 'int' types may be compared to each other
+
     >>> isbetween(2, 7, 5)
     True
     >>> isbetween(2.3, 9, 3.145149)
@@ -347,13 +352,11 @@ def ismodloaded(_module: str) -> bool:
 
 
 def isfrozen() -> bool:
-    """Test if the modules are built into the interpreter
-    (As seen in py2exe and others)
-    """
+    """Test if the modules are built into the interpreter (As seen in py2exe)"""
     _tmp = None
     try:
-        _tmp = __import__('sys')
-        return hasattr(_tmp, 'frozen')
+        _tmp = __import__(r'sys')
+        return hasattr(_tmp, r'frozen')
     except ImportError:
         return False
     finally:
@@ -365,7 +368,7 @@ def ismodfrozen(module_name: str) -> bool:
     _tmp = None
     try:
         _tmp = __import__(module_name)
-        return hasattr(_tmp, 'frozen')
+        return hasattr(_tmp, r'frozen')
     except ImportError:
         return False
     finally:
@@ -374,6 +377,7 @@ def ismodfrozen(module_name: str) -> bool:
 
 def words_in_str(_text: str, _wordlist: list) -> bool:
     """Test if any of the listed words are in the given string
+
     >>> words_in_str('This is a test.', ['test'])
     True
     >>> words_in_str('This is a test.', ['exam', 'test'])
@@ -389,6 +393,7 @@ def words_in_str(_text: str, _wordlist: list) -> bool:
 
 def words_not_in_str(_text: str, _wordlist: list) -> bool:
     """Test if any of the listed words are not in the given string
+
     >>> words_not_in_str('This is a test.', ['exam', 'test'])
     True
     >>> words_not_in_str('This is a test.', ['exam'])
@@ -404,6 +409,7 @@ def words_not_in_str(_text: str, _wordlist: list) -> bool:
 
 def isexe(fpath: str) -> bool:
     """Test if the specified file is executable
+
     >>> isexe('/bin/sh')
     True
     >>> isexe('/usr/bin/env')
@@ -418,6 +424,7 @@ def isexe(fpath: str) -> bool:
 
 def isinpath(program: str) -> bool:
     """Test if the specified application is in the system PATH
+
     >>> isinpath('sh')
     True
     >>> isinpath('env')
@@ -439,7 +446,7 @@ def isinpath(program: str) -> bool:
     if fpath and os.path.isfile(program) and os.access(program, os.X_OK):
         return True
     else:
-        envpath = os.environ['PATH'].split(os.pathsep)
+        envpath = os.environ[r'PATH'].split(os.pathsep)
         for filepath in envpath:
             exe_file = os.path.join(filepath.strip(r'"'), program)
             if os.path.isfile(exe_file) and os.access(exe_file, os.X_OK):
@@ -449,6 +456,7 @@ def isinpath(program: str) -> bool:
 
 def isvalidcode(_code: str) -> bool:
     """Test if the given string is valid Python code
+
     >>> isvalidcode('print("True")')
     True
     >>> isvalidcode('_str = Invalid"')
@@ -472,7 +480,7 @@ def lsmods() -> list:
 def imports() -> list:
     """List all imports"""
     _imports = []
-    for name, val in globals().items():
+    for name, val in globals().items():  # pylint: disable=W0612
         if isinstance(val, ModuleType):
             _imports.append(val.__name__)
     return _imports
@@ -494,12 +502,12 @@ def wherecurmods() -> list:
     return [modules[name] for name in set(modules)]
 
 
-def modpath(module: 'ModuleType') -> str:
+def modpath(module) -> str:
     """Output module's file pathname"""
     try:
         return os.path.dirname(module.__file__)
     except AttributeError:
-        raise RuntimeError('No module found. The module may be builtin or nonexistent.')
+        raise RuntimeError(r'No module found. The module may be builtin or nonexistent.')
 
 
 def modexist(_module: str) -> bool:
@@ -540,8 +548,8 @@ def rmmod(_modname: str):
 
 def finddictkey(_dict: dict, search_val) -> str:
     """Search a dictionary by value and stop on first instance
-    Return the key containing the value
-    Else, return an empty string
+
+    Return the key containing the value; Else, return an empty string
     """
     for key, val in _dict.items():
         if val == search_val:
@@ -551,8 +559,8 @@ def finddictkey(_dict: dict, search_val) -> str:
 
 def finddictkeys(_dict: dict, search_val) -> list:
     """Search a dictionary by value and find all instances
-    Return a list of keys - ['key1', 'key2']
-    Else, return an empty list - []
+
+    Return a list of keys - ['key1', 'key2']; Else, return an empty list - []
     """
     _out = []
     for key, val in _dict.items():
@@ -563,15 +571,16 @@ def finddictkeys(_dict: dict, search_val) -> list:
 
 def doeskeymvalue(_dict: dict) -> bool:
     """Test if any key matches any dict value
+
     Return True if a key matches a value in the dict
     Examples - doeskeymvalue(DICT)
-    -{ 'A': 'x', 'B': 'A', 'C': 'z'} => True
-    -{ 'A': 'A', 'B': 'y', 'C': 'z'} => True
-    -{ 1: 'x', 2: 'y', 'C': 1} => True
-    -{ 'A': 'x', 'B': 'y', 'C': 'z'} => False
-    -{ 'A': 'x', 'B': 'a', 'C': 'z'} => False
+     - { 'A': 'x', 'B': 'A', 'C': 'z'} => True
+     - { 'A': 'A', 'B': 'y', 'C': 'z'} => True
+     - { 1: 'x', 2: 'y', 'C': 1} => True
+     - { 'A': 'x', 'B': 'y', 'C': 'z'} => False
+     - { 'A': 'x', 'B': 'a', 'C': 'z'} => False
     Only int and str types are supported
-    -{ 'A': 'x', 'B': ['A', 'y'], 'C': 'z'} => False
+     - { 'A': 'x', 'B': ['A', 'y'], 'C': 'z'} => False
     """
     for key in _dict.keys():
         if key in _dict.values():
@@ -581,6 +590,7 @@ def doeskeymvalue(_dict: dict) -> bool:
 
 def rmdupkey(_dict: dict) -> dict:
     """Remove duplicate keys
+
     >>> rmdupkey({'key': [1, 2, 3], 'key': [4, 5, 6]})
     {'key': [4, 5, 6]}
     >>> rmdupkey({'key': [4, 5, 6], 'key': [1, 2, 3]})
@@ -594,8 +604,8 @@ def rmdupkey(_dict: dict) -> dict:
 
 
 def rmdupkey_casein(_dict: dict) -> dict:
-    """Remove duplicate keys case-insensitively
-    Values of duplicate keys (besides one instance) are removed
+    """Values of duplicate keys (besides one instance) are removed case-insensitively
+
     >>> rmdupkey_casein({'KEY': [1, 2, 3], 'key': [1, 2, 3]})
     {'key': [1, 2, 3]}
     >>> rmdupkey_casein({'key': [1, 2, 3], 'KEY': [1, 2, 3]})
@@ -611,6 +621,7 @@ def rmdupkey_casein(_dict: dict) -> dict:
 
 def rmdupval(_dict: dict) -> dict:
     """Remove duplicate values from a dict
+
     rmdupval({'key': [1, 2, 3], 'key1': [1, 2, 3]})
     {'key': [1, 2, 3]} or {'key1': [1, 2, 3]}
     """
@@ -623,6 +634,7 @@ def rmdupval(_dict: dict) -> dict:
 
 def listkeys(dict1: dict, dict2: dict) -> set:
     """Make a list (as a 'set') of the keys from two dicts
+
     listkeys({'KEY': [1, 2, 3], 'key2': [1, 2, 3]}, {'x': 1, 'y': 2})
     {'key2', 'KEY', 'x', 'y'}
     """
@@ -640,6 +652,7 @@ def mergestrdict(dict1: dict, dict2: dict) -> dict:
 
 def sortlistshort2long(_list: list) -> None:
     """Re-order a list (in-place) with shorter strings first
+
     >>> sortlistshort2long(['xz', 'xyz', 'x'])
     """
     _list.sort(key=len, reverse=True)
@@ -648,6 +661,7 @@ def sortlistshort2long(_list: list) -> None:
 
 def sortlistlong2short(_list: list) -> None:
     """Re-order a list (in-place) with longer strings first
+
     >>> sortlistlong2short(['xz', 'xyz', 'x'])
     """
     _list.sort(key=len, reverse=False)
@@ -656,6 +670,7 @@ def sortlistlong2short(_list: list) -> None:
 
 def rmduplist(_list: list) -> list:
     """Remove duplicate items from a list
+
     rmduplist(['xz', 'xyz', 'xz', 'y'])
     ['xyz', 'xz', 'y']
     """
@@ -664,6 +679,7 @@ def rmduplist(_list: list) -> list:
 
 def rmduplist_tuple(_list: list) -> tuple:
     """Remove duplicate items from a list and return a tuple
+
     rmduplist_tuple(['xz', 'xyz', 'xz', 'y'])
     ('xyz', 'xz', 'y')
     """
@@ -672,6 +688,7 @@ def rmduplist_tuple(_list: list) -> tuple:
 
 def rmduplist_set(_list: list) -> set:
     """Remove duplicate items from a list and return a set
+
     rmduplist_set(['xz', 'xyz', 'xz', 'y'])
     {'xyz', 'xz', 'y'}
     """
@@ -680,6 +697,7 @@ def rmduplist_set(_list: list) -> set:
 
 def rmduplist_frozenset(_list: list) -> frozenset:
     """Remove duplicate items from a list and return a frozenset
+
     rmduplist_frozenset(['xz', 'xyz', 'xz', 'y'])
     frozenset{'xyz', 'xz', 'y'}
     """
@@ -692,11 +710,12 @@ def rmduplist_frozenset(_list: list) -> frozenset:
 def execfile(_filename: str):
     """Execute Python script and get output"""
     with open(_filename, mode='rt', encoding='utf-8') as _file:
-        return exec(_file.read())
+        return exec(_file.read())  # pylint: disable=W0122
 
 
 def incde(i: int, j: int, delta: int=1) -> None:
     """Increment and Deincrement
+
     for i, j in incde(i=3, j=7): print(i, j)
     """
     while True:
@@ -716,6 +735,7 @@ def clearscr() -> None:
 
 def ipygrep(_find: str, _text: str) -> bool:
     """Case-insensitive reverse REGEX search
+
     Test if a plain-string matches a regex string
     """
     _match = refullmatch(_find, _text, flags=REI)
@@ -725,9 +745,7 @@ def ipygrep(_find: str, _text: str) -> bool:
 
 
 def pygrep(_find: str, _text: str) -> bool:
-    """Case-ensitive reverse REGEX search
-    Test if a plain-string matches a regex string
-    """
+    """Case-sensitive reverse REGEX search; Test if a plain-string matches a regex string"""
     _match = refullmatch(_find, _text, flags=None)
     if _match is not None:
         return _match
@@ -739,7 +757,7 @@ def playmusic(_file: str) -> None:
     try:
         from pygame.mixer import init, music
     except ImportError:
-        raise Exception('Pygame is not installed or found.')
+        raise Exception(r'Pygame is not installed or found.')
     init()
     music.load(_file)
     music.play()
@@ -755,6 +773,7 @@ def getlinenum() -> int:
 
 def ezcompile(_code: str):
     """Easily compile code that is in the form of a string
+
     Example 1 -
     c = \'\'\'print(''.join([line for line in open('/etc/passwd')]))\'\'\'
     bytecode = ezcompile(c)
@@ -766,9 +785,9 @@ def ezcompile(_code: str):
     """
     _tmplist = []
     try:
-        comcode = compile(_code, _tmplist, 'eval')
+        comcode = compile(_code, _tmplist, r'eval')
     except SyntaxError:
-        comcode = compile(_code, _tmplist, 'exec')
+        comcode = compile(_code, _tmplist, r'exec')
     return comcode
 
 
@@ -778,46 +797,17 @@ def csv2json(_filepath: str) -> str:
 
 
 def getwebpage(_address: str) -> str:
-    """Return a webpage's HTML code as a string
-    Usage:
-    getwebpage('http://website.com/')
-    """
-    if '://' not in _address:
+    """Return a webpage's HTML code as a string; Usage: getwebpage('http://website.com/')"""
+    if r'://' not in _address:
         _address = r'http://' + _address
     if not _address.endswith(r'/'):
         _address += r'/'
     return urlopen(_address).read()
 
 
-def wlong(_int32) -> bytes:
+def wlong(_int32: int) -> bytes:
     """Convert a 32-bit integer to little-endian"""
     return (int(_int32) & 0xFFFFFFFF).to_bytes(4, 'little')
-
-
-def cache(_action: str, _ckey: str='', _cval=None):
-    """Store data in cache in the form of a dict"""
-    global _cache
-    try:
-        _cache
-    except NameError:
-        _cache = {}
-    if _action == '':
-        raise Exception('You must specify an action!')
-    elif _action == 'print' or _action == 'display' or _action == 'return':
-        return _cache
-    elif _action in 'dpr':
-        return _cache
-    elif _action == 's' or _action == 'store' or _action == 'save':
-        if _ckey != '' and _cval.__class__ is not None:
-            _cache[_ckey] = _cval
-        else:
-            raise Exception('You must specify a key and value!')
-    elif _action == 'k' and _ckey != '':
-        return _cache[_ckey]
-    elif _ckey == '' and _cval.__class__ is not None:
-        raise Exception('You must specify a key!')
-    else:
-        raise Exception('You must specify an action and a key + value!')
 
 
 def int2bitlen(_int: int) -> int:

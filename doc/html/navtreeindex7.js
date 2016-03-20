@@ -1,9 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"cryptx_8h.html#a77bcad7dcf9e96bbc174edfc4bd53701":[2,0,26,20],
-"cryptx_8h.html#a7d299389192b3c4e1fd13521e14b9ecc":[2,0,26,61],
-"cryptx_8h.html#a7e90b4e3156c9bb9925e772fd02429e4":[2,0,26,21],
-"cryptx_8h.html#a86ae42693f48ffcf8e84fab8d7e9cd3e":[2,0,26,25],
 "cryptx_8h.html#a8fd9b6dba94f21ed3865ea2bec22eeb7":[2,0,26,72],
 "cryptx_8h.html#a908878ba9981a2b48c974601ac68f800":[2,0,26,39],
 "cryptx_8h.html#a96fc70d8d4d1df8132a1216bbaf39ebe":[2,0,26,26],
@@ -223,10 +219,12 @@ var NAVTREEINDEX7 =
 "ezdisplay_8py.html#a9fc6cf9731e8b0c8420b17f4aff1a5a8":[2,0,30,2],
 "ezdisplay_8py_source.html":[2,0,30],
 "ezwin_2____init_____8py.html":[2,0,0],
-"ezwin_2____init_____8py.html#a4ab58d4bcf214e227cb35538617e6add":[2,0,0,3],
+"ezwin_2____init_____8py.html#a4ab58d4bcf214e227cb35538617e6add":[2,0,0,5],
 "ezwin_2____init_____8py.html#a629d61dfe4da763164a4d1a2d85b0afd":[2,0,0,1],
 "ezwin_2____init_____8py.html#a8059a06eedd3cdbc5dba35cd130df7f5":[2,0,0,2],
+"ezwin_2____init_____8py.html#a8a6f8bbfc4fa66850dd1092ec13ac75a":[2,0,0,4],
 "ezwin_2____init_____8py.html#aa4a022e6ddacd362b83964da5cc5d044":[2,0,0,0],
+"ezwin_2____init_____8py.html#ae16078446746fa0a4e1b6cee9590de8d":[2,0,0,3],
 "ezwin_2____init_____8py_source.html":[2,0,0],
 "ezwin_8py.html":[2,0,31],
 "ezwin_8py.html#a06aa0ceebf94d35a7d63c20de98f5c3b":[2,0,31,26],
@@ -249,5 +247,7 @@ var NAVTREEINDEX7 =
 "ezwin_8py.html#a628bef5675516ade2a47e56031d7c21b":[2,0,31,36],
 "ezwin_8py.html#a629d61dfe4da763164a4d1a2d85b0afd":[2,0,31,14],
 "ezwin_8py.html#a69febfb1190a8aa15760bd6eb7e0b179":[2,0,31,2],
-"ezwin_8py.html#a6a7efa10302dc5baa392eb0ec06f88f9":[2,0,31,43]
+"ezwin_8py.html#a6a7efa10302dc5baa392eb0ec06f88f9":[2,0,31,43],
+"ezwin_8py.html#a6c9763b4c007077fd0c2a6f76c5eb89a":[2,0,31,27],
+"ezwin_8py.html#a8059a06eedd3cdbc5dba35cd130df7f5":[2,0,31,15]
 };

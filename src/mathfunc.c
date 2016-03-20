@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 Numerous mathematical and trigonometric functions.
@@ -1091,16 +1091,16 @@ unsigned int fib(const unsigned int num) {
     else if (num == (unsigned int)0x00) { return 0; }
     else if (num == (unsigned int)1 || num == (unsigned int)2) { return 1; }
     else {
-        unsigned int fval[num + 1];
-        fval[0] = (unsigned int)0;
-        fval[1] = (unsigned int)1;
-        fval[2] = (unsigned int)1;
-        fval[3] = (unsigned int)2;
-        fval[4] = (unsigned int)3;
+        unsigned int fibval[num + 1];
+        fibval[0] = (unsigned int)0;
+        fibval[1] = (unsigned int)1;
+        fibval[2] = (unsigned int)1;
+        fibval[3] = (unsigned int)2;
+        fibval[4] = (unsigned int)3;
         register unsigned int i;
         for (i = (unsigned int)4; i <= num; ++i)
-            fval[i] = fval[i - (unsigned int)1] + fval[i - (unsigned int)2];
-        return fval[num];
+            fibval[i] = fibval[i - (unsigned int)1] + fibval[i - (unsigned int)2];
+        return fibval[num];
     }
 }
 
@@ -1129,23 +1129,23 @@ unsigned long int longfib(const unsigned long int num) {
             default: return (ulint)144;  // case (ulint)12
         }
     }
-    ulint fval[92];
-    fval[0] = (ulint)0;
-    fval[1] = (ulint)1;
-    fval[2] = (ulint)1;
-    fval[3] = (ulint)2;
-    fval[4] = (ulint)3;
-    fval[5] = (ulint)5;
-    fval[6] = (ulint)8;
-    fval[7] = (ulint)13;
-    fval[8] = (ulint)21;
-    fval[9] = (ulint)34;
-    fval[10] = (ulint)55;
-    fval[11] = (ulint)89;
-    fval[12] = (ulint)144;
+    ulint fibval[92];
+    fibval[0] = (ulint)0;
+    fibval[1] = (ulint)1;
+    fibval[2] = (ulint)1;
+    fibval[3] = (ulint)2;
+    fibval[4] = (ulint)3;
+    fibval[5] = (ulint)5;
+    fibval[6] = (ulint)8;
+    fibval[7] = (ulint)13;
+    fibval[8] = (ulint)21;
+    fibval[9] = (ulint)34;
+    fibval[10] = (ulint)55;
+    fibval[11] = (ulint)89;
+    fibval[12] = (ulint)144;
     register ulint i;
-    for (i = (ulint)13; i <= num; ++i) fval[i] = fval[i - (ulint)1] + fval[i - (ulint)2];
-    return fval[num];
+    for (i = (ulint)13; i <= num; ++i) fibval[i] = fibval[i - (ulint)1] + fibval[i - (ulint)2];
+    return fibval[num];
 }
 
 
@@ -1175,25 +1175,25 @@ sllint longlongfib(const sllint num) {
             default: return (sllint)377;  // case (sllint)14
         }
     }
-    sllint fval[92];
-    fval[0] = (sllint)0x0;
-    fval[1] = (sllint)1;
-    fval[2] = (sllint)1;
-    fval[3] = (sllint)2;
-    fval[4] = (sllint)3;
-    fval[5] = (sllint)5;
-    fval[6] = (sllint)8;
-    fval[7] = (sllint)13;
-    fval[8] = (sllint)21;
-    fval[9] = (sllint)34;
-    fval[10] = (sllint)55;
-    fval[11] = (sllint)89;
-    fval[12] = (sllint)144;
-    fval[13] = (sllint)233;
-    fval[14] = (sllint)377;
+    sllint fibval[92];
+    fibval[0] = (sllint)0x0;
+    fibval[1] = (sllint)1;
+    fibval[2] = (sllint)1;
+    fibval[3] = (sllint)2;
+    fibval[4] = (sllint)3;
+    fibval[5] = (sllint)5;
+    fibval[6] = (sllint)8;
+    fibval[7] = (sllint)13;
+    fibval[8] = (sllint)21;
+    fibval[9] = (sllint)34;
+    fibval[10] = (sllint)55;
+    fibval[11] = (sllint)89;
+    fibval[12] = (sllint)144;
+    fibval[13] = (sllint)233;
+    fibval[14] = (sllint)377;
     register sllint i;
-    for (i = (sllint)15; i <= (sllint)num; ++i) { fval[i] = (sllint)(fval[i - (sllint)1] + fval[i - (sllint)2]); if (i >= num) { break; } }
-    return fval[num];
+    for (i = (sllint)15; i <= (sllint)num; ++i) { fibval[i] = (sllint)(fibval[i - (sllint)1] + fibval[i - (sllint)2]); if (i >= num) { break; } }
+    return fibval[num];
 }
 
 
@@ -1374,13 +1374,6 @@ uint128_t mersenne_u128(const uint128_t num) {
 
 
 /* TRIGONOMETRY (DOUBLES) */
-
-
-/*
-double acosh(const double radians) {
-    // Return the Hyperbolic Arc-Cosine
-    return log(radians + squareroot(radians * radians - 1.0));
-}*/
 
 
 /** Returns the principal value of the arc tangent of y/x, expressed in radians */

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Filesystem and file related functions
 @file fs.py
 @package pybooster.fs
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Filesystem and file related functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -104,11 +103,14 @@ def lsfiles(_path: str, _extension: str) -> list:
 
 def convumask(_oct) -> str:
     """Convert file permissions/umask (644 -> 'rw-r--r--')
+
     From octal permissions notation (int, str, or list of str+int)
     To Posix permissions notation as a str
-    Input may be in any of the following forms -
+
+    Input may be in any of the following forms.
     > '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'],
     > [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4]
+
     >>> convumask(644)
     'rw-r--r--'
     >>> convumask('644')
@@ -116,7 +118,7 @@ def convumask(_oct) -> str:
     >>> convumask(654)
     'rw-r-xr--'
     """
-    _bits = ([4, 'r'], [2, 'w'], [1, 'x'])
+    _bits = ([4, r'r'], [2, r'w'], [1, r'x'])
     _mode = []
     if isinstance(_oct, int):
         _oct = str(_oct)
@@ -134,6 +136,7 @@ def convumask(_oct) -> str:
 
 def getfileext(_filename: str) -> str:
     """Get the file's extension
+
     >>> getfileext('/etc/mime.types')
     'types'
     >>> getfileext('/bin/sh')
@@ -146,7 +149,9 @@ def getfileext(_filename: str) -> str:
 
 def getfilename(_pathname: str) -> str:
     """Return the filename without path or extension
+
     The path and extension are removed from the given string
+
     >>> getfilename('/etc/mime.types')
     'mime'
     >>> getfilename('/bin/sh')
@@ -157,7 +162,9 @@ def getfilename(_pathname: str) -> str:
 
 def getfilenameext(_pathname: str) -> str:
     """Return the filename with extension, but without path
+
     The path is removed from the given string
+
     >>> getfilenameext('/etc/mime.types')
     'mime.types'
     >>> getfilenameext('/bin/sh')
@@ -168,7 +175,7 @@ def getfilenameext(_pathname: str) -> str:
 
 def getfilenameexttup(_pathname: str) -> tuple:
     """Return the filename (as a tuple) without path
-    The path is removed from the given string
+
     >>> getfilenameexttup('/etc/mime.types')
     ('mime', '.types')
     >>> getfilenameexttup('/bin/sh')
@@ -179,7 +186,6 @@ def getfilenameexttup(_pathname: str) -> tuple:
 
 def getfilepath(_pathname: str) -> str:
     """Return the path without filename
-    The filename is removed from the given string
     >>> getfilepath('/etc/mime.types')
     '/etc'
     >>> getfilepath('/bin/sh')
@@ -190,6 +196,7 @@ def getfilepath(_pathname: str) -> str:
 
 def getfilepathext(_pathname: str) -> tuple:
     """Return the path and filename+extension as a tuple
+
     >>> getfilepathext('/etc/mime.types')
     ('/etc', 'mime.types')
     >>> getfilepathext('/bin/sh')
@@ -200,6 +207,7 @@ def getfilepathext(_pathname: str) -> tuple:
 
 def getfilepathextlist(_pathname: str) -> list:
     """Return the path, filename, and extension as a list
+
     >>> getfilepathextlist('/etc/mime.types')
     ['/etc', 'mime', '.types']
     >>> getfilepathextlist('/bin/sh')
@@ -217,10 +225,12 @@ def getfilepathextlist(_pathname: str) -> list:
 
 def expandhome(_pathname: str) -> str:
     """Replace 'HOME', '$HOME', or '~' with the literal value
-    Supported OS 'HOME' shortcuts -
-    * Linux, POSIX, Unix, and Unixoid systems
-    * Windows (MS and Pirated)
-    * OS X (Apple)
+
+    Supported OS 'HOME' shortcuts:
+     - Linux, POSIX, Unix, and Unixoid systems
+     - Windows (MS and Pirated)
+     - OS X (Apple)
+
     >>> expandhome('~/file')
     '/home/username/file'
     >>> expandhome('HOME/file')
@@ -228,14 +238,14 @@ def expandhome(_pathname: str) -> str:
     >>> expandhome('$HOME/file')
     '/home/username/file'
     """
-    if _pathname.startswith('HOME'):
-        return _pathname.replace('HOME', path.expanduser('~'), 1)
-    elif _pathname.startswith('/HOME'):
-        return _pathname.replace('/HOME', path.expanduser('~'), 1)
+    if _pathname.startswith(r'HOME'):
+        return _pathname.replace(r'HOME', path.expanduser(r'~'), 1)
+    elif _pathname.startswith(r'/HOME'):
+        return _pathname.replace(r'/HOME', path.expanduser(r'~'), 1)
     elif '$HOME' in _pathname:
-        return _pathname.replace('$HOME', path.expanduser('~'), 1)
+        return _pathname.replace(r'$HOME', path.expanduser(r'~'), 1)
     elif '~' in _pathname:
-        return _pathname.replace('~', path.expanduser('~'), 1)
+        return _pathname.replace(r'~', path.expanduser(r'~'), 1)
     return _pathname
 
 
@@ -252,7 +262,7 @@ def getfile(_filename: str) -> str:
 
 def getfilehexbytes(_filename: str) -> bytes:
     """Get file contents as bytes in hex"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb', encoding='utf-8')
     with _file:
         _hex = hexlify(_file.read())
     return _hex
@@ -260,7 +270,7 @@ def getfilehexbytes(_filename: str) -> bytes:
 
 def getfilehexbytesstr(_filename: str) -> str:
     """Get file contents as a str of bytes in hex"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = hexlify(_file.read())
     return str(_hex, 'utf-8')
@@ -268,20 +278,20 @@ def getfilehexbytesstr(_filename: str) -> str:
 
 def getfilehexbytes_spaced(_filename: str) -> str:
     """Get file contents as a str of bytes in hex with spaces between each byte"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = hexlify(_file.read())
     _hex = str(_hex, 'utf-8')
     index = 2
     while index != len(_hex):
-        _hex = _hex[:index] + ' ' + _hex[index:]
+        _hex = _hex[:index] + r' ' + _hex[index:]
         index += 3
     return _hex
 
 
 def getfilebinbytes(_filename: str) -> str:
     """Get file contents and return binary as str"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = bin(int(hexlify(_file.read()), 16))[2:].zfill(8)
     return _hex
@@ -289,7 +299,7 @@ def getfilebinbytes(_filename: str) -> str:
 
 def getfilebinwords(_filename: str) -> bytes:
     """Get file contents and return a byte-str of binary words"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = _file.read()
     return _hex
@@ -297,7 +307,7 @@ def getfilebinwords(_filename: str) -> bytes:
 
 def getfilehexstr(_filename: str) -> str:
     """Get file contents and return a str of hex"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = b2a_qp(_file.read())
     return ''.join(chr(int(x)) for x in _hex)
@@ -305,10 +315,10 @@ def getfilehexstr(_filename: str) -> str:
 
 def getfilehexstr2(_filename: str) -> str:
     """Get file contents and return a str of hex"""
-    _file = open(_filename, 'rb')
+    _file = open(_filename, mode='rb')
     with _file:
         _hex = b2a_qp(_file.read())
-    return ''.join(chr(int(x)) for x in _hex).replace('=', '').replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+    return ''.join(chr(int(x)) for x in _hex).replace(r'=', r'').replace('\n', r'').replace('\t', r'').replace(r' ', r'').replace('\r', r'')
 
 
 def getfileraw_list(_filename: str) -> list:
@@ -328,9 +338,9 @@ def getfile_list(_filename: str) -> list:
 
 def getfiles(_filelist: list) -> str:
     """Get the contents of multiple files
+
     Return a str containing each file's content
-    Example Usage -
-    getfiles1(['file0', 'file1', 'file2'])
+    Example Usage - getfiles1(['file0', 'file1', 'file2'])
     Output - 'file0 contents file1 contents file2 contents'
     """
     _out = ''
@@ -345,10 +355,11 @@ def getfiles(_filelist: list) -> str:
 
 def getfiles_list(*_pathnames: str) -> list:
     """Get the contents of multiple files
+
     Return a list containing items as strings
     The contents of one file is placed in one entry
-    Example Usage -
-    getfiles(['file0', 'file1', 'file2'])
+
+    Example Usage - getfiles(['file0', 'file1', 'file2'])
     Output - ['file0 contents', 'file1 contents', 'file2 contents']
     """
     _out = []
@@ -363,7 +374,7 @@ def getfiles_list(*_pathnames: str) -> list:
 
 def printfile(_filepath: str):
     """Print the contents of a file"""
-    print(''.join(line.split(':', 1)[0] for line in open(_filepath, mode='rt', encoding='utf-8')))
+    print(''.join(line.split(r':', 1)[0] for line in open(_filepath, mode='rt', encoding='utf-8')))  # noqa
 
 
 def firstchars(_filepath: str, _numchars: int=10) -> str:
@@ -412,14 +423,14 @@ def getstdin() -> str:
 
 def append2file(_filename: str, _write) -> None:
     """Send data to new file or append to an existing file"""
-    with open(_filename, mode='a', encoding='utf-8') as _file:
+    with open(_filename, mode='at', encoding='utf-8') as _file:
         _file.write(str(_write))
     return None
 
 
 def write2file(_filename: str, _write) -> None:
     """Send data to new file or overwrite file"""
-    with open(_filename, mode='w', encoding='utf-8') as _file:
+    with open(_filename, mode='wt', encoding='utf-8') as _file:
         _file.write(str(_write))
     return None
 
@@ -439,9 +450,7 @@ def writestr2binfile(_filename: str, _write: str) -> None:
 
 
 def pyheadstdin() -> None:
-    """Pyhead for stdin/stdout
-    Emulates the Unix "head" command
-    """
+    """Pyhead for stdin/stdout; Emulates the Unix "head" command"""
     stdout.write(''.join(stdin.readlines()[:10]))
     return None
 
@@ -450,32 +459,28 @@ def pyheadstdin() -> None:
 
 
 def rmfile(_file: str) -> bool:
-    """Try to remove a file
-    Return True on success or False on failure
-    """
+    """Try to remove a file; Return True on success or False on failure"""
     if path.isfile(_file):
         try:
             remove(_file)
         except OSError as _err:
-            print('Error: {} - {}.'.format(_err.filename, _err.strerror))
+            print('Error: {} - {}.'.format(_err.filename, _err.strerror))  # noqa
             return False
     else:
-        print('Error: {} file not found'.format(_file))
+        print('Error: {} file not found'.format(_file))  # noqa
         return False
     return True
 
 
 def rmdir(_dir: str) -> bool:
-    """Try to remove a directory
-    Return True on success and False on failure
-    """
+    """Try to remove a directory; Return True on success and False on failure"""
     if path.isdir(_dir):
         try:
             rmtree(_dir)
         except OSError as _err:
-            print('Error: {} - {}.'.format(_err.filename, _err.strerror))
+            print('Error: {} - {}.'.format(_err.filename, _err.strerror))  # noqa
             return False
     else:
-        print('Error: {} directory not found'.format(_dir))
+        print('Error: {} directory not found'.format(_dir))  # noqa
         return False
     return True

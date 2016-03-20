@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Color Manipulations
 @file color.py
 @package pybooster.color
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Color Manipulations
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -35,10 +34,6 @@ from math import acos, cos, sqrt
 
 
 __all__ = [
-    # CONSTANTS
-    'ONE_THIRD',
-    'ONE_SIXTH',
-    'TWO_THIRD',
     # FUNCTIONS
     # CMY
     'cmy2cmyk',
@@ -92,26 +87,18 @@ __all__ = [
 ]
 
 
-# CONSTANTS
-
-
-ONE_THIRD = 0.333333333333333
-ONE_SIXTH = 0.166666666666667
-TWO_THIRD = 0.666666666666667
-
-
 # FUNCTIONS
 
 
 def getvalue(m1: float, m2: float, hue: float) -> float:
     """Get value from hue"""
     hue = hue % 1.0
-    if hue < ONE_SIXTH:
+    if hue < 0.166666666666667:
         return m1 + (m2 - m1) * hue * 6.0
     if hue < 0.5:
         return m2
-    if hue < TWO_THIRD:
-        return m1 + (m2 - m1) * (TWO_THIRD - hue) * 6.0
+    if hue < 0.666666666666667:
+        return m1 + (m2 - m1) * (0.666666666666667 - hue) * 6.0
     return m1
 
 
@@ -308,7 +295,7 @@ def hls2rgb(h: float, l: float, s: float) -> tuple:
     else:
         m2 = l + s - (l * s)
     m1 = 2.0 * l - m2
-    return (getvalue(m1, m2, h + ONE_THIRD), getvalue(m1, m2, h), getvalue(m1, m2, h - ONE_THIRD))
+    return (getvalue(m1, m2, h + 0.333333333333333), getvalue(m1, m2, h), getvalue(m1, m2, h - 0.333333333333333))
 
 
 # HSV

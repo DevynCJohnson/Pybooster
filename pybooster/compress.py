@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Compression Algorithms and Interfaces
 @file compress.py
 @package pybooster.compress
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Compression Algorithms and Interfaces
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -87,7 +86,7 @@ def write2gzip(_filename: str, _write: str) -> None:
 def creategzipfile(_filename: str) -> None:
     """Gzip an existing file"""
     with gzip.open(_filename, 'rb') as _filein:
-        with gzip.open(_filename + '.gz', 'wb') as _fileout:
+        with gzip.open(_filename + r'.gz', 'wb') as _fileout:
             _fileout.writelines(_filein)
     return
 
@@ -122,7 +121,7 @@ def write2bzip(_filename: str, _write: str) -> None:
 def createbzipfile(_filename: str) -> None:
     """Bzip an existing file"""
     with bz2.open(_filename, 'rb') as _filein:
-        with bz2.open(_filename + '.bz', 'wb', 9) as _fileout:
+        with bz2.open(_filename + r'.bz', 'wb', 9) as _fileout:
             _fileout.writelines(_filein)
     return
 
@@ -157,7 +156,7 @@ def write2lzma(_filename: str, _write: str) -> None:
 def createlzmafile(_filename: str) -> None:
     """LZMA an existing file"""
     with lzma.open(_filename, 'rb') as _filein:
-        with lzma.open(_filename + '.lzma', 'wb', format=lzma.FORMAT_ALONE, filters={'id': lzma.FILTER_LZMA1}) as _fileout:
+        with lzma.open(_filename + r'.lzma', 'wb', format=lzma.FORMAT_ALONE, filters={'id': lzma.FILTER_LZMA1}) as _fileout:
             _fileout.writelines(_filein)
     return
 
@@ -193,7 +192,7 @@ def write2xz(_filename: str, _write: str) -> None:
 def createxzfile(_filename: str) -> None:
     """XZ an existing file"""
     with lzma.open(_filename, 'rb') as _filein:
-        with lzma.open(_filename + '.xz', 'wb', format=lzma.FORMAT_XZ, filters={'id': lzma.FILTER_LZMA2}) as _fileout:
+        with lzma.open(_filename + r'.xz', 'wb', format=lzma.FORMAT_XZ, filters={'id': lzma.FILTER_LZMA2}) as _fileout:
             _fileout.writelines(_filein)
     return
 

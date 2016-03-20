@@ -6,6 +6,7 @@ var searchData=
   ['kelvin2delisle',['kelvin2delisle',['../namespacepybooster_1_1convtemp.html#aa48df03f05f2376be54a2b7922d42dfe',1,'pybooster::convtemp']]],
   ['kelvin2fahrenheit',['kelvin2fahrenheit',['../namespacepybooster_1_1convtemp.html#a45d31573e95fbc1349fcf940d194bb01',1,'pybooster::convtemp']]],
   ['kelvin2rankine',['kelvin2rankine',['../namespacepybooster_1_1convtemp.html#af48d1e79755abcdef40d7b74f89c0afa',1,'pybooster::convtemp']]],
+  ['keyboard',['KEYBOARD',['../namespacepybooster_1_1strtools.html#a679e7c833378e99a3e1f8a004057dcdd',1,'pybooster::strtools']]],
   ['kilo_5funits',['KILO_UNITS',['../namespacepybooster_1_1metric.html#a73af90530ece66846802113ad7355da0',1,'pybooster::metric']]],
   ['kilogram2pound',['kilogram2pound',['../namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873',1,'pybooster::convmass']]],
   ['kilometer2centimeter',['kilometer2centimeter',['../namespacepybooster_1_1convlength.html#aef95f031dac9d2cf5eb6b718c68fe66c',1,'pybooster::convlength']]],
@@ -23,5 +24,5 @@ var searchData=
   ['kilometer2parsec',['kilometer2parsec',['../namespacepybooster_1_1convlength.html#a7407d1553ba42ee4acaac8b62e1036e1',1,'pybooster::convlength']]],
   ['kilometer2yard',['kilometer2yard',['../namespacepybooster_1_1convlength.html#a839e433f4159194568c78dfe3f0719ea',1,'pybooster::convlength']]],
   ['kinetic_5fenergy',['kinetic_energy',['../physics_8c.html#a2509ef47b314f7fc1b6321bc5f7b87e8',1,'kinetic_energy(const double mass, const double velocity):&#160;physics.c'],['../physics_8h.html#a2509ef47b314f7fc1b6321bc5f7b87e8',1,'kinetic_energy(const double mass, const double velocity):&#160;physics.c']]],
-  ['krypton',['KRYPTON',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50caa7fb2a359b3228d655cc79bed0b56a09',1,'KRYPTON():&#160;chemistry_types.h'],['../chemistry__types_8c.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c']]]
+  ['krypton',['krypton',['../chemistry__types_8c.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50caa7fb2a359b3228d655cc79bed0b56a09',1,'KRYPTON():&#160;chemistry_types.h']]]
 ];

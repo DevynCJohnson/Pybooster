@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['warning',['WARNING',['../namespacepybooster_1_1strtools.html#a93bb20810d83fb8742ba55ad8af4e467',1,'pybooster::strtools']]],
   ['wchar_5fmax',['WCHAR_MAX',['../MACROS_8h.html#a2a823f3ccf2306cfbaa34d8addf66010',1,'MACROS.h']]],
   ['wchar_5ft',['wchar_t',['../MACROS_8h.html#a996b469b2e20f31259fb88cdad2a6309',1,'MACROS.h']]],
   ['wednesday',['wednesday',['../extra__datatypes_8h.html#a7a4935b8c8eca67cba44a8ded07ce777af57b629931bdf8b32a3a391b93d03db9',1,'extra_datatypes.h']]],
@@ -10,7 +11,7 @@ var searchData=
   ['which',['which',['../namespacepybooster_1_1system.html#a8433bd1a8340759e08af650556133472',1,'pybooster::system']]],
   ['width',['width',['../math__types_8h.html#a9df23e056f5d1a0388cd8190431c0e03',1,'hexagon::width()'],['../math__types_8h.html#a7412099cf2efe3a83ab9a988acab4ba1',1,'hexagonl::width()'],['../math__types_8h.html#ae426f00e82704fa09578f5446e22d915',1,'hexagonf::width()'],['../math__types_8h.html#a9df23e056f5d1a0388cd8190431c0e03',1,'rectangle::width()'],['../math__types_8h.html#a7412099cf2efe3a83ab9a988acab4ba1',1,'rectanglel::width()'],['../math__types_8h.html#ae426f00e82704fa09578f5446e22d915',1,'rectanglef::width()'],['../math__types_8h.html#a9df23e056f5d1a0388cd8190431c0e03',1,'prism::width()'],['../math__types_8h.html#a7412099cf2efe3a83ab9a988acab4ba1',1,'prisml::width()'],['../math__types_8h.html#ae426f00e82704fa09578f5446e22d915',1,'prismf::width()']]],
   ['window',['WINDOW',['../namespacepybooster_1_1ezdisplay.html#a877bbf6048814b29246d91b00e8eb83f',1,'pybooster::ezdisplay']]],
-  ['wlong',['wlong',['../namespacepybooster_1_1basic.html#ada4a71ab9118fa77d07875c7a2849c78',1,'pybooster::basic']]],
+  ['wlong',['wlong',['../namespacepybooster_1_1basic.html#aa6261c315b4b528072e0d56b6a9f9dba',1,'pybooster::basic']]],
   ['word',['Word',['../MACROS_8h.html#abf4ef44c4c8719bd6d059ca8cdbe0fde',1,'MACROS.h']]],
   ['words_5fin_5fstr',['words_in_str',['../namespacepybooster_1_1basic.html#a8e5450b5a5d44a9ce5607c8e19de9233',1,'pybooster::basic']]],
   ['words_5fnot_5fin_5fstr',['words_not_in_str',['../namespacepybooster_1_1basic.html#af6faab72869b32c863f480c0b53f6c0a',1,'pybooster::basic']]],

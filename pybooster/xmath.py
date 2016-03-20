@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Extra Math Functions
 @file xmath.py
 @package pybooster.xmath
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Extra Math Functions
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -93,48 +92,48 @@ __all__ = [
 
 
 LARGE_NUMBERS = (
-    ('million', 1000000),
-    ('billion', 1000000000),
-    ('trillion', 1000000000000),
-    ('quadrillion ', 1000000000000000),
-    ('quintillion', 1000000000000000000),
-    ('sextillion', 1000000000000000000000),
-    ('septillion', 1000000000000000000000000),
-    ('octillion', 1000000000000000000000000000),
-    ('nonillion', 1000000000000000000000000000000),
-    ('decillion', 1000000000000000000000000000000000),
-    ('undecillion', 1000000000000000000000000000000000000),
-    ('duodecillion', 1000000000000000000000000000000000000000),
-    ('tredecillion', 1000000000000000000000000000000000000000000),
-    ('quattuordecillion', 1000000000000000000000000000000000000000000000),
-    ('quindecillion', 1000000000000000000000000000000000000000000000000),
-    ('sexdecillion', 1000000000000000000000000000000000000000000000000000),
-    ('septendecillion', 1000000000000000000000000000000000000000000000000000000),
-    ('octodecillion', 10 ** 57),
-    ('novemdecillion', 10 ** 60),
-    ('vigintillion', 10 ** 63),
-    ('centillion', '10 ** 303'),
-    ('googol', 10 ** 100),
-    ('googolplex', '10 ** 10 ** 100'),
+    (r'million', 1000000),
+    (r'billion', 1000000000),
+    (r'trillion', 1000000000000),
+    (r'quadrillion ', 1000000000000000),
+    (r'quintillion', 1000000000000000000),
+    (r'sextillion', 1000000000000000000000),
+    (r'septillion', 1000000000000000000000000),
+    (r'octillion', 1000000000000000000000000000),
+    (r'nonillion', 1000000000000000000000000000000),
+    (r'decillion', 1000000000000000000000000000000000),
+    (r'undecillion', 1000000000000000000000000000000000000),
+    (r'duodecillion', 1000000000000000000000000000000000000000),
+    (r'tredecillion', 1000000000000000000000000000000000000000000),
+    (r'quattuordecillion', 1000000000000000000000000000000000000000000000),
+    (r'quindecillion', 1000000000000000000000000000000000000000000000000),
+    (r'sexdecillion', 1000000000000000000000000000000000000000000000000000),
+    (r'septendecillion', 1000000000000000000000000000000000000000000000000000000),
+    (r'octodecillion', 10 ** 57),
+    (r'novemdecillion', 10 ** 60),
+    (r'vigintillion', 10 ** 63),
+    (r'centillion', '10 ** 303'),
+    (r'googol', 10 ** 100),
+    (r'googolplex', '10 ** 10 ** 100'),
 )
 
 
 SMALL_NUMBERS = (
-    ('tenth', 0.100),
-    ('hundredth', 0.0100),
-    ('thousandth', 0.00100),
-    ('ten thousandth', 0.000100),
-    ('hundred thousandth', 0.0000100),
-    ('millionth', 0.00000100),
-    ('billionth', 0.00000000100),
-    ('trillionth', 0.00000000000100),
-    ('quadrillionth', 0.00000000000000100),
-    ('quintillionth', 0.00000000000000000100),
-    ('sextillionth', 0.00000000000000000000100),
-    ('septillionth', 0.00000000000000000000000100),
-    ('octillionth', 0.00000000000000000000000000100),
-    ('nonillionth', 0.00000000000000000000000000000100),
-    ('googolminex', '1 / (10 ** 10 ** 100)'),
+    (r'tenth', 0.100),
+    (r'hundredth', 0.0100),
+    (r'thousandth', 0.00100),
+    (r'ten thousandth', 0.000100),
+    (r'hundred thousandth', 0.0000100),
+    (r'millionth', 0.00000100),
+    (r'billionth', 0.00000000100),
+    (r'trillionth', 0.00000000000100),
+    (r'quadrillionth', 0.00000000000000100),
+    (r'quintillionth', 0.00000000000000000100),
+    (r'sextillionth', 0.00000000000000000000100),
+    (r'septillionth', 0.00000000000000000000000100),
+    (r'octillionth', 0.00000000000000000000000000100),
+    (r'nonillionth', 0.00000000000000000000000000000100),
+    (r'googolminex', '1 / (10 ** 10 ** 100)'),
 )
 
 
@@ -266,21 +265,18 @@ def factors(_num: int) -> set:
 
 
 def degrees2radians(_degrees: float) -> float:
-    """Convert Degrees to Radians
-    (PI / 180) * Degrees
-    """
+    """Convert Degrees to Radians {(PI / 180) * Degrees}"""
     return 0.017453292519943 * _degrees
 
 
 def radians2degrees(_radians: float) -> float:
-    """Convert Radians to Degrees
-    (180 / PI) * Radians
-    """
+    """Convert Radians to Degrees {(180 / PI) * Radians}"""
     return 57.29577951308232 * _radians
 
 
 def showpercent(_portion: int or float, _total: int or float=100) -> str:
     """Convert a portion and total to a percentage
+
     Input int and/or float types and get a string
     """
     return '{:.2%}'.format(_portion / _total)
@@ -288,6 +284,7 @@ def showpercent(_portion: int or float, _total: int or float=100) -> str:
 
 def int2many(_int: int) -> str:
     """Convert a decimal number to mulitple number base types
+
     The returned value is a table as a string
     """
     return 'dec: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}'.format(_int)
@@ -305,9 +302,9 @@ def dice8() -> int:
 
 def coinflip() -> str:
     """Flip a coin and return a string of heads or tails"""
-    return choice(('heads', 'tails'))
+    return choice((r'heads', r'tails'))
 
 
 def flipcoin() -> str:
     """Flip a coin and return a string of heads or tails"""
-    return choice(('heads', 'tails'))
+    return choice((r'heads', r'tails'))

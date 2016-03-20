@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions (from tools.c and x86_64_asm_func.c)
-@version 2016.03.18
+@version 2016.03.20
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from tools.c

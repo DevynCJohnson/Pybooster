@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-"""
+"""@brief Electronics equations
 @file electronics.py
 @package pybooster.electronics
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@brief Electronics equations
-@version 2016.03.18
+@version 2016.03.20
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -42,7 +41,7 @@ __all__ = [
 # CONSTANTS
 
 
-OHMS = 'Ω'
+OHMS = r'Ω'
 
 
 # FUNCTIONS
@@ -65,10 +64,10 @@ def voltage(_current: float, _resistance: float) -> float:
 
 def power(_current: float=None, _resistance: float=None, _voltage: float=None) -> float:
     """Power (Wattage)"""
-    if _current is None:  # P=(E^2)/Ω
+    if _current is None:  # P=(E^2)/Ω  # noqa
         return (_voltage ** 2) / _resistance
-    elif _resistance is None:  # P=IE
+    elif _resistance is None:  # P=IE  # noqa
         return _current * _voltage
-    elif _voltage is None:  # P=(I^2)Ω
+    elif _voltage is None:  # P=(I^2)Ω  # noqa
         return (_current ** 2) * _resistance
     return None

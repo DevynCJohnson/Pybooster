@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -110,53 +111,52 @@ $(document).ready(function(){initNavTree('convmass_8py_source.html','');});
 <a href="convmass_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1convmass.html">    1</a></span>&#160;<span class="comment">#!/usr/bin/env python3</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"># vim:fileencoding=utf-8</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">&quot;&quot;&quot;@brief Measurement (Mass) Conversions</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">@file convmass.py</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral">@package pybooster.convmass</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">@author Devyn Collier Johnson &lt;DevynCJohnson@Gmail.com&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@copyright LGPLv3</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@brief Measurement (Mass) Conversions</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@version 2016.03.18</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">License along with this library.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@version 2016.03.20</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@section LICENSE</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">GNU Lesser General Public License v3</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">Copyright (c) Devyn Collier Johnson, All rights reserved.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">The PyBooster Library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">version 3.0 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral">This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">Lesser General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">License along with this library.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1convmass.html#aa4a022e6ddacd362b83964da5cc5d044">   31</a></span>&#160;__all__ = [</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment"># KILOGRAMS</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="stringliteral">&#39;kilogram2pound&#39;</span>,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;]</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1convmass.html#aa4a022e6ddacd362b83964da5cc5d044">   30</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment"># KILOGRAMS</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="stringliteral">&#39;kilogram2pound&#39;</span>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;]</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"># KILOGRAMS</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"># KILOGRAMS</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">kilogram2pound</a>(_mass: int <span class="keywordflow">or</span> float, _round: int=3) -&gt; float:</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">   41</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Kilograms -&gt; Pounds&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> round(_mass * 2.2046, _round)</div>
-<div class="ttc" id="namespacepybooster_1_1convmass_html_a36e8c8f74657a4f2d7d0d01b1037e873"><div class="ttname"><a href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">pybooster.convmass.kilogram2pound</a></div><div class="ttdeci">def kilogram2pound</div><div class="ttdoc">Kilograms -> Pounds. </div><div class="ttdef"><b>Definition:</b> <a href="convmass_8py_source.html#l00041">convmass.py:41</a></div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">def </span><a class="code" href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">kilogram2pound</a>(_mass: int <span class="keywordflow">or</span> float, _round: int=3) -&gt; float:</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">   40</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Kilograms -&gt; Pounds&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> round(_mass * 2.2046, _round)</div>
+<div class="ttc" id="namespacepybooster_1_1convmass_html_a36e8c8f74657a4f2d7d0d01b1037e873"><div class="ttname"><a href="namespacepybooster_1_1convmass.html#a36e8c8f74657a4f2d7d0d01b1037e873">pybooster.convmass.kilogram2pound</a></div><div class="ttdeci">def kilogram2pound</div><div class="ttdoc">Kilograms -> Pounds. </div><div class="ttdef"><b>Definition:</b> <a href="convmass_8py_source.html#l00040">convmass.py:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6904aafbc2790e746dca23cba5cfd6e6.html">pybooster</a></li><li class="navelem"><a class="el" href="convmass_8py.html">convmass.py</a></li>
-    <li class="footer">Generated on Sat Mar 19 2016 17:05:48 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 14:39:30 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -12,7 +12,7 @@ var searchData=
   ['yard2microinch',['yard2microinch',['../namespacepybooster_1_1convlength.html#abc2ec0cfd2286a8efe331325db31b8f6',1,'pybooster::convlength']]],
   ['yard2mile',['yard2mile',['../namespacepybooster_1_1convlength.html#a3c1e29ad0a56654e0c856237283cceea',1,'pybooster::convlength']]],
   ['yard2millimeter',['yard2millimeter',['../namespacepybooster_1_1convlength.html#add487440570b7a53121d605f21865973',1,'pybooster::convlength']]],
-  ['year',['YEAR',['../namespacepybooster_1_1timeutil.html#a90306d4afae20eed48e0b2c52b989164',1,'pybooster.timeutil.YEAR()'],['../namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89',1,'pybooster.timeutil.year()']]],
+  ['year',['year',['../namespacepybooster_1_1timeutil.html#a000e896de57619b02a830b3568dd7c89',1,'pybooster.timeutil.year()'],['../namespacepybooster_1_1timeutil.html#a90306d4afae20eed48e0b2c52b989164',1,'pybooster.timeutil.YEAR()']]],
   ['year2int',['YEAR2INT',['../PY__MACROS_8h.html#a78b4162118d1c917814d3001691cd6f8',1,'PY_MACROS.h']]],
   ['yes',['yes',['../MACROS_8h.html#ade1c73328c7fd9bbb990a2811a5182e5',1,'yes():&#160;MACROS.h'],['../MACROS_8h.html#a7ebc9a785e5ab85457c98595aac81589',1,'YES():&#160;MACROS.h']]],
   ['yiq2rgb',['yiq2rgb',['../namespacepybooster_1_1color.html#a6b943faf2db3e41e1386bdfdae0199e6',1,'pybooster::color']]],
