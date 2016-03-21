@@ -69,6 +69,7 @@ var searchData=
   ['compton_5fwavelength',['COMPTON_WAVELENGTH',['../mathconstants_8c.html#aba85349175b8f1c4eda26c7d285a4e8e',1,'COMPTON_WAVELENGTH():&#160;mathconstants.c'],['../mathconstants_8h.html#aba85349175b8f1c4eda26c7d285a4e8e',1,'COMPTON_WAVELENGTH():&#160;mathconstants.c'],['../namespacepybooster_1_1science__data.html#af6e8167a34716f066704744bb2690065',1,'pybooster.science_data.COMPTON_WAVELENGTH()']]],
   ['compton_5fwavelength_5fover_5f2_5fpi',['COMPTON_WAVELENGTH_OVER_2_PI',['../namespacepybooster_1_1science__data.html#a8b6713ad728535fca9a5a74f1ac61d6d',1,'pybooster::science_data']]],
   ['conductance_5fquantum',['CONDUCTANCE_QUANTUM',['../namespacepybooster_1_1science__data.html#a34e0c48fcbcb7507ef786f4cad5eb93b',1,'pybooster::science_data']]],
+  ['const',['const',['../tools_8h.html#ad923b61c6c0201d8bca5606b924335a0',1,'tools.h']]],
   ['control_5fsym',['CONTROL_SYM',['../namespacepybooster_1_1strtools.html#a4c48de40157b6514d656c871b8ef6d31',1,'pybooster::strtools']]],
   ['control_5fsym_5fname',['CONTROL_SYM_NAME',['../namespacepybooster_1_1strtools.html#a61161c6e4070be8320fda1212d32e60c',1,'pybooster::strtools']]],
   ['conventional_5fvalue_5fof_5fjosephson_5fconstant',['CONVENTIONAL_VALUE_OF_JOSEPHSON_CONSTANT',['../namespacepybooster_1_1science__data.html#a9c475a3c47ed403d8d4fb3f23d576d5d',1,'pybooster::science_data']]],

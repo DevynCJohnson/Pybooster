@@ -5,13 +5,12 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Math Functions
-@version 2016.03.20
+@brief Mathematical and Trigonometric Functions
+@version 2016.03.21
 
 @section DESCRIPTION
-Numerous mathematical and trigonometric functions.
-This extends the standard math library by providing by offering faster alternatives.
-Such functions include squareroot, fractorial, fib, haversin, isprime, ishexagonal, etc.\n
+This library provides additional functions and offers faster alternatives to some standard functions.
+Some provided functions include squareroot, fractorial, fib, haversin, isprime, ishexagonal, etc.\n
 <math.h> contains
  - cos, sin, tan  // General (Radians)
  - acos, asin, atan, atan2  // Arcs

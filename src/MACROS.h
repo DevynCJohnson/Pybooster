@@ -6,10 +6,10 @@
 @copyright LGPLv3
 
 @brief Standard Macros Header
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
-This file defines various macros functions, names, and tests.
+This file defines various datatypes, macros functions, names, and tests.
 Substitutes for <stdbool.h>, <stdarg.h>, and <ctype.h> are also provided.
 
 @section LICENSE
@@ -501,7 +501,7 @@ http://www.cplusplus.com/reference/climits/
 #   endif
 #   define _TRUE   ((uint8_t)0x1)
 #   ifndef bool
-/** <stdbool.h> Replacement */
+/** <stdbool.h> replacement */
 typedef _Bool   bool;
 #   endif
 #   if (!defined(BOOL) && !defined(OSWINDOWS))
@@ -519,7 +519,7 @@ typedef _Bool   BOOL;
 #endif
 
 
-/* STDARG (<stdarg.h> REPLACEMENT) */
+/* STDARG (<stdarg.h> rEPLACEMENT) */
 
 
 #ifdef __cplusplus
@@ -532,8 +532,6 @@ typedef __builtin_va_list   va_list;
 typedef __builtin_va_list   __gnuc_va_list;  // Hack to make standard headers work on Ubuntu
 #endif
 #define va_arg   __builtin_va_arg
-//#define va_arg(v,DATATYPE)   (__builtin_va_arg((v), (DATATYPE)))
-//#define va_end   __builtin_va_end
 #define va_end(v)   (__builtin_va_end((v)))
 #define va_start(v,argnum)   (__builtin_va_start((v), (argnum)))
 #define __va_copy(dest,src)   (__builtin_va_copy((dest), (src)))
@@ -555,6 +553,7 @@ typedef __builtin_va_list   __gnuc_va_list;  // Hack to make standard headers wo
 #ifndef TYPE_ALIASES_SEEN
 #define TYPE_ALIASES_SEEN
 #if (!defined(__GNUC__) && !defined(__asm__))
+/** Alias for "asm" on systems that lack "__asm__" */
 #   define __asm__    asm
 #endif
 #if (defined(__GNUC__) && !defined(ptrdiff_t))
@@ -569,16 +568,25 @@ typedef __builtin_va_list   __gnuc_va_list;  // Hack to make standard headers wo
 #if (defined(OSWINDOWS) && !defined(WEOF))
 #   define WEOF   ((wchar_t)(0xFFFF))
 #endif
+/** Alias for "signed long int" */
 #define slint   signed long int
+/** Alias for "signed long long int" */
 #define sllint   signed long long int
+/** Alias for "unsigned int" */
 #define uint   unsigned int
+/** Alias for "unsigned long int" */
 #define ulint   unsigned long int
+/** Alias for "unsigned long long int" */
 #define ullint   unsigned long long int
+/** Alias for "float" */
 #define single   float
+/** Alias for "uint8_t" */
 #define Byte   uint8_t
+/** Alias for "unsigned long" */
 #define Word   unsigned long
 #define s8   signed char
 #define u8   unsigned char
+/** Alias for "uint32_t" */
 #define utf32   uint32_t
 #if ((UINT_MAX) >= 4294967295UL)
 #   define s16   signed short
@@ -716,27 +724,42 @@ typedef struct __cast__float128 {  // Work-around for Clang
 
 #ifndef NUMBER_TUPLES_SEEN
 #define NUMBER_TUPLES_SEEN
+/** Pair of doubles */
 typedef struct { double x, y; } doublepair_t;
+/** Pair of floats */
 typedef struct { float x, y; } floatpair_t;
+/** Pair of long doubles */
 typedef struct { long double x, y; } longdoublepair_t;
+/** Pair of uint8_t integers */
 typedef struct { uint8_t x, y; } bytepair_t;
+/** Pair of signed integers */
 typedef struct { signed int x, y; } intpair_t;
+/** Pair of long signed integers */
 typedef struct { slint x, y; } slintpair_t;
+/** Pair of long unsigned integers */
 typedef struct { ulint x, y; } ulintpair_t;
+/** Pair of long long unsigned integers */
 typedef struct { ullint x, y; } ullintpair_t;
+/** Pair of long long signed integers */
 typedef struct { sllint x, y; } sllintpair_t;
+/** Group of three doubles */
 typedef struct { double x, y, z; } doubletriplet_t;
+/** Group of three floats */
 typedef struct { float x, y, z; } floattriplet_t;
 #ifndef INT128_UNSUPPORTED
 typedef struct { int128_t x, y; } int128pair_t;
 typedef struct { int128_t x, y, z; } int128triplet_t;
 #endif
 #ifndef UINT128_UNSUPPORTED
+/** Pair of uint128_t integers */
 typedef struct { uint128_t x, y; } uint128pair_t;
+/** Group of three uint128_t integers */
 typedef struct { uint128_t x, y, z; } uint128triplet_t;
 #endif
 #ifndef FLOAT128_UNSUPPORTED
+/** Pair of 128-bit floats */
 typedef struct { float128 x, y; } float128pair_t;
+/** Group of three 128-bit floats */
 typedef struct { float128 x, y, z; } float128triplet_t;
 #endif
 #endif  // NUMBER_TUPLES_SEEN
@@ -859,13 +882,15 @@ https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29
 #   define ATTR_NORETURN   __attribute__((noreturn))
 #   define ATTR_UNUSED   __attribute__((unused))
 /**
-    Evaluates to `exp` and hints that the value of `exp` will probably be true.\n
-    In other words, "if (PREDICT_LIKELY(foo))" is the same as "if (foo)", except that it tells the compiler that the branch will be taken most of the time. This can generate slightly better code with some CPUs.
+    Evaluates to `exp` and hints that the value of `exp` will probably be true.
+
+    In other words, if "(PREDICT_LIKELY(foo))" is the same as "if (foo)", it tells the compiler that the branch will be taken most of the time. This can generate slightly better code with some CPUs.
 */
 #   define PREDICT_LIKELY(exp)   __builtin_expect(!!(exp), 0x1)
 /**
-    Evaluates to `exp` and hints that the value of `exp` will probably be false.\n
-    In other words, "if (PREDICT_UNLIKELY(foo))" is the same as "if (foo)", except that it tells the compiler that the branch will usually not be taken. This can generate slightly better code with some CPUs.
+    Evaluates to `exp` and hints that the value of `exp` will probably be false.
+
+    In other words, if "(PREDICT_UNLIKELY(foo))" is the same as "if (foo)", it tells the compiler that the branch will usually not be taken. This can generate slightly better code with some CPUs.
 */
 #   define PREDICT_UNLIKELY(exp)   __builtin_expect(!!(exp), 0x0)
 #else
@@ -959,6 +984,7 @@ https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29
 #define CAT(x, y)   ((x) ## (y))
 // TYPENAME
 #ifndef typename
+/** Return the datatype of the given variable */
 #define typename(x)   _Generic((x), \
     _Bool: "_Bool", \
     unsigned char: "unsigned char", \

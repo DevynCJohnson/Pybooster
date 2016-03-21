@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['k',['k',['../cryptx_8h.html#aae04ad987a21b789518aaae9825b668c',1,'quaternion_crypt_byte::k()'],['../math__types_8h.html#ac8a270bda1a0784095b5ec578129c28a',1,'quaternion::k()'],['../math__types_8h.html#a9fc4cca635a26c692681a7071e379aa7',1,'quaternion_float::k()'],['../math__types_8h.html#a2eebf47a2fab6ce42cb8923ba73d1039',1,'quaternion_long_double::k()']]],
+  ['k',['k',['../cryptx_8h.html#aae04ad987a21b789518aaae9825b668c',1,'quaternion_crypt_byte::k()'],['../math__types_8h.html#ac8a270bda1a0784095b5ec578129c28a',1,'quaternion::k()'],['../math__types_8h.html#a9fc4cca635a26c692681a7071e379aa7',1,'quaternion_float::k()'],['../math__types_8h.html#a2eebf47a2fab6ce42cb8923ba73d1039',1,'quaternion_long_double::k()'],['../math__types_8h.html#a05181e9584f513c843c76fe47ca57743',1,'quaternion_float128::k()']]],
   ['kelvin2celsius',['kelvin2celsius',['../namespacepybooster_1_1convtemp.html#a6b409014cad899b1a62c493a97447a87',1,'pybooster::convtemp']]],
   ['kelvin2centigrade',['kelvin2centigrade',['../namespacepybooster_1_1convtemp.html#ad5b2326ff18e3d01eac6850a902030b0',1,'pybooster::convtemp']]],
   ['kelvin2delisle',['kelvin2delisle',['../namespacepybooster_1_1convtemp.html#aa48df03f05f2376be54a2b7922d42dfe',1,'pybooster::convtemp']]],

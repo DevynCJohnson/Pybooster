@@ -3,6 +3,7 @@
 *.S linguist-language=Assembly
 *.c linguist-language=C
 *.h linguist-language=C
+*.swg linguist-language=C
 *.py linguist-language=Python
 *.pyw linguist-language=Python
 *.pygtk linguist-language=Python

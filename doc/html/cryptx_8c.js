@@ -3,6 +3,7 @@ var cryptx_8c =
     [ "DELTA", "cryptx_8c.html#a3fd2b1bcd7ddcf506237987ad780f495", null ],
     [ "MX", "cryptx_8c.html#a251b4891d7c5deeb23b5a16bed253c6a", null ],
     [ "TREYFER_ROTL", "cryptx_8c.html#a710c897ba1015dfb15de366288fc6420", null ],
+    [ "adler128", "cryptx_8c.html#adf22cf5e79f23eb129b97880cb390374", null ],
     [ "adler16", "cryptx_8c.html#ac64550e6a64681e1ab4f07ed359e8407", null ],
     [ "adler32", "cryptx_8c.html#a3a212fb8509352bc18819e9fbef318e9", null ],
     [ "adler64", "cryptx_8c.html#a47c6f920396a154cfd10ace996d23285", null ],
@@ -14,6 +15,7 @@ var cryptx_8c =
     [ "array_rotr", "cryptx_8c.html#ae22c5338d6ed96423947e31799d94fc5", null ],
     [ "array_rotr64", "cryptx_8c.html#ad20599513a00fc00379ede0d4bbae673", null ],
     [ "bitparity", "cryptx_8c.html#abb6197d33e3c85c505c5751949ee130d", null ],
+    [ "bitparity128", "cryptx_8c.html#ae93f0e0366458e7fff1b6b7d8e27dbc1", null ],
     [ "bitparity64", "cryptx_8c.html#ab27072fdde64689ec4aa8386170bf20b", null ],
     [ "byte_rotl", "cryptx_8c.html#a5c999b04c66cee23283cbe2ee2a320ac", null ],
     [ "byte_rotr", "cryptx_8c.html#af35789da2f4edb9e9eb5574fc3cc6cd3", null ],
@@ -61,8 +63,8 @@ var cryptx_8c =
     [ "randstrx", "cryptx_8c.html#a7d299389192b3c4e1fd13521e14b9ecc", null ],
     [ "shuffle_int", "cryptx_8c.html#af93782949892670ca16d9a446a36ca75", null ],
     [ "shuffle_uint32", "cryptx_8c.html#a7300899819d8d392cc8bcc02307f871c", null ],
-    [ "strlenx", "cryptx_8c.html#a5dd72e715b61fb530a213c952e0718a4", null ],
-    [ "strlenx_uint8", "cryptx_8c.html#aeae3161f488fff589cbba0fce40f3b57", null ],
+    [ "strlenx", "cryptx_8c.html#a73a0f3e114903246575f0a9bcffa49f2", null ],
+    [ "strlenx_uint8", "cryptx_8c.html#a29a531d237bc902265338a8e47a3c99f", null ],
     [ "tea_cipher", "cryptx_8c.html#ae2e7cf242281e112e58e9559dbbb78ca", null ],
     [ "treyfer_cipher", "cryptx_8c.html#a2293cbdf9ec8a973e09bfb8ebd43e9f7", null ],
     [ "xor_cipher", "cryptx_8c.html#ac56b4e73dab4fbc0921e386dfc1a0a32", null ],
@@ -77,5 +79,6 @@ var cryptx_8c =
     [ "ANUBIS_T5", "cryptx_8c.html#a6db29255d2c0a965ac6eabb176e5cf1d", null ],
     [ "crc16_table", "cryptx_8c.html#a28a0c50396ed66bb2fd1e3cf9ff28e88", null ],
     [ "crc32_table", "cryptx_8c.html#a994fb17fb11b26277bdad5cc2e8f285b", null ],
+    [ "flatten", "cryptx_8c.html#a29f622f04cea94131e6bf4b6ad0da48b", null ],
     [ "Sbox", "cryptx_8c.html#a7054217d7fb2ce79e793a37638c594f3", null ]
 ];

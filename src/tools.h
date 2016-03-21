@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Various functions that do not fit in other categories.
@@ -304,7 +304,6 @@ int LSBVER(void);
 int islibelf(void);
 #endif
 /* MISCELLANEOUS */
-void printline(void);
 #ifdef __GNUC__
 void xorswap(int *__restrict__ x, int *__restrict__ y) __attribute__((nonnull));
 void xorswap_sll(sllint *__restrict__ x, sllint *__restrict__ y) __attribute__((nonnull));

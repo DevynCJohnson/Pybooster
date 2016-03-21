@@ -30,5 +30,6 @@ var searchData=
   ['quaternion_5fzerof',['QUATERNION_ZEROf',['../MATH__MACROS_8h.html#a263ad84b2ee694b070a57fd79ace3a27',1,'MATH_MACROS.h']]],
   ['quaternion_5fzerol',['QUATERNION_ZEROl',['../MATH__MACROS_8h.html#ab5e3771ccbddc980937eeb01404e65a5',1,'MATH_MACROS.h']]],
   ['quaternionf',['QUATERNIONF',['../math__types_8h.html#a1e15f2a33bea2d911b1eec592c5cb4e1',1,'math_types.h']]],
+  ['quaternionf128',['QUATERNIONF128',['../math__types_8h.html#a949132ef366d32016a16ba44edf68770',1,'math_types.h']]],
   ['quaternionl',['QUATERNIONL',['../math__types_8h.html#a9ce79e728439d8b5d21626591d28f4e8',1,'math_types.h']]]
 ];

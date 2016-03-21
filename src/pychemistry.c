@@ -5,11 +5,10 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Chemistry-related Functions
-@version 2016.03.20
+@brief Chemistry Functions from chemistry.c
+@version 2016.03.21
 
 @section DESCRIPTION
-This is a Python3 module that uses functions from chemistry.c
 Chemistry-specific functions that perform calculations or truth-tests
 
 @section LICENSE

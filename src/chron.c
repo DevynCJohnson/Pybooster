@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Time Functions
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Functions pertaining to time

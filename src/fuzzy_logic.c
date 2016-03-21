@@ -5,8 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Fuzzy Logic
-@version 2016.03.20
+@brief Fuzzy-logic datatype and functions
+@version 2016.03.21
 
 @section DESCRIPTION
 Light-weight Fuzzy-Logic library and conversions between fuzzy and boolean datatypes
@@ -67,20 +67,36 @@ const fuzzy absolutely = 100;
 /* FUNCTIONS */
 
 
-/** Convert boolean-logic to fuzzy-logic */
+/**
+    Convert boolean-logic to fuzzy-logic
+
+    @param[in] logic    Boolean-logic value
+    @returns Fuzzy-logic value
+*/
 fuzzy bool2fuzzy(const bool logic) {
     if (logic == 0x00) { return false_f; }
     return true_f;
 }
 
 
-/** Convert fuzzy-logic to boolean-logic */
+/**
+    Convert fuzzy-logic to boolean-logic
+
+    @param[in] logic    Fuzzy-logic value
+    @returns Boolean-logic value
+*/
 bool fuzzy2bool(const fuzzy logic) {
     return (bool)(logic >= 50);
 }
 
 
-/** Return the largest (maximum) number */
+/**
+    Return the largest (maximum) number
+
+    @param[in] count    Number of input parameters (besides this one)
+    @param[in] ...    Integers
+    @returns Largest number
+*/
 int fuzzymax(const int count, ...) {
     va_list varargs;
     register int ans, i, num;
@@ -95,7 +111,13 @@ int fuzzymax(const int count, ...) {
 }
 
 
-/** Return the smallest (minimum) number */
+/**
+    Return the smallest (minimum) number
+
+    @param[in] count    Number of input parameters (besides this one)
+    @param[in] ...    Integers
+    @returns Smallest number
+*/
 int fuzzymin(const int count, ...) {
     va_list varargs;
     register int ans, i, num;
@@ -110,10 +132,16 @@ int fuzzymin(const int count, ...) {
 }
 
 
-/** Minimal Negation Operator (just one false) - Return result */
+/**
+    Minimal Negation Operator (just one false) - Return result
+
+    @param[in] count    Number of input parameters (besides this one); Value: 1-3
+    @param[in] ...    Integers
+    @returns Answer
+*/
 int mno(const int count, ...) {
     va_list varargs;
-    register int ans = 0x00, x, y, z;
+    register int ans = 0x0, x, y, z;
     va_start(varargs, count);
     switch (count) {
         case 1:

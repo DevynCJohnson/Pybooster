@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Physics Functions
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Functions related to physics calculations

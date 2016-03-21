@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 # @brief Makefile for PyBooster
-# @version 2016.03.19
+# @version 2016.03.21
 
 
 ifdef DCJ
@@ -18,6 +18,7 @@ include profiles.mk
 
 
 override CLIB::=./clib
+override SWIGLIB::=./swiglib
 override PYMODDIR::=./pybooster
 override SRCDIR::=./src
 PYPATH::=/usr/lib/python
@@ -25,8 +26,10 @@ override PYCLIB::=/opt/pybooster/clib
 override SYSPYCLIB::=/usr/lib/pyclib
 override INCLUDE::=-D__MODULE_VERSION__=$(__MODULE_VERSION__) -I$(SRCDIR)
 override COMMON_ARGUMENTS::=$(WARN) $(ARCH) $(BITS) $(STD) -O3 $(XOPTMZ) $(DEBUG) -funroll-loops
+override COMMON_SWIG_ARGUMENTS::=$(ARCH) $(BITS) $(STD) -O3 $(XOPTMZ) $(DEBUG) -funroll-loops
 override COMMON_PY_ARGUMENTS::=$(PYINCLUDE) $(PYCFLAGS) -D_FORTIFY_SOURCE=2 -fwrapv
 override COMMON_POSIX_ARGUMENTS::=$(POSIX_STACK_PROTECTOR) -ffunction-sections -fdata-sections
+SWIG::=swig3.0
 
 ifndef STRIP
 	override STRIP::=strip
@@ -35,7 +38,11 @@ endif
 ifeq ($(OS),WIN)
 	override FPIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(FPIC)
 
+	override SWIG_FPIC_PARAMS::=$(INCLUDE) $(COMMON_SWIG_ARGUMENTS) $(WINLIB) $(LDZ) -c $(FPIC)
+
 	override LIB_PARAMS::=-L$(CLIB) -D__MODULE_VERSION__=$(__MODULE_VERSION__) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ)
+
+	override SWIG_LIB_PARAMS::=-L$(CLIB) -D__MODULE_VERSION__=$(__MODULE_VERSION__) $(COMMON_SWIG_ARGUMENTS) $(WINLIB) $(LDZ)
 
 	override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(FPIC)
 
@@ -44,9 +51,14 @@ ifeq ($(OS),WIN)
 	override PY_LIB_PARAMS::=-L$(CLIB) -D__MODULE_VERSION__=$(__MODULE_VERSION__) $(COMMON_ARGUMENTS) $(WINLIB) -Wl,-Bsymbolic-functions $(LDZ)
 else
 	override INCLUDE+= $(POSIX_INCLUDE)
+
 	override FPIC_PARAMS::=$(INCLUDE) $(FLTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(FPIC)
 
+	override SWIG_FPIC_PARAMS::=$(INCLUDE) $(FLTO) $(COMMON_SWIG_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(FPIC)
+
 	override LIB_PARAMS::=-L$(CLIB) -D__MODULE_VERSION__=$(__MODULE_VERSION__) $(FLTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) -Wl,-no-whole-archive $(LDZ) -shared
+
+	override SWIG_LIB_PARAMS::=-L$(CLIB) -D__MODULE_VERSION__=$(__MODULE_VERSION__) $(FLTO) $(COMMON_SWIG_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) -Wl,-no-whole-archive $(LDZ) -shared
 
 	override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(FPIC)
 
@@ -70,12 +82,14 @@ help:
 	@echo "* COMPILATION INSTRUCTIONS *"
 	@echo ""
 	@echo ""
-	@echo "Everything:"
+	@echo "Everything except SWIG wrappers:"
 	@echo "    make all"
-	@echo "Everything (using Clang):"
+	@echo "Everything except SWIG wrappers (using Clang):"
 	@echo "    make all CLANG=3.7  # specify version"
-	@echo "All libraries:"
+	@echo "All libraries (except SWIG wrappers):"
 	@echo "    make library"
+	@echo "SWIG wrappers:"
+	@echo "    make wrappers"
 	@echo "Dynamic libraries:"
 	@echo "    make lib"
 	@echo "Python C libraries:"
@@ -161,7 +175,7 @@ default:
 ## PHONY ##
 
 
-.PHONY : all ast backup byte clean cleanall cleanfull commit doc doxy everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp stat static strip submit uninstall
+.PHONY : all ast backup byte clean cleanall cleanfull commit doc doxy everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp rmwrap stat static strip submit swig_mathfunc uninstall wrappers
 
 
 ## BUILD COMMANDS ##
@@ -240,17 +254,20 @@ package7z : rmtmp
 packagezip : rmtmp
 	@cd ../; zip -r ./PyBooster_v`date +"%Y.%m.%d"`.zip PyBooster; cd ./PyBooster
 
-doc :
+doc : rmwrap
 	-@./makedoc.sh
 
-doxy :
+doxy : rmwrap
 	-@doxywizard ./Doxyfile; chmod --quiet 644 ./Doxyfile
 
 rmtmp :
-	-@rm -f $(SRCDIR)/*.o $(SRCDIR)/*.s $(SRCDIR)/*.bc $(SRCDIR)/*.ll $(SRCDIR)/*.ast $(SRCDIR)/*.i  $(SRCDIR)/*.ii $(SRCDIR)/*.pch; rm -frd --one-file-system $(SRCDIR)/build/
+	-@rm -f $(SRCDIR)/*.o $(SRCDIR)/*.s $(SRCDIR)/*.bc $(SRCDIR)/*.ll $(SRCDIR)/*.ast $(SRCDIR)/*.i  $(SRCDIR)/*.ii $(SRCDIR)/*.pch $(SRCDIR)/*_wrap.c; rm -frd --one-file-system $(SRCDIR)/build/
 
 rmcache :
 	-@rm -frd --one-file-system $(PYMODDIR)/__pycache__/; rm -frd --one-file-system $(PYMODDIR)/ezwin/__pycache__/
+
+rmwrap :
+	-@rm -f $(SRCDIR)/*_wrap.c
 
 clean : rmtmp rmcache
 
@@ -258,7 +275,7 @@ cleandoc :
 	-@rm -frd ./doc/*
 
 cleanall : rmtmp rmcache
-	-@rm -f $(PYMODDIR)/*.so $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
+	-@rm -f $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
 
 cleanfull : cleanall cleandoc
 
@@ -306,9 +323,9 @@ fixperm : rmtmp
 	$(CHMOD) 644 ./doc/html/*; \
 	$(CHMOD) 755 ./doc/html/search; \
 	$(CHMOD) 644 ./doc/html/search/*; \
-	$(CHMOD) 644 ./src/*; \
+	$(CHMOD) 644 $(SRCDIR)/*; \
 	$(CHMOD) 644 $(PYMODDIR)/*.py $(PYMODDIR)/*.pyw $(PYMODDIR)/*.glade; \
-	$(CHMOD) 755 $(PYMODDIR)/*.so ./clib/*.so ./clib/*.dll; \
+	$(CHMOD) 755 $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(CLIB)/*.so $(CLIB)/*.dll; \
 	$(CHMOD) 644 $(PYMODDIR)/__pycache__/* $(PYMODDIR)/ezwin/__pycache__/*; \
 	$(CHMOD) 644 $(PYMODDIR)/ezwin/*.py $(PYMODDIR)/ezwin/*.glade; \
 
@@ -332,7 +349,15 @@ submit :
 ## RULES ##
 
 
-# LLVM/Clang
+# SWIG #
+
+wrappers : swig_mathfunc
+
+swig_mathfunc : static_libmathfunc
+	$(SWIG) -tcl $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/tcl $(SRCDIR)/mathfunc_wrap.c -o $(SRCDIR)/mathfunc_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGLIB)/tclmathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_wrap.o -ltcl -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGLIB)/tclmathfunc.so
+
+
+# LLVM/Clang #
 
 ast :
 	-$(CLANG_AST) $(SRCDIR)/chemistry.c -o $(SRCDIR)/chemistry.ast; $(CLANG_AST) $(SRCDIR)/chemistry_types.c -o $(SRCDIR)/chemistry_types.ast; $(CLANG_AST) $(SRCDIR)/compression.c -o $(SRCDIR)/compression.ast; $(CLANG_AST) $(SRCDIR)/cryptx.c -o $(SRCDIR)/cryptx.ast; $(CLANG_AST) $(SRCDIR)/chron.c -o $(SRCDIR)/chron.ast; $(CLANG_AST) $(SRCDIR)/extra_datatypes.c -o $(SRCDIR)/extra_datatypes.ast; $(CLANG_AST) $(SRCDIR)/fuzzy_logic.c -o $(SRCDIR)/fuzzy_logic.ast; $(CLANG_AST) $(SRCDIR)/geometry.c -o $(SRCDIR)/geometry.ast; $(CLANG_AST) $(SRCDIR)/mathconstants.c -o $(SRCDIR)/mathconstants.ast; $(CLANG_AST) $(SRCDIR)/mathfunc.c -o $(SRCDIR)/mathfunc.ast; $(CLANG_AST) $(SRCDIR)/physics.c -o $(SRCDIR)/physics.ast; $(CLANG_AST) $(SRCDIR)/tone.c -o $(SRCDIR)/tone.ast; $(CLANG_AST) $(SRCDIR)/tools.c -o $(SRCDIR)/tools.ast; $(CLANG_AST) $(SRCDIR)/typesize.c -o $(SRCDIR)/typesize.ast
@@ -344,7 +369,7 @@ llvm_intermediate :
 	-$(LLVM_INTERMEDIATE) $(SRCDIR)/chemistry.c -o $(SRCDIR)/chemistry.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/chemistry_types.c -o $(SRCDIR)/chemistry_types.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/compression.c -o $(SRCDIR)/compression.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/cryptx.c -o $(SRCDIR)/cryptx.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/chron.c -o $(SRCDIR)/chron.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/extra_datatypes.c -o $(SRCDIR)/extra_datatypes.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/fuzzy_logic.c -o $(SRCDIR)/fuzzy_logic.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/geometry.c -o $(SRCDIR)/geometry.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/mathconstants.c -o $(SRCDIR)/mathconstants.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/mathfunc.c -o $(SRCDIR)/mathfunc.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/physics.c -o $(SRCDIR)/physics.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/tone.c -o $(SRCDIR)/tone.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/tools.c -o $(SRCDIR)/tools.ll; $(LLVM_INTERMEDIATE) $(SRCDIR)/typesize.c -o $(SRCDIR)/typesize.ll
 
 
-# Library Compiling
+# Library Compiling #
 
 # To dynamically link, use "-lm"
 libchemistry : | libchemistry_types
@@ -429,7 +454,7 @@ libx86_64_asm_func :
 	$(CC) $(FPIC_PARAMS) $(SRCDIR)/x86_64_asm_func.c -o $(SRCDIR)/x86_64_asm_func.o && $(CC) $(LIB_PARAMS) -o $(CLIB)/libx86_64_asm_func.$(LIBEXT) $(SRCDIR)/x86_64_asm_func.o && $(STRIP) $(STRIP_PARAMS) $(CLIB)/libx86_64_asm_func.$(LIBEXT)
 
 
-# Static Library Compiling
+# Static Library Compiling #
 
 # To statically link, use "-Wl,-Bdynamic -lm"
 static_libchemistry : | static_libchemistry_types
@@ -516,13 +541,13 @@ static_libx86_64_asm_func :
 	$(CC) $(STATIC_PARAMS) $(SRCDIR)/x86_64_asm_func.c -o $(SRCDIR)/x86_64_asm_func.o && ar rcs -o $(CLIB)/libx86_64_asm_func.a $(SRCDIR)/x86_64_asm_func.o
 
 
-# Python Byte Compiling
+# Python Byte Compiling #
 
 byte :
 	-export PYTHONOPTIMIZE="2"; python$(PYVERSION) -m compileall -q -f $(PYMODDIR)/
 
 
-# Python C-Extension Compiling
+# Python C-Extension Compiling #
 
 pychemistry : | static_libchemistry
 	$(CC) $(PY_FPIC_PARAMS) $(SRCDIR)/pychemistry.c -o $(SRCDIR)/pychemistry.o && $(CC) $(PY_LIB_PARAMS) $(SRCDIR)/pychemistry.o -Wl,-Bstatic -lchemistry -Wl,-Bdynamic -lm -o $(PYMODDIR)/chemistry$(PYEXT) && $(STRIP) $(STRIP_PARAMS) $(PYMODDIR)/chemistry$(PYEXT)

@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Additional datatypes, such as FILO-Stack, Queue (FIFO Stack), etc. (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Additional datatypes such as -
@@ -45,6 +45,7 @@ License along with this library.
 /* GPIO DATATYPES FOR EMBEDDED SYSTEMS */
 
 
+/** GPIO Pin Datatype */
 typedef struct {
     uint8_t block;
     uint8_t port;

@@ -5,11 +5,10 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Geometry Equations
-@version 2016.03.20
+@brief Geometry Equations from geometry.c
+@version 2016.03.21
 
 @section DESCRIPTION
-This is a Python3 module that uses functions from geometry.c
 Various geometric functions such as volume, area, distance, boolean tests, etc.
 
 @section LICENSE

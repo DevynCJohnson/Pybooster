@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Play tones (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This library provides functions that produce tones using libao
@@ -50,6 +50,7 @@ License along with this library.
 
 #define BUF_SIZE   (4096)
 
+/** Tone datatype that specifies buffer size (buffer built-in) and sample-rate */
 typedef struct {
     int buf_size;
     char buffer[BUF_SIZE];

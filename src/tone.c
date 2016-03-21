@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Play tones
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This library provides functions that produce tones using libao
@@ -48,7 +48,14 @@ ao_sample_format defaultsoundformat(void) {
 }
 
 
-/** Setup sound format (bits, channels, rate) */
+/**
+    Setup sound format (bits, channels, rate)
+
+    @param[in] bits    Bits
+    @param[in] channels    Number of sound channels
+    @param[in] rate    Sample-rate
+    @returns ao_sample_format
+*/
 ao_sample_format setsoundformat(const int bits, const int channels, const int rate) {
     ao_sample_format format;
     memset(&format, 0, sizeof(ao_sample_format));
@@ -74,7 +81,13 @@ ao_device *initdriver(ao_sample_format format) {
 /* TONE GENERATORS */
 
 
-/** Generate a tone lasting one second; remember to use `free(sound.buffer);` */
+/**
+    Generate a tone lasting one second; remember to use `free(sound.buffer);`
+
+    @param[in] freq    Frequency of sound wave
+    @param[in] format    Sound format in the ao_sample format
+    @returns sound (tone datatype)
+*/
 tone generatetone(const float freq, ao_sample_format format) {
     tone sound;
     sound.buf_size = (format.bits >> 3) * format.channels * format.rate;
@@ -93,7 +106,7 @@ tone generatetone(const float freq, ao_sample_format format) {
 /** Generate a 440Hz tone lasting one second; remember to use `free(sound.buffer);` */
 tone tone440hz(ao_sample_format format) {
     tone sound;
-    sound.buf_size = format.bits / 8 * format.channels * format.rate;
+    sound.buf_size = (format.bits / 8) * format.channels * format.rate;
     register int i;
     register float _val;
     for (i = 0; i < format.rate; ++i) {

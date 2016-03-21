@@ -6,7 +6,7 @@
 @package pybooster.fs
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2016.03.20
+@version 2016.03.21
 
 @section LICENSE
 GNU Lesser General Public License v3

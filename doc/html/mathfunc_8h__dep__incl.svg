@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="mathfunc_8c.html" target="_top" xlink:title="Math Functions. ">
+<g id="a_node2"><a xlink:href="mathfunc_8c.html" target="_top" xlink:title="Mathematical and Trigonometric Functions. ">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 65,-19.5 65,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="32.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">mathfunc.c</text>
 </a>
@@ -29,7 +29,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="pymathfunc_8c.html" target="_top" xlink:title="Math Functions. ">
+<g id="a_node3"><a xlink:href="pymathfunc_8c.html" target="_top" xlink:title="Mathematical and Trigonometric Functions from mathfunc.c. ">
 <polygon fill="white" stroke="black" points="83.5,-0.5 83.5,-19.5 159.5,-19.5 159.5,-0.5 83.5,-0.5"/>
 <text text-anchor="middle" x="121.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pymathfunc.c</text>
 </a>

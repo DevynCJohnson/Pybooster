@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Compression Functions
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This library provides compression and decompression functions
@@ -38,7 +38,7 @@ License along with this library.
 
 #ifdef OSPOSIX
 /** Private Function: Returns the size of a file (in bytes); POSIX systems only */
-static ulint getfilesize(const char *filename) {
+static ulint getfilesize(const char *__restrict__ filename) {
     struct stat sb;
     if (stat(filename, &sb) != 0x00) {
         fprintf(stderr, "ERROR: `getfilesize()` failed to get the filesize of `%s`!\n%s\n", filename, strerror(errno));
@@ -48,7 +48,7 @@ static ulint getfilesize(const char *filename) {
 }
 #else
 /** Private Function: Returns the size of a file (in bytes) */
-static ulint getfilesize(const char *filename) {
+static ulint getfilesize(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
     if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { EXIT_ON_ERROR("Failed to get filesize") }
@@ -59,8 +59,15 @@ static ulint getfilesize(const char *filename) {
 #endif
 
 
-/** zlib stream compression */
-int zlib_compress_stream(FILE *source, FILE *dest, const int level) {
+/**
+    zlib stream compression
+
+    @param[in] source    File to compress
+    @param[in] dest    File destination for compressed data
+    @param[in] level    Compression level (0-9)
+    @returns Return value
+*/
+int zlib_compress_stream(FILE *__restrict__ source, FILE *__restrict__ dest, const int level) {
     int ret, flush;
     unsigned have;
     z_stream strm;
@@ -101,7 +108,14 @@ int zlib_compress_stream(FILE *source, FILE *dest, const int level) {
 }
 
 
-/** zlib file compression */
+/**
+    zlib file compression
+
+    @param[in] source_filename    Name of the file to compress
+    @param[in] dest_filename    Pathname for compressed data
+    @param[in] level    Compression level (0-9)
+    @returns Return value
+*/
 int zlib_compress_file(char *source_filename, char *dest_filename, const int level) {
     FILE *source = fopen(source_filename, "rb");
     if (source == (FILE *)NULL) {
@@ -155,8 +169,14 @@ int zlib_compress_file(char *source_filename, char *dest_filename, const int lev
 }
 
 
-/** zlib stream decompression */
-int zlib_decompress_stream(FILE *source, FILE *dest) {
+/**
+    zlib stream decompression
+
+    @param[in] source    File to decompress
+    @param[in] dest    File for decompressed data
+    @returns Return value
+*/
+int zlib_decompress_stream(FILE *__restrict__ source, FILE *__restrict__ dest) {
     int ret;
     unsigned have;
     z_stream strm;
@@ -205,7 +225,13 @@ int zlib_decompress_stream(FILE *source, FILE *dest) {
 }
 
 
-/** zlib file decompression */
+/**
+    zlib file decompression
+
+    @param[in] source_filename    Name of the file to decompress
+    @param[in] dest_filename    Pathname for decompressed data
+    @returns Return value
+*/
 int zlib_decompress_file(char *source_filename, char *dest_filename) {
     FILE *source = fopen(source_filename, "rb");
     if (source == NULL) {
@@ -297,7 +323,11 @@ int zlib_decompress_file(char *source_filename, char *dest_filename) {
 }
 
 
-/** Zlib error reporting */
+/**
+    zlib error reporting
+
+    @param[in] ret    return value
+*/
 void zlib_err(const int ret) {
     fputs("zlib: ", stderr);
     switch (ret) {

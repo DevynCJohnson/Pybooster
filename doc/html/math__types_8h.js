@@ -12,6 +12,9 @@ var math__types_8h =
     [ "cube", "math__types_8h.html#structcube", [
       [ "length", "math__types_8h.html#a928b11f5716331f0b89abe7d8d4124b4", null ]
     ] ],
+    [ "cube__float128", "math__types_8h.html#structcube____float128", [
+      [ "length", "math__types_8h.html#a7cbab54625222d85f0c49172bfbaac42", null ]
+    ] ],
     [ "cubef", "math__types_8h.html#structcubef", [
       [ "length", "math__types_8h.html#a6150639f5295064e97e299a9206d16b1", null ]
     ] ],
@@ -34,6 +37,11 @@ var math__types_8h =
       [ "radius1", "math__types_8h.html#ae5c64759690c00fc38460395557d2c11", null ],
       [ "radius2", "math__types_8h.html#aa4ba6c6941b78a382c66619ca9e05820", null ],
       [ "radius3", "math__types_8h.html#a1d984395686c6617e9be394207e89a87", null ]
+    ] ],
+    [ "ellipsoid__float128", "math__types_8h.html#structellipsoid____float128", [
+      [ "radius1", "math__types_8h.html#a82f5185a05963f809668a4b63c64bbc4", null ],
+      [ "radius2", "math__types_8h.html#aea1f0e9738571d315061b106fa2d655d", null ],
+      [ "radius3", "math__types_8h.html#a1231773df0355ed5d88f57c2a6df2a12", null ]
     ] ],
     [ "ellipsoidf", "math__types_8h.html#structellipsoidf", [
       [ "radius1", "math__types_8h.html#a5d44c11790ca85a88e74419c20ebb96d", null ],
@@ -77,6 +85,10 @@ var math__types_8h =
       [ "x", "math__types_8h.html#af88b946fb90d5f08b5fb740c70e98c10", null ],
       [ "y", "math__types_8h.html#ab927965981178aa1fba979a37168db2a", null ]
     ] ],
+    [ "point__float128", "math__types_8h.html#structpoint____float128", [
+      [ "x", "math__types_8h.html#a33ff4119e35918c96c877af210d5cfe3", null ],
+      [ "y", "math__types_8h.html#a3ada510373947522fcd364ad178fccf0", null ]
+    ] ],
     [ "point_int", "math__types_8h.html#structpoint__int", [
       [ "x", "math__types_8h.html#aa3f3de131a054579f0a626a136f0eeaf", null ],
       [ "y", "math__types_8h.html#a0abb94bfd7449b03479418c02eebb2f3", null ]
@@ -93,6 +105,11 @@ var math__types_8h =
       [ "depth", "math__types_8h.html#a6153a438c3d8d1be934e19e97e58c60c", null ],
       [ "height", "math__types_8h.html#a89f6abd564014faeff7cd20c340a9c7d", null ],
       [ "width", "math__types_8h.html#a9df23e056f5d1a0388cd8190431c0e03", null ]
+    ] ],
+    [ "prism__float128", "math__types_8h.html#structprism____float128", [
+      [ "depth", "math__types_8h.html#a319f5cadd4e671354e0ebaea8f963b0b", null ],
+      [ "height", "math__types_8h.html#a4b948756f34865961c3433a70615517d", null ],
+      [ "width", "math__types_8h.html#a4a4db3660fa460cc5fb3b4434c13106d", null ]
     ] ],
     [ "prismf", "math__types_8h.html#structprismf", [
       [ "depth", "math__types_8h.html#a845896541a0621f5fbd11f0d115ce463", null ],
@@ -115,6 +132,12 @@ var math__types_8h =
       [ "j", "math__types_8h.html#ac25976cf079d34d71c9da8ca3517dfb5", null ],
       [ "k", "math__types_8h.html#a9fc4cca635a26c692681a7071e379aa7", null ],
       [ "R", "math__types_8h.html#a4c4b08e61e92b3da1ed512f4e006f34a", null ]
+    ] ],
+    [ "quaternion_float128", "math__types_8h.html#structquaternion__float128", [
+      [ "i", "math__types_8h.html#a9b0447e31f564d9fc546e1479bc8fbe1", null ],
+      [ "j", "math__types_8h.html#a5b922d4c49d1103cebc166647c6fe6b7", null ],
+      [ "k", "math__types_8h.html#a05181e9584f513c843c76fe47ca57743", null ],
+      [ "R", "math__types_8h.html#a09b65e8ff97ff243675e87b1bf1c5092", null ]
     ] ],
     [ "quaternion_long_double", "math__types_8h.html#structquaternion__long__double", [
       [ "i", "math__types_8h.html#ae360c282251f67ee4eba680c78e339eb", null ],
@@ -146,6 +169,9 @@ var math__types_8h =
     [ "sphere", "math__types_8h.html#structsphere", [
       [ "radius", "math__types_8h.html#a3f67c53b80389c5f53961936edba04c9", null ]
     ] ],
+    [ "sphere__float128", "math__types_8h.html#structsphere____float128", [
+      [ "radius", "math__types_8h.html#a21330b2702cb5c86dcc2eb010086faa8", null ]
+    ] ],
     [ "spheref", "math__types_8h.html#structspheref", [
       [ "radius", "math__types_8h.html#a5050a760c11da521cd4aee6336f6529f", null ]
     ] ],
@@ -174,9 +200,11 @@ var math__types_8h =
       [ "height", "math__types_8h.html#a84b65a82691b624e0d556a9455640187", null ]
     ] ],
     [ "__quaternion__", "math__types_8h.html#ab752dda796b0df98cc6a8410352cde0f", null ],
+    [ "__quaternionf128__", "math__types_8h.html#a08ba8279f9cabe2c334ace69f2ec077e", null ],
     [ "__quaternionf__", "math__types_8h.html#a9e9668cad3e9147d7374bee1165bfd0d", null ],
     [ "__quaternionl__", "math__types_8h.html#af80f6ff45f25faee810f00f3b5ae7eb1", null ],
     [ "QUATERNION", "math__types_8h.html#a5bf8f26767247c6c57b8eab20c0763b1", null ],
     [ "QUATERNIONF", "math__types_8h.html#a1e15f2a33bea2d911b1eec592c5cb4e1", null ],
+    [ "QUATERNIONF128", "math__types_8h.html#a949132ef366d32016a16ba44edf68770", null ],
     [ "QUATERNIONL", "math__types_8h.html#a9ce79e728439d8b5d21626591d28f4e8", null ]
 ];

@@ -125,17 +125,17 @@ Include dependency graph for compression.c:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a923d42b1b8c019bffb92aca8bf5b734e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="MACROS_8h.html#a8a234af91a138326eff76d49947f3d5d">ulint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a923d42b1b8c019bffb92aca8bf5b734e">getfilesize</a> (const char *filename)</td></tr>
-<tr class="separator:a923d42b1b8c019bffb92aca8bf5b734e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a656cd42da52085e9737e6090c49213c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a656cd42da52085e9737e6090c49213c3">zlib_compress_file</a> (char *source_filename, char *dest_filename, const int level)</td></tr>
+<tr class="memitem:a41ecdaa2026195f8b48b61cdfb733655"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="MACROS_8h.html#a8a234af91a138326eff76d49947f3d5d">ulint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a41ecdaa2026195f8b48b61cdfb733655">getfilesize</a> (<a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> char *__restrict__ filename)</td></tr>
+<tr class="separator:a41ecdaa2026195f8b48b61cdfb733655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656cd42da52085e9737e6090c49213c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a656cd42da52085e9737e6090c49213c3">zlib_compress_file</a> (char *source_filename, char *dest_filename, <a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int level)</td></tr>
 <tr class="separator:a656cd42da52085e9737e6090c49213c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea79d8c6952becef0b0c0680ec3f9a11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#aea79d8c6952becef0b0c0680ec3f9a11">zlib_compress_stream</a> (FILE *source, FILE *dest, const int level)</td></tr>
-<tr class="separator:aea79d8c6952becef0b0c0680ec3f9a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77a565ae5ed7d8fc2d691e8458491604"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a77a565ae5ed7d8fc2d691e8458491604">zlib_compress_stream</a> (FILE *__restrict__ source, FILE *__restrict__ dest, <a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int level)</td></tr>
+<tr class="separator:a77a565ae5ed7d8fc2d691e8458491604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ba58cee2dccd9484888c41fc84b382b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a1ba58cee2dccd9484888c41fc84b382b">zlib_decompress_file</a> (char *source_filename, char *dest_filename)</td></tr>
 <tr class="separator:a1ba58cee2dccd9484888c41fc84b382b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98bfb9394c2225d46f8786de62b7f983"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a98bfb9394c2225d46f8786de62b7f983">zlib_decompress_stream</a> (FILE *source, FILE *dest)</td></tr>
-<tr class="separator:a98bfb9394c2225d46f8786de62b7f983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4d094d6f060f07f703a4ee22e1ab57e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#aa4d094d6f060f07f703a4ee22e1ab57e">zlib_err</a> (const int ret)</td></tr>
+<tr class="memitem:a5a432b26395a50a2f77b0d937cfffe14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#a5a432b26395a50a2f77b0d937cfffe14">zlib_decompress_stream</a> (FILE *__restrict__ source, FILE *__restrict__ dest)</td></tr>
+<tr class="separator:a5a432b26395a50a2f77b0d937cfffe14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d094d6f060f07f703a4ee22e1ab57e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8c.html#aa4d094d6f060f07f703a4ee22e1ab57e">zlib_err</a> (<a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int ret)</td></tr>
 <tr class="separator:aa4d094d6f060f07f703a4ee22e1ab57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -155,7 +155,7 @@ LICENSE</h1>
 
 <p>Definition in file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a923d42b1b8c019bffb92aca8bf5b734e"></a>
+<a class="anchor" id="a41ecdaa2026195f8b48b61cdfb733655"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -165,7 +165,7 @@ LICENSE</h1>
         <tr>
           <td class="memname">static <a class="el" href="MACROS_8h.html#a8a234af91a138326eff76d49947f3d5d">ulint</a> getfilesize </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype"><a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> char *__restrict__&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
           <td></td>
         </tr>
@@ -180,9 +180,9 @@ LICENSE</h1>
 
 <p>Definition at line <a class="el" href="compression_8c_source.html#l00051">51</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
-<p>References <a class="el" href="MACROS_8h_source.html#l00883">EXIT_ON_ERROR</a>, <a class="el" href="MACROS_8h_source.html#l00886">FAILED_OPEN_FILE</a>, <a class="el" href="MACROS_8h_source.html#l00572">slint</a>, and <a class="el" href="MACROS_8h_source.html#l00575">ulint</a>.</p>
+<p>References <a class="el" href="MACROS_8h_source.html#l00908">EXIT_ON_ERROR</a>, <a class="el" href="MACROS_8h_source.html#l00911">FAILED_OPEN_FILE</a>, <a class="el" href="MACROS_8h_source.html#l00572">slint</a>, and <a class="el" href="MACROS_8h_source.html#l00578">ulint</a>.</p>
 
-<p>Referenced by <a class="el" href="compression_8c_source.html#l00105">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00209">zlib_decompress_file()</a>.</p>
+<p>Referenced by <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
 
 </div>
 </div>
@@ -205,7 +205,7 @@ LICENSE</h1>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype"><a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int&#160;</td>
           <td class="paramname"><em>level</em>&#160;</td>
         </tr>
         <tr>
@@ -215,34 +215,43 @@ LICENSE</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>zlib file compression </p>
+<p>zlib file compression</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">source_filename</td><td>Name of the file to compress </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dest_filename</td><td>Pathname for compressed data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>Compression level (0-9) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return value </dd></dl>
 
-<p>Definition at line <a class="el" href="compression_8c_source.html#l00105">105</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
+<p>Definition at line <a class="el" href="compression_8c_source.html#l00119">119</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
-<p>References <a class="el" href="MACROS_8h_source.html#l00881">ALLOC_ERROR</a>, <a class="el" href="MACROS_8h_source.html#l00882">ALLOC_WRITE_ERROR</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="MACROS_8h_source.html#l00575">ulint</a>, <a class="el" href="MACROS_8h_source.html#l00890">UNABLE_TO_READ_FILE</a>, and <a class="el" href="MACROS_8h_source.html#l00891">UNABLE_TO_WRITE_FILE</a>.</p>
+<p>References <a class="el" href="MACROS_8h_source.html#l00906">ALLOC_ERROR</a>, <a class="el" href="MACROS_8h_source.html#l00907">ALLOC_WRITE_ERROR</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="MACROS_8h_source.html#l00578">ulint</a>, <a class="el" href="MACROS_8h_source.html#l00915">UNABLE_TO_READ_FILE</a>, and <a class="el" href="MACROS_8h_source.html#l00916">UNABLE_TO_WRITE_FILE</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aea79d8c6952becef0b0c0680ec3f9a11"></a>
+<a class="anchor" id="a77a565ae5ed7d8fc2d691e8458491604"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int zlib_compress_stream </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramtype">FILE *__restrict__&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramtype">FILE *__restrict__&#160;</td>
           <td class="paramname"><em>dest</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype"><a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int&#160;</td>
           <td class="paramname"><em>level</em>&#160;</td>
         </tr>
         <tr>
@@ -252,9 +261,18 @@ LICENSE</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>zlib stream compression </p>
+<p>zlib stream compression</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">source</td><td>File to compress </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dest</td><td>File destination for compressed data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>Compression level (0-9) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return value </dd></dl>
 
-<p>Definition at line <a class="el" href="compression_8c_source.html#l00063">63</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
+<p>Definition at line <a class="el" href="compression_8c_source.html#l00070">70</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
 <p>References <a class="el" href="compression_8h_source.html#l00056">CHUNK</a>.</p>
 
@@ -283,28 +301,36 @@ LICENSE</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>zlib file decompression </p>
+<p>zlib file decompression</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">source_filename</td><td>Name of the file to decompress </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dest_filename</td><td>Pathname for decompressed data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return value </dd></dl>
 
-<p>Definition at line <a class="el" href="compression_8c_source.html#l00209">209</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
+<p>Definition at line <a class="el" href="compression_8c_source.html#l00235">235</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
-<p>References <a class="el" href="MACROS_8h_source.html#l00881">ALLOC_ERROR</a>, <a class="el" href="compression_8h_source.html#l00056">CHUNK</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="MACROS_8h_source.html#l00575">ulint</a>, <a class="el" href="MACROS_8h_source.html#l00890">UNABLE_TO_READ_FILE</a>, and <a class="el" href="MACROS_8h_source.html#l00891">UNABLE_TO_WRITE_FILE</a>.</p>
+<p>References <a class="el" href="MACROS_8h_source.html#l00906">ALLOC_ERROR</a>, <a class="el" href="compression_8h_source.html#l00056">CHUNK</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="MACROS_8h_source.html#l00578">ulint</a>, <a class="el" href="MACROS_8h_source.html#l00915">UNABLE_TO_READ_FILE</a>, and <a class="el" href="MACROS_8h_source.html#l00916">UNABLE_TO_WRITE_FILE</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a98bfb9394c2225d46f8786de62b7f983"></a>
+<a class="anchor" id="a5a432b26395a50a2f77b0d937cfffe14"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int zlib_decompress_stream </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramtype">FILE *__restrict__&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramtype">FILE *__restrict__&#160;</td>
           <td class="paramname"><em>dest</em>&#160;</td>
         </tr>
         <tr>
@@ -314,9 +340,17 @@ LICENSE</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>zlib stream decompression </p>
+<p>zlib stream decompression</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">source</td><td>File to decompress </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dest</td><td>File for decompressed data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return value </dd></dl>
 
-<p>Definition at line <a class="el" href="compression_8c_source.html#l00159">159</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
+<p>Definition at line <a class="el" href="compression_8c_source.html#l00179">179</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
 <p>References <a class="el" href="compression_8h_source.html#l00056">CHUNK</a>.</p>
 
@@ -329,15 +363,21 @@ LICENSE</h1>
         <tr>
           <td class="memname">void zlib_err </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype"><a class="el" href="tools_8h.html#ad923b61c6c0201d8bca5606b924335a0">const</a> int&#160;</td>
           <td class="paramname"><em>ret</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Zlib error reporting </p>
+<p>zlib error reporting</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ret</td><td>return value </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="compression_8c_source.html#l00301">301</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
+<p>Definition at line <a class="el" href="compression_8c_source.html#l00331">331</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
 
 </div>
 </div>
@@ -347,7 +387,7 @@ LICENSE</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="compression_8c.html">compression.c</a></li>
-    <li class="footer">Generated on Sun Mar 20 2016 14:39:32 for PyBooster by
+    <li class="footer">Generated on Sun Mar 20 2016 21:00:03 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

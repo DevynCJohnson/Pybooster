@@ -6,6 +6,6 @@
 
 
 # System (Debian-based)
-apt-get install gcc clang llvm python3 python3-dev python3-pip python3-astroid libao-dev doxygen doxywizard
+apt-get install gcc clang llvm python3 python3-dev python3-pip python3-astroid libao-dev doxygen doxygen-gui
 
 pip3 install --upgrade astkit astroid flake8 mccabe pep8 pylint pytest doxypypy

@@ -5,14 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Math Functions
-@version 2016.03.20
-
-@section DESCRIPTION
-This is a Python3 module that uses functions from mathfunc.c
-Numerous mathematical and trigonometric functions.
-This extends the standard math library by providing by offering faster alternatives.
-Such functions include squareroot, fractorial, fib, haversin, isprime, ishexagonal, etc.
+@brief Mathematical and Trigonometric Functions from mathfunc.c
+@version 2016.03.21
 
 @section LICENSE
 GNU Lesser General Public License v3

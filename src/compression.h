@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Compression Functions (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This library provides compression and decompression functions
@@ -63,17 +63,17 @@ License along with this library.
 
 /* FUNCTIONS */
 #ifdef __GNUC__
-static ulint getfilesize(const char *filename) __attribute__((flatten));
-int zlib_compress_stream(FILE *source, FILE *dest, const int level) __attribute__((flatten));
+static ulint getfilesize(const char *__restrict__ filename) __attribute__((flatten, nonnull));
+int zlib_compress_stream(FILE *__restrict__ source, FILE *__restrict__ dest, const int level) __attribute__((flatten));
 int zlib_compress_file(char *source_filename, char *dest_filename, const int level) __attribute__((flatten));
-int zlib_decompress_stream(FILE *source, FILE *dest) __attribute__((flatten));
+int zlib_decompress_stream(FILE *__restrict__ source, FILE *__restrict__ dest) __attribute__((flatten));
 int zlib_decompress_file(char *source_filename, char *dest_filename) __attribute__((flatten));
 void zlib_err(const int ret) __attribute__((flatten));
 #else
-static ulint getfilesize(const char *filename);
-int zlib_compress_stream(FILE *source, FILE *dest, const int level);
+static ulint getfilesize(const char *__restrict__ filename);
+int zlib_compress_stream(FILE *__restrict__ source, FILE *__restrict__ dest, const int level);
 int zlib_compress_file(char *source_filename, char *dest_filename, const int level);
-int zlib_decompress_stream(FILE *source, FILE *dest);
+int zlib_decompress_stream(FILE *__restrict__ source, FILE *__restrict__ dest);
 int zlib_decompress_file(char *source_filename, char *dest_filename);
 void zlib_err(const int ret);
 #endif

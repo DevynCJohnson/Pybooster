@@ -7,5 +7,6 @@ var searchData=
   ['mathconstants_2eh',['mathconstants.h',['../mathconstants_8h.html',1,'']]],
   ['mathfunc_2ec',['mathfunc.c',['../mathfunc_8c.html',1,'']]],
   ['mathfunc_2eh',['mathfunc.h',['../mathfunc_8h.html',1,'']]],
+  ['mathfunc_2eswg',['mathfunc.swg',['../mathfunc_8swg.html',1,'']]],
   ['metric_2epy',['metric.py',['../metric_8py.html',1,'']]]
 ];

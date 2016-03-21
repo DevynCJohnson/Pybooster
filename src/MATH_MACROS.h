@@ -6,12 +6,12 @@
 @copyright LGPLv3
 
 @brief Math Macros Constants (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This file defines constants for various mathematical constants.
-Such constants include E, PI, LOG_PI, PI2, INVERSE_E, etc. for numerous datatypes.
-http://www.wolframalpha.com was used to get most of the values in this file
+Such constants include E, PI, LOG_PI, PI2, INVERSE_E, etc. for various datatypes.
+http://www.wolframalpha.com was used to get many of the values in this file
 
 @section LICENSE
 GNU Lesser General Public License v3
