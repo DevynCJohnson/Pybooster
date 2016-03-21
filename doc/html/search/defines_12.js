@@ -6,6 +6,7 @@ var searchData=
   ['tan_5fpi',['TAN_PI',['../MATH__MACROS_8h.html#a83cff0d74684d54fd0873d837e2bf9ed',1,'MATH_MACROS.h']]],
   ['tan_5fpif',['TAN_PIf',['../MATH__MACROS_8h.html#a9096232bbf5866aee4c0230486044def',1,'MATH_MACROS.h']]],
   ['tan_5fpil',['TAN_PIl',['../MATH__MACROS_8h.html#a0ce7a2fae5474a502328a552a23b1a10',1,'MATH_MACROS.h']]],
+  ['tetra',['tetra',['../MACROS_8h.html#a1f576aeba84e08c06c74533200d6840e',1,'MACROS.h']]],
   ['time_5fhour2int',['TIME_HOUR2INT',['../PY__MACROS_8h.html#aad55c86c09038bb58706054255ac4c86',1,'PY_MACROS.h']]],
   ['time_5fmicrosecond2int',['TIME_MICROSECOND2INT',['../PY__MACROS_8h.html#a73991a7ff136b85d17c1f8b0727ba879',1,'PY_MACROS.h']]],
   ['time_5fminute2int',['TIME_MINUTE2INT',['../PY__MACROS_8h.html#a6bc7b9d24f9b1e596f3911f26e8114b0',1,'PY_MACROS.h']]],
@@ -22,12 +23,15 @@ var searchData=
   ['typesize_5fchar',['TYPESIZE_CHAR',['../MACROS_8h.html#abf6ae403651ee9d7647f830c0b59acde',1,'MACROS.h']]],
   ['typesize_5fdouble',['TYPESIZE_DOUBLE',['../MACROS_8h.html#aa42704ed686024fb046d1b2c56db7bc9',1,'MACROS.h']]],
   ['typesize_5ffloat',['TYPESIZE_FLOAT',['../MACROS_8h.html#af0d12a0213b533226cc7e34181b3fb09',1,'MACROS.h']]],
+  ['typesize_5ffloat128',['TYPESIZE_FLOAT128',['../MACROS_8h.html#aede22b0dabe7aa02fcd4aee84eca5a9d',1,'MACROS.h']]],
   ['typesize_5fi_5fdouble',['TYPESIZE_I_DOUBLE',['../MACROS_8h.html#a198c3f638df1b6ccade39f01daf8fb06',1,'TYPESIZE_I_DOUBLE():&#160;MACROS.h'],['../MATH__MACROS_8h.html#a198c3f638df1b6ccade39f01daf8fb06',1,'TYPESIZE_I_DOUBLE():&#160;MATH_MACROS.h']]],
   ['typesize_5fi_5ffloat',['TYPESIZE_I_FLOAT',['../MACROS_8h.html#ac5f15fc7a07890d2025cb8a48e4a6413',1,'TYPESIZE_I_FLOAT():&#160;MACROS.h'],['../MATH__MACROS_8h.html#ac5f15fc7a07890d2025cb8a48e4a6413',1,'TYPESIZE_I_FLOAT():&#160;MATH_MACROS.h']]],
   ['typesize_5fi_5flong_5fdouble',['TYPESIZE_I_LONG_DOUBLE',['../MACROS_8h.html#ab3a2d06641960264b0eb5e9be83b99af',1,'TYPESIZE_I_LONG_DOUBLE():&#160;MACROS.h'],['../MATH__MACROS_8h.html#ab3a2d06641960264b0eb5e9be83b99af',1,'TYPESIZE_I_LONG_DOUBLE():&#160;MATH_MACROS.h']]],
   ['typesize_5fint',['TYPESIZE_INT',['../MACROS_8h.html#ac5378eb35c422e8221a9eeb204d0f3e9',1,'MACROS.h']]],
+  ['typesize_5fint128',['TYPESIZE_INT128',['../MACROS_8h.html#aafb1baa9516dacb3ef2abd909da0a082',1,'MACROS.h']]],
   ['typesize_5flong_5fdouble',['TYPESIZE_LONG_DOUBLE',['../MACROS_8h.html#aa429a9f445bebb573a18db73ed5e4748',1,'MACROS.h']]],
   ['typesize_5flong_5fint',['TYPESIZE_LONG_INT',['../MACROS_8h.html#ac0738728907947fb62ea8f093e0b725a',1,'MACROS.h']]],
   ['typesize_5flong_5flong',['TYPESIZE_LONG_LONG',['../MACROS_8h.html#a93ff58a8bf2b08a54596d46c2da02bd6',1,'MACROS.h']]],
-  ['typesize_5fshort',['TYPESIZE_SHORT',['../MACROS_8h.html#ad8ffde92a9b0963095771485b576edff',1,'MACROS.h']]]
+  ['typesize_5fshort',['TYPESIZE_SHORT',['../MACROS_8h.html#ad8ffde92a9b0963095771485b576edff',1,'MACROS.h']]],
+  ['typesize_5fuint128',['TYPESIZE_UINT128',['../MACROS_8h.html#a95a2a78c572fb577733c08af45f881e2',1,'MACROS.h']]]
 ];

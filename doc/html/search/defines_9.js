@@ -18,7 +18,7 @@ var searchData=
   ['init_5flinked_5fstack',['init_linked_stack',['../extra__datatypes_8h.html#a3b1705ab8c04c8ca43b6193c8a9a1e9a',1,'extra_datatypes.h']]],
   ['init_5fqueue',['init_queue',['../extra__datatypes_8h.html#ac5426418e6979d32dcc053bb732e8b32',1,'extra_datatypes.h']]],
   ['init_5fstack',['init_stack',['../extra__datatypes_8h.html#ac7e809cf3da617ce28e510db263dceb8',1,'extra_datatypes.h']]],
-  ['int128_5funsupported',['INT128_UNSUPPORTED',['../MACROS_8h.html#ad363e17cd4dbc2bcadf6a7778c559e15',1,'MACROS.h']]],
+  ['int128_5fsupported',['INT128_SUPPORTED',['../MACROS_8h.html#a867fc3034f82d95450ac725d6e99ea44',1,'MACROS.h']]],
   ['int16_5fc',['INT16_C',['../MACROS_8h.html#ae91f72f695d96f8968ba3776fc3fbfc7',1,'MACROS.h']]],
   ['int2int',['int2int',['../PY__MACROS_8h.html#ae0ba1178805b4860a3b4c933722202db',1,'PY_MACROS.h']]],
   ['int32_5fc',['INT32_C',['../MACROS_8h.html#ae9d37a4b8bb51a4390a402743c719682',1,'MACROS.h']]],

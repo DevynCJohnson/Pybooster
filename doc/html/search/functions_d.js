@@ -14,5 +14,5 @@ var searchData=
   ['norml',['norml',['../mathfunc_8c.html#add28452a76808bec544a60cefcaa2be6',1,'norml(const long double complex x):&#160;mathfunc.c'],['../mathfunc_8h.html#add28452a76808bec544a60cefcaa2be6',1,'norml(const long double complex x):&#160;mathfunc.c']]],
   ['num2ordinal',['num2ordinal',['../namespacepybooster_1_1strtools.html#aad7de72840d03a739574813807230c12',1,'pybooster::strtools']]],
   ['numpkg',['numpkg',['../namespacepybooster_1_1pipx.html#ad003fd57228be575ea86adad3d6b4dcc',1,'pybooster::pipx']]],
-  ['nxor_5fcipher',['nxor_cipher',['../cryptx_8c.html#a203f7b59c3ee9ef567c4610b0002046d',1,'nxor_cipher(char *__restrict__ data, const char *__restrict__ password):&#160;cryptx.c'],['../cryptx_8h.html#a203f7b59c3ee9ef567c4610b0002046d',1,'nxor_cipher(char *__restrict__ data, const char *__restrict__ password):&#160;cryptx.c']]]
+  ['nxor_5fcipher',['nxor_cipher',['../cryptx_8c.html#a203f7b59c3ee9ef567c4610b0002046d',1,'nxor_cipher(char *__restrict__ data, const char *__restrict__ password):&#160;cryptx.c'],['../cryptx_8h.html#acf71377d04c39ebe15ec9eca3e2649c6',1,'nxor_cipher(char *__restrict__ data, const char *__restrict__ password) __attribute__((nonnull)):&#160;cryptx.c']]]
 ];

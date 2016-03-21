@@ -7,9 +7,13 @@ PyBooster - collection of Python3 and C libraries
 - __GitHub:__ <https://github.com/DevynCJohnson/Pybooster>
 - __Documentation:__ <http://dcjtech.info/Pybooster/>
 
+This project is a rolling-release. The software is stable and suitable for use in other projects.
+
 The C-libraries can be compiled as Python modules or linked in other projects.
 
 EzWin is also included in PyBooster. Ezwin is a collection of GTK windows.
+
+SWIG is used to create modules/libraries for TCL. Other SWIG bindings are in development.
 
 Please consider donating to <http://dcjtech.info/> to help development (click the **Donate** button).
 
@@ -35,9 +39,10 @@ To perform the listed build commands, open a terminal and type the given command
 - To compile the C-modules for Python, type `make pylibc`.
 - To compile the Python scripts as byte-code, type `make byte`.
 - To compile the C-libraries, type `make lib`.
-- To compile everything, type `make all`.
+- To compile everything (except SWIG wrappers), type `make all`.
+- To compile SWIG wrappers, type `make wrappers`.
 - To generate the documentation, type `make doc`.
-- To remove the `-.o` files and temporary build files, type `make rmtmp`.
+- To remove the `*.o` files and temporary build files, type `make rmtmp`.
 - To remove all compiled files and temporary build files, type `make clean`.
 - To remove all generated files (but not documentation), type `make cleanall`.
 - To build the code for a Haswell system, type `make all ARCH=haswell`.
@@ -60,8 +65,9 @@ Follow the below guidelines when assisting the development of PyBooster.
 
 - Keep code organized
 - Keep files organized
-  - C source code belongs in `./src/`
+  - C source code and SWIG files (`*.swg`) belong in `./src/`
   - Compiled C libraries belong in `./clib/`
+  - Compiled SWIG libraries belong in `./swiglib/`
   - Python modules (`*.py` and `*.so`) belong in `./pybooster/`
   - Project tools belong in `./tools/`
 - Document/explain complicated algorithms using comments
@@ -95,10 +101,13 @@ Follow the below guidelines when assisting the development of PyBooster.
 - **Non-Followed PEPs** - Do not follow the below listed PEP Standards
   - **PEP287 (reStructuredText Docstring Format)** - [https://www.python.org/dev/peps/pep-0287/](https://www.python.org/dev/peps/pep-0287/)
 
-### Adding new modules ###
+### Adding New Code ###
 
 - When adding a new `*.py` file, add the name of the module to _``__all__``_ in **``__init__.py``** and _`lib`_ in **./makedoc.sh**
 - When adding a new `*.so` Python module, add the name of the module to _``__all__``_ in **``__init__.py``** and _`lib`_ in **./makedoc.sh**
 - When adding a new C-library,
-  - Add a rule to **makefile** under _`# Library Compiling`_ in the _**RULES**_ section
+  - Add a rule to **makefile** under _`# Library Compiling #`_ in the _**RULES**_ section
   - List the added rule name to **makefile** with _``lib : ``_ under _**BUILD COMMANDS**_
+- When adding a new SWIG wrapper,
+  - Add a rule to **makefile** under _`# SWIG #`_
+  - List the added rule name to **makefile** with _``wrappers : ``_ under _`# SWIG #`_

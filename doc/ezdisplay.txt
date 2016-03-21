@@ -29,7 +29,7 @@ FUNCTIONS
     readpipe() -> str
 
 DATA
-    __warningregistry__ = {('Gtk was imported without specifying a version...
+    __warningregistry__ = {'version': 126, ('Gtk was imported without spec...
     stdin = <_io.TextIOWrapper name='<stdin>' mode='r' encoding='UTF-8'>
 
 FILE

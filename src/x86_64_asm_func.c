@@ -5,11 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief x86-64 Assembly Functions
-@version 2016.03.20
-
-@section DESCRIPTION
-C-functions containing inlined x86-64 Assembly (AT&T syntax)
+@brief C-functions containing inlined x86-64 Assembly using AT&T-Syntax
+@version 2016.03.21
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -1690,10 +1687,3 @@ ulint rdrnd(void) {
 
 
 #endif
-
-
-/** Do nothing (not faster than Python's `pass` command) */
-void asm_nop(void) {
-    __asm__ volatile ("nop;");
-    return;
-}

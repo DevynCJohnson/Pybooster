@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="pychemistry_8c.html" target="_top" xlink:title="Chemistry&#45;related Functions. ">
+<g id="a_node2"><a xlink:href="pychemistry_8c.html" target="_top" xlink:title="Chemistry Functions from chemistry.c. ">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 78,-19.5 78,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="39" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pychemistry.c</text>
 </a>
@@ -29,7 +29,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="pygeometry_8c.html" target="_top" xlink:title="Geometry Equations. ">
+<g id="a_node3"><a xlink:href="pygeometry_8c.html" target="_top" xlink:title="Geometry Equations from geometry.c. ">
 <polygon fill="white" stroke="black" points="96,-0.5 96,-19.5 172,-19.5 172,-0.5 96,-0.5"/>
 <text text-anchor="middle" x="134" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pygeometry.c</text>
 </a>
@@ -42,7 +42,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="pymathconstants_8c.html" target="_top" xlink:title="Math Constants. ">
+<g id="a_node4"><a xlink:href="pymathconstants_8c.html" target="_top" xlink:title="Math Constants from mathconstants.c. ">
 <polygon fill="white" stroke="black" points="190,-0.5 190,-19.5 290,-19.5 290,-0.5 190,-0.5"/>
 <text text-anchor="middle" x="240" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pymathconstants.c</text>
 </a>
@@ -55,7 +55,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="pymathfunc_8c.html" target="_top" xlink:title="Math Functions. ">
+<g id="a_node5"><a xlink:href="pymathfunc_8c.html" target="_top" xlink:title="Mathematical and Trigonometric Functions from mathfunc.c. ">
 <polygon fill="white" stroke="black" points="308,-0.5 308,-19.5 384,-19.5 384,-0.5 308,-0.5"/>
 <text text-anchor="middle" x="346" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pymathfunc.c</text>
 </a>
@@ -68,7 +68,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="pyphysics_8c.html" target="_top" xlink:title="Physics Functions. ">
+<g id="a_node6"><a xlink:href="pyphysics_8c.html" target="_top" xlink:title="Physics Functions from physics.c. ">
 <polygon fill="white" stroke="black" points="402.5,-0.5 402.5,-19.5 471.5,-19.5 471.5,-0.5 402.5,-0.5"/>
 <text text-anchor="middle" x="437" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pyphysics.c</text>
 </a>

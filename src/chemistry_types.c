@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Chemistry-related Data-types
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Various chemistry-specific datatypes from amino-acids, to elements, to quarks, to subatomic particles
@@ -185,9 +185,9 @@ const atom unbiunium = {"UNBIUNIUM", "Ubu", 121, 321.0};
 const nucleobase adenine = {"ADENINE", "A", "purine", "n1c(c2c(nc1)ncn2)N"};
 const nucleobase cytosine = {"CYTOSINE", "C", "pyrimidine", "c1cnc(=O)[nH]c1N"};
 const nucleobase guanine = {"GUANINE", "G", "purine", "c1[nH]c2c(n1)c(=O)[nH]c(n2)N"};
-/** Found in DNA, but not RNA */
+/** Thymine is found in DNA, but not RNA */
 const nucleobase thymine = {"THYMINE", "T", "pyrimidine", "Cc1c[nH]c(=O)[nH]c1=O"};
-/** Found in RNA, but not DNA */
+/** Uracil is found in RNA, but not DNA */
 const nucleobase uracil = {"URACIL", "U", "pyrimidine", "O=C1NC=CC(=O)N1"};
 
 

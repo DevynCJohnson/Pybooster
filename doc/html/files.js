@@ -46,6 +46,7 @@ var files =
     [ "mathconstants.h", "mathconstants_8h.html", "mathconstants_8h" ],
     [ "mathfunc.c", "mathfunc_8c.html", "mathfunc_8c" ],
     [ "mathfunc.h", "mathfunc_8h.html", "mathfunc_8h" ],
+    [ "mathfunc.swg", "mathfunc_8swg.html", "mathfunc_8swg" ],
     [ "metric.py", "metric_8py.html", "metric_8py" ],
     [ "net.py", "net_8py.html", "net_8py" ],
     [ "physics.c", "physics_8c.html", "physics_8c" ],
@@ -73,7 +74,7 @@ var files =
     [ "typesize.c", "typesize_8c.html", "typesize_8c" ],
     [ "typesize.h", "typesize_8h.html", "typesize_8h" ],
     [ "unix.py", "unix_8py.html", "unix_8py" ],
-    [ "x86_64_asm_func.c", "x86__64__asm__func_8c.html", "x86__64__asm__func_8c" ],
-    [ "x86_64_asm_func.h", "x86__64__asm__func_8h.html", "x86__64__asm__func_8h" ],
+    [ "x86_64_asm_func.c", "x86__64__asm__func_8c.html", null ],
+    [ "x86_64_asm_func.h", "x86__64__asm__func_8h.html", null ],
     [ "xmath.py", "xmath_8py.html", "xmath_8py" ]
 ];

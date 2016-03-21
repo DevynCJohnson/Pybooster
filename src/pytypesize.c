@@ -6,11 +6,12 @@
 @copyright LGPLv3
 
 @brief Get the size (in bytes) of various C data-types
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
-This is a Python3 module that uses functions from typesize.c
-Functions that return the size (in bytes) of commonly used (and rare) C data-types
+This is a Python3 module that uses functions from typesize.c.
+Functions that return the size (in bytes) of commonly used (and rare) C data-types.
+Constants are also provided by this module.
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -336,11 +337,11 @@ From http://www.cplusplus.com/reference/cfloat/
 
 A floating-point number is composed of four elements:
 
- * SIGN: either negative or non-negative
- * BASE (RADIX): which expresses the different numbers that can be represented with a single digit (2 for binary, 10 for decimal, 16 for hexadecimal, and so on)
- * SIGNIFICAND (MANTISSA): which is a series of digits of the aforementioned base. The number of digits in this series is what is known as precision.
- * EXPONENT (CHARACTERISTIC or SCALE): which represents the offset of the significand, affecting the value in the following way ->
- * value of floating-point = SIGNIFICAND * (BASE ^ EXPONENT)
+ - SIGN: either negative or non-negative
+ - BASE (RADIX): which expresses the different numbers that can be represented with a single digit (2 for binary, 10 for decimal, 16 for hexadecimal, and so on)
+ - SIGNIFICAND (MANTISSA): which is a series of digits of the aforementioned base. The number of digits in this series is what is known as precision.
+ - EXPONENT (CHARACTERISTIC or SCALE): which represents the offset of the significand, affecting the value in the following way ->
+ - value of floating-point = SIGNIFICAND * (BASE ^ EXPONENT)
 */
 MODINIT {  // Initialize module
     PyObject *m;

@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Geometry Equations (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Various geometric functions such as volume, area, distance, boolean tests, etc.

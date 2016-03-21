@@ -5,12 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Physics Functions
-@version 2016.03.20
-
-@section DESCRIPTION
-This is a Python3 module that uses functions from physics.c
-Functions related to physics calculations
+@brief Physics Functions from physics.c
+@version 2016.03.21
 
 @section LICENSE
 GNU Lesser General Public License v3

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i',['i',['../cryptx_8h.html#af27e3188294c2df66d975b74a09c001d',1,'quaternion_crypt_byte::i()'],['../math__types_8h.html#a5659a38afd08966e6799fa0fb40a882a',1,'quaternion::i()'],['../math__types_8h.html#a58e739b7bdf8275493686ae76e3705c3',1,'quaternion_float::i()'],['../math__types_8h.html#ae360c282251f67ee4eba680c78e339eb',1,'quaternion_long_double::i()']]],
+  ['i',['i',['../cryptx_8h.html#af27e3188294c2df66d975b74a09c001d',1,'quaternion_crypt_byte::i()'],['../math__types_8h.html#a5659a38afd08966e6799fa0fb40a882a',1,'quaternion::i()'],['../math__types_8h.html#a58e739b7bdf8275493686ae76e3705c3',1,'quaternion_float::i()'],['../math__types_8h.html#ae360c282251f67ee4eba680c78e339eb',1,'quaternion_long_double::i()'],['../math__types_8h.html#a9b0447e31f564d9fc546e1479bc8fbe1',1,'quaternion_float128::i()']]],
   ['i_5fsquared',['I_SQUARED',['../mathconstants_8c.html#af92f09a3480ec85de6ec7e522fd517a2',1,'I_SQUARED():&#160;mathconstants.c'],['../mathconstants_8h.html#af92f09a3480ec85de6ec7e522fd517a2',1,'I_SQUARED():&#160;mathconstants.c']]],
   ['impossible',['impossible',['../fuzzy__logic_8c.html#a4d8bc04ec325543cf6184be867cf8ae1',1,'impossible():&#160;fuzzy_logic.c'],['../fuzzy__logic_8h.html#a4d8bc04ec325543cf6184be867cf8ae1',1,'impossible():&#160;fuzzy_logic.c']]],
   ['incomplete_5fref',['INCOMPLETE_REF',['../namespacepybooster_1_1strtools.html#ab3aebc349492bac151dab9bb01e29904',1,'pybooster::strtools']]],

@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Additional datatypes, such as FILO-Stack, Queue (FIFO Stack), etc.
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Additional datatypes such as -
@@ -103,10 +103,7 @@ enum PLAN9_SYSCALLS {
 /* LINKED-STACK FUNCTIONS */
 
 
-/**
-    Push an element into stack; return NULL on error\n
-    Usage: head = push_linked_stack(head, element);
-*/
+/** Push an element into stack; return NULL on error; Usage: head = push_linked_stack(head, element); */
 linked_stack_node_t *push_linked_stack(linked_stack_node_t *head, const uint64_t data) {
     linked_stack_node_t *tmp = (linked_stack_node_t *)calloc(0x01, sizeof(linked_stack_node_t));
     if (tmp == (linked_stack_node_t *)NULL) { free(tmp); return NULL; }
@@ -130,10 +127,7 @@ linked_stack_node_t *pop_linked_stack(linked_stack_node_t *head, uint64_t *eleme
 /* DISPLAY FUNCTIONS */
 
 
-/**
-    Display stack content\n
-    Usage: display_stack(stack, &top);
-*/
+/** Display stack content; Usage: display_stack(stack, &top); */
 void display_stack(const int *__restrict__ s, const int *__restrict__ top) {
     puts("Stack: ");
     register int i;
@@ -142,10 +136,7 @@ void display_stack(const int *__restrict__ s, const int *__restrict__ top) {
 }
 
 
-/**
-    Display the stack content\n
-    Usage: display_linked_stack(head);
-*/
+/** Display the stack content; Usage: display_linked_stack(head); */
 void display_linked_stack(linked_stack_node_t *head) {
     linked_stack_node_t *current;
     current = head;
@@ -161,10 +152,7 @@ void display_linked_stack(linked_stack_node_t *head) {
 }
 
 
-/**
-    Display queue content\n
-    Usage: display_queue(queue, head, tail);
-*/
+/** Display queue content; Usage: display_queue(queue, head, tail); */
 void display_queue(const int *__restrict__ q, const int head, const int tail) {
     puts("Queue: ");
     register int i = tail;
@@ -179,11 +167,7 @@ void display_queue(const int *__restrict__ q, const int head, const int tail) {
 /* BINARY-HEAP FUNCTIONS */
 
 
-/**
-    Binary Heap Datatype\n
-    Initialze a binary heap\n
-    Usage: PriorityQueue H; init_heap(MAXSIZE);
-*/
+/** Initialze a binary heap (datatype); Usage: PriorityQueue H; init_heap(MAXSIZE); */
 PriorityQueue init_heap(size_t MaxElements) {
     PriorityQueue H;
     if (MaxElements < 10) { return NULL; }  // Is MaxElements less than the minimum priority queue
@@ -198,10 +182,7 @@ PriorityQueue init_heap(size_t MaxElements) {
 }
 
 
-/**
-    Insert data into the heap;\n
-    Usage: heapinsert(X, H);
-*/
+/** Insert data into the heap; Usage: heapinsert(X, H); */
 void heapinsert(ElementType X, PriorityQueue H) {
     if (!isheapfull(H)) {
         register size_t i;

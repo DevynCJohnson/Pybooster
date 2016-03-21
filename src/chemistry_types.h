@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Chemistry-related Data-types (header)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Various chemistry-specific datatypes from amino-acids, to elements, to quarks, to subatomic particles
@@ -70,8 +70,8 @@ extern const quark charm;
 extern const quark strange;
 
 /* PERIODIC TABLE */
-/**
-    Datatype representing atoms\n
+/** Datatype representing atoms
+
     To get a value from an atom, use the format 'ATOM_NAME.ATTRIBUTE'.
     For instance, to get the atomic-mass of 'Hydrogen', use 'hydrogen.atomicmass'.\n
     atom hydrogen = {"HYDROGEN", "H", 1, 1.008};\n
@@ -345,8 +345,8 @@ typedef enum {
 } classicmatterstates;
 
 /* NUCLEOBASES */
-/**
-    Datatype representing nucleobases\n
+/** Datatype representing nucleobases
+
     nucleobase cytosine = {"CYTOSINE", "C", "pyrimidine", "c1cnc(=O)[nH]c1N"};\n
     cytosine.name -> "CYTOSINE"\n
     cytosine.symbol -> "C"\n
@@ -369,8 +369,8 @@ extern const nucleobase uracil;
 extern const char IUPAC_NOTATION[32][2][8];
 
 /* AMINO ACIDS */
-/**
-    Datatype representing amino-acids\n
+/** Datatype representing amino-acids
+
     aminoacid alanine = {"ALANINE", "Ala", "A", "O=C(O)[C@@H](N)C"};\n
     alanine.name -> "ALANINE"\n
     alanine.symbol -> "Ala"  // Long abbreviation\n
@@ -410,8 +410,8 @@ extern const aminoacid valine;
 
 /* CODONS */
 #ifndef OSWINDOWS
-/**
-    Datatype representing codons
+/** Datatype representing codons
+
     UAA, UGA, UAG = STOP\n
     AUG = START
 */

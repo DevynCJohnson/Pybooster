@@ -11,7 +11,7 @@ var searchData=
   ['u8',['u8',['../MACROS_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd',1,'MACROS.h']]],
   ['uchar2int',['uchar2int',['../PY__MACROS_8h.html#a4cc2b194df67dd06d1d7e6a19d7173f4',1,'PY_MACROS.h']]],
   ['uint',['uint',['../MACROS_8h.html#ad46b2ebcd4c426b06cda147ddc1001e7',1,'MACROS.h']]],
-  ['uint128_5funsupported',['UINT128_UNSUPPORTED',['../MACROS_8h.html#ad0f5a2a3455bde8bf6ee0ccd46b43a3b',1,'MACROS.h']]],
+  ['uint128_5fsupported',['UINT128_SUPPORTED',['../MACROS_8h.html#ac04a038802e50628aad5e26dc95d3002',1,'MACROS.h']]],
   ['uint16_5fc',['UINT16_C',['../MACROS_8h.html#aa290a886686286acd7629ab572a76138',1,'MACROS.h']]],
   ['uint2int',['uint2int',['../PY__MACROS_8h.html#a211446b4c0f5aea755b1f810cfee75df',1,'PY_MACROS.h']]],
   ['uint32_5fc',['UINT32_C',['../MACROS_8h.html#a019597bd68b2f2adce63c279fc8100fd',1,'MACROS.h']]],

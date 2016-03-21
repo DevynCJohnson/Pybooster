@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['z',['z',['../MACROS_8h.html#ab3e6ed577a7c669c19de1f9c1b46c872',1,'doubletriplet_t::z()'],['../MACROS_8h.html#af73583b1e980b0aa03f9884812e9fd4d',1,'floattriplet_t::z()']]],
+  ['z',['z',['../MACROS_8h.html#ab3e6ed577a7c669c19de1f9c1b46c872',1,'doubletriplet_t::z()'],['../MACROS_8h.html#af73583b1e980b0aa03f9884812e9fd4d',1,'floattriplet_t::z()'],['../MACROS_8h.html#a0a0bc1a0f0644502028def463362c74b',1,'int128triplet_t::z()'],['../MACROS_8h.html#a178946c4835670e0d73244ee29427551',1,'uint128triplet_t::z()'],['../MACROS_8h.html#a0702a9e126f6f4944f836fd6b48ae320',1,'float128triplet_t::z()']]],
   ['zepto_5funits',['ZEPTO_UNITS',['../namespacepybooster_1_1metric.html#a5151341b3677bb52e19120a0419572de',1,'pybooster::metric']]],
   ['zero',['ZERO',['../mathconstants_8c.html#acbcd55b11cabe6b839efa09e97098c4f',1,'ZERO():&#160;mathconstants.c'],['../mathconstants_8h.html#acbcd55b11cabe6b839efa09e97098c4f',1,'ZERO():&#160;mathconstants.c']]],
   ['zetta_5funits',['ZETTA_UNITS',['../namespacepybooster_1_1metric.html#ad2a895363511c2f05408660b3255215c',1,'pybooster::metric']]],

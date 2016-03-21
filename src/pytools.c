@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions (from tools.c and x86_64_asm_func.c)
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from tools.c
@@ -179,7 +179,6 @@ static PyObject *tools_is_sse41_aval(void);
 static PyObject *tools_is_f16c_aval(void);
 #   endif
 #endif
-static PyObject *tools_nop(void);
 static PyObject *tools_endianness(void);
 #if (defined(__GNUC__) || defined(__CC_ARM) || defined(__INTEL_COMPILER) || defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__) || defined(__TINYC__))
 static PyObject *tools_getarch(void);
@@ -193,7 +192,6 @@ static PyObject *tools_POSIXSTD(void);
 #ifdef OSPOSIX
 static PyObject *tools_getsyshostname(void);
 #endif
-static PyObject *tools_printline(void);
 
 
 /* DOCSTRINGS */
@@ -428,8 +426,6 @@ PyDoc_STRVAR(tools_is_f16c_aval_docstring,
     "is_f16c_aval() -> bool\nTest if the CPU supports `f16c` (F16C (half-precision) FP support)");
 #endif
 #endif
-PyDoc_STRVAR(tools_nop_docstring,
-    "nop() -> None\nDo nothing (faster than Python's `pass` command)");
 PyDoc_STRVAR(tools_endianness_docstring,
     "endianness() -> str\nReturn the system's endianness");
 #if (defined(__GNUC__) || defined(__CC_ARM) || defined(__INTEL_COMPILER) || defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__) || defined(__TINYC__))
@@ -450,8 +446,6 @@ PyDoc_STRVAR(tools_POSIXSTD_docstring,
 PyDoc_STRVAR(tools_getsyshostname_docstring,
     "getsyshostname() -> str\nReturn the system's hostname");
 #endif
-PyDoc_STRVAR(tools_printline_docstring,
-    "printline() -> None\nPrint a newline character");
 
 
 /* MODULE SPECIFICATION */
@@ -574,7 +568,6 @@ static PyMethodDef module_methods[128] = {  // Method Table
     {"is_f16c_aval", (PyCFunction)tools_is_f16c_aval, METH_NOARGS, tools_is_f16c_aval_docstring},
 #endif
 #endif
-    {"nop", (PyCFunction)tools_nop, METH_NOARGS, tools_nop_docstring},
     {"endianness", (PyCFunction)tools_endianness, METH_NOARGS, tools_endianness_docstring},
 #if (defined(__GNUC__) || defined(__CC_ARM) || defined(__INTEL_COMPILER) || defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__) || defined(__TINYC__))
     {"getarch", (PyCFunction)tools_getarch, METH_NOARGS, tools_getarch_docstring},
@@ -588,7 +581,6 @@ static PyMethodDef module_methods[128] = {  // Method Table
 #ifdef OSPOSIX
     {"getsyshostname", (PyCFunction)tools_getsyshostname, METH_NOARGS, tools_getsyshostname_docstring},
 #endif
-    {"printline", (PyCFunction)tools_printline, METH_NOARGS, tools_printline_docstring},
     {NULL, NULL, 0, NULL}
 };
 
@@ -1544,12 +1536,6 @@ static PyObject *tools_is_f16c_aval(void) {
 #endif
 
 
-static PyObject *tools_nop(void) {
-    __asm__ volatile ("nop;");
-    Py_RETURN_NONE;
-}
-
-
 /* SYSTEM INFO */
 
 
@@ -1702,20 +1688,10 @@ static PyObject *tools_POSIXSTD(void) {
 #ifdef OSPOSIX
 static PyObject *tools_getsyshostname(void) {
     static char hostname[32] = { 0 };
-    if (gethostname(hostname, sizeof(hostname)) != 0x00) {
+    if (gethostname(hostname, sizeof(hostname)) != 0x0) {
         hostname[0] = '?';
         hostname[1] = '\0';
     }
     return STR((hostname));
 }
 #endif
-
-
-/* MISCELLANEOUS */
-
-
-static PyObject *tools_printline(void) {
-    fputs("\n\n", stdout);
-    fflush(stdout);
-    Py_RETURN_NONE;
-}

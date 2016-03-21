@@ -88,7 +88,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node16 -->
 <g id="node16" class="node"><title>Node16</title>
-<g id="a_node16"><a xlink:href="x86__64__asm__func_8h.html" target="_top" xlink:title="x86&#45;64 Assembly Functions (header) ">
+<g id="a_node16"><a xlink:href="x86__64__asm__func_8h.html" target="_top" xlink:title="C&#45;functions containing inlined x86&#45;64 Assembly using AT&amp;T&#45;Syntax (header) ">
 <polygon fill="white" stroke="black" points="290,-112.5 290,-131.5 394,-131.5 394,-112.5 290,-112.5"/>
 <text text-anchor="middle" x="342" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">x86_64_asm_func.h</text>
 </a>

@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 Various functions that do not fit in other categories.
@@ -195,7 +195,7 @@ char *STPNCPY(char *__restrict__ dst, const char *__restrict__ src, const size_t
     register const size_t srclen = strlenx(src);
     if (srclen < maxlen) {
         memmove(dst, src, srclen);
-        memset(dst + srclen, 0x00, (maxlen - srclen));
+        memset(dst + srclen, 0x0, (maxlen - srclen));
         return (dst + srclen);
     } else {
         memmove(dst, src, maxlen);
@@ -237,7 +237,7 @@ size_t STRLCPY(char *__restrict__ dst, const char *__restrict__ src, const size_
     const size_t srclen = strlenx(src);
     if (srclen < maxlen) {
         memmove(dst, src, (srclen + 0x1u));
-    } else if (maxlen != 0x00) {
+    } else if (maxlen != 0x0) {
         memmove(dst, src, (maxlen - 1));
         dst[maxlen - 1] = '\0';
     }
@@ -274,7 +274,7 @@ char *STRNCPY(char *__restrict__ dst, const char *__restrict__ src, const size_t
     register const size_t srclen = strlenx(src);
     if (srclen < maxlen) {
         memmove(dst, src, srclen);
-        memset((dst + srclen), 0x00, (maxlen - srclen));  // The remainder of dst is filled with \0
+        memset((dst + srclen), 0x0, (maxlen - srclen));  // The remainder of dst is filled with \0
     } else {  // dst is not NULL terminated
         memmove(dst, src, maxlen);
     }
@@ -286,7 +286,7 @@ char *STRNCPY(char *__restrict__ dst, const char *__restrict__ src, const size_t
 char *STRNCPYX(char *__restrict__ dst, const char *__restrict__ src, const size_t maxlen, const size_t srclen) {
     if (srclen < maxlen) {
         memmove(dst, src, srclen);
-        memset((dst + srclen), 0x00, (maxlen - srclen));  // The remainder of dst is filled with \0
+        memset((dst + srclen), 0x0, (maxlen - srclen));  // The remainder of dst is filled with \0
     } else {  // dst is not NULL terminated
         memmove(dst, src, maxlen);
     }
@@ -297,10 +297,15 @@ char *STRNCPYX(char *__restrict__ dst, const char *__restrict__ src, const size_
 /* FILE IO */
 
 
-/** Test if the file exists */
+/**
+    Test if the file exists
+
+    @param[in] filename    The pathname of the file
+    @retval 0    False: The file does not exist
+    @retval 1    True: The file exists
+*/
 int fileexists(const char *__restrict__ filename) {
-    FILE *fileptr;
-    fileptr = fopen(filename, "r");
+    FILE *fileptr = fopen(filename, "r");
     if (fileptr != (FILE *)NULL) {
         fclose(fileptr);
         return 0x1;
@@ -309,10 +314,15 @@ int fileexists(const char *__restrict__ filename) {
 }
 
 
-/** Test if the file is writable */
+/**
+    Test if the file is writable
+
+    @param[in] filename    The pathname of the file
+    @retval 0    False: The file is not writable
+    @retval 1    True: The file is writable
+*/
 int filewritable(const char *__restrict__ filename) {
-    FILE *fileptr;
-    fileptr = fopen(filename, "wb");
+    FILE *fileptr = fopen(filename, "wb");
     if (fileptr != (FILE *)NULL) {
         fclose(fileptr);
         return 0x1;
@@ -322,10 +332,15 @@ int filewritable(const char *__restrict__ filename) {
 
 
 #ifdef OSPOSIX
-/** Return the size of a file (number of bytes as `unsigned long int`); POSIX systems only */
+/**
+    Return the size of a file (number of bytes as `unsigned long int`); POSIX systems only
+
+    @param[in] filename    Pathname of the file
+    @returns The size of the file in bytes
+*/
 ulint getfilesize(const char *__restrict__ filename) {
     struct stat sb;
-    if (stat(filename, &sb) != 0x00) {
+    if (stat(filename, &sb) != 0x0) {
         fprintf(stderr, "ERROR: `getfilesize()` failed to get the filesize of `%s`!\n%s\n", filename, strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -333,10 +348,15 @@ ulint getfilesize(const char *__restrict__ filename) {
 }
 
 
-/** Return the size of a file (number of bytes as `size_t`); POSIX systems only */
+/**
+    Return the size of a file (number of bytes as `size_t`); POSIX systems only
+
+    @param[in] filename    Pathname of the file
+    @returns The size of the file in bytes
+*/
 size_t getfilesize_t(const char *__restrict__ filename) {
     struct stat sb;
-    if (stat(filename, &sb) != 0x00) {
+    if (stat(filename, &sb) != 0x0) {
         fprintf(stderr, "ERROR: `getfilesize_t()` failed to get the filesize of `%s`!\n%s\n", filename, strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -347,22 +367,32 @@ size_t getfilesize_t(const char *__restrict__ filename) {
 #else
 
 
-/** Return the size of a file (in bytes) */
+/**
+    Return the size of a file (in bytes)
+
+    @param[in] filename    Pathname of the file
+    @returns The size of the file in bytes
+*/
 ulint getfilesize(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { EXIT_ON_ERROR("Failed to get filesize") }
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) { EXIT_ON_ERROR("Failed to get filesize") }
     ulint retval = (ulint)ftell(fileptr);
     fclose(fileptr);
     return retval;
 }
 
 
-/** Return the size of a file (in size_t) */
+/**
+    Return the size of a file (in size_t)
+
+    @param[in] filename    Pathname of the file
+    @returns The size of the file in bytes
+*/
 size_t getfilesize_t(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { EXIT_ON_ERROR("Failed to get filesize") }
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) { EXIT_ON_ERROR("Failed to get filesize") }
     size_t retval = (size_t)ftell(fileptr);
     fclose(fileptr);
     return retval;
@@ -370,27 +400,37 @@ size_t getfilesize_t(const char *__restrict__ filename) {
 #endif
 
 
-/** Return the size of a file (in bytes); supports larger files */
+/**
+    Return the size of a file (in bytes); supports larger files
+
+    @param[in] filename    Pathname of the file
+    @returns The size of the file in bytes
+*/
 uint64_t filesize64(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { UNABLE_TO_READ_FILE() }
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) { UNABLE_TO_READ_FILE() }
     uint64_t retval = (uint64_t)ftell(fileptr);
     fclose(fileptr);
     return retval;
 }
 
 
-/** Return the file's contents as a char-array; remember to use `free()` */
+/**
+    Return the file's contents as a char-array; remember to use `free()`
+
+    @param[in] filename    Pathname of the file
+    @returns The files contents
+*/
 char *getfile(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { UNABLE_TO_READ_FILE() }
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) { UNABLE_TO_READ_FILE() }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
 #   if (defined(__SSP_ALL__) || defined(__SSP_STRONG__) || defined(__OPTIMIZE__))
     char *filestr = (char *)calloc(filesize, 0x01);
@@ -405,7 +445,13 @@ char *getfile(const char *__restrict__ filename) {
 }
 
 
-/** Given the filesize, return the file's contents as a char-array; remember to use `free()` */
+/**
+    Given the filesize, return the file's contents as a char-array; remember to use `free()`
+
+    @param[in] filename    Pathname of the file
+    @param[in] filesize    The file's size (in bytes)
+    @returns The files contents
+*/
 char *getfile_sizet(const char *__restrict__ filename, const size_t filesize) {
     FILE *fileptr = fopen(filename, "r");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
@@ -422,16 +468,21 @@ char *getfile_sizet(const char *__restrict__ filename, const size_t filesize) {
 }
 
 
-/** Return the binary file's contents as an array of uint8_t; remember to use `free()` */
+/**
+    Return the binary file's contents as an array of uint8_t; remember to use `free()`
+
+    @param[in] filename    Pathname of the file
+    @returns The files contents
+*/
 uint8_t *getbinfile(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) { UNABLE_TO_READ_FILE() }
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) { UNABLE_TO_READ_FILE() }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
 #   if (defined(__SSP_ALL__) || defined(__SSP_STRONG__) || defined(__OPTIMIZE__))
     uint8_t *filestr = (uint8_t *)calloc(filesize, 0x01);
@@ -446,7 +497,13 @@ uint8_t *getbinfile(const char *__restrict__ filename) {
 }
 
 
-/** Given the filesize, return the binary file's contents as an array of uint8_t; remember to use `free()` */
+/**
+    Given the filesize, return the binary file's contents as an array of uint8_t; remember to use `free()`
+
+    @param[in] filename    Pathname of the file
+    @param[in] filesize    The file's size (in bytes)
+    @returns The files contents
+*/
 uint8_t *getbinfile_sizet(const char *__restrict__ filename, const size_t filesize) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) { FAILED_OPEN_FILE() }
@@ -619,7 +676,12 @@ uint8_t *get_hidden_data_from_file(const char *__restrict__ filename) {
 /* FILE INTEGRITY */
 
 
-/** Open the specified file and return the parity of the file */
+/**
+    Open the specified file and return the parity of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Parity
+*/
 uint8_t filebitparity64(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -629,12 +691,12 @@ uint8_t filebitparity64(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (64u - (filesize & 63u))), 0x01u);
     if (filestr == (uint8_t *)NULL) {
@@ -672,7 +734,12 @@ uint8_t filebitparity64(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Adler16 checksum of the file */
+/**
+    Open the specified file and return the Adler16 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Adler16 Checksum
+*/
 uint16_t fileadler16(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -682,12 +749,12 @@ uint16_t fileadler16(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -712,7 +779,12 @@ uint16_t fileadler16(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Adler32 checksum of the file */
+/**
+    Open the specified file and return the Adler32 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Adler32 Checksum
+*/
 uint32_t fileadler32(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -722,12 +794,12 @@ uint32_t fileadler32(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -752,7 +824,12 @@ uint32_t fileadler32(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Adler64 checksum of the file */
+/**
+    Open the specified file and return the Adler64 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Adler64 Checksum
+*/
 uint64_t fileadler64(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -762,12 +839,12 @@ uint64_t fileadler64(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -792,7 +869,12 @@ uint64_t fileadler64(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Anti-Adler64 (decrementing for-loop) checksum of the file */
+/**
+    Open the specified file and return the Anti-Adler64 (decrementing for-loop) checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Anti-Adler64 Checksum
+*/
 uint64_t fileantiadler64(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -802,12 +884,12 @@ uint64_t fileantiadler64(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -832,7 +914,12 @@ uint64_t fileantiadler64(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Anti-Adler64rev2 (decrementing and re-arranged for-loop) checksum of the file */
+/**
+    Open the specified file and return the Anti-Adler64rev2 (decrementing and re-arranged for-loop) checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Anti-Adler64rev2 Checksum
+*/
 uint64_t fileantiadler64rev2(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -842,12 +929,12 @@ uint64_t fileantiadler64rev2(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -872,7 +959,12 @@ uint64_t fileantiadler64rev2(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Fletcher16 checksum of the file */
+/**
+    Open the specified file and return the Fletcher16 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Fletcher16 Checksum
+*/
 uint16_t filefletcher16(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -882,12 +974,12 @@ uint16_t filefletcher16(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -912,7 +1004,12 @@ uint16_t filefletcher16(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Fletcher16 checksum (optimized) of the file */
+/**
+    Open the specified file and return the Fletcher16 checksum (optimized) of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Fletcher16 Checksum
+*/
 uint16_t filefletcher16fast(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -922,12 +1019,12 @@ uint16_t filefletcher16fast(const char *__restrict__ filename) {
 #   ifdef OSPOSIX
     register size_t filesize = getfilesize(filename);
 #   else
-    if (fseek(fileptr, (slint)0x00, SEEK_END) != 0x00) {
+    if (fseek(fileptr, (slint)0x0, SEEK_END) != 0x0) {
         fputs("ERROR: Unable to read file!\n", stderr);
         exit(EXIT_FAILURE);
     }
     register size_t filesize = (size_t)ftell(fileptr);
-    rewind(fileptr);  // fseek(fileptr, (slint)0x00, SEEK_SET);
+    rewind(fileptr);  // fseek(fileptr, (slint)0x0, SEEK_SET);
 #   endif
     uint8_t *filestr = (uint8_t *)calloc((filesize + (16 - (filesize & 15))), 0x1);
     if (filestr == (uint8_t *)NULL) {
@@ -969,7 +1066,12 @@ uint16_t filefletcher16fast(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Fletcher32 checksum of the file */
+/**
+    Open the specified file and return the Fletcher32 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Fletcher32 Checksum
+*/
 uint32_t filefletcher32(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -1016,7 +1118,12 @@ uint32_t filefletcher32(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Fletcher32 checksum (optimized) of the file */
+/**
+    Open the specified file and return the Fletcher32 checksum (optimized) of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Fletcher32 Checksum
+*/
 uint32_t filefletcher32fast(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -1070,7 +1177,12 @@ uint32_t filefletcher32fast(const char *__restrict__ filename) {
 }
 
 
-/** Open the specified file and return the Collier32 checksum of the file */
+/**
+    Open the specified file and return the Collier32 checksum of the file
+
+    @param[in] filename    Pathname of the file
+    @returns Collier32 Checksum
+*/
 uint32_t filecollier32(const char *__restrict__ filename) {
     FILE *fileptr = fopen(filename, "rb");
     if (fileptr == (FILE *)NULL) {
@@ -1715,14 +1827,6 @@ int islibelf(void) {
 
 
 /* MISCELLANEOUS */
-
-
-/** Print a newline character */
-void printline(void) {
-    fputs("\n\n", stdout);
-    fflush(stdout);
-    return;
-}
 
 
 /** Swap the values of `x` and `y` (xorswap(&x, &y)) */

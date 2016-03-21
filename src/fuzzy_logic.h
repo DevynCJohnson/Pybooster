@@ -5,8 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief Fuzzy Logic (header)
-@version 2016.03.20
+@brief Fuzzy-logic datatype and functions (header)
+@version 2016.03.21
 
 @section DESCRIPTION
 Light-weight Fuzzy-Logic library and conversions between fuzzy and boolean datatypes

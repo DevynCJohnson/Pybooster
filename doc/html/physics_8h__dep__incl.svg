@@ -29,7 +29,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="pyphysics_8c.html" target="_top" xlink:title="Physics Functions. ">
+<g id="a_node3"><a xlink:href="pyphysics_8c.html" target="_top" xlink:title="Physics Functions from physics.c. ">
 <polygon fill="white" stroke="black" points="77,-0.5 77,-19.5 146,-19.5 146,-0.5 77,-0.5"/>
 <text text-anchor="middle" x="111.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pyphysics.c</text>
 </a>

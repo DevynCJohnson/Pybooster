@@ -5,11 +5,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@brief x86-64 Assembly Functions (header)
-@version 2016.03.20
-
-@section DESCRIPTION
-C-functions containing inlined x86-64 Assembly (AT&T syntax)
+@brief C-functions containing inlined x86-64 Assembly using AT&T-Syntax (header)
+@version 2016.03.21
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -155,7 +152,6 @@ ullint asm_xor_ull(ullint num1, ullint num2);
 ulint rdrnd(void);
 #endif
 #endif
-void asm_nop(void);
 
 
 #endif

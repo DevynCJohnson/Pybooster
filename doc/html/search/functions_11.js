@@ -25,7 +25,7 @@ var searchData=
   ['replacecurlyquotes',['replacecurlyquotes',['../namespacepybooster_1_1strtools.html#af6abdffc3a67012752b204d8f922b1eb',1,'pybooster::strtools']]],
   ['replacespecialwhitespace',['replacespecialwhitespace',['../namespacepybooster_1_1strtools.html#a152aa5e41c732bb74475c4c67a52bc90',1,'pybooster::strtools']]],
   ['resistance',['resistance',['../namespacepybooster_1_1electronics.html#a48bf2ac5101136d13d4f92eab9d9e9aa',1,'pybooster::electronics']]],
-  ['retint',['retint',['../mathfunc_8c.html#adf2c3f9a85935f0c342315e157c12e29',1,'retint(const double x):&#160;mathfunc.c'],['../mathfunc_8h.html#adf2c3f9a85935f0c342315e157c12e29',1,'retint(const double x):&#160;mathfunc.c']]],
+  ['retint',['retint',['../mathfunc_8c.html#adf2c3f9a85935f0c342315e157c12e29',1,'retint(const double x):&#160;mathfunc.c'],['../mathfunc_8h.html#ac9187a09167eaa75ab95e994c91700ba',1,'retint(const double x) __attribute__((const :&#160;mathfunc.h']]],
   ['rgb2cmy',['rgb2cmy',['../namespacepybooster_1_1color.html#a968bc7df479eeb1e784d4025c41c44b7',1,'pybooster::color']]],
   ['rgb2cmyk',['rgb2cmyk',['../namespacepybooster_1_1color.html#acff9db7807e7e204bc00b236b3d657c5',1,'pybooster::color']]],
   ['rgb2hex',['rgb2hex',['../namespacepybooster_1_1color.html#a1a073e73ff8d0c9a38506605b01b90f1',1,'pybooster::color']]],

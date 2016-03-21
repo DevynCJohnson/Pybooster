@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Cryptography Functions
-@version 2016.03.20
+@version 2016.03.21
 
 @section DESCRIPTION
 This library provides many encryption, decryption, cipher, hash, and checksum functions
@@ -1280,7 +1280,12 @@ void quaternion_decryption64(uint8_t *__restrict__ data, const uint32_t datasize
 }
 
 
-/** Return the parity of the given data */
+/**
+    Return the parity of the given data
+
+    @param[in] data    32-bits of data
+    @returns Parity
+*/
 uint8_t bitparity(const uint32_t data) {
     register uint32_t x = (data ^ (data >> 0x10));
     x = (x ^ (x >> 0x8));
@@ -1289,7 +1294,12 @@ uint8_t bitparity(const uint32_t data) {
 }
 
 
-/** Return the parity of the given data */
+/**
+    Return the parity of the given data
+
+    @param[in] data    64-bits of data
+    @returns Parity
+*/
 uint8_t bitparity64(const uint64_t data) {
     register uint64_t x = (data ^ (data >> 0x10));
     x = (x ^ (x >> 0x8));
@@ -1299,7 +1309,12 @@ uint8_t bitparity64(const uint64_t data) {
 
 
 #ifdef UINT128_SUPPORTED
-/** Return the parity of the given data */
+/**
+    Return the parity of the given data
+
+    @param[in] data    128-bits of data
+    @returns Parity
+*/
 uint8_t bitparity128(const uint128_t data) {
     register uint128_t x = (data ^ (data >> 0x10));
     x = (x ^ (x >> 0x8));
@@ -1309,11 +1324,17 @@ uint8_t bitparity128(const uint128_t data) {
 #endif
 
 
-/** Return the CRC8 value for the given byte array (`data`), given length */
+/**
+    Return the CRC8 value for the given byte array (`data`), given length
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns CRC8 Checksum
+*/
 uint8_t crc8(const uint8_t *__restrict__ data, size_t len) {
     register uint8_t x, crc = 0xFF;
     while (len--) {
-        x = crc >> 4 ^ *data++;
+        x = (crc >> 4) ^ *data++;
         x ^= (x >> 2);
         crc = (uint8_t)(((uint8_t)(crc << 4)) ^ ((uint8_t)(x << 6)) ^ ((uint8_t)(x << 3)) ^ (uint8_t)x);
     }
@@ -1321,7 +1342,12 @@ uint8_t crc8(const uint8_t *__restrict__ data, size_t len) {
 }
 
 
-/** Return the CRC8 value for the given byte array (`data`) */
+/**
+    Return the CRC8 value for the given byte array (`data`)
+
+    @param[in] data    Data
+    @returns CRC8 Checksum
+*/
 uint8_t crc8x(const uint8_t *__restrict__ data) {
     register uint8_t x, crc = 0xFF;
     register size_t len = strlenx_uint8(data);
@@ -1334,7 +1360,13 @@ uint8_t crc8x(const uint8_t *__restrict__ data) {
 }
 
 
-/** Return the CRC8 value for the given byte array (`data`), given length */
+/**
+    Return the CRC8 value for the given byte array (`data`), given length
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns CRC8 Checksum
+*/
 uint8_t crc8portable(const uint8_t *__restrict__ data, const uint32_t len) {
     register uint8_t remainder = 0x0;
     register uint32_t i;
@@ -1349,7 +1381,13 @@ uint8_t crc8portable(const uint8_t *__restrict__ data, const uint32_t len) {
 }
 
 
-/** Return the CRC16 value for the given byte array (`data`), given length */
+/**
+    Return the CRC16 value for the given byte array (`data`), given length
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns CRC16 Checksum
+*/
 uint16_t crc16(const uint8_t *__restrict__ data, size_t len) {
     register uint8_t x;
     register uint16_t crc = 0xFFFF;
@@ -1362,7 +1400,12 @@ uint16_t crc16(const uint8_t *__restrict__ data, size_t len) {
 }
 
 
-/** Return the CRC16 value for the given byte array (`data`) */
+/**
+    Return the CRC16 value for the given byte array (`data`)
+
+    @param[in] data    Data
+    @returns CRC16 Checksum
+*/
 uint16_t crc16x(const uint8_t *__restrict__ data) {
     register uint8_t x;
     register uint16_t crc = 0xFFFF;
@@ -1376,7 +1419,14 @@ uint16_t crc16x(const uint8_t *__restrict__ data) {
 }
 
 
-/** Return the CRC16 of the data in memory (address and all); `ptr_crc` may be `NULL` or `&var` */
+/**
+    Return the CRC16 of the data in memory (address and all); `ptr_crc` may be `NULL` or `&var`
+
+    @param[in] ptr_crc    Address of Data
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns CRC16 Checksum
+*/
 uint16_t crc16mem(const uint16_t *ptr_crc, const uint8_t *data, const uint32_t len) {
     register uint32_t i;
     register uint16_t crc = ((ptr_crc == (uint16_t *)NULL) ? 0xFFFF : *ptr_crc);
@@ -1392,7 +1442,12 @@ uint16_t crc16mem(const uint16_t *ptr_crc, const uint8_t *data, const uint32_t l
 }
 
 
-/** Return the CRC16 of the data in memory (address and all); only specify data location */
+/**
+    Return the CRC16 of the data in memory (address and all); only specify data location
+
+    @param[in] data    Data
+    @returns CRC16 Checksum
+*/
 uint16_t crc16memx(const uint8_t *data) {
     register uint64_t i;
     register uint16_t crc = (uint16_t)((uint16_t)0x1861 ^ (uint16_t)(((size_t)data) % 0xFFFF));
@@ -1408,7 +1463,14 @@ uint16_t crc16memx(const uint8_t *data) {
 }
 
 
-/** Return the CRC32 value for the given byte array (`data`), given length */
+/**
+    Return the CRC32 value for the given byte array (`data`), given length
+
+    @param[in] crc    CRC Seed
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns CRC32 Checksum
+*/
 uint32_t crc32(uint32_t crc, const uint8_t *__restrict__ data, const size_t len) {
     register size_t i;
     for (i = len; i--;) {
@@ -1419,7 +1481,13 @@ uint32_t crc32(uint32_t crc, const uint8_t *__restrict__ data, const size_t len)
 }
 
 
-/** Return the CRC32 value for the given byte array (`data`) */
+/**
+    Return the CRC32 value for the given byte array (`data`)
+
+    @param[in] crc    CRC Seed
+    @param[in] data    Data
+    @returns CRC32 Checksum
+*/
 uint32_t crc32x(uint32_t crc, const uint8_t *__restrict__ data) {
     register size_t len;
     for (len = strlenx_uint8(data); len--;) {
@@ -1431,7 +1499,13 @@ uint32_t crc32x(uint32_t crc, const uint8_t *__restrict__ data) {
 
 
 #ifdef INTEL64
-/** Optimized CRC32 */
+/**
+    Optimized CRC32
+
+    @param[in] str    Character String
+    @param[in] len    Length of data (in bytes)
+    @returns CRC32 Checksum
+*/
 uint32_t fastcrc32(char *str, const uint32_t len) {
 #   ifdef __clang__
 #      pragma GCC diagnostic ignored "-Wcast-align"
@@ -1464,7 +1538,13 @@ uint32_t fastcrc32(char *str, const uint32_t len) {
 #endif
 
 
-/** Return the Adler8 checksum of the given data */
+/**
+    Return the Adler8 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Adler8 Checksum
+*/
 uint8_t adler8(const uint8_t *__restrict__ data, register size_t len) {
     register uint8_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1476,7 +1556,13 @@ uint8_t adler8(const uint8_t *__restrict__ data, register size_t len) {
 }
 
 
-/** Return the Adler16 checksum of the given data */
+/**
+    Return the Adler16 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Adler16 Checksum
+*/
 uint16_t adler16(const uint8_t *__restrict__ data, register size_t len) {
     register uint16_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1488,7 +1574,13 @@ uint16_t adler16(const uint8_t *__restrict__ data, register size_t len) {
 }
 
 
-/** Return the Adler32 checksum of the given data */
+/**
+    Return the Adler32 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Adler32 Checksum
+*/
 uint32_t adler32(const uint8_t *__restrict__ data, register size_t len) {
     register uint32_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1500,7 +1592,13 @@ uint32_t adler32(const uint8_t *__restrict__ data, register size_t len) {
 }
 
 
-/** Return the Adler64 checksum of the given data */
+/**
+    Return the Adler64 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Adler64 Checksum
+*/
 uint64_t adler64(const uint8_t *__restrict__ data, register size_t len) {
     register uint64_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1512,7 +1610,13 @@ uint64_t adler64(const uint8_t *__restrict__ data, register size_t len) {
 }
 
 
-/** Return the Anti-Adler64 (decrementing for-loop) checksum of the given data */
+/**
+    Return the Anti-Adler64 (decrementing for-loop) checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Anti-Adler64 Checksum
+*/
 uint64_t antiadler64(const uint8_t *__restrict__ data, register size_t len) {
     register uint64_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1524,7 +1628,13 @@ uint64_t antiadler64(const uint8_t *__restrict__ data, register size_t len) {
 }
 
 
-/** Return the Anti-Adler64rev2 (decrementing and re-arranged for-loop) checksum of the given data */
+/**
+    Return the Anti-Adler64rev2 (decrementing and re-arranged for-loop) checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Anti-Adler64rev2 Checksum
+*/
 uint64_t antiadler64rev2(const uint8_t *__restrict__ data, register size_t len) {
     register uint64_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1537,7 +1647,13 @@ uint64_t antiadler64rev2(const uint8_t *__restrict__ data, register size_t len) 
 
 
 #ifdef UINT128_SUPPORTED
-/** Return the Adler128 checksum of the given data */
+/**
+    Return the Adler128 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] len    Length of data (in bytes)
+    @returns Adler128 Checksum
+*/
 uint128_t adler128(const uint8_t *__restrict__ data, register size_t len) {
     register uint128_t a = 0x1, b = 0x0;
     register size_t index;
@@ -1550,7 +1666,13 @@ uint128_t adler128(const uint8_t *__restrict__ data, register size_t len) {
 #endif
 
 
-/** Return the Fletcher8 checksum of the given data */
+/**
+    Return the Fletcher8 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Fletcher8 Checksum
+*/
 uint8_t fletcher8(const uint8_t *__restrict__ data, const size_t count) {
     register uint8_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;
@@ -1562,7 +1684,13 @@ uint8_t fletcher8(const uint8_t *__restrict__ data, const size_t count) {
 }
 
 
-/** Return the Fletcher16 checksum of the given data */
+/**
+    Return the Fletcher16 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Fletcher16 Checksum
+*/
 uint16_t fletcher16(const uint8_t *__restrict__ data, const size_t count) {
     register uint16_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;
@@ -1574,7 +1702,13 @@ uint16_t fletcher16(const uint8_t *__restrict__ data, const size_t count) {
 }
 
 
-/** Return the Fletcher16 checksum for the given data (fast alternative) */
+/**
+    Return the Fletcher16 checksum for the given data (fast alternative)
+
+    @param[in] data    Data
+    @param[in] words    Length of data (in bytes)
+    @returns Fletcher16 Checksum
+*/
 uint16_t fletcher16fast(const uint8_t *__restrict__ data, const size_t words) {
     register uint16_t sum1 = 0xFF, sum2 = 0xFF;
     register size_t len, i = words;
@@ -1595,7 +1729,13 @@ uint16_t fletcher16fast(const uint8_t *__restrict__ data, const size_t words) {
 }
 
 
-/** Return the Fletcher32 checksum of the given data */
+/**
+    Return the Fletcher32 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Fletcher32 Checksum
+*/
 uint32_t fletcher32(const uint16_t *__restrict__ data, const size_t count) {
     register uint32_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;
@@ -1607,7 +1747,13 @@ uint32_t fletcher32(const uint16_t *__restrict__ data, const size_t count) {
 }
 
 
-/** Return the Fletcher32 checksum for the given data (fast alternative) */
+/**
+    Return the Fletcher32 checksum for the given data (fast alternative)
+
+    @param[in] data    Data
+    @param[in] words    Length of data (in bytes)
+    @returns Fletcher32 Checksum
+*/
 uint32_t fletcher32fast(const uint16_t *__restrict__ data, const size_t words) {
     register uint32_t sum1 = 0xFFFF, sum2 = 0xFFFF;
     register size_t len, i = words;
@@ -1625,7 +1771,13 @@ uint32_t fletcher32fast(const uint16_t *__restrict__ data, const size_t words) {
 }
 
 
-/** Return the Fletcher64 checksum for the given data */
+/**
+    Return the Fletcher64 checksum for the given data
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Fletcher64 Checksum
+*/
 uint64_t fletcher64(const uint32_t *__restrict__ data, const size_t count) {
     register uint64_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;
@@ -1637,7 +1789,13 @@ uint64_t fletcher64(const uint32_t *__restrict__ data, const size_t count) {
 }
 
 
-/** Return the Fletcher64 checksum for the given string cast as an uint_t */
+/**
+    Return the Fletcher64 checksum for the given string cast as an uint_t
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Fletcher64 Checksum
+*/
 uint64_t fletcher64char(const uint8_t *__restrict__ data, const size_t count) {
     register uint64_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;
@@ -1649,7 +1807,13 @@ uint64_t fletcher64char(const uint8_t *__restrict__ data, const size_t count) {
 }
 
 
-/** Return the Collier32 checksum of the given data */
+/**
+    Return the Collier32 checksum of the given data
+
+    @param[in] data    Data
+    @param[in] count    Length of data (in bytes)
+    @returns Collier32 Checksum
+*/
 uint32_t collier32(const uint16_t *__restrict__ data, const size_t count) {
     register uint32_t sum1 = 0x0, sum2 = 0x0;
     register size_t index;

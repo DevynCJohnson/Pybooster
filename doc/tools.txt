@@ -460,14 +460,6 @@ FUNCTIONS
         lowercasestr15(STR: str) -> str
         Convert a string 15-character string to all lowercase letters
     
-    nop(...)
-        nop() -> None
-        Do nothing (faster than Python's `pass` command)
-    
-    printline(...)
-        printline() -> None
-        Print a newline character
-    
     rdtsc(...)
         rdtsc() -> int
         The rdtsc (Read Time-Stamp Counter) instruction is used to determine how many CPU ticks occurred since the processor was reset

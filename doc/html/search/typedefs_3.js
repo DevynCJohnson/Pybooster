@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linked_5fstack_5fnode_5ft',['linked_stack_node_t',['../extra__datatypes_8h.html#abcd3aaabbaf0569be52dd75cfa80431d',1,'extra_datatypes.h']]]
+  ['fuzzy',['fuzzy',['../fuzzy__logic_8h.html#acb89d36bc9b2311bea9e97bf31ae8ff7',1,'fuzzy_logic.h']]]
 ];

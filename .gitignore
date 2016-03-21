@@ -3,9 +3,11 @@
 python/
 python/*
 clib/
+swiglib/
 *.cache
 *.tmp
 *.todo.txt
+*_wrap.c
 
 # Translations
 *.mo

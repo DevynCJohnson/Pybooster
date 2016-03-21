@@ -48,9 +48,9 @@ var geometry_8h =
     [ "perimetertriangle", "geometry_8h.html#ac1d58f5648a27f76bca1bfc5a2b9ee76", null ],
     [ "perimetertrianglel", "geometry_8h.html#ad9798ff8701ea307b2b5a2ef9c1e5ea2", null ],
     [ "polar2xy", "geometry_8h.html#a60f58343ad05268ee0bd80ca19a9f338", null ],
-    [ "squareroot", "geometry_8h.html#a9e39dde4c601c44963d7e87d94dcf47c", null ],
-    [ "squarerootf", "geometry_8h.html#a70958cdbd7eec17c4a0057b93393e9ac", null ],
-    [ "squarerootl", "geometry_8h.html#ad39fcc2ad5914729e8b22dd5e4e77ccf", null ],
+    [ "squareroot", "geometry_8h.html#a3fc1c91bbd6aa4237e6036782e04c54c", null ],
+    [ "squarerootf", "geometry_8h.html#a1d500e24e7e95598dba3fd4227a8cc12", null ],
+    [ "squarerootl", "geometry_8h.html#adac019736d7b6cb091b9f1fd28f2e759", null ],
     [ "surfaceareacone", "geometry_8h.html#abb91b26d436bcfcb74d4fdb90d19ec73", null ],
     [ "surfaceareaconef", "geometry_8h.html#ade6c1e7fd3e706d0f3326c88ea57b858", null ],
     [ "surfaceareaconel", "geometry_8h.html#a99e479bead8a79f759fd54c8abb02827", null ],
@@ -106,6 +106,7 @@ var geometry_8h =
     [ "volumetorusf", "geometry_8h.html#a0c2ab3972c340522d95ceaaa21046ca6", null ],
     [ "volumetorusl", "geometry_8h.html#a006a14eeaca45e4d23b43064851e8f70", null ],
     [ "xy2polar", "geometry_8h.html#a6079a9db5b532c734f26c00e84ca5794", null ],
+    [ "flatten", "geometry_8h.html#a6d0592915da0a1c7c5ba029980c2097d", null ],
     [ "linelength_point", "geometry_8h.html#ab978051b66f2a6db71ddcc0cee7f677d", null ],
     [ "linelength_pointl", "geometry_8h.html#a8fed61bd503dbddc503938b9d7ad9cb9", null ]
 ];

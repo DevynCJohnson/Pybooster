@@ -7,6 +7,7 @@ var searchData=
   ['slintpair_5ft',['slintpair_t',['../MACROS_8h.html#structslintpair__t',1,'']]],
   ['sllintpair_5ft',['sllintpair_t',['../MACROS_8h.html#structsllintpair__t',1,'']]],
   ['sphere',['sphere',['../math__types_8h.html#structsphere',1,'']]],
+  ['sphere_5f_5ffloat128',['sphere__float128',['../math__types_8h.html#structsphere____float128',1,'']]],
   ['spheref',['spheref',['../math__types_8h.html#structspheref',1,'']]],
   ['spherel',['spherel',['../math__types_8h.html#structspherel',1,'']]],
   ['square',['square',['../math__types_8h.html#structsquare',1,'']]],

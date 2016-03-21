@@ -13,6 +13,15 @@ var MACROS_8h =
       [ "y", "MACROS_8h.html#ab927965981178aa1fba979a37168db2a", null ],
       [ "z", "MACROS_8h.html#ab3e6ed577a7c669c19de1f9c1b46c872", null ]
     ] ],
+    [ "float128pair_t", "MACROS_8h.html#structfloat128pair__t", [
+      [ "x", "MACROS_8h.html#a3d1ae614d39549f70e207e03e847f952", null ],
+      [ "y", "MACROS_8h.html#a8d1cfc602ebdf7734ca0c92a54bec77b", null ]
+    ] ],
+    [ "float128triplet_t", "MACROS_8h.html#structfloat128triplet__t", [
+      [ "x", "MACROS_8h.html#a3d1ae614d39549f70e207e03e847f952", null ],
+      [ "y", "MACROS_8h.html#a8d1cfc602ebdf7734ca0c92a54bec77b", null ],
+      [ "z", "MACROS_8h.html#a0702a9e126f6f4944f836fd6b48ae320", null ]
+    ] ],
     [ "floatpair_t", "MACROS_8h.html#structfloatpair__t", [
       [ "x", "MACROS_8h.html#ad0da36b2558901e21e7a30f6c227a45e", null ],
       [ "y", "MACROS_8h.html#aa4f0d3eebc3c443f9be81bf48561a217", null ]
@@ -21,6 +30,15 @@ var MACROS_8h =
       [ "x", "MACROS_8h.html#ad0da36b2558901e21e7a30f6c227a45e", null ],
       [ "y", "MACROS_8h.html#aa4f0d3eebc3c443f9be81bf48561a217", null ],
       [ "z", "MACROS_8h.html#af73583b1e980b0aa03f9884812e9fd4d", null ]
+    ] ],
+    [ "int128pair_t", "MACROS_8h.html#structint128pair__t", [
+      [ "x", "MACROS_8h.html#ac53cc5ebdab385f730cf16d8992b57d0", null ],
+      [ "y", "MACROS_8h.html#ad7172b229f525a966af3696ad167dc66", null ]
+    ] ],
+    [ "int128triplet_t", "MACROS_8h.html#structint128triplet__t", [
+      [ "x", "MACROS_8h.html#ac53cc5ebdab385f730cf16d8992b57d0", null ],
+      [ "y", "MACROS_8h.html#ad7172b229f525a966af3696ad167dc66", null ],
+      [ "z", "MACROS_8h.html#a0a0bc1a0f0644502028def463362c74b", null ]
     ] ],
     [ "intpair_t", "MACROS_8h.html#structintpair__t", [
       [ "x", "MACROS_8h.html#aefaad1a055682b77784fb2536b9a986b", null ],
@@ -38,6 +56,15 @@ var MACROS_8h =
       [ "x", "MACROS_8h.html#a42cd7a7e1e4f08bacc2c7dce7cd47bd0", null ],
       [ "y", "MACROS_8h.html#a99e97e384cd211ccdf1c4104a4a2c58c", null ]
     ] ],
+    [ "uint128pair_t", "MACROS_8h.html#structuint128pair__t", [
+      [ "x", "MACROS_8h.html#ac4a9e231949c770538ede822d707ba3d", null ],
+      [ "y", "MACROS_8h.html#a29a8c7c703700dbfb1f0f910cd2a635d", null ]
+    ] ],
+    [ "uint128triplet_t", "MACROS_8h.html#structuint128triplet__t", [
+      [ "x", "MACROS_8h.html#ac4a9e231949c770538ede822d707ba3d", null ],
+      [ "y", "MACROS_8h.html#a29a8c7c703700dbfb1f0f910cd2a635d", null ],
+      [ "z", "MACROS_8h.html#a178946c4835670e0d73244ee29427551", null ]
+    ] ],
     [ "ulintpair_t", "MACROS_8h.html#structulintpair__t", [
       [ "x", "MACROS_8h.html#a7693238af97312bd441df14cadf314be", null ],
       [ "y", "MACROS_8h.html#ae0c09d9bf5edd0b4a3c9ae9ca6fe07f7", null ]
@@ -46,13 +73,30 @@ var MACROS_8h =
       [ "x", "MACROS_8h.html#a4bf997f62424c36e00a8260b2c12a440", null ],
       [ "y", "MACROS_8h.html#a3e98ee3c558bfc1c32fc534fcd4134f6", null ]
     ] ],
-    [ "__asm__", "MACROS_8h.html#a2ff2e12278c3cb56ce52e20f936a2d00", null ],
+    [ "__AND", "MACROS_8h.html#a798a04ec1b278cec78b46755d8454d33", null ],
     [ "__bool_true_false_are_defined", "MACROS_8h.html#a665b0cc9ee2ced31785321d55cde349e", null ],
+    [ "__COMP2", "MACROS_8h.html#aa128f99c5694721d2da35024fd32672a", null ],
     [ "__IS__", "MACROS_8h.html#a81971ca92ca62ce75e2d329593d8f3da", null ],
+    [ "__IVDEP__", "MACROS_8h.html#a8474f314a7b3b5b30f9ebe820c90df5f", null ],
+    [ "__IVDEP__", "mathfunc_8swg.html#a8474f314a7b3b5b30f9ebe820c90df5f", null ],
+    [ "__MAX", "MACROS_8h.html#a74c8cb2090b33840fc4333be6b66e0a2", null ],
+    [ "__MAXINT", "MACROS_8h.html#a9117a0786e9b21e649ef89f4bcc47e11", null ],
+    [ "__MIN", "MACROS_8h.html#a823c5472cf06bec96d296fa1a9cdaf93", null ],
+    [ "__MININT", "MACROS_8h.html#acedd5577671fc10113b459b498812960", null ],
+    [ "__NAND", "MACROS_8h.html#a4d6ead8dadcedfda52d0d3deaad19eb2", null ],
+    [ "__NOR", "MACROS_8h.html#aaee072f8d78f74c5c73ec3085f2b3cdd", null ],
+    [ "__NOT", "MACROS_8h.html#ae985c1be976be244cccc3d16c1232c92", null ],
+    [ "__NXOR", "MACROS_8h.html#a2dba29a86cec54f50385a68007347c90", null ],
+    [ "__OR", "MACROS_8h.html#aa3eaf430a7aa0d879cdaf087cba641d4", null ],
+    [ "__SIZEOF_FLOAT128__", "MACROS_8h.html#a1e2f16909b04d907f56bcc56b288b17c", null ],
     [ "__SIZEOF_I_DOUBLE__", "MACROS_8h.html#a96ed792f671f989109502277c49aff2b", null ],
     [ "__SIZEOF_I_FLOAT__", "MACROS_8h.html#a4a9a189e831dbefc6d0c2b9498bb4de2", null ],
     [ "__SIZEOF_I_LONG_DOUBLE__", "MACROS_8h.html#adad30b1622ffc56056d8b3f57a593fc3", null ],
+    [ "__SIZEOF_INT128__", "MACROS_8h.html#a1433791b35cde12c112c2ef54b61a4d2", null ],
+    [ "__SIZEOF_UINT128__", "MACROS_8h.html#af60c914a1d3021bf10d4d60a4ad84979", null ],
     [ "__STDC_VERSION__", "MACROS_8h.html#abfc9432294a2cd3d55c92dca5c12f922", null ],
+    [ "__XNOR", "MACROS_8h.html#a73ca19c49e9006b176861da24e546bfe", null ],
+    [ "__XOR", "MACROS_8h.html#a937bda7fddf96a2c8ed23be20c7e38e0", null ],
     [ "_FALSE", "MACROS_8h.html#ac63cf720fba9ca6aa9136bee9d5e45e8", null ],
     [ "_ISOC11_SOURCE", "MACROS_8h.html#aae3f913a229734e77dcbcc645aaf8926", null ],
     [ "_TRUE", "MACROS_8h.html#a080a3598eaf7b42e96491702adb75c94", null ],
@@ -87,7 +131,9 @@ var MACROS_8h =
     [ "false", "MACROS_8h.html#a65e9886d74aaee76545e83dd09011727", null ],
     [ "False", "MACROS_8h.html#a306ebd41c0cd1303b1372c6153f0caf8", null ],
     [ "FALSE", "MACROS_8h.html#aa93f0eb578d23995850d61f7d61c55c1", null ],
-    [ "FLOAT128_UNSUPPORTED", "MACROS_8h.html#ab4c836076a1df61c3248874384ee0ed5", null ],
+    [ "float128", "MACROS_8h.html#a60c9fc97adc96da94c22f1f7c1b48213", null ],
+    [ "FLOAT128_SUPPORTED", "MACROS_8h.html#a43039ff405a35e30225029794505a6ff", null ],
+    [ "float128_t", "MACROS_8h.html#a197aad0815c27684155a068eddab9292", null ],
     [ "FLT_TO_U32", "MACROS_8h.html#a405459c6b4c4a83560d9d3ee17558940", null ],
     [ "GETARRAYSIZE", "MACROS_8h.html#a1e9127b57f31fe3d1aa4a62bf4cedebc", null ],
     [ "GETFILECONTENTS", "MACROS_8h.html#a2c09f0470f9c768e000305af4c467576", null ],
@@ -105,7 +151,7 @@ var MACROS_8h =
     [ "I_LONG_DOUBLE_NEG", "MACROS_8h.html#a0df4b8449714f67763555cdedf243d64", null ],
     [ "I_LONG_DOUBLE_ZERO", "MACROS_8h.html#a55eec72a29ca1cfbc9a85e288bf9d61b", null ],
     [ "IMAGINARY_NUMBER_CONSTANTS_SEEN", "MACROS_8h.html#a98c83a41f12d462db76f1db765955b13", null ],
-    [ "INT128_UNSUPPORTED", "MACROS_8h.html#ad363e17cd4dbc2bcadf6a7778c559e15", null ],
+    [ "INT128_SUPPORTED", "MACROS_8h.html#a867fc3034f82d95450ac725d6e99ea44", null ],
     [ "INT16_C", "MACROS_8h.html#ae91f72f695d96f8968ba3776fc3fbfc7", null ],
     [ "INT32_C", "MACROS_8h.html#ae9d37a4b8bb51a4390a402743c719682", null ],
     [ "INT64_C", "MACROS_8h.html#a7a0af652e488b6b82214d8750589d022", null ],
@@ -165,12 +211,15 @@ var MACROS_8h =
     [ "single", "MACROS_8h.html#a39463c7972b367aa0b5d14f0c148f085", null ],
     [ "slint", "MACROS_8h.html#a93a08e66124108411dd7ff23e70f3088", null ],
     [ "sllint", "MACROS_8h.html#af3c8b0b9d0dfb32249c9704c06f41723", null ],
+    [ "STANDARD_MACROS_SEEN", "mathfunc_8swg.html#aca9dae0e8d84ce567f6abd62d55270a3", null ],
     [ "STANDARD_MACROS_SPECIAL_SEEN", "MACROS_8h.html#ad5b5ca33ca261e2549869c64539e5957", null ],
+    [ "STDLIB", "MACROS_8h.html#affeebf9d5a2a69db55ffa96bd8bce1d0", null ],
     [ "STMT_BEGIN", "MACROS_8h.html#ab76ceba227acedcd35938c8105dc6ed9", null ],
     [ "STMT_END", "MACROS_8h.html#a2867f38dbbc838c3f4aff57d13dbbf57", null ],
     [ "STMT_NIL", "MACROS_8h.html#ad67e3ab6f755378b9847f6a2cbd1eb6a", null ],
     [ "STMT_VOID", "MACROS_8h.html#a47be831c6ed16052f6e13eb5fd03d0af", null ],
     [ "SWAP", "MACROS_8h.html#a5d9d454d4b9f2ff8106d5199ac0d0186", null ],
+    [ "tetra", "MACROS_8h.html#a1f576aeba84e08c06c74533200d6840e", null ],
     [ "TOASCII", "MACROS_8h.html#a4fd38d60b602dbbc18b113d45aa28b96", null ],
     [ "TOLOWER", "MACROS_8h.html#ad4771ad2e5dd6a87c83ecf879b7985de", null ],
     [ "TOUPPER", "MACROS_8h.html#ab54417c7c018570043920af66ba7457f", null ],
@@ -182,14 +231,17 @@ var MACROS_8h =
     [ "TYPESIZE_CHAR", "MACROS_8h.html#abf6ae403651ee9d7647f830c0b59acde", null ],
     [ "TYPESIZE_DOUBLE", "MACROS_8h.html#aa42704ed686024fb046d1b2c56db7bc9", null ],
     [ "TYPESIZE_FLOAT", "MACROS_8h.html#af0d12a0213b533226cc7e34181b3fb09", null ],
+    [ "TYPESIZE_FLOAT128", "MACROS_8h.html#aede22b0dabe7aa02fcd4aee84eca5a9d", null ],
     [ "TYPESIZE_I_DOUBLE", "MACROS_8h.html#a198c3f638df1b6ccade39f01daf8fb06", null ],
     [ "TYPESIZE_I_FLOAT", "MACROS_8h.html#ac5f15fc7a07890d2025cb8a48e4a6413", null ],
     [ "TYPESIZE_I_LONG_DOUBLE", "MACROS_8h.html#ab3a2d06641960264b0eb5e9be83b99af", null ],
     [ "TYPESIZE_INT", "MACROS_8h.html#ac5378eb35c422e8221a9eeb204d0f3e9", null ],
+    [ "TYPESIZE_INT128", "MACROS_8h.html#aafb1baa9516dacb3ef2abd909da0a082", null ],
     [ "TYPESIZE_LONG_DOUBLE", "MACROS_8h.html#aa429a9f445bebb573a18db73ed5e4748", null ],
     [ "TYPESIZE_LONG_INT", "MACROS_8h.html#ac0738728907947fb62ea8f093e0b725a", null ],
     [ "TYPESIZE_LONG_LONG", "MACROS_8h.html#a93ff58a8bf2b08a54596d46c2da02bd6", null ],
     [ "TYPESIZE_SHORT", "MACROS_8h.html#ad8ffde92a9b0963095771485b576edff", null ],
+    [ "TYPESIZE_UINT128", "MACROS_8h.html#a95a2a78c572fb577733c08af45f881e2", null ],
     [ "u16", "MACROS_8h.html#a2b19d553290a8d4a083d3c03280ea800", null ],
     [ "u32", "MACROS_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6", null ],
     [ "U32_TO_FLT", "MACROS_8h.html#a5738e0769f3a273397b63b7ea2f586cc", null ],
@@ -200,7 +252,7 @@ var MACROS_8h =
     [ "U64_TO_DBL", "MACROS_8h.html#a23b155a69d8f76c45754206af5515470", null ],
     [ "u8", "MACROS_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd", null ],
     [ "uint", "MACROS_8h.html#ad46b2ebcd4c426b06cda147ddc1001e7", null ],
-    [ "UINT128_UNSUPPORTED", "MACROS_8h.html#ad0f5a2a3455bde8bf6ee0ccd46b43a3b", null ],
+    [ "UINT128_SUPPORTED", "MACROS_8h.html#ac04a038802e50628aad5e26dc95d3002", null ],
     [ "UINT16_C", "MACROS_8h.html#aa290a886686286acd7629ab572a76138", null ],
     [ "UINT32_C", "MACROS_8h.html#a019597bd68b2f2adce63c279fc8100fd", null ],
     [ "UINT64_C", "MACROS_8h.html#ae480a9efd41a32b35744d8ca280ed335", null ],
@@ -221,6 +273,7 @@ var MACROS_8h =
     [ "XORSWAP", "MACROS_8h.html#a68b270eb5cb81e30fec38f9d94488da1", null ],
     [ "yes", "MACROS_8h.html#ade1c73328c7fd9bbb990a2811a5182e5", null ],
     [ "YES", "MACROS_8h.html#a7ebc9a785e5ab85457c98595aac81589", null ],
+    [ "__attribute__", "MACROS_8h.html#a764159568d0aba6dc8533fc60ddac08a", null ],
     [ "bool", "MACROS_8h.html#afaa87723b8417d40fcf45b7330261ef9", null ],
     [ "BOOL", "MACROS_8h.html#a93a465affe68a17ecbdbc18b2520ba1c", null ]
 ];
