@@ -5,6 +5,7 @@ var searchData=
   ['math_5ftypes_2eh',['math_types.h',['../math__types_8h.html',1,'']]],
   ['mathconstants_2ec',['mathconstants.c',['../mathconstants_8c.html',1,'']]],
   ['mathconstants_2eh',['mathconstants.h',['../mathconstants_8h.html',1,'']]],
+  ['mathconstants_2eswg',['mathconstants.swg',['../mathconstants_8swg.html',1,'']]],
   ['mathfunc_2ec',['mathfunc.c',['../mathfunc_8c.html',1,'']]],
   ['mathfunc_2eh',['mathfunc.h',['../mathfunc_8h.html',1,'']]],
   ['mathfunc_2eswg',['mathfunc.swg',['../mathfunc_8swg.html',1,'']]],

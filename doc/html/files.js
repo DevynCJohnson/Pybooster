@@ -44,6 +44,7 @@ var files =
     [ "math_types.h", "math__types_8h.html", "math__types_8h" ],
     [ "mathconstants.c", "mathconstants_8c.html", "mathconstants_8c" ],
     [ "mathconstants.h", "mathconstants_8h.html", "mathconstants_8h" ],
+    [ "mathconstants.swg", "mathconstants_8swg.html", "mathconstants_8swg" ],
     [ "mathfunc.c", "mathfunc_8c.html", "mathfunc_8c" ],
     [ "mathfunc.h", "mathfunc_8h.html", "mathfunc_8h" ],
     [ "mathfunc.swg", "mathfunc_8swg.html", "mathfunc_8swg" ],

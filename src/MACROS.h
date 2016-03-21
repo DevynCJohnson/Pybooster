@@ -123,11 +123,19 @@ Machine Modes
 
 
 // C STANDARD
+#if defined (__cplusplus)
+#undef __cplusplus
+#define __cplusplus   (201103L)  // C++11
+extern "C" {
+#endif
 #ifndef _ISOC11_SOURCE  // C11
 #   define _ISOC11_SOURCE
 #endif
 #ifndef __STDC_VERSION__
 #   define __STDC_VERSION__   (201112L)  // C11
+#endif
+#if defined (__cplusplus)
+}
 #endif
 // ARCHITECTURE
 #ifndef ARCHITECTURE_MACROS_SEEN
@@ -430,6 +438,9 @@ http://www.cplusplus.com/reference/climits/
 
 #ifndef X86_EXTENSIONS_SEEN
 #define X86_EXTENSIONS_SEEN
+#if defined (__cplusplus)
+extern "C" {
+#endif
 #   ifdef INTEL
 #      include <immintrin.h>
 #   else
@@ -461,17 +472,33 @@ http://www.cplusplus.com/reference/climits/
 #         include <wmmintrin.h>
 #      endif
 #   endif
+#if defined (__cplusplus)
+}
+#endif
 #endif
 
-#include <complex.h>
-#include <errno.h>
-#include <float.h>  // http://www.cplusplus.com/reference/cfloat/
-#include <inttypes.h>  // Also includes <stdint.h>
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <wchar.h>
+
+#if defined (__cplusplus)
+#   include <ccomplex>
+#   include <cerrno>
+#   include <cfloat>  // http://www.cplusplus.com/reference/cfloat/
+#   include <cinttypes>  // Also includes <cstdint>
+#   include <climits>
+#   include <cstdio>
+#   include <cstdlib>
+#   include <cstring>
+#   include <cwchar>
+#else
+#   include <complex.h>
+#   include <errno.h>
+#   include <float.h>  // http://www.cplusplus.com/reference/cfloat/
+#   include <inttypes.h>  // Also includes <stdint.h>
+#   include <limits.h>
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include <string.h>
+#   include <wchar.h>
+#endif
 
 
 /* BOOLEAN TYPE (<stdbool.h> REPLACEMENT) */
@@ -601,6 +628,8 @@ typedef __builtin_va_list   __gnuc_va_list;  // Hack to make standard headers wo
 #   define u32   unsigned long
 #   define ONE32   (0xFFFFFFFFUL)
 #endif
+#ifndef DATATYPES_128BITS_SEEN
+#define DATATYPES_128BITS_SEEN
 // 128-bit Integers
 #if (defined(__GNUC__) && defined(__GLIBC__) && defined(ENV64BIT) && !(defined(uint128_t) && defined(__uint128_t)))
 /** 128-bit signed integer datatype (not all systems support int128_t) */
@@ -652,6 +681,7 @@ typedef struct __cast__float128 {  // Work-around for Clang
 #else
 #   define FLOAT128_UNSUPPORTED   (1)
 #endif
+#endif  // DATATYPES_128BITS_SEEN
 // Imaginary Numbers
 #ifndef IMAGINARY_NUMBER_CONSTANTS_SEEN
 #define IMAGINARY_NUMBER_CONSTANTS_SEEN
@@ -794,7 +824,7 @@ https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29
 */
 
 
-#ifndef CTYPE_MACROS_SEEN
+#if (!defined(CTYPE_MACROS_SEEN) && !defined(SWIGRUBY) && !defined(SWIGPIKE))
 #define CTYPE_MACROS_SEEN
 /** Test if the char is alphanumeric */
 #define ISALNUM(c)   ((uint8_t)(((((0x60u<(uint8_t)(c))&((uint8_t)(c)<0x80u))|((0x40u<(uint8_t)(c))&((uint8_t)(c)<0x60u))))|(((0x2Fu<(uint8_t)(c))&((uint8_t)(c)<0x3Au)))))

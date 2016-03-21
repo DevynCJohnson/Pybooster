@@ -4,6 +4,7 @@ python/
 python/*
 clib/
 swiglib/
+swiglib/*
 *.cache
 *.tmp
 *.todo.txt

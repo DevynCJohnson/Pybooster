@@ -159,7 +159,7 @@
 </g>
 <!-- Node25 -->
 <g id="node25" class="node"><title>Node25</title>
-<g id="a_node25"><a xlink:href="mathfunc_8swg.html" target="_top" xlink:title="mathfunc.swg">
+<g id="a_node25"><a xlink:href="mathfunc_8swg.html" target="_top" xlink:title="SWIG wrapper for mathfunc.c. ">
 <polygon fill="white" stroke="black" points="868,-112.5 868,-131.5 946,-131.5 946,-112.5 868,-112.5"/>
 <text text-anchor="middle" x="907" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">mathfunc.swg</text>
 </a>

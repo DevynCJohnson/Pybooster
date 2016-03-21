@@ -1,5 +1,9 @@
 2016-03-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* PyBooster: Added SWIG wrappers for Lua, Octave, Perl, PHP, Pike, and Ruby
+
+2016-03-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
 	* PyBooster: Added SWIG and fixed additional Doxygen documentation issues
 
 2016-03-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

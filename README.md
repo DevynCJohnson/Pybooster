@@ -41,6 +41,7 @@ To perform the listed build commands, open a terminal and type the given command
 - To compile the C-libraries, type `make lib`.
 - To compile everything (except SWIG wrappers), type `make all`.
 - To compile SWIG wrappers, type `make wrappers`.
+- To compile SWIG wrappers for TCL, type `make tcl_wrappers`.
 - To generate the documentation, type `make doc`.
 - To remove the `*.o` files and temporary build files, type `make rmtmp`.
 - To remove all compiled files and temporary build files, type `make clean`.

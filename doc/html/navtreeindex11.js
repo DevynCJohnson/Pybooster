@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"math__types_8h.html#structspherel":[2,0,41,43],
 "math__types_8h.html#structsquare":[2,0,41,44],
 "math__types_8h.html#structsquaref":[2,0,41,45],
 "math__types_8h.html#structsquarel":[2,0,41,46],
@@ -248,6 +249,5 @@ var NAVTREEINDEX11 =
 "mathconstants_8h.html#a5b16be21f887ab0a9ae1cd9b87f93914":[2,0,43,167],
 "mathconstants_8h.html#a5b64814178da8b701e83415515fee9c0":[2,0,43,29],
 "mathconstants_8h.html#a5f451efd40004297e8112f9a6daca5c6":[2,0,43,149],
-"mathconstants_8h.html#a5f9583f55ab827bb6190b20586dc2dab":[2,0,43,27],
-"mathconstants_8h.html#a61ee8d36601448a8e5a232be8852468e":[2,0,43,144]
+"mathconstants_8h.html#a5f9583f55ab827bb6190b20586dc2dab":[2,0,43,27]
 };

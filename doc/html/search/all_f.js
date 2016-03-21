@@ -5,7 +5,7 @@ var searchData=
   ['october',['october',['../extra__datatypes_8h.html#ac1f9be2bf382f666b81f80f915edc1d6a0152c5c7837101324b3245cef6c6ae04',1,'extra_datatypes.h']]],
   ['octstr2char',['octstr2char',['../namespacepybooster_1_1strtools.html#a093dacd888b22e61f8eeaa3d397b2d8f',1,'pybooster::strtools']]],
   ['ohms',['OHMS',['../namespacepybooster_1_1electronics.html#a64cb97de230685775be91f2950100a14',1,'pybooster.electronics.OHMS()'],['../namespacepybooster_1_1strtools.html#a64cb97de230685775be91f2950100a14',1,'pybooster.strtools.OHMS()']]],
-  ['omega',['OMEGA',['../MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;MATH_MACROS.h'],['../mathconstants_8c.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c'],['../mathconstants_8h.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c']]],
+  ['omega',['OMEGA',['../MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg'],['../mathconstants_8c.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c'],['../mathconstants_8h.html#a92d2a1131548f20324c64962570f8c63',1,'OMEGA():&#160;mathconstants.c']]],
   ['one32',['ONE32',['../MACROS_8h.html#ad3e56d67d07f5ced4028419807b214dd',1,'MACROS.h']]],
   ['one_5feighth',['ONE_EIGHTH',['../namespacepybooster_1_1xmath.html#a38187aee96eacf4244b700c59200d5aa',1,'pybooster::xmath']]],
   ['one_5feleventh',['ONE_ELEVENTH',['../namespacepybooster_1_1xmath.html#a26d0e3987859f45a6e1cdf5df50be641',1,'pybooster::xmath']]],

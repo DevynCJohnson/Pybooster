@@ -2792,6 +2792,7 @@
         <topic label="CONCATSTRING" href="MACROS_8h.html#a6f5b442bc213b01035eca27b114063ad"/>
         <topic label="COPYSTRING" href="MACROS_8h.html#afec1e1939ea50873978117589bedb32b"/>
         <topic label="CTYPE_MACROS_SEEN" href="MACROS_8h.html#aebb42a119f145977d2a641b5655e52da"/>
+        <topic label="DATATYPES_128BITS_SEEN" href="MACROS_8h.html#a6b910edb18ae7431cd3411deb26419c2"/>
         <topic label="DBL_TO_U64" href="MACROS_8h.html#ab67b778651325fd73a3b4f782a3a7e17"/>
         <topic label="DO_EXPAND" href="MACROS_8h.html#ac67d56a22930fb32f533fbb1a9729890"/>
         <topic label="ENV32BIT" href="MACROS_8h.html#a15c467037be028c4a4b4a0578db3fc3d"/>
@@ -2954,15 +2955,26 @@
         <topic label="__SIZEOF_I_FLOAT__" href="MATH__MACROS_8h.html#a4a9a189e831dbefc6d0c2b9498bb4de2"/>
         <topic label="__SIZEOF_I_LONG_DOUBLE__" href="MATH__MACROS_8h.html#adad30b1622ffc56056d8b3f57a593fc3"/>
         <topic label="ARTIN_CONSTANT" href="MATH__MACROS_8h.html#a8b455b171e8977655fbe881400f97fbe"/>
+        <topic label="ARTIN_CONSTANT" href="mathconstants_8swg.html#a8b455b171e8977655fbe881400f97fbe"/>
         <topic label="ATOMIC_UNIT_OF_CHARGE" href="MATH__MACROS_8h.html#a0bc98ee9a3650250ebc550d71bd6dbd6"/>
+        <topic label="ATOMIC_UNIT_OF_CHARGE" href="mathconstants_8swg.html#a0bc98ee9a3650250ebc550d71bd6dbd6"/>
         <topic label="ATOMIC_UNIT_OF_CURRENT" href="MATH__MACROS_8h.html#a80634a7260bbf633a4740e5ed3380618"/>
+        <topic label="ATOMIC_UNIT_OF_CURRENT" href="mathconstants_8swg.html#a80634a7260bbf633a4740e5ed3380618"/>
         <topic label="ATOMIC_UNIT_OF_FORCE" href="MATH__MACROS_8h.html#a8994d9350f6ba0646535aa45e9f7795f"/>
+        <topic label="ATOMIC_UNIT_OF_FORCE" href="mathconstants_8swg.html#a8994d9350f6ba0646535aa45e9f7795f"/>
         <topic label="AVOGADRO_CONSTANT" href="MATH__MACROS_8h.html#a297bccece7c13063daa33a0536106d3f"/>
+        <topic label="AVOGADRO_CONSTANT" href="mathconstants_8swg.html#a297bccece7c13063daa33a0536106d3f"/>
         <topic label="BERNSTEINS_CONSTANT" href="MATH__MACROS_8h.html#a58492bea0a3b0f5dd9ae8cb7523c1826"/>
+        <topic label="BERNSTEINS_CONSTANT" href="mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826"/>
         <topic label="BOHR_RADIUS" href="MATH__MACROS_8h.html#a898c6244c2945c99115639f6045f7264"/>
+        <topic label="BOHR_RADIUS" href="mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264"/>
         <topic label="BOLTZMANN_CONSTANT" href="MATH__MACROS_8h.html#a5aebde1d8208cd685f6e697b95db3eaa"/>
+        <topic label="BOLTZMANN_CONSTANT" href="mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa"/>
         <topic label="CHAMPERNOWNE_CONSTANT" href="MATH__MACROS_8h.html#a521acfe14b692306c89b66dfe75edc3a"/>
+        <topic label="CHAMPERNOWNE_CONSTANT" href="mathconstants_8swg.html#a521acfe14b692306c89b66dfe75edc3a"/>
+        <topic label="CHAMPERNOWNE_CONSTANTl" href="mathconstants_8swg.html#a5e53c0be03458d295feb5535717b3e64"/>
         <topic label="CHAMPERNOWNE_CONSTANTl" href="MATH__MACROS_8h.html#a5e53c0be03458d295feb5535717b3e64"/>
+        <topic label="CHEBYSHEV_CONSTANT" href="mathconstants_8swg.html#a4d3bdfa10ea5d635f565f05f08a4900f"/>
         <topic label="CHEBYSHEV_CONSTANT" href="MATH__MACROS_8h.html#a4d3bdfa10ea5d635f565f05f08a4900f"/>
         <topic label="COMPLEX_CONSTANTS_SEEN" href="MATH__MACROS_8h.html#a4432bd69a1e820191cf14fbc407a9ffb"/>
         <topic label="COMPLEX_ONE" href="MATH__MACROS_8h.html#a8724aad1ca8a4ef79737d533571eedec"/>
@@ -2971,33 +2983,60 @@
         <topic label="COMPLEX_ZERO" href="MATH__MACROS_8h.html#ad0911ee169c5485ffc1a4b7d0a129e0d"/>
         <topic label="COMPLEX_ZEROf" href="MATH__MACROS_8h.html#ad90c6e9b3a5016e726884654f2d737a3"/>
         <topic label="COMPLEX_ZEROl" href="MATH__MACROS_8h.html#aa833cfeeeb4ab9eaa057b07fecd77053"/>
+        <topic label="COMPTON_WAVELENGTH" href="mathconstants_8swg.html#ad1c9f18eb9da32528a8bae75210bf181"/>
         <topic label="COMPTON_WAVELENGTH" href="MATH__MACROS_8h.html#ad1c9f18eb9da32528a8bae75210bf181"/>
+        <topic label="DEG2RAD" href="mathconstants_8swg.html#af7e8592d0a634bd3642e9fd508ea8022"/>
         <topic label="DEG2RAD" href="MATH__MACROS_8h.html#af7e8592d0a634bd3642e9fd508ea8022"/>
+        <topic label="DELIAN_CONSTANT" href="mathconstants_8swg.html#a2f4d4be1c5a47225811d43d8188204ed"/>
         <topic label="DELIAN_CONSTANT" href="MATH__MACROS_8h.html#a2f4d4be1c5a47225811d43d8188204ed"/>
+        <topic label="DEUTERON_G_FACTOR" href="mathconstants_8swg.html#a218732d27cd1b638617c287765d2513f"/>
         <topic label="DEUTERON_G_FACTOR" href="MATH__MACROS_8h.html#a218732d27cd1b638617c287765d2513f"/>
         <topic label="DEUTERON_MASS" href="MATH__MACROS_8h.html#a05d4cd4f034722cbdbaa304bbfe6d22b"/>
+        <topic label="DEUTERON_MASS" href="mathconstants_8swg.html#a05d4cd4f034722cbdbaa304bbfe6d22b"/>
         <topic label="DEUTERON_MOLAR_MASS" href="MATH__MACROS_8h.html#a90e5bce606fac7e405f200b9fc6021d5"/>
+        <topic label="DEUTERON_MOLAR_MASS" href="mathconstants_8swg.html#a90e5bce606fac7e405f200b9fc6021d5"/>
         <topic label="DOUBLE_FACTORIAL_CONSTANT" href="MATH__MACROS_8h.html#ade9a1bf288e731fe7bd4d0dd6fbe3788"/>
+        <topic label="DOUBLE_FACTORIAL_CONSTANT" href="mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788"/>
         <topic label="E" href="MATH__MACROS_8h.html#a07484107e6d9fdf38b53edf631d6511d"/>
         <topic label="Ef" href="MATH__MACROS_8h.html#a4e4457f472bd0b00f5e20c80eff99118"/>
+        <topic label="Ef" href="mathconstants_8swg.html#a4e4457f472bd0b00f5e20c80eff99118"/>
         <topic label="El" href="MATH__MACROS_8h.html#a769671efc57d614b76bbf6203fd56bb7"/>
+        <topic label="El" href="mathconstants_8swg.html#a769671efc57d614b76bbf6203fd56bb7"/>
         <topic label="ELECTRON_G_FACTOR" href="MATH__MACROS_8h.html#ace0370a4efb0069e272e7bf011e47dda"/>
+        <topic label="ELECTRON_G_FACTOR" href="mathconstants_8swg.html#ace0370a4efb0069e272e7bf011e47dda"/>
         <topic label="ELECTRON_MASS" href="MATH__MACROS_8h.html#a1f6f907234204d7207579a18fb0847a4"/>
+        <topic label="ELECTRON_MASS" href="mathconstants_8swg.html#a1f6f907234204d7207579a18fb0847a4"/>
         <topic label="ELECTRON_MUON_MASS_RATIO" href="MATH__MACROS_8h.html#a1b4da05c4a7e457621140f056113bfd5"/>
+        <topic label="ELECTRON_MUON_MASS_RATIO" href="mathconstants_8swg.html#a1b4da05c4a7e457621140f056113bfd5"/>
         <topic label="ELECTRON_NEUTRON_MAGNETIC_MOMENT_RATIO" href="MATH__MACROS_8h.html#a75fc752f69bf509328134b0321043058"/>
+        <topic label="ELECTRON_NEUTRON_MAGNETIC_MOMENT_RATIO" href="mathconstants_8swg.html#a75fc752f69bf509328134b0321043058"/>
         <topic label="ELECTRON_VOLT" href="MATH__MACROS_8h.html#a7ae0bdcd61ff04f21b3836902277433c"/>
+        <topic label="ELECTRON_VOLT" href="mathconstants_8swg.html#a7ae0bdcd61ff04f21b3836902277433c"/>
         <topic label="ERF_SERIES_CUTOFF" href="MATH__MACROS_8h.html#a626221b3dcfe6b69765b0893a03347c0"/>
+        <topic label="ERF_SERIES_CUTOFF" href="mathconstants_8swg.html#a626221b3dcfe6b69765b0893a03347c0"/>
         <topic label="ERF_SERIES_TERMS" href="MATH__MACROS_8h.html#a711015aa9e29dfc28f71311bf86992e8"/>
+        <topic label="ERF_SERIES_TERMS" href="mathconstants_8swg.html#a711015aa9e29dfc28f71311bf86992e8"/>
         <topic label="ERFC_CONTFRAC_CUTOFF" href="MATH__MACROS_8h.html#a28d9fa3511ad97d877d6ff8ab079fca8"/>
+        <topic label="ERFC_CONTFRAC_CUTOFF" href="mathconstants_8swg.html#a28d9fa3511ad97d877d6ff8ab079fca8"/>
         <topic label="ERFC_CONTFRAC_TERMS" href="MATH__MACROS_8h.html#a08d1d868d9677d8e9bc0769bfb3688d3"/>
+        <topic label="ERFC_CONTFRAC_TERMS" href="mathconstants_8swg.html#a08d1d868d9677d8e9bc0769bfb3688d3"/>
         <topic label="EULERS_CONSTANT" href="MATH__MACROS_8h.html#a72e256809ac615c2333384f1ccaa3db0"/>
+        <topic label="EULERS_CONSTANT" href="mathconstants_8swg.html#a72e256809ac615c2333384f1ccaa3db0"/>
         <topic label="EULERS_CONSTANTl" href="MATH__MACROS_8h.html#afccee15cc5e1108773faea5315c895cd"/>
+        <topic label="EULERS_CONSTANTl" href="mathconstants_8swg.html#afccee15cc5e1108773faea5315c895cd"/>
         <topic label="EXPONENTIAL_FACTORIAL_CONSTANT" href="MATH__MACROS_8h.html#a781b3ac7dde24586334ce72e71cd9a7a"/>
+        <topic label="EXPONENTIAL_FACTORIAL_CONSTANT" href="mathconstants_8swg.html#a781b3ac7dde24586334ce72e71cd9a7a"/>
+        <topic label="FILE_MATH_MACROS_SEEN" href="mathconstants_8swg.html#af8dc6445a5c079559214ecbbc483dbe4"/>
         <topic label="GOLDEN_ANGLE" href="MATH__MACROS_8h.html#a6878bd8a4dd34089efeedb128186c912"/>
+        <topic label="GOLDEN_ANGLE" href="mathconstants_8swg.html#a6878bd8a4dd34089efeedb128186c912"/>
         <topic label="GOLDEN_RATIO" href="MATH__MACROS_8h.html#aaa59fc84e8e02db608cd1d9e44b430d3"/>
+        <topic label="GOLDEN_RATIO" href="mathconstants_8swg.html#aaa59fc84e8e02db608cd1d9e44b430d3"/>
         <topic label="GOLDEN_RATIOl" href="MATH__MACROS_8h.html#a438c8338e2d73d73bcabac21ced3f0f9"/>
+        <topic label="GOLDEN_RATIOl" href="mathconstants_8swg.html#a438c8338e2d73d73bcabac21ced3f0f9"/>
         <topic label="HYPERBOLIC_TANGENT_OF_1" href="MATH__MACROS_8h.html#ab1ffbc7b69e22c669bc6a3a4b725035e"/>
+        <topic label="HYPERBOLIC_TANGENT_OF_1" href="mathconstants_8swg.html#ab1ffbc7b69e22c669bc6a3a4b725035e"/>
         <topic label="HYPERBOLIC_TANGENT_OF_1l" href="MATH__MACROS_8h.html#a2e5ced11433a8681f971feb598198d45"/>
+        <topic label="HYPERBOLIC_TANGENT_OF_1l" href="mathconstants_8swg.html#a2e5ced11433a8681f971feb598198d45"/>
         <topic label="I_DOUBLE" href="MATH__MACROS_8h.html#abeff19d81971b25a5db972fa701ca473"/>
         <topic label="I_DOUBLE_NEG" href="MATH__MACROS_8h.html#a600c09656e4c918653b308a860d6b52d"/>
         <topic label="I_DOUBLE_ZERO" href="MATH__MACROS_8h.html#a25610f1b48f18107df80be923083776c"/>
@@ -3007,53 +3046,97 @@
         <topic label="I_LONG_DOUBLE" href="MATH__MACROS_8h.html#a46475e47cc45a2ce77e25f7f835c342f"/>
         <topic label="I_LONG_DOUBLE_NEG" href="MATH__MACROS_8h.html#a0df4b8449714f67763555cdedf243d64"/>
         <topic label="I_LONG_DOUBLE_ZERO" href="MATH__MACROS_8h.html#a55eec72a29ca1cfbc9a85e288bf9d61b"/>
+        <topic label="I_SQUARED" href="mathconstants_8swg.html#a76fd6f37962563957f7b73981f38a5c8"/>
         <topic label="I_SQUARED" href="MATH__MACROS_8h.html#a76fd6f37962563957f7b73981f38a5c8"/>
         <topic label="IMAGINARY_NUMBER_CONSTANTS_SEEN" href="MATH__MACROS_8h.html#a98c83a41f12d462db76f1db765955b13"/>
         <topic label="INVERSE_E" href="MATH__MACROS_8h.html#aca21c134846c28f4b2fe0b2bd6b03202"/>
+        <topic label="INVERSE_E" href="mathconstants_8swg.html#aca21c134846c28f4b2fe0b2bd6b03202"/>
         <topic label="INVERSE_El" href="MATH__MACROS_8h.html#ab6f2f1b9fbf258f9d1f3ebb2d68f00b9"/>
+        <topic label="INVERSE_El" href="mathconstants_8swg.html#ab6f2f1b9fbf258f9d1f3ebb2d68f00b9"/>
+        <topic label="INVERSE_PI" href="mathconstants_8swg.html#af196c4c70c78b1de747952d36eef7811"/>
         <topic label="INVERSE_PI" href="MATH__MACROS_8h.html#af196c4c70c78b1de747952d36eef7811"/>
+        <topic label="INVERSE_PIl" href="mathconstants_8swg.html#aa14d54dff114f3b956796abb34e2eb05"/>
         <topic label="INVERSE_PIl" href="MATH__MACROS_8h.html#aa14d54dff114f3b956796abb34e2eb05"/>
+        <topic label="LANCZOS_G" href="mathconstants_8swg.html#a5bdf60ce798baa6c879b8f1905adc64b"/>
         <topic label="LANCZOS_G" href="MATH__MACROS_8h.html#a5bdf60ce798baa6c879b8f1905adc64b"/>
+        <topic label="LANCZOS_G_MINUS_HALF" href="mathconstants_8swg.html#a140633a40cfe5fe02cbf10e39215b10e"/>
         <topic label="LANCZOS_G_MINUS_HALF" href="MATH__MACROS_8h.html#a140633a40cfe5fe02cbf10e39215b10e"/>
+        <topic label="LN2" href="mathconstants_8swg.html#a316db5f7a96e49e413e7e673ffed3ba2"/>
         <topic label="LN2" href="MATH__MACROS_8h.html#a316db5f7a96e49e413e7e673ffed3ba2"/>
         <topic label="LN2f" href="MATH__MACROS_8h.html#a95c1e6a18787810c836058d42b34c265"/>
+        <topic label="LN2f" href="mathconstants_8swg.html#a95c1e6a18787810c836058d42b34c265"/>
         <topic label="LN2l" href="MATH__MACROS_8h.html#ad28a7f1ab11da147073e4bb8b41fe980"/>
+        <topic label="LN2l" href="mathconstants_8swg.html#ad28a7f1ab11da147073e4bb8b41fe980"/>
+        <topic label="LN_E" href="mathconstants_8swg.html#a716783cee4c262d39b459db98cb3b7c2"/>
         <topic label="LN_E" href="MATH__MACROS_8h.html#a716783cee4c262d39b459db98cb3b7c2"/>
         <topic label="LOG10_E" href="MATH__MACROS_8h.html#a6344d9cd2a20dfe004da71438211a481"/>
+        <topic label="LOG10_E" href="mathconstants_8swg.html#a6344d9cd2a20dfe004da71438211a481"/>
         <topic label="LOG10_Ef" href="MATH__MACROS_8h.html#aae1435b9dbee4d5b5343348aedab1422"/>
+        <topic label="LOG10_Ef" href="mathconstants_8swg.html#aae1435b9dbee4d5b5343348aedab1422"/>
         <topic label="LOG10_El" href="MATH__MACROS_8h.html#a45405435a8d7f1162752cccd1281b53c"/>
+        <topic label="LOG10_El" href="mathconstants_8swg.html#a45405435a8d7f1162752cccd1281b53c"/>
         <topic label="LOG10_PI" href="MATH__MACROS_8h.html#a3da1dd3c9383d1c1dfd0add54521b73a"/>
+        <topic label="LOG10_PI" href="mathconstants_8swg.html#a3da1dd3c9383d1c1dfd0add54521b73a"/>
         <topic label="LOG10_PIf" href="MATH__MACROS_8h.html#a161e0961bcd3003586f89ae4630e979b"/>
+        <topic label="LOG10_PIf" href="mathconstants_8swg.html#a161e0961bcd3003586f89ae4630e979b"/>
         <topic label="LOG10_PIl" href="MATH__MACROS_8h.html#a097558315b2fec670d8f39255cd428dc"/>
+        <topic label="LOG10_PIl" href="mathconstants_8swg.html#a097558315b2fec670d8f39255cd428dc"/>
         <topic label="LOG_E" href="MATH__MACROS_8h.html#a41b0214a72b2c2320f4c68759d678e66"/>
+        <topic label="LOG_E" href="mathconstants_8swg.html#a41b0214a72b2c2320f4c68759d678e66"/>
         <topic label="LOG_Ef" href="MATH__MACROS_8h.html#ac59c29d2c24da9bc4f58603d22e45a57"/>
+        <topic label="LOG_Ef" href="mathconstants_8swg.html#ac59c29d2c24da9bc4f58603d22e45a57"/>
         <topic label="LOG_El" href="MATH__MACROS_8h.html#a2c7063b76873eecbab9a359079b84254"/>
+        <topic label="LOG_El" href="mathconstants_8swg.html#a2c7063b76873eecbab9a359079b84254"/>
         <topic label="LOG_PI" href="MATH__MACROS_8h.html#a0e57fb4cac7f15574ecdbb801363160c"/>
+        <topic label="LOG_PI" href="mathconstants_8swg.html#a0e57fb4cac7f15574ecdbb801363160c"/>
         <topic label="LOG_PIf" href="MATH__MACROS_8h.html#af73b4027882bc3e21bfba3ef4314f424"/>
+        <topic label="LOG_PIf" href="mathconstants_8swg.html#af73b4027882bc3e21bfba3ef4314f424"/>
         <topic label="LOG_PIl" href="MATH__MACROS_8h.html#a8127fdb25ac5800562756a2027d98e9e"/>
+        <topic label="LOG_PIl" href="mathconstants_8swg.html#a8127fdb25ac5800562756a2027d98e9e"/>
         <topic label="MURATA_CONSTANT" href="MATH__MACROS_8h.html#ac6c7b1f7055d2fecf7276310d0450db1"/>
+        <topic label="MURATA_CONSTANT" href="mathconstants_8swg.html#ac6c7b1f7055d2fecf7276310d0450db1"/>
         <topic label="NEG_ZERO" href="MATH__MACROS_8h.html#a7e94d77a55b91d6051f4940518d233ac"/>
+        <topic label="NEG_ZERO" href="mathconstants_8swg.html#a7e94d77a55b91d6051f4940518d233ac"/>
         <topic label="OMEGA" href="MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796"/>
+        <topic label="OMEGA" href="mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796"/>
         <topic label="PARIS_CONSTANT" href="MATH__MACROS_8h.html#ae44316692857c0097ef73759016c7a7c"/>
+        <topic label="PARIS_CONSTANT" href="mathconstants_8swg.html#ae44316692857c0097ef73759016c7a7c"/>
         <topic label="PI" href="MATH__MACROS_8h.html#a598a3330b3c21701223ee0ca14316eca"/>
         <topic label="PI2" href="MATH__MACROS_8h.html#a2750dfdda752269a036f487a4a34b849"/>
         <topic label="PI2f" href="MATH__MACROS_8h.html#a974afead10b121dbfd08ec4d4dc3d6c3"/>
+        <topic label="PI2f" href="mathconstants_8swg.html#a974afead10b121dbfd08ec4d4dc3d6c3"/>
         <topic label="PI2l" href="MATH__MACROS_8h.html#a079d89bca8ac71d83ab017421f3ddf6f"/>
+        <topic label="PI2l" href="mathconstants_8swg.html#a079d89bca8ac71d83ab017421f3ddf6f"/>
         <topic label="PI4" href="MATH__MACROS_8h.html#afd17621e12029ff7c53518b74a487c94"/>
+        <topic label="PI4" href="mathconstants_8swg.html#afd17621e12029ff7c53518b74a487c94"/>
+        <topic label="PI4f" href="mathconstants_8swg.html#a329c50a67c7afe472ee0f9d119f83fcc"/>
         <topic label="PI4f" href="MATH__MACROS_8h.html#a329c50a67c7afe472ee0f9d119f83fcc"/>
+        <topic label="PI4l" href="mathconstants_8swg.html#ad70811163e1d4c11eac8123ca162c5b4"/>
         <topic label="PI4l" href="MATH__MACROS_8h.html#ad70811163e1d4c11eac8123ca162c5b4"/>
+        <topic label="PI_1_3" href="mathconstants_8swg.html#a3b243a3bc67fb739aa60ea2d0a7423dc"/>
         <topic label="PI_1_3" href="MATH__MACROS_8h.html#a3b243a3bc67fb739aa60ea2d0a7423dc"/>
+        <topic label="PI_1_3f" href="mathconstants_8swg.html#a3ccb59534e78cf8fa052f2b1622ff35b"/>
         <topic label="PI_1_3f" href="MATH__MACROS_8h.html#a3ccb59534e78cf8fa052f2b1622ff35b"/>
+        <topic label="PI_1_3l" href="mathconstants_8swg.html#af2b93ff4d0d0ebf17ae9ba9e493b1356"/>
         <topic label="PI_1_3l" href="MATH__MACROS_8h.html#af2b93ff4d0d0ebf17ae9ba9e493b1356"/>
+        <topic label="PI_2_3" href="mathconstants_8swg.html#a84605f304730bb599ac208ccf1c91950"/>
         <topic label="PI_2_3" href="MATH__MACROS_8h.html#a84605f304730bb599ac208ccf1c91950"/>
+        <topic label="PI_2_3f" href="mathconstants_8swg.html#a7d47a32e0cbc7040658974510ce820ca"/>
         <topic label="PI_2_3f" href="MATH__MACROS_8h.html#a7d47a32e0cbc7040658974510ce820ca"/>
+        <topic label="PI_2_3l" href="mathconstants_8swg.html#aa2f4afba21d97ba61a8a96d50cb279e7"/>
         <topic label="PI_2_3l" href="MATH__MACROS_8h.html#aa2f4afba21d97ba61a8a96d50cb279e7"/>
+        <topic label="PI_4_3" href="mathconstants_8swg.html#a94dceff592c6ca67fb76ac9882d5bceb"/>
         <topic label="PI_4_3" href="MATH__MACROS_8h.html#a94dceff592c6ca67fb76ac9882d5bceb"/>
+        <topic label="PI_4_3f" href="mathconstants_8swg.html#a4061209b88cf1e06eb5efd3a7e5cc23f"/>
         <topic label="PI_4_3f" href="MATH__MACROS_8h.html#a4061209b88cf1e06eb5efd3a7e5cc23f"/>
         <topic label="PI_4_3l" href="MATH__MACROS_8h.html#af39758a5feda227329cd53e3fa496f53"/>
+        <topic label="PI_4_3l" href="mathconstants_8swg.html#af39758a5feda227329cd53e3fa496f53"/>
         <topic label="PI_SQUARED" href="MATH__MACROS_8h.html#ac8ce370efc942f080f0353588f508a43"/>
+        <topic label="PI_SQUARED_1_4" href="mathconstants_8swg.html#a2e5792671b0bb468c4a3ab7bc6c48332"/>
         <topic label="PI_SQUARED_1_4" href="MATH__MACROS_8h.html#a2e5792671b0bb468c4a3ab7bc6c48332"/>
+        <topic label="PI_SQUARED_1_4f" href="mathconstants_8swg.html#a2f64fd9bae66af87c7695edc477306e9"/>
         <topic label="PI_SQUARED_1_4f" href="MATH__MACROS_8h.html#a2f64fd9bae66af87c7695edc477306e9"/>
+        <topic label="PI_SQUARED_1_4l" href="mathconstants_8swg.html#ad268fec41f1bdb9ba9d8c4f6510b1cf9"/>
         <topic label="PI_SQUARED_1_4l" href="MATH__MACROS_8h.html#ad268fec41f1bdb9ba9d8c4f6510b1cf9"/>
         <topic label="PI_SQUAREDf" href="MATH__MACROS_8h.html#afdcab9e09c829819ae4ba66fcfd1c05f"/>
         <topic label="PI_SQUAREDl" href="MATH__MACROS_8h.html#ab86cf57086199bcca71168df0c9d82cc"/>
@@ -3084,57 +3167,104 @@
         <topic label="QUATERNION_ZERO" href="MATH__MACROS_8h.html#a5adcad5c2786196dad396e004feec6a4"/>
         <topic label="QUATERNION_ZEROf" href="MATH__MACROS_8h.html#a263ad84b2ee694b070a57fd79ace3a27"/>
         <topic label="QUATERNION_ZEROl" href="MATH__MACROS_8h.html#ab5e3771ccbddc980937eeb01404e65a5"/>
+        <topic label="RAD2DEG" href="mathconstants_8swg.html#ac5a945020d3528355cda82d383676736"/>
         <topic label="RAD2DEG" href="MATH__MACROS_8h.html#ac5a945020d3528355cda82d383676736"/>
+        <topic label="RIGHT_ANGLE_DEG" href="mathconstants_8swg.html#a0585c00cca15213fd746451ca3f7a5f7"/>
         <topic label="RIGHT_ANGLE_DEG" href="MATH__MACROS_8h.html#a0585c00cca15213fd746451ca3f7a5f7"/>
+        <topic label="RIGHT_ANGLE_DEG_INT" href="mathconstants_8swg.html#ae04bebef00687c612751734d522e4a94"/>
         <topic label="RIGHT_ANGLE_DEG_INT" href="MATH__MACROS_8h.html#ae04bebef00687c612751734d522e4a94"/>
+        <topic label="RIGHT_ANGLE_RAD" href="mathconstants_8swg.html#a351238736cb5b02e3546b333ee599293"/>
         <topic label="RIGHT_ANGLE_RAD" href="MATH__MACROS_8h.html#a351238736cb5b02e3546b333ee599293"/>
+        <topic label="SALEM_NUMBER" href="mathconstants_8swg.html#a31504fd3f0b74f283dc81d0da60419c3"/>
         <topic label="SALEM_NUMBER" href="MATH__MACROS_8h.html#a31504fd3f0b74f283dc81d0da60419c3"/>
+        <topic label="SQRT_10" href="mathconstants_8swg.html#a39a92074d847dc786066df91cf0594c5"/>
         <topic label="SQRT_10" href="MATH__MACROS_8h.html#a39a92074d847dc786066df91cf0594c5"/>
         <topic label="SQRT_11" href="MATH__MACROS_8h.html#a10c52f7b2ef5a53c09b304dcb9930077"/>
+        <topic label="SQRT_11" href="mathconstants_8swg.html#a10c52f7b2ef5a53c09b304dcb9930077"/>
+        <topic label="SQRT_12" href="mathconstants_8swg.html#a5fb731cd964dad426e187a77beb9e26e"/>
         <topic label="SQRT_12" href="MATH__MACROS_8h.html#a5fb731cd964dad426e187a77beb9e26e"/>
+        <topic label="SQRT_13" href="mathconstants_8swg.html#ac7cc10a18bbd6f4b34846ac0529daf3c"/>
         <topic label="SQRT_13" href="MATH__MACROS_8h.html#ac7cc10a18bbd6f4b34846ac0529daf3c"/>
+        <topic label="SQRT_14" href="mathconstants_8swg.html#ac1db28925167d12ed44df9dbaf567704"/>
         <topic label="SQRT_14" href="MATH__MACROS_8h.html#ac1db28925167d12ed44df9dbaf567704"/>
+        <topic label="SQRT_15" href="mathconstants_8swg.html#a368e4b04be4bd8a099883ac191cfcfeb"/>
         <topic label="SQRT_15" href="MATH__MACROS_8h.html#a368e4b04be4bd8a099883ac191cfcfeb"/>
         <topic label="SQRT_16" href="MATH__MACROS_8h.html#aa1c245aeb02c87ccf34f1d37e0a312fb"/>
+        <topic label="SQRT_16" href="mathconstants_8swg.html#aa1c245aeb02c87ccf34f1d37e0a312fb"/>
+        <topic label="SQRT_17" href="mathconstants_8swg.html#aafc21ad9ae481acffc53155c1076fbc4"/>
         <topic label="SQRT_17" href="MATH__MACROS_8h.html#aafc21ad9ae481acffc53155c1076fbc4"/>
+        <topic label="SQRT_19" href="mathconstants_8swg.html#a35b09f3e04ff3f41d21be88e395560c9"/>
         <topic label="SQRT_19" href="MATH__MACROS_8h.html#a35b09f3e04ff3f41d21be88e395560c9"/>
         <topic label="SQRT_2" href="MATH__MACROS_8h.html#abc63ab2a8e7782de38a5dbdfc33da717"/>
+        <topic label="SQRT_20" href="mathconstants_8swg.html#a00ed15ad72cec2160e4abef34b8fb87b"/>
         <topic label="SQRT_20" href="MATH__MACROS_8h.html#a00ed15ad72cec2160e4abef34b8fb87b"/>
+        <topic label="SQRT_21" href="mathconstants_8swg.html#a4653d993e1bf3bf81090bc7546032519"/>
         <topic label="SQRT_21" href="MATH__MACROS_8h.html#a4653d993e1bf3bf81090bc7546032519"/>
+        <topic label="SQRT_22" href="mathconstants_8swg.html#a85053aebdb4203fc5f3e01d92ff1e15c"/>
         <topic label="SQRT_22" href="MATH__MACROS_8h.html#a85053aebdb4203fc5f3e01d92ff1e15c"/>
         <topic label="SQRT_23" href="MATH__MACROS_8h.html#addee53c170dfe09d269274e236d4d1cb"/>
+        <topic label="SQRT_23" href="mathconstants_8swg.html#addee53c170dfe09d269274e236d4d1cb"/>
         <topic label="SQRT_24" href="MATH__MACROS_8h.html#a8221055537689ff8c08e32058648fd91"/>
+        <topic label="SQRT_24" href="mathconstants_8swg.html#a8221055537689ff8c08e32058648fd91"/>
+        <topic label="SQRT_2f" href="mathconstants_8swg.html#a8abcc0979f7848a662a05119c246af3d"/>
         <topic label="SQRT_2f" href="MATH__MACROS_8h.html#a8abcc0979f7848a662a05119c246af3d"/>
+        <topic label="SQRT_2l" href="mathconstants_8swg.html#ac7f161bd67d5cc952a4c44ed890dd092"/>
         <topic label="SQRT_2l" href="MATH__MACROS_8h.html#ac7f161bd67d5cc952a4c44ed890dd092"/>
         <topic label="SQRT_3" href="MATH__MACROS_8h.html#a4c7cca717941f9eb5c7f90f44ac8746b"/>
+        <topic label="SQRT_3_DIV_4" href="mathconstants_8swg.html#af50134cb463ae20314dd96a41cdd43c3"/>
         <topic label="SQRT_3_DIV_4" href="MATH__MACROS_8h.html#af50134cb463ae20314dd96a41cdd43c3"/>
+        <topic label="SQRT_3_DIV_4f" href="mathconstants_8swg.html#ae144696bab59c91b69a3feba0256b792"/>
         <topic label="SQRT_3_DIV_4f" href="MATH__MACROS_8h.html#ae144696bab59c91b69a3feba0256b792"/>
         <topic label="SQRT_3_DIV_4l" href="MATH__MACROS_8h.html#a7e32d97bb9da86d8f564b0e3c24b5c78"/>
+        <topic label="SQRT_3_DIV_4l" href="mathconstants_8swg.html#a7e32d97bb9da86d8f564b0e3c24b5c78"/>
+        <topic label="SQRT_3f" href="mathconstants_8swg.html#a39f52bd6eb03052a2c5bf2d10cdf1981"/>
         <topic label="SQRT_3f" href="MATH__MACROS_8h.html#a39f52bd6eb03052a2c5bf2d10cdf1981"/>
         <topic label="SQRT_3l" href="MATH__MACROS_8h.html#a2fca17a0312822d4238ddf9022c38815"/>
+        <topic label="SQRT_3l" href="mathconstants_8swg.html#a2fca17a0312822d4238ddf9022c38815"/>
         <topic label="SQRT_5" href="MATH__MACROS_8h.html#ab6073a2630d7c65369c70c5f8c03a132"/>
+        <topic label="SQRT_5" href="mathconstants_8swg.html#ab6073a2630d7c65369c70c5f8c03a132"/>
+        <topic label="SQRT_6" href="mathconstants_8swg.html#aec9e2b7626b38c22edb29ad20d156412"/>
         <topic label="SQRT_6" href="MATH__MACROS_8h.html#aec9e2b7626b38c22edb29ad20d156412"/>
+        <topic label="SQRT_7" href="mathconstants_8swg.html#a3fd0e86216584f7a3e249e70ffebca1c"/>
         <topic label="SQRT_7" href="MATH__MACROS_8h.html#a3fd0e86216584f7a3e249e70ffebca1c"/>
         <topic label="SQRT_8" href="MATH__MACROS_8h.html#aad43f1b65dd5133bf591c9d0810f1388"/>
+        <topic label="SQRT_8" href="mathconstants_8swg.html#aad43f1b65dd5133bf591c9d0810f1388"/>
+        <topic label="SQRT_E" href="mathconstants_8swg.html#a7445cadc6d46c0bd625ce7fef0d921a4"/>
         <topic label="SQRT_E" href="MATH__MACROS_8h.html#a7445cadc6d46c0bd625ce7fef0d921a4"/>
         <topic label="SQRT_Ef" href="MATH__MACROS_8h.html#a12b4c27b9cc5cb97ee370653a9d5e138"/>
+        <topic label="SQRT_Ef" href="mathconstants_8swg.html#a12b4c27b9cc5cb97ee370653a9d5e138"/>
         <topic label="SQRT_El" href="MATH__MACROS_8h.html#ae482c242022bb721f71a7d5c16660e17"/>
+        <topic label="SQRT_El" href="mathconstants_8swg.html#ae482c242022bb721f71a7d5c16660e17"/>
+        <topic label="SQRT_PI" href="mathconstants_8swg.html#a204175c725ee19858dedec2865d490b8"/>
         <topic label="SQRT_PI" href="MATH__MACROS_8h.html#a204175c725ee19858dedec2865d490b8"/>
+        <topic label="SQRT_PIf" href="mathconstants_8swg.html#a2d711b77f706495abadec87624d34854"/>
         <topic label="SQRT_PIf" href="MATH__MACROS_8h.html#a2d711b77f706495abadec87624d34854"/>
+        <topic label="SQRT_PIl" href="mathconstants_8swg.html#a02b7ed67e916be4ec27ebd19938b79e2"/>
         <topic label="SQRT_PIl" href="MATH__MACROS_8h.html#a02b7ed67e916be4ec27ebd19938b79e2"/>
         <topic label="TAN_E" href="MATH__MACROS_8h.html#a6935e205cda07914a6225f60b6e47adc"/>
+        <topic label="TAN_E" href="mathconstants_8swg.html#a6935e205cda07914a6225f60b6e47adc"/>
+        <topic label="TAN_Ef" href="mathconstants_8swg.html#a6458b0a0ff8ea2b747d1921e5295b3ab"/>
         <topic label="TAN_Ef" href="MATH__MACROS_8h.html#a6458b0a0ff8ea2b747d1921e5295b3ab"/>
+        <topic label="TAN_El" href="mathconstants_8swg.html#a52f56cdcb278c715acc23d3e6b492b43"/>
         <topic label="TAN_El" href="MATH__MACROS_8h.html#a52f56cdcb278c715acc23d3e6b492b43"/>
+        <topic label="TAN_PI" href="mathconstants_8swg.html#a83cff0d74684d54fd0873d837e2bf9ed"/>
         <topic label="TAN_PI" href="MATH__MACROS_8h.html#a83cff0d74684d54fd0873d837e2bf9ed"/>
+        <topic label="TAN_PIf" href="mathconstants_8swg.html#a9096232bbf5866aee4c0230486044def"/>
         <topic label="TAN_PIf" href="MATH__MACROS_8h.html#a9096232bbf5866aee4c0230486044def"/>
         <topic label="TAN_PIl" href="MATH__MACROS_8h.html#a0ce7a2fae5474a502328a552a23b1a10"/>
+        <topic label="TAN_PIl" href="mathconstants_8swg.html#a0ce7a2fae5474a502328a552a23b1a10"/>
+        <topic label="TWIN_PRIMES_CONSTANT" href="mathconstants_8swg.html#a46d41bfb71319e9b2e4a5f2044605c9e"/>
         <topic label="TWIN_PRIMES_CONSTANT" href="MATH__MACROS_8h.html#a46d41bfb71319e9b2e4a5f2044605c9e"/>
         <topic label="TYPESIZE_I_DOUBLE" href="MATH__MACROS_8h.html#a198c3f638df1b6ccade39f01daf8fb06"/>
         <topic label="TYPESIZE_I_FLOAT" href="MATH__MACROS_8h.html#ac5f15fc7a07890d2025cb8a48e4a6413"/>
         <topic label="TYPESIZE_I_LONG_DOUBLE" href="MATH__MACROS_8h.html#ab3a2d06641960264b0eb5e9be83b99af"/>
+        <topic label="VARDI_CONSTANT" href="mathconstants_8swg.html#a7cf05d1f1b21b0ea17b6db060e7674bc"/>
         <topic label="VARDI_CONSTANT" href="MATH__MACROS_8h.html#a7cf05d1f1b21b0ea17b6db060e7674bc"/>
+        <topic label="ZERO" href="mathconstants_8swg.html#ac328e551bde3d39b6d7b8cc9e048d941"/>
         <topic label="ZERO" href="MATH__MACROS_8h.html#ac328e551bde3d39b6d7b8cc9e048d941"/>
+        <topic label="ZEROf" href="mathconstants_8swg.html#ab93080a81900e9299543606a7a24547b"/>
         <topic label="ZEROf" href="MATH__MACROS_8h.html#ab93080a81900e9299543606a7a24547b"/>
+        <topic label="ZEROl" href="mathconstants_8swg.html#a909e03d2a6b5516ab632ef5379d6e85f"/>
         <topic label="ZEROl" href="MATH__MACROS_8h.html#a909e03d2a6b5516ab632ef5379d6e85f"/>
       </topic>
       <topic label="math_types.h" href="math__types_8h.html">
@@ -3704,6 +3834,94 @@
         <topic label="TWIN_PRIMES_CONSTANT" href="mathconstants_8h.html#af8a3d4fd8754da32ccf840e982815bb1"/>
         <topic label="VARDI_CONSTANT" href="mathconstants_8h.html#a7598189811a828996b3acebc77fac94a"/>
         <topic label="ZERO" href="mathconstants_8h.html#acbcd55b11cabe6b839efa09e97098c4f"/>
+      </topic>
+      <topic label="mathconstants.swg" href="mathconstants_8swg.html">
+        <topic label="ARTIN_CONSTANT" href="mathconstants_8swg.html#a8b455b171e8977655fbe881400f97fbe"/>
+        <topic label="ATOMIC_UNIT_OF_CHARGE" href="mathconstants_8swg.html#a0bc98ee9a3650250ebc550d71bd6dbd6"/>
+        <topic label="ATOMIC_UNIT_OF_CURRENT" href="mathconstants_8swg.html#a80634a7260bbf633a4740e5ed3380618"/>
+        <topic label="ATOMIC_UNIT_OF_FORCE" href="mathconstants_8swg.html#a8994d9350f6ba0646535aa45e9f7795f"/>
+        <topic label="AVOGADRO_CONSTANT" href="mathconstants_8swg.html#a297bccece7c13063daa33a0536106d3f"/>
+        <topic label="BERNSTEINS_CONSTANT" href="mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826"/>
+        <topic label="BOHR_RADIUS" href="mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264"/>
+        <topic label="BOLTZMANN_CONSTANT" href="mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa"/>
+        <topic label="CHAMPERNOWNE_CONSTANT" href="mathconstants_8swg.html#a521acfe14b692306c89b66dfe75edc3a"/>
+        <topic label="CHAMPERNOWNE_CONSTANTl" href="mathconstants_8swg.html#a5e53c0be03458d295feb5535717b3e64"/>
+        <topic label="CHEBYSHEV_CONSTANT" href="mathconstants_8swg.html#a4d3bdfa10ea5d635f565f05f08a4900f"/>
+        <topic label="COMPLEX_CONSTANTS_SEEN" href="mathconstants_8swg.html#a4432bd69a1e820191cf14fbc407a9ffb"/>
+        <topic label="COMPTON_WAVELENGTH" href="mathconstants_8swg.html#ad1c9f18eb9da32528a8bae75210bf181"/>
+        <topic label="DEG2RAD" href="mathconstants_8swg.html#af7e8592d0a634bd3642e9fd508ea8022"/>
+        <topic label="DELIAN_CONSTANT" href="mathconstants_8swg.html#a2f4d4be1c5a47225811d43d8188204ed"/>
+        <topic label="DEUTERON_G_FACTOR" href="mathconstants_8swg.html#a218732d27cd1b638617c287765d2513f"/>
+        <topic label="DEUTERON_MASS" href="mathconstants_8swg.html#a05d4cd4f034722cbdbaa304bbfe6d22b"/>
+        <topic label="DEUTERON_MOLAR_MASS" href="mathconstants_8swg.html#a90e5bce606fac7e405f200b9fc6021d5"/>
+        <topic label="DOUBLE_FACTORIAL_CONSTANT" href="mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788"/>
+        <topic label="ELECTRON_G_FACTOR" href="mathconstants_8swg.html#ace0370a4efb0069e272e7bf011e47dda"/>
+        <topic label="ELECTRON_MASS" href="mathconstants_8swg.html#a1f6f907234204d7207579a18fb0847a4"/>
+        <topic label="ELECTRON_MUON_MASS_RATIO" href="mathconstants_8swg.html#a1b4da05c4a7e457621140f056113bfd5"/>
+        <topic label="ELECTRON_NEUTRON_MAGNETIC_MOMENT_RATIO" href="mathconstants_8swg.html#a75fc752f69bf509328134b0321043058"/>
+        <topic label="ELECTRON_VOLT" href="mathconstants_8swg.html#a7ae0bdcd61ff04f21b3836902277433c"/>
+        <topic label="ERF_SERIES_CUTOFF" href="mathconstants_8swg.html#a626221b3dcfe6b69765b0893a03347c0"/>
+        <topic label="ERF_SERIES_TERMS" href="mathconstants_8swg.html#a711015aa9e29dfc28f71311bf86992e8"/>
+        <topic label="ERFC_CONTFRAC_CUTOFF" href="mathconstants_8swg.html#a28d9fa3511ad97d877d6ff8ab079fca8"/>
+        <topic label="ERFC_CONTFRAC_TERMS" href="mathconstants_8swg.html#a08d1d868d9677d8e9bc0769bfb3688d3"/>
+        <topic label="EULERS_CONSTANT" href="mathconstants_8swg.html#a72e256809ac615c2333384f1ccaa3db0"/>
+        <topic label="EXPONENTIAL_FACTORIAL_CONSTANT" href="mathconstants_8swg.html#a781b3ac7dde24586334ce72e71cd9a7a"/>
+        <topic label="GOLDEN_ANGLE" href="mathconstants_8swg.html#a6878bd8a4dd34089efeedb128186c912"/>
+        <topic label="GOLDEN_RATIO" href="mathconstants_8swg.html#aaa59fc84e8e02db608cd1d9e44b430d3"/>
+        <topic label="HYPERBOLIC_TANGENT_OF_1" href="mathconstants_8swg.html#ab1ffbc7b69e22c669bc6a3a4b725035e"/>
+        <topic label="I_SQUARED" href="mathconstants_8swg.html#a76fd6f37962563957f7b73981f38a5c8"/>
+        <topic label="IMAGINARY_NUMBER_CONSTANTS_SEEN" href="mathconstants_8swg.html#a98c83a41f12d462db76f1db765955b13"/>
+        <topic label="INVERSE_E" href="mathconstants_8swg.html#aca21c134846c28f4b2fe0b2bd6b03202"/>
+        <topic label="INVERSE_PI" href="mathconstants_8swg.html#af196c4c70c78b1de747952d36eef7811"/>
+        <topic label="LANCZOS_G" href="mathconstants_8swg.html#a5bdf60ce798baa6c879b8f1905adc64b"/>
+        <topic label="LANCZOS_G_MINUS_HALF" href="mathconstants_8swg.html#a140633a40cfe5fe02cbf10e39215b10e"/>
+        <topic label="LN2" href="mathconstants_8swg.html#a316db5f7a96e49e413e7e673ffed3ba2"/>
+        <topic label="LN_E" href="mathconstants_8swg.html#a716783cee4c262d39b459db98cb3b7c2"/>
+        <topic label="LOG10_E" href="mathconstants_8swg.html#a6344d9cd2a20dfe004da71438211a481"/>
+        <topic label="LOG10_PI" href="mathconstants_8swg.html#a3da1dd3c9383d1c1dfd0add54521b73a"/>
+        <topic label="LOG_E" href="mathconstants_8swg.html#a41b0214a72b2c2320f4c68759d678e66"/>
+        <topic label="LOG_PI" href="mathconstants_8swg.html#a0e57fb4cac7f15574ecdbb801363160c"/>
+        <topic label="MURATA_CONSTANT" href="mathconstants_8swg.html#ac6c7b1f7055d2fecf7276310d0450db1"/>
+        <topic label="NEG_ZERO" href="mathconstants_8swg.html#a7e94d77a55b91d6051f4940518d233ac"/>
+        <topic label="OMEGA" href="mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796"/>
+        <topic label="PARIS_CONSTANT" href="mathconstants_8swg.html#ae44316692857c0097ef73759016c7a7c"/>
+        <topic label="PI4" href="mathconstants_8swg.html#afd17621e12029ff7c53518b74a487c94"/>
+        <topic label="PI_1_3" href="mathconstants_8swg.html#a3b243a3bc67fb739aa60ea2d0a7423dc"/>
+        <topic label="PI_2_3" href="mathconstants_8swg.html#a84605f304730bb599ac208ccf1c91950"/>
+        <topic label="PI_4_3" href="mathconstants_8swg.html#a94dceff592c6ca67fb76ac9882d5bceb"/>
+        <topic label="PI_SQUARED_1_4" href="mathconstants_8swg.html#a2e5792671b0bb468c4a3ab7bc6c48332"/>
+        <topic label="QUATERNION_CONSTANTS_SEEN" href="mathconstants_8swg.html#a3ce626942814b036a58fb245da6ea664"/>
+        <topic label="RAD2DEG" href="mathconstants_8swg.html#ac5a945020d3528355cda82d383676736"/>
+        <topic label="RIGHT_ANGLE_DEG" href="mathconstants_8swg.html#a0585c00cca15213fd746451ca3f7a5f7"/>
+        <topic label="RIGHT_ANGLE_DEG_INT" href="mathconstants_8swg.html#ae04bebef00687c612751734d522e4a94"/>
+        <topic label="RIGHT_ANGLE_RAD" href="mathconstants_8swg.html#a351238736cb5b02e3546b333ee599293"/>
+        <topic label="SALEM_NUMBER" href="mathconstants_8swg.html#a31504fd3f0b74f283dc81d0da60419c3"/>
+        <topic label="SQRT_10" href="mathconstants_8swg.html#a39a92074d847dc786066df91cf0594c5"/>
+        <topic label="SQRT_11" href="mathconstants_8swg.html#a10c52f7b2ef5a53c09b304dcb9930077"/>
+        <topic label="SQRT_12" href="mathconstants_8swg.html#a5fb731cd964dad426e187a77beb9e26e"/>
+        <topic label="SQRT_13" href="mathconstants_8swg.html#ac7cc10a18bbd6f4b34846ac0529daf3c"/>
+        <topic label="SQRT_14" href="mathconstants_8swg.html#ac1db28925167d12ed44df9dbaf567704"/>
+        <topic label="SQRT_15" href="mathconstants_8swg.html#a368e4b04be4bd8a099883ac191cfcfeb"/>
+        <topic label="SQRT_16" href="mathconstants_8swg.html#aa1c245aeb02c87ccf34f1d37e0a312fb"/>
+        <topic label="SQRT_17" href="mathconstants_8swg.html#aafc21ad9ae481acffc53155c1076fbc4"/>
+        <topic label="SQRT_19" href="mathconstants_8swg.html#a35b09f3e04ff3f41d21be88e395560c9"/>
+        <topic label="SQRT_20" href="mathconstants_8swg.html#a00ed15ad72cec2160e4abef34b8fb87b"/>
+        <topic label="SQRT_21" href="mathconstants_8swg.html#a4653d993e1bf3bf81090bc7546032519"/>
+        <topic label="SQRT_22" href="mathconstants_8swg.html#a85053aebdb4203fc5f3e01d92ff1e15c"/>
+        <topic label="SQRT_23" href="mathconstants_8swg.html#addee53c170dfe09d269274e236d4d1cb"/>
+        <topic label="SQRT_24" href="mathconstants_8swg.html#a8221055537689ff8c08e32058648fd91"/>
+        <topic label="SQRT_3_DIV_4" href="mathconstants_8swg.html#af50134cb463ae20314dd96a41cdd43c3"/>
+        <topic label="SQRT_5" href="mathconstants_8swg.html#ab6073a2630d7c65369c70c5f8c03a132"/>
+        <topic label="SQRT_6" href="mathconstants_8swg.html#aec9e2b7626b38c22edb29ad20d156412"/>
+        <topic label="SQRT_7" href="mathconstants_8swg.html#a3fd0e86216584f7a3e249e70ffebca1c"/>
+        <topic label="SQRT_8" href="mathconstants_8swg.html#aad43f1b65dd5133bf591c9d0810f1388"/>
+        <topic label="SQRT_E" href="mathconstants_8swg.html#a7445cadc6d46c0bd625ce7fef0d921a4"/>
+        <topic label="SQRT_PI" href="mathconstants_8swg.html#a204175c725ee19858dedec2865d490b8"/>
+        <topic label="TAN_E" href="mathconstants_8swg.html#a6935e205cda07914a6225f60b6e47adc"/>
+        <topic label="TAN_PI" href="mathconstants_8swg.html#a83cff0d74684d54fd0873d837e2bf9ed"/>
+        <topic label="TWIN_PRIMES_CONSTANT" href="mathconstants_8swg.html#a46d41bfb71319e9b2e4a5f2044605c9e"/>
+        <topic label="VARDI_CONSTANT" href="mathconstants_8swg.html#a7cf05d1f1b21b0ea17b6db060e7674bc"/>
+        <topic label="ZERO" href="mathconstants_8swg.html#ac328e551bde3d39b6d7b8cc9e048d941"/>
       </topic>
       <topic label="mathfunc.c" href="mathfunc_8c.html">
         <topic label="abs_int" href="mathfunc_8c.html#aa82fdca27e7f7ec7a757b59a2c3f02b1"/>
@@ -4724,7 +4942,62 @@
         <topic label="flatten" href="mathfunc_8h.html#acb1e64fdd666ac3a2f24a9a2763fc54b"/>
       </topic>
       <topic label="mathfunc.swg" href="mathfunc_8swg.html">
+        <topic label="DATATYPES_128BITS_SEEN" href="mathfunc_8swg.html#a6b910edb18ae7431cd3411deb26419c2"/>
+        <topic label="IMAGINARY_NUMBER_CONSTANTS_SEEN" href="mathfunc_8swg.html#a98c83a41f12d462db76f1db765955b13"/>
+        <topic label="NUMBER_TUPLES_SEEN" href="mathfunc_8swg.html#a6e37e8f8d3b016fff12ab30e00cbad9e"/>
+        <topic label="acot" href="mathfunc_8swg.html#a8c3d81f70b86e3a92ca9e847b0a83251"/>
+        <topic label="acoth" href="mathfunc_8swg.html#a0d93d893893118362c091c65074566f2"/>
+        <topic label="acsc" href="mathfunc_8swg.html#ad8ed2cdb47848f8d393287d3a2a2bb29"/>
+        <topic label="acsch" href="mathfunc_8swg.html#a5193362bc6ed1f4951a146ad66b69404"/>
+        <topic label="arccot" href="mathfunc_8swg.html#acbee9fc64d7708871dd40d12e0e4572d"/>
+        <topic label="arccoth" href="mathfunc_8swg.html#ac07cc64a2eb1311d2b619df19a014ed5"/>
+        <topic label="arccsc" href="mathfunc_8swg.html#a4f8719cd01cbbf4b6b87058aeaed9213"/>
+        <topic label="arccsch" href="mathfunc_8swg.html#a8318e54d081eb7273d0aafe801d38afb"/>
+        <topic label="arcexcot" href="mathfunc_8swg.html#af4d0ccc7069ed06221908a2688cc497b"/>
+        <topic label="arcexcoth" href="mathfunc_8swg.html#a7b22c8e287f49f248316df317a9db9c9"/>
+        <topic label="arcexcsc" href="mathfunc_8swg.html#af0b403209fc3d23ccc95760c164301eb"/>
+        <topic label="arcexcsch" href="mathfunc_8swg.html#a4a8198ad18e354977a88288564cc9313"/>
+        <topic label="arcexsec" href="mathfunc_8swg.html#ad65b3aa85f8afd0f2fdf75a787aa20f0"/>
+        <topic label="arcexsech" href="mathfunc_8swg.html#adfd0e47a85ef880ed409f5fe572eb9c4"/>
+        <topic label="arcsec" href="mathfunc_8swg.html#aa50e1bca6604e390c8119f4774871a36"/>
+        <topic label="arcsech" href="mathfunc_8swg.html#a5586a725b3cacb2a1cf80131e46025c7"/>
+        <topic label="arcvercos" href="mathfunc_8swg.html#ad3b1055097889872ca02712aafe4b55a"/>
+        <topic label="arcvercosh" href="mathfunc_8swg.html#aabf6c86133fabaa6e5c49f839bba086f"/>
+        <topic label="arcversin" href="mathfunc_8swg.html#a4265faf24791a786652a24eb337853da"/>
+        <topic label="arcversinh" href="mathfunc_8swg.html#a0cfbe6400236c1fdfbd428ab392b686f"/>
+        <topic label="asec" href="mathfunc_8swg.html#a0b1afe39237d459f28ce9e04c254a956"/>
+        <topic label="asech" href="mathfunc_8swg.html#a7ece306f2923954f4d198fb3ba8a7d12"/>
+        <topic label="ATAN2" href="mathfunc_8swg.html#ad7ef25a8e534877251f0e2bef2f448cd"/>
+        <topic label="cos_arcsin" href="mathfunc_8swg.html#aa2a3c92132f0e5d061f0686a93bd617a"/>
+        <topic label="cos_arctan" href="mathfunc_8swg.html#af5989ecbaaccbb887b34aaac6ed8080b"/>
+        <topic label="cot" href="mathfunc_8swg.html#a084f1c7b7fa06301e59bf1139bff735a"/>
+        <topic label="coth" href="mathfunc_8swg.html#aad5bf78d5e8e297689d937cee2888777"/>
+        <topic label="crd" href="mathfunc_8swg.html#ae8443b5cf69bd85a43bfb38d477297a4"/>
+        <topic label="csc" href="mathfunc_8swg.html#a4543615dfd1be99481a8a90afadc363f"/>
+        <topic label="csch" href="mathfunc_8swg.html#aace76b509a725df6781b3ce4ef4da48e"/>
+        <topic label="excot" href="mathfunc_8swg.html#aeb36d6b68aedd02aa94fffb7b08e9805"/>
+        <topic label="excoth" href="mathfunc_8swg.html#a9f014bb70e30e2ae4bbc57a3c95a9d3e"/>
+        <topic label="excsc" href="mathfunc_8swg.html#a16d4ccaee8f554372b1b3026011d2a0d"/>
+        <topic label="excsch" href="mathfunc_8swg.html#aeb962bdf1c733ef11931fe426122bb1f"/>
+        <topic label="exsec" href="mathfunc_8swg.html#ad5256f76aa96209096e6002c149e899e"/>
+        <topic label="exsech" href="mathfunc_8swg.html#a64ff158472204f9bd76fe835d9081d68"/>
         <topic label="fib" href="mathfunc_8swg.html#ab28a65d3d2f0a562770032fc4136a6ae"/>
+        <topic label="hacoversin" href="mathfunc_8swg.html#a074b2dc6d8c6d27da5eeddfe6813e83b"/>
+        <topic label="haversin" href="mathfunc_8swg.html#a26d5ceacbbac158d857201cf60101ac2"/>
+        <topic label="isdoubletriangular" href="mathfunc_8swg.html#a373441fb490ce2a575e6dfd092b4fb04"/>
+        <topic label="isheptagonal" href="mathfunc_8swg.html#a11f03727ca3ebff80a097a9a5e1ce723"/>
+        <topic label="ishexagonal" href="mathfunc_8swg.html#ae666ac455dba088c3cee4a82369f220a"/>
+        <topic label="istriangular" href="mathfunc_8swg.html#a48a4bdf3a7a8c02302e10623468e1b13"/>
+        <topic label="sec" href="mathfunc_8swg.html#a355f559ffa5184dc4402c01501a5588f"/>
+        <topic label="sech" href="mathfunc_8swg.html#abe1230d91a52134a8e7b67d6d3d7c9ef"/>
+        <topic label="sin_arcsec" href="mathfunc_8swg.html#ab09b1a36712b88d217c885c66f3ea0d0"/>
+        <topic label="sin_arctan" href="mathfunc_8swg.html#a11f134e7b54708a594c4ca1f9ca9bf4d"/>
+        <topic label="sinpi" href="mathfunc_8swg.html#a2f213903067ce940f1fd226ba91dfd99"/>
+        <topic label="vercos" href="mathfunc_8swg.html#aff67c08efe06a8bb796e53f3cd5c2c93"/>
+        <topic label="vercosh" href="mathfunc_8swg.html#a49302b81460024feb6c0692925625afd"/>
+        <topic label="versin" href="mathfunc_8swg.html#a578b8c03f45ac4435802874fcb94911e"/>
+        <topic label="versinh" href="mathfunc_8swg.html#ac9ec6762f577e654c07116e379004bba"/>
+        <topic label="flatten" href="mathfunc_8swg.html#a8195e03e8c1f4be85be53d01326d1e9a"/>
         <topic label="mathfunc" href="mathfunc_8swg.html#a587ce15b67763ca6db5d171e30af7f88"/>
       </topic>
       <topic label="metric.py" href="metric_8py.html">

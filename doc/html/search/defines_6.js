@@ -3,6 +3,7 @@ var searchData=
   ['failed_5fopen_5ffile',['FAILED_OPEN_FILE',['../MACROS_8h.html#a1d0e53961c6ce54fbd88cd0d5485fc74',1,'MACROS.h']]],
   ['false',['false',['../MACROS_8h.html#a65e9886d74aaee76545e83dd09011727',1,'false():&#160;MACROS.h'],['../MACROS_8h.html#a306ebd41c0cd1303b1372c6153f0caf8',1,'False():&#160;MACROS.h'],['../MACROS_8h.html#aa93f0eb578d23995850d61f7d61c55c1',1,'FALSE():&#160;MACROS.h']]],
   ['fand',['FAND',['../fuzzy__logic_8h.html#a052f4255d9af6975dcf234b55f54978a',1,'fuzzy_logic.h']]],
+  ['file_5fmath_5fmacros_5fseen',['FILE_MATH_MACROS_SEEN',['../mathconstants_8swg.html#af8dc6445a5c079559214ecbbc483dbe4',1,'mathconstants.swg']]],
   ['float128',['float128',['../MACROS_8h.html#a60c9fc97adc96da94c22f1f7c1b48213',1,'MACROS.h']]],
   ['float128_5fsupported',['FLOAT128_SUPPORTED',['../MACROS_8h.html#a43039ff405a35e30225029794505a6ff',1,'MACROS.h']]],
   ['float128_5ft',['float128_t',['../MACROS_8h.html#a197aad0815c27684155a068eddab9292',1,'MACROS.h']]],
