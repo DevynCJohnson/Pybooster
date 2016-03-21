@@ -7,7 +7,7 @@ var searchData=
   ['architecture_5fmacros_5fseen',['ARCHITECTURE_MACROS_SEEN',['../MACROS_8h.html#a0a117728c25038c4332fa132ecde990d',1,'MACROS.h']]],
   ['arrayitemsize',['ARRAYITEMSIZE',['../MACROS_8h.html#a7cbc4425b7777e7bc035e92faa9952f5',1,'MACROS.h']]],
   ['arraylen',['ARRAYLEN',['../MACROS_8h.html#a1455ae826ef8fd01c6838e98bf193669',1,'MACROS.h']]],
-  ['artin_5fconstant',['ARTIN_CONSTANT',['../MATH__MACROS_8h.html#a8b455b171e8977655fbe881400f97fbe',1,'MATH_MACROS.h']]],
+  ['artin_5fconstant',['ARTIN_CONSTANT',['../MATH__MACROS_8h.html#a8b455b171e8977655fbe881400f97fbe',1,'ARTIN_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a8b455b171e8977655fbe881400f97fbe',1,'ARTIN_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a8b455b171e8977655fbe881400f97fbe',1,'ARTIN_CONSTANT():&#160;mathconstants.swg']]],
   ['assert_5f2args',['ASSERT_2ARGS',['../PY__MACROS_8h.html#a2ee2ce62e00f7bd71bf70abaccded0c3',1,'PY_MACROS.h']]],
   ['assert_5f2bool_5farg',['ASSERT_2BOOL_ARG',['../PY__MACROS_8h.html#aca6257a026d9a0c53afac3dc46393cad',1,'PY_MACROS.h']]],
   ['assert_5f2bytearray_5farg',['ASSERT_2BYTEARRAY_ARG',['../PY__MACROS_8h.html#a03e892477e18aa82df96b712eadfe581',1,'PY_MACROS.h']]],
@@ -103,12 +103,12 @@ var searchData=
   ['assert_5funicodeobject_5farg',['ASSERT_UNICODEOBJECT_ARG',['../PY__MACROS_8h.html#ac1acf66d86b7fce2d5fd85e57ffd5e0a',1,'PY_MACROS.h']]],
   ['assert_5funsignedchar_5farg',['ASSERT_UNSIGNEDCHAR_ARG',['../PY__MACROS_8h.html#abb08323b96e839c09b62c18d573b9798',1,'PY_MACROS.h']]],
   ['assert_5fushortint_5farg',['ASSERT_USHORTINT_ARG',['../PY__MACROS_8h.html#a5ffa1a8b79a3223c102b7ff76ef2793c',1,'PY_MACROS.h']]],
-  ['atomic_5funit_5fof_5fcharge',['ATOMIC_UNIT_OF_CHARGE',['../MATH__MACROS_8h.html#a0bc98ee9a3650250ebc550d71bd6dbd6',1,'MATH_MACROS.h']]],
-  ['atomic_5funit_5fof_5fcurrent',['ATOMIC_UNIT_OF_CURRENT',['../MATH__MACROS_8h.html#a80634a7260bbf633a4740e5ed3380618',1,'MATH_MACROS.h']]],
-  ['atomic_5funit_5fof_5fforce',['ATOMIC_UNIT_OF_FORCE',['../MATH__MACROS_8h.html#a8994d9350f6ba0646535aa45e9f7795f',1,'MATH_MACROS.h']]],
+  ['atomic_5funit_5fof_5fcharge',['ATOMIC_UNIT_OF_CHARGE',['../MATH__MACROS_8h.html#a0bc98ee9a3650250ebc550d71bd6dbd6',1,'ATOMIC_UNIT_OF_CHARGE():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a0bc98ee9a3650250ebc550d71bd6dbd6',1,'ATOMIC_UNIT_OF_CHARGE():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a0bc98ee9a3650250ebc550d71bd6dbd6',1,'ATOMIC_UNIT_OF_CHARGE():&#160;mathconstants.swg']]],
+  ['atomic_5funit_5fof_5fcurrent',['ATOMIC_UNIT_OF_CURRENT',['../MATH__MACROS_8h.html#a80634a7260bbf633a4740e5ed3380618',1,'ATOMIC_UNIT_OF_CURRENT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a80634a7260bbf633a4740e5ed3380618',1,'ATOMIC_UNIT_OF_CURRENT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a80634a7260bbf633a4740e5ed3380618',1,'ATOMIC_UNIT_OF_CURRENT():&#160;mathconstants.swg']]],
+  ['atomic_5funit_5fof_5fforce',['ATOMIC_UNIT_OF_FORCE',['../MATH__MACROS_8h.html#a8994d9350f6ba0646535aa45e9f7795f',1,'ATOMIC_UNIT_OF_FORCE():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a8994d9350f6ba0646535aa45e9f7795f',1,'ATOMIC_UNIT_OF_FORCE():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a8994d9350f6ba0646535aa45e9f7795f',1,'ATOMIC_UNIT_OF_FORCE():&#160;mathconstants.swg']]],
   ['attr_5fconst',['ATTR_CONST',['../MACROS_8h.html#aa3a9548137fc3ca0ad1367d204891bd9',1,'MACROS.h']]],
   ['attr_5fmalloc',['ATTR_MALLOC',['../MACROS_8h.html#a4998f1a53df3865d50ddbfe16329c31e',1,'MACROS.h']]],
   ['attr_5fnoreturn',['ATTR_NORETURN',['../MACROS_8h.html#a9593e6e545b76d1a9b62da2a3b81ec17',1,'ATTR_NORETURN():&#160;MACROS.h'],['../MACROS_8h.html#a9593e6e545b76d1a9b62da2a3b81ec17',1,'ATTR_NORETURN():&#160;MACROS.h']]],
   ['attr_5funused',['ATTR_UNUSED',['../MACROS_8h.html#aa57f5a5d32c26ebb0e15d0e2bfdcd676',1,'MACROS.h']]],
-  ['avogadro_5fconstant',['AVOGADRO_CONSTANT',['../MATH__MACROS_8h.html#a297bccece7c13063daa33a0536106d3f',1,'MATH_MACROS.h']]]
+  ['avogadro_5fconstant',['AVOGADRO_CONSTANT',['../MATH__MACROS_8h.html#a297bccece7c13063daa33a0536106d3f',1,'AVOGADRO_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a297bccece7c13063daa33a0536106d3f',1,'AVOGADRO_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a297bccece7c13063daa33a0536106d3f',1,'AVOGADRO_CONSTANT():&#160;mathconstants.swg']]]
 ];

@@ -4,7 +4,7 @@ var searchData=
   ['qimagf',['qimagf',['../mathfunc_8h.html#a72d1c6809a2c782d5f4d0f838f75ae4b',1,'mathfunc.h']]],
   ['qimagl',['qimagl',['../mathfunc_8h.html#affdf96b3e0db390ff5ae838728b3c7d4',1,'mathfunc.h']]],
   ['quaternion',['QUATERNION',['../math__types_8h.html#a5bf8f26767247c6c57b8eab20c0763b1',1,'math_types.h']]],
-  ['quaternion_5fconstants_5fseen',['QUATERNION_CONSTANTS_SEEN',['../MATH__MACROS_8h.html#a3ce626942814b036a58fb245da6ea664',1,'MATH_MACROS.h']]],
+  ['quaternion_5fconstants_5fseen',['QUATERNION_CONSTANTS_SEEN',['../MATH__MACROS_8h.html#a3ce626942814b036a58fb245da6ea664',1,'QUATERNION_CONSTANTS_SEEN():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a3ce626942814b036a58fb245da6ea664',1,'QUATERNION_CONSTANTS_SEEN():&#160;mathconstants.swg']]],
   ['quaternion_5fe',['QUATERNION_E',['../MATH__MACROS_8h.html#a168802c5d5478595309044a98335830f',1,'MATH_MACROS.h']]],
   ['quaternion_5fef',['QUATERNION_Ef',['../MATH__MACROS_8h.html#a35d6223200ea627215053fe1ca7cb724',1,'MATH_MACROS.h']]],
   ['quaternion_5fel',['QUATERNION_El',['../MATH__MACROS_8h.html#a32c0dd7979729e0caf4f120e06f8a6e9',1,'MATH_MACROS.h']]],

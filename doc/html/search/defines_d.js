@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['omega',['OMEGA',['../MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796',1,'MATH_MACROS.h']]],
+  ['omega',['OMEGA',['../MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg']]],
   ['one32',['ONE32',['../MACROS_8h.html#ad3e56d67d07f5ced4028419807b214dd',1,'MACROS.h']]],
   ['op_5feq',['OP_EQ',['../MACROS_8h.html#a46bdddc9779bf0e995e3f078aa6e5d2b',1,'MACROS.h']]],
   ['op_5fge',['OP_GE',['../MACROS_8h.html#a81d577022941aa88aac9f64eef8d7faf',1,'MACROS.h']]],

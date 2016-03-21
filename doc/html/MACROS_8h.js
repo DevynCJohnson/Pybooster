@@ -120,6 +120,7 @@ var MACROS_8h =
     [ "CONCATSTRING", "MACROS_8h.html#a6f5b442bc213b01035eca27b114063ad", null ],
     [ "COPYSTRING", "MACROS_8h.html#afec1e1939ea50873978117589bedb32b", null ],
     [ "CTYPE_MACROS_SEEN", "MACROS_8h.html#aebb42a119f145977d2a641b5655e52da", null ],
+    [ "DATATYPES_128BITS_SEEN", "MACROS_8h.html#a6b910edb18ae7431cd3411deb26419c2", null ],
     [ "DBL_TO_U64", "MACROS_8h.html#ab67b778651325fd73a3b4f782a3a7e17", null ],
     [ "DO_EXPAND", "MACROS_8h.html#ac67d56a22930fb32f533fbb1a9729890", null ],
     [ "ENV32BIT", "MACROS_8h.html#a15c467037be028c4a4b4a0578db3fc3d", null ],

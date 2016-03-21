@@ -19,6 +19,13 @@ include profiles.mk
 
 override CLIB::=./clib
 override SWIGLIB::=./swiglib
+override SWIGLUA::=$(SWIGLIB)/lua
+override SWIGOCTAVE::=$(SWIGLIB)/octave
+override SWIGPERL::=$(SWIGLIB)/perl
+override SWIGPHP::=$(SWIGLIB)/php
+override SWIGPIKE::=$(SWIGLIB)/pike
+override SWIGRUBY::=$(SWIGLIB)/ruby
+override SWIGTCL::=$(SWIGLIB)/tcl
 override PYMODDIR::=./pybooster
 override SRCDIR::=./src
 PYPATH::=/usr/lib/python
@@ -26,10 +33,10 @@ override PYCLIB::=/opt/pybooster/clib
 override SYSPYCLIB::=/usr/lib/pyclib
 override INCLUDE::=-D__MODULE_VERSION__=$(__MODULE_VERSION__) -I$(SRCDIR)
 override COMMON_ARGUMENTS::=$(WARN) $(ARCH) $(BITS) $(STD) -O3 $(XOPTMZ) $(DEBUG) -funroll-loops
-override COMMON_SWIG_ARGUMENTS::=$(ARCH) $(BITS) $(STD) -O3 $(XOPTMZ) $(DEBUG) -funroll-loops
+override COMMON_SWIG_ARGUMENTS::=$(ARCH) $(BITS) $(STD) -O3 $(XOPTMZ) -g0 -ggdb0 -s -Wl,-s -funroll-loops
 override COMMON_PY_ARGUMENTS::=$(PYINCLUDE) $(PYCFLAGS) -D_FORTIFY_SOURCE=2 -fwrapv
 override COMMON_POSIX_ARGUMENTS::=$(POSIX_STACK_PROTECTOR) -ffunction-sections -fdata-sections
-SWIG::=swig3.0
+SWIG::=swig3.0 -fcompact
 
 ifndef STRIP
 	override STRIP::=strip
@@ -90,6 +97,8 @@ help:
 	@echo "    make library"
 	@echo "SWIG wrappers:"
 	@echo "    make wrappers"
+	@echo "SWIG wrappers for TCL:"
+	@echo "    make tcl_wrappers"
 	@echo "Dynamic libraries:"
 	@echo "    make lib"
 	@echo "Python C libraries:"
@@ -175,7 +184,16 @@ default:
 ## PHONY ##
 
 
-.PHONY : all ast backup byte clean cleanall cleanfull commit doc doxy everything fixperm gitall install lib library llvm_bc llvm_bytecode llvm_intermediate llvm_ll most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp rmwrap stat static strip submit swig_mathfunc uninstall wrappers
+# General
+.PHONY : all backup byte clean cleanall cleanfull everything fixperm install lib library most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp rmwrap static strip uninstall
+# Documentation
+.PHONY : cleandoc doc doxy
+# Git
+.PHONY : commit gitall stat submit
+# Clang/LLVM
+.PHONY : ast llvm_bc llvm_bytecode llvm_intermediate llvm_ll
+# SWIG
+.PHONY : lua_wrappers octave_wrappers perl_wrappers php_wrappers pike_wrappers ruby_wrappers tcl_wrappers wrappers
 
 
 ## BUILD COMMANDS ##
@@ -275,7 +293,7 @@ cleandoc :
 	-@rm -frd ./doc/*
 
 cleanall : rmtmp rmcache
-	-@rm -f $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
+	-@rm -f $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(SWIGTCL)/*.so $(SWIGLIB)/*.dll $(SWIGTCL)/*.dll $(SWIGOCTAVE)/*.oct $(SWIGPERL)/*.pm $(SWIGPERL)/*.so $(SWIGPERL)/*.dll $(SWIGPHP)/*.php $(SWIGPHP)/*.so $(SWIGPHP)/*.dll $(SWIGPIKE)/*.so $(SWIGPIKE)/*.dll $(SWIGRUBY)/*.so $(SWIGRUBY)/*.dll $(SWIGLUA)/*.so $(SWIGLUA)/*.dll $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
 
 cleanfull : cleanall cleandoc
 
@@ -293,6 +311,13 @@ install : rmtmp
 	cp -Rf $(PYMODDIR)/* /opt/pybooster/; \
 	cp -Rf $(CLIB)/* /opt/pybooster/clib/; \
 	cp -Rf $(SRCDIR)/*.h /opt/pybooster/include/; \
+	cp -Rf $(SWIGLUA)/* /opt/pybooster/lua/; \
+	cp -Rf $(SWIGRUBY)/* /opt/pybooster/ruby/; \
+	cp -Rf $(SWIGTCL)/* /opt/pybooster/tcl/; \
+	cp -Rf $(SWIGOCTAVE)/* /opt/pybooster/octave/; \
+	cp -Rf $(SWIGPERL)/* /opt/pybooster/perl/; \
+	cp -Rf $(SWIGPHP)/* /opt/pybooster/php/; \
+	cp -Rf $(SWIGPIKE)/* /opt/pybooster/pike/; \
 	# Ensure that the proper permissions are set \
 	$(CHMOD) 644 /opt/pybooster/doc/*; \
 	$(CHMOD) 755 /opt/pybooster/doc/html; \
@@ -301,6 +326,11 @@ install : rmtmp
 	$(CHMOD) 644 /opt/pybooster/doc/html/search/*; \
 	$(CHMOD) 644 /opt/pybooster/*.py /opt/pybooster/*.glade; \
 	$(CHMOD) 755 /opt/pybooster/*.so /opt/pybooster/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/tcl/*.so /opt/pybooster/tcl/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/octave/*.oct; \
+	$(CHMOD) 755 /opt/pybooster/perl/*.pm /opt/pybooster/perl/*.so /opt/pybooster/perl/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/php/*.php /opt/pybooster/php/*.so /opt/pybooster/php/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/pike/*.so /opt/pybooster/pike/*.dll; \
 	$(CHMOD) 755 /opt/pybooster/clib/*; \
 	$(CHMOD) 644 /opt/pybooster/include/*; \
 	$(CHMOD) 644 /opt/pybooster/__pycache__/* /opt/pybooster/ezwin/__pycache__/*; \
@@ -325,7 +355,14 @@ fixperm : rmtmp
 	$(CHMOD) 644 ./doc/html/search/*; \
 	$(CHMOD) 644 $(SRCDIR)/*; \
 	$(CHMOD) 644 $(PYMODDIR)/*.py $(PYMODDIR)/*.pyw $(PYMODDIR)/*.glade; \
-	$(CHMOD) 755 $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(CLIB)/*.so $(CLIB)/*.dll; \
+	$(CHMOD) 755 $(PYMODDIR)/*.so $(CLIB)/*.so $(CLIB)/*.dll; \
+	$(CHMOD) 755 $(SWIGLIB)/*.so $(SWIGTCL)/*.so $(SWIGLIB)/*.dll $(SWIGTCL)/*.dll; \
+	$(CHMOD) 755 $(SWIGOCTAVE)/*.oct; \
+	$(CHMOD) 755 $(SWIGPERL)/*.pm $(SWIGPERL)/*.so $(SWIGPERL)/*.dll; \
+	$(CHMOD) 755 $(SWIGPHP)/*.php $(SWIGPHP)/*.so $(SWIGPHP)/*.dll; \
+	$(CHMOD) 755 $(SWIGPIKE)/*.so $(SWIGPIKE)/*.dll; \
+	$(CHMOD) 755 $(SWIGLUA)/*.so $(SWIGLUA)/*.dll; \
+	$(CHMOD) 755 $(SWIGRUBY)/*.so $(SWIGRUBY)/*.dll; \
 	$(CHMOD) 644 $(PYMODDIR)/__pycache__/* $(PYMODDIR)/ezwin/__pycache__/*; \
 	$(CHMOD) 644 $(PYMODDIR)/ezwin/*.py $(PYMODDIR)/ezwin/*.glade; \
 
@@ -351,10 +388,57 @@ submit :
 
 # SWIG #
 
-wrappers : swig_mathfunc
+wrappers : lua_wrappers pike_wrappers ruby_wrappers tcl_wrappers
 
-swig_mathfunc : static_libmathfunc
-	$(SWIG) -tcl $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/tcl $(SRCDIR)/mathfunc_wrap.c -o $(SRCDIR)/mathfunc_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGLIB)/tclmathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_wrap.o -ltcl -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGLIB)/tclmathfunc.so
+lua_wrappers : lua_swig_mathconstants lua_swig_mathfunc
+
+octave_wrappers : octave_swig_mathconstants octave_swig_mathfunc
+
+perl_wrappers : perl_swig_mathfunc
+
+php_wrappers : php_swig_mathfunc
+
+pike_wrappers : pike_swig_mathconstants pike_swig_mathfunc
+
+ruby_wrappers : ruby_swig_mathconstants ruby_swig_mathfunc
+
+tcl_wrappers : tcl_swig_mathconstants tcl_swig_mathfunc
+
+lua_swig_mathconstants :
+	$(SWIG) -lua -o $(SRCDIR)/mathconstants_lua_wrap.c $(SRCDIR)/mathconstants.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/lua5.2 $(SRCDIR)/mathconstants_lua_wrap.c -o $(SRCDIR)/mathconstants_lua_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGLUA)/mathconstants.so $(SRCDIR)/mathconstants_lua_wrap.o -llua5.2 && $(STRIP) $(STRIP_PARAMS) $(SWIGLUA)/mathconstants.so
+
+lua_swig_mathfunc : libmathfunc
+	$(SWIG) -lua -o $(SRCDIR)/mathfunc_lua_wrap.c $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/lua5.2 $(SRCDIR)/mathfunc_lua_wrap.c -o $(SRCDIR)/mathfunc_lua_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGLUA)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_lua_wrap.o -llua5.2 -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGLUA)/mathfunc.so
+
+octave_swig_mathconstants :
+	export CC="g++ -std=c++11"; $(SWIG) -octave -o $(SRCDIR)/mathconstants_octave_wrap.c $(SRCDIR)/mathconstants.swg && mkoctfile -I/usr/include -I/usr/include/octave-4.0.0 -s -Wl,-s -Wa,-std=c++11,-O3,-g0,-ggdb0,-funroll-loops $(SRCDIR)/mathconstants_octave_wrap.c -o $(SWIGOCTAVE)/mathconstants.oct
+
+octave_swig_mathfunc : libmathfunc
+	export CC="g++ -std=c++11"; $(SWIG) -octave -o $(SRCDIR)/mathfunc_octave_wrap.c $(SRCDIR)/mathfunc.swg && mkoctfile -I/usr/include -I/usr/include/octave-4.0.0 -s -Wl,-s -Wa,-std=c++11,-O3,-g0,-ggdb0,-funroll-loops -lm $(SRCDIR)/mathfunc_octave_wrap.c $(SRCDIR)/mathfunc.o -o $(SWIGOCTAVE)/mathfunc.oct
+
+perl_swig_mathfunc : libmathfunc
+	$(SWIG) -perl -o $(SRCDIR)/mathfunc_perl_wrap.c $(SRCDIR)/mathfunc.swg && mv $(SRCDIR)/mathfunc.pm $(SWIGPERL)/mathfunc.pm && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/perl $(SRCDIR)/mathfunc_perl_wrap.c -o $(SRCDIR)/mathfunc_perl_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGPERL)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_perl_wrap.o -lperl -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGPERL)/mathfunc.so
+
+php_swig_mathfunc : libmathfunc
+	$(SWIG) -php -o $(SRCDIR)/mathfunc_php_wrap.c $(SRCDIR)/mathfunc.swg && mv $(SRCDIR)/mathfunc.php $(SWIGPHP)/mathfunc.php && $(CC) $(SWIG_FPIC_PARAMS) `php-config --includes` $(SRCDIR)/mathfunc_php_wrap.c -o $(SRCDIR)/mathfunc_php_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGPHP)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_php_wrap.o -lphp -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGPHP)/mathfunc.so
+
+pike_swig_mathconstants :
+	$(SWIG) -pike -o $(SRCDIR)/mathconstants_pike_wrap.c $(SRCDIR)/mathconstants.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/pike7.8 $(SRCDIR)/mathconstants_pike_wrap.c -o $(SRCDIR)/mathconstants_pike_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGPIKE)/mathconstants.so $(SRCDIR)/mathconstants_pike_wrap.o && $(STRIP) $(STRIP_PARAMS) $(SWIGPIKE)/mathconstants.so
+
+pike_swig_mathfunc : libmathfunc
+	$(SWIG) -pike -o $(SRCDIR)/mathfunc_pike_wrap.c $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/pike7.8 $(SRCDIR)/mathfunc_pike_wrap.c -o $(SRCDIR)/mathfunc_pike_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGPIKE)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_pike_wrap.o -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGPIKE)/mathfunc.so
+
+ruby_swig_mathconstants :
+	$(SWIG) -ruby -o $(SRCDIR)/mathconstants_ruby_wrap.c $(SRCDIR)/mathconstants.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/ruby-2.1.0 -I/usr/include/$(GCC_PREFIX)/ruby-2.1.0 $(SRCDIR)/mathconstants_ruby_wrap.c -o $(SRCDIR)/mathconstants_ruby_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -L/usr/lib/$(GCC_PREFIX) -o $(SWIGRUBY)/mathconstants.so $(SRCDIR)/mathconstants_ruby_wrap.o -lruby-2.1 && $(STRIP) $(STRIP_PARAMS) $(SWIGRUBY)/mathconstants.so
+
+ruby_swig_mathfunc : libmathfunc
+	$(SWIG) -ruby -o $(SRCDIR)/mathfunc_ruby_wrap.c $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/ruby-2.1.0 -I/usr/include/$(GCC_PREFIX)/ruby-2.1.0 $(SRCDIR)/mathfunc_ruby_wrap.c -o $(SRCDIR)/mathfunc_ruby_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -L/usr/lib/$(GCC_PREFIX) -o $(SWIGRUBY)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_ruby_wrap.o -lruby-2.1 -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGRUBY)/mathfunc.so
+
+tcl_swig_mathconstants :
+	$(SWIG) -tcl -o $(SRCDIR)/mathconstants_tcl_wrap.c $(SRCDIR)/mathconstants.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/tcl $(SRCDIR)/mathconstants_tcl_wrap.c -o $(SRCDIR)/mathconstants_tcl_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGTCL)/mathconstants.so $(SRCDIR)/mathconstants_tcl_wrap.o -ltcl && $(STRIP) $(STRIP_PARAMS) $(SWIGTCL)/mathconstants.so
+
+tcl_swig_mathfunc : libmathfunc
+	$(SWIG) -tcl -o $(SRCDIR)/mathfunc_tcl_wrap.c $(SRCDIR)/mathfunc.swg && $(CC) $(SWIG_FPIC_PARAMS) -I/usr/include/tcl $(SRCDIR)/mathfunc_tcl_wrap.c -o $(SRCDIR)/mathfunc_tcl_wrap.o && $(CC) $(SWIG_LIB_PARAMS) -o $(SWIGTCL)/mathfunc.so $(SRCDIR)/mathfunc.o $(SRCDIR)/mathfunc_tcl_wrap.o -ltcl -lm && $(STRIP) $(STRIP_PARAMS) $(SWIGTCL)/mathfunc.so
 
 
 # LLVM/Clang #

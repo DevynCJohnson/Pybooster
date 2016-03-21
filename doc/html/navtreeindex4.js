@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"chemistry__types_8h.html#a4fbccdeeb518e61f3b37a89484f8c347":[2,0,8,3,3],
 "chemistry__types_8h.html#a4ff13d5304ec7337e7a3246abf10d581":[2,0,8,55],
 "chemistry__types_8h.html#a52a26cd6e445a1bffab43d3eb3dd6bcf":[2,0,8,38],
 "chemistry__types_8h.html#a536639cf175cb0d51a58bcc81f739ab0":[2,0,8,132],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "chemistry__types_8h.html#ace77d647153d87c22d42b33808a95bca":[2,0,8,155],
 "chemistry__types_8h.html#aceb80dff78461682a95151a1d0e5b6e6":[2,0,8,166],
 "chemistry__types_8h.html#acf3c89f26157b2d2b46025934684a578":[2,0,8,134],
-"chemistry__types_8h.html#ad09e66a5c992cdd3b1e4264ce85c58d7":[2,0,8,12],
-"chemistry__types_8h.html#ad10421ae24687d061fbfdc26e797c8fc":[2,0,8,159]
+"chemistry__types_8h.html#ad09e66a5c992cdd3b1e4264ce85c58d7":[2,0,8,12]
 };

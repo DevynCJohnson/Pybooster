@@ -30,6 +30,7 @@ endif
 ifdef dcj
 	ifeq ($(dcj),1)
 		# Standard Haswell Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
@@ -77,6 +78,7 @@ ifdef dcj
 		endif
 	else ifeq ($(dcj),2)
 		# Standard Broadwell Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
@@ -124,6 +126,7 @@ ifdef dcj
 		endif
 	else ifeq ($(dcj),3)
 		# Standard Skylake Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
@@ -171,6 +174,7 @@ ifdef dcj
 		endif
 	else ifeq ($(dcj),4)
 		# Standard Knight Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
@@ -218,6 +222,7 @@ ifdef dcj
 		endif
 	else ifeq ($(dcj),athlon64-sse3)
 		# Standard athlon64-SSE3 Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
@@ -265,6 +270,7 @@ ifdef dcj
 		endif
 	else ifeq ($(dcj),znver1)
 		# Standard znver1 Configuration (Linux64)
+		override GCC_PREFIX::=x86_64-linux-gnu
 		override STD::=-std=c11
 		override BITS::=-m64
 		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION

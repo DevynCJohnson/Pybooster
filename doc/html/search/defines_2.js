@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['bernsteins_5fconstant',['BERNSTEINS_CONSTANT',['../MATH__MACROS_8h.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'MATH_MACROS.h']]],
-  ['bohr_5fradius',['BOHR_RADIUS',['../MATH__MACROS_8h.html#a898c6244c2945c99115639f6045f7264',1,'MATH_MACROS.h']]],
-  ['boltzmann_5fconstant',['BOLTZMANN_CONSTANT',['../MATH__MACROS_8h.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'MATH_MACROS.h']]],
+  ['bernsteins_5fconstant',['BERNSTEINS_CONSTANT',['../MATH__MACROS_8h.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.swg']]],
+  ['bohr_5fradius',['BOHR_RADIUS',['../MATH__MACROS_8h.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;mathconstants.swg']]],
+  ['boltzmann_5fconstant',['BOLTZMANN_CONSTANT',['../MATH__MACROS_8h.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;mathconstants.swg']]],
   ['buf_5fsize',['BUF_SIZE',['../tone_8h.html#a6821bafc3c88dfb2e433a095df9940c6',1,'tone.h']]],
   ['byte',['Byte',['../MACROS_8h.html#a8390de1c62e036e839ec8150711d6539',1,'MACROS.h']]],
   ['bytestr',['bytestr',['../PY__MACROS_8h.html#aaa751e1e1c8693e7b2db7cf927847654',1,'PY_MACROS.h']]],
