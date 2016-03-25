@@ -6,7 +6,7 @@
 @package pybooster.system
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2016.03.21
+@version 2016.03.25
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -183,7 +183,6 @@ def idsys() -> None:
         'System Release:     {}\n'
         'Release Version:    {}\n'
         'Release Info:       {}\n'
-        'Distro:             {}\n'
         'Platform:           {}\n'
         'Machine Type:       {}\n'
         'Processor Name:     {}\n'
@@ -196,7 +195,6 @@ def idsys() -> None:
             platform.release(),
             platform.version(),
             _spinfo(),
-            platform.dist(),
             platform.platform(),
             platform.machine(),
             platform.processor(),

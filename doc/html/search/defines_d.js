@@ -1,14 +1,18 @@
 var searchData=
 [
-  ['omega',['OMEGA',['../MATH__MACROS_8h.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a8913b4bfc15703ad42ca91552a8d5796',1,'OMEGA():&#160;mathconstants.swg']]],
-  ['one32',['ONE32',['../MACROS_8h.html#ad3e56d67d07f5ced4028419807b214dd',1,'MACROS.h']]],
-  ['op_5feq',['OP_EQ',['../MACROS_8h.html#a46bdddc9779bf0e995e3f078aa6e5d2b',1,'MACROS.h']]],
-  ['op_5fge',['OP_GE',['../MACROS_8h.html#a81d577022941aa88aac9f64eef8d7faf',1,'MACROS.h']]],
-  ['op_5fgt',['OP_GT',['../MACROS_8h.html#a0fa482032824fe178a5c8510a6b268e8',1,'MACROS.h']]],
-  ['op_5fle',['OP_LE',['../MACROS_8h.html#ae26997ae51e5ac9ad3717d9010ef9c92',1,'MACROS.h']]],
-  ['op_5flt',['OP_LT',['../MACROS_8h.html#a09b4bd252d4ef2d01ba2394ce89096eb',1,'MACROS.h']]],
-  ['op_5fne',['OP_NE',['../MACROS_8h.html#ad00f801ce58135d1943ecd405054941d',1,'MACROS.h']]],
-  ['openfile',['OPENFILE',['../MACROS_8h.html#a1e9618608149dc1f1b65ab7f38993a85',1,'MACROS.h']]],
-  ['or',['OR',['../MACROS_8h.html#a3f87df3225c40cab58350c5c26d238db',1,'MACROS.h']]],
-  ['orswap',['ORSWAP',['../MACROS_8h.html#abc977a8235474928df4c0a7e94902cae',1,'MACROS.h']]]
+  ['nand',['NAND',['../MACROS_8h.html#a195389ae8eb11c87a923bf3b13a2d41b',1,'MACROS.h']]],
+  ['neg_5fzero',['NEG_ZERO',['../MATH__MACROS_8h.html#a7e94d77a55b91d6051f4940518d233ac',1,'NEG_ZERO():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a7e94d77a55b91d6051f4940518d233ac',1,'NEG_ZERO():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a7e94d77a55b91d6051f4940518d233ac',1,'NEG_ZERO():&#160;mathconstants.swg']]],
+  ['neodymium_5fmolar_5fmass',['NEODYMIUM_MOLAR_MASS',['../chemistry_8h.html#ac670772f22ac0234a546866b96d25d27',1,'chemistry.h']]],
+  ['neon_5fmolar_5fmass',['NEON_MOLAR_MASS',['../chemistry_8h.html#ab2743e8b35ad89d8ba86e8e9d0ec45b9',1,'chemistry.h']]],
+  ['neptunium_5fmolar_5fmass',['NEPTUNIUM_MOLAR_MASS',['../chemistry_8h.html#ad7ddd0fae7a2a429f6a0ff3aa301dfa9',1,'chemistry.h']]],
+  ['nickel_5fmolar_5fmass',['NICKEL_MOLAR_MASS',['../chemistry_8h.html#a61442780546505b7f0e334a8ed6ad57c',1,'chemistry.h']]],
+  ['nil',['NIL',['../MACROS_8h.html#a263efce0e5cda1d387a1a43f94715445',1,'MACROS.h']]],
+  ['niobium_5fmolar_5fmass',['NIOBIUM_MOLAR_MASS',['../chemistry_8h.html#a32be2507f9d322026f889e787c13d364',1,'chemistry.h']]],
+  ['nitrogen_5fmolar_5fmass',['NITROGEN_MOLAR_MASS',['../chemistry_8h.html#a212500a85bd4767d1a16769c2b0e04ff',1,'chemistry.h']]],
+  ['no',['NO',['../MACROS_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'NO():&#160;MACROS.h'],['../MACROS_8h.html#a2f3b7fca220397a5c9ca7a2e4e336eaa',1,'no():&#160;MACROS.h']]],
+  ['nobelium_5fmolar_5fmass',['NOBELIUM_MOLAR_MASS',['../chemistry_8h.html#a75452e409785776511c12888f7af6bc8',1,'chemistry.h']]],
+  ['nor',['NOR',['../MACROS_8h.html#a90b9b44618a11c96ec01becca6b430c8',1,'MACROS.h']]],
+  ['not',['NOT',['../MACROS_8h.html#a30c984add4da766f18737e88c810055b',1,'MACROS.h']]],
+  ['number_5ftuples_5fseen',['NUMBER_TUPLES_SEEN',['../MACROS_8h.html#a6e37e8f8d3b016fff12ab30e00cbad9e',1,'NUMBER_TUPLES_SEEN():&#160;MACROS.h'],['../mathfunc_8swg.html#a6e37e8f8d3b016fff12ab30e00cbad9e',1,'NUMBER_TUPLES_SEEN():&#160;mathfunc.swg']]],
+  ['nxor',['NXOR',['../MACROS_8h.html#a72813253594ec04b3f5552c5da16c1bf',1,'MACROS.h']]]
 ];

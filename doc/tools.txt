@@ -36,6 +36,10 @@ FUNCTIONS
         getsyshostname() -> str
         Return the system's hostname
     
+    getsysname(...)
+        getsysname() -> str
+        Return the name of the operating system implementation
+    
     is_acpi_aval(...)
         is_acpi_aval() -> bool
         Test if the CPU supports `acpi` (Onboard thermal control MSRs for ACPI)
@@ -412,6 +416,46 @@ FUNCTIONS
         isandroid() -> bool
         Test if this system is Android
     
+    isbigendian(...)
+        isbigendian() -> bool
+        Test if this system is Big-Endian
+    
+    iscpp(...)
+        iscpp() -> bool
+        Test if this library was compiled with a C++ compiler
+    
+    iscygwin(...)
+        iscygwin() -> bool
+        Test if this system is Cygwin
+    
+    isdragonfly(...)
+        isdragonfly() -> bool
+        Test if this system is DragonFlyBSD
+    
+    isfreebsd(...)
+        isfreebsd() -> bool
+        Test if this system is FreeBSD
+    
+    isgnuhurd(...)
+        isgnuhurd() -> bool
+        Test if this system is GNU/Hurd
+    
+    islittleendian(...)
+        islittleendian() -> bool
+        Test if this system is Little-Endian
+    
+    isminix(...)
+        isminix() -> bool
+        Test if this system is Minix
+    
+    isnetbsd(...)
+        isnetbsd() -> bool
+        Test if this system is NetBSD
+    
+    isopenbsd(...)
+        isopenbsd() -> bool
+        Test if this system is OpenBSD
+    
     isstralnum(...)
         isstralnum(STR: str) -> bool
         Check if the string only contains alphanumeric characters
@@ -452,6 +496,10 @@ FUNCTIONS
         isstrwhitespace(STR: str) -> bool
         Check if the string only contains whitespace characters
     
+    isunix(...)
+        isunix() -> bool
+        Test if this system is Unix
+    
     lowercasestr(...)
         lowercasestr(STR: str) -> str
         Convert a string to all lowercase letters
@@ -459,6 +507,10 @@ FUNCTIONS
     lowercasestr15(...)
         lowercasestr15(STR: str) -> str
         Convert a string 15-character string to all lowercase letters
+    
+    machine(...)
+        machine() -> str
+        Return the system's hardware type
     
     rdtsc(...)
         rdtsc() -> int
@@ -479,6 +531,12 @@ FUNCTIONS
     uppercasestr(...)
         uppercasestr(STR: str) -> str
         Convert a string to all uppercase letters
+
+DATA
+    BYTEORDER = 'little'
+    POSIX_STANDARD = 200809
+    POSIX_VERSION = 200809
+    STDLIB = 'glibc'
 
 FILE
     /media/collier/PROGRAMMING/PROJECTS/PyBooster/pybooster/tools.cpython-34m.so

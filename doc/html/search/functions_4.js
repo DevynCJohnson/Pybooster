@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['datadump',['datadump',['../namespacepybooster_1_1basic.html#a376577122b762c219d51345d9ccb39e9',1,'pybooster::basic']]],
   ['date',['date',['../namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e',1,'pybooster::timeutil']]],
   ['date_5ftime',['date_time',['../namespacepybooster_1_1timeutil.html#a17e37d0d657a03f0395cfb7817d0e373',1,'pybooster::timeutil']]],
   ['dateandtime',['dateandtime',['../namespacepybooster_1_1timeutil.html#a05c735f801f1889ae3d7aff9a27aeab9',1,'pybooster::timeutil']]],
@@ -38,8 +39,11 @@ var searchData=
   ['div_5fand_5fmod_5fint',['div_and_mod_int',['../mathfunc_8c.html#a6f2f44cc4adc726e905c9e94699a6422',1,'div_and_mod_int(const int num1, const int num2):&#160;mathfunc.c'],['../mathfunc_8h.html#ae23963b2c4b4b950f338142006cbbc70',1,'div_and_mod_int(const int num1, const int num2) __attribute__((const :&#160;mathfunc.h']]],
   ['div_5fand_5fmodf',['div_and_modf',['../mathfunc_8c.html#a5f937c05742ee53f3c02b0dd430bae67',1,'div_and_modf(const float num1, const float num2):&#160;mathfunc.c'],['../mathfunc_8h.html#a6f7b69f828a7c174eb0d49f8a650f349',1,'div_and_modf(const float num1, const float num2) __attribute__((const :&#160;mathfunc.h']]],
   ['doeskeymvalue',['doeskeymvalue',['../namespacepybooster_1_1basic.html#a55dbc431c1bf8dc4a07e5245160dfb7b',1,'pybooster::basic']]],
+  ['dot_5fproduct32',['dot_product32',['../mathfunc_8c.html#afafd183747c2c4740c9f239491353fc1',1,'dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length):&#160;mathfunc.c'],['../mathfunc_8h.html#a36e0c301957c10ce603eae19a1e4f111',1,'dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length) __attribute__((const :&#160;mathfunc.h']]],
+  ['dot_5fproduct64',['dot_product64',['../mathfunc_8c.html#a7e0f031ca55c29493f1e2498f94c9d2d',1,'dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length):&#160;mathfunc.c'],['../mathfunc_8h.html#aba79441345e4fd918abfe44587fb7a54',1,'dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length) __attribute__((const :&#160;mathfunc.h']]],
   ['doublefactorial',['doublefactorial',['../mathfunc_8c.html#a0283e5048bf25f16ca0de3a509bb975f',1,'doublefactorial(const unsigned int num):&#160;mathfunc.c'],['../mathfunc_8h.html#a335bb967aa67fbc3550f99fbc37886ca',1,'doublefactorial(const unsigned int num) __attribute__((const :&#160;mathfunc.h']]],
   ['doublefactoriallonglong',['doublefactoriallonglong',['../mathfunc_8c.html#a84d4e96e12e7a4ed31c25aaab8305b12',1,'doublefactoriallonglong(const sllint num):&#160;mathfunc.c'],['../mathfunc_8h.html#a3b0fea5595c3d0989ace6b15ffd87789',1,'doublefactoriallonglong(const sllint num) __attribute__((const :&#160;mathfunc.h']]],
   ['dt',['dt',['../namespacepybooster_1_1unix.html#ad45413e8e3ff1982b5861fe3badc4938',1,'pybooster::unix']]],
-  ['du',['du',['../namespacepybooster_1_1unix.html#acc4f14ede291fcee480b5f2a6dcddf7b',1,'pybooster::unix']]]
+  ['du',['du',['../namespacepybooster_1_1unix.html#acc4f14ede291fcee480b5f2a6dcddf7b',1,'pybooster::unix']]],
+  ['dump',['dump',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a211577cb0af0419c446860c0bdaec590',1,'pybooster::neuralnet::NeuroCode']]]
 ];

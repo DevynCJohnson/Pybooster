@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Play tones
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides functions that produce tones using libao

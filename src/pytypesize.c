@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Get the size (in bytes) of various C data-types
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from typesize.c.

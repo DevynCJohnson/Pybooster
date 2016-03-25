@@ -240,6 +240,8 @@ var mathfunc_8c =
     [ "div_and_mod", "mathfunc_8c.html#a433c3eb3d4483166fd950af21340210c", null ],
     [ "div_and_mod_int", "mathfunc_8c.html#a6f2f44cc4adc726e905c9e94699a6422", null ],
     [ "div_and_modf", "mathfunc_8c.html#a5f937c05742ee53f3c02b0dd430bae67", null ],
+    [ "dot_product32", "mathfunc_8c.html#afafd183747c2c4740c9f239491353fc1", null ],
+    [ "dot_product64", "mathfunc_8c.html#a7e0f031ca55c29493f1e2498f94c9d2d", null ],
     [ "doublefactorial", "mathfunc_8c.html#a0283e5048bf25f16ca0de3a509bb975f", null ],
     [ "doublefactoriallonglong", "mathfunc_8c.html#a84d4e96e12e7a4ed31c25aaab8305b12", null ],
     [ "excot", "mathfunc_8c.html#ac258ffb4dcd2ea83588c8ea6593efb92", null ],

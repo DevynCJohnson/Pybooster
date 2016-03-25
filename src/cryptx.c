@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Cryptography Functions
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides many encryption, decryption, cipher, hash, and checksum functions

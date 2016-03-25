@@ -2,6 +2,7 @@ var searchData=
 [
   ['e',['E',['../MATH__MACROS_8h.html#a07484107e6d9fdf38b53edf631d6511d',1,'MATH_MACROS.h']]],
   ['ef',['Ef',['../MATH__MACROS_8h.html#a4e4457f472bd0b00f5e20c80eff99118',1,'Ef():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a4e4457f472bd0b00f5e20c80eff99118',1,'Ef():&#160;mathconstants.swg']]],
+  ['einsteinium_5fmolar_5fmass',['EINSTEINIUM_MOLAR_MASS',['../chemistry_8h.html#a20f477d0f83e9483f4ea706084bc0617',1,'chemistry.h']]],
   ['el',['El',['../MATH__MACROS_8h.html#a769671efc57d614b76bbf6203fd56bb7',1,'El():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a769671efc57d614b76bbf6203fd56bb7',1,'El():&#160;mathconstants.swg']]],
   ['electron_5fg_5ffactor',['ELECTRON_G_FACTOR',['../MATH__MACROS_8h.html#ace0370a4efb0069e272e7bf011e47dda',1,'ELECTRON_G_FACTOR():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#ace0370a4efb0069e272e7bf011e47dda',1,'ELECTRON_G_FACTOR():&#160;mathconstants.swg'],['../mathconstants_8swg.html#ace0370a4efb0069e272e7bf011e47dda',1,'ELECTRON_G_FACTOR():&#160;mathconstants.swg']]],
   ['electron_5fmass',['ELECTRON_MASS',['../MATH__MACROS_8h.html#a1f6f907234204d7207579a18fb0847a4',1,'ELECTRON_MASS():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a1f6f907234204d7207579a18fb0847a4',1,'ELECTRON_MASS():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a1f6f907234204d7207579a18fb0847a4',1,'ELECTRON_MASS():&#160;mathconstants.swg']]],
@@ -11,6 +12,7 @@ var searchData=
   ['empty_5fheap',['empty_heap',['../extra__datatypes_8h.html#a8bffc2a11cb2d24d1bdecc985710c712',1,'extra_datatypes.h']]],
   ['enqueue',['enqueue',['../extra__datatypes_8h.html#abcf6d8d47abcc806765b8cf08ff12e24',1,'extra_datatypes.h']]],
   ['env32bit',['ENV32BIT',['../MACROS_8h.html#a15c467037be028c4a4b4a0578db3fc3d',1,'MACROS.h']]],
+  ['erbium_5fmolar_5fmass',['ERBIUM_MOLAR_MASS',['../chemistry_8h.html#a1e6084b5126a3c94083213f02c967edd',1,'chemistry.h']]],
   ['erf_5fseries_5fcutoff',['ERF_SERIES_CUTOFF',['../MATH__MACROS_8h.html#a626221b3dcfe6b69765b0893a03347c0',1,'ERF_SERIES_CUTOFF():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a626221b3dcfe6b69765b0893a03347c0',1,'ERF_SERIES_CUTOFF():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a626221b3dcfe6b69765b0893a03347c0',1,'ERF_SERIES_CUTOFF():&#160;mathconstants.swg']]],
   ['erf_5fseries_5fterms',['ERF_SERIES_TERMS',['../MATH__MACROS_8h.html#a711015aa9e29dfc28f71311bf86992e8',1,'ERF_SERIES_TERMS():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a711015aa9e29dfc28f71311bf86992e8',1,'ERF_SERIES_TERMS():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a711015aa9e29dfc28f71311bf86992e8',1,'ERF_SERIES_TERMS():&#160;mathconstants.swg']]],
   ['erfc_5fcontfrac_5fcutoff',['ERFC_CONTFRAC_CUTOFF',['../MATH__MACROS_8h.html#a28d9fa3511ad97d877d6ff8ab079fca8',1,'ERFC_CONTFRAC_CUTOFF():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a28d9fa3511ad97d877d6ff8ab079fca8',1,'ERFC_CONTFRAC_CUTOFF():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a28d9fa3511ad97d877d6ff8ab079fca8',1,'ERFC_CONTFRAC_CUTOFF():&#160;mathconstants.swg']]],
@@ -32,6 +34,7 @@ var searchData=
   ['error_5ftrigger',['ERROR_TRIGGER',['../PY__MACROS_8h.html#ae9bae21a9dda48552a1b93f4a5f81975',1,'PY_MACROS.h']]],
   ['eulers_5fconstant',['EULERS_CONSTANT',['../MATH__MACROS_8h.html#a72e256809ac615c2333384f1ccaa3db0',1,'EULERS_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a72e256809ac615c2333384f1ccaa3db0',1,'EULERS_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a72e256809ac615c2333384f1ccaa3db0',1,'EULERS_CONSTANT():&#160;mathconstants.swg']]],
   ['eulers_5fconstantl',['EULERS_CONSTANTl',['../MATH__MACROS_8h.html#afccee15cc5e1108773faea5315c895cd',1,'EULERS_CONSTANTl():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#afccee15cc5e1108773faea5315c895cd',1,'EULERS_CONSTANTl():&#160;mathconstants.swg']]],
+  ['europium_5fmolar_5fmass',['EUROPIUM_MOLAR_MASS',['../chemistry_8h.html#ad58ade95663784db796783ce56d8ad10',1,'chemistry.h']]],
   ['exit_5fon_5ferror',['EXIT_ON_ERROR',['../MACROS_8h.html#afbb7083d2f4c33583a682e3bb7088393',1,'MACROS.h']]],
   ['exit_5fon_5ferror_5farg',['EXIT_ON_ERROR_ARG',['../MACROS_8h.html#a130eafb7599a8f85f4bb82462f23d9fb',1,'MACROS.h']]],
   ['expand_5fmacros',['EXPAND_MACROS',['../MACROS_8h.html#a21edef9bb8a72346ec67318a57103fbe',1,'MACROS.h']]],

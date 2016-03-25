@@ -15,6 +15,8 @@ var searchData=
   ['listoutdated',['listoutdated',['../namespacepybooster_1_1pipx.html#ac7ec56bb012dc48bf70ff21c2cd39af6',1,'pybooster::pipx']]],
   ['ln',['ln',['../mathfunc_8c.html#a739428b87f750e5cb6308ff646ece7c5',1,'ln(const double num):&#160;mathfunc.c'],['../mathfunc_8h.html#a76509d5c1d4e88c8ed8151aebc1436c0',1,'ln(const double num) __attribute__((const :&#160;mathfunc.h'],['../namespacepybooster_1_1xmath.html#ad26a4b2647df5c1e009b5e408a2a45b8',1,'pybooster.xmath.ln()']]],
   ['lnp1',['lnp1',['../mathfunc_8c.html#a690fcc064c339cd4a4c23d7f52d19057',1,'lnp1(const double num):&#160;mathfunc.c'],['../mathfunc_8h.html#a4d41b02ac345b03dca970e95e1e7ca44',1,'lnp1(const double num) __attribute__((const :&#160;mathfunc.h']]],
+  ['load',['load',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#af30aee3411ae270bfcf74cf669e18b21',1,'pybooster::neuralnet::NeuroCode']]],
+  ['loaddata',['loaddata',['../namespacepybooster_1_1basic.html#a52bcb503f5adfa486c32907ff6f8707b',1,'pybooster::basic']]],
   ['loadlib',['loadlib',['../namespacepybooster_1_1clibutil.html#a520ee3acf6349d40dc59f12b582840e2',1,'pybooster::clibutil']]],
   ['loadlibc',['loadlibc',['../namespacepybooster_1_1clibutil.html#a04d8cb25d9133b865426cca6e3eff844',1,'pybooster::clibutil']]],
   ['loadlibm',['loadlibm',['../namespacepybooster_1_1clibutil.html#a794d589daf2009a5bf63b1d14c5a83f5',1,'pybooster::clibutil']]],

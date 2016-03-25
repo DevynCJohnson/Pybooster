@@ -255,6 +255,8 @@ var mathfunc_8h =
     [ "div_and_mod", "mathfunc_8h.html#a4e81f9f715693b2221585b463aa5d57a", null ],
     [ "div_and_mod_int", "mathfunc_8h.html#ae23963b2c4b4b950f338142006cbbc70", null ],
     [ "div_and_modf", "mathfunc_8h.html#a6f7b69f828a7c174eb0d49f8a650f349", null ],
+    [ "dot_product32", "mathfunc_8h.html#a36e0c301957c10ce603eae19a1e4f111", null ],
+    [ "dot_product64", "mathfunc_8h.html#aba79441345e4fd918abfe44587fb7a54", null ],
     [ "doublefactorial", "mathfunc_8h.html#a335bb967aa67fbc3550f99fbc37886ca", null ],
     [ "doublefactoriallonglong", "mathfunc_8h.html#a3b0fea5595c3d0989ace6b15ffd87789", null ],
     [ "excot", "mathfunc_8h.html#aeb36d6b68aedd02aa94fffb7b08e9805", null ],
@@ -513,5 +515,6 @@ var mathfunc_8h =
     [ "versinhf", "mathfunc_8h.html#a9cae2a9aea44729bc937430f5b153c8e", null ],
     [ "versinhl", "mathfunc_8h.html#a25e1a2501181dcb0c4fe413aa9e7add0", null ],
     [ "versinl", "mathfunc_8h.html#ad1d1b4d094252a016368e857cfea3329", null ],
-    [ "flatten", "mathfunc_8h.html#acb1e64fdd666ac3a2f24a9a2763fc54b", null ]
+    [ "flatten", "mathfunc_8h.html#a74ca6c20f521223b3e1b4698d565a61c", null ],
+    [ "nonnull", "mathfunc_8h.html#a7299ec456f88c306eb62e58b33389311", null ]
 ];

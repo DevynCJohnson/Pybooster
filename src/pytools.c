@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions (from tools.c and x86_64_asm_func.c)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This is a Python3 module that uses functions from tools.c
@@ -185,12 +185,25 @@ static PyObject *tools_getarch(void);
 static PyObject *tools_getos(void);
 #endif
 static PyObject *tools_isandroid(void);
+static PyObject *tools_iscygwin(void);
+static PyObject *tools_isdragonfly(void);
+static PyObject *tools_isfreebsd(void);
+static PyObject *tools_isgnuhurd(void);
+static PyObject *tools_isminix(void);
+static PyObject *tools_isnetbsd(void);
+static PyObject *tools_isopenbsd(void);
+static PyObject *tools_isunix(void);
+static PyObject *tools_islittleendian(void);
+static PyObject *tools_isbigendian(void);
+static PyObject *tools_iscpp(void);
 static PyObject *tools_CSTD(void);
 #ifdef _POSIX_VERSION
 static PyObject *tools_POSIXSTD(void);
 #endif
 #ifdef OSPOSIX
 static PyObject *tools_getsyshostname(void);
+static PyObject *tools_getsysname(void);
+static PyObject *tools_machine(void);
 #endif
 
 
@@ -436,6 +449,28 @@ PyDoc_STRVAR(tools_getos_docstring,
 #endif
 PyDoc_STRVAR(tools_isandroid_docstring,
     "isandroid() -> bool\nTest if this system is Android");
+PyDoc_STRVAR(tools_iscygwin_docstring,
+    "iscygwin() -> bool\nTest if this system is Cygwin");
+PyDoc_STRVAR(tools_isdragonfly_docstring,
+    "isdragonfly() -> bool\nTest if this system is DragonFlyBSD");
+PyDoc_STRVAR(tools_isfreebsd_docstring,
+    "isfreebsd() -> bool\nTest if this system is FreeBSD");
+PyDoc_STRVAR(tools_isgnuhurd_docstring,
+    "isgnuhurd() -> bool\nTest if this system is GNU/Hurd");
+PyDoc_STRVAR(tools_isminix_docstring,
+    "isminix() -> bool\nTest if this system is Minix");
+PyDoc_STRVAR(tools_isnetbsd_docstring,
+    "isnetbsd() -> bool\nTest if this system is NetBSD");
+PyDoc_STRVAR(tools_isopenbsd_docstring,
+    "isopenbsd() -> bool\nTest if this system is OpenBSD");
+PyDoc_STRVAR(tools_isunix_docstring,
+    "isunix() -> bool\nTest if this system is Unix");
+PyDoc_STRVAR(tools_islittleendian_docstring,
+    "islittleendian() -> bool\nTest if this system is Little-Endian");
+PyDoc_STRVAR(tools_isbigendian_docstring,
+    "isbigendian() -> bool\nTest if this system is Big-Endian");
+PyDoc_STRVAR(tools_iscpp_docstring,
+    "iscpp() -> bool\nTest if this library was compiled with a C++ compiler");
 PyDoc_STRVAR(tools_CSTD_docstring,
     "CSTD() -> int\nReturn the value of the current C Standard");
 #ifdef _POSIX_VERSION
@@ -445,13 +480,17 @@ PyDoc_STRVAR(tools_POSIXSTD_docstring,
 #ifdef OSPOSIX
 PyDoc_STRVAR(tools_getsyshostname_docstring,
     "getsyshostname() -> str\nReturn the system's hostname");
+PyDoc_STRVAR(tools_getsysname_docstring,
+    "getsysname() -> str\nReturn the name of the operating system implementation");
+PyDoc_STRVAR(tools_machine_docstring,
+    "machine() -> str\nReturn the system's hardware type");
 #endif
 
 
 /* MODULE SPECIFICATION */
 
 
-static PyMethodDef module_methods[128] = {  // Method Table
+static PyMethodDef module_methods[256] = {  // Method Table
     {"lowercasestr", (PyCFunction)tools_lowercasestr, METH_VARARGS, tools_lowercasestr_docstring},
     {"lowercasestr15", (PyCFunction)tools_lowercasestr15, METH_VARARGS, tools_lowercasestr15_docstring},
     {"uppercasestr", (PyCFunction)tools_uppercasestr, METH_VARARGS, tools_uppercasestr_docstring},
@@ -574,12 +613,25 @@ static PyMethodDef module_methods[128] = {  // Method Table
     {"getos", (PyCFunction)tools_getos, METH_NOARGS, tools_getos_docstring},
 #endif
     {"isandroid", (PyCFunction)tools_isandroid, METH_NOARGS, tools_isandroid_docstring},
+    {"iscygwin", (PyCFunction)tools_iscygwin, METH_NOARGS, tools_iscygwin_docstring},
+    {"isdragonfly", (PyCFunction)tools_isdragonfly, METH_NOARGS, tools_isdragonfly_docstring},
+    {"isfreebsd", (PyCFunction)tools_isfreebsd, METH_NOARGS, tools_isfreebsd_docstring},
+    {"isgnuhurd", (PyCFunction)tools_isgnuhurd, METH_NOARGS, tools_isgnuhurd_docstring},
+    {"isminix", (PyCFunction)tools_isminix, METH_NOARGS, tools_isminix_docstring},
+    {"isnetbsd", (PyCFunction)tools_isnetbsd, METH_NOARGS, tools_isnetbsd_docstring},
+    {"isopenbsd", (PyCFunction)tools_isopenbsd, METH_NOARGS, tools_isopenbsd_docstring},
+    {"isunix", (PyCFunction)tools_isunix, METH_NOARGS, tools_isunix_docstring},
+    {"islittleendian", (PyCFunction)tools_islittleendian, METH_NOARGS, tools_islittleendian_docstring},
+    {"isbigendian", (PyCFunction)tools_isbigendian, METH_NOARGS, tools_isbigendian_docstring},
+    {"iscpp", (PyCFunction)tools_iscpp, METH_NOARGS, tools_iscpp_docstring},
     {"CSTD", (PyCFunction)tools_CSTD, METH_NOARGS, tools_CSTD_docstring},
 #ifdef _POSIX_VERSION
     {"POSIXSTD", (PyCFunction)tools_POSIXSTD, METH_NOARGS, tools_POSIXSTD_docstring},
 #endif
 #ifdef OSPOSIX
     {"getsyshostname", (PyCFunction)tools_getsyshostname, METH_NOARGS, tools_getsyshostname_docstring},
+    {"getsysname", (PyCFunction)tools_getsysname, METH_NOARGS, tools_getsysname_docstring},
+    {"machine", (PyCFunction)tools_machine, METH_NOARGS, tools_machine_docstring},
 #endif
     {NULL, NULL, 0, NULL}
 };
@@ -607,6 +659,18 @@ MODINIT {  // Initialize module
 #   ifndef NOVERSION
     PyModule_AddStringConstant(m, "__version__", __version__);
 #   endif
+#   ifdef ENDIAN_LITTLE
+    PyModule_AddStringConstant(m, "BYTEORDER", "little");
+#   elif defined(ENDIAN_BIG)
+    PyModule_AddStringConstant(m, "BYTEORDER", "big");
+#   elif defined(ENDIAN_PDP)
+    PyModule_AddStringConstant(m, "BYTEORDER", "pdp");
+#   endif
+#   ifdef _POSIX_VERSION
+    PyModule_AddObject(m, "POSIX_STANDARD", long2int(((long)(_POSIX_VERSION))));
+    PyModule_AddObject(m, "POSIX_VERSION", long2int(((long)(_POSIX_VERSION))));
+#   endif
+    PyModule_AddStringConstant(m, "STDLIB", STDLIB);
     if (m == (PyObject *)NULL) return NULL;
     return m;
 }
@@ -1673,6 +1737,105 @@ static PyObject *tools_isandroid(void) {
 }
 
 
+static PyObject *tools_iscygwin(void) {
+#if (defined(__CYGWIN__) || defined(__CYGWIN32__))
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isdragonfly(void) {
+#ifdef __DragonFly__
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isfreebsd(void) {
+#ifdef __FreeBSD__
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isgnuhurd(void) {
+#ifdef __gnu_hurd__
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isminix(void) {
+#ifdef __minix
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isnetbsd(void) {
+#ifdef __NetBSD__
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isopenbsd(void) {
+#ifdef __OpenBSD__
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isunix(void) {
+#if (defined(__unix__) || defined(__unix) || defined(unix))
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_islittleendian(void) {
+#ifdef ENDIAN_LITTLE
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_isbigendian(void) {
+#ifdef ENDIAN_BIG
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
+static PyObject *tools_iscpp(void) {
+#ifdef __cplusplus
+    Py_RETURN_TRUE;
+#else
+    Py_RETURN_FALSE;
+#endif
+}
+
+
 static PyObject *tools_CSTD(void) {
     return long2int(((long)__STDC_VERSION__));
 }
@@ -1686,6 +1849,8 @@ static PyObject *tools_POSIXSTD(void) {
 
 
 #ifdef OSPOSIX
+
+
 static PyObject *tools_getsyshostname(void) {
     static char hostname[32] = { 0 };
     if (gethostname(hostname, sizeof(hostname)) != 0x0) {
@@ -1694,4 +1859,18 @@ static PyObject *tools_getsyshostname(void) {
     }
     return STR((hostname));
 }
+
+
+static PyObject *tools_getsysname(void) {
+    uname(&uname_data);
+    return STR(uname_data.sysname);
+}
+
+
+static PyObject *tools_machine(void) {
+    uname(&uname_data);
+    return STR(uname_data.machine);
+}
+
+
 #endif

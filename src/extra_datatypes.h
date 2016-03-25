@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Additional datatypes, such as FILO-Stack, Queue (FIFO Stack), etc. (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 Additional datatypes such as -

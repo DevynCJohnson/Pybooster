@@ -28,6 +28,7 @@
         <topic label="geo_services" href="namespacepybooster_1_1geo__services.html"/>
         <topic label="metric" href="namespacepybooster_1_1metric.html"/>
         <topic label="net" href="namespacepybooster_1_1net.html"/>
+        <topic label="neuralnet" href="namespacepybooster_1_1neuralnet.html"/>
         <topic label="pipx" href="namespacepybooster_1_1pipx.html"/>
         <topic label="pronouns" href="namespacepybooster_1_1pronouns.html"/>
         <topic label="religion" href="namespacepybooster_1_1religion.html"/>
@@ -70,7 +71,8 @@
         <topic label="z" href="namespacemembers_z.html"/>
       </topic>
       <topic label="Functions" href="namespacemembers_func.html">
-        <topic label="a" href="namespacemembers_func.html"/>
+        <topic label="_" href="namespacemembers_func.html"/>
+        <topic label="a" href="namespacemembers_func_a.html"/>
         <topic label="b" href="namespacemembers_func_b.html"/>
         <topic label="c" href="namespacemembers_func_c.html"/>
         <topic label="d" href="namespacemembers_func_d.html"/>
@@ -146,6 +148,37 @@
           </topic>
         </topic>
         <topic label="ezwin" href="namespacepybooster_1_1ezwin.html">
+        </topic>
+        <topic label="neuralnet" href="namespacepybooster_1_1neuralnet.html">
+          <topic label="NeuroCode" href="classpybooster_1_1neuralnet_1_1NeuroCode.html">
+            <topic label="__init__" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#ac775ee34451fdfa742b318538164070e"/>
+            <topic label="_calculate_deltas" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a8acf130d5fb162a9e1022454ec759f63"/>
+            <topic label="bestof" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#adb378075b436cb0309ec376610760bcf"/>
+            <topic label="dump" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a211577cb0af0419c446860c0bdaec590"/>
+            <topic label="load" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af30aee3411ae270bfcf74cf669e18b21"/>
+            <topic label="neurocode2cfile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#abc583e901c4e329774434fae03fdd23a"/>
+            <topic label="neurocode2javafile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a99ee86bcea899e304a5370650fa545e2"/>
+            <topic label="neurocode2pythonfile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a163704f43c4d0d5855cef82caff3cb3b"/>
+            <topic label="run" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a9546b6ba2b7d947c66d963d0e31c0a33"/>
+            <topic label="to_c_function" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acf23792f8ab9aff67f9838e3607637c0"/>
+            <topic label="to_function" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a4839c759d0fcfb4c7a63a58a032a2d9f"/>
+            <topic label="to_java_method" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a9e67ee6e213ecc72c81ff94c11a0cfb4"/>
+            <topic label="train" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a5526a060cb6d89ff71bbfa787328108a"/>
+            <topic label="writedump" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acbcb92566d7e413144e63d45170349a8"/>
+            <topic label="biases" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#ab2e44a5f78f34ce5abdce30766f8b49e"/>
+            <topic label="changes" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a37e9e3eefa8abd98a0f9c1197b022411"/>
+            <topic label="deltas" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af4a9c2ca37eca48ee6e5b130f844ffa1"/>
+            <topic label="errors" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acc42076253600be964e110149b458971"/>
+            <topic label="hidden_layers" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a1b6209e10bf99b7edb28cfb1014ccbcc"/>
+            <topic label="io_rules" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a030ac12baf25896f1afad7d9eafbe2dc"/>
+            <topic label="io_rules_len" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#aac8e4d14c71986c89fba7aa0f4c8e032"/>
+            <topic label="iterations" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a24e9ab44f60fd1a6e45405d690dfe989"/>
+            <topic label="outputlayer" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a63a91cc2b46b4d5bfc7fde8dc08dcf5f"/>
+            <topic label="outputs" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af8d743b78404b120589eca8c77c1c2a9"/>
+            <topic label="rate" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a1d580470818c2fa51a0bf3a86bc595bf"/>
+            <topic label="sizes" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a59954f9ddc7bd5849baf28f0b04501b3"/>
+            <topic label="weights" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a025e7807c1d898d829ddfc91a937fc78"/>
+          </topic>
         </topic>
       </topic>
       <topic label="aminoacid" href="chemistry__types_8h.html#structaminoacid">
@@ -592,6 +625,7 @@
       <topic label="NameError" href="classNameError.html">
         <topic label="ObjectError" href="classpybooster_1_1basic_1_1ObjectError.html"/>
       </topic>
+      <topic label="NeuroCode" href="classpybooster_1_1neuralnet_1_1NeuroCode.html"/>
       <topic label="nucleobase" href="chemistry__types_8h.html#structnucleobase"/>
       <topic label="point" href="math__types_8h.html#structpoint"/>
       <topic label="point__float128" href="math__types_8h.html#structpoint____float128"/>
@@ -655,12 +689,15 @@
       <topic label="asin"/>
       <topic label="atan"/>
       <topic label="b2a_qp"/>
+      <topic label="b64decode"/>
+      <topic label="b64encode"/>
       <topic label="byteorder"/>
       <topic label="bz2"/>
-      <topic label="cdll"/>
       <topic label="CDLL"/>
+      <topic label="cdll"/>
       <topic label="char"/>
       <topic label="choice"/>
+      <topic label="compress"/>
       <topic label="cos"/>
       <topic label="currentframe"/>
       <topic label="cycle"/>
@@ -704,16 +741,19 @@
       <topic label="loads"/>
       <topic label="log"/>
       <topic label="lzma"/>
+      <topic label="math"/>
       <topic label="modules"/>
       <topic label="ModuleType"/>
       <topic label="os"/>
       <topic label="pack"/>
       <topic label="parse"/>
       <topic label="path"/>
+      <topic label="pickle"/>
       <topic label="pip"/>
       <topic label="PIPE"/>
       <topic label="platform"/>
       <topic label="Popen"/>
+      <topic label="random"/>
       <topic label="re"/>
       <topic label="reader"/>
       <topic label="regex"/>
@@ -750,6 +790,7 @@
       <topic label="urlopen"/>
       <topic label="util"/>
       <topic label="X_OK"/>
+      <topic label="zlib"/>
     </topic>
     <topic label="Data Fields" href="functions.html">
       <topic label="All" href="functions.html">
@@ -853,6 +894,7 @@
         <topic label="char2bitlen" href="basic_8py.html#af3a8195ce73e45ea9fc612aa8a3eb79d"/>
         <topic label="clearscr" href="basic_8py.html#ad3176421ee1b943cf114937f7130fa07"/>
         <topic label="csv2json" href="basic_8py.html#a102cbd57e0d81566404818d77e0ccc06"/>
+        <topic label="datadump" href="basic_8py.html#a376577122b762c219d51345d9ccb39e9"/>
         <topic label="doeskeymvalue" href="basic_8py.html#a55dbc431c1bf8dc4a07e5245160dfb7b"/>
         <topic label="eny" href="basic_8py.html#a551526c443be28922099e2dda40969d2"/>
         <topic label="evaliter" href="basic_8py.html#af044ebc72de1d3d39ac95db05afd5982"/>
@@ -882,6 +924,7 @@
         <topic label="isoct" href="basic_8py.html#a5baf034f957c8e0291b258fe4287d00b"/>
         <topic label="isvalidcode" href="basic_8py.html#a11b4adb2598b337f273deaa2e677b92a"/>
         <topic label="listkeys" href="basic_8py.html#a21a2169feed3539fe1d265d47f2d3730"/>
+        <topic label="loaddata" href="basic_8py.html#a52bcb503f5adfa486c32907ff6f8707b"/>
         <topic label="lsmods" href="basic_8py.html#acb6f4cf1512d01d9b057f5baf84f0150"/>
         <topic label="mergestrdict" href="basic_8py.html#a88478d0c5757377d3b66b42791ed8b3f"/>
         <topic label="modexist" href="basic_8py.html#a492dca165ef5554a93bf428783493d57"/>
@@ -921,6 +964,127 @@
         <topic label="flatten" href="chemistry_8c.html#a29f622f04cea94131e6bf4b6ad0da48b"/>
       </topic>
       <topic label="chemistry.h" href="chemistry_8h.html">
+        <topic label="ACTINIUM_MOLAR_MASS" href="chemistry_8h.html#ad4f1f3f1c03e88fa5fe0a023dc71cb89"/>
+        <topic label="ALUMINIUM_MOLAR_MASS" href="chemistry_8h.html#a98ae8c31495c4dfb0623f3448052f5a0"/>
+        <topic label="AMERICIUM_MOLAR_MASS" href="chemistry_8h.html#a2553b41726972c30ef9934a6c3a2e8f4"/>
+        <topic label="ANTIMONY_MOLAR_MASS" href="chemistry_8h.html#a55e1fe75a9e6efc44c635ae57683518c"/>
+        <topic label="ARGON_MOLAR_MASS" href="chemistry_8h.html#a42c3876b4530b4b5b1907ee87906d33c"/>
+        <topic label="ARSENIC_MOLAR_MASS" href="chemistry_8h.html#ac23ef9e2566c23187b2104103e46c98c"/>
+        <topic label="ASTATINE_MOLAR_MASS" href="chemistry_8h.html#a8676d23f008213b1e1c40e535e99866c"/>
+        <topic label="BARIUM_MOLAR_MASS" href="chemistry_8h.html#a94acfc16de6be6172912e4548b8ab42b"/>
+        <topic label="BERKELIUM_MOLAR_MASS" href="chemistry_8h.html#a246caa9a9d03ad139b8836f1ae37aa18"/>
+        <topic label="BERYLLIUM_MOLAR_MASS" href="chemistry_8h.html#a94d498432b7bd5cd2c037493a93f9dc7"/>
+        <topic label="BISMUTH_MOLAR_MASS" href="chemistry_8h.html#a91e583d103d5b9f33ae7ed6a0fe6f226"/>
+        <topic label="BOHRIUM_MOLAR_MASS" href="chemistry_8h.html#a1e4d74003400c9b8c8caa90be6e53a8b"/>
+        <topic label="BORON_MOLAR_MASS" href="chemistry_8h.html#a457a3241b42bf7172aab9447a3bab4f1"/>
+        <topic label="BROMINE_MOLAR_MASS" href="chemistry_8h.html#af7e136f59e97eaa20e204f0325716a35"/>
+        <topic label="CADMIUM_MOLAR_MASS" href="chemistry_8h.html#a7d2cad45c74955cdb485c0804d9438ef"/>
+        <topic label="CALCIUM_MOLAR_MASS" href="chemistry_8h.html#a14d70f09f76fa8279d198ec8fd247edc"/>
+        <topic label="CALIFORNIUM_MOLAR_MASS" href="chemistry_8h.html#a53676f2fb9f3a39c3b1d9b39667ef089"/>
+        <topic label="CARBON_MOLAR_MASS" href="chemistry_8h.html#a204e46f88f4ca1ab08401b47448fc8ee"/>
+        <topic label="CERIUM_MOLAR_MASS" href="chemistry_8h.html#a9f0504af3ee99451c0628838aabf54f5"/>
+        <topic label="CESIUM_MOLAR_MASS" href="chemistry_8h.html#afb932e0705427c92a06c57a9c5910746"/>
+        <topic label="CHLORINE_MOLAR_MASS" href="chemistry_8h.html#a58acfbddff27e7b28261dbe5f89869c6"/>
+        <topic label="CHROMIUM_MOLAR_MASS" href="chemistry_8h.html#ae9ee4fd12846c35383de6d9eeb4c6aba"/>
+        <topic label="COBALT_MOLAR_MASS" href="chemistry_8h.html#a8c504f7d92a9dd9b8f16c8b146e23f1c"/>
+        <topic label="COPERNICIUM_MOLAR_MASS" href="chemistry_8h.html#a0c1bbb0b5f77d7491bc6fb5c635fc2ce"/>
+        <topic label="COPPER_MOLAR_MASS" href="chemistry_8h.html#a3d53ac848af81331fce039561b185744"/>
+        <topic label="CURIUM_MOLAR_MASS" href="chemistry_8h.html#adf94dd3f9e4d884e062286e7e97f5ec1"/>
+        <topic label="DARMSTADTIUM_MOLAR_MASS" href="chemistry_8h.html#afe44a3a5c700b9b7a04b386b6e108777"/>
+        <topic label="DUBNIUM_MOLAR_MASS" href="chemistry_8h.html#a94f2720efc6b844ed04caaa42f773855"/>
+        <topic label="DYSPROSIUM_MOLAR_MASS" href="chemistry_8h.html#ad39deb80a334f6ace37421b612206660"/>
+        <topic label="EINSTEINIUM_MOLAR_MASS" href="chemistry_8h.html#a20f477d0f83e9483f4ea706084bc0617"/>
+        <topic label="ERBIUM_MOLAR_MASS" href="chemistry_8h.html#a1e6084b5126a3c94083213f02c967edd"/>
+        <topic label="EUROPIUM_MOLAR_MASS" href="chemistry_8h.html#ad58ade95663784db796783ce56d8ad10"/>
+        <topic label="FERMIUM_MOLAR_MASS" href="chemistry_8h.html#a8778cda8d732460ebe870b11f10c8dcc"/>
+        <topic label="FLEROVIUM_MOLAR_MASS" href="chemistry_8h.html#a2b670d9118edd35ac18d7dc2fe1f770e"/>
+        <topic label="FLUORINE_MOLAR_MASS" href="chemistry_8h.html#ac737c84061029e45dc6b37e9247bf451"/>
+        <topic label="FRANCIUM_MOLAR_MASS" href="chemistry_8h.html#a8f317304115598ed25ffb56a809ab7aa"/>
+        <topic label="GADOLINIUM_MOLAR_MASS" href="chemistry_8h.html#a95769f3e5e6cf089c595b552167b6aa2"/>
+        <topic label="GALLIUM_MOLAR_MASS" href="chemistry_8h.html#a3e32d49d44ae935492c67ff6acb78202"/>
+        <topic label="GERMANIUM_MOLAR_MASS" href="chemistry_8h.html#a171435f3e925f81c86aaeabfe8adc0e7"/>
+        <topic label="GOLD_MOLAR_MASS" href="chemistry_8h.html#a3eb9bf2dc32accfb8485396c01d6c62d"/>
+        <topic label="HAFNIUM_MOLAR_MASS" href="chemistry_8h.html#a6044ebc29a64c9a3bc315cc2e6a55545"/>
+        <topic label="HASSIUM_MOLAR_MASS" href="chemistry_8h.html#aa375958930a5578d5b7593a3af4f0aea"/>
+        <topic label="HELIUM_MOLAR_MASS" href="chemistry_8h.html#ad9f9ff31833aa676cd44a2a2489dac2a"/>
+        <topic label="HOLMIUM_MOLAR_MASS" href="chemistry_8h.html#a04ed6318e0ca8c13b1161bf78a9cb375"/>
+        <topic label="HYDROGEN_MOLAR_MASS" href="chemistry_8h.html#ae086f58846d43f2f3fbb13d408bcc4f3"/>
+        <topic label="INDIUM_MOLAR_MASS" href="chemistry_8h.html#a89cd5b6f9512f279ddc419ce47cfbf17"/>
+        <topic label="IODINE_MOLAR_MASS" href="chemistry_8h.html#a5726b10c1da786e9ec00f9a2f072547b"/>
+        <topic label="IRIDIUM_MOLAR_MASS" href="chemistry_8h.html#a20f34298f7b0fc6a11ca697b638b2bb0"/>
+        <topic label="IRON_MOLAR_MASS" href="chemistry_8h.html#a36ae2803a415637087c5a3981572bcd9"/>
+        <topic label="KRYPTON_MOLAR_MASS" href="chemistry_8h.html#ad4345152bcf2ab1896ee7d42c92ed6e8"/>
+        <topic label="LANTHANUM_MOLAR_MASS" href="chemistry_8h.html#ab23a1793471a33a5f8902933e7d148ba"/>
+        <topic label="LAWRENCIUM_MOLAR_MASS" href="chemistry_8h.html#ab9126fe230302ba42177e88376ea439e"/>
+        <topic label="LEAD_MOLAR_MASS" href="chemistry_8h.html#a4558e3bf761e096dd31697ebd25265d6"/>
+        <topic label="LITHIUM_MOLAR_MASS" href="chemistry_8h.html#a3a5bff25a645e85585cc17f4e69e7f69"/>
+        <topic label="LIVERMORIUM_MOLAR_MASS" href="chemistry_8h.html#a94850c73c7cf48514e1c86ab04d1f33d"/>
+        <topic label="LUTETIUM_MOLAR_MASS" href="chemistry_8h.html#a3868e6ec6fab3782ebe5ffebe8447b24"/>
+        <topic label="MAGNESIUM_MOLAR_MASS" href="chemistry_8h.html#aa76bfd756964c9ce7a57080f3b0ae604"/>
+        <topic label="MANGANESE_MOLAR_MASS" href="chemistry_8h.html#a8bbaef50c87ee8d5d1dcae0948638e71"/>
+        <topic label="MEITNERIUM_MOLAR_MASS" href="chemistry_8h.html#a69a5a5d66e6a017a86620cbdf940fc16"/>
+        <topic label="MENDELEVIUM_MOLAR_MASS" href="chemistry_8h.html#a49105ad2776384250a00d264c150cb2a"/>
+        <topic label="MERCURY_MOLAR_MASS" href="chemistry_8h.html#a0fb5a54e9e6bcd58550af84790a0b1ab"/>
+        <topic label="MOLYBDENUM_MOLAR_MASS" href="chemistry_8h.html#aa3bdda73d0786db367e1c4272804af53"/>
+        <topic label="NEODYMIUM_MOLAR_MASS" href="chemistry_8h.html#ac670772f22ac0234a546866b96d25d27"/>
+        <topic label="NEON_MOLAR_MASS" href="chemistry_8h.html#ab2743e8b35ad89d8ba86e8e9d0ec45b9"/>
+        <topic label="NEPTUNIUM_MOLAR_MASS" href="chemistry_8h.html#ad7ddd0fae7a2a429f6a0ff3aa301dfa9"/>
+        <topic label="NICKEL_MOLAR_MASS" href="chemistry_8h.html#a61442780546505b7f0e334a8ed6ad57c"/>
+        <topic label="NIOBIUM_MOLAR_MASS" href="chemistry_8h.html#a32be2507f9d322026f889e787c13d364"/>
+        <topic label="NITROGEN_MOLAR_MASS" href="chemistry_8h.html#a212500a85bd4767d1a16769c2b0e04ff"/>
+        <topic label="NOBELIUM_MOLAR_MASS" href="chemistry_8h.html#a75452e409785776511c12888f7af6bc8"/>
+        <topic label="OSMIUM_MOLAR_MASS" href="chemistry_8h.html#a8a1ee506ee4b0d8f5e53f1a96966215b"/>
+        <topic label="OXYGEN_MOLAR_MASS" href="chemistry_8h.html#a00a46bd6f160d972061e8c36c98dd407"/>
+        <topic label="PALLADIUM_MOLAR_MASS" href="chemistry_8h.html#a32d6c50ffab9cd2187a3aa3be2247327"/>
+        <topic label="PHOSPHORUS_MOLAR_MASS" href="chemistry_8h.html#ac00d7720715d3e729aaa34f089552a3b"/>
+        <topic label="PLATINUM_MOLAR_MASS" href="chemistry_8h.html#a13e834ed2b9ac773f9427482d695fcf1"/>
+        <topic label="PLUTONIUM_MOLAR_MASS" href="chemistry_8h.html#a0739faea73355a1acf8eb52e72595169"/>
+        <topic label="POLONIUM_MOLAR_MASS" href="chemistry_8h.html#ab71d08f2107956884d83d7cf58c40583"/>
+        <topic label="POTASSIUM_MOLAR_MASS" href="chemistry_8h.html#a67146af8192972c1fd8af182b59ef353"/>
+        <topic label="PRASEODYMIUM_MOLAR_MASS" href="chemistry_8h.html#a9f12d2b02568d4fdabbb7d5d7cc87775"/>
+        <topic label="PROMETHIUM_MOLAR_MASS" href="chemistry_8h.html#a0eeb7cacc7d5612e6d1e05244e4864f5"/>
+        <topic label="PROTACTINIUM_MOLAR_MASS" href="chemistry_8h.html#a79a5604e432d84ca96e87b9fb1b99d5a"/>
+        <topic label="RADIUM_MOLAR_MASS" href="chemistry_8h.html#a43bfa6c422bffb844852ba2f61093499"/>
+        <topic label="RADON_MOLAR_MASS" href="chemistry_8h.html#ae9d1fb6e45d75b31620cf4569be6507d"/>
+        <topic label="RHENIUM_MOLAR_MASS" href="chemistry_8h.html#ac6a4161d2e35548f704c3d66cc18460a"/>
+        <topic label="RHODIUM_MOLAR_MASS" href="chemistry_8h.html#ada7862635cd78d4ead5104ec4df95e27"/>
+        <topic label="ROENTGENIUM_MOLAR_MASS" href="chemistry_8h.html#a72646558e7c6b495e17d882a6118fe09"/>
+        <topic label="RUBIDIUM_MOLAR_MASS" href="chemistry_8h.html#a18564260038db220ecacc510be2ab8ba"/>
+        <topic label="RUTHENIUM_MOLAR_MASS" href="chemistry_8h.html#aca1c6aea3bc5cb9d5b0e1b6d9c129dae"/>
+        <topic label="RUTHERFORDIUM_MOLAR_MASS" href="chemistry_8h.html#a8ef1c03015a306d31aa39d308cd85845"/>
+        <topic label="SAMARIUM_MOLAR_MASS" href="chemistry_8h.html#af32d2c4ff8b8a2e2cbcf76b8771fda28"/>
+        <topic label="SCANDIUM_MOLAR_MASS" href="chemistry_8h.html#acbb9f8081695d31c8d4945dc31354e2f"/>
+        <topic label="SEABORGIUM_MOLAR_MASS" href="chemistry_8h.html#ac4122bc4b313e45a44df45d69e9066be"/>
+        <topic label="SELENIUM_MOLAR_MASS" href="chemistry_8h.html#a13041097fda5a10801cda837a1366f8e"/>
+        <topic label="SILICON_MOLAR_MASS" href="chemistry_8h.html#a9e346ea8f4e090c06f3dffa9d11f63a8"/>
+        <topic label="SILVER_MOLAR_MASS" href="chemistry_8h.html#afdb7b580f85e0c2106711607791e1172"/>
+        <topic label="SODIUM_MOLAR_MASS" href="chemistry_8h.html#a21aaebc84b552ee16bc7fb4989f95550"/>
+        <topic label="STRONTIUM_MOLAR_MASS" href="chemistry_8h.html#afe8bf96631abd4945d5a6bd84fc169c0"/>
+        <topic label="SULFUR_MOLAR_MASS" href="chemistry_8h.html#a86e6e0e55015103c1261d90d76e19ee5"/>
+        <topic label="TANTALUM_MOLAR_MASS" href="chemistry_8h.html#ae501d82e019fae3703da897818aeb4c4"/>
+        <topic label="TECHNETIUM_MOLAR_MASS" href="chemistry_8h.html#a0e4115baa9fbaf9e99b2d195842a0aca"/>
+        <topic label="TELLURIUM_MOLAR_MASS" href="chemistry_8h.html#a8d0805deb9bc34ca0bc481efc369e9ae"/>
+        <topic label="TERBIUM_MOLAR_MASS" href="chemistry_8h.html#a1289dbe88af2245beefcb30e619c81ea"/>
+        <topic label="THALLIUM_MOLAR_MASS" href="chemistry_8h.html#a15ea8176e3e39ef5adf8d3c4de5d6f0c"/>
+        <topic label="THORIUM_MOLAR_MASS" href="chemistry_8h.html#a52272a37f61c094da4ddca17d855183d"/>
+        <topic label="THULIUM_MOLAR_MASS" href="chemistry_8h.html#a1330182da02467428ac67203e757c985"/>
+        <topic label="TIN_MOLAR_MASS" href="chemistry_8h.html#a4184b1e9162c428f3ef950f23f705ec3"/>
+        <topic label="TITANIUM_MOLAR_MASS" href="chemistry_8h.html#ad52cb71395c9d63a4aaa1f8b8671bb85"/>
+        <topic label="TUNGSTEN_MOLAR_MASS" href="chemistry_8h.html#af3f643fc060bbfc07291865ee6553ff4"/>
+        <topic label="UNBINILIUM_MOLAR_MASS" href="chemistry_8h.html#a76bbd5ce79e70d47bb99ff1dc0ef38f9"/>
+        <topic label="UNBIUNIUM_MOLAR_MASS" href="chemistry_8h.html#a7ab36198065005e5c2dd54a8d81aa924"/>
+        <topic label="UNUNENNIUM_MOLAR_MASS" href="chemistry_8h.html#ad635f10b88e32f5d62159a0bf6d335d9"/>
+        <topic label="UNUNOCTIUM_MOLAR_MASS" href="chemistry_8h.html#aaae8b1106ad9330743123577fb3e3353"/>
+        <topic label="UNUNPENTIUM_MOLAR_MASS" href="chemistry_8h.html#a3e9be87f7ff6f11c2e6bfdde1da245d0"/>
+        <topic label="UNUNSEPTIUM_MOLAR_MASS" href="chemistry_8h.html#a1ea80013464f1527781148c169474578"/>
+        <topic label="UNUNTRIUM_MOLAR_MASS" href="chemistry_8h.html#acf7da64313123ecb6a9b8d31dba4421e"/>
+        <topic label="URANIUM_MOLAR_MASS" href="chemistry_8h.html#af29ecf8b0ebab0ec0397c54254640150"/>
+        <topic label="VANADIUM_MOLAR_MASS" href="chemistry_8h.html#a43fe66e0c6cc75783553bfaa01cbb322"/>
+        <topic label="XENON_MOLAR_MASS" href="chemistry_8h.html#aca3bfb58e030ece7ebf0be4386048d67"/>
+        <topic label="YTTERBIUM_MOLAR_MASS" href="chemistry_8h.html#a3d3fb133838e509b55e36dbe9e84370c"/>
+        <topic label="YTTRIUM_MOLAR_MASS" href="chemistry_8h.html#a4157840f79cf8b809865ba2204866609"/>
+        <topic label="ZINC_MOLAR_MASS" href="chemistry_8h.html#a6872af930eb5378680c21d27b17642ea"/>
+        <topic label="ZIRCONIUM_MOLAR_MASS" href="chemistry_8h.html#a4cafbdbe61b0ce816c6bf79fbcc20354"/>
         <topic label="iselement" href="chemistry_8h.html#a67ef7348febc6bc9f9144588fc18b348"/>
         <topic label="pka" href="chemistry_8h.html#a1525a390e8492cff07f8296437137c82"/>
         <topic label="pkb" href="chemistry_8h.html#a04968489975dffd601ce739f8c3fd941"/>
@@ -2340,6 +2504,24 @@
         <topic label="return_uri" href="ezwin_8py.html#aefbf5b59f9e729862969d3722c2de6bc"/>
         <topic label="save" href="ezwin_8py.html#afe343e9c5415974b74f2804f52eaaaab"/>
         <topic label="viewhidden" href="ezwin_8py.html#ab4f085b7bfa011bf84e46241e2c61696"/>
+      </topic>
+      <topic label="FILE_SIGNATURE_MACROS.h" href="FILE__SIGNATURE__MACROS_8h.html">
+        <topic label="__7Z" href="FILE__SIGNATURE__MACROS_8h.html#a9853a6e7960c13f95bdc183ae42130dc"/>
+        <topic label="__BMP" href="FILE__SIGNATURE__MACROS_8h.html#a65f6b99faff8431f0fcaf3848a0e46e1"/>
+        <topic label="__DALVIK_EXECUTABLE" href="FILE__SIGNATURE__MACROS_8h.html#aad47073a2da3db6c55805729d254aeb2"/>
+        <topic label="__DMG" href="FILE__SIGNATURE__MACROS_8h.html#ad67c12db48a3f4a7b2bec5592eff0d86"/>
+        <topic label="__FREE_LOSSLESS_AUDIO_CODEC" href="FILE__SIGNATURE__MACROS_8h.html#a68759896e1e6454e1856217363150d0c"/>
+        <topic label="__FREE_LOSSLESS_IMAGE_FORMAT" href="FILE__SIGNATURE__MACROS_8h.html#af72326c6b3a62d8ef720c109489f85aa"/>
+        <topic label="__GZIP" href="FILE__SIGNATURE__MACROS_8h.html#a89804b760d2690cd5363e165db5cdb93"/>
+        <topic label="__MATROSKA_MEDIA_CONTAINER" href="FILE__SIGNATURE__MACROS_8h.html#a02478c20a2ec5d5b2d5971413ea18f20"/>
+        <topic label="__MICROSOFT_CABINET_FILE" href="FILE__SIGNATURE__MACROS_8h.html#a9c59f85f7f9a52d4fc826571119363a6"/>
+        <topic label="__MICROSOFT_OFFICE_DOCUMENTS" href="FILE__SIGNATURE__MACROS_8h.html#a0d51c6a181a873156879da96117fc6a7"/>
+        <topic label="__NES_ROM" href="FILE__SIGNATURE__MACROS_8h.html#afdcc7879b0dee4992ec4938dde2d3e12"/>
+        <topic label="__OGG" href="FILE__SIGNATURE__MACROS_8h.html#a99ecbcc41c8a8c3ae537d93a1c6e20c4"/>
+        <topic label="__PDF" href="FILE__SIGNATURE__MACROS_8h.html#aad7e49ef8c6b86bb79ba4b9630a3cdc1"/>
+        <topic label="__POSTSCRIPT" href="FILE__SIGNATURE__MACROS_8h.html#a715adcbdebd40d3d7ca0eff40bac4d28"/>
+        <topic label="__VMDK" href="FILE__SIGNATURE__MACROS_8h.html#a3772b3e2634bd5336b03bc8bec10ad54"/>
+        <topic label="__XAR" href="FILE__SIGNATURE__MACROS_8h.html#a921caf1a102f51eaba5d5d2b1473a8b6"/>
       </topic>
       <topic label="financial.py" href="financial_8py.html">
         <topic label="compounded_ending_balance" href="financial_8py.html#a9ff65eae57a0196f39094f4efdf33aa8"/>
@@ -4164,6 +4346,8 @@
         <topic label="div_and_mod" href="mathfunc_8c.html#a433c3eb3d4483166fd950af21340210c"/>
         <topic label="div_and_mod_int" href="mathfunc_8c.html#a6f2f44cc4adc726e905c9e94699a6422"/>
         <topic label="div_and_modf" href="mathfunc_8c.html#a5f937c05742ee53f3c02b0dd430bae67"/>
+        <topic label="dot_product32" href="mathfunc_8c.html#afafd183747c2c4740c9f239491353fc1"/>
+        <topic label="dot_product64" href="mathfunc_8c.html#a7e0f031ca55c29493f1e2498f94c9d2d"/>
         <topic label="doublefactorial" href="mathfunc_8c.html#a0283e5048bf25f16ca0de3a509bb975f"/>
         <topic label="doublefactoriallonglong" href="mathfunc_8c.html#a84d4e96e12e7a4ed31c25aaab8305b12"/>
         <topic label="excot" href="mathfunc_8c.html#ac258ffb4dcd2ea83588c8ea6593efb92"/>
@@ -4681,6 +4865,8 @@
         <topic label="div_and_mod" href="mathfunc_8h.html#a4e81f9f715693b2221585b463aa5d57a"/>
         <topic label="div_and_mod_int" href="mathfunc_8h.html#ae23963b2c4b4b950f338142006cbbc70"/>
         <topic label="div_and_modf" href="mathfunc_8h.html#a6f7b69f828a7c174eb0d49f8a650f349"/>
+        <topic label="dot_product32" href="mathfunc_8h.html#a36e0c301957c10ce603eae19a1e4f111"/>
+        <topic label="dot_product64" href="mathfunc_8h.html#aba79441345e4fd918abfe44587fb7a54"/>
         <topic label="doublefactorial" href="mathfunc_8h.html#a335bb967aa67fbc3550f99fbc37886ca"/>
         <topic label="doublefactoriallonglong" href="mathfunc_8h.html#a3b0fea5595c3d0989ace6b15ffd87789"/>
         <topic label="excot" href="mathfunc_8h.html#aeb36d6b68aedd02aa94fffb7b08e9805"/>
@@ -4939,7 +5125,8 @@
         <topic label="versinhf" href="mathfunc_8h.html#a9cae2a9aea44729bc937430f5b153c8e"/>
         <topic label="versinhl" href="mathfunc_8h.html#a25e1a2501181dcb0c4fe413aa9e7add0"/>
         <topic label="versinl" href="mathfunc_8h.html#ad1d1b4d094252a016368e857cfea3329"/>
-        <topic label="flatten" href="mathfunc_8h.html#acb1e64fdd666ac3a2f24a9a2763fc54b"/>
+        <topic label="flatten" href="mathfunc_8h.html#a74ca6c20f521223b3e1b4698d565a61c"/>
+        <topic label="nonnull" href="mathfunc_8h.html#a7299ec456f88c306eb62e58b33389311"/>
       </topic>
       <topic label="mathfunc.swg" href="mathfunc_8swg.html">
         <topic label="DATATYPES_128BITS_SEEN" href="mathfunc_8swg.html#a6b910edb18ae7431cd3411deb26419c2"/>
@@ -5037,6 +5224,40 @@
         <topic label="name2ip" href="net_8py.html#a1861797e7413b251c2efaf5ee930b255"/>
         <topic label="ping" href="net_8py.html#a1bdd3d8d95eb851d8cb84d78b1f3e537"/>
         <topic label="__all__" href="net_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
+      </topic>
+      <topic label="neuralnet.py" href="neuralnet_8py.html">
+        <topic label="NeuroCode" href="classpybooster_1_1neuralnet_1_1NeuroCode.html">
+          <topic label="__init__" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#ac775ee34451fdfa742b318538164070e"/>
+          <topic label="_calculate_deltas" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a8acf130d5fb162a9e1022454ec759f63"/>
+          <topic label="bestof" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#adb378075b436cb0309ec376610760bcf"/>
+          <topic label="dump" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a211577cb0af0419c446860c0bdaec590"/>
+          <topic label="load" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af30aee3411ae270bfcf74cf669e18b21"/>
+          <topic label="neurocode2cfile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#abc583e901c4e329774434fae03fdd23a"/>
+          <topic label="neurocode2javafile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a99ee86bcea899e304a5370650fa545e2"/>
+          <topic label="neurocode2pythonfile" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a163704f43c4d0d5855cef82caff3cb3b"/>
+          <topic label="run" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a9546b6ba2b7d947c66d963d0e31c0a33"/>
+          <topic label="to_c_function" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acf23792f8ab9aff67f9838e3607637c0"/>
+          <topic label="to_function" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a4839c759d0fcfb4c7a63a58a032a2d9f"/>
+          <topic label="to_java_method" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a9e67ee6e213ecc72c81ff94c11a0cfb4"/>
+          <topic label="train" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a5526a060cb6d89ff71bbfa787328108a"/>
+          <topic label="writedump" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acbcb92566d7e413144e63d45170349a8"/>
+          <topic label="biases" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#ab2e44a5f78f34ce5abdce30766f8b49e"/>
+          <topic label="changes" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a37e9e3eefa8abd98a0f9c1197b022411"/>
+          <topic label="deltas" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af4a9c2ca37eca48ee6e5b130f844ffa1"/>
+          <topic label="errors" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#acc42076253600be964e110149b458971"/>
+          <topic label="hidden_layers" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a1b6209e10bf99b7edb28cfb1014ccbcc"/>
+          <topic label="io_rules" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a030ac12baf25896f1afad7d9eafbe2dc"/>
+          <topic label="io_rules_len" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#aac8e4d14c71986c89fba7aa0f4c8e032"/>
+          <topic label="iterations" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a24e9ab44f60fd1a6e45405d690dfe989"/>
+          <topic label="outputlayer" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a63a91cc2b46b4d5bfc7fde8dc08dcf5f"/>
+          <topic label="outputs" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#af8d743b78404b120589eca8c77c1c2a9"/>
+          <topic label="rate" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a1d580470818c2fa51a0bf3a86bc595bf"/>
+          <topic label="sizes" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a59954f9ddc7bd5849baf28f0b04501b3"/>
+          <topic label="weights" href="classpybooster_1_1neuralnet_1_1NeuroCode.html#a025e7807c1d898d829ddfc91a937fc78"/>
+        </topic>
+        <topic label="_indent" href="neuralnet_8py.html#a27ed2c2b160b495bfb764400ca000a66"/>
+        <topic label="flatten" href="neuralnet_8py.html#a4331413af4e3277268ca1befab50fc15"/>
+        <topic label="__all__" href="neuralnet_8py.html#aa4a022e6ddacd362b83964da5cc5d044"/>
       </topic>
       <topic label="physics.c" href="physics_8c.html">
         <topic label="acceleration_given_force" href="physics_8c.html#a0fa589cd8522508ae253d1312e953a25"/>
@@ -5286,6 +5507,127 @@
         <topic label="chemistry_pka" href="pychemistry_8c.html#ab00c9d67d7cc88e35a0f8e49e75d1bd3"/>
         <topic label="chemistry_pkb" href="pychemistry_8c.html#a0c4064f79f307e29d71ac0a2994013fe"/>
         <topic label="if" href="pychemistry_8c.html#ae26f07ae7eff734a802b77aa8f805a43"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aba7b49409217596d7a63b016696b0be5"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aed2d7ee1e105baabaf65418c13075e14"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af0ae9cbb6407a1e21cfe302bda15212a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a586382850ab0efa7340ed8763dc6dabc"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a855a57e386851d1d6e539f74fcbd2c7e"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ace8632d852285998ea2fad48c44d008d"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ae48388770529ca5143c8c1b3d262e94c"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ab43afa8042cc7864cef1b084f7687303"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5bef66763106d8df9b0d7dcacb0f8c58"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a577fd014ad08d688ab8581ed8fa614be"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ae2825111ebc7ab5ae72634eb1f90aaeb"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a03fa7aadfebec90e9026f8df7d65b8f4"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af8dc50bafc9f0fc279a265c641f0777b"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#acce55904644d845756430726f74312bd"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#addf1f35f2faa680bb7d2de46f5e74876"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af2fbcd1cf91b4fdf1a99c5a9b9e7dbd2"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ab6ef84d0d150811917c9400dd87f1f09"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af722b114c3f090c4f973a73351b8db9a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ae2e8ada3ec3981773472a2c43aa8f083"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a7a1039d7b886121435f1e87fad729852"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ad003ac1e8652af4e63bdfafac9237ed6"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ae3d6620c9d7383ad268f733367e4faac"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a01923f6cf5586382cc31dde11e80c549"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af459e6a0fd173ab5238a47218bda992d"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ab1baac5ea60c27a48996f3f2f70383f6"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a093827ae81c53a852e1789cd1b2ff2a4"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a0a1430a71bf12ba8bb8dea5097a9870a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ac58e25d8475679b9166ecceaf11d6221"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a39b3eb3ac12388a677e85b9d1a9b2107"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a250ac9a7f511b60e7dad3313770ed677"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#add5609307995752fab9d279acb5360a1"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a2044afb4e099f2d856351f48b6ac8785"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1b3b3714ba830626ce7da857c5bc851a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#afb2c4e8fa9f8527a55ac9f2cca4b2834"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1e5de0c9fc29d3a27e53a756dddd5f8b"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a87a8481f2b2f58b113c184763fd88d92"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a23f4bd1a0284c4149713cf11a59c060c"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1aa64223de7a47c574516c659e9abe30"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a532d8a355f32a608d799c4d637e21aac"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a84d246a4137a768b06f0898c89c99187"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a23adfba005d8cd25281c87036b8c6a67"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5dd5494fd87d34e2d23d5d2fd7a69cb4"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a3d6e2add8bc0f6dcedcb5895b4b22271"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a2172f6ff326337893d677bb150a80777"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa0e6207a8c5c57ee2b867a2b6f640692"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ade0f657e63ee8856b552526bd76a9fe5"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ad61756e333e276772f3ca763e1c2e5f9"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a74232de1dfb1de975e3afed69a3f9c18"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a202bc58a9a6c3c166ba7a1f81c17e26f"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa55a69764a8d9738aedd03f61d182e0c"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a8efeafaaac8a42d9374b76990c63ab88"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a30c74d271d56084c83a42ad92d786252"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa350bc62be396409c52cc5d5a8d50ad2"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a7ea0834e31207bb96abaffc604faa3bb"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a3ab178b31e9deb24217780b8a58c112f"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1d3a5504acd32fcc092a2b9a4de8cea1"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ae57d07153e8dc3f98f8115676826ac42"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a36dd55fcae6aff752c1e4893a06345a1"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#adaedff8f95d5cfa4135da764ffc1ce28"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa6bc6dbb5e12181484a28ff5ae5894f5"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a95bf2e754df009e41c3db20b2e620df5"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa14c3a41d5924718f0d9938cd11c6b83"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#add89d3372bfc3f55d7c85d63d3a03b12"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a924509a9f6efb3a132de588f235ed277"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aec651418e8679d795611c8c334fb7a5a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a938e870a736e48c38615b248046e6d45"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aed37f79ae1cc3cc79481cf38b2942381"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a50072bd3b1cfe72e9001c40173a54a8d"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a9588fcf6f2cb143ba5bdfae2a090d9e0"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a55229ff0547dc895058fa9e4423c22b9"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a92b57b00434d5a2e9cc0b2e3c2f35914"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a4c0b90b1e5203fc69101ee7f77d94047"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a8fce99767d8fcd435e1ac7d50f632bd8"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aadd557e70f0d56bb066d1e6560f64814"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a471c2723f209c9d01b5da20be2405cc5"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#abe552b5efa1cba420993cea65ec47a49"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a15149e400dff6a055af9cfcbf9f66e49"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a246620c4c040c0acdc1696da05a1bd59"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#adb5e9bbf2559e02e02add99601d95a4e"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a8bce4645d07ce43b2d1c73c9c21bdc4a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a7122398612798bc6a8f0af8da0aba6d0"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a79652faa7727cc1b2f04177cbbfa0cc0"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a0f718e4fd87ee5282ddf8cabec7892bd"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a842c1cda54b06691b0a30d5160b8bcf1"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a90e1f826e2c9b669fc5b960fc7f2d010"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a4e1db35b95c9958c29412085a682a943"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a71ec5990a1ccfab56f616caf03203f89"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a40295936847b28614d1d9fa3fa1e1b89"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5a617dd006391ebdbbcd72976d513c19"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a6bea0e9fa86b0b362c2b4088b18a2909"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a75e9e8a3debd1c2f63e417b34737c9da"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a9538bd5f5540d008661507dd09bcdea8"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a367c819d7bd225c2c25a42765a770bad"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1d917ad8faccb8c4c069b74062eac12b"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a9c23dc9e3f586095ae4218f528a0dfeb"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a306d7fdde2b321e421e2c78e35b28138"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa768676e92f55a5e669564e0736ef0ff"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a6f63b328f70d7fc28405eca69683851e"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aaa3f4f5fce45c85c079e1a7c63284566"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a0e36c4874d7298e0f97a711a141aed34"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5e30e1e947c9be54d4582aa30603fd9a"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#acc997c6ffd431a2bcdaec0f664b607c6"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa4bd599266db34c8b27740dfd93bb2ea"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#acec6b4d4329934b6fd6065db64c29ea7"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#afa2d61baf94a2d97dbc6bc1ea13886e6"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aa12759fcc9367efab06a23fc9dbad2f9"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a2cd17bda006b0ec7396a05fc273df336"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#af1040e74309d474e0b1302a8bd89a1a6"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#ac138d51af0a90308e31c905a692064db"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aeed4e3cb764c762e8d3ff9f3da7103e0"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a1c180d1eced4804be2e399fbc0dcb4aa"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a9734beb22e67da8c5cac38a3d9b0ac3e"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a578629d1961f9c09eb7b258c57e72e2f"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#aceea76334c7ac54417861b86d0f4f1df"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a7bff2c1e418963b793d062f74371e8bc"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a350987adc2f3b535279edf325825546e"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5624060507ec63cf7a0f298378ee4177"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a5499566f8c4d63b143225e40fb0d27c3"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a94d6743c206ddb2bef8b4db2c75aa056"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#a815e0fb308966b40294e6037cd4156db"/>
+        <topic label="PyModule_AddObject" href="pychemistry_8c.html#afecade24af26ae810956655e5c7373f6"/>
         <topic label="PyModule_AddStringConstant" href="pychemistry_8c.html#ac2a11833cccc5eab5e55befe97bb0134"/>
         <topic label="PyModule_AddStringConstant" href="pychemistry_8c.html#a95193e6a72289a3765827208e30eb538"/>
         <topic label="m" href="pychemistry_8c.html#ab3cd915d758008bd19d0f2428fbb354a"/>
@@ -5452,6 +5794,7 @@
         <topic label="mathfunc_acoth" href="pymathfunc_8c.html#aa8075edd67941a58a3bfc45ab33d6d61"/>
         <topic label="mathfunc_acsc" href="pymathfunc_8c.html#a6f5e2f815b2b50fe6b7d876bd0ac2366"/>
         <topic label="mathfunc_acsch" href="pymathfunc_8c.html#ab14520d4b087ef06bb0f5169b4691d9b"/>
+        <topic label="mathfunc_arc_angle" href="pymathfunc_8c.html#a69325fac4d91efa1006240dd4b5758d1"/>
         <topic label="mathfunc_arccot" href="pymathfunc_8c.html#af2da7d3ce100f85f7a39d6f3107d3c91"/>
         <topic label="mathfunc_arccoth" href="pymathfunc_8c.html#a7b58d6fa7256b1eb6746f9124f01769b"/>
         <topic label="mathfunc_arccsc" href="pymathfunc_8c.html#ac3d02289b92fc78e9875f28ee09fa6f5"/>
@@ -5471,6 +5814,7 @@
         <topic label="mathfunc_asec" href="pymathfunc_8c.html#a6fc6b05dfb930ae2187a275ead654e9d"/>
         <topic label="mathfunc_asech" href="pymathfunc_8c.html#a5f4e477f8acc5570eff5614848bc33e1"/>
         <topic label="mathfunc_bit_length" href="pymathfunc_8c.html#a8ae4e2fbaa50b7dc7836375a907e2bef"/>
+        <topic label="mathfunc_complement_angle_deg" href="pymathfunc_8c.html#a89ad54212c93e1cf28eab506bd9bb81d"/>
         <topic label="mathfunc_cos_arcsin" href="pymathfunc_8c.html#aa2656958aa2b78031979ff677c12bd67"/>
         <topic label="mathfunc_cos_arctan" href="pymathfunc_8c.html#afe330a673c7fdcc591bd956e9b596a7d"/>
         <topic label="mathfunc_cot" href="pymathfunc_8c.html#aaa2e8555e075cbaf6a5015241ff6c8c7"/>
@@ -5521,6 +5865,7 @@
         <topic label="mathfunc_sinpi" href="pymathfunc_8c.html#a4e5ee4a4107b198e8dce499ed9ce18f6"/>
         <topic label="mathfunc_squareroot" href="pymathfunc_8c.html#a65ec5bfe01c9504f96437604e979f580"/>
         <topic label="mathfunc_superfactorial" href="pymathfunc_8c.html#a682b048bbec0fa7ab31710406c573c35"/>
+        <topic label="mathfunc_supplement_angle_deg" href="pymathfunc_8c.html#ab1f47e0a0287f22c9bd96b6d2bdb448c"/>
         <topic label="mathfunc_tetrahedral_num" href="pymathfunc_8c.html#ab03f39cf6c94bdba391e7c8b85a3ce51"/>
         <topic label="mathfunc_triangular_num" href="pymathfunc_8c.html#a86b3abde567add3b2be49a2780cbfaaf"/>
         <topic label="mathfunc_vercos" href="pymathfunc_8c.html#a3b39ef8ab222bddbd34a592510d69aac"/>
@@ -5558,11 +5903,22 @@
         <topic label="if" href="pytools_8c.html#ae26f07ae7eff734a802b77aa8f805a43"/>
         <topic label="PyModule_AddStringConstant" href="pytools_8c.html#ac2a11833cccc5eab5e55befe97bb0134"/>
         <topic label="PyModule_AddStringConstant" href="pytools_8c.html#a95193e6a72289a3765827208e30eb538"/>
+        <topic label="PyModule_AddStringConstant" href="pytools_8c.html#ac6aa1eca832a97e947ce74869065e81e"/>
         <topic label="tools_CSTD" href="pytools_8c.html#a2e4ae1e893c1a31bf7bf2477623d74d4"/>
         <topic label="tools_endianness" href="pytools_8c.html#ae923fc4822f6f88cd426733220fdefc0"/>
         <topic label="tools_getarch" href="pytools_8c.html#a288cf7092263e3d5b627e938c1ee064f"/>
         <topic label="tools_getos" href="pytools_8c.html#a801e823c225d81f977a3dd815e7e0d78"/>
         <topic label="tools_isandroid" href="pytools_8c.html#aeaeadfae3ad3c85c55276a9aec8d6dad"/>
+        <topic label="tools_isbigendian" href="pytools_8c.html#a3384fd9c857f9c289ade7d968d0c6dad"/>
+        <topic label="tools_iscpp" href="pytools_8c.html#a20df02671e3f966a224cd3e38d6138b2"/>
+        <topic label="tools_iscygwin" href="pytools_8c.html#ae4ae57a4b5cfc4cb53600fd6209cdceb"/>
+        <topic label="tools_isdragonfly" href="pytools_8c.html#a10f831b4eeb08a08eaac4b8c9346dfc6"/>
+        <topic label="tools_isfreebsd" href="pytools_8c.html#a53660232c9c457e16be3649f9a510396"/>
+        <topic label="tools_isgnuhurd" href="pytools_8c.html#abc4704327ec3a10feb129d618dc67319"/>
+        <topic label="tools_islittleendian" href="pytools_8c.html#af5f8c0e59750d7cab9cee04b5209a5af"/>
+        <topic label="tools_isminix" href="pytools_8c.html#adc1a279884a6de4ad147a17d92b43ce5"/>
+        <topic label="tools_isnetbsd" href="pytools_8c.html#aab055f2efecbb36d073b0c4e551e514e"/>
+        <topic label="tools_isopenbsd" href="pytools_8c.html#a3a07adb28aba27c88b70854fedef165c"/>
         <topic label="tools_isstralnum" href="pytools_8c.html#ab8c11f45fdf597dc7563b31c6b03ad36"/>
         <topic label="tools_isstralpha" href="pytools_8c.html#a6e0d708428068e02d63ec6cf64d07acb"/>
         <topic label="tools_isstrgraphical" href="pytools_8c.html#a4c82f37460ec18b4d2d52d14e4c51a7a"/>
@@ -5573,6 +5929,7 @@
         <topic label="tools_isstrpunctuation" href="pytools_8c.html#adbad5f676974d8f45540c2beb827e484"/>
         <topic label="tools_isstruppercase" href="pytools_8c.html#a6ba2ac38c55cf4b44da1498749010cff"/>
         <topic label="tools_isstrwhitespace" href="pytools_8c.html#ad296539ca670e85882adae9b101d8cc7"/>
+        <topic label="tools_isunix" href="pytools_8c.html#ac8a279065fb0e76aa7eb8e00f5a9dcb8"/>
         <topic label="tools_lowercasestr" href="pytools_8c.html#ad1e081e7903f824d9728664b47be6ba7"/>
         <topic label="tools_lowercasestr15" href="pytools_8c.html#a41373b4284834ef8de3ab07f51415ba9"/>
         <topic label="tools_rmgravequote" href="pytools_8c.html#a2d8f73062d2e39a04406096685d217ba"/>
@@ -6668,6 +7025,7 @@
         <topic label="g" href="globals_defs_g.html"/>
         <topic label="h" href="globals_defs_h.html"/>
         <topic label="i" href="globals_defs_i.html"/>
+        <topic label="k" href="globals_defs_k.html"/>
         <topic label="l" href="globals_defs_l.html"/>
         <topic label="m" href="globals_defs_m.html"/>
         <topic label="n" href="globals_defs_n.html"/>

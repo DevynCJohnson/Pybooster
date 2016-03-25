@@ -11,11 +11,8 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 36,-24 36,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="math__types_8h.html#structline" target="_top" xlink:title="line">
-<polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 32,-19.5 32,-0.5 0,-0.5"/>
-<text text-anchor="middle" x="16" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">line</text>
-</a>
-</g>
+<polygon fill="white" stroke="#bfbfbf" points="0,-0.5 0,-19.5 32,-19.5 32,-0.5 0,-0.5"/>
+<text text-anchor="middle" x="16" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">join</text>
 </g>
 </g>
 </svg>

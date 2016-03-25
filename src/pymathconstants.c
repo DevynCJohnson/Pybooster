@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Constants from mathconstants.c
-@version 2016.03.21
+@version 2016.03.25
 
 @section LICENSE
 GNU Lesser General Public License v3

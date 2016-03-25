@@ -28,6 +28,7 @@ var searchData=
   ['silver',['silver',['../chemistry__types_8c.html#a7d19025f3767c85a68fad110c4697534',1,'silver():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a7d19025f3767c85a68fad110c4697534',1,'silver():&#160;chemistry_types.c']]],
   ['siunits',['SIUNITS',['../namespacepybooster_1_1metric.html#ab8b945d6674e4d357eccd749dd55f582',1,'pybooster::metric']]],
   ['size',['Size',['../extra__datatypes_8h.html#a4a8b01bd13021148fab81b829afffa25',1,'HeapStruct']]],
+  ['sizes',['sizes',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a59954f9ddc7bd5849baf28f0b04501b3',1,'pybooster::neuralnet::NeuroCode']]],
   ['small_5fnumbers',['SMALL_NUMBERS',['../namespacepybooster_1_1xmath.html#a8815961be7228d79e0d235ff515a7bdd',1,'pybooster::xmath']]],
   ['smiles',['smiles',['../chemistry__types_8h.html#abc6f4eb12a14c62ba689e041b8027973',1,'nucleobase::smiles()'],['../chemistry__types_8h.html#a40bd97f24f63eece7bca50972c67db95',1,'aminoacid::smiles()'],['../namespacepybooster_1_1science__data.html#a585672c63c2b3f0f0bb69d9211c29c62',1,'pybooster.science_data.SMILES()']]],
   ['sodium',['sodium',['../chemistry__types_8c.html#afbd0071fd7846989152daea214220376',1,'sodium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#afbd0071fd7846989152daea214220376',1,'sodium():&#160;chemistry_types.c']]],

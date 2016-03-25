@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Time Functions (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 Functions pertaining to time
@@ -37,9 +37,6 @@ License along with this library.
 #include "MACROS.h"
 
 #include <time.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/time.h.html
-#ifdef OSPOSIX
-#   include <sys/time.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_time.h.html
-#endif
 
 
 /* STRUCTS */

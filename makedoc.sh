@@ -48,6 +48,7 @@ python3 -m pydoc mathconstants > ../doc/mathconstants.txt
 python3 -m pydoc mathfunc > ../doc/mathfunc.txt
 python3 -m pydoc metric > ../doc/metric.txt
 python3 -m pydoc net > ../doc/net.txt
+python3 -m pydoc neuralnet > ../doc/neuralnet.txt
 python3 -m pydoc physics > ../doc/physics.txt
 python3 -m pydoc pipx > ../doc/pipx.txt
 python3 -m pydoc pronouns > ../doc/pronouns.txt

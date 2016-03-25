@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['darmstadtium_5fmolar_5fmass',['DARMSTADTIUM_MOLAR_MASS',['../chemistry_8h.html#afe44a3a5c700b9b7a04b386b6e108777',1,'chemistry.h']]],
   ['datatypes_5f128bits_5fseen',['DATATYPES_128BITS_SEEN',['../MACROS_8h.html#a6b910edb18ae7431cd3411deb26419c2',1,'DATATYPES_128BITS_SEEN():&#160;MACROS.h'],['../mathfunc_8swg.html#a6b910edb18ae7431cd3411deb26419c2',1,'DATATYPES_128BITS_SEEN():&#160;mathfunc.swg']]],
   ['date_5fhour2int',['DATE_HOUR2INT',['../PY__MACROS_8h.html#a92a050fe5554136c7747e19f3c0f6303',1,'PY_MACROS.h']]],
   ['date_5fmicrosecond2int',['DATE_MICROSECOND2INT',['../PY__MACROS_8h.html#a1d1d02c7c5b07a9ee82868e620ae98e5',1,'PY_MACROS.h']]],
@@ -18,5 +19,7 @@ var searchData=
   ['do_5fexpand',['DO_EXPAND',['../MACROS_8h.html#ac67d56a22930fb32f533fbb1a9729890',1,'MACROS.h']]],
   ['double2float',['double2float',['../PY__MACROS_8h.html#a09084145a64f46c15dfe8143c07a9345',1,'PY_MACROS.h']]],
   ['double2int',['double2int',['../PY__MACROS_8h.html#ae89af70d2b180d3587250e6cb69598e6',1,'PY_MACROS.h']]],
-  ['double_5ffactorial_5fconstant',['DOUBLE_FACTORIAL_CONSTANT',['../MATH__MACROS_8h.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg']]]
+  ['double_5ffactorial_5fconstant',['DOUBLE_FACTORIAL_CONSTANT',['../MATH__MACROS_8h.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg']]],
+  ['dubnium_5fmolar_5fmass',['DUBNIUM_MOLAR_MASS',['../chemistry_8h.html#a94f2720efc6b844ed04caaa42f773855',1,'chemistry.h']]],
+  ['dysprosium_5fmolar_5fmass',['DYSPROSIUM_MOLAR_MASS',['../chemistry_8h.html#ad39deb80a334f6ace37421b612206660',1,'chemistry.h']]]
 ];

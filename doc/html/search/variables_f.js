@@ -15,6 +15,8 @@ var searchData=
   ['one_5ftwelfth',['ONE_TWELFTH',['../namespacepybooster_1_1xmath.html#ac0b1fd15f58382cbc51129ad9d20ceae',1,'pybooster::xmath']]],
   ['ordinal_5flist',['ORDINAL_LIST',['../namespacepybooster_1_1strtools.html#a7648cca27145c7e89f9f9fbc0b42c30d',1,'pybooster::strtools']]],
   ['osmium',['osmium',['../chemistry__types_8c.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c']]],
+  ['outputlayer',['outputlayer',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a63a91cc2b46b4d5bfc7fde8dc08dcf5f',1,'pybooster::neuralnet::NeuroCode']]],
+  ['outputs',['outputs',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#af8d743b78404b120589eca8c77c1c2a9',1,'pybooster::neuralnet::NeuroCode']]],
   ['outputtype',['outputType',['../extra__datatypes_8h.html#a01775ad3e97219e0b783ec371ede5cfc',1,'GPIO_PinInitStruct_t']]],
   ['oxygen',['oxygen',['../chemistry__types_8c.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c']]]
 ];

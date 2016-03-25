@@ -1,6 +1,7 @@
 var searchData=
 [
   ['banana_5fsong',['banana_song',['../namespacepybooster_1_1sing.html#ab77b675c64f0d9a981c3f1f21779f063',1,'pybooster::sing']]],
+  ['bestof',['bestof',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#adb378075b436cb0309ec376610760bcf',1,'pybooster::neuralnet::NeuroCode']]],
   ['binint2char',['binint2char',['../namespacepybooster_1_1strtools.html#ac76fbf0f8b269c9125ad170b7902f09f',1,'pybooster::strtools']]],
   ['binstr2char',['binstr2char',['../namespacepybooster_1_1strtools.html#a6a483b0ebfd714c9e4f5ebdff616b376',1,'pybooster::strtools']]],
   ['bit128_5flength',['bit128_length',['../mathfunc_8c.html#a891e1bb9574f871ed0178c76179a2703',1,'bit128_length(const uint128_t num):&#160;mathfunc.c'],['../mathfunc_8h.html#a99d70ccf5d80e09b7b5d433de2eaa54a',1,'bit128_length(const uint128_t num) __attribute__((const :&#160;mathfunc.h']]],

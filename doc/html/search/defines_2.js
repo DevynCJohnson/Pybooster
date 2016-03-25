@@ -1,8 +1,15 @@
 var searchData=
 [
+  ['barium_5fmolar_5fmass',['BARIUM_MOLAR_MASS',['../chemistry_8h.html#a94acfc16de6be6172912e4548b8ab42b',1,'chemistry.h']]],
+  ['berkelium_5fmolar_5fmass',['BERKELIUM_MOLAR_MASS',['../chemistry_8h.html#a246caa9a9d03ad139b8836f1ae37aa18',1,'chemistry.h']]],
   ['bernsteins_5fconstant',['BERNSTEINS_CONSTANT',['../MATH__MACROS_8h.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a58492bea0a3b0f5dd9ae8cb7523c1826',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.swg']]],
+  ['beryllium_5fmolar_5fmass',['BERYLLIUM_MOLAR_MASS',['../chemistry_8h.html#a94d498432b7bd5cd2c037493a93f9dc7',1,'chemistry.h']]],
+  ['bismuth_5fmolar_5fmass',['BISMUTH_MOLAR_MASS',['../chemistry_8h.html#a91e583d103d5b9f33ae7ed6a0fe6f226',1,'chemistry.h']]],
   ['bohr_5fradius',['BOHR_RADIUS',['../MATH__MACROS_8h.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a898c6244c2945c99115639f6045f7264',1,'BOHR_RADIUS():&#160;mathconstants.swg']]],
+  ['bohrium_5fmolar_5fmass',['BOHRIUM_MOLAR_MASS',['../chemistry_8h.html#a1e4d74003400c9b8c8caa90be6e53a8b',1,'chemistry.h']]],
   ['boltzmann_5fconstant',['BOLTZMANN_CONSTANT',['../MATH__MACROS_8h.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#a5aebde1d8208cd685f6e697b95db3eaa',1,'BOLTZMANN_CONSTANT():&#160;mathconstants.swg']]],
+  ['boron_5fmolar_5fmass',['BORON_MOLAR_MASS',['../chemistry_8h.html#a457a3241b42bf7172aab9447a3bab4f1',1,'chemistry.h']]],
+  ['bromine_5fmolar_5fmass',['BROMINE_MOLAR_MASS',['../chemistry_8h.html#af7e136f59e97eaa20e204f0325716a35',1,'chemistry.h']]],
   ['buf_5fsize',['BUF_SIZE',['../tone_8h.html#a6821bafc3c88dfb2e433a095df9940c6',1,'tone.h']]],
   ['byte',['Byte',['../MACROS_8h.html#a8390de1c62e036e839ec8150711d6539',1,'MACROS.h']]],
   ['bytestr',['bytestr',['../PY__MACROS_8h.html#aaa751e1e1c8693e7b2db7cf927847654',1,'PY_MACROS.h']]],

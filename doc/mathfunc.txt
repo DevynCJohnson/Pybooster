@@ -1,7 +1,7 @@
 Help on module mathfunc:
 
 NAME
-    mathfunc - Math Functions
+    mathfunc - Mathematical and Trigonometric Functions
 
 FUNCTIONS
     acot(...)
@@ -19,6 +19,10 @@ FUNCTIONS
     acsch(...)
         acsch(radians: float) -> float
         Return the Hyperbolic Arc-Cosecant (acsch(x)||arccsch(x) == asinh(1/x))
+    
+    arc_angle(...)
+        arc_angle(arc_length: float, radius: float) -> float
+        Return the angle (in radians) of an arc given arc-length and radius
     
     arccot(...)
         arccot(radians: float) -> float
@@ -95,6 +99,10 @@ FUNCTIONS
     bit_length(...)
         bit_length(num: int) -> int
         Return the number of bits used to represent the given number
+    
+    complement_angle_deg(...)
+        complement_angle_deg(angle: float) -> float
+        Return the complement of an angle (all in degrees)
     
     cos_arcsin(...)
         cos_arcsin(radians: float) -> float
@@ -302,6 +310,10 @@ FUNCTIONS
     superfactorial(...)
         superfactorial(num: int) -> float
         Super-Factorial
+    
+    supplement_angle_deg(...)
+        supplement_angle_deg(angle: float) -> float
+        Return the supplement of an angle (all in degrees)
     
     tetrahedral_num(...)
         tetrahedral_num(num: int) -> int

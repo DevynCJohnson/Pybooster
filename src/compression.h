@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Compression Functions (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides compression and decompression functions
@@ -36,9 +36,6 @@ License along with this library.
 
 #include "MACROS.h"
 
-#ifdef OSPOSIX
-#   include <sys/stat.h>
-#endif
 #ifdef __has_include
 #   if __has_include(<zlib.h>)
 #      include <zlib.h>
