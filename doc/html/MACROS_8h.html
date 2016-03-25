@@ -124,6 +124,7 @@ $(document).ready(function(){initNavTree('MACROS_8h.html','');});
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;wchar.h&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
 <code>#include &lt;stdarg.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MACROS.h:</div>
@@ -595,10 +596,12 @@ Typedefs</h2></td></tr>
 <div class="textblock"><p>Standard Macros Header. </p>
 <dl class="section author"><dt>Author</dt><dd>Devyn Collier Johnson <a href="#" onclick="location.href='mai'+'lto:'+'Dev'+'yn'+'CJo'+'hn'+'son'+'@G'+'mai'+'l.'+'com'; return false;">Devyn<span style="display: none;">.nosp@m.</span>CJoh<span style="display: none;">.nosp@m.</span>nson@<span style="display: none;">.nosp@m.</span>Gmai<span style="display: none;">.nosp@m.</span>l.com</a> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>LGPLv3</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>2016.03.21</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2016.03.25</dd></dl>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-<p>This file defines various datatypes, macros functions, names, and tests. Substitutes for &lt;stdbool.h&gt;, &lt;stdarg.h&gt;, and &lt;ctype.h&gt; are also provided.</p>
+<p>This file defines various datatypes, macros functions, names, and tests. Substitutes for &lt;stdbool.h&gt;, &lt;stdarg.h&gt;, and &lt;ctype.h&gt; are also provided.</p><ul>
+<li><a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/contents.html">http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/contents.html</a></li>
+</ul>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
 <p>GNU Lesser General Public License v3 Copyright (c) Devyn Collier Johnson, All rights reserved.</p>
@@ -685,7 +688,7 @@ INFO</h1>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of uint8_t integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00764">764</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00776">776</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for bytepair_t:</div>
 <div class="dyncontent">
@@ -721,7 +724,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of doubles </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00758">758</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00770">770</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for doublepair_t:</div>
 <div class="dyncontent">
@@ -757,7 +760,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Group of three doubles </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00776">776</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00788">788</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for doubletriplet_t:</div>
 <div class="dyncontent">
@@ -799,7 +802,7 @@ z</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of 128-bit floats </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00791">791</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00803">803</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for float128pair_t:</div>
 <div class="dyncontent">
@@ -835,7 +838,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Group of three 128-bit floats </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00793">793</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00805">805</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for float128triplet_t:</div>
 <div class="dyncontent">
@@ -877,7 +880,7 @@ z</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of floats </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00760">760</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00772">772</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for floatpair_t:</div>
 <div class="dyncontent">
@@ -913,7 +916,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Group of three floats </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00778">778</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00790">790</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for floattriplet_t:</div>
 <div class="dyncontent">
@@ -954,7 +957,7 @@ z</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00780">780</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00792">792</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for int128pair_t:</div>
 <div class="dyncontent">
@@ -989,7 +992,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00781">781</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00793">793</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for int128triplet_t:</div>
 <div class="dyncontent">
@@ -1031,7 +1034,7 @@ z</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of signed integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00766">766</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00778">778</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for intpair_t:</div>
 <div class="dyncontent">
@@ -1067,7 +1070,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of long doubles </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00762">762</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00774">774</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for longdoublepair_t:</div>
 <div class="dyncontent">
@@ -1103,7 +1106,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of long signed integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00768">768</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00780">780</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for slintpair_t:</div>
 <div class="dyncontent">
@@ -1139,7 +1142,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of long long signed integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00774">774</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00786">786</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for sllintpair_t:</div>
 <div class="dyncontent">
@@ -1175,7 +1178,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of uint128_t integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00785">785</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00797">797</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for uint128pair_t:</div>
 <div class="dyncontent">
@@ -1211,7 +1214,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Group of three uint128_t integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00787">787</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00799">799</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for uint128triplet_t:</div>
 <div class="dyncontent">
@@ -1253,7 +1256,7 @@ z</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of long unsigned integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00770">770</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00782">782</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for ulintpair_t:</div>
 <div class="dyncontent">
@@ -1289,7 +1292,7 @@ y</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Pair of long long unsigned integers </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00772">772</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00784">784</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for ullintpair_t:</div>
 <div class="dyncontent">
@@ -1339,7 +1342,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01056">1056</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01068">1068</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1353,7 +1356,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00508">508</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00520">520</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1371,7 +1374,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01059">1059</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01071">1071</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1385,7 +1388,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01003">1003</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01015">1015</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1399,7 +1402,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00117">117</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00118">118</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1439,7 +1442,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01054">1054</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01066">1066</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1467,7 +1470,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01052">1052</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01064">1064</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1495,7 +1498,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01055">1055</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01067">1067</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1526,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01053">1053</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01065">1065</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1551,7 +1554,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01060">1060</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01072">1072</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1579,7 +1582,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01061">1061</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01073">1073</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1600,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01058">1058</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01070">1070</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1625,7 +1628,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01064">1064</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01076">1076</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1653,7 +1656,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01057">1057</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01069">1069</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1667,7 +1670,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00667">667</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00679">679</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1681,7 +1684,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00716">716</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00728">728</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1695,7 +1698,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00713">713</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00725">725</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1709,7 +1712,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00719">719</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00731">731</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1723,7 +1726,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00642">642</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00654">654</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1737,7 +1740,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00645">645</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00657">657</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1751,9 +1754,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00135">135</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00136">136</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l01790">CSTD()</a>, and <a class="el" href="pytools_8c_source.html#l01676">tools_CSTD()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l01815">CSTD()</a>, and <a class="el" href="pytools_8c_source.html#l01839">tools_CSTD()</a>.</p>
 
 </div>
 </div>
@@ -1781,7 +1784,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01063">1063</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01075">1075</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1809,7 +1812,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01062">1062</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01074">1074</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1823,7 +1826,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00521">521</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00533">533</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1837,7 +1840,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00132">132</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00133">133</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1851,7 +1854,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00529">529</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00541">541</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1869,7 +1872,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00982">982</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00994">994</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1886,9 +1889,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00936">936</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00948">948</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00477">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00507">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00425">getfile()</a>, <a class="el" href="tools_8c_source.html#l00455">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00502">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00532">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00450">getfile()</a>, <a class="el" href="tools_8c_source.html#l00480">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
 
 </div>
 </div>
@@ -1905,9 +1908,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00937">937</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00949">949</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00567">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00537">writefilebuf()</a>, and <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00592">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00562">writefilebuf()</a>, and <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>.</p>
 
 </div>
 </div>
@@ -1935,7 +1938,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00986">986</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00998">998</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1949,7 +1952,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00142">142</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00143">143</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1967,7 +1970,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00905">905</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00917">917</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1985,7 +1988,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00904">904</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00916">916</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -1999,7 +2002,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00910">910</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00922">922</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2013,7 +2016,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00911">911</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00923">923</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2027,7 +2030,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00912">912</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00924">924</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2041,7 +2044,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00912">912</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00924">924</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2055,7 +2058,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00913">913</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00925">925</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2070,7 +2073,7 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "uint8_t" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00611">611</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00623">623</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2088,7 +2091,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00995">995</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01007">1007</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2106,7 +2109,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00996">996</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01008">1008</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2124,7 +2127,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00994">994</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01006">1006</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2152,7 +2155,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01014">1014</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01026">1026</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2192,7 +2195,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01006">1006</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01018">1018</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2226,7 +2229,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01007">1007</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01019">1019</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2241,7 +2244,7 @@ y</td>
 </div><div class="memdoc">
 <p>a=0x61; z=0x7A; A=0x41; Z=0x5A <a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a> <a href="https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29">https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29</a> </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00828">828</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00840">840</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2255,7 +2258,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00632">632</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00644">644</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2274,7 +2277,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert a double to uint64_t </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00978">978</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00990">990</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2292,7 +2295,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01012">1012</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01024">1024</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2306,7 +2309,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00291">291</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00292">292</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2324,7 +2327,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00940">940</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00952">952</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2342,9 +2345,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00938">938</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00950">950</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, and <a class="el" href="tools_8c_source.html#l00392">getfilesize_t()</a>.</p>
+<p>Referenced by <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, and <a class="el" href="tools_8c_source.html#l00417">getfilesize_t()</a>.</p>
 
 </div>
 </div>
@@ -2372,7 +2375,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00939">939</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00951">951</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2390,7 +2393,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01013">1013</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01025">1025</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2407,9 +2410,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00941">941</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00953">953</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00554">appendfile()</a>, <a class="el" href="tools_8c_source.html#l00567">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00409">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00477">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00507">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00425">getfile()</a>, <a class="el" href="tools_8c_source.html#l00455">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="tools_8c_source.html#l00392">getfilesize_t()</a>, <a class="el" href="tools_8c_source.html#l00524">writefile()</a>, and <a class="el" href="tools_8c_source.html#l00537">writefilebuf()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00579">appendfile()</a>, <a class="el" href="tools_8c_source.html#l00592">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00434">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00502">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00532">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00450">getfile()</a>, <a class="el" href="tools_8c_source.html#l00480">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="tools_8c_source.html#l00417">getfilesize_t()</a>, <a class="el" href="tools_8c_source.html#l00549">writefile()</a>, and <a class="el" href="tools_8c_source.html#l00562">writefilebuf()</a>.</p>
 
 </div>
 </div>
@@ -2423,7 +2426,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00515">515</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00527">527</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2437,7 +2440,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00517">517</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00529">529</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2451,7 +2454,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00519">519</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00531">531</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2465,7 +2468,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00676">676</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00688">688</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2480,7 +2483,7 @@ y</td>
 </div><div class="memdoc">
 <p>128-bit quad-precision floats may be supported via the synonymous datatypes tetra, float128_t, __float128, and float128 </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00660">660</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00672">672</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2494,7 +2497,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00673">673</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00685">685</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2513,7 +2516,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert a float to uint32_t </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00974">974</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00986">986</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2531,7 +2534,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00906">906</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00918">918</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2571,7 +2574,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00949">949</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00961">961</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2585,7 +2588,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00747">747</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00759">759</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2603,7 +2606,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00739">739</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00751">751</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2621,7 +2624,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00737">737</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00749">749</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2639,7 +2642,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00738">738</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00750">750</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2653,7 +2656,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00694">694</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00706">706</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="mathfunc_8c_source.html#l02997">cacot()</a>, <a class="el" href="mathfunc_8c_source.html#l03009">cacoth()</a>, <a class="el" href="mathfunc_8c_source.html#l03033">cacsc()</a>, <a class="el" href="mathfunc_8c_source.html#l03045">cacsch()</a>, <a class="el" href="mathfunc_8c_source.html#l03003">carccot()</a>, <a class="el" href="mathfunc_8c_source.html#l03015">carccoth()</a>, <a class="el" href="mathfunc_8c_source.html#l03039">carccsc()</a>, <a class="el" href="mathfunc_8c_source.html#l03051">carccsch()</a>, <a class="el" href="mathfunc_8c_source.html#l03522">carcexcot()</a>, <a class="el" href="mathfunc_8c_source.html#l03528">carcexcoth()</a>, <a class="el" href="mathfunc_8c_source.html#l03546">carcexcsc()</a>, <a class="el" href="mathfunc_8c_source.html#l03552">carcexcsch()</a>, <a class="el" href="mathfunc_8c_source.html#l03570">carcexsec()</a>, <a class="el" href="mathfunc_8c_source.html#l03576">carcexsech()</a>, <a class="el" href="mathfunc_8c_source.html#l03075">carcsec()</a>, <a class="el" href="mathfunc_8c_source.html#l03087">carcsech()</a>, <a class="el" href="mathfunc_8c_source.html#l03129">carcvercos()</a>, <a class="el" href="mathfunc_8c_source.html#l03135">carcvercosh()</a>, <a class="el" href="mathfunc_8c_source.html#l03105">carcversin()</a>, <a class="el" href="mathfunc_8c_source.html#l03111">carcversinh()</a>, <a class="el" href="mathfunc_8c_source.html#l03069">casec()</a>, <a class="el" href="mathfunc_8c_source.html#l03081">casech()</a>, <a class="el" href="mathfunc_8c_source.html#l03747">ccos_arcsin()</a>, <a class="el" href="mathfunc_8c_source.html#l03753">ccos_arctan()</a>, <a class="el" href="mathfunc_8c_source.html#l03027">ccot()</a>, <a class="el" href="mathfunc_8c_source.html#l03021">ccoth()</a>, <a class="el" href="mathfunc_8c_source.html#l02991">ccrd()</a>, <a class="el" href="mathfunc_8c_source.html#l03063">ccsc()</a>, <a class="el" href="mathfunc_8c_source.html#l03057">ccsch()</a>, <a class="el" href="mathfunc_8c_source.html#l03540">cexcot()</a>, <a class="el" href="mathfunc_8c_source.html#l03534">cexcoth()</a>, <a class="el" href="mathfunc_8c_source.html#l03564">cexcsc()</a>, <a class="el" href="mathfunc_8c_source.html#l03558">cexcsch()</a>, <a class="el" href="mathfunc_8c_source.html#l03588">cexsec()</a>, <a class="el" href="mathfunc_8c_source.html#l03582">cexsech()</a>, <a class="el" href="mathfunc_8c_source.html#l03159">chacoversin()</a>, <a class="el" href="mathfunc_8c_source.html#l03153">chaversin()</a>, <a class="el" href="mathfunc_8c_source.html#l03828">conjugate()</a>, <a class="el" href="mathfunc_8c_source.html#l03099">csec()</a>, <a class="el" href="mathfunc_8c_source.html#l03093">csech()</a>, <a class="el" href="mathfunc_8c_source.html#l03759">csin_arcsec()</a>, <a class="el" href="mathfunc_8c_source.html#l03765">csin_arctan()</a>, <a class="el" href="mathfunc_8c_source.html#l03147">cvercos()</a>, <a class="el" href="mathfunc_8c_source.html#l03141">cvercosh()</a>, <a class="el" href="mathfunc_8c_source.html#l03123">cversin()</a>, and <a class="el" href="mathfunc_8c_source.html#l03117">cversinh()</a>.</p>
 
@@ -2669,7 +2672,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00695">695</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00707">707</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2683,7 +2686,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00696">696</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00708">708</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2697,7 +2700,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00689">689</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00701">701</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="mathfunc_8c_source.html#l03351">cacotf()</a>, <a class="el" href="mathfunc_8c_source.html#l03363">cacothf()</a>, <a class="el" href="mathfunc_8c_source.html#l03387">cacscf()</a>, <a class="el" href="mathfunc_8c_source.html#l03399">cacschf()</a>, <a class="el" href="mathfunc_8c_source.html#l03357">carccotf()</a>, <a class="el" href="mathfunc_8c_source.html#l03369">carccothf()</a>, <a class="el" href="mathfunc_8c_source.html#l03393">carccscf()</a>, <a class="el" href="mathfunc_8c_source.html#l03405">carccschf()</a>, <a class="el" href="mathfunc_8c_source.html#l03672">carcexcotf()</a>, <a class="el" href="mathfunc_8c_source.html#l03678">carcexcothf()</a>, <a class="el" href="mathfunc_8c_source.html#l03696">carcexcscf()</a>, <a class="el" href="mathfunc_8c_source.html#l03702">carcexcschf()</a>, <a class="el" href="mathfunc_8c_source.html#l03720">carcexsecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03726">carcexsechf()</a>, <a class="el" href="mathfunc_8c_source.html#l03429">carcsecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03441">carcsechf()</a>, <a class="el" href="mathfunc_8c_source.html#l03483">carcvercosf()</a>, <a class="el" href="mathfunc_8c_source.html#l03489">carcvercoshf()</a>, <a class="el" href="mathfunc_8c_source.html#l03459">carcversinf()</a>, <a class="el" href="mathfunc_8c_source.html#l03465">carcversinhf()</a>, <a class="el" href="mathfunc_8c_source.html#l03423">casecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03435">casechf()</a>, <a class="el" href="mathfunc_8c_source.html#l03801">ccos_arcsinf()</a>, <a class="el" href="mathfunc_8c_source.html#l03807">ccos_arctanf()</a>, <a class="el" href="mathfunc_8c_source.html#l03381">ccotf()</a>, <a class="el" href="mathfunc_8c_source.html#l03375">ccothf()</a>, <a class="el" href="mathfunc_8c_source.html#l03345">ccrdf()</a>, <a class="el" href="mathfunc_8c_source.html#l03417">ccscf()</a>, <a class="el" href="mathfunc_8c_source.html#l03411">ccschf()</a>, <a class="el" href="mathfunc_8c_source.html#l03690">cexcotf()</a>, <a class="el" href="mathfunc_8c_source.html#l03684">cexcothf()</a>, <a class="el" href="mathfunc_8c_source.html#l03714">cexcscf()</a>, <a class="el" href="mathfunc_8c_source.html#l03708">cexcschf()</a>, <a class="el" href="mathfunc_8c_source.html#l03738">cexsecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03732">cexsechf()</a>, <a class="el" href="mathfunc_8c_source.html#l03513">chacoversinf()</a>, <a class="el" href="mathfunc_8c_source.html#l03507">chaversinf()</a>, <a class="el" href="mathfunc_8c_source.html#l03840">conjugatef()</a>, <a class="el" href="mathfunc_8c_source.html#l03453">csecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03447">csechf()</a>, <a class="el" href="mathfunc_8c_source.html#l03813">csin_arcsecf()</a>, <a class="el" href="mathfunc_8c_source.html#l03819">csin_arctanf()</a>, <a class="el" href="mathfunc_8c_source.html#l03501">cvercosf()</a>, <a class="el" href="mathfunc_8c_source.html#l03495">cvercoshf()</a>, <a class="el" href="mathfunc_8c_source.html#l03477">cversinf()</a>, and <a class="el" href="mathfunc_8c_source.html#l03471">cversinhf()</a>.</p>
 
@@ -2713,7 +2716,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00690">690</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00702">702</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2727,7 +2730,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00691">691</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00703">703</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2741,7 +2744,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00699">699</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00711">711</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="mathfunc_8c_source.html#l03186">cacothl()</a>, <a class="el" href="mathfunc_8c_source.html#l03174">cacotl()</a>, <a class="el" href="mathfunc_8c_source.html#l03222">cacschl()</a>, <a class="el" href="mathfunc_8c_source.html#l03210">cacscl()</a>, <a class="el" href="mathfunc_8c_source.html#l03192">carccothl()</a>, <a class="el" href="mathfunc_8c_source.html#l03180">carccotl()</a>, <a class="el" href="mathfunc_8c_source.html#l03228">carccschl()</a>, <a class="el" href="mathfunc_8c_source.html#l03216">carccscl()</a>, <a class="el" href="mathfunc_8c_source.html#l03603">carcexcothl()</a>, <a class="el" href="mathfunc_8c_source.html#l03597">carcexcotl()</a>, <a class="el" href="mathfunc_8c_source.html#l03627">carcexcschl()</a>, <a class="el" href="mathfunc_8c_source.html#l03621">carcexcscl()</a>, <a class="el" href="mathfunc_8c_source.html#l03651">carcexsechl()</a>, <a class="el" href="mathfunc_8c_source.html#l03645">carcexsecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03264">carcsechl()</a>, <a class="el" href="mathfunc_8c_source.html#l03252">carcsecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03312">carcvercoshl()</a>, <a class="el" href="mathfunc_8c_source.html#l03306">carcvercosl()</a>, <a class="el" href="mathfunc_8c_source.html#l03288">carcversinhl()</a>, <a class="el" href="mathfunc_8c_source.html#l03282">carcversinl()</a>, <a class="el" href="mathfunc_8c_source.html#l03258">casechl()</a>, <a class="el" href="mathfunc_8c_source.html#l03246">casecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03774">ccos_arcsinl()</a>, <a class="el" href="mathfunc_8c_source.html#l03780">ccos_arctanl()</a>, <a class="el" href="mathfunc_8c_source.html#l03198">ccothl()</a>, <a class="el" href="mathfunc_8c_source.html#l03204">ccotl()</a>, <a class="el" href="mathfunc_8c_source.html#l03168">ccrdl()</a>, <a class="el" href="mathfunc_8c_source.html#l03234">ccschl()</a>, <a class="el" href="mathfunc_8c_source.html#l03240">ccscl()</a>, <a class="el" href="mathfunc_8c_source.html#l03609">cexcothl()</a>, <a class="el" href="mathfunc_8c_source.html#l03615">cexcotl()</a>, <a class="el" href="mathfunc_8c_source.html#l03633">cexcschl()</a>, <a class="el" href="mathfunc_8c_source.html#l03639">cexcscl()</a>, <a class="el" href="mathfunc_8c_source.html#l03657">cexsechl()</a>, <a class="el" href="mathfunc_8c_source.html#l03663">cexsecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03336">chacoversinl()</a>, <a class="el" href="mathfunc_8c_source.html#l03330">chaversinl()</a>, <a class="el" href="mathfunc_8c_source.html#l03834">conjugatel()</a>, <a class="el" href="mathfunc_8c_source.html#l03270">csechl()</a>, <a class="el" href="mathfunc_8c_source.html#l03276">csecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03786">csin_arcsecl()</a>, <a class="el" href="mathfunc_8c_source.html#l03792">csin_arctanl()</a>, <a class="el" href="mathfunc_8c_source.html#l03318">cvercoshl()</a>, <a class="el" href="mathfunc_8c_source.html#l03324">cvercosl()</a>, <a class="el" href="mathfunc_8c_source.html#l03294">cversinhl()</a>, and <a class="el" href="mathfunc_8c_source.html#l03300">cversinl()</a>.</p>
 
@@ -2757,7 +2760,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00700">700</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00712">712</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2771,7 +2774,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00701">701</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00713">713</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2785,7 +2788,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00687">687</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00699">699</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2799,7 +2802,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00639">639</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00651">651</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2817,7 +2820,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00803">803</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00815">815</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2835,7 +2838,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00804">804</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00816">816</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2853,7 +2856,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00805">805</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00817">817</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2871,7 +2874,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00802">802</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00814">814</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2889,7 +2892,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00810">810</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00822">822</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2906,7 +2909,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00942">942</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00954">954</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2925,9 +2928,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is alphanumeric </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00830">830</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00842">842</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00829">tools_isstralnum()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00893">tools_isstralnum()</a>.</p>
 
 </div>
 </div>
@@ -2946,9 +2949,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is an alphabetic letter </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00834">834</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00846">846</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00838">tools_isstralpha()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00902">tools_isstralpha()</a>.</p>
 
 </div>
 </div>
@@ -2967,7 +2970,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is alphanumeric </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00832">832</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00844">844</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -2986,7 +2989,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is an ASCII symbol </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00836">836</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00848">848</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3005,7 +3008,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is the bell character (<b></b>) </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00838">838</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00850">850</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3024,7 +3027,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a space or tab () character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00840">840</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00852">852</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3043,7 +3046,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a control character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00842">842</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00854">854</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3062,7 +3065,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a currency symbol </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00844">844</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00856">856</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3081,9 +3084,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a digit </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00846">846</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00858">858</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00847">tools_isstrnum()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00911">tools_isstrnum()</a>.</p>
 
 </div>
 </div>
@@ -3102,7 +3105,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is an alphabetic letter in the Latin-1 Supplement block </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00848">848</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00860">860</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3121,7 +3124,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a lowercase alphabetic letter in the Latin-1 Supplement block </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00850">850</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00862">862</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3140,7 +3143,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a uppercase alphabetic letter in the Latin-1 Supplement block </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00852">852</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00864">864</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3159,9 +3162,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a graphical character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00854">854</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00866">866</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00856">tools_isstrgraphical()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00920">tools_isstrgraphical()</a>.</p>
 
 </div>
 </div>
@@ -3180,7 +3183,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a lowercase character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00866">866</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00878">878</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3199,9 +3202,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a lowercase ASCII character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00864">864</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00876">876</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l01308">isstrlowercase()</a>, and <a class="el" href="pytools_8c_source.html#l00811">tools_isstrlowercase()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l01333">isstrlowercase()</a>, and <a class="el" href="pytools_8c_source.html#l00875">tools_isstrlowercase()</a>.</p>
 
 </div>
 </div>
@@ -3220,9 +3223,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a printable character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00856">856</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00868">868</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00865">tools_isstrprintable()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00929">tools_isstrprintable()</a>.</p>
 
 </div>
 </div>
@@ -3241,9 +3244,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a punctuation character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00858">858</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00870">870</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00874">tools_isstrpunctuation()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00938">tools_isstrpunctuation()</a>.</p>
 
 </div>
 </div>
@@ -3262,7 +3265,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a separator control character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00860">860</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00872">872</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3281,9 +3284,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a space character (space, tab, form-feed, etc.) </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00862">862</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00874">874</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00883">tools_isstrwhitespace()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00947">tools_isstrwhitespace()</a>.</p>
 
 </div>
 </div>
@@ -3302,7 +3305,7 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a uppercase character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00870">870</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00882">882</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3321,9 +3324,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a uppercase ASCII character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00868">868</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00880">880</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l01324">isstruppercase()</a>, and <a class="el" href="pytools_8c_source.html#l00820">tools_isstruppercase()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l01349">isstruppercase()</a>, and <a class="el" href="pytools_8c_source.html#l00884">tools_isstruppercase()</a>.</p>
 
 </div>
 </div>
@@ -3342,9 +3345,9 @@ y</td>
 </div><div class="memdoc">
 <p>Test if the char is a hexadecimal digit </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00872">872</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00884">884</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pytools_8c_source.html#l00892">tools_isstrhex()</a>.</p>
+<p>Referenced by <a class="el" href="pytools_8c_source.html#l00956">tools_isstrhex()</a>.</p>
 
 </div>
 </div>
@@ -3372,7 +3375,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00989">989</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01001">1001</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3386,7 +3389,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00952">952</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00964">964</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3400,7 +3403,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00509">509</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00521">521</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3414,7 +3417,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00510">510</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00522">522</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3442,7 +3445,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00990">990</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01002">1002</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3460,7 +3463,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00988">988</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01000">1000</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3474,7 +3477,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00756">756</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00768">768</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3502,7 +3505,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00993">993</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01005">1005</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3516,7 +3519,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00629">629</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00641">641</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3530,7 +3533,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01002">1002</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01014">1014</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3544,7 +3547,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01000">1000</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01012">1012</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3558,7 +3561,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00999">999</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01011">1011</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3572,7 +3575,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01001">1001</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01013">1013</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3586,7 +3589,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00998">998</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01010">1010</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3600,7 +3603,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01004">1004</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01016">1016</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3628,7 +3631,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00948">948</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00960">960</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3656,7 +3659,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00987">987</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00999">999</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3684,7 +3687,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00983">983</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00995">995</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3704,7 +3707,7 @@ y</td>
 <p>Evaluates to `exp` and hints that the value of `exp` will probably be true.</p>
 <p>In other words, if "(PREDICT_LIKELY(foo))" is the same as "if (foo)", it tells the compiler that the branch will be taken most of the time. This can generate slightly better code with some CPUs. </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00919">919</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00931">931</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3724,7 +3727,7 @@ y</td>
 <p>Evaluates to `exp` and hints that the value of `exp` will probably be false.</p>
 <p>In other words, if "(PREDICT_UNLIKELY(foo))" is the same as "if (foo)", it tells the compiler that the branch will usually not be taken. This can generate slightly better code with some CPUs. </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00925">925</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00937">937</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3742,7 +3745,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01009">1009</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01021">1021</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3756,7 +3759,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00587">587</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00599">599</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="typesize_8c_source.html#l00448">getptrdifftsize()</a>, and <a class="el" href="pytypesize_8c_source.html#l00681">typesize_getptrdifftsize()</a>.</p>
 
@@ -3776,7 +3779,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00943">943</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00955">955</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3790,7 +3793,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00625">625</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00637">637</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3804,7 +3807,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00626">626</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00638">638</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3818,7 +3821,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00614">614</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00626">626</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3836,7 +3839,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01011">1011</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01023">1023</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3854,7 +3857,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01010">1010</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01022">1022</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3869,7 +3872,7 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "float" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00609">609</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00621">621</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3884,9 +3887,9 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "signed long int" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00599">599</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00611">611</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00743">fileadler16()</a>, <a class="el" href="tools_8c_source.html#l00788">fileadler32()</a>, <a class="el" href="tools_8c_source.html#l00833">fileadler64()</a>, <a class="el" href="tools_8c_source.html#l00878">fileantiadler64()</a>, <a class="el" href="tools_8c_source.html#l00923">fileantiadler64rev2()</a>, <a class="el" href="tools_8c_source.html#l00685">filebitparity64()</a>, <a class="el" href="tools_8c_source.html#l01186">filecollier32()</a>, <a class="el" href="tools_8c_source.html#l00968">filefletcher16()</a>, <a class="el" href="tools_8c_source.html#l01013">filefletcher16fast()</a>, <a class="el" href="tools_8c_source.html#l01075">filefletcher32()</a>, <a class="el" href="tools_8c_source.html#l01127">filefletcher32fast()</a>, <a class="el" href="tools_8c_source.html#l00409">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00477">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00425">getfile()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="tools_8c_source.html#l00392">getfilesize_t()</a>, <a class="el" href="mathfunc_8c_source.html#l02300">longmean()</a>, <a class="el" href="mathfunc_8c_source.html#l00555">pow_ten_negl()</a>, <a class="el" href="mathfunc_8c_source.html#l00608">signed_powl()</a>, and <a class="el" href="mathfunc_8c_source.html#l01397">sinpi()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00768">fileadler16()</a>, <a class="el" href="tools_8c_source.html#l00813">fileadler32()</a>, <a class="el" href="tools_8c_source.html#l00858">fileadler64()</a>, <a class="el" href="tools_8c_source.html#l00903">fileantiadler64()</a>, <a class="el" href="tools_8c_source.html#l00948">fileantiadler64rev2()</a>, <a class="el" href="tools_8c_source.html#l00710">filebitparity64()</a>, <a class="el" href="tools_8c_source.html#l01211">filecollier32()</a>, <a class="el" href="tools_8c_source.html#l00993">filefletcher16()</a>, <a class="el" href="tools_8c_source.html#l01038">filefletcher16fast()</a>, <a class="el" href="tools_8c_source.html#l01100">filefletcher32()</a>, <a class="el" href="tools_8c_source.html#l01152">filefletcher32fast()</a>, <a class="el" href="tools_8c_source.html#l00434">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00502">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00450">getfile()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="tools_8c_source.html#l00417">getfilesize_t()</a>, <a class="el" href="mathfunc_8c_source.html#l02300">longmean()</a>, <a class="el" href="mathfunc_8c_source.html#l00555">pow_ten_negl()</a>, <a class="el" href="mathfunc_8c_source.html#l00608">signed_powl()</a>, and <a class="el" href="mathfunc_8c_source.html#l01397">sinpi()</a>.</p>
 
 </div>
 </div>
@@ -3901,9 +3904,9 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "signed long long int" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00601">601</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00613">613</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="mathfunc_8c_source.html#l00935">doublefactoriallonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00892">factoriallonglong()</a>, <a class="el" href="pygeometry_8c_source.html#l00391">geometry_areasquare_int()</a>, <a class="el" href="mathfunc_8c_source.html#l01268">heptagonal_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l01240">hexagonal_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l02598">islonglongmersenneprime()</a>, <a class="el" href="mathfunc_8c_source.html#l01152">longlongfib()</a>, <a class="el" href="pymathfunc_8c_source.html#l00600">mathfunc_doublefactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00593">mathfunc_factorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00631">mathfunc_fib()</a>, <a class="el" href="pymathfunc_8c_source.html#l00694">mathfunc_heptagonal_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00687">mathfunc_hexagonal_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l01127">mathfunc_iscomposite()</a>, <a class="el" href="pymathfunc_8c_source.html#l01087">mathfunc_isheptagonal()</a>, <a class="el" href="pymathfunc_8c_source.html#l01079">mathfunc_ishexagonal()</a>, <a class="el" href="pymathfunc_8c_source.html#l01103">mathfunc_ismersennenumber()</a>, <a class="el" href="pymathfunc_8c_source.html#l01111">mathfunc_ismersenneprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01095">mathfunc_ispoweroftwo()</a>, <a class="el" href="pymathfunc_8c_source.html#l01119">mathfunc_isprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01056">mathfunc_issquare()</a>, <a class="el" href="pymathfunc_8c_source.html#l01071">mathfunc_istriangular()</a>, <a class="el" href="pymathfunc_8c_source.html#l00715">mathfunc_mersenne_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00708">mathfunc_pentatope_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00624">mathfunc_pronic()</a>, <a class="el" href="pymathfunc_8c_source.html#l00607">mathfunc_quadfactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00614">mathfunc_superfactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00701">mathfunc_tetrahedral_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00680">mathfunc_triangular_num()</a>, <a class="el" href="mathfunc_8c_source.html#l02288">meanl()</a>, <a class="el" href="mathfunc_8c_source.html#l01356">mersenne_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00642">mod_pow_longlong()</a>, <a class="el" href="mathfunc_8c_source.html#l01320">pentatope_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00344">pow2_longlong()</a>, <a class="el" href="mathfunc_8c_source.html#l01070">proniclonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00981">quadfactoriallonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l01294">tetrahedral_numlonglong()</a>, and <a class="el" href="mathfunc_8c_source.html#l01212">triangular_numlonglong()</a>.</p>
+<p>Referenced by <a class="el" href="mathfunc_8c_source.html#l00935">doublefactoriallonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00892">factoriallonglong()</a>, <a class="el" href="pygeometry_8c_source.html#l00391">geometry_areasquare_int()</a>, <a class="el" href="mathfunc_8c_source.html#l01268">heptagonal_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l01240">hexagonal_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l02598">islonglongmersenneprime()</a>, <a class="el" href="mathfunc_8c_source.html#l01152">longlongfib()</a>, <a class="el" href="pymathfunc_8c_source.html#l00643">mathfunc_doublefactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00636">mathfunc_factorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00674">mathfunc_fib()</a>, <a class="el" href="pymathfunc_8c_source.html#l00737">mathfunc_heptagonal_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00730">mathfunc_hexagonal_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l01170">mathfunc_iscomposite()</a>, <a class="el" href="pymathfunc_8c_source.html#l01130">mathfunc_isheptagonal()</a>, <a class="el" href="pymathfunc_8c_source.html#l01122">mathfunc_ishexagonal()</a>, <a class="el" href="pymathfunc_8c_source.html#l01146">mathfunc_ismersennenumber()</a>, <a class="el" href="pymathfunc_8c_source.html#l01154">mathfunc_ismersenneprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01138">mathfunc_ispoweroftwo()</a>, <a class="el" href="pymathfunc_8c_source.html#l01162">mathfunc_isprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01099">mathfunc_issquare()</a>, <a class="el" href="pymathfunc_8c_source.html#l01114">mathfunc_istriangular()</a>, <a class="el" href="pymathfunc_8c_source.html#l00758">mathfunc_mersenne_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00751">mathfunc_pentatope_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00581">mathfunc_pow2()</a>, <a class="el" href="pymathfunc_8c_source.html#l00667">mathfunc_pronic()</a>, <a class="el" href="pymathfunc_8c_source.html#l00650">mathfunc_quadfactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00657">mathfunc_superfactorial()</a>, <a class="el" href="pymathfunc_8c_source.html#l00744">mathfunc_tetrahedral_num()</a>, <a class="el" href="pymathfunc_8c_source.html#l00723">mathfunc_triangular_num()</a>, <a class="el" href="mathfunc_8c_source.html#l02288">meanl()</a>, <a class="el" href="mathfunc_8c_source.html#l01356">mersenne_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00642">mod_pow_longlong()</a>, <a class="el" href="mathfunc_8c_source.html#l01320">pentatope_numlonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00344">pow2_longlong()</a>, <a class="el" href="mathfunc_8c_source.html#l01070">proniclonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l00981">quadfactoriallonglong()</a>, <a class="el" href="mathfunc_8c_source.html#l01294">tetrahedral_numlonglong()</a>, and <a class="el" href="mathfunc_8c_source.html#l01212">triangular_numlonglong()</a>.</p>
 
 </div>
 </div>
@@ -3929,7 +3932,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00315">315</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00316">316</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3943,7 +3946,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00361">361</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00370">370</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3958,7 +3961,7 @@ y</td>
 </div><div class="memdoc">
 <p>STMT_BEGIN and STMT_END are used to wrap blocks inside macros so that the macro can be used as if it were a single C statement. </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00964">964</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00976">976</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3972,7 +3975,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00965">965</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00977">977</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -3987,7 +3990,7 @@ y</td>
 </div><div class="memdoc">
 <p>Expands to a syntactically valid empty statement </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00956">956</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00968">968</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4006,7 +4009,7 @@ y</td>
 </div><div class="memdoc">
 <p>Expands to a syntactically valid empty statement, explicitly voiding its argument </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00960">960</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00972">972</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4034,7 +4037,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00985">985</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00997">997</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4048,7 +4051,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00679">679</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00691">691</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4067,7 +4070,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert the char to an ASCII character </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00874">874</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00886">886</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4086,7 +4089,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert the char to a lowercase ASCII letter </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00876">876</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00888">888</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4105,7 +4108,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert the char to a uppercase ASCII letter </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00878">878</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00890">890</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4119,7 +4122,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00523">523</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00535">535</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4133,7 +4136,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00525">525</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00537">537</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4147,7 +4150,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00527">527</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00539">539</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4161,7 +4164,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00581">581</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00593">593</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4207,7 +4210,7 @@ y</td>
 <div class="line">    <span class="keywordflow">default</span>: <span class="stringliteral">&quot;other&quot;</span>)</div>
 </div><!-- fragment --><p>Return the datatype of the given variable </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01018">1018</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01030">1030</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4221,7 +4224,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00351">351</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00360">360</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4235,7 +4238,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00357">357</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00366">366</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4249,7 +4252,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00356">356</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00365">365</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4263,7 +4266,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00670">670</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00682">682</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4277,7 +4280,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00707">707</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00719">719</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4291,7 +4294,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00704">704</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00716">716</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4305,7 +4308,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00710">710</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00722">722</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4319,7 +4322,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00353">353</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00362">362</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4333,7 +4336,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00648">648</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00660">660</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4347,7 +4350,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00358">358</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00367">367</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4361,7 +4364,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00354">354</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00363">363</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4375,7 +4378,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00355">355</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00364">364</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4389,7 +4392,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00352">352</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00361">361</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4403,7 +4406,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00651">651</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00663">663</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4417,7 +4420,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00627">627</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00639">639</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4431,7 +4434,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00628">628</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00640">640</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4450,7 +4453,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert a uint32_t to float </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00976">976</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00988">988</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4464,7 +4467,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00746">746</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00758">758</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4482,7 +4485,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00736">736</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00748">748</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4500,7 +4503,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00734">734</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00746">746</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4518,7 +4521,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00735">735</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00747">747</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4537,7 +4540,7 @@ y</td>
 </div><div class="memdoc">
 <p>Convert a uint64_t to double </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00980">980</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00992">992</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4551,7 +4554,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00615">615</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00627">627</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4566,7 +4569,7 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "unsigned int" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00603">603</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00615">615</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4580,7 +4583,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00640">640</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00652">652</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4598,7 +4601,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00807">807</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00819">819</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4616,9 +4619,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00808">808</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00820">820</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l01647">endianness()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l01672">endianness()</a>.</p>
 
 </div>
 </div>
@@ -4636,7 +4639,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00809">809</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00821">821</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4654,7 +4657,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00806">806</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00818">818</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4672,7 +4675,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00811">811</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00823">823</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4687,9 +4690,9 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "unsigned long int" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00605">605</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00617">617</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="cryptx_8c_source.html#l00998">caesar_cipher()</a>, <a class="el" href="cryptx_8c_source.html#l01007">decrypt_caesar_cipher()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="mathfunc_8c_source.html#l02925">isulcomposite()</a>, <a class="el" href="mathfunc_8c_source.html#l02745">isulprime()</a>, <a class="el" href="mathfunc_8c_source.html#l01108">longfib()</a>, <a class="el" href="cryptx_8c_source.html#l00766">rand16384str()</a>, <a class="el" href="cryptx_8c_source.html#l00720">randalphanumstr()</a>, <a class="el" href="cryptx_8c_source.html#l00698">randalphastr()</a>, <a class="el" href="cryptx_8c_source.html#l00649">randomlong()</a>, <a class="el" href="cryptx_8c_source.html#l00676">randstr()</a>, <a class="el" href="cryptx_8c_source.html#l00742">randstrx()</a>, <a class="el" href="tools_8c_source.html#l01454">strreplace()</a>, <a class="el" href="chron_8c_source.html#l00057">time_seconds()</a>, <a class="el" href="pytools_8c_source.html#l00904">tools_strreplace()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
+<p>Referenced by <a class="el" href="cryptx_8c_source.html#l00998">caesar_cipher()</a>, <a class="el" href="cryptx_8c_source.html#l01007">decrypt_caesar_cipher()</a>, <a class="el" href="compression_8c_source.html#l00051">getfilesize()</a>, <a class="el" href="mathfunc_8c_source.html#l02925">isulcomposite()</a>, <a class="el" href="mathfunc_8c_source.html#l02745">isulprime()</a>, <a class="el" href="mathfunc_8c_source.html#l01108">longfib()</a>, <a class="el" href="cryptx_8c_source.html#l00766">rand16384str()</a>, <a class="el" href="cryptx_8c_source.html#l00720">randalphanumstr()</a>, <a class="el" href="cryptx_8c_source.html#l00698">randalphastr()</a>, <a class="el" href="cryptx_8c_source.html#l00649">randomlong()</a>, <a class="el" href="cryptx_8c_source.html#l00676">randstr()</a>, <a class="el" href="cryptx_8c_source.html#l00742">randstrx()</a>, <a class="el" href="tools_8c_source.html#l01479">strreplace()</a>, <a class="el" href="chron_8c_source.html#l00057">time_seconds()</a>, <a class="el" href="pytools_8c_source.html#l00968">tools_strreplace()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
 
 </div>
 </div>
@@ -4704,9 +4707,9 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "unsigned long long int" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00607">607</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00619">619</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="mathfunc_8c_source.html#l04344">bit_length()</a>, <a class="el" href="mathfunc_8c_source.html#l04368">clearlsb()</a>, <a class="el" href="mathfunc_8c_source.html#l00906">doublefactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l00878">factorial()</a>, <a class="el" href="mathfunc_8c_source.html#l01262">heptagonal_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01233">hexagonal_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l02955">isullcomposite()</a>, <a class="el" href="mathfunc_8c_source.html#l02562">isullpoweroftwo()</a>, <a class="el" href="mathfunc_8c_source.html#l02775">isullprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01171">mathfunc_bit_length()</a>, <a class="el" href="mathfunc_8c_source.html#l01345">mersenne_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01314">pentatope_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l00333">pow2()</a>, <a class="el" href="mathfunc_8c_source.html#l00419">pow_ten_int()</a>, <a class="el" href="mathfunc_8c_source.html#l00436">pow_ten_int_fast()</a>, <a class="el" href="mathfunc_8c_source.html#l01064">pronicull()</a>, <a class="el" href="mathfunc_8c_source.html#l00965">quadfactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l00659">sqrtull()</a>, <a class="el" href="mathfunc_8c_source.html#l01000">superfactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l01288">tetrahedral_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01206">triangular_numull()</a>, and <a class="el" href="mathfunc_8c_source.html#l00574">unsigned_pow()</a>.</p>
+<p>Referenced by <a class="el" href="mathfunc_8c_source.html#l04344">bit_length()</a>, <a class="el" href="mathfunc_8c_source.html#l04368">clearlsb()</a>, <a class="el" href="mathfunc_8c_source.html#l00906">doublefactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l00878">factorial()</a>, <a class="el" href="mathfunc_8c_source.html#l01262">heptagonal_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01233">hexagonal_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l02955">isullcomposite()</a>, <a class="el" href="mathfunc_8c_source.html#l02562">isullpoweroftwo()</a>, <a class="el" href="mathfunc_8c_source.html#l02775">isullprime()</a>, <a class="el" href="pymathfunc_8c_source.html#l01214">mathfunc_bit_length()</a>, <a class="el" href="mathfunc_8c_source.html#l01345">mersenne_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01314">pentatope_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l00333">pow2()</a>, <a class="el" href="mathfunc_8c_source.html#l00419">pow_ten_int()</a>, <a class="el" href="mathfunc_8c_source.html#l00436">pow_ten_int_fast()</a>, <a class="el" href="mathfunc_8c_source.html#l01064">pronicull()</a>, <a class="el" href="mathfunc_8c_source.html#l00965">quadfactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l00659">sqrtull()</a>, <a class="el" href="mathfunc_8c_source.html#l01000">superfactorial()</a>, <a class="el" href="mathfunc_8c_source.html#l01288">tetrahedral_numull()</a>, <a class="el" href="mathfunc_8c_source.html#l01206">triangular_numull()</a>, and <a class="el" href="mathfunc_8c_source.html#l00574">unsigned_pow()</a>.</p>
 
 </div>
 </div>
@@ -4723,7 +4726,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00944">944</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00956">956</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4740,9 +4743,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00945">945</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00957">957</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00409">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00477">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00507">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00425">getfile()</a>, <a class="el" href="tools_8c_source.html#l00455">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00434">filesize64()</a>, <a class="el" href="tools_8c_source.html#l00502">getbinfile()</a>, <a class="el" href="tools_8c_source.html#l00532">getbinfile_sizet()</a>, <a class="el" href="tools_8c_source.html#l00450">getfile()</a>, <a class="el" href="tools_8c_source.html#l00480">getfile_sizet()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
 
 </div>
 </div>
@@ -4759,9 +4762,9 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00946">946</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00958">958</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tools_8c_source.html#l00554">appendfile()</a>, <a class="el" href="tools_8c_source.html#l00567">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00524">writefile()</a>, <a class="el" href="tools_8c_source.html#l00537">writefilebuf()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
+<p>Referenced by <a class="el" href="tools_8c_source.html#l00579">appendfile()</a>, <a class="el" href="tools_8c_source.html#l00592">appendfilebuf()</a>, <a class="el" href="tools_8c_source.html#l00549">writefile()</a>, <a class="el" href="tools_8c_source.html#l00562">writefilebuf()</a>, <a class="el" href="compression_8c_source.html#l00119">zlib_compress_file()</a>, and <a class="el" href="compression_8c_source.html#l00235">zlib_decompress_file()</a>.</p>
 
 </div>
 </div>
@@ -4776,7 +4779,7 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "uint32_t" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00617">617</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00629">629</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4790,7 +4793,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00814">814</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00826">826</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="typesize_8c_source.html#l00165">getmaxwchartval()</a>.</p>
 
@@ -4806,7 +4809,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00589">589</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00601">601</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 <p>Referenced by <a class="el" href="typesize_8c_source.html#l00198">getwchartsize()</a>.</p>
 
@@ -4823,7 +4826,7 @@ y</td>
 </div><div class="memdoc">
 <p>Alias for "unsigned long" </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00613">613</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00625">625</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4841,7 +4844,7 @@ y</td>
 <p>POSIX <a href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/contents.html">http://pubs.opengroup.org/onlinepubs/9699919799/functions/contents.html</a></p>
 <p>limits.h <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/limits.h.html">http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/limits.h.html</a> <a href="http://www.cplusplus.com/reference/climits/">http://www.cplusplus.com/reference/climits/</a> </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00440">440</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00451">451</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4869,7 +4872,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00992">992</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01004">1004</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4897,7 +4900,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00991">991</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l01003">1003</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4925,7 +4928,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00984">984</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00996">996</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4939,7 +4942,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00511">511</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00523">523</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4953,7 +4956,7 @@ y</td>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00512">512</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00524">524</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4970,7 +4973,7 @@ y</td>
 <p>128-bit signed integer datatype (not all systems support int128_t)</p>
 <p>128-bit unsigned integer datatype (not all systems support uint128_t) </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00636">636</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00648">648</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -4985,7 +4988,7 @@ y</td>
 </div><div class="memdoc">
 <p>&lt;stdbool.h&gt; replacement </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00532">532</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00544">544</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -5000,7 +5003,7 @@ y</td>
 </div><div class="memdoc">
 <p>Support Objective-C-Style "BOOL" datatype </p>
 
-<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00536">536</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
+<p>Definition at line <a class="el" href="MACROS_8h_source.html#l00548">548</a> of file <a class="el" href="MACROS_8h_source.html">MACROS.h</a>.</p>
 
 </div>
 </div>
@@ -5010,7 +5013,7 @@ y</td>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="MACROS_8h.html">MACROS.h</a></li>
-    <li class="footer">Generated on Mon Mar 21 2016 16:54:07 for PyBooster by
+    <li class="footer">Generated on Fri Mar 25 2016 19:23:40 for PyBooster by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -24,5 +24,6 @@ var searchData=
   ['kilometer2parsec',['kilometer2parsec',['../namespacepybooster_1_1convlength.html#a7407d1553ba42ee4acaac8b62e1036e1',1,'pybooster::convlength']]],
   ['kilometer2yard',['kilometer2yard',['../namespacepybooster_1_1convlength.html#a839e433f4159194568c78dfe3f0719ea',1,'pybooster::convlength']]],
   ['kinetic_5fenergy',['kinetic_energy',['../physics_8c.html#a2509ef47b314f7fc1b6321bc5f7b87e8',1,'kinetic_energy(const double mass, const double velocity):&#160;physics.c'],['../physics_8h.html#a2509ef47b314f7fc1b6321bc5f7b87e8',1,'kinetic_energy(const double mass, const double velocity):&#160;physics.c']]],
-  ['krypton',['krypton',['../chemistry__types_8c.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50caa7fb2a359b3228d655cc79bed0b56a09',1,'KRYPTON():&#160;chemistry_types.h']]]
+  ['krypton',['KRYPTON',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50caa7fb2a359b3228d655cc79bed0b56a09',1,'KRYPTON():&#160;chemistry_types.h'],['../chemistry__types_8c.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af8462b8ef52dfc833923d6714c8e7c78',1,'krypton():&#160;chemistry_types.c']]],
+  ['krypton_5fmolar_5fmass',['KRYPTON_MOLAR_MASS',['../chemistry_8h.html#ad4345152bcf2ab1896ee7d42c92ed6e8',1,'chemistry.h']]]
 ];

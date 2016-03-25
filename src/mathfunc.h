@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Mathematical and Trigonometric Functions (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides additional functions and offers faster alternatives to some standard functions.
@@ -1148,6 +1148,8 @@ int div_and_mod_int(const int num1, const int num2) __attribute__((const, flatte
 double div_and_mod(const double num1, const double num2) __attribute__((const, flatten));
 float div_and_modf(const float num1, const float num2) __attribute__((const, flatten));
 double lanczos_sum(const double x) __attribute__((const, flatten));
+void dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length) __attribute__((const, flatten, nonnull));
+void dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length) __attribute__((const, flatten, nonnull));
 #else
 ullint bit_length(const ullint num);
 #ifdef UINT128_SUPPORTED
@@ -1168,6 +1170,8 @@ int div_and_mod_int(const int num1, const int num2);
 double div_and_mod(const double num1, const double num2);
 float div_and_modf(const float num1, const float num2);
 double lanczos_sum(const double x);
+void dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length);
+void dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length);
 #endif
 
 

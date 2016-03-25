@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Cryptography Functions (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides many encryption, decryption, cipher, hash, and checksum functions
@@ -36,10 +36,7 @@ License along with this library.
 
 #include "MACROS.h"
 
-#include <time.h>
-#ifdef OSPOSIX
-#   include <sys/time.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_time.h.html
-#endif
+#include <time.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/time.h.html
 
 #define TREYFER_NUMROUNDS   ((uint8_t)(32))
 

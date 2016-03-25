@@ -31,7 +31,11 @@ var searchData=
   ['ordinal_5flist',['ORDINAL_LIST',['../namespacepybooster_1_1strtools.html#a7648cca27145c7e89f9f9fbc0b42c30d',1,'pybooster::strtools']]],
   ['orswap',['ORSWAP',['../MACROS_8h.html#abc977a8235474928df4c0a7e94902cae',1,'MACROS.h']]],
   ['oseek',['OSEEK',['../extra__datatypes_8c.html#ab545222dc1777f3d12e347e0683f31b4af3ad50daca729f448204f816d3d155a6',1,'extra_datatypes.c']]],
-  ['osmium',['osmium',['../chemistry__types_8c.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50cae3117e2af209c320b107f39d71146aca',1,'OSMIUM():&#160;chemistry_types.h']]],
+  ['osmium',['OSMIUM',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50cae3117e2af209c320b107f39d71146aca',1,'OSMIUM():&#160;chemistry_types.h'],['../chemistry__types_8c.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#abe0b6a3efb1f4cc17a7cedb1c2be2e6d',1,'osmium():&#160;chemistry_types.c']]],
+  ['osmium_5fmolar_5fmass',['OSMIUM_MOLAR_MASS',['../chemistry_8h.html#a8a1ee506ee4b0d8f5e53f1a96966215b',1,'chemistry.h']]],
+  ['outputlayer',['outputlayer',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a63a91cc2b46b4d5bfc7fde8dc08dcf5f',1,'pybooster::neuralnet::NeuroCode']]],
+  ['outputs',['outputs',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#af8d743b78404b120589eca8c77c1c2a9',1,'pybooster::neuralnet::NeuroCode']]],
   ['outputtype',['outputType',['../extra__datatypes_8h.html#a01775ad3e97219e0b783ec371ede5cfc',1,'GPIO_PinInitStruct_t']]],
-  ['oxygen',['oxygen',['../chemistry__types_8c.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca0748ce84f356ebb18051802efa5a1e52',1,'OXYGEN():&#160;chemistry_types.h']]]
+  ['oxygen',['oxygen',['../chemistry__types_8c.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ab3043b0f3232849f93de4c872b714540',1,'oxygen():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca0748ce84f356ebb18051802efa5a1e52',1,'OXYGEN():&#160;chemistry_types.h']]],
+  ['oxygen_5fmolar_5fmass',['OXYGEN_MOLAR_MASS',['../chemistry_8h.html#a00a46bd6f160d972061e8c36c98dd407',1,'chemistry.h']]]
 ];

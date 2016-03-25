@@ -41,6 +41,7 @@ var searchData=
   ['cgu',['CGU',['../chemistry__types_8c.html#a0b843600b7709426be2e03c1f472f2fa',1,'CGU():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a0b843600b7709426be2e03c1f472f2fa',1,'CGU():&#160;chemistry_types.c']]],
   ['champernowne_5fconstant',['CHAMPERNOWNE_CONSTANT',['../mathconstants_8c.html#a8de684021f6f34f9f0857e9b7c8be59c',1,'CHAMPERNOWNE_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a8de684021f6f34f9f0857e9b7c8be59c',1,'CHAMPERNOWNE_CONSTANT():&#160;mathconstants.c']]],
   ['champernowne_5fconstantl',['CHAMPERNOWNE_CONSTANTl',['../mathconstants_8c.html#ab6011eefbd1daf804d115e2ba1f9915c',1,'CHAMPERNOWNE_CONSTANTl():&#160;mathconstants.c'],['../mathconstants_8h.html#ab6011eefbd1daf804d115e2ba1f9915c',1,'CHAMPERNOWNE_CONSTANTl():&#160;mathconstants.c']]],
+  ['changes',['changes',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a37e9e3eefa8abd98a0f9c1197b022411',1,'pybooster::neuralnet::NeuroCode']]],
   ['char_5fref',['CHAR_REF',['../namespacepybooster_1_1strtools.html#aabe488f08ef76468bb4c3cbc8c9b8228',1,'pybooster::strtools']]],
   ['char_5fref2',['CHAR_REF2',['../namespacepybooster_1_1strtools.html#a2e0ea5f62d90397ee354a9b2189e89b9',1,'pybooster::strtools']]],
   ['characteristic_5fimpedance_5fof_5fvacuum',['CHARACTERISTIC_IMPEDANCE_OF_VACUUM',['../namespacepybooster_1_1science__data.html#a806a250143063933d5ff527fe011d674',1,'pybooster::science_data']]],

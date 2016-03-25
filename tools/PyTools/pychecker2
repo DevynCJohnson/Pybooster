@@ -1,0 +1,19 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+
+
+PYTHON=$(which python2)
+CHECKER_PATH=`${PYTHON} -c "from imp import find_module; print find_module('pychecker/checker')[1]"`
+
+if [ ! -n "${CHECKER_PATH}" ]
+then
+   echo "Unable to find checker.py on Python's module path."
+   exit 1
+elif [ ! -f "${CHECKER_PATH}" ]
+then
+   echo "Found checker.py as [${CHECKER_PATH}], but it does not seem to exist."
+   exit 1
+fi
+
+exec "${PYTHON}" "${CHECKER_PATH}" "$@"

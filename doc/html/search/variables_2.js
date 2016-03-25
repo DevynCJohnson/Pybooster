@@ -5,6 +5,7 @@ var searchData=
   ['berkelium',['berkelium',['../chemistry__types_8c.html#a7fa816ba3197b3628a9426c7bae06610',1,'berkelium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a7fa816ba3197b3628a9426c7bae06610',1,'berkelium():&#160;chemistry_types.c']]],
   ['bernsteins_5fconstant',['BERNSTEINS_CONSTANT',['../mathconstants_8c.html#a4222ec158fad13c5ea6597c56fe7380b',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a4222ec158fad13c5ea6597c56fe7380b',1,'BERNSTEINS_CONSTANT():&#160;mathconstants.c']]],
   ['beryllium',['beryllium',['../chemistry__types_8c.html#a52a26cd6e445a1bffab43d3eb3dd6bcf',1,'beryllium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a52a26cd6e445a1bffab43d3eb3dd6bcf',1,'beryllium():&#160;chemistry_types.c']]],
+  ['biases',['biases',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#ab2e44a5f78f34ce5abdce30766f8b49e',1,'pybooster::neuralnet::NeuroCode']]],
   ['biohazard',['BIOHAZARD',['../namespacepybooster_1_1strtools.html#a49d7bf9826bf60d6d8b2f109b0c48f7b',1,'pybooster::strtools']]],
   ['bismuth',['bismuth',['../chemistry__types_8c.html#a0750835421730ee00bac0b41f522c6eb',1,'bismuth():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a0750835421730ee00bac0b41f522c6eb',1,'bismuth():&#160;chemistry_types.c']]],
   ['bit',['bit',['../extra__datatypes_8h.html#a07d22a0c3113c2c06940fb2d3f9290ef',1,'GPIO_Pin_t']]],

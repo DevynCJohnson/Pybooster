@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Mathematical and Trigonometric Functions
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This library provides additional functions and offers faster alternatives to some standard functions.
@@ -4480,4 +4480,20 @@ double lanczos_sum(const double x) {
         }
     }
     return (num / den);
+}
+
+
+/** Dot Product Algorithm (Array of 32-bit integers) */
+void dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length) {
+    register uint32_t i;
+    output_array = 0x0;
+    for (i = 0x0; i < _length; i++) { output_array += _array1[i] * _array2[i]; }
+}
+
+
+/** Dot Product Algorithm (Array of 64-bit integers) */
+void dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length) {
+    register uint64_t i;
+    output_array = 0x0;
+    for (i = 0x0; i < _length; i++) { output_array += _array1[i] * _array2[i]; }
 }

@@ -1,8 +1,6 @@
 #!/usr/bin/make -f
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
-# @brief Makefile for PyBooster
-# @version 2016.03.21
 
 
 ifdef DCJ
@@ -185,7 +183,7 @@ default:
 
 
 # General
-.PHONY : all backup byte clean cleanall cleanfull everything fixperm install lib library most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp rmwrap static strip uninstall
+.PHONY : all backup byte clean cleanall cleanfull ctags everything fixperm install lib library most package package7z packagezip py pybuild pyclibc pylibc rmcache rmtmp rmwrap static strip uninstall
 # Documentation
 .PHONY : cleandoc doc doxy
 # Git
@@ -272,7 +270,10 @@ package7z : rmtmp
 packagezip : rmtmp
 	@cd ../; zip -r ./PyBooster_v`date +"%Y.%m.%d"`.zip PyBooster; cd ./PyBooster
 
-doc : rmwrap
+ctags : cleanall
+	-@geany -P -g ./tools/PyBooster.c.tags $(SRCDIR)/*
+
+doc : cleandoc rmwrap
 	-@./makedoc.sh
 
 doxy : rmwrap
@@ -306,18 +307,20 @@ install : rmtmp
 	rm -frd --one-file-system /opt/pybooster/*; \
 	mkdir -p /opt/pybooster/clib /opt/pybooster/include; \
 	mkdir -p /opt/pybooster/doc /opt/pybooster/ezwin; \
+	mkdir -p /opt/pybooster/lua /opt/pybooster/ruby /opt/pybooster/tcl /opt/pybooster/octave; \
+	mkdir -p /opt/pybooster/perl /opt/pybooster/php /opt/pybooster/pike; \
 	# Copy files to installation directory \
 	cp -Rf ./doc/* /opt/pybooster/doc; \
 	cp -Rf $(PYMODDIR)/* /opt/pybooster/; \
 	cp -Rf $(CLIB)/* /opt/pybooster/clib/; \
 	cp -Rf $(SRCDIR)/*.h /opt/pybooster/include/; \
-	cp -Rf $(SWIGLUA)/* /opt/pybooster/lua/; \
-	cp -Rf $(SWIGRUBY)/* /opt/pybooster/ruby/; \
-	cp -Rf $(SWIGTCL)/* /opt/pybooster/tcl/; \
-	cp -Rf $(SWIGOCTAVE)/* /opt/pybooster/octave/; \
-	cp -Rf $(SWIGPERL)/* /opt/pybooster/perl/; \
-	cp -Rf $(SWIGPHP)/* /opt/pybooster/php/; \
-	cp -Rf $(SWIGPIKE)/* /opt/pybooster/pike/; \
+	cp $(SWIGLUA)/* /opt/pybooster/lua/ || true; \
+	cp $(SWIGRUBY)/* /opt/pybooster/ruby/ || true; \
+	cp $(SWIGTCL)/* /opt/pybooster/tcl/ || true; \
+	cp $(SWIGOCTAVE)/* /opt/pybooster/octave/ || true; \
+	cp $(SWIGPERL)/* /opt/pybooster/perl/ || true; \
+	cp $(SWIGPHP)/* /opt/pybooster/php/ || true; \
+	cp $(SWIGPIKE)/* /opt/pybooster/pike/ || true; \
 	# Ensure that the proper permissions are set \
 	$(CHMOD) 644 /opt/pybooster/doc/*; \
 	$(CHMOD) 755 /opt/pybooster/doc/html; \
@@ -326,11 +329,11 @@ install : rmtmp
 	$(CHMOD) 644 /opt/pybooster/doc/html/search/*; \
 	$(CHMOD) 644 /opt/pybooster/*.py /opt/pybooster/*.glade; \
 	$(CHMOD) 755 /opt/pybooster/*.so /opt/pybooster/*.dll; \
-	$(CHMOD) 755 /opt/pybooster/tcl/*.so /opt/pybooster/tcl/*.dll; \
-	$(CHMOD) 755 /opt/pybooster/octave/*.oct; \
-	$(CHMOD) 755 /opt/pybooster/perl/*.pm /opt/pybooster/perl/*.so /opt/pybooster/perl/*.dll; \
-	$(CHMOD) 755 /opt/pybooster/php/*.php /opt/pybooster/php/*.so /opt/pybooster/php/*.dll; \
-	$(CHMOD) 755 /opt/pybooster/pike/*.so /opt/pybooster/pike/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/tcl/*.so /opt/pybooster/tcl/*.dll || true; \
+	$(CHMOD) 755 /opt/pybooster/octave/*.oct || true; \
+	$(CHMOD) 755 /opt/pybooster/perl/*.pm /opt/pybooster/perl/*.so /opt/pybooster/perl/*.dll || true; \
+	$(CHMOD) 755 /opt/pybooster/php/*.php /opt/pybooster/php/*.so /opt/pybooster/php/*.dll || true; \
+	$(CHMOD) 755 /opt/pybooster/pike/*.so /opt/pybooster/pike/*.dll || true; \
 	$(CHMOD) 755 /opt/pybooster/clib/*; \
 	$(CHMOD) 644 /opt/pybooster/include/*; \
 	$(CHMOD) 644 /opt/pybooster/__pycache__/* /opt/pybooster/ezwin/__pycache__/*; \

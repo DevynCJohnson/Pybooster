@@ -6,7 +6,7 @@
 @package pybooster.basic
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2016.03.21
+@version 2016.03.25
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -28,8 +28,10 @@ License along with this library.
 
 
 import os
+import pickle
 
 from ast import parse
+from base64 import b64decode, b64encode
 from csv import reader as creader
 from inspect import currentframe
 from json import dumps as jdump
@@ -37,6 +39,7 @@ from re import I as REI, fullmatch as refullmatch
 from sys import modules
 from types import ModuleType
 from urllib.request import urlopen
+from zlib import compress as zlibcompress, decompress as zlibdecompress
 
 
 __all__ = [
@@ -90,6 +93,7 @@ __all__ = [
     'rmduplist_set',
     'rmduplist_frozenset',
     # MISCELLANEOUS
+    'datadump',
     'execfile',
     'incde',
     'clearscr',
@@ -705,6 +709,16 @@ def rmduplist_frozenset(_list: list) -> frozenset:
 
 
 # MISCELLANEOUS
+
+
+def datadump(_data) -> bytes:
+    """Pickle data and compress it using Zlib"""
+    return b64encode(zlibcompress(pickle.dumps(_data), 9))
+
+
+def loaddata(_data):
+    """Load the given compressed+pickled neural-network"""
+    return pickle.loads(zlibdecompress(b64decode(_data)))
 
 
 def execfile(_filename: str):

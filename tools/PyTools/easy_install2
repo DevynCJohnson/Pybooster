@@ -1,0 +1,13 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# EASY-INSTALL-ENTRY-SCRIPT: "setuptools>=3.3","console_scripts","easy_install"
+
+
+__requires__ = "setuptools>=3.3"
+from pkg_resources import load_entry_point
+from sys import exit as _exit
+
+
+if __name__ == "__main__":
+    _exit(load_entry_point("setuptools>=3.3", "console_scripts", "easy_install")())

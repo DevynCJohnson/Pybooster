@@ -15,9 +15,12 @@ var searchData=
   ['inverse_5fel',['INVERSE_El',['../mathconstants_8c.html#a2be0e85fa29aaa79f17873ee26cdba38',1,'INVERSE_El():&#160;mathconstants.c'],['../mathconstants_8h.html#a2be0e85fa29aaa79f17873ee26cdba38',1,'INVERSE_El():&#160;mathconstants.c']]],
   ['inverse_5fpi',['INVERSE_PI',['../mathconstants_8c.html#ad575415bad07701fc305e92b4d6cfc0b',1,'INVERSE_PI():&#160;mathconstants.c'],['../mathconstants_8h.html#ad575415bad07701fc305e92b4d6cfc0b',1,'INVERSE_PI():&#160;mathconstants.c']]],
   ['inverse_5fpil',['INVERSE_PIl',['../mathconstants_8c.html#af14898894dd033ab37304d46043950bf',1,'INVERSE_PIl():&#160;mathconstants.c'],['../mathconstants_8h.html#af14898894dd033ab37304d46043950bf',1,'INVERSE_PIl():&#160;mathconstants.c']]],
+  ['io_5frules',['io_rules',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a030ac12baf25896f1afad7d9eafbe2dc',1,'pybooster::neuralnet::NeuroCode']]],
+  ['io_5frules_5flen',['io_rules_len',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#aac8e4d14c71986c89fba7aa0f4c8e032',1,'pybooster::neuralnet::NeuroCode']]],
   ['iodine',['iodine',['../chemistry__types_8c.html#a6bf6f7fb61503fc133086230f4abb820',1,'iodine():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a6bf6f7fb61503fc133086230f4abb820',1,'iodine():&#160;chemistry_types.c']]],
   ['iridium',['iridium',['../chemistry__types_8c.html#a9505f082fa044ff4f2e6fd07975931f7',1,'iridium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a9505f082fa044ff4f2e6fd07975931f7',1,'iridium():&#160;chemistry_types.c']]],
   ['iron',['iron',['../chemistry__types_8c.html#a4eb4c00288052d774d1d4d706d2da328',1,'iron():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a4eb4c00288052d774d1d4d706d2da328',1,'iron():&#160;chemistry_types.c']]],
   ['isoleucine',['isoleucine',['../chemistry__types_8c.html#abba1955f0023cb80acdb3f9f18d43444',1,'isoleucine():&#160;chemistry_types.c'],['../chemistry__types_8h.html#abba1955f0023cb80acdb3f9f18d43444',1,'isoleucine():&#160;chemistry_types.c']]],
+  ['iterations',['iterations',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a24e9ab44f60fd1a6e45405d690dfe989',1,'pybooster::neuralnet::NeuroCode']]],
   ['iupac_5fnotation',['IUPAC_NOTATION',['../chemistry__types_8c.html#ada178177d66892d6e6135c7885e0b726',1,'IUPAC_NOTATION():&#160;chemistry_types.c'],['../chemistry__types_8h.html#ada178177d66892d6e6135c7885e0b726',1,'IUPAC_NOTATION():&#160;chemistry_types.c']]]
 ];

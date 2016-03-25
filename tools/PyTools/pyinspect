@@ -1,0 +1,371 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @brief Inspect Python Scripts
+# @copyright LGPLv3
+# @section License
+#GNU Lesser General Public License v3
+#Copyright (c) Devyn Collier Johnson, All rights reserved.
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 3.0 of the License, or (at your option) any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library.
+
+
+# GLOBALS #
+export version=2016.03.22
+export SHDIR=${BASH_SOURCE%/*}
+export PARAM="$*"
+
+
+[[ ! "$(which python3)" ]] && { echo "ERROR: Python3 not found!"; exit 1; };
+
+[[ ! "$(which pep8)" ]] && { export __pep8__="$SHDIR/pep8"; };
+[[ "$(which pep8)" ]] && { export __pep8__="pep8"; };
+
+[[ ! "$(which pep257)" ]] && { export __pep257__="$SHDIR/pep257"; };
+[[ "$(which pep257)" ]] && { export __pep257__="pep257"; };
+
+[[ ! "$(which flake8)" ]] && { export __flake8__="$SHDIR/flake8"; };
+[[ "$(which flake8)" ]] && { export __flake8__="flake8"; };
+
+[[ ! "$(which pyflakes2)" ]] && { export __pyflakes2__="$SHDIR/pyflakes2"; };
+[[ "$(which pyflakes2)" ]] && { export __pyflakes2__="pyflakes2"; };
+[[ ! "$(which pyflakes3)" ]] && { export __pyflakes3__="$SHDIR/pyflakes3"; };
+[[ "$(which pyflakes3)" ]] && { export __pyflakes3__="pyflakes3"; };
+
+[[ ! "$(which pylint2)" ]] && { export __pylint2__="$SHDIR/pylint2"; };
+[[ "$(which pylint2)" ]] && { export __pylint2__="pylint2"; };
+[[ ! "$(which pylint3)" ]] && { export __pylint3__="$SHDIR/pylint3"; };
+[[ "$(which pylint3)" ]] && { export __pylint3__="pylint3"; };
+
+[[ ! "$(which pyreverse2)" ]] && { export __pyreverse2__="$SHDIR/pyreverse2"; };
+[[ "$(which pyreverse2)" ]] && { export __pyreverse2__="pyreverse2"; };
+[[ ! "$(which pyreverse3)" ]] && { export __pyreverse3__="$SHDIR/pyreverse3"; };
+[[ "$(which pyreverse3)" ]] && { export __pyreverse3__="pyreverse3"; };
+
+[[ ! "$(which pycolor)" ]] && { export __pycolor__="$SHDIR/pycolor"; };
+[[ "$(which pycolor)" ]] && { export __pycolor__="pycolor"; };
+
+[[ ! "$(which pytest3)" ]] && { export __pytest3__="$SHDIR/pytest3"; };
+[[ "$(which pytest3)" ]] && { export __pytest3__="pytest3"; };
+[[ ! "$(which pytest2)" ]] && { export __pytest2__="$SHDIR/pytest2"; };
+[[ "$(which pytest2)" ]] && { export __pytest2__="pytest2"; };
+
+# FUNCTIONS #
+function Help {
+    echo ""
+    echo "=====  Pyinspect  ====="
+    echo "This is a debugging suite for Python3."
+    echo "Usage: pyinspect [parameters]"
+    echo "Options:"
+    echo "-2             Specify Python2"
+    echo "-3             Specify Python3"
+    echo "-b             Display Benchmarks"
+    echo "-c             Generate Cython Annotation (colorized HTML)"
+    echo "--color        Display colorized script (pycolor)"
+    echo "-f             Specify file/script"
+    echo "--f8           Run flake8 (style and error checker)"
+    echo "-h,--help      Help"
+    echo "-L             Pipe the output to less"
+    echo "-l             Run Pylint (code checker)"
+    echo "--pep8         Check for pep8 compliance"
+    echo "--pep257       Check for pep257 compliance"
+    echo "--pyf          Run Pyflakes (error checker)"
+    echo "--rev          Run Pyreverse (make UML diagram)"
+    echo "-t             Run Pytest (unit tests)"
+    echo "-v,--version   Version"
+    echo "-y             Generate Cython Debugging Info"
+    echo "-z             Analyze a script"
+    echo ""
+    echo ""
+    echo "=====  Python Tools  ====="
+    echo ""
+    echo "flake8 - style and error checker; uses pep8, pyflakes, and plugins"
+    echo "pylint - code checker"
+    echo "pep8 - check code for PEP8 compliance"
+    echo "pyflakes - checks code for errors without executing the script"
+    echo "pytest - run unit tests"
+    echo "pyreverse - parse script and make UML diagram)"
+    echo "pycolor - print the script and colorize the output"
+    echo ""
+}
+
+function _pep8 {  # Check for pep8 compliance
+    "$__pep8__" -v --repeat --statistics --show-pep8 --show-source "$_file"
+}
+
+function _pep257 {  # Check for pep257 compliance
+    "$__pep257__" --explain --source "$_file"
+}
+
+function _pep8benchmark {  # Display benchmarks
+    "$__pep8__" -v --benchmark "$_file"
+}
+
+function _pycolor {  # Run pycolor
+    "$__pycolor__" "$_file"
+}
+
+function _pyreverse {  # Run Pyreverse (parse script and make UML diagram)
+    if [ "$_2" == 1 ]; then
+        "$__pyreverse2__" "$_file"
+    fi
+    if [ "$_3" == 1 ]; then
+        "$__pyreverse3__" "$_file"
+    fi
+    if [ "$_3" == 0 -a "$_2" == 0 ]; then
+        echo -e "ERROR! MISSING PARAMETER.\nUse '-2' or '-3' to specify a Python version."
+    fi
+}
+
+function _pylint {  # Run Pylint
+    if [ "$_2" == 1 ]; then
+        "$__pylint2__" --msg-template="{line}: [{msg_id}({symbol}),  {obj}]  {msg}" --init-import=y --reports=y --persistent=n "$_file" 2>/dev/null
+    fi
+    if [ "$_3" == 1 ]; then
+        "$__pylint3__" --msg-template="{line}: [{msg_id}({symbol}),  {obj}]  {msg}" --init-import=y --reports=y --persistent=n "$_file" 2>/dev/null
+    fi
+    if [ "$_3" == 0 -a "$_2" == 0 ]; then
+        echo -e "ERROR! MISSING PARAMETER.\nUse '-2' or '-3' to specify a Python version."
+    fi
+}
+
+function _pytest {  # Run Pytest
+    if [ "$_2" == 1 ]; then
+        "$__pytest2__" --pdb "$_file"
+    fi
+    if [ "$_3" == 1 ]; then
+        "$__pytest3__" --pdb "$_file"
+    fi
+    if [ "$_3" == 0 -a "$_2" == 0 ]; then
+        echo -e "ERROR! MISSING PARAMETER.\nUse '-2' or '-3' to specify a Python version."
+    fi
+}
+
+function _pyflakes {  # Run Pyflakes
+    if [ "$_2" == 1 ]; then
+        "$__pyflakes2__" "$_file"
+    fi
+    if [ "$_3" == 1 ]; then
+        "$__pyflakes3__" "$_file"
+    fi
+    if [ "$_3" == 0 -a "$_2" == 0 ]; then
+        echo -e "ERROR! MISSING PARAMETER.\nUse '-2' or '-3' to specify a Python version."
+    fi
+}
+
+function _flake8 {  # Run flake8
+    if [ "$_3" == 1 ]; then
+        "$__flake8__" --jobs=1 --exclude=.svn,CVS,.bzr,.hg,.git,__pycache__,__init__.py,__init__ --max-complexity 10 --show-pep --show-source -v --benchmark "$_file" 2>/dev/null
+    else
+        echo "ERROR! Only Python3 is supported."
+    fi
+}
+
+function cyannotate {  # Generate Cython Annotation
+    if [ "$_2" == 1 ]; then
+        if [ "$(which cython)" ]; then
+            cython -a "$PARAM"
+        else
+            echo "Cython is not installed."
+        fi
+    elif [ "$_3" == 1 ]; then
+        if [ "$(which cython3)" ]; then
+            cython3 -a "$PARAM"
+        else
+            echo "Cython3 is not installed."
+        fi
+    fi
+}
+
+function cygdbinfo {  # Generate Cython Debugging Info
+    if [ "$_2" == 1 ]; then
+        if [ "$(which cython)" ]; then
+            cython --gdb "$PARAM"
+        else
+            echo "Cython is not installed."
+        fi
+    elif [ "$_3" == 1 ]; then
+        if [ "$(which cython3)" ]; then
+            cython3 --gdb "$PARAM"
+        else
+            echo "Cython3 is not installed."
+        fi
+    fi
+}
+
+function analyze {  # Analyze a script
+    echo "=====Tool Versions====="
+    echo "^ ==flake8 - $($__flake8__ --version)=="
+    echo "^ ==pep8 - $($__pep8__ --version)=="
+    echo ""
+    echo "=====Code Check (pylint)====="
+    _pylint
+    echo ""
+    echo ""
+    echo "=====Error Finder (pyflakes)====="
+    _pyflakes
+    echo ""
+    echo ""
+    echo "=====PEP8 Check (pep8)====="
+    _pep8
+    echo ""
+    echo ""
+    echo "=====Deep Check (flake8)====="
+    _flake8
+    echo ""
+    echo ""
+    echo "=====Unit Tests (pytest)====="
+    _pytest
+    echo ""
+    echo ""
+}
+
+
+# MAIN #
+_2=0
+_3=0
+_b=0
+_c=0
+_col=0
+_f8=0
+_L=0
+_l=0
+_pep=0
+_pep257=0
+_pyf=0
+_rev=0
+_t=0
+_y=0
+_z=0
+GOPTS=$(getopt -o 23bcf:hLltvyz \
+    --long \
+    analyze,anlys,anlyz,f8,pyf,color,rev,pep8,pep257,file:,script:,version,help \
+    -- "$@")
+eval set -- "$GOPTS"
+while true; do
+    case "$1" in
+        -h|--help)
+            Help
+            shift
+        ;;
+        -v|--version)
+            echo $version
+            shift
+        ;;
+        -f|--file|--script)
+            shift
+            export _file=$1
+            shift
+        ;;
+        -2)
+            _2=1
+            shift
+        ;;
+        -3)
+            _3=1
+            shift
+        ;;
+        --pep8)
+            _pep=1
+            shift
+            [[ $_pep == 1 ]] && { _pep8; };
+        ;;
+        --pep257)
+            _pep257=1
+            shift
+            [[ $_pep257 == 1 ]] && { _pep257; };
+        ;;
+        -b)
+            _b=1
+            shift
+            [[ $_b == 1 ]] && { _pep8benchmark; };
+        ;;
+        -c)
+            _c=1
+            shift
+        ;;
+        -y)
+            _y=1
+            shift
+        ;;
+        -l)
+            _l=1
+            shift
+            [[ $_l == 1 ]] && { _pylint; };
+        ;;
+        -L)
+            _L=1
+            shift
+        ;;
+        --rev)
+            _rev=1
+            shift
+        ;;
+        -t)
+            _t=1
+            shift
+            [[ $_t == 1 ]] && { _pytest; };
+        ;;
+        --pyf)
+            _pyf=1
+            shift
+            [[ "$_pyf" == 1 ]] && { _pyflakes; };
+        ;;
+        --color)
+            _col=1
+            shift
+        ;;
+        --f8)
+            _f8=1
+            shift
+            [[ "$_f8" == 1 ]] && { _flake8; };
+        ;;
+        -z|--analyze|--anlys|--anlyz)
+            _z=1
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # getopts error
+            echo "GETOPTS ERROR!"
+            exit 1
+        ;;
+    esac
+done
+
+
+if [ "$_z" == 1 ]; then
+    if [ "$_L" == 0 ]; then
+        analyze
+    else
+        analyze | less
+    fi
+    exit 0
+fi
+
+if [ "$_c" == 1 ]; then
+    cyannotate
+elif [ "$_y" == 1 ]; then
+    cygdbinfo
+elif [ "$_rev" == 1 ]; then
+    _pyreverse
+elif [ "$_col" == 1 ]; then
+    _pycolor
+fi
+
+
+exit 0

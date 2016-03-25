@@ -67,5 +67,6 @@ var searchData=
   ['root8',['root8',['../namespacepybooster_1_1xmath.html#a2da25d2b13739ccf256e6105742de85b',1,'pybooster::xmath']]],
   ['root9',['root9',['../namespacepybooster_1_1xmath.html#aa66f66738d847808485882c9f6ea9ae2',1,'pybooster::xmath']]],
   ['roundrgb',['roundrgb',['../namespacepybooster_1_1color.html#a46362f94c8e68eb25964a77fa449fa31',1,'pybooster::color']]],
-  ['rplbyteshexesc',['rplbyteshexesc',['../namespacepybooster_1_1strtools.html#a46fde647201d73578bf9aaf277567a42',1,'pybooster::strtools']]]
+  ['rplbyteshexesc',['rplbyteshexesc',['../namespacepybooster_1_1strtools.html#a46fde647201d73578bf9aaf277567a42',1,'pybooster::strtools']]],
+  ['run',['run',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a9546b6ba2b7d947c66d963d0e31c0a33',1,'pybooster::neuralnet::NeuroCode']]]
 ];

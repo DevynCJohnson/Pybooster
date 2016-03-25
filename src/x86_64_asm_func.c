@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief C-functions containing inlined x86-64 Assembly using AT&T-Syntax
-@version 2016.03.21
+@version 2016.03.25
 
 @section LICENSE
 GNU Lesser General Public License v3

@@ -1,3 +1,15 @@
+2016-03-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster: Added ./tools/PyTools/ and neuralnet.py
+
+	* pychemistry.c: Added molar masses of the elements
+
+	* pytools.c: Added more functions and global constants
+
+2016-03-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster: Added FILE_SIGNATURE_MACROS.h
+
 2016-03-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster: Added SWIG wrappers for Lua, Octave, Perl, PHP, Pike, and Ruby

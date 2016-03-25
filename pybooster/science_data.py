@@ -6,7 +6,7 @@
 @package pybooster.science_data
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 All molar-mass constants are in grams per mole.

@@ -1,5 +1,5 @@
-PyBooster - collection of Python3 and C libraries
-======================================
+Collection of Python3 and C libraries
+=====================================
 
 - __Lead Developer:__ [Devyn Collier Johnson](http://dcjtech.info/members/devyncjohnson/)
 - __Email:__ <DevynCJohnson@Gmail.com>

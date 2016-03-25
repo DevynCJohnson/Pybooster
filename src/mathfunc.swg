@@ -5,7 +5,7 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 @brief SWIG wrapper for mathfunc.c
-@version 2016.03.21
+@version 2016.03.25
 */
 
 

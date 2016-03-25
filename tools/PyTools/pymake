@@ -1,0 +1,315 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @brief Python3 Compilation Suite
+# @copyright LGPLv3
+# @section License
+#GNU Lesser General Public License v3
+#Copyright (c) Devyn Collier Johnson, All rights reserved.
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 3.0 of the License, or (at your option) any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library.
+
+
+# GLOBALS #
+export version=2016.03.22
+export PARAM="$*"
+export SHDIR=${BASH_SOURCE%/*}
+export CXFREEZE_DIR="./bin_cxfreeze"
+export DIRECTIVE="--directive language_level=3,boundscheck=False,c_string_encoding=utf-8,c_string_type=unicode"
+
+
+if ! which python3 > /dev/null; then
+    echo "ERROR: Python3 not found!"
+    exit 1
+fi
+
+
+if which pywxrc > /dev/null; then
+    export __pywxrc__="pywxrc"
+else
+    export __pywxrc__="$SHDIR/pywxrc"
+fi
+if which pyuic4 > /dev/null; then
+    export __pyuic4__="pyuic4"
+else
+    export __pyuic4__="$SHDIR/pyuic4"
+fi
+
+
+# FUNCTIONS #
+function Help {
+    echo ""
+    echo "=====  Pymake  ====="
+    echo "This is a compilation suite for Python3."
+    echo "Usage: pymake [parameters]"
+    echo "Example: pymake -f ./script.py -cx"
+    echo "Options:"
+    echo "-2                Specify Python2"
+    echo "-3                Specify Python3 (default)"
+    echo "-a                Execute all"
+    echo "-b                Create pyc & pyo"
+    echo "-c                Compile: run setup.py and make pyc & pyo"
+    echo "-d,--deb          Make Debian file for Python package"
+    echo "-f                Specify the file to compile"
+    echo "-h,--help         View help screen"
+    echo "-p                Print python3-config data"
+    echo "-q                Convert Qt4/5 to Python2/3 code (Qt4->Py2 | Qt5->Py3)"
+    echo "--rex,--pyrex     Pyrexc (Pyrex Compiler)"
+    echo "-s                Run Sdist"
+    echo "-v,--version      Display version"
+    echo "--wx              Python XML resource compiler (wxrc)"
+    echo "-x                Cxfreeze3 (embedded libs+interpreter)"
+    echo "-y                Generate *.(c&cpp) (Cython)"
+    echo ""
+}
+
+function Basic {  # Create pyc & pyo
+    if [ "$_2" == 1 ]; then
+        echo "Python2 compiling is not supported by pymake"
+    fi
+    python3 -m py_compile "$_file"  # .pyc
+    python3 -OO -m py_compile "$_file"  # .pyo
+}
+
+function Compile {  # Compile: run setup.py and make pyc & pyo
+    if [ "$_2" == 1 ]; then
+        echo "Python2 compiling is not supported by pymake"
+    fi
+    python3 setup.py build_ext --inplace  # .so; setup.py
+    python3 -m py_compile "$_file"  # .pyc
+    python3 -OO -m py_compile "$_file"  # .pyo
+}
+
+function PConfig {  # Print python3-config data
+    if [ "$_2" == 1 ]; then
+        echo "Python2 compiling is not supported by pymake"
+    fi
+    echo '# Python3-config #'
+    echo -e "\n--clflags"
+    python3-config --cflags
+    echo -e "\n--libs"
+    python3-config --libs
+    echo -e "\n--includes"
+    python3-config --includes
+    echo -e "\n--ldflags"
+    python3-config --ldflags
+    echo ""
+}
+
+function _Sdist {  # sdist
+    if [[ "$(which compress)" ]]; then
+        if [ "$_2" == 1 ]; then
+            python setup.py sdist --manifest-only > sdist-msg.log 2> sdist-ERRORS.log  # manifest
+            (python setup.py sdist --formats=zip,tar,ztar,gztar,bztar || python setup.py sdist) >> sdist2-msg.log 2>> sdist2-ERRORS.log  # dist
+        fi
+        if [ "$_3" == 1 ]; then
+            python3 setup.py sdist --manifest-only > sdist-msg.log 2> sdist-ERRORS.log  # manifest
+            (python3 setup.py sdist --formats=zip,tar,ztar,gztar,bztar || python3 setup.py sdist) >> sdist3-msg.log 2>> sdist3-ERRORS.log  # dist
+        fi
+    else  # handle Sdist error due to missing deps
+        echo "\"ncompress\" was not found."
+        echo "Install: (apt-get|yum) install ncompress"
+    fi
+}
+
+function Callcx {  # Cxfreeze3 (embedded libs+interpreter)
+    if [ "$_2" == 1 ]; then
+        echo "Python2 compiling is not supported by pymake"
+    fi
+    if [[ "$(which cxfreeze3)" ]]; then
+        cxfreeze3 -OO --install-dir="$CXFREEZE_DIR" "$_file" > cxfreeze-msg.log 2> cxfreeze-ERRORS.log
+    else
+        echo "ERROR: cxfreeze is not installed!"
+    fi
+}
+
+function CPPsrc {  # Generate *.(c&cpp) (Cython)
+    if [ "$_2" == 1 ]; then
+        echo "Python2 compiling is not supported by pymake"
+    fi
+    if [[ "$(which cython)" ]]; then
+        cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v "$_file"  # c
+        cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v --cplus "$_file"  # cpp
+    else
+        echo "ERROR: Cython is not installed!"
+    fi
+}
+
+function qt2py {  # Convert Qt5 to Python3 code (Qt4->Py2 | Qt5->Py3)
+    if [ "$_2" == 1 ]; then
+        "$__pyuic4__" "$_file"
+    fi
+    if [ "$_3" == 1 ]; then
+        python3 -m PyQt5.uic.pyuic "$_file"
+    fi
+    if [ "$_3" == 0 -a "$_2" == 0 ]; then
+        echo -e "ERROR! MISSING PARAMETER.\nUse '-2' or '-3' to specify a Python version."
+    fi
+}
+
+function _pywxrc {  # Python XML resource compiler (wxrc)
+    "$__pywxrc__" "$_file"
+}
+
+function _pyrexc {  # Pyrexc (Pyrex Compiler)
+    if which pyrexc > /dev/null; then
+        export __pyrexc__="pyrexc"
+    else
+        export __pyrexc__="$SHDIR/pyrexc"
+    fi
+    if test "$_2" = 1; then
+        "$__pyrexc__" "$_file"
+    elif test "$_3" = 1; then
+        echo "ERROR! Python3 not supported."
+    fi
+}
+
+function _pydeb {  # Make Debian file for Python package
+    if which py2dsc > /dev/null; then
+        export __py2dsc__="py2dsc"
+    else
+        export __py2dsc__="$SHDIR/py2dsc"
+    fi
+    "$__py2dsc__" "$_file"
+}
+
+
+# MAIN #
+_2=0
+_3=0
+_a=0
+_b=0
+_c=0
+_d=0
+_p=0
+_q=0
+_rex=0
+_s=0
+_wx=0
+_x=0
+_y=0
+GOPTS=$(getopt -o 23abcdf:hpqsvxy \
+    --long \
+    deb,rex,pyrex,wx,file:,script:,version,help \
+    -- "$@")
+eval set -- "$GOPTS"
+while true; do
+    case "$1" in
+        -h|--help)
+            Help
+            shift
+        ;;
+        -v|--version)
+            echo $version
+            shift
+        ;;
+        -2)
+            _2=1
+            shift
+        ;;
+        -3)
+            _3=1
+            shift
+        ;;
+        -a)
+            _a=1
+            shift
+        ;;
+        -b)
+            _b=1
+            shift
+        ;;
+        -c)
+            _c=1
+            shift
+        ;;
+        -d|--deb)
+            _d=1
+            shift
+        ;;
+        -f|--file|--script)
+            shift
+            export _file=$1
+            shift
+        ;;
+        -p)
+            _a=1
+            shift
+        ;;
+        -q)
+            _q=1
+            shift
+        ;;
+        --rex|--pyrex)
+            _rex=1
+            shift
+        ;;
+        -s)
+            _s=1
+            shift
+        ;;
+        -x)
+            _x=1
+            shift
+        ;;
+        -y)
+            _y=1
+            shift
+        ;;
+        --wx)
+            _wx=1
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # getopts error
+            echo "GETOPTS ERROR!"
+            exit 1
+        ;;
+    esac
+done
+
+
+if [ "$_a" == 1 ]; then
+    _Sdist
+    Compile
+    Callcx
+    CPPsrc
+elif [ "$_b" == 1 ]; then
+    Basic
+elif [ "$_c" == 1 ]; then
+    Compile
+elif [ "$_d" == 1 ]; then
+    _pydeb
+elif [ "$_p" == 1 ]; then
+    PConfig
+elif [ "$_q" == 1 ]; then
+    qt2py
+elif [ "$_rex" == 1 ]; then
+    _pyrexc
+elif [ "$_s" == 1 ]; then
+    _Sdist
+elif [ "$_wx" == 1 ]; then
+    _pywxrc
+elif [ "$_x" == 1 ]; then
+    Callcx
+elif [ "$_y" == 1 ]; then
+    CPPsrc
+fi
+
+
+exit 0

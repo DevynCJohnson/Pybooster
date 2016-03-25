@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 Various functions that do not fit in other categories.
@@ -36,10 +36,6 @@ License along with this library.
 
 
 #include "MACROS.h"
-
-#ifdef OSPOSIX
-#   include <sys/stat.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_stat.h.html
-#endif
 
 
 /* STD-STRING AND STD-CTYPES ALTERNATIVES */
@@ -114,6 +110,9 @@ char *STRNCPYX(char *__restrict__ dst, const char *__restrict__ src, const size_
 #ifdef __GNUC__
 int fileexists(const char *__restrict__ filename) __attribute__((flatten, nonnull));
 int filewritable(const char *__restrict__ filename) __attribute__((flatten, nonnull));
+#   ifdef OSPOSIX
+int fileexecutable(const char *__restrict__ filename) __attribute__((flatten, nonnull));
+#   endif
 ulint getfilesize(const char *__restrict__ filename) __attribute__((flatten, nonnull));
 size_t getfilesize_t(const char *__restrict__ filename) __attribute__((flatten, nonnull));
 uint64_t filesize64(const char *__restrict__ filename) __attribute__((flatten, nonnull));
@@ -131,6 +130,9 @@ uint8_t *get_hidden_data_from_file(const char *__restrict__ filename) __attribut
 #else
 int fileexists(const char *__restrict__ filename);
 int filewritable(const char *__restrict__ filename);
+#   ifdef OSPOSIX
+int fileexecutable(const char *__restrict__ filename);
+#   endif
 ulint getfilesize(const char *__restrict__ filename);
 size_t getfilesize_t(const char *__restrict__ filename);
 uint64_t filesize64(const char *__restrict__ filename);

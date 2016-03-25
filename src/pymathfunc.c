@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Mathematical and Trigonometric Functions from mathfunc.c
-@version 2016.03.21
+@version 2016.03.25
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -52,6 +52,10 @@ MODINIT __attribute__((flatten, hot));
 
 
 #ifdef __GNUC__
+/* ANGLES */
+static PyObject *mathfunc_complement_angle_deg(FUNCARGS) __attribute__((const, flatten));
+static PyObject *mathfunc_supplement_angle_deg(FUNCARGS) __attribute__((const, flatten));
+static PyObject *mathfunc_arc_angle(FUNCARGS) __attribute__((const, flatten));
 /* POWERS */
 static PyObject *mathfunc_pow2(FUNCARGS) __attribute__((const, flatten));
 static PyObject *mathfunc_pow_ten(FUNCARGS) __attribute__((const, flatten));
@@ -141,6 +145,10 @@ static PyObject *mathfunc_fpclassify(FUNCARGS) __attribute__((const, flatten));
 static PyObject *mathfunc_float_diff(FUNCARGS) __attribute__((const, flatten));
 static PyObject *mathfunc_bit_length(FUNCARGS) __attribute__((const, flatten));
 #else
+/* ANGLES */
+static PyObject *mathfunc_complement_angle_deg(FUNCARGS);
+static PyObject *mathfunc_supplement_angle_deg(FUNCARGS);
+static PyObject *mathfunc_arc_angle(FUNCARGS);
 /* POWERS */
 static PyObject *mathfunc_pow2(FUNCARGS);
 static PyObject *mathfunc_pow_ten(FUNCARGS);
@@ -235,8 +243,15 @@ static PyObject *mathfunc_bit_length(FUNCARGS);
 /* DOCSTRINGS */
 
 
-static char module_docstring[16] =
-    "Math Functions";
+static char module_docstring[64] =
+    "Mathematical and Trigonometric Functions";
+/* ANGLES */
+PyDoc_STRVAR(mathfunc_complement_angle_deg_docstring,
+    "complement_angle_deg(angle: float) -> float\nReturn the complement of an angle (all in degrees)");
+PyDoc_STRVAR(mathfunc_supplement_angle_deg_docstring,
+    "supplement_angle_deg(angle: float) -> float\nReturn the supplement of an angle (all in degrees)");
+PyDoc_STRVAR(mathfunc_arc_angle_docstring,
+    "arc_angle(arc_length: float, radius: float) -> float\nReturn the angle (in radians) of an arc given arc-length and radius");
 /* POWERS */
 PyDoc_STRVAR(mathfunc_pow2_docstring,
     "pow2(num: int) -> int\nReturn the power of 2^num, where \"num\" is a positive integer");
@@ -410,6 +425,10 @@ PyDoc_STRVAR(mathfunc_bit_length_docstring,
 
 
 static PyMethodDef module_methods[128] = {  // Method Table
+    /* ANGLES */
+    {"complement_angle_deg", (PyCFunction)mathfunc_complement_angle_deg, METH_VARARGS, mathfunc_complement_angle_deg_docstring},
+    {"supplement_angle_deg", (PyCFunction)mathfunc_supplement_angle_deg, METH_VARARGS, mathfunc_supplement_angle_deg_docstring},
+    {"arc_angle", (PyCFunction)mathfunc_arc_angle, METH_VARARGS, mathfunc_arc_angle_docstring},
     /* POWERS */
     {"pow2", (PyCFunction)mathfunc_pow2, METH_VARARGS, mathfunc_pow2_docstring},
     {"pow_ten", (PyCFunction)mathfunc_pow_ten, METH_VARARGS, mathfunc_pow_ten_docstring},
@@ -530,6 +549,30 @@ MODINIT {  // Initialize module
 
 
 /* C CODE */
+
+
+/* ANGLES */
+
+
+static PyObject *mathfunc_complement_angle_deg(FUNCARGS) {
+    const double angle;
+    ASSERT_DOUBLE_ARG(angle);
+    return double2float((90.0 - angle));
+}
+
+
+static PyObject *mathfunc_supplement_angle_deg(FUNCARGS) {
+    const double angle;
+    ASSERT_DOUBLE_ARG(angle);
+    return double2float((180.0 - angle));
+}
+
+
+static PyObject *mathfunc_arc_angle(FUNCARGS) {
+    const double arc_length, radius;
+    ASSERT_2DOUBLE_ARG(arc_length, radius);
+    return double2float((arc_length / radius));
+}
 
 
 /* POWERS */

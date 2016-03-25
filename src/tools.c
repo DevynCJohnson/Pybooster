@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Miscellaneous Functions
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 Various functions that do not fit in other categories.
@@ -305,12 +305,17 @@ char *STRNCPYX(char *__restrict__ dst, const char *__restrict__ src, const size_
     @retval 1    True: The file exists
 */
 int fileexists(const char *__restrict__ filename) {
+#   ifdef OSPOSIX
+    if (access(filename, F_OK) == 0x0) { return 0x1; }
+    return 0x0;
+#   else
     FILE *fileptr = fopen(filename, "r");
     if (fileptr != (FILE *)NULL) {
         fclose(fileptr);
         return 0x1;
     }
     return 0x0;
+#   endif
 }
 
 
@@ -322,13 +327,33 @@ int fileexists(const char *__restrict__ filename) {
     @retval 1    True: The file is writable
 */
 int filewritable(const char *__restrict__ filename) {
+#   ifdef OSPOSIX
+    if (access(filename, W_OK) == 0x0) { return 0x1; }
+    return 0x0;
+#   else
     FILE *fileptr = fopen(filename, "wb");
     if (fileptr != (FILE *)NULL) {
         fclose(fileptr);
         return 0x1;
     }
     return 0x0;
+#   endif
 }
+
+
+#ifdef OSPOSIX
+/**
+    Test if the file is executable
+
+    @param[in] filename    The pathname of the file
+    @retval 0    False: The file is not executable
+    @retval 1    True: The file is executable
+*/
+int fileexecutable(const char *__restrict__ filename) {
+    if (access(filename, X_OK) == 0x0) { return 0x1; }
+    return 0x0;
+}
+#endif
 
 
 #ifdef OSPOSIX

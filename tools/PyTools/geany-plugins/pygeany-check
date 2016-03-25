@@ -1,0 +1,48 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+# vim:fileencoding=utf-8
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @brief flake8, pep8, pyflakes, and pylint for Geany
+# @copyright LGPLv3
+# @version 2016.03.22
+
+
+echo "======  *FLAKE8*  ======"
+if which flake8 > /dev/null; then
+    flake8 --jobs=1 --ignore=E501,T001 -v --max-complexity 10  --exclude=.svn,CVS,.bzr,.hg,.git,__pycache__,__init__.py,__init__ --doctests --benchmark --statistics --show-pep8 --show-source --exit-zero "$1"
+else
+    echo "Flake8 is not installed!"
+fi
+echo ""
+
+
+echo "======  *PEP8*  ======"
+if which pep8 > /dev/null; then
+    pep8 -v --ignore=E501 --statistics --show-pep8 --show-source "$1"
+else
+    echo "pep8 is not installed!"
+fi
+echo ""
+
+
+# flake8 includes PyFlakes
+#echo "======  *PYFLAKES*  ======"
+#if which pyflakes3 > /dev/null; then
+    #pyflakes3 "$1"
+#else
+    #if which pyflakes > /dev/null; then
+        #pyflakes "$1"
+    #else
+        #echo "pyflakes is not installed!"
+    #fi
+#fi
+#echo ""
+
+
+echo "======  *PYLINT3*  ======"
+if which pylint3 > /dev/null; then
+    pylint3 --disable=I0011,C0111,C0301,E501,T001 --good-names=i,j,k,v,key,val,ex,Run,_ --notes=FIXME,XXX,TODO,FINISH,DEBUG,FIX,HERE --max-returns=16 --max-module-lines=4096 --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" --reports=y --persistent=n "$1"
+else
+    echo "pylint3 is not installed!"
+fi
+echo ""

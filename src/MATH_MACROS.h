@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief Math Macros Constants (header)
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This file defines constants for various mathematical constants.

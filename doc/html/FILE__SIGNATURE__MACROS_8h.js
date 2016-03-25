@@ -1,0 +1,19 @@
+var FILE__SIGNATURE__MACROS_8h =
+[
+    [ "__7Z", "FILE__SIGNATURE__MACROS_8h.html#a9853a6e7960c13f95bdc183ae42130dc", null ],
+    [ "__BMP", "FILE__SIGNATURE__MACROS_8h.html#a65f6b99faff8431f0fcaf3848a0e46e1", null ],
+    [ "__DALVIK_EXECUTABLE", "FILE__SIGNATURE__MACROS_8h.html#aad47073a2da3db6c55805729d254aeb2", null ],
+    [ "__DMG", "FILE__SIGNATURE__MACROS_8h.html#ad67c12db48a3f4a7b2bec5592eff0d86", null ],
+    [ "__FREE_LOSSLESS_AUDIO_CODEC", "FILE__SIGNATURE__MACROS_8h.html#a68759896e1e6454e1856217363150d0c", null ],
+    [ "__FREE_LOSSLESS_IMAGE_FORMAT", "FILE__SIGNATURE__MACROS_8h.html#af72326c6b3a62d8ef720c109489f85aa", null ],
+    [ "__GZIP", "FILE__SIGNATURE__MACROS_8h.html#a89804b760d2690cd5363e165db5cdb93", null ],
+    [ "__MATROSKA_MEDIA_CONTAINER", "FILE__SIGNATURE__MACROS_8h.html#a02478c20a2ec5d5b2d5971413ea18f20", null ],
+    [ "__MICROSOFT_CABINET_FILE", "FILE__SIGNATURE__MACROS_8h.html#a9c59f85f7f9a52d4fc826571119363a6", null ],
+    [ "__MICROSOFT_OFFICE_DOCUMENTS", "FILE__SIGNATURE__MACROS_8h.html#a0d51c6a181a873156879da96117fc6a7", null ],
+    [ "__NES_ROM", "FILE__SIGNATURE__MACROS_8h.html#afdcc7879b0dee4992ec4938dde2d3e12", null ],
+    [ "__OGG", "FILE__SIGNATURE__MACROS_8h.html#a99ecbcc41c8a8c3ae537d93a1c6e20c4", null ],
+    [ "__PDF", "FILE__SIGNATURE__MACROS_8h.html#aad7e49ef8c6b86bb79ba4b9630a3cdc1", null ],
+    [ "__POSTSCRIPT", "FILE__SIGNATURE__MACROS_8h.html#a715adcbdebd40d3d7ca0eff40bac4d28", null ],
+    [ "__VMDK", "FILE__SIGNATURE__MACROS_8h.html#a3772b3e2634bd5336b03bc8bec10ad54", null ],
+    [ "__XAR", "FILE__SIGNATURE__MACROS_8h.html#a921caf1a102f51eaba5d5d2b1473a8b6", null ]
+];

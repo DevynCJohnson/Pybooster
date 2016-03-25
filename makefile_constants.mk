@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 # @brief Makefile constants header (contains common code)
-# @version 2016.03.21
 
 
 ## VERSION TIMESTAMP ##

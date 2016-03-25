@@ -25,6 +25,7 @@ var searchData=
   ['geo_5fservices',['geo_services',['../namespacepybooster_1_1geo__services.html',1,'pybooster']]],
   ['metric',['metric',['../namespacepybooster_1_1metric.html',1,'pybooster']]],
   ['net',['net',['../namespacepybooster_1_1net.html',1,'pybooster']]],
+  ['neuralnet',['neuralnet',['../namespacepybooster_1_1neuralnet.html',1,'pybooster']]],
   ['pipx',['pipx',['../namespacepybooster_1_1pipx.html',1,'pybooster']]],
   ['pronouns',['pronouns',['../namespacepybooster_1_1pronouns.html',1,'pybooster']]],
   ['pybooster',['pybooster',['../namespacepybooster.html',1,'']]],

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['x86_5fextensions_5fseen',['X86_EXTENSIONS_SEEN',['../MACROS_8h.html#ada99b4032e8ec3ffd9c4d3fd7567eb4e',1,'MACROS.h']]],
-  ['xnor',['XNOR',['../MACROS_8h.html#a07602c7f7083db401b0e98e9d53e4ba1',1,'MACROS.h']]],
-  ['xor',['XOR',['../MACROS_8h.html#a6de9ec3b3b57377b69a82239ea52ec6e',1,'MACROS.h']]],
-  ['xorswap',['XORSWAP',['../MACROS_8h.html#a68b270eb5cb81e30fec38f9d94488da1',1,'MACROS.h']]]
+  ['wchar_5fmax',['WCHAR_MAX',['../MACROS_8h.html#a2a823f3ccf2306cfbaa34d8addf66010',1,'MACROS.h']]],
+  ['wchar_5ft',['wchar_t',['../MACROS_8h.html#a996b469b2e20f31259fb88cdad2a6309',1,'MACROS.h']]],
+  ['word',['Word',['../MACROS_8h.html#abf4ef44c4c8719bd6d059ca8cdbe0fde',1,'MACROS.h']]]
 ];

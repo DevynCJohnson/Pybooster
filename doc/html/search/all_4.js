@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['darmstadtium',['darmstadtium',['../chemistry__types_8c.html#af6c7015826da9fb4451d147a40f29852',1,'darmstadtium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af6c7015826da9fb4451d147a40f29852',1,'darmstadtium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca88cf529f6d271eca8b4305190a250cf1',1,'DARMSTADTIUM():&#160;chemistry_types.h']]],
+  ['darmstadtium',['DARMSTADTIUM',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca88cf529f6d271eca8b4305190a250cf1',1,'DARMSTADTIUM():&#160;chemistry_types.h'],['../chemistry__types_8c.html#af6c7015826da9fb4451d147a40f29852',1,'darmstadtium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#af6c7015826da9fb4451d147a40f29852',1,'darmstadtium():&#160;chemistry_types.c']]],
+  ['darmstadtium_5fmolar_5fmass',['DARMSTADTIUM_MOLAR_MASS',['../chemistry_8h.html#afe44a3a5c700b9b7a04b386b6e108777',1,'chemistry.h']]],
   ['data',['data',['../extra__datatypes_8h.html#ae421a8889820e685feae3e58e1d5fca0',1,'linked_stack_node']]],
+  ['datadump',['datadump',['../namespacepybooster_1_1basic.html#a376577122b762c219d51345d9ccb39e9',1,'pybooster::basic']]],
   ['datatypes_5f128bits_5fseen',['DATATYPES_128BITS_SEEN',['../MACROS_8h.html#a6b910edb18ae7431cd3411deb26419c2',1,'DATATYPES_128BITS_SEEN():&#160;MACROS.h'],['../mathfunc_8swg.html#a6b910edb18ae7431cd3411deb26419c2',1,'DATATYPES_128BITS_SEEN():&#160;mathfunc.swg']]],
   ['date',['date',['../namespacepybooster_1_1timeutil.html#a3590172dbc6bb9d04c6bba43ff5f4c9e',1,'pybooster::timeutil']]],
   ['date_5fhour2int',['DATE_HOUR2INT',['../PY__MACROS_8h.html#a92a050fe5554136c7747e19f3c0f6303',1,'PY_MACROS.h']]],
@@ -39,6 +41,7 @@ var searchData=
   ['delisle2kelvin',['delisle2kelvin',['../namespacepybooster_1_1convtemp.html#a4c07c8af536b3ca9092083d1042608ba',1,'pybooster::convtemp']]],
   ['delisle2rankine',['delisle2rankine',['../namespacepybooster_1_1convtemp.html#aaf26a18e9db7e829ef4eebb312016807',1,'pybooster::convtemp']]],
   ['delta',['DELTA',['../cryptx_8c.html#a3fd2b1bcd7ddcf506237987ad780f495',1,'cryptx.c']]],
+  ['deltas',['deltas',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#af4a9c2ca37eca48ee6e5b130f844ffa1',1,'pybooster::neuralnet::NeuroCode']]],
   ['density',['density',['../physics_8c.html#a4db5f9ea303e969387378e4c7727b6a9',1,'density(const double mass, const double volume):&#160;physics.c'],['../physics_8h.html#a4db5f9ea303e969387378e4c7727b6a9',1,'density(const double mass, const double volume):&#160;physics.c']]],
   ['depth',['depth',['../math__types_8h.html#a6153a438c3d8d1be934e19e97e58c60c',1,'prism::depth()'],['../math__types_8h.html#ad47ba5876ef185e6060c0b6cc33ea427',1,'prisml::depth()'],['../math__types_8h.html#a845896541a0621f5fbd11f0d115ce463',1,'prismf::depth()'],['../math__types_8h.html#a319f5cadd4e671354e0ebaea8f963b0b',1,'prism__float128::depth()']]],
   ['dequeue',['dequeue',['../extra__datatypes_8h.html#a6833ec9c9b9b3581d00daa0f16757632',1,'extra_datatypes.h']]],
@@ -75,6 +78,8 @@ var searchData=
   ['div_5fand_5fmodf',['div_and_modf',['../mathfunc_8c.html#a5f937c05742ee53f3c02b0dd430bae67',1,'div_and_modf(const float num1, const float num2):&#160;mathfunc.c'],['../mathfunc_8h.html#a6f7b69f828a7c174eb0d49f8a650f349',1,'div_and_modf(const float num1, const float num2) __attribute__((const :&#160;mathfunc.h']]],
   ['do_5fexpand',['DO_EXPAND',['../MACROS_8h.html#ac67d56a22930fb32f533fbb1a9729890',1,'MACROS.h']]],
   ['doeskeymvalue',['doeskeymvalue',['../namespacepybooster_1_1basic.html#a55dbc431c1bf8dc4a07e5245160dfb7b',1,'pybooster::basic']]],
+  ['dot_5fproduct32',['dot_product32',['../mathfunc_8c.html#afafd183747c2c4740c9f239491353fc1',1,'dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length):&#160;mathfunc.c'],['../mathfunc_8h.html#a36e0c301957c10ce603eae19a1e4f111',1,'dot_product32(const int32_t *__restrict__ _array1, const int32_t *__restrict__ _array2, int32_t *output_array, const size_t _length) __attribute__((const :&#160;mathfunc.h']]],
+  ['dot_5fproduct64',['dot_product64',['../mathfunc_8c.html#a7e0f031ca55c29493f1e2498f94c9d2d',1,'dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length):&#160;mathfunc.c'],['../mathfunc_8h.html#aba79441345e4fd918abfe44587fb7a54',1,'dot_product64(const int64_t *__restrict__ _array1, const int64_t *__restrict__ _array2, int64_t *output_array, const size_t _length) __attribute__((const :&#160;mathfunc.h']]],
   ['double2float',['double2float',['../PY__MACROS_8h.html#a09084145a64f46c15dfe8143c07a9345',1,'PY_MACROS.h']]],
   ['double2int',['double2int',['../PY__MACROS_8h.html#ae89af70d2b180d3587250e6cb69598e6',1,'PY_MACROS.h']]],
   ['double_5ffactorial_5fconstant',['DOUBLE_FACTORIAL_CONSTANT',['../MATH__MACROS_8h.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;MATH_MACROS.h'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8swg.html#ade9a1bf288e731fe7bd4d0dd6fbe3788',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.swg'],['../mathconstants_8c.html#a5f9583f55ab827bb6190b20586dc2dab',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.c'],['../mathconstants_8h.html#a5f9583f55ab827bb6190b20586dc2dab',1,'DOUBLE_FACTORIAL_CONSTANT():&#160;mathconstants.c']]],
@@ -85,8 +90,11 @@ var searchData=
   ['down',['down',['../chemistry__types_8c.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a998624e7215a405d2c95d434e0d09537',1,'down():&#160;chemistry_types.c'],['../namespacepybooster_1_1strtools.html#a5a898d8474b30c92bed37fd5cddbc588',1,'pybooster.strtools.DOWN()']]],
   ['dt',['dt',['../namespacepybooster_1_1unix.html#ad45413e8e3ff1982b5861fe3badc4938',1,'pybooster::unix']]],
   ['du',['du',['../namespacepybooster_1_1unix.html#acc4f14ede291fcee480b5f2a6dcddf7b',1,'pybooster::unix']]],
-  ['dubnium',['dubnium',['../chemistry__types_8c.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca8e3a58a10f680ef41927f2a981d32837',1,'DUBNIUM():&#160;chemistry_types.h']]],
+  ['dubnium',['DUBNIUM',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca8e3a58a10f680ef41927f2a981d32837',1,'DUBNIUM():&#160;chemistry_types.h'],['../chemistry__types_8c.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a3b42a49826fd8ee076e4ba42e1127124',1,'dubnium():&#160;chemistry_types.c']]],
+  ['dubnium_5fmolar_5fmass',['DUBNIUM_MOLAR_MASS',['../chemistry_8h.html#a94f2720efc6b844ed04caaa42f773855',1,'chemistry.h']]],
+  ['dump',['dump',['../classpybooster_1_1neuralnet_1_1NeuroCode.html#a211577cb0af0419c446860c0bdaec590',1,'pybooster::neuralnet::NeuroCode']]],
   ['dup',['DUP',['../extra__datatypes_8c.html#ab545222dc1777f3d12e347e0683f31b4a94ec660291079916623355f9d9231077',1,'extra_datatypes.c']]],
   ['dwarf_5fplanets',['DWARF_PLANETS',['../namespacepybooster_1_1astronomy.html#a5e9af89173b46caaf2f4318c5585dbad',1,'pybooster::astronomy']]],
-  ['dysprosium',['dysprosium',['../chemistry__types_8c.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca361dae9bb7fee4bd1cadfa786846104b',1,'DYSPROSIUM():&#160;chemistry_types.h']]]
+  ['dysprosium',['DYSPROSIUM',['../chemistry__types_8h.html#aa9aaa650bacb9b91c82437c2ce48f50ca361dae9bb7fee4bd1cadfa786846104b',1,'DYSPROSIUM():&#160;chemistry_types.h'],['../chemistry__types_8c.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c'],['../chemistry__types_8h.html#a646bbb4c42a9bfd76dfb2280e627d961',1,'dysprosium():&#160;chemistry_types.c']]],
+  ['dysprosium_5fmolar_5fmass',['DYSPROSIUM_MOLAR_MASS',['../chemistry_8h.html#ad39deb80a334f6ace37421b612206660',1,'chemistry.h']]]
 ];

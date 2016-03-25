@@ -6,11 +6,12 @@
 @copyright LGPLv3
 
 @brief Standard Macros Header
-@version 2016.03.21
+@version 2016.03.25
 
 @section DESCRIPTION
 This file defines various datatypes, macros functions, names, and tests.
 Substitutes for <stdbool.h>, <stdarg.h>, and <ctype.h> are also provided.
+ - http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/contents.html
 
 @section LICENSE
 GNU Lesser General Public License v3
@@ -193,7 +194,7 @@ extern "C" {
 #   ifndef _FORTIFY_SOURCE
 #      define _FORTIFY_SOURCE   (1)  // Adds lightweight checks that detect some buffer overflow errors
 #   endif
-#elif (defined(__unix__) || defined(__unix) || defined(unix)) || (defined(__APPLE__) && defined(__MACH__))  // Unix-systems
+#elif ((defined(__unix__) || defined(__unix) || defined(unix)) || (defined(__APPLE__) && defined(__MACH__)))  // Unix-systems
 #   define OSUNIX
 #   define OSPOSIX
 #   if (defined(macintosh) || defined(Macintosh) || defined(BOOST_OS_MACOS))
@@ -317,15 +318,23 @@ extern "C" {
 #ifdef OSUNIX
 #   include <sys/param.h>
 #endif
+#ifdef OSPOSIX
+#   include <sys/stat.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_stat.h.html
+#   include <sys/statvfs.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_statvfs.h.html
+#   include <sys/time.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_time.h.html
+#   include <sys/times.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_times.h.html
+#   include <unistd.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/unistd.h.html
+#   include <sys/utsname.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_utsname.h.html
+struct utsname uname_data;
+#endif
+#ifdef OSOSX
+#   include <TargetConditionals.h>
+#endif
 #if (defined(OSPOSIX) || defined(OSUNIX))
 #   include <sys/types.h>  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_types.h.html
 #   define SYS_TYPES_INCLUDED
 #endif
-#if (defined(OSLINUX) || defined(OSUNIX))
-#   include <unistd.h>
-#endif
 #if (defined(MSDOS) || defined(OS2) || defined(WIN32) || defined(__CYGWIN__))
-#  include <fcntl.h>
 #  include <io.h>
 #endif
 // TYPE SIZES
@@ -375,6 +384,8 @@ extern "C" {
 #   error   "uClibc is not supported!"
 #elif (defined(__LIBREL__) && defined(__TARGET_LIB__))
 #   error   "z/OS-libc is not supported!"
+#else
+#   define STDLIB   "unknown"
 #endif
 /* MISCELLANEOUS HELPFUL MACROS CONSTANTS
 __AES__
@@ -499,6 +510,7 @@ extern "C" {
 #   include <string.h>
 #   include <wchar.h>
 #endif
+#include <fcntl.h>
 
 
 /* BOOLEAN TYPE (<stdbool.h> REPLACEMENT) */
