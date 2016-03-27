@@ -15,6 +15,10 @@ include profiles.mk
 ## VARIABLES ##
 
 
+ifndef PCRE_CACHE_SIZE
+	PCRE_CACHE_SIZE::=32
+endif
+
 override CLIB::=./clib
 override SWIGLIB::=./swiglib
 override SWIGLUA::=$(SWIGLIB)/lua
@@ -26,6 +30,7 @@ override SWIGRUBY::=$(SWIGLIB)/ruby
 override SWIGTCL::=$(SWIGLIB)/tcl
 override PYMODDIR::=./pybooster
 override SRCDIR::=./src
+SQLITE_PLUGINS::=./sqlite_plugins
 PYPATH::=/usr/lib/python
 override PYCLIB::=/opt/pybooster/clib
 override SYSPYCLIB::=/usr/lib/pyclib
@@ -190,6 +195,8 @@ default:
 .PHONY : commit gitall stat submit
 # Clang/LLVM
 .PHONY : ast llvm_bc llvm_bytecode llvm_intermediate llvm_ll
+# SQLite
+.PHONY : sql_pcre
 # SWIG
 .PHONY : lua_wrappers octave_wrappers perl_wrappers php_wrappers pike_wrappers ruby_wrappers tcl_wrappers wrappers
 
@@ -225,7 +232,7 @@ llvm_bc : llvm_bytecode
 
 llvm_ll : llvm_intermediate
 
-lib : libcompression libcryptx libchron libfuzzy_logic libgeometry libmathconstants libmathfunc libphysics libtone libtools libtypesize libx86_64_asm_func | libextra_datatypes libchemistry_types libchemistry
+lib : sql_pcre libcompression libcryptx libchron libfuzzy_logic libgeometry libmathconstants libmathfunc libphysics libtone libtools libtypesize libx86_64_asm_func | libextra_datatypes libchemistry_types libchemistry
 
 static : static_libcompression static_libcryptx static_libchron static_libfuzzy_logic static_libgeometry static_libmathconstants static_libmathfunc static_libphysics static_libtone static_libtools static_libx86_64_asm_func static_libtypesize | static_libextra_datatypes static_libchemistry_types static_libchemistry
 
@@ -280,7 +287,7 @@ doxy : rmwrap
 	-@doxywizard ./Doxyfile; chmod --quiet 644 ./Doxyfile
 
 rmtmp :
-	-@rm -f $(SRCDIR)/*.o $(SRCDIR)/*.s $(SRCDIR)/*.bc $(SRCDIR)/*.ll $(SRCDIR)/*.ast $(SRCDIR)/*.i  $(SRCDIR)/*.ii $(SRCDIR)/*.pch $(SRCDIR)/*_wrap.c; rm -frd --one-file-system $(SRCDIR)/build/
+	-@rm -f $(SQLITE_PLUGINS)/*.o $(SRCDIR)/*.o $(SRCDIR)/*.s $(SRCDIR)/*.bc $(SRCDIR)/*.ll $(SRCDIR)/*.ast $(SRCDIR)/*.i  $(SRCDIR)/*.ii $(SRCDIR)/*.pch $(SRCDIR)/*_wrap.c; rm -frd --one-file-system $(SRCDIR)/build/
 
 rmcache :
 	-@rm -frd --one-file-system $(PYMODDIR)/__pycache__/; rm -frd --one-file-system $(PYMODDIR)/ezwin/__pycache__/
@@ -294,7 +301,7 @@ cleandoc :
 	-@rm -frd ./doc/*
 
 cleanall : rmtmp rmcache
-	-@rm -f $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(SWIGTCL)/*.so $(SWIGLIB)/*.dll $(SWIGTCL)/*.dll $(SWIGOCTAVE)/*.oct $(SWIGPERL)/*.pm $(SWIGPERL)/*.so $(SWIGPERL)/*.dll $(SWIGPHP)/*.php $(SWIGPHP)/*.so $(SWIGPHP)/*.dll $(SWIGPIKE)/*.so $(SWIGPIKE)/*.dll $(SWIGRUBY)/*.so $(SWIGRUBY)/*.dll $(SWIGLUA)/*.so $(SWIGLUA)/*.dll $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
+	-@rm -f $(SQLITE_PLUGINS)/*.so $(SQLITE_PLUGINS)/*.dll $(PYMODDIR)/*.so $(SWIGLIB)/*.so $(SWIGTCL)/*.so $(SWIGLIB)/*.dll $(SWIGTCL)/*.dll $(SWIGOCTAVE)/*.oct $(SWIGPERL)/*.pm $(SWIGPERL)/*.so $(SWIGPERL)/*.dll $(SWIGPHP)/*.php $(SWIGPHP)/*.so $(SWIGPHP)/*.dll $(SWIGPIKE)/*.so $(SWIGPIKE)/*.dll $(SWIGRUBY)/*.so $(SWIGRUBY)/*.dll $(SWIGLUA)/*.so $(SWIGLUA)/*.dll $(CLIB)/*.so $(PYMODDIR)/*.dll $(CLIB)/*.dll $(CLIB)/*.a
 
 cleanfull : cleanall cleandoc
 
@@ -305,7 +312,7 @@ install : rmtmp
 	@echo "Beginning Installation (PyBooster)"; \
 	# Prepare installation directory \
 	rm -frd --one-file-system /opt/pybooster/*; \
-	mkdir -p /opt/pybooster/clib /opt/pybooster/include; \
+	mkdir -p /opt/pybooster/clib /opt/pybooster/include /opt/pybooster/sqlite_plugins; \
 	mkdir -p /opt/pybooster/doc /opt/pybooster/ezwin; \
 	mkdir -p /opt/pybooster/lua /opt/pybooster/ruby /opt/pybooster/tcl /opt/pybooster/octave; \
 	mkdir -p /opt/pybooster/perl /opt/pybooster/php /opt/pybooster/pike; \
@@ -314,6 +321,7 @@ install : rmtmp
 	cp -Rf $(PYMODDIR)/* /opt/pybooster/; \
 	cp -Rf $(CLIB)/* /opt/pybooster/clib/; \
 	cp -Rf $(SRCDIR)/*.h /opt/pybooster/include/; \
+	cp $(SQLITE_PLUGINS)/*.so /opt/pybooster/sqlite_plugins/ || true; \
 	cp $(SWIGLUA)/* /opt/pybooster/lua/ || true; \
 	cp $(SWIGRUBY)/* /opt/pybooster/ruby/ || true; \
 	cp $(SWIGTCL)/* /opt/pybooster/tcl/ || true; \
@@ -329,6 +337,7 @@ install : rmtmp
 	$(CHMOD) 644 /opt/pybooster/doc/html/search/*; \
 	$(CHMOD) 644 /opt/pybooster/*.py /opt/pybooster/*.glade; \
 	$(CHMOD) 755 /opt/pybooster/*.so /opt/pybooster/*.dll; \
+	$(CHMOD) 755 /opt/pybooster/sqlite_plugins/*.so /opt/pybooster/sqlite_plugins/*.dll || true; \
 	$(CHMOD) 755 /opt/pybooster/tcl/*.so /opt/pybooster/tcl/*.dll || true; \
 	$(CHMOD) 755 /opt/pybooster/octave/*.oct || true; \
 	$(CHMOD) 755 /opt/pybooster/perl/*.pm /opt/pybooster/perl/*.so /opt/pybooster/perl/*.dll || true; \
@@ -356,8 +365,9 @@ fixperm : rmtmp
 	$(CHMOD) 644 ./doc/html/*; \
 	$(CHMOD) 755 ./doc/html/search; \
 	$(CHMOD) 644 ./doc/html/search/*; \
-	$(CHMOD) 644 $(SRCDIR)/*; \
+	$(CHMOD) 644 $(SRCDIR)/* $(SQLITE_PLUGINS)/*.c; \
 	$(CHMOD) 644 $(PYMODDIR)/*.py $(PYMODDIR)/*.pyw $(PYMODDIR)/*.glade; \
+	$(CHMOD) 755 $(SQLITE_PLUGINS)/*.so $(SQLITE_PLUGINS)/*.dll; \
 	$(CHMOD) 755 $(PYMODDIR)/*.so $(CLIB)/*.so $(CLIB)/*.dll; \
 	$(CHMOD) 755 $(SWIGLIB)/*.so $(SWIGTCL)/*.so $(SWIGLIB)/*.dll $(SWIGTCL)/*.dll; \
 	$(CHMOD) 755 $(SWIGOCTAVE)/*.oct; \
@@ -662,3 +672,10 @@ pytools : | static_libtools static_libx86_64_asm_func
 
 pytypesize : | static_libtypesize
 	$(CC) $(PY_FPIC_PARAMS) $(SRCDIR)/pytypesize.c -o $(SRCDIR)/pytypesize.o && $(CC) $(PY_LIB_PARAMS) $(SRCDIR)/pytypesize.o $(CLIB)/libtypesize.a -o $(PYMODDIR)/typesize$(PYEXT) && $(STRIP) $(STRIP_PARAMS) $(PYMODDIR)/typesize$(PYEXT)
+
+
+# SQLite Plugins #
+
+
+sql_pcre :
+	$(CC) $(FPIC_PARAMS) -DCACHE_SIZE=$(PCRE_CACHE_SIZE) $(SQLITE_PLUGINS)/sql_pcre.c -o $(SQLITE_PLUGINS)/sql_pcre.o && $(CC) $(LIB_PARAMS) -o $(SQLITE_PLUGINS)/pcre.$(LIBEXT) $(SQLITE_PLUGINS)/sql_pcre.o -lpcre && $(STRIP) $(STRIP_PARAMS) $(SQLITE_PLUGINS)/pcre.$(LIBEXT)
