@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief SUMMARY
-@version 2016.03.09
+@version 2017.07.04
 
 @section DESCRIPTION
 TEXT

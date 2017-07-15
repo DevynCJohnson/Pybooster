@@ -6,7 +6,7 @@
 
 make clean
 
-make -j4 all dcj=1 && make -j4 pybuild dcj=py
+make -j3 dcj=1 all
 
 make rmtmp
 

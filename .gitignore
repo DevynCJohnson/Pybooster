@@ -1,14 +1,11 @@
 .git
 .git/*
+bin/
 python/
 python/*
-clib/
-swiglib/
-swiglib/*
 *.cache
 *.tmp
 *.todo.txt
-*_wrap.c
 
 # Translations
 *.mo

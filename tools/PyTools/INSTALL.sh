@@ -7,7 +7,7 @@
 
 # Remove existing version
 rm -frd --one-file-system /opt/bin/PyTools/*
-mkdir -p /opt/bin/PyTools/doc/
+mkdir --mode=755 -p /opt/bin/PyTools/doc/
 # Copy files to installaion location
 cp -Rf ./* /opt/bin/PyTools/
 chmod --quiet 755 /opt/bin/PyTools/*
