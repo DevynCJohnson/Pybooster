@@ -1,6 +1,0 @@
-[submodule "PyTools"]
-    path = ./tools/PyTools
-    url = https://github.com/DevynCJohnson/PyTools
-[submodule "SQLite-Plugins"]
-    path = ./sqlite_plugins
-    url = https://github.com/DevynCJohnson/SQLite_Plugins

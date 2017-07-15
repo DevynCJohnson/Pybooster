@@ -1,8 +1,10 @@
 # Languages
 *.s linguist-language=Assembly
 *.S linguist-language=Assembly
+*.asm linguist-language=Assembly
 *.c linguist-language=C
 *.h linguist-language=C
+*.def linguist-language=C
 *.swg linguist-language=C
 *.py linguist-language=Python
 *.pyw linguist-language=Python

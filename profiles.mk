@@ -103,7 +103,7 @@ ifdef dcj
 			override LDZ::=-Wl,-O3 -Wl,-z,relro -Wl,-z,now
 			override FLTO::=-flto -fuse-linker-plugin
 			override WARN::=-Werror -Wall -Wextra -pedantic -Wformat -Werror=format-security -Wformat-nonliteral -Wformat-signedness -Wformat-y2k -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wstrict-overflow=5 -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wredundant-decls -Wnested-externs -Winline -Wconversion -Wbad-function-cast -Wdouble-promotion -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Wpacked -Winvalid-pch -Wunsafe-loop-optimizations -Wvector-operation-performance -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wpadded
-			override XOPTMZ::=-fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -fomit-frame-pointer -momit-leaf-frame-pointer -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -maccumulate-outgoing-args -minline-all-stringops -funsafe-loop-optimizations -fwrapv -fno-exceptions -floop-nest-optimize -floop-parallelize-all -ftree-parallelize-loops=4 -fira-loop-pressure -fmodulo-sched -fmodulo-sched-allow-regmoves -freschedule-modulo-scheduled-loops -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined
+			override XOPTMZ::=-fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -fomit-frame-pointer -momit-leaf-frame-pointer -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -maccumulate-outgoing-args -minline-all-stringops -funsafe-loop-optimizations -fwrapv -fno-exceptions -floop-nest-optimize -floop-parallelize-all -ftree-parallelize-loops=4 -fira-loop-pressure -fmodulo-sched -fmodulo-sched-allow-regmoves -freschedule-modulo-scheduled-loops -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -ffast-math
 		# Clang
 		else
 			ifeq ($(CLANG),3.7)
@@ -388,6 +388,54 @@ ifdef dcj
 		override OS::=POSIX
 		override ARCH_ARM::=ARM
 		override WARN::=-Wall -Wextra -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Winline -Wuninitialized -Wstrict-prototypes -Wbad-function-cast -Wdouble-promotion -Wstrict-overflow=5 -Wredundant-decls -Wnested-externs -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Winvalid-pch -Wunsafe-loop-optimizations -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wformat -Werror=format-security -Wformat-signedness -Wformat-y2k
+	# General x86-64 Linux
+	else ifeq ($(dcj),0)
+		override GCC_PREFIX::=x86_64-linux-gnu
+		override STD::=-std=c11
+		override BITS::=-m64
+		override DEBUG::=-DNDEBUG -g0 -ggdb0 -Wl,-gc-sections -s -Wl,-s,-S -DNOAUTHOR -DNOVERSION
+		override FPIC::=-fPIC
+		override SECURITY::=1
+		override LIBEXT::=so
+		PYVERSION::=3.4
+		CPYTHON::=34
+		override OS::=POSIX
+		override ARCH::=-mtune=intel
+		# GNU-GCC
+		ifndef CLANG
+			ifdef MUSL
+				override CC::=musl-gcc -D__MUSL__
+			else
+				override CC::=gcc
+			endif
+			override STRIP::=strip
+			override LD::=ld
+			override AS::=as
+			override RANLIB::=ranlib
+			override AR::=ar
+			override LDZ::=-Wl,-O3 -Wl,-z,relro -Wl,-z,now
+			override FLTO::=-flto -fuse-linker-plugin
+			override WARN::=-Werror -Wall -Wextra -pedantic -Wformat -Werror=format-security -Wformat-nonliteral -Wformat-signedness -Wformat-y2k -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wstrict-overflow=5 -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wredundant-decls -Wnested-externs -Winline -Wconversion -Wbad-function-cast -Wdouble-promotion -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Wpacked -Winvalid-pch -Wunsafe-loop-optimizations -Wvector-operation-performance -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wpadded
+			override XOPTMZ::=-fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -fomit-frame-pointer -momit-leaf-frame-pointer -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -maccumulate-outgoing-args -minline-all-stringops -funsafe-loop-optimizations -fwrapv -fno-exceptions -floop-nest-optimize -floop-parallelize-all -ftree-parallelize-loops=4 -fira-loop-pressure -fmodulo-sched -fmodulo-sched-allow-regmoves -freschedule-modulo-scheduled-loops -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined
+		# Clang
+		else
+			ifeq ($(CLANG),3.7)
+				override CC::=clang-3.7 -Qunused-arguments
+			else ifeq ($(CLANG),3.8)
+				override CC::=clang-3.8 -Qunused-arguments
+			else
+				override CC::=clang -Qunused-arguments
+			endif
+			override STRIP::=strip
+			override LD::=llvm-link
+			override AS::=llvm-as
+			override RANLIB::=llvm-ranlib
+			override AR::=llvm-ar
+			override LDZ::=
+			override FLTO::=
+			override WARN::=-Werror $(LLVM_WARN)
+			override XOPTMZ::=-fno-signed-zeros -fno-math-errno -ftree-vectorize -ffinite-math-only -fomit-frame-pointer -momit-leaf-frame-pointer -mcrc -mcx16 -minline-all-stringops -fwrapv -fvectorize -fstrict-enums -fno-dollars-in-identifiers -Xanalyzer -strip-dead-debug-info -Xclang -vectorize-slp-aggressive
+		endif
 	endif
 endif
 

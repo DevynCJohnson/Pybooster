@@ -4,14 +4,14 @@
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 
 
-CLANG_VERSION=3.7
+CLANG_VERSION=4.0
 
 export CC="clang-$CLANG_VERSION"
 export CXX="clang++-$CLANG_VERSION"
 
 make clean
 
-make -j3 all dcj=1 CLANG="$CLANG_VERSION" && make -j3 pybuild dcj=py CLANG="$CLANG_VERSION"
+make -j3 dcj=1 CLANG="$CLANG_VERSION" all
 
 make rmtmp
 

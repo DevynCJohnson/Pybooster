@@ -6,7 +6,7 @@
 @copyright LGPLv3
 
 @brief SUMMARY
-@version 2016.03.09
+@version 2017.07.04
 
 @section DESCRIPTION
 TEXT
@@ -30,16 +30,13 @@ License along with this library.
 */
 
 
-#ifndef FILE_CHEMISTRY_SEEN
-#define FILE_CHEMISTRY_SEEN
+#ifndef FILE_SEEN
+#define FILE_SEEN
 
-
-#include <stdio.h>
-#include <stdlib.h>
 
 #include "MACROS.h"
 
-/* ELEMENT LIST */
+/* CONSTANTS */
 const char CHAR[128];
 /* FUNCTIONS */
 double FUNC(const double VAR);

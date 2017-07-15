@@ -6,8 +6,8 @@
 
 
 # Remove existing version
-rm -frd --one-file-system /opt/bin/PyTools/geany-plugins
-mkdir -p /opt/bin/PyTools/geany-plugins
+rm -frd --one-file-system /opt/bin/PyTools/geany-plugins/
+mkdir --mode=755 -p /opt/bin/PyTools/geany-plugins/
 # Copy files to installaion location
 cp -Rf ./geany-plugins/* /opt/bin/PyTools/geany-plugins/
 chmod --quiet 755 /opt/bin/PyTools/geany-plugins/*

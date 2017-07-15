@@ -1,3 +1,12 @@
+2017-07-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster: Python and EzWin libraries have been re-added
+
+2017-07-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster: Complete re-write and shift from Python code to C + Assembly
+	* PyBooster: SWIG, EzWin, SQLite, and Python have been removed (for now)
+
 2016-04-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster: Added SQLite-Plugins
