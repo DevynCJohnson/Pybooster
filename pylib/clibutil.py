@@ -1,55 +1,61 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Interface for system libraries via ctypes (mostly for Unixoid systems)
+
 @file clibutil.py
 @package pybooster.clibutil
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
 from ctypes import CDLL, cdll, util
 from os.path import isfile
-from re import findall
 from subprocess import getoutput
+
+try:  # Regular Expression module
+    from regex import findall
+except ImportError:
+    from re import findall
 
 
 __all__ = [
-    # GET LIBRARY FILE NAMES
-    'getlibc',
-    'getlibm',
-    # LIST LIBRARY OBJECTS
-    'list_elf_lib_funcs',
-    'list_elf_lib_consts',
-    'list_elf_lib_objs',
-    # LOAD LIBRARIES
-    'loadlib',
-    'loadlibpath',
-    'loadlibc',
-    'loadlibm',
+    # GET LIBRARY FILE NAMES #
+    r'getlibc',
+    r'getlibm',
+    # LIST LIBRARY OBJECTS #
+    r'list_elf_lib_funcs',
+    r'list_elf_lib_consts',
+    r'list_elf_lib_objs',
+    # LOAD LIBRARIES #
+    r'loadlib',
+    r'loadlibpath',
+    r'loadlibc',
+    r'loadlibm'
 ]
 
 
-# GET LIBRARY FILE NAMES
+# GET LIBRARY FILE NAMES #
 
 
 def getlibc() -> str:
@@ -62,7 +68,7 @@ def getlibm() -> str:
     return util.find_library(r'm')
 
 
-# LIST LIBRARY OBJECTS
+# LIST LIBRARY OBJECTS #
 
 
 def list_elf_lib_funcs(libfile_path: str) -> list:
@@ -74,8 +80,7 @@ def list_elf_lib_funcs(libfile_path: str) -> list:
         for i in objs:
             lst.append(i[1])
         return lst
-    else:
-        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
+    raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
 def list_elf_lib_consts(libfile_path: str) -> list:
@@ -87,8 +92,7 @@ def list_elf_lib_consts(libfile_path: str) -> list:
         for i in objs:
             lst.append(i[1])
         return lst
-    else:
-        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
+    raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
 def list_elf_lib_objs(libfile_path: str) -> list:
@@ -100,30 +104,41 @@ def list_elf_lib_objs(libfile_path: str) -> list:
         for i in objs:
             lst.append(i[2])
         return lst
-    else:
-        raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
+    raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
-# LOAD LIBRARIES
+# LOAD LIBRARIES #
 
 
 def loadlib(library: str) -> CDLL:
-    """Load the specified library by name; Usage: library = loadlib('m')"""
-    if library[:3] == 'lib':
+    """Load the specified library by name
+
+    Usage: library = loadlib('m')
+    """
+    if library[:3] == r'lib':
         library = library[3:]
     return cdll.LoadLibrary(util.find_library(library))
 
 
 def loadlibpath(libpath: str) -> CDLL:
-    """Load the specified library by pathname; Usage: library = loadlibpath('/DIR/libFILE.so')"""
+    """Load the specified library by pathname
+
+    Usage: library = loadlibpath('/DIR/libFILE.so')
+    """
     return cdll.LoadLibrary(libpath)
 
 
 def loadlibc() -> CDLL:
-    """Load libc; Usage: libc = loadlibc()"""
+    """Load libc
+
+    Usage: libc = loadlibc()
+    """
     return cdll.LoadLibrary(util.find_library(r'c'))
 
 
 def loadlibm() -> CDLL:
-    """Load libm (Math); Usage: libm = loadlibm()"""
+    """Load libm (Math)
+
+    Usage: libm = loadlibm()
+    """
     return cdll.LoadLibrary(util.find_library(r'm'))

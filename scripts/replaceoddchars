@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Replace odd characters with normal characters in stream (i.e. curly-commas to regular)
+
+@file replaceoddchars
+@version 2018.04.27
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section DESCRIPTION
+This script can be integrated into Geany to remove odd characters from the selection.
+Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this software.
+"""
+
+
+from sys import argv, stdin, stdout
+
+
+def replace_odd_chars(_data: str) -> str:
+    """Replace odd characters with plain characters (i.e. replace non-breaking space with ASCII space)"""
+    # Commas
+    _data = _data.replace(r'،', r',').replace(r'、', r',').replace(r'،', r',').replace(r'︐', r',').replace(r'︑', r',').replace(r'᠂', r',').replace(r'‍̓', r',').replace(r'‍፣', r',').replace(r'‍꛵', r',')
+    # Quotes
+    _data = _data.replace(r'“', r'"').replace(r'”', r'"').replace(r'‘', r'\'').replace(r'’', r'\'').replace(r'′', r'\'').replace(r'″', r'"').replace(r'‴', r'"').replace(r'″', r'"')
+    # Spaces
+    _data = _data.replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    # Dashes & Other Characters
+    return _data.replace('\u1680', r'-').replace('\u16EB', r'.').replace('\u16EC', r':')
+
+
+if __name__ == '__main__':
+    if len(argv) == 1:
+        DATA = stdin.read()
+        stdout.write(replace_odd_chars(DATA))
+    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
+        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')
+    elif argv[1]:
+        stdout.write(replace_odd_chars(argv[1]) + '\n')
+    else:
+        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')

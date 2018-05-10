@@ -1,0 +1,149 @@
+// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: nil; tab-width: 4 -*-
+// vim: set fileencoding=utf-8 filetype=c syn=c.doxygen fileformat=unix tabstop=4 expandtab :
+// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+// @brief Enhanced & Extended XKB Keyboard Layout (Keycodes)
+// @file usx_types
+// @version 2018.04.27
+// @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+// @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+default partial xkb_types "basic_types" {
+    virtual_modifiers Alt,AltGr,NumLock,ScrollLock;
+    type "NUMPAD" {
+        modifiers = NumLock+AltGr+ScrollLock+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[NumLock] = Level2;
+        map[AltGr] = Level3;
+        map[AltGr+NumLock+Shift] = Level3;
+        map[AltGr+Shift] = Level4;
+        map[AltGr+NumLock] = Level4;
+        map[ScrollLock] = Level5;
+        map[NumLock+ScrollLock+Shift] = Level5;
+        map[ScrollLock+Shift] = Level6;
+        map[ScrollLock+NumLock] = Level6;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Numbers";
+        level_name[Level3] = "Math & Symbols";
+        level_name[Level4] = "Unassigned 1";
+        level_name[Level5] = "Emojis";
+        level_name[Level6] = "Unassigned 2";
+    };
+    type "KEYPAD" {
+        modifiers = NumLock+Shift;
+        map[None] = Level1;
+        map[NumLock+Shift] = Level1;
+        map[Shift] = Level2;
+        map[NumLock] = Level2;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Numbers";
+    };
+    type "ONE_LEVEL" {
+        modifiers = None;
+        map[None] = Level1;
+        level_name[Level1] = "Base";
+    };
+    type "TWO_LEVEL" {
+        modifiers = Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+    };
+    type "ALPHABETIC" {
+        modifiers = Lock+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        preserve[Lock]= Lock;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+    };
+    type "RALT_LEVEL2" {
+        modifiers = AltGr;
+        map[None] = Level1;
+        map[AltGr] = Level2;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "AltGr";
+    };
+    type "THREE_LEVEL" {
+        modifiers = AltGr+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[AltGr] = Level3;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+    };
+    type "FOUR_LEVEL" {
+        modifiers = AltGr+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[AltGr] = Level3;
+        map[AltGr+Shift] = Level4;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "AltGr Shift";
+    };
+    type "FOUR_LEVEL_FUNCTION" {
+        modifiers = AltGr+Alt+Control+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[AltGr] = Level3;
+        map[Alt+Control] = Level4;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "Alt Control";
+    };
+    type "FOUR_LEVEL_ALPHABETIC" {
+        modifiers = Lock+AltGr+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[Lock] = Level2;
+        map[AltGr] = Level3;
+        map[AltGr+Lock+Shift] = Level3;
+        map[AltGr+Shift] = Level4;
+        map[AltGr+Lock] = Level4;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "AltGr Shift";
+    };
+    type "SIX_LEVEL" {
+        modifiers = AltGr+ScrollLock+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[AltGr] = Level3;
+        map[AltGr+Shift] = Level4;
+        map[ScrollLock] = Level5;
+        map[ScrollLock+Shift] = Level6;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "AltGr Shift";
+        level_name[Level5] = "SCLK base";
+        level_name[Level6] = "SCLK Shift";
+    };
+    type "SIX_LEVEL_ALPHA" {
+        modifiers = Lock+AltGr+ScrollLock+Shift;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[Lock] = Level2;
+        map[AltGr] = Level3;
+        map[AltGr+Lock+Shift] = Level3;
+        map[AltGr+Shift] = Level4;
+        map[AltGr+Lock] = Level4;
+        map[ScrollLock] = Level5;
+        map[Lock+ScrollLock+Shift] = Level5;
+        map[ScrollLock+Shift] = Level6;
+        map[ScrollLock+Lock] = Level6;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "AltGr Shift";
+        level_name[Level5] = "SCLK base";
+        level_name[Level6] = "SCLK Shift";
+    };
+};

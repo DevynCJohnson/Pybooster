@@ -1,57 +1,59 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Pronoun-related functions and constants
+
 @file pronouns.py
 @package pybooster.pronouns
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
 try:  # Regular Expression module
-    import regex as re  # noqa  # pylint: disable=C0411
+    import regex as re  # noqa: E402  # pylint: disable=C0411
 except ImportError:
-    import re  # noqa  # pylint: disable=C0411
+    import re  # noqa: E402  # pylint: disable=C0411
 
 
 __all__ = [
-    # CONSTANTS
-    'FIRST_THIRD',
-    'FIRST_SECOND',
-    'SECOND_THIRD',
-    'GENDER_SWAP',
-    # FUNCTIONS
-    'swap_pronouns',
-    'pronoun',
-    'pronoun2',
-    'pronoun3',
-    'pronounf',
-    'pronoun2f',
-    'pronoun3f',
-    'swap_genders',
+    # CONSTANTS #
+    r'FIRST_THIRD',
+    r'FIRST_SECOND',
+    r'SECOND_THIRD',
+    r'GENDER_SWAP',
+    # FUNCTIONS #
+    r'swap_pronouns',
+    r'pronoun',
+    r'pronoun2',
+    r'pronoun3',
+    r'pronounf',
+    r'pronoun2f',
+    r'pronoun3f',
+    r'swap_genders'
 ]
 
 
-# CONSTANTS
+# CONSTANTS #
 
 
 FIRST_THIRD = (
@@ -67,7 +69,7 @@ FIRST_THIRD = (
     (r'himself', r'myself'),
     (r'herself', r'myself'),
     (r'they', r'we'),
-    (r'we', r'they'),
+    (r'we', r'they')
 )
 
 
@@ -83,7 +85,7 @@ FIRST_SECOND = (
     (r'mine', r'yours'),
     (r'you were', r'I was'),
     (r'yourself', r'myself'),
-    (r'myself', r'yourself'),
+    (r'myself', r'yourself')
 )
 
 
@@ -101,7 +103,7 @@ SECOND_THIRD = (
     (r'you have', r'they have'),
     (r'they have', r'you have'),
     (r'you had', r'they had'),
-    (r'they had', r'you had'),
+    (r'they had', r'you had')
 )
 
 
@@ -110,11 +112,11 @@ GENDER_SWAP = (
     (r'her', r'him'),
     (r'he', r'she'),
     (r'she', r'he'),
-    (r'his', r'her'),
+    (r'his', r'her')
 )
 
 
-# FUNCTIONS
+# FUNCTIONS #
 
 
 def swap_pronouns(_str: str, _pronouns: tuple) -> str:
@@ -124,12 +126,11 @@ def swap_pronouns(_str: str, _pronouns: tuple) -> str:
         _test = re.search(i[0], _str, re.I)
         if _test is not None:
             _swap.append(i)
-    if not len(_swap):
+    if not _swap:
         return _str
-    else:
-        for i in _swap:
-            _str = re.sub(i[0], i[1], _str, re.I)
-        return _str
+    for i in _swap:
+        _str = re.sub(i[0], i[1], _str, re.I)
+    return _str
 
 
 def pronoun(_str: str) -> str:

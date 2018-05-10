@@ -1,0 +1,313 @@
+// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: nil; tab-width: 4 -*-
+// vim: set fileencoding=utf-8 filetype=c syn=c.doxygen fileformat=unix tabstop=4 expandtab :
+// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+// @brief Enhanced & Extended XKB Keyboard Layout (Symbols)
+// @file usx
+// @version 2018.04.27
+// @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+// @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+partial modifier_keys xkb_symbols "modifiers" {
+    // Lock Keys
+    key <CAPS> { type = "ONE_LEVEL", symbols = [Caps_Lock] };
+    key <NMLK> { virtualMods = NumLock, type = "TWO_LEVEL", symbols = [Num_Lock, Pointer_EnableKeys] };
+    key <SCLK> { virtualMods = ScrollLock, type = "ONE_LEVEL", symbols = [Scroll_Lock] };
+    // Modifier Keys
+    key <ALT> { type = "TWO_LEVEL", symbols = [Alt_L, Alt_R] };
+    key <HYPR> { virtualMods = Hyper, type = "TWO_LEVEL", symbols = [Hyper_L, Hyper_R] };
+    key <LALT> { virtualMods = Alt, type = "TWO_LEVEL", symbols = [Alt_L, Meta_L] };
+    key <LCTL> { type = "ONE_LEVEL", symbols = [Control_L] };
+    key <LFSH> { type = "ONE_LEVEL", symbols = [Shift_L] };
+    key <LVL3> { type = "ONE_LEVEL", symbols = [ISO_Level3_Shift] };  // virtualMods = AltGr
+    key <LWIN> { virtualMods = Super, type = "ONE_LEVEL", symbols = [Super_L] };
+    key <MDSW> { type = "ONE_LEVEL", symbols = [NoSymbol] };  // virtualMods = ModeSw, symbols = [Mode_switch]
+    key <MENU> { type = "ONE_LEVEL", symbols = [Menu] };
+    key <META> { virtualMods = Meta, type = "TWO_LEVEL", symbols = [Meta_L, Meta_R] };
+    key <RALT> { virtualMods = AltGr, type = "ONE_LEVEL", symbols = [ISO_Level3_Shift] };
+    key <RCTL> { type = "ONE_LEVEL", symbols = [Multi_key] };
+    key <RTSH> { type = "ONE_LEVEL", symbols = [Shift_R] };
+    key <RWIN> { virtualMods = Super, type = "ONE_LEVEL", symbols = [Super_R] };
+    key <SUPR> { virtualMods = Super, type = "TWO_LEVEL", symbols = [Super_L, Super_R] };
+    // Modifier & Lock Mappings
+    modifier_map Control { Control_L };  // <LCTL>, <RCTL>
+    modifier_map Lock { Caps_Lock };  // <CAPS>
+    modifier_map Shift { Shift_L, Shift_R };  // <LFSH>, <RTSH>
+    modifier_map Mod1 { Alt_L, Meta_L, Meta_R };  // <ALT>, <LALT>, <META>
+    modifier_map Mod2 { Num_Lock };  // <NMLK>
+    modifier_map Mod3 { <HYPR>, Super_L, Super_R };  // <SUPR>, <LWIN>, <RWIN>
+    modifier_map Mod4 { ISO_Level3_Shift };  // <RALT>, <LVL3>
+    modifier_map Mod5 { Scroll_Lock };  // <SCLK>, <MDSW>
+};
+
+
+partial keypad_keys xkb_symbols "keypad" {
+    key.type = "NUMPAD";
+    key <KP0> { symbols = [KP_Insert, 0, ballotcross, NoSymbol, U2328, NoSymbol] };
+    key <KP1> { symbols = [KP_End, 1, checkmark, NoSymbol, U231B, NoSymbol] };
+    key <KP2> { symbols = [KP_Down, 2, musicalsharp, NoSymbol, U2639, NoSymbol] };
+    key <KP3> { symbols = [KP_Next, 3, NoSymbol, NoSymbol, U263A, NoSymbol] };
+    key <KP4> { symbols = [KP_Left, 4, NoSymbol, NoSymbol, U2620, NoSymbol] };
+    key <KP5> { symbols = [KP_Begin, 5, NoSymbol, NoSymbol, U2622, NoSymbol] };
+    key <KP6> { symbols = [KP_Right, 6, NoSymbol, NoSymbol, U2623, NoSymbol] };
+    key <KP7> { symbols = [KP_Home, 7, U2265, NoSymbol, U269B, NoSymbol] };
+    key <KP8> { symbols = [KP_Up, 8, NoSymbol, NoSymbol, U1F3A7, NoSymbol] };
+    key <KP9> { symbols = [KP_Prior, 9, U2264, NoSymbol, U1F600, NoSymbol] };
+    key <KPDL> { symbols = [KP_Delete, KP_Decimal, ellipsis, NoSymbol, U1F595, NoSymbol] };
+    key <KPEN> { symbols = [KP_Enter, KP_Enter, U2261, NoSymbol, U1F601, NoSymbol] };
+    key <KPEQ> { symbols = [equal, equal, NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    key <KPPT> { symbols = [period, period, NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    key <KPAD> { symbols = [KP_Add, KP_Add, NoSymbol, NoSymbol, U1F609, NoSymbol] };
+    key <KPSU> { symbols = [KP_Subtract, KP_Subtract, U2262, NoSymbol, malesymbol, NoSymbol] };
+    key <KPMU> { symbols = [KP_Multiply, KP_Multiply, U00D7, NoSymbol, femalesymbol, NoSymbol] };
+    key <KPDV> { symbols = [KP_Divide, KP_Divide, U00F7, NoSymbol, U23B4, U23B5] };
+};
+
+
+partial function_keys xkb_symbols "functionKeys" {
+    key.type = "FOUR_LEVEL_FUNCTION";
+    key <FK01> { symbols = [F1, Hyper_L, F13, XF86_Switch_VT_1] };
+    key <FK02> { symbols = [F2, Hyper_R, F14, XF86_Switch_VT_2] };
+    key <FK03> { symbols = [F3, Meta_L, F15, XF86_Switch_VT_3] };
+    key <FK04> { symbols = [F4, Meta_R, F16, XF86_Switch_VT_4] };
+    key <FK05> { symbols = [F5, Super_L, F17, XF86_Switch_VT_5] };
+    key <FK06> { symbols = [F6, Super_R, F18, XF86_Switch_VT_6] };
+    key <FK07> { symbols = [F7, Mode_switch, F19, XF86_Switch_VT_7] };
+    key <FK08> { symbols = [F8, Multi_key, F20, XF86_Switch_VT_8] };
+    key <FK09> { symbols = [F9, Break, F21, XF86_Switch_VT_9] };
+    key <FK10> { symbols = [F10, Pause, F22, XF86_Switch_VT_10] };
+    key <FK11> { symbols = [F11, Sys_Req, F23, XF86_Switch_VT_11] };
+    key <FK12> { symbols = [F12, Linefeed, F24, XF86_Switch_VT_12] };
+    // Extended Function Keys
+    key <FK13> { type = "ONE_LEVEL", symbols = [F13] };
+    key <FK14> { type = "ONE_LEVEL", symbols = [F14] };
+    key <FK15> { type = "ONE_LEVEL", symbols = [F15] };
+    key <FK16> { type = "ONE_LEVEL", symbols = [F16] };
+    key <FK17> { type = "ONE_LEVEL", symbols = [F17] };
+    key <FK18> { type = "ONE_LEVEL", symbols = [F18] };
+    key <FK19> { type = "ONE_LEVEL", symbols = [F19] };
+    key <FK20> { type = "ONE_LEVEL", symbols = [F20] };
+    key <FK21> { type = "ONE_LEVEL", symbols = [F21] };
+    key <FK22> { type = "ONE_LEVEL", symbols = [F22] };
+    key <FK23> { type = "ONE_LEVEL", symbols = [F23] };
+    key <FK24> { type = "ONE_LEVEL", symbols = [F24] };
+    // XF86AudioMicMute, XF86AudioRecord, XF86KbdBrightnessDown, XF86KbdBrightnessUp, XF86Bluetooth
+    // XF86TouchpadToggle, XF86KbdLightOnOff, XF86AudioMute, XF86ScreenSaver, XF86AudioLowerVolume
+    // XF86AudioRaiseVolume, XF86Display, XF86MonBrightnessDown, XF86MonBrightnessUp, XF86WebCam
+    // XF86WLAN, XF86Suspend
+};
+
+
+partial alphanumeric_keys xkb_symbols "x11" {
+    key.type = "ONE_LEVEL";
+    key <AGAI> { symbols = [Redo] };
+    key <COPY> { symbols = [XF86Copy] };
+    key <CUT> { symbols = [XF86Cut] };
+    key <FIND> { symbols = [Find] };
+    key <FRNT> { symbols = [SunFront] };
+    key <HELP> { symbols = [Help] };
+    key <KIDN> { symbols = [XF86KbdBrightnessDown] };
+    key <KITG> { symbols = [XF86KbdLightOnOff] };
+    key <KIUP> { symbols = [XF86KbdBrightnessUp] };
+    key <MUTE> { symbols = [XF86AudioMute] };
+    key <OPEN> { symbols = [XF86Open] };
+    key <OUTP> { symbols = [XF86Display] };
+    key <PAST> { symbols = [XF86Paste] };
+    key <POWR> { symbols = [XF86PowerOff] };
+    key <PROP> { symbols = [SunProps] };
+    key <STOP> { symbols = [Cancel] };
+    key <UNDO> { symbols = [Undo] };
+    key <VOL+> { symbols = [XF86AudioRaiseVolume] };
+    key <VOL-> { symbols = [XF86AudioLowerVolume] };
+    // Japanese Keyboard Keys
+    key <AE13> { type = "SIX_LEVEL", symbols = [backslash, bar, yen, prolongedsound, NoSymbol, NoSymbol] };
+    key <HENK> { symbols = [Henkan] };
+    key <HIRA> { symbols = [Hiragana] };
+    key <HKTG> { symbols = [Hiragana_Katakana] };
+    key <HZTG> { symbols = [Zenkaku_Hankaku] };
+    key <JPCM> { symbols = [KP_Separator] };
+    key <KATA> { symbols = [Katakana] };
+    key <MUHE> { symbols = [Muhenkan] };
+    key <RO> { symbols = [Romaji] };
+    // Korean Keyboards Keys
+    key <HJCV> { symbols = [Hangul_Hanja] };
+    key <HNGL> { symbols = [Hangul] };
+    // Internet Keyboard Keys
+    key <I120> { symbols = [NoSymbol] };
+    key <I126> { symbols = [plusminus] };
+    key <I128> { symbols = [XF86LaunchA] };
+    key <I147> { symbols = [XF86MenuKB] };
+    key <I148> { symbols = [XF86Calculator] };
+    key <I149> { symbols = [NoSymbol] };
+    key <I150> { symbols = [XF86Sleep] };
+    key <I151> { symbols = [XF86WakeUp] };
+    key <I152> { symbols = [XF86Explorer] };
+    key <I153> { symbols = [XF86Send] };
+    key <I154> { symbols = [Delete] };
+    key <I155> { symbols = [XF86Xfer] };
+    key <I156> { symbols = [XF86Launch1] };
+    key <I157> { symbols = [XF86Launch2] };
+    key <I158> { symbols = [XF86WWW] };
+    key <I159> { symbols = [XF86DOS] };
+    key <I160> { symbols = [XF86ScreenSaver] };
+    key <I161> { symbols = [XF86RotateWindows] };
+    key <I162> { symbols = [XF86TaskPane] };
+    key <I163> { symbols = [XF86Mail] };
+    key <I164> { symbols = [XF86Favorites] };
+    key <I165> { symbols = [XF86MyComputer] };
+    key <I166> { symbols = [XF86Back] };
+    key <I167> { symbols = [XF86Forward] };
+    key <I168> { symbols = [NoSymbol] };
+    key <I169> { symbols = [XF86Eject] };
+    key <I170> { symbols = [XF86Eject] };
+    key <I171> { symbols = [XF86AudioNext] };
+    key <I172> { type = "TWO_LEVEL", symbols = [XF86AudioPlay, XF86AudioPause] };
+    key <I173> { symbols = [XF86AudioPrev] };
+    key <I174> { type = "TWO_LEVEL", symbols = [XF86AudioStop, XF86Eject] };
+    key <I175> { symbols = [XF86AudioRecord] };
+    key <I176> { symbols = [XF86AudioRewind] };
+    key <I177> { symbols = [XF86Phone] };
+    key <I178> { symbols = [NoSymbol] };
+    key <I179> { symbols = [XF86Tools] };
+    key <I180> { symbols = [XF86HomePage] };
+    key <I181> { symbols = [XF86Reload] };
+    key <I182> { symbols = [XF86Close] };
+    key <I183> { symbols = [NoSymbol] };
+    key <I184> { symbols = [NoSymbol] };
+    key <I185> { symbols = [XF86ScrollUp] };
+    key <I186> { symbols = [XF86ScrollDown] };
+    key <I187> { symbols = [parenleft] };
+    key <I188> { symbols = [parenright] };
+    key <I189> { symbols = [XF86New] };
+    key <I190> { symbols = [Redo] };
+    key <I208> { symbols = [XF86AudioPlay] };
+    key <I209> { symbols = [XF86AudioPause] };
+    key <I210> { symbols = [XF86Launch3] };
+    key <I211> { symbols = [XF86Launch4] };
+    key <I212> { symbols = [XF86LaunchB] };
+    key <I213> { symbols = [XF86Suspend] };
+    key <I214> { symbols = [XF86Close] };
+    key <I215> { symbols = [XF86AudioPlay] };
+    key <I216> { symbols = [XF86AudioForward] };
+    key <I217> { symbols = [NoSymbol] };
+    key <I218> { symbols = [Print] };
+    key <I219> { type = "SIX_LEVEL", symbols = [guillemotleft, guillemotright, degree, NoSymbol, NoSymbol, NoSymbol] };
+    key <I220> { symbols = [XF86WebCam] };
+    key <I221> { symbols = [XF86Meeting] };
+    key <I222> { symbols = [NoSymbol] };
+    key <I223> { symbols = [XF86Mail] };
+    key <I224> { symbols = [XF86Messenger] };
+    key <I225> { symbols = [XF86Search] };
+    key <I226> { symbols = [XF86Go] };
+    key <I227> { symbols = [XF86Finance] };
+    key <I228> { symbols = [XF86Game] };
+    key <I229> { symbols = [XF86Shop] };
+    key <I230> { symbols = [NoSymbol] };
+    key <I231> { symbols = [Cancel] };
+    key <I232> { symbols = [XF86MonBrightnessDown] };
+    key <I233> { symbols = [XF86MonBrightnessUp] };
+    key <I234> { symbols = [XF86AudioMedia] };
+    key <I235> { symbols = [XF86Display] };
+    key <I236> { symbols = [XF86KbdLightOnOff] };
+    key <I237> { symbols = [XF86KbdBrightnessDown] };
+    key <I238> { symbols = [XF86KbdBrightnessUp] };
+    key <I239> { symbols = [XF86Send] };
+    key <I240> { symbols = [XF86Reply] };
+    key <I241> { symbols = [XF86MailForward] };
+    key <I242> { symbols = [XF86Save] };
+    key <I243> { symbols = [XF86Documents] };
+    key <I244> { symbols = [XF86Battery] };
+    key <I245> { symbols = [XF86Bluetooth] };
+    key <I246> { symbols = [XF86WLAN] };
+    key <I247> { symbols = [NoSymbol] };
+    key <I248> { symbols = [NoSymbol] };
+    key <I249> { symbols = [NoSymbol] };
+    key <I250> { symbols = [NoSymbol] };
+    key <I251> { symbols = [NoSymbol] };
+    key <I252> { symbols = [NoSymbol] };
+    key <I253> { symbols = [NoSymbol] };
+    key <I254> { symbols = [NoSymbol] };
+    key <I255> { symbols = [XF86Hibernate] };
+};
+
+
+default alphanumeric_keys alternate_group xkb_symbols "default" {
+    name[Group1] = "English (Extended)";
+    include "usx(modifiers)"
+    include "usx(keypad)"
+    include "usx(functionKeys)"
+    include "usx(x11)"
+    key.type = "SIX_LEVEL_ALPHA";
+    // Row 5/E
+    key <TLDE> { type = "TWO_LEVEL", symbols = [grave, asciitilde] };
+    key <AE01> { type = "SIX_LEVEL", symbols = [1, exclam, exclamdown, U2049, U0326, onesuperior] };  // EXCLAMATION QUESTION MARK, COMBINING COMMA BELOW
+    key <AE02> { type = "SIX_LEVEL", symbols = [2, at, cedilla, U0323, U030F, twosuperior] };  // COMBINING DOT BELOW, COMBINING DOUBLE GRAVE ACCENT
+    key <AE03> { type = "SIX_LEVEL", symbols = [3, numbersign, U20B9, sterling, U2116, threesuperior] };  // INDIAN RUPEE SIGN, NUMERO SIGN
+    key <AE04> { type = "SIX_LEVEL", symbols = [4, dollar, U00A4, U20BF, yen, foursuperior] };  // CURRENCY SIGN, BITCOIN
+    key <AE05> { type = "SIX_LEVEL", symbols = [5, percent, EuroSign, U00A3, U2030, fivesuperior] };  // POUND SIGN, PER MILLE SIGN
+    key <AE06> { type = "SIX_LEVEL", symbols = [6, asciicircum, acute, doubleacute, U0309, sixsuperior] };  // COMBINING HOOK ABOVE
+    key <AE07> { type = "SIX_LEVEL", symbols = [7, ampersand, macron, U0314, U0331, sevensuperior] };  // COMBINING MACRON ABOVE, COMBINING MACRON BELOW
+    key <AE08> { type = "SIX_LEVEL", symbols = [8, asterisk, U2042, ogonek, dead_greek, eightsuperior] };  // ASTERISM
+    key <AE09> { type = "SIX_LEVEL", symbols = [9, parenleft, U2997, leftsinglequotemark, U031B, ninesuperior] };  // LEFT TORTOISE BRACKET, COMBINING HORN
+    key <AE10> { type = "SIX_LEVEL", symbols = [0, parenright, U2998, rightsinglequotemark, U0330, zerosuperior] };  // RIGHT TORTOISE BRACKET, COMBINING TILDE BELOW
+    key <AE11> { type = "SIX_LEVEL", symbols = [minus, underscore, U0306, U0311, U0361, fourthroot] };  // COMBINING BREVE, COMBINING INVERTED BREVE, COMBINING DOUBLE INVERTED BREVE
+    key <AE12> { type = "SIX_LEVEL", symbols = [equal, plus, multiply, division, squareroot, cuberoot] };
+    // Row 4/D
+    key <AD01> { symbols = [q, Q, adiaeresis, Adiaeresis, Cyrillic_shorti, Cyrillic_SHORTI] };
+    key <AD02> { symbols = [w, W, aring, Aring, Cyrillic_tse, Cyrillic_TSE] };
+    key <AD03> { symbols = [e, E, eacute, Eacute, Cyrillic_u, Cyrillic_U] };
+    key <AD04> { symbols = [r, R, registered, registered, Cyrillic_ka, Cyrillic_KA] };
+    key <AD05> { symbols = [t, T, thorn, THORN, Cyrillic_ie, Cyrillic_IE] };
+    key <AD06> { symbols = [y, Y, udiaeresis, Udiaeresis, Cyrillic_en, Cyrillic_EN] };
+    key <AD07> { symbols = [u, U, uacute, Uacute, Cyrillic_ghe, Cyrillic_GHE] };
+    key <AD08> { symbols = [i, I, iacute, Iacute, Cyrillic_sha, Cyrillic_SHA] };
+    key <AD09> { symbols = [o, O, oacute, Oacute, Cyrillic_shcha, Cyrillic_SHCHA] };
+    key <AD10> { symbols = [p, P, odiaeresis, Odiaeresis, Cyrillic_ze, Cyrillic_ZE] };
+    key <AD11> { type = "SIX_LEVEL", symbols = [bracketleft, braceleft, guillemotleft, leftdoublequotemark, Cyrillic_ha, Cyrillic_HA] };
+    key <AD12> { type = "SIX_LEVEL", symbols = [bracketright, braceright, guillemotright, rightdoublequotemark, Cyrillic_hardsign, Cyrillic_HARDSIGN] };
+    key <BKSL> { type = "SIX_LEVEL", symbols = [backslash, bar, notsign, brokenbar, U2016, U20EB] };  // DOUBLE VERTICAL LINE, COMBINING LONG DOUBLE SOLIDUS OVERLAY
+    // Row 3/C
+    key <AC01> { symbols = [a, A, aacute, Aacute, Cyrillic_ef, Cyrillic_EF] };
+    key <AC02> { symbols = [s, S, ssharp, section, Cyrillic_yeru, Cyrillic_YERU] };
+    key <AC03> { symbols = [d, D, eth, ETH, Cyrillic_ve, Cyrillic_VE] };
+    key <AC04> { symbols = [f, F, U2300, U23D6, Cyrillic_a, Cyrillic_A] };  // DIAMETER SIGN, ⏖
+    key <AC05> { symbols = [g, G, Greek_phi, Greek_psi, Cyrillic_pe, Cyrillic_PE] };
+    key <AC06> { symbols = [h, H, ydiaeresis, Ydiaeresis, Cyrillic_er, Cyrillic_ER] };
+    key <AC07> { symbols = [j, J, Greek_lambda, Greek_sigma, Cyrillic_o, Cyrillic_O] };
+    key <AC08> { symbols = [k, K, oe, OE, Cyrillic_el, Cyrillic_EL] };
+    key <AC09> { symbols = [l, L, oslash, Ooblique, Cyrillic_de, Cyrillic_DE] };
+    key <AC10> { type = "SIX_LEVEL", symbols = [semicolon, colon, paragraph, degree, Cyrillic_zhe, Cyrillic_ZHE] };
+    key <AC11> { type = "SIX_LEVEL", symbols = [apostrophe, quotedbl, acute, diaeresis, Cyrillic_e, Cyrillic_E] };
+    // Row 2/B
+    key <AB01> { symbols = [z, Z, ae, AE, Cyrillic_ya, Cyrillic_YA] };
+    key <AB02> { symbols = [x, X, Greek_xi, Greek_XI, Cyrillic_che, Cyrillic_CHE] };
+    key <AB03> { symbols = [c, C, copyright, cent, Cyrillic_es, Cyrillic_ES] };
+    key <AB04> { symbols = [v, V, Greek_OMEGA, Greek_omega, Cyrillic_em, Cyrillic_EM] };
+    key <AB05> { symbols = [b, B, Greek_beta, Greek_gamma, Cyrillic_i, Cyrillic_I] };
+    key <AB06> { symbols = [n, N, ntilde, Ntilde, Cyrillic_te, Cyrillic_TE] };
+    key <AB07> { symbols = [m, M, Greek_mu, Greek_pi, Cyrillic_softsign, Cyrillic_SOFTSIGN] };
+    key <AB08> { type = "SIX_LEVEL", symbols = [comma, less, ccedilla, Ccedilla, Cyrillic_be, Cyrillic_BE] };
+    key <AB09> { type = "SIX_LEVEL", symbols = [period, greater, abovedot, caron, Cyrillic_yu, Cyrillic_YU] };
+    key <AB10> { type = "SIX_LEVEL", symbols = [slash, question, questiondown, U1FBF, U030A, U0325] };  // GREEK PSILI, COMBINING RING ABOVE, COMBINING RING BELOW
+    // Miscellaneous Keys
+    key <BKSP> { type = "SIX_LEVEL", symbols = [BackSpace, BackSpace, Undo, Terminate_Server, BackSpace, Cancel] };
+    key <DELE> { type = "ONE_LEVEL", symbols = [Delete] };
+    key <DOWN> { type = "ONE_LEVEL", symbols = [Down] };
+    key <END> { type = "ONE_LEVEL", symbols = [End] };
+    key <ESC> { type = "TWO_LEVEL", symbols = [Escape, Break] };
+    key <HOME> { type = "ONE_LEVEL", symbols = [Home] };
+    key <INS> { type = "ONE_LEVEL", symbols = [Insert] };
+    key <LEFT> { type = "ONE_LEVEL", symbols = [Left] };
+    key <LNFD> { type = "ONE_LEVEL", symbols = [Linefeed] };
+    key <PAUS> { type = "RALT_LEVEL2", symbols = [Pause, Break] };
+    key <PGDN> { type = "RALT_LEVEL2", symbols = [Next, Break] };
+    key <PGUP> { type = "RALT_LEVEL2", symbols = [Prior, Pause] };
+    key <PRSC> { type = "RALT_LEVEL2", symbols = [Print, Sys_Req] };
+    key <RGHT> { type = "ONE_LEVEL", symbols = [Right] };
+    key <RTRN> { type = "SIX_LEVEL", symbols = [Return, Linefeed, cr, ff, vt, U2029] };  // PARAGRAPH SEPARATOR
+    key <SPCE> { type = "SIX_LEVEL", symbols = [space, nobreakspace, U2000, U2001, U2002, U2008] };  // EN QUAD, EM QUAD, EN SPACE, PUNCTUATION SPACE
+    key <TAB> { type = "TWO_LEVEL", symbols = [Tab, ISO_Left_Tab] };
+    key <UP> { type = "ONE_LEVEL", symbols = [Up] };
+    // Extra key on many European keyboards
+    key <LSGT> { type = "SIX_LEVEL", symbols = [less, greater, bar, brokenbar, NoSymbol, NoSymbol] };
+};

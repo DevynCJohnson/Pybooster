@@ -1,0 +1,134 @@
+// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: nil; tab-width: 4 -*-
+// vim: set fileencoding=utf-8 filetype=c syn=c.doxygen fileformat=unix tabstop=4 expandtab :
+// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+// @brief Enhanced & Extended XKB Keyboard Layout (Geometry)
+// @file usx_geometry
+// @version 2018.04.27
+// @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+// @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+default xkb_geometry "usx_keyboard" {
+    // Basic Settings
+    description = "Generic 105-key PC (Extended)";
+    height = 180;
+    width = 470;
+    baseColor = "white";
+    key.gap = 2;
+    key.shape = "NORM";
+    labelColor = "black";
+    row.left = 1;
+    section.left = 19;
+    // Text
+    text.color = "black";
+    text.font = "monospace";
+    text.fontEncoding = "utf-8";
+    text.fontSize = 8;
+    text.fontSlant = "r";
+    text.fontVariant = "";
+    text.fontWeight = "light";
+    text.fontWidth = "normal";
+    text.top = 25;
+    text "CapsLockLabel" { height = 16; left = 407; fontsize = 10; text = "Caps\nLock"; width = 30; };
+    text "NumLockLabel" { height = 16; left = 382; fontsize = 10; text = "Num\nLock"; width = 20; };
+    text "ScrollLockLabel" { height = 16; left = 432; fontsize = 10; text = "Scroll\nLock"; width = 40; };
+    // Shapes & Solids
+    shape.cornerRadius = 1;
+    shape "BKSL" { [28,18] };
+    shape "BKSP" { [30,18] };
+    shape "CAPS" { [33,18] };
+    shape "KP0" { [37,18] };
+    shape "KPAD" { [18,37] };
+    shape "LED" { cornerRadius = 0, { [5,1] } };
+    shape "LFSH" { [44,18] };
+    shape "MODK" { [27,18] };
+    shape "NORM" { [18,18] };
+    shape "RTRN" { [34,18] };
+    shape "RTSH" { [25,18] };
+    shape "SMOD" { [23,18] };
+    shape "SPCE" { [117,18] };
+    shape "TABK" { [30,18] };
+    // Indicators
+    indicator.offColor = "green30";
+    indicator.onColor = "green";
+    indicator.shape = "LED";
+    indicator.top = 37;
+    indicator "Caps Lock" { left = 407; };
+    indicator "Num Lock" { left = 382; };
+    indicator "Scroll Lock" { left = 433; };
+    // Sections
+    section "Function" {
+        top = 22;
+        row {
+            top = 1;
+            keys {
+                { <ESC>, color = "grey20" },
+                { <FK01>, 10 }, <FK02>, <FK03>, <FK04>,
+                { <FK05>, 10 }, <FK06>, <FK07>, <FK08>,
+                { <FK09>, 10 }, <FK10>, <FK11>, <FK12>,
+                { <PRSC>, 10 }, <SCLK>, <PAUS>
+            };
+        };
+    };  // End of "Function" section
+    section "Alpha" {
+        top = 61;
+        row {
+            top = 1;
+            keys {
+                <TLDE>, <AE01>, <AE02>, <AE03>, <AE04>, <AE05>, <AE06>, <AE07>, <AE08>, <AE09>, <AE10>, <AE11>, <AE12>,
+                { <BKSP>, "BKSP", color = "grey20" }
+            };
+        };
+        row {
+            top = 20;
+            keys {
+                { <TAB>, "TABK", color = "grey20" },
+                <AD01>, <AD02>, <AD03>, <AD04>, <AD05>, <AD06>, <AD07>, <AD08>, <AD09>, <AD10>, <AD11>, <AD12>, <BKSL>
+            };
+        };
+        row {
+            top = 39;
+            keys {
+                { <CAPS>, "CAPS", color = "grey20" },
+                <AC01>, <AC02>, <AC03>, <AC04>, <AC05>, <AC06>, <AC07>, <AC08>, <AC09>, <AC10>, <AC11>,
+                { <RTRN>, "RTRN", color = "grey20" }
+            };
+        };
+        row {
+            top = 58;
+            keys {
+                { <LFSH>, "LFSH", color = "grey20" },
+                <AB01>, <AB02>, <AB03>, <AB04>, <AB05>, <AB06>, <AB07>, <AB08>, <AB09>, <AB10>,
+                { <RTSH>, "RTSH", color = "grey20" }
+            };
+        };
+        row {
+            top = 77;
+            key.color = "grey20";
+            key.shape = "SMOD";
+            keys {
+                { <LCTL>, "MODK" }, <LWIN>, <LALT>,
+                { <SPCE>, "SPCE", color = "white" },
+                <RALT>, <MENU>, <RCTL>
+            };
+        };
+    };  // End of "Alpha" section
+    section "Editing" {
+        top = 61;
+        left = 312;
+        key.color = "grey20";
+        row { top = 1; keys { <INS>, <HOME>, <PGUP> }; };
+        row { top = 20; keys { <DELE>, <END>, <PGDN> }; };
+        row { top = 58; left = 20; keys { <UP> }; };
+        row { top = 77; keys { <LEFT>, <DOWN>, <RGHT> }; };
+    };  // End of "Editing" section
+    section "Keypad" {
+        top = 61;
+        left = 376;
+        row { top = 1; key.color = "grey20"; keys { <NMLK>, <KPDV>, <KPMU>, <KPSU> }; };
+        row { top = 20; keys { <KP7>, <KP8>, <KP9>, { <KPAD>, "KPAD", color = "grey20" } }; };
+        row { top = 39; keys { <KP4>, <KP5>, <KP6> }; };
+        row { top = 58; keys { <KP1>, <KP2>, <KP3>, { <KPEN>, "KPAD", color = "grey20" } }; };
+        row { top = 77; keys { { <KP0>, "KP0" }, <KPDL> }; };
+    };  // End of "Keypad" section
+};

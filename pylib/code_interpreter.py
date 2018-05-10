@@ -1,67 +1,70 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Interpret various computer languages using installed interpreters
+
 @file code_interpreter.py
 @package pybooster.code_interpreter
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
 from subprocess import getoutput
+from sys import stdout
 
 
 __all__ = [
-    # CLISP
-    'execclispfile',
-    # COFFEESCRIPT
-    'execcoffeescript',
-    # JAVASCRIPT
-    'execjs',
-    'execjsfile',
-    # LUA
-    'execlua',
-    'execluafile',
-    # PERL
-    'execperl',
-    'execperlfile',
-    'initperl',
-    # PHP
-    'execphp',
-    'execphpfile',
-    # RUBY
-    'execruby',
-    'execrubyfile',
-    # SCALA
-    'execscala',
-    'execscala',
-    # SHELL
-    'execsh',
-    'execshfile',
-    'initsh',
+    # CLISP #
+    r'execclispfile',
+    # COFFEESCRIPT #
+    r'execcoffeescript',
+    # JAVASCRIPT #
+    r'execjs',
+    r'execjsfile',
+    # LUA #
+    r'execlua',
+    r'execluafile',
+    # PERL #
+    r'execperl',
+    r'execperlfile',
+    r'initperl',
+    # PHP #
+    r'execphp',
+    r'execphpfile',
+    # RUBY #
+    r'execruby',
+    r'execrubyfile',
+    # SCALA #
+    r'execscala',
+    r'execscala',
+    # SHELL #
+    r'execsh',
+    r'execshfile',
+    r'initsh'
 ]
 
 
-# CLISP
+# CLISP #
 
 
 def execclispfile(_filename: str) -> str:
@@ -69,7 +72,7 @@ def execclispfile(_filename: str) -> str:
     return getoutput(r'clisp ' + _filename)
 
 
-# COFFEESCRIPT
+# COFFEESCRIPT #
 
 
 def execcoffeescript(_code: str) -> str:
@@ -77,7 +80,7 @@ def execcoffeescript(_code: str) -> str:
     return getoutput('coffeescript --eval \'' + _code.replace('\'', '\\\'') + '\'')
 
 
-# JAVASCRIPT
+# JAVASCRIPT #
 
 
 def execjs(_code: str) -> str:
@@ -90,7 +93,7 @@ def execjsfile(_filename: str) -> str:
     return getoutput(r'jsc -e ' + _filename)
 
 
-# LUA
+# LUA #
 
 
 def execlua(_code: str) -> str:
@@ -103,7 +106,7 @@ def execluafile(_filename: str) -> str:
     return getoutput(r'lua ' + _filename)
 
 
-# PERL
+# PERL #
 
 
 def execperl(_code: str) -> str:
@@ -124,11 +127,11 @@ def initperl() -> None:
         if _input == 'exit' or _input == 'quit':
             break
         _output = getoutput('perl -e \'' + _input + '\'')
-        print(_output)  # noqa
+        stdout.write(_output + '\n')
     return
 
 
-# PHP
+# PHP #
 
 
 def execphp(_code: str) -> str:
@@ -141,7 +144,7 @@ def execphpfile(_filename: str) -> str:
     return getoutput(r'php -f ' + _filename)
 
 
-# RUBY
+# RUBY #
 
 
 def execruby(_code: str) -> str:
@@ -154,7 +157,7 @@ def execrubyfile(_filename: str) -> str:
     return getoutput(r'ruby ' + _filename)
 
 
-# SCALA
+# SCALA #
 
 
 def execscala(_code: str) -> str:
@@ -167,7 +170,7 @@ def execscalafile(_filename: str) -> str:
     return getoutput(r'scala ' + _filename)
 
 
-# SHELL
+# SHELL #
 
 
 def execsh(_code: str) -> str:
@@ -185,8 +188,8 @@ def initsh() -> None:
     _input = r''
     while 1:
         _input = input(r'Shell: $ ').replace('\'', '\\\'')
-        if _input == 'exit' or _input == 'quit':
+        if _input == r'exit' or _input == r'quit':
             break
         _output = getoutput('sh -c \'' + _input + '\'')
-        print(_output)  # noqa
+        stdout.write(_output + '\n')
     return

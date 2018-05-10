@@ -1,88 +1,82 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Time Utilities
+
 @file timeutil.py
 @package pybooster.timeutil
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
-import datetime
-import sys
-
+from datetime import timedelta
+from sys import platform
 import time as pytime
 
 
 __all__ = [
-    # CONSTANTS
-    'SEASONS',
-    'YEAR',
-    # BOOLEAN FUNCTIONS
-    'istoday',
-    'istodaysunday',
-    'istodaymonday',
-    'istodaytuesday',
-    'istodaywednesday',
-    'istodaythursday',
-    'istodayfriday',
-    'istodaysaturday',
-    'isyear',
-    # FUNCTIONS
-    'currentseason',
-    'weekday',
-    'month',
-    'year',
-    'date',
-    'clock',
-    'date_time',
-    'dateandtime',
-    'day',
-    'hour',
-    'fulltime',
-    'sysuptime',
+    # CONSTANTS #
+    r'SEASONS',
+    r'YEAR',
+    # BOOLEAN FUNCTIONS #
+    r'istoday',
+    r'istodaysunday',
+    r'istodaymonday',
+    r'istodaytuesday',
+    r'istodaywednesday',
+    r'istodaythursday',
+    r'istodayfriday',
+    r'istodaysaturday',
+    r'isyear',
+    # FUNCTIONS #
+    r'currentseason',
+    r'weekday',
+    r'month',
+    r'year',
+    r'date',
+    r'clock',
+    r'date_time',
+    r'dateandtime',
+    r'day',
+    r'hour',
+    r'fulltime',
+    r'sysuptime'
 ]
 
 
-# CONSTANTS
+# CONSTANTS #
 
 
-SEASONS = (
-    r'spring',
-    r'summer',
-    r'autumn',
-    r'winter'
-)
+SEASONS = (r'spring', r'summer', r'autumn', r'winter')
+YEAR = int(pytime.strftime(r'%Y'))
 
 
-YEAR = int(pytime.strftime('%Y'))
-
-
-# BOOLEAN FUNCTIONS
+# BOOLEAN FUNCTIONS #
 
 
 def istoday(_weekday: str) -> bool:
     """Test if today is a particular weekday"""
-    return _weekday.lower() == pytime.strftime('%A').lower()
+    return _weekday.lower() == pytime.strftime(r'%A').lower()
 
 
 def istodaysunday() -> bool:
@@ -124,13 +118,13 @@ def isyear(_year: str or int) -> bool:
     """Test if today is a particular year"""
     if isinstance(_year, int):
         _year = str(_year)
-    return pytime.strftime('%Y') == _year
+    return pytime.strftime(r'%Y') == _year
 
 
-# FUNCTIONS
+# FUNCTIONS #
 
 
-def currentseason(_hemisphere: str='n') -> str:
+def currentseason(_hemisphere: str = 'n') -> str:
     """Return the current season"""
     _day = pytime.localtime().tm_yday
     if _day in range(80, 172):  # Spring
@@ -143,13 +137,13 @@ def currentseason(_hemisphere: str='n') -> str:
         season = r'winter'
     _hemisphere = _hemisphere.lower()
     if _hemisphere != 'n':
-        if season is r'spring':
+        if season == r'spring':
             return r'fall'
-        elif season is r'fall':
+        elif season == r'fall':
             return r'spring'
-        elif season is r'summer':
+        elif season == r'summer':
             return r'winter'
-        elif season is r'winter':
+        elif season == r'winter':
             return r'summer'
     return season
 
@@ -206,7 +200,7 @@ def fulltime() -> str:
 
 def sysuptime() -> str:
     """Return the system's uptime"""
-    if sys.platform.startswith(r'win'):
+    if platform.startswith(r'win'):
         try:
             import win32api
             _uptime = win32api.GetTickCount()
@@ -214,9 +208,9 @@ def sysuptime() -> str:
             _uptime = r'Unknown'
     else:
         try:
-            with open(r'/proc/uptime', mode='rt', encoding='utf-8') as _file:
+            with open(r'/proc/uptime', mode=r'rt', encoding=r'utf-8') as _file:
                 _seconds = float(_file.readline().split()[0])
-                _uptime = str(datetime.timedelta(seconds=_seconds))
+                _uptime = str(timedelta(seconds=_seconds))
         except FileNotFoundError:
             _uptime = r'Unknown'
     return _uptime

@@ -1,0 +1,34 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Strip unneccesary symbols from the binary executable of programs
+# @file progstrip
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of an ELF-executable to strip.\n'
+    exit 0
+fi
+
+if [ -x "$1" ] && [ -x "$(command -v strip)" ]; then
+    strip --strip-debug --strip-unneeded --discard-locals --remove-section=.bss --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr "$1"
+else
+    _program="$(command -v "$1")"
+    if [ -z "${_program:-}" ]; then
+        printf 'ERROR: Program not found!\n' >&2
+        exit 1
+    elif [ -x "$_program" ]; then
+        printf '%s\n' "ERROR: ${_program} is not a binary executable!" >&2
+        exit 1
+    fi
+fi
+
+
+exit 0

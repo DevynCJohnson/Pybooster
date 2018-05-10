@@ -1,0 +1,195 @@
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Universal setup script for Posix-compatible shells
+# @file profile
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# SHELL TYPE #
+
+
+if [ -n "${ASH_VERSION:-}" ]; then
+    readonly PROFILE_SHELL='ash'
+elif [ -n "${BASH_VERSION:-}" ]; then
+    readonly PROFILE_SHELL='bash'
+    readonly bashver="${BASH_VERSION%.*}"
+    readonly bashmajorver="${bashver%.*}"
+    readonly bashminorver="${bashver#*.}"
+    export bashver bashmajorver bashminorver
+elif [ -n "${FISH_VERSION:-}" ]; then
+    readonly PROFILE_SHELL='fish'
+elif [ -n "${FCEDIT:-}" ] || [ -n "${KSH_VERSION:-}" ]; then
+    readonly PROFILE_SHELL='ksh'
+elif [ -n "${ZSH_VERSION:-}" ]; then
+    readonly PROFILE_SHELL='zsh'
+elif [ -n "${PS3:-}" ]; then
+    readonly PROFILE_SHELL='unknown'
+else
+    readonly PROFILE_SHELL='sh'
+fi
+export PROFILE_SHELL
+
+
+# OS DETECTION #
+
+
+os_table() {
+    case "$1" in
+        aix*) platform='aix';;
+        cygwin*|*cygwin*) platform='cygwin';;
+        darwin*) platform='darwin';;
+        dragonfly*) platform='dragonflybsd';;
+        freebsd*) platform='freebsd';;
+        haiku*) platform='haiku';;
+        hp-ux*|hpux*) platform='hpux';;
+        *hurd*) platform='hurd';;
+        *illumos*) platform='illumos';;
+        *indiana*) platform='openindiana';;
+        inferno*) platform='inferno';;
+        interix*) platform='interix';;
+        linux*) platform='linux';;
+        mingw*) platform='mingw';;
+        minix*) platform='minix';;
+        msys*) platform='msys';;
+        netbsd*) platform='netbsd';;
+        nonstop*) platform='nonstop';;
+        openbsd*) platform='openbsd';;
+        opensolaris*) platform='opensolaris';;
+        plan9*|plan-9*|plan_9*) platform='plan9';;
+        qnx*) platform='qnx';;
+        reliant*) platform='reliant';;
+        sinix*) platform='sinix';;
+        solaris*) platform='solaris';;
+        sunos*) platform='sunos';;
+        ultrix*) platform='ultrix';;
+        unixware*) platform='unixware';;
+        win32|win64|win_nt|windows*) platform='windows';;
+        *) platform='unknown';;
+    esac
+    echo "$platform"
+}
+readonly -f os_table
+
+PLATFORM='unknown'
+if [ -n "${OS:-}" ]; then
+    OSTEST="$(echo "$OS" | tr '[:upper:]' '[:lower:]')"
+    [ "${OSTEST:-}" == 'windows' ] && PLATFORM='windows'
+    unset OSTEST
+fi
+if [ -x "$(command -v uname)" ]; then
+    unamestr="$(uname | tr '[:upper:]' '[:lower:]')"
+elif [ -f /proc/sys/kernel/ostype ] && [ -x "$(command -v sysctl)" ]; then
+    unamestr="$(sysctl -n kernel.ostype | tr '[:upper:]' '[:lower:]')"
+else
+    unamestr='unknown'
+fi
+if [ -n "${OSTYPE:-}" ] && [ "$PLATFORM" == 'unknown' ]; then
+    PLATFORM="$(os_table "$OSTYPE")"
+elif [ "$PLATFORM" == 'unknown' ] && [ ! "$unamestr" == 'unknown' ]; then
+    PLATFORM="$(os_table "$unamestr")"
+fi
+readonly PLATFORM
+export PLATFORM
+unset unamestr
+
+case "$PLATFORM" in
+    aix|hpux|inferno|plan9|reliant|sinix|ultrix|unixware) readonly OSFAMILY='unix';;
+    *bsd|darwin) readonly OSFAMILY='bsd';;
+    cygwin|mingw|msys) readonly OSFAMILY='gnuwin';;
+    haiku) readonly OSFAMILY='beos';;
+    hurd|linux) readonly OSFAMILY='gnu';;
+    illumos|openindiana|*solaris|sunos) readonly OSFAMILY='sun';;
+    interix) readonly OSFAMILY='win-interix';;
+    minix|qnx) readonly OSFAMILY='unix-like';;
+    windows) readonly OSFAMILY='windows';;
+    *) readonly OSFAMILY='unknown';;
+esac
+export OSFAMILY
+
+
+# CPU DETECTION #
+
+
+if [ -x "$(command -v uname)" ]; then
+    ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
+else
+    ARCH='unknown'
+fi
+case "$ARCH" in
+    amd*|amd64|i686-64|x86-64|x86_64) readonly ARCH='x86_64';;
+    i386*|i486*|i586*|i686*|i86pc*|x86|x86pc*) readonly ARCH='x86_32';;
+    alpha*) readonly ARCH='alpha';;
+    arm*) readonly ARCH='arm';;
+    ia64*|ia_64*|itanium*) readonly ARCH='itanium';;
+    ip2*|ip3*|mips*) readonly ARCH='mips';;
+    m68k*) readonly ARCH='m68k';;
+    power*|ppc*) readonly ARCH='powerpc';;
+    sparc*|sun4u*) readonly ARCH='sparc';;
+    vax*) readonly ARCH='vax';;
+    *) readonly ARCH='unknown';;
+esac
+export ARCH
+
+
+# COMMON GLOBALS #
+
+
+if [ -z "${HOSTNAME:-}" ] && [ -x /bin/hostname ]; then
+    readonly HOSTNAME="$(/bin/hostname)"
+    export HOSTNAME
+fi
+if [ -z "${USERNAME:-}" ]; then
+    if [ -x /usr/bin/id ]; then
+        readonly USERNAME="$(/usr/bin/id -u -n)"
+        export USERNAME
+    elif [ -x /bin/id ]; then
+        readonly USERNAME="$(/bin/id -u -n)"
+        export USERNAME
+    fi
+fi
+[ -z "${USERNAME:-}" ] && readonly LOGNAME="$USERNAME" && export LOGNAME
+if [ -z "${PAGER:-}" ]; then
+    if [ -x /usr/bin/less ]; then
+        export PAGER='/usr/bin/less'
+    elif [ -x /bin/less ]; then
+        export PAGER='/bin/less'
+    fi
+fi
+[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+
+# LOAD SHELL STARTUP FILES #
+
+
+if [ -n "${PS1:-}" ]; then
+    if [ -n "${BASH:-}" ] && [ "$BASH" != '/bin/sh' ] && [ ! -r /etc/shell_ext ]; then
+        if [ -r /etc/bash.bashrc ]; then
+            . /etc/bash.bashrc
+        elif [ -r /etc/bashrc ]; then
+            . /etc/bashrc
+        elif [ -r /etc/bash.bashrc.local ]; then
+            . /etc/bash.bashrc.local
+        fi
+    else
+        if [ "$(id -u)" -eq 0 ]; then
+            PS1='# '
+        else
+            PS1='$ '
+        fi
+    fi
+fi
+if [ -d /etc/profile.d ]; then
+    for i in /etc/profile.d/*.sh; do
+        [ -r "$i" ] && . "$i"
+    done
+    unset i
+fi
+[ -z "${TERM_PROGRAM:-}" ] && [ -n "${TERM:-}" ] && readonly TERM_PROGRAM="$TERM"
+[ -z "${TERM:-}" ] && [ -n "${TERM_PROGRAM:-}" ] && readonly TERM="$TERM_PROGRAM"
+[ -z "${TERM:-}" ] && [ -z "${TERM_PROGRAM:-}" ] && TERM='dumb' && TERM_PROGRAM='dumb'
+[ -n "${TERM_PROGRAM:-}" ] && [ -n "${BASH:-}" ] && [ -r "/etc/bashrc_${TERM_PROGRAM}" ] && . "/etc/bashrc_${TERM_PROGRAM}"
+[ -r /etc/shell_ext ] && . /etc/shell_ext
+[ ! -r /etc/shell_ext ] && [ -n "${BASH_SOURCE:-}" ] && [ -r "$(dirname "${BASH_SOURCE[0]}")/shell_ext" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext"

@@ -1,38 +1,150 @@
 #!/usr/bin/make -f
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Makefile; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=makefile syntax=makefile.doxygen fileformat=unix tabstop=4 :
+# kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Makefile constants header (contains common code)
 
 
-## VERSION TIMESTAMP ##
+# VERSION TIMESTAMP #
 
 
-__MODULE_VERSION__=\"`date +"%Y.%m.%d"`\"
+__VERSION__::=$(shell date +'%Y.%m.%d')
+__MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 
 
-## CONSTANTS ##
+# PATHS #
 
 
+override SYSMIMEDIR::=/usr/share/mime
+override SYSTHEMEDIR::=/usr/share/icons
+override TESTINGDIR::=./testing
+
+
+# CONSTANTS #
+
+
+UNAME::=$(shell uname | tr '[:lower:]' '[:upper:]')
+UNAME_P::=$(shell uname -p)
 ifndef OS
-	override OS::=
+    OS::=$(UNAME)
 endif
-LC_ALL::=en_US.UTF-8
-LANG::=en_US.UTF-8
-LANGUSA::=en
-override SHELL::=/bin/sh
-override INCLUDEGTK::=-I/usr/include/pygobject-3.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gobject-introspection-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12
-override LINKGTK::=-lglib-2.0 -lgobject-2.0 -lgirepository-1.0 -lX11 -lcairo -lpango-1.0
-override POSIX_INCLUDE::=-I/usr/include -I/usr/local/include
-override POSIX_LINK::=-L/usr/lib -L/usr/local/lib
+ifndef PLATFORM
+    PLATFORM::=$(UNAME_P)
+endif
+override LANG::=$(shell locale | grep 'LANG=' | sed 's/LANG=//')
+LC_ALL::=$(LANG)
+override POSIX_INCLUDE::=-I/usr/include -I/usr/local/include -I/opt/include -I~/.local/include
+override POSIX_LINK::=-L/lib -L/usr/lib -L/usr/local/lib -L/opt/lib -L~/.local/lib
 ifndef OMP_THREAD_LIMIT
-	OMP_THREAD_LIMIT::=4
+    OMP_THREAD_LIMIT::=4
 endif
-override LLVM_WARN::=-Wall -Wextra -pedantic -Wformat -Werror=format-security -Wformat-nonliteral -Wformat-non-iso -Wformat-y2k -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wstrict-overflow=5 -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wredundant-decls -Wnested-externs -Winline -Wconversion -Wbad-function-cast -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Winit-self -Wundef -Wdate-time -Wpacked -Winvalid-pch -Wdisabled-optimization -Wstack-protector
+override LLVM_WARN::=-Werror -Wall -Wextra -Wpedantic -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wformat -Wformat-non-iso -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wswitch-bool -Wswitch-enum -Wundef -Wuninitialized -Wwrite-strings
+override LLVM_OPT::=-O3 -funroll-loops -fwrapv -fomit-frame-pointer -ftree-vectorize -fvectorize -fstrict-enums -fno-dollars-in-identifiers -Xanalyzer -strip-dead-debug-info -Xclang -vectorize-slp-aggressive
+override LLVM_OPT_X86::=-mcrc -mcx16 -minline-all-stringops -momit-leaf-frame-pointer
+override GCC_PARAMS::=--param ggc-min-expand=200 --param ggc-min-heapsize=393216 --param max-gcse-memory=134217728 --param sccvn-max-scc-size=20000 --param max-cselib-memory-locations=1023 --param max-reload-search-insns=511 --param max-sched-ready-insns=511 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=63 --param early-inlining-insns=16 --param inline-min-speedup=4 --param inline-unit-growth=40 --param ipcp-unit-growth=30 --param large-stack-frame=512 --param large-stack-frame-growth=1100 --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param integer-share-limit=65536 --param gcse-unrestricted-cost=2 --param max-hoist-depth=48 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=4 --param vect-max-version-for-alias-checks=8 --param max-iterations-to-track=2000 --param max-predicted-iterations=256 --param selsched-max-lookahead=64 --param prefetch-latency=128 --param simultaneous-prefetches=4 --param max-partial-antic-length=256 --param loop-invariant-max-bbs-in-loop=20000 --param loop-max-datarefs-for-datadeps=2000 --param ipa-cp-value-list-size=16
+override GCC_WARN::=-Werror -Wall -Wextra -Wpedantic -Waggregate-return -Walloc-zero -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmisleading-indentation -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshadow -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-overflow=5 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings -Wwrite-strings
+override GCC_OPT::=$(GCC_PARAMS) -O3 -funroll-loops -funroll-all-loops -funswitch-loops -floop-unroll-and-jam -faggressive-loop-optimizations -funsafe-loop-optimizations -floop-nest-optimize -fira-loop-pressure -fbranch-target-load-optimize2 -fwrapv -fno-verbose-asm -fdelete-dead-exceptions -fno-keep-static-consts -fomit-frame-pointer -fstdarg-opt -ftree-vectorize -fmodulo-sched -fmodulo-sched-allow-regmoves -fselective-scheduling -fselective-scheduling2 -freschedule-modulo-scheduled-loops -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -fgcse -fgcse-sm -fgcse-las -fgcse-after-reload -fdevirtualize-speculatively -fdevirtualize-at-ltrans -flive-range-shrinkage -fisolate-erroneous-paths-attribute
+override GCC_OPT_X86::=-maccumulate-outgoing-args -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mlong-double-128 -mmmx -mmovbe -momit-leaf-frame-pointer -mpclmul -mpopcnt -mrdrnd -mrecip -msahf -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -Wl,-z,ibtplt
+override DCJ_LDZ::=-Wl,-O3,-z,relro,-z,now,--fatal-warnings,--hash-size=16368,--sort-common=descending
+override WIN_LDZ::=-Wl,-O3,--fatal-warnings,--hash-size=16368
 override STRIP_PARAMS::=--strip-debug --strip-unneeded --discard-locals --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr
-override CHMOD::=chmod --quiet
 
 
-## INCLUDES ##
+# COMMANDS #
+
+
+ifdef ComSpec
+    override COPY::=copy /Y
+    override RM::=del /F /Q
+else
+    override COPY::=cp -f --preserve=mode
+    override RM::=rm -f
+endif
+override CHMOD::=chmod -f
+override CPDIR::=cp -f --preserve=mode -r
+override LNDIR::=ln -f -s
+override LN::=ln -f
+override LNSOFT::=ln -f -s
+override MKDIR::=mkdir -m 755
+override MKDIRS::=mkdir -m 755 -p
+override MOVE::=mv -f
+override PYDOC::=python3 -m pydoc
+override RMDIR::=rm -f -r
+override is_UPDATEICONCACHE_present::=$(shell command -p -v gtk-update-icon-cache)
+ifneq ($(is_UPDATEICONCACHE_present),'')
+    override UPDATEICONCACHE::=gtk-update-icon-cache --force --include-image-data --quiet
+else
+    override UPDATEICONCACHE::=printf '\x1b[31mgtk-update-icon-cache: command not found!\x1b[0m\n' #
+endif
+override is_UPDATEMIME_present::=$(shell command -p -v update-mime-database)
+ifneq ($(is_UPDATEMIME_present),'')
+    override UPDATEMIME::=update-mime-database
+else
+    override UPDATEMIME::=printf '\x1b[31mupdate-mime-database: command not found!\x1b[0m\n' #
+endif
+override is_XDGMIME_present::=$(shell command -p -v xdg-mime)
+ifneq ($(is_XDGMIME_present),'')
+    override XDGMIME::=xdg-mime
+else
+    override XDGMIME::=printf '\x1b[31mxdg-mime: command not found!\x1b[0m\n' #
+endif
+
+
+# VARIOUS UTILITIES #
+
+
+ARFLAGS::=
+FC::=fort77
+FFLAGS::=-O 1
+LEX::=lex
+LFLAGS::=
+YACC::=yacc
+YFLAGS::=
+
+# Flag used to indicate that Clang should be used
+ifdef USECLANG
+    ifeq ($(USECLANG),)
+        override CLANG::=6
+    else ifeq ($(USECLANG),9)
+        override CLANG::=9
+    else ifeq ($(USECLANG),9.0)
+        override CLANG::=9.0
+    else ifeq ($(USECLANG),8)
+        override CLANG::=8
+    else ifeq ($(USECLANG),8.0)
+        override CLANG::=8.0
+    else ifeq ($(USECLANG),7)
+        override CLANG::=7
+    else ifeq ($(USECLANG),7.0)
+        override CLANG::=7.0
+    else ifeq ($(USECLANG),6)
+        override CLANG::=6
+    else ifeq ($(USECLANG),6.0)
+        override CLANG::=6.0
+    else ifeq ($(USECLANG),5)
+        override CLANG::=5
+    else ifeq ($(USECLANG),5.5)
+        override CLANG::=5.5
+    else ifeq ($(USECLANG),5.0)
+        override CLANG::=5.0
+    else
+        override CLANG::=USECLANG
+    endif
+endif
+
+# Command used to access Clang
+ifdef CLANG
+    ifeq ($(CLANG),)
+        override CLANG::=clang -Qunused-arguments
+    else
+        override CLANG::=clang-$(CLANG) -Qunused-arguments
+    endif
+else
+    CLANG::=clang -Qunused-arguments
+endif
+
+
+# INCLUDES #
 
 
 armandroideabi_include::=-I/usr/arm-linux-androideabi/include
@@ -54,603 +166,973 @@ mingw64_include::=-I/usr/x86_64-w64-mingw32/include
 mingw64_lib::=-L/usr/x86_64-w64-mingw32/lib
 
 
-## WARNINGS ##
+# WARNINGS #
 
 
 ifdef WARN
-	ifeq ($(WARN),1)
-		override WARN::=-Wall -Wextra -pedantic -Wformat -Werror=format-security -Wformat-nonliteral -Wformat-signedness -Wformat-y2k -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wstrict-overflow=5 -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wredundant-decls -Wnested-externs -Winline -Wconversion -Wbad-function-cast -Wdouble-promotion -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Wpacked -Winvalid-pch -Wunsafe-loop-optimizations -Wvector-operation-performance -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wpadded
-	else ifeq ($(WARN),2)
-		override WARN::=-Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Winline -Wuninitialized -Wconversion -Wstrict-prototypes -Wbad-function-cast -Wdouble-promotion
-	else ifeq ($(WARN),3)
-		override WARN::=-Wtraditional
-	else
-		override WARN::=-Wall -Wextra -pedantic
-	endif
+    ifeq ($(WARN),0)
+        override WARN::=-Werror -Wall -Wextra -Wpedantic -Waggregate-return -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmisleading-indentation -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wshadow -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-overflow=5 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings -Wwrite-strings
+    else ifeq ($(WARN),1)
+        override WARN::=-Wall -Wextra -Wpedantic -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wopenmp-simd -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wshadow -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wvector-operation-performance -Wwrite-strings
+    else ifeq ($(WARN),2)
+        override WARN::=-Wtraditional
+    else
+        override WARN::=-Wall -Wextra -Wpedantic
+    endif
 else
-	WARN::=-Wall -Wextra
+    WARN::=-Wall -Wextra
 endif
 
 
-## OPTIMIZATION FLAGS ##
+# CROSS-COMPILING #
 
 
-EXPERIMENT::=-fira-loop-pressure -floop-nest-optimize -floop-parallelize-all -ftree-parallelize-loops=4 -floop-strip-mine -fgraphite-identity -fdevirtualize-speculatively -fdevirtualize-at-ltrans -ffast-math -funsafe-math-optimizations -funsafe-loop-optimizations -fopenacc -fgnu-tm -fgcse-sm -fgcse-las -fmove-loop-invariants -fbranch-target-load-optimize2 -fmodulo-sched -fmodulo-sched-allow-regmoves -freschedule-modulo-scheduled-loops -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined
-EXPERIMENT2::=-fno-exceptions -fmerge-all-constants -fno-stack-protector -funroll-all-loops
-EXPERIMENT3::=-ffast-math -ftree-parallelize-loops=4 -fgcse-sm -fgcse-las -fmove-loop-invariants -fbranch-target-load-optimize2 -fopenmp $(EXPERIMENT)
-
-ifdef XOPTMZ
-	ifeq ($(XOPTMZ),1)
-		override XOPTMZ::=-fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128
-	else ifeq ($(XOPTMZ),2)
-		override XOPTMZ::=-fno-signed-zeros -fno-rounding-math -fno-trapping-math -fno-math-errno -fno-signaling-nans -fcx-limited-range -ffinite-math-only
-	else ifeq ($(XOPTMZ),3)
-		override XOPTMZ::=-ffast-math -funsafe-loop-optimizations -minline-all-stringops -fomit-frame-pointer -maccumulate-outgoing-args
-	else ifeq ($(XOPTMZ),4)
-		override XOPTMZ::=-funsafe-math-optimizations
-	else ifeq ($(XOPTMZ),5)
-		override XOPTMZ::=-ffast-math
-	else ifeq ($(XOPTMZ),6)
-		override XOPTMZ::=-funsafe-loop-optimizations
-	else ifeq ($(XOPTMZ),7)
-		override XOPTMZ::=
-	else ifeq ($(XOPTMZ),8)
-		override XOPTMZ::=-minline-all-stringops -fomit-frame-pointer
-	else ifeq ($(XOPTMZ),9)
-		override XOPTMZ::=-maccumulate-outgoing-args
-	else ifeq ($(XOPTMZ),10)
-		override XOPTMZ::=-maccumulate-outgoing-args -minline-all-stringops -fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -fomit-frame-pointer
-	else ifeq ($(XOPTMZ),11)
-		override XOPTMZ::=-m8bit-idiv
-	else
-		override XOPTMZ::=
-	endif
-else
-	XOPTMZ::=
-endif
-
-
-## CROSS-COMPILING ##
-
-
-# Fix `CROSS_COMPILE`
+# Set `CROSS_COMPILE`
 ifdef CROSS_COMPILE
-	ifeq ($(CROSS_COMPILE),x86_64)
-		override CROSS_COMPILE::=x86-64
-	else ifeq ($(CROSS_COMPILE),AMD64)
-		override CROSS_COMPILE::=x86-64
-	else ifeq ($(CROSS_COMPILE),64)
-		override CROSS_COMPILE::=x86-64
-	else ifeq ($(CROSS_COMPILE),64bit)
-		override CROSS_COMPILE::=x86-64
-	else ifeq ($(CROSS_COMPILE),32)
-		override CROSS_COMPILE::=x86
-	else ifeq ($(CROSS_COMPILE),32bit)
-		override CROSS_COMPILE::=x86
-	endif
+    # TODO: override CROSS_COMPILE::=$(shell echo $(CROSS_COMPILE) | tr '[:lower:]' '[:upper:]')
+    ifeq ($(CROSS_COMPILE),rpi)
+        override dcj::=rpi
+    else ifeq ($(CROSS_COMPILE),x86_64)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),AMD64)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),amd64)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),64)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),64bit)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),32)
+        override CROSS_COMPILE::=x86
+    else ifeq ($(CROSS_COMPILE),32bit)
+        override CROSS_COMPILE::=x86
+    endif
+    ifeq ($(CROSS_COMPILE),x86-64)
+        override PLATFORM::=x86-64
+    else ifeq ($(CROSS_COMPILE),x86)
+        override PLATFORM::=x86
+    endif
+endif
+
+ifdef CROSS_COMPILE
+    override undefine LINKER
+    override undefine STDLIB
+    # Windows
+    ifeq ($(OS),WIN32)
+        override OS::=WIN
+        override CROSS_COMPILE::=x86
+    else ifeq ($(OS),WIN64)
+        override OS::=WIN
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(OS),WIN)
+        override OS::=WIN
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(OS),WINDOWS_NT)
+        override OS::=WIN
+        override CROSS_COMPILE::=x86-64
+    else ifndef MSVC
+        ifeq ($(filter CYGWIN%,$(OS)),CYGWIN)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(OS),CYGWIN32)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(OS),CYGWIN64)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(OS),INTERIX)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(OS),MINGW32_NT)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86
+        else ifeq ($(OS),MINGW64_NT)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(filter MINGW%,$(OS)),MINGW)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        else ifeq ($(filter MSYS%,$(OS)),MSYS)
+            override OS::=WIN
+            override CROSS_COMPILE::=x86-64
+        endif
+    endif
+    ifeq ($(OS),WIN)
+        ifeq ($(CROSS_COMPILE),x86)
+            override OS::=win32
+        else
+            override OS::=win64
+        endif
+        # Windows (i686)
+        ifeq ($(CROSS_COMPILE),win32)
+            override GCC_PREFIX::=i686-w64-mingw32
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(mingw32_include) $(INCLUDE)
+            override LIBS::=$(mingw32_lib) $(LIBS)
+            override CC::=$(CBUILD) -m32 $(INCLUDE) -Wl,--rpath="$(LIBS)" -DENV32BIT
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=32
+        # Windows (x86-64)
+        else ifeq ($(CROSS_COMPILE),win64)
+            override GCC_PREFIX::=x86_64-w64-mingw32
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(INCLUDE) $(mingw64_include)
+            override LIBS::=$(mingw64_lib) $(LIBS)
+            override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=64
+        endif
+        override OS::=WIN
+        override STDLIB::=STANDARD
+    # (POSIX and/or Unix)
+    # Android (ARM)
+    else ifeq ($(CROSS_COMPILE),android)
+        override GCC_PREFIX::=arm-linux-androideabi
+        override CBUILD::=$(GCC_PREFIX)-gcc
+        override CHOST::=$(CBUILD)
+        override CROSS_COMPILE::=$(GCC_PREFIX)-
+        override INCLUDE::=$(INCLUDE) $(armandroideabi_include)
+        override LIBS::=$(armgnueabisf_lib) $(LIBS)
+        override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+        override LD::=$(CROSS_COMPILE)ld $(LIBS)
+        override OS::=ANDROID
+        override STDLIB::=STANDARD
+        override BITS::=32
+    # Linux
+    else ifeq ($(OS),LINUX)
+        # x86 and x86-64
+        ifeq ($(CROSS_COMPILE),x86)
+            override GCC_PREFIX::=x86-linux-gnu
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override CC::=$(CBUILD)
+            override BITS::=32
+        else ifeq ($(CROSS_COMPILE),x86-64)
+            override GCC_PREFIX::=x86_64-linux-gnu
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override CC::=$(CBUILD)
+            override BITS::=64
+        # ARM
+        else ifeq ($(CROSS_COMPILE),armhf)
+            override GCC_PREFIX::=arm-linux-gnueabihf
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
+            override LIBS::=$(armgnueabihf_lib) $(LIBS)
+            override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=32
+        else ifeq ($(CROSS_COMPILE),arm)
+            override GCC_PREFIX::=arm-linux-gnueabihf
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
+            override LIBS::=$(armgnueabihf_lib) $(LIBS)
+            override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=32
+        else ifeq ($(CROSS_COMPILE),armel)
+            override GCC_PREFIX::=arm-linux-gnueabi
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(armgnueabi_include) $(INCLUDE)
+            override LIBS::=$(armgnueabi_lib) $(LIBS)
+            override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=32
+        else ifeq ($(CROSS_COMPILE),armsf)
+            override GCC_PREFIX::=arm-linux-gnueabi
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            override INCLUDE::=$(armgnueabi_include) $(INCLUDE)
+            override LIBS::=$(armgnueabi_lib) $(LIBS)
+            override CC::=$(CBUILD) $(INCLUDE) -Wl,--rpath="$(LIBS)"
+            override LD::=$(CROSS_COMPILE)ld $(LIBS)
+            override BITS::=32
+        endif
+        override OS::=POSIX
+    endif
 endif
 
 # Operating System
 ifdef OS
-	ifeq ($(OS),WINDOWS)
-		override OS::=WIN
-	endif
-	ifeq ($(OS),WIN)
-		ifeq ($(CROSS_COMPILE),x86)
-			override BITS::=-m32 -DENV32BIT
-			override CROSS_COMPILE::=win32
-		else
-			override BITS::=-m64 -DENV64BIT
-			override CROSS_COMPILE::=win64
-		endif
-	else ifeq ($(OS),ANDROID)
-		ifeq ($(CROSS_COMPILE),arm)
-			override CROSS_COMPILE::=android
-		else
-			override CROSS_COMPILE::=androidx86
-			override BITS::=-m32 -DENV32BIT
-		endif
-	else ifeq ($(OS),BSD)
-		override OS::=POSIX
-	else ifeq ($(OS),OSX)
-		override OS::=POSIX
-	endif
+    ifeq ($(OS),BSD)
+        override OS::=POSIX
+    else ifeq ($(OS),DARWIN)
+        override OS::=POSIX
+    else ifeq ($(OS),DRAGONFLY)
+        override OS::=POSIX
+    else ifeq ($(OS),FREEBSD)
+        override OS::=POSIX
+    else ifeq ($(OS),GNU)
+        override OS::=POSIX
+    else ifeq ($(OS),GNU/KFREEBSD)
+        override OS::=POSIX
+    else ifeq ($(OS),LINUX)
+        override OS::=POSIX
+    else ifeq ($(OS),NETBSD)
+        override OS::=POSIX
+    else ifeq ($(OS),OPENBSD)
+        override OS::=POSIX
+    else ifeq ($(OS),OSX)
+        override OS::=POSIX
+    else ifeq ($(OS),SOLARIS)
+        override OS::=POSIX
+    endif
 endif
+
+
+# DEBUGGING #
+
+
+override DCJ_DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g0 -ggdb0 -s
+ifeq ($(OS),WIN)
+    override DCJ_DEBUG::=$(DCJ_DEBUG) -Wl,--strip-all
+else
+    override DCJ_DEBUG::=$(DCJ_DEBUG) -Wl,--discard-all,--discard-locals,--gc-sections,--strip-all,--strip-debug,--strip-discarded,--unresolved-symbols=report-all
+endif
+ifdef DEBUG
+    ifeq ($(DEBUG),1)
+        override DEBUG::=
+        override DCJ_DEBUG::=
+    else ifeq ($(DEBUG),2)
+        override DEBUG::=-DDEBUG -g -ggdb
+        override DCJ_DEBUG::=
+    else
+        override DEBUG::=$(DCJ_DEBUG)
+    endif
+else
+    DEBUG::=$(DCJ_DEBUG)
+endif
+
+
+# LINKING PARAMETERS #
+
+
+ifeq ($(OS),WIN)
+    ifndef LTO
+        LTO::=
+    endif
+    override LDZ::=$(WIN_LDZ)
+    override PIC::=
+    override LIBEXT::=dll
+    override WIN::=-fms-extensions -mwin32
+    override WINCUI::=-mconsole $(WIN)
+    override WINLIB::=-mdll $(WIN)
+else
+    ifndef LTO
+        LTO::=-flto -fuse-linker-plugin
+    endif
+    override LDZ::=$(DCJ_LDZ)
+    override PIC::=-fpic
+    override LIBEXT::=so
+    override WIN::=
+    override WINCUI::=
+    override WINLIB::=
+endif
+ifdef USECLANG
+    override LTO::=
+    override LDZ::=
+endif
+
+# Alternate linker
+ifdef LINKER
+    ifeq ($(LINKER),bfd)
+        override LD::=bfd
+        override LINKER::=-fuse-ld=bfd -D__BFD_LINKER__
+        override LTO::=
+    else ifeq ($(LINKER),gold)
+        override LD::=gold
+        override LINKER::=-fuse-ld=gold -D__GOLD_LINKER__
+        override LTO::=
+    else
+        override LINKER::=
+    endif
+else
+    LINKER::=
+endif
+
+
+# PROFILES #
+
+
+ifdef PROFILE
+    override dcj::=$(PROFILE)
+else ifdef DCJ
+    override dcj::=$(DCJ)
+endif
+ifdef dcj
+    ifeq ($(dcj),py)
+        override dcj::=1
+    endif
+endif
+
+ifdef dcj
+    override ASZ::=-Wa,-R,--fatal-warnings,--strip-local-absolute
+    override SECURITY::=0
+    override PYVERSION::=3.6
+    override CPYTHON::=36
+    override LC_ALL::=en_US.UTF-8
+    override LANG::=en_US.UTF-8
+    override LANGUSA::=en
+    ifndef DIAG
+        override DIAG::=T
+    endif
+    ifeq ($(dcj),1)
+        # Standard Skylake Configuration (Linux64)
+        override GCC_PREFIX::=x86_64-linux-gnu
+        override ARCH::=-march=skylake
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override STD::=-std=c11
+        override OS::=POSIX
+        override DEBUG::=$(DCJ_DEBUG)
+        override PIC::=-fpic
+        ifndef USECLANG
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=$(CBUILD)
+            endif
+            override WARN::=$(GCC_WARN)
+            override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+            override WARN::=$(LLVM_WARN)
+            override XOPTMZ::=$(LLVM_OPT) $(LLVM_OPT_X86)
+        endif
+    else ifeq ($(dcj),broadwell)
+        # Standard Broadwell Configuration (Linux64)
+        override GCC_PREFIX::=x86_64-linux-gnu
+        override ARCH::=-march=broadwell
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override STD::=-std=c11
+        override OS::=POSIX
+        override DEBUG::=$(DCJ_DEBUG)
+        override PIC::=-fpic
+        ifndef USECLANG
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=$(CBUILD)
+            endif
+            override WARN::=$(GCC_WARN)
+            override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+            override WARN::=$(LLVM_WARN)
+            override XOPTMZ::=$(LLVM_OPT) $(LLVM_OPT_X86)
+        endif
+    else ifeq ($(dcj),haswell)
+        # Standard Haswell Configuration (Linux64)
+        override GCC_PREFIX::=x86_64-linux-gnu
+        override ARCH::=-march=haswell
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override STD::=-std=c11
+        override OS::=POSIX
+        override DEBUG::=$(DCJ_DEBUG)
+        override PIC::=-fpic
+        ifndef USECLANG
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=$(CBUILD)
+            endif
+            override WARN::=$(GCC_WARN)
+            override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse $(ASZ)
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+            override WARN::=$(LLVM_WARN)
+            override XOPTMZ::=$(LLVM_OPT) $(LLVM_OPT_X86)
+        endif
+    else ifeq ($(dcj),cannonlake)
+        # Standard Cannonlake Configuration (Linux64)
+        override GCC_PREFIX::=x86_64-linux-gnu
+        override ARCH::=-march=cannonlake
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override STD::=-std=c11
+        override OS::=POSIX
+        override DEBUG::=$(DCJ_DEBUG)
+        override PIC::=-fpic
+        ifndef USECLANG
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=$(CBUILD)
+            endif
+            override WARN::=$(GCC_WARN)
+            override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+            override WARN::=$(LLVM_WARN)
+            override XOPTMZ::=$(LLVM_OPT) $(LLVM_OPT_X86)
+        endif
+    # INTEL
+    else ifeq ($(dcj),INTEL)
+        override ARCH::=-mtune=intel
+        ifeq ($(INTEL),32)
+            override BITS::=32
+            override PLATFORM::=x86
+        else
+            override BITS::=64
+            override PLATFORM::=x86-64
+        endif
+        override STD::=-std=c11
+        ifndef USECLANG
+            ifdef MUSL
+                override CBUILD::=musl-gcc
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CBUILD::=gcc
+                override CC::=$(CBUILD)
+            endif
+            override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(GCC_WARN)
+        else
+            override CBUILD::=$(CLANG)
+            override CC::=$(CBUILD)
+            override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(LLVM_WARN)
+        endif
+        override CHOST::=$(CBUILD)
+        override DEBUG::=$(DCJ_DEBUG)
+    # Generic x86
+    else ifeq ($(dcj),GENERICX86)
+        override ARCH::=-mtune=generic
+        override BITS::=32
+        override PLATFORM::=x86
+        override STD::=-std=c11
+        ifndef USECLANG
+            ifdef MUSL
+                override CBUILD::=musl-gcc
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CBUILD::=gcc
+                override CC::=$(CBUILD)
+            endif
+            override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(GCC_WARN)
+        else
+            override CBUILD::=$(CLANG)
+            override CC::=$(CBUILD)
+            override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(LLVM_WARN)
+        endif
+        override DEBUG::=$(DCJ_DEBUG)
+    # Generic x86-64
+    else ifeq ($(dcj),GENERICX86_64)
+        override ARCH::=-mtune=generic
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override STD::=-std=c11
+        ifndef USECLANG
+            ifdef MUSL
+                override CBUILD::=musl-gcc
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CBUILD::=gcc
+                override CC::=$(CBUILD)
+            endif
+            override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(GCC_WARN)
+        else
+            override CBUILD::=$(CLANG)
+            override CC::=$(CBUILD)
+            override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
+            override WARN::=$(LLVM_WARN)
+        endif
+        override DEBUG::=$(DCJ_DEBUG)
+    # RPI
+    else ifeq ($(dcj),rpi)
+        override GCC_PREFIX::=arm-linux-gnueabihf
+        override ENDIAN::=-mlittle-endian
+        override FLOATABI::=-mfloat-abi=hard
+        override ARCH::=-march=armv6zk -mtune=arm1176jzf-s $(ENDIAN) $(FLOATABI) -mfpu=vfp -marm -mtp=auto
+        override BITS::=32
+        override PLATFORM::=x86
+        override STD::=-std=c11
+        override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
+        override LIBS::=$(armgnueabihf_lib) $(LIBS)
+        override WARN::=-Wall -Wextra -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Winline -Wuninitialized -Wstrict-prototypes -Wbad-function-cast -Wdouble-promotion -Wstrict-overflow=5 -Wredundant-decls -Wnested-externs -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Winvalid-pch -Wunsafe-loop-optimizations -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wformat -Wformat-security -Wformat-signedness -Wformat-y2k
+        override XOPTMZ::=-O3 -funroll-loops -fomit-frame-pointer
+        ifndef USECLANG
+            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=$(GCC_PREFIX)-
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=$(CBUILD)
+            endif
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+        endif
+        override CC::=$(CC) $(INCLUDE) -Wl,--rpath=$(LIBS)
+        override LD::=$(CROSS_COMPILE)ld $(LIBS)
+        override DEBUG::=$(DCJ_DEBUG)
+        override PIC::=-fpic
+        override OS::=POSIX
+    # General x86-64 Linux
+    else ifeq ($(dcj),x86_64)
+        override GCC_PREFIX::=x86_64-linux-gnu
+        override STD::=-std=c11
+        override BITS::=64
+        override PLATFORM::=x86-64
+        override DEBUG::=$(DCJ_DEBUG)
+        override OS::=POSIX
+        override ARCH::=-mtune=intel
+        ifndef USECLANG
+            ifdef MUSL
+                override CC::=musl-gcc -D__MUSL__
+            else
+                override CC::=gcc
+            endif
+            override WARN::=$(GCC_WARN)
+            override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -mlong-double-128 -momit-leaf-frame-pointer
+        else
+            override CBUILD::=$(CLANG)
+            override CHOST::=$(CBUILD)
+            override CROSS_COMPILE::=llvm-
+            override CC::=$(CBUILD)
+            override WARN::=$(LLVM_WARN)
+            override XOPTMZ::=$(LLVM_OPT) $(LLVM_OPT_X86)
+        endif
+    # End of profile presets
+    endif
+endif
+
+
+# RESOLVE UNDEFINED COMMANDS #
+
 
 ifdef CROSS_COMPILE
-	override undefine CLANG
-	override undefine LINKER
-	override undefine STDLIB
-	override undefine STRIP
-	# Windows (i686)
-	ifeq ($(CROSS_COMPILE),win32)
-		override CROSS_COMPILE::=i686-w64-mingw32-
-		override GCC_PREFIX::=i686-w64-mingw32
-		override CC::=i686-w64-mingw32-gcc -m32 $(mingw32_include) -Wl,-rpath=$(mingw32_lib) -DENV32BIT
-		override CBUILD::=i686-w64-mingw32-gcc
-		override CHOST::=$(CBUILD)
-		override STRIP::=i686-w64-mingw32-strip
-		override LD::=i686-w64-mingw32-ld $(mingw32_lib)
-		override AS::=i686-w64-mingw32-as
-		override RANLIB::=i686-w64-mingw32-ranlib
-		override AR::=i686-w64-mingw32-ar
-		override NM::=i686-w64-mingw32-nm
-		override DLLTOOL::=i686-w64-mingw32-dlltool
-		override WINDRES::=i686-w64-mingw32-windres
-		override INCLUDES+::= $(mingw32_include)
-		override LIBS+::= $(mingw32_lib)
-		override OS::=WIN
-		override BITS::=-m32 -DENV32BIT
-		override ARCH::=-mtune=generic
-		override STDLIB::=STANDARD
-	# Windows (x86-64)
-	else ifeq ($(CROSS_COMPILE),win64)
-		override CROSS_COMPILE::=x86_64-w64-mingw32-
-		override GCC_PREFIX::=x86_64-w64-mingw32
-		override CC::=x86_64-w64-mingw32-gcc -m64 $(mingw64_include) -Wl,-rpath=$(mingw64_lib) -DENV64BIT
-		override CBUILD::=x86_64-w64-mingw32-gcc
-		override CHOST::=$(CBUILD)
-		override STRIP::=x86_64-w64-mingw32-strip
-		override LD::=x86_64-w64-mingw32-ld $(mingw64_lib)
-		override AS::=x86_64-w64-mingw32-as
-		override RANLIB::=x86_64-w64-mingw32-ranlib
-		override AR::=x86_64-w64-mingw32-ar
-		override NM::=x86_64-w64-mingw32-nm
-		override DLLTOOL::=x86_64-w64-mingw32-dlltool
-		override WINDRES::=x86_64-w64-mingw32-windres
-		override INCLUDES+::= $(mingw64_include)
-		override LIBS+::= $(mingw64_lib)
-		override OS::=WIN
-		override BITS::=-m64 -DENV64BIT
-		override ARCH::=-mtune=generic
-		override STDLIB::=STANDARD
-	# Android (ARM)
-	else ifeq ($(CROSS_COMPILE),android)
-		override CROSS_COMPILE::=arm-linux-androideabi-
-		override GCC_PREFIX::=arm-linux-androideabi
-		override CC::=arm-linux-androideabi-gcc $(armandroideabi_include) -Wl,-rpath=$(armandroideabi_lib)
-		override CBUILD::=arm-linux-androideabi-gcc
-		override CHOST::=$(CBUILD)
-		override STRIP::=arm-linux-androideabi-strip
-		override LD::=arm-linux-androideabi-ld $(armandroideabi_lib)
-		override AS::=arm-linux-androideabi-as
-		override RANLIB::=arm-linux-androideabi-ranlib
-		override AR::=arm-linux-androideabi-ar
-		override INCLUDES+::= $(armandroideabi_include)
-		override LIBS+::= $(armgnueabisf_lib)
-		override OS::=ANDROID
-		override BITS::=-m32 -DENV32BIT
-		override STDLIB::=STANDARD
-		override ARCH_ARM::=ARM
-	# (POSIX and/or Unix)
-	# Linux
-	else ifeq ($(OS),LINUX)
-		# x86 and x86-64
-		ifeq ($(CROSS_COMPILE),x86)
-			override GCC_PREFIX::=x86-linux-gnu
-			override CC::=x86-linux-gnu-gcc -m32
-			override CBUILD::=x86-linux-gnu-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=x86-linux-gnu-strip
-			override LD::=x86-linux-gnu-ld
-			override AS::=x86-linux-gnu-as
-			override RANLIB::=x86-linux-gnu-ranlib
-			override AR::=x86-linux-gnu-ar
-			override OS::=POSIX
-			override BITS::=-m32 -DENV32BIT
-		else ifeq ($(CROSS_COMPILE),x86-64)
-			override GCC_PREFIX::=x86_64-linux-gnu
-			override CC::=x86_64-linux-gnu-gcc -m64
-			override CBUILD::=x86_64-linux-gnu-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=x86_64-linux-gnu-strip
-			override LD::=x86_64-linux-gnu-ld
-			override AS::=x86_64-linux-gnu-as
-			override RANLIB::=x86_64-linux-gnu-ranlib
-			override AR::=x86_64-linux-gnu-ar
-			override OS::=POSIX
-			override BITS::=-m64 -DENV64BIT
-		# ARM
-		else ifeq ($(CROSS_COMPILE),armhf)
-			override CROSS_COMPILE::=arm-linux-gnueabihf-
-			override GCC_PREFIX::=arm-linux-gnueabihf
-			override CC::=arm-linux-gnueabihf-gcc $(armgnueabihf_include) -Wl,-rpath=$(armgnueabihf_lib)
-			override CBUILD::=arm-linux-gnueabihf-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=arm-linux-gnueabihf-strip
-			override LD::=arm-linux-gnueabihf-ld $(armgnueabihf_lib)
-			override AS::=arm-linux-gnueabihf-as
-			override RANLIB::=arm-linux-gnueabihf-ranlib
-			override AR::=arm-linux-gnueabihf-ar
-			override INCLUDES+::= $(armgnueabihf_include)
-			override LIBS+::= $(armgnueabihf_lib)
-			override OS::=POSIX
-			override BITS::=-m32 -DENV32BIT
-			override ARCH_ARM::=ARM
-		else ifeq ($(CROSS_COMPILE),arm)
-			override CROSS_COMPILE::=arm-linux-gnueabihf-
-			override GCC_PREFIX::=arm-linux-gnueabihf
-			override CC::=arm-linux-gnueabihf-gcc $(armgnueabihf_include) -Wl,-rpath=$(armgnueabihf_lib)
-			override CBUILD::=arm-linux-gnueabihf-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=arm-linux-gnueabihf-strip
-			override LD::=arm-linux-gnueabihf-ld $(armgnueabihf_lib)
-			override AS::=arm-linux-gnueabihf-as
-			override RANLIB::=arm-linux-gnueabihf-ranlib
-			override AR::=arm-linux-gnueabihf-ar
-			override INCLUDES+::= $(armgnueabihf_include)
-			override LIBS+::= $(armgnueabihf_lib)
-			override OS::=POSIX
-			override BITS::=-m32 -DENV32BIT
-			override ARCH_ARM::=ARM
-		else ifeq ($(CROSS_COMPILE),armel)
-			override CROSS_COMPILE::=arm-linux-gnueabi-
-			override GCC_PREFIX::=arm-linux-gnueabi
-			override CC::=arm-linux-gnueabi-gcc $(armgnueabi_include) -Wl,-rpath=$(armgnueabi_lib)
-			override CBUILD::=arm-linux-gnueabi-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=arm-linux-gnueabi-strip
-			override LD::=arm-linux-gnueabi-ld $(armgnueabi_lib)
-			override AS::=arm-linux-gnueabi-as
-			override RANLIB::=arm-linux-gnueabi-ranlib
-			override AR::=arm-linux-gnueabi-ar
-			override INCLUDES+::= $(armgnueabi_include)
-			override LIBS+::= $(armgnueabi_lib)
-			override OS::=POSIX
-			override BITS::=-m32 -DENV32BIT
-			override ARCH_ARM::=ARM
-		else ifeq ($(CROSS_COMPILE),armsf)
-			override CROSS_COMPILE::=arm-linux-gnueabi-
-			override GCC_PREFIX::=arm-linux-gnueabi
-			override CC::=arm-linux-gnueabi-gcc $(armgnueabisf_include) -Wl,-rpath=$(armgnueabisf_lib)
-			override CBUILD::=arm-linux-gnueabi-gcc
-			override CHOST::=$(CBUILD)
-			override STRIP::=arm-linux-gnueabi-strip
-			override LD::=arm-linux-gnueabi-ld $(armgnueabisf_lib)
-			override AS::=arm-linux-gnueabi-as
-			override RANLIB::=arm-linux-gnueabi-ranlib
-			override AR::=arm-linux-gnueabi-ar
-			override INCLUDES+::= $(armgnueabisf_include)
-			override LIBS+::= $(armgnueabisf_lib)
-			override OS::=POSIX
-			override BITS::=-m32 -DENV32BIT
-			override ARCH_ARM::=ARM
-		endif
-	endif
-endif
-ifeq ($(OS),LINUX)
-	override OS::=POSIX
-endif
-
-
-## PLATFORM ##
-
-
-# Architecture flags
-ifndef CROSS_COMPILE
-	ifdef ARCH
-		# Intel
-		ifeq ($(ARCH),intel)
-			override ARCH::=-mtune=intel
-		else ifeq ($(ARCH),generic)
-			override ARCH::=-mtune=generic
-		else ifeq ($(ARCH),i686)
-			override ARCH::=-march=i686
-		else ifeq ($(ARCH),pentium4)
-			override ARCH::=-march=pentium4
-		else ifeq ($(ARCH),sandybridge)
-			override ARCH::=-march=sandybridge
-		else ifeq ($(ARCH),ivybridge)
-			override ARCH::=-march=ivybridge
-		else ifeq ($(ARCH),haswell)
-			override ARCH::=-march=haswell -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		else ifeq ($(ARCH),broadwell)
-			override ARCH::=-march=broadwell -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		else ifeq ($(ARCH),bonnell)
-			override ARCH::=-march=bonnell -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		else ifeq ($(ARCH),silvermont)
-			override ARCH::=-march=silvermont -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		else ifeq ($(ARCH),knight)
-			override ARCH::=-march=knl -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		else ifeq ($(ARCH),knl)
-			override ARCH::=-march=knl -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld
-		# AMD
-		else ifeq ($(ARCH),k6)
-			override ARCH::=-march=k6
-		else ifeq ($(ARCH),athlon)
-			override ARCH::=-march=athlon
-		else ifeq ($(ARCH),opteron)
-			override ARCH::=-march=opteron
-		# ARM
-		else ifeq ($(ARCH),armv6)
-			override ARCH::=-march=armv6
-		else ifeq ($(ARCH),armv7)
-			override ARCH::=-march=armv7
-		else ifeq ($(ARCH),armv7-a)
-			override ARCH::=-march=armv7-a
-		else ifeq ($(ARCH),armv7-r)
-			override ARCH::=-march=armv7-r
-		else ifeq ($(ARCH),armv7-m)
-			override ARCH::=-march=armv7-m
-		else ifeq ($(ARCH),armv8-a)
-			override ARCH::=-march=armv8-a
-		else ifeq ($(ARCH),armv8-a+crc)
-			override ARCH::=-march=armv8-a+crc
-		else ifeq ($(ARCH),iwmmxt)
-			override ARCH::=-march=iwmmxt
-		# General
-		else
-			override ARCH::=
-		endif
-	else
-		override ARCH::=
-	endif
-endif
-
-# 32 or 64 bits
-ifdef BITS
-	ifeq ($(BITS),64)
-		override BITS::=-m64 -DENV64BIT
-	else ifeq ($(BITS),32)
-		override BITS::=-m32 -DENV32BIT
-	else
-		override BITS::=
-	endif
+    override AR::=$(CROSS_COMPILE)ar
+    override AS::=$(CROSS_COMPILE)as
+    override NM::=$(CROSS_COMPILE)nm
+    override RANLIB::=$(CROSS_COMPILE)ranlib
+    ifndef LD
+        ifdef USECLANG
+            override LD::=link
+        else
+            override LD::=ld
+        endif
+    endif
+    ifdef WIN
+        override DLLTOOL::=$(CROSS_COMPILE)dlltool
+        override WINDRES::=$(CROSS_COMPILE)windres
+    endif
+    ifndef STRIP
+        STRIP::=$(CROSS_COMPILE)strip
+    endif
 else
-	BITS::=
+    override AR::=ar
+    override AS::=as
+    override NM::=nm
+    override RANLIB::=ranlib
+    ifndef LD
+        ifdef USECLANG
+            override LD::=link
+        else
+            override LD::=ld
+        endif
+    endif
+    ifdef WIN
+        override DLLTOOL::=dlltool
+        override WINDRES::=windres
+    endif
+    ifndef STRIP
+        STRIP::=strip
+    endif
 endif
-
-# ENDIANNESS
-ifdef ENDIAN
-	ifeq ($(ENDIAN),big)
-		override ENDIAN::=-mbig-endian
-	else
-		override ENDIAN::=-mlittle-endian
-	endif
-else
-	ENDIAN::=
-endif
-
-# Floating-point ABI
-ifdef FLOATABI
-	ifeq ($(FLOATABI),soft)
-		override FLOATAB::I=-mfloat-abi=soft
-	else ifeq ($(FLOATABI),softfp)
-		override FLOATABI::=-mfloat-abi=softfp
-	else
-		override FLOATABI::=-mfloat-abi=hard
-	endif
-else
-	FLOATABI::=
+ifndef WIN
+    override DLLTOOL::=
+    override WINDRES::=
 endif
 
 
-## SECURITY ##
-
-
-ifdef SECURITY
-	ifeq ($(SECURITY),1)
-		override POSIX_STACK_PROTECTOR::=-fstack-protector
-	else ifeq ($(SECURITY),2)
-		override POSIX_STACK_PROTECTOR::=-fstack-protector-strong
-	else ifeq ($(SECURITY),3)
-		override POSIX_STACK_PROTECTOR::=-fstack-protector-all
-	else
-		POSIX_STACK_PROTECTOR::=
-	endif
-else
-	POSIX_STACK_PROTECTOR::=-fstack-protector
-endif
-
-
-## LINUX ##
+# SETUP PARAMETERS #
 
 
 # C-Standard
-ifeq ($(OS),LINUX)
-	ifdef STD
-		# GNU
-		ifeq ($(STD),gnu11)
-			override STD::=-std=gnu11
-		# C
-		else
-			override STD::=-std=c11
-		endif
-	else
-		STD::=-std=c11
-	endif
+ifdef STD
+    # GNU
+    ifneq ($(STD),-std=c11)
+        # GNU
+        ifeq ($(STD),gnu11)
+            override STD::=-std=gnu11
+        # C
+        else
+            override STD::=-std=c11
+        endif
+    endif
 else
-	STD::=-std=c11
-endif
-
-
-## MISCELLANEOUS ##
-
-
-# Debugging flags
-ifdef DEBUG
-	ifeq ($(DEBUG),1)
-		override DEBUG::=
-	else ifeq ($(DEBUG),2)
-		override DEBUG::=-DDEBUG -g -ggdb
-	else
-		ifeq ($(OS),WIN)
-			override DEBUG::=-DNDEBUG -g0 -ggdb0 -s -Wl,-s
-		else
-			override DEBUG::=-DNDEBUG -g0 -ggdb0 -s -Wl,-s,-S -Wl,-gc-sections
-		endif
-	endif
-else
-	ifeq ($(OS),WIN)
-		DEBUG::=-DNDEBUG -g0 -ggdb0 -s -Wl,-s
-	else
-		DEBUG::=-DNDEBUG -g0 -ggdb0 -s -Wl,-s,-S -Wl,-gc-sections
-	endif
+    STD::=-std=c11
 endif
 
 # Alternate Standard C Library
 ifdef STDLIB
-	ifneq ($(STDLIB),STANDARD)
-		override STDLIB::=
-		ifdef UCLIBC
-			override STDLIB::=-muclibc
-		else ifdef BIONIC
-			override STDLIB::==-mbionic
-		else ifdef GLIBC
-			override STDLIB::==-mglibc
-		else ifdef MUSL
-			ifndef CROSS_COMPILE
-				override CC::==musl-gcc -D__MUSL__
-			endif
-		endif
-	endif
-	ifeq ($(STDLIB),STANDARD)
-		override STDLIB::=
-	endif
+    ifneq ($(STDLIB),STANDARD)
+        override STDLIB::=
+        ifdef BIONIC
+            override STDLIB::=-mbionic
+        else ifdef GLIBC
+            override STDLIB::=-mglibc
+        else ifdef MUSL
+            ifndef CROSS_COMPILE
+                override CC::=musl-gcc -D__MUSL__
+            endif
+        else ifdef UCLIBC
+            override STDLIB::=-muclibc
+        endif
+    else ifeq ($(STDLIB),STANDARD)
+        override STDLIB::=
+    endif
 else
-	STDLIB::=
+    STDLIB::=
+endif
+
+# Architecture Flags
+ifdef ARCH
+    # Intel
+    ifeq ($(ARCH),intel)
+        override ARCH::=-mtune=$(ARCH)
+    else ifeq ($(ARCH),generic)
+        override ARCH::=-mtune=$(ARCH)
+    else ifeq ($(ARCH),i686)
+        override ARCH::=-march=$(ARCH)
+        override PLATFORM::=x86
+    else ifeq ($(ARCH),pentium4)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),sandybridge)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),ivybridge)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),haswell)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper
+    else ifeq ($(ARCH),broadwell)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper
+    else ifeq ($(ARCH),bonnell)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper
+    else ifeq ($(ARCH),silvermont)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper
+    else ifeq ($(ARCH),coffeelake)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+    else ifeq ($(ARCH),skylake)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+    else ifeq ($(ARCH),cannonlake)
+        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+    # AMD
+    else ifeq ($(ARCH),k6)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),athlon)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),opteron)
+        override ARCH::=-march=$(ARCH)
+    # ARM
+    else ifeq ($(ARCH),armv6)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv7)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv7-a)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv7-r)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv7-m)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv8-a)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),armv8-a+crc)
+        override ARCH::=-march=$(ARCH)
+    else ifeq ($(ARCH),iwmmxt)
+        override ARCH::=-march=$(ARCH)
+    endif
+else
+    ARCH::=
+endif
+
+# 32 or 64 bits
+ifdef BITS
+    ifeq ($(BITS),64)
+        override BITS::=-m64
+    else ifeq ($(BITS),32)
+        override BITS::=-m32
+    else
+        override BITS::=-m64
+    endif
+else
+    BITS::=
+endif
+
+# Endianness
+ifdef ENDIAN
+    ifeq ($(ENDIAN),big)
+        override ENDIAN::=-mbig-endian
+    else
+        override ENDIAN::=-mlittle-endian
+    endif
+else
+    ENDIAN::=
+endif
+
+# Floating-point ABI
+ifdef FLOATABI
+    ifeq ($(FLOATABI),soft)
+        override FLOATABI::=-mfloat-abi=soft
+    else ifeq ($(FLOATABI),softfp)
+        override FLOATABI::=-mfloat-abi=softfp
+    else
+        override FLOATABI::=-mfloat-abi=hard
+    endif
+else
+    FLOATABI::=
 endif
 
 # Pthread
 ifneq ($(OS),WIN)
-	ifdef PTHREAD
-		override ARCH+= -pthread -D__PTHREAD_ENABLED__
-	endif
+    ifdef PTHREAD
+        override ARCH::=$(ARCH) -pthread -D__PTHREAD_ENABLED__
+    endif
 endif
 
-# MOVBE (Assembly command)
-ifdef MOVBE
-	override ARCH+= -mmovbe -D__MOVBE__
-endif
-
-# Alternate linker
-ifndef CROSS_COMPILE
-	ifdef LINKER
-		ifeq ($(LINKER),gold)
-			override LD::=gold
-			override LINKER::=-fuse-ld=gold -D__GOLD_LINKER__
-		else ifeq ($(LINKER),bfd)
-			override LD::=bfd
-			override LINKER::=-fuse-ld=bfd -D__BFD_LINKER__
-		else
-			override LINKER::=
-		endif
-	else
-		override LINKER::=
-	endif
-endif
-
-
-ifeq ($(OS),WIN)
-	override COMMON_OPT::= -O3 -funroll-loops
-	override FLTO::=
-	override FPIC::=
-	override LDZ::=-Wl,-O3
-	override LIBEXT::=dll
-	override STACK::=-fno-stack-protector -D_FORTIFY_SOURCE=0
-	override WIN::=-fms-extensions -mwin32 $(STACK)
-	override WINCUI::=-mconsole $(WIN)
-	override WINLIB::=-mdll $(WIN)
+# Stack Protector
+ifdef SECURITY
+    ifeq ($(SECURITY),1)
+        override POSIX_STACK_PROTECTOR::=-fstack-protector
+    else ifeq ($(SECURITY),2)
+        override POSIX_STACK_PROTECTOR::=-fstack-protector-strong
+    else ifeq ($(SECURITY),3)
+        override POSIX_STACK_PROTECTOR::=-fstack-protector-all
+    else
+        override POSIX_STACK_PROTECTOR::=
+    endif
 else
-	ifdef CLANG
-		override FLTO::=
-		override LDZ::=
-	else
-		override FLTO::= -flto -fuse-linker-plugin
-		override LDZ::=-Wl,-O3 -Wl,-z,relro,-z,now
-	endif
-	override COMMON_OPT::= -O3 -funroll-loops -ffunction-sections -fdata-sections
-	override FPIC::=-fPIC
-	override LIBEXT::=so
-	override STACK::=
-	override WIN::=
-	override WINCUI::=
-	override WINLIB::=
+    POSIX_STACK_PROTECTOR::=
 endif
-
-ifndef STRIP
-	override STRIP::=strip
+ifdef WIN
+    override ARCH::=$(ARCH) -fno-stack-protector -D_FORTIFY_SOURCE=0
 endif
 
 
-## PYTHON ##
+# ADDITIONAL OPTIMIZATIONS #
+
+
+# Set optional extra optimization parameters
+ifdef USECLANG
+    override COMPILER_XOPT::=-ffinite-math-only -fno-math-errno -fno-signed-zeros
+else
+    override COMPILER_XOPT::=-ffinite-math-only -fno-exceptions -fno-math-errno -fno-signaling-nans -fno-signed-zeros -fno-trapping-math
+endif
+ifdef XOPT
+    ifeq ($(XOPT),0)
+        override XOPT::=
+    else ifeq ($(XOPT),1)
+        override XOPT::=$(COMPILER_XOPT)
+    else ifeq ($(XOPT),2)
+        override XOPT::=$(COMPILER_XOPT) -funsafe-math-optimizations
+    else ifeq ($(XOPT),3)
+        override XOPT::=$(COMPILER_XOPT) -ffast-math
+    else
+        override XOPT::=
+    endif
+else
+    XOPT::=
+endif
+ifdef XOPTMZ
+    override XOPTMZ::=$(XOPTMZ) $(XOPT)
+else
+    XOPTMZ::=$(XOPT)
+endif
+ifdef OPENMP
+    override XOPTMZ::=$(XOPTMZ) -fopenmp
+endif
+
+
+# PYTHON #
 
 
 override PYCFLAGS::=-DHAVE_GCC_UINT128_T -DHAVE_GCC_INT128_T -DHAVE_SSIZE_T -DPY_FORMAT_SIZE_T="z" -DPY_FORMAT_SSIZE_T="zi" -DPY_FORMAT_LONG_LONG="ll"
 
+ifndef PYVERSION
+    PYVERSION::=3.6
+    CPYTHON::=36
+endif
+
 ifdef PYVERSION
-	ifeq ($(PYVERSION),3.4)
-		override PYVERSION::=3.4
-		override CPYTHON::=34
-	else ifeq ($(PYVERSION),3.5)
-		override PYVERSION::=3.5
-		override CPYTHON::=35
-	else ifeq ($(PYVERSION),3.6)
-		override PYVERSION::=3.6
-		override CPYTHON::=36
-	else ifeq ($(PYVERSION),3.7)
-		override PYVERSION::=3.7
-		override CPYTHON::=37
-	else ifeq ($(PYVERSION),3.8)
-		override PYVERSION::=3.8
-		override CPYTHON::=38
-	else
-		override PYVERSION::=3.4
-		override CPYTHON::=34
-	endif
+    ifeq ($(PYVERSION),3.4)
+        override CPYTHON::=34
+    else ifeq ($(PYVERSION),3.5)
+        override CPYTHON::=35
+    else ifeq ($(PYVERSION),3.6)
+        override CPYTHON::=36
+    else ifeq ($(PYVERSION),3.7)
+        override CPYTHON::=37
+    else ifeq ($(PYVERSION),3.8)
+        override CPYTHON::=38
+    else ifeq ($(PYVERSION),3.9)
+        override CPYTHON::=39
+    else
+        override PYVERSION::=3.6
+        override CPYTHON::=36
+    endif
 else
-	PYVERSION::=3.4
-	CPYTHON::=34
+    PYVERSION::=3.6
+    CPYTHON::=36
 endif
 
 ifndef PYINCLUDE
-	PYINCLUDE::=-I/usr/include/python$(PYVERSION)m
+    PYINCLUDE::=-I"/usr/include/python$(PYVERSION)m"
 else ifeq ($(PYINCLUDE),1)
-	override PRIVATE_PYTHON::=1
-else ifeq ($(PYINCLUDE),3.5)
-	override PRIVATE_PYTHON::=1
-endif
-
-ifdef PRIVATE_PYTHON
-	override PYINCLUDE::=-I./python
-	override PYVERSION::=3.5
-	override CPYTHON::=35
-	override PYCFLAGS::=
-	override SOABI::=cpython-$(CPYTHON)m
-	override PYEXT::=.$(SOABI).so
+    override PRIVATE_PYTHON::=1
+    override PYINCLUDE::=-I./python
+    override PYCFLAGS::=
+    override SOABI::="cpython-$(CPYTHON)m"
+    override PYEXT::=".$(SOABI).$(LIBEXT)"
 endif
 
 ifndef SOABI
-	SOABI::=cpython-$(CPYTHON)m
-	PYEXT::=.$(SOABI).so
+    SOABI::="cpython-$(CPYTHON)m"
+    PYEXT::=".$(SOABI).$(LIBEXT)"
 endif
 
 
-## SPECIAL LLVM+CLANG FEATURES ##
+# COMPILER DIAGNOSTICS #
+
+
+ifdef DIAG
+    ifeq ($(DIAG),0)
+        override DIAG::=
+    else ifeq ($(DIAG),)
+        override DIAG::=
+    else ifeq ($(DIAG),lto)
+        # Output LTO statistics
+        override DIAG::=-flto-report
+    else ifeq ($(DIAG),mem)
+        # Output memory statistics
+        override DIAG::=-fmem-report
+    else ifeq ($(DIAG),T)
+        # Output compiler time (user, system)
+        override DIAG::=-time
+    else ifeq ($(DIAG),Tx)
+        # Output detailed compiler time
+        override DIAG::=-time -ftime-report
+    else ifeq ($(DIAG),X)
+        # Output compiler statistics
+        override DIAG::=-time -ftime-report -fmem-report
+    else ifeq ($(DIAG),L)
+        # List linked files
+        override DIAG::=-Wl,--trace,--verbose
+    else ifeq ($(DIAG),o)
+        override DIAG::=-Q --help=optimizers
+    else ifeq ($(DIAG),opt)
+        override DIAG::=-Q --help=optimizers
+    else ifeq ($(DIAG),p)
+        override DIAG::=-Q --help=params
+    else ifeq ($(DIAG),t)
+        override DIAG::=-Q --help=target
+    else ifeq ($(DIAG),w)
+        override DIAG::=-Q --help=common,warnings --help=c,warnings
+    else ifeq ($(DIAG),all)
+        override DIAG::=-Q --help=target --help=optimizers --help=common,warnings --help=c,warnings --help=params
+    else ifeq ($(DIAG),a)
+        override DIAG::=-Q --help=target --help=optimizers --help=common,warnings --help=c,warnings --help=params
+    else
+        override DIAG::=
+    endif
+else
+    override DIAG::=
+endif
+
+ifdef DUMP
+    ifeq ($(DUMP),const)
+        # Dump functions with constants computed
+        override DUMP::=-fdump-tree-original=$(TESTINGDIR)/dump_const.original
+    else ifeq ($(DUMP),addr)
+        # Dump addresses
+        override DUMP::=-fdump-translation-unit-address=$(TESTINGDIR)/addr.dump
+    else ifeq ($(DUMP),asmcons)
+        # Dump fixed RTL statements that had unsatisfied in/out constraints
+        override DUMP::=-dp -fdump-rtl-asmcons=$(TESTINGDIR)/asmcons.dump
+    else ifeq ($(DUMP),graph)
+        # Dump graphs
+        override DUMP::=-fdump-tree-all-graph=$(TESTINGDIR)/dump_graph
+    else
+        override DUMP::=
+    endif
+else
+    override DUMP::=
+endif
+
+
+# SPECIAL LLVM+CLANG FEATURES #
 
 
 ifdef LLVM_PIE
-	override LLVM_PIE::=-enable-pie
+    override LLVM_PIE::=-enable-pie
 else
-	override LLVM_PIE::=
+    LLVM_PIE::=
 endif
+
 # *.c/*.cpp => *.ll (LLVM IR/Intermediate-Language file)
-LLVM_INTERMEDIATE::=clang -Qunused-arguments $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fno-signed-zeros -fno-math-errno -funroll-loops -fstack-protector -pipe -fstrict-aliasing -fstrict-overflow -ffunction-sections -fdata-sections -S -emit-llvm
-# *.c/*.cpp => *.bc (LLVM Bytecode file)
-LLVM_BYTECODE::=clang -Qunused-arguments $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fno-signed-zeros -fno-math-errno -funroll-loops -fstack-protector -pipe -fstrict-aliasing -fstrict-overflow -ffunction-sections -fdata-sections -flto -emit-llvm -c
+LLVM_INTERMEDIATE::=$(CLANG) $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fdata-sections -ffunction-sections -fstack-protector -fstrict-aliasing -fstrict-overflow -funroll-loops -S -emit-llvm
+
+# *.c/*.cpp => *.bc (LLVM Bytecode file); To execute LLVM *.bc files, run `lli ./FILE.bc ARGS`
+LLVM_BYTECODE::=$(CLANG) $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fdata-sections -ffunction-sections -fstack-protector -fstrict-aliasing -fstrict-overflow -funroll-loops -emit-llvm -c
+
 # LLVM Bytecode (*.bc) => LLVM AT&T Assembly (*.s)
 LLVM_BC2ATTASM::=llc $(ARCH) -O=3 -data-sections $(LLVM_PIE) -filetype=asm --x86-asm-syntax=att
+
 # LLVM Bytecode (*.bc) => LLVM INTEL Assembly (*.s)
 LLVM_BC2INTELASM::=llc $(ARCH) -O=3 -data-sections $(LLVM_PIE) -filetype=asm --x86-asm-syntax=intel
+
 # LLVM Bytecode (*.bc) => Object file (*.o)
 LLVM_BC2OBJ::=llc $(ARCH) -O=3 -data-sections $(LLVM_PIE) -filetype=obj
+
 # *.c/*.cpp => *.ast (Clang AST file)
-CLANG_AST::=clang -Qunused-arguments $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fno-signed-zeros -fno-math-errno -funroll-loops -fstack-protector -pipe -fstrict-aliasing -fstrict-overflow -ffunction-sections -fdata-sections -S -emit-ast
+CLANG_AST::=$(CLANG) $(LLVM_WARN) $(ARCH) $(BITS) $(STD) -O3 $(DEBUG) -fdata-sections -ffunction-sections -fstack-protector -fstrict-aliasing -fstrict-overflow -funroll-loops -S -emit-ast
+
 # Run Clang preprocessor on src and output preprocessed code (*.i)
-CLANG_PREPRO::=clang $(ARCH) $(STD) -E
+CLANG_PREPRO::=$(CLANG) $(ARCH) $(STD) -E
+
 # Pre-compiled headers (*.pch)
-COMPILED_HEADERS::=clang $(ARCH) $(STD) -x c-header
-
-
-# To execute LLVM *.bc files, run
-# lli ./FILE.bc ARGS
+COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header

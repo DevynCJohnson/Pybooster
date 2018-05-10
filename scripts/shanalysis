@@ -1,0 +1,52 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for scanning a shell script with various syntax checkers
+# @file shanalysis
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each shell script to scan.\n'
+    exit 0
+elif [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+fi
+
+
+firstpass=0
+
+
+for file in "$@"; do
+    [ ! -r "$file" ] && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+
+    if [ -x "$(command -v bashate)" ]; then
+        printf '\n\n======  *BASHATE*  ======\n\n'
+        bashate --ignore E006 --verbose "$file"
+    elif [ "$firstpass" -eq 0 ]; then
+        printf 'bashate: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v shellcheck)" ]; then
+        printf '\n\n======  *SHELLCHECK*  ======\n\n'
+        shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file"
+    elif [ "$firstpass" -eq 0 ]; then
+        printf 'shellcheck: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sh)" ]; then
+        printf '\n\n======  *POSIX COMPLIANCE*  ======\n\n'
+        sh -n "$file"
+    elif [ "$firstpass" -eq 0 ]; then
+        printf 'sh: command not found!\n' >&2
+    fi
+
+    printf '\n'
+
+    firstpass=1
+
+done

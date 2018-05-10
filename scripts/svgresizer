@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Resize SVG Files
+
+@file svgresizer
+@version 2017.12.25
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+import argparse
+from sys import stdin, stdout
+import xml.etree.ElementTree as ET
+
+from pybooster.markup import resize_svg
+
+
+if __name__ == '__main__':
+    # Parse Arguments
+    PARSER = argparse.ArgumentParser(
+        prog=r'svgresizer',
+        description=r'Resize an SVG file and add a frame (if desired)',
+        epilog=None,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    PARSER.add_argument(
+        r'input',
+        help=r'Source SVG file ("-" for stdin; Default)',
+        nargs=r'?',
+        default=r'-',
+        metavar=r'INPUT'
+    )
+    PARSER.add_argument(
+        r'output',
+        help=r'Destination SVG file ("-" for stdout; Default: same as source)',
+        nargs=r'?',
+        default=None,
+        metavar=r'OUTPUT'
+    )
+    PARSER.add_argument(
+        r'-x', r'--width',
+        help=r'Target width in pixels (including margins, default units are px)',
+        default=None,
+        type=str
+    )
+    PARSER.add_argument(
+        r'-y', r'--height',
+        help=r'Target height in pixels (including margins, default units as px)',
+        default=None,
+        type=str
+    )
+    PARSER.add_argument(
+        r'-l', r'--longest',
+        help=r'Target longest side',
+        default=None,
+        type=float
+    )
+    PARSER.add_argument(
+        r'-s', r'--shortest',
+        help=r'Target shortest side',
+        default=None,
+        type=float
+    )
+    PARSER.add_argument(
+        r'-m', r'--margin',
+        help=r'Margin (Default unit is "px")',
+        default=r'0',
+        type=str
+    )
+    PARSER.add_argument(
+        r'-f', r'--frame',
+        action=r'store_true',
+        help=r'Add white frame around the picture'
+    )
+    OPTIONS = vars(PARSER.parse_args())
+    del PARSER
+    # Process Flags
+    if not OPTIONS[r'input']:
+        OPTIONS[r'input'] = r'-'
+    if r'output' not in OPTIONS or not OPTIONS[r'output']:
+        OPTIONS[r'output'] = OPTIONS[r'input']
+    TREE = ET.parse(stdin if OPTIONS[r'input'] == r'-' else OPTIONS[r'input'])
+    # Resize SVG
+    resize_svg(TREE, OPTIONS)
+    TREE.write(stdout if OPTIONS[r'output'] == r'-' else OPTIONS[r'output'])

@@ -1,0 +1,222 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Inspect Python scripts for syntax errors and stylistic issues
+# @file pyinspect
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# SETUP #
+
+
+if [ ! -x "$(command -v python3)" ]; then
+    printf 'python3: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v flake8)" ]; then
+    printf 'flake8: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v pycodestyle)" ]; then
+    printf 'pycodestyle: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v pyflakes3)" ]; then
+    printf 'pyflakes3: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v pylint3)" ]; then
+    printf 'pylint3: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v pytest3)" ]; then
+    printf 'pytest3: command not found!\n' >&2
+    exit 1
+fi
+
+version=2018.04.27
+PARAM="${*:-}"
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  Pyinspect  ====='
+    printf '%s\n%s\n' 'Debugging suite for Python3' 'Usage: pyinspect [parameters]'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-b             Display Benchmarks'
+    printf '%s\n' '-c             Generate Cython Annotation (colorized HTML)'
+    printf '%s\n' '-f             Specify file/script'
+    printf '%s\n' '--f8           Run flake8 (style and error checker)'
+    printf '%s\n' '-h,--help      Display help info'
+    printf '%s\n' '-l             Run Pylint (code checker)'
+    printf '%s\n' '-8,--pep8      Check for pep8 compliance'
+    printf '%s\n' '--pep257       Check for pep257 compliance'
+    printf '%s\n' '--pyf          Run Pyflakes (error checker)'
+    printf '%s\n' '--rev          Run Pyreverse (make UML diagram)'
+    printf '%s\n' '-t             Run Pytest (unit tests)'
+    printf '%s\n' '-v,--version   Display version'
+    printf '%s\n' '-y             Generate Cython Debugging Info'
+    printf '%s\n' '-z             Analyze a script'
+    printf '\n%s\n' '=====  Python Tools  ====='
+    printf '%s\n' 'flake8 - Style and error checker; uses pycodestyle, pyflakes, and plugins'
+    printf '%s\n' 'pylint - Code checker'
+    printf '%s\n' 'pycodestyle - Check code for PEP8 compliance'
+    printf '%s\n' 'pyflakes - Checks code for errors without executing the script'
+    printf '%s\n' 'pytest - Run unit tests'
+    printf '%s\n' 'pyreverse - Parse script and make UML diagram)'
+}
+
+
+_flake8() {  # Run flake8
+    flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$_file"
+}
+
+
+_pep8() {  # Check for pep8 compliance
+    pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$_file"
+}
+
+
+_pyflakes() {  # Run Pyflakes
+    pyflakes3 "$_file"
+}
+
+
+_pylint() {  # Run Pylint
+    pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$_file"
+}
+
+
+_pytest() {  # Run Pytest
+    pytest3 --pdb "$_file"
+}
+
+
+analyze() {  # Analyze a script
+    printf '%s\n' '===== Tool Versions ====='
+    printf '%s%s%s\n' ' == flake8 - ' "$(flake8 --version)" ' =='
+    printf '%s%s%s\n\n' ' == pycodestyle (pep8) - ' "$(pycodestyle --version)" ' =='
+    printf '%s%s%s\n\n' ' == pyflakes3 - ' "$(pyflakes3 --version)" ' =='
+    printf '%s\n' '===== PEP8 Check (pycodestyle) ====='
+    _pep8
+    printf '\n\n%s\n' '===== Deep Check (flake8) ====='
+    _flake8
+    printf '\n\n%s\n' '===== Code Check (pylint) ====='
+    _pylint
+    printf '\n\n%s\n' '===== Error Finder (pyflakes) ====='
+    _pyflakes
+    printf '\n\n%s\n' '===== Unit Tests (pytest) ====='
+    _pytest
+    printf '\n\n'
+}
+
+
+# GETOPT #
+
+
+GOPT="$(getopt -o 8abcf:hltvy --long analyze,anlys,anlyz,f8,pyf,rev,pep8,pep257,file:,script:,version,help -- "$@")"
+eval set -- "$GOPT"
+
+while true; do
+    case "$1" in
+        -f|--file|--script)  # Specify input file
+            _file="$2"
+            if [ ! -r "$_file" ]; then
+                printf 'The specified file is non-readable or non-existent!\n' >&2
+                exit 1
+            fi
+            break
+        ;;
+        *) shift ;;  # Unknown/non-registered parameter
+    esac
+done
+
+eval set -- "$GOPT"
+while true; do
+    case "$1" in
+        -h|--help)  # Display help info
+            Help
+            shift
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            shift
+        ;;
+        -8|--pep8)  # Check for pep8 compliance
+            _pep8
+            shift
+        ;;
+        --pep257)  # Check for pep257 compliance
+            if [ ! -x "$(command -v pep257)" ] && [ ! -x "$(command -v pydocstyle)" ]; then
+                printf 'ERROR: pep257 nor pydocstyle were found!\n' >&2
+            elif [ -x "$(command -v pydocstyle)" ]; then
+                pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$_file"
+            else
+                pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$_file"
+                shift
+            fi
+        ;;
+        -b)  # Display benchmarks
+            pycodestyle -v --benchmark "$_file"
+            shift
+        ;;
+        -c)  # Generate Cython Annotation (colorized HTML)
+            if [ -x "$(command -v cython3)" ]; then
+                cython3 -a "$PARAM"
+            else
+                printf 'cython3: command not found!\n' >&2
+            fi
+            shift
+        ;;
+        -y)  # Generate Cython Debugging Info
+            if [ -x "$(command -v cython3)" ]; then
+                cython3 --gdb "$PARAM"
+            else
+                printf 'cython3: command not found!\n' >&2
+            fi
+            shift
+        ;;
+        -l)  # Run Pylint (code checker)
+            _pylint
+            shift
+        ;;
+        --rev)  # Run Pyreverse (parse script and make UML diagram)
+            if [ ! -x "$(command -v pyreverse3)" ]; then
+                printf 'pyreverse3: command not found!\n' >&2
+            else
+                pyreverse3 "$_file"
+                shift
+            fi
+        ;;
+        -t)  # Run Pytest (unit tests)
+            _pytest
+            shift
+        ;;
+        --pyf)  # Run Pyflakes (error checker)
+            _pyflakes
+            shift
+        ;;
+        --f8)  # Run flake8
+            _flake8
+            shift
+        ;;
+        -a|--analyze|--anlys|--anlyz)  # Analyze a script
+            analyze
+            shift
+        ;;
+        -f|--file|--script)  # Specify input file
+            shift 2
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+exit 0

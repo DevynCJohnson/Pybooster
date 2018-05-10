@@ -1,38 +1,39 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief EzDisplay: View text in a GTK window
+
 @file ezdisplay.py
 @package pybooster.ezdisplay
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
-
-
-# pylint: disable=R0903
 
 
 from sys import stdin
 
-from gi.repository import Gtk
+from gi import require_version
+require_version(r'Gtk', r'3.0')
+from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
 _GUI = """<?xml version="1.0" encoding="UTF-8"?>
@@ -150,15 +151,13 @@ Author: Devyn Collier Johnson
       </object>
     </child>
   </object>
-</interface>
-
-"""
+</interface>"""
 
 
 def readpipe() -> str:
     """Read from pipe"""
     while True:
-        _input = ''
+        _input = r''
         _character = stdin.read(1)
         while _character:
             _input += _character
@@ -166,12 +165,14 @@ def readpipe() -> str:
         return str(_input)
 
 
-class MainWin():
+class MainWin():  # pylint: disable=R0903
     """Main Window"""
+
     def __init__(self):
+        """Initialize the main window"""
         self.interface = Gtk.Builder()
         self.interface.add_from_string(buffer=_GUI)
-        dic = {'_winexit': Gtk.main_quit}  # Match signal to function (handler)
+        dic = {r'_winexit': Gtk.main_quit}  # Match signal to function (handler)
         self.interface.connect_signals(dic)
         _label = self.interface.get_object(r'viewing_label')
         _label.set_text(r'EzDisplay')

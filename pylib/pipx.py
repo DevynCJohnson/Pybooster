@@ -1,93 +1,98 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief PIP Extras
+
 @file pipx.py
 @package pybooster.pipx
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this softwa
 """
 
 
-import re
-import subprocess
+from subprocess import getoutput
 
-import pip
+from pip import main as pipmain
+
+try:  # Regular Expression module
+    from regex import M, sub
+except ImportError:
+    from re import M, sub
 
 
 __all__ = [
-    'install',
-    'uninstall',
-    'listinstalled',
-    'listoutdated',
-    'listcurrent',
-    'pkginfo',
-    'pkgsearch',
-    'numpkg',
+    r'install',
+    r'uninstall',
+    r'listinstalled',
+    r'listoutdated',
+    r'listcurrent',
+    r'pkginfo',
+    r'pkgsearch',
+    r'numpkg'
 ]
 
 
-def install(package) -> int:
+def install(package: str) -> int:
     """Install PIP package"""
-    return pip.main(['install', package])
+    return pipmain([r'install', package])
 
 
-def uninstall(package) -> int:
+def uninstall(package: str) -> int:
     """Uninstall a PIP package"""
-    return pip.main(['uninstall', package])
+    return pipmain([r'uninstall', package])
 
 
 def listinstalled() -> str:
     """List installed PIP packages"""
-    return subprocess.getoutput('pip list')
+    return getoutput(r'pip list')
 
 
 def listoutdated() -> str:
     """List outdated PIP packages"""
-    results = subprocess.getoutput('pip list -o')
-    results = re.sub(r'Could not(.+)\n', '', results, flags=re.M)
-    results = re.sub(r'Some externally hosted files(.+)\n', '', results, flags=re.M)
+    results = getoutput(r'pip list -o')
+    results = sub(r'Could not(.+)\n', '', results, flags=M)
+    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
     return results
 
 
 def listcurrent() -> str:
     """List up-to-dated PIP packages"""
-    results = subprocess.getoutput('pip list -u')
-    results = re.sub(r'Could not(.+)\n', '', results, flags=re.M)
-    results = re.sub(r'Some externally hosted files(.+)\n', '', results, flags=re.M)
+    results = getoutput(r'pip list -u')
+    results = sub(r'Could not(.+)\n', '', results, flags=M)
+    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
     return results
 
 
-def pkginfo(package) -> str:
+def pkginfo(package: str) -> str:
     """Display package info"""
-    return subprocess.getoutput('pip show ' + package)
+    return getoutput(r'pip show ' + package)
 
 
-def pkgsearch(keyword) -> str:
+def pkgsearch(keyword: str) -> str:
     """Search the database by keyword"""
-    return subprocess.getoutput('pip search ' + keyword)
+    return getoutput(r'pip search ' + keyword)
 
 
 def numpkg() -> int:
     """Return the number of installed PIP packages"""
-    results = subprocess.getoutput('pip list')
-    results = results.split('\n')
-    return len(results)
+    results = getoutput(r'pip list')
+    return len(results.split('\n'))

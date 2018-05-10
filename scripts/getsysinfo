@@ -1,0 +1,156 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Collect system information and generate a detailed report
+# @file getsysinfo
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# SETUP #
+
+
+if [ ! "$(id -u)" -eq 0 ]; then
+    exec sudo -- "$0"
+    exit $?
+else
+    printf 'Root permissions are required!\n' >&2
+    exit 1
+fi
+readonly FILE="/tmp/System_Information.txt"
+
+[ ! "$(id -u)" -eq 0 ] && printf 'Root permissions are required!\n' >&2 && exit 1
+
+if [ -x "$(command -v dnf)" ]; then
+    _pkg_info='dnf list installed'
+elif [ -x "$(command -v dpkg)" ]; then
+    _pkg_info='dpkg -s'
+elif [ -x "$(command -v rpm)" ]; then
+    _pkg_info='rpm -qa'
+elif [ -x "$(command -v yum)" ]; then
+    _pkg_info='yum list installed'
+fi
+
+
+# GENERAL INFO #
+
+
+printf '# GENERAL INFO #\n\n' > "$FILE" || exit 1
+date +"%Y.%m.%d" >> "$FILE"
+[ -x "$(command -v uname)" ] && printf '%s\n%s%s\n%s%s\n' "$(uname -mo)" 'Kernel Version: ' "$(uname -r)" 'Hostname: ' "$(uname -n)" >> "$FILE"
+if [ -r /etc/os-release ]; then
+    cat /etc/os-release >> "$FILE"
+elif [ -x "$(command -v lsb_release)" ]; then
+    lsb_release --all >> "$FILE"
+elif [ -r /etc/lsb-release ]; then
+    cat /etc/lsb-release >> "$FILE"
+fi
+[ -r /etc/debian_version ] && cat /etc/debian_version >> "$FILE"
+[ -r /etc/machine-id ] && cat /etc/machine-id >> "$FILE"
+[ -x "$(command -v lshw)" ] && printf '%s\n' "$(lshw -C system)" >> "$FILE"
+[ -x "$(command -v grub-install)" ] && printf '%s\n' "$(grub-install --version)" >> "$FILE"
+[ -x "$(command -v sysctl)" ] && printf '\nSYSCTL:\n%s\n' "sysctl -a" >> "$FILE"
+[ -x "$(command -v systemctl)" ] && printf '\n%s' "$(systemctl list-unit-files | grep -F enabled)" >> "$FILE"
+
+
+# KERNEL INFO #
+
+
+[ -x "$(command -v lsmod)" ] && printf '\n\n# KERNEL INFO #\n\n%s' "$(lsmod)" >> "$FILE"
+
+
+# ENVIRONMENT INFO #
+
+
+printf '\n\n# ENVIRONMENT INFO #\n\n' >> "$FILE"
+[ -x "$(command -v alias)" ] && printf '%s\n' "$(alias)" >> "$FILE"
+[ -x "$(command -v env)" ] && printf '%s\n' "$(env)" >> "$FILE"
+
+
+# CPU INFO #
+
+
+[ -x "$(command -v lscpu)" ] && printf '\n\n# CPU INFO #\n\n%s' "$(lscpu)" >> "$FILE"
+
+
+# GPU INFO #
+
+
+[ -x "$(command -v nvidia-smi)" ] && printf '\n\n# GPU INFO #\n\n%s' "$(nvidia-smi)" >> "$FILE"
+
+
+# MEMORY INFO #
+
+
+printf '\n\n# MEMORY INFO #\n\n' >> "$FILE"
+[ -f /proc/meminfo ] && printf '%s\n' "$(cat /proc/meminfo)" >> "$FILE"
+[ -x "$(command -v lsmem)" ] && printf '%s\n' "$(lsmem -a)" >> "$FILE"
+
+
+# HARDWARE INFO #
+
+
+printf '\n\n# HARDWARE INFO #\n\n' >> "$FILE"
+[ -x "$(command -v lshw)" ] && printf '%s\n\n%s\n\n' "$(lshw)" "$(lshw -quiet -short)" >> "$FILE"
+[ -x "$(command -v lspci)" ] && printf '%s\n\n%s\n\n' "$(lspci)" "$(lspci -tk -vvv)" >> "$FILE"
+[ -x "$(command -v sensors)" ] && printf '%s\n\n' "$(sensors)" >> "$FILE"
+[ -x "$(command -v acpi)" ] && printf '%s\n\n' "$(acpi -Vi)" >> "$FILE"
+
+
+# STORAGE INFO #
+
+
+[ -x "$(command -v free)" ] && printf '\n\n# STORAGE INFO #\n\n%s' "$(free)" >> "$FILE"
+[ -x "$(command -v df)" ] && printf '\n%s\n' "$(df --all -h)" >> "$FILE"
+[ -f /proc/partitions ] && cat /proc/partitions >> "$FILE"
+
+
+# NETWORK INFO #
+
+
+printf '\n\n# NETWORK INFO #\n\n' >> "$FILE"
+[ -x "$(command -v hostname)" ] && printf '%s%s\n\n' 'Hostname: ' "$(hostname)" >> "$FILE"
+[ -x "$(command -v ifconfig)" ] && printf '%s\n\n' "$(ifconfig -a)" >> "$FILE"
+[ -x "$(command -v netstat)" ] && printf '%s\n\n' "$(netstat -rn)" >> "$FILE"
+[ -x "$(command -v nmcli)" ] && printf '%s\n\n' "$(nmcli general status)" >> "$FILE"
+
+
+# LIBRARY INFO #
+
+
+printf '\n\n# LIBRARY INFO #\n\n' >> "$FILE"
+[ -x "$(command -v gcc)" ] && printf '→ %s\n' "$(gcc --version)" >> "$FILE"
+[ -x "$(command -v bash)" ] && printf '→ %s\n' "$(bash --version)" >> "$FILE"
+[ -x "$(command -v zsh)" ] && printf '→ %s\n' "$(zsh --version)" >> "$FILE"
+[ -x "$(command -v npm)" ] && printf '→ %s\n' "$(npm version)" >> "$FILE"
+[ -x "$(command -v ocamlrun)" ] && printf '→ %s\n' "$(ocamlrun -version)" >> "$FILE"
+[ -x "$(command -v perl)" ] && printf '→ %s\n' "$(perl --version)" >> "$FILE"
+[ -x "$(command -v php)" ] && printf '→ %s\n' "$(php --version)" >> "$FILE"
+[ -x "$(command -v pip3)" ] && printf '→ %s\n' "$(pip3 --version)" >> "$FILE"
+[ -x "$(command -v python3)" ] && printf '→ %s\n' "$(python3 --version)" >> "$FILE"
+[ -x "$(command -v ruby)" ] && printf '→ %s\n' "$(ruby --version)" >> "$FILE"
+[ -x "$(command -v ldd)" ] && ldd --version >> "$FILE"
+printf '\n'
+if [ -n "${_pkg_info:-}" ]; then
+    printf '→ libgtk2.0-0:\n%s\n\n\n' "$(dpkg -s libgtk2.0-0)" >> "$FILE"
+    printf '→ libgtk-3-0:\n%s\n\n\n' "$(dpkg -s libgtk-3-0)" >> "$FILE"
+fi
+
+
+# GRAPHICS INFO #
+
+
+printf '\n\n# GRAPHICS INFO #\n\n' >> "$FILE"
+[ -x "$(command -v glxinfo)" ] && printf '%s\n' "$(glxinfo | grep -F 'OpenGL ')" >> "$FILE"
+[ -x "$(command -v xrandr)" ] && printf '%s\n' "$(xrandr -q --verbose)" >> "$FILE"
+if [ -n "${_pkg_info:-}" ]; then
+    printf '→ libgles2-mesa:\n%s\n\n\n' "$(${_pkg_info} libgles2-mesa)" >> "$FILE"
+    printf '→ libegl1-mesa:\n%s\n\n\n' "$(${_pkg_info} libegl1-mesa)" >> "$FILE"
+fi
+
+
+chmod -q 644 "$FILE"
+printf 'Report generated: /tmp/System_Information.txt\n'
+exit 0

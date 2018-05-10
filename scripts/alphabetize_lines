@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Sort lines (or list) in data stream alphabetically
+
+@file alphabetize_lines
+@version 2018.04.27
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section DESCRIPTION
+This script can be integrated into Geany to sort selected lines or some single lines.
+A single data line (without '\n') can be sorted if it is delimited by '|', ' ', ',', ';', ':', or ', '.
+Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this software.
+"""
+
+
+from sys import argv, stderr, stdin, stdout
+from traceback import format_exc
+
+
+def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
+    """Sort the lines or data-list alphabetically using the specified delimiter"""
+    _out = data.split(delimiter)
+    _out.sort(key=str.lower)
+    return delimiter.join(_out)
+
+
+def alphabetize_string(_data: str) -> str:
+    """Alphabetize the data separated by a delimiter"""
+    _out = []
+    if not _data or not _data.strip():
+        stderr.write('No input provided!\n')
+        raise SystemExit()
+    elif '\n' not in _data and r'|' in _data:
+        return alphasort_delimiter_codec(_data, r'|')
+    elif '\n' not in _data and r', ' in _data:
+        return alphasort_delimiter_codec(_data, r', ')
+    elif '\n' not in _data and r',' in _data:
+        return alphasort_delimiter_codec(_data, r',')
+    elif '\n' not in _data and r' ' in _data:
+        return alphasort_delimiter_codec(_data, r' ')
+    elif '\n' not in _data and r';' in _data:
+        return alphasort_delimiter_codec(_data, r';')
+    elif '\n' not in _data and r':' in _data:
+        return alphasort_delimiter_codec(_data, r':')
+    elif '\n' not in _data and '\f' in _data:
+        return alphasort_delimiter_codec(_data, '\f')
+    else:
+        _out = _data.replace('\r\n', '\n').split('\n')
+        _out.sort(key=str.lower)
+        return '\n'.join(_out)
+
+
+if __name__ == '__main__':
+    try:
+        if len(argv) == 1:
+            DATA = stdin.read()
+            stdout.write(alphabetize_string(DATA))
+        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
+            stdout.write('Usage 1: command | alphabetize_lines\nUsage 2: alphabetize_lines "string"\nSupported Delimters: newline, formfeed, `|`, `, `, `,`, ` `, `;`, & `:`\n')
+        elif argv[1]:
+            stdout.write(alphabetize_string(argv[1]) + '\n')
+        else:
+            stdout.write('Usage 1: command | alphabetize_lines\nUsage 2: alphabetize_lines "string"\nSupported Delimters: newline, formfeed, `|`, `, `, `,`, ` `, `;`, & `:`\n')
+    except SystemExit:
+        pass
+    except BaseException:
+        stderr.write(format_exc() + '\n')
