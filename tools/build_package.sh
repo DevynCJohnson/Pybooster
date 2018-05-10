@@ -1,90 +1,68 @@
 #!/bin/sh
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Automated building and packaging of PyBooster
+# @file build_package.sh
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @version 2018.04.27
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-cd ..
-
+cd .. || exit 1
 make rmtmp
 
 
-## LINUX X86 AND X86-64 ##
+build_package() {
+    make -j8 dcj="$1" DIAG=0 all && cd .. && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_"${2}".tar.gz && cd ./PyBooster && printf '\n%s\n' "Packaged ${3} Build"
+    make rmtmp
+}
 
 
-make -j3 dcj=1 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Haswell64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux Haswell (64-bit) Build' && echo '' && echo ''
+build_cross_package() {
+    make -j8 OS="$1" CROSS_COMPILE="$2" DIAG=0 all && cd .. && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_"${3}".tar.gz && cd ./PyBooster && printf '\n%s\n' "Packaged ${4} Build"
+    make rmtmp
+}
 
-make rmtmp
 
-make -j3 dcj=2 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Broadwell64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux Broadwell (64-bit) Build' && echo '' && echo ''
+## LINUX X86 ##
 
-make rmtmp
 
-make -j3 dcj=3 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Skylake64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux Skylake (64-bit) Build' && echo '' && echo ''
+build_package 'haswell' 'Linux_Haswell64' 'Linux Haswell (64-bit)'
 
-make rmtmp
+build_package 'broadwell' 'Linux_Broadwell64' 'Linux Broadwell (64-bit)'
 
-make -j3 dcj=4 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Knight64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux Knight (64-bit) Build' && echo '' && echo ''
+build_package 'skylake' 'Linux_Skylake64' 'Linux Skylake (64-bit)'
 
-make rmtmp
+build_package 'athlon64-sse3' 'Linux_Athlon64' 'Linux Athlon64 (SSE3)'
 
-make -j3 dcj=athlon64-sse3 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Athlon64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux Athlon64 (SSE3) Build' && echo '' && echo ''
+build_package 'znver1' 'Linux_AMD64_Family_17h' 'Linux AMD64 (AMD Family 17h)'
 
-make rmtmp
+build_package 'GENERICX86' 'Linux_Generic_x86_32' 'Generic x86-32'
 
-make -j3 dcj=znver1 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_AMD64_Family_17h.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Linux AMD64 (AMD Family 17h) Build' && echo '' && echo ''
-
-make rmtmp
-
-make -j3 dcj=GENERICX86 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Generic_x86.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Generic x86 Build' && echo '' && echo ''
-
-make rmtmp
-
-make -j3 dcj=GENERICX86_64 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Generic_x86_64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Generic x86-64 Build' && echo '' && echo ''
-
-make rmtmp
-
-make -j3 dcj=INTEL INTEL=32 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Intel32.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Intel32 Build' && echo '' && echo ''
-
-make rmtmp
-
-make -j3 dcj=INTEL INTEL=64 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_Intel64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged Intel64 Build' && echo '' && echo ''
-
-make rmtmp
+build_package 'GENERICX86_64' 'Linux_Generic_x86_64' 'Generic x86-64'
 
 
 ## LINUX ARM ##
 
 
-make -j3 OS=LINUX CROSS_COMPILE=armel all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_ARMEL.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged ARMEL Build' && echo '' && echo ''
+build_cross_package 'LINUX' 'armel' 'Linux_ARMEL' 'Linux ARMEL'
 
-make rmtmp
+build_cross_package 'LINUX' 'armhf' 'Linux_ARMHF' 'Linux ARMHF'
 
-make -j3 OS=LINUX CROSS_COMPILE=armhf all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_ARMHF.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged ARMHF Build' && echo '' && echo ''
-
-make rmtmp
-
-make -j3 OS=LINUX dcj=rpi all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_Linux_RPi.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged RPi Build' && echo '' && echo ''
-
-make rmtmp
+build_cross_package 'LINUX' 'rpi' 'Linux_RPi' 'Linux RPi'
 
 
 ## WINDOWS ##
 
 
-make -j3 OS=WIN CROSS_COMPILE=win32 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_WIN32.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged WIN32 Build' && echo '' && echo ''
+build_cross_package 'WIN' 'win32' 'WIN32' 'Windows x86-32'
 
-make rmtmp
-
-make -j3 OS=WIN CROSS_COMPILE=win64 all && cd ../ && tar -cf - PyBooster | gzip -9 > ./PyBooster_v"$(date +"%Y.%m.%d")"_WIN64.tar.gz && cd ./PyBooster && echo '' && echo '' && echo 'Packaged WIN64 Build' && echo '' && echo ''
-
-make rmtmp
+build_cross_package 'WIN' 'win64' 'WIN64' 'Windows x86-64'
 
 
 ## DONE ##
 
 
-echo ''
-echo 'DONE; Press enter to exit'
-echo ''
-read
+printf '\nDONE; Press enter to exit\n'
+read -r

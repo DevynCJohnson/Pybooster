@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Prettify XML documents (including HTML, MathML, SVG, etc.)
+
+@file prettifyxml
+@version 2017.12.25
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+import argparse
+from sys import stderr
+import xml.dom.minidom
+from xml.parsers.expat import ExpatError
+
+from pybooster.fs import getdata, writedata
+from pybooster.markup import fix_xml_declaration, is_xml_dtd, is_xml_xsd, prettify_xml_schema
+
+
+if __name__ == '__main__':  # noqa: C901
+    # Setup Arguments
+    PARSER = argparse.ArgumentParser(
+        prog=r'prettifyxml',
+        description=r'Prettify XML documents (including HTML, MathML, SVG, etc.)',
+        epilog=None,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    PARSER.add_argument(
+        r'input_file',
+        nargs=r'?',
+        default=r'',
+        help=r'Filepath to the xml file to minify (Default: stdin)',
+        metavar=r'INPUT'
+    )
+    PARSER.add_argument(
+        r'output_file',
+        nargs=r'?',
+        default=r'',
+        help=r'Filepath for the output data (Default: stdout)',
+        metavar=r'OUTPUT'
+    )
+    PARSER.add_argument(
+        r'-e', r'--encoding',
+        default=r'utf-8',
+        type=str,
+        help=r'Read and write encoding (Default: utf-8)',
+        metavar=r'ENCODING'
+    )
+    PARSER.add_argument(
+        r'-i', r'--indent',
+        default=r'  ',
+        type=str,
+        help=r'Set indent character (Default: SPACE)'
+    )
+    PARSER.add_argument(
+        r'-n', r'--newline',
+        default='\n',
+        type=str,
+        help=r'Set newline character (Default: \n)'
+    )
+    ARGS = PARSER.parse_args()
+    del PARSER
+    # Process Flags
+    if ARGS.indent != r'  ':
+        ARGS.indent = ARGS.indent.lower()
+        if ARGS.indent in {r'sp', r'space'}:
+            ARGS.indent = r' '
+        elif ARGS.indent in {'\t', r't', r'tab'}:
+            ARGS.indent = '\t'
+        else:
+            ARGS.indent = r'  '
+    if ARGS.newline != '\n':
+        ARGS.newline = ARGS.newline.lower()
+        if ARGS.newline in {r'n', r'linux'}:
+            ARGS.newline = '\n'
+        elif ARGS.newline in {r'\n\r', r'nr', r'dos'}:
+            ARGS.newline = '\n\r'
+        elif ARGS.newline in {'\r', r'r', r'carriage'}:
+            ARGS.newline = '\r'
+        elif ARGS.newline in {'\f', r'f', r'form', r'formfeed'}:
+            ARGS.newline = '\f'
+        elif ARGS.newline in {'\v', r'v', r'vertical', r'verticalfeed'}:
+            ARGS.newline = '\v'
+        else:
+            ARGS.newline = '\n'
+    # Get and Process Data/File
+    XMLDATA = getdata(ARGS.input_file, ARGS.encoding)
+    if r'<' not in XMLDATA and r'>' not in XMLDATA:
+        stderr.write('Unsupported filetype!\n')
+        raise SystemExit(1)
+    if is_xml_dtd(XMLDATA) or is_xml_xsd(XMLDATA):  # Prettify DTD
+        XMLDATA = prettify_xml_schema(XMLDATA)
+    if not is_xml_dtd(XMLDATA):  # Prettify non-DTD XML files
+        try:
+            PRETTYDOM = xml.dom.minidom.parseString(XMLDATA).toprettyxml(indent=ARGS.indent, newl=ARGS.newline, encoding=None)
+            XMLDATA = ARGS.newline.join([line for line in PRETTYDOM.split(ARGS.newline) if line.strip()])
+            del PRETTYDOM
+        except ExpatError:
+            stderr.write('Unsupported filetype!\n')
+            raise SystemExit(1)
+    XMLDATA = fix_xml_declaration(XMLDATA)
+    # Output Finished Result
+    writedata(ARGS.output_file, XMLDATA, ARGS.encoding)
+    raise SystemExit()

@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Minify XML documents (including HTML, MathML, SVG, etc.)
+
+@file minifyxml
+@version 2017.12.25
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+import argparse
+from sys import stderr, stdout
+import xml.dom.minidom
+from xml.parsers.expat import ExpatError
+
+from pybooster.fs import getdata, writedata
+from pybooster.markup import (
+    assert_is_xml,
+    FILETYPE_DTD,
+    FILETYPE_HTML,
+    FILETYPE_MATHML,
+    FILETYPE_SVG,
+    FILETYPE_XML,
+    FILETYPE_XSD,
+    insert_missing_xml_namespaces,
+    Minifier,
+    prettify_xml_schema,
+    remove_duplicated_svg_ns
+)
+
+
+__all__ = []
+
+
+# FUNCTIONS #
+
+
+def display_minify_results(filename: str, orig_size: int, new_size: int) -> None:
+    """Write a message to stdout indicating the data's size change in bytes"""
+    if filename:
+        saved_size = orig_size - new_size
+        saved_msg = r' bytes in ' if saved_size != 1 and saved_size != -1 else r' byte in '
+        gain_msg = r'Saved ' if saved_size >= 0 else r'Lost '
+        stdout.write(gain_msg + str(abs(saved_size)) + saved_msg + filename + '\n')
+
+
+# MAIN #
+
+
+if __name__ == '__main__':  # noqa: C901
+    # Setup Arguments
+    del __all__
+    PARSER = argparse.ArgumentParser(
+        prog=r'minifyxml',
+        description=r'Minify XML documents (including HTML, MathML, SVG, etc.)',
+        epilog=None,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    PARSER.add_argument(
+        r'input_file',
+        nargs=r'?',
+        help=r'Filepath to the xml file to minify (Default: stdin)',
+        metavar=r'INPUT'
+    )
+    PARSER.add_argument(
+        r'output_file',
+        nargs=r'?',
+        help=r'Filepath for the output data (Default: stdout)',
+        metavar=r'OUTPUT'
+    )
+    FILETYPE_GROUP = PARSER.add_mutually_exclusive_group(required=True)
+    FILETYPE_GROUP.add_argument(
+        r'--dtd',
+        action=r'store_true',
+        help=r'Specify the data/file type as DTD'
+    )
+    FILETYPE_GROUP.add_argument(
+        r'--html',
+        action=r'store_true',
+        help=r'Specify the data/file type as HTML'
+    )
+    FILETYPE_GROUP.add_argument(
+        r'--mathml',
+        action=r'store_true',
+        help=r'Specify the data/file type as MathML'
+    )
+    FILETYPE_GROUP.add_argument(
+        r'--svg',
+        action=r'store_true',
+        help=r'Specify the data/file type as SVG'
+    )
+    FILETYPE_GROUP.add_argument(
+        r'--xml',
+        action=r'store_true',
+        help=r'Specify the data/file type as XML'
+    )
+    FILETYPE_GROUP.add_argument(
+        r'--xsd',
+        action=r'store_true',
+        help=r'Specify the data/file type as XSD'
+    )
+    PARSER.add_argument(
+        r'--inplace',
+        action=r'store_true',
+        default=False,
+        help=r'Make inplace changes to input file (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-d', r'--remove-metadata',
+        action=r'store_true',
+        default=False,
+        help=r'Remove metadata (Default: False)'
+    )
+    PARSER.add_argument(
+        r'--remove-all-metadata',
+        action=r'store_true',
+        default=False,
+        help='Remove all metadata (Default: False); Same as `--remove-metadata`, but will also remove the following\nSVG: `inkscape` and `sodipodi` attributes and tags'
+    )
+    PARSER.add_argument(
+        r'-c', r'--remove-comments',
+        action=r'store_true',
+        default=True,
+        help=r'Remove comments except comments in the form `<!--!! comment -->` (Default)'
+    )
+    PARSER.add_argument(
+        r'--keep-comments',
+        action=r'store_true',
+        default=False,
+        help=r'Keep comments; Overrides `--remove-comments` (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-s', r'--remove-empty-space',
+        action=r'store_true',
+        default=True,
+        help=r'Remove empty space between tags if there is a newline character within the space (Default)'
+    )
+    PARSER.add_argument(
+        r'--keep-empty-space',
+        action=r'store_true',
+        default=False,
+        help=r'Keep empty space between tags (if a newline is present); Overrides `--remove-empty-space` (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-S', r'--remove-all-empty-space',
+        action=r'store_true',
+        default=True,
+        help=r'Removes all empty space between tags; For instance, `<i>X</i> <i>Y</i>` will become `<i>X</i><i>Y</i>` (Default)'
+    )
+    PARSER.add_argument(
+        r'--keep-all-empty-space',
+        action=r'store_true',
+        default=False,
+        help=r'Keep all empty space between tags; Overrides `--remove-all-empty-space` (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-m', r'--reduce-empty-attributes',
+        action=r'store_true',
+        default=False,
+        help=r'Reduce empty attributes (Default: False; Always False for SVG)'
+    )
+    PARSER.add_argument(
+        r'-b', r'--reduce-boolean-attributes',
+        action=r'store_true',
+        default=False,
+        help=r'Reduce boolean attributes (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-q', r'--remove-optional-attribute-quotes',
+        action=r'store_true',
+        default=False,
+        help=r'Remove all attribute quotes (Defalut: False)'
+    )
+    PARSER.add_argument(
+        r'-k', r'--keep-pre-attr',
+        action=r'store_true',
+        default=False,
+        help=r'Keep the `pre` (propietary) attributes which are used to prevent minification (Default: False)'
+    )
+    PARSER.add_argument(
+        r'-p', r'--pre-tags',
+        nargs=r'*',
+        default=(r'pre', r'textarea'),
+        type=tuple,
+        help=r'Specify tags that are not minified (Default: pre, textarea; Hard-coded: script, style)',
+        metavar=r'TAG'
+    )
+    PARSER.add_argument(
+        r'-a', r'--pre-attr',
+        default=r'pre',
+        type=str,
+        help=r'Blocks with this attribute will not be minified; The attribute is removed from the code unless `-k` is specified (Default: pre)',
+        metavar=r'ATTR'
+    )
+    PARSER.add_argument(
+        r'-e', r'--encoding',
+        default=r'utf-8',
+        type=str,
+        help=r'Read and write encoding (Default: utf-8)',
+        metavar=r'ENCODING'
+    )
+    PARSER.add_argument(
+        r'-r', r'--convrefs',
+        action=r'store_true',
+        help=r'Convert character references (Default: False)'
+    )
+    ARGS = PARSER.parse_args()
+    del FILETYPE_GROUP, PARSER
+    # Setup DocType
+    if ARGS.html:
+        _DOC_TYPE = FILETYPE_HTML
+    elif ARGS.xml:
+        _DOC_TYPE = FILETYPE_XML
+    elif ARGS.mathml:
+        _DOC_TYPE = FILETYPE_MATHML
+    elif ARGS.svg:
+        _DOC_TYPE = FILETYPE_SVG
+    elif ARGS.dtd:
+        _DOC_TYPE = FILETYPE_DTD
+    elif ARGS.xsd:
+        _DOC_TYPE = FILETYPE_XSD
+    # Parse Flags
+    if ARGS.remove_all_metadata:
+        ARGS.remove_metadata = 2
+    elif ARGS.remove_metadata:
+        ARGS.remove_metadata = 1
+    if ARGS.keep_comments:
+        ARGS.remove_comments = False
+    if ARGS.keep_empty_space:
+        ARGS.remove_empty_space = False
+    if ARGS.keep_all_empty_space:
+        ARGS.remove_all_empty_space = False
+    if ARGS.inplace:
+        ARGS.output_file = ARGS.input_file
+    # Get Data/File
+    XMLDATA = getdata(ARGS.input_file, ARGS.encoding)
+    assert_is_xml(_DOC_TYPE, XMLDATA, ARGS.input_file)
+    # Prepare Data
+    if ARGS.output_file:
+        ORIG_SIZE = len(XMLDATA)
+    XMLDATA = insert_missing_xml_namespaces(XMLDATA)
+    if _DOC_TYPE == FILETYPE_DTD or _DOC_TYPE == FILETYPE_XSD:
+        XMLDATA = prettify_xml_schema(XMLDATA)
+    else:  # Not DTD nor XSD
+        try:
+            XMLDOM = xml.dom.minidom.parseString(XMLDATA)
+        except ExpatError:
+            stderr.write(r'Unsupported filetype (' + ARGS.input_file + ')!\n')
+            raise SystemExit(1)
+        XMLDATA = XMLDOM.toprettyxml(indent=r'', newl=r'', encoding=None)
+        XMLDOM.unlink()
+        del XMLDOM
+        if _DOC_TYPE == FILETYPE_SVG:
+            XMLDATA = remove_duplicated_svg_ns(XMLDATA)
+    # Initialize Minifier
+    if _DOC_TYPE != FILETYPE_DTD:
+        MINIFIER = Minifier(
+            remove_metadata=ARGS.remove_metadata,
+            remove_comments=ARGS.remove_comments,
+            remove_empty_space=ARGS.remove_empty_space,
+            remove_all_empty_space=ARGS.remove_all_empty_space,
+            reduce_empty_attributes=ARGS.reduce_empty_attributes,
+            reduce_bool_attrs=ARGS.reduce_boolean_attributes,
+            remove_opt_attr_quotes=ARGS.remove_optional_attribute_quotes,
+            keep_pre=ARGS.keep_pre_attr,
+            pre_tags=ARGS.pre_tags,
+            pre_attr=ARGS.pre_attr,
+            convrefs=ARGS.convrefs,
+            doc_type=_DOC_TYPE
+        )
+        MINIFIER.input(XMLDATA)
+    # Output Finished Result
+    if _DOC_TYPE != FILETYPE_DTD and not MINIFIER.output:
+        stderr.write('No data to output!\n')
+        raise SystemExit(1)
+    elif _DOC_TYPE == FILETYPE_DTD:
+        writedata(ARGS.output_file, XMLDATA, ARGS.encoding)
+        if ARGS.output_file:
+            display_minify_results(ARGS.output_file, ORIG_SIZE, len(XMLDATA))
+    else:
+        writedata(ARGS.output_file, MINIFIER.output, ARGS.encoding)
+        if ARGS.output_file:
+            display_minify_results(ARGS.output_file, ORIG_SIZE, len(MINIFIER.output))
+    raise SystemExit()

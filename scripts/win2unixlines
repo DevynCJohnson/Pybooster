@@ -1,0 +1,89 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Convert Windows newlines (\r\n) to Unix newlines (\n)
+# @file win2unixlines
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf '%s\n%s\n%s\n%s\n' \
+        'Convert Windows newlines (\r\n) to Unix newlines (\n) using one of the following methods:' \
+        ' - Specify the pathname of each file to convert.' \
+        ' - Specify the directory of files to convert.' \
+        ' - Specify the pathname of each file and directories of files to convert.'
+    exit 0
+elif [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+fi
+
+
+# GLOBALS #
+
+
+POSIXLY_CORRECT=1
+exit_status=0
+filename_ext='.tmp'
+filename_template='win2unix_'
+random_file_name=''
+tmp_dir='/tmp/'
+
+
+# FUNCTIONS #
+
+
+rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
+
+convert_win2unix() {
+    for file in "$@"; do
+        ([ -z "${file:-}" ] || [ -r "$file" ]) && continue
+        file_type_test="$(file "$file" | cut -d ':' -f2 | grep -E -e 'ASCII|CRLF')"
+        [ -z "${file_type_test:-}" ] && continue
+        if [ ! -d "$tmp_dir" ] || [ ! -r "$tmp_dir" ] || [ ! -w "$tmp_dir" ]; then
+            printf 'Unable to write file in "%s"!\n' "$tmp_dir" >&2
+        elif [ -d "$tmp_dir" ] && [ -r "$tmp_dir" ] && [ -w "$tmp_dir" ]; then
+            random_file_name="${tmp_dir}${filename_template}$(rndfname)${filename_ext}"
+            [ -n "$file" ] && [ -r "$file" ] && [ -w "$file" ] && sed -e 's/\r//g' "$file" > "$random_file_name"
+            mv -f "$random_file_name" "$file"
+        else
+            printf 'Unable to convert "%s"!\n' "$file"
+        fi
+    done
+}
+
+
+# MAIN #
+
+
+for file in "$@"; do
+    if [ -z "${file:-}" ]; then
+        exit_status=1
+        printf 'There are no files to convert.\n'
+        continue
+    elif [ -d "$file" ] && [ -r "$file" ]; then
+        files="$(find "$file" -empty -prune -o -type f -readable -writable 2>/dev/null)"
+        [ -z "${files:-}" ] && continue
+        files="$(echo "$files" | awk 'NF')"
+        for file2 in $files; do
+            [ -z "${file2:-}" ] && continue
+            convert_win2unix "$file2"
+        done
+    elif [ -d "$file" ] && [ ! -r "$file" ]; then
+        printf '%s: The specified directory is non-readable or non-existent!\n' "$file" >&2
+        exit_status=1
+    elif [ ! -r "$file" ] || [ ! -w "$file" ]; then
+        printf '%s: The specified file is non-readable, non-writable, or non-existent!\n' "$file" >&2
+        exit_status=1
+    elif [ -d "$file" ] && [ -r "$file" ] && [ -w "$file" ]; then
+        convert_win2unix "$file"
+    else
+        continue
+    fi
+done
+
+
+exit "$exit_status"

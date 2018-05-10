@@ -1,0 +1,18 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for complexity - Check complexity of C source code
+# @file cmccabe
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ -x "$(command -v complexity)" ]; then
+    complexity --threshold=5 --horrid-threshold=300 --histogram --scores --unifdef=-DSUPPORTS_INT128=1 --unifdef=-DSUPPORTS_LONG_DOUBLE=1 --unifdef=-DIS_LDBL_96=1 --unifdef=-DSUPPORTS_DECIMAL_FLOATS=1 --unifdef=-DSUPPORTS_COMPLEX=1 --unifdef=-DIS_WORDSIZE_64=1 --unifdef=-DIS_BIG_ENDIAN=1 --unifdef=-DARCHX86 --unifdef=-DARCHX86_64 --unifdef=-DOSLINUX --unifdef=-DOSUNIX "$@"
+    exit $?
+else
+    printf 'complexity: command not found!\n' >&2
+    exit 1
+fi

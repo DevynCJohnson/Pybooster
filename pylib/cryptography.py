@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Various cryptography functions
+
 @file cryptography.py
 @package pybooster.cryptography
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
@@ -31,19 +33,15 @@ from itertools import cycle
 
 
 __all__ = [
-    # FUNCTIONS
-    'encrypt_xor',
-    'decrypt_xor',
-    'encrypt_xor_bytes_key_str',
-    'decrypt_xor_str_key_bytes',
-    'decrypt_xor_str_key_str',
-    'encrypt_xor_str_key_bytes',
-    'decrypt_xor_bytes_key_bytes',
-    'decrypt_xor_bytes_key_str',
+    r'encrypt_xor',
+    r'decrypt_xor',
+    r'encrypt_xor_bytes_key_str',
+    r'decrypt_xor_str_key_bytes',
+    r'decrypt_xor_str_key_str',
+    r'encrypt_xor_str_key_bytes',
+    r'decrypt_xor_bytes_key_bytes',
+    r'decrypt_xor_bytes_key_str'
 ]
-
-
-# FUNCTIONS
 
 
 def encrypt_xor(_data: bytes) -> bytearray:
@@ -61,7 +59,7 @@ def decrypt_xor(_data: bytearray) -> str:
     Return the decrypted data as a str
     Encrypt with encrypt_xor()
     """
-    return str(bytearray([b ^ 0xA8 for b in bytearray(_data)]), 'utf-8')
+    return str(bytearray([b ^ 0xA8 for b in bytearray(_data)]), r'utf-8')
 
 
 def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
@@ -70,7 +68,7 @@ def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
     Encrypt the bytes and return the data as a str
     Decrypt with decrypt_xor_str_key_bytes()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key)))
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key)))
 
 
 def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
@@ -79,7 +77,7 @@ def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
     Decrypt the str and return the data as bytes
     Encrypt with encrypt_xor_bytes_key_str()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode('utf-8'), cycle(_key))).encode('utf-8')
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode(r'utf-8'), cycle(_key))).encode(r'utf-8')
 
 
 def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
@@ -88,7 +86,7 @@ def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
     Decrypt the str and return the data as a str
     Encrypt with encrypt_xor_bytes_key_str()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode('utf-8'), cycle(_key)))
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode(r'utf-8'), cycle(_key)))
 
 
 def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
@@ -98,7 +96,7 @@ def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
     Encrypt the str and return the data as bytes
     Decrypt with decrypt_xor_bytes_key_bytes() or decrypt_xor_bytes_key_str()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode('utf-8'), cycle(_key))).encode('utf-8')
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data.encode(r'utf-8'), cycle(_key))).encode(r'utf-8')
 
 
 def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
@@ -107,7 +105,7 @@ def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
     Decrypt the bytes and return the data as bytes
     Encrypt with encrypt_xor_str_key_bytes()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key))).encode('utf-8')
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key))).encode(r'utf-8')
 
 
 def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
@@ -116,4 +114,4 @@ def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
     Decrypt the bytes and return the data as a str
     Encrypt with encrypt_xor_str_key_bytes()
     """
-    return ''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key)))
+    return r''.join(chr(a ^ ord(b)) for (a, b) in zip(_data, cycle(_key)))

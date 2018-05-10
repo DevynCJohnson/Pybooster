@@ -1,0 +1,211 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for a collection of transpilers
+# @file transpile
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+version=2018.04.27
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  Transpile  ====='
+    printf '%s\n' 'Wrapper for a collection of transpilers'
+    printf '%s\n' 'Usage: pyinspect [parameter] -f filepath.x'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-f,--file,--script    Specify file/script'
+    printf '%s\n' '-h,--help             Display help info'
+    printf '%s\n' '-v,--version          Display version'
+    printf '%s\n' '--coffee2js           Coffee to Javascript'
+    printf '%s\n' '--scala2java          Scala to Java Class'
+    printf '%s\n' '--c2js                C to Javascript'
+    printf '%s\n' '--cpp2js              C++ to Javascript'
+    printf '%s\n' '--c2llvmasm           C/C++ to LLVM Assembly'
+    printf '%s\n' '--c2llvmbc            C/C++ to LLVM Bitcode'
+    printf '%s\n' '--llvmbc2js           LLVM Bitcode to Javascript'
+    printf '%s\n' '--llvmasm2js          LLVM Assembly to Javascript'
+    printf '%s\n' '--asm2bc              LLVM Assembly to LLVM Bitcode'
+    printf '%s\n' '--bc2asm              LLVM Bitcode to LLVM Assembly'
+    printf '%s\n' '--llvm2asm            LLVM IR to Native Assembly'
+    printf '%s\n' '--llvm2c              LLVM IR to C'
+    printf '%s\n' '--llvm2cpp            LLVM IR to C++'
+}
+
+
+# GETOPT #
+
+
+_coffee2js=0
+_scala2java=0
+_cpp2js=0
+_c2js=0
+_asm2bc=0
+_bc2asm=0
+_c2llvmasm=0
+_c2llvmbc=0
+_llvm2asm=0
+_llvm2cpp=0
+_llvm2c=0
+
+GOPT="$(getopt -o f:hv --long llvm2c,llvm2cpp,llvm2asm,c2llvmbc,c2llvmasm,bc2asm,asm2bc,llvmasm2js,llvmbc2js,cpp2js,c2js,scala2java,coffee2js,file:,script:,version,help -- "$@")"
+eval set -- "$GOPT"
+
+while true; do
+    case "$1" in
+        -h|--help)  # Display help info
+            Help
+            shift
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            shift
+        ;;
+        -f|--file|--script)  # Specify input file
+            _file="${2##*/}"
+            _name="${_file%.*}"
+            shift 2
+        ;;
+        --coffee2js)  # Coffeescript to Javascript
+            _coffee2js=1
+            shift
+        ;;
+        --scala2java)  # Scala to Java Class
+            _scala2java=1
+            shift
+        ;;
+        --cpp2js)  # C++ to Javascript
+            _cpp2js=1
+            shift
+        ;;
+        --c2js|--llvmasm2js|--llvmbc2js)  # C to Javascript
+            _c2js=1
+            shift
+        ;;
+        --bc2asm)  # LLVM Bitcode to LLVM Assembly
+            _bc2asm=1
+            shift
+        ;;
+        --asm2bc)  # Assembly to LLVM Bitcode
+            _asm2bc=1
+            shift
+        ;;
+        --c2llvmasm)  # C to LLVM Assembly
+            _c2llvmasm=1
+            shift
+        ;;
+        --c2llvmbc)  # C to LLVM Bitcode
+            _c2llvmbc=1
+            shift
+        ;;
+        --llvm2asm)  # LLVM IR to Assembly
+            _llvm2asm=1
+            shift
+        ;;
+        --llvm2c)  # LLVM IR to C
+            _llvm2c=1
+            shift
+        ;;
+        --llvm2cpp)  # LLVM IR to C++
+            _llvm2cpp=1
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+if [ "$_coffee2js" = 1 ]; then
+    if [ ! -x "$(command -v coffee)" ]; then
+        printf '%s\n' 'ERROR: coffee not found!' >&2
+        exit 1
+    else
+        coffee -c "$_file"
+    fi
+elif [ "$_scala2java" = 1 ]; then
+    if [ ! -x "$(command -v scalac)" ]; then
+        printf 'scalac: command not found!\n' >&2
+        exit 1
+    else
+        scalac "$_file"
+    fi
+elif [ "$_cpp2js" = 1 ]; then
+    if [ ! -x "$(command -v em++)" ]; then
+        printf 'em++: command not found!\n' >&2
+        exit 1
+    else
+        em++ -O1 "$_file" -o "$_name".js
+    fi
+elif [ "$_c2js" = 1 ]; then
+    if [ ! -x "$(command -v emcc)" ]; then
+        printf 'emcc: command not found!\n' >&2
+        exit 1
+    else
+        emcc -O1 "$_file" -o "$_name".js
+    fi
+elif [ "$_asm2bc" = 1 ]; then
+    if [ ! -x "$(command -v llvm-as)" ]; then
+        printf 'llvm-as: command not found!\n' >&2
+        exit 1
+    else
+        llvm-as "$_file" -o "$_name".bc
+    fi
+elif [ "$_bc2asm" = 1 ]; then
+    if [ ! -x "$(command -v llvm-dis)" ]; then
+        printf 'llvm-dis: command not found!\n' >&2
+        exit 1
+    else
+        llvm-dis "$_file" -o "$_name".ll
+    fi
+elif [ "$_c2llvmasm" = 1 ]; then
+    if [ ! -x "$(command -v clang)" ]; then
+        printf 'clang: command not found!\n' >&2
+        exit 1
+    else
+        clang -S -emit-llvm "$_file" -o "$_name".ll
+    fi
+elif [ "$_c2llvmbc" = 1 ]; then
+    if [ ! -x "$(command -v clang)" ]; then
+        printf 'clang: command not found!\n' >&2
+        exit 1
+    else
+        clang -emit-llvm "$_file" -o "$_name".bc
+    fi
+elif [ "$_llvm2asm" = 1 ]; then
+    if [ ! -x "$(command -v llc)" ]; then
+        pprintf 'llc: command not found!\n' >&2
+        exit 1
+    else
+        llc -filetype=asm "$_file"
+    fi
+elif [ "$_llvm2cpp" = 1 ]; then
+    if [ ! -x "$(command -v llc)" ]; then
+        printf 'llc: command not found!\n' >&2
+        exit 1
+    else
+        llc -march=cpp -o "$_name".cpp "$_file"
+    fi
+elif [ "$_llvm2c" = 1 ]; then
+    if [ ! -x "$(command -v llc)" ]; then
+        printf 'llc: command not found!\n' >&2
+        exit 1
+    else
+        llc -march=c -o "$_name".c "$_file"
+    fi
+fi
+
+
+exit 0

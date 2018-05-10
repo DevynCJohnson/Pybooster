@@ -1,176 +1,306 @@
+2018-05-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Updated & applied new coding standard
+	* makefile:  Updated Git commands
+	* pyanalysis:  Added support for Vulture
+	* strtools.py:  Added is_palidrome
+
+2018-05-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* xmath.py:  Added external & inverse trigonometric functions
+
+2018-05-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added genmathart, minifyxml, prettifyxml, & svgresizer
+	* libchar.py:  Added numerous new code & features
+	* markup.py:  Added numerous new code & features
+	* xmath.py:  Added phi, csc, cot, sec, & more math functions
+
+2018-05-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Split strtools.py into libchar.py, markup.py, & strtools.py
+	* makefile:  Enhanced the installation features & safety measures
+
+2018-04-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added win2unixlines, renamed ./src to ./include, & renamed ./utilsrc to ./src
+
+2018-04-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Added hundreds of lines of code & more cleaning features
+	* shell_ext:  Optimized code & added additional features (including an alias used to vacuum SQlite3 databases)
+
+2018-04-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added canalysis & shanalysis
+	* cleansystem:  Applied fixes & optimizations
+	* pyanalysis:  Optimized pyanalysis
+
+2018-04-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* flake8_optimal.py:  Fix unicode decoding issue & optimized the magic-comment checker
+	* pyanalysis:  Added support for listing multiple files to check
+
+2018-04-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Updated Python files with the newest PEP257 standards
+
+2018-04-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Renamed shell_rc to shell_ext
+	* PyBooster:  Added termtest
+	* Opticons:  Added additional icons and fixed minor bugs
+	* shell_ext:  Optimized code & added additional features
+
+2018-04-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Removed C-Analysis and merged Geany-Plugins with Scripts
+
+2018-04-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Optimized shell scripts
+	* cleansystem:  Added more files to find and clean
+	* getsysteminfo:  Added more data collection
+	* shell_rc:  Applied additional optimizations & features
+	* usx:  Fixed bug preventing TTY switching
+
+2018-04-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Optimized shell scripts
+	* profile:  Added operating system and CPU detection code
+	* shell_rc:  Applied many optimizations & fixes as well as more features
+	* usx:  Fixed bug with the Cyrillic character set
+
+2018-04-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Reorganized the makefiles & added Coding_Standard.md
+	* PyBooster:  Fixed some bugs in the makefiles & applied optimizations
+	* getsysyinfo: Removed bootstrap_sysinfo due to the code being merged in getsysinfo
+	* README.md:  Added more detail
+	* shell_rc:  Fixed some bugs & added many new aliases and functions
+	* timeit:  Changed from Posix shell to Bash
+	* timex:  Changed from Posix shell to Bash
+
+2018-04-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added XKB keyboard layout (for USX) and compose keys
+
+2018-03-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added Opticons and LoginOpticons icon themes
+	* PyBooster:  Added mimetype_booster.xml and mime.types
+
+2018-01-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added *.dtd, *.rng, and *.xsd files to ./Accessory
+	* PyBooster:  Moved, renamed, and converted some Geany-plugins to general scripts
+	* strtools.py:  Removed XML/HTML functions (such code will be rewritten as its own module)
+
+2018-01-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Split MACROS.h into MACROS.h and Foundations.h
+	* MACROS.h:  More precise and accurate float-point values
+
+2017-12-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h:  Improved Type-Generic-Math and applied miscellaneous optimizations
+
+2017-12-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added sin and tan
+	* PyBooster:  Miscellaneous MACROS*.h optimizations
+
+2017-12-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added systracer, cmccabe, and exewalk
+	* PyBooster:  Miscellaneous MACROS*.h optimizations
+	* statvfs.c:  Optimizations
+
+2017-12-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added program-analyzer
+
+2017-12-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefiles:  Optimized and improved
+	* MACROS*.h:  Miscellaneous optimizations
+
+2017-12-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Optimized and improved datatype limit macros
+	* MACROS*.h:  Added _Static_assert checks
+
+2017-12-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefiles:  Optimized and improved
+	* MACROS*.h:  Miscellaneous optimizations
+
+2017-11-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h  (printf):  Optimized and improved *printf() functions
+
+2017-10-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Clint:  Optimized and improved
+
+2017-10-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Modified magic comments in all files
+
+2017-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added noqa_checker
+	* makefiles:  Improved and optimized
+	* flake8_optimal:  Optimized script and added more checks
+	* pygeany-check:  Added noqa_checker
+
+2017-10-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Standardized use of `noqa`, `flake8:  noqa`, and `pylint:  disable=` comments
+	* pygeany-check:  Optimized script
+	* getsysinfo:  Optimized script
+
+2017-10-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Merged installation scripts
+	* PyBooster:  Removed ./tools/PyTools/; files now in ./scripts/
+	* PyBooster:  Added ./pyegg/ for Python Eggs
+
+2017-10-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added syscall and errno values for HelenOS
+	* PyBooster:  Organized and simplified IO flags and other file-related flags
+	* PyBooster:  Organized and standardized Doxygen comments
+	* PyBooster:  Ensured all scripts are standards-compliant (POSIX, PEP8, etc.)
+
+2017-10-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h:  Optimized syscall*() functions
+	* MACROS*.h:  Added syscall assembly for PowerPC, Sparc, Microblaze, and more
+
+2017-09-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Flattened, merged, re-organized, and optimized code
+
+2017-09-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added isprime and statvfs command-line utilities
+	* MACROS*.h:  Fixed many bug in stat-related code
+	* MACROS*.h:  Applied bug fixes to prime() math functions
+
+2017-07-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  POSIX script programs have been added from Linux-Utils
+
 2017-07-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Python and EzWin libraries have been re-added
+	* PyBooster:  Python and EzWin libraries have been re-added
 
 2017-07-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Complete re-write and shift from Python code to C + Assembly
-	* PyBooster: SWIG, EzWin, SQLite, and Python have been removed (for now)
+	* PyBooster:  Complete re-write and shift from Python code to C and Assembly
+	* PyBooster:  SWIG, EzWin, SQLite, and Python code/libraries have been removed (for now)
 
 2016-04-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added SQLite-Plugins
+	* PyBooster:  Added SQLite-Plugins
 
 2016-03-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added ./tools/PyTools/ and neuralnet.py
-
-	* pychemistry.c: Added molar masses of the elements
-
-	* pytools.c: Added more functions and global constants
+	* PyBooster:  Added ./tools/PyTools/ and neuralnet.py
+	* pychemistry.c:  Added molar masses of the elements
+	* pytools.c:  Added more functions and global constants
 
 2016-03-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added FILE_SIGNATURE_MACROS.h
+	* PyBooster:  Added FILE_SIGNATURE_MACROS.h
 
 2016-03-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added SWIG wrappers for Lua, Octave, Perl, PHP, Pike, and Ruby
+	* PyBooster:  Added SWIG wrappers for Lua, Octave, Perl, PHP, Pike, and Ruby
 
 2016-03-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added SWIG and fixed additional Doxygen documentation issues
+	* PyBooster:  Added SWIG and fixed additional Doxygen documentation issues
 
 2016-03-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Optimizations, enhanced cross-platform support, and fixed bugs
-
-	* PyBooster: Added Doxygen-Documentation and set a new file-comment standard
-
-	* PyBooster: Added financial.py
-
-	* PyBooster: Moved ./lib/doc to ./doc
-
-	* PyBooster: Merged datatype_*.c files into extra_datatypes.c
-
-	* MATH_MACROS.h: Added more math constants
-
-	* pyphysics.c: Added more functions
-
-	* pygeometry.c: Added more functions
-
-	* pymathfuncc: Added more functions
-
-	* cryptx.c: Added more encryption algorithms (TEA, XTEA, etc.)
-
-	* tools.c: Added functions that generate checksums for files
-
-	* MACROS.h: Added more macros; integrated replacements for stdbool.h, ctype.h, and stdarg.h
+	* PyBooster:  Optimizations, enhanced cross-platform support, and fixed bugs
+	* PyBooster:  Added Doxygen-Documentation and implemented a new file-comment standard
+	* PyBooster:  Added financial.py and moved ./lib/doc to ./doc
+	* PyBooster:  Merged datatype_*.c files into extra_datatypes.c
+	* MATH_MACROS.h:  Added more math constants
+	* pyphysics.c:  Added more functions
+	* pygeometry.c:  Added more functions
+	* pymathfuncc:  Added more functions
+	* cryptx.c:  Added more encryption algorithms (TEA, XTEA, etc.)
+	* tools.c:  Added functions that generate checksums for files
+	* MACROS.h:  Added more macros; integrated replacements for stdbool.h, ctype.h, and stdarg.h
 
 2016-02-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added compression.c, display_datatypes.c, datatype_stack.c, datatype_linked_stack.c, datatype_queue.c, datatype_binary_heap.c, geo_services.py, sing.py
-
-	* net.py: Added hasnet()
-
-	* strtools.py: Added various constants
+	* PyBooster:  Added compression.c, display_datatypes.c, datatype_stack.c, datatype_linked_stack.c, datatype_queue.c, datatype_binary_heap.c, geo_services.py, and sing.py
+	* net.py:  Added hasnet()
+	* strtools.py:  Added various constants
 
 2016-02-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Re-wrote the makefile framework
-
-	* PyBooster: Optimizations (as usual) and added better cross-platform support (Windows may not be fully supported)
-
-	* PyBooster: Added cryptography.py, x86_64_asm_func.c, and chron.c
-
-	* mathconstants.c: Added more constants (as floats, doubles, long doubles, complex-numbers, and quaternion-numbers)
-
-	* mathfunc.c: Added many trigonometric functions, complex-number functions, and quaternion-number functions
-
-	* geometry.c: Added more equations including area, length, perimeter, etc.
-
-	* strtools.py: Added many new functions, optimizations, and fixed some minor bugs
-
-	* tools.c: Added many new functions, optimizations, and fixed some minor bugs
-
-	* pytools.c: Added many new functions, optimizations, and fixed some minor bugs
-
-	* fs.py: Added many new functions for opening binary files
+	* PyBooster:  Re-wrote the makefile framework
+	* PyBooster:  Optimizations (as usual) and added better cross-platform support (Windows may not be fully supported)
+	* PyBooster:  Added cryptography.py, x86_64_asm_func.c, and chron.c
+	* mathconstants.c:  Added more constants (as floats, doubles, long doubles, complex-numbers, and quaternion-numbers)
+	* mathfunc.c:  Added many trigonometric functions, complex-number functions, and quaternion-number functions
+	* geometry.c:  Added more equations including area, length, perimeter, etc.
+	* strtools.py:  Added many new functions, optimizations, and fixed some minor bugs
+	* tools.c:  Added many new functions, optimizations, and fixed some minor bugs
+	* pytools.c:  Added many new functions, optimizations, and fixed some minor bugs
+	* fs.py:  Added many new functions for opening binary files
 
 2016-01-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Optimizations, bug-fixes, and organization
-
-	* PyBooster: Merged setup.py into makefile and made "makefile_header.mk"
-
-	* PyBooster: Added strtools.py
-
-	* PyBooster: Merged ascii.py, characters.py, encoding.py, and htmlunicode.py into strtools.py
-
-	* PyBooster: Added some constants to various libraries
-
-	* EzWin: Optimized EzWin
-
-	* strtools.py: Added htmlescape(), htmlunescape(), and many more functions
-
-	* tools.c: Added strreplace() and more functions
+	* PyBooster:  Optimizations, bug-fixes, and organization
+	* PyBooster:  Merged setup.py into makefile and made "makefile_header.mk"
+	* PyBooster:  Added strtools.py and some constants to various libraries
+	* PyBooster:  Merged ascii.py, characters.py, encoding.py, and htmlunicode.py into strtools.py
+	* EzWin:  Optimized EzWin
+	* strtools.py:  Added htmlescape(), htmlunescape(), and many more functions
+	* tools.c:  Added strreplace() and additional functions
 
 2015-12-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Optimizations, fixed some non-POSIX-compliant code
-
-	* PyBooster: Added religion.py, fuzzy_logic.c, get-dependencies.sh
-
-	* net.py: Added isdomain()
-
-	* tools.c: Added isodd(), fixed security issues, and optimized code
-
-	* mathfunc.c: Added many functions
-
-	* encoding.py: Added testref()
-
-	* xmath.py: Added napierianlog(), naturallog()
-
-	* xmath.py: Optimizations and organization
-
-	* convarea.py: Optimizations
-
-	* convlength.py: Optimizations
-
-	* convvolume.py: Optimizations
-
-	* basic.py: Added rmpunct() and splitsentencesstr()
+	* PyBooster:  Optimizations, fixed some non-POSIX-compliant code
+	* PyBooster:  Added religion.py, fuzzy_logic.c, and get-dependencies.sh
+	* net.py:  Added isdomain()
+	* tools.c:  Added isodd(), fixed security issues, and optimized code
+	* mathfunc.c:  Added many functions
+	* encoding.py:  Added testref()
+	* xmath.py:  Optimizations, organization, and added napierianlog() and naturallog()
+	* convarea.py:  Optimizations
+	* convlength.py:  Optimizations
+	* convvolume.py:  Optimizations
+	* basic.py:  Added rmpunct() and splitsentencesstr()
 
 2015-11-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Organized the project's source code
-
-	* PyBooster: Added geometry_types.h, libchemisty_types, libtools
-
-	* PyBooster: Added libchemisty, libphysics, unix.py, compress.py
-
-	* PyBooster: Added code_interpreter.py, libtone
-
-	* makefile: Added support for static libraries
-
-	* makefile: Merged INSTALL.sh into makefile
-
-	* chemisty: Removed "chemisty.py" to make a C-implementation instead
-
-	* chemisty: Added more functions, constants, and datatypes
-
-	* geometry: Added more equations
-
-	* mathfunc: Added more functions
-
-	* basic.py: Added more functions and optimized some code
+	* PyBooster:  Organized the project's source code
+	* PyBooster:  Added libchemisty, libchemisty_types, libphysics, unix.py, compress.py, code_interpreter.py, geometry_types.h, libtools, and libtone
+	* makefile:  Merged INSTALL.sh into makefile and added support for static libraries
+	* chemisty:  Removed "chemisty.py" to make a C-implementation instead
+	* chemisty:  Added more functions, constants, and datatypes
+	* geometry:  Added more equations
+	* mathfunc:  Added more functions
+	* basic.py:  Added more functions and optimized some code
 
 2015-11-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Added makedoc.sh, geometry.c, mathfunc.c, mathconstants.c, pronouns.py
-
-	* setup.py: Fixed some styling issues and added geometry.c
-
-	* makefile: Added "make doc", "make cleandoc", libgeometry, strip
-
-	* makefile: Improved and optimized (and added conditionals)
-
-	* makedoc.sh: Added EZWin
-
-	* ezwin: Minor updates (documentation and optimizations)
+	* PyBooster:  Added makedoc.sh, geometry.c, mathfunc.c, mathconstants.c, pronouns.py
+	* setup.py:  Fixed some styling issues and added geometry.c
+	* makefile:  Added "make doc", "make cleandoc", libgeometry, and strip
+	* makefile:  Improved, optimized, and added conditionals
+	* makedoc.sh:  Added EZWin
+	* ezwin:  Minor updates (documentation and optimizations)
 
 2015-11-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster: Fixed various bugs and standards compliance
-
-	* PyBooster: Added C-modules, clibutil.py, makefile, and setup.py
+	* PyBooster:  Fixed various bugs and standards compliance
+	* PyBooster:  Added C-modules, clibutil.py, makefile, and setup.py

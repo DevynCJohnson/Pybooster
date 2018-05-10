@@ -1,60 +1,100 @@
-.git
-.git/*
-bin/
-python/
-python/*
-*.cache
-*.tmp
-*.todo.txt
+## PROJECT FILES ##
 
-# Translations
+
+.git/
+bin/
+[Dd]ebug/
+python/
+*.cache
+.editorconfig
+.flake8
+.mypy.ini
+mypy.ini
+.pycodestyle
+.pylintrc
+pylintrc
+.pytest.ini
+pytest.ini
+.sh-session
+.style.yapf
+*.todo.txt
+tox.ini
+*.tmp
+.travis.yml
+
+
+## TRANSLATIONS ##
+
+
 *.mo
 *.pot
+
+
+## ICONS & FONTS ##
+
+
+icon-theme.cache
 
 
 ## C ##
 
 
-# LLVM/Clang
-*.bc
-*.ll
-*.ast
-
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects
-*.dll
-*.so
-*.so.*
-*.dylib
-
 # Executables
-*.exe
-*.out
 *.app
+*.exe
+*.hex
 *.i386
 *.i486
 *.i586
 *.i686
+*.out
 *.x86_64
-*.hex
 
-# Debug files
+# CUDA
+*.cubin
+*.fatbin
+*.gpu
+*.i
+*.ii
+*.ptx
+
+# Debug Files
 *.dSYM/
+*.idb
+*.pdb
+*.su
+
+# Libraries
+*.a
+*.la
+*.lai
+*.lib
+
+# Linker Output
+*.exp
+*.ilk
+*.map
+
+# LLVM/Clang
+*.ast
+*.bc
+*.ll
+
+# Object Files
+*.dll
+*.dylib
+*.elf
+*.ko
+*.lo
+*.o
+*.obj
+*.slo
+*.so
+*.so.*
+
+# Precompiled Headers
+*.gch
+*.pch
 
 # Profiling
 *.gcda
@@ -64,9 +104,9 @@ python/*
 
 
 # Byte-compiled
+*.py[cdo]
 __pycache__/
 *__pycache__
-*.py[cod]
 
 # Distribution
 .Python
@@ -84,40 +124,34 @@ var/
 .installed.cfg
 *.egg
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Installer & Builder Files
+logs/
+target/
 *.log
 *.logs
+*.manifest
+*.spec
+pip-delete-this-directory.txt
+pip-log.txt
 
-# Unit test / coverage reports
-htmlcov/
+# Unit Test & Coverage Reports
 .tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
+htmlcov/
 *,cover
-.hypothesis/
 *.pytb
-
-# PyBuilder
-target/
+.cache
+.coverage
+.coveragerc
+.coverage.*
+.hypothesis/
+coverage.xml
+nosetests.xml
 
 # IPython Notebook
 .ipynb_checkpoints
 
-# pyenv
-.python-version
-
-# dotenv
-.env
-
-# virtualenv
-venv/
+# dotenv, virtualenv, & pyenv
 ENV/
+venv/
+.env
+.python-version

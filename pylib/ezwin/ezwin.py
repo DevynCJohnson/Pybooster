@@ -1,61 +1,67 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief EZ-Win: Pre-built windows using GTK3 for Python3
+
 @file ezwin.py
 @package pybooster.ezwin.ezwin
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
-# pylint: disable=C0103,E1101,W0613
-# flake8: ignore=42cc
+# pylint: disable=C0103
 
 
 from os.path import dirname, join as pathjoin, normcase, realpath
 from signal import SIGINT, SIG_DFL, signal
-from sys import argv
+from sys import argv, stdout
 
-from gi.repository import Gtk
+from gi import require_version
+require_version(r'Gtk', r'3.0')
+from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
+
+
+# GLOBAL DATA #
 
 
 __all__ = [
-    'ezcolor',
-    'ezerr',
-    'ezfilech',
-    'ezinfo',
-    'ezmsg',
-    'ezpswd',
-    'ezq',
-    'ezsecurity',
-    'eztext',
-    'ezupd',
-    'ezwarn'
+    r'ezcolor',
+    r'ezerr',
+    r'ezfilech',
+    r'ezinfo',
+    r'ezmsg',
+    r'ezpswd',
+    r'ezq',
+    r'ezsecurity',
+    r'eztext',
+    r'ezupd',
+    r'ezwarn'
 ]
 
 
 __author__ = r'Devyn Collier Johnson'
 __copyright__ = r'LGPLv3'
-__version__ = r'2016.03.25'
+__version__ = r'2018.04.27'
 
 
 __about__ = (
@@ -413,62 +419,65 @@ _GFILECH = pathjoin(_PATH, r'filech.glade')
 signal(SIGINT, SIG_DFL)
 
 
-def ezinfo(_msg: str='Information') -> None:
+# EZWIN WINDOW FUNCTIONS #
+
+
+def ezinfo(_msg: str = r'Information') -> None:
     """Information Dialog: Display some information"""
     ui = Gtk.Builder()
     ui.add_from_file(_GINFO)
-    ui.connect_signals({'_winexit': Gtk.main_quit})
+    ui.connect_signals({r'_winexit': Gtk.main_quit})
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
     return
 
 
-def ezmsg(_msg: str='Message') -> None:
+def ezmsg(_msg: str = r'Message') -> None:
     """Message Dialog: Display a message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GMSG)
-    ui.connect_signals({'_winexit': Gtk.main_quit})
+    ui.connect_signals({r'_winexit': Gtk.main_quit})
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
     return
 
 
-def ezwarn(_msg: str='Warning') -> None:
+def ezwarn(_msg: str = r'Warning') -> None:
     """Warning Dialog: Display a warning message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GWARN)
-    ui.connect_signals({'_winexit': Gtk.main_quit})
+    ui.connect_signals({r'_winexit': Gtk.main_quit})
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
     return
 
 
-def ezerr(_msg: str='Error Message') -> None:
+def ezerr(_msg: str = r'Error Message') -> None:
     """Error Dialog: Display an error message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GERR)
-    ui.connect_signals({'_winexit': Gtk.main_quit})
+    ui.connect_signals({r'_winexit': Gtk.main_quit})
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
     return
 
 
-def ezupd(_msg: str='Message') -> None:
+def ezupd(_msg: str = r'Message') -> None:
     """Update Dialog: Display information on an update"""
     ui = Gtk.Builder()
     ui.add_from_file(_GUPD)
-    ui.connect_signals({'_winexit': Gtk.main_quit})
+    ui.connect_signals({r'_winexit': Gtk.main_quit})
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
     return
 
 
-def ezsecurity(_msg: str='Security Message') -> None:
+def ezsecurity(_msg: str = r'Security Message') -> None:
     """Security Dialog: Display a security-related message"""
     ui = Gtk.Builder()
     ui.add_from_file(_GSECURITY)
@@ -479,7 +488,7 @@ def ezsecurity(_msg: str='Security Message') -> None:
     return
 
 
-def ezq(_msg: str='Question', _type: str='yn') -> str:
+def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
     """Question Dialog: Ask the user a question
 
     '_type' is a string that may have one of several values and effects.
@@ -544,12 +553,12 @@ def ezq(_msg: str='Question', _type: str='yn') -> str:
         return
 
     ui.connect_signals({
-        '_winexit': Gtk.main_quit,
-        '_yes': _yes,
-        '_no': _no,
-        '_quit': _quit,
-        '_close': _close,
-        '_cancel': _cancel,
+        r'_winexit': Gtk.main_quit,
+        r'_yes': _yes,
+        r'_no': _no,
+        r'_quit': _quit,
+        r'_close': _close,
+        r'_cancel': _cancel,
     })
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
@@ -557,12 +566,12 @@ def ezq(_msg: str='Question', _type: str='yn') -> str:
     return _out
 
 
-def ezcolor(_datatype: str='list') -> type:
+def ezcolor(_datatype: str = r'list') -> type:
     """Color Dialog: Select a color"""
     ui = Gtk.Builder()
     ui.add_from_file(_GCOLOR)
     _cc = ui.get_object(r'cc')
-    _rgba = {}
+    _rgba = None
 
     def _submit_color(*_x) -> None:
         """SUBMIT Button: Submit color values for processing"""
@@ -572,8 +581,8 @@ def ezcolor(_datatype: str='list') -> type:
         return
 
     ui.connect_signals({
-        '_winexit': Gtk.main_quit,
-        '_submit_color': _submit_color,
+        r'_winexit': Gtk.main_quit,
+        r'_submit_color': _submit_color,
     })
     Gtk.main()
     if _rgba:
@@ -590,22 +599,19 @@ def ezcolor(_datatype: str='list') -> type:
             _lst.append(_a)
             return _lst
         elif _datatype.lower() in {r'dict', r'dic'}:
-            _dict = {'red': _r, 'green': _g, 'blue': _b, 'alpha': _a}
+            _dict = {r'red': _r, r'green': _g, r'blue': _b, r'alpha': _a}
             return _dict
         elif _datatype.lower() in {r'str', r'string'}:
             _x = str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
             return _x
-        else:
-            return _rgba
-    else:
-        return None
+        return _rgba
     return None
 
 
-def eztext(_msg: str='Message', _type: str='') -> str:
+def eztext(_msg: str = r'Message', _type: str = r'') -> str:
     """Input Text Dialog: Get text from the user"""
     ui = Gtk.Builder()
-    if 'c' in _type.lower():
+    if r'c' in _type.lower():
         _gf = _GTEXTC
     else:
         _gf = _GTEXT
@@ -621,9 +627,9 @@ def eztext(_msg: str='Message', _type: str='') -> str:
         return
 
     ui.connect_signals({
-        '_winexit': Gtk.main_quit,
-        '_submit_text': _submit_text,
-        '_cancel': Gtk.main_quit,
+        r'_winexit': Gtk.main_quit,
+        r'_submit_text': _submit_text,
+        r'_cancel': Gtk.main_quit,
     })
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
@@ -631,7 +637,7 @@ def eztext(_msg: str='Message', _type: str='') -> str:
     return _out
 
 
-def ezpswd(_msg: str='Message', _type: str='') -> str:
+def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     """Password Dialog: Get a password from the user"""
     ui = Gtk.Builder()
     if r'c' in _type.lower():
@@ -640,7 +646,7 @@ def ezpswd(_msg: str='Message', _type: str='') -> str:
         _gf = _GPSWD
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
-    _out = ''
+    _out = r''
 
     def _submit_text(*_x) -> None:
         """SUBMIT Button: Submit password for processing"""
@@ -650,9 +656,9 @@ def ezpswd(_msg: str='Message', _type: str='') -> str:
         return
 
     ui.connect_signals({
-        '_winexit': Gtk.main_quit,
-        '_submit_text': _submit_text,
-        '_cancel': Gtk.main_quit,
+        r'_winexit': Gtk.main_quit,
+        r'_submit_text': _submit_text,
+        r'_cancel': Gtk.main_quit,
     })
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
@@ -660,18 +666,18 @@ def ezpswd(_msg: str='Message', _type: str='') -> str:
     return _out
 
 
-def ezfilech(  # noqa C901
-        _select_file: bool=True,
-        _select_dir: bool=False,
-        _multiple: bool=False,
-        _save: bool=False,
-        _viewhidden: bool=False,
-        _file_exten: bool=True,
-        _init_path: str='',
-        _local: bool=True,
-        _return_uri: bool=True,
-        _return_dtype: str='list',
-) -> list or str:  # noqa C901
+def ezfilech(  # noqa: C901
+        _select_file: bool = True,
+        _select_dir: bool = False,
+        _multiple: bool = False,
+        _save: bool = False,
+        _viewhidden: bool = False,
+        _file_exten: bool = True,
+        _init_path: str = '',
+        _local: bool = True,
+        _return_uri: bool = True,
+        _return_dtype: str = r'list'
+) -> list or str:
     """File Chooser Dialog: Select a file or folder"""
     ui = Gtk.Builder()
     ui.add_from_file(_GFILECH)
@@ -707,116 +713,116 @@ def ezfilech(  # noqa C901
         _save = False
         _filew.set_action(Gtk.FileChooserAction.OPEN)
 
-    # FILE FILTERS
+    # FILE FILTERS #
 
     if _select_file and _file_exten:
         _filters = [
-            ('All Files', '*'),
-            ('Text Files', '*.[Tt][Xx][Tt]'),
+            (r'All Files', r'*'),
+            (r'Text Files', r'*.[Tt][Xx][Tt]'),
         ]
         for _fltr in _filters:
             _filter = Gtk.FileFilter()
             _filter.set_name(_fltr[0])
             _filter.add_pattern(_fltr[1])
             _filew.add_filter(_filter)
-        # INSTALLATION FILES
+        # INSTALLATION FILES #
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Installation packages')
-        _filter.add_pattern('*.rpm')
-        _filter.add_pattern('*.pet')
-        _filter.add_pattern('*.pup')
-        _filter.add_pattern('*.srpm')
-        _filter.add_pattern('*.src.rpm')
-        _filter.add_pattern('*.delta.rpm')
-        _filter.add_pattern('*.cpio')
-        _filter.add_pattern('*.tgz')
-        _filter.add_mime_type('application/vnd.debian.binary-package')
-        # UNOFFICIAL MIMETYPES
-        _filter.add_mime_type('application/x-rpm')
-        _filter.add_mime_type('application/x-redhat-package-manager')
-        _filter.add_mime_type('application/x-debian-package')
-        _filter.add_mime_type('application/x-msi')
-        _filter.add_mime_type('application/x-gtar')
-        _filter.add_mime_type('application/x-gtar-compressed')
+        _filter.add_pattern(r'*.rpm')
+        _filter.add_pattern(r'*.pet')
+        _filter.add_pattern(r'*.pup')
+        _filter.add_pattern(r'*.srpm')
+        _filter.add_pattern(r'*.src.rpm')
+        _filter.add_pattern(r'*.delta.rpm')
+        _filter.add_pattern(r'*.cpio')
+        _filter.add_pattern(r'*.tgz')
+        _filter.add_mime_type(r'application/vnd.debian.binary-package')
+        # UNOFFICIAL INSTALLATION FILE MIMETYPES #
+        _filter.add_mime_type(r'application/x-rpm')
+        _filter.add_mime_type(r'application/x-redhat-package-manager')
+        _filter.add_mime_type(r'application/x-debian-package')
+        _filter.add_mime_type(r'application/x-msi')
+        _filter.add_mime_type(r'application/x-gtar')
+        _filter.add_mime_type(r'application/x-gtar-compressed')
         _filew.add_filter(_filter)
-        # ECMA SCRIPTS
+        # ECMA SCRIPTS #
         _filter = Gtk.FileFilter()
         _filter.set_name(r'ECMA scripts')
-        _filter.add_mime_type('application/ecmascript')
-        _filter.add_mime_type('application/javascript')
-        _filter.add_mime_type('text/ecmascript')  # Unofficial
-        _filter.add_mime_type('text/javascript')  # Unofficial
-        _filter.add_mime_type('text/coffeescript')  # Unofficial
-        _filter.add_mime_type('application/coffeescript')  # Unofficial
-        _filter.add_pattern('*.coffee')
-        _filter.add_mime_type('application/x-vbscript')  # Unofficial
-        _filter.add_pattern('*.vbs')
-        _filter.add_mime_type('text/jscript')  # Unofficial
-        _filter.add_pattern('*.js')
-        _filter.add_pattern('*.jse')
+        _filter.add_mime_type(r'application/ecmascript')
+        _filter.add_mime_type(r'application/javascript')
+        _filter.add_mime_type(r'text/ecmascript')  # Unofficial
+        _filter.add_mime_type(r'text/javascript')  # Unofficial
+        _filter.add_mime_type(r'text/coffeescript')  # Unofficial
+        _filter.add_mime_type(r'application/coffeescript')  # Unofficial
+        _filter.add_pattern(r'*.coffee')
+        _filter.add_mime_type(r'application/x-vbscript')  # Unofficial
+        _filter.add_pattern(r'*.vbs')
+        _filter.add_mime_type(r'text/jscript')  # Unofficial
+        _filter.add_pattern(r'*.js')
+        _filter.add_pattern(r'*.jse')
         _filew.add_filter(_filter)
-        # MARKUP FILES
+        # MARKUP FILES #
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Markup files')
-        _filter.add_mime_type('text/SGML')
-        _filter.add_mime_type('text/html')
-        _filter.add_mime_type('text/xml')
-        _filter.add_mime_type('model/x3d+xml')
-        _filter.add_mime_type('model/x3d-vrml')
-        _filter.add_mime_type('application/xml')
-        _filter.add_mime_type('application/xml-dtd')
-        _filter.add_mime_type('application/xml-external-parsed-entity')
-        _filter.add_mime_type('application/xhtml+xml')
-        _filter.add_mime_type('application/ssml+xml')
-        _filter.add_mime_type('application/soap+xml')
-        _filter.add_mime_type('application/SGML')
-        _filter.add_mime_type('application/resource-lists+xml')
-        _filter.add_mime_type('application/emotionml+xml')
-        _filter.add_mime_type('application/calendar+xml')
+        _filter.add_mime_type(r'text/SGML')
+        _filter.add_mime_type(r'text/html')
+        _filter.add_mime_type(r'text/xml')
+        _filter.add_mime_type(r'model/x3d+xml')
+        _filter.add_mime_type(r'model/x3d-vrml')
+        _filter.add_mime_type(r'application/xml')
+        _filter.add_mime_type(r'application/xml-dtd')
+        _filter.add_mime_type(r'application/xml-external-parsed-entity')
+        _filter.add_mime_type(r'application/xhtml+xml')
+        _filter.add_mime_type(r'application/ssml+xml')
+        _filter.add_mime_type(r'application/soap+xml')
+        _filter.add_mime_type(r'application/SGML')
+        _filter.add_mime_type(r'application/resource-lists+xml')
+        _filter.add_mime_type(r'application/emotionml+xml')
+        _filter.add_mime_type(r'application/calendar+xml')
         _filew.add_filter(_filter)
-        # MIMETYPES (TOP-LEVEL)
+        # MIMETYPES (TOP-LEVEL) #
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Application (Mime-type)')
-        _filter.add_mime_type('application/*')
+        _filter.add_mime_type(r'application/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Audio Files')
-        _filter.add_mime_type('audio/*')
-        _filter.add_mime_type('application/mp4')
-        _filter.add_mime_type('application/mpeg4-generic')
-        _filter.add_mime_type('application/ogg')
+        _filter.add_mime_type(r'audio/*')
+        _filter.add_mime_type(r'application/mp4')
+        _filter.add_mime_type(r'application/mpeg4-generic')
+        _filter.add_mime_type(r'application/ogg')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Images')
-        _filter.add_mime_type('image/*')
+        _filter.add_mime_type(r'image/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Message (Mime-type)')
-        _filter.add_mime_type('message/*')
+        _filter.add_mime_type(r'message/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Model (Mime-type)')
-        _filter.add_mime_type('model/*')
+        _filter.add_mime_type(r'model/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Multipart (Mime-type)')
-        _filter.add_mime_type('multipart/*')
+        _filter.add_mime_type(r'multipart/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Text (Mime-type)')
-        _filter.add_mime_type('text/*')
+        _filter.add_mime_type(r'text/*')
         _filew.add_filter(_filter)
         _filter = Gtk.FileFilter()
         _filter.set_name(r'Videos')
-        _filter.add_mime_type('video/*')
+        _filter.add_mime_type(r'video/*')
         _filew.add_filter(_filter)
 
-    # HANDLER FUNCTIONS
+    # HANDLER FUNCTIONS #
 
     def _cancel(*_x) -> None:
         """CANCEL Button"""
         nonlocal _out
-        _out = 'Cancel'
+        _out = r'Cancel'
         Gtk.main_quit()
         return
 
@@ -824,21 +830,21 @@ def ezfilech(  # noqa C901
         """SELECT Button: Submit selection for processing"""
         nonlocal _out
         if _select_dir and not _multiple and _chkbtn_dir.get_active():
-            if _return_uri and _return_dtype == 'str':
-                _out = ' '.join(_filew.get_current_folder_uri())
-            elif _return_uri and _return_dtype != 'str':
+            if _return_uri and _return_dtype == r'str':
+                _out = r' '.join(_filew.get_current_folder_uri())
+            elif _return_uri and _return_dtype != r'str':
                 _out = _filew.get_current_folder_uri()
-            elif not _return_uri and _return_dtype == 'str':
-                _out = ' '.join(_filew.get_current_folder())
+            elif not _return_uri and _return_dtype == r'str':
+                _out = r' '.join(_filew.get_current_folder())
             else:
                 _out = _filew.get_current_folder()
         else:
-            if _return_uri and _return_dtype == 'str':
-                _out = ' '.join(_filew.get_uris())
-            elif _return_uri and _return_dtype != 'str':
+            if _return_uri and _return_dtype == r'str':
+                _out = r' '.join(_filew.get_uris())
+            elif _return_uri and _return_dtype != r'str':
                 _out = _filew.get_uris()
-            elif not _return_uri and _return_dtype == 'str':
-                _out = ' '.join(_filew.get_filenames())
+            elif not _return_uri and _return_dtype == r'str':
+                _out = r' '.join(_filew.get_filenames())
             else:
                 _out = _filew.get_filenames()
         Gtk.main_quit()
@@ -850,33 +856,36 @@ def ezfilech(  # noqa C901
         return
 
     ui.connect_signals({
-        '_winexit': Gtk.main_quit,
-        '_cancel': _cancel,
-        '_select': _select,
-        '_hidden': _hidden,
+        r'_winexit': Gtk.main_quit,
+        r'_cancel': _cancel,
+        r'_select': _select,
+        r'_hidden': _hidden,
     })
     Gtk.main()
     return _out
 
 
-if __name__ == '__main__':  # noqa C901
+# MAIN #
+
+
+if __name__ == '__main__':  # noqa: C901
     # Command help/info
-    if len(argv) is 2 and argv[1].lower() in {r'-h', r'--help'}:
-        print(__help__)  # noqa
-        raise SystemExit(0)
-    elif len(argv) is 2 and argv[1].lower() == '--api':
-        print(__api__)  # noqa
-        raise SystemExit(0)
-    elif len(argv) is 2 and argv[1].lower() in {r'-v', r'--version'}:
-        print(__version__)  # noqa
-        raise SystemExit(0)
-    elif len(argv) is 2 and argv[1].lower() in {r'-d', r'--doc'}:
-        print(__doc__)  # noqa
-        print(__version__)  # noqa
-        print(__copyright__)  # noqa
-        print(__help__)  # noqa
-        print(__api__)  # noqa
-        raise SystemExit(0)
+    if len(argv) == 2 and argv[1].lower() in {r'-h', r'--help'}:
+        stdout.write(__help__ + '\n')
+        raise SystemExit()
+    elif len(argv) == 2 and argv[1].lower() == r'--api':
+        stdout.write(__api__ + '\n')
+        raise SystemExit()
+    elif len(argv) == 2 and argv[1].lower() in {r'-v', r'--version'}:
+        stdout.write(__version__ + '\n')
+        raise SystemExit()
+    elif len(argv) == 2 and argv[1].lower() in {r'-d', r'--doc'}:
+        stdout.write(__doc__ + '\n')
+        stdout.write(__version__ + '\n')
+        stdout.write(__copyright__ + '\n')
+        stdout.write(__help__ + '\n')
+        stdout.write(__api__ + '\n')
+        raise SystemExit()
     # Windows/GUI
     elif argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
         # File chooser
@@ -884,8 +893,8 @@ if __name__ == '__main__':  # noqa C901
         viewhidden = False
         save = False
         return_uri = True
-        init_path = ''
-        return_dtype = 'list'
+        init_path = r''
+        return_dtype = r'list'
         __local = True
         file_exten = True
         if len(argv) > 2:
@@ -917,63 +926,63 @@ if __name__ == '__main__':  # noqa C901
                 # This must be the last parameter (--path PATH)
                 init_path = argv[-1]
         if argv[1].lower() in {r'-f', r'--file'}:
-            print(ezfilech(
+            stdout.write(ezfilech(
                 True, False, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
-            ))  # noqa
+            ) + '\n')
         elif argv[1].lower() in {r'--dir', r'--folder'}:
-            print(ezfilech(
+            stdout.write(ezfilech(
                 False, True, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
-            ))  # noqa
-        raise SystemExit(0)
+            ) + '\n')
+        raise SystemExit()
     elif argv[1].lower() in {r'--color', r'--colour'}:
         # Color selector
-        if len(argv) is 3 and argv[2].lower() in {r'list', r'lst'}:
-            print(ezcolor('list'))  # noqa
-        elif len(argv) is 3 and argv[2].lower() in {r'dict', r'dic'}:
-            print(ezcolor('dict'))  # noqa
-        elif len(argv) is 3 and argv[2].lower() in {r'str', r'string'}:
-            print(ezcolor('str'))  # noqa
+        if len(argv) == 3 and argv[2].lower() in {r'list', r'lst'}:
+            stdout.write(ezcolor(r'list') + '\n')
+        elif len(argv) == 3 and argv[2].lower() in {r'dict', r'dic'}:
+            stdout.write(ezcolor(r'dict') + '\n')
+        elif len(argv) == 3 and argv[2].lower() in {r'str', r'string'}:
+            stdout.write(ezcolor(r'str') + '\n')
         else:
-            print(ezcolor('rgba'))  # noqa
-        raise SystemExit(0)
+            stdout.write(ezcolor(r'rgba') + '\n')
+        raise SystemExit()
     elif len(argv) >= 3:
         _wintype = argv[1].lower()
-        MESSAGE = ' '.join(
+        MESSAGE = r' '.join(
             str(i) for i in argv[2:]
         ).replace('\\n', '\n').replace('\\t', '\t')
-        if _wintype in {r'-i', r'--info'}:
-            ezinfo(MESSAGE)  # Info window
-        elif _wintype in {r'-m', r'--msg'}:
-            ezmsg(MESSAGE)  # Message window
-        elif _wintype in {r'-w', r'--warn'}:
-            ezwarn(MESSAGE)  # Warning window
-        elif _wintype in {r'-e', r'--err'}:
-            ezerr(MESSAGE)  # Error window
-        elif _wintype in {r'-u', r'--up', r'--update'}:
-            ezupd(MESSAGE)  # Update-info window
-        elif _wintype in {r'-s', r'--security'}:
-            ezsecurity(MESSAGE)  # Security-info window
-        elif _wintype in {r'-q', r'--yn'}:
-            print(ezq(MESSAGE, 'yesno'))  # noqa  # Question window
-        elif _wintype in {r'--ync', r'--ynclose'}:
-            print(ezq(MESSAGE, 'close'))  # noqa  # Question window
-        elif _wintype in {r'--ynq', r'--ynquit'}:
-            print(ezq(MESSAGE, 'quit'))  # noqa  # Question window
-        elif _wintype in {r'-c', r'--yncancel'}:
-            print(ezq(MESSAGE, 'cancel'))  # noqa  # Question window
-        elif _wintype in {r'-x', r'-t', r'--text'}:
-            print(eztext(MESSAGE))  # noqa  # Text-input window
-        elif _wintype in {r'--tc', r'--textcancel', r'--canceltext'}:
-            print(eztext(MESSAGE, 'c'))  # noqa  # Text-input window
-        elif _wintype in {r'-p', r'--pw', r'--pwd', r'--pswd', r'--password'}:
-            print(ezpswd(MESSAGE))  # noqa  # Password-input window
-        elif _wintype in {r'--pc', r'--pwdc', r'--passwordcancel'}:
-            print(ezpswd(MESSAGE, 'c'))  # noqa  # Password-input window
+        if _wintype in {r'-i', r'--info'}:  # Info window
+            ezinfo(MESSAGE)
+        elif _wintype in {r'-m', r'--msg'}:  # Message window
+            ezmsg(MESSAGE)
+        elif _wintype in {r'-w', r'--warn'}:  # Warning window
+            ezwarn(MESSAGE)
+        elif _wintype in {r'-e', r'--err'}:  # Error window
+            ezerr(MESSAGE)
+        elif _wintype in {r'-u', r'--up', r'--update'}:  # Update-info window
+            ezupd(MESSAGE)
+        elif _wintype in {r'-s', r'--security'}:  # Security-info window
+            ezsecurity(MESSAGE)
+        elif _wintype in {r'-q', r'--yn'}:  # Question window
+            stdout.write(ezq(MESSAGE, 'yesno') + '\n')
+        elif _wintype in {r'--ync', r'--ynclose'}:  # Question window
+            stdout.write(ezq(MESSAGE, 'close') + '\n')
+        elif _wintype in {r'--ynq', r'--ynquit'}:  # Question window
+            stdout.write(ezq(MESSAGE, 'quit') + '\n')
+        elif _wintype in {r'-c', r'--yncancel'}:  # Question window
+            stdout.write(ezq(MESSAGE, 'cancel') + '\n')
+        elif _wintype in {r'-x', r'-t', r'--text'}:  # Text-input window
+            stdout.write(eztext(MESSAGE) + '\n')
+        elif _wintype in {r'--tc', r'--textcancel', r'--canceltext'}:  # Text-input window
+            stdout.write(eztext(MESSAGE, 'c') + '\n')
+        elif _wintype in {r'-p', r'--pw', r'--pwd', r'--pswd', r'--password'}:  # Password-input window
+            stdout.write(ezpswd(MESSAGE) + '\n')
+        elif _wintype in {r'--pc', r'--pwdc', r'--passwordcancel'}:  # Password-input window
+            stdout.write(ezpswd(MESSAGE, 'c') + '\n')
         else:
             raise Exception(_EXCEPTION_MSG)
-        raise SystemExit(0)
+        raise SystemExit()
     raise Exception(_EXCEPTION_MSG)

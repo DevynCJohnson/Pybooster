@@ -1,0 +1,279 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Remove cache, logs, and other unneeded files
+# @file cleansystem
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  CleanSystem  ====='
+    printf '%s\n' 'Remove cache, logs, and other unneeded files'
+    printf '%s\n' 'Without Root privileges, this utility only cleans the home folder of the current user.'
+    printf '%s\n' "With Root privileges, this utility cleans system directories and the Root user's home folder."
+    printf '%s\n' 'Usage: cleansystem [options]'
+    printf '%s\n' 'Example: cleansystem --deep-clean  # Perform deep cleaning'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-h,--help               Display help info'
+    printf '%s\n' '-d,--deep-clean         Perform deep cleaning (scan system for *.tmp files and more)'
+    printf '%s\n' '-l,--locales            Delete all locales except American English (en-US)'
+    exit 0
+}
+
+
+rmfiles() {
+    if [ -z "$1" ]; then
+        printf 'ERROR: A parameter is required!\n' >&2
+    elif [ "$1" = '--test' ] || [ "$1" = '-t' ] || [ "$1" = '--preview' ]; then
+        if [ -n "${3:-}" ] && [ -d "$3" ]; then
+            find "$3" -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2>/dev/null
+        elif [ -n "${2:-}" ]; then
+            find . -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2>/dev/null
+        else
+            printf 'ERROR: Parameters are missing or invalid!\n' >&2
+        fi
+    elif [ -n "${2:-}" ] && [ -d "$2" ]; then
+        find "$2" -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2>/dev/null
+    else
+        find . -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2>/dev/null
+    fi
+}
+
+
+if [ -x "$(command -v sqlite3)" ]; then
+    sqlvacuum() {
+        for file in "$@"; do
+            if [ ! -r "$file" ]; then
+                continue
+            else
+                echo 'vacuum;' | sqlite3 "$file"
+            fi
+        done
+    }
+fi
+
+
+# GETOPT #
+
+
+GOPT="$(getopt -o dhl --long deep-clean,help,locales -- "$@")"
+eval set -- "$GOPT"
+
+deep_clean=0
+del_locales=0
+
+while true; do
+    case "$1" in
+        -h|--help)  # Display help info
+            Help
+            shift
+        ;;
+        -d|--deep-clean)  # Perform deep cleaning
+            deep_clean=1
+            shift
+        ;;
+        -l|--locales)  # Delete all locales except American English (en-US)
+            del_locales=1
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+# USER FILES #
+
+
+# Cache & Cookies
+
+rm -f -R ~/.cache/ ~/.bash_sessions/ ~/.gnome2/rhythmbox/jamendo/ ~/.gnome2/rhythmbox/magnatune/ ~/.local/share/zeitgeist/ || true
+rm -f -R ~/.adobe/Acrobat/*/Cache/ ~/.googleearth/Cache/ ~/.googleearth/Temp/ ~/.hardinfo ~/.recoll/xapiandb/ ~/.xchat2/scrollback/ ~/.warzone2100*/logs/ || true
+rm -f -R ~/.aMule/Temp/ ~/.beagle/Indexes/ ~/.beagle/TextCache/ ~/.gftp/cache/ ~/.gimp-2*/tmp/ ~/.nexuiz/data/dlcache/ ~/.config/emesene1.0/*/cache/ ~/.evolution/cache/ || true
+rm -f -R ~/.exaile/cache/ ~/.exaile/covers/ ~/.config/gpodder/cache/ ~/.hippo_opensim_viewer/cache/ ~/.kde/cache-*/ ~/.kde4/cache-*/ || true
+rm -f -R ~/.liferea_*/cache/ ~/.liferea_*/mozilla/liferea/Cache/ ~/.miro/mozilla/Cache/ || true
+rm -f -R ~/.macromedia/ ~/.adobe/Flash_Player/AssetCache/ ~/.adobe/Flash_Player/NativeCache/ || true
+rm -f -R ~/.wine/drive_c/windows/temp/ ~/.wine/drive_c/winetrickstmp/ ~/.winetrickscache/ || true
+rm -f -R ~/.config/libreoffice/*/user/uno_packages/cache/ ~/.libreoffice/*/user/uno_packages/cache/ ~/.libreoffice/*/user/config/uno_packages/cache/ || true
+rm -f ~/.recently-used.xbel ~/.recently-used.xbel.* ~/.idlerc/recent-files.lst ~/.local/share/recently-used.xbel ~/.gnome2/gedit-metadata.xml || true
+rm -f ~/.adobe/Acrobat/*/Preferences/reader_prefs ~/.npm/_cacache ~/.secondlife/cache/ ~/.config/real/rpcookies.txt ~/.xine/catalog.cache ~/.viminfo || true
+rm -f ~/.amsn/*/displaypic/cache/*.dat ~/.elinks/cookies ~/.Skype/*/chatmsg[0-9]*.dbb ~/.Skype/*/chatsync/*/*.dat ~/.liferea_*/mozilla/liferea/cookies.sqlite || true
+
+# Logs & History
+
+rm -f -R ~/.amsn/*/logs/date/ ~/.beagle/Log/ ~/.octave_hist ~/.purple/logs/ ~/.xchat2/logs/ ~/.xchat2/xchatlogs/ ~/.config/emesene1.0/*/logs/ || true
+rm -f -R ~/.hippo_opensim_viewer/logs/ ~/.java/deployment/cache/ ~/.icedteaplugin/cache/ ~/.icedtea/cache/ || true
+rm -f ~/.xsession-errors ~/.xsession-errors.old ~/.sh_history ~/.bash_history ~/*.log ~/.easytag/*.history ~/.easytag/*.mask ~/.config/easytag/*.history ~/.config/easytag/*.mask ~/.easytag/easytag.log ~/.mc/filepos ~/.mc/history ~/.config/Screenlets/*.log || true
+rm -f ~/.nautilus/saved-session-* ~/.nautilus/metafiles/*:*.xml ~/.mandelbulb*/files.recent ~/.miro/*log ~/.miro/miro-log* || true
+rm -r ~/.elinks/globhist ~/.elinks/gotohist ~/.elinks/searchhist ~/.exaile/exaile.log ~/.kde/share/apps/RecentDocuments/*.desktop ~/.kde4/share/apps/RecentDocuments/*.desktop || true
+rm -r ~/.gconf/apps/gnome-settings/gnome-panel/%gconf.xml ~/.gconf/apps/gnome-settings/gnome-search-tool/%gconf.xml ~/.gconf/desktop/%gconf.xml ~/.gconf/desktop/gnome/%gconf.xml ~/.local/share/gnome-shell/application_state || true
+rm -f ~/.coffee_history ~/.lesshst ~/.python_history ~/.secondlife/logs/ ~/.sqlite_history ~/.wget-hsts ~/.local/share/gvfs-metadata/*.log ~/.local/share/gvfs-metadata/*.log || true
+rm -f ~/.amsn/*/logs/*.log ~/.aMule/log* ~/.config/emesene2/*/log ~/.config/emesene2/*/log-journal ~/.config/audacious/log* ~/.ntrc_2/history* ~/.ntrc_2/cookies.txt || true
+rm -f ~/.gftp/gftp.log ~/.gl-117/logfile.txt ~/.kde4/share/apps/gwenview/recentfolders/*rc ~/.kde4/share/apps/gwenview/recenturls/*rc ~/.kde/share/apps/gwenview/recentfolders/*rc ~/.kde/share/apps/gwenview/recenturls/*rc || true
+
+# Thumbnails
+
+rm -f -R ~/.cache/thumbnails/ ~/.cache/thumbnail/ ~/.thumbnails/ ~/.thumbnail/ ~/.amsn/*/displaypic/cache/*.png ~/.mandelbulb*/thumbnails/ ~/.miro/icon-cache/ ~/.purple/icons/ || true
+
+# Web Browser Cache, Logs, History, & More
+
+# Chrome/Chromium
+rm -f -R ~/.config/chromium/Default/Thumbnails*/ ~/.config/chromium/Default/Application\ Cache/ ~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/Cache/ ~/.config/chromium/Default/databases/http*/ ~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/Cookies/ ~/.config/chromium/Default/Session\ Storage/ ~/.config/google-chrome/Default/Pepper\ Data/Shockwave\ Flash/CacheWritableAdobeRoot/ ~/.config/google-chrome/Default/Application\ Cache/ ~/.config/google-chrome/*/Pepper\ Data/Shockwave\ Flash/WritableRoot/ ~/.config/google-chrome/Default/Thumbnails/ ~/.config/google-chrome/Default/Session\ Storage/ ~/.config/google-chrome/Default/Sync\ Data\ Backup/ || true
+rm -f ~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/*istor* ~/.config/chromium/Default/Favicons ~/.config/chromium/Default/*istory ~/.config/chromium/Default/Histor* ~/.config/chromium/Default/Network\ Action\ Predict* ~/.config/chromium/Default/Origin\ Bound\ Certs-journal ~/.config/chromium/Default/Shortcut* ~/.config/chromium/Default/Cookies ~/.config/chromium/Default/Extension\ Cookies ~/.config/chromium/Default/Local\ Storage/http*localstorage ~/.config/chromium/Default/Web\ Data ~/.config/chromium/Default/Top\ Site* ~/.config/chromium/Default/Visited\ Links ~/.config/google-chrome/*/Cookies ~/.config/google-chrome/*/*Cookies ~/.config/google-chrome/*/Cookies* ~/.config/google-chrome/Default/Local\ Storage/http*localstorag* ~/.config/google-chrome/Default/databases/http*/* ~/.config/google-chrome/Default/Favicons ~/.config/google-chrome/chrome_shutdown_ms.txt ~/.config/google-chrome/Default/History ~/.config/google-chrome/Default/*Histor* ~/.config/google-chrome/Default/*Action\ Predicto* ~/.config/google-chrome/Default/Origin\ Bound\ Certs-journal ~/.config/google-chrome/Default/Shortcut* ~/.config/google-chrome/Default/Thumbnails-journal ~/.config/google-chrome/Default/Top\ Site* ~/.config/google-chrome/Default/Visited\ Links ~/.config/google-chrome/Default/History\ Index* ~/.config/google-chrome/Default/Current\ Session ~/.config/google-chrome/Default/Current\ Tabs ~/.config/google-chrome/Default/Last\ Session ~/.config/google-chrome/Default/Last\ Tabs || true
+# Epiphany
+rm -f -R ~/.gnome2/epiphany/favicon_cache/ ~/.gnome2/epiphany/mozilla/epiphany/Cache/ ~/.local/share/webkitgtk/localstorage/ || true
+rm -f ~/.gnome2/epiphany/ephy-favicon-cache.xml ~/.gnome2/epiphany/mozilla/epiphany/cookies.txt ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite-journal ~/.config/epiphany/cookies.sqlite || true
+# Firefox
+rm -f -R ~/.mozilla/firefox/Crash\ Reports/ ~/.mozilla/firefox/Pending\ Pings/ || true
+# Konqueror
+rm -f -R ~/.kde/share/apps/kcookiejar/cookies/ ~/.kde4/share/apps/kcookiejar/cookies/ ~/.kde/share/apps/konqueror/autosave/ ~/.kde4/share/apps/konqueror/autosave/ || true
+rm -f ~/.kde/share/apps/konqueror/closeditems_saved ~/.kde/share/apps/konqueror/konq_history ~/.kde/share/config/konq_history ~/.kde4/share/apps/konqueror/closeditems_saved ~/.kde4/share/apps/konqueror/konq_history ~/.kde4/share/config/konq_history || true
+# Links
+rm -f ~/.links2/links.his ~/.links/links.his || true
+# Opera
+rm -f -R ~/.opera/cache/ ~/.opera/cache*/ ~/.opera/*cache/ ~/.opera/icons/ ~/.opera/thumbnails/ ~/.opera/pstorage/ || true
+rm -f ~/.opera/cookies4.dat ~/.opera/sessions/autosave.win ~/.opera/sessions/autosave.win.* ~/.opera/download.dat ~/.opera/search_field_history.dat ~/.opera/global.dat ~/.opera/global_history.dat ~/.opera/typed_history.xml ~/.opera/vlink4.dat ~/.opera/vps/*/md.dat || true
+# Seamonkey
+rm -f -R ~/.mozilla/seamonkey/*/Cache/ ~/.mozilla/seamonkey/Profiles/*/Cache/ || true
+rm -f ~/.mozilla/*/*/chatzilla/logs/*log ~/.mozilla/*/*/history.dat ~/.mozilla/seamonkey/*/downloads.sqlite ~/.mozilla/seamonkey/*/urlbarhistory.sqlite ~/.mozilla/*/*/cookies.txt || true
+# Thunderbird
+rm -f -R ~/.thunderbird/Crash\ Reports/ ~/.thunderbird/*/crashes/ ~/.thunderbird/Profiles/*/crashes/ ~/.thunderbird/*/Cache/ ~/.thunderbird/Profiles/*/Cache/ || true
+rm -f ~/.thunderbird/*/*/cookies.sqlite ~/.thunderbird/*/cookies.sqlite || true
+# Tor
+rm -f -R ~/.tor/*/.cache/ || true
+
+[ -x "$(command -v xdg-desktop-menu)" ] && xdg-desktop-menu forceupdate --mode user &
+
+# SQLite3 Cleaners
+
+if [ -x "$(command -v sqlite3)" ]; then
+    [ -f ~/.config/gpodder/database.sqlite ] && sqlbulkvacuum ~/.config/gpodder/database.sqlite &
+    sqlbulkvacuum ~/.liferea_*/mozilla/liferea/*.sqlite &
+    sqlbulkvacuum ~/.liferea_*/liferea.db &
+    # Chrome
+    [ -d ~/.config/google-chrome/Default/ ] && sqlbulkvacuum ~/.config/google-chrome/Default/Cookies ~/.config/google-chrome/Default/Extension\ Cookies ~/.config/google-chrome/Default/History ~/.config/google-chrome/Default/databases/Databases.db &
+    # Epiphany
+    [ -d ~/.gnome2/epiphany/mozilla/epiphany/ ] && sqlbulkvacuum ~/.gnome2/epiphany/mozilla/epiphany/*.sqlite &
+    # Firefox
+    [ -d ~/.mozilla/firefox/ ] && echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite && sqlbulkvacuum ~/.mozilla/firefox/*/*.sqlite &
+    [ -d ~/.mozilla/firefox/Profiles/ ] && sqlbulkvacuum ~/.mozilla/firefox/Profiles/*/*.sqlite &
+    # Thunderbird
+    [ -d ~/.thunderbird/ ] && sqlbulkvacuum ~/.thunderbird/*/*.sqlite &
+    [ -d ~/.thunderbird/Profiles/ ] && sqlbulkvacuum ~/.thunderbird/Profiles/*/*.sqlite &
+fi
+
+# Miscellaneous Cleaners & Optimizations
+
+[ -x "$(command -v winetricks)" ] && winetricks --optout
+
+
+# SYSTEM FILES #
+
+
+_system="$(uname | tr '[:upper:]' '[:lower:]')"
+
+[ -x "$(command -v npm)" ] && npm cache clean >&2 2>/dev/null &
+
+
+# Apple-Specific Cache & Logs
+
+if [ "$_system" = 'darwin' ] && [ -d "${HOME}/Library" ]; then
+    rm -f -R ~/Library/Caches/* ~/Library/Cookies/* ~/Library/Logs/* || true
+    if [ -x "$(command -v brew)" ]; then  # Package Manager Cleanup
+        brew prune
+        brew cleanup -s
+        rm -f -R "$(brew --cache)"
+        brew doctor
+    fi
+fi
+
+
+# Clean-Up Requiring Root Privileges
+
+if [ "$(id -u)" -eq 0 ]; then
+    # Fontconfig
+    rm -f -R /var/cache/fontconfig/ /var/cache/fonts/ || true
+    fc-cache -f -s &
+    # Various Cleaners
+    [ -x "$(command -v xdg-desktop-menu)" ] && xdg-desktop-menu forceupdate --mode system &
+    [ "$_system" = 'darwin' ] && [ -d "${HOME}/Library" ] && (rm -f -R ~/Library/Caches/* ~/Library/Cookies/* ~/Library/Logs/* || true)
+    # SQLite3 Cleaners
+    if [ -x "$(command -v sqlite3)" ]; then
+        sqlbulkvacuum /var/cache/yum/*/*.sqlite
+    fi
+    # Cache from /var/
+    rm -f -R /var/cache/app-info/ /var/cache/flashplugin-installer/ /var/log/* /var/cache/pbuilder/ || true
+    rm -f /var/backups/alternatives* /var/backups/apt* /var/backups/dpkg* || true
+    # Package Management
+    rm -f -R /var/cache/apt-build/ /var/cache/apt-xapian-index/ || true
+    if [ -x "$(command -v apt-get)" ]; then
+        apt-get clean
+        apt-get check
+        apt-get autoremove
+        [ -d /var/lib/apt/lists/ ] && rm -f -R /var/lib/apt/lists/
+        [ -d /var/lib/update-notifier/package-data-downloads/partial/ ] && rm -f /var/lib/update-notifier/package-data-downloads/partial/*.FA‌ILED
+    elif [ -x "$(command -v dnf)" ]; then
+        dnf clean all
+        dnf check
+        dnf autoremove
+    elif [ -x "$(command -v eclean)" ] && [ -x "$(command -v eclean)" ]; then
+        eclean distfiles
+        emerge -uDN world
+        eclean --depclean
+    elif [ -x "$(command -v pacman)" ]; then
+        pacman -Scc
+        pacman -Dk
+        pacman -Rs -
+    elif [ -x "$(command -v yum)" ]; then
+        yum clean all
+        yum check
+        yum autoremove
+    elif [ -x "$(command -v zypper)" ]; then
+        zypper clean
+        zypper verify
+        zypper remove --clean-deps
+    fi
+    # Deep Clean
+    if [ "$deep_clean" -eq 1 ]; then
+        rmfiles '.+~$' /
+        rmfiles '\.~lock\..*#$' /
+        rmfiles '.*\.[Bb][Aa][Kk]$' /
+        rmfiles '.*\.[Tt][Mm][Pp]$' /
+        rmfiles '.*\.[Ll][Oo][Gg]$' /var/
+        rmfiles '.*(\.|_|\-|)history$' /
+        rmfiles '.*\.DS_Store$' /
+        rmfiles '[Tt]humbs\.db$' /
+    fi
+    # Delete Locales
+    if [ "$del_locales" -eq 1 ]; then
+        [ -d /usr/lib/libreoffice/share/autocorr/ ] && find /usr/lib/libreoffice/share/autocorr/ -regextype awk -regex '.*en\-US.+' -prune -o -type f -regextype awk -regex '.+/.+\.dat' -exec rm -f '{}' + 2>/dev/null
+        [ -d /usr/share/i18n/locales/ ] && find /usr/share/i18n/locales/ -name '/usr/share/i18n/locales/' -prune -o -name 'en_US' -prune -o -name 'C' -prune -o -name 'POSIX' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type f -regextype awk -regex '/usr/share/i18n/locales/.+' -exec rm -f '{}' + 2>/dev/null
+        [ -d /usr/share/locale/ ] && find /usr/share/locale/ -name '/usr/share/locale/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'locale.alias' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale/.+' -exec rm -f -R '{}' + 2>/dev/null
+        [ -d /usr/share/locale-langpack/ ] && find /usr/share/locale-langpack/ -name '/usr/share/locale-langpack/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale-langpack/.+' -exec rm -f -R '{}' + 2>/dev/null
+        [ -d /usr/share/man/ ] && find /usr/share/man/ -name '/usr/share/man/' -prune -o -regextype awk -regex '.*/man[1-8]' -prune -o -type d -regextype awk -regex '/usr/share/man/.+' -exec rm -f -R '{}' + 2>/dev/null
+        rm -f -R /usr/share/cups/locale/ || true
+    fi
+    # Final Cleanup
+    [ -x "$(command -v dmesg)" ] && dmesg -C
+    [ -x "$(command -v mandb)" ] && mandb
+    sync && sleep 2 && echo 3 > /proc/sys/vm/drop_caches
+fi
+
+
+# CLOSE #
+
+
+printf 'The cleaning has completed.\n'
+exit 0

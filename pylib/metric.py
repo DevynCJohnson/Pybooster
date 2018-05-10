@@ -1,230 +1,129 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
-"""@brief Metric related functions
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Metric-related functions
+
 @file metric.py
 @package pybooster.metric
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
-
-
-# pylint: disable=R0911,R0912
 
 
 from re import sub as resub
 
 
 __all__ = [
-    # CONSTANTS
-    'YOCTO_UNITS',
-    'ZEPTO_UNITS',
-    'ATTO_UNITS',
-    'FEMTO_UNITS',
-    'PICO_UNITS',
-    'NANO_UNITS',
-    'MICRO_UNITS',
-    'MILLI_UNITS',
-    'CENTI_UNITS',
-    'DECI_UNITS',
-    'DECA_UNITS',
-    'HECTO_UNITS',
-    'KILO_UNITS',
-    'MEGA_UNITS',
-    'GIGA_UNITS',
-    'TERA_UNITS',
-    'PETA_UNITS',
-    'EXA_UNITS',
-    'ZETTA_UNITS',
-    'YOTTA_UNITS',
-    'SIUNITS',
-    'METRIC_PREFIX',
-    'NON_STANDARD_PREFIX',
-    # FUNCTIONS
-    'str2tupleunit',
-    'siunits2base',
+    # CONSTANTS #
+    r'YOCTO_UNITS',
+    r'ZEPTO_UNITS',
+    r'ATTO_UNITS',
+    r'FEMTO_UNITS',
+    r'PICO_UNITS',
+    r'NANO_UNITS',
+    r'MICRO_UNITS',
+    r'MILLI_UNITS',
+    r'CENTI_UNITS',
+    r'DECI_UNITS',
+    r'DECA_UNITS',
+    r'HECTO_UNITS',
+    r'KILO_UNITS',
+    r'MEGA_UNITS',
+    r'GIGA_UNITS',
+    r'TERA_UNITS',
+    r'PETA_UNITS',
+    r'EXA_UNITS',
+    r'ZETTA_UNITS',
+    r'YOTTA_UNITS',
+    r'SIUNITS',
+    r'METRIC_PREFIX',
+    r'NON_STANDARD_PREFIX',
+    # FUNCTIONS #
+    r'str2tupleunit',
+    r'siunits2base'
 ]
 
 
-# CONSTANTS
+# CONSTANTS #
 
 
-YOCTO_UNITS = (
-    r'ym',
-    r'yV',
-    r'yA',
-    r'yΩ',
-)
+YOCTO_UNITS = (r'ym', r'yV', r'yA', r'yΩ')
 
 
-ZEPTO_UNITS = (
-    r'zm',
-    r'zV',
-    r'zA',
-    r'zΩ',
-)
+ZEPTO_UNITS = (r'zm', r'zV', r'zA', r'zΩ')
 
 
-ATTO_UNITS = (
-    r'am',
-    r'aV',
-    r'aA',
-    r'aΩ',
-)
+ATTO_UNITS = (r'am', r'aV', r'aA', r'aΩ')
 
 
-FEMTO_UNITS = (
-    r'fm',
-    r'fV',
-    r'fA',
-    r'fΩ',
-)
+FEMTO_UNITS = (r'fm', r'fV', r'fA', r'fΩ')
 
 
-PICO_UNITS = (
-    r'pm',
-    r'pV',
-    r'pA',
-    r'pΩ',
-)
+PICO_UNITS = (r'pm', r'pV', r'pA', r'pΩ')
 
 
-NANO_UNITS = (
-    r'nm',
-    r'nV',
-    r'nA',
-    r'nΩ',
-)
+NANO_UNITS = (r'nm', r'nV', r'nA', r'nΩ')
 
 
-MICRO_UNITS = (
-    r'μm',
-    r'μV',
-    r'μA',
-    r'μΩ',
-)
+MICRO_UNITS = (r'μm', r'μV', r'μA', r'μΩ')
 
 
-MILLI_UNITS = (
-    r'mm',
-    r'mV',
-    r'mA',
-    r'mΩ',
-)
+MILLI_UNITS = (r'mm', r'mV', r'mA', r'mΩ')
 
 
-CENTI_UNITS = (
-    r'cm',
-    r'cV',
-    r'cA',
-    r'cΩ',
-)
+CENTI_UNITS = (r'cm', r'cV', r'cA', r'cΩ')
 
 
-DECI_UNITS = (
-    r'dm',
-    r'dV',
-    r'dA',
-    r'dΩ',
-)
+DECI_UNITS = (r'dm', r'dV', r'dA', r'dΩ')
 
 
-DECA_UNITS = (
-    r'dam',
-    r'daV',
-    r'daA',
-    r'daΩ',
-)
+DECA_UNITS = (r'dam', r'daV', r'daA', r'daΩ')
 
 
-HECTO_UNITS = (
-    r'hm',
-    r'hV',
-    r'hA',
-    r'hΩ',
-)
+HECTO_UNITS = (r'hm', r'hV', r'hA', r'hΩ')
 
 
-KILO_UNITS = (
-    r'km',
-    r'kV',
-    r'kA',
-    r'kΩ',
-)
+KILO_UNITS = (r'km', r'kV', r'kA', r'kΩ')
 
 
-MEGA_UNITS = (
-    r'Mm',
-    r'MV',
-    r'MA',
-    r'MΩ',
-)
+MEGA_UNITS = (r'Mm', r'MV', r'MA', r'MΩ')
 
 
-GIGA_UNITS = (
-    r'Gm',
-    r'GV',
-    r'GA',
-    r'GΩ',
-)
+GIGA_UNITS = (r'Gm', r'GV', r'GA', r'GΩ')
 
 
-TERA_UNITS = (
-    r'Tm',
-    r'TV',
-    r'TA',
-    r'TΩ',
-)
+TERA_UNITS = (r'Tm', r'TV', r'TA', r'TΩ')
 
 
-PETA_UNITS = (
-    r'Pm',
-    r'PV',
-    r'PA',
-    r'PΩ',
-)
+PETA_UNITS = (r'Pm', r'PV', r'PA', r'PΩ')
 
 
-EXA_UNITS = (
-    r'Em',
-    r'EV',
-    r'EA',
-    r'EΩ',
-)
+EXA_UNITS = (r'Em', r'EV', r'EA', r'EΩ')
 
 
-ZETTA_UNITS = (
-    r'Zm',
-    r'ZV',
-    r'ZA',
-    r'ZΩ',
-)
+ZETTA_UNITS = (r'Zm', r'ZV', r'ZA', r'ZΩ')
 
 
-YOTTA_UNITS = (
-    r'Ym',
-    r'YV',
-    r'YA',
-    r'YΩ',
-)
+YOTTA_UNITS = (r'Ym', r'YV', r'YA', r'YΩ')
 
 
 SIUNITS = (
@@ -252,36 +151,36 @@ SIUNITS = (
 
 
 METRIC_PREFIX = {
-    'yotta': ('Y', 1000000000000000000000000),
-    'zetta': ('Z', 1000000000000000000000),
-    'exa': ('E', 1000000000000000000),
-    'peta': ('P', 1000000000000000),
-    'tera': ('T', 1000000000000),
-    'giga': ('G', 1000000000),
-    'mega': ('M', 1000000),
-    'kilo': ('k', 1000),
-    'hecto': ('h', 100),
-    'deca': ('da', 10),
-    'deci': ('d', 0.1),
-    'centi': ('c', 0.01),
-    'milli': ('m', 0.001),
-    'micro': ('μ', 0.000001),
-    'nano': ('n', 0.000000001),
-    'pico': ('p', 0.000000000001),
-    'femto': ('f', 0.000000000000001),
-    'atto': ('a', 0.000000000000000001),
-    'zepto': ('z', 0.000000000000000000001),
-    'yocto': ('y', 0.000000000000000000000001),
+    r'yotta': (r'Y', 1000000000000000000000000),
+    r'zetta': (r'Z', 1000000000000000000000),
+    r'exa': (r'E', 1000000000000000000),
+    r'peta': (r'P', 1000000000000000),
+    r'tera': (r'T', 1000000000000),
+    r'giga': (r'G', 1000000000),
+    r'mega': (r'M', 1000000),
+    r'kilo': (r'k', 1000),
+    r'hecto': (r'h', 100),
+    r'deca': (r'da', 10),
+    r'deci': (r'd', 0.1),
+    r'centi': (r'c', 0.01),
+    r'milli': (r'm', 0.001),
+    r'micro': (r'μ', 0.000001),
+    r'nano': (r'n', 0.000000001),
+    r'pico': (r'p', 0.000000000001),
+    r'femto': (r'f', 0.000000000000001),
+    r'atto': (r'a', 0.000000000000000001),
+    r'zepto': (r'z', 0.000000000000000000001),
+    r'yocto': (r'y', 0.000000000000000000000001)
 }
 
 
 NON_STANDARD_PREFIX = {
-    'myria': ('my', 10000),
-    'hella': ('H', 1000000000000000000000000000),
+    r'myria': (r'my', 10000),
+    r'hella': (r'H', 1000000000000000000000000000),
 }
 
 
-# FUNCTIONS
+# FUNCTIONS #
 
 
 def str2tupleunit(_str: str) -> tuple:
@@ -291,7 +190,7 @@ def str2tupleunit(_str: str) -> tuple:
     return (_num, _unit)
 
 
-def siunits2base(_measurement: tuple) -> tuple:  # noqa
+def siunits2base(_measurement: tuple) -> tuple:   # noqa: C901 # pylint: disable=R0911,R0912
     """Convert SI units to base unit"""
     if _measurement[1] in YOCTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000000001, _measurement[1][1:])

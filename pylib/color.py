@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
-"""@brief Color Manipulations
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Color manipulation
+
 @file color.py
 @package pybooster.color
+@version 2018.04.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
-@version 2017.07.15
 
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
 
-The PyBooster Library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
+This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library.
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
 """
 
 
@@ -34,60 +36,59 @@ from math import acos, cos, sqrt
 
 
 __all__ = [
-    # FUNCTIONS
-    # CMY
-    'cmy2cmyk',
-    'cmy2rgb',
-    # CMYK
-    'cmyk2cmy',
-    'cmyk2rgb',
-    'cmyk2rgbbyte',
-    # GETVALUE
-    'getvalue',
-    # HSI
-    'hsi2rgb',
-    'hsi2rgbbyte',
-    # HLS
-    'hls2hsv',
-    'hls2rgb',
-    # HSV
-    'hsv2hls',
-    'hsv2rgb',
-    # HUE
-    'huedegree2huefloat',
-    'huefloat2huedegree',
-    # HTML
-    'html2hex',
-    'html2rgb',
-    'shorthand2sixdigit',
-    # HUNTERLAB
-    'hunterlab2xyz',
-    # RGB
-    'rgb2cmy',
-    'rgb2cmyk',
-    'rgb2hex',
-    'rgb2hls',
-    'rgb2hsi',
-    'rgb2hsv',
-    'rgb2html',
-    'rgb2xyz',
-    'rgb2yiq',
-    'rgb2rgba',
-    'rgba2rgb',
-    'rgb2rgbf',
-    'rgbf2rgb',
-    # ROUND
-    'roundrgb',
-    # XYZ
-    'xyz2hunterlab',
-    'xyz2rgb',
-    'xyz2rgb_int',
-    # YIQ
-    'yiq2rgb',
+    # CMY #
+    r'cmy2cmyk',
+    r'cmy2rgb',
+    # CMYK #
+    r'cmyk2cmy',
+    r'cmyk2rgb',
+    r'cmyk2rgbbyte',
+    # GETVALUE #
+    r'getvalue',
+    # HSI #
+    r'hsi2rgb',
+    r'hsi2rgbbyte',
+    # HLS #
+    r'hls2hsv',
+    r'hls2rgb',
+    # HSV #
+    r'hsv2hls',
+    r'hsv2rgb',
+    # HUE #
+    r'huedegree2huefloat',
+    r'huefloat2huedegree',
+    # HTML #
+    r'html2hex',
+    r'html2rgb',
+    r'shorthand2sixdigit',
+    # HUNTERLAB #
+    r'hunterlab2xyz',
+    # RGB #
+    r'rgb2cmy',
+    r'rgb2cmyk',
+    r'rgb2hex',
+    r'rgb2hls',
+    r'rgb2hsi',
+    r'rgb2hsv',
+    r'rgb2html',
+    r'rgb2xyz',
+    r'rgb2yiq',
+    r'rgb2rgba',
+    r'rgba2rgb',
+    r'rgb2rgbf',
+    r'rgbf2rgb',
+    # ROUND #
+    r'roundrgb',
+    # XYZ #
+    r'xyz2hunterlab',
+    r'xyz2rgb',
+    r'xyz2rgb_int',
+    # YIQ #
+    r'yiq2rgb'
 ]
 
 
-# FUNCTIONS
+# FUNCTIONS #
 
 
 def getvalue(m1: float, m2: float, hue: float) -> float:
@@ -95,14 +96,14 @@ def getvalue(m1: float, m2: float, hue: float) -> float:
     hue = hue % 1.0
     if hue < 0.166666666666667:
         return m1 + (m2 - m1) * hue * 6.0
-    if hue < 0.5:
+    elif hue < 0.5:
         return m2
-    if hue < 0.666666666666667:
+    elif hue < 0.666666666666667:
         return m1 + (m2 - m1) * (0.666666666666667 - hue) * 6.0
     return m1
 
 
-# CMY
+# CMY #
 
 
 def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
@@ -125,18 +126,17 @@ def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
     return _cyan, _magenta, _yellow, _black
 
 
-def cmy2rgb(_c: float, _m: float, _y: float, _out_float: bool=True) -> tuple:
+def cmy2rgb(_c: float, _m: float, _y: float, _out_float: bool = True) -> tuple:
     """CMY -> RGB"""
     _red = 1 - _c
     _green = 1 - _m
     _blue = 1 - _y
     if _out_float:
         return _red, _green, _blue
-    else:
-        return _red * 255, _green * 255, _blue * 255
+    return _red * 255, _green * 255, _blue * 255
 
 
-# CMYK
+# CMYK #
 
 
 def cmyk2cmy(_cyan: float, _magenta: float, _yellow: float, _black: float) -> tuple:
@@ -163,7 +163,7 @@ def cmyk2rgbbyte(_cyan: float, _magenta: float, _yellow: float, _black: float) -
     return int(255 * _red), int(255 * _green), int(255 * _blue)
 
 
-# HSI
+# HSI #
 
 
 def hsi2rgb(_hue: float, _sat: float, _intensity: float) -> tuple:
@@ -274,7 +274,7 @@ def hsi2rgbbyte(_hue: float, _sat: float, _intensity: float) -> tuple:
     return _red, _green, _blue
 
 
-# HLS
+# HLS #
 
 
 def hls2hsv(hue: float, light: float, sat: float) -> tuple:
@@ -286,19 +286,19 @@ def hls2hsv(hue: float, light: float, sat: float) -> tuple:
     return hue, s, v
 
 
-def hls2rgb(h: float, l: float, s: float) -> tuple:
+def hls2rgb(h: float, _l: float, s: float) -> tuple:
     """HLS -> RGB"""
     if s == 0.0:
-        return l, l, l
-    if l <= 0.5:
-        m2 = l * (1.0 + s)
+        return _l, _l, _l
+    if _l <= 0.5:
+        m2 = _l * (1.0 + s)
     else:
-        m2 = l + s - (l * s)
-    m1 = 2.0 * l - m2
+        m2 = _l + s - (_l * s)
+    m1 = 2.0 * _l - m2
     return (getvalue(m1, m2, h + 0.333333333333333), getvalue(m1, m2, h), getvalue(m1, m2, h - 0.333333333333333))
 
 
-# HSV
+# HSV #
 
 
 def hsv2hls(_hue: float, _sat: float, _value: float) -> tuple:
@@ -331,11 +331,10 @@ def hsv2rgb(h: float, s: float, v: float) -> tuple:
         return p, q, v
     elif i == 4:
         return t, p, v
-    elif i == 5:
-        return v, p, q
+    return v, p, q
 
 
-# HUE CONVERSIONS
+# HUE CONVERSIONS #
 
 
 def huedegree2huefloat(_hue: int) -> float:
@@ -348,7 +347,7 @@ def huefloat2huedegree(_hue: float) -> int:
     return _hue * 360
 
 
-# HTML (web colors)
+# HTML (WEB COLORS) #
 
 
 def html2hex(_html: str) -> tuple:
@@ -380,7 +379,7 @@ def shorthand2sixdigit(_shorthand: str) -> str:
     return '#' + str(_red) + str(_green) + str(_blue)
 
 
-# HUNTER LAB
+# HUNTER LAB #
 
 
 def hunterlab2xyz(_hl: float, _ha: float, _hb: float) -> tuple:
@@ -394,10 +393,10 @@ def hunterlab2xyz(_hl: float, _ha: float, _hb: float) -> tuple:
     return _x, _y, _z
 
 
-# RGB
+# RGB #
 
 
-def rgb2cmy(_red, _green, _blue, _float: bool=True) -> tuple:
+def rgb2cmy(_red, _green, _blue, _float: bool = True) -> tuple:
     """RGB -> CMY"""
     if _float:
         _c = 1 - _red
@@ -410,7 +409,7 @@ def rgb2cmy(_red, _green, _blue, _float: bool=True) -> tuple:
     return _c, _m, _y
 
 
-# RGB (AS FLOAT)
+# RGB (AS FLOAT) #
 
 
 def rgb2cmyk(r: float, g: float, b: float) -> tuple:
@@ -440,11 +439,11 @@ def rgb2hls(r: float, g: float, b: float) -> tuple:
     """RGB -> HLS"""
     maxc = max(r, g, b)
     minc = min(r, g, b)
-    l = (minc + maxc) * 0.5
+    _l = (minc + maxc) * 0.5
     if minc == maxc:
-        return 0.0, l, 0.0
+        return 0.0, _l, 0.0
     maxc_minc = maxc - minc
-    if l <= 0.5:
+    if _l <= 0.5:
         s = maxc_minc / (maxc + minc)
     else:
         s = maxc_minc / (2.0 - maxc_minc)
@@ -455,7 +454,7 @@ def rgb2hls(r: float, g: float, b: float) -> tuple:
     else:
         h = 4.0 + ((maxc - g) / maxc_minc) - ((maxc - r) / maxc_minc)
     h = (h * 0.166666667) % 1.0
-    return h, l, s
+    return h, _l, s
 
 
 def rgb2hsi(_red: float, _green: float, _blue: float) -> tuple:
@@ -522,11 +521,11 @@ def rgb2html(_red: float, _green: float, _blue: float) -> str:
     _red = hex(round(_red))[2:4]
     _green = hex(round(_green))[2:4]
     _blue = hex(round(_blue))[2:4]
-    _html = '#' + _red + _green + _blue
+    _html = r'#' + _red + _green + _blue
     return _html
 
 
-def rgb2xyz(_red: float, _green: float, _blue: float, _float: bool=True) -> tuple:
+def rgb2xyz(_red: float, _green: float, _blue: float, _float: bool = True) -> tuple:
     """RGB -> XYZ"""
     if not _float:
         _red = _red / 255
@@ -561,15 +560,14 @@ def rgb2yiq(_red: float, _green: float, _blue: float) -> tuple:
     return (_y, _i, _q)
 
 
-# RGB AND RGBA
+# RGB & RGBA #
 
 
-def rgb2rgba(_red: float, _green: float, _blue: float, _bytearray: bool=False) -> tuple:
+def rgb2rgba(_red: float, _green: float, _blue: float, _bytearray: bool = False) -> tuple:
     """RGB -> RGBA"""
     if _bytearray is False:
         return _red, _green, _blue, 1.0000
-    else:
-        return _red, _green, _blue, 255
+    return _red, _green, _blue, 255
 
 
 def rgba2rgb(_red: float, _green: float, _blue: float) -> tuple:
@@ -577,7 +575,7 @@ def rgba2rgb(_red: float, _green: float, _blue: float) -> tuple:
     return _red, _green, _blue
 
 
-# RGB FLOATS AND RGB INTEGERS (BYTE ARRAY)
+# RGB FLOATS & RGB INTEGERS (BYTE ARRAY) #
 
 
 def rgb2rgbf(_red: float, _green: float, _blue: float) -> tuple:
@@ -595,7 +593,7 @@ def roundrgb(_r: float, _g: float, _b: float) -> tuple:
     return (round(_r), round(_g), round(_b))
 
 
-# XYZ
+# XYZ #
 
 
 def xyz2hunterlab(_x: float, _y: float, _z: float) -> tuple:
@@ -653,7 +651,7 @@ def xyz2rgb_int(_x: float, _y: float, _z: float) -> tuple:
     return _red * 255, _green * 255, _blue * 255
 
 
-# YIQ
+# YIQ #
 
 
 def yiq2rgb(_y: float, _i: float, _q: float) -> tuple:

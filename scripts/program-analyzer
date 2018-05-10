@@ -1,0 +1,2243 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief View various information about a library or executable
+
+@file program-analyzer
+@version 2018.04.27
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+# pylint: disable=C0103
+
+
+from binascii import hexlify
+from collections import namedtuple
+import ctypes
+from ctypes import c_void_p, c_char_p, c_int, c_size_t, Structure, POINTER
+from ctypes.util import find_library
+from datetime import datetime
+from os import R_OK, X_OK, access as fileaccess, environ, pathsep, stat
+from os.path import (
+    isdir,
+    isfile,
+    islink,
+    join as pathjoin,
+    lexists as pathexists,
+    split as pathsplit,
+)
+from signal import SIGINT, SIG_DFL, signal
+from subprocess import getoutput
+from sys import argv, stderr
+
+from gi import require_version
+require_version(r'Gdk', r'3.0')
+require_version(r'Gtk', r'3.0')
+from gi.repository import Gdk, Gtk  # noqa: E402,F401  # pylint: disable=C0413,W0611
+
+
+_GUI = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0
+
+Copyright (C) LGPLv3
+
+This file is part of Program-Analyzer.
+
+Program-Analyzer is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Program-Analyzer is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Program-Analyzer.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Devyn Collier Johnson
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name Program-Analyzer -->
+  <!-- interface-description Display the symbols and tables of a compiled program or library -->
+  <!-- interface-copyright LGPLv3 -->
+  <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkApplicationWindow" id="ezwin">
+    <property name="width_request">1000</property>
+    <property name="height_request">600</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title">Program-Analyzer</property>
+    <property name="window_position">center</property>
+    <property name="default_width">1000</property>
+    <property name="default_height">600</property>
+    <property name="icon_name">applications-development</property>
+    <property name="has_resize_grip">True</property>
+    <property name="show_menubar">False</property>
+    <signal name="destroy" handler="_winexit" swapped="no"/>
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="width_request">1000</property>
+        <property name="height_request">600</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkMenuBar" id="menubar">
+            <property name="height_request">25</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkMenuItem" id="menu_item1">
+                <property name="height_request">25</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_File</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="file_menu">
+                    <property name="height_request">100</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="anchor_hints">GDK_ANCHOR_FLIP_X</property>
+                    <property name="menu_type_hint">menu</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_open">
+                        <property name="label">gtk-open</property>
+                        <property name="height_request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Open a binary file</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="activate" handler="gtk_open" swapped="no"/>
+                        <accelerator key="o" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_save">
+                        <property name="label">gtk-save</property>
+                        <property name="height_request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Save</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="activate" handler="gtk_save" swapped="no"/>
+                        <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_saveas">
+                        <property name="label">gtk-save-as</property>
+                        <property name="height_request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Select where to save the data</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="activate" handler="gtk_saveas" swapped="no"/>
+                        <accelerator key="s" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menu_separator">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_quit">
+                        <property name="label">gtk-quit</property>
+                        <property name="height_request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Close the application</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="activate" handler="_winexit" swapped="no"/>
+                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK | GDK_MOD1_MASK"/>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkNotebook" id="tabs">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="margin_top">5</property>
+            <property name="margin_bottom">5</property>
+            <property name="scrollable">True</property>
+            <property name="enable_popup">True</property>
+            <signal name="switch-page" handler="show_hide_save" swapped="no"/>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_prop">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_prop">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">File Properties</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_prop">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">File properties &amp; information</property>
+                <property name="label" translatable="yes">File Properties</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_sym_tbl">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_sym_tbl">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Symbol Table</property>
+                <property name="position">1</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_sym_tbl">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the static symbol table
+objdump --special-syms --syms</property>
+                <property name="label" translatable="yes">Symbol Table</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Symbol Table</property>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_sym">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dyn_sym">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Dynamic Symbols</property>
+                <property name="position">2</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dyn_sym">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the dynamic symbol table entries
+objdump --special-syms --dynamic-syms</property>
+                <property name="label" translatable="yes">Dynamic Symbols</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Dynamic Symbols</property>
+                <property name="position">2</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_nm_sym">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_nm_sym">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">nm (Symbol List)</property>
+                <property name="position">3</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_nm_sym">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display symbols found by nm
+nm --dynamic --no-sort --special-syms --debug-syms</property>
+                <property name="label" translatable="yes">nm (Symbol List)</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">nm (Symbol List)</property>
+                <property name="position">3</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_reloc">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dyn_reloc">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Dynamic Relocation</property>
+                <property name="position">4</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dyn_reloc">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the dynamic relocation entries
+objdump --dynamic-reloc</property>
+                <property name="label" translatable="yes">Dynamic Relocation</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Dynamic Relocation</property>
+                <property name="position">4</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dis">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dis">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly</property>
+                <property name="position">5</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dis">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the disassembled code
+ndisasm</property>
+                <property name="label" translatable="yes">Disassembly</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly</property>
+                <property name="position">5</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dis_intel">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dis_intel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Intel)</property>
+                <property name="position">6</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dis_intel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the disassembled code using Intel syntax
+objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=intel</property>
+                <property name="label" translatable="yes">Disassembly (Intel)</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Intel)</property>
+                <property name="position">6</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dis_att">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dis_att">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (AT&amp;T)</property>
+                <property name="position">7</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dis_att">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the disassembled code using AT&amp;T syntax
+objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=att</property>
+                <property name="label" translatable="yes">Disassembly (AT&amp;T)</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (AT&amp;T)</property>
+                <property name="position">7</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dis_bin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dis_bin">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="wrap_mode">char</property>
+                    <property name="right_margin">15</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="input_purpose">digits</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Binary)</property>
+                <property name="position">8</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dis_bin">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the disassembled code as binary</property>
+                <property name="label" translatable="yes">Disassembly (Binary)</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Binary)</property>
+                <property name="position">8</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dis_hex">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_dis_hex">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="wrap_mode">word-char</property>
+                    <property name="right_margin">15</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Hexadecimal)</property>
+                <property name="position">9</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_dis_hex">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the disassembled code as hexadecimal</property>
+                <property name="label" translatable="yes">Disassembly (Hex)</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Disassembly (Hexadecimal)</property>
+                <property name="position">9</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_readelf">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_readelf">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="right_margin">15</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Readelf</property>
+                <property name="position">10</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_readelf">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display information returned by readelf
+file --preserve-date
+file --mime --preserve-date
+readelf --all --section-groups --unwind --arch-specific --histogram --wide</property>
+                <property name="label" translatable="yes">ReadElf</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Readelf</property>
+                <property name="position">10</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_all_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_all_headers">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">All Headers</property>
+                <property name="position">11</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_all_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display all file headers
+objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --wide</property>
+                <property name="label" translatable="yes">All Headers</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">All Headers</property>
+                <property name="position">11</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_header">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_header">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">File Header</property>
+                <property name="position">12</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_header">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the file header
+objdump --file-headers</property>
+                <property name="label" translatable="yes">File Header</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">File Header</property>
+                <property name="position">12</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_priv_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_priv_headers">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Private Headers</property>
+                <property name="position">13</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_priv_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the private headers
+objdump --private-headers</property>
+                <property name="label" translatable="yes">Private Headers</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Private Headers</property>
+                <property name="position">13</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_sec_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_sec_headers">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Section Headers</property>
+                <property name="position">14</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_sec_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the section headers
+objdump --section-headers</property>
+                <property name="label" translatable="yes">Section Headers</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Section Headers</property>
+                <property name="position">14</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_size">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_size">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Size</property>
+                <property name="position">15</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_size">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the results of size
+size --format=Berkeley
+size --format=SysV</property>
+                <property name="label" translatable="yes">Size</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Size</property>
+                <property name="position">15</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_str">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_str">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Strings</property>
+                <property name="position">16</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_str">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Display the contained strings
+strings --all</property>
+                <property name="label" translatable="yes">Strings</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Strings</property>
+                <property name="position">16</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_func">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_func">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Functions</property>
+                <property name="position">17</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_func">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">List all of the found functions</property>
+                <property name="label" translatable="yes">Functions</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Functions</property>
+                <property name="position">17</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_const">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">700</property>
+                <property name="min_content_height">400</property>
+                <child>
+                  <object class="GtkTextView" id="textview_const">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Constants</property>
+                <property name="position">18</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_const">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">List all of the found constants</property>
+                <property name="label" translatable="yes">Constants</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Constants</property>
+                <property name="position">18</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="about_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">5</property>
+                <property name="margin_right">5</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkGrid" id="grid_about">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="column_spacing">5</property>
+                    <property name="column_homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel" id="lbl_about">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Program-Analyzer
+Version 2017.12.24
+Author
+Devyn Collier Johnson
+&lt;DevynCJohnson@Gmail.com&gt;</property>
+                        <property name="justify">center</property>
+                        <property name="selectable">True</property>
+                        <property name="track_visited_links">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="lbl_donate">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">For more programs,
+- Visit DCJTech.info
+- Please donate to DCJTech</property>
+                        <property name="selectable">True</property>
+                        <property name="track_visited_links">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator" id="separator_about">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">5</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="padding">5</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="binutils_info">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="selectable">True</property>
+                    <property name="track_visited_links">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">About</property>
+                <property name="position">19</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_about">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Information about Program-Analyzer and GNU-binutils</property>
+                <property name="label" translatable="yes">About</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">About</property>
+                <property name="position">19</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid_controls">
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="margin_bottom">5</property>
+            <property name="row_homogeneous">True</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkLabel" id="l_file">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">File location (pathname)</property>
+                <property name="halign">start</property>
+                <property name="margin_left">5</property>
+                <property name="margin_right">5</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="label" translatable="yes">PathName</property>
+                <property name="selectable">True</property>
+                <property name="single_line_mode">True</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_save">
+                <property name="label">gtk-save</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Save the currently displayed data</property>
+                <property name="halign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="gtk_saveas" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_close">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Exit Application</property>
+                <property name="halign">end</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="_winexit" object="ezwin" swapped="no"/>
+                <accelerator key="q" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator_main">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar">
+            <property name="height_request">25</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="margin_start">10</property>
+            <property name="margin_end">10</property>
+            <property name="margin_top">5</property>
+            <property name="margin_bottom">5</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>"""
+
+_FILEGUI = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0
+
+Copyright (C) LGPLv3
+
+This file is part of EzWin.
+
+EzWin is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+EzWin is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with EzWin.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Devyn Collier Johnson
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name EzWin -->
+  <!-- interface-description File Selection -->
+  <!-- interface-copyright LGPLv3 -->
+  <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkApplicationWindow" id="ezwin">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Choose a File</property>
+    <property name="window_position">center</property>
+    <property name="default_width">800</property>
+    <property name="default_height">600</property>
+    <property name="icon_name">system-file-manager</property>
+    <property name="type_hint">dialog</property>
+    <property name="show_menubar">False</property>
+    <signal name="destroy" handler="_winexit" swapped="no"/>
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_right">5</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFileChooserWidget" id="filechooser">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_bottom">5</property>
+            <property name="create_folders">False</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="chkbtn2">
+            <property name="label" translatable="yes">Select current location</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Marked - The current location/folder is returned
+
+Empty - The selected folder is returned</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="btn1">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Submit selection to the program that opened this dialog.</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="_select" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chkbtn1">
+                <property name="label" translatable="yes">View hidden files</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Marked - Show hidden files
+Empty - Hidden files not seen</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="_hidden" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn2">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Cancel</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <property name="image_position">right</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="_cancel" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>"""
+
+signal(SIGINT, SIG_DFL)
+
+
+# MAGIC #
+
+
+_libraries = {}
+_libraries[r'magic'] = ctypes.cdll.LoadLibrary(find_library(r'magic'))
+
+# Flag constants for open and setflags
+MAGIC_NONE = 0
+MAGIC_DEBUG = 1
+MAGIC_SYMLINK = 2
+MAGIC_COMPRESS = 4
+MAGIC_DEVICES = 8
+MAGIC_MIME_TYPE = 16
+MAGIC_CONTINUE = 32
+MAGIC_CHECK = 64
+MAGIC_PRESERVE_ATIME = 128
+MAGIC_RAW = 256
+MAGIC_ERROR = 512
+MAGIC_MIME_ENCODING = 1024
+MAGIC_MIME = 1040
+MAGIC_APPLE = 2048
+MAGIC_NO_CHECK_COMPRESS = 4096
+MAGIC_NO_CHECK_TAR = 8192
+MAGIC_NO_CHECK_SOFT = 16384
+MAGIC_NO_CHECK_APPTYPE = 32768
+MAGIC_NO_CHECK_ELF = 65536
+MAGIC_NO_CHECK_TEXT = 131072
+MAGIC_NO_CHECK_CDF = 262144
+MAGIC_NO_CHECK_TOKENS = 1048576
+MAGIC_NO_CHECK_ENCODING = 2097152
+MAGIC_NO_CHECK_BUILTIN = 4173824
+MAGIC_EXTENSION = 16777216
+MAGIC_NODESC = 16780304
+MAGIC_COMPRESS_TRANSP = 33554432
+
+FileMagic = namedtuple(r'FileMagic', (r'mime_type', r'encoding', r'name'))
+
+
+class magic_set(Structure):  # noqa: N801  # pylint: disable=R0903
+    """Class used to create magic_t"""
+    _fields_ = []
+
+
+magic_t = POINTER(magic_set)
+
+_open = _libraries[r'magic'].magic_open
+_open.restype = magic_t
+_open.argtypes = [c_int]
+
+_close = _libraries[r'magic'].magic_close
+_close.restype = None
+_close.argtypes = [magic_t]
+
+_load = _libraries[r'magic'].magic_load
+_load.restype = c_int
+_load.argtypes = [magic_t, c_char_p]
+
+_compile = _libraries[r'magic'].magic_compile
+_compile.restype = c_int
+_compile.argtypes = [magic_t, c_char_p]
+
+_file = _libraries[r'magic'].magic_file
+_file.restype = c_char_p
+_file.argtypes = [magic_t, c_char_p]
+
+_descriptor = _libraries[r'magic'].magic_descriptor
+_descriptor.restype = c_char_p
+_descriptor.argtypes = [magic_t, c_int]
+
+_buffer = _libraries[r'magic'].magic_buffer
+_buffer.restype = c_char_p
+_buffer.argtypes = [magic_t, c_void_p, c_size_t]
+
+_setflags = _libraries[r'magic'].magic_setflags
+_setflags.restype = c_int
+_setflags.argtypes = [magic_t, c_int]
+
+_check = _libraries[r'magic'].magic_check
+_check.restype = c_int
+_check.argtypes = [magic_t, c_char_p]
+
+_list = _libraries[r'magic'].magic_list
+_list.restype = c_int
+_list.argtypes = [magic_t, c_char_p]
+
+_error = _libraries[r'magic'].magic_error
+_error.restype = c_char_p
+_error.argtypes = [magic_t]
+
+_errno = _libraries[r'magic'].magic_errno
+_errno.restype = c_int
+_errno.argtypes = [magic_t]
+
+
+class Magic(object):
+    """Functions in libmagic"""
+    def __init__(self, ms):
+        """Initialize magic"""
+        self._magic_t = ms
+
+    @staticmethod
+    def __tostr(string: object) -> str or None:
+        """Convert an object into a string"""
+        if string is None:
+            return None
+        elif isinstance(string, str):
+            return string
+        return str(string, encoding=r'utf-8')
+
+    @staticmethod
+    def __tobytes(_bytes: object) -> bytes or None:
+        """Convert an object into bytes"""
+        if _bytes is None:
+            return None
+        elif isinstance(_bytes, bytes):
+            return _bytes
+        return bytes(_bytes, encoding=r'utf-8')
+
+    def compile(self, dbs: str or None) -> int:
+        """Compile entries in the colon separated list of database files passed as argument or the default database file if no argument. The compiled files created are named from the basename(1) of each file argument with ".mgc" appended to it. Returns 0 on success and -1 on failure."""
+        return _compile(self._magic_t, Magic.__tobytes(dbs))
+
+    def load(self, filename: str or None = None) -> int:
+        """Must be called to load entries in the colon separated list of database files passed as argument or the default database file if no argument before any magic queries can be performed. Returns 0 on success and -1 on failure."""
+        return _load(self._magic_t, Magic.__tobytes(filename))
+
+    def setflags(self, flags: int) -> int:
+        """Set flags on the magic object which determine how magic checking behaves; a bitwise OR of the flags described in libmagic(3), but without the MAGIC_ prefix. Returns -1 on systems that do not support utime(2) or utimes(2) when PRESERVE_ATIME is set."""
+        return _setflags(self._magic_t, flags)
+
+    def close(self) -> None:
+        """Closes the magic database and deallocates any resources used"""
+        _close(self._magic_t)
+
+    def file(self, filename: str or None) -> str or None:
+        """Returns a textual description of the contents of the argument passed as a filename or `None` if an error occurred and the MAGIC_ERROR flag is set. A call to errno() will return the numeric error code."""
+        return Magic.__tostr(_file(self._magic_t, Magic.__tobytes(filename)))
+
+    def descriptor(self, fd: object) -> str or None:
+        """Returns a textual description of the contents of the argument passed as a file descriptor or None if an error occurred and the MAGIC_ERROR flag is set. A call to errno() will return the numeric error code."""
+        return Magic.__tostr(_descriptor(self._magic_t, fd))
+
+    def buffer(self, buf: str or None) -> str or None:
+        """Returns a textual description of the contents of the argument passed as a buffer or None if an error occurred and the MAGIC_ERROR flag is set. A call to errno() will return the numeric error code."""
+        return Magic.__tostr(_buffer(self._magic_t, buf, len(buf)))
+
+    def check(self, dbs: str or None) -> int:
+        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure."""
+        return _check(self._magic_t, Magic.__tobytes(dbs))
+
+    def list(self, dbs: str or None) -> int:
+        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure."""
+        return _list(self._magic_t, Magic.__tobytes(dbs))
+
+    def error(self) -> str or None:
+        """Returns a textual explanation of the last error or None if there was no error."""
+        return Magic.__tostr(_error(self._magic_t))
+
+    def errno(self) -> int:
+        """Returns a numeric error code. If return value is 0, an internal magic error occurred. If return value is non-zero, the value is an OS error code. Use the errno module or os.strerror() can be used to provide detailed error information."""
+        return _errno(self._magic_t)
+
+
+# Objects used by `detect_from_` functions
+none_magic = Magic(_open(MAGIC_NONE | MAGIC_SYMLINK | MAGIC_PRESERVE_ATIME | MAGIC_NO_CHECK_ELF))
+none_magic.load()
+mime_magic = Magic(_open(MAGIC_MIME | MAGIC_SYMLINK | MAGIC_PRESERVE_ATIME))
+mime_magic.load()
+mime_encoding = Magic(_open(MAGIC_MIME_ENCODING | MAGIC_SYMLINK | MAGIC_PRESERVE_ATIME))
+mime_encoding.load()
+mime_type = Magic(_open(MAGIC_MIME_TYPE | MAGIC_SYMLINK | MAGIC_PRESERVE_ATIME))
+mime_type.load()
+
+
+# STATUSBAR MESSAGES #
+
+
+STATUS_UNSUPPORTED_FILETYPE = (-1, r'Unsupported filetype')
+STATUS_SELECT_FILE = (0, r'Select a file to open')
+STATUS_OPENING_FILE = (1, r'Opening file ')
+STATUS_OPENED_FILE = (2, r'Opened ')
+STATUS_ANALYZING = (3, r'Analyzing')
+STATUS_FINISHED = (4, r'Finished opening and analyzing')
+STATUS_WRITING = (5, r'Writing saved data')
+
+
+# CLASSES #
+
+
+class SavedFiles(object):  # pylint: disable=R0903
+    """Pathnames of saved files"""
+    save_tab_data = r''
+
+    def get_save_tab_data(self) -> str:
+        """Get the filepath for tab_dis_bin"""
+        return self.save_tab_data
+
+
+class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,R0915,W0201
+    """File Selection Window"""
+    def ezfilech(
+            self,
+            _select_file: bool = True,
+            _select_dir: bool = False,
+            _multiple: bool = False,
+            _savefile: bool = False,
+            _viewhidden: bool = False,
+            _file_exten: bool = True,
+            _init_path: str = r'',
+            _return_uri: bool = True,
+            _return_dtype: str = r'list',
+    ) -> list or str:
+        """File Chooser Dialog
+        Select a file or folder
+        """
+        self._select_file = _select_file
+        self._select_dir = _select_dir
+        self._multiple = _multiple
+        self._savefile = _savefile
+        self._viewhidden = _viewhidden
+        self._file_exten = _file_exten
+        self._init_path = _init_path
+        self._return_uri = _return_uri
+        self._return_dtype = _return_dtype
+        self.file_ui = Gtk.Builder()
+        self.file_ui.add_from_string(buffer=_FILEGUI)
+        self.filechooserwin = self.file_ui.get_object(r'ezwin')
+        self._filew = self.file_ui.get_object(r'filechooser')
+        self._chkbtn_hidden = self.file_ui.get_object(r'chkbtn1')
+        self._chkbtn_dir = self.file_ui.get_object(r'chkbtn2')
+        self._out = []
+        self._chkbtn_dir.set_visible(False)
+        self._filew.set_create_folders(self._savefile)
+        self._filew.set_select_multiple(self._multiple)
+        self._filew.set_local_only(True)
+        self._filew.set_show_hidden(self._viewhidden)
+        self._chkbtn_hidden.set_active(self._viewhidden)
+        if self._init_path:
+            try:
+                self._filew.set_current_folder(self._init_path)
+            except (NameError, OSError, TypeError, ValueError):
+                pass
+        if self._select_dir and not self._savefile:
+            self._filew.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
+            self._chkbtn_dir.set_visible(not self._multiple)
+        elif self._select_dir and self._savefile:
+            self._multiple = False
+            self._filew.set_action(Gtk.FileChooserAction.CREATE_FOLDER)
+            self._filew.set_do_overwrite_confirmation(True)
+        elif self._select_file and not self._savefile:
+            self._filew.set_action(Gtk.FileChooserAction.OPEN)
+        elif self._select_file and self._savefile:
+            self._multiple = False
+            self._filew.set_action(Gtk.FileChooserAction.SAVE)
+            self._filew.set_do_overwrite_confirmation(True)
+        else:
+            self._savefile = False
+            self._filew.set_action(Gtk.FileChooserAction.OPEN)
+
+        # FILE FILTERS
+
+        if self._select_file and self._file_exten:
+            _filters = [
+                (r'All Files', r'*'),
+                (r'Text Files', r'*.[Tt][Xx][Tt]'),
+            ]
+            for _fltr in _filters:
+                self._filter = Gtk.FileFilter()
+                self._filter.set_name(_fltr[0])
+                self._filter.add_pattern(_fltr[1])
+                self._filew.add_filter(self._filter)
+            # MIMETYPES (TOP-LEVEL)
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'Application (Mime-type)')
+            self._filter.add_mime_type(r'application/*')
+            self._filew.add_filter(self._filter)
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'Audio Files')
+            self._filter.add_mime_type(r'audio/*')
+            self._filter.add_mime_type(r'application/mp4')
+            self._filter.add_mime_type(r'application/mpeg4-generic')
+            self._filter.add_mime_type(r'application/ogg')
+            self._filew.add_filter(self._filter)
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'Text (Mime-type)')
+            self._filter.add_mime_type(r'text/*')
+            self._filew.add_filter(self._filter)
+
+        self.file_ui.connect_signals({
+            r'_winexit': self._winexit,
+            r'_cancel': self._cancel,
+            r'_select': self._select,
+            r'_hidden': self._hidden
+        })
+        Gtk.main()
+        self.filechooserwin.destroy()
+        return self._out
+
+    def _winexit(self) -> None:  # pylint: disable=R0201
+        """Close Window"""
+        FileChooserWin.filechooserwin.destroy()
+        Gtk.main_quit()
+
+    def _cancel(self) -> None:  # pylint: disable=R0201
+        """CANCEL Button"""
+        FileChooserWin._out = r'cancel'
+        FileChooserWin.filechooserwin.destroy()
+
+    def _select(self) -> None:  # pylint: disable=R0201
+        """SELECT Button
+        Submit selection for processing
+        """
+        if FileChooserWin._select_dir and not FileChooserWin._multiple and FileChooserWin._chkbtn_dir.get_active():
+            if FileChooserWin._return_uri and FileChooserWin._return_dtype == r'str':
+                FileChooserWin._out = r' '.join(FileChooserWin._filew.get_current_folder_uri())
+            elif FileChooserWin._return_uri and FileChooserWin._return_dtype != r'str':
+                FileChooserWin._out = FileChooserWin._filew.get_current_folder_uri()
+            elif not FileChooserWin._return_uri and FileChooserWin._return_dtype == r'str':
+                FileChooserWin._out = r' '.join(FileChooserWin._filew.get_current_folder())
+            else:
+                FileChooserWin._out = FileChooserWin._filew.get_current_folder()
+        else:
+            if FileChooserWin._return_uri and FileChooserWin._return_dtype == r'str':
+                FileChooserWin._out = r' '.join(FileChooserWin._filew.get_uris())
+            elif FileChooserWin._return_uri and FileChooserWin._return_dtype != r'str':
+                FileChooserWin._out = FileChooserWin._filew.get_uris()
+            elif not FileChooserWin._return_uri and FileChooserWin._return_dtype == r'str':
+                FileChooserWin._out = r' '.join(FileChooserWin._filew.get_filenames())
+            else:
+                FileChooserWin._out = FileChooserWin._filew.get_filenames()
+        FileChooserWin.filechooserwin.destroy()
+
+    def _hidden(self, *_x) -> None:
+        """HIDDEN Checkbox
+        Toggle the visibility of hidden files
+        """
+        FileChooserWin._filew.set_show_hidden(self.get_active())
+
+
+# GENERAL FUNCTIONS #
+
+
+def convperm(_oct: object) -> str:
+    """Convert file permissions (644 -> 'rw-r--r--')
+    From octal permissions notation (int, str, or list of str+int)
+    To Posix permissions notation as a str
+    Input may be in any of the following forms -
+    * '644', 644, '0644', 0644, [6, 4, 4], ['6', '4', '4'],
+    * [6, '4', 4], [0, 6, 4, 4], ['0', '6', '4', '4'], [0, '6', '4', 4]
+    """
+    _bits = ([4, r'r'], [2, r'w'], [1, r'x'])
+    _mode = []
+    if isinstance(_oct, int):
+        _oct = str(_oct, encoding=r'utf-8')
+    for _int in _oct[-3:]:
+        for i in _bits:
+            if bool(int(_int) & i[0]):
+                _mode.append(i[1])
+            else:
+                _mode.append(r'-')
+    return r''.join(_mode)
+
+
+def which(program: str) -> bool:
+    """Return `True` if the path of the specified application exists, otherwise, return `False`"""
+    fpath = pathsplit(program)[0]
+    if fpath and isfile(program) and fileaccess(program, X_OK):
+        return True
+    envpath = environ[r'PATH'].split(pathsep)
+    for filepath in envpath:
+        exe_file = pathjoin(filepath.strip(r'"'), program)
+        if isfile(exe_file) and fileaccess(exe_file, X_OK):
+            return True
+    return False
+
+
+def write2file(_filename: str, _write: str) -> None:
+    """Send data to new file or overwrite file"""
+    statusbar.push(context_id, STATUS_WRITING[1])
+    with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
+        _file.write(_write)
+    return None
+
+
+# OPEN & SAVE #
+
+
+def gtk_open(_junk=None) -> None:
+    """Select a file to open"""
+    statusbar.push(context_id, STATUS_OPENING_FILE[1])
+    try:
+        _binfile = FileChooserWin.ezfilech(FileChooserWin, _init_path=r'/', _return_uri=False, _return_dtype=r'str')
+    except TypeError:
+        statusbar.push(context_id, r'Error occurred while opening file')
+        stderr.write('Error occurred while opening file\n')
+        return None
+    if not isinstance(_binfile, str) or _binfile == r'[]':
+        statusbar.push(context_id, r'File opening cancelled by user')
+        return None
+    elif _binfile == r'cancel' or _binfile == r'' or _binfile is None:
+        statusbar.push(context_id, r'File opening cancelled by user')
+        return None
+    elif not pathexists(_binfile) or not isfile(_binfile):
+        statusbar.push(context_id, r'FileNotFoundError')
+        return None
+    if isdir(_binfile):
+        statusbar.push(context_id, r'IsADirectoryError')
+        return None
+    elif not fileaccess(_binfile, R_OK):
+        statusbar.push(context_id, r'PermissionError')
+        return None
+    statusbar.push(context_id, STATUS_ANALYZING[1])
+    refreshdata(_binfile, getdata(_binfile))
+    return None
+
+
+def gtk_save(_junk) -> None:
+    """Save the data"""
+    if not isinstance(SavedFiles.save_tab_data, str) or SavedFiles.save_tab_data in {r'', r'cancel'}:
+        gtk_saveas(_junk)
+        return None
+    save_data(tabs.get_current_page(), SavedFiles.save_tab_data)
+    return None
+
+
+def gtk_saveas(_junk) -> None:
+    """Choose where to save the data"""
+    # Select File
+    try:
+        savefilepath = FileChooserWin.ezfilech(FileChooserWin, _select_dir=False, _savefile=True, _init_path=r'/', _return_uri=False, _return_dtype=r'str')
+    except (IndexError, SyntaxError, TypeError):
+        statusbar.push(context_id, r'Error occurred while saving file')
+        stderr.write('Error occurred while saving file\n')
+        return None
+    if not isinstance(savefilepath, str) or savefilepath == r'[]':
+        statusbar.push(context_id, r'File saving cancelled by user')
+        return None
+    elif savefilepath == r'cancel' or savefilepath == r'' or savefilepath is None:
+        statusbar.push(context_id, r'File saving cancelled by user')
+        return None
+    # Sava Data
+    save_data(tabs.get_current_page(), savefilepath)
+    return None
+
+
+def save_data(active_tab, savefilepath: str) -> None:  # noqa: C901  # pylint: disable=R0912,R0915
+    """Perform the actual data-save"""
+    SavedFiles.save_tab_data = savefilepath
+    tabs_page_num = tabs.page_num
+    if active_tab == tabs_page_num(scrolledwindow_prop):  # tab_prop
+        save_buffer_data = textview_prop.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_sym_tbl):  # tab_sym_tbl
+        save_buffer_data = textview_sym_tbl.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dyn_sym):  # tab_dyn_sym
+        save_buffer_data = textview_dyn_sym.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_nm_sym):  # tab_nm_sym
+        save_buffer_data = textview_nm_sym.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dyn_reloc):  # tab_dyn_reloc
+        save_buffer_data = textview_dyn_reloc.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dis):  # tab_dis
+        save_buffer_data = textview_dis.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dis_intel):  # tab_dis_intel
+        save_buffer_data = textview_dis_intel.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dis_att):  # tab_dis_att
+        save_buffer_data = textview_dis_att.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dis_bin):  # tab_dis_bin
+        save_buffer_data = textview_dis_bin.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_dis_hex):  # tab_dis_hex
+        save_buffer_data = textview_dis_hex.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_readelf):  # tab_readelf
+        save_buffer_data = textview_readelf.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_all_headers):  # tab_all_headers
+        save_buffer_data = textview_all_headers.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_header):  # tab_header
+        save_buffer_data = textview_header.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_priv_headers):  # tab_priv_headers
+        save_buffer_data = textview_priv_headers.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_sec_headers):  # tab_sec_headers
+        save_buffer_data = textview_sec_headers.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_size):  # tab_size_size
+        save_buffer_data = textview_size.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_str):  # tab_str
+        save_buffer_data = textview_str.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_func):  # tab_func
+        save_buffer_data = textview_str.get_buffer()
+    elif active_tab == tabs_page_num(scrolledwindow_const):  # tab_const
+        save_buffer_data = textview_const.get_buffer()
+    try:
+        write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
+        del save_buffer_data
+    except OSError:
+        SavedFiles.save_tab_data = r''
+        statusbar.push(context_id, r'OSError when writing file')
+        stderr.write('OSError when writing file\n')
+    except BaseException as _err:
+        SavedFiles.save_tab_data = r''
+        statusbar.push(context_id, r'Exception thrown when writing file')
+        stderr.write(str(_err) + '\n')
+    statusbar.push(context_id, r'File saved')
+    return None
+
+
+# SHOW/HIDE SAVE-BUTTONS #
+
+
+def show_hide_save(_junk, page, page_num) -> None:  # pylint: disable=W0613
+    """Show or hide the save buttons"""
+    if page_num == tabs.page_num(about_box):
+        btn_save.set_visible(False)
+        menuitem_save.set_visible(False)
+        menuitem_saveas.set_visible(False)
+    else:
+        btn_save.set_visible(True)
+        menuitem_save.set_visible(True)
+        menuitem_saveas.set_visible(True)
+
+
+# PROCESS & SHOW DATA #
+
+
+def getdata(_file: str) -> tuple:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
+    """Get data from the file to analyze"""
+    statusbar.push(context_id, STATUS_ANALYZING[1])
+    # Gather filetype information
+    _charset = mime_encoding.file(_file)
+    _magic = none_magic.file(_file)
+    _mimetype = mime_type.file(_file)
+    # Is 32 or 64 bits?
+    if r'80386' in _magic or r'PE32 ' in _magic or r'i686' in _magic or r'32-bit' in _magic or r'x86-32' in _magic:
+        _bits = r'32'
+    elif r'PE32+' in _magic or r'64-bit' in _magic or r'x86-64' in _magic:
+        _bits = r'64'
+    else:
+        _bits = r'NA'
+    # Setup tools
+    _filecmd = r'file'
+    _is_executable = True
+    if _charset == r'binary':
+        if _mimetype == r'audio/mpeg':
+            _is_executable = False
+        elif r'ELF' in _magic:
+            if r'ARM' in _magic and _bits == r'32':
+                if is_linux_arm_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = False
+                _nm = r'arm-linux-gnueabi-nm'
+                _objdump = r'arm-linux-gnueabi-objdump'
+                _readelf = r'arm-linux-gnueabi-readelf'
+                _size = r'arm-linux-gnueabi-size'
+                _strings = r'arm-linux-gnueabi-strings'
+            elif r'Alpha' in _magic:
+                if is_linux_alpha_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = False
+                _nm = r'alpha-linux-gnu-nm'
+                _objdump = r'alpha-linux-gnu-objdump'
+                _readelf = r'alpha-linux-gnu-readelf'
+                _size = r'alpha-linux-gnu-size'
+                _strings = r'alpha-linux-gnu-strings'
+            elif r'PA-RISC' in _magic and _bits == r'32':
+                if is_linux_hppa_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = False
+                _nm = r'hppa-linux-gnu-nm'
+                _objdump = r'hppa-linux-gnu-objdump'
+                _readelf = r'hppa-linux-gnu-readelf'
+                _size = r'hppa-linux-gnu-size'
+                _strings = r'hppa-linux-gnu-strings'
+            elif r'PA-RISC' in _magic and _bits == r'64':
+                if is_linux_hppa64_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = False
+                _nm = r'hppa64-linux-gnu-nm'
+                _objdump = r'hppa64-linux-gnu-objdump'
+                _readelf = r'hppa64-linux-gnu-readelf'
+                _size = r'hppa64-linux-gnu-size'
+                _strings = r'hppa64-linux-gnu-strings'
+            elif r'SPARC' in _magic:
+                if is_linux_sparc64_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = False
+                _nm = r'sparc64-linux-gnu-nm'
+                _objdump = r'sparc64-linux-gnu-objdump'
+                _readelf = r'sparc64-linux-gnu-readelf'
+                _size = r'sparc64-linux-gnu-size'
+                _strings = r'sparc64-linux-gnu-strings'
+            elif r'x86-64' in _magic:
+                if is_linux_x86_64_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = True
+                _nm = r'x86_64-linux-gnu-nm'
+                _objdump = r'x86_64-linux-gnu-objdump'
+                _readelf = r'x86_64-linux-gnu-readelf'
+                _size = r'x86_64-linux-gnu-size'
+                _strings = r'x86_64-linux-gnu-strings'
+            elif r'x86-32' in _magic or r'i686' in _magic:
+                if is_linux_x86_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = True
+                _nm = r'i686-linux-gnu-nm'
+                _objdump = r'i686-linux-gnu-objdump'
+                _readelf = r'i686-linux-gnu-readelf'
+                _size = r'i686-linux-gnu-size'
+                _strings = r'i686-linux-gnu-strings'
+            else:
+                return STATUS_UNSUPPORTED_FILETYPE
+        elif r'PE32' in _magic or r'Windows' in _magic or r'application/x-dosexec' in _magic:
+            if _bits == r'64':
+                if is_win_x86_64_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = True
+                _nm = r'x86_64-w64-mingw32-nm'
+                _objdump = r'x86_64-w64-mingw32-objdump'
+                _readelf = r'x86_64-w64-mingw32-readelf'
+                _size = r'x86_64-w64-mingw32-size'
+                _strings = r'x86_64-w64-mingw32-strings'
+            elif _bits == r'32':
+                if is_win_x86_available is False:
+                    return STATUS_UNSUPPORTED_FILETYPE
+                _use_ndisasm = True
+                _nm = r'i686-w64-mingw32-nm'
+                _objdump = r'i686-w64-mingw32-objdump'
+                _readelf = r'i686-w64-mingw32-readelf'
+                _size = r'i686-w64-mingw32-size'
+                _strings = r'i686-w64-mingw32-strings'
+            else:
+                return STATUS_UNSUPPORTED_FILETYPE
+        else:
+            return STATUS_UNSUPPORTED_FILETYPE
+    else:
+        return STATUS_UNSUPPORTED_FILETYPE
+    # Get the data
+    if _is_executable:
+        _objdump_symbols = getoutput(_objdump + r' --special-syms --syms ' + _file)
+        _objdump_dynamic_symbols = getoutput(_objdump + r' --special-syms --dynamic-syms ' + _file)
+        _nm_symbols = getoutput(_nm + r' --dynamic --no-sort --special-syms --debug-syms ' + _file)
+        _objdump_dynamic_relocation = getoutput(_objdump + r' --dynamic-reloc ' + _file)
+        if is_ndisasm_available and _use_ndisasm:
+            _objdump_disassemble = getoutput(r'ndisasm -b ' + _bits + r' ' + _file)
+        else:
+            _objdump_disassemble = r'ndisasm is unavailable.'
+        _objdump_disassemble_intel = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=intel ' + _file)
+        _objdump_disassemble_att = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=att ' + _file)
+        _readelf_all = getoutput(_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file)
+        _objdump_all_headers = getoutput(_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file)
+        _objdump_file_header = getoutput(_objdump + r' --file-headers ' + _file)
+        _objdump_private_headers = getoutput(_objdump + r' --private-headers ' + _file)
+        _objdump_section_headers = getoutput(_objdump + r' --section-headers ' + _file)
+        _size = getoutput(_size + r' --format=Berkeley ' + _file + r'; ' + _size + r' --format=SysV ' + _file)
+        _strings = getoutput(_strings + r' --all ' + _file)
+        _nm_defined = getoutput(_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"')  # tmp
+        try:
+            _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{for(i=3;i<=NF;++i)print $i}\' | grep -v -E -e "^_"')
+            _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{for(i=3;i<=NF;++i)print $i}\' | grep -v -E -e "^_"')
+        except OSError:
+            _functions = _nm_defined
+            _constants = r'See function list'
+        # Manipulate data
+        del _nm_defined
+        if not _functions:
+            _functions = r'No global functions found!'
+        if not _constants:
+            _constants = r'No global constants found!'
+        scrolledwindow_sym_tbl.set_visible(True)
+        scrolledwindow_dyn_sym.set_visible(True)
+        scrolledwindow_nm_sym.set_visible(True)
+        scrolledwindow_dyn_reloc.set_visible(True)
+        scrolledwindow_dis.set_visible(True)
+        scrolledwindow_dis_intel.set_visible(True)
+        scrolledwindow_dis_att.set_visible(True)
+        scrolledwindow_readelf.set_visible(True)
+        scrolledwindow_all_headers.set_visible(True)
+        scrolledwindow_header.set_visible(True)
+        scrolledwindow_priv_headers.set_visible(True)
+        scrolledwindow_sec_headers.set_visible(True)
+        scrolledwindow_size.set_visible(True)
+        scrolledwindow_str.set_visible(True)
+        scrolledwindow_func.set_visible(True)
+        scrolledwindow_const.set_visible(True)
+    else:
+        scrolledwindow_sym_tbl.set_visible(False)
+        scrolledwindow_dyn_sym.set_visible(False)
+        scrolledwindow_nm_sym.set_visible(False)
+        scrolledwindow_dyn_reloc.set_visible(False)
+        scrolledwindow_dis.set_visible(False)
+        scrolledwindow_dis_intel.set_visible(False)
+        scrolledwindow_dis_att.set_visible(False)
+        scrolledwindow_readelf.set_visible(False)
+        scrolledwindow_all_headers.set_visible(False)
+        scrolledwindow_header.set_visible(False)
+        scrolledwindow_priv_headers.set_visible(False)
+        scrolledwindow_sec_headers.set_visible(False)
+        scrolledwindow_size.set_visible(False)
+        scrolledwindow_str.set_visible(False)
+        scrolledwindow_func.set_visible(False)
+        scrolledwindow_const.set_visible(False)
+        _objdump_symbols = r''
+        _objdump_dynamic_symbols = r''
+        _nm_symbols = r''
+        _objdump_dynamic_relocation = r''
+        _objdump_disassemble = r''
+        _objdump_disassemble_intel = r''
+        _objdump_disassemble_att = r''
+        _readelf_all = r''
+        _objdump_all_headers = r''
+        _objdump_file_header = r''
+        _objdump_private_headers = r''
+        _objdump_section_headers = r''
+        _size = r''
+        _strings = r''
+        _functions = r''
+        _constants = r''
+    if stat(_file).st_size < 1000000:  # Get hexadecimal & binary representations
+        with open(_file, mode=r'rb') as _fileobj:
+            hexified_data = hexlify(_fileobj.read())
+            _bin_data = bin(int(hexified_data, 16))[2:].zfill(8)
+            _hex_data = str(hexified_data, encoding=r'utf-8')
+        if stat(_file).st_size < 10000:
+            index = 2
+            while len(_hex_data) != index:
+                _hex_data = _hex_data[:index] + r' ' + _hex_data[index:]
+                index += 3
+        scrolledwindow_dis_bin.set_visible(True)
+        scrolledwindow_dis_hex.set_visible(True)
+    else:
+        _bin_data = r''
+        _hex_data = r''
+        scrolledwindow_dis_bin.set_visible(False)
+        scrolledwindow_dis_hex.set_visible(False)
+    # Return
+    return (STATUS_FINISHED[0], STATUS_FINISHED[1] + _file, _objdump_symbols, _objdump_dynamic_symbols, _nm_symbols, _objdump_dynamic_relocation, _objdump_disassemble, _objdump_disassemble_intel, _objdump_disassemble_att, _readelf_all, _objdump_all_headers, _objdump_file_header, _objdump_private_headers, _objdump_section_headers, _size, _strings, _functions, _constants, _hex_data, _bin_data)
+
+
+def file_properties(_file: str) -> None:
+    """Display File Properties in `File Properties` tab"""
+    # Gather file properties
+    _stat = stat(_file, follow_symlinks=False)
+    _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
+    _mtime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_mtime)))
+    properties_str_buf = r'Mimetype: ' + none_magic.file(_file)
+    properties_str_buf += '\nCharacter Set: ' + mime_encoding.file(_file)
+    properties_str_buf += '\nIs link?: ' + str(islink(_file))
+    properties_str_buf += '\nFile size (bytes): ' + str(_stat.st_size)
+    properties_str_buf += '\nLast accessed: ' + str(_atime)
+    properties_str_buf += '\nInode Number: ' + str(_stat.st_ino)
+    properties_str_buf += '\nOwner UID: ' + str(_stat.st_uid)
+    properties_str_buf += '\nOwner GID: ' + str(_stat.st_gid)
+    properties_str_buf += '\nLast modified: ' + str(_mtime)
+    _perm = oct(_stat.st_mode)[-3:]
+    properties_str_buf += '\nPermissions: ' + _perm
+    properties_str_buf += '\numask (symbolic): ' + convperm(list(_perm))
+    # Insert new data
+    textview_prop.get_buffer().set_text(properties_str_buf, len(properties_str_buf))
+    return None
+
+
+def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901  # pylint: disable=R0912
+    """Change and display data about the file"""
+    tabs.set_current_page(0)
+    if _datatuple[0] == -1:
+        statusbar.push(context_id, STATUS_UNSUPPORTED_FILETYPE[1])
+        return None
+    # Set and display data
+    _tmp_file_name = pathsplit(_file)[1]
+    _window.set_title(_tmp_file_name)
+    l_file.set_text(_tmp_file_name)
+    del _tmp_file_name
+    if scrolledwindow_sym_tbl.is_visible:
+        textview_sym_tbl.get_buffer().set_text(_datatuple[2], len(_datatuple[2]))
+    if scrolledwindow_dyn_sym.is_visible:
+        textview_dyn_sym.get_buffer().set_text(_datatuple[3], len(_datatuple[3]))
+    if scrolledwindow_nm_sym.is_visible:
+        textview_nm_sym.get_buffer().set_text(_datatuple[4], len(_datatuple[4]))
+    if scrolledwindow_dyn_reloc.is_visible:
+        textview_dyn_reloc.get_buffer().set_text(_datatuple[5], len(_datatuple[5]))
+    if scrolledwindow_dis.is_visible:
+        textview_dis.get_buffer().set_text(_datatuple[6], len(_datatuple[6]))
+    if scrolledwindow_dis_intel.is_visible:
+        textview_dis_intel.get_buffer().set_text(_datatuple[7], len(_datatuple[7]))
+    if scrolledwindow_dis_att.is_visible:
+        textview_dis_att.get_buffer().set_text(_datatuple[8], len(_datatuple[8]))
+    if scrolledwindow_dis_bin.is_visible:
+        textview_dis_bin.get_buffer().set_text(_datatuple[19], len(_datatuple[19]))
+    if scrolledwindow_dis_hex.is_visible:
+        textview_dis_hex.get_buffer().set_text(_datatuple[18], len(_datatuple[18]))
+    if scrolledwindow_header.is_visible:
+        textview_header.get_buffer().set_text(_datatuple[11], len(_datatuple[11]))
+    if scrolledwindow_readelf.is_visible:
+        textview_readelf.get_buffer().set_text(_datatuple[9], len(_datatuple[9]))
+    if scrolledwindow_all_headers.is_visible:
+        textview_all_headers.get_buffer().set_text(_datatuple[10], len(_datatuple[10]))
+    if scrolledwindow_priv_headers.is_visible:
+        textview_priv_headers.get_buffer().set_text(_datatuple[12], len(_datatuple[12]))
+    if scrolledwindow_sec_headers.is_visible:
+        textview_sec_headers.get_buffer().set_text(_datatuple[13], len(_datatuple[13]))
+    if scrolledwindow_size.is_visible:
+        textview_size.get_buffer().set_text(_datatuple[14], len(_datatuple[14]))
+    if scrolledwindow_str.is_visible:
+        textview_str.get_buffer().set_text(_datatuple[15], len(_datatuple[15]))
+    if scrolledwindow_func.is_visible:
+        textview_func.get_buffer().set_text(_datatuple[16], len(_datatuple[16]))
+    if scrolledwindow_const.is_visible:
+        textview_const.get_buffer().set_text(_datatuple[17], len(_datatuple[17]))
+    file_properties(_file)
+    statusbar.push(context_id, STATUS_FINISHED[1])
+    return None
+
+
+# AVAILABLE TOOLS #
+
+
+is_ndisasm_available = which(r'ndisasm')
+is_android_arm_available = which(r'arm-linux-androideabi-objdump')
+is_linux_alpha_available = which(r'alpha-linux-gnu-objdump')
+is_linux_arm_available = which(r'arm-linux-gnueabi-objdump')
+is_linux_armhf_available = which(r'arm-linux-gnueabihf-objdump')
+is_linux_hppa_available = which(r'hppa-linux-gnu-objdump')
+is_linux_hppa64_available = which(r'hppa64-linux-gnu-objdump')
+is_linux_sparc64_available = which(r'sparc64-linux-gnu-objdump')
+is_linux_x86_available = which(r'i686-linux-gnu-objdump')
+is_linux_x86_64_available = which(r'x86_64-linux-gnu-objdump')
+is_none_arm_available = which(r'arm-none-eabi-objdump')
+is_win_x86_available = which(r'i686-w64-mingw32-objdump')
+is_win_x86_64_available = which(r'x86_64-w64-mingw32-objdump')
+
+
+# MAIN #
+
+
+if __name__ == '__main__':
+    # Entry Point
+    GETFILEDATA = False
+    if len(argv) == 1:
+        FILEDATA = STATUS_SELECT_FILE
+    elif len(argv) == 2:
+        BINFILE = argv[1]
+        if BINFILE == r'' or BINFILE is None:
+            raise Exception(r'NULL PATHNAME GIVEN!')
+        elif not pathexists(BINFILE) or not isfile(BINFILE):
+            raise FileNotFoundError
+        elif isdir(BINFILE):
+            raise IsADirectoryError
+        elif not fileaccess(BINFILE, R_OK):
+            raise PermissionError
+        GETFILEDATA = True
+    else:
+        raise Exception(r'Invalid number of arguments!')
+    # Build GUI
+    ui = Gtk.Builder()
+    ui.add_from_string(buffer=_GUI)
+    del _GUI
+    # Get GTK Objects
+    ui_get_object = ui.get_object
+    _window = ui_get_object(name=r'ezwin')
+    textview_prop = ui_get_object(name=r'textview_prop')
+    textview_sym_tbl = ui_get_object(name=r'textview_sym_tbl')
+    textview_dyn_sym = ui_get_object(name=r'textview_dyn_sym')
+    textview_nm_sym = ui_get_object(name=r'textview_nm_sym')
+    textview_dyn_reloc = ui_get_object(name=r'textview_dyn_reloc')
+    textview_dis = ui_get_object(name=r'textview_dis')
+    textview_dis_intel = ui_get_object(name=r'textview_dis_intel')
+    textview_dis_att = ui_get_object(name=r'textview_dis_att')
+    textview_dis_bin = ui_get_object(name=r'textview_dis_bin')
+    textview_dis_hex = ui_get_object(name=r'textview_dis_hex')
+    textview_header = ui_get_object(name=r'textview_header')
+    textview_readelf = ui_get_object(name=r'textview_readelf')
+    textview_all_headers = ui_get_object(name=r'textview_all_headers')
+    textview_priv_headers = ui_get_object(name=r'textview_priv_headers')
+    textview_sec_headers = ui_get_object(name=r'textview_sec_headers')
+    textview_size = ui_get_object(name=r'textview_size')
+    textview_str = ui_get_object(name=r'textview_str')
+    textview_func = ui_get_object(name=r'textview_func')
+    textview_const = ui_get_object(name=r'textview_const')
+    about_box = ui_get_object(name=r'about_box')
+    binutils_info = ui_get_object(name=r'binutils_info')
+    btn_save = ui_get_object(name=r'btn_save')
+    menuitem_save = ui_get_object(name=r'menuitem_save')
+    menuitem_saveas = ui_get_object(name=r'menuitem_saveas')
+    l_file = ui_get_object(name=r'l_file')
+    tabs = ui_get_object(name=r'tabs')
+    tabs.set_current_page(0)
+    statusbar = ui_get_object(name=r'statusbar')
+    context_id = statusbar.get_context_id(r'NULL')
+    statusbar.push(context_id, r'')
+    scrolledwindow_prop = ui_get_object(name=r'scrolledwindow_prop')
+    scrolledwindow_sym_tbl = ui_get_object(name=r'scrolledwindow_sym_tbl')
+    scrolledwindow_dyn_sym = ui_get_object(name=r'scrolledwindow_dyn_sym')
+    scrolledwindow_nm_sym = ui_get_object(name=r'scrolledwindow_nm_sym')
+    scrolledwindow_dyn_reloc = ui_get_object(name=r'scrolledwindow_dyn_reloc')
+    scrolledwindow_dis = ui_get_object(name=r'scrolledwindow_dis')
+    scrolledwindow_dis_intel = ui_get_object(name=r'scrolledwindow_dis_intel')
+    scrolledwindow_dis_att = ui_get_object(name=r'scrolledwindow_dis_att')
+    scrolledwindow_dis_bin = ui_get_object(name=r'scrolledwindow_dis_bin')
+    scrolledwindow_dis_hex = ui_get_object(name=r'scrolledwindow_dis_hex')
+    scrolledwindow_readelf = ui_get_object(name=r'scrolledwindow_readelf')
+    scrolledwindow_all_headers = ui_get_object(name=r'scrolledwindow_all_headers')
+    scrolledwindow_header = ui_get_object(name=r'scrolledwindow_header')
+    scrolledwindow_priv_headers = ui_get_object(name=r'scrolledwindow_priv_headers')
+    scrolledwindow_sec_headers = ui_get_object(name=r'scrolledwindow_sec_headers')
+    scrolledwindow_size = ui_get_object(name=r'scrolledwindow_size')
+    scrolledwindow_str = ui_get_object(name=r'scrolledwindow_str')
+    scrolledwindow_func = ui_get_object(name=r'scrolledwindow_func')
+    scrolledwindow_const = ui_get_object(name=r'scrolledwindow_const')
+    # Window Title
+    _window.set_title(r'Program-Analyzer')
+    l_file.set_text(r'Program-Analyzer')
+    # Set GNU-Binutls Info in About-tab
+    binutils_info.set_text(getoutput(r'objdump --version'))
+    # Signal Handlers
+    ui.connect_signals({
+        r'gtk_open': gtk_open,
+        r'gtk_save': gtk_save,
+        r'gtk_saveas': gtk_saveas,
+        r'show_hide_save': show_hide_save,
+        r'_winexit': Gtk.main_quit
+    })
+    # Begin Program
+    if GETFILEDATA:
+        FILEDATA = getdata(BINFILE)  # Get data from the chosen file
+    del GETFILEDATA
+    statusbar.push(context_id, FILEDATA[1])
+    if FILEDATA[0] >= 2:
+        refreshdata(BINFILE, FILEDATA)
+    else:
+        gtk_open()
+    # Show Window
+    Gtk.main()
+    raise SystemExit()

@@ -1,0 +1,16 @@
+[Icon Theme]
+Name=LoginOpticons
+Comment=Optimized icon theme for the login screen
+Inherits=Opticons,hicolor
+Example=directory-x-normal
+Hidden=false
+Directories=apps
+KDE-Extensions=.svg
+
+[apps]
+Context=Applications
+MaxSize=512
+MinSize=1
+Size=64
+Threshold=1
+Type=Scalable

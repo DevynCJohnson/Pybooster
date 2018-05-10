@@ -1,0 +1,86 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapped Pip
+# @file wpip
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# GLOBALS #
+
+
+if [ ! -x "$(command -v pip3)" ]; then
+    printf 'pip3: command not found!\n' >&2
+    exit 1
+fi
+
+version=2018.04.27
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  Wrapped Pip (wpip)  ====='
+    printf '%s\n' 'Wrapper for running pip3 as Root user (when needed)'
+    printf '%s\n' 'By default, this installs the specified module for Python3'
+    printf '%s\n' 'Usage: wpip [parameters]'
+    printf '%s\n' 'Example: wpip -i MetaPython  # Install package'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-h,--help               Display help info'
+    printf '%s\n' '-v,--version            Display version'
+    printf '%s\n' '-l,--list               List installed packages'
+    printf '%s\n' '-i,--install            Specify library to install'
+    printf '%s\n' '-u,--uninstall          Uninstall package'
+    printf '%s\n' '-U,--upgrade,--update   Upgrade package'
+}
+
+
+# GETOPT #
+
+
+GOPT="$(getopt -o hi:lu:U:v --long help,install:,list,uninstall:,up:,update:,upgrade:,version -- "$@")"
+eval set -- "$GOPT"
+
+while true; do
+    case "$1" in
+        -h|--help)  # Display help info
+            Help
+            shift
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            shift
+        ;;
+        -i|--install)  # Install package
+            sudo pip3 install "$2"
+            shift 2
+        ;;
+        -u|--uninstall)  # Uninstall package
+            sudo pip3 uninstall "$2"
+            shift 2
+        ;;
+        -U|--up|--update|--upgrade)  # Upgrade package
+            sudo pip3 install -U "$2"
+            shift 2
+        ;;
+        -l|--list)  # List packages
+            pip3 freeze
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+exit 0

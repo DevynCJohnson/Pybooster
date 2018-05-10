@@ -1,7 +1,0 @@
-#!/bin/sh
-# -*- coding: utf-8 -*-
-# vim:fileencoding=utf-8
-# @brief Qt5 to Python3 code
-
-
-exec /usr/bin/python3 -m PyQt5.uic.pyuic ${1+"$@"}

@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=Program Analyzer
+GenericName=Executable Viewer
+Version=2018.04.27
+Categories=Development;
+Comment=View various information about a library or executable
+Exec=program-analyzer %f
+Keywords=binary;disassemble;readelf;elf;
+NoDisplay=false
+Terminal=false
+Type=Application

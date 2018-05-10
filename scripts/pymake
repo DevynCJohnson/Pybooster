@@ -1,0 +1,198 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for a collection of Python3 compilation tools
+# @file pymake
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# GLOBALS #
+
+
+if [ ! -x "$(command -v python3)" ]; then
+    printf 'python3: command not found!\n' >&2
+    exit 1
+fi
+
+version=2018.04.27
+DIRECTIVE='--directive language_level=3,boundscheck=False,c_string_encoding=utf-8,c_string_type=unicode'
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  Pymake  ====='
+    printf '%s\n' 'Compilation suite for Python3'
+    printf '%s\n' 'Usage: pymake [parameters]'
+    printf '%s\n' 'Example: pymake -f ./script.py -cx'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-a,--all              Execute all'
+    printf '%s\n' '-b                    Create pyc & pyo'
+    printf '%s\n' '-c,                   Compile: run setup.py and make pyc & pyo'
+    printf '%s\n' '-d,--deb              Make Debian file for Python package'
+    printf '%s\n' '-f,--file,--script    Specify the file to compile'
+    printf '%s\n' '-h,--help             Display help info'
+    printf '%s\n' '-p                    Print python3-config data'
+    printf '%s\n' '-q                    Convert Qt5 to Python3 code'
+    printf '%s\n' '-s,--sdist            Run Sdist'
+    printf '%s\n' '-v,--version          Display version'
+    printf '%s\n' '-x,--cx               Cxfreeze3 (embedded libs+interpreter)'
+    printf '%s\n' '-y                    Generate *.(c&cpp) (Cython)'
+}
+
+
+Basic() {  # Create pyc & pyo
+    python3 -m py_compile "$1"  # .pyc
+    python3 -OO -m py_compile "$1"  # .pyo
+}
+
+
+Compile() {  # Run setup.py and make pyc & pyo
+    python3 setup.py build_ext --inplace  # .so; setup.py
+    Basic "$1"
+}
+
+
+PConfig() {  # Print python3-config data
+    printf '%s\n\n' '# Python3-config #'
+    printf '%s\n\n%s' '--clflags' "$(python3-config --cflags)"
+    printf '\n\n%s\n\n%s' '--libs' "$(python3-config --libs)"
+    printf '\n\n%s\n\n%s' '--includes' "$(python3-config --includes)"
+    printf '\n\n%s\n\n%s\n' '--ldflags' "$(python3-config --ldflags)"
+}
+
+
+Sdist() {  # sdist
+    if [ -x "$(command -v compress)" ]; then
+        python3 setup.py sdist --manifest-only 1> sdist-msg.log 2> sdist-ERRORS.log  # Manifest
+        (python3 setup.py sdist --formats='zip,tar,ztar,gztar,bztar' || python3 setup.py sdist) 1>> sdist3-msg.log 2>> sdist3-ERRORS.log  # dist
+    else  # Handle Sdist error due to missing deps
+        printf 'ncompress: command not found!\n' >&2
+        printf 'Install: (apt-get|dnf|yum) install ncompress\n'
+    fi
+}
+
+
+Callcx() {  # Cxfreeze3 (embedded libs+interpreter)
+    if [ -x "$(command -v cxfreeze3)" ]; then
+        cxfreeze3 -OO --install-dir='./bin_cxfreeze' "$1" 1> cxfreeze-msg.log 2> cxfreeze-ERRORS.log
+    else
+        printf 'cxfreeze3: command not found!\n' >&2
+    fi
+}
+
+
+CPPsrc() {  # Generate *.(c&cpp) (Cython)
+    if [ -x "$(command -v cython)" ]; then
+        cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v "$1"  # c
+        cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v --cplus "$1"  # cpp
+    else
+        printf 'cython: command not found!\n' >&2
+    fi
+}
+
+
+qt2py() {  # Convert Qt5 to Python3 code
+    python3 -m PyQt5.uic.pyuic "$1"
+}
+
+
+_pydeb() {  # Make Debian file for Python package
+    if [ -x "$(command -v py2dsc)" ]; then
+        py2dsc "$1"
+    else
+        printf 'py2dsc: command not found!\n' >&2
+    fi
+}
+
+
+# GETOPT #
+
+
+GOPT="$(getopt -o abcdf:hpqsvxy --long all,cx,deb,file:,script:,sdist,version,help -- "$@")"
+eval set -- "$GOPT"
+
+while true; do
+    case "$1" in
+        -f|--file|--script)  # Specify input file
+            _file="$2"
+            if [ ! -r "$_file" ]; then
+                printf 'The specified file is non-readable or non-existent!\n' >&2
+                exit 1
+            fi
+            break
+        ;;
+        *) shift ;;  # Unknown/non-registered parameter
+    esac
+done
+
+eval set -- "$GOPT"
+while true; do
+    case "$1" in
+        -h|--help)  # Display help info
+            Help
+            shift
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            shift
+        ;;
+        -f|--file|--script)  # Specify input file
+            shift 2
+        ;;
+        -a|--all)  # Execute all
+            Sdist
+            Compile "$1"
+            Callcx "$1"
+            CPPsrc "$1"
+            exit
+        ;;
+        -b)  # Create pyc & pyo
+            Basic "$1"
+            shift
+        ;;
+        -c)  # Run setup.py and make pyc & pyo
+            Compile "$1"
+            shift
+        ;;
+        -d|--deb)  # Make Debian file for Python package
+            _pydeb "$1"
+            shift
+        ;;
+        -p)  # Print python3-config data
+            PConfig
+            shift
+        ;;
+        -q)  # Convert Qt5 to Python3 code
+            qt2deb "$1"
+            shift
+        ;;
+        -s|--sdist)  # Run sdist
+            _Sdist
+            shift
+        ;;
+        -x|--cx)  # Cxfreeze3 (embedded libs+interpreter)
+            Callcx "$1"
+            shift
+        ;;
+        -y)  # Generate *.(c&cpp) (Cython)
+            CPPsrc "$1"
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+exit 0

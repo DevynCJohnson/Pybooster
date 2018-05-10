@@ -1,0 +1,276 @@
+// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: nil; tab-width: 4 -*-
+// vim: set fileencoding=utf-8 filetype=c syn=c.doxygen fileformat=unix tabstop=4 expandtab :
+// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+// @brief Enhanced & Extended XKB Keyboard Layout (Compat)
+// @file usx_compat
+// @version 2018.04.27
+// @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+// @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+hidden partial xkb_compatibility "compat" {
+    virtual_modifiers AltGr,NumLock,ScrollLock;
+    interpret.repeat = False;
+    interpret.useModMapMods = AnyLevel;
+    interpret Any+Any { action = SetMods(modifiers=modMapMods,clearLocks); };
+    interpret Any+Lock { action = LockMods(modifiers=Lock); };
+    interpret Shift_Lock+AnyOf(Shift+Lock) {
+        action = LockMods(modifiers=Shift);
+    };
+    // Level 2 Locks & Latches
+    interpret ISO_Level2_Latch {
+        action = LatchMods(modifiers=Shift,clearLocks,latchToLock);
+    };
+    interpret ISO_Level2_Latch+Exactly(Shift) {
+        useModMapMods = level1;
+        action = LatchMods(modifiers=Shift,clearLocks,latchToLock);
+    };
+    // Level 3 Locks & Latches
+    interpret ISO_Level3_Latch {
+        action = LatchMods(modifiers=AltGr,clearLocks,latchToLock);
+    };
+    interpret ISO_Level3_Latch+Any {
+        useModMapMods = level1;
+        virtualModifier = AltGr;
+        action = LatchMods(modifiers=AltGr,clearLocks,latchToLock);
+    };
+    interpret ISO_Level3_Lock {
+        action = LockMods(modifiers=AltGr);
+    };
+    interpret ISO_Level3_Lock+Any {
+        useModMapMods = level1;
+        virtualModifier = AltGr;
+        action = LockMods(modifiers=AltGr);
+    };
+    interpret ISO_Level3_Shift {
+        action = SetMods(modifiers=AltGr,clearLocks);
+    };
+    interpret ISO_Level3_Shift+Any {
+        useModMapMods = level1;
+        virtualModifier = AltGr;
+        action = SetMods(modifiers=AltGr,clearLocks);
+    };
+    // Locks, Latches, & Groups
+    interpret Mode_switch {
+        useModMapMods = level1;
+        virtualModifier = AltGr;
+        action = LockGroup(group=1);
+    };
+    interpret ISO_First_Group {
+        action = SetGroup(group=1,clearLocks);
+    };
+    interpret ISO_Last_Group {
+        action = SetGroup(group=2,clearLocks);
+    };
+    indicator "Group 2" {
+        !allowExplicit;
+        groups = All-Group1;
+    };
+    // NumLock Virtual Modifier
+    interpret Num_Lock+Any {
+        virtualModifier = NumLock;
+        action = LockMods(modifiers=NumLock);
+    };
+    indicator "Num Lock" {
+        !allowExplicit;
+        whichModState = Locked;
+        modifiers = NumLock;
+    };
+    // ScrollLock Virtual Modifier
+    interpret Scroll_Lock+Any {
+        virtualModifier = ScrollLock;
+        action = LockMods(modifiers=modMapMods);
+    };
+    indicator "Scroll Lock" {
+        allowExplicit;
+        whichModState = Locked;
+        modifiers = ScrollLock;
+    };
+};
+
+
+hidden partial xkb_compatibility "modkeys" {
+    virtual_modifiers Alt,Hyper,Meta,Super;
+    // CapsLock
+    interpret Caps_Lock {
+        action = LockMods(modifiers=Lock);
+    };
+    indicator "Caps Lock" {
+        !allowExplicit;
+        whichModState = Locked;
+        modifiers = Lock;
+    };
+    // Shift Virtual Modifier
+    interpret Shift_L {
+        action = SetMods(modifiers=Shift);
+    };
+    interpret Shift_R {
+        action = SetMods(modifiers=Shift);
+    };
+    // Alt Virtual Modifier
+    interpret Alt_L {
+        action = SetMods(modifiers=Alt,clearLocks);
+    };
+    interpret Alt_L+Any {
+        virtualModifier = Alt;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    // Hyper Virtual Modifier
+    interpret Hyper_L {
+        action = SetMods(modifiers=Hyper,clearLocks);
+    };
+    interpret Hyper_L+Any {
+        virtualModifier = Hyper;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    interpret Hyper_R+Any {
+        virtualModifier = Hyper;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    interpret Hyper_R {
+        action = SetMods(modifiers=Hyper,clearLocks);
+    };
+    // Meta Virtual Modifier
+    interpret Meta_L {
+        action = SetMods(modifiers=Meta,clearLocks);
+    };
+    interpret Meta_L+Any {
+        virtualModifier = Meta;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    interpret Meta_R {
+        action = SetMods(modifiers=Meta,clearLocks);
+    };
+    interpret Meta_R+Any {
+        virtualModifier = Meta;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    // Super Virtual Modifier
+    interpret Super_L {
+        action = SetMods(modifiers=Super,clearLocks);
+    };
+    interpret Super_L+Any {
+        virtualModifier = Super;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+    interpret Super_R {
+        action = SetMods(modifiers=Super,clearLocks);
+    };
+    interpret Super_R+Any {
+        virtualModifier = Super;
+        action = SetMods(modifiers=modMapMods,clearLocks);
+    };
+};
+
+
+hidden partial xkb_compatibility "mousekeys" {
+    // MouseKey Indicator
+    indicator "Mouse Keys" {
+        indicatorDrivesKeyboard;
+        controls = MouseKeys;
+    };
+    // Keypad Actions
+    interpret.repeat = True;
+    interpret KP_0 { action = LockPointerButton(button=default, affect=lock); };
+    interpret KP_1 { action = MovePtr(x=-1, y=+1); };
+    interpret KP_2 { action = MovePtr(x=+0, y=+1); };
+    interpret KP_3 { action = MovePtr(x=+1, y=+1); };
+    interpret KP_4 { action = MovePtr(x=-1, y=+0); };
+    interpret KP_5 { action = PointerButton(button=default); };
+    interpret KP_6 { action = MovePtr(x=+1, y=+0); };
+    interpret KP_7 { action = MovePtr(x=-1, y=-1); };
+    interpret KP_8 { action = MovePtr(x=+0, y=-1); };
+    interpret KP_9 { action = MovePtr(x=+1, y=-1); };
+    interpret KP_Add { action = PointerButton(button=default, count=2); };
+    interpret KP_Begin { action = PointerButton(button=default); };
+    interpret KP_Decimal { action = LockPointerButton(button=default, affect=unlock); };
+    interpret KP_Delete { action = LockPointerButton(button=default, affect=unlock); };
+    interpret KP_Divide { action = SetPtrDflt(affect=defaultButton, button=1); };
+    interpret KP_Down { action = MovePtr(x=+0, y=+1); };
+    interpret KP_End { action = MovePtr(x=-1, y=+1); };
+    interpret KP_F2 { action = SetPtrDflt(affect=defaultButton, button=1); };
+    interpret KP_F3 { action = SetPtrDflt(affect=defaultButton, button=2); };
+    interpret KP_F4 { action = SetPtrDflt(affect=defaultButton, button=3); };
+    interpret KP_Home { action = MovePtr(x=-1, y=-1); };
+    interpret KP_Insert { action = LockPointerButton(button=default, affect=lock); };
+    interpret KP_Left { action = MovePtr(x=-1, y=+0); };
+    interpret KP_Multiply { action = SetPtrDflt(affect=defaultButton, button=2); };
+    interpret KP_Next { action = MovePtr(x=+1, y=+1); };
+    interpret KP_Prior { action = MovePtr(x=+1, y=-1); };
+    interpret KP_Right { action = MovePtr(x=+1, y=+0); };
+    interpret KP_Separator { action = PointerButton(button=default, count=2); };
+    interpret KP_Subtract { action = SetPtrDflt(affect=defaultButton, button=3); };
+    interpret KP_Up { action = MovePtr(x=+0, y=-1); };
+    // Solaris Keypad Compatibility
+    interpret F25 { action = SetPtrDflt(affect=defaultButton, button=1); };
+    interpret F26 { action = SetPtrDflt(affect=defaultButton, button=2); };
+    interpret F27 { action = MovePtr(x=-1, y=-1); };
+    interpret F29 { action = MovePtr(x=+1, y=-1); };
+    interpret F31 { action = PointerButton(button=default); };
+    interpret F33 { action = MovePtr(x=-1, y=+1); };
+    interpret F35 { action = MovePtr(x=+1, y=+1); };
+    interpret.repeat = False;
+    // New Keysym Actions
+    interpret Pointer_Accelerate { action = LockControls(controls=MouseKeysAccel); };
+    interpret Pointer_Button1 { action = PointerButton(button=1); };
+    interpret Pointer_Button2 { action = PointerButton(button=2); };
+    interpret Pointer_Button3 { action = PointerButton(button=3); };
+    interpret Pointer_Button_Dflt { action = PointerButton(button=default); };
+    interpret Pointer_DblClick1 { action = PointerButton(button=1, count=2); };
+    interpret Pointer_DblClick2 { action = PointerButton(button=2, count=2); };
+    interpret Pointer_DblClick3 { action = PointerButton(button=3, count=2); };
+    interpret Pointer_DblClick_Dflt { action = PointerButton(button=default, count=2); };
+    interpret Pointer_DfltBtnNext { action = SetPtrDflt(affect=defaultButton, button=+1); };
+    interpret Pointer_DfltBtnPrev { action = SetPtrDflt(affect=defaultButton, button=-1); };
+    interpret Pointer_Drag1 { action = LockPointerButton(button=1); };
+    interpret Pointer_Drag2 { action = LockPointerButton(button=2); };
+    interpret Pointer_Drag3 { action = LockPointerButton(button=3); };
+    interpret Pointer_Drag_Dflt { action = LockPointerButton(button=default); };
+    interpret Pointer_EnableKeys { action = LockControls(controls=MouseKeys); };
+};
+
+
+hidden partial xkb_compatibility "special" {
+    // Interpretations for Useful Keys
+    interpret Terminate_Server { action = Terminate(); };
+    // Lock Controls
+    interpret AccessX_Enable { action = LockControls(controls=AccessXKeys); };
+    interpret AccessX_Feedback_Enable { action = LockControls(controls=AccessXFeedback); };
+    interpret AudibleBell_Enable { action = LockControls(controls=AudibleBell); };
+    interpret BounceKeys_Enable { action = LockControls(controls=BounceKeys); };
+    interpret MouseKeys_Accel_Enable { action = LockControls(controls=MouseKeysAccel); };
+    interpret MouseKeys_Enable { action = LockControls(controls=MouseKeys); };
+    interpret Overlay1_Enable { action = LockControls(controls=Overlay1); };
+    interpret Overlay2_Enable { action = LockControls(controls=Overlay2); };
+    interpret RepeatKeys_Enable { action = LockControls(controls=RepeatKeys); };
+    interpret SlowKeys_Enable { action = LockControls(controls=SlowKeys); };
+    interpret StickyKeys_Enable { action = LockControls(controls=StickyKeys); };
+    // XF86 Settings
+    interpret XF86_Ungrab { action = Private(type=0x86, data="Ungrab"); };
+    interpret XF86LogGrabInfo { action = Private(type=0x86, data="PrGrbs"); };
+    interpret.repeat = True;
+    interpret XF86_ClearGrab { action = Private(type=0x86, data="ClsGrb"); };
+    interpret XF86_Next_VMode { action = Private(type=0x86, data="+VMode"); };
+    interpret XF86_Prev_VMode { action = Private(type=0x86, data="-VMode"); };
+    interpret XF86_Switch_VT_1 { action = SwitchScreen(Screen=1, !SameServer); };
+    interpret XF86_Switch_VT_10 { action = SwitchScreen(Screen=10, !SameServer); };
+    interpret XF86_Switch_VT_11 { action = SwitchScreen(Screen=11, !SameServer); };
+    interpret XF86_Switch_VT_12 { action = SwitchScreen(Screen=12, !SameServer); };
+    interpret XF86_Switch_VT_2 { action = SwitchScreen(Screen=2, !SameServer); };
+    interpret XF86_Switch_VT_3 { action = SwitchScreen(Screen=3, !SameServer); };
+    interpret XF86_Switch_VT_4 { action = SwitchScreen(Screen=4, !SameServer); };
+    interpret XF86_Switch_VT_5 { action = SwitchScreen(Screen=5, !SameServer); };
+    interpret XF86_Switch_VT_6 { action = SwitchScreen(Screen=6, !SameServer); };
+    interpret XF86_Switch_VT_7 { action = SwitchScreen(Screen=7, !SameServer); };
+    interpret XF86_Switch_VT_8 { action = SwitchScreen(Screen=8, !SameServer); };
+    interpret XF86_Switch_VT_9 { action = SwitchScreen(Screen=9, !SameServer); };
+    interpret XF86LogWindowTree { action = Private(type=0x86, data="PrWins"); };
+};
+
+
+default xkb_compatibility "full_compat" {
+    include "usx_compat(compat)"
+    include "usx_compat(modkeys)"
+    # include "usx_compat(mousekeys)"
+    include "usx_compat(special)"
+};

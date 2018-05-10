@@ -1,8 +1,0 @@
-PyTools
-Various developer's tools for Python
-
-The user or admin must append /opt/bin/PyTools/ and /opt/bin/PyTools/geany-plugins to the PATH.
-This may be done in /etc/environment, /etc/profile.d/, ~/.bashrc, ~/.profile, or some equivalent.
-
-To install, execute "INSTALL.tmp" with Root privileges.
-To install dependencies, execute "GET-DEPS.tmp" with Root privileges.

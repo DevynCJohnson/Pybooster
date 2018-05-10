@@ -1,0 +1,25 @@
+#!/usr/bin/awk -f
+# -*- coding: utf-8-unix; Mode: Awk; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=awk syn=awk.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax awk; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Print a spectrum of colors and various symbols/characters to test terminal color and character support
+# @file termtest
+# @version 2018.04.27
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+
+
+BEGIN {
+    printf "Color Test: "
+    for (column = 0; column < 256; column++) {
+        g = ((column * 510) / 255);
+        if (g > 255) { g = 510 - g; }
+        printf "\033[48;2;%d;%d;%dm%s\033[0m", 255 - column, g, column, " ";
+    }
+    printf "\nASCII & Extended ASCII: ";
+    for (n=32; n < 256; ++n) {
+        if (n > 126 && n < 161) { continue }
+        printf("%c  ", n);
+    }
+    printf "\nCyrillic: Й Ц У К Е Н Г Ш Щ З Х Ъ Ф Ы В А П Р О Л Д Ж Э Я Ч С М И Т Ь Б Ю\n"
+    printf "\nVarious Unicode Symbols: ₹\t£\t¤\t₿\t€\t✓\t✗\t♯\t≥\t≤\t÷\t×\t≢\t…\t⎴\t♀\t♂\t⌨\t⌛\t☹\t☺\t☠\t☢\t☣\t⚛\t🎧\t😀\t😉\t⁉\t\n"
+}

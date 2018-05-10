@@ -1,16 +1,203 @@
-# Languages
-*.s linguist-language=Assembly
-*.S linguist-language=Assembly
-*.asm linguist-language=Assembly
-*.c linguist-language=C
-*.h linguist-language=C
-*.def linguist-language=C
-*.swg linguist-language=C
-*.py linguist-language=Python
-*.pyw linguist-language=Python
-*.pygtk linguist-language=Python
-*.glade linguist-language=XML
+# Autotools
+
+aclocal.m4 linguist-generated=true linguist-vendored
+config.guess linguist-generated=true linguist-vendored
+config.sub linguist-generated=true linguist-vendored
+configure linguist-generated=true linguist-vendored
+configure.in linguist-generated=true linguist-vendored
+depcomp linguist-generated=true linguist-vendored
+libtool.m4 linguist-generated=true linguist-vendored
+ltoptions.m4 linguist-generated=true linguist-vendored
+ltsugar.m4 linguist-generated=true linguist-vendored
+ltversion.m4 linguist-generated=true linguist-vendored
+lt~obsolete.m4 linguist-generated=true linguist-vendored
+Makefile.am linguist-generated=true linguist-vendored
+Makefile.in linguist-generated=true linguist-vendored
+missing linguist-generated=true linguist-vendored
+mkinstalldirs linguist-generated=true linguist-vendored
+
+
+# Generated Files
+
+*.egg linguist-generated=true linguist-vendored
+*.py[cdo] binary linguist-generated=true linguist-vendored
+*.tar.bz2 binary linguist-generated=true linguist-vendored
+*.tar.gz binary linguist-generated=true linguist-vendored
+*.xkb text eol=lf linguist-generated=true linguist-vendored
+*.xkm binary linguist-generated=true linguist-vendored
+*.zip binary linguist-generated=true linguist-vendored
+icon-theme.cache binary linguist-generated=true linguist-vendored
+
+
+# Project Files
+
+accessory/schemas/** linguist-detectable=false linguist-vendored
+accessory/schemas/*.dtd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/*.rng text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/*.xsd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+.editorconfig text eol=lf linguist-vendored
+.flake8 text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.gitattributes text eol=lf linguist-vendored=false
+.gitignore text eol=lf linguist-vendored=false
+.gitmodules text eol=lf linguist-vendored=false
+mypy.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pycodestyle text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pylintrc text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+pylintrc text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.sublime-project text linguist-vendored
+.sublime-workspace text linguist-vendored
+.travis.yml text eol=lf linguist-language=YAML linguist-vendored=false
+.vscode text eol=crlf linguist-vendored
+Doxyfile text eol=lf linguist-vendored=false
+
+
+# Image Files
+
+*.jpg binary diff=exif linguist-vendored=false
+*.png binary diff=exif linguist-vendored=false
+*.xcf binary diff=exif linguist-vendored
+*.xcfbz2 binary diff=exif linguist-vendored
+*.xcfgz binary diff=exif linguist-vendored
+*.xpm text linguist-generated=false linguist-language=XPM linguist-vendored=false
+
+
+# Programming Languages
+
+*.asm text eol=lf linguist-language=Assembly linguist-vendored=false
+*.s text eol=lf linguist-language=Assembly linguist-vendored=false
+*.S text eol=lf linguist-language=Assembly linguist-vendored=false
+*.auk text eol=lf linguist-language=Awk linguist-vendored=false
+*.awk text eol=lf linguist-language=Awk linguist-vendored=false
+*.gawk text eol=lf linguist-language=Awk linguist-vendored=false
+*.mawk text eol=lf linguist-language=Awk linguist-vendored=false
+*.nawk text eol=lf linguist-language=Awk linguist-vendored=false
+*.bat text eol=crlf linguist-language=Batchfile linguist-vendored=false
+*.btm text eol=crlf linguist-language=Batchfile linguist-vendored=false
+*.cmd text eol=crlf linguist-language=Batchfile linguist-vendored=false
+*.nt text eol=crlf linguist-language=Batchfile linguist-vendored=false
+*.bison text eol=lf linguist-language=Bison linguist-vendored=false
+*.b text eol=lf linguist-language=Brainfuck linguist-vendored=false
+*.bf text eol=lf linguist-language=Brainfuck linguist-vendored=false
+*.c text eol=lf linguist-language=C linguist-vendored=false
+*.def text eol=lf linguist-generated=false linguist-language=C linguist-vendored=false
+*.h text eol=lf linguist-language=C linguist-vendored=false
+*.swg text eol=lf linguist-generated=false linguist-language=C linguist-vendored=false
+*.coffee text eol=lf linguist-language=CoffeeScript linguist-vendored=false
+*._coffee text eol=lf linguist-language=CoffeeScript linguist-vendored=false
+*.css text eol=lf linguist-generated=false linguist-language=CSS linguist-vendored=false
+*.csv text eol=lf linguist-generated=false linguist-language=CSV linguist-vendored=false
+*.cu text eol=lf linguist-language=Cuda linguist-vendored=false
+*.cuh text eol=lf linguist-language=Cuda linguist-vendored=false
+*.pyx text eol=lf linguist-language=Cython linguist-vendored=false
+*.d text eol=lf linguist-language=D linguist-vendored=false
+*.di text eol=lf linguist-language=D linguist-vendored=false
+*.f text eol=lf linguist-language=Fortran linguist-vendored=false
+*.f03 text eol=lf linguist-language=Fortran linguist-vendored=false
+*.f08 text eol=lf linguist-language=Fortran linguist-vendored=false
+*.f77 text eol=lf linguist-language=Fortran linguist-vendored=false
+*.f90 text eol=lf linguist-language=Fortran linguist-vendored=false
+*.f95 text eol=lf linguist-language=Fortran linguist-vendored=false
+*.for text eol=lf linguist-language=Fortran linguist-vendored=false
+*.fpp text eol=lf linguist-language=Fortran linguist-vendored=false
+*.go text eol=lf linguist-language=Go linguist-vendored=false
+*.hx text eol=lf linguist-language=Haxe linguist-vendored=false
+*.hxsl text eol=lf linguist-language=Haxe linguist-vendored=false
+*.htm text eol=lf linguist-language=HTML linguist-vendored=false
+*.html text eol=lf linguist-language=HTML linguist-vendored=false
+*.xht text eol=lf linguist-language=HTML linguist-vendored=false
+*.xhtml text eol=lf linguist-language=HTML linguist-vendored=false
+*.cfg text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.desktop text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.json text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
+*.less text eol=lf linguist-language=Less linguist-vendored=false
+*.limbo text eol=lf linguist-language=Limbo linguist-vendored=false
+*.ll text eol=lf linguist-language=LLVM linguist-vendored=false
+*.lua text eol=lf linguist-language=Lua linguist-vendored=false
+MANIFEST.in text eol=lf linguist-documentation=false linguist-generated=false linguist-language=INI linguist-vendored=false
+*.js text eol=lf linguist-language=JavaScript linguist-vendored=false
+*.m4 text eol=lf linguist-generated=false linguist-language=M4 linguist-vendored=false
+*.mk text eol=lf linguist-generated=false linguist-language=Makefile linguist-vendored=false
+makefile text eol=lf linguist-language=Makefile linguist-vendored=false
+*.matlab text eol=lf linguist-language=Matlab linguist-vendored=false
+*.mlab text eol=lf linguist-language=Matlab linguist-vendored=false
+*.octave text eol=lf linguist-language=Matlab linguist-vendored=false
+*.numpy text eol=lf linguist-language=NumPy linguist-vendored=false
+*.numpyw text eol=lf linguist-language=NumPy linguist-vendored=false
+*.numsc text eol=lf linguist-language=NumPy linguist-vendored=false
+*.ml text eol=lf linguist-language=OCaml linguist-vendored=false
+*.mli text eol=lf linguist-language=OCaml linguist-vendored=false
+*.mll text eol=lf linguist-language=OCaml linguist-vendored=false
+*.mly text eol=lf linguist-language=OCaml linguist-vendored=false
+*.cl text eol=lf linguist-language=OpenCL linguist-vendored=false
+*.opencl text eol=lf linguist-language=OpenCL linguist-vendored=false
+*.parrot text eol=lf linguist-generated=false linguist-language=Parrot linguist-vendored=false
+*.pasm text eol=lf linguist-generated=false linguist-language=pasm linguist-vendored=false
+*.php text eol=lf linguist-language=PHP linguist-vendored=false
+*.php4 text eol=lf linguist-language=PHP linguist-vendored=false
+*.php5 text eol=lf linguist-language=PHP linguist-vendored=false
+*.php6 text eol=lf linguist-language=PHP linguist-vendored=false
+*.php7 text eol=lf linguist-language=PHP linguist-vendored=false
+*.phps text eol=lf linguist-language=PHP linguist-vendored=false
+*.phpt text eol=lf linguist-language=PHP linguist-vendored=false
+*.py text eol=lf linguist-language=Python linguist-vendored=false
+*.py[3w] text eol=lf linguist-language=Python linguist-vendored=false
+*.pygtk text eol=lf linguist-language=Python linguist-vendored=false
+*.sass text eol=lf linguist-language=Sass linguist-vendored=false
+*.scss text eol=lf linguist-language=SCSS linguist-vendored=false
+*.sh text eol=lf linguist-language=Shell linguist-vendored=false
+*.sql text eol=lf linguist-language=SQL linguist-vendored=false
+*.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
+*.tm text eol=lf linguist-language=Tcl linguist-vendored=false
+XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
+*.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
+*.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
+*.wast text eol=lf linguist-language=WebAssembly linguist-vendored=false
+*.wat text eol=lf linguist-language=WebAssembly linguist-vendored=false
+XCompose text eol=lf linguist-documentation=false linguist-language=XCompose linguist-vendored=false
+*.dtd text eol=lf linguist-language=XML linguist-vendored=false
+*.glade text eol=lf linguist-generated=false linguist-language=XML linguist-vendored=false
+*.mathml text eol=lf linguist-language=XML linguist-vendored=false
+*.rng text eol=lf linguist-language=XML linguist-vendored=false
+*.svg text eol=lf linguist-documentation=false linguist-language=XML linguist-vendored=false
+*.xsd text eol=lf linguist-language=XML linguist-vendored=false
+*.xsl text eol=lf linguist-language=XSLT linguist-vendored=false
+*.xslt text eol=lf linguist-language=XSLT linguist-vendored=false
+*.y text eol=lf linguist-language=Yacc linguist-vendored=false
+*.yacc text eol=lf linguist-language=Yacc linguist-vendored=false
+*.yy text eol=lf linguist-language=Yacc linguist-vendored=false
+*.yml text eol=lf linguist-language=YAML linguist-vendored=false
+
 
 # Documentation
-/doc/* linguist-documentation
-/tools/* linguist-documentation
+
+doc/** linguist-detectable=false linguist-documentation
+[Ee]xamples/** linguist-detectable=false linguist-documentation
+[Mm]an/** linguist-detectable=false linguist-documentation
+README.md text eol=lf linguist-language=Markdown linguist-documentation
+*.md text eol=lf linguist-language=Markdown linguist-documentation
+*.rst text eol=lf linguist-language=reStructuredText linguist-documentation
+*.txt text eol=lf linguist-documentation
+AUTHORS text eol=lf linguist-documentation
+BUGS text eol=lf linguist-documentation
+ChangeLog text eol=lf linguist-documentation
+CONTRIBUTING text eol=lf linguist-documentation
+CONTRIBUTORS text eol=lf linguist-documentation
+COPYING text eol=lf linguist-documentation
+HACKING text eol=lf linguist-documentation
+INSTALL text eol=lf linguist-documentation
+License text eol=lf linguist-documentation
+LICENSE text eol=lf linguist-documentation
+LICENSE.* text eol=lf linguist-documentation
+LICENSE.txt text eol=lf linguist-documentation
+MAINTAINERS text eol=lf linguist-documentation
+NEWS text eol=lf linguist-documentation
+PKG-INFO text eol=lf linguist-documentation
+README text eol=lf linguist-documentation
+README* text eol=lf linguist-documentation
+THANKS text eol=lf linguist-documentation
+TODO text eol=lf linguist-documentation
