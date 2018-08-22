@@ -396,6 +396,7 @@ submitall :
 	@git checkout dev
 	git push --progress --signed=false --verify origin dev
 	git checkout master && git merge --commit dev && git push --progress --signed=false --verify origin master
+	git checkout dev
 
 submitdev :
 	@git push --progress --signed=false --verify origin dev

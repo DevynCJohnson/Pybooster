@@ -224,7 +224,11 @@ def cvc(_num: float) -> float:
 
 
 def cvs(_num: float) -> float:
-    """Versed Sine Complement (coversin, cosiv)"""
+    """Versed Sine Complement (coversin, cosiv)
+
+    >>> cvs(90.0)
+    0.10600333639944215
+    """
     return 1.0 - sin(_num)
 
 

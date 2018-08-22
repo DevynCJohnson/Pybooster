@@ -153,6 +153,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.sql text eol=lf linguist-language=SQL linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
+*.tags text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
 *.wast text eol=lf linguist-language=WebAssembly linguist-vendored=false
@@ -172,7 +173,11 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
 XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
+accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+accessory/geany/templates/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/templates/files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/templates/files/file.bat eol=crlf linguist-generated=false linguist-language=Text linguist-vendored=false
 
 
 # Documentation
