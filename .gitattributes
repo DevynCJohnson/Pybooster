@@ -113,7 +113,6 @@ Doxyfile text eol=lf linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-accessory/geany/filedefs/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.json text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
 *.less text eol=lf linguist-language=Less linguist-vendored=false
 *.limbo text eol=lf linguist-language=Limbo linguist-vendored=false
@@ -154,7 +153,6 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.sql text eol=lf linguist-language=SQL linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
-XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
 *.wast text eol=lf linguist-language=WebAssembly linguist-vendored=false
@@ -173,6 +171,8 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yacc text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
+XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
+accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 
 
 # Documentation

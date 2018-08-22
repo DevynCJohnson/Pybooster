@@ -8,6 +8,7 @@ Collection of Software Libraries & Executables
 - **Documentation:** <http://dcjtech.info/Pybooster/>
 
 This project is a rolling-release. The software is stable and suitable for use in other projects.
+However, the C-Standard Libraries are still under construction, so do not expect them to work perfectly.
 
 The software libraries can be used with other projects.
 EzWin is also included in PyBooster. Ezwin is a collection of GTK windows and interfaces.

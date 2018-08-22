@@ -215,7 +215,11 @@ def csc(_num: float) -> float:
 
 
 def cvc(_num: float) -> float:
-    """Versed Cosine Complement (covercos)"""
+    """Versed Cosine Complement (covercos)
+
+    >>> cvc(90.0)
+    1.8939966636005579
+    """
     return 1.0 + sin(_num)
 
 

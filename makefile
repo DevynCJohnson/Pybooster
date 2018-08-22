@@ -195,7 +195,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitadd lscontrib merge previewcleangit stat submit submitall submitdev sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitadd lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -383,9 +383,6 @@ gitadd : cleanall fixperm
 lscontrib :
 	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
 
-merge :
-	@git merge dev
-
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix
 	git rm --dry-run --cached -r --ignore-unmatch *
@@ -395,17 +392,16 @@ previewcleangit : cleanall fixperm
 stat : cleanall
 	-@git status --ahead-behind --branch --short
 
-submit :
-	@git push --progress --signed=false --verify origin master
+submitall :
+	@git checkout dev
+	git push --progress --signed=false --verify origin dev
+	git checkout master && git merge --commit dev && git push --progress --signed=false --verify origin master
 
 submitdev :
 	@git push --progress --signed=false --verify origin dev
 
-submitall :
-	@git checkout dev
-	git push --progress --signed=false --verify origin dev
-	git checkout master && git merge --commit dev
-	git push --progress --signed=false --verify origin master
+submitmaster :
+	@git push --progress --signed=false --verify origin master
 
 sw2dev :
 	@git checkout dev
