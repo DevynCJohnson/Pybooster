@@ -251,7 +251,11 @@ def hcv(_num: float) -> float:
 
 
 def hvc(_num: float) -> float:
-    """Half-Versed Cosine (hac, havercos)"""
+    """Half-Versed Cosine (hac, havercos)
+
+    >>> hvc(90.0)
+    0.27596319193541496
+    """
     return (1.0 + cos(_num)) * 0.5
 
 
