@@ -242,7 +242,11 @@ def hcc(_num: float) -> float:
 
 
 def hcv(_num: float) -> float:
-    """Half-Versed Sine Complement (hacoversin)"""
+    """Half-Versed Sine Complement (hacoversin)
+
+    >>> hcv(90.0)
+    0.053001668199721075
+    """
     return (1.0 - sin(_num)) * 0.5
 
 
