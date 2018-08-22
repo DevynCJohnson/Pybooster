@@ -402,11 +402,10 @@ submitdev :
 	@git push --progress --signed=false --verify origin dev
 
 submitall :
-	@git checkout master
-	git push --all --progress --signed=false --verify origin
-	git checkout dev
-	git merge --commit master
+	@git checkout dev
 	git push --progress --signed=false --verify origin dev
+	git checkout master
+	git merge --commit dev && git push --progress --signed=false --verify origin master
 
 sw2dev :
 	@git checkout dev
