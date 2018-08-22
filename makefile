@@ -374,8 +374,7 @@ cleangit : cleanall fixperm
 	git fsck --dangling --full --name-objects --progress --strict --unreachable
 
 commit :
-	[ -z "$(GITMSG)" ] && printf '\nNo commit message is saved to env variable GITMSG!\n\nCreate a message: ' && read GITMSG2 && printf '\n' && git commit --cleanup=strip --message="$$GITMSG2"
-	[ -n "$(GITMSG)" ] && git commit --cleanup=strip --message='$(GITMSG)'
+	([ -z "$(GITMSG)" ] && printf '\nNo commit message is saved to env variable GITMSG!\n\nCreate a message: ' && read GITMSG2 && printf '\n' && git commit --cleanup=strip --message="$$GITMSG2") || [ -n "$(GITMSG)" ] && git commit --cleanup=strip --message='$(GITMSG)'
 
 gitadd : cleanall fixperm
 	@git add --all
