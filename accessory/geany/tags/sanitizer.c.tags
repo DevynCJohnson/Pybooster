@@ -1,0 +1,61 @@
+# format=tagmanager
+__asan_addr_is_in_fake_stackÌ1024Í(void *fake_stack, void *addr, void **beg, void **end)Ö0Ïvoid *
+__asan_address_is_poisonedÌ1024Í(void const volatile *addr)Ö0Ïint
+__asan_default_optionsÌ1024Í()Ö0Ïconst char *
+__asan_describe_addressÌ1024Í(void *addr)Ö0Ïvoid
+__asan_get_alloc_stackÌ1024Í(void *addr, void **trace, size_t size, int *thread_id)Ö0Ïsize_t
+__asan_get_current_fake_stackÌ1024Í()Ö0Ïvoid *
+__asan_get_free_stackÌ1024Í(void *addr, void **trace, size_t size, int *thread_id)Ö0Ïsize_t
+__asan_get_report_access_sizeÌ1024Í()Ö0Ïsize_t
+__asan_get_report_access_typeÌ1024Í()Ö0Ïint
+__asan_get_report_addressÌ1024Í()Ö0Ïvoid *
+__asan_get_report_bpÌ1024Í()Ö0Ïvoid *
+__asan_get_report_descriptionÌ1024Í()Ö0Ïconst char *
+__asan_get_report_pcÌ1024Í()Ö0Ïvoid *
+__asan_get_report_spÌ1024Í()Ö0Ïvoid *
+__asan_get_shadow_mappingÌ1024Í(size_t *shadow_scale, size_t *shadow_offset)Ö0Ïvoid
+__asan_locate_addressÌ1024Í(void *addr, char *name, size_t name_size, void **region_address, size_t *region_size)Ö0Ïconst char *
+__asan_on_errorÌ1024Í()Ö0Ïvoid
+__asan_poison_memory_regionÌ1024Í(void const volatile *addr, size_t size)Ö0Ïvoid
+__asan_print_accumulated_statsÌ1024Í()Ö0Ïvoid
+__asan_region_is_poisonedÌ1024Í(void *beg, size_t size)Ö0Ïvoid *
+__asan_report_errorÌ1024Í(void *pc, void *bp, void *sp, void *addr, int is_write, size_t access_size)Ö0Ïvoid
+__asan_report_presentÌ1024Í()Ö0Ïint
+__asan_set_death_callbackÌ1024Í(void (*callback)(void))Ö0Ïvoid
+__asan_set_error_exit_codeÌ1024Í(int exit_code)Ö0Ïint
+__asan_set_error_report_callbackÌ1024Í(void (*callback)(const char*))Ö0Ïvoid
+__asan_unpoison_memory_regionÌ1024Í(void const volatile *addr, size_t size)Ö0Ïvoid
+__has_featureÌ131072Í(x)Ö0
+__lsan_default_suppressionsÌ1024Í()Ö0Ïconst char *
+__lsan_disableÌ1024Í()Ö0Ïvoid
+__lsan_do_leak_checkÌ1024Í()Ö0Ïvoid
+__lsan_enableÌ1024Í()Ö0Ïvoid
+__lsan_ignore_objectÌ1024Í(const void *p)Ö0Ïvoid
+__lsan_is_turned_offÌ1024Í()Ö0Ïint
+__lsan_register_root_regionÌ1024Í(const void *p, size_t size)Ö0Ïvoid
+__lsan_unregister_root_regionÌ1024Í(const void *p, size_t size)Ö0Ïvoid
+__sanitizer_annotate_contiguous_containerÌ1024Í(const void *beg, const void *end, const void *old_mid, const void *new_mid)Ö0Ïvoid
+__sanitizer_cov_dumpÌ1024Í()Ö0Ïvoid
+__sanitizer_cov_initÌ1024Í()Ö0Ïvoid
+__sanitizer_maybe_open_cov_fileÌ1024Í(const char *name)Ö0Ïintptr_t
+__sanitizer_print_stack_traceÌ1024Í()Ö0Ïvoid
+__sanitizer_report_error_summaryÌ1024Í(const char *error_summary)Ö0Ïvoid
+__sanitizer_sandbox_argumentsÌ4096Ö0Ïanon_struct_0
+__sanitizer_sandbox_on_notifyÌ1024Í(__sanitizer_sandbox_arguments *args)Ö0Ïvoid
+__sanitizer_set_report_pathÌ1024Í(const char *path)Ö0Ïvoid
+__sanitizer_unaligned_load16Ì1024Í(const void *p)Ö0Ïuint16_t
+__sanitizer_unaligned_load32Ì1024Í(const void *p)Ö0Ïuint32_t
+__sanitizer_unaligned_load64Ì1024Í(const void *p)Ö0Ïuint64_t
+__sanitizer_unaligned_store16Ì1024Í(void *p, uint16_t x)Ö0Ïvoid
+__sanitizer_unaligned_store32Ì1024Í(void *p, uint32_t x)Ö0Ïvoid
+__sanitizer_unaligned_store64Ì1024Í(void *p, uint64_t x)Ö0Ïvoid
+__sanitizer_verify_contiguous_containerÌ1024Í(const void *beg, const void *mid, const void *end)Ö0Ïint
+anon_struct_0Ì2048Ö0
+ASAN_POISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
+ASAN_UNPOISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
+coverage_fdÌ64Îanon_struct_0Ö0Ïintptr_t
+coverage_max_block_sizeÌ64Îanon_struct_0Ö0Ïint
+coverage_sandboxedÌ64Îanon_struct_0Ö0Ïint
+SANITIZER_ASAN_INTERFACE_HÌ65536Ö0
+SANITIZER_COMMON_INTERFACE_DEFS_HÌ65536Ö0
+SANITIZER_LSAN_INTERFACE_HÌ65536Ö0

@@ -1,0 +1,55 @@
+[keywords]
+primary=and as assert async await break cdef class continue def del elif else except exec False finally for from global if import in is lambda None nonlocal not or pass print raise return True try while with yield
+identifiers=__all__ __author__ __build_class__ __copyright__ __debug__ __doc__ __import__ __license__ __loader__ __name__ __package__ __spec__ __version__ abs AbstractSet all any Any AnyStr AnyText apply ArgumentParser ArithmeticError ascii AssertionError AsyncContextManager AsyncGenerator AsyncIterable AsyncIterator AttributeError Awaitable BaseException basestring bin BinaryIO BlockingIOError bool BrokenPipeError buffer BufferError bytearray bytes ByteString BytesWarning callable Callable CallableMeta ChainMap ChildProcessError chr classmethod ClassVar cmp coerce Collection compile complex ConnectionAbortedError ConnectionError ConnectionRefusedError ConnectionResetError Container ContextManager copyright Coroutine Counter credits CT_co DatabaseError DataError DefaultDict delattr DeprecationWarning Deque Dict dict dir divmod Ellipsis enumerate EnvironmentError EOFError ErrorDuringImport eval Exception execfile exit ExpatError file FileExistsError FileNotFoundError filter float FloatingPointError format FrozenSet frozenset FutureWarning gaierror Generator GeneratorExit Generic GenericMeta getattr globals hasattr hash Hashable help hex id ImportError ImportWarning IndentationError IndexError input int IntegrityError InterfaceError intern InternalError InterruptedError IO IOError IsADirectoryError isinstance issubclass ItemsView iter Iterable Iterator KeyboardInterrupt KeyError KeysView len license List list locals long LookupError map Mapping MappingView Match max MemoryError memoryview MethodDescriptorType MethodWrapperType min MutableMapping MutableSequence MutableSet NamedTuple NamedTupleMeta NameError NewType next NoReturn NotADirectoryError NotImplemented NotImplementedError NotSupportedError object oct open OperationalError Optional OptionManager ord OSError OverflowError Pattern PendingDeprecationWarning PermissionError PluginManager pow print ProcessLookupError ProgrammingError property quit range raw_input RecursionError reduce ReferenceError reload repr ResourceWarning reversed Reversible round RuntimeError RuntimeWarning Sequence Set set setattr SIG_DFL SIGINT Sized slice sorted StandardError staticmethod StopIteration str SubprocessError sum super SupportsAbs SupportsBytes SupportsComplex SupportsFloat SupportsInt SupportsRound SyntaxError SyntaxWarning SystemError SystemExit TabError Terminator Text TextIO TimeoutError TimeoutExpired tuple Tuple TupleMeta type Type TypeError TypeVar TypingMeta UnboundLocalError unichr unicode UnicodeDecodeError UnicodeEncodeError UnicodeError UnicodeTranslateError UnicodeWarning Union UserWarning ValueError vars Warning xrange ZeroDivisionError zip
+
+[lexer_properties]
+fold.comment.python=1
+fold.quotes.python=1
+lexer.python.keywords2.no.sub.identifiers=1
+
+[settings]
+extension=py
+mime_type=text/x-python
+comment_single=#
+comment_open="""
+comment_close="""
+comment_use_indent=true
+context_action_cmd=pydocgtk %s
+
+[indentation]
+type=0
+width=4
+
+[build-menu]
+FT_00_LB=_Flake8
+FT_00_CM=flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "%d/%f"
+FT_00_WD=
+FT_01_LB=_PyAnalysis
+FT_01_CM=pyanalysis "%d/%f"
+FT_01_WD=
+FT_02_LB=PyLint
+FT_02_CM=pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "%d/%f"
+FT_02_WD=
+FT_03_LB=DocTest
+FT_03_CM=python3 -m doctest "%d/%f"
+FT_03_WD=
+FT_04_LB=Build PyOpt
+FT_04_CM=python3 -Sq -OO -m py_compile "%d/%f"
+FT_04_WD=
+FT_05_LB=NOQA Checker
+FT_05_CM=noqa_checker "%d/%f"
+FT_05_WD=
+FT_07_LB=
+FT_07_CM=
+FT_07_WD=
+EX_00_LB=Terminal Exec
+EX_00_CM=gnome-terminal -- [ -d ../testing ] && cd ../testing ; %d/%f; zenity --info --title='Geany Info' --text='Finished executing program' 2>/dev/null
+EX_00_WD=
+error_regex=([^:]+):([0-9]+):([0-9:]+)?.*
+EX_01_LB=PyExecute
+EX_01_CM=python3 -Sq "%d/%f"
+EX_01_WD=
+
+[build_settings]
+compiler=python -m py_compile "%f"
+run_cmd=python "%f"

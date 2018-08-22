@@ -2,18 +2,18 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief Functions and data for manipulating and processing markup languages
+"""@brief Functions and data for manipulating and processing markup languages and CSS
 
 @file markup.py
 @package pybooster.markup
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section DESCRIPTION
 This library contains
  - Data tables of tags and attributes
- - Functions for manipulationing and processing markup data
+ - Functions for manipulationing and processing markup data and CSS
  - Parsers
 
 @section LICENSE
@@ -37,15 +37,24 @@ along with this software.
 
 from io import StringIO
 from sys import stderr
-import xml.etree.ElementTree as ET
+from typing import List, Optional, Union
+import xml.etree.ElementTree as ET  # nosec
 
 from pybooster.basic import isintuplelist
 from pybooster.libchar import ALPHASET, INVALID_CHARREFS, INVALID_CODEPOINTS, HTML5
+from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
+from pybooster.strtools import rmspecialwhitespace
 
 try:  # Regular Expression module
-    import regex as re  # noqa: E402  # pylint: disable=C0411
+    from regex import compile as rgxcompile, I, match as rgxmatch, S, sub as resub, VERBOSE
 except ImportError:
-    import re  # noqa: E402  # pylint: disable=C0411
+    from re import compile as rgxcompile, I, match as rgxmatch, S, sub as resub, VERBOSE
+
+try:  # XML module
+    from defusedxml import defuse_stdlib
+    defuse_stdlib()
+except ImportError:
+    pass
 
 
 __all__ = [
@@ -53,16 +62,11 @@ __all__ = [
     r'INKSCAPE_NAMESPACES',
     r'SVG_SIZE',
     r'SVG_VIEWBOX_SEP',
-    r'INCOMPLETE_REF',
-    r'ENTITY_REF',
-    r'CHAR_REF',
-    r'CHAR_REF2',
     r'LEADING_SURROGATE',
     r'TRAILING_SURROGATE',
     r'LOCATESTARTTAGEND_TOLERANT',
     r'ATTRFIND_TOLERANT',
     r'CC_NS',
-    r'CHARREF',
     r'COMMENTCLOSE',
     r'DECLNAME_MATCH',
     r'DECLSTRINGLIT_MATCH',
@@ -74,8 +78,6 @@ __all__ = [
     r'INCOMPLETE',
     r'INKSCAPE_NS',
     r'INTERESTING_NORMAL',
-    r'LEADING_TRAILING_WHITESPACE',
-    r'LEADING_WHITESPACE',
     r'MARKEDSECTIONCLOSE',
     r'MSMARKEDSECTIONCLOSE',
     r'NUMBER',
@@ -85,9 +87,6 @@ __all__ = [
     r'SODIPODI_NS',
     r'STARTTAGOPEN',
     r'TAGFIND_TOLERANT',
-    r'TRAILING_WHITESPACE',
-    r'WHITESPACE',
-    r'WHITESPACE_NEWLINE',
     r'WHITESPACE_IN_CHARREF',
     r'XML_DECLARATION',
     r'CDATA_CONTENT_ELEMENTS',
@@ -134,6 +133,7 @@ __all__ = [
     r'resize_svg',
     r'remove_duplicated_svg_ns',
     r'repair_svg_tag',
+    r'repair_svg_attr',
     # MINIFY FUNCTIONS #
     r'condense_hex_colors',
     r'attribute_cleaner',
@@ -155,8 +155,8 @@ __all__ = [
 
 
 INKSCAPE_NAMESPACES = {r'inkscape': r'http://www.inkscape.org/namespaces/inkscape', r'sodipodi': r'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'}
-SVG_SIZE = re.compile(r'^\s*(-?\d+(?:\.\d+)?)\s*(px|in|cm|mm|pt|pc|%)?')
-SVG_VIEWBOX_SEP = re.compile(r'[ ,\t]+')
+SVG_SIZE = rgxcompile(r'^\s*(-?\d+(?:\.\d+)?)\s*(px|in|cm|mm|pt|pc|%)?')
+SVG_VIEWBOX_SEP = rgxcompile(r'[ ,\t]+')
 NO_QUOTES = 0
 SINGLE_QUOTE = 1
 DOUBLE_QUOTE = 2
@@ -166,50 +166,35 @@ FILETYPE_MATHML = 2
 FILETYPE_SVG = 3
 FILETYPE_DTD = 4
 FILETYPE_XSD = 5
-INCOMPLETE_REF = re.compile('&[#]?[0-9A-Za-z]+')
-ENTITY_REF = re.compile('&[0-9A-Za-z]+;')
-CHAR_REF = re.compile('&#(?:[0-9]+|[Xx][0-9A-Fa-f]+);')
-CHAR_REF2 = re.compile(
-    r'&(#[0-9]+;?'
-    r'|#[xX][0-9a-fA-F]+;?'
-    r'|[^\t\n\f <&#;]{1,32};?)'
-)
-LEADING_SURROGATE = re.compile(r'[\ud800-\udbff]')
-TRAILING_SURROGATE = re.compile(r'[\udc00-\udfff]')
-LOCATESTARTTAGEND_TOLERANT = re.compile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', re.VERBOSE)
+LEADING_SURROGATE = rgxcompile(r'[\ud800-\udbff]')
+TRAILING_SURROGATE = rgxcompile(r'[\udc00-\udfff]')
+LOCATESTARTTAGEND_TOLERANT = rgxcompile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', VERBOSE)
 ATTR_TOLERANT = r'((?<=[\'"\s/])[^\s/>][^\s/=>]*)(\s*=+\s*(\'[^\']*\'|"[^"]*"|(?![\'"])[^>\s]*))?(?:\s|/(?!>))*'
-ATTRFIND_TOLERANT = re.compile(ATTR_TOLERANT)
-CC_NS = re.compile(r'\s*xmlns:cc\s*=\s*(\'|")(http://creativecommons.org/ns#|http://web.resource.org/cc/)(\'|")\s*')
-CHARREF = re.compile(r'&(#[0-9]+;|#[xX]+[0-9A-Fa-f]+;|[A-Za-z0-9]+;)')
-COMMENTCLOSE = re.compile(r'--\s*>')
-DECLNAME_MATCH = re.compile(r'[A-Za-z][-.\w]*\s*').match
-DECLSTRINGLIT_MATCH = re.compile(r'(\'[^\']*\'|"[^"]*")\s*').match
-DC_NS = re.compile(r'\s*xmlns:dc\s*=\s*(\'|")http://purl.org/dc/elements/1.1/(\'|")\s*')
-ENDENDTAG = re.compile(r'>')
-ENDTAGFIND = re.compile(r'</\s*([A-Za-z][-.:\w]*)\s*>')
-ENTITYREF = re.compile(r'&([A-Za-z][-.0-9A-Za-z]*)[^0-9A-Za-z]')
-HEX_COLOR = re.compile(r'(\s*)#([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])', re.S)
-INCOMPLETE = re.compile(r'&[A-Za-z#]')
-INKSCAPE_NS = re.compile(r'\s*xmlns:inkscape\s*=\s*(\'|")http://www.inkscape.org/namespaces/inkscape(\'|")\s*')
-INTERESTING_NORMAL = re.compile(r'[&<]')
-LEADING_TRAILING_WHITESPACE = re.compile(r'(^\s+)|(\s+$)')
-LEADING_WHITESPACE = re.compile(r'^\s+')
-MARKEDSECTIONCLOSE = re.compile(r']\s*]\s*>')
-MSMARKEDSECTIONCLOSE = re.compile(r']\s*>')
-NUMBER = re.compile(r'^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$')
+ATTRFIND_TOLERANT = rgxcompile(ATTR_TOLERANT)
+CC_NS = rgxcompile(r'\s*xmlns:cc\s*=\s*(\'|")(http://creativecommons.org/ns#|http://web.resource.org/cc/)(\'|")\s*')
+COMMENTCLOSE = rgxcompile(r'--\s*>')
+DECLNAME_MATCH = rgxcompile(r'[A-Za-z][-.\w]*\s*').match
+DECLSTRINGLIT_MATCH = rgxcompile(r'(\'[^\']*\'|"[^"]*")\s*').match
+DC_NS = rgxcompile(r'\s*xmlns:dc\s*=\s*(\'|")http://purl.org/dc/elements/1.1/(\'|")\s*')
+ENDENDTAG = rgxcompile(r'>')
+ENDTAGFIND = rgxcompile(r'</\s*([A-Za-z][-.:\w]*)\s*>')
+ENTITYREF = rgxcompile(r'&([A-Za-z][-.0-9A-Za-z]*)[^0-9A-Za-z]')
+HEX_COLOR = rgxcompile(r'(\s*)#([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])', S)
+INCOMPLETE = rgxcompile(r'&[A-Za-z#]')
+INKSCAPE_NS = rgxcompile(r'\s*xmlns:inkscape\s*=\s*(\'|")http://www.inkscape.org/namespaces/inkscape(\'|")\s*')
+INTERESTING_NORMAL = rgxcompile(r'[&<]')
+MARKEDSECTIONCLOSE = rgxcompile(r']\s*]\s*>')
+MSMARKEDSECTIONCLOSE = rgxcompile(r']\s*>')
+NUMBER = rgxcompile(r'^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$')
 PICLOSE = ENDENDTAG
-RDF_NS = re.compile(r'\s*xmlns:rdf\s*=\s*(\'|")http://www.w3.org/1999/02/22-rdf-syntax-ns#(\'|")\s*')
-SELF_CLOSING_TAG = re.compile(r'<([A-Za-z\-:][\s/]*)(' + ATTR_TOLERANT + r')([\s/]*)/>')
-SODIPODI_NS = re.compile(r'\s*xmlns:sodipodi\s*=\s*(\'|")(http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd|http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd)(\'|")\s*')
-STARTTAGOPEN = re.compile(r'<[A-Za-z]')
-TAGFIND_TOLERANT = re.compile(r'([A-Za-z][^\t\n\r\f />\x00]*)(?:\s|/(?!>))*')
+RDF_NS = rgxcompile(r'\s*xmlns:rdf\s*=\s*(\'|")http://www.w3.org/1999/02/22-rdf-syntax-ns#(\'|")\s*')
+SELF_CLOSING_TAG = rgxcompile(r'<([A-Za-z\-:][\s/]*)(' + ATTR_TOLERANT + r')([\s/]*)/>')
+SODIPODI_NS = rgxcompile(r'\s*xmlns:sodipodi\s*=\s*(\'|")(http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd|http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd)(\'|")\s*')
+STARTTAGOPEN = rgxcompile(r'<[A-Za-z]')
+TAGFIND_TOLERANT = rgxcompile(r'([A-Za-z][^\t\n\r\f />\x00]*)(?:\s|/(?!>))*')
 TAGS_WITH_MIMETYPES = (r'embed', r'object', r'script', r'source', r'style')
-TRAILING_ZEROS = re.compile(r'\d*\.(\d*?)(0+)$')
-TRAILING_WHITESPACE = re.compile(r'\s+$')
-WHITESPACE = re.compile(r'\s+')
-WHITESPACE_NEWLINE = re.compile(r'\s*(\f|\r|\n)+\s*')
-WHITESPACE_IN_CHARREF = re.compile(r'[\s;]')
-XML_DECLARATION = re.compile(r'<\?xml\s*[\w"\'=\-\. \t]*\s*\?>')
+WHITESPACE_IN_CHARREF = rgxcompile(r'[\s;]')
+XML_DECLARATION = rgxcompile(r'<\?xml\s*[\w"\'=\-\. \t]*\s*\?>')
 CDATA_CONTENT_ELEMENTS = {r'script', r'style'}
 PRE_TAGS = (r'pre', r'textarea')
 ROOT_TAGS = {r'html', r'math', r'svg', r'x3d'}
@@ -222,7 +207,7 @@ HTML_NO_CLOSE_TAGS = {r'area', r'base', r'br', r'col', r'command', r'embed', r'h
 MIMETYPE_NO_CLOSE_TAGS = {r'alias', r'generic-icon', r'glob', r'match', r'sub-class-of'}  # Tags that self-opening/closing
 SVG_NO_CLOSE_TAGS = {r'animate', r'audio', r'animateColor', r'animateMotion', r'animateTransform', r'br', r'circle', r'ellipse', r'embed', r'feBlend', r'feColorMatrix', r'feComposite', r'feDistantLight', r'feFuncA', r'feFuncB', r'feFuncG', r'feFuncR', r'feGaussianBlur', r'feImage', r'feMergeNode', r'feMorphology', r'feOffset', r'fePointLight', r'flowPara', r'image', r'line', r'meta', r'path', r'polygon', r'polyline', r'rect', r'set', r'stop', r'use', r'video'}  # Tags that self-opening/closing
 SVG_MAY_CLOSE_TAGS = {r'g', r'linearGradient', r'radialGradient'}  # Tags that are sometimes self-opening/closing
-USELESS_SVG_TAGS = {r'desc', r'flowRoot', r'title'}
+USELESS_SVG_TAGS = {r'comment', r'desc', r'flowRoot', r'title'}
 
 
 BOOLEAN_ATTRIBUTES = {
@@ -611,7 +596,7 @@ def is_in_tagstack(tag: str, _tag_stack: list) -> bool:
     return False
 
 
-def is_removable_metadata_attr(remove_metadata: bool, attr: str) -> bool:
+def is_removable_metadata_attr(remove_metadata: int, attr: str) -> bool:
     """Determine if the given data is a removable metadata attribute"""
     if remove_metadata < 2:
         return False
@@ -626,7 +611,9 @@ def is_removable_metadata_attr(remove_metadata: bool, attr: str) -> bool:
 
 def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = False, remove_metadata: int = 2) -> bool:
     """Determine if the given data is a removable metadata tag"""
-    if remove_metadata < 1:
+    if tag == r'namedview':
+        return True
+    elif remove_metadata < 1:
         return False
     elif _in_metadata:
         return True
@@ -701,8 +688,8 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disabl
     if r'&' not in val:
         return val
     state = 0
-    result = []
-    amp_buff = []
+    result: List[str] = []
+    amp_buff: List[str] = []
     for char in val:
         if state == 0:  # Beginning
             if char == r'&':
@@ -838,7 +825,7 @@ def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
 
 
 def unescape(_str: str) -> str:
-    """Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters
+    r"""Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters
 
     >>> unescape(r'&#x22;')
     '"'
@@ -849,7 +836,7 @@ def unescape(_str: str) -> str:
     >>> unescape(r'&quot;')
     '"'
     >>> unescape(r'&Utilde;')
-    'Ũ'
+    '\u0168'
     >>> unescape(r'String with &#34;special&#34; characters')
     'String with "special" characters'
     """
@@ -911,17 +898,19 @@ def int2refnum(_int: int) -> str:
 # SVG FUNCTIONS #
 
 
-def parse_svg_size(value: float or int, def_units: str = r'px') -> float:
+def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
     """Parse value as SVG length and returns the value in pixels (or a negative scale: -1 = 100%)"""
     if not value:
         return 0.0
-    parts = SVG_SIZE.match(value)
+    elif not isinstance(value, str):
+        raise Exception(r'Invalid datatype for `value` in `parse_svg_size()`!')
+    parts = SVG_SIZE.match(str(value))
     if not parts:
         raise Exception(r'Unknown length format: "{}"'.format(value))
     num = float(parts.group(1))
     units = parts.group(2) or def_units
     if units == r'px':
-        return num
+        return float(num)
     elif units == r'pt':
         return num * 1.25
     elif units == r'pc':
@@ -937,44 +926,51 @@ def parse_svg_size(value: float or int, def_units: str = r'px') -> float:
     raise Exception(r'Unknown length units: "{}"'.format(units))
 
 
-def svgviewbox2pixels(viewbox: list) -> list or None:
+def svgviewbox2pixels(viewbox: List[Union[float, int, str]]) -> Optional[List[float]]:
     """Convert the measurements of an SVG viewbox to pixels"""
-    if len(viewbox) == 4:
-        viewbox[0] = parse_svg_size(viewbox[0])
-        viewbox[1] = parse_svg_size(viewbox[1])
-        viewbox[2] = parse_svg_size(viewbox[2])
-        viewbox[3] = parse_svg_size(viewbox[3])
-        if viewbox[2] * viewbox[3] <= 0.0:
-            return None
-        return viewbox
-    return None
+    _viewbox: List[float] = [0.0, 0.0, 0.0, 0.0]
+    if len(viewbox) == 4 and isinstance(viewbox[0], str) and isinstance(viewbox[1], str) and isinstance(viewbox[2], str) and isinstance(viewbox[3], str):
+        _viewbox[0] = parse_svg_size(viewbox[0])
+        _viewbox[1] = parse_svg_size(viewbox[1])
+        _viewbox[2] = parse_svg_size(viewbox[2])
+        _viewbox[3] = parse_svg_size(viewbox[3])
+    elif len(viewbox) == 4 and isinstance(viewbox[0], (float, int)):
+        _viewbox[0] = float(viewbox[0])
+        _viewbox[1] = float(viewbox[1])
+        _viewbox[2] = float(viewbox[2])
+        _viewbox[3] = float(viewbox[3])
+    else:
+        return None
+    if _viewbox[2] * _viewbox[3] <= 0.0:
+        return None
+    return _viewbox
 
 
 def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
     """Resize an SVG tree based on the specified options"""
     svg = xmltree.getroot()
-    viewbox = svgviewbox2pixels(SVG_VIEWBOX_SEP.split(svg.get(r'viewBox', r'').strip()))
+    viewbox: Optional[List[float]] = svgviewbox2pixels(SVG_VIEWBOX_SEP.split(svg.get(r'viewBox', r'').strip()))  # type: ignore
     if r'width' not in svg.keys() or r'height' not in svg.keys():
-        if viewbox and len(viewbox) == 4:
-            width = viewbox[2]
-            height = viewbox[3]
+        if viewbox and len(viewbox) == 4 and isinstance(viewbox[2], float) and isinstance(viewbox[3], float):
+            width: float = viewbox[2]
+            height: float = viewbox[3]
         else:
             raise Exception(r'The SVG header must contain width and height attributes!')
     else:
         width = parse_svg_size(svg.get(r'width'))
         height = parse_svg_size(svg.get(r'height'))
-    if width <= 0 or height <= 0:
-        if viewbox:
+    if width <= 0.0 or height <= 0.0:
+        if viewbox and len(viewbox) == 4 and isinstance(viewbox[2], float) and isinstance(viewbox[3], float):
             width = viewbox[2]
             height = viewbox[3]
         else:
             raise Exception(r'SVG width and height must be in absolute units and non-zero!')
     elif not viewbox:
-        viewbox = [0, 0, width, height]
+        viewbox = [0.0, 0.0, width, height]
     # Read and convert size and margin values
-    margin = parse_svg_size(options[r'margin'], r'px')
-    twidth = None
-    theight = None
+    margin: float = parse_svg_size(options[r'margin'], r'px')
+    twidth: float = 0.0
+    theight: float = 0.0
     if options[r'width']:
         twidth = parse_svg_size(options[r'width'], r'px')
     if options[r'height']:
@@ -992,47 +988,47 @@ def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901  #
         else:
             theight = value
     # twidth and theight are image dimensions without margins
-    if twidth < 0:
+    if twidth < 0.0:
         twidth = -width * twidth
-    elif twidth > 0:
-        twidth = max(0, twidth - margin * 2)
-    if theight < 0:
+    elif twidth > 0.0:
+        twidth = max(0.0, twidth - margin * 2.0)
+    if theight < 0.0:
         theight = -height * theight
     elif theight > 0:
-        theight = max(0, theight - margin * 2)
-    if not twidth:
-        if not theight:
+        theight = max(0.0, theight - margin * 2.0)
+    if twidth == 0.0:
+        if theight == 0.0:
             twidth = width
             theight = height
         else:
-            twidth = theight / height * width
+            twidth = (theight / height) * width
     if not theight:
-        theight = twidth / width * height
+        theight = (twidth / width) * height
     # Set svg width and height, update viewport for margin
-    svg.set(r'width', r'{}px'.format(twidth + margin * 2))
-    svg.set(r'height', r'{}px'.format(theight + margin * 2))
-    offsetx = 0
-    offsety = 0
+    svg.set(r'width', r'{}px'.format(twidth + margin * 2.0))
+    svg.set(r'height', r'{}px'.format(theight + margin * 2.0))
+    offsetx: float = 0.0
+    offsety: float = 0.0
     if (twidth / theight) > (viewbox[2] / viewbox[3]):  # Target page is wider than source image
         page_width = (viewbox[3] / theight) * twidth
-        offsetx = (page_width - viewbox[2]) / 2
+        offsetx = (page_width - viewbox[2]) / 2.0
         page_height = viewbox[3]
     else:
         page_width = viewbox[2]
         page_height = viewbox[2] / twidth * theight
-        offsety = (page_height - viewbox[3]) / 2
-    vb_margin = page_width / twidth * margin
-    svg.set(r'viewBox', r'{} {} {} {}'.format(viewbox[0] - vb_margin - offsetx, viewbox[1] - vb_margin - offsety, page_width + vb_margin * 2, page_height + vb_margin * 2))
+        offsety = (page_height - viewbox[3]) / 2.0
+    vb_margin: float = page_width / twidth * margin
+    svg.set(r'viewBox', r'{} {} {} {}'.format(viewbox[0] - vb_margin - offsetx, viewbox[1] - vb_margin - offsety, page_width + vb_margin * 2.0, page_height + vb_margin * 2.0))
     # Add frame
     if options[r'frame']:
-        layer = ET.SubElement(svg, r'g', nsmap=INKSCAPE_NAMESPACES)
+        layer = ET.SubElement(svg, r'g', nsmap=INKSCAPE_NAMESPACES)  # type: ignore
         layer.set(r'{{{}}}groupmode'.format(INKSCAPE_NAMESPACES[r'inkscape']), r'layer')
         layer.set(r'{{{}}}label'.format(INKSCAPE_NAMESPACES[r'inkscape']), r'Frame')
         layer.set(r'{{{}}}insensitive'.format(INKSCAPE_NAMESPACES[r'sodipodi']), r'true')
         frame = ET.SubElement(layer, r'path')
         frame.set(r'style', r'fill:#fff;stroke:none')
-        bleed = min(page_width, page_height) / 100
-        frame.set(r'd', r'M {0} {1} v {3} h {2} v -{3} z M {4} {5} h {6} v {7} h -{6} z'.format(-viewbox[0] - vb_margin - offsetx - bleed, -viewbox[1] - vb_margin - offsety - bleed, page_width + (vb_margin + bleed) * 2, page_height + (vb_margin + bleed) * 2, viewbox[0], viewbox[1], viewbox[2], viewbox[3]))
+        bleed: float = min(page_width, page_height) / 100.0
+        frame.set(r'd', r'M {0} {1} v {3} h {2} v -{3} z M {4} {5} h {6} v {7} h -{6} z'.format(-viewbox[0] - vb_margin - offsetx - bleed, -viewbox[1] - vb_margin - offsety - bleed, page_width + (vb_margin + bleed) * 2.0, page_height + (vb_margin + bleed) * 2.0, viewbox[0], viewbox[1], viewbox[2], viewbox[3]))
 
 
 def remove_duplicated_svg_ns(xmldata: str) -> str:
@@ -1052,6 +1048,26 @@ def repair_svg_tag(_tag: str) -> str:
         _tag = _tag.replace(r'foreignobject', r'foreignObject').replace(r'glyphref', r'glyphRef').replace(r'lineargradient', r'linearGradient').replace(r'radialgradient', r'radialGradient').replace(r'textpath', r'textPath')
         _tag = _tag.replace(r'solidColor', r'solidcolor').replace(r'polyLine', r'polyline').replace(r'colorprofile', r'color-profile').replace(r'colorProfile', r'color-profile').replace(r'fontface', r'font-face').replace(r'fontFace', r'font-face')
     return _tag
+
+
+def repair_svg_attr(_tag: str, _attr: str) -> str:
+    """Auto-correct commonly mistyped/illformed SVG attribute names"""
+    if _tag == r'svg' and _attr.lower() == r'viewbox':
+        _attr = r'viewBox'
+    elif _tag == r'feGaussianBlur':
+        if _attr == r'stddeviation':
+            _attr = r'stdDeviation'
+    elif _tag == r'linearGradient':
+        if _attr == r'gradienttransform':
+            _attr = r'gradientTransform'
+        elif _attr == r'gradientunits':
+            _attr = r'gradientUnits'
+    elif _tag == r'radialGradient':
+        if _attr == r'gradienttransform':
+            _attr = r'gradientTransform'
+        elif _attr == r'gradientunits':
+            _attr = r'gradientUnits'
+    return _attr
 
 
 # MINIFY FUNCTIONS #
@@ -1084,7 +1100,9 @@ def condense_hex_colors(_css: str) -> str:
 def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple:  # noqa: C901  # pylint: disable=R0912
     """Clean-up cetain XML/HTML attributes and values"""
     _attr = _attr.strip()
-    _val = _val.strip()
+    _val = rmspecialwhitespace(_val.strip())
+    if _attr == r'id':  # Remove spaces from id attribute
+        _val = _val.replace(r' ', r'')
     if _attr == r'encoding':  # Normalize encoding attribute
         return (_attr, _val.upper())
     elif _attr == r'xmlns:xlink':  # Fix any invalid XLink Namespaces
@@ -1137,13 +1155,13 @@ def fix_xml_declaration(xmldata: str) -> str:
     """Fix and tweak the XML declaration specifically for the XML type"""
     if XML_DECLARATION.search(xmldata):
         if r'<!DOCTYPE html>' in xmldata:
-            xmldata = re.sub(XML_DECLARATION, r'', xmldata)
+            xmldata = resub(XML_DECLARATION, r'', xmldata)
         elif r'<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">' in xmldata:
-            xmldata = re.sub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', xmldata)
+            xmldata = resub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', xmldata)
         elif r' standalone="yes"' in xmldata:
-            xmldata = re.sub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', xmldata)
+            xmldata = resub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', xmldata)
         else:
-            xmldata = re.sub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="no"?>', xmldata)
+            xmldata = resub(XML_DECLARATION, r'<?xml version="1.0" encoding="UTF-8" standalone="no"?>', xmldata)
     return xmldata
 
 
@@ -1170,10 +1188,10 @@ class ParserBase:
 
     def __init__(self) -> None:
         """Initialize basic parser"""
-        self._decl_otherchars = r''
-        self.lineno = 1
-        self.offset = 0
-        self.rawdata = r''
+        self._decl_otherchars: str = r''
+        self.lineno: int = 1
+        self.offset: int = 0
+        self.rawdata: str = r''
         if self.__class__ is ParserBase:
             raise RuntimeError(r'ParserBase must be subclassed')
 
@@ -1216,8 +1234,9 @@ class ParserBase:
         """Parse declaration tags"""
         rawdata = self.rawdata
         j = i + 2
-        assert rawdata[i:j] == r'<!', r'Unexpected call to parse_declaration'
-        if rawdata[j:j + 1] == r'>':  # Empty comment <!>
+        if rawdata[i:j] != r'<!':
+            raise Exception(r'Unexpected call to parse_declaration')
+        elif rawdata[j:j + 1] == r'>':  # Empty comment <!>
             return j + 1
         elif rawdata[j:j + 1] in {r'-', r''}:  # Start of buffer boundary (with or without a comment)
             return -1
@@ -1268,7 +1287,8 @@ class ParserBase:
     def parse_marked_section(self, i: int, report: int = 1) -> int:
         """Parse a marked section"""
         rawdata = self.rawdata
-        assert rawdata[i:i + 3] == r'<![', r'Unexpected call to parse_marked_section()'
+        if rawdata[i:i + 3] != r'<![':
+            raise Exception(r'Unexpected call to parse_marked_section()')
         sectname, j = self._scan_name(i + 3, i)
         if j < 0:
             return j
@@ -1510,13 +1530,13 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def __init__(self, *, convert_charrefs: bool = False) -> None:
         """Initialize and reset this instance; If convert_charrefs is True, all character references are automatically converted to the corresponding Unicode characters"""
-        self.__starttag_text = None
-        self.cdata_elem = None
-        self.convert_charrefs = convert_charrefs
-        self.in_xml = False
+        self.__starttag_text: str = r''
+        self.cdata_elem: str = r''
+        self.convert_charrefs: bool = convert_charrefs
+        self.in_xml: bool = False
         self.interesting = INTERESTING_NORMAL
-        self.lasttag = r'???'
-        self.rawdata = r''
+        self.lasttag: str = r'???'
+        self.rawdata: str = r''
         super(HTMLParser, self).__init__()
 
     def error(self, message: str) -> None:
@@ -1525,7 +1545,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def reset(self) -> None:
         """Reset this instance"""
-        self.cdata_elem = None
+        self.cdata_elem = r''
         self.interesting = INTERESTING_NORMAL
         self.lasttag = r'???'
         self.rawdata = r''
@@ -1540,19 +1560,19 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         """Handle any buffered data"""
         self.goahead(True)
 
-    def get_starttag_text(self) -> None or str:
+    def get_starttag_text(self) -> str:
         """Return full source of start tag"""
         return self.__starttag_text
 
     def set_cdata_mode(self, elem: str) -> None:
         """Lowercase HTML element names"""
         self.cdata_elem = elem.lower()
-        self.interesting = re.compile(r'</\s*{}\s*>'.format(self.cdata_elem), re.I)
+        self.interesting = rgxcompile(r'</\s*{}\s*>'.format(self.cdata_elem), I)
 
     def clear_cdata_mode(self) -> None:
         """Clear self.cdata_elem and self.interesting"""
         self.interesting = INTERESTING_NORMAL
-        self.cdata_elem = None
+        self.cdata_elem = r''
 
     def goahead(self, end: bool) -> None:  # noqa: C901  # pylint: disable=R0912,R0915
         """Handle data as far as reasonable. May leave state and data to be processed by a subsequent call. If `end` is true, force handling all data as if followed by EOF marker"""
@@ -1654,7 +1674,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                 else:
                     break
             else:
-                assert 0, r'There appears to be an issue with `interesting.search()`'
+                raise Exception(r'There appears to be an issue with `interesting.search()`')
         if end and i < length and not self.cdata_elem:
             if self.convert_charrefs and not self.cdata_elem:
                 self.handle_data(unescape(rawdata[i:length]))
@@ -1666,8 +1686,9 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def parse_html_declaration(self, i: int) -> int:
         """Parse HTML declarations; return length or -1 (if not terminated)"""
         rawdata = self.rawdata
-        assert rawdata[i:i + 2] == r'<!', r'Unexpected call to parse_html_declaration()'
-        if rawdata[i:i + 4] == r'<!--':  # This case is handled in goahead()
+        if rawdata[i:i + 2] != r'<!':
+            raise Exception(r'Unexpected call to parse_html_declaration()')
+        elif rawdata[i:i + 4] == r'<!--':  # This case is handled in goahead()
             return self.parse_comment(i)
         elif rawdata[i:i + 3] == r'<![':
             return self.parse_marked_section(i)
@@ -1682,7 +1703,8 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def parse_bogus_comment(self, i: int, report: int = 1) -> int:
         """Parse bogus comment; return length or -1 (if not terminated)"""
         rawdata = self.rawdata
-        assert rawdata[i:i + 2] in {r'<!', r'</'}, r'Unexpected call to parse_comment()'
+        if rawdata[i:i + 2] not in {r'<!', r'</'}:
+            raise Exception(r'Unexpected call to parse_comment()')
         pos = rawdata.find(r'>', i + 2)
         if pos == -1:
             return -1
@@ -1693,7 +1715,8 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def parse_pi(self, i: int) -> int:
         """Parse processing instruction; return end or -1 (if not terminated)"""
         rawdata = self.rawdata
-        assert rawdata[i:i + 2] == r'<?', r'Unexpected call to parse_pi()'
+        if rawdata[i:i + 2] != r'<?':
+            raise Exception(r'Unexpected call to parse_pi()')
         match = PICLOSE.search(rawdata, i + 2)
         if not match:
             return -1
@@ -1704,16 +1727,17 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def parse_starttag(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912,R0915
         """Handle starttag; return end or -1 (if not terminated)"""
-        self.__starttag_text = None
+        self.__starttag_text = r''
         endpos = self.check_for_whole_start_tag(i)
         if endpos < 0:
             return endpos
         rawdata = self.rawdata
         self.__starttag_text = rawdata[i:endpos]
         # Parse the data between i+1 and j into a tag and attrs
-        attrs = []
+        attrs: list = []
         _match = TAGFIND_TOLERANT.match(rawdata, i + 1)
-        assert _match, r'Unexpected call to parse_starttag()'
+        if not _match:
+            raise Exception(r'Unexpected call to parse_starttag()')
         k = _match.end()
         tag = _match.group(1)
         if tag in XML_ROOT_TAGS:
@@ -1728,7 +1752,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                 break
             attrname, rest, attrvalue = _match.group(1, 2, 3)
             if not rest:
-                attrvalue = None
+                attrvalue = r''
             elif attrvalue[:1] == '\'' == attrvalue[-1:] or attrvalue[:1] == r'"' == attrvalue[-1:]:
                 attrvalue = attrvalue[1:-1]
             if attrvalue:
@@ -1792,14 +1816,15 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def parse_endtag(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Parse endtag; return end or -1 (if incomplete)"""
         rawdata = self.rawdata
-        assert rawdata[i:i + 2] == r'</', r'Unexpected call to parse_endtag'
+        if rawdata[i:i + 2] != r'</':
+            raise Exception(r'Unexpected call to parse_endtag')
         match = ENDENDTAG.search(rawdata, i + 1)  # >
         if not match:
             return -1
         gtpos = match.end()
         match = ENDTAGFIND.match(rawdata, i)  # </ + tag + >
         if not match:
-            if self.cdata_elem is not None:
+            if self.cdata_elem:
                 self.handle_data(rawdata[i:gtpos])
                 return gtpos
             namematch = TAGFIND_TOLERANT.match(rawdata, i + 2)
@@ -1822,7 +1847,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             elem = elem.lower()
         elif self.in_xml and elem in XML_ROOT_TAGS:
             self.in_xml = False
-        if self.cdata_elem is not None:
+        if self.cdata_elem:
             if elem != self.cdata_elem:
                 self.handle_data(rawdata[i:gtpos])
                 return gtpos
@@ -2011,13 +2036,13 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self.pre_tags = pre_tags
         self.pre_attr = pre_attr
         self.doc_type = doc_type
-        self._data_buffer = []
+        self._data_buffer: list = []
         self._in_pre_tag = 0
         self._in_head = False
         self._in_metadata = False
         self._in_title = False
         self._after_doctype = False
-        self._tag_stack = []
+        self._tag_stack: list = []
         self._title_newly_opened = False
         self.__title_trailing_whitespace = False
         self._doctype_inserted = False
@@ -2056,12 +2081,12 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 return True
         return False
 
-    def in_tag(self, *tags: str) -> bool or str:
+    def in_tag(self, *tags: str) -> str:
         """Test if the given tags are within the tag stack"""
         for tag in self._tag_stack:
             if tag[0] in tags:
                 return tag
-        return False
+        return r''
 
     def should_preserve_ws(self, tag: str, attrs: list) -> bool:
         """Test if whitespace should be preserved in the tag"""
@@ -2082,7 +2107,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         """Create an XML/HTML tag"""
         if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
             return r''
-        elif self.doc_type == FILETYPE_SVG and close_tag and tag in {r'defs', r'g'}:
+        elif self.doc_type == FILETYPE_SVG and close_tag and tag in {r'comment', r'defs', r'g'}:
             return r''
         elif not self._doctype_inserted and self.doc_type == FILETYPE_SVG and tag == r'svg':
             self.insert_doctype_tag()
@@ -2101,15 +2126,15 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             if is_removable_metadata_attr(self.remove_metadata, k):
                 continue
             k, v = attribute_cleaner(tag, k, v, self.doc_type)
-            if self.doc_type == FILETYPE_SVG and tag == r'svg' and k == r'viewbox':
-                k = r'viewBox'
-            elif self._upgrade_svg10 and self.doc_type == FILETYPE_SVG and tag == r'svg' and k == r'version':
-                v = r'1.1'
+            if self.doc_type == FILETYPE_SVG:
+                k = repair_svg_attr(tag, k)
+                if self._upgrade_svg10 and tag == r'svg' and k == r'version':
+                    v = r'1.1'
             if not k:
                 continue
             result_write(r' ' + escape(k))
             if v:  # Attribute value
-                if self.doc_type == FILETYPE_HTML and self.reduce_bool_attrs and (k in BOOLEAN_ATTRIBUTES.get(tag, []) or k in BOOLEAN_ATTRIBUTES[r'*']):
+                if self.doc_type == FILETYPE_HTML and self.reduce_bool_attrs and (k in BOOLEAN_ATTRIBUTES.get(tag, []) or k in BOOLEAN_ATTRIBUTES[r'*']):  # type: ignore
                     pass
                 else:
                     result_write(r'=')
@@ -2164,7 +2189,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
 
     def handle_comment(self, data: str) -> None:
         """Process comments"""
-        if not self.remove_comments or (data and (data[0] == r'!' or re.match(r'^\[if\s', data))):
+        if not self.remove_comments or (data and (data[0] == r'!' or rgxmatch(r'^\[if\s', data))):
             self._data_buffer.append(r'<!--{}-->'.format(data[1:] if data[0] == r'!' else data))
 
     def handle_data(self, data: str) -> None:  # noqa: C901  # pylint: disable=R0912
@@ -2240,6 +2265,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 elif tag == r'title':
                     self._in_title = False
                     self._title_newly_opened = False
+            elif self.doc_type == FILETYPE_SVG:
+                tag = repair_svg_tag(tag)
             try:
                 self._in_pre_tag -= self._close_tags_up_to(tag)
             except BaseException:  # Leave closing tags alone since they affect output
@@ -2298,8 +2325,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 self._in_title = True
                 self._title_newly_opened = True
         for open_tags, closed_by_tags in TAG_SETS:
-            in_tag = self.in_tag(*open_tags)
-            if in_tag and (tag in closed_by_tags or r'*' in closed_by_tags):
+            in_tag: str = self.in_tag(*open_tags)  # type: ignore
+            if in_tag and (tag in closed_by_tags or r'*' in closed_by_tags):  # type: ignore
                 self._in_pre_tag -= self._close_tags_up_to(in_tag[0])
         start_pre = False
         if self.should_preserve_ws(tag, attrs):

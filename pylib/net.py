@@ -6,7 +6,7 @@
 
 @file net.py
 @package pybooster.net
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,7 @@ along with this software.
 
 from socket import gaierror, gethostbyname, inet_ntoa
 from struct import pack
-from subprocess import PIPE, Popen, TimeoutExpired
+from subprocess import PIPE, Popen, TimeoutExpired  # nosec
 from urllib.request import urlopen
 
 
@@ -55,20 +55,20 @@ def ints2ipv6(*args: int) -> str:
     """When given eight separate integers, a hex IPv6 address is returned"""
     if len(args) == 8:
         for i in args:
-            assert i <= 65535, \
-                'One of the given integers is larger than 65535!'
+            if i >= 65535:
+                raise Exception(r'One of the integers is larger than 65535!')
         return r':'.join(r'{:02x}'.format(i) for i in args)
-    raise ValueError(r'The given data must have eight groups of integers.')
+    raise ValueError(r'The data must have eight groups of integers.')
 
 
 def lst2ipv6(_list: list) -> str:
     """When given eight separate integers, a hex IPv6 address is returned"""
     if len(_list) == 8:
         for i in _list:
-            assert i <= 65535, \
-                'One of the given integers is larger than 65535!'
+            if i >= 65535:
+                raise Exception(r'One of the integers is larger than 65535!')
         return r':'.join(r'{:02x}'.format(i) for i in _list)
-    raise ValueError(r'The given data must have eight groups of integers.')
+    raise ValueError(r'The data must have eight groups of integers.')
 
 
 # MISCELLANEOUS #
@@ -91,7 +91,7 @@ def isdomain(_address: str) -> bool:
 def ping(_address: str = r'localhost') -> bool:
     """Specify an IP address or a domain name"""
     try:
-        child = Popen([r'ping', r'-c 1', _address], stdout=PIPE, stderr=PIPE, shell=False)
+        child = Popen([r'ping', r'-c 1', _address], stdout=PIPE, stderr=PIPE, shell=False)  # nosec
         _results = child.communicate(timeout=3)[0]  # Wait for results and get return code
     except TimeoutExpired:
         return False
@@ -108,14 +108,19 @@ def findgw() -> str:
             if _field[1] != r'00000000' or not int(_field[3], 16) & 2:
                 continue
             return inet_ntoa(pack(r'<L', int(_field[2], 16)))
+    return r''
 
 
 def hasnet() -> bool:
-    """Return True if the Internet is available"""
-    if urlopen(r'http://google.com').getcode() == 200:
+    """Return True if the Internet is available
+
+    >>> hasnet()
+    True
+    """
+    if urlopen(r'http://google.com').getcode() == 200:  # type: ignore  # nosec
         return True
-    elif urlopen(r'https://www.wikipedia.org').getcode() == 200:
+    elif urlopen(r'https://www.wikipedia.org').getcode() == 200:  # type: ignore  # nosec
         return True
-    elif urlopen(r'https://docs.python.org').getcode() == 200:
+    elif urlopen(r'https://docs.python.org').getcode() == 200:  # type: ignore  # nosec
         return True
     return False

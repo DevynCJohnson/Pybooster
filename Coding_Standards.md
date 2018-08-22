@@ -118,10 +118,11 @@ CoffeeScript
 Config Files (INI)
 ------------------
 
-- Files must use space-indentation, Unix-newlines (`\n`), and UTF-8
+- Files must use space-indentation (4-width), Unix-newlines (`\n`), and UTF-8
 - One blank line preceeds the section headers (unless the section header is at the beginning of the file)
+- Two blank lines follow the file header (if any is present)
 - The assignment operator (equal sign) must not be padded on either side with whitespace
-- Comments must begin with a semicolon, not the octothorpe (`#`)
+- Comments must begin with a semicolon, not the octothorpe (`#`) unless the software reading the file will not recognize semicolons
 - Alphabetical sorting is preferred, but not mandatory
 - Multi-item assignments that on on multiple lines must be indented using four-spaces per indent level
 
@@ -236,6 +237,7 @@ Shell Script
 - If Bash Shell, try to avoid extensions
 - Comments used to describe the use/purpose of a shell must be on the line preceding the function declaration
 - Use four spaces per indentation level
+- Use one space between redirections and the file (For instance, use `2> /dev/null` **not** `2>/dev/null`)
 
 
 SVG
@@ -347,3 +349,13 @@ Standard Error Message Formats
 | _Unable to write file_ | `Unable to write to "%s"!\n` |
 | _Unable to write file due to permissions_ | `Permission Error: Unable to write to "%s"!\n` |
 | _Unable to write in directory_ | `Unable to write file in "%s"!\n` |
+
+
+Git Commit Messages
+===================
+
+- All commit messages must have title and body
+- All commit message titles and bodies must be specific and descriptive
+- The title must not be more than 80 characters in length (but more than 16) and must not end with punctuation
+- The body must not contain a line that is more than 120 characters in length
+- Any changes to project files must be mentioned and explained

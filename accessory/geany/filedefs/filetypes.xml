@@ -1,0 +1,20 @@
+[settings]
+extension=xml
+mime_type=application/xml
+comment_open=<!--
+comment_close=-->
+comment_use_indent=true
+context_action_cmd=
+xml_indent_tags=true
+
+[indentation]
+type=0
+width=2
+
+[build-menu]
+FT_00_LB=_XMLlint
+FT_00_CM=xmllint --noout --valid "%d/%f"
+FT_00_WD=
+FT_04_LB=
+FT_04_CM=
+FT_04_WD=

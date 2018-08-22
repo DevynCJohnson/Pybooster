@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -53,13 +53,9 @@ along with this software.
 
 
 from ast import literal_eval
-from sys import byteorder
+from typing import Union
 
-try:  # Regular Expression module
-    import regex as re  # noqa: E402  # pylint: disable=C0411
-except ImportError:
-    import re  # noqa: E402  # pylint: disable=C0411
-
+from pybooster.basic import ishex
 from pybooster.libchar import (
     BRAILLE,
     GREEK_ALL,
@@ -69,13 +65,21 @@ from pybooster.libchar import (
     NUMBER_LIST,
     ORDINAL_LIST,
     PLAIN_TEXT,
+    TRANS_BUBBLE2TEST,
+    TRANS_TEXT2BUBBLE,
+    FULLWIDTH2REGULAR,
     UPPER_LIMIT_ASCII_CTRL,
     UPPER_LIMIT_ASCII_EXT,
     UPPER_LIMIT_ASCII_PRNT,
     UPPER_LIMIT_UNICODE,
     UPPER_LIMIT_UTF8
 )
-from pybooster.markup import CHAR_REF, ENTITY_REF
+from pybooster.libregex import CHAR_REF, ENTITY_REF, HEXESCTAG, HEXESCURI
+
+try:  # Regular Expression module
+    from regex import compile as rgxcompile, split as rgxsplit, sub as resub
+except ImportError:
+    from re import compile as rgxcompile, split as rgxsplit, sub as resub
 
 
 __all__ = [
@@ -84,7 +88,7 @@ __all__ = [
     r'firstletters',
     r'lastletters',
     r'middleletters',
-    r'insert_character',
+    r'insstr',
     r'num2ordinal',
     r'ordinal2num',
     r'cap',
@@ -95,49 +99,38 @@ __all__ = [
     r'uppercase',
     r'explode',
     r'implode',
+    r'replace_odd_chars',
+    r'stripunicode',
     r'rmcurlycommas',
     r'replacecurlycommas',
     r'rmcurlyquotes',
     r'replacecurlyquotes',
+    r'rmspecialwhitespace',
+    r'replacespecialwhitespace',
     r'rmpunct',
-    r'splitsentencesstr',
+    r'splitsentences',
     r'sqlstr',
     r'presentlist',
-    # MISCELLANEOUS FUNCTIONS #
-    r'fval',
-    r'noescape',
     # BOOLEAN TESTS #
     r'isascii',
-    r'isstrascii',
     r'isctrlascii',
-    r'isstrctrlascii',
     r'isprntascii',
-    r'isstrprntascii',
     r'isextascii',
-    r'isstrextascii',
     r'isgreek',
-    r'isstrgreek',
     r'hasgreek',
     r'isbraille',
-    r'isstrbraille',
     r'hasbraille',
-    r'isutf8',
-    r'isutf16',
     r'isunicode',
     r'hashexescape',
     r'testref',
     r'is_palindrome',
-    # LENGTHS #
-    r'utf7len',
-    r'utf8len',
-    r'utf16len',
-    r'utf32len',
     # ESCAPE MANIPULATIONS #
     r'findescapes',
     r'shrink_esc_utf16to8',
     r'shrink_esc_utf32to8',
     r'shrink_esc_utf32to16',
     r'noescutf8hex',
+    r'noescape',
     r'expandhexescape',
     r'char2noeschex',
     r'str2noeschex',
@@ -156,20 +149,17 @@ __all__ = [
     # X 2 INTEGER #
     r'char2int',
     r'refnum2int',
-    r'ncr2int',
-    # X 2 UTF* #
-    r'utf8convchar2hexescape',
-    r'utf8convchar2hexstr',
-    r'utf8convchar2uri',
-    r'utf8convchar2intstr',
+    # X 2 STRING #
+    r'str2hexesc',
+    r'str2uri',
+    r'str2intstr',
     r'int2utf16',
     r'int2utf32',
-    # X 2 HEX #
-    r'char2hexstr',
+    r'char2num',
+    r'str2hexstr',
     r'hex2unicodehex',
     r'hex2cssnot',
-    # X 2 MISC #
-    r'char2intstr',
+    # X 2 BYTES #
     r'str2bytes',
     r'bytes2str',
     r'int2hexbytes',
@@ -181,13 +171,6 @@ __all__ = [
     r'text2square',
     r'square2text'
 ]
-
-
-# GLOBALS #
-
-
-TRANS_BUBBLE2TEST = str.maketrans(r'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ ⓪①②③④⑤⑥⑦⑧⑨', r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789')
-TRANS_TEXT2BUBBLE = str.maketrans(r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789', r'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ ⓪①②③④⑤⑥⑦⑧⑨')
 
 
 # STRING MANIPULATIONS #
@@ -229,8 +212,12 @@ def middleletters(_str: str) -> str:
     return _str[1:-1]
 
 
-def insert_character(_str: str, _char: str, index: int) -> str:
-    """Insert a character at the specified point of a string"""
+def insstr(_str: str, _char: str, index: int) -> str:
+    """Insert a string at the specified point of another string
+
+    >>> insstr('This is a test.', 'random ', 10)
+    'This is a random test.'
+    """
     return _str[:index] + _char + _str[index:]
 
 
@@ -316,9 +303,9 @@ def explode(_str: str) -> str:
     """Insert a space between each character
 
     >>> explode('this is a test.')
-    ' t h i s   i s   a   t e s t . '
+    't h i s   i s   a   t e s t .'
     """
-    return re.sub('(.?)', r' \1 ', _str).replace(r'  ', r' ')
+    return resub('(.?)', r' \1 ', _str).replace(r'  ', r' ').strip()
 
 
 def implode(_str: str) -> str:
@@ -328,44 +315,93 @@ def implode(_str: str) -> str:
     'thisisatest.'
     >>> implode(' t h i s   i s   a   t e s t . ')
     'this is a test.'
+    >>> implode('t h i s   i s   a   t e s t .')
+    'this is a test.'
     """
-    return re.sub('(.?) (.?)', r'\1\2', _str).replace(r'  ', r' ')
+    return resub('(.?) (.?)', r'\1\2', _str).replace(r'  ', r' ').strip()
+
+
+def replace_odd_chars(_data: str) -> str:
+    r"""Replace odd characters with plain characters (i.e. replace non-breaking space with ASCII space)
+
+    >>> replace_odd_chars('This\u200Cis a\u180Etest\u16EB')
+    'This is a test.'
+    """
+    # Commas
+    _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6f5', r',')
+    # Single-Quotes
+    _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027')
+    # Double-Quotes
+    _data = _data.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u2033', r'"').replace('\u2034', r'"')
+    # Newlines
+    _data = _data.replace('\u0085', '\n')
+    # Spaces
+    _data = _data.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    # Dashes, Hyphens, & Tildes
+    _data = _data.replace('\u00AD', r'-').replace('\u1680', r'-').replace('\u2010', r'-').replace('\u2011', r'-').replace('\u2012', r'-').replace('\u2013', r'-').replace('\u2014', r'-').replace('\u2015', r'-').replace('\u203E', r'-').replace('\u2053', r'~')
+    # Slashes
+    _data = _data.replace('\u2044', r'/').replace('\u20E5', '\u005C').replace('\u2215', r'/').replace('\u2216', '\u005C').replace('\u244A', '\u005C\u005C').replace('\u29F5', '\u005C').replace('\u29F6', r'/').replace('\u29F7', '\u005C').replace('\u29F8', r'/').replace('\u29F9', '\u005C')
+    # Colons & Semicolons
+    _data = _data.replace('\u16EC', r':').replace('\uFE13', r':').replace('\uFE14', r';')
+    # Parenthesis & Brackets
+    _data = _data.replace('\u2045', '\u005B').replace('\u2046', '\u005D')
+    # Periods, Exclamation-Points, & Question-Marks
+    _data = _data.replace('\u16EB', r'.').replace('\uFE15', r'!').replace('\uFE16', r'?').replace('\u203C', r'!!').replace('\u203D', r'!?').replace('\u2047', r'??').replace('\u2048', r'?!').replace('\u2049', r'!?')
+    # Full-Width Characters
+    _data = _data.translate(FULLWIDTH2REGULAR)
+    # Other Characters
+    return _data.replace('\u204E', r'*').replace('\u2042', r'***').replace('\u204E', r'*').replace('\u2051', r'**')
+
+
+def stripunicode(_str: str) -> str:
+    """Replace unicode characters with a question-mark (?)
+
+    >>> stripunicode('Testing (¶ö⁉) for success.')
+    'Testing (???) for success.'
+    """
+    chars: list = []
+    for i in _str:
+        if ord(i) > 0x7F:
+            chars.append(r'?')
+        else:
+            chars.append(i)
+    return r''.join(chars)
 
 
 def rmcurlycommas(_str: str) -> str:
-    """Remove curly commas (፣ ، 、 ، ◌̦ ︐ ︑ ꛵ ᠂ ‍̓ )
+    """Remove curly commas
 
     >>> rmcurlycommas('This is، a test.')
     'This is a test.'
     """
-    return _str.replace(r'،', r'').replace(r'、', r'').replace(r'،', r'').replace(r'◌̦', r'').replace(r'︐', r'').replace(r'︑', r'').replace(r'᠂', r'').replace(r'‍̓', r'').replace(r'‍፣', r'').replace(r'‍꛵', r'')
+    return _str.replace('\u060C', r'').replace('\u0326', r'').replace('\u1802', r'').replace('\u3001', r'').replace('\uFE10', r'').replace('\uFE11', r'').replace('\u200D\u0313', r'').replace('\u200D\u1363', r'').replace('\u200D\uA6F5', r'')
 
 
 def replacecurlycommas(_str: str) -> str:
-    """Replace curly commas with a regular comma (፣ ، 、 ، ◌̦ ︐ ︑ ꛵ ᠂ ‍̓ )
+    """Replace curly commas with a regular comma
 
     >>> replacecurlycommas('This is، a test.')
     'This is, a test.'
     """
-    return _str.replace(r'،', r',').replace(r'、', r',').replace(r'،', r',').replace(r'◌̦', r',').replace(r'︐', r',').replace(r'︑', r',').replace(r'᠂', r',').replace(r'‍̓', r',').replace(r'‍፣', r',').replace(r'‍꛵', r',')
+    return _str.replace('\u060C', r',').replace('\u0326', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6F5', r',')
 
 
 def rmcurlyquotes(_str: str) -> str:
-    """Remove curly quotes (“ ” ‘ ’ ” ′ ″ ‴ ″)
+    """Remove curly quotes
 
     >>> rmcurlyquotes('This is a “test”.')
     'This is a test.'
     """
-    return _str.replace(r'“', r'').replace(r'”', r'').replace(r'‘', r'').replace(r'’', r'').replace(r'′', r'').replace(r'″', r'').replace(r'‴', r'').replace(r'″', r'')
+    return _str.replace('\u201C', r'').replace('\u201D', r'').replace('\u2033', r'').replace('\u2034', r'').replace('\u2018', r'').replace('\u2019', r'').replace('\u2032', r'')
 
 
 def replacecurlyquotes(_str: str) -> str:
-    """Replace curly quotes with straight-quotes (“ ” ‘ ’ ” ′ ″ ‴ ″)
+    """Replace curly quotes with straight-quotes
 
     >>> replacecurlyquotes('This is a “test”.')
     'This is a "test".'
     """
-    return _str.replace(r'“', r'"').replace(r'”', r'"').replace(r'‘', r'\'').replace(r'’', r'\'').replace(r'′', r'\'').replace(r'″', r'"').replace(r'‴', r'"').replace(r'″', r'"')
+    return _str.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u2033', r'"').replace('\u2034', r'"').replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027')
 
 
 def rmspecialwhitespace(_str: str) -> str:
@@ -374,7 +410,7 @@ def rmspecialwhitespace(_str: str) -> str:
     >>> rmspecialwhitespace('This\u202F is a test.')
     'This is a test.'
     """
-    return _str.replace('\u00A0', r'').replace('\u1680', r'').replace('\u16EB', r'').replace('\u16EC', r'').replace('\u180E', r'').replace('\u2000', r'').replace('\u2001', r'').replace('\u2002', r'').replace('\u2003', r'').replace('\u2004', r'').replace('\u2005', r'').replace('\u2006', r'').replace('\u2007', r'').replace('\u2008', r'').replace('\u2009', r'').replace('\u200A', r'').replace('\u200B', r'').replace('\u202F', r'').replace('\u205F', r'').replace('\u3000', r'').replace('\uFEFF', r'')
+    return _str.replace('\u0082', r'').replace('\u0083', r'').replace('\u00A0', r'').replace('\u180E', r'').replace('\u2000', r'').replace('\u2001', r'').replace('\u2002', r'').replace('\u2003', r'').replace('\u2004', r'').replace('\u2005', r'').replace('\u2006', r'').replace('\u2007', r'').replace('\u2008', r'').replace('\u2009', r'').replace('\u200A', r'').replace('\u200B', r'').replace('\u200C', r'').replace('\u202F', r'').replace('\u205F', r'').replace('\u3000', r'').replace('\uFEFF', r'')
 
 
 def replacespecialwhitespace(_str: str) -> str:
@@ -383,7 +419,7 @@ def replacespecialwhitespace(_str: str) -> str:
     >>> replacespecialwhitespace('This\u202Fis a test.')
     'This is a test.'
     """
-    return _str.replace('\u00A0', r' ').replace('\u1680', r' ').replace('\u16EB', r' ').replace('\u16EC', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    return _str.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
 
 
 def rmpunct(_str: str) -> str:
@@ -397,9 +433,13 @@ def rmpunct(_str: str) -> str:
     return _str.replace(r';', r'').replace(r',', r'').replace(r'.', r'').replace(r'¿', r'').replace(r'¡', r'').replace(r'‽', r'').replace(r'⸮', r'').replace(r'?', r'').replace(r'!', r'').replace(r'…', r'')
 
 
-def splitsentencesstr(_str_of_sentences: str) -> list:
-    """Split a string by sentence"""
-    _array = re.split(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]*', _str_of_sentences)
+def splitsentences(_str_of_sentences: str) -> list:
+    """Split a string by sentence
+
+    >>> splitsentences('This is a test. This should be a separate item in the list. Did it work?')
+    ['This is a test', 'This should be a separate item in the list', 'Did it work']
+    """
+    _array = rgxsplit(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]*', _str_of_sentences)
     inputarray = []
     for i in _array:
         i = i.strip()
@@ -408,24 +448,34 @@ def splitsentencesstr(_str_of_sentences: str) -> list:
     return inputarray
 
 
-def sqlstr(_obj, _strength: int = 0) -> str:
-    """Convert an object to a string and format the string to protect against SQL-Injection Attacks
+def sqlstr(_obj: str, _strength: int = 0) -> str:
+    """Format a string to protect against SQL-Injection Attacks
 
     _strength indicates what characters should be removed or escaped
     0 = (Default) Remove curly quotes, commas, and brackets; escape quotes, slashes, and dashes
     1 = Same as 0, but removes characters instead of escaping
     2 = Same as 1, but remove additional characters such as .?!#;&%^:
     3 = Only keep ASCII letters and space
+
+    >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ')
+    'This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ r&quot;key&quot;: &quot;value&quot;, r&quot;test&quot;: &quot;^ - (&#96;)&quot; ¶ '
+    >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', 1)
+    'This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ rkey: value, rtest: ^  () ¶ '
+    >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', _strength=2)
+    'This is a lengthy  thorough test ¶ 2 + 2 = 4 ¶ rkey value, rtest   () ¶ '
+    >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', 3)
+    'This is a lengthy  thorough test        rkey value rtest     '
     """
-    _obj = str(_obj)
-    if _strength >= 3:  # Only keep ASCII letters and space
+    if not isinstance(_obj, str):
+        return r''
+    elif _strength >= 3:  # Only keep ASCII letters and space
         _out = r''
         for i in _obj:
             if i.isalpha() or i == r' ':
                 _out += i
         return _out
     _obj = _obj.replace(r'{', r'').replace(r'}', r'').replace('\\', r'')
-    _obj = _obj.replace(r'“', r'').replace(r'”', r'').replace(r'‘', r'').replace(r'’', r'').replace(r'、', r'').replace(r'،', r'')  # Curly Quotes and Commas
+    _obj = rmcurlyquotes(rmcurlycommas(_obj))  # Curly Quotes and Commas
     if not _strength:  # _strength == 0
         return _obj.replace(r'"', r'&quot;').replace('\'', r'&#39;').replace(r'`', r'&#96;').replace(r'--', r'-')
     else:  # _strength >= 1
@@ -436,206 +486,105 @@ def sqlstr(_obj, _strength: int = 0) -> str:
 
 
 def presentlist(_list: list) -> str:
-    """Convert a list to a string without the brackets and quotes"""
+    """Convert a list to a string without the brackets and quotes
+
+    >>> presentlist([1, 2, 3])
+    '1, 2, 3'
+    >>> presentlist(['1', '2', '3'])
+    '1, 2, 3'
+    """
     return str(_list).replace('\'', r'').replace(r'[', r'').replace(r']', r'')
-
-
-# MISCELLANEOUS FUNCTIONS #
-
-
-def fval(_dict: dict, _search) -> str:
-    """Search a dictionary by value and stop on first instance
-
-    This searches key values that are tuples, lists, or strings.
-    Returns the key (if found); else returns empty string
-    """
-    for key, val in _dict.items():
-        if isinstance(val, str) and val == _search:
-            return key
-        elif _search in val:
-            return key
-    return r''
-
-
-def noescape(_hex: str) -> str:
-    r"""Remove escapes from a single character hex string
-
-    >>> noescape('\\U00000026')
-    '&'
-    >>> noescape('\\u0026')
-    '&'
-    >>> noescape('\\x26')
-    '&'
-    """
-    if r'\U' in _hex and len(_hex) == 10:
-        _int = int(_hex.replace(r'\U', r''), 16)
-        _hex = hex(_int).replace('0x', r'')
-        return literal_eval('"\\U{0}"'.format(_hex[:].zfill(8)))
-    elif r'\u' in _hex and len(_hex) == 6:
-        _int = int(_hex.replace(r'\u', r''), 16)
-        _hex = hex(_int).replace('0x', r'')
-        return literal_eval('"\\u{0}"'.format(_hex[:].zfill(4)))
-    elif r'\x' in _hex and (len(_hex) % 4) == 0:
-        _utf8_strict = '.decode(\'utf8\', \'strict\')'
-        if _hex.count(r'\x') == 4:
-            _hex = _hex.split(r'\x')[1:]
-            _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\\x{0[3]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
-        elif _hex.count(r'\x') == 3:
-            _hex = _hex.split('\\x')[1:]
-            _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
-        elif _hex.count(r'\x') == 2:
-            _hex = _hex.split('\\x')[1:]
-            _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
-        elif _hex.count(r'\x') == 1:
-            _int = int(_hex.replace(r'\x', r''), 16)
-            _hex = hex(_int).replace('0x', r'')[:].zfill(2)
-            return literal_eval('\'\\x{0}\''.format(_hex))
-        raise Exception(r'Invalid input passed to noescape()!')
-    elif isinstance(_hex, str) and len(_hex) == 1:
-        return _hex
-    raise Exception(r'Invalid input passed to noescape()!')
 
 
 # BOOLEAN TESTS #
 
 
 def isascii(_str: str) -> bool:
-    """Test if a character is within the Ascii limit
+    """Test if a string is within the Ascii limit
 
     >>> isascii('B')
     True
     >>> isascii('b')
     True
-    >>> isascii('1')
+    >>> isascii('123')
     True
-    >>> isascii('€')
-    False
+    >>> isascii('qwerty')
+    True
     >>> isascii('ἀ')
     False
     >>> isascii('€')
     False
-    """
-    try:
-        return 0 <= ord(_str) < UPPER_LIMIT_ASCII_EXT
-    except SyntaxError:
-        return False
-
-
-def isstrascii(_str: str) -> bool:
-    """Test if a string is within the Ascii limit
-
-    >>> isstrascii('B')
-    True
-    >>> isstrascii('b')
-    True
-    >>> isstrascii('123')
-    True
-    >>> isstrascii('qwerty')
-    True
-    >>> isstrascii('ἀ')
-    False
-    >>> isstrascii('€')
-    False
-    >>> isstrascii('123ἀqwerty')
+    >>> isascii('123ἀqwerty')
     False
     """
-    return all(False for x in _str if not isascii(x))
+    return all(False for x in _str if not 0 <= ord(x) < UPPER_LIMIT_ASCII_EXT)
 
 
 def isctrlascii(_str: str) -> bool:
-    r"""Test if a character is within the Control Ascii limit
+    r"""Test if a string is within the Control Ascii limit
 
     >>> isctrlascii('\r')
     True
-    >>> isctrlascii('\n')
-    True
     >>> isctrlascii('\a')
+    True
+    >>> isctrlascii('\n')
     True
     >>> isctrlascii('\0')
     True
+    >>> isctrlascii('\a\0')
+    True
+    >>> isctrlascii('qwerty\n')
+    False
     >>> isctrlascii('ἀ')
+    False
+    >>> isctrlascii('qwerty')
     False
     >>> isctrlascii('€')
     False
     """
-    try:
-        return LOWER_LIMIT_ASCII_CTRL <= ord(_str) <= UPPER_LIMIT_ASCII_CTRL
-    except SyntaxError:
-        return False
-
-
-def isstrctrlascii(_str: str) -> bool:
-    r"""Test if a string is within the Control Ascii limit
-
-    >>> isstrctrlascii('\r')
-    True
-    >>> isstrctrlascii('\a')
-    True
-    >>> isstrctrlascii('\a\0')
-    True
-    >>> isstrctrlascii('qwerty\n')
-    False
-    >>> isstrctrlascii('ἀ')
-    False
-    >>> isstrctrlascii('qwerty')
-    False
-    >>> isstrctrlascii('€')
-    False
-    """
-    return all(False for x in _str if not isctrlascii(x))
+    return all(False for x in _str if not LOWER_LIMIT_ASCII_CTRL <= ord(x) <= UPPER_LIMIT_ASCII_CTRL)
 
 
 def isprntascii(_str: str) -> bool:
-    """Test if a character is within the Printable Ascii limit
+    """Test if a string is within the Printable Ascii limit
 
     >>> isprntascii('1')
     True
-    >>> isprntascii('q')
+    >>> isprntascii('123')
+    True
+    >>> isprntascii('qwerty')
     True
     >>> isprntascii('€')
     False
-    """
-    try:
-        return LOWER_LIMIT_ASCII_PRNT <= ord(_str) <= UPPER_LIMIT_ASCII_PRNT
-    except SyntaxError:
-        return False
-
-
-def isstrprntascii(_str: str) -> bool:
-    """Test if a string is within the Printable Ascii limit
-
-    >>> isstrprntascii('1')
-    True
-    >>> isstrprntascii('123')
-    True
-    >>> isstrprntascii('qwerty')
-    True
-    >>> isstrprntascii('€')
-    False
-    >>> isstrprntascii('€qwerty')
+    >>> isprntascii('€qwerty')
     False
     """
-    return all(False for x in _str if not isprntascii(x))
+    return all(False for x in _str if not LOWER_LIMIT_ASCII_PRNT <= ord(x) <= UPPER_LIMIT_ASCII_PRNT)
 
 
 def isextascii(_str: str) -> bool:
-    """Test if a character is within the Extended Ascii limit"""
-    try:
-        return LOWER_LIMIT_ASCII_EXT <= ord(_str) < UPPER_LIMIT_ASCII_EXT
-    except SyntaxError:
-        return False
+    """Test if a string is within the Extended Ascii limit
 
-
-def isstrextascii(_str: str) -> bool:
-    """Test if a string is within the Extended Ascii limit"""
-    return all(False for x in _str if not isextascii(x))
+    >>> isextascii('á')
+    True
+    >>> isextascii('¶')
+    True
+    >>> isextascii('Ω')
+    False
+    >>> isextascii('μ')
+    False
+    >>> isextascii('Ö')
+    True
+    >>> isextascii('©')
+    True
+    >>> isextascii('Д')
+    False
+    """
+    return all(False for x in _str if not LOWER_LIMIT_ASCII_EXT <= ord(x) < UPPER_LIMIT_ASCII_EXT)
 
 
 def isgreek(_str: str) -> bool:
-    """Test if the character is a Greek letter
+    """Test if the string is a string of Greek letters
 
     >>> isgreek('Γ')
     True
@@ -649,37 +598,24 @@ def isgreek(_str: str) -> bool:
     False
     >>> isgreek('0')
     False
-    """
-    if _str in GREEK_ALL:
-        return True
-    return False
-
-
-def isstrgreek(_str: str) -> bool:
-    """Test if the string is a string of Greek letters
-
-    >>> isstrgreek('ΓὟᾬἄαξχΦᾁᾂὴ')
+    >>> isgreek('ΓὟᾬἄαξχΦᾁᾂὴ')
     True
-    >>> isstrgreek('Γ')
+    >>> isgreek('αξχΦᾁᾂὴ')
     True
-    >>> isstrgreek('Α')
-    True
-    >>> isstrgreek('αξχΦᾁᾂὴ')
-    True
-    >>> isstrgreek('qwerty')
+    >>> isgreek('qwerty')
     False
-    >>> isstrgreek('0123')
+    >>> isgreek('0123')
     False
-    >>> isstrgreek('qwertyΓὟᾬἄαξχΦᾁᾂὴ')
+    >>> isgreek('qwertyΓὟᾬἄαξχΦᾁᾂὴ')
     False
-    >>> isstrgreek('0123ΓὟᾬἄαξχΦᾁᾂὴ')
+    >>> isgreek('0123ΓὟᾬἄαξχΦᾁᾂὴ')
     False
     """
     return all(False for x in _str if x not in GREEK_ALL)
 
 
 def hasgreek(_str: str) -> bool:
-    """Test if the string contain Greek letters
+    """Test if the string contains Greek letters
 
     >>> hasgreek('ἀἁἂαβγδεζ')
     True
@@ -696,9 +632,9 @@ def hasgreek(_str: str) -> bool:
 
 
 def isbraille(_str: str) -> bool:
-    """Test if the character is a Braille character
+    """Test if the string is a string of Braille characters
 
-    >>> isbraille('⠀')
+    >>> isbraille('⠀⠁⠂⠃')
     True
     >>> isbraille('⠃')
     True
@@ -706,33 +642,22 @@ def isbraille(_str: str) -> bool:
     False
     >>> isbraille('0')
     False
-    """
-    if _str in BRAILLE:
-        return True
-    return False
-
-
-def isstrbraille(_str: str) -> bool:
-    """Test if the string is a string of Braille characters
-
-    >>> isstrbraille('⠀⠁⠂⠃')
+    >>> isbraille('⠀')
     True
-    >>> isstrbraille('⠀')
-    True
-    >>> isstrbraille('qwerty')
+    >>> isbraille('qwerty')
     False
-    >>> isstrbraille('0123')
+    >>> isbraille('0123')
     False
-    >>> isstrbraille('qwerty⠀⠁⠂⠃ᾂὴ')
+    >>> isbraille('qwerty⠀⠁⠂⠃ᾂὴ')
     False
-    >>> isstrbraille('0123ΓὟᾬ⠀⠁⠂⠃')
+    >>> isbraille('0123ΓὟᾬ⠀⠁⠂⠃')
     False
     """
     return all(False for x in _str if x not in BRAILLE)
 
 
 def hasbraille(_str: str) -> bool:
-    """Test if the string contain Braille characters
+    """Test if the string contains Braille characters
 
     >>> hasbraille('ἀἁ⠀⠁⠂⠃δεζ')
     True
@@ -748,70 +673,63 @@ def hasbraille(_str: str) -> bool:
     return any(True for x in _str if x in BRAILLE)
 
 
-def isutf8(_str: str) -> bool:
-    """Test if a string is within the UTF8 limit
+def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901
+    r"""Test if a string is within the Unicode limit
 
-    >>> isutf8('a')
+    >>> isunicode('&')
     True
-    >>> isutf8('ἀ')
+    >>> isunicode('\n')
     True
+    >>> isunicode('𮯠')
+    True
+    >>> isunicode(r'\U10fffe')
+    False
+    >>> isunicode('\\U10ffff')
+    False
+    >>> isunicode('\\U110000')
+    False
     """
-    try:
-        if _str.encode(r'utf-8'):
-            return True
-    except SyntaxError:
-        return False
-    return False
-
-
-def isutf16(_str: str) -> bool:
-    """Test if a string is within the UTF16 limit"""
-    try:
-        if _str.encode(r'utf-16'):
-            return True
-    except SyntaxError:
-        return False
-    return False
-
-
-def isunicode(_str: str) -> bool:  # noqa: C901
-    """Test if a string is within the Unicode limit"""
-    assert isinstance(_str, (str, bytes)), \
-        r'An invalid datatype was passed to isunicode()!'
-    _utfstrict = '.decode(\'utf8\', \'strict\')'
-    _fmt = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utfstrict
-    if len(_str) == 10 and r'\U' in _str:
-        _int = int(_str.replace(r'\U', r''), 16)
-        return _int <= UPPER_LIMIT_UNICODE
-    elif len(_str) == 6 and r'\u' in _str:
-        _int = int(_str.replace(r'\u', r''), 16)
-        return _int <= UPPER_LIMIT_UNICODE
-    elif _str.count(r'\x') == 1 and (len(_str) % 4) == 0:
-        _int = int(_str.replace(r'\x', r'0x'), 16)
-        return _int <= UPPER_LIMIT_UNICODE
-    elif _str.count(r'\x') >= 2 and (len(_str) % 4) == 0:
-        try:
-            literal_eval(_fmt.format(_str.split(r'\x')[1:]))
-        except SyntaxError:
-            return False
-        return True
+    if not isinstance(_str, (str, bytes)):
+        raise Exception(r'An invalid datatype was passed to isunicode()!')
     elif isinstance(_str, bytes):
         try:
             _str.decode(r'utf8', r'strict')
         except SyntaxError:
             return False
         return True
-    elif len(_str) == 1:
+    elif len(_str) == 10 and r'\U' in _str:
+        return int(_str.replace(r'\U', r''), 16) <= UPPER_LIMIT_UNICODE
+    elif len(_str) == 6 and r'\u' in _str:
+        return int(_str.replace(r'\u', r''), 16) <= UPPER_LIMIT_UNICODE
+    elif _str.count(r'\x') == 1 and (len(_str) % 4) == 0:
+        return int(_str.replace(r'\x', r'0x'), 16) <= UPPER_LIMIT_UNICODE
+    elif _str.count(r'\x') >= 2 and (len(_str) % 4) == 0:
         try:
-            if _str.encode(r'utf-16', r'strict'):
-                return True
+            literal_eval('b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'.decode(\'utf8\', \'strict\')'.format(_str.split(r'\x')[1:]))
         except SyntaxError:
             return False
+        return True
+    elif len(_str) == 1:
+        try:
+            _str.encode(r'utf-16', r'strict')
+        except SyntaxError:
+            return False
+        return True
     return False
 
 
 def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R0915
-    """Test if the string contains a character hex escape"""
+    r"""Test if the string contains a character hex escape
+
+    >>> hashexescape('\\U0002ebe0')
+    True
+    >>> hashexescape('\\u00b6')
+    True
+    >>> hashexescape('\\xb6')
+    True
+    >>> hashexescape('This is a test with \\.')
+    False
+    """
     if r'\U' in _str:
         _ct = _str.count(r'\U')
         _start = 0
@@ -828,7 +746,7 @@ def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R091
                 return True
             _ct -= 1
             _start = _end
-    if r'\u' in _str:
+    elif r'\u' in _str:
         _ct = _str.count(r'\u')
         _start = 0
         while _ct != 0:
@@ -844,7 +762,7 @@ def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R091
                 return True
             _ct -= 1
             _start = _end
-    if r'\X' in _str:
+    elif r'\X' in _str:
         _ct = _str.count(r'\X')
         _start = 0
         while _ct != 0:
@@ -860,7 +778,7 @@ def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R091
                 return True
             _ct -= 1
             _start = _end
-    if r'\x' in _str:
+    elif r'\x' in _str:
         _ct = _str.count(r'\x')
         _start = 0
         while _ct != 0:
@@ -880,7 +798,15 @@ def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R091
 
 
 def testref(_data: str) -> bool:
-    """Test if the string contains a character reference"""
+    """Test if the string contains a character reference
+
+    >>> testref('&#38;')
+    True
+    >>> testref('&amp;')
+    True
+    >>> testref('This is a test.')
+    False
+    """
     return CHAR_REF.search(_data) is not None or ENTITY_REF.search(_data) is not None
 
 
@@ -895,40 +821,29 @@ def is_palindrome(_str: str) -> bool:
     return _str == _str[::-1]
 
 
-# LENGTHS #
-
-
-def utf7len(_str: str) -> int:
-    """Get the UTF7 byte-size of a string"""
-    return len(_str.encode(r'utf-7'))
-
-
-def utf8len(_str: str) -> int:
-    """Get the UTF8 byte-size of a string
-
-    Each byte in a UTF-8 byte-sequence consists of two parts:
-     - Marker Bits (the most significant bits): sequence of zero to four 1 bits followed by a 0
-     - Payload Bits: x being payload bits
-    Examples:
-     - U-00000000 ... U-0000007F	0xxxxxxx
-     - U-00000080 ... U-000007FF	110xxxxx 10xxxxxx
-     - U-00000800 ... U-0000FFFF	1110xxxx 10xxxxxx 10xxxxxx
-     - U-00010000 ... U-0010FFFF	11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-    """
-    return len(_str.encode(r'utf-8'))
-
-
-def utf16len(_str: str) -> int:
-    """Get the UTF16 byte-size of a string"""
-    return len(_str.encode(r'utf-16'))
-
-
-def utf32len(_str: str) -> int:
-    """Get the UTF32 byte-size of a string"""
-    return len(_str.encode(r'utf-32'))
-
-
 # ESCAPE MANIPULATIONS #
+
+
+def _search(_char: str, _num: int, _str: str, _out: list) -> list:
+    """Find hexadecimal characters"""
+    _ct: int = _str.count(_char)
+    _start: int = 0
+    while _ct != 0:
+        _start = _str.find(_char, _start) + 2
+        _end = _start + _num
+        _skip = False
+        for i in _str[_start:_end]:
+            if i in r'0123456789ABCDEFabcdef':
+                continue
+            _skip = True
+            break
+        _ct -= 1
+        if _skip:
+            _start = _end
+            continue
+        _out.append(_char + _str[_start:_end])
+        _start = _end
+    return _out
 
 
 def findescapes(_str: str) -> list:
@@ -940,36 +855,15 @@ def findescapes(_str: str) -> list:
     >>> findescapes('This is a \\u202f test.')
     ['\\u202f', [...]]
     """
-    def _search(_char: str, _num: int):
-        """Find hexadecimal characters"""
-        _ct = _str.count(_char)
-        _start = 0
-        while _ct != 0:
-            _start = _str.find(_char, _start) + 2
-            _end = _start + _num
-            _skip = False
-            for i in _str[_start:_end]:
-                if i in r'0123456789ABCDEFabcdef':
-                    continue
-                _skip = True
-                break
-            _ct -= 1
-            if _skip:
-                _start = _end
-                continue
-            _out.append(_char + _str[_start:_end])
-            _start = _end
-        return _out
-
-    _out = []
+    _out: list = []
     if r'\U' in _str:
-        _out.append(_search(r'\U', 8))
+        _out.append(_search(r'\U', 8, _str, _out))
     if r'\u' in _str:
-        _out.append(_search(r'\u', 4))
+        _out.append(_search(r'\u', 4, _str, _out))
     if r'\x' in _str:
-        _out.append(_search(r'\x', 2))
+        _out.append(_search(r'\x', 2, _str, _out))
     if r'\X' in _str:
-        _out.append(_search(r'\X', 2))
+        _out.append(_search(r'\X', 2, _str, _out))
     return _out
 
 
@@ -981,6 +875,8 @@ def shrink_esc_utf16to8(_hex: str) -> str:
     """
     if r'\u00' in _hex and len(_hex) == 6:
         return _hex.replace(r'\u00', r'\x')
+    elif r'\x' in _hex and len(_hex) == 4:
+        return _hex
     raise Exception(_hex + r' cannot be shrunk to a 8-bit hex escape!')
 
 
@@ -992,6 +888,8 @@ def shrink_esc_utf32to8(_hex: str) -> str:
     """
     if r'\U000000' in _hex and len(_hex) == 10:
         return _hex.replace(r'\U000000', r'\x')
+    elif r'\x' in _hex and len(_hex) == 4:
+        return _hex
     raise Exception(_hex + r' cannot be shrunk to a 8-bit hex escape!')
 
 
@@ -1003,6 +901,8 @@ def shrink_esc_utf32to16(_hex: str) -> str:
     """
     if r'\U0000' in _hex and len(_hex) == 10:
         return _hex.replace(r'\U0000', r'\u')
+    elif r'\u' in _hex and len(_hex) == 6:
+        return _hex
     raise Exception(_hex + r' cannot be shrunk to a 16-bit hex escape!')
 
 
@@ -1029,21 +929,23 @@ def noescutf8hex(_hex: str) -> str:
 
     >>> noescutf8hex('\\x26')
     '&'
+    >>> noescutf8hex('\\x40')
+    '@'
     """
     if r'\x' in _hex and (len(_hex) % 4) is 0:
         _utf8_strict = '.decode(\'utf8\', \'strict\')'
         if _hex.count('\\') == 3:
-            _hex = _hex.split(r'\x')[1:]
+            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
+            return literal_eval(_eval_str.format(_hexls))
         elif _hex.count('\\') == 2:
-            _hex = _hex.split(r'\x')[1:]
+            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
+            return literal_eval(_eval_str.format(_hexls))
         elif _hex.count('\\') == 4:
-            _hex = _hex.split(r'\x')[1:]
+            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\\x{0[3]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hex))
+            return literal_eval(_eval_str.format(_hexls))
         elif _hex.count('\\') == 1:
             _int = int(_hex.replace(r'\x', r''), 16)
             _hex = hex(_int).replace(r'0x', r'')[:].zfill(2)
@@ -1053,28 +955,59 @@ def noescutf8hex(_hex: str) -> str:
     raise ValueError(r'Invalid input passed to noescutf8hex()!')
 
 
+def noescape(_hex: str) -> str:
+    r"""Remove escapes from a single-character hexadecimal string
+
+    >>> noescape('\\U00000026')
+    '&'
+    >>> noescape('\\u0026')
+    '&'
+    >>> noescape('\\x26')
+    '&'
+    >>> noescutf8hex('\\x40')
+    '@'
+    """
+    if r'\U' in _hex and len(_hex) == 10:
+        _hex = hex(int(_hex.replace(r'\U', r''), 16)).replace('0x', r'')
+        return literal_eval('"\\U{0}"'.format(_hex[:].zfill(8)))
+    elif r'\u' in _hex and len(_hex) == 6:
+        _hex = hex(int(_hex.replace(r'\u', r''), 16)).replace('0x', r'')
+        return literal_eval('"\\u{0}"'.format(_hex[:].zfill(4)))
+    elif r'\x' in _hex and (len(_hex) % 4) == 0:
+        return noescutf8hex(_hex)
+    elif isinstance(_hex, str) and len(_hex) == 1:
+        return _hex
+    raise Exception(r'Invalid input passed to noescape()!')
+
+
 def expandhexescape(_hex: str) -> str:
     r"""Convert a 16-bit hex escape to a 32-bit hex escape (\\uhhhh) => (\\Uhhhhhhhh)
 
     >>> expandhexescape('\\u202f')
     '\\U0000202f'
+    >>> expandhexescape('\\U0000202f')
+    '\\U0000202f'
     """
     if r'\u' in _hex and len(_hex) == 6:
         return _hex.replace(r'\u', r'\U0000')
+    elif r'\U' in _hex and len(_hex) == 10:
+        return _hex
     raise Exception(_hex + r' cannot be converted to a 32-bit hex escape!')
 
 
 def char2noeschex(_char: str) -> str:
-    """Convert a character to a hex string lacking divisions or escapes
+    """Convert a character to a hex string lacking delimiters
 
     >>> char2noeschex('&')
     '26'
+    >>> char2noeschex('@')
+    '40'
     """
     return r'{:02x}'.format(ord(_char))
 
 
 def str2noeschex(_char: str) -> str:
-    """Convert a string to a hex string lacking divisions or escapes
+    """Convert a string to a hex string lacking delimiters
 
     >>> str2noeschex('This is a test.')
     '54686973206973206120746573742e'
@@ -1094,7 +1027,7 @@ def str2hexcolon(_str: str) -> str:
 # X 2 CHARACTER
 
 
-def int2char(_int, _numbase: str = r'10', _escape: bool = True) -> str:
+def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True) -> str:
     r"""Convert an integer (as a str or int type) to a character
 
     The integer may be decimal, hex, octal, or binary
@@ -1128,15 +1061,12 @@ def int2char(_int, _numbase: str = r'10', _escape: bool = True) -> str:
             _int = int(_int, 10)
     if isinstance(_int, int):
         if _escape:
-            _int = hex(_int).replace(r'0x', r'')[:].zfill(8)
-            return r'\U{0}'.format(_int)
-        else:
-            if LOWER_LIMIT_ASCII_CTRL <= _int <= UPPER_LIMIT_UTF8:
-                return chr(_int)
-            elif UPPER_LIMIT_UTF8 < _int <= UPPER_LIMIT_UNICODE:
-                _int = hex(_int).replace(r'0x', r'')
-                return literal_eval('"\\U{0}"'.format(_int[:].zfill(8)))
-            raise ValueError(r'An out-of-range integer passed to int2char()!')
+            return r'\U{0}'.format(hex(_int).replace(r'0x', r'')[:].zfill(8))
+        elif LOWER_LIMIT_ASCII_CTRL <= _int <= UPPER_LIMIT_UTF8:
+            return chr(_int)
+        elif UPPER_LIMIT_UTF8 < _int <= UPPER_LIMIT_UNICODE:
+            return literal_eval('"\\U{0}"'.format(hex(_int).replace(r'0x', r'')[:].zfill(8)))
+        raise ValueError(r'An out-of-range integer passed to int2char()!')
     raise TypeError(r'Invalid datatype passed to int2char()!')
 
 
@@ -1213,9 +1143,12 @@ def binint2char(_bin: int, _escape: bool = True) -> str:
 
 
 def name2char(_name: str) -> str:
-    """Convert a Unicode name to a character
+    r"""Convert a Unicode name to a character
 
     If the name is invalid, an empty string is returned
+
+    >>> name2char('GREEK CAPITAL LETTER DELTA')
+    'Δ'
     """
     try:
         return literal_eval('"\\N{1}{0}{2}"'.format(_name.upper(), r'{', r'}'))
@@ -1223,61 +1156,150 @@ def name2char(_name: str) -> str:
         return r''
 
 
+def num2char(_str: str) -> str:
+    r"""Replace numerical character representations (as a string) with the respective characters
+
+    >>> num2char('\\U00000026')
+    '&'
+    >>> num2char('\\u0026')
+    '&'
+    >>> num2char('\\x26')
+    '&'
+    >>> num2char(' \\u0040 ')
+    ' @ '
+    >>> num2char('This is a test: \\u0040 .')
+    'This is a test: @ .'
+    >>> num2char('\\U0001f9e6')
+    '🧦'
+    >>> num2char('0001f9e6')
+    '🧦'
+    >>> num2char('1f9e6')
+    '🧦'
+    >>> num2char('0x1f9e6')
+    '🧦'
+    >>> num2char('0x2ebe0')
+    '𮯠'
+    >>> num2char('&#x2ebe0;')
+    '𮯠'
+    >>> num2char('U+1f6f8')
+    '🛸'
+    >>> num2char('%1f6f8')
+    '🛸'
+    >>> num2char('\\x26&#x2ebe0;U+1f6f8')
+    '&𮯠🛸'
+    """
+    _pattern = rgxcompile(r'([0-9A-Fa-f]*)(.*)')
+    if r'&#x' in _str:
+        _str = HEXESCTAG.sub(r'0x\1', _str)
+    if r'%' in _str:
+        _str = HEXESCURI.sub(r'0x\1', _str)
+    _data = rgxsplit(r'\\u|\\U|\\x|0x|U\+|U(?!\+)', _str)
+    _out = []
+    for _char in _data:
+        _postpend = r''
+        _null = r''
+        if not _char:
+            continue
+        try:
+            _null, _char, _postpend = rgxsplit(r'¶ж¶', _pattern.sub(r'¶ж¶\1¶ж¶\2', _char))
+            del _null
+            if ishex(_char):
+                _out.append(chr(int(_char, 16)) + _postpend)
+                continue
+            _out.append(_char + _postpend)
+            continue
+        except ValueError:
+            _out.append(_char + _postpend)
+            continue
+    return r''.join(_out)
+
+
 # X 2 INTEGER #
 
 
 def char2int(_char: str) -> int:
-    """Convert a character to an integer"""
+    """Convert a character to an integer
+
+    >>> char2int('&')
+    38
+    >>> char2int('a')
+    97
+    >>> char2int('Z')
+    90
+    """
     return ord(_char)
 
 
 def refnum2int(_refnum: str) -> int:
-    """Convert Decimal-NCR/HTML-Entity (&#38;) to an integer"""
-    assert r'&#' in _refnum and r';' in _refnum, \
-        r'The entered value is not a HTML entity number (&#38;)!'
-    _refnum = _refnum.replace(r'&#', r'').replace(r';', r'')
-    return int(_refnum, 10)
+    """Convert Decimal-NCR/HTML-Entity to an integer
+
+    >>> refnum2int('&#38;')
+    38
+    """
+    _refnum = _refnum.strip()
+    if not _refnum.startswith(r'&#') or not _refnum.endswith(r';'):
+        raise Exception(r'The entered value is not a HTML entity number (&#38;)!')
+    return int(_refnum.replace(r'&#', r'').replace(r';', r''), 10)
 
 
-def ncr2int(_refnum: str) -> int:
-    """Provide a decorator for refnum2int()"""
-    return refnum2int(_refnum)
+# X 2 STRING #
 
 
-# X 2 UTF* #
+def str2hexesc(_str: str) -> str:
+    r"""Convert a string to a UTF-8 hex string (\xc3\x9e)
+
+    >>> str2hexesc('&')
+    '\\x26'
+    >>> str2hexesc('&@')
+    '\\x26\\x40'
+    """
+    if not _str:
+        raise ValueError(r'Invalid data passed to str2hexesc()!')
+    return r''.join(r'{0}'.format(hex(ord(i)).replace(r'0x', r'\x')) for i in _str)
 
 
-def utf8convchar2hexescape(_char: str) -> str:
-    r"""Convert a character to a UTF-8 hex string (\xc3\x9e)"""
-    _char = str(_char.encode(r'utf_8', r'strict'))
-    _char = _char.replace(r'b', r'').replace('\'', r'')
-    return r'{0}'.format(_char)
+def str2uri(_str: str) -> str:
+    """Convert a string to an URI escaped hex sequence (%c3%9e)
+
+    >>> str2uri('&')
+    '%26'
+    >>> str2uri('Ã')
+    '%c3'
+    >>> str2uri('ర')
+    '%c30'
+    >>> str2uri('&Ãర')
+    '%26%c3%c30'
+    """
+    if not _str:
+        raise ValueError(r'Invalid data passed to str2uri()!')
+    return r''.join(r'{0}'.format(hex(ord(i)).replace(r'0x', r'%')) for i in _str)
 
 
-def utf8convchar2hexstr(_char: str) -> str:
-    """Convert a character to a hex string (0xc30x9e)"""
-    _char = str(_char.encode(r'utf_8', r'strict')).replace(r'b', r'')
-    _char = _char.replace('\'', r'').replace(r'\x', r'0x')
-    return r'{0}'.format(_char)
+def str2intstr(_str: str) -> str:
+    """Convert a string to an integer string (& => 38)
+
+    >>> str2intstr('&')
+    '38'
+    >>> str2intstr('@')
+    '64'
+    >>> str2intstr('&@')
+    '38 64'
+    >>> str2intstr('Ω')
+    '937'
+    >>> str2intstr('¶')
+    '182'
+    """
+    if not _str:
+        raise ValueError(r'Invalid data passed to str2intstr()!')
+    return r' '.join(r'{0}'.format(str(ord(i))) for i in _str)
 
 
-def utf8convchar2uri(_char: str) -> str:
-    """Convert a character to an URI escaped hex sequence (%c3%9e)"""
-    _char = str(_char.encode(r'utf_8', r'strict')).replace(r'b', r'')
-    _char = _char.replace('\'', r'').replace(r'\x', r'%')
-    return r'{0}'.format(_char)
+def int2utf16(_int: int, _endian: str = r'little') -> str:
+    r"""Convert an integer to a character
 
-
-def utf8convchar2intstr(_char: str) -> int:
-    """Convert a character to an integer string (& => 38)"""
-    _char = str(_char.encode(r'utf_8', r'strict')).replace(r'b', r'')
-    _char = _char.replace('\'', r'').replace(r'\x', r'0x')
-    _char = r'{0}'.format(_char.split(r'0x'))
-    return r''.join(r'{0}'.format(str(int(i, 16)) for i in _char))
-
-
-def int2utf16(_int: int, _endian: str = byteorder) -> str:
-    """Convert an integer to a character"""
+    >>> int2utf16(38)
+    '&\x00'
+    """
     if 0 <= _int <= UPPER_LIMIT_UNICODE:
         if _endian == r'little':
             return (_int).to_bytes(4, _endian).decode(r'utf-16-le', r'strict')
@@ -1287,112 +1309,190 @@ def int2utf16(_int: int, _endian: str = byteorder) -> str:
     raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(UPPER_LIMIT_UNICODE))
 
 
-def int2utf32(_int: int, _endian: str = byteorder) -> str:
-    """Convert an integer to a character"""
+def int2utf32(_int: int, _endian: str = r'little') -> str:
+    """Convert an integer to a character
+
+    >>> int2utf32(38)
+    '&'
+    """
     if 0 <= _int <= UPPER_LIMIT_UNICODE:
         return (_int).to_bytes(4, _endian).decode(r'utf-32', r'strict')
     raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(UPPER_LIMIT_UNICODE))
 
 
-# X 2 HEX #
+def char2num(_char: str, _upcase: bool = False) -> str:
+    r"""Convert characters to unicode escapes of a proper length
+
+    >>> char2num('&')
+    '\\u0026'
+    >>> char2num('@')
+    '\\u0040'
+    >>> char2num('&@')
+    '\\u0026\\u0040'
+    >>> char2num('🧦')
+    '\\U0001f9e6'
+    >>> char2num('&🧦@')
+    '\\u0026\\U0001f9e6\\u0040'
+    >>> char2num('𮯠')
+    '\\U0002ebe0'
+    >>> char2num('&🧦@', _upcase=True)
+    '\\u0026\\U0001F9E6\\u0040'
+    >>> char2num('𮯠', True)
+    '\\U0002EBE0'
+    """
+    if not _char:
+        raise ValueError(r'Invalid data passed to char2num()!')
+    _out = r''
+    for i in _char:
+        _tmp = hex(ord(i)).replace(r'0x', r'')
+        if len(_tmp) > 8:
+            raise ValueError(r'Invalid data passed to char2num()!')
+        elif len(_tmp) > 4:
+            while len(_tmp) != 8:
+                _tmp = r'0' + _tmp
+            _out += r'\U' + _tmp.upper() if _upcase else r'\U' + _tmp
+            continue
+        while len(_tmp) != 4:
+            _tmp = r'0' + _tmp
+        _out += r'\u' + _tmp.upper() if _upcase else r'\u' + _tmp
+    return _out
 
 
-def char2hexstr(_char: str) -> str:
-    """Convert a character(s) to hex-numbers as a str"""
-    if len(_char) is 1:
-        return hex(ord(_char))
-    elif len(_char) > 1:
-        _out = r''
-        for i in _char:
-            _out = _out + hex(ord(i))
-        return _out
-    raise ValueError(r'Invalid data passed to char2hexstr()!')
+def str2hexstr(_str: str) -> str:
+    """Convert a string to a hexadecimal string (0xc30x9e)
+
+    >>> str2hexstr('&')
+    '0x26'
+    >>> str2hexstr('Ã')
+    '0xc3'
+    >>> str2hexstr('ర')
+    '0xc30'
+    >>> str2hexstr('&@')
+    '0x260x40'
+    >>> str2hexstr('¶')
+    '0xb6'
+    """
+    if not _str:
+        raise ValueError(r'Invalid data passed to str2hexstr()!')
+    return r''.join(r'{0}'.format(hex(ord(i))) for i in _str)
 
 
-def hex2unicodehex(_hex: str or int) -> str:
-    """Convert hexadecimal to Unicode+Hex Notation"""
+def hex2unicodehex(_hex: Union[int, str]) -> str:
+    r"""Convert hexadecimal to Unicode+Hex Notation (U+02EBE0)
+
+    >>> hex2unicodehex('0x01D4C3')
+    'U+01D4C3'
+    >>> hex2unicodehex('\\x26')
+    'U+26'
+    >>> hex2unicodehex(0x26)
+    'U+26'
+    >>> hex2unicodehex('\\u0040')
+    'U+40'
+    >>> hex2unicodehex('\\002ebe0')
+    'U+02EBE0'
+    """
     if isinstance(_hex, str):
-        if r'0x' in _hex:
-            _hex = _hex.replace(r'0x', r'')
-        if r'\x' in _hex:
-            _hex = _hex.replace(r'\x', r'')
-        if r'\U' in _hex:
-            _hex = _hex.replace(r'\U000', r'').replace(r'\U00', r'')
-            _hex = _hex.replace(r'\U0', r'').replace(r'\U', r'')
-        if r'\u' in _hex:
-            _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'')
-            _hex = _hex.replace(r'\u', r'')
-        if r'\0' in _hex:
-            _hex = _hex.replace(r'\0', r'')
-        if r'&#x' in _hex:
-            _hex = _hex.replace(r'&#x', r'').replace(r';', r'')
-        return r'U+{0}'.format(_hex)
+        if r'0x' in _hex or r'\x' in _hex:
+            _hex = _hex.replace(r'0x', r'').replace(r'\x', r'')
+        elif r'\U' in _hex or r'\u' in _hex:
+            _hex = _hex.replace(r'\U000', r'').replace(r'\U00', r'').replace(r'\U0', r'').replace(r'\U', r'')
+            _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'').replace(r'\u', r'')
+        elif r'\0' in _hex or r'&#x' in _hex:
+            _hex = _hex.replace(r'\0', r'').replace(r'&#x', r'').replace(r';', r'')
+        return r'U+{0}'.format(_hex.upper())
     elif isinstance(_hex, int):
-        _hex = hex(_hex).replace(r'0x', r'')
-        return r'U+{0}'.format(_hex)
+        return r'U+{0}'.format(hex(_hex).replace(r'0x', r'').upper())
     raise TypeError(r'Invalid datatype passed to hex2unicodehex()!')
 
 
-def hex2cssnot(_hex: str or int) -> str:
-    r"""Convert hexadecimal to CSS Notation (\01D4C3)"""
+def hex2cssnot(_hex: Union[int, str]) -> str:
+    r"""Convert hexadecimal to CSS Notation (\01D4C3)
+
+    >>> hex2cssnot('0x01D4C3')
+    '\\001D4C3'
+    >>> hex2cssnot('\\x26')
+    '\\026'
+    >>> hex2cssnot(0x26)
+    '\\026'
+    >>> hex2cssnot('\\u0040')
+    '\\040'
+    >>> hex2cssnot('U+02ebe0')
+    '\\002EBE0'
+    """
     if isinstance(_hex, str):
-        if r'0x' in _hex:
-            _hex = _hex.replace(r'0x', r'')
-        if r'\x' in _hex:
-            _hex = _hex.replace(r'\x', r'')
-        if r'\U' in _hex:
-            _hex = _hex.replace(r'\U000', r'').replace(r'\U00', r'')
-            _hex = _hex.replace(r'\U0', r'').replace(r'\U', r'')
-        if r'\u' in _hex:
-            _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'')
-            _hex = _hex.replace(r'\u', r'')
-        if r'U+' in _hex:
-            _hex = _hex.replace(r'U+', r'')
-        if r'&#x' in _hex:
-            _hex = _hex.replace(r'&#x', r'').replace(r';', r'')
-        return r'\0{0}'.format(_hex)
+        if r'0x' in _hex or r'\x' in _hex:
+            _hex = _hex.replace(r'0x', r'').replace(r'\x', r'')
+        elif r'\U' in _hex:
+            _hex = _hex.replace(r'\U000', r'').replace(r'\U00', r'').replace(r'\U0', r'').replace(r'\U', r'')
+        elif r'\u' in _hex:
+            _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'').replace(r'\u', r'')
+        elif r'U+' in _hex or r'&#x' in _hex:
+            _hex = _hex.replace(r'U+', r'').replace(r'&#x', r'').replace(r';', r'')
+        return r'\0{0}'.format(_hex.upper())
     elif isinstance(_hex, int):
-        _hex = hex(_hex).replace(r'0x', r'')
-        return r'\0{0}'.format(_hex)
+        return r'\0{0}'.format(hex(_hex).replace(r'0x', r'').upper())
     raise TypeError(r'Invalid datatype passed to hex2cssnot()!')
 
 
-# X 2 MISC #
-
-
-def char2intstr(_char: str) -> int:
-    """Convert a character(s) to decimal integers as a str"""
-    if len(_char) is 1:
-        return str(ord(_char))
-    elif len(_char) > 1:
-        _out = ''
-        for i in _char:
-            _out += str(ord(i))
-        return _out
-    raise ValueError(r'Invalid data input in char2intstr()!')
+# X 2 BYTES #
 
 
 def str2bytes(_str: str, _encoding: str = r'utf8') -> bytes:
-    """Convert strings to bytes"""
+    r"""Convert strings to bytes
+
+    >>> str2bytes('&')
+    b'&'
+    >>> str2bytes('&@')
+    b'&@'
+    >>> str2bytes('¶')
+    b'\xc2\xb6'
+    """
     return _str.encode(_encoding, r'strict')
 
 
 def bytes2str(_bytes: bytes, _encoding: str = r'utf8') -> str:
-    """Convert bytes to strings"""
+    """Convert bytes to strings
+
+    >>> bytes2str(b'&')
+    '&'
+    >>> bytes2str(b'&@')
+    '&@'
+    """
     return _bytes.decode(_encoding, r'strict')
 
 
-def int2hexbytes(_int: int, _length: int = 2, _endian: str = r'little', _signed: bool = False) -> str:
-    """Convert int to bytes represented as an escaped hex string
+def int2hexbytes(_int: int, _length: int = 2, _endian: str = r'little', _signed: bool = False) -> bytes:
+    r"""Convert int to bytes represented as an escaped hex string
 
-    If byteorder is "big", the most significant byte is at the beginning of the byte array.
-    If byteorder is "little", the most significant byte is at the end of the byte array.
+    If `_endian` is "big", then the most significant byte is at the beginning of the byte array.
+    If `_endian` is "little", then the most significant byte is at the end of the byte array.
+
+    >>> int2hexbytes(38)
+    b'&\x00'
+    >>> int2hexbytes(64)
+    b'@\x00'
+    >>> int2hexbytes(64, _endian=r'big')
+    b'\x00@'
+    >>> int2hexbytes(6438)
+    b'&\x19'
+    >>> int2hexbytes(6438, _endian=r'big')
+    b'\x19&'
     """
     return _int.to_bytes(_length, _endian, signed=_signed)
 
 
 def hexstr2bytearray(_hex: str) -> bytearray:
-    """Convert a hex string to a bytearray"""
+    r"""Convert a hex string to a bytearray
+
+    >>> hexstr2bytearray('2640')
+    bytearray(b'&@')
+    >>> hexstr2bytearray('0001f9e6')
+    bytearray(b'\x00\x01\xf9\xe6')
+    >>> hexstr2bytearray('1f9e6')
+    bytearray(b'\x01\xf9\xe6')
+    """
+    if len(_hex) % 2 != 0:
+        _hex = r'0' + _hex
     return bytearray.fromhex(_hex)
 
 
@@ -1403,30 +1503,25 @@ def text2bubble(_str: str) -> str:
     """Convert a plain-text string to bubble text
 
     >>> text2bubble('This (str) is a sample test.')
-    'Ⓣⓗⓘⓢ (⃝ ⓢⓣⓡ)⃝  ⓘⓢ ⓐ ⓢⓐⓜⓟⓛⓔ ⓣⓔⓢⓣ.⃝ '
+    'Ⓣⓗⓘⓢ (⃝ⓢⓣⓡ)⃝ ⓘⓢ ⓐ ⓢⓐⓜⓟⓛⓔ ⓣⓔⓢⓣ⊙'
     >>> text2bubble('Testing various characters: €, *, Ω, ᾲ, and ⛽.')
-    'Ⓣⓔⓢⓣⓘⓝⓖ ⓥⓐⓡⓘⓞⓤⓢ ⓒⓗⓐⓡⓐⓒⓣⓔⓡⓢ:⃝  €⃝ ,⃝  *⃝ ,⃝  Ω⃝ ,⃝  ᾲ⃝ ,⃝  ⓐⓝⓓ ⛽⃝ .⃝ '
+    'Ⓣⓔⓢⓣⓘⓝⓖ ⓥⓐⓡⓘⓞⓤⓢ ⓒⓗⓐⓡⓐⓒⓣⓔⓡⓢ:⃝ €⃝,⃝ ⊛,⃝ Ω⃝,⃝ ᾲ⃝,⃝ ⓐⓝⓓ ⛽⃝⊙'
     """
-    _out = ''
-    for i in _str:
-        if i not in PLAIN_TEXT:
-            i = i + '\u20dd '
-        _out = _out + i
-    return _out.translate(TRANS_TEXT2BUBBLE)
+    _str2 = _str.replace('\u202f', r'').strip()
+    return r''.join(i + r'⃝' if i not in PLAIN_TEXT else i for i in _str2).translate(TRANS_TEXT2BUBBLE)
 
 
 def bubble2text(_str: str) -> str:
     """Convert bubble text to a plain-text string
 
-    >>> bubble2text('Ⓣⓗⓘⓢ ⓘⓢ ⓐ ⓣⓔⓢⓣ.⃝')
+    >>> bubble2text('Ⓣⓗⓘⓢ ⓘⓢ ⓐ ⓣⓔⓢⓣ⊙')
     'This is a test.'
-    >>> bubble2text('Ⓣⓗⓘⓢ ⓘⓢ ⓐ ⓢⓔⓒⓞⓝⓓ (⃝ ②ⓝⓓ)⃝  ⓣⓔⓢⓣ.⃝ ')
+    >>> bubble2text('Ⓣⓗⓘⓢ ⓘⓢ ⓐ ⓢⓔⓒⓞⓝⓓ (⃝②ⓝⓓ)⃝ ⓣⓔⓢⓣ⊙')
     'This is a second (2nd) test.'
-    >>> bubble2text('Ⓣⓔⓢⓣⓘⓝⓖ ⓥⓐⓡⓘⓞⓤⓢ ⓒⓗⓐⓡⓐⓒⓣⓔⓡⓢ:⃝  €⃝ ,⃝  *⃝ ,⃝  Ω⃝ ,⃝  ᾲ⃝ ,⃝  ⓐⓝⓓ ⛽⃝ .⃝ ')
+    >>> bubble2text('Ⓣⓔⓢⓣⓘⓝⓖ ⓥⓐⓡⓘⓞⓤⓢ ⓒⓗⓐⓡⓐⓒⓣⓔⓡⓢ:⃝ €⃝,⃝ ⊛,⃝ Ω⃝,⃝ ᾲ⃝,⃝ ⓐⓝⓓ ⛽⃝⊙')
     'Testing various characters: €, *, Ω, ᾲ, and ⛽.'
     """
-    _str = _str.replace('\u202f', r'').replace(r'\u202f', r'').replace(r'.⃝', r'.').replace(r'?⃝', r'?').replace(r'!⃝', r'!').replace(r'¿⃝', r'¿')
-    return _str.translate(TRANS_BUBBLE2TEST).replace('\u20dd ', r'').replace(r'\u20dd', r'').strip()
+    return _str.replace('\u202f', r'').replace(r'⃝', r'').translate(TRANS_BUBBLE2TEST)
 
 
 # SQUARE TEXT #
@@ -1436,28 +1531,24 @@ def text2square(_str: str, square_spaces: bool = False) -> str:
     """Convert a plain-text string to square text
 
     >>> text2square('This (str) is a sample test.', True)
-    'T⃞ h⃞ i⃞ s⃞  ⃞ (⃞ s⃞ t⃞ r⃞ )⃞  ⃞ i⃞ s⃞  ⃞ a⃞  ⃞ s⃞ a⃞ m⃞ p⃞ l⃞ e⃞  ⃞ t⃞ e⃞ s⃞ t⃞ .⃞ '
+    'T⃞h⃞i⃞s⃞ ⃞(⃞s⃞t⃞r⃞)⃞ ⃞i⃞s⃞ ⃞a⃞ ⃞s⃞a⃞m⃞p⃞l⃞e⃞ ⃞t⃞e⃞s⃞t⃞.⃞'
     >>> text2square('This (str) is a sample test.')
-    'T⃞ h⃞ i⃞ s⃞   (⃞ s⃞ t⃞ r⃞ )⃞   i⃞ s⃞   a⃞   s⃞ a⃞ m⃞ p⃞ l⃞ e⃞   t⃞ e⃞ s⃞ t⃞ .⃞ '
+    'T⃞h⃞i⃞s⃞  (⃞s⃞t⃞r⃞)⃞  i⃞s⃞  a⃞  s⃞a⃞m⃞p⃞l⃞e⃞  t⃞e⃞s⃞t⃞.⃞'
     >>> text2square('Testing various characters: €, *, Ω, ᾲ, and ⛽.')
-    'T⃞ e⃞ s⃞ t⃞ i⃞ n⃞ g⃞   v⃞ a⃞ r⃞ i⃞ o⃞ u⃞ s⃞   c⃞ h⃞ a⃞ r⃞ a⃞ c⃞ t⃞ e⃞ r⃞ s⃞ :⃞   €⃞ ,⃞   *⃞ ,⃞   Ω⃞ ,⃞   ᾲ⃞ ,⃞   a⃞ n⃞ d⃞   ⛽⃞ .⃞ '
+    'T⃞e⃞s⃞t⃞i⃞n⃞g⃞  v⃞a⃞r⃞i⃞o⃞u⃞s⃞  c⃞h⃞a⃞r⃞a⃞c⃞t⃞e⃞r⃞s⃞:⃞  €⃞,⃞  *⃞,⃞  Ω⃞,⃞  ᾲ⃞,⃞  a⃞n⃞d⃞  ⛽⃞.⃞'
     """
-    _out = r''
-    for i in _str:
-        _out = _out + i + '\u20de '
-    if not square_spaces:
-        return _out.replace(' \u20de', r' ')
-    return _out
+    _str2 = _str.replace('\u202f', r'').strip()
+    return r''.join(i if i == r' ' and not square_spaces else i + '\u20de' for i in _str2)
 
 
 def square2text(_str: str) -> str:
     """Convert square text to a plain-text string
 
-    >>> square2text('T⃞ h⃞ i⃞ s⃞  ⃞ (⃞ s⃞ t⃞ r⃞ )⃞  ⃞ i⃞ s⃞  ⃞ a⃞  ⃞ s⃞ a⃞ m⃞ p⃞ l⃞ e⃞  ⃞ t⃞ e⃞ s⃞ t⃞ .⃞ ')
+    >>> square2text('T⃞h⃞i⃞s⃞ ⃞(⃞s⃞t⃞r⃞)⃞ ⃞i⃞s⃞ ⃞a⃞ ⃞s⃞a⃞m⃞p⃞l⃞e⃞ ⃞t⃞e⃞s⃞t⃞.⃞')
     'This (str) is a sample test.'
-    >>> square2text('T⃞ h⃞ i⃞ s⃞   (⃞ s⃞ t⃞ r⃞ )⃞   i⃞ s⃞   a⃞   s⃞ a⃞ m⃞ p⃞ l⃞ e⃞   t⃞ e⃞ s⃞ t⃞ .⃞ ')
+    >>> square2text('T⃞h⃞i⃞s⃞  (⃞s⃞t⃞r⃞)⃞  i⃞s⃞  a⃞  s⃞a⃞m⃞p⃞l⃞e⃞  t⃞e⃞s⃞t⃞.⃞')
     'This (str) is a sample test.'
-    >>> square2text('T⃞ e⃞ s⃞ t⃞ i⃞ n⃞ g⃞   v⃞ a⃞ r⃞ i⃞ o⃞ u⃞ s⃞   c⃞ h⃞ a⃞ r⃞ a⃞ c⃞ t⃞ e⃞ r⃞ s⃞ :⃞   €⃞ ,⃞   *⃞ ,⃞   Ω⃞ ,⃞   ᾲ⃞ ,⃞   a⃞ n⃞ d⃞   ⛽⃞ .⃞ ')
+    >>> square2text('T⃞e⃞s⃞t⃞i⃞n⃞g⃞  v⃞a⃞r⃞i⃞o⃞u⃞s⃞  c⃞h⃞a⃞r⃞a⃞c⃞t⃞e⃞r⃞s⃞:⃞  €⃞,⃞  *⃞,⃞  Ω⃞,⃞  ᾲ⃞,⃞  a⃞n⃞d⃞  ⛽⃞.⃞')
     'Testing various characters: €, *, Ω, ᾲ, and ⛽.'
     """
-    return _str.replace('\u202f', r'').replace(r'\u202f', r'').replace('\u20de ', r'').replace(r'\u20de', r'').replace(r'  ', r' ')
+    return _str.replace('\u202f', r'').replace(r'⃞', r'').replace(r'  ', r' ')

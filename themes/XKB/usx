@@ -3,7 +3,7 @@
 // kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 // @brief Enhanced & Extended XKB Keyboard Layout (Symbols)
 // @file usx
-// @version 2018.04.27
+// @version 2018.08.22
 // @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 // @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -35,8 +35,8 @@ partial modifier_keys xkb_symbols "modifiers" {
     modifier_map Shift { Shift_L, Shift_R };  // <LFSH>, <RTSH>
     modifier_map Mod1 { Alt_L, Meta_L, Meta_R };  // <ALT>, <LALT>, <META>
     modifier_map Mod2 { Num_Lock };  // <NMLK>
-    modifier_map Mod3 { <HYPR>, Super_L, Super_R };  // <SUPR>, <LWIN>, <RWIN>
-    modifier_map Mod4 { ISO_Level3_Shift };  // <RALT>, <LVL3>
+    modifier_map Mod3 { ISO_Level3_Shift };  // <RALT>, <LVL3>
+    modifier_map Mod4 { <HYPR>, Super_L, Super_R };  // <SUPR>, <LWIN>, <RWIN>
     modifier_map Mod5 { Scroll_Lock };  // <SCLK>, <MDSW>
 };
 
@@ -66,18 +66,18 @@ partial keypad_keys xkb_symbols "keypad" {
 
 partial function_keys xkb_symbols "functionKeys" {
     key.type = "FOUR_LEVEL_FUNCTION";
-    key <FK01> { symbols = [F1, Hyper_L, F13, XF86_Switch_VT_1] };
-    key <FK02> { symbols = [F2, Hyper_R, F14, XF86_Switch_VT_2] };
-    key <FK03> { symbols = [F3, Meta_L, F15, XF86_Switch_VT_3] };
-    key <FK04> { symbols = [F4, Meta_R, F16, XF86_Switch_VT_4] };
-    key <FK05> { symbols = [F5, Super_L, F17, XF86_Switch_VT_5] };
-    key <FK06> { symbols = [F6, Super_R, F18, XF86_Switch_VT_6] };
-    key <FK07> { symbols = [F7, Mode_switch, F19, XF86_Switch_VT_7] };
-    key <FK08> { symbols = [F8, Multi_key, F20, XF86_Switch_VT_8] };
-    key <FK09> { symbols = [F9, Break, F21, XF86_Switch_VT_9] };
-    key <FK10> { symbols = [F10, Pause, F22, XF86_Switch_VT_10] };
-    key <FK11> { symbols = [F11, Sys_Req, F23, XF86_Switch_VT_11] };
-    key <FK12> { symbols = [F12, Linefeed, F24, XF86_Switch_VT_12] };
+    key <FK01> { symbols = [F1, F1, F13, XF86_Switch_VT_1] };
+    key <FK02> { symbols = [F2, F2, F14, XF86_Switch_VT_2] };
+    key <FK03> { symbols = [F3, F3, F15, XF86_Switch_VT_3] };
+    key <FK04> { symbols = [F4, F4, F16, XF86_Switch_VT_4] };
+    key <FK05> { symbols = [F5, F5, F17, XF86_Switch_VT_5] };
+    key <FK06> { symbols = [F6, F6, F18, XF86_Switch_VT_6] };
+    key <FK07> { symbols = [F7, F7, F19, XF86_Switch_VT_7] };
+    key <FK08> { symbols = [F8, F8, F20, XF86_Switch_VT_8] };
+    key <FK09> { symbols = [F9, F9, F21, XF86_Switch_VT_9] };
+    key <FK10> { symbols = [F10, F10, F22, XF86_Switch_VT_10] };
+    key <FK11> { symbols = [F11, F11, F23, XF86_Switch_VT_11] };
+    key <FK12> { symbols = [F12, F12, F24, XF86_Switch_VT_12] };
     // Extended Function Keys
     key <FK13> { type = "ONE_LEVEL", symbols = [F13] };
     key <FK14> { type = "ONE_LEVEL", symbols = [F14] };
@@ -242,12 +242,12 @@ default alphanumeric_keys alternate_group xkb_symbols "default" {
     key <TLDE> { type = "TWO_LEVEL", symbols = [grave, asciitilde] };
     key <AE01> { type = "SIX_LEVEL", symbols = [1, exclam, exclamdown, U2049, U0326, onesuperior] };  // EXCLAMATION QUESTION MARK, COMBINING COMMA BELOW
     key <AE02> { type = "SIX_LEVEL", symbols = [2, at, cedilla, U0323, U030F, twosuperior] };  // COMBINING DOT BELOW, COMBINING DOUBLE GRAVE ACCENT
-    key <AE03> { type = "SIX_LEVEL", symbols = [3, numbersign, U20B9, sterling, U2116, threesuperior] };  // INDIAN RUPEE SIGN, NUMERO SIGN
-    key <AE04> { type = "SIX_LEVEL", symbols = [4, dollar, U00A4, U20BF, yen, foursuperior] };  // CURRENCY SIGN, BITCOIN
-    key <AE05> { type = "SIX_LEVEL", symbols = [5, percent, EuroSign, U00A3, U2030, fivesuperior] };  // POUND SIGN, PER MILLE SIGN
+    key <AE03> { type = "SIX_LEVEL", symbols = [3, numbersign, yen, sterling, U2116, threesuperior] };  // NUMERO SIGN
+    key <AE04> { type = "SIX_LEVEL", symbols = [4, dollar, U00A4, U20BF, NoSymbol, foursuperior] };  // CURRENCY SIGN, BITCOIN
+    key <AE05> { type = "SIX_LEVEL", symbols = [5, percent, EuroSign, diaeresis, U2030, fivesuperior] };  // PER MILLE SIGN
     key <AE06> { type = "SIX_LEVEL", symbols = [6, asciicircum, acute, doubleacute, U0309, sixsuperior] };  // COMBINING HOOK ABOVE
     key <AE07> { type = "SIX_LEVEL", symbols = [7, ampersand, macron, U0314, U0331, sevensuperior] };  // COMBINING MACRON ABOVE, COMBINING MACRON BELOW
-    key <AE08> { type = "SIX_LEVEL", symbols = [8, asterisk, U2042, ogonek, dead_greek, eightsuperior] };  // ASTERISM
+    key <AE08> { type = "SIX_LEVEL", symbols = [8, asterisk, caron, ogonek, dead_greek, eightsuperior] };
     key <AE09> { type = "SIX_LEVEL", symbols = [9, parenleft, U2997, leftsinglequotemark, U031B, ninesuperior] };  // LEFT TORTOISE BRACKET, COMBINING HORN
     key <AE10> { type = "SIX_LEVEL", symbols = [0, parenright, U2998, rightsinglequotemark, U0330, zerosuperior] };  // RIGHT TORTOISE BRACKET, COMBINING TILDE BELOW
     key <AE11> { type = "SIX_LEVEL", symbols = [minus, underscore, U0306, U0311, U0361, fourthroot] };  // COMBINING BREVE, COMBINING INVERTED BREVE, COMBINING DOUBLE INVERTED BREVE
@@ -256,9 +256,9 @@ default alphanumeric_keys alternate_group xkb_symbols "default" {
     key <AD01> { symbols = [q, Q, adiaeresis, Adiaeresis, Cyrillic_shorti, Cyrillic_SHORTI] };
     key <AD02> { symbols = [w, W, aring, Aring, Cyrillic_tse, Cyrillic_TSE] };
     key <AD03> { symbols = [e, E, eacute, Eacute, Cyrillic_u, Cyrillic_U] };
-    key <AD04> { symbols = [r, R, registered, registered, Cyrillic_ka, Cyrillic_KA] };
-    key <AD05> { symbols = [t, T, thorn, THORN, Cyrillic_ie, Cyrillic_IE] };
-    key <AD06> { symbols = [y, Y, udiaeresis, Udiaeresis, Cyrillic_en, Cyrillic_EN] };
+    key <AD04> { symbols = [r, R, registered, U2122, Cyrillic_ka, Cyrillic_KA] };  // Trademark
+    key <AD05> { symbols = [t, T, NoSymbol, NoSymbol, Cyrillic_ie, Cyrillic_IE] };
+    key <AD06> { symbols = [y, Y, ydiaeresis, Ydiaeresis, Cyrillic_en, Cyrillic_EN] };
     key <AD07> { symbols = [u, U, uacute, Uacute, Cyrillic_ghe, Cyrillic_GHE] };
     key <AD08> { symbols = [i, I, iacute, Iacute, Cyrillic_sha, Cyrillic_SHA] };
     key <AD09> { symbols = [o, O, oacute, Oacute, Cyrillic_shcha, Cyrillic_SHCHA] };
@@ -270,25 +270,25 @@ default alphanumeric_keys alternate_group xkb_symbols "default" {
     key <AC01> { symbols = [a, A, aacute, Aacute, Cyrillic_ef, Cyrillic_EF] };
     key <AC02> { symbols = [s, S, ssharp, section, Cyrillic_yeru, Cyrillic_YERU] };
     key <AC03> { symbols = [d, D, eth, ETH, Cyrillic_ve, Cyrillic_VE] };
-    key <AC04> { symbols = [f, F, U2300, U23D6, Cyrillic_a, Cyrillic_A] };  // DIAMETER SIGN, ⏖
-    key <AC05> { symbols = [g, G, Greek_phi, Greek_psi, Cyrillic_pe, Cyrillic_PE] };
-    key <AC06> { symbols = [h, H, ydiaeresis, Ydiaeresis, Cyrillic_er, Cyrillic_ER] };
-    key <AC07> { symbols = [j, J, Greek_lambda, Greek_sigma, Cyrillic_o, Cyrillic_O] };
-    key <AC08> { symbols = [k, K, oe, OE, Cyrillic_el, Cyrillic_EL] };
-    key <AC09> { symbols = [l, L, oslash, Ooblique, Cyrillic_de, Cyrillic_DE] };
+    key <AC04> { symbols = [f, F, U2300, NoSymbol, Cyrillic_a, Cyrillic_A] };  // DIAMETER SIGN
+    key <AC05> { symbols = [g, G, Greek_psi, Greek_phi, Cyrillic_pe, Cyrillic_PE] };
+    key <AC06> { symbols = [h, H, udiaeresis, Udiaeresis, Cyrillic_er, Cyrillic_ER] };
+    key <AC07> { symbols = [j, J, Greek_gamma, Greek_GAMMA, Cyrillic_o, Cyrillic_O] };
+    key <AC08> { symbols = [k, K, Greek_sigma, Greek_SIGMA, Cyrillic_el, Cyrillic_EL] };
+    key <AC09> { symbols = [l, L, Greek_lambda, Greek_LAMBDA, Cyrillic_de, Cyrillic_DE] };
     key <AC10> { type = "SIX_LEVEL", symbols = [semicolon, colon, paragraph, degree, Cyrillic_zhe, Cyrillic_ZHE] };
-    key <AC11> { type = "SIX_LEVEL", symbols = [apostrophe, quotedbl, acute, diaeresis, Cyrillic_e, Cyrillic_E] };
+    key <AC11> { type = "SIX_LEVEL", symbols = [apostrophe, quotedbl, NoSymbol, NoSymbol, Cyrillic_e, Cyrillic_E] };
     // Row 2/B
     key <AB01> { symbols = [z, Z, ae, AE, Cyrillic_ya, Cyrillic_YA] };
-    key <AB02> { symbols = [x, X, Greek_xi, Greek_XI, Cyrillic_che, Cyrillic_CHE] };
+    key <AB02> { symbols = [x, X, NoSymbol, Greek_XI, Cyrillic_che, Cyrillic_CHE] };
     key <AB03> { symbols = [c, C, copyright, cent, Cyrillic_es, Cyrillic_ES] };
     key <AB04> { symbols = [v, V, Greek_OMEGA, Greek_omega, Cyrillic_em, Cyrillic_EM] };
-    key <AB05> { symbols = [b, B, Greek_beta, Greek_gamma, Cyrillic_i, Cyrillic_I] };
-    key <AB06> { symbols = [n, N, ntilde, Ntilde, Cyrillic_te, Cyrillic_TE] };
+    key <AB05> { symbols = [b, B, Greek_beta, Greek_BETA, Cyrillic_i, Cyrillic_I] };
+    key <AB06> { symbols = [n, N, NoSymbol, NoSymbol, Cyrillic_te, Cyrillic_TE] };
     key <AB07> { symbols = [m, M, Greek_mu, Greek_pi, Cyrillic_softsign, Cyrillic_SOFTSIGN] };
     key <AB08> { type = "SIX_LEVEL", symbols = [comma, less, ccedilla, Ccedilla, Cyrillic_be, Cyrillic_BE] };
-    key <AB09> { type = "SIX_LEVEL", symbols = [period, greater, abovedot, caron, Cyrillic_yu, Cyrillic_YU] };
-    key <AB10> { type = "SIX_LEVEL", symbols = [slash, question, questiondown, U1FBF, U030A, U0325] };  // GREEK PSILI, COMBINING RING ABOVE, COMBINING RING BELOW
+    key <AB09> { type = "SIX_LEVEL", symbols = [period, greater, abovedot, NoSymbol, Cyrillic_yu, Cyrillic_YU] };
+    key <AB10> { type = "SIX_LEVEL", symbols = [slash, question, questiondown, NoSymbol, U030A, U0325] };  // GREEK PSILI, COMBINING RING ABOVE, COMBINING RING BELOW
     // Miscellaneous Keys
     key <BKSP> { type = "SIX_LEVEL", symbols = [BackSpace, BackSpace, Undo, Terminate_Server, BackSpace, Cancel] };
     key <DELE> { type = "ONE_LEVEL", symbols = [Delete] };
@@ -305,7 +305,7 @@ default alphanumeric_keys alternate_group xkb_symbols "default" {
     key <PRSC> { type = "RALT_LEVEL2", symbols = [Print, Sys_Req] };
     key <RGHT> { type = "ONE_LEVEL", symbols = [Right] };
     key <RTRN> { type = "SIX_LEVEL", symbols = [Return, Linefeed, cr, ff, vt, U2029] };  // PARAGRAPH SEPARATOR
-    key <SPCE> { type = "SIX_LEVEL", symbols = [space, nobreakspace, U2000, U2001, U2002, U2008] };  // EN QUAD, EM QUAD, EN SPACE, PUNCTUATION SPACE
+    key <SPCE> { type = "SIX_LEVEL", symbols = [space, space, nobreakspace, U2000, U2001, U2002] };  // EN QUAD, EM QUAD, EN SPACE
     key <TAB> { type = "TWO_LEVEL", symbols = [Tab, ISO_Left_Tab] };
     key <UP> { type = "ONE_LEVEL", symbols = [Up] };
     // Extra key on many European keyboards

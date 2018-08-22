@@ -5,7 +5,7 @@
 """@brief View Python Documentation in a Window
 
 @file pydocgtk
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -28,32 +28,59 @@ License along with this software.
 """
 
 
-# pylint: disable=C0103
-
-
 import builtins
 
 from importlib.machinery import EXTENSION_SUFFIXES
 from linecache import cache, checkcache, getlines
 from os.path import abspath, exists, normcase, realpath, splitext
-from re import compile as re_compile, sub
 from signal import SIGINT, SIG_DFL, signal
 from sys import argv, maxsize, modules, exc_info
+from typing import Optional
 from types import BuiltinFunctionType, CodeType, FrameType, FunctionType, MethodType, ModuleType, TracebackType
 
 from gi import require_version
 require_version(r'Gtk', r'3.0')
 from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
+try:  # Regular Expression module
+    from regex import compile as rgxcompile, sub
+except ImportError:
+    from re import compile as rgxcompile, sub
+
 
 signal(SIGINT, SIG_DFL)
+
+
+__all__ = [
+    # EXCEPTIONS #
+    r'ErrorDuringImport',
+    # DATA-RETRIEVING FUNCTIONS #
+    r'getobjfile',
+    r'getabsfile',
+    r'getmodule',
+    r'getsourcefile',
+    r'findsource',
+    # DOCUMENTATION FUNCTIONS #
+    r'finddoc',
+    r'cleandoc',
+    r'getdocclean',
+    r'getdoc',
+    # MISCELLANEOUS FUNCTIONS #
+    r'indentsize',
+    r'findclass',
+    r'getcomments',
+    r'safeimport',
+    r'locate',
+    r'resolve',
+    r'show_help'
+]
 
 
 # CONSTANTS & GLOBALS #
 
 
-modulesbyfile = {}
-_filesbymodname = {}
+MODULESBYFILE = {}
+FILESBYMODNAME = {}
 
 
 # EXCEPTIONS #
@@ -61,37 +88,177 @@ _filesbymodname = {}
 
 class ErrorDuringImport(Exception):
     """Errors that occur while trying to import a module"""
+
     def __init__(self, _filename, _exc_info):
         """Initialize exception"""
         super(ErrorDuringImport, self).__init__(_filename, _exc_info)
         self.filename = _filename
-        self.exc, self.value, self.tb = _exc_info
+        self.exc, self.value, self._tb = _exc_info
 
     def __str__(self):
         """Initialize the exception string"""
         return r'Problem in {0} - {1}: {2}'.format(self.filename, repr(self.exc.__name__), self.value)
 
 
-# FUNCTIONS #
+# DATA-RETRIEVING FUNCTIONS #
 
 
-def indentsize(_line: str) -> int:
-    """Return the indent size (in spaces) at the start of a line of text"""
-    expline = _line.expandtabs()
-    return len(expline) - len(expline.lstrip())
+def getobjfile(_object: object) -> str:  # noqa: C901
+    """Find the file that defines an object"""
+    if isinstance(_object, ModuleType):
+        if hasattr(_object, r'__file__'):
+            return _object.__file__
+        raise TypeError(r'{!r} is a built-in module'.format(_object))
+    elif isinstance(_object, type):
+        if hasattr(_object, r'__module__'):
+            _object = modules.get(_object.__module__)
+            if hasattr(_object, r'__file__'):
+                return _object.__file__
+        raise TypeError(r'{!r} is a built-in class'.format(_object))
+    elif isinstance(_object, MethodType):
+        _object = _object.__func__
+    if isinstance(_object, FunctionType):
+        _object = _object.__code__
+    if isinstance(_object, TracebackType):
+        _object = _object.tb_frame
+    if isinstance(_object, FrameType):
+        _object = _object.f_code
+    if isinstance(_object, CodeType):
+        return _object.co_filename
+    raise TypeError(r'{!r} is not a module, class, method, function, traceback, frame, or code object'.format(_object))
 
 
-def findclass(_func: object) -> object:
-    """Find class object"""
-    cls = modules.get(_func.__module__)
-    if cls is None:
+def getabsfile(_object: object, _filename: Optional[str] = None) -> str:
+    """Return an absolute path to the source or compiled file for an object"""
+    if _filename is None:
+        _filename = getsourcefile(_object) or getobjfile(_object)
+    return normcase(abspath(_filename))
+
+
+def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # noqa: C901  # pylint: disable=R0912
+    """Return the module an object was defined in or `None` if not found"""
+    if isinstance(_object, ModuleType):
+        return _object
+    elif hasattr(_object, r'__module__'):
+        return modules.get(_object.__module__)
+    # Try the filename to modulename cache
+    elif _filename is not None and _filename in MODULESBYFILE:
+        return modules.get(MODULESBYFILE[_filename])
+    # Try the cache again with the absolute file name
+    try:
+        _file = getabsfile(_object, _filename)
+        if _file in MODULESBYFILE:
+            return modules.get(MODULESBYFILE[_file])
+    except TypeError:
         return None
-    for name in _func.__qualname__.split(r'.')[:-1]:
-        cls = getattr(cls, name)
-    return None if not isinstance(cls, type) else cls
+    # Update the filename to module name cache and check yet again
+    for modname, module in list(modules.items()):
+        if isinstance(module, ModuleType) and hasattr(module, r'__file__'):
+            mfile = module.__file__
+            if mfile == FILESBYMODNAME.get(modname, None):
+                continue  # Have already mapped this module, so skip it
+            FILESBYMODNAME[modname] = mfile
+            mfile = getabsfile(module)
+            # Always map to the name the module knows itself by
+            MODULESBYFILE[mfile] = MODULESBYFILE[realpath(mfile)] = module.__name__
+    if _file in MODULESBYFILE:
+        return modules.get(MODULESBYFILE[_file])
+    # Check the main module
+    _main_mod = modules[r'__main__']
+    if not hasattr(_object, r'__name__'):
+        return None
+    elif hasattr(_main_mod, _object.__name__):
+        mainobject = getattr(_main_mod, _object.__name__)
+        if mainobject is _object:
+            return _main_mod
+    # Check builtins
+    builtin = modules[r'builtins']
+    if hasattr(builtin, _object.__name__):
+        builtinobject = getattr(builtin, _object.__name__)
+        if builtinobject is _object:
+            return builtin
+    return None
 
 
-def finddoc(obj: object) -> str or None:  # noqa: C901  # pylint: disable=R0912
+def getsourcefile(_object: object) -> Optional[str]:
+    """Return the filename that can be used to locate an object's source; Return None if the source cannot be found"""
+    filename = getobjfile(_object)
+    if filename.endswith(r'.pyc'):
+        filename = (splitext(filename)[0] + r'.py')
+    elif any(filename.endswith(s) for s in EXTENSION_SUFFIXES):
+        return None
+    if exists(filename):
+        return filename
+    # Only return a non-existent filename if the module has a PEP 302 loader or is in the linecache
+    elif getattr(getmodule(_object, filename), r'__loader__', None) is not None or filename in cache:
+        return filename
+    return None
+
+
+def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
+    """Return the entire source file and starting line number for an object"""
+    _file = getsourcefile(_object)
+    if _file:  # Invalidate cache if needed
+        checkcache(_file)
+    else:
+        _file = getobjfile(_object)
+        # Allow filenames in form of "<something>" to pass through
+        if not (_file.startswith(r'<') and _file.endswith(r'>')):
+            raise OSError(r'Source code not available')
+    module = getmodule(_object, _file)
+    if module:
+        lines = getlines(_file, module.__dict__)
+    else:
+        lines = getlines(_file)
+    del _file
+    if not lines:
+        raise OSError(r'Could not get source code')
+    elif isinstance(_object, ModuleType):
+        return lines, 0
+    elif isinstance(_object, type):
+        name = _object.__name__
+        pat = rgxcompile(r'^(\s*)class\s*' + name + r'\b')
+        # Make some effort to find the best matching class definition
+        candidates = []
+        for _index, single_line in enumerate(lines):
+            match = pat.match(single_line)
+            if match:
+                # If it is at toplevel, it is already the best one
+                if single_line[0] == r'c':
+                    return lines, _index
+                # Else, add whitespace to candidate list
+                candidates.append((match.group(1), _index))
+        if candidates:
+            # Sort by whitespace and by line number (less whitespace first)
+            candidates.sort()
+            return lines, candidates[0][1]
+        else:
+            raise OSError(r'Could not find class definition')
+    elif isinstance(_object, MethodType):
+        _object = _object.__func__
+    if isinstance(_object, FunctionType):
+        _object = _object.__code__
+    if isinstance(_object, TracebackType):
+        _object = _object.tb_frame
+    if isinstance(_object, FrameType):
+        _object = _object.f_code
+    if isinstance(_object, CodeType):
+        if not hasattr(_object, r'co_firstlineno'):
+            raise OSError(r'Could not find function definition')
+        lnum = _object.co_firstlineno - 1
+        pat = rgxcompile(r'^(\s*def\s)|(\s*async\s+def\s)|(.*(?<!\w)lambda(:|\s))|^(\s*@)')
+        while lnum > 0:
+            if pat.match(lines[lnum]):
+                break
+            lnum = lnum - 1
+        return lines, lnum
+    raise OSError(r'Could not find code object')
+
+
+# DOCUMENTATION FUNCTIONS #
+
+
+def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R0912
     """Find object documentation"""
     if isinstance(obj, type):
         for base in obj.__mro__:
@@ -145,7 +312,7 @@ def finddoc(obj: object) -> str or None:  # noqa: C901  # pylint: disable=R0912
     return None
 
 
-def cleandoc(doc: str) -> str or None:
+def cleandoc(doc: str) -> Optional[str]:
     """Clean up indentation from docstrings"""
     try:
         lines = doc.expandtabs().split('\n')
@@ -172,7 +339,7 @@ def cleandoc(doc: str) -> str or None:
     return '\n'.join(lines)
 
 
-def getdocclean(_object: object) -> str or None:
+def getdocclean(_object: object) -> Optional[str]:
     """Get and clean up the documentation string for an object"""
     try:
         doc = _object.__doc__
@@ -186,156 +353,29 @@ def getdocclean(_object: object) -> str or None:
     return None if not isinstance(doc, str) else cleandoc(doc)
 
 
-def getfile(_object: object) -> str:  # noqa: C901
-    """Find the file that defines an object"""
-    if isinstance(_object, ModuleType):
-        if hasattr(_object, r'__file__'):
-            return _object.__file__
-        raise TypeError('{!r} is a built-in module'.format(_object))
-    elif isinstance(_object, type):
-        if hasattr(_object, r'__module__'):
-            _object = modules.get(_object.__module__)
-            if hasattr(_object, r'__file__'):
-                return _object.__file__
-        raise TypeError('{!r} is a built-in class'.format(_object))
-    elif isinstance(_object, MethodType):
-        _object = _object.__func__
-    if isinstance(_object, FunctionType):
-        _object = _object.__code__
-    if isinstance(_object, TracebackType):
-        _object = _object.tb_frame
-    if isinstance(_object, FrameType):
-        _object = _object.f_code
-    if isinstance(_object, CodeType):
-        return _object.co_filename
-    raise TypeError('{!r} is not a module, class, method, function, traceback, frame, or code object'.format(_object))
+def getdoc(_object: object) -> str:
+    """Get the doc string or comments for an object"""
+    result = getdocclean(_object) or getcomments(_object)
+    return sub('^ *\n', r'', result.rstrip()) if result else r''
 
 
-def getabsfile(_object: object, _filename: str or None = None) -> str:
-    """Return an absolute path to the source or compiled file for an object"""
-    if _filename is None:
-        _filename = getsourcefile(_object) or getfile(_object)
-    return normcase(abspath(_filename))
+# MISCELLANEOUS FUNCTIONS #
 
 
-def getmodule(_object: object, _filename: str or None = None) -> object:  # noqa: C901  # pylint: disable=R0912
-    """Return the module an object was defined in or `None` if not found"""
-    if isinstance(_object, ModuleType):
-        return _object
-    elif hasattr(_object, r'__module__'):
-        return modules.get(_object.__module__)
-    # Try the filename to modulename cache
-    elif _filename is not None and _filename in modulesbyfile:
-        return modules.get(modulesbyfile[_filename])
-    # Try the cache again with the absolute file name
-    try:
-        _file = getabsfile(_object, _filename)
-        if _file in modulesbyfile:
-            return modules.get(modulesbyfile[_file])
-    except TypeError:
+def indentsize(_line: str) -> int:
+    """Return the indent size (in spaces) at the start of a line of text"""
+    expline = _line.expandtabs()
+    return len(expline) - len(expline.lstrip())
+
+
+def findclass(_func: object) -> object:
+    """Find class object"""
+    cls = modules.get(_func.__module__)
+    if cls is None:
         return None
-    # Update the filename to module name cache and check yet again
-    for modname, module in list(modules.items()):
-        if isinstance(module, ModuleType) and hasattr(module, r'__file__'):
-            f = module.__file__
-            if f == _filesbymodname.get(modname, None):
-                continue  # Have already mapped this module, so skip it
-            _filesbymodname[modname] = f
-            f = getabsfile(module)
-            # Always map to the name the module knows itself by
-            modulesbyfile[f] = modulesbyfile[realpath(f)] = module.__name__
-    if _file in modulesbyfile:
-        return modules.get(modulesbyfile[_file])
-    # Check the main module
-    _main_mod = modules[r'__main__']
-    if not hasattr(_object, r'__name__'):
-        return None
-    elif hasattr(_main_mod, _object.__name__):
-        mainobject = getattr(_main_mod, _object.__name__)
-        if mainobject is _object:
-            return _main_mod
-    # Check builtins
-    builtin = modules[r'builtins']
-    if hasattr(builtin, _object.__name__):
-        builtinobject = getattr(builtin, _object.__name__)
-        if builtinobject is _object:
-            return builtin
-    return None
-
-
-def getsourcefile(_object: object) -> str or None:
-    """Return the filename that can be used to locate an object's source; Return None if the source cannot be found"""
-    filename = getfile(_object)
-    if filename.endswith(r'.pyc'):
-        filename = (splitext(filename)[0] + r'.py')
-    elif any(filename.endswith(s) for s in EXTENSION_SUFFIXES):
-        return None
-    if exists(filename):
-        return filename
-    # Only return a non-existent filename if the module has a PEP 302 loader or is in the linecache
-    elif getattr(getmodule(_object, filename), r'__loader__', None) is not None or filename in cache:
-        return filename
-    return None
-
-
-def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
-    """Return the entire source file and starting line number for an object"""
-    _file = getsourcefile(_object)
-    if _file:  # Invalidate cache if needed
-        checkcache(_file)
-    else:
-        _file = getfile(_object)
-        # Allow filenames in form of "<something>" to pass through
-        if not (_file.startswith(r'<') and _file.endswith(r'>')):
-            raise OSError(r'Source code not available')
-    module = getmodule(_object, _file)
-    if module:
-        lines = getlines(_file, module.__dict__)
-    else:
-        lines = getlines(_file)
-    del _file
-    if not lines:
-        raise OSError(r'Could not get source code')
-    elif isinstance(_object, ModuleType):
-        return lines, 0
-    elif isinstance(_object, type):
-        name = _object.__name__
-        pat = re_compile(r'^(\s*)class\s*' + name + r'\b')
-        # Make some effort to find the best matching class definition
-        candidates = []
-        for _index, single_line in enumerate(lines):
-            match = pat.match(single_line)
-            if match:
-                # If it is at toplevel, it is already the best one
-                if single_line[0] == r'c':
-                    return lines, _index
-                # Else, add whitespace to candidate list
-                candidates.append((match.group(1), _index))
-        if candidates:
-            # Sort by whitespace and by line number (less whitespace first)
-            candidates.sort()
-            return lines, candidates[0][1]
-        else:
-            raise OSError(r'Could not find class definition')
-    elif isinstance(_object, MethodType):
-        _object = _object.__func__
-    if isinstance(_object, FunctionType):
-        _object = _object.__code__
-    if isinstance(_object, TracebackType):
-        _object = _object.tb_frame
-    if isinstance(_object, FrameType):
-        _object = _object.f_code
-    if isinstance(_object, CodeType):
-        if not hasattr(_object, r'co_firstlineno'):
-            raise OSError(r'Could not find function definition')
-        lnum = _object.co_firstlineno - 1
-        pat = re_compile(r'^(\s*def\s)|(\s*async\s+def\s)|(.*(?<!\w)lambda(:|\s))|^(\s*@)')
-        while lnum > 0:
-            if pat.match(lines[lnum]):
-                break
-            lnum = lnum - 1
-        return lines, lnum
-    raise OSError(r'Could not find code object')
+    for name in _func.__qualname__.split(r'.')[:-1]:
+        cls = getattr(cls, name)
+    return None if not isinstance(cls, type) else cls
 
 
 def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disable=R0912
@@ -350,7 +390,7 @@ def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disabl
         if lines and lines[0][:2] == r'#!':
             start = 1
         while start < len(lines) and lines[start].strip() in (r'', r'#'):
-            start = start + 1
+            start += 1
         if start < len(lines) and lines[start][:1] == r'#':
             comments = []
             end = start
@@ -365,11 +405,11 @@ def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disabl
         if end >= 0 and lines[end].lstrip()[:1] == r'#' and indentsize(lines[end]) == indent:
             comments = [lines[end].expandtabs().lstrip()]
             if end > 0:
-                end = end - 1
+                end -= 1
                 comment = lines[end].expandtabs().lstrip()
                 while comment[:1] == r'#' and indentsize(lines[end]) == indent:
                     comments[:0] = [comment]
-                    end = end - 1
+                    end -= 1
                     if end < 0:
                         break
                     comment = lines[end].expandtabs().lstrip()
@@ -381,13 +421,7 @@ def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disabl
     return None
 
 
-def getdoc(_object: object) -> str:
-    """Get the doc string or comments for an object"""
-    result = getdocclean(_object) or getcomments(_object)
-    return sub('^ *\n', r'', result.rstrip()) if result else r''
-
-
-def safeimport(_path: str) -> object or None:
+def safeimport(_path: str) -> Optional[object]:
     """Import a module and handle errors; Return `None` if the module is not found
 
     If the module is found, but an exception occurs, it is wrapped in an
@@ -397,22 +431,17 @@ def safeimport(_path: str) -> object or None:
     """
     try:
         module = __import__(_path)
-    except ImportError:
-        # Did the error occur before or after the module was found?
+    except ImportError:  # Did the error occur before or after the module was found?
         info = exc_info()
         exc = info[0]
         value = info[1]
-        if _path in modules:
-            # An error occurred while executing the imported module
+        if _path in modules:  # An error occurred while executing the imported module
             raise ErrorDuringImport(modules[_path].__file__, info)
-        elif exc is SyntaxError:
-            # A SyntaxError occurred before the module executed
+        elif exc is SyntaxError:  # A SyntaxError occurred before the module executed
             raise ErrorDuringImport(value.filename, info)
-        elif exc is ImportError and value.name == _path:
-            # No such module in the path
+        elif exc is ImportError and value.name == _path:  # No such module in the path
             return None
-        else:
-            # Some other error occurred during the importing process
+        else:  # Some other error occurred during the importing process
             raise ErrorDuringImport(_path, exc_info())
     for part in _path.split(r'.')[1:]:
         try:
@@ -422,20 +451,20 @@ def safeimport(_path: str) -> object or None:
     return module
 
 
-def locate(_path: str) -> object or None:
+def locate(_path: str) -> Optional[object]:
     """Locate an object by name or dotted path, importing as necessary"""
     parts = [part for part in _path.split(r'.') if part]
     module = None
-    n = 0
-    while n < len(parts):
-        nextmodule = safeimport(r'.'.join(parts[:n + 1]))
+    i = 0
+    while i < len(parts):
+        nextmodule = safeimport(r'.'.join(parts[:i + 1]))
         if nextmodule:
             module = nextmodule
-            n = n + 1
+            i += 1
         else:
             break
     _object = module if module else builtins
-    for part in parts[n:]:
+    for part in parts[i:]:
         try:
             _object = getattr(_object, part)
         except AttributeError:
@@ -443,7 +472,7 @@ def locate(_path: str) -> object or None:
     return _object
 
 
-def resolve(thing: object) -> tuple or None:
+def resolve(thing: object) -> Optional[tuple]:
     """Given an object or a path to an object, get the object and its name"""
     if isinstance(thing, str):
         _object = locate(thing)
@@ -454,48 +483,45 @@ def resolve(thing: object) -> tuple or None:
     return thing, name if isinstance(name, str) else None
 
 
-def main():
-    """Main entry point for PyDocGTK"""
-    def show_help(displaytext: str) -> None:
-        """GTK window for PyDocGTK"""
-        window = Gtk.Window(
-            type=Gtk.WindowType.TOPLEVEL,
-            title=r'PyDocGTK',
-            default_width=500,
-            default_height=400
-        )
-        window.set_skip_taskbar_hint(False)
-        window.set_skip_pager_hint(False)
-        window.set_decorated(True)
-        window.connect(r'key-press-event', lambda a, b: Gtk.main_quit())
-        window.connect(r'destroy', Gtk.main_quit)
-        textbuffer = Gtk.TextBuffer()
-        textbuffer.set_text(displaytext)
-        textview = Gtk.TextView(buffer=textbuffer)
-        textview.set_wrap_mode(Gtk.WrapMode.WORD)
-        textview.set_editable(False)
-        textview.set_cursor_visible(False)
-        scroll = Gtk.ScrolledWindow()
-        scroll.set_shadow_type(Gtk.ShadowType.OUT)
-        scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        scroll.add(textview)
-        window.add(scroll)
-        window.show_all()
-        Gtk.main()
+def show_help(displaytext: str) -> None:
+    """GTK window for PyDocGTK"""
+    window = Gtk.Window(
+        default_height=400,
+        default_width=500,
+        title=r'PyDocGTK',
+        type=Gtk.WindowType.TOPLEVEL
+    )
+    window.set_skip_taskbar_hint(False)
+    window.set_skip_pager_hint(False)
+    window.set_decorated(True)
+    window.connect(r'key-press-event', Gtk.main_quit)
+    window.connect(r'destroy', Gtk.main_quit)
+    textbuffer = Gtk.TextBuffer()
+    textbuffer.set_text(displaytext)
+    textview = Gtk.TextView(buffer=textbuffer)
+    textview.set_wrap_mode(Gtk.WrapMode.WORD)
+    textview.set_editable(False)
+    textview.set_cursor_visible(False)
+    scroll = Gtk.ScrolledWindow()
+    scroll.set_shadow_type(Gtk.ShadowType.OUT)
+    scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+    scroll.add(textview)
+    window.add(scroll)
+    window.show_all()
+    Gtk.main()
+
+
+if __name__ == '__main__':
     try:
-        _word = str(argv[1]).strip()
+        INPUT = str(argv[1]).strip()
     except IndexError:
         show_help('Wrong Usage!\nUsage: pydocgtk NAME')
         raise SystemExit(1)
     try:
-        show_help(getdoc(resolve(_word)[0]))
+        show_help(getdoc(resolve(INPUT)[0]))
     except ImportError:
-        show_help(r'No Python documentation found for `{0}`.'.format(_word))
+        show_help(r'No Python documentation found for `{0}`.'.format(INPUT))
     except BaseException:
-        show_help('An error occurred.\nNo Python documentation found for `{0}`.'.format(_word))
+        show_help('An error occurred.\nNo Python documentation found for `{0}`.'.format(INPUT))
         raise SystemExit(1)
-
-
-if __name__ == '__main__':
-    main()
     raise SystemExit()

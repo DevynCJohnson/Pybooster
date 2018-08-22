@@ -1,0 +1,208 @@
+# format=tagmanager
+__GNU_LIBOBJC__Ã65536÷0
+__nxconstantstring_INCLUDE_GNUÃ65536÷0
+__objc_decls_INCLUDE_GNUÃ65536÷0
+__objc_INCLUDE_GNUÃ65536÷0
+__objc_message_INCLUDE_GNUÃ65536÷0
+__objc_msg_forward2Ã1024Õ(id, SEL)÷0œobjc_EXPORT
+__objc_msg_forwardÃ1024Õ(SEL)÷0œobjc_EXPORT
+__objc_runtime_INCLUDE_GNUÃ65536÷0
+__objc_sync_INCLUDE_GNUÃ65536÷0
+__object_INCLUDE_GNUÃ65536÷0
+__Protocol_INCLUDE_GNUÃ65536÷0
+_C_ARY_BÃ65536÷0
+_C_ARY_EÃ65536÷0
+_C_ATOMÃ65536÷0
+_C_BFLDÃ65536÷0
+_C_BOOLÃ65536÷0
+_C_BYCOPYÃ65536÷0
+_C_BYREFÃ65536÷0
+_C_CHARPTRÃ65536÷0
+_C_CHRÃ65536÷0
+_C_CLASSÃ65536÷0
+_C_COMPLEXÃ65536÷0
+_C_CONSTÃ65536÷0
+_C_DBLÃ65536÷0
+_C_FLTÃ65536÷0
+_C_GCINVISIBLEÃ65536÷0
+_C_IDÃ65536÷0
+_C_INOUTÃ65536÷0
+_C_INTÃ65536÷0
+_C_INÃ65536÷0
+_C_LNG_DBLÃ65536÷0
+_C_LNG_LNGÃ65536÷0
+_C_LNGÃ65536÷0
+_C_ONEWAYÃ65536÷0
+_C_OUTÃ65536÷0
+_C_PTRÃ65536÷0
+_C_SELÃ65536÷0
+_C_SHTÃ65536÷0
+_C_STRUCT_BÃ65536÷0
+_C_STRUCT_EÃ65536÷0
+_C_UCHRÃ65536÷0
+_C_UINTÃ65536÷0
+_C_ULNG_LNGÃ65536÷0
+_C_ULNGÃ65536÷0
+_C_UNDEFÃ65536÷0
+_C_UNION_BÃ65536÷0
+_C_UNION_EÃ65536÷0
+_C_USHTÃ65536÷0
+_C_VECTORÃ65536÷0
+_C_VOIDÃ65536÷0
+_F_BYCOPYÃ65536÷0
+_F_BYREFÃ65536÷0
+_F_CONSTÃ65536÷0
+_F_GCINVISIBLEÃ65536÷0
+_F_INOUTÃ65536÷0
+_F_INÃ65536÷0
+_F_ONEWAYÃ65536÷0
+_F_OUTÃ65536÷0
+_objc_load_callbackÃ1024Õ(Class _class, struct objc_category *category)÷0œobjc_EXPORT void
+anObjectÃ16384÷0œid
+anon_enum_0Ã2÷0
+BOOLÃ4096÷0œchar
+BOOLÃ65536÷0
+CategoryÃ4096÷0œobjc_category
+class_addIvarÃ1024Õ(Class class_, const char * ivar_name, size_t size, unsigned char log_2_of_alignment, const char *type)÷0œobjc_EXPORT
+class_addMethodÃ1024Õ(Class class_, SEL selector, IMP implementation, const char *method_types)÷0œobjc_EXPORT
+class_addProtocolÃ1024Õ(Class class_, Protocol *protocol)÷0œobjc_EXPORT
+class_conformsToProtocolÃ1024Õ(Class class_, Protocol *protocol)÷0œobjc_EXPORT
+class_copyIvarListÃ1024Õ(Class class_, unsigned int *numberOfReturnedIvars)÷0œobjc_EXPORT *
+class_copyMethodListÃ1024Õ(Class class_, unsigned int *numberOfReturnedMethods)÷0œobjc_EXPORT *
+class_copyPropertyListÃ1024Õ(Class class_, unsigned int *numberOfReturnedProperties)÷0œobjc_EXPORT *
+class_copyProtocolListÃ1024Õ(Class class_, unsigned int *numberOfReturnedProtocols)÷0œobjc_EXPORT * *
+class_createInstanceÃ1024Õ(Class class_, size_t extraBytes)÷0œobjc_EXPORT
+class_getClassMethodÃ1024Õ(Class class_, SEL selector)÷0œobjc_EXPORT
+class_getClassVariableÃ1024Õ(Class class_, const char *name)÷0œobjc_EXPORT
+class_getInstanceMethodÃ1024Õ(Class class_, SEL selector)÷0œobjc_EXPORT
+class_getInstanceSizeÃ1024Õ(Class class_)÷0œobjc_EXPORT
+class_getInstanceVariableÃ1024Õ(Class class_, const char *name)÷0œobjc_EXPORT
+class_getIvarLayoutÃ1024Õ(Class class_)÷0œobjc_EXPORT const char *
+class_getMethodImplementationÃ1024Õ(Class class_, SEL selector)÷0œobjc_EXPORT
+class_getNameÃ1024Õ(Class class_)÷0œobjc_EXPORT const char *
+class_getPropertyÃ1024Õ(Class class_, const char *propertyName)÷0œobjc_EXPORT
+class_getSuperclassÃ1024Õ(Class class_)÷0œobjc_EXPORT
+class_getVersionÃ1024Õ(Class class_)÷0œobjc_EXPORT int
+class_getWeakIvarLayoutÃ1024Õ(Class class_)÷0œobjc_EXPORT const char *
+class_isMetaClassÃ1024Õ(Class class_)÷0œobjc_EXPORT
+class_ivar_set_gcinvisibleÃ1024Õ(Class _class, const char* ivarname, BOOL gcInvisible)÷0œobjc_EXPORT void
+class_pointerÃ64Œobjc_object÷0œClass
+class_replaceMethodÃ1024Õ(Class class_, SEL selector, IMP implementation, const char *method_types)÷0œobjc_EXPORT
+class_respondsToSelectorÃ1024Õ(Class class_, SEL selector)÷0œobjc_EXPORT
+class_setIvarLayoutÃ1024Õ(Class class_, const char *layout)÷0œobjc_EXPORT void
+class_setVersionÃ1024Õ(Class class_, int version)÷0œobjc_EXPORT void
+class_setWeakIvarLayoutÃ1024Õ(Class class_, const char *layout)÷0œobjc_EXPORT void
+classÃ16384÷0œClass
+ClassÃ4096÷0œobjc_class
+cStringÃ16384÷0œchar
+idÃ4096÷0œobjc_object
+IMPÃ4096÷0œtypedef id
+ivar_getNameÃ1024Õ(Ivar variable)÷0œobjc_EXPORT const char *
+ivar_getOffsetÃ1024Õ(Ivar variable)÷0œobjc_EXPORT
+ivar_getTypeEncodingÃ1024Õ(Ivar variable)÷0œobjc_EXPORT const char *
+IvarÃ4096÷0œobjc_ivar
+method_copyArgumentTypeÃ1024Õ(Method method, unsigned int argumentNumber)÷0œobjc_EXPORT char *
+method_copyReturnTypeÃ1024Õ(Method method)÷0œobjc_EXPORT char *
+method_exchangeImplementationsÃ1024Õ(Method method_a, Method method_b)÷0œobjc_EXPORT void
+method_getArgumentTypeÃ1024Õ(Method method, unsigned int argumentNumber, char *returnValue, size_t returnValueSize)÷0œobjc_EXPORT void
+method_getDescriptionÃ1024Õ(Method method)÷0œobjc_EXPORT struct *
+method_getImplementationÃ1024Õ(Method method)÷0œobjc_EXPORT
+method_getNameÃ1024Õ(Method method)÷0œobjc_EXPORT
+method_getNumberOfArgumentsÃ1024Õ(Method method)÷0œobjc_EXPORT unsigned int
+method_getReturnTypeÃ1024Õ(Method method, char *returnValue, size_t returnValueSize)÷0œobjc_EXPORT void
+method_getTypeEncodingÃ1024Õ(Method method)÷0œobjc_EXPORT const char *
+method_setImplementationÃ1024Õ(Method method, IMP implementation)÷0œobjc_EXPORT
+MethodÃ4096÷0œobjc_method
+nameÃ64Œobjc_method_description÷0œSEL
+NilÃ65536÷0
+nilÃ65536÷0
+NOÃ65536÷0
+objc_aligned_sizeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
+objc_alignof_typeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
+objc_allocateClassPairÃ1024Õ(Class super_class, const char *class_name, size_t extraBytes)÷0œobjc_EXPORT
+objc_atomic_mallocÃ1024Õ(size_t size)÷0œobjc_EXPORT void *
+objc_callocÃ1024Õ(size_t nelem, size_t size)÷0œobjc_EXPORT void *
+objc_copyProtocolListÃ1024Õ(unsigned int *numberOfReturnedProtocols)÷0œobjc_EXPORT * *
+objc_DECLAREÃ65536÷0
+objc_disposeClassPairÃ1024Õ(Class class_)÷0œobjc_EXPORT void
+objc_enumerationMutationÃ1024Õ(id collection)÷0œobjc_EXPORT void
+objc_EXPORTÃ65536÷0
+objc_freeÃ1024Õ(void *mem)÷0œobjc_EXPORT void
+objc_get_type_qualifiersÃ1024Õ(const char *type)÷0œobjc_EXPORT unsigned
+objc_get_unknown_class_handlerÃ4096÷0œtypedef Class
+objc_getClassListÃ1024Õ(Class *returnValue, int maxNumberOfClassesToReturn)÷0œobjc_EXPORT int
+objc_getClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
+objc_getMetaClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
+objc_getProtocolÃ1024Õ(const char *name)÷0œobjc_EXPORT *
+objc_getRequiredClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
+objc_layout_finish_structureÃ1024Õ(struct objc_struct_layout *layout, unsigned int *size, unsigned int *align)÷0œobjc_EXPORT void
+objc_layout_structure_get_infoÃ1024Õ(struct objc_struct_layout *layout, unsigned int *offset, unsigned int *align, const char **type)÷0œobjc_EXPORT void
+objc_layout_structure_next_memberÃ1024Õ(struct objc_struct_layout *layout)÷0œobjc_EXPORT
+objc_layout_structureÃ1024Õ(const char *type, struct objc_struct_layout *layout)÷0œobjc_EXPORT void
+objc_lookUpClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
+objc_mallocÃ1024Õ(size_t size)÷0œobjc_EXPORT void *
+objc_method_descriptionÃ2048÷0
+objc_msg_lookup_superÃ1024Õ(struct objc_super *super, SEL sel)÷0œobjc_EXPORT
+objc_objectÃ2048÷0
+objc_promoted_sizeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
+objc_property_tÃ4096÷0œobjc_property
+objc_reallocÃ1024Õ(void *mem, size_t size)÷0œobjc_EXPORT void *
+objc_registerClassPairÃ1024Õ(Class class_)÷0œobjc_EXPORT void
+objc_setEnumerationMutationHandlerÃ1024Õ(void (*handler)(id))÷0œobjc_EXPORT void
+objc_setGetUnknownClassHandlerÃ1024Õ(objc_get_unknown_class_handler new_handler)÷0œobjc_EXPORT
+objc_sizeof_typeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
+objc_skip_argspecÃ1024Õ(const char *type)÷0œobjc_EXPORT const char *
+objc_skip_offsetÃ1024Õ(const char *type)÷0œobjc_EXPORT const char *
+objc_skip_type_qualifiersÃ1024Õ(const char *type)÷0œobjc_EXPORT const char *
+objc_skip_typespecÃ1024Õ(const char *type)÷0œobjc_EXPORT const char *
+objc_struct_layoutÃ2048÷0
+objc_superÃ2048÷0
+objc_sync_enterÃ1024Õ(id object)÷0œobjc_EXPORT int
+objc_sync_exitÃ1024Õ(id object)÷0œobjc_EXPORT int
+OBJC_SYNC_NOT_INITIALIZEDÃ4Œanon_enum_0÷0
+OBJC_SYNC_NOT_OWNING_THREAD_ERRORÃ4Œanon_enum_0÷0
+OBJC_SYNC_SUCCESSÃ4Œanon_enum_0÷0
+OBJC_SYNC_TIMED_OUTÃ4Œanon_enum_0÷0
+object_copyÃ1024Õ(id object, size_t extraBytes)÷0œobjc_EXPORT
+object_disposeÃ1024Õ(id object)÷0œobjc_EXPORT
+object_getClassNameÃ1024Õ(id object)÷0œobjc_EXPORT const char *
+object_getClassÃ16Õ(id object)÷0œinline
+object_getIndexedIvarsÃ1024Õ(id object)÷0œobjc_EXPORT void *
+object_getInstanceVariableÃ1024Õ(id object, const char *name, void **returnValue)÷0œobjc_EXPORT
+object_getIvarÃ1024Õ(id object, Ivar variable)÷0œobjc_EXPORT
+object_setClassÃ1024Õ(id object, Class class_)÷0œobjc_EXPORT
+object_setInstanceVariableÃ1024Õ(id object, const char *name, void *newValue)÷0œobjc_EXPORT
+object_setIvarÃ1024Õ(id object, Ivar variable, id value)÷0œobjc_EXPORT void
+opÃ32768÷0œobjc_msg_lookup
+original_typeÃ64Œobjc_struct_layout÷0œchar
+prev_typeÃ64Œobjc_struct_layout÷0œchar
+property_getAttributesÃ1024Õ(Property property)÷0œobjc_EXPORT const char *
+property_getNameÃ1024Õ(Property property)÷0œobjc_EXPORT const char *
+PropertyÃ4096÷0œobjc_property
+protocol_conformsToProtocolÃ1024Õ(Protocol *protocol, Protocol *anotherProtocol)÷0œobjc_EXPORT
+protocol_copyMethodDescriptionListÃ1024Õ(Protocol *protocol, BOOL requiredMethod, BOOL instanceMethod, unsigned int *numberOfReturnedMethods)÷0œobjc_EXPORT struct *
+protocol_copyPropertyListÃ1024Õ(Protocol *protocol, unsigned int *numberOfReturnedProperties)÷0œobjc_EXPORT *
+protocol_copyProtocolListÃ1024Õ(Protocol *protocol, unsigned int *numberOfReturnedProtocols)÷0œobjc_EXPORT * *
+protocol_getMethodDescriptionÃ1024Õ(Protocol *protocol, SEL selector, BOOL requiredMethod, BOOL instanceMethod)÷0œobjc_EXPORT struct
+protocol_getNameÃ1024Õ(Protocol *protocol)÷0œobjc_EXPORT const char *
+protocol_getPropertyÃ1024Õ(Protocol *protocol, const char *propertyName, BOOL requiredProperty, BOOL instanceProperty)÷0œobjc_EXPORT
+protocol_isEqualÃ1024Õ(Protocol *protocol, Protocol *anotherProtocol)÷0œobjc_EXPORT
+ProtocolÃ16384÷0œ@class
+ProtocolÃ4096÷0œobjc_object
+receiverÃ32768÷0œobjc_msg_lookup
+record_alignÃ64Œobjc_struct_layout÷0œint
+record_sizeÃ64Œobjc_struct_layout÷0œint
+sel_copyTypedSelectorListÃ1024Õ(const char *name, unsigned int *numberOfReturnedSelectors)÷0œobjc_EXPORT *
+sel_getNameÃ1024Õ(SEL selector)÷0œobjc_EXPORT const char *
+sel_getTypedSelectorÃ1024Õ(const char *name)÷0œobjc_EXPORT
+sel_getTypeEncodingÃ1024Õ(SEL selector)÷0œobjc_EXPORT const char *
+sel_getUidÃ1024Õ(const char *name)÷0œobjc_EXPORT
+sel_isEqualÃ1024Õ(SEL first_selector, SEL second_selector)÷0œobjc_EXPORT
+sel_registerNameÃ1024Õ(const char *name)÷0œobjc_EXPORT
+sel_registerTypedNameÃ1024Õ(const char *name, const char *type)÷0œobjc_EXPORT
+selfÃ64Œobjc_super÷0œid
+SELÃ4096÷0œobjc_selector
+super_classÃ64Œobjc_super÷0œClass
+typesÃ64Œobjc_method_description÷0œchar
+typeÃ64Œobjc_struct_layout÷0œchar
+YESÃ65536÷0

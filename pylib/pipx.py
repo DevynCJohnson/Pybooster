@@ -6,7 +6,7 @@
 
 @file pipx.py
 @package pybooster.pipx
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,7 +29,7 @@ along with this softwa
 """
 
 
-from subprocess import getoutput
+from subprocess import getoutput  # nosec
 
 from pip import main as pipmain
 
@@ -45,9 +45,9 @@ __all__ = [
     r'listinstalled',
     r'listoutdated',
     r'listcurrent',
+    r'numpkg',
     r'pkginfo',
-    r'pkgsearch',
-    r'numpkg'
+    r'pkgsearch'
 ]
 
 
@@ -68,18 +68,22 @@ def listinstalled() -> str:
 
 def listoutdated() -> str:
     """List outdated PIP packages"""
-    results = getoutput(r'pip list -o')
-    results = sub(r'Could not(.+)\n', '', results, flags=M)
+    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -o'), flags=M)
     results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
     return results
 
 
 def listcurrent() -> str:
     """List up-to-dated PIP packages"""
-    results = getoutput(r'pip list -u')
-    results = sub(r'Could not(.+)\n', '', results, flags=M)
+    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -u'), flags=M)
     results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
     return results
+
+
+def numpkg() -> int:
+    """Return the number of installed PIP packages"""
+    results = getoutput(r'pip list')
+    return len(results.split('\n'))
 
 
 def pkginfo(package: str) -> str:
@@ -90,9 +94,3 @@ def pkginfo(package: str) -> str:
 def pkgsearch(keyword: str) -> str:
     """Search the database by keyword"""
     return getoutput(r'pip search ' + keyword)
-
-
-def numpkg() -> int:
-    """Return the number of installed PIP packages"""
-    results = getoutput(r'pip list')
-    return len(results.split('\n'))

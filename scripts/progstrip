@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Strip unneccesary symbols from the binary executable of programs
 # @file progstrip
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -28,6 +28,7 @@ else
         printf '%s\n' "ERROR: ${_program} is not a binary executable!" >&2
         exit 1
     fi
+    strip --strip-debug --strip-unneeded --discard-locals --remove-section=.bss --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr "$_program"
 fi
 
 

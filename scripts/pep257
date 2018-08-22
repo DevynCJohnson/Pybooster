@@ -6,21 +6,21 @@
 """@brief PEP257 compliance checker (script wrapper)
 
 @file pep257
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
 
 
 from re import sub
-from sys import argv, exit as sysexit
+from sys import argv
 
 try:
     from pydocstyle.cli import main
 except ImportError:
-    from pep257 import main
+    from pep257 import main  # noqa: Z009
 
 
 if __name__ == '__main__':
     argv[0] = sub(r'(-script\.pyw?|\.exe)?$', r'', argv[0])
-    sysexit(main())
+    raise SystemExit(main())

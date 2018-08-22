@@ -6,7 +6,7 @@
 
 @file convmass.py
 @package pybooster.convmass
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,6 +29,9 @@ along with this software.
 """
 
 
+from typing import Union
+
+
 __all__ = [
     # KILOGRAMS #
     r'kilogram2pound'
@@ -38,6 +41,6 @@ __all__ = [
 # KILOGRAMS #
 
 
-def kilogram2pound(_mass: int or float, _round: int = 3) -> float:
+def kilogram2pound(_mass: Union[float, int], _round: int = 3) -> float:
     """Kilograms -> Pounds"""
     return round(_mass * 2.2046, _round)

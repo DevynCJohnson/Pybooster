@@ -6,7 +6,7 @@
 
 @file astronomy.py
 @package pybooster.astronomy
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

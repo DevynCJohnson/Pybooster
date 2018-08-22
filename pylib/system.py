@@ -6,7 +6,7 @@
 
 @file system.py
 @package pybooster.system
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -60,7 +60,8 @@ __all__ = [
     # SYSTEM INFO #
     r'idsys',
     # MISCELLANEOUS SYSTEM FUNCTIONS #
-    r'which'
+    r'which',
+    r'is_program_aval'
 ]
 
 
@@ -172,24 +173,11 @@ def cintsize() -> int:
 
 def idsys() -> None:
     """Identify system and display specific info"""
-    def _spinfo() -> None or str:
-        """Specific system info"""
-        _platsys = platform.system().lower()
-        if _platsys == r'windows':
-            return platform.win32_ver()
-        elif _platsys == r'linux':
-            return _platsys
-        elif _platsys == r'java':
-            return platform.java_ver()
-        elif _platsys in (r'darwin', r'mac', r'osx', r'macosx'):
-            return platform.mac_ver()
-        return None
     stdout.write(
         'Byteorder:          {}\n'
         'System Name:        {}\n'
         'System Release:     {}\n'
         'Release Version:    {}\n'
-        'Release Info:       {}\n'
         'Platform:           {}\n'
         'Machine Type:       {}\n'
         'Processor Name:     {}\n'
@@ -201,7 +189,6 @@ def idsys() -> None:
             platform.system(),
             platform.release(),
             platform.version(),
-            _spinfo(),
             platform.platform(),
             platform.machine(),
             platform.processor(),
@@ -221,8 +208,7 @@ def which(program: str) -> str:
 
     An empty string is returned if the program does not exist
     """
-    fpath = path.split(program)[0]
-    if fpath and path.isfile(program) and access(program, X_OK):
+    if path.split(program)[0] and path.isfile(program) and access(program, X_OK):
         return program
     envpath = environ[r'PATH'].split(pathsep)
     for filepath in envpath:
@@ -230,3 +216,15 @@ def which(program: str) -> str:
         if path.isfile(exe_file) and access(exe_file, X_OK):
             return exe_file
     return r''
+
+
+def is_program_aval(program: str) -> bool:
+    """Return `True` if the path of the specified application exists, otherwise, return `False`"""
+    if path.split(program)[0] and path.isfile(program) and access(program, X_OK):
+        return True
+    envpath = environ[r'PATH'].split(pathsep)
+    for filepath in envpath:
+        exe_file = path.join(filepath.strip(r'"'), program)
+        if path.isfile(exe_file) and access(exe_file, X_OK):
+            return True
+    return False

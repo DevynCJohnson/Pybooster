@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Recreate GRUB's entries and the Linux kernel's module-list
 # @file refreshgrub
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,7 +13,7 @@ if [ ! "$(id -u)" -eq 0 ]; then
     exec sudo -- "$0"
 else
     if [ -x "$(command -v depmod)" ] && [ -x "$(command -v update-initramfs)" ] && [ -x "$(command -v update-grub2)" ]; then
-        depmod -av && update-initramfs -uv && update-grub2
+        depmod -a -v && update-initramfs -u -v && update-grub2
         exit $?
     else
         printf 'ERROR: depmod, update-initramfs, and update-grub2 are required!\n' >&2

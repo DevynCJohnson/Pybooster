@@ -6,7 +6,7 @@
 
 @file metric.py
 @package pybooster.metric
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,7 +29,10 @@ along with this software.
 """
 
 
-from re import sub as resub
+try:  # Regular Expression module
+    from regex import sub as resub
+except ImportError:
+    from re import sub as resub
 
 
 __all__ = [
@@ -66,64 +69,64 @@ __all__ = [
 # CONSTANTS #
 
 
-YOCTO_UNITS = (r'ym', r'yV', r'yA', r'yΩ')
+YOCTO_UNITS = (r'ym', r'yV', r'yA', 'y\u03A9')
 
 
-ZEPTO_UNITS = (r'zm', r'zV', r'zA', r'zΩ')
+ZEPTO_UNITS = (r'zm', r'zV', r'zA', 'z\u03A9')
 
 
-ATTO_UNITS = (r'am', r'aV', r'aA', r'aΩ')
+ATTO_UNITS = (r'am', r'aV', r'aA', 'a\u03A9')
 
 
-FEMTO_UNITS = (r'fm', r'fV', r'fA', r'fΩ')
+FEMTO_UNITS = (r'fm', r'fV', r'fA', 'f\u03A9')
 
 
-PICO_UNITS = (r'pm', r'pV', r'pA', r'pΩ')
+PICO_UNITS = (r'pm', r'pV', r'pA', 'p\u03A9')
 
 
-NANO_UNITS = (r'nm', r'nV', r'nA', r'nΩ')
+NANO_UNITS = (r'nm', r'nV', r'nA', 'n\u03A9')
 
 
-MICRO_UNITS = (r'μm', r'μV', r'μA', r'μΩ')
+MICRO_UNITS = ('\u03BCm', '\u03BCV', '\u03BCA', '\u03A9')
 
 
-MILLI_UNITS = (r'mm', r'mV', r'mA', r'mΩ')
+MILLI_UNITS = (r'mm', r'mV', r'mA', 'm\u03A9')
 
 
-CENTI_UNITS = (r'cm', r'cV', r'cA', r'cΩ')
+CENTI_UNITS = (r'cm', r'cV', r'cA', 'c\u03A9')
 
 
-DECI_UNITS = (r'dm', r'dV', r'dA', r'dΩ')
+DECI_UNITS = (r'dm', r'dV', r'dA', 'd\u03A9')
 
 
-DECA_UNITS = (r'dam', r'daV', r'daA', r'daΩ')
+DECA_UNITS = (r'dam', r'daV', r'daA', 'da\u03A9')
 
 
-HECTO_UNITS = (r'hm', r'hV', r'hA', r'hΩ')
+HECTO_UNITS = (r'hm', r'hV', r'hA', 'h\u03A9')
 
 
-KILO_UNITS = (r'km', r'kV', r'kA', r'kΩ')
+KILO_UNITS = (r'km', r'kV', r'kA', 'k\u03A9')
 
 
-MEGA_UNITS = (r'Mm', r'MV', r'MA', r'MΩ')
+MEGA_UNITS = (r'Mm', r'MV', r'MA', 'M\u03A9')
 
 
-GIGA_UNITS = (r'Gm', r'GV', r'GA', r'GΩ')
+GIGA_UNITS = (r'Gm', r'GV', r'GA', 'G\u03A9')
 
 
-TERA_UNITS = (r'Tm', r'TV', r'TA', r'TΩ')
+TERA_UNITS = (r'Tm', r'TV', r'TA', 'T\u03A9')
 
 
-PETA_UNITS = (r'Pm', r'PV', r'PA', r'PΩ')
+PETA_UNITS = (r'Pm', r'PV', r'PA', 'P\u03A9')
 
 
-EXA_UNITS = (r'Em', r'EV', r'EA', r'EΩ')
+EXA_UNITS = (r'Em', r'EV', r'EA', 'E\u03A9')
 
 
-ZETTA_UNITS = (r'Zm', r'ZV', r'ZA', r'ZΩ')
+ZETTA_UNITS = (r'Zm', r'ZV', r'ZA', 'Z\u03A9')
 
 
-YOTTA_UNITS = (r'Ym', r'YV', r'YA', r'YΩ')
+YOTTA_UNITS = (r'Ym', r'YV', r'YA', 'Y\u03A9')
 
 
 SIUNITS = (
@@ -164,7 +167,7 @@ METRIC_PREFIX = {
     r'deci': (r'd', 0.1),
     r'centi': (r'c', 0.01),
     r'milli': (r'm', 0.001),
-    r'micro': (r'μ', 0.000001),
+    r'micro': ('\u03BC', 0.000001),
     r'nano': (r'n', 0.000000001),
     r'pico': (r'p', 0.000000000001),
     r'femto': (r'f', 0.000000000000001),
@@ -190,7 +193,7 @@ def str2tupleunit(_str: str) -> tuple:
     return (_num, _unit)
 
 
-def siunits2base(_measurement: tuple) -> tuple:   # noqa: C901 # pylint: disable=R0911,R0912
+def siunits2base(_measurement: tuple) -> tuple:   # noqa: C901  # pylint: disable=R0911,R0912
     """Convert SI units to base unit"""
     if _measurement[1] in YOCTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000000001, _measurement[1][1:])

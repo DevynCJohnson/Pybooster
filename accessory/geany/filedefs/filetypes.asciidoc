@@ -1,0 +1,10 @@
+[settings]
+extension=asciidoc
+comment_single=//
+comment_use_indent=false
+context_action_cmd=
+symbol_list_sort_mode=1
+
+[indentation]
+type=1
+width=4

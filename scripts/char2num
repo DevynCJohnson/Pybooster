@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Replace characters with their numerical Unicode representation
+
+@file char2num
+@version 2018.08.22
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section DESCRIPTION
+This script can be integrated into Geany to convert characters to their numerical representation in the selection.
+Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this software.
+"""
+
+
+from sys import argv, stdin, stdout
+
+from pybooster.strtools import char2num
+
+
+if __name__ == '__main__':
+    if len(argv) == 1:  # Pipe
+        DATA = stdin.read()
+        stdout.write(char2num(DATA, True))
+    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+        stdout.write('Usage 1: command | char2num\nUsage 2: char2num "string"\nReplace characters with their numerical Unicode representation\n')
+    elif argv[1]:  # String as argument
+        stdout.write(char2num(argv[1]) + '\n')
+    else:  # Help
+        stdout.write('Usage 1: command | char2num\nUsage 2: char2num "string"\nReplace characters with their numerical Unicode representation\n')

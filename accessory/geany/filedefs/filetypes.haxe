@@ -1,0 +1,21 @@
+[keywords]
+primary=abstract break case cast catch class const continue default do dynamic else enum extends extern false finally for function goto if implements import in inline instanceof int interface macro new null override package private public return static super switch this throw throws trace transient true try typedef typeof untyped using var void volatile while with
+secondary=Bool Dynamic Enum Float Int null String Void
+classes=Array ArrayAccess Class Date DateTools EReg Hash IntHash IntIter Iterable Iterator Lambda List Math Null Protected Reflect Std StringBuf StringTools Type UInt ValueType Xml XmlType
+
+[lexer_properties=C]
+lexer.cpp.track.preprocessor=0
+
+[settings]
+extension=hx
+comment_single=//
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+type=1
+width=4
+
+[build_settings]
+compiler=haxe -neko "%e.n" -cp . "%f"
+run_cmd=neko "%e"

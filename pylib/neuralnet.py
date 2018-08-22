@@ -6,7 +6,7 @@
 
 @file neuralnet.py
 @package pybooster.neuralnet
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -59,8 +59,9 @@ along with this software.
 
 from base64 import b64decode, b64encode
 from math import exp, floor
-from pickle import dumps, loads
+from pickle import dumps, loads  # nosec
 from random import Random
+from typing import Any, Dict, Generator, List
 from zlib import compress, decompress
 
 
@@ -70,7 +71,7 @@ __all__ = [
 ]
 
 
-def flatten(_lst: list):
+def flatten(_lst: list) -> Generator[list, None, None]:
     """Flatten list of lists"""
     for _sublist in _lst:
         if isinstance(_sublist, list):
@@ -103,23 +104,23 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         input_size = len(data[0][0])
         output_size = len(data[0][1])
         if not layers:
-            self.hidden_layers = [max(3, floor(input_size / 2))]
+            self.hidden_layers = [max(3, int(floor(input_size / 2)))]
         else:
             self.hidden_layers = layers
-        self.sizes = list(flatten([input_size, self.hidden_layers, output_size]))
+        self.sizes: List[Any] = list(flatten([input_size, self.hidden_layers, output_size]))
         self.iterations = iterations
-        self.rate = rate if rate < 1.0 else 0.4
+        self.rate: float = rate if rate < 1.0 else 0.4
         self.io_rules = data
         self.io_rules_len = len(data)
         self.outputlayer = len(self.sizes) - 1
         neural_rand = Random()
         # Training State
-        self.deltas = [[]] * (self.outputlayer + 1)
-        self.changes = [[]] * (self.outputlayer + 1)
-        self.errors = [[]] * (self.outputlayer + 1)
-        self.outputs = [[]] * (self.outputlayer + 1)
-        self.biases = [[]] * (self.outputlayer + 1)
-        self.weights = [[]] * (self.outputlayer + 1)
+        self.deltas: List[Any] = [[]] * (self.outputlayer + 1)
+        self.changes: List[Any] = [[]] * (self.outputlayer + 1)
+        self.errors: List[Any] = [[]] * (self.outputlayer + 1)
+        self.outputs: List[Any] = [[]] * (self.outputlayer + 1)
+        self.biases: List[Any] = [[]] * (self.outputlayer + 1)
+        self.weights: List[Any] = [[]] * (self.outputlayer + 1)
         for layer in range(self.outputlayer + 1):
             _size = self.sizes[layer]
             self.deltas[layer] = [0] * _size
@@ -164,7 +165,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
             error = _sum / self.io_rules_len
         return (error, used_iterations)  # (float, int)
 
-    def run(self, _input: int) -> list:
+    def run(self, _input: List[Any]) -> list:
         """Forward Propagation; Execute neuralnet"""
         output = self.outputs[0] = _input  # Set output state of input layer
         for layer in range(1, self.outputlayer + 1):
@@ -281,8 +282,8 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def to_c_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:  # pylint: disable=R0914
         """Convert the neural-network to C code"""
-        terms = {}
-        lterms = []
+        terms: Dict[str, str] = {}
+        lterms: List[str] = []
         for k in range(self.sizes[0]):
             lterms.append(r'o0_' + str(k))
             terms[lterms[-1]] = r'i[' + str(k) + r']'
@@ -297,15 +298,15 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                     term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*o' + str(_layer - 1) + r'_' + str(k)
                 del w
                 v = r'(1 / (1 + exp(' + term + r')))'
-                for k in lterms:
-                    v = v.replace(k, terms[k])
+                for _str in lterms:
+                    v = v.replace(_str, terms[_str])
                 lterms.append(r'o' + str(_layer) + r'_' + str(n))
                 terms[lterms[-1]] = v
                 if _layer == self.outputlayer:
                     oterms[r'o' + str(_layer) + r'_' + str(n)] = r'o[' + str(n) + r']'
-        del lterms
+        del k, lterms
         fn = r'void {fnname}(double *i, double *o)'.format(fnname=fnname) + '{\n'
-        for k, v in oterms.items():
-            fn += r'    ' + v + r' = ' + terms[k] + ';\n'
+        for _str, v in oterms.items():
+            fn += r'    ' + v + r' = ' + terms[_str] + ';\n'
         fn += '}\n'
         return _indent(fn, indent)

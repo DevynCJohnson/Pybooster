@@ -5,7 +5,7 @@
 """@brief Prettify XML documents (including HTML, MathML, SVG, etc.)
 
 @file prettifyxml
-@version 2017.12.25
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,7 +38,7 @@ from pybooster.markup import fix_xml_declaration, is_xml_dtd, is_xml_xsd, pretti
 
 
 if __name__ == '__main__':  # noqa: C901
-    # Setup Arguments
+    # SETUP ARGUMENTS #
     PARSER = argparse.ArgumentParser(
         prog=r'prettifyxml',
         description=r'Prettify XML documents (including HTML, MathML, SVG, etc.)',
@@ -80,7 +80,7 @@ if __name__ == '__main__':  # noqa: C901
     )
     ARGS = PARSER.parse_args()
     del PARSER
-    # Process Flags
+    # PROCESS FLAGS #
     if ARGS.indent != r'  ':
         ARGS.indent = ARGS.indent.lower()
         if ARGS.indent in {r'sp', r'space'}:
@@ -103,7 +103,7 @@ if __name__ == '__main__':  # noqa: C901
             ARGS.newline = '\v'
         else:
             ARGS.newline = '\n'
-    # Get and Process Data/File
+    # GET & PROCESS DATA/FILE #
     XMLDATA = getdata(ARGS.input_file, ARGS.encoding)
     if r'<' not in XMLDATA and r'>' not in XMLDATA:
         stderr.write('Unsupported filetype!\n')
@@ -119,6 +119,6 @@ if __name__ == '__main__':  # noqa: C901
             stderr.write('Unsupported filetype!\n')
             raise SystemExit(1)
     XMLDATA = fix_xml_declaration(XMLDATA)
-    # Output Finished Result
+    # OUTPUT FINISHED RESULT #
     writedata(ARGS.output_file, XMLDATA, ARGS.encoding)
     raise SystemExit()

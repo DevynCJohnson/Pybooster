@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Checks for invalid Python directive comments
+
+@file py_directive_checker
+@version 2018.08.22
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this software.
+"""
+
+
+from sys import argv, stderr, stdout
+
+try:  # Regular Expression module
+    from regex import compile as rgxcompile
+except ImportError:
+    from re import compile as rgxcompile
+
+
+# FUNCTIONS #
+
+
+def getfile_list(_filename: str) -> list:
+    """Get file contents and return as a list"""
+    with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
+        _out = _file.readlines()
+    return _out
+
+
+# MAIN #
+
+
+if __name__ == '__main__':  # noqa: C901
+    # GET SRC #
+    if len(argv) == 2:
+        if argv[1].lower() in (r'help', r'--help', r'-h'):
+            stdout.write('Specify the pathname of a Python script to scan for invalid directive comments.\n')
+            raise SystemExit(0)
+        try:  # File path as argument
+            SRC_LINE_LIST = getfile_list(argv[1])
+            FILEPATH = argv[1]
+        except PermissionError:
+            stderr.write(r'PermissionError!\n')
+            raise SystemExit(1)
+        except IOError:
+            stderr.write(r'IOError!')
+            raise SystemExit(1)
+    else:
+        stderr.write(r'Invalid parameters!\n')
+        raise SystemExit(1)
+    # SET CONSTANTS & VARIABLES #
+    REGEX_BANDIT = rgxcompile(r'^.*#[ \t]*(nosec|Nosec|NoSec|NOSEC|bandit|Bandit|BANDIT)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_BANDIT_CORRECT = rgxcompile(r'^(.+  |)# nosec(|  #.+)$')
+    REGEX_CHEETAH = rgxcompile(r'^.*#[ \t]#[ \t]*(doc|Doc|DOC|doc\-class|Doc\-class|DOC\-CLASS|docclass|doc\-method|Doc\-method|DOC\-METHOD|docmethod|doc\-module|Doc\-module|DOC\-MODULE|docmodule|header|Header|HEADER)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_CHEETAH_CORRECT = rgxcompile(r'^(.+  |)##(doc|doc\-class|doc\-method|doc\-module|header): .+$')
+    REGEX_CYTHON = rgxcompile(r'^.*#[ \t]*(cython|Cython|CYTHON).*$')
+    REGEX_CYTHON_CORRECT = rgxcompile(r'^#(cython): [FTa-z0-9_\-\+=, ]+$')
+    REGEX_DISTUTILS = rgxcompile(r'^.*#[ \t]*(distutils|Distutils|DistUtils|DISTUTILS).*$')
+    REGEX_DISTUTILS_CORRECT = rgxcompile(r'^# (distutils): [A-Za-z0-9_\-\+]+ = .*(|  #.+)$')
+    REGEX_DOCTEST = rgxcompile(r'^.*#[ \t]*(doctest|Doctest|DocTest|DOCTEST)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_DOCTEST_CORRECT = rgxcompile(r'^(.+  |)# doctest: [A-Z_\-\+,]+(|  #.+)$')
+    REGEX_FLAKE8 = rgxcompile(r'#[ \t]*(flake8|Flake8|flake\-8|FLAKE8)[: \t]*(ignore|Ignore|IGNORE|noqa|Noqa|NOQA)')
+    REGEX_MYPY = rgxcompile(r'^.*#[ \t]*(type|Type|TYPE|mypy|Mypy|MyPy|MYPY)[: \t]*(ignore|Ignore|IGNORE)(|  #.*)$')
+    REGEX_MYPY_CORRECT = rgxcompile(r'^(.+  |)# type: ignore(|  #.+)$')
+    REGEX_NOQA = rgxcompile(r'^.*#[ \t]*(noqa|Noqa|NoQa|NOQA).*$')
+    REGEX_NOQA_CORRECT = rgxcompile(r'^(.+  |)# (noqa): [A-Z0-9,]+(|  #.+)$')
+    REGEX_PYLINT = rgxcompile(r'^.*#[ \t]*#[ \t]*(pylint|Pylint|PyLint|PYLINT)[: \t]*disable[ \t]*=[ \t]*[A-Za-z0-9,]+.*$')
+    REGEX_PYLINT_CORRECT = rgxcompile(r'^(.+  |)# pylint: disable=[A-Z0-9,]+$')
+    LINE_NUM = 1
+    # ANALYZE SRC #
+    for LINE in SRC_LINE_LIST:  # Scan one line at-a-time
+        if not LINE.strip():  # Blank line
+            LINE_NUM += 1
+            continue
+        _match_old_flake8 = REGEX_FLAKE8.search(LINE)
+        _match_bandit = REGEX_BANDIT.search(LINE)
+        _match_cheetah = REGEX_CHEETAH.search(LINE)
+        _match_cython = REGEX_CYTHON.search(LINE)
+        _match_distutils = REGEX_DISTUTILS.search(LINE)
+        _match_doctest = REGEX_DOCTEST.search(LINE)
+        _match_mypy = REGEX_MYPY.search(LINE)
+        _match_noqa = REGEX_NOQA.search(LINE)
+        _match_pylint = REGEX_PYLINT.search(LINE)
+        if _match_old_flake8:  # Directive - Old Flake8
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_old_flake8.start()) + r': FLAKE8 : Do not use flake8 directives!' + '\n' + LINE + '\n')
+        if _match_bandit and not REGEX_BANDIT_CORRECT.match(LINE):  # Directive - Bandit (nosec)
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_bandit.start()) + ': BANDIT : Invalid nosec directive formatting. Use the format `  \u0023 nosec`\n' + LINE + '\n')
+        if _match_cheetah and not REGEX_BANDIT_CORRECT.match(LINE):  # Directive - Cheetah
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_cheetah.start()) + ': CHEETAH : Invalid cheetah directive formatting. Use the format `  \u0023\u0023xxx: TEXT`\n' + LINE + '\n')
+        if _match_cython and (not REGEX_CYTHON_CORRECT.match(LINE) or (r',' in LINE and r', ' not in LINE)):  # Directive - Cython
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_cython.start()) + ': CYTHON : Invalid Cython directive formatting. Use the format `\u0023cython: SETTING_1=VALUE_1, SETTING_2=VALUE_2` on its own line\n' + LINE + '\n')
+        if _match_distutils and not REGEX_DISTUTILS_CORRECT.match(LINE):  # Directive - Distutils
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_distutils.start()) + ': DISTUTILS : Invalid Distutils directive formatting. Use the format `  \u0023 distutils: SETTING = VALUE` on its own line\n' + LINE + '\n')
+        if _match_doctest and not REGEX_DOCTEST_CORRECT.match(LINE):  # Directive - Doctest
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_doctest.start()) + ': DOCTEST : Invalid Doctest directive formatting. Use the format `  \u0023 doctest: +SETTING_1,-SETTING_2`\n' + LINE + '\n')
+        if _match_mypy and not REGEX_MYPY_CORRECT.search(LINE):  # Directive - MyPy (type)
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_mypy.start()) + ': MYPY : Invalid Mypy directive formatting. Use the format `  \u0023 type: ignore`\n' + LINE + '\n')
+        if r'noqa' in LINE and _match_noqa and not REGEX_NOQA_CORRECT.match(LINE):  # Directive - Flake8 (noqa)
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_noqa.start()) + ': NOQA : Specify error to ignore and use the format `  \u0023 noqa: ERROR,ERROR`\n' + LINE + '\n')
+        if _match_pylint and not REGEX_PYLINT_CORRECT.match(LINE):  # Directive - PyLint
+            stderr.write(FILEPATH + r':' + str(LINE_NUM) + r':' + str(_match_pylint.start()) + ': PYLINT : Invalid PyLint directive formatting. Use the format `  \u0023 pylint: disable=ERROR,ERROR`\n' + LINE + '\n')
+        LINE_NUM += 1

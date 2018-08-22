@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Wrapper for scanning a shell script with various syntax checkers
 # @file shanalysis
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -18,35 +18,50 @@ elif [ -z "$1" ]; then
 fi
 
 
-firstpass=0
+export FirstLoopPass=0
+
+
+# MAIN #
 
 
 for file in "$@"; do
-    [ ! -r "$file" ] && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    echo "$file" | grep -v -E -e '.*(bashrc|profile|*shrc)' && head -1 "$file" | grep -v -E -e '#!/bin/(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && printf '%s: The specified file is not a shell script!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v bashate)" ]; then
-        printf '\n\n======  *BASHATE*  ======\n\n'
-        bashate --ignore E006 --verbose "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *BASHATE*  ======\n'
+        bashate --ignore E006 --verbose "$file" | awk '{ OFS=""; gsub(/^Running bashate on .+$/, ""); print $0; }' | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'bashate: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v shellcheck)" ]; then
-        printf '\n\n======  *SHELLCHECK*  ======\n\n'
-        shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *SHELLCHECK*  ======\n'
+        shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'shellcheck: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v sh)" ]; then
-        printf '\n\n======  *POSIX COMPLIANCE*  ======\n\n'
-        sh -n "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *POSIX COMPLIANCE*  ======\n'
+        sh -n "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sh: command not found!\n' >&2
     fi
 
-    printf '\n'
+    if [ -x "$(command -v checkbashisms)" ]; then
+        printf '======  *BASHISMS*  ======\n'
+        checkbashisms --extra "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'checkbashisms: command not found!\n' >&2
+    fi
 
-    firstpass=1
+    if [ -x "$(command -v code-analysis)" ]; then
+        code-analysis "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'code-analysis: command not found!\n' >&2
+    fi
+
+    FirstLoopPass=1
 
 done

@@ -6,7 +6,7 @@
 
 @file financial.py
 @package pybooster.financial
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -39,12 +39,12 @@ __all__ = [
 
 def compounded_interest(principal: float, interest: float, compound_frequency: float) -> float:
     """Return the compounded interest earned given the principal, interest, and compound frequency"""
-    return principal * (((1 + compound_frequency) ** interest) - 1)
+    return principal * (((1.0 + compound_frequency) ** interest) - 1.0)
 
 
 def compounded_ending_balance(principal: float, interest: float, compound_frequency: float) -> float:
     """Return the ending balance of compounded interest earned given the principal, interest, and compound frequency"""
-    return principal * (((1 + compound_frequency) ** interest))
+    return principal * (((1.0 + compound_frequency) ** interest))
 
 
 def simple_interest(principal: float, interest: float, time: float) -> float:
@@ -54,4 +54,4 @@ def simple_interest(principal: float, interest: float, time: float) -> float:
 
 def simple_ending_balance(principal: float, interest: float, time: float) -> float:
     """Return the ending balance of simple interest given the principal, interest, and time"""
-    return principal * (1 + (time * interest))
+    return principal * (1.0 + (time * interest))

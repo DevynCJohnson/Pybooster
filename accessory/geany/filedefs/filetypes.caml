@@ -1,0 +1,20 @@
+[keywords]
+keywords=and as asr assert begin class constraint do done downto else end exception external false for fun function functor if in include inherit initializer land lazy let lor lsl lsr lxor match method mod module mutable new object of open or private rec sig struct then to true try type val virtual when while with
+keywords_optional=ignore None option ref Some
+
+[settings]
+extension=ml
+mime_type=text/x-ocaml
+comment_open=(*
+comment_close=*)
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+type=1
+width=4
+
+[build_settings]
+compiler=ocamlc -c "%f"
+linker=ocamlc -o "%e" "%f"
+run_cmd="./%e"

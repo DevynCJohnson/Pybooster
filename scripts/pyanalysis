@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 # @file pyanalysis
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -21,76 +21,113 @@ elif [ -z "$1" ]; then
 fi
 
 
+# SETUP #
+
+
 export NO_AT_BRIDGE=1
 export LANG='en_US.UTF-8'
-export LC_CTYPE='UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
 export PYTHONIOENCODING='utf8'
-firstpass=0
+export FirstLoopPass=0
+
+
+if [ -r ./.bandit.ini ]; then
+    export bandit_file=./.bandit.ini
+elif [ -r ../.bandit.ini ]; then
+    export bandit_file=../.bandit.ini
+elif [ -r ./.bandit ]; then
+    export bandit_file=./.bandit
+elif [ -r ../.bandit ]; then
+    export bandit_file=../.bandit
+else
+    export bandit_file=''
+fi
+
+
+# MAIN #
 
 
 for file in "$@"; do
-    [ ! -r "$file" ] && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    hashpling="$(head -1 "$file")"
+    echo "$hashpling" | grep -v -E -e '#!/.+python[0-9\.]*' > /dev/null && printf '%s: The specified file is not a Python script!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v flake8)" ]; then
-        printf '\n\n======  *FLAKE8*  ======\n\n'
-        flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *FLAKE8*  ======\n'
+        flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flake8: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pyflakes3)" ]; then
-        printf '\n\n======  *PYFLAKES*  ======\n\n'
-        pyflakes3 "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *PYFLAKES*  ======\n'
+        pyflakes3 "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pyflakes3: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pycodestyle)" ]; then
-        printf '\n\n======  *PYCODESTYLE (PEP8)*  ======\n\n'
-        pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file"
+        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
+        pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); print $0; }' | awk NF
     elif [ -x "$(command -v pycodestyle)" ]; then
-        printf '\n\n======  *PYCODESTYLE (PEP8)*  ======\n\n'
-        pep8 --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
+        pep8 --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); print $0; }' | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pycodestyle (formerly pep8): command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pylint3)" ]; then
-        printf '\n\n======  *PYLINT*  ======\n\n'
-        pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *PYLINT*  ======\n'
+        pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pylint3: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v noqa_checker)" ]; then
-        printf '\n\n======  *NOQA CHECKER*  ======\n\n'
-        noqa_checker "$file"
-    elif [ "$firstpass" -eq 0 ]; then
-        printf 'noqa_checker: command not found!\n' >&2
+    if [ -x "$(command -v py_directive_checker)" ]; then
+        printf '======  *DIRECTIVE CHECKER*  ======\n'
+        py_directive_checker "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'py_directive_checker: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v vulture)" ]; then
-        printf '\n\n======  *VULTURE (DEAD CODE CHECKER)*  ======\n\n'
-        vulture --min-confidence=60 "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *VULTURE (DEAD CODE CHECKER)*  ======\n'
+        vulture --min-confidence=65 "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'vulture: command not found!\n' >&2
     fi
 
+    if [ -x "$(command -v bandit)" ]; then
+        printf '======  *BANDIT (SECURITY ANALYZER)*  ======\n'
+        if [ -n "${bandit_file:-}" ]; then
+            bandit --aggregate vuln --configfile "$bandit_file" "$file" 2>&1 | awk '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); print $0; } }' | awk NF
+        else
+            bandit --aggregate vuln "$file" 2>&1 | awk '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); print $0; } }' | awk NF
+        fi
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'bandit: command not found!\n' >&2
+    fi
+
     if [ -x "$(command -v pydocstyle)" ]; then
-        printf '\n\n======  *PYDOCSTYLE (PEP257)*  ======\n\n'
-        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file"
+        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
+        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ -x "$(command -v pep257)" ]; then
-        printf '\n\n======  *PYDOCSTYLE (PEP257)*  ======\n\n'
-        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file"
-    elif [ "$firstpass" -eq 0 ]; then
+        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
+        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pydocstyle (formerly pep257): command not found!\n' >&2
     fi
 
-    printf '\n\n======  *PYTHON DOCTEST*  ======\n\n'
-    python3 -m doctest --option=NORMALIZE_WHITESPACE "$file"
+    printf '======  *PYTHON DOCTEST*  ======\n'
+    python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk '{ gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
 
-    printf '\n'
+    if [ -x "$(command -v code-analysis)" ]; then
+        code-analysis "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'code-analysis: command not found!\n' >&2
+    fi
 
-    firstpass=1
+    FirstLoopPass=1
 
 done

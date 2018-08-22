@@ -6,7 +6,7 @@
 
 @file compress.py
 @package pybooster.compress
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -61,8 +61,6 @@ __all__ = [
     r'xzvar',
     r'getxzvar',
     # TAR #
-    r'gettar',
-    r'write2tar',
     r'extracttar',
     r'createtarfile'
 ]
@@ -150,7 +148,7 @@ def getlzma(_filename: str) -> str:
 
 def write2lzma(_filename: str, _write: str) -> None:
     """Compress data using LZMA and write it to a file"""
-    with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_ALONE, filters={r'id': lzma.FILTER_LZMA1}) as _file:
+    with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
     return
 
@@ -158,15 +156,14 @@ def write2lzma(_filename: str, _write: str) -> None:
 def createlzmafile(_filename: str) -> None:
     """LZMA an existing file"""
     with lzma.open(_filename, mode=r'rb') as _filein:
-        with lzma.open(_filename + r'.lzma', mode=r'wb', format=lzma.FORMAT_ALONE, filters={r'id': lzma.FILTER_LZMA1}) as _fileout:
+        with lzma.open(_filename + r'.lzma', mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _fileout:
             _fileout.writelines(_filein)
     return
 
 
 def lzmavar(data: str, _encoding: str = r'utf-8') -> bytes:
     """LZMA the contents of a variable"""
-    data = str(data).encode(_encoding)
-    return lzma.compress(data, format=lzma.FORMAT_ALONE, filters={r'id': lzma.FILTER_LZMA1})
+    return lzma.compress(str(data).encode(_encoding), format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}])
 
 
 def getlzmavar(data: bytes) -> str:
@@ -186,7 +183,7 @@ def getxz(_filename: str) -> str:
 
 def write2xz(_filename: str, _write: str) -> None:
     """Compress data using XZ and write it to a file"""
-    with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_XZ, filters={r'id': lzma.FILTER_LZMA2}) as _file:
+    with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
     return
 
@@ -194,15 +191,14 @@ def write2xz(_filename: str, _write: str) -> None:
 def createxzfile(_filename: str) -> None:
     """XZ an existing file"""
     with lzma.open(_filename, mode=r'rb') as _filein:
-        with lzma.open(_filename + r'.xz', mode=r'wb', format=lzma.FORMAT_XZ, filters={r'id': lzma.FILTER_LZMA2}) as _fileout:
+        with lzma.open(_filename + r'.xz', mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _fileout:
             _fileout.writelines(_filein)
     return
 
 
 def xzvar(data: str, _encoding: str = r'utf-8') -> bytes:
     """XZ the contents of a variable"""
-    data = str(data).encode(_encoding)
-    return lzma.compress(data, format=lzma.FORMAT_XZ, filters={r'id': lzma.FILTER_LZMA2})
+    return lzma.compress(str(data).encode(_encoding), format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}])
 
 
 def getxzvar(data: bytes) -> str:
@@ -211,20 +207,6 @@ def getxzvar(data: bytes) -> str:
 
 
 # TAR #
-
-
-def gettar(_filename: str) -> str:
-    """Open and get the contents of a tar file"""
-    with tarfile.open(_filename, mode=r'r') as _file:
-        data = _file.read()
-    return data
-
-
-def write2tar(_filename: str, _write: str) -> None:
-    """Archive data using tar and write it to a file"""
-    with tarfile.open(_filename, mode=r'w', compresslevel=9) as _file:
-        _file.write(str(_write))
-    return
 
 
 def extracttar(_filename: str) -> None:

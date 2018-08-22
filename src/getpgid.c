@@ -4,7 +4,7 @@
 /**
 @brief Returns the Process Group ID
 @file getpgid.c
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

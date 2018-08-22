@@ -65,6 +65,7 @@ To install/uninstall software, open a terminal and type the needed command:
 - Install Program-Analyzer: `make install_program_analyzer`
 - Install Python Eggs: `make install_pyeggs`
 - Install Additional Mimetypes (XDG Desktops Only): `make install_mimetype_booster`
+- Install Language Specification Files (used by gtksourceview): `make install_langspecs`
 - Install the Opticons Icon Theme (XDG Desktops Only): `make install_Opticons`
 - Install the Themes (XDG Desktops Only): `make install_themes`
 - Uninstall PyBooster: `make uninstall`

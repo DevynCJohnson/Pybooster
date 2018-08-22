@@ -6,7 +6,7 @@
 
 @file convvolume.py
 @package pybooster.convvolume
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,6 +27,9 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with this software.
 """
+
+
+from typing import Union
 
 
 __all__ = [
@@ -75,122 +78,122 @@ __all__ = [
 # CUBIC INCHES #
 
 
-def cuin2cancups(_volume: int or float, _round: int = 3) -> float:
+def cuin2cancups(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Canadian Cups"""
     return round(_volume * 0.072093, _round)
 
 
-def cuin2cum(_volume: int or float, _round: int = 3) -> float:
+def cuin2cum(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Cubic Meters"""
     return round(_volume * 0.000016386995, _round)
 
 
-def cuin2dryqt(_volume: int or float, _round: int = 3) -> float:
+def cuin2dryqt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Dry Quarts"""
     return round(_volume * 0.014881, _round)
 
 
-def cuin2l(_volume: int or float, _round: int = 3) -> float:
+def cuin2l(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Liters"""
     return round(_volume * 0.016386995, _round)
 
 
-def cuin2metriccups(_volume: int or float, _round: int = 3) -> float:
+def cuin2metriccups(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Metric Cups"""
     return round(_volume * 0.065548, _round)
 
 
-def cuin2metrictbl(_volume: int or float, _round: int = 3) -> float:
+def cuin2metrictbl(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Metric Tablespoons"""
     return round(_volume * 1.0925, _round)
 
 
-def cuin2metrictsp(_volume: int or float, _round: int = 3) -> float:
+def cuin2metrictsp(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> Metric Teaspoons"""
     return round(_volume * 3.2774, _round)
 
 
-def cuin2ukfloz(_volume: int or float, _round: int = 3) -> float:
+def cuin2ukfloz(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Fluid Ounces"""
     return round(_volume * 0.57674, _round)
 
 
-def cuin2ukgal(_volume: int or float, _round: int = 3) -> float:
+def cuin2ukgal(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Gallons"""
     return round(_volume * 0.0036047, _round)
 
 
-def cuin2ukgills(_volume: int or float, _round: int = 3) -> float:
+def cuin2ukgills(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Gills"""
     return round(_volume * 0.11535, _round)
 
 
-def cuin2ukpt(_volume: int or float, _round: int = 3) -> float:
+def cuin2ukpt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Pints"""
     return round(_volume * 0.028837, _round)
 
 
-def cuin2ukqt(_volume: int or float, _round: int = 3) -> float:
+def cuin2ukqt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Quarts"""
     return round(_volume * 0.014419, _round)
 
 
-def cuin2uktbl(_volume: int or float, _round: int = 3) -> float:
+def cuin2uktbl(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Tablespoons"""
     return round(_volume * 1.1535, _round)
 
 
-def cuin2uktsp(_volume: int or float, _round: int = 3) -> float:
+def cuin2uktsp(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> UK Teaspoons"""
     return round(_volume * 4.6139, _round)
 
 
-def cuin2uscups(_volume: int or float, _round: int = 3) -> float:
+def cuin2uscups(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Cups"""
     return round(_volume * 0.069264, _round)
 
 
-def cuin2usdrygal(_volume: int or float, _round: int = 3) -> float:
+def cuin2usdrygal(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Dry Gallons"""
     return round(_volume * 0.0037202, _round)
 
 
-def cuin2usdrypt(_volume: int or float, _round: int = 3) -> float:
+def cuin2usdrypt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Dry Pints"""
     return round(_volume * 0.029762, _round)
 
 
-def cuin2usfloz(_volume: int or float, _round: int = 3) -> float:
+def cuin2usfloz(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Fluid Ounces"""
     return round(_volume * 0.55411, _round)
 
 
-def cuin2usgills(_volume: int or float, _round: int = 3) -> float:
+def cuin2usgills(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Gills"""
     return round(_volume * 0.13853, _round)
 
 
-def cuin2usliqgal(_volume: int or float, _round: int = 3) -> float:
+def cuin2usliqgal(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Liquid Gallons"""
     return round(_volume * 0.0043290, _round)
 
 
-def cuin2usliqpt(_volume: int or float, _round: int = 3) -> float:
+def cuin2usliqpt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Liquid Pints"""
     return round(_volume * 0.034632, _round)
 
 
-def cuin2usqt(_volume: int or float, _round: int = 3) -> float:
+def cuin2usqt(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US (Liquid) Quarts"""
     return round(_volume * 0.017316, _round)
 
 
-def cuin2ustbl(_volume: int or float, _round: int = 3) -> float:
+def cuin2ustbl(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Tablespoons"""
     return round(_volume * 1.1082, _round)
 
 
-def cuin2ustsp(_volume: int or float, _round: int = 3) -> float:
+def cuin2ustsp(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Inches -> US Teaspoons"""
     return round(_volume * 3.3247, _round)
 
@@ -198,15 +201,15 @@ def cuin2ustsp(_volume: int or float, _round: int = 3) -> float:
 # CUBIC METERS #
 
 
-def cum2cuin(_volume: int or float, _round: int = 3) -> float:
+def cum2cuin(_volume: Union[float, int], _round: int = 3) -> float:
     """Cubic Meters -> Cubic Inches"""
-    return round(_volume * 61024, _round)
+    return round(_volume * 61024.0, _round)
 
 
 # LITERS #
 
 
-def l2cuin(_volume: int or float, _round: int = 3) -> float:
+def l2cuin(_volume: Union[float, int], _round: int = 3) -> float:
     """Liters -> Cubic Inches"""
     return round(_volume * 61.024, _round)
 
@@ -214,46 +217,46 @@ def l2cuin(_volume: int or float, _round: int = 3) -> float:
 # PINTS #
 
 
-def usdrypt2ukgal(_volume: int or float, _round: int = 3) -> float:
+def usdrypt2ukgal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Dry Pints -> UK Gallons"""
     return round(_volume * 0.12112, _round)
 
 
-def usdrypt2usdrygal(_volume: int or float, _round: int = 3) -> float:
+def usdrypt2usdrygal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Dry Pints -> US Dry Gallons"""
     return round(_volume * 0.12500, _round)
 
 
-def usdrypt2usliqgal(_volume: int or float, _round: int = 3) -> float:
+def usdrypt2usliqgal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Dry Pints -> US Liquid Gallons"""
     return round(_volume * 0.14546, _round)
 
 
-def usliqpt2ukgal(_volume: int or float, _round: int = 3) -> float:
+def usliqpt2ukgal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Liquid Pints -> UK Gallons"""
     return round(_volume * 0.10408, _round)
 
 
-def usliqpt2usdrygal(_volume: int or float, _round: int = 3) -> float:
+def usliqpt2usdrygal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Liquid Pints -> US Dry Gallons"""
     return round(_volume * 0.10742, _round)
 
 
-def usliqpt2usliqgal(_volume: int or float, _round: int = 3) -> float:
+def usliqpt2usliqgal(_volume: Union[float, int], _round: int = 3) -> float:
     """US Liquid Pints -> US Liquid Gallons"""
     return round(_volume * 0.12500, _round)
 
 
-def ukpt2ukgal(_volume: int or float, _round: int = 3) -> float:
+def ukpt2ukgal(_volume: Union[float, int], _round: int = 3) -> float:
     """UK Pints -> UK Gallons"""
     return round(_volume * 0.12500, _round)
 
 
-def ukpt2usdrygal(_volume: int or float, _round: int = 3) -> float:
+def ukpt2usdrygal(_volume: Union[float, int], _round: int = 3) -> float:
     """UK Pints -> US Dry Gallons"""
     return round(_volume * 0.12901, _round)
 
 
-def ukpt2usliqgal(_volume: int or float, _round: int = 3) -> float:
+def ukpt2usliqgal(_volume: Union[float, int], _round: int = 3) -> float:
     """UK Pints -> US Liquid Gallons"""
     return round(_volume * 0.15012, _round)

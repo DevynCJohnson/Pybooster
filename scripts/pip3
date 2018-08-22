@@ -6,18 +6,18 @@
 """@brief Wrapper for Pip3
 
 @file pip3
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
 
 
 from re import sub
-from sys import argv, exit as sysexit
+from sys import argv
 
 from pip import main
 
 
 if __name__ == '__main__':
     argv[0] = sub(r'(-script\.pyw|\.exe)?$', r'', argv[0])
-    sysexit(main())
+    raise SystemExit(main())

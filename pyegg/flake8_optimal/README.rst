@@ -30,11 +30,17 @@ When both ``flake8`` and ``flake8_optimal`` are installed, the plugin is
 available in ``flake8``::
 
     $ flake8 --version
-    3.4.1 (pycodestyle: 2.3.1, flake8_optimal: 2017.10.21, mccabe: 0.6.1, pyflakes: 1.5.0)
+    3.5.0 (CopyrightChecker: 2018.04.27, MagicComment: 2018.04.27, flake8-mypy: 17.8.0, flake8_optimal: 2018.04.27, mccabe: 0.6.1, pycodestyle: 2.3.1, pyflakes: 1.6.0) CPython 3.6.3 on Linux
 
 
 Changes
 -------
+
+2018.11.05 - 2018-11-05
+```````````````````````
+* Added additional todo notes for the scanner to find (T000)
+* Added additional forms of exit for the scanner to find (Z003)
+* Reworded message for Z001
 
 2018.27.04 - 2018-27-04
 ```````````````````````

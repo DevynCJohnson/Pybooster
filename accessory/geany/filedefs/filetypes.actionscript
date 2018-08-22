@@ -1,0 +1,23 @@
+[keywords]
+classes=ArgumentError Array Boolean Class Date DefinitionError Error EvalError Function int Math NameSpace Null Number Object QName RangeError ReferenceError RegExp SecurityError String SyntaxError TypeError uint URIError Vector VerifyError void XML XMLList
+primary=arguments break case catch class const continue default do dynamic each else extends false final finally for function get if implements import in include Infinity interface internal label namespace NaN native new null override package private protected public return set static super switch this throw true try typeof undefined var while with
+secondary=decodeURI decodeURIcomponent encodeURI encodeURIcomponent escape isFinite isNaN isXMLName parseFloat parseInt trace unescape
+
+[lexer_properties=C]
+
+[settings]
+extension=as
+mime_type=application/ecmascript
+comment_single=//
+comment_open=/*
+comment_close=*/
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+type=1
+width=4
+
+[build_settings]
+compiler=
+run_cmd=

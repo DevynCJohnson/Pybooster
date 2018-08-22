@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Universal setup script for Posix-compatible shells
 # @file shell_ext
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -27,6 +27,7 @@ notinpath() { (echo "$PATH" | grep -F -q -v "$1" && return 0) || return 1; }
 [ -x "$(command -v brew)" ] && path_tmp="${PATH}:$(brew --cellar)" && PATH="$path_tmp" && unset path_tmp
 [ -d /usr/local/opt ] && notinpath '/usr/local/opt' && PATH="${PATH}:/usr/local/opt"
 [ -d /opt/bin ] && notinpath '/opt/bin' && PATH="${PATH}:/opt/bin"
+[ -d /snap/bin ] && notinpath '/snap/bin' && PATH="${PATH}:/snap/bin"
 [ -d "${HOME}/bin" ] && notinpath "${HOME}/bin" && notinpath '\~/bin' && PATH="${HOME}/bin:${PATH}"
 [ -d "${HOME}/.local/bin" ] && notinpath "${HOME}/.local/bin" && notinpath '\~/.local/bin' && PATH="${HOME}/.local/bin:${PATH}"
 [ -d /wine/bin ] && notinpath '/wine/bin' && PATH="${PATH}:/wine/bin"
@@ -55,9 +56,54 @@ if [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && [ -e /etc/debian_version
     # Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
     export DEBIAN_FRONTEND='dialog'
 fi
-[ -d /usr/lib/girepository-1.0 ] && export GI_TYPELIB_PATH='/usr/lib/girepository-1.0'
 [ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -x "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
 export PYTHONOPTIMIZE=True
+
+# Glade Path Environment Variables
+
+if [ -x "$(command -v glade)" ]; then
+    # GI_TYPELIB_PATH
+    notingipath() { (echo "$GI_TYPELIB_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    if [ -d /usr/lib/girepository-1.0 ]; then
+        if [ -z "${GI_TYPELIB_PATH:-}" ]; then
+            notingipath /usr/lib/girepository-1.0 && export GI_TYPELIB_PATH='/usr/lib/girepository-1.0'
+        else
+            notingipath /usr/lib/girepository-1.0 && export GI_TYPELIB_PATH="${GI_TYPELIB_PATH}:/usr/lib/girepository-1.0"
+        fi
+    fi
+    if [ -d /usr/lib/x86_64-linux-gnu/girepository-1.0 ]; then
+        if [ -z "${GI_TYPELIB_PATH:-}" ]; then
+            notingipath /usr/lib/x86_64-linux-gnu/girepository-1.0 && export GI_TYPELIB_PATH='/usr/lib/x86_64-linux-gnu/girepository-1.0'
+        else
+            notingipath /usr/lib/x86_64-linux-gnu/girepository-1.0 && export GI_TYPELIB_PATH="${GI_TYPELIB_PATH}:/usr/lib/x86_64-linux-gnu/girepository-1.0"
+        fi
+    fi
+    # GLADE_CATALOG_SEARCH_PATH
+    notincatalogpath() { (echo "$GLADE_CATALOG_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    if [ -d /usr/share/glade/catalogs ]; then
+        if [ -z "${GLADE_CATALOG_SEARCH_PATH:-}" ]; then
+            notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH='/usr/share/glade/catalogs'
+        else
+            notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH="${GLADE_CATALOG_SEARCH_PATH}:/usr/share/glade/catalogs"
+        fi
+    fi
+    # GLADE_MODULE_SEARCH_PATH
+    notingmodpath() { (echo "$GLADE_MODULE_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    if [ -d /usr/lib/glade/modules ]; then
+        if [ -z "${GLADE_MODULE_SEARCH_PATH:-}" ]; then
+            notingmodpath /usr/lib/glade/modules && export GLADE_MODULE_SEARCH_PATH='/usr/lib/glade/modules'
+        else
+            notingmodpath /usr/lib/glade/modules && export GLADE_MODULE_SEARCH_PATH="${GLADE_MODULE_SEARCH_PATH}:/usr/lib/glade/modules"
+        fi
+    fi
+    if [ -d /usr/lib/x86_64-linux-gnu/glade/modules ]; then
+        if [ -z "${GLADE_MODULE_SEARCH_PATH:-}" ]; then
+            notingmodpath /usr/lib/x86_64-linux-gnu/glade/modules && export GLADE_MODULE_SEARCH_PATH='/usr/lib/x86_64-linux-gnu/glade/modules'
+        else
+            notingmodpath /usr/lib/x86_64-linux-gnu/glade/modules && export GLADE_MODULE_SEARCH_PATH="${GLADE_MODULE_SEARCH_PATH}:/usr/lib/x86_64-linux-gnu/glade/modules"
+        fi
+    fi
+fi
 
 
 # EDITOR VARIABLES #
@@ -96,14 +142,14 @@ export SUDO_EDITOR="$SELECTED_EDITOR"
 
 isBlockFile() { ([ -b "$1" ] && return 0) || return 1; }
 isInPath() { (command -v "$1" && return 0) || return 1; }
-isBuiltin() { (command -V "$1" 2>/dev/null | grep -q -w -i 'builtin') || return $?; }
+isBuiltin() { (command -V "$1" 2> /dev/null | grep -q -w -i 'builtin') || return $?; }
 isDir() { ([ -d "$1" ] && return 0) || return 1; }
 isFile() { ([ -f "$1" ] && return 0) || return 1; }
 isFileExecutable() { ([ -x "$1" ] && return 0) || return 1; }
 isFileReadable() { ([ -r "$1" ] && return 0) || return 1; }
 isFileWritable() { ([ -w "$1" ] && return 0) || return 1; }
 isFileOrDir() { if [ -d "$1" ] || [ -f "$1" ]; then return 0; else return 1; fi; }
-isFunction() { command -V "$1" 2>/dev/null | grep -q -w -i 'function'; return $?; }
+isFunction() { command -V "$1" 2> /dev/null | head -1 | grep -q -w -i 'function'; return $?; }
 isptmx() { tty | awk '{ if ($0~/\/dev\/ptmx.*/) { print "true" } else { print "false" } }'; }
 ispts() { tty | awk '{ if ($0~/\/dev\/pts.*/) { print "true" } else { print "false" } }'; }
 isSymLink() { ([ -h "$1" ] && return 0) || return 1; }
@@ -118,10 +164,10 @@ export -f isFileWritable isFileOrDir isFunction ispts isSymLink istty strcontain
 
 
 if [ -x "$(command -v zenity)" ] && [ "$(istty)" = 'false' ]; then
-    win_cal() { zenity --title=Calendar --calendar --text='' --day=1 --month=1 --year="$1" 2>/dev/null; }
-    win_err() { zenity --title=Error --error --text="${1}" 2>/dev/null; }
-    win_info() { zenity --title=Information --info --text="${1}" 2>/dev/null; }
-    win_warn() { zenity --title=Warning --warning --text="${1}" 2>/dev/null; }
+    win_cal() { zenity --title=Calendar --calendar --text='' --day=1 --month=1 --year="$1" 2> /dev/null; }
+    win_err() { zenity --title=Error --error --text="${1}" 2> /dev/null; }
+    win_info() { zenity --title=Information --info --text="${1}" 2> /dev/null; }
+    win_warn() { zenity --title=Warning --warning --text="${1}" 2> /dev/null; }
 fi
 
 
@@ -129,147 +175,154 @@ fi
 
 
 [ "$PROFILE_SHELL" = 'bash' ] && set -a
-# TODO: Add other package managers - snappy, apk, and others
 if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin Package Managers
     # TODO: Add MacPorts and Fink
-    if [ -x "$(command -v brew)" ]; then  # MacOS Homebrew
+    if [ -n "$(command -v brew)" ]; then  # MacOS Homebrew
         cleanrepocache() { brew cleanup; }
         clrpkg() { brew prune; }
-        getpkgsrc() { brew fetch "$*"; }
-        installpkg() { brew install "$*"; }
-        listrepos() { brew tap; }
-        mkbrewpkg() { brew create "$*"; }
-        pkginfo() { brew info formula "$*"; }
-        pkglistaval() { brew list --unbrewed; }
-        pkglistinst() { brew list; }
-        pkglistleaves() { brew leaves; }
-        pkglistup() { brew outdated; }
+        getpkgsrc() { brew fetch "${@//;// }"; }
+        lsrepos() { brew tap; }
+        mkbrewpkg() { brew create "${@//;// }"; }
+        pkginfo() { brew info formula "${@//;// }"; }
+        pkginstall() { brew install "${@//;// }"; }
+        pkglsaval() { brew list --unbrewed; }
+        pkglsinst() { brew list; }
+        pkglsleaves() { brew leaves; }
+        pkglsup() { brew outdated; }
+        pkgreinstall() { brew reinstall "${@//;// }"; }
+        pkguninstall() { brew uninstall "${@//;// }"; }
+        pkgupdate() { ([ -n "${*:-}" ] && brew upgrade "${@//;// }") || ([ -z "${*:-}" ] && brew upgrade); }
         refreshman() { brew man; }
         refreshrepo() { brew update --force; }
-        reinstallpkg() { brew reinstall "$*"; }
         repocheck() { brew doctor; }
+        repofinddebian() { brew search --debian "${@//;// }"; }
+        repofindfedora() { brew search --fedora "${@//;// }"; }
+        repofindfink() { brew search --fink "${@//;// }"; }
+        repofindmacports() { brew search --macports "${@//;// }"; }
+        repofindopensuse() { brew search --opensuse "${@//;// }"; }
+        repofindubuntu() { brew search --ubuntu "${@//;// }"; }
         repoinfo() { brew tap-info; }
-        reposrchdebian() { brew search --debian "$*"; }
-        reposrchfedora() { brew search --fedora "$*"; }
-        reposrchfink() { brew search --fink "$*"; }
-        reposrchmacports() { brew search --macports "$*"; }
-        reposrchopensuse() { brew search --opensuse "$*"; }
-        reposrchubuntu() { brew search --ubuntu "$*"; }
-        uninstallpkg() { brew uninstall "$*"; }
-        updatepkg() { brew upgrade "$*"; }
         writebrewfile() { brew bundle cleanup; }
     fi
 elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
-    [ -x "$(command -v add-apt-repository)" ] && addrepo() { sudo add-apt-repository "$*"; }
     cleanrepocache() { sudo apt-get clean; }
     clrpkg() { sudo apt-get autoremove; }
-    getPkgChlog() { apt-get changelog "$*"; }
-    getpkgsrc() { apt-get source --download-only "$*"; }
-    installpkg() { sudo apt-get install "$*"; }
-    pkglistall() { apt-cache pkgnames; }
+    [ -n "$(command -v apt-cache)" ] && findpkg() { apt-cache search "$1"; }
+    getPkgChlog() { apt-get changelog "${@//;// }"; }
+    getpkgsrc() { apt-get source --download-only "${@//;// }"; }
+    pkginstall() { sudo apt-get install "${@//;// }"; }
+    pkglsall() { apt-cache --no-generate pkgnames "${1:-}"; }
+    pkgreinstall() { sudo apt-get install --reinstall "${@//;// }"; }
+    pkguninstall() { sudo apt-get purge "${@//;// }"; }
+    pkgupdate() { sudo apt-get install --only-upgrade "${@//;// }"; }
     refreshrepo() { sudo apt-get update; }
-    reinstallpkg() { sudo apt-get install --reinstall "$*"; }
     repocheck() { sudo apt-get check; }
-    [ -x "$(command -v add-apt-repository)" ] && rmrepo() { sudo add-apt-repository --remove "$*"; }
-    uninstallpkg() { sudo apt-get purge "$*"; }
-    updatepkg() { sudo apt-get install --only-upgrade "$*"; }
-    updatesys() { sudo apt-get dist-upgrade; }
+    sysupdate() { sudo apt-get dist-upgrade; }
+    if [ -x "$(command -v add-apt-repository)" ]; then
+        addrepo() { sudo add-apt-repository "${@//;// }"; }
+        rmrepo() { sudo add-apt-repository --remove "${@//;// }"; }
+    fi
+    if [ -x "$(command -v dpkg)" ]; then
+        alias filepkgorigin='dpkg-query -S'
+        alias filesfrompkg='dpkg-query -L'
+        alias pkglsinst='dpkg --list | grep ^i'
+    fi
 elif [ -d /etc/dnf ] && [ -x "$(command -v dnf)" ]; then  # Fedora DNF
     cleanrepocache() { sudo dnf clean all; }
     clrpkg() { sudo dnf autoremove; }
-    downgradepkg() { sudo dnf downgrade "$*"; }
-    installpkg() { sudo dnf install "$*"; }
+    pkgdowngrade() { sudo dnf downgrade "${@//;// }"; }
+    pkginfo() { dnf info "${@//;// }"; }
+    pkginstall() { sudo dnf install "${@//;// }"; }
+    pkglsall() { dnf list all; }
+    pkglsaval() { dnf list available; }
+    pkglsinst() { dnf list installed; }
+    pkglsup() { dnf list updates; }
+    pkgreinstall() { sudo dnf reinstall "${@//;// }"; }
+    pkguninstall() { sudo dnf remove "${@//;// }"; }
+    pkgupdate() { sudo dnf upgrade "${@//;// }"; }
     refreshrepo() { sudo dnf clean expire-cache && sudo dnf check-update; }
-    reinstallpkg() { sudo dnf reinstall "$*"; }
     repocheck() { sudo dnf check; }
-    pkginfo() { dnf info "$*"; }
-    pkglistall() { dnf list all; }
-    pkglistaval() { dnf list available; }
-    pkglistinst() { dnf list installed; }
-    pkglistup() { dnf list updates; }
-    uninstallpkg() { sudo dnf remove "$*"; }
-    updatepkg() { sudo dnf upgrade "$*"; }
-    updatesys() { sudo dnf upgrade --refresh; }
+    sysupdate() { sudo dnf upgrade --refresh; }
 elif [ -d /etc/portage ] && [ -x "$(command -v emerge)" ]; then  # Gentoo Emerge
     cleanrepocache() { eclean distfiles; }
     clrpkg() { eclean --depclean; }
-    getPkgChlog() { equery changes -f "$*"; }
-    installpkg() { emerge -a "$*"; }
-    pkglistall() { emerge -ep world; }
-    pkglistinst() { emerge -ep world; }
-    pkglistup() { emerge -uDNp world; }
+    getPkgChlog() { equery changes -f "${@//;// }"; }
+    pkginstall() { emerge -a "${@//;// }"; }
+    pkglsall() { emerge -ep world; }
+    pkglsinst() { emerge -ep world; }
+    pkglsup() { emerge -uDNp world; }
+    pkgreinstall() { emerge -1O "${@//;// }"; }
+    pkguninstall() { emerge -C "${@//;// }"; }
     refreshrepo() { emerge --sync && layman -S; }
-    reinstallpkg() { emerge -1O "$*"; }
     repocheck() { emerge -uDN world; }
-    uninstallpkg() { emerge -C "$*"; }
-    updatesys() { emerge -u world; }
+    sysupdate() { emerge -u world; }
 elif [ -f /etc/opkg.conf ] && [ -x "$(command -v opkg)" ]; then  # OpenWrt Opkg
-    installpkg() { opkg install "$*"; }
-    pkglistaval() { opkg list; }
-    pkglistinst() { opkg list-installed; }
-    pkglistup() { opkg list-upgradable; }
+    pkginstall() { opkg install "${@//;// }"; }
+    pkglstaval() { opkg list; }
+    pkglstinst() { opkg list-installed; }
+    pkglstup() { opkg list-upgradable; }
+    pkguninstall() { opkg remove "${@//;// }"; }
+    pkgupdate() { opkg upgrade "${@//;// }"; }
     refreshrepo() { opkg update; }
-    uninstallpkg() { opkg remove "$*"; }
-    updatepkg() { opkg upgrade "$*"; }
 elif [ -d /etc/pacman ] && [ -x "$(command -v pacman)" ]; then  # Arch Linux Pacman
     cleanrepocache() { pacman -Scc; }
     clrpkg() { pacman -Rs -; }
-    getPkgChlog() { pacman -Qc "$*"; }
-    installpkg() { pacman -S "$*"; }
-    pkglistaval() { pacman -Sl; }
-    pkglistinst() { pacman -Qqe; }
-    pkglistup() { pacman -Qu; }
+    getPkgChlog() { pacman -Qc "${@//;// }"; }
+    pkginstall() { pacman -S "${@//;// }"; }
+    pkglsaval() { pacman -Sl; }
+    pkglsinst() { pacman -Qqe; }
+    pkglsup() { pacman -Qu; }
+    pkgreinstall() { pacman -S "${@//;// }"; }
+    pkguninstall() { pacman -Rs "${@//;// }"; }
+    pkgupdate() { pacman -Syu "${@//;// }"; }
     refreshrepo() { pacman -Sy; }
-    reinstallpkg() { pacman -S "$*"; }
     repocheck() { pacman -Dk; }
-    uninstallpkg() { pacman -Rs "$*"; }
-    updatepkg() { pacman -Syu "$*"; }
-    updatesys() { pacman -Syu; }
+    sysupdate() { pacman -Syu; }
 elif [ "$OSFAMILY" = 'sun' ] && [ -x "$(command -v pkg)" ]; then  # Solaris IPS (pkg)
-    installpkg() { pkg install "$*"; }
-    pkglistinst() { pkg list; }
+    pkginstall() { pkg install "${@//;// }"; }
+    pkglsinst() { pkg list; }
+    pkguninstall() { pkg uninstall "${@//;// }"; }
+    pkgupdate() { pkg upgrade "${@//;// }"; }
     repocheck() { pkg verify; }
-    uninstallpkg() { pkg uninstall "$*"; }
-    updatepkg() { pkg upgrade "$*"; }
-    updatesys() { pkg update; }
+    sysupdate() { pkg update; }
 elif [ "$OSFAMILY" = 'sun' ] && [ -x "$(command -v pkgutil)" ]; then  # Solaris pkgutil
-    installpkg() { pkgutil --install "$*"; }
+    pkginstall() { pkgutil --install "${@//;// }"; }
+    pkgreinstall() { pkgutil --force --install "${@//;// }"; }
+    pkguninstall() { pkgutil --remove "${@//;// }"; }
+    pkgupdate() { pkgutil --upgrade "${@//;// }"; }
     refreshrepo() { pkgutil --catalog; }
-    reinstallpkg() { pkgutil --force --install "$*"; }
     repocheck() { pkgutil --syscheck; }
-    uninstallpkg() { pkgutil --remove "$*"; }
-    updatepkg() { pkgutil --upgrade "$*"; }
 elif [ -d /etc/yum ] && [ -x "$(command -v yum)" ]; then  # RedHat Linux Yum
     cleanrepocache() { sudo yum clean all; }
     cleanrpmdb() { sudo yum clean rpmdb; }
     clrpkg() { sudo yum autoremove; }
-    downgradepkg() { sudo yum downgrade "$*"; }
-    getPkgChlog() { yum changelog "$*"; }
-    installpkg() { sudo yum install "$*"; }
+    getPkgChlog() { yum changelog "${@//;// }"; }
+    pkgdowngrade() { sudo yum downgrade "${@//;// }"; }
+    pkginfo() { yum info "${@//;// }"; }
+    pkginstall() { sudo yum install "${@//;// }"; }
+    pkglsall() { yum list all; }
+    pkglsaval() { yum list available; }
+    pkglsinst() { yum list installed; }
+    pkglsup() { yum list updates; }
+    pkgreinstall() { sudo yum reinstall "${@//;// }"; }
+    pkguninstall() { sudo yum remove "${@//;// }"; }
+    pkgupdate() { sudo yum update "${@//;// }"; }
     refreshrepo() { sudo yum makecache; }
-    reinstallpkg() { sudo yum reinstall "$*"; }
     repocheck() { sudo yum check; }
-    pkginfo() { yum info "$*"; }
-    pkglistall() { yum list all; }
-    pkglistaval() { yum list available; }
-    pkglistinst() { yum list installed; }
-    pkglistup() { yum list updates; }
-    uninstallpkg() { sudo yum remove "$*"; }
-    updatepkg() { sudo yum update "$*"; }
-    updatesys() { sudo yum upgrade; }
+    sysupdate() { sudo yum upgrade; }
 elif [ -d /etc/zypp ] && [ -x "$(command -v zypper)" ]; then  # OpenSUSE Zypper
     cleanrepocache() { zypper clean; }
     clrpkg() { zypper remove --clean-deps; }
-    getPkgChlog() { rpm -q --changelog "$*"; }
-    installpkg() { zypper install "$*"; }
-    pkglistall() { zypper packages; }
-    pkglistinst() { zypper search --installed-only; }
-    pkglistup() { zypper list-updates; }
+    getPkgChlog() { rpm -q --changelog "${@//;// }"; }
+    pkginstall() { zypper install "${@//;// }"; }
+    pkglsall() { zypper packages; }
+    pkglsinst() { zypper search --installed-only; }
+    pkglsup() { zypper list-updates; }
+    pkgreinstall() { zypper install --force "${@//;// }"; }
+    pkguninstall() { zypper remove "${@//;// }"; }
     refreshrepo() { zypper refresh; }
-    reinstallpkg() { zypper install --force "$*"; }
     repocheck() { zypper verify; }
-    uninstallpkg() { zypper remove "$*"; }
-    updatesys() { zypper update; }
+    sysupdate() { zypper update; }
 fi
 [ "$PROFILE_SHELL" = 'bash' ] && set +a
 
@@ -411,18 +464,28 @@ fi
 
 # Compression Utility Aliases
 
-[ -x "$(command -v 7z)" ] && alias un7z='7z e'
-[ -x "$(command -v bunzip2)" ] && alias unbzip2='bunzip2'
-[ -x "$(command -v gunzip)" ] && alias ungzip='gunzip'
-[ -x "$(command -v lzop)" ] && alias unlzop='lzop -d'
-[ -x "$(command -v msexpand)" ] && alias unmscompress='msexpand'
-[ -x "$(command -v p7zip)" ] && alias unp7zip='p7zip --decompress'
-[ -x "$(command -v runzip)" ] && alias unrzip='runzip'
-[ -x "$(command -v tar)" ] && alias untar='tar --extract -f' && alias untgz='tar -xzf'
+[ -x "$(command -v 7z)" ] && [ ! -x "$(command -v un7z)" ] && alias un7z='7z e'
+[ -x "$(command -v bunzip2)" ] && [ ! -x "$(command -v unbzip2)" ] && alias unbzip2='bunzip2'
+[ -x "$(command -v gunzip)" ] && [ ! -x "$(command -v ungzip)" ] && alias ungzip='gunzip'
+[ -x "$(command -v lzop)" ] && [ ! -x "$(command -v unlzop)" ] && alias unlzop='lzop -d'
+[ -x "$(command -v msexpand)" ] && [ ! -x "$(command -v unmscompress)" ] && alias unmscompress='msexpand'
+[ -x "$(command -v p7zip)" ] && [ ! -x "$(command -v unp7zip)" ] && alias unp7zip='p7zip --decompress'
+[ -x "$(command -v runzip)" ] && [ ! -x "$(command -v unrzip)" ] && alias unrzip='runzip'
+[ -x "$(command -v tar)" ] && [ ! -x "$(command -v untar)" ] && alias untar='tar --extract -f' && alias untgz='tar -xzf'
 
 # Cryptography Aliases
 
 if [ -x "$(command -v openssl)" ]; then
+    alias Crypto_brainpool512='openssl ecparam -name brainpoolP512t1 -genkey'
+    alias Crypto_c2tnb431r1='openssl ecparam -name c2tnb431r1 -genkey'
+    alias Crypto_prime256='openssl ecparam -name prime256v1 -genkey'
+    alias Crypto_secp521='openssl ecparam -name secp521r1 -genkey'
+    alias Crypto_sect571k1='openssl ecparam -name sect571k1 -genkey'
+    alias Crypto_sect571r1='openssl ecparam -name sect571r1 -genkey'
+    alias CryptoCurves='openssl ecparam -list_curves'
+    alias CryptoPrime='openssl prime -generate -bits'
+    alias CryptoPswd='openssl passwd'
+    alias CryptoRand='openssl rand -base64'
     alias md2='openssl dgst -md2'
     alias md5='openssl dgst -md5'
     alias mdc2='openssl dgst -mdc2'
@@ -432,16 +495,6 @@ if [ -x "$(command -v openssl)" ]; then
     alias sha256='openssl dgst -sha256'
     alias sha384='openssl dgst -sha384'
     alias sha512='openssl dgst -sha512'
-    alias Crypto_prime256='openssl ecparam -name prime256v1 -genkey'
-    alias Crypto_secp521='openssl ecparam -name secp521r1 -genkey'
-    alias Crypto_sect571r1='openssl ecparam -name sect571r1 -genkey'
-    alias Crypto_sect571k1='openssl ecparam -name sect571k1 -genkey'
-    alias Crypto_c2tnb431r1='openssl ecparam -name c2tnb431r1 -genkey'
-    alias Crypto_brainpool512='openssl ecparam -name brainpoolP512t1 -genkey'
-    alias CryptoCurves='openssl ecparam -list_curves'
-    alias CryptoPswd='openssl passwd'
-    alias CryptoPrime='openssl prime -generate -bits'
-    alias CryptoRand='openssl rand -base64'
 fi
 
 # Filesystem Maneuvering Aliases
@@ -472,15 +525,15 @@ alias ltm='ls -a -l -F -t'
 
 # File Manipulation Aliases
 
-alias cptree='cp -R'
+[ -z "$(command -v cptree)" ] && alias cptree='cp -R'
 [ -z "$(command -v del)" ] && alias del='rm'
-alias hardlink='ln'
+[ -z "$(command -v hardlink)" ] && alias hardlink='ln'
 if [ -n "$(command -v chattr)" ]; then
     alias mkimmutable='chattr +i'
     alias mkmutable='chattr -i'
 fi
-alias softlink='ln -s'
-alias softln='ln -s'
+[ -z "$(command -v softlink)" ] && alias softlink='ln -s'
+[ -z "$(command -v softln)" ] && alias softln='ln -s'
 [ -z "$(command -v trash)" ] && alias trash='mv -f -t "${HOME}/.local/share/Trash"'
 
 # Kernel Module Management Aliases
@@ -524,35 +577,34 @@ fi
 
 # Package Management Aliases
 
-if [ -x "$(command -v dpkg)" ]; then
-    alias filepkgorigin='dpkg-query -S'
-    alias filesfrompkg='dpkg-query -L'
-    alias pkglistinst='dpkg --list | grep ^i'
-fi
 if [ -x "$(command -v npm)" ]; then
-    alias cleanjscache='sudo npm cache clean'
-    alias installjs='sudo npm install -g'
-    alias pkglistinstjs='npm -g ls --depth 0'
-    alias repocheckjs='sudo npm doctor'
-    alias uninstalljs='sudo npm uninstall -g'
-    alias updatejs='sudo npm update -g'
+    alias cleanjscache='sudo -H npm cache clean'
+    alias jsinstall='sudo -H npm install -g'
+    alias jspkglsinst='npm -g ls --depth 0'
+    alias jsrepocheck='sudo -H npm doctor'
+    alias jsuninstall='sudo -H npm uninstall -g'
+    alias jsupdate='sudo -H npm update -g'
 fi
 if [ -x "$(command -v pear)" ]; then
-    alias installphp='sudo pear install'
-    alias pkglistinstphp='pear list'
-    alias uninstallphp='sudo pear uninstall'
-    alias updatephp='sudo pear upgrade'
+    alias phpinstall='sudo -H pear install'
+    alias phppkglsinst='pear list'
+    alias phpuninstall='sudo -H pear uninstall'
+    alias phpupdate='sudo -H pear upgrade'
 fi
 if [ -x "$(command -v pip3)" ]; then
-    alias getpkgsrcpy='pip3 download'
-    alias installpy='sudo -H pip3 install'
-    alias pkglistinstpy='pip3 freeze --all'
-    alias pkglistuppy='pip3 list -o'
-    alias pkgsrchpy='pip3 search'
-    alias reinstallpy='sudo -H pip3 install --upgrade --force-reinstall'
-    alias repocheckpy='sudo -H pip3 check'
-    alias uninstallpy='sudo -H pip3 uninstall'
-    alias updatepy='sudo -H pip3 install -U'
+    alias findpypkg='pip3 search'
+    alias genpyreqfile='pip3 freeze > ./requirements.txt'
+    alias getpypkgsrc='pip3 download'
+    alias pyinstall='sudo -H pip3 install'
+    alias pypkglsinst='pip3 list --format=columns'
+    alias pypkglsnonreq='pip3 list --not-required --format=columns'
+    alias pypkglsup='pip3 list -o --format=columns'
+    alias pypkglsusr='pip3 list --user --format=columns'
+    alias pyreinstall='sudo -H pip3 install --upgrade --force-reinstall'
+    alias pyrepocheck='sudo -H pip3 check'
+    alias pyuninstall='sudo -H pip3 uninstall'
+    alias pyupdate='sudo -H pip3 install -U'
+    pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
 fi
 
 # Settings Manipulation Aliases
@@ -567,6 +619,8 @@ if [ -x "$(command -v gsettings)" ]; then
         alias setgtktheme='gsettings set org.mate.desktop.interface gtk-theme'
     elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then
         alias setgtktheme='gsettings set org.gnome.desktop.interface gtk-theme'
+    elif ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]); then
+        alias setgtktheme='xfconf-query -c xsettings -p /Net/ThemeName -s'
     fi
 fi
 
@@ -577,7 +631,7 @@ alias uppercase="tr '[:lower:]' '[:upper:]'"
 
 # System Control Aliases
 
-[ -x "$(command -v fstrim)" ] && alias cleanssd='sudo fstrim -a -v'
+[ -x "$(command -v fstrim)" ] && alias cleanssd='sudo fstrim -a -v'  # Clean unused blocks on SSD drives
 if [ "$(id -u)" -eq 0 ] && [ -f /proc/sys/vm/drop_caches ]; then
     alias freepagecache='echo 1 > /proc/sys/vm/drop_caches'
     alias freeinodes='echo 2 > /proc/sys/vm/drop_caches'
@@ -585,7 +639,7 @@ if [ "$(id -u)" -eq 0 ] && [ -f /proc/sys/vm/drop_caches ]; then
 fi
 [ -x "$(command -v swapon)" ] && alias freeswap='sudo swapoff -a && sleep 2 && sudo swapon -a'
 [ -f /var/log/Xorg.0.log ] && alias gpumeminfo="grep -F --color 'Memory:' /var/log/Xorg.0.log"
-alias killjobs='kill "$(jobs -ps)" 2>/dev/null'
+alias killjobs='kill "$(jobs -ps)" 2> /dev/null'
 [ -x "$(command -v systemctl)" ] && alias lsenabledservices='systemctl list-unit-files | grep -F enabled'
 [ -x "$(command -v free)" ] && alias meminfo='free -m -l -t'
 [ -x "$(command -v xset)" ] && alias monitoroff='xset dpms force off'
@@ -602,7 +656,7 @@ alias viewmount='mount | column -t'
 alias CLEAR='clear'
 alias clr='clear'
 alias CLR='clear'
-if [ "$PROFILE_SHELL" = 'bash' ]; then
+if [ "$PROFILE_SHELL" = 'bash' ]; then  # Clear the terminal and history prior to exiting
     alias clsh='clear; history -c; echo "" > ${HOME}/.bash_history; exit'
 elif [ "$PROFILE_SHELL" = 'fish' ]; then
     alias clsh='clear; history -c; echo "" > ${HOME}/.local/share/fish/fish_history; exit'
@@ -628,12 +682,13 @@ fi
 alias ConsoleMessage='echo'
 [ -x "$(command -v du)" ] && [ -x "$(command -v less)" ] && alias du.='du -ach | sort -h | less'
 [ -x "$(command -v df)" ] && [ -x "$(command -v less)" ] && alias df.='df -a -h -T | less'
+alias findpypling='grep -F "#!/usr/bin/env python3" ./*'  # Find files that begin with a Python hashpling
 alias findr='grep -I -i -n -q -r -s --mmap .*'
 alias findrx='grep -E -I -n -q -r -s --mmap .*'
-( ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'unity' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'UNITY' ]) ) && [ -x "$(command -v compiz)" ] && alias rgui='killall -SIGHUP compiz'
+[ -x "$(command -v compiz)" ] && alias rgui='pidof compiz && killall -SIGHUP compiz'  # Restart Compiz (fixes memory leak)
 alias rless='less -r'
 alias lessn='less -N'
-alias today="date '+%m/%d/%y'"
+alias today="date +%m/%d/%y"
 
 
 # FUNCTIONS #
@@ -646,7 +701,7 @@ alias today="date '+%m/%d/%y'"
 # File Manipulation Functions
 
 if [ "$PLATFORM" = 'linux' ] || [ "$PLATFORM" = 'cygwin' ]; then
-    copyFileOwnership() {
+    copyFileOwnership() {  # Copy the ownership and permissions of one file to another
         if [ -z "$1" ] || [ -z "$2" ]; then
             printf 'ERROR: A parameter is required!\n' >&2
         else
@@ -656,65 +711,80 @@ if [ "$PLATFORM" = 'linux' ] || [ "$PLATFORM" = 'cygwin' ]; then
     }
 fi
 
-finddir() {
+finddir() {  # Find a directory with the given name (without regex); searches from CWD if no directory is specified
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
+        printf 'Find a directory with the given name (without regex); searches from CWD if no directory is specified\nUsage: finddir DIR_NAME [LOOK_IN_DIR]\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Find a directory with the given name (without regex); searches from CWD if no directory is specified\nUsage: finddir DIR_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -mount -type d -name "$1" -exec printf '%s\n' '{}' + 2>/dev/null
+        find "$2" -mount -type d -name "$1" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find . -mount -type d -name "$1" -exec printf '%s\n' '{}' + 2>/dev/null
+        find . -mount -type d -name "$1" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
-finddirx() {
+finddirx() {  # Find a directory with the given name (with regex); searches from / if no directory is specified
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
+        printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2>/dev/null
+        find "$2" -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2>/dev/null
+        find / -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
-findfile() {
+findfile() {  # Find a file with the given name (without regex); searches from CWD if no directory is specified
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
+        printf 'Find a file with the given name (without regex); searches from CWD if no directory is specified\nUsage: findfile FILE_NAME [LOOK_IN_DIR]\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Find a file with the given name (without regex); searches from CWD if no directory is specified\nUsage: findfile FILE_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -mount -type f -name "$1" -exec printf '%s\n' '{}' + 2>/dev/null
+        find "$2" -mount -type f -name "$1" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find . -mount -type f -name "$1" -exec printf '%s\n' '{}' + 2>/dev/null
+        find . -mount -type f -name "$1" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
-findfilex() {
+findfilex() {  # Find a file with the given name (with regex); searches from / if no directory is specified
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
+        printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2>/dev/null
+        find "$2" -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2>/dev/null
+        find / -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
-rmfiles() {
+rmfiles() {  # Removes files that match the given regex pattern
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
+        printf 'Removes files that match the given regex pattern\n--preview will print filenames instead of deleting them\nUsage: rmfiles [--preview] PATTERN [LOOK_IN_DIR]\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Removes files that match the given regex pattern\n--preview will print filenames instead of deleting them\nUsage: rmfiles [--preview] PATTERN [LOOK_IN_DIR]\n'
     elif [ "$1" = '--test' ] || [ "$1" = '-t' ] || [ "$1" = '--preview' ]; then
         if [ -n "${3:-}" ] && [ -d "$3" ]; then
-            find "$3" -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2>/dev/null
+            find "$3" -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2> /dev/null
         elif [ -n "${2:-}" ]; then
-            find . -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2>/dev/null
+            find . -type f -regextype awk -regex ".*/${2}" -exec printf '%s\n' '{}' + 2> /dev/null
         else
             printf 'ERROR: Parameters are missing or invalid!\n' >&2
         fi
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2>/dev/null
+        find "$2" -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
     else
-        find . -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2>/dev/null
+        find . -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
     fi
 }
 
-searchInPath() {
+searchInPath() {  # Search for a filename in $PATH
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
@@ -723,9 +793,9 @@ searchInPath() {
         done
     fi
 }
-alias findinpath='searchInPath'
+alias findinpath=searchInPath
 
-searchInPkgPath() {
+searchInPkgPath() {  # Search for a filename in $PKG_CONFIG_PATH
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
@@ -737,10 +807,9 @@ searchInPkgPath() {
 
 # Networking Functions
 
-# Determine if the network is up by looking for any non-loopback internet network interfaces
-CheckForNetwork() {
+CheckForNetwork() {  # Determine if the network is up by looking for any non-loopback internet network interfaces
     if [ -z "${NETWORKUP:-}" ]; then
-        test="$(ifconfig -a inet 2>/dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)"
+        test="$(ifconfig -a inet 2> /dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)"
         if [ "${test}" -gt 0 ]; then
             NETWORKUP='-YES-'
         else
@@ -754,7 +823,7 @@ downloadtar() { wget -c "$1" -O - | tar -xz; }
 
 # Process Control Functions
 
-GetPID() {
+GetPID() {  # Return the PID of a process (if found)
     program="$1"
     pidfile="${PIDFILE:=/var/run/${program}.pid}"
     pid=''
@@ -778,23 +847,29 @@ GetPID() {
 }
 
 if [ -x "$(command -v ps)" ]; then
-    pscpu10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR!=1) { print } }' | sort -nr -k 5 | awk 'FNR <= 10'; echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
-    psmem10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR!=1) { print } }' | sort -nr -k 6 | awk 'FNR <= 10'; echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
+    pscpu10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND' && ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR != 1) { print } }' | sort -nr -k 5 | awk 'FNR <= 10' && echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
+    psmem10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND' && ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR != 1) { print } }' | sort -nr -k 6 | awk 'FNR <= 10' && echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
 fi
 
 # System Control Functions
 
-ampupcpu() {
-    for FILE in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-        [ ! -w "$FILE" ] && break
-        [ -w "$FILE" ] && echo -n performance > "$FILE"
-    done
-}
+if [ -r /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
+    ampupcpu_helper() {  # Set the CPU to performance mode (helper function)
+        for FILE in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+            [ ! -w "$FILE" ] && break
+            [ -w "$FILE" ] && echo -n performance > "$FILE"
+        done
+    }
+    ampupcpu() {  # Set the CPU to performance mode
+        sudo -H sh -c "ampupcpu_helper"
+    }
+fi
 
-chkhw() {
+chkhw() {  # Check hardware sensors
+    [ -x "$(command -v inxi)" ] && inxi -B -s -x -x -x
+    [ -x "$(command -v acpi)" ] && acpi -i -s -V
+    [ -x "$(command -v nvidia-smi)" ] && nvidia-smi -q -d "POWER,TEMPERATURE" | awk 'NR > 6'
     [ -x "$(command -v sensors)" ] && sensors
-    [ -x "$(command -v acpi)" ] && acpi -Vi
-    [ -x "$(command -v nvidia-smi)" ] && nvidia-smi
 }
 
 [ -x "$(command -v systemctl)" ] && enabledservices() { systemctl list-unit-files | grep -F enabled | awk '{ print $1 }' | sort; }
@@ -813,11 +888,11 @@ fi
 # Miscellaneous Functions
 
 if [ -x "$(command -v awk)" ]; then
-    cmdusage() {
+    cmdusage() {  # Create table listing command usage with percentages
         history | awk '{ CMD[$2]++; count++; } END { for (a in CMD) print CMD[a] " " CMD[a] / count * 100 "% " a; }' | grep -F -v './' | column -c3 -s ' ' -t | sort -n -r | nl | head -n10
     }
 
-    colortest() {
+    colortest() {  # Test the terminal's ability to produce colors
         awk 'BEGIN {
             for (column = 0; column < 256; column++) {
                 g = ((column * 510) / 255);
@@ -833,14 +908,14 @@ fi
 lastval() { printf '%s\n' "$?"; }
 
 if [ -x "$(command -v pathchk)" ]; then
-    testpathnames() {
+    testpathnames() {  # Test if the files in the given directory are using Posix-compliant pathnames
         if [ -n "$1" ] && [ -d "$1" ]; then
             find "$1" -exec pathchk -p -P '{}' +
         else
             find ./ -exec pathchk -p -P '{}' +
         fi
     }
-    validatepathnames() {
+    validatepathnames() {  # Test if the files in the given directory are using valid pathnames
         if [ -n "$1" ] && [ -d "$1" ]; then
             find "$1" -exec pathchk '{}' +
         else
@@ -850,43 +925,45 @@ if [ -x "$(command -v pathchk)" ]; then
 fi
 
 if [ -d /usr/share/nano ]; then
-    lsnanolangs() {
+    lsnanolangs() {  # List all programming languages supported by Nano
         find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "%s\n" '{}' +
     }
-    refreshnanorc() {
+    refreshnanorc() {  # Regenerate the ALL.nanorc file
         find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\n" '{}' + | sudo tee /usr/share/nano/ALL.nanorc
     }
 elif [ -d /usr/local/share/nano ]; then
-    lsnanolangs() {
+    lsnanolangs() {  # List all programming languages supported by Nano
         find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "%s\n" '{}' +
     }
-    refreshnanorc() {
+    refreshnanorc() {  # Regenerate the ALL.nanorc file
         find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\n" '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
     }
 fi
 
-rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
+rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
 
 if [ -x "$(command -v gsettings)" ]; then
-    setwallpaper() {
+    setwallpaper() {  # Set the desktop wallpaper to the specified image
         if [ -z "$1" ]; then
             printf 'ERROR: A parameter is required!\n' >&2
         elif [ ! -r "$1" ]; then
             printf '%s: The specified file is non-readable or non-existent!\n' "$1" >&2
         else
-            if ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]); then
+            if ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]); then  # Mate
                 gsettings set org.mate.desktop.background picture-filename "$1"
                 gsettings set org.mate.desktop.screensaver picture-uri "$1"
-            elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then
+            elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then  # GNOME
                 gsettings set org.gnome.desktop.background picture-uri "$1"
                 gsettings set org.gnome.desktop.screensaver picture-uri "$1"
+            elif ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]); then  # XFCE
+                xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set "$1"
             fi
         fi
     }
 fi
 
 if [ -x "$(command -v sqlite3)" ]; then
-    sqlvacuum() {
+    sqlvacuum() {  # Vacuum the specified SQLite database files
         for file in "$@"; do
             if [ ! -r "$file" ]; then
                 printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
@@ -902,33 +979,41 @@ fi
 
 
 if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
+    # Source/Import the Bash autocompletion feature
     if [ -r /etc/bash_completion ]; then
         . /etc/bash_completion
     elif [ -r /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
     fi
-    # Autocomplete package names for the system's package installation command
-    if [ -n "$(command -v installpkg)" ]; then
-        if [ -x "$(command -v apt-get)" ] && [ -x "$(command -v apt-cache)" ]; then
-            _installpkg_autocomplete() { mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2"); }
-            complete -F _installpkg_autocomplete -o nospace installpkg
-            readonly -f _installpkg_autocomplete
-        elif [ -x "$(command -v dnf)" ]; then
-            _installpkg_autocomplete() { mapfile -t COMPREPLY < <(dnf list all "$2"); }
-            complete -F _installpkg_autocomplete -o nospace installpkg
-            readonly -f _installpkg_autocomplete
-        elif [ -x "$(command -v emerge)" ]; then
-            _installpkg_autocomplete() { mapfile -t COMPREPLY < <(emerge -ep world "$2"); }
-            complete -F _installpkg_autocomplete -o nospace installpkg
-            readonly -f _installpkg_autocomplete
-        elif [ -x "$(command -v yum)" ]; then
-            _installpkg_autocomplete() { mapfile -t COMPREPLY < <(yum list all "$2"); }
-            complete -F _installpkg_autocomplete -o nospace installpkg
-            readonly -f _installpkg_autocomplete
-        elif [ -x "$(command -v zypper)" ]; then
-            _installpkg_autocomplete() { mapfile -t COMPREPLY < <(zypper packages "$2"); }
-            complete -F _installpkg_autocomplete -o nospace installpkg
-            readonly -f _installpkg_autocomplete
+    # Autocomplete package names for the system's package installation, uninstallation, and reinstallation commands
+    if [ -n "$(command -v pkglsall)" ] && [ -n "$(command -v pkginstall)" ]; then
+        _pkginstall_autocomplete() { mapfile -t COMPREPLY < <(pkglsall "$2"); }
+        if [ -n "$(command -v _pkginstall_autocomplete)" ]; then
+            complete -F _pkginstall_autocomplete -o nospace pkginstall
+            complete -F _pkginstall_autocomplete -o nospace pkguninstall
+            complete -F _pkginstall_autocomplete -o nospace pkgreinstall
+            readonly -f _pkginstall_autocomplete
+        fi
+    fi
+    # Autocomplete Python package names for pip3
+    if [ -n "$(command -v pip3)" ]; then
+        _pip_tmp() { pip3 list --format=columns | awk '{ if (NR > 2) { print } }' | cut -d ' ' -f 1 | awk "/^${1}/"; }
+        _pip3_autocomplete() { mapfile -t COMPREPLY < <(_pip_tmp "$2"); }
+        if [ -n "$(command -v _pip3_autocomplete)" ]; then
+            complete -F _pip3_autocomplete -o nospace pyinstall
+            complete -F _pip3_autocomplete -o nospace pyreinstall
+            complete -F _pip3_autocomplete -o nospace pyuninstall
+            complete -F _pip3_autocomplete -o nospace pyupdate
+            readonly -f _pip3_autocomplete
+        fi
+    fi
+    # Autocomplete make targets
+    if [ -n "$(command -v make)" ]; then
+        _make_target_tmp() { make -pqs | sed '/^.+:=.*$/d; /^#.*$/d; /^\-.*$/d;' | grep -o -E '^[a-zA-Z0-9_\-]+:.*$' | cut -d ':' -f 1 | awk "/^${1}/"; }
+        _make_target_autocomplete() { mapfile -t COMPREPLY < <(_make_target_tmp "$2"); }
+        if [ -n "$(command -v _make_autocomplete)" ]; then
+            complete -F _make_target_autocomplete -o nospace make
+            readonly -f _make_target_autocomplete
         fi
     fi
 fi

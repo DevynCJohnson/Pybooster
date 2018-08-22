@@ -3,7 +3,7 @@
 // kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 // @brief Enhanced & Extended XKB Keyboard Layout (Geometry)
 // @file usx_geometry
-// @version 2018.04.27
+// @version 2018.08.22
 // @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 // @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 

@@ -1,11 +1,11 @@
 [Icon Theme]
-Name=Opticons
 Comment=Optimized icon theme designed to be intuitive, descriptive, complete, and standards-compliant
-Inherits=Adwaita,hicolor
+Directories=actions,animations,apps,categories,devices,emblems,emotes,filesystems,intl,mimetypes,places,social,spinner,status,stock
 Example=text-x-python
 Hidden=false
-Directories=actions,animations,apps,categories,devices,emblems,emotes,filesystems,intl,mimetypes,places,social,spinner,status,stock
+Inherits=Adwaita,hicolor
 KDE-Extensions=.svg
+Name=Opticons
 
 [actions]
 Context=Actions

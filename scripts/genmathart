@@ -5,7 +5,7 @@
 """@brief Generate art using math and export as PNG files or math formulas
 
 @file genmathart
-@version 2017.12.25
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,11 +38,12 @@ from itertools import repeat
 from multiprocessing import cpu_count, Pool, Process, ProcessError, Queue
 from os import urandom
 from os.path import exists, expanduser, isdir, isfile
-from pickle import dumps, loads
+from pickle import dumps, loads  # nosec
 from sys import stderr, stdout
 from time import strftime
+from typing import List
 
-from pybooster.xmath import clamp, cot, csc, phi, sec
+from pybooster.xmath import clamp, csc, cvc, hvc, phi, sec
 from PIL import Image
 
 try:  # Random Modules
@@ -74,6 +75,9 @@ RESOLUTION_PAIRS = (
 
 
 PICDIR = expanduser(r'~') + r'/Pictures/'
+
+
+TAU = 2.0 * pi
 
 
 # VARIABLE CLASSES #
@@ -111,7 +115,7 @@ class Yvar:
 class Multiply:
     """Class for multiplication expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create multiplication expression"""
         self.lhs = buildexpr(rand_object, prob * prob)
         self.rhs = buildexpr(rand_object, prob * prob)
@@ -122,7 +126,7 @@ class Multiply:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate multiplication"""
-        return self.lhs.eval(x_var, y_var) * self.rhs.eval(x_var, y_var)
+        return self.lhs.eval(x_var, y_var) * self.rhs.eval(x_var, y_var)  # type: ignore
 
 
 # ADVANCED MATH CLASSES #
@@ -131,7 +135,7 @@ class Multiply:
 class Acos:
     """Class for arccosine expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using arccosine"""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 1.0)
@@ -142,13 +146,13 @@ class Acos:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate arccosine"""
-        return acos(clamp(self.num * self.arg.eval(x_var, y_var)))
+        return acos(clamp(self.num * self.arg.eval(x_var, y_var)))  # type: ignore
 
 
 class Atan:
     """Class for arctangent expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using arctangent"""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 4.0)
@@ -159,63 +163,77 @@ class Atan:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate arctangent"""
-        return atan(self.num * self.arg.eval(x_var, y_var))
+        return atan(self.num * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Cos:
     """Class for cosine expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using cosine"""
         self.arg = buildexpr(rand_object, prob * prob)
-        self.num = rand_object.choice([pi, rand_object.uniform(-1.0, 4.0)])
 
     def __str__(self) -> str:
         """Get string representation of cosine"""
-        return r'cos(' + str(self.num) + r'*' + str(self.arg) + r')'
+        return r'cos(pi*' + str(self.arg) + r')'
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate cosine"""
-        return cos(self.num * self.arg.eval(x_var, y_var))
-
-
-class Cot:
-    """Class for cotangent expressions in math formulas"""
-
-    def __init__(self, prob: float, rand_object: object) -> None:
-        """Create mathematical expression using cotangent"""
-        self.arg = buildexpr(rand_object, prob * prob)
-        self.num = rand_object.uniform(-1.0, 4.0)
-
-    def __str__(self) -> str:
-        """Get string representation of cotangent"""
-        return r'cot(' + str(self.num) + r'*' + str(self.arg) + r')'
-
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate cotangent"""
-        return cot(self.num * self.arg.eval(x_var, y_var))
+        return cos(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Csc:
     """Class for cosecant expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using cosecant"""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
         """Get string representation of cosecant"""
-        return r'csc(' + str(self.arg) + r')'
+        return r'csc(pi*' + str(self.arg) + r')'
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate cosecant"""
-        return csc(self.arg.eval(x_var, y_var))
+        return csc(pi * self.arg.eval(x_var, y_var))  # type: ignore
+
+
+class Cvc:
+    """Class for covercosine expressions in math formulas"""
+
+    def __init__(self, prob: float, rand_object: Random) -> None:
+        """Create mathematical expression using covercosine"""
+        self.arg = buildexpr(rand_object, prob * prob)
+
+    def __str__(self) -> str:
+        """Get string representation of covercosine"""
+        return r'cvc(pi*' + str(self.arg) + r')'
+
+    def eval(self, x_var: float, y_var: float) -> float:
+        """Evaluate covercosine"""
+        return cvc(pi * self.arg.eval(x_var, y_var))  # type: ignore
+
+
+class Hvc:
+    """Class for havercosine expressions in math formulas"""
+
+    def __init__(self, prob: float, rand_object: Random) -> None:
+        """Create mathematical expression using havercosine"""
+        self.arg = buildexpr(rand_object, prob * prob)
+
+    def __str__(self) -> str:
+        """Get string representation of havercosine"""
+        return r'hvc(pi*' + str(self.arg) + r')'
+
+    def eval(self, x_var: float, y_var: float) -> float:
+        """Evaluate havercosine"""
+        return hvc(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Log1P:
     """Class for log1p expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using log1p"""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 4.0)
@@ -227,16 +245,16 @@ class Log1P:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate log1p"""
-        return log1p(max(self.num * self.arg.eval(x_var, y_var), self.num2))
+        return log1p(max(self.num * self.arg.eval(x_var, y_var), self.num2))  # type: ignore
 
 
 class Phi:
     """Class for phi expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using phi"""
         self.arg = buildexpr(rand_object, prob * prob)
-        self.num = rand_object.uniform(-1.0, 4.0)
+        self.num = rand_object.uniform(0.01, 4.0)  # rand_object.choice([pi, rand_object.uniform(3.0, 3.2)])
 
     def __str__(self) -> str:
         """Get string representation of phi"""
@@ -244,49 +262,48 @@ class Phi:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate phi"""
-        return phi(self.num * self.arg.eval(x_var, y_var))
+        return phi(self.num * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Sec:
     """Class for secant expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using secant"""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
         """Get string representation of secant"""
-        return r'sec(' + str(self.arg) + r')'
+        return r'sec(tau*' + str(self.arg) + r')'
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate secant"""
-        return sec(self.arg.eval(x_var, y_var))
+        return sec(TAU * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Sin:
     """Class for sine pi expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using sine"""
         self.arg = buildexpr(rand_object, prob * prob)
-        self.num = rand_object.uniform(-1.0, 4.0)
 
     def __str__(self) -> str:
         """Get string representation of sine"""
-        return r'sin(' + str(self.num) + r'*' + str(self.arg) + r')'
+        return r'sin(pi*' + str(self.arg) + r')'
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate sine"""
-        return sin(self.num * self.arg.eval(x_var, y_var))
+        return sin(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Tan:
     """Class for tangent expressions in math formulas"""
 
-    def __init__(self, prob: float, rand_object: object) -> None:
+    def __init__(self, prob: float, rand_object: Random) -> None:
         """Create mathematical expression using tangent"""
         self.arg = buildexpr(rand_object, prob * prob)
-        self.num = rand_object.uniform(-1.0, 4.0)
+        self.num = rand_object.choice([pi, TAU])
 
     def __str__(self) -> str:
         """Get string representation of tangent"""
@@ -294,36 +311,46 @@ class Tan:
 
     def eval(self, x_var: float, y_var: float) -> float:
         """Evaluate tangent"""
-        return tan(self.num * self.arg.eval(x_var, y_var))
+        return tan(self.num * self.arg.eval(x_var, y_var))  # type: ignore
+
+
+# EXPRESSION BUILDING FUNCTIONS #
+
+
+def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
+    """Randomly select a mathematical expression"""
+    reseed(rand_object)
+    math_funcs = [Multiply, Cos, Csc, Cvc, Hvc, Sin]
+    math_vars = [Xvar, Yvar]
+    rare_funcs = [Acos, Log1P, Phi]
+    semirare_funcs = [Atan, Sec, Tan]
+    smooth_funcs = [Multiply, Cos, Hvc, Sin]
+    if prob <= 0.01 or prob > 1.0:
+        return rand_object.choice(math_vars)()
+    elif prob >= 0.05 or prob < 0.09:
+        return rand_object.choice(smooth_funcs)(prob, rand_object)
+    elif prob > 0.01 and prob < 0.05:
+        rand_object.shuffle(rare_funcs)
+        return rand_object.choice(rare_funcs)(prob, rand_object)
+    elif random() < prob + 0.11:  # nosec
+        rand_object.shuffle(math_funcs)
+        rand_object.shuffle(semirare_funcs)
+        return rand_object.choice(rand_object.choice([math_funcs, math_funcs, math_funcs, math_funcs, math_funcs, semirare_funcs]))(prob, rand_object)
+    return rand_object.choice(math_vars)()
+
+
+def getexpr_threaded(color_queue: Queue, prob: float = 0.99, rand_object: Random = None) -> None:
+    """Retrieve a mathematical expression generated by buildexpr"""
+    color_queue.put(buildexpr(rand_object, prob), block=False, timeout=None)
+    color_queue.close()
 
 
 # GENERAL FUNCTIONS #
 
 
-def buildexpr(rand_object: object, prob: float = 0.99) -> object:
-    """Randomly select a mathematical expression"""
-    reseed(rand_object)
-    math_funcs = [Multiply, Cos, Sin]
-    math_vars = [Xvar, Yvar]
-    rare_funcs = [Acos, Atan, Csc, Cot, Log1P, Phi, Sec, Tan]
-    if prob > 0.01 and prob < 0.06:
-        return rand_object.choice(rare_funcs)(prob, rand_object)
-    elif random() < prob:
-        rand_object.shuffle(math_funcs)
-        return rand_object.choice(math_funcs)(prob, rand_object)
-    return rand_object.choice(math_vars)()
-
-
-def getexpr_threaded(color_queue: object, prob: float = 0.99, rand_object: object = None) -> None:
-    """Retrieve a mathematical expression generated by buildexpr"""
-    reseed(rand_object)
-    color_queue.put(buildexpr(rand_object, prob), block=False, timeout=None)
-    color_queue.close()
-
-
-def format_for_starmap(headings: list, lst_of_lsts: list) -> list:
+def format_for_starmap(headings: list, lst_of_lsts: list) -> List[tuple]:
     """Prepend one item from headings to the list of lists; this will create the needed format for starmap"""
-    output = []
+    output: List = []
     i = 0
     for lst in lst_of_lsts:
         tmp = lst[:]
@@ -360,15 +387,15 @@ def get_suitable_height(width: int) -> int:
     return width
 
 
-def reseed(rand_object: object = None) -> None:
+def reseed(rand_object: Random = None) -> None:
     """Seed the random number generator; this function is multithreading and multiprocessing compatible"""
     if rand_object is None:
-        seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)
+        seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)  # nosec
         return
-    elif random() % 3 == 1 or random() % 3 == 2:
-        rand_object.seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % int(4294967295 / int(strftime(r'%M%m%S'))))
-        return
-    rand_object.seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)
+    rand_object.seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)  # nosec
+
+
+# PICKLED DATA FUNCTIONS #
 
 
 def datadump(_data: object) -> str:
@@ -393,16 +420,14 @@ def plot_image(red: object, green: object, blue: object, imgwidth: int = 600) ->
     red_plane = Image.new(r'L', (imgwidth, imgheight))
     green_plane = Image.new(r'L', (imgwidth, imgheight))
     blue_plane = Image.new(r'L', (imgwidth, imgheight))
-    for y_point in range(imgwidth):
+    for y_point in range(imgheight):
         for x_point in range(imgwidth):
             # Convert pixel location to [-1,1] coordinates and scale result to [0,255]
             x_plot = float(x_point - px_per_unit) / px_per_unit
             y_plot = -float(y_point - px_per_unit) / px_per_unit
-            red_plane.putpixel((x_point, y_point), int(red.eval(x_plot, y_plot) * 127.5 + 127.5))
-            green_plane.putpixel((x_point, y_point), int(green.eval(x_plot, y_plot) * 127.5 + 127.5))
-            blue_plane.putpixel((x_point, y_point), int(blue.eval(x_plot, y_plot) * 127.5 + 127.5))
-    # color_plane = ((int(red.eval(float(x_point - px_per_unit) / px_per_unit, -float(y_point - px_per_unit) / px_per_unit) * 127.5 + 127.5), int(green.eval(float(x_point - px_per_unit) / px_per_unit, -float(y_point - px_per_unit) / px_per_unit) * 127.5 + 127.5), int(blue.eval(float(x_point - px_per_unit) / px_per_unit, -float(y_point - px_per_unit) / px_per_unit) * 127.5 + 127.5)) for y_point in range(imgheight) for x_point in range(imgwidth))
-    # return Image.new(r'RGB', (imgwidth, imgheight)).putdata(list(color_plane))
+            red_plane.putpixel((x_point, y_point), int(red.eval(x_plot, y_plot) * 127.5 + 127.5))  # type: ignore
+            green_plane.putpixel((x_point, y_point), int(green.eval(x_plot, y_plot) * 127.5 + 127.5))  # type: ignore
+            blue_plane.putpixel((x_point, y_point), int(blue.eval(x_plot, y_plot) * 127.5 + 127.5))  # type: ignore
     return Image.merge(r'RGB', (red_plane, green_plane, blue_plane))
 
 
@@ -414,17 +439,17 @@ def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> 
     while True:
         # Try to generate a mathematical image, and retry if the math fails
         try:
-            # Prepare one thread per color-band
-            red_queue = Queue()
-            green_queue = Queue()
-            blue_queue = Queue()
-            red_worker = Process(group=None, target=getexpr_threaded, name=r'Red_Worker', args=(red_queue, local_rand.uniform(0.85, 0.99), Random()))
-            green_worker = Process(group=None, target=getexpr_threaded, name=r'Green_Worker', args=(green_queue, local_rand.uniform(0.85, 0.99), Random()))
-            blue_worker = Process(group=None, target=getexpr_threaded, name=r'Blue_Worker', args=(blue_queue, local_rand.uniform(0.85, 0.99), Random()))
-            # Generate math expressions representing the image's color
+            # Prepare & start one thread per color-band
+            red_queue: Queue = Queue()
+            red_worker = Process(group=None, target=getexpr_threaded, name=r'Red_Worker', args=(red_queue, local_rand.uniform(0.90, 0.999), Random()))
             red_worker.start()
+            green_queue: Queue = Queue()
+            green_worker = Process(group=None, target=getexpr_threaded, name=r'Green_Worker', args=(green_queue, local_rand.uniform(0.90, 0.999), Random()))
             green_worker.start()
+            blue_queue: Queue = Queue()
+            blue_worker = Process(group=None, target=getexpr_threaded, name=r'Blue_Worker', args=(blue_queue, local_rand.uniform(0.90, 0.999), Random()))
             blue_worker.start()
+            # Retrieve math expressions representing the image's color
             red = red_queue.get(block=True, timeout=None)
             red_worker.join(timeout=None)
             green = green_queue.get(block=True, timeout=None)
@@ -433,10 +458,14 @@ def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> 
             blue_worker.join(timeout=None)
             del red_worker, green_worker, blue_worker
             del red_queue, green_queue, blue_queue
+            # Ensure that the equation is suitable
+            if len(str(red)) > 128 or len(str(green)) > 128 or len(str(blue)) > 128:
+                continue
             # Create image using the generated expressions
-            image = plot_image(red, green, blue, imgwidth)
+            image: Image.Image = plot_image(red, green, blue, imgwidth)
             break
-        except (ArithmeticError, RecursionError, ValueError):
+        except (ArithmeticError, RecursionError, SystemError, ValueError):
+            reseed(local_rand)
             continue
         except MemoryError:
             red_worker.terminate()
@@ -466,7 +495,7 @@ def calc_from_maf(mafsection: str, maffile: configparser.ConfigParser, imgformat
     green = loaddata(maffile[mafsection][r'GreenCode'])
     blue = loaddata(maffile[mafsection][r'BlueCode'])
     # Create image using the loaded expressions
-    image = plot_image(red, green, blue, imgwidth)
+    image: Image.Image = plot_image(red, green, blue, imgwidth)
     image.save(outdir + mafsection + imgformatfext(imgformat), format=imgformat)
 
 
@@ -478,9 +507,6 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
         raise SystemExit(1)
     if num_imgs < 1:
         num_imgs = 1
-    # Setup
-    reseed()
-    fname = strftime(r'%m%d%H%M%S')
     # Create image using parallel processing
     maxpoolsize = cpu_count()
     if maxpoolsize > num_imgs:
@@ -502,6 +528,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
                 continue
             outputbuf = outputbuf + strbuf
         if outputbuf:
+            fname = strftime(r'%m%d%H%M%S')
             with open(outdir + fname + r'.maf', mode=r'wt', encoding=r'utf-8') as maf_file:
                 maf_file.write(outputbuf)
 
@@ -536,7 +563,7 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
             poolsize = maxpoolsize
         with Pool(poolsize) as threadpool:
             try:
-                threadpool.starmap(calc_from_maf, format_for_starmap(mafsections, repeat([maffile, imgformat, imgwidth, outdir], num_imgs)))
+                threadpool.starmap(calc_from_maf, format_for_starmap(mafsections, repeat([maffile, imgformat, imgwidth, outdir], num_imgs)))  # type: ignore
             except KeyboardInterrupt:
                 threadpool.close()
                 threadpool.terminate()

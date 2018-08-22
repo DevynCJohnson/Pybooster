@@ -161,6 +161,7 @@ XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
 XCompose text eol=lf linguist-documentation=false linguist-language=XCompose linguist-vendored=false
 *.dtd text eol=lf linguist-language=XML linguist-vendored=false
 *.glade text eol=lf linguist-generated=false linguist-language=XML linguist-vendored=false
+*.lang text eol=lf linguist-language=XML linguist-vendored=false
 *.mathml text eol=lf linguist-language=XML linguist-vendored=false
 *.rng text eol=lf linguist-language=XML linguist-vendored=false
 *.svg text eol=lf linguist-documentation=false linguist-language=XML linguist-vendored=false

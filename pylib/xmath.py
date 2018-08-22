@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,6 +34,7 @@ along with this software.
 
 from math import acos, asin, atan, cos, erf, log, sin, sqrt, tan
 from random import choice
+from typing import Union
 
 
 __all__ = [
@@ -59,29 +60,31 @@ __all__ = [
     r'ONE_THIRTEENTH',
     # TRIGONOMETRIC FUNCTIONS #
     r'cot',
-    r'covercos',
-    r'coversin',
     r'csc',
-    r'hacovercos',
-    r'hacoversin',
-    r'havercos',
-    r'haversin',
+    r'cvc',
+    r'cvs',
+    r'hcc',
+    r'hcv',
+    r'hvc',
+    r'hvs',
     r'sec',
-    r'vercos',
-    r'versin',
+    r'siv',
+    r'vcs',
     # INVERSE TRIGONOMETRIC FUNCTIONS #
     r'acot',
-    r'acovercos',
-    r'acoversin',
     r'acsc',
-    r'ahavercos',
-    r'ahaversin',
+    r'acvc',
+    r'acvs',
+    r'ahvc',
+    r'ahvs',
     r'asec',
-    r'avercos',
-    r'aversin',
+    r'asiv',
+    r'avcs',
     # EXTERNAL TRIGONOMETRIC FUNCTIONS #
     r'excsc',
     r'exsec',
+    # MISCELLANEOUS TRIGONOMETRIC FUNCTIONS #
+    r'crd',
     # LOGARITHMS #
     r'ln',
     r'napierianlog',
@@ -98,19 +101,21 @@ __all__ = [
     r'root11',
     r'root12',
     r'root13',
-    # MISCELLANEOUS #
-    r'clamp',
-    r'phi',
+    # NUMBER THEORY #
     r'factors',
-    r'crd',
-    r'degrees2radians',
-    r'radians2degrees',
+    r'phi',
+    # STATISTICS #
     r'showpercent',
-    r'int2many',
+    # PROBABILITY #
     r'dice',
     r'dice8',
     r'coinflip',
-    r'flipcoin'
+    r'flipcoin',
+    # MISCELLANEOUS #
+    r'clamp',
+    r'int2many',
+    r'degrees2radians',
+    r'radians2degrees'
 ]
 
 
@@ -192,18 +197,12 @@ ONE_THIRTEENTH = 0.076923077
 
 
 def cot(_num: float) -> float:
-    """Cotangent (Tangent Complement)"""
+    """Cotangent (Tangent Complement)
+
+    >>> cot(90.0)
+    -0.5012027833801532
+    """
     return 1.0 / tan(_num)
-
-
-def covercos(_num: float) -> float:
-    """Versed Cosine Complement (cvc)"""
-    return 1.0 + sin(_num)
-
-
-def coversin(_num: float) -> float:
-    """Versed Sine Complement (cvs, cosiv)"""
-    return 1.0 - sin(_num)
 
 
 def csc(_num: float) -> float:
@@ -211,23 +210,33 @@ def csc(_num: float) -> float:
     return 1.0 / sin(_num)
 
 
-def hacovercos(_num: float) -> float:
-    """Half-Versed Cosine Complement (hcc)"""
+def cvc(_num: float) -> float:
+    """Versed Cosine Complement (covercos)"""
+    return 1.0 + sin(_num)
+
+
+def cvs(_num: float) -> float:
+    """Versed Sine Complement (coversin, cosiv)"""
+    return 1.0 - sin(_num)
+
+
+def hcc(_num: float) -> float:
+    """Half-Versed Cosine Complement (hacovercos)"""
     return (1.0 + sin(_num)) * 0.5
 
 
-def hacoversin(_num: float) -> float:
-    """Half-Versed Sine Complement (hcv)"""
+def hcv(_num: float) -> float:
+    """Half-Versed Sine Complement (hacoversin)"""
     return (1.0 - sin(_num)) * 0.5
 
 
-def havercos(_num: float) -> float:
-    """Half-Versed Cosine (hac, hvc)"""
+def hvc(_num: float) -> float:
+    """Half-Versed Cosine (hac, havercos)"""
     return (1.0 + cos(_num)) * 0.5
 
 
-def haversin(_num: float) -> float:
-    """Half-Versed Sine (hvs, hv)"""
+def hvs(_num: float) -> float:
+    """Half-Versed Sine (haversin, hv)"""
     return (1.0 - cos(_num)) * 0.5
 
 
@@ -236,62 +245,62 @@ def sec(_num: float) -> float:
     return 1.0 / cos(_num)
 
 
-def vercos(_num: float) -> float:
-    """Versed Cosine (vcs)"""
-    return 1.0 + cos(_num)
-
-
-def versin(_num: float) -> float:
-    """Versed Sine (siv)"""
+def siv(_num: float) -> float:
+    """Versed Sine (versin, siv)"""
     return 1.0 - cos(_num)
+
+
+def vcs(_num: float) -> float:
+    """Versed Cosine (vercos)"""
+    return 1.0 + cos(_num)
 
 
 # INVERSE TRIGONOMETRIC FUNCTIONS #
 
 
-def acot(_num: int or float) -> float:
+def acot(_num: Union[float, int]) -> float:
     """Arccotangent"""
     return atan(1 / _num)
 
 
-def acovercos(_num: float) -> float:
-    """Versed Arccosine Complement (acvc)"""
-    return asin(1.0 + _num)
-
-
-def acoversin(_num: float) -> float:
-    """Versed Arcsine Complement (acvs, acosiv)"""
-    return asin(1.0 - _num)
-
-
-def acsc(_num: int or float) -> float:
+def acsc(_num: Union[float, int]) -> float:
     """Arccosecant"""
     return asin(1 / _num)
 
 
-def ahavercos(_num: float) -> float:
-    """Half-Versed Arccosine (ahac, ahvc)"""
+def acvc(_num: float) -> float:
+    """Versed Arccosine Complement (acovercos)"""
+    return asin(1.0 + _num)
+
+
+def acvs(_num: float) -> float:
+    """Versed Arcsine Complement (acoversin, acosiv)"""
+    return asin(1.0 - _num)
+
+
+def ahvc(_num: float) -> float:
+    """Half-Versed Arccosine (ahac, ahavercos)"""
     return 2.0 * acos(sqrt(_num))
 
 
-def ahaversin(_num: float) -> float:
-    """Half-Versed Arcsine (ahvs, ahv)"""
+def ahvs(_num: float) -> float:
+    """Half-Versed Arcsine (ahaversin, ahv)"""
     return 2.0 * asin(sqrt(_num))
 
 
-def asec(_num: int or float) -> float:
+def asec(_num: Union[float, int]) -> float:
     """Arcsecant"""
     return acos(1 / _num)
 
 
-def avercos(_num: float) -> float:
-    """Versed Arccosine (avcs)"""
-    return cos(1.0 + _num)
-
-
-def aversin(_num: float) -> float:
-    """Versed Arcsine (aver)"""
+def asiv(_num: float) -> float:
+    """Versed Arcsine (aver, aversin)"""
     return acos(1.0 - _num)
+
+
+def avcs(_num: float) -> float:
+    """Versed Arccosine (avercos)"""
+    return cos(1.0 + _num)
 
 
 # EXTERNAL TRIGONOMETRIC FUNCTIONS #
@@ -307,102 +316,7 @@ def exsec(_num: float) -> float:
     return (1.0 / cos(_num)) - 1.0
 
 
-# LOGARITHMS #
-
-
-def ln(_num: int or float) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
-    return log(_num, 2.718281828459045)
-
-
-def napierianlog(_num: int or float) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
-    return log(_num, 2.718281828459045)
-
-
-def naturallog(_num: int or float) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
-    return log(_num, 2.718281828459045)
-
-
-# ROOTS #
-
-
-def curt(_num: int or float) -> float:
-    """Cubed Root"""
-    return _num ** 0.333333333
-
-
-def root4(_num: int or float) -> float:
-    """Hypercubed Root"""
-    return _num ** 0.25
-
-
-def root5(_num: int or float) -> float:
-    """5th Root"""
-    return _num ** 0.2
-
-
-def root6(_num: int or float) -> float:
-    """6th Root"""
-    return _num ** 0.166666667
-
-
-def root7(_num: int or float) -> float:
-    """7th Root"""
-    return _num ** 0.142857143
-
-
-def root8(_num: int or float) -> float:
-    """8th Root"""
-    return _num ** 0.1250
-
-
-def root9(_num: int or float) -> float:
-    """9th Root"""
-    return _num ** 0.111111111
-
-
-def root10(_num: int or float) -> float:
-    """10th Root"""
-    return _num ** 0.1
-
-
-def root11(_num: int or float) -> float:
-    """11th Root"""
-    return _num ** 0.090909091
-
-
-def root12(_num: int or float) -> float:
-    """12th Root"""
-    return _num ** 0.083333333
-
-
-def root13(_num: int or float) -> float:
-    """13th Root"""
-    return _num ** 0.076923077
-
-
-# MISCELLANEOUS #
-
-
-def clamp(_num: float, smallest: float = -1.0, largest: float = 1.0) -> float:
-    """Clamp a value within the specified range"""
-    if _num > largest:
-        return largest
-    elif _num < smallest:
-        return smallest
-    return _num
-
-
-def phi(_num: float) -> float:
-    """Cumulative distribution function for the standard normal distribution"""
-    return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
-
-
-def factors(_num: int) -> set:
-    """Find prime factors"""
-    return set(x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup)
+# MISCELLANEOUS TRIGONOMETRIC FUNCTIONS #
 
 
 def crd(_num: float) -> float:
@@ -410,47 +324,173 @@ def crd(_num: float) -> float:
     return sin(_num * 0.5) * 2.0
 
 
-def degrees2radians(_degrees: float) -> float:
-    """Convert Degrees to Radians {(PI / 180) * Degrees}"""
-    return 0.017453292519943 * _degrees
+# LOGARITHMS #
 
 
-def radians2degrees(_radians: float) -> float:
-    """Convert Radians to Degrees {(180 / PI) * Radians}"""
-    return 57.29577951308232 * _radians
+def ln(_num: Union[float, int]) -> float:
+    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    return log(_num, 2.718281828459045)
 
 
-def showpercent(_portion: int or float, _total: int or float = 100) -> str:
+def napierianlog(_num: Union[float, int]) -> float:
+    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    return log(_num, 2.718281828459045)
+
+
+def naturallog(_num: Union[float, int]) -> float:
+    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    return log(_num, 2.718281828459045)
+
+
+# ROOTS #
+
+
+def curt(_num: Union[float, int]) -> float:
+    """Cubed Root"""
+    return _num ** 0.333333333
+
+
+def root4(_num: Union[float, int]) -> float:
+    """Hypercubed Root"""
+    return _num ** 0.25
+
+
+def root5(_num: Union[float, int]) -> float:
+    """5th Root"""
+    return _num ** 0.2
+
+
+def root6(_num: Union[float, int]) -> float:
+    """6th Root"""
+    return _num ** 0.166666667
+
+
+def root7(_num: Union[float, int]) -> float:
+    """7th Root"""
+    return _num ** 0.142857143
+
+
+def root8(_num: Union[float, int]) -> float:
+    """8th Root"""
+    return _num ** 0.1250
+
+
+def root9(_num: Union[float, int]) -> float:
+    """9th Root"""
+    return _num ** 0.111111111
+
+
+def root10(_num: Union[float, int]) -> float:
+    """10th Root"""
+    return _num ** 0.1
+
+
+def root11(_num: Union[float, int]) -> float:
+    """11th Root"""
+    return _num ** 0.090909091
+
+
+def root12(_num: Union[float, int]) -> float:
+    """12th Root"""
+    return _num ** 0.083333333
+
+
+def root13(_num: Union[float, int]) -> float:
+    """13th Root"""
+    return _num ** 0.076923077
+
+
+# NUMBER THEORY #
+
+
+def factors(_num: int) -> set:
+    """Find prime factors"""
+    return set(x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup)
+
+
+def phi(_num: float) -> float:
+    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`"""
+    return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
+
+
+# STATISTICS #
+
+
+def showpercent(_portion: Union[float, int], _total: Union[float, int] = 100.0) -> str:
     """Convert a portion and total to a percentage
 
     Input int and/or float types and get a string
     """
-    return r'{:.2%}'.format(_portion / _total)
+    return r'{:.2%}'.format(float(_portion) / float(_total))
+
+
+# PROBABILITY #
+
+
+def dice() -> int:
+    """Roll a die and return a random integer (1-6)"""
+    return choice((1, 2, 3, 4, 5, 6))  # nosec
+
+
+def dice8() -> int:
+    """Roll an 8-sided die and return a random integer (1-8)"""
+    return choice((1, 2, 3, 4, 5, 6, 7, 8))  # nosec
+
+
+def coinflip() -> str:
+    """Flip a coin and return a string of heads or tails"""
+    return choice((r'heads', r'tails'))  # nosec
+
+
+def flipcoin() -> str:
+    """Flip a coin and return a string of heads or tails"""
+    return choice((r'heads', r'tails'))  # nosec
+
+
+# MISCELLANEOUS #
+
+
+def clamp(_num: float, smallest: float = -1.0, largest: float = 1.0) -> float:
+    """Clamp a value within the specified range
+
+    >>> clamp(37.0, 17.0, 73.0)
+    37.0
+    >>> clamp(377.0, 17.0, 73.0)
+    73.0
+    >>> clamp(3.14159, 17.0, 73.0)
+    17.0
+    """
+    if _num > largest:
+        return largest
+    elif _num < smallest:
+        return smallest
+    return _num
 
 
 def int2many(_int: int) -> str:
     """Convert a decimal number to mulitple number base types
 
-    The returned value is a table as a string
+    The returned value is a table in the form of a string
+
+    >>> int2many(37)
+    'dec: 37;  hex: 25;  oct: 45;  bin: 100101'
     """
     return r'dec: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}'.format(_int)
 
 
-def dice() -> int:
-    """Roll a die and return a random integer (1-6)"""
-    return choice((1, 2, 3, 4, 5, 6))
+def degrees2radians(_degrees: float) -> float:
+    """Convert Degrees to Radians {(PI / 180) * Degrees}
+
+    >>> degrees2radians(90.0)
+    1.5707963267948701
+    """
+    return 0.017453292519943 * _degrees
 
 
-def dice8() -> int:
-    """Roll an 8-sided die and return a random integer (1-8)"""
-    return choice((1, 2, 3, 4, 5, 6, 7, 8))
+def radians2degrees(_radians: float) -> float:
+    """Convert Radians to Degrees {(180 / PI) * Radians}
 
-
-def coinflip() -> str:
-    """Flip a coin and return a string of heads or tails"""
-    return choice((r'heads', r'tails'))
-
-
-def flipcoin() -> str:
-    """Flip a coin and return a string of heads or tails"""
-    return choice((r'heads', r'tails'))
+    >>> radians2degrees(30.0)
+    1718.8733853924696
+    """
+    return 57.29577951308232 * _radians

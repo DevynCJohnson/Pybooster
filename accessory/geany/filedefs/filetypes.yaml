@@ -1,0 +1,13 @@
+[keywords]
+keywords=false no true yes
+
+[settings]
+extension=yaml
+mime_type=application/x-yaml
+comment_single=#
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+type=0
+width=2

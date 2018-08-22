@@ -6,7 +6,7 @@
 
 @file sing.py
 @package pybooster.sing
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,6 +35,12 @@ __all__ = [
 
 
 def banana_song(_name: str) -> str:
-    """Return the lyrics of the Banana Song using the given name"""
+    """Return the lyrics of the Banana Song using the given name
+
+    >>> banana_song('Bridgette')
+    'Bridgette, Bridgette, bo-bridgette, Banana-fana fo-fridgette, Fee-Fi-mo-mridgette, Bridgette!'
+    >>> banana_song('tucker')
+    'Tucker, Tucker, bo-bucker, Banana-fana fo-fucker, Fee-Fi-mo-mucker, Tucker!'
+    """
     _name = _name.capitalize()
     return _name + r', ' + _name + r', bo-b' + _name[1:] + r', Banana-fana fo-f' + _name[1:] + r', Fee-Fi-mo-m' + _name[1:] + r', ' + _name + r'!'
