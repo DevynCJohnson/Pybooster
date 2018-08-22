@@ -1,0 +1,46 @@
+[general]
+; Set the extra-path where gitlint will search for user defined rules (http://jorisroovers.github.io/gitlint/user_defined_rules)
+;extra-path=
+; Enable debug mode
+debug=false
+; Rules to ignore (reference ID or full name)
+ignore=
+; Ignore fixup commits
+ignore-fixup-commits=false
+; Ignore merge commits
+ignore-merge-commits=false
+; Ignore squash commits
+ignore-squash-commits=false
+; Value between 1 and 3
+verbosity=2
+
+[author-valid-email]
+; The commit author's email-address must match the Python-like regex below
+regex="^[A-Za-z0-9]+@[A-Za-z0-9]+\.(com|edu|net|org)$"
+
+[title-max-length]
+line-length=80
+
+[title-match-regex]
+; The commit-msg title must match the Python-like regex below
+;regex=^US[0-9]*
+
+[title-must-not-contain-word]
+; Comma-separated list of case-insensitive words that should not occur in the title
+words=
+
+[B1]
+B1=body-max-line-length
+line-length=120
+
+[body-changed-file-mention]
+; List of files that need to be explicitly referenced in the body when modified
+files=.astyle.ini,.bandit.ini,.editorconfig,.gitattributes,.gitignore,.gitlint,.gitmodules,.pylintrc,.travis.yml,AUTHORS,ChangeLog,Coding_Standards.md,Doxyfile,LICENSE,makefile,makefile_constants.mk,README.md,THANKS,TODO,tox.ini
+
+[body-is-missing]
+; Whether to ignore merge commits that only have a title (empty body)
+default = True
+ignore-merge-commits=false
+
+[body-min-length]
+min-length=16

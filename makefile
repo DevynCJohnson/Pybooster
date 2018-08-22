@@ -195,7 +195,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitadd lscontrib merge previewcleangit stat submit submitall submitdev sw2dev sw2master
+.PHONY : cleangit commit gitadd lscontrib merge previewcleangit stat submit submitall submitdev sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -402,13 +402,27 @@ submitdev :
 	@git push --progress --signed=false --verify origin dev
 
 submitall :
-	@git push --all --progress --signed=false --verify origin
+	@git checkout master
+	git push --all --progress --signed=false --verify origin
+	git checkout dev
+	git merge master
+	git push --progress --signed=false --verify origin dev
 
 sw2dev :
 	@git checkout dev
 
 sw2master :
 	@git checkout master
+
+syncdev :
+	@git checkout dev
+	git merge master
+	git checkout master
+
+syncmaster :
+	@git checkout master
+	git merge dev
+	git checkout dev
 
 
 # INSTALL/UNINSTALL #
