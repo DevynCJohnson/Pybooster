@@ -233,7 +233,11 @@ def cvs(_num: float) -> float:
 
 
 def hcc(_num: float) -> float:
-    """Half-Versed Cosine Complement (hacovercos)"""
+    """Half-Versed Cosine Complement (hacovercos)
+
+    >>> hcc(90.0)
+    0.9469983318002789
+    """
     return (1.0 + sin(_num)) * 0.5
 
 

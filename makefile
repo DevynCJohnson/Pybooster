@@ -195,7 +195,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitadd lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitac gitadd gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -374,11 +374,15 @@ cleangit : cleanall fixperm
 	git fsck --dangling --full --name-objects --progress --strict --unreachable
 
 commit :
-	@[ -z "$(GITMSG)" ] && printf 'No commit message is saved to env variable GITMSG!\n' >&2
+	[ -z "$(GITMSG)" ] && printf '\nNo commit message is saved to env variable GITMSG!\n\nCreate a message: ' && read GITMSG && printf '\n' && git commit --cleanup=strip --message='$$GITMSG'
 	[ -n "$(GITMSG)" ] && git commit --cleanup=strip --message='$(GITMSG)'
 
 gitadd : cleanall fixperm
 	@git add --all
+
+gitac : | sw2dev gitadd commit
+
+gitx : | sw2dev gitadd commit submitdev
 
 lscontrib :
 	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-

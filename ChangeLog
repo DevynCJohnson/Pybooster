@@ -2,6 +2,7 @@
 
 	* PyBooster:  Fixed typo in README.md
 	* PyBooster:  Applied changes to the Git framework in makefile
+	* PyBooster:  Added additional Git-management commands to makefile
 
 2018-08-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
