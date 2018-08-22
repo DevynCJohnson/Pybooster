@@ -405,7 +405,7 @@ submitall :
 	@git checkout master
 	git push --all --progress --signed=false --verify origin
 	git checkout dev
-	git merge master
+	git merge --commit master
 	git push --progress --signed=false --verify origin dev
 
 sw2dev :
@@ -416,12 +416,12 @@ sw2master :
 
 syncdev :
 	@git checkout dev
-	git merge master
+	git merge --commit master
 	git checkout master
 
 syncmaster :
 	@git checkout master
-	git merge dev
+	git merge --commit dev
 	git checkout dev
 
 

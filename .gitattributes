@@ -113,6 +113,7 @@ Doxyfile text eol=lf linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+accessory/geany/filedefs/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.json text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
 *.less text eol=lf linguist-language=Less linguist-vendored=false
 *.limbo text eol=lf linguist-language=Limbo linguist-vendored=false

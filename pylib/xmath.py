@@ -206,7 +206,11 @@ def cot(_num: float) -> float:
 
 
 def csc(_num: float) -> float:
-    """Cosecant (Secant Complement)"""
+    """Cosecant (Secant Complement)
+
+    >>> csc(90.0)
+    1.1185724071637084
+    """
     return 1.0 / sin(_num)
 
 
