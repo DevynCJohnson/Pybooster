@@ -5,7 +5,7 @@
 """@brief Sort lines (or list) in data stream alphabetically
 
 @file alphabetize_lines
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,35 +35,49 @@ License along with this software.
 
 from sys import argv, stderr, stdin, stdout
 from traceback import format_exc
+from typing import Callable, List
+
+
+__all__ = [
+    r'alphadupsort_delimiter_codec',
+    r'alphasort_delimiter_codec',
+    r'alphabetize_string'
+]
+
+
+def alphadupsort_delimiter_codec(data: str, delimiter: str) -> str:
+    """Sort the lines or data-list alphabetically using the specified delimiter and remove duplicates"""
+    _out: str = delimiter.join(sorted(set(data.split(delimiter)), key=str.lower))
+    return _out.strip()
 
 
 def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
     """Sort the lines or data-list alphabetically using the specified delimiter"""
-    _out = data.split(delimiter)
+    _out: list = data.split(delimiter)
     _out.sort(key=str.lower)
-    return delimiter.join(_out)
+    return delimiter.join(_out).strip()
 
 
-def alphabetize_string(_data: str) -> str:
+def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
     """Alphabetize the data separated by a delimiter"""
-    _out = []
+    _out: List[str] = []
     if not _data or not _data.strip():
         stderr.write('No input provided!\n')
         raise SystemExit()
     elif '\n' not in _data and r'|' in _data:
-        return alphasort_delimiter_codec(_data, r'|')
+        return sort_func(_data, r'|')
     elif '\n' not in _data and r', ' in _data:
-        return alphasort_delimiter_codec(_data, r', ')
+        return sort_func(_data, r', ')
     elif '\n' not in _data and r',' in _data:
-        return alphasort_delimiter_codec(_data, r',')
+        return sort_func(_data, r',')
     elif '\n' not in _data and r' ' in _data:
-        return alphasort_delimiter_codec(_data, r' ')
+        return sort_func(_data, r' ')
     elif '\n' not in _data and r';' in _data:
-        return alphasort_delimiter_codec(_data, r';')
+        return sort_func(_data, r';')
     elif '\n' not in _data and r':' in _data:
-        return alphasort_delimiter_codec(_data, r':')
+        return sort_func(_data, r':')
     elif '\n' not in _data and '\f' in _data:
-        return alphasort_delimiter_codec(_data, '\f')
+        return sort_func(_data, '\f')
     else:
         _out = _data.replace('\r\n', '\n').split('\n')
         _out.sort(key=str.lower)
@@ -71,16 +85,24 @@ def alphabetize_string(_data: str) -> str:
 
 
 if __name__ == '__main__':
+    HELP: str = 'Usage\n\talphabetize_lines [-r] "string"\n\tcommand | alphabetize_lines [-r]\n' + \
+        'Supported Delimters\n\tnewline, formfeed, comma, space, comma+space, `|`, `;`, & `:`\n' + \
+        'Optional Parameters\n' + \
+        '\t-r: Remove duplicates in addition to sorting\n'
     try:
-        if len(argv) == 1:
-            DATA = stdin.read()
-            stdout.write(alphabetize_string(DATA))
-        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
-            stdout.write('Usage 1: command | alphabetize_lines\nUsage 2: alphabetize_lines "string"\nSupported Delimters: newline, formfeed, `|`, `, `, `,`, ` `, `;`, & `:`\n')
-        elif argv[1]:
-            stdout.write(alphabetize_string(argv[1]) + '\n')
-        else:
-            stdout.write('Usage 1: command | alphabetize_lines\nUsage 2: alphabetize_lines "string"\nSupported Delimters: newline, formfeed, `|`, `, `, `,`, ` `, `;`, & `:`\n')
+        RM_DUP: bool = False if len(argv) == 1 else argv[1].lower() in (r'--remove-duplicates', r'--rm-dup', r'-r')
+        SORT_FUNC: Callable[[str, str], str] = alphadupsort_delimiter_codec if RM_DUP else alphasort_delimiter_codec
+        if len(argv) == 1 or (RM_DUP and len(argv) == 2):  # Pipe
+            DATA: str = stdin.read()
+            stdout.write(alphabetize_string(DATA.strip(), SORT_FUNC))
+        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+            stdout.write(HELP)
+        elif RM_DUP and len(argv) == 3 and argv[2]:  # Sort & Remove duplicates
+            stdout.write(alphabetize_string(argv[2], SORT_FUNC) + '\n')
+        elif argv[1]:  # String as argument
+            stdout.write(alphabetize_string(argv[1], SORT_FUNC) + '\n')
+        else:  # Help
+            stdout.write(HELP)
     except SystemExit:
         pass
     except BaseException:

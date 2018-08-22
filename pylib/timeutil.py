@@ -6,7 +6,7 @@
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,6 +32,7 @@ along with this software.
 from datetime import timedelta
 from sys import platform
 import time as pytime
+from typing import Union
 
 
 __all__ = [
@@ -114,7 +115,7 @@ def istodaysaturday() -> bool:
     return pytime.strftime(r'%A') == r'Saturday'
 
 
-def isyear(_year: str or int) -> bool:
+def isyear(_year: Union[int, str]) -> bool:
     """Test if today is a particular year"""
     if isinstance(_year, int):
         _year = str(_year)

@@ -6,7 +6,7 @@
 
 @file clibutil.py
 @package pybooster.clibutil
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,8 @@ along with this software.
 
 from ctypes import CDLL, cdll, util
 from os.path import isfile
-from subprocess import getoutput
+from subprocess import getoutput  # nosec
+from typing import Optional
 
 try:  # Regular Expression module
     from regex import findall
@@ -58,12 +59,12 @@ __all__ = [
 # GET LIBRARY FILE NAMES #
 
 
-def getlibc() -> str:
+def getlibc() -> Optional[str]:
     """Return the file name of libc"""
     return util.find_library(r'c')
 
 
-def getlibm() -> str:
+def getlibm() -> Optional[str]:
     """Return the file name of libm"""
     return util.find_library(r'm')
 
@@ -117,7 +118,7 @@ def loadlib(library: str) -> CDLL:
     """
     if library[:3] == r'lib':
         library = library[3:]
-    return cdll.LoadLibrary(util.find_library(library))
+    return cdll.LoadLibrary(util.find_library(library))  # type: ignore
 
 
 def loadlibpath(libpath: str) -> CDLL:
@@ -133,7 +134,7 @@ def loadlibc() -> CDLL:
 
     Usage: libc = loadlibc()
     """
-    return cdll.LoadLibrary(util.find_library(r'c'))
+    return cdll.LoadLibrary(util.find_library(r'c'))  # type: ignore
 
 
 def loadlibm() -> CDLL:
@@ -141,4 +142,4 @@ def loadlibm() -> CDLL:
 
     Usage: libm = loadlibm()
     """
-    return cdll.LoadLibrary(util.find_library(r'm'))
+    return cdll.LoadLibrary(util.find_library(r'm'))  # type: ignore

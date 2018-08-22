@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -44,6 +44,7 @@ from os.path import (
 )
 from shutil import rmtree
 from sys import stderr, stdin, stdout
+from typing import Any, List, Tuple, Union
 
 
 __all__ = [
@@ -83,7 +84,6 @@ __all__ = [
     r'firstchars',
     # READ/GET DATA #
     r'getdata',
-    r'readstream',
     r'readpipe',
     r'getstdin',
     # WRITE/SEND DATA #
@@ -133,7 +133,7 @@ def lsfiles(_path: str, _extension: str) -> list:
 # PERMISSIONS #
 
 
-def convumask(_oct: int or list or str) -> str:
+def convumask(_oct: Union[int, list, str]) -> str:
     """Convert file permissions/umask (644 -> 'rw-r--r--')
 
     From octal permissions notation (int, str, or list of str+int)
@@ -149,9 +149,11 @@ def convumask(_oct: int or list or str) -> str:
     'rw-r--r--'
     >>> convumask(654)
     'rw-r-xr--'
+    >>> convumask([7, 6, 4])
+    'rwxrw-r--'
     """
-    _bits = ([4, r'r'], [2, r'w'], [1, r'x'])
-    _mode = []
+    _bits: Tuple[List[Any], List[Any], List[Any]] = ([4, r'r'], [2, r'w'], [1, r'x'])
+    _mode: list = []
     if isinstance(_oct, int):
         _oct = str(_oct)
     for _int in _oct[-3:]:
@@ -246,7 +248,7 @@ def getfilepathextlist(_pathname: str) -> list:
     >>> getfilepathextlist('/bin/sh')
     ['/bin', 'sh', '']
     """
-    _out = []
+    _out: List[str] = []
     _out.append(path_split(_pathname)[0])
     _out.append(path_splitext(path_split(_pathname)[1])[0])
     _out.append(path_splitext(path_split(_pathname)[1])[1])
@@ -285,7 +287,7 @@ def expandhome(_pathname: str) -> str:
 
 def getfile(_filename: str) -> str:
     """Get file contents and return as a str"""
-    _out = []
+    _out: list = []
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         _out.append(r''.join(_file.readlines()).strip())
     return r''.join(_out)
@@ -346,7 +348,7 @@ def getfilehexstr2(_filename: str) -> str:
 
 def getfileraw_list(_filename: str) -> list:
     """Get file contents as a list of byte-objects"""
-    _out = r''
+    _out: list = []
     with open(_filename, mode=r'rb') as _file:
         _out = _file.readlines()
     return _out
@@ -354,6 +356,7 @@ def getfileraw_list(_filename: str) -> list:
 
 def getfile_list(_filename: str) -> list:
     """Get file contents and return as a list"""
+    _out: list = []
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         _out = _file.readlines()
     return _out
@@ -424,11 +427,6 @@ def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
     except (LookupError, UnicodeError):
         stderr.write('Unable to determine and process data encoding!\n')
         raise SystemExit(1)
-
-
-def readstream(open_file_stream: object) -> str:
-    """Get data from an open file stream"""
-    return r''.join(open_file_stream.readlines()).strip()
 
 
 def readpipe() -> str:

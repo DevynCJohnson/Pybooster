@@ -5,7 +5,7 @@
 """@brief Convert single-quotes to double-quotes and vice versa
 
 @file togglequotes
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -36,15 +36,15 @@ from sys import argv, stderr, stdin, stdout
 
 
 if __name__ == '__main__':
-    if len(argv) == 1:
+    if len(argv) == 1:  # Pipe
         DATA = stdin.read()
         if r'"' in DATA:
             stdout.write(DATA.replace(r'"', '\''))
         else:
             stdout.write(DATA.replace('\'', r'"'))
-    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
+    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
         stdout.write('Usage 1: command | togglequotes\nUsage 2: togglequotes "string" \nConvert single-quotes to double-quotes and vice versa\n')
-    elif argv[1]:
+    elif argv[1]:  # String in argument
         DATA = argv[1]
         if not DATA.strip():
             stderr.write('No input found!\n')
@@ -52,5 +52,5 @@ if __name__ == '__main__':
             stdout.write(DATA.replace(r'"', '\'') + '\n')
         else:
             stdout.write(DATA.replace('\'', r'"') + '\n')
-    else:
+    else:  # Help
         stdout.write('Usage 1: command | togglequotes\nUsage 2: togglequotes "string" \nConvert single-quotes to double-quotes and vice versa\n')

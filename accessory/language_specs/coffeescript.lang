@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<language _name="CoffeeScript" _section="Scripts" id="coffee" version="2.3">
+  <metadata>
+    <property name="mimetypes">application/coffeescript;text/coffeescript;application/cakefile;text/cakefile;</property>
+    <property name="globs">*.Cakefile;*.coffee;*.coffee.erb;*.coffeescript;*.cs;*.iced;*.iced.erb;Cakefile</property>
+    <property name="line-comment-start">#</property>
+    <property name="block-comment-start">###</property>
+    <property name="block-comment-end">###</property>
+  </metadata>
+  <styles>
+    <style _name="Comment" id="comment" map-to="def:comment"/>
+    <style _name="Error" id="error" map-to="def:error"/>
+    <style _name="String" id="string" map-to="def:string"/>
+    <style _name="Global Value" id="global" map-to="def:special-constant"/>
+    <style _name="Constant" id="constant" map-to="def:special-constant"/>
+    <style _name="Boolean value" id="boolean" map-to="def:boolean"/>
+    <style _name="Statement" id="statement" map-to="def:statement"/>
+    <style _name="Loop" id="loop" map-to="def:keyword"/>
+    <style _name="Conditional" id="conditional" map-to="def:keyword"/>
+    <style _name="Exception" id="exception" map-to="def:error"/>
+    <style _name="Operator" id="operator" map-to="def:keyword"/>
+    <style _name="Keyword" id="keyword" map-to="def:keyword"/>
+    <style _name="Assessor" id="assessor" map-to="def:identifier"/>
+    <style _name="RegExp" id="regexp" map-to="def:special-char"/>
+    <style _name="Function" id="function" map-to="def:function"/>
+    <style _name="Application" id="application" map-to="def:identifier"/>
+    <style _name="Constructors" id="constructors" map-to="def:type"/>
+  </styles>
+  <definitions>
+    <context id="coffee">
+      <include>
+        <!-- COMMENTS -->
+        <context id="block-comment" style-ref="comment">
+          <start>^[ \t]*###([^#]|$)</start>
+          <end>.*###([^#]|$)</end>
+          <include>
+            <context ref="def:in-comment"/>
+          </include>
+        </context>
+        <context id="line-comment" style-ref="comment">
+          <start>#</start>
+          <end>$</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="def:in-comment"/>
+          </include>
+        </context>
+        <!-- REGEXPS -->
+        <context id="regexp" style-ref="regexp">
+          <match>(?&lt;!\d)\s*/(?![\s/*+{}?]).*?[^\\]/[igmy]*</match>
+        </context>
+        <context id="heregex" style-ref="regexp">
+          <start>\/\/\/</start>
+          <end>\/\/\/</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="line-comment"/>
+          </include>
+        </context>
+        <!-- STRINGS -->
+        <context id="string-heredocs-single" style-ref="string">
+          <start>'''</start>
+          <end>'''</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="def:escape"/>
+          </include>
+        </context>
+        <context id="string-heredocs-double" style-ref="string">
+          <start>&quot;&quot;&quot;</start>
+          <end>&quot;&quot;&quot;</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="def:escape"/>
+            <context extend-parent="false" id="interpolation-heredocs-double" style-ref="assessor">
+              <match>\#{[^}]+}</match>
+            </context>
+          </include>
+        </context>
+        <context id="string-double" style-ref="string">
+          <start>&quot;</start>
+          <end>&quot;</end>
+          <include>
+            <context extend-parent="false" id="interpolation-string-double" style-ref="assessor">
+              <match>\#{[^}]+}</match>
+            </context>
+            <context ref="def:line-continue"/>
+            <context ref="def:escape"/>
+          </include>
+        </context>
+        <context id="string-single" style-ref="string">
+          <start>'</start>
+          <end>'</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="def:escape"/>
+          </include>
+        </context>
+        <context id="string-javascript" style-ref="string">
+          <start>`</start>
+          <end>`</end>
+          <include>
+            <context ref="def:line-continue"/>
+            <context ref="def:escape"/>
+          </include>
+        </context>
+        <!-- NUMBERS -->
+        <context ref="def:float"/>
+        <context ref="def:decimal"/>
+        <context ref="def:octal"/>
+        <context ref="def:hexadecimal"/>
+        <!-- CONSTANTS -->
+        <context id="global" style-ref="global">
+          <keyword>undefined</keyword>
+          <keyword>null</keyword>
+        </context>
+        <context id="constant" style-ref="constant">
+          <match>\b[A-Z0-9_]+\b</match>
+        </context>
+        <context id="boolean" style-ref="boolean">
+          <keyword>false</keyword>
+          <keyword>true</keyword>
+          <keyword>yes</keyword>
+          <keyword>no</keyword>
+          <keyword>on</keyword>
+          <keyword>off</keyword>
+        </context>
+        <define-regex extended="true" id="statement-keyword">
+                    \b(return|break|continue|throw)\b
+                </define-regex>
+        <define-regex extended="true" id="loop-keyword">
+                    \b(for(\s+own)?|while|until|loop)\b
+                </define-regex>
+        <define-regex extended="true" id="conditional-keyword">
+                    \b(if|else|unless|switch|when|then|and|or|in|of|by|is|isnt|
+                    not)\b
+                </define-regex>
+        <define-regex extended="true" id="keywords-keyword">
+                    \b(instanceof|typeof|delete|new|where|class|extends|super|
+                    try|catch|finally)\b
+                </define-regex>
+        <define-regex extended="true" id="operator-regex">
+                    (-[\-=&gt;]?|\+[+=]?|[*&amp;|\/%=&lt;&gt;^~:!?]+)
+                </define-regex>
+        <define-regex extended="true" id="novalue-keywords">
+                    \%{statement-keyword}|
+                    \%{loop-keyword}|
+                    \%{conditional-keyword}|
+                    \%{keywords-keyword}
+                </define-regex>
+        <context id="statement" style-ref="statement">
+          <match>\%{statement-keyword}</match>
+        </context>
+        <context id="loop" style-ref="loop">
+          <match>\%{loop-keyword}</match>
+        </context>
+        <context id="conditional" style-ref="conditional">
+          <match>\%{conditional-keyword}</match>
+        </context>
+        <context id="operator" style-ref="operator">
+          <match>\%{operator-regex}([ \t]*)</match>
+        </context>
+        <!-- KEYWORDS -->
+        <context id="keywords" style-ref="keyword">
+          <match>\%{keywords-keyword}</match>
+        </context>
+        <context id="exception" style-ref="exception">
+          <keyword>try</keyword>
+          <keyword>catch</keyword>
+          <keyword>finally</keyword>
+        </context>
+        <context id="assessor" style-ref="assessor">
+          <match>(@([a-zA-Z\$_](\w|\$)*)|this)</match>
+        </context>
+        <context id="functions" style-ref="function">
+          <keyword>\b\w+\b(?=\s*(=|:)\s*(\([\w,\s@=\[\]\{\}.]*\))?\s*(-\&gt;|=\&gt;))</keyword>
+        </context>
+        <context id="constructors" style-ref="constructors">
+          <match>\b[A-Z][A-Za-z0-9_]+\b(?!\.)</match>
+        </context>
+        <context id="application" style-ref="application">
+          <match extended="true">
+                    \b @? [A-Za-z0-9_]+ (
+                        (?= [(]) |
+                        \s+ (
+                            (?= [=-]&gt;) |
+                            (?=\S)(?!
+                                \%{novalue-keywords} | [\])}=:,#] |
+                                [-+*/]= | \%{operator-regex}\s )
+                        )
+                    )
+                    </match>
+        </context>
+      </include>
+    </context>
+  </definitions>
+</language>

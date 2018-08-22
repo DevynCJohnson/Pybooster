@@ -6,7 +6,7 @@
 
 @file code_interpreter.py
 @package pybooster.code_interpreter
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,7 +29,7 @@ along with this software.
 """
 
 
-from subprocess import getoutput
+from subprocess import getoutput  # nosec
 from sys import stdout
 
 
@@ -123,7 +123,7 @@ def initperl() -> None:
     """Run a Perl REP-Loop (Read-Evaluate-Print-Loop)"""
     _input = ''
     while 1:
-        _input = input(r'Perl > ').replace('\'', '\\\'')
+        _input = input(r'Perl > ').replace('\'', '\\\'')  # nosec
         if _input == 'exit' or _input == 'quit':
             break
         _output = getoutput('perl -e \'' + _input + '\'')
@@ -187,7 +187,7 @@ def initsh() -> None:
     """Run a shell REP-Loop (Read-Evaluate-Print-Loop)"""
     _input = r''
     while 1:
-        _input = input(r'Shell: $ ').replace('\'', '\\\'')
+        _input = input(r'Shell: $ ').replace('\'', '\\\'')  # nosec
         if _input == r'exit' or _input == r'quit':
             break
         _output = getoutput('sh -c \'' + _input + '\'')

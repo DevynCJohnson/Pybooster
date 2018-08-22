@@ -6,7 +6,7 @@
 
 @file unix.py
 @package pybooster.unix
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -56,8 +56,7 @@ def dt() -> float:  # pylint: disable=C0103
     The returned value is a float of metric gigabytes (GB)
     """
     _disk = statvfs(r'/')
-    total = _disk.f_blocks * _disk.f_frsize
-    return round(total * 0.000000001, 3)
+    return round(_disk.f_blocks * _disk.f_frsize * 0.000000001, 3)
 
 
 def df() -> float:  # pylint: disable=C0103
@@ -66,8 +65,7 @@ def df() -> float:  # pylint: disable=C0103
     The returned value is a float of metric gigabytes (GB)
     """
     _disk = statvfs(r'/')
-    free = _disk.f_bavail * _disk.f_frsize
-    return round(free * 0.000000001, 3)
+    return round(_disk.f_bavail * _disk.f_frsize * 0.000000001, 3)
 
 
 def du() -> float:  # pylint: disable=C0103
@@ -76,8 +74,7 @@ def du() -> float:  # pylint: disable=C0103
     The returned value is a float of metric gigabytes (GB)
     """
     _disk = statvfs(r'/')
-    used = (_disk.f_blocks - _disk.f_bfree) * _disk.f_frsize
-    return round(used * 0.000000001, 3)
+    return round((_disk.f_blocks - _disk.f_bfree) * _disk.f_frsize * 0.000000001, 3)
 
 
 # MISCELLANEOUS FUNCTIONS #
@@ -85,7 +82,7 @@ def du() -> float:  # pylint: disable=C0103
 
 def getetcfstab() -> str:
     """Get the contents of /etc/fstab"""
-    _out = []
+    _out: list = []
     with open(r'/etc/fstab', mode=r'rt', encoding=r'utf-8') as _file:
         _out.append(r''.join(_file.readlines()).strip())
     return r''.join(_out)
@@ -93,7 +90,7 @@ def getetcfstab() -> str:
 
 def getetchosts() -> str:
     """Get the contents of /etc/hosts"""
-    _out = []
+    _out: list = []
     with open(r'/etc/hosts', mode=r'rt', encoding=r'utf-8') as _file:
         _out.append(r''.join(_file.readlines()).strip())
     return r''.join(_out)

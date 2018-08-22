@@ -1,0 +1,22 @@
+[keywords]
+docComment=declaration description end function group modifies module static type variable a addindex addtogroup anchor arg attention author authors b brief bug c callergraph callgraph category cite class code cond copybrief copydetails copydoc copyright date def defgroup deprecated details dir dontinclude dot dotfile e else elseif em endcode endcond enddot endhtmlonly endif endinternal endlatexonly endlink endmanonly endmsc endrtfonly endverbatim endxmlonly enum example exception extends file fn headerfile hideinitializer htmlinclude htmlonly if ifnot image implements include includelineno ingroup interface internal invariant latexonly li license line link mainpage manonly memberof msc mscfile n name namespace nosubgrouping note overload p package page par paragraph param param[in] post pre private privatesection property protected protectedsection protocol public publicsection ref related relatedalso relates relatesalso remark remarks result return returns retval rtfonly sa section see short showinitializer since skip skipline snippet struct subpage subsection subsubsection tableofcontents test throw throws todo tparam typedef union until var verbatim verbinclude version warning weakgroup xmlonly xrefitem
+primary=abstract alias and arguments attribute_missing break case class closure conformsToProtocol constructor continue default deliver destructor diliver directive do else eval extends false final fix for function global handle if iferr implements include instanceof isa method_missing modifies monitor namespace new null or private protected protocol public raise recipient rename return self static super switch true uses using while
+types=array Array boolean Console FileSystem Math Network number Number object Posix Regexp RMI Serialize Stream string String Sys Unix void XML XSLT
+
+[lexer_properties=C]
+
+[settings]
+extension=fe
+comment_single=//
+comment_open=/*
+comment_close=*/
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+type=1
+width=4
+
+[build_settings]
+compiler=ferite -vc "%f"
+run_cmd=ferite "%f"

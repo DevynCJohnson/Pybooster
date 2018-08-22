@@ -6,7 +6,7 @@
 
 @file electronics.py
 @package pybooster.electronics
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,6 +29,9 @@ along with this software.
 """
 
 
+from typing import Optional
+
+
 __all__ = [
     # CONSTANTS #
     r'OHMS',
@@ -43,33 +46,33 @@ __all__ = [
 # CONSTANTS #
 
 
-OHMS = r'Ω'
+OHMS = '\u03A9'
 
 
 # FUNCTIONS #
 
 
 def current(_voltage: float, _resistance: float) -> float:
-    """I=E/Ω"""
+    """I=E/R"""
     return _voltage / _resistance
 
 
 def resistance(_voltage: float, _current: float) -> float:
-    """Ω=E/I"""
+    """R=E/I"""
     return _voltage / _current
 
 
 def voltage(_current: float, _resistance: float) -> float:
-    """E=IΩ"""
+    """E=IR"""
     return _current * _resistance
 
 
-def power(_current: float = None, _resistance: float = None, _voltage: float = None) -> float:
+def power(_current: Optional[float] = None, _resistance: Optional[float] = None, _voltage: Optional[float] = None) -> Optional[float]:
     """Power (Wattage)"""
-    if _current is None:  # P=(E^2)/Ω
-        return (_voltage ** 2) / _resistance
+    if _current is None:  # P=(E^2)/R
+        return (_voltage ** 2.0) / _resistance  # type: ignore
     elif _resistance is None:  # P=IE
-        return _current * _voltage
-    elif _voltage is None:  # P=(I^2)Ω
-        return (_current ** 2) * _resistance
+        return _current * _voltage  # type: ignore
+    elif _voltage is None:  # P=(I^2)R
+        return (_current ** 2.0) * _resistance  # type: ignore
     return None

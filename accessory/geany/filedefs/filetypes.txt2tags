@@ -1,0 +1,7 @@
+[keywords]
+primary=includeconf options toc
+
+[settings]
+extension=txt2tags
+mime_type=text/x-txt2tags
+symbol_list_sort_mode=1

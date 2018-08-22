@@ -1,0 +1,10 @@
+@brief DESCRIPTION
+
+@file {filename}
+@package NAME
+@version {date}
+@author {developer} <{mail}>
+@copyright LGPLv3
+
+@section LICENSE
+{gpl}

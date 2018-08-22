@@ -6,7 +6,7 @@
 
 @file basic.py
 @package pybooster.basic
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,8 +37,9 @@ from inspect import currentframe
 from json import dumps as jdump
 from os import X_OK, access, environ, pathsep
 from os.path import dirname, isfile, join as joinpath, split as splitpath
-from pickle import dumps, loads
+from pickle import dumps, loads  # nosec
 from sys import modules, stdout
+from typing import AbstractSet, Any, Generator, Iterable, Union
 from types import BuiltinFunctionType, CodeType, CoroutineType, FrameType, FunctionType, GeneratorType, GetSetDescriptorType, MemberDescriptorType, MethodType, ModuleType, TracebackType
 from urllib.request import urlopen
 from zlib import compress as zlibcompress, decompress as zlibdecompress
@@ -48,6 +49,12 @@ try:  # Regular Expression module
     from regex import I as REI, fullmatch as refullmatch
 except ImportError:
     from re import I as REI, fullmatch as refullmatch
+
+
+try:
+    from pygame.mixer import init, music
+except ImportError:
+    raise Exception(r'Pygame is not installed or found.')
 
 
 __all__ = [
@@ -110,6 +117,7 @@ __all__ = [
     r'rmmod',
     # DICTIONARY-RELATED FUNCTIONS #
     r'finddictkey',
+    r'finddictkeyx',
     r'finddictkeys',
     r'doeskeymvalue',
     r'rmdupkey',
@@ -189,17 +197,17 @@ class NullException(BaseException):
 # BOOLEAN-RELATED FUNCTIONS #
 
 
-def rmfalse(_iter: iter) -> list:
+def rmfalse(_iter: Iterable) -> list:
     """Remove False values from iterable and return evaluated list"""
     return [x for x in _iter if x]
 
 
-def evaliter(_iter: iter) -> list:
+def evaliter(_iter: Iterable) -> list:
     """Evaluate values in iterable and return evaluated list of booleans"""
     return [x for x in _iter]
 
 
-def eny(_iter: iter) -> bool:
+def eny(_iter: Iterable) -> bool:
     """Enhanced any()
 
     >>> eny([1, 0, 2, 'str'])
@@ -212,7 +220,7 @@ def eny(_iter: iter) -> bool:
     return True if True in _iter else False
 
 
-def isiter(_iter: iter) -> bool:
+def isiter(_iter: Iterable) -> bool:
     """Test if the object is iterable
 
     >>> isiter('str')
@@ -311,7 +319,7 @@ def isbin(_bin: str) -> bool:
         return False
 
 
-def iscomplex(_obj) -> bool:
+def iscomplex(_obj: Union[complex, int, str]) -> bool:
     """Is the object a complex number (37+54j)
 
     >>> iscomplex(37+54j)
@@ -340,16 +348,14 @@ def iscomplex(_obj) -> bool:
             return True
         elif _obj.__class__ is int:
             return False
-        elif _obj.__class__ is str and r'j' not in _obj:
-            return False
-        elif complex(''.join(_obj.split())).__class__ is complex:
+        elif _obj.__class__ is str and r'j' in _obj and complex(_obj.replace(r' ', r'')).__class__ is complex:  # type: ignore
             return True
         return False
     except (SyntaxError, TypeError, ValueError):
         return False
 
 
-def iscomplextype(_obj) -> bool:
+def iscomplextype(_obj: object) -> bool:
     """Is the object a complex type
 
     >>> iscomplextype(37+54j)
@@ -416,12 +422,12 @@ def isfunction(_object: object) -> bool:
 
 def isgeneratorfunction(_object: object) -> bool:
     """Return true if the object is a user-defined generator function"""
-    return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_GENERATOR)
+    return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_GENERATOR)  # type: ignore
 
 
 def iscoroutinefunction(_object: object) -> bool:
     """Return true if the object is a coroutine function"""
-    return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_COROUTINE)
+    return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_COROUTINE)  # type: ignore
 
 
 def isgenerator(_object: object) -> bool:
@@ -473,10 +479,10 @@ def isroutine(_object: object) -> bool:
 
 def isabstract(_object: object) -> bool:
     """Return true if the object is an abstract base class (ABC)"""
-    return bool(isinstance(_object, type) and _object.__flags__ & 1048576)
+    return bool(isinstance(_object, type) and _object.__flags__ & 1048576)  # type: ignore
 
 
-def isbetween(_lo: int or float, _hi: int or float, _num: int or float) -> bool:
+def isbetween(_lo: Union[float, int], _hi: Union[float, int], _num: Union[float, int]) -> bool:
     """Test if a float/integer is between two other floats/integers
 
     >>> isbetween(2, 7, 5)
@@ -492,21 +498,22 @@ def isbetween(_lo: int or float, _hi: int or float, _num: int or float) -> bool:
     >>> isbetween(2, 7, 1.9)
     False
     """
-    assert _lo < _hi, r'Invalid input for isbetween()!'
-    return _lo <= _num <= _hi
+    if _lo > _hi:  # type: ignore
+        raise Exception(r'Invalid input for isbetween()!')
+    return _lo <= _num <= _hi  # type: ignore
 
 
 def isdefined(_var_name: str) -> bool:
     """Test if the named variable is defined in current scope"""
-    assert isinstance(_var_name, str), \
-        'isdefined() only accepts strings - isdefined(\'_var_name\')'
+    if not isinstance(_var_name, str):
+        raise Exception('isdefined() only accepts strings - isdefined(\'_var_name\')')
     return _var_name in globals() or _var_name in vars()
 
 
 def ismodloaded(_module: str) -> bool:
     """Test if the named module is imported"""
-    assert isinstance(_module, str), \
-        'ismodloaded() only accepts strings - ismodloaded(\'_module\')'
+    if not isinstance(_module, str):
+        raise Exception('ismodloaded() only accepts strings - ismodloaded(\'_module\')')
     return _module in modules.keys()
 
 
@@ -524,7 +531,6 @@ def isfrozen() -> bool:
 
 def ismodfrozen(module_name: str) -> bool:
     """Test if the specified module is frozen (built into the interpreter)"""
-    _tmp = None
     try:
         _tmp = __import__(module_name)
         return hasattr(_tmp, r'frozen')
@@ -604,12 +610,11 @@ def isinpath(program: str) -> bool:
     fpath = splitpath(program)[0]
     if fpath and isfile(program) and access(program, X_OK):
         return True
-    else:
-        envpath = environ[r'PATH'].split(pathsep)
-        for filepath in envpath:
-            exe_file = joinpath(filepath.strip(r'"'), program)
-            if isfile(exe_file) and access(exe_file, X_OK):
-                return True
+    envpath = environ[r'PATH'].split(pathsep)
+    for filepath in envpath:
+        exe_file = joinpath(filepath.strip(r'"'), program)
+        if isfile(exe_file) and access(exe_file, X_OK):
+            return True
     return False
 
 
@@ -628,14 +633,14 @@ def isvalidcode(_code: str) -> bool:
     return True
 
 
-def isintuplelist(tuple_list: list, val: str) -> bool:
+def isintuplelist(_tuple_list: list, _val: str) -> bool:
     """Test if the given value is the first value in the list of tuples
 
     >>> isintuplelist([('test', 'value'), (1, 2), ('found', 'string')], 'found')
     True
     """
-    for test in tuple_list:
-        if val == test[0]:
+    for _test in _tuple_list:
+        if _val == _test[0]:
             return True
     return False
 
@@ -650,7 +655,7 @@ def lsmods() -> list:
 
 def imports() -> list:
     """List all imports"""
-    _imports = []
+    _imports: list = []
     for name, val in globals().items():  # pylint: disable=W0612
         if isinstance(val, ModuleType):
             _imports.append(val.__name__)
@@ -683,8 +688,8 @@ def modpath(module) -> str:
 
 def modexist(_module: str) -> bool:
     """Test if module exists on system"""
-    assert isinstance(_module, str), \
-        'modexist() only accepts strings - modexist(\'_module\')'
+    if not isinstance(_module, str):
+        raise Exception('modexist() only accepts strings - modexist(\'_module\')')
     _tmp = None
     try:
         _tmp = __import__(_module)
@@ -699,8 +704,8 @@ def modexist(_module: str) -> bool:
 
 def rmmod(_modname: str) -> None:
     """Remove module from the running instance"""
-    assert isinstance(_modname, str), \
-        'rm_mod() only accepts strings - rm_mod(\'_modname\')'
+    if not isinstance(_modname, str):
+        raise Exception('rm_mod() only accepts strings - rm_mod(\'_modname\')')
     try:
         modules[_modname]
     except KeyError:
@@ -717,18 +722,49 @@ def rmmod(_modname: str) -> None:
 # DICTIONARY-RELATED FUNCTIONS #
 
 
-def finddictkey(_dict: dict, search_val) -> str:
-    """Search a dictionary by value and stop on first instance
+def finddictkey(_dict: dict, _search_val: str) -> str:
+    """Search a dictionary by string value and stop on first instance
 
-    Return the key containing the value; Else, return an empty string
+    Return the key containing the value; else, return an empty string
+
+    >>> finddictkey({'a': '0', 'b': '1', 'c': '2'}, '1')
+    'b'
+    >>> finddictkey({'a': '0', 'b': '1', 'c': '2'}, '3')
+    ''
     """
-    for _key, val in _dict.items():
-        if val == search_val:
+    for _key, _val in _dict.items():
+        if isinstance(_search_val, str) and _val == _search_val:
             return _key
     return r''
 
 
-def finddictkeys(_dict: dict, search_val: object) -> list:
+def finddictkeyx(_dict: dict, _search_val: Any) -> str:
+    """Search a dictionary by value and stop on first instance
+
+    This searches key values that are tuples, lists, or strings.
+    Returns the key (if found); else returns empty string
+
+    >>> finddictkeyx({'a': 0, 'b': 1, 'c': 2}, 0)
+    'a'
+    >>> finddictkeyx({'a': 0, 'b': 1, 'c': 2}, 3)
+    ''
+    >>> finddictkeyx({'a': '0', 'b': '1', 'c': '2'}, '1')
+    'b'
+    >>> finddictkeyx({'a': '0', 'b': '1', 'c': '2'}, 4)
+    ''
+    """
+    for _key, _val in _dict.items():
+        try:
+            if isinstance(_val, (int, str)) and _val == _search_val:
+                return _key
+            elif _search_val in _val:
+                return _key
+        except TypeError:
+            continue
+    return r''
+
+
+def finddictkeys(_dict: dict, _search_val: Any) -> list:
     """Search a dictionary by value and find all instances
 
     Return a list of keys - ['key1', 'key2']; Else, return an empty list - []
@@ -737,11 +773,20 @@ def finddictkeys(_dict: dict, search_val: object) -> list:
     ['b']
     >>> finddictkeys({'a': 0, 'b': 1, 'c': 2}, 3)
     []
+    >>> finddictkeys({'a': '0', 'b': '1', 'c': '2'}, '1')
+    ['b']
+    >>> finddictkeys({'a': '0', 'b': '1', 'c': '2'}, 4)
+    []
+    >>> finddictkeys({'a': '0', 'b': '1', 'c': '2', 'd': '1'}, '1')
+    ['b', 'd']
     """
-    _out = []
-    for _key, val in _dict.items():
-        if val == search_val:
-            _out.append(_key)
+    _out: list = []
+    for _key, _val in _dict.items():
+        try:
+            if _val == _search_val:
+                _out.append(_key)
+        except TypeError:
+            continue
     return _out
 
 
@@ -772,7 +817,7 @@ def doeskeymvalue(_dict: dict) -> bool:
 
 def rmdupkey(_dict: dict) -> dict:
     """Remove duplicate keys"""
-    _out = {}
+    _out: dict = {}
     for _key, val in _dict.items():
         if _key not in _out.keys():
             _out[_key] = val
@@ -787,7 +832,7 @@ def rmdupkey_casein(_dict: dict) -> dict:
     >>> rmdupkey_casein({'key': [1, 2, 3], 'KEY': [1, 2, 3]})
     {'key': [1, 2, 3]}
     """
-    _out = {}
+    _out: dict = {}
     for _key, val in _dict.items():
         if _key.lower() not in _out.keys():
             _key = _key.lower()
@@ -798,17 +843,17 @@ def rmdupkey_casein(_dict: dict) -> dict:
 def rmdupval(_dict: dict) -> dict:
     """Remove duplicate values from a dict
 
-    rmdupval({'key': [1, 2, 3], 'key1': [1, 2, 3]})
-    {'key': [1, 2, 3]} or {'key1': [1, 2, 3]}
+    >>> rmdupval({'key': [1, 2, 3], 'key1': [1, 2, 3]})
+    {'key': [1, 2, 3]}
     """
-    _out = {}
+    _out: dict = {}
     for _key, val in _dict.items():
         if val not in _out.values():
             _out[_key] = val
     return _out
 
 
-def listkeys(dict1: dict, dict2: dict) -> set:
+def listkeys(dict1: dict, dict2: dict) -> AbstractSet[Any]:
     """Make a list (as a 'set') of the keys from two dicts
 
     listkeys({'KEY': [1, 2, 3], 'key2': [1, 2, 3]}, {'x': 1, 'y': 2})
@@ -818,16 +863,26 @@ def listkeys(dict1: dict, dict2: dict) -> set:
 
 
 def mergestrdict(dict1: dict, dict2: dict) -> dict:
-    """Merge two string dictionaries"""
+    """Merge two string dictionaries
+
+    mergestrdict({'KEY': '1, 2, 3'}, {'key2': '1, 2, 3'})
+    {'KEY': '1, 2, 3', 'key2': '1, 2, 3'}
+    """
     _keys = listkeys(dict1, dict2)
-    return {_key: dict1.get(_key, r'') + r' ' + dict2.get(_key, r'') for _key in _keys}
+    return {_key: str(dict1.get(_key, r'') + r' ' + dict2.get(_key, r'')).strip() for _key in _keys}
 
 
 # LIST-RELATED FUNCTIONS #
 
 
 def create_2d_array(width: int, height: int) -> list:
-    """Create a 2D array with the specified width and height"""
+    """Create a 2D array with the specified width and height
+
+    >>> create_2d_array(2, 2)
+    [[0, 0], [0, 0]]
+    >>> create_2d_array(3, 2)
+    [[0, 0, 0], [0, 0, 0]]
+    """
     return [[0 for x in range(width)] for y in range(height)]
 
 
@@ -862,7 +917,7 @@ def rmduplist_tuple(_list: list) -> tuple:
     """Remove duplicate items from a list and return a tuple
 
     rmduplist_tuple(['xz', 'xyz', 'xz', 'y'])
-    ('xyz', 'xz', 'y')
+    ('xz', 'y', 'xyz')
     """
     return tuple(frozenset(_list))
 
@@ -871,7 +926,7 @@ def rmduplist_set(_list: list) -> set:
     """Remove duplicate items from a list and return a set
 
     rmduplist_set(['xz', 'xyz', 'xz', 'y'])
-    {'xyz', 'xz', 'y'}
+    {'xz', 'y', 'xyz'}
     """
     return set(_list)
 
@@ -880,7 +935,7 @@ def rmduplist_frozenset(_list: list) -> frozenset:
     """Remove duplicate items from a list and return a frozenset
 
     rmduplist_frozenset(['xz', 'xyz', 'xz', 'y'])
-    frozenset{'xyz', 'xz', 'y'}
+    frozenset({'xz', 'y', 'xyz'})
     """
     return frozenset(_list)
 
@@ -888,9 +943,9 @@ def rmduplist_frozenset(_list: list) -> frozenset:
 # MISCELLANEOUS #
 
 
-def datadump(_data) -> bytes:
+def datadump(_data: object) -> bytes:
     """Pickle and compress (using Zlib) data and then encode the data in base64"""
-    return b64encode(zlibcompress(dumps(_data), compresslevel=9))
+    return b64encode(zlibcompress(dumps(_data), level=9))
 
 
 def loaddata(_data: str) -> bytes:
@@ -901,10 +956,10 @@ def loaddata(_data: str) -> bytes:
 def execfile(_filename: str) -> object:
     """Execute Python script and get output"""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
-        return exec(_file.read())  # pylint: disable=W0122
+        return exec(_file.read())  # nosec  # pylint: disable=W0122
 
 
-def incde(i: int, j: int, delta: int = 1) -> None:
+def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
     """Increment and Deincrement
 
     for i, j in incde(i=3, j=7): print(i, j)
@@ -945,10 +1000,6 @@ def pygrep(_find: str, _text: str) -> bool:
 
 def playmusic(_file: str) -> None:
     """Play an MP3, WAV, or other audio file via Pygame3"""
-    try:
-        from pygame.mixer import init, music
-    except ImportError:
-        raise Exception(r'Pygame is not installed or found.')
     init()
     music.load(_file)
     music.play()
@@ -959,26 +1010,21 @@ def playmusic(_file: str) -> None:
 
 def getlinenum() -> int:
     """Return the script's line number where this method executes"""
-    return currentframe().f_back.f_lineno
+    return currentframe().f_back.f_lineno  # type: ignore
 
 
 def ezcompile(_code: str) -> object:
-    r"""Easily compile code that is in the form of a string
+    """Easily compile code that is in the form of a string
 
-    Example 1 -
-    c = \'\'\'print(''.join([line for line in open('/etc/passwd')]))\'\'\'
-    bytecode = ezcompile(c)
-    exec(bytecode) # or eval(bytecode)
-    .
-    Example 2 -
+    Example:
     c2 = 'x = 45 * 37; import math; y = math.cos(37); print(x); print(y)'
     bytecode = ezcompile(c2)
+    exec(bytecode) # or eval(bytecode)
     """
-    _tmplist = []
     try:
-        comcode = compile(_code, _tmplist, r'eval')
+        comcode = compile(_code, r'', r'eval')
     except SyntaxError:
-        comcode = compile(_code, _tmplist, r'exec')
+        comcode = compile(_code, r'', r'exec')
     return comcode
 
 
@@ -987,13 +1033,13 @@ def csv2json(_filepath: str) -> str:
     return jdump(list(creader(open(_filepath, mode=r'rt', encoding=r'utf-8'))))
 
 
-def getwebpage(_address: str) -> str:
+def getwebpage(_address: str) -> bytes:
     """Return a webpage's HTML code as a string"""
     if r'://' not in _address:
-        _address = r'http://' + _address
+        _address = r'https://' + _address
     if not _address.endswith(r'/'):
         _address += r'/'
-    return urlopen(_address).read()
+    return urlopen(_address).read()  # nosec
 
 
 def wlong(_int32: int) -> bytes:
@@ -1008,5 +1054,6 @@ def int2bitlen(_int: int) -> int:
 
 def char2bitlen(_char: str) -> int:
     """Return the number of bits needed to represent a character"""
-    assert len(_char) == 1, 'A string containing multiple characters was passed to char2bitlen()'
+    if len(_char) != 1:
+        raise Exception(r'A string containing multiple characters was passed to char2bitlen()')
     return ord(_char).bit_length()

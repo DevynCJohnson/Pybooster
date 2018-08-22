@@ -5,7 +5,7 @@
 """@brief Convert CamelCase to lower_case_underscore and vice versa
 
 @file CamelCase
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,11 +37,22 @@ License along with this software.
 
 from sys import argv, stderr, stdin, stdout
 from traceback import format_exc
+from typing import Callable, List
 
 
-def camelcase_to_lowercase_underscore(string: str) -> str:
+__all__ = [
+    r'camelcase_to_lowunderscore',
+    r'lowunderscore_to_camelcase',
+    r'detect_conversion_method'
+]
+
+
+# FUNCTIONS #
+
+
+def camelcase_to_lowunderscore(string: str) -> str:
     """Split string by uppercase letters"""
-    words = []
+    words: List[str] = []
     from_char_position = 0
     for current_char_position, char in enumerate(string):
         if char.isupper() and from_char_position < current_char_position:
@@ -51,34 +62,33 @@ def camelcase_to_lowercase_underscore(string: str) -> str:
     return r'_'.join(words)
 
 
-def lowercase_underscore_to_camelcase(string: str) -> str:
+def lowunderscore_to_camelcase(string: str) -> str:
     """Convert string from lowercase-underscore to camel-case"""
     split_string = string.split(r'_')
-    strclass = string.__class__
-    return split_string[0] + strclass.join(r'', map(strclass.capitalize, split_string[1:]))
+    return split_string[0] + r''.join([_str.capitalize() for _str in split_string[1:]])
 
 
-def detect_conversion_method(data: str) -> object:
+def detect_conversion_method(data: str) -> Callable[[str], str]:
     """Dynamically set the function that will be used"""
-    return lowercase_underscore_to_camelcase if r'_' in data else camelcase_to_lowercase_underscore
+    return lowunderscore_to_camelcase if r'_' in data else camelcase_to_lowunderscore
 
 
 if __name__ == '__main__':
     try:
-        if len(argv) == 1:
+        if len(argv) == 1:  # Pipe
             DATA = stdin.read().replace(r' ', r'_')
             conversion_method = detect_conversion_method(DATA)
             stdout.write(conversion_method(DATA))
-        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
+        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
             stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert CamelCase to lower_case_underscore and vice versa\n')
-        elif argv[1]:
+        elif argv[1]:  # String as argument
             if not argv[1].strip():
                 stderr.write('No input found!\n')
             else:
                 DATA = argv[1].replace(r' ', r'_')
                 conversion_method = detect_conversion_method(DATA)
                 stdout.write(conversion_method(DATA) + '\n')
-        else:
+        else:  # Help
             stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert CamelCase to lower_case_underscore and vice versa\n')
     except BaseException:
         stderr.write(format_exc() + '\n')

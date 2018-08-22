@@ -5,8 +5,10 @@
 bin/
 [Dd]ebug/
 python/
+.bandit
 *.cache
 .editorconfig
+.gitlint
 .flake8
 .mypy.ini
 mypy.ini
@@ -40,6 +42,7 @@ icon-theme.cache
 
 
 # Executables
+
 *.app
 *.exe
 *.hex
@@ -50,7 +53,8 @@ icon-theme.cache
 *.out
 *.x86_64
 
-# CUDA
+# Cuda
+
 *.cubin
 *.fatbin
 *.gpu
@@ -58,29 +62,35 @@ icon-theme.cache
 *.ii
 *.ptx
 
-# Debug Files
+# Debugging  & Profiling Files
+
 *.dSYM/
+*.gcda
 *.idb
 *.pdb
 *.su
 
 # Libraries
+
 *.a
 *.la
 *.lai
 *.lib
 
 # Linker Output
+
 *.exp
 *.ilk
 *.map
 
 # LLVM/Clang
+
 *.ast
 *.bc
 *.ll
 
 # Object Files
+
 *.dll
 *.dylib
 *.elf
@@ -93,22 +103,22 @@ icon-theme.cache
 *.so.*
 
 # Precompiled Headers
+
 *.gch
 *.pch
-
-# Profiling
-*.gcda
 
 
 ## PYTHON ##
 
 
 # Byte-compiled
+
 *.py[cdo]
 __pycache__/
 *__pycache__
 
 # Distribution
+
 .Python
 env/
 build/
@@ -125,6 +135,7 @@ var/
 *.egg
 
 # Installer & Builder Files
+
 logs/
 target/
 *.log
@@ -135,8 +146,10 @@ pip-delete-this-directory.txt
 pip-log.txt
 
 # Unit Test & Coverage Reports
+
 .tox/
 htmlcov/
+metrics/
 *,cover
 *.pytb
 .cache
@@ -148,9 +161,11 @@ coverage.xml
 nosetests.xml
 
 # IPython Notebook
+
 .ipynb_checkpoints
 
 # dotenv, virtualenv, & pyenv
+
 ENV/
 venv/
 .env

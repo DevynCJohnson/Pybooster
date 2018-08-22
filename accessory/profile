@@ -1,9 +1,10 @@
+#!/bin/bash
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Universal setup script for Posix-compatible shells
 # @file profile
-# @version 2018.04.27
+# @version 2018.08.22
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -76,7 +77,7 @@ readonly -f os_table
 PLATFORM='unknown'
 if [ -n "${OS:-}" ]; then
     OSTEST="$(echo "$OS" | tr '[:upper:]' '[:lower:]')"
-    [ "${OSTEST:-}" == 'windows' ] && PLATFORM='windows'
+    [ "${OSTEST:-}" = 'windows' ] && PLATFORM='windows'
     unset OSTEST
 fi
 if [ -x "$(command -v uname)" ]; then
@@ -88,7 +89,7 @@ else
 fi
 if [ -n "${OSTYPE:-}" ] && [ "$PLATFORM" == 'unknown' ]; then
     PLATFORM="$(os_table "$OSTYPE")"
-elif [ "$PLATFORM" == 'unknown' ] && [ ! "$unamestr" == 'unknown' ]; then
+elif [ "$PLATFORM" = 'unknown' ] && [ "$unamestr" != 'unknown' ]; then
     PLATFORM="$(os_table "$unamestr")"
 fi
 readonly PLATFORM

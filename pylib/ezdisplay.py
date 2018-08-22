@@ -2,11 +2,11 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief EzDisplay: View text in a GTK window
+"""@brief EzDisplay: Display the contents of a file or command-output in a GTK window
 
 @file ezdisplay.py
 @package pybooster.ezdisplay
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,7 +29,8 @@ along with this software.
 """
 
 
-from sys import stdin
+from sys import argv, stdin
+from traceback import format_exc
 
 from gi import require_version
 require_version(r'Gtk', r'3.0')
@@ -37,7 +38,7 @@ from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
 _GUI = """<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3
+<!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
 
@@ -60,7 +61,7 @@ Author: Devyn Collier Johnson
 
 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="gtk+" version="3.20"/>
   <!-- interface-license-type lgplv3 -->
   <!-- interface-name EzDisplay -->
   <!-- interface-description Display the contents of a file or command-output -->
@@ -70,12 +71,15 @@ Author: Devyn Collier Johnson
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">EzDisplay</property>
-    <property name="default_width">600</property>
-    <property name="default_height">500</property>
+    <property name="default_width">1200</property>
+    <property name="default_height">600</property>
     <signal name="damage-event" handler="_winexit" swapped="no"/>
     <signal name="delete-event" handler="_winexit" swapped="no"/>
     <signal name="destroy" handler="_winexit" swapped="no"/>
     <signal name="destroy-event" handler="_winexit" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkBox" id="box2">
         <property name="visible">True</property>
@@ -93,8 +97,8 @@ Author: Devyn Collier Johnson
             <property name="margin_bottom">5</property>
             <child>
               <object class="GtkScrolledWindow" id="scrolledwindow1">
-                <property name="width_request">600</property>
-                <property name="height_request">500</property>
+                <property name="width_request">1200</property>
+                <property name="height_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
@@ -102,6 +106,7 @@ Author: Devyn Collier Johnson
                   <object class="GtkTextView" id="textview">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="monospace">True</property>
                   </object>
                 </child>
               </object>
@@ -131,14 +136,11 @@ Author: Devyn Collier Johnson
         <child>
           <object class="GtkButton" id="_close">
             <property name="label">gtk-close</property>
-            <property name="width_request">100</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="use_stock">True</property>
-            <property name="image_position">top</property>
-            <property name="always_show_image">True</property>
             <signal name="clicked" handler="_winexit" object="ezdisplay" swapped="no"/>
           </object>
           <packing>
@@ -154,15 +156,25 @@ Author: Devyn Collier Johnson
 </interface>"""
 
 
-def readpipe() -> str:
-    """Read from pipe"""
-    while True:
-        _input = r''
-        _character = stdin.read(1)
-        while _character:
-            _input += _character
-            _character = stdin.read(1)
-        return str(_input)
+def getinput() -> str:
+    """Read from a file or pipe"""
+    try:
+        if len(argv) == 1:
+            while True:
+                _input = r''
+                _character = stdin.read(1)
+                while _character:
+                    _input += _character
+                    _character = stdin.read(1)
+                return str(_input)
+        elif argv[1]:
+            _out: list = []
+            with open(argv[1], mode=r'rt', encoding=r'utf-8') as _file:
+                _out.append(r''.join(_file.readlines()).strip())
+            return r''.join(_out)
+    except BaseException:
+        return format_exc() + '\n'
+    return r'No input data provided!'
 
 
 class MainWin():  # pylint: disable=R0903
@@ -172,13 +184,9 @@ class MainWin():  # pylint: disable=R0903
         """Initialize the main window"""
         self.interface = Gtk.Builder()
         self.interface.add_from_string(buffer=_GUI)
-        dic = {r'_winexit': Gtk.main_quit}  # Match signal to function (handler)
-        self.interface.connect_signals(dic)
-        _label = self.interface.get_object(r'viewing_label')
-        _label.set_text(r'EzDisplay')
-        _textview = self.interface.get_object(r'textview')
-        _textbuffer = _textview.get_buffer()
-        _textbuffer.set_text(readpipe())
+        self.interface.connect_signals({r'_winexit': Gtk.main_quit})  # Match signal to function (handler)
+        _textbuffer = self.interface.get_object(r'textview').get_buffer()
+        _textbuffer.set_text(getinput())
 
 
 if __name__ == '__main__':

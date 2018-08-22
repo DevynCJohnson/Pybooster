@@ -5,7 +5,7 @@
 """@brief Minify XML documents (including HTML, MathML, SVG, etc.)
 
 @file minifyxml
-@version 2017.12.25
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -49,9 +49,6 @@ from pybooster.markup import (
 )
 
 
-__all__ = []
-
-
 # FUNCTIONS #
 
 
@@ -68,8 +65,7 @@ def display_minify_results(filename: str, orig_size: int, new_size: int) -> None
 
 
 if __name__ == '__main__':  # noqa: C901
-    # Setup Arguments
-    del __all__
+    # SETUP ARGUMENTS #
     PARSER = argparse.ArgumentParser(
         prog=r'minifyxml',
         description=r'Minify XML documents (including HTML, MathML, SVG, etc.)',
@@ -197,7 +193,7 @@ if __name__ == '__main__':  # noqa: C901
         default=False,
         help=r'Keep the `pre` (propietary) attributes which are used to prevent minification (Default: False)'
     )
-    PARSER.add_argument(
+    PARSER.add_argument(  # type: ignore
         r'-p', r'--pre-tags',
         nargs=r'*',
         default=(r'pre', r'textarea'),
@@ -226,7 +222,7 @@ if __name__ == '__main__':  # noqa: C901
     )
     ARGS = PARSER.parse_args()
     del FILETYPE_GROUP, PARSER
-    # Setup DocType
+    # SETUP DOCTYPE #
     if ARGS.html:
         _DOC_TYPE = FILETYPE_HTML
     elif ARGS.xml:
@@ -239,7 +235,7 @@ if __name__ == '__main__':  # noqa: C901
         _DOC_TYPE = FILETYPE_DTD
     elif ARGS.xsd:
         _DOC_TYPE = FILETYPE_XSD
-    # Parse Flags
+    # PARSE FLAGS #
     if ARGS.remove_all_metadata:
         ARGS.remove_metadata = 2
     elif ARGS.remove_metadata:
@@ -252,10 +248,10 @@ if __name__ == '__main__':  # noqa: C901
         ARGS.remove_all_empty_space = False
     if ARGS.inplace:
         ARGS.output_file = ARGS.input_file
-    # Get Data/File
+    # GET DATA/FILE #
     XMLDATA = getdata(ARGS.input_file, ARGS.encoding)
     assert_is_xml(_DOC_TYPE, XMLDATA, ARGS.input_file)
-    # Prepare Data
+    # PREPARE DATA #
     if ARGS.output_file:
         ORIG_SIZE = len(XMLDATA)
     XMLDATA = insert_missing_xml_namespaces(XMLDATA)
@@ -263,7 +259,7 @@ if __name__ == '__main__':  # noqa: C901
         XMLDATA = prettify_xml_schema(XMLDATA)
     else:  # Not DTD nor XSD
         try:
-            XMLDOM = xml.dom.minidom.parseString(XMLDATA)
+            XMLDOM = xml.dom.minidom.parseString(XMLDATA)  # type: ignore
         except ExpatError:
             stderr.write(r'Unsupported filetype (' + ARGS.input_file + ')!\n')
             raise SystemExit(1)
@@ -272,7 +268,7 @@ if __name__ == '__main__':  # noqa: C901
         del XMLDOM
         if _DOC_TYPE == FILETYPE_SVG:
             XMLDATA = remove_duplicated_svg_ns(XMLDATA)
-    # Initialize Minifier
+    # INITIALIZE MINIFIER #
     if _DOC_TYPE != FILETYPE_DTD:
         MINIFIER = Minifier(
             remove_metadata=ARGS.remove_metadata,
@@ -289,7 +285,7 @@ if __name__ == '__main__':  # noqa: C901
             doc_type=_DOC_TYPE
         )
         MINIFIER.input(XMLDATA)
-    # Output Finished Result
+    # OUTPUT FINISHED RESULT #
     if _DOC_TYPE != FILETYPE_DTD and not MINIFIER.output:
         stderr.write('No data to output!\n')
         raise SystemExit(1)

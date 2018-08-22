@@ -6,7 +6,7 @@
 
 @file convtime.py
 @package pybooster.convtime
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,6 +27,9 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with this software.
 """
+
+
+from typing import Union
 
 
 __all__ = [
@@ -58,14 +61,14 @@ SECONDS_IN_MINUTE = 60
 # DAYS #
 
 
-def day2second(_time: int or float, _round: int = 3) -> float:
+def day2second(_time: Union[float, int], _round: int = 3) -> float:
     """Days -> Seconds"""
-    return round(_time * 86400, _round)
+    return round(_time * 86400.0, _round)
 
 
 # SECONDS #
 
 
-def second2day(_time: int or float, _round: int = 3) -> float:
+def second2day(_time: Union[float, int], _round: int = 3) -> float:
     """Seconds -> Days"""
     return round(_time * 0.000011574074074, _round)

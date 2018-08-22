@@ -5,7 +5,7 @@
 """@brief Replace odd characters with normal characters in stream (i.e. curly-commas to regular)
 
 @file replaceoddchars
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,26 +34,16 @@ License along with this software.
 
 from sys import argv, stdin, stdout
 
-
-def replace_odd_chars(_data: str) -> str:
-    """Replace odd characters with plain characters (i.e. replace non-breaking space with ASCII space)"""
-    # Commas
-    _data = _data.replace(r'،', r',').replace(r'、', r',').replace(r'،', r',').replace(r'︐', r',').replace(r'︑', r',').replace(r'᠂', r',').replace(r'‍̓', r',').replace(r'‍፣', r',').replace(r'‍꛵', r',')
-    # Quotes
-    _data = _data.replace(r'“', r'"').replace(r'”', r'"').replace(r'‘', r'\'').replace(r'’', r'\'').replace(r'′', r'\'').replace(r'″', r'"').replace(r'‴', r'"').replace(r'″', r'"')
-    # Spaces
-    _data = _data.replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
-    # Dashes & Other Characters
-    return _data.replace('\u1680', r'-').replace('\u16EB', r'.').replace('\u16EC', r':')
+from pybooster.strtools import replace_odd_chars
 
 
 if __name__ == '__main__':
-    if len(argv) == 1:
+    if len(argv) == 1:  # Pipe
         DATA = stdin.read()
         stdout.write(replace_odd_chars(DATA))
-    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):
+    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
         stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')
-    elif argv[1]:
+    elif argv[1]:  # String as argument
         stdout.write(replace_odd_chars(argv[1]) + '\n')
-    else:
+    else:  # Help
         stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')

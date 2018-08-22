@@ -1,0 +1,8 @@
+[settings]
+extension=diff
+mime_type=text/x-patch
+context_action_cmd=
+
+[indentation]
+type=0
+width=4

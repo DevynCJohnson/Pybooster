@@ -6,7 +6,7 @@
 
 @file __init__.py
 @package pybooster.ezwin
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,5 +37,5 @@ __all__ = [
 __author__ = r'Devyn Collier Johnson'
 __email__ = r'DevynCJohnson@Gmail.com'
 __copyright__ = r'LGPLv3'
-__version__ = r'2018.04.27'
+__version__ = r'2018.08.22'
 __description__ = r'EZ-Win - Pre-built windows using GTK3 for Python3'

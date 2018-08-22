@@ -1,12 +1,63 @@
+2018-08-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added language specification file for Coffeescript & Geany files
+	* PyBooster:  Applied minor fixes, optimizations, & standardization to PyLib libraries
+
+2018-06-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Glade files:  Updated all files from Glade v3.18.3 to v3.22.1 and GTK v3.12 to GTK v3.20
+	* Opticons:  Added international flag icons
+	* markup.py:  Moved some global variables to libregex.py
+	* program-analyzer:  Applied additional improvements & optimizations
+	* strtools.py:  Moved some global variables to libregex.py
+
+2018-06-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* canalysis:  Added support for cccc, chktri, cloc, flawfinder, licensecheck, pmccabe, pscan, undertaker, & wc
+	* Coding_Standards.md:  Added additional rules
+	* getsysinfo:  Added additional features
+	* pyanalysis:  Added support for cloc, licensecheck, bandit, & wc
+	* PyBooster:  Added .bandit.ini, .gitlint, & code-analysis
+	* py_directive_checker:  Added support for Bandit (nosec), Cheetah, cython, & distutils directives
+	* py_directive_checker:  Enhanced support for existing directives
+	* replaceoddchars:  Added support for additional odd characters
+	* shanalysis:  Added support for cloc, licensecheck, & wc
+	* strtools.py:  Moved replace_odd_chars() from replaceoddchars
+
+2018-06-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* ezdisplay.py:  Optimized & updated GTK to version 3.22
+	* Opticons:  Added additional icons
+	* PyBooster:  Renamed code_formatter to code-formatter
+	* shell_ext:  Renamed some package-management aliases & added Glade environment variables
+	* usx:  Removed duplicate symbols & rearranged some symbols
+
+2018-05-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added filemagic.py, char2num, & num2char
+	* PyBooster:  Renamed noqa_checker to py_directive_checker
+	* program-analyzer:  Applied many improvements
+	* shell_ext:  Fixed some bugs and added additional autocompletion code for Bash
+	* strtools.py:  Renamed & optimized many functions and added more doctests
+
+2018-05-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added code_formatter & libregex.py
+	* genmathart:  Optimized code
+	* usx:  Fixed bug preventing proper use of the function keys (F1-F12)
+
 2018-05-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Updated & applied new coding standard
-	* makefile:  Updated Git commands
-	* pyanalysis:  Added support for Vulture
+	* PyBooster:  Applied fixes & improvements to noqa_checker
+	* flake8_optimal.py:  Applied improvements & optimizations
+	* noqa_checker:  Added support for Mypy type comments & applied improvements
 	* strtools.py:  Added is_palidrome
 
 2018-05-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* makefile:  Updated Git commands
+	* pyanalysis:  Added support for Vulture
 	* xmath.py:  Added external & inverse trigonometric functions
 
 2018-05-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

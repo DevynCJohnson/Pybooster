@@ -1,0 +1,10 @@
+[settings]
+extension=rst
+mime_type=text/x-rst
+comment_single=..\s
+context_action_cmd=
+symbol_list_sort_mode=1
+
+[indentation]
+type=1
+width=4

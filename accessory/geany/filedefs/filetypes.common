@@ -1,0 +1,525 @@
+[styling]
+# Format: `foreground;background;bold;italic` or `named_style,bold,italic`
+
+# This is the Default "built-in" color scheme (Used for filetype All/None)
+default=0x000;0xFFF;false;false
+error=0xF00;0xBFBFBF;false;true
+
+# 3rd & 4th selection argument is true to override default foreground
+selection=0x000;0xC0C0C0;false;true
+
+# Style for a non-matching brace (a brace without a counterpart)
+brace_bad=0x000;0xF11;true;true
+# Style for a matching brace
+brace_good=0x00F;0x9F9;true;true
+
+# The following settings define the colors of the margins on the left side
+fold_symbol_highlight=0xFFF
+margin_folding=0x000;0xDFDFDF;
+margin_line_number=0x000;0xD0D0D0;false;false
+margin_linenumber=margin_line_number
+
+# Background color of the current line, only the second and third argument is interpreted
+# Use the third argument to enable or disable the highlighting of the current line (has to be true/false)
+current_line=0x000;0xF3F3F3;true;false
+
+# Translucency for the current line (first argument) and the selection (second argument)
+# Values between 0 and 256 are accepted
+translucency=256;256
+
+# Style for a highlighted line (e.g. when using Goto line or goto tag)
+marker_line=0x000;0xFF0;false;false
+
+# Style for a marked search results (when using "Mark" in Search dialogs)
+# The second argument sets the background color for the drawn rectangle
+# Only the second argument is interpreted
+marker_search=0x000;0x0000F0;false;false
+
+# Style for a marked line (e.g when using the "Toggle Marker" keybinding (Ctrl-M))
+marker_mark=0x000;0xB8F4B8;false;false
+
+# Translucency for the line marker (first argument) and the search marker (second argument)
+marker_translucency=256;256
+
+# Color of the caret, only first and third argument are interpreted
+# Set the third argument to true to change the caret into a block caret
+caret=0x000;0x000;false;false
+
+# Width of the caret in pixels, use 0 to make it invisible, maximum width is 3
+caret_width=1
+
+# Set foreground and background color of indentation guides
+indent_guide=0xC0C0C0;0xFFF;false;false
+
+# Third argument: if true, use this foreground color. If false, use the default value defined by the filetypes.
+# Fourth argument: if true, use this background color. If false, use the default value defined by the filetypes.
+white_space=0xC0C0C0;0xFFF;true;false
+
+# Style of folding icons, valid values are:
+# First argument:  1 for boxes, 2 for circles, 3 for arrows, 4 for +/-
+# Second argument: 1 for straight lines, 2 for curved lines or 0 for none
+folding_style=1;1;
+
+# Should an horizontal line be drawn at the line where text is folded
+# 0 to disable
+# 1 to draw the line above folded text
+# 2 to draw the line below folded text
+folding_horiz_line=2
+
+# First argument: drawing of visual flags to indicate a line is wrapped (This is a bitmask)
+# 0 - No visual flags
+# 1 - Visual flag at end of subline of a wrapped line
+# 2 - Visual flag
+# At begin of subline of a wrapped line, Subline is indented by at least 1 to make room for the flag.
+# Second argument: whether the visual flags to indicate a line is wrapped are drawn near the border
+# or near the text (This is a bitmask)
+# 0 - Visual flags drawn near border
+# 1 - Visual flag at end of subline drawn near text
+# 2 - Visual flag at begin of subline drawn near text
+line_wrap_visuals=1;0;
+
+# First argument: sets the size of indentation of sublines for wrapped lines in terms of
+# the width of a space, only used when the second argument is 0
+# Second argument: wrapped sublines can be indented to the position of their first subline or one more indent level
+# 0 - Wrapped sublines aligned to left of window plus amount set by the first argument
+# 1 - Wrapped sublines are aligned to first subline indent (use the same indentation)
+# 2 - Wrapped sublines are aligned to first subline indent plus one more level of indentation
+line_wrap_indent=0;1;
+
+# First argument: amount of space to be drawn above the line's baseline
+# Second argument: amount of space to be drawn below the line's baseline
+line_height=0;0;
+
+# 3rd argument is true to override default foreground of calltips
+# 4th argument is true to override default background of calltips
+calltips=0xC0C0C0;0xFFF;false;false
+call_tips=calltips
+
+[settings]
+# Characters to be skipped when moving (or included when deleting) to word boundaries
+whitespace_chars=\s\t!\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~
+wordchars=_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+
+[named_styles]
+binnumber=number
+date=0x06C;0xFFF;false;false
+expand=default
+extra=0x204A87
+hexnumber=number
+hide=other
+illegal=error
+important=error
+lexerror=error
+linenum=number_2
+math2=number
+math=0x6390AD;0x242424;false;false
+number=0xA4B;0xFFF;false;true
+number_1=number
+number_2=number
+punctuation=default
+taskmarker=0x800;0xDDD;true;true
+white=default
+
+# COMMENTS
+
+block_comment=comment
+blockcomment=comment
+comment2=comment_doc
+comment=0xB00;0xDDD
+comment_doc=0x080;0xEEE
+comment_doc_keyword=0x609;0xEEE;true;false
+comment_doc_keyword_error=0x609;0xEBB;true;true
+comment_doc_macro=comment_doc_keyword
+comment_function=comment
+comment_line=comment
+comment_line_bang=comment
+comment_line_doc=comment_doc
+comment_module=comment
+comment_word=comment_doc_keyword
+commentblock=comment
+commentblockdoc=comment_doc
+commentbox=comment
+commentdoc=comment_doc
+commentdockeyword=comment_doc_keyword
+commentdockeyworderror=comment_doc_keyword_error
+commentline=comment
+commentlinedoc=comment_doc
+commentml=comment_doc
+commentnested=comment
+commentstream=comment_doc
+doc=comment_doc
+docblock=comment_doc
+dockeyword=comment_doc_keyword
+docline=comment_line_doc
+document=preprocessor
+literate_comment=comment
+multicomment=comment
+pod=comment_doc
+pod_verbatim=comment_doc_keyword
+programmer_comment=comment_doc
+
+# KEYWORDS
+
+alias=keyword_2
+basekword=keyword_2
+defword=keyword_2
+identifier=default
+identifiers=keyword
+identifier_1=default
+identifier_2=default
+identifier_3=default
+identifier_4=default
+keyword=0x00007F;0xFFF;true;false
+keywords=keyword
+keyword_1=keyword
+keyword_2=0x911;0xFFF;true;false
+keyword_3=keyword
+keyword_4=keyword
+keywordkw=keyword_2
+kword=keyword_1
+otherkword=keyword_3
+preword1=keyword
+preword2=keyword
+user1=keyword
+userdefined=keyword_2,bold
+userword=keyword_2
+word1=keyword
+word2=0x360;0xFFF;true;true
+word3=keyword
+word4=keyword
+word5=keyword_1
+word6=keyword_2
+word7=keyword
+word8=keyword
+word=keyword
+worddemoted=keyword_1
+wordexpand=keyword
+worditcl=keyword
+wordtcl=keyword_1
+wordtk=keyword_2
+wordtkcmds=keyword
+
+# PREPROCESSOR & DIRECTIVES
+
+import=preprocessor
+literate_codedelim=preprocessor
+macro=preprocessor
+macro_quoted=default
+macrodef=keyword_1
+modulename=type
+modules=type
+modules_att=preprocessor
+postproc=preprocessor
+pragma=preprocessor
+preproc=preprocessor
+preprocessor2=preprocessor
+preprocessor=0x007F7F;0xEEF;false;false
+preprocessorcomment=0x580;0xFFF;false;false
+preprocessorcommentdoc=0x580;0xFFF;false;false
+
+# STRINGS
+
+backticks=0x008000;0xFFF;false;false
+backticks_var=identifier_2
+blockquote=tag
+bytecharacter=character
+bytestring=0x080;0xEEF;true;false
+bytestringraw=0x080;0xEEF;false;true
+character=string
+character_eol=string_eol
+charactereol=string_eol
+doublequotedstring=string_2
+doublestring=string_2
+escapesequence=0xCA0;0xFFF;true;true
+format=string_2
+format_ident=string_2
+hashquotedstring=backticks
+here_character=character
+here_delim=here_doc
+here_doc=backticks
+here_q=here_doc
+here_qq=here_doc
+here_qq_var=identifier_2
+here_qx=here_doc
+here_qx_var=identifier_2
+here_string=string
+heredelim=operator
+inquote=string
+literalstring=string_2
+longquote=here_doc
+msgctxt=keyword
+msgctxt_text=string
+msgctxt_text_eol=string_eol
+msgid=keyword_1
+msgid_text=string
+msgid_text_eol=string_eol
+msgstr=keyword_2
+msgstr_text=string
+msgstr_text_eol=string_eol
+singlestring=string
+string2=string_2
+string=0xF57300;0xFFF;false;false
+string_1=string
+string_2=comment_doc
+string_eol=0x000;0xE0C0E0;false;false
+string_q=string_2
+string_qq=string_2
+string_qq_var=identifier_2
+string_qr=string_2
+string_qr_var=identifier_2
+string_qw=string_2
+string_qx=string_2
+string_qx_var=identifier_2
+string_var=identifier_1
+stringdq=string
+stringeol=string_eol
+stringlq=string_2
+stringraw=backticks
+stringrq=string_2
+stringvar=string
+text=string
+triple=comment_doc
+tripledouble=comment_doc
+tripleverbatim=comment_doc
+userliteral=other
+uuid=0x404080;0xFFF;false;false
+verbatim=0x003;0xFFF;false;false
+wordinquote=string
+
+# BASIC SYNTAX
+
+array=identifier_2
+assignment=0x303030;0xEEE;true;false
+class=type
+classname=type
+classvar=type
+constant=0x4FF;0xFFF;true;false
+decorator=0xF57300;0xFDF;true;false
+delimiter=operator
+label=0x000;0x0FF;true;false
+locale=other
+operator=0x726;0xFFF;true;false
+other=0x404080;0xFFF;false;false
+parameter=function
+parameters=parameter
+reg_subst=regex
+regex=0x069;0xFFF;false;true
+regex_var=identifier_2
+regsubst_var=identifier_2
+reserved_operator=keyword_1
+scalar=identifier_1
+special=keyword_2
+type=0x0000D0;0xFFF;true;false
+value=0xF57300;0xFFD;false;true
+variable=type
+variable_indexer=default
+verbose_regex=regex
+verbose_regex_comment=comment
+
+# SYNTAX
+
+atom=0x69C;0xFFF;false;true
+atom_quoted=0x69C;0xFFF;true;true
+bifs=keyword_2
+capital=type
+cmdlet=keyword_2
+cmdopt=keyword_1
+code=identifier
+codebk=identifier_2
+command=function
+continuation=default
+control=keyword_1
+coroutines=class
+datasection=value
+defname=function
+defval=value
+emphasis=tag
+flags=comment
+foreachdef=keyword_1
+function=0x000080;0xF0F0F0;false;true
+function_basic=function
+function_name=function
+function_other=function
+functiondef=function
+fuzzy=comment_doc_keyword
+global=type
+globalclass=0x0000D0;0xFFF;true;false
+hash=identifier_3
+ideol=0x0000D0;0xFFF;true;false
+ifdefinedef=keyword_1
+infix=function
+infixeol=function
+inout=keyword
+input=keyword
+instance=type
+instanceproperty=identifier_2
+instancevar=default
+key=attribute
+lifetime=function
+media=parameter
+modifier=operator
+node_name=default
+node_name_quoted=default
+option=operator
+output=keyword
+pageex=keyword_1
+port_connect=keyword
+position=number
+question=number
+record=type
+record_quoted=default
+reference=function
+section=0x002F2F;0xEEE;true;true
+sectiondef=keyword_1
+sectiongroup=keyword_1
+shortcmd=function
+starcommand=keyword
+stderr=default
+stdfunction=function
+stdin=default
+stdoperator=operator
+stdout=default
+stdpackage=preprocessor
+stdtype=type
+sub_prototype=here_doc
+subbrace=identifier_2
+subsectiondef=keyword_1
+substitution=function
+symbol=preprocessor
+symboltable=identifier_4
+target=0x00F;0xBFB;true;true
+upper_bound=default
+whiledef=keyword_1
+xlat=string_2
+
+# ASSEMBLY
+
+asm=number
+cpuinstruction=0x119;0xFFF;true;false
+directive=0x5A4565;0x191919;true;false
+directiveoperand=0xFF901E;0xFFF;false;false
+extinstruction=0x007F7F;0xFFF;true;false
+instruction=0x0CB;0xFFF;true;false
+mathinstruction=0x7F0000;0xFFF;true;false
+
+# DIFF FILES & PATCHES
+
+added=line_added
+changed=line_changed
+deleted=line_removed
+line_added=0x34B034;0xFFF;false;false
+line_changed=0x7F007F;0xFFF;false;false
+line_removed=0xFF2727;0xFFF;false;false
+
+# MARKUP
+
+attribute=0x00007F;0xFFF;true;false
+attribute_unknown=0x00007F;0xFFF;true;true
+attributeunknown=attribute_unknown
+entity=default
+extended_identifier=keyword_1
+extended_pseudoclass=string
+extended_pseudoelement=string_2
+header1=tag
+header2=tag
+header3=tag
+header4=tag
+header5=tag
+header6=tag
+hrule=tag
+html_asp=0x004F4F;0xF0F0F0;false;false
+html_aspat=0x004F4F;0xF0F0F0;false;false
+html_attribute=attribute
+html_attributeunknown=attribute_unknown
+html_cdata=0x609;0xFFF;false;false
+html_comment=comment
+html_default=default
+html_doublestring=string_2
+html_entity=entity
+html_number=number
+html_other=default
+html_question=number
+html_script=0x000080;0xF0F0F0;false;false
+html_singlestring=string
+html_tag=tag
+html_tagend=tag_end
+html_tagunknown=tag_unknown
+html_value=value
+html_xccomment=comment
+html_xmlend=tag_end
+html_xmlstart=tag
+id=class
+jscript_comment=0xD00000;0xFFF;false;false
+jscript_commentdoc=0x3F5FBF;0xFFF;true;false
+jscript_commentline=0xD00000;0xFFF;false;false
+jscript_default=default
+jscript_doublestring=0xFF901E;0xFFF;false;false
+jscript_keyword=keyword
+jscript_number=number
+jscript_regex=regex
+jscript_singlestring=0xFF901E;0xFFF;false;false
+jscript_start=0x008080;0xFFF;false;false
+jscript_stringeol=0x000;0xE0C0E0;false;false
+jscript_symbols=0x301010;0xFFF;false;false
+jscript_word=0x000;0xFFF;false;false
+link=keyword_1
+olist_item=tag
+php_comment=0x4B4B4B;0x191919;false;false
+php_commentline=0x808080;0xFFF;false;false
+php_complex_variable=0x105010;0xFFF;false;false
+php_default=0x605566;0x191919;false;false
+php_hstring=0x008000;0xFFF;false;false
+php_hstring_variable=0x101060;0xFFF;false;false
+php_number=number
+php_operator=0x102060;0xFFF;false;false
+php_simplestring=0xFF901E;0xFFF;false;false
+php_variable=0x7F0000;0xFFF;false;false
+php_word=0x009;0xFFF;false;false
+pseudoclass=string
+pseudoelement=string_2
+python_character=character
+python_classname=type
+python_commentline=comment_line
+python_default=default
+python_defname=function
+python_identifier=identifier
+python_number=number
+python_operator=operator
+python_string=string
+python_triple=comment_doc
+python_tripledouble=comment_doc
+python_word=keyword
+sgml_1st_param=0x404080;0xFFF;false;false
+sgml_1st_param_comment=0x406090;0xFFF;false;false
+sgml_block_default=0x000;0xFFF;false;false
+sgml_command=0xFF5757;0x191919;false;true
+sgml_default=0x605566;0x191919;false;false
+sgml_doublestring=0x008000;0xFFF;false;false
+sgml_entity=entity
+sgml_error=error
+sgml_simplestring=string
+sgml_special=number
+strikeout=tag
+strong=tag
+tag2=tag
+tag=0xCD8500;0xFFF;true;false
+tag_end=0xC92;0xFFF;true;false
+tag_unknown=0x41476B;0x977;true;true
+tagend=tag_end
+tagname=preprocessor
+tagunknown=tag_unknown
+ulist_item=tag
+underlined=tag
+unknown_identifier=default
+unknown_pseudoclass=default
+xccomment=comment
+xmlend=tag_end
+xmlstart=tag
+
+# SQL
+
+qoperator=operator
+quotedidentifier=0x119;0xFFF;false;false
+sqlplus=default
+sqlplus_comment=comment
+sqlplus_prompt=default

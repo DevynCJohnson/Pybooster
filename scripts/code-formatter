@@ -1,0 +1,162 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for prettifiers, minifiers, and auto-formatters
+# @file code-formatter
+# @version 2018.08.22
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# SETUP #
+
+
+EXTRA_PARAMS=0
+version=2018.08.22
+
+
+if [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '-x' ]; then
+    EXTRA_PARAMS=1
+fi
+
+
+# FUNCTIONS #
+
+
+Help() {
+    printf '%s\n' '=====  Code Formatter  ====='
+    printf '%s\n%s\n%s\n' 'Wrapper for prettifiers, minifiers, and auto-formatters' 'Usage: code-formatter [parameters]' 'WARNING: Changes occur in-place'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-c,--csrc      The input file is C source code (uses astyle)'
+    printf '%s\n' '-h,--help      Display help info'
+    printf '%s\n' '-p,--py        The input file is Python source code (uses autopep8 & docformatter)'
+    printf '%s\n' '--svg          The input file is SVG source code (uses minifyxml & xmllint)'
+    printf '%s\n' '-v,--version   Display version'
+    printf '%s\n' '-x             Enable additional and more detailed formatting features'
+    printf '\n%s\n' '=====  Tools  ====='
+    printf '%s\n' 'astyle - Format C source code'
+    printf '%s\n' 'autopep8 - Format Python source code according to the PEP8 standard'
+    printf '%s\n' 'docformatter - Format Python documentation in source code'
+    printf '%s\n' 'minifyxml - Minify, repair, and format XML code'
+}
+
+
+# GETOPT #
+
+
+GOPT="$(getopt -o cf:hpv --long csrc,file:,py,script:,svg,version,help -- "$@")"
+eval set -- "$GOPT"
+
+_file=''
+
+while true; do  # Find input file prior to scanning other parameters
+    case "$1" in
+        -f|--file|--script)  # Specify input file
+            _file="$2"
+            if [ ! -r "$_file" ]; then
+                printf 'The specified file is non-readable or non-existent!\n' >&2
+                exit 1
+            fi
+            break
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *) shift ;;  # Unknown/non-registered parameter
+    esac
+done
+
+eval set -- "$GOPT"
+while true; do
+    case "$1" in
+        -c|--csrc)  # The input file is C source code (uses astyle)
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v astyle)" ]; then
+                if [ "$EXTRA_PARAMS" -eq 1 ]; then
+                    astyle --options=.astyle.ini "$_file"
+                else
+                    astyle "$_file"
+                fi
+            else
+                printf 'astyle: command not found!\n' >&2
+                exit 1
+            fi
+            exit 0
+        ;;
+        -f|--file|--script)  # Specify input file
+            shift 2
+        ;;
+        -h|--help)  # Display help info
+            Help
+            exit 0
+        ;;
+        -p|--py)  # The input file is Python source code (uses autopep8 & docformatter)
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v autopep8)" ]; then
+                if [ "$EXTRA_PARAMS" -eq 1 ]; then  # PEP8: https://pypi.org/project/autopep8/
+                    autopep8 --aggressive --aggressive --global-config=./tox.ini --ignore=E501 --in-place --pep8-passes=32 "$_file"
+                else
+                    autopep8 --aggressive --aggressive --in-place "$_file"
+                fi
+            else
+                printf 'autopep8: command not found!\n' >&2
+                exit 1
+            fi
+            if [ -x "$(command -v docformatter)" ]; then  # PEP257: https://github.com/myint/docformatter
+                if [ "$EXTRA_PARAMS" -eq 1 ]; then
+                    docformatter --in-place --pre-summary-newline --wrap-descriptions=79 --wrap-summaries=0 "$_file"
+                else
+                    docformatter --in-place --pre-summary-newline "$_file"
+                fi
+            else
+                printf 'docformatter: command not found!\n' >&2
+                exit 1
+            fi
+            exit 0
+        ;;
+        --svg)  # The input file is SVG source code (uses minifyxml & xmllint)
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v minifyxml)" ]; then
+                minifyxml --svg --inplace --remove-all-metadata "$_file"
+            else
+                printf 'minifyxml: command not found!\n' >&2
+                exit 1
+            fi
+            if [ -x "$(command -v xmllint)" ]; then
+                xmllint --valid --nowarning --noout "$_file"
+            else
+                printf 'xmllint: command not found!\n' >&2
+            fi
+            exit 0
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            exit 0
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+exit 0

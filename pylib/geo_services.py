@@ -6,7 +6,7 @@
 
 @file geo_services.py
 @package pybooster.geo_services
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -48,13 +48,13 @@ __all__ = [
 
 def getgeodata() -> dict:
     """Retrieve the system's current geographical location based on the ISP"""
-    return loads(urlopen(r'http://ip-api.com/json').read().decode(r'utf-8'))
+    return loads(urlopen(r'http://ip-api.com/json').read().decode(r'utf-8'))  # nosec
 
 
 def getcity(_loc: dict) -> str:
     """Retrieve the system's current city based on the ISP
 
-    Prerequisite: data from getgeodata()
+    Prerequisite: Data from getgeodata()
     """
     return _loc[r'city']
 
@@ -62,7 +62,7 @@ def getcity(_loc: dict) -> str:
 def getcountry(_loc: dict) -> str:
     """Retrieve the system's current country based on the ISP
 
-    Prerequisite: data from getgeodata()
+    Prerequisite: Data from getgeodata()
     """
     return _loc[r'country']
 
@@ -70,7 +70,7 @@ def getcountry(_loc: dict) -> str:
 def getisp(_loc: dict) -> str:
     """Retrieve the system's current ISP
 
-    Prerequisite: data from getgeodata()
+    Prerequisite: Data from getgeodata()
     """
     return _loc[r'isp']
 
@@ -78,7 +78,7 @@ def getisp(_loc: dict) -> str:
 def getlatitude(_loc: dict) -> float:
     """Retrieve the system's current latitude based on the ISP
 
-    Prerequisite: data from getgeodata()
+    Prerequisite: Data from getgeodata()
     """
     return _loc[r'lat']
 
@@ -100,15 +100,15 @@ def gettimezone(_loc: dict) -> str:
 
 
 def getzipcode(_loc: dict) -> str:
-    """Retrieve the system's current zipcode based on the ISP
+    """Retrieve the system's current zipcode (as a string) based on the ISP
 
     Prerequisite: data from getgeodata()
     """
     return _loc[r'zip']
 
 
-def getzipcode_int(_loc: dict) -> str:
-    """Retrieve the system's current zipcode based on the ISP
+def getzipcode_int(_loc: dict) -> int:
+    """Retrieve the system's current zipcode (as an integer) based on the ISP
 
     Prerequisite: data from getgeodata()
     """

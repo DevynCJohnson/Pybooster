@@ -1,0 +1,13 @@
+[settings]
+extension=po
+mime_type=text/x-gettext-translation
+comment_single=#
+comment_use_indent=true
+context_action_cmd=
+
+[indentation]
+#type=1
+#width=4
+
+[build_settings]
+compiler=msgfmt --check --check-accelerators=_ "%f"

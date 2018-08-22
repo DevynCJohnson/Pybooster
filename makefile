@@ -22,6 +22,7 @@ override PYEGGDIR::=./pyegg
 override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
 override INCDIR::=./include
+override LANGSPECSDIR::=./accessory/language_specs
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
 override TOOLSDIR::=./tools
@@ -35,17 +36,21 @@ PYPATH::=/usr/lib/python
 override INSTALLBINDIR::=/usr/bin
 override INSTALLDOCDIR::=/usr/share/doc
 override INSTALLHEADERSDIR::=/usr/src/include/pybooster
+override INSTALLLANGSPECS2DIR::=/usr/share/gtksourceview-2.0/language-specs
+override INSTALLLANGSPECS3DIR::=/usr/share/gtksourceview-3.0/language-specs
 override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
+override LIST_LANGSPECS::=coffeescript
 override LIST_MATH_PROGRAMS::=cos fib isprime sin tan
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe exewalk flake8 noqa_checker pep257 pep8 progstrip pyanalysis pydocgtk pyflakes3 pyinspect pylint3 pytest3 shanalysis systracer timeit timex transpile
-override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase cleansystem genmathart getsysinfo lslibfunc refreshgrub replaceoddchars termtest thumbnail-cleaner togglequotes win2unixlines
-override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay financial fs geo_services libchar markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
-override LIST_PIP_DEPS::=autopep8 bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint vulture
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk flake8 pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes3 pyinspect pylint3 pytest3 shanalysis systracer timeit timex transpile
+override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
+override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
+override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint vulture
+override LIST_DEV_DEPS::=binwalk bsdiff cccc chktri complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade kwstyle ltrace pmccabe pscan shc splint strace undertaker vbindiff
 
 # Parameters
 override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
@@ -108,6 +113,7 @@ help :
 	printf '%s\n%s\n' 'Install Additional Mimetypes:' '    sudo make install_mimetype_booster'
 	printf '%s\n%s\n' 'Install C Libraries:' '    sudo make install_clib'
 	printf '%s\n%s\n' 'Install Enhanced XCompose File:' '    sudo make install_xcompose'
+	printf '%s\n%s\n' 'Install Language Specification Files:' '    sudo make install_langspecs'
 	printf '%s\n%s\n' 'Install Opticons:' '    sudo make install_opticons'
 	printf '%s\n%s\n' 'Install Python Eggs:' '    sudo make install_pyeggs'
 	printf '%s\n%s\n' 'Install Python Libraries:' '    sudo make install_pylib'
@@ -117,14 +123,14 @@ help :
 	printf '%s\n%s\n' 'Install XKB Files:' '    sudo make install_xkb'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* PROJECT MANAGEMENT *'
 	printf '%s\n%s\n' 'Backup Project:' '    make backup'
-	printf '%s\n%s\n' 'Create 7z Backup:' '    make package7z'
-	printf '%s\n%s\n' 'Create Zip Backup:' '    make packagezip'
+	printf '%s\n%s\n' 'Create 7z Backup:' '    make pkg7z'
+	printf '%s\n%s\n' 'Create Zip Backup:' '    make pkgzip'
 	printf '%s\n%s\n' 'Fix File Permissions:' '    make fixperm'
 	printf '%s\n%s\n' 'Generate CTags:' '    make ctags'
 	printf '%s\n%s\n' 'Generate All Documentation:' '    make doc'
 	printf '%s\n%s\n' 'Generate C Documentation:' '    make docc'
 	printf '%s\n%s\n' 'Generate Python Documentation:' '    make docpy'
-	printf '%s\n%s\n' 'Package Release:' '    make package'
+	printf '%s\n%s\n' 'Package Release:' '    make pkg'
 	printf '%s\n%s\n' 'Refresh Files (cleanall, fixperm, & upver):' '    make refresh'
 	printf '%s\n%s\n' 'Syncronize Version Numbers:' '    make upver'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* CLEAN *'
@@ -179,21 +185,21 @@ default :
 # Build Commands
 .PHONY : all byte programs math_programs
 # Development
-.PHONY : ctags debug_xkb pathcheck pathchk print_xkb strip svg_xmllint TAGS
+.PHONY : ctags debug_xkb pathcheck pathchk print_xkb strip svglint TAGS
 # Documentation
 .PHONY : cleandoc doc docc docpy doxy
 # Packaging
-.PHONY : backup package package7z packagelzma packageSFX packagexz packagezip
+.PHONY : backup pkg pkg7z pkglzma pkgSFX pkgxz pkgzip
 # General Project Utilities
 .PHONY : getdeps_deb getdeps_deb_all getdeps_pip upver
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitadd merge previewcleangit stat submit submitall submitdev sw2dev sw2master
+.PHONY : cleangit commit gitadd lscontrib merge previewcleangit stat submit submitall submitdev sw2dev sw2master
 # Install
-.PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_loginopticons uninstall_mimetype_booster uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
 
 
 # BUILD COMMANDS #
@@ -219,7 +225,7 @@ ctags : cleanall
 TAGS : ctags
 
 pathchk :
-	@command -v pathchk > /dev/null && find ./* -exec pathchk -p '{}' +
+	@command -v pathchk >&2 > /dev/null && find ./* -exec pathchk -P '{}' +
 
 pathcheck : pathchk
 
@@ -232,8 +238,9 @@ print_xkb :
 strip :
 	-@$(STRIP) $(BIN)/*
 
-svg_xmllint :
-	@command -v xmllint > /dev/null && find $(THEMEDIR)/ -type f -name "*.svg" -exec xmllint --valid --nowarning --noout {} \;
+svglint :
+	@command -v xmllint >&2 > /dev/null && find $(THEMEDIR)/ -type f -name "*.svg" -exec xmllint --valid --nowarning --noout {} \;
+
 
 # DOCUMENTATION #
 
@@ -264,57 +271,62 @@ doxy :
 backup : rmtmp
 	@cd .. && tar -cf - PyBooster | gzip -9 > ./PyBooster.tar.gz && cd ./PyBooster
 
-package : rmtmp
+pkg : rmtmp
 	@cd .. && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | gzip -9 > ./PyBooster_v$(__VERSION__).tar.gz && cd ./PyBooster
 
-package7z : rmtmp
-	@cd .. && command -v 7za > /dev/null && 7za a -xr!.git -xr!.git* -bb0 -bd -mx=9 -t7z ./PyBooster_v$(__VERSION__).7z PyBooster && cd ./PyBooster
+pkg7z : rmtmp
+	@cd .. && command -v 7za >&2 > /dev/null && 7za a -xr!.git -xr!.git* -bb0 -bd -mx=9 -t7z ./PyBooster_v$(__VERSION__).7z PyBooster && cd ./PyBooster
 
-packagelzma : rmtmp
-	@cd .. && command -v lzma > /dev/null && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | lzma -k -9 > ./PyBooster_v$(__VERSION__).tar.lzma && cd ./PyBooster
+pkglzma : rmtmp
+	@cd .. && command -v lzma >&2 > /dev/null && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | lzma -k -9 > ./PyBooster_v$(__VERSION__).tar.lzma && cd ./PyBooster
 
-packageSFX : rmtmp
-	@cd .. && command -v 7za > /dev/null && 7za a -xr!.git -xr!.git* -bb0 -bd -sfx ./PyBooster_v$(__VERSION__).exe PyBooster && cd ./PyBooster
+pkgSFX : rmtmp
+	@cd .. && command -v 7za >&2 > /dev/null && 7za a -xr!.git -xr!.git* -bb0 -bd -sfx ./PyBooster_v$(__VERSION__).exe PyBooster && cd ./PyBooster
 
-packagexz : rmtmp
-	@cd .. && command -v xz > /dev/null && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | xz -k -9 > ./PyBooster_v$(__VERSION__).tar.xz && cd ./PyBooster
+pkgxz : rmtmp
+	@cd .. && command -v xz >&2 > /dev/null && tar --exclude='.git' --exclude='.git*' -cf - PyBooster | xz -k -9 > ./PyBooster_v$(__VERSION__).tar.xz && cd ./PyBooster
 
-packagezip : rmtmp
-	@cd .. && command -v zip > /dev/null && zip -q -x *.git* -r ./PyBooster_v$(__VERSION__).zip PyBooster && cd ./PyBooster
+pkgzip : rmtmp
+	@cd .. && command -v zip >&2 > /dev/null && zip -q -x *.git* -r ./PyBooster_v$(__VERSION__).zip PyBooster && cd ./PyBooster
 
 
 # GENERAL PROJECT UTILITIES #
 
 
 getdeps_deb : getdeps_pip
-	@apt-get install  xdg-utils gcc clang llvm doxygen doxygen-gui python3-pip python3-pytest python3-pytest-pep8 python3-logilab-common python3-gi glade make colormake splint xmllint
+	@apt-get install clang cloc colormake gcc licensecheck llvm make optipng pngcrush python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount splint wc xdg-utils xmllint
 	# TODO: Add support for rpm/yum, brew, & dnf
 
 getdeps_deb_all : getdeps_deb
-	@apt-get install geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations bsdiff vbindiff cppcheck splint kwstyle ltrace strace complexity binwalk
+	@apt-get install $(LIST_DEV_DEPS)
 
 getdeps_pip :
-	@(command -v pip3 && pip3 install $(LIST_PIP_DEPS)) || (command -v pip && pip install $(LIST_PIP_DEPS)) || true
+	@(command -v pip3 >&2 > /dev/null && pip3 install $(LIST_PIP_DEPS)) || (command -v pip >&2 > /dev/null && pip install $(LIST_PIP_DEPS)) || true
 	# TODO: Add support for easy_install
 
 upver :
-	@find . -mount -type f -name "*.desktop" -exec sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/" '{}' \;
-	# Python Scripts #
-	find . -mount -type f -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/" '{}' \;
-	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/" '{}' \;
-	# C & JavaScript Source Code #
-	find . -mount -type f \( -name "*.c" -o -name "*.h" -o -name "*.js" \) -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/" '{}' \;
-	# Shell Scripts #
-	find . -mount -type f \( -name "*.awk" -o -name "*.sh" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
-	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Updating Software Versions ==='
 	# Batch Files #
 	find . -mount -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.nt" \) -exec sed -i "s/^REM @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/REM @version $(__VERSION__)/" '{}' \;
+	# C & JavaScript Source Code #
+	find . -mount -type f \( -name "*.c" -o -name "*.h" -o -name "*.js" \) -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/" '{}' \;
+	# Glade Files #
+	find . -mount -type f -name "*.glade" -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}' \;
+	# Perl Scripts #
+	find . -mount -type f \( -name "*.perl" -o -name "*.pl" \) -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^    @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/    @version $(__VERSION__)/;" '{}' \;
+	# Python Scripts #
+	find . -mount -type f -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}' \;
+	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/" '{}' \;
+	# Shell Scripts #
+	find . -mount -type f \( -name "*.awk" -o -name "*.sed" -o -name "*.sh" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
+	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	# Tools #
 	find $(TOOLSDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -exec sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/" '{}' \;
 	find $(XKBDIR)/* -mount -type f -name "XCompose" -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/" '{}' \;
 	# Miscellaneous #
+	find . -mount -type f -name "*.desktop" -exec sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/" '{}' \;
 	find $(ACCDIR)/* -mount -type f \( -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/" '{}' \;
 
 
@@ -333,7 +345,7 @@ fixperm :
 	find $(PYEGGDIR)/* -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
 	find . -mount -type f \( -name "*.c" -o -name "*.h" -o -name "*.desktop" -o -name "*.glade" -o -name "icon-theme.cache" -o -name "*.icon" -o -name "*.theme" -o -name "*.types" \) -exec $(CHMOD) 644 '{}' +
 	find . -mount -type f \( -name "*AUTHORS" -o -name "CHANGELOG" -o -name "ChangeLog" -o -name "Doxyfile" -o -name "LICENSE" -o -name "THANKS" -o -name "TODO" -o -name "*.md" -o -name "README" -o -name "PKG-INFO" -o -name "*.rst" -o -name "*.cfg" \) -exec $(CHMOD) 644 '{}' +
-	find . -mount -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.nt" -o -name "*.dtd" -o -name "*.mathml" -o -name "*.rng" -o -name "*.svg" -o -name "*.xlst" -o -name "*.xml" -o -name "*.xsd" \) -exec $(CHMOD) 644 '{}' +
+	find . -mount -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.lang" -o -name "*.nt" -o -name "*.dtd" -o -name "*.mathml" -o -name "*.rng" -o -name "*.svg" -o -name "*.xlst" -o -name "*.xml" -o -name "*.xsd" \) -exec $(CHMOD) 644 '{}' +
 	find $(THEMEDIR)/* -mount -type f -exec $(CHMOD) 644 '{}' +
 	$(CHMOD) 644 $(DOCDIR)/pylib/*.txt $(DOCDIR)/clib/html/* $(DOCDIR)/clib/html/search/*
 	$(CHMOD) 644 $(INCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
@@ -345,6 +357,7 @@ rmcache :
 
 rmtmp :
 	-@find . -mount -type f \( -name "*.o" -o -name "*.ast" -o -name "*.bc" -o -name "*.dump" -o -name "*.i" -o -name "*.ii" -o -name "*.ll" -o -name "*.original" -o -name "*.gch" -o -name "*.pch" -o -name "*.xkm" \) -delete
+	find . -mount -type d \( -name "metrics" \) -exec $(RMDIR) '{}' + 2> /dev/null
 	$(RM) $(BIN)/test_dev $(TESTINGDIR)/*
 
 refresh : | cleanfull upver fixperm
@@ -357,41 +370,45 @@ cleangit : cleanall fixperm
 	-@git reflog expire --all --expire=now --stale-fix
 	git rm --cached -r --ignore-unmatch *
 	git gc --prune=now --aggressive
-	git fsck --dangling -full --name-objects --progress --strict --unreachable
+	git add --all --refresh
+	git fsck --dangling --full --name-objects --progress --strict --unreachable
 
-commit : cleanall fixperm
-	-@[ -z "$(GITMSG)" ] && printf 'No commit message was specified!/n' &>2
-	git commit --cleanup=strip --message=$(GITMSG)
+commit :
+	@[ -z "$(GITMSG)" ] && printf 'No commit message is saved to env variable GITMSG!\n' >&2
+	[ -n "$(GITMSG)" ] && git commit --cleanup=strip --message='$(GITMSG)'
 
 gitadd : cleanall fixperm
-	-@git add --all
+	@git add --all
+
+lscontrib :
+	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
 
 merge :
-	-@git merge dev 
+	@git merge dev
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix
 	git rm --dry-run --cached -r --ignore-unmatch *
-	git gc --dry-run --prune=now --aggressive
-	git fsck --dry-run --dangling -full --name-objects --progress --strict --unreachable
+	git prune --dry-run --verbose
+	git add --dry-run --all --refresh
 
 stat : cleanall
 	-@git status --ahead-behind --branch --short
 
 submit :
-	-@git push --progress --signed=true --verify origin master
+	@git push --progress --signed=true --verify origin master
 
 submitdev :
-	-@git push --progress --signed=true --verify origin dev
+	@git push --progress --signed=true --verify origin dev
 
 submitall :
-	-@git push --all --progress --signed=true --verify origin
+	@git push --all --progress --signed=true --verify origin
 
 sw2dev :
-	-@git checkout dev
+	@git checkout dev
 
 sw2master :
-	-@git checkout master
+	@git checkout master
 
 
 # INSTALL/UNINSTALL #
@@ -450,16 +467,28 @@ uninstall_mimetype_booster :
 	$(XDGMIME) uninstall --mode system $(SYSMIMEDIR)/packages/mimetype_booster.xml
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
+install_langspecs :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Language Specifications ==='
+	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(COPY) $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS))) $(INSTALLLANGSPECS2DIR)/) || true
+	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(COPY) $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS))) $(INSTALLLANGSPECS3DIR)/) || true
+
+uninstall_langspecs :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Language Specifications ==='
+	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS2DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS3DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+
 install_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Opticons ==='
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/) || true
 	$(CPDIR) $(THEMEDIR)/Opticons $(SYSTHEMEDIR)/
+	[ -x "$(command -v update-alternatives)" ] && update-alternatives --install /etc/alternatives/start_icon start-here.svg $(SYSTHEMEDIR)/Opticons/places/start-here.svg 70
 	$(UPDATEICONCACHE) $(SYSTHEMEDIR)/Opticons/
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
 uninstall_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Opticons ==='
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/ && $(UPDATEMIME) $(SYSMIMEDIR)) || true
+	[ -x "$(command -v update-alternatives)" ] && update-alternatives --set start-here.svg /etc/alternatives/start-here.svg
 
 install_pyeggs : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Eggs ==='
@@ -470,8 +499,10 @@ install_pyeggs : | rmtmp fixperm
 
 uninstall_pyeggs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing LoginOpticons ==='
-	command -v pip3 && pip3 uninstall flake8_optimal
-	command -v pip3 || printf '%s\n' 'pip3: command not found!'
+	command -v pip3 >&2 > /dev/null && pip3 uninstall flake8_optimal
+	command -v pip3 >&2 > /dev/null || printf '%s\n' 'pip3: command not found!'
+
+$(PYBDIR)/__init__.py : install_pylib
 
 install_pylib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Libraries ==='
@@ -497,7 +528,7 @@ install_pylib : | rmtmp fixperm
 	([ -d $(PYPATH)3.7/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.7/pybooster) || true
 	([ -d $(PYPATH)3.8/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.8/pybooster) || true
 
-uninstall_pylib : uninstall_scripts
+uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Libraries ==='
 	$(RM) $(INSTALLBINDIR)/ezdisplay $(INSTALLBINDIR)/ezwin
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
@@ -505,7 +536,7 @@ uninstall_pylib : uninstall_scripts
 	# Uninstall Documentation
 	([ -d $(INSTALLDOCDIR)/pylib/ ] && $(RMDIR) $(INSTALLDOCDIR)/pylib/) || true
 
-install_program_analyzer : | fixperm
+install_program_analyzer : | fixperm $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Program Analyzer ==='
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
 	$(COPY) $(SCRIPTSRCDIR)/program-analyzer $(INSTALLBINDIR)/
@@ -515,7 +546,7 @@ uninstall_program_analyzer :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Program Analyzer ==='
 	$(RM) $(INSTALLBINDIR)/program-analyzer /usr/share/applications/Program-Analyzer.desktop
 
-install_scripts : | install_pylib
+install_scripts : $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Scripts ==='
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
 	$(COPY) -t $(INSTALLBINDIR)/ $(addprefix $(SCRIPTSRCDIR)/, $(LIST_SCRIPT_PROGRAMS)) $(addprefix $(SCRIPTSRCDIR)/, $(LIST_DEV_SCRIPTS)) $(addprefix $(SCRIPTSRCDIR)/, $(LIST_PYTHON_SCRIPTS))
@@ -536,7 +567,7 @@ install_shrc :
 	$(COPY) -t /etc/ $(ACCDIR)/profile $(ACCDIR)/shell_ext && $(CHMOD) 644 /etc/profile /etc/shell_ext
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
-	$(LN) /etc/shell_ext /etc/bash.bashrc
+	$(LN) /etc/profile /etc/bash.bashrc
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='

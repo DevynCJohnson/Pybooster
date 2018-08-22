@@ -5,7 +5,7 @@
 """@brief Setup file for Flake8-Optimal plugin
 
 @file setup.py
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -62,12 +62,12 @@ if __name__ == '__main__':
         url=r'http://DCJTech.info/',
         description=r'Extension for flake8 that finds various inconsistencies and suggests optimized code',
         long_description=read(r'README.rst'),
-        keywords=[r'flake8', r'optimize', r'optimal', r'inconsistencies', r'inconsistency'],
+        keywords=[r'flake8', r'optimize', r'optimal', r'inconsistencies', r'inconsistency', r'standardize'],
         platforms=r'any',
         py_modules=[r'flake8_optimal'],
         python_requires=r'>=3.5',
         install_requires=[r'flake8'],
-        tests_require=[r'flake8>=3.2'],
+        tests_require=[r'flake8>=3.4'],
         zip_safe=False,
         classifiers=[
             r'Development Status :: 5 - Production/Stable',

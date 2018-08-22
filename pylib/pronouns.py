@@ -6,7 +6,7 @@
 
 @file pronouns.py
 @package pybooster.pronouns
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,12 +27,6 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with this software.
 """
-
-
-try:  # Regular Expression module
-    import regex as re  # noqa: E402  # pylint: disable=C0411
-except ImportError:
-    import re  # noqa: E402  # pylint: disable=C0411
 
 
 __all__ = [
@@ -57,62 +51,62 @@ __all__ = [
 
 
 FIRST_THIRD = (
+    (r'he', r'I'),
+    (r'hers', r'mine'),
+    (r'herself', r'myself'),
+    (r'himself', r'myself'),
+    (r'his', r'mine'),
     (r'I', r'he or she'),
     (r'me', r'him or her'),
     (r'mine', r'his or hers'),
     (r'my', r'his or her'),
     (r'myself', r'him or herself'),
-    (r'he', r'I'),
     (r'she', r'I'),
-    (r'his', r'mine'),
-    (r'hers', r'mine'),
-    (r'himself', r'myself'),
-    (r'herself', r'myself'),
     (r'they', r'we'),
     (r'we', r'they')
 )
 
 
 FIRST_SECOND = (
-    (r'me', r'you'),
-    (r'you', r'me'),
-    (r'I', r'you'),
-    (r'you are', r'I am'),
     (r'are you', r'am I'),
-    (r'your', r'my'),
-    (r'my', r'your'),
-    (r'yours', r'mine'),
+    (r'I', r'you'),
+    (r'me', r'you'),
     (r'mine', r'yours'),
+    (r'my', r'your'),
+    (r'myself', r'yourself'),
+    (r'you are', r'I am'),
     (r'you were', r'I was'),
-    (r'yourself', r'myself'),
-    (r'myself', r'yourself')
+    (r'you', r'me'),
+    (r'your', r'my'),
+    (r'yours', r'mine'),
+    (r'yourself', r'myself')
 )
 
 
 SECOND_THIRD = (
-    (r'you', r'them'),
-    (r'them', r'you'),
-    (r'yours', r'theirs'),
     (r'theirs', r'yours'),
-    (r'yourself', r'themselves'),
+    (r'them', r'you'),
     (r'themselves', r'yourself'),
-    (r'you are', r'they are'),
     (r'they are', r'you are'),
-    (r'you were', r'they were'),
-    (r'they were', r'you were'),
-    (r'you have', r'they have'),
+    (r'they had', r'you had'),
     (r'they have', r'you have'),
+    (r'they were', r'you were'),
+    (r'you are', r'they are'),
     (r'you had', r'they had'),
-    (r'they had', r'you had')
+    (r'you have', r'they have'),
+    (r'you were', r'they were'),
+    (r'you', r'them'),
+    (r'yours', r'theirs'),
+    (r'yourself', r'themselves')
 )
 
 
 GENDER_SWAP = (
-    (r'him', r'her'),
-    (r'her', r'him'),
     (r'he', r'she'),
-    (r'she', r'he'),
-    (r'his', r'her')
+    (r'her', r'him'),
+    (r'him', r'her'),
+    (r'his', r'her'),
+    (r'she', r'he')
 )
 
 
@@ -120,49 +114,85 @@ GENDER_SWAP = (
 
 
 def swap_pronouns(_str: str, _pronouns: tuple) -> str:
-    """Swap pronouns"""
-    _swap = []
-    for i in _pronouns:
-        _test = re.search(i[0], _str, re.I)
-        if _test is not None:
-            _swap.append(i)
-    if not _swap:
-        return _str
-    for i in _swap:
-        _str = re.sub(i[0], i[1], _str, re.I)
-    return _str
+    """Swap pronouns
+
+    >>> swap_pronouns('I was running a test.', FIRST_THIRD)
+    'he or she was running a test.'
+    """
+    _swap: list = []
+    _test: list = _str.replace(r'.', r' . ').replace(r'!', r' ! ').replace(r'?', r' ? ').split(r' ')
+    _flag: bool = False
+    for _word in _test:
+        for _pair in _pronouns:
+            if _word.lower() == _pair[0].lower():
+                _swap.append(_pair[1])
+                _flag = True
+                break
+        if _flag:
+            _flag = False
+            continue
+        _swap.append(_word)
+    return r' '.join(_swap).replace(r' .', r'. ').replace(r' !', r'! ').replace(r' ?', r'? ').strip()
 
 
 def pronoun(_str: str) -> str:
-    """Swap first and third person pronouns"""
+    """Swap first and third person pronouns
+
+    >>> pronoun('I was running a test.')
+    'he or she was running a test.'
+    """
     return swap_pronouns(_str, FIRST_THIRD)
 
 
 def pronoun2(_str: str) -> str:
-    """Swap first and second person pronouns"""
+    """Swap first and second person pronouns
+
+    >>> pronoun2('This test is mine.')
+    'This test is yours.'
+    """
     return swap_pronouns(_str, FIRST_SECOND)
 
 
 def pronoun3(_str: str) -> str:
-    """Swap second and third person pronouns"""
+    """Swap second and third person pronouns
+
+    >>> pronoun3('This test is yours.')
+    'This test is theirs.'
+    """
     return swap_pronouns(_str, SECOND_THIRD)
 
 
 def pronounf(_str: str) -> str:
-    """Swap first and third person pronouns and replace spaces with %20"""
+    """Swap first and third person pronouns and replace spaces with %20
+
+    >>> pronounf('I was running a test.')
+    'he%20or%20she%20was%20running%20a%20test.'
+    """
     return swap_pronouns(_str, FIRST_THIRD).replace(r' ', r'%20')
 
 
 def pronoun2f(_str: str) -> str:
-    """Swap first and second person pronouns and replace spaces with %20"""
+    """Swap first and second person pronouns and replace spaces with %20
+
+    >>> pronoun2f('This test is mine.')
+    'This%20test%20is%20yours.'
+    """
     return swap_pronouns(_str, FIRST_SECOND).replace(r' ', r'%20')
 
 
 def pronoun3f(_str: str) -> str:
-    """Swap second and third person pronouns and replace spaces with %20"""
+    """Swap second and third person pronouns and replace spaces with %20
+
+    >>> pronoun3f('This test is yours.')
+    'This%20test%20is%20theirs.'
+    """
     return swap_pronouns(_str, SECOND_THIRD).replace(r' ', r'%20')
 
 
 def swap_genders(_str: str) -> str:
-    """Swap gender pronouns"""
+    """Swap gender pronouns
+
+    >>> swap_genders('He ran the test.')
+    'she ran the test.'
+    """
     return swap_pronouns(_str, GENDER_SWAP)

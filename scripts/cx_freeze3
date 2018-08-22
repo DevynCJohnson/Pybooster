@@ -5,16 +5,14 @@
 """@brief Wrapper for cx_Freeze
 
 @file cx_freeze3
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
 
 
-from sys import exit as sysexit
-
 from cx_Freeze import main
 
 
 if __name__ == '__main__':
-    sysexit(main())
+    raise SystemExit(main())

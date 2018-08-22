@@ -6,13 +6,12 @@
 """@brief Wrapper for easy-install
 
 @file easy_install3
-@version 2018.04.27
+@version 2018.08.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
 
 
-from sys import exit as sysexit
 from pkg_resources import load_entry_point
 
 
@@ -20,4 +19,4 @@ __requires__ = r'setuptools>=18.0'
 
 
 if __name__ == '__main__':
-    sysexit(load_entry_point(__requires__, r'console_scripts', r'easy_install')())
+    raise SystemExit(load_entry_point(__requires__, r'console_scripts', r'easy_install')())

@@ -1,0 +1,75 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for scanning source code and providing statistics and listing some syntax issues or bugs
+# @file code-analysis
+# @version 2018.08.22
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each source code file to scan.\n'
+    exit 0
+elif [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+fi
+
+
+# SETUP #
+
+
+export NO_AT_BRIDGE=1
+export LANG='en_US.UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
+export PYTHONIOENCODING='utf8'
+[ -z "${FirstLoopPass:-}" ] && FirstLoopPass=0
+
+
+# MAIN #
+
+
+for file in "$@"; do
+    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+
+    if [ -x "$(command -v licensecheck)" ]; then
+        printf '======  *LICENSE CHECK*  ======\n'
+        licensecheck --copyright --deb-fmt --lines 30 --machine --tail 0 "$file" | awk NF
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'licensecheck: command not found!\n' >&2
+    fi
+
+    printf '======  *STATISTICS & FILE INFO*  ======\n'
+    if [ "$FirstLoopPass" -eq 0 ]; then
+        [ ! -x "$(command -v cloc)" ] && printf 'cloc: command not found!\n' >&2
+        [ ! -x "$(command -v wc)" ] && printf 'wc: command not found!\n' >&2
+        if [ ! -x "$(command -v file)" ]; then
+            printf 'file: command not found!\n' >&2
+        elif [ ! -x "$(command -v chardetect)" ]; then
+            printf 'chardetect: command not found!\n' >&2
+        elif [ ! -x "$(command -v uchardet)" ]; then
+            printf 'uchardet: command not found!\n' >&2
+        elif [ ! -x "$(command -v encguess)" ]; then
+            printf 'encguess: command not found!\n' >&2
+        fi
+    fi
+    ls -a -b -F -h -l "$file"
+    if [ -x "$(command -v file)" ]; then
+        file -b -i "$file"
+        file -b "$file" | awk '{ gsub(/^a /, ""); gsub(/^an /, ""); print $0; }'
+    elif [ -x "$(command -v chardetect)" ]; then
+        chardetect "$file"
+    elif [ -x "$(command -v uchardet)" ]; then
+        uchardet "$file"
+    elif [ -x "$(command -v encguess)" ]; then
+        encguess "$file"
+    fi
+    [ -x "$(command -v cloc)" ] && cloc --by-file --by-percent cmb --skip-uniqueness --quiet "$file" | awk 'NR > 2 && NF'
+    [ -x "$(command -v wc)" ] && printf 'Lines\tWords\tChars\tBytes\tMax-Line-Len\tFilename\n' && wc --bytes --chars --lines --max-line-length --words "$file" | awk '{ gsub(/  /, " "); gsub(/  /, " "); gsub(/ /, "\t"); gsub(/\t\.\//, "\t\t\x2e\x2f"); gsub(/\t\//, "\t\t\x2f"); gsub(/^\t/, ""); print $0; }'
+
+    FirstLoopPass=1
+
+done
