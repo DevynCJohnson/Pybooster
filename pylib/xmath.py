@@ -260,7 +260,11 @@ def hvc(_num: float) -> float:
 
 
 def hvs(_num: float) -> float:
-    """Half-Versed Sine (haversin, hv)"""
+    """Half-Versed Sine (haversin, hv)
+
+    >>> hvs(90.0)
+    0.724036808064585
+    """
     return (1.0 - cos(_num)) * 0.5
 
 
