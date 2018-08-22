@@ -75,7 +75,7 @@ To install/uninstall software, open a terminal and type the needed command:
 Clean-Up
 --------
 
-The below comands perform various project clean-up tasks.
+The below commands perform various project clean-up tasks.
 
 - Remove temporary build files and object files: `make rmtmp`
 - Remove Python cache files: `make rmcache`

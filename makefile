@@ -396,13 +396,13 @@ stat : cleanall
 	-@git status --ahead-behind --branch --short
 
 submit :
-	@git push --progress --signed=true --verify origin master
+	@git push --progress --signed=false --verify origin master
 
 submitdev :
-	@git push --progress --signed=true --verify origin dev
+	@git push --progress --signed=false --verify origin dev
 
 submitall :
-	@git push --all --progress --signed=true --verify origin
+	@git push --all --progress --signed=false --verify origin
 
 sw2dev :
 	@git checkout dev
