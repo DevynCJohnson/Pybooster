@@ -6,7 +6,7 @@
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,6 +35,7 @@ along with this software.
 from os.path import dirname, join as pathjoin, normcase, realpath
 from signal import SIGINT, SIG_DFL, signal
 from sys import argv, stdout
+from typing import Union
 
 from gi import require_version
 require_version(r'Gtk', r'3.0')
@@ -61,7 +62,7 @@ __all__ = [
 
 __author__ = r'Devyn Collier Johnson'
 __copyright__ = r'LGPLv3'
-__version__ = r'2018.08.22'
+__version__ = r'2018.08.23'
 
 
 __about__ = (
@@ -494,10 +495,10 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
     '_type' is a string that may have one of several values and effects.
     Each choice determines the buttons on the window.
     'Yes' and 'No' are included in all choices
-    'yn' || 'yesno': Only use 'Yes' and 'No' buttons
-    'ynq' || 'quit': Add a 'Quit' button
-    'ynclose' || 'close': Add a 'Close' button
-    'yncancel' || 'cancel': Add a 'Cancel' button
+    * 'yn' || 'yesno': Only use 'Yes' and 'No' buttons
+    * 'ynq' || 'quit': Add a 'Quit' button
+    * 'ynclose' || 'close': Add a 'Close' button
+    * 'yncancel' || 'cancel': Add a 'Cancel' button
     """
     if _type.lower() in {r'yn', r'yesno'}:
         _gf = _GQYN
@@ -566,7 +567,7 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
     return _out
 
 
-def ezcolor(_datatype: str = r'list') -> type:
+def ezcolor(_datatype: str = r'list') -> object:
     """Color Dialog: Select a color"""
     ui = Gtk.Builder()
     ui.add_from_file(_GCOLOR)
@@ -592,18 +593,16 @@ def ezcolor(_datatype: str = r'list') -> type:
         _b = round(_rgba.blue, _round)
         _a = round(_rgba.alpha, _round)
         if _datatype.lower() in {r'list', r'lst'}:
-            _lst = []
+            _lst: list = []
             _lst.append(_r)
             _lst.append(_g)
             _lst.append(_b)
             _lst.append(_a)
             return _lst
         elif _datatype.lower() in {r'dict', r'dic'}:
-            _dict = {r'red': _r, r'green': _g, r'blue': _b, r'alpha': _a}
-            return _dict
+            return {r'red': _r, r'green': _g, r'blue': _b, r'alpha': _a}
         elif _datatype.lower() in {r'str', r'string'}:
-            _x = str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
-            return _x
+            return str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
         return _rgba
     return None
 
@@ -611,13 +610,10 @@ def ezcolor(_datatype: str = r'list') -> type:
 def eztext(_msg: str = r'Message', _type: str = r'') -> str:
     """Input Text Dialog: Get text from the user"""
     ui = Gtk.Builder()
-    if r'c' in _type.lower():
-        _gf = _GTEXTC
-    else:
-        _gf = _GTEXT
+    _gf = _GTEXTC if r'c' in _type.lower() else _GTEXT
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
-    _out = ''
+    _out = r''
 
     def _submit_text(*_x) -> None:
         """SUBMIT Button: Submit text for processing"""
@@ -640,10 +636,7 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
 def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     """Password Dialog: Get a password from the user"""
     ui = Gtk.Builder()
-    if r'c' in _type.lower():
-        _gf = _GPSWDC
-    else:
-        _gf = _GPSWD
+    _gf = _GPSWDC if r'c' in _type.lower() else _GPSWD
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
     _out = r''
@@ -677,14 +670,14 @@ def ezfilech(  # noqa: C901
         _local: bool = True,
         _return_uri: bool = True,
         _return_dtype: str = r'list'
-) -> list or str:
+) -> Union[list, str]:
     """File Chooser Dialog: Select a file or folder"""
     ui = Gtk.Builder()
     ui.add_from_file(_GFILECH)
     _filew = ui.get_object(r'filechooser')
     _chkbtn_hidden = ui.get_object(r'chkbtn1')
     _chkbtn_dir = ui.get_object(r'chkbtn2')
-    _out = []
+    _out: Union[list, str] = []
     _chkbtn_dir.set_visible(False)
     _filew.set_create_folders(_save)
     _filew.set_select_multiple(_multiple)
@@ -869,7 +862,7 @@ def ezfilech(  # noqa: C901
 
 
 if __name__ == '__main__':  # noqa: C901
-    # Command help/info
+    # Command Help/Info
     if len(argv) == 2 and argv[1].lower() in {r'-h', r'--help'}:
         stdout.write(__help__ + '\n')
         raise SystemExit()
@@ -888,7 +881,7 @@ if __name__ == '__main__':  # noqa: C901
         raise SystemExit()
     # Windows/GUI
     elif argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
-        # File chooser
+        # File Chooser
         multiple = False
         viewhidden = False
         save = False
@@ -897,6 +890,7 @@ if __name__ == '__main__':  # noqa: C901
         return_dtype = r'list'
         __local = True
         file_exten = True
+        # File Chooser Command Agruments
         if len(argv) > 2:
             if r'-m' in argv[2:]:
                 # Select multiple files
@@ -926,30 +920,31 @@ if __name__ == '__main__':  # noqa: C901
                 # This must be the last parameter (--path PATH)
                 init_path = argv[-1]
         if argv[1].lower() in {r'-f', r'--file'}:
-            stdout.write(ezfilech(
+            stdout.write(str(ezfilech(
                 True, False, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
-            ) + '\n')
+            )) + '\n')
         elif argv[1].lower() in {r'--dir', r'--folder'}:
-            stdout.write(ezfilech(
+            stdout.write(str(ezfilech(
                 False, True, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
-            ) + '\n')
+            )) + '\n')
         raise SystemExit()
     elif argv[1].lower() in {r'--color', r'--colour'}:
-        # Color selector
+        # Color Selector
         if len(argv) == 3 and argv[2].lower() in {r'list', r'lst'}:
-            stdout.write(ezcolor(r'list') + '\n')
+            stdout.write(str(ezcolor(r'list')) + '\n')
         elif len(argv) == 3 and argv[2].lower() in {r'dict', r'dic'}:
-            stdout.write(ezcolor(r'dict') + '\n')
+            stdout.write(str(ezcolor(r'dict')) + '\n')
         elif len(argv) == 3 and argv[2].lower() in {r'str', r'string'}:
-            stdout.write(ezcolor(r'str') + '\n')
+            stdout.write(str(ezcolor(r'str')) + '\n')
         else:
-            stdout.write(ezcolor(r'rgba') + '\n')
+            stdout.write(str(ezcolor(r'rgba')) + '\n')
         raise SystemExit()
     elif len(argv) >= 3:
+        # Text Input/Output Command Agruments
         _wintype = argv[1].lower()
         MESSAGE = r' '.join(
             str(i) for i in argv[2:]
@@ -974,7 +969,7 @@ if __name__ == '__main__':  # noqa: C901
             stdout.write(ezq(MESSAGE, 'quit') + '\n')
         elif _wintype in {r'-c', r'--yncancel'}:  # Question window
             stdout.write(ezq(MESSAGE, 'cancel') + '\n')
-        elif _wintype in {r'-x', r'-t', r'--text'}:  # Text-input window
+        elif _wintype in {r'-x', r'-t', r'--text', r'--txt'}:  # Text-input window
             stdout.write(eztext(MESSAGE) + '\n')
         elif _wintype in {r'--tc', r'--textcancel', r'--canceltext'}:  # Text-input window
             stdout.write(eztext(MESSAGE, 'c') + '\n')

@@ -5,7 +5,7 @@
 """@brief Resize SVG Files
 
 @file svgresizer
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -30,7 +30,7 @@ along with this software.
 
 import argparse
 from sys import stdin, stdout
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec
 
 from pybooster.markup import resize_svg
 
@@ -99,7 +99,7 @@ if __name__ == '__main__':
         OPTIONS[r'input'] = r'-'
     if r'output' not in OPTIONS or not OPTIONS[r'output']:
         OPTIONS[r'output'] = OPTIONS[r'input']
-    TREE = ET.parse(stdin if OPTIONS[r'input'] == r'-' else OPTIONS[r'input'])
+    TREE = ET.parse(stdin if OPTIONS[r'input'] == r'-' else OPTIONS[r'input'])  # nosec
     # Resize SVG
     resize_svg(TREE, OPTIONS)
     TREE.write(stdout if OPTIONS[r'output'] == r'-' else OPTIONS[r'output'])

@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -101,6 +101,8 @@ __all__ = [
     r'root11',
     r'root12',
     r'root13',
+    r'root14',
+    r'root15',
     # NUMBER THEORY #
     r'factors',
     r'phi',
@@ -180,23 +182,23 @@ TWOPI = 6.283185307179586
 # INVERSE CONSTANTS #
 
 
-ONE_THIRD = 0.333333333
-ONE_FOURTH = 0.2500
-ONE_FIFTH = 0.20
-ONE_SIXTH = 0.166666667
-ONE_SEVENTH = 0.142857143
+ONE_THIRD = 0.333333333333
+ONE_FOURTH = 0.250000
+ONE_FIFTH = 0.200000
+ONE_SIXTH = 0.166666666667
+ONE_SEVENTH = 0.142857142857
 ONE_EIGHTH = 0.1250
 ONE_NINTH = 0.111111111
-ONE_TENTH = 0.1
-ONE_ELEVENTH = 0.090909091
-ONE_TWELFTH = 0.083333333
+ONE_TENTH = 0.100000
+ONE_ELEVENTH = 0.09090909090909091
+ONE_TWELFTH = 0.08333333333
 ONE_THIRTEENTH = 0.076923077
 
 
 # TRIGONOMETRIC FUNCTIONS #
 
 
-def cot(_num: float) -> float:
+def cot(_num: Union[float, int]) -> float:
     """Cotangent (Tangent Complement)
 
     >>> cot(90.0)
@@ -205,7 +207,7 @@ def cot(_num: float) -> float:
     return 1.0 / tan(_num)
 
 
-def csc(_num: float) -> float:
+def csc(_num: Union[float, int]) -> float:
     """Cosecant (Secant Complement)
 
     >>> csc(90.0)
@@ -214,7 +216,7 @@ def csc(_num: float) -> float:
     return 1.0 / sin(_num)
 
 
-def cvc(_num: float) -> float:
+def cvc(_num: Union[float, int]) -> float:
     """Versed Cosine Complement (covercos)
 
     >>> cvc(90.0)
@@ -223,7 +225,7 @@ def cvc(_num: float) -> float:
     return 1.0 + sin(_num)
 
 
-def cvs(_num: float) -> float:
+def cvs(_num: Union[float, int]) -> float:
     """Versed Sine Complement (coversin, cosiv)
 
     >>> cvs(90.0)
@@ -232,7 +234,7 @@ def cvs(_num: float) -> float:
     return 1.0 - sin(_num)
 
 
-def hcc(_num: float) -> float:
+def hcc(_num: Union[float, int]) -> float:
     """Half-Versed Cosine Complement (hacovercos)
 
     >>> hcc(90.0)
@@ -241,7 +243,7 @@ def hcc(_num: float) -> float:
     return (1.0 + sin(_num)) * 0.5
 
 
-def hcv(_num: float) -> float:
+def hcv(_num: Union[float, int]) -> float:
     """Half-Versed Sine Complement (hacoversin)
 
     >>> hcv(90.0)
@@ -250,7 +252,7 @@ def hcv(_num: float) -> float:
     return (1.0 - sin(_num)) * 0.5
 
 
-def hvc(_num: float) -> float:
+def hvc(_num: Union[float, int]) -> float:
     """Half-Versed Cosine (hac, havercos)
 
     >>> hvc(90.0)
@@ -259,7 +261,7 @@ def hvc(_num: float) -> float:
     return (1.0 + cos(_num)) * 0.5
 
 
-def hvs(_num: float) -> float:
+def hvs(_num: Union[float, int]) -> float:
     """Half-Versed Sine (haversin, hv)
 
     >>> hvs(90.0)
@@ -268,18 +270,30 @@ def hvs(_num: float) -> float:
     return (1.0 - cos(_num)) * 0.5
 
 
-def sec(_num: float) -> float:
-    """Secant (Reciprocal of cos)"""
+def sec(_num: Union[float, int]) -> float:
+    """Secant (Reciprocal of cos)
+
+    >>> sec(90.0)
+    -2.2317761278577963
+    """
     return 1.0 / cos(_num)
 
 
-def siv(_num: float) -> float:
-    """Versed Sine (versin, siv)"""
+def siv(_num: Union[float, int]) -> float:
+    """Versed Sine (versin, siv)
+
+    >>> siv(90.0)
+    1.44807361612917
+    """
     return 1.0 - cos(_num)
 
 
-def vcs(_num: float) -> float:
-    """Versed Cosine (vercos)"""
+def vcs(_num: Union[float, int]) -> float:
+    """Versed Cosine (vercos)
+
+    >>> vcs(90.0)
+    0.5519263838708299
+    """
     return 1.0 + cos(_num)
 
 
@@ -287,68 +301,116 @@ def vcs(_num: float) -> float:
 
 
 def acot(_num: Union[float, int]) -> float:
-    """Arccotangent"""
-    return atan(1 / _num)
+    """Arccotangent
+
+    >>> acot(90)
+    0.011110653897607473
+    """
+    return atan(1.0 / _num)
 
 
 def acsc(_num: Union[float, int]) -> float:
-    """Arccosecant"""
-    return asin(1 / _num)
+    """Arccosecant
+
+    >>> acsc(90)
+    0.011111339747498774
+    """
+    return asin(1.0 / _num)
 
 
-def acvc(_num: float) -> float:
-    """Versed Arccosine Complement (acovercos)"""
+def acvc(_num: Union[float, int]) -> float:
+    """Versed Arccosine Complement (acovercos)
+
+    >>> acvc(-0.2)
+    0.9272952180016123
+    """
     return asin(1.0 + _num)
 
 
-def acvs(_num: float) -> float:
-    """Versed Arcsine Complement (acoversin, acosiv)"""
+def acvs(_num: Union[float, int]) -> float:
+    """Versed Arcsine Complement (acoversin, acosiv)
+
+    >>> acvs(0.5)
+    0.5235987755982989
+    """
     return asin(1.0 - _num)
 
 
-def ahvc(_num: float) -> float:
-    """Half-Versed Arccosine (ahac, ahavercos)"""
+def ahvc(_num: Union[float, int]) -> float:
+    """Half-Versed Arccosine (ahac, ahavercos)
+
+    >>> ahvc(0.1)
+    2.498091544796509
+    """
     return 2.0 * acos(sqrt(_num))
 
 
-def ahvs(_num: float) -> float:
-    """Half-Versed Arcsine (ahaversin, ahv)"""
+def ahvs(_num: Union[float, int]) -> float:
+    """Half-Versed Arcsine (ahaversin, ahv)
+
+    >>> ahvs(0.1)
+    0.6435011087932844
+    """
     return 2.0 * asin(sqrt(_num))
 
 
 def asec(_num: Union[float, int]) -> float:
-    """Arcsecant"""
-    return acos(1 / _num)
+    """Arcsecant
+
+    >>> asec(90)
+    1.5596849870473979
+    """
+    return acos(1.0 / _num)
 
 
-def asiv(_num: float) -> float:
-    """Versed Arcsine (aver, aversin)"""
+def asiv(_num: Union[float, int]) -> float:
+    """Versed Arcsine (aver, aversin)
+
+    >>> asiv(0.5)
+    1.0471975511965979
+    """
     return acos(1.0 - _num)
 
 
-def avcs(_num: float) -> float:
-    """Versed Arccosine (avercos)"""
+def avcs(_num: Union[float, int]) -> float:
+    """Versed Arccosine (avercos)
+
+    >>> avcs(90)
+    -0.9943674609282015
+    """
     return cos(1.0 + _num)
 
 
 # EXTERNAL TRIGONOMETRIC FUNCTIONS #
 
 
-def excsc(_num: float) -> float:
-    """External Cosecant"""
+def excsc(_num: Union[float, int]) -> float:
+    """External Cosecant
+
+    >>> excsc(90)
+    0.11857240716370843
+    """
     return (1.0 / sin(_num)) - 1.0
 
 
-def exsec(_num: float) -> float:
-    """External Secant"""
+def exsec(_num: Union[float, int]) -> float:
+    """External Secant
+
+    >>> exsec(0.5)
+    0.13949392732454902
+    """
     return (1.0 / cos(_num)) - 1.0
 
 
 # MISCELLANEOUS TRIGONOMETRIC FUNCTIONS #
 
 
-def crd(_num: float) -> float:
-    """Chord of a circle"""
+def crd(_num: Union[float, int]) -> float:
+    """Chord of a circle
+
+    >>> crd(90)
+    1.7018070490682369
+    """
     return sin(_num * 0.5) * 2.0
 
 
@@ -356,17 +418,29 @@ def crd(_num: float) -> float:
 
 
 def ln(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    """Natural/Napierian Logarithm (Base = Euler's Number)
+
+    >>> ln(37)
+    3.6109179126442243
+    """
     return log(_num, 2.718281828459045)
 
 
 def napierianlog(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    """Natural/Napierian Logarithm (Base = Euler's Number)
+
+    >>> napierianlog(37)
+    3.6109179126442243
+    """
     return log(_num, 2.718281828459045)
 
 
 def naturallog(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)"""
+    """Natural/Napierian Logarithm (Base = Euler's Number)
+
+    >>> naturallog(37)
+    3.6109179126442243
+    """
     return log(_num, 2.718281828459045)
 
 
@@ -374,70 +448,146 @@ def naturallog(_num: Union[float, int]) -> float:
 
 
 def curt(_num: Union[float, int]) -> float:
-    """Cubed Root"""
-    return _num ** 0.333333333
+    """Cubed Root
+
+    >>> curt(37)
+    3.332221851641943
+    """
+    return _num ** 0.333333333333
 
 
 def root4(_num: Union[float, int]) -> float:
-    """Hypercubed Root"""
-    return _num ** 0.25
+    """Hypercubed Root
+
+    >>> root4(37)
+    2.4663257145596607
+    """
+    return _num ** 0.25000
 
 
 def root5(_num: Union[float, int]) -> float:
-    """5th Root"""
-    return _num ** 0.2
+    """5th Root
+
+    >>> root5(37)
+    2.058924136478517
+    """
+    return _num ** 0.20000
 
 
 def root6(_num: Union[float, int]) -> float:
-    """6th Root"""
-    return _num ** 0.166666667
+    """6th Root
+
+    >>> root6(37)
+    1.8254374411756633
+    """
+    return _num ** 0.16666666666666667
 
 
 def root7(_num: Union[float, int]) -> float:
-    """7th Root"""
-    return _num ** 0.142857143
+    """7th Root
+
+    >>> root7(37)
+    1.6750540209862346
+    """
+    return _num ** 0.142857142857142857142857
 
 
 def root8(_num: Union[float, int]) -> float:
-    """8th Root"""
-    return _num ** 0.1250
+    """8th Root
+
+    >>> root8(37)
+    1.57045398358553
+    """
+    return _num ** 0.125000000
 
 
 def root9(_num: Union[float, int]) -> float:
-    """9th Root"""
-    return _num ** 0.111111111
+    """9th Root
+
+    >>> root9(37)
+    1.4936355304176858
+    """
+    return _num ** 0.111111111111111111
 
 
 def root10(_num: Union[float, int]) -> float:
-    """10th Root"""
-    return _num ** 0.1
+    """10th Root
+
+    >>> root10(37)
+    1.4348951656753595
+    """
+    return _num ** 0.100000
 
 
 def root11(_num: Union[float, int]) -> float:
-    """11th Root"""
-    return _num ** 0.090909091
+    """11th Root
+
+    >>> root11(37)
+    1.3885572587844555
+    """
+    return _num ** 0.0909090909091
 
 
 def root12(_num: Union[float, int]) -> float:
-    """12th Root"""
-    return _num ** 0.083333333
+    """12th Root
+
+    >>> root12(37)
+    1.3510875029901763
+    """
+    return _num ** 0.0833333333
 
 
 def root13(_num: Union[float, int]) -> float:
-    """13th Root"""
-    return _num ** 0.076923077
+    """13th Root
+
+    >>> root13(37)
+    1.3201731686397005
+    """
+    return _num ** 0.07692307692307692307692307692
+
+
+def root14(_num: Union[float, int]) -> float:
+    """14th Root
+
+    >>> root14(37)
+    1.2942387805139492
+    """
+    return _num ** 0.07142857142857142857142857
+
+
+def root15(_num: Union[float, int]) -> float:
+    """15th Root
+
+    >>> root15(37)
+    1.2721747796233518
+    """
+    return _num ** 0.0666666666666666666667
 
 
 # NUMBER THEORY #
 
 
 def factors(_num: int) -> set:
-    """Find prime factors"""
+    """Find prime factors
+
+    >>> factors(64)
+    {64, 1, 2, 32, 4, 8, 16}
+    >>> factors(196)
+    {1, 2, 98, 196, 4, 7, 14, 49, 28}
+    """
     return set(x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup)
 
 
 def phi(_num: float) -> float:
-    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`"""
+    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`
+
+    >>> phi(128)
+    1.0
+    >>> phi(64)
+    1.0
+    >>> phi(phi(128))
+    0.841344746068543
+    """
     return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
 
 
@@ -448,6 +598,11 @@ def showpercent(_portion: Union[float, int], _total: Union[float, int] = 100.0) 
     """Convert a portion and total to a percentage
 
     Input int and/or float types and get a string
+
+    >>> showpercent(37)
+    '37.00%'
+    >>> showpercent(37, 1000)
+    '3.70%'
     """
     return r'{:.2%}'.format(float(_portion) / float(_total))
 

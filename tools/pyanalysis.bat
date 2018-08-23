@@ -4,7 +4,7 @@ REM vim: set fileencoding=utf-8 filetype=batch syn=batch.doxygen fileformat=dos 
 REM kate: encoding utf-8; bom off; syntax batch; indent-mode normal; eol dos; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 REM @brief flake8, pycodestyle (pep8), pyflakes, pylint, and doctest for Geany
 REM @file pyanalysis.bat
-REM @version 2018.08.22
+REM @version 2018.08.23
 REM @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 REM @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 

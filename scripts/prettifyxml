@@ -5,7 +5,7 @@
 """@brief Prettify XML documents (including HTML, MathML, SVG, etc.)
 
 @file prettifyxml
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -30,7 +30,7 @@ along with this software.
 
 import argparse
 from sys import stderr
-import xml.dom.minidom
+import xml.dom.minidom  # nosec
 from xml.parsers.expat import ExpatError
 
 from pybooster.fs import getdata, writedata
@@ -112,7 +112,7 @@ if __name__ == '__main__':  # noqa: C901
         XMLDATA = prettify_xml_schema(XMLDATA)
     if not is_xml_dtd(XMLDATA):  # Prettify non-DTD XML files
         try:
-            PRETTYDOM = xml.dom.minidom.parseString(XMLDATA).toprettyxml(indent=ARGS.indent, newl=ARGS.newline, encoding=None)
+            PRETTYDOM = xml.dom.minidom.parseString(XMLDATA).toprettyxml(indent=ARGS.indent, newl=ARGS.newline, encoding=None)  # nosec
             XMLDATA = ARGS.newline.join([line for line in PRETTYDOM.split(ARGS.newline) if line.strip()])
             del PRETTYDOM
         except ExpatError:

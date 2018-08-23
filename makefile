@@ -197,7 +197,7 @@ default :
 # Git
 .PHONY : cleangit commit gitac gitadd gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
-.PHONY : install install_bin install_clib install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
 .PHONY : uninstall uninstall_bin uninstall_clib uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
 
@@ -446,6 +446,10 @@ uninstall_clib :
 	([ -d $(INSTALLHEADERSDIR)/ ] && $(RMDIR) $(INSTALLHEADERSDIR)/) || true
 	# Uninstall Documentation
 	([ -d $(INSTALLDOCDIR)/clib/ ] && $(RMDIR) $(INSTALLDOCDIR)/clib/) || true
+
+install_geany_conf :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
+	$(CPDIR) ./accessory/geany/* ~/.config/geany/
 
 install_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing /usr/bin Programs ==='

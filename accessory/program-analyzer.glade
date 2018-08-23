@@ -895,7 +895,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">Program-Analyzer
-Version: 2018.08.22
+Version: 2018.08.23
 Author: Devyn Collier Johnson
 &lt;DevynCJohnson@Gmail.com&gt;</property>
                         <property name="justify">center</property>

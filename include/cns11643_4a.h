@@ -4,7 +4,7 @@
 /**
 @brief CNS 11643-1992 (plane 4 part a) character set (Chinese National Standard 11643)
 @file cns11643_4a.h
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

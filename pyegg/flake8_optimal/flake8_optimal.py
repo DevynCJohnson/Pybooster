@@ -5,7 +5,7 @@
 """@brief Flake8 plugin
 
 @file flake8_optimal.py
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -46,7 +46,7 @@ except ImportError:
     from re import compile as rgxcompile, I, search as rgxsearch
 
 
-__version__ = r'2018.08.22'
+__version__ = r'2018.08.23'
 
 
 # PATTERNS #

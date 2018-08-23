@@ -5,7 +5,7 @@
 """@brief Minify XML documents (including HTML, MathML, SVG, etc.)
 
 @file minifyxml
-@version 2018.08.22
+@version 2018.08.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -30,7 +30,7 @@ along with this software.
 
 import argparse
 from sys import stderr, stdout
-import xml.dom.minidom
+import xml.dom.minidom  # nosec
 from xml.parsers.expat import ExpatError
 
 from pybooster.fs import getdata, writedata
@@ -259,7 +259,7 @@ if __name__ == '__main__':  # noqa: C901
         XMLDATA = prettify_xml_schema(XMLDATA)
     else:  # Not DTD nor XSD
         try:
-            XMLDOM = xml.dom.minidom.parseString(XMLDATA)  # type: ignore
+            XMLDOM = xml.dom.minidom.parseString(XMLDATA)  # type: ignore  # nosec
         except ExpatError:
             stderr.write(r'Unsupported filetype (' + ARGS.input_file + ')!\n')
             raise SystemExit(1)

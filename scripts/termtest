@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax awk; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Print a spectrum of colors and various symbols/characters to test terminal color and character support
 # @file termtest
-# @version 2018.08.22
+# @version 2018.08.23
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 
 

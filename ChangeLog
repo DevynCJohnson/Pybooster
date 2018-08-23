@@ -1,3 +1,8 @@
+2018-08-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added code to install Geany configuration files
+	* mimetype_booster.xml:  Added awk & sed
+
 2018-08-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Fixed typo in README.md
