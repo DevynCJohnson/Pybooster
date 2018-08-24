@@ -8,6 +8,9 @@ browser_css_properties=^-apple- ^-epub- ^-moz- ^-ms- ^-o- ^-wap- ^-webkit- ^-xv-
 browser_pseudo_classes=^-apple- ^-epub- ^-moz- ^-ms- ^-o- ^-wap- ^-webkit- ^-xv-
 browser_pseudo_elements=^-apple- ^-epub- ^-moz- ^-ms- ^-o- ^-wap- ^-webkit- ^-xv-
 
+[lexer_properties]
+lexer.css.less.language=1
+
 [settings]
 extension=css
 mime_type=text/css

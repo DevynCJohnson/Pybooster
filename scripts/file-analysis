@@ -1,0 +1,104 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Wrapper for scanning files and providing checksums
+# @file file-analysis
+# @version 2018.08.23
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each file to scan.\n'
+    exit 0
+elif [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+fi
+
+
+[ -z "${FirstLoopPass:-}" ] && FirstLoopPass=0
+
+
+# MAIN #
+
+
+for file in "$@"; do
+    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+
+    printf '======  *FILE CHECKSUMS*  ======\n'
+
+    if [ -x "$(command -v base32)" ]; then
+        printf '*** base32 ***\n'
+        base32 "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'base32: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v base64)" ]; then
+        printf '*** base64 ***\n'
+        base64 "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'base64: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v b2sum)" ]; then
+        printf '*** b2sum ***\n'
+        b2sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'b2sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v cksum)" ]; then
+        printf '*** cksum ***\n'
+        cksum "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'cksum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v md5sum)" ]; then
+        printf '*** md5sum ***\n'
+        md5sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'md5sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sha1sum)" ]; then
+        printf '*** sha1sum ***\n'
+        sha1sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'sha1sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sha224sum)" ]; then
+        printf '*** sha224sum ***\n'
+        sha224sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'sha224sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sha256sum)" ]; then
+        printf '*** sha256sum ***\n'
+        sha256sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'sha256sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sha384sum)" ]; then
+        printf '*** sha384sum ***\n'
+        sha384sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'sha384sum: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v sha512sum)" ]; then
+        printf '*** sha512sum ***\n'
+        sha512sum --binary --tag "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'sha512sum: command not found!\n' >&2
+    fi
+
+    FirstLoopPass=1
+
+done

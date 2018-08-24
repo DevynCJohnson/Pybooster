@@ -1,3 +1,7 @@
+2018-08-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added file-analysis, goanalysis, luaanalysis, xmlanalysis, & yamlanalysis
+
 2018-08-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added code to install Geany configuration files

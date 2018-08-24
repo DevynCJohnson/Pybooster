@@ -67,10 +67,10 @@ Doxyfile text eol=lf linguist-vendored=false
 
 XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
 accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-accessory/geany/templates/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
-accessory/geany/templates/files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
-accessory/geany/templates/files/file.bat eol=crlf linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored
+accessory/geany/templates/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
+accessory/geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
+accessory/geany/templates/files/file.bat eol=crlf linguist-generated=true linguist-language=Text linguist-vendored
 *.asm text eol=lf linguist-language=Assembly linguist-vendored=false
 *.s text eol=lf linguist-language=Assembly linguist-vendored=false
 *.S text eol=lf linguist-language=Assembly linguist-vendored=false
