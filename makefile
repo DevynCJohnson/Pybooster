@@ -385,7 +385,7 @@ gitac :
 
 gitx :
 	@git checkout dev && git add --all && printf '\nCreate a commit message: ' && read GITMSG && printf '\n' && git commit --cleanup=strip --message="$$GITMSG"
-	git push --progress --signed=false --verify origin dev
+	git push --force --progress --signed=false --verify origin dev
 
 lscontrib :
 	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
