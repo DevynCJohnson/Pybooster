@@ -1,7 +1,9 @@
 2018-08-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added code to install Geany configuration files
+	* PyBooster:  Added Debian menu file for Program-Analyzer & moved *.desktop files to ./accessory/menu/
 	* mimetype_booster.xml:  Added awk & sed
+	* program-analyzer:  Created & added an icon
 
 2018-08-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

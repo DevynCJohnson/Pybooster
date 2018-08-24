@@ -1,0 +1,7 @@
+?package(python3):needs="X11" \
+    section="Applications/Development" \
+    title="Program Analyzer" \
+    longtitle="Disassemble and view information about a library or executable" \
+    hints="analyze,binary,disassemble,readelf,elf" \
+    icon="/usr/share/pixmaps/program-analyzer.svg" \
+    command="program-analyzer"

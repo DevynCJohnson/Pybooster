@@ -15,6 +15,9 @@ __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 # PATHS #
 
 
+override PIXMAPDIR::=/usr/share/pixmaps
+override SYSAPPDIR::=/usr/share/applications
+override SYSMENUDIR::=/usr/share/menu
 override SYSMIMEDIR::=/usr/share/mime
 override SYSTHEMEDIR::=/usr/share/icons
 override TESTINGDIR::=./testing

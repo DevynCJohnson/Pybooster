@@ -5,6 +5,7 @@ Categories=Development;
 Comment=Disassemble and view information about a library or executable
 Exec=program-analyzer %f
 GenericName=Executable Viewer
+Icon=program-analyzer
 Keywords=analyze;binary;disassemble;readelf;elf;
 Name=Program Analyzer
 NoDisplay=false

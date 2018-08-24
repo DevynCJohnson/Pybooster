@@ -23,6 +23,7 @@ override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
 override INCDIR::=./include
 override LANGSPECSDIR::=./accessory/language_specs
+override MENUDIR::=$(ACCDIR)/menu_files
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
 override TOOLSDIR::=./tools
@@ -449,7 +450,7 @@ uninstall_clib :
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
-	$(CPDIR) ./accessory/geany/* ~/.config/geany/
+	$(CPDIR) $(ACCDIR)/geany/* ~/.config/geany/
 
 install_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing /usr/bin Programs ==='
@@ -560,11 +561,13 @@ install_program_analyzer : | fixperm $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Program Analyzer ==='
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
 	$(COPY) $(SCRIPTSRCDIR)/program-analyzer $(INSTALLBINDIR)/
-	$(COPY) $(ACCDIR)/Program-Analyzer.desktop /usr/share/applications/
+	$(COPY) $(MENUDIR)/Program-Analyzer.desktop $(SYSAPPDIR)/
+	$(COPY) $(MENUDIR)/program-analyzer $(SYSMENUDIR)/
+	$(COPY) $(THEMEDIR)/Opticons/apps/program-analyzer.svg $(PIXMAPDIR)/
 
 uninstall_program_analyzer :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Program Analyzer ==='
-	$(RM) $(INSTALLBINDIR)/program-analyzer /usr/share/applications/Program-Analyzer.desktop
+	$(RM) $(INSTALLBINDIR)/program-analyzer $(SYSAPPDIR)/Program-Analyzer.desktop $(SYSMENUDIR)/program-analyzer $(PIXMAPDIR)/program-analyzer.svg
 
 install_scripts : $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Scripts ==='

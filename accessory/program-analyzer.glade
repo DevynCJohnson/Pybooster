@@ -37,7 +37,7 @@ Author: Devyn Collier Johnson
     <property name="window_position">center</property>
     <property name="default_width">1000</property>
     <property name="default_height">600</property>
-    <property name="icon_name">applications-development</property>
+    <property name="icon_name">program-analyzer</property>
     <property name="has_resize_grip">True</property>
     <property name="show_menubar">False</property>
     <signal name="destroy" handler="_winexit" swapped="no"/>
