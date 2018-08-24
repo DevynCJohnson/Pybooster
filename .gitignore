@@ -6,7 +6,7 @@ bin/
 [Dd]ebug/
 python/
 .bandit
-*.cache
+*.[Cc]ache
 .editorconfig
 .gitlint
 .flake8
@@ -19,6 +19,7 @@ pylintrc
 pytest.ini
 .sh-session
 .style.yapf
+[Tt]esting/
 *.todo.txt
 tox.ini
 *.tmp

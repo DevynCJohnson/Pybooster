@@ -34,11 +34,14 @@ from codecs import open as codec_opener
 from glob import glob
 from os import access as fileaccess, remove, R_OK, W_OK
 from os.path import (
+    dirname,
     expanduser,
     isdir,
     isfile,
     join as join_path,
     lexists as pathexists,
+    normcase,
+    realpath,
     split as path_split,
     splitext as path_splitext
 )
@@ -58,6 +61,7 @@ __all__ = [
     # PERMISSIONS #
     r'convumask',
     # GET FILE & PATHNAMES #
+    r'getscriptdir',
     r'getfileext',
     r'getfilename',
     r'getfilenameext',
@@ -166,6 +170,11 @@ def convumask(_oct: Union[int, list, str]) -> str:
 
 
 # GET FILE & PATHNAMES #
+
+
+def getscriptdir() -> str:
+    """Get the directory path of the currently running script"""
+    return normcase(dirname(realpath(normcase(__file__))))
 
 
 def getfileext(_filename: str) -> str:

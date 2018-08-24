@@ -15,6 +15,7 @@ __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 # PATHS #
 
 
+override LICENSESDIR::=/usr/share/common-licenses
 override PIXMAPDIR::=/usr/share/pixmaps
 override SYSAPPDIR::=/usr/share/applications
 override SYSMENUDIR::=/usr/share/menu

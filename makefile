@@ -196,7 +196,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitac gitadd gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitac gitadd gitstats gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -426,6 +426,9 @@ syncmaster :
 	@git checkout master
 	git merge --commit dev
 	git checkout dev
+
+gitstats :
+	@gitstats ./ $(TESTINGDIR)/git/
 
 
 # INSTALL/UNINSTALL #
