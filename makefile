@@ -424,7 +424,7 @@ syncdev :
 
 syncmaster :
 	@git checkout master
-	git merge --commit dev
+	git merge --force --commit dev
 	git checkout dev
 
 gitstats :
