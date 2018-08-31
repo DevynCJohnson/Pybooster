@@ -1,3 +1,16 @@
+2018-08-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* code-formatter:  Added features for formatting C/C++ code
+	* makefile:  Fixed a bug related to installing a newer version of flake8-optimal over an existing installation
+	* PyBooster:  Added coffeeanalysis, cssanalysis, & jsanalysis
+	* snippets.conf:  Added HTML5 select lists for countries, provinces, states, timezones, name suffixes, & salutations
+
+2018-08-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* code-analysis:  Fixed bug in namecheck section
+	* PyBooster:  Fixed version error in coffeescript.lang
+	* xmlanalysis:  Added support for HTML5
+
 2018-08-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added file-analysis, goanalysis, luaanalysis, xmlanalysis, & yamlanalysis

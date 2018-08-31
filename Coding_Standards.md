@@ -160,6 +160,7 @@ HTML
 - To define words, use `<dfn>` or `<dl>`
 - Use `<figcaption>` within all `<figure>` blocks
 - All `<img>` tags must use the "alt" attribute
+- All `<input>` tags using `type="date"` must not use the "placeholder" attribute
 - Use `<pre>` for all preformatted text
 - All `<script>` tags must use the "type" attribute
 - Any HTML file that utilizes `<script>` must use `<noscript>` for fallback

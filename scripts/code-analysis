@@ -70,6 +70,36 @@ for file in "$@"; do
     [ -x "$(command -v cloc)" ] && cloc --by-file --by-percent cmb --skip-uniqueness --quiet "$file" | awk 'NR > 2 && NF'
     [ -x "$(command -v wc)" ] && printf 'Lines\tWords\tChars\tBytes\tMax-Line-Len\tFilename\n' && wc --bytes --chars --lines --max-line-length --words "$file" | awk '{ gsub(/  /, " "); gsub(/  /, " "); gsub(/ /, "\t"); gsub(/\t\.\//, "\t\t\x2e\x2f"); gsub(/\t\//, "\t\t\x2f"); gsub(/^\t/, ""); print $0; }'
 
+    if [ -x "$(command -v isutf8)" ]; then
+        printf '======  *ISUTF8*  ======\n'
+        isutf8 -l "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'isutf8: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v pathchk)" ]; then
+        printf '======  *PATHCHK*  ======\n'
+        pathchk --portability "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'pathchk: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v doschk)" ]; then
+        printf '======  *DOSCHK*  ======\n'
+        echo "$file" | doschk
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'doschk: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v namecheck)" ]; then
+        if [ -n "${NAMECHECK:-}" ]; then
+            printf '======  *NAMECHECK*  ======\n'
+            namecheck "$file"
+        fi
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'namecheck: command not found!\n' >&2
+    fi
+
     FirstLoopPass=1
 
 done

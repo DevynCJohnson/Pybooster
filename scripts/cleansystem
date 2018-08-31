@@ -181,7 +181,7 @@ if [ -x "$(command -v sqlite3)" ]; then
     # Epiphany
     [ -d ~/.gnome2/epiphany/mozilla/epiphany/ ] && sqlvacuum ~/.gnome2/epiphany/mozilla/epiphany/*.sqlite &
     # Firefox
-    [ -d ~/.mozilla/firefox/ ] && (echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite && sqlvacuum ~/.mozilla/firefox/*/*.sqlite) &
+    [ -d ~/.mozilla/firefox/ ] && (echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite && sqlvacuum ~/.mozilla/firefox/*/*.sqlite >&2 2> /dev/null) &
     [ -d ~/.mozilla/firefox/Profiles/ ] && sqlvacuum ~/.mozilla/firefox/Profiles/*/*.sqlite &
     # Thunderbird
     [ -d ~/.thunderbird/ ] && sqlvacuum ~/.thunderbird/*/*.sqlite &
@@ -243,7 +243,7 @@ if [ "$(id -u)" -eq 0 ]; then
         apt-get check
         apt-get autoremove
         rm -f -r /var/cache/apt-build/ /var/cache/apt-xapian-index/ || true
-        [ -x "$(command -v update-apt-xapian-index)" ] && update-apt-xapian-index --force &
+        [ -x "$(command -v update-apt-xapian-index)" ] && update-apt-xapian-index --force
         [ -d /var/lib/update-notifier/package-data-downloads/partial/ ] && rm -f /var/lib/update-notifier/package-data-downloads/partial/*.FAILED
         [ -d /etc/apt/sources.list.d/ ] && rm -f /etc/apt/sources.list.d/*.distUpgrade /etc/apt/sources.list.d/*.save
     elif [ -x "$(command -v dnf)" ]; then

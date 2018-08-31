@@ -19,8 +19,11 @@ mkinstalldirs linguist-generated=true linguist-vendored
 
 # Generated Files
 
+*.db binary linguist-generated=true linguist-vendored
 *.egg linguist-generated=true linguist-vendored
 *.py[cdo] binary linguist-generated=true linguist-vendored
+*.sqlite binary linguist-generated=true linguist-vendored
+*.sqlite3 binary linguist-generated=true linguist-vendored
 *.tar.bz2 binary linguist-generated=true linguist-vendored
 *.tar.gz binary linguist-generated=true linguist-vendored
 *.xkb text eol=lf linguist-generated=true linguist-vendored
@@ -51,6 +54,15 @@ pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-v
 .travis.yml text eol=lf linguist-language=YAML linguist-vendored=false
 .vscode text eol=crlf linguist-vendored
 Doxyfile text eol=lf linguist-vendored=false
+
+
+# Font Files
+
+*.tte binary linguist-generated=true linguist-vendored
+*.ttf binary linguist-generated=true linguist-vendored
+*.otf binary linguist-generated=true linguist-vendored
+*.woff binary linguist-generated=true linguist-vendored
+*.woff2 binary linguist-generated=true linguist-vendored
 
 
 # Image Files

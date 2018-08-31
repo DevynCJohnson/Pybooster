@@ -12,6 +12,7 @@
 # SETUP #
 
 
+DECOMMENT=0
 EXTRA_PARAMS=0
 version=2018.08.23
 
@@ -32,6 +33,7 @@ Help() {
     printf '%s\n%s\n%s\n' 'Wrapper for prettifiers, minifiers, and auto-formatters' 'Usage: code-formatter [parameters]' 'WARNING: Changes occur in-place'
     printf '%s\n' 'Options:'
     printf '%s\n' '-c,--csrc      The input file is C source code (uses astyle)'
+    printf '%s\n' '--decomment    Remove comments from source code'
     printf '%s\n' '-h,--help      Display help info'
     printf '%s\n' '-p,--py        The input file is Python source code (uses autopep8 & docformatter)'
     printf '%s\n' '--svg          The input file is SVG source code (uses minifyxml & xmllint)'
@@ -40,15 +42,21 @@ Help() {
     printf '\n%s\n' '=====  Tools  ====='
     printf '%s\n' 'astyle - Format C source code'
     printf '%s\n' 'autopep8 - Format Python source code according to the PEP8 standard'
+    printf '%s\n' 'decomment - Remove comments from C/C++ source code'
     printf '%s\n' 'docformatter - Format Python documentation in source code'
     printf '%s\n' 'minifyxml - Minify, repair, and format XML code'
+    printf '%s\n' 'rmccmt - Remove comments from C/C++ source code'
+    printf '%s\n' 'untrigraph - Remove trigraphs from C source code'
 }
+
+
+rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
 
 
 # GETOPT #
 
 
-GOPT="$(getopt -o cf:hpv --long csrc,file:,py,script:,svg,version,help -- "$@")"
+GOPT="$(getopt -o cf:hpv --long csrc,decomment,file:,py,script:,svg,version,help -- "$@")"
 eval set -- "$GOPT"
 
 _file=''
@@ -61,7 +69,15 @@ while true; do  # Find input file prior to scanning other parameters
                 printf 'The specified file is non-readable or non-existent!\n' >&2
                 exit 1
             fi
-            break
+            shift 2
+        ;;
+        --decomment)  # Remove comments
+            DECOMMENT=1
+            shift
+        ;;
+        -x)  # Enable extra features
+            EXTRA_PARAMS=1
+            shift
         ;;
         --)  # End
             shift
@@ -71,12 +87,34 @@ while true; do  # Find input file prior to scanning other parameters
     esac
 done
 
+TMP_NAME="$(rndfname)"
+
 eval set -- "$GOPT"
 while true; do
     case "$1" in
         -c|--csrc)  # The input file is C source code (uses astyle)
             if [ -z "$_file" ]; then
                 printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ "$DECOMMENT" -eq 1 ]; then
+                if [ -x "$(command -v decomment)" ]; then
+                    decomment "$_file" > "$TMP_NAME"
+                    mv -f "$TMP_NAME" "$_file"
+                elif [ -x "$(command -v rmccmt)" ]; then
+                    rmccmt "$_file" > "$TMP_NAME"
+                    mv -f "$TMP_NAME" "$_file"
+                else
+                    printf 'decomment: command not found!\n' >&2
+                    printf 'rmccmt: command not found!\n' >&2
+                    exit 1
+                fi
+            fi
+            if [ -x "$(command -v untrigraph)" ] && [ "$EXTRA_PARAMS" -eq 1 ]; then
+                untrigraph "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            else
+                printf 'untrigraph: command not found!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v astyle)" ]; then

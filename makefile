@@ -50,7 +50,7 @@ override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgr
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk file-analysis flake8 goanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes3 pyinspect pylint3 pytest3 shanalysis systracer timeit timex transpile xmlanalysis yamlanalysis
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
-override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint vulture
+override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
 override LIST_DEV_DEPS::=binwalk bsdiff cccc chktri complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade kwstyle ltrace pmccabe pscan shc splint strace undertaker vbindiff
 
 # Parameters
@@ -196,7 +196,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitac gitadd gitstats gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -427,8 +427,21 @@ syncmaster :
 	git merge --commit dev
 	git checkout dev
 
+gitattr :
+	@git check-attr --all unspecified ./*
+	git check-attr --all unspecified ./*/*
+	git check-attr --all unspecified ./*/*/*
+
+gitignore :
+	@git check-ignore ./*
+	git check-ignore ./*/*
+	git check-ignore ./*/*/*
+
 gitstats :
 	@gitstats ./ $(TESTINGDIR)/git/
+
+gitlsfiles :
+	@git ls-files
 
 
 # INSTALL/UNINSTALL #
@@ -516,6 +529,7 @@ uninstall_opticons :
 
 install_pyeggs : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Eggs ==='
+	(pip3 uninstall flake8_optimal) || true
 	cd $(PYEGGDIR)/flake8_optimal/ || exit 1
 	python3 ./setup.py install
 	$(RMDIR) ./__pycache__/ ./build/ ./dist/ ./flake8_optimal.egg-info/ || true

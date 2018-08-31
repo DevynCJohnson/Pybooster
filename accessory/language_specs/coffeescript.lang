@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<language _name="CoffeeScript" _section="Scripts" id="coffee" version="2.3">
+<language _name="CoffeeScript" _section="Scripts" id="coffee" version="2.0">
   <metadata>
     <property name="mimetypes">application/coffeescript;text/coffeescript;application/cakefile;text/cakefile;</property>
     <property name="globs">*.Cakefile;*.coffee;*.coffee.erb;*.coffeescript;*.cs;*.iced;*.iced.erb;Cakefile</property>
