@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Wrapper for prettifiers, minifiers, and auto-formatters
 # @file code-formatter
-# @version 2018.08.23
+# @version 2018.08.31
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -14,7 +14,7 @@
 
 DECOMMENT=0
 EXTRA_PARAMS=0
-version=2018.08.23
+version=2018.08.31
 
 
 if [ -z "$1" ]; then
@@ -33,8 +33,10 @@ Help() {
     printf '%s\n%s\n%s\n' 'Wrapper for prettifiers, minifiers, and auto-formatters' 'Usage: code-formatter [parameters]' 'WARNING: Changes occur in-place'
     printf '%s\n' 'Options:'
     printf '%s\n' '-c,--csrc      The input file is C source code (uses astyle)'
+    printf '%s\n' '--css          The input file is CSS source code'
     printf '%s\n' '--decomment    Remove comments from source code'
     printf '%s\n' '-h,--help      Display help info'
+    printf '%s\n' '--js           The input file is JavaScript source code'
     printf '%s\n' '-p,--py        The input file is Python source code (uses autopep8 & docformatter)'
     printf '%s\n' '--svg          The input file is SVG source code (uses minifyxml & xmllint)'
     printf '%s\n' '-v,--version   Display version'
@@ -42,6 +44,8 @@ Help() {
     printf '\n%s\n' '=====  Tools  ====='
     printf '%s\n' 'astyle - Format C source code'
     printf '%s\n' 'autopep8 - Format Python source code according to the PEP8 standard'
+    printf '%s\n' 'cleancss - Minify CSS'
+    printf '%s\n' 'cssmin - Minify CSS'
     printf '%s\n' 'decomment - Remove comments from C/C++ source code'
     printf '%s\n' 'docformatter - Format Python documentation in source code'
     printf '%s\n' 'minifyxml - Minify, repair, and format XML code'
@@ -56,7 +60,7 @@ rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
 # GETOPT #
 
 
-GOPT="$(getopt -o cf:hpv --long csrc,decomment,file:,py,script:,svg,version,help -- "$@")"
+GOPT="$(getopt -o cf:hpv --long csrc,css,decomment,file:,js,py,script:,svg,version,help -- "$@")"
 eval set -- "$GOPT"
 
 _file=''
@@ -87,7 +91,7 @@ while true; do  # Find input file prior to scanning other parameters
     esac
 done
 
-TMP_NAME="$(rndfname)"
+TMP_NAME="/tmp/$(rndfname).tmp"
 
 eval set -- "$GOPT"
 while true; do
@@ -129,11 +133,43 @@ while true; do
             fi
             exit 0
         ;;
+        --css)  # The input file is CSS source code
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v cleancss)" ]; then
+                cleancss --remove-empty "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            elif [ -x "$(command -v cssmin)" ]; then
+                cssmin < "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            else
+                printf 'cleancss: command not found!\n' >&2
+                printf 'cssmin: command not found!\n' >&2
+                exit 1
+            fi
+            exit 0
+        ;;
         -f|--file|--script)  # Specify input file
             shift 2
         ;;
         -h|--help)  # Display help info
             Help
+            exit 0
+        ;;
+        --js)  # The input file is JavaScript source code
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v slimit)" ]; then
+                slimit "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            else
+                printf 'slimit: command not found!\n' >&2
+                exit 1
+            fi
             exit 0
         ;;
         -p|--py)  # The input file is Python source code (uses autopep8 & docformatter)

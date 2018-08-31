@@ -6,7 +6,7 @@
 
 @file basic.py
 @package pybooster.basic
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -57,7 +57,7 @@ except ImportError:
     raise Exception(r'Pygame is not installed or found.')
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'CO_COROUTINE',
     r'CO_GENERATOR',
@@ -154,9 +154,9 @@ __all__ = [
 # CONSTANTS #
 
 
-CO_COROUTINE = 128
-CO_GENERATOR = 32
-CO_ITERABLE_COROUTINE = 256
+CO_COROUTINE: int = 128
+CO_GENERATOR: int = 32
+CO_ITERABLE_COROUTINE: int = 256
 
 
 # CLASSES #

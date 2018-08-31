@@ -22,3 +22,11 @@ context_action_cmd=
 [indentation]
 type=0
 width=4
+
+[build-menu]
+FT_00_LB=Code _Formatter
+FT_00_CM=code-formatter --css --file "%d/%f"
+FT_00_WD=
+FT_01_LB=_CSS Analysis
+FT_01_CM=cssanalysis "%d/%f"
+FT_01_WD=

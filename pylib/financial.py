@@ -6,7 +6,7 @@
 
 @file financial.py
 @package pybooster.financial
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -29,7 +29,7 @@ along with this software.
 """
 
 
-__all__ = [
+__all__: list = [
     r'compounded_interest',
     r'compounded_ending_balance',
     r'simple_interest',

@@ -6,7 +6,7 @@
 
 @file libchar.py
 @package pybooster.libchar
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 """
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'ALPHASET',
     r'ORDINAL_LIST',

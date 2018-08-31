@@ -6,7 +6,7 @@
 
 @file code_interpreter.py
 @package pybooster.code_interpreter
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,7 +33,7 @@ from subprocess import getoutput  # nosec
 from sys import stdout
 
 
-__all__ = [
+__all__: list = [
     # CLISP #
     r'execclispfile',
     # COFFEESCRIPT #

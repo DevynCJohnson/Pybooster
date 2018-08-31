@@ -6,7 +6,7 @@
 
 @file convmass.py
 @package pybooster.convmass
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 from typing import Union
 
 
-__all__ = [
+__all__: list = [
     # KILOGRAMS #
     r'kilogram2pound'
 ]

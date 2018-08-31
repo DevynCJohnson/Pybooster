@@ -6,7 +6,7 @@
 
 @file ezdisplay.py
 @package pybooster.ezdisplay
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,7 +37,7 @@ require_version(r'Gtk', r'3.0')
 from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
-_GUI = """<?xml version="1.0" encoding="UTF-8"?>
+_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3

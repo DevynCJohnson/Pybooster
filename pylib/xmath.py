@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,7 +37,7 @@ from random import choice
 from typing import Union
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'LARGE_NUMBERS',
     r'SMALL_NUMBERS',

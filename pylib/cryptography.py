@@ -6,7 +6,7 @@
 
 @file cryptography.py
 @package pybooster.cryptography
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 from itertools import cycle
 
 
-__all__ = [
+__all__: list = [
     r'encrypt_xor',
     r'decrypt_xor',
     r'encrypt_xor_bytes_key_str',

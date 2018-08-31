@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -82,7 +82,7 @@ except ImportError:
     from re import compile as rgxcompile, split as rgxsplit, sub as resub
 
 
-__all__ = [
+__all__: list = [
     # STRING MANIPULATIONS #
     r'endletters',
     r'firstletters',

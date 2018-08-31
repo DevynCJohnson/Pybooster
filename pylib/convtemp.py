@@ -6,7 +6,7 @@
 
 @file convtemp.py
 @package pybooster.convtemp
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 from typing import Union
 
 
-__all__ = [
+__all__: list = [
     # CELSIUS #
     r'celsius2delisle',
     r'celsius2fahrenheit',

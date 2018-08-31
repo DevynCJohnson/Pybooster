@@ -19,7 +19,10 @@ type=0
 width=2
 
 [build-menu]
-FT_02_LB=_Lint
-FT_02_CM=jshint "%f"
-FT_02_WD=
+FT_00_LB=_Code Formatter
+FT_00_CM=code-formatter --js --file "%d/%f"
+FT_00_WD=
+FT_01_LB=_JS Analysis
+FT_01_CM=jsanalysis "%d/%f"
+FT_01_WD=
 error_regex=([^:]+): line ([0-9]+), col ([0-9]+)

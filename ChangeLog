@@ -1,3 +1,9 @@
+2018-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Applied type hints (PEP484) to `__all__` in Python scripts
+	* code-formatter:  Added features for formatting CSS & JavaScript
+	* makefile:  Updated `upver` to support Python `__version__` using type hints (PEP484)
+
 2018-08-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* code-formatter:  Added features for formatting C/C++ code

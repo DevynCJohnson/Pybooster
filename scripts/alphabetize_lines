@@ -5,7 +5,7 @@
 """@brief Sort lines (or list) in data stream alphabetically
 
 @file alphabetize_lines
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,7 +38,7 @@ from traceback import format_exc
 from typing import Callable, List
 
 
-__all__ = [
+__all__: list = [
     r'alphadupsort_delimiter_codec',
     r'alphasort_delimiter_codec',
     r'alphabetize_string'

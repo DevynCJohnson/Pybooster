@@ -6,7 +6,7 @@
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ import time as pytime
 from typing import Union
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'SEASONS',
     r'YEAR',

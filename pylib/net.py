@@ -6,7 +6,7 @@
 
 @file net.py
 @package pybooster.net
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ from subprocess import PIPE, Popen, TimeoutExpired  # nosec
 from urllib.request import urlopen
 
 
-__all__ = [
+__all__: list = [
     # IPV4/6 CONVERTIONS #
     r'ints2ipv6',
     r'lst2ipv6',

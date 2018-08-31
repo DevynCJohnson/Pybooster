@@ -6,7 +6,7 @@
 
 @file color.py
 @package pybooster.color
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ along with this software.
 from math import acos, cos, sqrt
 
 
-__all__ = [
+__all__: list = [
     # CMY #
     r'cmy2cmyk',
     r'cmy2rgb',
@@ -93,7 +93,7 @@ __all__ = [
 
 def getvalue(m1: float, m2: float, hue: float) -> float:
     """Get value from hue"""
-    hue = hue % 1.0
+    hue: float = hue % 1.0
     if hue < 0.166666666666667:
         return m1 + (m2 - m1) * hue * 6.0
     elif hue < 0.5:
@@ -108,7 +108,7 @@ def getvalue(m1: float, m2: float, hue: float) -> float:
 
 def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
     """CMY -> CMYK"""
-    _black = 1.0
+    _black: float = 1.0
     if _cyan < 1.0:
         _black = _cyan
     if _magenta < 1.0:
@@ -128,9 +128,9 @@ def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
 
 def cmy2rgb(_c: float, _m: float, _y: float, _out_float: bool = True) -> tuple:
     """CMY -> RGB"""
-    _red = 1.0 - _c
-    _green = 1.0 - _m
-    _blue = 1.0 - _y
+    _red: float = 1.0 - _c
+    _green: float = 1.0 - _m
+    _blue: float = 1.0 - _y
     if _out_float:
         return _red, _green, _blue
     return _red * 255.0, _green * 255.0, _blue * 255.0
@@ -168,11 +168,11 @@ def cmyk2rgbbyte(_cyan: float, _magenta: float, _yellow: float, _black: float) -
 
 def hsi2rgb(_hue: float, _sat: float, _intensity: float) -> tuple:
     """HSI -> RGB"""
-    _radconv = 57.295828
-    _degconv = 0.017453
-    _huerad = _degconv * _hue  # Convert degrees to radians
-    _si = _sat * _intensity
-    _si2 = _sat * _intensity * 2.0
+    _radconv: float = 57.295828
+    _degconv: float = 0.017453
+    _huerad: float = _degconv * _hue  # Convert degrees to radians
+    _si: float = _sat * _intensity
+    _si2: float = _sat * _intensity * 2.0
     if _hue == 0.0 or _hue >= 360.0:
         _red = _intensity + _si2
         _green = _intensity - _si
@@ -222,11 +222,11 @@ def hsi2rgb(_hue: float, _sat: float, _intensity: float) -> tuple:
 
 def hsi2rgbbyte(_hue: float, _sat: float, _intensity: float) -> tuple:
     """HSI -> RGB byte array"""
-    _radconv = 57.295828
-    _degconv = 0.017453
-    _huerad = _degconv * _hue  # Convert degrees to radians
-    _si = _sat * _intensity
-    _si2 = _sat * _intensity * 2.0
+    _radconv: float = 57.295828
+    _degconv: float = 0.017453
+    _huerad: float = _degconv * _hue  # Convert degrees to radians
+    _si: float = _sat * _intensity
+    _si2: float = _sat * _intensity * 2.0
     if _hue == 0.0 or _hue >= 360.0:
         _red = _intensity + _si2
         _green = _intensity - _si
@@ -279,10 +279,10 @@ def hsi2rgbbyte(_hue: float, _sat: float, _intensity: float) -> tuple:
 
 def hls2hsv(hue: float, light: float, sat: float) -> tuple:
     """HLS -> HSV"""
-    _l = 2.0 * light
-    _var = 1.0 - abs(_l - 1.0)
-    v = (_l + sat * _var) * 0.5
-    s = (2.0 * (v - light)) / v
+    _l: float = 2.0 * light
+    _var: float = 1.0 - abs(_l - 1.0)
+    v: float = (_l + sat * _var) * 0.5
+    s: float = (2.0 * (v - light)) / v
     return hue, s, v
 
 
@@ -290,11 +290,8 @@ def hls2rgb(h: float, _l: float, s: float) -> tuple:
     """HLS -> RGB"""
     if s == 0.0:
         return _l, _l, _l
-    if _l <= 0.5:
-        m2 = _l * (1.0 + s)
-    else:
-        m2 = _l + s - (_l * s)
-    m1 = 2.0 * _l - m2
+    m2: float = _l * (1.0 + s) if _l <= 0.5 else _l + s - (_l * s)
+    m1: float = 2.0 * _l - m2
     return (getvalue(m1, m2, h + 0.333333333333333), getvalue(m1, m2, h), getvalue(m1, m2, h - 0.333333333333333))
 
 
@@ -307,7 +304,7 @@ def hsv2hls(_hue: float, _sat: float, _value: float) -> tuple:
         _s = _sat * _value / ((2.0 - _sat) * _value)
     else:
         _s = _sat * _value / (2.0 - (2.0 - _sat) * _value)
-    _light = (2.0 - _sat) * _value * 0.5
+    _light: float = (2.0 - _sat) * _value * 0.5
     return _hue, _light, _s
 
 
@@ -384,9 +381,9 @@ def shorthand2sixdigit(_shorthand: str) -> str:
 
 def hunterlab2xyz(_hl: float, _ha: float, _hb: float) -> tuple:
     """Hunter Lab -> XYZ"""
-    _y = _hl * 0.1
-    _x = _ha / 17.5 * _y
-    _z = _hb / 7.0 * _y
+    _y: float = _hl * 0.1
+    _x: float = _ha / 17.5 * _y
+    _z: float = _hb / 7.0 * _y
     _y = _y * _y
     _x = (_x + _y) / 1.02
     _z = - (_z - _y) / 0.847
@@ -414,10 +411,10 @@ def rgb2cmy(_red, _green, _blue, _float: bool = True) -> tuple:
 
 def rgb2cmyk(r: float, g: float, b: float) -> tuple:
     """RGB -> CMYK"""
-    _black = 1.0 - max(r, g, b)
-    _cyan = (1.0 - r - _black) / (1.0 - _black)
-    _magenta = (1.0 - g - _black) / (1.0 - _black)
-    _yellow = (1.0 - b - _black) / (1.0 - _black)
+    _black: float = 1.0 - max(r, g, b)
+    _cyan: float = (1.0 - r - _black) / (1.0 - _black)
+    _magenta: float = (1.0 - g - _black) / (1.0 - _black)
+    _yellow: float = (1.0 - b - _black) / (1.0 - _black)
     return _cyan, _magenta, _yellow, _black
 
 

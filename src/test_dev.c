@@ -4,7 +4,7 @@
 /**
 @brief Test code used in MACROS*.h
 @file test_dev.c
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

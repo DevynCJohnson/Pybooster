@@ -5,7 +5,7 @@
 """@brief Flake8 plugin
 
 @file flake8_optimal.py
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -46,7 +46,7 @@ except ImportError:
     from re import compile as rgxcompile, I, search as rgxsearch
 
 
-__version__ = r'2018.08.23'
+__version__: str = r'2018.08.31'
 
 
 # PATTERNS #
@@ -95,9 +95,9 @@ def physical_hook(_func: Callable[[str], Optional[Tuple[int, str]]]) -> Callable
 class CopyrightChecker(object):
     """Flake8 plugin for ensuring that the copyright notice is present"""
 
-    name = r'CopyrightChecker'
-    version = __version__
-    code = r'V002'
+    name: str = r'CopyrightChecker'
+    version: str = __version__
+    code: str = r'V002'
 
     def __init__(self: object, tree: object, filename: str) -> None:
         """Initialize flake8 copyright-checker"""
@@ -164,9 +164,9 @@ class CopyrightChecker(object):
 class MagicCommentChecker(object):
     """Flake8 plugin to ensure magic-comments are present and correctly formatted"""
 
-    name = r'MagicComment'
-    version = __version__
-    code = r'MG0'
+    name: str = r'MagicComment'
+    version: str = __version__
+    code: str = r'MG0'
 
     def __init__(self: object, tree: object, filename: str) -> None:
         """Initialize flake8 magic-comment-checker"""

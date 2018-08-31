@@ -6,7 +6,7 @@
 
 @file compress.py
 @package pybooster.compress
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ import lzma
 import tarfile
 
 
-__all__ = [
+__all__: list = [
     # GZIP #
     r'getgzip',
     r'write2gzip',

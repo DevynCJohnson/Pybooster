@@ -6,7 +6,7 @@
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -45,7 +45,7 @@ from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 # GLOBAL DATA #
 
 
-__all__ = [
+__all__: list = [
     r'ezcolor',
     r'ezerr',
     r'ezfilech',
@@ -60,12 +60,12 @@ __all__ = [
 ]
 
 
-__author__ = r'Devyn Collier Johnson'
-__copyright__ = r'LGPLv3'
-__version__ = r'2018.08.23'
+__author__: str = r'Devyn Collier Johnson'
+__copyright__: str = r'LGPLv3'
+__version__: str = r'2018.08.31'
 
 
-__about__ = (
+__about__: tuple = (
     '\n\n=====ABOUT=====\n\n'
     '    Created by Devyn Collier Johnson\n'
     '    <DevynCJohnson@Gmail.com>\n'
@@ -76,7 +76,7 @@ __about__ = (
 )
 
 
-__usage_sh__ = """\n\n=====USAGE (Shell/Terminal)=====\n
+__usage_sh__: str = """\n\n=====USAGE (Shell/Terminal)=====\n
     ezwin [-h|--help|--api|-v|--version|-d|--doc]
     ezwin -[-FLAG] "Message"  # Message, Question, and Password dialogs
     ezwin --ynq "Message"  # Yes/No/Quit dialog
@@ -127,7 +127,7 @@ __usage_sh__ = """\n\n=====USAGE (Shell/Terminal)=====\n
 """
 
 
-__usage_py__ = """\n\n=====USAGE (Python)=====
+__usage_py__: str = """\n\n=====USAGE (Python)=====
 
     import ezwin
     ezwin.ezinfo('This is an example.')
@@ -135,7 +135,7 @@ __usage_py__ = """\n\n=====USAGE (Python)=====
 """
 
 
-__flags__ = """\n\n=====FLAGS (Shell/Terminal)=====
+__flags__: str = """\n\n=====FLAGS (Shell/Terminal)=====
 
     --api
             Display details about the API
@@ -227,7 +227,7 @@ __flags__ = """\n\n=====FLAGS (Shell/Terminal)=====
 """
 
 
-__examples__ = """\n\n=====BASIC PYTHON EXAMPLES=====
+__examples__: str = """\n\n=====BASIC PYTHON EXAMPLES=====
 
     import ezwin
 
@@ -289,13 +289,13 @@ __examples__ = """\n\n=====BASIC PYTHON EXAMPLES=====
 """
 
 
-__help__ = (
+__help__: tuple = (
     '\n=====EZ-Win Documentation=====\n' +
     __about__ + __usage_sh__ + __usage_py__ + __flags__ + __examples__
 )
 
 
-__api__ = """\n\n=====EZ-Win API=====
+__api__: str = """\n\n=====EZ-Win API=====
 
     =====DEFINE FILES (_G* = glade-file)=====
 
@@ -384,37 +384,37 @@ _PATH = normcase(dirname(realpath(normcase(__file__))))
 
 # Define Files (_G* = glade-file)
 # Information Dialog (ezinfo)
-_GINFO = pathjoin(_PATH, r'info.glade')
+_GINFO: str = pathjoin(_PATH, r'info.glade')
 # Error Dialog (ezerr)
-_GERR = pathjoin(_PATH, r'err.glade')
+_GERR: str = pathjoin(_PATH, r'err.glade')
 # Warning Dialog (ezwarn)
-_GWARN = pathjoin(_PATH, r'warn.glade')
+_GWARN: str = pathjoin(_PATH, r'warn.glade')
 # Message Dialog (ezmsg)
-_GMSG = pathjoin(_PATH, r'msg.glade')
+_GMSG: str = pathjoin(_PATH, r'msg.glade')
 # Update Dialog (ezupd)
-_GUPD = pathjoin(_PATH, r'upd.glade')
+_GUPD: str = pathjoin(_PATH, r'upd.glade')
 # Security Dialog (ezsecurity)
-_GSECURITY = pathjoin(_PATH, r'security.glade')
+_GSECURITY: str = pathjoin(_PATH, r'security.glade')
 # Color Chooser (ezcolor)
-_GCOLOR = pathjoin(_PATH, r'color.glade')
+_GCOLOR: str = pathjoin(_PATH, r'color.glade')
 # Password Dialog (ezpswd)
-_GPSWD = pathjoin(_PATH, r'pswd.glade')
+_GPSWD: str = pathjoin(_PATH, r'pswd.glade')
 # Password Dialog with 'Cancel' (ezpswd)
-_GPSWDC = pathjoin(_PATH, r'pswdc.glade')
+_GPSWDC: str = pathjoin(_PATH, r'pswdc.glade')
 # Input Text Dialog (eztext)
-_GTEXT = pathjoin(_PATH, r'text.glade')
+_GTEXT: str = pathjoin(_PATH, r'text.glade')
 # Input Text Dialog with 'Cancel' (eztext)
-_GTEXTC = pathjoin(_PATH, r'textc.glade')
+_GTEXTC: str = pathjoin(_PATH, r'textc.glade')
 # Question Dialog with Yes/No/Cancel (ezq)
-_GQYNCANCEL = pathjoin(_PATH, r'qyncancel.glade')
+_GQYNCANCEL: str = pathjoin(_PATH, r'qyncancel.glade')
 # Question Dialog with Yes/No/Close (ezq)
-_GQYNCLOSE = pathjoin(_PATH, r'qynclose.glade')
+_GQYNCLOSE: str = pathjoin(_PATH, r'qynclose.glade')
 # Question Dialog with Yes/No (ezq)
-_GQYN = pathjoin(_PATH, r'qyn.glade')
+_GQYN: str = pathjoin(_PATH, r'qyn.glade')
 # Question Dialog with Yes/No/Quit (ezq)
-_GQYNQ = pathjoin(_PATH, r'qynq.glade')
+_GQYNQ: str = pathjoin(_PATH, r'qynq.glade')
 # File Chooser Dialog (ezfilech)
-_GFILECH = pathjoin(_PATH, r'filech.glade')
+_GFILECH: str = pathjoin(_PATH, r'filech.glade')
 
 
 signal(SIGINT, SIG_DFL)

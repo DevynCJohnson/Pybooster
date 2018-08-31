@@ -6,7 +6,7 @@
 
 @file science_data.py
 @package pybooster.science_data
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 """
 
 
-__all__ = [
+__all__: list = [
     r'ATOM_MOLAR_MASS',
     r'MOLECULE_MOLAR_MASS',
     r'SMILES',

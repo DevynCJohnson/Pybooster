@@ -142,8 +142,8 @@ HTML
 - Indentation is two-spaces per level (except for minified code)
 - Newlines must be line-feeds, never carriage-returns
 - A `DOCTYPE` tag must be the first line of the file and `DOCTYPE` must be uppercased
-- Always include `<meta content="application/xhtml+xml; charset=utf-8" http-equiv="Content-Type" />`
-- Always include `<meta content="width=device-width, initial-scale=1.0" name="viewport">`
+- Always include `<meta content="application/xhtml+xml; charset=utf-8" http-equiv="Content-Type"/>`
+- Always include `<meta content="width=device-width, initial-scale=1.0" name="viewport"/>`
 - Lowercase attribute names
 - Quote all attribute values using double-quotes
 - Do not use spaces around attribute equal-signs

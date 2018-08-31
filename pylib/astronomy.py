@@ -6,7 +6,7 @@
 
 @file astronomy.py
 @package pybooster.astronomy
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 """
 
 
-__all__ = [
+__all__: list = [
     # LISTS #
     r'PLANETS',
     r'DWARF_PLANETS',
@@ -54,7 +54,7 @@ __all__ = [
 # LISTS #
 
 
-PLANETS = (
+PLANETS: tuple = (
     r'Mercury',
     r'Venus',
     r'Earth',
@@ -66,7 +66,7 @@ PLANETS = (
 )
 
 
-DWARF_PLANETS = (
+DWARF_PLANETS: tuple = (
     r'Ceres',
     r'Pluto',
     r'Haumea',
@@ -75,7 +75,7 @@ DWARF_PLANETS = (
 )
 
 
-PLANET_SYMBOLS = {
+PLANET_SYMBOLS: dict = {
     # PLANET_SYMBOLS is a dictionary that uses uppercase key names
     r'SUN': r'☉',
     r'MOON': r'☽',
@@ -95,7 +95,7 @@ PLANET_SYMBOLS = {
 # PLANET PROPERTIES #
 
 
-MERCURY = {
+MERCURY: dict = {
     r'symbol': r'☿',
     r'aphelion': (0.466697, r'AU'),
     r'perihelion': (0.307499, r'AU'),
@@ -104,7 +104,7 @@ MERCURY = {
 }
 
 
-VENUS = {
+VENUS: dict = {
     r'symbol': r'♀',
     r'aphelion': (0.728213, r'AU'),
     r'perihelion': (0.718440, r'AU'),
@@ -113,7 +113,7 @@ VENUS = {
 }
 
 
-EARTH = {
+EARTH: dict = {
     r'symbol': r'♁',
     r'aphelion': (1.01559, r'AU'),
     r'perihelion': (0.9832687, r'AU'),
@@ -122,7 +122,7 @@ EARTH = {
 }
 
 
-MARS = {
+MARS: dict = {
     r'symbol': r'♂',
     r'aphelion': (1.6660, r'AU'),
     r'perihelion': (1.3814, r'AU'),
@@ -131,10 +131,10 @@ MARS = {
 }
 
 
-CERES = {r'symbol': r'⚳'}
+CERES: dict = {r'symbol': r'⚳'}
 
 
-JUPITER = {
+JUPITER: dict = {
     r'symbol': r'♃',
     r'aphelion': (5.458104, r'AU'),
     r'perihelion': (4.950429, r'AU'),
@@ -143,7 +143,7 @@ JUPITER = {
 }
 
 
-SATURN = {
+SATURN: dict = {
     r'symbol': r'♄',
     r'aphelion': (10.11595804, r'AU'),
     r'perihelion': (9.04807635, r'AU'),
@@ -152,7 +152,7 @@ SATURN = {
 }
 
 
-URANUS = {
+URANUS: dict = {
     r'symbol': r'♅',
     r'aphelion': (20.095371, r'AU'),
     r'perihelion': (18.283135, r'AU'),
@@ -161,7 +161,7 @@ URANUS = {
 }
 
 
-NEPTUNE = {
+NEPTUNE: dict = {
     r'symbol': r'♆',
     r'aphelion': (30.331855, r'AU'),
     r'perihelion': (29.809946, r'AU'),
@@ -170,4 +170,4 @@ NEPTUNE = {
 }
 
 
-PLUTO = {r'symbol': r'♇'}
+PLUTO: dict = {r'symbol': r'♇'}

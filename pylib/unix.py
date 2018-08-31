@@ -6,7 +6,7 @@
 
 @file unix.py
 @package pybooster.unix
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ from shutil import rmtree
 from sys import stderr
 
 
-__all__ = [
+__all__: list = [
     # SPACE/STORAGE #
     r'dt',
     r'df',

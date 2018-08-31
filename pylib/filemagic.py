@@ -6,7 +6,7 @@
 
 @file filemagic.py
 @package pybooster.filemagic
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -39,7 +39,7 @@ from ctypes.util import find_library
 from typing import Optional, Sized
 
 
-__all__ = [
+__all__: list = [
     # FLAG CONSTANTS #
     r'MAGIC_NONE',
     r'MAGIC_DEBUG',

@@ -6,7 +6,7 @@
 
 @file clibutil.py
 @package pybooster.clibutil
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -40,7 +40,7 @@ except ImportError:
     from re import findall
 
 
-__all__ = [
+__all__: list = [
     # GET LIBRARY FILE NAMES #
     r'getlibc',
     r'getlibm',

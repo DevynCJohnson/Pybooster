@@ -6,7 +6,7 @@
 
 @file geo_services.py
 @package pybooster.geo_services
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,7 +33,7 @@ from json import loads
 from urllib.request import urlopen
 
 
-__all__ = [
+__all__: list = [
     r'getgeodata',
     r'getcity',
     r'getcountry',

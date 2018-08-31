@@ -6,7 +6,7 @@
 
 @file neuralnet.py
 @package pybooster.neuralnet
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -65,7 +65,7 @@ from typing import Any, Dict, Generator, List
 from zlib import compress, decompress
 
 
-__all__ = [
+__all__: list = [
     r'flatten',
     r'NeuroCode'
 ]

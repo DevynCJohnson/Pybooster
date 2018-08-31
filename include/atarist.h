@@ -4,7 +4,7 @@
 /**
 @brief Atari 16/32 Character Set
 @file atarist.h
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

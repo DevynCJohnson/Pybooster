@@ -6,7 +6,7 @@
 
 @file bitwise.py
 @package pybooster.bitwise
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 from typing import Optional
 
 
-__all__ = [
+__all__: list = [
     # FUNCTIONS #
     r'bit_and',
     r'bit_or',

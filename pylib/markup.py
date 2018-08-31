@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -57,7 +57,7 @@ except ImportError:
     pass
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'INKSCAPE_NAMESPACES',
     r'SVG_SIZE',

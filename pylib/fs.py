@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2018.08.23
+@version 2018.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -50,7 +50,7 @@ from sys import stderr, stdin, stdout
 from typing import Any, List, Tuple, Union
 
 
-__all__ = [
+__all__: list = [
     # CONSTANTS #
     r'GIGABYTE',
     r'GIGIBYTE',
