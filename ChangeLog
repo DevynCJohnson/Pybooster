@@ -1,3 +1,8 @@
+2018-09-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* flake8_optimal.py:  Added the "TESTING" todo note for the scanner to find (T000)
+	* PyBooster:  Added todo-scanner
+
 2018-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Applied type hints (PEP484) to `__all__` in Python scripts

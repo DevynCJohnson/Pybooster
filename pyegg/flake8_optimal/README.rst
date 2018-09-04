@@ -36,6 +36,10 @@ available in ``flake8``::
 Changes
 -------
 
+2018.03.09 - 2018-03-09
+```````````````````````
+* Added the "TESTING" todo note for the scanner to find (T000)
+
 2018.11.05 - 2018-11-05
 ```````````````````````
 * Added additional todo notes for the scanner to find (T000)

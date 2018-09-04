@@ -1,0 +1,27 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# @brief Scan a whole directory structure and list all developer "ToDo" notes
+# @file todo-scanner
+# @version 2018.08.31
+# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# MAIN #
+
+
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of the directory to scan.\n'
+    exit 0
+elif [ -f "$1" ]; then
+    printf 'ERROR: A directory path is required!\n' >&2
+    exit 1
+elif [ -d "$1" ]; then
+    grep -E -n -H -o -r '(#|<\?\-\-) ([Dd][Ee][Bb][Uu][Gg]|[Ff][Ii][Nn][Ii][Ss][Hh]|[Ff][Ii][Xx]|[Ff][Ii][Xx][Mm][Ee]|[Rr][Ee][Pp][Aa][Ii][Rr]|[Tt][Ee][Ss][Tt][Ii][Nn][Gg]|[Tt][Oo][Dd][Ee][Bb][Uu][Gg]|[Tt][Oo][Dd][Oo]|[Tt][Oo][Mm][Vv]|[Tt][Oo][Rr][Mm]|[Xx][Xx][Xx])[ ]?: .+' "$1"
+    exit 0
+elif [ -z "$1" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+fi

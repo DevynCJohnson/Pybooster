@@ -5,7 +5,7 @@
 """@brief Flake8 plugin
 
 @file flake8_optimal.py
-@version 2018.08.31
+@version 2018.09.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -61,8 +61,8 @@ REGEX_GTK_ADDFROMSTRING = rgxcompile(r'.+\.add_from_string\([\w\'"]+\)')
 REGEX_HASHPLING = rgxcompile(r'^(#!/usr/bin/|#!/bin/).+$')
 REGEX_LEN_ZERO = rgxcompile(r'if len\([\w \+]+\) (\!=|is not) 0:')
 REGEX_LEN_IS_ZERO = rgxcompile(r'if len\([\w \+]+\) (==|is) 0:')
-REGEX_NOTE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TODO|TOMV|TORM|XXX):', I)
-REGEX_NOTE_CASE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TODO|TOMV|TORM|XXX):')
+REGEX_NOTE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODO|TOMV|TORM|XXX):', I)
+REGEX_NOTE_CASE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODO|TOMV|TORM|XXX):')
 REGEX_OPEN = rgxcompile(r'open\(.+\)')
 REGEX_OPEN_ARGS = rgxcompile(r'(mode=\'|encoding=\').+')
 REGEX_PRINT_FUNCTION = rgxcompile(r'(?<!def\s)\bprint\b\s*\([^)]*\)')
