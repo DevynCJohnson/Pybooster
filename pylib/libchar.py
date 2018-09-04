@@ -135,12 +135,12 @@ __all__: list = [
 # CONSTANTS #
 
 
-ALPHASET = {
+ALPHASET: set = {
     r'a', r'b', r'c', r'd', r'e', r'f', r'g', r'h', r'i', r'j', r'k', r'l', r'm', r'n', r'o', r'p', r'q', r'r', r's', r't', r'u', r'v', r'w', r'x', r'y', r'z', r'=', r'/', r'A', r'B', r'C', r'D', r'E', r'F', r'G', r'H', r'I', r'J', r'K', r'L', r'M', r'N', r'O', r'P', r'Q', r'R', r'S', r'T', r'U', r'V', r'W', r'X', r'Y', r'Z'
 }
 
 
-ORDINAL_LIST = {
+ORDINAL_LIST: dict = {  # type: ignore
     r'tenth': r'10',
     r'eleventh': r'11',
     r'twelfth': r'12',
@@ -168,7 +168,7 @@ ORDINAL_LIST = {
 }
 
 
-NUMBER_LIST = {
+NUMBER_LIST: dict = {  # type: ignore
     r'10': r'tenth',
     r'11': r'eleventh',
     r'12': r'twelfth',
@@ -196,19 +196,19 @@ NUMBER_LIST = {
 }
 
 
-LOWER_LIMIT_ASCII_CTRL = 0  # ASCII Control Characters (Lower Limit)
-UPPER_LIMIT_ASCII_CTRL = 31  # ASCII Control Characters (Upper Limit)
-LOWER_LIMIT_ASCII_PRNT = 32  # ASCII Printable Characters (Lower Limit)
-UPPER_LIMIT_ASCII_PRNT = 127  # ASCII Printable Characters (Upper Limit)
-LOWER_LIMIT_ASCII_EXT = 128  # Extended ASCII Characters (Lower Limit)
-UPPER_LIMIT_ASCII_EXT = 255  # Extended ASCII Characters (Upper Limit)
-LOWER_LIMIT_MS_LATIN1 = 129  # Microsoft-Windows Latin-1 extended characters (Lower Limit)
-UPPER_LIMIT_MS_LATIN1 = 159  # Microsoft-Windows Latin-1 extended characters (Upper Limit)
-UPPER_LIMIT_UTF8 = 65535  # Upper Limit of UTF-8
-UPPER_LIMIT_UNICODE = 1114111  # Upper Limit of Unicode
+LOWER_LIMIT_ASCII_CTRL:int = 0  # ASCII Control Characters (Lower Limit)
+UPPER_LIMIT_ASCII_CTRL:int = 31  # ASCII Control Characters (Upper Limit)
+LOWER_LIMIT_ASCII_PRNT:int = 32  # ASCII Printable Characters (Lower Limit)
+UPPER_LIMIT_ASCII_PRNT:int = 127  # ASCII Printable Characters (Upper Limit)
+LOWER_LIMIT_ASCII_EXT:int = 128  # Extended ASCII Characters (Lower Limit)
+UPPER_LIMIT_ASCII_EXT:int = 255  # Extended ASCII Characters (Upper Limit)
+LOWER_LIMIT_MS_LATIN1:int = 129  # Microsoft-Windows Latin-1 extended characters (Lower Limit)
+UPPER_LIMIT_MS_LATIN1:int = 159  # Microsoft-Windows Latin-1 extended characters (Upper Limit)
+UPPER_LIMIT_UTF8:int = 65535  # Upper Limit of UTF-8
+UPPER_LIMIT_UNICODE:int = 1114111  # Upper Limit of Unicode
 
 
-PRINTABLE = {
+PRINTABLE: dict = {  # type: ignore
     # dec: ('hex', 'oct', 'char'),
     32: ('20', '040', r' '),
     33: ('21', '041', r'!'),
@@ -308,7 +308,7 @@ PRINTABLE = {
 }
 
 
-ESCTAB = {
+ESCTAB: dict = {  # type: ignore
     '"': '&#34;',
     '\'': '&#39;',
     '(': '&#40;',
@@ -321,7 +321,7 @@ ESCTAB = {
 }
 
 
-UNESCTAB = {
+UNESCTAB: dict = {  # type: ignore
     '&#34;': r'"',
     '&#39;': r'\'',
     '&#40;': r'(',
@@ -337,17 +337,17 @@ UNESCTAB = {
 # CHARACTER SHAPES #
 
 
-BUBBLE = '\u20dd'
-SQUARE = '\u20de'
+BUBBLE: str = '\u20dd'
+SQUARE: str = '\u20de'
 
 
 # TRANSLATION CONSTANTS #
 
 
-BUBBLE_TEXT = r'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ ⓪①②③④⑤⑥⑦⑧⑨⊕⊖⊛⊘⊙⊜'
-PLAIN_TEXT = r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789+-*/.='
-FULLWIDTH_TEXT = '\uFF01\uFF02\uFF03\uFF04\uFF05\uFF06\uFF07\uFF08\uFF09\uFF0A\uFF0B\uFF0C\uFF0D\uFF0E\uFF0F\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF1A\uFF1B\uFF1C\uFF1D\uFF1E\uFF1F\uFF20\uFF21\uFF22\uFF23\uFF24\uFF25\uFF26\uFF27\uFF28\uFF29\uFF2A\uFF2B\uFF2C\uFF2D\uFF2E\uFF2F\uFF30\uFF31\uFF32\uFF33\uFF34\uFF35\uFF36\uFF37\uFF38\uFF39\uFF3A\uFF3B\uFF3C\uFF3D\uFF3E\uFF3F\uFF40\uFF41\uFF42\uFF43\uFF44\uFF45\uFF46\uFF47\uFF48\uFF49\uFF4A\uFF4B\uFF4C\uFF4D\uFF4E\uFF4F\uFF50\uFF51\uFF52\uFF53\uFF54\uFF55\uFF56\uFF57\uFF58\uFF59\uFF5A\uFF5B\uFF5C\uFF5D\uFF5E\uFFE0\uFFE1'
-REGWIDTH_TEXT = '!\u0022#$%&\u0027\u0028\u0029*+\u002C\u002D\u002E\u002F0123456789:;\u003C\u003D\u003E?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\u005B\u005C\u005D\u005E\u005F\u0060abcdefghijklmnopqrstuvwxyz\u007B\u007C\u007D\u007E\u00A2\u00A3'
+BUBBLE_TEXT: str = r'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ ⓪①②③④⑤⑥⑦⑧⑨⊕⊖⊛⊘⊙⊜'
+PLAIN_TEXT: str = r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789+-*/.='
+FULLWIDTH_TEXT: str = '\uFF01\uFF02\uFF03\uFF04\uFF05\uFF06\uFF07\uFF08\uFF09\uFF0A\uFF0B\uFF0C\uFF0D\uFF0E\uFF0F\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF1A\uFF1B\uFF1C\uFF1D\uFF1E\uFF1F\uFF20\uFF21\uFF22\uFF23\uFF24\uFF25\uFF26\uFF27\uFF28\uFF29\uFF2A\uFF2B\uFF2C\uFF2D\uFF2E\uFF2F\uFF30\uFF31\uFF32\uFF33\uFF34\uFF35\uFF36\uFF37\uFF38\uFF39\uFF3A\uFF3B\uFF3C\uFF3D\uFF3E\uFF3F\uFF40\uFF41\uFF42\uFF43\uFF44\uFF45\uFF46\uFF47\uFF48\uFF49\uFF4A\uFF4B\uFF4C\uFF4D\uFF4E\uFF4F\uFF50\uFF51\uFF52\uFF53\uFF54\uFF55\uFF56\uFF57\uFF58\uFF59\uFF5A\uFF5B\uFF5C\uFF5D\uFF5E\uFFE0\uFFE1'
+REGWIDTH_TEXT: str = '!\u0022#$%&\u0027\u0028\u0029*+\u002C\u002D\u002E\u002F0123456789:;\u003C\u003D\u003E?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\u005B\u005C\u005D\u005E\u005F\u0060abcdefghijklmnopqrstuvwxyz\u007B\u007C\u007D\u007E\u00A2\u00A3'
 TRANS_BUBBLE2TEST = str.maketrans(BUBBLE_TEXT, PLAIN_TEXT)
 TRANS_TEXT2BUBBLE = str.maketrans(PLAIN_TEXT, BUBBLE_TEXT)
 FULLWIDTH2REGULAR = str.maketrans(FULLWIDTH_TEXT, REGWIDTH_TEXT)
@@ -357,7 +357,7 @@ REGULAR2FULLWIDTH = str.maketrans(REGWIDTH_TEXT, FULLWIDTH_TEXT)
 # CHARACTER LISTS #
 
 
-ARROWS = (
+ARROWS: tuple = (
     r'←', r'↑', r'→', r'↓', r'↔', r'↕', r'↖', r'↗', r'↘', r'↙', r'↜', r'↝', r'↞', r'↟', r'↠',
     r'↡', r'↢', r'↣', r'↤', r'↥', r'↦', r'↧', r'↨', r'↩', r'↪', r'↫', r'↬', r'↭', r'↯', r'↰',
     r'↱', r'↲', r'↳', r'↴', r'↵', r'↶', r'↷', r'↸', r'↹', r'↺', r'↻', r'↼', r'↽', r'↾', r'↿',
@@ -382,10 +382,10 @@ ARROWS = (
 )
 
 
-ASTROLOGY = (r'☉', r'☽', r'☿', r'♀', r'♁', r'♂', r'⚳', r'♃', r'♄', r'♅', r'⛢', r'♆', r'♇')
+ASTROLOGY: tuple = (r'☉', r'☽', r'☿', r'♀', r'♁', r'♂', r'⚳', r'♃', r'♄', r'♅', r'⛢', r'♆', r'♇')
 
 
-BRAILLE = (
+BRAILLE: tuple = (
     r'⠀', r'⠁', r'⠂', r'⠃', r'⠄', r'⠅', r'⠆', r'⠇', r'⠈', r'⠉', r'⠊', r'⠋', r'⠌', r'⠍', r'⠎',
     r'⠏', r'⠐', r'⠑', r'⠒', r'⠓', r'⠔', r'⠕', r'⠖', r'⠗', r'⠘', r'⠙', r'⠚', r'⠛', r'⠜', r'⠝',
     r'⠞', r'⠟', r'⠠', r'⠡', r'⠢', r'⠣', r'⠤', r'⠥', r'⠦', r'⠧', r'⠨', r'⠩', r'⠪', r'⠫', r'⠬',
@@ -407,26 +407,26 @@ BRAILLE = (
 )
 
 
-CARDS = (r'♠', r'♡', r'♢', r'♣', r'♤', r'♥', r'♦', r'♧')
+CARDS: tuple = (r'♠', r'♡', r'♢', r'♣', r'♤', r'♥', r'♦', r'♧')
 
 
-CHESS = (r'♔', r'♕', r'♖', r'♗', r'♘', r'♙', r'♚', r'♛', r'♜', r'♝', r'♞', r'♟')
+CHESS: tuple = (r'♔', r'♕', r'♖', r'♗', r'♘', r'♙', r'♚', r'♛', r'♜', r'♝', r'♞', r'♟')
 
 
-CHESS_BLACK = (r'♚', r'♛', r'♜', r'♝', r'♞', r'♟')
+CHESS_BLACK: tuple = (r'♚', r'♛', r'♜', r'♝', r'♞', r'♟')
 
 
-CHESS_WHITE = (r'♔', r'♕', r'♖', r'♗', r'♘', r'♙')
+CHESS_WHITE: tuple = (r'♔', r'♕', r'♖', r'♗', r'♘', r'♙')
 
 
-CONTROL_SYM = (
+CONTROL_SYM: tuple = (
     r'␀', r'␁', r'␂', r'␃', r'␄', r'␅', r'␆', r'␇', r'␈', r'␉', r'␊', r'␋', r'␌', r'␍', r'␎',
     r'␏', r'␐', r'␑', r'␒', r'␓', r'␔', r'␕', r'␖', r'␗', r'␘', r'␙', r'␚', r'␛', r'␜', r'␝',
     r'␞', r'␟', r'␠', r'␡'
 )
 
 
-CONTROL_SYM_NAME = {
+CONTROL_SYM_NAME: dict = {  # type: ignore
     r'NUL': r'␀',
     r'SOH': r'␁',
     r'STX': r'␂',
@@ -464,14 +464,14 @@ CONTROL_SYM_NAME = {
 }
 
 
-CURRENCY = (
+CURRENCY: tuple = (
     r'¤', r'₳', r'฿', r'₵', r'¢', r'₡', r'₢', r'$', r'₫', r'₯', r'₠', r'€', r'ƒ', r'₣',
     r'₲', r'₴', r'₭', r'₺', r'ℳ', r'₥', r'₦', r'₧', r'₱', r'₰', r'£', r'៛', r'₽', r'₹',
     r'₨', r'₪', r'৳', r'₸', r'₮', r'₩', r'¥'
 )
 
 
-CYRILLIC_ALPHABET = (
+CYRILLIC_ALPHABET: tuple = (
     r'А', r'Б', r'В', r'Г', r'Д', r'Е', r'Ё', r'Ж', r'З', r'И', r'Й', r'К', r'Л', r'М',
     r'Н', r'О', r'П', r'Р', r'С', r'Т', r'У', r'Ф', r'Х', r'Ц', r'Ч',
     r'а', r'б', r'в', r'г', r'д', r'е', r'ё', r'ж', r'з', r'и', r'й', r'к', r'л', r'м',
@@ -479,13 +479,13 @@ CYRILLIC_ALPHABET = (
 )
 
 
-DICE = (r'⚀', r'⚁', r'⚂', r'⚃', r'⚄', r'⚅')
+DICE: tuple = (r'⚀', r'⚁', r'⚂', r'⚃', r'⚄', r'⚅')
 
 
-END_PUNCT = (r'…', r'¿', r'¡', r'‽', r'⸮')
+END_PUNCT: tuple = (r'…', r'¿', r'¡', r'‽', r'⸮')
 
 
-FACES = (
+FACES: tuple = (
     r'😁', r'😂', r'😃', r'😄', r'😅', r'😆', r'😇', r'😈', r'😉', r'😊', r'😋', r'😌', r'😍',
     r'😎', r'😏', r'😐', r'😒', r'😓', r'😔', r'😖', r'😘', r'😚', r'😜', r'😝', r'😞', r'😠',
     r'😡', r'😢', r'😣', r'😥', r'😨', r'😩', r'😪', r'😫', r'😭', r'😰', r'😱', r'😲', r'😳',
@@ -496,19 +496,19 @@ FACES = (
 )
 
 
-INTELLECTUAL_PROPERTY = (r'©', r'℗', r'®', r'℠', r'™')
+INTELLECTUAL_PROPERTY: tuple = (r'©', r'℗', r'®', r'℠', r'™')
 
 
-LOGIC = (r'⇒', r'→', r'⊃', r'⇔', r'≡', r'↔', r'¬', r'∥', r'⊕', r'⊻', r'⊥', r'∃', r'≔', r'≡', r'⊢', r'⊨')
+LOGIC: tuple = (r'⇒', r'→', r'⊃', r'⇔', r'≡', r'↔', r'¬', r'∥', r'⊕', r'⊻', r'⊥', r'∃', r'≔', r'≡', r'⊢', r'⊨')
 
 
-MATH = (
+MATH: tuple = (
     r'÷', r'×', r'±', r'∓', r'√', r'∛', r'∜', r'∫', r'∮', r'∯', r'∰', r'∴', r'∵', r'∝', r'∞',
     r'≈', r'≅', r'♎', r'π', r'≪', r'≫', r'≤', r'≥', r'≦', r'≧'
 )
 
 
-MUSIC = (
+MUSIC: tuple = (
     r'𝄀', r'𝄁', r'𝄂', r'𝄃', r'𝄄', r'𝄅', r'𝄆', r'𝄇', r'𝄈', r'𝄉', r'𝄊', r'𝄋', r'𝄌', r'𝄍', r'𝄎', r'𝄏',
     r'𝄐', r'𝄑', r'𝄒', r'𝄓', r'𝄔', r'𝄕', r'𝄖', r'𝄗', r'𝄘', r'𝄙', r'𝄚', r'𝄛', r'𝄜', r'𝄝', r'𝄞',
     r'𝄟', r'𝄠', r'𝄡', r'𝄢', r'𝄣', r'𝄤', r'𝄥', r'𝄦', r'𝄩', r'𝄪', r'𝄫', r'𝄬', r'𝄭', r'𝄮', r'𝄯',
@@ -526,7 +526,7 @@ MUSIC = (
 )
 
 
-PARENTHESIS_CHAR = (
+PARENTHESIS_CHAR: tuple = (
     r'⑴', r'⑵', r'⑶', r'⑷', r'⑸', r'⑹', r'⑺', r'⑻', r'⑼', r'⑽', r'⑾', r'⑿', r'⒀',
     r'⒁', r'⒂', r'⒃', r'⒄', r'⒅', r'⒆', r'⒇', r'⒜', r'⒝', r'⒞', r'⒟', r'⒠', r'⒡',
     r'⒢', r'⒣', r'⒤', r'⒥', r'⒦', r'⒧', r'⒨', r'⒩', r'⒪', r'⒫', r'⒬', r'⒭', r'⒮',
@@ -534,7 +534,7 @@ PARENTHESIS_CHAR = (
 )
 
 
-PLANETS = {
+PLANETS: dict = {  # type: ignore
     r'SUN': r'☉',
     r'MOON': r'☽',
     r'MERCURY': r'☿',
@@ -550,7 +550,7 @@ PLANETS = {
 }
 
 
-PLAYING_CARDS = (
+PLAYING_CARDS: tuple = (
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -567,7 +567,7 @@ PLAYING_CARDS = (
 )
 
 
-PLAYING_CARDS_52 = (
+PLAYING_CARDS_52: tuple = (
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -585,7 +585,7 @@ PLAYING_CARDS_52 = (
 )
 
 
-PLAYING_CARDS_56 = (
+PLAYING_CARDS_56: tuple = (
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -604,7 +604,7 @@ PLAYING_CARDS_56 = (
 )
 
 
-CARDS = {
+CARDS: dict = {  # type: ignore
     r'ACE': (r'🂡', r'🂱', r'🃁', r'🃑'),
     r'2': (r'🂢', r'🂲', r'🃂', r'🃒'),
     r'3': (r'🂣', r'🂳', r'🃃', r'🃓'),
@@ -623,19 +623,19 @@ CARDS = {
 }
 
 
-RECYCLE = (r'♲', r'♳', r'♴', r'♵', r'♶', r'♷', r'♸', r'♹', r'♺', r'♻', r'♼', r'♽')
+RECYCLE: tuple = (r'♲', r'♳', r'♴', r'♵', r'♶', r'♷', r'♸', r'♹', r'♺', r'♻', r'♼', r'♽')
 
 
-SCIENCE = (r'⚕', r'⚗', r'⚘', r'⚙', r'⚛', r'☢', r'☣', r'☤', r'⌬')
+SCIENCE: tuple = (r'⚕', r'⚗', r'⚘', r'⚙', r'⚛', r'☢', r'☣', r'☤', r'⌬')
 
 
-SUPERSCRIPT_NUM = (r'¹', r'²', r'³', r'⁴', r'⁵', r'⁶', r'⁷', r'⁸', r'⁹')
+SUPERSCRIPT_NUM: tuple = (r'¹', r'²', r'³', r'⁴', r'⁵', r'⁶', r'⁷', r'⁸', r'⁹')
 
 
-ZODIAC = (r'♈', r'♉', r'♊', r'♋', r'♌', r'♍', r'♎', r'♏', r'♐', r'♑', r'♒', r'♓')
+ZODIAC: tuple = (r'♈', r'♉', r'♊', r'♋', r'♌', r'♍', r'♎', r'♏', r'♐', r'♑', r'♒', r'♓')
 
 
-ZODIAC_SIGNS = {
+ZODIAC_SIGNS: dict = {  # type: ignore
     r'Aries': r'♈',
     r'Taurus': r'♉',
     r'Gemini': r'♊',
@@ -654,25 +654,25 @@ ZODIAC_SIGNS = {
 # GREEK CHARACTERS #
 
 
-GREEK_UPPER = (
+GREEK_UPPER: tuple = (
     r'Α', r'Β', r'Γ', r'Δ', r'Ε', r'Ζ', r'Η', r'Θ', r'Ι', r'Κ', r'Λ', r'Μ', r'Ν',
     r'Ξ', r'Ο', r'Π', r'Ρ', r'Σ', r'Τ', r'Υ', r'Φ', r'Χ', r'Ψ', r'Ω'
 )
 
 
-GREEK_LOWER = (
+GREEK_LOWER: tuple = (
     r'α', r'β', r'γ', r'δ', r'ε', r'ζ', r'η', r'θ', r'ι', r'κ', r'λ', r'μ', r'ν',
     r'ξ', r'ο', r'π', r'ρ', r'σ', r'ς', r'τ', r'υ', r'φ', r'χ', r'ψ', r'ω'
 )
 
 
-GREEK_ARCHAIC_UPPER = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ')
+GREEK_ARCHAIC_UPPER: tuple = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ')
 
 
-GREEK_ARCHAIC_LOWER = (r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
+GREEK_ARCHAIC_LOWER: tuple = (r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
 
 
-GREEK_ACCENT_UPPER = (
+GREEK_ACCENT_UPPER: tuple = (
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -687,7 +687,7 @@ GREEK_ACCENT_UPPER = (
 )
 
 
-GREEK_ACCENT_LOWER = (
+GREEK_ACCENT_LOWER: tuple = (
     r'ἀ', r'ἁ', r'ἂ', r'ἃ', r'ἄ', r'ἅ', r'ἆ', r'ἇ', r'ὰ', r'ά',
     r'ᾀ', r'ᾁ', r'ᾂ', r'ᾃ', r'ᾄ', r'ᾅ', r'ᾆ', r'ᾇ', r'ᾰ', r'ᾱ', r'ᾲ', r'ᾳ', r'ᾴ', r'ᾶ', r'ᾷ',
     r'ἐ', r'ἑ', r'ἒ', r'ἓ', r'ἔ', r'ἕ', r'ὲ', r'έ',
@@ -704,7 +704,7 @@ GREEK_ACCENT_LOWER = (
 )
 
 
-GREEK = (
+GREEK: tuple = (
     r'Α', r'Β', r'Γ', r'Δ', r'Ε', r'Ζ', r'Η', r'Θ', r'Ι', r'Κ', r'Λ', r'Μ', r'Ν',
     r'Ξ', r'Ο', r'Π', r'Ρ', r'Σ', r'Τ', r'Υ', r'Φ', r'Χ', r'Ψ', r'Ω',
     r'α', r'β', r'γ', r'δ', r'ε', r'ζ', r'η', r'θ', r'ι', r'κ', r'λ', r'μ', r'ν',
@@ -712,10 +712,10 @@ GREEK = (
 )
 
 
-GREEK_ARCHAIC = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ', r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
+GREEK_ARCHAIC: tuple = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ', r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
 
 
-GREEK_ACCENT = (
+GREEK_ACCENT: tuple = (
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -743,7 +743,7 @@ GREEK_ACCENT = (
 )
 
 
-GREEK_EXTENDED = (
+GREEK_EXTENDED: tuple = (
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -771,7 +771,7 @@ GREEK_EXTENDED = (
 )
 
 
-GREEK_ALL = (
+GREEK_ALL: tuple = (
     r'Α', r'Β', r'Γ', r'Δ', r'Ε', r'Ζ', r'Η', r'Θ', r'Ι', r'Κ', r'Λ', r'Μ', r'Ν',
     r'Ξ', r'Ο', r'Π', r'Ρ', r'Σ', r'Τ', r'Υ', r'Φ', r'Χ', r'Ψ', r'Ω',
     r'α', r'β', r'γ', r'δ', r'ε', r'ζ', r'η', r'θ', r'ι', r'κ', r'λ', r'μ', r'ν',
@@ -807,29 +807,29 @@ GREEK_ALL = (
 # MISCELLANEOUS SYMBOLS #
 
 
-AIRPLANE = r'✈'
-BIOHAZARD = r'☣'
-CARD_REVERSE = r'🂠'
-DOWN = r'↓'
-EJECT = r'⏏'
-FUEL_PUMP = r'⛽'
-KEYBOARD = r'⌨'
-LEFT = r'←'
-LOADING = r'⌛'
-MEDICINE = r'☤'
-OHMS = r'Ω'
-RADIATION = r'☢'
-RIGHT = r'→'
-TELEPHONE = r'☏'
-TOXIC = r'☠'
-UP = r'↑'
-WARNING = r'⚠'
+AIRPLANE: str = r'✈'
+BIOHAZARD: str = r'☣'
+CARD_REVERSE: str = r'🂠'
+DOWN: str = r'↓'
+EJECT: str = r'⏏'
+FUEL_PUMP: str = r'⛽'
+KEYBOARD: str = r'⌨'
+LEFT: str = r'←'
+LOADING: str = r'⌛'
+MEDICINE: str = r'☤'
+OHMS: str = r'Ω'
+RADIATION: str = r'☢'
+RIGHT: str = r'→'
+TELEPHONE: str = r'☏'
+TOXIC: str = r'☠'
+UP: str = r'↑'
+WARNING: str = r'⚠'
 
 
 # CODEPOINTS & CHARACTER REFERENCES #
 
 
-INVALID_CHARREFS = {
+INVALID_CHARREFS: dict = {  # type: ignore
     0x00: '\ufffd',  # REPLACEMENT CHARACTER
     0x0d: '\r',  # CARRIAGE RETURN
     0x80: '\u20ac',  # EURO SIGN
@@ -867,7 +867,7 @@ INVALID_CHARREFS = {
 }
 
 
-INVALID_CODEPOINTS = (
+INVALID_CODEPOINTSL tuple = (
     # 0x0001 to 0x0008
     0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8,
     # 0x000E to 0x001F
@@ -891,7 +891,8 @@ INVALID_CODEPOINTS = (
 )
 
 
-CODEPOINT2NAME = {  # Maps the Unicode code point to the HTML entity name
+CODEPOINT2NAME: dict = {  # type: ignore
+    # Maps the Unicode code point to the HTML entity name
     160: r'nbsp',
     161: r'iexcl',
     162: r'cent',
@@ -1147,7 +1148,8 @@ CODEPOINT2NAME = {  # Maps the Unicode code point to the HTML entity name
 }
 
 
-ENTITYDEFS = {  # Maps the HTML entity name to the character (or a character reference if the character is outside the Latin-1 range)
+ENTITYDEFS: dict = {  # type: ignore
+    # Maps the HTML entity name to the character (or a character reference if the character is outside the Latin-1 range)
     r'Aacute': r'Á',
     r'aacute': r'á',
     r'Acirc': r'Â',
@@ -1403,7 +1405,8 @@ ENTITYDEFS = {  # Maps the HTML entity name to the character (or a character ref
 }
 
 
-HTML5 = {  # Maps the HTML5 named character references to the equivalent Unicode character(s)
+HTML5: dict = {  # type: ignore
+    # Maps the HTML5 named character references to the equivalent Unicode character(s)
     r'Aacute': '\xc1',
     r'aacute': '\xe1',
     r'Aacute;': '\xc1',
@@ -3638,7 +3641,8 @@ HTML5 = {  # Maps the HTML5 named character references to the equivalent Unicode
 }
 
 
-NAME2CODEPOINT = {  # Maps the HTML entity name to the Unicode code point
+NAME2CODEPOINT: dict = {  # type: ignore
+    # Maps the HTML entity name to the Unicode code point
     r'Aacute': 0x00c1,  # Latin capital letter A with acute, U+00C1 ISOlat1
     r'aacute': 0x00e1,  # Latin small letter a with acute, U+00E1 ISOlat1
     r'Acirc': 0x00c2,  # Latin capital letter A with circumflex, U+00C2 ISOlat1

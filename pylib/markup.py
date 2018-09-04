@@ -154,18 +154,18 @@ __all__: list = [
 # CONSTANTS #
 
 
-INKSCAPE_NAMESPACES = {r'inkscape': r'http://www.inkscape.org/namespaces/inkscape', r'sodipodi': r'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'}
+INKSCAPE_NAMESPACES: dict = {r'inkscape': r'http://www.inkscape.org/namespaces/inkscape', r'sodipodi': r'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'}  # type: ignore
 SVG_SIZE = rgxcompile(r'^\s*(-?\d+(?:\.\d+)?)\s*(px|in|cm|mm|pt|pc|%)?')
 SVG_VIEWBOX_SEP = rgxcompile(r'[ ,\t]+')
-NO_QUOTES = 0
-SINGLE_QUOTE = 1
-DOUBLE_QUOTE = 2
-FILETYPE_HTML = 0
-FILETYPE_XML = 1
-FILETYPE_MATHML = 2
-FILETYPE_SVG = 3
-FILETYPE_DTD = 4
-FILETYPE_XSD = 5
+NO_QUOTES: int = 0
+SINGLE_QUOTE: int = 1
+DOUBLE_QUOTE: int = 2
+FILETYPE_HTML: int = 0
+FILETYPE_XML: int = 1
+FILETYPE_MATHML: int = 2
+FILETYPE_SVG: int = 3
+FILETYPE_DTD: int = 4
+FILETYPE_XSD: int = 5
 LEADING_SURROGATE = rgxcompile(r'[\ud800-\udbff]')
 TRAILING_SURROGATE = rgxcompile(r'[\udc00-\udfff]')
 LOCATESTARTTAGEND_TOLERANT = rgxcompile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', VERBOSE)
@@ -195,22 +195,22 @@ TAGFIND_TOLERANT = rgxcompile(r'([A-Za-z][^\t\n\r\f />\x00]*)(?:\s|/(?!>))*')
 TAGS_WITH_MIMETYPES = (r'embed', r'object', r'script', r'source', r'style')
 WHITESPACE_IN_CHARREF = rgxcompile(r'[\s;]')
 XML_DECLARATION = rgxcompile(r'<\?xml\s*[\w"\'=\-\. \t]*\s*\?>')
-CDATA_CONTENT_ELEMENTS = {r'script', r'style'}
-PRE_TAGS = (r'pre', r'textarea')
-ROOT_TAGS = {r'html', r'math', r'svg', r'x3d'}
-XML_ROOT_TAGS = {r'interface', r'math', r'mime-info', r'svg', r'x3d'}
-JUNK_ATTR = {r'xmlns:a', r'xmlns:cc', r'xmlns:cib', r'xmlns:dc', r'xmlns:inkscape', r'xmlns:osb' r'xmlns:ns1', r'xmlns:rdf', r'xmlns:sodipodi'}
-JUNK_NS = {r'cc:', r'cib:', r'dc:', r'inkscape:', r'osb:', r'rdf:', r'sodipodi:'}
-CC_NO_CLOSE_TAGS = {r'cc:license', r'cc:permits', r'cc:requires'}
-DC_NO_CLOSE_TAGS = {r'dc:type'}
-HTML_NO_CLOSE_TAGS = {r'area', r'base', r'br', r'col', r'command', r'embed', r'hr', r'img', r'input', r'keygen', r'link', r'meta', r'param', r'source', r'track', r'wbr'}  # Tags that self-opening/closing
-MIMETYPE_NO_CLOSE_TAGS = {r'alias', r'generic-icon', r'glob', r'match', r'sub-class-of'}  # Tags that self-opening/closing
-SVG_NO_CLOSE_TAGS = {r'animate', r'audio', r'animateColor', r'animateMotion', r'animateTransform', r'br', r'circle', r'ellipse', r'embed', r'feBlend', r'feColorMatrix', r'feComposite', r'feDistantLight', r'feFuncA', r'feFuncB', r'feFuncG', r'feFuncR', r'feGaussianBlur', r'feImage', r'feMergeNode', r'feMorphology', r'feOffset', r'fePointLight', r'flowPara', r'image', r'line', r'meta', r'path', r'polygon', r'polyline', r'rect', r'set', r'stop', r'use', r'video'}  # Tags that self-opening/closing
-SVG_MAY_CLOSE_TAGS = {r'g', r'linearGradient', r'radialGradient'}  # Tags that are sometimes self-opening/closing
-USELESS_SVG_TAGS = {r'comment', r'desc', r'flowRoot', r'title'}
+CDATA_CONTENT_ELEMENTS: set = {r'script', r'style'}
+PRE_TAGS: tuple = (r'pre', r'textarea')
+ROOT_TAGS: set = {r'html', r'math', r'svg', r'x3d'}
+XML_ROOT_TAGS: set = {r'interface', r'math', r'mime-info', r'svg', r'x3d'}
+JUNK_ATTR: set = {r'xmlns:a', r'xmlns:cc', r'xmlns:cib', r'xmlns:dc', r'xmlns:inkscape', r'xmlns:osb' r'xmlns:ns1', r'xmlns:rdf', r'xmlns:sodipodi'}
+JUNK_NS: set = {r'cc:', r'cib:', r'dc:', r'inkscape:', r'osb:', r'rdf:', r'sodipodi:'}
+CC_NO_CLOSE_TAGS: set = {r'cc:license', r'cc:permits', r'cc:requires'}
+DC_NO_CLOSE_TAGS: set = {r'dc:type'}
+HTML_NO_CLOSE_TAGS: set = {r'area', r'base', r'br', r'col', r'command', r'embed', r'hr', r'img', r'input', r'keygen', r'link', r'meta', r'param', r'source', r'track', r'wbr'}  # Tags that self-opening/closing
+MIMETYPE_NO_CLOSE_TAGS: set = {r'alias', r'generic-icon', r'glob', r'match', r'sub-class-of'}  # Tags that self-opening/closing
+SVG_NO_CLOSE_TAGS: set = {r'animate', r'audio', r'animateColor', r'animateMotion', r'animateTransform', r'br', r'circle', r'ellipse', r'embed', r'feBlend', r'feColorMatrix', r'feComposite', r'feDistantLight', r'feFuncA', r'feFuncB', r'feFuncG', r'feFuncR', r'feGaussianBlur', r'feImage', r'feMergeNode', r'feMorphology', r'feOffset', r'fePointLight', r'flowPara', r'image', r'line', r'meta', r'path', r'polygon', r'polyline', r'rect', r'set', r'stop', r'use', r'video'}  # Tags that self-opening/closing
+SVG_MAY_CLOSE_TAGS: set = {r'g', r'linearGradient', r'radialGradient'}  # Tags that are sometimes self-opening/closing
+USELESS_SVG_TAGS: set = {r'comment', r'desc', r'flowRoot', r'title'}
 
 
-BOOLEAN_ATTRIBUTES = {
+BOOLEAN_ATTRIBUTES: dict = {  # type: ignore
     r'audio': (r'autoplay', r'controls', r'loop', r'muted'),
     r'button': (r'autofocus', r'disabled', r'formnovalidate'),
     r'command': (r'checked', r'disabled'),
@@ -235,7 +235,7 @@ BOOLEAN_ATTRIBUTES = {
 }
 
 
-TAG_SETS = (  # Tuple of tags and their respective closing tags
+TAG_SETS: tuple = (  # Tuple of tags and their respective closing tags
     ((r'li'), (r'li')),
     ((r'dd', r'dt'), (r'dd', r'dt')),
     ((r'rp', r'rt'), (r'rp', r'rt')),
@@ -250,7 +250,7 @@ TAG_SETS = (  # Tuple of tags and their respective closing tags
 )
 
 
-XML_DOCTYPES = {
+XML_DOCTYPES: dict = {  # type: ignore
     r'FREEDESKTOP_DBUS_INTROSPECTION': r'<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">',
     r'GENTOO_PKGMETADATA': r'<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">',
     r'HTML5': r'<!DOCTYPE HTML>',
@@ -283,7 +283,7 @@ XML_DOCTYPES = {
 }
 
 
-XML_NAMESPACES = {
+XML_NAMESPACES: dict = {
     r'ADOBE_CUSTOM': r'http://ns.adobe.com/GenericCustomNamespace/1.0/',
     r'ADOBE_EXTENSIBILITY': r'http://ns.adobe.com/Extensibility/1.0/',
     r'ADOBE_FLOWS': r'http://ns.adobe.com/Flows/1.0/',
@@ -312,7 +312,7 @@ XML_NAMESPACES = {
 }
 
 
-SVG_COLORS = {
+SVG_COLORS: dict = {  # type: ignore
     r'aliceblue': r'rgb(240, 248, 255)',
     r'antiquewhite': r'rgb(250, 235, 215)',
     r'aqua': r'rgb(0, 255, 255)',
@@ -466,7 +466,7 @@ SVG_COLORS = {
 SVG_UNIT = (r'em', r'ex', r'px', r'in', r'cm', r'mm', r'pt', r'pc', r'%')
 
 
-SVG_UNIT_CONVERSIONS = {
+SVG_UNIT_CONVERSIONS: dict = {  # type: ignore
     None: 1.0,  # Default unit (same as pixel)
     r'px': 1.0,  # Pixel; Default SVG unit
     r'em': 1.328352013,  # Pixels per width of the letter `m`
@@ -480,7 +480,7 @@ SVG_UNIT_CONVERSIONS = {
 }
 
 
-SVG_STYLES = (
+SVG_STYLES: tuple = (
     r'alignment-baseline',
     r'baseline-shift',
     r'clip-path',
@@ -534,7 +534,7 @@ SVG_STYLES = (
 )
 
 
-SVG_TINY_STYLES = (
+SVG_TINY_STYLES: tuple = (
     r'audio-level',
     r'buffered-rendering',
     r'display-align',
@@ -548,7 +548,7 @@ SVG_TINY_STYLES = (
 )
 
 
-SVG_POSITION_ATTR = {
+SVG_POSITION_ATTR: dict = {  # type: ignore
     r'circle': (r'cx', r'cy'),
     r'ellipse': (r'cx', r'cy'),
     r'line': (r'x1', r'y1', r'x2', r'y2'),
@@ -557,10 +557,10 @@ SVG_POSITION_ATTR = {
 }
 
 
-SVG_SCALING_ATTR = {r'rect': (r'x', r'y', r'width', r'height')}
+SVG_SCALING_ATTR: dict = {r'rect': (r'x', r'y', r'width', r'height')}  # type: ignore
 
 
-MIMETYPE_CORRECTIONS = (
+MIMETYPE_CORRECTIONS: tuple = (
     # (Incorrect, Correct)
     (r'application/xml+xhtml', r'application/xhtml+xml'),
     (r'image/svg-xml', r'image/svg+xml'),
@@ -598,20 +598,18 @@ def is_in_tagstack(tag: str, _tag_stack: list) -> bool:
 
 def is_removable_metadata_attr(remove_metadata: int, attr: str) -> bool:
     """Determine if the given data is a removable metadata attribute"""
-    if remove_metadata < 2:
+    if remove_metadata < 2:  # pylint: disable=R1705
         return False
-    elif r'xmlns:' in attr:  # XMLNS attribute
-        if attr in JUNK_ATTR:
-            return True
-    elif r':' in attr:  # Namespace attribute
-        if attr.split(r':')[0] + r':' in JUNK_NS:
-            return True
+    elif r'xmlns:' in attr and attr in JUNK_ATTR:  # XMLNS attribute
+        return True
+    elif r':' in attr and r'xmlns:' not in attr and attr.split(r':')[0] + r':' in JUNK_NS:  # Namespace attribute
+        return True
     return False
 
 
 def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = False, remove_metadata: int = 2) -> bool:
     """Determine if the given data is a removable metadata tag"""
-    if tag == r'namedview':
+    if tag == r'namedview':  # pylint: disable=R1705
         return True
     elif remove_metadata < 1:
         return False
@@ -619,15 +617,14 @@ def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = Fals
         return True
     elif remove_metadata > 0 and doc_type == FILETYPE_SVG and tag in {r'desc', r'title'}:
         return True
-    elif remove_metadata == 2 and r':' in tag:  # Namespace tags
-        if tag.split(r':')[0] + r':' in JUNK_NS:
-            return True
+    elif remove_metadata == 2 and r':' in tag and tag.split(r':')[0] + r':' in JUNK_NS:  # Namespace tags
+        return True
     return False
 
 
 def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:
     """Test if the given tag is a self-closing tag for the given XML document type"""
-    if _tag in CC_NO_CLOSE_TAGS or _tag in DC_NO_CLOSE_TAGS:
+    if _tag in CC_NO_CLOSE_TAGS or _tag in DC_NO_CLOSE_TAGS:  # pylint: disable=R1705
         return True
     elif _doc_type == FILETYPE_SVG or is_in_tagstack(r'svg', _tag_stack):  # SVG
         if _tag in SVG_NO_CLOSE_TAGS:
@@ -729,7 +726,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disabl
             amp_buff = []
         elif state == 2:  # Numeric character reference
             ord_c = ord(char)
-            if char == r'x' or char == r'X':
+            if char in (r'x', r'X'):
                 state = 3
                 continue
             elif 48 <= ord_c <= 57:
@@ -811,7 +808,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disabl
 def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
     """Escape attribute values"""
     val = escape_ambiguous_ampersand(val)
-    if double_quote:
+    if double_quote:  # pylint: disable=R1705
         return (val.replace(r'"', r'&#34;'), DOUBLE_QUOTE)
     elif r'"' in val:
         if '\'' in val:
@@ -900,7 +897,7 @@ def int2refnum(_int: int) -> str:
 
 def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
     """Parse value as SVG length and returns the value in pixels (or a negative scale: -1 = 100%)"""
-    if not value:
+    if not value:  # pylint: disable=R1705
         return 0.0
     elif not isinstance(value, str):
         raise Exception(r'Invalid datatype for `value` in `parse_svg_size()`!')
@@ -909,7 +906,7 @@ def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
         raise Exception(r'Unknown length format: "{}"'.format(value))
     num = float(parts.group(1))
     units = parts.group(2) or def_units
-    if units == r'px':
+    if units == r'px':  # pylint: disable=R1705
         return float(num)
     elif units == r'pt':
         return num * 1.25
@@ -1105,7 +1102,7 @@ def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple
         _val = _val.replace(r' ', r'')
     if _attr == r'encoding':  # Normalize encoding attribute
         return (_attr, _val.upper())
-    elif _attr == r'xmlns:xlink':  # Fix any invalid XLink Namespaces
+    elif _attr == r'xmlns:xlink':  # Correct any invalid XLink Namespaces
         return (_attr, r'http://www.w3.org/1999/xlink')
     elif _attr == r'type' and _tag in TAGS_WITH_MIMETYPES:  # Correct mimetypes
         for mime_correct in MIMETYPE_CORRECTIONS:
@@ -1290,7 +1287,7 @@ class ParserBase:
         if rawdata[i:i + 3] != r'<![':
             raise Exception(r'Unexpected call to parse_marked_section()')
         sectname, j = self._scan_name(i + 3, i)
-        if j < 0:
+        if j < 0:  # pylint: disable=R1705
             return j
         elif sectname in {r'cdata', r'ignore', r'include', r'rcdata', r'temp'}:
             _match = MARKEDSECTIONCLOSE.search(rawdata, i + 3)  # Look for standard ]]> ending
@@ -1311,7 +1308,7 @@ class ParserBase:
         if rawdata[i:i + 4] != r'<!--':
             self.error(r'Unexpected call to parse_comment()')
         match = COMMENTCLOSE.search(rawdata, i + 4)
-        if not match:
+        if not match:  # pylint: disable=R1705
             return -1
         elif report:
             j = match.start(0)
@@ -1325,7 +1322,7 @@ class ParserBase:
         j = i
         while j < length:
             char = rawdata[j]
-            if char == r'<':
+            if char == r'<':  # pylint: disable=R1705
                 _str = rawdata[j:j + 2]
                 if _str == r'<':  # End of buffer; incomplete
                     return -1
@@ -1508,10 +1505,9 @@ class ParserBase:
             if (i + len(_str)) == length:
                 return (None, -1)  # End of buffer
             return (name.lower(), _match.end())
-        else:
-            self.updatepos(declstartpos, i)
-            self.error(r'Expected name token at {}'.format(rawdata[declstartpos:declstartpos + 20]))
-            return (None, -2)
+        self.updatepos(declstartpos, i)
+        self.error(r'Expected name token at {}'.format(rawdata[declstartpos:declstartpos + 20]))
+        return (None, -2)
 
     def unknown_decl(self, data: str) -> None:
         """Provide an overridable handler for unknown objects"""
@@ -1794,10 +1790,10 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         if _match:
             j = _match.end()
             _next = rawdata[j:j + 1]
-            if _next == r'>':
+            if _next == r'>':  # pylint: disable=R1705
                 return j + 1
             elif _next == r'/':
-                if rawdata.startswith(r'/>', j):
+                if rawdata.startswith(r'/>', j):  # pylint: disable=R1705
                     return j + 2
                 elif rawdata.startswith(r'/', j):  # Buffer boundary
                     return -1
@@ -2060,7 +2056,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
 
     def insert_doctype_tag(self, decl: str = r'') -> None:
         """Insert the DOCTYPE tag"""
-        if self._after_doctype:
+        if self._after_doctype:  # pylint: disable=R1705
             return
         elif self.doc_type == FILETYPE_HTML:
             self._data_buffer.append(XML_DOCTYPES.get(r'HTML5'))
@@ -2105,7 +2101,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
 
     def build_tag(self, tag: str, attrs: list, close_tag: bool) -> str:  # noqa: C901  # pylint: disable=R0912,R0915
         """Create an XML/HTML tag"""
-        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
+        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):  # pylint: disable=R1705
             return r''
         elif self.doc_type == FILETYPE_SVG and close_tag and tag in {r'comment', r'defs', r'g'}:
             return r''
@@ -2296,7 +2292,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
     def handle_startendtag(self, tag: str, attrs: list, closing_type: int = -1) -> None:
         """Process XHTML-style empty tags (such as `<br/>`)"""
         self._after_doctype = False
-        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
+        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):  # pylint: disable=R1705
             return
         elif not self.keep_pre:
             attrs = [(k, v) for k, v in attrs if k != r'pre']
@@ -2310,7 +2306,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._after_doctype = False
         if not self._doctype_inserted:
             self.insert_doctype_tag()  # Insert DOCTYPE tag if it is missing
-        if self.remove_metadata > 0 and tag == r'metadata':
+        if self.remove_metadata > 0 and tag == r'metadata':  # pylint: disable=R1705
             self._in_metadata = True
             return
         elif self.doc_type == FILETYPE_SVG and self.remove_metadata > 0 and tag in USELESS_SVG_TAGS:
