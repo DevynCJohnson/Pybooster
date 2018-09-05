@@ -70,7 +70,7 @@ C
 -
 
 - Use C Standard-2011 (C11) or newer
-- Files must use tab-indentation, Unix-newlines (`\n`), and UTF-8
+- Files must use tab-indentation, line-feeds (Unix newlines - `\n`), and UTF-8
 - Indentation is one tab per level
 - Use Doxygen for documentation [http://www.stack.nl/~dimitri/doxygen/manual/config.html](http://www.stack.nl/~dimitri/doxygen/manual/config.html)
 - The Doxygen comments must use the Javadoc format (i.e. `@keyword`)
@@ -81,7 +81,7 @@ Changelog
 ---------
 
 - Dates must use the format `YYYY-MM-DD`
-- Changelogs must use tab-indentation, Unix-newlines (`\n`), and UTF-8
+- Changelogs must use tab-indentation, line-feeds (Unix newlines - `\n`), and UTF-8
 - Do not use form-feeds, vertical-tabs, carriage-returns, nor double/multi-line blank lines
 - All changes by the same author on the same date are listed under the same non-indented header
 - Do not place multiple authors and/or change dates under the same change-header
@@ -109,6 +109,7 @@ CoffeeScript
 ------------
 
 - Indentation is two-spaces per level
+- Newlines must be line-feeds (Unix newlines - `\n`) never carriage-returns
 - Always put spaces around operators and after commas
 - Always end a simple statement with a semicolon
 - Type global variable names in all uppercase
@@ -118,7 +119,7 @@ CoffeeScript
 Config Files (INI)
 ------------------
 
-- Files must use space-indentation (4-width), Unix-newlines (`\n`), and UTF-8
+- Files must use space-indentation (4-width), line-feeds (Unix newlines - `\n`), and UTF-8
 - One blank line preceeds the section headers (unless the section header is at the beginning of the file)
 - Two blank lines follow the file header (if any is present)
 - The assignment operator (equal sign) must not be padded on either side with whitespace
@@ -140,7 +141,7 @@ HTML
 
 - The document is encoded in UTF-8
 - Indentation is two-spaces per level (except for minified code)
-- Newlines must be line-feeds, never carriage-returns
+- Newlines must be line-feeds (Unix newlines - `\n`), never carriage-returns
 - A `DOCTYPE` tag must be the first line of the file and `DOCTYPE` must be uppercased
 - Always include `<meta content="application/xhtml+xml; charset=utf-8" http-equiv="Content-Type"/>`
 - Always include `<meta content="width=device-width, initial-scale=1.0" name="viewport"/>`
@@ -170,6 +171,7 @@ JavaScript
 ----------
 
 - Indentation is two-spaces per level (except for minified code)
+- Newlines must be line-feeds (Unix newlines - `\n`) never carriage-returns
 - Use Doxygen for documentation [http://www.stack.nl/~dimitri/doxygen/manual/config.html](http://www.stack.nl/~dimitri/doxygen/manual/config.html)
 - The Doxygen comments must use the Javadoc format (i.e. `@keyword`)
 - Always put spaces around operators and after commas
@@ -184,7 +186,7 @@ JavaScript
 Markdown
 --------
 
-- Use four spaces per indentation level, Unix-newlines (`\n`), and UTF-8
+- Use four spaces per indentation level, line-feeds (Unix newlines - `\n`), and UTF-8
 - For bold text, use double-asterisks
 - For italic text, use underscores
 
@@ -193,10 +195,13 @@ Python
 ------
 
 - Use Python3.6 or newer
-- Indentation is four-spaces per level
+- Use four spaces per indentation level, line-feeds (Unix newlines - `\n`), and UTF-8
 - Use Doxygen for documentation [http://www.stack.nl/~dimitri/doxygen/manual/config.html](http://www.stack.nl/~dimitri/doxygen/manual/config.html)
 - The Doxygen comments must use the javadoc format (i.e. `@keyword`)
-- Unused variables must begin with one underscore (i.e. `_var`)
+- Unused variables and private variables must begin with one underscore (i.e. `_var`)
+- Class names must use the "CapWords" naming convention (no underscores)
+- Method aattributes must use the snake_case naming convention
+- Models in Django must use names that are singular
 - Check the code using `pycodestyle`, `pylint`, `pytest`, and `flake8`
     - Install, execute `pip3 install --upgrade astkit astroid flake8 mccabe pycodestyle pylint pytest`
 - Follow the below listed PEP Standards
@@ -214,7 +219,9 @@ Python
     - **PEP3107 (Function Annotations)** - [https://www.python.org/dev/peps/pep-3107/](https://www.python.org/dev/peps/pep-3107/)
 - Do not follow the below listed PEP Standards
     - **PEP287 (reStructuredText Docstring Format)** - [https://www.python.org/dev/peps/pep-0287/](https://www.python.org/dev/peps/pep-0287/)
+- To make Flake8 ignore a particular line, use `  # noqa: CODE` at the end of the line
 - To make MyPy ignore a particular line, use `  # type: ignore` at the end of the line
+- To make PyLint ignore a particular line, use `  # pylint: disable=CODE` at the end of the line
 
 
 RelaxNG
@@ -228,7 +235,7 @@ RelaxNG
 ReStructuredText
 ----------------
 
-- Use four spaces per indentation level, Unix-newlines (`\n`), and UTF-8
+- Use four spaces per indentation level, line-feeds (Unix newlines - `\n`), and UTF-8
 
 
 Shell Script
@@ -237,8 +244,18 @@ Shell Script
 - If Posix Shell, do not use extensions (remain Posix compliant)
 - If Bash Shell, try to avoid extensions
 - Comments used to describe the use/purpose of a shell must be on the line preceding the function declaration
-- Use four spaces per indentation level
+- Use four spaces per indentation level, line-feeds (Unix newlines - `\n`), and UTF-8
 - Use one space between redirections and the file (For instance, use `2> /dev/null` **not** `2>/dev/null`)
+
+
+SQL
+---
+
+- Use four spaces per indentation level, line-feeds (Unix newlines - `\n`), and UTF-8
+- A single space must be on each side of mathematical operators (especially in expressions & predicates)
+- Datatypes & major commands (i.e. `UPDATE` & `SELECT`) must be in all capital letter
+- Table names & column names should use snake_case or UpperCamelCase (unless not permitted by the SQL implementation)
+- Statements must end in a semicolon without a space on either side of the semicolon
 
 
 SVG
@@ -254,7 +271,7 @@ XML
 
 - The document is encoded in UTF-8
 - Indentation is two-spaces per level (except for minified code)
-- Newlines must be line-feeds (Unix newlines), never carriage-returns
+- Newlines must be line-feeds (Unix newlines - `\n`) never carriage-returns
 - The XML declaration is the first line of the file
 - The XML declaration must include version, encoding, and standalone (in that order)
 - `DOCTYPE` must be uppercased (if a `DOCTYPE` is used)

@@ -51,7 +51,7 @@ override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
-override LIST_DEV_DEPS::=binwalk bsdiff cccc chktri complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade kwstyle ltrace pmccabe pscan shc splint strace undertaker vbindiff
+override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade kwstyle ltrace pmccabe pscan shc splint strace undertaker vbindiff
 
 # Parameters
 override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
@@ -113,7 +113,7 @@ help :
 	printf '%s\n%s\n' 'Install /usr/bin Utils:' '    sudo make install_programs'
 	printf '%s\n%s\n' 'Install Additional Mimetypes:' '    sudo make install_mimetype_booster'
 	printf '%s\n%s\n' 'Install C Libraries:' '    sudo make install_clib'
-	printf '%s\n%s\n' 'Install Enhanced XCompose File:' '    sudo make install_xcompose'
+	printf '%s\n%s\n' 'Install Enhanced XCompose File:' '    make install_xcompose'
 	printf '%s\n%s\n' 'Install Language Specification Files:' '    sudo make install_langspecs'
 	printf '%s\n%s\n' 'Install Opticons:' '    sudo make install_opticons'
 	printf '%s\n%s\n' 'Install Python Eggs:' '    sudo make install_pyeggs'

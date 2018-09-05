@@ -1,7 +1,12 @@
 2018-09-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Coding_Standards.md:  Added additional coding rules
+
+2018-09-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
 	* flake8_optimal.py:  Added the "TESTING" todo note for the scanner to find (T000)
 	* PyBooster:  Added todo-scanner
+	* PyBooster:  Applied PEP484 (type hints) in additional locations.
 
 2018-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
