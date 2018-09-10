@@ -199,5 +199,5 @@ fi
 # LOAD SHELL RC MODULES #
 
 
-[ -d /etc/shell_ext_modules ] && [ -r /etc/shell_ext_modules ] && . /etc/shell_ext_modules/*
-[ ! -r /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ] && [ -r "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules/*"
+[ -d /etc/shell_ext_modules ] && . /etc/shell_ext_modules/*
+[ ! -d /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules/*"

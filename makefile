@@ -611,6 +611,7 @@ install_shrc :
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
 	$(LN) /etc/profile /etc/bash.bashrc
 	$(CPDIR) $(ACCDIR)/shell_ext_modules /etc/shell_ext_modules
+	$(CHMOD) 755 /etc/shell_ext_modules
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='

@@ -1,3 +1,7 @@
+2018-09-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Fixed shell extension modules installation bug
+
 2018-09-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* filetypes.css:  Added additional browser prefixes
