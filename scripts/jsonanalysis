@@ -29,21 +29,21 @@ for file in "$@"; do
 
     if [ -x "$(command -v jsonlint-php)" ]; then
         printf '======  *JSONLINT*  ======\n'
-        jsonlint-php "$file"
+        jsonlint-php "$file" | awk '{ OFS=""; gsub(/^Valid JSON .+$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'jsonlint-php: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v json_verify)" ]; then
         printf '======  *JSON_VERIFY*  ======\n'
-        json_verify -c < "$file"
+        json_verify -c < "$file" | awk '{ OFS=""; gsub(/^JSON is valid$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'json_verify: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v jsonlint-py3)" ]; then
         printf '======  *JSONLINT-PY3*  ======\n'
-        jsonlint-py3 --strict "$file"
+        jsonlint-py3 --strict "$file" | awk '{ OFS=""; gsub(/^.+: ok$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'jsonlint-py3: command not found!\n' >&2
     fi
