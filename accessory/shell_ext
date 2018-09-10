@@ -232,6 +232,7 @@ elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
         alias filesfrompkg='dpkg-query -L'
         alias pkglsinst='dpkg --list | grep ^i'
     fi
+    [ -x "$(command -v dpkg-query)" ] && alias pkgfind='dpkg-query --list'
 elif [ -d /etc/dnf ] && [ -x "$(command -v dnf)" ]; then  # Fedora DNF
     cleanrepocache() { sudo dnf clean all; }
     clrpkg() { sudo dnf autoremove; }

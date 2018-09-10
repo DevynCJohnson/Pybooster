@@ -609,12 +609,14 @@ install_shrc :
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
 	$(LN) /etc/profile /etc/bash.bashrc
+	$(CPDIR) $(ACCDIR)/shell_ext_modules /etc/shell_ext_modules
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='
 	$(RM) /etc/bash.bashrc /etc/profile /etc/shell_ext
 	$(MOVE) /etc/bash.bashrc.backup /etc/bash.bashrc
 	$(MOVE) /etc/profile.backup /etc/profile
+	$(RMDIR) /etc/shell_ext_modules
 
 install_themes : install_loginopticons install_opticons
 

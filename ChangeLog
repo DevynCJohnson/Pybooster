@@ -2,6 +2,7 @@
 
 	* filetypes.css:  Added additional browser prefixes
 	* makefile:  Added some missing dependencies
+	* PyBooster:  Added shell extension modules
 	* snippets.conf:  Added additional code snippets
 
 2018-09-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

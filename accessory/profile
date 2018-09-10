@@ -194,3 +194,10 @@ fi
 [ -n "${TERM_PROGRAM:-}" ] && [ -n "${BASH:-}" ] && [ -r "/etc/bashrc_${TERM_PROGRAM}" ] && . "/etc/bashrc_${TERM_PROGRAM}"
 [ -r /etc/shell_ext ] && . /etc/shell_ext
 [ ! -r /etc/shell_ext ] && [ -n "${BASH_SOURCE:-}" ] && [ -r "$(dirname "${BASH_SOURCE[0]}")/shell_ext" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext"
+
+
+# LOAD SHELL RC MODULES #
+
+
+[ -d /etc/shell_ext_modules ] && [ -r /etc/shell_ext_modules ] && . /etc/shell_ext_modules/*
+[ ! -r /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ] && [ -r "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules/*"
