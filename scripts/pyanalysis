@@ -53,6 +53,9 @@ for file in "$@"; do
     hashpling="$(head -1 "$file")"
     echo "$hashpling" | grep -v -E -e '#!/.+python[0-9\.]*' > /dev/null && printf '%s: The specified file is not a Python script!\n' "$file" >&2 && continue
 
+    ispy2=0
+    echo "$hashpling" | grep -q -E -e '#!/.+python2.*' && ispy2=1
+
     if [ -x "$(command -v flake8)" ]; then
         printf '======  *FLAKE8*  ======\n'
         flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
@@ -60,11 +63,20 @@ for file in "$@"; do
         printf 'flake8: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v pyflakes3)" ]; then
-        printf '======  *PYFLAKES*  ======\n'
-        pyflakes3 "$file" | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pyflakes3: command not found!\n' >&2
+    if [ "$ispy2" -eq 1 ]; then
+        if [ -x "$(command -v pyflakes2)" ]; then
+            printf '======  *PYFLAKES2*  ======\n'
+            pyflakes2 "$file" | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'pyflakes2: command not found!\n' >&2
+        fi
+    else
+        if [ -x "$(command -v pyflakes3)" ]; then
+            printf '======  *PYFLAKES*  ======\n'
+            pyflakes3 "$file" | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'pyflakes3: command not found!\n' >&2
+        fi
     fi
 
     if [ -x "$(command -v pycodestyle)" ]; then
@@ -77,11 +89,20 @@ for file in "$@"; do
         printf 'pycodestyle (formerly pep8): command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v pylint3)" ]; then
-        printf '======  *PYLINT*  ======\n'
-        pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pylint3: command not found!\n' >&2
+    if [ "$ispy2" -eq 1 ]; then
+        if [ -x "$(command -v pylint2)" ]; then
+            printf '======  *PYLINT2*  ======\n'
+            pylint2 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'pylint2: command not found!\n' >&2
+        fi
+    else
+        if [ -x "$(command -v pylint3)" ]; then
+            printf '======  *PYLINT*  ======\n'
+            pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'pylint3: command not found!\n' >&2
+        fi
     fi
 
     if [ -x "$(command -v py_directive_checker)" ]; then
@@ -120,7 +141,11 @@ for file in "$@"; do
     fi
 
     printf '======  *PYTHON DOCTEST*  ======\n'
-    python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk '{ gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+    if [ "$ispy2" -eq 1 ]; then
+        python2 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk '{ gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+    else
+        python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk '{ gsub(/^Unable to init server.*/, ""); print $0; }' | awk NF
+    fi
 
     if [ -x "$(command -v code-analysis)" ]; then
         code-analysis "$file"

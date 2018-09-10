@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-# EASY-INSTALL-ENTRY-SCRIPT: "pylint>=1.8.3","console_scripts","pylint"
-"""@brief Wrapper for Pylint3
+"""@brief Wrapper for Pyflakes
 
-@file pylint3
-@version 2018.08.31
+@file pyflakes2
+@version 2018.09.09
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
@@ -15,9 +14,9 @@
 from re import sub
 from sys import argv
 
-from pylint import run_pylint
+from pyflakes.api import main
 
 
 if __name__ == '__main__':
     argv[0] = sub(r'(-script\.pyw?|\.exe)?$', r'', argv[0])
-    raise SystemExit(run_pylint())
+    raise SystemExit(main())

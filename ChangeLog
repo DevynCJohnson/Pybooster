@@ -2,7 +2,9 @@
 
 	* filetypes.css:  Added additional browser prefixes
 	* makefile:  Added some missing dependencies
+	* pyanalysis:  Added support for Python2
 	* PyBooster:  Added shell extension modules
+	* PyBooster:  Added pylint2 & pyflakes2
 	* snippets.conf:  Added additional code snippets
 
 2018-09-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

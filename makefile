@@ -47,7 +47,7 @@ override LIST_MATH_PROGRAMS::=cos fib isprime sin tan
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk file-analysis flake8 goanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes3 pyinspect pylint3 pytest3 shanalysis systracer timeit timex transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk file-analysis flake8 goanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 shanalysis systracer timeit timex transpile xmlanalysis yamlanalysis
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
@@ -594,13 +594,14 @@ install_scripts : $(PYBDIR)/__init__.py
 	$(COPY) $(INSTALLBINDIR)/pyflakes3 /usr/bin/pyflakes
 	$(COPY) $(INSTALLBINDIR)/pylint3 /usr/bin/pylint
 	$(COPY) $(INSTALLBINDIR)/pylint3 /usr/local/bin/pylint
+	$(COPY) $(INSTALLBINDIR)/pylint2 /usr/local/bin/pylint2
 	$(COPY) $(INSTALLBINDIR)/pep8 /usr/local/bin/pep8
 	$(COPY) $(INSTALLBINDIR)/pep8 /usr/local/bin/pycodestyle
 
 uninstall_scripts :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Scripts ==='
 	$(RM) $(addprefix $(INSTALLBINDIR)/, $(LIST_SCRIPT_PROGRAMS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_DEV_SCRIPTS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_PYTHON_SCRIPTS))
-	$(RM) /usr/bin/pyflakes /usr/bin/pylint /usr/local/bin/pep8 /usr/local/bin/pycodestyle /usr/local/bin/pylint
+	$(RM) /usr/bin/pyflakes /usr/bin/pylint /usr/local/bin/pep8 /usr/local/bin/pycodestyle /usr/local/bin/pylint /usr/local/bin/pylint2
 
 install_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Shell Profiles ==='

@@ -47,23 +47,3 @@ alias iamlskeys='aws iam list-access-keys'
 
 
 fi
-
-
-# TODO: Implement the below comments
-#export AWS_ACCESS_KEY_ID=
-#export AWS_SECRET_ACCESS_KEY=
-#export AWS_SESSION_TOKEN=
-#export AWS_REGION='us-east-1'
-#export AWS_PROFILE=
-
-
-# AWS ENVIRONMENT VARIABLES #
-
-
-#AWS_BATCH_CE_NAME
-#AWS_BATCH_JOB_ARRAY_INDEX
-#AWS_BATCH_JOB_ATTEMPT
-#AWS_BATCH_JOB_ID
-#AWS_BATCH_JQ_NAME
-#AWS_EXECUTION_ENV
-#LAMBDA_RUNTIME_DIR
