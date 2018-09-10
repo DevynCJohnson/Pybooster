@@ -37,6 +37,8 @@ Help() {
     printf '%s\n' '--decomment    Remove comments from source code'
     printf '%s\n' '-h,--help      Display help info'
     printf '%s\n' '--js           The input file is JavaScript source code'
+    printf '%s\n' '--json         The input file is JSON code (beautify)'
+    printf '%s\n' '--jsonm        The input file is JSON code (minify)'
     printf '%s\n' '-p,--py        The input file is Python source code (uses autopep8 & docformatter)'
     printf '%s\n' '--svg          The input file is SVG source code (uses minifyxml & xmllint)'
     printf '%s\n' '-v,--version   Display version'
@@ -48,6 +50,7 @@ Help() {
     printf '%s\n' 'cssmin - Minify CSS'
     printf '%s\n' 'decomment - Remove comments from C/C++ source code'
     printf '%s\n' 'docformatter - Format Python documentation in source code'
+    printf '%s\n' 'json_reformat - Format JSON code'
     printf '%s\n' 'minifyxml - Minify, repair, and format XML code'
     printf '%s\n' 'rmccmt - Remove comments from C/C++ source code'
     printf '%s\n' 'untrigraph - Remove trigraphs from C source code'
@@ -60,7 +63,7 @@ rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
 # GETOPT #
 
 
-GOPT="$(getopt -o cf:hpv --long csrc,css,decomment,file:,js,py,script:,svg,version,help -- "$@")"
+GOPT="$(getopt -o cf:hpv --long csrc,css,decomment,file:,js,json,jsonm,py,script:,svg,version,help -- "$@")"
 eval set -- "$GOPT"
 
 _file=''
@@ -168,6 +171,34 @@ while true; do
                 mv -f "$TMP_NAME" "$_file"
             else
                 printf 'slimit: command not found!\n' >&2
+                exit 1
+            fi
+            exit 0
+        ;;
+        --json)  # The input file is JSON code
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v json_reformat)" ]; then
+                json_reformat < "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            else
+                printf 'json_reformat: command not found!\n' >&2
+                exit 1
+            fi
+            exit 0
+        ;;
+        --jsonm)  # The input file is JSON code
+            if [ -z "$_file" ]; then
+                printf "No file was specified using the '-f' flag!\n" >&2
+                exit 1
+            fi
+            if [ -x "$(command -v json_reformat)" ]; then
+                json_reformat -m < "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            else
+                printf 'json_reformat: command not found!\n' >&2
                 exit 1
             fi
             exit 0

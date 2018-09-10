@@ -1,6 +1,9 @@
 2018-09-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* filetypes.yaml:  Added yamlanalysis functionality
 	* makefile:  Fixed shell extension modules installation bug
+	* PyBooster:  Added jsonanalysis
+	* filetypes.JSON.conf:  Added jsonanalysis functionality
 
 2018-09-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
