@@ -1,3 +1,7 @@
+2018-09-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* docker_rc.sh:  Added aliases
+
 2018-09-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* filetypes.yaml:  Added yamlanalysis functionality
