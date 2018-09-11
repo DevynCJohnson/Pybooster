@@ -1,6 +1,7 @@
 2018-09-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* docker_rc.sh:  Added aliases
+	* makefile:  Fixed "fixperm" so that permissions are correctly applied to the Geany files
 
 2018-09-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

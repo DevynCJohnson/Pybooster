@@ -353,6 +353,7 @@ fixperm :
 	$(CHMOD) 644 $(INCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
 	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh
 	$(CHMOD) 755 $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py
+	find $(ACCDIR)/* -mount -type f -exec $(CHMOD) 644 '{}' +
 
 rmcache :
 	-@find . -mount -type d -name "__pycache__" -exec $(RMDIR) '{}' +

@@ -1,0 +1,29 @@
+{
+    "computeEnvironmentName": "",
+    "type": "MANAGED",
+    "state": "ENABLED",
+    "computeResources": {
+        "type": "SPOT",
+        "minvCpus": 0,
+        "maxvCpus": 0,
+        "desiredvCpus": 0,
+        "instanceTypes": [
+            ""
+        ],
+        "imageId": "",
+        "subnets": [
+            ""
+        ],
+        "securityGroupIds": [
+            ""
+        ],
+        "ec2KeyPair": "",
+        "instanceRole": "",
+        "tags": {
+            "KeyName": ""
+        },
+        "bidPercentage": 0,
+        "spotIamFleetRole": ""
+    },
+    "serviceRole": ""
+}

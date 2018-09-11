@@ -1,0 +1,36 @@
+{
+    "jobName": "",
+    "jobQueue": "",
+    "arrayProperties": {
+        "size": 0
+    },
+    "dependsOn": [
+        {
+            "jobId": "",
+            "type": "SEQUENTIAL"
+        }
+    ],
+    "jobDefinition": "",
+    "parameters": {
+        "KeyName": ""
+    },
+    "containerOverrides": {
+        "vcpus": 0,
+        "memory": 0,
+        "command": [
+            ""
+        ],
+        "environment": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ]
+    },
+    "retryStrategy": {
+        "attempts": 0
+    },
+    "timeout": {
+        "attemptDurationSeconds": 0
+    }
+}
