@@ -109,4 +109,5 @@ Also, refer to _[Coding_Standards.md](./Coding_Standards.md)_ (in this same dire
 - Adding New Code
     - When adding a new C program, add the rule to **makefile** under the appropriate _`## * PROGRAM RULES ##`_ header
     - When adding a new `*.py` file, add the name of the module to _```__all__```_ in **```__init__.py```** and _`makedoc`_ in **makefile**
+    - When adding programs, scripts, or libraries, you may need to add the filename to the appropriate list in **makefile** under `File Lists` when applicable
     - Commit and submit changes to the `dev` branch; the `master` branch is for stable releases only
