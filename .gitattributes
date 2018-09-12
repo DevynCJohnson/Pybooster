@@ -189,13 +189,13 @@ accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-lan
 accessory/geany/filedefs/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=INI linguist-vendored=false
 accessory/geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 accessory/geany/templates/* text eol=lf linguist-detectable=false linguist-generated=true linguist-language=Text linguist-vendored
-accessory/geany/templates/files/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=Text
-accessory/geany/templates/files/file.bat eol=crlf linguist-detectable=false linguist-generated=false linguist-language=Text
+accessory/geany/templates/files/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/templates/files/file.bat eol=crlf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/schemas/** linguist-detectable=false linguist-vendored
-accessory/schemas/*/*.dtd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
-accessory/schemas/*/*.rng text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
-accessory/schemas/*/*.xsd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/*/*.dtd text eol=lf linguist-vendored
+accessory/schemas/*/*.rng text eol=lf linguist-vendored
+accessory/schemas/*/*.xsd text eol=lf linguist-vendored
 
 
 # Documentation
