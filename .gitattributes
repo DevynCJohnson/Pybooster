@@ -1,16 +1,16 @@
 # Autotools
 
-aclocal.m4 linguist-generated=true linguist-vendored
+aclocal.m4 linguist-generated=true linguist-language=M4 linguist-vendored
 config.guess linguist-generated=true linguist-vendored
 config.sub linguist-generated=true linguist-vendored
 configure linguist-generated=true linguist-vendored
 configure.in linguist-generated=true linguist-vendored
 depcomp linguist-generated=true linguist-vendored
-libtool.m4 linguist-generated=true linguist-vendored
+libtool.m4 linguist-generated=true linguist-language=M4 linguist-vendored
 ltoptions.m4 linguist-generated=true linguist-vendored
-ltsugar.m4 linguist-generated=true linguist-vendored
-ltversion.m4 linguist-generated=true linguist-vendored
-lt~obsolete.m4 linguist-generated=true linguist-vendored
+ltsugar.m4 linguist-generated=true linguist-language=M4 linguist-vendored
+ltversion.m4 linguist-generated=true linguist-language=M4 linguist-vendored
+lt~obsolete.m4 linguist-generated=true linguist-language=M4 linguist-vendored
 Makefile.am linguist-generated=true linguist-vendored
 Makefile.in linguist-generated=true linguist-vendored
 missing linguist-generated=true linguist-vendored
@@ -34,10 +34,6 @@ icon-theme.cache binary linguist-generated=true linguist-vendored
 
 # Project Files
 
-accessory/schemas/** linguist-detectable=false linguist-vendored
-accessory/schemas/*.dtd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
-accessory/schemas/*.rng text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
-accessory/schemas/*.xsd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
 .editorconfig text eol=lf linguist-vendored
 .flake8 text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 .gitattributes text eol=lf linguist-vendored=false
@@ -54,6 +50,8 @@ pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-v
 .travis.yml text eol=lf linguist-language=YAML linguist-vendored=false
 .vscode text eol=crlf linguist-vendored
 Doxyfile text eol=lf linguist-vendored=false
+static/* linguist-vendored
+*/static/* linguist-vendored
 
 
 # Font Files
@@ -77,12 +75,7 @@ Doxyfile text eol=lf linguist-vendored=false
 
 # Programming Languages
 
-XKB/usx* text eol=lf linguist-language=Text linguist-vendored=false
-accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored
-accessory/geany/templates/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-accessory/geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-accessory/geany/templates/files/file.bat eol=crlf linguist-generated=true linguist-language=Text linguist-vendored
+*/XKB/usx* text eol=lf linguist-documentation=false linguist-language=Text linguist-vendored=false
 *.asm text eol=lf linguist-language=Assembly linguist-vendored=false
 *.s text eol=lf linguist-language=Assembly linguist-vendored=false
 *.S text eol=lf linguist-language=Assembly linguist-vendored=false
@@ -127,6 +120,7 @@ accessory/geany/templates/files/file.bat eol=crlf linguist-generated=true lingui
 *.xht text eol=lf linguist-language=HTML linguist-vendored=false
 *.xhtml text eol=lf linguist-language=HTML linguist-vendored=false
 *.cfg text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.conf text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.desktop text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
@@ -169,6 +163,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.scss text eol=lf linguist-language=SCSS linguist-vendored=false
 *.sh text eol=lf linguist-language=Shell linguist-vendored=false
 *.sql text eol=lf linguist-language=SQL linguist-vendored=false
+*.svg text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tags text eol=lf linguist-language=Text linguist-vendored=false
@@ -182,7 +177,7 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.lang text eol=lf linguist-language=XML linguist-vendored=false
 *.mathml text eol=lf linguist-language=XML linguist-vendored=false
 *.rng text eol=lf linguist-language=XML linguist-vendored=false
-*.svg text eol=lf linguist-documentation=false linguist-language=XML linguist-vendored=false
+*.xml text eol=lf linguist-language=XML linguist-vendored=false
 *.xsd text eol=lf linguist-language=XML linguist-vendored=false
 *.xsl text eol=lf linguist-language=XSLT linguist-vendored=false
 *.xslt text eol=lf linguist-language=XSLT linguist-vendored=false
@@ -190,11 +185,23 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yacc text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
+accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+accessory/geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
+accessory/geany/templates/* text eol=lf linguist-detectable=false linguist-generated=true linguist-language=Text linguist-vendored
+accessory/geany/templates/files/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/templates/files/file.bat eol=crlf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/schemas/** linguist-detectable=false linguist-vendored
+accessory/schemas/*/*.dtd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/*/*.rng text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/*/*.xsd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
 
 
 # Documentation
 
-doc/** linguist-detectable=false linguist-documentation
+[Dd]oc/** linguist-detectable=false linguist-documentation
+[Dd]ocumentation/** linguist-detectable=false linguist-documentation
 [Ee]xamples/** linguist-detectable=false linguist-documentation
 [Mm]an/** linguist-detectable=false linguist-documentation
 README.md text eol=lf linguist-language=Markdown linguist-documentation
@@ -220,3 +227,4 @@ README text eol=lf linguist-documentation
 README* text eol=lf linguist-documentation
 THANKS text eol=lf linguist-documentation
 TODO text eol=lf linguist-documentation
+gpl-3.0.txt text eol=lf linguist-documentation

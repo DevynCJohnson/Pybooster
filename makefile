@@ -47,7 +47,7 @@ override LIST_MATH_PROGRAMS::=cos fib isprime sin tan
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk file-analysis flake8 goanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 shanalysis systracer timeit timex transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter exewalk file-analysis flake8 goanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 shanalysis systracer timeit transpile xmlanalysis yamlanalysis
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
@@ -361,7 +361,8 @@ rmcache :
 rmtmp :
 	-@find . -mount -type f \( -name "*.o" -o -name "*.ast" -o -name "*.bc" -o -name "*.dump" -o -name "*.i" -o -name "*.ii" -o -name "*.ll" -o -name "*.original" -o -name "*.gch" -o -name "*.pch" -o -name "*.xkm" \) -delete
 	find . -mount -type d \( -name "metrics" \) -exec $(RMDIR) '{}' + 2> /dev/null
-	$(RM) $(BIN)/test_dev $(TESTINGDIR)/*
+	$(RM) $(BIN)/test_dev
+	$(RMDIR) $(TESTINGDIR)/*
 
 refresh : | cleanfull upver fixperm
 
@@ -430,9 +431,9 @@ syncmaster :
 	git checkout dev
 
 gitattr :
-	@git check-attr --all unspecified ./*
-	git check-attr --all unspecified ./*/*
-	git check-attr --all unspecified ./*/*/*
+	@git check-attr --all ./*
+	git check-attr --all ./*/*
+	git check-attr --all ./*/*/*
 
 gitignore :
 	@git check-ignore ./*
@@ -663,33 +664,43 @@ $(BIN)/tan : $(SRCDIR)/tan.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
 
+# BUILD PREP #
+
+
+$(BIN) :
+	([ ! -d $(BIN)/ ] && $(MKDIR) $(BIN)) || true
+
+$(TESTINGDIR) :
+	([ ! -d $(TESTINGDIR)/ ] && $(MKDIR) $(TESTINGDIR)) || true
+
+
 # UTILITY PROGRAM RULES #
 
 
-$(BIN)/getpgid : $(SRCDIR)/getpgid.c $(MACROSPATH)
+$(BIN)/getpgid : $(BIN) $(SRCDIR)/getpgid.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(BIN)/getsid : $(SRCDIR)/getsid.c $(MACROSPATH)
+$(BIN)/getsid : $(BIN) $(SRCDIR)/getsid.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(BIN)/microtime : $(SRCDIR)/microtime.c $(MACROSPATH)
+$(BIN)/microtime : $(BIN) $(SRCDIR)/microtime.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(BIN)/ostype : $(SRCDIR)/ostype.c $(MACROSPATH)
+$(BIN)/ostype : $(BIN) $(SRCDIR)/ostype.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_INTS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(BIN)/statvfs : $(SRCDIR)/statvfs.c $(MACROSPATH)
+$(BIN)/statvfs : $(BIN) $(SRCDIR)/statvfs.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF512 -DNO_SCAN_FLOATS -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(BIN)/typesize : $(SRCDIR)/typesize.c $(MACROSPATH)
+$(BIN)/typesize : $(BIN) $(SRCDIR)/typesize.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
 
 # TEST PROGRAM RULES #
 
 
-$(BIN)/test_dev : $(SRCDIR)/test_dev.c $(MACROSPATH)
+$(BIN)/test_dev : $(BIN) $(SRCDIR)/test_dev.c $(MACROSPATH)
 	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
 
-$(TESTINGDIR)/test_dev.s : $(SRCDIR)/test_dev.c $(MACROSPATH)
+$(TESTINGDIR)/test_dev.s : $(TESTINGDIR) $(SRCDIR)/test_dev.c $(MACROSPATH)
 	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(*F)\" $(MINEXE_PARAMS) -fverbose-asm -S $< -o $@
