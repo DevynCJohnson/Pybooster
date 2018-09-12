@@ -196,16 +196,16 @@ NUMBER_LIST: dict = {  # type: ignore
 }
 
 
-LOWER_LIMIT_ASCII_CTRL:int = 0  # ASCII Control Characters (Lower Limit)
-UPPER_LIMIT_ASCII_CTRL:int = 31  # ASCII Control Characters (Upper Limit)
-LOWER_LIMIT_ASCII_PRNT:int = 32  # ASCII Printable Characters (Lower Limit)
-UPPER_LIMIT_ASCII_PRNT:int = 127  # ASCII Printable Characters (Upper Limit)
-LOWER_LIMIT_ASCII_EXT:int = 128  # Extended ASCII Characters (Lower Limit)
-UPPER_LIMIT_ASCII_EXT:int = 255  # Extended ASCII Characters (Upper Limit)
-LOWER_LIMIT_MS_LATIN1:int = 129  # Microsoft-Windows Latin-1 extended characters (Lower Limit)
-UPPER_LIMIT_MS_LATIN1:int = 159  # Microsoft-Windows Latin-1 extended characters (Upper Limit)
-UPPER_LIMIT_UTF8:int = 65535  # Upper Limit of UTF-8
-UPPER_LIMIT_UNICODE:int = 1114111  # Upper Limit of Unicode
+LOWER_LIMIT_ASCII_CTRL: int = 0  # ASCII Control Characters (Lower Limit)
+UPPER_LIMIT_ASCII_CTRL: int = 31  # ASCII Control Characters (Upper Limit)
+LOWER_LIMIT_ASCII_PRNT: int = 32  # ASCII Printable Characters (Lower Limit)
+UPPER_LIMIT_ASCII_PRNT: int = 127  # ASCII Printable Characters (Upper Limit)
+LOWER_LIMIT_ASCII_EXT: int = 128  # Extended ASCII Characters (Lower Limit)
+UPPER_LIMIT_ASCII_EXT: int = 255  # Extended ASCII Characters (Upper Limit)
+LOWER_LIMIT_MS_LATIN1: int = 129  # Microsoft-Windows Latin-1 extended characters (Lower Limit)
+UPPER_LIMIT_MS_LATIN1: int = 159  # Microsoft-Windows Latin-1 extended characters (Upper Limit)
+UPPER_LIMIT_UTF8: int = 65535  # Upper Limit of UTF-8
+UPPER_LIMIT_UNICODE: int = 1114111  # Upper Limit of Unicode
 
 
 PRINTABLE: dict = {  # type: ignore
@@ -867,7 +867,7 @@ INVALID_CHARREFS: dict = {  # type: ignore
 }
 
 
-INVALID_CODEPOINTSL tuple = (
+INVALID_CODEPOINTS: tuple = (
     # 0x0001 to 0x0008
     0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8,
     # 0x000E to 0x001F

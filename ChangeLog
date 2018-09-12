@@ -3,6 +3,9 @@
 	* docker_rc.sh:  Added aliases
 	* makefile:  Fixed "fixperm" so that permissions are correctly applied to the Geany files
 	* makefile:  Fixed bug causing C source code to not be built if the output directory is not present
+	* mimetype_booster.xml:  Added mimetypes for Fasta files & other types of bioinformatic data formats
+	* Opticons:  Added icon for Fasta files & other types of bioinformatic data formats
+	* PyBooster:  Fixed minor bugs
 
 2018-09-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

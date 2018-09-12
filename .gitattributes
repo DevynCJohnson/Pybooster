@@ -49,7 +49,7 @@ pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-v
 .sublime-workspace text linguist-vendored
 .travis.yml text eol=lf linguist-language=YAML linguist-vendored=false
 .vscode text eol=crlf linguist-vendored
-Doxyfile text eol=lf linguist-vendored=false
+Doxyfile text eol=lf linguist-generated=true linguist-vendored=false
 static/* linguist-vendored
 */static/* linguist-vendored
 
@@ -186,7 +186,7 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
 accessory/geany/colorschemes/* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-accessory/geany/filedefs/filetypes.* text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+accessory/geany/filedefs/filetypes.* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=INI linguist-vendored=false
 accessory/geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 accessory/geany/templates/* text eol=lf linguist-detectable=false linguist-generated=true linguist-language=Text linguist-vendored
 accessory/geany/templates/files/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false

@@ -955,6 +955,18 @@
     <glob pattern="MAINTAINERS.md" weight="95"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-bam">
+    <comment>BAM Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.bam"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-bed">
+    <comment>BED Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.bed"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="text/x-c++src">
     <comment>C++ Source Code</comment>
     <generic-icon name="text-x-c++src"/>
@@ -1018,6 +1030,18 @@
     <glob pattern="*.d"/>
     <glob pattern="*.di"/>
     <sub-class-of type="text/x-csrc"/>
+  </mime-type>
+  <mime-type type="text/x-fasta">
+    <comment>FASTA Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.fasta"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-fastq">
+    <comment>FASTQ Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.fastq"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-fortran">
     <comment>Fortran Source Code</comment>
@@ -1087,6 +1111,16 @@
       <match offset="0" type="string" value="#!/usr/local/bin/mpp"/>
       <match offset="0" type="string" value="#!/usr/bin/rake"/>
       <match offset="0" type="string" value="#!/usr/local/bin/rake"/>
+    </magic>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-nexus">
+    <comment>Nexus Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.nex"/>
+    <glob pattern="*.nxs"/>
+    <magic priority="90">
+      <match offset="0" type="string" value="#NEXUS"/>
     </magic>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -1177,11 +1211,26 @@
     <glob pattern="*.rest"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-sam">
+    <comment>SAM Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.sam"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="text/x-scss">
     <comment>Sass CSS Preprocessor File</comment>
     <generic-icon name="text-x-scss"/>
     <glob pattern="*.scss"/>
     <sub-class-of type="text/x-css"/>
+  </mime-type>
+  <mime-type type="text/x-stockholm">
+    <comment>Stockholm Bioinformatics Data File</comment>
+    <generic-icon name="text-x-bioinformatics"/>
+    <glob pattern="*.stockholm"/>
+    <magic priority="95">
+      <match offset="0" type="string" value="# STOCKHOLM "/>
+    </magic>
+    <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-svsrc">
     <comment>System Verilog Source Code</comment>
