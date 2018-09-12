@@ -186,16 +186,16 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
 accessory/geany/colorschemes/* text eol=lf linguist-language=INI
-accessory/geany/filedefs/filetypes* text eol=lf linguist-detectable=false linguist-language=INI
+accessory/geany/filedefs/filetypes* text eol=lf linguist-language=INI
 accessory/geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 accessory/geany/templates/* text eol=lf linguist-detectable=false linguist-generated=true linguist-language=Text linguist-vendored
 accessory/geany/templates/files/* text eol=lf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
-accessory/geany/templates/files/file.bat eol=crlf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
+accessory/geany/templates/files/file.bat text eol=crlf linguist-detectable=false linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/schemas/** linguist-detectable=false linguist-vendored
-accessory/schemas/DTD/*.dtd text eol=lf linguist-detectable=false linguist-vendored
-accessory/schemas/RelaxNG/*.rng text eol=lf linguist-detectable=false linguist-vendored
-accessory/schemas/XSD/*.xsd text eol=lf linguist-detectable=false linguist-vendored
+accessory/schemas/DTD/*.dtd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/RelaxNG/*.rng text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
+accessory/schemas/XSD/*.xsd text eol=lf linguist-detectable=false linguist-language=XML linguist-vendored
 
 
 # Documentation
