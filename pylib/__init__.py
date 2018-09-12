@@ -6,7 +6,7 @@
 
 @file __init__.py
 @package pybooster.__init__
-@version 2018.08.31
+@version 2018.09.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -72,5 +72,5 @@ __all__: list = [
 __author__: str = r'Devyn Collier Johnson'
 __email__: str = r'DevynCJohnson@Gmail.com'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2018.08.31'
+__version__: str = r'2018.09.11'
 __description__: str = r'Collection of libraries for Python3'

@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Shell RC script providing aliases for various Docker commands
 # @file docker_rc.sh
-# @version 2018.09.06
+# @version 2018.09.11
 # @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 # @section INSTALL DOCKER
 # To install Docker on Ubuntu, use the below commands

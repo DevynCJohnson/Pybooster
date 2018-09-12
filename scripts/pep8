@@ -6,7 +6,7 @@
 """@brief PEP8 compliance checker (script wrapper)
 
 @file pep8
-@version 2018.08.31
+@version 2018.09.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """

@@ -6,7 +6,7 @@
 
 @file code_interpreter.py
 @package pybooster.code_interpreter
-@version 2018.08.31
+@version 2018.09.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

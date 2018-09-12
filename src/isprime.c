@@ -4,7 +4,7 @@
 /**
 @brief Check if the given number is prime
 @file isprime.c
-@version 2018.08.31
+@version 2018.09.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
