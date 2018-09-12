@@ -5,13 +5,15 @@ Extension for flake8 that finds various inconsistencies and suggests optimized c
 
 This module provides a plugin for ``flake8``, the Python code checker.
 
-Error Codes:
-dj** = Devyn Collier Johnson's Personal Flake8 Checks
-MG** = Magic Comments
-T000 = Todo Note
-V*** = Vague
-X*** = Inconsistency
-Z*** = Optimize
+Error Codes
+-----------
+
+* dj** = Devyn Collier Johnson's Personal Flake8 Checks
+* MG** = Magic Comments
+* T000 = Todo Note
+* V*** = Vague
+* X*** = Inconsistency
+* Z*** = Optimize
 
 
 Installation
