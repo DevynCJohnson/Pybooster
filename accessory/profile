@@ -199,5 +199,13 @@ fi
 # LOAD SHELL RC MODULES #
 
 
-[ -d /etc/shell_ext_modules ] && . /etc/shell_ext_modules/*
-[ ! -d /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ] && . "$(dirname "${BASH_SOURCE[0]}")/shell_ext_modules/*"
+if [ -d /etc/shell_ext_modules ]; then
+    for file in /etc/shell_ext_modules/*; do
+        [ -r "${file}" ] && . "${file}"
+    done
+elif [ ! -d /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ]; then
+    curdir="$(dirname "${BASH_SOURCE[0]}")"
+    for file in ${curdir}/shell_ext_modules/*; do
+        [ -r "${file}" ] && . "${file}"
+    done
+fi

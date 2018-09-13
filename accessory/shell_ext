@@ -218,6 +218,7 @@ elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
     getpkgsrc() { apt-get source --download-only "${@//;// }"; }
     pkginstall() { sudo apt-get install "${@//;// }"; }
     pkglsall() { apt-cache --no-generate pkgnames "${1:-}"; }
+    pkglsavalup() { sudo apt-get -u upgrade --assume-no; }
     pkgreinstall() { sudo apt-get install --reinstall "${@//;// }"; }
     pkguninstall() { sudo apt-get purge "${@//;// }"; }
     pkgupdate() { sudo apt-get install --only-upgrade "${@//;// }"; }
@@ -622,6 +623,7 @@ if [ -x "$(command -v dconf)" ]; then
 fi
 if [ -x "$(command -v gsettings)" ]; then
     alias backupgset='gsettings list-recursively > "${HOME}/gsettings.lst"'
+    # Recognised values of XDG_CURRENT_DESKTOP: gnome, kde, xfce, lxde, & mate
     if ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]); then
         alias setgtktheme='gsettings set org.mate.desktop.interface gtk-theme'
     elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then

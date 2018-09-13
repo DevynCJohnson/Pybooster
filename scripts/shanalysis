@@ -51,7 +51,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v checkbashisms)" ]; then
         printf '======  *BASHISMS*  ======\n'
-        checkbashisms --extra "$file" | awk '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); print $0; }' | awk NF
+        checkbashisms --extra "$file" 2>&1 | awk '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'checkbashisms: command not found!\n' >&2
     fi

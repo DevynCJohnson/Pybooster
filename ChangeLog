@@ -1,3 +1,7 @@
+2018-09-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* shanalysis:  Fixed bug so that checkbashisms would not output unneeded info
+
 2018-09-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* docker_rc.sh:  Added aliases

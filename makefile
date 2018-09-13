@@ -612,7 +612,7 @@ install_shrc :
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
 	$(LN) /etc/profile /etc/bash.bashrc
-	$(CPDIR) $(ACCDIR)/shell_ext_modules /etc/shell_ext_modules
+	$(CPDIR) $(ACCDIR)/shell_ext_modules /etc
 	$(CHMOD) 755 /etc/shell_ext_modules
 
 uninstall_shrc :
