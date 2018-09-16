@@ -26,23 +26,18 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=g++ -Wall -c "%f"
-linker=g++ -Wall -o "%e" "%f"
-run_cmd="./%e"
-
 [build-menu]
 FT_00_LB=_Compile
-FT_00_CM=g++ -O2 -Wall -c "%f"
+FT_00_CM=g++ -O2 -Wall -c "%d/%f"
 FT_00_WD=
 FT_01_LB=_Build
-FT_01_CM=g++ -Wall -o "%e" "%f"
+FT_01_CM=g++ -Wall -o "%d/%e" "%d/%f"
 FT_01_WD=
 FT_02_LB=_Lint
-FT_02_CM=cppcheck --language=c++ --enable=warning,style --template=gcc "%f"
+FT_02_CM=cppcheck --language=c++ --enable=warning,style --template=gcc "%d/%f"
 FT_02_WD=
 EX_00_LB=_Execute
-EX_00_CM="./%e"
+EX_00_CM="%d/%e"
 EX_00_WD=
 FT_03_LB=cppcheck
 FT_03_CM=cppcheck -I. -v --language=c++ --std=c11 --std=posix --enable=all --template=gcc --inconclusive "%d/%f"

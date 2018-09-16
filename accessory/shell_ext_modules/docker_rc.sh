@@ -34,6 +34,7 @@ alias dock_volls='docker volume ls'  # List volumes
 alias dock_volmk='docker volume create'  # Create volumes
 alias dock_volprune='docker volume prune'  # Prune unused volumes
 alias dock_volrm='docker volume rm'  # Remove volumes
+alias getdockerimg='docker image pull'  # Retrieve the specified Docker image
 
 
 if [ -x "$(command -v docker-compose)" ]; then

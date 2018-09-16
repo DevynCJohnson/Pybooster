@@ -49,7 +49,3 @@ error_regex=([^:]+):([0-9]+):([0-9:]+)?.*
 EX_01_LB=PyExecute
 EX_01_CM=python3 -Sq "%d/%f"
 EX_01_WD=
-
-[build_settings]
-compiler=python -m py_compile "%f"
-run_cmd=python "%f"

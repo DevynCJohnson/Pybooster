@@ -12,6 +12,13 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=
-run_cmd=octave -q "%f"
+[build-menu]
+FT_00_LB=
+FT_00_CM=
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=octave -q "%d/%e"
+EX_00_WD=

@@ -14,6 +14,13 @@ context_action_cmd=
 type=0
 width=2
 
-[build_settings]
-compiler=
-run_cmd=clisp "%f"
+[build-menu]
+FT_00_LB=
+FT_00_CM=
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=clisp "%d/%e"
+EX_00_WD=

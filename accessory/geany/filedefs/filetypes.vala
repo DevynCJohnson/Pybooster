@@ -19,7 +19,13 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=valac -c "%f"
-linker=valac "%f"
-run_cmd=./"%e"
+[build-menu]
+FT_00_LB=_Compile
+FT_00_CM=valac -c "%d/%f"
+FT_00_WD=
+FT_01_LB=_Linker
+FT_01_CM=valac "%d/%f"
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM="%d/%e"
+EX_00_WD=

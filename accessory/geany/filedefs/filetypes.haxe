@@ -16,6 +16,13 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=haxe -neko "%e.n" -cp . "%f"
-run_cmd=neko "%e"
+[build-menu]
+FT_00_LB=_Compile
+FT_00_CM=haxe -neko "%d/%e.n" -cp . "%d/%f"
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=neko "%d/%e"
+EX_00_WD=

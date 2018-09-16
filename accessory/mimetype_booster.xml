@@ -1046,6 +1046,7 @@
   <mime-type type="text/x-fortran">
     <comment>Fortran Source Code</comment>
     <generic-icon name="text-x-fortran"/>
+    <glob pattern="*.f"/>
     <glob pattern="*.f77"/>
     <glob pattern="*.f90"/>
     <glob pattern="*.f95"/>
@@ -1053,6 +1054,8 @@
     <glob pattern="*.f08"/>
     <glob pattern="*.f15"/>
     <glob pattern="*.fpp"/>
+    <glob pattern="*.ftn"/>
+    <glob pattern="*.fortran"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-genius">
@@ -1142,6 +1145,7 @@
     <generic-icon name="text-x-pascal"/>
     <glob pattern="*.p"/>
     <glob pattern="*.pas"/>
+    <glob pattern="*.dpr"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-prolog">
@@ -1164,6 +1168,14 @@
     <comment>Python Script</comment>
     <generic-icon name="text-x-python"/>
     <glob pattern="*.py" weight="90"/>
+    <glob pattern="*.py2" weight="90"/>
+    <glob pattern="*.py3" weight="90"/>
+    <glob pattern="*.pygtk" weight="90"/>
+    <glob pattern="*.pyqt" weight="90"/>
+    <glob pattern="*.pyside" weight="90"/>
+    <glob pattern="*.pyd" weight="90"/>
+    <glob pattern="*.pyi" weight="90"/>
+    <glob pattern="*.pyw" weight="90"/>
     <glob pattern="*.pyx" weight="90"/>
     <glob pattern="*.wsgi"/>
     <magic priority="100">

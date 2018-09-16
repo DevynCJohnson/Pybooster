@@ -17,10 +17,15 @@ width=4
 
 [build-menu]
 FT_00_LB=_PerlCC
+FT_00_CM=perlcc -o "%d/%e" "%d/%f"
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=perl "%d/%e"
+EX_00_WD=
+[build-menu]
+FT_00_LB=_PerlCC
 FT_00_CM=perlcc -o "%e" "%f"
 FT_00_WD=
-
-[build_settings]
-compiler=perl -cw "%f"
-run_cmd=perl "%f"
-error_regex=.+ at (.+) line ([0-9]+).*

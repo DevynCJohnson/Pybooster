@@ -52,7 +52,7 @@ override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
-override LIST_MAIN_DEPS::=clang cloc colormake gcc licensecheck llvm make moreutils python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount wc xdg-utils xmllint
+override LIST_MAIN_DEPS::=clang cloc colormake doschk gcc licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount wc xdg-utils xmllint
 
 # Parameters
 override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)

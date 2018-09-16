@@ -36,14 +36,14 @@ width=4
 
 [build-menu]
 EX_00_LB=_Build & Execute
-EX_00_CM=nasm -f elf %d/%f -o %d/%e.o && ld %d/%e.o -o %d/%e && ./%e
+EX_00_CM=nasm -f elf "%d/%f" -o "%d/%f".o && ld "%d/%f".o -o "%d/%f" && ./"%e"
 EX_00_WD=
-EX_01_LB=
-EX_01_CM=
+EX_01_LB=_Execute
+EX_01_CM="%d/%e"
 EX_01_WD=
+FT_00_LB=_Compile
+FT_00_CM=nasm "%d/%f"
+FT_00_WD=
 FT_01_LB=_as
 FT_01_CM=as --warn --64 --strip-local-absolute "%d/%f" -o "%e"
 FT_01_WD=
-
-[build_settings]
-compiler=nasm "%d/%f"

@@ -21,14 +21,18 @@ type=1
 width=4
 
 [build-menu]
-FT_00_LB=GDMD Build
+FT_00_LB=_Build
 FT_00_CM=gdmd -w -c "%d/%f"
 FT_00_WD=
-FT_01_LB=GDMD Link
+FT_01_LB=_Link
 FT_01_CM=gdmd -w -of"%e" "%d/%f"
 FT_01_WD=
-
-[build_settings]
-compiler=dmd -w -c "%d/%f"
-linker=dmd -w -of"%e" "%d/%f"
-run_cmd="%d/%e"
+FT_02_LB=Build
+FT_02_CM=dmd -w -c "%d/%f"
+FT_02_WD=
+FT_03_LB=Link
+FT_03_CM=dmd -w -of"%e" "%d/%f"
+FT_03_WD=
+EX_00_LB=_Execute
+EX_00_CM="%d/%e"
+EX_00_WD=

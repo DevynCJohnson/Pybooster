@@ -28,9 +28,6 @@ EX_00_BD=false
 EX_01_LB=_View DVI File
 EX_01_CM=evince "%e.dvi"
 EX_01_BD=false
-
-[build_settings]
-compiler=latex --file-line-error-style "%f"
-linker=pdflatex --file-line-error-style "%f"
-run_cmd=evince "%f"
-run_cmd2=xdvi "%f"
+EX_02_LB=View DVI File (xdvi)
+EX_02_CM=xdvi "%e.dvi"
+EX_02_BD=false

@@ -3,7 +3,7 @@
 
 # This is the Default "built-in" color scheme (Used for filetype All/None)
 default=0x000;0xFFF;false;false
-error=0xF00;0xBFBFBF;false;true
+error=0xF00;0xF7F7F7;false;true
 
 # 3rd & 4th selection argument is true to override default foreground
 selection=0x000;0xC0C0C0;false;true
@@ -49,11 +49,11 @@ caret=0x000;0x000;false;false
 caret_width=1
 
 # Set foreground and background color of indentation guides
-indent_guide=0xC0C0C0;0xFFF;false;false
+indent_guide=0x666;0xFFF;false;false
 
 # Third argument: if true, use this foreground color. If false, use the default value defined by the filetypes.
 # Fourth argument: if true, use this background color. If false, use the default value defined by the filetypes.
-white_space=0xC0C0C0;0xFFF;true;false
+white_space=0x333;0xFFF;true;false
 
 # Style of folding icons, valid values are:
 # First argument:  1 for boxes, 2 for circles, 3 for arrows, 4 for +/-
@@ -99,6 +99,8 @@ call_tips=calltips
 # Characters to be skipped when moving (or included when deleting) to word boundaries
 whitespace_chars=\s\t!\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~
 wordchars=_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+
+[named_colors]
 
 [named_styles]
 binnumber=number
@@ -219,7 +221,7 @@ preprocessorcommentdoc=0x580;0xFFF;false;false
 
 # STRINGS
 
-backticks=0x008000;0xFFF;false;false
+backticks=0x008000;0xFFF;false;true
 backticks_var=identifier_2
 blockquote=tag
 bytecharacter=character
@@ -228,11 +230,13 @@ bytestringraw=0x080;0xEEF;false;true
 character=string
 character_eol=string_eol
 charactereol=string_eol
-doublequotedstring=string_2
-doublestring=string_2
+doublequotedstring=comment_doc
+doublestring=comment_doc
 escapesequence=0xCA0;0xFFF;true;true
-format=string_2
-format_ident=string_2
+format=comment_doc
+format_ident=comment_doc
+ftriple=comment_doc
+ftripledouble=comment_doc
 hashquotedstring=backticks
 here_character=character
 here_delim=here_doc
@@ -245,7 +249,7 @@ here_qx_var=identifier_2
 here_string=string
 heredelim=operator
 inquote=string
-literalstring=string_2
+literalstring=comment_doc
 longquote=here_doc
 msgctxt=keyword
 msgctxt_text=string
@@ -298,10 +302,11 @@ decorator=0xF57300;0xFDF;true;false
 delimiter=operator
 label=0x000;0x0FF;true;false
 locale=other
-operator=0x726;0xFFF;true;false
+operator=0xA3A;0xFFF;true;false
 other=0x404080;0xFFF;false;false
+param=function
 parameter=function
-parameters=parameter
+parameters=function
 reg_subst=regex
 regex=0x069;0xFFF;false;true
 regex_var=identifier_2
@@ -310,7 +315,7 @@ reserved_operator=keyword_1
 scalar=identifier_1
 special=keyword_2
 type=0x0000D0;0xFFF;true;false
-value=0xF57300;0xFFD;false;true
+value=0xC52;0xFDF;false;true
 variable=type
 variable_indexer=default
 verbose_regex=regex
@@ -413,13 +418,13 @@ line_removed=0xFF2727;0xFFF;false;false
 
 # MARKUP
 
-attribute=0x00007F;0xFFF;true;false
-attribute_unknown=0x00007F;0xFFF;true;true
+attribute=0x00007F;0xFFF;true;true
+attribute_unknown=0x00007F;0xF77;true;true
 attributeunknown=attribute_unknown
 entity=default
 extended_identifier=keyword_1
-extended_pseudoclass=string
-extended_pseudoelement=string_2
+extended_pseudoclass=0xC0C;0xFFF;true;false
+extended_pseudoelement=0xC0C;0xFFF;false;true
 header1=tag
 header2=tag
 header3=tag
@@ -434,7 +439,7 @@ html_attributeunknown=attribute_unknown
 html_cdata=0x609;0xFFF;false;false
 html_comment=comment
 html_default=default
-html_doublestring=string_2
+html_doublestring=0x080;0xFEF
 html_entity=entity
 html_number=number
 html_other=default
@@ -462,7 +467,7 @@ jscript_start=0x008080;0xFFF;false;false
 jscript_stringeol=0x000;0xE0C0E0;false;false
 jscript_symbols=0x301010;0xFFF;false;false
 jscript_word=0x000;0xFFF;false;false
-link=keyword_1
+link=0xC90;0xFFF;true;false
 olist_item=tag
 php_comment=0x4B4B4B;0x191919;false;false
 php_commentline=0x808080;0xFFF;false;false
@@ -475,8 +480,8 @@ php_operator=0x102060;0xFFF;false;false
 php_simplestring=0xFF901E;0xFFF;false;false
 php_variable=0x7F0000;0xFFF;false;false
 php_word=0x009;0xFFF;false;false
-pseudoclass=string
-pseudoelement=string_2
+pseudoclass=extended_pseudoclass
+pseudoelement=extended_pseudoelement
 python_character=character
 python_classname=type
 python_commentline=comment_line
@@ -502,8 +507,8 @@ sgml_special=number
 strikeout=tag
 strong=tag
 tag2=tag
-tag=0xCD8500;0xFFF;true;false
-tag_end=0xC92;0xFFF;true;false
+tag=0xA85;0xC5FFC5;true;false
+tag_end=0xFC6;0x797;true;false
 tag_unknown=0x41476B;0x977;true;true
 tagend=tag_end
 tagname=preprocessor

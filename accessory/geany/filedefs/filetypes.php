@@ -17,6 +17,13 @@ xml_indent_tags=true
 type=0
 width=2
 
-[build_settings]
-compiler=php -l "%f"
-run_cmd=php "%f"
+[build-menu]
+FT_00_LB=_Compile
+FT_00_CM=php -l "%d/%f"
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=php "%d/%e"
+EX_00_WD=

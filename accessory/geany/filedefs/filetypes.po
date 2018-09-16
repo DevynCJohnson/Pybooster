@@ -9,5 +9,13 @@ context_action_cmd=
 #type=1
 #width=4
 
-[build_settings]
-compiler=msgfmt --check --check-accelerators=_ "%f"
+[build-menu]
+FT_00_LB=_Compile
+FT_00_CM=msgfmt --check --check-accelerators=_ "%d/%f"
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=
+EX_00_CM=
+EX_00_WD=

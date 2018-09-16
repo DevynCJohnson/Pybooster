@@ -14,15 +14,13 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=gfortran -Wall -c "%d/%f"
-linker=gfortran -Wall -o "%d/%e" "%d/%f"
-run_cmd="./%e"
-
 [build-menu]
 FT_00_LB=_Compile
-FT_00_CM=gfortran -Wall -march=haswell -O3 -o "%d/%e" "%d/%f"
+FT_00_CM=gfortran -Wall -c "%d/%f"
 FT_00_WD=
-FT_01_LB=_Execute
-FT_01_CM=%d/%e
+FT_01_LB=_Linker
+FT_01_CM=gfortran -Wall -o "%d/%e" "%d/%f"
 FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM="%d/%e"
+EX_00_WD=
