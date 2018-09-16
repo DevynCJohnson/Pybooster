@@ -49,7 +49,7 @@ Case Style Definitions
 General Rules
 -------------
 
-###General Practices
+### General Practices
 
 - The file encoding of files must be UTF-8 (without BOM) unless otherwise specified for a specific language, filetype, or need
 - Strip trailing line-spaces
@@ -61,7 +61,7 @@ General Rules
 - Try to reduce or eliminate third-party dependencies
 - Hexadecimal sequences mush use all uppercase letters
 
-###File Headers
+### File Headers
 
 - Many files (such as Assembly, C, Posix script, and Python source files) begin with a file header
 - The first line (where applicable) is a hashpling
@@ -75,7 +75,7 @@ General Rules
 - In the next line, the Doxygen information comment-block follows (see the _Doxygen_ section for further guidelines)
 - Two blank lines must follow the file header, then the code begins
 
-###File Divisions
+### File Divisions
 
 - When possible and where applicable, divide a file of code into sections
 - Primary/Main Section
@@ -115,7 +115,7 @@ Doxygen
     7. `@section LICENSE` (Optional)
         - When including a license header in a source code file, use the proper/official license header
 
-###Language Specifics
+### Language Specifics
 
 - **C:** Doxygen comments use the delimiter ```/** */```
     - A function's Doxygen comment goes on the line before the function definition
@@ -159,7 +159,7 @@ Changelog
 - Single-line summaries are permitted and optional; some VCS expect such summaries
 - Single-line summaries (if used) must be placed between the header and the first change-entry
 
-###Formatting Rules
+### Formatting Rules
 
 - Dates must use the format `YYYY-MM-DD`
 - All headers will use the format `YYYY-MM-DD  AUTHOR NAME  <username@email.com>`
@@ -171,7 +171,7 @@ Changelog
 - In a change-entry, conditionals will be listed before the filename and separated by two spaces, such as ```[LINUX_X86_64]  (drivers.c)```
 - Documented changes to conditional code (such as code within macros) will use the format ```* FILE  [POWERPC]:  BRIEF DESCRIPTION```; this indicates that code specific to PowerPC targets was changed
 
-###Author Rules
+### Author Rules
 
 - All changes by the same author on the same date are listed under the same non-indented header
 - Do not place multiple authors and/or change dates under the same change-header
@@ -212,7 +212,7 @@ DTD
 HTML
 ----
 
-###File Basics
+### File Basics
 
 - Indentation is two-spaces per level (except for minified code)
     - The indentation rule above applies to elements within the `<head>` tag
@@ -228,7 +228,7 @@ HTML
 - Special file comments (like Doxygen comments and licensing) must be placed on the line after the `DOCTYPE` tag
 - All HTML5 files (except partial template snippets) must properly use the `<html>`, `<head>`, and `<body>` tags
 
-###Head
+### Head
 
 The tags within the `<head>` tag must go in the following order
 
@@ -253,7 +253,7 @@ The tags within the `<head>` tag must go in the following order
     - `<noscript>` must only contain `<link>`, `<style>`, and `<meta>` when used inside the `<head>` element
     - `<noscript>` can be used in both `<head>` and `<body>`
 
-###Attributes
+### Attributes
 
 - Lowercase attribute names
 - Quote all attribute values using double-quotes
@@ -266,18 +266,18 @@ The tags within the `<head>` tag must go in the following order
 - `id` names must use Kebab-case
 - Alphabetize all `id` names within the attribute value
 
-###Tag Styling
+### Tag Styling
 
 - Tag names must be lowercase
 - `<br/>`, `<hr/>`, and other self-closing (empty) tags without attributes must not have a space preceeding `/>`
 - Tags must not have whitespace following `<`
 - Close all tags and self-closing (empty) tags
 
-###List & Table Specifics
+### List & Table Specifics
 
 - For a general title or caption of a table, use `<caption>` not `<h1>` through `<h6>`
 
-###Individual Tag Specifics
+### Individual Tag Specifics
 
 - All `<a>` tags must use the `title` attribute
 - For abbreviations or acronyms, use `<abbr title="text">`
@@ -329,7 +329,7 @@ Python
 - Check the code using `pycodestyle`, `pylint`, `pytest`, `flake8`, `mccabe` (the Python packages _astkit_ and _astroid_ will need to be installed)
     - Optimally, use `pyanalysis` which is included in PyBooster
 
-###PEP Standards
+### PEP Standards
 
 Follow the below listed PEP Standards
 
@@ -351,7 +351,7 @@ Do not follow the below listed PEP Standards
 
 - **[PEP287 (reStructuredText Docstring Format)](https://www.python.org/dev/peps/pep-0287/)**
 
-###Special Comments
+### Special Comments
 
 - To make Flake8 ignore a particular line, use ```# noqa: CODE``` at the end of the line (with two preceeding spaces)
 - To make MyPy ignore a particular line, use ```# type: ignore``` at the end of the line (with two preceeding spaces)
@@ -377,11 +377,11 @@ Shell Script
 - Use four spaces per indentation level
 - Use one space between redirections and the file (For instance, use ```2> /dev/null``` **not** ```2>/dev/null```)
 
-###Bourne-Again Shell (BASH)
+### Bourne-Again Shell (BASH)
 
 - Try to avoid extensions
 
-###Posix Shell
+### Posix Shell
 
 - Do not use extensions (remain Posix compliant)
 
