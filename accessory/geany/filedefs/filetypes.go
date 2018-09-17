@@ -24,7 +24,7 @@ width=4
 
 [build-menu]
 FT_00_LB=_Build
-FT_00_CM=go build %f
+FT_00_CM=go build "%d/%f"
 FT_00_WD=
 FT_01_LB=Fmt
 FT_01_CM=go fmt .
@@ -33,5 +33,5 @@ FT_02_LB=_Test
 FT_02_CM=go test
 FT_02_WD=
 EX_00_LB=_Run
-EX_00_CM=go run %f
+EX_00_CM=go run "%d/%e"
 EX_00_WD=

@@ -126,6 +126,8 @@ Doxygen
     - A signle-lined-function's Doxygen comment goes right after the function's closing-brace
 - **Python:** Doxygen comments use the delimiter `""" """`
     - A function's Doxygen comment goes on the line after the function definition
+- **R:** Doxygen comments use the delimiter ```#' ```
+    - A function's Doxygen comment goes on the line before the function definition
 
 
 Language-Specific Rules

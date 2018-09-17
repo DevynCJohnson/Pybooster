@@ -20,5 +20,5 @@ FT_01_LB=
 FT_01_CM=
 FT_01_WD=
 EX_00_LB=_Execute
-EX_00_CM=octave -q "%d/%e"
+EX_00_CM=octave -q "%d/%f"
 EX_00_WD=

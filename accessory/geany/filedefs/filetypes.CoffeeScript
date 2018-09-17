@@ -19,10 +19,10 @@ width=2
 
 [build-menu]
 FT_00_LB=_Compile into Javascript
-FT_00_CM=coffee --compile "%f"
+FT_00_CM=coffee --compile "%d/%f"
 FT_01_LB=View compiled _Javascript
-FT_01_CM=coffee -p "%f"
+FT_01_CM=coffee -p "%d/%f"
 EX_00_LB=_Run
-EX_00_CM=coffee "%f"
+EX_00_CM=coffee "%d/%f"
 EX_01_LB=_Evaluate
-EX_01_CM=coffee --eval "%f"
+EX_01_CM=coffee --eval "%d/%f"
