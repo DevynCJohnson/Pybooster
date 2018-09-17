@@ -1,3 +1,8 @@
+2018-09-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Coding_Standards.md:  Added coding rules for R
+	* snippets.conf:  Added additional snippets for R
+
 2018-09-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Coding_Standards.md:  Added additional coding rules & reorganized the structure of the file

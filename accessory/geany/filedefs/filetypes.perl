@@ -25,7 +25,3 @@ FT_01_WD=
 EX_00_LB=_Execute
 EX_00_CM=perl "%d/%e"
 EX_00_WD=
-[build-menu]
-FT_00_LB=_PerlCC
-FT_00_CM=perlcc -o "%e" "%f"
-FT_00_WD=

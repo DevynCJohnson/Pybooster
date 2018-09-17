@@ -358,6 +358,19 @@ Do not follow the below listed PEP Standards
 - To make PyLint ignore a particular line, use ```# pylint: disable=CODE``` at the end of the line (with two preceeding spaces)
 
 
+R
+-
+
+- Indentation must be two-spaces per level
+- Always place the hashpling (```#!/usr/bin/env Rscript```) on the first line
+- Place spaces around all binary operators
+- Do not place a space before a comma, but always place one space after a comma
+- Place a space before a left parenthesis (except in a function call)
+- Never omit curly braces
+- An opening curly brace should never go on its own line, but a closing curly brace should always go on its own line
+- Use ```<-``` for assignment, not ```=```
+
+
 RelaxNG
 -------
 

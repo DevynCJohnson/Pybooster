@@ -11,10 +11,23 @@ context_action_cmd=
 
 [indentation]
 type=1
-width=4
+width=2
 
+[build-menu]
+FT_00_LB=
+FT_00_CM=
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=Rscript "%d/%e"
+EX_00_WD=
+EX_01_LB=Execute (_Verbose)
+EX_01_CM=R --quiet --no-restore --no-save < "%d/%e"
+EX_01_WD=
 
 #package_dump <- function(name, file = NA) {
-#    if(is.na(file)) file <- paste(name, "dump", sep = ".")
+#    if(is.na(file)) { file <- paste(name, "dump", sep = ".") }
 #    cat(ls(paste("package", name, sep = ":")), file = file)
 #}
