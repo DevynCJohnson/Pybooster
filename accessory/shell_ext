@@ -562,11 +562,8 @@ fi
 
 [ -x "$(command -v ping)" ] && alias testnet='ping -c 1 dcjtech.info || ping -c 1 duckduckgo.com'
 if [ -x "$(command -v curl)" ]; then
-    alias getwebip='curl'
     alias testwebtime="curl -s -w 'Testing Website Response Time: %{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null http://www.google.com"
     alias webheaders='curl -I'
-elif [ -x "$(command -v wget)" ]; then
-    alias getwebip='wget -qO -'
 fi
 [ -n "$(command -v ifconfig)" ] && [ -z "$(command -v ipconfig)" ] && alias ipconfig='ifconfig'
 [ -x "$(command -v iptables)" ] && alias ipt='sudo iptables'
@@ -848,6 +845,64 @@ CheckForNetwork() {  # Determine if the network is up by looking for any non-loo
 
 downloadtar() { wget -c "$1" -O - | tar -xz; }
 
+# Patch Functions
+
+applypatch() {  # Apply a patch given a file name and the pathname of the patch
+    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+        printf 'ERROR: Two file names are required!\n' >&2
+    elif [ ! -x "$(command -v patch)" ]; then
+        printf 'ERROR: The "patch" command was not found!\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Apply a patch given a file name (first) and then the pathname of the patch\n'
+    elif [ -f "$1" ] && [ -f "$2" ]; then
+        patch "$1" < "$2"
+    fi
+}
+
+createpatch() {  # Create a patch given two file names
+    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+        printf 'ERROR: Two file names are required!\n' >&2
+    elif [ ! -x "$(command -v diff)" ]; then
+        printf 'ERROR: The "diff" command was not found!\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Create a patch given two file names\n'
+    elif [ -f "$1" ] && [ -f "$2" ]; then
+        curdir="$(dirname "${BASH_SOURCE[0]}")"
+        diff -u "$1" "$2" > "${curdir}/patch.diff"
+    fi
+}
+
+reversepatch() {  # Reverse the effects of a patch given a file name and the pathname of the patch
+    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+        printf 'ERROR: Two file names are required!\n' >&2
+    elif [ ! -x "$(command -v patch)" ]; then
+        printf 'ERROR: The "patch" command was not found!\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Reverse the effects of a patch given a file name and the pathname of the patch\n'
+    elif [ -f "$1" ] && [ -f "$2" ]; then
+        patch -R "$1" < "$2"
+    fi
+}
+
+uniquelines() {  # Show the unique lines of two files given two file names
+    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+        printf 'ERROR: Two file names are required!\n' >&2
+    elif [ ! -x "$(command -v comm)" ]; then
+        printf 'ERROR: The "comm" command was not found!\n' >&2
+    elif [ ! -x "$(command -v sort)" ]; then
+        printf 'ERROR: The "sort" command was not found!\n' >&2
+    elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Show the unique lines of two files given two file names\n'
+    elif [ -f "$1" ] && [ -f "$2" ]; then
+        tmpfile1="/tmp/$(rndfname).tmp"
+        tmpfile2="/tmp/$(rndfname).tmp"
+        sort "$1" > "$tmpfile1"
+        sort "$2" > "$tmpfile2"
+        comm -3 "${tmpfile1}" "${tmpfile2}"
+        rm "$tmpfile1" "$tmpfile2"
+    fi
+}
+
 # Process Control Functions
 
 GetPID() {  # Return the PID of a process (if found)
@@ -1014,7 +1069,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(com
     fi
     # Autocomplete package names for the system's package installation, uninstallation, and reinstallation commands
     if [ -n "$(command -v pkglsall)" ] && [ -n "$(command -v pkginstall)" ]; then
-        _pkginstall_autocomplete() { mapfile -t COMPREPLY < <(pkglsall "$2"); }
+        _pkginstall_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; pkglsall "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _pkginstall_autocomplete)" ]; then
             complete -F _pkginstall_autocomplete -o nospace pkginstall
             complete -F _pkginstall_autocomplete -o nospace pkguninstall
@@ -1025,7 +1080,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(com
     # Autocomplete Python package names for pip3
     if [ -n "$(command -v pip3)" ]; then
         _pip_tmp() { pip3 list --format=columns | awk '{ if (NR > 2) { print } }' | cut -d ' ' -f 1 | awk "/^${1}/"; }
-        _pip3_autocomplete() { mapfile -t COMPREPLY < <(_pip_tmp "$2"); }
+        _pip3_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; _pip_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _pip3_autocomplete)" ]; then
             complete -F _pip3_autocomplete -o nospace pyinstall
             complete -F _pip3_autocomplete -o nospace pyreinstall
@@ -1037,7 +1092,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(com
     # Autocomplete make targets
     if [ -n "$(command -v make)" ]; then
         _make_target_tmp() { make -pqs | sed '/^.+:=.*$/d; /^#.*$/d; /^\-.*$/d;' | grep -o -E '^[a-zA-Z0-9_\-]+:.*$' | cut -d ':' -f 1 | awk "/^${1}/"; }
-        _make_target_autocomplete() { mapfile -t COMPREPLY < <(_make_target_tmp "$2"); }
+        _make_target_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; _make_target_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _make_autocomplete)" ]; then
             complete -F _make_target_autocomplete -o nospace make
             readonly -f _make_target_autocomplete

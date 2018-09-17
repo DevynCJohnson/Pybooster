@@ -100,8 +100,6 @@ call_tips=calltips
 whitespace_chars=\s\t!\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~
 wordchars=_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 
-[named_colors]
-
 [named_styles]
 binnumber=number
 date=0x06C;0xFFF;false;false
@@ -300,6 +298,7 @@ classvar=type
 constant=0x4FF;0xFFF;true;false
 decorator=0xF57300;0xFDF;true;false
 delimiter=operator
+header=0x007F7F;0xEEF;true;false
 label=0x000;0x0FF;true;false
 locale=other
 operator=0xA3A;0xFFF;true;false
@@ -412,9 +411,9 @@ mathinstruction=0x7F0000;0xFFF;true;false
 added=line_added
 changed=line_changed
 deleted=line_removed
-line_added=0x34B034;0xFFF;false;false
-line_changed=0x7F007F;0xFFF;false;false
-line_removed=0xFF2727;0xFFF;false;false
+line_added=0x000;0x6C6;false;false
+line_changed=0x909;0xFFF;false;false
+line_removed=0x000;0xF99;false;false
 
 # MARKUP
 

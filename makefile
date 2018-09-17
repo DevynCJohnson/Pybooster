@@ -296,15 +296,15 @@ pkgzip : rmtmp
 
 
 getdeps_deb : getdeps_pip
-	@apt-get install $(LIST_MAIN_DEPS)
-	# TODO: Add support for rpm/yum, brew, & dnf
+	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_MAIN_DEPS) || true)) || \
+	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_MAIN_DEPS) || true)) || \
+	([ -d /etc/portage ] && [ -x "$(command -v emerge)" ] && (emerge -a $(LIST_MAIN_DEPS) || true)) || true
 
 getdeps_deb_all : getdeps_deb
 	@apt-get install $(LIST_DEV_DEPS)
 
 getdeps_pip :
 	@(command -v pip3 >&2 > /dev/null && pip3 install $(LIST_PIP_DEPS)) || (command -v pip >&2 > /dev/null && pip install $(LIST_PIP_DEPS)) || true
-	# TODO: Add support for easy_install
 
 upver :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Updating Software Versions ==='

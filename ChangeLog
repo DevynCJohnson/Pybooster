@@ -2,6 +2,7 @@
 
 	* Coding_Standards.md:  Added additional coding rules & reorganized the structure of the file
 	* PyBooster:  Applied many fixes & improvements to the Geany template files
+	* shell_ext:  Added patching functions & fixed the mapfile redirection bug
 
 2018-09-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
