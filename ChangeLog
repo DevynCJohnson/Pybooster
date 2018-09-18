@@ -1,7 +1,9 @@
 2018-09-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* Coding_Standards.md:  Added coding rules for R
-	* snippets.conf:  Added additional snippets for R
+	* Coding_Standards.md:  Added coding rules for R & modifed Doxygen rule for POSIX shell scripts
+	* PyBooster:  Modified all POSIX shell scripts to reflect the change in Doxygen standards
+	* PyBooster:  Modified many of the Geany file templates
+	* snippets.conf:  Added additional snippets for R & many other languages
 
 2018-09-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

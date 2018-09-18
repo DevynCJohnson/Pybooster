@@ -2,11 +2,11 @@
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-# @brief Universal setup script for Posix-compatible shells
-# @file shell_ext
-# @version 2018.09.11
-# @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-# @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+#' @brief Universal setup script for Posix-compatible shells
+#' @file shell_ext
+#' @version 2018.09.11
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
 # GLOBAL SETTINGS #
@@ -333,6 +333,38 @@ elif [ -d /etc/zypp ] && [ -x "$(command -v zypper)" ]; then  # OpenSUSE Zypper
     sysupdate() { zypper update; }
 fi
 [ "$PROFILE_SHELL" = 'bash' ] && set +a
+if [ -x "$(command -v npm)" ]; then
+    alias cleanjscache='sudo -H npm cache clean'
+    alias jsinstall='sudo -H npm install -g'
+    alias jspkglsinst='npm -g ls --depth 0'
+    alias jsrepocheck='sudo -H npm doctor'
+    alias jsuninstall='sudo -H npm uninstall -g'
+    alias jsupdate='sudo -H npm update -g'
+fi
+if [ -x "$(command -v pear)" ]; then
+    alias phpinstall='sudo -H pear install'
+    alias phppkglsinst='pear list'
+    alias phpuninstall='sudo -H pear uninstall'
+    alias phpupdate='sudo -H pear upgrade'
+fi
+if [ -x "$(command -v pip3)" ]; then
+    alias findpypkg='pip3 search'
+    alias genpyreqfile='pip3 freeze > ./requirements.txt'
+    alias getpypkgsrc='pip3 download'
+    alias pyinstall='sudo -H pip3 install'
+    alias pypkglsinst='pip3 list --format=columns'
+    alias pypkglsnonreq='pip3 list --not-required --format=columns'
+    alias pypkglsup='pip3 list -o --format=columns'
+    alias pypkglsusr='pip3 list --user --format=columns'
+    alias pyreinstall='sudo -H pip3 install --upgrade --force-reinstall'
+    alias pyrepocheck='sudo -H pip3 check'
+    alias pyuninstall='sudo -H pip3 uninstall'
+    alias pyupdate='sudo -H pip3 install -U'
+    pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
+fi
+if [ -x "$(command -v R)" ]; then
+    rinstall() { sudo R -e "install.packages(c('${1}'), lib='/usr/local/lib/R/site-library', repos='http://cran.rstudio.com/')"; }
+fi
 
 
 # INTERACTIVE SHELL #
@@ -579,38 +611,6 @@ if [ -x "$(command -v nmcli)" ]; then
     alias wifiScan='nmcli dev wifi'
 fi
 [ -x "$(command -v netstat)" ] && alias viewopenports='netstat -a -l -n -p -t -u'
-
-# Package Management Aliases
-
-if [ -x "$(command -v npm)" ]; then
-    alias cleanjscache='sudo -H npm cache clean'
-    alias jsinstall='sudo -H npm install -g'
-    alias jspkglsinst='npm -g ls --depth 0'
-    alias jsrepocheck='sudo -H npm doctor'
-    alias jsuninstall='sudo -H npm uninstall -g'
-    alias jsupdate='sudo -H npm update -g'
-fi
-if [ -x "$(command -v pear)" ]; then
-    alias phpinstall='sudo -H pear install'
-    alias phppkglsinst='pear list'
-    alias phpuninstall='sudo -H pear uninstall'
-    alias phpupdate='sudo -H pear upgrade'
-fi
-if [ -x "$(command -v pip3)" ]; then
-    alias findpypkg='pip3 search'
-    alias genpyreqfile='pip3 freeze > ./requirements.txt'
-    alias getpypkgsrc='pip3 download'
-    alias pyinstall='sudo -H pip3 install'
-    alias pypkglsinst='pip3 list --format=columns'
-    alias pypkglsnonreq='pip3 list --not-required --format=columns'
-    alias pypkglsup='pip3 list -o --format=columns'
-    alias pypkglsusr='pip3 list --user --format=columns'
-    alias pyreinstall='sudo -H pip3 install --upgrade --force-reinstall'
-    alias pyrepocheck='sudo -H pip3 check'
-    alias pyuninstall='sudo -H pip3 uninstall'
-    alias pyupdate='sudo -H pip3 install -U'
-    pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
-fi
 
 # Settings Manipulation Aliases
 

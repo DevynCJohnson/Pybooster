@@ -73,6 +73,7 @@ General Rules
     - Example for C: ```// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;```
 - In Python scripts, an entry-point comment may be present after the magic comments
 - In the next line, the Doxygen information comment-block follows (see the _Doxygen_ section for further guidelines)
+- For JavaScript, next comes `goog.module` statements and then `goog.require` statements
 - Two blank lines must follow the file header, then the code begins
 
 ### File Divisions
@@ -117,17 +118,27 @@ Doxygen
 
 ### Language Specifics
 
-- **C:** Doxygen comments use the delimiter ```/** */```
+- **Awk Scripts:** Doxygen comments use the delimiter ```#' ```
+    - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
+    - A single-lined-function's Doxygen comment goes right after the function's closing-brace
+- **C/C++:** Doxygen comments use the delimiter ```/** */```
     - A function's Doxygen comment goes on the line before the function definition
 - **CoffeeScript:** Doxygen comments use the delimiter ```###! ###```
     - A function's Doxygen comment goes on the line before the function definition
-- **Posix Shell:** Doxygen comments use the delimiter ```# ```
+- **D:** Doxygen comments use the delimiter ```//' ```
+- **JavaScript:** Doxygen comments use the delimiter ```/** */```
+    - A function's Doxygen comment goes on the line before the function definition
+- **Pascal:** Doxygen comments use the delimiter ```(** *)```
+- **Posix Shell:** Doxygen comments use the delimiter ```#' ```
     - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
-    - A signle-lined-function's Doxygen comment goes right after the function's closing-brace
+    - A single-lined-function's Doxygen comment goes right after the function's closing-brace
 - **Python:** Doxygen comments use the delimiter `""" """`
     - A function's Doxygen comment goes on the line after the function definition
 - **R:** Doxygen comments use the delimiter ```#' ```
     - A function's Doxygen comment goes on the line before the function definition
+- **Ruby:** Doxygen comments use the delimiter ```#' ```
+- **Sed Scripts:** Doxygen comments use the delimiter ```#' ```
+- **XCompose:** Doxygen comments use the delimiter ```#' ```
 
 
 Language-Specific Rules
@@ -299,12 +310,29 @@ JavaScript
 ----------
 
 - Indentation is two-spaces per level (except for minified code)
+- Filenames must be lowercase and may include underscores or hyphens
 - Always put spaces around operators and after commas
 - Always end a simple statement with a semicolon
-- For compound-statements (like if-constructs), put the opening bracket (with a preceeding space) at the end of the first line
 - Do not end a compound-statement with a semicolon
+- For compound-statements (like if-constructs), put the opening bracket (with a preceeding space) at the end of the first line
+- Braces are required for all control structures, even if the body contains only a single statement
+- An empty block or block-like construct may be closed immediately after it is opened (i.e. ```{}```), unless it is a part of a multi-block statement, such as if/else or try/catch/finally statements
+- Put a space between reserved words (such as `if`, `for`, or `catch`) and an open parenthesis
+- Put a space between reserved word (such as `else` or `catch`) and a closing curly brace
+- Put a space between any open curly brace, except for:
+    - Array literals (i.e. ```foo({a: [{c: d}]})```)
+    - Template expansions (i.e. ```abc${1 + 2}def```)
 - Type global variable names in all SCREAMING_SNAKE_CASE
 - Type variable and function names in snake_case or lowercase
+- Declare all local variables with either `const` or `let`
+    - Use `const` by default, unless a variable needs to be reassigned
+    - The `var` keyword must not be used
+- One variable per declaration
+- Declare datatypes of variables inline (i.e. ```const /** !Array<number> */ data = [];```)
+- Do not use the Object constructor; Use an object literal instead (i.e. ```{}``` or ```{a: 0, b: 1, c: 2}```)
+- Enumerations are defined by adding the @enum annotation to an object literal
+- Additional properties may not be added to enumerations after they are defined and enums must be constant with immutable values
+- Follow any additional rules that are specified in [Google's Style Guide](https://google.github.io/styleguide/jsguide.html), unless they conflict with document
 
 
 Markdown
