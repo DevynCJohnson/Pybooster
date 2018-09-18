@@ -16,8 +16,8 @@ type=1
 width=2
 
 [build-menu]
-FT_00_LB=
-FT_00_CM=
+FT_00_LB=_Compile
+FT_00_CM=RCompiler.R "%d/%f"
 FT_00_WD=
 FT_01_LB=
 FT_01_CM=

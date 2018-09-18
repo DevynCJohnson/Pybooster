@@ -36,6 +36,36 @@
     <generic-icon name="image-x-generic"/>
     <glob pattern="*.ai"/>
   </mime-type>
+  <mime-type type="application/javascript">
+    <comment>JavaScript Program</comment>
+    <alias type="application/x-javascript"/>
+    <alias type="text/javascript"/>
+    <generic-icon name="text-x-javascript"/>
+    <glob pattern="*.javascript"/>
+    <glob pattern="*.js"/>
+    <glob pattern="*.jsm"/>
+    <glob pattern="*.mjs"/>
+    <magic priority="95">
+      <match offset="2:6" type="string" value="/usr/bin/env gjs"/>
+      <match offset="2:6" type="string" value="/usr/bin/env jsc"/>
+      <match offset="2:6" type="string" value="/usr/bin/env node"/>
+      <match offset="2:6" type="string" value="/usr/bin/env rhino"/>
+      <match offset="2:6" type="string" value="/bin/env gjs"/>
+      <match offset="2:6" type="string" value="/bin/env jsc"/>
+      <match offset="2:6" type="string" value="/bin/env node"/>
+      <match offset="2:6" type="string" value="/bin/env rhino"/>
+      <match offset="2:6" type="string" value="/usr/bin/gjs"/>
+      <match offset="2:6" type="string" value="/usr/bin/jsc"/>
+      <match offset="2:6" type="string" value="/usr/bin/node"/>
+      <match offset="2:6" type="string" value="/usr/bin/rhino"/>
+      <match offset="0" type="string" value="#!/usr/local/bin/gjs"/>
+      <match offset="0" type="string" value="#! /usr/local/bin/gjs"/>
+      <match offset="0" type="string" value="eval &quot;exec /bin/gjs"/>
+      <match offset="0" type="string" value="eval &quot;exec /usr/bin/gjs"/>
+      <match offset="0" type="string" value="eval &quot;exec /usr/local/bin/gjs"/>
+    </magic>
+    <sub-class-of type="application/ecmascript"/>
+  </mime-type>
   <mime-type type="application/jrd+json">
     <comment>JRD Document</comment>
     <acronym>JRD</acronym>
@@ -705,6 +735,11 @@
     <glob pattern="*.perl"/>
     <glob pattern="*.pod"/>
     <glob pattern="*.t" weight="10"/>
+    <magic priority="100">
+      <match offset="0" type="string" value="#!/usr/bin/env perl"/>
+      <match offset="0" type="string" value="“#!/usr/bin/perl"/>
+      <match offset="0" type="string" value="#!/usr/local/bin/perl"/>
+    </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -734,10 +769,31 @@
     <glob pattern="*.pyc" weight="95"/>
     <glob pattern="*.pyo" weight="95"/>
   </mime-type>
+  <mime-type type="application/x-r-bytecode">
+    <comment>R Bytecode</comment>
+    <generic-icon name="application-x-r-bytecode"/>
+    <glob pattern="*.Rc" weight="95"/>
+  </mime-type>
+  <mime-info>
+    <mime-type type="application/x-remmina">
+      <comment>Remote Desktop (Remmina) File</comment>
+      <icon name="remmina"/>
+      <glob pattern="*.remmina"/>
+      <glob pattern="*.rdp"/>
+      <glob pattern="*.rdpx"/>
+      <glob pattern="*.RDP"/>
+      <sub-class-of type="text/plain"/>
+    </mime-type>
+  </mime-info>
   <mime-type type="application/x-ruby">
-    <comment>Ruby script</comment>
+    <comment>Ruby Script</comment>
     <generic-icon name="application-x-ruby"/>
     <glob pattern="*.rb"/>
+    <magic priority="100">
+      <match offset="0" type="string" value="#!/usr/bin/env ruby"/>
+      <match offset="0" type="string" value="#!/usr/bin/ruby"/>
+      <match offset="0" type="string" value="#!/usr/local/bin/ruby"/>
+    </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -759,13 +815,17 @@
     <glob pattern="*.sh" weight="80"/>
     <glob pattern="*.zsh" weight="95"/>
     <magic priority="100">
+      <match offset="0" type="string" value="#!/bin/ash"/>
       <match offset="0" type="string" value="#!/bin/bash"/>
       <match offset="0" type="string" value="#!/bin/csh"/>
+      <match offset="0" type="string" value="#!/bin/dash"/>
       <match offset="0" type="string" value="#!/bin/sh"/>
       <match offset="0" type="string" value="#!/bin/zsh"/>
       <match offset="0" type="string" value="#!/usr/bin/awk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/env ash"/>
       <match offset="0" type="string" value="#!/usr/bin/env bash"/>
       <match offset="0" type="string" value="#!/usr/bin/env csh"/>
+      <match offset="0" type="string" value="#!/usr/bin/env dash"/>
       <match offset="0" type="string" value="#!/usr/bin/env sh"/>
       <match offset="0" type="string" value="#!/usr/bin/env zsh"/>
       <match offset="0" type="string" value="#!/usr/bin/sed -f"/>
@@ -1190,6 +1250,20 @@
       <match offset="0" type="big32" value="0xee0c0d0a"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-r">
+    <comment>R Script</comment>
+    <generic-icon name="text-x-r"/>
+    <glob pattern="*.R" weight="95"/>
+    <glob pattern="*.RData" weight="80"/>
+    <glob pattern="*.rda" weight="70"/>
+    <glob pattern="*.rds" weight="70"/>
+    <magic priority="100">
+      <match offset="0" type="string" value="#!/usr/bin/env Rscript"/>
+      <match offset="0" type="string" value="#!/usr/bin/Rscript"/>
+      <match offset="0" type="string" value="#!/usr/local/bin/Rscript"/>
+    </magic>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-readme">

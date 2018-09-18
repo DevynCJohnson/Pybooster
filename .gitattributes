@@ -22,6 +22,7 @@ mkinstalldirs linguist-generated=true linguist-vendored
 *.db binary linguist-generated=true linguist-vendored
 *.egg linguist-generated=true linguist-vendored
 *.py[cdo] binary linguist-generated=true linguist-vendored
+*.Rc binary linguist-generated=true linguist-vendored
 *.sqlite binary linguist-generated=true linguist-vendored
 *.sqlite3 binary linguist-generated=true linguist-vendored
 *.tar.bz2 binary linguist-generated=true linguist-vendored
@@ -167,6 +168,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.pygtk text eol=lf linguist-language=Python linguist-vendored=false
 *.pyqt text eol=lf linguist-language=Python linguist-vendored=false
 *.pyside text eol=lf linguist-language=Python linguist-vendored=false
+*.R text eol=lf linguist-language=R linguist-vendored=false
 *.sass text eol=lf linguist-language=Sass linguist-vendored=false
 *.scss text eol=lf linguist-language=SCSS linguist-vendored=false
 *.ash text eol=lf linguist-language=Shell linguist-vendored=false
