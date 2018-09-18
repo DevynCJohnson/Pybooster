@@ -47,7 +47,7 @@ override LIST_MATH_PROGRAMS::=cos fib isprime sin tan
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter cssanalysis exewalk file-analysis flake8 goanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
@@ -139,7 +139,7 @@ help :
 	printf '%s\n%s\n' 'Clean Everything and Documentation:' '    make cleanfull'
 	printf '%s\n%s\n' 'Clean Temp, Object, Cache, and Binary Files:' '    make cleanall'
 	printf '%s\n%s\n' 'Remove Documentation:' '    make cleandoc'
-	printf '%s\n%s\n' 'Remove Python Cache Files:' '    make rmcache'
+	printf '%s\n%s\n' 'Remove Cache Files:' '    make rmcache'
 	printf '%s\n%s\n' 'Remove Temp and Object Files:' '    make rmtmp'
 	printf '%s\n%s\n' 'Remove Temp, Object, and Cache Files:' '    make clean'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* GIT *'
@@ -199,9 +199,9 @@ default :
 # Git
 .PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
-.PHONY : install install_bin install_clib install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
 
 
 # BUILD COMMANDS #
@@ -450,6 +450,10 @@ gitlsfiles :
 # INSTALL/UNINSTALL #
 
 
+install_dev : install_geany_conf install_langspecs install_program_analyzer install_pyeggs install_scripts
+
+uninstall_dev : uninstall_langspecs uninstall_pyeggs uninstall_pylib
+
 install_clib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing C Libraries ==='
 	([ -d $(INSTALLHEADERSDIR)/ ] && $(RMDIR) $(INSTALLHEADERSDIR)/) || true
@@ -469,6 +473,7 @@ uninstall_clib :
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
+	$(RMDIR) ~/.config/geany/filedefs/ ~/.config/geany/templates/files/
 	$(CPDIR) $(ACCDIR)/geany/* ~/.config/geany/
 
 install_programs :
@@ -539,7 +544,7 @@ install_pyeggs : | rmtmp fixperm
 	cd ../..
 
 uninstall_pyeggs :
-	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing LoginOpticons ==='
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Eggs ==='
 	command -v pip3 >&2 > /dev/null && pip3 uninstall flake8_optimal
 	command -v pip3 >&2 > /dev/null || printf '%s\n' 'pip3: command not found!'
 
