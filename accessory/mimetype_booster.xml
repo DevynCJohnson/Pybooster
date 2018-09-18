@@ -774,17 +774,15 @@
     <generic-icon name="application-x-r-bytecode"/>
     <glob pattern="*.Rc" weight="95"/>
   </mime-type>
-  <mime-info>
-    <mime-type type="application/x-remmina">
-      <comment>Remote Desktop (Remmina) File</comment>
-      <icon name="remmina"/>
-      <glob pattern="*.remmina"/>
-      <glob pattern="*.rdp"/>
-      <glob pattern="*.rdpx"/>
-      <glob pattern="*.RDP"/>
-      <sub-class-of type="text/plain"/>
-    </mime-type>
-  </mime-info>
+  <mime-type type="application/x-remmina">
+    <comment>Remote Desktop (Remmina) File</comment>
+    <icon name="remmina"/>
+    <glob pattern="*.remmina"/>
+    <glob pattern="*.rdp"/>
+    <glob pattern="*.rdpx"/>
+    <glob pattern="*.RDP"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="application/x-ruby">
     <comment>Ruby Script</comment>
     <generic-icon name="application-x-ruby"/>
