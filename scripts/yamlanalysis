@@ -29,7 +29,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v yamllint)" ]; then
         printf '======  *YAMLLINT*  ======\n'
-        yamllint --format parsable --strict "$file"
+        yamllint --format parsable --strict "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'yamllint: command not found!\n' >&2
     fi

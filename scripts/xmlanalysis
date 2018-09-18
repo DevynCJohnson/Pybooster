@@ -30,7 +30,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v weblint)" ] && (head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null); then
         printf '======  *WEBLINT*  ======\n'
-        weblint --context=1 --fluff --helper --structure "$file"
+        weblint --context=1 --fluff --helper --structure "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'weblint: command not found!\n' >&2
     fi
@@ -38,9 +38,9 @@ for file in "$@"; do
     if [ -x "$(command -v xmllint)" ]; then
         printf '======  *XMLLINT*  ======\n'
         if (head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null); then
-            xmllint --valid --nowarning --noout --html "$file"
+            xmllint --valid --nowarning --noout --html "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
         else
-            xmllint --valid --nowarning --noout "$file"
+            xmllint --valid --nowarning --noout "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
         fi
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'xmllint: command not found!\n' >&2

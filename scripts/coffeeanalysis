@@ -29,7 +29,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v coffeelint)" ]; then
         printf '======  *COFFEELINT*  ======\n'
-        coffeelint "$file"
+        coffeelint "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'coffeelint: command not found!\n' >&2
     fi

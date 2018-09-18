@@ -1,6 +1,7 @@
 2018-09-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Fixed bug where cssanalysis was missing from the install list
+	* PyBooster:  Improved the output of the *analysis scripts (linters & syntax checkers)
 
 2018-09-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

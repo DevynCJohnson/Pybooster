@@ -29,7 +29,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v luacheck)" ]; then
         printf '======  *LUACHECK*  ======\n'
-        luacheck --no-max-line-length --no-max-code-line-length --no-max-string-line-length --no-max-comment-line-length --no-config --no-cache --std max "$file"
+        luacheck --no-max-line-length --no-max-code-line-length --no-max-string-line-length --no-max-comment-line-length --no-config --no-cache --std max "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'luacheck: command not found!\n' >&2
     fi
