@@ -3,9 +3,11 @@
 	* alphabetize_lines:  Fixed bug where indented lines will have the last line stripped
 	* MACROS*.h:  Fixed a bug in put*() where the NULL terminator was being printed to stdout
 	* makefile:  Fixed bug where cssanalysis was missing from the install list
+	* mimetype_booster.xml:  Added mimetypes for Dockerfile, SASS, & other filetypes
+	* Opticons:  Added mimetype icons for SASS files & other newly added mimetypes
 	* PyBooster:  Improved the output of the *analysis scripts (linters & syntax checkers)
 	* PyBooster:  Added "error_regex=" to many of the Geany filedefs
-	* snippets.conf:  Added additional snippets for CSS
+	* snippets.conf:  Added additional snippets for CSS & many other languages
 
 2018-09-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

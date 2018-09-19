@@ -918,6 +918,20 @@
     <root-XML namespaceURI="http://xspf.org/ns/0/" localName="playlist"/>
     <sub-class-of type="application/xml"/>
   </mime-type>
+  <mime-type type="application/x-yaml">
+    <acronym>YAML</acronym>
+    <comment>YAML Document</comment>
+    <expanded-acronym>YAML Ain&#x27;t Markup Language</expanded-acronym>
+    <generic-icon name="text-yaml"/>
+    <glob pattern="*.yaml"/>
+    <glob pattern="*.yml"/>
+    <magic>
+      <match value="%YAML" type="string" offset="0"/>
+    </magic>
+    <alias type="text/yaml"/>
+    <alias type="text/x-yaml"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="audio/x-amzxml">
     <comment>AmazonMP3 Download File</comment>
     <glob pattern="*.amz"/>
@@ -979,6 +993,24 @@
     <alias type="text/x-css"/>
     <generic-icon name="text-x-css"/>
     <glob pattern="*.css"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/csv">
+    <acronym>CSV</acronym>
+    <comment>CSV Document</comment>
+    <expanded-acronym>Comma Separated Values</expanded-acronym>
+    <generic-icon name="text-x-csv"/>
+    <glob pattern="*.csv"/>
+    <alias type="text/x-comma-separated-values"/>
+    <alias type="text/x-csv"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/csv-schema">
+    <acronym>CSV</acronym>
+    <comment>CSV Schema Document</comment>
+    <expanded-acronym>Comma Separated Values</expanded-acronym>
+    <generic-icon name="text-x-csvs"/>
+    <glob pattern="*.csvs"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-adasrc">
@@ -1063,6 +1095,12 @@
     <glob case-sensitive="true" pattern="*.h"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
+  <mime-type type="text/x-dockerfile">
+    <comment>Dockerfile Build File</comment>
+    <generic-icon name="text-x-dockerfile"/>
+    <glob pattern="Dockerfile weight="90""/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="text/x-doxyfile">
     <comment>Doxygen File</comment>
     <generic-icon name="applications-versioncontrol"/>
@@ -1128,6 +1166,12 @@
     <glob pattern=".gitignore"/>
     <glob pattern=".gitmodules"/>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-less">
+    <comment>Leaner CSS Preprocessor File</comment>
+    <generic-icon name="text-x-less"/>
+    <glob pattern="*.less"/>
+    <sub-class-of type="text/x-css"/>
   </mime-type>
   <mime-type type="text/x-luxrender-materials">
     <comment>LuxRender Materials</comment>
@@ -1300,6 +1344,12 @@
     <generic-icon name="text-x-bioinformatics"/>
     <glob pattern="*.sam"/>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-sass">
+    <comment>Sass CSS Preprocessor File</comment>
+    <generic-icon name="text-x-sass"/>
+    <glob pattern="*.sass"/>
+    <sub-class-of type="text/x-css"/>
   </mime-type>
   <mime-type type="text/x-scss">
     <comment>Sass CSS Preprocessor File</comment>
