@@ -1,5 +1,6 @@
 2018-09-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* alphabetize_lines:  Fixed bug where indented lines will have the last line stripped
 	* makefile:  Fixed bug where cssanalysis was missing from the install list
 	* PyBooster:  Improved the output of the *analysis scripts (linters & syntax checkers)
 

@@ -31,7 +31,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v csslint)" ]; then
         printf '======  *CSSLINT*  ======\n'
-        csslint --format=text "$file" | sed -E "s|^${plainname}$||; s|^(.+): warning at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        csslint --format=text "$file" | sed -E "s|^${plainname}$||; s|^(.+): error at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|; s|^(.+): warning at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'csslint: command not found!\n' >&2
     fi

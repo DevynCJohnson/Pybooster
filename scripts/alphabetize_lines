@@ -94,7 +94,7 @@ if __name__ == '__main__':
         SORT_FUNC: Callable[[str, str], str] = alphadupsort_delimiter_codec if RM_DUP else alphasort_delimiter_codec
         if len(argv) == 1 or (RM_DUP and len(argv) == 2):  # Pipe
             DATA: str = stdin.read()
-            stdout.write(alphabetize_string(DATA.strip(), SORT_FUNC))
+            stdout.write(alphabetize_string(DATA, SORT_FUNC))
         elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
             stdout.write(HELP)
         elif RM_DUP and len(argv) == 3 and argv[2]:  # Sort & Remove duplicates
