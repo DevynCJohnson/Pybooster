@@ -82,3 +82,4 @@ EX_02_WD=
 EX_03_LB=
 EX_03_CM=
 EX_03_WD=
+error_regex=

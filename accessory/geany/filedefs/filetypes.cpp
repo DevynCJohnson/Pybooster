@@ -45,3 +45,4 @@ FT_03_WD=
 FT_04_LB=Splint
 FT_04_CM=splint -I. -hints -checks "%d/%f"
 FT_04_WD=
+error_regex=

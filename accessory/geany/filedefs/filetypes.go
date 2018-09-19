@@ -35,3 +35,4 @@ FT_02_WD=
 EX_00_LB=_Run
 EX_00_CM=go run "%d/%e"
 EX_00_WD=
+error_regex=

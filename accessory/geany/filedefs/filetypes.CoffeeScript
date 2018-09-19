@@ -26,3 +26,4 @@ EX_00_LB=_Run
 EX_00_CM=coffee "%d/%f"
 EX_01_LB=_Evaluate
 EX_01_CM=coffee --eval "%d/%f"
+error_regex=

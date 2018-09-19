@@ -1,8 +1,11 @@
 2018-09-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Fixed bug where indented lines will have the last line stripped
+	* MACROS*.h:  Fixed a bug in put*() where the NULL terminator was being printed to stdout
 	* makefile:  Fixed bug where cssanalysis was missing from the install list
 	* PyBooster:  Improved the output of the *analysis scripts (linters & syntax checkers)
+	* PyBooster:  Added "error_regex=" to many of the Geany filedefs
+	* snippets.conf:  Added additional snippets for CSS
 
 2018-09-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

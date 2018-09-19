@@ -20383,12 +20383,13 @@ LIB_FUNC void puti(const int num) {
 		shifter /= 10;
 	} while (shifter);
 	*p = stdout->lbf;
+	const size_t len = (size_t)(1 + (size_t)p - (size_t)&puti_tmpbuf);
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
 	} while (i);
 	FLOCK(stdout);
-	(void)__write_stdout(puti_tmpbuf, (size_t)(__UIM_BUFLEN_INT + 2));
+	(void)__write_stdout(puti_tmpbuf, len);
 	FUNLOCK(stdout);
 }
 
@@ -20406,12 +20407,13 @@ LIB_FUNC void puti64(const int64_t num) {
 		shifter /= 10;
 	} while (shifter);
 	*p = stdout->lbf;
+	const size_t len = (size_t)(1 + (size_t)p - (size_t)&tmpbuf);
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
 	} while (i);
 	FLOCK(stdout);
-	(void)__write_stdout((const char*)tmpbuf, (size_t)(__UIM_BUFLEN_INT64 + 2));
+	(void)__write_stdout((const char*)tmpbuf, len);
 	FUNLOCK(stdout);
 }
 
@@ -20428,12 +20430,13 @@ LIB_FUNC void putu64(const uint64_t num) {
 		shifter /= 10;
 	} while (shifter);
 	*p = stdout->lbf;
+	const size_t len = (size_t)(1 + (size_t)p - (size_t)&tmpbuf);
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
 	} while (i);
 	FLOCK(stdout);
-	(void)__write_stdout((const char*)tmpbuf, (size_t)(__UIM_BUFLEN_UINT64 + 2));
+	(void)__write_stdout((const char*)tmpbuf, len);
 	FUNLOCK(stdout);
 }
 

@@ -30,3 +30,4 @@ FT_00_WD=
 FT_01_LB=_CSS Analysis
 FT_01_CM=cssanalysis "%d/%f"
 FT_01_WD=
+error_regex=^([^:]+):([0-9]+):([0-9:]+):.*$

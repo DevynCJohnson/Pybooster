@@ -2,6 +2,32 @@
 # -*- coding: utf-8-unix; Mode: Makefile; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=makefile syntax=makefile.doxygen fileformat=unix tabstop=4 :
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Main project makefile
+#' @file makefile
+#' @version 2018.09.18
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+#' @section SYMBOLS
+#' $@ - The file name of the target of the rule
+#' $% - The target member name, when the target is an archive member
+#' $< - The name of the first prerequisite
+#' $? - The names of all the prerequisites that are newer than the target (with spaces between them)
+#' $^ - The names of all the prerequisites (with spaces between them)
+#' $+ - This is like `$^`, but prerequisites listed more than once are duplicated in the order they were listed in the makefile
+#' $* - The stem with which an implicit rule matches
+#' $(@D) - The directory part of the file name of the target (with the trailing slash removed)
+#' $(@F) - The file-within-directory part of the file name of the target
+#' $(*D) - The directory part part of the stem
+#' $(*F) - The file-within-directory part of the stem
+#' $(%D) - The directory part part of the target archive member name
+#' $(%F) - The file-within-directory part of the target archive member name
+#' $(<D) - The directory part part of the first prerequisite
+#' $(<F) - The file-within-directory part of the first prerequisite
+#' $(^D) - Lists of the directory parts parts of all prerequisites
+#' $(^F) - Lists of the file-within-directory parts of all prerequisites
+#' $(?D) - Lists of the directory parts parts of all prerequisites that are newer than the target
+#' $(?F) - Lists of the file-within-directory parts of all prerequisites that are newer than the target
+
 
 .POSIX :
 .ONESHELL :
@@ -683,29 +709,29 @@ $(TESTINGDIR) :
 
 
 $(BIN)/getpgid : $(BIN) $(SRCDIR)/getpgid.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/getsid : $(BIN) $(SRCDIR)/getsid.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/microtime : $(BIN) $(SRCDIR)/microtime.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_M -DNO_PRINT_FLOATS -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/ostype : $(BIN) $(SRCDIR)/ostype.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_INTS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_INTS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/statvfs : $(BIN) $(SRCDIR)/statvfs.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF512 -DNO_SCAN_FLOATS -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF512 -DNO_SCAN_FLOATS -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/typesize : $(BIN) $(SRCDIR)/typesize.c $(MACROSPATH)
-	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 
 # TEST PROGRAM RULES #
 
 
 $(BIN)/test_dev : $(BIN) $(SRCDIR)/test_dev.c $(MACROSPATH)
-	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $< -o $@ && $(STRIP) $@
+	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(TESTINGDIR)/test_dev.s : $(TESTINGDIR) $(SRCDIR)/test_dev.c $(MACROSPATH)
-	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(*F)\" $(MINEXE_PARAMS) -fverbose-asm -S $< -o $@
+	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(*F)\" $(MINEXE_PARAMS) -fverbose-asm -S $(SRCDIR)/$(@F).c -o $@

@@ -28,8 +28,4 @@ EX_00_WD=
 EX_01_LB=Execute (_Verbose)
 EX_01_CM=R --quiet --no-restore --no-save < "%d/%f"
 EX_01_WD=
-
-#package_dump <- function(name, file = NA) {
-#  if(is.na(file)) { file <- paste(name, "dump", sep = ".") }
-#  cat(ls(paste("package", name, sep = ":")), file = file)
-#}
+error_regex=

@@ -20,6 +20,14 @@ context_action_cmd=
 type=1
 width=4
 
-[build_settings]
-compiler=mcs /t:winexe "%f" /r:System,System.Drawing
-run_cmd=mono "%e.exe"
+[build-menu]
+FT_00_LB=_Compile
+FT_00_CM=mcs /t:winexe "%d/%f" /r:System,System.Drawing
+FT_00_WD=
+FT_01_LB=
+FT_01_CM=
+FT_01_WD=
+EX_00_LB=_Execute
+EX_00_CM=mono "%d/%e.exe"
+EX_00_WD=
+error_regex=

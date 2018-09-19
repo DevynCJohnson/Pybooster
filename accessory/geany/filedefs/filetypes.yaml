@@ -19,3 +19,4 @@ FT_00_WD=
 FT_01_LB=_YAML Analysis
 FT_01_CM=yamlanalysis "%d/%f"
 FT_01_WD=
+error_regex=

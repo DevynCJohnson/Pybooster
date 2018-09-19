@@ -13,3 +13,4 @@ context_action_cmd=
 [indentation]
 type=1
 width=4
+error_regex=

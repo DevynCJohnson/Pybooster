@@ -20,3 +20,4 @@ FT_00_WD=
 EX_00_LB=_Execute
 EX_00_CM=ruby "%f"
 EX_00_WD=
+error_regex=

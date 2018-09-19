@@ -18,3 +18,4 @@ FT_00_WD=
 FT_01_LB=XML Analysis
 FT_01_CM=xmlanalysis "%d/%f"
 FT_01_WD=
+error_regex=

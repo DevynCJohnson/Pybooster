@@ -47,3 +47,4 @@ FT_00_WD=
 FT_01_LB=_as
 FT_01_CM=as --warn --64 --strip-local-absolute "%d/%f" -o "%e"
 FT_01_WD=
+error_regex=
