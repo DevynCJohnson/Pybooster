@@ -8,7 +8,8 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
-@usage fib 10  # Return the tenth Fibonacci number
+@section USAGE
+fib 10  # Return the tenth Fibonacci number
 
 @section COMPILE
  - gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c11 -o ./fib ./fib.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./fib

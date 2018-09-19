@@ -12,5 +12,5 @@
 start=$(microtime)
 "$@"
 end=$(microtime)
-dur=$((end - start - 550))
+dur=$((end - start))
 printf 'Execution Time: %lu microseconds\n' "$dur"
