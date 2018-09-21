@@ -1,29 +1,69 @@
 ## PROJECT FILES ##
 
 
-.git/
-bin/
+# Building & Testing
+
+*.[Ll][Oo][Gg]
+*.[Ll][Oo][Gg][Ss]
+.cache
+[Bb]in/
 [Dd]ebug/
-python/
-.bandit
-*.[Cc]ache
-.editorconfig
-.gitlint
-.flake8
-.mypy.ini
-mypy.ini
-.pycodestyle
-.pylintrc
-pylintrc
-.pytest.ini
-pytest.ini
-.sh-session
-.style.yapf
+[Ll][Oo][Gg][Ss]/
 [Tt]esting/
-*.todo.txt
-tox.ini
+build/
+downloads/
+htmlcov/
+metrics/
+python/
+var/
+
+# Project Configuration Files
+
+#.astyle.ini
+#.bandit
+#.bandit.ini
+#.csslint.rc
+#.editorconfig
+#.eslintrc
+#.eslintrc.js
+#.eslintrc.json
+#.eslintrc.yaml
+#.eslintrc.yml
+#.flake8
+#.gitlint
+#.mypy.ini
+#.npmrc
+#.pycodestyle
+#.pylintrc
+#.pytest.ini
+#.travis.yml
+#mypy.ini
+#pylintrc
+#pytest.ini
+#tox.ini
+.coverage
+.coverage.*
+.coveragerc
+.style.yapf
+
+# Revision Control Directories
+
+.[Bb][Zz][Rr]/
+.[Cc][Vv][Ss]/
+.git/
+.hg/
+.svn/
+
+# Miscellaneous
+
+*.[Cc]ache
 *.tmp
-.travis.yml
+*.todo.txt
+.lock-wscript
+.wafpickle-*
+.sh-session
+icon-theme.cache
+yarn.lock
 
 
 ## TRANSLATIONS ##
@@ -31,12 +71,6 @@ tox.ini
 
 *.mo
 *.pot
-
-
-## ICONS & FONTS ##
-
-
-icon-theme.cache
 
 
 ## C ##
@@ -115,49 +149,37 @@ icon-theme.cache
 # Byte-compiled
 
 *.py[cdo]
-__pycache__/
 *__pycache__
+__pycache__/
 
 # Distribution
 
+*.egg
+*.egg-info/
+.eggs/
+.installed.cfg
 .Python
-env/
-build/
 develop-eggs/
 dist/
-downloads/
 eggs/
-.eggs/
+env/
 parts/
 sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
 
 # Installer & Builder Files
 
-logs/
-target/
-*.log
-*.logs
 *.manifest
 *.spec
 pip-delete-this-directory.txt
 pip-log.txt
+target/
 
 # Unit Test & Coverage Reports
 
-.tox/
-htmlcov/
-metrics/
 *,cover
 *.pytb
-.cache
-.coverage
-.coveragerc
-.coverage.*
 .hypothesis/
+.tox/
 coverage.xml
 nosetests.xml
 
@@ -167,7 +189,7 @@ nosetests.xml
 
 # dotenv, virtualenv, & pyenv
 
-ENV/
-venv/
 .env
 .python-version
+ENV/
+venv/

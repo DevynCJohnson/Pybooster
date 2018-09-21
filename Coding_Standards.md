@@ -101,7 +101,7 @@ General Rules
 Doxygen
 -------
 
-- The Doxygen comments must use the Javadoc format (i.e. `@keyword`)
+- All of Doxygen's commands/keywords must use the Javadoc format (i.e. `@keyword` and never backslashes)
 - The Doxygen information comment-block (placed in the file header of source code) must be structured as follows
     1. `@brief`
         - For Python files, a blank line follows `@brief`
@@ -115,30 +115,183 @@ Doxygen
     6. `@section DESCRIPTION` (Optional)
     7. `@section LICENSE` (Optional)
         - When including a license header in a source code file, use the proper/official license header
+- When
+- To provide inline documentation for individual members of a struct, union, class, enum, etc., place the documentation line after the member instead of before
+    - For this purpose you have to put an additional ```<``` marker in the comment line (i.e. ```int var;  /**< DESCRIPTION */```)
+    - Two spaces must be between the code and comment
+- For function parameters and output, use ```@param``` document the parameters and then use ```[in]```, ```[out]```, ```[in,out]``` to document the direction
+    - This documentation must go in the function's main block documentation (before or after the language depending on the language)
 
-### Language Specifics
+### Documentation Comment Styles
 
-- **Awk Scripts:** Doxygen comments use the delimiter ```#' ```
+Below is a list of documentation comment styles (multiline and single-line, where applicable) with examples on how they should be formatted.
+
+#### Block Style
+
+```c
+/********************************************//**
+Multiline Comment
+***********************************************/
+```
+
+#### C++ Style
+
+```c
+///
+/// Multiline
+/// Comment
+///
+
+/// Single-line Comment ///
+```
+
+#### C++ Style (Alternative)
+
+```c
+//!
+//! Multiline
+//! Comment
+//!
+
+//! Single-line Comment !//
+```
+
+#### CoffeeScript Style
+
+```python
+###!
+Multiline Comment
+###
+
+###! Single-line Comment ###
+```
+
+#### D Style
+
+```c
+//' Single-line Comment
+```
+
+#### Erlang Style
+
+```erlang
+%% ----------------------------------
+%% Multiline
+%% Comment
+%% ----------------------------------
+```
+
+#### Fortran Style
+
+```fortran
+!> Multiline
+!! Comment
+
+!> Single-line Comment
+```
+
+#### JavaDoc Style
+
+```c
+/**
+Multiline Comment
+*/
+
+/** Single-line Comment */
+```
+
+#### Pascal Style
+
+```pascal
+(**
+Multiline Comment
+*)
+(** Single-line Comment *)
+```
+
+#### Python/PyDoc Style
+
+Notice that the text begins on the same line as the first ```"""``` with a space in between (this is where ```@brief``` is placed). Then, there is a blank line followed by the rest of the block. The closing ```"""``` is on its own line.
+
+```python
+""" Multiline
+
+Comment
+Additional text
+"""
+```
+
+#### Qt Style
+
+```c
+/*!
+Multiline Comment
+*/
+
+/*! Single-line Comment */
+```
+
+#### R Style
+
+```python
+#' Multiline
+#' Comment
+
+#' Single-line Comment
+```
+
+#### Slash Block Style
+
+```c
+/////////////////////////////////////////////////
+/// Multiline Comment
+/////////////////////////////////////////////////
+```
+
+#### Tcl Style
+
+```python
+## Multiline
+# Comment
+
+## Single-line Comment
+```
+
+#### VHDL Style
+
+```vhdl
+--! Multiline
+--! Comment
+
+--! Single-line Comment
+```
+
+### Doxygen Language Specifics
+
+- **Awk Scripts:** R Style
     - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
     - A single-lined-function's Doxygen comment goes right after the function's closing-brace
-- **C/C++:** Doxygen comments use the delimiter ```/** */```
+- **C/C++:** JavaDoc Style
     - A function's Doxygen comment goes on the line before the function definition
-- **CoffeeScript:** Doxygen comments use the delimiter ```###! ###```
+- **CoffeeScript:** CoffeeScript Style
     - A function's Doxygen comment goes on the line before the function definition
-- **D:** Doxygen comments use the delimiter ```//' ```
-- **JavaScript:** Doxygen comments use the delimiter ```/** */```
+- **D:** D Style
+- **Erlang:** Erlang Style
+- **Fortran:** Fortran Style
+- **JavaScript:** JavaDoc Style
     - A function's Doxygen comment goes on the line before the function definition
-- **Pascal:** Doxygen comments use the delimiter ```(** *)```
-- **Posix Shell:** Doxygen comments use the delimiter ```#' ```
+- **Pascal:** Pascal Style
+- **Posix Shell:** R Style
     - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
     - A single-lined-function's Doxygen comment goes right after the function's closing-brace
-- **Python:** Doxygen comments use the delimiter `""" """`
+- **Python:** PyDoc Style
     - A function's Doxygen comment goes on the line after the function definition
-- **R:** Doxygen comments use the delimiter ```#' ```
+- **R:** R Style
     - A function's Doxygen comment goes on the line before the function definition
-- **Ruby:** Doxygen comments use the delimiter ```#' ```
-- **Sed Scripts:** Doxygen comments use the delimiter ```#' ```
-- **XCompose:** Doxygen comments use the delimiter ```#' ```
+- **Ruby:** R Style
+- **Sed Scripts:** R Style
+- **Tcl Scripts:** Tcl Style
+- **XCompose:** R Style
 
 
 Language-Specific Rules
@@ -310,6 +463,8 @@ JavaScript
 ----------
 
 - Indentation is two-spaces per level (except for minified code)
+- Use ES6 (ECMAScript 2015)
+- Do not use JSX
 - Filenames must be lowercase and may include underscores or hyphens
 - Always put spaces around operators and after commas
 - Always end a simple statement with a semicolon
@@ -333,6 +488,20 @@ JavaScript
 - Enumerations are defined by adding the @enum annotation to an object literal
 - Additional properties may not be added to enumerations after they are defined and enums must be constant with immutable values
 - Follow any additional rules that are specified in [Google's Style Guide](https://google.github.io/styleguide/jsguide.html), unless they conflict with document
+
+### Magic Comments
+
+- In ESLint-Env magic comments (i.e. ```/* eslint-env node, mocha */```), place a space after every comma and on the inside of the comment
+- ESLint magic comments for global variables uses the following formats ```/* global var1, var2 */``` and ```/* global var1:false, var2:true */```
+- ESLint rule magic comments use the format ```/* eslint curly: "error", eqeqeq: "off", quotes: ["error", "double"] */```
+
+
+JSON
+----
+
+- Use four spaces per indentation level
+- Use double-quotes around strings, not single-quotes
+- A single space must follow a colon in a key-value pair, but no whitespace should preceeed the colon
 
 
 Markdown
@@ -468,6 +637,12 @@ XML
 - Tag names cannot contain any of the characters ```!"#$%&'()*+,/;<=>?@[\]^`{|}~```, nor a space character, and cannot start with ```-```, ```.```, nor a numeric digit
 - `<br/>`, `<hr/>`, and other self-closing (empty) tags without attributes must not have a space preceeding `/>`
 - Close all tags and self-closing (empty) tags
+
+
+YAML
+----
+
+- Indentation is two-spaces per level
 
 
 Coding Philosophies

@@ -1,0 +1,45 @@
+root=true
+
+
+;# C STYLE #
+
+[{*.c,*.h,*.json,*.xsd,ChangeLog}]
+charset=utf-8
+end_of_line=lf
+indent_size=4
+indent_style=tab
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+
+;# WEB STYLE #
+
+[{*.coffee,*.dtd,*.html,*.js,*.php*,*.rng,*.svg,*.xml}]
+charset=utf-8
+end_of_line=lf
+indent_size=2
+indent_style=space
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+
+;# UNIX SCRIPT STYLE #
+
+[{*.md,*.sh,*.py,profile,shell_ext}]
+charset=utf-8
+end_of_line=lf
+indent_size=4
+indent_style=space
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+
+;# WINDOWS SCRIPT STYLE #
+
+[*.bat]
+charset=utf-8
+end_of_line=crlf
+indent_size=4
+indent_style=space
+insert_final_newline=true
+trim_trailing_whitespace=true

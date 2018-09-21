@@ -58,6 +58,14 @@ alias ec2_desc_nics='aws ec2 describe-network-interfaces'
 alias ec2_desc_regions='aws ec2 describe-regions'
 alias ec2_desc_rtab='aws ec2 describe-route-tables'
 
+ec2_inst_info() {  # Return information (in JSON format) about the specified instance (by ID)
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1}"
+}
+
+ec2_inst_type() {  # Return the instance type of the specified instance (by ID)
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1}" | grep 'InstanceType'
+}
+
 
 # AWS ECR #
 
@@ -71,7 +79,7 @@ alias ecr_rmrepo='aws ecr delete-repository --repository-name'
 # AWS ECS #
 
 
-alias ecs_desc_clust='aws ecs describe-clusters'
+alias ecs_desc_clust='aws ecs describe-clusters --clusters'
 alias ecs_ls_clust='aws ecs list-clusters --no-paginate'
 alias ecs_ls_con='aws ecs list-container-instances --no-paginate'
 alias ecs_ls_srv='aws ecs list-services --no-paginate'

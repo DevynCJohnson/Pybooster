@@ -4,7 +4,7 @@
 %% @version {date}
 %% @author {developer} <{mail}>
 %% @copyright LGPLv3
-@section LICENSE
+%% @section LICENSE
 %% GNU Lesser General Public License v3
 %% Copyright (c) {developer}, All rights reserved.
 %%

@@ -1,0 +1,63 @@
+module.exports = {
+  'env': {
+    'amd': false,
+    'applescript': false,
+    'atomtest': false,
+    'browser': true,
+    'commonjs': false,
+    'embertest': false,
+    'es6': true,
+    'greasemonkey': false,
+    'jasmine': false,
+    'jest': false,
+    'jquery': false,
+    'meteor': false,
+    'mocha': false,
+    'mongo': false,
+    'node': true,
+    'phantomjs': false,
+    'prototypejs': false,
+    'protractor': false,
+    'qunit': false,
+    'serviceworker': false,
+    'shared-node-browser': false,
+    'shelljs': false,
+    'webextensions': false,
+    'worker': false
+  },
+  'extends': 'eslint:recommended',
+  'parser': 'espree',  // babel-eslint, esprima
+  'parserOptions': {
+    'ecmaFeatures': {
+      'globalReturn': true,
+      'impliedStrict': true,
+      'jsx': false
+    },
+    'ecmaVersion': 6,
+    'sourceType': 'module'
+  },
+  'plugins': ['react'],
+  'rules': {
+    // "off" or 0 - Turn the rule off
+    // "warn" or 1 - Turn the rule on as a warning
+    // "error" or 2 - Turn the rule on as an error; exit code is 1 when triggered
+    'array-bracket-spacing': [2, 'never'],
+    'brace-style': [2, '1tbs', {'allowSingleLine': true}],
+    'camelcase': [2, {'properties': 'never'}],
+    'curly': [2],
+    'eol-last': [2],
+    'indent': [2, 2],
+    'keyword-spacing': [2, {'after': true, 'before': true}],
+    'linebreak-style': [2, 'unix'],
+    'no-extra-semi': [2],
+    'no-template-curly-in-string': [2],
+    'no-trailing-spaces': [2],
+    'quotes': [2, 'single'],
+    'semi': [2, 'always'],
+    'semi-spacing': [2, {'after': false, 'before': false}]
+  },
+  'globals': {
+    // Collections
+    // 'VAR': true
+  }
+}
