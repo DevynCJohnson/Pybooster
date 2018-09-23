@@ -1,3 +1,11 @@
+2018-09-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Applied changes for some project directory restructuring
+	* makefile:  Optimized `fixperm` & `upver`
+	* PyBooster:  Added datastruct.py & multimedia.py to PyLib
+	* PyBooster:  Updated project documentation & move some project directories
+	* snippets.conf:  Added additional snippets for many languages
+
 2018-09-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Coding_Standards.md:  Added coding rules for JSON & YAML

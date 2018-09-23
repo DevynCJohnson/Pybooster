@@ -32,9 +32,7 @@ along with this software.
 from ast import parse
 from collections.abc import Awaitable
 from base64 import b64decode, b64encode
-from csv import reader as creader
 from inspect import currentframe
-from json import dumps as jdump
 from os import X_OK, access, environ, pathsep
 from os.path import dirname, isfile, join as joinpath, split as splitpath
 from pickle import dumps, loads  # nosec
@@ -49,12 +47,6 @@ try:  # Regular Expression module
     from regex import I as REI, fullmatch as refullmatch
 except ImportError:
     from re import I as REI, fullmatch as refullmatch
-
-
-try:
-    from pygame.mixer import init, music
-except ImportError:
-    raise Exception(r'Pygame is not installed or found.')
 
 
 __all__: list = [
@@ -133,6 +125,7 @@ __all__: list = [
     r'rmduplist_tuple',
     r'rmduplist_set',
     r'rmduplist_frozenset',
+    r'transpose2dls',
     # MISCELLANEOUS #
     r'datadump',
     r'execfile',
@@ -140,10 +133,8 @@ __all__: list = [
     r'clearscr',
     r'pygrep',
     r'ipygrep',
-    r'playmusic',
     r'getlinenum',
     r'ezcompile',
-    r'csv2json',
     r'getwebpage',
     r'wlong',
     r'int2bitlen',
@@ -940,6 +931,15 @@ def rmduplist_frozenset(_list: list) -> frozenset:
     return frozenset(_list)
 
 
+def transpose2dls(_list: list) -> list:
+    """Transpose a 2D list
+
+    transpose2dls([['x1', 'x2', 'x3'], ['y1', 'y2', 'y3']])
+    [['x1', 'y1'], ['x2', 'y2', ], ['x3', 'y3']]
+    """
+    return list(map(lambda *_proc: list(_proc), *values))
+
+
 # MISCELLANEOUS #
 
 
@@ -998,16 +998,6 @@ def pygrep(_find: str, _text: str) -> bool:
     return False
 
 
-def playmusic(_file: str) -> None:
-    """Play an MP3, WAV, or other audio file via Pygame3"""
-    init()
-    music.load(_file)
-    music.play()
-    while music.get_busy() is True:
-        continue
-    return None
-
-
 def getlinenum() -> int:
     """Return the script's line number where this method executes"""
     return currentframe().f_back.f_lineno  # type: ignore
@@ -1026,11 +1016,6 @@ def ezcompile(_code: str) -> object:
     except SyntaxError:
         comcode = compile(_code, r'', r'exec')
     return comcode
-
-
-def csv2json(_filepath: str) -> str:
-    """Convert a specified CSV file to a json string"""
-    return jdump(list(creader(open(_filepath, mode=r'rt', encoding=r'utf-8'))))
 
 
 def getwebpage(_address: str) -> bytes:

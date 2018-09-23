@@ -16,11 +16,13 @@ __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 
 
 override LICENSESDIR::=/usr/share/common-licenses
+override ETCDIR::=/etc
 override PIXMAPDIR::=/usr/share/pixmaps
 override SYSAPPDIR::=/usr/share/applications
 override SYSMENUDIR::=/usr/share/menu
 override SYSMIMEDIR::=/usr/share/mime
 override SYSTHEMEDIR::=/usr/share/icons
+override DEBUGGINGDIR::=./testing
 override TESTINGDIR::=./testing
 
 
@@ -67,7 +69,7 @@ endif
 override CHMOD::=chmod -f
 override CPDIR::=cp -f --preserve=mode -r
 override LNDIR::=ln -f -s
-override LN::=ln -f
+override LNHARD::=ln -f
 override LNSOFT::=ln -f -s
 override MKDIR::=mkdir -m 755
 override MKDIRS::=mkdir -m 755 -p
@@ -391,6 +393,7 @@ ifdef OS
         override OS::=POSIX
     else ifeq ($(OS),OSX)
         override OS::=POSIX
+        override ETCDIR::=/private
     else ifeq ($(OS),SOLARIS)
         override OS::=POSIX
     endif

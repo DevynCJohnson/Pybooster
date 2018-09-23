@@ -266,6 +266,15 @@ Multiline Comment
 --! Single-line Comment
 ```
 
+#### Windows Batch File Style
+
+```batch
+REM ! Multiline
+REM ! Comment
+
+REM ! Single-line Comment
+```
+
 ### Doxygen Language Specifics
 
 - **Awk Scripts:** R Style
@@ -291,6 +300,7 @@ Multiline Comment
 - **Ruby:** R Style
 - **Sed Scripts:** R Style
 - **Tcl Scripts:** Tcl Style
+- **Windows Batch Files:** Windows Batch File Style
 - **XCompose:** R Style
 
 

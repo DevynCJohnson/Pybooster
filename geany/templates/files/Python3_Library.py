@@ -2,17 +2,17 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief PyBooster Initialization
+"""@brief DESCRIPTION
 
-@file __init__.py
-@package pybooster.__init__
-@version 2018.09.11
-@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@file {filename}
+@package NAME
+@version {date}
+@author {developer} <{mail}>
 @copyright LGPLv3
 
 @section LICENSE
 GNU Lesser General Public License v3
-Copyright (c) Devyn Collier Johnson, All rights reserved.
+Copyright (c) {developer}, All rights reserved.
 
 This software is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -30,49 +30,14 @@ along with this software.
 
 
 __all__: list = [
-    r'astronomy',
-    r'basic',
-    r'bitwise',
-    r'clibutil',
-    r'code_interpreter',
-    r'color',
-    r'compress',
-    r'convarea',
-    r'convlength',
-    r'convmass',
-    r'convspeed',
-    r'convtemp',
-    r'convtime',
-    r'convvolume',
-    r'cryptography',
-    r'datastruct',
-    r'electronics',
-    r'ezdisplay',
-    r'ezwin',
-    r'financial',
-    r'fs',
-    r'geo_services',
-    r'libchar',
-    r'markup',
-    r'metric',
-    r'multimedia',
-    r'net',
-    r'neuralnet',
-    r'pipx',
-    r'pronouns',
-    r'religion',
-    r'science_data',
-    r'sing',
-    r'strtools',
-    r'system',
-    r'timeutil',
-    r'unix',
-    r'xmath'
+    r'MODULE',
 ]
 
-
-__author__: str = r'Devyn Collier Johnson'
-__email__: str = r'DevynCJohnson@Gmail.com'
+__author__: str = r'{developer}'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2018.09.11'
-__description__: str = r'Collection of libraries for Python3'
+__version__: str = r'{date}'
+
+
+def MODULE(ARG: TYPE) -> TYPE:
+    """DESCRIPTION"""
+    return

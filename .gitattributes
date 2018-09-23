@@ -128,6 +128,7 @@ static/* linguist-vendored
 *.[Xx]html text eol=lf linguist-language=HTML linguist-vendored=false
 *.cfg text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.conf text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.config text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.desktop text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
@@ -173,8 +174,11 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.scss text eol=lf linguist-language=SCSS linguist-vendored=false
 *.ash text eol=lf linguist-language=Shell linguist-vendored=false
 *.bash text eol=lf linguist-language=Shell linguist-vendored=false
+*.bashrc text eol=lf linguist-language=Shell linguist-vendored=false
 *.dash text eol=lf linguist-language=Shell linguist-vendored=false
+*.ksh text eol=lf linguist-language=Shell linguist-vendored=false
 *.sh text eol=lf linguist-language=Shell linguist-vendored=false
+*.zsh text eol=lf linguist-language=Shell linguist-vendored=false
 *profile text eol=lf linguist-language=Shell linguist-vendored=false
 *.[Ss][Qq][Ll] text eol=lf linguist-language=SQL linguist-vendored=false
 *.[Ss][Vv][Gg] text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
@@ -202,17 +206,17 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yaml text eol=lf linguist-language=YAML linguist-vendored=false
 *.yml text eol=lf linguist-language=YAML linguist-vendored=false
-accessory/geany/colorschemes/* text eol=lf linguist-language=INI
-accessory/geany/filedefs/filetypes* text eol=lf linguist-language=INI
-accessory/geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-accessory/geany/templates/* text eol=lf linguist-language=Text linguist-vendored
-accessory/geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored=false
-accessory/geany/templates/files/Windows_Batch.bat text eol=crlf linguist-generated=true linguist-language=Text linguist-vendored=false
 accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/schemas/** linguist-vendored
 accessory/schemas/DTD/*.dtd text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/RelaxNG/*.rng text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/XSD/*.xsd text eol=lf linguist-language=XML linguist-vendored
+geany/colorschemes/* text eol=lf linguist-language=INI
+geany/filedefs/filetypes* text eol=lf linguist-language=INI
+geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
+geany/templates/* text eol=lf linguist-language=Text linguist-vendored
+geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored=false
+geany/templates/files/Windows_Batch.bat text eol=crlf linguist-generated=true linguist-language=Text linguist-vendored=false
 
 
 # Documentation

@@ -424,7 +424,7 @@ def firstchars(_filepath: str, _numchars: int = 10) -> str:
 def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
     """Get file/pipe contents and return as a str"""
     try:
-        _out = []
+        _out: list = []
         if _filename:  # Input file specified
             ensurefileexists(_filename)
             with codec_opener(_filename, mode=r'r', encoding=_encoding, buffering=1) as _file:
@@ -441,7 +441,7 @@ def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
 def readpipe() -> str:
     """Read from a pipe"""
     while True:
-        _input = r''
+        _input: str = r''
         _data = stdin.read(1)
         while _data:
             _input += _data

@@ -29,9 +29,9 @@ along with this software.
 """
 
 
-__author__ = r'{developer}'
-__copyright__ = r'LGPLv3'
-__version__ = r'{date}'
+__author__: str = r'{developer}'
+__copyright__: str = r'LGPLv3'
+__version__: str = r'{date}'
 
 
 def main() -> int:

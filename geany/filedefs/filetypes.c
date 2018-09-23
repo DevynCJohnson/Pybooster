@@ -43,19 +43,19 @@ type=1
 width=4
 
 [build-menu]
-FT_00_LB=Canalysis
+FT_00_LB=C_analysis
 FT_00_CM=canalysis "%d/%f"
 FT_00_WD=
 FT_01_LB=_Build
 FT_01_CM=gcc -m64 -march=haswell -mavx -msse3 -Wall -Wextra -Wpedantic -I. -I/usr/include -L. -L/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -std=c11 -O3 -Wl,-O3 -g0 -ggdb0 -funroll-loops -fwhole-program -ffunction-sections -fdata-sections -o "%d/%e" "%d/%f"
 FT_01_WD=
-FT_02_LB=Splint (strict)
+FT_02_LB=_Splint (strict)
 FT_02_CM=splint -I. -hints -checks -strict "%d/%f"
 FT_02_WD=
 FT_03_LB=cppcheck
 FT_03_CM=cppcheck -I. -v --language=c --std=c11 --std=posix --enable=style --enable=warning --template=gcc --force --inconclusive "%d/%f"
 FT_03_WD=
-FT_04_LB=KWStyle
+FT_04_LB=_KWStyle
 FT_04_CM=KWStyle -v -gcc "%d/%f"
 FT_04_WD=
 FT_05_LB=ltrace

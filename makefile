@@ -47,12 +47,14 @@ override DOCDIR::=./doc
 override PYEGGDIR::=./pyegg
 override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
+override GEANYDIR::=./geany
 override INCDIR::=./include
 override LANGSPECSDIR::=./accessory/language_specs
 override MENUDIR::=$(ACCDIR)/menu_files
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
 override TOOLSDIR::=./tools
+override SHRCDIR::=./shrc
 override SRCDIR::=./src
 override XKBDIR::=$(THEMEDIR)/XKB
 override PYCACHE::=$(PYEGGDIR)/__pycache__/ $(SCRIPTSRCDIR)/__pycache__/
@@ -65,6 +67,7 @@ override INSTALLDOCDIR::=/usr/share/doc
 override INSTALLHEADERSDIR::=/usr/src/include/pybooster
 override INSTALLLANGSPECS2DIR::=/usr/share/gtksourceview-2.0/language-specs
 override INSTALLLANGSPECS3DIR::=/usr/share/gtksourceview-3.0/language-specs
+override INSTALLRCMODDIR::=/etc/shell_ext_modules/
 override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
@@ -74,11 +77,17 @@ override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
+override LIST_RC_MODULES::=aws_rc.sh docker_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
-override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
+override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
 override LIST_MAIN_DEPS::=clang cloc colormake doschk gcc licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount wc xdg-utils xmllint
+
+# Search Parameters Used in Find
+
+override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
 
 # Parameters
 override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
@@ -346,16 +355,13 @@ upver :
 	find . -mount -type f -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/" '{}' \;
 	# Shell Scripts & R #
-	find . -mount -type f \( -name "*.awk" -o -name "*.sed" -o -name "*.ash" -o -name "*.bash" -o -name "*.ksh" -o -name "*.R" -o -name "*.sh" -o -name "*.zsh" \) -exec sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
+	find . -mount -type f \( -name "*.awk" -o -name "*.sed" -o -name "*.ash" -o -name "*.bash" -o -name "*.ksh" -o -name "*.R" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
-	# Tools #
-	find $(TOOLSDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -exec sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/" '{}' \;
-	find $(XKBDIR)/* -mount -type f -name "XCompose" -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/" '{}' \;
+	find $(XKBDIR)/* -mount -type f -name "XCompose" -exec sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/" '{}' \;
 	# Miscellaneous #
 	find . -mount -type f -name "*.desktop" -exec sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/" '{}' \;
-	find $(ACCDIR)/* -mount -type f \( -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/" '{}' \;
 
 
 # CLEAN-UP #
@@ -370,16 +376,11 @@ cleanfull : cleanall cleandoc
 
 fixperm :
 	-@find . -mount -type d -exec $(CHMOD) 755 '{}' +
-	find $(PYEGGDIR)/* -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
-	find . -mount -type f \( -name "*.c" -o -name "*.h" -o -name "*.desktop" -o -name "*.glade" -o -name "icon-theme.cache" -o -name "*.icon" -o -name "*.theme" -o -name "*.types" \) -exec $(CHMOD) 644 '{}' +
-	find . -mount -type f \( -name "*AUTHORS" -o -name "CHANGELOG" -o -name "ChangeLog" -o -name "Doxyfile" -o -name "LICENSE" -o -name "THANKS" -o -name "TODO" -o -name "*.md" -o -name "README" -o -name "PKG-INFO" -o -name "*.rst" -o -name "*.cfg" \) -exec $(CHMOD) 644 '{}' +
-	find . -mount -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.lang" -o -name "*.nt" -o -name "*.dtd" -o -name "*.mathml" -o -name "*.rng" -o -name "*.svg" -o -name "*.xlst" -o -name "*.xml" -o -name "*.xsd" \) -exec $(CHMOD) 644 '{}' +
-	find $(THEMEDIR)/* -mount -type f -exec $(CHMOD) 644 '{}' +
-	$(CHMOD) 644 $(DOCDIR)/pylib/*.txt $(DOCDIR)/clib/html/* $(DOCDIR)/clib/html/search/*
-	$(CHMOD) 644 $(INCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
-	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh
-	$(CHMOD) 755 $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py
-	find $(ACCDIR)/* -mount -type f -exec $(CHMOD) 644 '{}' +
+	find . -mount -not \( -path "./debugging" $(addprefix -prune -o -path ", $(addsuffix ", $(CHMOD644_NO_SEARCH))) \) -type f \( -name ".csslintrc" $(addprefix -o -name ", $(addsuffix ", $(LIST_CHMOD644_EXT))) \) -exec $(CHMOD) 644 '{}' +
+	find $(ACCDIR) $(DOCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
+	find $(PYEGGDIR) -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
+	$(CHMOD) 644 $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
+	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py || true
 
 rmcache :
 	-@find . -mount -type d -name "__pycache__" -exec $(RMDIR) '{}' +
@@ -503,7 +504,7 @@ uninstall_clib :
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
 	$(RMDIR) ~/.config/geany/filedefs/ ~/.config/geany/templates/files/
-	$(CPDIR) $(ACCDIR)/geany/* ~/.config/geany/
+	$(CPDIR) $(GEANYDIR)/* ~/.config/geany/
 
 install_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing /usr/bin Programs ==='
@@ -602,6 +603,7 @@ install_pylib : | rmtmp fixperm
 	([ -d $(PYPATH)3.6/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.6/pybooster) || true
 	([ -d $(PYPATH)3.7/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.7/pybooster) || true
 	([ -d $(PYPATH)3.8/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.8/pybooster) || true
+	([ -d $(PYPATH)3.9/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.9/pybooster) || true
 
 uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Libraries ==='
@@ -641,20 +643,23 @@ uninstall_scripts :
 
 install_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Shell Profiles ==='
-	$(COPY) /etc/profile /etc/profile.backup
-	$(COPY) -t /etc/ $(ACCDIR)/profile $(ACCDIR)/shell_ext && $(CHMOD) 644 /etc/profile /etc/shell_ext
+	# Backup existing files
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
-	$(LN) /etc/profile /etc/bash.bashrc
-	$(CPDIR) $(ACCDIR)/shell_ext_modules /etc
-	$(CHMOD) 755 /etc/shell_ext_modules
+	([ -f /etc/profile.backup ] && $(RM) /etc/profile.backup) || true
+	([ -f /etc/profile ] && $(MOVE) /etc/profile /etc/profile.backup) || true
+	# Add new files
+	$(COPY) -t /etc/ $(SHRCDIR)/profile $(SHRCDIR)/shell_ext && $(CHMOD) 644 /etc/profile /etc/shell_ext
+	$(LNHARD) /etc/profile /etc/bash.bashrc
+	([ ! -d $(INSTALLRCMODDIR) ] && $(MKDIRS) $(INSTALLRCMODDIR)) || true
+	$(COPY) -t $(INSTALLRCMODDIR) $(addprefix $(SHRCDIR)/, $(LIST_RC_MODULES))
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='
 	$(RM) /etc/bash.bashrc /etc/profile /etc/shell_ext
 	$(MOVE) /etc/bash.bashrc.backup /etc/bash.bashrc
 	$(MOVE) /etc/profile.backup /etc/profile
-	$(RMDIR) /etc/shell_ext_modules
+	$(RMDIR) $(INSTALLRCMODDIR)
 
 install_themes : install_loginopticons install_opticons
 

@@ -2,17 +2,17 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief DESCRIPTION
+"""@brief Library for multimedia manipulation
 
-@file {filename}
-@package NAME
-@version {date}
-@author {developer} <{mail}>
+@file multimedia.py
+@package pybooster.multimedia
+@version 2018.09.22
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section LICENSE
 GNU Lesser General Public License v3
-Copyright (c) {developer}, All rights reserved.
+Copyright (c) Devyn Collier Johnson, All rights reserved.
 
 This software is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -29,15 +29,26 @@ along with this software.
 """
 
 
-__all__ = [
-    r'MODULE',
+try:
+    from pygame.mixer import init, music
+except ImportError:
+    raise Exception(r'Pygame is not installed or found.')
+
+
+__all__: list = [
+    # AUDIO #
+    r'playmusic'
 ]
 
-__author__ = r'{developer}'
-__copyright__ = r'LGPLv3'
-__version__ = r'{date}'
+
+# AUDIO #
 
 
-def MODULE(ARG: TYPE) -> TYPE:
-    """DESCRIPTION"""
-    return
+def playmusic(_file: str) -> None:
+    """Play an MP3, WAV, or other audio files via Pygame3"""
+    init()
+    music.load(_file)
+    music.play()
+    while music.get_busy() is True:
+        continue
+    return None
