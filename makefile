@@ -72,7 +72,7 @@ override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
 override LIST_LANGSPECS::=coffeescript
-override LIST_MATH_PROGRAMS::=acos asin atan cbrt cos fib isprime sin sqrt tan
+override LIST_MATH_PROGRAMS::=acos acosh asin atan cbrt cos cosh fib isprime sin sqrt tan
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
@@ -706,6 +706,9 @@ uninstall : uninstall_clib uninstall_programs uninstall_mimetype_booster uninsta
 $(BIN)/acos : $(BIN) $(SRCDIR)/acos.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
+$(BIN)/acosh : $(BIN) $(SRCDIR)/acosh.c $(MACROSPATH)
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
+
 $(BIN)/asin : $(BIN) $(SRCDIR)/asin.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
@@ -716,6 +719,9 @@ $(BIN)/cbrt : $(BIN) $(SRCDIR)/cbrt.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/cos : $(BIN) $(SRCDIR)/cos.c $(MACROSPATH)
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
+
+$(BIN)/cosh : $(BIN) $(SRCDIR)/cosh.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/fib : $(BIN) $(SRCDIR)/fib.c $(MACROSPATH)
