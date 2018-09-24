@@ -72,7 +72,7 @@ override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
 override LIST_LANGSPECS::=coffeescript
-override LIST_MATH_PROGRAMS::=acos acosh asin atan atanh cbrt cos cosh fib isprime sin sqrt tan tanh
+override LIST_MATH_PROGRAMS::=acos acosh asin asinh atan atanh cbrt cos cosh fib isprime sin sinh sqrt tan tanh
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
@@ -712,6 +712,9 @@ $(BIN)/acosh : $(BIN) $(SRCDIR)/acosh.c $(MACROSPATH)
 $(BIN)/asin : $(BIN) $(SRCDIR)/asin.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
+$(BIN)/asinh : $(BIN) $(SRCDIR)/asinh.c $(MACROSPATH)
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
+
 $(BIN)/atan : $(BIN) $(SRCDIR)/atan.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
@@ -734,6 +737,9 @@ $(BIN)/isprime : $(BIN) $(SRCDIR)/isprime.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_FLOATS -DNO_PRINT_INTS -DNO_PRINT_STRING -DNO_PRINT_WIDTH_PREC -DPRINTF_BUF32 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/sin : $(BIN) $(SRCDIR)/sin.c $(MACROSPATH)
+	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
+
+$(BIN)/sinh : $(BIN) $(SRCDIR)/sinh.c $(MACROSPATH)
 	$(CC) -DNO_PRINT_ACTION -DNO_PRINT_CHARS -DNO_PRINT_M -DNO_PRINT_INTS -DNO_PRINT_STRING -DPRINTF_BUF64 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
 
 $(BIN)/sqrt : $(BIN) $(SRCDIR)/sqrt.c $(MACROSPATH)
