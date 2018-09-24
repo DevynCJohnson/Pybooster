@@ -28,7 +28,8 @@ Help() {
 }
 
 
-rmDirFromList() {  # Delete a list of directories; The list is a space-delimited string
+#' Delete a list of directories; The list is a space-delimited string
+rmDirFromList() {
     if [ -n "${*:-}" ]; then
         for _pathname in "$@"; do
             rm -f -r "$_pathname" 2> /dev/null || true
@@ -37,7 +38,8 @@ rmDirFromList() {  # Delete a list of directories; The list is a space-delimited
 }
 
 
-rmFilesFromList() {  # Delete a list of files; The list is a space-delimited string
+#' Delete a list of files; The list is a space-delimited string
+rmFilesFromList() {
     if [ -n "${*:-}" ]; then
         for _filename in "$@"; do
             rm -f "$_filename" 2> /dev/null || true
@@ -46,7 +48,8 @@ rmFilesFromList() {  # Delete a list of files; The list is a space-delimited str
 }
 
 
-rmfiles() {  # Scan the whole system for files to delete; This will search the system for the specified filename pattern (using RegEx)
+#' Scan the whole system for files to delete; This will search the system for the specified filename pattern (using RegEx)
+rmfiles() {
     if [ -z "$1" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     elif [ "$1" = '--test' ] || [ "$1" = '-t' ] || [ "$1" = '--preview' ]; then
@@ -66,7 +69,8 @@ rmfiles() {  # Scan the whole system for files to delete; This will search the s
 
 
 if [ -x "$(command -v sqlite3)" ]; then
-    sqlvacuum() {  # Vacuum the specified SQLite database file
+    #' Vacuum the specified SQLite database file
+    sqlvacuum() {
         for file in "$@"; do
             if [ ! -r "$file" ]; then
                 continue

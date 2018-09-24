@@ -36,8 +36,11 @@ tmp_dir='/tmp/'
 # FUNCTIONS #
 
 
+#' Create random name (used for temporary files)
 rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
 
+
+#' Convert Windows-line-endings to Unix-line-endings
 convert_win2unix() {
     for file in "$@"; do
         ([ -z "${file:-}" ] || [ -r "$file" ]) && continue

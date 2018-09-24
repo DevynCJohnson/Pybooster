@@ -45,19 +45,21 @@ Help() {
 }
 
 
-Basic() {  # Create pyc & pyo
-    python3 -m py_compile "$1"  # .pyc
-    python3 -OO -m py_compile "$1"  # .pyo
+#' Create pyc files
+Basic() {
+    python3 -OO -m py_compile "$1"
 }
 
 
-Compile() {  # Run setup.py and make pyc & pyo
+#' Run setup.py and make pyc files
+Compile() {
     python3 setup.py build_ext --inplace  # .so; setup.py
     Basic "$1"
 }
 
 
-PConfig() {  # Print python3-config data
+#' Print python3-config data
+PConfig() {
     printf '%s\n\n' '# Python3-config #'
     printf '%s\n\n%s' '--clflags' "$(python3-config --cflags)"
     printf '\n\n%s\n\n%s' '--libs' "$(python3-config --libs)"
@@ -66,7 +68,8 @@ PConfig() {  # Print python3-config data
 }
 
 
-Sdist() {  # sdist
+#' Wrapper for sdist
+Sdist() {
     if [ -x "$(command -v compress)" ]; then
         python3 setup.py sdist --manifest-only 1> sdist-msg.log 2> sdist-ERRORS.log  # Manifest
         (python3 setup.py sdist --formats='zip,tar,ztar,gztar,bztar' || python3 setup.py sdist) 1>> sdist3-msg.log 2>> sdist3-ERRORS.log  # dist
@@ -77,7 +80,8 @@ Sdist() {  # sdist
 }
 
 
-Callcx() {  # Cxfreeze3 (embedded libs+interpreter)
+#' Run Cxfreeze3 (embedded libs+interpreter)
+Callcx() {
     if [ -x "$(command -v cxfreeze3)" ]; then
         cxfreeze3 -OO --install-dir='./bin_cxfreeze' "$1" 1> cxfreeze-msg.log 2> cxfreeze-ERRORS.log
     else
@@ -86,7 +90,8 @@ Callcx() {  # Cxfreeze3 (embedded libs+interpreter)
 }
 
 
-CPPsrc() {  # Generate *.(c&cpp) (Cython)
+#' Generate *.c & *.cpp files via Cython
+CPPsrc() {
     if [ -x "$(command -v cython)" ]; then
         cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v "$1"  # c
         cython -3 "$DIRECTIVE" --capi-reexport-cincludes -Wextra -Werror -D -v --cplus "$1"  # cpp
@@ -96,12 +101,14 @@ CPPsrc() {  # Generate *.(c&cpp) (Cython)
 }
 
 
-qt2py() {  # Convert Qt5 to Python3 code
+#' Convert PyQt5 UI code to Python3 code
+qt2py() {
     python3 -m PyQt5.uic.pyuic "$1"
 }
 
 
-_pydeb() {  # Make Debian file for Python package
+#' Make Debian file for Python package
+_pydeb() {
     if [ -x "$(command -v py2dsc)" ]; then
         py2dsc "$1"
     else
@@ -151,11 +158,11 @@ while true; do
             CPPsrc "$1"
             exit
         ;;
-        -b)  # Create pyc & pyo
+        -b)  # Create pyc
             Basic "$1"
             shift
         ;;
-        -c)  # Run setup.py and make pyc & pyo
+        -c)  # Run setup.py and make pyc
             Compile "$1"
             shift
         ;;
@@ -167,7 +174,7 @@ while true; do
             PConfig
             shift
         ;;
-        -q)  # Convert Qt5 to Python3 code
+        -q)  # Convert PyQt5 UI code to Python3 code
             qt2deb "$1"
             shift
         ;;
@@ -175,11 +182,11 @@ while true; do
             _Sdist
             shift
         ;;
-        -x|--cx)  # Cxfreeze3 (embedded libs+interpreter)
+        -x|--cx)  # Run Cxfreeze3 (embedded libs+interpreter)
             Callcx "$1"
             shift
         ;;
-        -y)  # Generate *.(c&cpp) (Cython)
+        -y)  # Generate *.c & *.cpp files via Cython
             CPPsrc "$1"
             shift
         ;;

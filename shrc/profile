@@ -37,6 +37,7 @@ export PROFILE_SHELL
 # OS DETECTION #
 
 
+#' Detect and return the type of the currently running operating system
 os_table() {
     case "$1" in
         aix*) platform='aix';;
@@ -74,6 +75,7 @@ os_table() {
 }
 readonly -f os_table
 
+# Set various variables indicating the operating system type
 PLATFORM='unknown'
 if [ -n "${OS:-}" ]; then
     OSTEST="$(echo "$OS" | tr '[:upper:]' '[:lower:]')"
@@ -96,6 +98,7 @@ readonly PLATFORM
 export PLATFORM
 unset unamestr
 
+# Determine the operating system family of the currently running operating system
 case "$PLATFORM" in
     aix|hpux|inferno|plan9|reliant|sinix|ultrix|unixware) readonly OSFAMILY='unix';;
     *bsd|darwin) readonly OSFAMILY='bsd';;
@@ -114,6 +117,7 @@ export OSFAMILY
 # CPU DETECTION #
 
 
+# Determine the CPU type of the currently running system
 if [ -x "$(command -v uname)" ]; then
     ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
 else

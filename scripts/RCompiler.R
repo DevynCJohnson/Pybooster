@@ -9,7 +9,7 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-library("compiler")
+library('compiler')
 
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -19,5 +19,5 @@ filepath <- args[1]
 if (file.exists(filepath)) {
   cmpfile(filepath)
 } else {
-  message(paste("ERROR: The file", filepath, "was not found!"))
+  message(paste('ERROR: The file', filepath, 'was not found!'))
 }

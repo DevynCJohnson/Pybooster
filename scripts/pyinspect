@@ -67,32 +67,38 @@ Help() {
 }
 
 
-_flake8() {  # Run flake8
+#' Run flake8
+_flake8() {
     flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$_file"
 }
 
 
-_pep8() {  # Check for pep8 compliance
+#' Check for pep8 compliance
+_pep8() {
     pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$_file"
 }
 
 
-_pyflakes() {  # Run Pyflakes
+#' Run Pyflakes
+_pyflakes() {
     pyflakes3 "$_file"
 }
 
 
-_pylint() {  # Run Pylint
+#' Run Pylint
+_pylint() {
     pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,FINISH,FIX,FIXME,HERE,TODEBUG,TODO,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$_file"
 }
 
 
-_pytest() {  # Run Pytest
+#' Run Pytest
+_pytest() {
     pytest3 --pdb "$_file"
 }
 
 
-analyze() {  # Analyze a script
+#' Analyze a script using many tools
+analyze() {
     printf '%s\n' '===== Tool Versions ====='
     printf '%s%s%s\n' ' == flake8 - ' "$(flake8 --version)" ' =='
     printf '%s%s%s\n\n' ' == pycodestyle (pep8) - ' "$(pycodestyle --version)" ' =='

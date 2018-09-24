@@ -1,8 +1,9 @@
 2018-09-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Added `macify` & `unmacify`
+	* Opticons:  Added support for systems seeking the "notifications" directory & added some missing icons
 	* PyBooster:  Added pipebuf
-	* PyBooster:  Began applying the newest documentation standards (stated in `Coding_Standards.md`) to the shell scripts
+	* PyBooster:  Applied the newest documentation standards (stated in `Coding_Standards.md`) to the shell scripts
 	* PyLib:  Reorganized some functions among the libraries
 
 2018-09-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

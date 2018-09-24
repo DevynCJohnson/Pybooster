@@ -286,6 +286,7 @@ REM ! Single-line Comment
 - **JavaScript:** JavaDoc Style
 - **Pascal:** Pascal Style
 - **Posix Shell:** R Style
+    - Aliases may have their Doxygen comment (if brief) be on the same line as the alias definition
 - **Python:** PyDoc Style
     - A function's Doxygen comment goes on the line after the function definition
 - **R:** R Style
