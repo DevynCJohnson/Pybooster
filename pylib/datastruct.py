@@ -37,6 +37,8 @@ from json import dumps as jdump, loads as jloads, JSONDecodeError
 from sys import stderr
 from typing import Sequence, Tuple, Union
 
+from pybooster.fs import ensurefileexists
+
 
 __all__ = [
     # CONSTANTS #
@@ -97,6 +99,7 @@ def openinifile(_file: Union[object, str]) -> object:
         configfile.read_file(_file)  # type: ignore
         return configfile
     else:
+        ensurefileexists(_file)
         configfile = ConfigParser()
         configfile.read(_file)  # type: ignore
         return configfile
@@ -175,6 +178,7 @@ def convertinibool(_file: str, _destfile: str) -> None:
 
 def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _delimiter: str = r',', _quotechar: str = r'"') -> list:
     """Convert the specified CSV file to a list of ordered Python dictionaries or a plain list"""
+    ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
             csvreader = DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)  # type: ignore
@@ -218,6 +222,7 @@ def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = Tr
     """Open an JSON file given a pathname and return the object as a dict or str (if `_jsondata` is set to `False`)"""
     try:
         _out: list = []
+        ensurefileexists(_filename)
         with codec_opener(_filename, mode=r'rt', encoding=_encoding, buffering=1) as _file:
             _out.append(r''.join(_file.readlines()))
         return jloads(r''.join(_out)) if _jsondata else r''.join(_out)
@@ -246,6 +251,7 @@ def write2minijson(_filename: str, _dict: dict, _sort_keys: bool = True) -> None
 
 def opentsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _quotechar: str = r'"') -> list:
     """Convert the specified TSV file to a list of ordered Python dictionaries or a plain list"""
+    ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
             csvreader = DictReader(_file, fieldnames=_fieldnames, delimiter='\t', quotechar=_quotechar)  # type: ignore

@@ -29,10 +29,13 @@ along with this software.
 """
 
 
+from base64 import b64decode, b64encode
 import bz2
 import gzip
 import lzma
+from pickle import dumps, loads  # nosec
 import tarfile
+import zlib
 
 
 __all__: list = [
@@ -62,7 +65,10 @@ __all__: list = [
     r'getxzvar',
     # TAR #
     r'extracttar',
-    r'createtarfile'
+    r'createtarfile',
+    # MISCELLANEOUS #
+    r'data2str',
+    r'str2data'
 ]
 
 
@@ -222,3 +228,16 @@ def createtarfile(_filenames: list, _tarfile: str) -> None:
         for _files in _filenames:
             _file.add(_files)
     return
+
+
+# MISCELLANEOUS #
+
+
+def data2str(_data: object) -> str:
+    """Pickle and compress (using Zlib) data and then encode the data in base64"""
+    return str(b64encode(zlib.compress(dumps(_data), level=9), altchars=br'-_'), encoding=r'utf-8')
+
+
+def str2data(_data: str) -> bytes:
+    """Load the given compressed+pickled base64 data"""
+    return loads(zlib.decompress(b64decode(_data, altchars=br'-_')))

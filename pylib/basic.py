@@ -31,16 +31,12 @@ along with this software.
 
 from ast import parse
 from collections.abc import Awaitable
-from base64 import b64decode, b64encode
 from inspect import currentframe
 from os import X_OK, access, environ, pathsep
 from os.path import dirname, isfile, join as joinpath, split as splitpath
-from pickle import dumps, loads  # nosec
 from sys import modules, stdout
 from typing import AbstractSet, Any, Generator, Iterable, Union
 from types import BuiltinFunctionType, CodeType, CoroutineType, FrameType, FunctionType, GeneratorType, GetSetDescriptorType, MemberDescriptorType, MethodType, ModuleType, TracebackType
-from urllib.request import urlopen
-from zlib import compress as zlibcompress, decompress as zlibdecompress
 
 
 try:  # Regular Expression module
@@ -127,7 +123,6 @@ __all__: list = [
     r'rmduplist_frozenset',
     r'transpose2dls',
     # MISCELLANEOUS #
-    r'datadump',
     r'execfile',
     r'incde',
     r'clearscr',
@@ -135,7 +130,6 @@ __all__: list = [
     r'ipygrep',
     r'getlinenum',
     r'ezcompile',
-    r'getwebpage',
     r'wlong',
     r'int2bitlen',
     r'char2bitlen'
@@ -337,9 +331,9 @@ def iscomplex(_obj: Union[complex, int, str]) -> bool:
     try:
         if _obj.__class__ is complex:
             return True
-        elif _obj.__class__ is int:
+        if _obj.__class__ is int:
             return False
-        elif _obj.__class__ is str and r'j' in _obj and complex(_obj.replace(r' ', r'')).__class__ is complex:  # type: ignore
+        if _obj.__class__ is str and r'j' in _obj and complex(_obj.replace(r' ', r'')).__class__ is complex:  # type: ignore
             return True
         return False
     except (SyntaxError, TypeError, ValueError):
@@ -707,7 +701,6 @@ def rmmod(_modname: str) -> None:
             delattr(mod, _modname)
         except AttributeError:
             pass
-    return
 
 
 # DICTIONARY-RELATED FUNCTIONS #
@@ -748,7 +741,7 @@ def finddictkeyx(_dict: dict, _search_val: Any) -> str:
         try:
             if isinstance(_val, (int, str)) and _val == _search_val:
                 return _key
-            elif _search_val in _val:
+            if _search_val in _val:
                 return _key
         except TypeError:
             continue
@@ -883,7 +876,6 @@ def sortlistshort2long(_list: list) -> None:
     >>> sortlistshort2long(['xz', 'xyz', 'x'])
     """
     _list.sort(key=len, reverse=True)
-    return None
 
 
 def sortlistlong2short(_list: list) -> None:
@@ -892,7 +884,6 @@ def sortlistlong2short(_list: list) -> None:
     >>> sortlistlong2short(['xz', 'xyz', 'x'])
     """
     _list.sort(key=len, reverse=False)
-    return None
 
 
 def rmduplist(_list: list) -> list:
@@ -937,20 +928,10 @@ def transpose2dls(_list: list) -> list:
     transpose2dls([['x1', 'x2', 'x3'], ['y1', 'y2', 'y3']])
     [['x1', 'y1'], ['x2', 'y2', ], ['x3', 'y3']]
     """
-    return list(map(lambda *_proc: list(_proc), *values))
+    return list(map(lambda *_proc: list(_proc), *_list))
 
 
 # MISCELLANEOUS #
-
-
-def datadump(_data: object) -> bytes:
-    """Pickle and compress (using Zlib) data and then encode the data in base64"""
-    return b64encode(zlibcompress(dumps(_data), level=9))
-
-
-def loaddata(_data: str) -> bytes:
-    """Load the given compressed+pickled base64 data"""
-    return loads(zlibdecompress(b64decode(_data)))
 
 
 def execfile(_filename: str) -> object:
@@ -970,13 +951,11 @@ def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
             break
         i += delta
         j -= delta
-    return None
 
 
 def clearscr() -> None:
     """Clear Terminal"""
     stdout.write('\n' * 70)
-    return None
 
 
 def ipygrep(_find: str, _text: str) -> bool:
@@ -1016,15 +995,6 @@ def ezcompile(_code: str) -> object:
     except SyntaxError:
         comcode = compile(_code, r'', r'exec')
     return comcode
-
-
-def getwebpage(_address: str) -> bytes:
-    """Return a webpage's HTML code as a string"""
-    if r'://' not in _address:
-        _address = r'https://' + _address
-    if not _address.endswith(r'/'):
-        _address += r'/'
-    return urlopen(_address).read()  # nosec
 
 
 def wlong(_int32: int) -> bytes:

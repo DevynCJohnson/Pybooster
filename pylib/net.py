@@ -44,7 +44,8 @@ __all__: list = [
     r'name2ip',
     r'ping',
     r'findgw',
-    r'hasnet'
+    r'hasnet',
+    r'getwebpage'
 ]
 
 
@@ -124,3 +125,12 @@ def hasnet() -> bool:
     elif urlopen(r'https://docs.python.org').getcode() == 200:  # type: ignore  # nosec
         return True
     return False
+
+
+def getwebpage(_address: str) -> bytes:
+    """Return a webpage's HTML code as a string"""
+    if r'://' not in _address:
+        _address = r'https://' + _address
+    if not _address.endswith(r'/'):
+        _address += r'/'
+    return urlopen(_address).read()  # nosec
