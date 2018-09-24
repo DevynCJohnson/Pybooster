@@ -28,4 +28,7 @@ EX_00_WD=
 EX_01_LB=Execute (_Verbose)
 EX_01_CM=R --quiet --no-restore --no-save < "%d/%f"
 EX_01_WD=
+EX_02_LB=E_xecute
+EX_02_CM=Rexe "%d/%e.Rc"
+EX_02_WD=
 error_regex=

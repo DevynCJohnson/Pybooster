@@ -284,9 +284,9 @@ def expandhome(_pathname: str) -> str:
     """
     if _pathname.startswith(r'${HOME}'):
         return _pathname.replace(r'${HOME}', expanduser(r'~'), 1)
-    elif r'$HOME' in _pathname:
+    if r'$HOME' in _pathname:
         return _pathname.replace(r'$HOME', expanduser(r'~'), 1)
-    elif r'~' in _pathname:
+    if r'~' in _pathname:
         return _pathname.replace(r'~', expanduser(r'~'), 1)
     return _pathname
 
@@ -472,29 +472,25 @@ def writedata(_filename: str, _write: str, _encoding: str = r'utf-8') -> None:
 def append2file(_filename: str, _write: object) -> None:
     """Send data to new file or append to an existing file"""
     with open(_filename, mode=r'at', encoding=r'utf-8') as _file:
-        _file.write(str(_write))
-    return None
+        _file.write(str(_write, encoding=r'utf-8'))
 
 
 def write2file(_filename: str, _write: object) -> None:
     """Send data to new file or overwrite file"""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(str(_write))
-    return None
+        _file.write(str(_write, encoding=r'utf-8'))
 
 
 def writebin2file(_filename: str, _write: bytes) -> None:
     """Write binary data to a new file or overwrite the file"""
     with open(_filename, mode=r'wb') as _file:
         _file.write(_write)
-    return None
 
 
 def writestr2binfile(_filename: str, _write: str) -> None:
     """Write a string as binary data to a new file or overwrite the file"""
     with open(_filename, mode=r'wb') as _file:
         _file.write(str(_write).encode(r'utf-8'))
-    return None
 
 
 def head(_filepath: str = r'', _numlines: int = 10) -> str:

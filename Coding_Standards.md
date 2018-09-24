@@ -115,7 +115,7 @@ Doxygen
     6. `@section DESCRIPTION` (Optional)
     7. `@section LICENSE` (Optional)
         - When including a license header in a source code file, use the proper/official license header
-- When
+- By default, a function's Doxygen comment goes on the line before the function definition unless specified otherwise in this document
 - To provide inline documentation for individual members of a struct, union, class, enum, etc., place the documentation line after the member instead of before
     - For this purpose you have to put an additional ```<``` marker in the comment line (i.e. ```int var;  /**< DESCRIPTION */```)
     - Two spaces must be between the code and comment
@@ -278,25 +278,17 @@ REM ! Single-line Comment
 ### Doxygen Language Specifics
 
 - **Awk Scripts:** R Style
-    - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
-    - A single-lined-function's Doxygen comment goes right after the function's closing-brace
 - **C/C++:** JavaDoc Style
-    - A function's Doxygen comment goes on the line before the function definition
 - **CoffeeScript:** CoffeeScript Style
-    - A function's Doxygen comment goes on the line before the function definition
 - **D:** D Style
 - **Erlang:** Erlang Style
 - **Fortran:** Fortran Style
 - **JavaScript:** JavaDoc Style
-    - A function's Doxygen comment goes on the line before the function definition
 - **Pascal:** Pascal Style
 - **Posix Shell:** R Style
-    - A multi-lined-function's Doxygen comment goes right after the function's opening-brace, but detailed comments go on the line after the function definition
-    - A single-lined-function's Doxygen comment goes right after the function's closing-brace
 - **Python:** PyDoc Style
     - A function's Doxygen comment goes on the line after the function definition
 - **R:** R Style
-    - A function's Doxygen comment goes on the line before the function definition
 - **Ruby:** R Style
 - **Sed Scripts:** R Style
 - **Tcl Scripts:** Tcl Style

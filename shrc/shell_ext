@@ -831,7 +831,8 @@ searchInPkgPath() {  # Search for a filename in $PKG_CONFIG_PATH
 
 # Networking Functions
 
-CheckForNetwork() {  # Determine if the network is up by looking for any non-loopback internet network interfaces
+#' Determine if the network is up by looking for any non-loopback internet network interfaces
+CheckForNetwork() {
     if [ -z "${NETWORKUP:-}" ]; then
         test="$(ifconfig -a inet 2> /dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)"
         if [ "${test}" -gt 0 ]; then
@@ -847,7 +848,8 @@ downloadtar() { wget -c "$1" -O - | tar -xz; }
 
 # Patch Functions
 
-applypatch() {  # Apply a patch given a file name and the pathname of the patch
+#' Apply a patch given a file name and the pathname of the patch
+applypatch() {
     if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v patch)" ]; then
@@ -859,7 +861,8 @@ applypatch() {  # Apply a patch given a file name and the pathname of the patch
     fi
 }
 
-createpatch() {  # Create a patch given two file names
+#' Create a patch given two file names
+createpatch() {
     if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v diff)" ]; then
@@ -872,7 +875,8 @@ createpatch() {  # Create a patch given two file names
     fi
 }
 
-reversepatch() {  # Reverse the effects of a patch given a file name and the pathname of the patch
+#' Reverse the effects of a patch given a file name and the pathname of the patch
+reversepatch() {
     if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v patch)" ]; then
@@ -884,7 +888,8 @@ reversepatch() {  # Reverse the effects of a patch given a file name and the pat
     fi
 }
 
-uniquelines() {  # Show the unique lines of two files given two file names
+#' Show the unique lines of two files given two file names
+uniquelines() {
     if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v comm)" ]; then
@@ -905,7 +910,8 @@ uniquelines() {  # Show the unique lines of two files given two file names
 
 # Process Control Functions
 
-GetPID() {  # Return the PID of a process (if found)
+#' Return the PID of a process (if found)
+GetPID() {
     program="$1"
     pidfile="${PIDFILE:=/var/run/${program}.pid}"
     pid=''
@@ -929,7 +935,9 @@ GetPID() {  # Return the PID of a process (if found)
 }
 
 if [ -x "$(command -v ps)" ]; then
+    #' Return the top 10 cpu-resource-consuming processes
     pscpu10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND' && ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR != 1) { print } }' | sort -nr -k 5 | awk 'FNR <= 10' && echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
+    #' Return the top 10 memory-consuming processes
     psmem10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND' && ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR != 1) { print } }' | sort -nr -k 6 | awk 'FNR <= 10' && echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
 fi
 
@@ -1022,10 +1030,17 @@ elif [ -d /usr/local/share/nano ]; then
     }
 fi
 
-rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
+#' Create a random filename
+rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
+
+if [ -x "$(command -v R)" ]; then
+    #' Execute compiled R file (*.Rc)
+    Rexe() { R -q --slave -e "library('compiler'); loadcmp(${RC_FILE})"; }
+fi
 
 if [ -x "$(command -v gsettings)" ]; then
-    setwallpaper() {  # Set the desktop wallpaper to the specified image
+    #' Set the desktop wallpaper to the specified image
+    setwallpaper() {
         if [ -z "$1" ]; then
             printf 'ERROR: A parameter is required!\n' >&2
         elif [ ! -r "$1" ]; then
@@ -1045,7 +1060,8 @@ if [ -x "$(command -v gsettings)" ]; then
 fi
 
 if [ -x "$(command -v sqlite3)" ]; then
-    sqlvacuum() {  # Vacuum the specified SQLite database files
+    #' Vacuum the specified SQLite database files
+    sqlvacuum() {
         for file in "$@"; do
             if [ ! -r "$file" ]; then
                 printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue

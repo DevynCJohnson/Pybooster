@@ -86,7 +86,6 @@ def write2gzip(_filename: str, _write: str) -> None:
     """Compress data using gzip and write it to a file"""
     with gzip.open(_filename, mode=r'wb') as _file:
         _file.write(str(_write).encode(r'utf-8'))
-    return
 
 
 def creategzipfile(_filename: str) -> None:
@@ -94,7 +93,6 @@ def creategzipfile(_filename: str) -> None:
     with gzip.open(_filename, mode=r'rb') as _filein:
         with gzip.open(_filename + r'.gz', mode=r'wb') as _fileout:
             _fileout.writelines(_filein)
-    return
 
 
 def gzipvar(data: str, _encoding: str = r'utf-8') -> bytes:
@@ -121,7 +119,6 @@ def write2bzip(_filename: str, _write: str) -> None:
     """Compress data using bzip2 and write it to a file"""
     with bz2.open(_filename, mode=r'wb', compresslevel=9) as _file:
         _file.write(str(_write).encode(r'utf-8'))
-    return
 
 
 def createbzipfile(_filename: str) -> None:
@@ -129,7 +126,6 @@ def createbzipfile(_filename: str) -> None:
     with bz2.open(_filename, mode=r'rb') as _filein:
         with bz2.open(_filename + r'.bz', mode=r'wb', compresslevel=9) as _fileout:
             _fileout.writelines(_filein)
-    return
 
 
 def bzipvar(data: str, _encoding: str = r'utf-8') -> bytes:
@@ -156,7 +152,6 @@ def write2lzma(_filename: str, _write: str) -> None:
     """Compress data using LZMA and write it to a file"""
     with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
-    return
 
 
 def createlzmafile(_filename: str) -> None:
@@ -164,7 +159,6 @@ def createlzmafile(_filename: str) -> None:
     with lzma.open(_filename, mode=r'rb') as _filein:
         with lzma.open(_filename + r'.lzma', mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _fileout:
             _fileout.writelines(_filein)
-    return
 
 
 def lzmavar(data: str, _encoding: str = r'utf-8') -> bytes:
@@ -191,7 +185,6 @@ def write2xz(_filename: str, _write: str) -> None:
     """Compress data using XZ and write it to a file"""
     with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
-    return
 
 
 def createxzfile(_filename: str) -> None:
@@ -199,7 +192,6 @@ def createxzfile(_filename: str) -> None:
     with lzma.open(_filename, mode=r'rb') as _filein:
         with lzma.open(_filename + r'.xz', mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _fileout:
             _fileout.writelines(_filein)
-    return
 
 
 def xzvar(data: str, _encoding: str = r'utf-8') -> bytes:
@@ -219,7 +211,6 @@ def extracttar(_filename: str) -> None:
     """Extract files from a Tar file in the directory"""
     with tarfile.open(_filename, mode=r'r') as _file:
         _file.extractall()
-    return
 
 
 def createtarfile(_filenames: list, _tarfile: str) -> None:
@@ -227,7 +218,6 @@ def createtarfile(_filenames: list, _tarfile: str) -> None:
     with tarfile.open(_tarfile, mode=r'w') as _file:
         for _files in _filenames:
             _file.add(_files)
-    return
 
 
 # MISCELLANEOUS #
@@ -240,4 +230,4 @@ def data2str(_data: object) -> str:
 
 def str2data(_data: str) -> bytes:
     """Load the given compressed+pickled base64 data"""
-    return loads(zlib.decompress(b64decode(_data, altchars=br'-_')))
+    return loads(zlib.decompress(b64decode(bytes(_data, encoding=r'utf-8'), altchars=br'-_')))

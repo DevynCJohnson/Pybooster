@@ -29,15 +29,18 @@ along with this software.
 """
 
 
+from base64 import b64decode, b64encode
 from codecs import open as codec_opener
 from configparser import ConfigParser, RawConfigParser
 from csv import DictReader, DictWriter, QUOTE_MINIMAL, reader as creader, writer as cwriter
 from io import StringIO
 from json import dumps as jdump, loads as jloads, JSONDecodeError
+from pickle import dumps, loads  # nosec
 from sys import stderr
 from typing import Sequence, Tuple, Union
+from zlib import compress as zcompress, decompress as zdecompress
 
-from pybooster.fs import ensurefileexists
+from pybooster.fs import ensurefileexists, getfile, write2file
 
 
 __all__ = [
@@ -75,7 +78,10 @@ __all__ = [
     r'ini2json',
     r'json2csv',
     r'json2csvstr',
-    r'json2dict'
+    r'json2dict',
+    # PICKLE #
+    r'data2pklfile',
+    r'pklfile2data'
 ]
 
 
@@ -412,3 +418,17 @@ def json2dict(_str: str) -> Union[dict, list]:
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
     """
     return jloads(_str)
+
+
+# PICKLE #
+
+
+def data2pklfile(_data: object, _filename: str) -> None:
+    """Pickle, compress (using Zlib), and encode the data in base64, then write it to a file"""
+    write2file(_filename, str(b64encode(zcompress(dumps(_data), level=9), altchars=br'-_'), encoding=r'utf-8'))
+
+
+def pklfile2data(_filename: str) -> object:
+    """Open the specified file and load the contained compressed+pickled base64 data"""
+    ensurefileexists(_filename)
+    return loads(zdecompress(b64decode(bytes(getfile(_filename), encoding=r'utf-8'), altchars=br'-_')))

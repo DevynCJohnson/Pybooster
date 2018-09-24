@@ -86,14 +86,14 @@ def _indent(txt: str, chars: int) -> str:
     result = r''
     d = r' ' * chars
     for line in txt.split('\n'):
-        result = result + (d + line + '\n')
+        result += (d + line + '\n')
     return result
 
 
 class NeuroCode:  # pylint: disable=C0200,R0902
     """Neurocode class"""
 
-    def __init__(self, data: list, layers: list, iterations: int = 40000, rate: float = 0.4) -> None:
+    def __init__(self, data: list, layers: list, iterations: int = 40000, rate: float = 0.2) -> None:
         """Initialize Neurocode-learning
 
         @param layers    Specify the number of hidden layers in the network and the size of each layer. For example, `layers = [3, 4]` makes two hidden layers, the first with 3 nodes and the second with 4 nodes. By default, one hidden layer is used with a size proportionate to the size of the input array
@@ -215,32 +215,28 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def writedump(self, _filename: str) -> None:
         """Pickle neural-network, compress it using Zlib, and then write it to a file"""
-        with open(_filename, mode=r'wb') as _file:
-            _file.write(b64encode(compress(dumps(self), 9)))
-        return None
+        with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
+            _file.write(str(b64encode(compress(dumps(self), 9), altchars=br'-_'), encoding=r'utf-8'))
 
     def neurocode2pythonfile(self, _filename: str, _neuroname: str) -> None:
         """Write the Neurocode to a file as Python code"""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_python_function(_neuroname))
-        return None
 
     def neurocode2cfile(self, _filename: str, _neuroname: str) -> None:
         """Write the Neurocode to a file as C code"""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_c_function(_neuroname))
-        return None
 
     def neurocode2javafile(self, _filename: str, _neuroname: str) -> None:
         """Write the Neurocode to a file as Java code"""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_java_method(_neuroname))
-        return None
 
     @staticmethod
-    def load(s) -> object:
+    def load(_str: str) -> object:
         """Load the given compressed+pickled neural-network"""
-        return loads(decompress(b64decode(s)))
+        return loads(decompress(b64decode(bytes(_str, encoding=r'utf-8'), altchars=br'-_')))
 
     def to_python_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:
         """Convert the neural-network to Python code"""
