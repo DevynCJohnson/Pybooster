@@ -1,3 +1,7 @@
+2018-09-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added the programs acos.c, cbrt.c, & sqrt.c
+
 2018-09-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Added `macify` & `unmacify`
