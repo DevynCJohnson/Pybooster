@@ -87,6 +87,14 @@ Size=64
 Threshold=1
 Type=Scalable
 
+[notifications]
+Context=Status
+MaxSize=512
+MinSize=1
+Size=64
+Threshold=1
+Type=Scalable
+
 [places]
 Context=Places
 MaxSize=512
