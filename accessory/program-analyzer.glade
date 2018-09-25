@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -129,8 +129,8 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -899,7 +899,6 @@ Version: 2018.09.11
 Author: Devyn Collier Johnson
 &lt;DevynCJohnson@Gmail.com&gt;</property>
                         <property name="justify">center</property>
-                        <property name="selectable">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
@@ -915,7 +914,6 @@ Author: Devyn Collier Johnson
                         <property name="label" translatable="yes">For more programs,
 - Visit DCJTech.info
 - Please donate to DCJTech</property>
-                        <property name="selectable">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
@@ -948,7 +946,6 @@ Author: Devyn Collier Johnson
                   <object class="GtkLabel" id="binutils_info">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="selectable">True</property>
                     <property name="track_visited_links">False</property>
                   </object>
                   <packing>

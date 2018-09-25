@@ -1,5 +1,6 @@
 2018-09-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* program-analyzer:  Fixed some bugs pertaining to the GTK portion of the program
 	* PyBooster:  Added the programs acos.c, acosh.c, asin.c, asinh.c, atan.c, atanh.c, cbrt.c, cosh.c, sinh.c, sqrt.c, & tanh.c
 
 2018-09-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

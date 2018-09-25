@@ -756,10 +756,10 @@ $(BIN)/tanh : $(BIN) $(SRCDIR)/tanh.c $(MACROSPATH)
 
 
 $(BIN) :
-	([ ! -d $(BIN)/ ] && $(MKDIR) $(BIN)) || true
+	-@([ ! -d $(BIN)/ ] && $(MKDIR) $(BIN)) || true
 
 $(TESTINGDIR) :
-	([ ! -d $(TESTINGDIR)/ ] && $(MKDIR) $(TESTINGDIR)) || true
+	-@([ ! -d $(TESTINGDIR)/ ] && $(MKDIR) $(TESTINGDIR)) || true
 
 
 # UTILITY PROGRAM RULES #

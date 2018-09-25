@@ -28,7 +28,7 @@ along with this software.
 """
 
 
-# pylint: disable=C0103
+# pylint: disable=C0103,R0912,R0915
 
 
 from binascii import hexlify
@@ -186,8 +186,8 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -952,11 +952,10 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">Program-Analyzer
-Version: 2017.12.24
+Version: 2018.09.11
 Author: Devyn Collier Johnson
 &lt;DevynCJohnson@Gmail.com&gt;</property>
                         <property name="justify">center</property>
-                        <property name="selectable">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
@@ -972,7 +971,6 @@ Author: Devyn Collier Johnson
                         <property name="label" translatable="yes">For more programs,
 - Visit DCJTech.info
 - Please donate to DCJTech</property>
-                        <property name="selectable">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
@@ -1005,7 +1003,6 @@ Author: Devyn Collier Johnson
                   <object class="GtkLabel" id="binutils_info">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="selectable">True</property>
                     <property name="track_visited_links">False</property>
                   </object>
                   <packing>
@@ -1339,12 +1336,12 @@ STATUS_WRITING = (5, r'Writing saved data')
 # CLASSES #
 
 
-class SavePath(object):  # pylint: disable=R0903
+class SavePath(object):  # pylint: disable=R0205,R0903
     """Last pathname used to save files"""
     lastused = r''
 
 
-class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,R0915,W0201
+class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
     """File Selection Window"""
 
     def __init__(self) -> None:
@@ -1434,7 +1431,9 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,R0915,W0201
             self._filew.add_filter(self._filter)
         # Begin Window
         Gtk.main()
-        self.filechooserwin.destroy()
+        while Gtk.events_pending():
+            Gtk.main_iteration_do(True)
+        _window.queue_draw()
         return self._out
 
     def _winexit(self, *_x: Union[None, Tuple[Gtk.ApplicationWindow, None]]) -> None:  # pylint: disable=R0201
@@ -1469,6 +1468,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,R0915,W0201
             else:
                 self._out = self._filew.get_filenames()
         self.filechooserwin.destroy()
+        Gtk.main_quit()
 
     def _hidden(self, _chkbtn: Tuple[Gtk.CheckButton, None]) -> None:
         """Toggle the visibility of hidden files using the hidden-checkbox"""
@@ -1489,34 +1489,31 @@ def gtk_open(_menuitem: Gtk.ImageMenuItem = None) -> None:
     except TypeError:
         statusbar.push(context_id, r'Error occurred while opening file')
         stderr.write('Error occurred while opening file\n')
-        return None
+        return
     if not isinstance(_binfile, str) or _binfile == r'[]':
         statusbar.push(context_id, r'File opening cancelled by user')
-        return None
-    elif _binfile == r'cancel' or _binfile == r'' or _binfile is None:
+        return
+    if _binfile == r'cancel' or _binfile == r'' or _binfile is None:
         statusbar.push(context_id, r'File opening cancelled by user')
-        return None
-    elif not pathexists(_binfile) or not isfile(_binfile):
+        return
+    if not pathexists(_binfile) or not isfile(_binfile):
         statusbar.push(context_id, r'FileNotFoundError')
-        return None
+        return
     if isdir(_binfile):
         statusbar.push(context_id, r'IsADirectoryError')
-        return None
-    elif not fileaccess(_binfile, R_OK):
+        return
+    if not fileaccess(_binfile, R_OK):
         statusbar.push(context_id, r'PermissionError')
-        return None
-    statusbar.push(context_id, STATUS_ANALYZING[1])
+        return
     refreshdata(_binfile, getdis(_binfile))
-    return None
 
 
 def gtk_save(_button: Gtk.Button) -> None:
     """Save the data"""
     if not isinstance(SavePath.lastused, str) or SavePath.lastused in {r'', r'cancel'}:
         gtk_saveas(_button)
-        return None
+        return
     save_data(tabs.get_current_page(), SavePath.lastused)
-    return None
 
 
 def gtk_saveas(_button: Gtk.Button) -> None:
@@ -1529,19 +1526,18 @@ def gtk_saveas(_button: Gtk.Button) -> None:
     except (IndexError, SyntaxError, TypeError):
         statusbar.push(context_id, r'Error occurred while saving file')
         stderr.write('Error occurred while saving file\n')
-        return None
+        return
     if not isinstance(savefilepath, str) or savefilepath == r'[]':
         statusbar.push(context_id, r'File saving cancelled by user')
-        return None
-    elif savefilepath == r'cancel' or savefilepath == r'' or savefilepath is None:
+        return
+    if savefilepath == r'cancel' or savefilepath == r'' or savefilepath is None:
         statusbar.push(context_id, r'File saving cancelled by user')
-        return None
+        return
     # Sava Data
     save_data(tabs.get_current_page(), savefilepath)
-    return None
 
 
-def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901  # pylint: disable=R0912,R0915
+def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901
     """Perform the actual data-save"""
     SavePath.lastused = savefilepath
     tabs_page_num = tabs.page_num
@@ -1595,7 +1591,6 @@ def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901  # pyli
         statusbar.push(context_id, r'Exception thrown when writing file')
         stderr.write(str(_err) + '\n')
     statusbar.push(context_id, r'File saved')
-    return None
 
 
 def write2file(_filename: str, _write: str) -> None:
@@ -1603,7 +1598,6 @@ def write2file(_filename: str, _write: str) -> None:
     statusbar.push(context_id, STATUS_WRITING[1])
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _file.write(_write)
-    return None
 
 
 # SHOW/HIDE SAVE-BUTTONS #
@@ -1619,13 +1613,12 @@ def show_hide_save(_notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWin
         btn_save.set_visible(True)
         menuitem_save.set_visible(True)
         menuitem_saveas.set_visible(True)
-    return None
 
 
 # PROCESS & SHOW DATA #
 
 
-def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
+def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
     """Get data from the file and disassemble"""
     statusbar.push(context_id, STATUS_ANALYZING[1])
     # Gather filetype information
@@ -1642,7 +1635,7 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0912
     _filecmd = r'file'
     if _charset != r'binary':
         return STATUS_UNSUPPORTED_FILETYPE
-    elif r'ELF' in _magic:
+    if r'ELF' in _magic:
         if r'ARM' in _magic and _bits == r'32':
             if is_linux_arm_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
@@ -1819,15 +1812,15 @@ def file_properties(_file: str) -> None:
     properties_str_buf += '\numask (symbolic): ' + convumask(list(_perm))
     # Insert new data
     textview_prop.get_buffer().set_text(properties_str_buf, len(properties_str_buf))
-    return None
 
 
-def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901  # pylint: disable=R0912
+def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901
     """Change and display data about the file"""
     tabs.set_current_page(0)
+    statusbar.push(context_id, STATUS_ANALYZING[1])
     if _datatuple[0] == -1:
         statusbar.push(context_id, STATUS_UNSUPPORTED_FILETYPE[1])
-        return None
+        return
     # Set and display data
     _tmp_file_name = pathsplit(_file)[1]
     _window.set_title(_tmp_file_name)
@@ -1871,7 +1864,7 @@ def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901  # pylint:
         textview_const.get_buffer().set_text(_datatuple[17], len(_datatuple[17]))
     file_properties(_file)
     statusbar.push(context_id, STATUS_FINISHED[1])
-    return None
+    _window.queue_draw()
 
 
 # MAIN #
@@ -1879,7 +1872,7 @@ def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901  # pylint:
 
 if __name__ == '__main__':
     # Entry Point
-    GETFILEDATA = False
+    GETFILEDATA: bool = False
     if len(argv) == 1:
         FILEDATA: GETDATA_RETURN = STATUS_SELECT_FILE
     elif len(argv) == 2:
