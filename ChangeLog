@@ -1,3 +1,7 @@
+2018-09-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Fixed some errors in the documentation of some code & standardized the Doxygen comments
+
 2018-09-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* program-analyzer:  Fixed some bugs pertaining to the GTK portion of the program

@@ -2,7 +2,7 @@
 // vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :
 // kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 /**
-@brief Return the hyperbolic arc-cosine of the input
+@brief Return the area hyperbolic cosine of the input
 @file acosh.c
 @version 2018.09.24
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>

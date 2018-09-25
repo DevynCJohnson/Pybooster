@@ -96,6 +96,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
     def __init__(self, data: list, layers: list, iterations: int = 40000, rate: float = 0.2) -> None:
         """Initialize Neurocode-learning
 
+        @param data    A list of lists of the input data
         @param layers    Specify the number of hidden layers in the network and the size of each layer. For example, `layers = [3, 4]` makes two hidden layers, the first with 3 nodes and the second with 4 nodes. By default, one hidden layer is used with a size proportionate to the size of the input array
         @param error_thresh    Error threshold goal (float less than 1.0)
         @param rate    Learning rate (float less than 1.0)

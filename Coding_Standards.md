@@ -102,6 +102,10 @@ Doxygen
 -------
 
 - All of Doxygen's commands/keywords must use the Javadoc format (i.e. `@keyword` and never backslashes)
+- Doxygen keywords must be all lowercase
+- The Doxygen keywords (in a multiline block) have the same level of indentation as the code
+- Use `@author` for listing a single author and `@authors` for listing multiple authors
+- Use `@return` instead of `@returns`
 - The Doxygen information comment-block (placed in the file header of source code) must be structured as follows
     1. `@brief`
         - For Python files, a blank line follows `@brief`
@@ -121,6 +125,19 @@ Doxygen
     - Two spaces must be between the code and comment
 - For function parameters and output, use ```@param``` document the parameters and then use ```[in]```, ```[out]```, ```[in,out]``` to document the direction
     - This documentation must go in the function's main block documentation (before or after the language depending on the language)
+- One blank line must preceed `@code` and `@section` blocks and another blank line follows after the last line on the block (unless that is the end of the Doxygen block)
+- For Doxygen comments documenting anything other than the file itself, the tags should be in the following order
+    1. `@class`, `@def`, `@enum`, `@fn`, `@typedef`, or `@var` 
+    2. `@brief`
+    3. `@param[*]` (Start with the first input towards the last from left to right)
+    4. `@return`
+    5. `@retval`
+    6. `@code{}` and `@endcode`
+    7. `@warning`
+    8. `@bug`
+    9. `@todo`
+    10. `@see`
+- Helpful documentation: https://www.stack.nl/~dimitri/doxygen/manual/commands.html
 
 ### Documentation Comment Styles
 

@@ -1266,7 +1266,7 @@ Boolean macros indicating whether the compiler is not GNU-GCC */
 
 // COMPILER VERSION MACROS
 
-/** @defgroup Compiler-Version   Macros for testing the version of the compiler @{ */
+/** @defgroup Compiler-Version Macros for testing the version of the compiler @{ */
 
 /** @def __NVCC_PREREQ(version)
 Test if the NVCC compiler matches the specified version number */
@@ -1403,7 +1403,7 @@ Test if the Microsoft compiler matches the specified version number */
 
 // C VERSION MACROS
 
-/** @defgroup C-Versions   Macros for testing types and versions of C @{ */
+/** @defgroup C-Versions Macros for testing types and versions of C @{ */
 
 /** @def IS_ANSI
 Macros test for ANSI C */
@@ -7241,7 +7241,7 @@ Maximum value representable as type sig_atomic_t */
 
 // TARGET ATTRIBUTES & MACROS
 
-/** @defgroup Build-Target   Macros for specifying that a function be built for a particular target @{ */
+/** @defgroup Build-Target Macros for specifying that a function be built for a particular target @{ */
 
 #if IS_GNUC
 // PowerPC

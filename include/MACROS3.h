@@ -193,14 +193,15 @@ static const UNUSED void* __arm_atomics[3];
 
 #ifdef ARCHX86_32  // Math barriers
 
-/** Safely load x, even if it was manipulated by non-float-point operations. This macro returns the value of x. This ensures compiler does not abuse its knowledge about x value and not optimize future operations.
+/** 
+@brief Safely load x, even if it was manipulated by non-float-point operations. This macro returns the value of x. This ensures compiler does not abuse its knowledge about x value and not optimize future operations.
 
-@CODE{.c}
+@code{.c}
 float x;
 SET_FLOAT_WORD(x, 0x80000001);  // sets a bit pattern
 y = math_opt_barrier(x);  // "compiler, do not cheat!"
 y = y * y;  // compiler cannot optimize; must use real multiply instruction
-@ENDCODE
+@endcode
 */
 #   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "=t"(__x) : "0"(__x)); __x; })
 /** Force expression x to be evaluated; This macro returns no value */
@@ -14669,10 +14670,16 @@ LIB_FUNC void mi_vector_hash(const void* restrict key, size_t len, const uint32_
 #endif
 
 
-/** Find last (most-significant) set bit in a long word
-@word: The word to search
-Undefined if no set bit exists, so code should check against 0 first
-Note: fls(0) = 0, fls(1) = 1, fls(0x80000000) = 32
+/**
+@brief Find last (most-significant) set bit in a long word
+@param[in] word The word to search
+@return Bit location of the last set bit
+
+@code{.c}
+fls(0)  # Output: 0
+fls(1)  # Output: 1
+fls(0x80000000)  # Output: 32
+@endcode
 */
 LIB_FUNC ATTR_CF unsigned long fls(const unsigned long word) {
 	if (word == 0) { return 0; }
@@ -14912,12 +14919,11 @@ LIB_FUNC ATTR_CF int ffzll(const unsigned long long i) {
 #define __ffzll(x)   ffzll((x))
 
 
-/** Count the number of zeros from the MSB back; Like __builtin_clz()
-@x: The value
-Count the number of leading zeros from the MSB going towards the LSB in @x.
-If the MSB of @x is set, the result is 0.
-If only the LSB of @x is set, then the result is BITS_PER_INT-1.
-If @x is 0 then the result is BITS_PER_INT.
+/**
+@brief Count the number of zeros from the MSB towrds the LSB; Like __builtin_clz()
+@param[in] x The value to test
+@retval 0 BITS_PER_INT
+@retval 1 BITS_PER_INT - 1
 */
 LIB_FUNC ATTR_CF int clz(const unsigned int x) {
 	return (int)(BITS_PER_INT - (int)fls32((uint32_t)x));
@@ -14927,12 +14933,11 @@ LIB_FUNC ATTR_CF int clz(const unsigned int x) {
 #define __nlz(x)   clz((x))
 
 
-/** Count the number of zeros from the MSB back; Like __builtin_clzl()
-@x: The value
-Count the number of leading zeros from the MSB going towards the LSB in @x.
-If the MSB of @x is set, the result is 0.
-If only the LSB of @x is set, then the result is BITS_PER_LONG-1.
-If @x is 0 then the result is BITS_PER_LONG.
+/**
+@brief Count the number of zeros from the MSB towrds the LSB; Like __builtin_clzl()
+@param[in] x The value to test
+@retval 0 BITS_PER_LONG
+@retval 1 BITS_PER_LONG - 1
 */
 LIB_FUNC ATTR_CF int count_leading_zeros(const unsigned long x) {
 #   if LONG_EQ_32BITS
@@ -14966,12 +14971,11 @@ LIB_FUNC ATTR_CF int ctz(const unsigned int x) {
 #define clz_hi2(x)   ctz((x))
 
 
-/** Count the number of zeros from the LSB forwards
-@x: The value
-Count the number of trailing zeros from the LSB going towards the MSB in @x.
-If the LSB of @x is set, the result is 0.
-If only the MSB of @x is set, then the result is BITS_PER_LONG-1.
-If @x is 0 then the result is COUNT_TRAILING_ZEROS_0.
+/** 
+@brief Count the number of zeros from the LSB towrds the MSB
+@param[in] x The value to test
+@retval 1 0
+@retval 0 COUNT_TRAILING_ZEROS_0
 */
 LIB_FUNC ATTR_CF int count_trailing_zeros(const unsigned long x) {
 #   if LONG_EQ_32BITS
@@ -15122,18 +15126,20 @@ LIB_FUNC int constant_test_bit(const int nr, const volatile void* addr) {
 #ifdef ARCHX86  // clear_bit() and set_bit()
 
 
-/** Atomically set a bit in memory
-@nr: the bit to set
-@addr: the address to start counting from
+/** 
+@brief Atomically set a bit in memory
+@param[in] nr The bit to set
+@param[in,out] addr The address to start counting from
 */
 LIB_FUNC void set_bit(int nr, volatile void* addr) {
 	asm volatile ("btsl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr) : "memory");
 }
 
 
-/** Clears a bit in memory
-@nr: Bit to clear
-@addr: Address to start counting from
+/** 
+@brief Clears a bit in memory
+@param[in] nr The bit to clear
+@param[in,out] addr Address to start counting from
 */
 LIB_FUNC void clear_bit(int nr, volatile void* addr) {
 	asm volatile ("btrl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr));
@@ -15147,18 +15153,20 @@ LIB_FUNC int variable_test_bit(int nr, volatile void* addr) {
 }
 
 
-/** Toggle a bit in memory
-@nr: the bit to change
-@addr: the address to start counting from
+/** 
+@brief Toggle a bit in memory
+@param[in] nr The bit to change
+@param[in,out] addr The address to start counting from
 */
 LIB_FUNC void __change_bit(long nr, volatile unsigned long* addr) {
 	asm volatile ("btc %1, %0;" : "+m"(*(volatile long*)(addr)) : "Ir"(nr));
 }
 
 
-/** Atomically toggle a bit in memory
-@nr: Bit to change
-@addr: Address to start counting from
+/** 
+@brief Atomically toggle a bit in memory
+@param[in] nr The bit to change
+@param[in,addr] addr Address to start counting from
 */
 LIB_FUNC void change_bit(long nr, volatile unsigned long* addr) {
 	if ((__builtin_constant_p(nr))) {
@@ -15174,9 +15182,10 @@ LIB_FUNC void change_bit(long nr, volatile unsigned long* addr) {
 #endif
 
 
-/** Clears a bit in memory
-@nr: Bit to clear
-@addr: Address to start counting from
+/** 
+@brief Clears a bit in memory
+@param[in] nr The bit to clear
+@param[in,out] addr Address to start counting from
 */
 LIB_FUNC void clear_bit_unlock(int nr, volatile void* addr) {
 	barrier();
@@ -15187,9 +15196,10 @@ LIB_FUNC void clear_bit_unlock(int nr, volatile void* addr) {
 #define test_bit(nr, addr)   (__builtin_constant_p(nr) ? constant_test_bit((nr), (addr)) : variable_test_bit((nr), (addr)))
 
 
-/** Clear a bit and return its old value
-@nr: Bit to clear
-@addr: Address to count from
+/** 
+@brief Clear a bit and return its old value
+@param[in] nr The bit to clear
+@param[in,out] addr Address to count from
 */
 LIB_FUNC int test_and_clear_bit(int nr, volatile unsigned long* addr) {
 	clear_bit(nr, addr);
@@ -15197,9 +15207,10 @@ LIB_FUNC int test_and_clear_bit(int nr, volatile unsigned long* addr) {
 }
 
 
-/** Set a bit and return its old value
-@nr: Bit to set
-@addr: Address to count from
+/** 
+@brief Set a bit and return its old value
+@param[in] nr The bit to set
+@param[in,out] addr Address to count from
 */
 LIB_FUNC int test_and_set_bit(int nr, volatile unsigned long* addr) {
 	set_bit(nr, addr);
@@ -15207,9 +15218,10 @@ LIB_FUNC int test_and_set_bit(int nr, volatile unsigned long* addr) {
 }
 
 
-/** Set a bit and return its old value for lock
-@nr: Bit to set
-@addr: Address to count from
+/** 
+@brief Set a bit and return its old value for lock
+@param[in] nr The bit to set
+@param[in,out] addr Address to count from
 */
 LIB_FUNC int test_and_set_bit_lock(long nr, volatile unsigned long* addr) {
 	set_bit((int)nr, addr);
@@ -15217,9 +15229,10 @@ LIB_FUNC int test_and_set_bit_lock(long nr, volatile unsigned long* addr) {
 }
 
 
-/** Set a bit and return its old value
-@nr: Bit to set
-@addr: Address to count from
+/** 
+@brief Set a bit and return its old value
+@param[in] nr The bit to set
+@param[in,out] addr Address to count from
 */
 LIB_FUNC int __test_and_set_bit(long nr, volatile unsigned long* addr) {
 	int oldbit;
@@ -15228,9 +15241,10 @@ LIB_FUNC int __test_and_set_bit(long nr, volatile unsigned long* addr) {
 }
 
 
-/** Clear a bit and return its old value
-@nr: Bit to clear
-@addr: Address to count from
+/** 
+@brief Clear a bit and return its old value
+@param[in] nr The bit to clear
+@param[in,out] addr Address to count from
 */
 LIB_FUNC int __test_and_clear_bit(long nr, volatile unsigned long* addr) {
 	int oldbit;
@@ -15731,11 +15745,12 @@ LIB_FUNC void xor_32regs_5(const unsigned long bytes, unsigned long* restrict p1
 #endif
 
 
-/** Return true if the two intervals overlap
-@param s1 Start address of the first interval
-@param sz1 Size of the first interval
-@param s2 Start address of the second interval
-@param sz2 Size of the second interval
+/**
+@brief Return true if the two intervals overlap
+@param[in] s1 Start address of the first interval
+@param[in] sz1 Size of the first interval
+@param[in] s2 Start address of the second interval
+@param[in] sz2 Size of the second interval
 */
 LIB_FUNC ATTR_CF int overlaps(const uint64_t s1, const uint64_t sz1, const uint64_t s2, const uint64_t sz2) {
 	// Both sizes are non-zero
@@ -15748,11 +15763,12 @@ LIB_FUNC ATTR_CF int overlaps(const uint64_t s1, const uint64_t sz1, const uint6
 }
 
 
-/** Return true if the second interval is within the first interval
-@param s1 Start address of the first interval
-@param sz1 Size of the first interval
-@param s2 Start address of the second interval
-@param sz2 Size of the second interval
+/** 
+@brief Return true if the second interval is within the first interval
+@param[in] s1 Start address of the first interval
+@param[in] sz1 Size of the first interval
+@param[in] s2 Start address of the second interval
+@param[in] sz2 Size of the second interval
 */
 LIB_FUNC ATTR_CF int iswithin(const uint64_t s1, const uint64_t sz1, const uint64_t s2, const uint64_t sz2) {
 	// Handle the two corner cases when either sz1 or sz2 are zero
@@ -18541,7 +18557,9 @@ LIB_FUNC ATTR_PF ssize_t skip_to(const char* restrict format) {
 #define __v_printf_write_epilogue(length)   do { len += (ssize_t)(length); bufptr += (size_t)(length); buf_space_left -= (ssize_t)(length); } while (0x0)
 
 
-/** Main printf function
+/** 
+@brief Main printf function
+
 @section Format Specifiers
 Format specifiers follow this layout: %[flags][width][.precision][length]specifier
 
@@ -19948,7 +19966,9 @@ LIB_FUNC size_t __string_read(FILE* f, unsigned char* buf, const size_t len) {
 }
 
 
-/** Reads data from the stream and stores them according to parameter `fmt` into the locations pointed by the elements in the variable argument list identified by `ap`
+/** 
+@brief Reads data from the stream and stores them according to parameter `fmt` into the locations pointed by the elements in the variable argument list identified by `ap`
+
 @section Defines
  - NO_SCAN_FLOATS: The `f` and `g` (float-points) symbols are disabled
 */
@@ -38629,8 +38649,8 @@ LIB_FUNC struct bintime ns2bintime(const uint64_t ns) {
 
 #ifdef OSPOSIX
 /**
-	Return the current time in microseconds since the epoch
-	@returns current microseconds since the epoch
+@brief Return the current time in microseconds since the epoch
+@return The number of microseconds since the epoch to now
 */
 LIB_FUNC unsigned long time_microseconds(void) {
 	struct timeval now = { 0 };
@@ -38641,8 +38661,8 @@ LIB_FUNC unsigned long time_microseconds(void) {
 
 
 /**
-	Return the current time in seconds since the epoch
-	@returns current seconds since the epoch
+@brief Return the current time in seconds since the epoch
+@return The number of seconds since the epoch to now
 */
 LIB_FUNC unsigned long time_seconds(void) {
 	time_t timer;
@@ -51308,6 +51328,7 @@ LIB_FUNC MATH_FUNC long double tanl(const long double x) {
 #endif
 
 
+/** Return the arc-tangent of a float */
 LIB_FUNC MATH_FUNC float atanf(const float num) {
 #   ifdef ARCHX86
 	float ret;
@@ -51357,6 +51378,7 @@ LIB_FUNC MATH_FUNC float atanf(const float num) {
 }
 
 
+/** Return the arc-tangent of a double */
 LIB_FUNC MATH_FUNC double atan(const double num) {
 #   ifdef ARCHX86
 	double ret;
@@ -51409,12 +51431,14 @@ LIB_FUNC MATH_FUNC double atan(const double num) {
 
 
 #if SUPPORTS_LONG_DOUBLE
+/** Return the arc-tangent of a long double */
 LIB_FUNC MATH_FUNC long double atanl(const long double num) {
 	return (long double)atan((double)num);
 }
 #endif
 
 
+/** Return the angle between the X-axis and the line created by points x and y (each as a float) */
 LIB_FUNC MATH_FUNC float atan2f(const float y, const float x) {
 #   ifdef ARCHX86
 	float ret;
@@ -51426,6 +51450,7 @@ LIB_FUNC MATH_FUNC float atan2f(const float y, const float x) {
 }
 
 
+/** Return the angle between the X-axis and the line created by points x and y (each as a double) */
 LIB_FUNC MATH_FUNC double atan2(const double y, const double x) {
 #   ifdef ARCHX86
 	double ret;
@@ -51437,7 +51462,7 @@ LIB_FUNC MATH_FUNC double atan2(const double y, const double x) {
 }
 
 
-/** Returns the principal value of the arc tangent of y/x, expressed in radians */
+/** Return the angle between the X-axis and the line created by points x and y (each as a float) */
 LIB_FUNC MATH_FUNC double ATAN2(const double y, const double x) {
 	if (PREDICT_UNLIKELY(__isnan(x) || __isnan(y))) { return NAN; }
 	else if (__isinf(y)) {
@@ -51455,6 +51480,7 @@ LIB_FUNC MATH_FUNC double ATAN2(const double y, const double x) {
 }
 
 
+/** Return the area hyperbolic tangent as a float */
 LIB_FUNC MATH_FUNC float atanhf(const float x) {
 #if IS_LIBM_POSIX
 	return __ieee754_atanhf(x);
@@ -51480,6 +51506,7 @@ LIB_FUNC MATH_FUNC float atanhf(const float x) {
 }
 
 
+/** Return the area hyperbolic tangent as a double */
 LIB_FUNC MATH_FUNC double atanh(const double x) {
 #if IS_LIBM_POSIX
 	return __ieee754_atanh(x);
@@ -51506,12 +51533,14 @@ LIB_FUNC MATH_FUNC double atanh(const double x) {
 
 
 #if SUPPORTS_LONG_DOUBLE
+/** Return the area hyperbolic tangent as a long double */
 LIB_FUNC MATH_FUNC long double atanhl(const long double x) {
 	return (long double)atanh((double)x);
 }
 #endif
 
 
+/** Return the hyperbolic tangent */
 LIB_FUNC MATH_FUNC float tanhf(const float x) {
 	float t, z;
 	int32_t jx;
@@ -51534,6 +51563,7 @@ LIB_FUNC MATH_FUNC float tanhf(const float x) {
 }
 
 
+/** Return the hyperbolic tangent */
 LIB_FUNC MATH_FUNC double tanh(const double x) {
 	double t, z;
 	int32_t jx;
@@ -51557,6 +51587,7 @@ LIB_FUNC MATH_FUNC double tanh(const double x) {
 
 
 #if SUPPORTS_LONG_DOUBLE
+/** Return the hyperbolic tangent */
 LIB_FUNC MATH_FUNC long double tanhl(const long double x) {
 	return (long double)tanh((double)x);
 }
@@ -51583,6 +51614,7 @@ LIB_FUNC MATH_FUNC long double crdl(const long double radians) {
 #endif
 
 
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC float __ieee754_hypotf(const float x, const float y) {
 	int32_t ha, hb;
 	GET_FLOAT_WORD(ha, x);
@@ -51600,6 +51632,7 @@ LIB_FUNC MATH_FUNC float __ieee754_hypotf(const float x, const float y) {
 #define __hypotf_finite(x, y)   __ieee754_hypotf((x), (y))
 
 
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC double __ieee754_hypot(const double x, const double y) {
 	double a, b, w;
 	int32_t j, k, ha, hb;
@@ -51697,6 +51730,7 @@ LIB_FUNC MATH_FUNC double __ieee754_hypot(const double x, const double y) {
 
 
 #if IS_LDBL_X87
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC long double __ieee754_hypotl(const long double x, const long double y) {
 	long double a, b, w;
 	uint32_t j, k, ea, eb;
@@ -51784,6 +51818,7 @@ LIB_FUNC MATH_FUNC long double __ieee754_hypotl(const long double x, const long 
 }
 #   define __hypotl_finite(x, y)   __ieee754_hypotl((x), (y))
 #elif LDBL_EQ_FLOAT128
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC long double __ieee754_hypotl(const long double x, const long double y) {
 	long double a, b, y1, y2, w;
 	int64_t j, k, ha, hb;
@@ -51873,12 +51908,14 @@ LIB_FUNC MATH_FUNC long double __ieee754_hypotl(const long double x, const long 
 #endif
 
 
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC float __hypotf(const float x, const float y) {
 	return __ieee754_hypotf(x, y);
 }
 #define hypotf(x, y)   __hypotf((x), (y))
 
 
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC double __hypot(const double x, const double y) {
 	return __ieee754_hypot(x, y);
 }
@@ -51886,6 +51923,7 @@ LIB_FUNC MATH_FUNC double __hypot(const double x, const double y) {
 
 
 #if SUPPORTS_LONG_DOUBLE
+/** Return the hypotenuse */
 LIB_FUNC MATH_FUNC long double __hypotl(const long double x, const long double y) {
 	return __ieee754_hypotl(x, y);
 }
@@ -51907,14 +51945,14 @@ LIB_FUNC MATH_FUNC float arccotf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
 LIB_FUNC MATH_FUNC float acothf(const float radians) {
 	return atanhf(1.0F / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
-LIB_FUNC MATH_FUNC float arccothf(const float radians) {
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
+LIB_FUNC MATH_FUNC float arcothf(const float radians) {
 	return atanhf(1.0F / radians);
 }
 
@@ -51943,14 +51981,14 @@ LIB_FUNC MATH_FUNC float arccscf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsch(x) || arccsch(x) == asinh(1/x)) */
+/** Return the Area Hyperbolic Cosecant (acsch(x) || arcsch(x) == asinh(1/x)) */
 LIB_FUNC MATH_FUNC float acschf(const float radians) {
 	return asinhf(1.0F / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsc(x) || arccsch(x) == asinh(1/x)) */
-LIB_FUNC MATH_FUNC float arccschf(const float radians) {
+/** Return the Area Hyperbolic Cosecant (acsc(x) || arcsch(x) == asinh(1/x)) */
+LIB_FUNC MATH_FUNC float arcschf(const float radians) {
 	return asinhf(1.0F / radians);
 }
 
@@ -51979,14 +52017,14 @@ LIB_FUNC MATH_FUNC float arcsecf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
+/** Return the Area Hyperbolic Secant (asech(x) || asech(x) == acosh(1/x)) */
 LIB_FUNC MATH_FUNC float asechf(const float radians) {
 	return acoshf(1.0F / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
-LIB_FUNC MATH_FUNC float arcsechf(const float radians) {
+/** Return the Area Hyperbolic Secant (asech(x) || arsech(x) == acosh(1/x)) */
+LIB_FUNC MATH_FUNC float arsechf(const float radians) {
 	return acoshf(1.0F / radians);
 }
 
@@ -52009,8 +52047,8 @@ LIB_FUNC MATH_FUNC float arcversinf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Sine (arcversinh(x) == 1 - acosh(x)) */
-LIB_FUNC MATH_FUNC float arcversinhf(const float radians) {
+/** Return the Hyperbolic Area-Versed Sine (arversinh(x) == 1 - acosh(x)) */
+LIB_FUNC MATH_FUNC float arversinhf(const float radians) {
 	return (1.0F - acoshf(radians));
 }
 
@@ -52033,7 +52071,7 @@ LIB_FUNC MATH_FUNC float arcvercosf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Cosine (arcvercosh(x) == 1 - asinh(x)) */
+/** Return the Hyperbolic Area-Versed Cosine (arvercosh(x) == 1 - asinh(x)) */
 LIB_FUNC MATH_FUNC float arcvercoshf(const float radians) {
 	return (1.0F - asinhf(radians));
 }
@@ -52077,14 +52115,14 @@ LIB_FUNC MATH_FUNC double arccot(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
 LIB_FUNC MATH_FUNC double acoth(const double radians) {
 	return atanh(1.0 / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
-LIB_FUNC MATH_FUNC double arccoth(const double radians) {
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
+LIB_FUNC MATH_FUNC double arcoth(const double radians) {
 	return atanh(1.0 / radians);
 }
 
@@ -52113,14 +52151,14 @@ LIB_FUNC MATH_FUNC double arccsc(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsch(x) || arccsch(x) == asinh(1/x)) */
+/** Return the Area Hyperbolic Cosecant (acsch(x) || arcsch(x) == asinh(1/x)) */
 LIB_FUNC MATH_FUNC double acsch(const double radians) {
 	return asinh(1.0 / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsc(x) || arccsch(x) == asinh(1/x)) */
-LIB_FUNC MATH_FUNC double arccsch(const double radians) {
+/** Return the Area Hyperbolic Cosecant (acsc(x) || arcsch(x) == asinh(1/x)) */
+LIB_FUNC MATH_FUNC double arcsch(const double radians) {
 	return asinh(1.0 / radians);
 }
 
@@ -52149,14 +52187,14 @@ LIB_FUNC MATH_FUNC double arcsec(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
+/** Return the Area Hyperbolic Secant (asech(x) || arsech(x) == acosh(1/x)) */
 LIB_FUNC MATH_FUNC double asech(const double radians) {
 	return acosh(1.0 / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
-LIB_FUNC MATH_FUNC double arcsech(const double radians) {
+/** Return the Area Hyperbolic Secant (asech(x) || arsech(x) == acosh(1/x)) */
+LIB_FUNC MATH_FUNC double arsech(const double radians) {
 	return acosh(1.0 / radians);
 }
 
@@ -52179,8 +52217,8 @@ LIB_FUNC MATH_FUNC double arcversin(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Sine (arcversinh(x) == 1 - acosh(x)) */
-LIB_FUNC MATH_FUNC double arcversinh(const double radians) {
+/** Return the Area Hyperbolic Versed Sine (arversinh(x) == 1 - acosh(x)) */
+LIB_FUNC MATH_FUNC double arversinh(const double radians) {
 	return (1.0 - acosh(radians));
 }
 
@@ -52203,8 +52241,8 @@ LIB_FUNC MATH_FUNC double arcvercos(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Cosine (arcvercosh(x) == 1 - asinh(x)) */
-LIB_FUNC MATH_FUNC double arcvercosh(const double radians) {
+/** Return the Area Hyperbolic Versed Cosine (arvercosh(x) == 1 - asinh(x)) */
+LIB_FUNC MATH_FUNC double arvercosh(const double radians) {
 	return (1.0 - asinh(radians));
 }
 
@@ -52248,14 +52286,14 @@ LIB_FUNC MATH_FUNC long double arccotl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
 LIB_FUNC MATH_FUNC long double acothl(const long double radians) {
 	return atanhl(1.0L / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cotangent (acoth(x) || arccoth(x) == atanh(1/x)) */
-LIB_FUNC MATH_FUNC long double arccothl(const long double radians) {
+/** Return the Area Hyperbolic Cotangent (acoth(x) || arcoth(x) == atanh(1/x)) */
+LIB_FUNC MATH_FUNC long double arcothl(const long double radians) {
 	return atanhl(1.0L / radians);
 }
 
@@ -52284,14 +52322,14 @@ LIB_FUNC MATH_FUNC long double arccscl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsch(x) || arccsch(x) == asinh(1/x)) */
+/** Return the Area Hyperbolic Cosecant (acsch(x) || arcsch(x) == asinh(1/x)) */
 LIB_FUNC MATH_FUNC long double acschl(const long double radians) {
 	return asinhl(1.0L / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Cosecant (acsc(x) || arccsch(x) == asinh(1/x)) */
-LIB_FUNC MATH_FUNC long double arccschl(const long double radians) {
+/** Return the Area Hyperbolic Cosecant (acsc(x) || arcsch(x) == asinh(1/x)) */
+LIB_FUNC MATH_FUNC long double arcschl(const long double radians) {
 	return asinhl(1.0L / radians);
 }
 
@@ -52320,13 +52358,13 @@ LIB_FUNC MATH_FUNC long double arcsecl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
+/** Return the Area Hyperbolic Secant (asech(x) || arsech(x) == acosh(1/x)) */
 LIB_FUNC MATH_FUNC long double asechl(const long double radians) {
 	return acoshl(1.0L / radians);
 }
 
 
-/** Return the Hyperbolic Arc-Secant (asech(x) || arcsech(x) == acosh(1/x)) */
+/** Return the Area Hyperbolic Secant (asech(x) || arsech(x) == acosh(1/x)) */
 LIB_FUNC MATH_FUNC long double arcsechl(const long double radians) {
 	return acoshl(1.0L / radians);
 }
@@ -52350,8 +52388,8 @@ LIB_FUNC MATH_FUNC long double arcversinl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Sine (arcversinh(x) == 1 - acosh(x)) */
-LIB_FUNC MATH_FUNC long double arcversinhl(const long double radians) {
+/** Return the Hyperbolic Area-Versed Sine (arversinh(x) == 1 - acosh(x)) */
+LIB_FUNC MATH_FUNC long double arversinhl(const long double radians) {
 	return (1.0L - acoshl(radians));
 }
 
@@ -52374,8 +52412,8 @@ LIB_FUNC MATH_FUNC long double arcvercosl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-Versed Cosine (arcvercosh(x) == 1 - asinh(x)) */
-LIB_FUNC MATH_FUNC long double arcvercoshl(const long double radians) {
+/** Return the Hyperbolic Area-Versed Cosine (arvercosh(x) == 1 - asinh(x)) */
+LIB_FUNC MATH_FUNC long double arvercoshl(const long double radians) {
 	return (1.0L - asinhl(radians));
 }
 
@@ -52413,8 +52451,8 @@ LIB_FUNC MATH_FUNC float arcexcotf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cotangent [arcexcoth(x) == (1/atanh(x)-1)] */
-LIB_FUNC MATH_FUNC float arcexcothf(const float radians) {
+/** Return the Hyperbolic Area-External Cotangent [arexcoth(x) == (1/atanh(x)-1)] */
+LIB_FUNC MATH_FUNC float arexcothf(const float radians) {
 	return ((1.0F / atanhf(radians)) - 1.0F);
 }
 
@@ -52437,8 +52475,8 @@ LIB_FUNC MATH_FUNC float arcexcscf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cosecant [arcexcsch(x) == (1/asinh(x)-1)] */
-LIB_FUNC MATH_FUNC float arcexcschf(const float radians) {
+/** Return the Hyperbolic Area-External Cosecant [arexcsch(x) == (1/asinh(x)-1)] */
+LIB_FUNC MATH_FUNC float arexcschf(const float radians) {
 	return ((1.0F / asinhf(radians)) - 1.0F);
 }
 
@@ -52461,8 +52499,8 @@ LIB_FUNC MATH_FUNC float arcexsecf(const float radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Secant [arcexsech(x) == (1/acosh(x)-1)] */
-LIB_FUNC MATH_FUNC float arcexsechf(const float radians) {
+/** Return the Hyperbolic Area-External Secant [arexsech(x) == (1/acosh(x)-1)] */
+LIB_FUNC MATH_FUNC float arexsechf(const float radians) {
 	return ((1.0F / acoshf(radians)) - 1.0F);
 }
 
@@ -52487,8 +52525,8 @@ LIB_FUNC MATH_FUNC double arcexcot(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cotangent [arcexcoth(x) == (1/atanh(x)-1)] */
-LIB_FUNC MATH_FUNC double arcexcoth(const double radians) {
+/** Return the Hyperbolic Area-External Cotangent [arexcoth(x) == (1/atanh(x)-1)] */
+LIB_FUNC MATH_FUNC double arexcoth(const double radians) {
 	return ((1.0 / atanh(radians)) - 1.0);
 }
 
@@ -52511,8 +52549,8 @@ LIB_FUNC MATH_FUNC double arcexcsc(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cosecant [arcexcsch(x) == (1/asinh(x)-1)] */
-LIB_FUNC MATH_FUNC double arcexcsch(const double radians) {
+/** Return the Hyperbolic Area-External Cosecant [arexcsch(x) == (1/asinh(x)-1)] */
+LIB_FUNC MATH_FUNC double arexcsch(const double radians) {
 	return ((1.0 / asinh(radians)) - 1.0);
 }
 
@@ -52535,8 +52573,8 @@ LIB_FUNC MATH_FUNC double arcexsec(const double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Secant [arcexsech(x) == (1/acosh(x)-1)] */
-LIB_FUNC MATH_FUNC double arcexsech(const double radians) {
+/** Return the Hyperbolic Area-External Secant [arexsech(x) == (1/acosh(x)-1)] */
+LIB_FUNC MATH_FUNC double arexsech(const double radians) {
 	return ((1.0 / acosh(radians)) - 1.0);
 }
 
@@ -52562,8 +52600,8 @@ LIB_FUNC MATH_FUNC long double arcexcotl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cotangent [arcexcoth(x) == (1/atanh(x)-1)] */
-LIB_FUNC MATH_FUNC long double arcexcothl(const long double radians) {
+/** Return the Hyperbolic Area-External Cotangent [arexcoth(x) == (1/atanh(x)-1)] */
+LIB_FUNC MATH_FUNC long double arexcothl(const long double radians) {
 	return ((1.0L / atanhl(radians)) - 1.0L);
 }
 
@@ -52586,8 +52624,8 @@ LIB_FUNC MATH_FUNC long double arcexcscl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Cosecant [arcexcsch(x) == (1/asinh(x)-1)] */
-LIB_FUNC MATH_FUNC long double arcexcschl(const long double radians) {
+/** Return the Hyperbolic Area-External Cosecant [arexcsch(x) == (1/asinh(x)-1)] */
+LIB_FUNC MATH_FUNC long double arexcschl(const long double radians) {
 	return ((1.0L / asinhl(radians)) - 1.0L);
 }
 
@@ -52610,8 +52648,8 @@ LIB_FUNC MATH_FUNC long double arcexsecl(const long double radians) {
 }
 
 
-/** Return the Hyperbolic Arc-External Secant [arcexsech(x) == (1/acosh(x)-1)] */
-LIB_FUNC MATH_FUNC long double arcexsechl(const long double radians) {
+/** Return the Hyperbolic Area-External Secant [arexsech(x) == (1/acosh(x)-1)] */
+LIB_FUNC MATH_FUNC long double arexsechl(const long double radians) {
 	return ((1.0L / acoshl(radians)) - 1.0L);
 }
 
@@ -55231,13 +55269,14 @@ LIB_FUNC MATH_FUNC uint128_t fib128(const uint64_t num) {
 #endif
 
 
-/** Fibonacci Prime Number Generator; return 0 on error
+/** 
+	@brief Fibonacci Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
 	A Fibonacci prime is a Fibonacci number that is prime.
 
-	@param[in] num    Specify the first, second, etc. Fibonacci Prime
-	@returns Fibonacci Prime
+	@param[in] num Specify the first, second, etc. Fibonacci Prime
+	@return Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC uint64_t fibprime(const uint64_t num) {
 	if (num > (uint64_t)11) { return 0; }
@@ -55260,13 +55299,14 @@ LIB_FUNC MATH_FUNC uint64_t fibprime(const uint64_t num) {
 
 
 #if SUPPORTS_UINT128
-/** Fibonacci Prime Number Generator; return 0 on error
+/** 
+	@brief Fibonacci Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
 	A Fibonacci prime is a Fibonacci number that is prime.
 
-	@param[in] num    Specify the first, second, etc. Fibonacci Prime
-	@returns Fibonacci Prime
+	@param[in] num Specify the first, second, etc. Fibonacci Prime
+	@return Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC uint128_t fibprime128(const uint64_t num) {
 	if (num > (uint64_t)13) { return 0; }
@@ -55328,13 +55368,14 @@ LIB_FUNC MATH_FUNC unsigned long lucas(const unsigned long num) {
 }
 
 
-/** Lucas Prime Number Generator; return 0 on error
+/** 
+	@brief Lucas Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
 	A Lucas prime is a Lucas number that is prime.
 
-	@param[in] num    Specify the first, second, etc. Lucas Prime
-	@returns Lucas Prime
+	@param[in] num Specify the first, second, etc. Lucas Prime
+	@return Lucas Prime
 */
 LIB_FUNC MATH_FUNC uint64_t lucasprime(const uint64_t num) {
 	if (num > (uint64_t)14) { return 0; }
@@ -56219,11 +56260,11 @@ LIB_FUNC MATH_FUNC int isullcomposite(const unsigned long long num) {
 }
 
 
-/** Test if an uint64_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
-
-	@param[in] num    A 64-bit integer
-	@retval 0    False: This is not a Fibonacci Prime
-	@retval 1    True: This is a Fibonacci Prime
+/** 
+	@brief Test if an uint64_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
+	@param[in] num A 64-bit integer
+	@retval 0 False: This is not a Fibonacci Prime
+	@retval 1 True: This is a Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 	switch (num) {
@@ -56246,11 +56287,11 @@ LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 
 
 #if SUPPORTS_UINT128
-/** Test if an uint128_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
-
-	@param[in] num    A 128-bit integer
-	@retval 0    False: This is not a Fibonacci Prime
-	@retval 1    True: This is a Fibonacci Prime
+/** 
+	@brief Test if an uint128_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
+	@param[in] num A 128-bit integer
+	@retval 0 False: This is not a Fibonacci Prime
+	@retval 1 True: This is a Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC int isfibprime128(const uint128_t num) {
 	switch (num) {
@@ -56334,11 +56375,11 @@ LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
 }
 
 
-/** Test if an uint64_t is a Lucas Prime; A Lucas prime is a Lucas number that is prime
-
-	@param[in] num    A 64-bit integer
-	@retval 0    False: This is not a Lucas Prime
-	@retval 1    True: This is a Lucas Prime
+/** 
+	@brief Test if an uint64_t is a Lucas Prime; A Lucas prime is a Lucas number that is prime
+	@param[in] num A 64-bit integer
+	@retval 0 False: This is not a Lucas Prime
+	@retval 1 True: This is a Lucas Prime
 */
 LIB_FUNC MATH_FUNC int islucasprime(const uint64_t num) {
 	switch (num) {
@@ -69169,171 +69210,171 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #endif
 
 
-/** Return density given mass and volume
-
-	@param[in] mass
-	@param[in] volume
-	@returns Density
+/** 
+@brief Return density given mass and volume
+@param[in] mass
+@param[in] volume
+@return Density
 */
 #define density(mass, volume)   (mass / volume)
 
 
-/** Return pressure given force and area
-
-	@param[in] force
-	@param[in] area    Area of the acting force
-	@returns Pressure
+/** 
+@brief Return pressure given force and area
+@param[in] force
+@param[in] area Area of the acting force
+@return Pressure
 */
 #define pressure(force, area)   (force / area)
 
 
-/** Return distance given speed and time
-
-	@param[in] speed
-	@param[in] time
-	@returns Distance
+/** 
+@brief Return distance given speed and time
+@param[in] speed
+@param[in] time
+@return Distance
 */
 #define distance(speed, time)   (speed * time)
 
 
-/** Return speed/velocity given the distance and time
-
-	@param[in] distance
-	@param[in] time
-	@returns Speed
+/** 
+@brief Return speed/velocity given the distance and time
+@param[in] distance
+@param[in] time
+@return Speed
 */
 #define speed(distance, time)   (distance / time)
 
 
-/** Return the acceleration given time and change in velocity
-
-	@param[in] velocity_change
-	@param[in] time
-	@returns Acceleration
+/** 
+@brief Return the acceleration given time and change in velocity
+@param[in] velocity_change
+@param[in] time
+@return Acceleration
 */
 #define acceleration_given_velocity(velocity_change, time)   (velocity_change / time)
 
 
-/** Return the acceleration given force and mass
-
-	@param[in] force
-	@param[in] mass
-	@returns Acceleration
+/** 
+@brief Return the acceleration given force and mass
+@param[in] force
+@param[in] mass
+@return Acceleration
 */
 #define acceleration_given_force(force, mass)   (force / mass)
 
 
-/** Return momentum given mass and velocity
-
-	@param[in] mass
-	@param[in] velocity    Amount of directional speed of the mass
-	@returns Momentum
+/** 
+@brief Return momentum given mass and velocity
+@param[in] mass
+@param[in] velocity Amount of directional speed of the mass
+@return Momentum
 */
 #define momentum(mass, velocity)   (mass * velocity)
 
 
-/** Return the force given mass and acceleration
-
-	@param[in] mass
-	@param[in] acceleration    Amount of acceleration of the mass
-	@returns Force
+/** 
+@brief Return the force given mass and acceleration
+@param[in] mass
+@param[in] acceleration Amount of acceleration of the mass
+@return Force
 */
 #define force(mass, acceleration)   (mass * acceleration)
 
 
-/** Return impulse given force and time
-
-	@param[in] force
-	@param[in] time    Amount of time the force was exerted
-	@returns Impulse
+/** 
+@brief Return impulse given force and time
+@param[in] force
+@param[in] time Amount of time the force was exerted
+@return Impulse
 */
 #define impulse(force, time)   (force * time)
 
 
-/** Return impulse given velocity and a change in mass
-
-	@param[in] mass
-	@param[in] velocity
-	@returns Impulse
+/** 
+@brief Return impulse given velocity and a change in mass
+@param[in] mass
+@param[in] velocity
+@return Impulse
 */
 #define impulse_given_mass_velocity(mass, velocity)   (mass * velocity)
 
 
-/** Return work given force and distance
-
-	@param[in] force
-	@param[in] distance    Amount of distance the force was exerted
-	@returns Work exerted
+/** 
+@brief Return work given force and distance
+@param[in] force
+@param[in] distance Amount of distance the force was exerted
+@return Work exerted
 */
 #define work(force, distance)   (force * distance)
 
 
-/** Return power given force, distance, and time
-
-	@param[in] force
-	@param[in] distance    Amount of distance the force was exerted
-	@param[in] time    Amount of time the force was exerted
-	@returns Power (Watts)
+/** 
+@brief Return power given force, distance, and time
+@param[in] force
+@param[in] distance Amount of distance the force was exerted
+@param[in] time Amount of time the force was exerted
+@return Power (Watts)
 */
 #define power(force, distance, time)   ((force * distance) / time)
 
 
-/** Return power given work and time
-
-	@param[in] work    Work (Newtons)
-	@param[in] time    Amount of time the work was exerted
-	@returns Power (Watts)
+/** 
+@brief Return power given work and time
+@param[in] work Work (Newtons)
+@param[in] time Amount of time the work was exerted
+@return Power (Watts)
 */
 #define power_given_work_time(work, time)   (work / time)
 
 
-/** Return the kinetic-energy given mass and velocity
-
-	@param[in] mass    Mass of some object
-	@param[in] velocity    Velocity of the object
-	@returns Kinetic energy of an object at a given velocity and mass
+/** 
+@brief Return the kinetic-energy given mass and velocity
+@param[in] mass Mass of some object
+@param[in] velocity Velocity of the object
+@return Kinetic energy of an object at a given velocity and mass
 */
 #define kinetic_energy(mass, velocity)   (0.500 * mass * velocity * velocity)
 
 
-/** Return potential-energy given mass (kg) and height (meters) of an object on Earth
-
-	@param[in] mass_kg    Mass of some object
-	@param[in] height_meters    height from some surface
-	@returns Potential energy of an object on Earth at a given height and mass
+/** 
+@brief Return potential-energy given mass (kg) and height (meters) of an object on Earth
+@param[in] mass_kg Mass of some object
+@param[in] height_meters height from some surface
+@return Potential energy of an object on Earth at a given height and mass
 */
 #define potential_energy(mass_kg, height_meters)   (mass_kg * G * height_meters)
 
 
-/** Return gravitational intensity given distance
-
-	@param[in] distance    Distance between two objects
-	@returns Gravitational intensity at the given distance
+/** 
+@brief Return gravitational intensity given distance
+@param[in] distance Distance between two objects
+@return Gravitational intensity at the given distance
 */
 #define gravitational_intensity(distance)   (1.0 / (distance * distance))
 
 
-/** Return instantaneous speed given acceleration and time
-
-	@param[in] acceleration    Acceleration at the given time
-	@param[in] time    Time of the given instance
-	@returns Speed at the given time and acceleration
+/** 
+@brief Return instantaneous speed given acceleration and time
+@param[in] acceleration Acceleration at the given time
+@param[in] time Time of the given instance
+@return Speed at the given time and acceleration
 */
 #define instantaneous_speed(acceleration, time)   (acceleration * time)
 
 
-/** Return the freefall velocity given time (seconds)
-
-	@param[in] time_sec    Time since falling
-	@returns Free-fall velocity at the given time
+/** 
+@brief Return the freefall velocity given time (seconds)
+@param[in] time_sec Time since falling
+@return Free-fall velocity at the given time
 */
 #define freefall_velocity(time_sec)   (G * time_sec)
 
 
-/** Return distance fallen during freefall given time (seconds)
-
-	@param[in] time_sec    Time since falling
-	@returns Distance fallen at the given time
+/** 
+@brief Return distance fallen during freefall given time (seconds)
+@param[in] time_sec Time since falling
+@return Distance fallen at the given time
 */
 #define freefall_distance(time_sec)   (0.500 * G * time_sec * time_sec)
 
