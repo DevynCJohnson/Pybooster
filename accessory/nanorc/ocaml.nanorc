@@ -1,0 +1,52 @@
+syntax "ocaml" "\.mli?$"
+magic "OCaml"
+comment "(*|*)"
+
+# UID #
+
+color red "\<[A-Z][0-9a-z_]{2,}\>"
+
+# DECLARATIONS #
+
+color green "\<(let|val|method|in|and|rec|private|virtual|constraint)\>"
+
+
+# STRUCTURE ITEMS #
+
+color red "\<(type|open|class|module|exception|external)\>"
+
+# PATTERNS #
+
+color blue "\<(fun|function|functor|match|try|with)\>"
+
+# PATTERN MODIFIERS #
+
+color yellow "\<(as|when|of)\>"
+
+# CONDITIONS #
+
+color cyan "\<(if|then|else)\>"
+
+# BLOCKS #
+
+color magenta "\<(begin|end|object|struct|sig|for|while|do|done|to|downto)\>"
+
+# CONSTANTS #
+
+color green "\<(true|false)\>"
+
+# MODULES/CLASSES #
+
+color green "\<(include|inherit|initializer)\>"
+
+# EXPRESSION MODIFIERS #
+
+color yellow "\<(new|ref|mutable|lazy|assert|raise)\>"
+
+# COMMENTS #
+
+color white start="\(\*" end="\*\)"
+
+# STRINGS #
+
+color brightblack ""[^\"]*""

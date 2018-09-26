@@ -1,0 +1,9 @@
+syntax "mutt"
+
+# QUOTED LINES #
+
+color green "^>.*"
+
+# SIGNATURES #
+
+color yellow start="^>* ?-- $" end="^>* ?$"

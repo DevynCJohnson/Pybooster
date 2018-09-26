@@ -1,0 +1,22 @@
+syntax "makefile" "[Mm]akefile[^/]*$" "\.(make|mk)$"
+header "#!/usr/bin/make" "#!/bin/make"
+magic "makefile script"
+comment "#"
+
+color yellow "\$+[{(][a-zA-Z0-9_-]+[})]"
+color brightblue "^[^: 	]+[ 	]*:"
+color cyan "\.(ONESHELL|PHONY|POSIX|SHELLFLAGS)[ 	]*:"
+color brightcyan,blue "override[ 	]+"
+color brightred "(::=|:=| : )"
+color ,yellow "^[ 	]*(\-|@|\-@)" "\$(@|\*|\?|\+|\^|<|%)" "\$\((@D|\*D|%D|\^D|<D|\?D|@F|\*F|%F|\^F|<F|\?F)\)"
+color magenta "^[ 	]*(if|ifdef|ifeq|else|endif)(|[ 	]+.+)$"
+color brightmagenta "\$\((addprefix|addsuffix) "
+
+# COMMENTS #
+
+color green "(^|[[:space:]]+)#.*"
+color brightgreen "(^|[[:space:]]+)#' .+"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

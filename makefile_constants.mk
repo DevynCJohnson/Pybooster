@@ -21,6 +21,7 @@ override PIXMAPDIR::=/usr/share/pixmaps
 override SYSAPPDIR::=/usr/share/applications
 override SYSMENUDIR::=/usr/share/menu
 override SYSMIMEDIR::=/usr/share/mime
+override SYSNANORCDIR::=/usr/share/nano
 override SYSTHEMEDIR::=/usr/share/icons
 override DEBUGGINGDIR::=./testing
 override TESTINGDIR::=./testing

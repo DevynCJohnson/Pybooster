@@ -1,0 +1,37 @@
+syntax "guile" "\.scm$"
+header "^#!.*guile"
+comment ";"
+
+# BASIC SCHEME FUNCTIONS #
+
+color green "\<(do|if|lambda|let(rec)?|map|unless|when)\>"
+
+# DEFINES #
+
+color brightcyan "\<define(-macro|-module|-public|-syntax)?\>"
+
+# QUOTED SYMBOLS #
+
+color brightyellow "'\<(\w|-)+\>"
+
+# CHARACTERS #
+
+color brightmagenta "#\\."
+color brightmagenta "#\\\w+\>"
+
+# BOOLEANS #
+
+color brightred "(#t|#f)\>"
+
+# KEYWORDS #
+
+color blue "#?:(\w|[?-])+"
+
+# STRINGS #
+
+color yellow start="^[[:blank:]]+\"" end="[^\]\""
+color yellow ""(\\.|[^"])*""
+
+# COMMENTS #
+
+color cyan "(^|[[:space:]]);.*$"

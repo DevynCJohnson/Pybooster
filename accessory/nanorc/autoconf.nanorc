@@ -1,0 +1,39 @@
+syntax "autoconf" "\.(ac|m4)$"
+comment "#"
+
+# KEYWORDS #
+
+color yellow "\<(if|test|then|elif|else|fi|for|in|do|done)\>"
+color yellow "(=|!=|&&|\|\|)"
+
+# MACROS #
+
+color cyan "\<[[:upper:]_[:digit:]]+\>"
+
+# VERSION NUMBERS #
+
+color red "\<[-_.0-9]+\>"
+
+# BACKTICKS #
+
+color green "`[^`]*`"
+
+# BRACKETS #
+
+color magenta "\[|\]|\(|\)"
+
+# STRINGS #
+
+color red "\"[^"]*\"" "\'[^']*\'"
+
+# ERROR LINES #
+
+color brightred "^\*\*\*.*"
+
+# COMMENTS #
+
+color blue "^[[:blank:]]*#.*" "\<dnl.*"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

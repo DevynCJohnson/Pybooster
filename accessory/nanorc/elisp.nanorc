@@ -1,0 +1,52 @@
+syntax "elisp" "\.el$"
+magic "Lisp/Scheme program"
+comment ";"
+
+# BASIC FUNCTIONS/MACROS #
+
+color brightcyan "\<(if|when|unless|cond|and|or|lambda|let|progn|while|dolist|dotimes)\>"
+color brightcyan "\<save-((window-)?excursion|restriction)\>"
+color brightcyan "\<eval-(and|when)-compile\>"
+
+# DEFINING FUNCTIONS #
+
+color brightcyan "\<def(un|macro|subst|generic|alias)\>"
+color brightcyan "\<cl-def(un|macro|subst|generic|struct|type)\>"
+color brightcyan "\<define-(derived|minor|generic)-mode\>"
+
+# DEFINING VARIABLES #
+
+color brightcyan "\<def(class|const|var(-local|alias)?)\>"
+
+# CUSTOMIZATION FUNCTIONS #
+
+color brightcyan "\<def(custom|face|group|theme)\>"
+
+# SETTING VALUES #
+
+color brightcyan "\<(setq(-default|-local)?|setf|push|pop|declare(-function)?)\>"
+
+# FEATURE FUNCTIONS #
+
+color brightcyan "\<(require|provide)\>"
+
+# QUOTED SYMBOLS #
+
+color brightyellow "#?'\<(\w|-)+\>"
+
+# BOOLEANS #
+
+color brightred "\<(t|nil)\>"
+
+# KEYWORDS #
+
+color blue ":(\w|[?-])+"
+
+# STRINGS #
+
+color yellow start="^[[:blank:]]+\"" end="[^\]\""
+color yellow ""(\\.|[^"])*""
+
+# COMMENTS #
+
+color cyan "(^|[[:space:]]);.*$"

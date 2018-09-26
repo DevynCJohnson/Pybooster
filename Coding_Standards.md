@@ -60,6 +60,18 @@ General Rules
 - Keep the source code highly organized and optimized
 - Try to reduce or eliminate third-party dependencies
 - Hexadecimal sequences mush use all uppercase letters
+- Accepted "ToDo"/"Reminder" comments include the following
+    - DEBUG
+    - FINISH
+    - FIX
+    - FIXME
+    - REPAIR
+    - TESTING
+    - TODEBUG
+    - TODO
+    - TOMV
+    - TORM
+    - XXX
 
 ### File Headers
 
@@ -127,7 +139,7 @@ Doxygen
     - This documentation must go in the function's main block documentation (before or after the language depending on the language)
 - One blank line must preceed `@code` and `@section` blocks and another blank line follows after the last line on the block (unless that is the end of the Doxygen block)
 - For Doxygen comments documenting anything other than the file itself, the tags should be in the following order
-    1. `@class`, `@def`, `@enum`, `@fn`, `@typedef`, or `@var` 
+    1. `@class`, `@def`, `@enum`, `@fn`, `@typedef`, or `@var`
     2. `@brief`
     3. `@param[*]` (Start with the first input towards the last from left to right)
     4. `@return`

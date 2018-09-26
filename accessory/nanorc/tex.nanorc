@@ -1,0 +1,8 @@
+syntax "tex" "\.tex$"
+magic "(La)?TeX document"
+linter chktex -v0 -q -I
+comment "%"
+
+icolor green "\\.|\\[A-Z]*"
+color magenta "[{}]"
+color blue "(^|[^\])%.*"

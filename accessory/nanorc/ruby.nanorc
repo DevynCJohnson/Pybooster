@@ -1,0 +1,46 @@
+syntax "ruby" "\.rb$"
+header "^#!.*ruby[-0-9._]*"
+magic "Ruby script"
+linter ruby -w -c
+comment "#"
+
+# RESERVED WORDS #
+
+color yellow "\<(BEGIN|END|alias|and|begin|break|case|class|def|defined\?|do|else|elsif|end|ensure|false|for|if|in|module)\>"
+color yellow "\<(next|nil|not|or|redo|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\>"
+
+# CONSTANTS #
+
+color brightblue "(\$|@|@@)?\<[A-Z]+[0-9A-Z_a-z]*"
+
+# RUBY "SYMBOLS" #
+
+icolor magenta "([ 	]|^):[0-9A-Z_]+\>"
+
+# SPECIAL SYMBOLS #
+
+color brightyellow "\<(__FILE__|__LINE__)\>"
+
+# REGULAR EXPRESSIONS #
+
+color brightmagenta "/([^/]|(\\/))*/[iomx]*" "%r\{([^}]|(\\}))*\}[iomx]*"
+color brightblue "`[^`]*`" "%x\{[^}]*\}"
+
+# STRINGS #
+
+color green ""([^"]|(\\"))*"" "%[QW]?\{[^}]*\}" "%[QW]?\([^)]*\)" "%[QW]?<[^>]*>" "%[QW]?\[[^]]*\]" "%[QW]?\$[^$]*\$" "%[QW]?\^[^^]*\^" "%[QW]?![^!]*!"
+color brightgreen "#\{[^}]*\}"
+color green "'([^']|(\\'))*'" "%[qw]\{[^}]*\}" "%[qw]\([^)]*\)" "%[qw]<[^>]*>" "%[qw]\[[^]]*\]" "%[qw]\$[^$]*\$" "%[qw]\^[^^]*\^" "%[qw]![^!]*!"
+
+# COMMENTS #
+
+color cyan "#[^{].*$" "#$"
+color brightcyan "##[^{].*$" "##$"
+
+# HERE DOCS #
+
+color green start="<<-?'?EOT'?" end="^EOT"
+
+# REMINDERS #
+
+color brightcyan "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)"

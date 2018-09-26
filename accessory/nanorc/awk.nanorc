@@ -1,0 +1,51 @@
+syntax "awk" "\.awk$"
+magic "awk script"
+comment "#"
+
+# RECORDS #
+
+icolor brightred "\$[0-9A-Z_!@#$*?-]+"
+
+# AWK-SET VARIABLES #
+
+color red "\<(ARGC|ARGIND|ARGV|BINMODE|CONVFMT|ENVIRON|ERRNO|FIELDWIDTHS)\>"
+color red "\<(FILENAME|FNR|FS|IGNORECASE|LINT|NF|NR|OFMT|OFS|ORS)\>"
+color red "\<(PROCINFO|RS|RT|RSTART|RLENGTH|SUBSEP|TEXTDOMAIN)\>"
+
+# FUNCTION DECLARATIONS & SPECIAL PATTERNS #
+
+color brightgreen "\<(function|extension|BEGIN|END)\>"
+
+# FLOW CONTROL #
+color brightyellow "\<(for|if|while|do|else|in|delete|exit)\>"
+color brightyellow "\<(break|continue|return)\>"
+
+# I/O STATEMENTS #
+
+color brightgreen "\<(close|getline|next|nextfile|print|printf)\>"
+color brightgreen "\<(system|fflush)\>"
+
+# STANDARD FUNCTIONS #
+
+color magenta "\<(atan2|cos|exp|int|log|rand|sin|sqrt|srand)\>"
+color magenta "\<(asort|asorti|gensub|gsub|index|length|match)\>"
+color magenta "\<(split|sprintf|strtonum|sub|substr|tolower|toupper)\>"
+color magenta "\<(mktime|strftime|systime)\>"
+color magenta "\<(and|compl|lshift|or|rshift|xor)\>"
+color magenta "\<(bindtextdomain|dcgettext|dcngettext)\>"
+
+# OPERATORS #
+
+color green "(\{|\}|\(|\)|\;|\]|\[|\\|<|>|!|=|&|\+|-|\*|%|/|\?:|\^|\|)"
+
+# STRINGS #
+
+color brightyellow "<[^= 	]*>" ""(\\.|[^"])*""
+
+# COMMENTS #
+
+color brightblue "(^|[[:space:]])#.*$"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

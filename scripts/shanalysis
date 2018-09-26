@@ -45,6 +45,12 @@ for file in "$@"; do
     if [ -x "$(command -v sh)" ]; then
         printf '======  *POSIX COMPLIANCE*  ======\n'
         sh -n "$file" | awk NF
+    elif [ -x "$(command -v ash)" ]; then
+        printf '======  *POSIX COMPLIANCE (ASH)*  ======\n'
+        ash -n "$file" | awk NF
+    elif [ -x "$(command -v dash)" ]; then
+        printf '======  *POSIX COMPLIANCE (DASH)*  ======\n'
+        dash -n "$file" | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sh: command not found!\n' >&2
     fi

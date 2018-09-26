@@ -1,0 +1,27 @@
+syntax "Dockerfile" "Dockerfile[^/]*$" "\.dockerfile$"
+
+# KEYWORDS #
+
+icolor red "^(ADD|CMD|COPY|ENTRYPOINT|ENV|EXPOSE|FROM|LABEL|MAINTAINER|ONBUILD|RUN|USER|VOLUME|WORKDIR)[[:space:]]"
+
+# BRACKETS & PARENTHESIS #
+
+color brightgreen "(\(|\)|\[|\])"
+
+# DOUBLE AMPERSAND #
+
+color brightmagenta "&&"
+
+# COMMENTS #
+
+icolor cyan "^[[:space:]]*#.*$"
+
+# BLANK SPACE AT EOL #
+
+color ,green "[[:space:]]+$"
+
+# STRINGS #
+
+color brightwhite "'([^']|(\\'))*'" "%[qw]\{[^}]*\}" "%[qw]\([^)]*\)" "%[qw]<[^>]*>" "%[qw]\[[^]]*\]" "%[qw]\$[^$]*\$" "%[qw]\^[^^]*\^" "%[qw]![^!]*!"
+color brightwhite ""([^"]|(\\"))*"" "%[QW]?\{[^}]*\}" "%[QW]?\([^)]*\)" "%[QW]?<[^>]*>" "%[QW]?\[[^]]*\]" "%[QW]?\$[^$]*\$" "%[QW]?\^[^^]*\^" "%[QW]?![^!]*!"
+color brightyellow "('|\")"

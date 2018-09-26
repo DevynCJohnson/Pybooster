@@ -1,0 +1,41 @@
+syntax "changelog" "Change[Ll]og.*"
+
+# AUTHOR LINES #
+
+color green "^(19|20).*$"
+
+# DATES #
+
+color red "^(19|20)[0-9-]{8}"
+
+# EMAIL ADDRESSES #
+
+color yellow "<[^>]*@[^>]*>"
+
+# BUG & PATCH NUMBERS #
+
+color cyan "(BZ|bug|patch) #[0-9]+" "PR [[:alnum:]]+/[0-9]+"
+
+# CHANGED FILES #
+
+color magenta start="^(	| {8})\* " end="(:( |$)|^$)"
+
+# RELEASE MARKERS #
+
+color brightblue "^(GNU )?nano[- ][0-9]\.[0-9]\.[^ ]+"
+
+# COMMAND-LINE OPTIONS #
+
+color cyan "[[:space:]]-[a-zA-Z\$]" "--[8a-z-]+"
+
+# PROBABLE CONSTANTS #
+
+color brightred "\<[A-Z_][0-9A-Z_]+\>"
+
+# KEY SEQUENCES #
+
+color brightblue "\^[A-Z^\]" "\<M-." "\<F1?[0-9]" "(\^|M-)Space"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

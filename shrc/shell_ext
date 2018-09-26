@@ -20,12 +20,12 @@
 export XDG_UTILS_DEBUG_LEVEL=0
 
 
-# SET SPECIAL PATHS #
+# SET $PATH #
 
 
-# Path
-
+#' Test if the pathname is in $PATH
 notinpath() { (echo "$PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+# Setup the $PATH environment variable
 [ -x "$(command -v brew)" ] && path_tmp="${PATH}:$(brew --cellar)" && PATH="$path_tmp" && unset path_tmp
 [ -d /usr/local/opt ] && notinpath '/usr/local/opt' && PATH="${PATH}:/usr/local/opt"
 [ -d /opt/bin ] && notinpath '/opt/bin' && PATH="${PATH}:/opt/bin"
@@ -36,9 +36,13 @@ notinpath() { (echo "$PATH" | grep -F -q -v "$1" && return 0) || return 1; }
 [ -d /usr/X11/opt ] && notinpath '/usr/X11/opt' && PATH="${PATH}:/opt/X11/bin"
 export PATH
 
-# Package Config Path
 
+# SET $PKG_CONFIG_PATH (PACKAGE CONFIG PATH) #
+
+
+#' Test if the pathname is in $PKG_CONFIG_PATH
 notinpcpath() { (echo "$PKG_CONFIG_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+# Setup the $PKG_CONFIG_PATH environment variable
 [ "$(notinpcpath "${HOME}/.local/pkgconfig")" ] && [ "$(notinpcpath '\~/.local/pkgconfig')" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:${HOME}/.local/pkgconfig"
 [ -d /lib/pkgconfig ] && [ "$(notinpcpath /lib/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/lib/pkgconfig"
 [ -d /usr/lib/pkgconfig ] && [ "$(notinpcpath /usr/lib/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/lib/pkgconfig"
@@ -58,17 +62,22 @@ export -f listpath notinpath notinpcpath
 
 
 if [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && [ -e /etc/debian_version ]; then
-    # Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
+    #' Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
     export DEBIAN_FRONTEND='dialog'
 fi
+# Set an environment variable containing the kernel's release information (version)
 [ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -x "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
+# Ensure that Python scripts are always compiled to bytecode
 export PYTHONOPTIMIZE=True
 
-# Glade Path Environment Variables
+
+# GLADE PATH ENVIRONMENT VARIABLES #
+
 
 if [ -x "$(command -v glade)" ]; then
-    # GI_TYPELIB_PATH
+    #' Test if the pathname is in $GI_TYPELIB_PATH
     notingipath() { (echo "$GI_TYPELIB_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    # Setup $GI_TYPELIB_PATH
     if [ -d /usr/lib/girepository-1.0 ]; then
         if [ -z "${GI_TYPELIB_PATH:-}" ]; then
             notingipath /usr/lib/girepository-1.0 && export GI_TYPELIB_PATH='/usr/lib/girepository-1.0'
@@ -83,8 +92,9 @@ if [ -x "$(command -v glade)" ]; then
             notingipath /usr/lib/x86_64-linux-gnu/girepository-1.0 && export GI_TYPELIB_PATH="${GI_TYPELIB_PATH}:/usr/lib/x86_64-linux-gnu/girepository-1.0"
         fi
     fi
-    # GLADE_CATALOG_SEARCH_PATH
+    #' Test if the pathname is in $GLADE_CATALOG_SEARCH_PATH
     notincatalogpath() { (echo "$GLADE_CATALOG_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    # Setup $GLADE_CATALOG_SEARCH_PATH
     if [ -d /usr/share/glade/catalogs ]; then
         if [ -z "${GLADE_CATALOG_SEARCH_PATH:-}" ]; then
             notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH='/usr/share/glade/catalogs'
@@ -92,8 +102,9 @@ if [ -x "$(command -v glade)" ]; then
             notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH="${GLADE_CATALOG_SEARCH_PATH}:/usr/share/glade/catalogs"
         fi
     fi
-    # GLADE_MODULE_SEARCH_PATH
+    #' Test if the pathname is in $GLADE_MODULE_SEARCH_PATH
     notingmodpath() { (echo "$GLADE_MODULE_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
+    # Setup $GLADE_MODULE_SEARCH_PATH
     if [ -d /usr/lib/glade/modules ]; then
         if [ -z "${GLADE_MODULE_SEARCH_PATH:-}" ]; then
             notingmodpath /usr/lib/glade/modules && export GLADE_MODULE_SEARCH_PATH='/usr/lib/glade/modules'
@@ -170,9 +181,13 @@ export -f isFileWritable isFileOrDir isFunction ispts isSymLink istty strcontain
 
 
 if [ -x "$(command -v zenity)" ] && [ "$(istty)" = 'false' ]; then
+    #' Open a calendar window using Zenity
     win_cal() { zenity --title=Calendar --calendar --text='' --day=1 --month=1 --year="$1" 2> /dev/null; }
+    #' Open an error message window using Zenity
     win_err() { zenity --title=Error --error --text="${1}" 2> /dev/null; }
+    #' Open an info window using Zenity
     win_info() { zenity --title=Information --info --text="${1}" 2> /dev/null; }
+    #' Open a warning message window using Zenity
     win_warn() { zenity --title=Warning --warning --text="${1}" 2> /dev/null; }
 fi
 
@@ -596,6 +611,8 @@ fi
 if [ -x "$(command -v curl)" ]; then
     alias testwebtime="curl -s -w 'Testing Website Response Time: %{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null http://www.google.com"
     alias webheaders='curl -I'
+elif [ -x "$(command -v wget)" ]; then
+    alias download='wget --quiet --no-dns-cache --no-cache --no-cookies --no-cookies'
 fi
 [ -n "$(command -v ifconfig)" ] && [ -z "$(command -v ipconfig)" ] && alias ipconfig='ifconfig'
 [ -x "$(command -v iptables)" ] && alias ipt='sudo iptables'

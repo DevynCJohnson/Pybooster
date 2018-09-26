@@ -1,0 +1,78 @@
+syntax "sql" "\.sql[2345s~]?$"
+comment "-- "
+
+# FUNCTIONS #
+
+color white "\<[a-z_]*\("
+
+# TYPES #
+
+color green "\<(int2|smallint|int4|int|integer|int8|bigint|decimal|numeric|real|double precision|(small|big)?serial)\>"
+color green "\<(bit( varying)?|boolean|bytea|enum|money|tsvector|uuid)\>"
+color green "\<(char|varchar|character( varying)?|text)\>"
+color green "\<(date|interval|time(stamp)?( with time zone| without time zone)?)\>"
+color green "\<(point|line|lseg|path|box|polygon|circle)\>"
+color green "\<(cidr|inet|macaddr)\>"
+color green "\<(daterange|int4range|int8range|numrange|tsrange|tstzrange)\>"
+
+# STRUCTURE #
+
+color brightyellow "\<(CASE|CLASS|DEFAULT|DO|ELSE|ELSEIF|FOR|FOREACH|FUNCTION|IF|IS NULL)\>"
+color brightyellow "\<(NEW|PRIVATE|PUBLIC|RETURN|RETURNS|SETOF|SWITCH|THEN|WHEN|WHILE)>"
+
+# CONTROL FLOW #
+
+color magenta "\<(EXCEPTION|NOTICE|RAISE|RETURN)\>"
+
+# SQL KEYWORDS #
+
+color blue "\<(ABORT|AGGREGATE|ALTER|ANALYZE|AND|AS|AUTHORIZATION|BEGIN|CAST|CHECKPOINT|CLASS|CLOSE)\>"
+color blue "\<(CLUSTER|COLLATION|COMMENT|COMMIT|CONFIGURATION|CONSTRAINTS|CONVERSION|COPY|CREATE)\>"
+color blue "\<(DATA|DATABASE|DEALLOCATE|DECLARE|DEFAULT|DELETE|DICTIONARY|DISCARD|DO|DOMAIN|DROP)\>"
+color blue "\<(END|EVENT|EXECUTE|EXPLAIN|EXTENSION|FAMILY|FETCH|FOREIGN|FROM|FUNCTION)\>"
+color blue "\<(GRANT|GROUP|IF NOT EXISTS|IMMUTABLE|INDEX|INSERT|INTO|LABEL|LANGUAGE|LARGE|LOAD|LOCK)\>"
+color blue "\<(MAPPING FOR|MATERIALIZED|MOVE|NOTIFY|OBJECT|OPERATOR|OPTIONS|OWNED|OWNER)\>"
+color blue "\<(PARSER|PREPARED?|PRIVILEGES|REASSIGN|REFRESH|RELEASE|RESET|REVOKE|ROLE|ROLLBACK|RULE)\>"
+color blue "\<(SAVEPOINT|SCHEMA|SEARCH|SECURITY|SELECT|SEQUENCE|SERVER|SESSION|SET|SHOW|SPACE|START|SYSTEM)\>"
+color blue "\<(TABLE|TEXT|TO|TRANSACTION|TYPE|UPDATE|USER|VACUUM|VALUES|VIEW|WHERE|WITH|WRAPPER)\>"
+
+# STRINGS #
+
+color brightyellow "<[^=[ ]+]*>" ""(\.|[^"])*""
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"
+
+# REGULAR EXPRESSIONS #
+
+color brightmagenta "/([^/]|(\\/))*/[iomx]*" "%r\{([^}]|(\\}))*\}[iomx]*"
+color brightblue "`[^`]*`" "%x\{[^}]*\}"
+
+# STRINGS #
+
+color green ""([^"]|(\\"))*"" "%[QW]?\{[^}]*\}" "%[QW]?\([^)]*\)" "%[QW]?<[^>]*>"
+color green "%[QW]?\[[^]]*\]" "%[QW]?\$[^$]*\$" "%[QW]?\^[^^]*\^" "%[QW]?![^!]*!"
+color brightgreen "#\{[^}]*\}"
+color green "'([^']|(\\'))*'" "%[qw]\{[^}]*\}" "%[qw]\([^)]*\)" "%[qw]<[^>]*>"
+color green "%[qw]\[[^]]*\]" "%[qw]\$[^$]*\$" "%[qw]\^[^^]*\^" "%[qw]![^!]*!"
+
+# COMMENTS #
+
+color red "#[^{].*$" "#$"
+color red "--[^{].*$" "#$"
+color red "##[^{].*$" "##$"
+color brightblue "//.*"
+color brightblue start="/\*" end="\*/"
+
+# POSTGRESQL MARKINGS #
+
+color red "(--)"
+
+# POSTGRESQL DEFAULT SCHEMAS #
+
+color brightred "(pg_catalog|public)"
+
+# POSTGRESQL PLS #
+
+color brightblue "(pljava|plperlu?|plpgsql|plpy|plpythonu?|plr|plruby|plsh|pltcl|plscheme)"

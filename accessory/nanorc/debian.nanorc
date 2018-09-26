@@ -1,0 +1,28 @@
+syntax "sources.list" "sources\.list(~|\.old|\.save)?$" "sources\.list\.d/.*\.list(~|\.old|\.save)?$"
+comment "#"
+
+color brightmagenta "^deb.*"
+
+# DISTRIBUTION #
+
+color brightred "^deb(-src)?\s+.*((ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/\S+|cdrom:\[.+\]/)\s+\S+"
+
+# URIS #
+
+color brightgreen "^deb(-src)?\s+.*(ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/\S+"
+
+# CDROMS #
+
+color brightgreen "^deb(-src)?\s+.*cdrom:\[.+\]/"
+
+# OPTIONS #
+
+color brightcyan "^deb(-src)?\s+\[.+\]\s+"
+
+# INITIAL DEB TAG #
+
+color yellow "^deb(-src)?"
+
+# COMMENTS #
+
+color brightblue "#.*"

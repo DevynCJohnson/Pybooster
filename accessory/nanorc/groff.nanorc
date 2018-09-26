@@ -1,0 +1,41 @@
+syntax "groff" "\.m[ems]$" "\.rof" "\.tmac$" "^tmac."
+comment ".\""
+
+# ARGUMENT OF .DS OR .NR #
+
+color cyan "^\.(ds|nr) [^[:space:]]*"
+
+# SINGLE-CHARACTER ESCAPES #
+
+color brightmagenta "\\."
+
+# ARGUMENT OF \F OR \S #
+
+color brightmagenta "\\f." "\\f\(.." "\\s(\+|\-)?[0-9]"
+
+# NEWLINES #
+
+color cyan "(\\|\\\\)n(.|\(..)"
+color cyan start="(\\|\\\\)n\[" end="]"
+
+# REQUESTS #
+
+color brightgreen "^\.[[:space:]]*[^[:space:]]*"
+
+# COMMENTS #
+
+color yellow "^\.\\".*$"
+
+# STRINGS #
+
+color green "(\\|\\\\)\*(.|\(..)"
+color green start="(\\|\\\\)\*\[" end="]"
+
+# CHARACTERS #
+
+color brightred "\\\(.."
+color brightred start="\\\[" end="]"
+
+# MACRO ARGUMENTS #
+
+color brightcyan "\\\\\$[1-9]"

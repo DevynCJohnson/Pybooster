@@ -1,0 +1,41 @@
+syntax "rust" "\.rs"
+comment "//"
+
+# FUNCTION DEFINITIONS #
+
+color magenta "fn [a-z_0-9]+"
+
+# RESERVED WORDS #
+
+color yellow "\<(abstract|alignof|as|become|box|break|const|continue|crate|do|else|enum|extern|false|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|offsetof|override|priv|pub|pure|ref|return|sizeof|static|self|struct|super|true|trait|type|typeof|unsafe|unsized|use|virtual|where|while|yield)\>"
+
+# MACROS #
+
+color red "[a-z_]+!"
+
+# CONSTANTS #
+
+color magenta "[A-Z][A-Z_0-9]+"
+
+# ENUMS, STRUCTS, TRAITS, TYPES, ETC. #
+
+color magenta "[A-Z][A-Za-z0-9]+"
+
+# STRINGS #
+
+color green "\".*\""
+color green start="\".*\\$" end=".*\""
+color green start="r#+\"" end="\"#+"
+
+# COMMENTS #
+
+color blue "//.*"
+color blue start="/\*" end="\*/"
+
+# ATTRIBUTES #
+
+color magenta start="#!\[" end="\]"
+
+# REMINDERS #
+
+color brightcyan "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)"

@@ -1,0 +1,32 @@
+syntax "javascript" "\.js$"
+comment "//"
+
+# DECLARATIONS #
+
+color green "\<(async|class|const|extends|function|let|this|typeof|var|void)\>"
+
+# FLOW CONTROL & SPECIAL KEYWORDS #
+
+color brightyellow "\<(do|while|if|else|switch|case|default|for|each|in|of|with)\>"
+color brightyellow "\<(await|export|import|throw|try|catch|finally|new|delete)\>"
+
+# EXIT POINTS #
+
+color magenta "\<(break|continue|return|yield)\>"
+
+# OCTAL, DECIMAL, & HEXADECIMAL NUMBERS #
+
+color cyan "\<[0-9]+\>" "\<0x[0-9A-Fa-f]+\>"
+
+# STRINGS #
+
+color brightmagenta ""(\\.|[^"])*"" "'(\\.|[^'])*'" "`(\\.|[^`])*`"
+
+# COMMENTS #
+
+color brightblue "(^|[[:space:]])//.*"
+color brightblue start="/\*" end="\*/"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

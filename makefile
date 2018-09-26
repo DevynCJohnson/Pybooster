@@ -50,6 +50,7 @@ override EZWINSRC::=$(PYSRC)/ezwin
 override GEANYDIR::=./geany
 override INCDIR::=./include
 override LANGSPECSDIR::=./accessory/language_specs
+override NANORCDIR::=./accessory/nanorc
 override MENUDIR::=$(ACCDIR)/menu_files
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
@@ -72,6 +73,7 @@ override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
 override LIST_LANGSPECS::=coffeescript
+override LIST_NANORC_FILES::=asm.nanorc autoconf.nanorc awk.nanorc changelog.nanorc cmake.nanorc c.nanorc css.nanorc debian.nanorc default.nanorc Dockerfile.nanorc elisp.nanorc email.nanorc fortran.nanorc gentoo.nanorc go.nanorc groff.nanorc guile.nanorc html.nanorc java.nanorc javascript.nanorc json.nanorc lua.nanorc makefile.nanorc man.nanorc mgp.nanorc mutt.nanorc nanohelp.nanorc nanorc.nanorc nftables.nanorc objc.nanorc ocaml.nanorc patch.nanorc perl.nanorc php.nanorc po.nanorc postgresql.nanorc pov.nanorc python.nanorc ruby.nanorc rust.nanorc sh.nanorc spec.nanorc tcl.nanorc texinfo.nanorc tex.nanorc xml.nanorc
 override LIST_MATH_PROGRAMS::=acos acosh asin asinh atan atanh cbrt cos cosh fib isprime sin sinh sqrt tan tanh
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
@@ -151,6 +153,7 @@ help :
 	printf '%s\n%s\n' 'Install C Libraries:' '    sudo make install_clib'
 	printf '%s\n%s\n' 'Install Enhanced XCompose File:' '    make install_xcompose'
 	printf '%s\n%s\n' 'Install Language Specification Files:' '    sudo make install_langspecs'
+	printf '%s\n%s\n' 'Install NanoRC Files:' '    sudo make install_nanorc'
 	printf '%s\n%s\n' 'Install Opticons:' '    sudo make install_opticons'
 	printf '%s\n%s\n' 'Install Python Eggs:' '    sudo make install_pyeggs'
 	printf '%s\n%s\n' 'Install Python Libraries:' '    sudo make install_pylib'
@@ -237,9 +240,9 @@ default :
 # Git
 .PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitstatus gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
-.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : macify unmacify
 
@@ -359,8 +362,8 @@ upver :
 	# Python Scripts #
 	find . -mount -type f -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/" '{}' \;
-	# Shell Scripts & R #
-	find . -mount -type f \( -name "*.awk" -o -name "*.sed" -o -name "*.ash" -o -name "*.bash" -o -name "*.ksh" -o -name "*.R" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
+	# Shell Scripts, R, & Conf/INI Files #
+	find . -mount -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.cfg" -o -name "*.conf" -o -name "*.ini" -o -name "*.ksh" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -exec sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/" '{}' \;
@@ -382,7 +385,8 @@ cleanfull : cleanall cleandoc
 fixperm :
 	-@find . -mount -type d -exec $(CHMOD) 755 '{}' +
 	find . -mount -not \( -path "./debugging" $(addprefix -prune -o -path ", $(addsuffix ", $(CHMOD644_NO_SEARCH))) \) -type f \( -name ".csslintrc" $(addprefix -o -name ", $(addsuffix ", $(LIST_CHMOD644_EXT))) \) -exec $(CHMOD) 644 '{}' +
-	find $(ACCDIR) $(DOCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
+	find $(ACCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
+	([ -d $(DOCDIR)/ ] && find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +) || true
 	find $(PYEGGDIR) -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
 	$(CHMOD) 644 $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
 	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py || true
@@ -495,9 +499,9 @@ unmacify :
 # INSTALL/UNINSTALL #
 
 
-install_dev : install_geany_conf install_langspecs install_program_analyzer install_pyeggs install_scripts
+install_dev : install_geany_conf install_langspecs install_nanorc install_program_analyzer install_pyeggs install_scripts
 
-uninstall_dev : uninstall_langspecs uninstall_pyeggs uninstall_pylib
+uninstall_dev : uninstall_langspecs uninstall_nanorc uninstall_pyeggs uninstall_pylib
 
 install_clib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing C Libraries ==='
@@ -560,13 +564,21 @@ uninstall_mimetype_booster :
 
 install_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Language Specifications ==='
-	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(COPY) $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS))) $(INSTALLLANGSPECS2DIR)/) || true
-	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(COPY) $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS))) $(INSTALLLANGSPECS3DIR)/) || true
+	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(COPY) -t $(INSTALLLANGSPECS2DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(COPY) -t $(INSTALLLANGSPECS3DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 
 uninstall_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Language Specifications ==='
 	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS2DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS3DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+
+install_nanorc :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing NanoRC ==='
+	([ -d $(SYSNANORCDIR)/ ] && $(COPY) -t $(SYSNANORCDIR)/ $(addprefix $(NANORCDIR)/, $(LIST_NANORC_FILES))) || true
+
+uninstall_nanorc :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling NanoRC ==='
+	([ -d $(SYSNANORCDIR)/ ] && $(RM) $(addprefix $(SYSNANORCDIR)/, $(LIST_NANORC_FILES))) || true
 
 install_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Opticons ==='

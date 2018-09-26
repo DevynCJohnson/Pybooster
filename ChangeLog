@@ -1,3 +1,9 @@
+2018-09-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Coding_Standards.md:  Added coding rules for "ToDo"/"Reminder" comments
+	* PyBooster:  Added NanoRC files under ./accessory/nanorc
+	* shanalysis:  Added `ash -n` & `dash -n` as a backup for `sh -n`
+
 2018-09-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Fixed some errors in the documentation of some code & standardized the Doxygen comments

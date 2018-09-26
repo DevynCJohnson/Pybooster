@@ -1,0 +1,25 @@
+syntax "texinfo" "\.texi$"
+header "^\\input texinfo"
+magic "Texinfo source"
+comment "@c "
+
+# COMMAND ARGUMENTS, TRAILING, & ENCLOSED #
+
+color cyan "^@[a-z]+[[:space:]]+.*$"
+color brightmagenta "@[a-zA-Z]+\{[^}]*\}"
+
+# COMMANDS #
+
+color yellow "@[a-zA-Z]+\{?" "\}"
+
+# MENU ITEMS #
+
+color brightred "^\*[[:space:]]+.*::.*$"
+
+# COMMENTS #
+
+color green "@c[[:space:]]+.*$"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

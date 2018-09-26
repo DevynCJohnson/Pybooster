@@ -1,0 +1,40 @@
+syntax "json" "\.json$"
+comment ""
+
+# NUMBERS #
+
+color green ":[[:space:]]*\-?(0|[1-9][0-9]*)(\.[0-9]+)?([Ee]?[-+]?[0-9]+)?"
+
+# VALUES #
+
+color brightmagenta "\".+\""
+
+# HEX NUMBERS #
+
+color green ":[[:space:]]*\"#[0-9abcdefABCDEF]+\""
+
+# ESCAPES #
+
+color green "\\\\" "\\\"" "\\[bfnrt]" "\\u[0-9abcdefABCDEF]{4})"
+
+# SPECIAL WORDS #
+
+color green "(true|false|null)"
+
+# NAMES #
+
+color brightblue "\"[^"]+\"[[:space:]]*:"
+
+# BRACKETS, BRACES, & SEPARATORS #
+
+color brightblue "\[" "\]"
+color brightred "\{" "\}"
+color brightred "," ":"
+
+# COMMENTS #
+
+color cyan "(^|[[:space:]]+)(//|#).*$"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

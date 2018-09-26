@@ -1,0 +1,44 @@
+syntax "po" "\.pot?$"
+comment "#"
+
+# COMMENTS #
+
+color green "^#.*$"
+color yellow "Copyright|\(C\)"
+
+# HEADER FIELDS #
+
+color brightred "^\"X-Bugs:.*\"$"
+color brightmagenta "\<(Project\-Id\-Version|Report\-Msgid\-Bugs\-To|Last\-Translator|Language(\-Team)?|X-Bugs|X-Generator|Plural\-Forms)\>"
+color cyan "\<(POT\-Creation\-Date|PO\-Revision\-Date|MIME\-Version|Content\-Type|Content\-Transfer\-Encoding)\>"
+
+# ENCODINGS & NUMBERS #
+
+color yellow "\<(UTF|ISO|Windows|Mac|IBM)-[0-9]+"
+color yellow "[0-9]|pre[0-9]|[0-9]bit"
+
+# MSGIDS #
+
+color brightblue "^(msgid|msgid_plural|msgstr)\>"
+
+# TAGS #
+
+color red " fuzzy(,|$)"
+color yellow " (no-)?[-[:alpha:]]+-format(,|$)"
+
+# FORMAT SPECIFIERS #
+
+color brightmagenta "%([1-9]\$)?[a-z]*"
+
+# QUOTES & NEWLINES #
+
+color yellow "\""
+color cyan "\\n"
+
+# REMINDERS #
+
+color brightwhite,yellow "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)"
+
+# OBSOLETE STRINGS #
+
+color red "#~.*$"

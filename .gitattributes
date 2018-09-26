@@ -184,6 +184,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.[Ss][Vv][Gg] text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
+*.nanorc text eol=lf linguist-language=Text linguist-vendored=false
 *.tags text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false

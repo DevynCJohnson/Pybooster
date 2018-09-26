@@ -12,6 +12,6 @@ FT_00_LB=
 FT_00_CM=
 FT_00_WD=
 EX_00_LB=_View
-EX_00_CM=retext "%d/%e"
+EX_00_CM=retext --preview "%d/%f"
 EX_00_WD=
 error_regex=

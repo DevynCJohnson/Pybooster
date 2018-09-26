@@ -1,0 +1,18 @@
+syntax "default"
+comment "#"
+
+# COMMENTS #
+
+color cyan "^[[:space:]]*#.*"
+
+# SPACES IN FRONT OF TABS #
+
+color ,red " +	+"
+
+# NANO'S NAME & VERSION #
+
+color brightred "(GNU )?nano [1-9]\.[0-9]\.[^[:space:][:punct:]]+"
+
+# EMAIL ADDRESSES #
+
+color magenta "<[[:alnum:].%_+-]+@[[:alnum:].-]+\.[[:alpha:]]{2,}>"

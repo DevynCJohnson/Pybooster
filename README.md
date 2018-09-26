@@ -61,12 +61,15 @@ Installing
 
 To install/uninstall software, open a terminal and type the needed command:
 
-- Install Pybooster: `make install`
+- Install all of Pybooster: `make install`
 - Install Command Scripts: `make install_scripts`
+- Install Compiled Programs (after they are built): `make install_programs`
 - Install Program-Analyzer: `make install_program_analyzer`
+- Install Python Libraries: `make install_pylib`
 - Install Python Eggs: `make install_pyeggs`
-- Install Additional Mimetypes (XDG Desktops Only): `make install_mimetype_booster`
+- Install Shell RC Scripts: `make install_shrc`
 - Install Language Specification Files (used by gtksourceview): `make install_langspecs`
+- Install Additional Mimetypes (XDG Desktops Only): `make install_mimetype_booster`
 - Install the Opticons Icon Theme (XDG Desktops Only): `make install_Opticons`
 - Install the Themes (XDG Desktops Only): `make install_themes`
 - Uninstall PyBooster: `make uninstall`
@@ -96,9 +99,10 @@ Also, refer to _[Coding_Standards.md](./Coding_Standards.md)_ (in this same dire
     - C Program Source-Code: `./src/`
     - Compiled Binaries: `./bin/`
     - Glade Files (for Programs): `./accessory/`
-    - GTK Source View LanguageSpecs: `./accessory/lang-specs/`
+    - GTK Source-View Language Specs: `./accessory/lang-specs/`
     - Man Pages: `./doc/man/`
     - Menu & \*.desktop Files: `./accessory/menu_files/`
+    - NanoRC Files: `./accessory/nanorc/`
     - Project Tools: `./tools/`
     - Python Egg Modules: `./pyegg/`
     - Python Libraries: `./pylib/`
