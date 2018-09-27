@@ -1,3 +1,8 @@
+2018-09-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Added some functions for AWS-ECR
+	* PyBooster:  Tweaked some of the NanoRC files
+
 2018-09-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Coding_Standards.md:  Added coding rules for "ToDo"/"Reminder" comments

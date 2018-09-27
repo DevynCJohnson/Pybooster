@@ -17,8 +17,8 @@ color brightcyan "\<(pass|print|raise|return|try|while|with|yield)\>"
 
 # SINGLE-QUOTED STRINGS #
 
-color brightgreen "'([^'\]|\\.)+'"
-color brightgreen ""([^"\]|\\.)+""
+color yellow "'([^'\]|\\.)+'"
+color yellow ""([^"\]|\\.)+""
 
 # COMMENTS #
 
@@ -35,7 +35,11 @@ color brightmagenta "\<(False|None|True)\>"
 
 # REMINDERS #
 
-color brightwhite,yellow "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)"
+color brightwhite,yellow "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+
+# SYNTAX CHECKER COMMENTS #
+
+color blue,yellow "#[ 	]*(noqa:|nosec|pylint:)"
 
 # TRAILING WHITESPACE #
 

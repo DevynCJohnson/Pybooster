@@ -61,12 +61,12 @@ alias ec2_desc_rtab='aws ec2 describe-route-tables'
 
 #' Return information (in JSON format) about the specified instance (by ID)
 ec2_inst_info() {
-    aws ec2 describe-instances --filters=Name=instance-id,Values="${1}"
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}"
 }
 
 #' Return the instance type of the specified instance (by ID)
 ec2_inst_type() {
-    aws ec2 describe-instances --filters=Name=instance-id,Values="${1}" | grep 'InstanceType'
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}" | grep 'InstanceType'
 }
 
 
@@ -77,6 +77,13 @@ alias ecr_desc_repo='aws ecr describe-repositories --no-paginate'
 alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute Docker login code
 alias ecr_mkrepo='aws ecr create-repository --repository-name'
 alias ecr_rmrepo='aws ecr delete-repository --repository-name'
+#' Apply an additional tag to the Docker image given the repository name, existing tag, and the new tag
+ecr_addtag() {
+    MANIFEST="$(aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text)"
+    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}"
+}
+#' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
+ecr_imgmanifest() { aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text; }
 
 
 # AWS ECS #

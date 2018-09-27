@@ -6,7 +6,7 @@ color magenta "^.*$"
 
 # SECTION HEADINGS #
 
-icolor brightyellow "^\s*(\[([A-Z0-9_\.-]|\s)+\])+\s*$"
+icolor brightyellow "^\s*(\[([A-Z0-9_\.\-]|\s)+\])+\s*$" "^\[[A-Z0-9_\.\-]+\]$"
 color brightcyan "^\s*((Sub)?Section\s*(=|\>)|End(Sub)?Section\s*$)"
 color brightcyan "^\s*\$(end)?if(\s|$)"
 
@@ -16,8 +16,8 @@ icolor brightblue "(^|\s|=)(default|true|false|on|off|yes|no)(\s|$)"
 
 # KEYS #
 
-icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%\@+-]+\s*([:]|\>)"
-icolor cyan "^\s*(\$if )?([A-Z0-9_\/\.\%\@+-]|\s)+="
+icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%\@\+\-]+\s*([:]|\>)"
+icolor cyan "^\s*(\$if )?([A-Z0-9_\/\.\%\@\+\-]|\s)+="
 
 # COMMANDS #
 
@@ -25,22 +25,22 @@ color blue "^\s*set\s+\<"
 
 # STRINGS #
 
-color yellow "\"(\\.|[^"])*\"" "'(\\.|[^'])*'"
+color yellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
 
 # NUMBERS #
 
-color red "(^|\s|[[/:|<>(){}=,]|\])[-+]?[0-9](\.?[0-9])*%?($|\>)"
+color red "(^|\s|[\[/:|\<\>(){}=,\]|\])[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
 
 # PUNCTUATION #
 
 color blue "[.]"
 color blue "/"
-color brightwhite "(\]|[()<>[{},;:=])"
-color brightwhite "(^|\[|\{|\:)\s*-(\s|$)"
+color brightwhite "(\]|[()\<\>\[\]{},;\:=])"
+color brightwhite "(^|\[|\{|\:)\s*\-(\s|$)"
 
 # URLS #
 
-icolor green "\b(([A-Z]+://|www[.])[A-Z0-9/:#?&$=_\.\-]+)(\b|$| )"
+icolor green "(([A-Z]+\://|www[.])[A-Z0-9/\:#\?&\$=_\.\-]+)(\b|$| )"
 
 # XML-LIKE TAGS #
 

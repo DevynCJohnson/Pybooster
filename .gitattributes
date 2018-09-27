@@ -42,6 +42,10 @@ icon-theme.cache binary linguist-generated=true linguist-vendored
 .gitmodules text eol=lf linguist-vendored=false
 mypy.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 .pycodestyle text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pydocstyle text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pydocstyle.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pydocstylerc text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+.pydocstylerc.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 .pylintrc text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 pylintrc text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 .pytest.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
