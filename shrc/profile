@@ -203,13 +203,22 @@ fi
 # LOAD SHELL RC MODULES #
 
 
+# Load system/global shell extension modules
 if [ -d /etc/shell_ext_modules ]; then
     for file in /etc/shell_ext_modules/*; do
         [ -r "${file}" ] && . "${file}"
     done
+# Load shell extension modules located in the same directory as this code
 elif [ ! -d /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ]; then
     curdir="$(dirname "${BASH_SOURCE[0]}")"
     for file in ${curdir}/shell_ext_modules/*; do
+        [ -r "${file}" ] && . "${file}"
+    done
+fi
+
+# Load user shell extension modules
+if [ -d ~/.local/shell_ext_modules ]; then
+    for file in ~/.shell_ext_modules/*; do
         [ -r "${file}" ] && . "${file}"
     done
 fi
