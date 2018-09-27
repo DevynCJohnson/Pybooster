@@ -1,7 +1,9 @@
 2018-09-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added some functions for AWS-ECR
+	* profile:  Improved the shell rc extension loading code
 	* PyBooster:  Tweaked some of the NanoRC files
+	* snippets.conf:  Added additional code snippets
 
 2018-09-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

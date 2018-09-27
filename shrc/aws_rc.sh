@@ -77,11 +77,48 @@ alias ecr_desc_repo='aws ecr describe-repositories --no-paginate'
 alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute Docker login code
 alias ecr_mkrepo='aws ecr create-repository --repository-name'
 alias ecr_rmrepo='aws ecr delete-repository --repository-name'
+
+#' Remove a Docker image from the given repository name and existing tag
+ecr_rmimg() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'ERROR: Two parameters are required (repository name, existing tag)!\n' >&2
+    fi
+    aws ecr batch-delete-image --repository-name "${1:-}" --image-ids imageTag="${2:-}"
+}
+
 #' Apply an additional tag to the Docker image given the repository name, existing tag, and the new tag
 ecr_addtag() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
+        printf 'ERROR: Three parameters are required (repository name, existing tag, new tag)!\n' >&2
+    fi
     MANIFEST="$(aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text)"
-    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}"
+    if [ -z "${MANIFEST:-}" ]; then
+        printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
+    fi
+    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}" > /dev/null
 }
+
+#' Apply a tag to a tagless Docker image given the repository name, image digest, and the new tag
+ecr_addtag2tagless() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
+        printf 'ERROR: Three parameters are required (repository name, image digest, new tag)!\n' >&2
+    fi
+    case "${2:-}" in
+        # Correct digest prefix is present
+        sha256:*) imgdigest="${2:-}";;
+        # Missing digest prefix; it will be added
+        *) imgdigest="sha256:${2:-}";;
+    esac
+    if [ "$(expr "${imgdigest}" : '.*')" != 71 ]; then
+        printf 'ERROR: The given image digest has an invalid length!\n' >&2
+    fi
+    MANIFEST="$(aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageDigest="${imgdigest}" --query 'images[].imageManifest' --output text)"
+    if [ -z "${MANIFEST:-}" ]; then
+        printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
+    fi
+    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}" > /dev/null
+}
+
 #' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
 ecr_imgmanifest() { aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text; }
 
