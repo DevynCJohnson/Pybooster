@@ -9,10 +9,11 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-# PACKAGE MANAGER FUNCTIONS #
+# PACKAGE MANAGEMENT #
 
 
 [ "$PROFILE_SHELL" = 'bash' ] && set -a
+
 if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin Package Managers
     # TODO: Add MacPorts and Fink
     if [ -n "$(command -v brew)" ]; then  # MacOS Homebrew
@@ -164,7 +165,13 @@ elif [ -d /etc/zypp ] && [ -x "$(command -v zypper)" ]; then  # OpenSUSE Zypper
     repocheck() { zypper verify; }
     sysupdate() { zypper update; }
 fi
+
 [ "$PROFILE_SHELL" = 'bash' ] && set +a
+
+
+# NPM (JAVASCRIPT) PACKAGE MANAGEMENT #
+
+
 if [ -x "$(command -v npm)" ]; then
     alias cleanjscache='sudo -H npm cache clean'
     alias jsinstall='sudo -H npm install -g'
@@ -173,13 +180,23 @@ if [ -x "$(command -v npm)" ]; then
     alias jsuninstall='sudo -H npm uninstall -g'
     alias jsupdate='sudo -H npm update -g'
 fi
+
+
+# PEAR (PHP) PACKAGE MANAGEMENT #
+
+
 if [ -x "$(command -v pear)" ]; then
     alias phpinstall='sudo -H pear install'
     alias phppkglsinst='pear list'
     alias phpuninstall='sudo -H pear uninstall'
     alias phpupdate='sudo -H pear upgrade'
 fi
-if [ -x "$(command -v pip3)" ]; then
+
+
+# PIP (PYTHON) PACKAGE MANAGEMENT #
+
+
+if [ -x "$(command -v pip3)" ]; then  # Python3
     alias findpypkg='pip3 search'
     alias genpyreqfile='pip3 freeze > ./requirements.txt'
     alias getpypkgsrc='pip3 download'
@@ -194,6 +211,26 @@ if [ -x "$(command -v pip3)" ]; then
     alias pyupdate='sudo -H pip3 install -U'
     pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
 fi
+if [ -x "$(command -v pip2)" ] || ([ -x "$(command -v pip)" ] && [ -x "$(command -v python2)" ] && [ ! -x "$(command -v python3)" ]); then  # Python2
+    alias findpy2pkg='pip2 search'
+    alias genpy2reqfile='pip2 freeze > ./requirements.txt'
+    alias getpy2pkgsrc='pip2 download'
+    alias py2install='sudo -H pip2 install'
+    alias py2pkglsinst='pip2 list --format=columns'
+    alias py2pkglsnonreq='pip2 list --not-required --format=columns'
+    alias py2pkglsup='pip2 list -o --format=columns'
+    alias py2pkglsusr='pip2 list --user --format=columns'
+    alias py2reinstall='sudo -H pip2 install --upgrade --force-reinstall'
+    alias py2repocheck='sudo -H pip2 check'
+    alias py2uninstall='sudo -H pip2 uninstall'
+    alias py2update='sudo -H pip2 install -U'
+    py2sysupdate() { sudo -H sh -c "pip2 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip2 install -U"; }
+fi
+
+
+# R PACKAGE MANAGEMENT #
+
+
 if [ -x "$(command -v R)" ]; then
     rinstall() { sudo R -e "install.packages(c('${1}'), lib='/usr/local/lib/R/site-library', repos='http://cran.rstudio.com/')"; }
 fi
