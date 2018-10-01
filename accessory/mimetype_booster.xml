@@ -1280,6 +1280,7 @@
     <glob pattern="*.pyw" weight="90"/>
     <glob pattern="*.pyx" weight="90"/>
     <glob pattern="*.wsgi"/>
+    <glob pattern="__init__.py" weight="95"/>
     <magic priority="100">
       <match offset="0" type="string" value="#!/usr/bin/env python"/>
       <match offset="0" type="string" value="#!/usr/bin/python"/>
@@ -1330,6 +1331,8 @@
     <glob pattern="README.md" weight="95"/>
     <glob pattern="README.rst" weight="95"/>
     <glob pattern="README.*" weight="85"/>
+    <glob pattern="requirements.*" weight="85"/>
+    <glob pattern="Requirements.*" weight="85"/>
     <glob pattern="THANKS"/>
     <glob pattern="TODO"/>
   </mime-type>
