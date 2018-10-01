@@ -38,6 +38,10 @@ available in ``flake8``::
 Changes
 -------
 
+2018.10.01 - 2018-10-01
+```````````````````````
+* Added "#!/usr/bin/env python2" as a valid hashpling (X009)
+
 2018.03.09 - 2018-03-09
 ```````````````````````
 * Added the "TESTING" todo note for the scanner to find (T000)

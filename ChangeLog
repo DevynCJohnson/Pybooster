@@ -2,6 +2,7 @@
 
 	* aws_rc.sh:  Added upload2bucket
 	* docker_rc.sh:  Added docker_buildpush
+	* flake8_optimal.py:  Added "#!/usr/bin/env python2" as a valid hashpling (X009)
 	* makefile:  Added crypto_rc.sh & pkg_rc.sh
 
 2018-09-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

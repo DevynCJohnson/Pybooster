@@ -332,7 +332,7 @@ def x009(physical_line: str) -> Optional[Tuple[int, str]]:
     if pynoqa(physical_line):
         return None
     _match = REGEX_HASHPLING.search(physical_line)
-    if _match and physical_line.strip() != r'#!/usr/bin/env python3':
+    if _match and (physical_line.strip() != r'#!/usr/bin/env python3' or physical_line.strip() != r'#!/usr/bin/env python2'):
         return (0, r'X009 : Invalid hashpling')
     return None
 
