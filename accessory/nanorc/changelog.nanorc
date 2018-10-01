@@ -1,8 +1,8 @@
-syntax "changelog" "Change[Ll]og.*"
+syntax "changelog" "[Cc]hange[Ll]og.*"
 
 # AUTHOR LINES #
 
-color green "^(19|20).*$"
+color brightgreen "^(19|20)[0-9-]{8}.*$"
 
 # DATES #
 
@@ -10,7 +10,7 @@ color red "^(19|20)[0-9-]{8}"
 
 # EMAIL ADDRESSES #
 
-color yellow "<[^>]*@[^>]*>"
+color brightyellow "<[^>]*@[^>]*>"
 
 # BUG & PATCH NUMBERS #
 
@@ -18,7 +18,7 @@ color cyan "(BZ|bug|patch) #[0-9]+" "PR [[:alnum:]]+/[0-9]+"
 
 # CHANGED FILES #
 
-color magenta start="^(	| {8})\* " end="(:( |$)|^$)"
+color magenta start="^(	| {8}| {4})\* " end="(:( |  |$)|^$)"
 
 # RELEASE MARKERS #
 
