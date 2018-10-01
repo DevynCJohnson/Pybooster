@@ -132,10 +132,10 @@ for file in "$@"; do
 
     if [ -x "$(command -v pydocstyle)" ]; then
         printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
-        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
+        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ -x "$(command -v pep257)" ]; then
         printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
-        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
+        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); print $0; }' | awk NF
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pydocstyle (formerly pep257): command not found!\n' >&2
     fi
