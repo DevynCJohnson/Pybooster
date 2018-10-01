@@ -82,9 +82,9 @@ override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter
 override LIST_RC_MODULES::=aws_rc.sh docker_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
-override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes3 pyinstaller pylint pylint-django vulture
+override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
-override LIST_MAIN_DEPS::=clang cloc colormake doschk gcc licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount wc xdg-utils xmllint
+override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-utils licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount xdg-utils
 
 # Search Parameters Used in Find
 
@@ -339,7 +339,7 @@ pkgzip : rmtmp
 
 
 getdeps_deb : getdeps_pip
-	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_MAIN_DEPS) || true)) || \
+	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_MAIN_DEPS) && printf 'If desired, execute `\x1b[4;33msudo add-apt-repository ppa:geany-dev/ppa\x1b[0m`\n' || true)) || \
 	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_MAIN_DEPS) || true)) || \
 	([ -d /etc/portage ] && [ -x "$(command -v emerge)" ] && (emerge -a $(LIST_MAIN_DEPS) || true)) || true
 

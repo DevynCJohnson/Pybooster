@@ -31,12 +31,16 @@ along with this software.
 
 __all__: list = [
     # GENERAL PATTERNS #
+    r'BINNUM',
+    r'EXPNUM',
     r'HEXESCTAG',
     r'HEXESCURI',
+    r'HEXNUM',
     r'LEADING_TRAILING_WHITESPACE',
     r'LEADING_WHITESPACE',
-    r'TRAILING_ZEROS',
+    r'OCTNUM',
     r'TRAILING_WHITESPACE',
+    r'TRAILING_ZEROS',
     r'WHITESPACE',
     r'WHITESPACE_NEWLINE',
     # XML SOURCE CODE PATTERNS #
@@ -62,8 +66,12 @@ except ImportError:
 # GENERAL PATTERNS #
 
 
-HEXESCTAG = rgxcompile(r'&#x([A-Fa-f0-9]+);')
-HEXESCURI = rgxcompile(r'%([A-Fa-f0-9]+)')
+BINNUM = rgxcompile(r'0[bB][01]+')
+EXPNUM = rgxcompile(r'[eE][-+]?[0-9]+')
+HEXESCTAG = rgxcompile(r'&#x[A-Fa-f0-9]+;')
+HEXESCURI = rgxcompile(r'%[A-Fa-f0-9]+')
+HEXNUM = rgxcompile(r'0[xX][A-Fa-f0-9]+')
+OCTNUM = rgxcompile(r'0[oO][0-7]+')
 LEADING_TRAILING_WHITESPACE = rgxcompile(r'(^\s+)|(\s+$)')
 LEADING_WHITESPACE = rgxcompile(r'^\s+')
 TRAILING_ZEROS = rgxcompile(r'\d*\.(\d*?)(0+)$')

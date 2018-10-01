@@ -1,3 +1,10 @@
+2018-09-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* libregex.py:  Added additional regex patterns
+	* shanalysis:  Added support for AWK scripts
+	* shell_ext:  Split shell_ext into RC modules crypto_rc.sh & pkg_rc.sh
+	* snippets.conf:  Added additional code snippets
+
 2018-09-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added some functions for AWS-ECR

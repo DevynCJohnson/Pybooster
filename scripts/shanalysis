@@ -26,40 +26,67 @@ export FirstLoopPass=0
 
 for file in "$@"; do
     ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
-    echo "$file" | grep -v -E -e '.*(bashrc|profile|*shrc)' && head -1 "$file" | grep -v -E -e '#!/bin/(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && printf '%s: The specified file is not a shell script!\n' "$file" >&2 && continue
+    FILE_TYPE='UNKNOWN'
+    echo "$file" | grep -E -e '.*(bashrc|profile|*shrc)' > /dev/null && FILE_TYPE='SHELL'
+    head -1 "$file" | grep -E -e '#!/bin/(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && FILE_TYPE='SHELL'
+    head -1 "$file" | grep -E -e '#!/usr/bin/(awk|gawk|nawk).*' > /dev/null && FILE_TYPE='AWK'
 
-    if [ -x "$(command -v bashate)" ]; then
-        printf '======  *BASHATE*  ======\n'
-        bashate --ignore E006 --verbose "$file" | awk '{ OFS=""; gsub(/^Running bashate on .+$/, ""); print $0; }' | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'bashate: command not found!\n' >&2
-    fi
+    if [ "$FILE_TYPE" = 'SHELL' ]; then  # Check shell scripts
 
-    if [ -x "$(command -v shellcheck)" ]; then
-        printf '======  *SHELLCHECK*  ======\n'
-        shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file" | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'shellcheck: command not found!\n' >&2
-    fi
+        if [ -x "$(command -v bashate)" ]; then
+            printf '======  *BASHATE*  ======\n'
+            bashate --ignore E006 --verbose "$file" | awk '{ OFS=""; gsub(/^Running bashate on .+$/, ""); print $0; }' | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'bashate: command not found!\n' >&2
+        fi
 
-    if [ -x "$(command -v sh)" ]; then
-        printf '======  *POSIX COMPLIANCE*  ======\n'
-        sh -n "$file" | awk NF
-    elif [ -x "$(command -v ash)" ]; then
-        printf '======  *POSIX COMPLIANCE (ASH)*  ======\n'
-        ash -n "$file" | awk NF
-    elif [ -x "$(command -v dash)" ]; then
-        printf '======  *POSIX COMPLIANCE (DASH)*  ======\n'
-        dash -n "$file" | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sh: command not found!\n' >&2
-    fi
+        if [ -x "$(command -v shellcheck)" ]; then
+            printf '======  *SHELLCHECK*  ======\n'
+            shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file" | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'shellcheck: command not found!\n' >&2
+        fi
 
-    if [ -x "$(command -v checkbashisms)" ]; then
-        printf '======  *BASHISMS*  ======\n'
-        checkbashisms --extra "$file" 2>&1 | awk '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); print $0; }' | awk NF
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'checkbashisms: command not found!\n' >&2
+        if [ -x "$(command -v sh)" ]; then
+            printf '======  *POSIX COMPLIANCE*  ======\n'
+            sh -n "$file" | awk NF
+        elif [ -x "$(command -v ash)" ]; then
+            printf '======  *POSIX COMPLIANCE (ASH)*  ======\n'
+            ash -n "$file" | awk NF
+        elif [ -x "$(command -v dash)" ]; then
+            printf '======  *POSIX COMPLIANCE (DASH)*  ======\n'
+            dash -n "$file" | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'sh: command not found!\n' >&2
+        fi
+
+        if [ -x "$(command -v checkbashisms)" ]; then
+            printf '======  *BASHISMS*  ======\n'
+            checkbashisms --extra "$file" 2>&1 | awk '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); print $0; }' | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'checkbashisms: command not found!\n' >&2
+        fi
+
+    elif [ "$FILE_TYPE" = 'AWK' ]; then  # Check AWK scripts
+
+        if [ -x "$(command -v awk)" ]; then
+            printf '======  *AWK CHECK*  ======\n'
+            awk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "$file" 2>&1 | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'awk: command not found!\n' >&2
+        fi
+
+        if [ -x "$(command -v gawk)" ]; then
+            printf '======  *GAWK CHECK*  ======\n'
+            gawk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "$file" 2>&1 | awk NF
+        elif [ "$FirstLoopPass" -eq 0 ]; then
+            printf 'gawk: command not found!\n' >&2
+        fi
+
+    else  # Unsupported file
+
+        printf '%s: The specified file is not a shell script!\n' "$file" >&2 && continue
+
     fi
 
     if [ -x "$(command -v code-analysis)" ]; then
