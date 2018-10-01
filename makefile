@@ -464,6 +464,7 @@ syncdev :
 syncmaster :
 	@git checkout master
 	git merge --commit dev
+	git push --progress --signed=false --verify origin master
 	git checkout dev
 
 gitattr :
