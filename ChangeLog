@@ -1,4 +1,8 @@
-2018-09-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-10-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Added crypto_rc.sh & pkg_rc.sh
+
+2018-09-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* libregex.py:  Added additional regex patterns
 	* shanalysis:  Added support for AWK scripts
