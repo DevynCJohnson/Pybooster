@@ -1,0 +1,50 @@
+syntax "AsciiDoc" "\.(asc|asciidoc|adoc)$"
+
+# MAIN HEADER #
+
+color red "^====+$"
+
+# H1 #
+
+color red "^==[[:space:]].*$" "^----+$"
+
+# H2 #
+
+color magenta "^===[[:space:]].*$" "^~~~~+$"
+
+# H4 #
+
+color green "^====[[:space:]].*$" "^\^\^\^\^+$"
+
+# H5 #
+
+color brightblue "^=====[[:space:]].*$" "^\+\+\+\++$"
+
+# ATTRIBUTES #
+
+color brightgreen ":.*:"
+color brightred "\{[a-z0-9]*\}"
+color red "\\\{[a-z0-9]*\}"
+color red "\+\+\+\{[a-z0-9]*\}\+\+\+"
+
+# PARAGRAPH TITLE #
+
+color yellow "^\..*$"
+
+# SOURCE #
+
+color magenta "^\[(source,.+|NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]"
+
+# OTHER MARKUP #
+
+color yellow ".*[[:space:]]\+$" "_[^_]+_" "\*[^\*]+\*" "\+[^\+]+\+"
+color yellow "`[^`]+`" "\^[^\^]+\^" "~[^~]+~" "'[^']+'"
+color cyan "`{1,2}[^']+'{1,2}"
+
+# BULLETS #
+
+color brightmagenta "^[[:space:]]*[\*\.-]{1,5}[[:space:]]"
+
+# ANCHORS #
+
+color brightwhite "\[\[.*\]\]" "<<.*>>"

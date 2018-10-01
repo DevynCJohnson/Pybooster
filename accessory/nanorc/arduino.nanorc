@@ -1,0 +1,53 @@
+syntax "INO"  "\.?ino$"
+
+color brightred "\<[A-Z_][0-9A-Z_]+\>"
+color green "\<((s?size)|((u_?)?int(8|16|32|64|ptr)))_t\>" "\<(boolean|byte|char|float|int|long|word)\>"
+
+# CONSTANTS #
+
+icolor green "\<(HIGH|LOW|INPUT|OUTPUT)\>" "\<(PI|HALF_PI|TWO_PI)\>"
+
+# SERIAL PRINT #
+
+icolor red "\<(DEC|BIN|HEX|OCT|BYTE)\>"
+
+# SHIFTOUT #
+
+icolor green "\<(LSBFIRST|MSBFIRST)\>"
+
+# ATTACH INTERRUPT #
+
+icolor green "\<(CHANGE|FALLING|RISING)\>"
+
+# ANALOG REFERENCE #
+
+icolor green "\<(DEFAULT|EXTERNAL|INTERNAL|INTERNAL1V1|INTERNAL2V56)\>"
+
+# FUNCTIONS & CONTROL STRUCTURES #
+
+color brightyellow "\<(case|class|default|do|double|else|false|for|if|new|null|private|protected|public|short|signed|static|String|switch|this|throw|try|true|unsigned|void|while)\>" 
+color magenta "\<(goto|continue|break|return)\>"
+color brightyellow "\<(abs|acos|asin|atan|atan2|ceil|constrain|cos|degrees|exp|floor|log|map|max|min|radians|random|randomSeed|round|sin|sq|sqrt|tan)\>" "\<(bitRead|bitWrite|bitSet|bitClear|bit|highByte|lowByte)\>" "\<(analogReference|analogRead|analogWrite)\>" "\<(attachInterrupt|detachInterrupt)\>"
+color brightyellow "\<(delay|delayMicroseconds|millis|micros)\>" "\<(pinMode|digitalWrite|digitalRead)\>" "\<(interrupts|noInterrupts)\>" "\<(noTone|pulseIn|shiftIn|shiftOut|tone)\>"
+color magenta "\<(Serial|Serial1|Serial2|Serial3|begin|end|peek|read|print|println|available|flush)\>"
+color brightyellow "\<(setup|loop)\>"
+color brightcyan "^[[:space:]]*#[[:space:]]*(define|include(_next)?|(un|ifn?)def|endif|el(if|se)|if|warning|error|pragma)"
+color brightmagenta "'([^'\]|(\\["'abfnrtv\\]))'" "'\\(([0-3]?[0-7]{1,2}))'" "'\\x[0-9A-Fa-f]{1,2}'"
+
+# GCC & CLANG BUILTINS #
+
+color cyan "__attribute__[[:space:]]*\(\([^)]*\)\)" "__(aligned|asm|builtin|hidden|inline|packed|restrict|section|typeof|weak)__"
+
+# STRINGS #
+
+color brightyellow "<[^=    ]*>" ""(\\.|[^"])*""
+color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
+
+# COMMENTS #
+
+color brightblue "//.*"
+color brightblue start="/\*" end="\*/"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"
