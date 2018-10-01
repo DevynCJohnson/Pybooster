@@ -157,4 +157,26 @@ alias s3mb='aws s3 mb'  #' Make S3 bucket
 alias s3rb='aws s3 rb'  #' Remove S3 bucket
 
 
+#' Upload to a S3 Bucket (after login in to AWS via command-line)
+#' @section USAGE
+#' upload2bucket BUCKET_PATH PATHNAME_TO_UPLOAD [NEW_FILENAME_IN_BUCKET]
+#' @param[in] $1 Bucket name
+#' @param[in] $2 Pathname to the file that will be uploaded
+#' @param[in] $3 New name for the file that will be uploaded (Optional)
+upload2bucket() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'At least two parameters are required!\n' >&2
+    elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ]; then
+        filename="$(basename "${2}")"
+        bucket_path="${1}"
+        [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'
+        aws s3 cp "${2}" "${bucket_path}${filename}"
+    elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ] && [ ! -z "${3:-}" ]; then
+        bucket_path="${1}"
+        [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'
+        aws s3 cp "${2}" "${bucket_path}${3}"
+    fi
+}
+
+
 fi
