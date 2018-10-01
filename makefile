@@ -62,12 +62,9 @@ override PYCACHE::=$(PYEGGDIR)/__pycache__/ $(SCRIPTSRCDIR)/__pycache__/
 override MACROSPATH::=$(INCDIR)/Foundation.h $(INCDIR)/MACROS.h $(INCDIR)/MACROS2.h $(INCDIR)/MACROS3.h
 
 # Install Paths
-PYPATH::=/usr/lib/python
 override INSTALLBINDIR::=/usr/bin
 override INSTALLDOCDIR::=/usr/share/doc
 override INSTALLHEADERSDIR::=/usr/src/include/pybooster
-override INSTALLLANGSPECS2DIR::=/usr/share/gtksourceview-2.0/language-specs
-override INSTALLLANGSPECS3DIR::=/usr/share/gtksourceview-3.0/language-specs
 override INSTALLRCMODDIR::=/etc/shell_ext_modules/
 override PYBDIR::=/usr/lib/pybooster
 
@@ -565,13 +562,13 @@ uninstall_mimetype_booster :
 
 install_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Language Specifications ==='
-	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(COPY) -t $(INSTALLLANGSPECS2DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
-	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(COPY) -t $(INSTALLLANGSPECS3DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(GTKLANGSPECS2DIR)/ ] && $(COPY) -t $(GTKLANGSPECS2DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(GTKLANGSPECS3DIR)/ ] && $(COPY) -t $(GTKLANGSPECS3DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 
 uninstall_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Language Specifications ==='
-	([ -d $(INSTALLLANGSPECS2DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS2DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
-	([ -d $(INSTALLLANGSPECS3DIR)/ ] && $(RM) $(addprefix $(INSTALLLANGSPECS3DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(GTKLANGSPECS2DIR)/ ] && $(RM) $(addprefix $(GTKLANGSPECS2DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
+	([ -d $(GTKLANGSPECS3DIR)/ ] && $(RM) $(addprefix $(GTKLANGSPECS3DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 
 install_nanorc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing NanoRC ==='
@@ -638,7 +635,7 @@ uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Libraries ==='
 	$(RM) $(INSTALLBINDIR)/ezdisplay $(INSTALLBINDIR)/ezwin
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
-	$(RM) $(PYPATH)3.6/pybooster $(PYPATH)3.7/pybooster $(PYPATH)3.8/pybooster
+	$(RM) $(PYPATH)3.6/pybooster $(PYPATH)3.7/pybooster $(PYPATH)3.8/pybooster $(PYPATH)3.9/pybooster
 	# Uninstall Documentation
 	([ -d $(INSTALLDOCDIR)/pylib/ ] && $(RMDIR) $(INSTALLDOCDIR)/pylib/) || true
 

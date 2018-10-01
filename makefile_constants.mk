@@ -17,7 +17,10 @@ __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 
 override LICENSESDIR::=/usr/share/common-licenses
 override ETCDIR::=/etc
+override GTKLANGSPECS2DIR::=/usr/share/gtksourceview-2.0/language-specs
+override GTKLANGSPECS3DIR::=/usr/share/gtksourceview-3.0/language-specs
 override PIXMAPDIR::=/usr/share/pixmaps
+override PYPATH::=/usr/lib/python
 override SYSAPPDIR::=/usr/share/applications
 override SYSMENUDIR::=/usr/share/menu
 override SYSMIMEDIR::=/usr/share/mime
