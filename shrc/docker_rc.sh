@@ -39,6 +39,7 @@ alias getdockimg='docker image pull'  #' Retrieve the specified Docker image
 
 dock_lsvolfiles() { docker export "${1}" | tar -t; }  #' List the files in a Docker volume
 dock_terminal() { docker run -i -t "${1}" /bin/bash; }  #' Run the specified Docker image and access the contained system's terminal
+dock_running_terminal() { docker exec -i -t "${1}" /bin/bash; }  #' Access the BASH shell of an already running Docker image
 
 if [ -x "$(command -v docker-compose)" ]; then
     alias dockdown='docker-compose down'

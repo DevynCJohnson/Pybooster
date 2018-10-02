@@ -1,5 +1,6 @@
 2018-10-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* docker_rc.sh:  Added additional Docker commands & renamed existing commands
 	* flake8_optimal.py:  Added additional valid hashpling patterns (X009)
 	* Geany:  Added support for XCompose
 	* libregex.py:  Added many regex patterns (for email, whitespace, Greek, & unicode blocks)
