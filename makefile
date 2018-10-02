@@ -43,6 +43,7 @@ include makefile_constants.mk
 # Project Paths
 override ACCDIR::=./accessory
 override BIN::=./bin
+override DBDIR::=./databases
 override DOCDIR::=./doc
 override PYEGGDIR::=./pyegg
 override PYSRC::=./pylib
@@ -78,8 +79,8 @@ override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgr
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
-override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo_services libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
-override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture
+override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
+override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
 override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-utils licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount xdg-utils
 
@@ -385,7 +386,7 @@ fixperm :
 	find $(ACCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	([ -d $(DOCDIR)/ ] && find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +) || true
 	find $(PYEGGDIR) -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
-	$(CHMOD) 644 $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
+	$(CHMOD) 644 $(DBDIR)/* $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
 	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py || true
 
 rmcache :

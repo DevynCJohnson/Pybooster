@@ -31,6 +31,7 @@ along with this software.
 
 from base64 import b64decode, b64encode
 from codecs import open as codec_opener
+from collections import OrderedDict
 from configparser import ConfigParser, RawConfigParser
 from csv import DictReader, DictWriter, QUOTE_MINIMAL, reader as creader, writer as cwriter
 from io import StringIO
@@ -41,6 +42,9 @@ from typing import Sequence, Tuple, Union
 from zlib import compress as zcompress, decompress as zdecompress
 
 from pybooster.fs import ensurefileexists, getfile, write2file
+
+from pyaml import dump as yamldump
+from yaml import MarkedYAMLError, load as yamlload, YAMLError
 
 
 __all__ = [
@@ -69,6 +73,8 @@ __all__ = [
     r'opentsvfile',
     r'write2tsv',
     r'writedict2tsv',
+    # YAML #
+    r'openyamlfile',
     # CONVERTERS #
     r'csv2json',
     r'dict2csv',
@@ -79,6 +85,9 @@ __all__ = [
     r'json2csv',
     r'json2csvstr',
     r'json2dict',
+    r'json2yaml',
+    r'yaml2dict',
+    r'yaml2json',
     # PICKLE #
     r'data2pklfile',
     r'pklfile2data'
@@ -99,16 +108,15 @@ def openinifile(_file: Union[object, str]) -> object:
     """Open an INI file given a pathname or ConfigParser object and return the object"""
     if isinstance(_file, ConfigParser):
         return _file
-    elif isinstance(_file, StringIO):
+    if isinstance(_file, StringIO):
         configfile = ConfigParser()
         _file.seek(0)
         configfile.read_file(_file)  # type: ignore
         return configfile
-    else:
-        ensurefileexists(_file)
-        configfile = ConfigParser()
-        configfile.read(_file)  # type: ignore
-        return configfile
+    ensurefileexists(_file)
+    configfile = ConfigParser()
+    configfile.read(_file)  # type: ignore
+    return configfile
 
 
 def write2ini(_filename: str, _config: object) -> None:
@@ -282,6 +290,25 @@ def writedict2tsv(_filename: str, _list: list, _fieldnames: list, _dialect: str 
             csvwriter.writerow(_row)
 
 
+# YAML #
+
+
+def openyamlfile(_filename: str, _encoding: str = r'utf-8') -> dict:
+    """Open an YAML file given a pathname and return the object as a dict"""
+    try:
+        _out: dict = {}
+        ensurefileexists(_filename)
+        with codec_opener(_filename, mode=r'rb', encoding=_encoding, buffering=1) as _file:
+            _out = yamlload(_file)  # nosec
+        return _out
+    except (MarkedYAMLError, YAMLError):
+        stderr.write('The YAML file is malformed!\n')
+        raise SystemExit(1)
+    except (LookupError, UnicodeError):
+        stderr.write('Unable to determine and process data encoding!\n')
+        raise SystemExit(1)
+
+
 # CONVERTERS #
 
 
@@ -418,6 +445,42 @@ def json2dict(_str: str) -> Union[dict, list]:
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
     """
     return jloads(_str)
+
+
+def json2yaml(_str: str) -> str:
+    r"""Convert a JSON string to a YAML string
+
+    >>> json2yaml('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
+    "'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n"
+    """
+    return yamldump(jloads(_str, object_pairs_hook=OrderedDict), safe=True)
+
+
+def yaml2dict(_yaml: str) -> Union[dict, list]:
+    r"""Convert a YAML string to a Python dictionary or list (depending on the data input)
+
+    >>> yaml2dict("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n")
+    {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
+    """
+    _buf = StringIO(_yaml)
+    _out = yamlload(_buf)  # nosec
+    _buf.close()
+    return _out
+
+
+def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
+    r"""Convert a YAML string to a JSON string
+
+    >>> yaml2json("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n", _sort_keys=True, _minify=True)
+    '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
+    >>> yaml2json("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n", _sort_keys=True, _minify=False)
+        '{\n  "0": [\n    "Val1", \n    "Val2", \n    "Val3", \n    "Val4"\n  ], \n  "1": [\n    "1", \n    "2", \n    "3", \n    "4"\n  ], \n  "2": [\n    "5", \n    "6", \n    "7", \n    "8"\n  ], \n  "3": [\n    "9", \n    "10", \n    "11", \n    "12"\n  ], \n  "4": [\n    "13", \n    "14", \n    "15", \n    "16"\n  ], \n  "5": [\n    "17", \n    "18", \n    "19", \n    "20"\n  ], \n  "6": [\n    "3.14", \n    "6.28", \n    "2.73", \n    "1.57"\n  ]\n}'
+    """
+    _buf = StringIO(_yaml)
+    _tmpyaml = yamlload(_buf)  # nosec
+    _out = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
+    _buf.close()
+    return _out
 
 
 # PICKLE #

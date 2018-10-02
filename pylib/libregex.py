@@ -39,6 +39,7 @@ __all__: list = [
     r'LEADING_TRAILING_WHITESPACE',
     r'LEADING_WHITESPACE',
     r'OCTNUM',
+    r'PHONE',
     r'TRAILING_WHITESPACE',
     r'TRAILING_ZEROS',
     r'WHITESPACE',
@@ -72,6 +73,7 @@ HEXESCTAG = rgxcompile(r'&#x[A-Fa-f0-9]+;')
 HEXESCURI = rgxcompile(r'%[A-Fa-f0-9]+')
 HEXNUM = rgxcompile(r'0[xX][A-Fa-f0-9]+')
 OCTNUM = rgxcompile(r'0[oO][0-7]+')
+PHONE = rgxcompile(r'[\(]?[0-9]{3}[\)]?[\- ]?[0-9]{3}[\- ]?[0-9]{4}')
 LEADING_TRAILING_WHITESPACE = rgxcompile(r'(^\s+)|(\s+$)')
 LEADING_WHITESPACE = rgxcompile(r'^\s+')
 TRAILING_ZEROS = rgxcompile(r'\d*\.(\d*?)(0+)$')

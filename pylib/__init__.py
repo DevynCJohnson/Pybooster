@@ -51,7 +51,7 @@ __all__: list = [
     r'ezwin',
     r'financial',
     r'fs',
-    r'geo_services',
+    r'geo',
     r'libchar',
     r'markup',
     r'metric',

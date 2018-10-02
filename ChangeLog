@@ -1,10 +1,16 @@
 2018-10-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added upload2bucket
+	* datastruct.py:  Added support for YAML
 	* docker_rc.sh:  Added docker_buildpush
 	* flake8_optimal.py:  Added "#!/usr/bin/env python2" as a valid hashpling (X009)
+	* geo.py:  Added data for primary zip codes for each state
+	* libregex.py:  Added `PHONE` regex pattern
 	* makefile:  Added crypto_rc.sh & pkg_rc.sh
 	* pyanalysis:  Fixed bug that prevented PyDocStyle from showing errors properly
+	* PyBooster:  Added a directory for data files & datasets
+	* PyBooster:  Renamed "geo_services.py" to "geo.py"
+	* snippets.conf:  Improved the HTML5 select list for USA, Canada, & Mexico
 
 2018-09-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
