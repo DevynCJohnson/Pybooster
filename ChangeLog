@@ -1,6 +1,7 @@
 2018-10-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* libregex.py:  Added many regex patterns (for email, whitespace, Greek, & unicode blocks)
+	* py_directive_checker:  Enhanced the code patterns
 
 2018-10-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

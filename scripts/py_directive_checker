@@ -31,9 +31,9 @@ License along with this software.
 from sys import argv, stderr, stdout
 
 try:  # Regular Expression module
-    from regex import compile as rgxcompile
+    from regex import compile as rgxcompile, IGNORECASE
 except ImportError:
-    from re import compile as rgxcompile
+    from re import compile as rgxcompile, IGNORECASE
 
 
 # FUNCTIONS #
@@ -68,22 +68,22 @@ if __name__ == '__main__':  # noqa: C901
         stderr.write(r'Invalid parameters!\n')
         raise SystemExit(1)
     # SET CONSTANTS & VARIABLES #
-    REGEX_BANDIT = rgxcompile(r'^.*#[ \t]*(nosec|Nosec|NoSec|NOSEC|bandit|Bandit|BANDIT)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_BANDIT = rgxcompile(r'^.*#[ \t]*(nosec|bandit)[: \t]*[a-z_\-\+,]+(| .*|#.*)$', IGNORECASE)
     REGEX_BANDIT_CORRECT = rgxcompile(r'^(.+  |)# nosec(|  #.+)$')
-    REGEX_CHEETAH = rgxcompile(r'^.*#[ \t]#[ \t]*(doc|Doc|DOC|doc\-class|Doc\-class|DOC\-CLASS|docclass|doc\-method|Doc\-method|DOC\-METHOD|docmethod|doc\-module|Doc\-module|DOC\-MODULE|docmodule|header|Header|HEADER)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_CHEETAH = rgxcompile(r'^.*#[ \t]#[ \t]*(doc|doc[\-]class|doc[\-]method|doc[\-]module|header)[: \t]*[a-z_\-\+,]+(| .*|#.*)$', IGNORECASE)
     REGEX_CHEETAH_CORRECT = rgxcompile(r'^(.+  |)##(doc|doc\-class|doc\-method|doc\-module|header): .+$')
-    REGEX_CYTHON = rgxcompile(r'^.*#[ \t]*(cython|Cython|CYTHON).*$')
-    REGEX_CYTHON_CORRECT = rgxcompile(r'^#(cython): [FTa-z0-9_\-\+=, ]+$')
-    REGEX_DISTUTILS = rgxcompile(r'^.*#[ \t]*(distutils|Distutils|DistUtils|DISTUTILS).*$')
+    REGEX_CYTHON = rgxcompile(r'^.*#[ \t]*cython.*$', IGNORECASE)
+    REGEX_CYTHON_CORRECT = rgxcompile(r'^# (cython): [FTa-z0-9_\-\+=, ]+$')
+    REGEX_DISTUTILS = rgxcompile(r'^.*#[ \t]*distutils.*$', IGNORECASE)
     REGEX_DISTUTILS_CORRECT = rgxcompile(r'^# (distutils): [A-Za-z0-9_\-\+]+ = .*(|  #.+)$')
-    REGEX_DOCTEST = rgxcompile(r'^.*#[ \t]*(doctest|Doctest|DocTest|DOCTEST)[: \t]*[A-Za-z_\-\+,]+(| .*|#.*)$')
+    REGEX_DOCTEST = rgxcompile(r'^.*#[ \t]*doctest[: \t]*[a-z_\-\+,]+(| .*|#.*)$', IGNORECASE)
     REGEX_DOCTEST_CORRECT = rgxcompile(r'^(.+  |)# doctest: [A-Z_\-\+,]+(|  #.+)$')
-    REGEX_FLAKE8 = rgxcompile(r'#[ \t]*(flake8|Flake8|flake\-8|FLAKE8)[: \t]*(ignore|Ignore|IGNORE|noqa|Noqa|NOQA)')
-    REGEX_MYPY = rgxcompile(r'^.*#[ \t]*(type|Type|TYPE|mypy|Mypy|MyPy|MYPY)[: \t]*(ignore|Ignore|IGNORE)(|  #.*)$')
+    REGEX_FLAKE8 = rgxcompile(r'#[ \t]*flake[\-]8[: \t]*(ignore|noqa)', IGNORECASE)
+    REGEX_MYPY = rgxcompile(r'^.*#[ \t]*(type|mypy)[: \t]*ignore(|  #.*)$', IGNORECASE)
     REGEX_MYPY_CORRECT = rgxcompile(r'^(.+  |)# type: ignore(|  #.+)$')
-    REGEX_NOQA = rgxcompile(r'^.*#[ \t]*(noqa|Noqa|NoQa|NOQA).*$')
+    REGEX_NOQA = rgxcompile(r'^.*#[ \t]*noqa.*$', IGNORECASE)
     REGEX_NOQA_CORRECT = rgxcompile(r'^(.+  |)# (noqa): [A-Z0-9,]+(|  #.+)$')
-    REGEX_PYLINT = rgxcompile(r'^.*#[ \t]*#[ \t]*(pylint|Pylint|PyLint|PYLINT)[: \t]*disable[ \t]*=[ \t]*[A-Za-z0-9,]+.*$')
+    REGEX_PYLINT = rgxcompile(r'^.*#[ \t]*#[ \t]*pylint[: \t]*disable[ \t]*=[ \t]*[a-z0-9,]+.*$', IGNORECASE)
     REGEX_PYLINT_CORRECT = rgxcompile(r'^(.+  |)# pylint: disable=[A-Z0-9,]+$')
     LINE_NUM = 1
     # ANALYZE SRC #
