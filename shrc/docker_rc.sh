@@ -17,14 +17,14 @@ if [ -x "$(command -v docker)" ]; then
 
 
 alias dock_cl='docker container ls -a --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'  #' List containers (compressed list)
-alias docker_clean_all='docker system prune --all'  #' Remove all unused images not just dangling ones
-alias docker_clean_con='docker container prune'  #' Remove all stopped containers
-alias docker_clean_img='docker image prune --all'  #' Remove all unused images, not just dangling ones
-alias docker_conls='docker ps -a'  #' List containers
-alias docker_conrm='docker container rm'  #' Remove container
-alias docker_constop='docker container stop'  #' Stop container
-alias docker_exe='docker run -i -t'  #' Run Docker image like an executable
-alias docker_imgls='docker images'  #' List images
+alias dock_clean_all='docker system prune --all'  #' Remove all unused images not just dangling ones
+alias dock_clean_con='docker container prune'  #' Remove all stopped containers
+alias dock_clean_img='docker image prune --all'  #' Remove all unused images, not just dangling ones
+alias dock_conls='docker ps -a'  #' List containers
+alias dock_conrm='docker container rm'  #' Remove container
+alias dock_constop='docker container stop'  #' Stop container
+alias dock_exe='docker run -i -t'  #' Run Docker image like an executable
+alias dock_imgls='docker images'  #' List images
 alias dock_plugls='docker plugin ls'  #' List plugins
 alias dock_rm_sock='sudo rm -r -f /var/run/docker.sock'  #' Remove Docker's socket
 alias dock_srvmk='docker service create'  #' Create service
@@ -35,8 +35,10 @@ alias dock_volls='docker volume ls'  #' List volumes
 alias dock_volmk='docker volume create'  #' Create volumes
 alias dock_volprune='docker volume prune'  #' Prune unused volumes
 alias dock_volrm='docker volume rm'  #' Remove volumes
-alias getdockerimg='docker image pull'  #' Retrieve the specified Docker image
+alias getdockimg='docker image pull'  #' Retrieve the specified Docker image
 
+dock_lsvolfiles() { docker export "${1}" | tar -t; }  #' List the files in a Docker volume
+dock_terminal() { docker run -i -t "${1}" /bin/bash; }  #' Run the specified Docker image and access the contained system's terminal
 
 if [ -x "$(command -v docker-compose)" ]; then
     alias dockdown='docker-compose down'
@@ -60,7 +62,7 @@ fi
 #' @param[in] $2 Tag name (Optional; defaults to "latest")
 #' @param[in] $3 Tag name (Optional)
 #' @param[in] $4 Tag name (Optional)
-docker_buildpush() {
+dock_buildpush() {
     if [ -z "${MAIN_REPO:-}" ]; then
         printf 'The environment variable "MAIN_REPO" must be defined to specify the S3 repository!\n' >&2
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ] && [ ! -z "${3:-}" ] && [ ! -z "${4:-}" ]; then

@@ -17,14 +17,14 @@ color brightblue "\<(awk|cat|cd|ch(grp|mod|own)|cp|echo|env|grep|install|ln|make
 color brightmagenta "\$[-0-9@*#?$!]" "\$[[:alpha:]_][[:alnum:]_]*"
 color brightmagenta "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:space:]]*[[:alnum:]_]+[[:space:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
 
+# STRINGS #
+
+color brightyellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+
 # COMMENTS #
 
 color red "(^|[[:space:]])#.*$"
 color blue,green "(^|[[:space:]])#' .*$"
-
-# STRINGS #
-
-color brightyellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
 
 # TRAILING WHITESPACE #
 
