@@ -68,6 +68,7 @@ __all__ = [
     # JSON #
     r'openjsonfile',
     r'write2json',
+    r'writeyaml2json',
     r'write2minijson',
     # TSV #
     r'opentsvfile',
@@ -252,6 +253,15 @@ def write2json(_filename: str, _dict: dict, _indent: int = 2, _sort_keys: bool =
     """Send data to a new JSON file or overwrite an existing JSON file"""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _file.write(jdump(_dict, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys))
+
+
+def writeyaml2json(_filename: str, _yamlfile: str, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> None:
+    """Convert YAML to JSON and write the JSON file (overwrites exist JSON files)"""
+    ensurefileexists(_yamlfile)
+    _tmpyaml: dict = yamlload(_yamlfile)  # nosec
+    _out: str = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
+    with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
+        _file.write(_out)
 
 
 def write2minijson(_filename: str, _dict: dict, _sort_keys: bool = True) -> None:
@@ -456,14 +466,14 @@ def json2yaml(_str: str) -> str:
     return yamldump(jloads(_str, object_pairs_hook=OrderedDict), safe=True)
 
 
-def yaml2dict(_yaml: str) -> Union[dict, list]:
-    r"""Convert a YAML string to a Python dictionary or list (depending on the data input)
+def yaml2dict(_yaml: str) -> dict:
+    r"""Convert a YAML string to a Python dictionary
 
     >>> yaml2dict("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n")
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
     """
     _buf = StringIO(_yaml)
-    _out = yamlload(_buf)  # nosec
+    _out: dict = yamlload(_buf)  # nosec
     _buf.close()
     return _out
 
@@ -477,8 +487,8 @@ def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bo
         '{\n  "0": [\n    "Val1", \n    "Val2", \n    "Val3", \n    "Val4"\n  ], \n  "1": [\n    "1", \n    "2", \n    "3", \n    "4"\n  ], \n  "2": [\n    "5", \n    "6", \n    "7", \n    "8"\n  ], \n  "3": [\n    "9", \n    "10", \n    "11", \n    "12"\n  ], \n  "4": [\n    "13", \n    "14", \n    "15", \n    "16"\n  ], \n  "5": [\n    "17", \n    "18", \n    "19", \n    "20"\n  ], \n  "6": [\n    "3.14", \n    "6.28", \n    "2.73", \n    "1.57"\n  ]\n}'
     """
     _buf = StringIO(_yaml)
-    _tmpyaml = yamlload(_buf)  # nosec
-    _out = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
+    _tmpyaml: dict = yamlload(_buf)  # nosec
+    _out: str = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
     _buf.close()
     return _out
 
