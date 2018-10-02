@@ -32,18 +32,37 @@ along with this software.
 __all__: list = [
     # GENERAL PATTERNS #
     r'BINNUM',
+    r'EMAIL',
     r'EXPNUM',
+    r'GREEK_ALL',
     r'HEXESCTAG',
     r'HEXESCURI',
     r'HEXNUM',
     r'LEADING_TRAILING_WHITESPACE',
     r'LEADING_WHITESPACE',
     r'OCTNUM',
+    r'ODD_WHITESPACE',
     r'PHONE',
     r'TRAILING_WHITESPACE',
     r'TRAILING_ZEROS',
     r'WHITESPACE',
     r'WHITESPACE_NEWLINE',
+    # UNICODE CHARACTER BLOCKS #
+    r'BASIC_LATIN',
+    r'LATIN_1_SUPPLEMENT',
+    r'LATIN_EXTENDED_A',
+    r'LATIN_EXTENDED_B',
+    r'IPA_EXTENSIONS',
+    r'SPACING_MODIFIER_LETTERS',
+    r'COMBINING_DIACRITICAL_MARKS',
+    r'GREEK_AND_COPTIC',
+    r'CYRILLIC',
+    r'CYRILLIC_SUPPLEMENT',
+    r'ARMENIAN',
+    r'HEBREW',
+    r'ARABIC',
+    r'SYRIAC',
+    r'ARABIC_SUPPLEMENT',
     # XML SOURCE CODE PATTERNS #
     r'CHARREF',
     r'INCOMPLETE_REF',
@@ -68,11 +87,14 @@ except ImportError:
 
 
 BINNUM = rgxcompile(r'0[bB][01]+')
+EMAIL = rgxcompile(r'[A-Za-z0-9_\-!#\$%\' <>&"\(\),:;@\[\\\]\*\+/=\?\^`\{\|\}~\.]+@[A-Za-z0-9\-]\.[A-Za-z0-9\-]+')
 EXPNUM = rgxcompile(r'[eE][-+]?[0-9]+')
+GREEK_ALL = rgxcompile(r'[\x0370-\x03FF\x1F00-\x1FFF]+')
 HEXESCTAG = rgxcompile(r'&#x[A-Fa-f0-9]+;')
 HEXESCURI = rgxcompile(r'%[A-Fa-f0-9]+')
 HEXNUM = rgxcompile(r'0[xX][A-Fa-f0-9]+')
 OCTNUM = rgxcompile(r'0[oO][0-7]+')
+ODD_WHITESPACE = rgxcompile(r'[\xA0\x1680\x180E\x2000-\x200D\x2028\x2029\x202F\x205F\x2060\x3000\xFEFF]+')
 PHONE = rgxcompile(r'[\(]?[0-9]{3}[\)]?[\- ]?[0-9]{3}[\- ]?[0-9]{4}')
 LEADING_TRAILING_WHITESPACE = rgxcompile(r'(^\s+)|(\s+$)')
 LEADING_WHITESPACE = rgxcompile(r'^\s+')
@@ -80,6 +102,28 @@ TRAILING_ZEROS = rgxcompile(r'\d*\.(\d*?)(0+)$')
 TRAILING_WHITESPACE = rgxcompile(r'\s+$')
 WHITESPACE = rgxcompile(r'\s+')
 WHITESPACE_NEWLINE = rgxcompile(r'\s*(\f|\r|\n)+\s*')
+
+
+# UNICODE CHARACTER BLOCKS #
+
+
+# TODO: Add all unicode blocks https://en.wikipedia.org/wiki/Unicode_block
+
+BASIC_LATIN = rgxcompile(r'[\x00-\x7F]+')
+LATIN_1_SUPPLEMENT = rgxcompile(r'[\x80-\xFF]+')
+LATIN_EXTENDED_A = rgxcompile(r'[\x0100-\x017F]+')
+LATIN_EXTENDED_B = rgxcompile(r'[\x0180-\x024F]+')
+IPA_EXTENSIONS = rgxcompile(r'[\x0250-\x02AF]+')
+SPACING_MODIFIER_LETTERS = rgxcompile(r'[\x02B0-\x02FF]+')
+COMBINING_DIACRITICAL_MARKS = rgxcompile(r'[\x0300-\x036F]+')
+GREEK_AND_COPTIC = rgxcompile(r'[\x0370-\x03FF]+')
+CYRILLIC = rgxcompile(r'[\x0400-\x04FF]+')
+CYRILLIC_SUPPLEMENT = rgxcompile(r'[\x0400-\x052F]+')
+ARMENIAN = rgxcompile(r'[\x0530-\x058F]+')
+HEBREW = rgxcompile(r'[\x0590-\x05FF]+')
+ARABIC = rgxcompile(r'[\x0600-\x06FF]+')
+SYRIAC = rgxcompile(r'[\x0700-\x074F]+')
+ARABIC_SUPPLEMENT = rgxcompile(r'[\x0750-\x077F]+')
 
 
 # XML SOURCE CODE PATTERNS #
