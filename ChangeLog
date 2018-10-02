@@ -1,6 +1,7 @@
 2018-10-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* flake8_optimal.py:  Added additional valid hashpling patterns (X009)
+	* Geany:  Added support for XCompose
 	* libregex.py:  Added many regex patterns (for email, whitespace, Greek, & unicode blocks)
 	* makefile:  Added makefiles to "upver"
 	* py_directive_checker:  Enhanced the code patterns
