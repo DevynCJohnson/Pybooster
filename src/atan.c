@@ -4,7 +4,7 @@
 /**
 @brief Return the arc-tangent of the input
 @file atan.c
-@version 2018.09.24
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

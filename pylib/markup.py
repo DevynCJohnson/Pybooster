@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -46,9 +46,9 @@ from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHI
 from pybooster.strtools import rmspecialwhitespace
 
 try:  # Regular Expression module
-    from regex import compile as rgxcompile, I, match as rgxmatch, S, sub as resub, VERBOSE
+    from regex import compile as rgxcompile, DOTALL, IGNORECASE, match as rgxmatch, sub as resub, VERBOSE
 except ImportError:
-    from re import compile as rgxcompile, I, match as rgxmatch, S, sub as resub, VERBOSE
+    from re import compile as rgxcompile, DOTALL, IGNORECASE, match as rgxmatch, sub as resub, VERBOSE
 
 try:  # XML module
     from defusedxml import defuse_stdlib
@@ -168,7 +168,7 @@ FILETYPE_DTD: int = 4
 FILETYPE_XSD: int = 5
 LEADING_SURROGATE = rgxcompile(r'[\ud800-\udbff]')
 TRAILING_SURROGATE = rgxcompile(r'[\udc00-\udfff]')
-LOCATESTARTTAGEND_TOLERANT = rgxcompile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', VERBOSE)
+LOCATESTARTTAGEND_TOLERANT = rgxcompile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', flags=VERBOSE)
 ATTR_TOLERANT = r'((?<=[\'"\s/])[^\s/>][^\s/=>]*)(\s*=+\s*(\'[^\']*\'|"[^"]*"|(?![\'"])[^>\s]*))?(?:\s|/(?!>))*'
 ATTRFIND_TOLERANT = rgxcompile(ATTR_TOLERANT)
 CC_NS = rgxcompile(r'\s*xmlns:cc\s*=\s*(\'|")(http://creativecommons.org/ns#|http://web.resource.org/cc/)(\'|")\s*')
@@ -179,7 +179,7 @@ DC_NS = rgxcompile(r'\s*xmlns:dc\s*=\s*(\'|")http://purl.org/dc/elements/1.1/(\'
 ENDENDTAG = rgxcompile(r'>')
 ENDTAGFIND = rgxcompile(r'</\s*([A-Za-z][-.:\w]*)\s*>')
 ENTITYREF = rgxcompile(r'&([A-Za-z][-.0-9A-Za-z]*)[^0-9A-Za-z]')
-HEX_COLOR = rgxcompile(r'(\s*)#([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])', S)
+HEX_COLOR = rgxcompile(r'(\s*)#([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])([0-9A-Fa-f])', flags=DOTALL)
 INCOMPLETE = rgxcompile(r'&[A-Za-z#]')
 INKSCAPE_NS = rgxcompile(r'\s*xmlns:inkscape\s*=\s*(\'|")http://www.inkscape.org/namespaces/inkscape(\'|")\s*')
 INTERESTING_NORMAL = rgxcompile(r'[&<]')
@@ -1102,9 +1102,9 @@ def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple
         _val = _val.replace(r' ', r'')
     if _attr == r'encoding':  # Normalize encoding attribute
         return (_attr, _val.upper())
-    elif _attr == r'xmlns:xlink':  # Correct any invalid XLink Namespaces
+    if _attr == r'xmlns:xlink':  # Correct any invalid XLink Namespaces
         return (_attr, r'http://www.w3.org/1999/xlink')
-    elif _attr == r'type' and _tag in TAGS_WITH_MIMETYPES:  # Correct mimetypes
+    if _attr == r'type' and _tag in TAGS_WITH_MIMETYPES:  # Correct mimetypes
         for mime_correct in MIMETYPE_CORRECTIONS:
             _val = _val.replace(mime_correct[0], mime_correct[1])
     elif _doc_type == FILETYPE_SVG:  # SVG-specific modifications
@@ -1233,20 +1233,19 @@ class ParserBase:
         j = i + 2
         if rawdata[i:j] != r'<!':
             raise Exception(r'Unexpected call to parse_declaration')
-        elif rawdata[j:j + 1] == r'>':  # Empty comment <!>
+        if rawdata[j:j + 1] == r'>':  # Empty comment <!>
             return j + 1
-        elif rawdata[j:j + 1] in {r'-', r''}:  # Start of buffer boundary (with or without a comment)
+        if rawdata[j:j + 1] in {r'-', r''}:  # Start of buffer boundary (with or without a comment)
             return -1
         # A simple, practical version could look like: ((name|stringlit) S*) + '>'
         if rawdata[j:j + 2] == r'--':  # Comment
             return self.parse_comment(i)  # Locate --.*-- as the body of the comment
-        elif rawdata[j] == r'[':  # Marked section
+        if rawdata[j] == r'[':  # Marked section
             return self.parse_marked_section(i)
-        else:  # All other declaration elements
-            decltype, j = self._scan_name(j, i)
+        decltype, j = self._scan_name(j, i)  # All other declaration elements
         if j < 0:
             return j
-        elif decltype == r'doctype':
+        if decltype == r'doctype':
             self._decl_otherchars = r''
         length = len(rawdata)
         while j < length:
@@ -1289,7 +1288,7 @@ class ParserBase:
         sectname, j = self._scan_name(i + 3, i)
         if j < 0:  # pylint: disable=R1705
             return j
-        elif sectname in {r'cdata', r'ignore', r'include', r'rcdata', r'temp'}:
+        if sectname in {r'cdata', r'ignore', r'include', r'rcdata', r'temp'}:
             _match = MARKEDSECTIONCLOSE.search(rawdata, i + 3)  # Look for standard ]]> ending
         elif sectname in {r'if', r'else', r'endif'}:
             _match = MSMARKEDSECTIONCLOSE.search(rawdata, i + 3)  # Look for MS Office ]> ending
@@ -1297,7 +1296,7 @@ class ParserBase:
             self.error(r'Unknown status keyword {} in marked section'.format(rawdata[i + 3:j]))
         if not _match:
             return -1
-        elif report:
+        if report:
             j = _match.start(0)
             self.unknown_decl(rawdata[i + 3: j])
         return _match.end(0)
@@ -1326,12 +1325,12 @@ class ParserBase:
                 _str = rawdata[j:j + 2]
                 if _str == r'<':  # End of buffer; incomplete
                     return -1
-                elif _str != r'<!':
+                if _str != r'<!':
                     self.updatepos(declstartpos, j + 1)
                     self.error(r'Unexpected char in internal subset (in {})'.format(_str))
                 if (j + 2) == length or (j + 4) > length:  # End of buffer; incomplete
                     return -1
-                elif rawdata[j:j + 4] == r'<!--':
+                if rawdata[j:j + 4] == r'<!--':
                     j = self.parse_comment(j, report=0)
                     if j < 0:
                         return j
@@ -1339,7 +1338,7 @@ class ParserBase:
                 name, j = self._scan_name(j + 2, declstartpos)
                 if j == -1:
                     return -1
-                elif name not in {r'attlist', r'element', r'entity', r'notation'}:
+                if name not in {r'attlist', r'element', r'entity', r'notation'}:
                     self.updatepos(declstartpos, j + 2)
                     self.error(r'Unknown declaration {} in internal subset'.format(name))
                 # Handle the individual names
@@ -1353,7 +1352,7 @@ class ParserBase:
                 _str, j = self._scan_name(j + 1, declstartpos)
                 if j < 0:
                     return j
-                elif rawdata[j] == r';':
+                if rawdata[j] == r';':
                     j = j + 1
             elif char == r']':
                 j = j + 1
@@ -1391,7 +1390,7 @@ class ParserBase:
         char = rawdata[j:j + 1]
         if char == r'' or name is None:
             return -1
-        elif char == r'>':
+        if char == r'>':
             return j + 1
         while 1:  # Scan a series of attribute descriptions
             name, j = self._scan_name(j, declstartpos)
@@ -1400,7 +1399,7 @@ class ParserBase:
             char = rawdata[j:j + 1]
             if char == r'':
                 return -1
-            elif char == r'(':  # An enumerated type; look for ')'
+            if char == r'(':  # An enumerated type; look for ')'
                 if r')' in rawdata[j:]:
                     j = rawdata.find(r')', j) + 1
                 else:
@@ -1414,7 +1413,7 @@ class ParserBase:
             char = rawdata[j:j + 1]
             if not char or name is None:
                 return -1
-            elif char in '\'"':
+            if char in '\'"':
                 _match = DECLSTRINGLIT_MATCH(rawdata, j)
                 if _match:
                     j = _match.end()
@@ -1445,9 +1444,9 @@ class ParserBase:
             char = rawdata[j:j + 1]
             if not char:  # End of buffer; incomplete
                 return -1
-            elif char == r'>':
+            if char == r'>':
                 return j + 1
-            elif char in '\'"':
+            if char in '\'"':
                 _match = DECLSTRINGLIT_MATCH(rawdata, j)
                 if not _match:
                     return -1
@@ -1466,7 +1465,7 @@ class ParserBase:
                 char = rawdata[j:j + 1]
                 if not char:
                     return -1
-                elif char.isspace():
+                if char.isspace():
                     j = j + 1
                 else:
                     break
@@ -1563,7 +1562,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def set_cdata_mode(self, elem: str) -> None:
         """Lowercase HTML element names"""
         self.cdata_elem = elem.lower()
-        self.interesting = rgxcompile(r'</\s*{}\s*>'.format(self.cdata_elem), I)
+        self.interesting = rgxcompile(r'</\s*{}\s*>'.format(self.cdata_elem), flags=IGNORECASE)
 
     def clear_cdata_mode(self) -> None:
         """Clear self.cdata_elem and self.interesting"""
@@ -1704,7 +1703,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         pos = rawdata.find(r'>', i + 2)
         if pos == -1:
             return -1
-        elif report:
+        if report:
             self.handle_comment(rawdata[i + 2:pos])
         return pos + 1
 
@@ -1897,7 +1896,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         self.error(r'Unknown declaration: <![' + data + r']>')
 
 
-class Minifier(object):
+class Minifier():
     """An object that supports XML/HTML Minification; Options are passed into this class at initialization time and are persisted across each use of the instance"""
 
     def __init__(  # pylint: disable=R0913
@@ -2088,14 +2087,14 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         """Test if whitespace should be preserved in the tag"""
         if tag in self.pre_tags or self._has_pre(attrs) or self._in_pre_tag > 0:  # Pre
             return True
-        elif tag in CDATA_CONTENT_ELEMENTS:  # Cdata
+        if tag in CDATA_CONTENT_ELEMENTS:  # Cdata
             return True
-        elif self.doc_type == FILETYPE_MATHML and tag == r'annotation':  # MathML <annotation>
+        if self.doc_type == FILETYPE_MATHML and tag == r'annotation':  # MathML <annotation>
             return True
-        elif self.doc_type == FILETYPE_XML:
+        if self.doc_type == FILETYPE_XML:
             if self.in_tag(r'mime-info') and tag in {r'acronym', r'comment', r'expanded-acronym'}:  # XDG Mime
                 return True
-            elif self.in_tag(r'interface', r'object') and tag == r'property':  # Glade XML
+            if self.in_tag(r'interface', r'object') and tag == r'property':  # Glade XML
                 return True
         return False
 
@@ -2103,9 +2102,9 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         """Create an XML/HTML tag"""
         if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):  # pylint: disable=R1705
             return r''
-        elif self.doc_type == FILETYPE_SVG and close_tag and tag in {r'comment', r'defs', r'g'}:
+        if self.doc_type == FILETYPE_SVG and close_tag and tag in {r'comment', r'defs', r'g'}:
             return r''
-        elif not self._doctype_inserted and self.doc_type == FILETYPE_SVG and tag == r'svg':
+        if not self._doctype_inserted and self.doc_type == FILETYPE_SVG and tag == r'svg':
             self.insert_doctype_tag()
         elif self.doc_type == FILETYPE_SVG and tag == r'stop' and not isintuplelist(attrs, r'offset'):
             attrs.append((r'offset', r'0'))
@@ -2192,12 +2191,12 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         """Process arbitrary data (such as <script> and <style>)"""
         if self._in_metadata and self.remove_metadata > 0:
             return
-        elif self._in_pre_tag > 0:
+        if self._in_pre_tag > 0:
             self._data_buffer.append(data)
             return
-        elif not data.strip():
+        if not data.strip():
             return
-        elif self.remove_empty_space or self.remove_all_empty_space or self._in_head or self._after_doctype:
+        if self.remove_empty_space or self.remove_all_empty_space or self._in_head or self._after_doctype:
             match = WHITESPACE.match(data)
             if match and match.end(0) == len(data):
                 return
@@ -2214,7 +2213,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         data = WHITESPACE.sub(r' ', data)
         if not data:
             return
-        elif self._in_pre_tag == 0 and self._data_buffer:
+        if self._in_pre_tag == 0 and self._data_buffer:
             # It is possible that two spaces can get appended when a comment is removed from between two blocks (this code avoids this)
             if data[0] == r' ' and self._data_buffer[-1][-1] == r' ':
                 data = data[1:]

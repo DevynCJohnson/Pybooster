@@ -5,7 +5,7 @@
 """@brief Linter and checker for C source code
 
 @file clint
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -42,9 +42,9 @@ License along with this software.
 from sys import argv, stderr
 
 try:  # Regular Expression module
-    from regex import compile as rgxcompile, I, sub as resub
+    from regex import compile as rgxcompile, IGNORECASE, sub as resub
 except ImportError:
-    from re import compile as rgxcompile, I, sub as resub
+    from re import compile as rgxcompile, IGNORECASE, sub as resub
 
 
 # OBJECTS #
@@ -76,11 +76,11 @@ REGEX_DCJ_VERSION = rgxcompile(r'^[\w \*]+ __version__ = "20[0-9][0-9]\.[0-1][0-
 REGEX_VERSION = rgxcompile(r'^[\w \*]+ __version__ = (".+"|[0-9\.\-]+);$')
 
 # Magic Comments
-REGEX_EMACS = rgxcompile(r'(//( |)(\-\*\-|)( |)coding( |)(:|=)( |)([\-\w]+)( |)(\-\*\-|))', I)
+REGEX_EMACS = rgxcompile(r'(//( |)(\-\*\-|)( |)coding( |)(:|=)( |)([\-\w]+)( |)(\-\*\-|))', flags=IGNORECASE)
 REGEX_EMACS_VALID = rgxcompile(r'^// \-\*\- coding: utf\-8\-(dos|mac|unix); Mode: C; indent\-tabs\-mode: t; c\-basic\-offset: 4; tab\-width: 4 \-\*\-$')
-REGEX_KATE = rgxcompile(r'(//( |)kate( |):( |)encoding(| |=|= | = | =)([\-\w]+)( ;|;|)(.+|)$)', I)
+REGEX_KATE = rgxcompile(r'(//( |)kate( |):( |)encoding(| |=|= | = | =)([\-\w]+)( ;|;|)(.+|)$)', flags=IGNORECASE)
 REGEX_KATE_VALID = rgxcompile(r'^// kate: encoding utf\-8; bom (on|off); syntax c; indent\-mode cstyle; eol (dos|mac|unix); replace-tabs (on|off); indent-width 4; tab-width 4;(|[a-z \-;]+)$')
-REGEX_VIM = rgxcompile(r'(//( |)vim( |):( |)(set |)fileencoding( |)=( |)([\-\w]+)( :|:|))', I)
+REGEX_VIM = rgxcompile(r'(//( |)vim( |):( |)(set |)fileencoding( |)=( |)([\-\w]+)( :|:|))', flags=IGNORECASE)
 REGEX_VIM_VALID = rgxcompile(r'^// vim: set fileencoding=utf\-8 filetype=c syntax=c\.doxygen fileformat=(dos|mac|unix) tabstop=4 :$')
 
 # Comments
@@ -106,9 +106,9 @@ REGEX_WCHAR_VALID = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+ = L\'.+\';$')
 REGEX_FLOAT_POINT = rgxcompile(r'[Xxp0-9A-Fa-f\.\-]+(E|e|)(\+|\-|)[Xxp0-9A-Fa-f]+')
 
 # Macros
-REGEX_MACROS = rgxcompile(r'^[ \t]*#[ \t]*[a-z]+ .+', I)
+REGEX_MACROS = rgxcompile(r'^[ \t]*#[ \t]*[a-z]+ .+', flags=IGNORECASE)
 REGEX_MACROS_INDENT = rgxcompile(r'^#([ ]+).+$')
-REGEX_INCLUDE = rgxcompile(r'^[ \t]*#[ \t]*include[ \t]+(\"|<)[a-z0-9 _\-\./]+(>|\").+', I)
+REGEX_INCLUDE = rgxcompile(r'^[ \t]*#[ \t]*include[ \t]+(\"|<)[a-z0-9 _\-\./]+(>|\").+', flags=IGNORECASE)
 REGEX_INCLUDE_VALID = rgxcompile(r'^#[ ]*include (\"|<)[\w \-\./]+(>|\")(  // .+|)$')
 REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^[ \t]+#[ ]*[a-z]+ .+$')
 REGEX_MACROS_SPACE = rgxcompile(r'^#[ \t]*[a-z]+ [ \t]+.+$')
@@ -188,7 +188,6 @@ def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str
         stderr.write(_filepath + r':' + str(_linenum) + r':' + str(_mstr.start()) + r': ' + _code + r' : ' + _msg + '\n')
     elif not isinstance(_mstr, str) and isinstance(_line, str):
         stderr.write(_filepath + r':' + str(_linenum) + r':' + str(_mstr.start()) + r': ' + _code + r' : ' + _msg + '\n' + _line + '\n')
-    return None
 
 
 def strip_strings(_str: str) -> str:
@@ -219,7 +218,6 @@ def c000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_COMMENT_MISSING_LEADING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
         output_info(filepath, line_num, line, r'C002', r'Missing double-leading-space before `//`', _match)
-    return None
 
 
 def c000_line(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
@@ -228,7 +226,6 @@ def c000_line(filepath: str, line_num: int, line: str, log_line: str) -> None:  
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
         output_info(filepath, line_num, line, r'C000', r'Missing single space after `//` in comment line', _match)
-    return None
 
 
 # Macros Warnings & Errors
@@ -265,7 +262,6 @@ def m000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_MACROS_WARN_ERR_SPACE.search(line)
     if _match and (len(_match.group(2)) != 3):
         output_info(filepath, line_num, line, r'M007', r'Invalid spacing; use three spaces between error/warning macros and the string', _match)
-    return None
 
 
 # Security Issues & Flaws
@@ -305,7 +301,6 @@ def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         _match = REGEX_GETC.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'S008', r'To strengthen security, use `fgetc()` instead of `getc()`', _match)
-    return None
 
 
 # "Todo" Note
@@ -316,7 +311,6 @@ def t000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_NOTE.search(line)
     if _match:
         output_info(filepath, line_num, line, r'T000', r'Todo note found', _match)
-    return None
 
 
 # Vague Code
@@ -558,7 +552,6 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     if r'return  ' in log_line or 'return\t' in log_line:
         # X048
         output_info(filepath, line_num, line, r'X048', r'Unneeded extra white-space after return')
-    return None
 
 
 # Optimize
@@ -579,7 +572,6 @@ def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_MUL2.search(log_line)
     if _match:
         output_info(filepath, line_num, line, r'Z003', r'Due to the multiplicative properties, `2 * x` is the same as `x + x`, which computers can compute more quickly')
-    return None
 
 
 # MAIN #

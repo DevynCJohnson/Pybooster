@@ -5,7 +5,7 @@
 """@brief Flake8 plugin
 
 @file flake8_optimal.py
-@version 2018.10.01
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -41,27 +41,28 @@ from typing import Callable, Generator, Optional, Tuple
 from pycodestyle import noqa as pynoqa
 
 try:  # Regular Expression module
-    from regex import compile as rgxcompile, I, search as rgxsearch
+    from regex import compile as rgxcompile, IGNORECASE, search as rgxsearch
 except ImportError:
-    from re import compile as rgxcompile, I, search as rgxsearch
+    from re import compile as rgxcompile, IGNORECASE, search as rgxsearch
 
 
-__version__: str = r'2018.10.01'
+__version__: str = r'2018.10.02'
 
 
 # PATTERNS #
 
 
+PY_HASHPLINGS: tuple = (r'#!/usr/bin/env python4', r'#!/usr/bin/env python4.0', r'#!/usr/bin/env python3', r'#!/usr/bin/env python3.3', r'#!/usr/bin/env python3.4', r'#!/usr/bin/env python3.5', r'#!/usr/bin/env python3.6', r'#!/usr/bin/env python3.7', '#!/usr/bin/env python3.8', '#!/usr/bin/env python3.9', r'#!/usr/bin/env python2', r'#!/usr/bin/env python2.7', r'#!/usr/bin/env python')
 REGEX_DCJ_VERSION = rgxcompile(r'__version__ = r\'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]\'')
 REGEX_INPUT_STR = rgxcompile(r'str\(input\(')
 REGEX_VALID_EMAIL = rgxcompile(r'__email__ = \'[\w\-\.]+@[\w\-]+\.[\w]+\'')
 REGEX_EXCEPTAS = rgxcompile(r'except [\w \(\)\,]+ as [\w]+:')
 REGEX_EXIT = rgxcompile(r'[ \t\(\[]*(sys\.exit|exit|sysexit|_Exit)\(.*\)')
 REGEX_GTK_ADDFROMSTRING = rgxcompile(r'.+\.add_from_string\([\w\'"]+\)')
-REGEX_HASHPLING = rgxcompile(r'^(#!/usr/bin/|#!/bin/).+$')
+REGEX_HASHPLING = rgxcompile(r'^(#!/usr/bin/env|#!/usr/bin/|#!/bin/).+$')
 REGEX_LEN_ZERO = rgxcompile(r'if len\([\w \+]+\) (\!=|is not) 0:')
 REGEX_LEN_IS_ZERO = rgxcompile(r'if len\([\w \+]+\) (==|is) 0:')
-REGEX_NOTE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODO|TOMV|TORM|XXX):', I)
+REGEX_NOTE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODO|TOMV|TORM|XXX):', flags=IGNORECASE)
 REGEX_NOTE_CASE = rgxcompile(r'# (DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODO|TOMV|TORM|XXX):')
 REGEX_OPEN = rgxcompile(r'open\(.+\)')
 REGEX_OPEN_ARGS = rgxcompile(r'(mode=\'|encoding=\').+')
@@ -92,7 +93,7 @@ def physical_hook(_func: Callable[[str], Optional[Tuple[int, str]]]) -> Callable
 # CLASSES #
 
 
-class CopyrightChecker(object):
+class CopyrightChecker():
     """Flake8 plugin for ensuring that the copyright notice is present"""
 
     name: str = r'CopyrightChecker'
@@ -156,12 +157,12 @@ class CopyrightChecker(object):
         if len(top_of_file) < self.min_file_size_copyright:  # noqa: T484
             return
         author = self.author_copyright if self.author_copyright else r'.*'  # noqa: T484
-        re_copyright = rgxcompile(self.regexp_copyright % {r'author': author}, I)  # noqa: T484
+        re_copyright = rgxcompile(self.regexp_copyright % {r'author': author}, flags=IGNORECASE)  # noqa: T484
         if not re_copyright.search(top_of_file):
             yield 0, 0, r'V002 : Copyright notice not present', type(self)
 
 
-class MagicCommentChecker(object):
+class MagicCommentChecker():
     """Flake8 plugin to ensure magic-comments are present and correctly formatted"""
 
     name: str = r'MagicComment'
@@ -241,7 +242,6 @@ def x001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     """Inconsistency: `__license__` should be `__copyright__`"""
     if not noqa and logical_line.startswith(r'__license__ = '):
         yield 0, r'X001 : `__license__` should be `__copyright__`'
-    return None
 
 
 @physical_hook
@@ -260,7 +260,7 @@ def x003(physical_line: str) -> Optional[Tuple[int, str]]:
     """Inconsistency: `if __name__ is '__main__':`"""
     if pynoqa(physical_line):
         return None
-    elif physical_line.startswith('if __name__ is \'__main__\':'):
+    if physical_line.startswith('if __name__ is \'__main__\':'):
         return (0, 'X003 : Test for main using `if __name__ == \'__main__\':`')
     return None
 
@@ -332,7 +332,8 @@ def x009(physical_line: str) -> Optional[Tuple[int, str]]:
     if pynoqa(physical_line):
         return None
     _match = REGEX_HASHPLING.search(physical_line)
-    if _match and (physical_line.strip() != r'#!/usr/bin/env python3' or physical_line.strip() != r'#!/usr/bin/env python2'):
+    _physical_line = physical_line.strip()
+    if _match and _physical_line not in PY_HASHPLINGS:
         return (0, r'X009 : Invalid hashpling')
     return None
 
@@ -374,7 +375,7 @@ def z003(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     _match = REGEX_EXIT.search(logical_line)
     if logical_line.strip().startswith(r'def '):
         return None
-    elif _match and r'raise SystemExit(' not in logical_line and r'xit(self)' not in logical_line:
+    if _match and r'raise SystemExit(' not in logical_line and r'xit(self)' not in logical_line:
         yield _match.start(), r'Z003 : Use `raise SystemExit()` to exit application'
     return None
 
@@ -428,7 +429,6 @@ def z008(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     """Optimize: Import pycodestyle instead of pep8"""
     if not noqa and (r'import pep8' in logical_line or r'from pep8' in logical_line):
         yield 0, r'Z008 : Import pycodestyle instead of pep8'
-    return None
 
 
 @logical_hook
@@ -436,7 +436,6 @@ def z009(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     """Optimize: Import pydocstyle instead of pep257"""
     if not noqa and (r'import pep257' in logical_line or r'from pep257' in logical_line):
         yield 0, r'Z009 : Import pydocstyle instead of pep257'
-    return None
 
 
 # FUNCTIONS (MISC) #
@@ -462,7 +461,7 @@ def dj01(physical_line: str) -> Optional[Tuple[int, str]]:
     """Inconsistency: `__version__` should use the format `__version__ = r'YYYY.MM.DD'`"""
     if pynoqa(physical_line):
         return None
-    elif physical_line.startswith(r'__version__ = ') and not REGEX_DCJ_VERSION.search(physical_line):
+    if physical_line.startswith(r'__version__ = ') and not REGEX_DCJ_VERSION.search(physical_line):
         return (0, 'DJ01 : `__version__` should use the format `__version__ = r\'YYYY.MM.DD\'`')
     return None
 

@@ -4,7 +4,7 @@
 /**
 @brief Return the hyperbolic tangent of the input
 @file tanh.c
-@version 2018.09.24
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

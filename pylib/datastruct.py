@@ -6,7 +6,7 @@
 
 @file datastruct.py
 @package pybooster.datastruct
-@version 2018.09.22
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

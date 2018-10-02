@@ -6,7 +6,7 @@
 
 @file pipx.py
 @package pybooster.pipx
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,9 +34,9 @@ from subprocess import getoutput  # nosec
 from pip import main as pipmain
 
 try:  # Regular Expression module
-    from regex import M, sub
+    from regex import MULTILINE, sub
 except ImportError:
-    from re import M, sub
+    from re import MULTILINE, sub
 
 
 __all__: list = [
@@ -68,15 +68,15 @@ def listinstalled() -> str:
 
 def listoutdated() -> str:
     """List outdated PIP packages"""
-    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -o'), flags=M)
-    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
+    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -o'), flags=MULTILINE)
+    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=MULTILINE)
     return results
 
 
 def listcurrent() -> str:
     """List up-to-dated PIP packages"""
-    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -u'), flags=M)
-    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=M)
+    results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -u'), flags=MULTILINE)
+    results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=MULTILINE)
     return results
 
 

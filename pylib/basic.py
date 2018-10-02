@@ -6,7 +6,7 @@
 
 @file basic.py
 @package pybooster.basic
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -40,9 +40,9 @@ from types import BuiltinFunctionType, CodeType, CoroutineType, FrameType, Funct
 
 
 try:  # Regular Expression module
-    from regex import I as REI, fullmatch as refullmatch
+    from regex import IGNORECASE, fullmatch as refullmatch
 except ImportError:
-    from re import I as REI, fullmatch as refullmatch
+    from re import IGNORECASE, fullmatch as refullmatch
 
 
 __all__: list = [
@@ -963,7 +963,7 @@ def ipygrep(_find: str, _text: str) -> bool:
 
     Test if a plain-string matches a regex string
     """
-    _match = refullmatch(_find, _text, flags=REI)
+    _match = refullmatch(_find, _text, flags=IGNORECASE)
     if _match is not None:
         return _match
     return False

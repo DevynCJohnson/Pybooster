@@ -4,7 +4,7 @@
 /**
 @brief Return the hyperbolic cosine of the input
 @file cosh.c
-@version 2018.09.24
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

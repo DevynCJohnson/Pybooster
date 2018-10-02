@@ -5,7 +5,7 @@
 #' @brief Automated building using Clang
 #' @file build_clang.sh
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-#' @version 2018.09.11
+#' @version 2018.10.02
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 

@@ -32,11 +32,16 @@ When both ``flake8`` and ``flake8_optimal`` are installed, the plugin is
 available in ``flake8``::
 
     $ flake8 --version
-    3.5.0 (CopyrightChecker: 2018.04.27, MagicComment: 2018.04.27, flake8-mypy: 17.8.0, flake8_optimal: 2018.04.27, mccabe: 0.6.1, pycodestyle: 2.3.1, pyflakes: 1.6.0) CPython 3.6.3 on Linux
+    3.5.0 (CopyrightChecker: 2018.08.31, MagicComment: 2018.08.31, aaa: 0.4.0, flake8-comprehensions: 1.4.1, flake8-mypy: 17.8.0, flake8-pyi: 18.3.1, flake8_deprecated: 1.2, flake8_optimal: 2018.08.31, mccabe: 0.6.1, pycodestyle: 2.3.1, pyflakes: 1.6.0, warn-symbols: 1.1.1) CPython 3.6.6 on Linux
 
 
 Changes
 -------
+
+2018.10.02 - 2018-10-02
+```````````````````````
+* Replaced "I" with "IGNORECASE" for the newest standards
+* Added additional valid hashpling patterns (X009)
 
 2018.10.01 - 2018-10-01
 ```````````````````````

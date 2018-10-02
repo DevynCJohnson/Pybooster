@@ -1,7 +1,10 @@
 2018-10-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* flake8_optimal.py:  Added additional valid hashpling patterns (X009)
 	* libregex.py:  Added many regex patterns (for email, whitespace, Greek, & unicode blocks)
+	* makefile:  Added makefiles to "upver"
 	* py_directive_checker:  Enhanced the code patterns
+	* PyBooster:  Replaced all short "re" flags with the full flag name in all Python code
 
 2018-10-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
@@ -9,6 +12,7 @@
 	* datastruct.py:  Added support for YAML
 	* docker_rc.sh:  Added docker_buildpush
 	* flake8_optimal.py:  Added "#!/usr/bin/env python2" as a valid hashpling (X009)
+	* flake8_optimal.py:  Added additional valid hashpling patterns (X009)
 	* geo.py:  Added data for primary zip codes for each state
 	* libregex.py:  Added `PHONE` regex pattern
 	* makefile:  Added crypto_rc.sh & pkg_rc.sh

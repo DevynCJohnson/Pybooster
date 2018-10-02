@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -49,6 +49,7 @@ __all__: list = [
     r'WHITESPACE_NEWLINE',
     # UNICODE CHARACTER BLOCKS #
     r'BASIC_LATIN',
+    r'C0_CONTROLS',
     r'LATIN_1_SUPPLEMENT',
     r'LATIN_EXTENDED_A',
     r'LATIN_EXTENDED_B',
@@ -89,12 +90,12 @@ except ImportError:
 BINNUM = rgxcompile(r'0[bB][01]+')
 EMAIL = rgxcompile(r'[A-Za-z0-9_\-!#\$%\' <>&"\(\),:;@\[\\\]\*\+/=\?\^`\{\|\}~\.]+@[A-Za-z0-9\-]\.[A-Za-z0-9\-]+')
 EXPNUM = rgxcompile(r'[eE][-+]?[0-9]+')
-GREEK_ALL = rgxcompile(r'[\x0370-\x03FF\x1F00-\x1FFF]+')
+GREEK_ALL = rgxcompile(r'[\u0370-\u03FF \u1F00-\u1FFF]+')
 HEXESCTAG = rgxcompile(r'&#x[A-Fa-f0-9]+;')
 HEXESCURI = rgxcompile(r'%[A-Fa-f0-9]+')
 HEXNUM = rgxcompile(r'0[xX][A-Fa-f0-9]+')
 OCTNUM = rgxcompile(r'0[oO][0-7]+')
-ODD_WHITESPACE = rgxcompile(r'[\xA0\x1680\x180E\x2000-\x200D\x2028\x2029\x202F\x205F\x2060\x3000\xFEFF]+')
+ODD_WHITESPACE = rgxcompile(r'[\xA0\u1680\u180E\u2000-\u200D\u2028\u2029\u202F\u205F\u2060\u3000\U0000FEFF]+')
 PHONE = rgxcompile(r'[\(]?[0-9]{3}[\)]?[\- ]?[0-9]{3}[\- ]?[0-9]{4}')
 LEADING_TRAILING_WHITESPACE = rgxcompile(r'(^\s+)|(\s+$)')
 LEADING_WHITESPACE = rgxcompile(r'^\s+')
@@ -110,20 +111,21 @@ WHITESPACE_NEWLINE = rgxcompile(r'\s*(\f|\r|\n)+\s*')
 # TODO: Add all unicode blocks https://en.wikipedia.org/wiki/Unicode_block
 
 BASIC_LATIN = rgxcompile(r'[\x00-\x7F]+')
+C0_CONTROLS = rgxcompile(r'[\x00-\x1F\x7F]+')
 LATIN_1_SUPPLEMENT = rgxcompile(r'[\x80-\xFF]+')
-LATIN_EXTENDED_A = rgxcompile(r'[\x0100-\x017F]+')
-LATIN_EXTENDED_B = rgxcompile(r'[\x0180-\x024F]+')
-IPA_EXTENSIONS = rgxcompile(r'[\x0250-\x02AF]+')
-SPACING_MODIFIER_LETTERS = rgxcompile(r'[\x02B0-\x02FF]+')
-COMBINING_DIACRITICAL_MARKS = rgxcompile(r'[\x0300-\x036F]+')
-GREEK_AND_COPTIC = rgxcompile(r'[\x0370-\x03FF]+')
-CYRILLIC = rgxcompile(r'[\x0400-\x04FF]+')
-CYRILLIC_SUPPLEMENT = rgxcompile(r'[\x0400-\x052F]+')
-ARMENIAN = rgxcompile(r'[\x0530-\x058F]+')
-HEBREW = rgxcompile(r'[\x0590-\x05FF]+')
-ARABIC = rgxcompile(r'[\x0600-\x06FF]+')
-SYRIAC = rgxcompile(r'[\x0700-\x074F]+')
-ARABIC_SUPPLEMENT = rgxcompile(r'[\x0750-\x077F]+')
+LATIN_EXTENDED_A = rgxcompile(r'[\u0100-\u017F]+')
+LATIN_EXTENDED_B = rgxcompile(r'[\u0180-\u024F]+')
+IPA_EXTENSIONS = rgxcompile(r'[\u0250-\u02AF]+')
+SPACING_MODIFIER_LETTERS = rgxcompile(r'[\u02B0-\u02FF]+')
+COMBINING_DIACRITICAL_MARKS = rgxcompile(r'[\u0300-\u036F]+')
+GREEK_AND_COPTIC = rgxcompile(r'[\u0370-\u03FF]+')
+CYRILLIC = rgxcompile(r'[\u0400-\u04FF]+')
+CYRILLIC_SUPPLEMENT = rgxcompile(r'[\u0400-\u052F]+')
+ARMENIAN = rgxcompile(r'[\u0530-\u058F]+')
+HEBREW = rgxcompile(r'[\u0590-\u05FF]+')
+ARABIC = rgxcompile(r'[\u0600-\u06FF]+')
+SYRIAC = rgxcompile(r'[\u0700-\u074F]+')
+ARABIC_SUPPLEMENT = rgxcompile(r'[\u0750-\u077F]+')
 
 
 # XML SOURCE CODE PATTERNS #

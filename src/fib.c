@@ -4,7 +4,7 @@
 /**
 @brief Fibonacci Number Generator
 @file fib.c
-@version 2018.09.11
+@version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

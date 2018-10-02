@@ -559,6 +559,14 @@ Python
 - View-functions in Django must use names that use the lowercase naming convention
 - Check the code using `pycodestyle`, `pylint`, `pytest`, `flake8`, `mccabe` (the Python packages _astkit_ and _astroid_ will need to be installed)
     - Optimally, use `pyanalysis` which is included in PyBooster
+- Regular Expressions Module
+    - Explicitly use `flags=` when listing flags
+    - Use `re.ASCII` instead of `re.A`
+    - Use `re.DOTALL` instead of `re.S`
+    - Use `re.IGNORECASE` instead of `re.I`
+    - Use `re.LOCALE` instead of `re.L`
+    - Use `re.MULTILINE` instead of `re.M`
+    - Use `re.VERBOSE` instead of `re.X`
 
 ### PEP Standards
 
