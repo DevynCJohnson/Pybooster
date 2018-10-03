@@ -4,7 +4,7 @@ identifiers=__all__ __author__ __build_class__ __copyright__ __debug__ __doc__ _
 
 [lexer_properties]
 fold.comment.python=1
-fold.compact=1
+fold.compact=0
 fold.quotes.python=1
 lexer.python.keywords2.no.sub.identifiers=0
 lexer.python.literals.binary=1

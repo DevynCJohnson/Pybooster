@@ -3,7 +3,7 @@ keywords=and as asr assert begin class constraint do done downto else end except
 keywords_optional=ignore None option ref Some
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=ml

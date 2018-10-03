@@ -3,7 +3,7 @@ primary=__FILE__ __LINE__ alias and attr_accessor attr_reader attr_writer BEGIN 
 secondary=false nil true
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=rb

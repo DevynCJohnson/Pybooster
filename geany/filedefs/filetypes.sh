@@ -2,7 +2,7 @@
 primary=break case continue do done elif else esac eval exec exit export fi for function goto if in integer printf readonly return set shift then until while
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=sh

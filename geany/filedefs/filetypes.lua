@@ -9,7 +9,7 @@ user3=
 user4=
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=lua

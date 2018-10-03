@@ -13,7 +13,7 @@ fold.at.else=1
 fold.at.Parenthese=1
 fold.at.When=1
 fold.comment=1
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=vhd

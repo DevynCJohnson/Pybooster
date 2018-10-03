@@ -5,7 +5,7 @@ secondary=
 types=
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 fold.d.comment.explicit=1
 fold.d.comment.multiline=1
 fold.d.explicit.anywhere=1

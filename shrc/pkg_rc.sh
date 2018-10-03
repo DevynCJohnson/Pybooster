@@ -211,7 +211,7 @@ if [ -x "$(command -v pip3)" ]; then  # Python3
     alias pyupdate='sudo -H pip3 install -U'
     pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
 fi
-if [ -x "$(command -v pip2)" ] || ([ -x "$(command -v pip)" ] && [ -x "$(command -v python2)" ] && [ ! -x "$(command -v python3)" ]); then  # Python2
+if [ -x "$(command -v pip2)" ] && [ -x "$(command -v python2)" ]; then  # Python2
     alias findpy2pkg='pip2 search'
     alias genpy2reqfile='pip2 freeze > ./requirements.txt'
     alias getpy2pkgsrc='pip2 download'

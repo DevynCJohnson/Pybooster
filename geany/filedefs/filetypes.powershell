@@ -8,7 +8,7 @@ user1=
 
 [lexer_properties]
 fold.at.else=1
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=ps1

@@ -4,7 +4,7 @@ intrinsic_functions=abs achar acos acosd adjustl adjustr aimag aimax0 aimin0 ain
 user_functions=cdabs cdcos cdexp cdlog cdsin cdsqrt cotan cotand dcmplx dconjg dcotan dcotand decode dimag dll_export dll_import doublecomplex dreal dvchk encode find flen flush getarg getcharqq getcl getdat getenv gettim hfix ibchng identifier imag int1 int2 int4 intc intrup invalop iostat_msg isha ishc ishl jfix lacfar locking locnear map nargs nbreak ndperr ndpexc offset ovefl peekcharqq precfill prompt qabs qacos qacosd qasin qasind qatan qatan2 qatand qcmplx qconjg qcos qcosd qcosh qdim qexp qext qextd qfloat qimag qlog qlog10 qmax1 qmin1 qmod qreal qsign qsin qsind qsinh qsqrt qtan qtand qtanh ran rand randu rewrite segment setdat settim system timer undfl union unlock val virtual volatile zabs zcos zexp zlog zsin zsqrt
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=f

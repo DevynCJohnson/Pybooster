@@ -9,7 +9,7 @@ browser_pseudo_classes=^-ah- ^-apple- ^-atsc- ^-epub- ^-fx- ^-hp- ^-icab- ^-khtm
 browser_pseudo_elements=^-ah- ^-apple- ^-atsc- ^-epub- ^-fx- ^-hp- ^-icab- ^-khtml- ^-konq- ^-moz- ^-ms- ^mso- ^-o- ^prince- ^-rim- ^-ro- ^-tc- ^-wap- ^-webkit- ^-xv-
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 lexer.css.hss.language=1
 lexer.css.less.language=1
 lexer.css.scss.language=1

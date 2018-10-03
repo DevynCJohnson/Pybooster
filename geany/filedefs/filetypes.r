@@ -5,7 +5,7 @@ primary=abs all all.equal all.names all.vars any anyDuplicated anyMissing anyNA 
 
 [lexer_properties]
 fold.at.else=1
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=R

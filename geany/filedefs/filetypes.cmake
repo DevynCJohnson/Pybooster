@@ -4,7 +4,7 @@ parameters=ABSOLUTE ABSTRACT ADDITIONAL_MAKE_CLEAN_FILES ALL AND APPEND APPLE AR
 userdefined=
 
 [lexer_properties]
-fold.compact=1
+fold.compact=0
 
 [settings]
 extension=cmake
