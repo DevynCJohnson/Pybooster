@@ -7,6 +7,14 @@ std_packages=ieee math_complex math_real numeric_bit numeric_std standard std st
 std_types=bit bit_vector boolean character delay_length file_open_kind file_open_status integer line natural positive real severity_level side signed std_logic std_logic_vector std_ulogic std_ulogic_vector string text time unsigned UX01 UX01Z width X01 X01Z
 userwords=
 
+[lexer_properties]
+fold.at.Begin=1
+fold.at.else=1
+fold.at.Parenthese=1
+fold.at.When=1
+fold.comment=1
+fold.compact=1
+
 [settings]
 extension=vhd
 mime_type=text/x-vhdl

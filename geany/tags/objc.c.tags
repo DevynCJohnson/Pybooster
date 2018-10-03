@@ -1,16 +1,22 @@
 # format=tagmanager
-__GNU_LIBOBJC__Ã65536÷0
-__nxconstantstring_INCLUDE_GNUÃ65536÷0
-__objc_decls_INCLUDE_GNUÃ65536÷0
-__objc_INCLUDE_GNUÃ65536÷0
-__objc_message_INCLUDE_GNUÃ65536÷0
-__objc_msg_forward2Ã1024Õ(id, SEL)÷0œobjc_EXPORT
-__objc_msg_forwardÃ1024Õ(SEL)÷0œobjc_EXPORT
-__objc_runtime_INCLUDE_GNUÃ65536÷0
-__objc_sync_INCLUDE_GNUÃ65536÷0
-__object_INCLUDE_GNUÃ65536÷0
-__Protocol_INCLUDE_GNUÃ65536÷0
-_C_ARY_BÃ65536÷0
+BOOLÃ4096÷0œchar
+BOOLÃ65536÷0
+CategoryÃ4096÷0œobjc_category
+ClassÃ4096÷0œobjc_class
+IMPÃ4096÷0œtypedef id
+IvarÃ4096÷0œobjc_ivar
+MethodÃ4096÷0œobjc_method
+NOÃ65536÷0
+NilÃ65536÷0
+OBJC_SYNC_NOT_INITIALIZEDÃ4Œanon_enum_0÷0
+OBJC_SYNC_NOT_OWNING_THREAD_ERRORÃ4Œanon_enum_0÷0
+OBJC_SYNC_SUCCESSÃ4Œanon_enum_0÷0
+OBJC_SYNC_TIMED_OUTÃ4Œanon_enum_0÷0
+PropertyÃ4096÷0œobjc_property
+ProtocolÃ16384÷0œ@class
+ProtocolÃ4096÷0œobjc_object
+SELÃ4096÷0œobjc_selector
+YESÃ65536÷0_C_ARY_BÃ65536÷0
 _C_ARY_EÃ65536÷0
 _C_ATOMÃ65536÷0
 _C_BFLDÃ65536÷0
@@ -57,12 +63,21 @@ _F_INOUTÃ65536÷0
 _F_INÃ65536÷0
 _F_ONEWAYÃ65536÷0
 _F_OUTÃ65536÷0
+__GNU_LIBOBJC__Ã65536÷0
+__Protocol_INCLUDE_GNUÃ65536÷0
+__nxconstantstring_INCLUDE_GNUÃ65536÷0
+__objc_INCLUDE_GNUÃ65536÷0
+__objc_decls_INCLUDE_GNUÃ65536÷0
+__objc_message_INCLUDE_GNUÃ65536÷0
+__objc_msg_forward2Ã1024Õ(id, SEL)÷0œobjc_EXPORT
+__objc_msg_forwardÃ1024Õ(SEL)÷0œobjc_EXPORT
+__objc_runtime_INCLUDE_GNUÃ65536÷0
+__objc_sync_INCLUDE_GNUÃ65536÷0
+__object_INCLUDE_GNUÃ65536÷0
 _objc_load_callbackÃ1024Õ(Class _class, struct objc_category *category)÷0œobjc_EXPORT void
 anObjectÃ16384÷0œid
 anon_enum_0Ã2÷0
-BOOLÃ4096÷0œchar
-BOOLÃ65536÷0
-CategoryÃ4096÷0œobjc_category
+cStringÃ16384÷0œchar
 class_addIvarÃ1024Õ(Class class_, const char * ivar_name, size_t size, unsigned char log_2_of_alignment, const char *type)÷0œobjc_EXPORT
 class_addMethodÃ1024Õ(Class class_, SEL selector, IMP implementation, const char *method_types)÷0œobjc_EXPORT
 class_addProtocolÃ1024Õ(Class class_, Protocol *protocol)÷0œobjc_EXPORT
@@ -93,14 +108,10 @@ class_setIvarLayoutÃ1024Õ(Class class_, const char *layout)÷0œobjc_EXPORT void
 class_setVersionÃ1024Õ(Class class_, int version)÷0œobjc_EXPORT void
 class_setWeakIvarLayoutÃ1024Õ(Class class_, const char *layout)÷0œobjc_EXPORT void
 classÃ16384÷0œClass
-ClassÃ4096÷0œobjc_class
-cStringÃ16384÷0œchar
 idÃ4096÷0œobjc_object
-IMPÃ4096÷0œtypedef id
 ivar_getNameÃ1024Õ(Ivar variable)÷0œobjc_EXPORT const char *
 ivar_getOffsetÃ1024Õ(Ivar variable)÷0œobjc_EXPORT
 ivar_getTypeEncodingÃ1024Õ(Ivar variable)÷0œobjc_EXPORT const char *
-IvarÃ4096÷0œobjc_ivar
 method_copyArgumentTypeÃ1024Õ(Method method, unsigned int argumentNumber)÷0œobjc_EXPORT char *
 method_copyReturnTypeÃ1024Õ(Method method)÷0œobjc_EXPORT char *
 method_exchangeImplementationsÃ1024Õ(Method method_a, Method method_b)÷0œobjc_EXPORT void
@@ -112,29 +123,26 @@ method_getNumberOfArgumentsÃ1024Õ(Method method)÷0œobjc_EXPORT unsigned int
 method_getReturnTypeÃ1024Õ(Method method, char *returnValue, size_t returnValueSize)÷0œobjc_EXPORT void
 method_getTypeEncodingÃ1024Õ(Method method)÷0œobjc_EXPORT const char *
 method_setImplementationÃ1024Õ(Method method, IMP implementation)÷0œobjc_EXPORT
-MethodÃ4096÷0œobjc_method
 nameÃ64Œobjc_method_description÷0œSEL
-NilÃ65536÷0
 nilÃ65536÷0
-NOÃ65536÷0
+objc_DECLAREÃ65536÷0
+objc_EXPORTÃ65536÷0
 objc_aligned_sizeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
 objc_alignof_typeÃ1024Õ(const char *type)÷0œobjc_EXPORT int
 objc_allocateClassPairÃ1024Õ(Class super_class, const char *class_name, size_t extraBytes)÷0œobjc_EXPORT
 objc_atomic_mallocÃ1024Õ(size_t size)÷0œobjc_EXPORT void *
 objc_callocÃ1024Õ(size_t nelem, size_t size)÷0œobjc_EXPORT void *
 objc_copyProtocolListÃ1024Õ(unsigned int *numberOfReturnedProtocols)÷0œobjc_EXPORT * *
-objc_DECLAREÃ65536÷0
 objc_disposeClassPairÃ1024Õ(Class class_)÷0œobjc_EXPORT void
 objc_enumerationMutationÃ1024Õ(id collection)÷0œobjc_EXPORT void
-objc_EXPORTÃ65536÷0
 objc_freeÃ1024Õ(void *mem)÷0œobjc_EXPORT void
-objc_get_type_qualifiersÃ1024Õ(const char *type)÷0œobjc_EXPORT unsigned
-objc_get_unknown_class_handlerÃ4096÷0œtypedef Class
 objc_getClassListÃ1024Õ(Class *returnValue, int maxNumberOfClassesToReturn)÷0œobjc_EXPORT int
 objc_getClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
 objc_getMetaClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
 objc_getProtocolÃ1024Õ(const char *name)÷0œobjc_EXPORT *
 objc_getRequiredClassÃ1024Õ(const char *name)÷0œobjc_EXPORT
+objc_get_type_qualifiersÃ1024Õ(const char *type)÷0œobjc_EXPORT unsigned
+objc_get_unknown_class_handlerÃ4096÷0œtypedef Class
 objc_layout_finish_structureÃ1024Õ(struct objc_struct_layout *layout, unsigned int *size, unsigned int *align)÷0œobjc_EXPORT void
 objc_layout_structure_get_infoÃ1024Õ(struct objc_struct_layout *layout, unsigned int *offset, unsigned int *align, const char **type)÷0œobjc_EXPORT void
 objc_layout_structure_next_memberÃ1024Õ(struct objc_struct_layout *layout)÷0œobjc_EXPORT
@@ -159,10 +167,6 @@ objc_struct_layoutÃ2048÷0
 objc_superÃ2048÷0
 objc_sync_enterÃ1024Õ(id object)÷0œobjc_EXPORT int
 objc_sync_exitÃ1024Õ(id object)÷0œobjc_EXPORT int
-OBJC_SYNC_NOT_INITIALIZEDÃ4Œanon_enum_0÷0
-OBJC_SYNC_NOT_OWNING_THREAD_ERRORÃ4Œanon_enum_0÷0
-OBJC_SYNC_SUCCESSÃ4Œanon_enum_0÷0
-OBJC_SYNC_TIMED_OUTÃ4Œanon_enum_0÷0
 object_copyÃ1024Õ(id object, size_t extraBytes)÷0œobjc_EXPORT
 object_disposeÃ1024Õ(id object)÷0œobjc_EXPORT
 object_getClassNameÃ1024Õ(id object)÷0œobjc_EXPORT const char *
@@ -178,7 +182,6 @@ original_typeÃ64Œobjc_struct_layout÷0œchar
 prev_typeÃ64Œobjc_struct_layout÷0œchar
 property_getAttributesÃ1024Õ(Property property)÷0œobjc_EXPORT const char *
 property_getNameÃ1024Õ(Property property)÷0œobjc_EXPORT const char *
-PropertyÃ4096÷0œobjc_property
 protocol_conformsToProtocolÃ1024Õ(Protocol *protocol, Protocol *anotherProtocol)÷0œobjc_EXPORT
 protocol_copyMethodDescriptionListÃ1024Õ(Protocol *protocol, BOOL requiredMethod, BOOL instanceMethod, unsigned int *numberOfReturnedMethods)÷0œobjc_EXPORT struct *
 protocol_copyPropertyListÃ1024Õ(Protocol *protocol, unsigned int *numberOfReturnedProperties)÷0œobjc_EXPORT *
@@ -187,22 +190,18 @@ protocol_getMethodDescriptionÃ1024Õ(Protocol *protocol, SEL selector, BOOL requi
 protocol_getNameÃ1024Õ(Protocol *protocol)÷0œobjc_EXPORT const char *
 protocol_getPropertyÃ1024Õ(Protocol *protocol, const char *propertyName, BOOL requiredProperty, BOOL instanceProperty)÷0œobjc_EXPORT
 protocol_isEqualÃ1024Õ(Protocol *protocol, Protocol *anotherProtocol)÷0œobjc_EXPORT
-ProtocolÃ16384÷0œ@class
-ProtocolÃ4096÷0œobjc_object
 receiverÃ32768÷0œobjc_msg_lookup
 record_alignÃ64Œobjc_struct_layout÷0œint
 record_sizeÃ64Œobjc_struct_layout÷0œint
 sel_copyTypedSelectorListÃ1024Õ(const char *name, unsigned int *numberOfReturnedSelectors)÷0œobjc_EXPORT *
 sel_getNameÃ1024Õ(SEL selector)÷0œobjc_EXPORT const char *
-sel_getTypedSelectorÃ1024Õ(const char *name)÷0œobjc_EXPORT
 sel_getTypeEncodingÃ1024Õ(SEL selector)÷0œobjc_EXPORT const char *
+sel_getTypedSelectorÃ1024Õ(const char *name)÷0œobjc_EXPORT
 sel_getUidÃ1024Õ(const char *name)÷0œobjc_EXPORT
 sel_isEqualÃ1024Õ(SEL first_selector, SEL second_selector)÷0œobjc_EXPORT
 sel_registerNameÃ1024Õ(const char *name)÷0œobjc_EXPORT
 sel_registerTypedNameÃ1024Õ(const char *name, const char *type)÷0œobjc_EXPORT
 selfÃ64Œobjc_super÷0œid
-SELÃ4096÷0œobjc_selector
 super_classÃ64Œobjc_super÷0œClass
 typesÃ64Œobjc_method_description÷0œchar
 typeÃ64Œobjc_struct_layout÷0œchar
-YESÃ65536÷0

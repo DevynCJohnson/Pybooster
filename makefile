@@ -289,17 +289,21 @@ svglint :
 
 
 cleandoc :
-	-@$(RMDIR) $(DOCDIR)/pylib/* $(DOCDIR)/clib/*
+	-@$(RMDIR) $(DOCDIR)/pylib $(DOCDIR)/clib
 
 doc : docc docpy
 
-docc : cleandoc fixperm
-	-@doxygen ./Doxyfile
+docc : fixperm
+	-@([ -f $(DOCDIR)/index.html ] && unlink $(DOCDIR)/index.html) || true
+	([ -d $(DOCDIR)/clib ] && $(RMDIR) $(DOCDIR)/clib) || true
+	doxygen ./Doxyfile
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
+	$(LNSOFT) $(DOCDIR)/clib/index.html $(DOCDIR)/index.html
 
-docpy : cleandoc fixperm
-	-@./tools/pydocgen.sh $(PYSRC) $(DOCDIR) $(LIST_PYTHON_LIBRARIES)
+docpy : fixperm
+	-@([ -d $(DOCDIR)/pylib ] && $(RMDIR) $(DOCDIR)/pylib) || true
+	./tools/pydocgen.sh $(PYSRC) $(DOCDIR) $(LIST_PYTHON_LIBRARIES)
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 
@@ -361,7 +365,7 @@ upver :
 	find . -mount -type f -name "*.py" -exec sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/" '{}' \;
 	# Shell Scripts, makefiles, R, & Conf/INI Files #
-	find . -mount -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.cfg" -o -name "*.conf" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
+	find . -mount -not \( -path "$(GEANYDIR)" \) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.cfg" -o -name "*.conf" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	find $(SCRIPTSRCDIR)/* -mount -type f -exec sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/" '{}' \;
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -exec sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/" '{}' \;

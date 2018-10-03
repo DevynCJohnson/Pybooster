@@ -5,6 +5,9 @@ userdefined=
 variables=$$ $` $' $" $0 $0, $1 $2 $3 $4 $5 $6 $7 $8 $9 $admintools $appdata $cdburn_area $cmdline $commonfiles $cookies $desktop $documents $exedir $favorites $fonts $history $hwndparent $instdir $internet_cache $language $music $nethood ${nsisdir} $outdir $pictures $pluginsdir $printhood $profile $programfiles $quicklaunch $\r $r0 $r1 $r2 $r3 $r4 $r5 $r6 $r7 $r8 $r9 $recent $resources $resources_localized $sendto $smprograms $smstartup $startmenu $sysdir $temp $templates $varname $videos $windir
 
 [lexer_properties]
+fold.at.else=1
+fold.compact=1
+nsis.foldutilcmd=1
 nsis.ignorecase=1
 nsis.uservars=1
 

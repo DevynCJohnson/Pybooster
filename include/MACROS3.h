@@ -193,7 +193,7 @@ static const UNUSED void* __arm_atomics[3];
 
 #ifdef ARCHX86_32  // Math barriers
 
-/** 
+/**
 @brief Safely load x, even if it was manipulated by non-float-point operations. This macro returns the value of x. This ensures compiler does not abuse its knowledge about x value and not optimize future operations.
 
 @code{.c}
@@ -14971,7 +14971,7 @@ LIB_FUNC ATTR_CF int ctz(const unsigned int x) {
 #define clz_hi2(x)   ctz((x))
 
 
-/** 
+/**
 @brief Count the number of zeros from the LSB towrds the MSB
 @param[in] x The value to test
 @retval 1 0
@@ -15126,7 +15126,7 @@ LIB_FUNC int constant_test_bit(const int nr, const volatile void* addr) {
 #ifdef ARCHX86  // clear_bit() and set_bit()
 
 
-/** 
+/**
 @brief Atomically set a bit in memory
 @param[in] nr The bit to set
 @param[in,out] addr The address to start counting from
@@ -15136,7 +15136,7 @@ LIB_FUNC void set_bit(int nr, volatile void* addr) {
 }
 
 
-/** 
+/**
 @brief Clears a bit in memory
 @param[in] nr The bit to clear
 @param[in,out] addr Address to start counting from
@@ -15153,7 +15153,7 @@ LIB_FUNC int variable_test_bit(int nr, volatile void* addr) {
 }
 
 
-/** 
+/**
 @brief Toggle a bit in memory
 @param[in] nr The bit to change
 @param[in,out] addr The address to start counting from
@@ -15163,7 +15163,7 @@ LIB_FUNC void __change_bit(long nr, volatile unsigned long* addr) {
 }
 
 
-/** 
+/**
 @brief Atomically toggle a bit in memory
 @param[in] nr The bit to change
 @param[in,addr] addr Address to start counting from
@@ -15182,7 +15182,7 @@ LIB_FUNC void change_bit(long nr, volatile unsigned long* addr) {
 #endif
 
 
-/** 
+/**
 @brief Clears a bit in memory
 @param[in] nr The bit to clear
 @param[in,out] addr Address to start counting from
@@ -15196,7 +15196,7 @@ LIB_FUNC void clear_bit_unlock(int nr, volatile void* addr) {
 #define test_bit(nr, addr)   (__builtin_constant_p(nr) ? constant_test_bit((nr), (addr)) : variable_test_bit((nr), (addr)))
 
 
-/** 
+/**
 @brief Clear a bit and return its old value
 @param[in] nr The bit to clear
 @param[in,out] addr Address to count from
@@ -15207,7 +15207,7 @@ LIB_FUNC int test_and_clear_bit(int nr, volatile unsigned long* addr) {
 }
 
 
-/** 
+/**
 @brief Set a bit and return its old value
 @param[in] nr The bit to set
 @param[in,out] addr Address to count from
@@ -15218,7 +15218,7 @@ LIB_FUNC int test_and_set_bit(int nr, volatile unsigned long* addr) {
 }
 
 
-/** 
+/**
 @brief Set a bit and return its old value for lock
 @param[in] nr The bit to set
 @param[in,out] addr Address to count from
@@ -15229,7 +15229,7 @@ LIB_FUNC int test_and_set_bit_lock(long nr, volatile unsigned long* addr) {
 }
 
 
-/** 
+/**
 @brief Set a bit and return its old value
 @param[in] nr The bit to set
 @param[in,out] addr Address to count from
@@ -15241,7 +15241,7 @@ LIB_FUNC int __test_and_set_bit(long nr, volatile unsigned long* addr) {
 }
 
 
-/** 
+/**
 @brief Clear a bit and return its old value
 @param[in] nr The bit to clear
 @param[in,out] addr Address to count from
@@ -15763,7 +15763,7 @@ LIB_FUNC ATTR_CF int overlaps(const uint64_t s1, const uint64_t sz1, const uint6
 }
 
 
-/** 
+/**
 @brief Return true if the second interval is within the first interval
 @param[in] s1 Start address of the first interval
 @param[in] sz1 Size of the first interval
@@ -17791,7 +17791,7 @@ typedef struct attr_packed locale_monetary_t {
 #   define LCMONETARY_SIZE_MIN   (offsetof(struct lc_monetary_T, n_sign_posn) / SIZEOF_POINTER)
 #endif
 
-#include "./iso-4217.h"
+#include "iso-4217.h"
 
 #define NR_VALID_INT_CURR   ((sizeof(valid_int_curr) / sizeof(valid_int_curr[0])))
 
@@ -18557,7 +18557,7 @@ LIB_FUNC ATTR_PF ssize_t skip_to(const char* restrict format) {
 #define __v_printf_write_epilogue(length)   do { len += (ssize_t)(length); bufptr += (size_t)(length); buf_space_left -= (ssize_t)(length); } while (0x0)
 
 
-/** 
+/**
 @brief Main printf function
 
 @section Format Specifiers
@@ -19966,7 +19966,7 @@ LIB_FUNC size_t __string_read(FILE* f, unsigned char* buf, const size_t len) {
 }
 
 
-/** 
+/**
 @brief Reads data from the stream and stores them according to parameter `fmt` into the locations pointed by the elements in the variable argument list identified by `ap`
 
 @section Defines
@@ -55269,7 +55269,7 @@ LIB_FUNC MATH_FUNC uint128_t fib128(const uint64_t num) {
 #endif
 
 
-/** 
+/**
 	@brief Fibonacci Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
@@ -55299,7 +55299,7 @@ LIB_FUNC MATH_FUNC uint64_t fibprime(const uint64_t num) {
 
 
 #if SUPPORTS_UINT128
-/** 
+/**
 	@brief Fibonacci Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
@@ -55368,7 +55368,7 @@ LIB_FUNC MATH_FUNC unsigned long lucas(const unsigned long num) {
 }
 
 
-/** 
+/**
 	@brief Lucas Prime Number Generator; return 0 on error
 
 	@section DESCRIPTION
@@ -56260,7 +56260,7 @@ LIB_FUNC MATH_FUNC int isullcomposite(const unsigned long long num) {
 }
 
 
-/** 
+/**
 	@brief Test if an uint64_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
 	@param[in] num A 64-bit integer
 	@retval 0 False: This is not a Fibonacci Prime
@@ -56287,7 +56287,7 @@ LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 
 
 #if SUPPORTS_UINT128
-/** 
+/**
 	@brief Test if an uint128_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
 	@param[in] num A 128-bit integer
 	@retval 0 False: This is not a Fibonacci Prime
@@ -56375,7 +56375,7 @@ LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
 }
 
 
-/** 
+/**
 	@brief Test if an uint64_t is a Lucas Prime; A Lucas prime is a Lucas number that is prime
 	@param[in] num A 64-bit integer
 	@retval 0 False: This is not a Lucas Prime
@@ -69210,7 +69210,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #endif
 
 
-/** 
+/**
 @brief Return density given mass and volume
 @param[in] mass
 @param[in] volume
@@ -69219,7 +69219,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define density(mass, volume)   (mass / volume)
 
 
-/** 
+/**
 @brief Return pressure given force and area
 @param[in] force
 @param[in] area Area of the acting force
@@ -69228,7 +69228,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define pressure(force, area)   (force / area)
 
 
-/** 
+/**
 @brief Return distance given speed and time
 @param[in] speed
 @param[in] time
@@ -69237,7 +69237,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define distance(speed, time)   (speed * time)
 
 
-/** 
+/**
 @brief Return speed/velocity given the distance and time
 @param[in] distance
 @param[in] time
@@ -69246,7 +69246,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define speed(distance, time)   (distance / time)
 
 
-/** 
+/**
 @brief Return the acceleration given time and change in velocity
 @param[in] velocity_change
 @param[in] time
@@ -69255,7 +69255,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define acceleration_given_velocity(velocity_change, time)   (velocity_change / time)
 
 
-/** 
+/**
 @brief Return the acceleration given force and mass
 @param[in] force
 @param[in] mass
@@ -69264,7 +69264,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define acceleration_given_force(force, mass)   (force / mass)
 
 
-/** 
+/**
 @brief Return momentum given mass and velocity
 @param[in] mass
 @param[in] velocity Amount of directional speed of the mass
@@ -69273,7 +69273,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define momentum(mass, velocity)   (mass * velocity)
 
 
-/** 
+/**
 @brief Return the force given mass and acceleration
 @param[in] mass
 @param[in] acceleration Amount of acceleration of the mass
@@ -69282,7 +69282,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define force(mass, acceleration)   (mass * acceleration)
 
 
-/** 
+/**
 @brief Return impulse given force and time
 @param[in] force
 @param[in] time Amount of time the force was exerted
@@ -69291,7 +69291,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define impulse(force, time)   (force * time)
 
 
-/** 
+/**
 @brief Return impulse given velocity and a change in mass
 @param[in] mass
 @param[in] velocity
@@ -69300,7 +69300,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define impulse_given_mass_velocity(mass, velocity)   (mass * velocity)
 
 
-/** 
+/**
 @brief Return work given force and distance
 @param[in] force
 @param[in] distance Amount of distance the force was exerted
@@ -69309,7 +69309,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define work(force, distance)   (force * distance)
 
 
-/** 
+/**
 @brief Return power given force, distance, and time
 @param[in] force
 @param[in] distance Amount of distance the force was exerted
@@ -69319,7 +69319,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define power(force, distance, time)   ((force * distance) / time)
 
 
-/** 
+/**
 @brief Return power given work and time
 @param[in] work Work (Newtons)
 @param[in] time Amount of time the work was exerted
@@ -69328,7 +69328,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define power_given_work_time(work, time)   (work / time)
 
 
-/** 
+/**
 @brief Return the kinetic-energy given mass and velocity
 @param[in] mass Mass of some object
 @param[in] velocity Velocity of the object
@@ -69337,7 +69337,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define kinetic_energy(mass, velocity)   (0.500 * mass * velocity * velocity)
 
 
-/** 
+/**
 @brief Return potential-energy given mass (kg) and height (meters) of an object on Earth
 @param[in] mass_kg Mass of some object
 @param[in] height_meters height from some surface
@@ -69346,7 +69346,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define potential_energy(mass_kg, height_meters)   (mass_kg * G * height_meters)
 
 
-/** 
+/**
 @brief Return gravitational intensity given distance
 @param[in] distance Distance between two objects
 @return Gravitational intensity at the given distance
@@ -69354,7 +69354,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define gravitational_intensity(distance)   (1.0 / (distance * distance))
 
 
-/** 
+/**
 @brief Return instantaneous speed given acceleration and time
 @param[in] acceleration Acceleration at the given time
 @param[in] time Time of the given instance
@@ -69363,7 +69363,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define instantaneous_speed(acceleration, time)   (acceleration * time)
 
 
-/** 
+/**
 @brief Return the freefall velocity given time (seconds)
 @param[in] time_sec Time since falling
 @return Free-fall velocity at the given time
@@ -69371,7 +69371,7 @@ extern void *md5_buffer(const char *buffer, size_t len, void *resblock);
 #define freefall_velocity(time_sec)   (G * time_sec)
 
 
-/** 
+/**
 @brief Return distance fallen during freefall given time (seconds)
 @param[in] time_sec Time since falling
 @return Distance fallen at the given time

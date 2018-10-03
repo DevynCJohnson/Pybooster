@@ -8,6 +8,8 @@ lexer.cpp.verbatim.strings.allow.escapes=1
 
 [settings]
 extension=m
+lexer_filetype=C
+tag_parser=C
 mime_type=text/x-objc
 comment_single=//
 comment_open=/*

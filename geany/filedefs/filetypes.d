@@ -5,7 +5,14 @@ secondary=
 types=
 
 [lexer_properties]
-fold.d.comment.explicit=0
+fold.compact=1
+fold.d.comment.explicit=1
+fold.d.comment.multiline=1
+fold.d.explicit.anywhere=1
+fold.d.explicit.end=// }
+fold.d.explicit.start=// (FB){
+fold.d.syntax.based=1
+lexer.d.fold.at.else=1
 
 [settings]
 extension=d

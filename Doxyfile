@@ -293,6 +293,7 @@ OPTIMIZE_OUTPUT_VHDL   = NO
 
 EXTENSION_MAPPING      = c=C \
                          h=C \
+                         def=C \
                          py=Python \
                          pygtk=Python \
                          pyw=Python \
@@ -426,7 +427,7 @@ TYPEDEF_HIDES_STRUCT   = NO
 # the optimal cache size from a speed point of view.
 # Minimum value: 0, maximum value: 9, default value: 0.
 
-LOOKUP_CACHE_SIZE      = 0
+LOOKUP_CACHE_SIZE      = 4
 
 #---------------------------------------------------------------------------
 # Build related configuration options
@@ -729,7 +730,7 @@ CITE_BIB_FILES         =
 # messages are off.
 # The default value is: NO.
 
-QUIET                  = YES
+QUIET                  = NO
 
 # The WARNINGS tag can be used to turn on/off the warning messages that are
 # generated to standard error (stderr) by doxygen. If WARNINGS is set to YES
@@ -738,7 +739,7 @@ QUIET                  = YES
 # Tip: Turn warnings on while writing the documentation.
 # The default value is: YES.
 
-WARNINGS               = NO
+WARNINGS               = YES
 
 # If the WARN_IF_UNDOCUMENTED tag is set to YES then doxygen will generate
 # warnings for undocumented members. If EXTRACT_ALL is set to YES then this flag
@@ -783,7 +784,7 @@ WARN_FORMAT            = "$file:$line: $text"
 # messages should be written. If left blank the output is written to standard
 # error (stderr).
 
-WARN_LOGFILE           =
+WARN_LOGFILE           = ./testing/Doxygen.log
 
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
@@ -822,6 +823,7 @@ INPUT_ENCODING         = UTF-8
 
 FILE_PATTERNS          = *.c \
                          *.h \
+                         *.def \
                          *.py \
                          *.pyw \
                          *.pygtk \
@@ -831,7 +833,7 @@ FILE_PATTERNS          = *.c \
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = NO
+RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -862,8 +864,7 @@ EXCLUDE_PATTERNS       = */*.so \
                          */*.html \
                          */*.a \
                          */*.dll \
-                         */*.dylib \
-                         */*.def
+                         */*.dylib
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the

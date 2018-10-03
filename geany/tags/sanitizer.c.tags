@@ -1,5 +1,9 @@
 # format=tagmanager
-__asan_addr_is_in_fake_stackÌ1024Í(void *fake_stack, void *addr, void **beg, void **end)Ö0Ïvoid *
+ASAN_POISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
+ASAN_UNPOISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
+SANITIZER_ASAN_INTERFACE_HÌ65536Ö0
+SANITIZER_COMMON_INTERFACE_DEFS_HÌ65536Ö0
+SANITIZER_LSAN_INTERFACE_HÌ65536Ö0__asan_addr_is_in_fake_stackÌ1024Í(void *fake_stack, void *addr, void **beg, void **end)Ö0Ïvoid *
 __asan_address_is_poisonedÌ1024Í(void const volatile *addr)Ö0Ïint
 __asan_default_optionsÌ1024Í()Ö0Ïconst char *
 __asan_describe_addressÌ1024Í(void *addr)Ö0Ïvoid
@@ -51,11 +55,6 @@ __sanitizer_unaligned_store32Ì1024Í(void *p, uint32_t x)Ö0Ïvoid
 __sanitizer_unaligned_store64Ì1024Í(void *p, uint64_t x)Ö0Ïvoid
 __sanitizer_verify_contiguous_containerÌ1024Í(const void *beg, const void *mid, const void *end)Ö0Ïint
 anon_struct_0Ì2048Ö0
-ASAN_POISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
-ASAN_UNPOISON_MEMORY_REGIONÌ131072Í(addr, size)Ö0
 coverage_fdÌ64Îanon_struct_0Ö0Ïintptr_t
 coverage_max_block_sizeÌ64Îanon_struct_0Ö0Ïint
 coverage_sandboxedÌ64Îanon_struct_0Ö0Ïint
-SANITIZER_ASAN_INTERFACE_HÌ65536Ö0
-SANITIZER_COMMON_INTERFACE_DEFS_HÌ65536Ö0
-SANITIZER_LSAN_INTERFACE_HÌ65536Ö0

@@ -6,7 +6,7 @@ extension=tex
 mime_type=text/x-tex
 comment_single=%
 comment_use_indent=true
-context_action_cmd=
+symbol_list_sort_mode=1
 
 [indentation]
 type=1

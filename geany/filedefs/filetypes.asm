@@ -11,6 +11,7 @@ fold.asm.explicit.anywhere=1
 fold.asm.explicit.end=/* } */
 fold.asm.explicit.start=/* (FB){ */
 fold.asm.syntax.based=1
+fold.preprocessor=1
 lexer.cpp.track.preprocessor=0
 lexer.cpp.update.preprocessor=1
 preprocessor.end.$(file.patterns.cpp)=endif
@@ -22,7 +23,6 @@ session.folds=1
 styling.within.preprocessor=1
 
 [settings]
-lexer_filetype=asm
 extension=s
 mime_type=text/plain
 comment_open=/*

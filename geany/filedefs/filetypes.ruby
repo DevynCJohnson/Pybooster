@@ -2,6 +2,9 @@
 primary=__FILE__ __LINE__ alias and attr_accessor attr_reader attr_writer BEGIN begin break case class def define_method defined? do else elsif end END ensure for if in include load module next not or redo require require_relative rescue retry return self super then undef unless until when while yield
 secondary=false nil true
 
+[lexer_properties]
+fold.compact=1
+
 [settings]
 extension=rb
 mime_type=application/x-ruby

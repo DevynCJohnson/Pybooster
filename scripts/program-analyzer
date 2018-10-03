@@ -1336,7 +1336,7 @@ STATUS_WRITING = (5, r'Writing saved data')
 # CLASSES #
 
 
-class SavePath(object):  # pylint: disable=R0205,R0903
+class SavePath():  # pylint: disable=R0903
     """Last pathname used to save files"""
     lastused = r''
 

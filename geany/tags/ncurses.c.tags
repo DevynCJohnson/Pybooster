@@ -1,76 +1,4 @@
 # format=tagmanager
-__attribute__Ã131072Õ(p)÷0
-__NCURSES_HÃ65536÷0
-_attrsÃ64Œ_win_st÷0œattr_t
-_begxÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_begyÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_bkgdÃ64Œ_win_st÷0œchtype
-_bkgrndÃ64Œ_win_st÷0œcchar_t
-_clearÃ64Œ_win_st÷0œbool
-_curxÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_curyÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_delayÃ64Œ_win_st÷0œint
-_ENDLINEÃ65536÷0
-_flagsÃ64Œ_win_st÷0œshort
-_FULLWINÃ65536÷0
-_HASMOVEDÃ65536÷0
-_idcokÃ64Œ_win_st÷0œbool
-_idlokÃ64Œ_win_st÷0œbool
-_immedÃ64Œ_win_st÷0œbool
-_ISPADÃ65536÷0
-_leaveokÃ64Œ_win_st÷0œbool
-_lineÃ64Œ_win_st÷0œldat
-_maxxÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_maxyÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_NC_EVENT_FILE_READABLEÃ65536÷0
-_NC_EVENT_FILEÃ65536÷0
-_NC_EVENT_TIMEOUT_MSECÃ65536÷0
-_nc_eventlistÃ4096÷0œanon_struct_4
-_nc_eventÃ4096÷0œanon_struct_1
-_NEWINDEXÃ65536÷0
-_NOCHANGEÃ65536÷0
-_notimeoutÃ64Œ_win_st÷0œbool
-_pad_bottomÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_pad_leftÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_pad_rightÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_pad_topÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_pad_xÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_pad_yÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
-_padÃ64Œ_win_st÷0œpdat
-_parentÃ64Œ_win_st÷0œWINDOW
-_parxÃ64Œ_win_st÷0œint
-_paryÃ64Œ_win_st÷0œint
-_regbottomÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_regtopÃ64Œ_win_st÷0œNCURSES_SIZE_T
-_SCROLLWINÃ65536÷0
-_scrollÃ64Œ_win_st÷0œbool
-_SUBWINÃ65536÷0
-_syncÃ64Œ_win_st÷0œbool
-_tracech_t2Ã65536÷0
-_tracech_tÃ65536÷0
-_use_keypadÃ64Œ_win_st÷0œbool
-_win_stÃ2048÷0
-_WRAPPEDÃ65536÷0
-_yoffsetÃ64Œ_win_st÷0œNCURSES_SIZE_T
-A_ALTCHARSETÃ65536÷0
-A_ATTRIBUTESÃ65536÷0
-A_BLINKÃ65536÷0
-A_BOLDÃ65536÷0
-A_CHARTEXTÃ65536÷0
-A_COLORÃ65536÷0
-A_DIMÃ65536÷0
-A_HORIZONTALÃ65536÷0
-A_INVISÃ65536÷0
-A_LEFTÃ65536÷0
-A_LOWÃ65536÷0
-A_NORMALÃ65536÷0
-A_PROTECTÃ65536÷0
-A_REVERSEÃ65536÷0
-A_RIGHTÃ65536÷0
-A_STANDOUTÃ65536÷0
-A_TOPÃ65536÷0
-A_UNDERLINEÃ65536÷0
-A_VERTICALÃ65536÷0
 ACS_BBSSÃ65536÷0
 ACS_BLOCKÃ65536÷0
 ACS_BOARDÃ65536÷0
@@ -114,36 +42,26 @@ ACS_UARROWÃ65536÷0
 ACS_ULCORNERÃ65536÷0
 ACS_URCORNERÃ65536÷0
 ACS_VLINEÃ65536÷0
-addchnstrÃ131072Õ(str,n)÷0
-addchstrÃ131072Õ(str)÷0
-addchÃ131072Õ(ch)÷0
-addnstrÃ131072Õ(str,n)÷0
-addstrÃ131072Õ(str)÷0
 ALL_MOUSE_EVENTSÃ65536÷0
-anon_struct_0Ã2048÷0
-anon_struct_1Ã2048÷0
-anon_struct_3Ã2048Œanon_struct_1::anon_union_2÷0
-anon_struct_4Ã2048÷0
-anon_struct_5Ã2048÷0
-anon_union_2Ã8192Œanon_struct_1÷0
-attr_getÃ131072Õ(ap,cp,o)÷0
-attr_offÃ131072Õ(a,o)÷0
-attr_onÃ131072Õ(a,o)÷0
-attr_setÃ131072Õ(a,c,o)÷0
-attr_tÃ16384÷0œ_traceattr
-attr_tÃ4096÷0œchtype
-attroffÃ131072Õ(at)÷0
-attronÃ131072Õ(at)÷0
-attrsetÃ131072Õ(at)÷0
-attrÃ64Œanon_struct_0÷0œattr_t
-bkgdsetÃ131072Õ(ch)÷0
-bkgdÃ131072Õ(ch)÷0
-boolÃ16384÷0œuse_extended_names
-boolÃ65536÷0
-borderÃ131072Õ(ls, rs, ts, bs, tl, tr, bl, br)÷0
-boxÃ131072Õ(win, v, h)÷0
-boxÃ65536÷0
-bstateÃ64Œanon_struct_5÷0œmmask_t
+A_ALTCHARSETÃ65536÷0
+A_ATTRIBUTESÃ65536÷0
+A_BLINKÃ65536÷0
+A_BOLDÃ65536÷0
+A_CHARTEXTÃ65536÷0
+A_COLORÃ65536÷0
+A_DIMÃ65536÷0
+A_HORIZONTALÃ65536÷0
+A_INVISÃ65536÷0
+A_LEFTÃ65536÷0
+A_LOWÃ65536÷0
+A_NORMALÃ65536÷0
+A_PROTECTÃ65536÷0
+A_REVERSEÃ65536÷0
+A_RIGHTÃ65536÷0
+A_STANDOUTÃ65536÷0
+A_TOPÃ65536÷0
+A_UNDERLINEÃ65536÷0
+A_VERTICALÃ65536÷0
 BUTTON1_CLICKEDÃ65536÷0
 BUTTON1_DOUBLE_CLICKEDÃ65536÷0
 BUTTON1_PRESSEDÃ65536÷0
@@ -182,17 +100,8 @@ BUTTON_RELEASEÃ131072Õ(e, x)÷0
 BUTTON_RESERVED_EVENTÃ131072Õ(e, x)÷0
 BUTTON_SHIFTÃ65536÷0
 BUTTON_TRIPLE_CLICKÃ131072Õ(e, x)÷0
-cbreakÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-cchar_tÃ4096÷0œanon_struct_0
 CCHARW_MAXÃ65536÷0
-charsÃ64Œanon_struct_0÷0œwchar_t
-chgatÃ131072Õ(n,a,c,o)÷0
-chtypeÃ16384÷0œ_tracechtype
-chtypeÃ4096÷0œlong
-clearÃ131072Õ()÷0
-clearÃ65536÷0
-clrtobotÃ131072Õ()÷0
-clrtoeolÃ131072Õ()÷0
+COLORSÃ65536÷0
 COLOR_BLACKÃ65536÷0
 COLOR_BLUEÃ65536÷0
 COLOR_CYANÃ65536÷0
@@ -201,91 +110,18 @@ COLOR_MAGENTAÃ65536÷0
 COLOR_PAIRSÃ65536÷0
 COLOR_PAIRÃ131072Õ(n)÷0
 COLOR_REDÃ65536÷0
-color_setÃ131072Õ(c,o)÷0
 COLOR_WHITEÃ65536÷0
 COLOR_YELLOWÃ65536÷0
-COLORSÃ65536÷0
 COLSÃ65536÷0
-countÃ64Œanon_struct_4÷0œint
-crmodeÃ131072Õ()÷0
-curscrÃ65536÷0
 CURSES_HÃ65536÷0
-curses_versionÃ131072Õ()÷0
 CURSESÃ65536÷0
-dataÃ64Œanon_struct_1÷0œanon_union_2
-delchÃ131072Õ()÷0
-deletelnÃ131072Õ()÷0
-echocharÃ131072Õ(c)÷0
-eraseÃ131072Õ()÷0
-eraseÃ65536÷0
 ERRÃ65536÷0
 ESCDELAYÃ65536÷0
-eventsÃ64Œanon_struct_4÷0œ_nc_event
 FALSEÃ65536÷0
-fdÃ64Œanon_struct_1::anon_union_2::anon_struct_3÷0œint
-fevÃ64Œanon_struct_1::anon_union_2÷0œanon_struct_3
-fixtermÃ131072Õ()÷0
-flagsÃ64Œanon_struct_1::anon_union_2::anon_struct_3÷0œint
 GCC_NORETURNÃ65536÷0
 GCC_PRINTFLIKEÃ131072Õ(fmt,var)÷0
 GCC_SCANFLIKEÃ131072Õ(fmt,var)÷0
 GCC_UNUSEDÃ65536÷0
-getattrsÃ131072Õ(win)÷0
-getbegxÃ131072Õ(win)÷0
-getbegyxÃ131072Õ(win,y,x)÷0
-getbegyÃ131072Õ(win)÷0
-getbkgdÃ131072Õ(win)÷0
-getchÃ131072Õ()÷0
-getchÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-getcurxÃ131072Õ(win)÷0
-getcuryÃ131072Õ(win)÷0
-getmaxxÃ131072Õ(win)÷0
-getmaxyxÃ131072Õ(win,y,x)÷0
-getmaxyÃ131072Õ(win)÷0
-getmouseÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-getnstrÃ131072Õ(s, n)÷0
-getparxÃ131072Õ(win)÷0
-getparyxÃ131072Õ(win,y,x)÷0
-getparyÃ131072Õ(win)÷0
-getstrÃ131072Õ(str)÷0
-getsyxÃ131072Õ(y,x)÷0
-gettmodeÃ131072Õ()÷0
-getyxÃ131072Õ(win,y,x)÷0
-has_icÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-has_keyÃ1024Õ(SCREEN*, int)÷0œNCURSES_SP_NAME
-hlineÃ131072Õ(ch, n)÷0
-hlineÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-idÃ64Œanon_struct_5÷0œshort
-inchnstrÃ131072Õ(s,n)÷0
-inchnstrÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-inchstrÃ131072Õ(s)÷0
-inchÃ131072Õ()÷0
-innstrÃ131072Õ(s,n)÷0
-inschÃ131072Õ(c)÷0
-insdellnÃ131072Õ(n)÷0
-insertlnÃ131072Õ()÷0
-insnstrÃ131072Õ(s,n)÷0
-insstrÃ131072Õ(s)÷0
-instrÃ131072Õ(s)÷0
-is_clearedÃ131072Õ(win)÷0
-is_idcokÃ131072Õ(win)÷0
-is_idcokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_idlokÃ131072Õ(win)÷0
-is_immedokÃ131072Õ(win)÷0
-is_immedokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_keypadÃ131072Õ(win)÷0
-is_leaveokÃ131072Õ(win)÷0
-is_leaveokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_linetouchedÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_nodelayÃ131072Õ(win)÷0
-is_notimeoutÃ131072Õ(win)÷0
-is_notimeoutÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_padÃ131072Õ(win)÷0
-is_scrollokÃ131072Õ(win)÷0
-is_scrollokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
-is_subwinÃ131072Õ(win)÷0
-is_syncokÃ131072Õ(win)÷0
-is_syncokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 KEY_A1Ã65536÷0
 KEY_A3Ã65536÷0
 KEY_B2Ã65536÷0
@@ -382,12 +218,261 @@ KEY_SUNDOÃ65536÷0
 KEY_SUSPENDÃ65536÷0
 KEY_UNDOÃ65536÷0
 KEY_UPÃ65536÷0
+LINESÃ65536÷0
+MEVENTÃ4096÷0œanon_struct_5
+NCURSES_ACSÃ131072Õ(c)÷0
+NCURSES_ATTR_SHIFTÃ65536÷0
+NCURSES_ATTR_TÃ16384÷0œattrset
+NCURSES_ATTR_TÃ65536÷0
+NCURSES_BITSÃ131072Õ(mask,shift)÷0
+NCURSES_BOOLÃ4096÷0œchar
+NCURSES_BOOLÃ65536÷0
+NCURSES_BUTTON_CLICKEDÃ65536÷0
+NCURSES_BUTTON_PRESSEDÃ65536÷0
+NCURSES_BUTTON_RELEASEDÃ65536÷0
+NCURSES_CASTÃ131072Õ(type,value)÷0
+NCURSES_CH_TÃ65536÷0
+NCURSES_COLOR_TÃ65536÷0
+NCURSES_CONSTÃ65536÷0
+NCURSES_DOUBLE_CLICKEDÃ65536÷0
+NCURSES_ENABLE_STDBOOL_HÃ65536÷0
+NCURSES_EVENT_VERSIONÃ65536÷0
+NCURSES_EXPORT_VARÃ1024Õ(chtype)÷0
+NCURSES_EXT_FUNCSÃ65536÷0
+NCURSES_INLINEÃ65536÷0
+NCURSES_INTEROP_FUNCSÃ65536÷0
+NCURSES_MOUSE_MASKÃ131072Õ(b,m)÷0
+NCURSES_MOUSE_VERSIONÃ65536÷0
+NCURSES_OPAQUEÃ65536÷0
+NCURSES_OUTCÃ4096÷0œtypedef int
+NCURSES_REENTRANTÃ65536÷0
+NCURSES_RESERVED_EVENTÃ65536÷0
+NCURSES_SCREEN_CBÃ4096÷0œtypedef int
+NCURSES_SIZE_TÃ65536÷0
+NCURSES_SP_FUNCSÃ65536÷0
+NCURSES_SP_NAMEÃ131072Õ(name)÷0
+NCURSES_SP_OUTCÃ65536÷0
+NCURSES_TPARM_VARARGSÃ65536÷0
+NCURSES_TRIPLE_CLICKEDÃ65536÷0
+NCURSES_VERSION_MAJORÃ65536÷0
+NCURSES_VERSION_MINORÃ65536÷0
+NCURSES_VERSION_PATCHÃ65536÷0
+NCURSES_VERSIONÃ65536÷0
+NCURSES_WIDECHARÃ65536÷0
+NCURSES_WINDOW_CBÃ4096÷0œtypedef int
+OKÃ65536÷0
+OPTIMIZE_ALLÃ65536÷0
+OPTIMIZE_HASHMAPÃ65536÷0
+OPTIMIZE_MVCURÃ65536÷0
+OPTIMIZE_SCROLLÃ65536÷0
+PAIR_NUMBERÃ131072Õ(a)÷0
+REPORT_MOUSE_POSITIONÃ65536÷0
+SCREENÃ4096÷0œscreen
+TABSIZEÃ65536÷0
+TRACE_ATTRSÃ65536÷0
+TRACE_BITSÃ65536÷0
+TRACE_CALLSÃ65536÷0
+TRACE_CCALLSÃ65536÷0
+TRACE_CHARPUTÃ65536÷0
+TRACE_DATABASEÃ65536÷0
+TRACE_DISABLEÃ65536÷0
+TRACE_ICALLSÃ65536÷0
+TRACE_IEVENTÃ65536÷0
+TRACE_MAXIMUMÃ65536÷0
+TRACE_MOVEÃ65536÷0
+TRACE_ORDINARYÃ65536÷0
+TRACE_SHIFTÃ65536÷0
+TRACE_TIMESÃ65536÷0
+TRACE_TPUTSÃ65536÷0
+TRACE_UPDATEÃ65536÷0
+TRACE_VIRTPUTÃ65536÷0
+TRUEÃ65536÷0
+WA_ALTCHARSETÃ65536÷0
+WA_ATTRIBUTESÃ65536÷0
+WA_BLINKÃ65536÷0
+WA_BOLDÃ65536÷0
+WA_DIMÃ65536÷0
+WA_HORIZONTALÃ65536÷0
+WA_INVISÃ65536÷0
+WA_LEFTÃ65536÷0
+WA_LOWÃ65536÷0
+WA_NORMALÃ65536÷0
+WA_PROTECTÃ65536÷0
+WA_REVERSEÃ65536÷0
+WA_RIGHTÃ65536÷0
+WA_STANDOUTÃ65536÷0
+WA_TOPÃ65536÷0
+WA_UNDERLINEÃ65536÷0
+WA_VERTICALÃ65536÷0
+WINDOWÃ4096÷0œ_win_st
+_ENDLINEÃ65536÷0
+_FULLWINÃ65536÷0
+_HASMOVEDÃ65536÷0
+_ISPADÃ65536÷0
+_NC_EVENT_FILE_READABLEÃ65536÷0
+_NC_EVENT_FILEÃ65536÷0
+_NC_EVENT_TIMEOUT_MSECÃ65536÷0
+_NEWINDEXÃ65536÷0
+_NOCHANGEÃ65536÷0
+_SCROLLWINÃ65536÷0
+_SUBWINÃ65536÷0
+_WRAPPEDÃ65536÷0
+__NCURSES_HÃ65536÷0
+__attribute__Ã131072Õ(p)÷0
+_attrsÃ64Œ_win_st÷0œattr_t
+_begxÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_begyÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_bkgdÃ64Œ_win_st÷0œchtype
+_bkgrndÃ64Œ_win_st÷0œcchar_t
+_clearÃ64Œ_win_st÷0œbool
+_curxÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_curyÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_delayÃ64Œ_win_st÷0œint
+_flagsÃ64Œ_win_st÷0œshort
+_idcokÃ64Œ_win_st÷0œbool
+_idlokÃ64Œ_win_st÷0œbool
+_immedÃ64Œ_win_st÷0œbool
+_leaveokÃ64Œ_win_st÷0œbool
+_lineÃ64Œ_win_st÷0œldat
+_maxxÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_maxyÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_nc_eventlistÃ4096÷0œanon_struct_4
+_nc_eventÃ4096÷0œanon_struct_1
+_notimeoutÃ64Œ_win_st÷0œbool
+_pad_bottomÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_pad_leftÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_pad_rightÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_pad_topÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_pad_xÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_pad_yÃ64Œ_win_st::pdat÷0œNCURSES_SIZE_T
+_padÃ64Œ_win_st÷0œpdat
+_parentÃ64Œ_win_st÷0œWINDOW
+_parxÃ64Œ_win_st÷0œint
+_paryÃ64Œ_win_st÷0œint
+_regbottomÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_regtopÃ64Œ_win_st÷0œNCURSES_SIZE_T
+_scrollÃ64Œ_win_st÷0œbool
+_syncÃ64Œ_win_st÷0œbool
+_tracech_t2Ã65536÷0
+_tracech_tÃ65536÷0
+_use_keypadÃ64Œ_win_st÷0œbool
+_win_stÃ2048÷0
+_yoffsetÃ64Œ_win_st÷0œNCURSES_SIZE_T
+addchnstrÃ131072Õ(str,n)÷0
+addchstrÃ131072Õ(str)÷0
+addchÃ131072Õ(ch)÷0
+addnstrÃ131072Õ(str,n)÷0
+addstrÃ131072Õ(str)÷0
+anon_struct_0Ã2048÷0
+anon_struct_1Ã2048÷0
+anon_struct_3Ã2048Œanon_struct_1::anon_union_2÷0
+anon_struct_4Ã2048÷0
+anon_struct_5Ã2048÷0
+anon_union_2Ã8192Œanon_struct_1÷0
+attr_getÃ131072Õ(ap,cp,o)÷0
+attr_offÃ131072Õ(a,o)÷0
+attr_onÃ131072Õ(a,o)÷0
+attr_setÃ131072Õ(a,c,o)÷0
+attr_tÃ16384÷0œ_traceattr
+attr_tÃ4096÷0œchtype
+attroffÃ131072Õ(at)÷0
+attronÃ131072Õ(at)÷0
+attrsetÃ131072Õ(at)÷0
+attrÃ64Œanon_struct_0÷0œattr_t
+bkgdsetÃ131072Õ(ch)÷0
+bkgdÃ131072Õ(ch)÷0
+boolÃ16384÷0œuse_extended_names
+boolÃ65536÷0
+borderÃ131072Õ(ls, rs, ts, bs, tl, tr, bl, br)÷0
+boxÃ131072Õ(win, v, h)÷0
+boxÃ65536÷0
+bstateÃ64Œanon_struct_5÷0œmmask_t
+cbreakÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+cchar_tÃ4096÷0œanon_struct_0
+charsÃ64Œanon_struct_0÷0œwchar_t
+chgatÃ131072Õ(n,a,c,o)÷0
+chtypeÃ16384÷0œ_tracechtype
+chtypeÃ4096÷0œlong
+clearÃ131072Õ()÷0
+clearÃ65536÷0
+clrtobotÃ131072Õ()÷0
+clrtoeolÃ131072Õ()÷0
+color_setÃ131072Õ(c,o)÷0
+countÃ64Œanon_struct_4÷0œint
+crmodeÃ131072Õ()÷0
+curscrÃ65536÷0
+curses_versionÃ131072Õ()÷0
+dataÃ64Œanon_struct_1÷0œanon_union_2
+delchÃ131072Õ()÷0
+deletelnÃ131072Õ()÷0
+echocharÃ131072Õ(c)÷0
+eraseÃ131072Õ()÷0
+eraseÃ65536÷0
+eventsÃ64Œanon_struct_4÷0œ_nc_event
+fdÃ64Œanon_struct_1::anon_union_2::anon_struct_3÷0œint
+fevÃ64Œanon_struct_1::anon_union_2÷0œanon_struct_3
+fixtermÃ131072Õ()÷0
+flagsÃ64Œanon_struct_1::anon_union_2::anon_struct_3÷0œint
+getattrsÃ131072Õ(win)÷0
+getbegxÃ131072Õ(win)÷0
+getbegyxÃ131072Õ(win,y,x)÷0
+getbegyÃ131072Õ(win)÷0
+getbkgdÃ131072Õ(win)÷0
+getchÃ131072Õ()÷0
+getchÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+getcurxÃ131072Õ(win)÷0
+getcuryÃ131072Õ(win)÷0
+getmaxxÃ131072Õ(win)÷0
+getmaxyxÃ131072Õ(win,y,x)÷0
+getmaxyÃ131072Õ(win)÷0
+getmouseÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+getnstrÃ131072Õ(s, n)÷0
+getparxÃ131072Õ(win)÷0
+getparyxÃ131072Õ(win,y,x)÷0
+getparyÃ131072Õ(win)÷0
+getstrÃ131072Õ(str)÷0
+getsyxÃ131072Õ(y,x)÷0
+gettmodeÃ131072Õ()÷0
+getyxÃ131072Õ(win,y,x)÷0
+has_icÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+has_keyÃ1024Õ(SCREEN*, int)÷0œNCURSES_SP_NAME
+hlineÃ131072Õ(ch, n)÷0
+hlineÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+idÃ64Œanon_struct_5÷0œshort
+inchnstrÃ131072Õ(s,n)÷0
+inchnstrÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+inchstrÃ131072Õ(s)÷0
+inchÃ131072Õ()÷0
+innstrÃ131072Õ(s,n)÷0
+inschÃ131072Õ(c)÷0
+insdellnÃ131072Õ(n)÷0
+insertlnÃ131072Õ()÷0
+insnstrÃ131072Õ(s,n)÷0
+insstrÃ131072Õ(s)÷0
+instrÃ131072Õ(s)÷0
+is_clearedÃ131072Õ(win)÷0
+is_idcokÃ131072Õ(win)÷0
+is_idcokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_idlokÃ131072Õ(win)÷0
+is_immedokÃ131072Õ(win)÷0
+is_immedokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_keypadÃ131072Õ(win)÷0
+is_leaveokÃ131072Õ(win)÷0
+is_leaveokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_linetouchedÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_nodelayÃ131072Õ(win)÷0
+is_notimeoutÃ131072Õ(win)÷0
+is_notimeoutÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_padÃ131072Õ(win)÷0
+is_scrollokÃ131072Õ(win)÷0
+is_scrollokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
+is_subwinÃ131072Õ(win)÷0
+is_syncokÃ131072Õ(win)÷0
+is_syncokÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 keyboundÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 keynameÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 ldatÃ32768÷0
-LINESÃ65536÷0
 mcprintÃ1024Õ(SCREEN*, char *, int)÷0œNCURSES_SP_NAME
-MEVENTÃ4096÷0œanon_struct_5
 mmask_tÃ4096÷0œlong
 mouse_trafoÃ131072Õ(y,x,to_screen)÷0
 mouse_trafoÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
@@ -436,64 +521,16 @@ mvwinsnstrÃ131072Õ(win,y,x,s,n)÷0
 mvwinsstrÃ131072Õ(win,y,x,s)÷0
 mvwinstrÃ131072Õ(win,y,x,s)÷0
 mvwvlineÃ131072Õ(win,y,x,c,n)÷0
-NCURSES_ACSÃ131072Õ(c)÷0
-NCURSES_ATTR_SHIFTÃ65536÷0
-NCURSES_ATTR_TÃ16384÷0œattrset
-NCURSES_ATTR_TÃ65536÷0
-NCURSES_BITSÃ131072Õ(mask,shift)÷0
-NCURSES_BOOLÃ4096÷0œchar
-NCURSES_BOOLÃ65536÷0
-NCURSES_BUTTON_CLICKEDÃ65536÷0
-NCURSES_BUTTON_PRESSEDÃ65536÷0
-NCURSES_BUTTON_RELEASEDÃ65536÷0
-NCURSES_CASTÃ131072Õ(type,value)÷0
-NCURSES_CH_TÃ65536÷0
-NCURSES_COLOR_TÃ65536÷0
-NCURSES_CONSTÃ65536÷0
-NCURSES_DOUBLE_CLICKEDÃ65536÷0
-NCURSES_ENABLE_STDBOOL_HÃ65536÷0
-NCURSES_EVENT_VERSIONÃ65536÷0
-NCURSES_EXPORT_VARÃ1024Õ(chtype)÷0
-NCURSES_EXT_FUNCSÃ65536÷0
-NCURSES_INLINEÃ65536÷0
-NCURSES_INTEROP_FUNCSÃ65536÷0
-NCURSES_MOUSE_MASKÃ131072Õ(b,m)÷0
-NCURSES_MOUSE_VERSIONÃ65536÷0
-NCURSES_OPAQUEÃ65536÷0
-NCURSES_OUTCÃ4096÷0œtypedef int
-NCURSES_REENTRANTÃ65536÷0
-NCURSES_RESERVED_EVENTÃ65536÷0
-NCURSES_SCREEN_CBÃ4096÷0œtypedef int
-NCURSES_SIZE_TÃ65536÷0
-NCURSES_SP_FUNCSÃ65536÷0
-NCURSES_SP_NAMEÃ131072Õ(name)÷0
-NCURSES_SP_OUTCÃ65536÷0
-NCURSES_TPARM_VARARGSÃ65536÷0
-NCURSES_TRIPLE_CLICKEDÃ65536÷0
-NCURSES_VERSION_MAJORÃ65536÷0
-NCURSES_VERSION_MINORÃ65536÷0
-NCURSES_VERSION_PATCHÃ65536÷0
-NCURSES_VERSIONÃ65536÷0
-NCURSES_WIDECHARÃ65536÷0
-NCURSES_WINDOW_CBÃ4096÷0œtypedef int
 newscrÃ65536÷0
 nocrmodeÃ131072Õ()÷0
-OKÃ65536÷0
-OPTIMIZE_ALLÃ65536÷0
-OPTIMIZE_HASHMAPÃ65536÷0
-OPTIMIZE_MVCURÃ65536÷0
-OPTIMIZE_SCROLLÃ65536÷0
-PAIR_NUMBERÃ131072Õ(a)÷0
 pdatÃ2048Œ_win_st÷0
 redrawwinÃ131072Õ(win)÷0
 refreshÃ131072Õ()÷0
 refreshÃ65536÷0
-REPORT_MOUSE_POSITIONÃ65536÷0
 resettermÃ131072Õ()÷0
 result_flagsÃ64Œanon_struct_4÷0œint
 resultÃ64Œanon_struct_1::anon_union_2::anon_struct_3÷0œint
 savetermÃ131072Õ()÷0
-SCREENÃ4096÷0œscreen
 scrlÃ131072Õ(n)÷0
 scrollÃ131072Õ(win)÷0
 setscrregÃ131072Õ(t,b)÷0
@@ -505,30 +542,11 @@ slk_attr_setÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 standendÃ131072Õ()÷0
 standoutÃ131072Õ()÷0
 stdscrÃ65536÷0
-TABSIZEÃ65536÷0
 termnameÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 timeout_msecÃ64Œanon_struct_1::anon_union_2÷0œlong
 timeoutÃ131072Õ(delay)÷0
 touchlineÃ131072Õ(win, s, c)÷0
 touchwinÃ131072Õ(win)÷0
-TRACE_ATTRSÃ65536÷0
-TRACE_BITSÃ65536÷0
-TRACE_CALLSÃ65536÷0
-TRACE_CCALLSÃ65536÷0
-TRACE_CHARPUTÃ65536÷0
-TRACE_DATABASEÃ65536÷0
-TRACE_DISABLEÃ65536÷0
-TRACE_ICALLSÃ65536÷0
-TRACE_IEVENTÃ65536÷0
-TRACE_MAXIMUMÃ65536÷0
-TRACE_MOVEÃ65536÷0
-TRACE_ORDINARYÃ65536÷0
-TRACE_SHIFTÃ65536÷0
-TRACE_TIMESÃ65536÷0
-TRACE_TPUTSÃ65536÷0
-TRACE_UPDATEÃ65536÷0
-TRACE_VIRTPUTÃ65536÷0
-TRUEÃ65536÷0
 ttytypeÃ65536÷0
 typeÃ64Œanon_struct_1÷0œint
 ungetmouseÃ1024Õ(SCREEN*,MEVENT *)÷0œNCURSES_SP_NAME
@@ -538,23 +556,6 @@ vlineÃ131072Õ(ch, n)÷0
 vsscanfÃ131072Õ(a,b,c)÷0
 vw_printwÃ65536÷0
 vw_scanwÃ65536÷0
-WA_ALTCHARSETÃ65536÷0
-WA_ATTRIBUTESÃ65536÷0
-WA_BLINKÃ65536÷0
-WA_BOLDÃ65536÷0
-WA_DIMÃ65536÷0
-WA_HORIZONTALÃ65536÷0
-WA_INVISÃ65536÷0
-WA_LEFTÃ65536÷0
-WA_LOWÃ65536÷0
-WA_NORMALÃ65536÷0
-WA_PROTECTÃ65536÷0
-WA_REVERSEÃ65536÷0
-WA_RIGHTÃ65536÷0
-WA_STANDOUTÃ65536÷0
-WA_TOPÃ65536÷0
-WA_UNDERLINEÃ65536÷0
-WA_VERTICALÃ65536÷0
 waddchstrÃ131072Õ(win,str)÷0
 waddstrÃ131072Õ(win,str)÷0
 wattr_getÃ131072Õ(win,a,p,opts)÷0
@@ -569,7 +570,6 @@ wgetscrregÃ131072Õ(win,t,b)÷0
 wgetstrÃ131072Õ(w, s)÷0
 winchnstrÃ32768÷0œNCURSES_EXPORT NCURSES_EXPORT
 winchstrÃ131072Õ(w, s)÷0
-WINDOWÃ4096÷0œ_win_st
 winsertlnÃ131072Õ(win)÷0
 winsstrÃ131072Õ(w, s)÷0
 winstrÃ131072Õ(w, s)÷0

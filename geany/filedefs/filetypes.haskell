@@ -4,7 +4,7 @@ ffi=capi ccall export import interruptible prim safe stdcall unsafe
 reserved_operators=~ ← → ∀ ∷ ★ \ | -> .. :: <- = => @
 
 [lexer_properties]
-fold.haskell.imports=0
+fold.haskell.imports=1
 lexer.haskell.allow.hash=1
 lexer.haskell.allow.questionmark=0
 lexer.haskell.allow.quotes=1

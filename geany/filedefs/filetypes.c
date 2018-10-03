@@ -1,9 +1,6 @@
 # http://www.scintilla.org/SciTEDoc.html
 # http://www.scintilla.org/StyleMetadata.html
 
-[styling]
-styling_within_preprocessor=1
-
 [keywords]
 docComment=a addindex addtogroup anchor arg attention author authors b brief bug c callergraph callgraph category cite class code cond copybrief copydetails copydoc copyright date def defgroup deprecated details dir dontinclude dot dotfile e else elseif em endcode endcond enddot endhtmlonly endif endinternal endlatexonly endlink endmanonly endmsc endrtfonly endverbatim endxmlonly enum example exception extends file fn headerfile hideinitializer htmlinclude htmlonly if ifnot image implements include includelineno ingroup interface internal invariant latexonly li license line link mainpage manonly memberof msc mscfile n name namespace nosubgrouping note overload p package page par paragraph param param[in] post pre private privatesection property protected protectedsection protocol public publicsection ref related relatedalso relates relatesalso remark remarks result return returns retval rtfonly sa section see short showinitializer since skip skipline snippet struct subpage subsection subsubsection tableofcontents test throw throws todo tparam typedef union until var verbatim verbinclude version warning weakgroup xmlonly xrefitem
 primary=__always_inline __asm __asm__ __attribute__ __auto_type __builtin_expect __builtin_unreachable __cdecl __declspec __extension__ __extern_always_inline __extern_inline __fastcall __forceinline __has_attribute __has_builtin __has_cpp_attribute __has_declspec_attribute __has_extension __has_feature __has_include __has_include_next __has_warning __inline __inline__ __is_identifier __mode__ __msfastcall __must_inline __noinline __nonnull __pure __purefunc __restrict __restrict__ __sizeof__ __static_inline __stdcall __thiscall __thread __typeof __typeof__ __VA_ARGS__ __volatile __volatile__ _Alignas _Alignof _Atomic _atomic _Cilk_for _Cilk_spawn _Cilk_sync _Noreturn _Restrict _Static_assert _Thread_local align16 align32 align4 align64 align8 align_long align_ptr alignDF alignSF alignTF alignXF always_inline asm Atomic atomic ATTR_ALLOC_SIZE ATTR_CAF ATTR_CAFN ATTR_CF ATTR_CIF ATTR_CONST attr_fallthrough ATTR_FLATTEN attr_hidden attr_interrupt ATTR_LEAF ATTR_MALLOC ATTR_NONNULL attr_packed ATTR_PF ATTR_PRINTF ATTR_PURE attr_vector auto auto_type break case cdecl cilk_for cilk_spawn cilk_sync COLD const CONST_FUNC continue crtdecl DEBUG DECL_FUNC declspec default deprecated dllexport dllimport do else enum EXIT_FAILURE EXIT_SUCCESS extern extern_always_inline extern_inline FALSE fastcall for for_between for_countdown for_each for_range forceinline FUNC_ATTR FUNC_TYPE GetType goto HOT if inline inrange LIB_FUNC LIKELY LIKELY_FALSE LIKELY_TRUE loop_forever MATH_FUNC msfastcall must_inline noinline NOLIBCALL nonnull NONNULL NONNULL_IO NONNULL_RET noreturn NULL OVERLOAD PREDICT_LIKELY PREDICT_UNLIKELY pure purefunc Py_RETURN_FALSE Py_RETURN_NONE Py_RETURN_TRUE register restrict RET_NONNULL return RETURNS_NONNULL returns_twice sizeof sseregparm SSP_STRONG static static_inline STC_FUNC stdcall struct switch thiscall Thread_local thread_local TRUE TWO_ARGS_REQUIRED TWO_ARGS_REQUIRED_F typedef typeof union UNLIKELY UNREACHABLE until_break UNUSED unusedfunc used VA_ARGS vasm void volatile while WUR
@@ -11,13 +8,18 @@ secondary=__complex__ __decfloat128 __decfloat256 __decfloat32 __decfloat512 __d
 
 [lexer_properties]
 code.page=65001
+ensure.consistent.line.ends=1
+fold.abl.syntax.based=1
+fold.at.else=1
 fold.cpp.comment.explicit=1
 fold.cpp.explicit.anywhere=1
 fold.cpp.explicit.end=// }
 fold.cpp.explicit.start=// (FB){
+fold.preprocessor=1
 lexer.cpp.allow.dollars=1
 lexer.cpp.backquoted.strings=1
 lexer.cpp.escape.sequence=1
+lexer.cpp.hashquoted.strings=0
 lexer.cpp.track.preprocessor=0
 lexer.cpp.update.preprocessor=1
 preprocessor.end.$(file.patterns.cpp)=endif
@@ -29,7 +31,6 @@ session.folds=1
 styling.within.preprocessor=1
 
 [settings]
-lexer_filetype=C
 extension=c
 mime_type=text/x-csrc
 comment_single=//
@@ -37,12 +38,21 @@ comment_open=/*
 comment_close=*/
 comment_use_indent=false
 context_action_cmd=
+# 0 = Sort symbols by name; 1 = Sort symbols by appearance (line number)
+symbol_list_sort_mode=0
 
 [indentation]
+# 0= Spaces only; 1 = Tabs only; 2 = Mixed (tabs and spaces)
 type=1
 width=4
 
 [build-menu]
+# FT for filetype
+# NF for independent (non-filetype)
+# EX for execute
+# LB for label
+# CM for command
+# WD for working directory
 FT_00_LB=C_analysis
 FT_00_CM=canalysis "%d/%f"
 FT_00_WD=

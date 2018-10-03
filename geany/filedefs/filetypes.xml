@@ -1,3 +1,7 @@
+[lexer_properties]
+fold.compact=1
+lexer.xml.allow.scripts=1
+
 [settings]
 extension=xml
 mime_type=application/xml
@@ -15,7 +19,7 @@ width=2
 FT_00_LB=_XMLlint
 FT_00_CM=xmllint --noout --valid "%d/%f"
 FT_00_WD=
-FT_01_LB=XML Analysis
+FT_01_LB=XML _Analysis
 FT_01_CM=xmlanalysis "%d/%f"
 FT_01_WD=
 error_regex=

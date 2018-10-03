@@ -8,6 +8,9 @@ user2=
 user3=
 user4=
 
+[lexer_properties]
+fold.compact=1
+
 [settings]
 extension=lua
 mime_type=text/x-lua

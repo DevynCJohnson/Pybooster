@@ -3,13 +3,13 @@ docComment=a addindex addtogroup anchor arg attention author authors b brief bug
 primary=break case chan const continue default defer else fallthrough false for func go goto if import interface iota map nil package range return select struct switch true type var
 secondary=bool byte complex128 complex64 error float32 float64 int int16 int32 int64 int8 rune string uint uint16 uint32 uint64 uint8 uintptr
 
-[lexer_properties=C]
-lexer.cpp.backquoted.strings=1
-lexer.cpp.allow.dollars=0
+[lexer_properties]
 fold.preprocessor=0
+lexer.cpp.allow.dollars=0
+lexer.cpp.backquoted.strings=1
+styling.within.preprocessor=1
 
 [settings]
-lexer_filetype=C
 extension=go
 mime_type=text/x-go
 comment_single=//

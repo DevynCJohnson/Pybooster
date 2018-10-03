@@ -6,6 +6,10 @@ functions=clear-host get-verb help importsystemmodules mkdir more oss param para
 keywords=begin break catch continue default do else elseif end filter finally for foreach function if in process return switch throw trap try until where while
 user1=
 
+[lexer_properties]
+fold.at.else=1
+fold.compact=1
+
 [settings]
 extension=ps1
 comment_single=#

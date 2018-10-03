@@ -2,6 +2,9 @@
 arguments=absolute boltzmann change elset engineering field frequency generate history host inc input line material model name new newset nset number old oldset pin position set shift state steady stefan tie type variable write zero
 starcommands=amplitude assembly beam boundary buckle bulk cload conditions conductivity constants contact damping density dload dsflux dsload dynamic el elastic element elgen elset embedded encastre end equation expansion explicit field freq frequency friction generate heading heat history imperfectio import include initial instance interactio internal interval marks material monitor mpc ncopy nfill ngen nlgeom node nset number output pair parameter part physical plastic preprint print radiate restart section shell solid specific sradiate static step surface temperature time transfer type variable viscosity
 
+[lexer_properties]
+fold.compact=1
+
 [settings]
 comment_single=**
 comment_use_indent=false
