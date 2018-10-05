@@ -1,3 +1,5 @@
+[styling=Javascript]
+
 [keywords]
 primary=__bind __extends __hasProp __indexOf __slice and break by case catch class const continue debugger default delete do each else enum export extends false finally for function get if import in Infinity instanceof is isnt let loop NaN native new no not null of off on or return set super switch then this throw true try typeof undefined unless until var void when where while with yes yield
 secondary=constructor decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt prototype require super
