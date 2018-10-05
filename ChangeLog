@@ -1,6 +1,7 @@
 2018-10-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Added syntax file for "Dockerfile" & improved existing files
+	* makefile:  Improved GIT management code
 
 2018-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

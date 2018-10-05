@@ -236,7 +236,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitstatus gitx lscontrib previewcleangit stat submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitx lscontrib previewcleangit status submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -437,9 +437,6 @@ previewcleangit : cleanall fixperm
 	git prune --dry-run --verbose
 	git add --dry-run --all --refresh
 
-stat : cleanall
-	-@git status --ahead-behind --branch --short
-
 submitall :
 	@git checkout dev
 	git push --progress --signed=false --verify origin dev
@@ -482,8 +479,8 @@ gitignore :
 gitstats :
 	@gitstats ./ $(TESTINGDIR)/git/
 
-gitstatus :
-	@git status -v
+status :
+	@git status --ahead-behind --branch --short -v
 
 gitlsfiles :
 	@git ls-files
