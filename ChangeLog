@@ -2,6 +2,7 @@
 
 	* Geany:  Added syntax file for "Dockerfile" & improved existing files
 	* makefile:  Improved GIT management code
+	* PyBooster:  Tweaked the Config NanoRC file
 
 2018-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
