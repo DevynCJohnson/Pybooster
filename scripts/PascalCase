@@ -50,7 +50,7 @@ def detect_conversion_method(data: str) -> Callable[[str], str]:
 if __name__ == '__main__':
     try:
         if len(argv) == 1:  # Pipe
-            DATA = stdin.read().replace(r' ', r'_')
+            DATA = stdin.read().replace(r' ', r'_').replace(r'-', r'_').replace(r'_', r'_')
             conversion_method = detect_conversion_method(DATA)
             stdout.write(conversion_method(DATA))
         elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
@@ -59,7 +59,7 @@ if __name__ == '__main__':
             if not argv[1].strip():
                 stderr.write('No input found!\n')
             else:
-                DATA = argv[1].replace(r' ', r'_')
+                DATA = argv[1].replace(r' ', r'_').replace(r'-', r'_').replace(r'_', r'_')
                 conversion_method = detect_conversion_method(DATA)
                 stdout.write(conversion_method(DATA) + '\n')
         else:  # Help

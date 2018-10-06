@@ -1,8 +1,10 @@
-2018-10-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-10-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* CamelCase:  Minor tweaks & improvements
+	* Geany:  Added scripts for Geany's MiniScript plugin
 	* libregex.py:  Added regex patterns for each Unicode block
 	* libregex.py:  Added matched-pattern referencing capabilities to numerous patterns
+	* makefile_constants.mk:  Improved code
 	* PyBooster:  Added PascalCase
 	* PyBooster:  Applied various minor changes & optimizations
 	* strtools.py:  Added functions to convert between camelcase, PascalCase, & snake_case

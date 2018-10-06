@@ -199,22 +199,24 @@ endif
 
 # Set `CROSS_COMPILE`
 ifdef CROSS_COMPILE
-    # TODO: override CROSS_COMPILE::=$(shell echo $(CROSS_COMPILE) | tr '[:lower:]' '[:upper:]')
-    ifeq ($(CROSS_COMPILE),rpi)
+    override CROSS_COMPILE::=$(shell echo '$(CROSS_COMPILE)' | tr '[:lower:]' '[:upper:]')
+    ifeq ($(CROSS_COMPILE),RPI)
         override dcj::=rpi
-    else ifeq ($(CROSS_COMPILE),x86_64)
+    else ifeq ($(CROSS_COMPILE),X86_64)
+        override CROSS_COMPILE::=x86-64
+    else ifeq ($(CROSS_COMPILE),X86-64)
         override CROSS_COMPILE::=x86-64
     else ifeq ($(CROSS_COMPILE),AMD64)
         override CROSS_COMPILE::=x86-64
-    else ifeq ($(CROSS_COMPILE),amd64)
-        override CROSS_COMPILE::=x86-64
     else ifeq ($(CROSS_COMPILE),64)
         override CROSS_COMPILE::=x86-64
-    else ifeq ($(CROSS_COMPILE),64bit)
+    else ifeq ($(CROSS_COMPILE),64BIT)
         override CROSS_COMPILE::=x86-64
     else ifeq ($(CROSS_COMPILE),32)
         override CROSS_COMPILE::=x86
-    else ifeq ($(CROSS_COMPILE),32bit)
+    else ifeq ($(CROSS_COMPILE),32BIT)
+        override CROSS_COMPILE::=x86
+    else ifeq ($(CROSS_COMPILE),X86)
         override CROSS_COMPILE::=x86
     endif
     ifeq ($(CROSS_COMPILE),x86-64)
