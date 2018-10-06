@@ -1,7 +1,9 @@
 2018-10-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* CamelCase:  Minor tweaks & improvements
+	* code-formatter:  Added support for Sed
 	* Geany:  Added scripts for Geany's MiniScript plugin
+	* Geany:  Added support for Awk & Sed scripts
 	* libregex.py:  Added regex patterns for each Unicode block
 	* libregex.py:  Added matched-pattern referencing capabilities to numerous patterns
 	* makefile_constants.mk:  Improved code
