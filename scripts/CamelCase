@@ -37,40 +37,14 @@ License along with this software.
 
 from sys import argv, stderr, stdin, stdout
 from traceback import format_exc
-from typing import Callable, List
+from typing import Callable
 
-
-__all__: list = [
-    r'camelcase_to_snakecase',
-    r'snakecase_to_camelcase',
-    r'detect_conversion_method'
-]
-
-
-# FUNCTIONS #
-
-
-def camelcase_to_snakecase(string: str) -> str:
-    """Convert string from camelCase to snake_case"""
-    words: List[str] = []
-    from_char_position = 0
-    for current_char_position, char in enumerate(string):
-        if char.isupper() and from_char_position < current_char_position:
-            words.append(string[from_char_position:current_char_position].lower())
-            from_char_position = current_char_position
-    words.append(string[from_char_position:].lower())
-    return r'_'.join(words)
-
-
-def snakecase_to_camelcase(string: str) -> str:
-    """Convert string from snake_case to camelCase"""
-    split_string = string.split(r'_')
-    return split_string[0].lower() + r''.join([_str.capitalize() for _str in split_string[1:]])
+from pybooster.strtools import camelcase2snakecase, snakecase2camelcase
 
 
 def detect_conversion_method(data: str) -> Callable[[str], str]:
     """Dynamically set the function that will be used"""
-    return snakecase_to_camelcase if r'_' in data else camelcase_to_snakecase
+    return snakecase2camelcase if r'_' in data else camelcase2snakecase
 
 
 if __name__ == '__main__':

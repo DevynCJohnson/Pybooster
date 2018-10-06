@@ -53,7 +53,7 @@ along with this software.
 
 
 from ast import literal_eval
-from typing import Union
+from typing import List, Union
 
 from pybooster.basic import ishex
 from pybooster.libchar import (
@@ -83,7 +83,20 @@ except ImportError:
 
 
 __all__: list = [
-    # STRING MANIPULATIONS #
+    # CASE STRING MANIPULATIONS #
+    r'cap',
+    r'formal',
+    r'lowercase',
+    r'sentence',
+    r'togglecase',
+    r'uppercase',
+    r'camelcase2pascalcase',
+    r'camelcase2snakecase',
+    r'pascalcase2camelcase',
+    r'pascalcase2snakecase',
+    r'snakecase2camelcase',
+    r'snakecase2pascalcase',
+    # OTHER STRING MANIPULATIONS #
     r'endletters',
     r'firstletters',
     r'lastletters',
@@ -91,12 +104,6 @@ __all__: list = [
     r'insstr',
     r'num2ordinal',
     r'ordinal2num',
-    r'cap',
-    r'formal',
-    r'lowercase',
-    r'sentence',
-    r'togglecase',
-    r'uppercase',
     r'explode',
     r'implode',
     r'replace_odd_chars',
@@ -173,7 +180,160 @@ __all__: list = [
 ]
 
 
-# STRING MANIPULATIONS #
+# CASE STRING MANIPULATIONS #
+
+
+def cap(_str: str) -> str:
+    """Capitalize the beginning of each word
+
+    >>> cap('this is a test.')
+    'This Is A Test.'
+    """
+    return _str.title()
+
+
+def formal(_str: str) -> str:
+    """Change the capitalization to the format used in titles
+
+    >>> formal('this is a test.')
+    'This Is A Test.'
+    """
+    return _str.title()
+
+
+def lowercase(_str: str) -> str:
+    """Turn a string in lowercase
+
+    >>> lowercase('THIS IS A TEST.')
+    'this is a test.'
+    """
+    return _str.lower()
+
+
+def sentence(_str: str) -> str:
+    """Capitalization the beginning of each sentence
+
+    >>> sentence('this IS A TEST.')
+    'This is a test.'
+    """
+    return _str.capitalize()
+
+
+def togglecase(_str: str) -> str:
+    """Convert uppercase to lowercase and vice versa
+
+    >>> togglecase('this IS A TEST.')
+    'THIS is a test.'
+    """
+    return _str.swapcase()
+
+
+def uppercase(_str: str) -> str:
+    """Turn a string in all caps
+
+    >>> uppercase('this is a test.')
+    'THIS IS A TEST.'
+    """
+    return _str.upper()
+
+
+def camelcase2pascalcase(string: str) -> str:
+    """Convert string from PascalCase to camelCase
+
+    >>> camelcase2pascalcase('testString')
+    ''TestString AnotherString ThirdSymbol''
+    >>> camelcase2pascalcase('testString anotherString')
+    'TestString AnotherString'
+    >>> camelcase2pascalcase('testString anotherString thirdSymbol')
+    'TestString AnotherString ThirdSymbol'
+    """
+    return string[0].upper() + string[1:]
+
+
+def camelcase2snakecase(string: str) -> str:
+    """Convert string from camelCase to snake_case
+
+    >>> camelcase2snakecase('testString')
+    'test_string'
+    >>> camelcase2snakecase('testString anotherString')
+    'test_string another_string'
+    """
+    words: List[str] = []
+    from_char_position: int = 0
+    for current_char_position, char in enumerate(string):
+        if char.isupper() and from_char_position < current_char_position:
+            words.append(string[from_char_position:current_char_position].lower())
+            from_char_position = current_char_position
+    words.append(string[from_char_position:].lower())
+    return r'_'.join(words)
+
+
+def pascalcase2camelcase(string: str) -> str:
+    """Convert string from PascalCase to camelCase
+
+    >>> pascalcase2camelcase('TestString')
+    'testString'
+    >>> pascalcase2camelcase('TestString AnotherString')
+    'testString anotherString'
+    >>> pascalcase2camelcase('TestString AnotherString ThirdSymbol')
+    'testString anotherString thirdSymbol'
+    """
+    return string[0].lower() + string[1:]
+
+
+def pascalcase2snakecase(string: str) -> str:
+    """Convert string from PascalCase to snake_case
+
+    >>> pascalcase2snakecase('TestString')
+    'test_string'
+    >>> pascalcase2snakecase('TestString AnotherString')
+    'test_string another_string'
+    >>> pascalcase2snakecase('TestString AnotherString ThirdSymbol')
+    'test_string another_string third_symbol'
+    """
+    words: List[str] = []
+    from_char_position: int = 0
+    for current_char_position, char in enumerate(string):
+        if char.isupper() and from_char_position < current_char_position:
+            words.append(string[from_char_position:current_char_position].lower())
+            from_char_position = current_char_position
+    words.append(string[from_char_position:].lower())
+    return r'_'.join(words).replace(r' _', r' ')
+
+
+def snakecase2camelcase(string: str) -> str:
+    """Convert string from snake_case to camelCase
+
+    >>> snakecase2camelcase('test_string')
+    'testString'
+    >>> snakecase2camelcase('test_string another_string')
+    'testString anotherString'
+    >>> snakecase2camelcase('test_string another_string thirD_Symbol')
+    'testString anotherString thirdSymbol'
+    """
+    split_string: List[str] = string.split(r'_')
+    return split_string[0].lower() + r''.join([_str.capitalize() for _str in split_string[1:]])
+
+
+def snakecase2pascalcase(string: str) -> str:
+    """Convert string from snake_case to PascalCase
+
+    >>> snakecase2pascalcase('test_string')
+    'TestString'
+    >>> snakecase2pascalcase('test_string another_string')
+    'TestString AnotherString'
+    >>> snakecase2pascalcase('test_string another_string third_Symbol')
+    'TestString AnotherString ThirdSymbol'
+    """
+    split_string: List[str] = string.split(r'_')
+    string = split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
+    if r' ' in string:
+        split_string = string.split(r' ')
+        return split_string[0] + r' ' + r' '.join([_str[0].upper() + _str[1:] for _str in split_string[1:]])
+    return split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
+
+
+# OTHER STRING MANIPULATIONS #
 
 
 def endletters(_str: str) -> str:
@@ -243,60 +403,6 @@ def ordinal2num(_str: str) -> str:
         if _str == _key:
             _str = _str.lower().replace(_key, ORDINAL_LIST[_key])
     return _str
-
-
-def cap(_str: str) -> str:
-    """Capitalize the beginning of each word
-
-    >>> cap('this is a test.')
-    'This Is A Test.'
-    """
-    return _str.title()
-
-
-def formal(_str: str) -> str:
-    """Change the capitalization to the format used in titles
-
-    >>> formal('this is a test.')
-    'This Is A Test.'
-    """
-    return _str.title()
-
-
-def lowercase(_str: str) -> str:
-    """Turn a string in lowercase
-
-    >>> lowercase('THIS IS A TEST.')
-    'this is a test.'
-    """
-    return _str.lower()
-
-
-def sentence(_str: str) -> str:
-    """Capitalization the beginning of each sentence
-
-    >>> sentence('this IS A TEST.')
-    'This is a test.'
-    """
-    return _str.capitalize()
-
-
-def togglecase(_str: str) -> str:
-    """Convert uppercase to lowercase and vice versa
-
-    >>> togglecase('this IS A TEST.')
-    'THIS is a test.'
-    """
-    return _str.swapcase()
-
-
-def uppercase(_str: str) -> str:
-    """Turn a string in all caps
-
-    >>> uppercase('this is a test.')
-    'THIS IS A TEST.'
-    """
-    return _str.upper()
 
 
 def explode(_str: str) -> str:
@@ -468,7 +574,7 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     """
     if not isinstance(_obj, str):
         return r''
-    elif _strength >= 3:  # Only keep ASCII letters and space
+    if _strength >= 3:  # Only keep ASCII letters and space
         _out = r''
         for i in _obj:
             if i.isalpha() or i == r' ':
@@ -478,8 +584,7 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     _obj = rmcurlyquotes(rmcurlycommas(_obj))  # Curly Quotes and Commas
     if not _strength:  # _strength == 0
         return _obj.replace(r'"', r'&quot;').replace('\'', r'&#39;').replace(r'`', r'&#96;').replace(r'--', r'-')
-    else:  # _strength >= 1
-        _obj = _obj.replace(r'"', r'').replace('\'', r'').replace(r'`', r'').replace(r'-', r'')
+    _obj = _obj.replace(r'"', r'').replace('\'', r'').replace(r'`', r'').replace(r'-', r'')  # _strength >= 1
     if _strength >= 2:
         return _obj.replace(r'%', r'').replace(r'^', r'').replace(r':', r'').replace(r'#', r'').replace(r';', r'').replace(r'&', r'').replace(r'.', r'').replace(r'?', r'').replace(r'!', r'')
     return _obj
@@ -875,7 +980,7 @@ def shrink_esc_utf16to8(_hex: str) -> str:
     """
     if r'\u00' in _hex and len(_hex) == 6:
         return _hex.replace(r'\u00', r'\x')
-    elif r'\x' in _hex and len(_hex) == 4:
+    if r'\x' in _hex and len(_hex) == 4:
         return _hex
     raise Exception(_hex + r' cannot be shrunk to a 8-bit hex escape!')
 
@@ -888,7 +993,7 @@ def shrink_esc_utf32to8(_hex: str) -> str:
     """
     if r'\U000000' in _hex and len(_hex) == 10:
         return _hex.replace(r'\U000000', r'\x')
-    elif r'\x' in _hex and len(_hex) == 4:
+    if r'\x' in _hex and len(_hex) == 4:
         return _hex
     raise Exception(_hex + r' cannot be shrunk to a 8-bit hex escape!')
 
@@ -901,7 +1006,7 @@ def shrink_esc_utf32to16(_hex: str) -> str:
     """
     if r'\U0000' in _hex and len(_hex) == 10:
         return _hex.replace(r'\U0000', r'\u')
-    elif r'\u' in _hex and len(_hex) == 6:
+    if r'\u' in _hex and len(_hex) == 6:
         return _hex
     raise Exception(_hex + r' cannot be shrunk to a 16-bit hex escape!')
 
@@ -938,15 +1043,15 @@ def noescutf8hex(_hex: str) -> str:
             _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utf8_strict
             return literal_eval(_eval_str.format(_hexls))
-        elif _hex.count('\\') == 2:
+        if _hex.count('\\') == 2:
             _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\'' + _utf8_strict
             return literal_eval(_eval_str.format(_hexls))
-        elif _hex.count('\\') == 4:
+        if _hex.count('\\') == 4:
             _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\\x{0[3]}\'' + _utf8_strict
             return literal_eval(_eval_str.format(_hexls))
-        elif _hex.count('\\') == 1:
+        if _hex.count('\\') == 1:
             _int = int(_hex.replace(r'\x', r''), 16)
             _hex = hex(_int).replace(r'0x', r'')[:].zfill(2)
             return literal_eval('\'\\x{0}\''.format(_hex))
@@ -970,12 +1075,12 @@ def noescape(_hex: str) -> str:
     if r'\U' in _hex and len(_hex) == 10:
         _hex = hex(int(_hex.replace(r'\U', r''), 16)).replace('0x', r'')
         return literal_eval('"\\U{0}"'.format(_hex[:].zfill(8)))
-    elif r'\u' in _hex and len(_hex) == 6:
+    if r'\u' in _hex and len(_hex) == 6:
         _hex = hex(int(_hex.replace(r'\u', r''), 16)).replace('0x', r'')
         return literal_eval('"\\u{0}"'.format(_hex[:].zfill(4)))
-    elif r'\x' in _hex and (len(_hex) % 4) == 0:
+    if r'\x' in _hex and (len(_hex) % 4) == 0:
         return noescutf8hex(_hex)
-    elif isinstance(_hex, str) and len(_hex) == 1:
+    if isinstance(_hex, str) and len(_hex) == 1:
         return _hex
     raise Exception(r'Invalid input passed to noescape()!')
 
@@ -990,7 +1095,7 @@ def expandhexescape(_hex: str) -> str:
     """
     if r'\u' in _hex and len(_hex) == 6:
         return _hex.replace(r'\u', r'\U0000')
-    elif r'\U' in _hex and len(_hex) == 10:
+    if r'\U' in _hex and len(_hex) == 10:
         return _hex
     raise Exception(_hex + r' cannot be converted to a 32-bit hex escape!')
 
@@ -1062,9 +1167,9 @@ def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True)
     if isinstance(_int, int):
         if _escape:
             return r'\U{0}'.format(hex(_int).replace(r'0x', r'')[:].zfill(8))
-        elif LOWER_LIMIT_ASCII_CTRL <= _int <= UPPER_LIMIT_UTF8:
+        if LOWER_LIMIT_ASCII_CTRL <= _int <= UPPER_LIMIT_UTF8:
             return chr(_int)
-        elif UPPER_LIMIT_UTF8 < _int <= UPPER_LIMIT_UNICODE:
+        if UPPER_LIMIT_UTF8 < _int <= UPPER_LIMIT_UNICODE:
             return literal_eval('"\\U{0}"'.format(hex(_int).replace(r'0x', r'')[:].zfill(8)))
         raise ValueError(r'An out-of-range integer passed to int2char()!')
     raise TypeError(r'Invalid datatype passed to int2char()!')
@@ -1303,7 +1408,7 @@ def int2utf16(_int: int, _endian: str = r'little') -> str:
     if 0 <= _int <= UPPER_LIMIT_UNICODE:
         if _endian == r'little':
             return (_int).to_bytes(4, _endian).decode(r'utf-16-le', r'strict')
-        elif _endian == r'big':
+        if _endian == r'big':
             return (_int).to_bytes(4, _endian).decode(r'utf-16-be', r'strict')
         return (_int).to_bytes(4, r'little').decode(r'utf-16', r'strict')
     raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(UPPER_LIMIT_UNICODE))
