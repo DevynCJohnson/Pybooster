@@ -1,5 +1,11 @@
 2018-10-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* CamelCase:  Minor tweaks & improvements
+	* libregex.py:  Added regex patterns for each Unicode block
+	* PyBooster:  Added PascalCase
+
+2018-10-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
 	* Geany:  Added syntax file for "Dockerfile" & improved existing files
 	* makefile:  Improved GIT management code
 	* PyBooster:  Tweaked the Config NanoRC file

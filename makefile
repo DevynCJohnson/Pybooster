@@ -78,7 +78,7 @@ override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh pkg_rc.sh
-override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
+override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char PascalCase pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
@@ -296,14 +296,19 @@ doc : docc docpy
 docc : fixperm
 	-@([ -f $(DOCDIR)/index.html ] && unlink $(DOCDIR)/index.html) || true
 	([ -d $(DOCDIR)/clib ] && $(RMDIR) $(DOCDIR)/clib) || true
-	doxygen ./Doxyfile
+	doxygen ./Doxyfile > /dev/null
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
-	$(LNSOFT) $(DOCDIR)/clib/index.html $(DOCDIR)/index.html
+	# Restructure Directory Hierarchy
+	$(MV) $(DOCDIR)/clib/man $(DOCDIR)/
+	$(MV) $(DOCDIR)/clib/html/* $(DOCDIR)/clib/
+	$(RMDIR) $(DOCDIR)/clib/html
+	# Create link to index.html
+	cd $(DOCDIR) && $(LNSOFT) ./clib/index.html ./index.html && cd ..
 
 docpy : fixperm
 	-@([ -d $(DOCDIR)/pylib ] && $(RMDIR) $(DOCDIR)/pylib) || true
-	./tools/pydocgen.sh $(PYSRC) $(DOCDIR) $(LIST_PYTHON_LIBRARIES)
+	./tools/pydocgen.sh $(PYSRC) $(DOCDIR) $(LIST_PYTHON_LIBRARIES) > /dev/null
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 
