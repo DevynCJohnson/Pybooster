@@ -2,9 +2,9 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief Convert camelCase to snake_case and vice versa
+"""@brief Convert PascalCase to snake_case and vice versa
 
-@file CamelCase
+@file PascalCase
 @version 2018.10.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
@@ -41,8 +41,8 @@ from typing import Callable, List
 
 
 __all__: list = [
-    r'camelcase_to_snakecase',
-    r'snakecase_to_camelcase',
+    r'pascalcase_to_snakecase',
+    r'snakecase_to_pascalcase',
     r'detect_conversion_method'
 ]
 
@@ -50,8 +50,8 @@ __all__: list = [
 # FUNCTIONS #
 
 
-def camelcase_to_snakecase(string: str) -> str:
-    """Convert string from camelCase to snake_case"""
+def pascalcase_to_snakecase(string: str) -> str:
+    """Convert string from PascalCase to snake_case"""
     words: List[str] = []
     from_char_position = 0
     for current_char_position, char in enumerate(string):
@@ -62,10 +62,10 @@ def camelcase_to_snakecase(string: str) -> str:
     return r'_'.join(words)
 
 
-def snakecase_to_camelcase(string: str) -> str:
-    """Convert string from snake_case to camelCase"""
+def snakecase_to_pascalcase(string: str) -> str:
+    """Convert string from snake_case to PascalCase"""
     split_string = string.split(r'_')
-    return split_string[0].lower() + r''.join([_str.capitalize() for _str in split_string[1:]])
+    return split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
 
 
 def detect_conversion_method(data: str) -> Callable[[str], str]:
@@ -80,7 +80,7 @@ if __name__ == '__main__':
             conversion_method = detect_conversion_method(DATA)
             stdout.write(conversion_method(DATA))
         elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
-            stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert camelCase to snake_case and vice versa\n')
+            stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert PascalCase to snake_case and vice versa\n')
         elif argv[1]:  # String as argument
             if not argv[1].strip():
                 stderr.write('No input found!\n')
@@ -89,6 +89,6 @@ if __name__ == '__main__':
                 conversion_method = detect_conversion_method(DATA)
                 stdout.write(conversion_method(DATA) + '\n')
         else:  # Help
-            stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert camelCase to snake_case and vice versa\n')
+            stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert PascalCase to snake_case and vice versa\n')
     except BaseException:
         stderr.write(format_exc() + '\n')
