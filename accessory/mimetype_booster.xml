@@ -1351,6 +1351,10 @@
     <glob pattern="lgpl-*.txt"/>
     <glob pattern="BUGS"/>
     <glob pattern="BUGS.md"/>
+    <glob pattern="CODE_OF_CONDUCT"/>
+    <glob pattern="CODE_OF_CONDUCT.md"/>
+    <glob pattern="CONTRIBUTING"/>
+    <glob pattern="CONTRIBUTING.md"/>
     <glob pattern="HACKING"/>
     <glob pattern="HACKING.md"/>
     <glob pattern="LICENSE"/>
