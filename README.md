@@ -98,6 +98,7 @@ Also, refer to _[Coding_Standards.md](./Coding_Standards.md)_ (in this same dire
     - C Library/Header Source-Code: `./include/`
     - C Program Source-Code: `./src/`
     - Compiled Binaries: `./bin/`
+    - Data Files (CSV, JSON, SQLite, YAML, etc.): `./databases/`
     - Glade Files (for Programs): `./accessory/`
     - GTK Source-View Language Specs: `./accessory/lang-specs/`
     - Man Pages: `./doc/man/`

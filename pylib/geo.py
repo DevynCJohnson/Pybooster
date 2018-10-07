@@ -81,7 +81,7 @@ def zip2states(_zipcode: int) -> tuple:
     >>> zip2states(63119)
     ('IL', 'KS', 'MO', 'NE')
     >>> zip2states(47542)
-    (r'IN', r'KY', r'MI', r'OH')
+    ('IN', 'KY', 'MI', 'OH')
     """
     return ZIPCODE_PRIMARY_STATE[str(_zipcode)[0]]
 

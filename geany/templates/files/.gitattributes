@@ -17,16 +17,32 @@ missing linguist-generated=true linguist-vendored
 mkinstalldirs linguist-generated=true linguist-vendored
 
 
-# Generated Files
+# Compressed Files
+
+*.bz2 binary linguist-generated=true linguist-vendored
+*.gz binary linguist-generated=true linguist-vendored
+*.lzma binary linguist-generated=true linguist-vendored
+*.tar binary linguist-generated=true linguist-vendored
+*.tar.bz2 binary linguist-generated=true linguist-vendored
+*.tar.gz binary linguist-generated=true linguist-vendored
+*.tar.lzma binary linguist-generated=true linguist-vendored
+*.tar.xz binary linguist-generated=true linguist-vendored
+*.xz binary linguist-generated=true linguist-vendored
+*.zip binary linguist-generated=true linguist-vendored
+
+
+# Databases
 
 *.db binary linguist-generated=true linguist-vendored
+*.sqlite binary linguist-generated=true linguist-vendored
+*.sqlite3 binary linguist-generated=true linguist-vendored
+
+
+# Generated Files
+
 *.egg linguist-generated=true linguist-vendored
 *.py[cdo] binary linguist-generated=true linguist-vendored
 *.Rc binary linguist-generated=true linguist-vendored
-*.sqlite binary linguist-generated=true linguist-vendored
-*.sqlite3 binary linguist-generated=true linguist-vendored
-*.tar.bz2 binary linguist-generated=true linguist-vendored
-*.tar.gz binary linguist-generated=true linguist-vendored
 *.xkb text eol=lf linguist-generated=true linguist-vendored
 *.xkm binary linguist-generated=true linguist-vendored
 *.zip binary linguist-generated=true linguist-vendored
