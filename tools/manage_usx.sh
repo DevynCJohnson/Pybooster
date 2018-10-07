@@ -45,6 +45,8 @@ readonly EVDEV_LST_TMP='/tmp/evdev_temp.lst'
 readonly EVDEV_XML_TMP='/tmp/evdev_temp.xml'
 readonly XKM_CACHE="/var/lib/xkb/*.xkm"
 readonly NEW_XKB_PATH='./themes/XKB/'
+# Optimize Awk by dropping unicode support
+readonly LC_ALL=C
 
 
 # FUNCTIONS #

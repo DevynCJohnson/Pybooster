@@ -236,25 +236,10 @@ if [ -x "$(command -v R)" ]; then
 fi
 
 
-# INTERACTIVE SHELL #
-
-
-# If not running interactively, then do not do anything
-if [ -z "${PS1}" ]; then
-    export isinteractive='false'
-    return
-else
-    case "$-" in
-        *i*) export isinteractive='true';;
-        *) export isinteractive='false'; return;;
-    esac
-fi
-
-
 # AUTOCOMPLETE #
 
 
-if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
+if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
     # Autocomplete package names for the system's package installation, uninstallation, and reinstallation commands
     if [ -n "$(command -v pkglsall)" ] && [ -n "$(command -v pkginstall)" ]; then
         _pkginstall_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; pkglsall "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }

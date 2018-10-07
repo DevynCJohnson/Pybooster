@@ -15,19 +15,25 @@ __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 # PATHS #
 
 
-override LICENSESDIR::=/usr/share/common-licenses
+override BINDIR::=/usr/bin
+override BOOTDIR::=/boot
+override DEBUGGINGDIR::=./testing
+override DEVDIR::=/dev
 override ETCDIR::=/etc
 override GTKLANGSPECS2DIR::=/usr/share/gtksourceview-2.0/language-specs
 override GTKLANGSPECS3DIR::=/usr/share/gtksourceview-3.0/language-specs
+override LICENSESDIR::=/usr/share/common-licenses
 override PIXMAPDIR::=/usr/share/pixmaps
 override PYPATH::=/usr/lib/python
 override SYSAPPDIR::=/usr/share/applications
+override SYSBINDIR::=/bin
+override SYSDOCDIR::=/usr/share/doc
+override SYSINCLUDEDIR::=/usr/src/include
 override SYSMENUDIR::=/usr/share/menu
 override SYSMIMEDIR::=/usr/share/mime
 override SYSNANORCDIR::=/usr/share/nano
 override SYSTHEMEDIR::=/usr/share/icons
-override DEBUGGINGDIR::=./testing
-override TESTINGDIR::=./testing
+override TESTINGDIR::=$(DEBUGGINGDIR)
 
 
 # CONSTANTS #

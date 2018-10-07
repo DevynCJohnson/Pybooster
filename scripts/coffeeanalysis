@@ -18,7 +18,25 @@ elif [ -z "$1" ]; then
 fi
 
 
+# SETUP #
+
+
+export LANG='en_US.UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
 export FirstLoopPass=0
+
+# Use a faster alternative if possible
+if [ -x "$(command -v mawk)" ]; then
+    awk_cmd() { mawk "${1}"; }
+    noblanks() { mawk NF; }
+elif [ -x "$(command -v nawk)" ]; then
+    awk_cmd() { nawk "${1}"; }
+    noblanks() { nawk NF; }
+else
+    awk_cmd() { awk "${1}"; }
+    noblanks() { awk NF; }
+fi
 
 
 # MAIN #
@@ -29,7 +47,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v coffeelint)" ]; then
         printf '======  *COFFEELINT*  ======\n'
-        coffeelint "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        coffeelint "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'coffeelint: command not found!\n' >&2
     fi

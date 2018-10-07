@@ -183,7 +183,7 @@ _errno.argtypes = [magic_t]
 # CLASSES #
 
 
-class Magic(object):
+class Magic():
     """Functions in libmagic"""
 
     def __init__(self, ms: object) -> None:
@@ -195,7 +195,7 @@ class Magic(object):
         """Convert an object into a string"""
         if string is None:
             return None
-        elif isinstance(string, str):
+        if isinstance(string, str):
             return string
         return str(string, encoding=r'utf-8')  # type: ignore
 
@@ -204,7 +204,7 @@ class Magic(object):
         """Convert an object into bytes"""
         if _bytes is None:
             return None
-        elif isinstance(_bytes, bytes):
+        if isinstance(_bytes, bytes):
             return _bytes
         return bytes(_bytes, encoding=r'utf-8')  # type: ignore
 

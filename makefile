@@ -63,9 +63,8 @@ override PYCACHE::=$(PYEGGDIR)/__pycache__/ $(SCRIPTSRCDIR)/__pycache__/
 override MACROSPATH::=$(INCDIR)/Foundation.h $(INCDIR)/MACROS.h $(INCDIR)/MACROS2.h $(INCDIR)/MACROS3.h
 
 # Install Paths
-override INSTALLBINDIR::=/usr/bin
-override INSTALLDOCDIR::=/usr/share/doc
-override INSTALLHEADERSDIR::=/usr/src/include/pybooster
+override INSTALLBINDIR::=$(BINDIR)
+override INSTALLHEADERSDIR::=$(SYSINCLUDEDIR)/pybooster
 override INSTALLRCMODDIR::=/etc/shell_ext_modules/
 override PYBDIR::=/usr/lib/pybooster
 
@@ -77,7 +76,7 @@ override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
-override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh pkg_rc.sh
+override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines CamelCase char2num cleansystem genmathart getsysinfo lslibfunc minifyxml num2char PascalCase pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes win2unixlines
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath
 override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
@@ -516,14 +515,14 @@ install_clib : | rmtmp fixperm
 	$(COPY) $(INCDIR)/* $(INSTALLHEADERSDIR)/
 	find $(INSTALLHEADERSDIR)/ -type f -exec $(CHMOD) 644 '{}' +
 	# Install Documentation
-	([ -d $(DOCDIR)/clib/ ] && [ -d $(INSTALLDOCDIR)/ ] && [ ! -d $(INSTALLDOCDIR)/clib/ ] && $(MKDIR) $(INSTALLDOCDIR)/clib/) || true
-	([ -d $(DOCDIR)/clib/ ] && [ -d $(INSTALLDOCDIR)/clib/ ] && $(CPDIR) $(DOCDIR)/clib/* $(INSTALLDOCDIR)/clib/) || true
+	([ -d $(DOCDIR)/clib/ ] && [ -d $(SYSDOCDIR)/ ] && [ ! -d $(SYSDOCDIR)/clib/ ] && $(MKDIR) $(SYSDOCDIR)/clib/) || true
+	([ -d $(DOCDIR)/clib/ ] && [ -d $(SYSDOCDIR)/clib/ ] && $(CPDIR) $(DOCDIR)/clib/* $(SYSDOCDIR)/clib/) || true
 
 uninstall_clib :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling C Libraries ==='
 	([ -d $(INSTALLHEADERSDIR)/ ] && $(RMDIR) $(INSTALLHEADERSDIR)/) || true
 	# Uninstall Documentation
-	([ -d $(INSTALLDOCDIR)/clib/ ] && $(RMDIR) $(INSTALLDOCDIR)/clib/) || true
+	([ -d $(SYSDOCDIR)/clib/ ] && $(RMDIR) $(SYSDOCDIR)/clib/) || true
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
@@ -621,8 +620,8 @@ install_pylib : | rmtmp fixperm
 	$(MKDIR) $(PYBDIR)/
 	$(CPDIR) $(PYSRC)/* $(PYBDIR)/
 	# Install Documentation
-	([ -d $(DOCDIR)/pylib/ ] && [ -d $(INSTALLDOCDIR)/ ] && [ ! -d $(INSTALLDOCDIR)/pylib/ ] && $(MKDIR) $(INSTALLDOCDIR)/pylib/) || true
-	([ -d $(DOCDIR)/pylib/ ] && [ -d $(INSTALLDOCDIR)/pylib/ ] && $(CPDIR) $(DOCDIR)/pylib/* $(INSTALLDOCDIR)/pylib/) || true
+	([ -d $(DOCDIR)/pylib/ ] && [ -d $(SYSDOCDIR)/ ] && [ ! -d $(SYSDOCDIR)/pylib/ ] && $(MKDIR) $(SYSDOCDIR)/pylib/) || true
+	([ -d $(DOCDIR)/pylib/ ] && [ -d $(SYSDOCDIR)/pylib/ ] && $(CPDIR) $(DOCDIR)/pylib/* $(SYSDOCDIR)/pylib/) || true
 	# Set proper permissions
 	$(CHMOD) 755 $(PYBDIR)/
 	find $(PYBDIR)/ -type d -exec $(CHMOD) 755 '{}' +
@@ -644,7 +643,7 @@ uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
 	$(RM) $(PYPATH)3.6/pybooster $(PYPATH)3.7/pybooster $(PYPATH)3.8/pybooster $(PYPATH)3.9/pybooster
 	# Uninstall Documentation
-	([ -d $(INSTALLDOCDIR)/pylib/ ] && $(RMDIR) $(INSTALLDOCDIR)/pylib/) || true
+	([ -d $(SYSDOCDIR)/pylib/ ] && $(RMDIR) $(SYSDOCDIR)/pylib/) || true
 
 install_program_analyzer : | fixperm $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Program Analyzer ==='
@@ -682,14 +681,18 @@ install_shrc :
 	([ -f /etc/profile.backup ] && $(RM) /etc/profile.backup) || true
 	([ -f /etc/profile ] && $(MOVE) /etc/profile /etc/profile.backup) || true
 	# Add new files
-	$(COPY) -t /etc/ $(SHRCDIR)/profile $(SHRCDIR)/shell_ext && $(CHMOD) 644 /etc/profile /etc/shell_ext
+	$(COPY) -t /etc/ $(SHRCDIR)/profile && $(CHMOD) 644 /etc/profile
 	$(LNHARD) /etc/profile /etc/bash.bashrc
 	([ ! -d $(INSTALLRCMODDIR) ] && $(MKDIRS) $(INSTALLRCMODDIR)) || true
 	$(COPY) -t $(INSTALLRCMODDIR) $(addprefix $(SHRCDIR)/, $(LIST_RC_MODULES))
+	# TODO: Remove the below line on October 9th, 2018
+	$(RM) /etc/shell_ext
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='
-	$(RM) /etc/bash.bashrc /etc/profile /etc/shell_ext
+	$(RM) /etc/bash.bashrc /etc/profile
+	# TODO: Remove the below line on October 9th, 2018
+	$(RM) /etc/shell_ext
 	$(MOVE) /etc/bash.bashrc.backup /etc/bash.bashrc
 	$(MOVE) /etc/profile.backup /etc/profile
 	$(RMDIR) $(INSTALLRCMODDIR)

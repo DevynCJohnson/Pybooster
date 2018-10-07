@@ -2,326 +2,11 @@
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-#' @brief Universal setup script for Posix-compatible shells
-#' @file shell_ext
+#' @brief Shell RC script providing miscellaneous aliases and functions
+#' @file extras_rc.sh
 #' @version 2018.10.02
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
-
-
-# GLOBAL SETTINGS #
-
-
-# Fix graphical-sudo issues on Wayland
-[ -n "${XDG_SESSION_TYPE:-}" ] && [ "$XDG_SESSION_TYPE" = 'wayland' ] && [ -x "$(command -v xhost)" ] && xhost +si:localuser:root > /dev/null
-
-[ -x /usr/libexec/path_helper ] && eval "$(/usr/libexec/path_helper -s)"
-
-export XDG_UTILS_DEBUG_LEVEL=0
-
-
-# SET $PATH #
-
-
-#' Test if the pathname is in $PATH
-notinpath() { (echo "$PATH" | grep -F -q -v "$1" && return 0) || return 1; }
-# Setup the $PATH environment variable
-[ -x "$(command -v brew)" ] && path_tmp="${PATH}:$(brew --cellar)" && PATH="$path_tmp" && unset path_tmp
-[ -d /usr/local/opt ] && notinpath '/usr/local/opt' && PATH="${PATH}:/usr/local/opt"
-[ -d /opt/bin ] && notinpath '/opt/bin' && PATH="${PATH}:/opt/bin"
-[ -d /snap/bin ] && notinpath '/snap/bin' && PATH="${PATH}:/snap/bin"
-[ -d "${HOME}/bin" ] && notinpath "${HOME}/bin" && notinpath '\~/bin' && PATH="${HOME}/bin:${PATH}"
-[ -d "${HOME}/.local/bin" ] && notinpath "${HOME}/.local/bin" && notinpath '\~/.local/bin' && PATH="${HOME}/.local/bin:${PATH}"
-[ -d /wine/bin ] && notinpath '/wine/bin' && PATH="${PATH}:/wine/bin"
-[ -d /usr/X11/opt ] && notinpath '/usr/X11/opt' && PATH="${PATH}:/opt/X11/bin"
-export PATH
-
-
-# SET $PKG_CONFIG_PATH (PACKAGE CONFIG PATH) #
-
-
-#' Test if the pathname is in $PKG_CONFIG_PATH
-notinpcpath() { (echo "$PKG_CONFIG_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
-# Setup the $PKG_CONFIG_PATH environment variable
-[ "$(notinpcpath "${HOME}/.local/pkgconfig")" ] && [ "$(notinpcpath '\~/.local/pkgconfig')" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:${HOME}/.local/pkgconfig"
-[ -d /lib/pkgconfig ] && [ "$(notinpcpath /lib/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/lib/pkgconfig"
-[ -d /usr/lib/pkgconfig ] && [ "$(notinpcpath /usr/lib/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/lib/pkgconfig"
-[ -d /usr/lib/x86_64-linux-gnu/pkgconfig ] && [ "$(notinpcpath /usr/lib/x86_64-linux-gnu/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/lib/x86_64-linux-gnu/pkgconfig"
-[ -d /usr/local/lib/pkgconfig ] && [ "$(notinpcpath /usr/local/lib/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/local/lib/pkgconfig"
-[ -d /usr/local/share/pkgconfig ] && [ "$(notinpcpath /usr/local/share/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/local/share/pkgconfig"
-[ -d /usr/share/pkgconfig ] && [ "$(notinpcpath /usr/share/pkgconfig)" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}:/usr/share/pkgconfig"
-PKG_CONFIG_PATH="$(echo "$PKG_CONFIG_PATH" | sed -E 's/^::(.+)$/\1/; s/^:(.+)$/\1/')"
-export PKG_CONFIG_PATH
-PKGCONFIG_PATH="$PKG_CONFIG_PATH"
-export PKGCONFIG_PATH
-listpath() { echo "$PATH" | awk -F ':' '{ for (i = 1; i <= NF; i++) { print "["i"]", $i; } }'; }
-export -f listpath notinpath notinpcpath
-
-
-# VARIABLES #
-
-
-if [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && [ -e /etc/debian_version ]; then
-    #' Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
-    export DEBIAN_FRONTEND='dialog'
-fi
-# Set an environment variable containing the kernel's release information (version)
-[ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -x "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
-# Ensure that Python scripts are always compiled to bytecode
-export PYTHONOPTIMIZE=True
-
-
-# GLADE PATH ENVIRONMENT VARIABLES #
-
-
-if [ -x "$(command -v glade)" ]; then
-    #' Test if the pathname is in $GI_TYPELIB_PATH
-    notingipath() { (echo "$GI_TYPELIB_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
-    # Setup $GI_TYPELIB_PATH
-    if [ -d /usr/lib/girepository-1.0 ]; then
-        if [ -z "${GI_TYPELIB_PATH:-}" ]; then
-            notingipath /usr/lib/girepository-1.0 && export GI_TYPELIB_PATH='/usr/lib/girepository-1.0'
-        else
-            notingipath /usr/lib/girepository-1.0 && export GI_TYPELIB_PATH="${GI_TYPELIB_PATH}:/usr/lib/girepository-1.0"
-        fi
-    fi
-    if [ -d /usr/lib/x86_64-linux-gnu/girepository-1.0 ]; then
-        if [ -z "${GI_TYPELIB_PATH:-}" ]; then
-            notingipath /usr/lib/x86_64-linux-gnu/girepository-1.0 && export GI_TYPELIB_PATH='/usr/lib/x86_64-linux-gnu/girepository-1.0'
-        else
-            notingipath /usr/lib/x86_64-linux-gnu/girepository-1.0 && export GI_TYPELIB_PATH="${GI_TYPELIB_PATH}:/usr/lib/x86_64-linux-gnu/girepository-1.0"
-        fi
-    fi
-    #' Test if the pathname is in $GLADE_CATALOG_SEARCH_PATH
-    notincatalogpath() { (echo "$GLADE_CATALOG_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
-    # Setup $GLADE_CATALOG_SEARCH_PATH
-    if [ -d /usr/share/glade/catalogs ]; then
-        if [ -z "${GLADE_CATALOG_SEARCH_PATH:-}" ]; then
-            notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH='/usr/share/glade/catalogs'
-        else
-            notincatalogpath /usr/share/glade/catalogs && export GLADE_CATALOG_SEARCH_PATH="${GLADE_CATALOG_SEARCH_PATH}:/usr/share/glade/catalogs"
-        fi
-    fi
-    #' Test if the pathname is in $GLADE_MODULE_SEARCH_PATH
-    notingmodpath() { (echo "$GLADE_MODULE_SEARCH_PATH" | grep -F -q -v "$1" && return 0) || return 1; }
-    # Setup $GLADE_MODULE_SEARCH_PATH
-    if [ -d /usr/lib/glade/modules ]; then
-        if [ -z "${GLADE_MODULE_SEARCH_PATH:-}" ]; then
-            notingmodpath /usr/lib/glade/modules && export GLADE_MODULE_SEARCH_PATH='/usr/lib/glade/modules'
-        else
-            notingmodpath /usr/lib/glade/modules && export GLADE_MODULE_SEARCH_PATH="${GLADE_MODULE_SEARCH_PATH}:/usr/lib/glade/modules"
-        fi
-    fi
-    if [ -d /usr/lib/x86_64-linux-gnu/glade/modules ]; then
-        if [ -z "${GLADE_MODULE_SEARCH_PATH:-}" ]; then
-            notingmodpath /usr/lib/x86_64-linux-gnu/glade/modules && export GLADE_MODULE_SEARCH_PATH='/usr/lib/x86_64-linux-gnu/glade/modules'
-        else
-            notingmodpath /usr/lib/x86_64-linux-gnu/glade/modules && export GLADE_MODULE_SEARCH_PATH="${GLADE_MODULE_SEARCH_PATH}:/usr/lib/x86_64-linux-gnu/glade/modules"
-        fi
-    fi
-fi
-
-
-# EDITOR VARIABLES #
-
-
-if [ -x "$(command -v nano)" ]; then
-    SELECTED_EDITOR="$(command -v nano)"
-    sunano() { sudo "${SELECTED_EDITOR}" "$1"; }
-elif [ -x "$(command -v pico)" ]; then
-    SELECTED_EDITOR="$(command -v pico)"
-    supico() { sudo "${SELECTED_EDITOR}" "$1"; }
-elif [ -x "$(command -v emacs)" ]; then
-    SELECTED_EDITOR="$(command -v emacs)"
-    suemacs() { sudo "${SELECTED_EDITOR}" "$1"; }
-elif [ -x "$(command -v vim)" ]; then
-    SELECTED_EDITOR="$(command -v vim)"
-    suvim() { sudo "${SELECTED_EDITOR}" "$1"; }
-elif [ -x "$(command -v vi)" ]; then
-    SELECTED_EDITOR="$(command -v vi)"
-    suvi() { sudo "${SELECTED_EDITOR}" "$1"; }
-elif [ -x "$(command -v vile)" ]; then
-    SELECTED_EDITOR="$(command -v vile)"
-elif [ -x "$(command -v levee)" ]; then
-    SELECTED_EDITOR="$(command -v levee)"
-elif [ -x "$(command -v nvi)" ]; then
-    SELECTED_EDITOR="$(command -v nvi)"
-fi
-[ -n "${SELECTED_EDITOR:-}" ] && export SELECTED_EDITOR && export EDITOR="$SELECTED_EDITOR" && export VISUAL="$SELECTED_EDITOR"
-[ -n "${SELECTED_EDITOR:-}" ] && sedit() { sudo "${SELECTED_EDITOR}" "$1"; }
-[ -x "$(command -v brew)" ] && export HOMEBREW_EDITOR="$EDITOR"
-export SUDO_EDITOR="$SELECTED_EDITOR"
-
-
-# CONDITIONAL TESTING FUNCTIONS #
-
-
-isBlockFile() { ([ -b "$1" ] && return 0) || return 1; }
-isInPath() { (command -v "$1" && return 0) || return 1; }
-isBuiltin() { (command -V "$1" 2> /dev/null | grep -q -w -i 'builtin') || return $?; }
-isDir() { ([ -d "$1" ] && return 0) || return 1; }
-isEnvAWS() { if [ -n "${AWS_BATCH_CE_NAME:-}" ] || [ -n "${AWS_BATCH_JOB_ID:-}" ] || [ -n "${AWS_EXECUTION_ENV:-}" ] || [ -n "${LAMBDA_RUNTIME_DIR:-}" ]; then return 0; else return 1; fi; }
-isFile() { ([ -f "$1" ] && return 0) || return 1; }
-isFileExecutable() { ([ -x "$1" ] && return 0) || return 1; }
-isFileReadable() { ([ -r "$1" ] && return 0) || return 1; }
-isFileWritable() { ([ -w "$1" ] && return 0) || return 1; }
-isFileOrDir() { if [ -d "$1" ] || [ -f "$1" ]; then return 0; else return 1; fi; }
-isFunction() { command -V "$1" 2> /dev/null | head -1 | grep -q -w -i 'function'; return $?; }
-isptmx() { tty | awk '{ if ($0~/\/dev\/ptmx.*/) { print "true" } else { print "false" } }'; }
-ispts() { tty | awk '{ if ($0~/\/dev\/pts.*/) { print "true" } else { print "false" } }'; }
-isSymLink() { ([ -h "$1" ] && return 0) || return 1; }
-istty() { tty | awk '{ if ($0~/\/dev\/tty.*/) { print "true" } else { print "false" } }'; }
-strcontains() { (echo "$2" | grep -F -q "$1" && return 0) || return 1; }
-strdoesnotcontain() { (echo "$2" | grep -F -q -v "$1" && return 0) || return 1; }
-export -f isBlockFile isInPath isBuiltin isDir isFile isFileExecutable isFileReadable
-export -f isFileWritable isFileOrDir isFunction ispts isSymLink istty strcontains strdoesnotcontain
-
-
-# GRAPHICAL INTERFACE FUNCTIONS #
-
-
-if [ -x "$(command -v zenity)" ] && [ "$(istty)" = 'false' ]; then
-    #' Open a calendar window using Zenity
-    win_cal() { zenity --title=Calendar --calendar --text='' --day=1 --month=1 --year="$1" 2> /dev/null; }
-    #' Open an error message window using Zenity
-    win_err() { zenity --title=Error --error --text="${1}" 2> /dev/null; }
-    #' Open an info window using Zenity
-    win_info() { zenity --title=Information --info --text="${1}" 2> /dev/null; }
-    #' Open a warning message window using Zenity
-    win_warn() { zenity --title=Warning --warning --text="${1}" 2> /dev/null; }
-fi
-
-
-# INTERACTIVE SHELL #
-
-
-# If not running interactively, then do not do anything
-if [ -z "${PS1}" ]; then
-    export isinteractive='false'
-    return
-else
-    case "$-" in
-        *i*) export isinteractive='true';;
-        *) export isinteractive='false'; return;;
-    esac
-fi
-
-
-# SHELL SETTINGS #
-
-
-[ -n "${DEBUG:-}" ] && set -u
-HISTCONTROL=erasedups:ignoreboth:ignoredups:ignorespace
-export HISTSIZE=40
-export HISTFILESIZE=40
-if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "$(command -v shopt)" ]; then
-    shopt -s checkwinsize
-    shopt -s extglob
-    shopt -s histappend
-    [ ! "$PLATFORM" = 'darwin' ] && shopt -s globstar
-fi
-if [ "$TERM" = 'Apple_Terminal' ]; then
-    setopt combiningchars
-    disable log
-fi
-set +o noglob || true
-set +o verbose || true
-
-# Make `less` more friendly for non-text input files
-[ -x "$(command -v lesspipe)" ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-
-# MISCELLANEOUS FEATURES #
-
-
-# Sudo Hint
-if [ ! -e "${HOME}/.sudo_as_admin_successful" ] && [ ! -e "${HOME}/.hushlogin" ]; then
-    case " $(groups) " in *\ admin\ *|*\ sudo\ *)
-        printf 'To run a command as administrator (user "root"), use "sudo <command>".\nSee "man sudo_root" for details.\n'
-    esac
-fi
-alias sudo='sudo '
-
-# Use the `command-not-found` package (if installed)
-if [ -x /usr/lib/command-not-found ]; then
-    command_not_found_handle() { /usr/lib/command-not-found -- "$1"; return $?; }
-elif [ -x /usr/lib/command-not-found ]; then
-    command_not_found_handle() { /usr/share/command-not-found/command-not-found -- "$1"; return $?; }
-else
-    command_not_found_handle() { printf '%s: command not found\n' "$1" >&2; return 127; }
-fi
-
-
-# COLORIZED TERMINAL #
-
-
-if [ -n "${TERM:-}" ]; then
-    case "$TERM" in
-        [aEKx]term*|gnome*|hurd|konsole*|linux|mach-*color|screen-256color*|xterm) color_prompt='yes';;
-        ansi|*color*|cygwin|interix*|putty*|rxvt*|wsvt*|X11*) color_prompt='yes';;
-        termix|kitty|mosh|iterm2|panteon|tinyterm|mintty) color_prompt='yes';;
-        *) color_prompt='no';;  # cons25, cons25-debian, dumb, mach*, pcansi, screen*, sun, vt*
-    esac  # ls /lib/terminfo/*
-elif [ -n "${COLORTERM:-}" ]; then
-    if [ -x "$(command -v tput)" ] && tput setaf 1 2>&1 /dev/null; then
-        #' Color support present; assume it is compliant with Ecma-48 (ISO/IEC-6429)
-        color_prompt='yes'
-    else
-        color_prompt=''
-    fi
-fi
-[ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ] && debian_chroot="$(cat /etc/debian_chroot)"
-[ -z "${debian_chroot:-}" ] && [ ! -r /etc/debian_chroot ] && debian_chroot=''
-PS1=''
-# Enable color support for various commands
-if [ -n "${color_prompt:-}" ] && [ "$color_prompt" = 'yes' ]; then
-    if [ "$(id -u)" -eq 0 ]; then
-        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;32m\]\u\[\033[0m\]@\[\033[01;33m\]\h\[\033[0m\]:\[\033[01;34m\]\w\[\033[0m\]# '
-    else
-        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;32m\]\u\[\033[0m\]@\[\033[01;33m\]\h\[\033[0m\]:\[\033[01;34m\]\w\[\033[0m\]\$ '
-    fi
-    alias grep='grep --color=auto'
-    alias cgrep='grep --color=always'
-    if [ -x "$(command -v egrep)" ]; then
-        alias egrep='egrep --color=auto'
-    else
-        alias egrep='grep -E --color=auto'
-    fi
-    if [ -x "$(command -v fgrep)" ]; then
-        alias fgrep='fgrep --color=auto'
-    else
-        alias fgrep='grep -F --color=auto'
-    fi
-    export LESS_TERMCAP_mb=$'\033[1;32m'  #' Start blinking
-    export LESS_TERMCAP_md=$'\033[1;32m'  #' Start bold mode
-    export LESS_TERMCAP_me=$'\033[0m'  #' End all mode
-    export LESS_TERMCAP_se=$'\033[0m'  #' End standout mode
-    export LESS_TERMCAP_so=$'\033[01;33m'  #' Start standout mode
-    export LESS_TERMCAP_ue=$'\033[0m'  #' End underlining
-    export LESS_TERMCAP_us=$'\033[1;4;31m'  #' Start underlining
-else  # No color support
-    if [ "$(id -u)" -eq 0 ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w# '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    fi
-fi
-unset color_prompt
-
-# Enable color support for `ls`
-if [ -x "$(command -v dircolors)" ]; then
-    export CLICOLOR=1
-    if [ -r "${HOME}/.dircolors" ]; then
-        eval "$(dircolors -b "${HOME}/.dircolors")"
-    else
-        eval "$(dircolors -b)"
-    fi
-    [ -n "$(command -v dir)" ] && alias dir='dir --color=auto'
-    if [ ! "$OSFAMILY" = 'bsd' ]; then
-        alias ls='ls --color=auto'
-    fi
-    [ -n "$(command -v vdir)" ] && alias vdir='vdir --color=auto'
-fi
 
 
 # ALIASES #
@@ -498,6 +183,7 @@ alias ConsoleMessage='echo'
 alias findpypling='grep -F "#!/usr/bin/env python" ./*'
 alias findr='grep -I -i -n -q -r -s --mmap .*'
 alias findrx='grep -E -I -n -q -r -s --mmap .*'
+alias mkae='make'
 [ -x "$(command -v compiz)" ] && alias rgui='pidof compiz && killall -SIGHUP compiz'  #' Restart Compiz (fixes memory leak)
 alias rless='less -r'
 alias lessn='less -N'
@@ -764,6 +450,30 @@ if [ -x "$(command -v ps)" ]; then
     psmem10() { echo '  PID USER     TTY      STAT %CPU %MEM COMMAND' && ps -e -o pid,user,tname,stat,pcpu,pmem,comm | awk '{ if (NR != 1) { print } }' | sort -nr -k 6 | awk 'FNR <= 10' && echo '  PID USER     TTY      STAT %CPU %MEM COMMAND'; }
 fi
 
+# String Manipulation Functions
+
+if [ -x "$(command -v mawk)" ]; then
+    #' Use a faster Awk implementation (if available)
+    fawk() { mawk "${1}"; }
+    #' Remove blank lines from a stream of text
+    noblanks() { mawk NF; }
+elif [ -x "$(command -v nawk)" ]; then
+    #' Use a faster Awk implementation (if available)
+    fawk() { nawk "${1}"; }
+    #' Remove blank lines from a stream of text
+    noblanks() { nawk NF; }
+else
+    #' Use a faster Awk implementation (if available)
+    fawk() { awk "${1}"; }
+    #' Remove blank lines from a stream of text
+    noblanks() { awk NF; }
+fi
+
+if [ -x "$(command -v gawk)" ]; then
+    #' Output a random word from the specified file (the file is left unchanged)
+    getrandword() { gawk 'BEGIN { srand(systime() + PROCINFO["pid"]) } { gsub(/[^[:alpha:]]/, " "); for (i=1; i<=NF; i++) { if (length($i) > 3) { a[++j] = $i; } } } END { print a[int(j * rand())]; }' "${1}"; }
+fi
+
 # System Control Functions
 
 if [ -r /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
@@ -825,6 +535,17 @@ if [ -x "$(command -v awk)" ]; then
 fi
 
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
+
+#' Search for information on the given command by trying multiple info commands (such as man and info)
+ihelp() {
+    while [ -n "${1:-}" ]; do
+        man "${1}" 2> /dev/null && break
+        info "${1}" 2> /dev/null && break
+        "${1}" --help 2> /dev/null && break
+        printf 'ERROR: Unable to find information on %s!\n' "${1}" >&2
+    done
+}
+
 lastval() { printf '%s\n' "$?"; }
 
 if [ -x "$(command -v pathchk)" ]; then
@@ -913,7 +634,7 @@ fi
 # AUTOCOMPLETE #
 
 
-if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
+if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
     # Source/Import the Bash autocompletion feature
     if [ -r /etc/bash_completion ]; then
         . /etc/bash_completion
@@ -930,11 +651,3 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ "$isinteractive" = 'true' ] && [ -n "$(com
         fi
     fi
 fi
-
-
-# LOAD USER'S SHELL STARTUP FILES #
-
-
-[ -r "${HOME}/.bash_aliases" ] && . "${HOME}/.bash_aliases"
-[ -r "${HOME}/.sh_aliases" ] && . "${HOME}/.sh_aliases"
-[ "$PROFILE_SHELL" = 'bash' ] && [ -r "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"

@@ -336,12 +336,28 @@ Assembly
 - On x86 targets, use _AT&T Style Syntax_
 
 
+Awk
+---
+
+- Use four spaces per indentation level
+- For compound-statements (like if-constructs), put the opening bracket (with a preceeding space) at the end of the first line
+- Braces are required for all control structures, even if the body contains only a single statement
+- An empty block or block-like construct may be closed immediately after it is opened (i.e. ```{}```), unless it is a part of a multi-block statement, such as if/else statements
+- Put a space between reserved words (such as `if`, or `for`) and an open parenthesis
+- Put a space between reserved word (such as `else`) and a closing curly brace
+
+
 C
 -
 
 - Use C Standard-2011 (C11) or newer
 - Files must use tab-indentation (one tab per level)
 - For inlined Assembly, refer to the _Assembly_ section in this document
+- For compound-statements (like if-constructs), put the opening bracket (with a preceeding space) at the end of the first line
+- Braces are required for all control structures, even if the body contains only a single statement
+- An empty block or block-like construct may be closed immediately after it is opened (i.e. ```{}```), unless it is a part of a multi-block statement, such as if/else statements
+- Put a space between reserved words (such as `if`, or `for`) and an open parenthesis
+- Put a space between reserved word (such as `else`) and a closing curly brace
 
 
 Changelog
@@ -621,6 +637,13 @@ ReStructuredText
 ----------------
 
 - Use four spaces per indentation level
+
+
+Sed
+---
+
+- Use four spaces per indentation level
+- Use pipes (i.e. `|`) instead of forward-slashes (i.e. `/`) for separators
 
 
 Shell Script

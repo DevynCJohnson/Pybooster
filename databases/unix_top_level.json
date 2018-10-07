@@ -1,0 +1,27 @@
+{
+    "directories": [
+        "bin",
+        "boot",
+        "cdrom",
+        "dev",
+        "etc",
+        "home",
+        "lib",
+        "lib32",
+        "lib64",
+        "libx32",
+        "lost+found",
+        "media",
+        "mnt",
+        "opt",
+        "proc",
+        "root",
+        "run",
+        "sbin",
+        "srv",
+        "sys",
+        "tmp",
+        "usr",
+        "var"
+    ]
+}

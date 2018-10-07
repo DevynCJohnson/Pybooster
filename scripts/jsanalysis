@@ -18,7 +18,22 @@ elif [ -z "$1" ]; then
 fi
 
 
+# SETUP #
+
+
+export LANG='en_US.UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
 export FirstLoopPass=0
+
+# Use a faster alternative if possible
+if [ -x "$(command -v mawk)" ]; then
+    awk_cmd() { mawk "${1}"; }
+elif [ -x "$(command -v nawk)" ]; then
+    awk_cmd() { nawk "${1}"; }
+else
+    awk_cmd() { awk "${1}"; }
+fi
 
 
 # MAIN #
@@ -29,7 +44,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v jshint)" ]; then
         printf '======  *JSHINT*  ======\n'
-        jshint "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        jshint "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'jshint: command not found!\n' >&2
     fi

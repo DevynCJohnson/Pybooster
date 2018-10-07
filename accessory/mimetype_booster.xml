@@ -621,6 +621,28 @@
     <glob pattern="*.aup"/>
     <sub-class-of type="text/xml"/>
   </mime-type>
+  <mime-type type="application/x-awk">
+    <alias type="text/x-awk"/>
+    <comment>Awk Script</comment>
+    <generic-icon name="application-x-awk"/>
+    <glob pattern="*.awk" weight="95"/>
+    <glob pattern="*.bwk" weight="95"/>
+    <glob pattern="*.gawk" weight="95"/>
+    <glob pattern="*.jawk" weight="95"/>
+    <glob pattern="*.mawk" weight="95"/>
+    <glob pattern="*.nawk" weight="95"/>
+    <magic priority="100">
+      <match offset="0" type="string" value="#!/usr/bin/awk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/bwk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/gawk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/jawk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/mawk -f"/>
+      <match offset="0" type="string" value="#!/usr/bin/nawk -f"/>
+    </magic>
+    <sub-class-of type="application/x-executable"/>
+    <sub-class-of type="application/x-shellscript"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="application/x-brasero">
     <comment>Brasero Project File</comment>
     <generic-icon name="application-x-brasero"/>
@@ -795,6 +817,19 @@
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/x-sed">
+    <alias type="text/x-sed"/>
+    <comment>Sed Script</comment>
+    <generic-icon name="application-x-sed"/>
+    <glob pattern="*.sed" weight="95"/>
+    <magic priority="100">
+      <match offset="0" type="string" value="#!/usr/bin/sed"/>
+      <match offset="0" type="string" value="#!/usr/bin/ssed"/>
+    </magic>
+    <sub-class-of type="application/x-executable"/>
+    <sub-class-of type="application/x-shellscript"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
   <mime-type type="application/x-sharedlib">
     <acronym>SO</acronym>
     <expanded-acronym>Shared Library</expanded-acronym>
@@ -806,10 +841,8 @@
     <alias type="text/x-sh"/>
     <comment>Shell Script</comment>
     <generic-icon name="application-x-shellscript"/>
-    <glob pattern="*.awk" weight="95"/>
     <glob pattern="*.bash" weight="95"/>
     <glob pattern="*.csh" weight="95"/>
-    <glob pattern="*.sed" weight="95"/>
     <glob pattern="*.sh" weight="80"/>
     <glob pattern="*.zsh" weight="95"/>
     <magic priority="100">
@@ -819,14 +852,12 @@
       <match offset="0" type="string" value="#!/bin/dash"/>
       <match offset="0" type="string" value="#!/bin/sh"/>
       <match offset="0" type="string" value="#!/bin/zsh"/>
-      <match offset="0" type="string" value="#!/usr/bin/awk -f"/>
       <match offset="0" type="string" value="#!/usr/bin/env ash"/>
       <match offset="0" type="string" value="#!/usr/bin/env bash"/>
       <match offset="0" type="string" value="#!/usr/bin/env csh"/>
       <match offset="0" type="string" value="#!/usr/bin/env dash"/>
       <match offset="0" type="string" value="#!/usr/bin/env sh"/>
       <match offset="0" type="string" value="#!/usr/bin/env zsh"/>
-      <match offset="0" type="string" value="#!/usr/bin/sed -f"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>

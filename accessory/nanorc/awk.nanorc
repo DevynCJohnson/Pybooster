@@ -1,5 +1,5 @@
-syntax "awk" "\.(awk|gawk|nawk)$"
-header "^/.+/(awk|gawk|nawk).*$"
+syntax "awk" "\.(awk|bwk|gawk|jawk|mawk|nawk)$"
+header "^/.+/(awk|bwk|gawk|jawk|mawk|nawk).*$"
 magic "awk script"
 comment "#"
 

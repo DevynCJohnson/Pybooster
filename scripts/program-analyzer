@@ -1744,8 +1744,8 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
     _strings = getoutput(_strings + r' --all ' + _file)
     _nm_defined = getoutput(_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"')  # tmp
     try:
-        _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{for(i=3;i<=NF;++i)print $i}\' | grep -v -E -e "^_"')
-        _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{for(i=3;i<=NF;++i)print $i}\' | grep -v -E -e "^_"')
+        _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+        _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
     except OSError:
         _functions = _nm_defined
         _constants = r'See function list'

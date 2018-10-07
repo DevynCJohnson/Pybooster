@@ -1,0 +1,195 @@
+## PROJECT FILES ##
+
+
+# Building & Testing
+
+*.[Ll][Oo][Gg]
+*.[Ll][Oo][Gg][Ss]
+.cache
+[Bb]in/
+[Dd]ebug/
+[Ll][Oo][Gg][Ss]/
+[Tt]esting/
+build/
+downloads/
+htmlcov/
+metrics/
+python/
+var/
+
+# Project Configuration Files
+
+#.astyle.ini
+#.bandit
+#.bandit.ini
+#.csslint.rc
+#.editorconfig
+#.eslintrc
+#.eslintrc.js
+#.eslintrc.json
+#.eslintrc.yaml
+#.eslintrc.yml
+#.flake8
+#.gitlint
+#.mypy.ini
+#.npmrc
+#.pycodestyle
+#.pylintrc
+#.pytest.ini
+#.travis.yml
+#mypy.ini
+#pylintrc
+#pytest.ini
+#tox.ini
+.coverage
+.coverage.*
+.coveragerc
+.style.yapf
+
+# Revision Control Directories
+
+.[Bb][Zz][Rr]/
+.[Cc][Vv][Ss]/
+.git/
+.hg/
+.svn/
+
+# Miscellaneous
+
+*.[Cc]ache
+*.tmp
+*.todo.txt
+.lock-wscript
+.wafpickle-*
+.sh-session
+icon-theme.cache
+yarn.lock
+
+
+## TRANSLATIONS ##
+
+
+*.mo
+*.pot
+
+
+## C ##
+
+
+# Executables
+
+*.app
+*.exe
+*.hex
+*.i386
+*.i486
+*.i586
+*.i686
+*.out
+*.x86_64
+
+# Cuda
+
+*.cubin
+*.fatbin
+*.gpu
+*.i
+*.ii
+*.ptx
+
+# Debugging  & Profiling Files
+
+*.dSYM/
+*.gcda
+*.idb
+*.pdb
+*.su
+
+# Libraries
+
+*.a
+*.la
+*.lai
+*.lib
+
+# Linker Output
+
+*.exp
+*.ilk
+*.map
+
+# LLVM/Clang
+
+*.ast
+*.bc
+*.ll
+
+# Object Files
+
+*.dll
+*.dylib
+*.elf
+*.ko
+*.lo
+*.o
+*.obj
+*.slo
+*.so
+*.so.*
+
+# Precompiled Headers
+
+*.gch
+*.pch
+
+
+## PYTHON ##
+
+
+# Byte-compiled
+
+*.py[cdo]
+*__pycache__
+__pycache__/
+
+# Distribution
+
+*.egg
+*.egg-info/
+.eggs/
+.installed.cfg
+.Python
+develop-eggs/
+dist/
+eggs/
+env/
+parts/
+sdist/
+
+# Installer & Builder Files
+
+*.manifest
+*.spec
+pip-delete-this-directory.txt
+pip-log.txt
+target/
+
+# Unit Test & Coverage Reports
+
+*,cover
+*.pytb
+.hypothesis/
+.tox/
+coverage.xml
+nosetests.xml
+
+# IPython Notebook
+
+.ipynb_checkpoints
+
+# dotenv, virtualenv, & pyenv
+
+.env
+.python-version
+ENV/
+venv/

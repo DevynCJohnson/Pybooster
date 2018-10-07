@@ -7,8 +7,11 @@
 	* libregex.py:  Added regex patterns for each Unicode block
 	* libregex.py:  Added matched-pattern referencing capabilities to numerous patterns
 	* makefile_constants.mk:  Improved code
+	* mimetype_booster.xml:  Added mimetypes for Awk & Sed
 	* PyBooster:  Added PascalCase
 	* PyBooster:  Applied various minor changes & optimizations
+	* PyBooster:  Integrated the code from shell_ext into profile & RC files; shell_ext was removed
+	* snippets.conf:  Added many new snippets
 	* strtools.py:  Added functions to convert between camelcase, PascalCase, & snake_case
 
 2018-10-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

@@ -26,6 +26,15 @@ export LC_ALL='C'
 export LC_CTYPE='C'
 export FirstLoopPass=0
 
+# Use a faster alternative if possible
+if [ -x "$(command -v mawk)" ]; then
+    awk_cmd() { mawk "${1}"; }
+elif [ -x "$(command -v nawk)" ]; then
+    awk_cmd() { nawk "${1}"; }
+else
+    awk_cmd() { awk "${1}"; }
+fi
+
 
 # MAIN #
 
@@ -35,63 +44,63 @@ for file in "$@"; do
 
     if [ -x "$(command -v clint)" ]; then
         printf '======  *CLINT*  ======\n'
-        clint "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        clint "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'clint: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v cppcheck)" ]; then
         printf '======  *CPPCHECK*  ======\n'
-        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'cppcheck: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v KWStyle)" ]; then
         printf '======  *KWSTYLE*  ======\n'
-        KWStyle -qv -gcc "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        KWStyle -qv -gcc "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'KWStyle: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v splint)" ]; then
         printf '======  *SPLINT*  ======\n'
-        splint -nof -tmpdir /tmp/ -I. -I../include -nolib -strict -checks -preproc +stats "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        splint -nof -tmpdir /tmp/ -I. -I../include -nolib -strict -checks -preproc +stats "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'splint: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v flawfinder)" ]; then
         printf '======  *FLAWFINDER*  ======\n'
-        flawfinder --minlevel=1 --omittime --quiet --singleline "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        flawfinder --minlevel=1 --omittime --quiet --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flawfinder: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v undertaker)" ]; then
         printf '======  *UNDERTAKER (MACROS SCANNER)*  ======\n'
-        undertaker -I ../include/ -j dead -O stdout -v "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        undertaker -I ../include/ -j dead -O stdout -v "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'undertaker: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pmccabe)" ]; then
         printf '======  *PMCCABE (MCCABE COMPLEXITY)*  ======\n'
-        pmccabe -c -f -v "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        pmccabe -c -f -v "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pmccabe: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pscan)" ]; then
         printf '======  *PORTABILITY SCAN*  ======\n'
-        pscan "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        pscan "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pscan: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v chktri)" ]; then
         printf '======  *TRIGRAPH SCANNER*  ======\n'
-        chktri "$file" | awk '{ OFS=""; gsub(/^0$/, ""); print $0; }' | awk NF
+        chktri "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'chktri: command not found!\n' >&2
     fi
