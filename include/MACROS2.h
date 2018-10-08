@@ -13491,9 +13491,9 @@ typedef enum CHAR_CLASSIFICATION {
 #define cc_C   ((unsigned short)(cc_cn))
 /** NUL */
 #define cc_Z   ((unsigned short)(cc_nv | cc_cn))
-/** Cursor movement: `\f` & `\v` */
+/** Cursor movement: <tt>\\f</tt> & <tt>\\v</tt> */
 #define cc_M   ((unsigned short)(cc_nv | cc_sp | cc_cn))
-/** Vertical space: `\r` & `\n` */
+/** Vertical space: <tt>\\r</tt> & <tt>\\n</tt> */
 #define cc_V   ((unsigned short)(cc_vs | cc_sp | cc_cn))
 /** Tab */
 #define cc_T   ((unsigned short)(cc_nv | cc_sp | cc_bl | cc_cn))
@@ -13657,9 +13657,9 @@ LIB_FUNC ATTR_CF int is_digit(const int symbol) {
 #define ISEOT(c)   ((c) == 3)
 /** Test if the char is EOT (End of Transmission) */
 #define iseot(c)   ISEOT((c))
-/** Test if the char is the bell character (\b) */
+/** Test if the char is the bell character (<tt>\\b</tt>) */
 #define ISBELL(c)   ((c) == '\b')
-/** Test if the char is the bell character (\b) */
+/** Test if the char is the bell character (<tt>\\b</tt>) */
 #define isbell(c)   ISBELL((c))
 /** Test if the char is a device control character */
 #define ISDEVCHAR(c)   (((c) >= 0x11) && ((c) <= 0x14))
@@ -13701,17 +13701,17 @@ LIB_FUNC ATTR_CF int ISALPHA(const int c) {
 #define isalpha(c)   ISALPHA((c))
 /** Test if the char is an alphabetic ASCII letter */
 #define isalpha_l(c, l)   ISALPHA((c))
-/** Test if the char is a space or tab (\t) character */
+/** Test if the char is a space or tab (<tt>\\t</tt>) character */
 #define ISBLANK(c)   (((c) == 0x20) || ((c) == 9))
-/** Test if the char is a space or tab (\t) character */
+/** Test if the char is a space or tab (<tt>\\t</tt>) character */
 #define isblank(c)   ISBLANK((c))
 /** Test if the char is a control character */
 #define ISCNTRL(c)   (((c) < 0x20) || (0x7f == (c)))
 /** Test if the char is a control character */
 #define iscntrl(c)   ISCNTRL((c))
-/** Test if the char is a C++ space character (tab, newline, vertical tab, form feed, carriage return, space, and '\0') */
+/** Test if the char is a C++ space character (tab, newline, vertical tab, form feed, carriage return, space, and '\\0') */
 #define ISCPPSP(c)   (((c) == 0x20) || ((c) == 0) || ((8 < (c)) && ((c) < 0xe)))
-/** Test if the char is a C++ space character (isspace + '\0') */
+/** Test if the char is a C++ space character (isspace + '\\0') */
 #define iscppsp(c)   ISCPPSP((c))
 /** Test if the char is a currency symbol */
 #define ISCURRENCY(c)   (((c) == 0x24) || ((0xa1 < (c)) && ((c) < 0xa6)))
@@ -13749,11 +13749,11 @@ LIB_FUNC ATTR_CF int ISIDST(const int c) {
 #define ISIDNUM(c)   (ISIDST((c)) | ISDIGIT((c)))
 /** Test if the char is an alphanumeric character or "_" */
 #define isidnum(c)   ISIDNUM((c))
-/** Test if the char is a punctuation character (! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~) */
+/** Test if the char is a punctuation character <tt>(! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~)</tt> */
 LIB_FUNC ATTR_CF int ISPUNCT(const int c) {
 	return (((0x20 < c) && (c < 0x30)) || ((0x39 < c) && (c < 0x41)) || ((0x5a < c) && (c < 0x61)) || ((0x7a < c) && (c < 0x7f)));
 }
-/** Test if the char is a punctuation character (! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~) */
+/** Test if the char is a punctuation character <tt>(! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~)</tt> */
 #define ispunct(c)   ISPUNCT((c))
 /** Test if the char is a separator control character */
 #define ISSEPARATOR(c)   ((0x1b < (c)) && ((c) < 0x20))
@@ -13788,15 +13788,15 @@ LIB_FUNC ATTR_CF bool locale_isspace(const char symbol) {
 #define ISLOWER(c)   ISLOWERASCII((c))
 /** Test if the char is a lowercase character */
 #define islower(c)   ISLOWERASCII((c))
-/** Test if the char is space, '\t', '\f', '\v', or '\0' */
+/** Test if the char is space, <tt>\\t</tt>, <tt>\\f</tt>, <tt>\\v</tt>, or <tt>\\0</tt> */
 LIB_FUNC ATTR_CF int ISNVSP(const int c) {
 	return (int)((c == 9) || (c == 0xb) || (c == 0xc) || (c == 0));
 }
-/** Test if the char is space, '\t', '\f', '\v', or '\0' */
+/** Test if the char is space, <tt>\\t</tt>, <tt>\\f</tt>, <tt>\\v</tt>, or <tt>\\0</tt> */
 #define isnvsp(c)   ISNVSP((c))
-/** Test if the char is '\n' or '\r' */
+/** Test if the char is <tt>\\n</tt> or <tt>\\r</tt> */
 #define ISVSP(c)   (((c) == 0xa) || ((c) == 0xd))
-/** Test if the char is '\n' or '\r' */
+/** Test if the char is <tt>\\n</tt> or <tt>\\r</tt> */
 #define isvsp(c)   ISVSP((c))
 /** Test if the char is a uppercase ASCII character */
 LIB_FUNC ATTR_CF int ISUPPER(const int c) {

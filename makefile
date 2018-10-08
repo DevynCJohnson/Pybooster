@@ -376,6 +376,7 @@ upver :
 	find $(XKBDIR)/* -mount -type f -name "XCompose" -exec sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/" '{}' \;
 	# Miscellaneous #
 	find . -mount -type f -name "*.desktop" -exec sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/" '{}' \;
+	find . -mount -type f -name "Doxy*" -exec sed -i "s/^PROJECT_NUMBER[ \t]*=[ \t]*20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PROJECT_NUMBER=$(__VERSION__)/" '{}' \;
 
 
 # CLEAN-UP #

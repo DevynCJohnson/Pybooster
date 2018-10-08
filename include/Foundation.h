@@ -167,7 +167,7 @@ Operating Systems:
  - <reent.h> (Newlib)
  - <unctrl.h> (Newlib)
 
-@section C++ Standard Library
+@section C Plus Plus Standard Library
  - <array>
  - <deque>
  - <forward_list>
@@ -653,11 +653,11 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
 #define HOST_CHARSET_UNKNOWN   0
 #define HOST_CHARSET_ASCII   1
 #define HOST_CHARSET_EBCDIC   2
-#if ('\n' == 0xa && ' ' == 0x20 && '0' == 0x30 && 'A' == 0x41 && 'a' == 0x61 && '!' == 0x21)
+#if (' ' == 0x20 && '0' == 0x30 && 'A' == 0x41 && 'a' == 0x61 && '!' == 0x21)
 #   define HOST_CHARSET   HOST_CHARSET_ASCII
 #   define IS_HOST_CHARSET_ASCII   1
 #   define IS_HOST_CHARSET_EBCDIC   0
-#elif ('\n' == 0x15 && ' ' == 0x40 && '0' == 0xf0 && 'A' == 0xc1 && 'a' == 0x81 && '!' == 0x5a)
+#elif (' ' == 0x40 && '0' == 0xf0 && 'A' == 0xc1 && 'a' == 0x81 && '!' == 0x5a)
 #   define HOST_CHARSET   HOST_CHARSET_EBCDIC
 #   define IS_HOST_CHARSET_ASCII   0
 #   define IS_HOST_CHARSET_EBCDIC   1
@@ -1307,7 +1307,7 @@ Test if the GNU-GCC compiler matches the specified version number */
 #else
 #   define __CLANG_VER   0
 #endif
-/** @def__CLANG_PREREQ(major, minor)
+/** @def __CLANG_PREREQ(major, minor)
 Test if the Clang compiler matches the specified version number */
 #if (defined(COMPILER_CLANG) && defined(__clang_major__) && (!defined(__CLANG_PREREQ)))
 #   define __CLANG_PREREQ(major, minor)   (__CLANG_VER >= ((major) << 16) + (minor))

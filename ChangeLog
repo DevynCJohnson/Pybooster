@@ -1,5 +1,6 @@
 2018-10-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* clib:  Improved the Doxygen comments
 	* clint:  Optimized code
 	* PyBooster:  Added additional databases & project documentation
 	* PyBooster:  Added "EASY-INSTALL-ENTRY-SCRIPT" banners to all relevant files

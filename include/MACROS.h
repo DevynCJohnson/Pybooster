@@ -444,7 +444,7 @@ typedef unsigned int __attribute__((__mode__(__HI__)))   UHItype;
 #define int_uhi_t   UHItype
 #define uint_hi_t   UHItype
 #define HAVE_UHI   1
-/** @def PSItype
+/** @typedef PSItype
 Partial Single Integer; 4 bytes (not all bits used) */
 #ifdef ARCHAVR  // Partial single integer
 #   define SUPPORTS_PSITYPE   1
@@ -770,7 +770,7 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 
 // FLOAT-POINT MODES
 
-/** @def QFtype
+/** @typedef QFtype
 8-bit quarter-precision float-point datatype */
 #if (defined(ARCHAVR) || SUPPORTS_FLOAT8)
 #   define SUPPORTS_QFTYPE   1
@@ -788,7 +788,7 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #   define SUPPORTS_QFTYPE   0
 #   define HAVE_QF   0
 #endif
-/** @def HFtype
+/** @typedef HFtype
 16-bit half-precision float-point datatype */
 #if (defined(ARCHAVR) || SUPPORTS_FLOAT16)
 #   define SUPPORTS_HFTYPE   1
@@ -809,7 +809,7 @@ typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #   define SUPPORTS_HFTYPE   0
 #   define HAVE_HF   0
 #endif
-/** @def TQFtype
+/** @typedef TQFtype
 24-bit three-quarter-precision float-point datatype */
 #if (defined(ARCHAVR) || SUPPORTS_FLOAT24)
 #   define SUPPORTS_TQFTYPE   1
@@ -882,7 +882,7 @@ typedef float __attribute__((__mode__(__XF__)))   XFtype;
 #   define float96_t   __float96
 #   define extended96   __float96
 #endif
-/** @def TFtype
+/** @typedef TFtype
 Tetra-precision float-point */
 #if SUPPORTS_FLOAT128
 #   define SUPPORTS_TFTYPE   1
@@ -912,9 +912,9 @@ typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __f
 
 // DECIMAL FLOAT-POINT MODES
 
-/** @def SDtype
+/** @typedef SDtype
 _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
-/** @def DDtype
+/** @typedef DDtype
 _Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
 #if SUPPORTS_DECIMAL_FLOATS
 #   define SUPPORTS_SDTYPE   1

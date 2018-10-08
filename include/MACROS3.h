@@ -35813,7 +35813,7 @@ typedef struct gap { uint16_t start, end; int32_t idx; }   gap_t;
 #define VIS_HTTPSTYLE   0x80
 /** Mime-style escape = HEX HEX */
 #define VIS_MIMESTYLE   0x100
-/** HTTP-style &#num; or &string; */
+/** HTTP-style <tt>\&\#num;</tt> or <tt>\&string;</tt> */
 #define VIS_HTTP1866   0x200
 /** Do not decode '\' */
 #define VIS_NOESCAPE   0x400
