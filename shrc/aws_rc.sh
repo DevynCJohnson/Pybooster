@@ -150,11 +150,110 @@ alias iam_lskeys='aws iam list-access-keys'
 
 
 alias s3cp='aws s3 cp'  #' Copy file
-alias s3ls='aws s3 ls'  #' List files
 alias s3rm='aws s3 rm'  #' Remove file
+alias s3rmdir='aws s3 rm --recursive'  #' Remove directory and contents recursively
 alias s3mv='aws s3 mv'  #' Move file
+alias s3mvdir='aws s3 mv --recursive'  #' Move directory and contents recursively
 alias s3mb='aws s3 mb'  #' Make S3 bucket
 alias s3rb='aws s3 rb'  #' Remove S3 bucket
+
+
+#' Copy directory and contents recursively
+#' @section USAGE
+#' s3cpdir PATH_TO_COPY DESTINATION
+#' @param[in] $1 Path to copy
+#' @param[in] $2 Destination path
+s3cpdir() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
+    else
+        PATHNAME="${1:-}"
+        DESTNAME="${2:-}"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${PATHNAME}/"
+        [[ ! "$DESTNAME" =~ ^.+/$ ]] && DESTNAME="${DESTNAME}/"
+        if [[ ! "$PATHNAME" =~ ^s3://.+$ ]] && [[ ! "$DESTNAME" =~ ^s3://.+$ ]]; then
+            printf 'ERROR: An S3 URI is required (no "s3://" found)!\n' >&2
+        else
+            aws s3 cp --recursive "${PATHNAME}" "${DESTNAME}" > /dev/null
+        fi
+    fi
+}
+
+
+#' List files within the specified S3 directory path (emulates Unix's `ls` command)
+#' @section USAGE
+#' s3ls [PATHNAME]
+#' @param[in] $1 S3 path without "s3:/"
+s3ls() {
+    if [ -n "${1:-}" ]; then
+        PATHNAME="${1:-}"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
+        aws s3 ls "s3:/${PATHNAME}" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+    else
+        aws s3 ls "s3://" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+    fi
+}
+
+
+#' List files within the specified S3 directory path (emulates Unix's `ls -l` command)
+#' @section USAGE
+#' s3ll [PATHNAME]
+#' @param[in] $1 S3 path without "s3:/"
+s3ll() {
+    if [ -n "${1:-}" ]; then
+        PATHNAME="${1:-}"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
+        aws s3 ls --human-readable --summarize "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
+    else
+        aws s3 ls --human-readable --summarize "s3://" | sed 's|^[ tab]*||'
+    fi
+}
+
+
+#' List files recursively within the specified S3 directory path (emulates Unix's `ls -R` command)
+#' @section USAGE
+#' s3lr [PATHNAME]
+#' @param[in] $1 S3 path without "s3:/"
+s3lr() {
+    if [ -n "${1:-}" ]; then
+        PATHNAME="${1:-}"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
+        aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+    else
+        aws s3 ls --recursive "s3://" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+    fi
+}
+
+
+#' List files recursively within the specified S3 directory path (emulates Unix's `ls -l -R` command)
+#' @section USAGE
+#' s3llr [PATHNAME]
+#' @param[in] $1 S3 path without "s3:/"
+s3llr() {
+    if [ -n "${1:-}" ]; then
+        PATHNAME="${1:-}"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
+        aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
+    else
+        aws s3 ls --recursive "s3://" | sed 's|^[ tab]*||'
+    fi
+}
+
+
+#' Rename a file at the listed S3 directory path to the specified name within the same directory
+#' @section USAGE
+#' s3rename PATHNAME NEW_NAME
+#' @param[in] $1 S3 path without "s3:/"
+#' @param[in] $2 new filename without path
+s3rename() {
+    if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
+    else
+        PATHNAME="$(dirname ${1:-})"
+        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
+        aws s3 mv "s3:/${PATHNAME}" "${2}"
+    fi
+}
 
 
 #' Upload to a S3 Bucket (after login in to AWS via command-line)
