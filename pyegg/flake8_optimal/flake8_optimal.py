@@ -46,6 +46,7 @@ except ImportError:
     from re import compile as rgxcompile, IGNORECASE, search as rgxsearch
 
 
+__docformat__: str = r'restructuredtext en'
 __version__: str = r'2018.10.02'
 
 

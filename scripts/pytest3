@@ -2,7 +2,7 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-# EASY-INSTALL-ENTRY-SCRIPT: "pytest>=3.1.0","console_scripts","pytest"
+# EASY-INSTALL-ENTRY-SCRIPT: "pytest>=3.3.0","console_scripts","pytest"
 """@brief Pytest3 (Script Wrapper)
 
 @file pytest3
@@ -18,7 +18,7 @@ from sys import argv
 from pkg_resources import load_entry_point
 
 
-__requires__ = r'pytest>=3.1.0'
+__requires__: str = r'pytest>=3.3.0'
 
 
 if __name__ == '__main__':

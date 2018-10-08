@@ -235,7 +235,7 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitx lscontrib previewcleangit status submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : cleangit commit gitac gitadd gitattr gitignore gitlsfiles gitstats gitx lscontrib lstags previewcleangit status submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
 .PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
 # Uninstall
@@ -434,6 +434,9 @@ gitx :
 
 lscontrib :
 	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
+
+lstags :
+	@git tag
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix

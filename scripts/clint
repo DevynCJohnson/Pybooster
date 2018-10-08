@@ -62,13 +62,14 @@ ASM_STMT = r'(asm |__asm |__asm__ )(volatile |)'
 # PATTERNS #
 
 
-REGEX_IF_SPACE = rgxcompile(r'^.+( if\(| if  \(| if\t\().*$')
-REGEX_BRACKET_NO_SPACE = rgxcompile(r'^.+[^ \t]{$')
-REGEX_BRACKET_EXTRA_SPACE = rgxcompile(r'^.+[ \t][ \t]{$')
+REGEX_CONSTRUCT_SPACE = rgxcompile(r'^(.+ |)(else if|for|if|switch|while)\s*\u0028.*$')
+REGEX_CONSTRUCT_SPACE_VALID = rgxcompile(r'^(.+ |)(else if|for|if|switch|while) \u0028.*$')
+REGEX_BRACKET_NO_SPACE = rgxcompile(r'^.+[^\s]{$')
+REGEX_BRACKET_EXTRA_SPACE = rgxcompile(r'^.+[\s]{2}{$')
 REGEX_INDENT = rgxcompile(r'^([ ]+)(.+)$')
 REGEX_MUL2 = rgxcompile(r' = ([^\w]2 \* [\w]+|[\w]+ \* (|\([\w ]+\))2[^[0-9]])')
 REGEX_SELF_STORE = rgxcompile(r'([\w]+) = ([\w]+) ([\w\+\-\*/%\|\^&]+);')
-REGEX_SEMICOLON_SPACE = rgxcompile(r'^.+[ \t]+;$')
+REGEX_SEMICOLON_SPACE = rgxcompile(r'^.+\s+;$')
 REGEX_LICENSE = rgxcompile(r'^[\w \*]+ __license__ = ".+";$')
 REGEX_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = ".+";$')
 REGEX_VALID_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = "[A-Za-z0-9\-\._]+@[A-Za-z0-9\-]+\.[A-Za-z0-9]+";')
@@ -87,7 +88,7 @@ REGEX_VIM_VALID = rgxcompile(r'^// vim: set fileencoding=utf\-8 filetype=c synta
 REGEX_COMMENT_DOC = rgxcompile(r'^.*/\*\*.*$')  # Beginning of doc-comment
 REGEX_COMMENT_MULTILINE_START = rgxcompile(r'^.*/\*.*$')  # Start of multiline-comment
 REGEX_COMMENT_MULTILINE_END = rgxcompile(r'^.*\*/.*$')  # End of multiline-comment
-REGEX_COMMENT_LINE = rgxcompile(r'^[ \t]*//.+$')  # The entire line is a comment
+REGEX_COMMENT_LINE = rgxcompile(r'^\s*//.+$')  # The entire line is a comment
 REGEX_COMMENT_MISSING_LEADING_SPACE = rgxcompile(r'^.*[^ ]([^ ]|[ ])//.+$')
 REGEX_COMMENT_MISSING_SPACE = rgxcompile(r'//[^ ].+')
 REGEX_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|FINISH|FIX|FIXME|REPAIR|TODO|TOMV|TORM|XXX)(:| |$)')
@@ -106,42 +107,42 @@ REGEX_WCHAR_VALID = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+ = L\'.+\';$')
 REGEX_FLOAT_POINT = rgxcompile(r'[Xxp0-9A-Fa-f\.\-]+(E|e|)(\+|\-|)[Xxp0-9A-Fa-f]+')
 
 # Macros
-REGEX_MACROS = rgxcompile(r'^[ \t]*#[ \t]*[a-z]+ .+', flags=IGNORECASE)
+REGEX_MACROS = rgxcompile(r'^\s*#\s*[a-z]+ .+', flags=IGNORECASE)
 REGEX_MACROS_INDENT = rgxcompile(r'^#([ ]+).+$')
-REGEX_INCLUDE = rgxcompile(r'^[ \t]*#[ \t]*include[ \t]+(\"|<)[a-z0-9 _\-\./]+(>|\").+', flags=IGNORECASE)
+REGEX_INCLUDE = rgxcompile(r'^\s*#\s*include\s+(\"|<)[a-z0-9 _\-\./]+(>|\").+', flags=IGNORECASE)
 REGEX_INCLUDE_VALID = rgxcompile(r'^#[ ]*include (\"|<)[\w \-\./]+(>|\")(  // .+|)$')
-REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^[ \t]+#[ ]*[a-z]+ .+$')
-REGEX_MACROS_SPACE = rgxcompile(r'^#[ \t]*[a-z]+ [ \t]+.+$')
+REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^\s+#[ ]*[a-z]+ .+$')
+REGEX_MACROS_SPACE = rgxcompile(r'^#\s*[a-z]+ \s+.+$')
 REGEX_MACROS_VALID = rgxcompile(r'^#[ ]*[a-z]+ .+$')
 REGEX_MACROS_WARN_ERR_SPACE = rgxcompile(r'^#[ ]*(error|warning)([ ]+)".+"$')
 REGEX_OPERATOR_EXTRA_SPACE = rgxcompile(r'.+(  &&|  \|\||&&  |\|\|  ).+')
 
 # Operators
-REGEX_DIV_SPACE = rgxcompile(r'^.+([ \t]+[ \t]/[^=]|/[^=][ \t][ \t]+).+$')
-REGEX_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]=[^=]|=[^=][ \t][ \t]+).+$')
-REGEX_MINUS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\-[^=]|\-[^=][ \t][ \t]+).+$')
-REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ][ \t]+[ \t]\*[^=]|\*[^=][ \t][ \t]+).+$')
-REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\!=|\!=[ \t][ \t]+).+$')
-REGEX_PLUS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\+[^=]|\+[^=][ \t]+[ \t]).+$')
-REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\+=|\+=[ \t][ \t]+).+$')
-REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\-=|\-=[ \t][ \t]+).+$')
-REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\*=|\*=[ \t][ \t]+).+$')
-REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]/=|/=[ \t][ \t]+).+$')
-REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]%=|%=[ \t][ \t]+).+$')
-REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]<<=|<<=[ \t][ \t]+).+$')
-REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]>>=|>>=[ \t][ \t]+).+$')
-REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\&=|\&=[ \t][ \t]+).+$')
-REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\|=|\|=[ \t][ \t]+).+$')
-REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\^=|\^=[ \t][ \t]+).+$')
-REGEX_MOD_SPACE = rgxcompile(r'^.+([ \t]+[ \t]%[^=]|%[^=][ \t][ \t]+).+$')
-REGEX_AND_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\&\&|\&\&[ \t][ \t]+).+$')
-REGEX_OR_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\|\||\|\|[ \t][ \t]+).+$')
-REGEX_TERNARY_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\?|\?[ \t][ \t]+).+$')
-REGEX_NOT_SPACE = rgxcompile(r'^.+([ \t]+[ \t]\!|\![ \t]+).+$')
-REGEX_LT_SPACE = rgxcompile(r'^.+[ \t]+[ \t]<.+$')
-REGEX_GT_SPACE = rgxcompile(r'^.+[ \t]+[ \t]>.+$')
-REGEX_OPERATOR_NO_SPACE1 = rgxcompile(r'^.+([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|)[^ \t].+$')
-REGEX_OPERATOR_NO_SPACE2 = rgxcompile(r'^.+[^ \t]([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|).+$')
+REGEX_DIV_SPACE = rgxcompile(r'^.+(\s+/[^=]|/[^=]\s+).+$')
+REGEX_EQUALS_SPACE = rgxcompile(r'^.+(\s+=[^=]|=[^=]\s+).+$')
+REGEX_MINUS_SPACE = rgxcompile(r'^.+(\s+\-[^=]|\-[^=]\s+).+$')
+REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ]\s+\*[^=]|\*[^=]\s+).+$')
+REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+(\s+\!=|\!=\s+).+$')
+REGEX_PLUS_SPACE = rgxcompile(r'^.+(\s+\+[^=]|\+[^=]\s+).+$')
+REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+(\s+\+=|\+=\s+).+$')
+REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+(\s+\-=|\-=\s+).+$')
+REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+(\s+\*=|\*=\s+).+$')
+REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+(\s+/=|/=\s+).+$')
+REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+(\s+%=|%=\s+).+$')
+REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s+<<=|<<=\s+).+$')
+REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s+>>=|>>=\s+).+$')
+REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+(\s+\&=|\&=\s+).+$')
+REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+(\s+\|=|\|=\s+).+$')
+REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+(\s+\^=|\^=\s+).+$')
+REGEX_MOD_SPACE = rgxcompile(r'^.+(\s+%[^=]|%[^=]\s+).+$')
+REGEX_AND_SPACE = rgxcompile(r'^.+(\s+\&\&|\&\&\s+).+$')
+REGEX_OR_SPACE = rgxcompile(r'^.+(\s+\|\||\|\|\s+).+$')
+REGEX_TERNARY_SPACE = rgxcompile(r'^.+(\s+\?|\?\s+).+$')
+REGEX_NOT_SPACE = rgxcompile(r'^.+(\s+\!|\!\s+).+$')
+REGEX_LT_SPACE = rgxcompile(r'^.+\s+<.+$')
+REGEX_GT_SPACE = rgxcompile(r'^.+\s+>.+$')
+REGEX_OPERATOR_NO_SPACE1 = rgxcompile(r'^.+([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|)[^\s].+$')
+REGEX_OPERATOR_NO_SPACE2 = rgxcompile(r'^.+[^\s]([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|).+$')
 OPERATOR_SPACE_VALID = rgxcompile(r'.+ ([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|) .+')
 EQUALS_INVALID_SPACE = rgxcompile(r'.+([\w\)\]\}\t]=|=[\w\(\[\{\t]).+')
 EQUALS_SPACE_VALID = rgxcompile(r'^.+ = .+$')
@@ -533,25 +534,17 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     if line.endswith(r' ') or line.endswith('\t'):
         # X042
         output_info(filepath, line_num, line, r'X042', r'Trailing white-space found')
-    if r'for(' in log_line or r'for  (' in log_line or 'for\t(' in log_line:
-        # X043
-        output_info(filepath, line_num, line, r'X043', r'Single space (never TAB) needed between `for` and `(`')
-    if r'while(' in log_line or r'while  (' in log_line or 'while\t(' in log_line:
-        # X044
-        output_info(filepath, line_num, line, r'X044', r'Single space (never TAB) needed between `while` and `(`')
-    _match = REGEX_IF_SPACE.search(log_line)
-    if _match or (log_line.strip().startswith(r'if') and (r'if(' in log_line or r'if  (' in log_line or 'if\t(' in log_line)):
-        # X045
-        output_info(filepath, line_num, line, 'X045', 'Single space (never TAB) needed between `if` and `(`')
-    if r'switch(' in log_line or r'switch  (' in log_line or 'switch\t(' in log_line:
-        # X046
-        output_info(filepath, line_num, line, r'X046', r'Single space (never TAB) needed between `switch` and `(`')
-    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in [r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]']) and not any(log_line.startswith(_test) for _test in [r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC']):
-        # X047
-        output_info(filepath, line_num, line, r'X047', r'Invalid array size')
     if r'return  ' in log_line or 'return\t' in log_line:
-        # X048
-        output_info(filepath, line_num, line, r'X048', r'Unneeded extra white-space after return')
+        # X043
+        output_info(filepath, line_num, line, r'X043', r'Unneeded extra white-space after return')
+    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in [r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]']) and not any(log_line.startswith(_test) for _test in [r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC']):
+        # X046
+        output_info(filepath, line_num, line, r'X046', r'Invalid array size')
+    _match = REGEX_CONSTRUCT_SPACE.search(log_line)
+    _match2 = REGEX_CONSTRUCT_SPACE_VALID.search(log_line)
+    if _match and not _match2:
+        # X045
+        output_info(filepath, line_num, line, 'X045', 'Single space (never TAB) needed between a constrcut keyword and `(`')
 
 
 # Optimize

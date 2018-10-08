@@ -72,6 +72,7 @@ __all__: list = [
 
 
 __author__: str = r'Devyn Collier Johnson'
+__docformat__: str = r'restructuredtext en'
 __email__: str = r'DevynCJohnson@Gmail.com'
 __copyright__: str = r'LGPLv3'
 __version__: str = r'2018.10.02'
