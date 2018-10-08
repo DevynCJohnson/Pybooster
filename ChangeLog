@@ -1,6 +1,7 @@
 2018-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional S3 commands
+	* snippets.conf:  Added additional snippets
 
 2018-10-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
