@@ -1,6 +1,8 @@
-syntax "PO" "\.pot?$"
+syntax "Inputrc" "inputrc$"
 
-color cyan "\<(msgid|msgstr)\>"
+color red "\<(off|none)\>"
+color green "\<on\>"
+color brightblue "\<set|\$include\>"
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
 color magenta "\\.?"
 color brightblack "(^|[[:space:]])#([^{].*)?$"

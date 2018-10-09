@@ -1,18 +1,8 @@
-syntax "man" "\.[1-9]x?$"
-magic "troff or preprocessor input"
-comment ".\""
+syntax "Man" "\.[1-9]x?$"
 
-color green "\.(SH|SS|TH) .*$"
-color brightgreen "\.(SH|SS|TH) " "\.([HIT]P)"
-color brightred "\.(B[IR]?|I[BR]?|R[BI]|S[BM]) .*$"
-color brightblue "\.(B[IR]?|I[BR]?|R[BI]|S[BM]) " "\.([LP]?P)$"
-color magenta "\\f[BIPR]"
-color yellow "\.(br|DT|RS|RE|PD)"
-
-# COMMENTS #
-
-color cyan "\.?\\\".*$"
-
-# TRAILING WHITESPACE #
-
-color ,green "[[:space:]]+$"
+color green "\.(S|T)H.*$"
+color brightgreen "\.(S|T)H" "\.TP"
+color brightred "\.(BR?|I[PR]?).*$"
+color brightblue "\.(BR?|I[PR]?|PP)"
+color brightwhite "\\f[BIPR]"
+color yellow "\.(br|DS|RS|RE|PD)"

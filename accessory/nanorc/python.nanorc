@@ -1,5 +1,5 @@
 syntax "python" "\.py$"
-header "^#!.*python[-0-9._]*"
+header "^#!.*python[\-0-9\._]*"
 magic "Python script"
 linter pyflakes
 comment "#"
@@ -10,15 +10,11 @@ icolor brightblue "def [0-9A-Z_]+"
 
 # KEYWORDS #
 
-color brightcyan "\<(and|as|assert|async|await|break|class|continue)\>"
-color brightcyan "\<(def|del|elif|else|except|exec|finally|for|from)\>"
-color brightcyan "\<(global|if|import|in|is|lambda|nonlocal|not|or)\>"
-color brightcyan "\<(pass|print|raise|return|try|while|with|yield)\>"
+color brightcyan "\<(and|as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\>"
 
 # SINGLE-QUOTED STRINGS #
 
-color yellow "'([^'\]|\\.)+'"
-color yellow ""([^"\]|\\.)+""
+color yellow "'([^'\]|\\.)+'" ""([^"\]|\\.)+""
 
 # COMMENTS #
 
@@ -35,7 +31,7 @@ color brightmagenta "\<(False|None|True)\>"
 
 # REMINDERS #
 
-color brightwhite,yellow "(DEBUG|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
 
 # SYNTAX CHECKER COMMENTS #
 

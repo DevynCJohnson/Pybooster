@@ -1,9 +1,3 @@
-syntax "mutt"
-
-# QUOTED LINES #
+syntax "Mutt"
 
 color green "^>.*"
-
-# SIGNATURES #
-
-color yellow start="^>* ?-- $" end="^>* ?$"

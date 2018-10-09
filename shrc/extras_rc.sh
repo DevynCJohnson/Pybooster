@@ -58,6 +58,7 @@ if [ -n "$(command -v chattr)" ]; then
     alias mkimmutable='chattr +i'
     alias mkmutable='chattr -i'
 fi
+[ -z "$(command -v shred)" ] && alias bleach='shred -f -u' && alias rrm='shred -f -u'
 [ -z "$(command -v softlink)" ] && alias softlink='ln -s'
 [ -z "$(command -v softln)" ] && alias softln='ln -s'
 [ -z "$(command -v trash)" ] && alias trash='mv -f -t "${HOME}/.local/share/Trash"'

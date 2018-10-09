@@ -1,36 +1,9 @@
-syntax "patch" "\.(patch|diff|debdiff)$"
-magic "diff output"
-comment ""
-
-# ADDED LINES #
+syntax "Patch" "\.(patch|diff)$"
 
 color brightgreen "^\+.*"
-
-# SHOW TRAILING WHITESPACE ONLY ON ADDED LINES #
-
-color ,green "[[:space:]]+$"
-
-# CONTEXT LINES #
-
-color brightblue "^ .*"
-
-# DELETED LINES #
-
-color brightred "^-.*"
-
-# HEADER LINES #
-
-color magenta "^(Index:|diff)[[:blank:]].*"
-
-# FILE NAMES & DATES #
-
-color red "^---.*"
 color green "^\+\+\+.*"
-
-# LINE NUMBERS #
-
+color brightblue "^ .*"
+color brightred "^-.*"
+color red "^---.*"
 color brightyellow "^@@.*"
-
-# STATISTICS #
-
-color cyan start="^---$" end="^$"
+color magenta "^diff.*"

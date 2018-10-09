@@ -1,0 +1,17 @@
+syntax "svn-commit" "svn-commit(\.[[:digit:]]+)?\.tmp$"
+
+# COMMIT MESSAGE #
+
+color yellow ".*"
+
+# EDITOR_EOF_PREFIX #
+
+color brightblack "^--.+--$"
+
+# FILE CHANGES #
+
+color white "^[ADM_](M|[[:space:]])[[:space:]](\+|[[:space:]])[[:space:]].*"
+color red "^D[[:space:]]{4}"
+color green "^[M_](M|[[:space:]])[[:space:]]{3}"
+color brightgreen "^A(M|[[:space:]])[[:space:]]{3}"
+color brightblue "^A(M|[[:space:]])[[:space:]]\+[[:space:]]"

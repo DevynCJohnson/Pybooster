@@ -91,7 +91,7 @@ REGEX_COMMENT_MULTILINE_END = rgxcompile(r'^.*\*/.*$')  # End of multiline-comme
 REGEX_COMMENT_LINE = rgxcompile(r'^\s*//.+$')  # The entire line is a comment
 REGEX_COMMENT_MISSING_LEADING_SPACE = rgxcompile(r'^.*[^ ]([^ ]|[ ])//.+$')
 REGEX_COMMENT_MISSING_SPACE = rgxcompile(r'//[^ ].+')
-REGEX_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|FINISH|FIX|FIXME|REPAIR|TODO|TOMV|TORM|XXX)(:| |$)')
+REGEX_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)(:| |$)')
 
 # Datatypes
 REGEX_FLOAT = rgxcompile(r'^' + SPECIFIER + r'float [\w]+( |)=( |)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+(F|);')

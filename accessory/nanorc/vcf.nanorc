@@ -1,0 +1,24 @@
+syntax "VCF" "\.vcf$"
+header "^##fileformat=VCFv[0-9\.]+$"
+
+# VALUES #
+
+color blue,red "\<[^\<\>]+\>"
+color magenta "[^=\<\>]+="
+
+# KEYWORDS #
+
+color brightgreen "^##fileformat=VCFv[0-9\.]+$"
+color brightblue "^##filedate=[0-9]+$" "^##source=.+$" "^##bcftools_[A-Za-z0-9_\-\.]+=.+$"
+color blue "^##FILTER=\<ID=.+,Description=.+\>$"
+color green "^##INFO=.+$"
+color cyan "^##FORMAT=.+$"
+color yellow "##contig="
+
+# HEADER #
+
+color black,brightyellow "^#CHROM.+$"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

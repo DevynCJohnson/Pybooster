@@ -1,0 +1,38 @@
+syntax "RST" "\.rest$" "\.rst$"
+
+# ITALICS #
+
+color magenta "\*[^*]\*"
+
+# BOLD #
+
+color red "\*\*[^*]+\*\*"
+
+# CODE BLOCK #
+
+color brightred "::"
+
+# LINK REFERENCE #
+
+color blue "`[^`]+`_{1,2}"
+
+# CODE #
+
+color yellow "``[^`]+``"
+
+# DIRECTIVES & COMMENTS #
+
+color cyan "^\.\. .*$"
+
+# ANONYMOUS LINK TARGETS #
+
+color cyan "^__ .*$"
+
+# H1-H5 #
+
+color yellow "^###+$"
+color yellow "^\*\*\*+$"
+color magenta "^===+$"
+color red "^---+$"
+color green "^\^\^\^+$"
+color blue "^"""+$"
