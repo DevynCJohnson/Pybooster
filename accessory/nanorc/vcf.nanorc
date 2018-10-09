@@ -1,24 +1,49 @@
 syntax "VCF" "\.vcf$"
-header "^##fileformat=VCFv[0-9\.]+$"
+header "^##fileformat=VCFv[0-9.]+$"
 
-# VALUES #
+# NUMBERS #
 
-color blue,red "\<[^\<\>]+\>"
-color magenta "[^=\<\>]+="
-
-# KEYWORDS #
-
-color brightgreen "^##fileformat=VCFv[0-9\.]+$"
-color brightblue "^##filedate=[0-9]+$" "^##source=.+$" "^##bcftools_[A-Za-z0-9_\-\.]+=.+$"
-color blue "^##FILTER=\<ID=.+,Description=.+\>$"
-color green "^##INFO=.+$"
-color cyan "^##FORMAT=.+$"
-color yellow "##contig="
+color brightmagenta "[0-9\.]+"
 
 # HEADER #
 
-color black,brightyellow "^#CHROM.+$"
+color black,cyan "^#CHROM[ 	]+POS[ 	]+ID[ 	]+REF[ 	]+ALT[ 	]+QUAL[ 	]+FILTER[ 	]+INFO.*$"
+
+# VALUES #
+
+icolor magenta "^##[A-Z0-9_]+=<.+>$"
+color ,red "^##[A-Za-z0-9_\-]+="
+
+# KEYWORDS #
+
+color brightyellow,blue "^##fileformat=VCFv[0-9\.]+$"
+color brightblue "^##filedate=" "^##source=" "^##bcftools_[A-Za-z0-9_\-\.]+="
+color green "^##INFO=<ID=[A-Za-z0-9_]+,Number=[A-Za-z0-9_\-\+\.]+,Type=(Character|Flag|Float|Integer|String),Description=\"[^\"]+\"(,Source=\"[^\"]+\"|)(,Version=\"[^\"]+\"|)>$"
+color cyan "^##FILTER=<ID=[A-Za-z0-9_]+,Description=\"[^\"]+\">$" "^##assembly=.+$" "##contig=<ID=[A-Za-z0-9_]+(,URL=.+|)>$" "^##FORMAT=<ID=[A-Za-z0-9_]+,Number=[A-Za-z0-9_\-\+\.]+,Type=(Character|Float|Integer|String),Description=\"[^\"]+\">$"
+color brightgreen "^##ALT=<ID=[A-Za-z0-9_\:\,]+,Description=\"[^\"]+\">$" "^##SAMPLE=<ID=[A-Za-z0-9_]+,Genomes=[A-Za-z0-9_\-\;\:]+,Mixture=[A-Za-z0-9_\-\+\;\:]+,Description=[A-Za-z0-9_\-\;\:]+>$" "^##PEDIGREE=<Name_0=[A-Za-z0-9_\-\:\;\+]+(,Name_[0-9]+=[A-Za-z0-9_\-\+\;\:]+|)>$" "^##pedigreeDB=<.+>$"
+
+# DATA #
+
+# icolor ,blue "^[a-z0-9_\+\-]+[ 	]+[0-9\-]+[ 	]+[a-z0-9_\-\;\:\+][ 	]+[ACGTN,]+[ 	]+[ACGTN,\*]+[ 	]+[0-9\.\-\+]+[ 	]+[a-z0-9\;_]+[ 	]+.*$"
+color ,magenta "[ 	]+\.[ 	]+"
+color ,green "[ 	]+PASS[ 	]+"
+
+# NUCLEOTIDES #
+
+color brightyellow,blue "[ 	,]+[ACGTN\*]+[ 	,]+[ACGTN\*]+[ 	,]+"
+
+# DATATYPES #
+
+color brightwhite,magenta "(Character|Flag|Float|Integer|String)"
+
+# STRINGS #
+
+color ,cyan "\"[^\"]+\""
 
 # TRAILING WHITESPACE #
 
 color ,green "[[:space:]]+$"
+
+# CHARACTERS #
+
+icolor brightwhite,black "[,=<>]+"

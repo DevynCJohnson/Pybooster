@@ -1,5 +1,5 @@
 syntax "python" "\.py$"
-header "^#!.*python[\-0-9\._]*"
+header "^#!.*python[-0-9._]*"
 magic "Python script"
 linter pyflakes
 comment "#"
