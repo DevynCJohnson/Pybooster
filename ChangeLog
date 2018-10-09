@@ -1,7 +1,12 @@
+2018-10-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Fixed a bug associated with the Dockerfile syntax highlighting
+
 2018-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional S3 commands
 	* snippets.conf:  Added additional snippets
+	* XCompose:  Added more symbols & key-combinations
 
 2018-10-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
