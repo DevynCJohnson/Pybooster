@@ -78,6 +78,14 @@ alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute
 alias ecr_mkrepo='aws ecr create-repository --repository-name'
 alias ecr_rmrepo='aws ecr delete-repository --repository-name'
 
+#' List the digests and tags of all of the Docker images in the specified ECR repository
+ecr_lsdockerimg() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (repository name)!\n' >&2
+    fi
+    aws ecr list-images --repository-name "${1}" | awk '{ if (NF >= 2 && NR > 2) { gsub("\"", "", $2); print $2; } }'
+}
+
 #' Remove a Docker image from the given repository name and existing tag
 ecr_rmimg() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
@@ -249,7 +257,7 @@ s3rename() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
     else
-        PATHNAME="$(dirname ${1:-})"
+        PATHNAME="$(dirname "${1:-}")"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
         aws s3 mv "s3:/${PATHNAME}" "${2}"
     fi

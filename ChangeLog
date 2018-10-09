@@ -1,5 +1,6 @@
 2018-10-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* aws_rc.sh:  Added additional ECR commands
 	* Geany:  Fixed a bug associated with the Dockerfile syntax highlighting
 
 2018-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
