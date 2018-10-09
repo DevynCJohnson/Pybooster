@@ -689,14 +689,10 @@ install_shrc :
 	$(LNHARD) /etc/profile /etc/bash.bashrc
 	([ ! -d $(INSTALLRCMODDIR) ] && $(MKDIRS) $(INSTALLRCMODDIR)) || true
 	$(COPY) -t $(INSTALLRCMODDIR) $(addprefix $(SHRCDIR)/, $(LIST_RC_MODULES))
-	# TODO: Remove the below line on October 9th, 2018
-	$(RM) /etc/shell_ext
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='
 	$(RM) /etc/bash.bashrc /etc/profile
-	# TODO: Remove the below line on October 9th, 2018
-	$(RM) /etc/shell_ext
 	$(MOVE) /etc/bash.bashrc.backup /etc/bash.bashrc
 	$(MOVE) /etc/profile.backup /etc/profile
 	$(RMDIR) $(INSTALLRCMODDIR)
