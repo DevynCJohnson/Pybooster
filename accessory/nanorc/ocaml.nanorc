@@ -1,6 +1,4 @@
-syntax "ocaml" "\.mli?$"
-magic "OCaml"
-comment "(*|*)"
+syntax "OCaml" "\.mli?$"
 
 # UID #
 
@@ -10,8 +8,7 @@ color red "\<[A-Z][0-9a-z_]{2,}\>"
 
 color green "\<(let|val|method|in|and|rec|private|virtual|constraint)\>"
 
-
-# STRUCTURE ITEMS #
+# STRUCTURE #
 
 color red "\<(type|open|class|module|exception|external)\>"
 
@@ -19,9 +16,9 @@ color red "\<(type|open|class|module|exception|external)\>"
 
 color blue "\<(fun|function|functor|match|try|with)\>"
 
-# PATTERN MODIFIERS #
+# PATTERN-MODIFIERS #
 
-color yellow "\<(as|when|of)\>"
+color yellow "\<(as|when|of)\>" 
 
 # CONDITIONS #
 
@@ -39,7 +36,7 @@ color green "\<(true|false)\>"
 
 color green "\<(include|inherit|initializer)\>"
 
-# EXPRESSION MODIFIERS #
+# EXPR MODIFIERS #
 
 color yellow "\<(new|ref|mutable|lazy|assert|raise)\>"
 
@@ -50,3 +47,7 @@ color white start="\(\*" end="\*\)"
 # STRINGS #
 
 color brightblack ""[^\"]*""
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

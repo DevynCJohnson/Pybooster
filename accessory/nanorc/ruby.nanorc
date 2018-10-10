@@ -43,4 +43,4 @@ color green start="<<-?'?EOT'?" end="^EOT"
 
 # REMINDERS #
 
-color brightcyan "(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "# (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"

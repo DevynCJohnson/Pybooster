@@ -1,19 +1,12 @@
-syntax "xml" "\.([jrsx]html?|jnlp|mml|pom|rng|sgml?|svg|w[as]dl|wsdd|xjb|xml|xs(d|lt?)|xul)$"
-header "<\?xml.*version=.*\?>"
-magic "(XML|SGML) (sub)?document"
-comment "<!--|-->"
+syntax "XML" ".*\.([jrs]?html?|xml|sgml?|rng)$"
 
-# TAGS #
-
+color white "^.+$"
 color green start="<" end=">"
 color cyan "<[^> ]+" ">"
-color magenta "\"[^"]*\""
-
-# COMMENTS #
-
 color yellow start="<!DOCTYPE" end="[/]?>"
 color yellow start="<!--" end="-->"
-
-# ESCAPES #
-
 color red "&[^;]*;"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

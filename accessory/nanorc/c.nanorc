@@ -36,7 +36,7 @@ color brightgreen start="/\*" end="\*/"
 
 # REMINDERS #
 
-color brightwhite,yellow "(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "(//|/\*|^) (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
 
 # TRAILING WHITESPACE #
 

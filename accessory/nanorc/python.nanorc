@@ -31,7 +31,7 @@ color brightmagenta "\<(False|None|True)\>"
 
 # REMINDERS #
 
-color brightwhite,yellow "(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "# (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
 
 # SYNTAX CHECKER COMMENTS #
 

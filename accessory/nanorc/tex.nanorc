@@ -1,8 +1,7 @@
-syntax "tex" "\.tex$"
-magic "(La)?TeX document"
-linter chktex -v0 -q -I
-comment "%"
+syntax "TeX" "\.tex$" "bib" "\.bib$" "cls" "\.cls$"
 
+color yellow "\$(\\\$|[^$])*[^\\]\$" "\$\$(\\\$|[^$])*[^\\]\$\$"
 icolor green "\\.|\\[A-Z]*"
 color magenta "[{}]"
-color blue "(^|[^\])%.*"
+color blue "%.*"
+color blue start="\\begin\{comment\}" end="\\end\{comment\}"

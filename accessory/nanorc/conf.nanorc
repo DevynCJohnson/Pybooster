@@ -6,7 +6,7 @@ color magenta "^.*$"
 
 # SECTION HEADINGS #
 
-icolor brightyellow "^\s*(\[([A-Z0-9_\.\-\+@#%&=]|\s)+\])+\s*$" "^\[[A-Z0-9_\.\-\+@#%&=]+\]$"
+icolor brightyellow "^\s*(\[([A-Z0-9_\.\-\+@#%&=<>]|\s)+\])+\s*$" "^\[[A-Z0-9_\.\-\+@#%&=<>]+\]$"
 color brightcyan "^\s*((Sub)?Section\s*(=|\>)|End(Sub)?Section\s*$)"
 color brightcyan "^\s*\$(end)?if(\s|$)"
 
