@@ -52,12 +52,14 @@ alias ltm='ls -a -l -F -t'
 # File Manipulation Aliases
 
 [ -z "$(command -v cptree)" ] && alias cptree='cp -R'
+[ -z "$(command -v cpdir)" ] && alias cpdir='cp -R'
 [ -z "$(command -v del)" ] && alias del='rm'
 [ -z "$(command -v hardlink)" ] && alias hardlink='ln'
 if [ -n "$(command -v chattr)" ]; then
     alias mkimmutable='chattr +i'
     alias mkmutable='chattr -i'
 fi
+[ -z "$(command -v rmtree)" ] && alias rmtree='rm -f -r'
 [ -z "$(command -v shred)" ] && alias bleach='shred -f -u' && alias rrm='shred -f -u'
 [ -z "$(command -v softlink)" ] && alias softlink='ln -s'
 [ -z "$(command -v softln)" ] && alias softln='ln -s'
@@ -291,6 +293,38 @@ findfilex() {
         find "$2" -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
         find / -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+    fi
+}
+
+#' Find file and directory names (recursively) containing the specified pattern and rename the file/directory using the replacement text in-place if the found pattern in the current directory (unless specified otherwise)
+#' @param[in] $1 Text pattern to find in the file/directory names
+#' @param[in] $2 New text that will replace the found pattern
+#' @param[in] $3 (Optional) Directory to search recursively
+findrename() {
+    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+        printf 'USAGE: findrename "FIND" "REPLACE" [DIRECTORY]\n'
+    elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
+    elif [ -n "${3:-}" ] && [ -d "${3}" ]; then
+        find "${3}" -name "*${1}*" -exec sh -c 'mv "${0}" "$(echo "${0}" | sed "s|${1}|${2}|g")"' {} \;
+    elif [ -z "${3:-}" ]; then
+        find . -name "*${1}*" -exec sh -c 'mv "${0}" "$(echo "${0}" | sed "s|${1}|${2}|g")"' {} \;
+    fi
+}
+
+#' Find and replace text recursively in the current directory (unless specified otherwise)
+#' @param[in] $1 Text pattern to find
+#' @param[in] $2 New text that will replace the found pattern
+#' @param[in] $3 (Optional) Directory to search recursively
+findrep() {
+    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+        printf 'USAGE: findrep "FIND" "REPLACE" [DIRECTORY]\n'
+    elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
+    elif [ -n "${3:-}" ] && [ -d "${3}" ]; then
+        find "${3}" -type f -print0 | xargs -0 sed --in-place "s|${1}|${2}|g"
+    elif [ -z "${3:-}" ]; then
+        find . -type f -print0 | xargs -0 sed --in-place "s|${1}|${2}|g"
     fi
 }
 
@@ -544,6 +578,7 @@ ihelp() {
         info "${1}" 2> /dev/null && break
         "${1}" --help 2> /dev/null && break
         printf 'ERROR: Unable to find information on %s!\n' "${1}" >&2
+        break
     done
 }
 
