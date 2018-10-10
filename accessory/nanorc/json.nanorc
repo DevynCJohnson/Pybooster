@@ -1,11 +1,42 @@
-syntax "JSON" "\.json$"
+syntax "json" "\.json$"
 header "^\{$"
+comment ""
 
-color blue "\<[-]?[1-9][0-9]*([Ee][+-]?[0-9]+)?\>" "\<[-]?[0](\.[0-9]+)?\>"
+# NUMBERS #
+
+color magenta ":[[:space:]]*\-?(0|[1-9][0-9]*)(\.[0-9]+)?([Ee]?[-+]?[0-9]+)?" "\<[-]?[0](\.[0-9]+)?\>"
+
+# VALUES #
+
+color brightmagenta "\".+\""
+
+# HEX NUMBERS #
+
+color brightgreen ":[[:space:]]*\"#[0-9abcdefABCDEF]+\""
+
+# ESCAPES #
+
+color green "\\\\" "\\\"" "\\[bfnrt'\"/\\]" "\\u[0-9abcdefABCDEF]{4})"
+
+# SPECIAL WORDS #
+
 color cyan "\<null\>"
 color brightcyan "\<(true|false)\>"
-color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
-color brightyellow "\"(\\"|[^"])*\"[[:space:]]*:" "'(\'|[^'])*'[[:space:]]*:"
-color magenta "\\u[0-9a-fA-F]{4}|\\[bfnrt'"/\\]"
+
+# NAMES #
+
+color brightblue "\"[^"]+\"[[:space:]]*:"
+
+# BRACKETS, BRACES, & SEPARATORS #
+
+color brightblue "\[" "\]"
+color brightred "\{" "\}" "," ":"
+
+# COMMENTS #
+
+color green "(^|[[:space:]]+)(//|#).*$"
+
+# TRAILING WHITESPACE #
+
 color ,green "[[:space:]]+$"
 color ,red "	+ +| +	+"
