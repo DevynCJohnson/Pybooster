@@ -4,5 +4,8 @@ color cyan "\<(msgid|msgstr)\>"
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
 color magenta "\\.?"
 color brightblack "(^|[[:space:]])#([^{].*)?$"
+
+# TRAILING WHITESPACE #
+
 color ,green "[[:space:]]+$"
 color ,red "	+ +| +	+"

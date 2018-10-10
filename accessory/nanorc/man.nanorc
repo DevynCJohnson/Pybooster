@@ -1,4 +1,4 @@
-syntax "Man" "\.[1-9]x?$"
+syntax "man" "\.[1-9]x?$"
 
 color green "\.(S|T)H.*$"
 color brightgreen "\.(S|T)H" "\.TP"

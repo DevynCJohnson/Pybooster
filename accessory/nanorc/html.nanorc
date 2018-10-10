@@ -4,15 +4,11 @@ comment "<!--|-->"
 
 # TAGS #
 
-color cyan "<[[:alpha:]/!?][^>]*>"
+color brightmagenta "</?[biu]>" "<[[:alpha:]/!?][^>]*>"
 
-# BOLD, ITALIC, & UNDERLINED #
+# CHARACTER REFERENCES #
 
-color brightmagenta "</?[biu]>"
-
-# NAMED CHARACTER REFERENCES #
-
-color red "&[^;[:space:]]*;"
+color cyan "&[^;[:space:]]*;"
 
 # STRINGS #
 
@@ -20,15 +16,15 @@ color green ""(\\.|[^"])*""
 
 # ATTRIBUTES #
 
-color red "(abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border)="
-color red "(cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
-color red "(content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype)="
-color red "(for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
-color red "(label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple)="
-color red "(name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev)="
-color red "(rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary)="
-color red "(tabindex|target|text|title|type|usemap|valign|value(type)?|vlink|vspace|width|xmlns|xml:space)="
+color blue "(abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border)="
+color blue "(cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
+color blue "(content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype)="
+color blue "(for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
+color blue "(label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple)="
+color blue "(name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev)="
+color blue "(rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary)="
+color blue "(tabindex|target|text|title|type|usemap|valign|value(type)?|vlink|vspace|width|xmlns|xml:space)="
 
 # COMMENTS #
 
-color yellow start="<!--" end="-->"
+color red start="<!--" end="-->"

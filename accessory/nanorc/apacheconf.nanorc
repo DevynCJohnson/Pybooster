@@ -1,4 +1,4 @@
-syntax "Apacheconf" "httpd\.conf|mime\.types|vhosts\.d\\*|\.htaccess"
+syntax "apacheconf" "httpd\.conf|mime\.types|vhosts\.d\\*|\.htaccess"
 
 color yellow ".+"
 color brightcyan "(AcceptMutex|AcceptPathInfo|AccessFileName|Action|AddAlt|AddAltByEncoding|AddAltByType|AddCharset|AddDefaultCharset|AddDescription|AddEncoding)"
@@ -39,10 +39,10 @@ color brightcyan "(ThreadsPerChild|ThreadStackSize|TimeOut|TraceEnable|TransferL
 color brightcyan "(VirtualDocumentRootIP|VirtualHost|VirtualScriptAlias|VirtualScriptAliasIP|Win32DisableAcceptEx|XBitHack)"
 
 color yellow "<[^>]+>"
-color brightcyan "</?[A-Za-z]+"
-color brightcyan "(<|</|>)"
+color brightcyan "</?[A-Za-z]+" "(<|</|>)"
 color green "\"(\\.|[^\"])*\""
 color white "#.*"
 
 # TRAILING WHITESPACE #
+
 color ,green "[[:space:]]+$"

@@ -1,4 +1,4 @@
-syntax "iCal" "\.ics$"
+syntax "ical" "\.ics$"
 
 color green start="^BEGIN:VCALENDAR$" end="^END:VCALENDAR$"
 color yellow start="^BEGIN:VCARD$" end="^END:VCARD$"

@@ -4,9 +4,9 @@ magic "Python script"
 linter pyflakes
 comment "#"
 
-# FUNCTION DEFINITIONS #
+# DEFINITIONS #
 
-icolor brightblue "def [0-9A-Z_]+"
+icolor brightblue "^[ 	]*(class|def) [0-9A-Z_]+"
 
 # KEYWORDS #
 
@@ -29,13 +29,10 @@ color brightgreen start="\"\"\"([^"),]|$)" end="(^|[^(\])\"\"\""
 
 color brightmagenta "\<(False|None|True)\>"
 
-# REMINDERS #
+# SPECIAL COMMENTS #
 
 color brightwhite,yellow "# (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
-
-# SYNTAX CHECKER COMMENTS #
-
-color blue,yellow "#[ 	]*(noqa:|nosec|pylint:)"
+color blue,yellow "#[ 	]*(bandit|cython:|doctest:|EASY\-INSTALL\-ENTRY\-SCRIPT:|mypy:|noqa:|nosec|pylint:|type:)" "##(doc|doc\-class|doc\-method|doc\-module|header):"
 
 # TRAILING WHITESPACE #
 

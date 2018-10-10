@@ -1,4 +1,5 @@
-syntax "Groff" "\.m[ems]$" "\.rof" "\.tmac$" "^tmac."
+syntax "groff" "\.m[ems]$" "\.rof" "\.tmac$" "^tmac."
+comment "\.\\"
 
 # ARGUMENTS #
 
@@ -6,8 +7,7 @@ color cyan "^\.(ds|nr) [^[[:space:]]]*"
 
 # SINGLE CHARACTER ESCAPES #
 
-color brightmagenta "\\."
-color brightmagenta "\\f." "\\f\(.." "\\s(\+|\-)?[0-9]"
+color brightmagenta "\\." "\\f." "\\f\(.." "\\s(\+|\-)?[0-9]"
 
 # NEWLINES #
 

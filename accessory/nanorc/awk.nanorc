@@ -18,13 +18,12 @@ color red "\<(PROCINFO|RS|RT|RSTART|RLENGTH|SUBSEP|TEXTDOMAIN)\>"
 color brightgreen "\<(function|extension|BEGIN|END)\>"
 
 # FLOW CONTROL #
-color brightyellow "\<(for|if|while|do|else|in|delete|exit)\>"
-color brightyellow "\<(break|continue|return)\>"
+
+color brightyellow "\<(for|if|while|do|else|in|delete|exit|break|continue|return)\>"
 
 # I/O STATEMENTS #
 
-color brightgreen "\<(close|getline|next|nextfile|print|printf)\>"
-color brightgreen "\<(system|fflush)\>"
+color brightgreen "\<(close|getline|next|nextfile|print|printf|system|fflush)\>"
 
 # STANDARD FUNCTIONS #
 

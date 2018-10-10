@@ -1,4 +1,5 @@
-syntax "conf" "(\.(conf|config|cfg|cnf|rc|lst|list|defs|ini|desktop|mime|types|preset|cache|seat|service|htaccess)$|(^|/)(\w*crontab|mirrorlist|group|hosts|passwd|rpc|netconfig|shadow|fstab|inittab|inputrc|protocols|sudoers)$|conf.d/|.config/)"
+syntax "conf" "\.(conf|config|cfg|cnf|rc|lst|list|defs|ini|desktop|mime|types|preset|cache|seat|service|htaccess)$" "(^|/)(\w*crontab|mirrorlist|group|hosts|passwd|rpc|netconfig|shadow|fstab|inittab|inputrc|protocols|sudoers)$" "conf.d/" ".config/"
+comment "#"
 
 # DEFAULT TEXT #
 
@@ -16,8 +17,7 @@ icolor brightblue "(^|\s|=)(default|true|false|on|off|yes|no)(\s|$)"
 
 # KEYS #
 
-icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%@#&\+\-]+\s*([:]|\>)"
-icolor cyan "^\s*(\$if )?([A-Z0-9_\/\.\%@#&\+\-]|\s)+="
+icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%@#&\+\-]+\s*([:]|\>)" "^\s*(\$if )?([A-Z0-9_\/\.\%@#&\+\-]|\s)+="
 
 # COMMANDS #
 
@@ -29,14 +29,12 @@ color yellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
 
 # NUMBERS #
 
-color red "(^|\s|[\[/:|\<\>(){}=,\]|\])[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
+color brightmagenta "(^|\s|[\[/:|\<\>(){}=,\]|\])[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
 
 # PUNCTUATION #
 
-color blue "[.]"
-color blue "/"
-color brightwhite "(\]|[()\<\>\[\]{},;\:=])"
-color brightwhite "(^|\[|\{|\:)\s*\-(\s|$)"
+color blue "[.]" "/"
+color brightwhite "(\]|[()\<\>\[\]{},;\:=])" "(^|\[|\{|\:)\s*\-(\s|$)"
 
 # URLS #
 
@@ -48,7 +46,5 @@ icolor brightcyan "</?\w+((\s*\w+\s*=)?\s*("[^"]*"|'[^']*'|!?[A-Z0-9_:/]))*(\s*/
 
 # COMMENTS #
 
-color white "#.*$"
-color blue "^\s*##.*$"
-color white "^;.*$"
-color white start="<!--" end="-->"
+color red "^\s*(#|;).*$"
+color red start="<!--" end="-->"

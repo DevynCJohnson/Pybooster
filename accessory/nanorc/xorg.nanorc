@@ -1,0 +1,20 @@
+syntax "xorg" "xorg\.conf$"
+comment "#"
+
+color brightwhite,blue "(Section|EndSection|Sub[sS]ection|EndSub[sS]ection)"
+
+# KEYWORDS #
+
+color brightblue "[^A-Za-z0-9](Identifier|Screen|InputDevice|Option|RightOf|LeftOf|Driver|RgbPath|FontPath|ModulePath|Load|VendorName|ModelName|BoardName|BusID|Device|Monitor|DefaultDepth|View[pP]ort|Depth|Virtual|Modes|Mode|DefaultColorDepth|Modeline|\+vsync|\+hsync|HorizSync|VertRefresh)[^A-Za-z0-9]"
+
+# NUMBER #
+
+color magenta "[0-9]"
+
+# STRINGS #
+
+color yellow ""(\\.|[^\"])*""
+
+# COMMENTS #
+
+color red "#.*"

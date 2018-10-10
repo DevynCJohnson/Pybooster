@@ -1,4 +1,4 @@
-syntax "m" "\.m$"
+syntax "objc" "\.m$"
 magic "Objective-C source"
 comment "//"
 

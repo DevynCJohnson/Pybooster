@@ -1,17 +1,21 @@
-syntax "fortran" "\.(f|f90|f95)$"
+syntax "fortran" "\.(f|f90|f95|f03|f08|f15|for|fortran|fpp|ftn)$"
 comment "!"
 
-color red "\<[0-9]+\>"
+# NUMBERS #
 
-icolor green "\<(action|advance|all|allocatable|allocated|any|apostrophe)\>"
-icolor green "\<(append|asis|assign|assignment|associated|character|common)\>"
-icolor green "\<(complex|data|default|delim|dimension|double precision)\>"
-icolor green "\<(elemental|epsilon|external|file|fmt|form|format|huge)\>"
-icolor green "\<(implicit|include|index|inquire|integer|intent|interface)\>"
-icolor green "\<(intrinsic|iostat|kind|logical|module|none|null|only)>"
-icolor green "\<(operator|optional|pack|parameter|pointer|position|private)\>"
-icolor green "\<(program|public|real|recl|recursive|selected_int_kind)\>"
-icolor green "\<(selected_real_kind|subroutine|status)\>"
+color magenta "\<[0-9]+\>"
+
+# KEYWORDS #
+
+icolor blue "\<(action|advance|all|allocatable|allocated|any|apostrophe)\>"
+icolor blue "\<(append|asis|assign|assignment|associated|character|common)\>"
+icolor blue "\<(complex|data|default|delim|dimension|double precision)\>"
+icolor blue "\<(elemental|epsilon|external|file|fmt|form|format|huge)\>"
+icolor blue "\<(implicit|include|index|inquire|integer|intent|interface)\>"
+icolor blue "\<(intrinsic|iostat|kind|logical|module|none|null|only)>"
+icolor blue "\<(operator|optional|pack|parameter|pointer|position|private)\>"
+icolor blue "\<(program|public|real|recl|recursive|selected_int_kind)\>"
+icolor blue "\<(selected_real_kind|subroutine|status)\>"
 
 icolor cyan "\<(abs|achar|adjustl|adjustr|allocate|bit_size|call|char)\>"
 icolor cyan "\<(close|contains|count|cpu_time|cshift|date_and_time)\>"
@@ -25,11 +29,11 @@ icolor cyan "\<(reshape|rewind|save|scan|sequence|shape|sign|size|spacing)\>"
 icolor cyan "\<(spread|sum|system_clock|target|transfer|transpose|trim)\>"
 icolor cyan "\<(ubound|unpack|verify|write|tiny|type|use|yes)\>"
 
-icolor yellow "\<(.and.|case|do|else|else?if|else?where|end|end?do|end?if)\>"
-icolor yellow "\<(end?select|.eqv.|forall|if|lge|lgt|lle|llt|.neqv.|.not.)\>"
-icolor yellow "\<(.or.|repeat|select case|then|where|while)\>"
+icolor green "\<(.and.|case|do|else|else?if|else?where|end|end?do|end?if)\>"
+icolor green "\<(end?select|.eqv.|forall|if|lge|lgt|lle|llt|.neqv.|.not.)\>"
+icolor green "\<(.or.|repeat|select case|then|where|while)\>"
 
-icolor magenta "\<(continue|cycle|exit|go?to|result|return)\>"
+icolor brightblue "\<(continue|cycle|exit|go?to|result|return)\>"
 
 # STRINGS #
 
@@ -37,4 +41,4 @@ icolor yellow "<[^= 	]*>" ""(\\.|[^"])*""
 
 # COMMENTS #
 
-icolor blue "!.*"
+icolor red "!.*"

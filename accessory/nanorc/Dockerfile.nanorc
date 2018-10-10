@@ -1,4 +1,5 @@
 syntax "Dockerfile" "Dockerfile[^/]*$" "\.dockerfile$"
+comment "#"
 
 # KEYWORDS #
 

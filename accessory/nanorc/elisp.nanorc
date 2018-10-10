@@ -16,7 +16,7 @@ color brightcyan "\<define-(derived|minor|generic)-mode\>"
 
 # DEFINING VARIABLES #
 
-color brightcyan "\<def(class|const|var(-local|alias)?)\>"
+color cyan "\<def(class|const|var(-local|alias)?)\>"
 
 # CUSTOMIZATION FUNCTIONS #
 
@@ -36,7 +36,7 @@ color brightyellow "#?'\<(\w|-)+\>"
 
 # BOOLEANS #
 
-color brightred "\<(t|nil)\>"
+color green "\<(t|nil)\>"
 
 # KEYWORDS #
 
@@ -49,4 +49,4 @@ color yellow ""(\\.|[^"])*""
 
 # COMMENTS #
 
-color cyan "(^|[[:space:]]);.*$"
+color red "(^|[[:space:]]);.*$"
