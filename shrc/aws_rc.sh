@@ -73,7 +73,7 @@ ec2_inst_type() {
 # AWS ECR #
 
 
-alias ecr_desc_repo='aws ecr describe-repositories --no-paginate'
+alias ecr_desc_repos='aws ecr describe-repositories --no-paginate'
 alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute Docker login code
 alias ecr_mkrepo='aws ecr create-repository --repository-name'
 alias ecr_rmrepo='aws ecr delete-repository --repository-name'
@@ -87,14 +87,32 @@ ecr_lsdockerimg() {
 }
 
 #' Remove a Docker image from the given repository name and existing tag
+#' @section USAGE
+#' ecr_rmimg REPOSITORY_NAME EXISTING_TAG
+#' @param[in] $1 Repository
+#' @param[in] $2 Existing tag or image digest of the image to remove
 ecr_rmimg() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (repository name, existing tag)!\n' >&2
     fi
-    aws ecr batch-delete-image --repository-name "${1:-}" --image-ids imageTag="${2:-}"
+    if [ "$(expr "${2}" : '.*')" != 71 ]; then
+        case "${2}" in
+            # Correct digest prefix is present
+            sha256:*) imgdigest="${2}";;
+            # Missing digest prefix; it will be added
+            *) imgdigest="sha256:${2}";;
+        esac
+        aws ecr batch-delete-image --repository-name "${1}" --image-ids imageDigest="${imgdigest}"
+    fi
+    aws ecr batch-delete-image --repository-name "${1}" --image-ids imageTag="${2}"
 }
 
 #' Apply an additional tag to the Docker image given the repository name, existing tag, and the new tag
+#' @section USAGE
+#' ecr_addtag REPOSITORY_NAME EXISTING_TAG NEW_TAG
+#' @param[in] $1 Repository
+#' @param[in] $2 Existing tag
+#' @param[in] $3 New tag to append
 ecr_addtag() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
         printf 'ERROR: Three parameters are required (repository name, existing tag, new tag)!\n' >&2
@@ -106,7 +124,12 @@ ecr_addtag() {
     aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}" > /dev/null
 }
 
-#' Apply a tag to a tagless Docker image given the repository name, image digest, and the new tag
+#' Apply a tag to a tagless Docker image given the repository name, image digest, and the new tag (AWS & Docker login must be applied first)
+#' @section USAGE
+#' ecr_addtag2tagless REPOSITORY_NAME IMAGE_DIGEST NEW_TAG
+#' @param[in] $1 Repository
+#' @param[in] $2 Image digest (with or without prefix)
+#' @param[in] $3 New tag to append
 ecr_addtag2tagless() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
         printf 'ERROR: Three parameters are required (repository name, image digest, new tag)!\n' >&2
@@ -128,6 +151,10 @@ ecr_addtag2tagless() {
 }
 
 #' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
+#' @section USAGE
+#' ecr_imgmanifest REPOSITORY_NAME EXISTING_TAG NEW_TAG
+#' @param[in] $1 Repository
+#' @param[in] $2 Existing tag
 ecr_imgmanifest() { aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text; }
 
 

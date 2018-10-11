@@ -1,3 +1,8 @@
+2018-10-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Added additional documentation & improved some commands
+	* snippets.conf:  Added more snippets
+
 2018-10-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* extras_rc.sh:  Fixed some bugs & added additional code
