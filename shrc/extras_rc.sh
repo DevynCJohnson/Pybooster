@@ -373,6 +373,54 @@ searchInPkgPath() {
     fi
 }
 
+# Mail Functions
+
+if [ -x "$(command -v mail)" ]; then
+    #' Send an email to somebody
+    #' @param[in] $1 Subject line
+    #' @param[in] $2 Body message
+    #' @param[in] $3 Recipient (Mail to email address)
+    email() {
+        if [ -z "${NAME:-}" ]; then
+            if [ -n "${USERNAME:-}" ]; then
+                NAME="${USERNAME}"
+            elif [ -x "$(command -v whoami)" ]; then
+                NAME="$(whoami)"
+            else
+                printf 'ERROR: Unable to find the name of the sender (global variable "NAME" is missing)!\n' >&2
+            fi
+        fi
+        if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ] || [ -z "${EMAIL:-}" ]; then
+            printf 'ERROR: This command requires three parameters (Subject-line, Body-msg, & recipient) & the global variable "Email" set to the desired email address for the sender!\n' >&2
+        else
+            echo "${2}" | mail -a "FROM: ${NAME} <${EMAIL}>" -s "${1}" "${3}"
+        fi
+    }
+
+    #' Email a file to somebody
+    #' @param[in] $1 Subject line
+    #' @param[in] $2 File path
+    #' @param[in] $3 Recipient (Mail to email address)
+    email_file() {
+        if [ -z "${NAME:-}" ]; then
+            if [ -n "${USERNAME:-}" ]; then
+                NAME="${USERNAME}"
+            elif [ -x "$(command -v whoami)" ]; then
+                NAME="$(whoami)"
+            else
+                printf 'ERROR: Unable to find the name of the sender (global variable "NAME" is missing)!\n' >&2
+            fi
+        fi
+        if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ] || [ -z "${EMAIL:-}" ]; then
+            printf 'ERROR: This command requires three parameters (Subject-line, File-location, & Destination email address) & the global variable "Email" set to the desired email address for the sender!\n' >&2
+        elif [ ! -r "${2}" ] || [ ! -f "${2}" ]; then
+            printf 'ERROR: The attached file either does not exist, does not have the needed permissions, or is not a file!\n' >&2
+        else
+            mail -A "${2}" -a "FROM: ${NAME} <${EMAIL}>" -s "${1}" "${3}"
+        fi
+    }
+fi
+
 # Networking Functions
 
 #' Determine if the network is up by looking for any non-loopback internet network interfaces
