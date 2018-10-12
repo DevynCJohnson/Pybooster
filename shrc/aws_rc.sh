@@ -36,6 +36,7 @@ alias bat_mkjobdef='aws batch register-job-definition --cli-input-json'
 alias bat_mkjobq='aws batch create-job-queue --cli-input-json'
 alias bat_rmcompenv='aws batch delete-compute-environment --compute-environment'
 alias bat_rmjobq='aws batch delete-job-queue --job-queue'
+alias bat_watch_job='watch -n 10 aws batch describe-jobs --jobs'  #' Continually watch the status of the specified BATCH job (by Job ID)
 
 
 #' List the compute environments in BATCH
