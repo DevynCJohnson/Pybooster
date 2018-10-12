@@ -20,20 +20,162 @@ alias awstime='sudo ntpdate 0.amazon.pool.ntp.org; sudo ntpdate 0.amazon.pool.nt
 
 
 alias bat_desc_compenv='aws batch describe-compute-environments'
-alias bat_desc_jq='aws batch describe-job-queues'
+alias bat_desc_job='aws batch describe-jobs --jobs'
+alias bat_desc_jobdef='aws batch describe-job-definitions'
+alias bat_desc_jobdef_active='aws batch describe-job-definitions --status ACTIVE'
+alias bat_desc_jobdef_inactive='aws batch describe-job-definitions --status INACTIVE'
+alias bat_desc_jobq='aws batch describe-job-queues'
 alias bat_disable_compenv='aws batch update-compute-environment --state DISABLED --compute-environment'
 alias bat_disable_jq='aws batch update-job-queue --state DISABLE --job-queue'
 alias bat_enable_compenv='aws batch update-compute-environment --state ENABLED --compute-environment'
 alias bat_enable_jq='aws batch update-job-queue --state ENABLE --job-queue'
-alias bat_lscompenv='aws batch describe-compute-environments | grep computeEnvironmentName'
-alias bat_lsjobs='aws batch list-jobs'  #' Lists running jobs
-alias bat_lsjq='aws batch describe-job-queues | grep jobQueueName'
+alias bat_jobdef='aws batch describe-job-definitions --job-definitions'
 alias bat_mkcompenv='aws batch create-compute-environment --cli-input-json'
 alias bat_mkjob='aws batch submit-job --cli-input-json'
 alias bat_mkjobdef='aws batch register-job-definition --cli-input-json'
-alias bat_mkjq='aws batch create-job-queue --cli-input-json'
+alias bat_mkjobq='aws batch create-job-queue --cli-input-json'
 alias bat_rmcompenv='aws batch delete-compute-environment --compute-environment'
-alias bat_rmjq='aws batch delete-job-queue --job-queue'
+alias bat_rmjobq='aws batch delete-job-queue --job-queue'
+
+
+#' List the compute environments in BATCH
+bat_lscompenv() {
+    aws batch describe-compute-environments --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"ComputeEnvironment /, "", $0); gsub(/"computeEnvironmentName":/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f
+}
+
+
+#' List the ECS Cluster ARNs used in the compute environments in BATCH
+bat_lsecsarn() {
+    aws batch describe-compute-environments --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"ecsClusterArn"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | grep -F 'arn:' | sort -d -f
+}
+
+
+#' List the names of the BATCH Job Queues
+bat_lsjobq() {
+    aws batch describe-job-queues --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"statusReason": "JobQueue /, "", $0); gsub(/"jobQueueName"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f
+}
+
+
+#' List the jobs in the specified queue by job status
+#' @param[in] $1 Job-Queue name
+bat_lsjobs() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        printf '%s\n' '----- SUBMITTED -----'
+        bat_lsjobs_submitted "${1}"
+        printf '\n%s\n' '----- PENDING -----'
+        bat_lsjobs_pending "${1}"
+        printf '\n%s\n' '----- RUNNABLE -----'
+        bat_lsjobs_runnable "${1}"
+        printf '\n%s\n' '----- STARTING -----'
+        bat_lsjobs_starting "${1}"
+        printf '\n%s\n' '----- RUNNING -----'
+        bat_lsjobs_running "${1}"
+        printf '\n%s\n' '----- SUCCEEDED -----'
+        bat_lsjobs_succeeded "${1}"
+        printf '\n%s\n' '----- FAILED -----'
+        bat_lsjobs_failed "${1}"
+    fi
+}
+
+
+#' List all the jobs in all the job-queues
+bat_lsalljobs() {
+    jobq_list="$(bat_lsjobq)"
+    for jobq in ${jobq_list}; do
+        if [ -z "${jobq:-}" ]; then
+            printf 'ERROR: Missing or faulty repository name!\n' >&2
+            break
+        fi
+        printf '\n======= %s =======\n\n\n' "${jobq}"
+        bat_lsjobs "${jobq}"
+        printf '\n'
+    done
+}
+
+
+#' List the SUBMITTED jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_submitted() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status SUBMITTED --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the PENDING jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_pending() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status PENDING --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the RUNNABLE jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_runnable() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status RUNNABLE --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the STARTING jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_starting() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status STARTING --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the RUNNING jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_running() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status RUNNING --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the SUCCEEDED jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_succeeded() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status SUCCEEDED --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the FAILED jobs in the specified queue
+#' @param[in] $1 Job-Queue name
+bat_lsjobs_failed() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (job-queue name)!\n' >&2
+    else
+        aws batch list-jobs --job-status FAILED --job-queue "${1}" --no-paginate
+    fi
+}
+
+
+#' List the names of the BATCH Job Queues with the compute environment ARN
+bat_lsjobqcomparn() {
+    aws batch describe-job-queues --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"statusReason": "JobQueue /, "", $0); gsub(/"jobQueueName"/, "_ _", $0); gsub(/"computeEnvironment"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | paste -d ' ' - - | sort -d -f
+}
 
 
 # AWS DATAPIPELINE #
@@ -58,15 +200,27 @@ alias ec2_desc_hosts='aws ec2 describe-hosts'
 alias ec2_desc_nics='aws ec2 describe-network-interfaces'
 alias ec2_desc_regions='aws ec2 describe-regions'
 alias ec2_desc_rtab='aws ec2 describe-route-tables'
+alias ec2_lsimg_available='aws ec2 describe-images --no-paginate --filters=Name=state,Values=available'
+alias ec2_lsimg_failed='aws ec2 describe-images --no-paginate --filters=Name=state,Values=failed'
+alias ec2_lsimg_hvm='aws ec2 describe-images --no-paginate --filters=Name=virtualization-type,Values=hvm'
+alias ec2_lsimg_kernel='aws ec2 describe-images --no-paginate --filters=Name=image-type,Values=kernel'
+alias ec2_lsimg_machine='aws ec2 describe-images --no-paginate --filters=Name=image-type,Values=machine'
+alias ec2_lsimg_oem='aws ec2 describe-images --no-paginate --filters=Name=hypervisor,Values=oem'
+alias ec2_lsimg_paravirtual='aws ec2 describe-images --no-paginate --filters=Name=virtualization-type,Values=paravirtual'
+alias ec2_lsimg_pending='aws ec2 describe-images --no-paginate --filters=Name=state,Values=pending'
+alias ec2_lsimg_ramdisk='aws ec2 describe-images --no-paginate --filters=Name=image-type,Values=ramdisk'
+alias ec2_lsimg_xen='aws ec2 describe-images --no-paginate --filters=Name=hypervisor,Values=xen'
+
 
 #' Return information (in JSON format) about the specified instance (by ID)
 ec2_inst_info() {
-    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}"
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}" --no-paginate
 }
+
 
 #' Return the instance type of the specified instance (by ID)
 ec2_inst_type() {
-    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}" | grep 'InstanceType'
+    aws ec2 describe-instances --filters=Name=instance-id,Values="${1:-}" --no-paginate | grep 'InstanceType'
 }
 
 
@@ -78,13 +232,84 @@ alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute
 alias ecr_mkrepo='aws ecr create-repository --repository-name'
 alias ecr_rmrepo='aws ecr delete-repository --repository-name'
 
-#' List the digests and tags of all of the Docker images in the specified ECR repository
-ecr_lsdockerimg() {
+
+#' List the ECR repositories
+ecr_lsrepos() {
+    aws ecr describe-repositories --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"repositoryName"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f
+}
+
+
+#' List the digests and tags of all the Docker images in the specified ECR repository
+ecr_lsimg() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required (repository name)!\n' >&2
+    else
+        aws ecr list-images --repository-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $2); print $2; } }'
     fi
-    aws ecr list-images --repository-name "${1}" | awk '{ if (NF >= 2 && NR > 2) { gsub("\"", "", $2); print $2; } }'
 }
+
+
+#' List the digests and tags of all the Docker images in all of the ECR repositories
+ecr_lsimgs() {
+    repo_list="$(ecr_lsrepos)"
+    for repo in ${repo_list}; do
+        if [ -z "${repo:-}" ]; then
+            printf 'ERROR: Missing or faulty repository name!\n' >&2
+            break
+        fi
+        printf '%s\n' "${repo}"
+        ecr_lsimg "${repo}"
+    done
+}
+
+
+#' List the digests of all the untagged Docker images in the specified ECR repository
+ecr_lsuntaggedimg() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (repository name)!\n' >&2
+    else
+        aws ecr list-images --filter='tagStatus=UNTAGGED' --repository-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $2); print $2; } }' | sort -d -f
+    fi
+}
+
+
+#' List the digests of all the untagged Docker images in all the ECR repositories
+ecr_lsuntaggedimgs() {
+    repo_list="$(ecr_lsrepos)"
+    for repo in ${repo_list}; do
+        if [ -z "${repo:-}" ]; then
+            printf 'ERROR: Missing or faulty repository name!\n' >&2
+            break
+        fi
+        printf '%s\n' "${repo}"
+        ecr_lsuntaggedimg "${repo}"
+    done
+}
+
+
+#' List the digests and tags of all the tagged Docker images in the specified ECR repository
+ecr_lstaggedimg() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (repository name)!\n' >&2
+    else
+        aws ecr list-images --filter='tagStatus=TAGGED' --repository-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $2); print $2; } }'
+    fi
+}
+
+
+#' List the digests and tags of all the tagged Docker images in all the ECR repositories
+ecr_lstaggedimgs() {
+    repo_list="$(ecr_lsrepos)"
+    for repo in ${repo_list}; do
+        if [ -z "${repo:-}" ]; then
+            printf 'ERROR: Missing or faulty repository name!\n' >&2
+            break
+        fi
+        printf '%s\n' "${repo}"
+        ecr_lstaggedimg "${repo}"
+    done
+}
+
 
 #' Remove a Docker image from the given repository name and existing tag
 #' @section USAGE
@@ -94,8 +319,7 @@ ecr_lsdockerimg() {
 ecr_rmimg() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (repository name, existing tag)!\n' >&2
-    fi
-    if [ "$(expr "${2}" : '.*')" != 71 ]; then
+    elif [ "$(expr "${2}" : '.*')" != 71 ] && [ "$(expr "${2}" : '.*')" -ge 64 ]; then
         case "${2}" in
             # Correct digest prefix is present
             sha256:*) imgdigest="${2}";;
@@ -103,9 +327,11 @@ ecr_rmimg() {
             *) imgdigest="sha256:${2}";;
         esac
         aws ecr batch-delete-image --repository-name "${1}" --image-ids imageDigest="${imgdigest}"
+    else
+        aws ecr batch-delete-image --repository-name "${1}" --image-ids imageTag="${2}"
     fi
-    aws ecr batch-delete-image --repository-name "${1}" --image-ids imageTag="${2}"
 }
+
 
 #' Apply an additional tag to the Docker image given the repository name, existing tag, and the new tag
 #' @section USAGE
@@ -116,13 +342,16 @@ ecr_rmimg() {
 ecr_addtag() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
         printf 'ERROR: Three parameters are required (repository name, existing tag, new tag)!\n' >&2
+    else
+        MANIFEST="$(aws ecr batch-get-image --repository-name "${1}" --image-ids imageTag="${2}" --query 'images[].imageManifest' --output text --no-paginate)"
+        if [ -z "${MANIFEST:-}" ]; then
+            printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
+        else
+            aws ecr put-image --repository-name "${1}" --image-tag "${3}" --image-manifest "${MANIFEST}" --no-paginate > /dev/null
+        fi
     fi
-    MANIFEST="$(aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text)"
-    if [ -z "${MANIFEST:-}" ]; then
-        printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
-    fi
-    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}" > /dev/null
 }
+
 
 #' Apply a tag to a tagless Docker image given the repository name, image digest, and the new tag (AWS & Docker login must be applied first)
 #' @section USAGE
@@ -133,22 +362,25 @@ ecr_addtag() {
 ecr_addtag2tagless() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ] || [ -z "${3:-}" ]; then
         printf 'ERROR: Three parameters are required (repository name, image digest, new tag)!\n' >&2
+    else
+        case "${2:-}" in
+            # Correct digest prefix is present
+            sha256:*) imgdigest="${2}";;
+            # Missing digest prefix; it will be added
+            *) imgdigest="sha256:${2}";;
+        esac
+        if [ "$(expr "${imgdigest}" : '.*')" != 71 ]; then
+            printf 'ERROR: The given image digest has an invalid length!\n' >&2
+        fi
+        MANIFEST="$(aws ecr batch-get-image --repository-name "${1}" --image-ids imageDigest="${imgdigest}" --query 'images[].imageManifest' --output text)"
+        if [ -z "${MANIFEST:-}" ]; then
+            printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
+        else
+            aws ecr put-image --repository-name "${1}" --image-tag "${3}" --image-manifest "${MANIFEST}" > /dev/null
+        fi
     fi
-    case "${2:-}" in
-        # Correct digest prefix is present
-        sha256:*) imgdigest="${2:-}";;
-        # Missing digest prefix; it will be added
-        *) imgdigest="sha256:${2:-}";;
-    esac
-    if [ "$(expr "${imgdigest}" : '.*')" != 71 ]; then
-        printf 'ERROR: The given image digest has an invalid length!\n' >&2
-    fi
-    MANIFEST="$(aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageDigest="${imgdigest}" --query 'images[].imageManifest' --output text)"
-    if [ -z "${MANIFEST:-}" ]; then
-        printf 'ERROR: Failed to retrieve the manifest data of the image from the specified repository!\n' >&2
-    fi
-    aws ecr put-image --repository-name "${1:-}" --image-tag "${3:-}" --image-manifest "${MANIFEST:-}" > /dev/null
 }
+
 
 #' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
 #' @section USAGE
@@ -181,6 +413,29 @@ alias iam_lsroles='aws iam list-roles'
 alias iam_lskeys='aws iam list-access-keys'
 
 
+# AWS LAMBDA #
+
+
+alias lamda_desc='aws lambda list-functions --no-paginate'
+alias lamda_rm='aws lambda delete-function --function-name'
+
+
+#' List the lamdas
+lambda_ls() {
+    aws lambda list-functions --no-paginate | awk '{ if (NF == 2 && NR > 2) { gsub(/"FunctionName"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f
+}
+
+
+#' List the Lambda function's aliases
+lambda_lsalias() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (Lambda function name)!\n' >&2
+    else
+        aws lambda list-aliases --function-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $0); print $0; } }'
+    fi
+}
+
+
 # AWS S3 #
 
 
@@ -202,8 +457,8 @@ s3cpdir() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
     else
-        PATHNAME="${1:-}"
-        DESTNAME="${2:-}"
+        PATHNAME="${1}"
+        DESTNAME="${2}"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${PATHNAME}/"
         [[ ! "$DESTNAME" =~ ^.+/$ ]] && DESTNAME="${DESTNAME}/"
         if [[ ! "$PATHNAME" =~ ^s3://.+$ ]] && [[ ! "$DESTNAME" =~ ^s3://.+$ ]]; then
@@ -236,7 +491,7 @@ s3ls() {
 #' @param[in] $1 S3 path without "s3:/"
 s3ll() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1:-}"
+        PATHNAME="${1}"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
         aws s3 ls --human-readable --summarize "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
     else
@@ -251,7 +506,7 @@ s3ll() {
 #' @param[in] $1 S3 path without "s3:/"
 s3lr() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1:-}"
+        PATHNAME="${1}"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
         aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
     else
@@ -266,7 +521,7 @@ s3lr() {
 #' @param[in] $1 S3 path without "s3:/"
 s3llr() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1:-}"
+        PATHNAME="${1}"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
         aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
     else
@@ -284,7 +539,7 @@ s3rename() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
     else
-        PATHNAME="$(dirname "${1:-}")"
+        PATHNAME="$(dirname "${1}")"
         [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
         aws s3 mv "s3:/${PATHNAME}" "${2}"
     fi

@@ -1,3 +1,7 @@
+2018-10-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Added many more commands & optimized existing code
+
 2018-10-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional documentation & improved some commands
