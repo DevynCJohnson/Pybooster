@@ -1,0 +1,43 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Get incoming data, pass it to a command-line calculator, and then return the results
+#' @file unicalc
+#' @version 2018.10.12
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# GET DATA #
+
+
+if [ -n "${1:-}" ]; then  # Parameter
+    incoming_data="$1"
+else  # Pipe
+    read -r incoming_data
+    if [ -z "${incoming_data:-}" ]; then
+        printf 'ERROR: There is no incoming data!\n' >&2
+        exit 1
+    fi
+fi
+
+
+# PASS DATA TO CALCULATOR #
+
+
+if [ -x "$(command -v wcalc)" ]; then
+    echo "$incoming_data" | wcalc | cut -d ' ' -f 3
+elif [ -x "$(command -v calc)" ]; then
+    calc -c -d -- "${incoming_data}" | cut -f 2
+elif [ -x "$(command -v qalc)" ]; then
+    echo "$incoming_data" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||'
+elif [ -x "$(command -v concalc)" ]; then
+    echo "$incoming_data" | concalc
+elif [ -x "$(command -v bc)" ]; then
+    echo "$incoming_data" | bc -l
+elif [ -x "$(command -v python3)" ]; then
+    python3 -c "print(${incoming_data})"
+else
+    printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc, calc, qcalc, concalc, or bc\n' >&2
+fi
