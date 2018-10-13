@@ -9,12 +9,12 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
-    printf 'Specify the pathname of each file to scan.\n'
-    exit 0
-elif [ -z "$1" ]; then
+if [ -z "${1:-}" ]; then
     printf 'ERROR: A parameter is required!\n' >&2
     exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each file to scan.\n'
+    exit 0
 fi
 
 
@@ -30,7 +30,7 @@ export LC_CTYPE='C'
 # MAIN #
 
 
-for file in "$@"; do
+for file in "${@:-}"; do
     ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     printf '======  *FILE CHECKSUMS*  ======\n'

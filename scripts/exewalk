@@ -10,7 +10,7 @@
 
 
 if [ -x "$(command -v binwalk)" ]; then
-    binwalk -BEACS "$@"
+    binwalk -BEACS "${@:-}"
     exit $?
 else
     printf 'binwalk: command not found!\n' >&2

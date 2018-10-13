@@ -9,16 +9,16 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf '%s\n%s\n%s\n%s\n' \
         'Convert Windows newlines (\r\n) to Unix newlines (\n) using one of the following methods:' \
         ' - Specify the pathname of each file to convert.' \
         ' - Specify the directory of files to convert.' \
         ' - Specify the pathname of each file and directories of files to convert.'
     exit 0
-elif [ -z "$1" ]; then
-    printf 'ERROR: A parameter is required!\n' >&2
-    exit 1
 fi
 
 

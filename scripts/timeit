@@ -10,7 +10,7 @@
 
 
 start=$(microtime)
-"$@"
+"${@:-}"
 end=$(microtime)
 dur=$((end - start))
 printf 'Execution Time: %lu microseconds\n' "$dur"

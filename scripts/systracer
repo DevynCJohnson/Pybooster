@@ -10,7 +10,7 @@
 
 
 if [ -x "$(command -v ltrace)" ]; then
-    ltrace -c -S -tt -T "$@"
+    ltrace -c -S -tt -T "${@:-}"
     exit $?
 else
     printf 'ltrace: command not found!\n' >&2

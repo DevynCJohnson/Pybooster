@@ -9,14 +9,14 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each Python script to scan.\n'
     exit 0
 elif [ ! -x "$(command -v python3)" ]; then
     printf 'python3: command not found!\n' >&2
-    exit 1
-elif [ -z "$1" ]; then
-    printf 'ERROR: A parameter is required!\n' >&2
     exit 1
 fi
 
@@ -60,7 +60,7 @@ fi
 # MAIN #
 
 
-for file in "$@"; do
+for file in "${@:-}"; do
     ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     hashpling="$(head -1 "$file")"
     echo "$hashpling" | grep -v -E -e '#!/.+python[0-9\.]*' > /dev/null && printf '%s: The specified file is not a Python script!\n' "$file" >&2 && continue

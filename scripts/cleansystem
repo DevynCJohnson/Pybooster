@@ -94,7 +94,7 @@ mem_clean=0
 ssd_clean=0
 
 while true; do
-    case "$1" in
+    case "${1:-}" in
         -h|--help)  # Display help info
             Help
             exit 0

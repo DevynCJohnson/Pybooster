@@ -1,5 +1,9 @@
 2018-10-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* PyBooster:  Applied various improvements to executable shell scripts
+
+2018-10-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
 	* aws_rc.sh:  Added many more commands & optimized existing code
 	* extras_rc.sh:  Added functions for sending emails
 

@@ -10,7 +10,7 @@
 
 
 if [ -x "$(command -v complexity)" ]; then
-    complexity --threshold=5 --horrid-threshold=300 --histogram --scores --unifdef=-DSUPPORTS_INT128=1 --unifdef=-DSUPPORTS_LONG_DOUBLE=1 --unifdef=-DIS_LDBL_96=1 --unifdef=-DSUPPORTS_DECIMAL_FLOATS=1 --unifdef=-DSUPPORTS_COMPLEX=1 --unifdef=-DIS_WORDSIZE_64=1 --unifdef=-DIS_BIG_ENDIAN=1 --unifdef=-DARCHX86 --unifdef=-DARCHX86_64 --unifdef=-DOSLINUX --unifdef=-DOSUNIX "$@"
+    complexity --threshold=5 --horrid-threshold=300 --histogram --scores --unifdef=-DSUPPORTS_INT128=1 --unifdef=-DSUPPORTS_LONG_DOUBLE=1 --unifdef=-DIS_LDBL_96=1 --unifdef=-DSUPPORTS_DECIMAL_FLOATS=1 --unifdef=-DSUPPORTS_COMPLEX=1 --unifdef=-DIS_WORDSIZE_64=1 --unifdef=-DIS_BIG_ENDIAN=1 --unifdef=-DARCHX86 --unifdef=-DARCHX86_64 --unifdef=-DOSLINUX --unifdef=-DOSUNIX "${@:-}"
     exit $?
 else
     printf 'complexity: command not found!\n' >&2

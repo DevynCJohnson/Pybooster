@@ -124,7 +124,7 @@ GOPT="$(getopt -o abcdf:hpqsvxy --long all,cx,deb,file:,script:,sdist,version,he
 eval set -- "$GOPT"
 
 while true; do
-    case "$1" in
+    case "${1:-}" in
         -f|--file|--script)  # Specify input file
             _file="$2"
             if [ ! -r "$_file" ]; then
@@ -139,7 +139,7 @@ done
 
 eval set -- "$GOPT"
 while true; do
-    case "$1" in
+    case "${1:-}" in
         -h|--help)  # Display help info
             Help
             exit 0

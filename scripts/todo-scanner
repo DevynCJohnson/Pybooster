@@ -12,7 +12,10 @@
 # MAIN #
 
 
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of the directory to scan.\n'
     exit 0
 elif [ -f "$1" ]; then
@@ -21,7 +24,4 @@ elif [ -f "$1" ]; then
 elif [ -d "$1" ]; then
     grep -E -n -H -o -r '(#|<\?\-\-) ([Dd][Ee][Bb][Uu][Gg]|[Ff][Ii][Nn][Ii][Ss][Hh]|[Ff][Ii][Xx]|[Ff][Ii][Xx][Mm][Ee]|[Rr][Ee][Pp][Aa][Ii][Rr]|[Tt][Ee][Ss][Tt][Ii][Nn][Gg]|[Tt][Oo][Dd][Ee][Bb][Uu][Gg]|[Tt][Oo][Dd][Oo]|[Tt][Oo][Mm][Vv]|[Tt][Oo][Rr][Mm]|[Xx][Xx][Xx])[ ]?: .+' "$1"
     exit 0
-elif [ -z "$1" ]; then
-    printf 'ERROR: A parameter is required!\n' >&2
-    exit 1
 fi
