@@ -6,20 +6,21 @@
 #' @file termtest
 #' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
 BEGIN {
-    printf "Color Test: "
+    printf "Color Test: ";
     for (column = 0; column < 256; column++) {
         g = ((column * 510) / 255);
         if (g > 255) { g = 510 - g; }
         printf "\033[48;2;%d;%d;%dm%s\033[0m", 255 - column, g, column, " ";
     }
     printf "\n\nASCII & Extended ASCII: ";
-    for (n=32; n < 256; ++n) {
-        if (n > 126 && n < 161) { continue }
+    for (n = 32; n < 256; ++n) {
+        if (n > 126 && n < 161) { continue; }
         printf("%c  ", n);
     }
-    printf "\n\nCyrillic: Й Ц У К Е Н Г Ш Щ З Х Ъ Ф Ы В А П Р О Л Д Ж Э Я Ч С М И Т Ь Б Ю\n"
-    printf "\nVarious Unicode Symbols: ₹\t£\t¤\t₿\t€\t✓\t✗\t♯\t≥\t≤\t÷\t×\t≢\t…\t⎴\t♀\t♂\t⌨\t⌛\t☹\t☺\t☠\t☢\t☣\t⚛\t🎧\t😀\t😉\t⁉\t\n"
+    printf "\n\nCyrillic: Й Ц У К Е Н Г Ш Щ З Х Ъ Ф Ы В А П Р О Л Д Ж Э Я Ч С М И Т Ь Б Ю\n";
+    printf "\nVarious Unicode Symbols: ₹\t£\t¤\t₿\t€\t✓\t✗\t♯\t≥\t≤\t÷\t×\t≢\t…\t⎴\t♀\t♂\t⌨\t⌛\t☹\t☺\t☠\t☢\t☣\t⚛\t🎧\t😀\t😉\t⁉\t\n";
 }
