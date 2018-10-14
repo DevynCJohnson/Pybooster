@@ -38,7 +38,7 @@ fi
 
 
 if [ -x "$(command -v wcalc)" ]; then
-    echo "$incoming_data" | wcalc | cut -d ' ' -f 3 | fmt4pipe
+    echo "$incoming_data" | wcalc | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v calc)" ]; then
     calc -c -d -- "${incoming_data}" | cut -f 2 | fmt4pipe
 elif [ -x "$(command -v qalc)" ]; then
