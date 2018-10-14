@@ -125,8 +125,19 @@ fi
 
 #' Convert string to lowercase
 alias lowercase="tr '[:upper:]' '[:lower:]'"
+#' Recursively search the specified/current directory for the specified string
+alias rfind='grep -r -F'
+#' Remove the first X columns
+alias rm1stxcols='cut -d " " -f'
 #' Convert string to uppercase
 alias uppercase="tr '[:lower:]' '[:upper:]'"
+
+# String Search Aliases
+
+#' Find files that begin with a Python hashpling
+alias findpypling='grep -F "#!/usr/bin/env python" ./*'
+alias findr='grep -I -i -n -q -r -s --mmap .*'
+alias findrx='grep -E -I -n -q -r -s --mmap .*'
 
 # System Control Aliases
 
@@ -137,9 +148,8 @@ if [ "$(id -u)" -eq 0 ] && [ -f /proc/sys/vm/drop_caches ]; then
     alias freeramcache='echo 3 > /proc/sys/vm/drop_caches'
 fi
 [ -x "$(command -v swapon)" ] && alias freeswap='sudo swapoff -a && sleep 2 && sudo swapon -a'
-[ -f /var/log/Xorg.0.log ] && alias gpumeminfo="grep -F --color 'Memory:' /var/log/Xorg.0.log"
 alias killjobs='kill "$(jobs -ps)" 2> /dev/null'
-[ -x "$(command -v systemctl)" ] && alias lsenabledservices='systemctl list-unit-files | grep -F enabled'
+[ -x "$(command -v systemctl)" ] && alias lsenabledservices='systemctl list-unit-files | grep -F "enabled"'
 [ -x "$(command -v free)" ] && alias meminfo='free -m -l -t'
 [ -x "$(command -v xset)" ] && alias monitoroff='xset dpms force off'
 alias powerdown='sudo shutdown -h now'
@@ -182,10 +192,6 @@ fi
 alias ConsoleMessage='echo'
 [ -x "$(command -v du)" ] && [ -x "$(command -v less)" ] && alias du.='du -a -c -h | sort -h | less'  #' Show the disk usage of each directory
 [ -x "$(command -v df)" ] && [ -x "$(command -v less)" ] && alias df.='df -a -h -T | less'  #' Show disk usage for each filesystem
-#' Find files that begin with a Python hashpling
-alias findpypling='grep -F "#!/usr/bin/env python" ./*'
-alias findr='grep -I -i -n -q -r -s --mmap .*'
-alias findrx='grep -E -I -n -q -r -s --mmap .*'
 alias mkae='make'
 [ -x "$(command -v compiz)" ] && alias rgui='pidof compiz && killall -SIGHUP compiz'  #' Restart Compiz (fixes memory leak)
 alias rless='less -r'
@@ -305,10 +311,16 @@ findrename() {
         printf 'USAGE: findrename "FIND" "REPLACE" [DIRECTORY]\n'
     elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
-    elif [ -n "${3:-}" ] && [ -d "${3}" ]; then
-        find "${3}" -name "*${1}*" -exec sh -c 'mv "${0}" "$(echo "${0}" | sed "s|${1}|${2}|g")"' {} \;
-    elif [ -z "${3:-}" ]; then
-        find . -name "*${1}*" -exec sh -c 'mv "${0}" "$(echo "${0}" | sed "s|${1}|${2}|g")"' {} \;
+    else
+        if [ -n "${3:-}" ] && [ -d "${3}" ]; then
+            filenames="$(find "${3}" -name "*${1}*" -print)"
+        elif [ -z "${3:-}" ]; then
+            filenames="$(find . -name "*${1}*" -print)"
+        fi
+        echo "${filenames}"
+        for filename in ${filenames}; do
+            mv "${filename}" "${filename//${1}/${2}}"
+        done
     fi
 }
 
@@ -317,14 +329,17 @@ findrename() {
 #' @param[in] $2 New text that will replace the found pattern
 #' @param[in] $3 (Optional) Directory to search recursively
 findrep() {
+    # shellcheck disable=SC2038
     if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
         printf 'USAGE: findrep "FIND" "REPLACE" [DIRECTORY]\n'
     elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
-    elif [ -n "${3:-}" ] && [ -d "${3}" ]; then
-        find "${3}" -type f -print0 | xargs -0 sed --in-place "s|${1}|${2}|g"
-    elif [ -z "${3:-}" ]; then
-        find . -type f -print0 | xargs -0 sed --in-place "s|${1}|${2}|g"
+    else
+        if [ -n "${3:-}" ] && [ -d "${3}" ]; then
+            find "${3}" -type f -exec grep -l -F "${1}" {} + | xargs sed -i "s|${1}|${2}|g"
+        elif [ -z "${3:-}" ]; then
+            find . -type f -exec grep -l -F "${1}" {} + | xargs sed -i "s|${1}|${2}|g"
+        fi
     fi
 }
 
@@ -344,9 +359,23 @@ rmfiles() {
             printf 'ERROR: Parameters are missing or invalid!\n' >&2
         fi
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
+        find "$2" -type f -regextype awk -regex ".*/${1}" -print0 | xargs -0 -I % rm -f % 2> /dev/null
     else
-        find . -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
+        find . -type f -regextype awk -regex ".*/${1}" -print0 | xargs -0 -I % rm -f % 2> /dev/null
+    fi
+}
+
+#' Find and delete Python cache directories recursively in the current directory (unless specified otherwise)
+#' @param[in] $1 (Optional) Directory to search recursively
+rmpycache() {
+    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+        printf 'USAGE: rmpycache [DIRECTORY]\n'
+    else
+        if [ -n "${1:-}" ] && [ -d "${1}" ]; then
+            find "${1}" -mount -type d -name "__pycache__" -print0 | xargs -0 rm -f -r
+        elif [ -z "${1:-}" ]; then
+            find . -mount -type d -name "__pycache__" -print0 | xargs -0 rm -f -r
+        fi
     fi
 }
 
@@ -582,7 +611,16 @@ chkhw() {
     [ -x "$(command -v sensors)" ] && sensors
 }
 
-[ -x "$(command -v systemctl)" ] && enabledservices() { systemctl list-unit-files | grep -F enabled | awk '{ print $1 }' | sort; }
+#' Display amount of GPU memory
+gpumeminfo() {
+    if [ -x "$(command -v glxinfo)" ]; then
+        glxinfo | grep -o -E 'Total available memory: [0-9]+[ \t]*.+' | cut -d ' ' -f 4,5
+    elif [ -f /var/log/Xorg.0.log ]; then
+        grep -o -E 'Memory:.+' /var/log/Xorg.0.log | cut -d ' ' -f 2,3
+    fi
+}
+
+[ -x "$(command -v systemctl)" ] && enabledservices() { systemctl list-unit-files | grep -F 'enabled' | awk '{ print $1 }' | sort; }
 
 if [ -n "$(command -v StartService)" ] && [ -n "$(command -v RestartService)" ]; then
     #' Generic Action Handler
@@ -595,6 +633,16 @@ if [ -n "$(command -v StartService)" ] && [ -n "$(command -v RestartService)" ];
         esac
     }
 fi
+
+#' Set the system's hostname
+sethostname() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required!\n' >&2
+    else
+        sudo hostname "${1}"
+        sudo sh -c "${1} > /etc/hostname"
+    fi
+}
 
 # Miscellaneous Functions
 
