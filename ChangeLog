@@ -1,5 +1,8 @@
 2018-10-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* makefile:  Moved half of the Git targets to makefile_constants.mk
+	* makefile_constants.mk:  Added new Git targets & moved some Git targets from makefile to makefile_constants.mk
+	* PyBooster:  Added num2hex
 	* PyBooster:  Miscellaneous optimizations & improvements
 
 2018-10-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

@@ -71,7 +71,7 @@ override STRIP_PARAMS::=--strip-debug --strip-unneeded --discard-locals --remove
 
 REMINDER_CMTS::=DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX
 OLD_REMINDERS::=DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX
-DOCCMT_KEYWORDS::=a addindex addtogroup anchor annotatedclasslist arg attention author authors b brief bug c callergraph callgraph category cite class classhierarchy code cond copybrief copydetails copydoc copyright date def defgroup define deprecated details diafile dir docbookonly dontinclude dot dotfile e else elseif em endcode endcond enddocbookonly enddot endhtmlonly endif endinternal endlatexonly endlink endmanonly endmsc endparblock endrtfonly endsecreflist enduml endverbatim endxmlonly enum example exception extends f$ f[ f] file fn functionindex f{ f} header headerfile headerfilelist hidecallergraph hidecallgraph hideinitializer htmlinclude htmlonly idlexcept if ifnot image implements include includedoc includelineno ingroup inherit interface internal invariant l latexinclude latexonly li license line link mainpage manonly memberof msc mscfile n name namespace nosubgrouping note overload p package page par paragraph param param[in] parblock post postheader pre private privatesection property protected protectedsection protocol public publicsection pure ref refitem related relatedalso relates relatesalso remark remarks result return returns retval rtfonly sa secreflist section see short showinitializer since skip skipline snippet snippetdoc snippetlineno startuml static struct subpage subsection subsubsection tableofcontents test throw throws todo tparam typedef union until var verbatim verbinclude version vhdlflow warning weakgroup xmlonly xrefitem
+DOCCMT_KEYWORDS::=a addindex addtogroup anchor annotatedclasslist arg attention author authors b brief bug c callergraph callgraph category cite class classhierarchy code cond copybrief copydetails copydoc copyright date def defgroup define deprecated details diafile dir docbookonly dontinclude dot dotfile e else elseif em endcode endcond enddocbookonly enddot endhtmlonly endif endinternal endlatexonly endlink endmanonly endmsc endparblock endrtfonly endsecreflist enduml endverbatim endxmlonly enum example exception extends f[ f] file fn functionindex f{ f} header headerfile headerfilelist hidecallergraph hidecallgraph hideinitializer htmlinclude htmlonly idlexcept if ifnot image implements include includedoc includelineno ingroup inherit interface internal invariant l latexinclude latexonly li license line link mainpage manonly memberof msc mscfile n name namespace nosubgrouping note overload p package page par paragraph param param[in] parblock post postheader pre private privatesection property protected protectedsection protocol public publicsection pure ref refitem related relatedalso relates relatesalso remark remarks result return returns retval rtfonly sa secreflist section see short showinitializer since skip skipline snippet snippetdoc snippetlineno startuml static struct subpage subsection subsubsection tableofcontents test throw throws todo tparam typedef union until var verbatim verbinclude version vhdlflow warning weakgroup xmlonly xrefitem
 
 
 # COMMANDS #
@@ -1163,3 +1163,79 @@ CLANG_PREPRO::=$(CLANG) $(ARCH) $(STD) -E
 
 # Pre-compiled headers (*.pch)
 COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header
+
+
+# GIT COMMANDS #
+
+
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags status tag treehashes
+
+
+commit :
+	@printf '\nCreate a commit message: ' && read GITMSG && printf '\n' && git commit --cleanup=strip --message="$$GITMSG"
+
+commithash :
+	@git log -1 --pretty=format:"%H"
+	git log -1 --pretty=format:"%h"
+
+commithashes :
+	@git log --pretty=format:"%H"
+
+cleangit : cleanall fixperm
+	-@git reflog expire --all --expire=now --stale-fix
+	git rm --cached -r --ignore-unmatch *
+	git gc --prune=now --aggressive
+	git add --all --refresh
+	git fsck --dangling --full --name-objects --progress --strict --unreachable
+
+gitattr :
+	@git check-attr --all ./*
+	git check-attr --all ./*/*
+	git check-attr --all ./*/*/*
+
+gitchanges :
+	@git show
+
+gitignore :
+	@git check-ignore ./*
+	git check-ignore ./*/*
+	git check-ignore ./*/*/*
+
+gitlastchanges :
+	@git show --summary
+
+gitlinechanges :
+	@git show --stat
+
+gitlscommits :
+	@git log --pretty=oneline
+
+gitlsfiles :
+	@git ls-files
+
+gitstats :
+	@gitstats ./ $(TESTINGDIR)/git/
+
+lscontrib :
+	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
+
+lstags :
+	@git tag
+
+previewcleangit : cleanall fixperm
+	-@git reflog expire --dry-run --all --expire=now --stale-fix
+	git rm --dry-run --cached -r --ignore-unmatch *
+	git prune --dry-run --verbose
+	git add --dry-run --all --refresh
+
+pushtags :
+	@git push origin --tags
+
+status :
+	@git status --ahead-behind --branch --short -v
+
+tag :
+	@git tag -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
+
+treehashes :
+	@git log --pretty=format:"%T"

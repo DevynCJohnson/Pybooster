@@ -1,0 +1,51 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Get incoming data, pass it to a command-line calculator, and then return the result as hexadecimal
+#' @file num2hex
+#' @version 2018.10.14
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+ISPIPE=1
+
+
+# GET DATA #
+
+
+if [ -n "${1:-}" ]; then  # Parameter
+    incoming_data="$1"
+    ISPIPE=0
+else  # Pipe
+    read -r incoming_data
+    if [ -z "${incoming_data:-}" ]; then
+        printf 'ERROR: There is no incoming data!\n' >&2
+        exit 1
+    fi
+fi
+
+
+if [ $ISPIPE = 1 ]; then
+    fmt4pipe() { awk 'ORS=""; NF;'; }
+else
+    fmt4pipe() { awk NF; }
+fi
+
+
+# PASS DATA TO CALCULATOR #
+
+
+if [ -x "$(command -v wcalc)" ]; then
+    echo "$incoming_data" | wcalc -hex | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe | tr '[:lower:]' '[:upper:]' | sed 's|0X|0x|'
+elif [ -x "$(command -v printf)" ]; then
+    printf "0x%X\n" "$incoming_data" | fmt4pipe
+elif [ -x "$(command -v bc)" ]; then
+    num="$(echo "obase=16; ${incoming_data}" | bc -l | tr '[:lower:]' '[:upper:]')"
+    printf "0x%s\n" "${num}" | fmt4pipe
+elif [ -x "$(command -v python3)" ]; then
+    python3 -c "print(hex(${incoming_data}).upper())" | sed 's|0X|0x|' | fmt4pipe
+else
+    printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
+fi
