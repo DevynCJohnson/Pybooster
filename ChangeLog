@@ -1,5 +1,7 @@
 2018-10-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* cryptography.py:  Improved documentation, optimized code, added code, & added doctests
+	* datastruct.py:  Added additional functions
 	* Geany:  Added more file templates
 	* makefile:  Moved half of the Git targets to makefile_constants.mk
 	* makefile_constants.mk:  Added new Git targets & moved some Git targets from makefile to makefile_constants.mk

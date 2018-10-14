@@ -77,6 +77,7 @@ __all__ = [
     # YAML #
     r'openyamlfile',
     # CONVERTERS #
+    r'base64url2str',
     r'csv2json',
     r'dict2csv',
     r'dict2json',
@@ -87,6 +88,7 @@ __all__ = [
     r'json2csvstr',
     r'json2dict',
     r'json2yaml',
+    r'str2base64url',
     r'yaml2dict',
     r'yaml2json',
     # PICKLE #
@@ -322,6 +324,15 @@ def openyamlfile(_filename: str, _encoding: str = r'utf-8') -> dict:
 # CONVERTERS #
 
 
+def base64url2str(_bytes: bytes) -> str:
+    r"""Convert a Base64URL (RFC 4648) byte-string to a string
+
+    >>> base64url2str(b'eyIwIjpbIlZhbDEiLCJWYWwyIiwiVmFsMyIsIlZhbDQiXSwiMSI6WyIxIiwiMiIsIjMiLCI0Il0sIjIiOlsiNSIsIjYiLCI3IiwiOCJdLCIzIjpbIjkiLCIxMCIsIjExIiwiMTIiXSwiNCI6WyIxMyIsIjE0IiwiMTUiLCIxNiJdLCI1IjpbIjE3IiwiMTgiLCIxOSIsIjIwIl0sIjYiOlsiMy4xNCIsIjYuMjgiLCIyLjczIiwiMS41NyJdfQ==')
+    '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
+    """
+    return b64decode(_bytes, altchars=br'-_', validate=True).decode(r'utf-8')
+
+
 def csv2dict(_list: list) -> dict:
     """Convert the specified CSV (as a list) to a Python dictionary
 
@@ -466,6 +477,15 @@ def json2yaml(_str: str) -> str:
     return yamldump(jloads(_str, object_pairs_hook=OrderedDict), safe=True)
 
 
+def str2base64url(_str: str) -> bytes:
+    r"""Convert a string to a Base64URL (RFC 4648) byte-string
+
+    >>> str2base64url('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
+    b'eyIwIjpbIlZhbDEiLCJWYWwyIiwiVmFsMyIsIlZhbDQiXSwiMSI6WyIxIiwiMiIsIjMiLCI0Il0sIjIiOlsiNSIsIjYiLCI3IiwiOCJdLCIzIjpbIjkiLCIxMCIsIjExIiwiMTIiXSwiNCI6WyIxMyIsIjE0IiwiMTUiLCIxNiJdLCI1IjpbIjE3IiwiMTgiLCIxOSIsIjIwIl0sIjYiOlsiMy4xNCIsIjYuMjgiLCIyLjczIiwiMS41NyJdfQ=='
+    """
+    return b64encode(bytes(_str, encoding=r'utf-8'), altchars=br'-_')
+
+
 def yaml2dict(_yaml: str) -> dict:
     r"""Convert a YAML string to a Python dictionary
 
@@ -497,11 +517,11 @@ def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bo
 
 
 def data2pklfile(_data: object, _filename: str) -> None:
-    """Pickle, compress (using Zlib), and encode the data in base64, then write it to a file"""
+    """Pickle, compress (using Zlib), and encode the data in base64url (RFC 4648), then write it to a file"""
     write2file(_filename, str(b64encode(zcompress(dumps(_data), level=9), altchars=br'-_'), encoding=r'utf-8'))
 
 
 def pklfile2data(_filename: str) -> object:
-    """Open the specified file and load the contained compressed+pickled base64 data"""
+    """Open the specified file and load the contained compressed+pickled base64url (RFC 4648) data"""
     ensurefileexists(_filename)
-    return loads(zdecompress(b64decode(bytes(getfile(_filename), encoding=r'utf-8'), altchars=br'-_')))
+    return loads(zdecompress(b64decode(bytes(getfile(_filename), encoding=r'utf-8'), altchars=br'-_', validate=True)))
