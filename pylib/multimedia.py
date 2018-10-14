@@ -29,6 +29,8 @@ along with this software.
 """
 
 
+import wave
+
 try:
     from pygame.mixer import init, music
 except ImportError:
@@ -37,11 +39,20 @@ except ImportError:
 
 __all__: list = [
     # AUDIO #
+    r'openwavfile',
     r'playmusic'
 ]
 
 
 # AUDIO #
+
+
+def openwavfile(_filename: str) -> list:
+    """Get the contents of the specified WAV file and return the data as a list of bytes"""
+    _out: list = []
+    with wave.open(_filename, mode=r'rb') as _file:
+        _out.append(_file.readframes(_file.getnframes()))
+    return _out
 
 
 def playmusic(_file: str) -> None:
@@ -51,4 +62,3 @@ def playmusic(_file: str) -> None:
     music.play()
     while music.get_busy() is True:
         continue
-    return None

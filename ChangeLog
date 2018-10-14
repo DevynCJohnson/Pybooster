@@ -5,6 +5,7 @@
 	* Geany:  Added more file templates
 	* makefile:  Moved half of the Git targets to makefile_constants.mk
 	* makefile_constants.mk:  Added new Git targets & moved some Git targets from makefile to makefile_constants.mk
+	* multimedia.py:  Added openwavfile() & improved code
 	* PyBooster:  Added bin2hex, bin2num, bin2oct, hex2num, num2bin, num2hex, num2oct, & oct2num
 	* PyBooster:  Miscellaneous optimizations & improvements
 
