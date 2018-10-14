@@ -3,7 +3,7 @@
 # kate: encoding utf-8; bom off; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Enhanced UTF-8 (Unicode) Compose Sequence
 #' @file XCompose
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 # /usr/share/X11/locale/en_US.UTF-8/Compose || ~/.XCompose

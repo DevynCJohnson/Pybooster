@@ -6,7 +6,7 @@
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2018.10.02
+@version 2018.10.13
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -62,7 +62,7 @@ __all__: list = [
 
 __author__: str = r'Devyn Collier Johnson'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2018.10.02'
+__version__: str = r'2018.10.13'
 
 
 __about__: tuple = (

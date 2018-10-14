@@ -5,7 +5,7 @@
 #' @brief Generate documentation for Python using PyDoc
 #' @file pydocgen.sh
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 

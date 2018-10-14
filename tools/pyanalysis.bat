@@ -55,7 +55,7 @@ if errorlevel 1 (
     set FOUND=1
 )
 if %FOUND% == 1 (
-    pylint --disable="I0011,C0111,C0301,E501,T001" --good-names="i,j,k,v,key,val,ex,Run,_" --notes="FIXME,XXX,TODO,FINISH,DEBUG,FIX,HERE" --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" --max-returns=16 --max-module-lines=4096 --reports=y --persistent=n %1
+    pylint --disable="C0301,I0011" --good-names="i,j,k,v,ex,key,Run,val,_" --notes="DEBUG,DEPRECATED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX" --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y %1
 ) else (
     echo Pylint is not installed!
     echo.

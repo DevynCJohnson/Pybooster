@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning YAML files with various syntax checkers
 #' @file yamlanalysis
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -12,7 +12,8 @@
 if [ -z "${1:-}" ]; then
     printf 'ERROR: A parameter is required!\n' >&2
     exit 1
-elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+fi
+if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each YAML file to scan.\n'
     exit 0
 fi

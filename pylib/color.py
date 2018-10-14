@@ -6,7 +6,7 @@
 
 @file color.py
 @package pybooster.color
-@version 2018.10.02
+@version 2018.10.13
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2018.10.02
+@version 2018.10.13
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -50,6 +50,7 @@ __all__: list = [
     # UNICODE CHARACTER BLOCKS #
     r'BASIC_LATIN',
     r'C0_CONTROLS',
+    r'C1_CONTROLS',
     r'LATIN_1_SUPPLEMENT',
     r'LATIN_EXTENDED_A',
     r'LATIN_EXTENDED_B',
@@ -346,6 +347,7 @@ __all__: list = [
     r'SSP',
     r'PUA_A',
     r'PUA_B',
+    r'CONTROL_CHARS',
     # XML SOURCE CODE PATTERNS #
     r'CHARREF',
     r'INCOMPLETE_REF',
@@ -391,7 +393,8 @@ WHITESPACE_NEWLINE = rgxcompile(r'\s*(\f|\r|\n)+\s*')
 
 
 BASIC_LATIN = rgxcompile(r'([\x00-\x7F]+)')
-C0_CONTROLS = rgxcompile(r'([\x00-\x1F\x7F]+)')
+C0_CONTROLS = rgxcompile(r'([\x00-\x1F]+)')
+C1_CONTROLS = rgxcompile(r'([\x80-\x9F]+)')
 LATIN_1_SUPPLEMENT = rgxcompile(r'([\x80-\xFF]+)')
 LATIN_EXTENDED_A = rgxcompile(r'([\u0100-\u017F]+)')
 LATIN_EXTENDED_B = rgxcompile(r'([\u0180-\u024F]+)')
@@ -688,6 +691,7 @@ SIP = rgxcompile(r'([\U00020000-\U0002FA1F]+)')
 SSP = rgxcompile(r'([\U000E0000-\U000E01EF]+)')
 PUA_A = rgxcompile(r'([\U000F0000-\U000FFFFF]+)')
 PUA_B = rgxcompile(r'([\U00100000-\U0010FFFF]+)')
+CONTROL_CHARS = rgxcompile(r'([\x00-\x1F\x7F-\x9F]+)')
 
 
 # XML SOURCE CODE PATTERNS #

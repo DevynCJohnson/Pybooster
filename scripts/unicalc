@@ -4,9 +4,12 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Get incoming data, pass it to a command-line calculator, and then return the results
 #' @file unicalc
-#' @version 2018.10.12
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+ISPIPE=1
 
 
 # GET DATA #
@@ -14,6 +17,7 @@
 
 if [ -n "${1:-}" ]; then  # Parameter
     incoming_data="$1"
+    ISPIPE=0
 else  # Pipe
     read -r incoming_data
     if [ -z "${incoming_data:-}" ]; then
@@ -23,21 +27,28 @@ else  # Pipe
 fi
 
 
+if [ $ISPIPE = 1 ]; then
+    fmt4pipe() { awk 'ORS=""; NF;'; }
+else
+    fmt4pipe() { awk NF; }
+fi
+
+
 # PASS DATA TO CALCULATOR #
 
 
 if [ -x "$(command -v wcalc)" ]; then
-    echo "$incoming_data" | wcalc | cut -d ' ' -f 3
+    echo "$incoming_data" | wcalc | cut -d ' ' -f 3 | fmt4pipe
 elif [ -x "$(command -v calc)" ]; then
-    calc -c -d -- "${incoming_data}" | cut -f 2
+    calc -c -d -- "${incoming_data}" | cut -f 2 | fmt4pipe
 elif [ -x "$(command -v qalc)" ]; then
-    echo "$incoming_data" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||'
+    echo "$incoming_data" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v concalc)" ]; then
-    echo "$incoming_data" | concalc
+    echo "$incoming_data" | concalc | fmt4pipe
 elif [ -x "$(command -v bc)" ]; then
-    echo "$incoming_data" | bc -l
+    echo "$incoming_data" | bc -l | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
-    python3 -c "print(${incoming_data})"
+    python3 -c "print(${incoming_data})" | fmt4pipe
 else
     printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc, calc, qcalc, concalc, or bc\n' >&2
 fi

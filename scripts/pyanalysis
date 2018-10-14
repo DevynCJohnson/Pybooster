@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -15,7 +15,8 @@ if [ -z "${1:-}" ]; then
 elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each Python script to scan.\n'
     exit 0
-elif [ ! -x "$(command -v python3)" ]; then
+fi
+if [ ! -x "$(command -v python3)" ]; then
     printf 'python3: command not found!\n' >&2
     exit 1
 fi
@@ -60,7 +61,7 @@ fi
 # MAIN #
 
 
-for file in "${@:-}"; do
+for file in "$@"; do
     ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     hashpling="$(head -1 "$file")"
     echo "$hashpling" | grep -v -E -e '#!/.+python[0-9\.]*' > /dev/null && printf '%s: The specified file is not a Python script!\n' "$file" >&2 && continue

@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -50,12 +50,13 @@ override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
 override GEANYDIR::=./geany
 override INCDIR::=./include
-override LANGSPECSDIR::=./accessory/language_specs
-override NANORCDIR::=./accessory/nanorc
+override LANGSPECSDIR::=$(ACCDIR)/language_specs
+override NANORCDIR::=$(ACCDIR)/nanorc
 override MENUDIR::=$(ACCDIR)/menu_files
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
 override TOOLSDIR::=./tools
+override SCHEMASDIR::=$(ACCDIR)/schemas
 override SHRCDIR::=./shrc
 override SRCDIR::=./src
 override XKBDIR::=$(THEMEDIR)/XKB
@@ -87,6 +88,7 @@ override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-util
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
 override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
 
 # Parameters
 override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
@@ -365,25 +367,25 @@ update_reminders :
 upver :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Updating Software Versions ==='
 	# Batch Files #
-	find . -mount -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.nt" \) -print0 | xargs -0 sed -i "s/^REM @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/REM @version $(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.bat" -o -name "*.btm" -o -name "*.cmd" -o -name "*.nt" \) -print0 | xargs -0 sed -i "s/^REM @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/REM @version $(__VERSION__)/"
 	# C & JavaScript Source Code #
-	find . -mount -type f \( -name "*.c" -o -name "*.h" -o -name "*.js" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.c" -o -name "*.h" -o -name "*.js" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/"
 	# Glade Files #
-	find . -mount -type f -name "*.glade" -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/" '{}'
+	find . -mount -type f -name "*.glade" -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/"
 	# Perl Scripts #
-	find . -mount -type f \( -name "*.perl" -o -name "*.pl" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^    @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/    @version $(__VERSION__)/;"
+	# find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.perl" -o -name "*.pl" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^    @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/    @version $(__VERSION__)/;"
 	# Python Scripts #
-	find . -mount -type f -name "*.py" -print0 | xargs -0 sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.py" -print0 | xargs -0 sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/"
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/"
 	# Shell Scripts, makefiles, R, & Conf/INI Files #
-	find . -mount -not \( -path "$(GEANYDIR)" \) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.cfg" -o -name "*.conf" -o -name "*.config" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.cfg" -o -name "*.conf" -o -name "*.config" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -print0 | xargs -0 sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/"
 	find $(XKBDIR)/* -mount -type f -name "XCompose" -print0 | xargs -0 sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/"
 	# Miscellaneous #
-	find . -mount -type f -name "*.desktop" -print0 | xargs -0 sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/"
-	find . -mount -type f -name "Doxy*" -print0 | xargs -0 sed -i "s/^PROJECT_NUMBER[ \t]*=[ \t]*20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PROJECT_NUMBER=$(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.desktop" -print0 | xargs -0 sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "Doxy*" -print0 | xargs -0 sed -i "s/^PROJECT_NUMBER[ \t]*=[ \t]*20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PROJECT_NUMBER=$(__VERSION__)/"
 
 
 # CLEAN-UP #

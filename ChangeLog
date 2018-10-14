@@ -1,8 +1,13 @@
-2018-10-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-10-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* extras_rc.sh:  Added more functions & optimized some code
+	* makefile:  Improved the code for speed & accuracy
+	* profile:  Added more functions & optimized some code
 	* PyBooster:  Added unicalc
 	* PyBooster:  Applied various improvements to executable shell scripts
 	* PyBooster:  Miscellaneous optimizations & improvements
+	* snippets.conf:  Added more snippets
+	* todo-scanner:  Rewrote, improved, & optimized
 
 2018-10-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

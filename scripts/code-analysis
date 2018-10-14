@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning source code and providing statistics and listing some syntax issues or bugs
 #' @file code-analysis
-#' @version 2018.10.02
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -44,7 +44,7 @@ fi
 # MAIN #
 
 
-for file in "${@:-}"; do
+for file in "$@"; do
     ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v licensecheck)" ]; then

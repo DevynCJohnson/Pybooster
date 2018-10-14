@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax sed; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Change variables being defined to SCREAMING_CASE
 #' @file screaming_case_variables
-#' @version 2018.10.06
+#' @version 2018.10.13
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 
 
