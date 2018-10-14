@@ -2,8 +2,8 @@
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-#' @brief Get incoming data, pass it to a command-line calculator, and then return the result as hexadecimal
-#' @file num2hex
+#' @brief Get incoming data, pass it to a command-line calculator, and then return the result as a hexadecimal number
+#' @file bin2hex
 #' @version 2018.10.14
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
@@ -38,12 +38,13 @@ fi
 
 
 if [ -x "$(command -v wcalc)" ]; then
-    echo "$incoming_data" | wcalc -hex | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe | tr '[:lower:]' '[:upper:]' | sed 's|0X|0x|'
+    echo "$incoming_data" | sed 's|0[Bb]||; s|^|0b|' | wcalc -hex | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe | tr '[:lower:]' '[:upper:]' | sed 's|0X|0x|'
 elif [ -x "$(command -v bc)" ]; then
-    num="$(echo "obase=16;${incoming_data}" | bc | tr '[:lower:]' '[:upper:]')"
-    printf "0x%s\n" "${num}" | fmt4pipe
+    num="$(echo "${incoming_data}" | sed 's|0[Bb]||')"
+    printf "0x%s\n" "$(echo "obase=16;ibase=2;${num}" | bc | tr '[:lower:]' '[:upper:]')" | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
-    python3 -c "print(hex(${incoming_data}).upper())" | sed 's|0X|0x|' | fmt4pipe
+    num="$(echo "${incoming_data}" | sed 's|0[Bb]||; s|^|0b|')"
+    python3 -c "print(hex(int(${num})))" | fmt4pipe | sed 's|0X|0x|'
 else
-    printf "0x%X\n" "$incoming_data" | fmt4pipe || printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
+    printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
 fi
