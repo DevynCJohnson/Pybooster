@@ -569,4 +569,53 @@ upload2bucket() {
 }
 
 
+# AUTOCOMPLETE #
+
+
+#' Refresh the auto-complete lists
+aws_refresh() {
+    AWS_JOB_QUEUES="$(bat_lsjobq)"
+    AWS_ECR_REPOS="$(ecr_lsrepos)"
+    AWS_LAMBDAS="$(lambda_ls)"
+    export AWS_JOB_QUEUES
+    export AWS_ECR_REPOS
+    export AWS_LAMBDAS
+}
+
+
+if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
+    # Autocomplete AWS Job Queues
+    if [ -n "$(command -v bat_lsjobq)" ]; then
+        _jobq_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_JOB_QUEUES}" | awk "/^${2}/" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        if [ -n "$(command -v _jobq_autocomplete)" ]; then
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_failed
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_pending
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_runnable
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_running
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_starting
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_submitted
+            complete -F _jobq_autocomplete -o nospace bat_lsjobs_succeeded
+            readonly -f _jobq_autocomplete
+        fi
+    fi
+    # Autocomplete AWS ECR Repositories
+    if [ -n "$(command -v ecr_lsrepos)" ]; then
+        _ecr_repo_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_ECR_REPOS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        if [ -n "$(command -v _ecr_repo_autocomplete)" ]; then
+            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace dock_buildpush
+            readonly -f _ecr_repo_autocomplete
+        fi
+    fi
+    # Autocomplete AWS Lambda Functions
+    if [ -n "$(command -v ecr_lsrepos)" ]; then
+        _lambda_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_LAMBDAS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        if [ -n "$(command -v _lambda_autocomplete)" ]; then
+            complete -F _lambda_autocomplete -o nospace lamda_rm
+            readonly -f _lambda_autocomplete
+        fi
+    fi
+fi
+
+
 fi

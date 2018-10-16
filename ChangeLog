@@ -1,3 +1,7 @@
+2018-10-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Added auto-complete features
+
 2018-10-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* datastruct.py:  Fixed some bugs
