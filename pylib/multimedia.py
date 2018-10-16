@@ -29,12 +29,16 @@ along with this software.
 """
 
 
+from array import array
 import wave
+
+PYGAME_IMPORTED: bool = False
 
 try:
     from pygame.mixer import init, music
+    PYGAME_IMPORTED = True
 except ImportError:
-    raise Exception(r'Pygame is not installed or found.')
+    pass
 
 
 __all__: list = [
@@ -47,16 +51,33 @@ __all__: list = [
 # AUDIO #
 
 
-def openwavfile(_filename: str) -> list:
-    """Get the contents of the specified WAV file and return the data as a list of bytes"""
-    _out: list = []
+def openwavfile(_filename: str) -> dict:
+    """Get the contents of the specified WAV file and return the data as a list of integers in a dictionary describing the data"""
+    _wav_data: list = []
     with wave.open(_filename, mode=r'rb') as _file:
-        _out.append(_file.readframes(_file.getnframes()))
+        _wav_data.append(_file.readframes(_file.getnframes()))
+    _out: dict = {
+        r'num_frames': _file.getnframes(),
+        r'frame_rate': _file.getframerate(),
+        r'num_channels': _file.getnchannels(),
+        r'sample_width': _file.getsampwidth()
+    }
+    if _out[r'sample_width'] == 1:  # 8-bit
+        _out[r'data'] = array(r'b', _wav_data[0])
+    elif _out[r'sample_width'] == 2:  # 16-bit
+        _out[r'data'] = array(r'h', _wav_data[0])
+    elif _out[r'sample_width'] == 4:  # 32-bit
+        _out[r'data'] = array(r'l', _wav_data[0])
+    if _out[r'num_channels'] == 2:
+        _out[r'left_audio'] = _out[r'data'][0::2]
+        _out[r'right_audio'] = _out[r'data'][1::2]
     return _out
 
 
 def playmusic(_file: str) -> None:
     """Play an MP3, WAV, or other audio files via Pygame3"""
+    if not PYGAME_IMPORTED:
+        raise Exception(r'Pygame is not installed nor found.')
     init()
     music.load(_file)
     music.play()

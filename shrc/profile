@@ -164,6 +164,7 @@ if [ -z "${PAGER:-}" ]; then
     fi
 fi
 [ -r /etc/lsb-release ] && . /etc/lsb-release
+[ -x "$(command -v watch)" ] && alias watch='watch '
 
 
 # EDITOR VARIABLES #
