@@ -1,7 +1,7 @@
 2018-10-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* datastruct.py:  Fixed some bugs
-	* multimedia.py:  Enhanced openwavfile()
+	* multimedia.py:  Enhanced openwavfile() & added mp3_to_wav()
 
 2018-10-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

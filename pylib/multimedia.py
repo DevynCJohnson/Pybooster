@@ -30,7 +30,11 @@ along with this software.
 
 
 from array import array
+from subprocess import getoutput  # nosec
 import wave
+
+from pybooster.fs import ensurefileexists
+from pybooster.system import is_program_aval
 
 PYGAME_IMPORTED: bool = False
 
@@ -44,6 +48,7 @@ except ImportError:
 __all__: list = [
     # AUDIO #
     r'openwavfile',
+    r'mp3_to_wav',
     r'playmusic'
 ]
 
@@ -72,6 +77,20 @@ def openwavfile(_filename: str) -> dict:
         _out[r'left_audio'] = _out[r'data'][0::2]
         _out[r'right_audio'] = _out[r'data'][1::2]
     return _out
+
+
+def mp3_to_wav(_filename: str) -> bool:
+    """Convert an MP3 file to a WAV file; Return True if successful"""
+    if ensurefileexists(_filename):
+        if is_program_aval(r'ffmpeg'):
+            _output = getoutput(r'ffmpeg -hide_banner -loglevel panic -i ' + _filename + r' -vn -acodec pcm_s16le -ac 2 -ar 44100 -f wav ' + _filename.replace(r'.mp3', r'.wav') + r' && echo $?')
+        elif is_program_aval(r'mpeg321'):
+            _output = getoutput(r'mpg321 --quiet --stereo --wav ' + _filename + r' ' + _filename.replace(r'.mp3', r'.wav') + r' && echo $?')
+        else:
+            return False
+        if _output == r'0':
+            return True
+    return False
 
 
 def playmusic(_file: str) -> None:
