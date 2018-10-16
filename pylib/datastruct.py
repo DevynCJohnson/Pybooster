@@ -349,7 +349,7 @@ def csv2json(_list: list, _indent: int = 2, _sort_keys: bool = True, _minify: bo
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
     """
     _dict: dict = {_key: _row for _key, _row in enumerate(_list)}
-    return jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_dict, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
+    return jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_dict, indent=_indent, separators=(r', ', r': '), sort_keys=_sort_keys)
 
 
 def dict2csv(_dict: dict) -> list:
@@ -387,7 +387,7 @@ def dict2json(_dict: dict, _indent: int = 2, _sort_keys: bool = True, _minify: b
     >>> dict2json({'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}, _sort_keys=True, _minify=True)
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
     """
-    return jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_dict, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
+    return jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_dict, indent=_indent, separators=(r', ', r': '), sort_keys=_sort_keys)
 
 
 def ini2dict(_file: Union[object, str], _rawinistr: bool = False) -> dict:
