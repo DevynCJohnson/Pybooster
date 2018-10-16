@@ -185,7 +185,8 @@ alias viewpath='echo "$PATH"'
 # Miscellaneous Aliases
 
 if [ -x "$(command -v notify-send)" ]; then
-    alias alert='notify-send --urgency=low -i "Alert"'
+    alias alert='notify-send --expire-time=4000 --urgency=critical --icon="important"'
+    alias desktopmsg='notify-send --expire-time=4000 --urgency=low --icon="info"'
 else
     alias alert='printf "Alert\n"'
 fi

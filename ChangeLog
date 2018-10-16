@@ -1,6 +1,7 @@
 2018-10-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added auto-complete features
+	* extras_rc.sh:  Improved alert() & added desktopmsg()
 	* Opticons:  Added additional icons
 
 2018-10-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
