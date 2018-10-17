@@ -225,6 +225,16 @@ ec2_inst_type() {
 }
 
 
+#' Return all EC2 instances that have a tag equal to the given value
+ec2_tagsbyvalue() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: Specify a tag!\n' >&2
+    else
+        aws ec2 describe-tags --filters=Name=key,Values="${1}"
+    fi
+}
+
+
 # AWS ECR #
 
 

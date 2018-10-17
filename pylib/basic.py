@@ -54,6 +54,9 @@ __all__: list = [
     r'SameFileError',
     r'ObjectError',
     r'NullException',
+    # GENERATORS #
+    r'frange',
+    r'incde',
     # BOOLEAN-RELATED FUNCTIONS #
     r'rmfalse',
     r'evaliter',
@@ -124,7 +127,6 @@ __all__: list = [
     r'transpose2dls',
     # MISCELLANEOUS #
     r'execfile',
-    r'incde',
     r'clearscr',
     r'pygrep',
     r'ipygrep',
@@ -177,6 +179,29 @@ class NullException(BaseException):
     """Null Exception"""
 
     pass
+
+
+# GENERATORS #
+
+
+def frange(start: float, stop: float, step: float = 0.1, ndigits: int = 3) -> Generator[float, None, None]:
+    """Create a generator for a range of floats from start to stop in increments equal to step"""
+    while start < stop:
+        yield float(start)
+        start = round(start + step, ndigits)
+
+
+def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
+    """Increment and Deincrement
+
+    for i, j in incde(i=3, j=7): print(i, j)
+    """
+    while True:
+        yield i, j
+        if j <= i:
+            break
+        i += delta
+        j -= delta
 
 
 # BOOLEAN-RELATED FUNCTIONS #
@@ -938,19 +963,6 @@ def execfile(_filename: str) -> object:
     """Execute Python script and get output"""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         return exec(_file.read())  # nosec  # pylint: disable=W0122
-
-
-def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
-    """Increment and Deincrement
-
-    for i, j in incde(i=3, j=7): print(i, j)
-    """
-    while True:
-        yield i, j
-        if j <= i:
-            break
-        i += delta
-        j -= delta
 
 
 def clearscr() -> None:

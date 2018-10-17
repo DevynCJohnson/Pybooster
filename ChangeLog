@@ -1,3 +1,9 @@
+2018-10-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Added additional features
+	* basic.py:  Added frange()
+	* snippets.conf:  Added more snippets
+
 2018-10-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added auto-complete features
