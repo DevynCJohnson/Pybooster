@@ -184,12 +184,28 @@ class NullException(BaseException):
 # GENERATORS #
 
 
-def frange(start: float, stop: float, step: float = 0.1, ndigits: int = 3) -> Generator[float, None, None]:
-    """Create a generator for a range of floats from start to stop in increments equal to step"""
-    while start < stop:
+def frange(start: float, stop: float, step: float = 0.1) -> Generator[float, None, None]:
+    """Create a generator for a range of floats from start to stop in increments equal to step
+
+    >>> isinstance(frange(0.1, 1.0), Generator)
+    True
+    >>> len(list(frange(0.1, 1.0)))
+    10
+    >>> len(list(frange(0.01, 1.0, 0.01)))
+    100
+    >>> list(frange(0.1, 1.0))
+    [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    """
+    ndigits: Union[int, str] = str(step)
+    if r'e-0' in ndigits:
+        ndigits = int(ndigits[-1:])
+    elif r'e-' in ndigits:
+        ndigits = int(ndigits[-2:])
+    else:
+        ndigits = len(str(ndigits).replace(r'-', r'')) - 2
+    while start <= stop:
         yield float(start)
         start = round(start + step, ndigits)
-
 
 def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
     """Increment and Deincrement
@@ -453,9 +469,7 @@ def iscoroutine(_object: object) -> bool:
 def isawaitable(_object: object) -> bool:
     """Return true if object can be passed to an `await` expression"""
     return (
-        isinstance(_object, (Awaitable, CoroutineType)) or
-        isinstance(_object, GeneratorType) and
-        bool(_object.gi_code.co_flags & CO_ITERABLE_COROUTINE)
+        isinstance(_object, (Awaitable, CoroutineType)) or isinstance(_object, GeneratorType) and bool(_object.gi_code.co_flags & CO_ITERABLE_COROUTINE)
     )
 
 
@@ -481,10 +495,7 @@ def isbuiltin(_object: object) -> bool:
 
 def isroutine(_object: object) -> bool:
     """Return true if the object is any kind of function or method"""
-    return (
-        isinstance(_object, (BuiltinFunctionType, FunctionType, MethodType)) or
-        ismethoddescriptor(_object)
-    )
+    return (isinstance(_object, (BuiltinFunctionType, FunctionType, MethodType)) or ismethoddescriptor(_object))
 
 
 def isabstract(_object: object) -> bool:
@@ -560,10 +571,7 @@ def words_in_str(_text: str, _wordlist: list) -> bool:
     >>> words_in_str('This is a test.', ['exam'])
     False
     """
-    for _word in _wordlist:
-        if _word in _text:
-            return True
-    return False
+    return bool(list(filter(_text.__contains__, _wordlist)))
 
 
 def words_not_in_str(_text: str, _wordlist: list) -> bool:

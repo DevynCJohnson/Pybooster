@@ -1,7 +1,7 @@
 2018-10-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional features
-	* basic.py:  Added frange()
+	* basic.py:  Added frange() & optimized some functions
 	* snippets.conf:  Added more snippets
 
 2018-10-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
