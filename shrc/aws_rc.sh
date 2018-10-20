@@ -51,6 +51,12 @@ bat_lsecsarn() {
 }
 
 
+#' List the names of the BATCH JobDefinitions
+bat_lsjobdef() {
+    aws batch describe-job-definitions --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"jobDefinitionName"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f | uniq
+}
+
+
 #' List the names of the BATCH Job Queues
 bat_lsjobq() {
     aws batch describe-job-queues --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/"statusReason": "JobQueue /, "", $0); gsub(/"jobQueueName"/, "_ _", $0); gsub(/[",]*/, "", $3); if ($3) { print $3; } } }' | sort -d -f
@@ -194,6 +200,7 @@ alias dpl_prog='aws datapipeline report-task-progress --task-id'
 # AWS EC2 #
 
 
+alias ec2_con='aws ec2 get-console-output --instance-id'  #' Get the consoole output of the specified EC2 instance
 alias ec2_desc='aws ec2 describe-instances'
 alias ec2_desc_addr='aws ec2 describe-addresses'
 alias ec2_desc_gpu='aws ec2 describe-elastic-gpus'
@@ -445,6 +452,13 @@ lambda_lsalias() {
         aws lambda list-aliases --function-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $0); print $0; } }'
     fi
 }
+
+
+# AWS LOGS #
+
+
+alias log_desc_grp='aws logs describe-log-groups --no-paginate'  #' Describe log group
+alias log_desc_strm='aws logs describe-log-streams --no-paginate --log-group-name'  #' Describe log stream
 
 
 # AWS S3 #

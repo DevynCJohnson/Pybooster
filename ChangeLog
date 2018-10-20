@@ -1,5 +1,6 @@
-2018-10-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-10-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* aws_rc.sh:  Added additional features
 	* snippets.conf:  Added snippets for boto3
 
 2018-10-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
