@@ -55,6 +55,7 @@ __all__: list = [
     r'GIGABYTE',
     r'GIGIBYTE',
     # VALIDATION #
+    r'doesfileexist',
     r'ensurefileexists',
     # FILE & FILESYSTEM INFO #
     r'lsfiles',
@@ -111,6 +112,17 @@ GIGIBYTE = 1073741824  # Gigibyte (Base 2)
 
 
 # VALIDATION #
+
+
+def doesfileexist(_filename: str) -> bool:
+    """Test that the specified file exists"""
+    if not pathexists(_filename) or not isfile(_filename):
+        return False
+    if isdir(_filename):
+        return False
+    if not fileaccess(_filename, R_OK):
+        return False
+    return True
 
 
 def ensurefileexists(_filename: str) -> None:

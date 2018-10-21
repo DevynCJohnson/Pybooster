@@ -54,6 +54,10 @@ __all__: list = [
     r'rand_noise_write',
     # IMAGING #
     r'saveasimg',
+    r'arrayimg',
+    r'arrayimg_aitoff',
+    r'arrayimg_lambert',
+    r'arrayimg_polar',
     r'funcimg',
     r'funcimg_aitoff',
     r'funcimg_lambert',
@@ -128,10 +132,51 @@ def saveasimg(_figure: object, _filepath: str) -> None:
     _figure.savefig(_filepath, bbox_inches=r'tight', dpi=r'figure', quality=95)  # type: ignore
 
 
-def funcimg(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> object:
-    """Produce an image with the specified number of random pixels (x & y) of size _height & _width graphing the specified function; Returns matplotlib.image.FigureImage"""
+def arrayimg(_array: object) -> object:
+    """Produce an image with the specified array graphed; Returns matplotlib.image.FigureImage"""
     plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
-    plt.rc(r'xtick.major.pad', pad=10)
+    plt.rc(r'agg.path', chunksize=30000)
+    fig, ax = plt.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'rectilinear', r'xlabel': r'Item', r'xscale': r'linear', r'ylabel': r'Value', r'yscale': r'linear'}, dpi=100, figsize=(int(len(_array) / 100000), 10))  # type: ignore
+    plt.tight_layout()  # type: ignore
+    ax.set_xscale(r'linear')
+    ax.ticklabel_format(useOffset=False, style=r'plain')
+    ax.plot(_array)
+    return fig
+
+
+def arrayimg_aitoff(_array: object) -> object:
+    """Produce an image with the specified array graphed (aitoff); Returns matplotlib.image.FigureImage"""
+    plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
+    plt.rc(r'agg.path', chunksize=30000)
+    fig, ax = plt.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'aitoff', r'xlabel': r'Item', r'xscale': r'linear', r'ylabel': r'Value', r'yscale': r'linear'}, dpi=100, figsize=(int(len(_array) / 100000), 10))  # type: ignore
+    plt.tight_layout()  # type: ignore
+    ax.plot(_array)
+    return fig
+
+
+def arrayimg_lambert(_array: object) -> object:
+    """Produce an image with the specified array graphed (lambert); Returns matplotlib.image.FigureImage"""
+    plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
+    plt.rc(r'agg.path', chunksize=30000)
+    fig, ax = plt.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'lambert', r'xlabel': r'Item', r'xscale': r'linear', r'ylabel': r'Value', r'yscale': r'linear'}, dpi=100, figsize=(20, 20))  # type: ignore
+    plt.tight_layout()  # type: ignore
+    ax.plot(_array)
+    return fig
+
+
+def arrayimg_polar(_array: object) -> object:
+    """Produce an image with the specified array graphed (polar); Returns matplotlib.image.FigureImage"""
+    plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
+    plt.rc(r'agg.path', chunksize=40000)
+    fig, ax = plt.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'polar', r'xlabel': r'Item', r'xscale': r'linear', r'ylabel': r'Value', r'yscale': r'linear'}, dpi=100, figsize=(20, 20))  # type: ignore
+    plt.tight_layout()  # type: ignore
+    ax.plot(_array)
+    return fig
+
+
+def funcimg(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> object:
+    """Produce an image with the specified number of random pixels (x & y) graphing the specified function; Returns matplotlib.image.FigureImage"""
+    plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
     _img: object = plt.figure(figsize=(20, 14), dpi=400)
     _data: object = np.array(func_range(_func, _start, _stop, _step), dtype=r'float64')
     _img.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'rectilinear', r'xlabel': r'Inputs', r'xscale': r'linear', r'ylabel': r'Outputs', r'yscale': r'linear'})  # type: ignore
@@ -141,9 +186,8 @@ def funcimg(_func: object, _start: Union[float, int] = 0, _stop: Union[float, in
 
 
 def funcimg_aitoff(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> object:
-    """Produce an image with the specified number of random pixels (x & y) of size _height & _width graphing (aitoff) the specified function; Returns matplotlib.image.FigureImage"""
+    """Produce an image with the specified number of random pixels (x & y) graphing (aitoff) the specified function; Returns matplotlib.image.FigureImage"""
     plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
-    plt.rc(r'xtick.major.pad', pad=10)
     _img: object = plt.figure(figsize=(20, 14), dpi=400)
     _data: object = np.array(func_range(_func, _start, _stop, _step), dtype=r'float64')
     _img.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'aitoff', r'xlabel': r'Inputs', r'xscale': r'linear', r'ylabel': r'Outputs', r'yscale': r'linear'})  # type: ignore
@@ -153,9 +197,8 @@ def funcimg_aitoff(_func: object, _start: Union[float, int] = 0, _stop: Union[fl
 
 
 def funcimg_lambert(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> object:
-    """Produce an image with the specified number of random pixels (x & y) of size _height & _width graphing (lambert) the specified function; Returns matplotlib.image.FigureImage"""
+    """Produce an image with the specified number of random pixels (x & y) graphing (lambert) the specified function; Returns matplotlib.image.FigureImage"""
     plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
-    plt.rc(r'xtick.major.pad', pad=10)
     _img: object = plt.figure(figsize=(20, 14), dpi=400)
     _data: object = np.array(func_range(_func, _start, _stop, _step), dtype=r'float64')
     _img.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'lambert', r'xlabel': r'Inputs', r'xscale': r'linear', r'ylabel': r'Outputs', r'yscale': r'linear'})  # type: ignore
@@ -165,9 +208,8 @@ def funcimg_lambert(_func: object, _start: Union[float, int] = 0, _stop: Union[f
 
 
 def funcimg_polar(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> object:
-    """Produce an image with the specified number of random pixels (x & y) of size _height & _width graphing (polar) the specified function; Returns matplotlib.image.FigureImage"""
+    """Produce an image with the specified number of random pixels (x & y) graphing (polar) the specified function; Returns matplotlib.image.FigureImage"""
     plt.rc(r'axes', labelsize=18, labelweight=r'bold', titlesize=24)
-    plt.rc(r'xtick.major.pad', pad=10)
     _img: object = plt.figure(figsize=(20, 14), dpi=400)
     _data: object = np.array(func_range(_func, _start, _stop, _step), dtype=r'float64')
     _img.subplots(subplot_kw={r'adjustable': r'datalim', r'aspect': r'auto', r'autoscale_on': True, r'projection': r'polar', r'xlabel': r'Inputs', r'xscale': r'linear', r'ylabel': r'Outputs', r'yscale': r'linear'})  # type: ignore
