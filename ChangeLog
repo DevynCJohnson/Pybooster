@@ -1,6 +1,9 @@
-2018-10-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-10-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional features
+	* PyBooster:  Added boolean.py, iterables.py, multimedia_rc.sh, & ymath.py
+	* PyBooster:  Miscellaneous optimizations & fixes
+	* multimedia.py:  Added many functions including audio format conversion functions
 	* snippets.conf:  Added snippets for boto3
 
 2018-10-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

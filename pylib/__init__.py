@@ -33,6 +33,7 @@ __all__: list = [
     r'astronomy',
     r'basic',
     r'bitwise',
+    r'boolean',
     r'clibutil',
     r'code_interpreter',
     r'color',
@@ -52,6 +53,7 @@ __all__: list = [
     r'financial',
     r'fs',
     r'geo',
+    r'iterables',
     r'libchar',
     r'markup',
     r'metric',
@@ -67,7 +69,8 @@ __all__: list = [
     r'system',
     r'timeutil',
     r'unix',
-    r'xmath'
+    r'xmath',
+    r'ymath'
 ]
 
 
