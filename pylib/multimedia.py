@@ -10,6 +10,11 @@
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
+@section HELPFUL DOCUMENTATION
+FFmpeg
+ - FFmpeg Codecs: https://ffmpeg.org/ffmpeg-codecs.html
+ - FFmpeg Filters: https://ffmpeg.org/ffmpeg-filters.html
+
 @section LICENSE
 GNU Lesser General Public License v3
 Copyright (c) Devyn Collier Johnson, All rights reserved.
@@ -30,10 +35,12 @@ along with this software.
 
 
 from array import array
-from subprocess import getoutput  # nosec
+from multiprocessing import cpu_count
+from subprocess import PIPE, Popen  # nosec
 import wave
 
-from pybooster.fs import ensurefileexists
+from pybooster.fs import ensurefileexists, getfilename
+from pybooster.iterables import mergeoddeven
 from pybooster.system import is_program_aval
 
 PYGAME_IMPORTED: bool = False
@@ -46,14 +53,45 @@ except ImportError:
 
 
 __all__: list = [
+    # GLOBAL CONSTANTS #
+    r'FFMPEG',
     # AUDIO #
+    r'merge2rawwav',
     r'openwavfile',
+    r'writewavfile',
+    r'playmusic',
+    r'audioimg2mp4',
+    # AUDIO CONVERSIONS #
+    r'to_aac',
+    r'to_ac3',
+    r'to_ac3_fixed',
+    r'to_flac',
+    r'to_mp3',
+    r'to_ogg',
+    r'to_opus',
+    r'to_wav',
     r'mp3_to_wav',
-    r'playmusic'
+    r'wav_to_mp3'
 ]
 
 
+# GLOBAL CONSTANTS #
+
+
+FFMPEG: str = r'ffmpeg -y -hide_banner -loglevel panic -sn -vn'
+
+
 # AUDIO #
+
+
+def merge2rawwav(_wav_data: dict) -> list:
+    """Merge the split WAV channels back together and convert the data to the original raw WAV format"""
+    _out: list = []
+    if _wav_data[r'num_channels'] == 2:
+        _out.append(mergeoddeven(_wav_data[r'left_audio'], _wav_data[r'right_audio']).tobytes())
+    else:
+        _out.append(_wav_data[r'data'].tobytes())
+    return _out
 
 
 def openwavfile(_filename: str) -> dict:
@@ -79,26 +117,202 @@ def openwavfile(_filename: str) -> dict:
     return _out
 
 
-def mp3_to_wav(_filename: str) -> bool:
-    """Convert an MP3 file to a WAV file; Return True if successful"""
-    if ensurefileexists(_filename):
+def writewavfile(_wav_data: dict, _filename: str):
+    """Write a WAV file using data in the given WAV data dictionary"""
+    with wave.open(_filename, mode=r'wb') as _file:
+        _file.setparams((_wav_data[r'num_channels'], _wav_data[r'sample_width'], _wav_data[r'frame_rate'], _wav_data[r'num_frames'], r'NONE', r'not compressed'))  # pylint: disable=E1101
+        _file.writeframes(merge2rawwav(_wav_data))  # pylint: disable=E1101
+
+
+def playmusic(_filename: str) -> None:
+    """Play an MP3, WAV, or other audio files"""
+    if PYGAME_IMPORTED:
+        init()
+        music.load(_filename)
+        music.play()
+        while music.get_busy() is True:
+            continue
+    elif is_program_aval(r'ffplay'):
+        _process = Popen(r'ffplay -hide_banner -loglevel panic -sn -vn -nodisp ' + _filename, stdout=PIPE, stderr=PIPE)
+        _stdout, _stderr = _process.communicate()
+    elif is_program_aval(r'play'):
+        _process = Popen(r'play -q -V1 ' + _filename, stdout=PIPE, stderr=PIPE)
+        _stdout, _stderr = _process.communicate()
+    elif _filename.endswith(r'.mp3') and is_program_aval(r'mpeg321'):
+        _process = Popen(r'mpg321 --quiet ' + _filename, stdout=PIPE, stderr=PIPE)
+        _stdout, _stderr = _process.communicate()
+    elif _filename.endswith(r'.mp3') and is_program_aval(r'mpg123'):
+        _process = Popen(r'mpg123 --quiet ' + _filename, stdout=PIPE, stderr=PIPE)
+        _stdout, _stderr = _process.communicate()
+    elif _filename.endswith(r'.ogg') and is_program_aval(r'ogg123'):
+        _process = Popen(r'ogg123 --quiet ' + _filename, stdout=PIPE, stderr=PIPE)
+        _stdout, _stderr = _process.communicate()
+
+
+def audioimg2mp4(_audio_filename: str, _img_filename: str, sample_rate: int = 44100) -> bool:
+    """Create an MP4 video given an audio file & an image file; Return True if successful"""
+    if ensurefileexists(_img_filename) and ensurefileexists(_audio_filename):
+        # Conversion
         if is_program_aval(r'ffmpeg'):
-            _output = getoutput(r'ffmpeg -hide_banner -loglevel panic -i ' + _filename + r' -vn -acodec pcm_s16le -ac 2 -ar 44100 -f wav ' + _filename.replace(r'.mp3', r'.wav') + r' && echo $?')
-        elif is_program_aval(r'mpeg321'):
-            _output = getoutput(r'mpg321 --quiet --stereo --wav ' + _filename + r' ' + _filename.replace(r'.mp3', r'.wav') + r' && echo $?')
+            core_count = r'-threads ' + str(cpu_count())
+            hw_params = r'-hwaccel cuvid ' + core_count if is_program_aval(r'nvidia-smi') else r'-hwaccel vaapi ' + core_count
+            _process = Popen(r'ffmpeg -y -hide_banner -loglevel panic ' + hw_params + r' -thread_queue_size 4096 -probesize 20M -analyzeduration 20M -i ' + _img_filename + r' -i ' + _audio_filename + r' -c:v libx264 -crf 15 -tune stillimage -vf scale=2560:1440 -c:a libmp3lame -b:a 320000 -ar ' + str(sample_rate) + r' -compression_level 0 ' + getfilename(_audio_filename) + r'_merged.mp4', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
         else:
             return False
-        if _output == r'0':
+        # Check for success
+        if not _stderr:
             return True
     return False
 
 
-def playmusic(_file: str) -> None:
-    """Play an MP3, WAV, or other audio files via Pygame3"""
-    if not PYGAME_IMPORTED:
-        raise Exception(r'Pygame is not installed nor found.')
-    init()
-    music.load(_file)
-    music.play()
-    while music.get_busy() is True:
-        continue
+# AUDIO CONVERSIONS #
+
+
+def to_aac(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to an AAC file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a libfaac -ar ' + str(sample_rate) + r' -f aac ' + getfilename(_filename) + r'.aac', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_ac3(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to an AC3 file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a ac3 -ar ' + str(sample_rate) + r' -f ac3 ' + getfilename(_filename) + r'.ac3', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_ac3_fixed(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to an AC3 (Fixed) file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a ac3_fixed -ar ' + str(sample_rate) + r' -f ac3 ' + getfilename(_filename) + r'.ac3', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_flac(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to a Flac file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a flac -ar ' + str(sample_rate) + r' -compression_level 12 -f flac ' + getfilename(_filename) + r'.flac', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_mp3(_filename: str, bitrate: int = 320000, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to an MP3 file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a libmp3lame -b:a ' + str(bitrate) + r' -ar ' + str(sample_rate) + r' -compression_level 0 -f mp3 ' + getfilename(_filename) + r'.mp3', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_ogg(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to an OGG file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a libvorbis -ar ' + str(sample_rate) + r' -f ogg ' + getfilename(_filename) + r'.ogg', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_opus(_filename: str) -> bool:
+    """Convert an audio file to an OPUS file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a libopus -compression_level 10 -f opus ' + getfilename(_filename) + r'.opus', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def to_wav(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an audio file to a WAV file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            _process = Popen(FFMPEG + r' -i ' + _filename + r' -codec:a pcm_s16le -ar ' + str(sample_rate) + r' -f wav ' + getfilename(_filename) + r'.wav', stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def mp3_to_wav(_filename: str, sample_rate: int = 44100) -> bool:
+    """Convert an MP3 file to a WAV file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            return to_wav(_filename, sample_rate)
+        if is_program_aval(r'mpeg321'):
+            _process = Popen(r'mpg321 --quiet --stereo --wav ' + _filename + r' ' + _filename.replace(r'.mp3', r'.wav'), stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        elif is_program_aval(r'mpg123'):
+            _process = Popen(r'mpg123 --quiet --stereo --wav ' + _filename + r' ' + _filename.replace(r'.mp3', r'.wav'), stdout=PIPE, stderr=PIPE)
+            _stdout, _stderr = _process.communicate()
+        else:
+            return False
+        # Check for success
+        if not _stderr:
+            return True
+    return False
+
+
+def wav_to_mp3(_filename: str, bitrate: int = 320000, sample_rate: int = 44100) -> bool:
+    """Convert a WAV file to an MP3 file; Return True if successful"""
+    if ensurefileexists(_filename):
+        # Conversion
+        if is_program_aval(r'ffmpeg'):
+            return to_mp3(_filename, bitrate, sample_rate)
+    return False
