@@ -40,7 +40,7 @@ from sys import stderr
 from typing import List, Optional, Union
 import xml.etree.ElementTree as ET  # nosec
 
-from pybooster.basic import isintuplelist
+from pybooster.boolean import isintuplelist
 from pybooster.libchar import ALPHASET, INVALID_CHARREFS, INVALID_CODEPOINTS, HTML5
 from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
 from pybooster.strtools import rmspecialwhitespace

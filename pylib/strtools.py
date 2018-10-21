@@ -55,7 +55,7 @@ along with this software.
 from ast import literal_eval
 from typing import List, Union
 
-from pybooster.basic import ishex
+from pybooster.boolean import ishex
 from pybooster.libchar import (
     BRAILLE,
     GREEK_ALL,
@@ -238,16 +238,20 @@ def uppercase(_str: str) -> str:
 
 
 def camelcase2pascalcase(string: str) -> str:
-    """Convert string from PascalCase to camelCase
+    """Convert string from camelCase to PascalCase
 
     >>> camelcase2pascalcase('testString')
-    ''TestString AnotherString ThirdSymbol''
+    'TestString'
     >>> camelcase2pascalcase('testString anotherString')
     'TestString AnotherString'
     >>> camelcase2pascalcase('testString anotherString thirdSymbol')
     'TestString AnotherString ThirdSymbol'
     """
-    return string[0].upper() + string[1:]
+    _strlist: list = string.split(r' ')
+    _out: list = []
+    for _word in _strlist:
+        _out.append(_word[0].upper() + _word[1:])
+    return r' '.join(_out)
 
 
 def camelcase2snakecase(string: str) -> str:
@@ -278,7 +282,11 @@ def pascalcase2camelcase(string: str) -> str:
     >>> pascalcase2camelcase('TestString AnotherString ThirdSymbol')
     'testString anotherString thirdSymbol'
     """
-    return string[0].lower() + string[1:]
+    _strlist: list = string.split(r' ')
+    _out: list = []
+    for _word in _strlist:
+        _out.append(_word[0].lower() + _word[1:])
+    return r' '.join(_out)
 
 
 def pascalcase2snakecase(string: str) -> str:

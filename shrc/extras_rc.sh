@@ -221,7 +221,7 @@ fi
 if [ "$PLATFORM" = 'linux' ] || [ "$PLATFORM" = 'cygwin' ]; then
     #' Copy the ownership and permissions of one file to another
     copyFileOwnership() {
-        if [ -z "$1" ] || [ -z "$2" ]; then
+        if [ -z "$1" ] || [ -z "${2:-}" ]; then
             printf 'ERROR: A parameter is required!\n' >&2
         else
             chmod --reference="$1" "$2"
@@ -232,7 +232,7 @@ fi
 
 #' Find an executable script with the given name (without regex) and open it with cat
 fcat() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Find an executable script with the given name (without regex) and open it with cat\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -251,7 +251,7 @@ fcat() {
 
 #' Find a directory with the given name (without regex); searches from CWD if no directory is specified
 finddir() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Find a directory with the given name (without regex); searches from CWD if no directory is specified\nUsage: finddir DIR_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -265,7 +265,7 @@ finddir() {
 
 #' Find a directory with the given name (with regex); searches from / if no directory is specified
 finddirx() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -279,7 +279,7 @@ finddirx() {
 
 #' Find a file with the given name (without regex); searches from CWD if no directory is specified
 findfile() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Find a file with the given name (without regex); searches from CWD if no directory is specified\nUsage: findfile FILE_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -293,7 +293,7 @@ findfile() {
 
 #' Find a file with the given name (with regex); searches from / if no directory is specified
 findfilex() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -348,7 +348,7 @@ findrep() {
 
 #' Removes files that match the given regex pattern
 rmfiles() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
         printf 'Removes files that match the given regex pattern\n--preview will print filenames instead of deleting them\nUsage: rmfiles [--preview] PATTERN [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
@@ -384,7 +384,7 @@ rmpycache() {
 
 #' Search for a filename in $PATH
 searchInPath() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
         for searchIn in ${PATH//:/ }; do
@@ -396,7 +396,7 @@ alias findinpath=searchInPath
 
 #' Search for a filename in $PKG_CONFIG_PATH
 searchInPkgPath() {
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
         for searchIn in ${PKG_CONFIG_PATH//:/ }; do
@@ -474,7 +474,7 @@ downloadtar() { wget -c "$1" -O - | tar -xz; }
 
 #' Apply a patch given a file name and the pathname of the patch
 applypatch() {
-    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+    if [ -z "${1:-}" ] && [ -z "${2:-}" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v patch)" ]; then
         printf 'ERROR: The "patch" command was not found!\n' >&2
@@ -487,7 +487,7 @@ applypatch() {
 
 #' Create a patch given two file names
 createpatch() {
-    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+    if [ -z "${1:-}" ] && [ -z "${2:-}" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v diff)" ]; then
         printf 'ERROR: The "diff" command was not found!\n' >&2
@@ -501,7 +501,7 @@ createpatch() {
 
 #' Reverse the effects of a patch given a file name and the pathname of the patch
 reversepatch() {
-    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+    if [ -z "${1:-}" ] && [ -z "${2:-}" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v patch)" ]; then
         printf 'ERROR: The "patch" command was not found!\n' >&2
@@ -514,7 +514,7 @@ reversepatch() {
 
 #' Show the unique lines of two files given two file names
 uniquelines() {
-    if [ -z "$1" ] && [ -z "$2" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
+    if [ -z "${1:-}" ] && [ -z "${2:-}" ] && [ ! -f "$1" ] && [ ! -f "$2" ]; then
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v comm)" ]; then
         printf 'ERROR: The "comm" command was not found!\n' >&2
@@ -536,10 +536,8 @@ uniquelines() {
 
 #' Return the PID of a process (if found)
 GetPID() {
-    program="$1"
-    pidfile="${PIDFILE:=/var/run/${program}.pid}"
+    pidfile="${PIDFILE:=/var/run/${1:-}.pid}"
     pid=''
-    unset program
     if [ -r "$pidfile" ]; then
         pid="$(head -1 "$pidfile")"
         if [ ! "$(kill -0 "$pid" 2> /dev/null)" ]; then
@@ -549,7 +547,7 @@ GetPID() {
         fi
     fi
     unset pidfile
-    if [ -n "$pid" ]; then
+    if [ -n "${pid:-}" ]; then
         printf '%s\n' "$pid"
         unset pid
         return 0
@@ -569,17 +567,17 @@ fi
 
 if [ -x "$(command -v mawk)" ]; then
     #' Use a faster Awk implementation (if available)
-    fawk() { mawk "${1}"; }
+    fawk() { mawk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { mawk NF; }
 elif [ -x "$(command -v nawk)" ]; then
     #' Use a faster Awk implementation (if available)
-    fawk() { nawk "${1}"; }
+    fawk() { nawk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { nawk NF; }
 else
     #' Use a faster Awk implementation (if available)
-    fawk() { awk "${1}"; }
+    fawk() { awk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { awk NF; }
 fi
