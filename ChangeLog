@@ -1,6 +1,7 @@
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Added more keywords to filetypes.python
+	* multimedia.py:  Applied optimizations & tweaks
 	* pkg_rc.sh:  Added more functions
 	* profile:  Applied minor tweaks & changes
 	* PyBooster:  Added CSV files listing codenames for various Linux distro releases

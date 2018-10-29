@@ -88,14 +88,11 @@ FFMPEG: str = r'ffmpeg -y -hide_banner -loglevel panic -sn -vn'
 # AUDIO #
 
 
-def merge2rawwav(_wav_data: dict) -> list:
+def merge2rawwav(_wav_data: dict) -> bytes:
     """Merge the split WAV channels back together and convert the data to the original raw WAV format"""
-    _out: list = []
     if _wav_data[r'num_channels'] == 2:
-        _out.append(mergeoddeven(_wav_data[r'left_audio'], _wav_data[r'right_audio']).tobytes())
-    else:
-        _out.append(_wav_data[r'data'].tobytes())
-    return _out
+        return mergeoddeven(_wav_data[r'left_audio'], _wav_data[r'right_audio']).tobytes()
+    return _wav_data[r'data'].tobytes()
 
 
 def openwavfile(_filename: str) -> dict:
@@ -147,7 +144,7 @@ def openmp3file(_filename: str) -> dict:
     return _out
 
 
-def writewavfile(_wav_data: dict, _filename: str):
+def writewavfile(_wav_data: dict, _filename: str) -> None:
     """Write a WAV file using data in the given WAV data dictionary"""
     with wave.open(_filename, mode=r'wb') as _file:
         _file.setparams((_wav_data[r'num_channels'], _wav_data[r'sample_width'], _wav_data[r'frame_rate'], _wav_data[r'num_frames'], r'NONE', r'not compressed'))  # pylint: disable=E1101
