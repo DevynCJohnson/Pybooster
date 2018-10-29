@@ -508,11 +508,8 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
     if num_imgs < 1:
         num_imgs = 1
     # Create image using parallel processing
-    maxpoolsize = cpu_count()
-    if maxpoolsize > num_imgs:
-        poolsize = num_imgs
-    else:
-        poolsize = maxpoolsize
+    poolsize = cpu_count()
+    poolsize = num_imgs if poolsize > num_imgs else poolsize
     with Pool(poolsize) as threadpool:
         try:
             filebuf = threadpool.starmap(calc_image, tuple(repeat([imgformat, imgwidth, outdir, img_or_math], num_imgs)))
