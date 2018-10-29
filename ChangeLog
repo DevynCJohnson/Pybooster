@@ -5,6 +5,7 @@
 	* Geany:  Added more keywords to filetypes.python
 	* genmathart:  Applied optimizations & tweaks
 	* multimedia.py:  Applied optimizations & tweaks
+	* multimedia_rc.sh:  Applied optimizations & tweaks
 	* pkg_rc.sh:  Added more functions
 	* profile:  Applied minor tweaks & changes
 	* PyBooster:  Added CSV files listing codenames for various Linux distro releases

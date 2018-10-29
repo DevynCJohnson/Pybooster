@@ -73,7 +73,12 @@ audio2png() {
     elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
         outfile="$(basename "${1}")"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=lin:size=2560x1440 "${outfile}.png"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=lin:size=2560x1440 "${outfile}.png"
     else
         printf 'ERROR: A pathname to a readable file is required!\n' >&2
         printf 'Generate a linear visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png AUDIO_FILE\n' >&2
@@ -89,7 +94,12 @@ audio2png_sqrt() {
     elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
         outfile="$(basename "${1}")"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=sqrt:size=2560x1440 "${outfile}_sqrt.png"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=sqrt:size=2560x1440 "${outfile}_sqrt.png"
     else
         printf 'ERROR: A pathname to a readable file is required!\n' >&2
         printf 'Generate a squareroot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_sqrt AUDIO_FILE\n' >&2
@@ -105,7 +115,12 @@ audio2png_cbrt() {
     elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
         outfile="$(basename "${1}")"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=cbrt:size=2560x1440 "${outfile}_cbrt.png"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=cbrt:size=2560x1440 "${outfile}_cbrt.png"
     else
         printf 'ERROR: A pathname to a readable file is required!\n' >&2
         printf 'Generate a cuberoot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_cbrt AUDIO_FILE\n' >&2
@@ -121,7 +136,12 @@ audio2png_log() {
     elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
         outfile="$(basename "${1}")"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
     else
         printf 'ERROR: A pathname to a readable file is required!\n' >&2
         printf 'Generate a logarithmic visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_log AUDIO_FILE\n' >&2
@@ -137,10 +157,18 @@ audio2png_all() {
     elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
         outfile="$(basename "${1}")"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=lin:size=2560x1440 "${outfile}.png"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=sqrt:size=2560x1440 "${outfile}_sqrt.png"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=cbrt:size=2560x1440 "${outfile}_cbrt.png"
-        ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=lin:size=2560x1440 "${outfile}.png" &
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=sqrt:size=2560x1440 "${outfile}_sqrt.png" &
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=cbrt:size=2560x1440 "${outfile}_cbrt.png" &
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
     else
         printf 'ERROR: A pathname to a readable file is required!\n' >&2
         printf 'Generate multiple visualizations of the audio wave (in the specified audio file) and save them as a PNG\nUsage: audio2png_all AUDIO_FILE\n' >&2
@@ -322,7 +350,12 @@ mergeaudiovideo() {
         outfile="$(basename "${2}")"
         file_ext="${outfile##*.}"
         outfile="${outfile%.*}"
-        ffmpeg -hide_banner -loglevel panic -i "$1" -i "$2" "${outfile}_merged.${file_ext}"
+        core_count=''
+        [ -x "$(command -v nproc)" ] && core_count="-threads $(nproc)"
+        hw_params='-hwaccel vaapi'
+        [ -x "$(command -v nvidia-smi)" ] && hw_params="-hwaccel cuvid $core_count"
+        # shellcheck disable=SC2086
+        ffmpeg -hide_banner -loglevel panic ${hw_params} -i "$1" -i "$2" "${outfile}_merged.${file_ext}"
     else
         printf 'ERROR: Two pathnames to readable files is required!\n' >&2
         printf 'Play a video file\nUsage: mergeaudiovideo AUDIO_FILE VIDEO_FILE\n' >&2
