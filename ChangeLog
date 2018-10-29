@@ -1,5 +1,6 @@
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Geany:  Added more keywords to filetypes.python
 	* PyBooster:  Added CSV files listing codenames for various Linux distro releases
 	* snippets.conf:  Added more snippets
 
