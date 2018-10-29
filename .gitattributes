@@ -119,9 +119,9 @@ static/* linguist-vendored
 *.swg text eol=lf linguist-generated=false linguist-language=C linguist-vendored=false
 *.coffee text eol=lf linguist-language=CoffeeScript linguist-vendored=false
 *._coffee text eol=lf linguist-language=CoffeeScript linguist-vendored=false
-*.css text eol=lf linguist-generated=false linguist-language=CSS linguist-vendored=false
+*.[Cc][Ss][Ss] text eol=lf linguist-generated=false linguist-language=CSS linguist-vendored=false
 *.css[23] text eol=lf linguist-generated=false linguist-language=CSS linguist-vendored=false
-*.csv text eol=lf linguist-generated=false linguist-language=CSV linguist-vendored=false
+*.[Cc][Ss][Vv] text eol=lf linguist-generated=false linguist-language=CSV linguist-vendored=false
 *.[Cc][Uu] text eol=lf linguist-language=Cuda linguist-vendored=false
 *.[Cc][Uu][Hh] text eol=lf linguist-language=Cuda linguist-vendored=false
 *.[Cc][Uu][Dd][Aa] text eol=lf linguist-language=Cuda linguist-vendored=false
@@ -143,15 +143,15 @@ static/* linguist-vendored
 *.hx text eol=lf linguist-language=Haxe linguist-vendored=false
 *.hxsl text eol=lf linguist-language=Haxe linguist-vendored=false
 *.htm text eol=lf linguist-language=HTML linguist-vendored=false
-*.html text eol=lf linguist-language=HTML linguist-vendored=false
+*.[Hh][Tt][Mm][Ll] text eol=lf linguist-language=HTML linguist-vendored=false
 *.xht text eol=lf linguist-language=HTML linguist-vendored=false
 *.[Xx]html text eol=lf linguist-language=HTML linguist-vendored=false
-*.cfg text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-*.conf text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.[Cc][Ff][Gg] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.[Cc][Oo][Nn][Ff] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.config text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.desktop text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-*.ini text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.[Ii][Nn][Ii] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Jj][Ss][Oo][Nn] text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
 *.less text eol=lf linguist-language=Less linguist-vendored=false
@@ -160,7 +160,7 @@ static/* linguist-vendored
 *.lua text eol=lf linguist-language=Lua linguist-vendored=false
 MANIFEST.in text eol=lf linguist-documentation=false linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Jj][Ss] text eol=lf linguist-language=JavaScript linguist-vendored=false
-*.m4 text eol=lf linguist-generated=false linguist-language=M4 linguist-vendored=false
+*.[Mm]4 text eol=lf linguist-generated=false linguist-language=M4 linguist-vendored=false
 *.[Mm][Kk] text eol=lf linguist-generated=false linguist-language=Makefile linguist-vendored=false
 makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.matlab text eol=lf linguist-language=Matlab linguist-vendored=false
@@ -189,9 +189,9 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.pygtk text eol=lf linguist-language=Python linguist-vendored=false
 *.pyqt text eol=lf linguist-language=Python linguist-vendored=false
 *.pyside text eol=lf linguist-language=Python linguist-vendored=false
-*.R text eol=lf linguist-language=R linguist-vendored=false
-*.sass text eol=lf linguist-language=Sass linguist-vendored=false
-*.scss text eol=lf linguist-language=SCSS linguist-vendored=false
+*.[Rr] text eol=lf linguist-language=R linguist-vendored=false
+*.[Ss][Aa][Ss][Ss] text eol=lf linguist-language=Sass linguist-vendored=false
+*.[Ss][Cc][Ss][Ss] text eol=lf linguist-language=SCSS linguist-vendored=false
 *.ash text eol=lf linguist-language=Shell linguist-vendored=false
 *.bash text eol=lf linguist-language=Shell linguist-vendored=false
 *.bashrc text eol=lf linguist-language=Shell linguist-vendored=false
@@ -225,8 +225,8 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.y text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yacc text eol=lf linguist-language=Yacc linguist-vendored=false
 *.yy text eol=lf linguist-language=Yacc linguist-vendored=false
-*.yaml text eol=lf linguist-language=YAML linguist-vendored=false
-*.yml text eol=lf linguist-language=YAML linguist-vendored=false
+*.[Yy][Aa][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
+*.[Yy][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
 accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 accessory/schemas/** linguist-vendored
 accessory/schemas/DTD/*.dtd text eol=lf linguist-language=XML linguist-vendored
