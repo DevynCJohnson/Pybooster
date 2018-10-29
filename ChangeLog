@@ -1,5 +1,6 @@
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* crypto_rc.sh:  Added many new functions & documentation
 	* Geany:  Added more keywords to filetypes.python
 	* genmathart:  Applied optimizations & tweaks
 	* multimedia.py:  Applied optimizations & tweaks
