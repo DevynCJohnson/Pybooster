@@ -3,6 +3,7 @@
 	* Geany:  Added more keywords to filetypes.python
 	* PyBooster:  Added CSV files listing codenames for various Linux distro releases
 	* snippets.conf:  Added more snippets
+	* xmath.py:  Added more functions & applied optimizations
 
 2018-10-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
