@@ -19,12 +19,16 @@ if [ -x "$(command -v docker)" ]; then
 alias dock_cl='docker container ls -a --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'  #' List containers (compressed list)
 alias dock_clean_all='docker system prune --all'  #' Remove all unused images not just dangling ones
 alias dock_clean_con='docker container prune'  #' Remove all stopped containers
+alias dock_clean_dimg='docker rmi "$(docker images -a --filter=dangling=true -q)"'  #' Remove dangling images
 alias dock_clean_img='docker image prune --all'  #' Remove all unused images, not just dangling ones
+alias docker_clean_ps='docker rm "$(docker ps --filter=status=exited --filter=status=created -q)"'  #' Remove stopped containers
 alias dock_conls='docker ps -a'  #' List containers
 alias dock_conrm='docker container rm'  #' Remove container
 alias dock_constop='docker container stop'  #' Stop container
 alias dock_exe='docker run -i -t'  #' Run Docker image like an executable
 alias dock_imgls='docker images'  #' List images
+alias dock_imgrm='docker rmi'  #' Remove Docker image
+alias dock_kill_all='docker kill "$(docker ps -q)"'  #' Stop all running Dockers
 alias dock_plugls='docker plugin ls'  #' List plugins
 alias dock_rm_sock='sudo rm -r -f /var/run/docker.sock'  #' Remove Docker's socket
 alias dock_srvmk='docker service create'  #' Create service
