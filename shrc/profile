@@ -163,6 +163,7 @@ if [ -z "${PAGER:-}" ]; then
         export PAGER='/bin/less'
     fi
 fi
+export MANPAGER="$PAGER"
 [ -r /etc/lsb-release ] && . /etc/lsb-release
 [ -x "$(command -v watch)" ] && alias watch='watch '
 
@@ -420,6 +421,9 @@ set +o verbose || true
 
 # MISCELLANEOUS FEATURES #
 
+
+# Provide Apropos if Unavailable
+[ ! -x "$(command -v apropos)" ] && alias apropos='man -k'
 
 # Sudo Hint
 if [ ! -e "${HOME}/.sudo_as_admin_successful" ] && [ ! -e "${HOME}/.hushlogin" ]; then
