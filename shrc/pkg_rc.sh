@@ -58,6 +58,7 @@ elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
     refreshrepo() { sudo apt-get update; }
     repocheck() { sudo apt-get check; }
     sysupdate() { sudo apt-get dist-upgrade; }
+    sysupgrade() { sudo apt-get update; sudo apt-get upgrade; sudo apt-get dist-upgrade; sudo do-release-upgrade -d; }
     if [ -x "$(command -v add-apt-repository)" ]; then
         addrepo() { sudo add-apt-repository "${@//;// }"; }
         rmrepo() { sudo add-apt-repository --remove "${@//;// }"; }
