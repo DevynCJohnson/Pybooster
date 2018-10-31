@@ -1,6 +1,7 @@
 2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional autocompletion features
+	* cleansystem:  Added a new parameter flag for experimental features
 	* crypto_rc.sh:  Added additional code
 	* Geany:  Added a template for section-1 man-pages
 	* Schemas:  Removed unnecessary comments

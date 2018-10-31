@@ -25,6 +25,7 @@ Help() {
     printf '%s\n' '-l,--locales              Delete all locales except American English (en-US)'
     printf '%s\n' '-m,--mem,--mem-clean      Clean up memory'
     printf '%s\n' '-s,--ssd,--ssd-clean      Discard unused blocks on all mounted SSD storage units (requires fstrim)'
+    printf '%s\n' '-x                        Perform extra cleaning (these feaures are experimental)'
 }
 
 
@@ -85,13 +86,14 @@ fi
 # GETOPT #
 
 
-GOPT="$(getopt -o dhlms --long deep-clean,help,locales,mem,mem-clean,ssd,ssd-clean -- "$@")"
+GOPT="$(getopt -o dhlmsx --long deep-clean,help,locales,mem,mem-clean,ssd,ssd-clean -- "$@")"
 eval set -- "$GOPT"
 
 deep_clean=0
 del_locales=0
 mem_clean=0
 ssd_clean=0
+extra_clean=0
 
 while true; do
     case "${1:-}" in
@@ -113,6 +115,10 @@ while true; do
         ;;
         -s|--ssd|--ssd-clean)  # Discard unused blocks on all mounted SSD storage units
             ssd_clean=1
+            shift
+        ;;
+        -x)  # Perform extra cleaning (these feaures are experimental)
+            extra_clean=1
             shift
         ;;
         --)  # End
@@ -185,7 +191,8 @@ if [ -x "$(command -v sqlite3)" ]; then
     # Epiphany
     [ -d ~/.gnome2/epiphany/mozilla/epiphany/ ] && sqlvacuum ~/.gnome2/epiphany/mozilla/epiphany/*.sqlite &
     # Firefox
-    [ -d ~/.mozilla/firefox/ ] && (echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite && sqlvacuum ~/.mozilla/firefox/*/*.sqlite >&2 2> /dev/null) &
+    [ -d ~/.mozilla/firefox/ ] && [ "$extra_clean" -eq 1 ] && (echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite >&2 2> /dev/null)
+    [ -d ~/.mozilla/firefox/ ] && (sqlvacuum ~/.mozilla/firefox/*/*.sqlite >&2 2> /dev/null) &
     [ -d ~/.mozilla/firefox/Profiles/ ] && sqlvacuum ~/.mozilla/firefox/Profiles/*/*.sqlite &
     # Thunderbird
     [ -d ~/.thunderbird/ ] && sqlvacuum ~/.thunderbird/*/*.sqlite &
