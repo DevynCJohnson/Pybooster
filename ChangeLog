@@ -1,3 +1,7 @@
+2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* crypto_rc.sh:  Added additional code
+
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* crypto_rc.sh:  Added many new functions & documentation

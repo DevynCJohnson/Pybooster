@@ -46,6 +46,12 @@ fi
 
 
 if [ -x "$(command -v openssl)" ]; then
+    alias lsgpgkeys='gpg --fingerprint; gpg --list-keys'  #' List all GPG keys
+    alias refreshgpgkeys='gpg --refresh-keys; gpg --update-trustdb'  #' Refresh and update the GPG keys and TrustDB
+fi
+
+
+if [ -x "$(command -v openssl)" ]; then
 
 
 # Key Generators
@@ -53,16 +59,16 @@ if [ -x "$(command -v openssl)" ]; then
 alias brainpool512='openssl ecparam ${OPENSSL_ENGINE:-} -name brainpoolP512t1 -genkey'  #' Generate an elliptic-curve key (brainpoolP512t1)
 alias c2tnb431r1='openssl ecparam ${OPENSSL_ENGINE:-} -name c2tnb431r1 -genkey'  #' Generate an elliptic-curve key (c2tnb431r1)
 alias prime256='openssl ecparam ${OPENSSL_ENGINE:-} -name prime256v1 -genkey'  #' Generate an elliptic-curve key (prime256v1)
-alias rsa1024='openssl genrsa ${OPENSSL_ENGINE:-} 1024'  #' Generate a random 1024-bit RSA private key
-alias rsa2048='openssl genrsa ${OPENSSL_ENGINE:-} 2048'  #' Generate a random 2048-bit RSA private key
-alias rsa4096='openssl genrsa ${OPENSSL_ENGINE:-} 4096'  #' Generate a random 4096-bit RSA private key
-alias rsa8192='openssl genrsa ${OPENSSL_ENGINE:-} 8192'  #' Generate a random 8192-bit RSA private key
-alias rsa16384='openssl genrsa ${OPENSSL_ENGINE:-} 16384'  #' Generate a random 16384-bit RSA private key
-alias rsa1024file='openssl genrsa ${OPENSSL_ENGINE:-} -out rsa1024pri.pem 1024'  #' Generate a file containing a random 1024-bit RSA private key
-alias rsa2048file='openssl genrsa ${OPENSSL_ENGINE:-} -out rsa2048pri.pem 2048'  #' Generate a file containing a random 2048-bit RSA private key
-alias rsa4096file='openssl genrsa ${OPENSSL_ENGINE:-} -out rsa4096pri.pem 4096'  #' Generate a file containing a random 4096-bit RSA private key
-alias rsa8192file='openssl genrsa ${OPENSSL_ENGINE:-} -out rsa8192pri.pem 8192'  #' Generate a file containing a random 8192-bit RSA private key
-alias rsa16384file='openssl genrsa ${OPENSSL_ENGINE:-} -out rsa16384pri.pem 16384'  #' Generate a file containing a random 16384-bit RSA private key
+alias rsa1024='openssl genrsa 1024'  #' Generate a random 1024-bit RSA private key
+alias rsa2048='openssl genrsa 2048'  #' Generate a random 2048-bit RSA private key
+alias rsa4096='openssl genrsa 4096'  #' Generate a random 4096-bit RSA private key
+alias rsa8192='openssl genrsa 8192'  #' Generate a random 8192-bit RSA private key
+alias rsa16384='openssl genrsa 16384'  #' Generate a random 16384-bit RSA private key
+alias rsa1024file='openssl genrsa -out rsa1024pri.pem 1024'  #' Generate a file containing a random 1024-bit RSA private key
+alias rsa2048file='openssl genrsa -out rsa2048pri.pem 2048'  #' Generate a file containing a random 2048-bit RSA private key
+alias rsa4096file='openssl genrsa -out rsa4096pri.pem 4096'  #' Generate a file containing a random 4096-bit RSA private key
+alias rsa8192file='openssl genrsa -out rsa8192pri.pem 8192'  #' Generate a file containing a random 8192-bit RSA private key
+alias rsa16384file='openssl genrsa -out rsa16384pri.pem 16384'  #' Generate a file containing a random 16384-bit RSA private key
 alias secp521='openssl ecparam ${OPENSSL_ENGINE:-} -name secp521r1 -genkey'  #' Generate an elliptic-curve key (secp521r1)
 alias sect571k1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571k1 -genkey'  #' Generate an elliptic-curve key (sect571k1)
 alias sect571r1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571r1 -genkey'  #' Generate an elliptic-curve key (sect571r1)
@@ -79,13 +85,13 @@ alias rmd160='openssl dgst -rmd160'  #' Produce the RMD160 checksum for the give
 
 # Random
 
-alias rand4096base64='openssl rand -base64 4096'  #' Generate 4096 bytes of base64-encoded random data
-alias randbase64='openssl rand -base64'  #' Generate base64-encoded random data (specify the number of random bytes to generate)
-alias randbin1024='openssl rand 1024'  #' Generate 1024 bytes of random data
-alias randbin2048='openssl rand 2048'  #' Generate 2048 bytes of random data
-alias randbin4096='openssl rand 4096'  #' Generate 4096 bytes of random data
-alias randbin8192='openssl rand 8192'  #' Generate 8192 bytes of random data
-alias randbin16384='openssl rand 16384'  #' Generate 16384 bytes of random data
+alias rand4096base64='openssl rand ${OPENSSL_ENGINE:-} -base64 4096'  #' Generate 4096 bytes of base64-encoded random data
+alias randbase64='openssl rand ${OPENSSL_ENGINE:-} -base64'  #' Generate base64-encoded random data (specify the number of random bytes to generate)
+alias randbin1024='openssl rand ${OPENSSL_ENGINE:-} 1024'  #' Generate 1024 bytes of random data
+alias randbin2048='openssl rand ${OPENSSL_ENGINE:-} 2048'  #' Generate 2048 bytes of random data
+alias randbin4096='openssl rand ${OPENSSL_ENGINE:-} 4096'  #' Generate 4096 bytes of random data
+alias randbin8192='openssl rand ${OPENSSL_ENGINE:-} 8192'  #' Generate 8192 bytes of random data
+alias randbin16384='openssl rand ${OPENSSL_ENGINE:-} 16384'  #' Generate 16384 bytes of random data
 alias randprime='openssl prime -generate -bits'  #' Generate a random prime number (specify the bit-length)
 alias randhexprime='openssl prime -generate -hex -bits'  #' Generate a random prime number encoded in hexadecimal (specify the bit-length)
 alias randprime64='openssl prime -generate -bits 64'  #' Generate a random 64-bit prime number
@@ -108,11 +114,11 @@ alias randprime16384='openssl prime -generate -bits 16384'  #' Generate a random
 alias randhexprime16384='openssl prime -generate -bits 16384 -hex'  #' Generate a random 16384-bit prime number encoded in hexadecimal
 
 # Random Digest
-alias randb2s256='openssl rand 8192 | openssl dgst -blake2s256 | cut -d " " -f 2'  #' Generate a random BLAKE2S256 hash
-alias randmd4='openssl rand 8192 | openssl dgst -md4 | cut -d " " -f 2'  #' Generate a random MD4 hash
-alias randmd5='openssl rand 8192 | openssl dgst -md5 | cut -d " " -f 2'  #' Generate a random MD5 hash
-alias randsha256='openssl rand 8192 | openssl dgst -sha256 | cut -d " " -f 2'  #' Generate a random SHA256 hash
-alias randsha512='openssl rand 8192 | openssl dgst -sha512 | cut -d " " -f 2'  #' Generate a random SHA512 hash
+alias randb2s256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -blake2s256 | cut -d " " -f 2'  #' Generate a random BLAKE2S256 hash
+alias randmd4='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md4 | cut -d " " -f 2'  #' Generate a random MD4 hash
+alias randmd5='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md5 | cut -d " " -f 2'  #' Generate a random MD5 hash
+alias randsha256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha256 | cut -d " " -f 2'  #' Generate a random SHA256 hash
+alias randsha512='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha512 | cut -d " " -f 2'  #' Generate a random SHA512 hash
 
 # Miscellaneous
 
@@ -141,14 +147,14 @@ fi
 #' Generate a 1024-bit public RSA key from the specified private key or generate a new private key if none is given
 rsa1024pub() {
     if [ -z "${1:-}" ]; then
-        openssl genrsa "${OPENSSL_ENGINE:-}" -out rsa1024pri.pem 1024 && openssl rsa "${OPENSSL_ENGINE:-}" -in rsa1024pri.pem -pubout -out rsa1024pub.pem
+        openssl genrsa -out rsa1024pri.pem 1024 && openssl rsa -in rsa1024pri.pem -pubout -out rsa1024pub.pem
     elif [ -f "${1}" ] && [ -r "${1}" ]; then
         if [ -z "${2:-}" ]; then
             outputfile='rsa1024pub.pem'
         else
             outputfile="${2:-}"
         fi
-        openssl rsa "${OPENSSL_ENGINE:-}" -in "${1}" -pubout > "$outputfile"
+        openssl rsa  -in "${1}" -pubout > "$outputfile"
     else
         printf 'ERROR: The specified pathname is not a readable file!\n' >&2
     fi
@@ -158,14 +164,14 @@ rsa1024pub() {
 #' Generate a 2048-bit public RSA key from the specified private key or generate a new private key if none is given
 rsa2048pub() {
     if [ -z "${1:-}" ]; then
-        openssl genrsa "${OPENSSL_ENGINE:-}" -out rsa2048pri.pem 2048 && openssl rsa "${OPENSSL_ENGINE:-}" -in rsa2048pri.pem -pubout -out rsa2048pub.pem
+        openssl genrsa -out rsa2048pri.pem 2048 && openssl rsa -in rsa2048pri.pem -pubout -out rsa2048pub.pem
     elif [ -f "${1}" ] && [ -r "${1}" ]; then
         if [ -z "${2:-}" ]; then
             outputfile='rsa2048pub.pem'
         else
             outputfile="${2:-}"
         fi
-        openssl rsa "${OPENSSL_ENGINE:-}" -in "${1}" -pubout > "$outputfile"
+        openssl rsa -in "${1}" -pubout > "$outputfile"
     else
         printf 'ERROR: The specified pathname is not a readable file!\n' >&2
     fi
@@ -175,14 +181,14 @@ rsa2048pub() {
 #' Generate a 4096-bit public RSA key from the specified private key or generate a new private key if none is given
 rsa4096pub() {
     if [ -z "${1:-}" ]; then
-        openssl genrsa "${OPENSSL_ENGINE:-}" -out rsa4096pri.pem 4096 && openssl rsa "${OPENSSL_ENGINE:-}" -in rsa4096pri.pem -pubout -out rsa4096pub.pem
+        openssl genrsa -out rsa4096pri.pem 4096 && openssl rsa -in rsa4096pri.pem -pubout -out rsa4096pub.pem
     elif [ -f "${1}" ] && [ -r "${1}" ]; then
         if [ -z "${2:-}" ]; then
             outputfile='rsa4096pub.pem'
         else
             outputfile="${2:-}"
         fi
-        openssl rsa "${OPENSSL_ENGINE:-}" -in "${1}" -pubout > "$outputfile"
+        openssl rsa -in "${1}" -pubout > "$outputfile"
     else
         printf 'ERROR: The specified pathname is not a readable file!\n' >&2
     fi
@@ -192,14 +198,14 @@ rsa4096pub() {
 #' Generate a 8192-bit public RSA key from the specified private key or generate a new private key if none is given
 rsa8192pub() {
     if [ -z "${1:-}" ]; then
-        openssl genrsa "${OPENSSL_ENGINE:-}" -out rsa8192pri.pem 8192 && openssl rsa "${OPENSSL_ENGINE:-}" -in rsa8192pri.pem -pubout -out rsa8192pub.pem
+        openssl genrsa -out rsa8192pri.pem 8192 && openssl rsa -in rsa8192pri.pem -pubout -out rsa8192pub.pem
     elif [ -f "${1}" ] && [ -r "${1}" ]; then
         if [ -z "${2:-}" ]; then
             outputfile='rsa8192pub.pem'
         else
             outputfile="${2:-}"
         fi
-        openssl rsa "${OPENSSL_ENGINE:-}" -in "${1}" -pubout > "$outputfile"
+        openssl rsa -in "${1}" -pubout > "$outputfile"
     else
         printf 'ERROR: The specified pathname is not a readable file!\n' >&2
     fi
@@ -209,14 +215,14 @@ rsa8192pub() {
 #' Generate a 16384-bit public RSA key from the specified private key or generate a new private key if none is given
 rsa16384pub() {
     if [ -z "${1:-}" ]; then
-        openssl genrsa "${OPENSSL_ENGINE:-}" -out rsa16384pri.pem 16384 && openssl rsa "${OPENSSL_ENGINE:-}" -in rsa16384pri.pem -pubout -out rsa16384pub.pem
+        openssl genrsa -out rsa16384pri.pem 16384 && openssl rsa -in rsa16384pri.pem -pubout -out rsa16384pub.pem
     elif [ -f "${1}" ] && [ -r "${1}" ]; then
         if [ -z "${2:-}" ]; then
             outputfile='rsa16384pub.pem'
         else
             outputfile="${2:-}"
         fi
-        openssl rsa "${OPENSSL_ENGINE:-}" -in "${1}" -pubout > "$outputfile"
+        openssl rsa -in "${1}" -pubout > "$outputfile"
     else
         printf 'ERROR: The specified pathname is not a readable file!\n' >&2
     fi
@@ -224,7 +230,7 @@ rsa16384pub() {
 
 
 #' Generate a new password-protect new private key fle and a 1024-bit public RSA key file in the current directory
-rsapswd1024pub() {
+rsapswd1024() {
     case "$1" in
         'aria') enctype='-aria256';;
         'camellia') enctype='-camellia256';;
@@ -232,17 +238,16 @@ rsapswd1024pub() {
         'idea') enctype='-idea';;
         *) enctype='-aes256';;
     esac
-    printf 'RSA Password: '
-    read -r scrtpswd
+    read -p 'RSA Password: ' -s -r scrtpswd
     clear
-    openssl genrsa "${OPENSSL_ENGINE:-}" "${enctype}" -passout pass:"${scrtpswd}" -out rsa1024pri.pem 1024 && openssl rsa "${OPENSSL_ENGINE:-}" -passin pass:"${scrtpswd}" -in rsa1024pri.pem -pubout -out rsa1024pub.pem
+    openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa1024pri.pem 1024 && openssl rsa -passin pass:"${scrtpswd}" -in rsa1024pri.pem -pubout -out rsa1024pub.pem
     unset enctype scrtpswd
     clear
 }
 
 
 #' Generate a new password-protect new private key fle and a 2048-bit public RSA key file in the current directory
-rsapswd2048pub() {
+rsapswd2048() {
     case "$1" in
         'aria') enctype='-aria256';;
         'camellia') enctype='-camellia256';;
@@ -250,17 +255,16 @@ rsapswd2048pub() {
         'idea') enctype='-idea';;
         *) enctype='-aes256';;
     esac
-    printf 'RSA Password: '
-    read -r scrtpswd
+    read -p 'RSA Password: ' -s -r scrtpswd
     clear
-    openssl genrsa "${OPENSSL_ENGINE:-}" "${enctype}" -passout pass:"${scrtpswd}" -out rsa2048pri.pem 2048 && openssl rsa "${OPENSSL_ENGINE:-}" -passin pass:"${scrtpswd}" -in rsa2048pri.pem -pubout -out rsa2048pub.pem
+    openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa2048pri.pem 2048 && openssl rsa -passin pass:"${scrtpswd}" -in rsa2048pri.pem -pubout -out rsa2048pub.pem
     unset enctype scrtpswd
     clear
 }
 
 
 #' Generate a new password-protect new private key fle and a 4096-bit public RSA key file in the current directory
-rsapswd4096pub() {
+rsapswd4096() {
     case "$1" in
         'aria') enctype='-aria256';;
         'camellia') enctype='-camellia256';;
@@ -268,17 +272,16 @@ rsapswd4096pub() {
         'idea') enctype='-idea';;
         *) enctype='-aes256';;
     esac
-    printf 'RSA Password: '
-    read -r scrtpswd
+    read -p 'RSA Password: ' -s -r scrtpswd
     clear
-    openssl genrsa "${OPENSSL_ENGINE:-}" "${enctype}" -passout pass:"${scrtpswd}" -out rsa4096pri.pem 4096 && openssl rsa "${OPENSSL_ENGINE:-}" -passin pass:"${scrtpswd}" -in rsa4096pri.pem -pubout -out rsa4096pub.pem
+    openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa4096pri.pem 4096 && openssl rsa -passin pass:"${scrtpswd}" -in rsa4096pri.pem -pubout -out rsa4096pub.pem
     unset enctype scrtpswd
     clear
 }
 
 
 #' Generate a new password-protect new private key fle and a 8192-bit public RSA key file in the current directory
-rsapswd8192pub() {
+rsapswd8192() {
     case "$1" in
         'aria') enctype='-aria256';;
         'camellia') enctype='-camellia256';;
@@ -286,17 +289,16 @@ rsapswd8192pub() {
         'idea') enctype='-idea';;
         *) enctype='-aes256';;
     esac
-    printf 'RSA Password: '
-    read -r scrtpswd
+    read -p 'RSA Password: ' -s -r scrtpswd
     clear
-    openssl genrsa "${OPENSSL_ENGINE:-}" "${enctype}" -passout pass:"${scrtpswd}" -out rsa8192pri.pem 8192 && openssl rsa "${OPENSSL_ENGINE:-}" -passin pass:"${scrtpswd}" -in rsa8192pri.pem -pubout -out rsa8192pub.pem
+    openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa8192pri.pem 8192 && openssl rsa -passin pass:"${scrtpswd}" -in rsa8192pri.pem -pubout -out rsa8192pub.pem
     unset enctype scrtpswd
     clear
 }
 
 
 #' Generate a new password-protect new private key fle and a 16384-bit public RSA key file in the current directory
-rsapswd16384pub() {
+rsapswd16384() {
     case "$1" in
         'aria') enctype='-aria256';;
         'camellia') enctype='-camellia256';;
@@ -304,10 +306,9 @@ rsapswd16384pub() {
         'idea') enctype='-idea';;
         *) enctype='-aes256';;
     esac
-    printf 'RSA Password: '
-    read -r scrtpswd
+    read -p 'RSA Password: ' -s -r scrtpswd
     clear
-    openssl genrsa "${OPENSSL_ENGINE:-}" "${enctype}" -passout pass:"${scrtpswd}" -out rsa16384pri.pem 16384 && openssl rsa "${OPENSSL_ENGINE:-}" -passin pass:"${scrtpswd}" -in rsa16384pri.pem -pubout -out rsa16384pub.pem
+    openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa16384pri.pem 16384 && openssl rsa -passin pass:"${scrtpswd}" -in rsa16384pri.pem -pubout -out rsa16384pub.pem
     unset enctype scrtpswd
     clear
 }
@@ -405,6 +406,46 @@ elif [ -x "$(command -v md5sum)" ] && [ -x "$(command -v sha512sum)" ]; then
                 b2sum --check --quiet --strict "${FOLDER}checksums.b512"
             fi
         fi
+    }
+
+fi
+
+
+if [ -x "$(command -v gpg)" ]; then
+
+    #' Produce a GPG key pair
+    gengpg() {
+        # Create Private Key
+        gpg --full-gen-key
+        # Verify Presence of Private Key
+        if [ -z "${1:-}" ] || [ ! -r "${1}" ]; then
+            printf 'ERROR: The specified GPG name does not exist!\n' >&2
+        fi
+        # Create Public Key
+        gpg -a --output ~/.gnupg/"${1}".gpg --export "${1}"
+        gpg --import ~/.gnupg/"${1}".gpg
+    }
+
+fi
+
+
+if [ -x "$(command -v ssh-keygen)" ] && [ -x "$(command -v ssh-add)" ]; then
+
+    #' Produce an 8192-bit RSA SSH key pair
+    gensshkey() {
+        # Create Key Pair
+        ssh-keygen -b 8192 -t rsa -C 'General SSH Key' -f ~/.ssh/general_ssh
+        # Add Key to SSH-Agent
+        ssh-add ~/.ssh/general_ssh
+    }
+
+
+    #' Produce the id_rsa SSH key files as an 8192-bit RSA SSH key pair
+    gensshkey() {
+        # Create Key Pair
+        ssh-keygen -b 8192 -t rsa -C 'Standard SSH Key' -f ~/.ssh/id_rsa
+        # Add Key to SSH-Agent
+        ssh-add ~/.ssh/id_rsa
     }
 
 fi
