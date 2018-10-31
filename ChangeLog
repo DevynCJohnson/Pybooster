@@ -3,6 +3,7 @@
 	* aws_rc.sh:  Added additional autocompletion features
 	* crypto_rc.sh:  Added additional code
 	* Schemas:  Removed unnecessary comments
+	* snippets.conf:  Added more snippets for man-pages, Python, & C#
 
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
