@@ -1168,11 +1168,11 @@ COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags status tag treehashes
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags scommit setkey signoff status tag treehashes xcommit xtag
 
 
 commit :
-	@printf '\nCreate a commit message: ' && read GITMSG && printf '\n' && git commit --cleanup=strip --message="$$GITMSG"
+	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG"
 
 commithash :
 	@git log -1 --pretty=format:"%H"
@@ -1231,6 +1231,15 @@ previewcleangit : cleanall fixperm
 pushtags :
 	@git push origin --tags
 
+scommit :
+	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --gpg-sign=$(key) --message="$$GITMSG" --signoff
+
+setkey :
+	@git config --global user.signingkey $(key); git config --global commit.gpgsign true; git config --global gpg.program "$(shell which gpg)"
+
+signoff :
+	@git commit --amend --signoff
+
 status :
 	@git status --ahead-behind --branch --short -v
 
@@ -1239,3 +1248,9 @@ tag :
 
 treehashes :
 	@git log --pretty=format:"%T"
+
+xcommit :
+	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
+
+xtag :
+	@git tag -s -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
