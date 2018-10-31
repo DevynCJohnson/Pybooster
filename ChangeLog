@@ -2,6 +2,7 @@
 
 	* aws_rc.sh:  Added additional autocompletion features
 	* crypto_rc.sh:  Added additional code
+	* Geany:  Added a template for section-1 man-pages
 	* Schemas:  Removed unnecessary comments
 	* snippets.conf:  Added more snippets for man-pages, Python, & C#
 
