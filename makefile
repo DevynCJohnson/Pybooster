@@ -427,15 +427,15 @@ gitadd : cleanall fixperm
 
 submitall :
 	@git checkout dev
-	git push --progress --signed=false --verify origin dev
-	git checkout master && git merge --commit dev && git push --progress --signed=false --verify origin master
+	git push --progress --verify origin dev
+	git checkout master && git merge --commit dev && git push --progress --verify origin master
 	git checkout dev
 
 submitdev :
-	@git push --progress --signed=false --verify origin dev
+	@git push --progress --verify origin dev
 
 submitmaster :
-	@git push --progress --signed=false --verify origin master
+	@git push --progress --verify origin master
 
 sw2dev :
 	@git checkout dev
@@ -451,7 +451,7 @@ syncdev :
 syncmaster :
 	@git checkout master
 	git merge --commit dev
-	git push --progress --signed=false --verify origin master
+	git push --progress --verify origin master
 	git checkout dev
 
 
