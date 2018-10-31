@@ -1187,6 +1187,7 @@ cleangit : cleanall fixperm
 	git gc --prune=now --aggressive
 	git add --all --refresh
 	git fsck --dangling --full --name-objects --progress --strict --unreachable
+	git gc --prune=now --aggressive
 
 gitattr :
 	@git check-attr --all ./*
