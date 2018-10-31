@@ -628,6 +628,10 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         _ecr_repo_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_ECR_REPOS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _ecr_repo_autocomplete)" ]; then
             [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace dock_buildpush
+            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_addtag
+            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_addtag2tagless
+            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_imgmanifest
+            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_rmimg
             readonly -f _ecr_repo_autocomplete
         fi
     fi

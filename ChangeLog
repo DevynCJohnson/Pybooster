@@ -1,5 +1,6 @@
 2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* aws_rc.sh:  Added additional autocompletion features
 	* crypto_rc.sh:  Added additional code
 
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
