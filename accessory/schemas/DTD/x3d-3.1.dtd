@@ -2541,7 +2541,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	USE          IDREF      #IMPLIED >
 ]]>
 <![%ShadersComponent;[
-<!-- TODO fix shader mixed-content models, see Script and corresonding X3D schemas for examples -->
 <!ELEMENT ComposedShader ( (field)*, (IS?), (%MetadataNodes;)?, (ShaderPart|%WildcardNodes;)* ) >
 <!ATTLIST ComposedShader
 	language	 %SFString;  #IMPLIED

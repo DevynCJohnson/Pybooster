@@ -2661,7 +2661,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	USE          IDREF      #IMPLIED >
 ]]>
 <![%ShadersComponent;[
-<!-- TODO fix shader mixed-content models, see Script and corresonding X3D schemas for examples -->
 <!ELEMENT ComposedShader ( (field)*, (IS?), (%MetadataNodes;)?, (ShaderPart|%WildcardNodes;)* ) >
 <!ATTLIST ComposedShader
 	language	 %SFString;  #IMPLIED
@@ -2905,7 +2904,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 ]]>
 <![%LayeringComponent;[
 
-<!-- TODO: Schematron rule regarding order for SFNode child Viewport -->
 <!ELEMENT Layer (IS?, (%MetadataNodes;)?, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST Layer
 	isPickable %SFBool; "true"
@@ -2954,7 +2952,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	scaleMode ' "NONE" "FRACTION" "STRETCH" "PIXEL" '
 	sizeUnits ' "WORLD" "FRACTION" "PIXEL" ' -->
 
-<!-- TODO: Schematron rule regarding order for SFNode children Layout and Viewport -->
 <!ELEMENT LayoutGroup (IS?, (%MetadataNodes;)?, Layout, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST LayoutGroup
 	bboxCenter %SFVec3f; "0 0 0"
@@ -2964,7 +2961,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	DEF ID #IMPLIED
 	USE IDREF #IMPLIED
 >
-<!-- TODO: Schematron rule regarding order for SFNode children Layout and Viewport -->
 <!ELEMENT LayoutLayer (IS?, (%MetadataNodes;)?, Layout, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST LayoutLayer
 	isPickable %SFBool; "true"

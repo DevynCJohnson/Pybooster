@@ -2655,7 +2655,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	USE          IDREF      #IMPLIED >
 ]]>
 <![%ShadersComponent;[
-<!-- TODO fix shader mixed-content models, see Script and corresonding X3D schemas for examples -->
 <!ELEMENT ComposedShader ( (field)*, (IS?), (%MetadataNodes;)?, (ShaderPart|%WildcardNodes;)* ) >
 <!ATTLIST ComposedShader
 	language	 %SFString;  #IMPLIED
@@ -2899,7 +2898,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 ]]>
 <![%LayeringComponent;[
 
-<!-- TODO: Schematron rule regarding order for SFNode child Viewport -->
 <!ELEMENT Layer (IS?, (%MetadataNodes;)?, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST Layer
 	isPickable %SFBool; "true"
@@ -2948,7 +2946,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	scaleMode ' "NONE" "FRACTION" "STRETCH" "PIXEL" '
 	sizeUnits ' "WORLD" "FRACTION" "PIXEL" ' -->
 
-<!-- TODO: Schematron rule regarding order for SFNode children Layout and Viewport -->
 <!ELEMENT LayoutGroup (IS?, (%MetadataNodes;)?, Layout, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST LayoutGroup
 	bboxCenter %SFVec3f; "0 0 0"
@@ -2958,7 +2955,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	DEF ID #IMPLIED
 	USE IDREF #IMPLIED
 >
-<!-- TODO: Schematron rule regarding order for SFNode children Layout and Viewport -->
 <!ELEMENT LayoutLayer (IS?, (%MetadataNodes;)?, Layout, Viewport?, (%ChildrenNodes; | %WildcardNodes;)*)>
 <!ATTLIST LayoutLayer
 	isPickable %SFBool; "true"
@@ -3670,7 +3666,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	DEF ID #IMPLIED
 	USE IDREF #IMPLIED
 >
-<!-- TODO can transferFunction field hold 2D textures? spec unclear... -->
 
 <!ELEMENT ProjectionVolumeStyle (IS?, (%MetadataNodes;)?)>
 <!ATTLIST ProjectionVolumeStyle
@@ -3684,7 +3679,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 >
 
 <!ELEMENT ShadedVolumeStyle (IS?, (%MetadataNodes;)?, (%MaterialNodes;)?, (%Texture3DTextureNodes; | %WildcardNodes;)? )>
-<!-- TODO use nondeterministic content model to allow relaxed ordering of SFNode children -->
 <!ATTLIST ShadedVolumeStyle
 	enabled            %SFBool;      "true"
 	lighting           %SFBool;      "false"
@@ -3695,7 +3689,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
         DEF ID #IMPLIED
 	USE IDREF #IMPLIED
 >
-<!-- TODO consider allowing alternate ordering of content model -->
 
 <!ELEMENT SilhouetteEnhancementVolumeStyle (IS?, (%MetadataNodes;)?, (%Texture3DTextureNodes; | %WildcardNodes;)? )>
 <!ATTLIST SilhouetteEnhancementVolumeStyle
@@ -3747,7 +3740,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 >
 
 <!ELEMENT VolumeData (IS?, (%MetadataNodes;)?, (%X3DComposableVolumeRenderStyleNode; | %Texture2DNodes; | %Texture3DTextureNodes; | %WildcardNodes;)* )>
-<!-- TODO use nondeterministic content model to allow relaxed ordering of SFNode children -->
 <!ATTLIST VolumeData
 	dimensions       %SFVec3f; "1 1 1"
 	bboxCenter       %SFVec3f; "0 0 0"
@@ -3757,7 +3749,6 @@ rib10_midspine|sellion|skull_tip|substernale|supramenton|suprasternale|waist_pre
 	DEF ID #IMPLIED
 	USE IDREF #IMPLIED
 >
-<!-- TODO consider allowing alternate ordering of content model -->
 
 ]]>
 

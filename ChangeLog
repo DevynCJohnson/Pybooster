@@ -2,6 +2,7 @@
 
 	* aws_rc.sh:  Added additional autocompletion features
 	* crypto_rc.sh:  Added additional code
+	* Schemas:  Removed unnecessary comments
 
 2018-10-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

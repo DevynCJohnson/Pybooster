@@ -1170,7 +1170,6 @@ Open-source license:
             <xs:enumeration value='"FIRST" "END"'/>
             <xs:enumeration value='"FIRST" "FIRST"'/>
             <xs:enumeration value='"FIRST" "MIDDLE"'/>
-			<!-- TODO: X3D Abstract Specification "15.2.2.3 Direction and justification" ambigously allows pair of empty quotes "" as second value within enumeration, perhaps more combinations need to be added to these enumerations. -->
         </xs:restriction>
     </xs:simpleType>
 	<xs:simpleType name="metadataContainerFieldValues">
@@ -2835,7 +2834,6 @@ Open-source license:
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 				Each node inheriting the X3DMetadataObject interface contains a single array of strictly typed values: MFBool, MFInt32, MFFloat, MFDouble, MFString, or MFNode, the latter having children that are all Metadata nodes.
 			</xs:appinfo>
-			<!-- TODO may rename object type to X3DMetadataNode, see mantis issue 686 http://www.web3d.org/member-only/mantis/view.php?id=686 -->
 			<xs:documentation source="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/core.html#X3DMetadataObject"/>
 		</xs:annotation>
 		<xs:complexContent>
@@ -3417,34 +3415,9 @@ Open-source license:
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<!-- TODO does Event need to be included here and in abstract specification? The following content model matches ProtoBody.
-	<xs:complexType name="Event" abstract="true">
-			<xs:annotation>
-					<xs:appinfo>
-							An Event consists of a timestamp and a value of any X3D type (SFBool, MFInt32, SFFloat, SFNode, MFNode, etc.).
-							An Event is a message sent from one node to another, passing a value from one field to another as defined by a ROUTE.
-							Events signal external stimuli, changes to field values, and interactions between nodes.
-							Note existence of related and equivalent org.w3c.dom.events.Event.timestamp.
-							Event elements are not declared in scene files.
-					</xs:appinfo>
-					<xs:documentation source="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/concepts.html#Eventmodel"/>
-			</xs:annotation>
-			<xs:complexContent>
-					<xs:extension base="SceneGraphStructureStatement">
-							<xs:sequence>
-									<xs:group ref="SceneGraphFragmentWithPrototypeDeclarationsContentModel" maxOccurs="unbounded"/>
-							</xs:sequence>
-							<xs:attribute name="timestamp" type="SFTime" use="required"/>
-							<xs:attribute name="type" type="fieldTypeName" use="required"/>
-							<xs:attribute name="value" type="xs:string"/>
-					</xs:extension>
-			</xs:complexContent>
-	</xs:complexType>
-	-->
 	<xs:complexType name="SceneGraphStructureStatement" abstract="true">
 		<xs:annotation>
 			<xs:appinfo>
-				<!-- TODO <xs:attributeGroup ref="globalAttributes"/> apparently not allowed by XMLSpy... Flaw in XML Schema definitions? -->
 				<xs:attribute name="class" type="xs:NMTOKENS">
 					<xs:annotation>
 						<xs:appinfo>
@@ -3629,7 +3602,6 @@ Open-source license:
 			<xs:element ref="MetadataInteger"/>
 			<xs:element ref="MetadataSet"/>
 			<xs:element ref="MetadataString"/>
-			<!-- TODO how to allow ProtoInstance? Problematic. -->
 		</xs:choice>
 	</xs:group>
 	<xs:group name="ChildContentModelInterchange">
@@ -6788,7 +6760,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DGeometryNode">
 					<xs:choice minOccurs="0">
-						<!-- TODO do we really want maxOccurs="unbounded" ? -->
 						<xs:element ref="FloatVertexAttribute">
 							<xs:annotation>
 								<xs:documentation>attrib</xs:documentation>
@@ -7820,8 +7791,6 @@ Open-source license:
 					<xs:appinfo>Default containerField='metadata' when providing information about the parent element itself, otherwise apply containerField='value' when this element contains payload metadata inside a parent/ancestor MetadataSet element.</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
-			<!-- TODO: both X3DMetadataObject and MetadataSet need to allow optional child Metadata nodes, so child model content has to be combined to avoid collisions. -->
-			<!-- TODO:  see X3DMetadataObject definition for potential change to X3DMetadataNode. -->
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="MetadataString">
@@ -9949,7 +9918,6 @@ Open-source license:
 	</xs:element>
 	<!--======================================================================-->
 	<!-- Geopatial Component -->
-	<!-- Needs to be split into two enumerations for XML Schema validatability.  TODO verify thorough checking using X3D Schematron. -->
     <xs:simpleType name="geoSystemValues">
         <xs:annotation>
             <xs:appinfo>The allowed values of spatial reference frames and earth ellipsoids.</xs:appinfo>
@@ -10290,7 +10258,6 @@ Open-source license:
 								Note that MFNode rootNode field can contain multiple nodes and has accessType inputOutput.
 								Meanwhile MFNode children field is outputOnly, unlike other X3DGroupingNode exemplars.
 							</xs:appinfo>
-							<!-- TODO issue reported to reconcile with children content model, 24 JAN 2016 -->
 							<xs:documentation>rootNode</xs:documentation>
 						</xs:annotation>
 						<!-- GeoOrigin included in ChildContentModelGeoSpatial -->
@@ -10400,22 +10367,6 @@ Open-source license:
 					<xs:attribute name="containerField" type="xs:NMTOKEN" default="children"/>
 				</xs:extension>
 				<!-- 'data' field is MFNode reference array to pertinent GeoSpatial nodes affected by this GeoMetadata node, empty array refers to entire scene -->
-				<!-- TODO when specification is revised:
-				<xs:attribute name="title" type="SFString"/>
-				<xs:attribute name="description" type="SFString"/>
-				<xs:attribute name="coordinateSystem" type="SFString"/>
-				<xs:attribute name="horizontalDatum" type="SFString"/>
-				<xs:attribute name="verticalDatum" type="SFString"/>
-				<xs:attribute name="ellipsoid" type="SFString"/>
-				<xs:attribute name="extent" type="SFString"/>
-				<xs:attribute name="resolution" type="SFString"/>
-				<xs:attribute name="originator" type="SFString"/>
-				<xs:attribute name="copyright" type="SFString"/>
-				<xs:attribute name="date" type="SFString"/>
-				<xs:attribute name="metadataFormat" type="SFString"/>
-				<xs:attribute name="dataUrl" type="SFString"/>
-				<xs:attribute name="dataFormat" type="SFString"/>
-				-->
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -12198,7 +12149,6 @@ Open-source license:
 						<xs:attribute name="description" type="xs:string" fixed="Right Axilla, Posterior"/>
 					</xs:appinfo>
 				</xs:annotation>
-				<!-- TODO fix all abbreviations: r_axilla_posterior etc. -->
 			</xs:enumeration>
 			<xs:enumeration value="r_olecranon">
 				<xs:annotation>
@@ -12279,7 +12229,6 @@ Open-source license:
 						<xs:attribute name="description" type="xs:string" fixed="Left Axilla, Anterior"/>
 					</xs:appinfo>
 				</xs:annotation>
-				<!-- TODO fix all abbreviations: l_axilla_anterior etc. -->
 			</xs:enumeration>
 			<xs:enumeration value="l_radial_styloid">
 				<xs:annotation>
@@ -12296,7 +12245,6 @@ Open-source license:
 						<xs:attribute name="description" type="xs:string" fixed="Left Axilla, Posterior"/>
 					</xs:appinfo>
 				</xs:annotation>
-				<!-- TODO fix all abbreviations: l_axilla_posterior etc. -->
 			</xs:enumeration>
 			<xs:enumeration value="l_olecranon">
 				<xs:annotation>
@@ -12433,7 +12381,6 @@ Open-source license:
 						<xs:attribute name="description" type="xs:string" fixed="Right Calcaneous, Posterior"/>
 					</xs:appinfo>
 				</xs:annotation>
-				<!-- TODO fully spell out all abbreviations used in new h-anim enumerations, e.g. r_calcaneous_posterior -->
 			</xs:enumeration>
 			<xs:enumeration value="r_digit2">
 				<xs:annotation>
@@ -12514,7 +12461,6 @@ Open-source license:
 						<xs:attribute name="description" type="xs:string" fixed="Left Calcaneous, Posterior"/>
 					</xs:appinfo>
 				</xs:annotation>
-				<!-- TODO fully spell out all abbreviations used in new h-anim enumerations, e.g. r_calcaneous_posterior -->
 			</xs:enumeration>
 			<xs:enumeration value="l_digit2">
 				<xs:annotation>
@@ -12761,7 +12707,6 @@ Open-source license:
 							<xs:element ref="Transform"/>
 							<xs:element ref="Shape"/>
 							<xs:element ref="IndexedFaceSet"/>
-							<!-- TODO possibly add other indexed mesh nodes as alternatives here when Mantis comment is resolved -->
 						</xs:choice>
 						<xs:choice minOccurs="0" maxOccurs="1">
 							<xs:annotation>
@@ -12804,17 +12749,6 @@ Open-source license:
 					<xs:attribute name="bboxSize" type="boundingBoxSizeType" default="-1 -1 -1"/>
 					<xs:attribute name="containerField" type="xs:NMTOKEN" default="children"/>
 				</xs:extension>
-				<!-- TODO when specification is revised:
-				<xs:attribute name="authorName" type="SFString"/>
-				<xs:attribute name="authorEmail" type="SFString"/>
-				<xs:attribute name="copyright" type="SFString"/>
-				<xs:attribute name="creationDate" type="SFString"/>
-				<xs:attribute name="usageRestrictions" type="SFString"/>
-				<xs:attribute name="humanoidVersion" type="SFString"/>
-				<xs:attribute name="age" type="SFString"/>
-				<xs:attribute name="gender" type="SFString"/>
-				<xs:attribute name="height" type="SFString"/>
-				<xs:attribute name="weight" type="SFString"/> -->
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -12829,8 +12763,6 @@ Open-source license:
 				<xs:attribute name="additionalInterface" type="xs:string" default="X3DBoundedObject"/>
 				<xs:attribute name="componentName" type="xs:NMTOKEN" fixed="H-Anim"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
-				<!-- TODO HAnimJoint derives from X3DGroupingNode in specification, how to indicate here? changing below leads to improperly lax and nondeterministic content model. -->
-				<!-- TODO Why is HAnimSite present in X3D 26.3.3? not listed in HAnim 6.3, but excluded in HAnim 4.6? -->
 			</xs:appinfo>
 			<xs:documentation source="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/hanim.html#HAnimJoint"/>
 			<!-- H-Anim specification http://www.web3d.org/documents/specifications/19774/V1.0/HAnim/ObjectInterfaces.html#Joint -->
@@ -12930,7 +12862,6 @@ Open-source license:
 						<xs:annotation>
 							<xs:documentation>displacers</xs:documentation>
 						</xs:annotation>
-						<!-- TODO add child Coordinate SFNode? -->
 						<xs:element ref="HAnimDisplacer"/>
 					</xs:sequence>
 					<xs:attribute name="name" type="xs:NMTOKEN">
@@ -13397,7 +13328,6 @@ Open-source license:
 					<xs:attribute name="solid" type="SFBool" default="true"/>
 					<xs:attribute name="containerField" type="xs:NMTOKEN" default="geometry"/>
 				</xs:extension>
-				<!-- TODO see if nondeterministic content model can avoid improper selection of child nodes -->
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -14579,7 +14509,6 @@ Open-source license:
 					<xs:attribute name="bboxSize" type="boundingBoxSizeType" default="-1 -1 -1"/>
 					<xs:attribute name="containerField" type="xs:NMTOKEN" default="children"/>
 				</xs:extension>
-				<!-- TODO:  bug submitted to use X3DNode rather than X3DGroupingNode -->
 				<!-- ProtoInstance does not appear as a choice in this content model because it is already included as part of ChildContentModel -->
 			</xs:complexContent>
 		</xs:complexType>
@@ -14907,7 +14836,6 @@ Open-source license:
 			<xs:appinfo>RigidBodyCollectionContentModel can contain RigidBody nodes as a bodies field, plus X3DRigidJointNode nodes as a joints field, plus a CollisionCollection node as a collider field.</xs:appinfo>
 			<xs:documentation source="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/rigid_physics.html#RigidBodyCollection"/>
 		</xs:annotation>
-		<!-- TODO:  incomplete -->
 		<xs:choice>
 			<xs:sequence>
 				<xs:element ref="CollisionCollection">
@@ -15461,7 +15389,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DNode">
 					<xs:sequence>
-						<!-- TODO refactor, follow pattern show below for geometry1/geometry2 so that RigidBody nodes might be replaced with ProtoInstance -->
 						<xs:sequence minOccurs="0">
 							<xs:element ref="RigidBody">
 								<xs:annotation>
@@ -15474,178 +15401,6 @@ Open-source license:
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-						<!-- TODO:  content model indeterminism problem -->
-						<!--
-						<xs:sequence>
-										<xs:element ref="RigidBody">
-														<xs:annotation>
-																<xs:documentation>body1</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:element ref="RigidBody" minOccurs="0">
-														<xs:annotation>
-																<xs:documentation>body2</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:choice minOccurs="0">
-														<xs:sequence>
-																<xs:element ref="CollidableOffset">
-																				<xs:annotation>
-																								<xs:documentation>geometry1</xs:documentation>
-																				</xs:annotation>
-																</xs:element>
-																<xs:element ref="CollidableShape" minOccurs="0">
-																				<xs:annotation>
-																								<xs:documentation>geometry2</xs:documentation>
-																				</xs:annotation>
-																</xs:element>
-														</xs:sequence>
-														<xs:sequence minOccurs="0">
-																<xs:element ref="CollidableShape">
-																				<xs:annotation>
-																								<xs:documentation>geometry1</xs:documentation>
-																				</xs:annotation>
-																</xs:element>
-																<xs:element ref="CollidableOffset" minOccurs="0">
-																				<xs:annotation>
-																								<xs:documentation>geometry2</xs:documentation>
-																				</xs:annotation>
-																</xs:element>
-														</xs:sequence>
-										</xs:choice>
-										<xs:sequence minOccurs="0" maxOccurs="4">
-														<xs:element ref="ProtoInstance">
-	<xs:annotation>
-			<xs:documentation>Appropriately typed substitution node</xs:documentation>
-	</xs:annotation>
-</xs:element>
-										</xs:sequence>
-						</xs:sequence>
-						<xs:sequence>
-										<xs:element ref="CollidableOffset">
-														<xs:annotation>
-																<xs:documentation>geometry1</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:element ref="CollidableShape" minOccurs="0">
-														<xs:annotation>
-																<xs:documentation>geometry2</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0">
-														<xs:element ref="RigidBody">
-																<xs:annotation>
-																				<xs:documentation>body1</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-														<xs:element ref="RigidBody" minOccurs="0">
-																<xs:annotation>
-																				<xs:documentation>body2</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-										</xs:sequence>
-										<xs:sequence minOccurs="0" maxOccurs="4">
-														<xs:element ref="ProtoInstance">
-	<xs:annotation>
-			<xs:documentation>Appropriately typed substitution node</xs:documentation>
-	</xs:annotation>
-</xs:element>
-										</xs:sequence>
-						</xs:sequence>
-						<xs:sequence>
-										<xs:element ref="CollidableOffset">
-														<xs:annotation>
-																<xs:documentation>geometry1</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0">
-														<xs:element ref="RigidBody">
-																<xs:annotation>
-																				<xs:documentation>body1</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-														<xs:element ref="RigidBody" minOccurs="0">
-																<xs:annotation>
-																				<xs:documentation>body2</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-										</xs:sequence>
-										<xs:element ref="CollidableShape" minOccurs="0">
-														<xs:annotation>
-																<xs:documentation>geometry2</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0" maxOccurs="4">
-														<xs:element ref="ProtoInstance">
-	<xs:annotation>
-			<xs:documentation>Appropriately typed substitution node</xs:documentation>
-	</xs:annotation>
-</xs:element>
-										</xs:sequence>
-						</xs:sequence>
-						<xs:sequence>
-										<xs:element ref="CollidableShape">
-														<xs:annotation>
-																<xs:documentation>geometry1</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:element ref="CollidableOffset" minOccurs="0">
-														<xs:annotation>
-																<xs:documentation>geometry2</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0">
-														<xs:element ref="RigidBody">
-																<xs:annotation>
-																				<xs:documentation>body1</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-														<xs:element ref="RigidBody" minOccurs="0">
-																<xs:annotation>
-																				<xs:documentation>body2</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-										</xs:sequence>
-										<xs:sequence minOccurs="0" maxOccurs="4">
-														<xs:element ref="ProtoInstance">
-	<xs:annotation>
-			<xs:documentation>Appropriately typed substitution node</xs:documentation>
-	</xs:annotation>
-</xs:element>
-										</xs:sequence>
-						</xs:sequence>
-						<xs:sequence>
-										<xs:element ref="CollidableShape">
-														<xs:annotation>
-																<xs:documentation>geometry2</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0">
-														<xs:element ref="RigidBody">
-																<xs:annotation>
-																				<xs:documentation>body1</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-														<xs:element ref="RigidBody" minOccurs="0">
-																<xs:annotation>
-																				<xs:documentation>body2</xs:documentation>
-																</xs:annotation>
-														</xs:element>
-										</xs:sequence>
-										<xs:element ref="CollidableOffset" minOccurs="0">
-														<xs:annotation>
-																<xs:documentation>geometry1</xs:documentation>
-														</xs:annotation>
-										</xs:element>
-										<xs:sequence minOccurs="0" maxOccurs="4">
-														<xs:element ref="ProtoInstance">
-	<xs:annotation>
-			<xs:documentation>Appropriately typed substitution node</xs:documentation>
-	</xs:annotation>
-</xs:element>
-										</xs:sequence>
-						</xs:sequence>
-						-->
 						<xs:choice minOccurs="0">
 							<xs:sequence>
 								<xs:annotation>
@@ -16125,7 +15880,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DPickSensorNode">
 					<xs:sequence>
-						<!-- TODO determine whether strict ordering can be relaxed -->
 						<xs:choice minOccurs="0" maxOccurs="1">
 							<xs:annotation>
 								<xs:documentation>pickingGeometry</xs:documentation>
@@ -16197,7 +15951,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DPickSensorNode">
 					<xs:sequence>
-						<!-- TODO determine whether strict ordering can be relaxed -->
 						<xs:choice minOccurs="0" maxOccurs="1">
 							<xs:annotation>
 								<xs:documentation>pickingGeometry</xs:documentation>
@@ -16236,7 +15989,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DPickSensorNode">
 					<xs:sequence>
-						<!-- TODO determine whether strict ordering can be relaxed -->
 						<xs:choice minOccurs="0" maxOccurs="1">
 							<xs:annotation>
 								<xs:documentation>pickingGeometry</xs:documentation>
@@ -16277,7 +16029,6 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DPickSensorNode">
 					<xs:sequence>
-						<!-- TODO determine whether strict ordering can be relaxed -->
 						<xs:choice minOccurs="0" maxOccurs="1">
 							<xs:annotation>
 								<xs:documentation>pickingGeometry</xs:documentation>
