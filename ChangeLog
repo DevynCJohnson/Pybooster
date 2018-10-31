@@ -4,6 +4,7 @@
 	* cleansystem:  Added a new parameter flag for experimental features
 	* crypto_rc.sh:  Added additional code
 	* Geany:  Added a template for section-1 man-pages
+	* Geany:  Added better man-page support & added an additional CSS keyword
 	* makefile_constants.mk:  Added additional Git commands
 	* Schemas:  Removed unnecessary comments
 	* snippets.conf:  Added more snippets for man-pages, Python, & C#
