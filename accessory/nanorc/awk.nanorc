@@ -9,9 +9,7 @@ icolor brightred "\$[0-9A-Z_!@#$*?-]+"
 
 # AWK-SET VARIABLES #
 
-color red "\<(ARGC|ARGIND|ARGV|BINMODE|CONVFMT|ENVIRON|ERRNO|FIELDWIDTHS)\>"
-color red "\<(FILENAME|FNR|FS|IGNORECASE|LINT|NF|NR|OFMT|OFS|ORS)\>"
-color red "\<(PROCINFO|RS|RT|RSTART|RLENGTH|SUBSEP|TEXTDOMAIN)\>"
+color red "\<(ARGC|ARGIND|ARGV|BINMODE|CONVFMT|ENVIRON|ERRNO|FIELDWIDTHS|FILENAME|FNR|FS|IGNORECASE|LINT|NF|NR|OFMT|OFS|ORS|PROCINFO|RLENGTH|RS|RSTART|RT|SUBSEP|TEXTDOMAIN)\>"
 
 # FUNCTION DECLARATIONS & SPECIAL PATTERNS #
 
@@ -27,12 +25,7 @@ color brightgreen "\<(close|getline|next|nextfile|print|printf|system|fflush)\>"
 
 # STANDARD FUNCTIONS #
 
-color magenta "\<(atan2|cos|exp|int|log|rand|sin|sqrt|srand)\>"
-color magenta "\<(asort|asorti|gensub|gsub|index|length|match)\>"
-color magenta "\<(split|sprintf|strtonum|sub|substr|tolower|toupper)\>"
-color magenta "\<(mktime|strftime|systime)\>"
-color magenta "\<(and|compl|lshift|or|rshift|xor)\>"
-color magenta "\<(bindtextdomain|dcgettext|dcngettext)\>"
+color magenta "\<(and|asort|asorti|atan2|bindtextdomain|compl|cos|dcgettext|dcngettext|exp|gensub|gsub|index|int|length|log|lshift|match|mktime|or|rand|rshift|sin|split|sprintf|sqrt|srand|strftime|strtonum|sub|substr|systime|tolower|toupper|xor)\>"
 
 # OPERATORS #
 

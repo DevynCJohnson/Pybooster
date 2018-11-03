@@ -1,4 +1,4 @@
-syntax "c" "\.(c(pp|xx|\+\+)?|C)$" "\.(h(pp|xx)?|H)$" "\.ii?$"
+syntax "c" "\.(c(pp|xx|\+\+)?|C)$" "\.(h(pp|xx)?|H)$" "\.ii?$" "\.def$"
 magic "^(C|C\+\+) (source|program)"
 comment "//"
 
@@ -6,18 +6,32 @@ comment "//"
 
 color brightred "\<[A-Z_][0-9A-Z_]+\>"
 
+# OPERATOR COLOR #
+
+color yellow "[.:;,+*|=!\%<>/-&]"
+
+# PARENTHETICAL COLOR #
+
+color magenta "[(){}]" "\[" "\]"
+
+# DATATYPES #
+
+color blue "\<((un)?signed|__I__|__imaginary__|__inline|__volatile|_Accum|_Complex|_Decimal128|_Decimal32|_Decimal64|_Fract|_Imaginary|_Imaginary_I|_Sat|Accum_t|auto|blksize_t|bool|char|char16_t|char32_t|clockid_t|Complex|complex|const|cpu_mask_t|decimal128|decimal32|decimal64|div_t|double|enum|extern|float|fpos64_t|fpos_t|Fract_t|gid_t|imaginary|Imaginary|imaxdiv_t|inline|int|intmax_t|ldiv_t|lldiv_t|long|off64_t|off_t|register|rlimit_resource_t|rune_t|runepad_t|RuneType|short|size_t|sizeof|socklen_t|ssize_t|statfs_t|static|struct|time64_t|time_t|typedef|uchar16_t|uchar32_t|uid_t|uintmax_t|union|void|wchar_t|wctrans_t|wint_t)\>" "\<((u_?)?int(8|16|32|64|128|256|512|ptr))_t\>"
+
 # KEYWORDS #
 
-color blue "\<(float|double|decimal32|decimal64|decimal128|_Decimal32|_Decimal64|_Decimal128|bool|char|int|short|long|sizeof|enum|void|auto|static|const|register|struct|union|typedef|extern|(un)?signed|inline)\>" "\<((s?size)|((u_?)?int(8|16|32|64|128|256|512|ptr)))_t\>"
-color brightblue "\<(class|namespace|template|public|protected|private|typename|this|friend|virtual|override|using|mutable|volatile|register|explicit)\>"
-color brightyellow "\<(for|if|while|do|else|case|default|switch)\>" "\<(try|throw|catch|operator|new|delete)\>"
-color magenta "\<(goto|continue|break|return)\>"
+color brightblue "\<(class|explicit|friend|mutable|namespace|override|noreturn|_Noreturn|private|protected|public|register|template|this|typename|using|virtual|volatile)\>"
+color brightyellow "\<(case|default|do|else|for|if|switch|while)\>" "\<(catch|delete|new|operator|throw|try)\>"
+color magenta "\<(break|continue|goto|return)\>"
+color green "\<((const|dynamic|reinterpret|static)_cast)\>"
+color green "\<(__asm|__asm__|_alignas|_alignof|_Static_assert|alignas|alignof|asm|auto|compl|concept|constexpr|decltype|export|final|noexcept|nullptr|override|requires|static_assert|thread_local|typeid)\>"
+color green "\<(and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\>"
 color brightcyan "^[[:space:]]*#[[:space:]]*(define|include(_next)?|(un|ifn?)def|endif|el(if|se)|if|warning|error|pragma)"
 color brightmagenta "'([^'\]|(\\["'abfnrtv\\]))'" "'\\(([0-3]?[0-7]{1,2}))'" "'\\x[0-9A-Fa-f]{1,2}'"
 
-# GCC & CLANG BUILTINS #
+# COMPILER BUILTINS #
 
-color cyan "__attribute__[[:space:]]*\(\([^)]*\)\)" "__(aligned|asm|builtin|hidden|inline|packed|restrict|section|typeof|weak)__"
+color cyan "__attribute__[[:space:]]*\(\([^)]*\)\)" "__(aligned|asm|builtin|hidden|inline|packed|restrict|section|target|typeof|vector_size|weak|mode)__" "__extension__" "__builtin_[A-Za-z0-9_]+\([^)]*\)"
 
 # LABELS #
 
@@ -25,7 +39,7 @@ color brightmagenta "^[[:space:]]*[A-Z_a-z]+:[[:space:]]*$"
 
 # STRINGS #
 
-color brightyellow ""([^"]|\\")*"" "<[^[:blank:]=]*>"
+color brightyellow "\"([^"]|\\")*\"" "<[^[:blank:]=]*>"
 # Multiline Strings
 ##color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
 

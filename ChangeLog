@@ -1,3 +1,7 @@
+2018-11-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* NanoRC:  Improved syntax highlighting in multiple filetypes
+
 2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added additional autocompletion features

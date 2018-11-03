@@ -4,6 +4,10 @@ magic "Python script"
 linter pyflakes
 comment "#"
 
+# NUMBERS #
+
+icolor yellow "\<[\-]?[0-9]+[0-9\.E]*\>"
+
 # DEFINITIONS #
 
 icolor brightblue "^[ 	]*(class|def) [0-9A-Z_]+"
@@ -14,7 +18,7 @@ color brightcyan "\<(and|as|assert|async|await|break|class|continue|def|del|elif
 
 # SINGLE-QUOTED STRINGS #
 
-color yellow "'([^'\]|\\.)+'" ""([^"\]|\\.)+""
+color brightyellow "'([^'\]|\\.)+'" "\"([^\"\]|\\.)+\""
 
 # COMMENTS #
 
@@ -23,7 +27,7 @@ color brightred "(^|[[:blank:]])#.*$"
 # TRIPLE-QUOTED STRINGS #
 
 color brightgreen start="'''([^'),]|$)" end="(^|[^(\])'''"
-color brightgreen start="\"\"\"([^"),]|$)" end="(^|[^(\])\"\"\""
+color brightgreen start="\"\"\"([^\"),]|$)" end="(^|[^(\])\"\"\""
 
 # SPECIAL VALUES #
 
