@@ -4,6 +4,7 @@
 	* crypto_rc.sh:  Minor tweaks
 	* extras_rc.sh:  Added epoch2date()
 	* Geany:  Added support for NanoRC files
+	* Geany:  Improved support for ManPages
 	* Geany:  Improved syntax highlighting in multiple filetypes
 	* makefile:  Fixed some bugs
 	* makefile_constants.mk:  Added additional commands
