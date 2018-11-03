@@ -245,10 +245,9 @@ ec2_tagsbyvalue() {
 # AWS ECR #
 
 
-alias ecr_desc_repos='aws ecr describe-repositories --no-paginate'
+alias ecr_desc_repos='aws ecr describe-repositories --no-paginate'  #' Provide information on all of the ECR repositories (in JSON format)
 alias ecr_getlogin='$(aws ecr get-login --no-include-email)'  #' Get and execute Docker login code
-alias ecr_mkrepo='aws ecr create-repository --repository-name'
-alias ecr_rmrepo='aws ecr delete-repository --repository-name'
+alias ecr_mkrepo='aws ecr create-repository --repository-name'  #' Create a new ECS repository
 
 
 #' List the ECR repositories
@@ -258,6 +257,7 @@ ecr_lsrepos() {
 
 
 #' List the digests and tags of all the Docker images in the specified ECR repository
+#' @param[in] $1 Repository
 ecr_lsimg() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required (repository name)!\n' >&2
@@ -265,6 +265,14 @@ ecr_lsimg() {
         aws ecr list-images --repository-name "${1}" --no-paginate | awk '{ if (NF >= 2 && NR > 2) { gsub(/[",]*/, "", $2); print $2; } }'
     fi
 }
+
+
+#' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
+#' @section USAGE
+#' ecr_imgmanifest REPOSITORY_NAME EXISTING_TAG NEW_TAG
+#' @param[in] $1 Repository
+#' @param[in] $2 Existing tag
+ecr_imgmanifest() { aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text; }
 
 
 #' List the digests and tags of all the Docker images in all of the ECR repositories
@@ -282,6 +290,7 @@ ecr_lsimgs() {
 
 
 #' List the digests of all the untagged Docker images in the specified ECR repository
+#' @param[in] $1 Repository
 ecr_lsuntaggedimg() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required (repository name)!\n' >&2
@@ -306,6 +315,7 @@ ecr_lsuntaggedimgs() {
 
 
 #' List the digests and tags of all the tagged Docker images in the specified ECR repository
+#' @param[in] $1 Repository
 ecr_lstaggedimg() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required (repository name)!\n' >&2
@@ -347,6 +357,17 @@ ecr_rmimg() {
         aws ecr batch-delete-image --repository-name "${1}" --image-ids imageDigest="${imgdigest}"
     else
         aws ecr batch-delete-image --repository-name "${1}" --image-ids imageTag="${2}"
+    fi
+}
+
+
+#' Remove the specified ECR repository
+#' @param[in] $1 Repository
+ecr_rmrepo() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: A parameter is required (repository name)!\n' >&2
+    else
+        aws ecr delete-repository --repository-name "${1}"
     fi
 }
 
@@ -398,14 +419,6 @@ ecr_addtag2tagless() {
         fi
     fi
 }
-
-
-#' For the specified ECR repository, retrieve and return the image manifest of a Docker image (specified by the tag)
-#' @section USAGE
-#' ecr_imgmanifest REPOSITORY_NAME EXISTING_TAG NEW_TAG
-#' @param[in] $1 Repository
-#' @param[in] $2 Existing tag
-ecr_imgmanifest() { aws ecr batch-get-image --repository-name "${1:-}" --image-ids imageTag="${2:-}" --query 'images[].imageManifest' --output text; }
 
 
 # AWS ECS #
@@ -471,6 +484,7 @@ alias s3mv='aws s3 mv'  #' Move file
 alias s3mvdir='aws s3 mv --recursive'  #' Move directory and contents recursively
 alias s3mb='aws s3 mb'  #' Make S3 bucket
 alias s3rb='aws s3 rb'  #' Remove S3 bucket
+alias s3lsb='aws s3api list-buckets'  #' List AWS S3 buckets
 
 
 #' Copy directory and contents recursively
@@ -628,11 +642,13 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         _ecr_repo_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_ECR_REPOS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _ecr_repo_autocomplete)" ]; then
             [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace dock_buildpush
-            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_addtag
-            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_addtag2tagless
-            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_imgmanifest
-            [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace ecr_rmimg
-            readonly -f _ecr_repo_autocomplete
+            complete -F _ecr_repo_autocomplete -o nospace ecr_addtag
+            complete -F _ecr_repo_autocomplete -o nospace ecr_addtag2tagless
+            complete -F _ecr_repo_autocomplete -o nospace ecr_imgmanifest
+            complete -F _ecr_repo_autocomplete -o nospace ecr_lsimg
+            complete -F _ecr_repo_autocomplete -o nospace ecr_lstaggedimg
+            complete -F _ecr_repo_autocomplete -o nospace ecr_lsuntaggedimg
+            complete -F _ecr_repo_autocomplete -o nospace ecr_rmimg
         fi
     fi
     # Autocomplete AWS Lambda Functions
@@ -640,7 +656,6 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         _lambda_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_LAMBDAS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _lambda_autocomplete)" ]; then
             complete -F _lambda_autocomplete -o nospace lamda_rm
-            readonly -f _lambda_autocomplete
         fi
     fi
 fi
