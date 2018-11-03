@@ -8,6 +8,7 @@
 	* Geany:  Improved syntax highlighting in multiple filetypes
 	* makefile:  Fixed some bugs
 	* makefile_constants.mk:  Added additional commands
+	* ManPages:  Created a manpage for fib
 	* NanoRC:  Improved syntax highlighting in multiple filetypes
 	* snippets.conf:  Added more snippets
 

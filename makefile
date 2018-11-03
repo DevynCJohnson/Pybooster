@@ -52,6 +52,8 @@ override GEANYDIR::=./geany
 override INCDIR::=./include
 override LANGSPECSDIR::=$(ACCDIR)/language_specs
 override NANORCDIR::=$(ACCDIR)/nanorc
+override MAN1DIR::=$(DOCDIR)/man1
+override MANDIRS::=$(DOCDIR)/man*
 override MENUDIR::=$(ACCDIR)/menu_files
 override SCRIPTSRCDIR::=./scripts
 override THEMEDIR::=./themes
@@ -290,7 +292,7 @@ svglint :
 
 
 cleandoc :
-	-@$(RMDIR) $(DOCDIR)/pylib $(DOCDIR)/clib
+	-@$(RMDIR) $(DOCDIR)/clib $(DOCDIR)/pylib
 
 doc : docc docpy
 
@@ -372,6 +374,8 @@ upver :
 	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.c" -o -name "*.h" -o -name "*.js" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/"
 	# Glade Files #
 	find . -mount -type f -name "*.glade" -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/"
+	# ManPage Files #
+	find $(MANDIRS) -mount -type f \( -name "*.1" -o -name "*.2" -o -name "*.3" -o -name "*.4" -o -name "*.5" -o -name "*.6" -o -name "*.7" -o -name "*.8" \) -print0 | xargs -0 sed -i "s/ \".+\" \"Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]\" / \"$(__TODAY__)\" \"Version: $(__VERSION__)\" /"
 	# Perl Scripts #
 	# find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.perl" -o -name "*.pl" \) -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^    @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/    @version $(__VERSION__)/;"
 	# Python Scripts #
@@ -415,6 +419,7 @@ rmtmp :
 	find . -mount -type d \( -name "metrics" \) -exec $(RMDIR) '{}' + 2> /dev/null
 	$(RM) $(BIN)/test_dev
 	$(RMDIR) $(TESTINGDIR)/*
+	find $(MANDIRS) -mount -type f \( -name "*.1.gz" -o -name "*.2.gz" -o -name "*.3.gz" -o -name "*.4.gz" -o -name "*.5.gz" -o -name "*.6.gz" -o -name "*.7.gz" -o -name "*.8.gz" \) -delete
 
 refresh : | cleanfull upver fixperm
 

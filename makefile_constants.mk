@@ -9,6 +9,7 @@
 
 
 __VERSION__::=$(shell date +'%Y.%m.%d')
+__TODAY__::=$(shell date +'%B %d, %Y')
 __MODULE_VERSION__::=-D__MODULE_VERSION__=\"$(__VERSION__)\"
 
 
