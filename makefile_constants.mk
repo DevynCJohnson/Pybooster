@@ -41,6 +41,7 @@ override TESTINGDIR::=$(DEBUGGINGDIR)
 
 UNAME::=$(shell uname | tr '[:lower:]' '[:upper:]')
 UNAME_P::=$(shell uname -p)
+USERNAME::=$(shell whoami)
 ifndef OS
     OS::=$(UNAME)
 endif
@@ -85,7 +86,11 @@ else
     override RM::=rm -f
 endif
 override CHMOD::=chmod -f
+override CHMODR::=chmod -f -R
+override CHOWN::=chown -f
+override CHOWNR::=chown -f -R
 override CPDIR::=cp -f --preserve=mode -r
+override CURUSEROWNS::=$(CHOWNR) $(USERNAME):$(USERNAME)
 override LNDIR::=ln -f -s
 override LNHARD::=ln -f
 override LNSOFT::=ln -f -s
@@ -1168,7 +1173,7 @@ COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags scommit setkey signoff status tag treehashes xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags scommit setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -1249,6 +1254,9 @@ tag :
 
 treehashes :
 	@git log --pretty=format:"%T"
+
+uncommit :
+	@git reset --soft HEAD~
 
 xcommit :
 	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
