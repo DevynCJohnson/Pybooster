@@ -420,10 +420,11 @@ if [ -x "$(command -v gpg)" ]; then
         # Verify Presence of Private Key
         if [ -z "${1:-}" ] || [ ! -r "${1}" ]; then
             printf 'ERROR: The specified GPG name does not exist!\n' >&2
+        else
+            # Create Public Key
+            gpg -a --output "${HOME}/.gnupg/${1}.gpg" --export "${1}"
+            gpg --import "${HOME}/.gnupg/${1}.gpg"
         fi
-        # Create Public Key
-        gpg -a --output ~/.gnupg/"${1}".gpg --export "${1}"
-        gpg --import ~/.gnupg/"${1}".gpg
     }
 
 fi
@@ -441,7 +442,7 @@ if [ -x "$(command -v ssh-keygen)" ] && [ -x "$(command -v ssh-add)" ]; then
 
 
     #' Produce the id_rsa SSH key files as an 8192-bit RSA SSH key pair
-    gensshkey() {
+    gensshrsakey() {
         # Create Key Pair
         ssh-keygen -b 8192 -t rsa -C 'Standard SSH Key' -f ~/.ssh/id_rsa
         # Add Key to SSH-Agent
