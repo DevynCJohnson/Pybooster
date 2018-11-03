@@ -1,9 +1,11 @@
 2018-11-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Geany:  Added support for NanoRC files
 	* Geany:  Improved syntax highlighting in multiple filetypes
 	* makefile:  Fixed some bugs
 	* makefile_constants.mk:  Added additional commands
 	* NanoRC:  Improved syntax highlighting in multiple filetypes
+	* snippets.conf:  Added more snippets
 
 2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
