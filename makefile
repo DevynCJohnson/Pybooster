@@ -493,6 +493,9 @@ install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
 	$(RMDIR) ~/.config/geany/filedefs/ ~/.config/geany/templates/files/
 	$(CPDIR) $(GEANYDIR)/* ~/.config/geany/
+	$(CURUSEROWNS) ~/.config/geany/
+	find ~/.config/geany/ -mount -type d -exec $(CHMODR) 750 '{}' +
+	find ~/.config/geany/ -mount -type f -exec $(CHMODR) 640 '{}' +
 	# sudo rm /usr/share/geany/templates/files/*
 
 install_programs :
