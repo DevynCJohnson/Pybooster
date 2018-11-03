@@ -666,6 +666,15 @@ if [ -x "$(command -v awk)" ]; then
     }
 fi
 
+#' Convert seconds sinc ethe Epoch to the format of the current system locale
+epoch2date() {
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: No input provided!\n' >&2
+    else
+        date -d "@${1}"
+    fi
+}
+
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
 
 #' Search for information on the given command by trying multiple info commands (such as man and info)
