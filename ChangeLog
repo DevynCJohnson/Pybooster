@@ -10,6 +10,7 @@
 	* makefile_constants.mk:  Added additional commands
 	* ManPages:  Created a manpage for fib
 	* NanoRC:  Improved syntax highlighting in multiple filetypes
+	* PyBooster:  Added a checksum feature for the project
 	* snippets.conf:  Added more snippets
 
 2018-10-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

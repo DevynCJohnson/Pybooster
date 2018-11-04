@@ -1173,6 +1173,26 @@ CLANG_PREPRO::=$(CLANG) $(ARCH) $(STD) -E
 COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header
 
 
+# CHECKSUM COMMANDS #
+
+
+.PHONY : genchecksums valchecksums
+
+
+genchecksums :
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Creating Checksums ==='
+	$(RM) ./checksums.md5 ./checksums.sha512 ./checksums.sha1
+	find . -mount -type f -not \( -name 'checksums.md5' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 md5sum --tag > "${FOLDER}checksums.md5"
+	find . -mount -type f -not \( -name 'checksums.sha512' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 sha512sum --tag > "${FOLDER}checksums.sha512"
+	find . -mount -type f -not \( -name 'checksums.sha1' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 sha1sum --tag > "${FOLDER}checksums.sha1"
+
+valchecksums :
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Validating Checksums ==='
+	md5sum --check --quiet --strict ./checksums.md5
+	sha512sum --check --quiet --strict ./checksums.sha512
+	sha1sum --check --quiet --strict ./checksums.sha1
+
+
 # GIT COMMANDS #
 
 

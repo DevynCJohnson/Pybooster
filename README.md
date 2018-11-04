@@ -19,6 +19,8 @@ Please consider donating to <http://dcjtech.info/> to help development (click th
 For information on contributing, refer to _[CONTRIBUTING.md](./CONTRIBUTING.md)_ (in this same directory).
 Also, refer to _[Coding_Standards.md](./Coding_Standards.md)_ (in this same directory) for further guidelines.
 
+To validate the checksums, execute `make valchecksums` in a terminal in this directory.
+
 
 Icon Themes
 -----------
@@ -59,8 +61,8 @@ To perform the listed build commands, open a terminal and type the given command
 - To build the code for a 64-bit system, type `make all BITS=64`
 
 
-Installing
-----------
+Installing/Uninstalling
+-----------------------
 
 To install/uninstall software, open a terminal and type the needed command:
 
