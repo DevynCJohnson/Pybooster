@@ -231,7 +231,7 @@ default :
 # Development
 .PHONY : ctags debug_xkb pathcheck pathchk print_xkb strip svglint TAGS
 # Documentation
-.PHONY : cleandoc doc docc docpy doxy
+.PHONY : cleandoc doc docc docpy doxy manpages
 # Packaging
 .PHONY : backup pkg pkg7z pkglzma pkgSFX pkgxz pkgzip
 # General Project Utilities
@@ -294,7 +294,7 @@ svglint :
 cleandoc :
 	-@$(RMDIR) $(DOCDIR)/clib $(DOCDIR)/pylib
 
-doc : docc docpy
+doc : docc docpy manpages
 
 docc : fixperm
 	-@([ -f $(DOCDIR)/index.html ] && unlink $(DOCDIR)/index.html) || true
@@ -318,6 +318,9 @@ docpy : fixperm
 doxy :
 	-@doxywizard ./Doxyfile
 	$(CHMOD) 644 ./Doxyfile
+
+manpages :
+	-@find $(MANDIRS) -mount -type f \( -name "*.1" -o -name "*.2" -o -name "*.3" -o -name "*.4" -o -name "*.5" -o -name "*.6" -o -name "*.7" -o -name "*.8" \) -print0 | xargs -0 gzip -9 -k
 
 
 # PACKAGING #
@@ -464,10 +467,12 @@ syncmaster :
 
 
 macify :
-	-@$(LNDIR) /etc /private
+	-@if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(LNDIR) /etc /private
 
 unmacify :
-	-@unlink /private
+	-@if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	unlink /private
 
 
 # INSTALL/UNINSTALL #
@@ -479,6 +484,7 @@ uninstall_dev : uninstall_langspecs uninstall_nanorc uninstall_pyeggs uninstall_
 
 install_clib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing C Libraries ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(INSTALLHEADERSDIR)/ ] && $(RMDIR) $(INSTALLHEADERSDIR)/) || true
 	$(MKDIRS) $(INSTALLHEADERSDIR)/
 	$(CHMOD) 755 $(INSTALLHEADERSDIR)/
@@ -490,6 +496,7 @@ install_clib : | rmtmp fixperm
 
 uninstall_clib :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling C Libraries ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(INSTALLHEADERSDIR)/ ] && $(RMDIR) $(INSTALLHEADERSDIR)/) || true
 	# Uninstall Documentation
 	([ -d $(SYSDOCDIR)/clib/ ] && $(RMDIR) $(SYSDOCDIR)/clib/) || true
@@ -505,12 +512,18 @@ install_geany_conf :
 
 install_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing /usr/bin Programs ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(COPY) $(addprefix $(BIN)/, $(LIST_UTIL_PROGRAMS)) $(addprefix $(BIN)/, $(LIST_MATH_PROGRAMS)) $(INSTALLBINDIR)/
 	$(CHMOD) 755 $(addprefix $(INSTALLBINDIR)/, $(LIST_UTIL_PROGRAMS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_MATH_PROGRAMS))
+	# Install ManPages
+	for page in $(addsuffix .1, $(LIST_UTIL_PROGRAMS)) $(addsuffix .1, $(LIST_MATH_PROGRAMS)); do if [ -f "$(MAN1DIR)/$${page}" ]; then gzip -9 -k "$(MAN1DIR)/$${page}"; $(MOVE) "$(MAN1DIR)/$${page}.gz" $(MANPAGEDIR)/man1/; else continue; fi; done
 
 uninstall_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling /usr/bin Programs ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(addprefix $(INSTALLBINDIR)/, $(LIST_UTIL_PROGRAMS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_MATH_PROGRAMS))
+	# Uninstall ManPages
+	for page in $(addsuffix .1.gz, $(LIST_UTIL_PROGRAMS)) $(addsuffix .1.gz, $(LIST_MATH_PROGRAMS)); do if [ -f "$(MANPAGEDIR)/man1/$${page}" ]; then $(RM) "$(MAN1DIR)/man1/$${page}"; else continue; fi; done
 
 install_bin : install_programs
 
@@ -518,6 +531,7 @@ uninstall_bin : uninstall_programs
 
 install_loginopticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing LoginOpticons ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/LoginOpticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/LoginOpticons/) || true
 	$(CPDIR) $(THEMEDIR)/LoginOpticons $(SYSTHEMEDIR)/
 	$(UPDATEICONCACHE) $(SYSTHEMEDIR)/LoginOpticons/
@@ -525,40 +539,48 @@ install_loginopticons :
 
 uninstall_loginopticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling LoginOpticons ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/LoginOpticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/LoginOpticons/) || true
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
 install_mimetype_booster :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Mimetypes ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(COPY) $(ACCDIR)/mime.types /etc/mime.types
 	$(XDGMIME) install --mode system --novendor $(ACCDIR)/mimetype_booster.xml
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
 uninstall_mimetype_booster :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Mimetypes ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(XDGMIME) uninstall --mode system $(SYSMIMEDIR)/packages/mimetype_booster.xml
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
 install_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Language Specifications ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(GTKLANGSPECS2DIR)/ ] && $(COPY) -t $(GTKLANGSPECS2DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 	([ -d $(GTKLANGSPECS3DIR)/ ] && $(COPY) -t $(GTKLANGSPECS3DIR)/ $(addprefix $(LANGSPECSDIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 
 uninstall_langspecs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Language Specifications ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(GTKLANGSPECS2DIR)/ ] && $(RM) $(addprefix $(GTKLANGSPECS2DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 	([ -d $(GTKLANGSPECS3DIR)/ ] && $(RM) $(addprefix $(GTKLANGSPECS3DIR)/, $(addsuffix .lang, $(LIST_LANGSPECS)))) || true
 
 install_nanorc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing NanoRC ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSNANORCDIR)/ ] && $(COPY) -t $(SYSNANORCDIR)/ $(addprefix $(NANORCDIR)/, $(LIST_NANORC_FILES))) || true
 
 uninstall_nanorc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling NanoRC ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSNANORCDIR)/ ] && $(RM) $(addprefix $(SYSNANORCDIR)/, $(LIST_NANORC_FILES))) || true
 
 install_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Opticons ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/) || true
 	$(CPDIR) $(THEMEDIR)/Opticons $(SYSTHEMEDIR)/
 	[ -x "$(command -v update-alternatives)" ] && update-alternatives --install /etc/alternatives/start_icon start-here.svg $(SYSTHEMEDIR)/Opticons/places/start-here.svg 70
@@ -567,11 +589,13 @@ install_opticons :
 
 uninstall_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Opticons ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/ && $(UPDATEMIME) $(SYSMIMEDIR)) || true
 	[ -x "$(command -v update-alternatives)" ] && update-alternatives --set start-here.svg /etc/alternatives/start-here.svg
 
 install_pyeggs : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Eggs ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	(pip3 uninstall flake8_optimal) || true
 	cd $(PYEGGDIR)/flake8_optimal/ || exit 1
 	python3 ./setup.py install
@@ -580,6 +604,7 @@ install_pyeggs : | rmtmp fixperm
 
 uninstall_pyeggs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Eggs ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	command -v pip3 >&2 > /dev/null && pip3 uninstall flake8_optimal
 	command -v pip3 >&2 > /dev/null || printf '%s\n' 'pip3: command not found!'
 
@@ -587,6 +612,7 @@ $(PYBDIR)/__init__.py : install_pylib
 
 install_pylib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Libraries ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
 	([ -d $(PYSRC)/__pycache__/ ] && $(RMDIR) $(PYSRC)/__pycache__/) || true
 	([ -d $(PYSRC)/ezwin/__pycache__/ ] && $(RMDIR) $(PYSRC)/ezwin/__pycache__/) || true
@@ -612,6 +638,7 @@ install_pylib : | rmtmp fixperm
 
 uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Libraries ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(INSTALLBINDIR)/ezdisplay $(INSTALLBINDIR)/ezwin
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
 	$(RM) $(PYPATH)3.6/pybooster $(PYPATH)3.7/pybooster $(PYPATH)3.8/pybooster $(PYPATH)3.9/pybooster
@@ -620,6 +647,7 @@ uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 
 install_program_analyzer : | fixperm $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Program Analyzer ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
 	$(COPY) $(SCRIPTSRCDIR)/program-analyzer $(INSTALLBINDIR)/
 	$(COPY) $(MENUDIR)/Program-Analyzer.desktop $(SYSAPPDIR)/
@@ -628,10 +656,12 @@ install_program_analyzer : | fixperm $(PYBDIR)/__init__.py
 
 uninstall_program_analyzer :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Program Analyzer ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(INSTALLBINDIR)/program-analyzer $(SYSAPPDIR)/Program-Analyzer.desktop $(SYSMENUDIR)/program-analyzer $(PIXMAPDIR)/program-analyzer.svg
 
 install_scripts : $(PYBDIR)/__init__.py
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Scripts ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
 	$(COPY) -t $(INSTALLBINDIR)/ $(addprefix $(SCRIPTSRCDIR)/, $(LIST_SCRIPT_PROGRAMS)) $(addprefix $(SCRIPTSRCDIR)/, $(LIST_DEV_SCRIPTS)) $(addprefix $(SCRIPTSRCDIR)/, $(LIST_PYTHON_SCRIPTS))
 	$(COPY) $(INSTALLBINDIR)/pyflakes3 /usr/bin/pyflakes
@@ -640,14 +670,20 @@ install_scripts : $(PYBDIR)/__init__.py
 	$(COPY) $(INSTALLBINDIR)/pylint2 /usr/local/bin/pylint2
 	$(COPY) $(INSTALLBINDIR)/pep8 /usr/local/bin/pep8
 	$(COPY) $(INSTALLBINDIR)/pep8 /usr/local/bin/pycodestyle
+	# Install ManPages
+	for page in $(addsuffix .1, $(LIST_SCRIPT_PROGRAMS)) $(addsuffix .1, $(LIST_DEV_SCRIPTS)) $(addsuffix .1, $(LIST_PYTHON_SCRIPTS)); do if [ -f "$(MAN1DIR)/$${page}" ]; then gzip -9 -k "$(MAN1DIR)/$${page}"; $(MOVE) "$(MAN1DIR)/$${page}.gz" $(MANPAGEDIR)/man1/; else continue; fi; done
 
 uninstall_scripts :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Scripts ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(addprefix $(INSTALLBINDIR)/, $(LIST_SCRIPT_PROGRAMS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_DEV_SCRIPTS)) $(addprefix $(INSTALLBINDIR)/, $(LIST_PYTHON_SCRIPTS))
 	$(RM) /usr/bin/pyflakes /usr/bin/pylint /usr/local/bin/pep8 /usr/local/bin/pycodestyle /usr/local/bin/pylint /usr/local/bin/pylint2
+	# Uninstall ManPages
+	for page in $(addsuffix .1.gz, $(LIST_SCRIPT_PROGRAMS)) $(addsuffix .1.gz, $(LIST_DEV_SCRIPTS)) $(addsuffix .1.gz, $(LIST_PYTHON_SCRIPTS)); do if [ -f "$(MANPAGEDIR)/man1/$${page}" ]; then $(RM) "$(MAN1DIR)/man1/$${page}"; else continue; fi; done
 
 install_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Shell Profiles ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	# Backup existing files
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
 	([ -f /etc/bash.bashrc ] && $(MOVE) /etc/bash.bashrc /etc/bash.bashrc.backup) || true
@@ -661,6 +697,7 @@ install_shrc :
 
 uninstall_shrc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Shell Profiles ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) /etc/bash.bashrc /etc/profile
 	$(MOVE) /etc/bash.bashrc.backup /etc/bash.bashrc
 	$(MOVE) /etc/profile.backup /etc/profile
@@ -671,16 +708,22 @@ install_themes : install_loginopticons install_opticons
 uninstall_themes : uninstall_loginopticons uninstall_opticons
 
 install_xcompose :
-	@$(COPY) $(XKBDIR)/XCompose ~/.XCompose
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing XCompose ==='
+	$(COPY) $(XKBDIR)/XCompose ~/.XCompose
 
 uninstall_xcompose :
-	@$(RM) ~/.XCompose
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling XCompose ==='
+	$(RM) ~/.XCompose
 
 install_xkb :
-	@$(TOOLSDIR)/manage_usx.sh --install
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing XKB Keyboard Layouts ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(TOOLSDIR)/manage_usx.sh --install
 
 uninstall_xkb :
-	@$(TOOLSDIR)/manage_usx.sh --uninstall
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling XKB Keyboard Layouts ==='
+	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(TOOLSDIR)/manage_usx.sh --uninstall
 
 # install_scripts calls install_pylib
 install : | rmtmp fixperm install_clib install_programs install_mimetype_booster install_program_analyzer install_pyeggs install_scripts install_themes

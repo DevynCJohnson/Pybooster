@@ -190,6 +190,10 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.pyqt text eol=lf linguist-language=Python linguist-vendored=false
 *.pyside text eol=lf linguist-language=Python linguist-vendored=false
 *.[Rr] text eol=lf linguist-language=R linguist-vendored=false
+*.[12345678] text eol=lf linguist-language=Roff linguist-vendored=false
+*.man text eol=lf linguist-language=Roff linguist-vendored=false
+*.manpage text eol=lf linguist-language=Roff linguist-vendored=false
+*.mdoc text eol=lf linguist-language=Roff linguist-vendored=false
 *.[Ss][Aa][Ss][Ss] text eol=lf linguist-language=Sass linguist-vendored=false
 *.[Ss][Cc][Ss][Ss] text eol=lf linguist-language=SCSS linguist-vendored=false
 *.ash text eol=lf linguist-language=Shell linguist-vendored=false
