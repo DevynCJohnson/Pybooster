@@ -1,3 +1,8 @@
+2018-11-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* snippets.conf:  Added more snippets
+	* XCompose:  Added additional key combinations
+
 2018-11-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Added more documentation & applied improvements
