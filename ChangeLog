@@ -1,5 +1,6 @@
 2018-11-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+    * PyBooster:  Added insn_count
 	* PyBooster:  Miscellaneous optimizations
 
 2018-11-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

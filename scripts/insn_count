@@ -1,0 +1,22 @@
+#!/bin/bash
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Disassemble compiled code and count the number of each assembly instruction
+#' @file insn_count
+#' @version 2018.11.08
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A filename is required as a parameter!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of the compiled software to disassemble and produce an instruction count table.\n'
+    exit 0
+elif [ -r "$1" ]; then
+    objdump --disassemble --disassembler-options=att --no-show-raw-insn "$1" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock \1|; s|rep ([A-Za-z0-9]+) .+|rep \1|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n | column
+fi
+
+exit 0
