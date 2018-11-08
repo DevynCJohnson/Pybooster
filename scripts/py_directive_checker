@@ -52,20 +52,20 @@ def getfile_list(_filename: str) -> list:
 if __name__ == '__main__':  # noqa: C901
     # GET SRC #
     if len(argv) == 2:
-        if argv[1].lower() in (r'help', r'--help', r'-h'):
+        if argv[1].lower() in {r'help', r'--help', r'-h'}:
             stdout.write('Specify the pathname of a Python script to scan for invalid directive comments.\n')
             raise SystemExit(0)
         try:  # File path as argument
             SRC_LINE_LIST = getfile_list(argv[1])
             FILEPATH = argv[1]
         except PermissionError:
-            stderr.write(r'PermissionError!\n')
+            stderr.write('PermissionError!\n')
             raise SystemExit(1)
         except IOError:
-            stderr.write(r'IOError!')
+            stderr.write('IOError!\n')
             raise SystemExit(1)
     else:
-        stderr.write(r'Invalid parameters!\n')
+        stderr.write('Invalid parameters!\n')
         raise SystemExit(1)
     # SET CONSTANTS & VARIABLES #
     REGEX_BANDIT = rgxcompile(r'^.*#\s*(nosec|bandit)[:\s]*[a-z_\-\+,]+(| .*|#.*)$', flags=IGNORECASE)

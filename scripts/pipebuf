@@ -40,7 +40,7 @@ if __name__ == '__main__':
         DATABUF: str = stdin.read()
         sleep(0.25)
         stdout.write(DATABUF)
-        if len(argv) == 3 and argv[1].lower() in (r'-f', r'--file'):  # Pipe + Tee
+        if len(argv) == 3 and argv[1].lower() in {r'-f', r'--file'}:  # Pipe + Tee
             ensurefileexists(argv[2])
             writebin2file(argv[2], DATABUF)
     except SystemExit:

@@ -41,7 +41,7 @@ if __name__ == '__main__':
     if len(argv) == 1:  # Pipe
         DATA = stdin.read()
         stdout.write(replace_odd_chars(DATA))
-    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+    elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
         stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')
     elif argv[1]:  # String as argument
         stdout.write(replace_odd_chars(argv[1]) + '\n')

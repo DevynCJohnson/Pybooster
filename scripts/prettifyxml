@@ -121,4 +121,4 @@ if __name__ == '__main__':  # noqa: C901
     XMLDATA = fix_xml_declaration(XMLDATA)
     # OUTPUT FINISHED RESULT #
     writedata(ARGS.output_file, XMLDATA, ARGS.encoding)
-    raise SystemExit()
+    raise SystemExit(0)

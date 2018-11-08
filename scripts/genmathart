@@ -320,11 +320,11 @@ class Tan:
 def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
     """Randomly select a mathematical expression"""
     reseed(rand_object)
-    math_funcs = [Multiply, Cos, Csc, Cvc, Hvc, Sin]
-    math_vars = [Xvar, Yvar]
-    rare_funcs = [Acos, Log1P, Phi]
-    semirare_funcs = [Atan, Sec, Tan]
-    smooth_funcs = [Multiply, Cos, Hvc, Sin]
+    math_funcs = (Multiply, Cos, Csc, Cvc, Hvc, Sin)
+    math_vars = (Xvar, Yvar)
+    rare_funcs = (Acos, Log1P, Phi)
+    semirare_funcs = (Atan, Sec, Tan)
+    smooth_funcs = (Multiply, Cos, Hvc, Sin)
     if prob <= 0.01 or prob > 1.0:
         return rand_object.choice(math_vars)()
     elif prob >= 0.05 or prob < 0.09:
@@ -335,7 +335,7 @@ def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
     elif random() < prob + 0.11:  # nosec
         rand_object.shuffle(math_funcs)
         rand_object.shuffle(semirare_funcs)
-        return rand_object.choice(rand_object.choice([math_funcs, math_funcs, math_funcs, math_funcs, math_funcs, semirare_funcs]))(prob, rand_object)
+        return rand_object.choice(rand_object.choice((math_funcs, math_funcs, math_funcs, math_funcs, math_funcs, semirare_funcs)))(prob, rand_object)
     return rand_object.choice(math_vars)()
 
 
@@ -372,9 +372,9 @@ def imgformatfext(imgformat: str = r'PNG') -> str:
         return r'.png'
     elif imgformat.upper() == r'BMP':
         return r'.bmp'
-    elif imgformat.upper() in (r'JPEG', r'JPG'):
+    elif imgformat.upper() in {r'JPEG', r'JPG'}:
         return r'.jpeg'
-    elif imgformat.upper() in (r'TIF', r'TIFF'):
+    elif imgformat.upper() in {r'TIF', r'TIFF'}:
         return r'.tif'
     return r'.png'
 
@@ -390,9 +390,9 @@ def get_suitable_height(width: int) -> int:
 def reseed(rand_object: Random = None) -> None:
     """Seed the random number generator; this function is multithreading and multiprocessing compatible"""
     if rand_object is None:
-        seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)  # nosec
+        seed(int.from_bytes(urandom(32), byteorder=choice((r'big', r'little'))) % 4294967295)  # nosec
         return
-    rand_object.seed(int.from_bytes(urandom(32), byteorder=choice([r'big', r'little'])) % 4294967295)  # nosec
+    rand_object.seed(int.from_bytes(urandom(32), byteorder=choice((r'big', r'little'))) % 4294967295)  # nosec
 
 
 # PICKLED DATA FUNCTIONS #
@@ -523,7 +523,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
         for strbuf in filebuf:
             if not strbuf:
                 continue
-            outputbuf = outputbuf + strbuf
+            outputbuf += + strbuf
         if outputbuf:
             fname = strftime(r'%m%d%H%M%S')
             with open(outdir + fname + r'.maf', mode=r'wt', encoding=r'utf-8') as maf_file:
@@ -554,10 +554,7 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
         # Convert MAF image to raster image using parallel processing
         num_imgs = len(mafsections)
         maxpoolsize = cpu_count()
-        if maxpoolsize > num_imgs:
-            poolsize = num_imgs
-        else:
-            poolsize = maxpoolsize
+        poolsize = num_imgs if maxpoolsize > num_imgs else maxpoolsize
         with Pool(poolsize) as threadpool:
             try:
                 threadpool.starmap(calc_from_maf, format_for_starmap(mafsections, repeat([maffile, imgformat, imgwidth, outdir], num_imgs)))  # type: ignore
@@ -655,4 +652,4 @@ if __name__ == '__main__':
         stdout.write('Finished generating image\n')
     else:
         stdout.write('Finished generating images\n')
-    raise SystemExit()
+    raise SystemExit(0)

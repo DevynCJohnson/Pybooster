@@ -59,9 +59,9 @@ elif [ -x "$(command -v systemctl)" ]; then
 fi
 
 
-#' Build, Tag, & Push Docker Image to S3 repository
+#' Build, Tag, & Push Docker Image to an ECR repository
 #' @section USAGE
-#' export MAIN_REPO='S3_REPO'  # 123456789.dkr.ecr.REGION.amazonaws.com/
+#' export MAIN_REPO='ECR_REPO'  # 123456789.dkr.ecr.REGION.amazonaws.com/
 #' docker_buildpush BUCKET_NAME [TAG_1] [TAG_2] [TAG_3]
 #' @param[in] $1 Bucket name
 #' @param[in] $2 Tag name (Optional; defaults to "latest")
@@ -69,7 +69,7 @@ fi
 #' @param[in] $4 Tag name (Optional)
 dock_buildpush() {
     if [ -z "${MAIN_REPO:-}" ]; then
-        printf 'The environment variable "MAIN_REPO" must be defined to specify the S3 repository!\n' >&2
+        printf 'The environment variable "MAIN_REPO" must be defined to specify the ECR repository!\n' >&2
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ] && [ ! -z "${3:-}" ] && [ ! -z "${4:-}" ]; then
         docker build --tag "${1}:${2}" --tag "${1}:${3}" --tag "${1}:${4}" .
         docker tag "${1}:${2}" "${MAIN_REPO}${1}:${2}"
@@ -87,7 +87,7 @@ dock_buildpush() {
         docker tag "${1}:latest" "${MAIN_REPO}${1}:latest"
         docker push "${MAIN_REPO}${1}:latest"
     else
-        printf 'You must specify at least one repository and bucket name!\n' >&2
+        printf 'You must specify at least one ECR repository!\n' >&2
     fi
 }
 

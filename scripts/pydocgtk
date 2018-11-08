@@ -524,4 +524,4 @@ if __name__ == '__main__':
     except BaseException:
         show_help('An error occurred.\nNo Python documentation found for `{0}`.'.format(INPUT))
         raise SystemExit(1)
-    raise SystemExit()
+    raise SystemExit(0)

@@ -41,7 +41,7 @@ if __name__ == '__main__':
     if len(argv) == 1:  # Pipe
         DATA = stdin.read()
         stdout.write(num2char(DATA))
-    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+    elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
         stdout.write('Usage 1: command | num2char\nUsage 2: num2char "string"\nReplace numerical character representations with the respective characters\n')
     elif argv[1]:  # String as argument
         stdout.write(num2char(argv[1]) + '\n')

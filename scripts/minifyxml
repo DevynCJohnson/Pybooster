@@ -297,4 +297,4 @@ if __name__ == '__main__':  # noqa: C901
         writedata(ARGS.output_file, MINIFIER.output, ARGS.encoding)
         if ARGS.output_file:
             display_minify_results(ARGS.output_file, ORIG_SIZE, len(MINIFIER.output))
-    raise SystemExit()
+    raise SystemExit(0)

@@ -272,7 +272,7 @@ def x004(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
     Use the format `open(FILE, mode=r'rt', encoding=r'utf-8')`
     """
-    if noqa or any(_test in logical_line for _test in [r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open']) or r', mode=' in logical_line:
+    if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}) or r', mode=' in logical_line:
         return None
     _match = REGEX_OPEN.search(logical_line)
     if _match:
@@ -286,10 +286,10 @@ def x005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
     Use the format `open(FILE, mode='rt', encoding='utf-8')`
     """
-    if noqa or any(_test in logical_line for _test in [r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open']):
+    if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}):
         return None
     _match = REGEX_OPEN.search(logical_line)
-    if _match and r'mode=' in logical_line and any(r', mode=' + _test in logical_line for _test in ['\'r\'', '\'w\'', '\'a\'', '\'x\'']):
+    if _match and r'mode=' in logical_line and any(r', mode=' + _test in logical_line for _test in {'\'r\'', '\'w\'', '\'a\'', '\'x\''}):
         yield _match.start(), r'X005 : `mode=` in `open()` does not specify text nor binary'
     return None
 
@@ -297,7 +297,7 @@ def x005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 @logical_hook
 def x006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
     """Inconsistency: When declaring a UTF8 encoding in `open()`, use `encoding='utf-8'`"""
-    if noqa or any(_test in logical_line for _test in [r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open']):
+    if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}):
         return None
     _match = REGEX_OPEN.search(logical_line)
     if _match and 'encoding=\'utf8\'' in logical_line.lower():

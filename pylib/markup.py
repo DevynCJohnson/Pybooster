@@ -726,7 +726,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disabl
             amp_buff = []
         elif state == 2:  # Numeric character reference
             ord_c = ord(char)
-            if char in (r'x', r'X'):
+            if char in {r'x', r'X'}:
                 state = 3
                 continue
             elif 48 <= ord_c <= 57:

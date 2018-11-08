@@ -47,8 +47,7 @@ __all__: list = [
 
 def alphadupsort_delimiter_codec(data: str, delimiter: str) -> str:
     """Sort the lines or data-list alphabetically using the specified delimiter and remove duplicates"""
-    _out: str = delimiter.join(sorted(set(data.split(delimiter)), key=str.lower))
-    return _out.strip()
+    return delimiter.join(sorted(set(data.split(delimiter)), key=str.lower)).strip()
 
 
 def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
@@ -63,25 +62,25 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
     _out: List[str] = []
     if not _data or not _data.strip():
         stderr.write('No input provided!\n')
-        raise SystemExit()
-    elif '\n' not in _data and r'|' in _data:
-        return sort_func(_data, r'|')
-    elif '\n' not in _data and r', ' in _data:
-        return sort_func(_data, r', ')
-    elif '\n' not in _data and r',' in _data:
-        return sort_func(_data, r',')
-    elif '\n' not in _data and r' ' in _data:
-        return sort_func(_data, r' ')
-    elif '\n' not in _data and r';' in _data:
-        return sort_func(_data, r';')
-    elif '\n' not in _data and r':' in _data:
-        return sort_func(_data, r':')
-    elif '\n' not in _data and '\f' in _data:
-        return sort_func(_data, '\f')
-    else:
-        _out = _data.replace('\r\n', '\n').split('\n')
-        _out.sort(key=str.lower)
-        return '\n'.join(_out)
+        raise SystemExit(1)
+    if '\n' not in _data:
+        if r'|' in _data:
+            return sort_func(_data, r'|')
+        if r', ' in _data:
+            return sort_func(_data, r', ')
+        if r',' in _data:
+            return sort_func(_data, r',')
+        if r' ' in _data:
+            return sort_func(_data, r' ')
+        if r';' in _data:
+            return sort_func(_data, r';')
+        if r':' in _data:
+            return sort_func(_data, r':')
+        if '\f' in _data:
+            return sort_func(_data, '\f')
+    _out = _data.replace('\r\n', '\n').split('\n')
+    _out.sort(key=str.lower)
+    return '\n'.join(_out)
 
 
 if __name__ == '__main__':
@@ -90,12 +89,12 @@ if __name__ == '__main__':
         'Optional Parameters\n' + \
         '\t-r: Remove duplicates in addition to sorting\n'
     try:
-        RM_DUP: bool = False if len(argv) == 1 else argv[1].lower() in (r'--remove-duplicates', r'--rm-dup', r'-r')
+        RM_DUP: bool = False if len(argv) == 1 else argv[1].lower() in {r'--remove-duplicates', r'--rm-dup', r'-r'}
         SORT_FUNC: Callable[[str, str], str] = alphadupsort_delimiter_codec if RM_DUP else alphasort_delimiter_codec
         if len(argv) == 1 or (RM_DUP and len(argv) == 2):  # Pipe
             DATA: str = stdin.read()
             stdout.write(alphabetize_string(DATA, SORT_FUNC))
-        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+        elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
             stdout.write(HELP)
         elif RM_DUP and len(argv) == 3 and argv[2]:  # Sort & Remove duplicates
             stdout.write(alphabetize_string(argv[2], SORT_FUNC) + '\n')

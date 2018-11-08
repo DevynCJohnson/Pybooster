@@ -1980,4 +1980,4 @@ if __name__ == '__main__':
         gtk_open()
     # Show Window
     Gtk.main()
-    raise SystemExit()
+    raise SystemExit(0)

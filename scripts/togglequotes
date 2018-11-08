@@ -42,7 +42,7 @@ if __name__ == '__main__':
             stdout.write(DATA.replace(r'"', '\''))
         else:
             stdout.write(DATA.replace('\'', r'"'))
-    elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+    elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
         stdout.write('Usage 1: command | togglequotes\nUsage 2: togglequotes "string" \nConvert single-quotes to double-quotes and vice versa\n')
     elif argv[1]:  # String in argument
         DATA = argv[1]

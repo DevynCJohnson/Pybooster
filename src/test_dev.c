@@ -932,11 +932,11 @@ static void test_x86_intrinsics(void) {
 /** Main Testing Function */
 noreturn int main(rargc, rargv) {
 	TWO_ARGS_REQUIRED_F;
-	START_TIME();  // DEBUG: Time execution
+	START_TIME();
 	test_code(argv);
 	test_strlen();
 	test_printf(argv);
-	END_TIME();  // DEBUG: Time execution
+	END_TIME();
 	puts2nl();
 	do_sync();
 	DEV_PROMPT_FUNC(test_ctypes(), "Perform ctype tests?");

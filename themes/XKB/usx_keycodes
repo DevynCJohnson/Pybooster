@@ -178,7 +178,7 @@ default xkb_keycodes "pc105x" {
     <UP> = 111;
     // <BRK> = 419;
     alias <AC12> = <BKSL>;
-    // TODO: Resolve - alias <SYRQ> = <PRSC>;
+    alias <SYRQ> = <PRSC>;
     // Solaris Compatibility
     <AGAI> = 137;
     <COPY> = 141;

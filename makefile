@@ -478,7 +478,7 @@ unmacify :
 # INSTALL/UNINSTALL #
 
 
-install_dev : install_geany_conf install_langspecs install_nanorc install_program_analyzer install_pyeggs install_scripts
+install_dev : install_langspecs install_nanorc install_program_analyzer install_pyeggs install_scripts
 
 uninstall_dev : uninstall_langspecs uninstall_nanorc uninstall_pyeggs uninstall_pylib
 

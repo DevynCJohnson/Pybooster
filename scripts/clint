@@ -503,7 +503,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         if _match and not _match2 and not _match3:
             output_info(filepath, line_num, line, r'X035', r'Missing single white-space around `>` or `<` operator', _match)
     asm_match = REGEX_VALID_ASM.search(log_line)
-    if any(_test in log_line for _test in [r'+', r'*', r'/', r'%']) and not any(_test in log_line for _test in [r'++', r'--', r'%', r'<=', r'>=', r'!*', r'!&', r'(*', r'*)', r'return *', r'char* ', r'(int)*']) and not any(log_line.startswith(_test) for _test in [r'*', r'LIB_FUNC', r'DECL_FUNC']) and not asm_match:
+    if any(_test in log_line for _test in {r'+', r'*', r'/', r'%'}) and not any(_test in log_line for _test in {r'++', r'--', r'%', r'<=', r'>=', r'!*', r'!&', r'(*', r'*)', r'return *', r'char* ', r'(int)*'}) and not any(log_line.startswith(_test) for _test in {r'*', r'LIB_FUNC', r'DECL_FUNC'}) and not asm_match:
         # X036
         _match = MATH_OPERATOR_NO_SPACE.search(log_line)
         _match2 = MATH_OPERATOR_SPACE_VALID.search(log_line)
@@ -537,7 +537,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     if r'return  ' in log_line or 'return\t' in log_line:
         # X043
         output_info(filepath, line_num, line, r'X043', r'Unneeded extra white-space after return')
-    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in [r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]']) and not any(log_line.startswith(_test) for _test in [r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC']):
+    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in {r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]'}) and not any(log_line.startswith(_test) for _test in {r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC'}):
         # X046
         output_info(filepath, line_num, line, r'X046', r'Invalid array size')
     _match = REGEX_CONSTRUCT_SPACE.search(log_line)

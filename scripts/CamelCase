@@ -53,7 +53,7 @@ if __name__ == '__main__':
             DATA = stdin.read().replace(r' ', r'_').replace(r'-', r'_').replace(r'_', r'_')
             conversion_method = detect_conversion_method(DATA)
             stdout.write(conversion_method(DATA))
-        elif argv[1].lower() in (r'help', r'--help', r'-h', r'--usage', r'?'):  # Help
+        elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
             stdout.write('Usage 1: command | CamelCase\nUsage 2: CamelCase "string"\nConvert camelCase to snake_case and vice versa\n')
         elif argv[1]:  # String as argument
             if not argv[1].strip():
