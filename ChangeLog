@@ -1,6 +1,10 @@
+2018-11-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added net_rc.sh
+
 2018-11-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-    * PyBooster:  Added insn_count
+	* PyBooster:  Added insn_count
 	* PyBooster:  Miscellaneous optimizations
 
 2018-11-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

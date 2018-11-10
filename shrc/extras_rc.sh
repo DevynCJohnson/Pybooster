@@ -79,30 +79,6 @@ if [ -x "$(command -v modprobe)" ] && [ -d "/lib/modules/${KRELEASE}" ]; then
     [ -d "/lib/modules/${KRELEASE}/kernel/drivers/wacom" ] && alias unloadwacom='sudo modprobe -r wacom'
 fi
 
-# Network Aliases
-
-[ -x "$(command -v ping)" ] && alias testnet='ping -c 1 dcjtech.info || ping -c 1 duckduckgo.com'
-if [ -x "$(command -v curl)" ]; then
-    alias testwebtime="curl -s -w 'Testing Website Response Time: %{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null http://www.google.com"
-    alias webheaders='curl -I'
-elif [ -x "$(command -v wget)" ]; then
-    alias download='wget --quiet --no-dns-cache --no-cache --no-cookies --no-cookies'
-fi
-[ -n "$(command -v ifconfig)" ] && [ -z "$(command -v ipconfig)" ] && alias ipconfig='ifconfig'
-[ -x "$(command -v iptables)" ] && alias ipt='sudo iptables'
-if [ -x "$(command -v nmcli)" ]; then
-    alias netOff='nmcli networking off'
-    alias netOn='nmcli networking on'
-    alias radioOff='nmcli radio all off'
-    alias radioOn='nmcli radio all on'
-    alias wifiOff='nmcli radio wifi off'
-    alias wifiOn='nmcli radio wifi on'
-    alias wwanOff='nmcli radio wwan off'
-    alias wwanOn='nmcli radio wwan on'
-    alias wifiScan='nmcli dev wifi'
-fi
-[ -x "$(command -v netstat)" ] && alias viewopenports='netstat -a -l -n -p -t -u'
-
 # Settings Manipulation Aliases
 
 if [ -x "$(command -v dconf)" ]; then
@@ -150,15 +126,16 @@ fi
 [ -x "$(command -v swapon)" ] && alias freeswap='sudo swapoff -a && sleep 2 && sudo swapon -a'
 alias killjobs='kill "$(jobs -ps)" 2> /dev/null'
 [ -x "$(command -v systemctl)" ] && alias lsenabledservices='systemctl list-unit-files | grep -F "enabled"'
+alias lsmount='mount | column -t'
 [ -x "$(command -v free)" ] && alias meminfo='free -m -l -t'
 [ -x "$(command -v xset)" ] && alias monitoroff='xset dpms force off'
 alias powerdown='sudo shutdown -h now'
 alias poweroff='sudo shutdown -h now'
+alias quickclean='sudo rm -f -r /var/log/ && sudo rm -f /var/backups/*.gz'
 alias reboot='history -c; sudo shutdown -r now'
 alias resudo='sudo -v'
 alias sedo='sudo -E'
 alias unmount='sudo umount'
-alias viewmount='mount | column -t'
 
 # Terminal Control Aliases
 
@@ -452,23 +429,6 @@ if [ -x "$(command -v mail)" ]; then
         fi
     }
 fi
-
-# Networking Functions
-
-#' Determine if the network is up by looking for any non-loopback internet network interfaces
-CheckForNetwork() {
-    if [ -z "${NETWORKUP:-}" ]; then
-        test="$(ifconfig -a inet 2> /dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)"
-        if [ "${test}" -gt 0 ]; then
-            NETWORKUP='-YES-'
-        else
-            NETWORKUP='-NO-'
-        fi
-    fi
-    unset test
-}
-
-downloadtar() { wget -c "$1" -O - | tar -xz; }
 
 # Patch Functions
 
