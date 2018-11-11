@@ -1,6 +1,7 @@
 2018-11-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile_constants.mk:  Minor tweaks
+	* profile:  Added support for loadables
 	* PyBooster:  Update version numbers
 	* snippets.conf:  Added SQL snippets
 

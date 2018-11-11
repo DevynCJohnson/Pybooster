@@ -34,6 +34,17 @@ fi
 export PROFILE_SHELL
 
 
+# ENABLE LOADABLES #
+
+
+if [ -d /usr/lib/bash/ ]; then
+    for plugin in /usr/lib/bash/*; do
+        ([ "${plugin}" == '/usr/lib/bash/Makefile.inc' ] || [ "${plugin}" == '/usr/lib/bash/mypid' ] || [ "${plugin}" == '/usr/lib/bash/truefalse' ]) && continue
+        enable -f "${plugin}" "$(basename "${plugin}")"
+    done
+fi
+
+
 # OS DETECTION #
 
 
