@@ -4,7 +4,7 @@
 /**
 @brief Return the arc-cosine of the input
 @file acos.c
-@version 2018.10.13
+@version 2018.11.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

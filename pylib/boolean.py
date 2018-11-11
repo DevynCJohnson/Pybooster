@@ -6,7 +6,7 @@
 
 @file boolean.py
 @package pybooster.boolean
-@version 2018.10.20
+@version 2018.11.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

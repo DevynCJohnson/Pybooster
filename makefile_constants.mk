@@ -1196,7 +1196,7 @@ valchecksums :
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags scommit setkey signoff status tag treehashes uncommit xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsfiles gitstats lscontrib lstags previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -1259,9 +1259,6 @@ previewcleangit : cleanall fixperm
 
 pushtags :
 	@git push origin --tags
-
-scommit :
-	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --gpg-sign=$(key) --message="$$GITMSG" --signoff
 
 setkey :
 	@git config --global user.signingkey $(key); git config --global commit.gpgsign true; git config --global gpg.program "$(shell which gpg)"

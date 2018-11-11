@@ -5,7 +5,7 @@
 #' @brief Automated building and packaging of PyBooster
 #' @file build_package.sh
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-#' @version 2018.10.13
+#' @version 2018.11.11
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 

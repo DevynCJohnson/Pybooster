@@ -4,7 +4,7 @@
 /**
 @brief Return the area hyperbolic sine of the input
 @file asinh.c
-@version 2018.10.13
+@version 2018.11.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
