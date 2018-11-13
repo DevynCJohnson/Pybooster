@@ -97,17 +97,13 @@ def envdict() -> dict:
 
 def envlist() -> list:
     """Return a list of the system's environment variables"""
-    sysenv = []
-    for k, v in zip(environ.keys(), environ.values()):
-        sysenv.append(k + r'=' + v)
-    return sysenv
+    return [k + r'=' + v for k, v in zip(environ.keys(), environ.values())]
 
 
 def printenv() -> None:
     """Print the system's environment variables"""
     for k, v in zip(environ.keys(), environ.values()):
         stdout.write('{}={}\n'.format(k, v))
-    return None
 
 
 # PROCESS-RELATED FUNCTION #
@@ -134,7 +130,6 @@ def ckill(_process) -> None:
             _kill(_process, SIGKILL)
         except OSError:
             _kill(_process.pid, SIGKILL)
-    return None
 
 
 # MACHINE-RELATED FUNCTIONS #
@@ -148,11 +143,11 @@ def bitness() -> str:
     """
     if maxsize == 32767:  # 2 ** 15 - 1
         return r'16'
-    elif maxsize == 2147483647:  # 2 ** 31 - 1
+    if maxsize == 2147483647:  # 2 ** 31 - 1
         return r'32'
-    elif maxsize == 9223372036854775807:  # 2 ** 63 - 1
+    if maxsize == 9223372036854775807:  # 2 ** 63 - 1
         return r'64'
-    elif maxsize == 170141183460469231731687303715884105727:  # 2 ** 127 - 1
+    if maxsize == 170141183460469231731687303715884105727:  # 2 ** 127 - 1
         return r'128'
     return 'Unknown'
 
@@ -197,7 +192,6 @@ def idsys() -> None:
             platform.python_version()
         )
     )
-    return None
 
 
 # MISCELLANEOUS SYSTEM FUNCTIONS #

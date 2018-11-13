@@ -140,11 +140,11 @@ def currentseason(_hemisphere: str = 'n') -> str:
     if _hemisphere != 'n':
         if season == r'spring':
             return r'fall'
-        elif season == r'fall':
+        if season == r'fall':
             return r'spring'
-        elif season == r'summer':
+        if season == r'summer':
             return r'winter'
-        elif season == r'winter':
+        if season == r'winter':
             return r'summer'
     return season
 
@@ -204,14 +204,12 @@ def sysuptime() -> str:
     if platform.startswith(r'win'):
         try:
             import win32api
-            _uptime = win32api.GetTickCount()
+            return win32api.GetTickCount()
         except ImportError:
-            _uptime = r'Unknown'
-    else:
-        try:
-            with open(r'/proc/uptime', mode=r'rt', encoding=r'utf-8') as _file:
-                _seconds = float(_file.readline().split()[0])
-                _uptime = str(timedelta(seconds=_seconds))
-        except FileNotFoundError:
-            _uptime = r'Unknown'
-    return _uptime
+            return r'Unknown'
+    try:
+        with open(r'/proc/uptime', mode=r'rt', encoding=r'utf-8') as _file:
+            _seconds = float(_file.readline().split()[0])
+            return str(timedelta(seconds=_seconds))
+    except FileNotFoundError:
+        return r'Unknown'

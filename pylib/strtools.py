@@ -554,7 +554,7 @@ def splitsentences(_str_of_sentences: str) -> list:
     ['This is a test', 'This should be a separate item in the list', 'Did it work']
     """
     _array = rgxsplit(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]*', _str_of_sentences)
-    inputarray = []
+    inputarray: list = []
     for i in _array:
         i = i.strip()
         if i:
@@ -583,7 +583,7 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     if not isinstance(_obj, str):
         return r''
     if _strength >= 3:  # Only keep ASCII letters and space
-        _out = r''
+        _out: str = r''
         for i in _obj:
             if i.isalpha() or i == r' ':
                 _out += i

@@ -109,11 +109,7 @@ def lsmods() -> list:
 
 def imports() -> list:
     """List all imports"""
-    _imports: list = []
-    for name, val in globals().items():  # pylint: disable=W0612
-        if isinstance(val, ModuleType):
-            _imports.append(val.__name__)
-    return _imports
+    return [val.__name__ for name, val in globals().items() if isinstance(val, ModuleType)]
 
 
 def imported() -> list:
@@ -123,7 +119,7 @@ def imported() -> list:
 
 def wheremods() -> list:
     """List locations of imported modules"""
-    _loadedmods = set(modules) & set(globals())
+    _loadedmods: set = set(modules) & set(globals())
     return [modules[name] for name in _loadedmods]
 
 
@@ -192,17 +188,13 @@ def ipygrep(_find: str, _text: str) -> bool:
     Test if a plain-string matches a regex string
     """
     _match = refullmatch(_find, _text, flags=IGNORECASE)
-    if _match is not None:
-        return _match
-    return False
+    return _match if _match is not None else False
 
 
 def pygrep(_find: str, _text: str) -> bool:
     """Case-sensitive reverse REGEX search; Test if a plain-string matches a regex string"""
     _match = refullmatch(_find, _text, flags=None)
-    if _match is not None:
-        return _match
-    return False
+    return _match if _match is not None else False
 
 
 def getlinenum() -> int:
@@ -219,10 +211,9 @@ def ezcompile(_code: str) -> object:
     exec(bytecode) # or eval(bytecode)
     """
     try:
-        comcode = compile(_code, r'', r'eval')
+        return compile(_code, r'', r'eval')
     except SyntaxError:
-        comcode = compile(_code, r'', r'exec')
-    return comcode
+        return compile(_code, r'', r'exec')
 
 
 def wlong(_int32: int) -> bytes:
