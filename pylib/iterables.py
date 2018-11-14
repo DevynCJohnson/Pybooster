@@ -235,8 +235,7 @@ def rmdupkey_casein(_dict: dict) -> dict:
     _out: dict = {}
     for _key, val in _dict.items():
         if _key.lower() not in _out.keys():
-            _key = _key.lower()
-            _out[_key] = val
+            _out[_key.lower()] = val
     return _out
 
 
@@ -269,15 +268,10 @@ def create_2d_array(width: int, height: int) -> list:
 
 def func_range(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> list:
     """Return a list of the outputs for the given range of inputs"""
-    _out: list = []
     if isinstance(_start, float) or isinstance(_stop, float) or isinstance(_step, float):
         _num_list: list = list(frange(float(_start), float(_stop), float(_step)))
-        for _val in _num_list:
-            _out.append(_func(_val))  # type: ignore
-        return _out
-    for _val in range(_start, _stop, _step):
-        _out.append(_func(_val))
-    return _out
+        return[_func(_val) for _val in _num_list]  # type: ignore
+    return [_func(_val) for _val in range(_start, _stop, _step)]
 
 
 def mergeoddeven(odd_list: list, even_list: list) -> list:

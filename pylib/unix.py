@@ -82,18 +82,14 @@ def du() -> float:  # pylint: disable=C0103
 
 def getetcfstab() -> str:
     """Get the contents of /etc/fstab"""
-    _out: list = []
     with open(r'/etc/fstab', mode=r'rt', encoding=r'utf-8') as _file:
-        _out.append(r''.join(_file.readlines()).strip())
-    return r''.join(_out)
+        return r''.join(_file.readlines()).strip()
 
 
 def getetchosts() -> str:
     """Get the contents of /etc/hosts"""
-    _out: list = []
     with open(r'/etc/hosts', mode=r'rt', encoding=r'utf-8') as _file:
-        _out.append(r''.join(_file.readlines()).strip())
-    return r''.join(_out)
+        return r''.join(_file.readlines()).strip()
 
 
 def thumbnail_cleaner() -> None:

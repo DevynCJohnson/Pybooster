@@ -40,7 +40,6 @@ from sys import stderr
 from typing import List, Optional, Union
 import xml.etree.ElementTree as ET  # nosec
 
-from pybooster.boolean import isintuplelist
 from pybooster.libchar import ALPHASET, INVALID_CHARREFS, INVALID_CODEPOINTS, HTML5
 from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
 from pybooster.strtools import rmspecialwhitespace
@@ -169,7 +168,7 @@ FILETYPE_XSD: int = 5
 LEADING_SURROGATE = rgxcompile(r'[\ud800-\udbff]')
 TRAILING_SURROGATE = rgxcompile(r'[\udc00-\udfff]')
 LOCATESTARTTAGEND_TOLERANT = rgxcompile(r'<[A-Za-z\-][^\s/>\x00]*(?:[\s/]*(?:(?<=[\'\"\s/])[^\s/>][^\s/=>]*(?:\s*=+\s*(?:\'[^\']*\'|\"[^\"]*\"|(?![\'\"])[^>\s]*)(?:\s*,)*)?(?:\s|/(?!>))*)*)?\s*', flags=VERBOSE)
-ATTR_TOLERANT = r'((?<=[\'"\s/])[^\s/>][^\s/=>]*)(\s*=+\s*(\'[^\']*\'|"[^"]*"|(?![\'"])[^>\s]*))?(?:\s|/(?!>))*'
+ATTR_TOLERANT: str = r'((?<=[\'"\s/])[^\s/>][^\s/=>]*)(\s*=+\s*(\'[^\']*\'|"[^"]*"|(?![\'"])[^>\s]*))?(?:\s|/(?!>))*'
 ATTRFIND_TOLERANT = rgxcompile(ATTR_TOLERANT)
 CC_NS = rgxcompile(r'\s*xmlns:cc\s*=\s*(\'|")(http://creativecommons.org/ns#|http://web.resource.org/cc/)(\'|")\s*')
 COMMENTCLOSE = rgxcompile(r'--\s*>')
@@ -211,27 +210,27 @@ USELESS_SVG_TAGS: set = {r'comment', r'desc', r'flowRoot', r'title'}
 
 
 BOOLEAN_ATTRIBUTES: dict = {  # type: ignore
-    r'audio': (r'autoplay', r'controls', r'loop', r'muted'),
-    r'button': (r'autofocus', r'disabled', r'formnovalidate'),
-    r'command': (r'checked', r'disabled'),
-    r'dialog': (r'open'),
-    r'fieldset': (r'disabled'),
-    r'form': (r'novalidate'),
-    r'iframe': (r'seamless'),
-    r'img': (r'ismap'),
-    r'input': (r'autofocus', r'checked', r'disabled', r'formnovalidate', r'multiple', r'readonly', r'required'),
-    r'keygen': (r'autofocus', r'disabled'),
-    r'object': (r'typesmustmatch'),
-    r'ol': (r'reversed'),
-    r'optgroup': (r'disabled'),
-    r'option': (r'disabled', r'selected'),
-    r'script': (r'async', r'defer'),
-    r'select': (r'autofocus', r'disabled', r'multiple', r'required'),
-    r'style': (r'scoped'),
-    r'textarea': (r'autofocus', r'disabled', r'readonly', r'required'),
-    r'track': (r'default'),
-    r'video': (r'autoplay', r'controls', r'loop', r'muted'),
-    r'*': (r'hidden')
+    r'audio': {r'autoplay', r'controls', r'loop', r'muted'},
+    r'button': {r'autofocus', r'disabled', r'formnovalidate'},
+    r'command': {r'checked', r'disabled'},
+    r'dialog': {r'open'},
+    r'fieldset': {r'disabled'},
+    r'form': {r'novalidate'},
+    r'iframe': {r'seamless'},
+    r'img': {r'ismap'},
+    r'input': {r'autofocus', r'checked', r'disabled', r'formnovalidate', r'multiple', r'readonly', r'required'},
+    r'keygen': {r'autofocus', r'disabled'},
+    r'object': {r'typesmustmatch'},
+    r'ol': {r'reversed'},
+    r'optgroup': {r'disabled'},
+    r'option': {r'disabled', r'selected'},
+    r'script': {r'async', r'defer'},
+    r'select': {r'autofocus', r'disabled', r'multiple', r'required'},
+    r'style': {r'scoped'},
+    r'textarea': {r'autofocus', r'disabled', r'readonly', r'required'},
+    r'track': {r'default'},
+    r'video': {r'autoplay', r'controls', r'loop', r'muted'},
+    r'*': {r'hidden'}
 }
 
 
@@ -463,7 +462,7 @@ SVG_COLORS: dict = {  # type: ignore
 }
 
 
-SVG_UNIT = (r'em', r'ex', r'px', r'in', r'cm', r'mm', r'pt', r'pc', r'%')
+SVG_UNIT: set = {r'em', r'ex', r'px', r'in', r'cm', r'mm', r'pt', r'pc', r'%'}
 
 
 SVG_UNIT_CONVERSIONS: dict = {  # type: ignore
@@ -480,7 +479,7 @@ SVG_UNIT_CONVERSIONS: dict = {  # type: ignore
 }
 
 
-SVG_STYLES: tuple = (
+SVG_STYLES: set = {
     r'alignment-baseline',
     r'baseline-shift',
     r'clip-path',
@@ -531,10 +530,10 @@ SVG_STYLES: tuple = (
     r'unicode-bidi',
     r'word-spacing',
     r'writing-mode'
-)
+}
 
 
-SVG_TINY_STYLES: tuple = (
+SVG_TINY_STYLES: set = {
     r'audio-level',
     r'buffered-rendering',
     r'display-align',
@@ -545,7 +544,7 @@ SVG_TINY_STYLES: tuple = (
     r'vector-effect',
     r'viewport-fill',
     r'viewport-fill-opacity'
-)
+}
 
 
 SVG_POSITION_ATTR: dict = {  # type: ignore
@@ -557,7 +556,7 @@ SVG_POSITION_ATTR: dict = {  # type: ignore
 }
 
 
-SVG_SCALING_ATTR: dict = {r'rect': (r'x', r'y', r'width', r'height')}  # type: ignore
+SVG_SCALING_ATTR: dict = {r'rect': {r'x', r'y', r'width', r'height'}}  # type: ignore
 
 
 MIMETYPE_CORRECTIONS: tuple = (
@@ -590,43 +589,38 @@ def assert_is_xml(_doc_type: int, data: str, _filename: str) -> None:
 
 def is_in_tagstack(tag: str, _tag_stack: list) -> bool:
     """Test if the given tag is in the tag-stack"""
-    for _tag in _tag_stack:
-        if _tag[0] == tag:
-            return True
-    return False
+    return any((_tag[0] == tag for _tag in _tag_stack))
 
 
 def is_removable_metadata_attr(remove_metadata: int, attr: str) -> bool:
     """Determine if the given data is a removable metadata attribute"""
-    if remove_metadata < 2:  # pylint: disable=R1705
+    if remove_metadata < 2:
         return False
-    elif r'xmlns:' in attr and attr in JUNK_ATTR:  # XMLNS attribute
+    if r'xmlns:' in attr and attr in JUNK_ATTR:  # XMLNS attribute
         return True
-    elif r':' in attr and r'xmlns:' not in attr and attr.split(r':')[0] + r':' in JUNK_NS:  # Namespace attribute
+    if r':' in attr and r'xmlns:' not in attr and attr.split(r':')[0] + r':' in JUNK_NS:  # Namespace attribute
         return True
     return False
 
 
 def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = False, remove_metadata: int = 2) -> bool:
     """Determine if the given data is a removable metadata tag"""
-    if tag == r'namedview':  # pylint: disable=R1705
+    if tag == r'namedview':
         return True
-    elif remove_metadata < 1:
+    if remove_metadata < 1:
         return False
-    elif _in_metadata:
+    if _in_metadata or (remove_metadata > 0 and doc_type == FILETYPE_SVG and tag in {r'desc', r'title'}):
         return True
-    elif remove_metadata > 0 and doc_type == FILETYPE_SVG and tag in {r'desc', r'title'}:
-        return True
-    elif remove_metadata == 2 and r':' in tag and tag.split(r':')[0] + r':' in JUNK_NS:  # Namespace tags
+    if remove_metadata == 2 and r':' in tag and tag.split(r':')[0] + r':' in JUNK_NS:  # Namespace tags
         return True
     return False
 
 
 def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:
     """Test if the given tag is a self-closing tag for the given XML document type"""
-    if _tag in CC_NO_CLOSE_TAGS or _tag in DC_NO_CLOSE_TAGS:  # pylint: disable=R1705
+    if _tag in CC_NO_CLOSE_TAGS or _tag in DC_NO_CLOSE_TAGS:
         return True
-    elif _doc_type == FILETYPE_SVG or is_in_tagstack(r'svg', _tag_stack):  # SVG
+    if _doc_type == FILETYPE_SVG or is_in_tagstack(r'svg', _tag_stack):  # SVG
         if _tag in SVG_NO_CLOSE_TAGS:
             return True
     elif _doc_type == FILETYPE_HTML or is_in_tagstack(r'html', _tag_stack):  # HTML
@@ -810,13 +804,13 @@ def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
     val = escape_ambiguous_ampersand(val)
     if double_quote:  # pylint: disable=R1705
         return (val.replace(r'"', r'&#34;'), DOUBLE_QUOTE)
-    elif r'"' in val:
+    if r'"' in val:
         if '\'' in val:
             return (val.replace(r'"', r'&#34;'), DOUBLE_QUOTE)
         return (val, SINGLE_QUOTE)
-    elif '\'' in val:
+    if '\'' in val:
         return (val, DOUBLE_QUOTE)
-    elif not val or any((c.isspace() for c in val)):
+    if not val or any((c.isspace() for c in val)):
         return (val, DOUBLE_QUOTE)
     return (val, NO_QUOTES)
 
@@ -897,28 +891,28 @@ def int2refnum(_int: int) -> str:
 
 def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
     """Parse value as SVG length and returns the value in pixels (or a negative scale: -1 = 100%)"""
-    if not value:  # pylint: disable=R1705
+    if not value:
         return 0.0
-    elif not isinstance(value, str):
+    if not isinstance(value, str):
         raise Exception(r'Invalid datatype for `value` in `parse_svg_size()`!')
     parts = SVG_SIZE.match(str(value))
     if not parts:
         raise Exception(r'Unknown length format: "{}"'.format(value))
     num = float(parts.group(1))
     units = parts.group(2) or def_units
-    if units == r'px':  # pylint: disable=R1705
+    if units == r'px':
         return float(num)
-    elif units == r'pt':
+    if units == r'pt':
         return num * 1.25
-    elif units == r'pc':
+    if units == r'pc':
         return num * 15.0
-    elif units == r'in':
+    if units == r'in':
         return num * 90.0
-    elif units == r'mm':
+    if units == r'mm':
         return num * 3.543307
-    elif units == r'cm':
+    if units == r'cm':
         return num * 35.43307
-    elif units == r'%':
+    if units == r'%':
         return -num / 100.0
     raise Exception(r'Unknown length units: "{}"'.format(units))
 
@@ -1209,8 +1203,8 @@ class ParserBase:
         """Update line number and offset; Should be called for each piece of data once and in order"""
         if i >= j:
             return j
-        rawdata = self.rawdata
-        nlines = rawdata.count('\n', i, j)
+        rawdata: str = self.rawdata
+        nlines: int = rawdata.count('\n', i, j)
         if nlines:
             self.lineno = self.lineno + nlines
             pos = rawdata.rindex('\n', i, j)
@@ -1229,7 +1223,7 @@ class ParserBase:
 
     def parse_declaration(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Parse declaration tags"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         j = i + 2
         if rawdata[i:j] != r'<!':
             raise Exception(r'Unexpected call to parse_declaration')
@@ -1247,7 +1241,7 @@ class ParserBase:
             return j
         if decltype == r'doctype':
             self._decl_otherchars = r''
-        length = len(rawdata)
+        length: int = len(rawdata)
         while j < length:
             char = rawdata[j]
             if char == r'>':  # End of declaration syntax
@@ -1282,7 +1276,7 @@ class ParserBase:
 
     def parse_marked_section(self, i: int, report: int = 1) -> int:
         """Parse a marked section"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 3] != r'<![':
             raise Exception(r'Unexpected call to parse_marked_section()')
         sectname, j = self._scan_name(i + 3, i)
@@ -1303,7 +1297,7 @@ class ParserBase:
 
     def parse_comment(self, i: int, report: int = 1) -> int:
         """Parse comment, return length or -1 (if not terminated)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 4] != r'<!--':
             self.error(r'Unexpected call to parse_comment()')
         match = COMMENTCLOSE.search(rawdata, i + 4)
@@ -1316,9 +1310,9 @@ class ParserBase:
 
     def _parse_doctype_subset(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Scan past the internal subset in a <!DOCTYPE declaration, returning the index just past any whitespace following the trailing ']'"""
-        rawdata = self.rawdata
-        length = len(rawdata)
-        j = i
+        rawdata: str = self.rawdata
+        length: int = len(rawdata)
+        j: int = i
         while j < length:
             char = rawdata[j]
             if char == r'<':  # pylint: disable=R1705
@@ -1353,11 +1347,11 @@ class ParserBase:
                 if j < 0:
                     return j
                 if rawdata[j] == r';':
-                    j = j + 1
+                    j += 1
             elif char == r']':
-                j = j + 1
+                j += 1
                 while j < length and rawdata[j].isspace():
-                    j = j + 1
+                    j += 1
                 if j < length:
                     if rawdata[j] == r'>':
                         return j
@@ -1366,7 +1360,7 @@ class ParserBase:
                 else:
                     return -1
             elif char.isspace():
-                j = j + 1
+                j += 1
             else:
                 self.updatepos(declstartpos, j)
                 self.error(r'Unexpected char {} in internal subset'.format(char))
@@ -1378,16 +1372,16 @@ class ParserBase:
         if j == -1 or name is None:
             return -1
         # Style content model; skip until '>'
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if r'>' in rawdata[j:]:
             return rawdata.find(r'>', j) + 1
         return -1
 
     def _parse_doctype_attlist(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Scan past <!ATTLIST declarations"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         name, j = self._scan_name(i, declstartpos)
-        char = rawdata[j:j + 1]
+        char: str = rawdata[j:j + 1]
         if char == r'' or name is None:
             return -1
         if char == r'>':
@@ -1405,7 +1399,7 @@ class ParserBase:
                 else:
                     return -1
                 while rawdata[j:j + 1].isspace():
-                    j = j + 1
+                    j += 1
                 if not rawdata[j:]:  # End of buffer, incomplete
                     return -1
             else:
@@ -1439,7 +1433,7 @@ class ParserBase:
         name, j = self._scan_name(i, declstartpos)
         if j < 0 or name is None:
             return j
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         while 1:
             char = rawdata[j:j + 1]
             if not char:  # End of buffer; incomplete
@@ -1458,7 +1452,7 @@ class ParserBase:
 
     def _parse_doctype_entity(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Scan past <!ENTITY declarations"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 1] == r'%':
             j = i + 1
             while 1:
@@ -1466,7 +1460,7 @@ class ParserBase:
                 if not char:
                     return -1
                 if char.isspace():
-                    j = j + 1
+                    j += 1
                 else:
                     break
         else:
@@ -1493,8 +1487,8 @@ class ParserBase:
 
     def _scan_name(self, i: int, declstartpos: int) -> tuple:
         """Scan a name token, the new position, and the token, or return -1 if the end of the buffer is reached"""
-        rawdata = self.rawdata
-        length = len(rawdata)
+        rawdata: str = self.rawdata
+        length: int = len(rawdata)
         if i == length:
             return (None, -1)
         _match = DECLNAME_MATCH(rawdata, i)
@@ -1571,9 +1565,9 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def goahead(self, end: bool) -> None:  # noqa: C901  # pylint: disable=R0912,R0915
         """Handle data as far as reasonable. May leave state and data to be processed by a subsequent call. If `end` is true, force handling all data as if followed by EOF marker"""
-        rawdata = self.rawdata
-        i = 0
-        length = len(rawdata)
+        rawdata: str = self.rawdata
+        i: int = 0
+        length: int = len(rawdata)
         while i < length:
             if self.convert_charrefs and not self.cdata_elem:
                 j = rawdata.find(r'<', i)
@@ -1637,7 +1631,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                     self.handle_charref(name)
                     k = _match.end()
                     if not startswith(r';', k - 1):
-                        k = k - 1
+                        k -= 1
                     i = self.updatepos(i, k)
                     continue
                 else:
@@ -1652,7 +1646,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                     self.handle_entityref(name)
                     k = _match.end()
                     if not startswith(r';', k - 1):
-                        k = k - 1
+                        k -= 1
                     i = self.updatepos(i, k)
                     continue
                 _match = INCOMPLETE.match(rawdata, i)
@@ -1680,7 +1674,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def parse_html_declaration(self, i: int) -> int:
         """Parse HTML declarations; return length or -1 (if not terminated)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'<!':
             raise Exception(r'Unexpected call to parse_html_declaration()')
         elif rawdata[i:i + 4] == r'<!--':  # This case is handled in goahead()
@@ -1697,10 +1691,10 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def parse_bogus_comment(self, i: int, report: int = 1) -> int:
         """Parse bogus comment; return length or -1 (if not terminated)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 2] not in {r'<!', r'</'}:
             raise Exception(r'Unexpected call to parse_comment()')
-        pos = rawdata.find(r'>', i + 2)
+        pos: int = rawdata.find(r'>', i + 2)
         if pos == -1:
             return -1
         if report:
@@ -1709,13 +1703,13 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def parse_pi(self, i: int) -> int:
         """Parse processing instruction; return end or -1 (if not terminated)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'<?':
             raise Exception(r'Unexpected call to parse_pi()')
         match = PICLOSE.search(rawdata, i + 2)
         if not match:
             return -1
-        j = match.start()
+        j: int = match.start()
         self.handle_pi(rawdata[i + 2: j])
         j = match.end()
         return j
@@ -1726,7 +1720,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         endpos = self.check_for_whole_start_tag(i)
         if endpos < 0:
             return endpos
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         self.__starttag_text = rawdata[i:endpos]
         # Parse the data between i+1 and j into a tag and attrs
         attrs: list = []
@@ -1758,7 +1752,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                 attrs.append((attrname.lower(), attrvalue))
             attrs.sort(key=attr_sort)
             k = _match.end()
-        end = rawdata[k:endpos].strip()
+        end: str = rawdata[k:endpos].strip()
         if self.in_xml and tag in SVG_MAY_CLOSE_TAGS and end == r'/>':
             self.handle_startendtag(tag, attrs, 1)
         elif tag == r'dc:title' and end == r'/>':
@@ -1784,7 +1778,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def check_for_whole_start_tag(self, i: int) -> int:
         """Check to see if starttag is complete; return end or -1 (if incomplete)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         _match = LOCATESTARTTAGEND_TOLERANT.match(rawdata, i)
         if _match:
             j = _match.end()
@@ -1810,7 +1804,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def parse_endtag(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Parse endtag; return end or -1 (if incomplete)"""
-        rawdata = self.rawdata
+        rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'</':
             raise Exception(r'Unexpected call to parse_endtag')
         match = ENDENDTAG.search(rawdata, i + 1)  # >
@@ -2071,10 +2065,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
 
     def _has_pre(self, attrs: list) -> bool:
         """Test if the tag uses the `pre` attribute"""
-        for k in attrs:
-            if k[0] == self.pre_attr:
-                return True
-        return False
+        return any((k[0] == self.pre_attr for k in attrs))
 
     def in_tag(self, *tags: str) -> str:
         """Test if the given tags are within the tag stack"""
@@ -2106,7 +2097,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             return r''
         if not self._doctype_inserted and self.doc_type == FILETYPE_SVG and tag == r'svg':
             self.insert_doctype_tag()
-        elif self.doc_type == FILETYPE_SVG and tag == r'stop' and not isintuplelist(attrs, r'offset'):
+        elif self.doc_type == FILETYPE_SVG and tag == r'stop' and not any((r'offset' == _test[0] for _test in attrs)):
             attrs.append((r'offset', r'0'))
         elif self.doc_type == FILETYPE_SVG:
             tag = repair_svg_tag(tag)
@@ -2160,8 +2151,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
 
     def _close_tags_up_to(self, tag: str) -> int:
         """Close previously opened tags up to the specified tag"""
-        num_pres = 0
-        i = 0
+        num_pres: int = 0
+        i: int = 0
         for i, _tag in enumerate(self._tag_stack):
             if _tag[1]:
                 num_pres += 1
@@ -2234,8 +2225,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
     def handle_endtag(self, tag: str) -> None:  # noqa: C901  # pylint: disable=R0912
         """Process end tags"""
         if tag == r'a':  # </a> and <p>
-            contains_p = False
-            i = 0
+            contains_p: bool = False
+            i: int = 0
             for i, _tag in enumerate(self._tag_stack):
                 if _tag[0] == r'p':
                     contains_p = True
@@ -2291,9 +2282,9 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
     def handle_startendtag(self, tag: str, attrs: list, closing_type: int = -1) -> None:
         """Process XHTML-style empty tags (such as `<br/>`)"""
         self._after_doctype = False
-        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):  # pylint: disable=R1705
+        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
             return
-        elif not self.keep_pre:
+        if not self.keep_pre:
             attrs = [(k, v) for k, v in attrs if k != r'pre']
         if closing_type == 1:  # Self-closing tag
             self._data_buffer.append(self.build_tag(tag, attrs, True))
@@ -2305,15 +2296,15 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._after_doctype = False
         if not self._doctype_inserted:
             self.insert_doctype_tag()  # Insert DOCTYPE tag if it is missing
-        if self.remove_metadata > 0 and tag == r'metadata':  # pylint: disable=R1705
+        if self.remove_metadata > 0 and tag == r'metadata':
             self._in_metadata = True
             return
-        elif self.doc_type == FILETYPE_SVG and self.remove_metadata > 0 and tag in USELESS_SVG_TAGS:
+        if self.doc_type == FILETYPE_SVG and self.remove_metadata > 0 and tag in USELESS_SVG_TAGS:
             self._in_metadata = True
             return
-        elif is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
+        if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
             return
-        elif self.doc_type == FILETYPE_HTML:  # HTML <head> and <title>
+        if self.doc_type == FILETYPE_HTML:  # HTML <head> and <title>
             if tag == r'head':
                 self._in_head = True
             elif self._in_head and tag == r'title':
@@ -2323,7 +2314,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             in_tag: str = self.in_tag(*open_tags)  # type: ignore
             if in_tag and (tag in closed_by_tags or r'*' in closed_by_tags):  # type: ignore
                 self._in_pre_tag -= self._close_tags_up_to(in_tag[0])
-        start_pre = False
+        start_pre: bool = False
         if self.should_preserve_ws(tag, attrs):
             self._in_pre_tag += 1
             start_pre = True

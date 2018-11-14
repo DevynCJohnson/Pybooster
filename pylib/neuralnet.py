@@ -32,7 +32,10 @@ net.train()  # Returns (correctness, iterations)
 
 output = net.run([1, 0])  # Execute neuralnet
 
-net.writedump('xor_code.py')  # Save the generated code
+net.writedump(r'xor_code.py')  # Save the generated code
+net.neurocode2cfile(r'neural_xor.c', r'neural_xor')  # Save the generated code as plain C code
+net.neurocode2javafile(r'neural_xor.java', r'neural_xor')  # Save the generated code as plain Java code
+net.neurocode2pythonfile(r'neural_xor.py', r'neural_xor')  # Save the generated code as plain Python code
 @endcode
 
 @section LICENSE
@@ -61,7 +64,7 @@ from base64 import b64decode, b64encode
 from math import exp, floor
 from pickle import dumps, loads  # nosec
 from random import Random
-from typing import Any, Dict, Generator, List
+from typing import Any, Dict, Generator, List, Tuple
 from zlib import compress, decompress
 
 
@@ -83,8 +86,8 @@ def flatten(_lst: list) -> Generator[list, None, None]:
 
 def _indent(txt: str, chars: int) -> str:
     """Indent the given code"""
-    result = r''
-    d = r' ' * chars
+    result: str = r''
+    d: str = r' ' * chars
     for line in txt.split('\n'):
         result += (d + line + '\n')
     return result
@@ -102,18 +105,15 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         @param[in] rate Learning rate (float less than 1.0)
         """
         # Setup input data
-        input_size = len(data[0][0])
-        output_size = len(data[0][1])
-        if not layers:
-            self.hidden_layers = [max(3, int(floor(input_size / 2)))]
-        else:
-            self.hidden_layers = layers
+        input_size: int = len(data[0][0])
+        output_size: int = len(data[0][1])
+        self.hidden_layers = [max(3, int(floor(input_size / 2)))] if not layers else layers
         self.sizes: List[Any] = list(flatten([input_size, self.hidden_layers, output_size]))
-        self.iterations = iterations
+        self.iterations: int = iterations
         self.rate: float = rate if rate < 1.0 else 0.4
-        self.io_rules = data
-        self.io_rules_len = len(data)
-        self.outputlayer = len(self.sizes) - 1
+        self.io_rules: list = data
+        self.io_rules_len: int = len(data)
+        self.outputlayer: int = len(self.sizes) - 1
         neural_rand = Random()
         # Training State
         self.deltas: List[Any] = [[]] * (self.outputlayer + 1)
@@ -136,10 +136,10 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                     self.weights[layer][node] = [(neural_rand.random() * 0.4) - 0.2 for j in range(_prev_size)]
                     self.changes[layer][node] = [0] * _prev_size
 
-    def train(self) -> tuple:  # noqa: C901
+    def train(self) -> Tuple[float, int]:  # noqa: C901
         """Neurocode training (core function)"""
-        error = 1.0
-        used_iterations = 0
+        error: float = 1.0
+        used_iterations: int = 0
         for i in range(self.iterations):
             used_iterations = i
             if error <= 0.0001:  # Error Threshold
@@ -149,59 +149,58 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                 self.run(d[0])
                 self._calculate_deltas(d[1])
                 # Adjust Weights
-                for layer in range(1, self.outputlayer + 1):
-                    incoming = self.outputs[layer - 1]
-                    for node in range(self.sizes[layer]):
-                        delta = self.deltas[layer][node]
+                for _layer in range(1, self.outputlayer + 1):
+                    incoming = self.outputs[_layer - 1]
+                    for _node in range(self.sizes[_layer]):
+                        delta = self.deltas[_layer][_node]
                         for k in range(len(incoming)):
-                            change = self.changes[layer][node][k]
-                            change = (self.rate * delta * incoming[k]) + (0.1 * change)  # 0.1 = momentum
-                            self.changes[layer][node][k] = change
-                            self.weights[layer][node][k] = change + self.weights[layer][node][k]
-                        self.biases[layer][node] = self.biases[layer][node] + (self.rate * delta)
+                            change = (self.rate * delta * incoming[k]) + (0.1 * self.changes[_layer][_node][k])  # 0.1 = momentum
+                            self.changes[_layer][_node][k] = change
+                            self.weights[_layer][_node][k] = change + self.weights[_layer][_node][k]
+                        self.biases[_layer][_node] = self.biases[_layer][_node] + (self.rate * delta)
                 _errsum = 0.0
                 for err in self.errors[self.outputlayer]:
                     _errsum += err ** 2.0
                 _sum += _errsum / len(self.errors[self.outputlayer])
             error = _sum / self.io_rules_len
-        return (error, used_iterations)  # (float, int)
+        return (error, used_iterations)
 
     def run(self, _input: List[Any]) -> list:
         """Forward Propagation; Execute neuralnet"""
         output = self.outputs[0] = _input  # Set output state of input layer
-        for layer in range(1, self.outputlayer + 1):
-            for node in range(self.sizes[layer]):
-                weights = self.weights[layer][node]
-                _sum = self.biases[layer][node]
+        for _layer in range(1, self.outputlayer + 1):
+            for _node in range(self.sizes[_layer]):
+                weights = self.weights[_layer][_node]
+                _sum = self.biases[_layer][_node]
                 for k in range(len(weights)):
                     _sum += weights[k] * _input[k]
-                self.outputs[layer][node] = 1 / (1 + exp(-_sum))
-            _input = self.outputs[layer]
+                self.outputs[_layer][_node] = 1.0 / (1.0 + exp(-_sum))
+            _input = self.outputs[_layer]
             output = _input
         return output
 
     def _calculate_deltas(self, target: list) -> None:
         """Backward Propagation"""
-        layer = self.outputlayer
+        layer: int = self.outputlayer
         while layer >= 0:
             for node in range(self.sizes[layer]):
                 output = self.outputs[layer][node]
-                error = 0.0
                 if layer == self.outputlayer:
                     error = target[node] - output
                 else:
                     deltas = self.deltas[layer + 1]
+                    error = 0.0
                     for k in range(len(deltas)):
-                        error = error + (deltas[k] * self.weights[layer + 1][k][node])
+                        error += (deltas[k] * self.weights[layer + 1][k][node])
                 self.errors[layer][node] = error
                 self.deltas[layer][node] = (error * output) * (1 - output)
             layer -= 1
 
     def bestof(self, generations: int = 16) -> bytes:
         """Return the best neuralnet from the given amount produced as a byte string"""
-        rounds = generations
-        best_result = 1.0  # Store the best error-rate
-        best_neuralnet = b''
+        rounds: int = generations
+        best_result: float = 1.0  # Store the best error-rate
+        best_neuralnet: bytes = b''
         while rounds != 0:
             result = self.train()
             if result[0] < best_result:
@@ -241,7 +240,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def to_python_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:
         """Convert the neural-network to Python code"""
-        fn = r'def {fnname}(i):\n'.format(fnname=fnname)
+        fn: str = r'def {fnname}(i):\n'.format(fnname=fnname)
         for _layer in range(1, self.outputlayer + 1):
             fn += '    o = [\n' if _layer < self.outputlayer else '    return [\n'
             size = self.sizes[_layer]
@@ -250,7 +249,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                 length = len(self.weights[_layer][n])
                 for k in range(length):
                     w = self.weights[_layer][n][k]
-                    term = term + (r'-' if w > 0 else r'+') + str(abs(w)) + r'*i[' + str(k) + r']'
+                    term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*i[' + str(k) + r']'
                 fn += r'        1 / (1 + math.exp(' + term + r'))' + (',\n' if n != size - 1 else '\n')
             fn += '    ]\n'
             if _layer != self.outputlayer:
@@ -259,7 +258,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def to_java_method(self, fnname: str = r'nn_run', static: bool = False, scope: str = r'protected', indent: int = 4) -> str:
         """Convert the neural-network to Java code"""
-        fn = scope + (r' static ' if static else r' ') + r'double[] {fnname}(double[] i)'.format(fnname=fnname) + '{\n'
+        fn: str = scope + (r' static ' if static else r' ') + r'double[] {fnname}(double[] i)'.format(fnname=fnname) + '{\n'
         fn += '    double[] o;\n'
         for _layer in range(1, self.outputlayer + 1):
             fn += '    o = new double[]{\n' if _layer < self.outputlayer else '    return new double[]{\n'
@@ -284,17 +283,15 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         for k in range(self.sizes[0]):
             lterms.append(r'o0_' + str(k))
             terms[lterms[-1]] = r'i[' + str(k) + r']'
-        oterms = {}
+        oterms: dict = {}
         for _layer in range(1, self.outputlayer + 1):
-            size = self.sizes[_layer]
-            for n in range(size):
+            for n in range(self.sizes[_layer]):
                 term = str(-self.biases[_layer][n])
-                length = len(self.weights[_layer][n])
-                for k in range(length):
+                for k in range(len(self.weights[_layer][n])):
                     w = self.weights[_layer][n][k]
                     term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*o' + str(_layer - 1) + r'_' + str(k)
                 del w
-                v = r'(1 / (1 + exp(' + term + r')))'
+                v = r'(1.0 / (1.0 + exp(' + term + r')))'
                 for _str in lterms:
                     v = v.replace(_str, terms[_str])
                 lterms.append(r'o' + str(_layer) + r'_' + str(n))
@@ -302,7 +299,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                 if _layer == self.outputlayer:
                     oterms[r'o' + str(_layer) + r'_' + str(n)] = r'o[' + str(n) + r']'
         del k, lterms
-        fn = r'void {fnname}(double *i, double *o)'.format(fnname=fnname) + '{\n'
+        fn: str = r'void {fnname}(double* i, double* o)'.format(fnname=fnname) + '{\n'
         for _str, v in oterms.items():
             fn += r'    ' + v + r' = ' + terms[_str] + ';\n'
         fn += '}\n'

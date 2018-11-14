@@ -414,7 +414,7 @@ def ismodloaded(_module: str) -> bool:
 
 def isfrozen() -> bool:
     """Test if the modules are built into the interpreter (As seen in py2exe)"""
-    _tmp = None
+    _tmp: object = None
     try:
         _tmp = __import__(r'sys')
         return hasattr(_tmp, r'frozen')
@@ -426,6 +426,7 @@ def isfrozen() -> bool:
 
 def ismodfrozen(module_name: str) -> bool:
     """Test if the specified module is frozen (built into the interpreter)"""
+    _tmp: object = None
     try:
         _tmp = __import__(module_name)
         return hasattr(_tmp, r'frozen')
@@ -458,10 +459,7 @@ def words_not_in_str(_text: str, _wordlist: list) -> bool:
     >>> words_not_in_str('This is a test.', ['test'])
     False
     """
-    for _word in _wordlist:
-        if _word not in _text:
-            return True
-    return False
+    return any((_word not in _text for _word in _wordlist))
 
 
 def isexe(fpath: str) -> bool:
@@ -531,7 +529,4 @@ def isintuplelist(_tuple_list: list, _val: str) -> bool:
     >>> isintuplelist([('test', 'value'), (1, 2), ('found', 'string')], 'found')
     True
     """
-    for _test in _tuple_list:
-        if _val == _test[0]:
-            return True
-    return False
+    return any((_val == _test[0] for _test in _tuple_list))

@@ -142,8 +142,5 @@ def get_checksums(_data: object) -> dict:
     >>> get_checksums(br'This is a test.')
     {'CRC32': 94035228, 'CRC16': 50568}
     """
-    _out: dict = {r'CRC32': 0, r'CRC16': 0}
     _bytedata: bytes = bytes(str(_data), encoding=r'utf-8')
-    _out[r'CRC32'] = crc32(_bytedata)
-    _out[r'CRC16'] = crc_hqx(_bytedata, 0)
-    return _out
+    return {r'CRC32': crc32(_bytedata), r'CRC16': crc_hqx(_bytedata, 0)}

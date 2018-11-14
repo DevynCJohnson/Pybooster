@@ -204,7 +204,7 @@ def which(program: str) -> str:
     """
     if path.split(program)[0] and path.isfile(program) and access(program, X_OK):
         return program
-    envpath = environ[r'PATH'].split(pathsep)
+    envpath: list = environ[r'PATH'].split(pathsep)
     for filepath in envpath:
         exe_file = path.join(filepath.strip(r'"'), program)
         if path.isfile(exe_file) and access(exe_file, X_OK):
@@ -216,7 +216,7 @@ def is_program_aval(program: str) -> bool:
     """Return `True` if the path of the specified application exists, otherwise, return `False`"""
     if path.split(program)[0] and path.isfile(program) and access(program, X_OK):
         return True
-    envpath = environ[r'PATH'].split(pathsep)
+    envpath: list = environ[r'PATH'].split(pathsep)
     for filepath in envpath:
         exe_file = path.join(filepath.strip(r'"'), program)
         if path.isfile(exe_file) and access(exe_file, X_OK):

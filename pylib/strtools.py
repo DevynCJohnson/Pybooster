@@ -247,11 +247,7 @@ def camelcase2pascalcase(string: str) -> str:
     >>> camelcase2pascalcase('testString anotherString thirdSymbol')
     'TestString AnotherString ThirdSymbol'
     """
-    _strlist: list = string.split(r' ')
-    _out: list = []
-    for _word in _strlist:
-        _out.append(_word[0].upper() + _word[1:])
-    return r' '.join(_out)
+    return r' '.join([_word[0].upper() + _word[1:] for _word in string.split(r' ')])
 
 
 def camelcase2snakecase(string: str) -> str:
@@ -282,11 +278,7 @@ def pascalcase2camelcase(string: str) -> str:
     >>> pascalcase2camelcase('TestString AnotherString ThirdSymbol')
     'testString anotherString thirdSymbol'
     """
-    _strlist: list = string.split(r' ')
-    _out: list = []
-    for _word in _strlist:
-        _out.append(_word[0].lower() + _word[1:])
-    return r' '.join(_out)
+    return r' '.join([_word[0].lower() + _word[1:] for _word in string.split(r' ')])
 
 
 def pascalcase2snakecase(string: str) -> str:
@@ -334,9 +326,9 @@ def snakecase2pascalcase(string: str) -> str:
     'TestString AnotherString ThirdSymbol'
     """
     split_string: List[str] = string.split(r'_')
-    string = split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
-    if r' ' in string:
-        split_string = string.split(r' ')
+    _string: str = split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
+    if r' ' in _string:
+        split_string = _string.split(r' ')
         return split_string[0] + r' ' + r' '.join([_str[0].upper() + _str[1:] for _str in split_string[1:]])
     return split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
 
@@ -583,11 +575,7 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     if not isinstance(_obj, str):
         return r''
     if _strength >= 3:  # Only keep ASCII letters and space
-        _out: str = r''
-        for i in _obj:
-            if i.isalpha() or i == r' ':
-                _out += i
-        return _out
+        return r''.join([i for i in _obj if i.isalpha() or i == r' '])
     _obj = _obj.replace(r'{', r'').replace(r'}', r'').replace('\\', r'')
     _obj = rmcurlyquotes(rmcurlycommas(_obj))  # Curly Quotes and Commas
     if not _strength:  # _strength == 0
@@ -1048,20 +1036,16 @@ def noescutf8hex(_hex: str) -> str:
     if r'\x' in _hex and (len(_hex) % 4) is 0:
         _utf8_strict = '.decode(\'utf8\', \'strict\')'
         if _hex.count('\\') == 3:
-            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hexls))
+            return literal_eval(_eval_str.format(_hex.split(r'\x')[1:]))
         if _hex.count('\\') == 2:
-            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hexls))
+            return literal_eval(_eval_str.format(_hex.split(r'\x')[1:]))
         if _hex.count('\\') == 4:
-            _hexls = _hex.split(r'\x')[1:]
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\\x{0[3]}\'' + _utf8_strict
-            return literal_eval(_eval_str.format(_hexls))
+            return literal_eval(_eval_str.format(_hex.split(r'\x')[1:]))
         if _hex.count('\\') == 1:
-            _int = int(_hex.replace(r'\x', r''), 16)
-            _hex = hex(_int).replace(r'0x', r'')[:].zfill(2)
+            _hex = hex(int(_hex.replace(r'\x', r''), 16)).replace(r'0x', r'')[:].zfill(2)
             return literal_eval('\'\\x{0}\''.format(_hex))
     if isinstance(_hex, str) and len(_hex) is 1:
         return _hex
@@ -1307,7 +1291,7 @@ def num2char(_str: str) -> str:
     if r'%' in _str:
         _str = HEXESCURI.sub(r'0x\1', _str)
     _data = rgxsplit(r'\\u|\\U|\\x|0x|U\+|U(?!\+)', _str)
-    _out = []
+    _out: list = []
     for _char in _data:
         _postpend = r''
         _null = r''
@@ -1455,7 +1439,7 @@ def char2num(_char: str, _upcase: bool = False) -> str:
     """
     if not _char:
         raise ValueError(r'Invalid data passed to char2num()!')
-    _out = r''
+    _out: str = r''
     for i in _char:
         _tmp = hex(ord(i)).replace(r'0x', r'')
         if len(_tmp) > 8:
@@ -1604,9 +1588,8 @@ def hexstr2bytearray(_hex: str) -> bytearray:
     >>> hexstr2bytearray('1f9e6')
     bytearray(b'\x01\xf9\xe6')
     """
-    if len(_hex) % 2 != 0:
-        _hex = r'0' + _hex
-    return bytearray.fromhex(_hex)
+    _tmp: str = r'0' + _hex if len(_hex) % 2 != 0 else _hex
+    return bytearray.fromhex(_tmp)
 
 
 # BUBBLE TEXT #
@@ -1620,7 +1603,7 @@ def text2bubble(_str: str) -> str:
     >>> text2bubble('Testing various characters: €, *, Ω, ᾲ, and ⛽.')
     'Ⓣⓔⓢⓣⓘⓝⓖ ⓥⓐⓡⓘⓞⓤⓢ ⓒⓗⓐⓡⓐⓒⓣⓔⓡⓢ:⃝ €⃝,⃝ ⊛,⃝ Ω⃝,⃝ ᾲ⃝,⃝ ⓐⓝⓓ ⛽⃝⊙'
     """
-    _str2 = _str.replace('\u202f', r'').strip()
+    _str2: str = _str.replace('\u202f', r'').strip()
     return r''.join(i + r'⃝' if i not in PLAIN_TEXT else i for i in _str2).translate(TRANS_TEXT2BUBBLE)
 
 
@@ -1650,7 +1633,7 @@ def text2square(_str: str, square_spaces: bool = False) -> str:
     >>> text2square('Testing various characters: €, *, Ω, ᾲ, and ⛽.')
     'T⃞e⃞s⃞t⃞i⃞n⃞g⃞  v⃞a⃞r⃞i⃞o⃞u⃞s⃞  c⃞h⃞a⃞r⃞a⃞c⃞t⃞e⃞r⃞s⃞:⃞  €⃞,⃞  *⃞,⃞  Ω⃞,⃞  ᾲ⃞,⃞  a⃞n⃞d⃞  ⛽⃞.⃞'
     """
-    _str2 = _str.replace('\u202f', r'').strip()
+    _str2: str = _str.replace('\u202f', r'').strip()
     return r''.join(i if i == r' ' and not square_spaces else i + '\u20de' for i in _str2)
 
 

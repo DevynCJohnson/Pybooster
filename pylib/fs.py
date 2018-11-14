@@ -89,7 +89,6 @@ __all__: list = [
     r'firstchars',
     # READ/GET DATA #
     r'getdata',
-    r'readpipe',
     r'getstdin',
     # WRITE/SEND DATA #
     r'writedata',
@@ -197,9 +196,7 @@ def getfileext(_filename: str) -> str:
     >>> getfileext('/bin/sh')
     ''
     """
-    if r'.' not in _filename:
-        return r''
-    return _filename.split(r'.')[-1]
+    return r'' if r'.' not in _filename else _filename.split(r'.')[-1]
 
 
 def getfilename(_pathname: str) -> str:
@@ -269,11 +266,7 @@ def getfilepathextlist(_pathname: str) -> list:
     >>> getfilepathextlist('/bin/sh')
     ['/bin', 'sh', '']
     """
-    _out: List[str] = []
-    _out.append(path_split(_pathname)[0])
-    _out.append(path_splitext(path_split(_pathname)[1])[0])
-    _out.append(path_splitext(path_split(_pathname)[1])[1])
-    return _out
+    return [path_split(_pathname)[0], path_splitext(path_split(_pathname)[1])[0], path_splitext(path_split(_pathname)[1])[1]]
 
 
 # PATH MANIPULATIONS #
@@ -308,24 +301,20 @@ def expandhome(_pathname: str) -> str:
 
 def getfile(_filename: str) -> str:
     """Get file contents and return as a str"""
-    _out: list = []
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
-        _out.append(r''.join(_file.readlines()).strip())
-    return r''.join(_out)
+        return r''.join(_file.readlines()).strip()
 
 
 def getfilehexbytes(_filename: str) -> bytes:
     """Get file contents as bytes in hex"""
     with open(_filename, mode=r'rb', encoding=r'utf-8') as _file:
-        _hex = hexlify(_file.read())
-    return _hex
+        return hexlify(_file.read())
 
 
 def getfilehexbytesstr(_filename: str) -> str:
     """Get file contents as a str of bytes in hex"""
     with open(_filename, mode=r'rb') as _file:
-        _hex = hexlify(_file.read())
-    return str(_hex, r'utf-8')
+        return str(hexlify(_file.read()), r'utf-8')
 
 
 def getfilehexbytes_spaced(_filename: str) -> str:
@@ -342,15 +331,13 @@ def getfilehexbytes_spaced(_filename: str) -> str:
 def getfilebinbytes(_filename: str) -> str:
     """Get file contents and return binary as str"""
     with open(_filename, mode=r'rb') as _file:
-        _bin = bin(int(hexlify(_file.read()), 16))[2:].zfill(8)
-    return _bin
+        return bin(int(hexlify(_file.read()), 16))[2:].zfill(8)
 
 
 def getfilebinwords(_filename: str) -> bytes:
     """Get file contents and return a byte-str of binary words"""
     with open(_filename, mode=r'rb') as _file:
-        _bin = _file.read()
-    return _bin
+        return _file.read()
 
 
 def getfilehexstr(_filename: str) -> str:
@@ -369,18 +356,14 @@ def getfilehexstr2(_filename: str) -> str:
 
 def getfileraw_list(_filename: str) -> list:
     """Get file contents as a list of byte-objects"""
-    _out: list = []
     with open(_filename, mode=r'rb') as _file:
-        _out = _file.readlines()
-    return _out
+        return _file.readlines()
 
 
 def getfile_list(_filename: str) -> list:
     """Get file contents and return as a list"""
-    _out: list = []
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
-        _out = _file.readlines()
-    return _out
+        return _file.readlines()
 
 
 def getfiles(_filelist: list) -> str:
@@ -390,13 +373,11 @@ def getfiles(_filelist: list) -> str:
     Example Usage - getfiles1(['file0', 'file1', 'file2'])
     Output - 'file0 contents file1 contents file2 contents'
     """
-    _out = r''
+    _out: str = r''
     for _filepath in _filelist:
-        _data = []
         _filepath = expanduser(_filepath)
         with open(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
-            _data.append(r''.join(_file.readlines()).strip())
-        _out = _out + _data[0]
+            _out += r''.join(_file.readlines()).strip()
     return _out
 
 
@@ -409,9 +390,9 @@ def getfiles_list(*_pathnames: str) -> list:
     Example Usage - getfiles(['file0', 'file1', 'file2'])
     Output - ['file0 contents', 'file1 contents', 'file2 contents']
     """
-    _out = []
+    _out: list = []
     for _filepath in _pathnames:
-        _data = []
+        _data: list = []
         _filepath = expanduser(_filepath)
         with open(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
             _data.append(r''.join(_file.readlines()).strip())
@@ -426,8 +407,7 @@ def printfile(_filepath: str) -> None:
 
 def firstchars(_filepath: str, _numchars: int = 10) -> str:
     """Return the first x characters in a file"""
-    _getfilelines = r''.join(line.split(r':', 1)[0] for line in open(_filepath, mode=r'rt', encoding=r'utf-8'))
-    return r''.join(_getfilelines[:_numchars])
+    return r''.join(r''.join(line.split(r':', 1)[0] for line in open(_filepath, mode=r'rt', encoding=r'utf-8'))[:_numchars])
 
 
 # READ/GET DATA #
@@ -436,29 +416,17 @@ def firstchars(_filepath: str, _numchars: int = 10) -> str:
 def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
     """Get file/pipe contents and return as a str"""
     try:
-        _out: list = []
+        _out: str = r''
         if _filename:  # Input file specified
             ensurefileexists(_filename)
             with codec_opener(_filename, mode=r'r', encoding=_encoding, buffering=1) as _file:
-                _out.append(r''.join(_file.readlines()))
+                return r''.join(_file.readlines())
         else:  # Piping used
-            for _line in stdin.readlines():
-                _out.append(r''.join(_line))
-        return r''.join(_out)
+            return r''.join(stdin.readlines())
+        return _out
     except (LookupError, UnicodeError):
         stderr.write('Unable to determine and process data encoding!\n')
         raise SystemExit(1)
-
-
-def readpipe() -> str:
-    """Read from a pipe"""
-    while True:
-        _input: str = r''
-        _data = stdin.read(1)
-        while _data:
-            _input += _data
-            _data = stdin.read(1)
-        return str(_input)
 
 
 def getstdin() -> str:

@@ -1,3 +1,7 @@
+2018-11-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Miscellaneous optimizations & tweaks
+
 2018-11-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added Systemd.service template

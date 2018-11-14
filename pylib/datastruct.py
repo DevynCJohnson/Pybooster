@@ -100,8 +100,8 @@ __all__ = [
 # CONSTANTS #
 
 
-FALSE_VALUES: list = [r'0', r'off', r'false', r'no']
-TRUE_VALUES: list = [r'1', r'on', r'true', r'yes']
+FALSE_VALUES: set = {r'0', r'off', r'false', r'no'}
+TRUE_VALUES: set = {r'1', r'on', r'true', r'yes'}
 
 
 # CONFIG/INI #
@@ -198,8 +198,7 @@ def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequ
     ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
-            csvreader = DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)  # type: ignore
-            return [_row for _row in csvreader]
+            return [_row for _row in DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)]  # type: ignore
         return list(creader(_file, delimiter=_delimiter, quotechar=_quotechar))
 
 
@@ -210,8 +209,7 @@ def loadcsvstr(_csv: str, _retodict: bool = False, _fieldnames: Union[Sequence[s
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
     """
     if _retodict:
-        csvreader = DictReader(StringIO(_csv), fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)  # type: ignore
-        return [_row for _row in csvreader]
+        return [_row for _row in DictReader(StringIO(_csv), fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)]  # type: ignore
     return list(creader(StringIO(_csv), delimiter=_delimiter, quotechar=_quotechar))
 
 
@@ -238,11 +236,11 @@ def writedict2csv(_filename: str, _list: list, _fieldnames: Sequence[str], _dial
 def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = True) -> Union[dict, str]:
     """Open an JSON file given a pathname and return the object as a dict or str (if `_jsondata` is set to `False`)"""
     try:
-        _out: list = []
+        _out: str = r''
         ensurefileexists(_filename)
         with codec_opener(_filename, mode=r'rt', encoding=_encoding, buffering=1) as _file:
-            _out.append(r''.join(_file.readlines()))
-        return jloads(r''.join(_out)) if _jsondata else r''.join(_out)
+            _out = r''.join(_file.readlines())
+        return jloads(_out) if _jsondata else _out
     except JSONDecodeError:
         stderr.write('The JSON file is malformed!\n')
         raise SystemExit(1)
@@ -308,11 +306,9 @@ def writedict2tsv(_filename: str, _list: list, _fieldnames: list, _dialect: str 
 def openyamlfile(_filename: str, _encoding: str = r'utf-8') -> dict:
     """Open an YAML file given a pathname and return the object as a dict"""
     try:
-        _out: dict = {}
         ensurefileexists(_filename)
         with codec_opener(_filename, mode=r'rb', encoding=_encoding, buffering=1) as _file:
-            _out = yamlload(_file)  # nosec
-        return _out
+            return yamlload(_file)  # nosec
     except (MarkedYAMLError, YAMLError):
         stderr.write('The YAML file is malformed!\n')
         raise SystemExit(1)
@@ -431,9 +427,7 @@ def json2csv(_str: str) -> list:
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
     """
     _dict: Union[dict, list] = jloads(_str)
-    if isinstance(_dict, dict):
-        return [_dict[_key] for _key in _dict.keys()]
-    return _dict
+    return [_dict[_key] for _key in _dict.keys()] if isinstance(_dict, dict) else _dict
 
 
 def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quotechar: str = r'"') -> str:
@@ -444,7 +438,6 @@ def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quo
     """
     _dict: Union[dict, list] = jloads(_str)
     _buf = StringIO(r'')
-    _out: str = r''
     csvwriter = cwriter(_buf, dialect=_dialect, delimiter=_delimiter, quotechar=_quotechar, quoting=QUOTE_MINIMAL)
     if isinstance(_dict, dict):
         _tmpdict: list = [_dict[_key] for _key in _dict.keys()]
@@ -454,7 +447,7 @@ def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quo
     else:
         for _row in _dict:
             csvwriter.writerow(_row)
-    _out = _buf.getvalue()
+    _out: str = _buf.getvalue()
     _buf.close()
     return _out
 
