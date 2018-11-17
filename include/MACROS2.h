@@ -1992,7 +1992,9 @@ typedef int   gwchar_t;
 #   define __DEFINED_wchar_t   (1)
 #   define ____gwchar_t_defined   (1)
 #endif  // wchar_t
+#ifndef S_SPLINT_S
 _Static_assert(((SIZEOF_WCHAR_T == sizeof(wchar_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wchar_t` datatype!");
+#endif
 #define WCHAR   wchar_t
 /** Unicode character */
 #define UNICHAR   wchar_t
@@ -2008,7 +2010,9 @@ typedef unsigned int   wint_t;
 #   endif
 #   define __DEFINED_wint_t   (1)
 #endif  // wint_t
+#ifndef S_SPLINT_S
 _Static_assert(((SIZEOF_WINT_T == sizeof(wint_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wint_t` datatype!");
+#endif
 #define WINT   wint_t
 #ifndef WEOF
 /** Constant expression of type `wint_t` whose value does not correspond to any member of the extended character set; End-Of-File */
@@ -8104,7 +8108,7 @@ DECL_FUNC long double __floatscan(FILE* f, const int prec, const int pok);
 DECL_FUNC long double frexpl(const long double x, int* e);
 DECL_FUNC MATH_FUNC int isfinitel(const long double x);
 DECL_FUNC MATH_FUNC int signbitl(const long double x);
-DECL_FUNC long double strtox(const char*  restrict ptr, const char** endptr, const int prec);
+DECL_FUNC long double strtox(const char* restrict ptr, const char** endptr, const int prec);
 #   endif
 #endif  // DISABLE_FUNC_DECL
 

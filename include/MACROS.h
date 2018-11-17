@@ -116,14 +116,14 @@ along with this software.
 #define JFS_SUPER_MAGIC   0x3153464a
 /** Constant that identifies the `logfs` filesystem */
 #define LOGFS_MAGIC_U32   0xc97e8168U
-/** Constant that identifies the `lustre` filesystem */
+/** Constant that identifies the `Lustre` filesystem */
 #define LUSTRE_SUPER_MAGIC   0xbd00bd0
-/** Constants that identify the `minix2` filesystem */
+/** Constants that identify the `Minix2` filesystem */
 #define MINIX2_SUPER_MAGIC   0x2468
 #define MINIX2_SUPER_MAGIC2   0x2478
-/** Constants that identify the `minix3` filesystem */
+/** Constants that identify the `Minix3` filesystem */
 #define MINIX3_SUPER_MAGIC   0x4d5a
-/** Constants that identify the `minix` filesystem */
+/** Constants that identify the `Minix` filesystem */
 #define MINIX_SUPER_MAGIC   0x137f
 #define MINIX_SUPER_MAGIC2   0x138f
 /** Constant that identifies the `msdos` filesystem */
@@ -134,9 +134,9 @@ along with this software.
 #define NCP_SUPER_MAGIC   0x564c
 /** Constant that identifies the `nilfs` filesystem */
 #define NILFS_SUPER_MAGIC   0x3434
-/** Constant that identifies the `nfs` filesystem */
+/** Constant that identifies the `NFS` filesystem */
 #define NFS_SUPER_MAGIC   0x6969
-/** Constant that identifies the `ntfs` filesystem */
+/** Constant that identifies the `NTFS` filesystem */
 #define NTFS_SUPER_MAGIC   0x5346544e
 /** Constant that identifies the `openpromfs` filesystem */
 #define OPENPROM_SUPER_MAGIC   0x9fa1
@@ -152,7 +152,7 @@ along with this software.
 #define QNX6_SUPER_MAGIC   0x68191122
 /** Constant that identifies the `ramfs` filesystem */
 #define RAMFS_MAGIC   0x858458f6
-/** Constant that identifies the `reiser` filesystem */
+/** Constant that identifies the `Reiser` filesystem */
 #define REISERFS_SUPER_MAGIC   0x52654973
 #define REISERFS_SUPER_MAGIC_STRING   "ReIsErFs"
 #define REISER2FS_SUPER_MAGIC_STRING   "ReIsEr2Fs"
@@ -182,9 +182,9 @@ along with this software.
 #define SYSV4_SUPER_MAGIC   0x12ff7b5
 /** Constant that identifies the `tmpfs` filesystem */
 #define TMPFS_MAGIC   0x1021994
-/** Constant that identifies the `udf` filesystem */
+/** Constant that identifies the `UDF` filesystem */
 #define UDF_SUPER_MAGIC   0x15013346
-/** Constant that identify the `ufs` filesystem */
+/** Constant that identify the `UFS` filesystem */
 #define UFS_MAGIC   0x11954
 /** Byteswapped MAGIC */
 #define UFS_CIGAM   0x54190100
@@ -193,26 +193,37 @@ along with this software.
 #define USBDEVICE_SUPER_MAGIC   0x9fa2
 /** Constant that identifies the `9p` filesystem */
 #define V9FS_MAGIC   0x01021997
-/** Constant that identifies the `vxfs` filesystem */
+/** Constant that identifies the `VXFS` filesystem */
 #define VXFS_SUPER_MAGIC   0xa501fcf5
 /** Constant that identifies the `xenfs` filesystem */
 #define XENFS_SUPER_MAGIC   0xabba1974
-/** Constant that identifies the `xenix` filesystem */
+/** Constant that identifies the `Xenix` filesystem */
 #define XENIX_SUPER_MAGIC   0x12ff7b4
-/** Constant that identifies the `xfs` filesystem */
+/** Constant that identifies the `XFS` filesystem */
 #define XFS_SUPER_MAGIC   0x58465342
 /** Maximum link counts */
 #define COH_LINK_MAX   10000
+/** Maximum link counts for the `ext2` filesystem */
 #define EXT2_LINK_MAX   32000
+/** Maximum link counts for the `ext4` filesystem */
 #define EXT4_LINK_MAX   65000
+/** Maximum link counts for the `F2FS` filesystem */
 #define F2FS_LINK_MAX   32000
+/** Maximum link counts for the `Lustre` filesystem */
 #define LUSTRE_LINK_MAX   EXT4_LINK_MAX
+/** Maximum link counts for the `MINIX2` filesystem */
 #define MINIX2_LINK_MAX   65530
+/** Maximum link counts for the `MINIX` filesystem */
 #define MINIX_LINK_MAX   250
+/** Maximum link counts for the `Reiser` filesystem */
 #define REISERFS_LINK_MAX   64535
+/** Maximum link counts for the `sysV` filesystem */
 #define SYSV_LINK_MAX   126
+/** Maximum link counts for the `UFS` filesystem */
 #define UFS_LINK_MAX   EXT2_LINK_MAX
+/** Maximum link counts for the `Xenix` filesystem */
 #define XENIX_LINK_MAX   126
+/** Maximum link counts for the `XFS` filesystem */
 #define XFS_LINK_MAX   2147483647
 #define LINUX_LINK_MAX   127
 
@@ -444,15 +455,15 @@ typedef unsigned int __attribute__((__mode__(__HI__)))   UHItype;
 #define int_uhi_t   UHItype
 #define uint_hi_t   UHItype
 #define HAVE_UHI   1
-/** @typedef PSItype
-Partial Single Integer; 4 bytes (not all bits used) */
-#ifdef ARCHAVR  // Partial single integer
+#ifdef (ARCHAVR && (!defined(S_SPLINT_S)))  // Partial single integer
 #   define SUPPORTS_PSITYPE   1
 #   define SUPPORTS_UPSITYPE   1
+/** Partial Single Integer; 4 bytes (not all bits used) */
 typedef signed int __attribute__((__mode__(__PSI__)))   PSItype;
 #   define PSI   PSItype
 #   define int_psi_t   PSItype
 #   define HAVE_PSI   1
+/** Partial Single Unsigned Integer; 4 bytes (not all bits used) */
 typedef unsigned int __attribute__((__mode__(__PSI__)))   UPSItype;
 #   define UPSI   UPSItype
 #   define int_upsi_t   UPSItype
@@ -479,7 +490,7 @@ typedef unsigned int __attribute__((__mode__(__SI__)))   USItype;
 #define HAVE_UHW   1
 #define USWtype   USItype
 #define HAVE_USW   1
-#ifdef ARCHAVR  // Partial double integer
+#ifdef (ARCHAVR && (!defined(S_SPLINT_S)))  // Partial double integer
 #   define SUPPORTS_PDITYPE   1
 #   define SUPPORTS_UPDITYPE   1
 typedef signed int __attribute__((__mode__(__PDI__)))   PDItype;
@@ -514,7 +525,7 @@ typedef unsigned int __attribute__((__mode__(__DI__)))   UDItype;
 128-bit signed integer datatype (not all systems support int128_t) */
 /** @def uint128_t
 128-bit unsigned integer datatype (not all systems support uint128_t) */
-#if SUPPORTS_INT128
+#if (SUPPORTS_INT128 && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_TITYPE   1
 typedef signed int __attribute__((__mode__(__TI__)))   TItype;
 #   define TI   TItype
@@ -584,23 +595,20 @@ typedef unsigned int __attribute__((__mode__(__TI__)))   UTItype;
 #   define SUPPORTS_UTITYPE   0
 #   define HAVE_TI   0
 #   define HAVE_UTI   0
-#   if IS_LITTLE_ENDIAN
+#   if (IS_LITTLE_ENDIAN && (!defined(S_SPLINT_S)))
 typedef struct _int128_t_ { uint64_t lsw, int64_t msw }   int128_t;
 typedef struct _uint128_t_ { uint64_t lsw, msw }   uint128_t;
-#   elif IS_BIG_ENDIAN
+#   elif (IS_BIG_ENDIAN && (!defined(S_SPLINT_S)))
 typedef struct _int128_t_ { uint64_t msw, int64_t lsw }   int128_t;
 typedef struct _uint128_t_ { uint64_t msw, lsw }   uint128_t;
 #   endif
 #endif
-/** @def int256_t
-256-bit signed integer datatype (not all systems support int256_t) */
-/** @def uint256_t
-256-bit unsigned integer datatype (not all systems support uint256_t) */
-#if SUPPORTS_INT256
+#if (SUPPORTS_INT256 && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_OITYPE   1
 typedef signed int __attribute__((__mode__(__OI__)))   OItype;
 #   define OI   OItype
 #   define int_oi_t   OItype
+/** 256-bit signed integer datatype (not all systems support int256_t) */
 #   define int256_t   OItype
 #   define HAVE_OI   1
 #   ifndef __int256
@@ -639,6 +647,7 @@ typedef unsigned int __attribute__((__mode__(__OI__)))   UOItype;
 #   define UOI   UOItype
 #   define int_uoi_t   UOItype
 #   define uint_oi_t   UOItype
+/** 256-bit unsigned integer datatype (not all systems support uint256_t) */
 #   define uint256_t   UOItype
 #   define U_256   UOItype
 #   define HAVE_UOI   1
@@ -679,15 +688,12 @@ typedef unsigned int __attribute__((__mode__(__OI__)))   UOItype;
 #   define HAVE_OI   0
 #   define HAVE_UOI   0
 #endif
-/** @def int512_t
-512-bit signed integer datatype (not all systems support int512_t) */
-/** @def uint512_t
-512-bit unsigned integer datatype (not all systems support uint512_t) */
-#if SUPPORTS_INT512
+#if (SUPPORTS_INT512 && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_XITYPE   1
 typedef signed int __attribute__((__mode__(__XI__)))   XItype;
 #   define XI   XItype
 #   define int_xi_t   XItype
+/** 512-bit signed integer datatype (not all systems support int512_t) */
 #   define int512_t   XItype
 #   define HAVE_XI   1
 #   ifndef __int512
@@ -726,6 +732,7 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 #   define UXI   UXItype
 #   define int_uxi_t   UXItype
 #   define uint_xi_t   UXItype
+/** 512-bit unsigned integer datatype (not all systems support uint512_t) */
 #   define uint512_t   UXItype
 #   define U_512   UXItype
 #   define HAVE_UXI   1
@@ -770,10 +777,9 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 
 // FLOAT-POINT MODES
 
-/** @typedef QFtype
-8-bit quarter-precision float-point datatype */
-#if (defined(ARCHAVR) || SUPPORTS_FLOAT8)
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT8) && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_QFTYPE   1
+/** 8-bit quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #   define QF   QFtype
 #   define __float8   QFtype
@@ -788,10 +794,9 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #   define SUPPORTS_QFTYPE   0
 #   define HAVE_QF   0
 #endif
-/** @typedef HFtype
-16-bit half-precision float-point datatype */
-#if (defined(ARCHAVR) || SUPPORTS_FLOAT16)
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_HFTYPE   1
+/** 16-bit half-precision float-point datatype */
 typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #   define HF   HFtype
 #   ifndef fp16
@@ -809,10 +814,9 @@ typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #   define SUPPORTS_HFTYPE   0
 #   define HAVE_HF   0
 #endif
-/** @typedef TQFtype
-24-bit three-quarter-precision float-point datatype */
-#if (defined(ARCHAVR) || SUPPORTS_FLOAT24)
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT24) && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_TQFTYPE   1
+/** 24-bit three-quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__TQF__)))   TQFtype;
 #   define TQF   TQFtype
 #   define float24   TQFtype
@@ -864,7 +868,7 @@ typedef float __attribute__((__mode__(__DF__)))   DFtype;
 #   define _LONG_DOUBLE   double
 #endif
 #define HAVE_DF   1
-#if LDBL_EQ_XFtype
+#if (LDBL_EQ_XFtype && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_XFTYPE   1
 typedef float __attribute__((__mode__(__XF__)))   XFtype;
 #   define HAVE_XF   1
@@ -882,10 +886,9 @@ typedef float __attribute__((__mode__(__XF__)))   XFtype;
 #   define float96_t   __float96
 #   define extended96   __float96
 #endif
-/** @typedef TFtype
-Tetra-precision float-point */
-#if SUPPORTS_FLOAT128
+#if (SUPPORTS_FLOAT128 && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_TFTYPE   1
+/** Tetra-precision float-point */
 typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __float128 { uint8_t align16 x[16]; }   TFtype;
 #   define HAVE_TF   1
 #   define __float128   TFtype
@@ -912,18 +915,15 @@ typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __f
 
 // DECIMAL FLOAT-POINT MODES
 
-/** @typedef SDtype
-_Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
-/** @typedef DDtype
-_Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
-#if SUPPORTS_DECIMAL_FLOATS
+
+#if (SUPPORTS_DECIMAL_FLOATS && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_SDTYPE   1
+/** _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 typedef float __attribute__((__mode__(__SD__)))   SDtype;
 #   define SD   SDtype
 #   define HAVE_SD   1
-/** @def _Decimal32
-_Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 #   if IS_NOT_GNUC
+/** _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 #      define _Decimal32   SDtype
 #   endif
 /** _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
@@ -943,12 +943,12 @@ _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 /** _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 #   define dec32   SDtype
 #   define SUPPORTS_DDTYPE   1
+/** _Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
 typedef float __attribute__((__mode__(__DD__)))   DDtype;
 #   define DD   DDtype
 #   define HAVE_DD   1
-/** @def _Decimal64
-_Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
 #   if IS_NOT_GNUC
+/** _Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
 #      define _Decimal64   DDtype
 #   endif
 /** _Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
@@ -973,7 +973,7 @@ _Decimal64 is a 64-bit (8 octet) decimal float-point datatype */
 #   define HAVE_SD   0
 #   define HAVE_DD   0
 #endif
-#if SUPPORTS_DECIMAL128
+#if (SUPPORTS_DECIMAL128 && (!defined(S_SPLINT_S)))
 #   define SUPPORTS_TDTYPE   1
 typedef float __attribute__((__mode__(__TD__)))   TDtype;
 #   define TD   TDtype
@@ -1006,7 +1006,7 @@ typedef float __attribute__((__mode__(__TD__)))   TDtype;
 
 // COMPLEX MODES
 
-#if SUPPORTS_COMPLEX  // Complex floats
+#if (SUPPORTS_COMPLEX && (!defined(S_SPLINT_S)))  // Complex floats
 #   if IS_NOT_GNUC
 #      define __complex__   _Complex
 #   endif
@@ -1104,12 +1104,12 @@ Most narrow imaginary unit */
 #      define I_LONG_DOUBLE_ZERO   (__extension__ 0.0Li)
 #      define I_LONG_DOUBLE_NEG_ZERO   (__extension__ -0.0Li)
 #   endif
-/** @def CMPLXL(x, y)
-Expand into expression of specified complex type */
 #   if SUPPORTS_LONG_DOUBLE
 #      define COMPLEX_ZEROl   (__extension__ (0.0Li + 0.0Li))
 #      define COMPLEX_ONEl   (__extension__ (1.0Li + 0.0Li))
+/** Expand into expression of specified complex type */
 #      define CMPLXL(x, y)   (((long double)(x) + I_LONG_DOUBLE) * (long double)(y))
+/** Expand into expression of specified complex type */
 #      define __CMPLXL(x, y)   CMPLXL((x), (y))
 #   endif
 #   ifdef ARCHAVR
@@ -2398,24 +2398,20 @@ typedef __SLONGWORD_TYPE   syscall_arg_t;
 
 // 128-BIT INTEGERS
 
-/** @def int_least128_t
-Integer type with a minimum of 128 bits */
-/** @def uint_least128_t
-Unsigned integer type with a minimum of 128 bits */
-/** @def int_fast128_t
-Fastest signed integer with a width of at least 128 bits */
-/** @def uint_fast128_t
-Fastest unsigned integer with a width of at least 128 bits */
 #if SUPPORTS_INT128
+/** Integer type with a minimum of 128 bits */
 typedef int128_t   int_least128_t;
 #   define __int_least128_t   int_least128_t
 #   define __int_least128   int_least128_t
+/** Unsigned integer type with a minimum of 128 bits */
 typedef uint128_t   uint_least128_t;
 #   define __uint_least128_t   uint_least128_t
 #   define __uint_least128   uint_least128_t
+/** Fastest signed integer with a width of at least 128 bits */
 typedef int128_t   int_fast128_t;
 #   define __int_fast128_t   int_fast128_t
 #   define __int_fast128   int_fast128_t
+/** Fastest unsigned integer with a width of at least 128 bits */
 typedef uint128_t   uint_fast128_t;
 #   define __uint_fast128_t   uint_fast128_t
 #   define __uint_fast128   uint_fast128_t
@@ -2424,24 +2420,20 @@ typedef uint128_t   uint_fast128_t;
 
 // 256-BIT INTEGERS
 
-/** @def int_least256_t
-Integer type with a minimum of 256 bits */
-/** @def uint_least256_t
-Unsigned integer type with a minimum of 256 bits */
-/** @def int_fast256_t
-Fastest signed integer with a width of at least 256 bits */
-/** @def uint_fast256_t
-Fastest unsigned integer with a width of at least 256 bits */
 #if SUPPORTS_INT256
+/** Integer type with a minimum of 256 bits */
 typedef int256_t   int_least256_t;
 #   define __int_least256_t   int_least256_t
 #   define __int_least256   int_least256_t
+/** Unsigned integer type with a minimum of 256 bits */
 typedef uint256_t   uint_least256_t;
 #   define __uint_least256_t   uint_least256_t
 #   define __uint_least256   uint_least256_t
+/** Fastest signed integer with a width of at least 256 bits */
 typedef int256_t   int_fast256_t;
 #   define __int_fast256_t   int_fast256_t
 #   define __int_fast256   int_fast256_t
+/** Fastest unsigned integer with a width of at least 256 bits */
 typedef uint256_t   uint_fast256_t;
 #   define __uint_fast256_t   uint_fast256_t
 #   define __uint_fast256   uint_fast256_t
@@ -2450,24 +2442,20 @@ typedef uint256_t   uint_fast256_t;
 
 // 512-BIT INTEGERS
 
-/** @def int_least512_t
-Integer type with a minimum of 512 bits */
-/** @def uint_least512_t
-Unsigned integer type with a minimum of 512 bits */
-/** @def int_fast512_t
-Fastest signed integer with a width of at least 512 bits */
-/** @def uint_fast512_t
-Fastest unsigned integer with a width of at least 512 bits */
 #if SUPPORTS_INT512
+/** Integer type with a minimum of 512 bits */
 typedef int512_t   int_least512_t;
 #   define __int_least512_t   int_least512_t
 #   define __int_least512   int_least512_t
+/** Unsigned integer type with a minimum of 512 bits */
 typedef uint512_t   uint_least512_t;
 #   define __uint_least512_t   uint_least512_t
 #   define __uint_least512   uint_least512_t
+/** Fastest signed integer with a width of at least 512 bits */
 typedef int512_t   int_fast512_t;
 #   define __int_fast512_t   int_fast512_t
 #   define __int_fast512   int_fast512_t
+/** Fastest unsigned integer with a width of at least 512 bits */
 typedef uint512_t   uint_fast512_t;
 #   define __uint_fast512_t   uint_fast512_t
 #   define __uint_fast512   uint_fast512_t
@@ -2476,6 +2464,7 @@ typedef uint512_t   uint_fast512_t;
 
 // DATATYPE DIAGNOSTICS
 
+#ifndef S_SPLINT_S
 _Static_assert((\
 	(sizeof(int8_t) < sizeof(int16_t)) && (sizeof(int16_t) < sizeof(int32_t)) && \
 	(sizeof(int32_t) < sizeof(int64_t)) && (sizeof(int64_t) > sizeof(int8_t)) && \
@@ -2485,9 +2474,10 @@ _Static_assert((\
 	), \
 	"Fixed-width integer datatypes have invalid sizes!" \
 );
-#if SUPPORTS_DECIMAL_FLOATS
+#   if SUPPORTS_DECIMAL_FLOATS
 _Static_assert(((SIZEOF_DECIMAL32 == sizeof(decimal32)) && (SIZEOF_DECIMAL32 == 4) && (SIZEOF_DECIMAL32 == SIZEOF_FLOAT)), "Improperly set `decimal32` datatype size!");
 _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 8) && (SIZEOF_DECIMAL64 == SIZEOF_DOUBLE)), "Improperly set `decimal64` datatype size!");
+#   endif
 #endif
 
 
@@ -3423,31 +3413,25 @@ This is to enable the ISO C99 extensions */
 #if IS_STDC99
 #   define __USE_ISOC99   1
 #endif
-/** @def __USE_ISOC11
-This is to enable the ISO C11 extensions */
 #if IS_STDC11
+/** This is to enable the ISO C11 extensions */
 #   define __USE_ISOC11   1
 #endif
-/** @def _POSIX_SOURCE
-Special POSIX macro that is used to include POSIX functionality */
-/** @def _POSIX_C_SOURCE
-Special POSIX macro used to include POSIX functionality */
-/** @def _XOPEN_SOURCE
-Special UNIX macro used to include functionality described in the X/Open Portability Guide */
-/** @def _XOPEN_VERSION
-Special UNIX macro used to include functionality described in the X/Open Portability Guide */
-/** @def _XOPEN_SOURCE_EXTENDED
-Special UNIX macro used to include extra functionality described in the X/Open Portability Guide */
 #ifndef _GNU_SOURCE
 #   ifdef OSPOSIX
 #      undef _POSIX_SOURCE
 #      undef _POSIX_C_SOURCE
+/** Special POSIX macro that is used to include POSIX functionality */
 #      define _POSIX_SOURCE   (200809L)
+/** Special POSIX macro used to include POSIX functionality */
 #      define _POSIX_C_SOURCE   (200809L)
 #   endif
 #   ifdef OSUNIX
+/** Special UNIX macro used to include functionality described in the X/Open Portability Guide */
 #      define _XOPEN_SOURCE   (700)
+/** Special UNIX macro used to include functionality described in the X/Open Portability Guide */
 #      define _XOPEN_VERSION   (700)
+/** Special UNIX macro used to include extra functionality described in the X/Open Portability Guide */
 #      define _XOPEN_SOURCE_EXTENDED
 #   endif
 #endif
@@ -3457,8 +3441,6 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #   undef _DEFAULT_SOURCE
 #   define _DEFAULT_SOURCE   1
 #endif
-/** @def __USE_GNU
-Adds features for ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, and GNU extensions */
 #ifdef _GNU_SOURCE  // If _GNU_SOURCE was defined by the user, turn on all the other features
 #   undef _ISOC95_SOURCE
 #   define _ISOC95_SOURCE   1
@@ -3481,6 +3463,7 @@ Adds features for ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, an
 #   undef _ATFILE_SOURCE
 #   define _ATFILE_SOURCE   1
 #   undef __USE_GNU
+/** Adds features for ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, and GNU extensions */
 #   define __USE_GNU   1
 #endif
 // If nothing (other than _GNU_SOURCE and _DEFAULT_SOURCE) is defined, define _DEFAULT_SOURCE
@@ -3638,14 +3621,12 @@ Adds features for ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, an
 #ifndef __BIONIC__
 #   define __BIONIC__   1
 #endif
-/** @def __DARWIN_C_ANSI
-Darwin extensions */
 #ifndef __DARWIN_C_ANSI
+/** Darwin extensions */
 #   define __DARWIN_C_ANSI   (010000L)
 #endif
-/** @def __DARWIN_C_FULL
-Darwin extensions */
 #ifndef __DARWIN_C_FULL
+/** Darwin extensions */
 #   define __DARWIN_C_FULL   (900000L)
 #endif
 #ifdef _ANSI_SOURCE
@@ -3655,19 +3636,16 @@ Darwin extensions */
 #else
 #   define __DARWIN_C_LEVEL   __DARWIN_C_FULL
 #endif
-/** @def _DARWIN_FEATURE_ONLY_VERS_1050
-Indicates that only those APIs updated in 10.5 exists; no pre-10.5 variants are available */
 #ifdef __DARWIN_ONLY_VERS_1050
+/** Indicates that only those APIs updated in 10.5 exists; no pre-10.5 variants are available */
 #   define _DARWIN_FEATURE_ONLY_VERS_1050   1
 #endif
-/** @def _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE
-Indicates only UNIX conforming API are available (the legacy BSD APIs are not available) */
 #if (defined(__DARWIN_ONLY_UNIX_CONFORMANCE) || (!defined(_DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE)))
+/** Indicates only UNIX conforming API are available (the legacy BSD APIs are not available) */
 #   define _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE   1
 #endif
-/** @def _DARWIN_FEATURE_UNIX_CONFORMANCE
-Indicates whether UNIX conformance is on and specifies the conformance level (3 is SUSv3) */
 #if (defined(__DARWIN_UNIX03) || (!defined(_DARWIN_FEATURE_UNIX_CONFORMANCE)))
+/** Indicates whether UNIX conformance is on and specifies the conformance level (3 is SUSv3) */
 #   define _DARWIN_FEATURE_UNIX_CONFORMANCE   3
 #endif
 #if (IS_STRICT_ANSI && ((__STDC_VERSION__ - 0) < 199901L) && (!defined(__GNUG__)))
@@ -3716,12 +3694,10 @@ Indicates support for a 64-bit I/O interface, which allows large files and large
 #ifndef __DARWIN_ONLY_64_BIT_INO_T
 #   define __DARWIN_ONLY_64_BIT_INO_T   DARWIN_64_BIT_INO_T
 #endif
-/** @def _DARWIN_FEATURE_64_BIT_INODE
-Indicates that the ino_t type is 64-bit and structures modified for 64-bit inodes (like struct stat) will be used */
-/** @def _DARWIN_FEATURE_64_ONLY_BIT_INODE
-Indicates that the ino_t type may only be 64-bit; there is no support for 32-bit ino_t when this macro is defined (and non-zero); There is no struct stat64 either, as the regular struct stat will already be the 64-bit version */
 #if DARWIN_64_BIT_INO_T
+/** Indicates that the ino_t type is 64-bit and structures modified for 64-bit inodes (like struct stat) will be used */
 #   define _DARWIN_FEATURE_64_BIT_INODE   1
+/** Indicates that the ino_t type may only be 64-bit; there is no support for 32-bit ino_t when this macro is defined (and non-zero); There is no struct stat64 either, as the regular struct stat will already be the 64-bit version */
 #   define _DARWIN_FEATURE_ONLY_64_BIT_INODE   1
 #endif
 /** @def DEBUG
@@ -3765,9 +3741,8 @@ Adds code that detects buffer-overflow errors (if value above 0) */
 #else
 #   define __USE_FORTIFY_LEVEL   0
 #endif
-/** @def __USE_EXTERN_INLINES
-Indicates whether 'extern inline' is defined for functions in headers */
 #if (defined(OPT_CODE) && (!defined(OPT_SIZE)) && (!defined(__NO_INLINE__)) && defined(extern_inline))
+/** Indicates whether 'extern inline' is defined for functions in headers */
 #   define __USE_EXTERN_INLINES   1
 #endif
 #if ((defined(_FORTIFY_SOURCE) && (_FORTIFY_SOURCE > 0)) && IS_OPT_OVER_0)
@@ -4342,7 +4317,7 @@ enum FILE_ACCESS_MODES {
 /** 4.4BSD extension to atomically obtain an exclusive lock on a file */
 	O_EXLOCK = 0x20
 /** 4.4BSD extension to atomically obtain an exclusive lock on a file */
-	#define _O_EXLOCK   O_EXLOCK
+#   define _O_EXLOCK   O_EXLOCK
 };
 
 /** Stat file permission flags */
@@ -6264,7 +6239,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 // PRAGMAS
 
-#ifdef COMPILER_CLANG
+#ifdef (COMPILER_CLANG && (!defined(S_SPLINT_S)))
 /** Push diagnostic state */
 #   define DIAG_PUSH   _Pragma("clang diagnostic push")
 /** Pop diagnostic state */
@@ -6301,12 +6276,16 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 	_Pragma("GCC diagnostic error \"-Wshadow\"") \
 	_Pragma("GCC diagnostic error \"-Wunused-function\"")
 #else
-#   define DIAG_PUSH
-#   define DIAG_POP
-#   define DIAG_IGNORE(version, _option)
-#   define IGNORE_WMISSING_PROTOTYPES
-#   define IGNORE_WSHADOW
 #   define DIAG_FUNCTIONS
+#   define DIAG_IGNORE(version, _option)
+#   define DIAG_POP
+#   define DIAG_PUSH
+#   define IGNORE_WFORMAT_NONLITERAL
+#   define IGNORE_WMISSING_PROTOTYPES
+#   define IGNORE_WOVERLENGTH_STRINGS
+#   define IGNORE_WPADDED
+#   define IGNORE_WSHADOW
+#   define IGNORE_WSTACK_PROTECTOR
 #endif
 
 
@@ -8305,15 +8284,17 @@ static const UNUSED char* program_invocation_name = getprogname();
 #ifndef __SCCSID
 #   define __SCCSID(str)   __IDSTRING(sccsid, str)
 #endif
-#if (IS_CPLUSPLUS && IS_GNUC)
-#   define __func__   __PRETTY_FUNCTION__
-#else
-#   if IS_STDC99
-#      define __func__   __FUNCTION__
-#   elif (IS_GNUC || defined(COMPILER_MICROSOFT))
-#      define __func__   __FUNCTION__
+#ifndef __func__
+#   if (IS_CPLUSPLUS && IS_GNUC)
+#      define __func__   __PRETTY_FUNCTION__
 #   else
-#      define __func__   ((const char*)0)
+#      if IS_STDC99
+#         define __func__   __FUNCTION__
+#      elif (IS_GNUC || defined(COMPILER_MICROSOFT))
+#         define __func__   __FUNCTION__
+#      else
+#         define __func__   ((const char*)0)
+#      endif
 #   endif
 #endif
 #if IS_GNUC
@@ -8594,6 +8575,7 @@ enum HURD_PID {
 
 // HELPER FUNCTIONS, CONSTANTS, & VARIABLES
 
+#ifndef S_SPLINT_S
 DECL_FUNC int not_null_ptr(const void* restrict ptr);
 /** Defeat compiler optimizations that assume function addresses are never NULL */
 LIB_FUNC int not_null_ptr(const void* restrict ptr) {
@@ -8601,6 +8583,8 @@ LIB_FUNC int not_null_ptr(const void* restrict ptr) {
 	asm volatile (";" : "=r"(q) : "0"(ptr));
 	return (int)(q != 0);
 }
+#endif
+
 
 static const UNUSED unsigned char align64 integer_table[264] = {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -8645,7 +8629,7 @@ static const UNUSED char align32 xdigits_u[32] = "0123456789ABCDEF";
 static const UNUSED char align16 octal_digits[16] = "01234567";
 static const UNUSED char align32 ALPHABET[32] = _ALPHABET;
 static const UNUSED char align32 alphabet[32] = _alphabet;
-static const UNUSED char align64 a64l_digits[64] = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+static const UNUSED char align64 a64l_digits[65] = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 /** Upper-case digits */
 static const UNUSED char align64 _itoa_upper_digits[64] = _numbers _ALPHABET;
 /** Lower-case digits */
@@ -9489,7 +9473,7 @@ typedef greg_t   gregset_t[NGREG];
 #if IS_STDC_BELOW_C99
 /** Boolean Datatype */
 typedef int   _Bool;
-#elif IS_NOT_CPLUSPLUS
+#elif (IS_NOT_CPLUSPLUS && (!defined(S_SPLINT_S)))
 /** Boolean Datatype */
 typedef _Bool   bool;
 #endif
@@ -10221,7 +10205,7 @@ extern UNUSED int signgam;
 /** Bitmask for the math_errhandling macro; Exception raised by math function */
 #define MATH_ERREXCEPT   (2)
 #define math_errhandling   (MATH_ERRNO | MATH_ERREXCEPT)
-// Types of exceptions in the `type` field in `__exception`
+/** Types of exceptions in the `type` field in `__exception` */
 enum MATHERR_TYPE {
 	DOMAIN = 1,
 	SING = 2,
@@ -10232,11 +10216,16 @@ enum MATHERR_TYPE {
 };
 /** Support for various different standard error handling behaviors */
 typedef enum _LIB_VERSION_TYPE {
-	_IEEE_ = -1,  // IEEE754/IEEE854
-	_SVID_,  // System V release 4
-	_XOPEN_,  // Unix98
-	_POSIX_,
-	_ISOC_  // ISO C99
+	/** IEEE754/IEEE854 */
+	_IEEE_ = -1,
+	/** System V release 4 */
+	_SVID_ = 0,
+	/** Unix98 */
+	_XOPEN_ = 1,
+	/** POSIX */
+	_POSIX_ = 2,
+	/** ISO C99 */
+	_ISOC_ = 3
 } _LIB_VERSION_TYPE;
 /** This variable can be changed at run-time to any of the values above to affect floating point error handling behavior (it may also be necessary to change the hardware FPU exception settings) */
 extern UNUSED _LIB_VERSION_TYPE _LIB_VERSION;
@@ -11302,8 +11291,10 @@ _LIB_VERSION_TYPE _LIB_VERSION = LIBMVER;
 #      define LD_B1B_DIG   2
 #      define LD_B1B_MAX   9007199, 254740991
 #      define KMAX   128
+#      ifndef S_SPLINT_S
 _Static_assert((LDBL_EQ_DBL), "`long double` is not equivalent to `double`!");
 _Static_assert((SIZEOF_LONG_DOUBLE == 8), "`long double` is not of the correct size!");
+#      endif
 #   elif ((LDBL_MANT_DIG == 64) && (LDBL_MAX_EXP == 16384))
 #      define SUPPORTS_LONG_DOUBLE_64   (0)
 #      define SUPPORTS_LONG_DOUBLE_X87   (1)
@@ -11312,8 +11303,10 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 8), "`long double` is not of the correct s
 #      define LD_B1B_DIG   3
 #      define LD_B1B_MAX   18, 446744073, 709551615
 #      define KMAX 2048
+#      ifndef S_SPLINT_S
 _Static_assert((IS_LDBL_X87 && IS_LDBL_XFtype), "`long double` is not equivalent to `XFtype`!");
 _Static_assert(((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)), "`long double` is not of the correct size!");
+#      endif
 #   elif ((LDBL_MANT_DIG == 113) && (LDBL_MAX_EXP == 16384))
 #      define SUPPORTS_LONG_DOUBLE_64   (0)
 #      define SUPPORTS_LONG_DOUBLE_X87   (0)
@@ -11322,8 +11315,10 @@ _Static_assert(((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)), "`lon
 #      define LD_B1B_DIG   4
 #      define LD_B1B_MAX   10384593, 717069655, 257060992, 658440191
 #      define KMAX   2048
+#      ifndef S_SPLINT_S
 _Static_assert((LDBL_EQ_FLOAT128), "`long double` is not 128-bits!");
 _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct size!");
+#      endif
 #   else
 #      error   "Unsupported long double representation!"
 #   endif
@@ -13488,7 +13483,7 @@ typedef union float256_shape {
 #endif
 
 
-#if SUPPORTS_COMPLEX
+#if (SUPPORTS_COMPLEX && (!defined(S_SPLINT_S)))
 
 
 /** Datatype used to convert between a complex float and various datatypes */

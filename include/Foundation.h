@@ -38,187 +38,187 @@ Operating Systems:
  - Linux
 
 @section Standard C Library
- - <assert.h>
- - <complex.h>
- - <ctype.h>
- - <errno.h>
- - <fenv.h>
- - <float.h>
- - <inttypes.h>
- - <iso646.h>
- - <limits.h>
- - <locale.h>
- - <math.h>
- - <setjmp.h>
- - <signal.h>
- - <stdalign.h>
- - <stdarg.h>
- - <stdatomic.h>
- - <stdbool.h>
- - <stddef.h>
- - <stdint.h>
- - <stdio.h>
- - <stdlib.h>
- - <stdnoreturn.h>
- - <string.h>
- - <tgmath.h>
- - <threads.h>
- - <time.h>
- - <uchar.h>
- - <wchar.h>
- - <wctype.h>
+ - assert.h
+ - complex.h
+ - ctype.h
+ - errno.h
+ - fenv.h
+ - float.h
+ - inttypes.h
+ - iso646.h
+ - limits.h
+ - locale.h
+ - math.h
+ - setjmp.h
+ - signal.h
+ - stdalign.h
+ - stdarg.h
+ - stdatomic.h
+ - stdbool.h
+ - stddef.h
+ - stdint.h
+ - stdio.h
+ - stdlib.h
+ - stdnoreturn.h
+ - string.h
+ - tgmath.h
+ - threads.h
+ - time.h
+ - uchar.h
+ - wchar.h
+ - wctype.h
 
 @section POSIX C Library
- - <aio.h>
- - <arpa/inet.h>
- - <assert.h>
- - <complex.h>
- - <cpio.h>
- - <ctype.h>
- - <dirent.h>
- - <dlfcn.h>
- - <errno.h>
- - <fcntl.h>
- - <fenv.h>
- - <float.h>
- - <fmtmsg.h>
- - <fnmatch.h>
- - <ftw.h>
- - <glob.h>
- - <grp.h>
- - <iconv.h>
- - <inttypes.h>
- - <iso646.h>
- - <langinfo.h>
- - <libgen.h>
- - <limits.h>
- - <locale.h>
- - <math.h>
- - <monetary.h>
- - <mqueue.h>
- - <ndbm.h>
- - <net/if.h>
- - <netdb.h>
- - <netinet/in.h>
- - <netinet/tcp.h>
- - <nl_types.h>
- - <poll.h>
- - <pthread.h>
- - <pwd.h>
- - <regex.h>
- - <sched.h>
- - <search.h>
- - <semaphore.h>
- - <setjmp.h>
- - <signal.h>
- - <spawn.h>
- - <stdarg.h>
- - <stdbool.h>
- - <stddef.h>
- - <stdint.h>
- - <stdio.h>
- - <stdlib.h>
- - <string.h>
- - <strings.h>
- - <stropts.h>
- - <sys/ipc.h>
- - <sys/mman.h>
- - <sys/msg.h>
- - <sys/resource.h>
- - <sys/select.h>
- - <sys/sem.h>
- - <sys/shm.h>
- - <sys/socket.h>
- - <sys/stat.h>
- - <sys/statvfs.h>
- - <sys/time.h>
- - <sys/times.h>
- - <sys/types.h>
- - <sys/uio.h>
- - <sys/un.h>
- - <sys/utsname.h>
- - <sys/wait.h>
- - <syslog.h>
- - <tar.h>
- - <termios.h>
- - <tgmath.h>
- - <time.h>
- - <trace.h>
- - <ulimit.h>
- - <unistd.h>
- - <utime.h>
- - <utmpx.h>
- - <wchar.h>
- - <wctype.h>
- - <wordexp.h>
+ - aio.h
+ - arpa/inet.h
+ - assert.h
+ - complex.h
+ - cpio.h
+ - ctype.h
+ - dirent.h
+ - dlfcn.h
+ - errno.h
+ - fcntl.h
+ - fenv.h
+ - float.h
+ - fmtmsg.h
+ - fnmatch.h
+ - ftw.h
+ - glob.h
+ - grp.h
+ - iconv.h
+ - inttypes.h
+ - iso646.h
+ - langinfo.h
+ - libgen.h
+ - limits.h
+ - locale.h
+ - math.h
+ - monetary.h
+ - mqueue.h
+ - ndbm.h
+ - net/if.h
+ - netdb.h
+ - netinet/in.h
+ - netinet/tcp.h
+ - nl_types.h
+ - poll.h
+ - pthread.h
+ - pwd.h
+ - regex.h
+ - sched.h
+ - search.h
+ - semaphore.h
+ - setjmp.h
+ - signal.h
+ - spawn.h
+ - stdarg.h
+ - stdbool.h
+ - stddef.h
+ - stdint.h
+ - stdio.h
+ - stdlib.h
+ - string.h
+ - strings.h
+ - stropts.h
+ - sys/ipc.h
+ - sys/mman.h
+ - sys/msg.h
+ - sys/resource.h
+ - sys/select.h
+ - sys/sem.h
+ - sys/shm.h
+ - sys/socket.h
+ - sys/stat.h
+ - sys/statvfs.h
+ - sys/time.h
+ - sys/times.h
+ - sys/types.h
+ - sys/uio.h
+ - sys/un.h
+ - sys/utsname.h
+ - sys/wait.h
+ - syslog.h
+ - tar.h
+ - termios.h
+ - tgmath.h
+ - time.h
+ - trace.h
+ - ulimit.h
+ - unistd.h
+ - utime.h
+ - utmpx.h
+ - wchar.h
+ - wctype.h
+ - wordexp.h
 
 @section BSD Library
- - <db.h>
- - <err.h>
- - <fts.h>
- - <sys/queue.h>
- - <sys/tree.h>
- - <vis.h>
- - <stdio.h>: fgetln()
- - <stdlib.h>: arc4random(), daemon(), radixsort()
- - <string.h>: strlcat() and strlcpy()
+ - db.h
+ - err.h
+ - fts.h
+ - sys/queue.h
+ - sys/tree.h
+ - vis.h
+ - stdio.h: fgetln()
+ - stdlib.h: arc4random(), daemon(), radixsort()
+ - string.h: strlcat() and strlcpy()
 
 @section Other C Libraries
- - <reent.h> (Newlib)
- - <unctrl.h> (Newlib)
+ - reent.h (Newlib)
+ - unctrl.h (Newlib)
 
 @section C Plus Plus Standard Library
- - <array>
- - <deque>
- - <forward_list>
- - <list>
- - <map>
- - <queue>
- - <set>
- - <stack>
- - <unordered_map>
- - <unordered_set>
- - <vector>
- - <fstream>
- - <iomanip>
- - <ios>
- - <iosfwd>
- - <iostream>
- - <istream>
- - <ostream>
- - <sstream>
- - <streambuf>
- - <atomic>
- - <condition_variable>
- - <future>
- - <mutex>
- - <thread>
- - <algorithm>
- - <bitset>
- - <chrono>
- - <codecvt>
- - <complex>
- - <exception>
- - <functional>
- - <initializer_list>
- - <iterator>
- - <limits>
- - <locale>
- - <memory>
- - <new>
- - <numeric>
- - <random>
- - <ratio>
- - <regex>
- - <stdexcept>
- - <string>
- - <system_error>
- - <tuple>
- - <typeindex>
- - <typeinfo>
- - <type_traits>
- - <utility>
- - <valarray>
+ - array
+ - deque
+ - forward_list
+ - list
+ - map
+ - queue
+ - set
+ - stack
+ - unordered_map
+ - unordered_set
+ - vector
+ - fstream
+ - iomanip
+ - ios
+ - iosfwd
+ - iostream
+ - istream
+ - ostream
+ - sstream
+ - streambuf
+ - atomic
+ - condition_variable
+ - future
+ - mutex
+ - thread
+ - algorithm
+ - bitset
+ - chrono
+ - codecvt
+ - complex
+ - exception
+ - functional
+ - initializer_list
+ - iterator
+ - limits
+ - locale
+ - memory
+ - new
+ - numeric
+ - random
+ - ratio
+ - regex
+ - stdexcept
+ - string
+ - system_error
+ - tuple
+ - typeindex
+ - typeinfo
+ - type_traits
+ - utility
+ - valarray
 
 @section Linux API Headers
  - /usr/include/asm/
@@ -622,7 +622,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - 1000^7	ZB		Zettabyte
  - 1000^8	YB		Yottabyte
 
-@section ISO/IEC 80000 Units for Binary Data Units
+@section ISO IEC 80000 Units for Binary Data Units
  - Value	Abbr	Name
  - 1024		KiB		Kibibyte
  - 1024^2	MiB		Mebibyte
@@ -644,7 +644,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
 
 
 #ifdef __STDC_NO_ATOMICS__
-#   error    "Atomics are required to use this library!"
+#   error   "Atomics are required to use this library!"
 #endif
 
 
@@ -670,11 +670,13 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
 
 // ASSERT DATATYPE SIZES
 
+#ifndef S_SPLINT_S
 _Static_assert((sizeof(char) == 1), "`char` datatype is not 8-bits!");
 _Static_assert((sizeof(int) == 4), "`int` datatype is not 32-bits!");
 _Static_assert((sizeof(float) == 4), "`float` datatype is not 32-bits!");
 _Static_assert((sizeof(double) == 8), "`double` datatype is not 64-bits!");
 _Static_assert(((sizeof(char*) == 4) || (sizeof(char*) == 8)), "The target system is not 32-bit or 64-bit!");
+#endif
 
 
 // OPTIMIZATION MACROS (__OPTIMIZE__)
@@ -1010,14 +1012,12 @@ _Static_assert(((sizeof(char*) == 4) || (sizeof(char*) == 8)), "The target syste
 
 // UNIX & POSIX OPERATING SYSTEM FLAGS
 
-/** @def OSUNIX
-Macros flag present if the target operating system is a Unix system */
 #if (defined(OSAIX) || defined(OSAPPLE) || defined(OSBSD) || defined(OSHPUX) || defined(OSINTERIX) || defined(OSIRIX) || defined(OSMACOS) || defined(OSNEXTSTEP) || defined(OSOSX) || defined(OSSCO) || defined(OSSINIX) || defined(OSSOLARIS) || defined(OSSUN) || defined(OSSUNOS) || defined(__hiuxmpp) || defined(SVR4) || ((defined(__unix__) || defined(__unix) || defined(unix)) || (defined(__APPLE__) && defined(__MACH__))))
+/** Macros flag present if the target operating system is a Unix system */
 #   define OSUNIX
 #endif
-/** @def OSPOSIX
-Macros flag present if the target operating system is a POSIX system */
 #if (defined(OSUNIX) || defined(OSCYGWIN) || defined(OSECOS) || defined(OSGNU) || defined(OSHURD) || defined(OSLINUX) || defined(OSLYNX) || defined(OSMINIX) || defined(OSQNX) || defined(OSSYLLABLE))
+/** Macros flag present if the target operating system is a POSIX system */
 #   define OSPOSIX
 #endif
 /** @def TARGET_OS_UNIX
@@ -1266,7 +1266,8 @@ Boolean macros indicating whether the compiler is not GNU-GCC */
 
 // COMPILER VERSION MACROS
 
-/** @defgroup Compiler-Version Macros for testing the version of the compiler @{ */
+/** @defgroup Compiler-Version Macros for testing the version of the compiler
+@{ */
 
 /** @def __NVCC_PREREQ(version)
 Test if the NVCC compiler matches the specified version number */
@@ -1403,7 +1404,8 @@ Test if the Microsoft compiler matches the specified version number */
 
 // C VERSION MACROS
 
-/** @defgroup C-Versions Macros for testing types and versions of C @{ */
+/** @defgroup C-Versions Macros for testing types and versions of C
+@{ */
 
 /** @def IS_ANSI
 Macros test for ANSI C */
@@ -1657,9 +1659,8 @@ Conforms to the ISO/IEC/IEEE 60559 (IEEE754/IEC559) standards. Industry standard
 #ifndef __GCC_IEC_559
 #   define __GCC_IEC_559   2
 #endif
-/** @def __STDC_DEC_FP__
-Conforms to the ISO/IEC/IEEE 60559 (IEEE754-2008/IEC559) standards for decimal floating-points. Industry standard for representing decimal floating-point numbers. */
 #if ((!(defined(__STDC_DEC_FP__) || defined(__STDC_WANT_DEC_FP__))) && (defined(__DEC32_MAX__) || defined(__DEC64_MAX__) || defined(__DEC32_EPSILON__)))
+/** Conforms to the ISO/IEC/IEEE 60559 (IEEE754-2008/IEC559) standards for decimal floating-points. Industry standard for representing decimal floating-point numbers. */
 #   define __STDC_DEC_FP__   1
 #   define __STDC_WANT_DEC_FP__   1
 #endif
@@ -1674,13 +1675,13 @@ Conforms to the ISO/IEC/IEEE 60559 (IEEE754/IEC559) standards for complex number
 #   define __GCC_IEC_559_COMPLEX   2
 #endif
 typedef enum c_language_kind {
-/** C90, C94, C99, or C11 */
+	/** C90, C94, C99, or C11 */
 	clk_c = 0,
-/** clk_c with ObjC features */
+	/** clk_c with ObjC features */
 	clk_objc = 1,
-/** ANSI/ISO C++ */
+	/** ANSI/ISO C++ */
 	clk_cxx = 2,
-/** clk_cxx with ObjC features */
+	/** clk_cxx with ObjC features */
 	clk_objcxx = 3
 } c_language_t;
 /** @def c_language
@@ -2508,11 +2509,11 @@ Test if the platform does not use soft-float-points */
 
 // EXECUTABLE TYPE
 
-/** @def PIC
-Defined if the target will use Position Independent Code */
 /** @def IS_PIC
 Test if the target will use Position Independent Code */
 #if (defined(__pic__) || defined(__PIC__))
+/** @def PIC
+Defined if the target will use Position Independent Code */
 #   if (__PIC__ == 1)
 #      define PIC   1
 #   elif (__PIC__ == 2)
@@ -2523,11 +2524,11 @@ Test if the target will use Position Independent Code */
 #else
 #      define IS_PIC   0
 #endif
-/** @def PIE
-Defined if the target is a Position Independent Executable */
 /** @def IS_PIE
 Test if the target is a Position Independent Executable */
 #if (defined(__pie__) || defined(__PIE__))
+/** @def PIE
+Defined if the target is a Position Independent Executable */
 #   if (__PIE__ == 1)
 #      define PIE   1
 #   elif (__PIE__ == 2)
@@ -4063,9 +4064,9 @@ Minimum number of units in a word */
 #ifndef MIN_UNITS_PER_WORD
 #   define MIN_UNITS_PER_WORD    UNITS_PER_WORD
 #endif
+#if (defined(ARCHX86) && (!defined(SYSCALL_WORDSIZE)))
 /** @def SYSCALL_WORDSIZE
 Wordsize used by syscalls. Both x86-64 and x32 use the 64-bit syscall interface. */
-#if (defined(ARCHX86) && (!defined(SYSCALL_WORDSIZE)))
 #   define SYSCALL_WORDSIZE   64
 #endif
 // BYTE
@@ -5811,7 +5812,7 @@ Maximum value of an object of type int32_t (2147483647) */
 #ifdef __INT32_MAX__
 #   define INT32_MAX   __INT32_MAX__
 #else
-#   define INT32_MAX   (0x7fffffff)
+#   define INT32_MAX   0x7fffffff
 #   define __INT32_MAX__   INT32_MAX
 #endif
 #ifndef MAX_32
@@ -5831,9 +5832,9 @@ Maximum value of an object of type int64_t (9223372036854775807) */
 #ifndef MAX_64
 #   define MAX_64   INT64_MAX
 #endif
+#if SUPPORTS_INT128
 /** @def INT128_MAX
 Maximum value of an object of type int128_t (170141183460469231731687303715884105727) */
-#if SUPPORTS_INT128
 #   ifndef INT128_MAX
 #      define INT128_MAX   0x7fffffffffffffffffffffffffffffffi128
 #   endif
@@ -5845,23 +5846,35 @@ Maximum value of an object of type int128_t (17014118346046923173168730371588410
 
 // MINIMUM OF SIGNED FIXED-WIDTH INTEGRAL TYPES
 
-/** Minimum value of an object of type int8_t (-128) */
-#define INT8_MIN   ((-INT8_MAX) - 1)
-#ifndef __INT8_MIN__
+/** @def INT8_MIN
+Minimum value of an object of type int8_t (-128) */
+/** @def __INT8_MIN__
+Minimum value of an object of type int8_t (-128) */
+#ifdef __INT8_MIN__
+#   define INT8_MIN   __INT8_MIN__
+#else
+#   define INT8_MIN   ((-INT8_MAX) - 1)
 #   define __INT8_MIN__   INT8_MIN
 #endif
 #ifndef MIN_8
 #   define MIN_8   INT8_MIN
 #endif
-/** Minimum value of an object of type int16_t (-32768) */
-#define INT16_MIN   ((-INT16_MAX) - 1)
+/** @def INT16_MIN
+Minimum value of an object of type int16_t (-32768) */
+/** @def __INT16_MIN__
+Minimum value of an object of type int16_t (-32768) */
+#ifdef __INT16_MIN__
+#   define INT16_MIN   __INT16_MIN__
+#else
+#   define INT16_MIN   ((-INT16_MAX) - 1)
+#   define __INT16_MIN__   INT16_MIN
+#endif
 #ifndef MIN_16
 #   define MIN_16   INT16_MIN
 #endif
-#ifndef __INT16_MIN__
-#   define __INT16_MIN__   INT16_MIN
-#endif
 /** @def INT32_MIN
+Minimum value of an object of type int32_t (-2147483648) */
+/** @def __INT32_MIN__
 Minimum value of an object of type int32_t (-2147483648) */
 #ifdef __INT32_MIN__
 #   define INT32_MIN   __INT32_MIN__
@@ -5874,6 +5887,8 @@ Minimum value of an object of type int32_t (-2147483648) */
 #endif
 /** @def INT64_MIN
 Minimum value of an object of type int64_t (-9223372036854775808) */
+/** @def __INT64_MIN__
+Minimum value of an object of type int64_t (-9223372036854775808) */
 #ifdef __INT64_MIN__
 #   define INT64_MIN   __INT64_MIN__
 #else
@@ -5883,9 +5898,11 @@ Minimum value of an object of type int64_t (-9223372036854775808) */
 #ifndef MIN_64
 #   define MIN_64   INT64_MIN
 #endif
+#if SUPPORTS_INT128
 /** @def INT128_MIN
 Minimum value of an object of type int128_t (-170141183460469231731687303715884105728) */
-#if SUPPORTS_INT128
+/** @def __INT128_MIN__
+Minimum value of an object of type int128_t (-170141183460469231731687303715884105728) */
 #   ifndef INT128_MIN
 #      define INT128_MIN   ((-INT128_MAX) - 1)
 #   endif
@@ -5919,9 +5936,9 @@ Maximum value of an object of type uint64_t (18446744073709551615) */
 #   define UINT64_MAX   0xffffffffffffffffULL
 #endif
 #define SUB_AID_MAX   UINT64_MAX
+#if SUPPORTS_INT128
 /** @def UINT128_MAX
 Maximum value of an object of type uint128_t (340282366920938463463374607431768211455) */
-#if SUPPORTS_INT128
 #   ifndef UINT128_MAX
 #      define UINT128_MAX   0xffffffffffffffffffffffffffffffffUi128
 #   endif
@@ -6027,6 +6044,8 @@ Maximum value of an object of type uint_least32_t */
 #   define UINT_LEAST32_MAX   UINT32_MAX
 #   define __UINT_LEAST32_MAX__   UINT32_MAX
 #endif
+/** @def UINT_LEAST64_MAX
+Maximum value of an object of type uint_least64_t */
 #ifdef __UINT_LEAST64_MAX__
 #   define UINT_LEAST64_MAX   __UINT_LEAST64_MAX__
 #else
@@ -6034,6 +6053,8 @@ Maximum value of an object of type uint_least32_t */
 #   define __UINT_LEAST64_MAX__   UINT64_MAX
 #endif
 #if SUPPORTS_INT128
+/** @def UINT_LEAST128_MAX
+Maximum value of an object of type uint_least128_t */
 #   ifdef __UINT_LEAST128_MAX__
 #      define UINT_LEAST128_MAX   __UINT_LEAST128_MAX__
 #   else
@@ -6255,6 +6276,8 @@ Minimum for largest signed fixed-width integral type */
 #ifndef INTMAX_MIN
 #   ifdef __INTMAX_MIN__
 #      define INTMAX_MIN   __INTMAX_MIN__
+#   else
+#      define INTMAX_MIN   INT64_MIN
 #   endif
 #elif SUPPORTS_INT128
 #   define INTMAX_MIN   INT128_MIN
@@ -6266,6 +6289,8 @@ Maximum for largest signed fixed-width integral type */
 #ifndef INTMAX_MAX
 #   ifdef __INTMAX_MAX__
 #      define INTMAX_MAX   __INTMAX_MAX__
+#   else
+#      define INTMAX_MAX   INT64_MAX
 #   endif
 #elif SUPPORTS_INT128
 #   define INTMAX_MAX   INT128_MAX
@@ -7241,12 +7266,16 @@ Maximum value representable as type sig_atomic_t */
 
 // TARGET ATTRIBUTES & MACROS
 
-/** @defgroup Build-Target Macros for specifying that a function be built for a particular target @{ */
+/** @defgroup Build-Target Macros for specifying that a function be built for a particular target
+@{ */
 
 #if IS_GNUC
 // PowerPC
+/** Build specifically for PowerPC7 */
 #   define BUILD_POWER7   __attribute__((__target__("arch=power7")))
+/** Build specifically for PowerPC8 */
 #   define BUILD_POWER8   __attribute__((__target__("arch=power8")))
+/** Build specifically for PowerPC9 */
 #   define BUILD_POWER9   __attribute__((__target__("arch=power9")))
 // x86
 #   define BUILD_CORE2   __attribute__((__target__("arch=core2")))
@@ -7255,15 +7284,22 @@ Maximum value representable as type sig_atomic_t */
 #   define BUILD_IVYBRIDGE   __attribute__((__target__("arch=ivybridge")))
 #   define BUILD_HASWELL   __attribute__((__target__("arch=haswell")))
 #   define BUILD_BROADWELL   __attribute__((__target__("arch=broadwell")))
+/** Build specifically for Intel's Skylake processors */
 #   define BUILD_SKYLAKE   __attribute__((__target__("arch=skylake")))
 #   define BUILD_BONNELL   __attribute__((__target__("arch=bonnell")))
 #   define BUILD_SILVERMONT   __attribute__((__target__("arch=silvermont")))
 #   define BUILD_KNL   __attribute__((__target__("arch=knl")))
+/** Build specifically for MMX-supporting processors */
 #   define BUILD_MMX   __attribute__((__target__("mmx")))
+/** Build specifically for SSE-supporting processors */
 #   define BUILD_SSE   __attribute__((__target__("sse")))
+/** Build specifically for SSE3-supporting processors */
 #   define BUILD_SSE3   __attribute__((__target__("sse3")))
+/** Build specifically for SSE4-supporting processors */
 #   define BUILD_SSE4   __attribute__((__target__("sse4")))
+/** Build specifically for AVX-supporting processors */
 #   define BUILD_AVX   __attribute__((__target__("avx")))
+/** Build specifically for AVX2-supporting processors */
 #   define BUILD_AVX2   __attribute__((__target__("avx2")))
 #else
 // PowerPC
@@ -7594,9 +7630,14 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 
 // STATIC_ASSERT KEYWORD
 
+#ifndef S_SPLINT_S
 /** Compile-time assertion */
-#define static_assert(expr, msg)   _Static_assert((expr), msg)
-#define _FP_STATIC_ASSERT(expr, msg)   _Static_assert((expr), msg)
+#   define static_assert(expr, msg)   _Static_assert((expr), msg)
+#   define _FP_STATIC_ASSERT(expr, msg)   _Static_assert((expr), msg)
+#else
+#   define static_assert(expr, msg)
+#   define _FP_STATIC_ASSERT(expr, msg)
+#endif
 
 
 // THREAD_LOCAL STORAGE KEYWORD
@@ -7630,9 +7671,15 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 #if (IS_NOT_CPLUSPLUS && IS_STDC_BELOW_C11)
 #   define _Atomic   __attribute__((__atomic__))
 #endif
-#define Atomic   _Atomic
-#define atomic   _Atomic
-#define _atomic   _Atomic
+#ifndef S_SPLINT_S
+#   define Atomic   _Atomic
+#   define atomic   _Atomic
+#   define _atomic   _Atomic
+#else
+#   define Atomic
+#   define atomic
+#   define _atomic
+#endif
 
 
 // RESTRICT TYPE QUALIFIER KEYWORD
@@ -7668,6 +7715,7 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 /* DATATYPE DIAGNOSTICS */
 
 
+#ifndef S_SPLINT_S
 _Static_assert((('A' + 0x20 == 'a') && (' ' == 32)), "Invalid character encoding (must be UTF-8)!");
 _Static_assert((SIZEOF_CHAR == 1), "`char` datatype is not 8-bits!");
 _Static_assert((((SIZEOF_CHAR * 8) == NBBY) && ((sizeof(char) * 8) == NBBY)), "A byte is not 8-bits on this platform!");
@@ -7714,7 +7762,7 @@ _Static_assert((\
 	), \
 	"Invalid \"least\" datatype ranges (minimums & maximums)!" \
 );
-#if SUPPORTS_STDFIX
+#   if SUPPORTS_STDFIX
 _Static_assert((\
 	(__SFRACT_MIN__ == -0.5HR-0.5HR) && (__SFRACT_MAX__ == 0x7fP-7HR) && \
 	(__SFRACT_EPSILON__ == 0x1P-7HR) && (SFRACT_EPSILON == __SFRACT_EPSILON__) && \
@@ -7727,4 +7775,5 @@ _Static_assert((\
 	), \
 	"Invalid accum and fract datatype ranges (minimums, maximums, and epsilons)!" \
 );
+#   endif
 #endif
