@@ -79,8 +79,8 @@ __all__: list = [
 # CONSTANTS & GLOBALS #
 
 
-MODULESBYFILE = {}
-FILESBYMODNAME = {}
+MODULESBYFILE: dict = {}
+FILESBYMODNAME: dict = {}
 
 
 # EXCEPTIONS #
@@ -139,10 +139,10 @@ def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # no
     """Return the module an object was defined in or `None` if not found"""
     if isinstance(_object, ModuleType):
         return _object
-    elif hasattr(_object, r'__module__'):
+    if hasattr(_object, r'__module__'):
         return modules.get(_object.__module__)
     # Try the filename to modulename cache
-    elif _filename is not None and _filename in MODULESBYFILE:
+    if _filename is not None and _filename in MODULESBYFILE:
         return modules.get(MODULESBYFILE[_filename])
     # Try the cache again with the absolute file name
     try:
@@ -167,7 +167,7 @@ def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # no
     _main_mod = modules[r'__main__']
     if not hasattr(_object, r'__name__'):
         return None
-    elif hasattr(_main_mod, _object.__name__):
+    if hasattr(_main_mod, _object.__name__):
         mainobject = getattr(_main_mod, _object.__name__)
         if mainobject is _object:
             return _main_mod
@@ -182,7 +182,7 @@ def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # no
 
 def getsourcefile(_object: object) -> Optional[str]:
     """Return the filename that can be used to locate an object's source; Return None if the source cannot be found"""
-    filename = getobjfile(_object)
+    filename: str = getobjfile(_object)
     if filename.endswith(r'.pyc'):
         filename = (splitext(filename)[0] + r'.py')
     elif any(filename.endswith(s) for s in EXTENSION_SUFFIXES):
@@ -190,7 +190,7 @@ def getsourcefile(_object: object) -> Optional[str]:
     if exists(filename):
         return filename
     # Only return a non-existent filename if the module has a PEP 302 loader or is in the linecache
-    elif getattr(getmodule(_object, filename), r'__loader__', None) is not None or filename in cache:
+    if getattr(getmodule(_object, filename), r'__loader__', None) is not None or filename in cache:
         return filename
     return None
 
@@ -232,8 +232,7 @@ def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
             # Sort by whitespace and by line number (less whitespace first)
             candidates.sort()
             return lines, candidates[0][1]
-        else:
-            raise OSError(r'Could not find class definition')
+        raise OSError(r'Could not find class definition')
     elif isinstance(_object, MethodType):
         _object = _object.__func__
     if isinstance(_object, FunctionType):
@@ -270,13 +269,10 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
                 if doc is not None:
                     return doc
         return None
-    elif isinstance(obj, MethodType):
+    if isinstance(obj, MethodType):
         name = obj.__func__.__name__
-        self = obj.__self__
-        if isinstance(self, type) and getattr(getattr(self, name, None), r'__func__') is obj.__func__:
-            cls = self
-        else:
-            cls = self.__class__
+        _self = obj.__self__
+        cls = _self if isinstance(_self, type) and getattr(getattr(_self, name, None), r'__func__') is obj.__func__ else _self.__class__
     elif isinstance(obj, FunctionType):
         name = obj.__name__
         cls = findclass(obj)
@@ -284,11 +280,8 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
             return None
     elif isinstance(obj, BuiltinFunctionType):
         name = obj.__name__
-        self = obj.__self__
-        if isinstance(self, type) and (self.__qualname__ + r'.' + name == obj.__qualname__):
-            cls = self
-        else:
-            cls = self.__class__
+        _self = obj.__self__
+        cls = _self if isinstance(_self, type) and (_self.__qualname__ + r'.' + name == obj.__qualname__) else _self.__class__
     elif isinstance(obj, property):
         func = obj.fget
         name = func.__name__
@@ -319,12 +312,11 @@ def cleandoc(doc: str) -> Optional[str]:
     except UnicodeError:
         return None
     # Find minimum indentation of any non-blank lines after first line
-    margin = maxsize
+    margin: int = maxsize
     for line in lines[1:]:
         content = len(line.lstrip())
         if content:
-            indent = len(line) - content
-            margin = min(margin, indent)
+            margin = min(margin, len(line) - content)
     # Remove indentation
     if lines:
         lines[0] = lines[0].lstrip()
@@ -386,13 +378,13 @@ def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disabl
         return None
     if isinstance(_object, ModuleType):
         # Look for a comment block at the top of the file
-        start = 0
+        start: int = 0
         if lines and lines[0][:2] == r'#!':
             start = 1
         while start < len(lines) and lines[start].strip() in (r'', r'#'):
             start += 1
         if start < len(lines) and lines[start][:1] == r'#':
-            comments = []
+            comments: list = []
             end = start
             while end < len(lines) and lines[end][:1] == r'#':
                 comments.append(lines[end].expandtabs())
@@ -453,9 +445,9 @@ def safeimport(_path: str) -> Optional[object]:
 
 def locate(_path: str) -> Optional[object]:
     """Locate an object by name or dotted path, importing as necessary"""
-    parts = [part for part in _path.split(r'.') if part]
+    parts: list = [part for part in _path.split(r'.') if part]
     module = None
-    i = 0
+    i: int = 0
     while i < len(parts):
         nextmodule = safeimport(r'.'.join(parts[:i + 1]))
         if nextmodule:

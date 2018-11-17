@@ -52,36 +52,31 @@ __all__: list = [
 # CONSTANTS #
 
 
-# TODO: Add table of Area Codes https://en.wikipedia.org/wiki/List_of_North_American_Numbering_Plan_area_codes
-# TODO: Add table of Sectional Center Facility Codes https://en.wikipedia.org/wiki/Sectional_center_facility
-# TODO: Add table of Secondary Zip Codes https://en.wikipedia.org/wiki/List_of_ZIP_code_prefixes
-# TODO: Add table of Country Calling Codes https://en.wikipedia.org/wiki/List_of_country_calling_codes
-
 """Dictionary indicating the first digit of the zip code that each state uses"""
 ZIPCODE_PRIMARY_STATE: dict = {
-    r'0': (r'AE', r'CT', r'MA', r'ME', r'NH', r'NJ', r'NY', r'PR', r'RI', r'VI', r'VT'),
-    r'1': (r'DE', r'NY', r'PA'),
-    r'2': (r'DC', r'MD', r'NC', r'SC', r'VA', r'WV'),
-    r'3': (r'AA', r'AL', r'FL', r'GA', r'MS', r'TN'),
-    r'4': (r'IN', r'KY', r'MI', r'OH'),
-    r'5': (r'IA', r'MN', r'MT', r'ND', r'SD', r'WI'),
-    r'6': (r'IL', r'KS', r'MO', r'NE'),
-    r'7': (r'AR', r'LA', r'OK', r'TX'),
-    r'8': (r'AZ', r'CO', r'ID', r'NM', r'NV', r'UT', r'WY'),
-    r'9': (r'AK', r'AP', r'AS', r'CA', r'FM', r'GU', r'HI', r'MH', r'MP', r'OR', r'PW', r'WA')
+    r'0': {r'AE', r'CT', r'MA', r'ME', r'NH', r'NJ', r'NY', r'PR', r'RI', r'VI', r'VT'},
+    r'1': {r'DE', r'NY', r'PA'},
+    r'2': {r'DC', r'MD', r'NC', r'SC', r'VA', r'WV'},
+    r'3': {r'AA', r'AL', r'FL', r'GA', r'MS', r'TN'},
+    r'4': {r'IN', r'KY', r'MI', r'OH'},
+    r'5': {r'IA', r'MN', r'MT', r'ND', r'SD', r'WI'},
+    r'6': {r'IL', r'KS', r'MO', r'NE'},
+    r'7': {r'AR', r'LA', r'OK', r'TX'},
+    r'8': {r'AZ', r'CO', r'ID', r'NM', r'NV', r'UT', r'WY'},
+    r'9': {r'AK', r'AP', r'AS', r'CA', r'FM', r'GU', r'HI', r'MH', r'MP', r'OR', r'PW', r'WA'}
 }
 
 
 # FUNCTIONS #
 
 
-def zip2states(_zipcode: int) -> tuple:
-    """Return a tuple of USA state abbreviations that use zip codes that begin with the same number as the given zip code
+def zip2states(_zipcode: int) -> set:
+    """Return a set of USA state abbreviations that use zip codes that begin with the same number as the given zip code
 
-    >>> zip2states(63119)
-    ('IL', 'KS', 'MO', 'NE')
-    >>> zip2states(47542)
-    ('IN', 'KY', 'MI', 'OH')
+    >>> data = list(zip2states(63119)); data.sort(); data
+    ['IL', 'KS', 'MO', 'NE']
+    >>> data = list(zip2states(47542)); data.sort(); data
+    ['IN', 'KY', 'MI', 'OH']
     """
     return ZIPCODE_PRIMARY_STATE[str(_zipcode)[0]]
 

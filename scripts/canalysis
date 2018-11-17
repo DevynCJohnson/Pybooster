@@ -17,6 +17,11 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     exit 0
 fi
 
+ENABLE_KWSTYLE=0
+if [ -n "${2:-}" ] && [ "${2}" = '-k' ]; then
+    ENABLE_KWSTYLE=1
+fi
+
 
 # SETUP #
 
@@ -51,37 +56,30 @@ for file in "$@"; do
 
     if [ -x "$(command -v cppcheck)" ]; then
         printf '======  *CPPCHECK*  ======\n'
-        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'cppcheck: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v KWStyle)" ]; then
+    if [ ${ENABLE_KWSTYLE} -eq 1 ] && [ -x "$(command -v KWStyle)" ]; then
         printf '======  *KWSTYLE*  ======\n'
         KWStyle -qv -gcc "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
+    elif [ ${ENABLE_KWSTYLE} -eq 1 ] && [ "$FirstLoopPass" -eq 0 ]; then
         printf 'KWStyle: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v splint)" ]; then
         printf '======  *SPLINT*  ======\n'
-        splint -nof -tmpdir /tmp/ -I. -I../include -nolib -strict -checks -preproc +stats "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        splint -nof -tmpdir /tmp/ -I. -I../include -nolib -strict -booltype _Bool -booltype Bool -booltype bool -booltype Boolean -checks +charint -initallelements -namechecks -nullassign -preproc +stats -stringliteralsmaller "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'splint: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v flawfinder)" ]; then
         printf '======  *FLAWFINDER*  ======\n'
-        flawfinder --minlevel=1 --omittime --quiet --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        flawfinder --minlevel=1 --omittime --quiet --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Flawfinder version .+$/, ""); gsub(/^Number of rules .+$/, ""); gsub(/^ANALYSIS SUMMARY.+$/, ""); gsub(/^No hits found.+$/, ""); gsub(/^There may be other security vulnerabilities.+$/, ""); gsub(/^.+Programming for Linux and Unix HOWTO.+$/, ""); gsub(/^.+for more information.+$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flawfinder: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v undertaker)" ]; then
-        printf '======  *UNDERTAKER (MACROS SCANNER)*  ======\n'
-        undertaker -I ../include/ -j dead -O stdout -v "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'undertaker: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pmccabe)" ]; then

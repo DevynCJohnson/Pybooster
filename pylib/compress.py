@@ -78,8 +78,7 @@ __all__: list = [
 def getgzip(_filename: str) -> str:
     """Open and get the contents of a gzip file"""
     with gzip.open(_filename, mode=r'rb') as _file:
-        data = _file.read()
-    return bytes.decode(data)
+        return bytes.decode(_file.read())
 
 
 def write2gzip(_filename: str, _write: str) -> None:
@@ -111,8 +110,7 @@ def getgzipvar(data: bytes) -> str:
 def getbzip(_filename: str) -> str:
     """Open and get the contents of a bzip2 file"""
     with bz2.open(_filename, mode=r'rb') as _file:
-        data = _file.read()
-    return bytes.decode(data)
+        return bytes.decode(_file.read())
 
 
 def write2bzip(_filename: str, _write: str) -> None:
@@ -144,8 +142,7 @@ def getbzipvar(data: bytes) -> str:
 def getlzma(_filename: str) -> str:
     """Open and get the contents of a LZMA file"""
     with lzma.open(_filename, mode=r'rb') as _file:
-        data = _file.read()
-    return bytes.decode(data)
+        return bytes.decode(_file.read())
 
 
 def write2lzma(_filename: str, _write: str) -> None:
@@ -177,8 +174,7 @@ def getlzmavar(data: bytes) -> str:
 def getxz(_filename: str) -> str:
     """Open and get the contents of a XZ file"""
     with lzma.open(_filename, mode=r'rb') as _file:
-        data = _file.read()
-    return bytes.decode(data)
+        return bytes.decode(_file.read())
 
 
 def write2xz(_filename: str, _write: str) -> None:

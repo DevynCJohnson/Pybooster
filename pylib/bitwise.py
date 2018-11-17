@@ -53,20 +53,15 @@ def bit_and(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
     """
     if not isinstance(_num0, str) or not isinstance(_num1, str):
         return None
-    elif _base == 2:  # Binary
-        _inum = int(_num0, 2) & int(_num1, 2)
-        _num = bin(_inum).replace(r'0b', r'')
-    elif _base == 8:  # Octal
-        _inum = int(_num0, 8) & int(_num1, 8)
-        _num = oct(_inum).replace(r'0o', r'')
-    elif _base == 10:  # Decimal
-        _num = str(int(_num0) & int(_num1))
-    elif _base == 16:  # Hexadecimal
-        _inum = int(_num0, 16) & int(_num1, 16)
-        _num = hex(_inum).replace(r'0x', r'')
-    else:
-        return None
-    return _num
+    if _base == 2:  # Binary
+        return bin(int(_num0, 2) & int(_num1, 2)).replace(r'0b', r'')
+    if _base == 8:  # Octal
+        return oct(int(_num0, 8) & int(_num1, 8)).replace(r'0o', r'')
+    if _base == 10:  # Decimal
+        return str(int(_num0) & int(_num1))
+    if _base == 16:  # Hexadecimal
+        return hex(int(_num0, 16) & int(_num1, 16)).replace(r'0x', r'')
+    return None
 
 
 def bit_or(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
@@ -83,20 +78,15 @@ def bit_or(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
     """
     if not isinstance(_num0, str) or not isinstance(_num1, str):
         return None
-    elif _base == 2:  # Binary
-        _inum = int(_num0, 2) | int(_num1, 2)
-        _num = bin(_inum).replace(r'0b', r'')
-    elif _base == 8:  # Octal
-        _inum = int(_num0, 8) | int(_num1, 8)
-        _num = oct(_inum).replace(r'0o', r'')
-    elif _base == 10:  # Decimal
-        _num = str(int(_num0) | int(_num1))
-    elif _base == 16:  # Hexadecimal
-        _inum = int(_num0, 16) | int(_num1, 16)
-        _num = hex(_inum).replace(r'0x', r'')
-    else:
-        return None
-    return _num
+    if _base == 2:  # Binary
+        return bin(int(_num0, 2) | int(_num1, 2)).replace(r'0b', r'')
+    if _base == 8:  # Octal
+        return oct(int(_num0, 8) | int(_num1, 8)).replace(r'0o', r'')
+    if _base == 10:  # Decimal
+        return str(int(_num0) | int(_num1))
+    if _base == 16:  # Hexadecimal
+        return hex(int(_num0, 16) | int(_num1, 16)).replace(r'0x', r'')
+    return None
 
 
 def bit_xor(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
@@ -109,17 +99,12 @@ def bit_xor(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
     """
     if not isinstance(_num0, str) or not isinstance(_num1, str):
         return None
-    elif _base == 2:  # Binary
-        _inum = int(_num0, 2) ^ int(_num1, 2)
-        _num = bin(_inum).replace(r'0b', r'')
-    elif _base == 8:  # Octal
-        _inum = int(_num0, 8) ^ int(_num1, 8)
-        _num = oct(_inum).replace(r'0o', r'')
-    elif _base == 10:  # Decimal
-        _num = str(int(_num0) ^ int(_num1))
-    elif _base == 16:  # Hexadecimal
-        _inum = int(_num0, 16) ^ int(_num1, 16)
-        _num = hex(_inum).replace(r'0x', r'')
-    else:
-        return None
-    return _num
+    if _base == 2:  # Binary
+        return bin(int(_num0, 2) ^ int(_num1, 2)).replace(r'0b', r'')
+    if _base == 8:  # Octal
+        return oct(int(_num0, 8) ^ int(_num1, 8)).replace(r'0o', r'')
+    if _base == 10:  # Decimal
+        return str(int(_num0) ^ int(_num1))
+    if _base == 16:  # Hexadecimal
+        return hex(int(_num0, 16) ^ int(_num1, 16)).replace(r'0x', r'')
+    return None

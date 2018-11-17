@@ -54,7 +54,7 @@ __all__: list = [
 # LISTS #
 
 
-PLANETS: tuple = (
+PLANETS: set = {
     r'Mercury',
     r'Venus',
     r'Earth',
@@ -63,16 +63,16 @@ PLANETS: tuple = (
     r'Saturn',
     r'Uranus',
     r'Neptune'
-)
+}
 
 
-DWARF_PLANETS: tuple = (
+DWARF_PLANETS: set = {
     r'Ceres',
     r'Pluto',
     r'Haumea',
     r'Makemake',
     r'Eris'
-)
+}
 
 
 PLANET_SYMBOLS: dict = {

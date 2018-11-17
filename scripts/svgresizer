@@ -92,14 +92,15 @@ if __name__ == '__main__':
         action=r'store_true',
         help=r'Add white frame around the picture'
     )
-    OPTIONS = vars(PARSER.parse_args())
+    OPTIONS: dict = vars(PARSER.parse_args())
     del PARSER
     # Process Flags
     if not OPTIONS[r'input']:
         OPTIONS[r'input'] = r'-'
     if r'output' not in OPTIONS or not OPTIONS[r'output']:
         OPTIONS[r'output'] = OPTIONS[r'input']
-    TREE = ET.parse(stdin if OPTIONS[r'input'] == r'-' else OPTIONS[r'input'])  # nosec
+    TREE: object = ET.parse(stdin if OPTIONS[r'input'] == r'-' else OPTIONS[r'input'])  # nosec
     # Resize SVG
     resize_svg(TREE, OPTIONS)
     TREE.write(stdout if OPTIONS[r'output'] == r'-' else OPTIONS[r'output'])
+    raise SystemExit(0)

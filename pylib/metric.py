@@ -69,67 +69,67 @@ __all__: list = [
 # CONSTANTS #
 
 
-YOCTO_UNITS = (r'ym', r'yV', r'yA', 'y\u03A9')
+YOCTO_UNITS: tuple = (r'ym', r'yV', r'yA', 'y\u03A9')
 
 
-ZEPTO_UNITS = (r'zm', r'zV', r'zA', 'z\u03A9')
+ZEPTO_UNITS: tuple = (r'zm', r'zV', r'zA', 'z\u03A9')
 
 
-ATTO_UNITS = (r'am', r'aV', r'aA', 'a\u03A9')
+ATTO_UNITS: tuple = (r'am', r'aV', r'aA', 'a\u03A9')
 
 
-FEMTO_UNITS = (r'fm', r'fV', r'fA', 'f\u03A9')
+FEMTO_UNITS: tuple = (r'fm', r'fV', r'fA', 'f\u03A9')
 
 
-PICO_UNITS = (r'pm', r'pV', r'pA', 'p\u03A9')
+PICO_UNITS: tuple = (r'pm', r'pV', r'pA', 'p\u03A9')
 
 
-NANO_UNITS = (r'nm', r'nV', r'nA', 'n\u03A9')
+NANO_UNITS: tuple = (r'nm', r'nV', r'nA', 'n\u03A9')
 
 
-MICRO_UNITS = ('\u03BCm', '\u03BCV', '\u03BCA', '\u03A9')
+MICRO_UNITS: tuple = ('\u03BCm', '\u03BCV', '\u03BCA', '\u03A9')
 
 
-MILLI_UNITS = (r'mm', r'mV', r'mA', 'm\u03A9')
+MILLI_UNITS: tuple = (r'mm', r'mV', r'mA', 'm\u03A9')
 
 
-CENTI_UNITS = (r'cm', r'cV', r'cA', 'c\u03A9')
+CENTI_UNITS: tuple = (r'cm', r'cV', r'cA', 'c\u03A9')
 
 
-DECI_UNITS = (r'dm', r'dV', r'dA', 'd\u03A9')
+DECI_UNITS: tuple = (r'dm', r'dV', r'dA', 'd\u03A9')
 
 
-DECA_UNITS = (r'dam', r'daV', r'daA', 'da\u03A9')
+DECA_UNITS: tuple = (r'dam', r'daV', r'daA', 'da\u03A9')
 
 
-HECTO_UNITS = (r'hm', r'hV', r'hA', 'h\u03A9')
+HECTO_UNITS: tuple = (r'hm', r'hV', r'hA', 'h\u03A9')
 
 
-KILO_UNITS = (r'km', r'kV', r'kA', 'k\u03A9')
+KILO_UNITS: tuple = (r'km', r'kV', r'kA', 'k\u03A9')
 
 
-MEGA_UNITS = (r'Mm', r'MV', r'MA', 'M\u03A9')
+MEGA_UNITS: tuple = (r'Mm', r'MV', r'MA', 'M\u03A9')
 
 
-GIGA_UNITS = (r'Gm', r'GV', r'GA', 'G\u03A9')
+GIGA_UNITS: tuple = (r'Gm', r'GV', r'GA', 'G\u03A9')
 
 
-TERA_UNITS = (r'Tm', r'TV', r'TA', 'T\u03A9')
+TERA_UNITS: tuple = (r'Tm', r'TV', r'TA', 'T\u03A9')
 
 
-PETA_UNITS = (r'Pm', r'PV', r'PA', 'P\u03A9')
+PETA_UNITS: tuple = (r'Pm', r'PV', r'PA', 'P\u03A9')
 
 
-EXA_UNITS = (r'Em', r'EV', r'EA', 'E\u03A9')
+EXA_UNITS: tuple = (r'Em', r'EV', r'EA', 'E\u03A9')
 
 
-ZETTA_UNITS = (r'Zm', r'ZV', r'ZA', 'Z\u03A9')
+ZETTA_UNITS: tuple = (r'Zm', r'ZV', r'ZA', 'Z\u03A9')
 
 
-YOTTA_UNITS = (r'Ym', r'YV', r'YA', 'Y\u03A9')
+YOTTA_UNITS: tuple = (r'Ym', r'YV', r'YA', 'Y\u03A9')
 
 
-SIUNITS = (
+SIUNITS: tuple = (
     YOCTO_UNITS,
     ZEPTO_UNITS,
     ATTO_UNITS,
@@ -153,7 +153,7 @@ SIUNITS = (
 )
 
 
-METRIC_PREFIX = {
+METRIC_PREFIX: dict = {
     r'yotta': (r'Y', 1000000000000000000000000),
     r'zetta': (r'Z', 1000000000000000000000),
     r'exa': (r'E', 1000000000000000000),
@@ -177,7 +177,7 @@ METRIC_PREFIX = {
 }
 
 
-NON_STANDARD_PREFIX = {
+NON_STANDARD_PREFIX: dict = {
     r'myria': (r'my', 10000),
     r'hella': (r'H', 1000000000000000000000000000),
 }
@@ -188,51 +188,51 @@ NON_STANDARD_PREFIX = {
 
 def str2tupleunit(_str: str) -> tuple:
     """Convert measurement units from string to tuple"""
-    _num = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\1', _str)
-    _unit = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\3', _str)
+    _num: str = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\1', _str)
+    _unit: str = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\3', _str)
     return (_num, _unit)
 
 
-def siunits2base(_measurement: tuple) -> tuple:   # noqa: C901  # pylint: disable=R0911,R0912
+def siunits2base(_measurement: tuple) -> tuple:  # noqa: C901  # pylint: disable=R0911,R0912
     """Convert SI units to base unit"""
     if _measurement[1] in YOCTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000000001, _measurement[1][1:])
-    elif _measurement[1] in ZEPTO_UNITS:
+    if _measurement[1] in ZEPTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000001, _measurement[1][1:])
-    elif _measurement[1] in ATTO_UNITS:
+    if _measurement[1] in ATTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000001, _measurement[1][1:])
-    elif _measurement[1] in FEMTO_UNITS:
+    if _measurement[1] in FEMTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000001, _measurement[1][1:])
-    elif _measurement[1] in PICO_UNITS:
+    if _measurement[1] in PICO_UNITS:
         return (float(_measurement[0]) * 0.000000000001, _measurement[1][1:])
-    elif _measurement[1] in NANO_UNITS:
+    if _measurement[1] in NANO_UNITS:
         return (float(_measurement[0]) * 0.000000001, _measurement[1][1:])
-    elif _measurement[1] in MICRO_UNITS:
+    if _measurement[1] in MICRO_UNITS:
         return (float(_measurement[0]) * 0.000001, _measurement[1][1:])
-    elif _measurement[1] in MILLI_UNITS:
+    if _measurement[1] in MILLI_UNITS:
         return (float(_measurement[0]) * 0.001, _measurement[1][1:])
-    elif _measurement[1] in CENTI_UNITS:
+    if _measurement[1] in CENTI_UNITS:
         return (float(_measurement[0]) * 0.01, _measurement[1][1:])
-    elif _measurement[1] in DECI_UNITS:
+    if _measurement[1] in DECI_UNITS:
         return (float(_measurement[0]) * 0.1, _measurement[1][1:])
-    elif _measurement[1] in DECA_UNITS:
+    if _measurement[1] in DECA_UNITS:
         return (float(_measurement[0]) * 10.0, _measurement[1][1:])
-    elif _measurement[1] in HECTO_UNITS:
+    if _measurement[1] in HECTO_UNITS:
         return (float(_measurement[0]) * 100.0, _measurement[1][1:])
-    elif _measurement[1] in KILO_UNITS:
+    if _measurement[1] in KILO_UNITS:
         return (float(_measurement[0]) * 1000.0, _measurement[1][1:])
-    elif _measurement[1] in MEGA_UNITS:
+    if _measurement[1] in MEGA_UNITS:
         return (float(_measurement[0]) * 1000000.0, _measurement[1][1:])
-    elif _measurement[1] in GIGA_UNITS:
+    if _measurement[1] in GIGA_UNITS:
         return (float(_measurement[0]) * 1000000000.0, _measurement[1][1:])
-    elif _measurement[1] in TERA_UNITS:
+    if _measurement[1] in TERA_UNITS:
         return (float(_measurement[0]) * 1000000000000.0, _measurement[1][1:])
-    elif _measurement[1] in PETA_UNITS:
+    if _measurement[1] in PETA_UNITS:
         return (float(_measurement[0]) * 1000000000000000.0, _measurement[1][1:])
-    elif _measurement[1] in EXA_UNITS:
+    if _measurement[1] in EXA_UNITS:
         return (float(_measurement[0]) * 1000000000000000000.0, _measurement[1][1:])
-    elif _measurement[1] in ZETTA_UNITS:
+    if _measurement[1] in ZETTA_UNITS:
         return (float(_measurement[0]) * 1000000000000000000000.0, _measurement[1][1:])
-    elif _measurement[1] in YOTTA_UNITS:
+    if _measurement[1] in YOTTA_UNITS:
         return (float(_measurement[0]) * 1000000000000000000000000.0, _measurement[1][1:])
     return (float(_measurement[0]), _measurement[1])

@@ -57,7 +57,7 @@ except ImportError:
 # CONSTANTS #
 
 
-RESOLUTION_PAIRS = (
+RESOLUTION_PAIRS: tuple = (
     # Width, Height
     (320, 240),  # QVGA
     (480, 320),  # HVGA
@@ -74,10 +74,10 @@ RESOLUTION_PAIRS = (
 )
 
 
-PICDIR = expanduser(r'~') + r'/Pictures/'
+PICDIR: str = expanduser(r'~') + r'/Pictures/'
 
 
-TAU = 2.0 * pi
+TAU: float = 2.0 * pi
 
 
 # VARIABLE CLASSES #
@@ -320,19 +320,19 @@ class Tan:
 def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
     """Randomly select a mathematical expression"""
     reseed(rand_object)
-    math_funcs = (Multiply, Cos, Csc, Cvc, Hvc, Sin)
-    math_vars = (Xvar, Yvar)
-    rare_funcs = (Acos, Log1P, Phi)
-    semirare_funcs = (Atan, Sec, Tan)
-    smooth_funcs = (Multiply, Cos, Hvc, Sin)
+    math_funcs: tuple = (Multiply, Cos, Csc, Cvc, Hvc, Sin)
+    math_vars: tuple = (Xvar, Yvar)
+    rare_funcs: tuple = (Acos, Log1P, Phi)
+    semirare_funcs: tuple = (Atan, Sec, Tan)
+    smooth_funcs: tuple = (Multiply, Cos, Hvc, Sin)
     if prob <= 0.01 or prob > 1.0:
         return rand_object.choice(math_vars)()
-    elif prob >= 0.05 or prob < 0.09:
+    if prob >= 0.05 or prob < 0.09:
         return rand_object.choice(smooth_funcs)(prob, rand_object)
-    elif prob > 0.01 and prob < 0.05:
+    if 0.01 < prob < 0.05:
         rand_object.shuffle(rare_funcs)
         return rand_object.choice(rare_funcs)(prob, rand_object)
-    elif random() < prob + 0.11:  # nosec
+    if random() < prob + 0.11:  # nosec
         rand_object.shuffle(math_funcs)
         rand_object.shuffle(semirare_funcs)
         return rand_object.choice(rand_object.choice((math_funcs, math_funcs, math_funcs, math_funcs, math_funcs, semirare_funcs)))(prob, rand_object)
@@ -351,7 +351,7 @@ def getexpr_threaded(color_queue: Queue, prob: float = 0.99, rand_object: Random
 def format_for_starmap(headings: list, lst_of_lsts: list) -> List[tuple]:
     """Prepend one item from headings to the list of lists; this will create the needed format for starmap"""
     output: List = []
-    i = 0
+    i: int = 0
     for lst in lst_of_lsts:
         tmp = lst[:]
         tmp.insert(0, headings[i])
@@ -370,11 +370,11 @@ def imgformatfext(imgformat: str = r'PNG') -> str:
     """Return the appropriate file extention (as a string) for the given image format"""
     if imgformat.upper() == r'PNG':
         return r'.png'
-    elif imgformat.upper() == r'BMP':
+    if imgformat.upper() == r'BMP':
         return r'.bmp'
-    elif imgformat.upper() in {r'JPEG', r'JPG'}:
+    if imgformat.upper() in {r'JPEG', r'JPG'}:
         return r'.jpeg'
-    elif imgformat.upper() in {r'TIF', r'TIFF'}:
+    if imgformat.upper() in {r'TIF', r'TIFF'}:
         return r'.tif'
     return r'.png'
 
@@ -414,8 +414,8 @@ def loaddata(_data: str) -> bytes:
 def plot_image(red: object, green: object, blue: object, imgwidth: int = 600) -> object:
     """Generate an RGB color plot for the given math expressions and evaluate and plot color values within the specified image size"""
     # Image Size
-    px_per_unit = (imgwidth - 1) // 2
-    imgheight = get_suitable_height(imgwidth)
+    px_per_unit: int = (imgwidth - 1) // 2
+    imgheight: int = get_suitable_height(imgwidth)
     # Generate Pixels
     red_plane = Image.new(r'L', (imgwidth, imgheight))
     green_plane = Image.new(r'L', (imgwidth, imgheight))
@@ -491,9 +491,9 @@ def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> 
 def calc_from_maf(mafsection: str, maffile: configparser.ConfigParser, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR) -> None:
     """Generate one or more PNG images from *.maf files"""
     # Load math expressions from *.maf file
-    red = loaddata(maffile[mafsection][r'RedCode'])
-    green = loaddata(maffile[mafsection][r'GreenCode'])
-    blue = loaddata(maffile[mafsection][r'BlueCode'])
+    red: bytes = loaddata(maffile[mafsection][r'RedCode'])
+    green: bytes = loaddata(maffile[mafsection][r'GreenCode'])
+    blue: bytes = loaddata(maffile[mafsection][r'BlueCode'])
     # Create image using the loaded expressions
     image: Image.Image = plot_image(red, green, blue, imgwidth)
     image.save(outdir + mafsection + imgformatfext(imgformat), format=imgformat)
@@ -508,7 +508,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
     if num_imgs < 1:
         num_imgs = 1
     # Create image using parallel processing
-    poolsize = cpu_count()
+    poolsize: int = cpu_count()
     poolsize = num_imgs if poolsize > num_imgs else poolsize
     with Pool(poolsize) as threadpool:
         try:
@@ -523,7 +523,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
         for strbuf in filebuf:
             if not strbuf:
                 continue
-            outputbuf += + strbuf
+            outputbuf += strbuf
         if outputbuf:
             fname = strftime(r'%m%d%H%M%S')
             with open(outdir + fname + r'.maf', mode=r'wt', encoding=r'utf-8') as maf_file:
@@ -544,7 +544,7 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
         if not isinstance(inputfile, str):
             stderr.write('Integers are not accepted as file locations!\n')
             raise SystemExit(1)
-        elif not exists(inputfile) or not isfile(inputfile):
+        if not exists(inputfile) or not isfile(inputfile):
             stderr.write(inputfile + '{}: The specified file is non-readable or non-existent!\n')
             raise SystemExit(1)
         # Read MAF File
@@ -552,9 +552,9 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
         maffile.read(inputfile)
         mafsections = maffile.sections()
         # Convert MAF image to raster image using parallel processing
-        num_imgs = len(mafsections)
-        maxpoolsize = cpu_count()
-        poolsize = num_imgs if maxpoolsize > num_imgs else maxpoolsize
+        num_imgs: int = len(mafsections)
+        maxpoolsize: int = cpu_count()
+        poolsize: int = num_imgs if maxpoolsize > num_imgs else maxpoolsize
         with Pool(poolsize) as threadpool:
             try:
                 threadpool.starmap(calc_from_maf, format_for_starmap(mafsections, repeat([maffile, imgformat, imgwidth, outdir], num_imgs)))  # type: ignore
@@ -633,7 +633,7 @@ if __name__ == '__main__':
         stdout.write('Generating image\n')
     else:
         stdout.write('Generating images\n')
-    IMG_OR_MATH = 0
+    IMG_OR_MATH: int = 0
     if OPTIONS.imgonly and OPTIONS.mathonly:
         IMG_OR_MATH = 0
     elif OPTIONS.imgonly:

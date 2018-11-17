@@ -104,7 +104,7 @@ if __name__ == '__main__':  # noqa: C901
         else:
             ARGS.newline = '\n'
     # GET & PROCESS DATA/FILE #
-    XMLDATA = getdata(ARGS.input_file, ARGS.encoding)
+    XMLDATA: str = getdata(ARGS.input_file, ARGS.encoding)
     if r'<' not in XMLDATA and r'>' not in XMLDATA:
         stderr.write('Unsupported filetype!\n')
         raise SystemExit(1)

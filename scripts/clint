@@ -50,13 +50,13 @@ except ImportError:
 # OBJECTS #
 
 
-ATTRIBUTE_SPECIFIER = r'UNUSED'
-ATOMIC = r'(_Atomic|Atomic|atomic|)'
-STORAGE_CLASS = r'(auto|extern|register|static|)'
-THREAD_STORAGE = r'(thread_local|_Thread_local|)'
-QUALIFIER = r'(\*| \*|\* | \* |)(const|restrict|volatile|)(\*| \*|\* | \* |)'
-SPECIFIER = ATTRIBUTE_SPECIFIER + ATOMIC + STORAGE_CLASS + ATOMIC + THREAD_STORAGE + QUALIFIER
-ASM_STMT = r'(asm |__asm |__asm__ )(volatile |)'
+ATTRIBUTE_SPECIFIER: str = r'UNUSED'
+ATOMIC: str = r'(_Atomic|Atomic|atomic|)'
+STORAGE_CLASS: str = r'(auto|extern|register|static|)'
+THREAD_STORAGE: str = r'(thread_local|_Thread_local|)'
+QUALIFIER: str = r'(\*| \*|\* | \* |)(const|restrict|volatile|)(\*| \*|\* | \* |)'
+SPECIFIER: str = ATTRIBUTE_SPECIFIER + ATOMIC + STORAGE_CLASS + ATOMIC + THREAD_STORAGE + QUALIFIER
+ASM_STMT: str = r'(asm |__asm |__asm__ )(volatile |)'
 
 
 # PATTERNS #
@@ -118,29 +118,29 @@ REGEX_MACROS_WARN_ERR_SPACE = rgxcompile(r'^#[ ]*(error|warning)([ ]+)".+"$')
 REGEX_OPERATOR_EXTRA_SPACE = rgxcompile(r'.+(  &&|  \|\||&&  |\|\|  ).+')
 
 # Operators
-REGEX_DIV_SPACE = rgxcompile(r'^.+(\s+/[^=]|/[^=]\s+).+$')
-REGEX_EQUALS_SPACE = rgxcompile(r'^.+(\s+=[^=]|=[^=]\s+).+$')
-REGEX_MINUS_SPACE = rgxcompile(r'^.+(\s+\-[^=]|\-[^=]\s+).+$')
-REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ]\s+\*[^=]|\*[^=]\s+).+$')
-REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+(\s+\!=|\!=\s+).+$')
-REGEX_PLUS_SPACE = rgxcompile(r'^.+(\s+\+[^=]|\+[^=]\s+).+$')
-REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+(\s+\+=|\+=\s+).+$')
-REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+(\s+\-=|\-=\s+).+$')
-REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+(\s+\*=|\*=\s+).+$')
-REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+(\s+/=|/=\s+).+$')
-REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+(\s+%=|%=\s+).+$')
-REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s+<<=|<<=\s+).+$')
-REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s+>>=|>>=\s+).+$')
-REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+(\s+\&=|\&=\s+).+$')
-REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+(\s+\|=|\|=\s+).+$')
-REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+(\s+\^=|\^=\s+).+$')
-REGEX_MOD_SPACE = rgxcompile(r'^.+(\s+%[^=]|%[^=]\s+).+$')
-REGEX_AND_SPACE = rgxcompile(r'^.+(\s+\&\&|\&\&\s+).+$')
-REGEX_OR_SPACE = rgxcompile(r'^.+(\s+\|\||\|\|\s+).+$')
-REGEX_TERNARY_SPACE = rgxcompile(r'^.+(\s+\?|\?\s+).+$')
-REGEX_NOT_SPACE = rgxcompile(r'^.+(\s+\!|\!\s+).+$')
-REGEX_LT_SPACE = rgxcompile(r'^.+\s+<.+$')
-REGEX_GT_SPACE = rgxcompile(r'^.+\s+>.+$')
+REGEX_DIV_SPACE = rgxcompile(r'^.+(\s\s+/[^=]|[^=]/\s\s+).+$')
+REGEX_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+=[^=]|[^=]=\s\s+).+$')
+REGEX_MINUS_SPACE = rgxcompile(r'^.+(\s\s+\-[^=]|[^=]\-\s\s+).+$')
+REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ]\s\s+\*[^=()]|[^=()]\*\s\s+).+$')
+REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\!=|\!=\s\s+).+$')
+REGEX_PLUS_SPACE = rgxcompile(r'^.+(\s\s+\+[^=]|[^=]\+\s\s+).+$')
+REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\+=|\+=\s\s+).+$')
+REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\-=|\-=\s\s+).+$')
+REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\*=|\*=\s\s+).+$')
+REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+/=|/=\s\s+).+$')
+REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+%=|%=\s\s+).+$')
+REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+<<=|<<=\s\s+).+$')
+REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+>>=|>>=\s\s+).+$')
+REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\&=|\&=\s\s+).+$')
+REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\|=|\|=\s\s+).+$')
+REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\^=|\^=\s\s+).+$')
+REGEX_MOD_SPACE = rgxcompile(r'^.+(\s\s+%[^=]|%[^=]\s\s+).+$')
+REGEX_AND_SPACE = rgxcompile(r'^.+(\s\s+\&\&|\&\&\s\s+).+$')
+REGEX_OR_SPACE = rgxcompile(r'^.+(\s\s+\|\|[^=]|[^=]\|\|\s\s+).+$')
+REGEX_TERNARY_SPACE = rgxcompile(r'^.+(\s\s+\?|\?\s\s+).+$')
+REGEX_NOT_SPACE = rgxcompile(r'^.+(\s\s+\!|\!\s\s+).+$')
+REGEX_LT_SPACE = rgxcompile(r'^.+\s\s+<.+$')
+REGEX_GT_SPACE = rgxcompile(r'^.+\s\s+>.+$')
 REGEX_OPERATOR_NO_SPACE1 = rgxcompile(r'^.+([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|)[^\s].+$')
 REGEX_OPERATOR_NO_SPACE2 = rgxcompile(r'^.+[^\s]([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|).+$')
 OPERATOR_SPACE_VALID = rgxcompile(r'.+ ([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|) .+')
@@ -175,11 +175,10 @@ REGEX_STRCPY = rgxcompile(r'[^\w\.]strcpy\(.+')
 def getfile_list(_filename: str) -> list:
     """Get file contents and return as a list"""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
-        _out = _file.readlines()
-    return _out
+        return _file.readlines()
 
 
-def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str, _mstr=r'0') -> None:
+def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str, _mstr: str = r'0') -> None:
     """Display warning/error information on stderr"""
     if _mstr == r'0' and (_line == r'' or _line is None):
         stderr.write(_filepath + r':' + str(_linenum) + r':0: ' + _code + r' : ' + _msg + '\n')
@@ -199,8 +198,7 @@ def strip_strings(_str: str) -> str:
 
 def strip_comments_and_strings(_str: str) -> str:
     """Remove all comments and strings to produce logical_line/log_line"""
-    _str = strip_strings(_str)
-    _str = resub(r'(.*)//.*', r'\1', _str)
+    _str = resub(r'(.*)//.*', r'\1', strip_strings(_str))
     return resub(r'(.*)/\*.*', r'\1', _str)
 
 
@@ -317,9 +315,7 @@ def t000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
 # Vague Code
 
 def v000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
-    """V***: Check for vague code that may perform an unintended action
-    Remember, explicit code is better than implicit code
-    """
+    """V***: Check for vague code that may perform an unintended action. Remember, explicit code is better than implicit code"""
     return None
 
 
@@ -524,7 +520,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         _match = REGEX_BRACKET_EXTRA_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X039', r'Single white-space before bracket, not more than one', _match)
-    if r'/*' in NO_STR_LINE and r'*/' in NO_STR_LINE:
+    if r'/*' in NO_STR_LINE and r'*/' in NO_STR_LINE and NO_STR_LINE not in {r'/*@end@*/', r'/*@ignore@*/'}:
         # X040 & X041
         if r'/**' not in NO_STR_LINE and NO_STR_LINE.startswith(r'/*') and NO_STR_LINE.endswith(r'*/'):
             if r'<' not in NO_STR_LINE and NO_STR_LINE.upper() != NO_STR_LINE:
@@ -551,10 +547,10 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
 
 def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=C0103,W0613,W0621
     """Z***: Check for code that can be optimized and suggest optimal code"""
-    if r'i = i + 1;' in log_line or r'j = j + 1;' in log_line or r'i = i - 1;' in log_line or r'j = j - 1;' in log_line:
+    if any(_pattern in log_line for _pattern in {r'i = i + 1;', r'j = j + 1;', r'i = i - 1;', r'j = j - 1;'}):
         # Z001
         output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
-    if r'i += 1;' in log_line or r'j += 1;' in log_line or r'i -= 1;' in log_line or r'j -= 1;' in log_line:
+    if any(_pattern in log_line for _pattern in {r'i += 1;', r'j += 1;', r'i -= 1;', r'j -= 1'}):
         # Z001
         output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
     # Z002
@@ -574,8 +570,8 @@ if __name__ == '__main__':  # noqa: C901
     # GET SRC #
     if len(argv) == 2:
         try:  # Filepath as argument
-            SRC_FILE_LIST = getfile_list(argv[1])
-            FILEPATH = argv[1]
+            SRC_FILE_LIST: list = getfile_list(argv[1])
+            FILEPATH: str = argv[1]
         except PermissionError:
             stderr.write(r'PermissionError!\n')
             raise SystemExit(1)
@@ -586,9 +582,9 @@ if __name__ == '__main__':  # noqa: C901
         stderr.write(r'Invalid parameters!\n')
         raise SystemExit(1)
     # SET VARIABLES #
-    LINE_NUM = 1
-    INSIDE_MULTILINE_COMMENT = False
-    BINFMTC_PRESENT = 0
+    LINE_NUM: int = 1
+    INSIDE_MULTILINE_COMMENT: bool = False
+    BINFMTC_PRESENT: int = 0
     # ANALYZE SRC #
     for LINE in SRC_FILE_LIST:  # Scan one line at-a-time
         if LINE_NUM is 1:  # Ensure that this is not a script
@@ -648,7 +644,7 @@ if __name__ == '__main__':  # noqa: C901
             LINE_NUM += 1
             continue
         # Coding Lines
-        LOGICAL_LINE = strip_comments_and_strings(LINE)  # Logical line without strings and comments
+        LOGICAL_LINE: str = strip_comments_and_strings(LINE)  # Logical line without strings and comments
         if REGEX_COMMENT_LINE.search(LINE):  # Physical comment line
             t000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
             c000_line(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)

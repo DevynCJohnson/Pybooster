@@ -65,7 +65,7 @@ __copyright__: str = r'LGPLv3'
 __version__: str = r'2018.11.11'
 
 
-__about__: tuple = (
+__about__: str = (
     '\n\n=====ABOUT=====\n\n'
     '    Created by Devyn Collier Johnson\n'
     '    <DevynCJohnson@Gmail.com>\n'
@@ -289,7 +289,7 @@ __examples__: str = """\n\n=====BASIC PYTHON EXAMPLES=====
 """
 
 
-__help__: tuple = (
+__help__: str = (
     '\n=====EZ-Win Documentation=====\n' +
     __about__ + __usage_sh__ + __usage_py__ + __flags__ + __examples__
 )
@@ -431,7 +431,6 @@ def ezinfo(_msg: str = r'Information') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezmsg(_msg: str = r'Message') -> None:
@@ -442,7 +441,6 @@ def ezmsg(_msg: str = r'Message') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezwarn(_msg: str = r'Warning') -> None:
@@ -453,7 +451,6 @@ def ezwarn(_msg: str = r'Warning') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezerr(_msg: str = r'Error Message') -> None:
@@ -464,7 +461,6 @@ def ezerr(_msg: str = r'Error Message') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezupd(_msg: str = r'Message') -> None:
@@ -475,7 +471,6 @@ def ezupd(_msg: str = r'Message') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezsecurity(_msg: str = r'Security Message') -> None:
@@ -486,7 +481,6 @@ def ezsecurity(_msg: str = r'Security Message') -> None:
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)
     Gtk.main()
-    return
 
 
 def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
@@ -516,42 +510,37 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
         )
     ui = Gtk.Builder()
     ui.add_from_file(_gf)
-    _out = ''
+    _out: str = r''
 
     def _yes(*_x) -> None:
         """YES Button"""
         nonlocal _out
         _out = r'True'
         Gtk.main_quit()
-        return
 
     def _no(*_x) -> None:
         """NO Button"""
         nonlocal _out
         _out = r'False'
         Gtk.main_quit()
-        return
 
     def _close(*_x) -> None:
         """CLOSE Button"""
         nonlocal _out
         _out = r'Close'
         Gtk.main_quit()
-        return
 
     def _cancel(*_x) -> None:
         """CANCEL Button"""
         nonlocal _out
         _out = r'Cancel'
         Gtk.main_quit()
-        return
 
     def _quit(*_x) -> None:
         """QUIT Button"""
         nonlocal _out
         _out = r'Quit'
         Gtk.main_quit()
-        return
 
     ui.connect_signals({
         r'_winexit': Gtk.main_quit,
@@ -579,7 +568,6 @@ def ezcolor(_datatype: str = r'list') -> object:
         nonlocal _rgba
         _rgba = _cc.get_rgba()
         Gtk.main_quit()
-        return
 
     ui.connect_signals({
         r'_winexit': Gtk.main_quit,
@@ -588,20 +576,15 @@ def ezcolor(_datatype: str = r'list') -> object:
     Gtk.main()
     if _rgba:
         _round = 6
-        _r = round(_rgba.red, _round)
-        _g = round(_rgba.green, _round)
-        _b = round(_rgba.blue, _round)
-        _a = round(_rgba.alpha, _round)
+        _r: float = round(_rgba.red, _round)
+        _g: float = round(_rgba.green, _round)
+        _b: float = round(_rgba.blue, _round)
+        _a: float = round(_rgba.alpha, _round)
         if _datatype.lower() in {r'list', r'lst'}:
-            _lst: list = []
-            _lst.append(_r)
-            _lst.append(_g)
-            _lst.append(_b)
-            _lst.append(_a)
-            return _lst
-        elif _datatype.lower() in {r'dict', r'dic'}:
+            return [_r, _g, _b, _a]
+        if _datatype.lower() in {r'dict', r'dic'}:
             return {r'red': _r, r'green': _g, r'blue': _b, r'alpha': _a}
-        elif _datatype.lower() in {r'str', r'string'}:
+        if _datatype.lower() in {r'str', r'string'}:
             return str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
         return _rgba
     return None
@@ -613,14 +596,13 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
     _gf = _GTEXTC if r'c' in _type.lower() else _GTEXT
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
-    _out = r''
+    _out: str = r''
 
     def _submit_text(*_x) -> None:
         """SUBMIT Button: Submit text for processing"""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
-        return
 
     ui.connect_signals({
         r'_winexit': Gtk.main_quit,
@@ -639,14 +621,13 @@ def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     _gf = _GPSWDC if r'c' in _type.lower() else _GPSWD
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
-    _out = r''
+    _out: str = r''
 
     def _submit_text(*_x) -> None:
         """SUBMIT Button: Submit password for processing"""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
-        return
 
     ui.connect_signals({
         r'_winexit': Gtk.main_quit,
@@ -659,7 +640,7 @@ def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     return _out
 
 
-def ezfilech(  # noqa: C901
+def ezfilech(  # noqa: C901  # pylint: disable=R0915
         _select_file: bool = True,
         _select_dir: bool = False,
         _multiple: bool = False,
@@ -709,10 +690,10 @@ def ezfilech(  # noqa: C901
     # FILE FILTERS #
 
     if _select_file and _file_exten:
-        _filters = [
+        _filters: tuple = (
             (r'All Files', r'*'),
             (r'Text Files', r'*.[Tt][Xx][Tt]'),
-        ]
+        )
         for _fltr in _filters:
             _filter = Gtk.FileFilter()
             _filter.set_name(_fltr[0])
@@ -817,7 +798,6 @@ def ezfilech(  # noqa: C901
         nonlocal _out
         _out = r'Cancel'
         Gtk.main_quit()
-        return
 
     def _select(*_x) -> None:
         """SELECT Button: Submit selection for processing"""
@@ -841,12 +821,10 @@ def ezfilech(  # noqa: C901
             else:
                 _out = _filew.get_filenames()
         Gtk.main_quit()
-        return
 
     def _hidden(_widget, *_x) -> None:
         """HIDDEN Checkbox: Toggle the visibility of hidden files"""
         _widget.set_show_hidden(not _widget.get_show_hidden())
-        return
 
     ui.connect_signals({
         r'_winexit': Gtk.main_quit,
@@ -882,14 +860,14 @@ if __name__ == '__main__':  # noqa: C901
     # Windows/GUI
     elif argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
         # File Chooser
-        multiple = False
-        viewhidden = False
-        save = False
-        return_uri = True
-        init_path = r''
-        return_dtype = r'list'
-        __local = True
-        file_exten = True
+        multiple: bool = False
+        viewhidden: bool = False
+        save: bool = False
+        return_uri: bool = True
+        init_path: str = r''
+        return_dtype: str = r'list'
+        __local: bool = True
+        file_exten: bool = True
         # File Chooser Command Agruments
         if len(argv) > 2:
             if r'-m' in argv[2:]:

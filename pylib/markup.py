@@ -2097,7 +2097,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             return r''
         if not self._doctype_inserted and self.doc_type == FILETYPE_SVG and tag == r'svg':
             self.insert_doctype_tag()
-        elif self.doc_type == FILETYPE_SVG and tag == r'stop' and not any((r'offset' == _test[0] for _test in attrs)):
+        elif self.doc_type == FILETYPE_SVG and tag == r'stop' and not any((_test[0] == r'offset' for _test in attrs)):
             attrs.append((r'offset', r'0'))
         elif self.doc_type == FILETYPE_SVG:
             tag = repair_svg_tag(tag)

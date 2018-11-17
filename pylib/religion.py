@@ -36,7 +36,7 @@ __all__: list = [
 ]
 
 
-CHRISTIAN_BIBLE_OT_BOOKS = (
+CHRISTIAN_BIBLE_OT_BOOKS: tuple = (
     r'Genesis',
     r'Exodus',
     r'Leviticus',
@@ -79,7 +79,7 @@ CHRISTIAN_BIBLE_OT_BOOKS = (
 )
 
 
-CHRISTIAN_BIBLE_NT_BOOKS = (
+CHRISTIAN_BIBLE_NT_BOOKS: tuple = (
     r'Matthew',
     r'Mark',
     r'Luke',
@@ -110,7 +110,7 @@ CHRISTIAN_BIBLE_NT_BOOKS = (
 )
 
 
-CHRISTIAN_BIBLE_BOOKS = (
+CHRISTIAN_BIBLE_BOOKS: tuple = (
     r'Genesis',
     r'Exodus',
     r'Leviticus',

@@ -1,3 +1,11 @@
+2018-11-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* alphabetize_lines:  Fixed a bug that was causing duplicates to remain in the sorted output
+	* clib:  Improved the Doxygen comments
+	* Opticons:  Improved some of the mimetype icons
+	* PyBooster:  Miscellaneous optimizations & tweaks
+	* xmath.py:  Added functions for Set Theory
+
 2018-11-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Miscellaneous optimizations & tweaks

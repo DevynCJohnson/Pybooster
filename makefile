@@ -304,11 +304,13 @@ docc : fixperm
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	# Restructure Directory Hierarchy
-	$(MV) $(DOCDIR)/clib/man $(DOCDIR)/
-	$(MV) $(DOCDIR)/clib/html/* $(DOCDIR)/clib/
-	$(RMDIR) $(DOCDIR)/clib/html
+	$(MOVE) $(DOCDIR)/clib/man/* $(DOCDIR)/
+	$(MOVE) $(DOCDIR)/clib/html/* $(DOCDIR)/clib/
+	$(RMDIR) $(DOCDIR)/clib/html $(DOCDIR)/clib/man
 	# Create link to index.html
 	cd $(DOCDIR) && $(LNSOFT) ./clib/index.html ./index.html && cd ..
+	# Remove unneeded files
+	$(RM) $(DOCDIR)/man3/*_PyBooster_include_.3
 
 docpy : fixperm
 	-@([ -d $(DOCDIR)/pylib ] && $(RMDIR) $(DOCDIR)/pylib) || true

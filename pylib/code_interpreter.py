@@ -121,14 +121,12 @@ def execperlfile(_filename: str) -> str:
 
 def initperl() -> None:
     """Run a Perl REP-Loop (Read-Evaluate-Print-Loop)"""
-    _input = ''
+    _input: str = r''
     while 1:
         _input = input(r'Perl > ').replace('\'', '\\\'')  # nosec
-        if _input == 'exit' or _input == 'quit':
+        if _input in {r'exit', r'quit'}:
             break
-        _output = getoutput('perl -e \'' + _input + '\'')
-        stdout.write(_output + '\n')
-    return
+        stdout.write(getoutput('perl -e \'' + _input + '\'') + '\n')
 
 
 # PHP #
@@ -185,11 +183,9 @@ def execshfile(_filename: str) -> str:
 
 def initsh() -> None:
     """Run a shell REP-Loop (Read-Evaluate-Print-Loop)"""
-    _input = r''
+    _input: str = r''
     while 1:
         _input = input(r'Shell: $ ').replace('\'', '\\\'')  # nosec
-        if _input == r'exit' or _input == r'quit':
+        if _input in {r'exit', r'quit'}:
             break
-        _output = getoutput('sh -c \'' + _input + '\'')
-        stdout.write(_output + '\n')
-    return
+        stdout.write(getoutput('sh -c \'' + _input + '\'') + '\n')

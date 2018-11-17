@@ -96,9 +96,7 @@ def ping(_address: str = r'localhost') -> bool:
         _results = child.communicate(timeout=3)[0]  # Wait for results and get return code
     except TimeoutExpired:
         return False
-    if _results and child.returncode == 0:
-        return True
-    return False
+    return True if _results and child.returncode == 0 else False
 
 
 def findgw() -> str:
@@ -120,9 +118,9 @@ def hasnet() -> bool:
     """
     if urlopen(r'http://google.com').getcode() == 200:  # type: ignore  # nosec
         return True
-    elif urlopen(r'https://www.wikipedia.org').getcode() == 200:  # type: ignore  # nosec
+    if urlopen(r'https://www.wikipedia.org').getcode() == 200:  # type: ignore  # nosec
         return True
-    elif urlopen(r'https://docs.python.org').getcode() == 200:  # type: ignore  # nosec
+    if urlopen(r'https://docs.python.org').getcode() == 200:  # type: ignore  # nosec
         return True
     return False
 

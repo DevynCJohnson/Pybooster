@@ -55,7 +55,7 @@ require_version(r'Gtk', r'3.0')
 from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
-_GUI = """<?xml version="1.0" encoding="UTF-8"?>
+_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -1151,7 +1151,7 @@ Author: Devyn Collier Johnson
 </interface>"""
 
 
-_FILEGUI = """<?xml version="1.0" encoding="UTF-8"?>
+_FILEGUI: str = """<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -1324,13 +1324,13 @@ GETDATA_RETURN = Union[Tuple[int, str], Tuple[int, str, Any, Any, Any, Any, Any,
 # STATUSBAR MESSAGES #
 
 
-STATUS_UNSUPPORTED_FILETYPE = (-1, r'Unsupported filetype')
-STATUS_SELECT_FILE = (0, r'Select a file to open')
-STATUS_OPENING_FILE = (1, r'Opening file ')
-STATUS_OPENED_FILE = (2, r'Opened ')
-STATUS_ANALYZING = (3, r'Analyzing')
-STATUS_FINISHED = (4, r'Finished opening and analyzing')
-STATUS_WRITING = (5, r'Writing saved data')
+STATUS_UNSUPPORTED_FILETYPE: Tuple[int, str] = (-1, r'Unsupported filetype')
+STATUS_SELECT_FILE: Tuple[int, str] = (0, r'Select a file to open')
+STATUS_OPENING_FILE: Tuple[int, str] = (1, r'Opening file ')
+STATUS_OPENED_FILE: Tuple[int, str] = (2, r'Opened ')
+STATUS_ANALYZING: Tuple[int, str] = (3, r'Analyzing')
+STATUS_FINISHED: Tuple[int, str] = (4, r'Finished opening and analyzing')
+STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 
 
 # CLASSES #
@@ -1338,7 +1338,7 @@ STATUS_WRITING = (5, r'Writing saved data')
 
 class SavePath():  # pylint: disable=R0903
     """Last pathname used to save files"""
-    lastused = r''
+    lastused: str = r''
 
 
 class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
@@ -1370,15 +1370,15 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
     ) -> Union[list, str]:
         """File Chooser Dialog: Select a file or folder"""
         # Parameters
-        self._select_file = _select_file
-        self._select_dir = _select_dir
-        self._multiple = _multiple
-        self._savefile = _savefile
-        self._viewhidden = _viewhidden
-        self._file_exten = _file_exten
-        self._init_path = _init_path
-        self._return_uri = _return_uri
-        self._return_dtype = _return_dtype
+        self._select_file: bool = _select_file
+        self._select_dir: bool = _select_dir
+        self._multiple: bool = _multiple
+        self._savefile: bool = _savefile
+        self._viewhidden: bool = _viewhidden
+        self._file_exten: bool = _file_exten
+        self._init_path: str = _init_path
+        self._return_uri: bool = _return_uri
+        self._return_dtype: str = _return_dtype
         # Window Objects
         self.filechooserwin = self.file_ui.get_object(r'ezwin')
         self._filew = self.file_ui.get_object(r'filechooser')
@@ -1625,14 +1625,14 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
     _charset = MIME_ENCODING.file(_file)
     _magic = NONE_MAGIC.file(_file)
     # Is 32 or 64 bits?
-    if r'80386' in _magic or r'PE32 ' in _magic or r'i686' in _magic or r'32-bit' in _magic or r'x86-32' in _magic:
+    if any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'PE32 ', r'x86-32'}):
         _bits = r'32'
-    elif r'PE32+' in _magic or r'64-bit' in _magic or r'x86-64' in _magic:
+    elif any(_pattern in _magic for _pattern in {r'64-bit', r'PE32+', r'x86-64'}):
         _bits = r'64'
     else:
         _bits = r'NA'
     # Setup tools
-    _filecmd = r'file'
+    _filecmd: str = r'file'
     if _charset != r'binary':
         return STATUS_UNSUPPORTED_FILETYPE
     if r'ELF' in _magic:
@@ -1640,67 +1640,56 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
             if is_linux_arm_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
-            _nm = r'arm-linux-gnueabi-nm'
-            _objdump = r'arm-linux-gnueabi-objdump'
-            _readelf = r'arm-linux-gnueabi-readelf'
-            _size = r'arm-linux-gnueabi-size'
-            _strings = r'arm-linux-gnueabi-strings'
+            _prefix = r'arm'
         elif r'Alpha' in _magic:
             if is_linux_alpha_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
-            _nm = r'alpha-linux-gnu-nm'
-            _objdump = r'alpha-linux-gnu-objdump'
-            _readelf = r'alpha-linux-gnu-readelf'
-            _size = r'alpha-linux-gnu-size'
-            _strings = r'alpha-linux-gnu-strings'
+            _prefix = r'alpha'
         elif r'PA-RISC' in _magic and _bits == r'32':
             if is_linux_hppa_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
-            _nm = r'hppa-linux-gnu-nm'
-            _objdump = r'hppa-linux-gnu-objdump'
-            _readelf = r'hppa-linux-gnu-readelf'
-            _size = r'hppa-linux-gnu-size'
-            _strings = r'hppa-linux-gnu-strings'
+            _prefix = r'hppa'
         elif r'PA-RISC' in _magic and _bits == r'64':
             if is_linux_hppa64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
-            _nm = r'hppa64-linux-gnu-nm'
-            _objdump = r'hppa64-linux-gnu-objdump'
-            _readelf = r'hppa64-linux-gnu-readelf'
-            _size = r'hppa64-linux-gnu-size'
-            _strings = r'hppa64-linux-gnu-strings'
+            _prefix = r'hppa64'
+        elif r's390x' in _magic:
+            if is_linux_s390x_available is False:
+                return STATUS_UNSUPPORTED_FILETYPE
+            _use_ndisasm = False
+            _prefix = r's390x'
         elif r'SPARC' in _magic:
             if is_linux_sparc64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
-            _nm = r'sparc64-linux-gnu-nm'
-            _objdump = r'sparc64-linux-gnu-objdump'
-            _readelf = r'sparc64-linux-gnu-readelf'
-            _size = r'sparc64-linux-gnu-size'
-            _strings = r'sparc64-linux-gnu-strings'
+            _prefix = r'sparc64'
         elif r'x86-64' in _magic:
             if is_linux_x86_64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
-            _nm = r'x86_64-linux-gnu-nm'
-            _objdump = r'x86_64-linux-gnu-objdump'
-            _readelf = r'x86_64-linux-gnu-readelf'
-            _size = r'x86_64-linux-gnu-size'
-            _strings = r'x86_64-linux-gnu-strings'
+            _prefix = r'x86_64'
         elif r'x86-32' in _magic or r'i686' in _magic:
             if is_linux_x86_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
-            _nm = r'i686-linux-gnu-nm'
-            _objdump = r'i686-linux-gnu-objdump'
-            _readelf = r'i686-linux-gnu-readelf'
-            _size = r'i686-linux-gnu-size'
-            _strings = r'i686-linux-gnu-strings'
+            _prefix = r'i686'
         else:
             return STATUS_UNSUPPORTED_FILETYPE
+        if _prefix == r'arm':
+            _nm = _prefix + r'-linux-gnueabi-nm'
+            _objdump = _prefix + r'-linux-gnueabi-objdump'
+            _readelf = _prefix + r'-linux-gnueabi-readelf'
+            _size = _prefix + r'-linux-gnueabi-size'
+            _strings = _prefix + r'-linux-gnueabi-strings'
+        else:
+            _nm = _prefix + r'-linux-gnu-nm'
+            _objdump = _prefix + r'-linux-gnu-objdump'
+            _readelf = _prefix + r'-linux-gnu-readelf'
+            _size = _prefix + r'-linux-gnu-size'
+            _strings = _prefix + r'-linux-gnu-strings'
     elif r'PE32' in _magic or r'Windows' in _magic or r'application/x-dosexec' in _magic:
         if _bits == r'64':
             if is_win_x86_64_available is False:
@@ -1725,24 +1714,24 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
     else:
         return STATUS_UNSUPPORTED_FILETYPE
     # Get the data
-    _objdump_symbols = getoutput(_objdump + r' --special-syms --syms ' + _file)
-    _objdump_dynamic_symbols = getoutput(_objdump + r' --special-syms --dynamic-syms ' + _file)
+    _objdump_symbols: str = getoutput(_objdump + r' --special-syms --syms ' + _file)
+    _objdump_dynamic_symbols: str = getoutput(_objdump + r' --special-syms --dynamic-syms ' + _file)
     _nm_symbols = getoutput(_nm + r' --dynamic --no-sort --special-syms --debug-syms ' + _file)
-    _objdump_dynamic_relocation = getoutput(_objdump + r' --dynamic-reloc ' + _file)
+    _objdump_dynamic_relocation: str = getoutput(_objdump + r' --dynamic-reloc ' + _file)
     if is_ndisasm_available and _use_ndisasm:
-        _objdump_disassemble = getoutput(r'ndisasm -b ' + _bits + r' ' + _file)
+        _objdump_disassemble: str = getoutput(r'ndisasm -b ' + _bits + r' ' + _file)
     else:
         _objdump_disassemble = r'ndisasm is unavailable.'
-    _objdump_disassemble_intel = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=intel ' + _file)
-    _objdump_disassemble_att = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=att ' + _file)
-    _readelf_all = getoutput(_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file)
-    _objdump_all_headers = getoutput(_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file)
-    _objdump_file_header = getoutput(_objdump + r' --file-headers ' + _file)
-    _objdump_private_headers = getoutput(_objdump + r' --private-headers ' + _file)
-    _objdump_section_headers = getoutput(_objdump + r' --section-headers ' + _file)
+    _objdump_disassemble_intel: str = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=intel ' + _file)
+    _objdump_disassemble_att: str = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=att ' + _file)
+    _readelf_all: str = getoutput(_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file)
+    _objdump_all_headers: str = getoutput(_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file)
+    _objdump_file_header: str = getoutput(_objdump + r' --file-headers ' + _file)
+    _objdump_private_headers: str = getoutput(_objdump + r' --private-headers ' + _file)
+    _objdump_section_headers: str = getoutput(_objdump + r' --section-headers ' + _file)
     _size = getoutput(_size + r' --format=Berkeley ' + _file + r'; ' + _size + r' --format=SysV ' + _file)
     _strings = getoutput(_strings + r' --all ' + _file)
-    _nm_defined = getoutput(_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"')  # tmp
+    _nm_defined: str = getoutput(_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"')  # tmp
     try:
         _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
         _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
@@ -1777,7 +1766,7 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
             _bin_data = bin(int(hexified_data, 16))[2:].zfill(8)
             _hex_data = str(hexified_data, encoding=r'utf-8')
         if stat(_file).st_size < 10000:
-            index = 2
+            index: int = 2
             while len(_hex_data) != index:
                 _hex_data = _hex_data[:index] + r' ' + _hex_data[index:]
                 index += 3
@@ -1798,7 +1787,7 @@ def file_properties(_file: str) -> None:
     _stat = stat(_file, follow_symlinks=False)
     _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
     _mtime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_mtime)))
-    properties_str_buf = r'Mimetype: ' + NONE_MAGIC.file(_file)
+    properties_str_buf: str = r'Mimetype: ' + NONE_MAGIC.file(_file)
     properties_str_buf += '\nCharacter Set: ' + MIME_ENCODING.file(_file)
     properties_str_buf += '\nIs link?: ' + str(islink(_file))
     properties_str_buf += '\nFile size (bytes): ' + str(_stat.st_size)
@@ -1807,7 +1796,7 @@ def file_properties(_file: str) -> None:
     properties_str_buf += '\nOwner UID: ' + str(_stat.st_uid)
     properties_str_buf += '\nOwner GID: ' + str(_stat.st_gid)
     properties_str_buf += '\nLast modified: ' + str(_mtime)
-    _perm = oct(_stat.st_mode)[-3:]
+    _perm: str = oct(_stat.st_mode)[-3:]
     properties_str_buf += '\nPermissions: ' + _perm
     properties_str_buf += '\numask (symbolic): ' + convumask(list(_perm))
     # Insert new data
@@ -1959,16 +1948,17 @@ if __name__ == '__main__':
         r'_winexit': Gtk.main_quit
     })
     # Scan for Available Tools
-    is_ndisasm_available = is_program_aval(r'ndisasm')
-    is_linux_alpha_available = is_program_aval(r'alpha-linux-gnu-objdump')
-    is_linux_arm_available = is_program_aval(r'arm-linux-gnueabi-objdump')
-    is_linux_hppa_available = is_program_aval(r'hppa-linux-gnu-objdump')
-    is_linux_hppa64_available = is_program_aval(r'hppa64-linux-gnu-objdump')
-    is_linux_sparc64_available = is_program_aval(r'sparc64-linux-gnu-objdump')
-    is_linux_x86_available = is_program_aval(r'i686-linux-gnu-objdump')
-    is_linux_x86_64_available = is_program_aval(r'x86_64-linux-gnu-objdump')
-    is_win_x86_available = is_program_aval(r'i686-w64-mingw32-objdump')
-    is_win_x86_64_available = is_program_aval(r'x86_64-w64-mingw32-objdump')
+    is_ndisasm_available: bool = is_program_aval(r'ndisasm')
+    is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
+    is_linux_arm_available: bool = is_program_aval(r'arm-linux-gnueabi-objdump')
+    is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
+    is_linux_hppa64_available: bool = is_program_aval(r'hppa64-linux-gnu-objdump')
+    is_linux_s390x_available: bool = is_program_aval(r's390x-linux-gnu-objdump')
+    is_linux_sparc64_available: bool = is_program_aval(r'sparc64-linux-gnu-objdump')
+    is_linux_x86_available: bool = is_program_aval(r'i686-linux-gnu-objdump')
+    is_linux_x86_64_available: bool = is_program_aval(r'x86_64-linux-gnu-objdump')
+    is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
+    is_win_x86_64_available: bool = is_program_aval(r'x86_64-w64-mingw32-objdump')
     # Begin Program
     if GETFILEDATA:
         FILEDATA = getdis(BINFILE)  # Get data from the chosen file

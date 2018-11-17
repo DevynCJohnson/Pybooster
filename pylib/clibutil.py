@@ -75,12 +75,9 @@ def getlibm() -> Optional[str]:
 def list_elf_lib_funcs(libfile_path: str) -> list:
     """Return a list of functions in a shared ELF library; Requires 'nm'"""
     if isfile(libfile_path):
-        libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
+        libobj: str = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) T (?!_)(.+)', libobj)
-        lst = []
-        for i in objs:
-            lst.append(i[1])
-        return lst
+        return [i[1] for i in objs]
     raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
@@ -89,10 +86,7 @@ def list_elf_lib_consts(libfile_path: str) -> list:
     if isfile(libfile_path):
         libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) R (?!_)(.+)', libobj)
-        lst = []
-        for i in objs:
-            lst.append(i[1])
-        return lst
+        return [i[1] for i in objs]
     raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 
@@ -101,10 +95,7 @@ def list_elf_lib_objs(libfile_path: str) -> list:
     if isfile(libfile_path):
         libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) ([RT]+) (?!_)(.+)', libobj)
-        lst = []
-        for i in objs:
-            lst.append(i[2])
-        return lst
+        return [i[2] for i in objs]
     raise FileNotFoundError(r'Library file (' + libfile_path + r') not found!')
 
 

@@ -46,7 +46,7 @@ __all__: list = [
 # CONSTANTS #
 
 
-OHMS = '\u03A9'
+OHMS: str = '\u03A9'
 
 
 # FUNCTIONS #
@@ -71,8 +71,8 @@ def power(_current: Optional[float] = None, _resistance: Optional[float] = None,
     """Power (Wattage)"""
     if _current is None:  # P=(E^2)/R
         return (_voltage ** 2.0) / _resistance  # type: ignore
-    elif _resistance is None:  # P=IE
+    if _resistance is None:  # P=IE
         return _current * _voltage  # type: ignore
-    elif _voltage is None:  # P=(I^2)R
+    if _voltage is None:  # P=(I^2)R
         return (_current ** 2.0) * _resistance  # type: ignore
     return None
