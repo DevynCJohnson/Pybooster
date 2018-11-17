@@ -47,7 +47,7 @@ __all__: list = [
 
 def alphadupsort_delimiter_codec(data: str, delimiter: str) -> str:
     """Sort the lines or data-list alphabetically using the specified delimiter and remove duplicates"""
-    return delimiter.join(sorted(set(data.split(delimiter)), key=str.lower)).strip()
+    return delimiter.join(sorted(list(set(data.split(delimiter))), key=str.lower)).strip()
 
 
 def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
@@ -78,7 +78,7 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
             return sort_func(_data, r':')
         if '\f' in _data:
             return sort_func(_data, '\f')
-    _out = _data.replace('\r\n', '\n').split('\n')
+    _out = list(set(_data.replace('\r\n', '\n').split('\n')))
     _out.sort(key=str.lower)
     return '\n'.join(_out)
 
@@ -97,12 +97,14 @@ if __name__ == '__main__':
         elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
             stdout.write(HELP)
         elif RM_DUP and len(argv) == 3 and argv[2]:  # Sort & Remove duplicates
-            stdout.write(alphabetize_string(argv[2], SORT_FUNC) + '\n')
+            stdout.write(alphabetize_string(argv[2], alphadupsort_delimiter_codec) + '\n')
         elif argv[1]:  # String as argument
-            stdout.write(alphabetize_string(argv[1], SORT_FUNC) + '\n')
+            stdout.write(alphabetize_string(argv[1], alphasort_delimiter_codec) + '\n')
         else:  # Help
             stdout.write(HELP)
     except SystemExit:
-        pass
+        raise SystemExit(1)
     except BaseException:
         stderr.write(format_exc() + '\n')
+        raise SystemExit(1)
+    raise SystemExit()
