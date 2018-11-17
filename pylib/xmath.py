@@ -116,6 +116,12 @@ __all__: list = [
     r'dice8',
     r'coinflip',
     r'flipcoin',
+    # SET THEORY #
+    r'getdifference',
+    r'getintersection',
+    r'getsymdiff',
+    r'getunion',
+    r'issubset',
     # MISCELLANEOUS #
     r'clamp',
     r'int2many',
@@ -675,6 +681,44 @@ def coinflip() -> str:
 def flipcoin() -> str:
     """Flip a coin and return a string of heads or tails"""
     return choice((r'heads', r'tails'))  # nosec
+
+
+# SET THEORY #
+
+
+def getdifference(_iter1: Iterable, _iter2: Iterable) -> set:
+    """Return the difference set of two iterables"""
+    _set1: set = set(_iter1)
+    _set2: set = set(_iter2)
+    return _set1.difference(_set2)
+
+
+def getintersection(_iter1: Iterable, _iter2: Iterable) -> set:
+    """Return the intersection set of two iterables"""
+    _set1: set = set(_iter1)
+    _set2: set = set(_iter2)
+    return _set1.intersection(_set2)
+
+
+def getsymdiff(_iter1: Iterable, _iter2: Iterable) -> set:
+    """Return the symmetric difference set of two iterables"""
+    _set1: set = set(_iter1)
+    _set2: set = set(_iter2)
+    return _set1.symmetric_difference(_set2)
+
+
+def getunion(_iter1: Iterable, _iter2: Iterable) -> set:
+    """Return the union set of two iterables"""
+    _set1: set = set(_iter1)
+    _set2: set = set(_iter2)
+    return _set1.union(_set2)
+
+
+def issubset(_iter1: Iterable, _iter2: Iterable) -> bool:
+    """Return True if _iter1 is a subset of _iter2"""
+    _set1: set = set(_iter1)
+    _set2: set = set(_iter2)
+    return _set1.issubset(_set2)
 
 
 # MISCELLANEOUS #
