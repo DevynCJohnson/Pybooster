@@ -38,7 +38,7 @@ Tango project website: <http://tango.freedesktop.org/Tango_Desktop_Project>
 Requirements
 ------------
 
-- GNU-GCC or Clang (if the C source-code will be built)
+- GNU-GCC >= v8 or Clang >=v6 (if the C source-code will be built)
 - Bash Shell
 - POSIX-compliant system (Windows may not be fully supported)
 - Python3 (version 3.6 or greater)
