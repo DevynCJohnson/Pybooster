@@ -70,21 +70,22 @@ for file in "$@"; do
 
     if [ -x "$(command -v splint)" ]; then
         printf '======  *SPLINT*  ======\n'
-        splint -nof -tmpdir /tmp/ -I. -I../include -nolib -strict -booltype _Bool -booltype Bool -booltype bool -booltype Boolean -checks +charint -initallelements -namechecks -nullassign -preproc +stats -stringliteralsmaller "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
+        splint -nof -tmpdir /tmp/ -I. -I../include -commentchar '@' +trytorecover -nolib -checks -booltype _Bool -booltype Bool -booltype bool -booltype Boolean +boolint -boolops +charint +enumint +enumindex -fixedformalarray +ignorequals -initallelements -namechecks -nullassign -preproc +ptrnegate +stats -stringliteralsmaller -warnlintcomments "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
+        sleep 0.5
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'splint: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v flawfinder)" ]; then
         printf '======  *FLAWFINDER*  ======\n'
-        flawfinder --minlevel=1 --omittime --quiet --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Flawfinder version .+$/, ""); gsub(/^Number of rules .+$/, ""); gsub(/^ANALYSIS SUMMARY.+$/, ""); gsub(/^No hits found.+$/, ""); gsub(/^There may be other security vulnerabilities.+$/, ""); gsub(/^.+Programming for Linux and Unix HOWTO.+$/, ""); gsub(/^.+for more information.+$/, ""); if (NF > 0) { print; } }'
+        flawfinder --minlevel=1 --omittime --quiet --falsepositive --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Flawfinder version .+$/, ""); gsub(/^Number of rules .+$/, ""); gsub(/^ANALYSIS SUMMARY.+$/, ""); gsub(/^No hits found.+$/, ""); gsub(/^There may be other security vulnerabilities.+$/, ""); gsub(/^.+Programming for Linux and Unix HOWTO.+$/, ""); gsub(/^.+for more information.+$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flawfinder: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v pmccabe)" ]; then
         printf '======  *PMCCABE (MCCABE COMPLEXITY)*  ======\n'
-        pmccabe -c -f -v "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        pmccabe -c -f -v "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^\"/, ""); gsub(/\", line /, ":"); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'pmccabe: command not found!\n' >&2
     fi
