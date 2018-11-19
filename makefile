@@ -304,7 +304,8 @@ docc : fixperm
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	# Restructure Directory Hierarchy
-	$(MOVE) $(DOCDIR)/clib/man/* $(DOCDIR)/
+	[ ! -d $(DOCDIR)/man3/ ] && $(MKDIR) $(DOCDIR)/man3/) || true
+	$(MOVE) $(DOCDIR)/clib/man/man3/* $(DOCDIR)/man3/
 	$(MOVE) $(DOCDIR)/clib/html/* $(DOCDIR)/clib/
 	$(RMDIR) $(DOCDIR)/clib/html $(DOCDIR)/clib/man
 	# Create link to index.html
@@ -510,6 +511,7 @@ uninstall_clib :
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
+	if [ $(UID) == 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
 	$(RMDIR) ~/.config/geany/filedefs/ ~/.config/geany/templates/files/
 	$(CPDIR) $(GEANYDIR)/* ~/.config/geany/
 	$(CURUSEROWNS) ~/.config/geany/
