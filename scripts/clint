@@ -47,33 +47,33 @@ except ImportError:
     from re import compile as rgxcompile, IGNORECASE, sub as resub
 
 
-# OBJECTS #
-
-
-ATTRIBUTE_SPECIFIER: str = r'UNUSED'
-ATOMIC: str = r'(_Atomic|Atomic|atomic|)'
-STORAGE_CLASS: str = r'(auto|extern|register|static|)'
-THREAD_STORAGE: str = r'(thread_local|_Thread_local|)'
-QUALIFIER: str = r'(\*| \*|\* | \* |)(const|restrict|volatile|)(\*| \*|\* | \* |)'
-SPECIFIER: str = ATTRIBUTE_SPECIFIER + ATOMIC + STORAGE_CLASS + ATOMIC + THREAD_STORAGE + QUALIFIER
-ASM_STMT: str = r'(asm |__asm |__asm__ )(volatile |)'
-
-
 # PATTERNS #
 
 
+ASM_STMT: str = r'(asm |__asm |__asm__ |vasm)(volatile |)'
+ATOMIC: str = r'(_Atomic|Atomic|atomic|)'
+ATTRIBUTE_SPECIFIER: str = r'UNUSED'
+QUALIFIER: str = r'(\*| \*|\* | \* |)(const|restrict|volatile|)(\*| \*|\* | \* |)'
+STORAGE_CLASS: str = r'(auto|extern|register|static|)'
+THREAD_STORAGE: str = r'(thread_local|_Thread_local|)'
+SPECIFIER: str = ATTRIBUTE_SPECIFIER + ATOMIC + STORAGE_CLASS + ATOMIC + THREAD_STORAGE + QUALIFIER
+
+
+# REGEX PATTERNS #
+
+
+REGEX_BRACKET_EXTRA_SPACE = rgxcompile(r'^.+[\s]{2}{$')
+REGEX_BRACKET_NO_SPACE = rgxcompile(r'^.+[^\s]{$')
 REGEX_CONSTRUCT_SPACE = rgxcompile(r'^(.+ |)(else if|for|if|switch|while)\s*\u0028.*$')
 REGEX_CONSTRUCT_SPACE_VALID = rgxcompile(r'^(.+ |)(else if|for|if|switch|while) \u0028.*$')
-REGEX_BRACKET_NO_SPACE = rgxcompile(r'^.+[^\s]{$')
-REGEX_BRACKET_EXTRA_SPACE = rgxcompile(r'^.+[\s]{2}{$')
+REGEX_DCJ_VERSION = rgxcompile(r'^[\w \*]+ __version__ = "20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]";$')
+REGEX_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = ".+";$')
 REGEX_INDENT = rgxcompile(r'^([ ]+)(.+)$')
+REGEX_LICENSE = rgxcompile(r'^[\w \*]+ __license__ = ".+";$')
 REGEX_MUL2 = rgxcompile(r' = ([^\w]2 \* [\w]+|[\w]+ \* (|\([\w ]+\))2[^[0-9]])')
 REGEX_SELF_STORE = rgxcompile(r'([\w]+) = ([\w]+) ([\w\+\-\*/%\|\^&]+);')
 REGEX_SEMICOLON_SPACE = rgxcompile(r'^.+\s+;$')
-REGEX_LICENSE = rgxcompile(r'^[\w \*]+ __license__ = ".+";$')
-REGEX_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = ".+";$')
 REGEX_VALID_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = "[A-Za-z0-9\-\._]+@[A-Za-z0-9\-]+\.[A-Za-z0-9]+";')
-REGEX_DCJ_VERSION = rgxcompile(r'^[\w \*]+ __version__ = "20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]";$')
 REGEX_VERSION = rgxcompile(r'^[\w \*]+ __version__ = (".+"|[0-9\.\-]+);$')
 
 # Magic Comments
@@ -86,31 +86,34 @@ REGEX_VIM_VALID = rgxcompile(r'^// vim: set fileencoding=utf\-8 filetype=c synta
 
 # Comments
 REGEX_COMMENT_DOC = rgxcompile(r'^.*/\*\*.*$')  # Beginning of doc-comment
-REGEX_COMMENT_MULTILINE_START = rgxcompile(r'^.*/\*.*$')  # Start of multiline-comment
-REGEX_COMMENT_MULTILINE_END = rgxcompile(r'^.*\*/.*$')  # End of multiline-comment
 REGEX_COMMENT_LINE = rgxcompile(r'^\s*//.+$')  # The entire line is a comment
 REGEX_COMMENT_MISSING_LEADING_SPACE = rgxcompile(r'^.*[^ ]([^ ]|[ ])//.+$')
-REGEX_COMMENT_MISSING_SPACE = rgxcompile(r'//[^ ].+')
+REGEX_COMMENT_MISSING_SPACE = rgxcompile(r'//[\!][\<][^ ].+')
+REGEX_COMMENT_MULTILINE_END = rgxcompile(r'^.*\*/.*$')  # End of multiline-comment
+REGEX_COMMENT_MULTILINE_START = rgxcompile(r'^.*/\*.*$')  # Start of multiline-comment
 REGEX_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)(:| |$)')
+SPECIAL_CMTS: set = {r'/**', r'/*@', r'@*/', r'/*%', r'%*/'}
 
 # Datatypes
 REGEX_FLOAT = rgxcompile(r'^' + SPECIFIER + r'float [\w]+( |)=( |)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+(F|);')
-REGEX_FLOAT_VALID = rgxcompile(r'^' + SPECIFIER + r'float [\w]+( |)=( |)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+F;')
 REGEX_FLOAT_NUM = rgxcompile(r'\(float\)( |)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+(F|)[^(A-Za-z\_)+]')
 REGEX_FLOAT_NUM_VALID = rgxcompile(r'\(float\)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+F')
+REGEX_FLOAT_POINT = rgxcompile(r'[Xxp0-9A-Fa-f\.\-]+(E|e|)(\+|\-|)[Xxp0-9A-Fa-f]+')
+REGEX_FLOAT_VALID = rgxcompile(r'^' + SPECIFIER + r'float [\w]+( |)=( |)[\+\-]*[0-9]+[XxpA-Fa-f0-9\.\-\+]+F;')
 REGEX_LONG_DOUBLE = rgxcompile(r'^' + SPECIFIER + r'(long double |tetra )[\w]+( |)=( |)[\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+(L|);$')
-REGEX_LONG_DOUBLE_VALID = rgxcompile(r'^' + SPECIFIER + r'(long double |tetra )[\w]+ = [\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+L;$')
 REGEX_LONG_DOUBLE_NUM = rgxcompile(r'(\(long double\)|\(tetra\))( |)[\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+(L|)')
 REGEX_LONG_DOUBLE_NUM_VALID = rgxcompile(r'(\(long double\)|\(tetra\))[\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+L')
+REGEX_LONG_DOUBLE_VALID = rgxcompile(r'^' + SPECIFIER + r'(long double |tetra )[\w]+ = [\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+L;$')
+REGEX_LONGINT = rgxcompile(r'[\( ]?(long|long long) int[ \*\)]+')
 REGEX_WCHAR = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+( |)=( |)(L|)\'.+\';$')
 REGEX_WCHAR_VALID = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+ = L\'.+\';$')
-REGEX_FLOAT_POINT = rgxcompile(r'[Xxp0-9A-Fa-f\.\-]+(E|e|)(\+|\-|)[Xxp0-9A-Fa-f]+')
 
 # Macros
-REGEX_MACROS = rgxcompile(r'^\s*#\s*[a-z]+ .+', flags=IGNORECASE)
-REGEX_MACROS_INDENT = rgxcompile(r'^#([ ]+).+$')
 REGEX_INCLUDE = rgxcompile(r'^\s*#\s*include\s+(\"|<)[a-z0-9 _\-\./]+(>|\").+', flags=IGNORECASE)
 REGEX_INCLUDE_VALID = rgxcompile(r'^#[ ]*include (\"|<)[\w \-\./]+(>|\")(  // .+|)$')
+REGEX_MACROS = rgxcompile(r'^\s*#\s*[a-z]+ .+', flags=IGNORECASE)
+REGEX_MACROS_INDENT = rgxcompile(r'^#([ ]+).+$')
+REGEX_MACROS_INVALID_SYNTAX = rgxcompile(r'^#[ ]*(ifdef|ifndef|undef)[ ]+[^A-Za-z_]')
 REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^\s+#[ ]*[a-z]+ .+$')
 REGEX_MACROS_SPACE = rgxcompile(r'^#\s*[a-z]+ \s+.+$')
 REGEX_MACROS_VALID = rgxcompile(r'^#[ ]*[a-z]+ .+$')
@@ -118,42 +121,42 @@ REGEX_MACROS_WARN_ERR_SPACE = rgxcompile(r'^#[ ]*(error|warning)([ ]+)".+"$')
 REGEX_OPERATOR_EXTRA_SPACE = rgxcompile(r'.+(  &&|  \|\||&&  |\|\|  ).+')
 
 # Operators
-REGEX_DIV_SPACE = rgxcompile(r'^.+(\s\s+/[^=]|[^=]/\s\s+).+$')
-REGEX_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+=[^=]|[^=]=\s\s+).+$')
-REGEX_MINUS_SPACE = rgxcompile(r'^.+(\s\s+\-[^=]|[^=]\-\s\s+).+$')
-REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ]\s\s+\*[^=()]|[^=()]\*\s\s+).+$')
-REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\!=|\!=\s\s+).+$')
-REGEX_PLUS_SPACE = rgxcompile(r'^.+(\s\s+\+[^=]|[^=]\+\s\s+).+$')
-REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\+=|\+=\s\s+).+$')
-REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\-=|\-=\s\s+).+$')
-REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\*=|\*=\s\s+).+$')
-REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+/=|/=\s\s+).+$')
-REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+%=|%=\s\s+).+$')
-REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+<<=|<<=\s\s+).+$')
-REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+>>=|>>=\s\s+).+$')
-REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\&=|\&=\s\s+).+$')
-REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\|=|\|=\s\s+).+$')
-REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\^=|\^=\s\s+).+$')
-REGEX_MOD_SPACE = rgxcompile(r'^.+(\s\s+%[^=]|%[^=]\s\s+).+$')
-REGEX_AND_SPACE = rgxcompile(r'^.+(\s\s+\&\&|\&\&\s\s+).+$')
-REGEX_OR_SPACE = rgxcompile(r'^.+(\s\s+\|\|[^=]|[^=]\|\|\s\s+).+$')
-REGEX_TERNARY_SPACE = rgxcompile(r'^.+(\s\s+\?|\?\s\s+).+$')
-REGEX_NOT_SPACE = rgxcompile(r'^.+(\s\s+\!|\!\s\s+).+$')
-REGEX_LT_SPACE = rgxcompile(r'^.+\s\s+<.+$')
-REGEX_GT_SPACE = rgxcompile(r'^.+\s\s+>.+$')
-REGEX_OPERATOR_NO_SPACE1 = rgxcompile(r'^.+([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|)[^\s].+$')
-REGEX_OPERATOR_NO_SPACE2 = rgxcompile(r'^.+[^\s]([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|).+$')
-OPERATOR_SPACE_VALID = rgxcompile(r'.+ ([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|) .+')
+DATATYPE_PTR = rgxcompile(r'^[\t]*[\w ]+\*.+$')
 EQUALS_INVALID_SPACE = rgxcompile(r'.+([\w\)\]\}\t]=|=[\w\(\[\{\t]).+')
 EQUALS_SPACE_VALID = rgxcompile(r'^.+ = .+$')
-REGEX_SHIFT_COMPARE = rgxcompile(r'.+(>=|<=|>>=|<<=).+')
-REGEX_SHIFT_COMPARE2 = rgxcompile(r'.+(>=|<=|>>=|<<=|<<|>>).+')
 LTGT_NO_SPACE = rgxcompile(r'.+([\w\)\]\}]<|<[\w\(\[\{]|[\w\)\]\}]>|>[\w\(\[\{]).+')
 LTGT_SPACE_VALID = rgxcompile(r'^.+ (<|>) .+$')
 MATH_OPERATOR_NO_SPACE = rgxcompile(r'.+([\w\)\]\}](\+|\*|/|%)|(\+|\*|/|%)[\w\(\[\{]).+')  # Subtraction is not included because of negative numbers being mistaken as subtraction
-MATH_OPERATOR_SPACE_VALID = rgxcompile(r'^.+( (\+|/|%) |[^\{&,] \*(restrict| restrict|\}|) ).+$')
 MATH_OPERATOR_POINTERS = rgxcompile(r'[\+\-\*/%\|&<>=\{\}\(,;] (&|\*|\*\*)[\w\(]+')
-DATATYPE_PTR = rgxcompile(r'^[\t]*[\w ]+\*.+$')
+MATH_OPERATOR_SPACE_VALID = rgxcompile(r'^.+( (\+|/|%) |[^\{&,] \*(restrict| restrict|\}|) ).+$')
+OPERATOR_SPACE_VALID = rgxcompile(r'.+ ([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|) .+')
+REGEX_AND_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\&=|\&=\s\s+).+$')
+REGEX_AND_SPACE = rgxcompile(r'^.+(\s\s+\&\&|\&\&\s\s+).+$')
+REGEX_DIV_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+/=|/=\s\s+).+$')
+REGEX_DIV_SPACE = rgxcompile(r'^.+(\s\s+/[^=]|[^=]/\s\s+).+$')
+REGEX_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+[^\-]=[^=]|[^\-=]=\s\s+).+$')
+REGEX_GT_SPACE = rgxcompile(r'^.+\s\s+>.+$')
+REGEX_LSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+<<=|<<=\s\s+).+$')
+REGEX_LT_SPACE = rgxcompile(r'^.+\s\s+<.+$')
+REGEX_MINUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\-=|\-=\s\s+).+$')
+REGEX_MINUS_SPACE = rgxcompile(r'^.+(\s\s+\-[^=]|[^=]\-\s\s+).+$')
+REGEX_MOD_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+%=|%=\s\s+).+$')
+REGEX_MOD_SPACE = rgxcompile(r'^.+(\s\s+%[^=]|%[^=]\s\s+).+$')
+REGEX_MUL_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\*=|\*=\s\s+).+$')
+REGEX_MUL_SPACE = rgxcompile(r'^.+([^, ]\s\s+\*[^=()]|[^=()]\*\s\s+).+$')
+REGEX_NOT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\!=|\!=\s\s+).+$')
+REGEX_NOT_SPACE = rgxcompile(r'^.+(\s\s+\!|\!\s\s+).+$')
+REGEX_OPERATOR_NO_SPACE1 = rgxcompile(r'^.+([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|)[^\s].+$')
+REGEX_OPERATOR_NO_SPACE2 = rgxcompile(r'^.+[^\s]([\!\+\-\*/%\&\^\|=]=|>=|<=|<<|>>|>>=|<<=|\&\&|\|\|).+$')
+REGEX_OR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\|=|\|=\s\s+).+$')
+REGEX_OR_SPACE = rgxcompile(r'^.+(\s\s+\|\|[^=]|[^=]\|\|\s\s+).+$')
+REGEX_PLUS_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\+=|\+=\s\s+).+$')
+REGEX_PLUS_SPACE = rgxcompile(r'^.+(\s\s+\+[^=]|[^=]\+\s\s+).+$')
+REGEX_RSHIFT_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+>>=|>>=\s\s+).+$')
+REGEX_SHIFT_COMPARE = rgxcompile(r'.+(>=|<=|>>=|<<=).+')
+REGEX_SHIFT_COMPARE2 = rgxcompile(r'.+(>=|<=|>>=|<<=|<<|>>).+')
+REGEX_TERNARY_SPACE = rgxcompile(r'^.+(\s\s+\?|\?\s\s+).+$')
+REGEX_XOR_EQUALS_SPACE = rgxcompile(r'^.+(\s\s+\^=|\^=\s\s+).+$')
 
 # Inline Assembly
 REGEX_VALID_ASM = rgxcompile(ASM_STMT + r'\(.+\);')
@@ -192,8 +195,8 @@ def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str
 
 def strip_strings(_str: str) -> str:
     """Remove all strings"""
-    _str = resub(r'"[\w \.\+\-\*/%&\|<>!\?\(\):]*"(,|)', r'', _str.strip())
-    return resub(r'\'[\w \.\+\-\*/%&\|<>!\?\(\):]*\'(,|)', r'', _str)
+    _str = resub(r'"[^"]*"(,|)', r'', _str.strip())
+    return resub(r'\'[^\']*\'(,|)', r'', _str)
 
 
 def strip_comments_and_strings(_str: str) -> str:
@@ -212,11 +215,11 @@ def c000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     # C001
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
-        output_info(filepath, line_num, line, r'C001', r'Missing single space after `//`', _match)
+        output_info(filepath, line_num, line, r'C001', r'Missing single space after `//` or `//!<`', _match)
     # C002
     _match = REGEX_COMMENT_MISSING_LEADING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
-        output_info(filepath, line_num, line, r'C002', r'Missing double-leading-space before `//`', _match)
+        output_info(filepath, line_num, line, r'C002', r'Missing double-leading-space before `//` or `//!<`', _match)
 
 
 def c000_line(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
@@ -261,6 +264,10 @@ def m000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_MACROS_WARN_ERR_SPACE.search(line)
     if _match and (len(_match.group(2)) != 3):
         output_info(filepath, line_num, line, r'M007', r'Invalid spacing; use three spaces between error/warning macros and the string', _match)
+    # M008
+    _match = REGEX_MACROS_INVALID_SYNTAX.search(line)
+    if _match:
+        output_info(filepath, line_num, line, r'M008', r'Invalid macros syntax; "ifdef", "ifndef", & "undef" must only use a plain macros name as an argument', _match)
 
 
 # Security Issues & Flaws
@@ -342,9 +349,12 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_INDENT.search(line)
     if _match:
         output_info(filepath, line_num, line, r'X004', r'Invalid indentation white-space; use one tab per indent level', _match)
-    # X005: Removed
+    # X005
+    _match = REGEX_LONGINT.search(log_line)
+    if _match:
+        output_info(filepath, line_num, line, r'X005', r'Use `long` instead of `long int` and `long long` instead of `long long int`', _match)
+    # X006
     if r'long double' in log_line:
-        # X006
         _match = REGEX_LONG_DOUBLE.search(log_line)
         _match2 = REGEX_LONG_DOUBLE_VALID.search(log_line)
         _match3 = REGEX_LONG_DOUBLE_NUM.search(log_line)
@@ -353,8 +363,8 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
             output_info(filepath, line_num, line, r'X006', r'Missing `L` after the assigned `long double` number', _match)
         elif _match3 and not _match4:
             output_info(filepath, line_num, line, r'X006', r'Missing `L` after the assigned `long double` number', _match3)
+    # X007
     if r'float' in log_line:
-        # X007
         _match = REGEX_FLOAT.search(log_line)
         _match2 = REGEX_FLOAT_VALID.search(log_line)
         _match3 = REGEX_FLOAT_NUM.search(log_line)
@@ -363,8 +373,8 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
             output_info(filepath, line_num, line, r'X007', r'Missing `F` after the assigned `float` number', _match)
         elif _match3 and not _match4:
             output_info(filepath, line_num, line, r'X007', r'Missing `F` after the assigned `float` number', _match3)
+    # X008
     if r'wchar_t' in log_line:
-        # X008
         _match = REGEX_WCHAR.search(line)
         _match2 = REGEX_WCHAR_VALID.search(line)
         if _match and not _match2:
@@ -373,7 +383,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_SEMICOLON_SPACE.search(log_line)
     if _match and not line.strip().endswith(r'";') and not line.strip().endswith('\';'):
         output_info(filepath, line_num, line, r'X009', r'No white-space should be before a semi-colon', _match)
-    if r'=' in log_line:
+    if r'=' in log_line and r'= "' not in line and '= \'' not in line:
         # X010
         _match = REGEX_EQUALS_SPACE.search(log_line)
         if _match:
@@ -440,38 +450,38 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         _match = REGEX_XOR_EQUALS_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X025', r'Single white-space only around `|=`', _match)
+    # X026
     if r'%' in log_line and not log_line.startswith(r':'):
-        # X026
         _match = REGEX_MOD_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X026', r'Single white-space only around `%`', _match)
+    # X027
     if r'&&' in log_line and ' && \'' not in line and '\' && ' not in line and r' && "' not in line and r'" && ' not in line:
-        # X027
         _match = REGEX_AND_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X027', r'Single white-space only around `&&`', _match)
+    # X028
     if r'||' in log_line and ' || \'' not in line and '\' || ' not in line and r' || "' not in line and r'" || ' not in line:
-        # X028
         _match = REGEX_OR_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X028', r'Single white-space only around `||`', _match)
+    # X029
     if r'?' in log_line and ' ? \'' not in line and '\' ? ' not in line and r' ? "' not in line and r'" ? ' not in line:
-        # X029
         _match = REGEX_TERNARY_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X029', r'Single white-space before and after ternary operator (`?`)', _match)
+    # X030
     if r'!' in log_line:
-        # X030
         _match = REGEX_NOT_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X030', r'Single white-space before `!` and no trailing white-space', _match)
+    # X031
     if r'<' in log_line and ' < \'' not in line and '\' < ' not in line and r' <= ' not in log_line:
-        # X031
         _match = REGEX_LT_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X031', r'Single white-space before `<`', _match)
+    # X032
     if r'>' in log_line and ' > \'' not in line and '\' > ' not in line and r' >= ' not in log_line:
-        # X032
         _match = REGEX_GT_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X032', r'Single white-space before `>`', _match)
@@ -483,24 +493,24 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match)
     elif _match2 and not log_line.startswith(r':') and not _match3:
         output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match2)
+    # X034
     asm_match = REGEX_VALID_ASM.search(log_line)
     if r'=' in log_line and not log_line.startswith(r':') and not asm_match:
-        # X034
         _match = EQUALS_INVALID_SPACE.search(log_line)
         _match2 = EQUALS_SPACE_VALID.search(log_line)
         _match3 = REGEX_SHIFT_COMPARE.search(log_line)
         if _match and not _match2 and not _match3:
             output_info(filepath, line_num, line, r'X034', r'Missing single white-space around `=`', _match)
+    # X035
     if (r'<' in log_line or '>' in log_line) and not log_line.strip().startswith(r'#') and not log_line.strip().startswith(r'template ') and r'->' not in log_line:
-        # X035
         _match = LTGT_NO_SPACE.search(log_line)
         _match2 = LTGT_SPACE_VALID.search(log_line)
         _match3 = REGEX_SHIFT_COMPARE2.search(log_line)
         if _match and not _match2 and not _match3:
             output_info(filepath, line_num, line, r'X035', r'Missing single white-space around `>` or `<` operator', _match)
+    # X036
     asm_match = REGEX_VALID_ASM.search(log_line)
     if any(_test in log_line for _test in {r'+', r'*', r'/', r'%'}) and not any(_test in log_line for _test in {r'++', r'--', r'%', r'<=', r'>=', r'!*', r'!&', r'(*', r'*)', r'return *', r'char* ', r'(int)*'}) and not any(log_line.startswith(_test) for _test in {r'*', r'LIB_FUNC', r'DECL_FUNC'}) and not asm_match:
-        # X036
         _match = MATH_OPERATOR_NO_SPACE.search(log_line)
         _match2 = MATH_OPERATOR_SPACE_VALID.search(log_line)
         _match3 = REGEX_FLOAT_POINT.search(log_line)
@@ -520,38 +530,38 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         _match = REGEX_BRACKET_EXTRA_SPACE.search(log_line)
         if _match:
             output_info(filepath, line_num, line, r'X039', r'Single white-space before bracket, not more than one', _match)
-    if r'/*' in NO_STR_LINE and r'*/' in NO_STR_LINE and NO_STR_LINE not in {r'/*@end@*/', r'/*@ignore@*/'}:
-        # X040 & X041
-        if r'/**' not in NO_STR_LINE and NO_STR_LINE.startswith(r'/*') and NO_STR_LINE.endswith(r'*/'):
-            if r'<' not in NO_STR_LINE and NO_STR_LINE.upper() != NO_STR_LINE:
-                output_info(filepath, line_num, line, r'X040', r'Section headings (`/* SECTION */`) should not contain lowercase letters')
-            if r'/* ' not in NO_STR_LINE or ' */' not in NO_STR_LINE:
-                output_info(filepath, line_num, line, r'X041', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
+    if r'/*' in NO_STR_LINE and r'*/' in NO_STR_LINE and not any(_test in NO_STR_LINE for _test in SPECIAL_CMTS):
+        # X040
+        if r'<' not in NO_STR_LINE and NO_STR_LINE.upper() != NO_STR_LINE and r'" : ' not in NO_STR_LINE:
+            output_info(filepath, line_num, line, r'X040', r'Section headings (`/* SECTION */`) should not contain lowercase letters')
+        # X041
+        if r'/* ' not in NO_STR_LINE or ' */' not in NO_STR_LINE:
+            output_info(filepath, line_num, line, r'X041', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
+    # X042
     if line.endswith(r' ') or line.endswith('\t'):
-        # X042
         output_info(filepath, line_num, line, r'X042', r'Trailing white-space found')
+    # X043
     if r'return  ' in log_line or 'return\t' in log_line:
-        # X043
         output_info(filepath, line_num, line, r'X043', r'Unneeded extra white-space after return')
-    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in {r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]'}) and not any(log_line.startswith(_test) for _test in {r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC'}):
-        # X046
-        output_info(filepath, line_num, line, r'X046', r'Invalid array size')
+    # X044
     _match = REGEX_CONSTRUCT_SPACE.search(log_line)
     _match2 = REGEX_CONSTRUCT_SPACE_VALID.search(log_line)
     if _match and not _match2:
-        # X045
-        output_info(filepath, line_num, line, 'X045', 'Single space (never TAB) needed between a constrcut keyword and `(`')
+        output_info(filepath, line_num, line, 'X044', 'Single space (never TAB) needed between a constrcut keyword and `(`')
+    # X045
+    if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in {r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]'}) and not any(log_line.startswith(_test) for _test in {r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC'}):
+        output_info(filepath, line_num, line, r'X045', r'Invalid array size')
 
 
 # Optimize
 
 def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=C0103,W0613,W0621
     """Z***: Check for code that can be optimized and suggest optimal code"""
+    # Z001
     if any(_pattern in log_line for _pattern in {r'i = i + 1;', r'j = j + 1;', r'i = i - 1;', r'j = j - 1;'}):
-        # Z001
         output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
-    if any(_pattern in log_line for _pattern in {r'i += 1;', r'j += 1;', r'i -= 1;', r'j -= 1'}):
-        # Z001
+    # Z001
+    if any(_pattern in log_line for _pattern in {r'i += 1;', r'j += 1;', r'i -= 1;', r'j -= 1'}) and r'= 10' not in log_line:
         output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
     # Z002
     _match = REGEX_SELF_STORE.search(log_line)
