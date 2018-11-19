@@ -464,9 +464,9 @@ typedef long*   PTR_LONG_TYPE;
 #define __PTR_ALIGN(B, P, A)   __BPTR_ALIGN((((sizeof(PTR_INT_TYPE)) < BYTES_PER_POINTER) ? (B) : (char*)0), P, A)
 
 typedef struct attr_packed _obstack_chunk {
-	char* limit;  // 1 past end of this chunk
-	struct _obstack_chunk* prev;  // Address of prior chunk or NULL
-	char contents[4];  // Objects begin here
+	char* limit;  //!< 1 past end of this chunk
+	struct _obstack_chunk* prev;  //!< Address of prior chunk or `NULL`
+	char contents[4];  //!< Objects begin here
 } obstack_chunk_t;
 
 DIAG_PUSH
@@ -474,22 +474,22 @@ IGNORE_WPADDED
 
 /** Control current object in current chunk */
 typedef struct obstack {
-	long chunk_size;  // Preferred size to allocate chunks
-	struct _obstack_chunk* chunk;  // Address of current struct obstack_chunk
-	char* object_base;  // Address of object we are building
-	char* next_free;  // Where to add next char to current object
-	char* chunk_limit;  // Address of char after current chunk
+	long chunk_size;  //!< Preferred size to allocate chunks
+	struct _obstack_chunk* chunk;  //!< Address of current struct obstack_chunk
+	char* object_base;  //!< Address of the object being built
+	char* next_free;  //!< Where to add next char to current object
+	char* chunk_limit;  //!< Address of char after current chunk
 	union obstack_temp_union {
 		PTR_INT_TYPE tempint;
 		void* tempptr;
-	} temp;  // Temporary for some macros
-	int alignment_mask;  // Mask of alignment for each object
+	} temp;  //!< Temporary object for some macros
+	int alignment_mask;  //!< Mask of alignment for each object
 	struct _obstack_chunk* (*chunkfun)(void*, long);
 	void (*freefun)(void*, struct _obstack_chunk*);
-	void* extra_arg;  // First arg for chunk alloc/dealloc funcs
-	unsigned use_extra_arg:1;  // Chunk alloc/dealloc funcs take extra arg
-	unsigned maybe_empty_object:1;  // There is a possibility that the current chunk contains a zero-length object; This prevents freeing the chunk if we allocate a bigger chunk to replace it
-	unsigned alloc_failed:1;  // No longer used, as we now call the failed handler on error, but retained for binary compatibility
+	void* extra_arg;  //!< First arg for chunk alloc/dealloc funcs
+	unsigned use_extra_arg:1;  //!< Chunk alloc/dealloc funcs take extra arg
+	unsigned maybe_empty_object:1;  //!< There is a possibility that the current chunk contains a zero-length object; This prevents freeing the chunk if a larger chunk is allocated to replace it
+	unsigned alloc_failed:1;  //!< No longer used, but retained for binary compatibility
 } obstack_t;
 
 DIAG_POP
@@ -544,8 +544,8 @@ DIAG_POP
 #   define obstack_room(h)   ((unsigned)((h)->chunk_limit - (h)->next_free))
 #   define obstack_empty_p(h)   ((h)->chunk->prev == 0 && (h)->next_free == __PTR_ALIGN((char*)(h)->chunk, (h)->chunk->contents, (h)->alignment_mask))
 #   define obstack_make_room(h, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0))
-#   define obstack_grow(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), memcpy ((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint)
-#   define obstack_grow0(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint + 1), 0) : 0), memcpy ((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint, *((h)->next_free)++ = 0)
+#   define obstack_grow(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint)
+#   define obstack_grow0(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint + 1), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint, *((h)->next_free)++ = 0)
 #   define obstack_1grow(h, datum)  ((((h)->next_free + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), 1), 0) : 0), obstack_1grow_fast(h, datum))
 #   define obstack_ptr_grow(h, datum)   ((((h)->next_free + SIZEOF_POINTER > (h)->chunk_limit) ? (_obstack_newchunk((h), SIZEOF_POINTER), 0) : 0), obstack_ptr_grow_fast (h, datum))
 #   define obstack_int_grow(h, datum)   ((((h)->next_free + BYTES_PER_INT > (h)->chunk_limit) ? (_obstack_newchunk((h), BYTES_PER_INT), 0) : 0), obstack_int_grow_fast (h, datum))
@@ -608,8 +608,8 @@ typedef __builtin_va_list   __gnuc_va_list;
 typedef char*   __gnuc_va_list;
 #else
 typedef struct va_list_struct {
-	char* __base;  // Pointer to first integer register
-	int __offset;  // Byte offset of args so far
+	char* __base;  //!< Pointer to first integer register
+	int __offset;  //!< Current byte-offset of the args
 } __gnuc_va_list;
 #endif
 #define __GNUC_VA_LIST   1
@@ -1992,7 +1992,7 @@ typedef int   gwchar_t;
 #   define __DEFINED_wchar_t   (1)
 #   define ____gwchar_t_defined   (1)
 #endif  // wchar_t
-#ifndef S_SPLINT_S
+#if IS_NOT_LINTER
 _Static_assert(((SIZEOF_WCHAR_T == sizeof(wchar_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wchar_t` datatype!");
 #endif
 #define WCHAR   wchar_t
@@ -2010,7 +2010,7 @@ typedef unsigned int   wint_t;
 #   endif
 #   define __DEFINED_wint_t   (1)
 #endif  // wint_t
-#ifndef S_SPLINT_S
+#if IS_NOT_LINTER
 _Static_assert(((SIZEOF_WINT_T == sizeof(wint_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wint_t` datatype!");
 #endif
 #define WINT   wint_t
@@ -2201,37 +2201,28 @@ typedef int   rune_t;
 #define _WCTYPE_NINDEXES   12
 /** Rune file format (Network endian) */
 typedef struct _FileRuneEntry {
-	int32_t fre_min;  // First rune of the range
-	int32_t fre_max;  // Last rune (inclusive) of the range
-	int32_t fre_map;  // What first maps to in maps
+	int32_t fre_min;  //!< First rune of the range
+	int32_t fre_max;  //!< Last rune (inclusive) of the range
+	int32_t fre_map;  //!< What first maps to in maps
 } _FileRuneEntry;
 /** Number of ranges stored */
 typedef struct _FileRuneRange { uint32_t frr_nranges; }   _FileRuneRange;
 /** The lower 8 bits of runetype[] contain the digit value of the rune */
 typedef struct attr_packed _RuneEntry {
-	rune_t min;  // First rune of the range
-	rune_t max;  // Last rune (inclusive) of the range
-	rune_t map;  // What first maps to in maps
-	unsigned long* types;  // Array of types in range
+	rune_t min;  //!< First rune of the range
+	rune_t max;  //!< Last rune (inclusive) of the range
+	rune_t map;  //!< First maps in mapping
+	unsigned long* types;  //!< Array of types in range
 } _RuneEntry;
-/** The lower 8 bits of runetype[] contain the digit value of the rune */
-typedef struct attr_packed __RuneEntry_struct {
-	rune_t __min;  // First rune of the range
-	rune_t __max;  // Last rune (inclusive) of the range
-	rune_t __map;  // What first maps to in maps
-	uint32_t* __types;  // Array of types in range
-} __RuneEntry;
+#define __RuneEntry   _RuneEntry
 typedef struct attr_packed _RuneRange {
-	int nranges;  // Number of ranges stored
-	_RuneEntry* ranges;  // Pointer to the ranges
+	int nranges;  //!< Number of ranges stored
+	_RuneEntry* ranges;  //!< Pointer to the ranges
 } _RuneRange;
-typedef struct attr_packed __RuneRange_struct {
-	int __nranges;  // Number of ranges stored
-	_RuneEntry* __ranges;  // Pointer to the ranges
-} __RuneRange;
+#define __RuneRange   _RuneRange
 typedef struct attr_packed _RuneCharClass {
-	char __name[14];  // CHARCLASS_NAME_MAX = 14
-	uint32_t __mask;  // charclass mask
+	char __name[14];  //!< CHARCLASS_NAME_MAX = 14
+	uint32_t __mask;  //!< charclass mask
 } _RuneCharClass;
 typedef struct _WCTransEntry {
 	char* te_name;
@@ -2248,8 +2239,8 @@ struct attr_packed old_tabs {
 	short toupper_tab[257];
 };
 typedef struct Fconv {
-	char* out;  // Pointer to next output
-	char* eout;  // pointer to end
+	char* out;  //!< Pointer to next output
+	char* eout;  //!< Pointer to end
 	int f1, f2, f3, chr;
 } Fconv;
 
@@ -2270,8 +2261,8 @@ typedef unsigned char   Str15[16];
 typedef Str63   StrFileName;
 /** Extended String Object */
 typedef struct xstrobj {
-	unsigned short len;  // Number of bytes/chars
-	char chars[65536];  // String
+	unsigned short len;  //!< Number of bytes/chars
+	char chars[65536];  //!< String
 } xstrobj_t;
 /** Pascal String */
 typedef struct pstring {
@@ -2453,52 +2444,52 @@ typedef int   mqd_t;
 // DIVISION DATATYPES
 
 typedef struct short_div_struct {
-	short quot;  // Quotient
-	short rem;  // Remainder
+	short quot;  //!< Quotient
+	short rem;  //!< Remainder
 } short_div_t;
 typedef struct div_struct {
-	int quot;  // Quotient
-	int rem;  // Remainder
+	int quot;  //!< Quotient
+	int rem;  //!< Remainder
 } div_t;
 typedef struct ldiv_struct {
-	long quot;  // Quotient
-	long rem;  // Remainder
+	long quot;  //!< Quotient
+	long rem;  //!< Remainder
 } ldiv_t;
 typedef struct lldiv_struct {
-	long long quot;  // Quotient
-	long long rem;  // Remainder
+	long long quot;  //!< Quotient
+	long long rem;  //!< Remainder
 } lldiv_t;
 typedef struct div8_struct {
-	int8_t quot;  // Quotient
-	int8_t rem;  // Remainder
+	int8_t quot;  //!< Quotient
+	int8_t rem;  //!< Remainder
 } div8_t;
 typedef struct div16_struct {
-	int16_t quot;  // Quotient
-	int16_t rem;  // Remainder
+	int16_t quot;  //!< Quotient
+	int16_t rem;  //!< Remainder
 } div16_t;
 typedef struct div32_struct {
-	int32_t quot;  // Quotient
-	int32_t rem;  // Remainder
+	int32_t quot;  //!< Quotient
+	int32_t rem;  //!< Remainder
 } div32_t;
 typedef struct div64_struct {
-	int64_t quot;  // Quotient
-	int64_t rem;  // Remainder
+	int64_t quot;  //!< Quotient
+	int64_t rem;  //!< Remainder
 } div64_t;
 #if SUPPORTS_INT128
 typedef struct div128_struct {
-	int128_t quot;  // Quotient
-	int128_t rem;  // Remainder
+	int128_t quot;  //!< Quotient
+	int128_t rem;  //!< Remainder
 } div128_t;
 #endif
 #if IS_WORDSIZE_64
 typedef struct imaxdiv {
-	long quot;  // Quotient
-	long rem;  // Remainder
+	long quot;  //!< Quotient
+	long rem;  //!< Remainder
 } imaxdiv_t;
 #else
 typedef struct imaxdiv {
-	long long quot;  // Quotient
-	long long rem;  // Remainder
+	long long quot;  //!< Quotient
+	long long rem;  //!< Remainder
 } imaxdiv_t;
 #endif
 
@@ -2510,7 +2501,7 @@ typedef unsigned short   sa_family_t;
 #   define __DEFINED_sa_family_t   (1)
 #endif
 #ifndef __DEFINED_socklen_t
-typedef __U32_TYPE   socklen_t;  // Duplicate from <sys/socket.h>
+typedef __U32_TYPE   socklen_t;  //!< Duplicate from `<sys/socket.h>`
 #   define __socklen_t   socklen_t
 #   define __DEFINED_socklen_t   (1)
 #endif
@@ -2689,7 +2680,7 @@ typedef long   fd_mask;
 /** fd_set for select and pselect */
 typedef struct fd_set_struct {
 #   ifdef __USE_XOPEN
-	fd_mask fds_bits[_POSIX_FD_SETSIZE];  // XPG4.2 requires this member name
+	fd_mask fds_bits[_POSIX_FD_SETSIZE];  //!< XPG4.2 requires this member name
 #   else
 	fd_mask __fds_bits[_POSIX_FD_SETSIZE];
 #   endif
@@ -2905,8 +2896,8 @@ DIAG_POP
 
 /** The <sys/uio.h> header uses the iovec structure for scatter/gather I/O */
 typedef struct iovec {
-	const void* iov_base;  // Base address of a memory region for input or output
-	size_t iov_len;  // The size of the memory pointed to by iov_base
+	const void* iov_base;  //!< Base address of a memory region for input or output
+	size_t iov_len;  //!< The size of the memory pointed to by iov_base
 } iovec_t;
 #define __DEFINED_struct_iovec   (1)
 #define HAVE_IOVEC   (1)
@@ -2978,23 +2969,23 @@ typedef struct timeval64 { int64_t tv_sec, tv_usec; }   timeval64_t;
 #define _STRUCT_TIMEVAL64   struct timeval64
 typedef struct attr_packed tm {
 	int tm_sec, tm_min, tm_hour, tm_mday, tm_mon, tm_year;
-	int tm_wday;  // Day of week [0-6]
-	int tm_yday;  // Day in year [0-366]
-	int tm_isdst;  // DST
-	long __tm_gmtoff;  // Seconds east of UTC
-	const char* __tm_zone;  // Timezone abbreviation
+	int tm_wday;  //!< Day of week [0-6]
+	int tm_yday;  //!< Day in year [0-366]
+	int tm_isdst;  //!< Daylight Savings Time (DST)
+	long __tm_gmtoff;  //!< Seconds east of UTC
+	const char* __tm_zone;  //!< Timezone abbreviation
 } tm_t;
 /** Structure representing a timezone */
 typedef struct timezone_struct {
-	int tz_minuteswest;  // Minutes west of GMT
-	int tz_dsttime;  // Nonzero if DST is ever in effect
+	int tz_minuteswest;  //!< Minutes West of GMT
+	int tz_dsttime;  //!< Nonzero if DST is ever in effect
 } timezone_t;
 typedef struct timezone_struct* restrict   timezone_ptr_t;
 #define __timezone_ptr_t   timezone_ptr_t
 /** Type of the second argument to `getitimer` and the second and third arguments `setitimer` */
 typedef struct itimerval {
-	struct timeval it_interval;  // Value to put into `it_value` when the timer expires
-	struct timeval it_value;  // Time to the next timer expiration
+	struct timeval it_interval;  //!< Value to put into `it_value` when the timer expires
+	struct timeval it_value;  //!< Time to the next timer expiration
 } itimerval_t;
 /** Values for the first argument to `getitimer` and `setitimer` */
 typedef enum __itimer_which {
@@ -3471,10 +3462,14 @@ typedef struct atomicl_struct { long counter; }    atomic_long_t;
 typedef struct atomicll_struct { long long counter; }    atomic_long_long_t;
 typedef atomic int32_t    atomic32_t;
 typedef atomic int64_t    atomic64_t;
-#if IS_CPLUSPLUS
+#if IS_NOT_LINTER
+#   if IS_CPLUSPLUS
 typedef atomic bool   atomic_bool;
-#else
+#   else
 typedef atomic _Bool   atomic_bool;
+#   endif
+#else
+#   define atomic_bool   _Bool
 #endif
 #define abool   atomic_bool
 // Atomic Character Datatypes
@@ -3649,10 +3644,18 @@ typedef atomic decimal128   atomic_decimal128;
 #   define adecimal128_t   atomic_decimal128
 #endif
 #if SUPPORTS_COMPLEX
+#   if IS_NOT_LINTER
 typedef atomic complex_float   atomic_complex_float;
+#   else
+#      define atomic_complex_float   complex_float
+#   endif
 #   define acomplex_float   atomic_complex_float
 #   define acomplex_float_t   atomic_complex_float
+#   if IS_NOT_LINTER
 typedef atomic complex_double   atomic_complex_double;
+#   else
+#      define atomic_complex_double   complex_double
+#   endif
 #   define acomplex_double   atomic_complex_double
 #   define acomplex_double_t   atomic_complex_double
 #endif
@@ -3703,7 +3706,11 @@ typedef atomic intmax_t   atomic_intmax_t;
 typedef atomic uintmax_t   atomic_uintmax_t;
 #define uatomic_max_t   atomic_uintmax_t
 #define auintmax_t   atomic_uintmax_t
+#if IS_NOT_LINTER
 typedef atomic struct atomic_flag_struct { atomic_bool __val; }   atomic_flag;
+#else
+typedef bool   atomic_flag;
+#endif
 typedef atomic imaxdiv_t   atomic_imaxdiv_t;
 #define aimaxdiv   atomic_imaxdiv_t
 #define atomic_imaxdiv   atomic_imaxdiv_t
@@ -3815,16 +3822,16 @@ typedef struct memalign_ea {
 } memalign_ea_t;
 /** SVID2/XPG mallinfo structure */
 typedef struct mallinfo {
-	int arena;  // Total space allocated from system
-	int ordblks;  // Number of non-inuse chunks
-	int smblks;  // Unused; always zero
-	int hblks;  // Number of mmapped regions
-	int hblkhd;  // Total space in mmapped regions
-	int usmblks;  // Unused; always zero
-	int fsmblks;  // Unused; always zero
-	int uordblks;  // Total allocated space
-	int fordblks;  // Total non-inuse space
-	int keepcost;  // Top-most, releasable (via malloc_trim) space
+	int arena;  //!< Total space allocated from system
+	int ordblks;  //!< Number of non-inuse chunks
+	int smblks;  //!< Unused; always zero
+	int hblks;  //!< Number of mmapped regions
+	int hblkhd;  //!< Total space in mmapped regions
+	int usmblks;  //!< Unused; always zero
+	int fsmblks;  //!< Unused; always zero
+	int uordblks;  //!< Total allocated space
+	int fordblks;  //!< Total non-inuse space
+	int keepcost;  //!< Top-most, releasable (via malloc_trim) space
 } mallinfo_t;
 typedef struct freelist_entry {
 	size_t size;
@@ -3836,11 +3843,11 @@ typedef struct realloc_ea {
 	unsigned long long size;
 	unsigned int pad1[2];
 } realloc_ea_t;
-/** malloc memory chunk struct (malloc_chunk) and datatype (malloc_t) */
+/** `malloc()` memory chunk */
 typedef struct malloc_chunk {
-	size_t prev_size;  // Size of previous chunk (if free)
-	size_t size;  // Size in bytes, including overhead
-	struct malloc_chunk* fd;  // double links; used only if free
+	size_t prev_size;  //!< Size of previous chunk (if free)
+	size_t size;  //!< Size in bytes (including overhead)
+	struct malloc_chunk* fd;  //!< Double links; used only if free
 	struct malloc_chunk* bk;
 } malloc_t;
 typedef struct malloc_chunk*   mchunkptr;
@@ -4381,12 +4388,12 @@ typedef unsigned int   phys_clicks;
 typedef int   endpoint_t;
 /** Machine info datatype */
 typedef struct attr_packed machine_struct {
-	unsigned processors_count;  // Available CPUs
-	unsigned bsp_id;  // ID of the bootstrap cpu
+	unsigned processors_count;  //!< Available CPUs
+	unsigned bsp_id;  //!< ID of the bootstrap cpu
 	int padding;
-	int apic_enabled;  // APIC enabled/disabled
-	phys_bytes acpi_rsdp;  // ACPI RSDP location
-	unsigned int board_id;  // Identifier for the board
+	int apic_enabled;  //!< APIC enabled/disabled
+	phys_bytes acpi_rsdp;  //!< ACPI RSDP location
+	unsigned int board_id;  //!< Identifier for the board
 } machine_t;
 /** Memory chunks datatype */
 typedef struct memory_struct { phys_bytes base, size; }   memory_t;
@@ -4398,42 +4405,42 @@ typedef struct vir_cp_req { struct vir_addr src, dst; phys_bytes count; }   vir_
 /** Structures for SYS_VUMAP */
 typedef struct vumap_vir {
 	union __union_vv_u {
-		cp_grant_id_t u_grant;  // Grant identifier, for non-SELF endpoint
-		vir_bytes u_addr;  // Local virtual address, for SELF endpoint
+		cp_grant_id_t u_grant;  //!< Grant identifier (for non-SELF endpoint)
+		vir_bytes u_addr;  //!< Local virtual address (for SELF endpoint)
 	} vv_u;
-	size_t vv_size;  // Size in bytes
+	size_t vv_size;  //!< Size in bytes
 } vumap_vir_t;
 #   define vv_grant   vv_u.u_grant
 #   define vv_addr   vv_u.u_addr
 typedef struct vumap_phys {
-	phys_bytes vp_addr;  // Physical address
-	size_t vp_size;  // Size in bytes
+	phys_bytes vp_addr;  //!< Physical address
+	size_t vp_size;  //!< Size in bytes
 } vumap_phys_t;
 /** I/O vector structures used in protocols between services */
 typedef struct iovec_struct {
-	vir_bytes iov_addr;  // Address of an I/O buffer
-	vir_bytes iov_size;  // Size of an I/O buffer
+	vir_bytes iov_addr;  //!< Address of an I/O buffer
+	vir_bytes iov_size;  //!< Size of an I/O buffer
 } iovec_struct_t;
 typedef struct attr_packed iovec_s {
-	cp_grant_id_t iov_grant;  // Grant ID of an I/O buffer
-	vir_bytes iov_size;  // Size of an I/O buffer
+	cp_grant_id_t iov_grant;  //!< Grant ID of an I/O buffer
+	vir_bytes iov_size;  //!< Size of an I/O buffer
 } iovec_s_t;
 typedef struct io_range {
-	unsigned ior_base;  // Lowest I/O port in range
-	unsigned ior_limit;  // Highest I/O port in range
+	unsigned ior_base;  //!< Lowest I/O port in range
+	unsigned ior_limit;  //!< Highest I/O port in range
 } io_range_t;
 typedef struct minix_mem_range {
-	phys_bytes mr_base;  // Lowest memory address in range
-	phys_bytes mr_limit;  // Highest memory address in range
+	phys_bytes mr_base;  //!< Lowest memory address in range
+	phys_bytes mr_limit;  //!< Highest memory address in range
 } mem_range_t;
 /** Revocation Reason type */
 typedef uint8_t   pgp_ss_rr_code_t;
 /** Writer flags */
 typedef enum pgp_writer_flags { PGP_WF_DUMMY }   pgp_writer_flags_t;
 typedef struct pgp_io_t {
-	void* outs;  // Output file stream
-	void* errs;  // File stream to put error messages
-	void* res;  // File stream to put results
+	void* outs;  //!< Output file stream
+	void* errs;  //!< File stream to put error messages
+	void* res;  //!< File stream to put results
 } pgp_io_t;
 typedef struct attr_packed pgp_map { int type; const char* _string; }   pgp_map_t, pgp_errcode_name_map_t;
 /** Old, fixed size filehandle structures */
@@ -4463,9 +4470,9 @@ typedef uint32_t   bit_t;
 typedef uint32_t   bitchunk_t;
 #   endif
 typedef struct fs_size {
-	ino_t inocount;  // Amount of inodes
-	zone_t zonecount;  // Amount of zones
-	block_t blockcount;  // Amount of blocks
+	ino_t inocount;  //!< Amount of inodes
+	zone_t zonecount;  //!< Amount of zones
+	block_t blockcount;  //!< Amount of blocks
 } fs_size_t;
 /** Zone number datatype for V1 filesystems */
 typedef uint16_t   zone1_t;
@@ -4476,15 +4483,15 @@ typedef uint16_t   zone1_t;
 
 /** Print format datatype */
 typedef struct attr_packed Fmt {
-	unsigned char runes;  // Output buffer is runes or chars
-	void* start;  // Beginning of buffer
-	void* to;  // Current place in the buffer
-	void* stop;  // End of the buffer; overwritten if flush fails
-	int (*flush)(struct Fmt*);  // Called when to == stop
-	void* farg;  // To make flush a closure
-	int nfmt;  // Number of chars formatted so far
-	va_list args;  // Args passed to dofmt
-	int r;  // Format Rune
+	unsigned char runes;  //!< Output buffer is runes or chars
+	void* start;  //!< Beginning of buffer
+	void* to;  //!< Current place in the buffer
+	void* stop;  //!< End of the buffer; overwritten if flush fails
+	int (*flush)(struct Fmt*);  //!< Called when `to` == `stop`
+	void* farg;  //!< To make `flush()` a closure
+	int nfmt;  //!< Number of chars formatted so far
+	va_list args;  //!< Args passed to `dofmt`
+	int r;  //!< Format Rune
 	int width, prec;
 	unsigned long flags;
 } Fmt;
@@ -4519,9 +4526,9 @@ typedef struct attr_packed QLock {
 } QLock;
 typedef struct RWLock {
 	Lock lock;
-	int readers;  // Number of readers
-	int writer;  // Number of writers
-	QLp* head;  // List of waiting processes
+	int readers;  //!< Number of readers
+	int writer;  //!< Number of writers
+	QLp* head;  //!< List of waiting processes
 	QLp* tail;
 } RWLock;
 typedef struct Rendez {
@@ -4530,15 +4537,15 @@ typedef struct Rendez {
 	QLp* tail;
 } Rendez;
 typedef struct NetConnInfo {
-	char* dir;  // Connection directory
-	char* root;  // Network root
-	char* spec;  // Binding spec
-	char* lsys;  // Local system
-	char* lserv;  // Local service
-	char* rsys;  // Remote system
-	char* rserv;  // Remote service
-	char* laddr;  // Local address
-	char* raddr;  // Remote address
+	char* dir;  //!< Connection directory
+	char* root;  //!< Network root
+	char* spec;  //!< Binding spec
+	char* lsys;  //!< Local system
+	char* lserv;  //!< Local service
+	char* rsys;  //!< Remote system
+	char* rserv;  //!< Remote service
+	char* laddr;  //!< Local address
+	char* raddr;  //!< Remote address
 } NetConnInfo;
 typedef struct attr_packed Waitmsg {
 	int pid;
@@ -4817,9 +4824,9 @@ typedef int64_t   TimeValue64;
 typedef struct attr_packed TimeBaseRecord*   TimeBase;
 /** Package of TimeBase, duration, and scale (QuickTime TimeBase) */
 typedef struct attr_packed TimeRecord {
-	CompTimeValue value;  // Units (duration or absolute)
-	TimeScale scale;  // Units per second
-	TimeBase base;  // Reference to the time base
+	CompTimeValue value;  //!< Units (duration or absolute)
+	TimeScale scale;  //!< Units per second
+	TimeBase base;  //!< Reference to the time base
 } TimeRecord;
 /** Flags for general linker behavior */
 typedef enum kxld_flags { kKxldFlagDefault = 0, kKXLDFlagIncludeRelocs = 1 }   KXLDFlags;
@@ -5133,10 +5140,10 @@ typedef struct log_t_struct {
 #define CHAR_T_OFFSET   ((char*)(((log_t*)0)->str) - (char*)0)
 /** Structure for building "argc/argv" vector of arguments */
 typedef struct attr_packed __args {
-	char* bp;  // Argument
-	size_t blen;  // Buffer length
-	size_t len;  // Argument length
-	unsigned char flags;  // If allocated space
+	char* bp;  //!< Argument
+	size_t blen;  //!< Buffer length
+	size_t len;  //!< Argument length
+	unsigned char flags;  //!< If allocated space
 } ARGS;
 /** Used to identify a trace stream attributes object */
 typedef int64_t   trace_attr_t;
@@ -5148,36 +5155,36 @@ typedef uint64_t   trace_event_set_t;
 typedef uint64_t   trace_id_t;
 /** Type of ARG for TIOCGETC and TIOCSETC requests */
 typedef struct tchars {
-	char t_intrc;  // Interrupt character
-	char t_quitc;  // Quit character
-	char t_startc;  // Start-output character
-	char t_stopc;  // Stop-output character
-	char t_eofc;  // End-of-file character
-	char t_brkc;  // Input delimiter character
+	char t_intrc;  //!< Interrupt character
+	char t_quitc;  //!< Quit character
+	char t_startc;  //!< Start-output character
+	char t_stopc;  //!< Stop-output character
+	char t_eofc;  //!< End-of-file character
+	char t_brkc;  //!< Input delimiter character
 } tchars_t;
 /** Type of ARG for TIOCGLTC and TIOCSLTC requests */
 typedef struct ltchars {
-	char t_suspc;  // Suspend character
-	char t_dsuspc;  // Delayed suspend character
-	char t_rprntc;  // Reprint-line character
-	char t_flushc;  // Flush-output character
-	char t_werasc;  // Word-erase character
-	char t_lnextc;  // Literal-next character
+	char t_suspc;  //!< Suspend character
+	char t_dsuspc;  //!< Delayed suspend character
+	char t_rprntc;  //!< Reprint-line character
+	char t_flushc;  //!< Flush-output character
+	char t_werasc;  //!< Word-erase character
+	char t_lnextc;  //!< Literal-next character
 } ltchars_t;
 /** Type of ARG for TIOCGETP, TIOCSETP, gtty, and stty requests */
 typedef struct sgttyb {
-	char sg_ispeed;  // Input speed
-	char sg_ospeed;  // Output speed
-	char sg_erase;  // Erase character
-	char sg_kill;  // Kill character
-	short sg_flags;  // Mode flags
+	char sg_ispeed;  //!< Input speed
+	char sg_ospeed;  //!< Output speed
+	char sg_erase;  //!< Erase character
+	char sg_kill;  //!< Kill character
+	short sg_flags;  //!< Mode flags
 } sgttyb_t;
 /** Type of ARG for TIOCGWINSZ and TIOCSWINSZ requests */
 typedef struct winsize {
-	unsigned short ws_row;  // Rows, in characters
-	unsigned short ws_col;  // Columns, in characters
-	unsigned short ws_xpixel;  // Horizontal pixels
-	unsigned short ws_ypixel;  // Vertical pixels
+	unsigned short ws_row;  //!< Rows (as number of characters)
+	unsigned short ws_col;  //!< Columns (as number of characters)
+	unsigned short ws_xpixel;  //!< Horizontal pixels
+	unsigned short ws_ypixel;  //!< Vertical pixels
 } winsize_t;
 typedef struct ttysize { unsigned short ts_lines, ts_cols, ts_xxx, ts_yyy; }   ttysize_t;
 
@@ -5197,11 +5204,11 @@ typedef struct ttysize { unsigned short ts_lines, ts_cols, ts_xxx, ts_yyy; }   t
 
 
 typedef struct utsname {
-	char sysname[SYS_NMLN];  // Name of the OS
-	char nodename[SYS_NMLN];  // Name of this node (network related)
-	char release[SYS_NMLN];  // Current release level
-	char version[SYS_NMLN];  // Current version level
-	char machine[SYS_NMLN];  // Name of the hardware type
+	char sysname[SYS_NMLN];  //!< Name of the OS
+	char nodename[SYS_NMLN];  //!< Name of this node (network related)
+	char release[SYS_NMLN];  //!< Current release level
+	char version[SYS_NMLN];  //!< Current version level
+	char machine[SYS_NMLN];  //!< Name of the hardware type
 	char domainname[SYS_NMLN];
 } utsname_t;
 
@@ -5270,11 +5277,9 @@ typedef struct attr_packed __collate_struct {
 /** Structure describing locale data in core for a category */
 struct attr_packed __locale_data {
 	const char* name;
-	const char* filedata;  // Region mapping the file data
-	off_t filesize;  // Size of the file (and the region)
-	enum _alloc_e {  // Flavor of storage used for those
-		ld_malloced, ld_mapped, ld_archive
-	} alloc;
+	const char* filedata;  //!< Region mapping the file data
+	off_t filesize;  //!< Size of the file (and the region)
+	enum _alloc_e { ld_malloced, ld_mapped, ld_archive } alloc;  //!< Flavor of storage used
 	// This provides a slot for category-specific code to cache data computed about this locale; That code can set a cleanup function to deallocate the data
 	struct _private {
 		void (*cleanup)(struct __locale_data*) internal_function;
@@ -5284,14 +5289,14 @@ struct attr_packed __locale_data {
 			const struct gconv_fcts* ctype;
 		} private_u;
 	} private;
-	unsigned int usage_count;  // Counter for users
+	unsigned int usage_count;  //!< Counter for users
 	int use_translit;
-	unsigned int nstrings;  // Number of strings below
+	unsigned int nstrings;  //!< Number of strings below
 	union locale_data_value {
 		const uint32_t* wstr;
 		const char* _string;
-		unsigned int word;  // Note endian issues vs 64-bit pointers
-	} values __flexarr;  // Items, usually pointers into `filedata`
+		unsigned int word;  //!< Note endian issues vs 64-bit pointers
+	} values __flexarr;  //!< Items, usually pointers into `filedata`
 };
 
 /** Structure for reentrant locale using functions; This is an opaque type for the user level programs; The file and this data structure is not standardized, so do not rely on it */
@@ -5379,30 +5384,32 @@ typedef uint16_t   gidx_t;
 typedef struct _utf8_state { wchar_t ch; int want; wchar_t lbound; }   utf8_state_t;
 
 typedef struct attr_packed _RuneLocale {
-	char magic[8];  // Magic saying what version we are
-	char encoding[32];  // ASCII name of this encoding
+	char magic[8];  //!< Magic indicating the version present
+	char encoding[32];  //!< ASCII name of this encoding
 	rune_t (*sgetrune)(const char*, size_t, char const**);
 	int (*sputrune)(rune_t, char*, size_t, char**);
 	rune_t invalid_rune;
 	unsigned long runetype[_CACHED_RUNES];
 	rune_t maplower[_CACHED_RUNES];
 	rune_t mapupper[_CACHED_RUNES];
-	_RuneRange runetype_ext, maplower_ext, mapupper_ext;
-	void* variable;  // Data which depends on the encoding
-	int variable_len;  // Data length
+	_RuneRange runetype_ext;
+	_RuneRange maplower_ext;  //!< Lowercase mapping
+	_RuneRange mapupper_ext;  //!< Uppercase mapping
+	void* variable;  //!< Data which depends on the encoding
+	int variable_len;  //!< Data length
 } _RuneLocale;
 
 typedef struct _FileRuneLocale {
-	char frl_magic[8];  // Magic saying what version we are
-	char frl_encoding[32];  // ASCII name of this encoding
+	char frl_magic[8];  //!< Magic indicating the version present
+	char frl_encoding[32];  //!< ASCII name of this encoding
 	int32_t frl_invalid_rune;
 	_RuneType frl_runetype[_CACHED_RUNES];
 	int32_t frl_maplower[_CACHED_RUNES];
 	int32_t frl_mapupper[_CACHED_RUNES];
 	_FileRuneRange frl_runetype_ext;
-	_FileRuneRange frl_maplower_ext;
-	_FileRuneRange frl_mapupper_ext;
-	int32_t frl_variable_len;  // Data length
+	_FileRuneRange frl_maplower_ext;  //!< Lowercase mapping
+	_FileRuneRange frl_mapupper_ext;  //!< Uppercase mapping
+	int32_t frl_variable_len;  //!< Data length
 } _FileRuneLocale;
 
 
@@ -5433,11 +5440,11 @@ typedef union sigval { int sival_int; void* sival_ptr; }   sigval_t;
 #define __have_sigval_t   (1)
 #define __DEFINED_sigval_t   (1)
 typedef struct siginfo {
-	int si_signo;  // Signal number
-	int si_code;  // Cause of the signal
+	int si_signo;  //!< Signal number
+	int si_code;  //!< Cause of the signal
 	uid_t si_uid;
 	pid_t si_pid;
-	union sigval si_value;  // Signal value
+	union sigval si_value;  //!< Signal value
 } siginfo_t;
 typedef struct sigev_thread {
 	void(*_function)(sigval_t);
@@ -6296,15 +6303,15 @@ typedef void (*__sighandler_t)(int);
 /** Signal handler datatype */
 typedef __sighandler_t   sighandler_t;
 #define __kernel_sighandler_t   sighandler_t
-/** Signal handler datatype */
-typedef sighandler_t   sig_t;  // 4.4 BSD
+/** Signal handler datatype (4.4 BSD) */
+typedef sighandler_t   sig_t;
 /** Set by siginterrupt */
 static UNUSED sigset_t _sigintr;
 /** Structure passed to `sigvec` */
 typedef struct sigvec {
-	__sighandler_t sv_handler;  // Signal handler
-	int sv_mask;  // Mask of signals to be blocked
-	int sv_flags;  // Flags
+	__sighandler_t sv_handler;  //!< Signal handler
+	int sv_mask;  //!< Mask of signals to be blocked
+	int sv_flags;  //!< Flags
 } sigvec_t;
 #define sv_onstack   sv_flags
 // Bits in `sv_flags`
@@ -6570,10 +6577,23 @@ struct sigaction {
 
 // JUMP DATATYPES
 
+
+/** @def __jmp_buf
+@brief A buffer for storing, saving, and restoring the register values when performing jumps
+
+@section Stored Registers by CPU
+ - ARC: r13-r25, fp, sp, blink
+ - AVR: r0-r7, sr, sp, lr
+ - Blackfin: pregs, fp, sp, rregs, astat, lcregs, a0w, a0x, a1w, a1x, iregs, mregs, lregs, bregs, pc
+ - M68k: dregs, aregs, fp, sp, fpregs
+ - Microblaze: sp, lp, SDA, SDA2, regs
+ - Mips: pc, sp, regs, fp, gp, fpregs
+ - SuperH: regs, pc, gbr, fpscr, fpregs
+*/
 #ifdef ARCHALPHA
 typedef long   __jmp_buf[17];
 #elif defined(ARCHARC)
-typedef int   __jmp_buf[16];  // r13-r25, fp, sp, blink
+typedef int   __jmp_buf[16];
 #elif defined(ARCHARM)
 #   ifdef __ARM_EABI__
 typedef int align8   __jmp_buf[64];
@@ -6587,7 +6607,7 @@ typedef int   __jmp_buf[10];
 #      endif
 #   endif
 #elif defined(ARCHAVR)
-typedef int   __jmp_buf[11];  // r0-r7, sr, sp and lr
+typedef int   __jmp_buf[11];
 #elif defined(ARCHBLACKFIN)
 typedef struct jmp_buf {
 	unsigned long __pregs[6];
@@ -6673,9 +6693,9 @@ typedef int __jmp_buf[6];
 #endif
 /** Calling environment, plus possibly a saved signal mask */
 struct attr_packed jmp_buf_tag {
-	__jmp_buf __jmpbuf;  // Calling environment
-	int __mask_was_saved;  // Saved the signal mask
-	sigset_t __saved_mask;  // Saved signal mask
+	__jmp_buf __jmpbuf;  //!< Calling environment
+	int __mask_was_saved;  //!< Saved the signal mask
+	sigset_t __saved_mask;  //!< Saved signal mask
 };
 typedef struct jmp_buf_tag   jmp_buf[1];
 /** The `__mask_was_saved` flag determines whether or not `longjmp` will restore the signal mask */
@@ -6792,13 +6812,13 @@ struct _pthread_fastlock { int __spinlock; };
 #   define PTHREAD_SPIN_UNLOCKED   0
 #endif
 /** Thread descriptor */
-struct attr_packed _pthread_descr_struct {
+typedef struct attr_packed _pthread_descr_struct {
 	struct _pthread_descr_struct* next;
 	struct _pthread_descr_struct** prev;
 	pid_t pid;
 	// Stack handling
-	void* stack_begin;  // Beginning of stack; lowest address
-	void* stack_end;  // End of stack
+	void* stack_begin;  //!< Beginning of stack; lowest address
+	void* stack_end;  //!< End of stack
 	// Thread struct lock
 	struct _pthread_fastlock lock, wlock;
 	int errno;
@@ -6830,7 +6850,7 @@ struct attr_packed _pthread_descr_struct {
 	int h_errno;
 	struct res_state __res;
 #   endif
-};
+} pthread_descr_t;
 typedef struct _pthread_descr_struct*   _pthread_descr;
 #define __DEFINED_pthread_mutex_t   (1)
 #if (defined(ARCHAARCH64))  // pthread_mutex_t
@@ -7567,7 +7587,9 @@ typedef struct __ptcb {
 } ptcb_t;
 typedef struct attr_packed pthread {
 	struct pthread* self;
-	void **dtv, *unused1, *unused2;
+	void** dtv;
+	void* unused1;
+	void* unused2;
 	uintptr_t sysinfo, canary, canary2;
 	pid_t tid, pid;
 	int tsd_used, errno_val;
@@ -7609,9 +7631,9 @@ typedef struct attr_packed pthread {
 // I/O & FILE DATATYPES
 
 typedef struct attr_packed __sbuf { unsigned char* _base; int _size; }   sbuf_t;
-/** I/O descriptor for __sfvwrite() */
+/** I/O descriptor for `sfvwrite()` */
 typedef struct __siov { void* iov_base; size_t iov_len; }   siov_t;
-/** I/O descriptor for __sfvwrite() */
+/** I/O descriptor for `sfvwrite()` */
 typedef struct __suio { struct __siov* uio_iov; int uio_iovcnt, uio_resid; }   suio_t;
 typedef struct _G_fpos { off_t __pos; mbstate_t __state; }   _G_fpos_t;
 #define G_fpos_t   _G_fpos_t
@@ -7620,15 +7642,15 @@ typedef struct _G_fpos64 { off64_t __pos; mbstate_t __state; }   _G_fpos64_t;
 typedef struct cookie { wchar_t* ws; size_t l; }   cookie_t;
 
 typedef struct attr_packed _dirdesc {
-	int dd_fd;  // File descriptor associated with directory
-	long dd_loc;  // Offset in current buffer
-	long dd_size;  // Amount of data returned by getdents
-	char* dd_buf;  // Data buffer
-	int dd_len;  // Size of data buffer
-	off_t dd_seek;  // Magic cookie returned by getdents
-	long dd_rewind;  // Magic cookie for rewinding
-	int dd_flags;  // Flags for readdir
-	void* dd_lock;  // Lock for concurrent access
+	int dd_fd;  //!< File descriptor associated with directory
+	long dd_loc;  //!< Offset in current buffer
+	long dd_size;  //!< Amount of data returned by getdents
+	char* dd_buf;  //!< Data buffer
+	int dd_len;  //!< Size of data buffer
+	off_t dd_seek;  //!< Magic cookie returned by getdents
+	long dd_rewind;  //!< Magic cookie for rewinding
+	int dd_flags;  //!< Flags for readdir
+	void* dd_lock;  //!< Lock for concurrent access
 } dirdesc_t;
 #define dirfd(dirp)   (((struct _dirdesc*)dirp)->dd_fd)
 
@@ -7649,93 +7671,74 @@ typedef struct wms_cookie {
 	mbstate_t mbs;
 } wms_cookie_t;
 
-typedef struct attr_packed wchar_io_data {
-	mbstate_t wcio_mbstate_in, wcio_mbstate_out;
-	wchar_t wcio_ungetwc_buf[WCIO_UNGETWC_BUFSIZE];
-	size_t wcio_ungetwc_inbuf;
-	int wcio_mode;
-} wchar_io_data_t;
-
-/** File extension */
-typedef struct attr_packed __sfileext {
-	struct __sbuf _ub;  // ungetc buffer
-	struct wchar_io_data _wcio;  // wide char io status
-	size_t _fgetstr_len;
-	char* _fgetstr_buf;
-#   if IS_REENTRANT
-	mutex_t _lock;  // Lock for FLOCKFILE/FUNLOCKFILE
-	cond_t _lockcond;  // Condition variable for signalling lock releases
-	thr_t _lockowner;  // The thread currently holding the lock
-	int _lockcount;  // Count of recursive locks
-	int _lockinternal;  // Flag of whether the lock is held inside stdio
-	int _lockcancelstate;  // Stashed cancellation state on internal lock
-#   endif
-} __sfileext_t;
-
-#define _EXT(fp)   ((struct __sfileext*)(void*)((fp)->_ub._base))
-#define _UB(fp)   _EXT(fp)
-#define _FILEEXT_SETUP(f, fext)   do { (f)->_ub._base = (unsigned char*)(fext); (fext)->_fgetstr_len = 0; (fext)->_fgetstr_buf = NULL; } while (0x0)
-#define WCIO_GET(fp)   (&(_EXT(fp)->_wcio))
-#define _SET_ORIENTATION(fp, mode)   do { struct wchar_io_data* _wcio = WCIO_GET(fp); if (_wcio && _wcio->wcio_mode == 0) { _wcio->wcio_mode = (mode); } } while (0x0)
-#define WCIO_FREEUB(fp)   do { _EXT(fp)->_wcio.wcio_ungetwc_inbuf = 0; } while (0x0)
-#define WCIO_FREE(fp)   do { _EXT(fp)->_wcio.wcio_mode = 0; WCIO_FREEUB(fp); } while (0x0)
-
-typedef struct attr_packed __sFILEX {
-	unsigned char* up;  // Stores _p when _p is doing ungetc data
-	mbstate_t mbstate;  // Multibyte conversion state
-	pthread_mutex_t fl_mutex;  // Used for MT-safety
-	int orientation:2;  // Orientation for fwide()
-	int counted:1;  // Stream counted against STREAM_MAX
-	int pad1:5;  // Padding
-} sFILEX_t;
 
 /** File datatype */
 typedef struct attr_packed __sFILE {
 	// Position Pointers
-	unsigned char* rpos;  // Current read position in buffer
-	unsigned char* rend;  // End of read area
-	unsigned char* _up;  // Stores value of rpos when ungetc() over-fills the current buffer
-	unsigned char* wpos;  // Current write position in buffer
-	unsigned char* wbase;  // Start of put() area
-	unsigned char* wend;  // End of write area
-	unsigned char* shend;  // End of shared area
-	off_t shlim;  // Limit of shared area
-	off_t shcnt;  // Size of shared area
+	unsigned char* rpos;  //!< Current read position in buffer
+	unsigned char* rend;  //!< End of read area
+	unsigned char* rpos_up;  //!< Stores value of rpos when `ungetc()` over-fills the current buffer
+	unsigned char* wpos;  //!< Current write position in buffer
+	unsigned char* wbase;  //!< Start of `put()` area
+	unsigned char* wend;  //!< End of write area
+	unsigned char* bkmk;  //!< Position in buffer of bookmark
+	unsigned char* shend;  //!< End of shared area
+	off_t shlim;  //!< Limit of shared area
+	off_t shcnt;  //!< Size of shared area
 	// Space left for character-stream functions
-	int _r;  // Read space left for getc()
-	int _ur;  // Saves _r when _r is counting ungetc data
-	int _w;  // Write space left for putc()
+	int rspace;  //!< Read space left for `getc()`
+	int urspace;  //!< Saves `rspace` when `rspace` is counting `ungetc()` data
+	int wspace;  //!< Write space left for `putc()`
 	// General File Properties
-	unsigned int flags;  // This FILE is free if 0
-	unsigned int thread_flags;
-	int fd;  // File number (if Unix descriptor), else -1
-	int lbfsize;  // 0 or -buf_size (inline putc); used to make inline line-buffered output compact
-	int blksize;  // stat.st_blksize (may not equal buffer size)
-	fpos_t offset;  // Current lseek offset
-	int pipe_pid;  // PID of Pipe
-	signed char mode;  // I/O Mode (Text/Binary)
+	unsigned int flags;  //!< This FILE is free if 0
+	unsigned int thread_flags;  //!< Flags for thread access
+	int fd;  //!< File number (if Unix descriptor), else `-1`
+	int blksize;  //!< `stat.st_blksize` (may not equal buffer size)
+	fpos_t offset;  //!< Current `lseek()` offset
+	int pipe_pid;  //!< Process ID of Pipe
+	int mode;  //!< I/O Mode (Binary/Text)
+	// Locks & Threading
+	atomic volatile pid_t lock;  //!< PID owning the file lock
+	volatile int waiters;  //!< Number of waiting processes/threads
+	atomic long lockcount;  //!< Count of recursive locks
+	bool lockinternal;  //!< Flag whether or not the lock is held inside stdio
+	int lockcancelstate;  //!< Stashed cancellation state on internal lock
+	pthread_t lockowner;  //!< The thread currently holding the lock
+	pthread_cond_t lockcond;  //!< Condition variable for signalling lock releases
+	pthread_mutex_t mutex;  //!< Used for MT-safety
+	struct __sFILE* prev_locked;  //!< Points to the previously locked file
+	struct __sFILE* next_locked;  //!< Points to the next locked file
 	// Operations
-	void* _cookie;  // Cookie passed to IO functions
-	int (*close)(void*);
-	size_t (*read)(void*, unsigned char*, const size_t);
-	ssize_t (*readc)(const int, unsigned char*, const size_t);
-	off_t (*seek)(void*, const off_t, const int);
-	size_t (*write)(void*, const unsigned char*, const size_t);
+	int (*close)(void*);  //!< Pointer to the function used to close the file
+	size_t (*read)(void*, unsigned char*, const size_t);  //!< Pointer to the function used to read the file
+	ssize_t (*readc)(const int, unsigned char*, const size_t);  //!< Pointer to the function used to read the file char-by-char
+	off_t (*seek)(void*, const off_t, const int);  //!< Pointer to the function used to seek positions in the file
+	size_t (*write)(void*, const unsigned char*, const size_t);  //!< Pointer to the function used to write to the file
 	// Buffers
-	signed char lbf;  // Line buffer
-	struct __sbuf _ub;  // ungetc buffer
-	struct __sbuf _lb;  // Buffer for fgetln()
-	unsigned char* buf;
-	size_t buf_size;
-	unsigned char _ubuf[3];  // Guarantee an ungetc() buffer
-	unsigned char _nbuf[1];  // Guarantee a getc() buffer
-	// Locks
-	volatile int lock, waiters;
-	long lockcount;
-	struct __sFILE *prev_locked, *next_locked;
+	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
+	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
+	unsigned char* ub_base;  //!< Pointer to buffer for `ungetc()`
+	int ub_size;  //!< Size of `ungetc()` buffer
+	unsigned char* lb_base;  //!< Pointer to buffer for `fgetln()`
+	int lb_size;  //!< Size of `fgetln()` buffer
+	unsigned char* buf;  //!< Pointer to buffer
+	size_t buf_size;  //!< Size of the buffer `buf`
+	unsigned char ubuf[3];  //!< Guarantee a buffer for `ungetc()`
+	unsigned char nbuf[1];  //!< Guarantee a buffer for `getc()`
+	// Wide-Character I/O
+	mbstate_t wcio_mbstate_in;  //!< Incoming multi-byte character state
+	mbstate_t wcio_mbstate_out;  //!< Outgoing multi-byte character state
+	wchar_t wcio_ungetwc_buf[WCIO_UNGETWC_BUFSIZE];  //!< Buffer for `ungetwc()`
+	size_t wcio_ungetwc_inbuf;  //!< Size of the `ungetwc()` buffer
+	wchar_t* wbuf;  //!< Pointer to the wchar buffer
+	size_t wbuf_size;  //!< Size of the buffer `wbuf`
+	int wcio_mode;  //!< Wide-character mode
+	char* fgetstr_buf;
+	size_t fgetstr_len;
 	// Miscellaneous
-	struct __sFILEX* _extra;  // Additions to FILE to not break ABI
-	const locale_t locale;
+	mbstate_t mbstate;  //!< Multibyte conversion state
+	int counted;  //!< Stream counted against `STREAM_MAX`
+	const locale_t locale;  //!< Stream locale
 } FILE;
 #define __FILE   FILE
 #define sFILE_t   FILE
@@ -7752,18 +7755,34 @@ typedef struct attr_packed __sFILE {
 #define BITS_PER_FILE   (SIZEOF_FILE * 8)
 #define SIZEOF_FILE_PTR   (sizeof(FILE*))
 
-/** struct __sFILE_fake is the start of a struct __sFILE, with only the minimal fields allocated; In __sinit() we really allocate the 3 standard streams, etc., and point away from this fake */
-typedef struct attr_packed __sFILE_fake {
-	unsigned char* _p;  // Current position in (some) buffer
-	int _r;  // Read space left for getc()
-	int _w;  // Write space left for putc()
-	short _flags;  // Flags, below; this FILE is free if 0
-	short _file;  // Fileno, if Unix descriptor, else -1
-	struct __sbuf _bf;  // The buffer (at least 1 byte, if !NULL)
-	int lbfsize;  // 0 or -_bf._size, for inline putc
-} __sFILE_fake_t;
 
-/** Represents a lockfile on which we hold the lock */
+static UNUSED FILE* ofl_head = NULL;
+
+
+#define FILE_WC_SETUP(fp)   do { (fp)->fgetstr_len = 0; (fp)->fgetstr_buf = NULL; } while (0x0)
+/** Set the orientation of the wchar file stream */
+#define SET_WC_ORIENTATION(fp, mode)   do { if ((fp)->wcio_mode == 0) { (fp)->wcio_mode = (mode); } } while (0x0)
+/** Free the wchar file I/O buffer */
+#define WCIO_FREE(fp)   do { (fp)->wcio_mode = 0; (fp)->wcio_ungetwc_inbuf = 0; } while (0x0)
+
+
+/** A smaller variation of `__sFILE` with only the minimal fields allocated */
+typedef struct attr_packed minFILE {
+	// Position Pointers
+	unsigned char* pos;  //!< Current position in buffer
+	int rspace;  //!< Read space left for `getc()`
+	int wspace;  //!< Write space left for `putc()`
+	// General File Properties
+	unsigned int flags;  //!< This FILE is free if `0`
+	int fd;  //!< Fileno (if Unix descriptor), else `-1`
+	// Buffers
+	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
+	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
+	unsigned char* buf;  //!< Pointer to buffer
+	size_t buf_size;  //!< Size of the buffer `buf`
+} minFILE_t;
+
+/** Represents a lockfile; Used to hold the lock */
 typedef struct attr_packed lockfile_struct { char* filename; int fd; }   lockfile_t;
 
 /** The first few FILEs are statically allocated; others are dynamically allocated and linked in via this glue structure */
@@ -7935,13 +7954,13 @@ DECL_FUNC MATH_FUNC double exp(const double num);
 DECL_FUNC MATH_FUNC float expf(const float num);
 DECL_FUNC MATH_FUNC double fabs(const double x);
 DECL_FUNC MATH_FUNC float fabsf(const float x);
-DECL_FUNC int fclose(FILE* f);
+DECL_FUNC int fclose(FILE* fp);
 DECL_FUNC int fcntl(const int fd, const int cmd, ...);
 DECL_FUNC long __fdelt_chk(const long d);
 DECL_FUNC int ferror(FILE* fp);
-DECL_FUNC int fflush(FILE* f);
-DECL_FUNC char* fgets(char* as, int n, FILE* f);
-DECL_FUNC ATTR_NONNULL(1) ATTR_PRINTF(2, 3) int fprintf(FILE* restrict f, const char* restrict fmt, ...);
+DECL_FUNC int fflush(FILE* fp);
+DECL_FUNC char* fgets(char* as, int n, FILE* fp);
+DECL_FUNC ATTR_NONNULL(1) ATTR_PRINTF(2, 3) int fprintf(FILE* restrict fp, const char* restrict fmt, ...);
 DECL_FUNC NONNULL void floatbittostr(const float fbits, char* restrict outstr);
 DECL_FUNC NOLIBCALL ATTR_PF int fmodeflags(const char* restrict mode);
 DECL_FUNC FILE* fopen(const char* restrict filename, const char* restrict mode);
@@ -7965,7 +7984,7 @@ DECL_FUNC MATH_FUNC double __ieee754_sqrt(const double x);
 DECL_FUNC MATH_FUNC float __ieee754_sqrtf(const float x);
 DECL_FUNC MATH_FUNC double iexp(const int expo);
 DECL_FUNC MATH_FUNC float iexpf(const int expo);
-DECL_FUNC unsigned long long intscan(FILE* f, unsigned base, const int pok, const unsigned long long lim);
+DECL_FUNC unsigned long long intscan(FILE* fp, unsigned base, const int pok, const unsigned long long lim);
 DECL_FUNC MATH_FUNC int isfinite(const double x);
 DECL_FUNC MATH_FUNC int isfinitef(const float x);
 DECL_FUNC MATH_FUNC int __isinf(const double x);
@@ -7976,8 +7995,8 @@ DECL_FUNC char* itoa2(int i, char b[]);
 DECL_FUNC int lflush(FILE* _fp);
 DECL_FUNC int __lltostr(char* s, int size, unsigned long long i, const int base, const char UpCase);
 DECL_FUNC int __ltostr(char* s, unsigned int size, unsigned long i, const unsigned int base, const int UpCase);
-DECL_FUNC void LOCK(volatile int* restrict l);
-DECL_FUNC int LOCKFILE(FILE* restrict f);
+DECL_FUNC void LOCK(atomic volatile int* restrict l);
+DECL_FUNC int LOCKFILE(FILE* restrict fp);
 DECL_FUNC MATH_FUNC long lrintf(const float x);
 DECL_FUNC int mbtowc(wchar_t* restrict pwc, const char* s, const size_t n);
 DECL_FUNC NOLIBCALL void* malloc(const size_t len);
@@ -8004,6 +8023,8 @@ DECL_FUNC struct pthread* __pthread_self(void);
 DECL_FUNC int putb(const int8_t b, FILE* fp);
 DECL_FUNC void putb_no_output(const int8_t b, FILE* fp);
 DECL_FUNC int putc(int c, FILE* fp);
+/** Write character to stream */
+#define fputc(_char, fp)   putc((_char), (fp))
 DECL_FUNC void putc_no_output(const int c, FILE* fp);
 DECL_FUNC void puti(const int num);
 DECL_FUNC int puts(const char* src);
@@ -8018,27 +8039,27 @@ DECL_FUNC void* realloc(void* ptr, const size_t len);
 DECL_FUNC void* reallocarray(void* optr, const size_t nmemb, const size_t size);
 DECL_FUNC size_t scan_trans(long long t, int local, size_t* alt);
 DECL_FUNC int select(const int n, fd_set* restrict rfds, fd_set* restrict wfds, fd_set* restrict efds, struct timeval* restrict tv);
-DECL_FUNC void setlinebuf(FILE* f);
+DECL_FUNC void setlinebuf(FILE* fp);
 DECL_FUNC int sflush(FILE* fp);
-DECL_FUNC int __sfvwrite(FILE* fp, struct __suio* uio);
+DECL_FUNC int sfvwrite(FILE* fp, struct __suio* uio);
 DECL_FUNC int __sigaction(int sig, const struct sigaction* act, struct sigaction* oact);
 DECL_FUNC MATH_FUNC int signbit(const double x);
 DECL_FUNC MATH_FUNC int signbitf(const float x);
 DECL_FUNC MATH_FUNC double sin(const double x);
 DECL_FUNC MATH_FUNC float sinf(const float x);
 DECL_FUNC ATTR_PRINTF(3, 4) int snprintf(char* s, const size_t maxlen, const char* format, ...);
-DECL_FUNC fpos_t __sseek(void* _cookie, const fpos_t offset, const int whence);
-DECL_FUNC int __stdio_close(FILE* f);
-DECL_FUNC int __stdio_close_helper(void* f);
-DECL_FUNC off_t __stdio_seek(FILE* f, const off_t off, const int whence);
-DECL_FUNC off_t __stdio_seek_helper(void* f, const off_t off, const int whence);
-DECL_FUNC ATTR_NONNULL(2) size_t __stdio_read(FILE* f, unsigned char* buf, const size_t len);
-DECL_FUNC ATTR_NONNULL(2) size_t __stdio_read_helper(void* f, unsigned char* buf, const size_t len);
+DECL_FUNC fpos_t sseek(FILE* fp, const fpos_t offset, const int whence);
+DECL_FUNC int __stdio_close(FILE* fp);
+DECL_FUNC int __stdio_close_helper(void* fp);
+DECL_FUNC off_t __stdio_seek(FILE* fp, const off_t off, const int whence);
+DECL_FUNC off_t __stdio_seek_helper(void* fp, const off_t off, const int whence);
+DECL_FUNC ATTR_NONNULL(2) size_t __stdio_read(FILE* fp, unsigned char* buf, const size_t len);
+DECL_FUNC ATTR_NONNULL(2) size_t __stdio_read_helper(void* fp, unsigned char* buf, const size_t len);
 DECL_FUNC ATTR_NONNULL(2) ssize_t __stdio_readc_helper(const int fd, unsigned char* buf, const size_t len);
-DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* f, const unsigned char* buf, const size_t len);
-DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write_helper(void* f, const unsigned char* buf, const size_t len);
-DECL_FUNC NONNULL size_t __stdout_write(UNUSED FILE* f, const unsigned char* restrict buf, const size_t len);
-DECL_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* f, const unsigned char* restrict buf, const size_t len);
+DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* fp, const unsigned char* buf, const size_t len);
+DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write_helper(void* fp, const unsigned char* buf, const size_t len);
+DECL_FUNC NONNULL size_t __stdout_write(UNUSED FILE* fp, const unsigned char* restrict buf, const size_t len);
+DECL_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* fp, const unsigned char* restrict buf, const size_t len);
 DECL_FUNC int strcasecmp(const char* s1, const char* s2);
 DECL_FUNC NOLIBCALL ATTR_PF const char* strchr(const char* restrict str, const int chr);
 DECL_FUNC char* strchr2(const char* restrict str, const int chr);
@@ -8065,7 +8086,7 @@ DECL_FUNC unsigned long strtoul(const char* restrict nptr, const char** restrict
 DECL_FUNC MATH_FUNC float atan2f(const float y, const float x);
 DECL_FUNC MATH_FUNC double atan2(const double y, const double x);
 DECL_FUNC time_t time(time_t* t);
-DECL_FUNC int __toread(FILE* f);
+DECL_FUNC int __toread(FILE* fp);
 DECL_FUNC void tzset(void);
 DECL_FUNC NONNULL void u8todec(const uint8_t num, char* restrict result);
 DECL_FUNC NONNULL void u8tohex(const uint8_t num, const int use_upper, char* restrict result);
@@ -8084,15 +8105,17 @@ DECL_FUNC NONNULL void ultooct(const unsigned long num, char* restrict result);
 DECL_FUNC int uname(struct utsname* uts);
 DECL_FUNC NONNULL size_t utf32toutf8(const ucs4_t* restrict codepoints, unsigned char* restrict utf8str);
 DECL_FUNC void unlist_locked_file(FILE* f);
-DECL_FUNC void UNLOCK(volatile int* restrict l);
-DECL_FUNC void UNLOCKFILE(FILE* restrict f);
+DECL_FUNC void UNLOCK(atomic volatile int* restrict l);
+DECL_FUNC void UNLOCKFILE(FILE* restrict fp);
 DECL_FUNC NONNULL ATTR_PURE size_t utf8len(const char* restrict str);
 DECL_FUNC NONNULL ATTR_PURE size_t utf32len(const ucs4_t* restrict str);
 DECL_FUNC ATTR_CF uint32_t utf32c2utf8c(const ucs4_t codepoint);
 DECL_FUNC NONNULL void utodec(const unsigned int num, char* restrict result);
 DECL_FUNC NONNULL void utohex(const unsigned int num, const int use_upper, char* restrict result);
 DECL_FUNC NONNULL void utooct(const unsigned int num, char* restrict result);
+/*@ignore@*/
 DECL_FUNC ATTR_PRINTF(2, 0) int vfprintf(FILE* stream, const char* format, va_list arg_ptr);
+/*@end@*/
 DECL_FUNC int vsnprintf(char* restrict str, const size_t size, const char* restrict format, va_list args);
 DECL_FUNC pid_t waitpid(const pid_t pid, const int* restrict status, const int options);
 DECL_FUNC size_t wcrtomb(char* restrict s, wchar_t wc, const UNUSED mbstate_t* restrict st);
@@ -8115,68 +8138,240 @@ DECL_FUNC long double strtox(const char* restrict ptr, const char** endptr, cons
 
 // STDIN, STDOUT, & STDERR
 
-static UNUSED unsigned char align64 stdbuf[UNGET + BUFSIZ] = { 0 };
+/*@-compmempass@*/
+
+static UNUSED unsigned char align64 stdinbuf[UNGET + BUFSIZ] = { 0 };
+
 static FILE align64 __stdin = {
+	// Position Pointers
+	.rpos = stdinbuf + UNGET,
+	.rend = stdinbuf + (sizeof(stdinbuf) - UNGET),
+	.rpos_up = NULL_UCHAR,
+	.wpos = NULL_UCHAR,
+	.wbase = NULL_UCHAR,
+	.wend = NULL_UCHAR,
+	.bkmk = NULL_UCHAR,
+	.shend = NULL_UCHAR,
+	.shlim = (off_t)0,
+	.shcnt = (off_t)0,
+	// Space left for character-stream functions
+	.rspace = (int)(sizeof(stdinbuf) - UNGET),
+	.urspace = (int)0,
+	.wspace = (int)0,
+	// General File Properties
 	.flags = (unsigned int)(__SLBF | __SRD),
+	.thread_flags = 0U,
 	.fd = STDIN_FILENO,
+	.blksize = (int)0,
+	.offset = (fpos_t)0,
+	.pipe_pid = (int)-1,
+	.mode = _O_UNCHANGED,
+	// Locks & Threading
+	.lock = -1,
+	.waiters = -1,
+	.lockcount = -1L,
+	.lockinternal = FALSE,
+	.lockcancelstate = 0,
+	.lockowner = (pthread_t)0,
+	.lockcond = { .__size = { 0 } },
+	.mutex = { .__align = 0L },
+	.prev_locked = NULL,
+	.next_locked = NULL,
+	// Operations
 	.close = &__stdio_close_helper,
 	.read = &__stdio_read_helper,
 	.readc = &__stdio_readc_helper,
 	.seek = &__stdio_seek_helper,
-	.buf = stdbuf + UNGET,
-	.buf_size = (sizeof(stdbuf) - UNGET),
-	._ubuf = { 0 },
-	._nbuf = { 0 },
-	.lock = -1,
-	.waiters = -1,
-	.lockcount = -1
+	.write = NULL,
+	// Buffers
+	.lbf = (signed char)0,
+	.lbfsize = (int)0,
+	.ub_base = NULL,
+	.ub_size = 0,
+	.lb_base = NULL,
+	.lb_size = 0,
+	.buf = stdinbuf + UNGET,
+	.buf_size = (sizeof(stdinbuf) - UNGET),
+	.ubuf = { 0 },
+	.nbuf = { 0 },
+	// Wide-Character I/O
+	.wcio_mbstate_in = { 0 },
+	.wcio_mbstate_out = { 0 },
+	.wcio_ungetwc_buf = { 0 },
+	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
+	.wbuf = NULL,
+	.wbuf_size = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
+	.fgetstr_buf = NULL_CHAR,
+	.fgetstr_len = (size_t)0,
+	// Miscellaneous
+	.mbstate = { 0 },
+	.counted = 0,
+	.locale = NULL
 };
+
 /** Standard input pointer */
 UNUSED FILE* __stdinp = &__stdin;
 #define stdinp   __stdinp
 #define STDIN   __stdinp
 #define stdin   __stdinp
 #define __stdin_used   __stdinp
+
+static UNUSED unsigned char align64 stdoutbuf[UNGET + BUFSIZ] = { 0 };
+
 static FILE align64 __stdout = {
+	// Position Pointers
+	.rpos = NULL_UCHAR,
+	.rend = NULL_UCHAR,
+	.rpos_up = NULL_UCHAR,
+	.wpos = stdoutbuf + UNGET,
+	.wbase = stdoutbuf + UNGET,
+	.wend = stdoutbuf + (sizeof(stdoutbuf) - UNGET),
+	.bkmk = NULL_UCHAR,
+	.shend = NULL_UCHAR,
+	.shlim = (off_t)0,
+	.shcnt = (off_t)0,
+	// Space left for character-stream functions
+	.rspace = (int)0,
+	.urspace = (int)0,
+	.wspace = (int)(sizeof(stdoutbuf) - UNGET),
+	// General File Properties
 	.flags = (unsigned int)(__SLBF | __SWR),
+	.thread_flags = 0U,
 	.fd = STDOUT_FILENO,
-	.close = &__stdio_close_helper,
-	.seek = &__stdio_seek_helper,
-	.write = &__stdio_write_helper,
-	.buf = stdbuf + UNGET,
-	.buf_size = (sizeof(stdbuf) - UNGET),
-	._ubuf = { 0 },
-	._nbuf = { 0 },
+	.blksize = (int)0,
+	.offset = (fpos_t)0,
+	.pipe_pid = (int)-1,
+	.mode = _O_UNCHANGED,
+	// Locks & Threading
 	.lock = -1,
 	.waiters = -1,
-	.lockcount = -1,
-	.lbf = '\n'
+	.lockcount = -1L,
+	.lockinternal = FALSE,
+	.lockcancelstate = 0,
+	.lockowner = (pthread_t)0,
+	.lockcond = { .__size = { 0 } },
+	.mutex = { .__align = 0L },
+	.prev_locked = NULL,
+	.next_locked = NULL,
+	// Operations
+	.close = &__stdio_close_helper,
+	.read = NULL,
+	.readc = NULL,
+	.seek = &__stdio_seek_helper,
+	.write = &__stdio_write_helper,
+	// Buffers
+	.lbf = '\n',
+	.lbfsize = (int)0,
+	.ub_base = NULL,
+	.ub_size = 0,
+	.lb_base = NULL,
+	.lb_size = 0,
+	.buf = stdoutbuf + UNGET,
+	.buf_size = (sizeof(stdoutbuf) - UNGET),
+	.ubuf = { 0 },
+	.nbuf = { 0 },
+	// Wide-Character I/O
+	.wcio_mbstate_in = { 0 },
+	.wcio_mbstate_out = { 0 },
+	.wcio_ungetwc_buf = { 0 },
+	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
+	.wbuf = NULL,
+	.wbuf_size = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
+	.fgetstr_buf = NULL_CHAR,
+	.fgetstr_len = (size_t)0,
+	// Miscellaneous
+	.mbstate = { 0 },
+	.counted = 0,
+	.locale = NULL
 };
+
 /** Standard output pointer */
 UNUSED FILE* __stdoutp = &__stdout;
 #define stdoutp   __stdoutp
 #define STDOUT   __stdoutp
 #define stdout   __stdoutp
 #define __stdout_used   __stdoutp
+
+static UNUSED unsigned char align64 stderrbuf[UNGET + BUFSIZ] = { 0 };
+
 static FILE align64 __stderr = {
+	// Position Pointers
+	.rpos = NULL_UCHAR,
+	.rend = NULL_UCHAR,
+	.rpos_up = NULL_UCHAR,
+	.wpos = stderrbuf + UNGET,
+	.wbase = stderrbuf + UNGET,
+	.wend = stderrbuf + (sizeof(stderrbuf) - UNGET),
+	.bkmk = NULL_UCHAR,
+	.shend = NULL_UCHAR,
+	.shlim = (off_t)0,
+	.shcnt = (off_t)0,
+	// Space left for character-stream functions
+	.rspace = (int)0,
+	.urspace = (int)0,
+	.wspace = (int)(sizeof(stdoutbuf) - UNGET),
+	// General File Properties
 	.flags = (unsigned int)(__SLBF | __SWR),
-	.fd = STDOUT_FILENO,
-	.close = &__stdio_close_helper,
-	.seek = &__stdio_seek_helper,
-	.write = &__stdio_write_helper,
-	.buf = stdbuf + UNGET,
-	.buf_size = 0,
+	.thread_flags = 0U,
+	.fd = STDERR_FILENO,
+	.blksize = (int)0,
+	.offset = (fpos_t)0,
+	.pipe_pid = (int)-1,
+	.mode = _O_UNCHANGED,
+	// Locks & Threading
 	.lock = -1,
 	.waiters = -1,
-	.lockcount = -1,
-	.lbf = '\n'
+	.lockcount = -1L,
+	.lockinternal = FALSE,
+	.lockcancelstate = 0,
+	.lockowner = (pthread_t)0,
+	.lockcond = { .__size = { 0 } },
+	.mutex = { .__align = 0L },
+	.prev_locked = NULL,
+	.next_locked = NULL,
+	// Operations
+	.close = &__stdio_close_helper,
+	.read = NULL,
+	.readc = NULL,
+	.seek = &__stdio_seek_helper,
+	.write = &__stdio_write_helper,
+	// Buffers
+	.lbf = '\n',
+	.lbfsize = (int)0,
+	.ub_base = NULL,
+	.ub_size = 0,
+	.lb_base = NULL,
+	.lb_size = 0,
+	.buf = stderrbuf + UNGET,
+	.buf_size = (sizeof(stderrbuf) - UNGET),
+	.ubuf = { 0 },
+	.nbuf = { 0 },
+	// Wide-Character I/O
+	.wcio_mbstate_in = { 0 },
+	.wcio_mbstate_out = { 0 },
+	.wcio_ungetwc_buf = { 0 },
+	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
+	.wbuf = NULL,
+	.wbuf_size = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
+	.fgetstr_buf = NULL_CHAR,
+	.fgetstr_len = (size_t)0,
+	// Miscellaneous
+	.mbstate = { 0 },
+	.counted = 0,
+	.locale = NULL
 };
+
 /** Standard error pointer */
 UNUSED FILE* __stderrp = &__stderr;
 #define stderrp   __stderrp
 #define STDERR   __stderrp
 #define stderr   __stderrp
 #define __stderr_used   __stderrp
+
+/*@=compmempass@*/
 
 
 // NUMBER PAIRS & TRIPLETS
@@ -8439,28 +8634,32 @@ thread_local volatile UNUSED tss_t locale_tss;
 #define _locale_tss   locale_tss
 
 
+/*@-immediatetrans@*/
 static UNUSED struct lconv C_LOCALE_INITIALIZER = {
-	".", "", "", "", "", "",  // Decimal_point - mon_decimal_point
-	"", "", "", "", 127, 127,  // mon_thousands_sep - frac_digits
+	(const char*)&period, NULL, NULL, NULL, NULL, NULL,  // Decimal_point - mon_decimal_point
+	NULL, NULL, NULL, NULL, 127, 127,  // mon_thousands_sep - frac_digits
 	127, 127, 127, 127, 127, 127,  // p_cs_precedes - n_sign_posn
 	127, 127, 127, 127, 127, 127  // int_p_cs_precedes - int_n_sign_posn
 };
 #define locale_table   C_LOCALE_INITIALIZER
+/*@=immediatetrans@*/
 
 
-typedef struct libc {
+typedef struct libc_struct {
 	int can_do_threads, threaded, secure;
-	volatile int threads_minus_1;
+	atomic volatile int threads_minus_1;
 	size_t* auxv;
 	struct tls_module* tls_head;
 	size_t tls_size, tls_align, tls_cnt, page_size;
 	locale_t global_locale;
 } libc_t;
+/*@-immediatetrans@*/
 #if SINGLE_THREAD_P
-static UNUSED struct libc libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED libc_t libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #   else
-static UNUSED struct libc libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED libc_t libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #endif
+/*@=immediatetrans@*/
 #define _libc   libc
 #define __libc   libc
 #define _libc_global_locale   libc.global_locale
@@ -11115,7 +11314,7 @@ struct sigcontext {
 #      define GET_PC(_ctx)   ((void*)_ctx.eip)
 #      define GET_FRAME(_ctx)   ((void*)_ctx.ebp)
 #      define GET_STACK(_ctx)   ((void*)_ctx.esp_at_signal)
-#      define CALL_SIGHANDLER(handler, signo, _ctx)   do { int __tmp1, __tmp2, __tmp3, __tmp4; asm volatile ( \
+#      define CALL_SIGHANDLER(handler, signo, _ctx)   do { int __tmp1, __tmp2, __tmp3, __tmp4; vasm( \
 	"movlt %%esp, %%edi;" \
 	"andlt $-16, %%esp;" \
 	"sublt %8, %%esp;" \
@@ -11496,9 +11695,9 @@ struct sigcontext {
 #define FDS_BYTES(nr)   (FDS_LONGS(nr) * SIZEOF_LONG)
 // Access macros for `fd_set`
 #ifdef ARCHX86_32  // FD*
-#   define FD_SET(fd, fdsp)   do { asm volatile ("btsl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
-#   define FD_CLR(fd, fdsp)   do { asm volatile ("btrl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
-#   define FD_ISSET(fd, fdsp)   do { register char __result; asm volatile ("btl %1, %2;" "setcb %b0;" : "=q"(__result) : "r"(((int)(fd)) % BITS_PER_FD_MASK), "m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "cc"); __result; } while (0x0)
+#   define FD_SET(fd, fdsp)   do { vasm("btsl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
+#   define FD_CLR(fd, fdsp)   do { vasm("btrl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
+#   define FD_ISSET(fd, fdsp)   do { register char __result; vasm("btl %1, %2;" "setcb %b0;" : "=q"(__result) : "r"(((int)(fd)) % BITS_PER_FD_MASK), "m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "cc"); __result; } while (0x0)
 #else
 #   define FD_SET(d, s)   ((void)(FDS_BITS(s)[FD_ELT(d)] |= (FD_MASK(d))))
 #   define FD_CLR(d, s)   ((void)(FDS_BITS(s)[FD_ELT(d)] &= (~(FD_MASK(d)))))
@@ -11506,10 +11705,10 @@ struct sigcontext {
 #endif  // FD*
 #ifdef ARCHX86_64  // FD_ZERO
 /** Small `memset` substitute */
-#   define FD_ZERO(fdsp)   do { int __d0, __d1; asm volatile ("cld;" "rep;" FD_ZERO_STOS : "=c"(__d0), "=D"(__d1) : "a"(0), "0"(FD_SETSIZE / SIZEOF_FD_MASK), "1"(&(FDS_BITS(fdsp))[0]) : "memory"); } while (0x0)
+#   define FD_ZERO(fdsp)   do { int __d0, __d1; vasm("cld;" "rep;" FD_ZERO_STOS : "=c"(__d0), "=D"(__d1) : "a"(0), "0"(FD_SETSIZE / SIZEOF_FD_MASK), "1"(&(FDS_BITS(fdsp))[0]) : "memory"); } while (0x0)
 #elif defined(ARCHX86_32)
 /** Small `memset` substitute */
-#   define FD_ZERO(fdsp)   do { int __d0, __d1; asm volatile ("cld;" "rep;" "stosl;" : "=c"(__d0), "=D"(__d1) : "a"(0), "0"(FD_SETSIZE / SIZEOF_FD_MASK), "1"(&(FDS_BITS(fdsp))[0]) : "memory"); } while (0x0)
+#   define FD_ZERO(fdsp)   do { int __d0, __d1; vasm("cld;" "rep;" "stosl;" : "=c"(__d0), "=D"(__d1) : "a"(0), "0"(FD_SETSIZE / SIZEOF_FD_MASK), "1"(&(FDS_BITS(fdsp))[0]) : "memory"); } while (0x0)
 #else  // Not x86
 /** Small `memset` substitute */
 #   define FD_ZERO(s)   do { unsigned int __i; fd_set* __arr = (s); for (__i = 0; __i < FD_SETSIZE / SIZEOF_FD_MASK; ++__i) FDS_BITS(__arr)[__i] = 0; } while (0x0)
@@ -11749,112 +11948,122 @@ typedef struct attr_packed pgp_memory_t {
 #ifdef ARCHX86
 
 
+/*@-paramuse@*/
+/*@-usedef@*/
+/*@-varuse@*/
+
+
 LIB_FUNC unsigned char inb(const unsigned short port) {
 	unsigned char _v;
-	asm volatile ("inb %w1, %0;" : "=a"(_v) : "Nd"(port));
+	vasm("inb %w1, %0;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC unsigned char inb_p(const unsigned short port) {
 	unsigned char _v;
-	asm volatile ("inb %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
+	vasm("inb %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC unsigned short inw(const unsigned short port) {
 	unsigned short _v;
-	asm volatile ("inw %w1, %0;" : "=a"(_v) : "Nd"(port));
+	vasm("inw %w1, %0;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC unsigned short inw_p(const unsigned short port) {
 	unsigned short _v;
-	asm volatile ("inw %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
+	vasm("inw %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC unsigned int inl(const unsigned short port) {
 	unsigned int _v;
-	asm volatile ("inl %w1, %0;" : "=a"(_v) : "Nd"(port));
+	vasm("inl %w1, %0;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC unsigned int inl_p(const unsigned short port) {
 	unsigned int _v;
-	asm volatile ("inl %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
+	vasm("inl %w1, %0;" "outb %%al, $0x80;" : "=a"(_v) : "Nd"(port));
 	return _v;
 }
 
 
 LIB_FUNC void outb(const unsigned char value, const unsigned short port) {
-	asm volatile ("outb %b0, %w1;" : : "a"(value), "Nd"(port));
+	vasm("outb %b0, %w1;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void outb_p(const unsigned char value, const unsigned short port) {
-	asm volatile ("outb %b0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
+	vasm("outb %b0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void outw(const unsigned short value, const unsigned short port) {
-	asm volatile ("outw %w0, %w1;" : : "a"(value), "Nd"(port));
+	vasm("outw %w0, %w1;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void outw_p(const unsigned short value, const unsigned short port) {
-	asm volatile ("outw %w0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
+	vasm("outw %w0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void outl(const unsigned int value, const unsigned short port) {
-	asm volatile ("outl %0, %w1;" : : "a"(value), "Nd"(port));
+	vasm("outl %0, %w1;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void outl_p(const unsigned int value, const unsigned short port) {
-	asm volatile ("outl %0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
+	vasm("outl %0, %w1;" "outb %%al, $0x80;" : : "a"(value), "Nd"(port));
 }
 
 
 LIB_FUNC void insb(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "insb;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "insb;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
 
 
 LIB_FUNC void insw(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "insw;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "insw;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
 
 
 LIB_FUNC void insl(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "insl;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "insl;" : "=D"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
 
 
 LIB_FUNC void outsb(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "outsb;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "outsb;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
 
 
 LIB_FUNC void outsw(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "outsw;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "outsw;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
 
 
 LIB_FUNC void outsl(const unsigned short port, const void* restrict addr, const unsigned long count) {
 	register unsigned long _count = count;
-	asm volatile ("cld;" "rep;" "outsl;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
+	vasm("cld;" "rep;" "outsl;" : "=S"(addr), "=c"(_count) : "d"(port), "0"(addr), "1"(_count));
 }
+
+
+/*@=varuse@*/
+/*@=usedef@*/
+/*@=paramuse@*/
 
 
 #endif  // ARCH
@@ -12719,208 +12928,208 @@ LIB_FUNC void vga_mm_w_fast(void __iomem* regbase, const unsigned short port, co
 
 
 LIB_FUNC unsigned char vga_r(const void __iomem* regbase, const unsigned short port) {
-	if (regbase) { return (unsigned char)vga_mm_r(regbase, port); }
+	if (regbase != NULL) { return (unsigned char)vga_mm_r(regbase, port); }
 	return (unsigned char)vga_io_r(port);
 }
 
 
 LIB_FUNC void vga_w(void __iomem* regbase, const unsigned short port, const unsigned char val) {
-	if (regbase) { vga_mm_w(regbase, port, val); }
+	if (regbase != NULL) { vga_mm_w(regbase, port, val); }
 	else { vga_io_w(port, val); }
 }
 
 
 LIB_FUNC void vga_w_fast(void __iomem* regbase, const unsigned short port, const unsigned char reg, const unsigned char val) {
-	if (regbase) { vga_mm_w_fast(regbase, port, reg, val); }
+	if (regbase != NULL) { vga_mm_w_fast(regbase, port, reg, val); }
 	else { vga_io_w_fast(port, reg, val); }
 }
 
 
 /** VGA CRTC register read */
 LIB_FUNC unsigned char vga_rcrt(void __iomem* regbase, const unsigned char reg) {
-	vga_w(regbase, VGA_CRT_IC, reg);
-	return (unsigned char)vga_r(regbase, VGA_CRT_DC);
+	vga_w(regbase, (unsigned short)VGA_CRT_IC, reg);
+	return (unsigned char)vga_r(regbase, (unsigned short)VGA_CRT_DC);
 }
 
 
 /** VGA CRTC register write */
 LIB_FUNC void vga_wcrt(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_w_fast(regbase, VGA_CRT_IC, reg, val);
+	vga_w_fast(regbase, (unsigned short)VGA_CRT_IC, reg, val);
 #   else
-	vga_w(regbase, VGA_CRT_IC, reg);
-	vga_w(regbase, VGA_CRT_DC, val);
+	vga_w(regbase, (unsigned short)VGA_CRT_IC, reg);
+	vga_w(regbase, (unsigned short)VGA_CRT_DC, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_io_rcrt(const unsigned char reg) {
-	vga_io_w(VGA_CRT_IC, reg);
-	return (unsigned char)vga_io_r(VGA_CRT_DC);
+	vga_io_w((unsigned short)VGA_CRT_IC, reg);
+	return (unsigned char)vga_io_r((unsigned short)VGA_CRT_DC);
 }
 
 
 LIB_FUNC void vga_io_wcrt(const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_io_w_fast(VGA_CRT_IC, reg, val);
+	vga_io_w_fast((unsigned short)VGA_CRT_IC, reg, val);
 #   else
-	vga_io_w(VGA_CRT_IC, reg);
-	vga_io_w(VGA_CRT_DC, val);
+	vga_io_w((unsigned short)VGA_CRT_IC, reg);
+	vga_io_w((unsigned short)VGA_CRT_DC, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_mm_rcrt(void __iomem* regbase, const unsigned char reg) {
-	vga_mm_w(regbase, VGA_CRT_IC, reg);
-	return (unsigned char)vga_mm_r(regbase, VGA_CRT_DC);
+	vga_mm_w(regbase, (unsigned short)VGA_CRT_IC, reg);
+	return (unsigned char)vga_mm_r(regbase, (unsigned short)VGA_CRT_DC);
 }
 
 
 LIB_FUNC void vga_mm_wcrt(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_mm_w_fast(regbase, VGA_CRT_IC, reg, val);
+	vga_mm_w_fast(regbase, (unsigned short)VGA_CRT_IC, reg, val);
 #   else
-	vga_mm_w(regbase, VGA_CRT_IC, reg);
-	vga_mm_w(regbase, VGA_CRT_DC, val);
+	vga_mm_w(regbase, (unsigned short)VGA_CRT_IC, reg);
+	vga_mm_w(regbase, (unsigned short)VGA_CRT_DC, val);
 #   endif
 }
 
 
 /** VGA sequencer register read */
 LIB_FUNC unsigned char vga_rseq(void __iomem* regbase, const unsigned char reg) {
-	vga_w(regbase, VGA_SEQ_I, reg);
-	return (unsigned char)vga_r(regbase, VGA_SEQ_D);
+	vga_w(regbase, (unsigned short)VGA_SEQ_I, reg);
+	return (unsigned char)vga_r(regbase, (unsigned short)VGA_SEQ_D);
 }
 
 
 /** VGA sequencer register write */
 LIB_FUNC void vga_wseq(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_w_fast(regbase, VGA_SEQ_I, reg, val);
+	vga_w_fast(regbase, (unsigned short)VGA_SEQ_I, reg, val);
 #   else
-	vga_w(regbase, VGA_SEQ_I, reg);
-	vga_w(regbase, VGA_SEQ_D, val);
+	vga_w(regbase, (unsigned short)VGA_SEQ_I, reg);
+	vga_w(regbase, (unsigned short)VGA_SEQ_D, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_io_rseq(const unsigned char reg) {
-	vga_io_w(VGA_SEQ_I, reg);
-	return (unsigned char)vga_io_r(VGA_SEQ_D);
+	vga_io_w((unsigned short)VGA_SEQ_I, reg);
+	return (unsigned char)vga_io_r((unsigned short)VGA_SEQ_D);
 }
 
 
 LIB_FUNC void vga_io_wseq(const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_io_w_fast(VGA_SEQ_I, reg, val);
+	vga_io_w_fast((unsigned short)VGA_SEQ_I, reg, val);
 #   else
-	vga_io_w(VGA_SEQ_I, reg);
-	vga_io_w(VGA_SEQ_D, val);
+	vga_io_w((unsigned short)VGA_SEQ_I, reg);
+	vga_io_w((unsigned short)VGA_SEQ_D, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_mm_rseq(void __iomem* regbase, const unsigned char reg) {
-	vga_mm_w(regbase, VGA_SEQ_I, reg);
-	return vga_mm_r(regbase, VGA_SEQ_D);
+	vga_mm_w(regbase, (unsigned short)VGA_SEQ_I, reg);
+	return vga_mm_r(regbase, (unsigned short)VGA_SEQ_D);
 }
 
 
 LIB_FUNC void vga_mm_wseq(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_mm_w_fast(regbase, VGA_SEQ_I, reg, val);
+	vga_mm_w_fast(regbase, (unsigned short)VGA_SEQ_I, reg, val);
 #   else
-	vga_mm_w(regbase, VGA_SEQ_I, reg);
-	vga_mm_w(regbase, VGA_SEQ_D, val);
+	vga_mm_w(regbase, (unsigned short)VGA_SEQ_I, reg);
+	vga_mm_w(regbase, (unsigned short)VGA_SEQ_D, val);
 #   endif
 }
 
 
 /** VGA graphics controller register read */
 LIB_FUNC unsigned char vga_rgfx(void __iomem* regbase, const unsigned char reg) {
-	vga_w(regbase, VGA_GFX_I, reg);
-	return vga_r(regbase, VGA_GFX_D);
+	vga_w(regbase, (unsigned short)VGA_GFX_I, reg);
+	return vga_r(regbase, (unsigned short)VGA_GFX_D);
 }
 
 
 /** VGA graphics controller register write */
 LIB_FUNC void vga_wgfx(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_w_fast(regbase, VGA_GFX_I, reg, val);
+	vga_w_fast(regbase, (unsigned short)VGA_GFX_I, reg, val);
 #   else
-	vga_w(regbase, VGA_GFX_I, reg);
-	vga_w(regbase, VGA_GFX_D, val);
+	vga_w(regbase, (unsigned short)VGA_GFX_I, reg);
+	vga_w(regbase, (unsigned short)VGA_GFX_D, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_io_rgfx(const unsigned char reg) {
-	vga_io_w(VGA_GFX_I, reg);
-	return vga_io_r(VGA_GFX_D);
+	vga_io_w((unsigned short)VGA_GFX_I, reg);
+	return vga_io_r((unsigned short)VGA_GFX_D);
 }
 
 
 LIB_FUNC void vga_io_wgfx(const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_io_w_fast(VGA_GFX_I, reg, val);
+	vga_io_w_fast((unsigned short)VGA_GFX_I, reg, val);
 #   else
-	vga_io_w(VGA_GFX_I, reg);
-	vga_io_w(VGA_GFX_D, val);
+	vga_io_w((unsigned short)VGA_GFX_I, reg);
+	vga_io_w((unsigned short)VGA_GFX_D, val);
 #   endif
 }
 
 
 LIB_FUNC unsigned char vga_mm_rgfx(void __iomem* regbase, const unsigned char reg) {
-	vga_mm_w(regbase, VGA_GFX_I, reg);
-	return vga_mm_r(regbase, VGA_GFX_D);
+	vga_mm_w(regbase, (unsigned short)VGA_GFX_I, reg);
+	return vga_mm_r(regbase, (unsigned short)VGA_GFX_D);
 }
 
 
 LIB_FUNC void vga_mm_wgfx(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
 #   ifdef VGA_OUTW_WRITE
-	vga_mm_w_fast(regbase, VGA_GFX_I, reg, val);
+	vga_mm_w_fast(regbase, (unsigned short)VGA_GFX_I, reg, val);
 #   else
-	vga_mm_w(regbase, VGA_GFX_I, reg);
-	vga_mm_w(regbase, VGA_GFX_D, val);
+	vga_mm_w(regbase, (unsigned short)VGA_GFX_I, reg);
+	vga_mm_w(regbase, (unsigned short)VGA_GFX_D, val);
 #   endif
 }
 
 
 /** VGA attribute controller register read */
 LIB_FUNC unsigned char vga_rattr(void __iomem* regbase, const unsigned char reg) {
-	vga_w(regbase, VGA_ATT_IW, reg);
-	return vga_r(regbase, VGA_ATT_R);
+	vga_w(regbase, (unsigned short)VGA_ATT_IW, reg);
+	return vga_r(regbase, (unsigned short)VGA_ATT_R);
 }
 
 
 /** VGA attribute controller register write */
 LIB_FUNC void vga_wattr(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
-	vga_w(regbase, VGA_ATT_IW, reg);
-	vga_w(regbase, VGA_ATT_W, val);
+	vga_w(regbase, (unsigned short)VGA_ATT_IW, reg);
+	vga_w(regbase, (unsigned short)VGA_ATT_W, val);
 }
 
 
 LIB_FUNC unsigned char vga_io_rattr(const unsigned char reg) {
-	vga_io_w(VGA_ATT_IW, reg);
-	return vga_io_r(VGA_ATT_R);
+	vga_io_w((unsigned short)VGA_ATT_IW, reg);
+	return vga_io_r((unsigned short)VGA_ATT_R);
 }
 
 
 LIB_FUNC void vga_io_wattr(const unsigned char reg, const unsigned char val) {
-	vga_io_w(VGA_ATT_IW, reg);
-	vga_io_w(VGA_ATT_W, val);
+	vga_io_w((unsigned short)VGA_ATT_IW, reg);
+	vga_io_w((unsigned short)VGA_ATT_W, val);
 }
 
 
 LIB_FUNC unsigned char vga_mm_rattr(void __iomem* regbase, const unsigned char reg) {
-	vga_mm_w(regbase, VGA_ATT_IW, reg);
-	return vga_mm_r(regbase, VGA_ATT_R);
+	vga_mm_w(regbase, (unsigned short)VGA_ATT_IW, reg);
+	return vga_mm_r(regbase, (unsigned short)VGA_ATT_R);
 }
 
 
 LIB_FUNC void vga_mm_wattr(void __iomem* regbase, const unsigned char reg, const unsigned char val) {
-	vga_mm_w(regbase, VGA_ATT_IW, reg);
-	vga_mm_w(regbase, VGA_ATT_W, val);
+	vga_mm_w(regbase, (unsigned short)VGA_ATT_IW, reg);
+	vga_mm_w(regbase, (unsigned short)VGA_ATT_W, val);
 }
 
 
@@ -13025,9 +13234,8 @@ typedef struct svga_pll {
 
 /** Write a value to the attribute register */
 LIB_FUNC void svga_wattr(void __iomem* regbase, const uint8_t index, const uint8_t data) {
-	vga_r(regbase, VGA_IS1_RC);
-	vga_w(regbase, VGA_ATT_IW, index);
-	vga_w(regbase, VGA_ATT_W, data);
+	vga_w(regbase, (unsigned short)VGA_ATT_IW, index);
+	vga_w(regbase, (unsigned short)VGA_ATT_W, data);
 }
 
 
@@ -13523,50 +13731,50 @@ static const UNUSED unsigned short align64 cc_istable[256] = {
 	cc_L, cc_L, cc_L, cc_L, cc_L, cc_L, cc_L, cc_L,  // p q r s  t u v w
 	cc_L, cc_L, cc_L, cc_P, cc_P, cc_P, cc_P, cc_C,  // x y z {  | } ~ DEL
 	// High half of unsigned char is locale-specific, so all tests are false in "C" locale
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
 };
 static const UNUSED unsigned char align64 cc_tolower[256] = {
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-	16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-	32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
-	48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64,
+	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
+	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
+	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
+	48U, 49U, 50U, 51U, 52U, 53U, 54U, 55U, 56U, 57U, 58U, 59U, 60U, 61U, 62U, 63U, 64U,
 	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 	'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-	91, 92, 93, 94, 95, 96,
+	91U, 92U, 93U, 94U, 95U, 96U,
 	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 	'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-	123, 124, 125, 126, 127,
-	128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143,
-	144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
-	160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175,
-	176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191,
-	192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207,
-	208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223,
-	224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
-	240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255
+	123U, 124U, 125U, 126U, 127U,
+	128U, 129U, 130U, 131U, 132U, 133U, 134U, 135U, 136U, 137U, 138U, 139U, 140U, 141U, 142U, 143U,
+	144U, 145U, 146U, 147U, 148U, 149U, 150U, 151U, 152U, 153U, 154U, 155U, 156U, 157U, 158U, 159U,
+	160U, 161U, 162U, 163U, 164U, 165U, 166U, 167U, 168U, 169U, 170U, 171U, 172U, 173U, 174U, 175U,
+	176U, 177U, 178U, 179U, 180U, 181U, 182U, 183U, 184U, 185U, 186U, 187U, 188U, 189U, 190U, 191U,
+	192U, 193U, 194U, 195U, 196U, 197U, 198U, 199U, 200U, 201U, 202U, 203U, 204U, 205U, 206U, 207U,
+	208U, 209U, 210U, 211U, 212U, 213U, 214U, 215U, 216U, 217U, 218U, 219U, 220U, 221U, 222U, 223U,
+	224U, 225U, 226U, 227U, 228U, 229U, 230U, 231U, 232U, 233U, 234U, 235U, 236U, 237U, 238U, 239U,
+	240U, 241U, 242U, 243U, 244U, 245U, 246U, 247U, 248U, 249U, 250U, 251U, 252U, 253U, 254U, 255U
 };
 static const UNUSED unsigned char align64 cc_toupper[256] = {
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-	16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-	32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
-	48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64,
+	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
+	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
+	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
+	48U, 49U, 50U, 51U, 52U, 53U, 54U, 55U, 56U, 57U, 58U, 59U, 60U, 61U, 62U, 63U, 64U,
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 	'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-	91, 92, 93, 94, 95, 96,
+	91U, 92U, 93U, 94U, 95U, 96U,
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 	'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-	123, 124, 125, 126, 127,
-	128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143,
-	144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
-	160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175,
-	176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191,
-	192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207,
-	208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223,
-	224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
-	240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255
+	123U, 124U, 125U, 126U, 127U,
+	128U, 129U, 130U, 131U, 132U, 133U, 134U, 135U, 136U, 137U, 138U, 139U, 140U, 141U, 142U, 143U,
+	144U, 145U, 146U, 147U, 148U, 149U, 150U, 151U, 152U, 153U, 154U, 155U, 156U, 157U, 158U, 159U,
+	160U, 161U, 162U, 163U, 164U, 165U, 166U, 167U, 168U, 169U, 170U, 171U, 172U, 173U, 174U, 175U,
+	176U, 177U, 178U, 179U, 180U, 181U, 182U, 183U, 184U, 185U, 186U, 187U, 188U, 189U, 190U, 191U,
+	192U, 193U, 194U, 195U, 196U, 197U, 198U, 199U, 200U, 201U, 202U, 203U, 204U, 205U, 206U, 207U,
+	208U, 209U, 210U, 211U, 212U, 213U, 214U, 215U, 216U, 217U, 218U, 219U, 220U, 221U, 222U, 223U,
+	224U, 225U, 226U, 227U, 228U, 229U, 230U, 231U, 232U, 233U, 234U, 235U, 236U, 237U, 238U, 239U,
+	240U, 241U, 242U, 243U, 244U, 245U, 246U, 247U, 248U, 249U, 250U, 251U, 252U, 253U, 254U, 255U
 };
 #elif (HOST_CHARSET == HOST_CHARSET_EBCDIC)
 #   error   "Add tables for EBCDIC."
@@ -13623,7 +13831,7 @@ LIB_FUNC ATTR_CF int alphapos(const int symbol) {
 }
 /** Test if the char is a digit */
 LIB_FUNC ATTR_CF int is_digit(const int symbol) {
-	return ((0x2f < symbol) && (symbol < 0x3a));
+	return (int)((0x2f < symbol) && (symbol < 0x3a));
 }
 /** Test if the char is a digit */
 #define ISDIGIT(c)   is_digit((c))
@@ -13745,7 +13953,7 @@ LIB_FUNC ATTR_CF int ISEXTALPHA(const int c) {
 #define isgraph(c)   ISGRAPH((c))
 /** Test if the char is an alphabetic character or "_" */
 LIB_FUNC ATTR_CF int ISIDST(const int c) {
-	return (((0x60 < c) && (c < 0x7b)) || ((0x40 < c) && (c < 0x5b)) || (c == 0x5f));
+	return (int)(((0x60 < c) && (c < 0x7b)) || ((0x40 < c) && (c < 0x5b)) || (c == 0x5f));
 }
 /** Test if the char is an alphabetic character or "_" */
 #define isidst(c)   ISIDST((c))
@@ -13755,7 +13963,7 @@ LIB_FUNC ATTR_CF int ISIDST(const int c) {
 #define isidnum(c)   ISIDNUM((c))
 /** Test if the char is a punctuation character <tt>(! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~)</tt> */
 LIB_FUNC ATTR_CF int ISPUNCT(const int c) {
-	return (((0x20 < c) && (c < 0x30)) || ((0x39 < c) && (c < 0x41)) || ((0x5a < c) && (c < 0x61)) || ((0x7a < c) && (c < 0x7f)));
+	return (int)(((0x20 < c) && (c < 0x30)) || ((0x39 < c) && (c < 0x41)) || ((0x5a < c) && (c < 0x61)) || ((0x7a < c) && (c < 0x7f)));
 }
 /** Test if the char is a punctuation character <tt>(! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~)</tt> */
 #define ispunct(c)   ISPUNCT((c))
@@ -13765,14 +13973,14 @@ LIB_FUNC ATTR_CF int ISPUNCT(const int c) {
 #define isseparator(c)   ISSEPARATOR((c))
 /** Test if the char is a space character (tab, newline, vertical tab, form feed, carriage return, and space) */
 LIB_FUNC ATTR_CF int ISSPACE(const int c) {
-	return ((c == 0x20) || ((8 < c) && (c < 0xe)));
+	return (int)((c == 0x20) || ((8 < c) && (c < 0xe)));
 }
 /** Test if the char is a space character (tab, newline, vertical tab, form feed, carriage return, and space) */
 #define isspace(c)   ISSPACE((c))
 /** Return true if symbol is a space in the current locale, avoiding problems with signed char and isspace */
 LIB_FUNC ATTR_CF bool locale_isspace(const char symbol) {
 	register const unsigned char uc = (unsigned char)symbol;
-	return (bool)(((uc == 0x20) || ((8 < uc) && (uc < 0xb))) != 0);
+	return (bool)(((uc == 0x20U) || ((8U < uc) && (uc < 0xbU))) != FALSE);
 }
 /** Test if the char is a space character or NULL */
 #define IS_SPACE_OR_NUL(c)   (((c) == 0x20) || ((c) == 0))
@@ -13804,7 +14012,7 @@ LIB_FUNC ATTR_CF int ISNVSP(const int c) {
 #define isvsp(c)   ISVSP((c))
 /** Test if the char is a uppercase ASCII character */
 LIB_FUNC ATTR_CF int ISUPPER(const int c) {
-	return ((0x40 < c) && (c < 0x5b));
+	return (int)((0x40 < c) && (c < 0x5b));
 }
 /** Test if the char is a uppercase ASCII character */
 #define ISUPPERASCII(c)   ISUPPER((c))
@@ -13833,17 +14041,17 @@ LIB_FUNC ATTR_CF int ISBASIC(const int c) {
 
 
 LIB_FUNC ATTR_CF int isdirect(const uint32_t c) {
-	return (int)((c < 128) && ((direct_tab[c >> 3] >> (c & 7)) & 1));
+	return (int)((c < 128U) && ((direct_tab[c >> 3U] >> (c & 7U)) & 1));
 }
 
 
 LIB_FUNC ATTR_CF int isxdirect(const uint32_t c) {
-	return (int)((c < 128) && ((xdirect_tab[c >> 3] >> (c & 7)) & 1));
+	return (int)((c < 128U) && ((xdirect_tab[c >> 3U] >> (c & 7U)) & 1));
 }
 
 
 LIB_FUNC ATTR_CF int isxbase64(const uint32_t c) {
-	return (int)((c < 128) && ((xbase64_tab[c >> 3] >> (c & 7)) & 1));
+	return (int)((c < 128U) && ((xbase64_tab[c >> 3U] >> (c & 7U)) & 1));
 }
 
 
@@ -13877,72 +14085,69 @@ struct wcasemaps {
 	unsigned char len;
 };
 
-#define CASEMAP(u1, u2, l)   { (u1), ((l) - (u1)), ((u2) - (u1) + 1) }
-#define CASELACE(u1, u2)   CASEMAP((u1), (u2), ((u1) + 1))
-
 static const UNUSED struct wcasemaps wchar_casemaps[] = {
-	CASEMAP('A', 'Z', 'a'),
-	CASEMAP(0xc0, 0xde, 0xe0),
-	CASELACE(0x100, 0x12e),
-	CASELACE(0x132, 0x136),
-	CASELACE(0x139, 0x147),
-	CASELACE(0x14a, 0x176),
-	CASELACE(0x179, 0x17d),
-	CASELACE(0x370, 0x372),
-	CASEMAP(0x391, 0x3a1, 0x3b1),
-	CASEMAP(0x3a3, 0x3ab, 0x3c3),
-	CASEMAP(0x400, 0x40f, 0x450),
-	CASEMAP(0x410, 0x42f, 0x430),
-	CASELACE(0x460, 0x480),
-	CASELACE(0x48a, 0x4be),
-	CASELACE(0x4c1, 0x4cd),
-	CASELACE(0x4d0, 0x50e),
-	CASELACE(0x514, 0x526),
-	CASEMAP(0x531, 0x556, 0x561),
-	CASELACE(0x1a0, 0x1a4),
-	CASELACE(0x1b3, 0x1b5),
-	CASELACE(0x1cd, 0x1db),
-	CASELACE(0x1de, 0x1ee),
-	CASELACE(0x1f8, 0x21e),
-	CASELACE(0x222, 0x232),
-	CASELACE(0x3d8, 0x3ee),
-	CASELACE(0x1e00, 0x1e94),
-	CASELACE(0x1ea0, 0x1efe),
-	CASEMAP(0x1f08, 0x1f0f, 0x1f00),
-	CASEMAP(0x1f18, 0x1f1d, 0x1f10),
-	CASEMAP(0x1f28, 0x1f2f, 0x1f20),
-	CASEMAP(0x1f38, 0x1f3f, 0x1f30),
-	CASEMAP(0x1f48, 0x1f4d, 0x1f40),
-	CASEMAP(0x1f68, 0x1f6f, 0x1f60),
-	CASEMAP(0x1f88, 0x1f8f, 0x1f80),
-	CASEMAP(0x1f98, 0x1f9f, 0x1f90),
-	CASEMAP(0x1fa8, 0x1faf, 0x1fa0),
-	CASEMAP(0x1fb8, 0x1fb9, 0x1fb0),
-	CASEMAP(0x1fba, 0x1fbb, 0x1f70),
-	CASEMAP(0x1fc8, 0x1fcb, 0x1f72),
-	CASEMAP(0x1fd8, 0x1fd9, 0x1fd0),
-	CASEMAP(0x1fda, 0x1fdb, 0x1f76),
-	CASEMAP(0x1fe8, 0x1fe9, 0x1fe0),
-	CASEMAP(0x1fea, 0x1feb, 0x1f7a),
-	CASEMAP(0x1ff8, 0x1ff9, 0x1f78),
-	CASEMAP(0x1ffa, 0x1ffb, 0x1f7c),
-	CASELACE(0x246, 0x24e),
-	CASELACE(0x510, 0x512),
-	CASEMAP(0x2160, 0x216f, 0x2170),
-	CASEMAP(0x2c00, 0x2c2e, 0x2c30),
-	CASELACE(0x2c67, 0x2c6b),
-	CASELACE(0x2c80, 0x2ce2),
-	CASELACE(0x2ceb, 0x2ced),
-	CASELACE(0xa640, 0xa66c),
-	CASELACE(0xa680, 0xa696),
-	CASELACE(0xa722, 0xa72e),
-	CASELACE(0xa732, 0xa76e),
-	CASELACE(0xa779, 0xa77b),
-	CASELACE(0xa77e, 0xa786),
-	CASELACE(0xa790, 0xa792),
-	CASELACE(0xa7a0, 0xa7a8),
-	CASEMAP(0xff21, 0xff3a, 0xff41),
-	{ 0, 0, 0 }
+	{ (unsigned short)65U, (signed char)32, (unsigned char)26U },
+	{ (unsigned short)192U, (signed char)32, (unsigned char)31U },
+	{ (unsigned short)256U, (signed char)1, (unsigned char)47U },
+	{ (unsigned short)306U, (signed char)1, (unsigned char)5U },
+	{ (unsigned short)313U, (signed char)1, (unsigned char)15U },
+	{ (unsigned short)330U, (signed char)1, (unsigned char)45U },
+	{ (unsigned short)377U, (signed char)1, (unsigned char)5U },
+	{ (unsigned short)416U, (signed char)1, (unsigned char)5U },
+	{ (unsigned short)435U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)461U, (signed char)1, (unsigned char)15U },
+	{ (unsigned short)478U, (signed char)1, (unsigned char)17U },
+	{ (unsigned short)504U, (signed char)1, (unsigned char)39U },
+	{ (unsigned short)546U, (signed char)1, (unsigned char)17U },
+	{ (unsigned short)582U, (signed char)1, (unsigned char)9U },
+	{ (unsigned short)880U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)913U, (signed char)32, (unsigned char)17U },
+	{ (unsigned short)931U, (signed char)32, (unsigned char)9U },
+	{ (unsigned short)984U, (signed char)1, (unsigned char)23U },
+	{ (unsigned short)1024U, (signed char)80, (unsigned char)16U },
+	{ (unsigned short)1040U, (signed char)32, (unsigned char)32U },
+	{ (unsigned short)1120U, (signed char)1, (unsigned char)33U },
+	{ (unsigned short)1162U, (signed char)1, (unsigned char)53U },
+	{ (unsigned short)1217U, (signed char)1, (unsigned char)13U },
+	{ (unsigned short)1232U, (signed char)1, (unsigned char)63U },
+	{ (unsigned short)1296U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)1300U, (signed char)1, (unsigned char)19U },
+	{ (unsigned short)1329U, (signed char)48, (unsigned char)38U },
+	{ (unsigned short)7680U, (signed char)1, (unsigned char)149U },
+	{ (unsigned short)7840U, (signed char)1, (unsigned char)95U },
+	{ (unsigned short)7944U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)7960U, (signed char)-8, (unsigned char)6U },
+	{ (unsigned short)7976U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)7992U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)8008U, (signed char)-8, (unsigned char)6U },
+	{ (unsigned short)8040U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)8072U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)8088U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)8104U, (signed char)-8, (unsigned char)8U },
+	{ (unsigned short)8120U, (signed char)-8, (unsigned char)2U },
+	{ (unsigned short)8122U, (signed char)-74, (unsigned char)2U },
+	{ (unsigned short)8136U, (signed char)-86, (unsigned char)4U },
+	{ (unsigned short)8152U, (signed char)-8, (unsigned char)2U },
+	{ (unsigned short)8154U, (signed char)-100, (unsigned char)2U },
+	{ (unsigned short)8168U, (signed char)-8, (unsigned char)2U },
+	{ (unsigned short)8170U, (signed char)-112, (unsigned char)2U },
+	{ (unsigned short)8184U, (signed char)-128, (unsigned char)2U },
+	{ (unsigned short)8186U, (signed char)-126, (unsigned char)2U },
+	{ (unsigned short)8544U, (signed char)16, (unsigned char)16U },
+	{ (unsigned short)11264U, (signed char)48, (unsigned char)47U },
+	{ (unsigned short)11367U, (signed char)1, (unsigned char)5U },
+	{ (unsigned short)11392U, (signed char)1, (unsigned char)99U },
+	{ (unsigned short)11499U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)42560U, (signed char)1, (unsigned char)45U },
+	{ (unsigned short)42624U, (signed char)1, (unsigned char)23U },
+	{ (unsigned short)42786U, (signed char)1, (unsigned char)13U },
+	{ (unsigned short)42802U, (signed char)1, (unsigned char)61U },
+	{ (unsigned short)42873U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)42878U, (signed char)1, (unsigned char)9U },
+	{ (unsigned short)42896U, (signed char)1, (unsigned char)3U },
+	{ (unsigned short)42912U, (signed char)1, (unsigned char)9U },
+	{ (unsigned short)65313U, (signed char)32, (unsigned char)26U },
+	{ 0U, 0, 0U }
 };
 
 static const UNUSED wchar_t wempty[2] = L"";
@@ -13965,9 +14170,11 @@ static const UNUSED unsigned char align64 wide_table[] = {
 #   include "wide.def"
 };
 
+/*@-readonlytrans@*/
 static const UNUSED char* const wchar_properties[WC_TYPE_MAX] = {
 	"<invalid>", "alnum", "alpha", "blank", "cntrl", "digit", "graph", "lower", "print", "punct", "space", "upper", "xdigit"
 };
+/*@=readonlytrans@*/
 
 static const UNUSED char wchar_class_names[128] = "alnum\0" "alpha\0" "blank\0" "cntrl\0" "digit\0" "graph\0" "lower\0" "print\0" "punct\0" "space\0" "upper\0" "xdigit";
 

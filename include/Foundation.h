@@ -668,17 +668,6 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
 #endif
 
 
-// ASSERT DATATYPE SIZES
-
-#ifndef S_SPLINT_S
-_Static_assert((sizeof(char) == 1), "`char` datatype is not 8-bits!");
-_Static_assert((sizeof(int) == 4), "`int` datatype is not 32-bits!");
-_Static_assert((sizeof(float) == 4), "`float` datatype is not 32-bits!");
-_Static_assert((sizeof(double) == 8), "`double` datatype is not 64-bits!");
-_Static_assert(((sizeof(char*) == 4) || (sizeof(char*) == 8)), "The target system is not 32-bit or 64-bit!");
-#endif
-
-
 // OPTIMIZATION MACROS (__OPTIMIZE__)
 
 #if (defined(SSO_OPT) && (!defined(OPT_SSO)))
@@ -1071,6 +1060,10 @@ Macros flag indicates if the target operating system is a MAC system */
 
 // C STANDARD LIBRARIES
 
+/** @defgroup C_Standard_Library_Indicators
+Macros used to indicate and/or test the type of the present standard C library
+@{ */
+
 /** @def STDLIB
 String name of the standard C library */
 /** @def IS_GLIBC
@@ -1144,12 +1137,32 @@ Boolean macros indicating whether the standard C library is Musl */
 #   define ALLOW_OBSOLETE_CARBON_OSUTILS   0
 #endif
 
+/** @} */
+
 
 // COMPILER TYPE
 
+/** @defgroup Compiler_Indicators
+Macros used to indicate and/or test the compiler type
+@{ */
+
+/** @def IS_COMPILER
+This macros indicates that the software reading the code is a compiler if the macros equals `1` */
+/** @def IS_NOT_COMPILER
+This macros indicates that the software reading the code is not a compiler if the macros equals `1` */
+#if (defined(__NVCC__) || defined(__CUDACC__) || defined(__CUDACC_VER__) || defined(__CUDA_ARCH__))  // NVCC
+/** Macros flag present if the current compiler is Cuda */
+#   define COMPILER_CUDA   1
+/** Macros flag present if the current compiler is NVCC */
+#   define COMPILER_NVCC   1
+#   define IS_COMPILER   1
+#   define IS_NOT_COMPILER   0
+#endif
 #if (defined(__llvm__) || defined(__LLVM__) || defined(__llvm) || defined(__LLVM))  // LLVM
 /** Macros flag present if the current compiler is LLVM */
 #   define COMPILER_LLVM   1
+#   define IS_COMPILER   1
+#   define IS_NOT_COMPILER   0
 #endif
 /** @def COMPILER_GNU_GCC
 Macros flag present if the current compiler is GNU-GCC */
@@ -1209,11 +1222,17 @@ Macros flag present if the current compiler is GNU-GCC */
 #elif (defined(__LCC__) || defined(__LCC))  // Local C Compiler
 #   define COMPILER_LLC   1
 #elif (defined(_MSC_VER) || defined(_MSC_FULL_VER) || defined(_MSC_BUILD))  // Microsoft Visual C++
-#   if (defined(_MSC_VER) && (_MSC_VER < 1700))
-#      error   "This version of MSVC is not supported!"
-#   endif
 #   define COMPILER_MICROSOFT   1
+#else
+#   ifndef IS_COMPILER
+#      define IS_COMPILER   0
+#      define IS_NOT_COMPILER   1
+#   endif
 #endif  // COMPILER
+#ifndef IS_COMPILER
+#   define IS_COMPILER   1
+#   define IS_NOT_COMPILER   0
+#endif
 /** @def COMPILER_GNUC
 This macros indicates that the compiler is Clang or GNU-GCC */
 /** @def IS_GNUC
@@ -1228,45 +1247,80 @@ Boolean macros indicating whether the compiler is not GNU-GCC */
 #   define IS_GNUC   0
 #   define IS_NOT_GNUC   1
 #endif
-#if (defined(__NVCC__) || defined(__CUDACC__) || defined(__CUDACC_VER__) || defined(__CUDA_ARCH__))  // NVCC
-/** Macros flag present if the current compiler is Cuda */
-#   define COMPILER_CUDA   1
-/** Macros flag present if the current compiler is NVCC */
-#   define COMPILER_NVCC   1
-#endif
 
-
-// LINTER TYPE
-
-#ifdef __clang_analyzer__
-/** This macros indicates that the linter is the Clang Analyzer */
-#   define LINTER_CLANG   1
-#elif (defined(__AUDIT__) || defined(__audit__))
-/** This macros indicates that the linter is NetBSD's Audit */
-#   define LINTER_AUDIT   1
-#elif (defined(__CHECKER__) || defined(__CHECK_ENDIAN__))
-/** This macros indicates that the linter is Sparse or CGCC */
-#   define LINTER_SPARSE   1
-#elif ((defined(__lint__) || defined(__LINT__)) && (!defined(COMPILER_GNUC)))
-/** This macros indicates that the linter is Lint */
-#   define LINTER_LINT   1
-#endif
+/** @} */
 
 
 // ASSEMBLER MACROS
 
 #if ((!defined(IS_ASSEMBLER)) && (defined(__ASSEMBLER__) || defined(__ASSEMBLY__)))
-#   define IS_ASSEMBLER   (1)
-#   define IS_NOT_ASSEMBLER   (0)
+#   define IS_ASSEMBLER   1
+#   define IS_NOT_ASSEMBLER   0
 #elif (!defined(IS_ASSEMBLER))
-#   define IS_ASSEMBLER   (0)
-#   define IS_NOT_ASSEMBLER   (1)
+#   define IS_ASSEMBLER   0
+#   define IS_NOT_ASSEMBLER   1
+#endif
+
+
+// DOCUMENTOR TYPE
+
+/** @def IS_DOC
+This macros indicates that the software reading the code is a documenter (such as Doxygen) if the macros equals `1` */
+/** @def IS_NOT_DOC
+This macros indicates that the software reading the code is not a documenter (such as Doxygen) if the macros equals `1` */
+#ifdef _DOXYGEN_
+#   define IS_DOC   1
+#   define IS_NOT_DOC   0
+#else
+#   define IS_DOC   0
+#   define IS_NOT_DOC   1
+#endif
+
+
+// LINTER TYPE
+
+/** @def IS_LINTER
+This macros indicates that the software reading the code is a linter if the macros equals `1` */
+/** @def IS_NOT_LINTER
+This macros indicates that the software reading the code is not a linter if the macros equals `1` */
+#ifdef __clang_analyzer__
+/** This macros indicates that the linter is the Clang Analyzer */
+#   define LINTER_CLANG   1
+#   define IS_LINTER   1
+#   define IS_NOT_LINTER   0
+#elif (defined(__AUDIT__) || defined(__audit__))  // NetBSD's Audit
+/** This macros indicates that the linter is NetBSD's Audit */
+#   define LINTER_AUDIT   1
+#   define IS_LINTER   1
+#   define IS_NOT_LINTER   0
+#elif (defined(__CHECKER__) || defined(__CHECK_ENDIAN__))  // Sparse or CGCC
+/** This macros indicates that the linter is Sparse or CGCC */
+#   define LINTER_SPARSE   1
+#   define IS_LINTER   1
+#   define IS_NOT_LINTER   0
+#elif defined(S_SPLINT_S)  // Splint Lint Checker
+/** Macros flag present if the current linter is Splint */
+#   define LINTER_SPLINT   1
+#   define IS_LINTER   1
+#   define IS_NOT_LINTER   0
+#elif ((defined(__lint__) || defined(__LINT__)) && (!defined(COMPILER_GNUC)))  // Lint
+/** This macros indicates that the linter is Lint */
+#   define LINTER_LINT   1
+#   define IS_LINTER   1
+#   define IS_NOT_LINTER   0
+#else
+#   if (IS_NOT_ASSEMBLER && IS_NOT_COMPILER && IS_NOT_DOC)
+#      error   "Unable to determine assembler/compiler/documenter/linter type!"
+#   endif
+#   define IS_LINTER   0
+#   define IS_NOT_LINTER   1
 #endif
 
 
 // COMPILER VERSION MACROS
 
-/** @defgroup Compiler-Version Macros for testing the version of the compiler
+/** @defgroup Compiler_Version
+Macros for testing the version of the compiler
 @{ */
 
 /** @def __NVCC_PREREQ(version)
@@ -1323,32 +1377,19 @@ Test if the Clang compiler matches the specified version number */
 Test if the Microsoft compiler matches the specified version number */
 #if ((!defined(__MSC_VER_PREREQ)) && defined(COMPILER_MICROSOFT) && defined(_MSC_VER))
 #   define __MSC_VER_PREREQ(major, minor)   (_MSC_VER >= ((major * 100) + (minor * 10)))
+#   define AT_LEAST_MSC19   (__MSC_VER_PREREQ(19, 0))
+#   define AT_LEAST_MSC20   (__MSC_VER_PREREQ(20, 0))
+#   define AT_LEAST_MSC21   (__MSC_VER_PREREQ(21, 0))
 #else
 #   define __MSC_VER_PREREQ(major, minor)   0
+#   define AT_LEAST_MSC19   0
+#   define AT_LEAST_MSC20   0
+#   define AT_LEAST_MSC21   0
 #endif
 #define MSC_VER_PREREQ(major, minor)   __MSC_VER_PREREQ((major), (minor))
 #define MSC_PREREQ(major, minor)   __MSC_VER_PREREQ((major), (minor))
 #ifdef __GNUC__
-#   define AT_LEAST_GCC6   (__GNUC_PREREQ(6, 0))
-#   define AT_LEAST_GCC61   (__GNUC_PREREQ(6, 1))
-#   define AT_LEAST_GCC62   (__GNUC_PREREQ(6, 2))
-#   define AT_LEAST_GCC63   (__GNUC_PREREQ(6, 3))
-#   define AT_LEAST_GCC64   (__GNUC_PREREQ(6, 4))
-#   define AT_LEAST_GCC65   (__GNUC_PREREQ(6, 5))
-#   define AT_LEAST_GCC66   (__GNUC_PREREQ(6, 6))
-#   define AT_LEAST_GCC67   (__GNUC_PREREQ(6, 7))
-#   define AT_LEAST_GCC68   (__GNUC_PREREQ(6, 8))
-#   define AT_LEAST_GCC69   (__GNUC_PREREQ(6, 9))
 #   define AT_LEAST_GCC7   (__GNUC_PREREQ(7, 0))
-#   define AT_LEAST_GCC71   (__GNUC_PREREQ(7, 1))
-#   define AT_LEAST_GCC72   (__GNUC_PREREQ(7, 2))
-#   define AT_LEAST_GCC73   (__GNUC_PREREQ(7, 3))
-#   define AT_LEAST_GCC74   (__GNUC_PREREQ(7, 4))
-#   define AT_LEAST_GCC75   (__GNUC_PREREQ(7, 5))
-#   define AT_LEAST_GCC76   (__GNUC_PREREQ(7, 6))
-#   define AT_LEAST_GCC77   (__GNUC_PREREQ(7, 7))
-#   define AT_LEAST_GCC78   (__GNUC_PREREQ(7, 8))
-#   define AT_LEAST_GCC79   (__GNUC_PREREQ(7, 9))
 #   define AT_LEAST_GCC8   (__GNUC_PREREQ(8, 0))
 #   define AT_LEAST_GCC81   (__GNUC_PREREQ(8, 1))
 #   define AT_LEAST_GCC82   (__GNUC_PREREQ(8, 2))
@@ -1360,27 +1401,18 @@ Test if the Microsoft compiler matches the specified version number */
 #   define AT_LEAST_GCC88   (__GNUC_PREREQ(8, 8))
 #   define AT_LEAST_GCC89   (__GNUC_PREREQ(8, 9))
 #   define AT_LEAST_GCC9   (__GNUC_PREREQ(9, 0))
+#   define AT_LEAST_GCC91   (__GNUC_PREREQ(9, 1))
+#   define AT_LEAST_GCC92   (__GNUC_PREREQ(9, 2))
+#   define AT_LEAST_GCC93   (__GNUC_PREREQ(9, 3))
+#   define AT_LEAST_GCC94   (__GNUC_PREREQ(9, 4))
+#   define AT_LEAST_GCC95   (__GNUC_PREREQ(9, 5))
+#   define AT_LEAST_GCC96   (__GNUC_PREREQ(9, 6))
+#   define AT_LEAST_GCC97   (__GNUC_PREREQ(9, 7))
+#   define AT_LEAST_GCC98   (__GNUC_PREREQ(9, 8))
+#   define AT_LEAST_GCC99   (__GNUC_PREREQ(9, 9))
+#   define AT_LEAST_GCC10   (__GNUC_PREREQ(10, 0))
 #else
-#   define AT_LEAST_GCC6   0
-#   define AT_LEAST_GCC61   0
-#   define AT_LEAST_GCC62   0
-#   define AT_LEAST_GCC63   0
-#   define AT_LEAST_GCC64   0
-#   define AT_LEAST_GCC65   0
-#   define AT_LEAST_GCC66   0
-#   define AT_LEAST_GCC67   0
-#   define AT_LEAST_GCC68   0
-#   define AT_LEAST_GCC69   0
 #   define AT_LEAST_GCC7   0
-#   define AT_LEAST_GCC71   0
-#   define AT_LEAST_GCC72   0
-#   define AT_LEAST_GCC73   0
-#   define AT_LEAST_GCC74   0
-#   define AT_LEAST_GCC75   0
-#   define AT_LEAST_GCC76   0
-#   define AT_LEAST_GCC77   0
-#   define AT_LEAST_GCC78   0
-#   define AT_LEAST_GCC79   0
 #   define AT_LEAST_GCC8   0
 #   define AT_LEAST_GCC81   0
 #   define AT_LEAST_GCC82   0
@@ -1392,19 +1424,43 @@ Test if the Microsoft compiler matches the specified version number */
 #   define AT_LEAST_GCC88   0
 #   define AT_LEAST_GCC89   0
 #   define AT_LEAST_GCC9   0
+#   define AT_LEAST_GCC91   0
+#   define AT_LEAST_GCC92   0
+#   define AT_LEAST_GCC93   0
+#   define AT_LEAST_GCC94   0
+#   define AT_LEAST_GCC95   0
+#   define AT_LEAST_GCC96   0
+#   define AT_LEAST_GCC97   0
+#   define AT_LEAST_GCC98   0
+#   define AT_LEAST_GCC99   0
+#   define AT_LEAST_GCC10   0
 #endif
-#define AT_LEAST_GCC60   AT_LEAST_GCC6
-#define AT_LEAST_GCC70   AT_LEAST_GCC7
-#if (!AT_LEAST_GCC6)
-#   error   "GNU-GCC 6.0 or newer is required!"
+#define AT_LEAST_GCC80   AT_LEAST_GCC8
+#define AT_LEAST_GCC90   AT_LEAST_GCC9
+#if (IS_GNUC && (!AT_LEAST_GCC8))
+#   error   "GNU-GCC 8.0 or newer (or a Clang equivalent) is required!"
+#elif (defined(COMPILER_MICROSOFT) && (!AT_LEAST_MSC19))
+#   error   "MSVC version 19 or greater is required!"
 #endif
 
 /** @} */
 
 
+// ASSERT DATATYPE SIZES
+
+#if IS_NOT_LINTER
+_Static_assert((sizeof(char) == 1), "`char` datatype is not 8-bits!");
+_Static_assert((sizeof(int) == 4), "`int` datatype is not 32-bits!");
+_Static_assert((sizeof(float) == 4), "`float` datatype is not 32-bits!");
+_Static_assert((sizeof(double) == 8), "`double` datatype is not 64-bits!");
+_Static_assert(((sizeof(char*) == 4) || (sizeof(char*) == 8)), "The target system is not 32-bit or 64-bit!");
+#endif
+
+
 // C VERSION MACROS
 
-/** @defgroup C-Versions Macros for testing types and versions of C
+/** @defgroup C_Versions
+Macros for testing types and versions of C
 @{ */
 
 /** @def IS_ANSI
@@ -1503,6 +1559,38 @@ Macros test for C11 or greater */
 /** Macros test for anything but C11 */
 #define IS_NOT_STDC11   (!(IS_STDC_EXACTLY_C11))
 #define IS_GNUC11   (IS_STDC11 && IS_GNUC)
+// STD-C 2017
+/** @def IS_STDC_BELOW_C17
+Macros test for C Standards below C17 */
+/** @def IS_STDC_ABOVE_C17
+Macros test for C Standards over C17 */
+#if (defined(__STDC_VERSION__) && (__STDC_VERSION__ < 201710L))
+#   define IS_STDC_BELOW_C17   1
+#   define IS_STDC_ABOVE_C17   0
+#elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ > 201710L))
+#   define IS_STDC_BELOW_C17   0
+#   define IS_STDC_ABOVE_C17   1
+#else
+#   define IS_STDC_BELOW_C17   0
+#   define IS_STDC_ABOVE_C17   0
+#endif
+/** @def IS_STDC_EXACTLY_C17
+Macros test for exactly C17 (not below and not greater) */
+/** @def IS_STDC17
+Macros test for C17 or greater */
+#if (defined(__STDC_VERSION__) && (__STDC_VERSION__ == 201710L))
+#   define IS_STDC_EXACTLY_C17   1
+#   define IS_STDC17   1
+#elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L))
+#   define IS_STDC_EXACTLY_C17   0
+#   define IS_STDC17   1
+#else
+#   define IS_STDC_EXACTLY_C17   0
+#   define IS_STDC17   0
+#endif
+/** Macros test for anything but C17 */
+#define IS_NOT_STDC17   (!(IS_STDC_EXACTLY_C17))
+#define IS_GNUC17   (IS_STDC17 && IS_GNUC)
 // C PLUS PLUS
 /** @def IS_CPLUSPLUS
 Macros test for C++ */
@@ -2128,7 +2216,7 @@ Boolean macros flag indicating support for OpenMP */
 #   else
 #      define CPU_POPCNT   0
 #   endif
-#   ifdef (defined(__LZCNT__) || defined(CPU_BMI))
+#   if (defined(__LZCNT__) || defined(CPU_BMI))
 #      define CPU_LZCNT   1
 #   else
 #      define CPU_LZCNT   0
@@ -2554,6 +2642,17 @@ Test if the target is using a small code model */
 #   define IS_CODE_MODEL_SMALL   0
 #endif
 #define SUPPORT_PRE_GM_10_5_EXECUTABLES   (ARCHI386 || ARCHPOWERPC)
+
+
+// INTEL CONTROL-FLOW ENFORCEMENT TECHNOLOGY (CET)
+
+/** @def IS_CET_ENABLED
+Set to true if Intel Control-flow Enforcement Technology (CET) features are enabled and present */
+#ifdef __CET__
+#   define IS_CET_ENABLED   1
+#else
+#   define IS_CET_ENABLED   0
+#endif
 
 
 // RUNTIME MACROS
@@ -7266,7 +7365,8 @@ Maximum value representable as type sig_atomic_t */
 
 // TARGET ATTRIBUTES & MACROS
 
-/** @defgroup Build-Target Macros for specifying that a function be built for a particular target
+/** @defgroup Build_Target
+Macros for specifying that a function be built for a particular target
 @{ */
 
 #if IS_GNUC
@@ -7516,74 +7616,74 @@ typedef decltype(nullptr)   nullptr_t;
 /** NULL char pointer */
 #   define NULL_CHAR   ((char*)0)
 /** NULL signed char pointer */
-#   define NULL_SIGNED_CHAR   ((signed char*)0)
+#   define NULL_SCHAR   ((signed char*)0)
 /** NULL unsigned char pointer */
-#   define NULL_UNSIGNED_CHAR   ((unsigned char*)0)
+#   define NULL_UCHAR   ((unsigned char*)0)
 /** NULL short pointer */
 #   define NULL_SHORT   ((short*)0)
 /** NULL unsigned short pointer */
-#   define NULL_UNSIGNED_SHORT   ((unsigned short*)0)
+#   define NULL_USHORT   ((unsigned short*)0)
 /** NULL int pointer */
 #   define NULL_INT   ((int*)0)
 /** NULL unsigned int pointer */
-#   define NULL_UNSIGNED_INT   ((unsigned int*)0)
+#   define NULL_UINT   ((unsigned int*)0)
 /** NULL long pointer */
 #   define NULL_LONG   ((long*)0)
 /** NULL unsigned long pointer */
-#   define NULL_UNSIGNED_LONG   ((unsigned long*)0)
+#   define NULL_ULONG   ((unsigned long*)0)
 /** NULL long long pointer */
-#   define NULL_LONG_LONG   ((long long*)0)
+#   define NULL_LLONG   ((long long*)0)
 /** NULL unsigned long long pointer */
-#   define NULL_UNSIGNED_LONG_LONG   ((unsigned long long*)0)
+#   define NULL_ULLONG   ((unsigned long long*)0)
 // Fixed-width datatype NULL pointers
 /** NULL int8_t pointer */
-#   define NULL_INT8_T   ((int8_t*)0)
+#   define NULL_INT8   ((int8_t*)0)
 /** NULL int16_t pointer */
-#   define NULL_INT16_T   ((int16_t*)0)
+#   define NULL_INT16   ((int16_t*)0)
 /** NULL int32_t pointer */
-#   define NULL_INT32_T   ((int32_t*)0)
+#   define NULL_INT32   ((int32_t*)0)
 /** NULL int64_t pointer */
-#   define NULL_INT64_T   ((int64_t*)0)
+#   define NULL_INT64   ((int64_t*)0)
 /** NULL uint8_t pointer */
-#   define NULL_UINT8_T   ((uint8_t*)0)
+#   define NULL_UINT8   ((uint8_t*)0)
 /** NULL uint16_t pointer */
-#   define NULL_UINT16_T   ((uint16_t*)0)
+#   define NULL_UINT16   ((uint16_t*)0)
 /** NULL uint32_t pointer */
-#   define NULL_UINT32_T   ((uint32_t*)0)
+#   define NULL_UINT32   ((uint32_t*)0)
 /** NULL uint64_t pointer */
-#   define NULL_UINT64_T   ((uint64_t*)0)
+#   define NULL_UINT64   ((uint64_t*)0)
 #   if SUPPORTS_INT128
 /** NULL int128_t pointer */
-#      define NULL_INT128_T   ((int128_t*)0)
+#      define NULL_INT128   ((int128_t*)0)
 /** NULL uint128_t pointer */
-#      define NULL_UINT128_T   ((uint128_t*)0)
+#      define NULL_UINT128   ((uint128_t*)0)
 #   endif
 // Float-point datatype NULL pointers
 /** NULL float pointer */
-#   define NULL_FLOAT   ((float*)0)
+#   define NULL_FLT   ((float*)0)
 /** NULL double pointer */
-#   define NULL_DOUBLE   ((double*)0)
+#   define NULL_DBL   ((double*)0)
 #   if SUPPORTS_LONG_DOUBLE
 /** NULL long double pointer */
-#      define NULL_LONG_DOUBLE   ((long double*)0)
+#      define NULL_LDOUBLE   ((long double*)0)
 #   endif
 #   if SUPPORTS_FLOAT128
 /** NULL float128 pointer */
-#      define NULL_FLOAT128   ((float128*)0)
+#      define NULL_FLT128   ((float128*)0)
 #   endif
 #   if SUPPORTS_DECIMAL_FLOATS
 /** NULL decimal32 pointer */
-#      define NULL_DECIMAL32   ((decimal32*)0)
+#      define NULL_DEC32   ((decimal32*)0)
 /** NULL decimal64 pointer */
-#      define NULL_DECIMAL64   ((decimal64*)0)
+#      define NULL_DEC64   ((decimal64*)0)
 #      if SUPPORTS_DECIMAL128
 /** NULL decimal128 pointer */
-#         define NULL_DECIMAL128   ((decimal128*)0)
+#         define NULL_DEC128   ((decimal128*)0)
 #      endif
 #   endif  // SUPPORTS_DECIMAL_FLOATS
 // Miscellaneous datatype NULL pointers
 /** NULL size_t pointer */
-#   define NULL_SIZE_T   ((size_t*)0)
+#   define NULL_SIZET   ((size_t*)0)
 #endif  // IS_NOT_CPLUSPLUS
 
 
@@ -7630,8 +7730,9 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 
 // STATIC_ASSERT KEYWORD
 
-#ifndef S_SPLINT_S
-/** Compile-time assertion */
+/** @def static_assert
+Compile-time assertion */
+#if IS_NOT_LINTER
 #   define static_assert(expr, msg)   _Static_assert((expr), msg)
 #   define _FP_STATIC_ASSERT(expr, msg)   _Static_assert((expr), msg)
 #else
@@ -7668,10 +7769,12 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 
 // ATOMIC TYPE QUALIFIER KEYWORD
 
-#if (IS_NOT_CPLUSPLUS && IS_STDC_BELOW_C11)
+#if IS_LINTER
+#   define _Atomic
+#elif (IS_NOT_CPLUSPLUS && IS_STDC_BELOW_C11)
 #   define _Atomic   __attribute__((__atomic__))
 #endif
-#ifndef S_SPLINT_S
+#if IS_NOT_LINTER
 #   define Atomic   _Atomic
 #   define atomic   _Atomic
 #   define _atomic   _Atomic
@@ -7687,16 +7790,16 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 #if IS_GNUC
 #   define restrict   __restrict__
 #   define __restrict   __restrict__
+#elif defined(LINTER_LINT)
+#   define restrict   /*@unique@*/
+#   define __restrict__   /*@unique@*/
+#   define __restrict   /*@unique@*/
 #elif (defined(OSWIN32) && defined(COMPILER_MICROSOFT))  // As of MSVC 2013, restrict is supported with a non-standard keyword
 #   define restrict   __restrict
 #   define __restrict__   __restrict
 #elif IS_STDC99
 #   define __restrict__   restrict
 #   define __restrict   restrict
-#elif defined(LINTER_LINT)
-#   define restrict
-#   define __restrict__
-#   define __restrict
 #endif
 #define _Restrict   restrict
 
@@ -7715,7 +7818,7 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 /* DATATYPE DIAGNOSTICS */
 
 
-#ifndef S_SPLINT_S
+#if IS_NOT_LINTER
 _Static_assert((('A' + 0x20 == 'a') && (' ' == 32)), "Invalid character encoding (must be UTF-8)!");
 _Static_assert((SIZEOF_CHAR == 1), "`char` datatype is not 8-bits!");
 _Static_assert((((SIZEOF_CHAR * 8) == NBBY) && ((sizeof(char) * 8) == NBBY)), "A byte is not 8-bits on this platform!");

@@ -455,7 +455,7 @@ typedef unsigned int __attribute__((__mode__(__HI__)))   UHItype;
 #define int_uhi_t   UHItype
 #define uint_hi_t   UHItype
 #define HAVE_UHI   1
-#ifdef (ARCHAVR && (!defined(S_SPLINT_S)))  // Partial single integer
+#if (defined(ARCHAVR) && IS_NOT_LINTER)  // Partial single integer
 #   define SUPPORTS_PSITYPE   1
 #   define SUPPORTS_UPSITYPE   1
 /** Partial Single Integer; 4 bytes (not all bits used) */
@@ -490,7 +490,7 @@ typedef unsigned int __attribute__((__mode__(__SI__)))   USItype;
 #define HAVE_UHW   1
 #define USWtype   USItype
 #define HAVE_USW   1
-#ifdef (ARCHAVR && (!defined(S_SPLINT_S)))  // Partial double integer
+#if (defined(ARCHAVR) && IS_NOT_LINTER)  // Partial double integer
 #   define SUPPORTS_PDITYPE   1
 #   define SUPPORTS_UPDITYPE   1
 typedef signed int __attribute__((__mode__(__PDI__)))   PDItype;
@@ -525,7 +525,7 @@ typedef unsigned int __attribute__((__mode__(__DI__)))   UDItype;
 128-bit signed integer datatype (not all systems support int128_t) */
 /** @def uint128_t
 128-bit unsigned integer datatype (not all systems support uint128_t) */
-#if (SUPPORTS_INT128 && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_INT128 && IS_NOT_LINTER)
 #   define SUPPORTS_TITYPE   1
 typedef signed int __attribute__((__mode__(__TI__)))   TItype;
 #   define TI   TItype
@@ -595,15 +595,17 @@ typedef unsigned int __attribute__((__mode__(__TI__)))   UTItype;
 #   define SUPPORTS_UTITYPE   0
 #   define HAVE_TI   0
 #   define HAVE_UTI   0
-#   if (IS_LITTLE_ENDIAN && (!defined(S_SPLINT_S)))
+#   if IS_NOT_LINTER
+#      if IS_LITTLE_ENDIAN
 typedef struct _int128_t_ { uint64_t lsw, int64_t msw }   int128_t;
 typedef struct _uint128_t_ { uint64_t lsw, msw }   uint128_t;
-#   elif (IS_BIG_ENDIAN && (!defined(S_SPLINT_S)))
+#      elif IS_BIG_ENDIAN
 typedef struct _int128_t_ { uint64_t msw, int64_t lsw }   int128_t;
 typedef struct _uint128_t_ { uint64_t msw, lsw }   uint128_t;
+#      endif
 #   endif
 #endif
-#if (SUPPORTS_INT256 && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_INT256 && IS_NOT_LINTER)
 #   define SUPPORTS_OITYPE   1
 typedef signed int __attribute__((__mode__(__OI__)))   OItype;
 #   define OI   OItype
@@ -688,7 +690,7 @@ typedef unsigned int __attribute__((__mode__(__OI__)))   UOItype;
 #   define HAVE_OI   0
 #   define HAVE_UOI   0
 #endif
-#if (SUPPORTS_INT512 && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_INT512 && IS_NOT_LINTER)
 #   define SUPPORTS_XITYPE   1
 typedef signed int __attribute__((__mode__(__XI__)))   XItype;
 #   define XI   XItype
@@ -777,7 +779,7 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 
 // FLOAT-POINT MODES
 
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT8) && (!defined(S_SPLINT_S)))
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT8) && IS_NOT_LINTER)
 #   define SUPPORTS_QFTYPE   1
 /** 8-bit quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__QF__)))   QFtype;
@@ -794,7 +796,7 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #   define SUPPORTS_QFTYPE   0
 #   define HAVE_QF   0
 #endif
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && (!defined(S_SPLINT_S)))
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && IS_NOT_LINTER)
 #   define SUPPORTS_HFTYPE   1
 /** 16-bit half-precision float-point datatype */
 typedef float __attribute__((__mode__(__HF__)))   HFtype;
@@ -814,7 +816,7 @@ typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #   define SUPPORTS_HFTYPE   0
 #   define HAVE_HF   0
 #endif
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT24) && (!defined(S_SPLINT_S)))
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT24) && IS_NOT_LINTER)
 #   define SUPPORTS_TQFTYPE   1
 /** 24-bit three-quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__TQF__)))   TQFtype;
@@ -868,7 +870,7 @@ typedef float __attribute__((__mode__(__DF__)))   DFtype;
 #   define _LONG_DOUBLE   double
 #endif
 #define HAVE_DF   1
-#if (LDBL_EQ_XFtype && (!defined(S_SPLINT_S)))
+#if (LDBL_EQ_XFtype && IS_NOT_LINTER)
 #   define SUPPORTS_XFTYPE   1
 typedef float __attribute__((__mode__(__XF__)))   XFtype;
 #   define HAVE_XF   1
@@ -886,10 +888,10 @@ typedef float __attribute__((__mode__(__XF__)))   XFtype;
 #   define float96_t   __float96
 #   define extended96   __float96
 #endif
-#if (SUPPORTS_FLOAT128 && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_FLOAT128 && IS_NOT_LINTER)
 #   define SUPPORTS_TFTYPE   1
 /** Tetra-precision float-point */
-typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __float128 { uint8_t align16 x[16]; }   TFtype;
+typedef float __attribute__((__mode__(__TF__)))   TFtype;
 #   define HAVE_TF   1
 #   define __float128   TFtype
 #   ifndef __float128_t
@@ -907,6 +909,26 @@ typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __f
 #   ifndef tetra_t
 #      define tetra_t   TFtype
 #   endif
+#elif IS_NOT_LINTER
+#   define SUPPORTS_TFTYPE   0
+typedef struct __float128 { uint8_t align16 x[16]; }   TFtype;
+#   define __float128   TFtype
+#   ifndef __float128_t
+#      define __float128_t   TFtype
+#   endif
+#   ifndef float128_t
+#      define float128_t   TFtype
+#   endif
+#   ifndef float128
+#      define float128   TFtype
+#   endif
+#   ifndef tetra
+#      define tetra   TFtype
+#   endif
+#   ifndef tetra_t
+#      define tetra_t   TFtype
+#   endif
+#   define HAVE_TF   0
 #else
 #   define SUPPORTS_TFTYPE   0
 #   define HAVE_TF   0
@@ -916,7 +938,7 @@ typedef float __attribute__((__mode__(__TF__)))   TFtype;  // typedef struct __f
 // DECIMAL FLOAT-POINT MODES
 
 
-#if (SUPPORTS_DECIMAL_FLOATS && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_DECIMAL_FLOATS && IS_NOT_LINTER)
 #   define SUPPORTS_SDTYPE   1
 /** _Decimal32 is a 32-bit (4 octet) decimal float-point datatype */
 typedef float __attribute__((__mode__(__SD__)))   SDtype;
@@ -973,7 +995,7 @@ typedef float __attribute__((__mode__(__DD__)))   DDtype;
 #   define HAVE_SD   0
 #   define HAVE_DD   0
 #endif
-#if (SUPPORTS_DECIMAL128 && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_DECIMAL128 && IS_NOT_LINTER)
 #   define SUPPORTS_TDTYPE   1
 typedef float __attribute__((__mode__(__TD__)))   TDtype;
 #   define TD   TDtype
@@ -1006,7 +1028,7 @@ typedef float __attribute__((__mode__(__TD__)))   TDtype;
 
 // COMPLEX MODES
 
-#if (SUPPORTS_COMPLEX && (!defined(S_SPLINT_S)))  // Complex floats
+#if (SUPPORTS_COMPLEX && IS_NOT_LINTER)  // Complex floats
 #   if IS_NOT_GNUC
 #      define __complex__   _Complex
 #   endif
@@ -2464,7 +2486,7 @@ typedef uint512_t   uint_fast512_t;
 
 // DATATYPE DIAGNOSTICS
 
-#ifndef S_SPLINT_S
+#if IS_NOT_LINTER
 _Static_assert((\
 	(sizeof(int8_t) < sizeof(int16_t)) && (sizeof(int16_t) < sizeof(int32_t)) && \
 	(sizeof(int32_t) < sizeof(int64_t)) && (sizeof(int64_t) > sizeof(int8_t)) && \
@@ -4274,6 +4296,22 @@ Number of chars in a path name including NUL */
 /** Add the seals given in the bit-mask argument `arg` to the set of seals of the inode referred to by the file descriptor */
 #define F_GET_SEALS   1034
 
+// File Orientations & Modes
+#define _O_BINARY   0x8000
+#define _O_BYTE   -1
+#define _O_NOINHERIT   0x80
+#define _O_RANDOM   0x10
+#define _O_RAW   _O_BINARY
+#define _O_SEQUENTIAL   0x20
+#define _O_SHORT_LIVED   0x1000
+#define _O_TEMPORARY   0x40
+#define _O_TEXT   0x4000
+#define _O_U16TEXT   0x20000
+#define _O_U8TEXT   0x40000
+#define _O_UNCHANGED   0x0
+#define _O_WIDE   1
+#define _O_WTEXT   0x10000
+
 /** POSIX 1003.1 names for standard file descriptors */
 enum STD_FD {
 /** STDIN file descriptor */
@@ -4609,31 +4647,6 @@ enum FILE_STATUS_FLAGS {
 #   define O_DSYNC   0
 /** Read: I/O completion as for write (HPUX only) */
 #   define O_RSYNC   0
-#endif
-#ifdef OSWINDOWS
-#   define _O_TEXT   0x4000
-#   define _O_BINARY   0x8000
-#   define _O_RAW   _O_BINARY
-#   define _O_WTEXT   0x10000
-#   define _O_U16TEXT   0x20000
-#   define _O_U8TEXT   0x40000
-#   define _O_RANDOM   0x10
-#   define _O_SEQUENTIAL   0x20
-#   define _O_TEMPORARY   0x40
-#   define _O_NOINHERIT   0x80
-#   define _O_SHORT_LIVED   0x1000
-#else
-#   define _O_TEXT   0
-#   define _O_BINARY   0
-#   define _O_RAW   0
-#   define _O_WTEXT   0
-#   define _O_U16TEXT   0
-#   define _O_U8TEXT   0
-#   define _O_RANDOM   0
-#   define _O_SEQUENTIAL   0
-#   define _O_TEMPORARY   0
-#   define _O_NOINHERIT   0
-#   define _O_SHORT_LIVED   0
 #endif
 #define HONORED_STATE_MODES   (O_APPEND | O_ASYNC | O_FSYNC | O_NONBLOCK | O_NOATIME)
 /** All settable bits during open(2) */
@@ -6239,13 +6252,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 // PRAGMAS
 
-#ifdef (COMPILER_CLANG && (!defined(S_SPLINT_S)))
+#if (defined(COMPILER_CLANG) && IS_NOT_LINTER)
 /** Push diagnostic state */
 #   define DIAG_PUSH   _Pragma("clang diagnostic push")
 /** Pop diagnostic state */
 #   define DIAG_POP   _Pragma("clang diagnostic pop")
 /** Ignore the specified diagnostic option */
-#   define DIAG_IGNORE(_option)   _Pragma(_DIAG_STR(clang diagnostic ignored _option))
+#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(clang diagnostic ignored _option))
 #   define IGNORE_WFORMAT_NONLITERAL   _Pragma("clang diagnostic ignored \"-Wformat-nonliteral\"")
 #   define IGNORE_WMISSING_PROTOTYPES   _Pragma("clang diagnostic ignored \"-Wmissing-prototypes\"")
 #   define IGNORE_WPADDED   _Pragma("clang diagnostic ignored \"-Wpadded\"")
@@ -6257,13 +6270,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define DIAG_FUNCTIONS   _Pragma("clang diagnostic error \"-Wmissing-prototypes\"") \
 	_Pragma("clang diagnostic error \"-Wshadow\"") \
 	_Pragma("clang diagnostic error \"-Wunused-function\"")
-#elif defined(COMPILER_GNU_GCC)
+#elif (defined(COMPILER_GNU_GCC) && IS_NOT_LINTER)
 /** Push diagnostic state */
 #   define DIAG_PUSH   _Pragma("GCC diagnostic push")
 /** Pop diagnostic state */
 #   define DIAG_POP   _Pragma("GCC diagnostic pop")
 /** Ignore the specified diagnostic option */
-#   define DIAG_IGNORE(_option)   _Pragma(_DIAG_STR(GCC diagnostic ignored _option))
+#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(GCC diagnostic ignored _option))
 #   define IGNORE_WFORMAT_NONLITERAL   _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
 #   define IGNORE_WMISSING_PROTOTYPES   _Pragma("GCC diagnostic ignored \"-Wmissing-prototypes\"")
 #   define IGNORE_WPADDED   _Pragma("GCC diagnostic ignored \"-Wpadded\"")
@@ -6276,16 +6289,16 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 	_Pragma("GCC diagnostic error \"-Wshadow\"") \
 	_Pragma("GCC diagnostic error \"-Wunused-function\"")
 #else
-#   define DIAG_FUNCTIONS
-#   define DIAG_IGNORE(version, _option)
-#   define DIAG_POP
-#   define DIAG_PUSH
-#   define IGNORE_WFORMAT_NONLITERAL
-#   define IGNORE_WMISSING_PROTOTYPES
-#   define IGNORE_WOVERLENGTH_STRINGS
-#   define IGNORE_WPADDED
-#   define IGNORE_WSHADOW
-#   define IGNORE_WSTACK_PROTECTOR
+#   define DIAG_FUNCTIONS   /*@i@*/
+#   define DIAG_IGNORE(_option)   /*@i@*/
+#   define DIAG_POP   /*@i@*/
+#   define DIAG_PUSH   /*@i@*/
+#   define IGNORE_WFORMAT_NONLITERAL   /*@i@*/
+#   define IGNORE_WMISSING_PROTOTYPES   /*@i@*/
+#   define IGNORE_WOVERLENGTH_STRINGS   /*@i@*/
+#   define IGNORE_WPADDED   /*@i@*/
+#   define IGNORE_WSHADOW   /*@i@*/
+#   define IGNORE_WSTACK_PROTECTOR   /*@i@*/
 #endif
 
 
@@ -6324,9 +6337,9 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
 #define S(x)   S2(x)
 /** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define _DIAG_STR1(x)   #x
+#define ISTRINGIFY1(x)   #x
 /** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define _DIAG_STR(x)   _DIAG_STR1(x)
+#define ISTRINGIFY(x)   ISTRINGIFY1(x)
 #define __STRING(x)   #x
 #define __STRINGIFY(x)   #x
 #define STRINGIFY(x)   #x
@@ -6796,13 +6809,20 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 // ASM KEYWORD
 
-#if IS_NOT_GNUC
+#if IS_LINTER
+#   define asm    /*@i@*/  //
+#   define __asm__    /*@i@*/  //
+#elif IS_NOT_GNUC
 #   define __asm__    asm
 #elif IS_GNUC
 #   define asm    __asm__
 #endif
 #define __asm    asm
-#define vasm   asm volatile
+#if IS_LINTER
+#   define vasm(...)    /*@i@*/  //
+#else
+#   define vasm(...)   asm volatile (__VA_ARGS__)
+#endif
 #ifndef __USER_LABEL_PREFIX__
 #   define __USER_LABEL_PREFIX__   _
 #endif
@@ -7694,11 +7714,12 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #endif
 #define align_short   aligned(ALIGN_OF_SHORT)
 #define align_int   aligned(ALIGN_OF_INT)
+#define align_int64   aligned(ALIGN_OF_INT64)
 #define align_long   aligned(ALIGN_OF_LONG)
 #define alignSF   aligned(ALIGN_OF_FLOAT)
-#define align_float   aligned(ALIGN_OF_FLOAT)
+#define align_flt   aligned(ALIGN_OF_FLOAT)
 #define alignDF   aligned(ALIGN_OF_DOUBLE)
-#define align_double   aligned(ALIGN_OF_DOUBLE)
+#define align_dbl   aligned(ALIGN_OF_DOUBLE)
 #define alignXF   alignDF
 #define alignTF   aligned(ALIGN_OF_DOUBLE * 2)
 #if SUPPORTS_LONG_DOUBLE
@@ -7741,15 +7762,15 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define formatfunc(t, f, a)
 #   define __attribute_format_strfmon__(a, b)
 #   define __attribute_format_arg__(x)
-#   define __scanflike(fmtarg, firstvararg)
+#   define __scanflike(fmtarg, firstvararg)   /*@scanflike@*/
 #   define format_arg(fmtarg)
-#   define ATTR_PRINTF(m, n)
-#   define NULL_PRINTF(m, n)
-#   define NULL_PRINTF_1
-#   define NULL_PRINTF_2
-#   define NULL_PRINTF_3
-#   define NULL_PRINTF_4
-#   define NULL_PRINTF_5
+#   define ATTR_PRINTF(m, n)   /*PRINTFLIKE*/
+#   define NULL_PRINTF(m, n)   /*PRINTFLIKE*/
+#   define NULL_PRINTF_1   /*PRINTFLIKE*/
+#   define NULL_PRINTF_2   /*PRINTFLIKE*/
+#   define NULL_PRINTF_3   /*PRINTFLIKE*/
+#   define NULL_PRINTF_4   /*PRINTFLIKE*/
+#   define NULL_PRINTF_5   /*PRINTFLIKE*/
 #endif  // formatfunc
 // ATTRIBUTE MACROS
 #if IS_GNUC
@@ -7801,16 +7822,20 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
 #   define ATTR_PURE
 #   define ATTR_LEAF
-#   define UNUSED
-#   define deprecated
+#   ifdef LINTER_SPLINT
+#      define UNUSED   /*@unused@*/
+#   else
+#      define UNUSED   /*ARGSUSED*/
+#   endif
+#   define deprecated   /*@warn@*/
 /** If using fortification mode, warn about unused results of certain function calls which can lead to problems */
-#   define WUR
+#   define WUR   /*@alwaysreturn@*/
 /** Fortify support */
 #   define __bos(_ptr)
 /** Fortify support */
 #   define __bos0(_ptr)
 #   define RETURN_ADDRESS(nr)
-#   define attr_fallthrough
+#   define attr_fallthrough   /*FALLTHROUGH*/
 #   define attr_nonstring
 #   define patchable
 #endif
@@ -7876,10 +7901,10 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define ATTR_SENTINEL   __attribute__((__sentinel__))
 #else
 /** The functions input parameters are never NULL */
-#   define NONNULL
-#   define ATTR_NONNULL(params)
+#   define NONNULL   /*@notnull@*/
+#   define ATTR_NONNULL(params)   /*@notnull@*/
 /** The function never returns NULL */
-#   define RETURNS_NONNULL
+#   define RETURNS_NONNULL   /*@notnull@*/
 /** The function does not accept nor return NULL */
 #   define NONNULL_IO
 #   define ATTR_SENTINEL
@@ -7893,7 +7918,12 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define HOT
 #endif
 // UNREACHABLE
-#if IS_GNUC
+#if IS_LINTER
+/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
+#   define _FP_UNREACHABLE   /*NOTREACHED*/
+/** Indicates unreachable code */
+#   define UNREACHABLE   /*NOTREACHED*/
+#elif IS_GNUC
 /** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
 #   define _FP_UNREACHABLE   __builtin_unreachable()
 /** Indicates unreachable code */
@@ -7936,7 +7966,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define UNAVAILABLE_ATTRIBUTE
 #endif
 // SPARSE ATTRIBUTES
-#if (defined(__CHECKER__) || defined(__CHECK_ENDIAN__))
+#if defined(LINTER_SPARSE)
 #   define __iomem   __attribute__((__address_space__(2), __noderef__))
 #   define __percpu   __attribute__((__address_space__(3), __noderef__))
 #   define __pmem   __attribute__((__address_space__(5), __noderef__))
@@ -8260,7 +8290,9 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #define program_name   getprogname()
 #define __progname_full   getprogname()
 #define __progname   getprogname()
+/*@-readonlytrans@*/
 static const UNUSED char* program_invocation_name = getprogname();
+/*@=readonlytrans@*/
 #define program_invocation_short_name   program_invocation_name
 #define __IDSTRING(name, str)   static const UNUSED char name[] = str
 #ifndef __COPYRIGHT
@@ -8430,7 +8462,7 @@ static const UNUSED char* program_invocation_name = getprogname();
 #      define __hidden_asmname2(prefix, name)   #prefix name
 #      define __hidden_asmname1(prefix, name)   __hidden_asmname2(prefix, name)
 #      define __hidden_asmname(name)   __hidden_asmname1(__USER_LABEL_PREFIX__, name)
-#      define __hidden_ver1(local, internal, name)   extern typeof(name) __EI_ ## name asm(__hidden_asmname(#internal)); extern typeof(name) __EI_ ## name __attribute__((__alias__(__hidden_asmname(#local))))
+#      define __hidden_ver1(local, internal, name)   extern typeof(name) __EI_ ## name asm (__hidden_asmname(#internal)); extern typeof(name) __EI_ ## name __attribute__((__alias__(__hidden_asmname(#local))))
 #      define hidden_ver(local, name)   __hidden_ver1(local, __GI_ ## name, name);
 #      define hidden_data_ver(local, name)   hidden_ver(local, name)
 #      define hidden_def(name)   __hidden_ver1(__GI_ ## name, name, name);
@@ -8555,54 +8587,60 @@ enum HURD_PID {
 // PYBOOSTER LIBRARY INTERFACE MACROS
 
 #ifndef LIB_FUNC
-#   ifdef LIB_NO_DYNAMIC
+#   if IS_LINTER
+#      define LIB_FUNC   /*@unused@*/
+#   elif defined(LIB_NO_DYNAMIC)
 #      define LIB_FUNC   UNUSED
 #   else
 #      define LIB_FUNC   static UNUSED
 #   endif
 #endif
 #ifndef DECL_FUNC
-#   ifdef LIB_FUNC
+#   if defined(LIB_FUNC)
 #      define DECL_FUNC   LIB_FUNC
 #   else
 #      define DECL_FUNC   static UNUSED
 #   endif
 #endif
 #ifndef MATH_FUNC
-#   define MATH_FUNC   NOLIBCALL ATTR_CF WUR
+#   if IS_LINTER
+#      define MATH_FUNC
+#   else
+#      define MATH_FUNC   NOLIBCALL ATTR_CF WUR
+#   endif
 #endif
 
 
 // HELPER FUNCTIONS, CONSTANTS, & VARIABLES
 
-#ifndef S_SPLINT_S
 DECL_FUNC int not_null_ptr(const void* restrict ptr);
 /** Defeat compiler optimizations that assume function addresses are never NULL */
-LIB_FUNC int not_null_ptr(const void* restrict ptr) {
+LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
+	/*@-usedef@*/
 	const void* restrict q;
-	asm volatile (";" : "=r"(q) : "0"(ptr));
+	vasm(";" : "=r"(q) : "0"(ptr));
 	return (int)(q != 0);
+	/*@=usedef@*/
 }
-#endif
 
 
 static const UNUSED unsigned char align64 integer_table[264] = {
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-	25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-	25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
+	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
+	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU
 };
 static const UNUSED int align64 positive_tens[8] = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
 #ifndef PADSIZE
@@ -8612,6 +8650,7 @@ static const UNUSED int align64 positive_tens[8] = { 10, 100, 1000, 10000, 10000
 static const UNUSED char align64 fcvt_zeros[16] = "000000000000000";
 static const UNUSED char align16 blanks[PADSIZE] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 static const UNUSED char align16 zeroes[PADSIZE] = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
+static const UNUSED char period[2] = ".";
 #define _ALPHABET   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define _alphabet   "abcdefghijklmnopqrstuvwxyz"
 #define _numbers   "0123456789"
@@ -8640,15 +8679,15 @@ static const UNUSED char null_char[2] = "\0";
 static const UNUSED char NEWLINE[4] = { '\n', '\n', '\0', '\0' };
 /** The set of "direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr */
 static const UNUSED unsigned char align16 direct_tab[16] = {
-	0, 0x26, 0, 0, 0x81, 0xf3, 0xff, 0x87, 0xfe, 0xff, 0xff, 7, 0xfe, 0xff, 0xff, 7
+	0U, 0x26U, 0U, 0U, 0x81U, 0xf3U, 0xffU, 0x87U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
 };
 /** The set of "direct and optional direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr ! " # $ % & * ; < = > @ [ ] ^ _ ` { | } */
 static const UNUSED unsigned char align16 xdirect_tab[16] = {
-	0, 0x26, 0, 0, 0xff, 0xf7, 0xff, 0xff, 0xff, 0xff, 0xff, 0xef, 0xff, 0xff, 0xff, 0x3f
+	0U, 0x26U, 0U, 0U, 0xffU, 0xf7U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xefU, 0xffU, 0xffU, 0xffU, 0x3fU
 };
 /** The set of "extended base64 characters": A-Z a-z 0-9 + / - */
 static const UNUSED unsigned char align16 xbase64_tab[16] = {
-	0, 0, 0, 0, 0, 0xa8, 0xff, 3, 0xfe, 0xff, 0xff, 7, 0xfe, 0xff, 0xff, 7
+	0U, 0U, 0U, 0U, 0U, 0xa8U, 0xffU, 3U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
 };
 static const UNUSED int align16 nibblemap[16] = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
 #define A64L_TABLE_BASE   0x2e
@@ -8670,11 +8709,12 @@ UNUSED char** environ = NULL;
 #define _environ   environ
 #define environ   environ
 UNUSED char** __env_map = NULL;
-static volatile UNUSED int exit_counter;
-static volatile UNUSED int slot;
-static volatile UNUSED int align64 lock[2] = { 0 };
-static const UNUSED unsigned int __page_size = PAGE_SIZE;
-static const UNUSED unsigned int __page_shift = PAGE_SHIFT;
+static atomic volatile UNUSED int exit_counter;
+static volatile UNUSED int progslot;
+static atomic volatile UNUSED int align64 tmlock[2] = { 0, 0 };
+static atomic volatile UNUSED int align64 memlock[2] = { 0, 0 };
+static const UNUSED unsigned int __page_size = (unsigned int)PAGE_SIZE;
+static const UNUSED unsigned int __page_shift = (unsigned int)PAGE_SHIFT;
 #define __getpagesize()   ((unsigned int)__page_size)
 #define getpagesize()   ((unsigned int)__page_size)
 #define __getpageshift()   ((unsigned int)__page_shift)
@@ -9427,31 +9467,30 @@ typedef greg_t   gregset_t[NGREG];
 #define __noreturn_is_defined   (1)
 
 
+/** @defgroup NoReturn
+Function declaration indicating that the function does not return by executing the return statement or by reaching the end of the function body
+@{ */
+
 #if (IS_STDC_BELOW_C11 && IS_GNUC)
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define noreturn   __attribute__((__noreturn__))
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define _Noreturn   __attribute__((__noreturn__))
 #elif (defined(COMPILER_MICROSOFT) && (defined(_MSC_VER) && (_MSC_VER >= 1200)))
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define _Noreturn   __declspec(noreturn)
 #elif (defined(LINTER_CLANG) && __has_extension((attribute_analyzer_noreturn)))
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define noreturn   __attribute__((analyzer_noreturn))
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define _Noreturn   __attribute__((analyzer_noreturn))
+#elif IS_LINTER
+#   define _Noreturn   /*@noreturn@*/
+#   define noreturn   /*@noreturn@*/
 #else
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body */
 #   define noreturn   _Noreturn
 #endif  // noreturn
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body (Alias for _Noreturn) */
 #define Noreturn   _Noreturn
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body (Alias for _Noreturn) */
 #define __noreturn   _Noreturn
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body (Alias for _Noreturn) */
 #define DECLSPEC_NORETURN   _Noreturn
-/** A function declaration that specifies that the function does not return by executing the return statement or by reaching the end of the function body (Alias for _Noreturn) */
 #define PR_PRETEND_NORETURN   _Noreturn
+
+/** @} */
 
 
 #endif  // STDNORETURN_H
@@ -9470,17 +9509,22 @@ typedef greg_t   gregset_t[NGREG];
 #define _DEF_WINBOOL_   (1)
 
 
-#if IS_STDC_BELOW_C99
-/** Boolean Datatype */
+/** @def bool
+Boolean Datatype */
+#if IS_LINTER
+#   define _Bool   int
+#   define bool   int
+#elif IS_STDC_BELOW_C99
 typedef int   _Bool;
-#elif (IS_NOT_CPLUSPLUS && (!defined(S_SPLINT_S)))
-/** Boolean Datatype */
+#elif IS_NOT_CPLUSPLUS
 typedef _Bool   bool;
 #endif
 #if (!(defined(BOOL) || IS_OBJ_C))
 /** Support Objective-C-Style "BOOL" datatype */
 #   define BOOL   bool
+/** Objective-C false boolean constant */
 #   define __objc_no   ((bool)0)
+/** Objective-C true boolean constant */
 #   define __objc_yes   ((bool)1)
 #endif
 #ifndef objc_yes
@@ -10229,12 +10273,22 @@ typedef enum _LIB_VERSION_TYPE {
 } _LIB_VERSION_TYPE;
 /** This variable can be changed at run-time to any of the values above to affect floating point error handling behavior (it may also be necessary to change the hardware FPU exception settings) */
 extern UNUSED _LIB_VERSION_TYPE _LIB_VERSION;
-#ifndef LIBMVER  // _POSIX_ is the default
-#   define LIBMVER   2  // _POSIX_
-#elif ((LIBMVER > 3) || (LIBMVER < -1))
-#   define LIBMVER   2  // _POSIX_
+#if ((!defined(LIBMVER)) || ((LIBMVER > 3) || (LIBMVER < -1)))  // _POSIX_ is the default
+#   define LIBMVER   2
+_LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
+#elif ((LIBMVER > 3) || (LIBMVER < -1) || (LIBMVER == 2))
+_LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
+#elif (LIBMVER == -1)
+_LIB_VERSION_TYPE _LIB_VERSION = _IEEE_;
+#elif (LIBMVER == 0)
+_LIB_VERSION_TYPE _LIB_VERSION = _SVID_;
+#elif (LIBMVER == 1)
+_LIB_VERSION_TYPE _LIB_VERSION = _XOPEN_;
+#elif (LIBMVER == 3)
+_LIB_VERSION_TYPE _LIB_VERSION = _ISOC_;
+#else
+_LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #endif
-_LIB_VERSION_TYPE _LIB_VERSION = LIBMVER;
 #if (LIBMVER != 0)  // SVID
 #   define _IEEE_LIBM   (1)
 #endif
@@ -11291,7 +11345,7 @@ _LIB_VERSION_TYPE _LIB_VERSION = LIBMVER;
 #      define LD_B1B_DIG   2
 #      define LD_B1B_MAX   9007199, 254740991
 #      define KMAX   128
-#      ifndef S_SPLINT_S
+#      if IS_NOT_LINTER
 _Static_assert((LDBL_EQ_DBL), "`long double` is not equivalent to `double`!");
 _Static_assert((SIZEOF_LONG_DOUBLE == 8), "`long double` is not of the correct size!");
 #      endif
@@ -11303,7 +11357,7 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 8), "`long double` is not of the correct s
 #      define LD_B1B_DIG   3
 #      define LD_B1B_MAX   18, 446744073, 709551615
 #      define KMAX 2048
-#      ifndef S_SPLINT_S
+#      if IS_NOT_LINTER
 _Static_assert((IS_LDBL_X87 && IS_LDBL_XFtype), "`long double` is not equivalent to `XFtype`!");
 _Static_assert(((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)), "`long double` is not of the correct size!");
 #      endif
@@ -11315,7 +11369,7 @@ _Static_assert(((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)), "`lon
 #      define LD_B1B_DIG   4
 #      define LD_B1B_MAX   10384593, 717069655, 257060992, 658440191
 #      define KMAX   2048
-#      ifndef S_SPLINT_S
+#      if IS_NOT_LINTER
 _Static_assert((LDBL_EQ_FLOAT128), "`long double` is not 128-bits!");
 _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct size!");
 #      endif
@@ -12910,17 +12964,17 @@ typedef union ieee754_remainder_double { int32_t i[2]; double x; }   ieee754_rem
 
 
 #if BIG_ENDIAN
-static const UNUSED ieee754_remainder_double _BIG = {{ 0x43380000, 0 }};  // 6755399441055744
-static const UNUSED ieee754_remainder_double _T128 = {{ 0x47f00000, 0 }};  // 2^128
-static const UNUSED ieee754_remainder_double _TM128 = {{ 0x37f00000, 0 }};  // 2^-128
-static const UNUSED ieee754_remainder_double _ZERO = {{ 0, 0 }};  // 0.0
-static const UNUSED ieee754_remainder_double _NZERO = {{ (int)0x80000000, 0 }};  // -0.0
+static const UNUSED ieee754_remainder_double _BIG = {{ 0x43380000, 0 }};  //!< 6755399441055744
+static const UNUSED ieee754_remainder_double _T128 = {{ 0x47f00000, 0 }};  //!< 2^128
+static const UNUSED ieee754_remainder_double _TM128 = {{ 0x37f00000, 0 }};  //!< 2^-128
+static const UNUSED ieee754_remainder_double _ZERO = {{ 0, 0 }};  //!< 0.0
+static const UNUSED ieee754_remainder_double _NZERO = {{ (int)0x80000000, 0 }};  //!< -0.0
 #else  // LITTLE_ENDIAN
-static const UNUSED ieee754_remainder_double _BIG = {{ 0, 0x43380000 }};  // 6755399441055744
-static const UNUSED ieee754_remainder_double _T128 = {{ 0, 0x47f00000 }};  // 2^128
-static const UNUSED ieee754_remainder_double _TM128 = {{ 0, 0x37f00000 }};  // 2^-128
-static const UNUSED ieee754_remainder_double _ZERO = {{ 0, 0 }};  // 0.0
-static const UNUSED ieee754_remainder_double _NZERO = {{ 0, (int)0x80000000 }};  // -0.0
+static const UNUSED ieee754_remainder_double _BIG = {{ 0, 0x43380000 }};  //!< 6755399441055744
+static const UNUSED ieee754_remainder_double _T128 = {{ 0, 0x47f00000 }};  //!< 2^128
+static const UNUSED ieee754_remainder_double _TM128 = {{ 0, 0x37f00000 }};  //!< 2^-128
+static const UNUSED ieee754_remainder_double _ZERO = {{ 0, 0 }};  //!< 0.0
+static const UNUSED ieee754_remainder_double _NZERO = {{ 0, (int)0x80000000 }};  //!< -0.0
 #endif
 
 
@@ -13051,7 +13105,7 @@ typedef union ieee754_double {
 #   if IS_BIG_ENDIAN
 		unsigned int negative:1;
 		unsigned int exponent:11;
-		unsigned int mantissa0:20;  // Together these make the mantissa
+		unsigned int mantissa0:20;
 		unsigned int mantissa1:32;
 #   else  // LITTLE_ENDIAN
 		unsigned int mantissa1:32;
@@ -13200,7 +13254,7 @@ typedef union ieee854_long_double {
 #      if IS_BIG_ENDIAN
 		unsigned int negative:1;
 		unsigned int exponent:15;
-		unsigned int mantissa0:16;  // Together these comprise the mantissa
+		unsigned int mantissa0:16;
 		unsigned int mantissa1:32;
 		unsigned int mantissa2:32;
 		unsigned int mantissa3:32;
@@ -13393,7 +13447,7 @@ typedef union IEEEl2bits {
 #   if IS_BIG_ENDIAN
 		unsigned int negative:1;
 		unsigned int exponent:11;
-		unsigned int mantissa0:20;  // Together these make the mantissa
+		unsigned int mantissa0:20;
 		unsigned int mantissa1:32;
 #   else  // LITTLE_ENDIAN
 		unsigned int mantissa1:32;
@@ -13483,7 +13537,7 @@ typedef union float256_shape {
 #endif
 
 
-#if (SUPPORTS_COMPLEX && (!defined(S_SPLINT_S)))
+#if (SUPPORTS_COMPLEX && IS_NOT_LINTER)
 
 
 /** Datatype used to convert between a complex float and various datatypes */
@@ -14079,7 +14133,7 @@ static const UNUSED float128_shape_t __nansd128 = { .bytes = __NANSD128_bytes };
 #if SUPPORTS_FLOAT8
 #   ifndef INFINITY8
 typedef union union_INFINITY8 { unsigned char __c; float8 __f; }   __INFINITY8_t;
-#      define __INFINITY8_bytes   (unsigned char)0x78  // 0b01111000
+#      define __INFINITY8_bytes   (unsigned char)0x78U  // 0b01111000
 static const UNUSED __INFINITY8_t __infinity8 = __INFINITY8_bytes;
 /** Positive infinity (float8) */
 #      define INFINITY8   (float8)(__infinity8.__f)
@@ -14090,7 +14144,7 @@ static const UNUSED __INFINITY8_t __infinity8 = __INFINITY8_bytes;
 #   define PINF8   INFINITY8
 #   ifndef NINF8
 typedef union union_NINF8 { unsigned char __c; float8 __f; }   __NINF8_t;
-#      define __NINF8_bytes   (unsigned char)0xf8  // 0b11111000
+#      define __NINF8_bytes   (unsigned char)0xf8U  // 0b11111000
 static const UNUSED __NINF8_t __ninf8 = __NINF8_bytes;
 /** Negative infinity (float16) */
 #      define NINF8   (float8)(__ninf8.__f)
@@ -14101,9 +14155,9 @@ static const UNUSED __NINF8_t __ninf8 = __NINF8_bytes;
 #   ifndef INFINITY16
 typedef union union_INFINITY16 { unsigned char __c[2]; float16 __f; }   __INFINITY16_t;
 #      if IS_BIG_ENDIAN
-#         define __INFINITY16_bytes   { 0x7c, 0x0 }  // 0b0111110000000000
+#         define __INFINITY16_bytes   { 0x7cU, 0x0U }  // 0b0111110000000000
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITY16_bytes   { 0x0, 0x7c }
+#         define __INFINITY16_bytes   { 0x0U, 0x7cU }
 #      endif
 static const UNUSED __INFINITY16_t __infinity16 = { __INFINITY16_bytes };
 /** Positive infinity (float16) */
@@ -14116,9 +14170,9 @@ static const UNUSED __INFINITY16_t __infinity16 = { __INFINITY16_bytes };
 #   ifndef NINF16
 typedef union union_NINF16 { unsigned char __c[2]; float16 __f; }   __NINF16_t;
 #      if IS_BIG_ENDIAN
-#         define __NINF16_bytes   { 0xfc, 0x0 }  // 0b1111110000000000
+#         define __NINF16_bytes   { 0xfcU, 0x0U }  // 0b1111110000000000
 #      elif IS_LITTLE_ENDIAN
-#         define __NINF16_bytes   { 0x0, 0xfc }
+#         define __NINF16_bytes   { 0x0U, 0xfcU }
 #      endif
 static const UNUSED __NINF16_t __ninf16 = { __NINF16_bytes };
 /** Negative infinity (float16) */
@@ -14129,9 +14183,9 @@ static const UNUSED __NINF16_t __ninf16 = { __NINF16_bytes };
 #ifndef INFINITYF
 typedef union union_INFINITYF { unsigned char __c[4]; float __f; }   __INFINITYF_t;
 #   if IS_BIG_ENDIAN
-#      define __INFINITYF_bytes   { 0x7f, 0x80, 0x0, 0x0 }
+#      define __INFINITYF_bytes   { 0x7fU, 0x80U, 0x0U, 0x0U }
 #   elif IS_LITTLE_ENDIAN
-#      define __INFINITYF_bytes   { 0x0, 0x0, 0x80, 0x7f }
+#      define __INFINITYF_bytes   { 0x0U, 0x0U, 0x80U, 0x7fU }
 #   endif
 static const UNUSED __INFINITYF_t __infinityf = { __INFINITYF_bytes };
 /** IEEE Positive Infinity (INF) */
@@ -14147,9 +14201,9 @@ static const UNUSED __INFINITYF_t __infinityf = { __INFINITYF_bytes };
 #ifndef NINFF
 typedef union union_NINFF { unsigned char __c[4]; float __f; }   __NINFF_t;
 #   if IS_BIG_ENDIAN
-#      define __NINFF_bytes   { 0xff, 0x80, 0x0, 0x0 }
+#      define __NINFF_bytes   { 0xffU, 0x80U, 0x0U, 0x0U }
 #   elif IS_LITTLE_ENDIAN
-#      define __NINFF_bytes   { 0x0, 0x0, 0x80, 0xff }
+#      define __NINFF_bytes   { 0x0U, 0x0U, 0x80U, 0xffU }
 #   endif
 static const UNUSED __NINFF_t __ninff = { __NINFF_bytes };
 /** Negative infinity (float) */
@@ -14161,9 +14215,9 @@ static const UNUSED __NINFF_t __ninff = { __NINFF_bytes };
 #ifndef INFINITY
 typedef union union_INFINITY { unsigned char __c[8]; double __d; }   __INFINITY_t;
 #   if IS_BIG_ENDIAN
-#      define __INFINITY_bytes   { 0x7f, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#      define __INFINITY_bytes   { 0x7fU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #   elif IS_LITTLE_ENDIAN
-#      define __INFINITY_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0x7f }
+#      define __INFINITY_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0x7fU }
 #   endif
 static const UNUSED __INFINITY_t __infinity = { __INFINITY_bytes };
 /** IEEE Infinity (INF) */
@@ -14178,9 +14232,9 @@ static const UNUSED __INFINITY_t __infinity = { __INFINITY_bytes };
 #ifndef NINF
 typedef union union_NINF { unsigned char __c[8]; double __d; }   __NINF_t;
 #   if IS_BIG_ENDIAN
-#      define __NINF_bytes   { 0xff, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#      define __NINF_bytes   { 0xffU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #   elif IS_LITTLE_ENDIAN
-#      define __NINF_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0xff }
+#      define __NINF_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0xffU }
 #   endif
 static const UNUSED __NINF_t __ninf = { __NINF_bytes };
 /** Negative infinity (double) */
@@ -14192,9 +14246,9 @@ static const UNUSED __NINF_t __ninf = { __NINF_bytes };
 #if LDBL_EQ_FLOAT128
 #   ifndef INFINITYL
 #      if IS_BIG_ENDIAN
-#         define __INFINITYL_bytes   { 0x7f, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __INFINITYL_bytes   { 0x7fU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITYL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0x7f }
+#         define __INFINITYL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0x7fU }
 #      endif
 union union_INFINITYL { unsigned char __c[16]; long double __ld; } __infinityl = { .__c = __INFINITYL_bytes };
 /** IEEE Infinity (INF) */
@@ -14202,9 +14256,9 @@ union union_INFINITYL { unsigned char __c[16]; long double __ld; } __infinityl =
 #   endif  // INFINITYL
 #   ifndef NINFL
 #      if IS_BIG_ENDIAN
-#         define __NINFL_bytes   { 0xff, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __NINFL_bytes   { 0xffU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NINFL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0xff }
+#         define __NINFL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0xffU }
 #      endif
 union union_NINFL { unsigned char __c[16]; long double __ld; } __ninfl = { .__c = __NINFL_bytes };
 /** Negative infinity (long double) */
@@ -14213,9 +14267,9 @@ union union_NINFL { unsigned char __c[16]; long double __ld; } __ninfl = { .__c 
 #elif IS_LDBL_96
 #   ifndef INFINITYL
 #      if IS_BIG_ENDIAN
-#         define __INFINITYL_bytes   { 0x7f, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __INFINITYL_bytes   { 0x7fU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITYL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0x7f }
+#         define __INFINITYL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0x7fU }
 #      endif
 union union_INFINITYL { unsigned char __c[12]; long double __ld; } __infinityl = { .__c = __INFINITYL_bytes };
 /** IEEE Infinity (INF) */
@@ -14223,9 +14277,9 @@ union union_INFINITYL { unsigned char __c[12]; long double __ld; } __infinityl =
 #   endif  // INFINITYL
 #   ifndef NINFL
 #      if IS_BIG_ENDIAN
-#         define __NINFL_bytes   { 0xff, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __NINFL_bytes   { 0xffU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NINFL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0xff }
+#         define __NINFL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0xffU }
 #      endif
 union union_NINFL { unsigned char __c[12]; long double __ld; } __ninfl = { .__c = __NINFL_bytes };
 /** Negative infinity (long double) */
@@ -14234,9 +14288,9 @@ union union_NINFL { unsigned char __c[12]; long double __ld; } __ninfl = { .__c 
 #elif IS_LDBL_80
 #   ifndef INFINITYL
 #      if IS_BIG_ENDIAN
-#         define __INFINITYL_bytes   { 0x7f, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __INFINITYL_bytes   { 0x7fU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITYL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0x7f }
+#         define __INFINITYL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0x7fU }
 #      endif
 union union_INFINITYL { unsigned char __c[10]; long double __ld; } __infinityl = { .__c = __INFINITYL_bytes };
 /** IEEE Infinity (INF) */
@@ -14244,9 +14298,9 @@ union union_INFINITYL { unsigned char __c[10]; long double __ld; } __infinityl =
 #   endif  // INFINITYL
 #   ifndef NINFL
 #      if IS_BIG_ENDIAN
-#         define __NINFL_bytes   { 0xff, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __NINFL_bytes   { 0xffU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NINFL_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0xff }
+#         define __NINFL_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0xffU }
 #      endif
 union union_NINFL { unsigned char __c[10]; long double __ld; } __ninfl = { .__c = __NINFL_bytes };
 /** Negative infinity (long double) */
@@ -14273,9 +14327,9 @@ union union_NINFL { unsigned char __c[10]; long double __ld; } __ninfl = { .__c 
 #   ifndef INFINITY128
 typedef union union_INFINITY128 { unsigned char __c[16]; float128 __d; }   __INFINITY128_t;
 #      if IS_BIG_ENDIAN
-#         define __INFINITY128_bytes   { 0x7f, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __INFINITY128_bytes   { 0x7fU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITY128_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0x7f }
+#         define __INFINITY128_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0x7fU }
 #      endif
 static const UNUSED __INFINITY128_t __infinity128 = { __INFINITY128_bytes };
 /** IEEE Infinity (INF) */
@@ -14287,9 +14341,9 @@ static const UNUSED __INFINITY128_t __infinity128 = { __INFINITY128_bytes };
 #   ifndef NINF128
 typedef union union_NINF128 { unsigned char __c[16]; float128 __d; }   __NINF128_t;
 #      if IS_BIG_ENDIAN
-#         define __NINF128_bytes   { 0xff, 0xf0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __NINF128_bytes   { 0xffU, 0xf0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NINF128_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf0, 0xff }
+#         define __NINF128_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf0U, 0xffU }
 #      endif
 static const UNUSED __NINF128_t __ninf128 = { __NINF128_bytes };
 /** Negative infinity (float128) */
@@ -14302,9 +14356,9 @@ static const UNUSED __NINF128_t __ninf128 = { __NINF128_bytes };
 #   ifndef INFINITYD32
 typedef union union_INFINITYD32 { unsigned char __c[4]; decimal32 __f; }   __INFINITYD32_t;
 #      if IS_BIG_ENDIAN
-#         define __INFINITYD32_bytes   { 0x78, 0x0, 0x0, 0x0 }
+#         define __INFINITYD32_bytes   { 0x78U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITYD32_bytes   { 0x0, 0x0, 0x0, 0x78 }
+#         define __INFINITYD32_bytes   { 0x0U, 0x0U, 0x0U, 0x78U }
 #      endif
 static const UNUSED __INFINITYD32_t __infinityd32 = { __INFINITYD32_bytes };
 /** Decimal float infinity (32-bit) */
@@ -14316,9 +14370,9 @@ static const UNUSED __INFINITYD32_t __infinityd32 = { __INFINITYD32_bytes };
 #   ifndef NEG_INFINITYD32
 typedef union union_NEG_INFINITYD32 { unsigned char __c[4]; decimal32 __f; }   __NEG_INFINITYD32_t;
 #      if IS_BIG_ENDIAN
-#         define __NEG_INFINITYD32_bytes   { 0xf8, 0x0, 0x0, 0x0 }
+#         define __NEG_INFINITYD32_bytes   { 0xf8U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NEG_INFINITYD32_bytes   { 0x0, 0x0, 0x0, 0xf8 }
+#         define __NEG_INFINITYD32_bytes   { 0x0U, 0x0U, 0x0U, 0xf8U }
 #      endif
 static const UNUSED __NEG_INFINITYD32_t __neg_infinityd32 = { __NEG_INFINITYD32_bytes };
 /** Decimal float infinity (32-bit) */
@@ -14328,9 +14382,9 @@ static const UNUSED __NEG_INFINITYD32_t __neg_infinityd32 = { __NEG_INFINITYD32_
 #   ifndef INFINITYD64
 typedef union union_INFINITYD64 { unsigned char __c[8]; decimal64 __d; }   __INFINITYD64_t;
 #      if IS_BIG_ENDIAN
-#         define __INFINITYD64_bytes   { 0x78, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __INFINITYD64_bytes   { 0x78U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __INFINITYD64_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x78 }
+#         define __INFINITYD64_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x78U }
 #      endif
 static const UNUSED __INFINITYD64_t __infinityd64 = { __INFINITYD64_bytes };
 /** IEEE Infinity (INF) */
@@ -14342,9 +14396,9 @@ static const UNUSED __INFINITYD64_t __infinityd64 = { __INFINITYD64_bytes };
 #   ifndef NEG_INFINITYD64
 typedef union union_NEG_INFINITYD64 { unsigned char __c[8]; decimal64 __d; }   __NEG_INFINITYD64_t;
 #      if IS_BIG_ENDIAN
-#         define __NEG_INFINITYD64_bytes   { 0xf8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#         define __NEG_INFINITYD64_bytes   { 0xf8U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #      elif IS_LITTLE_ENDIAN
-#         define __NEG_INFINITYD64_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xf8 }
+#         define __NEG_INFINITYD64_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0xf8U }
 #      endif
 static const UNUSED __NEG_INFINITYD64_t __neg_infinityd64 = { __NEG_INFINITYD64_bytes };
 #      define NEG_INFINITYD64   (decimal64)(__neg_infinityd64.__d)  // 0b1111100000000000000000000000000000000000000000000000000000000000DD
@@ -14354,9 +14408,9 @@ static const UNUSED __NEG_INFINITYD64_t __neg_infinityd64 = { __NEG_INFINITYD64_
 #      ifndef INFINITYD128
 typedef union union_INFINITYD128 { unsigned char __c[16]; decimal128 __d; }   __INFINITYD128_t;
 #         if IS_BIG_ENDIAN
-#            define __INFINITYD128_bytes   { 0x78, 0x00, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#            define __INFINITYD128_bytes   { 0x78U, 0x00U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #         elif IS_LITTLE_ENDIAN
-#            define __INFINITYD128_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x00, 0x78 }
+#            define __INFINITYD128_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x00U, 0x78U }
 #         endif
 static const UNUSED __INFINITYD128_t __infinityd128 = { __INFINITYD128_bytes };
 /** IEEE Infinity (INF) */
@@ -14368,9 +14422,9 @@ static const UNUSED __INFINITYD128_t __infinityd128 = { __INFINITYD128_bytes };
 #      ifndef NINFD128
 typedef union union_NINFD128 { unsigned char __c[16]; decimal128 __d; }   __NINFD128_t;
 #         if IS_BIG_ENDIAN
-#            define __NINFD128_bytes   { 0xf8, 0x00, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+#            define __NINFD128_bytes   { 0xf8U, 0x00U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U }
 #         elif IS_LITTLE_ENDIAN
-#            define __NINFD128_bytes   { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x00, 0xf8 }
+#            define __NINFD128_bytes   { 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x0U, 0x00U, 0xf8U }
 #         endif
 static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 /** Negative infinity (decimal128) */
@@ -15032,10 +15086,12 @@ typedef enum BEOS_TYPE_CONSTANTS {
 #define B_HAIKU_ABI_GCC_2_BEOS   0x20001
 #define B_HAIKU_ABI_GCC_2_HAIKU   0x20002
 #define B_HAIKU_ABI_NAME   __HAIKU_ARCH_ABI
-#if AT_LEAST_GCC7
-#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_7
-#elif AT_LEAST_GCC6
-#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_6
+#if AT_LEAST_GCC10
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_10
+#elif AT_LEAST_GCC9
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_9
+#elif AT_LEAST_GCC8
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_8
 #endif
 #ifndef B_HAIKU_BITS
 #   define B_HAIKU_BITS   HAIKU_ARCH_BITS

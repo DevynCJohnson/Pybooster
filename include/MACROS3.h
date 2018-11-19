@@ -164,12 +164,6 @@ typedef enum memory_order_enum {
 
 // MISCELLANEOUS ATOMIC CONSTANTS
 
-static UNUSED FILE* ofl_head = NULL;
-static volatile UNUSED int align64 ofl_locks[2] = { 0 };
-static volatile UNUSED int align64 tm_lock[2] = { 0 };
-static volatile UNUSED int align64 vmlock[2] = { 0, 0 };
-
-
 #ifdef ARCHARM
 static const UNUSED void* __arm_atomics[3];
 #endif
@@ -187,8 +181,8 @@ static const UNUSED void* __arm_atomics[3];
 
 
 /** A barrier to stop the optimizer from moving code or assume live register values */
-#define compiler_barrier()   asm volatile (";" : : : "memory")
-#define barrier_data(ptr)   asm volatile (";" : : "r"(ptr) : "memory")
+#define compiler_barrier()   vasm(";" : : : "memory")
+#define barrier_data(ptr)   vasm(";" : : "r"(ptr) : "memory")
 
 
 #ifdef ARCHX86_32  // Math barriers
@@ -203,42 +197,42 @@ y = math_opt_barrier(x);  // "compiler, do not cheat!"
 y = y * y;  // compiler cannot optimize; must use real multiply instruction
 @endcode
 */
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "=t"(__x) : "0"(__x)); __x; })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "=t"(__x) : "0"(__x)); __x; })
 /** Force expression x to be evaluated; This macro returns no value */
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__xx) >= SIZEOF_DOUBLE) { asm volatile (";" : : "m"(__x)); } else { asm volatile (";" : : "f"(__x)); } })
-#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "=t"(__x) : "0"(__x)); __x *= __x; if (sizeof(__x) >= SIZEOF_DOUBLE) { asm volatile (";" : : "m"(__x)); } else { asm volatile (";" : : "f"(__x)); } })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__xx) >= SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else { vasm(";" : : "f"(__x)); } })
+#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "=t"(__x) : "0"(__x)); __x *= __x; if (sizeof(__x) >= SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else { vasm(";" : : "f"(__x)); } })
 
 #elif defined(ARCHX86_64)
 
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { asm volatile (";" : "=x"(__x) : "0"(__x)); } else { asm volatile (";" : "=t"(__x) : "0"(__x)); } __x; })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { vasm(";" : "=x"(__x) : "0"(__x)); } else { vasm(";" : "=t"(__x) : "0"(__x)); } __x; })
 /** Force expression x to be evaluated; This macro returns no value */
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) >= SIZEOF_DOUBLE) { asm volatile (";" : : "x"(__x)); } else { asm volatile (";" : : "f"(__x)); } })
-#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) > SIZEOF_DOUBLE) { asm volatile (";" : : "m"(__x)); } else if (sizeof(__x) == SIZEOF_DOUBLE) { asm volatile (";" : : "x"(__x)); } else { asm volatile (";" : : "f"(__x)); } })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) >= SIZEOF_DOUBLE) { vasm(";" : : "x"(__x)); } else { vasm(";" : : "f"(__x)); } })
+#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) > SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else if (sizeof(__x) == SIZEOF_DOUBLE) { vasm(";" : : "x"(__x)); } else { vasm(";" : : "f"(__x)); } })
 
 #elif defined(ARCHAARCH64)
 
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "+w"(__x)); __x; })
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : : "w"(__x)); })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "+w"(__x)); __x; })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); vasm(";" : : "w"(__x)); })
 
 #elif defined(ARCHALPHA)
 
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "+frm"(__x)); __x; })
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : : "frm"(__x)); })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "+frm"(__x)); __x; })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); vasm(";" : : "frm"(__x)); })
 
 #elif defined(ARCHM68K)
 
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "=f"(__x) : "0"(__x)); __x; })
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { asm volatile (";" : : "m"(__x)); } else { asm volatile (";" : : "f"(__x)); } })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "=f"(__x) : "0"(__x)); __x; })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else { vasm(";" : : "f"(__x)); } })
 
 #else
 
-#   define math_opt_barrier(x)   do { typeof(x) __x = (x); asm volatile (";" : "+m"(__x)); __x; } while (0x0)
+#   define math_opt_barrier(x)   do { typeof(x) __x = (x); vasm(";" : "+m"(__x)); __x; } while (0x0)
 /** Force expression x to be evaluated; This macro returns no value */
-#   define math_force_eval(x)   do { typeof(x) __x = (x); asm volatile (";" : : "m"(__x)); } while (0x0)
+#   define math_force_eval(x)   do { typeof(x) __x = (x); vasm(";" : : "m"(__x)); } while (0x0)
 
 #endif  // Math barriers
 #ifndef raise_flag
-#   define raise_flag(x)   do { typeof(x) __x = (x); asm volatile (";" : "+m"(__x)); asm volatile (";" : : "m"(__x)); } while (0x0)
+#   define raise_flag(x)   do { typeof(x) __x = (x); vasm(";" : "+m"(__x)); vasm(";" : : "m"(__x)); } while (0x0)
 #endif
 #ifndef FORCE_EVAL
 #   define FORCE_EVAL(x)   math_force_eval((x))
@@ -247,34 +241,34 @@ y = y * y;  // compiler cannot optimize; must use real multiply instruction
 
 #if defined(ARCHALPHA)  // Memory Barrier
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("mb;" : : : "memory")
+#   define do_sync()   vasm("mb;" : : : "memory")
 #elif defined(ARM_7_SERIES)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("dmb sy;" : : : "memory")
+#   define do_sync()   vasm("dmb sy;" : : : "memory")
 #elif defined(ARM_6_SERIES)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("mcr p15, 0, %0, c7, c10, 5;" : : "rin"(0) : "memory")
+#   define do_sync()   vasm("mcr p15, 0, %0, c7, c10, 5;" : : "rin"(0) : "memory")
 #elif defined(ARCHARM)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("dmb;" : : : "memory")
+#   define do_sync()   vasm("dmb;" : : : "memory")
 #elif defined(ARCHPOWERPC64)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("lwsync;" : : : "memory")
+#   define do_sync()   vasm("lwsync;" : : : "memory")
 #elif defined(ARCHPOWERPC32)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("isync; eieio;" : : : "memory")
+#   define do_sync()   vasm("isync; eieio;" : : : "memory")
 #elif defined(ARCHMIPS)
 /** Memory Barrier */
-#   define do_sync()   asm volatile (".long 0xf;" : : : "memory")
+#   define do_sync()   vasm(".long 0xf;" : : : "memory")
 #elif defined(ARCHSPARC)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("membar;" : : : "memory")
+#   define do_sync()   vasm("membar;" : : : "memory")
 #elif defined(ARCHX86)
 /** Memory Barrier */
-#   define do_sync()   asm volatile ("mfence;" : : : "memory")
+#   define do_sync()   vasm("mfence;" : : : "memory")
 #else
 /** Memory Barrier */
-#   define do_sync()   asm volatile (";" : : : "memory")
+#   define do_sync()   vasm(";" : : : "memory")
 #endif
 #define a_barrier_DEFINED
 #ifndef __sync_synchronize
@@ -312,13 +306,13 @@ y = y * y;  // compiler cannot optimize; must use real multiply instruction
 
 #ifdef ARCHARM  // Instruction Barrier
 /** Instruction Barrier */
-#   define insn_barrier()   asm volatile ("isb;" : : : "memory")
+#   define insn_barrier()   vasm("isb;" : : : "memory")
 #elif defined(ARCHPOWERPC)
 /** Instruction Barrier */
-#   define insn_barrier()   asm volatile ("isync;" : : : "memory")
+#   define insn_barrier()   vasm("isync;" : : : "memory")
 #else
 /** Instruction Barrier */
-#   define insn_barrier()   asm volatile (";" : : : "memory")
+#   define insn_barrier()   vasm(";" : : : "memory")
 #endif
 #ifndef isync
 /** Instruction Barrier */
@@ -336,28 +330,28 @@ y = y * y;  // compiler cannot optimize; must use real multiply instruction
 
 #ifdef ARCHARM  // Flush internal processor cache
 /** Flush internal processor cache */
-#   define flush_cache()   asm volatile ("dsb;" : : : "memory")
+#   define flush_cache()   vasm("dsb;" : : : "memory")
 #elif defined(ARCHX86)
 /** Flush internal processor cache */
-#   define flush_cache()   asm volatile ("invd;" : : : "memory")
+#   define flush_cache()   vasm("invd;" : : : "memory")
 #else
 /** Flush internal processor cache */
-#   define flush_cache()   asm volatile (";" : : : "memory")
+#   define flush_cache()   vasm(";" : : : "memory")
 #endif
 
 
 #ifndef nop
 #   ifdef ARCHMIPS
-#      define nop()   asm volatile ("noop;" : : : "memory")
+#      define nop()   vasm("noop;" : : : "memory")
 #   else
-#      define nop()   asm volatile ("nop;" : : : "memory")
+#      define nop()   vasm("nop;" : : : "memory")
 #   endif
 #endif
 #ifndef nop2
 #   ifdef ARCHMIPS
-#      define nop2()   asm volatile ("noop;" "noop;" : : : "memory")
+#      define nop2()   vasm("noop;" "noop;" : : : "memory")
 #   else
-#      define nop2()   asm volatile ("nop;" "nop;" : : : "memory")
+#      define nop2()   vasm("nop;" "nop;" : : : "memory")
 #   endif
 #endif
 #ifndef noop
@@ -378,22 +372,22 @@ y = y * y;  // compiler cannot optimize; must use real multiply instruction
 
 
 #ifndef atomic_delay
-#   define atomic_delay()   asm volatile (";" : : : "memory"); nop()
+#   define atomic_delay()   vasm(";" : : : "memory"); nop()
 #endif
 
 
 #ifndef atomic_forced_read
 #   if IS_GNUC
-#      define atomic_forced_read(x)   __extension__ ({ auto_type __x = (x); asm volatile (";" : "=r"(__x) : "0"(__x)); __x; })
+#      define atomic_forced_read(x)   __extension__ ({ auto_type __x = (x); vasm(";" : "=r"(__x) : "0"(__x)); __x; })
 #   else
-#      define atomic_forced_read(x)   do { typeof(x) __x; asm volatile (";" : "=r"(__x) : "0"(x)); __x; } while (0x0)
+#      define atomic_forced_read(x)   do { typeof(x) __x; vasm(";" : "=r"(__x) : "0"(x)); __x; } while (0x0)
 #   endif
 #endif
 
 
 #ifdef ARCHX86  // Atomic spin-lock
 /** Atomic spin-lock */
-#   define a_spin()   asm volatile ("pause;" : : : "memory")
+#   define a_spin()   vasm("pause;" : : : "memory")
 #else
 /** Atomic spin-lock */
 #   define a_spin()   do_sync()
@@ -402,13 +396,13 @@ y = y * y;  // compiler cannot optimize; must use real multiply instruction
 
 #ifdef ARCHX86  // Atomic crash
 /** Atomic crash */
-#   define a_crash()   asm volatile ("hlt;" : : : "memory")
+#   define a_crash()   vasm("hlt;" : : : "memory")
 #elif (defined(ARCHARM) && (!defined(ARM_THUMB)))
 /** Atomic crash */
-#   define a_crash()   asm volatile (".word 0xe7f000f0;" : : : "memory")
+#   define a_crash()   vasm(".word 0xe7f000f0;" : : : "memory")
 #elif (defined(ARCHARM) && defined(ARM_THUMB))
 /** Atomic crash */
-#   define a_crash()   asm volatile (".short 0xdeff;" : : : "memory")
+#   define a_crash()   vasm(".short 0xdeff;" : : : "memory")
 #else
 /** Atomic crash */
 #   define a_crash()   insn_barrier(); ABORT_INSTRUCTION
@@ -431,14 +425,14 @@ LIB_FUNC NONNULL int a_load(volatile int* restrict ptr) {
 	register int val = 0;
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
 #   elif (defined(ARCHARM) && ((defined(ARM_6_SERIES) && (!defined(ARM_THUMB))) || defined(ARM_7_SERIES)))
-	asm volatile ("ldrex %0, %1;" : "=r"(val) : "Q"(*p));
+	vasm("ldrex %0, %1;" : "=r"(val) : "Q"(*p));
 #   elif defined(ARCHMIPS)
 #      if (MIPS_REV < 6)
-	asm volatile (".set push;" ".set mips2;" "ll %0, %1;" ".set pop;" : "=r"(val) : "m"(*p));
+	vasm(".set push;" ".set mips2;" "ll %0, %1;" ".set pop;" : "=r"(val) : "m"(*p));
 #      else
-	asm volatile ("ll %0, %1;" : "=r"(val) : "m"(*p));
+	vasm("ll %0, %1;" : "=r"(val) : "m"(*p));
 #      endif  // MIPS
 #   else
 	__generic_a_load(ptr, val);
@@ -459,9 +453,9 @@ LIB_FUNC NONNULL long a_loadl(volatile long* restrict ptr) {
 #   ifdef ARCHX86
 	do_sync();
 #      if LONG_EQ_32BITS
-	asm volatile ("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
 #      elif LONG_EQ_64BITS
-	asm volatile ("xorq %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorq %1, %0;" : "+r"(val) : "m"(*ptr));
 #      endif
 #   else
 	__generic_a_load(ptr, val);
@@ -475,7 +469,7 @@ LIB_FUNC NONNULL uint8_t a_load8(volatile uint8_t* restrict ptr) {
 	register uint8_t val = 0;
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorb %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorb %1, %0;" : "+r"(val) : "m"(*ptr));
 #   else
 	__generic_a_load(ptr, val);
 #   endif
@@ -488,7 +482,7 @@ LIB_FUNC NONNULL uint16_t a_load16(volatile uint16_t* restrict ptr) {
 	register uint16_t val = 0;
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorw %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorw %1, %0;" : "+r"(val) : "m"(*ptr));
 #   else
 	__generic_a_load(ptr, val);
 #   endif
@@ -501,7 +495,7 @@ LIB_FUNC NONNULL uint32_t a_load32(volatile uint32_t* restrict ptr) {
 	register uint32_t val = 0;
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorl %1, %0;" : "+r"(val) : "m"(*ptr));
 #   else
 	__generic_a_load(ptr, val);
 #   endif
@@ -514,7 +508,7 @@ LIB_FUNC NONNULL uint64_t a_load64(volatile uint64_t* restrict ptr) {
 	register uint64_t val = 0;
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorq %1, %0;" : "+r"(val) : "m"(*ptr));
+	vasm("xorq %1, %0;" : "+r"(val) : "m"(*ptr));
 #   else
 	__generic_a_load(ptr, val);
 #   endif
@@ -527,9 +521,9 @@ LIB_FUNC NONNULL int a_ll_p(volatile int* restrict p) {
 #   ifdef ARCHMIPS
 	register int val = 0;
 #      if (MIPS_REV < 6)
-	asm volatile (".set push;" ".set mips2;" "ll %0, %1;" ".set pop;" : "=r"(v) : "m"(*p));
+	vasm(".set push;" ".set mips2;" "ll %0, %1;" ".set pop;" : "=r"(v) : "m"(*p));
 #      else
-	asm volatile ("ll %0, %1;" : "=r"(val) : "m"(*p));
+	vasm("ll %0, %1;" : "=r"(val) : "m"(*p));
 #      endif  // MIPS
 	return val;
 #   else
@@ -543,9 +537,9 @@ LIB_FUNC NONNULL long a_ll_pl(volatile long* restrict p) {
 #   ifdef ARCHMIPS
 	register int v;
 #      if (MIPS_REV < 6)
-	asm volatile (".set push;" ".set mips2;" "lld %0, %1;" ".set pop;" : "=r"(v) : "m"(*p));
+	vasm(".set push;" ".set mips2;" "lld %0, %1;" ".set pop;" : "=r"(v) : "m"(*p));
 #      else
-	asm volatile ("lld %0, %1;" : "=r"(v) : "m"(*p));
+	vasm("lld %0, %1;" : "=r"(v) : "m"(*p));
 #      endif  // MIPS
 	return v;
 #   else
@@ -561,7 +555,7 @@ LIB_FUNC NONNULL long a_ll_pl(volatile long* restrict p) {
 LIB_FUNC NONNULL void a_store(volatile int* restrict ptr, const int val) {
 #   ifdef ARCHX86
 	register int tmp = val;
-	asm volatile ("lock xchgl %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
+	vasm("lock xchgl %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
 #   else
 	do_sync();
 	while ((*ptr = val) != val);
@@ -581,9 +575,9 @@ LIB_FUNC NONNULL void a_storel(volatile long* restrict ptr, const long val) {
 #   ifdef ARCHX86
 	register long tmp = val;
 #      if LONG_EQ_32BITS
-	asm volatile ("lock xchgl %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
+	vasm("lock xchgl %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
 #      elif LONG_EQ_64BITS
-	asm volatile ("lock xchgq %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
+	vasm("lock xchgq %0, %1;" : "=r"(tmp), "+m"(*ptr) : "0"(tmp) : "memory");
 #      endif
 #   else
 	do_sync();
@@ -598,18 +592,18 @@ LIB_FUNC NONNULL int a_sc(volatile int* restrict p, const int v) {
 #   ifdef ARCHMIPS
 	register int r;
 #      if (MIPS_REV < 6)
-	asm volatile (".set push;" ".set mips2;" "sc %0, %1;" ".set pop;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
+	vasm(".set push;" ".set mips2;" "sc %0, %1;" ".set pop;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
 #      else
-	asm volatile ("sc %0, %1;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
+	vasm("sc %0, %1;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
 #      endif  // MIPS
 	return r;
 #   elif (defined(ARCHARM) && ((defined(ARM_6_SERIES) && (!defined(ARM_THUMB))) || defined(ARM_7_SERIES)))
 	register int r;
-	asm volatile ("strex %0, %2, %1;" : "=&r"(r), "=Q"(*p) : "r"(v) : "memory");
+	vasm("strex %0, %2, %1;" : "=&r"(r), "=Q"(*p) : "r"(v) : "memory");
 	return !r;
 #   elif (defined(ARCHARM) && defined(ARM_8_SERIES))
 	register int r;
-	asm volatile ("stxr %0, %2, %1;" : "=&r"(r), "=Q"(*p) : "r"(v) : "memory");
+	vasm("stxr %0, %2, %1;" : "=&r"(r), "=Q"(*p) : "r"(v) : "memory");
 	return !r;
 #   else
 	a_store(p, v);
@@ -623,9 +617,9 @@ LIB_FUNC NONNULL int a_sc_p(volatile void* restrict p, void* restrict v) {
 #   ifdef ARCHMIPS
 	register int r;
 #      if (MIPS_REV < 6)
-	asm volatile (".set push;" ".set mips2;" "scd %0, %1;" ".set pop;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
+	vasm(".set push;" ".set mips2;" "scd %0, %1;" ".set pop;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
 #      else
-	asm volatile ("scd %0, %1;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
+	vasm("scd %0, %1;" : "=r"(r), "=m"(*p) : "0"(v) : "memory");
 #      endif  // MIPS
 	return r;
 #   else
@@ -640,7 +634,7 @@ LIB_FUNC NONNULL int a_sc_p(volatile void* restrict p, void* restrict v) {
 LIB_FUNC NONNULL void a_zero(volatile int* restrict ptr) {
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("xorl $0, %0;" : "+m"(*ptr) : : "memory");
+	vasm("xorl $0, %0;" : "+m"(*ptr) : : "memory");
 #   else
 	do_sync();
 	while ((*ptr = 0) != 0);
@@ -657,9 +651,9 @@ LIB_FUNC NONNULL void a_zerol(volatile long* restrict ptr) {
 #   ifdef ARCHX86
 	do_sync();
 #      if LONG_EQ_32BITS
-	asm volatile ("xorl $0, %0;" : "+m"(*ptr) : : "memory");
+	vasm("xorl $0, %0;" : "+m"(*ptr) : : "memory");
 #      elif LONG_EQ_64BITS
-	asm volatile ("xorq $0, %0;" : "+m"(*ptr) : : "memory");
+	vasm("xorq $0, %0;" : "+m"(*ptr) : : "memory");
 #      endif
 #   else
 	do_sync();
@@ -676,7 +670,7 @@ LIB_FUNC NONNULL void a_zerol(volatile long* restrict ptr) {
 LIB_FUNC NONNULL bool cmpxchg_bool(volatile int* restrict ptr, const int oldval, const int newval) {
 #   ifdef ARCHX86
 	register int ret;
-	asm volatile ("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -692,7 +686,7 @@ LIB_FUNC NONNULL bool cmpxchg_bool(volatile int* restrict ptr, const int oldval,
 LIB_FUNC NONNULL bool cmpxchg8_bool(volatile uint8_t* restrict ptr, const uint8_t oldval, const uint8_t newval) {
 #   ifdef ARCHX86
 	register uint8_t ret;
-	asm volatile ("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -706,7 +700,7 @@ LIB_FUNC NONNULL bool cmpxchg8_bool(volatile uint8_t* restrict ptr, const uint8_
 LIB_FUNC NONNULL bool cmpxchg16_bool(volatile uint16_t* restrict ptr, const uint16_t oldval, const uint16_t newval) {
 #   ifdef ARCHX86
 	register uint16_t ret;
-	asm volatile ("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -720,7 +714,7 @@ LIB_FUNC NONNULL bool cmpxchg16_bool(volatile uint16_t* restrict ptr, const uint
 LIB_FUNC NONNULL bool cmpxchg32_bool(volatile uint32_t* restrict ptr, const uint32_t oldval, const uint32_t newval) {
 #   ifdef ARCHX86
 	register uint32_t ret;
-	asm volatile ("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -734,7 +728,7 @@ LIB_FUNC NONNULL bool cmpxchg32_bool(volatile uint32_t* restrict ptr, const uint
 LIB_FUNC NONNULL bool cmpxchg64_bool(volatile uint64_t* restrict ptr, const uint64_t oldval, const uint64_t newval) {
 #   ifdef ARCHX86
 	register uint64_t ret;
-	asm volatile ("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -752,7 +746,7 @@ LIB_FUNC NONNULL bool cmpxchg64_bool(volatile uint64_t* restrict ptr, const uint
 LIB_FUNC NONNULL int cmpxchg(volatile int* restrict ptr, const int oldval, const int newval) {
 #   ifdef ARCHX86
 	register int ret;
-	asm volatile ("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -801,7 +795,7 @@ LIB_FUNC NONNULL int cmpxchg(volatile int* restrict ptr, const int oldval, const
 LIB_FUNC NONNULL uint8_t cmpxchg8(volatile uint8_t* restrict ptr, const uint8_t oldval, const uint8_t newval) {
 #   ifdef ARCHX86
 	register uint8_t ret;
-	asm volatile ("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -814,7 +808,7 @@ LIB_FUNC NONNULL uint8_t cmpxchg8(volatile uint8_t* restrict ptr, const uint8_t 
 LIB_FUNC NONNULL uint16_t cmpxchg16(volatile uint16_t* restrict ptr, const uint16_t oldval, const uint16_t newval) {
 #   ifdef ARCHX86
 	register uint16_t ret;
-	asm volatile ("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -827,7 +821,7 @@ LIB_FUNC NONNULL uint16_t cmpxchg16(volatile uint16_t* restrict ptr, const uint1
 LIB_FUNC NONNULL uint32_t cmpxchg32(volatile uint32_t* restrict ptr, const uint32_t oldval, const uint32_t newval) {
 #   ifdef ARCHX86
 	register uint32_t ret;
-	asm volatile ("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -840,7 +834,7 @@ LIB_FUNC NONNULL uint32_t cmpxchg32(volatile uint32_t* restrict ptr, const uint3
 LIB_FUNC NONNULL uint64_t cmpxchg64(volatile uint64_t* restrict ptr, const uint64_t oldval, const uint64_t newval) {
 #   ifdef ARCHX86
 	register uint64_t ret;
-	asm volatile ("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "rin"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	do_sync();
@@ -865,7 +859,7 @@ LIB_FUNC NONNULL size_t __CAS(volatile size_t* restrict ptr, const size_t oldval
 
 LIB_FUNC NONNULL void* a_cas_p(volatile void* ptr, void* oldval, void* restrict newval) {
 #   ifdef ARCHX86
-	asm volatile ("lock cmpxchgl %2, %1;" : "=a"(oldval), "+m"(ptr) : "rin"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(oldval), "+m"(ptr) : "rin"(newval), "0"(oldval) : "memory");
 	return oldval;
 #   else
 	do_sync();
@@ -883,7 +877,7 @@ LIB_FUNC NONNULL void* a_cas_p(volatile void* ptr, void* oldval, void* restrict 
 LIB_FUNC NONNULL int xchg(volatile int* restrict ptr, const int newval) {
 #   ifdef ARCHX86
 	register int val = newval;
-	asm volatile ("lock xchgl %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
+	vasm("lock xchgl %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
 	return val;
 #   else
 	do_sync();
@@ -907,7 +901,7 @@ LIB_FUNC NONNULL int xchg(volatile int* restrict ptr, const int newval) {
 LIB_FUNC NONNULL uint8_t xchg8(volatile uint8_t* restrict ptr, const uint8_t newval) {
 #   ifdef ARCHX86
 	register uint8_t val = newval;
-	asm volatile ("lock xchgb %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
+	vasm("lock xchgb %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
 	return val;
 #   else
 	do_sync();
@@ -925,7 +919,7 @@ LIB_FUNC NONNULL uint8_t xchg8(volatile uint8_t* restrict ptr, const uint8_t new
 LIB_FUNC NONNULL uint16_t xchg16(volatile uint16_t* restrict ptr, const uint16_t newval) {
 #   ifdef ARCHX86
 	register uint16_t val = newval;
-	asm volatile ("lock xchgw %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
+	vasm("lock xchgw %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
 	return val;
 #   else
 	do_sync();
@@ -943,7 +937,7 @@ LIB_FUNC NONNULL uint16_t xchg16(volatile uint16_t* restrict ptr, const uint16_t
 LIB_FUNC NONNULL uint32_t xchg32(volatile uint32_t* restrict ptr, const uint32_t newval) {
 #   ifdef ARCHX86
 	register uint32_t val = newval;
-	asm volatile ("lock xchgl %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
+	vasm("lock xchgl %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
 	return val;
 #   else
 	do_sync();
@@ -961,7 +955,7 @@ LIB_FUNC NONNULL uint32_t xchg32(volatile uint32_t* restrict ptr, const uint32_t
 LIB_FUNC NONNULL uint64_t xchg64(volatile uint64_t* restrict ptr, const uint64_t newval) {
 #   ifdef ARCHX86
 	register uint64_t val = newval;
-	asm volatile ("lock xchgq %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
+	vasm("lock xchgq %0, %1;" : "=r"(val), "+m"(*ptr) : "0"(val) : "memory");
 	return val;
 #   else
 	do_sync();
@@ -979,7 +973,7 @@ LIB_FUNC NONNULL uint64_t xchg64(volatile uint64_t* restrict ptr, const uint64_t
 LIB_FUNC NONNULL int a_fetch_add(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	register int v = val;
-	asm volatile ("lock xaddl %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
+	vasm("lock xaddl %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
 	return v;
 #   else
 	do_sync();
@@ -1002,7 +996,7 @@ LIB_FUNC NONNULL size_t __atomic_add(volatile size_t* restrict p, const size_t v
 #   if SIZE_T_EQ_32BITS
 #      ifdef ARCHX86
 	register size_t v = val;
-	asm volatile ("lock xaddl %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
+	vasm("lock xaddl %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
 	return v;
 #      else
 	do_sync();
@@ -1015,7 +1009,7 @@ LIB_FUNC NONNULL size_t __atomic_add(volatile size_t* restrict p, const size_t v
 #   elif SIZE_T_EQ_64BITS
 #      ifdef ARCHX86
 	register size_t v = val;
-	asm volatile ("lock xaddq %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
+	vasm("lock xaddq %0, %1;" : "=r"(v), "+m"(*p) : "0"(v) : "memory");
 	return v;
 #      else
 	do_sync();
@@ -1044,7 +1038,7 @@ LIB_FUNC NONNULL int atomic_add_return(const int i, atomic_t* restrict val) {
 /** Atomic Addition */
 LIB_FUNC NONNULL void a_add(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	asm volatile ("lock addl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock addl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1069,7 +1063,7 @@ LIB_FUNC NONNULL int a_fetch_sub(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
 	const int old = *p;
-	asm volatile ("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return old;
 #   else
 	do_sync();
@@ -1090,7 +1084,7 @@ LIB_FUNC NONNULL size_t __atomic_sub(volatile size_t* restrict p, const size_t v
 #      ifdef ARCHX86
 	do_sync();
 	const size_t old = *p;
-	asm volatile ("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return old;
 #      else
 	do_sync();
@@ -1104,7 +1098,7 @@ LIB_FUNC NONNULL size_t __atomic_sub(volatile size_t* restrict p, const size_t v
 #      ifdef ARCHX86
 	do_sync();
 	const size_t old = *p;
-	asm volatile ("lock subq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock subq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return old;
 #      else
 	do_sync();
@@ -1133,7 +1127,7 @@ LIB_FUNC NONNULL int atomic_sub_return(const int i, atomic_t* restrict val) {
 /** Atomic Subtraction */
 LIB_FUNC NONNULL void a_sub(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	asm volatile ("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1177,7 +1171,7 @@ LIB_FUNC NONNULL int atomic_mod_return(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_and(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("lock andl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock andl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1197,7 +1191,7 @@ LIB_FUNC NONNULL int a_fetch_and(volatile int* restrict p, const int val) {
 /** Atomic AND */
 LIB_FUNC NONNULL void a_and(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	asm volatile ("lock andl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock andl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1210,7 +1204,7 @@ LIB_FUNC NONNULL void a_and(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_and_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	asm volatile ("lock andq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock andq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -1234,7 +1228,7 @@ LIB_FUNC NONNULL void atomic_andop(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_or(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("lock orl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock orl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1254,7 +1248,7 @@ LIB_FUNC NONNULL int a_fetch_or(volatile int* restrict p, const int val) {
 /** Atomic OR */
 LIB_FUNC NONNULL void a_or(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	asm volatile ("lock orl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock orl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1267,7 +1261,7 @@ LIB_FUNC NONNULL void a_or(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_or_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	asm volatile ("lock orq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock orq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -1300,7 +1294,7 @@ LIB_FUNC NONNULL void atomic_orop(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_xor(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	asm volatile ("lock xorl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock xorl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1320,7 +1314,7 @@ LIB_FUNC NONNULL int a_fetch_xor(volatile int* restrict p, const int val) {
 /** Atomic XOR */
 LIB_FUNC NONNULL void a_xor(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	asm volatile ("lock xorl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock xorl %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1333,7 +1327,7 @@ LIB_FUNC NONNULL void a_xor(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_xor_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	asm volatile ("lock xorq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
+	vasm("lock xorq %1, %0;" : "+m"(*p) : "rin"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -1356,7 +1350,7 @@ LIB_FUNC NONNULL void atomic_xorop(const int i, atomic_t* restrict val) {
 /** Atomic increment */
 LIB_FUNC NONNULL void a_inc(volatile int* restrict p) {
 #   ifdef ARCHX86
-	asm volatile ("lock incl %0;" : "+m"(*p) : : "memory");
+	vasm("lock incl %0;" : "+m"(*p) : : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1376,7 +1370,7 @@ LIB_FUNC NONNULL void a_inc(volatile int* restrict p) {
 /** Atomic decrement */
 LIB_FUNC NONNULL void a_dec(volatile int* restrict p) {
 #   ifdef ARCHX86
-	asm volatile ("lock decl %0;" : "+m"(*p) : : "memory");
+	vasm("lock decl %0;" : "+m"(*p) : : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1428,7 +1422,7 @@ LIB_FUNC NONNULL int a_min(volatile int* restrict ptr, const int val) {
 LIB_FUNC ATTR_CF int a_ctz_64(const uint64_t val) {
 #   ifdef ARCHX86
 	register uint64_t x = val;
-	asm volatile ("bsf %1, %0;" : "=r"(x) : "0"(x));
+	vasm("bsf %1, %0;" : "=r"(x) : "0"(x));
 	return (int)x;
 #   else
 	do_sync();
@@ -3208,52 +3202,52 @@ LIB_FUNC void herror(const char* s) {
 // ABORT_INSTRUCTION
 #ifdef ARCHX86  // x86
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("hlt;")
-#   define DebugBreak()   asm("int $3;")
+#   define ABORT_INSTRUCTION   vasm("hlt;")
+#   define DebugBreak()   asm ("int $3;")
 #elif defined(ARCHAARCH64)  // Aarch64
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("brk #1000;")
+#   define ABORT_INSTRUCTION   vasm("brk #1000;")
 #elif defined(ARCHPARISC)  // Parisc
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("iitlbp %r0, (%sr0, %r0);")
+#   define ABORT_INSTRUCTION   vasm("iitlbp %r0, (%sr0, %r0);")
 #elif defined(ARCHITANIUM)  // IA64
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("break 0;")
+#   define ABORT_INSTRUCTION   vasm("break 0;")
 #elif defined(ARCHM68K)  // M68K
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("illegal;")
+#   define ABORT_INSTRUCTION   vasm("illegal;")
 #elif defined(ARCHMICROBLAZE)  // Microblaze
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("brki r0, -1;")
+#   define ABORT_INSTRUCTION   vasm("brki r0, -1;")
 #elif defined(ARCHMIPS)  // MIPS
 #   ifdef ARCHMIPS16
 /** An instruction that should crash any program */
-#      define ABORT_INSTRUCTION   asm volatile ("break 63;")
+#      define ABORT_INSTRUCTION   vasm("break 63;")
 #   else
 /** An instruction that should crash any program */
-#      define ABORT_INSTRUCTION   asm volatile ("break 255;")
+#      define ABORT_INSTRUCTION   vasm("break 255;")
 #   endif
 #elif defined(ARCHNIOS2)  // NIOS2
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("trap 31;")
+#   define ABORT_INSTRUCTION   vasm("trap 31;")
 #elif defined(ARCHPOWERPC)  // PowerPC
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile (".long 0;")
+#   define ABORT_INSTRUCTION   vasm(".long 0;")
 #elif defined(ARCHS390)  // S390
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile (".word 0;")
+#   define ABORT_INSTRUCTION   vasm(".word 0;")
 #elif defined(ARCHSPARC)  // Sparc
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("unimp 0xf00;")
+#   define ABORT_INSTRUCTION   vasm("unimp 0xf00;")
 #elif defined(ARCHSUPERH)  // SuperH
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("sleep;")
+#   define ABORT_INSTRUCTION   vasm("sleep;")
 #elif defined(ARCHTILE)  // Tile
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   asm volatile ("ill;")
+#   define ABORT_INSTRUCTION   vasm("ill;")
 #else
 /** An instruction that should crash any program */
-#   define ABORT_INSTRUCTION   do { asm volatile (";"); } until_break
+#   define ABORT_INSTRUCTION   do { vasm(";"); } until_break
 #endif  // ABORT_INSTRUCTION
 #ifndef ABORT
 /** Privileged instruction to crash a userspace program; this directly calls assembly code */
@@ -3648,17 +3642,17 @@ LIB_FUNC void log_close(void) {
 
 /** Write a log message */
 LIB_FUNC ATTR_PRINTF(2, 0) void log_vwrite(const int pri, const char* restrict msg, va_list ap) {
-	FILE* f = log_file;
+	FILE* fp = log_file;
 	switch (log_type) {
 		case LOG_TYPE_TTY:
-			if (pri == LOG_INFO) { f = stdout; }
-			else { f = stderr; }
-			fflush(f);
+			if (pri == LOG_INFO) { fp = stdout; }
+			else { fp = stderr; }
+			fflush(fp);
 			break;
 		case LOG_TYPE_FILE:
-			if ((putc('\n', f) == -1) || (vfprintf(f, msg, ap) == -1)) { _Exit(1); }
+			if ((fputc('\n', fp) == -1) || (vfprintf(fp, msg, ap) == -1)) { _Exit(1); }
 		default:
-			fflush(f);
+			fflush(fp);
 			break;
 	}
 }
@@ -8037,28 +8031,28 @@ LIB_FUNC noreturn COLD void __assert_fail(const char* restrict expr, const char*
 
 LIB_FUNC long syscall0(const long n) {
 	register long ret;
-	asm volatile ("syscall;" : "=a"(ret) : "0"(n) : SYSCALL_CLOBBERS);
+	vasm("syscall;" : "=a"(ret) : "0"(n) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall1(const long n, const long a1) {
 	register long ret;
-	asm volatile ("syscall;" : "=a"(ret) : "0"(n), "D"(a1) : SYSCALL_CLOBBERS);
+	vasm("syscall;" : "=a"(ret) : "0"(n), "D"(a1) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall2(const long n, const long a1, const long a2) {
 	register long ret;
-	asm volatile ("syscall;" : "=a"(ret) : "0"(n), "D"(a1), "S"(a2) : SYSCALL_CLOBBERS);
+	vasm("syscall;" : "=a"(ret) : "0"(n), "D"(a1), "S"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall3(const long n, const long a1, const long a2, const long a3) {
 	register long ret;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=a"(ret)
 		: "0"(n), "D"(a1), "S"(a2), "d"(a3)
 		: SYSCALL_CLOBBERS
@@ -8070,7 +8064,7 @@ LIB_FUNC long syscall3(const long n, const long a1, const long a2, const long a3
 LIB_FUNC long syscall4(const long n, const long a1, const long a2, const long a3, const long a4) {
 	register long ret;
 	register const long r10 asm ("r10") = a4;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=a"(ret)
 		: "0"(n), "D"(a1), "S"(a2), "d"(a3), "r"(r10)
 		: SYSCALL_CLOBBERS
@@ -8083,7 +8077,7 @@ LIB_FUNC long syscall5(const long n, const long a1, const long a2, const long a3
 	register long ret;
 	register const long r10 asm ("r10") = a4;
 	register const long r8 asm ("r8") = a5;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=a"(ret)
 		: "0"(n), "D"(a1), "S"(a2), "d"(a3), "r"(r10), "r"(r8)
 		: SYSCALL_CLOBBERS
@@ -8097,7 +8091,7 @@ LIB_FUNC long syscall6(const long n, const long a1, const long a2, const long a3
 	register const long r10 asm ("r10") = a4;
 	register const long r8 asm ("r8") = a5;
 	register const long r9 asm ("r9") = a6;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=a"(ret)
 		: "0"(n), "D"(a1), "S"(a2), "d"(a3), "r"(r10), "r"(r8), "r"(r9)
 		: SYSCALL_CLOBBERS
@@ -8114,28 +8108,28 @@ LIB_FUNC long syscall6(const long n, const long a1, const long a2, const long a3
 
 LIB_FUNC long syscall0(const long n) {
 	register long ret;
-	asm volatile ("int $0x80;" : "=a"(ret) : "0"(n) : SYSCALL_CLOBBERS);
+	vasm("int $0x80;" : "=a"(ret) : "0"(n) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall1(const long n, const long a1) {
 	register long ret;
-	asm volatile ("int $0x80;" : "=a"(ret) : "0"(n), "b"(a1) : SYSCALL_CLOBBERS);
+	vasm("int $0x80;" : "=a"(ret) : "0"(n), "b"(a1) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall2(const long n, const long a1, const long a2) {
 	register long ret;
-	asm volatile ("int $0x80;" : "=a"(ret) : "0"(n), "b"(a1), "c"(a2) : SYSCALL_CLOBBERS);
+	vasm("int $0x80;" : "=a"(ret) : "0"(n), "b"(a1), "c"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
 
 LIB_FUNC long syscall3(const long n, const long a1, const long a2, const long a3) {
 	register long ret;
-	asm volatile ("int $0x80;"
+	vasm("int $0x80;"
 		: "=a"(ret)
 		: "0"(n), "b"(a1), "c"(a2), "d"(a3)
 		: SYSCALL_CLOBBERS
@@ -8146,7 +8140,7 @@ LIB_FUNC long syscall3(const long n, const long a1, const long a2, const long a3
 
 LIB_FUNC long syscall4(const long n, const long a1, const long a2, const long a3, const long a4) {
 	register long ret;
-	asm volatile ("int $0x80;"
+	vasm("int $0x80;"
 		: "=a"(ret)
 		: "0"(n), "b"(a1), "c"(a2), "d"(a3), "S"(a4)
 		: SYSCALL_CLOBBERS
@@ -8157,7 +8151,7 @@ LIB_FUNC long syscall4(const long n, const long a1, const long a2, const long a3
 
 LIB_FUNC long syscall5(const long n, const long a1, const long a2, const long a3, const long a4, const long a5) {
 	register long ret;
-	asm volatile ("int $0x80;"
+	vasm("int $0x80;"
 		: "=a"(ret)
 		: "0"(n), "b"(a1), "c"(a2), "d"(a3), "S"(a4), "D"(a5)
 		: SYSCALL_CLOBBERS
@@ -8169,7 +8163,7 @@ LIB_FUNC long syscall5(const long n, const long a1, const long a2, const long a3
 LIB_FUNC long syscall6(const long n, const long a1, const long a2, const long a3, const long a4, const long a5, const long a6) {
 	register long ret;  // %eax, %ebx, %ecx, %edx, %esi, %edi, %ebp
 	register long r5 asm ("r5") = a6;
-	asm volatile ("int $0x80;"
+	vasm("int $0x80;"
 		: "=a"(ret)
 		: "0"(n), "b"(a1), "c"(a2), "d"(a3), "S"(a4), "D"(a5), "r"(r5)
 		: SYSCALL_CLOBBERS
@@ -8187,7 +8181,7 @@ LIB_FUNC long syscall6(const long n, const long a1, const long a2, const long a3
 LIB_FUNC long syscall0(const long n) {
 	register const long x8 asm ("x8") = n;
 	register long x0 asm ("x0");
-	asm volatile ("svc #0;" : "=r"(x0) : "r"(x8) : SYSCALL_CLOBBERS);
+	vasm("svc #0;" : "=r"(x0) : "r"(x8) : SYSCALL_CLOBBERS);
 	syscall_errno(x0);
 }
 
@@ -8195,7 +8189,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long x8 asm ("x8") = n;
 	register long x0 asm ("x0") = a;
-	asm volatile ("svc #0;" : "=r"(x0) : "r"(x8), "0"(x0) : SYSCALL_CLOBBERS);
+	vasm("svc #0;" : "=r"(x0) : "r"(x8), "0"(x0) : SYSCALL_CLOBBERS);
 	syscall_errno(x0);
 }
 
@@ -8204,7 +8198,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long x8 asm ("x8") = n;
 	register long x0 asm ("x0") = a;
 	register const long x1 asm ("x1") = b;
-	asm volatile ("svc #0;" : "=r"(x0) : "r"(x8), "0"(x0), "r"(x1) : SYSCALL_CLOBBERS);
+	vasm("svc #0;" : "=r"(x0) : "r"(x8), "0"(x0), "r"(x1) : SYSCALL_CLOBBERS);
 	syscall_errno(x0);
 }
 
@@ -8214,7 +8208,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long x0 asm ("x0") = a;
 	register const long x1 asm ("x1") = b;
 	register const long x2 asm ("x2") = c;
-	asm volatile ("svc #0;"
+	vasm("svc #0;"
 		: "=r"(x0)
 		: "r"(x8), "0"(x0), "r"(x1), "r"(x2)
 		: SYSCALL_CLOBBERS
@@ -8229,7 +8223,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long x1 asm ("x1") = b;
 	register const long x2 asm ("x2") = c;
 	register const long x3 asm ("x3") = d;
-	asm volatile ("svc #0;"
+	vasm("svc #0;"
 		: "=r"(x0)
 		: "r"(x8), "0"(x0), "r"(x1), "r"(x2), "r"(x3)
 		: SYSCALL_CLOBBERS
@@ -8245,7 +8239,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long x2 asm ("x2") = c;
 	register const long x3 asm ("x3") = d;
 	register const long x4 asm ("x4") = e;
-	asm volatile ("svc #0;"
+	vasm("svc #0;"
 		: "=r"(x0)
 		: "r"(x8), "0"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x4)
 		: SYSCALL_CLOBBERS
@@ -8262,7 +8256,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long x3 asm ("x3") = d;
 	register const long x4 asm ("x4") = e;
 	register const long x5 asm ("x5") = f;
-	asm volatile ("svc #0;"
+	vasm("svc #0;"
 		: "=r"(x0)
 		: "r"(x8), "0"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x4), "r"(x5)
 		: SYSCALL_CLOBBERS
@@ -8280,7 +8274,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long r7 asm ("r7") = n;
 	register long r0 asm ("r0");
-	asm volatile ("swi 0;" : "=r"(r0) : "r"(r7) : SYSCALL_CLOBBERS);
+	vasm("swi 0;" : "=r"(r0) : "r"(r7) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8288,7 +8282,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long r7 asm ("r7") = n;
 	register long r0 asm ("r0") = a;
-	asm volatile ("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0) : SYSCALL_CLOBBERS);
+	vasm("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8297,7 +8291,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long r7 asm ("r7") = n;
 	register long r0 asm ("r0") = a;
 	register const long r1 asm ("r1") = b;
-	asm volatile ("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0), "r"(r1) : SYSCALL_CLOBBERS);
+	vasm("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0), "r"(r1) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8307,7 +8301,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long r0 asm ("r0") = a;
 	register const long r1 asm ("r1") = b;
 	register const long r2 asm ("r2") = c;
-	asm volatile ("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0), "r"(r1), "r"(r2) : SYSCALL_CLOBBERS);
+	vasm("swi 0;" : "=r"(r0) : "r"(r7), "0"(r0), "r"(r1), "r"(r2) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8318,7 +8312,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r1 asm ("r1") = b;
 	register const long r2 asm ("r2") = c;
 	register const long r3 asm ("r3") = d;
-	asm volatile ("swi 0;"
+	vasm("swi 0;"
 		: "=r"(r0)
 		: "r"(r7), "0"(r0), "r"(r1), "r"(r2), "r"(r3)
 		: SYSCALL_CLOBBERS
@@ -8334,7 +8328,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r2 asm ("r2") = c;
 	register const long r3 asm ("r3") = d;
 	register const long r4 asm ("r4") = e;
-	asm volatile ("swi 0;"
+	vasm("swi 0;"
 		: "=r"(r0)
 		: "r"(r7), "0"(r0), "r"(r1), "r"(r2), "r"(r3), "r"(r4)
 		: SYSCALL_CLOBBERS
@@ -8351,7 +8345,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r3 asm ("r3") = d;
 	register const long r4 asm ("r4") = e;
 	register const long r5 asm ("r5") = f;
-	asm volatile ("swi 0;"
+	vasm("swi 0;"
 		: "=r"(r0)
 		: "r"(r7), "0"(r0), "r"(r1), "r"(r2), "r"(r3), "r"(r4), "r"(r5)
 		: SYSCALL_CLOBBERS
@@ -8369,7 +8363,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 	register const long r4 asm ("r4") = e;
 	register const long r5 asm ("r5") = f;
 	register const long r6 asm ("r6") = g;
-	asm volatile ("swi 0;"
+	vasm("swi 0;"
 		: "=r"(r0)
 		: "r"(r7), "0"(r0), "r"(r1), "r"(r2), "r"(r3), "r"(r4), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
@@ -8386,14 +8380,14 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 
 
 LIB_FUNC long syscall0(const long n) {
-	asm volatile ("swi %1;" : "=r"(a1) : "rin"(n) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "rin"(n) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
 
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long a1 asm ("a1") = a;
-	asm volatile ("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
@@ -8401,7 +8395,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long a1 asm ("a1") = a;
 	register const long a2 asm ("a2") = b;
-	asm volatile ("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1), "r"(a2) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1), "r"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
@@ -8410,7 +8404,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long a1 asm ("a1") = a;
 	register const long a2 asm ("a2") = b;
 	register const long a3 asm ("a3") = c;
-	asm volatile ("swi %1;"
+	vasm("swi %1;"
 		: "=r"(a1)
 		: "rin"(n), "0"(a1), "r"(a2), "r"(a3)
 		: SYSCALL_CLOBBERS
@@ -8424,7 +8418,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long a2 asm ("a2") = b;
 	register const long a3 asm ("a3") = c;
 	register const long a4 asm ("a4") = d;
-	asm volatile ("swi %1;"
+	vasm("swi %1;"
 		: "=r"(a1)
 		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4)
 		: SYSCALL_CLOBBERS
@@ -8439,7 +8433,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long a3 asm ("a3") = c;
 	register const long a4 asm ("a4") = d;
 	register const long v1 asm ("v1") = e;
-	asm volatile ("swi %1;"
+	vasm("swi %1;"
 		: "=r"(a1)
 		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1)
 		: SYSCALL_CLOBBERS
@@ -8455,7 +8449,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long a4 asm ("a4") = d;
 	register const long v1 asm ("v1") = e;
 	register const long v2 asm ("v2") = f;
-	asm volatile ("swi %1;"
+	vasm("swi %1;"
 		: "=r"(a1)
 		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2)
 		: SYSCALL_CLOBBERS
@@ -8472,7 +8466,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 	register const long v1 asm ("v1") = e;
 	register const long v2 asm ("v2") = f;
 	register const long v3 asm ("v3") = g;
-	asm volatile ("swi %1;"
+	vasm("swi %1;"
 		: "=r"(a1)
 		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2), "r"(v3)
 		: SYSCALL_CLOBBERS
@@ -8492,7 +8486,7 @@ LIB_FUNC long syscall0(const long n) {
 	register const long v0 asm ("v0") = n;
 	register long a0 asm ("a0");
 	register long a3 asm ("a3");  // Error indicator
-	asm volatile ("callsys;" : "=r"(a0) : "r"(v0) : SYSCALL_CLOBBERS);
+	vasm("callsys;" : "=r"(a0) : "r"(v0) : SYSCALL_CLOBBERS);
 	syscall_errno2(a0, a3);
 }
 
@@ -8501,7 +8495,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register const long v0 asm ("v0") = n;
 	register long a0 asm ("a0") = a;
 	register long a3 asm ("a3");
-	asm volatile ("callsys;" : "=r"(a0) : "r"(v0), "0"(a0) : SYSCALL_CLOBBERS);
+	vasm("callsys;" : "=r"(a0) : "r"(v0), "0"(a0) : SYSCALL_CLOBBERS);
 	syscall_errno2(a0, a3);
 }
 
@@ -8511,7 +8505,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long a0 asm ("a0") = a;
 	register const long a1 asm ("a1") = b;
 	register long a3 asm ("a3");
-	asm volatile ("callsys;" : "=r"(a0) : "r"(v0), "0"(a0), "r"(a1) : SYSCALL_CLOBBERS);
+	vasm("callsys;" : "=r"(a0) : "r"(v0), "0"(a0), "r"(a1) : SYSCALL_CLOBBERS);
 	syscall_errno2(a0, a3);
 }
 
@@ -8522,7 +8516,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long a1 asm ("a1") = b;
 	register const long a2 asm ("a2") = c;
 	register long a3 asm ("a3");
-	asm volatile ("callsys;" : "=r"(a0) : "r"(v0), "0"(a0), "r"(a1), "r"(a2) : SYSCALL_CLOBBERS);
+	vasm("callsys;" : "=r"(a0) : "r"(v0), "0"(a0), "r"(a1), "r"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno2(a0, a3);
 }
 
@@ -8533,7 +8527,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long a1 asm ("a1") = b;
 	register const long a2 asm ("a2") = c;
 	register long a3 asm ("a3") = d;
-	asm volatile ("callsys;"
+	vasm("callsys;"
 		: "=r"(a0)
 		: "r"(v0), "0"(a0), "r"(a1), "r"(a2), "r"(a3)
 		: SYSCALL_CLOBBERS
@@ -8549,7 +8543,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long a2 asm ("a2") = c;
 	register long a3 asm ("a3") = d;
 	register const long a4 asm ("a4") = e;
-	asm volatile ("callsys;"
+	vasm("callsys;"
 		: "=r"(a0)
 		: "r"(v0), "0"(a0), "r"(a1), "r"(a2), "r"(a3), "r"(a4)
 		: SYSCALL_CLOBBERS
@@ -8566,7 +8560,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register long a3 asm ("a3") = d;
 	register const long a4 asm ("a4") = e;
 	register const long a5 asm ("a5") = f;
-	asm volatile ("callsys;"
+	vasm("callsys;"
 		: "=r"(a0)
 		: "r"(v0), "0"(a0), "r"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(a5)
 		: SYSCALL_CLOBBERS
@@ -8584,7 +8578,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long r8 asm ("r8") = n;
 	register long r0 asm ("r0");
-	asm volatile ("trap 0;" : "=r"(r0) : "r"(r8) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(r0) : "r"(r8) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8592,7 +8586,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long r8 asm ("r8") = n;
 	register long r0 asm ("r0") = a;
-	asm volatile ("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8601,7 +8595,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long r8 asm ("r8") = n;
 	register long r0 asm ("r0") = a;
 	register const long r1 asm ("r1") = b;
-	asm volatile ("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0), "r"(r1) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0), "r"(r1) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8611,7 +8605,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long r0 asm ("r0") = a;
 	register const long r1 asm ("r1") = b;
 	register const long r2 asm ("r2") = c;
-	asm volatile ("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0), "r"(r1), "r"(r2) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(r0) : "r"(r8), "0"(r0), "r"(r1), "r"(r2) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -8622,7 +8616,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r1 asm ("r1") = b;
 	register const long r2 asm ("r2") = c;
 	register const long r3 asm ("r3") = d;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(r0)
 		: "r"(r8), "0"(r0), "r"(r1), "r"(r2), "r"(r3)
 		: SYSCALL_CLOBBERS
@@ -8638,7 +8632,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r2 asm ("r2") = c;
 	register const long r3 asm ("r3") = d;
 	register const long r4 asm ("r4") = e;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(r0)
 		: "r"(r8), "0"(r0), "r"(r1), "r"(r2), "r"(r3), "r"(r4)
 		: SYSCALL_CLOBBERS
@@ -8655,7 +8649,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r3 asm ("r3") = d;
 	register const long r4 asm ("r4") = e;
 	register const long r5 asm ("r5") = f;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(r0)
 		: "r"(r8), "0"(r0), "r"(r1), "r"(r2), "r"(r3), "r"(r4), "r"(r5)
 		: SYSCALL_CLOBBERS
@@ -8673,7 +8667,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long qA asm ("qA") = n;
 	register long q0 asm ("q0");
-	asm volatile ("excpt 0;" : "=r"(q0) : "r"(qA) : SYSCALL_CLOBBERS);
+	vasm("excpt 0;" : "=r"(q0) : "r"(qA) : SYSCALL_CLOBBERS);
 	syscall_errno(q0);
 }
 
@@ -8681,7 +8675,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long qA asm ("qA") = n;
 	register long q0 asm ("q0") = a;
-	asm volatile ("excpt 0;" : "=r"(q0) : "r"(qA), "0"(q0) : SYSCALL_CLOBBERS);
+	vasm("excpt 0;" : "=r"(q0) : "r"(qA), "0"(q0) : SYSCALL_CLOBBERS);
 	syscall_errno(q0);
 }
 
@@ -8690,7 +8684,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long qA asm ("qA") = n;
 	register long q0 asm ("q0") = a;
 	register const long q1 asm ("q1") = b;
-	asm volatile ("excpt 0;"
+	vasm("excpt 0;"
 		: "=r"(q0) : "r"(qA), "0"(q0), "r"(q1)
 		: SYSCALL_CLOBBERS
 	);
@@ -8703,7 +8697,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long q0 asm ("q0") = a;
 	register const long q1 asm ("q1") = b;
 	register const long q2 asm ("q2") = c;
-	asm volatile ("excpt 0;"
+	vasm("excpt 0;"
 		: "=r"(q0) : "r"(qA), "0"(q0), "r"(q1), "r"(q2)
 		: SYSCALL_CLOBBERS
 	);
@@ -8717,7 +8711,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long q1 asm ("q1") = b;
 	register const long q2 asm ("q2") = c;
 	register const long q3 asm ("q3") = d;
-	asm volatile ("excpt 0;"
+	vasm("excpt 0;"
 		: "=r"(q0) : "r"(qA), "0"(q0), "r"(q1), "r"(q2), "r"(q3)
 		: SYSCALL_CLOBBERS
 	);
@@ -8732,7 +8726,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long q2 asm ("q2") = c;
 	register const long q3 asm ("q3") = d;
 	register const long q4 asm ("q4") = e;
-	asm volatile ("excpt 0;"
+	vasm("excpt 0;"
 		: "=r"(q0) : "r"(qA), "0"(q0), "r"(q1), "r"(q2), "r"(q3), "r"(q4)
 		: SYSCALL_CLOBBERS
 	);
@@ -8748,7 +8742,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long q3 asm ("q3") = d;
 	register const long q4 asm ("q4") = e;
 	register const long q5 asm ("q5") = f;
-	asm volatile ("excpt 0;"
+	vasm("excpt 0;"
 		: "=r"(q0) : "r"(qA), "0"(q0), "r"(q1), "r"(q2), "r"(q3), "r"(q4), "r"(q5)
 		: SYSCALL_CLOBBERS
 	);
@@ -8766,7 +8760,7 @@ LIB_FUNC long syscall0(const long n) {
 	register const long r15 asm ("r15") = n;
 	register long ret asm ("r8");
 	register long err asm ("r10");
-	asm volatile ("break 0x100000;" : "=r"(ret) : "r"(r15) : SYSCALL_CLOBBERS);
+	vasm("break 0x100000;" : "=r"(ret) : "r"(r15) : SYSCALL_CLOBBERS);
 	syscall_errno2(ret, err);
 }
 
@@ -8776,7 +8770,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register long ret asm ("r8");
 	register long err asm ("r10");
 	register const long out0 asm ("out0") = a;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0)
 		: SYSCALL_CLOBBERS
 	);
@@ -8790,7 +8784,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long err asm ("r10");
 	register const long out0 asm ("out0") = a;
 	register const long out1 asm ("out1") = b;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0), "r"(out1)
 		: SYSCALL_CLOBBERS
 	);
@@ -8805,7 +8799,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long out0 asm ("out0") = a;
 	register const long out1 asm ("out1") = b;
 	register const long out2 asm ("out2") = c;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0), "r"(out1), "r"(out2)
 		: SYSCALL_CLOBBERS
 	);
@@ -8821,7 +8815,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long out1 asm ("out1") = b;
 	register const long out2 asm ("out2") = c;
 	register const long out3 asm ("out3") = d;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0), "r"(out1), "r"(out2), "r"(out3)
 		: SYSCALL_CLOBBERS
 	);
@@ -8838,7 +8832,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long out2 asm ("out2") = c;
 	register const long out3 asm ("out3") = d;
 	register const long out4 asm ("out4") = e;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0), "r"(out1), "r"(out2), "r"(out3), "r"(out4)
 		: SYSCALL_CLOBBERS
 	);
@@ -8856,7 +8850,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long out3 asm ("out3") = d;
 	register const long out4 asm ("out4") = e;
 	register const long out5 asm ("out5") = f;
-	asm volatile ("break 0x100000;"
+	vasm("break 0x100000;"
 		: "=r"(ret) : "r"(r15), "r"(out0), "r"(out1), "r"(out2), "r"(out3), "r"(out4), "r"(out5)
 		: SYSCALL_CLOBBERS
 	);
@@ -8872,7 +8866,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 
 LIB_FUNC long syscall0(const long n) {
 	register long d0 asm ("d0") = n;
-	asm volatile ("trap 0;" : "=r"(d0) : "0"(d0) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(d0) : "0"(d0) : SYSCALL_CLOBBERS);
 	syscall_errno(d0);
 }
 
@@ -8880,7 +8874,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long d0 asm ("d0") = n;
 	register const long d1 asm ("d1") = a;
-	asm volatile ("trap 0;" : "=r"(d0) : "0"(d0), "r"(d1) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(d0) : "0"(d0), "r"(d1) : SYSCALL_CLOBBERS);
 	syscall_errno(d0);
 }
 
@@ -8889,7 +8883,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long d0 asm ("d0") = n;
 	register const long d1 asm ("d1") = a;
 	register const long d2 asm ("d2") = b;
-	asm volatile ("trap 0;" : "=r"(d0) : "0"(d0), "r"(d1), "r"(d2) : SYSCALL_CLOBBERS);
+	vasm("trap 0;" : "=r"(d0) : "0"(d0), "r"(d1), "r"(d2) : SYSCALL_CLOBBERS);
 	syscall_errno(d0);
 }
 
@@ -8899,7 +8893,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long d1 asm ("d1") = a;
 	register const long d2 asm ("d2") = b;
 	register const long d3 asm ("d3") = c;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(d0)
 		: "0"(d0), "r"(d1), "r"(d2), "r"(d3)
 		: SYSCALL_CLOBBERS
@@ -8914,7 +8908,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long d2 asm ("d2") = b;
 	register const long d3 asm ("d3") = c;
 	register const long d4 asm ("d4") = d;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(d0)
 		: "0"(d0), "r"(d1), "r"(d2), "r"(d3), "r"(d4)
 		: SYSCALL_CLOBBERS
@@ -8930,7 +8924,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long d3 asm ("d3") = c;
 	register const long d4 asm ("d4") = d;
 	register const long d5 asm ("d5") = e;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(d0)
 		: "0"(d0), "r"(d1), "r"(d2), "r"(d3), "r"(d4), "r"(d5)
 		: SYSCALL_CLOBBERS
@@ -8947,7 +8941,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long d4 asm ("d4") = d;
 	register const long d5 asm ("d5") = e;
 	register const long d6 asm ("d6") = f;
-	asm volatile ("trap 0;"
+	vasm("trap 0;"
 		: "=r"(d0)
 		: "0"(d0), "r"(d1), "r"(d2), "r"(d3), "r"(d4), "r"(d5), "r"(d6)
 		: SYSCALL_CLOBBERS
@@ -8965,7 +8959,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register long __res asm ("D0Re0");
 	register const long __call asm ("D1Re0") = n;
-	asm volatile ("SWITCH  #0x440001;" S: "=d"(__res) : "d"(__call) : SYSCALL_CLOBBERS);
+	vasm("SWITCH  #0x440001;" S: "=d"(__res) : "d"(__call) : SYSCALL_CLOBBERS);
 	syscall_errno(__res);
 }
 
@@ -8974,7 +8968,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register long __res asm ("D0Re0");
 	register const long __call asm ("D1Re0") = n;
 	register const long __a asm ("D1Ar1") = a;
-	asm volatile ("SWITCH  #0x440001;" : "=d"(__res) : "d"(__call), "d"(__a) : SYSCALL_CLOBBERS);
+	vasm("SWITCH  #0x440001;" : "=d"(__res) : "d"(__call), "d"(__a) : SYSCALL_CLOBBERS);
 	syscall_errno(__res);
 }
 
@@ -8984,7 +8978,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long __call asm ("D1Re0") = n;
 	register const long __a asm ("D1Ar1") = a;
 	register const long __b asm ("D0Ar2") = b;
-	asm volatile ("SWITCH  #0x440001;"
+	vasm("SWITCH  #0x440001;"
 		: "=d"(__res)
 		: "d"(__call), "d"(__a), "d"(__b)
 		: SYSCALL_CLOBBERS
@@ -8999,7 +8993,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long __a asm ("D1Ar1") = a;
 	register const long __b asm ("D0Ar2") = b;
 	register const long __c asm ("D1Ar3") = c;
-	asm volatile ("SWITCH  #0x440001;"
+	vasm("SWITCH  #0x440001;"
 		: "=d"(__res)
 		: "d"(__call), "d"(__a), "d"(__b), "d"(__c)
 		: SYSCALL_CLOBBERS
@@ -9015,7 +9009,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long __b asm ("D0Ar2") = b;
 	register const long __c asm ("D1Ar3") = c;
 	register const long __d asm ("D0Ar4") = d;
-	asm volatile ("SWITCH  #0x440001;"
+	vasm("SWITCH  #0x440001;"
 		: "=d"(__res)
 		: "d"(__call), "d"(__a), "d"(__b), "d"(__c), "d"(__d)
 		: SYSCALL_CLOBBERS
@@ -9032,7 +9026,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long __c asm ("D1Ar3") = c;
 	register const long __d asm ("D0Ar4") = d;
 	register const long __e asm ("D1Ar5") = e;
-	asm volatile ("SWITCH  #0x440001;"
+	vasm("SWITCH  #0x440001;"
 		: "=d"(__res)
 		: "d"(__call), "d"(__a), "d"(__b), "d"(__c), "d"(__d), "d"(__e)
 		: SYSCALL_CLOBBERS
@@ -9050,7 +9044,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long __d asm ("D0Ar4") = d;
 	register const long __e asm ("D1Ar5") = e;
 	register const long __f asm ("D0Ar6") = f;
-	asm volatile ("SWITCH  #0x440001;"
+	vasm("SWITCH  #0x440001;"
 		: "=d"(__res)
 		: "d"(__call), "d"(__a), "d"(__b), "d"(__c), "d"(__d), "d"(__e), "d"(__f)
 		: SYSCALL_CLOBBERS
@@ -9068,7 +9062,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long r12 asm ("r12") = n;
 	register long ret asm ("r3");
-	asm volatile ("brki r14,8;" : "=r"(ret) : "r"(r12) : SYSCALL_CLOBBERS);
+	vasm("brki r14,8;" : "=r"(ret) : "r"(r12) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
@@ -9077,7 +9071,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register const long r12 asm ("r12") = n;
 	register long ret asm ("r3");
 	register const long r5 asm ("r5") = a;
-	asm volatile ("brki r14,8;" : "=r"(ret) : "r"(r12), "r"(r5) : SYSCALL_CLOBBERS);
+	vasm("brki r14,8;" : "=r"(ret) : "r"(r12), "r"(r5) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
@@ -9087,7 +9081,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long ret asm ("r3");
 	register const long r5 asm ("r5") = a;
 	register const long r6 asm ("r6") = b;
-	asm volatile ("brki r14,8;"
+	vasm("brki r14,8;"
 		: "=r"(ret) : "r"(r12), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
 	);
@@ -9101,7 +9095,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long r5 asm ("r5") = a;
 	register const long r6 asm ("r6") = b;
 	register const long r7 asm ("r7") = c;
-	asm volatile ("brki r14,8;"
+	vasm("brki r14,8;"
 		: "=r"(ret) : "r"(r12), "r"(r5), "r"(r6), "r"(r7)
 		: SYSCALL_CLOBBERS
 	);
@@ -9116,7 +9110,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r6 asm ("r6") = b;
 	register const long r7 asm ("r7") = c;
 	register const long r8 asm ("r8") = d;
-	asm volatile ("brki r14,8;"
+	vasm("brki r14,8;"
 		: "=r"(ret) : "r"(r12), "r"(r5), "r"(r6), "r"(r7), "r"(r8)
 		: SYSCALL_CLOBBERS
 	);
@@ -9132,7 +9126,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r7 asm ("r7") = c;
 	register const long r8 asm ("r8") = d;
 	register const long r9 asm ("r9") = e;
-	asm volatile ("brki r14,8;"
+	vasm("brki r14,8;"
 		: "=r"(ret) : "r"(r12), "r"(r5), "r"(r6), "r"(r7), "r"(r8), "r"(r9)
 		: SYSCALL_CLOBBERS
 	);
@@ -9149,7 +9143,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r8 asm ("r8") = d;
 	register const long r9 asm ("r9") = e;
 	register const long r10 asm ("r10") = f;
-	asm volatile ("brki r14,8;"
+	vasm("brki r14,8;"
 		: "=r"(ret) : "r"(r12), "r"(r5), "r"(r6), "r"(r7), "r"(r8), "r"(r9), "r"(r10)
 		: SYSCALL_CLOBBERS
 	);
@@ -9165,7 +9159,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 
 LIB_FUNC long syscall0(const long n) {
 	register long ret asm ("r2") = n;
-	asm volatile ("trap;" : "=r"(ret) : "0"(ret) : SYSCALL_CLOBBERS);
+	vasm("trap;" : "=r"(ret) : "0"(ret) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
@@ -9173,7 +9167,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long ret asm ("r2") = n;
 	register const long r4 asm ("r4") = a;
-	asm volatile ("trap;" : "=r"(ret) : "0"(ret), "r"(r4) : SYSCALL_CLOBBERS);
+	vasm("trap;" : "=r"(ret) : "0"(ret), "r"(r4) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
@@ -9182,7 +9176,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long ret asm ("r2") = n;
 	register const long r4 asm ("r4") = a;
 	register const long r5 asm ("r5") = b;
-	asm volatile ("trap;" : "=r"(ret) : "0"(ret), "r"(r4), "r"(r5) : SYSCALL_CLOBBERS);
+	vasm("trap;" : "=r"(ret) : "0"(ret), "r"(r4), "r"(r5) : SYSCALL_CLOBBERS);
 	syscall_errno(ret);
 }
 
@@ -9192,7 +9186,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long r4 asm ("r4") = a;
 	register const long r5 asm ("r5") = b;
 	register const long r6 asm ("r6") = c;
-	asm volatile ("trap;"
+	vasm("trap;"
 		: "=r"(ret)
 		: "0"(ret), "r"(r4), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
@@ -9207,7 +9201,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r5 asm ("r5") = b;
 	register const long r6 asm ("r6") = c;
 	register long r7 asm ("r7") = d;  // Clobbered with syscall error number
-	asm volatile ("trap;"
+	vasm("trap;"
 		: "=r"(ret)
 		: "0"(ret), "r"(r4), "r"(r5), "r"(r6), "r"(r7)
 		: SYSCALL_CLOBBERS
@@ -9223,7 +9217,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r6 asm ("r6") = c;
 	register long r7 asm ("r7") = d;
 	register const long r8 asm ("r8") = e;
-	asm volatile ("trap;"
+	vasm("trap;"
 		: "=r"(ret)
 		: "0"(ret), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "r"(r8)
 		: SYSCALL_CLOBBERS
@@ -9240,7 +9234,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register long r7 asm ("r7") = d;
 	register const long r8 asm ("r8") = e;
 	register const long r9 asm ("r9") = f;
-	asm volatile ("trap;"
+	vasm("trap;"
 		: "=r"(ret)
 		: "0"(ret), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "r"(r8), "r"(r9)
 		: SYSCALL_CLOBBERS
@@ -9266,7 +9260,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 
 LIB_FUNC long syscall0(const long n) {
 	register unsigned long ret asm ("r28");
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n)
 		: SYSCALL_CLOBBERS
@@ -9278,7 +9272,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register unsigned long ret asm ("r28");
 	register unsigned long r26 asm ("r26") = (unsigned long)a;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26)
 		: "%r26", SYSCALL_CLOBBERS
@@ -9291,7 +9285,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register unsigned long ret asm ("r28");
 	register unsigned long r26 asm ("r26") = (unsigned long)a;
 	register unsigned long r25 asm ("r25") = (unsigned long)b;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26), "r"(r25)
 		: "%r26", "%r25", SYSCALL_CLOBBERS
@@ -9305,7 +9299,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register unsigned long r26 asm ("r26") = (unsigned long)a;
 	register unsigned long r25 asm ("r25") = (unsigned long)b;
 	register unsigned long r24 asm ("r24") = (unsigned long)c;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26), "r"(r25), "r"(r24)
 		: "%r26", "%r25", "%r24", SYSCALL_CLOBBERS
@@ -9320,7 +9314,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register unsigned long r25 asm ("r25") = (unsigned long)b;
 	register unsigned long r24 asm ("r24") = (unsigned long)c;
 	register unsigned long r23 asm ("r23") = (unsigned long)d;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23)
 		: "%r26", "%r25", "%r24", "%r23", SYSCALL_CLOBBERS
@@ -9336,7 +9330,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register unsigned long r24 asm ("r24") = (unsigned long)c;
 	register unsigned long r23 asm ("r23") = (unsigned long)d;
 	register unsigned long r22 asm ("r22") = (unsigned long)e;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22)
 		: "%r26", "%r25", "%r24", "%r23", "%r22", SYSCALL_CLOBBERS
@@ -9353,7 +9347,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register unsigned long r23 asm ("r23") = (unsigned long)d;
 	register unsigned long r22 asm ("r22") = (unsigned long)e;
 	register unsigned long r21 asm ("r21") = (unsigned long)f;
-	asm volatile (K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
+	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
 		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22), "r"(r21)
 		: "%r26", "%r25", "%r24", "%r23", "%r22", "%r21", SYSCALL_CLOBBERS
@@ -9371,7 +9365,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register long r0 asm ("r0") = n;
 	register long ret asm ("r3");
-	asm volatile ("sc;" : "=r"(ret) : "r"(r0) : SYSCALL_CLOBBERS);
+	vasm("sc;" : "=r"(ret) : "r"(r0) : SYSCALL_CLOBBERS);
 	syscall_errno2(ret, r0);
 }
 
@@ -9379,7 +9373,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long r0 asm ("r0") = n;
 	register long r3 asm ("r3") = a;
-	asm volatile ("sc;" : "=r"(r3) : "r"(r0), "0"(r3) : SYSCALL_CLOBBERS);
+	vasm("sc;" : "=r"(r3) : "r"(r0), "0"(r3) : SYSCALL_CLOBBERS);
 	syscall_errno2(r3, r0);
 }
 
@@ -9388,7 +9382,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long r0 asm ("r0") = n;
 	register long r3 asm ("r3") = a;
 	register const long r4 asm ("r4") = b;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4)
 		: SYSCALL_CLOBBERS
 	);
@@ -9401,7 +9395,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long r3 asm ("r3") = a;
 	register const long r4 asm ("r4") = b;
 	register const long r5 asm ("r5") = c;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4), "r"(r5)
 		: SYSCALL_CLOBBERS
 	);
@@ -9415,7 +9409,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r4 asm ("r4") = b;
 	register const long r5 asm ("r5") = c;
 	register const long r6 asm ("r6") = d;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
 	);
@@ -9430,7 +9424,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r5 asm ("r5") = c;
 	register const long r6 asm ("r6") = d;
 	register const long r7 asm ("r7") = e;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7)
 		: SYSCALL_CLOBBERS
 	);
@@ -9446,7 +9440,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r6 asm ("r6") = d;
 	register const long r7 asm ("r7") = e;
 	register const long r8 asm ("r8") = f;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "r"(r8)
 		: SYSCALL_CLOBBERS
 	);
@@ -9463,7 +9457,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 	register const long r7 asm ("r7") = e;
 	register const long r8 asm ("r8") = f;
 	register const long r9 asm ("r9") = g;
-	asm volatile ("sc;"
+	vasm("sc;"
 		: "=r"(r3) : "r"(r0), "0"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "r"(r8), "r"(r9)
 		: SYSCALL_CLOBBERS
 	);
@@ -9481,7 +9475,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long r1 asm ("r1") = n;
 	register long r2 asm ("r2");
-	asm volatile ("svc 0;" : "=r"(r2) : "r"(r1) : SYSCALL_CLOBBERS);
+	vasm("svc 0;" : "=r"(r2) : "r"(r1) : SYSCALL_CLOBBERS);
 	syscall_errno(r2);
 }
 
@@ -9489,7 +9483,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long r1 asm ("r1") = n;
 	register long r2 asm ("r2") = a;
-	asm volatile ("svc 0;" : "=r"(r2) : "r"(r1), "0"(r2) : SYSCALL_CLOBBERS);
+	vasm("svc 0;" : "=r"(r2) : "r"(r1), "0"(r2) : SYSCALL_CLOBBERS);
 	syscall_errno(r2);
 }
 
@@ -9498,7 +9492,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long r1 asm ("r1") = n;
 	register long r2 asm ("r2") = a;
 	register const long r3 asm ("r3") = b;
-	asm volatile ("svc 0;" : "=r"(r2) : "r"(r1), "0"(r2), "r"(r3) : SYSCALL_CLOBBERS);
+	vasm("svc 0;" : "=r"(r2) : "r"(r1), "0"(r2), "r"(r3) : SYSCALL_CLOBBERS);
 	syscall_errno(r2);
 }
 
@@ -9508,7 +9502,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long r2 asm ("r2") = a;
 	register const long r3 asm ("r3") = b;
 	register const long r4 asm ("r4") = c;
-	asm volatile ("svc 0;"
+	vasm("svc 0;"
 		: "=r"(r2) : "r"(r1), "0"(r2), "r"(r3), "r"(r4)
 		: SYSCALL_CLOBBERS
 	);
@@ -9522,7 +9516,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r3 asm ("r3") = b;
 	register const long r4 asm ("r4") = c;
 	register const long r5 asm ("r5") = d;
-	asm volatile ("svc 0;"
+	vasm("svc 0;"
 		: "=r"(r2) : "r"(r1), "0"(r2), "r"(r3), "r"(r4), "r"(r5)
 		: SYSCALL_CLOBBERS
 	);
@@ -9537,7 +9531,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r4 asm ("r4") = c;
 	register const long r5 asm ("r5") = d;
 	register const long r6 asm ("r6") = e;
-	asm volatile ("svc 0;"
+	vasm("svc 0;"
 		: "=r"(r2) : "r"(r1), "0"(r2), "r"(r3), "r"(r4), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
 	);
@@ -9553,7 +9547,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r5 asm ("r5") = d;
 	register const long r6 asm ("r6") = e;
 	register const long r7 asm ("r7") = f;
-	asm volatile ("svc 0;"
+	vasm("svc 0;"
 		: "=r"(r2) : "r"(r1), "0"(r2), "r"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7)
 		: SYSCALL_CLOBBERS
 	);
@@ -9575,7 +9569,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long G1 asm ("g1") = n;
 	register long O0 asm ("o0");
-	asm volatile (SPARC_SYSCALL : "=r"(O0) : "r"(G1) : SYSCALL_CLOBBERS);
+	vasm(SPARC_SYSCALL : "=r"(O0) : "r"(G1) : SYSCALL_CLOBBERS);
 	syscall_errno(O0);
 }
 
@@ -9583,7 +9577,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register const long G1 asm ("g1") = n;
 	register long O0 asm ("o0") = a;
-	asm volatile (SPARC_SYSCALL : "=r"(O0) : "r"(G1), "0"(O0) : SYSCALL_CLOBBERS);
+	vasm(SPARC_SYSCALL : "=r"(O0) : "r"(G1), "0"(O0) : SYSCALL_CLOBBERS);
 	syscall_errno(O0);
 }
 
@@ -9592,7 +9586,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long G1 asm ("g1") = n;
 	register long O0 asm ("o0") = a;
 	register const long O1 asm ("o1") = b;
-	asm volatile (SPARC_SYSCALL
+	vasm(SPARC_SYSCALL
 		: "=r"(O0) : "r"(G1), "0"(O0), "r"(O1)
 		: SYSCALL_CLOBBERS
 	);
@@ -9605,7 +9599,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register long O0 asm ("o0") = a;
 	register const long O1 asm ("o1") = b;
 	register const long O2 asm ("o2") = c;
-	asm volatile (SPARC_SYSCALL
+	vasm(SPARC_SYSCALL
 		: "=r"(O0) : "r"(G1), "0"(O0), "r"(O1), "r"(O2)
 		: SYSCALL_CLOBBERS
 	);
@@ -9619,7 +9613,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long O1 asm ("o1") = b;
 	register const long O2 asm ("o2") = c;
 	register const long O3 asm ("o3") = d;
-	asm volatile (SPARC_SYSCALL
+	vasm(SPARC_SYSCALL
 		: "=r"(O0) : "r"(G1), "0"(O0), "r"(O1), "r"(O2), "r"(O3)
 		: SYSCALL_CLOBBERS
 	);
@@ -9634,7 +9628,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long O2 asm ("o2") = c;
 	register const long O3 asm ("o3") = d;
 	register const long O4 asm ("o4") = e;
-	asm volatile (SPARC_SYSCALL
+	vasm(SPARC_SYSCALL
 		: "=r"(O0) : "r"(G1), "0"(O0), "r"(O1), "r"(O2), "r"(O3), "r"(O4)
 		: SYSCALL_CLOBBERS
 	);
@@ -9650,7 +9644,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long O3 asm ("o3") = d;
 	register const long O4 asm ("o4") = e;
 	register const long O5 asm ("o5") = f;
-	asm volatile (SPARC_SYSCALL
+	vasm(SPARC_SYSCALL
 		: "=r"(O0) : "r"(G1), "0"(O0), "r"(O1), "r"(O2), "r"(O3), "r"(O4), "r"(O5)
 		: SYSCALL_CLOBBERS
 	);
@@ -9667,7 +9661,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register const long r3 asm ("r3") = n;
 	register long r0 asm ("r0");
-	asm volatile ("trap #0x11;" : "=r"(r0) : "r"(r3) : SYSCALL_CLOBBERS);
+	vasm("trap #0x11;" : "=r"(r0) : "r"(r3) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -9676,7 +9670,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register const long r3 asm ("r3") = n;
 	register const long r4 asm ("r4") = a;
 	register long r0 asm ("r0");
-	asm volatile ("trap #0x11;" : "=r"(r0) : "r"(r3), "r"(r4) : SYSCALL_CLOBBERS);
+	vasm("trap #0x11;" : "=r"(r0) : "r"(r3), "r"(r4) : SYSCALL_CLOBBERS);
 	syscall_errno(r0);
 }
 
@@ -9686,7 +9680,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register const long r4 asm ("r4") = a;
 	register const long r5 asm ("r5") = b;
 	register long r0 asm ("r0");
-	asm volatile ("trap #0x12;"
+	vasm("trap #0x12;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5)
 		: SYSCALL_CLOBBERS
 	);
@@ -9700,7 +9694,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long r5 asm ("r5") = b;
 	register const long r6 asm ("r6") = c;
 	register long r0 asm ("r0");
-	asm volatile ("trap #0x13;"
+	vasm("trap #0x13;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5), "r"(r6)
 		: SYSCALL_CLOBBERS
 	);
@@ -9715,7 +9709,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long r6 asm ("r6") = c;
 	register const long r7 asm ("r7") = d;
 	register long r0 asm ("r0");
-	asm volatile ("trap #0x14;"
+	vasm("trap #0x14;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7)
 		: SYSCALL_CLOBBERS
 	);
@@ -9730,7 +9724,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long r6 asm ("r6") = c;
 	register const long r7 asm ("r7") = d;
 	register long r0 asm ("r0") = e;
-	asm volatile ("trap #0x15;"
+	vasm("trap #0x15;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "0"(r0)
 		: SYSCALL_CLOBBERS
 	);
@@ -9746,7 +9740,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long r7 asm ("r7") = d;
 	register long r0 asm ("r0") = e;
 	register const long r1 asm ("r1") = f;
-	asm volatile ("trap #0x16;"
+	vasm("trap #0x16;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "0"(r0), "r"(r1)
 		: SYSCALL_CLOBBERS
 	);
@@ -9763,7 +9757,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 	register long r0 asm ("r0") = e;
 	register const long r1 asm ("r1") = f;
 	register const long r2 asm ("r2") = g;
-	asm volatile ("trap #0x17;"
+	vasm("trap #0x17;"
 		: "=r"(r0) : "r"(r3), "r"(r4), "r"(r5), "r"(r6), "r"(r7), "0"(r0), "r"(r1), "r"(r2)
 		: SYSCALL_CLOBBERS
 	);
@@ -9780,7 +9774,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 
 LIB_FUNC long syscall0(const long n) {
 	register long a2 asm ("a2") = n;
-	asm volatile ("syscall;" : "=r"(a2) : "0"(a2) : SYSCALL_CLOBBERS);
+	vasm("syscall;" : "=r"(a2) : "0"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno(a2);
 }
 
@@ -9788,7 +9782,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long a2 asm ("a2") = n;
 	register const long a6 asm ("a6") = a;
-	asm volatile ("syscall;" : "=r"(a2) : "0"(a2), "r"(a6) : SYSCALL_CLOBBERS);
+	vasm("syscall;" : "=r"(a2) : "0"(a2), "r"(a6) : SYSCALL_CLOBBERS);
 	syscall_errno(a2);
 }
 
@@ -9797,7 +9791,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long a2 asm ("a2") = n;
 	register const long a6 asm ("a6") = a;
 	register const long a3 asm ("a3") = b;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=r"(a2) : "0"(a2), "r"(a6), "r"(a3)
 		: SYSCALL_CLOBBERS
 	);
@@ -9810,7 +9804,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long a6 asm ("a6") = a;
 	register const long a3 asm ("a3") = b;
 	register const long a4 asm ("a4") = c;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=r"(a2) : "0"(a2), "r"(a6), "r"(a3), "r"(a4)
 		: SYSCALL_CLOBBERS
 	);
@@ -9824,7 +9818,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long a3 asm ("a3") = b;
 	register const long a4 asm ("a4") = c;
 	register const long a5 asm ("a5") = d;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=r"(a2) : "0"(a2), "r"(a6), "r"(a3), "r"(a4), "r"(a5)
 		: SYSCALL_CLOBBERS
 	);
@@ -9839,7 +9833,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long a4 asm ("a4") = c;
 	register const long a5 asm ("a5") = d;
 	register const long a8 asm ("a8") = e;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=r"(a2) : "0"(a2), "r"(a6), "r"(a3), "r"(a4), "r"(a5), "r"(a8)
 		: SYSCALL_CLOBBERS
 	);
@@ -9855,7 +9849,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long a5 asm ("a5") = d;
 	register const long a8 asm ("a8") = e;
 	register const long a9 asm ("a9") = f;
-	asm volatile ("syscall;"
+	vasm("syscall;"
 		: "=r"(a2) : "0"(a2), "r"(a6), "r"(a3), "r"(a4), "r"(a5), "r"(a8), "r"(a9)
 		: SYSCALL_CLOBBERS
 	);
@@ -9872,7 +9866,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 LIB_FUNC long syscall0(const long n) {
 	register long ret;
 	register const long numargs = 0;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
+	vasm("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
 	return ret;
 }
 
@@ -9880,7 +9874,7 @@ LIB_FUNC long syscall0(const long n) {
 LIB_FUNC long syscall1(const long n, const UNUSED long a) {
 	register long ret;
 	register const long numargs = 1;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
+	vasm("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
 	return ret;
 }
 
@@ -9888,7 +9882,7 @@ LIB_FUNC long syscall1(const long n, const UNUSED long a) {
 LIB_FUNC long syscall2(const long n, const UNUSED long a, const UNUSED long b) {
 	register long ret;
 	register const long numargs = 2;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
+	vasm("lea 4(%%esp), %%edx;" "int $99;" : "=a"(ret) : "0"(n), "c"(numargs) : SYSCALL_CLOBBERS);
 	return ret;
 }
 
@@ -9896,7 +9890,7 @@ LIB_FUNC long syscall2(const long n, const UNUSED long a, const UNUSED long b) {
 LIB_FUNC long syscall3(const long n, const UNUSED long a, const UNUSED long b, const UNUSED long c) {
 	register long ret;
 	register const long numargs = 3;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;"
+	vasm("lea 4(%%esp), %%edx;" "int $99;"
 		: "=a"(ret)
 		: "0"(n), "c"(numargs)
 		: SYSCALL_CLOBBERS
@@ -9908,7 +9902,7 @@ LIB_FUNC long syscall3(const long n, const UNUSED long a, const UNUSED long b, c
 LIB_FUNC long syscall4(const long n, const UNUSED long a, const UNUSED long b, const UNUSED long c, const UNUSED long d) {
 	register long ret;
 	register const long numargs = 4;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;"
+	vasm("lea 4(%%esp), %%edx;" "int $99;"
 		: "=a"(ret)
 		: "0"(n), "c"(numargs)
 		: SYSCALL_CLOBBERS
@@ -9920,7 +9914,7 @@ LIB_FUNC long syscall4(const long n, const UNUSED long a, const UNUSED long b, c
 LIB_FUNC long syscall5(const long n, const UNUSED long a, const UNUSED long b, const UNUSED long c, const UNUSED long d, const UNUSED long e) {
 	register long ret;
 	register const long numargs = 5;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;"
+	vasm("lea 4(%%esp), %%edx;" "int $99;"
 		: "=a"(ret)
 		: "0"(n), "c"(numargs)
 		: SYSCALL_CLOBBERS
@@ -9932,7 +9926,7 @@ LIB_FUNC long syscall5(const long n, const UNUSED long a, const UNUSED long b, c
 LIB_FUNC long syscall6(const long n, const UNUSED long a, const UNUSED long b, const UNUSED long c, const UNUSED long d, const UNUSED long e, const UNUSED long f) {
 	register long ret;
 	register const long numargs = 6;
-	asm volatile ("lea 4(%%esp), %%edx;" "int $99;"
+	vasm("lea 4(%%esp), %%edx;" "int $99;"
 		: "=a"(ret)
 		: "0"(n), "c"(numargs)
 		: SYSCALL_CLOBBERS
@@ -10013,8 +10007,8 @@ LIB_FUNC REGPARM(1) ssize_t __write1(const char* restrict s) {
 
 
 /** Write a string of the specified length to STDOUT */
-LIB_FUNC REGPARM(1) ssize_t __write_stdout(const char* restrict s, const size_t len) {
-	return (ssize_t)syscall3(SYS_write, STDOUT_FILENO, (long)s, (long)len);
+LIB_FUNC REGPARM(1) ssize_t __write_stdout(const char* restrict str, const size_t len) {
+	return (ssize_t)syscall3(SYS_write, STDOUT_FILENO, (long)str, (long)len);
 }
 
 
@@ -10554,11 +10548,11 @@ LIB_FUNC int fanotify_mark(const int fanotify_fd, const unsigned int flags, cons
 
 /** Structure describing an inotify event */
 typedef struct inotify_event {
-	int wd;  // Watch descriptor
-	uint32_t mask;  // Watch mask
-	uint32_t cookie;  // Cookie to synchronize two events
-	uint32_t len;  // Length (including NULs) of name
-	char name __flexarr;  // Name
+	int wd;  //!< Watch descriptor
+	uint32_t mask;  //!< Watch mask
+	uint32_t cookie;  //!< Cookie to synchronize two events
+	uint32_t len;  //!< Length (including NULs) of name
+	char name __flexarr;  //!< Name
 } inotify_event_t;
 
 // Supported events suitable for MASK parameter of INOTIFY_ADD_WATCH
@@ -10763,13 +10757,13 @@ LIB_FUNC pid_t wait3(const int* restrict status, const int options, const struct
 
 
 /** Suspends execution of the calling process until one of its children terminates */
-LIB_FUNC void __wait(volatile int* restrict addr, volatile int* restrict waiters, const int val, const int priv) {
+LIB_FUNC void __wait(atomic volatile int* restrict addr, atomic volatile int* restrict waiters, const int val, const int priv) {
 	register int spins = 100;
 	while (spins-- && (!waiters || !(*waiters))) {
 		if (*addr == val) { a_spin(); }
 		return;
 	}
-	if (waiters) { a_inc(waiters); }
+	if (waiters) { ++waiters; }
 	const long _priv = (long)(FUTEX_WAIT | (priv ? FUTEX_PRIVATE : priv));
 	const int sverrno = get_errno();
 	while (*addr == val) {
@@ -10779,11 +10773,12 @@ LIB_FUNC void __wait(volatile int* restrict addr, volatile int* restrict waiters
 		}
 	}
 	set_errno(sverrno);
-	if (waiters) { a_dec(waiters); }
+	if (waiters) { --waiters; }
 }
 
 
-LIB_FUNC void wake(volatile void* restrict addr, const int cnt, const int priv) {
+/** Suspends execution of the calling process until one of its children terminates */
+LIB_FUNC void wake(atomic volatile void* restrict addr, const int cnt, const int priv) {
 	const long _priv = (long)(FUTEX_WAKE | (priv ? 128 : priv));
 	const int _cnt = ((cnt < 0) ? INT_MAX : cnt);
 	const int sverrno = get_errno();
@@ -10795,35 +10790,72 @@ LIB_FUNC void wake(volatile void* restrict addr, const int cnt, const int priv) 
 }
 
 
-#define vm_wait()   do { register int __vm_wait_tmp; while ((__vm_wait_tmp = vmlock[0])) { __wait(vmlock, (vmlock + 1), __vm_wait_tmp, 1); } } while (0x0)
-#define vm_lock()   a_inc(vmlock)
-#define vm_unlock()   do { if (a_fetch_add(vmlock, -1) == 1 && vmlock[1]) { wake(vmlock, -1, 1); } } while (0x0)
-
-
-LIB_FUNC void LOCK(volatile int* restrict l) {
-	if (libc.threads_minus_1) { while (a_swap(l, 1)) { __wait(l, (l + 1), 1, 1); } }
+/** Suspends execution of the calling process until one of its children terminates */
+LIB_FUNC void wait_lock(atomic volatile int* restrict addr, atomic volatile int* restrict waiters, const int val) {
+	register int spins = 100;
+	while (spins-- && (!waiters || !(*waiters))) {
+		if (*addr == val) { a_spin(); }
+		return;
+	}
+	if (waiters) { ++waiters; }
+	const int sverrno = get_errno();
+	while (*addr == val) {
+		syscall4(SYS_futex, (long)addr, (long)(FUTEX_PRIVATE | FUTEX_WAIT), val, 0);
+		if (get_errno() != ENOSYS) {
+			syscall4(SYS_futex, (long)addr, FUTEX_WAIT, val, 0);
+		}
+	}
+	set_errno(sverrno);
+	if (waiters) { --waiters; }
 }
 
 
-LIB_FUNC void UNLOCK(volatile int* restrict l) {
-	if (l[0]) { a_store(l, 0); if (l[1]) { wake(l, 1, 1); } }
+/** Suspends execution of the calling process until one of its children terminates */
+LIB_FUNC void wake_lock(atomic volatile void* restrict addr, const int cnt) {
+	const int _cnt = ((cnt < 0) ? INT_MAX : cnt);
+	const int sverrno = get_errno();
+	syscall3(SYS_futex, (long)addr, (long)(FUTEX_WAKE | 128), _cnt);
+	if (get_errno() != ENOSYS) {
+		syscall3(SYS_futex, (long)addr, FUTEX_WAKE, _cnt);
+	}
+	set_errno(sverrno);
 }
-#define ofl_unlock()   UNLOCK(ofl_locks)
+
+
+LIB_FUNC void LOCK(atomic volatile int* restrict _lock) {
+	if (libc.threads_minus_1) {
+		atomic int __vm_wait_tmp;
+		while ((__vm_wait_tmp = _lock[0])) {
+			wait_lock((atomic volatile int*)_lock, (atomic volatile int*)&_lock[1], __vm_wait_tmp);
+		}
+		++_lock[0];
+	}
+}
+
+
+LIB_FUNC void UNLOCK(atomic volatile int* restrict _lock) {
+	if (libc.threads_minus_1) {
+		if (--_lock[0] == 1 && _lock[1]) {
+			wake_lock((atomic volatile void*)_lock, 1);
+		}
+	}
+}
+#define ofl_unlock()   UNLOCK(memlock)
 
 
 LIB_FUNC FILE** ofl_lock(void) {
-	LOCK(ofl_locks);
+	LOCK(memlock);
 	return &ofl_head;
 }
 
 
-LIB_FUNC FILE* ofl_add(FILE* f) {
+LIB_FUNC FILE* ofl_add(FILE* fp) {
 	FILE** _head = ofl_lock();
-	f->next_locked = *_head;
-	if (*_head) { (*_head)->prev_locked = f; }
-	*_head = f;
-	ofl_unlock();
-	return f;
+	fp->next_locked = *_head;
+	if (*_head) { (*_head)->prev_locked = fp; }
+	*_head = fp;
+	UNLOCK(memlock);
+	return fp;
 }
 
 
@@ -10836,9 +10868,9 @@ LIB_FUNC void unlist_locked_file(FILE* restrict fp) {
 }
 
 
-LIB_FUNC void unlock_requeue(volatile int* restrict l, volatile int* restrict r, const int w) {
-	a_store(l, 0);
-	if (w) { wake(l, 1, 1); }
+LIB_FUNC void unlock_requeue(atomic volatile int* restrict l, atomic volatile int* restrict r, const int w) {
+	l[0] = 0;
+	if (w) { wake((atomic volatile void*)l, 1, 1); }
 	const int sverrno = get_errno();
 	syscall5(SYS_futex, (long)l, (FUTEX_REQUEUE | 128), 0, 1, (long)r);
 	if (get_errno() != ENOSYS) {
@@ -10850,7 +10882,7 @@ LIB_FUNC void unlock_requeue(volatile int* restrict l, volatile int* restrict r,
 
 /** Apply, test, or remove a POSIX lock on an open file */
 LIB_FUNC int lockf(const int fd, const int op, const off_t size) {
-	struct flock _lock = { .l_type = F_WRLCK, .l_whence = SEEK_CUR, .l_len = size };
+	flock_t _lock = { .l_type = F_WRLCK, .l_whence = SEEK_CUR, .l_len = size };
 	switch (op) {
 		case F_TEST:
 			_lock.l_type = F_RDLCK;
@@ -10882,7 +10914,7 @@ LIB_FUNC int ftrylockfile(FILE* fp) {
 		return 0;
 	}
 	if (fp->lock < 0) { fp->lock = 0; }
-	if (fp->lock || a_cas(&fp->lock, 0, tid)) { return -1; }
+	if (fp->lock || !(fp->lock = tid)) { fp->lock = 0; return -1; }
 	fp->lockcount = 1;
 	fp->prev_locked = 0;
 	fp->next_locked = self->stdio_locks;
@@ -10895,46 +10927,38 @@ LIB_FUNC int ftrylockfile(FILE* fp) {
 LIB_FUNC int LOCKFILE(FILE* restrict fp) {
 	const int tid = (int)(__pthread_self()->tid);
 	if (fp->lock == tid) { return 0; }
-	register int owner;
-	while ((owner = a_cas(&fp->lock, 0, tid))) { __wait(&fp->lock, &fp->waiters, owner, 1); }
+	fp->lock = (atomic volatile int)tid;
+	if (!fp->lock) { fp->lock = 0; return -1; }
+	if (fp->lockcount == LONG_MAX) { return -1; }
 	fp->lockcount++;
 	return 1;
 }
 #define flockfile(fp)   (void)LOCKFILE((fp))
+#define FLOCK(fp)   int __need_Funlock = ((fp)->lock >= 0 ? LOCKFILE((fp)) : 0)
 
 
 LIB_FUNC void UNLOCKFILE(FILE* restrict fp) {
 	if (fp->lockcount == 1) {
 		unlist_locked_file(fp);
 		fp->lockcount = 0;
-		a_store(&fp->lock, 0);
-		if (fp->waiters) { wake(&fp->lock, 1, 1); }
+		fp->lock = 0;
+		if (fp->waiters) { wake_lock((atomic volatile void*)&fp->lock, 1); }
 	} else { fp->lockcount--; }
 }
 #define funlockfile(fp)   UNLOCKFILE((fp))
 #define FFINALLOCK(fp)   (((fp)->lock >= 0) ? LOCKFILE((fp)) : 0)
-#define FLOCK(fp)   int __need_Funlock = ((fp)->lock >= 0 ? LOCKFILE((fp)) : 0)
 #define FUNLOCK(fp)   if (__need_Funlock) { UNLOCKFILE((fp)); }
 
 
 LIB_FUNC void do_orphaned_stdio_locks(void) {
 	FILE* fp = { 0 };
 	for (fp = __pthread_self()->stdio_locks; fp; fp = fp->next_locked) {
-		a_store(&fp->lock, 0x40000000);
+		fp->lock = 0x40000000;
 	}
 }
 
 
-#if (!SUPPORTS_THREADS)
-#   define __sfp_lock_acquire()
-#   define __sfp_lock_release()
-#   define __sinit_lock_acquire()
-#   define __sinit_lock_release()
-#   define __fp_lock(ptr)
-#   define __fp_unlock(ptr)
-#   define __fp_lock_all()
-#   define __fp_unlock_all()
-#else
+#if SUPPORTS_THREADS
 #   define __sfp_lock_acquire()   __lock_acquire_recursive(__sfp_lock)
 #   define __sfp_lock_release()   __lock_release_recursive(__sfp_lock)
 #   define __sinit_lock_acquire()   __lock_acquire_recursive(__sinit_lock)
@@ -10945,6 +10969,15 @@ LIB_FUNC void do_orphaned_stdio_locks(void) {
 #   define __fp_unlock(ptr)   do { if (!((FILE*)ptr->thread_flags & __SNLK)) { UNLOCKFILE((FILE*)ptr); } } while (0x0)
 #   define __fp_lock_all()   __sfp_lock_acquire(); (void)_fwalk(_REENT, __fp_lock)
 #   define __fp_unlock_all()   (void)_fwalk(_REENT, __fp_unlock); __sfp_lock_release()
+#else
+#   define __sfp_lock_acquire()
+#   define __sfp_lock_release()
+#   define __sinit_lock_acquire()
+#   define __sinit_lock_release()
+#   define __fp_lock(ptr)
+#   define __fp_unlock(ptr)
+#   define __fp_lock_all()
+#   define __fp_unlock_all()
 #endif
 #if ((!SUPPORTS_THREADS) || defined(__IMPL_UNLOCKED__))
 #   define _flockfile_start(_fp)
@@ -11083,15 +11116,15 @@ LIB_FUNC int swapoff(const char* restrict path) {
 /** Initial size of a child set */
 #define SYSCTL_DEFSIZE   8
 
-struct attr_packed __sysctl_args {
-	int* name;  // Name of system parameter
-	int nlen;  // Length of name
-	void* oldval;
-	size_t* oldlenp;  // Pointer to the length of oldval
-	void* newval;
-	size_t newlen;  // Length of newval
+typedef struct attr_packed __sysctl_args {
+	int* name;  //!< Name of the system parameter
+	int nlen;  //!< Length of `name`
+	void* oldval;  //!< Pointer to the previous value
+	size_t* oldlenp;  //!< Pointer to the length of `oldval`
+	void* newval;  //!< Pointer to the new value
+	size_t newlen;  //!< Length of `newval`
 	unsigned long unused[4];
-};
+} sysctl_arg_t;
 
 
 /** Read/Write system parameters */
@@ -11156,77 +11189,77 @@ LIB_FUNC int _sysctl(struct __sysctl_args* restrict ctl_args) {
 typedef struct stat {
 #ifndef USE_FILE_OFFSET64
 #   if IS_LITTLE_ENDIAN
-	unsigned long st_dev;  // Device
+	unsigned long st_dev;  //!< Device
 	unsigned long __pad1;
-	unsigned long st_ino;  // 32bit file serial number
+	unsigned long st_ino;  //!< 32-bit file serial number
 	unsigned long __pad2;
-	unsigned int st_mode;  // File mode
-	unsigned int st_nlink;  // Link count
-	unsigned int st_uid;  // User ID of the file's owner
-	unsigned int st_gid;  // Group ID of the file's group.
-	unsigned long st_rdev;  // Device number, if device
+	unsigned int st_mode;  //!< File mode
+	unsigned int st_nlink;  //!< Link count
+	unsigned int st_uid;  //!< User ID of the file's owner
+	unsigned int st_gid;  //!< Group ID of the file's group
+	unsigned long st_rdev;  //!< Device number (if applicable)
 	unsigned long __pad3;
 	unsigned long long __pad4;
-	long st_size;  // Size of file, in bytes
+	long st_size;  //!< Size of file (in bytes)
 	long __pad5;
-	int st_blksize;  // Optimal block size for I/O
+	int st_blksize;  //!< Optimal block size for I/O
 	int __pad6;
-	long st_blocks;  // Number 512-byte blocks allocated
+	long st_blocks;  //!< Number 512-byte blocks allocated
 	long __pad7;
 #   else
 	unsigned long __pad1;
-	unsigned long st_dev;  // Device
+	unsigned long st_dev;  //!< Device
 	unsigned long __pad2;
-	unsigned long st_ino;  // 32bit file serial number
-	unsigned int st_mode;  // File mode
-	unsigned int st_nlink;  // Link count
-	unsigned int st_uid;  // User ID of the file's owner
-	unsigned int st_gid;  // Group ID of the file's group.
+	unsigned long st_ino;  //!< 32-bit file serial number
+	unsigned int st_mode;  //!< File mode
+	unsigned int st_nlink;  //!< Link count
+	unsigned int st_uid;  //!< User ID of the file's owner
+	unsigned int st_gid;  //!< Group ID of the file's group
 	unsigned long __pad3;
-	unsigned long st_rdev;  // Device number, if device
+	unsigned long st_rdev;  //!< Device number (if applicable)
 	unsigned long long __pad4;
 	long __pad5;
-	long st_size;  // Size of file, in bytes
-	int st_blksize;  // Optimal block size for I/O
+	long st_size;  //!< Size of file (in bytes)
+	int st_blksize;  //!< Optimal block size for I/O
 	int __pad6;
 	long __pad7;
-	long st_blocks;  // Number 512-byte blocks allocated
+	long st_blocks;  //!< Number 512-byte blocks allocated
 #   endif  // LITTLE_ENDIAN
 #else
-	unsigned long long st_dev;  // Device
-	unsigned long long st_ino;  // 32bit file serial number
-	unsigned int st_mode;  // File mode
-	unsigned int st_nlink;  // Link count
-	unsigned int st_uid;  // User ID of the file's owner
-	unsigned int st_gid;  // Group ID of the file's group.
-	unsigned long long st_rdev;  // Device number, if device
+	unsigned long long st_dev;  //!< Device
+	unsigned long long st_ino;  //!< 32-bit file serial number
+	unsigned int st_mode;  //!< File mode
+	unsigned int st_nlink;  //!< Link count
+	unsigned int st_uid;  //!< User ID of the file's owner
+	unsigned int st_gid;  //!< Group ID of the file's group
+	unsigned long long st_rdev;  //!< Device number (if applicable)
 	unsigned long long _pad1;
-	long long st_size;  // Size of file, in bytes
-	int st_blksize;  // Optimal block size for I/O
+	long long st_size;  //!< Size of file, in bytes
+	int st_blksize;  //!< Optimal block size for I/O
 	int __pad2;
-	long long st_blocks;  // Number 512-byte blocks allocated
+	long long st_blocks;  //!< Number 512-byte blocks allocated
 #endif
 #ifdef __USE_MISC
 #   ifndef USE_FILE_OFFSET64
-	long st_atime;  // Time of last access
+	long st_atime;  //!< Time of last access
 	unsigned long st_atime_nsec;
-	long st_mtime;  // Time of last modification
+	long st_mtime;  //!< Time of last modification
 	unsigned long st_mtime_nsec;
-	long st_ctime;  // Time of last status change
+	long st_ctime;  //!< Time of last status change
 	unsigned long st_ctime_nsec;
 #   else
-	int st_atime;  // Time of last access
+	int st_atime;  //!< Time of last access
 	unsigned int st_atime_nsec;
-	int st_mtime;  // Time of last modification
+	int st_mtime;  //!< Time of last modification
 	unsigned int st_mtime_nsec;
-	int st_ctime;  // Time of last status change
+	int st_ctime;  //!< Time of last status change
 	unsigned int st_ctime_nsec;
 #   endif
 #else
-	struct timespec st_atim;  // Time of last access
-	struct timespec st_mtim;  // Time of last modification
-	struct timespec st_ctim;  // Time of last status change
-#   define st_atime   st_atim.tv_sec  // Backward compatibility
+	struct timespec st_atim;  //!< Time of last access
+	struct timespec st_mtim;  //!< Time of last modification
+	struct timespec st_ctim;  //!< Time of last status change
+#   define st_atime   st_atim.tv_sec
 #   define st_mtime   st_mtim.tv_sec
 #   define st_ctime   st_ctim.tv_sec
 #endif
@@ -11234,29 +11267,29 @@ typedef struct stat {
 } stat_t;
 #if SUPPORTS_LARGEFILE64  // stat64
 typedef struct stat64 {
-	unsigned long long st_dev;  // Device
-	unsigned long long st_ino;  // 32bit file serial number
-	unsigned int st_mode;  // File mode
-	unsigned int st_nlink;  // Link count
-	unsigned int st_uid;  // User ID of the file's owner
-	unsigned int st_gid;  // Group ID of the file's group.
-	unsigned long long st_rdev;  // Device number, if device
+	unsigned long long st_dev;  //!< Device
+	unsigned long long st_ino;  //!< 32-bit file serial number
+	unsigned int st_mode;  //!< File mode
+	unsigned int st_nlink;  //!< Link count
+	unsigned int st_uid;  //!< User ID of the file's owner
+	unsigned int st_gid;  //!< Group ID of the file's group
+	unsigned long long st_rdev;  //!< Device number (if applicable)
 	unsigned long long __pad3;
-	long long st_size;  // Size of file, in bytes
-	int st_blksize;  // Optimal block size for I/O
+	long long st_size;  //!< Size of file (in bytes)
+	int st_blksize;  //!< Optimal block size for I/O
 	int __pad4;
-	long long st_blocks;  // Number 512-byte blocks allocated
+	long long st_blocks;  //!< Number 512-byte blocks allocated
 #   ifdef __USE_MISC
-	int st_atime;  // Time of last access
+	int st_atime;  //!< Time of last access
 	unsigned int st_atime_nsec;
-	int st_mtime;  // Time of last modification
+	int st_mtime;  //!< Time of last modification
 	unsigned int st_mtime_nsec;
-	int st_ctime;  // Time of last status change
+	int st_ctime;  //!< Time of last status change
 	unsigned int st_ctime_nsec;
 #   else
-	struct timespec st_atim;  // Time of last access
-	struct timespec st_mtim;  // Time of last modification
-	struct timespec st_ctim;  // Time of last status change
+	struct timespec st_atim;  //!< Time of last access
+	struct timespec st_mtim;  //!< Time of last modification
+	struct timespec st_ctim;  //!< Time of last status change
 #   endif
 	unsigned int __unused4, __unused5;
 } stat64_t;
@@ -11285,7 +11318,7 @@ static const UNUSED char* const mode_a[8] = { "a", "ab", "a+", "ab+", "a+b", NUL
 
 #if IS_WORDSIZE_32
 /** Get information about the file FD in BUF */
-LIB_FUNC NONNULL int __fxstat(const int vers, const int fd, struct stat* restrict buf) {
+LIB_FUNC NONNULL int fxstat(const int vers, const int fd, struct stat* restrict buf) {
 	if (vers == _STAT_VER_KERNEL) {
 		return (int)syscall2(SYS_fstat64, fd, (long)buf);
 	}
@@ -11294,60 +11327,60 @@ LIB_FUNC NONNULL int __fxstat(const int vers, const int fd, struct stat* restric
 }
 #elif IS_WORDSIZE_64
 /** Get information about the file FD in BUF */
-LIB_FUNC NONNULL int __fxstat(const int vers, const int fd, struct stat* restrict buf) {
+LIB_FUNC NONNULL int fxstat(const int vers, const int fd, struct stat* restrict buf) {
 	if (vers == _STAT_VER_KERNEL || vers == _STAT_VER_LINUX) {
 		return (int)syscall2(SYS_fstat, fd, (long)buf);
 	}
 	set_errno(EINVAL);
 	return -1;
 }
-#   define _fxstat64(vers, fd, buf)   __fxstat((vers), (fd), (buf))
-#   define __fxstat64(vers, fd, buf)   __fxstat((vers), (fd), (buf))
+#   define fxstat64(vers, fd, buf)   fxstat((vers), (fd), (buf))
+#   define _fxstat64(vers, fd, buf)   fxstat((vers), (fd), (buf))
+#   define __fxstat64(vers, fd, buf)   fxstat((vers), (fd), (buf))
 #endif
-#define _fxstat(vers, fd, buf)   __fxstat((vers), (fd), (buf))
-#define fxstat(vers, fd, buf)   __fxstat((vers), (fd), (buf))
+#define _fxstat(vers, fd, buf)   fxstat((vers), (fd), (buf))
+#define __fxstat(vers, fd, buf)   fxstat((vers), (fd), (buf))
 
 
-LIB_FUNC NONNULL int __fstat(const int fd, struct stat* restrict buf) {
-	return __fxstat(_STAT_VER, fd, buf);
+LIB_FUNC NONNULL int fstat(const int fd, struct stat* restrict buf) {
+	return fxstat(_STAT_VER, fd, buf);
 }
-#define fstat(fd, buf)   __fstat((fd), (buf))
 
 
 LIB_FUNC NONNULL int fstat64(const int fd, struct stat64* restrict buf) {
-	return __fxstat64(_STAT_VER, fd, buf);
+	return fxstat64(_STAT_VER, fd, buf);
 }
-#define fstat64(f, _buf)   fstat((f), (_buf))
-#define __fstat64(f, _buf)   fstat((f), (_buf))
+#define fstat(f, _buf)   fstat64((f), (_buf))
+#define __fstat(f, _buf)   fstat64((f), (_buf))
 
 
 /** Get information about the file NAME in BUF */
-LIB_FUNC NONNULL int __xstat64(const UNUSED int vers, const char* restrict name, struct stat64* restrict buf) {
+LIB_FUNC NONNULL int xstat64(const UNUSED int vers, const char* restrict name, struct stat64* restrict buf) {
 	return (int)syscall2(SYS_stat, (long)name, (long)buf);
 }
-#define ___xstat64(vers, name, buf)   __xstat64((vers), (name), (buf))
-#define xstat64(vers, name, buf)   __xstat64((vers), (name), (buf))
-#define __xstat(vers, name, buf)   __xstat64((vers), (name), (buf))
-#define xstat(vers, name, buf)   __xstat64((vers), (name), (buf))
+#define ___xstat64(vers, name, buf)   xstat64((vers), (name), (buf))
+#define __xstat64(vers, name, buf)   xstat64((vers), (name), (buf))
+#define __xstat(vers, name, buf)   xstat64((vers), (name), (buf))
+#define xstat(vers, name, buf)   xstat64((vers), (name), (buf))
 
 
 /** Get file information about FILE in BUF; If FILE is a symbolic link, do not follow it */
-LIB_FUNC NONNULL int __lxstat64(const int vers, const char* restrict file, struct stat64* restrict buf) {
-	return __xstat64(vers, file, buf);
+LIB_FUNC NONNULL int lxstat64(const int vers, const char* restrict file, struct stat64* restrict buf) {
+	return xstat64(vers, file, buf);
 }
-#define ___lxstat64(vers, name, buf)   __lxstat64((vers), (name), (buf))
-#define lxstat64(vers, name, buf)   __lxstat64((vers), (name), (buf))
-#define __lxstat(vers, name, buf)   __lxstat64((vers), (name), (buf))
-#define lxstat(vers, name, buf)   __lxstat64((vers), (name), (buf))
+#define ___lxstat64(vers, name, buf)   lxstat64((vers), (name), (buf))
+#define __lxstat64(vers, name, buf)   lxstat64((vers), (name), (buf))
+#define __lxstat(vers, name, buf)   lxstat64((vers), (name), (buf))
+#define lxstat(vers, name, buf)   lxstat64((vers), (name), (buf))
 
 
 LIB_FUNC NONNULL int stat64(const char* restrict file, struct stat64* restrict buf) {
-	return __xstat64(_STAT_VER, file, buf);
+	return xstat64(_STAT_VER, file, buf);
 }
 
 
 LIB_FUNC NONNULL int lstat64(const char* restrict file, struct stat64* restrict buf) {
-	return __xstat64(_STAT_VER, file, buf);
+	return xstat64(_STAT_VER, file, buf);
 }
 
 
@@ -11732,36 +11765,36 @@ enum QUEUE_SELECTOR {
 /** Number of Control Characters */
 #define NCC   8
 struct attr_packed termio {
-	uint16_t c_iflag;  // Input mode flags
-	uint16_t c_oflag;  // Output mode flags
-	uint16_t c_cflag;  // Control mode flags
-	uint16_t c_lflag;  // Local mode flags
-	unsigned char c_line;  // Line discipline
-	unsigned char c_cc[NCC];  // Control characters
+	uint16_t c_iflag;  //!< Input mode flags
+	uint16_t c_oflag;  //!< Output mode flags
+	uint16_t c_cflag;  //!< Control mode flags
+	uint16_t c_lflag;  //!< Local mode flags
+	unsigned char c_line;  //!< Line discipline
+	unsigned char c_cc[NCC];  //!< Control characters
 };
 
 
 struct termios {
-	tcflag_t c_iflag;  // Input mode flags
-	tcflag_t c_oflag;  // Output mode flags
-	tcflag_t c_cflag;  // Control mode flags
-	tcflag_t c_lflag;  // Local mode flags
-	cc_t c_line;  // Line discipline
+	tcflag_t c_iflag;  //!< Input mode flags
+	tcflag_t c_oflag;  //!< Output mode flags
+	tcflag_t c_cflag;  //!< Control mode flags
+	tcflag_t c_lflag;  //!< Local mode flags
+	cc_t c_line;  //!< Line discipline
 #   if (defined(ARCHX86) || defined(ARCHARM) || defined(ARCHITANIUM) || defined(ARCHPARISC) || defined(ARCHS390))
 #      define NCCS   19
-	cc_t c_cc[NCCS];  // Control characters
+	cc_t c_cc[NCCS];  //!< Control characters
 #   elif defined(ARCHMIPS)
 #      define NCCS   23
-	cc_t c_cc[NCCS];  // Control characters
+	cc_t c_cc[NCCS];  //!< Control characters
 #   elif (defined(ARCHPOWERPC) || defined(ARCHALPHA))
 #      define NCCS   19
-	cc_t c_cc[NCCS];  // Control characters
-	cc_t c_line;  // Line discipline
-	speed_t c_ispeed;  // Input speed
-	speed_t c_ospeed;  // Output speed
+	cc_t c_cc[NCCS];  //!< Control characters
+	cc_t c_line;  //!< Line discipline
+	speed_t c_ispeed;  //!< Input speed
+	speed_t c_ospeed;  //!< Output speed
 #   elif defined(ARCHSPARC)
 #      define NCCS   17
-	cc_t c_cc[NCCS];  // Control characters
+	cc_t c_cc[NCCS];  //!< Control characters
 #   else
 #      error   "`struct termios` is undefined for the target architecture!"
 #   endif
@@ -13479,7 +13512,7 @@ LIB_FUNC ATTR_CF uint16_t bswap16(const uint16_t __bsx) {
 LIB_FUNC ATTR_CF uint32_t bswap32(const uint32_t __bsx) {
 #   ifdef ARCHX86
 	uint32_t x = __bsx;
-	asm volatile ("bswap %0;" : "+r"(((uint32_t)(x))));
+	vasm("bswap %0;" : "+r"(((uint32_t)(x))));
 	return x;
 #   else
 	return ((uint32_t)(((__bsx) & 0xff000000U) >> 0x18U) | (((__bsx) & 0xff0000U) >> 8U) | (((__bsx) & 0xff00U) << 8U) | (((__bsx) & 0xffU) << 0x18U));
@@ -15132,7 +15165,7 @@ LIB_FUNC int constant_test_bit(const int nr, const volatile void* addr) {
 @param[in,out] addr The address to start counting from
 */
 LIB_FUNC void set_bit(int nr, volatile void* addr) {
-	asm volatile ("btsl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr) : "memory");
+	vasm("btsl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr) : "memory");
 }
 
 
@@ -15142,13 +15175,13 @@ LIB_FUNC void set_bit(int nr, volatile void* addr) {
 @param[in,out] addr Address to start counting from
 */
 LIB_FUNC void clear_bit(int nr, volatile void* addr) {
-	asm volatile ("btrl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr));
+	vasm("btrl %1, %0;" : "=m"((*(volatile long*)addr)) : "dIr"(nr));
 }
 
 
 LIB_FUNC int variable_test_bit(int nr, volatile void* addr) {
 	int oldbit;
-	asm volatile ("btl %2,%1;" "sbbl %0, %0;" : "=r"(oldbit) : "m"((*(volatile long*)addr)), "dIr"(nr));
+	vasm("btl %2,%1;" "sbbl %0, %0;" : "=r"(oldbit) : "m"((*(volatile long*)addr)), "dIr"(nr));
 	return oldbit;
 }
 
@@ -15159,7 +15192,7 @@ LIB_FUNC int variable_test_bit(int nr, volatile void* addr) {
 @param[in,out] addr The address to start counting from
 */
 LIB_FUNC void __change_bit(long nr, volatile unsigned long* addr) {
-	asm volatile ("btc %1, %0;" : "+m"(*(volatile long*)(addr)) : "Ir"(nr));
+	vasm("btc %1, %0;" : "+m"(*(volatile long*)(addr)) : "Ir"(nr));
 }
 
 
@@ -15248,14 +15281,14 @@ LIB_FUNC int __test_and_set_bit(long nr, volatile unsigned long* addr) {
 */
 LIB_FUNC int __test_and_clear_bit(long nr, volatile unsigned long* addr) {
 	int oldbit;
-	asm volatile ("btr %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long *)(addr)) : "Ir"(nr));
+	vasm("btr %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long *)(addr)) : "Ir"(nr));
 	return oldbit;
 }
 
 
 LIB_FUNC int __test_and_change_bit(long nr, volatile unsigned long* addr) {
 	int oldbit;
-	asm volatile ("btc %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long *)(addr)) : "Ir"(nr) : "memory");
+	vasm("btc %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long *)(addr)) : "Ir"(nr) : "memory");
 	return oldbit;
 }
 
@@ -15304,7 +15337,7 @@ LIB_FUNC long find_next_bit(const unsigned long* addr, const long size, const lo
 	register unsigned long set = 0, res = 0;
 	register unsigned long bit = (unsigned long)((unsigned long)offset & 63);
 	if (bit) {
-		asm volatile ("bsfq %1, %0;" "cmoveq %2, %0;" : "=r"(set) : "r"((*p >> bit)), "r"(64L));
+		vasm("bsfq %1, %0;" "cmoveq %2, %0;" : "=r"(set) : "r"((*p >> bit)), "r"(64L));
 		if (set < (64 - bit)) { return ((long)set + offset); }
 		set = 64 - bit;
 		p++;
@@ -15318,7 +15351,7 @@ LIB_FUNC int find_next_bit(const unsigned long* addr, const int size, const int 
 	register int set = 0, res = 0;
 	register int bit = offset & 31;
 	if (bit) {
-		asm volatile ("bsfl %1, %0;" "jne 1f;" "movl $32, %0;" "1:" : "=r"(set) : "r"(*p >> bit));
+		vasm("bsfl %1, %0;" "jne 1f;" "movl $32, %0;" "1:" : "=r"(set) : "r"(*p >> bit));
 		if (set < (32 - bit)) { return set + offset; }
 		set = 32 - bit;
 		p++;
@@ -16063,11 +16096,11 @@ LIB_FUNC NOLIBCALL NONNULL void* memmove(void* dst, const void* src, const size_
 	register size_t n = len;
 #   ifdef ARCHX86
 	if (q < p) {
-		asm volatile ("cld;" "rep;" "movsb;" : "+c"(n), "+S"(p), "+D"(q));
+		vasm("cld;" "rep;" "movsb;" : "+c"(n), "+S"(p), "+D"(q));
 	} else {
 		p += (n - 1);
 		q += (n - 1);
-		asm volatile ("std;" "rep;" "movsb;" "cld;" : "+c"(n), "+S"(p), "+D"(q));
+		vasm("std;" "rep;" "movsb;" "cld;" : "+c"(n), "+S"(p), "+D"(q));
 	}
 #   else
 	if (q < p) { while (n--) { *q++ = *p++; } }
@@ -16090,11 +16123,11 @@ LIB_FUNC NOLIBCALL NONNULL void memmove_no_output(void* dst, const void* src, co
 	register size_t n = len;
 #   ifdef ARCHX86
 	if (q < p) {
-		asm volatile ("cld;" "rep;" "movsb;" : "+c"(n), "+S"(p), "+D"(q));
+		vasm("cld;" "rep;" "movsb;" : "+c"(n), "+S"(p), "+D"(q));
 	} else {
 		p += (n - 1);
 		q += (n - 1);
-		asm volatile ("std;" "rep;" "movsb;" "cld;" : "+c"(n), "+S"(p), "+D"(q));
+		vasm("std;" "rep;" "movsb;" "cld;" : "+c"(n), "+S"(p), "+D"(q));
 	}
 #   else
 	if (q < p) { while (n--) { *q++ = *p++; } }
@@ -16127,10 +16160,10 @@ LIB_FUNC NOLIBCALL NONNULL void* memset(void* restrict dst, const int c, const s
 	register size_t n = len;
 #   ifdef ARCHX86_64
 	size_t nl = (len >> 3);
-	asm volatile ("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "r"((uint32_t)(n & 7)));
+	vasm("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "r"((uint32_t)(n & 7)));
 #   elif defined(ARCHX86_32)
 	size_t nl = (len >> 2);
-	asm volatile ("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "r"(n & 3));
+	vasm("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "r"(n & 3));
 #   else
 	while (n--) { *q++ = c; }
 #   endif
@@ -16156,10 +16189,10 @@ LIB_FUNC NOLIBCALL NONNULL void memset_no_output(void* restrict dst, const int c
 	register size_t n = len;
 #   ifdef ARCHX86_64
 	size_t nl = (len >> 3);
-	asm volatile ("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "r"((uint32_t)(n & 7)));
+	vasm("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "r"((uint32_t)(n & 7)));
 #   elif defined(ARCHX86_32)
 	size_t nl = (len >> 2);
-	asm volatile ("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "r"(n & 3));
+	vasm("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "r"(n & 3));
 #   else
 	while (n--) { *q++ = c; }
 #   endif
@@ -17230,7 +17263,7 @@ LIB_FUNC int fullrune(const char* restrict str, const int n) {
 /** Returns a true boolean value if irq are enabled for the CPU */
 LIB_FUNC bool are_interrupts_enabled(void) {
 	unsigned long flags;
-	asm volatile ("pushf;" "pop %0;" : "=g"(flags));
+	vasm("pushf;" "pop %0;" : "=g"(flags));
 	return (bool)(flags & 0x200);
 }
 
@@ -17308,7 +17341,7 @@ LIB_FUNC bool are_interrupts_enabled(void) {
 
 /** Structure to access `era` information from LC_TIME */
 typedef struct attr_packed era_entry {
-	uint32_t direction;  // Contains '+' or '-'
+	uint32_t direction;  //!< Contains '+' or '-'
 	int32_t offset;
 	int32_t start_date[3];
 	int32_t stop_date[3];
@@ -17316,7 +17349,7 @@ typedef struct attr_packed era_entry {
 	const char* era_format;
 	const wchar_t* era_wname;
 	const wchar_t* era_wformat;
-	int absolute_direction;  // +1 indicates that year number is higher in the future (like A.D.); -1 indicates that year number is higher in the past (like B.C.)
+	int absolute_direction;  //!< `+1` indicates that year number is higher in the future (like A.D.); `-1` indicates that year number is higher in the past (like B.C.)
 } era_entry_t;
 
 
@@ -17740,7 +17773,7 @@ typedef struct lc_monetary_T {
 	const char* int_n_sep_by_space;
 	const char* int_p_sign_posn;
 	const char* int_n_sign_posn;
-	const char* codeset;  // Codeset for mbtowc conversion
+	const char* codeset;  //!< Codeset for mbtowc conversion
 	const wchar_t* wint_curr_symbol;
 	const wchar_t* wcurrency_symbol;
 	const wchar_t* wmon_decimal_point;
@@ -17966,12 +17999,12 @@ enum FPARSELN {
 #define shcnt(fp)   ((fp)->shcnt + (off_t)((fp)->rpos - (fp)->rend))
 /** Set pointer back if it has reached the end of the shared area */
 #define shunget(fp)   ((fp)->shend ? (void)(fp)->rpos-- : (void)0)
-/** Test whether the given stdio file has an active ungetc buffer; release such a buffer, without restoring ordinary unread data */
-#define HASUB(fp)   ((fp)->_ub._base != NULL)
-#define FREEUB(fp)   if ((fp)->_ub._base != (fp)->_ubuf) { free((fp)->_ub._base); } (fp)->_ub._base = NULL
-/** Test for an fgetln() buffer */
-#define HASLB(fp)   ((fp)->_lb._base != NULL)
-#define FREELB(fp)   free((char*)(fp)->_lb._base); (fp)->_lb._base = NULL
+/** Test whether the given stdio file has an active `ungetc()` buffer; release such a buffer, without restoring ordinary unread data */
+#define HASUB(fp)   ((fp)->ub_base != NULL)
+#define FREEUB(fp)   if ((fp)->ub_base != (fp)->ubuf) { free((fp)->ub_base); } (fp)->ub_base = NULL
+/** Test for an `fgetln()` buffer */
+#define HASLB(fp)   ((fp)->lb_base != NULL)
+#define FREELB(fp)   free((char*)(fp)->lb_base); (fp)->lb_base = NULL
 
 
 // TYPES USED IN POSITIONAL ARGUMENT SUPPORT IN VFPRINF/VFWPRINTF
@@ -18155,25 +18188,15 @@ static const UNUSED unsigned char printf_states[8][('z' - 'A') + 1] = {
 };
 
 
-// STREAM ORIENTATION
-
-#ifdef _WIDE_ORIENT
-/** Set the orientation for a stream; If o > 0, the stream has wide-orientation; If o < 0, the stream has byte-orientation */
-#   define ORIENT(fp, ori)   do { if (!((fp)->flags & (unsigned int)__SORD)) { (fp)->flags |= (unsigned int)__SORD; if (ori > 0) { (fp)->thread_flags |= (unsigned int)__SWID; } else { (fp)->thread_flags &= (unsigned int)(~__SWID); } } } while (0x0)
-#else
-#   define ORIENT(fp, ori)
-#endif
-
-
 // WRITE FUNCTIONS
 
 LIB_FUNC ATTR_PF NONNULL int __towrite(FILE* restrict fp) {
-	fp->mode |= (signed char)(fp->mode - (signed char)1);
+	fp->mode |= (int)(fp->mode - 1);
 	if (cantwrite(fp)) {
 		fp->flags |= (unsigned int)(__SERR);
 		return EOF;
 	}
-	fp->rpos = fp->rend = 0;
+	fp->rpos = fp->rend = 0U;
 	fp->wpos = fp->wbase = fp->buf;
 	fp->wend = (fp->buf + fp->buf_size);
 	return 0;
@@ -18229,17 +18252,16 @@ LIB_FUNC ATTR_NONNULL(1) size_t sn_write(FILE* restrict fp, const unsigned char*
 
 LIB_FUNC ATTR_NONNULL(1) size_t sw_write(FILE* fp, const unsigned char* restrict s, const size_t len) {
 	register size_t l1 = len, i = 0;
-	struct cookie* c = fp->_cookie;
 	if ((s != fp->wbase) && (sw_write(fp, fp->wbase, (size_t)(fp->wpos - fp->wbase)) == (size_t)-1)) {
 		return (size_t)-1;
 	}
-	while (c->l && l1 && (i = (size_t)(mbtowc(c->ws, (const void*)s, l1) >= 0))) {
+	while (fp->wbuf_size && l1 && (i = (size_t)(mbtowc(fp->wbuf, (const void*)s, l1) >= 0))) {
 		s += i;
 		l1 -= i;
-		c->l--;
-		c->ws++;
+		fp->wbuf_size--;
+		fp->wbuf++;
 	}
-	*c->ws = 0;
+	*fp->wbuf = 0;
 	return (size_t)(i <= 1 ? i : len);
 }
 
@@ -19326,15 +19348,15 @@ LIB_FUNC ATTR_PRINTF(2, 0) int vfprintf(FILE* stream, const char* format, va_lis
 
 
 /** Writes the C string pointed by fmt to the stream; If fmt includes format specifiers (subsequences beginning with %), the additional arguments following fmt are formatted and inserted in the resulting string replacing their respective specifiers */
-LIB_FUNC ATTR_NONNULL(1) ATTR_PRINTF(2, 3) int fprintf(FILE* restrict f, const char* restrict fmt, ...) {
+LIB_FUNC ATTR_NONNULL(1) ATTR_PRINTF(2, 3) int fprintf(FILE* restrict fp, const char* restrict fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
-	const struct arg_printf ap2 = { f, &putb, &putc, &fputwc, &__fwrite_helper, &fputws };
+	const struct arg_printf ap2 = { fp, &putb, &putc, &fputwc, &__fwrite_helper, &fputws };
 	register const int ret = __v_printf(&ap2, fmt, ap);
 	va_end(ap);
 	return ret;
 }
-#define __fprintf(f, fmt, ...)   fprintf((f), (fmt), (__VA_ARGS__))
+#define __fprintf(fp, fmt, ...)   fprintf((fp), (fmt), (__VA_ARGS__))
 
 
 /** Write formatted output to stdout according to the format string FORMAT, using the argument list in ARG */
@@ -19362,7 +19384,7 @@ LIB_FUNC ATTR_PRINTF(1, 2) int printf(const char* restrict format, ...) {
 
 
 LIB_FUNC ATTR_PRINTF(2, 0) int vdprintf(const int fd, char* restrict fmt, va_list ap) {
-	FILE f = {
+	FILE fp = {
 		.fd = fd,
 		.lbf = EOF,
 		.write = &wrap_write,
@@ -19370,7 +19392,7 @@ LIB_FUNC ATTR_PRINTF(2, 0) int vdprintf(const int fd, char* restrict fmt, va_lis
 		.buf_size = 0,
 		.lock = -1
 	};
-	return vfprintf(&f, fmt, ap);
+	return vfprintf(&fp, fmt, ap);
 }
 
 
@@ -19385,23 +19407,23 @@ LIB_FUNC ATTR_PRINTF(2, 3) int dprintf(const int fd, char* restrict fmt, ...) {
 
 /** Print formatted output to string STR; Similar to vsprintf, but additional length SIZE limit how much is written into STR; Returns string length of formatted string (which may be larger than SIZE); STR may be NULL, in which case nothing will be written; On error, return a negative value */
 LIB_FUNC ATTR_PRINTF(3, 0) int vsnprintf(char* restrict str, const size_t size, const char* restrict fmt, va_list ap) {
-	register size_t n = size;
+	register size_t maxlen = size;
 	char dummy;
-	FILE f = { 0 };
-	struct __sfileext fext = { 0 };
-	_FILEEXT_SETUP(&f, &fext);
-	if (n > INT_MAX) { n = INT_MAX; }
-	if (n == 0) {
+	FILE fp = { 0 };
+	fp.fgetstr_len = 0;
+	fp.fgetstr_buf = NULL;
+	if (maxlen > INT_MAX) { maxlen = INT_MAX; }
+	if (maxlen == 0) {
 		str = &dummy;
-		n = 1;
+		maxlen = 1;
 	}
-	f.fd = -1;
-	f.flags = (__SWR | __SSTR);
-	f.buf = f.rpos = (unsigned char*)str;
-	f._w = (int)(n - 1);
-	f.buf_size = (size_t)f._w;
-	const int ret = vfprintf(&f, fmt, ap);
-	*f.rpos = '\0';
+	fp.fd = -1;
+	fp.flags = (__SWR | __SSTR);
+	fp.buf = fp.rpos = (unsigned char*)str;
+	fp.wspace = (int)(maxlen - 1);
+	fp.buf_size = (size_t)fp.wspace;
+	const int ret = vfprintf(&fp, fmt, ap);
+	*fp.rpos = '\0';
 	return ret;
 }
 #define _IO_vsnprintf(_string, maxlen, format, args)   vsnprintf((_string), (maxlen), (format), (args))
@@ -19491,10 +19513,10 @@ LIB_FUNC int sflush(FILE* fp) {
 	unsigned char* p = fp->buf;
 	register int n = (int)(fp->rpos - p);
 	fp->rpos = p;
-	fp->_w = ((fp->flags & (unsigned int)(__SLBF | __SNBF)) ? 0 : (int)fp->buf_size);
+	fp->wspace = ((fp->flags & (unsigned int)(__SLBF | __SNBF)) ? 0 : (int)fp->buf_size);
 	register int t = (int)(fp->flags);
 	for (; n > 0; n -= t, p += t) {
-		t = (int)((*fp->write)(fp->_cookie, (unsigned char*)p, (size_t)n));
+		t = (int)((*fp->write)(fp, (unsigned char*)p, (size_t)n));
 		if (t <= 0) {
 			fp->flags |= (unsigned int)__SERR;
 			return EOF;
@@ -19528,36 +19550,36 @@ LIB_FUNC int _fwalk(int (*function)(FILE*)) {
 }
 
 
-LIB_FUNC int fflush_unlocked(FILE* f) {
-	if (f->wpos > f->wbase) {
-		f->write(f, 0, 0);
-		if (!f->wpos) { return EOF; }
+LIB_FUNC int fflush_unlocked(FILE* fp) {
+	if (fp->wpos > fp->wbase) {
+		fp->write(fp, 0, 0);
+		if (!fp->wpos) { return EOF; }
 	}
-	if (f->rpos < f->rend) { f->seek(f, f->rpos-f->rend, SEEK_CUR); }
-	f->wpos = f->wbase = f->wend = 0;
-	f->rpos = f->rend = 0;
+	if (fp->rpos < fp->rend) { fp->seek(fp, fp->rpos - fp->rend, SEEK_CUR); }
+	fp->wpos = fp->wbase = fp->wend = 0;
+	fp->rpos = fp->rend = 0;
 	return 0;
 }
 
 
-/** Flush a single file, or (if f is NULL) all files */
-LIB_FUNC int fflush(FILE* f) {
-	if (f) {
-		FLOCK(f);
-		const int r = fflush_unlocked(f);
-		FUNLOCK(f);
+/** Flush a single file, or (if `fp` is NULL) all files */
+LIB_FUNC int fflush(FILE* fp) {
+	if (fp) {
+		FLOCK(fp);
+		const int r = fflush_unlocked(fp);
+		FUNLOCK(fp);
 		return r;
 	}
 	register int r = (int)(STDOUT ? fflush(STDOUT) : 0);
-	for (f = *ofl_lock(); f; f = f->next_locked) {
-		FLOCK(f);
-		if (f->wpos > f->wbase) { r |= fflush_unlocked(f); }
-		FUNLOCK(f);
+	for (fp = *ofl_lock(); fp; fp = fp->next_locked) {
+		FLOCK(fp);
+		if (fp->wpos > fp->wbase) { r |= fflush_unlocked(fp); }
+		FUNLOCK(fp);
 	}
-	ofl_unlock();
+	UNLOCK(memlock);
 	return r;
 }
-#define _IO_fflush(f)   fflush((f))
+#define _IO_fflush(fp)   fflush((fp))
 
 
 LIB_FUNC int lflush(FILE* restrict fp) {
@@ -19567,25 +19589,26 @@ LIB_FUNC int lflush(FILE* restrict fp) {
 }
 
 
-LIB_FUNC ATTR_NONNULL(2) int __sread(void* _cookie, const char* restrict buf, const int n) {
-	FILE* fp = _cookie;
-	register const int ret = (int)read(fp->fd, buf, (size_t)n);
+LIB_FUNC ATTR_NONNULL(2) int sread(FILE* fp, const char* restrict buf, const int bufsize) {
+	register const int ret = (int)read(fp->fd, buf, (size_t)bufsize);
 	if (ret >= 0) { fp->offset += ret; }
 	else { fp->flags &= (unsigned int)(~__SOFF); }
 	return ret;
 }
+#define _sread(fp, buf, bufsize)   sread((fp), (buf), (bufsize))
+#define __sread(fp, buf, bufsize)   sread((fp), (buf), (bufsize))
 
 
-LIB_FUNC ATTR_NONNULL(2) int __swrite(void* _cookie, const char* restrict buf, const int n) {
-	FILE* fp = _cookie;
+LIB_FUNC ATTR_NONNULL(2) int swrite(FILE* fp, const char* restrict buf, const int bufsize) {
 	if (fp->flags & (unsigned int)__SAPP) { (void)lseek(fp->fd, (off_t)0, SEEK_END); }
 	fp->flags &= (unsigned int)(~__SOFF);
-	return (int)write(fp->fd, buf, (size_t)n);
+	return (int)write(fp->fd, buf, (size_t)bufsize);
 }
+#define _swrite(fp, buf, bufsize)   swrite((fp), (buf), (bufsize))
+#define __swrite(fp, buf, bufsize)   swrite((fp), (buf), (bufsize))
 
 
-LIB_FUNC fpos_t __sseek(void* _cookie, const fpos_t offset, const int whence) {
-	FILE* fp = _cookie;
+LIB_FUNC fpos_t sseek(FILE* fp, const fpos_t offset, const int whence) {
 	register const off_t ret = lseek(fp->fd, (off_t)offset, whence);
 	if (ret == (off_t)-1) { fp->flags &= (unsigned int)(~__SOFF); }
 	else {
@@ -19594,63 +19617,62 @@ LIB_FUNC fpos_t __sseek(void* _cookie, const fpos_t offset, const int whence) {
 	}
 	return (fpos_t)ret;
 }
-#define _sseek(_cookie, offset, whence)   __sseek((_cookie), (offset), (whence))
-#define sseek(_cookie, offset, whence)   __sseek((_cookie), (offset), (whence))
+#define _sseek(fp, offset, whence)   sseek((fp), (offset), (whence))
+#define __sseek(fp, offset, whence)   sseek((fp), (offset), (whence))
 
 
-LIB_FUNC int __sclose(const void* restrict _cookie) {
-	return close(((const FILE*)_cookie)->fd);
+LIB_FUNC int sclose(const void* restrict fp) {
+	return close(((const FILE*)fp)->fd);
 }
-#define _sclose(_cookie)   __sclose((_cookie))
+#define _sclose(fp)   sclose((fp))
+#define __sclose(fp)   sclose((fp))
 
 
 /** Write byte to stream */
-LIB_FUNC int putb(const int8_t b, FILE* fp) {
+LIB_FUNC int putb(const int8_t _byte, FILE* fp) {
 	if (ferror(fp)) { return EOF; }
 	FLOCK(fp);
-	register const int ret = (int)fp->write(fp, (const unsigned char*)&b, SIZEOF_CHAR);
+	register const int ret = (int)fp->write(fp, (const unsigned char*)&_byte, SIZEOF_CHAR);
 	FUNLOCK(fp);
 	if (ret) { return ret; }
 	return EOF;
 }
 /** Write byte to stream */
-#define fputb(b, f)   putb((b), (f))
+#define fputb(_byte, fp)   putb((_byte), (fp))
 /** Write byte to stdout */
-#define putbyte(b)   putb(b, stdout)
-#define putbyte_unlocked(b)   putb(b, stdout)
+#define putbyte(_byte)   putb(_byte, stdout)
+#define putbyte_unlocked(_byte)   putb(_byte, stdout)
 
 
 /** Write byte to stream */
-LIB_FUNC void putb_no_output(const int8_t b, FILE* fp) {
+LIB_FUNC void putb_no_output(const int8_t _byte, FILE* fp) {
 	if (ferror(fp)) { return; }
 	FLOCK(fp);
-	(void)fp->write(fp, (const unsigned char*)&b, SIZEOF_CHAR);
+	(void)fp->write(fp, (const unsigned char*)&_byte, SIZEOF_CHAR);
 	FUNLOCK(fp);
 }
 
 
 /** Write character to stream */
-LIB_FUNC int putc(const int c, FILE* fp) {
+LIB_FUNC int putc(const int _char, FILE* fp) {
 	if (ferror(fp)) { return EOF; }
 	FLOCK(fp);
-	register const int ret = (int)fp->write(fp, (const unsigned char*)&c, SIZEOF_INT);
+	register const int ret = (int)fp->write(fp, (const unsigned char*)&_char, SIZEOF_INT);
 	FUNLOCK(fp);
 	if (ret) { return ret; }
 	return EOF;
 }
-/** Write character to stream */
-#define fputc(c, f)   putc((c), (f))
 /** Write character to stdout */
-#define putchar(x)   putc(x, stdout)
-#define putchar_unlocked(x)   putc(x, stdout)
-#define outchar(c)   putc(((c) & 0177), stdout)
+#define putchar(_char)   putc(_char, stdout)
+#define putchar_unlocked(_char)   putc(_char, stdout)
+#define outchar(_char)   putc(((_char) & 0177), stdout)
 
 
 /** Write character to stream */
-LIB_FUNC void putc_no_output(const int c, FILE* fp) {
+LIB_FUNC void putc_no_output(const int _char, FILE* fp) {
 	if (ferror(fp)) { return; }
 	FLOCK(fp);
-	(void)fp->write(fp, (const unsigned char*)&c, SIZEOF_INT);
+	(void)fp->write(fp, (const unsigned char*)&_char, SIZEOF_INT);
 	FUNLOCK(fp);
 }
 
@@ -19658,13 +19680,12 @@ LIB_FUNC void putc_no_output(const int c, FILE* fp) {
 /** Get a character from the file stream `fp` */
 LIB_FUNC int getc(FILE* fp) {
 	if (ferror(fp)) { return EOF; }
-	int c = EOF;
-	if (fp->lock < 0 || (!LOCKFILE(fp))) {
-		fp->readc(fp->fd, fp->_nbuf, SIZEOF_INT);
-		c = (int)*fp->_nbuf;
-	}
-	UNLOCKFILE(fp);
-	return c;
+	int _char = EOF;
+	FLOCK(fp);
+	fp->readc(fp->fd, fp->nbuf, SIZEOF_INT);
+	_char = (int)*fp->nbuf;
+	FUNLOCK(fp);
+	return _char;
 }
 #define _IO_getc(fp)   getc((fp))
 #define fgetc(fp)   getc((fp))
@@ -19675,11 +19696,10 @@ LIB_FUNC int getc(FILE* fp) {
 LIB_FUNC int getchar(void) {
 	if (chk_ferr(stdin)) { return EOF; }
 	int c = EOF;
-	if (stdin->lock < 0 || (!LOCKFILE(stdin))) {
-		stdin->readc(STDIN_FILENO, stdin->_nbuf, SIZEOF_INT);
-		c = (int)*stdin->_nbuf;
-	}
-	UNLOCKFILE(stdin);
+	FLOCK(stdin);
+	stdin->readc(STDIN_FILENO, stdin->nbuf, SIZEOF_INT);
+	c = (int)*stdin->nbuf;
+	FUNLOCK(stdin);
 	return c;
 }
 #define __getchar()   getchar()
@@ -19776,16 +19796,16 @@ LIB_FUNC int prompt_ynq(const char* restrict question) {
 
 
 /** Read characters from the file stream and store them as a string (in str) until either `num - 1` characters have been read, a newline is read, or the end-of-file is reached (whichever happens first) */
-LIB_FUNC char* fgets(char* restrict str, const int num, FILE* restrict f) {
+LIB_FUNC char* fgets(char* restrict str, const int num, FILE* restrict fp) {
 	register int c = EOF;
 	char* s = str;
 	register int _num = num;
-	while (_num > 1 && ((c = getc(f)) != EOF)) {
+	while (_num > 1 && ((c = getc(fp)) != EOF)) {
 		*s++ = (char)c;
 		--_num;
 		if (c == '\n') { break; }
 	}
-	if ((c == EOF && s == str) || ferror(f)) { return NULL; }
+	if ((c == EOF && s == str) || ferror(fp)) { return NULL; }
 	else if (_num) { *s = '\0'; }
 	return str;
 }
@@ -19808,7 +19828,7 @@ LIB_FUNC int feof(FILE* restrict fp) {
 	FUNLOCK(fp);
 	return ret;
 }
-#define __FEOF(f)   feof((f))
+#define __FEOF(fp)   feof((fp))
 
 
 /** Return the file's descriptor number */
@@ -19821,10 +19841,10 @@ LIB_FUNC int fileno(FILE* restrict fp) {
 
 
 /** Clear the file's error and EOF indicators */
-LIB_FUNC void clearerr(FILE* f) {
-	FLOCK(f);
-	f->flags &= (unsigned int)(~(__SEOF | __SERR));
-	FUNLOCK(f);
+LIB_FUNC void clearerr(FILE* fp) {
+	FLOCK(fp);
+	fp->flags &= (unsigned int)(~(__SEOF | __SERR));
+	FUNLOCK(fp);
 }
 #define __CLEARERR(fp)   clearerr((fp))
 
@@ -19878,18 +19898,18 @@ LIB_FUNC int setvbuf_unlocked(FILE* restrict stream, char* restrict buf, const i
 #define setvbuf(fp, buf, mode, size)   setvbuf_unlocked((fp), (buf), (mode), (size))
 
 
-LIB_FUNC void setbuf(FILE* restrict f, char* restrict buf) {
-	setvbuf(f, buf, (buf ? _IOFBF : _IONBF), BUFSIZ);
+LIB_FUNC void setbuf(FILE* restrict fp, char* restrict buf) {
+	setvbuf(fp, buf, (buf ? _IOFBF : _IONBF), BUFSIZ);
 }
 
 
-LIB_FUNC void setbuffer(FILE* restrict f, char* restrict buf, const size_t size) {
-	setvbuf(f, buf, (buf ? _IOFBF : _IONBF), size);
+LIB_FUNC void setbuffer(FILE* restrict fp, char* restrict buf, const size_t size) {
+	setvbuf(fp, buf, (buf ? _IOFBF : _IONBF), size);
 }
 
 
-LIB_FUNC void setlinebuf(FILE* restrict f) {
-	setvbuf(f, 0, _IOLBF, 0);
+LIB_FUNC void setlinebuf(FILE* restrict fp) {
+	setvbuf(fp, 0, _IOLBF, 0);
 }
 
 
@@ -19933,36 +19953,35 @@ LIB_FUNC void* arg_n(va_list ap, const unsigned int n) {
 }
 
 
-LIB_FUNC ATTR_NONNULL(1) size_t do_read(FILE* restrict f, unsigned char* buf, const size_t len) {
-	wchar_t* wcs = f->_cookie;
-	const UNUSED wchar_t wcs_str[2] = L"@";
-	if ((!(wcs[0]))) { wcs = UNCONST(wcs_str); }
+LIB_FUNC ATTR_NONNULL(1) size_t do_read(FILE* restrict fp, unsigned char* buf, const size_t len) {
+	const UNUSED wchar_t wcstr[2] = L"@";
+	if ((!(fp->wbuf[0]))) { fp->wbuf = UNCONST(wcstr); }
 	register size_t i;
-	for (i = 0; i < f->buf_size && wcs[i]; i++) { f->buf[i] = (unsigned char)(wcs[i] < 128 ? wcs[i] : '@'); }
-	f->rpos = f->buf;
-	f->rend = f->buf + i;
-	f->_cookie = (void*)(wcs + i);
-	if (i && len) { *buf = *f->rpos++; return 1; }
+	for (i = 0; i < fp->wbuf_size && fp->wbuf[i]; i++) { fp->buf[i] = (unsigned char)(fp->wbuf[i] < 128 ? fp->wbuf[i] : '@'); }
+	fp->rpos = fp->buf;
+	fp->rend = fp->buf + i;
+	fp->wbuf = (wchar_t*)(fp->wbuf + i);
+	if (i && len) { *buf = *fp->rpos++; return 1; }
 	return 0;
 }
 
 
-LIB_FUNC ATTR_NONNULL(1) size_t do_read_helper(void* restrict f, unsigned char* buf, const size_t len) {
-	return do_read((FILE*)f, buf, len);
+LIB_FUNC ATTR_NONNULL(1) size_t do_read_helper(void* restrict fp, unsigned char* buf, const size_t len) {
+	return do_read((FILE*)fp, buf, len);
 }
 
 
-LIB_FUNC size_t __string_read(FILE* f, unsigned char* buf, const size_t len) {
-	char* src = f->_cookie;
-	register size_t k = len + 256, _len = len;
-	char* end = memchr_nonconst(src, 0, k);
-	if (end) { k = (size_t)(end - src); }
-	if (k < _len) { _len = k; }
-	memcpy_no_output(buf, src, _len);
-	f->rpos = (void*)(src + _len);
-	f->rend = (void*)(src + k);
-	f->_cookie = src + k;
-	return _len;
+LIB_FUNC size_t string_read(FILE* fp, unsigned char* buf, const size_t len) {
+	register size_t k = len + 256;
+	fp->buf_size = len;
+	char* end = memchr_nonconst(fp->buf, 0, k);
+	if (end) { k = (size_t)(end - (char*)fp->buf); }
+	if (k < fp->buf_size) { fp->buf_size = k; }
+	memcpy_no_output(buf, fp->buf, fp->buf_size);
+	fp->rpos = (void*)(fp->buf + fp->buf_size);
+	fp->rend = (void*)(fp->buf + k);
+	fp->buf = fp->buf + k;
+	return fp->buf_size;
 }
 
 
@@ -20271,7 +20290,6 @@ IGNORE_WSTACK_PROTECTOR
 LIB_FUNC int vsscanf(char* restrict s, const char* restrict fmt, va_list ap) {
 	FILE f = {
 		.buf = (void*)s,
-		._cookie = (void*)s,
 		.read = &do_read_helper,
 		.lock = -1
 	};
@@ -20296,17 +20314,17 @@ LIB_FUNC int sscanf(char* restrict s, const char* restrict fmt, ...) {
 #define isoc99_sscanf(s, fmt, ...)   sscanf((s), (fmt), (__VA_ARGS__))
 
 
-LIB_FUNC int ungetc(const int c, FILE* f) {
+LIB_FUNC int ungetc(const int c, FILE* fp) {
 	if (c == EOF) { return c; }
-	FLOCK(f);
-	if (!f->rpos) { __toread(f); }
-	if (!f->rpos || f->rpos <= (f->buf - UNGET)) {
-		FUNLOCK(f);
+	FLOCK(fp);
+	if (!fp->rpos) { __toread(fp); }
+	if (!fp->rpos || fp->rpos <= (fp->buf - UNGET)) {
+		FUNLOCK(fp);
 		return EOF;
 	}
-	*--f->rpos = (unsigned char)c;
-	f->flags &= (unsigned int)(~__SEOF);
-	FUNLOCK(f);
+	*--fp->rpos = (unsigned char)c;
+	fp->flags &= (unsigned int)(~__SEOF);
+	FUNLOCK(fp);
 	return c;
 }
 
@@ -20461,22 +20479,22 @@ LIB_FUNC void putu64(const uint64_t num) {
 }
 
 
-LIB_FUNC ssize_t getdelim(char** restrict s, size_t* restrict n, const int delim, FILE* restrict f) {
+LIB_FUNC ssize_t getdelim(char** restrict s, size_t* restrict n, const int delim, FILE* restrict fp) {
 	char* tmp;
 	unsigned char* z;
 	size_t k, i = 0;
 	int c;
-	FLOCK(f);
+	FLOCK(fp);
 	if (!n || !s) {
-		f->flags |= (unsigned int)__SERR;
-		FUNLOCK(f);
+		fp->flags |= (unsigned int)__SERR;
+		FUNLOCK(fp);
 		set_errno(EINVAL);
 		return -1;
 	}
 	if (!*s) { *n = 0; }
 	loop_forever {
-		z = (unsigned char*)memchr_nonconst(f->rpos, delim, (size_t)(f->rend - f->rpos));
-		k = (size_t)(z ? (z - f->rpos + 1) : (f->rend - f->rpos));
+		z = (unsigned char*)memchr_nonconst(fp->rpos, delim, (size_t)(fp->rend - fp->rpos));
+		k = (size_t)(z ? (z - fp->rpos + 1) : (fp->rend - fp->rpos));
 		if ((i + k + 1) >= *n) {
 			if (k >= SIZE_MAX / 2 - i) { goto goto_getdelim_oom; }
 			size_t m = (i + k + 2);
@@ -20490,13 +20508,13 @@ LIB_FUNC ssize_t getdelim(char** restrict s, size_t* restrict n, const int delim
 			*s = tmp;
 			*n = m;
 		}
-		memcpy_no_output(*s + i, f->rpos, k);
-		f->rpos += k;
+		memcpy_no_output(*s + i, fp->rpos, k);
+		fp->rpos += k;
 		i += k;
 		if (z) { break; }
-		else if ((c = getc_unlocked(f)) == EOF) {
-			if (!i || (!feof(f))) {
-				FUNLOCK(f);
+		else if ((c = getc_unlocked(fp)) == EOF) {
+			if (!i || (!feof(fp))) {
+				FUNLOCK(fp);
 				return -1;
 			}
 			break;
@@ -20504,38 +20522,38 @@ LIB_FUNC ssize_t getdelim(char** restrict s, size_t* restrict n, const int delim
 		if (((*s)[i++] = (char)c) == delim) { break; }
 	}
 	(*s)[i] = 0;
-	FUNLOCK(f);
+	FUNLOCK(fp);
 	return (ssize_t)i;
 goto_getdelim_oom:
-	f->flags |= (unsigned int)__SERR;
-	FUNLOCK(f);
+	fp->flags |= (unsigned int)__SERR;
+	FUNLOCK(fp);
 	set_errno(ENOMEM);
 	return -1;
 }
-#define __getdelim(s, n, delim, f)   getdelim((s), (n), (delim), (f))
+#define __getdelim(s, n, delim, fp)   getdelim((s), (n), (delim), (fp))
 
 
-LIB_FUNC ssize_t getline(char** restrict s, size_t* restrict n, FILE* restrict f) {
-	return getdelim(s, n, '\n', f);
+LIB_FUNC ssize_t getline(char** restrict s, size_t* restrict n, FILE* restrict fp) {
+	return getdelim(s, n, '\n', fp);
 }
 
 
-LIB_FUNC int __toread(FILE* f) {
-	f->mode |= (char)(f->mode - 1);
-	if (f->wpos > f->buf) { f->write(f, 0, 0); }
-	f->wpos = f->wbase = f->wend = 0;
-	if (cantread(f)) {
-		f->flags |= (unsigned int)__SERR;
+LIB_FUNC int __toread(FILE* fp) {
+	fp->mode |= (int)(fp->mode - 1);
+	if (fp->wpos > fp->buf) { fp->write(fp, 0, 0); }
+	fp->wpos = fp->wbase = fp->wend = 0;
+	if (cantread(fp)) {
+		fp->flags |= (unsigned int)__SERR;
 		return EOF;
 	}
-	f->rpos = f->rend = (f->buf + f->buf_size);
-	return (chk_feof(f) ? EOF : 0);
+	fp->rpos = fp->rend = (fp->buf + fp->buf_size);
+	return (chk_feof(fp) ? EOF : 0);
 }
 
 
-LIB_FUNC int __uflow(FILE* f) {
+LIB_FUNC int __uflow(FILE* fp) {
 	unsigned char c;
-	if (!__toread(f) && f->read(f, &c, 1) == 1) { return c; }
+	if (!__toread(fp) && fp->read(fp, &c, 1) == 1) { return c; }
 	return EOF;
 }
 
@@ -20679,59 +20697,59 @@ LIB_FUNC FILE* fopen(const char* restrict filename, const char* restrict mode) {
 
 
 /** Close a stream */
-LIB_FUNC int fclose(FILE* f) {
+LIB_FUNC int fclose(FILE* fp) {
 	int r, perm;
-	FLOCK(f);
-	unlist_locked_file(f);
-	if (!(perm = (int)(f->flags & (unsigned int)__SLBF))) {
+	FLOCK(fp);
+	unlist_locked_file(fp);
+	if (!(perm = (int)(fp->flags & (unsigned int)__SLBF))) {
 		FILE** head = ofl_lock();
-		if (f->prev_locked) { f->prev_locked->next_locked = f->next_locked; }
-		if (f->next_locked) { f->next_locked->prev_locked = f->prev_locked; }
-		if (*head == f) { *head = f->next_locked; }
-		ofl_unlock();
+		if (fp->prev_locked) { fp->prev_locked->next_locked = fp->next_locked; }
+		if (fp->next_locked) { fp->next_locked->prev_locked = fp->prev_locked; }
+		if (*head == fp) { *head = fp->next_locked; }
+		UNLOCK(memlock);
 	}
-	r = fflush(f);
-	r |= f->close(f);
-	if (f->_lb._base) { free(f->_lb._base); }
-	if (!perm) { free(f); }
-	else { FUNLOCK(f); }
+	r = fflush(fp);
+	r |= fp->close(fp);
+	if (fp->lb_base) { free(fp->lb_base); }
+	if (!perm) { free(fp); }
+	else { FUNLOCK(fp); }
 	return r;
 }
 
 
-LIB_FUNC int __fclose_ca(FILE* f) {
-	return f->close(f);
+LIB_FUNC int __fclose_ca(FILE* fp) {
+	return fp->close(fp);
 }
 
 
 /** Reuses stream to either open the file specified by filename or to change its access mode */
-LIB_FUNC FILE* freopen(const char* restrict filename, const char* restrict mode, FILE* restrict f) {
+LIB_FUNC FILE* freopen(const char* restrict filename, const char* restrict mode, FILE* restrict fp) {
 	int _fl = fmodeflags(mode);
-	FLOCK(f);
-	fflush(f);
+	FLOCK(fp);
+	fflush(fp);
 	if (!filename) {
-		if (_fl & O_CLOEXEC) { syscall3(SYS_fcntl, f->fd, F_SETFD, FD_CLOEXEC); }
+		if (_fl & O_CLOEXEC) { syscall3(SYS_fcntl, fp->fd, F_SETFD, FD_CLOEXEC); }
 		_fl &= (int)(~(O_CREAT | O_EXCL | O_CLOEXEC));
-		if (syscall3(SYS_fcntl, f->fd, F_SETFL, _fl) < 0) { fclose(f); return NULL; }
+		if (syscall3(SYS_fcntl, fp->fd, F_SETFL, _fl) < 0) { fclose(fp); return NULL; }
 	} else {
-		FILE* f2 = fopen(filename, mode);
-		if (!f2) { fclose(f); return NULL; }
-		else if (f2->fd == f->fd) { f2->fd = -1; }
-		else if ((__dup3(f2->fd, f->fd, (_fl & O_CLOEXEC)) < 0)) { fclose(f2); fclose(f); return NULL; }
-		f->flags = (unsigned int)((f->flags & (unsigned int)__SLBF) | (unsigned int)f2->flags);
-		f->read = f2->read;
-		f->write = f2->write;
-		f->seek = f2->seek;
-		f->close = f2->close;
-		fclose(f2);
+		FILE* fp2 = fopen(filename, mode);
+		if (!fp2) { fclose(fp); return NULL; }
+		else if (fp2->fd == fp->fd) { fp2->fd = -1; }
+		else if ((__dup3(fp2->fd, fp->fd, (_fl & O_CLOEXEC)) < 0)) { fclose(fp2); fclose(fp); return NULL; }
+		fp->flags = (unsigned int)((fp->flags & (unsigned int)__SLBF) | (unsigned int)fp2->flags);
+		fp->read = fp2->read;
+		fp->write = fp2->write;
+		fp->seek = fp2->seek;
+		fp->close = fp2->close;
+		fclose(fp2);
 	}
-	FUNLOCK(f);
-	return f;
+	FUNLOCK(fp);
+	return fp;
 }
-#define freopen64(filename, mode, f)   freopen((filename), (mode), (f))
+#define freopen64(filename, mode, fp)   freopen((filename), (mode), (fp))
 
 
-LIB_FUNC FILE* funopen(void* cookie, size_t (*readfn)(void*, unsigned char*, const size_t), size_t (*writefn)(void*, const unsigned char*, const size_t), off_t (*seekfn)(void*, const off_t, const int), int (*closefn)(void*)) {
+LIB_FUNC FILE* funopen(void* stream, size_t (*readfn)(void*, unsigned char*, const size_t), size_t (*writefn)(void*, const unsigned char*, const size_t), off_t (*seekfn)(void*, const off_t, const int), int (*closefn)(void*)) {
 	FILE* restrict fp = { 0 };
 	register int flags;
 	if (readfn == NULL) {
@@ -20743,20 +20761,20 @@ LIB_FUNC FILE* funopen(void* cookie, size_t (*readfn)(void*, unsigned char*, con
 	}
 	fp->flags = (unsigned int)flags;
 	fp->fd = -1;
-	fp->_cookie = (void*)cookie;
+	fp->buf = (unsigned char*)stream;
 	fp->read = readfn;
 	fp->write = writefn;
 	fp->seek = seekfn;
 	fp->close = closefn;
 	return fp;
 }
-#define fropen(cookie, fn)   funopen((cookie), (fn), (0), (0), (0))
-#define fwopen(cookie, fn)   funopen((cookie), (0), (fn), (0), (0))
+#define fropen(stream, fn)   funopen((stream), (fn), (0), (0), (0))
+#define fwopen(stream, fn)   funopen((stream), (0), (fn), (0), (0))
 
 
 LIB_FUNC void __stdio_exit(void) {
-	FILE* f;
-	for (f = *ofl_lock(); f; f = f->next_locked) { __stdio_close(f); }
+	FILE* fp;
+	for (fp = *ofl_lock(); fp; fp = fp->next_locked) { __stdio_close(fp); }
 	__stdio_close(STDIN);
 	__stdio_close(STDOUT);
 }
@@ -20772,49 +20790,49 @@ LIB_FUNC int __aio_close(const int fd) {
 }
 
 
-LIB_FUNC int __stdio_close(FILE* f) {
-	return (int)syscall1(SYS_close, __aio_close(f->fd));
+LIB_FUNC int __stdio_close(FILE* fp) {
+	return (int)syscall1(SYS_close, __aio_close(fp->fd));
 }
-#define close_file(f)   __stdio_close((f))
-#define stdio_close(f)   __stdio_close((f))
+#define close_file(fp)   __stdio_close((fp))
+#define stdio_close(fp)   __stdio_close((fp))
 
 
-LIB_FUNC int __stdio_close_helper(void* f) {
-	return __stdio_close((FILE*)f);
+LIB_FUNC int __stdio_close_helper(void* fp) {
+	return __stdio_close((FILE*)fp);
 }
 
 
-LIB_FUNC off_t __stdio_seek(FILE* f, const off_t off, const int whence) {
+LIB_FUNC off_t __stdio_seek(FILE* fp, const off_t off, const int whence) {
 	off_t ret;
 #   ifdef SYS__llseek
-	if (syscall5(SYS__llseek, (long)f->fd, (long)(off >> 32), (long)off, (long)&ret, whence) < 0) { ret = -1; }
+	if (syscall5(SYS__llseek, (long)fp->fd, (long)(off >> 32), (long)off, (long)&ret, whence) < 0) { ret = -1; }
 #   else
-	ret = (off_t)syscall3(SYS_lseek, f->fd, (long)off, whence);
+	ret = (off_t)syscall3(SYS_lseek, fp->fd, (long)off, whence);
 #   endif
 	return ret;
 }
 
 
-LIB_FUNC off_t __stdio_seek_helper(void* f, const off_t off, const int whence) {
-	return __stdio_seek((FILE*)f, off, whence);
+LIB_FUNC off_t __stdio_seek_helper(void* fp, const off_t off, const int whence) {
+	return __stdio_seek((FILE*)fp, off, whence);
 }
 
 
-LIB_FUNC ATTR_NONNULL(2) size_t __stdio_read(FILE* f, unsigned char* buf, const size_t len) {
-	const struct iovec align32 iov[2] = { { .iov_base = buf, .iov_len = len - (!!(f->buf_size)) }, { .iov_base = f->buf, .iov_len = f->buf_size } };
-	register ssize_t cnt = (ssize_t)syscall3(SYS_readv, f->fd, (long)iov, 2);
-	if (cnt <= 0) { f->flags |= (unsigned int)(__SEOF ^ ((__SERR ^ __SEOF) & cnt)); return (size_t)cnt; }
+LIB_FUNC ATTR_NONNULL(2) size_t __stdio_read(FILE* fp, unsigned char* buf, const size_t len) {
+	const struct iovec align32 iov[2] = { { .iov_base = buf, .iov_len = len - (!!(fp->buf_size)) }, { .iov_base = fp->buf, .iov_len = fp->buf_size } };
+	register ssize_t cnt = (ssize_t)syscall3(SYS_readv, fp->fd, (long)iov, 2);
+	if (cnt <= 0) { fp->flags |= (unsigned int)(__SEOF ^ ((__SERR ^ __SEOF) & cnt)); return (size_t)cnt; }
 	else if ((size_t)cnt <= iov[0].iov_len) { return (size_t)cnt; }
 	cnt -= (ssize_t)iov[0].iov_len;
-	f->rpos = f->buf;
-	f->rend = (f->buf + cnt);
-	if (f->buf_size) { buf[len - 1] = *f->rpos++; }
+	fp->rpos = fp->buf;
+	fp->rend = (fp->buf + cnt);
+	if (fp->buf_size) { buf[len - 1] = *fp->rpos++; }
 	return len;
 }
 
 
-LIB_FUNC ATTR_NONNULL(2) size_t __stdio_read_helper(void* f, unsigned char* buf, const size_t len) {
-	return __stdio_read((FILE*)f, buf, len);
+LIB_FUNC ATTR_NONNULL(2) size_t __stdio_read_helper(void* fp, unsigned char* buf, const size_t len) {
+	return __stdio_read((FILE*)fp, buf, len);
 }
 
 
@@ -20823,21 +20841,21 @@ LIB_FUNC ATTR_NONNULL(2) ssize_t __stdio_readc_helper(const int fd, unsigned cha
 }
 
 
-LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* f, const unsigned char* buf, const size_t len) {
-	struct iovec align32 iovs[2] = { { .iov_base = f->wbase, .iov_len = (unsigned long)(f->wpos - f->wbase) }, { .iov_base = (const void*)buf, .iov_len = len } };
+LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* fp, const unsigned char* buf, const size_t len) {
+	struct iovec align32 iovs[2] = { { .iov_base = fp->wbase, .iov_len = (unsigned long)(fp->wpos - fp->wbase) }, { .iov_base = (const void*)buf, .iov_len = len } };
 	struct iovec* iov = iovs;
 	register size_t rem = iov[0].iov_len + iov[1].iov_len;
 	register int iovcnt = 2;
 	register ssize_t cnt;
 	loop_forever {
-		cnt = (ssize_t)syscall3(SYS_writev, f->fd, (long)iov, (long)iovcnt);
+		cnt = (ssize_t)syscall3(SYS_writev, fp->fd, (long)iov, (long)iovcnt);
 		if ((size_t)cnt == rem) {
-			f->wend = (f->buf + f->buf_size);
-			f->wpos = f->wbase = f->buf;
+			fp->wend = (fp->buf + fp->buf_size);
+			fp->wpos = fp->wbase = fp->buf;
 			return len;
 		} else if (cnt < 0) {
-			f->wpos = f->wbase = f->wend = 0;
-			f->flags |= (unsigned int)__SERR;
+			fp->wpos = fp->wbase = fp->wend = 0;
+			fp->flags |= (unsigned int)__SERR;
 			return (iovcnt == 2 ? 0 : (len - iov[0].iov_len));
 		}
 		rem -= (size_t)cnt;
@@ -20848,18 +20866,18 @@ LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* f, const unsigned char* buf,
 }
 
 
-LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write_helper(void* f, const unsigned char* buf, const size_t len) {
-	return __stdio_write((FILE*)f, buf, len);
+LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write_helper(void* fp, const unsigned char* buf, const size_t len) {
+	return __stdio_write((FILE*)fp, buf, len);
 }
 
 
-LIB_FUNC NONNULL size_t __stdout_write(UNUSED FILE* f, const unsigned char* restrict buf, const size_t len) {
-	f->write = &__stdio_write_helper;
+LIB_FUNC NONNULL size_t __stdout_write(UNUSED FILE* fp, const unsigned char* restrict buf, const size_t len) {
+	fp->write = &__stdio_write_helper;
 	return (size_t)syscall3(SYS_write, STDOUT_FILENO, (long)buf, (long)len);
 }
 
 
-LIB_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* f, const unsigned char* restrict buf, const size_t len) {
+LIB_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* fp, const unsigned char* restrict buf, const size_t len) {
 	return (size_t)syscall3(SYS_write, STDOUT_FILENO, (long)buf, (long)len);
 }
 
@@ -20971,14 +20989,24 @@ LIB_FUNC long ftell(FILE* f) {
 
 
 /** Set and determine the orientation of a FILE stream */
-LIB_FUNC int fwide(FILE* f, const int mode) {
+LIB_FUNC int fwide(FILE* fp, const int mode) {
 	register int _mode = mode;
-	FLOCK(f);
-	if (_mode) { if (!f->mode) { f->mode = (_mode > 0 ? 1 : -1); } }
-	_mode = f->mode;
-	FUNLOCK(f);
+	FLOCK(fp);
+	if (_mode == _O_BINARY) { fp->mode = _O_BYTE; }
+	else if (_mode) { if (!fp->mode) { fp->mode = (int)(_mode > 0 ? _O_WIDE : _O_BYTE); } }
+	_mode = fp->mode;
+	FUNLOCK(fp);
 	return _mode;
 }
+
+
+/** @def ORIENT
+Set the orientation for a stream */
+#ifdef _WIDE_ORIENT
+#   define ORIENT(fp, mode)   fwide((fp), (mode))
+#else
+#   define ORIENT(fp, mode)
+#endif
 
 
 /** Deletes a file or directory from the file system */
@@ -21430,11 +21458,11 @@ LIB_FUNC int select(const int n, fd_set* restrict rfds, fd_set* restrict wfds, f
 
 /** PM passes the address of a structure of this type to the Minix kernel when sys_sigsend() is invoked as part of the signal catching mechanism; The structure contain all the information that the Minix kernel needs to build the signal stack */
 typedef struct attr_packed sigmsg {
-	int sm_signo;  // Signal number being caught
-	sigset_t sm_mask;  // Mask to restore when handler returns
-	vir_bytes sm_sighandler;  // Address of handler
-	vir_bytes sm_sigreturn;  // Address of _sigreturn in C library
-	vir_bytes sm_stkptr;  // User stack pointer
+	int sm_signo;  //!< Signal number being caught
+	sigset_t sm_mask;  //!< Mask to restore when handler returns
+	vir_bytes sm_sighandler;  //!< Address of handler
+	vir_bytes sm_sigreturn;  //!< Address of `_sigreturn` in C library
+	vir_bytes sm_stkptr;  //!< User stack pointer
 } sigmsg_t;
 
 
@@ -21529,7 +21557,7 @@ int  pselect(int, fd_set* restrict, fd_set* restrict, fd_set* restrict, const st
 
 
 /** Add CPU cpu to set */
-LIB_FUNC ATTR_PF void CPU_SET_S(const int cpu, const size_t setsize, cpu_set_t* restrict cpusetp) {
+LIB_FUNC void CPU_SET_S(const int cpu, const size_t setsize, cpu_set_t* restrict cpusetp) {
 	const size_t _cpu = (size_t)cpu;
 	if ((_cpu >> 3) < setsize) {
 		cpusetp->bits[CPUELT(_cpu)] |= (CPUMASK(_cpu));
@@ -21540,7 +21568,7 @@ LIB_FUNC ATTR_PF void CPU_SET_S(const int cpu, const size_t setsize, cpu_set_t* 
 
 
 /** Remove CPU cpu from set */
-LIB_FUNC ATTR_PF void CPU_CLR_S(const int cpu, const size_t setsize, cpu_set_t* restrict cpusetp) {
+LIB_FUNC void CPU_CLR_S(const int cpu, const size_t setsize, cpu_set_t* restrict cpusetp) {
 	register const size_t _cpu = (size_t)cpu;
 	if ((_cpu >> 3) < setsize) {
 		cpusetp->bits[CPUELT(_cpu)] &= (~(CPUMASK(_cpu)));
@@ -21551,7 +21579,7 @@ LIB_FUNC ATTR_PF void CPU_CLR_S(const int cpu, const size_t setsize, cpu_set_t* 
 
 
 /** Clears set, so that it contains no CPUs */
-LIB_FUNC ATTR_PF void CPU_ZERO_S(const size_t setsize, cpu_set_t* restrict cpusetp) {
+LIB_FUNC void CPU_ZERO_S(const size_t setsize, cpu_set_t* restrict cpusetp) {
 	register const size_t imax = (setsize / SIZEOF_LONG);
 	register size_t i;
 	for (i = 0; i < imax; ++i) { cpusetp->bits[i] = 0; }
@@ -21846,7 +21874,7 @@ LIB_FUNC noreturn void __longjmp(struct jmp_buf_tag env[1], int val) {
 #define _JMPBUF_UNWINDS(jmpbuf, address)   ((void*)(address) < (void*)(jmpbuf)[JB_RSP])
 
 LIB_FUNC int __setjmp_(UNUSED struct jmp_buf_tag env[1]) {
-	asm volatile (
+	vasm(
 		"mov %rbx, (%rdi);"  // rdi is jmp_buf, move registers onto it
 		"mov %rbp, 8(%rdi);"
 		"mov %r12, 16(%rdi);"
@@ -21863,7 +21891,7 @@ LIB_FUNC int __setjmp_(UNUSED struct jmp_buf_tag env[1]) {
 
 /** Jump to the position specified by ENV, causing the setjmp call there to return VAL, or 1 if VAL is 0 */
 LIB_FUNC noreturn void __longjmp(UNUSED struct jmp_buf_tag env[1], UNUSED int val) {
-	asm volatile (
+	vasm(
 		// Restore registers
 		"movq (0)(%%rdi), %%rbx;"
 		"movq (8)(%%rdi), %%rbp;"
@@ -21896,7 +21924,7 @@ LIB_FUNC noreturn void __longjmp(UNUSED struct jmp_buf_tag env[1], UNUSED int va
 #define _JMPBUF_UNWINDS(jmpbuf, address)   ((void*)(address) < (void*)(jmpbuf)[JB_SP])
 
 LIB_FUNC int __setjmp_(UNUSED struct jmp_buf_tag env[1]) {
-	asm volatile (
+	vasm(
 		"movl 4 (%esp), %eax;"
 		// Save registers
 		"movl %ebx, (0)(%eax);"
@@ -21927,7 +21955,7 @@ setjmp_here:
 
 /** Jump to the position specified by ENV, causing the setjmp call there to return VAL, or 1 if VAL is 0 */
 LIB_FUNC noreturn void __longjmp(UNUSED struct jmp_buf_tag env[1], UNUSED int val) {
-	asm volatile (
+	vasm(
 		"movl 4(%esp), %ecx;"  // User's jmp_buf in %ecx
 		"movl 8(%esp), %eax;"  // Second argument is return value
 		// Save the return address now
@@ -22423,8 +22451,8 @@ typedef struct attr_packed semid_ds {
 /** semctl(2)'s argument structure */
 typedef union semun {
 	int val;
-	struct semid_ds* buf;  // Buffer for IPC_STAT & IPC_SET
-	unsigned short* array;  // Array for GETALL & SETALL
+	struct semid_ds* buf;  //!< Buffer for `IPC_STAT` & `IPC_SET`
+	unsigned short* array;  //!< Array for `GETALL` & `SETALL`
 } semun_t;
 #define __semun   semun
 
@@ -22805,7 +22833,7 @@ typedef struct attr_packed __timer { int timerid; pthread_t thread; }   pthread_
 
 typedef struct sem_struct { volatile unsigned int count; }   sem_t;
 #define SEM_FAILED   ((sem_t*)-1)
-/* typedef struct {
+/* FIXME: typedef struct {
 	pthread_mutex_t lock;
 	pthread_cond_t cond;
 	int value;
@@ -22952,7 +22980,7 @@ static UNUSED int __manager_pipe[2] = { -1, -1 };
 #ifdef ARCHI386  // pthread_self
 LIB_FUNC struct pthread* __pthread_self(void) {
 	struct pthread* self;
-	asm volatile ("movl %%gs:0, %0;" : "=r"(self));
+	vasm("movl %%gs:0, %0;" : "=r"(self));
 	return self;
 }
 #   define TP_ADJ(p)   (p)
@@ -22960,7 +22988,7 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #elif defined(ARCHX86)
 LIB_FUNC struct pthread* __pthread_self(void) {
 	struct pthread* self;
-	asm volatile ("mov %%fs:0, %0;" : "=r"(self));
+	vasm("mov %%fs:0, %0;" : "=r"(self));
 	return self;
 }
 #   define TP_ADJ(p)   (p)
@@ -22969,7 +22997,7 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #elif defined(ARCHSUPERH)
 LIB_FUNC struct pthread* __pthread_self(void) {
 	char* self;
-	asm volatile ("stc gbr, %0;" : "=r"(self));
+	vasm("stc gbr, %0;" : "=r"(self));
 	return (struct pthread*)(self + 0x8000 - sizeof(struct pthread));
 }
 #   define TLS_ABOVE_TP
@@ -22979,10 +23007,10 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 LIB_FUNC struct pthread* __pthread_self(void) {
 #   ifdef COMPILER_CLANG
 	char* tp;
-	asm volatile ("mr %0, 2;" : "=r"(tp));
+	vasm("mr %0, 2;" : "=r"(tp));
 #   else
 	register char* tp asm ("r2");
-	asm volatile (";" : "=r"(tp));
+	vasm(";" : "=r"(tp));
 #   endif
 	return (pthread_t)(tp - 0x7000 - sizeof(struct pthread));
 }
@@ -22994,7 +23022,7 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #elif defined(ARCHMICROBLAZE)
 LIB_FUNC struct pthread* __pthread_self(void) {
 	struct pthread* self;
-	asm volatile ("ori %0, r21, 0;" : "=r"(self));
+	vasm("ori %0, r21, 0;" : "=r"(self));
 	return self;
 }
 #   define TP_ADJ(p)   (p)
@@ -23002,7 +23030,7 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #elif defined(ARCHAARCH64)
 LIB_FUNC struct pthread* __pthread_self(void) {
 	char* self;
-	asm volatile ("mrs %0, tpidr_el0;" : "=r"(self));
+	vasm("mrs %0, tpidr_el0;" : "=r"(self));
 	return (void*)(self + 16 - sizeof(struct pthread));
 }
 #   define TLS_ABOVE_TP
@@ -23012,17 +23040,17 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #   if ((defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6ZK__)) && (!defined(ARM_THUMB))) || defined(__ARM_ARCH_7A__) || defined(__ARM_ARCH_7R__) || (__ARM_ARCH >= 7)
 LIB_FUNC pthread_t __pthread_self(void) {
 	char* p;
-	asm volatile ("mrc p15, 0, %0, c13, c0, 3;" : "=r"(p));
+	vasm("mrc p15, 0, %0, c13, c0, 3;" : "=r"(p));
 	return (void*)(p + 0x8000 - sizeof(struct pthread));
 }
 #   else
 LIB_FUNC pthread_t __pthread_self(void) {
 #      ifdef COMPILER_CLANG
 	char* p;
-	asm volatile ("bl __a_gettp;" "mov %0, r0;" : "=r"(p) : : "cc", "r0", "lr");
+	vasm("bl __a_gettp;" "mov %0, r0;" : "=r"(p) : : "cc", "r0", "lr");
 #      else
 	register char* p asm ("r0");
-	asm volatile ("bl __a_gettp;" : "=r"(p) : : "cc", "lr");
+	vasm("bl __a_gettp;" : "=r"(p) : : "cc", "lr");
 #      endif
 	return (void*)(p + 0x8000 - sizeof(struct pthread));
 }
@@ -23034,10 +23062,10 @@ LIB_FUNC pthread_t __pthread_self(void) {
 LIB_FUNC struct pthread* __pthread_self(void) {
 #   ifdef COMPILER_CLANG
 	char* tp;
-	asm volatile (".word 0x7c03e83b;" "move %0, $3;" : "=r"(tp) : : "$3");
+	vasm(".word 0x7c03e83b;" "move %0, $3;" : "=r"(tp) : : "$3");
 #   else
 	register char* tp asm ("$3");
-	asm volatile (".word 0x7c03e83b;" : "=r"(tp));
+	vasm(".word 0x7c03e83b;" : "=r"(tp));
 #   endif
 	return (pthread_t)(tp - 0x7000 - sizeof(struct pthread));
 }
@@ -23146,14 +23174,14 @@ LIB_FUNC int pthread_sigmask(const int how, const sigset_t* restrict set, sigset
 /** Find thread by Thread ID */
 LIB_FUNC REGPARM(1) _pthread_descr __thread_find_(const int pid) {
 	if (__thread_started == PTHREAD_ONCE_INIT) {
-		LOCK((volatile int*)&_main_thread);
+		LOCK((atomic volatile int*)&_main_thread);
 		return &_main_thread;
 	}
-	_pthread_descr cur = _thread_hash_tid[hash_tid(pid)];
-	_pthread_descr next;
+	atomic _pthread_descr cur = _thread_hash_tid[hash_tid(pid)];
+	atomic _pthread_descr next;
 	while (cur) {
 		next = cur->next;
-		if (pid == cur->pid) { LOCK((volatile int*)cur); break; }
+		if (pid == cur->pid) { LOCK((atomic volatile int*)cur); break; }
 		cur = next;
 	}
 	return cur;
@@ -23181,7 +23209,7 @@ LIB_FUNC _pthread_descr __thread_self(void) {
 	asm ("mov %%gs:(8), %0;" : "=r"(cur));
 #   else
 	cur = __thread_find_(getpid());
-	if (cur) { __unlock(cur); }
+	if (cur) { UNLOCK((atomic volatile int*)cur); }
 #   endif
 #endif
 	return (_pthread_descr)(cur ? cur : &_main_thread);
@@ -23204,13 +23232,13 @@ LIB_FUNC int __thread_setcanceltype(const int type, int* oldtype, _pthread_descr
 
 /** Exit a thread */
 LIB_FUNC void pthread_exit(void* retval) {
-	_pthread_descr this = __thread_self();
+	atomic _pthread_descr this = __thread_self();
 	if (this == &_main_thread) { _Exit((int)SYS_exit); }
 	__NO_ASYNC_CANCEL_BEGIN_(this);
-	LOCK((volatile int*)this);
+	LOCK((atomic volatile int*)this);
 	this->cancelstate = PTHREAD_CANCEL_DISABLE;
 	this->retval = retval;
-	UNLOCK((volatile int*)this);
+	UNLOCK((atomic volatile int*)this);
 	siglongjmp(this->jmp_exit, 1);
 }
 #define __pthread_exit(retval)   pthread_exit((retval))
@@ -23249,7 +23277,7 @@ LIB_FUNC int pthread_setcanceltype(const int new, int* old) {
 
 LIB_FUNC int __thread_mutex_lock(pthread_mutex_t* mutex, const _pthread_descr this) {
 	if (mutex->__data.__owner != this) {
-		LOCK((volatile int*)&mutex);
+		LOCK((atomic volatile int*)&mutex);
 		mutex->__data.__owner = this;
 		mutex->__data.__count = 0;
 	}
@@ -23271,7 +23299,7 @@ LIB_FUNC int __thread_mutex_unlock(pthread_mutex_t* mutex, const _pthread_descr 
 			if (--(mutex->__data.__count)) { return 0; }
 		}
 		mutex->__data.__owner = 0;
-		UNLOCK((volatile int*)&mutex);
+		UNLOCK((atomic volatile int*)&mutex);
 	}
 	else if (mutex->__data.__kind == PTHREAD_MUTEX_ERRORCHECK_NP) { return EPERM; }
 	return 0;
@@ -23285,28 +23313,28 @@ LIB_FUNC int pthread_mutex_unlock(pthread_mutex_t* mutex) {
 
 
 LIB_FUNC void pthread_cleanup_push(void(*func)(void*), void* arg) {
-	_pthread_descr this = __thread_self();
+	atomic _pthread_descr this = __thread_self();
 	struct thread_cleanup_t* tmp;
 	__NO_ASYNC_CANCEL_BEGIN_(this);
 	tmp = (struct thread_cleanup_t*)malloc(sizeof(struct thread_cleanup_t));
 	tmp->func = func;
 	tmp->arg = arg;
-	LOCK((volatile int*)this);
+	LOCK((atomic volatile int*)this);
 	tmp->next = this->cleanup_stack;
 	this->cleanup_stack = tmp;
 	free(tmp);
-	UNLOCK((volatile int*)this);
+	UNLOCK((atomic volatile int*)this);
 }
 
 
 LIB_FUNC void pthread_cleanup_pop(int execute) {
-	_pthread_descr this = __thread_self();
+	atomic _pthread_descr this = __thread_self();
 	struct thread_cleanup_t* tmp;
 	__NO_ASYNC_CANCEL_BEGIN_(this);
-	LOCK((volatile int*)this);
+	LOCK((atomic volatile int*)this);
 	tmp = this->cleanup_stack;
 	this->cleanup_stack = tmp->next;
-	UNLOCK((volatile int*)this);
+	UNLOCK((atomic volatile int*)this);
 	if (execute) { tmp->func(tmp->arg); }
 	tmp = (struct thread_cleanup_t*)NULL;
 }
@@ -23512,13 +23540,13 @@ LIB_FUNC void __thread_exit__key(const UNUSED _pthread_descr td) {
 /** Machine depending thread register */
 LIB_FUNC _pthread_descr __thread_set_register(void* arg) {
 #ifdef ARCHALPHA
-	asm volatile ("call_pal 159;" : : "r"(arg) );
+	vasm("call_pal 159;" : : "r"(arg) );
 #elif defined(ARCHSPARC)
-	asm volatile ("mov %0, %%g6;" : : "r"(arg) );
+	vasm("mov %0, %%g6;" : : "r"(arg) );
 #elif defined(ARCHS390)
-	asm volatile ("sar %%a0, %0;" : : "d"(arg) );
+	vasm("sar %%a0, %0;" : : "d"(arg) );
 #elif defined(ARCHITANIUM)
-	asm volatile ("mov r13 = %0;" : : "r"(arg) );
+	vasm("mov r13 = %0;" : : "r"(arg) );
 #endif
 	return (_pthread_descr)arg;
 }
@@ -23529,23 +23557,23 @@ LIB_FUNC int pthread_cond_wait(pthread_cond_t* cond, pthread_mutex_t* mutex) {
 	_pthread_descr* tmp;
 	if (mutex->__data.__owner != this) { return EINVAL; }
 	__NO_ASYNC_CANCEL_BEGIN_(this);
-	LOCK((volatile int*)cond);
+	LOCK((atomic volatile int*)cond);
 	tmp = &(cond->__data.wait_chain);
 	this->waitnext = 0;
 	while (*tmp) { tmp = &((*tmp)->waitnext); }
 	this->waitprev = tmp;
 	*tmp = this;
-	UNLOCK((volatile int*)cond);
+	UNLOCK((atomic volatile int*)cond);
 	pthread_mutex_unlock(mutex);
 	__thread_suspend(this, 1);
 	pthread_mutex_lock(mutex);
-	LOCK((volatile int*)cond);
+	LOCK((atomic volatile int*)cond);
 	if (this->waitnext) {
 		this->waitnext->waitprev = this->waitprev;
 		*(this->waitprev) = this->waitnext;
 	}
 	else { *(this->waitprev) = 0; }
-	UNLOCK((volatile int*)cond);
+	UNLOCK((atomic volatile int*)cond);
 	return 0;
 }
 
@@ -23555,22 +23583,22 @@ LIB_FUNC int pthread_cond_timedwait(pthread_cond_t* cond, pthread_mutex_t* restr
 	_pthread_descr* tmp;
 	if (mutex->__data.__owner != this) { return EINVAL; }
 	__NO_ASYNC_CANCEL_BEGIN_(this);
-	LOCK((volatile int*)cond);
+	LOCK((atomic volatile int*)cond);
 	tmp = &(cond->__data.wait_chain);
 	this->waitnext = 0;
 	while (*tmp) { tmp = &((*tmp)->waitnext); }
 	this->waitprev = tmp;
 	*tmp = this;
-	UNLOCK((volatile int*)cond);
+	UNLOCK((atomic volatile int*)cond);
 	pthread_mutex_unlock(mutex);
 	const int retval = __thread_suspend_till(this, 1, abstime);
 	pthread_mutex_lock(mutex);
-	LOCK((volatile int*)cond);
+	LOCK((atomic volatile int*)cond);
 	if (this->waitnext) {
 		this->waitnext->waitprev = this->waitprev;
 		*(this->waitprev) = this->waitnext;
 	} else { *(this->waitprev) = 0; }
-	UNLOCK((volatile int*)cond);
+	UNLOCK((atomic volatile int*)cond);
 	__NO_ASYNC_CANCEL_END_(this);
 	return retval;
 }
@@ -23580,10 +23608,10 @@ LIB_FUNC int pthread_cond_destroy(pthread_cond_t* restrict c) {
 	if (c->__data.__lock && c->__data.__nwaiters) {
 		a_or((volatile int*)&c->__data.__nwaiters, (int)0x80000000);
 		a_inc((volatile int*)&c->__data.__broadcast_seq);
-		wake(&c->__data.__broadcast_seq, -1, 0);
+		wake((atomic volatile void*)&c->__data.__broadcast_seq, -1, 0);
 		int cnt;
 		while ((cnt = (int)c->__data.__nwaiters) & 0x7fffffff) {
-			__wait((volatile int*)&c->__data.__nwaiters, 0, cnt, 0);
+			__wait((atomic volatile int*)&c->__data.__nwaiters, 0, cnt, 0);
 		}
 	}
 	return 0;
@@ -24012,33 +24040,33 @@ LIB_FUNC noreturn COLD void fast_exit(const int code) {
 
 LIB_FUNC void __funcs_on_exit(void) {
 	void (*func)(void*), *arg;
-	LOCK(lock);
-	for (; head; head = head->next, slot = 32) {
-		while ((slot--) > 0) {
-			func = head->f[slot];
-			arg = head->a[slot];
-			UNLOCK(lock);
+	LOCK(memlock);
+	for (; head; head = head->next, progslot = 32) {
+		while ((progslot--) > 0) {
+			func = head->f[progslot];
+			arg = head->a[progslot];
+			UNLOCK(memlock);
 			func(arg);
-			LOCK(lock);
+			LOCK(memlock);
 		}
 	}
 }
 
 
 LIB_FUNC int __cxa_atexit(void (*func)(void*), void* arg, const UNUSED void* dso) {
-	LOCK(lock);
+	LOCK(memlock);
 	if (!head) { head = &exit_struct; }
-	if (slot == 32) {
+	if (progslot == 32) {
 		struct fl* new_fl = calloc(sizeof(struct fl), 1);
-		if (!new_fl) { UNLOCK(lock); return -1; }
+		if (!new_fl) { UNLOCK(memlock); return -1; }
 		new_fl->next = head;
 		head = new_fl;
-		slot = 0;
+		progslot = 0;
 	}
-	head->f[slot] = func;
-	head->a[slot] = arg;
-	++slot;
-	UNLOCK(lock);
+	head->f[progslot] = func;
+	head->a[progslot] = arg;
+	++progslot;
+	UNLOCK(memlock);
 	return 0;
 }
 
@@ -24057,21 +24085,21 @@ LIB_FUNC int atexit(void (*func)(void)) {
 
 LIB_FUNC void __funcs_on_quick_exit(void) {
 	void (*func)(void);
-	LOCK(lock);
+	LOCK(memlock);
 	while (exit_counter > 0) {
 		func = funcs[--exit_counter];
-		UNLOCK(lock);
+		UNLOCK(memlock);
 		func();
-		LOCK(lock);
+		LOCK(memlock);
 	}
 }
 
 
 LIB_FUNC int at_quick_exit(void (*func)(void)) {
 	if (exit_counter == 32) { return -1; }
-	LOCK(lock);
+	LOCK(memlock);
 	funcs[exit_counter++] = func;
-	UNLOCK(lock);
+	UNLOCK(memlock);
 	return 0;
 }
 
@@ -27222,9 +27250,9 @@ LIB_FUNC void __srandom(const unsigned int seed) {
 
 
 LIB_FUNC void srandom(const unsigned int seed) {
-	LOCK(lock);
+	LOCK(memlock);
 	__srandom(seed);
-	UNLOCK(lock);
+	UNLOCK(memlock);
 }
 
 
@@ -27244,7 +27272,7 @@ LIB_FUNC volatile void* savestate(void) {
 
 LIB_FUNC volatile char* initstate(const unsigned int seed, char* _state, const size_t size) {
 	if (size < 8) { return 0; }
-	LOCK(lock);
+	LOCK(memlock);
 	volatile void* old = savestate();
 	if (size < 32) { rand_n = 0; }
 	else if (size < 64) { rand_n = 7; }
@@ -27254,16 +27282,16 @@ LIB_FUNC volatile char* initstate(const unsigned int seed, char* _state, const s
 	rand_x = (uint32_t*)_state + 1;
 	__srandom(seed);
 	savestate();
-	UNLOCK(lock);
+	UNLOCK(memlock);
 	return old;
 }
 
 
 LIB_FUNC volatile char* setstate(char* _state) {
-	LOCK(lock);
+	LOCK(memlock);
 	volatile void* old = savestate();
 	loadstate((uint32_t*)_state);
-	UNLOCK(lock);
+	UNLOCK(memlock);
 	return old;
 }
 
@@ -28182,9 +28210,9 @@ enum __ptrace_eventcodes {
 };
 /** Arguments for PTRACE_PEEKSIGINFO */
 struct __ptrace_peeksiginfo_args {
-	uint64_t off;  // From which siginfo to start
-	uint32_t flags;  // Flags for peeksiginfo
-	int32_t nr;  // How many siginfos to take
+	uint64_t off;  //!< From which `siginfo` should start
+	uint32_t flags;  //!< Flags for `peeksiginfo`
+	int32_t nr;  //!< Number of siginfos to take
 };
 /** Read signals from a shared (process wide) queue */
 enum __ptrace_peeksiginfo_flags { PTRACE_PEEKSIGINFO_SHARED = 1 };
@@ -28379,9 +28407,9 @@ enum __ptrace_eventcodes {
 };
 /** Arguments for PTRACE_PEEKSIGINFO */
 struct __ptrace_peeksiginfo_args {
-	uint64_t off;  // From which siginfo to start
-	uint32_t flags;  // Flags for peeksiginfo
-	int32_t nr;  // How many siginfos to take
+	uint64_t off;  //!< From which `siginfo` should start
+	uint32_t flags;  //!< Flags for `peeksiginfo`
+	int32_t nr;  //!< Number of `siginfos` to take
 };
 /** Read signals from a shared (process wide) queue */
 enum __ptrace_peeksiginfo_flags { PTRACE_PEEKSIGINFO_SHARED = 1 };
@@ -28724,7 +28752,7 @@ LIB_FUNC const char* amd_gpu(void) {
 /** The rdtsc (Read Time-Stamp Counter) instruction is used to determine how many CPU ticks occurred since the processor was reset */
 LIB_FUNC unsigned long long rdtsc(void) {
 	register unsigned long long cpu_ticks;
-	asm volatile ("mfence;" "rdtsc;" "mfence;" : "=A"(cpu_ticks));  // `=A` is `edx:eax`
+	vasm("mfence;" "rdtsc;" "mfence;" : "=A"(cpu_ticks));  // `=A` is `edx:eax`
 	return cpu_ticks;
 }
 
@@ -28732,7 +28760,7 @@ LIB_FUNC unsigned long long rdtsc(void) {
 /** The rdtscp (Read Time-Stamp Counter) instruction is used to determine how many CPU ticks occurred since the processor was reset */
 LIB_FUNC unsigned long long rdtscp(void) {
 	register unsigned long long cpu_ticks;
-	asm volatile ("mfence;" "rdtscp;" "mfence;" : "=A"(cpu_ticks));  // `=A` is `edx:eax`
+	vasm("mfence;" "rdtscp;" "mfence;" : "=A"(cpu_ticks));  // `=A` is `edx:eax`
 	return cpu_ticks;
 }
 
@@ -30284,7 +30312,7 @@ LIB_FUNC int is_xop_lib(void) {
 
 /** Turn the number to zero in-place */
 LIB_FUNC unsigned long long in_place_zero(unsigned long long num) {
-	asm volatile (  // AT&T Style Assembly
+	vasm(  // AT&T Style Assembly
 		"xor %0,%0;"
 		: "=r"(num)  // %0: Output to C variable
 		: "r"(num)  // %1: Input C variable
@@ -30314,7 +30342,7 @@ LIB_FUNC unsigned long long asm_xor_ull(unsigned long long num1, unsigned long l
 LIB_FUNC unsigned long rdrnd(void) {
 	if ((is_rdrnd_aval()) == 0) { return (unsigned long)0; }
 	register unsigned long rand_num;
-	asm volatile ("rdrand %0;" : "=r"(rand_num));
+	vasm("rdrand %0;" : "=r"(rand_num));
 	return rand_num;
 }
 #endif
@@ -30342,14 +30370,14 @@ LIB_FUNC unsigned long rdrnd(void) {
 /** Return the contents of the MXCSR control and status register */
 LIB_FUNC unsigned int _mm_getcsr(void) {
 	unsigned int retval;
-	asm volatile ("stmxcsr %0;" : "=m"(retval));
+	vasm("stmxcsr %0;" : "=m"(retval));
 	return retval;
 }
 
 
 /** Set the contents of the MXCSR control and status register */
 LIB_FUNC void _mm_setcsr(unsigned int val) {
-	asm volatile ("ldmxcsr %0;" : : "m"(val));
+	vasm("ldmxcsr %0;" : : "m"(val));
 }
 
 
@@ -30881,25 +30909,25 @@ LIB_FUNC unsigned long long mulhdu(unsigned long long a, unsigned long long b) {
 
 
 #ifndef __sync
-#   define __sync()   asm volatile ("sync;" : : : "memory")
+#   define __sync()   vasm("sync;" : : : "memory")
 #endif
-#define __isync()   asm volatile ("isync;" : : : "memory")
-#define __lwsync()   asm volatile ("lwsync;" : : : "memory")
-#define __eieio()   asm volatile ("eieio;" : : : "memory")
-#define __nop()   asm volatile ("ori 0, 0, 0;" : : : "memory")
-#define __cctpl()   asm volatile ("or 1, 1, 1;" : : : "memory")
-#define __cctpm()   asm volatile ("or 2, 2, 2;" : : : "memory")
-#define __cctph()   asm volatile ("or 3, 3, 3;" : : : "memory")
-#define __db8cyc()   asm volatile ("or 28, 28, 28;" : : : "memory")
-#define __db10cyc()   asm volatile ("or 29, 29, 29;" : : : "memory")
-#define __db12cyc()   asm volatile ("or 30, 30, 30;" : : : "memory")
-#define __db16cyc()   asm volatile ("or 31, 31, 31;" : : : "memory")
-#define __dcbf(base)   asm volatile ("dcbf %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
-#define __dcbz(base)   asm volatile ("dcbz %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
-#define __dcbst(base)   asm volatile ("dcbst %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
-#define __dcbtst(base)   asm volatile ("dcbtst %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
-#define __dcbt(base)   asm volatile ("dcbt %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
-#define __icbi(base)   asm volatile ("icbi %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __isync()   vasm("isync;" : : : "memory")
+#define __lwsync()   vasm("lwsync;" : : : "memory")
+#define __eieio()   vasm("eieio;" : : : "memory")
+#define __nop()   vasm("ori 0, 0, 0;" : : : "memory")
+#define __cctpl()   vasm("or 1, 1, 1;" : : : "memory")
+#define __cctpm()   vasm("or 2, 2, 2;" : : : "memory")
+#define __cctph()   vasm("or 3, 3, 3;" : : : "memory")
+#define __db8cyc()   vasm("or 28, 28, 28;" : : : "memory")
+#define __db10cyc()   vasm("or 29, 29, 29;" : : : "memory")
+#define __db12cyc()   vasm("or 30, 30, 30;" : : : "memory")
+#define __db16cyc()   vasm("or 31, 31, 31;" : : : "memory")
+#define __dcbf(base)   vasm("dcbf %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __dcbz(base)   vasm("dcbz %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __dcbst(base)   vasm("dcbst %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __dcbtst(base)   vasm("dcbtst %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __dcbt(base)   vasm("dcbt %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
+#define __icbi(base)   vasm("icbi %y0;" : "=Z"(*(__V4SI*)(base)) : : "memory")
 
 
 #endif  // POWERPC INTRINSICS
@@ -31214,8 +31242,8 @@ typedef struct attr_packed rm_ctx {
 extern const UNUSED fenv_t _FE_DFL_ENV = { { 0, 0, 0, 0 } };
 /** Pointer to default FP environment */
 #define FE_DFL_ENV   &_FE_DFL_ENV
-#define GET_FPSCR()   do { uint32_t _fpscr; asm volatile ("fmrx %0, fpscr;" : "=r"(_fpscr)); _fpscr; } while (0x0)
-#define SET_FPSCR(_fpscr)   asm volatile ("fmxr fpscr, %0;" : : "r"(_fpscr))
+#define GET_FPSCR()   do { uint32_t _fpscr; vasm("fmrx %0, fpscr;" : "=r"(_fpscr)); _fpscr; } while (0x0)
+#define SET_FPSCR(_fpscr)   vasm("fmxr fpscr, %0;" : : "r"(_fpscr))
 
 
 LIB_FUNC int _fesetexceptflag(const fexcept_t* flagp, const int excepts) {
@@ -31782,8 +31810,8 @@ enum FPSCR_BITS {
 
 
 /** Set/clear a particular FPSCR bit (for instance, reset_fpscr_bit(FPSCR_VE); prevents INVALID exceptions from being raised) */
-#define set_fpscr_bit(x)   asm volatile ("mtfsb1 %0;" : : "i"(x))
-#define reset_fpscr_bit(x)   asm volatile ("mtfsb0 %0;" : : "i"(x))
+#define set_fpscr_bit(x)   vasm("mtfsb1 %0;" : : "i"(x))
+#define reset_fpscr_bit(x)   vasm("mtfsb0 %0;" : : "i"(x))
 
 
 LIB_FUNC void libc_feholdexcept_ppc(fenv_t* fenvp) {
@@ -32189,31 +32217,31 @@ LIB_FUNC int __feraiseexcept(const int excepts) {
 	fenv_t temp;
 	if ((FE_INVALID & excepts) != 0) {
 			float f = 0.0F;
-			asm volatile ("divss %0, %0;" : : "x"(f));
+			vasm("divss %0, %0;" : : "x"(f));
 			(void)&f;
 	}
 	if ((FE_DIVBYZERO & excepts) != 0) {
 			float f = 1.0F, g = 0.0F;
-			asm volatile ("divss %1, %0;" : : "x"(f), "x"(g));
+			vasm("divss %1, %0;" : : "x"(f), "x"(g));
 			(void)&f;
 	}
 	if ((FE_OVERFLOW & excepts) != 0) {
-			asm volatile ("fnstenv %0;" : "=m"(*&temp));
+			vasm("fnstenv %0;" : "=m"(*&temp));
 			temp.__status |= FE_OVERFLOW;
-			asm volatile ("fldenv %0;" : : "m"(*&temp));
-			asm volatile ("fwait;");
+			vasm("fldenv %0;" : : "m"(*&temp));
+			vasm("fwait;");
 	}
 	if ((FE_UNDERFLOW & excepts) != 0) {
-			asm volatile ("fnstenv %0;" : "=m"(*&temp));
+			vasm("fnstenv %0;" : "=m"(*&temp));
 			temp.__status |= FE_UNDERFLOW;
-			asm volatile ("fldenv %0;" : : "m"(*&temp));
-			asm volatile ("fwait;");
+			vasm("fldenv %0;" : : "m"(*&temp));
+			vasm("fwait;");
 	}
 	if ((FE_INEXACT & excepts) != 0) {
-			asm volatile ("fnstenv %0;" : "=m"(*&temp));
+			vasm("fnstenv %0;" : "=m"(*&temp));
 			temp.__status |= FE_INEXACT;
-			asm volatile ("fldenv %0;" : : "m"(*&temp));
-			asm volatile ("fwait;");
+			vasm("fldenv %0;" : : "m"(*&temp));
+			vasm("fwait;");
 	}
 	return 0;
 }
@@ -32226,18 +32254,18 @@ LIB_FUNC int _fesetexceptflag(const fexcept_t* flagp, const int excepts) {
 	register unsigned int andMask = (~exceptMask);  // Clear just the bits indicated
 	register unsigned int orMask = (*flagp & exceptMask);  // Latch the specified bits
 	unsigned int mxcsr = (unsigned int)_mm_getcsr();  // Read the MXCSR state
-	asm volatile ("fnstenv %0;" : "=m"(currfpu));  // Read x87 state
+	vasm("fnstenv %0;" : "=m"(currfpu));  // Read x87 state
 	mxcsr = ((mxcsr & andMask) | orMask);  // Fix the MXCSR state
 	register int fpstate = (int)((currfpu.__status & andMask) | orMask);  // Fix the x87 state
 	currfpu.__status = (short unsigned int)fpstate;
-	asm volatile ("ldmxcsr %0;" "fldenv %1;" : : "m"(mxcsr), "m"(currfpu));  // Store the state
+	vasm("ldmxcsr %0;" "fldenv %1;" : : "m"(mxcsr), "m"(currfpu));  // Store the state
 	return 0;
 }
 
 
 LIB_FUNC int _fegetexceptflag(fexcept_t* flagp, const int excepts) {
 	unsigned short tmp;
-	asm volatile ("fnstsw %0;" : "=m"(tmp) : : "memory");
+	vasm("fnstsw %0;" : "=m"(tmp) : : "memory");
 	fexcept_t fsw = tmp;  // Get the x87 status word
 	register unsigned int mxcsr = (unsigned int)_mm_getcsr();  // Get the mxcsr
 	fexcept_t result = (unsigned short)(mxcsr | fsw);
@@ -32258,7 +32286,7 @@ LIB_FUNC int feclearexcept(const int excepts) {
 
 LIB_FUNC int fetestexcept(const int excepts) {
 	unsigned short tmp;
-	asm volatile ("fnstsw %0;" : "=m"(tmp) : : "memory");
+	vasm("fnstsw %0;" : "=m"(tmp) : : "memory");
 	fexcept_t fsw = tmp;  // Get the x87 status word
 	register unsigned int mxcsr = _mm_getcsr();  // Get the mxcsr
 	return (int)((mxcsr | fsw) & (excepts & FE_ALL_EXCEPT));
@@ -32267,7 +32295,7 @@ LIB_FUNC int fetestexcept(const int excepts) {
 
 LIB_FUNC int fegetround(void) {
 	unsigned short tmp;
-	asm volatile ("fnstcw %0;" : "=m"(tmp) : : "memory");
+	vasm("fnstcw %0;" : "=m"(tmp) : : "memory");
 	return (int)(tmp & FE_ALL_RND);
 }
 
@@ -32275,14 +32303,14 @@ LIB_FUNC int fegetround(void) {
 LIB_FUNC int fesetround(const int round) {
 	if ((round & (~FE_ALL_RND))) { return 1; }
 	unsigned short tmp;
-	asm volatile ("fnstcw %0;" : "=m"(tmp) : : "memory");
+	vasm("fnstcw %0;" : "=m"(tmp) : : "memory");
 	register unsigned short fcw = tmp;
 	register unsigned int mxcsr = _mm_getcsr();
 	fcw = (short unsigned int)((fcw & (short unsigned int)(~FE_ALL_RND)) | round);
 	mxcsr = (unsigned int)((unsigned int)(mxcsr & (unsigned int)(~(FE_ALL_RND << 3))) | (unsigned int)(round << 3));
 	_mm_setcsr(mxcsr);
 	tmp = fcw;
-	asm volatile ("fldcw %0;" : : "m"(tmp));
+	vasm("fldcw %0;" : : "m"(tmp));
 	return 0;
 }
 
@@ -32290,13 +32318,13 @@ LIB_FUNC int fesetround(const int round) {
 LIB_FUNC int fegetenv(fenv_t* fenvp) {
 	__fpustate_t currfpu;
 	register unsigned int mxcsr = _mm_getcsr();
-	asm volatile ("fnstenv %0;" : "=m"(currfpu) : : "memory");
+	vasm("fnstenv %0;" : "=m"(currfpu) : : "memory");
 	fenvp->__control = currfpu.__control;
 	fenvp->__status = currfpu.__status;
 	fenvp->__mxcsr = (unsigned int)mxcsr;
 	fenvp->__reserved[0] = 0;
 	fenvp->__reserved[1] = 0;
-	asm volatile ("fldenv %0;" : : "m"(currfpu));
+	vasm("fldenv %0;" : : "m"(currfpu));
 	return 0;
 }
 
@@ -32304,7 +32332,7 @@ LIB_FUNC int fegetenv(fenv_t* fenvp) {
 LIB_FUNC int feholdexcept(fenv_t* fenvp) {
 	__fpustate_t currfpu;
 	unsigned int mxcsr = _mm_getcsr();
-	asm volatile ("fnstenv %0;" : "=m"(*&currfpu) : : "memory");
+	vasm("fnstenv %0;" : "=m"(*&currfpu) : : "memory");
 	fenvp->__control = currfpu.__control;
 	fenvp->__status = currfpu.__status;
 	fenvp->__mxcsr = mxcsr;
@@ -32313,27 +32341,27 @@ LIB_FUNC int feholdexcept(fenv_t* fenvp) {
 	currfpu.__control |= FE_ALL_EXCEPT;  // FPU shall handle all exceptions
 	currfpu.__status &= (short unsigned int)(~FE_ALL_EXCEPT);
 	mxcsr = (unsigned int)((mxcsr | (FE_ALL_EXCEPT << 7)) & (unsigned int)(~(FE_ALL_EXCEPT)));  // Left shifted because control mask is <<7 of the flags
-	asm volatile ("ldmxcsr %0;" "fldenv %1;" : : "m"(*&mxcsr), "m"(*&currfpu));
+	vasm("ldmxcsr %0;" "fldenv %1;" : : "m"(*&mxcsr), "m"(*&currfpu));
 	return 0;
 }
 
 
 LIB_FUNC int fesetenv(const fenv_t* fenvp) {
 	__fpustate_t currfpu;
-	asm volatile ("fnstenv %0;" : "=m"(currfpu));
+	vasm("fnstenv %0;" : "=m"(currfpu));
 	currfpu.__control = fenvp->__control;
 	currfpu.__status = fenvp->__status;
-	asm volatile ("ldmxcsr %0;" "fldenv %1;" : : "m"(fenvp->__mxcsr), "m"(currfpu));
+	vasm("ldmxcsr %0;" "fldenv %1;" : : "m"(fenvp->__mxcsr), "m"(currfpu));
 	return 0;
 }
 
 
 LIB_FUNC int feupdateenv(const fenv_t* fenvp) {
 	__fpustate_t currfpu;
-	asm volatile ("fnstenv %0;" : "=m"(currfpu));
+	vasm("fnstenv %0;" : "=m"(currfpu));
 	currfpu.__control = fenvp->__control;
 	currfpu.__status = fenvp->__status;
-	asm volatile ("ldmxcsr %0; fldenv %1;" "fwait;" : : "m"(fenvp->__mxcsr), "m"(currfpu));
+	vasm("ldmxcsr %0; fldenv %1;" "fwait;" : : "m"(fenvp->__mxcsr), "m"(currfpu));
 	return 0;
 }
 
@@ -32357,13 +32385,13 @@ LIB_FUNC void libc_feholdexcept_sse(fenv_t* e) {
 	asm (STMXCSR " %0;" : "=m"(*&mxcsr));
 	e->__mxcsr = mxcsr;
 	mxcsr = (unsigned int)((mxcsr | 0x1f80) & (unsigned int)(~0x3f));
-	asm volatile (LDMXCSR " %0;" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0;" : : "m"(*&mxcsr));
 }
 
 
 /** Clobber all of the fp registers so that the TOS field is 0 */
 LIB_FUNC void libc_feholdexcept_387(fenv_t* e) {
-	asm volatile ("fnstenv %0;" "fnclex;" : "=m"(*e) : : "st", "st(1)", "st(2)", "st(3)", "st(4)", "st(5)", "st(6)", "st(7)");
+	vasm("fnstenv %0;" "fnclex;" : "=m"(*e) : : "st", "st(1)", "st(2)", "st(3)", "st(4)", "st(5)", "st(6)", "st(7)");
 }
 
 
@@ -32371,7 +32399,7 @@ LIB_FUNC void libc_fesetround_sse(const int r) {
 	unsigned int mxcsr;
 	asm (STMXCSR " %0;" : "=m"(*&mxcsr));
 	mxcsr = (unsigned int)((mxcsr & (unsigned int)(~0x6000)) | (unsigned int)(r << 3));
-	asm volatile (LDMXCSR " %0;" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0;" : : "m"(*&mxcsr));
 }
 
 
@@ -32388,43 +32416,43 @@ LIB_FUNC void libc_feholdexcept_setround_sse(fenv_t* e, const int r) {
 	asm (STMXCSR " %0;" : "=m"(*&mxcsr));
 	e->__mxcsr = mxcsr;
 	mxcsr = (unsigned int)(((mxcsr | 0x1f80) & (unsigned int)(~0x603f)) | (unsigned int)(r << 3));
-	asm volatile (LDMXCSR " %0;" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0;" : : "m"(*&mxcsr));
 }
 
 
 LIB_FUNC int libc_fetestexcept_sse(const int e) {
 	unsigned int mxcsr;
-	asm volatile (STMXCSR " %0;" : "=m"(*&mxcsr));
+	vasm(STMXCSR " %0;" : "=m"(*&mxcsr));
 	return (((int)mxcsr & e) & FE_ALL_EXCEPT);
 }
 
 
 LIB_FUNC int libc_fetestexcept_387(const int ex) {
 	fexcept_t temp;
-	asm volatile ("fnstsw %0;" : "=a"(temp));
+	vasm("fnstsw %0;" : "=a"(temp));
 	return ((temp & ex) & FE_ALL_EXCEPT);
 }
 
 
 LIB_FUNC void libc_fesetenv_sse(fenv_t* e) {
-	asm volatile (LDMXCSR " %0;" : : "m"(e->__mxcsr));
+	vasm(LDMXCSR " %0;" : : "m"(e->__mxcsr));
 }
 
 
 /** Clobber all fp registers so that the TOS value we saved earlier is compatible with the current state of the compiler */
 LIB_FUNC void libc_fesetenv_387(fenv_t* e) {
-	asm volatile ("fldenv %0;" : : "m"(*e) : "st", "st(1)", "st(2)", "st(3)", "st(4)", "st(5)", "st(6)", "st(7)");
+	vasm("fldenv %0;" : : "m"(*e) : "st", "st(1)", "st(2)", "st(3)", "st(4)", "st(5)", "st(6)", "st(7)");
 }
 
 
 LIB_FUNC int libc_feupdateenv_test_sse(fenv_t* e, const int ex) {
 	unsigned int mxcsr, old_mxcsr, cur_ex;
-	asm volatile (STMXCSR " %0" : "=m"(*&mxcsr));
+	vasm(STMXCSR " %0" : "=m"(*&mxcsr));
 	cur_ex = mxcsr & FE_ALL_EXCEPT;
 	// Merge current exceptions with the old environment
 	old_mxcsr = e->__mxcsr;
 	mxcsr = old_mxcsr | cur_ex;
-	asm volatile (LDMXCSR " %0" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0" : : "m"(*&mxcsr));
 	// Raise SIGFPE for any new exceptions since the hold; Expect that the normal environment has all exceptions masked
 	if (PREDICT_UNLIKELY(~(old_mxcsr >> 7) & cur_ex)) { __feraiseexcept((int)cur_ex); }
 	// Test for exceptions raised since the hold
@@ -32435,7 +32463,7 @@ LIB_FUNC int libc_feupdateenv_test_sse(fenv_t* e, const int ex) {
 LIB_FUNC int libc_feupdateenv_test_387(fenv_t* e, const int ex) {
 	fexcept_t cur_ex;
 	// Save current exceptions
-	asm volatile ("fnstsw %0;" : "=a"(cur_ex));
+	vasm("fnstsw %0;" : "=a"(cur_ex));
 	cur_ex &= FE_ALL_EXCEPT;
 	libc_fesetenv_387(e);  // Reload original environment
 	__feraiseexcept(cur_ex);  // Merge current exceptions
@@ -32458,7 +32486,7 @@ LIB_FUNC void libc_feholdsetround_sse(fenv_t* e, const int r) {
 	asm (STMXCSR " %0" : "=m"(*&mxcsr));
 	e->__mxcsr = mxcsr;
 	mxcsr = (unsigned int)(mxcsr & (unsigned int)(~0x6000)) | (unsigned int)(r << 3);
-	asm volatile (LDMXCSR " %0" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0" : : "m"(*&mxcsr));
 }
 
 
@@ -32466,7 +32494,7 @@ LIB_FUNC void libc_feresetround_sse(fenv_t* e) {
 	unsigned int mxcsr;
 	asm (STMXCSR " %0" : "=m"(*&mxcsr));
 	mxcsr = (unsigned int)(mxcsr & (unsigned int)(~0x6000)) | (unsigned int)(e->__mxcsr & 0x6000);
-	asm volatile (LDMXCSR " %0" : : "m"(*&mxcsr));
+	vasm(LDMXCSR " %0" : : "m"(*&mxcsr));
 }
 
 
@@ -32710,13 +32738,13 @@ static const UNUSED fenv_t FE_DFL_ENV_OBJ = { 0, 0x1c00, 0, 0 };
 LIB_FUNC int feclearexcept(const int excepts) {
 	register int enabled_excepts, disabled_excepts;
 	if (excepts & (~0x1f00)) { return -1; }  // Check that excepts is correctly set
-	asm volatile ("mov %0, SR;" : "=l"(enabled_excepts) :);
+	vasm("mov %0, SR;" : "=l"(enabled_excepts) :);
 	enabled_excepts &= 0x1f00;
 	disabled_excepts = (~enabled_excepts);
 	disabled_excepts &= 0x1f00;
 	enabled_excepts &= excepts;
 	disabled_excepts &= excepts;
-	asm volatile (
+	vasm(
 		"andn G2, %0;" "andn G2, %1;" : /* No Output */
 		: "l"(enabled_excepts), "l"((disabled_excepts >> 8))
 	);  // Clear accrued exceptions
@@ -32728,14 +32756,14 @@ LIB_FUNC int feclearexcept(const int excepts) {
 LIB_FUNC int feenableexcept(const int excepts) {
 	register int __retval, __pexcepts, __tmpexcepts = excepts;
 	until_break {
-		asm volatile ("mov %0, SR;" : "=l"(__pexcepts));
+		vasm("mov %0, SR;" : "=l"(__pexcepts));
 		__pexcepts &= 0x1f00;
 		if (__tmpexcepts & (~0x1f00)) {
 			__retval = -1;
 			fprintf(stderr, "Non valid exception");
 			break;
 		}
-		asm volatile ("or SR, %0;" : /* No Output */ : "l"(__tmpexcepts));
+		vasm("or SR, %0;" : /* No Output */ : "l"(__tmpexcepts));
 		__retval = __pexcepts;
 		break;
 	}
@@ -32747,14 +32775,14 @@ LIB_FUNC int feenableexcept(const int excepts) {
 LIB_FUNC int fedisableexcept(const int excepts) {
 	register int __retval, __pexcepts, __tmpexcepts = excepts;
 	until_break {
-		asm volatile ("mov %0, SR;" : "=l"(__pexcepts));
+		vasm("mov %0, SR;" : "=l"(__pexcepts));
 		__pexcepts &= 0x1f00;
 		if (__tmpexcepts & (int)(~0x1f00)) {
 			__retval = -1;
 			fprintf(stderr, "Non valid exception");
 			break;
 		}
-		asm volatile ("andn SR, %0;" : /* No Output */ : "l"(__tmpexcepts));
+		vasm("andn SR, %0;" : /* No Output */ : "l"(__tmpexcepts));
 		__retval = __pexcepts;
 		break;
 	}
@@ -32764,7 +32792,7 @@ LIB_FUNC int fedisableexcept(const int excepts) {
 
 /** Store current floating-point environment */
 LIB_FUNC int fegetenv(fenv_t* restrict fenvp) {
-	asm volatile (
+	vasm(
 		"mov %0, SR;" "mov %1, SR;" "mov %2, G2;" "mov %3, G2;"
 		: "=l"(fenvp->round_mode), "=l"(fenvp->trap_enabled), "=l"(fenvp->accrued_except), "=l"(fenvp->actual_except) : );
 	fenvp->round_mode &= 0x6000;
@@ -32779,7 +32807,7 @@ LIB_FUNC int fegetenv(fenv_t* restrict fenvp) {
 /** Get floating-point exceptions */
 LIB_FUNC int _fegetexcept(void) {
 	register unsigned int tmp;
-	asm volatile ("mov %0, SR;" : "=l"(tmp));
+	vasm("mov %0, SR;" : "=l"(tmp));
 	return (tmp & 0x1f00);
 }
 
@@ -32787,7 +32815,7 @@ LIB_FUNC int _fegetexcept(void) {
 /** Return current rounding direction */
 LIB_FUNC int fegetround(void) {
 	register unsigned int tmp;
-	asm volatile ("mov %0, SR;" : "=l"(tmp));
+	vasm("mov %0, SR;" : "=l"(tmp));
 	return (tmp & 0x6000);
 }
 
@@ -32804,11 +32832,11 @@ LIB_FUNC int feholdexcept(fenv_t* restrict fenvp) {
 /** Initialize the given floating-point environment */
 LIB_FUNC int fesetenv(fenv_t* restrict fenvp) {
 	register unsigned long clearSR = 0x7f00;
-	asm volatile (
+	vasm(
 		"andn SR, %0;" "or SR, %1;" "or SR, %2;" : /* No Output */
 		: "l"(clearSR), "l"(fenvp->round_mode), "l"(fenvp->trap_enabled)
 	);
-	asm volatile (
+	vasm(
 		"andn G2, 0x1f1f;" "or G2, %0;" "or G2, %1;" : /* No Output */
 		: "l"((fenvp->accrued_except >> 8)), "l"(fenvp->actual_except)
 	);
@@ -32820,13 +32848,13 @@ LIB_FUNC int fesetenv(fenv_t* restrict fenvp) {
 LIB_FUNC int fesetround(const int round) {
 	register unsigned int tmp = 0x6000;
 	until_break {
-		asm volatile ("andn SR, %0;" : /* No Output */ : "l"(tmp));
+		vasm("andn SR, %0;" : /* No Output */ : "l"(tmp));
 		tmp &= (unsigned int)round;
 		if (tmp) {
 			tmp = (unsigned int)-1;
 			break;
 		}
-		asm volatile ("or SR, %0;" : /* No Output */ : "l"(round));
+		vasm("or SR, %0;" : /* No Output */ : "l"(round));
 		tmp = 0;
 		break;
 	}
@@ -32836,7 +32864,7 @@ LIB_FUNC int fesetround(const int round) {
 
 /** Raise given exceptions */
 LIB_FUNC int feraiseexcept(const int excepts) {
-	asm volatile ("or G2, %0;" : /* No Output */ : "l"((excepts >> 8)));
+	vasm("or G2, %0;" : /* No Output */ : "l"((excepts >> 8)));
 	return 0;
 }
 
@@ -32845,11 +32873,11 @@ LIB_FUNC int feraiseexcept(const int excepts) {
 LIB_FUNC int fetestexcept(const int excepts) {
 	register unsigned int G2, G2en, G2dis, enabled_excepts, disabled_excepts;
 	if (excepts & (~0x1f00)) { return -1; }
-	asm volatile ("mov %0, SR;" : "=l"(enabled_excepts));
+	vasm("mov %0, SR;" : "=l"(enabled_excepts));
 	enabled_excepts &= 0x1f00;
 	disabled_excepts = (~enabled_excepts);
 	disabled_excepts &= 0x1f00;
-	asm volatile ("mov %0, G2;" : "=l"(G2));
+	vasm("mov %0, G2;" : "=l"(G2));
 	G2en = G2 & 0x1f00;
 	G2dis = G2 & 0x1f;
 	G2en &= enabled_excepts;
@@ -32861,10 +32889,10 @@ LIB_FUNC int fetestexcept(const int excepts) {
 /** Initialize the given floating-point environment and raise exceptions */
 LIB_FUNC int feupdateenv(fenv_t* restrict fenvp) {
 	register unsigned long clearSR = 0x7f00;
-	asm volatile ("or SR, %1;" "or SR, %2;" : /* No Output */
+	vasm("or SR, %1;" "or SR, %2;" : /* No Output */
 		: "l"(clearSR), "l"(fenvp->round_mode), "l"(fenvp->accrued_except)
 	);
-	asm volatile ("or G2, %0;" "or G2, %1;" : /* No Output */
+	vasm("or G2, %0;" "or G2, %1;" : /* No Output */
 		: "l"((fenvp->accrued_except >> 8)), "l"(fenvp->actual_except)
 	);
 	return 0;
@@ -32890,7 +32918,7 @@ LIB_FUNC int feupdateenv(fenv_t* restrict fenvp) {
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
 	unsigned long fpcr;
-	asm volatile ("excb;" "mf_fpcr %0;" : "=f"(fpcr));
+	vasm("excb;" "mf_fpcr %0;" : "=f"(fpcr));
 	return (fpcr >> FPCR_ROUND_SHIFT) & 3;
 }
 #   define GET_ROUNDING_MODE_DEFINED   (1)
@@ -32943,7 +32971,7 @@ LIB_FUNC int get_rounding_mode(void) {
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
 	fenv_t fpsr;
-	asm volatile ("mov.m %0=ar.fpsr;" : "=r"(fpsr));
+	vasm("mov.m %0=ar.fpsr;" : "=r"(fpsr));
 	return (int)((fpsr >> 10) & 3);
 }
 #   define GET_ROUNDING_MODE_DEFINED   (1)
@@ -33283,16 +33311,16 @@ LIB_FUNC size_t wcsnlen(const wchar_t* s, size_t maxlen) {
 
 
 /** Return the length of a wchar_t string */
-LIB_FUNC unsigned int strlenW(const wchar_t* restrict str) {
-	const wchar_t* s = str;
+LIB_FUNC unsigned int strlenW(const wchar_t* restrict wcstr) {
+	const wchar_t* s = wcstr;
 	while (*s) { ++s; }
-	return (unsigned int)(s - str);
+	return (unsigned int)(s - wcstr);
 }
-#define wcstrlen(str)   strlenW((str))
-#define _wcstrlen(str)   strlenW((str))
-#define strlenw(str)   strlenW((str))
-#define wstrlen(str)   strlenW((str))
-#define Wstrlen(str)   strlenW((str))
+#define wcstrlen(wcstr)   strlenW((wcstr))
+#define _wcstrlen(wcstr)   strlenW((wcstr))
+#define strlenw(wcstr)   strlenW((wcstr))
+#define wstrlen(wcstr)   strlenW((wcstr))
+#define Wstrlen(wcstr)   strlenW((wcstr))
 
 
 /** Copy a wchar_t string */
@@ -33356,60 +33384,60 @@ LIB_FUNC wchar_t* strcatW(wchar_t* restrict dst, const wchar_t* restrict src) {
 #define Wstrcat(dst, src)   strcatW((dst), (src))
 
 
-LIB_FUNC wchar_t* strchrW(const wchar_t* restrict str, const wchar_t ch) {
-	do { if (*str == ch) { return (wchar_t*)(ULONG_PTR)str; } } while (*str++);
+LIB_FUNC wchar_t* strchrW(const wchar_t* restrict wcstr, const wchar_t ch) {
+	do { if (*wcstr == ch) { return (wchar_t*)(ULONG_PTR)wcstr; } } while (*wcstr++);
 	return NULL;
 }
-#define wcschr(str, ch)   strchrW((str), (wchar_t)(ch))
-#define _wcschr(str, ch)   strchrW((str), (wchar_t)(ch))
-#define strchrw(str, ch)   strchrW((str), (wchar_t)(ch))
-#define wstrchr(str, ch)   strchrW((str), (wchar_t)(ch))
-#define Wstrchr(str, ch)   strchrW((str), (wchar_t)(ch))
+#define wcschr(wcstr, ch)   strchrW((wcstr), (wchar_t)(ch))
+#define _wcschr(wcstr, ch)   strchrW((wcstr), (wchar_t)(ch))
+#define strchrw(wcstr, ch)   strchrW((wcstr), (wchar_t)(ch))
+#define wstrchr(wcstr, ch)   strchrW((wcstr), (wchar_t)(ch))
+#define Wstrchr(wcstr, ch)   strchrW((wcstr), (wchar_t)(ch))
 
 
-LIB_FUNC wchar_t* strrchrW(const wchar_t* restrict str, const wchar_t ch) {
+LIB_FUNC wchar_t* strrchrW(const wchar_t* restrict wcstr, const wchar_t ch) {
 	wchar_t* ret = NULL;
-	do { if (*str == ch) { ret = (wchar_t*)(ULONG_PTR)str; } } while (*str++);
+	do { if (*wcstr == ch) { ret = (wchar_t*)(ULONG_PTR)wcstr; } } while (*wcstr++);
 	return ret;
 }
-#define wcsrchr(str, c)   strrchrW((str), (wchar_t)(c))
-#define _wcsrchr(str, c)   strrchrW((str), (wchar_t)(c))
-#define strrchrw(str, c)   strrchrW((str), (wchar_t)(c))
-#define wstrrchr(str, c)   strrchrW((str), (wchar_t)(c))
-#define Wstrrchr(str, c)   strrchrW((str), (wchar_t)(c))
+#define wcsrchr(wcstr, c)   strrchrW((wcstr), (wchar_t)(c))
+#define _wcsrchr(wcstr, c)   strrchrW((wcstr), (wchar_t)(c))
+#define strrchrw(wcstr, c)   strrchrW((wcstr), (wchar_t)(c))
+#define wstrrchr(wcstr, c)   strrchrW((wcstr), (wchar_t)(c))
+#define Wstrrchr(wcstr, c)   strrchrW((wcstr), (wchar_t)(c))
 
 
-LIB_FUNC wchar_t* strpbrkW(const wchar_t* restrict str, const wchar_t* restrict accept) {
-	for (; *str; str++) { if (strchrW(accept, *str)) { return (wchar_t*)(ULONG_PTR)str; } }
+LIB_FUNC wchar_t* strpbrkW(const wchar_t* restrict wcstr, const wchar_t* restrict accept) {
+	for (; *wcstr; wcstr++) { if (strchrW(accept, *wcstr)) { return (wchar_t*)(ULONG_PTR)wcstr; } }
 	return NULL;
 }
-#define wcspbrk(str, accept)   strpbrkW((str), (accept))
-#define _wcspbrk(str, accept)   strpbrkW((str), (accept))
-#define strpbrkw(str, accept)   strpbrkW((str), (accept))
-#define wstrpbrk(str, accept)   strpbrkW((str), (accept))
-#define Wstrpbrk(str, accept)   strpbrkW((str), (accept))
+#define wcspbrk(wcstr, accept)   strpbrkW((wcstr), (accept))
+#define _wcspbrk(wcstr, accept)   strpbrkW((wcstr), (accept))
+#define strpbrkw(wcstr, accept)   strpbrkW((wcstr), (accept))
+#define wstrpbrk(wcstr, accept)   strpbrkW((wcstr), (accept))
+#define Wstrpbrk(wcstr, accept)   strpbrkW((wcstr), (accept))
 
 
-LIB_FUNC size_t strspnW(const wchar_t* restrict str, const wchar_t* restrict accept) {
-	const wchar_t* ptr = str;
+LIB_FUNC size_t strspnW(const wchar_t* restrict wcstr, const wchar_t* restrict accept) {
+	const wchar_t* ptr = wcstr;
 	for (; *ptr; ptr++) { if (!(strchrW(accept, *ptr))) { break; } }
-	return (size_t)(ptr - str);
+	return (size_t)(ptr - wcstr);
 }
-#define wstrspn(str, accept)   strspnW((str), (accept))
-#define Wstrspn(str, accept)   strspnW((str), (accept))
-#define strspnw(str, accept)   strspnW((str), (accept))
-#define wstrspn(str, accept)   strspnW((str), (accept))
-#define Wstrspn(str, accept)   strspnW((str), (accept))
+#define wstrspn(wcstr, accept)   strspnW((wcstr), (accept))
+#define Wstrspn(wcstr, accept)   strspnW((wcstr), (accept))
+#define strspnw(wcstr, accept)   strspnW((wcstr), (accept))
+#define wstrspn(wcstr, accept)   strspnW((wcstr), (accept))
+#define Wstrspn(wcstr, accept)   strspnW((wcstr), (accept))
 
 
-LIB_FUNC size_t strcspnW(const wchar_t* str, const wchar_t* reject) {
-	const wchar_t* ptr = str;
+LIB_FUNC size_t strcspnW(const wchar_t* wcstr, const wchar_t* reject) {
+	const wchar_t* ptr = wcstr;
 	for (; *ptr; ptr++) { if (strchrW(reject, *ptr)) { break; } }
-	return (size_t)(ptr - str);
+	return (size_t)(ptr - wcstr);
 }
-#define strcspnw(d, str)   strcspnW((d), (str))
-#define wstrcspn(d, str)   strcspnW((d), (str))
-#define Wstrcspn(d, str)   strcspnW((d), (str))
+#define strcspnw(wcstr, reject)   strcspnW((wcstr), (reject))
+#define wstrcspn(wcstr, reject)   strcspnW((wcstr), (reject))
+#define Wstrcspn(wcstr, reject)   strcspnW((wcstr), (reject))
 
 
 LIB_FUNC wchar_t* strlwrW(wchar_t* restrict str) {
@@ -33836,76 +33864,78 @@ LIB_FUNC int wctob(const wint_t wc) {
 }
 
 
-LIB_FUNC long double wcstox_l(wchar_t* s, wchar_t** p, const int prec) {
-	wchar_t* t = s;
+LIB_FUNC long double wcstox_l(wchar_t* wcstr, wchar_t** p, const int prec) {
+	wchar_t* t = wcstr;
 	unsigned char buf[64] = { 0 };
-	FILE f = { 0 };
-	f.flags = 0;
-	f.rpos = f.rend = 0;
-	f.buf = buf + 4;
-	f.buf_size = (sizeof(buf) - 4);
-	f.lock = -1;
-	f.read = do_read_helper;
+	FILE fp = { 0 };
+	fp.flags = 0;
+	fp.rpos = fp.rend = 0;
+	fp.buf = buf + 4;
+	fp.buf_size = (sizeof(buf) - 4);
+	fp.lock = -1;
+	fp.read = do_read_helper;
 	while (iswspace(*t)) { t++; }
-	f._cookie = (void*)t;
-	shlim(&f, 0);
-	const long double y = __floatscan(&f, prec, 1);
-	if (p) { const size_t cnt = (size_t)shcnt(&f); *p = (cnt ? t + cnt : (wchar_t*)s); }
+	fp.wbuf = (wchar_t*)t;
+	shlim(&fp, 0);
+	const long double y = __floatscan(&fp, prec, 1);
+	if (p) { const size_t cnt = (size_t)shcnt(&fp); *p = (cnt ? t + cnt : (wchar_t*)wcstr); }
 	return y;
 }
 
 
-LIB_FUNC unsigned long long wcstox(wchar_t* s, const wchar_t** p, const int base, const unsigned long long lim) {
-	wchar_t* t = s;
+LIB_FUNC unsigned long long wcstox(wchar_t* wcstr, const wchar_t** p, const int base, const unsigned long long lim) {
+	wchar_t* t = wcstr;
 	unsigned char buf[64] = { 0 };
-	FILE f = { 0 };
-	f.flags = 0;
-	f.rpos = f.rend = 0;
-	f.buf = buf + 4;
-	f.buf_size = (sizeof(buf) - 4);
-	f.lock = -1;
-	f.read = do_read_helper;
+	FILE fp = { 0 };
+	fp.flags = 0;
+	fp.rpos = fp.rend = 0;
+	fp.buf = buf + 4;
+	fp.buf_size = (sizeof(buf) - 4);
+	fp.lock = -1;
+	fp.read = do_read_helper;
 	while (iswspace(*t)) { t++; }
-	f._cookie = (void*)t;
-	shlim(&f, 0);
-	const unsigned long long y = intscan(&f, (unsigned int)base, 1, lim);
-	if (p) { const size_t cnt = (size_t)shcnt(&f); *p = (cnt ? t + cnt : (wchar_t*)s); }
+	fp.wbuf = (wchar_t*)t;
+	shlim(&fp, 0);
+	const unsigned long long y = intscan(&fp, (unsigned int)base, 1, lim);
+	if (p) { const size_t cnt = (size_t)shcnt(&fp); *p = (cnt ? t + cnt : (wchar_t*)wcstr); }
 	return y;
 }
 
 
-LIB_FUNC long double wcstold(wchar_t* restrict s, wchar_t** restrict p) {
-	return (long double)wcstox_l(s, p, 2);
+LIB_FUNC long double wcstold(wchar_t* restrict wcstr, wchar_t** restrict p) {
+	return (long double)wcstox_l(wcstr, p, 2);
 }
 
 
-LIB_FUNC unsigned long long wcstoull(wchar_t* restrict s, const wchar_t** restrict p, const int base) {
-	return (unsigned long long)wcstox(s, p, base, ULLONG_MAX);
+LIB_FUNC unsigned long long wcstoull(wchar_t* restrict wcstr, const wchar_t** restrict p, const int base) {
+	return (unsigned long long)wcstox(wcstr, p, base, ULLONG_MAX);
 }
 
 
-LIB_FUNC long long wcstoll(wchar_t* restrict s, const wchar_t** restrict p, const int base) {
-	return (long long)wcstox(s, p, base, (unsigned long long)LLONG_MIN);
+LIB_FUNC long long wcstoll(wchar_t* restrict wcstr, const wchar_t** restrict p, const int base) {
+	return (long long)wcstox(wcstr, p, base, (unsigned long long)LLONG_MIN);
 }
 
 
-LIB_FUNC int mblen(const char* s, const size_t len) {
-	return mbtowc(0, s, len);
+LIB_FUNC int mblen(const char* str, const size_t len) {
+	return mbtowc(0, str, len);
 }
 
 
-LIB_FUNC size_t mbrlen(const char* restrict s, const size_t len, mbstate_t* restrict st) {
+LIB_FUNC size_t mbrlen(const char* restrict str, const size_t len, mbstate_t* restrict _state) {
 	static unsigned internal;
-	return mbrtowc(0, s, len, st ? st : (mbstate_t*)&internal);
+	return mbrtowc(0, str, len, _state ? _state : (mbstate_t*)&internal);
 }
 
 
-LIB_FUNC wint_t getwc(FILE* stream) {
-	return (wint_t)((stream)->rpos < (stream)->rend && *(stream)->rpos < 128 ? *(stream)->rpos++ : getc(stream));
+/** Read wide character from file stream */
+LIB_FUNC wint_t getwc(FILE* fp) {
+	return (wint_t)((fp)->rpos < (fp)->rend && *(fp)->rpos < 128 ? *(fp)->rpos++ : getc(fp));
 }
-#define fgetwc(stream)   getwc((stream))
+#define fgetwc(fp)   getwc((fp))
 
 
+/** Read wide character from STDIN */
 LIB_FUNC wint_t getwchar(void) {
 	return getwc(stdin);
 }
@@ -33913,86 +33943,59 @@ LIB_FUNC wint_t getwchar(void) {
 #define fgetwc_unlocked()   getwchar()
 
 
-LIB_FUNC wchar_t* fgetws(wchar_t* ws, const int n, FILE* stream) {
-	return (wchar_t*)(fgets((char*)(ws), n, stream));
+LIB_FUNC wchar_t* fgetws(wchar_t* wcstr, const int num, FILE* fp) {
+	return (wchar_t*)(fgets((char*)(wcstr), num, fp));
 }
 
 
 /** Write wide character to stream */
-LIB_FUNC wint_t __fputwc_unlock(const wchar_t wc, FILE* fp) {
-	struct wchar_io_data* wcio;
-	mbstate_t* st;
-	size_t size;
-	char buf[MB_LEN_MAX];
-	struct __suio uio;
-	struct __siov iov;
-	iov.iov_base = buf;
-	uio.uio_iov = &iov;
-	uio.uio_iovcnt = 1;
-	_SET_ORIENTATION(fp, 1);
-	wcio = WCIO_GET(fp);
-	if (wcio == 0) { set_errno(ENOMEM); return WEOF; }
-	wcio->wcio_ungetwc_inbuf = 0;
-	st = &wcio->wcio_mbstate_out;
-	size = wcrtomb(buf, wc, st);
-	if (size == (size_t)-1) { fp->flags |= (unsigned int)__SERR; return WEOF; }
-	iov.iov_len = size;
-	uio.uio_resid = (int)size;
-	if (__sfvwrite(fp, &uio)) { return WEOF; }
-	return (wint_t)wc;
-}
-
-
-/** Write wide character to stream */
-LIB_FUNC wint_t fputwc(const wchar_t wc, FILE* stream) {
-	FLOCK(stream);
-	register const wint_t ret = (wint_t)stream->write(stream, (const unsigned char*)&wc, SIZEOF_WCHAR_T);
-	FUNLOCK(stream);
+LIB_FUNC wint_t fputwc(const wchar_t wc, FILE* fp) {
+	FLOCK(fp);
+	register const wint_t ret = (wint_t)fp->write(fp, (const unsigned char*)&wc, SIZEOF_WCHAR_T);
+	FUNLOCK(fp);
 	if (ret) { return ret; }
 	return WEOF;
 }
-#define putwc(wc, stream)    fputwc((wc), (stream))
+#define putwc(wc, fp)    fputwc((wc), (fp))
+#define __fputwc_unlock(wc, fp)    fputwc((wc), (fp))
 #define putwchar(wc)   fputwc((wc), (stdout))
 #define putwchar_unlocked(wc)   fputwc((wc), (stdout))
 #define _IO_putwc_unlocked(wc)   fputwc((wc), (stdout))
 #define fputwc_unlocked(wc)   fputwc((wc), (stdout))
 
 
-LIB_FUNC wint_t fputwc_lite(const wchar_t wc, FILE* stream) {
-	return (wint_t)(fputc((char)(wc), stream));
+LIB_FUNC wint_t fputwc_lite(const wchar_t wc, FILE* fp) {
+	return (wint_t)(fputc((char)(wc), fp));
 }
 
 
-/** Writes the wide-string to `stream` */
-LIB_FUNC int fputws(const wchar_t* restrict str, FILE* restrict stream) {
-	return fputs((const char*)(str), stream );
+/** Writes the wide-string to the specified file */
+LIB_FUNC int fputws(const wchar_t* restrict str, FILE* restrict fp) {
+	return fputs((const char*)(str), fp );
 }
 #define putws(str)   fputws((str), stdout)
 
 
-LIB_FUNC wint_t ungetwc(wint_t wc, FILE* stream) {
-	return (wint_t)ungetc((int)(wc), stream);
+LIB_FUNC wint_t ungetwc(wint_t wc, FILE* fp) {
+	return (wint_t)ungetc((int)(wc), fp);
 }
 
 
-LIB_FUNC size_t wstring_read(FILE* f, unsigned char* buf, const size_t len) {
-	wchar_t* src = f->_cookie;
-	size_t k;
-	const wchar_t* src2 = (const wchar_t*)&src;
-	if (!src) { return 0; }
-	k = wcsrtombs((void*)f->buf, &src2, f->buf_size, 0);
-	if (k == (size_t)-1) { f->rpos = f->rend = 0; return 0; }
-	f->rpos = f->buf;
-	f->rend = f->buf + k;
-	f->_cookie = (void*)src;
+LIB_FUNC size_t wstring_read(FILE* fp, unsigned char* buf, const size_t len) {
+	if (!fp->buf) { return 0; }
+	const wchar_t* src = (const wchar_t*)&fp->buf;
+	const size_t k = wcsrtombs((void*)fp->buf, &src, fp->buf_size, 0);
+	if (k == (size_t)-1) { fp->rpos = fp->rend = 0; return 0; }
+	fp->rpos = fp->buf;
+	fp->rend = fp->buf + k;
 	if (!len || !k) { return 0; }
-	*buf = *f->rpos++;
+	*buf = *fp->rpos++;
 	return 1;
 }
 
 
-LIB_FUNC size_t wstring_read_helper(void* f, unsigned char* buf, const size_t len) {
-	return wstring_read((FILE*)f, buf, len);
+LIB_FUNC size_t wstring_read_helper(void* fp, unsigned char* buf, const size_t len) {
+	return wstring_read((FILE*)fp, buf, len);
 }
 
 
@@ -34021,7 +34024,7 @@ IGNORE_WFORMAT_NONLITERAL
 
 
 /** Reads data from the stream and stores them according to the C wide string format into the locations pointed by the elements in the variable argument list */
-LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap) {
+LIB_FUNC int vfwscanf(FILE* restrict fp, const wchar_t* restrict fmt, va_list ap) {
 	const wchar_t* p;
 	char* s = 0;
 	wchar_t* wcs = 0;
@@ -34031,21 +34034,21 @@ LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap)
 	char tmp[106] = { 0 };
 	const wchar_t* set;
 	size_t i, k;
-	FLOCK(f);
-	fwide(f, 1);
+	FLOCK(fp);
+	fwide(fp, _O_WIDE);
 	int alloc, width, size, c, t, invert, matches = 0;
 	for (p = fmt; *p; p++) {
 		alloc = 0;
 		if (iswspace(*p)) {
 			while (iswspace(p[1])) { ++p; }
-			while (iswspace((c = (int)getwc(f)))) { ++pos; }
-			ungetwc((wint_t)c, f);
+			while (iswspace((c = (int)getwc(fp)))) { ++pos; }
+			ungetwc((wint_t)c, fp);
 			continue;
 		} else if (*p != '%' || p[1] == '%') {
 			p += *p == '%';
-			c = (int)getwc(f);
+			c = (int)getwc(fp);
 			if (c != *p) {
-				ungetwc((wint_t)c, f);
+				ungetwc((wint_t)c, fp);
 				if (c < 0) { goto goto_vfwscanf_general_fail; }
 				goto goto_match_fail;
 			}
@@ -34111,10 +34114,10 @@ LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap)
 		t = *p;
 		if ((t & 0x2f) == 3) { size = SIZE_l; t |= 32; }
 		if (t != 'n') {
-			if (t != '[' && (t | 32) != 'c') { while (iswspace((c = (int)getwc(f)))) { ++pos; } }
-			else { c = (int)getwc(f); }
+			if (t != '[' && (t | 32) != 'c') { while (iswspace((c = (int)getwc(fp)))) { ++pos; } }
+			else { c = (int)getwc(fp); }
 			if (c < 0) { goto goto_vfwscanf_general_fail; }
-			ungetwc((wint_t)c, f);
+			ungetwc((wint_t)c, fp);
 		}
 		register int gotmatch = 0;
 		switch (t) {
@@ -34156,7 +34159,7 @@ LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap)
 					}
 				}
 				while (width) {
-					if ((c = (int)getwc(f)) < 0) { break; }
+					if ((c = (int)getwc(fp)) < 0) { break; }
 					else if (in_set(set, c) == invert) { break; }
 					else if (wcs) {
 						wcs[i++] = c;
@@ -34182,7 +34185,7 @@ LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap)
 					gotmatch = 1;
 				}
 				if (width) {
-					ungetwc((wint_t)c, f);
+					ungetwc((wint_t)c, fp);
 					if (t == 'c' || (!gotmatch)) { goto goto_match_fail; }
 				}
 				if (alloc) {
@@ -34212,7 +34215,7 @@ LIB_FUNC int vfwscanf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap)
 				if (width < 1) { width = 0; }
 				snprintf(tmp, sizeof(tmp), "%.*s%.0d%s%c%%lln", 1 + (!dest), "%*", width, size_pfx[size + 2], t);
 				cnt = 0;
-				if (fscanf(f, tmp, (dest ? dest : &cnt), &cnt) == -1) { goto goto_vfwscanf_general_fail; }
+				if (fscanf(fp, tmp, (dest ? dest : &cnt), &cnt) == -1) { goto goto_vfwscanf_general_fail; }
 				else if (!cnt) { goto goto_match_fail; }
 				pos += cnt;
 				break;
@@ -34226,54 +34229,55 @@ goto_vfwscanf_general_fail:
 goto_match_fail:
 		if (alloc) { free(s); free(wcs); }
 	}
-	FUNLOCK(f);
+	FUNLOCK(fp);
 	return matches;
 }
-#define __isoc99_vfwscanf(f, fmt, ap)   vfwscanf((f), (fmt), (ap))
-#define isoc99_vfwscanf(f, fmt, ap)   vfwscanf((f), (fmt), (ap))
+#define __isoc99_vfwscanf(fp, fmt, ap)   vfwscanf((fp), (fmt), (ap))
+#define isoc99_vfwscanf(fp, fmt, ap)   vfwscanf((fp), (fmt), (ap))
 
 
 DIAG_POP
 
 
 /** Reads data from the stream and stores them according to the C wide string format into the locations pointed by the additional arguments */
-LIB_FUNC int fwscanf(FILE* restrict f, const wchar_t* restrict fmt, ...) {
+LIB_FUNC int fwscanf(FILE* restrict fp, const wchar_t* restrict fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
-	const int ret = vfwscanf(f, fmt, ap);
+	const int ret = vfwscanf(fp, fmt, ap);
 	va_end(ap);
 	return ret;
 }
-#define __isoc99_fwscanf(f, fmt, ...)   fwscanf((f), (fmt), (__VA_ARGS__))
-#define isoc99_fwscanf(f, fmt, ...)   fwscanf((f), (fmt), (__VA_ARGS__))
+#define __isoc99_fwscanf(fp, fmt, ...)   fwscanf((fp), (fmt), (__VA_ARGS__))
+#define isoc99_fwscanf(fp, fmt, ...)   fwscanf((fp), (fmt), (__VA_ARGS__))
 
 
 /** Reads data from ws and stores them according to parameter format into the locations pointed by the elements in the variable argument list */
-LIB_FUNC int vswscanf(wchar_t* restrict s, const wchar_t* restrict fmt, va_list ap) {
-	unsigned char buf[256];
-	FILE f = {
+LIB_FUNC int vswscanf(wchar_t* restrict wcstr, const wchar_t* restrict fmt, va_list ap) {
+	unsigned char buf[256] = { 0 };
+	FILE fp = {
 		.buf = buf,
 		.buf_size = sizeof(buf),
-		._cookie = (void*)s,
+		.wbuf = wcstr,
+		.wbuf_size = strlenw(wcstr),
 		.read = wstring_read_helper,
 		.lock = -1
 	};
-	return vfwscanf(&f, fmt, ap);
+	return vfwscanf(&fp, fmt, ap);
 }
-#define __isoc99_vswscanf(s, fmt, ap)   vswscanf((s), (fmt), (ap))
-#define isoc99_vswscanf(s, fmt, ap)   vswscanf((s), (fmt), (ap))
+#define __isoc99_vswscanf(wcstr, fmt, ap)   vswscanf((wcstr), (fmt), (ap))
+#define isoc99_vswscanf(wcstr, fmt, ap)   vswscanf((wcstr), (fmt), (ap))
 
 
-/** Reads data from the wide string `s` and stores them according to parameter format into the locations given by the additional arguments, as if wscanf was used, but reading from `s` instead of the standard input (stdin) */
-LIB_FUNC int swscanf(wchar_t* restrict s, const wchar_t* restrict fmt, ...) {
+/** Reads data from the wide string `wcstr` and stores them according to parameter format into the locations given by the additional arguments, as if wscanf was used, but reading from `wcstr` instead of the standard input (stdin) */
+LIB_FUNC int swscanf(wchar_t* restrict wcstr, const wchar_t* restrict fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
-	const int ret = vswscanf(s, fmt, ap);
+	const int ret = vswscanf(wcstr, fmt, ap);
 	va_end(ap);
 	return ret;
 }
-#define __isoc99_swscanf(s, fmt, ...)   swscanf((s), (fmt), (__VA_ARGS__))
-#define isoc99_swscanf(s, fmt, ...)   swscanf((s), (fmt), (__VA_ARGS__))
+#define __isoc99_swscanf(wcstr, fmt, ...)   swscanf((wcstr), (fmt), (__VA_ARGS__))
+#define isoc99_swscanf(wcstr, fmt, ...)   swscanf((wcstr), (fmt), (__VA_ARGS__))
 
 
 /** Reads data from the standard input (stdin) and stores them according to the C wide string format into the locations pointed by the elements in the variable argument list */
@@ -34296,9 +34300,8 @@ LIB_FUNC int wscanf(const wchar_t* format, ... ) {
 #define isoc99_wscanf(fmt, ...)   vwscanf((fmt), (__VA_ARGS__))
 
 
-/** Write some memory regions; Return zero on success, or EOF on error */
-LIB_FUNC int __sfvwrite(FILE* fp, struct __suio* uio) {
-	struct __siov* iov;
+/** Write some memory regions; Return zero on success, or `EOF` on error */
+LIB_FUNC int sfvwrite(FILE* fp, struct __suio* uio) {
 	if ((int)uio->uio_resid == 0) { return 0; }
 	else if (cantwrite(fp)) {
 		set_errno(EBADF);
@@ -34307,19 +34310,20 @@ LIB_FUNC int __sfvwrite(FILE* fp, struct __suio* uio) {
 	int s, nlknown, nldist;
 	size_t w;
 	char* nl;
+	struct __siov* iov;
 	iov = uio->uio_iov;
 	char* p = iov->iov_base;
 	size_t len = iov->iov_len;
 	++iov;
-	if (fp->flags & (unsigned int)__SNBF) {  // Unbuffered: write up to BUFSIZ bytes at a time
+	if (fp->flags & (unsigned int)__SNBF) {  // Unbuffered: Write up to BUFSIZ bytes at a time
 		do {
 			while (len == 0) {
 				p = iov->iov_base;
 				len = iov->iov_len;
 				iov++;
 			}
-			w = (size_t)(*fp->write)(fp->_cookie, (unsigned char*)p, (size_t)MIN(len, (size_t)BUFSIZ));
-			if (w <= 0) { goto goto___sfvwrite_err; }
+			w = (size_t)(*fp->write)(fp, (unsigned char*)p, (size_t)MIN(len, (size_t)BUFSIZ));
+			if (w <= 0) { goto goto_sfvwrite_err; }
 			p += w;
 			len -= w;
 		} while ((uio->uio_resid -= (int)w) != 0);
@@ -34330,36 +34334,36 @@ LIB_FUNC int __sfvwrite(FILE* fp, struct __suio* uio) {
 				len = iov->iov_len;
 				iov++;
 			}
-			if ((fp->flags & (unsigned int)(__SALC | __SSTR)) == (__SALC | __SSTR) && (size_t)fp->_w < len) {
+			if ((fp->flags & (unsigned int)(__SALC | __SSTR)) == (__SALC | __SSTR) && (size_t)fp->wspace < len) {
 				const size_t blen = (size_t)(fp->rpos - fp->buf);
 				unsigned char* _base;
 				size_t _size = fp->buf_size;
 				do { _size = (_size << 1) + 1; } while (_size < (size_t)(blen + len));
 				_base = realloc(fp->buf, (size_t)(_size + 1));
-				if (_base == NULL) { goto goto___sfvwrite_err; }
-				fp->_w += (int)(_size - fp->buf_size);
+				if (_base == NULL) { goto goto_sfvwrite_err; }
+				fp->wspace += (int)(_size - fp->buf_size);
 				fp->buf = _base;
 				fp->buf_size = _size;
 				fp->rpos = _base + blen;
 			}
-			w = (size_t)fp->_w;
+			w = (size_t)fp->wspace;
 			if (fp->flags & (unsigned int)__SSTR) {
 				if (len < w) { w = len; }
 				COPY(fp, p, w);
-				fp->_w -= (int)w;
+				fp->wspace -= (int)w;
 				fp->rpos += (int)w;
 				w = len;
 			} else if (fp->rpos > fp->buf && len > w) {
 				COPY(fp, p, w);
 				fp->rpos += (int)w;
-				if (sflush(fp)) { goto goto___sfvwrite_err; }
+				if (sflush(fp)) { goto goto_sfvwrite_err; }
 			} else if (len >= (w = fp->buf_size)) {
-				w = (size_t)(*fp->write)(fp->_cookie, (unsigned char*)p, w);
-				if (w <= 0) { goto goto___sfvwrite_err; }
+				w = (size_t)(*fp->write)(fp, (unsigned char*)p, w);
+				if (w <= 0) { goto goto_sfvwrite_err; }
 			} else {
 				w = len;
 				COPY(fp, p, w);
-				fp->_w -= (int)w;
+				fp->wspace -= (int)w;
 				fp->rpos += (int)w;
 			}
 			p += (int)w;
@@ -34381,22 +34385,22 @@ LIB_FUNC int __sfvwrite(FILE* fp, struct __suio* uio) {
 				nlknown = 1;
 			}
 			s = (int)MIN((int)len, nldist);
-			w = (size_t)((size_t)fp->_w + fp->buf_size);
+			w = (size_t)((size_t)fp->wspace + fp->buf_size);
 			if ((fp->rpos > fp->buf) && (s > (int)w)) {
 				COPY(fp, p, w);
 				fp->rpos += (int)w;
-				if (sflush(fp)) { goto goto___sfvwrite_err; }
+				if (sflush(fp)) { goto goto_sfvwrite_err; }
 			} else if (s >= (int)(w = fp->buf_size)) {
-				w = (size_t)(*fp->write)(fp->_cookie, (unsigned char*)p, w);
-				if (w <= 0) { goto goto___sfvwrite_err; }
+				w = (size_t)(*fp->write)(fp, (unsigned char*)p, w);
+				if (w <= 0) { goto goto_sfvwrite_err; }
 			} else {
 				w = (size_t)s;
 				COPY(fp, p, w);
-				fp->_w -= (int)w;
+				fp->wspace -= (int)w;
 				fp->rpos += (int)w;
 			}
 			if ((nldist -= (int)w) == 0) {
-				if (sflush(fp)) { goto goto___sfvwrite_err; }
+				if (sflush(fp)) { goto goto_sfvwrite_err; }
 				nlknown = 0;
 			}
 			p += (int)w;
@@ -34404,10 +34408,11 @@ LIB_FUNC int __sfvwrite(FILE* fp, struct __suio* uio) {
 		} while ((uio->uio_resid -= (int)w) != 0);
 	}
 	return 0;
-goto___sfvwrite_err:
+goto_sfvwrite_err:
 	fp->flags |= (unsigned int)__SERR;
 	return EOF;
 }
+#define __sfvwrite(fp, uio)   sfvwrite((fp), (uio))
 
 
 LIB_FUNC void pop_arg(union printf_arg* arg, const int type, va_list* ap) {
@@ -34615,7 +34620,7 @@ LIB_FUNC int vfwprintf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap
 	va_copy(ap2, ap);
 	if (wprintf_core(0, fmt, &ap2, nl_arg, nl_type) < 0) { va_end(ap2); return -1; }
 	FLOCK(f);
-	fwide(f, 1);
+	fwide(f, _O_WIDE);
 	const int olderr = (f->flags & (unsigned int)__SERR);
 	f->flags &= (unsigned int)(~__SERR);
 	int ret = wprintf_core(f, fmt, &ap2, nl_arg, nl_type);
@@ -34628,30 +34633,30 @@ LIB_FUNC int vfwprintf(FILE* restrict f, const wchar_t* restrict fmt, va_list ap
 #define __vfwprintf(f, fmt, ap)   vfwprintf((f), (fmt), (ap))
 
 
-/** Composes a string with the same text that would be printed if `fmt` was used on wprintf, but using the elements in the variable argument list identified by `ap` instead of additional function arguments and storing the resulting content as a C wide string in the buffer pointed by `s` (taking `n` as the maximum buffer capacity to fill, expressed in wide characters) */
-LIB_FUNC int vswprintf(wchar_t* restrict s, const size_t n, const wchar_t* restrict fmt, va_list ap) {
-	if (n == 0) { set_errno(EINVAL); return -1; }
-	FILE f;
+/** Composes a string with the same text that would be printed if `fmt` was used on wprintf, but using the elements in the variable argument list identified by `ap` instead of additional function arguments and storing the resulting content as a C wide string in the buffer pointed by `wcstr` (taking `maxlen` as the maximum buffer capacity to fill, expressed in wide characters) */
+LIB_FUNC int vswprintf(wchar_t* restrict wcstr, const size_t maxlen, const wchar_t* restrict fmt, va_list ap) {
+	if (maxlen == 0) { set_errno(EINVAL); return -1; }
+	FILE fp = { 0 };
+	memset_no_output(&fp, 0, SIZEOF_FILE);
+	fp.lbf = EOF;
+	fp.flags = (unsigned int)(__SWR | __SSTR | __SALC);
+	fp.write = &sw_write_helper;
 	unsigned char buf[256] = { 0 };
-	struct cookie c = { s, (n - 1) };
-	memset_no_output(&f, 0, SIZEOF_FILE);
-	f.lbf = EOF;
-	f.flags = (unsigned int)(__SWR | __SSTR | __SALC);
-	f.write = &sw_write_helper;
-	f.buf_size = sizeof(buf);
-	f.buf = buf;
-	f.lock = -1;
-	f._cookie = &c;
-	if (!n) { return -1; }
-	else if (n > INT_MAX) { set_errno(EOVERFLOW); return -1; }
-	const int r = vfwprintf(&f, fmt, ap);
-	sw_write(&f, 0, 0);
-	return (int)((size_t)r >= n ? -1 : r);
+	fp.buf = buf;
+	fp.buf_size = sizeof(buf);
+	fp.wbuf = wcstr;
+	fp.wbuf_size = (maxlen - 1);
+	fp.lock = -1;
+	if (!maxlen) { return -1; }
+	else if (maxlen > INT_MAX) { set_errno(EOVERFLOW); return -1; }
+	const int r = vfwprintf(&fp, fmt, ap);
+	sw_write(&fp, 0, 0);
+	return (int)((size_t)r >= maxlen ? -1 : r);
 }
-#define _IO_vswprintf(_string, maxlen, format, args)   vswprintf((_string), (maxlen), (format), (args))
-#define _vswprintf(_string, maxlen, format, args)   vswprintf((_string), (maxlen), (format), (args))
-#define __vswprintf(_string, maxlen, format, args)   vswprintf((_string), (maxlen), (format), (args))
-#define vsprintfW(_string, maxlen, format, args)   vswprintf((_string), (maxlen), (format), (args))
+#define _IO_vswprintf(wcstr, maxlen, format, args)   vswprintf((wcstr), (maxlen), (format), (args))
+#define _vswprintf(wcstr, maxlen, format, args)   vswprintf((wcstr), (maxlen), (format), (args))
+#define __vswprintf(wcstr, maxlen, format, args)   vswprintf((wcstr), (maxlen), (format), (args))
+#define vsprintfW(wcstr, maxlen, format, args)   vswprintf((wcstr), (maxlen), (format), (args))
 
 
 /** Writes the C wide string pointed by `fmt` to the standard output (stdout), replacing any format specifier in the same way as printf does, but using the elements in the variable argument list instead of additional function arguments */
@@ -36266,10 +36271,10 @@ int strnunvisx(char *, size_t, const char *, int);
 /** This macro is non-zero if the functionality is not implemented using function calls but instead uses some inlined code which might simply consist of a few assembler instructions */
 #define HP_TIMING_INLINE   (1)
 /** The "rpcc" instruction returns a 32-bit counting half and a 32-bit "virtual cycle counter displacement"; Subtracting the two gives us a virtual cycle count */
-#define HP_TIMING_NOW(VAR)   do { unsigned long x_; asm volatile ("rpcc %0;" : "=r"(x_)); (VAR) = (int)(x_) - (int)(x_ >> 32); } while (0x0)
+#define HP_TIMING_NOW(VAR)   do { unsigned long x_; vasm("rpcc %0;" : "=r"(x_)); (VAR) = (int)(x_) - (int)(x_ >> 32); } while (0x0)
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	unsigned long x_;
-	asm volatile ("rpcc %0;" : "=r"(x_));
+	vasm("rpcc %0;" : "=r"(x_));
 	return (hp_timing_t)((int)(x_) - (int)(x_ >> 32));
 }
 
@@ -36280,10 +36285,10 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_TIMING_AVAIL   (1)
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
-#define HP_TIMING_NOW(Var)   do { unsigned int _hi, _lo; asm volatile ("mfence;" "rdtscp;" "mfence;" : "=a"(_lo), "=d"(_hi)); (Var) = ((unsigned long long)_hi << 32) | _lo; } while (0x0)  // The "=A" constraint used in 32-bit mode does not work in 64-bit mode
+#define HP_TIMING_NOW(Var)   do { unsigned int _hi, _lo; vasm("mfence;" "rdtscp;" "mfence;" : "=a"(_lo), "=d"(_hi)); (Var) = ((unsigned long long)_hi << 32) | _lo; } while (0x0)  // The "=A" constraint used in 32-bit mode does not work in 64-bit mode
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	unsigned int _hi, _lo;
-	asm volatile ("mfence;" "rdtscp;" "mfence;" : "=a"(_lo), "=d"(_hi));
+	vasm("mfence;" "rdtscp;" "mfence;" : "=a"(_lo), "=d"(_hi));
 	return (hp_timing_t)(((unsigned long long)_hi << 32) | (unsigned long long)_lo);
 }
 
@@ -36295,13 +36300,13 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
 /** Use the `rdtsc` instruction; Note that the value might not be 100% accurate since there might be some more instructions running in this moment; This could be changed by using a barrier like `cpuid` right before the `rdtsc` instruction */
-#define HP_TIMING_NOW(Var)   asm volatile ("mfence;" "rdtscp;" "mfence;" : "=A"(Var))
+#define HP_TIMING_NOW(Var)   vasm("mfence;" "rdtscp;" "mfence;" : "=A"(Var))
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t rdtsc_val;
-	asm volatile ("mfence;" "rdtscp;" "mfence;" : "=A"(rdtsc_val));
+	vasm("mfence;" "rdtscp;" "mfence;" : "=A"(rdtsc_val));
 	return (hp_timing_t)rdtsc_val;
 }
-#define rdtscl(low)   asm volatile ("mfence;" "rdtscp;" "mfence;" : "=a"(low) : : "ecx", "edx")
+#define rdtscl(low)   vasm("mfence;" "rdtscp;" "mfence;" : "=a"(low) : : "ecx", "edx")
 
 
 #elif defined(ARCHITANIUM)
@@ -36310,11 +36315,11 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_TIMING_AVAIL   (1)
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
-#define HP_TIMING_NOW(Var)   do { unsigned long __itc; do { asm volatile ("mov %0 = ar.itc;" : "=r"(__itc) : : "memory"); } while (PREDICT_UNLIKELY((long)__itc == -1)); Var = __itc; } while (0x0)
+#define HP_TIMING_NOW(Var)   do { unsigned long __itc; do { vasm("mov %0 = ar.itc;" : "=r"(__itc) : : "memory"); } while (PREDICT_UNLIKELY((long)__itc == -1)); Var = __itc; } while (0x0)
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t __itc;
 	do {
-		asm volatile ("mov %0 = ar.itc;" : "=r"(__itc) : : "memory");
+		vasm("mov %0 = ar.itc;" : "=r"(__itc) : : "memory");
 	} while (PREDICT_UNLIKELY((long)__itc == -1));
 	return (hp_timing_t)__itc;
 }
@@ -36326,10 +36331,10 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_TIMING_AVAIL   (1)
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
-#define HP_TIMING_NOW(Var)   asm volatile ("rd %%tick, %0;" : "=r"(Var))
+#define HP_TIMING_NOW(Var)   vasm("rd %%tick, %0;" : "=r"(Var))
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t rdtick;
-	asm volatile ("rd %%tick, %0;" : "=r"(rdtick));
+	vasm("rd %%tick, %0;" : "=r"(rdtick));
 	return (hp_timing_t)rdtick;
 }
 
@@ -36340,10 +36345,10 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_TIMING_AVAIL   (1)
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
-#define HP_TIMING_NOW(Var)   do { asm volatile ("rd %%tick, %L0;" "srlx %L0, 32, %H0;" : "=r"(Var)); } while (0x0)
+#define HP_TIMING_NOW(Var)   do { vasm("rd %%tick, %L0;" "srlx %L0, 32, %H0;" : "=r"(Var)); } while (0x0)
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t rdtick;
-	asm volatile ("rd %%tick, %L0;" "srlx %L0, 32, %H0;" : "=r"(rdtick));
+	vasm("rd %%tick, %L0;" "srlx %L0, 32, %H0;" : "=r"(rdtick));
 	return (hp_timing_t)rdtick;
 }
 
@@ -36357,17 +36362,17 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 
 /** Use the `mftb` instruction; Note that the value might not be 100% accurate since there might be some more instructions running in this moment; This could be changed by using a barrier like `lwsync` right before the `mftb` instruction */
 #ifdef _ARCH_PWR4
-#   define HP_TIMING_NOW(Var)   asm volatile ("mfspr %0, 268;" : "=r"(Var))
+#   define HP_TIMING_NOW(Var)   vasm("mfspr %0, 268;" : "=r"(Var))
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t mfspr_val;
-	asm volatile ("mfspr %0, 268;" : "=r"(mfspr_val));
+	vasm("mfspr %0, 268;" : "=r"(mfspr_val));
 	return (hp_timing_t)mfspr_val;
 }
 #else
-#   define HP_TIMING_NOW(Var)   asm volatile ("mftb %0;" : "=r"(Var))
+#   define HP_TIMING_NOW(Var)   vasm("mftb %0;" : "=r"(Var))
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	hp_timing_t mftb_val;
-	asm volatile ("mftb %0;" : "=r"(mftb_val));
+	vasm("mftb %0;" : "=r"(mftb_val));
 	return (hp_timing_t)mftb_val;
 }
 #endif
@@ -36380,10 +36385,10 @@ LIB_FUNC hp_timing_t HP_TIMING(void) {
 #define HP_SMALL_TIMING_AVAIL   (1)
 #define HP_TIMING_INLINE   (1)
 /** Use the `mftb` instruction; Note that the value might not be 100% accurate since there might be some more instructions running in this moment; This could be changed by using a barrier like `lwsync` right before the `mftb` instruction */
-#define HP_TIMING_NOW(Var)   do { unsigned int hi, lo, tmp; asm volatile ("1: mfspr %0, 269;" "mfspr %1, 268;" "mfspr %2, 269;" "cmpw %0, %2;" "bne 1b;" : "=&r"(hi), "=&r"(lo), "=&r"(tmp) : : "cr0"); Var = ((hp_timing_t)hi << 32) | lo; } while (0x0)
+#define HP_TIMING_NOW(Var)   do { unsigned int hi, lo, tmp; vasm("1: mfspr %0, 269;" "mfspr %1, 268;" "mfspr %2, 269;" "cmpw %0, %2;" "bne 1b;" : "=&r"(hi), "=&r"(lo), "=&r"(tmp) : : "cr0"); Var = ((hp_timing_t)hi << 32) | lo; } while (0x0)
 LIB_FUNC hp_timing_t HP_TIMING(void) {
 	unsigned int hi, lo, tmp;
-	asm volatile ("1: mfspr %0, 269;" "mfspr %1, 268;" "mfspr %2, 269;" "cmpw %0, %2;" "bne 1b;" : "=&r"(hi), "=&r"(lo), "=&r"(tmp) : : "cr0");
+	vasm("1: mfspr %0, 269;" "mfspr %1, 268;" "mfspr %2, 269;" "cmpw %0, %2;" "bne 1b;" : "=&r"(hi), "=&r"(lo), "=&r"(tmp) : : "cr0");
 	return (hp_timing_t)(((hp_timing_t)hi << 32) | (hp_timing_t)lo);
 }
 
@@ -37274,10 +37279,10 @@ LIB_FUNC long long tm_to_secs(const struct tm* _tm) {
 
 LIB_FUNC const char* tm_to_tzname(const struct tm* _tm) {
 	const void* p = _tm->__tm_zone;
-	LOCK(tm_lock);
+	LOCK(tmlock);
 	do_tzset();
 	if (p != __gmt && p != __tzname[0] && p != __tzname[1] && (!zi || (uintptr_t)p - (uintptr_t)abbrevs >= (uintptr_t)(abbrevs_end - abbrevs))) { p = ""; }
-	UNLOCK(tm_lock);
+	UNLOCK(tmlock);
 	return p;
 }
 #define __tm_to_tzname(_tm)   tm_to_tzname((_tm))
@@ -37497,7 +37502,7 @@ LIB_FUNC int timer_delete(const timer_t t) {
 	if ((intptr_t)t < 0) {
 		struct pthread* td = (void*)((uintptr_t)t << 1);
 		a_store(&td->timer_id, (int)(td->timer_id | INT_MIN));
-		wake(&td->timer_id, 1, 1);
+		wake((atomic volatile void*)&td->timer_id, 1, 1);
 		return 0;
 	}
 	return (int)syscall1(SYS_timer_delete, (long)t);
@@ -37692,7 +37697,7 @@ LIB_FUNC const unsigned char* __map_file(const char* restrict pathname, size_t* 
 
 /** Determine the time zone in effect for a given time in seconds since the epoch; It can be given in local or universal time */
 LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, long* oppoff, const char** zonename) {
-	LOCK(lock);
+	LOCK(tmlock);
 	do_tzset();
 	if (zi) {
 		size_t alt, i = (size_t)scan_trans(t, local, &alt);
@@ -37701,7 +37706,7 @@ LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, lon
 			*offset = (int32_t)zi_read32(types + 6 * i);
 			*zonename = (const char*)abbrevs + types[6 * i + 5];
 			if (oppoff) { *oppoff = (int32_t)zi_read32(types + 6 * alt); }
-			UNLOCK(lock);
+			UNLOCK(tmlock);
 			return;
 		}
 	}
@@ -37710,7 +37715,7 @@ LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, lon
 		*offset = -__timezone;
 		if (oppoff) { *oppoff = -dst_off; }
 		*zonename = __tzname[0];
-		UNLOCK(lock);
+		UNLOCK(tmlock);
 		return;
 	}
 	long long y = (long long)(t / 31556952 + 70);
@@ -37728,14 +37733,14 @@ LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, lon
 			*offset = -dst_off;
 			if (oppoff) { *oppoff = -__timezone; }
 			*zonename = __tzname[1];
-			UNLOCK(lock);
+			UNLOCK(tmlock);
 			return;
 		}
 		*isdst = 0;
 		*offset = -__timezone;
 		if (oppoff) { *oppoff = -dst_off; }
 		*zonename = __tzname[0];
-		UNLOCK(lock);
+		UNLOCK(tmlock);
 		return;
 	} else {
 		if (!local) {
@@ -37747,14 +37752,14 @@ LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, lon
 			*offset = -__timezone;
 			if (oppoff) { *oppoff = -dst_off; }
 			*zonename = __tzname[0];
-			UNLOCK(lock);
+			UNLOCK(tmlock);
 			return;
 		}
 		*isdst = 1;
 		*offset = -dst_off;
 		if (oppoff) { *oppoff = -__timezone; }
 		*zonename = __tzname[1];
-		UNLOCK(lock);
+		UNLOCK(tmlock);
 		return;
 	}
 	UNREACHABLE
@@ -37971,9 +37976,9 @@ LIB_FUNC size_t scan_trans(long long t, int local, size_t* alt) {
 
 
 LIB_FUNC void tzset(void) {
-	LOCK(tm_lock);
+	LOCK(tmlock);
 	do_tzset();
-	UNLOCK(tm_lock);
+	UNLOCK(tmlock);
 }
 #define __tzset()   tzset()
 
@@ -39604,7 +39609,6 @@ LIB_FUNC void freelocale(locale_t _locale) {
 
 
 LIB_FUNC int munmap(void* start, const size_t len) {
-	vm_wait();
 	return (int)syscall2(SYS_munmap, (long)start, (long)len);
 }
 #define __munmap(start, len)   munmap((start), (len))
@@ -39612,7 +39616,6 @@ LIB_FUNC int munmap(void* start, const size_t len) {
 
 
 LIB_FUNC int munmap_const(const void* start, const size_t len) {
-	vm_wait();
 	return (int)syscall2(SYS_munmap, (long)start, (long)len);
 }
 
@@ -39627,7 +39630,7 @@ LIB_FUNC NOLIBCALL uintptr_t __brk(const uintptr_t newbrk) {
 #define _brk(newbrk)   __brk((newbrk))
 
 
-/** This function returns true if the interval [old, new] intersects the 'len'-sized interval below &libc.auxv (interpreted as the main-thread stack) or below &b (the current stack); It is used to defend against buggy brk implementations that can cross the stack */
+/** This function returns true if the interval [old, new] intersects the `len`-sized interval below &libc.auxv (interpreted as the main-thread stack) or below &b (the current stack); It is used to defend against buggy brk implementations that can cross the stack */
 LIB_FUNC ATTR_CF int traverses_stack_p(const uintptr_t old, const uintptr_t new) {
 	uintptr_t b = (uintptr_t)libc.auxv;
 	register uintptr_t a = (b > (uintptr_t)0x800000 ? (b - (uintptr_t)0x800000) : 0);
@@ -39655,12 +39658,13 @@ LIB_FUNC NOLIBCALL void* mmap(void* restrict start, const size_t len, const int 
 	} else if (PREDICT_UNLIKELY(len >= PTRDIFF_MAX)) {
 		set_errno(ENOMEM);
 		return MAP_FAILED;
-	} else if (PREDICT_UNLIKELY(flags & MAP_FIXED)) { vm_wait(); }
+	} else if (PREDICT_UNLIKELY(flags & MAP_FIXED)) { LOCK(memlock); }
 #   ifdef SYS_mmap2
 	const long mmap_ptr = (long)syscall6(SYS_mmap2, (long)start, (long)len, prot, flags, fd, (off_t)(off / SYSCALL_MMAP2_UNIT));
 #   else
 	const long mmap_ptr = (long)syscall6(SYS_mmap, (long)start, (long)len, prot, flags, fd, off);
 #   endif
+	UNLOCK(memlock);
 	return (void*)mmap_ptr;
 }
 #define mmap64(start, len, prot, flags, fd, off)   mmap((start), (len), (prot), (flags), (fd), (off))
@@ -39746,7 +39750,6 @@ LIB_FUNC void* mremap(void* old_addr, const size_t old_len, const size_t new_len
 		set_errno(ENOMEM);
 		return MAP_FAILED;
 	} else if (flags & MREMAP_FIXED) {
-		vm_wait();
 		va_start(ap, flags);
 		new_addr = va_arg(ap, void*);
 		va_end(ap);
@@ -39882,14 +39885,14 @@ LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
 	register size_t align = 1;
 	if (!n) { ++n; }
 	while (align < n && align < 16) { align += align; }
-	LOCK(lock);
+	LOCK(memlock);
 	register size_t pad = -(uintptr_t)cur & (align - 1);
 	if (n <= ((SIZE_MAX >> 1) + align)) { n += pad; }
 	if (n > (size_t)(end - cur)) {
 		size_t m = n;
 		char* new = expand_heap(&m);
 		if (!new) {
-			UNLOCK(lock);
+			UNLOCK(memlock);
 			return 0;
 		} else if (new != end) {
 			cur = new;
@@ -39900,7 +39903,7 @@ LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
 	}
 	void* p = cur + pad;
 	cur += n;
-	UNLOCK(lock);
+	UNLOCK(memlock);
 	return p;
 }
 #define __simple_malloc(n)   malloc((n))
@@ -40347,9 +40350,9 @@ LIB_FUNC void* alloca(const size_t size) {
 #define strdupa(x)   strcpy(alloca(strlen((x)) + 1), (x))
 
 
-LIB_FUNC void* mmalloca(const size_t n) {
-	register size_t nplus = (size_t)(n + HEADER_SIZE);
-	if (nplus >= n) {
+LIB_FUNC void* mmalloca(const size_t len) {
+	register size_t nplus = (size_t)(len + HEADER_SIZE);
+	if (nplus >= len) {
 		void* p = malloc(nplus);
 		if (p != NULL) {
 			union header* h = p;
@@ -40357,9 +40360,9 @@ LIB_FUNC void* mmalloca(const size_t n) {
 			// Put a magic number into the indicator word
 			h->magic.word = MAGIC_NUMBER;
 			// Enter p into the hash table
-			size_t slot = (size_t)((uintptr_t)p % HASH_TABLE_SIZE);
-			h->next = mmalloca_results[slot];
-			mmalloca_results[slot] = p;
+			const size_t _slot = (size_t)((uintptr_t)p % HASH_TABLE_SIZE);
+			h->next = mmalloca_results[_slot];
+			mmalloca_results[_slot] = p;
 			return p;
 		}
 	}
@@ -40370,8 +40373,8 @@ LIB_FUNC void* mmalloca(const size_t n) {
 /** Free a block of memory allocated through malloca() */
 LIB_FUNC void freea(void* p) {
 	if ((p != NULL) && (((int*) p)[-1] == MAGIC_NUMBER)) {
-		size_t slot = (size_t)((uintptr_t)p % HASH_TABLE_SIZE);
-		void** chain = &mmalloca_results[slot];
+		const size_t _slot = (size_t)((uintptr_t)p % HASH_TABLE_SIZE);
+		void** chain = &mmalloca_results[_slot];
 		for (; *chain != NULL;) {
 			union header* h = p;
 			if (*chain == p) {
@@ -41842,14 +41845,14 @@ LIB_FUNC int getopt_long_only(const int argc, char* const argv[], const char* op
 /** Equivalent to fegetenv, but returns an unsigned int instead of taking a pointer */
 LIB_FUNC unsigned int fegetenv_register(void) {
 	unsigned int fscr;
-	asm volatile ("mfspefscr %0;" : "=r"(fscr));
+	vasm("mfspefscr %0;" : "=r"(fscr));
 	return fscr;
 }
 
 
 /** Equivalent to fesetenv, but takes an unsigned int instead of a pointer */
 LIB_FUNC void fesetenv_register(unsigned int fscr) {
-	asm volatile ("mtspefscr %0;" : : "r"(fscr));
+	vasm("mtspefscr %0;" : : "r"(fscr));
 }
 
 
@@ -41857,22 +41860,22 @@ LIB_FUNC void fesetenv_register(unsigned int fscr) {
 
 
 /** Equivalent to fegetenv, but returns a fenv_t instead of taking a pointer */
-#   define fegetenv_register()   __extension__ ({ fenv_t env; asm volatile ("mffs %0" : "=f"(env)); env; })
+#   define fegetenv_register()   __extension__ ({ fenv_t env; vasm("mffs %0" : "=f"(env)); env; })
 /** Equivalent to fesetenv, but takes a fenv_t instead of a pointer */
-#   define fesetenv_register(env)   do { double d = (env); if (GLRO(dl_hwcap) & PPC_FEATURE_HAS_DFP) { asm volatile (".machine push; " ".machine "power6"; " "mtfsf 0xff,%0,1,0; " ".machine pop" : : "f"(d)); } else { asm volatile ("mtfsf 0xff,%0" : : "f"(d)); } } while (0x0)
+#   define fesetenv_register(env)   do { double d = (env); if (GLRO(dl_hwcap) & PPC_FEATURE_HAS_DFP) { vasm(".machine push; " ".machine "power6"; " "mtfsf 0xff,%0,1,0; " ".machine pop" : : "f"(d)); } else { vasm("mtfsf 0xff,%0" : : "f"(d)); } } while (0x0)
 /** Sets the rounding mode to 'round to nearest', sets the processor into IEEE mode, and prevents exceptions from being raised for inexact results */
 #   define relax_fenv_state()   do { if (GLRO(dl_hwcap) & PPC_FEATURE_HAS_DFP) { asm (".machine push; .machine "power6"; " "mtfsfi 7,0,1; .machine pop"); } asm ("mtfsfi 7,0"); } while (0x0)
 
 
 LIB_FUNC MATH_FUNC int __fesetround_inline(const int round) {
 	if ((unsigned int)round < 2) {
-		asm volatile ("mtfsb0 30;");
-		if ((unsigned int) round == 0) { asm volatile ("mtfsb0 31;"); }
-		else { asm volatile ("mtfsb1 31;"); }
+		vasm("mtfsb0 30;");
+		if ((unsigned int) round == 0) { vasm("mtfsb0 31;"); }
+		else { vasm("mtfsb1 31;"); }
 	} else {
-		asm volatile ("mtfsb1 30;");
-		if ((unsigned int)round == 2) { asm volatile ("mtfsb0 31;"); }
-		else { asm volatile ("mtfsb1 31;"); }
+		vasm("mtfsb1 30;");
+		if ((unsigned int)round == 2) { vasm("mtfsb0 31;"); }
+		else { vasm("mtfsb1 31;"); }
 	}
 	return 0;
 }
@@ -41894,8 +41897,8 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #      define FPSCR_NI   (29)
 #   endif
 
-#   define f_wash(x)   __extension__ ({ double d; asm volatile ("fmul %0, %1, %2;" : "=f"(d) : "f"(x), "f"(1.0)); d; })
-#   define f_washf(x)   __extension__ ({ float f; asm volatile ("fmuls %0, %1, %2;" : "=f"(f) : "f"(x), "f"(1.0F)); f; })
+#   define f_wash(x)   __extension__ ({ double d; vasm("fmul %0, %1, %2;" : "=f"(d) : "f"(x), "f"(1.0)); d; })
+#   define f_washf(x)   __extension__ ({ float f; vasm("fmuls %0, %1, %2;" : "=f"(f) : "f"(x), "f"(1.0F)); f; })
 
 
 #endif  // POWERPC32
@@ -41934,7 +41937,7 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #define FP_EX_DIVZERO   FE_DIVBYZERO
 #define FP_EX_INEXACT   FE_INEXACT
 #define _FP_TININESS_AFTER_ROUNDING   1
-#define FP_INIT_ROUNDMODE   do { if (PREDICT_UNLIKELY(_round == 4)) { unsigned long t; asm volatile ("excb;" "mf_fpcr %0;" : "=f"(t)); _round = (t >> FPCR_ROUND_SHIFT) & 3; } } while (0x0)
+#define FP_INIT_ROUNDMODE   do { if (PREDICT_UNLIKELY(_round == 4)) { unsigned long t; vasm("excb;" "mf_fpcr %0;" : "=f"(t)); _round = (t >> FPCR_ROUND_SHIFT) & 3; } } while (0x0)
 #define FP_HANDLE_EXCEPTIONS   do { if (PREDICT_UNLIKELY(_fex)) { __feraiseexcept(_fex); } } while (0x0)
 #define FP_TRAPPING_EXCEPTIONS   ((__ieee_get_fp_control () & SWCR_ENABLE_MASK) << SWCR_ENABLE_SHIFT)
 
@@ -41974,7 +41977,7 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #define FP_EX_INEXACT   FE_INEXACT
 #define _FP_TININESS_AFTER_ROUNDING   0
 #define FP_INIT_ROUNDMODE   do { _FPU_GETCW (_fcw); } while (0x0)
-#define FP_HANDLE_EXCEPTIONS   do { const float fp_max = __FLT_MAX__; const float fp_min = __FLT_MIN__, const float fp_1e32 = 1.0E+32F, fp_zero = 0.0F, fp_one = 1.0F; unsigned fpsr; if (_fex & FP_EX_INVALID) { asm volatile ("fdivts0, %s0, %s0;" : : "w"(fp_zero) : "s0"); asm volatile ("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_DIVZERO) { asm volatile ("fdivts0, %s0, %s1;" : : "w"(fp_one), "w"(fp_zero) : "s0"); asm volatile ("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_OVERFLOW) { asm volatile ("faddts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_1e32) : "s0"); asm volatile ("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_UNDERFLOW) { asm volatile ("fmults0, %s0, %s0;" : : "w"(fp_min) : "s0"); asm volatile ("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_INEXACT) { asm volatile ("fsubts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_one) : "s0"); asm volatile ("mrst%0, fpsr;" : "=r"(fpsr)); } } while (0x0)
+#define FP_HANDLE_EXCEPTIONS   do { const float fp_max = __FLT_MAX__; const float fp_min = __FLT_MIN__, const float fp_1e32 = 1.0E+32F, fp_zero = 0.0F, fp_one = 1.0F; unsigned fpsr; if (_fex & FP_EX_INVALID) { vasm("fdivts0, %s0, %s0;" : : "w"(fp_zero) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_DIVZERO) { vasm("fdivts0, %s0, %s1;" : : "w"(fp_one), "w"(fp_zero) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_OVERFLOW) { vasm("faddts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_1e32) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_UNDERFLOW) { vasm("fmults0, %s0, %s0;" : : "w"(fp_min) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_INEXACT) { vasm("fsubts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_one) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } } while (0x0)
 #define FP_TRAPPING_EXCEPTIONS   ((_fcw >> FE_EXCEPT_SHIFT) & FE_ALL_EXCEPT)
 
 
@@ -42305,7 +42308,7 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #define FP_INIT_ROUNDMODE   do { _FPU_GETCW(_fcw); } while (0x0)
 #define FP_TRAPPING_EXCEPTIONS   ((_fcw >> 23) & 0x1f)
 #define FP_INHIBIT_RESULTS   ((_fcw >> 23) & _fex)
-#define FP_HANDLE_EXCEPTIONS   do { if (!_fex) { asm volatile ("fzero %%f62;" "faddd %%f62, %%f62, %%f62;" : : : "f62"); } else { __Qp_handle_exceptions (_fex); } } while (0x0)
+#define FP_HANDLE_EXCEPTIONS   do { if (!_fex) { vasm("fzero %%f62;" "faddd %%f62, %%f62, %%f62;" : : : "f62"); } else { __Qp_handle_exceptions (_fex); } } while (0x0)
 #define QP_HANDLE_EXCEPTIONS(_a)   do { if ((_fcw >> 23) & _fex) { _a; } else { _fcw = (_fcw & ~0x1fL) | (_fex << 5) | _fex; _FPU_SETCW(_fcw); } } while (0x0)
 #define QP_NO_EXCEPTIONS   asm ("fzero %%f62;" "faddd %%f62, %%f62, %%f62;" : : : "f62")
 #define QP_CLOBBER   "memory", "f52", "f54", "f56", "f58", "f60", "f62"
@@ -42336,8 +42339,8 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #define _FP_CHOOSENAN(fs, wc, R, X, Y, OP)   do { if ((_FP_FRAC_HIGH_RAW_ ## fs(X) & _FP_QNANBIT_ ## fs) && !(_FP_FRAC_HIGH_RAW_ ## fs(Y) & _FP_QNANBIT_ ## fs)) { R ## _s = Y ## _s; _FP_FRAC_COPY_ ## wc(R, Y); } else { R ## _s = X ## _s; _FP_FRAC_COPY_ ## wc(R, X); } R ## _c = FP_CLS_NAN; } while (0x0)
 #define __FP_FRAC_ADD_3(r2, r1, r0, x2, x1, x0, y2, y1, y0)   asm ("addcc %r7, %8, %2;" "addxcc %r5, %6, %1;" "addx %r3, %4, %0;" : "=r"((USItype)(r2)), "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc")
 #define __FP_FRAC_SUB_3(r2, r1, r0, x2, x1, x0, y2, y1, y0)   asm ("subcc %r7, %8, %2;" "subxcc %r5, %6, %1;" "subx %r3, %4, %0;" : "=r"((USItype)(r2)), "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc")
-#define __FP_FRAC_ADD_4(r3, r2, r1, r0, x3, x2, x1, x0, y3, y2, y1, y0)   do { register USItype _t1 asm ("g1"), _t2 asm ("g2"); asm volatile ("addcc %r8, %9, %1;" "addxcc %r6, %7, %0;" "addxcc %r4, %5, %%g2;" "addx %r2, %3, %%g1;" : "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x3)), "rI"((USItype)(y3)), "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc", "g1", "g2"); asm volatile ("" : "=r"(_t1), "=r"(_t2)); r3 = _t1; r2 = _t2; } while (0x0)
-#define __FP_FRAC_SUB_4(r3, r2, r1, r0, x3, x2, x1, x0, y3, y2, y1, y0)   do { register USItype _t1 asm ("g1"), _t2 asm ("g2"); asm volatile ("subcc %r8, %9, %1;" "subxcc %r6, %7, %0;" "subxcc %r4, %5, %%g2;" "subx %r2, %3, %%g1;" : "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x3)), "rI"((USItype)(y3)), "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc", "g1", "g2"); asm volatile ("" : "=r"(_t1), "=r"(_t2)); r3 = _t1; r2 = _t2; } while (0x0)
+#define __FP_FRAC_ADD_4(r3, r2, r1, r0, x3, x2, x1, x0, y3, y2, y1, y0)   do { register USItype _t1 asm ("g1"), _t2 asm ("g2"); vasm("addcc %r8, %9, %1;" "addxcc %r6, %7, %0;" "addxcc %r4, %5, %%g2;" "addx %r2, %3, %%g1;" : "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x3)), "rI"((USItype)(y3)), "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc", "g1", "g2"); vasm("" : "=r"(_t1), "=r"(_t2)); r3 = _t1; r2 = _t2; } while (0x0)
+#define __FP_FRAC_SUB_4(r3, r2, r1, r0, x3, x2, x1, x0, y3, y2, y1, y0)   do { register USItype _t1 asm ("g1"), _t2 asm ("g2"); vasm("subcc %r8, %9, %1;" "subxcc %r6, %7, %0;" "subxcc %r4, %5, %%g2;" "subx %r2, %3, %%g1;" : "=&r"((USItype)(r1)), "=&r"((USItype)(r0)) : "%rJ"((USItype)(x3)), "rI"((USItype)(y3)), "%rJ"((USItype)(x2)), "rI"((USItype)(y2)), "%rJ"((USItype)(x1)), "rI"((USItype)(y1)), "%rJ"((USItype)(x0)), "rI"((USItype)(y0)) : "cc", "g1", "g2"); vasm("" : "=r"(_t1), "=r"(_t2)); r3 = _t1; r2 = _t2; } while (0x0)
 #define __FP_FRAC_DEC_3(x2, x1, x0, y2, y1, y0) __FP_FRAC_SUB_3(x2, x1, x0, x2, x1, x0, y2, y1, y0)
 #define __FP_FRAC_DEC_4(x3, x2, x1, x0, y3, y2, y1, y0) __FP_FRAC_SUB_4(x3, x2, x1, x0, x3, x2, x1, x0, y3, y2, y1, y0)
 #define __FP_FRAC_ADDI_4(x3, x2, x1, x0, i)   asm ("addcc %3, %4, %3;" "addxcc %2, %%g0, %2;" "addxcc %1, %%g0, %1;" "addx %0, %%g0, %0;" : "=&r"((USItype)(x3)), "=&r"((USItype)(x2)), "=&r"((USItype)(x1)), "=&r"((USItype)(x0)) : "rI"((USItype)(i)), "0"((USItype)(x3)), "1"((USItype)(x2)), "2"((USItype)(x1)), "3"((USItype)(x0)) : "cc")
@@ -42354,7 +42357,7 @@ LIB_FUNC MATH_FUNC int fenv_reg_to_exceptions(const unsigned long long l) {
 #define FP_INIT_ROUNDMODE   do { _FPU_GETCW(_fcw); } while (0x0)
 #define FP_TRAPPING_EXCEPTIONS   ((_fcw >> 23) & 0x1f)
 #define FP_INHIBIT_RESULTS   ((_fcw >> 23) & _fex)
-#define FP_HANDLE_EXCEPTIONS   do { if (!_fex) { extern unsigned long long ___Q_zero; asm volatile ("ldd [%0], %%f30;" "faddd %%f30, %%f30, %%f30;" : : "r"(&___Q_zero) : "f30"); } else { ___Q_simulate_exceptions (_fex); } } while (0x0)
+#define FP_HANDLE_EXCEPTIONS   do { if (!_fex) { extern unsigned long long ___Q_zero; vasm("ldd [%0], %%f30;" "faddd %%f30, %%f30, %%f30;" : : "r"(&___Q_zero) : "f30"); } else { ___Q_simulate_exceptions (_fex); } } while (0x0)
 
 
 #elif defined(ARCHSUPERH)
@@ -44123,7 +44126,7 @@ LIB_FUNC MATH_FUNC float ceilf(const float x) {
 	float num = x;
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	float z;
-	asm volatile ("frip %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(num));
+	vasm("frip %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(num));
 	return z;
 #   else
 	const float_shape_t xf_s = { .value = num };
@@ -44156,7 +44159,7 @@ LIB_FUNC MATH_FUNC double ceil(const double x) {
 	double num = x;
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	double z;
-	asm volatile ("frip %0, %1;" : "=f"(z) : "f"(num));
+	vasm("frip %0, %1;" : "=f"(z) : "f"(num));
 	return z;
 #   else
 	double_shape_t xw_s = { .value = num };
@@ -44264,7 +44267,7 @@ LIB_FUNC MATH_FUNC float floorf(const float num) {
 	return res;
 #   elif (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	float z;
-	asm volatile ("frim %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
+	vasm("frim %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	const float_shape_t xf_u = { .value = x };
@@ -44305,7 +44308,7 @@ LIB_FUNC MATH_FUNC double floor(const double num) {
 	return res;
 #   elif (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	double z;
-	asm volatile ("frim %0, %1;" : "=f"(z) : "f"(x));
+	vasm("frim %0, %1;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	const double_shape_t xw_u = { .value = x };
@@ -44413,7 +44416,7 @@ LIB_FUNC MATH_FUNC int round_int(const double x) {
 LIB_FUNC MATH_FUNC float roundf(const float x) {
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	float z;
-	asm volatile ("frin %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
+	vasm("frin %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	return floorf(((x > 0.0F) ? (x + 0.5F) : (x - 0.5F)));
@@ -44425,7 +44428,7 @@ LIB_FUNC MATH_FUNC float roundf(const float x) {
 LIB_FUNC MATH_FUNC double round(const double x) {
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	double z;
-	asm volatile ("frin %0, %1;" : "=f"(z) : "f"(x));
+	vasm("frin %0, %1;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	return floor(((x > 0.0) ? (x + 0.5) : (x - 0.5)));
@@ -44873,7 +44876,7 @@ LIB_FUNC MATH_FUNC float truncf(const float num) {
 	float x = num;
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	float z;
-	asm volatile ("friz %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
+	vasm("friz %0, %1;" "frsp %0, %0;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	const float_shape_t xf_u = { .value = x };
@@ -44894,7 +44897,7 @@ LIB_FUNC MATH_FUNC double trunc(const double num) {
 	double x = num;
 #   if (defined(ARCHPOWERPC) && defined(_ARCH_PWR5X))
 	double z;
-	asm volatile ("friz %0, %1;" : "=f"(z) : "f"(x));
+	vasm("friz %0, %1;" : "=f"(z) : "f"(x));
 	return z;
 #   else
 	double_shape_t xw_u = { .value = x };
@@ -47784,7 +47787,7 @@ LIB_FUNC MATH_FUNC float expm1f(const float num) {
 				k = -1;
 			}
 		} else {
-			k = (int32_t)(M_LOG2EF * x + ((xsb == 0) ? 0.5F :  -0.5F));
+			k = (int32_t)(M_LOG2EF * x + ((xsb == 0) ? 0.5F : -0.5F));
 			t = (float)k;
 			hi = x - t * 6.9313812256E-1F;
 			lo = t * 9.0580006145E-6F;
@@ -49239,7 +49242,7 @@ LIB_FUNC MATH_FUNC int __ilogbl(const long double x) {
 LIB_FUNC MATH_FUNC int ilog2f(const float x) {
 #   ifdef ARCHX86
 	register int32_t retval;
-	asm volatile ("bsr %0, %1;" : "+r"(retval) : "r"(x));
+	vasm("bsr %0, %1;" : "+r"(retval) : "r"(x));
 	return retval;
 #   else
 	const uint32_t exp = (((uint32_t)x) >> 23) & 0xff;
@@ -59577,22 +59580,22 @@ LIB_FUNC MATH_FUNC quaternion_long_double qversorl(const quaternion_long_double 
 #define _INTSCAN_H_   (1)
 
 
-LIB_FUNC unsigned long long intscan(FILE* f, const unsigned int _base, const int pok, const unsigned long long lim) {
+LIB_FUNC unsigned long long intscan(FILE* fp, const unsigned int _base, const int pok, const unsigned long long lim) {
 	if (_base > 36) { set_errno(EINVAL); return 0; }
 	const unsigned char* val = integer_table + 1;
 	int c, neg = 0;
 	unsigned int x, base = _base;
 	unsigned long long y;
-	do { c = shgetc(f); } while (isspace(c));
-	if (c == '+' || c == '-') { neg = -(c == '-'); c = shgetc(f); }
+	do { c = shgetc(fp); } while (isspace(c));
+	if (c == '+' || c == '-') { neg = -(c == '-'); c = shgetc(fp); }
 	if ((base == 0 || base == 16) && c == '0') {
-		c = shgetc(f);
+		c = shgetc(fp);
 		if ((c | 32) == 'x') {
-			c = shgetc(f);
+			c = shgetc(fp);
 			if (val[c] >= 16) {
-				shunget(f);
-				if (pok) { shunget(f); }
-				else { shlim(f, 0); }
+				shunget(fp);
+				if (pok) { shunget(fp); }
+				else { shlim(fp, 0); }
 				return 0;
 			}
 			base = 16;
@@ -59600,17 +59603,17 @@ LIB_FUNC unsigned long long intscan(FILE* f, const unsigned int _base, const int
 	} else {
 		if (base == 0) { base = 10; }
 		if (val[c] >= base) {
-			shunget(f);
-			shlim(f, 0);
+			shunget(fp);
+			shlim(fp, 0);
 			set_errno(EINVAL);
 			return 0;
 		}
 	}
 	if (base == 10) {
-		for (x = 0; ((c - '0') < 10) && x <= (unsigned int)(UINT_MAX / 10 - 1); c = shgetc(f)) { x = x * 10 + (unsigned int)(c - '0'); }
-		for (y = x; (c - '0') < 10 && y <= (unsigned long long)(ULLONG_MAX / 10) && (10 * y) <= ULLONG_MAX - (unsigned long long)(c - '0'); c = shgetc(f)) { y = y * 10 + (unsigned long long)(c - '0'); }
+		for (x = 0; ((c - '0') < 10) && x <= (unsigned int)(UINT_MAX / 10 - 1); c = shgetc(fp)) { x = x * 10 + (unsigned int)(c - '0'); }
+		for (y = x; (c - '0') < 10 && y <= (unsigned long long)(ULLONG_MAX / 10) && (10 * y) <= ULLONG_MAX - (unsigned long long)(c - '0'); c = shgetc(fp)) { y = y * 10 + (unsigned long long)(c - '0'); }
 		if ((c - '0') >= 10) {
-			shunget(f);
+			shunget(fp);
 			if (y >= lim) {
 				if (!(lim & 1) && (!neg)) { set_errno(ERANGE); return lim - 1; }
 				else if (y > lim) { set_errno(ERANGE); return lim; }
@@ -59619,26 +59622,26 @@ LIB_FUNC unsigned long long intscan(FILE* f, const unsigned int _base, const int
 		}
 	} else if (!(base & (base - 1))) {
 		int bs = "\0\1\2\4\7\3\6\5"[(0x17 * base) >> 5 & 7];
-		for (x = 0; val[c] < base && x <= UINT_MAX >> 5; c = shgetc(f)) { x = x << bs | val[c]; }
-		for (y = x; val[c] < base && y <= ULLONG_MAX >> bs; c = shgetc(f)) { y = y << bs | val[c]; }
+		for (x = 0; val[c] < base && x <= UINT_MAX >> 5; c = shgetc(fp)) { x = x << bs | val[c]; }
+		for (y = x; val[c] < base && y <= ULLONG_MAX >> bs; c = shgetc(fp)) { y = y << bs | val[c]; }
 	} else {
-		for (x = 0; val[c] < base && x <= UINT_MAX / 36 - 1; c = shgetc(f)) { x = x * base + val[c]; }
-		for (y = x; val[c] < base && y <= ULLONG_MAX / base && base * y <= ULLONG_MAX - val[c]; c = shgetc(f)) { y = y * base + val[c]; }
+		for (x = 0; val[c] < base && x <= UINT_MAX / 36 - 1; c = shgetc(fp)) { x = x * base + val[c]; }
+		for (y = x; val[c] < base && y <= ULLONG_MAX / base && base * y <= ULLONG_MAX - val[c]; c = shgetc(fp)) { y = y * base + val[c]; }
 	}
 	if (val[c] < base) {
-		for (; val[c] < base; c = shgetc(f));
+		for (; val[c] < base; c = shgetc(fp));
 		set_errno(ERANGE);
 		y = lim;
 		if (lim & 1) { neg = 0; }
 	}
-	shunget(f);
+	shunget(fp);
 	if (y >= lim) {
 		if ((!(lim & 1)) && (!neg)) { set_errno(ERANGE); return lim - 1; }
 		else if (y > lim) { set_errno(ERANGE); return lim; }
 	}
 	return (unsigned long long)((y ^ (unsigned long long)neg) - (unsigned long long)neg);
 }
-#define __intscan(f, base, pok, lim)   intscan((f), (base), (pok), (lim))
+#define __intscan(fp, base, pok, lim)   intscan((fp), (base), (pok), (lim))
 
 
 #endif  // INTSCAN_H
