@@ -2079,9 +2079,13 @@ PREDEFINED             = __GLIBC__ \
                          __gnu_linux__ \
                          __linux__ \
                          __STDC_DEC_FP__ \
-                         __STDC_VERSION__=201112L \
                          ARCHX86_64 \
-                         ENV64BIT
+                         ENV64BIT \
+                         _DOXYGEN_ \
+                         __STDC_VERSION__=201710L \
+                         __AVX__ \
+                         __MMX__ \
+                         __SSE__
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The

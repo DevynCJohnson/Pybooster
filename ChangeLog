@@ -1,9 +1,15 @@
-2018-11-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+2018-11-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Fixed a bug that was causing duplicates to remain in the sorted output
-	* clib:  Improved the Doxygen comments
+	* canalysis:  Some optimizations & fixes
+	* clib:  Improved the Doxygen comments & applied many optimizations & code cleanup
+	* clint:  Many optimizations & new pattern checkers
+	* makefile:  Minor fixes
+	* makefile_constants.mk:  Minor fixes
 	* Opticons:  Improved some of the mimetype icons
 	* PyBooster:  Miscellaneous optimizations & tweaks
+	* README.md:  Increased the build requirements
+	* snippets.conf:  Added C snippets
 	* xmath.py:  Added functions for Set Theory
 
 2018-11-13  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

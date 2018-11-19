@@ -30,15 +30,9 @@ along with this software.
 #include "MACROS.h"
 
 
-#ifdef COMPILER_CLANG
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wformat"
-#   pragma clang diagnostic ignored "-Wformat-extra-args"
-#elif defined(COMPILER_GNU_GCC)
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wformat"
-#   pragma GCC diagnostic ignored "-Wformat-extra-args"
-#endif
+DIAG_PUSH
+DIAG_IGNORE("-Wformat")
+DIAG_IGNORE("-Wformat-extra-args")
 
 
 #define START_ERROR   "\x1b[31m"
@@ -54,14 +48,13 @@ along with this software.
 /* FUNCTIONS */
 
 /** General Code Tests */
-static void test_code(rargv_t _argv[]) {
+static void test_code(const long long input_num) {
 	puts_no_output(OPEN_TEST_HEADER "TEST CODE" CLOSE_TEST_HEADER);
 	// Setup
 #   define SIZEOF_TEST_NUM_BUF   64
 	char num_buf[SIZEOF_TEST_NUM_BUF] = { 0 };
 	// Test atoll() & argv[1]
 	puts_no_output("* Test atoll() & argv[1]; Expect - argv[1] *");
-	const long long input_num = (long long)atoll(_argv[1]);
 	puti((int)input_num);
 	putsnl();
 	// Test ulltodec()
@@ -235,8 +228,8 @@ static void test_code(rargv_t _argv[]) {
 	puts_no_output("\n");
 	// Test putc()
 	puts_no_output("* Test putc(); Expect - `$5` *");
-	(void)putc('$', stdout);
-	(void)putc('5', stdout);
+	(void)fputc('$', stdout);  // This is actually a macro that uses `putc()`
+	(void)fputc('5', stdout);
 	puts_no_output("\n");
 	// Test putwc()
 	puts_no_output("* Test putwc(); Expect - `$5` *");
@@ -291,7 +284,7 @@ static void test_strlen(void) {
 
 
 /** Test printf() */
-static void test_printf(rargv_t _argv[]) {
+static void test_printf(const long long input_num) {
 	puts_no_output(OPEN_TEST_HEADER "PRINTF()" CLOSE_TEST_HEADER);
 	// Setup
 	int printf_status = 0;
@@ -302,7 +295,6 @@ static void test_printf(rargv_t _argv[]) {
 	const ptrdiff_t ptrdiff_t_num = (ptrdiff_t)-257;
 	const uintmax_t uintmax_t_num = (uintmax_t)511;
 	const intmax_t intmax_t_num = (intmax_t)-511;
-	const long long input_num = (long long)atoll(_argv[1]);
 	const int bool_prime = islonglongprime(input_num);
 	char test_string[25] = { 'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 'c', 'h', 'a', 'r', '[', ']', ' ', 's', 't', 'r', 'i', 'n', 'g', '.', '\0' };
 	const char* test_const_string = "This is a const char* string.";
@@ -571,13 +563,13 @@ static void test_unicode(void) {
 	(void)putchar(U'€');
 	puts_no_output("\n");
 	puts_no_output("* Test putc(L'€', stdout); Expect unknown symbol `�` *");
-	(void)putc(L'€', stdout);
+	(void)fputc(L'€', stdout);
 	puts_no_output("\n");
 	puts_no_output("* Test putc(u'€', stdout); Expect unknown symbol `�` *");
-	(void)putc(u'€', stdout);
+	(void)fputc(u'€', stdout);
 	puts_no_output("\n");
 	puts_no_output("* Test putc(U'€', stdout); Expect unknown symbol `�` *");
-	(void)putc(U'€', stdout);
+	(void)fputc(U'€', stdout);
 	puts_no_output("\n");
 	puts_no_output("* Test putwc(L'€', stdout); Expect unknown symbol `�` *");
 	(void)putwc(L'€', stdout);
@@ -933,9 +925,10 @@ static void test_x86_intrinsics(void) {
 noreturn int main(rargc, rargv) {
 	TWO_ARGS_REQUIRED_F;
 	START_TIME();
-	test_code(argv);
+	const long long input_num = (long long)atoll(argv[1]);
+	test_code(input_num);
 	test_strlen();
-	test_printf(argv);
+	test_printf(input_num);
 	END_TIME();
 	puts2nl();
 	do_sync();
@@ -960,8 +953,4 @@ noreturn int main(rargc, rargv) {
 }
 
 
-#ifdef COMPILER_CLANG
-#   pragma clang diagnostic pop
-#elif defined(COMPILER_GNU_GCC)
-#   pragma GCC diagnostic pop
-#endif
+DIAG_POP

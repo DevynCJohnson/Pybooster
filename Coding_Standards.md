@@ -258,6 +258,8 @@ Multiline Comment
 */
 
 /*! Single-line Comment */
+
+/*!< Single-line Member Comment
 ```
 
 #### R Style
@@ -308,6 +310,7 @@ REM ! Single-line Comment
 
 - **Awk Scripts:** R Style
 - **C/C++:** JavaDoc Style
+    - Members of objects must use the Qt-Styled Single-line Member Comments
 - **CoffeeScript:** CoffeeScript Style
 - **D:** D Style
 - **Erlang:** Erlang Style
