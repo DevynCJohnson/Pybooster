@@ -8,7 +8,7 @@ color brightred "\<[A-Z_][0-9A-Z_]+\>"
 
 # OPERATOR COLOR #
 
-color yellow "[.:;,+*|=!\%<>/-&]"
+color yellow "[\.:;,\+\*\|=\!\%\<\>/\-\&]"
 
 # PARENTHETICAL COLOR #
 
