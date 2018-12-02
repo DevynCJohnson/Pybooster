@@ -14434,7 +14434,7 @@ LIB_FUNC ATTR_CF int iswcntrl(const wint_t wc) {
 
 /** Returns a value of type wctype_t that corresponds to the character category specified by `property` */
 LIB_FUNC NONNULL wctype_t wctype(const char* restrict property) {
-	register int i = 1;
+	register unsigned int i = 1;
 	const char* restrict p;
 	const size_t _length = strlen(property);
 	for (p = wchar_class_names; *p; i++, p += 6) {
@@ -14442,6 +14442,10 @@ LIB_FUNC NONNULL wctype_t wctype(const char* restrict property) {
 	}
 	return 0;
 }
+
+
+DIAG_PUSH
+IGNORE_WCAST_ALIGN
 
 
 /** Tables indexed by a wide character are compressed through the use of a multi-level lookup.  The compression effect comes from blocks that do not need particular data and from blocks that can share their data */
@@ -14505,6 +14509,9 @@ LIB_FUNC ATTR_PURE NONNULL uint32_t wctrans_table_lookup(const char* table, cons
 	}
 	return wc;
 }
+
+
+DIAG_POP
 
 
 /** Returns a value of type wctype_t that corresponds to the character category specified by `property` */

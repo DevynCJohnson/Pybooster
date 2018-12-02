@@ -1437,8 +1437,10 @@ Test if the Microsoft compiler matches the specified version number */
 #endif
 #define AT_LEAST_GCC80   AT_LEAST_GCC8
 #define AT_LEAST_GCC90   AT_LEAST_GCC9
-#if (IS_GNUC && (!AT_LEAST_GCC8))
+#if (defined(COMPILER_GNU_GCC) && (!AT_LEAST_GCC8))
 #   error   "GNU-GCC 8.0 or newer (or a Clang equivalent) is required!"
+#elif (defined(COMPILER_CLANG) && (!__CLANG_PREREQ(7, 0)))
+#   error   "Clang 7 or newer is required!"
 #elif (defined(COMPILER_MICROSOFT) && (!AT_LEAST_MSC19))
 #   error   "MSVC version 19 or greater is required!"
 #endif
@@ -3449,13 +3451,13 @@ If this macro equals 1, then decimal512 are supported */
 
 // COMPLEX DATATYPE SUPPORT
 
-#if ((defined(__STDC_IEC_559_COMPLEX__) && (__STDC_IEC_559_COMPLEX__ > 0)) || (defined(__GCC_IEC_559_COMPLEX) && (__GCC_IEC_559_COMPLEX > 0)))
+#if (((defined(__STDC_IEC_559_COMPLEX__) && (__STDC_IEC_559_COMPLEX__ > 0)) || (defined(__GCC_IEC_559_COMPLEX) && (__GCC_IEC_559_COMPLEX > 0))) && (!(defined(COMPILER_CLANG) && (defined(NEEDS_STARTUP) || defined(USE_BAREBONES)))))
 #   define SUPPORTS_COMPLEX   1
 #   define SUPPORTS_IMAGINARY   1
 #   if SUPPORTS_LONG_DOUBLE
 #      define SUPPORTS_COMPLEX_LDBL   1
 #   endif
-#   if (defined(__SIZEOF_LONG_DOUBLE__) && (__SIZEOF_LONG_DOUBLE__ == 10) || (__SIZEOF_LONG_DOUBLE__ == 12))
+#   if ((!defined(COMPILER_CLANG)) && ((defined(__SIZEOF_LONG_DOUBLE__) && (__SIZEOF_LONG_DOUBLE__ == 10)) || (__SIZEOF_LONG_DOUBLE__ == 12)))
 #      define SUPPORTS_COMPLEX_X87   1
 #   else
 #      define SUPPORTS_COMPLEX_X87   0
@@ -4659,6 +4661,14 @@ Number of bits in a byte; not all platforms use 8-bit bytes */
 #      define IS_LDBL_128   0
 #      define LDBL_EQ_XFtype   1
 #      define BITS_PER_LONG_DOUBLE   96
+#   elif (defined(__SIZEOF_LONG_DOUBLE__) && (__SIZEOF_LONG_DOUBLE__ == 16) && ((__LDBL_MANT_DIG__ == 64) && (__LDBL_MAX_EXP__ == 16384)))  // 96-bit long double using 128-bits
+#      define IS_LDBL_64   0
+#      define IS_LDBL_80   0
+#      define IS_LDBL_96   1
+#      define IS_LDBL_128   0
+#      define FAKE_128_LDBL   1
+#      define LDBL_EQ_XFtype   0
+#      define BITS_PER_LONG_DOUBLE   128
 #   elif (defined(__SIZEOF_LONG_DOUBLE__) && (__SIZEOF_LONG_DOUBLE__ == 16))
 #      define IS_LDBL_64   0
 #      define IS_LDBL_80   0
@@ -4697,7 +4707,10 @@ Number of bits in a byte; not all platforms use 8-bit bytes */
 #   define __SIZEOF_LONG_DOUBLE__   10
 #   define SIZEOF_LONG_DOUBLE   10
 #endif
-#define IS_LDBL_X87   (IS_LDBL_80 || IS_LDBL_96)
+#ifndef FAKE_128_LDBL
+#   define FAKE_128_LDBL   0
+#endif
+#define IS_LDBL_X87   ((IS_LDBL_80 || IS_LDBL_96) && (!FAKE_128_LDBL))
 
 
 // SIZEOF DECIMAL FLOATS

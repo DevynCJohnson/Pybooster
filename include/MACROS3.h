@@ -3497,10 +3497,8 @@ static volatile UNUSED struct syslog_data sdata = SYSLOG_DATA_INIT;
 LIB_FUNC noreturn COLD ATTR_PRINTF(2, 0) void verr(const int eval, const char* restrict fmt, va_list ap) {
 	const int sverrno = get_errno();
 	(void)fprintf(stderr, "%s: ", getprogname());
-	if (fmt != NULL) {
-		(void)vfprintf(stderr, fmt, ap);
-		(void)fprintf(stderr, ": ");
-	}
+	(void)vfprintf(stderr, fmt, ap);
+	(void)fprintf(stderr, ": ");
 	puts_err_no_output(strerror(sverrno));
 	_Exit(eval);
 	UNREACHABLE
@@ -3512,7 +3510,7 @@ LIB_FUNC noreturn COLD ATTR_PRINTF(2, 0) void verr(const int eval, const char* r
 /** Issue an error message and then exit */
 LIB_FUNC noreturn COLD ATTR_PRINTF(2, 0) void verrx(const int eval, const char* restrict fmt, va_list ap) {
 	(void)fprintf(stderr, "%s: ", getprogname());
-	if (fmt != NULL) { (void)vfprintf(stderr, fmt, ap); }
+	(void)vfprintf(stderr, fmt, ap);
 	puts_err_no_output("");
 	_Exit(eval);
 	UNREACHABLE
@@ -3550,10 +3548,8 @@ LIB_FUNC noreturn COLD ATTR_PRINTF(2, 3) void errx(const int eval, const char* r
 LIB_FUNC ATTR_PRINTF(1, 0) void vwarn(const char* restrict fmt, va_list ap) {
 	const int sverrno = get_errno();
 	(void)fprintf(stderr, "%s: ", getprogname());
-	if (fmt != NULL) {
-		(void)vfprintf(stderr, fmt, ap);
-		(void)fprintf(stderr, ": ");
-	}
+	(void)vfprintf(stderr, fmt, ap);
+	(void)fprintf(stderr, ": ");
 	puts_err_no_output(strerror(sverrno));
 }
 #define sh_vwarn(fmt, ap)   vwarn((fmt), (ap))
@@ -3564,7 +3560,7 @@ LIB_FUNC ATTR_PRINTF(1, 0) void vwarn(const char* restrict fmt, va_list ap) {
 /** Issue an warning message, but do not exit */
 LIB_FUNC ATTR_PRINTF(1, 0) void vwarnx(const char* restrict fmt, va_list ap) {
 	(void)fprintf(stderr, "%s: ", getprogname());
-	if (fmt != NULL) { (void)vfprintf(stderr, fmt, ap); }
+	(void)vfprintf(stderr, fmt, ap);
 	puts_err_no_output("");
 }
 #define sh_vwarnx(fmt, ap)   vwarnx((fmt), (ap))
@@ -10907,7 +10903,7 @@ LIB_FUNC int lockf(const int fd, const int op, const off_t size) {
 
 LIB_FUNC int ftrylockfile(FILE* fp) {
 	struct pthread* self = __pthread_self();
-	const int tid = self->tid;
+	const pid_t tid = (pid_t)self->tid;
 	if (fp->lock == tid) {
 		if (fp->lockcount == LONG_MAX) { return -1; }
 		fp->lockcount++;
@@ -10925,9 +10921,9 @@ LIB_FUNC int ftrylockfile(FILE* fp) {
 
 
 LIB_FUNC int LOCKFILE(FILE* restrict fp) {
-	const int tid = (int)(__pthread_self()->tid);
+	const pid_t tid = (pid_t)(__pthread_self()->tid);
 	if (fp->lock == tid) { return 0; }
-	fp->lock = (atomic volatile int)tid;
+	fp->lock = tid;
 	if (!fp->lock) { fp->lock = 0; return -1; }
 	if (fp->lockcount == LONG_MAX) { return -1; }
 	fp->lockcount++;
@@ -13459,19 +13455,19 @@ LIB_FUNC int posix_fadvise(const int fd, const off_t base, const off_t len, cons
 /** Swap the order of all of the bytes in a 16-bit unit */
 LIB_FUNC ATTR_CF uint16_t bswap16(const uint16_t __bsx) {
 #ifdef ARCHITANIUM
-	uint16_t y, x = (uint16_t)__bsx;
+	register uint16_t y, x = (uint16_t)__bsx;
 	asm ("shl %0 = %1, 48;" "mux1 %0 = %0, @rev;" : "=r"(y) : "r"(x));
 	return y;
 #elif defined(ARCHX86)
-	uint16_t y, x = (uint16_t)__bsx;
+	register uint16_t y, x = (uint16_t)__bsx;
 	asm ("rorw $8, %w0;" : "=r"(y) : "0"(x) : "cc");
 	return y;
 #elif defined(ARCHS390X)
-	uint16_t y, x = (uint16_t)__bsx;
+	register uint16_t y, x = (uint16_t)__bsx;
 	asm ("lrvh %0, %1;" : "=&d"(y) : "m"(x));
 	return y;
 #elif defined(ARCHS390)
-	uint16_t y, x = (uint16_t)__bsx;
+	register uint16_t y, x = (uint16_t)__bsx;
 	asm ("sr %0, %0;" "la 1, %1;" "icm %0, 2, 1(1);" "ic %0, 0(1);" : "=&d"(y) : "m"(x) : "1");
 	return y;
 #else
@@ -13511,8 +13507,8 @@ LIB_FUNC ATTR_CF uint16_t bswap16(const uint16_t __bsx) {
 /** Swap the order of all of the bytes in a 32-bit unit */
 LIB_FUNC ATTR_CF uint32_t bswap32(const uint32_t __bsx) {
 #   ifdef ARCHX86
-	uint32_t x = __bsx;
-	vasm("bswap %0;" : "+r"(((uint32_t)(x))));
+	register uint32_t x = __bsx;
+	vasm("bswap %0;" : "+r"(x));
 	return x;
 #   else
 	return ((uint32_t)(((__bsx) & 0xff000000U) >> 0x18U) | (((__bsx) & 0xff0000U) >> 8U) | (((__bsx) & 0xff00U) << 8U) | (((__bsx) & 0xffU) << 0x18U));
@@ -13553,11 +13549,11 @@ LIB_FUNC ATTR_CF uint32_t bswap32(const uint32_t __bsx) {
 /** Swap the order of all of the bytes in a 64-bit unit */
 LIB_FUNC ATTR_CF uint64_t bswap64(const uint64_t __bsx) {
 #   ifdef ARCHX86_64
-	uint64_t x = __bsx;
+	register uint64_t x = __bsx;
 	asm ("bswap %0;" : "+r"(x));
 	return x;
 #   elif defined(ARCHX86_32)
-	uint64_t x = __bsx;
+	register uint64_t x = __bsx;
 	asm ("bswap %%eax;" "bswap %%edx;" "xchgl %%eax, %%edx;" : "+A"(x));
 	return x;
 #   else
@@ -16213,6 +16209,10 @@ LIB_FUNC NOLIBCALL NONNULL void* memset2(void* restrict ap, const int c, const u
 }
 
 
+DIAG_PUSH
+IGNORE_WCAST_ALIGN
+
+
 /** Searches within the first num bytes of the block of memory pointed by ptr for the first occurrence of value (interpreted as an unsigned char), and returns a pointer to it */
 LIB_FUNC NOLIBCALL const void* memchr(const void* src, const int x, const size_t len) {
 	const unsigned char* s = src;
@@ -16227,6 +16227,9 @@ LIB_FUNC NOLIBCALL const void* memchr(const void* src, const int x, const size_t
 	}
 	return (const void*)(n ? s : 0);
 }
+
+
+DIAG_POP
 
 
 /** Searches within the first num bytes of the block of memory pointed by ptr for the first occurrence of value (interpreted as an unsigned char), and returns a pointer to it */
@@ -18639,7 +18642,6 @@ LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* res
 			signed char flag_long = 0;
 			++format;
 goto_parse_printf:  // Parse printf "%" syntax
-			HOT;
 			switch (_ch = (unsigned char)(*format++)) {  // Get character after "%"
 				case 0:
 #   ifdef WANT_NULL_PRINTF

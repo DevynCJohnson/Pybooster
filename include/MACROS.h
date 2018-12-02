@@ -798,8 +798,13 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #endif
 #if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && IS_NOT_LINTER)
 #   define SUPPORTS_HFTYPE   1
+#   ifdef COMPILER_CLANG
+/** 16-bit half-precision float-point datatype */
+typedef _Float16   HFtype;
+#   else
 /** 16-bit half-precision float-point datatype */
 typedef float __attribute__((__mode__(__HF__)))   HFtype;
+#   endif
 #   define HF   HFtype
 #   ifndef fp16
 #      define fp16   HFtype
@@ -1605,7 +1610,7 @@ typedef int __attribute__((__mode__(__CC__)))   CCtype;
 #endif
 #define HAVE_BI   0
 #define HAVE_VOID   0
-#if (defined(ARCHX86_64) && CPU_MPX)
+#if (defined(ARCHX86_64) && CPU_MPX && defined(COMPILER_GNU_GCC))
 #   define SUPPORTS_BND32   0
 #   define SUPPORTS_BND64   1
 typedef int __attribute__((__mode__(__BND64__)))   BND64type;
@@ -6259,6 +6264,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define DIAG_POP   _Pragma("clang diagnostic pop")
 /** Ignore the specified diagnostic option */
 #   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(clang diagnostic ignored _option))
+#   define IGNORE_WCAST_ALIGN   _Pragma("clang diagnostic ignored \"-Wcast-align\"")
 #   define IGNORE_WFORMAT_NONLITERAL   _Pragma("clang diagnostic ignored \"-Wformat-nonliteral\"")
 #   define IGNORE_WMISSING_PROTOTYPES   _Pragma("clang diagnostic ignored \"-Wmissing-prototypes\"")
 #   define IGNORE_WPADDED   _Pragma("clang diagnostic ignored \"-Wpadded\"")
@@ -6277,6 +6283,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define DIAG_POP   _Pragma("GCC diagnostic pop")
 /** Ignore the specified diagnostic option */
 #   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(GCC diagnostic ignored _option))
+#   define IGNORE_WCAST_ALIGN   _Pragma("GCC diagnostic ignored \"-Wcast-align\"")
 #   define IGNORE_WFORMAT_NONLITERAL   _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
 #   define IGNORE_WMISSING_PROTOTYPES   _Pragma("GCC diagnostic ignored \"-Wmissing-prototypes\"")
 #   define IGNORE_WPADDED   _Pragma("GCC diagnostic ignored \"-Wpadded\"")
@@ -6293,6 +6300,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define DIAG_IGNORE(_option)   /*@i@*/
 #   define DIAG_POP   /*@i@*/
 #   define DIAG_PUSH   /*@i@*/
+#   define IGNORE_WCAST_ALIGN   /*@i@*/
 #   define IGNORE_WFORMAT_NONLITERAL   /*@i@*/
 #   define IGNORE_WMISSING_PROTOTYPES   /*@i@*/
 #   define IGNORE_WOVERLENGTH_STRINGS   /*@i@*/
@@ -7660,6 +7668,8 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define attr_gccpacked
 #   define aligned(x)   __declspec(align((x)))
 #   define auto_align
+#   define align1   __declspec(align(1))
+#   define align2   __declspec(align(2))
 #   define align4   __declspec(align(4))
 #   define align8   __declspec(align(8))
 #   define align16   __declspec(align(16))
@@ -7672,6 +7682,8 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define attr_gccpacked
 #   define aligned(x)
 #   define auto_align
+#   define align1
+#   define align2
 #   define align4
 #   define align8
 #   define align16
@@ -7686,6 +7698,8 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #      define aligned(x)   __attribute__((__aligned__((x))))
 #   endif
 #   define auto_align   __attribute__((__aligned__))
+#   define align1   __attribute__((__aligned__(1)))
+#   define align2   __attribute__((__aligned__(2)))
 #   define align4   __attribute__((__aligned__(4)))
 #   define align8   __attribute__((__aligned__(8)))
 #   define align16   __attribute__((__aligned__(16)))
@@ -7698,6 +7712,8 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define attr_gccpacked
 #   define aligned(x)
 #   define auto_align
+#   define align1
+#   define align2
 #   define align4
 #   define align8
 #   define align16
@@ -7774,8 +7790,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #endif  // formatfunc
 // ATTRIBUTE MACROS
 #if IS_GNUC
+#   ifdef COMPILER_CLANG
 /** Do not convert code to calls to a library */
-#   define NOLIBCALL   __attribute__((__optimize__("-fno-tree-loop-distribute-patterns")))
+#      define NOLIBCALL
+#   else
+/** Do not convert code to calls to a library */
+#      define NOLIBCALL   __attribute__((__optimize__("-fno-tree-loop-distribute-patterns")))
+#   endif
 #   define ATTR_CAF   __attribute__((__always_inline__, __const__, __flatten__))
 #   define ATTR_CIF   __attribute__((__const__, __inline__, __flatten__))
 #   define ATTR_CAFN   __attribute__((__always_inline__, __const__, __flatten__, __nonnull__))
@@ -7886,6 +7907,26 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   ifndef __errorattr
 #      define __errorattr(name, msg)
 #   endif
+#endif
+// NULL_UNSPECIFIED ATTRIBUTE
+#ifdef COMPILER_CLANG
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define Null_unspecified   _Null_unspecified
+#else
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define Null_unspecified
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define _Null_unspecified
+#endif
+// NULLABLE ATTRIBUTE
+#ifdef COMPILER_CLANG
+/** The input pointer parameter of the function may be NULL */
+#   define Nullable   _Nullable
+#else
+/** The input pointer parameter of the function may be NULL */
+#   define Nullable
+/** The input pointer parameter of the function may be NULL */
+#   define _Nullable
 #endif
 // NONNULL ATTRIBUTES
 #if IS_GNUC
@@ -9476,7 +9517,7 @@ Function declaration indicating that the function does not return by executing t
 #   define _Noreturn   __attribute__((__noreturn__))
 #elif (defined(COMPILER_MICROSOFT) && (defined(_MSC_VER) && (_MSC_VER >= 1200)))
 #   define _Noreturn   __declspec(noreturn)
-#elif (defined(LINTER_CLANG) && __has_extension((attribute_analyzer_noreturn)))
+#elif (defined(LINTER_CLANG) && __has_extension(attribute_analyzer_noreturn))
 #   define noreturn   __attribute__((analyzer_noreturn))
 #   define _Noreturn   __attribute__((analyzer_noreturn))
 #elif IS_LINTER
@@ -11358,8 +11399,8 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 8), "`long double` is not of the correct s
 #      define LD_B1B_MAX   18, 446744073, 709551615
 #      define KMAX 2048
 #      if IS_NOT_LINTER
-_Static_assert((IS_LDBL_X87 && IS_LDBL_XFtype), "`long double` is not equivalent to `XFtype`!");
-_Static_assert(((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)), "`long double` is not of the correct size!");
+_Static_assert((IS_LDBL_X87 || FAKE_128_LDBL), "`long double` is not equivalent to `XFtype`!");
+_Static_assert((((SIZEOF_LONG_DOUBLE == 10) || (SIZEOF_LONG_DOUBLE == 12)) || (FAKE_128_LDBL && (SIZEOF_LONG_DOUBLE == 16))), "`long double` is not of the correct size!");
 #      endif
 #   elif ((LDBL_MANT_DIG == 113) && (LDBL_MAX_EXP == 16384))
 #      define SUPPORTS_LONG_DOUBLE_64   (0)
