@@ -49,7 +49,6 @@ override PYEGGDIR::=./pyegg
 override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
 override GEANYDIR::=./geany
-override INCDIR::=./include
 override LANGSPECSDIR::=$(ACCDIR)/language_specs
 override NANORCDIR::=$(ACCDIR)/nanorc
 override MAN1DIR::=$(DOCDIR)/man1
@@ -91,46 +90,6 @@ override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-util
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
 override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
 override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
-
-# Parameters
-override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
-ifdef INCLUDE
-    override INCLUDE::=$(SRCINCLUDE) $(INCLUDE)
-else
-    INCLUDE::=$(SRCINCLUDE)
-endif
-override COMMON_ARGUMENTS::=$(WARN) $(ARCH) $(BITS) $(STD) $(XOPTMZ) $(DEBUG) $(DIAG) $(DUMP)
-override COMMON_POSIX_ARGUMENTS::=$(POSIX_STACK_PROTECTOR) -ffunction-sections -fdata-sections
-ifdef OUTPUT
-    ifeq ($(OUTPUT),asm)
-        override STARTUP::=
-    else
-        override STARTUP::=
-    endif
-else
-    ifeq ($(PLATFORM),x86-64)
-        override STARTUP::=$(INCDIR)/start_x86_64.s
-    else
-        override STARTUP::=
-    endif
-endif
-override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
-
-ifeq ($(OS),WIN)
-    override EXE_PARAMS::=$(INCLUDE) -fwhole-program $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ)
-    override MINEXE_PARAMS::=$(SRCINCLUDE) -fwhole-program $(COMMON_ARGUMENTS) $(MINCODE) $(LDZ)
-    override PIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(PIC)
-    override LIB_PARAMS::=$(__MODULE_VERSION__) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ)
-    override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(PIC)
-else
-    override INCLUDE::=$(INCLUDE) $(POSIX_INCLUDE)
-    override EXE_PARAMS::=$(INCLUDE) -fwhole-program $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ)
-    override MINEXE_PARAMS::=$(SRCINCLUDE) -fwhole-program $(LTO) -ffunction-sections -fdata-sections $(COMMON_ARGUMENTS) $(MINCODE) $(LDZ)
-    override PIC_PARAMS::=$(INCLUDE) $(LTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(PIC)
-    override LIB_PARAMS::=$(__MODULE_VERSION__) $(LTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) -Wl,--no-whole-archive $(LDZ) -shared
-    override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(PIC)
-endif
-override STRIP::=$(STRIP) $(STRIP_PARAMS)
 
 
 # HELP #

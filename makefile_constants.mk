@@ -59,8 +59,8 @@ ifndef OMP_THREAD_LIMIT
     OMP_THREAD_LIMIT::=4
 endif
 override LLVM_WARN::=-Werror -Wall -Wextra -Wpedantic -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wformat -Wformat-non-iso -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wnull-pointer-arithmetic -Wpacked -Wpointer-arith -Wpragma-pack -Wredundant-decls -Wshadow -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wswitch-bool -Wswitch-enum -Wtautological-compare -Wtautological-constant-compare -Wundef -Wunreachable-code -Wuninitialized -Wwrite-strings
-override LLVM_OPT::=-O3 -fforce-emit-vtables -fstrict-float-cast-overflow -funroll-loops -fwrapv -fomit-frame-pointer -ftree-vectorize -fvectorize -fstrict-enums -fno-dollars-in-identifiers -Xanalyzer -strip-dead-debug-info -Xclang -vectorize-slp-aggressive
-override LLVM_OPT_X86::=-mcrc -mcx16 -minline-all-stringops -momit-leaf-frame-pointer
+override LLVM_OPT::=-O3 -fforce-emit-vtables -fstrict-float-cast-overflow -funroll-loops -fwrapv -fomit-frame-pointer -ftree-vectorize -fvectorize -fstrict-enums -fno-dollars-in-identifiers -Xanalyzer -strip-dead-debug-info -Xclang
+override LLVM_OPT_X86::=
 override GCC_PARAMS::=--param ggc-min-expand=200 --param ggc-min-heapsize=393216 --param max-gcse-memory=134217728 --param sccvn-max-scc-size=20000 --param max-cselib-memory-locations=1023 --param max-reload-search-insns=511 --param max-sched-ready-insns=511 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=63 --param early-inlining-insns=16 --param inline-min-speedup=4 --param inline-unit-growth=40 --param ipcp-unit-growth=30 --param large-stack-frame=512 --param large-stack-frame-growth=1100 --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param integer-share-limit=65536 --param gcse-unrestricted-cost=2 --param max-hoist-depth=48 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=4 --param vect-max-version-for-alias-checks=8 --param max-iterations-to-track=2000 --param max-predicted-iterations=256 --param selsched-max-lookahead=64 --param prefetch-latency=128 --param simultaneous-prefetches=4 --param max-partial-antic-length=256 --param loop-invariant-max-bbs-in-loop=20000 --param loop-max-datarefs-for-datadeps=2000 --param ipa-cp-value-list-size=16
 override GCC_WARN::=-Werror -Wall -Wextra -Wpedantic -Waggregate-return -Walloc-zero -Wbad-function-cast -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmisleading-indentation -Wmissing-attributes -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wmultistatement-macros -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpacked-not-aligned -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshadow -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings -Wwrite-strings
 # TODO: Add -Wcast-align=strict
@@ -137,7 +137,7 @@ YFLAGS::=
 # Flag used to indicate that Clang should be used
 ifdef USECLANG
     ifeq ($(USECLANG),)
-        override CLANG::=6
+        override CLANG::=7
     else ifeq ($(USECLANG),9)
         override CLANG::=9
     else ifeq ($(USECLANG),9.0)
@@ -825,6 +825,7 @@ ifndef WIN
     override DLLTOOL::=
     override WINDRES::=
 endif
+override STRIP::=$(STRIP) $(STRIP_PARAMS)
 
 
 # SETUP PARAMETERS #
@@ -1137,6 +1138,62 @@ ifdef DUMP
     endif
 else
     override DUMP::=
+endif
+
+
+# FINALIZE PARAMETERS #
+
+
+override INCDIR::=./include
+ifdef OUTPUT
+    ifeq ($(OUTPUT),asm)
+        override STARTUP::=
+    else
+        override STARTUP::=
+    endif
+else
+    ifeq ($(PLATFORM),x86-64)
+        override STARTUP::=$(INCDIR)/start_x86_64.s
+    else
+        override STARTUP::=
+    endif
+endif
+ifdef USECLANG
+    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding $(STARTUP)
+else
+    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
+endif
+
+
+override COMMON_ARGUMENTS::=$(WARN) $(ARCH) $(BITS) $(STD) $(XOPTMZ) $(DEBUG) $(DIAG) $(DUMP)
+override COMMON_POSIX_ARGUMENTS::=$(POSIX_STACK_PROTECTOR) -ffunction-sections -fdata-sections
+
+ifdef USECLANG
+    override SPOPT::=
+else
+    override SPOPT::=-fwhole-program
+endif
+
+override SRCINCLUDE::=$(__MODULE_VERSION__) -I$(INCDIR)
+ifdef INCLUDE
+    override INCLUDE::=$(SRCINCLUDE) $(INCLUDE)
+else
+    INCLUDE::=$(SRCINCLUDE)
+endif
+
+ifeq ($(OS),WIN)
+    override EXE_PARAMS::=$(INCLUDE) $(SPOPT) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ)
+    override MINEXE_PARAMS::=$(SRCINCLUDE) $(SPOPT) $(COMMON_ARGUMENTS) $(MINCODE) $(LDZ)
+    override PIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(PIC)
+    override LIB_PARAMS::=$(__MODULE_VERSION__) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ)
+    override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(WINLIB) $(LDZ) -c $(PIC)
+else
+    override INCLUDE::=$(INCLUDE) $(POSIX_INCLUDE)
+    override EXE_PARAMS::=$(INCLUDE) $(SPOPT) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ)
+    override MINEXE_PARAMS::=$(SRCINCLUDE) $(SPOPT) $(LTO) -ffunction-sections -fdata-sections $(COMMON_ARGUMENTS) $(MINCODE) $(LDZ)
+    override PIC_PARAMS::=$(INCLUDE) $(LTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(PIC)
+    override LIB_PARAMS::=$(__MODULE_VERSION__) $(LTO) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) -Wl,--no-whole-archive $(LDZ) -shared
+    override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(COMMON_POSIX_ARGUMENTS) $(LDZ) -c $(PIC)
 endif
 
 
