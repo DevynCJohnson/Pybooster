@@ -1,3 +1,14 @@
+2018-12-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* clib:  Applied some fixes for Clang 7
+	* Geany:  Added more C keywords
+	* makefile:  Minor fixes for Clang 7
+	* makefile_constants.mk:  Minor fixes for Clang 7
+	* mimetype_booster.xml:  Added various mimetypes
+	* NanoRC:  Fixed the c.nanorc file
+	* Opticons:  Added & fixed some icons
+	* snippets.conf:  Added more JavaScript snippets
+
 2018-11-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Fixed a bug that was causing duplicates to remain in the sorted output
