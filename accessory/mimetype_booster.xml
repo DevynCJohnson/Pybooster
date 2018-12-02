@@ -26,7 +26,7 @@
   <mime-type type="application/geo+json">
     <alias type="application/vnd.geo+json"/>
     <comment>GeoJSON Geospatial Data</comment>
-    <generic-icon name="text-json"/>
+    <icon name="text-json"/>
     <glob pattern="*.geojson"/>
     <glob pattern="*.geo.json"/>
     <sub-class-of type="application/json"/>
@@ -40,7 +40,7 @@
     <comment>JavaScript Program</comment>
     <alias type="application/x-javascript"/>
     <alias type="text/javascript"/>
-    <generic-icon name="text-x-javascript"/>
+    <icon name="text-x-javascript"/>
     <glob pattern="*.javascript"/>
     <glob pattern="*.js"/>
     <glob pattern="*.jsm"/>
@@ -70,7 +70,7 @@
     <comment>JRD Document</comment>
     <acronym>JRD</acronym>
     <expanded-acronym>JSON Resource Descriptor</expanded-acronym>
-    <generic-icon name="text-json"/>
+    <icon name="text-json"/>
     <glob pattern="*.jrd"/>
     <sub-class-of type="application/json"/>
   </mime-type>
@@ -78,7 +78,7 @@
     <comment>JSON Document</comment>
     <acronym>JSON</acronym>
     <expanded-acronym>JavaScript Object Notation</expanded-acronym>
-    <generic-icon name="text-json"/>
+    <icon name="text-json"/>
     <glob pattern="*.json"/>
     <sub-class-of type="application/javascript"/>
   </mime-type>
@@ -86,7 +86,7 @@
     <comment>JSON Patch</comment>
     <acronym>JSON</acronym>
     <expanded-acronym>JavaScript Object Notation</expanded-acronym>
-    <generic-icon name="text-json"/>
+    <icon name="text-json"/>
     <glob pattern="*.json-patch"/>
     <sub-class-of type="application/json"/>
   </mime-type>
@@ -94,13 +94,13 @@
     <comment>JSON-LD document</comment>
     <acronym>JSON-LD</acronym>
     <expanded-acronym>JavaScript Object Notation for Linked Data</expanded-acronym>
-    <generic-icon name="text-json"/>
+    <icon name="text-json"/>
     <glob pattern="*.jsonld"/>
     <sub-class-of type="application/json"/>
   </mime-type>
   <mime-type type="application/mac-binhex40">
     <comment>Macintosh BinHex-encoded File</comment>
-    <generic-icon name="application-mac-binhex40"/>
+    <icon name="application-mac-binhex40"/>
     <magic priority="50">
       <match value="must be converted with BinHex" type="string" offset="11"/>
     </magic>
@@ -122,7 +122,7 @@
     <acronym>MathML</acronym>
     <expanded-acronym>Mathematical Markup Language</expanded-acronym>
     <alias type="text/mathml"/>
-    <generic-icon name="text-mathml"/>
+    <icon name="text-mathml"/>
     <glob pattern="*.mml"/>
     <root-XML namespaceURI="http://www.w3.org/1998/Math/MathML" localName="math"/>
     <sub-class-of type="application/xml"/>
@@ -270,27 +270,57 @@
       <match type="string" value="-----BEGIN X509 CRL-----" offset="0"/>
     </magic>
   </mime-type>
+  <mime-type type="application/rtf">
+    <acronym>RTF</acronym>
+    <expanded-acronym>Rich Text Format</expanded-acronym>
+    <alias type="text/rtf"/>
+    <glob pattern="*.rtf"/>
+    <icon name="application-rtf"/>
+    <magic priority="50">
+      <match value="{\\rtf" type="string" offset="0"/>
+    </magic>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="application/smil+xml">
+    <comment>SMIL Document</comment>
+    <acronym>SMIL</acronym>
+    <expanded-acronym>Synchronized Multimedia Integration Language</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <alias type="application/smil"/>
+    <generic-icon name="video-x-generic"/>
+    <glob pattern="*.smil"/>
+    <glob pattern="*.smi"/>
+    <glob pattern="*.sml"/>
+    <glob pattern="*.kino"/>
+    <magic priority="55">
+      <match value="&lt;smil" type="string" offset="0:256"/>
+    </magic>
+    <root-XML namespaceURI="http://www.w3.org/2001/SMIL20/Language" localName="smil"/>
+    <root-XML namespaceURI="http://www.w3.org/2005/SMIL21/Language" localName="smil"/>
+    <root-XML namespaceURI="http://www.w3.org/ns/SMIL" localName="smil"/>
+  </mime-type>
   <mime-type type="application/sql">
     <comment>SQL Code</comment>
     <alias type="text/x-sql"/>
-    <generic-icon name="text/x-sql"/>
+    <icon name="text/x-sql"/>
     <glob pattern="*.sql"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/vnd.android.package-archive">
     <comment>Android Package</comment>
+    <icon name="apk"/>
     <sub-class-of type="application/x-java-archive"/>
     <glob pattern="*.apk"/>
   </mime-type>
   <mime-type type="application/vnd.coffeescript">
     <comment>CoffeeScript Document</comment>
-    <generic-icon name="application-x-javascript"/>
+    <icon name="application-x-javascript"/>
     <glob pattern="*.coffee" weight="95"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/vnd.font-fontforge-sfd">
     <comment>Fontforge Spline Font Database</comment>
-    <generic-icon name="application-fontforge-sfd"/>
+    <icon name="application-fontforge-sfd"/>
     <glob pattern="*.sfd"/>
     <magic>
       <match type="string" offset="0" value="SplineFontDB"/>
@@ -336,6 +366,16 @@
   <mime-type type="application/vnd.ms-word.template.macroEnabled.12">
     <comment>Microsoft Word Document Template</comment>
     <glob pattern="*.dotm"/>
+  </mime-type>
+  <mime-type type="application/vnd.ms-wpl">
+    <comment>WPL Playlist</comment>
+    <acronym>WPL</acronym>
+    <expanded-acronym>Windows Media Player Playlist</expanded-acronym>
+    <generic-icon name="video-x-generic"/>
+    <glob pattern="*.wpl"/>
+    <magic priority="60">
+      <match value="&lt;?wpl" type="string" offset="0:256"/>
+    </magic>
   </mime-type>
   <mime-type type="application/vnd.oasis.opendocument.formula">
     <comment>OpenDocument Formula</comment>
@@ -545,6 +585,33 @@
     <comment>Microsoft Word Document Template</comment>
     <glob pattern="*.dotx"/>
   </mime-type>
+  <mime-type type="application/vnd.rar">
+    <comment>RAR Archive</comment>
+    <acronym>RAR</acronym>
+    <expanded-acronym>Roshal ARchive</expanded-acronym>
+    <alias type="application/x-rar"/>
+    <alias type="application/x-rar-compressed"/>
+    <glob pattern="*.rar"/>
+    <icon name="application-x-rar"/>
+    <magic priority="60">
+      <match value="Rar!" type="string" offset="0"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/vnd.sqlite3">
+    <comment>SQLite3 Database</comment>
+    <alias type="application/vnd.sqlite2"/>
+    <alias type="application/x-sqlite"/>
+    <alias type="application/x-sqlite2"/>
+    <alias type="application/x-sqlite3"/>
+    <icon name="text/x-sql"/>
+    <glob pattern="*.sql3"/>
+    <glob pattern="*.sqlite2"/>
+    <glob pattern="*.sqlite3"/>
+    <magic>
+      <match value="** This file contains an SQLite" type="string" offset="0"/>
+      <match value="SQLite format 3" type="string" offset="0"/>
+    </magic>
+  </mime-type>
   <mime-type type="application/vnd.sun.xml.base">
     <comment>OpenDocument Database</comment>
     <glob pattern="*.odb"/>
@@ -598,7 +665,7 @@
   </mime-type>
   <mime-type type="application/x-archive">
     <comment>AR Archive</comment>
-    <generic-icon name="application-x-archive"/>
+    <icon name="application-x-archive"/>
     <glob pattern="*.a"/>
     <glob pattern="*.ar"/>
   </mime-type>
@@ -615,16 +682,24 @@
       <match value="ATARI7800" type="string" offset="1"/>
     </magic>
   </mime-type>
+  <mime-type type="application/x-atari-lynx-rom">
+    <comment>Atari Lynx</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.lnx"/>
+    <magic>
+      <match value="LYNX" type="string" offset="0"/>
+    </magic>
+  </mime-type>
   <mime-type type="application/x-audacity-project">
     <comment>Audacity Project</comment>
-    <generic-icon name="application-x-audacity-project"/>
+    <icon name="application-x-audacity-project"/>
     <glob pattern="*.aup"/>
     <sub-class-of type="text/xml"/>
   </mime-type>
   <mime-type type="application/x-awk">
     <alias type="text/x-awk"/>
     <comment>Awk Script</comment>
-    <generic-icon name="application-x-awk"/>
+    <icon name="application-x-awk"/>
     <glob pattern="*.awk" weight="95"/>
     <glob pattern="*.bwk" weight="95"/>
     <glob pattern="*.gawk" weight="95"/>
@@ -645,7 +720,7 @@
   </mime-type>
   <mime-type type="application/x-brasero">
     <comment>Brasero Project File</comment>
-    <generic-icon name="application-x-brasero"/>
+    <icon name="application-x-brasero"/>
     <magic priority="80">
       <match value="braseroproject" type="string" offset="0:50"/>
     </magic>
@@ -653,27 +728,27 @@
   </mime-type>
   <mime-type type="application/x-cmakecache">
     <comment>CMake Cache File</comment>
-    <generic-icon name="application-x-cmakecache"/>
+    <icon name="application-x-cmakecache"/>
     <glob pattern="CMakeCache.txt"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-desktop">
     <alias type="application/x-gnome-app-info"/>
     <comment>Desktop Configuration File</comment>
-    <generic-icon name="application-x-desktop"/>
+    <icon name="application-x-desktop"/>
     <glob pattern="*.desktop" weight="95"/>
     <glob pattern="*.kdelnk" weight="90"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-dbp">
     <comment>Debreate Legacy Project</comment>
-    <generic-icon name="application-x-dbp"/>
+    <icon name="application-x-dbp"/>
     <glob pattern="*.dbp"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-glade">
     <comment>Glade Project</comment>
-    <generic-icon name="application-x-glade"/>
+    <icon name="application-x-glade"/>
     <glob pattern="*.glade" weight="95"/>
     <sub-class-of type="application/xml"/>
   </mime-type>
@@ -685,7 +760,7 @@
   </mime-type>
   <mime-type type="application/x-linux">
     <comment>Linux Kernel</comment>
-    <generic-icon name="application-x-linux"/>
+    <icon name="application-x-linux"/>
     <glob pattern="vmlinux*"/>
     <glob pattern="vmlinuz*"/>
     <glob pattern="vmlinux" weight="95"/>
@@ -696,30 +771,29 @@
   </mime-type>
   <mime-type type="application/x-macbinary">
     <comment>Macintosh MacBinary File</comment>
-    <generic-icon name="application-x-macbinary"/>
+    <icon name="application-x-macbinary"/>
   </mime-type>
   <mime-type type="application/x-meld-comparison">
     <comment>Meld Comparison Description</comment>
-    <generic-icon name="application-x-meld-comparison"/>
     <glob pattern="*.meldcmp"/>
     <icon name="meld"/>
   </mime-type>
   <mime-type type="application/x-msi">
     <comment>Windows Installer Package</comment>
-    <generic-icon name="application/x-msi"/>
+    <icon name="application/x-msi"/>
     <glob pattern="*.msi"/>
     <sub-class-of type="application/x-ole-storage"/>
   </mime-type>
   <mime-type type="application/x-n64-rom">
     <comment>Nintendo64 ROM</comment>
-    <generic-icon name="application-x-nes-rom"/>
+    <icon name="application-x-nes-rom"/>
     <glob pattern="*.n64" weight="80"/>
     <glob pattern="*.v64" weight="80"/>
     <glob pattern="*.z64" weight="80"/>
   </mime-type>
   <mime-type type="application/x-nes-rom">
     <comment>NES ROM</comment>
-    <generic-icon name="application-x-nes-rom"/>
+    <icon name="application-x-nes-rom"/>
     <glob pattern="*.nes"/>
     <glob pattern="*.nez"/>
     <glob pattern="*.unf"/>
@@ -727,7 +801,7 @@
   </mime-type>
   <mime-type type="application/x-partial-download">
     <comment>Partially Downloaded File</comment>
-    <generic-icon name="package-x-generic"/>
+    <icon name="package-x-generic"/>
     <glob pattern="*.wkdownload"/>
     <glob pattern="*.crdownload"/>
     <glob pattern="*.part"/>
@@ -749,7 +823,7 @@
   </mime-type>
   <mime-type type="application/x-perl">
     <comment>Perl script</comment>
-    <generic-icon name="text-x-perl"/>
+    <icon name="text-x-perl"/>
     <glob pattern="*.pl"/>
     <glob pattern="*.PL"/>
     <glob pattern="*.pm"/>
@@ -767,7 +841,7 @@
   </mime-type>
   <mime-type type="application/x-php">
     <comment>PHP script</comment>
-    <generic-icon name="application-x-php"/>
+    <icon name="application-x-php"/>
     <glob pattern="*.php"/>
     <glob pattern="*.php3"/>
     <glob pattern="*.php4"/>
@@ -785,15 +859,30 @@
     <glob pattern="*.pfx"/>
     <alias type="application/pkcs12"/>
   </mime-type>
+  <mime-type type="application/x-pocket-word">
+    <comment>Pocket Word Document</comment>
+    <generic-icon name="x-office-document"/>
+    <glob pattern="*.psw"/>
+    <magic priority="50">
+      <match value="{\\pwi" type="string" offset="0"/>
+    </magic>
+  </mime-type>
   <mime-type type="application/x-python-bytecode">
     <comment>Python Bytecode</comment>
-    <generic-icon name="application-x-python-bytecode"/>
+    <icon name="application-x-python-bytecode"/>
     <glob pattern="*.pyc" weight="95"/>
     <glob pattern="*.pyo" weight="95"/>
   </mime-type>
+  <mime-type type="application/x-quattropro">
+    <comment>Quattro Pro Spreadsheet</comment>
+    <generic-icon name="x-office-spreadsheet"/>
+    <glob pattern="*.wb1"/>
+    <glob pattern="*.wb2"/>
+    <glob pattern="*.wb3"/>
+  </mime-type>
   <mime-type type="application/x-r-bytecode">
     <comment>R Bytecode</comment>
-    <generic-icon name="application-x-r-bytecode"/>
+    <icon name="application-x-r-bytecode"/>
     <glob pattern="*.Rc" weight="95"/>
   </mime-type>
   <mime-type type="application/x-remmina">
@@ -805,9 +894,12 @@
     <glob pattern="*.RDP"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/x-remote-connection">
+    <comment>Remote Desktop Connection</comment>
+  </mime-type>
   <mime-type type="application/x-ruby">
     <comment>Ruby Script</comment>
-    <generic-icon name="application-x-ruby"/>
+    <icon name="application-x-ruby"/>
     <glob pattern="*.rb"/>
     <magic priority="100">
       <match offset="0" type="string" value="#!/usr/bin/env ruby"/>
@@ -817,10 +909,60 @@
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/x-scilab-bin">
+    <sub-class-of type="application/octet-stream"/>
+    <comment>Scilab Binary</comment>
+    <glob pattern="*.bin"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-cos">
+    <sub-class-of type="application/x-scilab-bin"/>
+    <comment>Scicos Binary Schema</comment>
+    <glob pattern="*.cos"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-cosf">
+    <sub-class-of type="application/x-scilab-sce"/>
+    <comment>Scicos Schema</comment>
+    <glob pattern="*.cosf"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-dem">
+    <sub-class-of type="application/sce"/>
+    <comment>Scilab Demo</comment>
+    <glob pattern="*.dem"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-sce">
+    <sub-class-of type="text/plain"/>
+    <comment>Scilab Script</comment>
+    <glob pattern="*.sce"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-sci">
+    <sub-class-of type="text/plain"/>
+    <comment>Scilab Macro</comment>
+    <glob pattern="*.sci"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-sod">
+    <sub-class-of type="application/x-hdf5"/>
+    <comment>Scilab Open Data Format (HDF5 Based)</comment>
+    <glob pattern="*.sod"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-tst">
+    <sub-class-of type="application/sce"/>
+    <comment>Scilab test</comment>
+    <glob pattern="*.tst"/>
+  </mime-type>
+    <mime-type type="application/x-scilab-xcos">
+    <sub-class-of type="text/xml"/>
+    <comment>Scilab/Xcos Schema</comment>
+    <glob pattern="*.xcos"/>
+  </mime-type>
+  <mime-type type="application/x-scilab-zcos">
+    <sub-class-of type="application/zip"/>
+    <comment>Scilab/Xcos Compressed Schema</comment>
+    <glob pattern="*.zcos"/>
+  </mime-type>
   <mime-type type="application/x-sed">
     <alias type="text/x-sed"/>
     <comment>Sed Script</comment>
-    <generic-icon name="application-x-sed"/>
+    <icon name="application-x-sed"/>
     <glob pattern="*.sed" weight="95"/>
     <magic priority="100">
       <match offset="0" type="string" value="#!/usr/bin/sed"/>
@@ -834,13 +976,13 @@
     <acronym>SO</acronym>
     <expanded-acronym>Shared Library</expanded-acronym>
     <comment>Shared Library</comment>
-    <generic-icon name="application-x-sharedlib"/>
+    <icon name="application-x-sharedlib"/>
     <glob pattern="*.so" weight="95"/>
   </mime-type>
   <mime-type type="application/x-shellscript">
     <alias type="text/x-sh"/>
     <comment>Shell Script</comment>
-    <generic-icon name="application-x-shellscript"/>
+    <icon name="application-x-shellscript"/>
     <glob pattern="*.bash" weight="95"/>
     <glob pattern="*.csh" weight="95"/>
     <glob pattern="*.sh" weight="80"/>
@@ -875,32 +1017,77 @@
   </mime-type>
   <mime-type type="application/x-theme">
     <comment>Theme</comment>
-    <generic-icon name="package-x-generic"/>
+    <icon name="theme"/>
     <glob pattern="*.theme"/>
     <sub-class-of type="application/x-desktop"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-hdd">
+    <comment>Virtual Hard Disk</comment>
+    <glob pattern="*.hdd"/>
+    <icon name="virtualbox-hdd"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-ova">
+    <comment>Open Virtualization Format Archive</comment>
+    <glob pattern="*.ova"/>
+    <icon name="virtualbox-ova"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-ovf">
+    <comment>Open Virtualization Format</comment>
+    <glob pattern="*.ovf"/>
+    <icon name="virtualbox-ovf"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-vbox">
+    <comment>VirtualBox Machine Definition</comment>
+    <glob pattern="*.vbox"/>
+    <icon name="virtualbox-vbox"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-vbox-extpack">
+    <comment>VirtualBox Extension Pack</comment>
+    <glob pattern="*.vbox-extpack"/>
+    <icon name="virtualbox-vbox-extpack"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-vdi">
+    <comment>Virtual Disk Image</comment>
+    <glob pattern="*.vdi"/>
+    <icon name="virtualbox-vdi"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-vhd">
+    <comment>Virtual Hard Disk</comment>
+    <glob pattern="*.vhd"/>
+    <icon name="virtualbox-vhd"/>
+  </mime-type>
+  <mime-type type="application/x-virtualbox-vmdk">
+    <comment>Virtual Machine Disk Format</comment>
+    <glob pattern="*.vmdk"/>
+    <icon name="virtualbox-vmdk"/>
+  </mime-type>
+  <mime-type type="application/x-vnc">
+    <sub-class-of type="text/plain"/>
+    <comment>Remote Desktop (VNC) file</comment>
+    <glob pattern="*.vnc"/>
   </mime-type>
   <mime-type type="application/x-wii-rom">
     <alias type="application/x-wbfs"/>
     <alias type="application/x-wia"/>
     <alias type="application/x-wii-iso-image"/>
     <comment>Wii Disc Image</comment>
-    <generic-icon name="application-x-wii-wad"/>
+    <icon name="application-x-wii-wad"/>
     <glob pattern="*.iso"/>
   </mime-type>
   <mime-type type="application/x-wii-wad">
     <comment>WiiWare Bundle</comment>
-    <generic-icon name="application-x-wii-wad"/>
+    <icon name="application-x-wii-wad"/>
     <glob pattern="*.wad"/>
   </mime-type>
   <mime-type type="application/x-windows-themepack">
     <comment>Microsoft Windows Theme Pack</comment>
-    <generic-icon name="package-x-generic"/>
+    <icon name="theme"/>
     <glob pattern="*.themepack"/>
     <sub-class-of type="application/vnd.ms-cab-compressed"/>
   </mime-type>
   <mime-type type="application/x-wwf">
     <comment>WWF Document</comment>
-    <generic-icon name="x-office-document"/>
+    <icon name="x-office-document"/>
     <glob pattern="*.wwf"/>
     <sub-class-of type="application/pdf"/>
     <alias type="application/wwf"/>
@@ -910,7 +1097,7 @@
     <acronym>XML</acronym>
     <comment>XML Document</comment>
     <expanded-acronym>eXtensible Markup Language</expanded-acronym>
-    <generic-icon name="text-xml"/>
+    <icon name="text-xml"/>
     <glob pattern="*.rng"/>
     <glob pattern="*.xbl"/>
     <glob pattern="*.xml"/>
@@ -922,7 +1109,7 @@
     <alias type="text/x-dtd"/>
     <comment>DTD File</comment>
     <expanded-acronym>Document Type Definition</expanded-acronym>
-    <generic-icon name="text-xml"/>
+    <icon name="text-xml"/>
     <glob pattern="*.dtd"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -930,7 +1117,7 @@
     <acronym>XSLT</acronym>
     <comment>XSLT Stylesheet</comment>
     <expanded-acronym>eXtensible Stylesheet Language Transformation</expanded-acronym>
-    <generic-icon name="text-xml"/>
+    <icon name="text-xml"/>
     <glob pattern="*.xsl"/>
     <glob pattern="*.xslt"/>
     <sub-class-of type="application/xml"/>
@@ -953,7 +1140,7 @@
     <acronym>YAML</acronym>
     <comment>YAML Document</comment>
     <expanded-acronym>YAML Ain&#x27;t Markup Language</expanded-acronym>
-    <generic-icon name="text-yaml"/>
+    <icon name="text-yaml"/>
     <glob pattern="*.yaml"/>
     <glob pattern="*.yml"/>
     <magic>
@@ -982,7 +1169,7 @@
   </mime-type>
   <mime-type type="image/x-xcursor">
     <comment>X11 Cursor</comment>
-    <generic-icon name="image-x-xcursor"/>
+    <icon name="image-x-xcursor"/>
     <magic priority="70">
       <match offset="0" type="string" value="Xcur"/>
     </magic>
@@ -993,16 +1180,16 @@
   </mime-type>
   <mime-type type="inode/blockdevice">
     <comment>Block Device</comment>
-    <generic-icon name="block-device"/>
+    <icon name="block-device"/>
   </mime-type>
   <mime-type type="inode/chardevice">
     <comment>Character Device</comment>
-    <generic-icon name="chardevice"/>
+    <icon name="chardevice"/>
   </mime-type>
   <mime-type type="inode/directory">
     <alias type="x-directory/normal"/>
     <comment>Folder</comment>
-    <generic-icon name="folder"/>
+    <icon name="folder"/>
   </mime-type>
   <mime-type type="inode/fifo">
     <comment>Pipe</comment>
@@ -1022,7 +1209,7 @@
     <comment>CSS stylesheet</comment>
     <expanded-acronym>Cascading Style Sheets</expanded-acronym>
     <alias type="text/x-css"/>
-    <generic-icon name="text-x-css"/>
+    <icon name="text-x-css"/>
     <glob pattern="*.css"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -1030,7 +1217,7 @@
     <acronym>CSV</acronym>
     <comment>CSV Document</comment>
     <expanded-acronym>Comma Separated Values</expanded-acronym>
-    <generic-icon name="text-x-csv"/>
+    <icon name="text-x-csv"/>
     <glob pattern="*.csv"/>
     <alias type="text/x-comma-separated-values"/>
     <alias type="text/x-csv"/>
@@ -1040,13 +1227,13 @@
     <acronym>CSV</acronym>
     <comment>CSV Schema Document</comment>
     <expanded-acronym>Comma Separated Values</expanded-acronym>
-    <generic-icon name="text-x-csvs"/>
+    <icon name="text-x-csvs"/>
     <glob pattern="*.csvs"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-adasrc">
     <comment>Ada source code</comment>
-    <generic-icon name="text-x-ada"/>
+    <icon name="text-x-ada"/>
     <glob pattern="*.adb"/>
     <glob pattern="*.ads"/>
     <sub-class-of type="text/plain"/>
@@ -1058,7 +1245,7 @@
   </mime-type>
   <mime-type type="text/x-assembly">
     <comment>Assembly Source File</comment>
-    <generic-icon name="text-x-assembly"/>
+    <icon name="text-x-assembly"/>
     <glob pattern="*.asm" weight="95"/>
     <glob pattern="*.a51" weight="95"/>
     <glob pattern="*.asm51" weight="95"/>
@@ -1067,7 +1254,7 @@
   </mime-type>
   <mime-type type="text/x-authors">
     <comment>Author List</comment>
-    <generic-icon name="text-x-authors"/>
+    <icon name="text-x-authors"/>
     <glob pattern="AUTHORS" weight="95"/>
     <glob pattern="AUTHORS.md" weight="95"/>
     <glob pattern="CONTRIBUTORS" weight="95"/>
@@ -1078,19 +1265,19 @@
   </mime-type>
   <mime-type type="text/x-bam">
     <comment>BAM Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.bam"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-bed">
     <comment>BED Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.bed"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-c++src">
     <comment>C++ Source Code</comment>
-    <generic-icon name="text-x-c++src"/>
+    <icon name="text-x-c++src"/>
     <glob pattern="*.c++" weight="95"/>
     <glob pattern="*.cpp"/>
     <glob pattern="*.cxx"/>
@@ -1100,7 +1287,7 @@
   </mime-type>
   <mime-type type="text/x-changelog">
     <comment>ChangeLog Document</comment>
-    <generic-icon name="text-x-changelog"/>
+    <icon name="text-x-changelog"/>
     <sub-class-of type="text/markdown"/>
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-markdown"/>
@@ -1116,63 +1303,63 @@
   <mime-type type="text/x-csrc">
     <alias type="text/x-c"/>
     <comment>C Source Code</comment>
-    <generic-icon name="text-x-csrc"/>
+    <icon name="text-x-csrc"/>
     <glob case-sensitive="true" pattern="*.c"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-chdr">
     <comment>C Header</comment>
-    <generic-icon name="text-x-chdr"/>
+    <icon name="text-x-chdr"/>
     <glob case-sensitive="true" pattern="*.h"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
   <mime-type type="text/x-dockerfile">
     <comment>Dockerfile Build File</comment>
-    <generic-icon name="text-x-dockerfile"/>
+    <icon name="text-x-dockerfile"/>
     <glob pattern="Dockerfile" weight="90"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-doxyfile">
     <comment>Doxygen File</comment>
-    <generic-icon name="applications-versioncontrol"/>
+    <icon name="applications-versioncontrol"/>
     <glob pattern="Doxyfile"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-eiffel">
     <comment>Eiffel Source Code</comment>
-    <generic-icon name="text-x-eiffel"/>
+    <icon name="text-x-eiffel"/>
     <glob pattern="*.e"/>
     <glob pattern="*.eif"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-erlang">
     <comment>Erlang Source Code</comment>
-    <generic-icon name="text-x-erlang"/>
+    <icon name="text-x-erlang"/>
     <glob pattern="*.erl"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-dsrc">
     <comment>D Source Code</comment>
-    <generic-icon name="text-x-dsrc"/>
+    <icon name="text-x-dsrc"/>
     <glob pattern="*.d"/>
     <glob pattern="*.di"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
   <mime-type type="text/x-fasta">
     <comment>FASTA Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.fasta"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-fastq">
     <comment>FASTQ Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.fastq"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-fortran">
     <comment>Fortran Source Code</comment>
-    <generic-icon name="text-x-fortran"/>
+    <icon name="text-x-fortran"/>
     <glob pattern="*.f"/>
     <glob pattern="*.f77"/>
     <glob pattern="*.f90"/>
@@ -1187,12 +1374,12 @@
   </mime-type>
   <mime-type type="text/x-genius">
     <comment>Genius GEL File</comment>
-    <generic-icon name="text-x-genius"/>
+    <icon name="text-x-genius"/>
     <glob pattern="*.gel"/>
   </mime-type>
   <mime-type type="text/x-git">
     <comment>Git Config File</comment>
-    <generic-icon name="applications-versioncontrol"/>
+    <icon name="applications-versioncontrol"/>
     <glob pattern=".gitattributes"/>
     <glob pattern=".gitignore"/>
     <glob pattern=".gitmodules"/>
@@ -1200,7 +1387,7 @@
   </mime-type>
   <mime-type type="text/x-less">
     <comment>Leaner CSS Preprocessor File</comment>
-    <generic-icon name="text-x-less"/>
+    <icon name="text-x-less"/>
     <glob pattern="*.less"/>
     <sub-class-of type="text/x-css"/>
   </mime-type>
@@ -1222,7 +1409,7 @@
   </mime-type>
   <mime-type type="text/x-makefile">
     <comment>Makefile</comment>
-    <generic-icon name="text-x-makefile"/>
+    <icon name="text-x-makefile"/>
     <glob pattern="GNUmakefile" weight="95"/>
     <glob pattern="makefile" weight="95"/>
     <glob pattern="Makefile.*" weight="10"/>
@@ -1252,7 +1439,7 @@
   </mime-type>
   <mime-type type="text/x-nexus">
     <comment>Nexus Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.nex"/>
     <glob pattern="*.nxs"/>
     <magic priority="90">
@@ -1262,20 +1449,20 @@
   </mime-type>
   <mime-type type="text/x-objcsrc">
     <comment>Objective-C Source Code</comment>
-    <generic-icon name="text-x-objc"/>
+    <icon name="text-x-objc"/>
     <glob pattern="*.m"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
   <mime-type type="text/x-ocaml">
     <comment>Ocaml Source Code</comment>
-    <generic-icon name="text-x-ocaml"/>
+    <icon name="text-x-ocaml"/>
     <glob pattern="*.ml"/>
     <glob pattern="*.mli"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-pascal">
     <comment>Pascal Source Code</comment>
-    <generic-icon name="text-x-pascal"/>
+    <icon name="text-x-pascal"/>
     <glob pattern="*.p"/>
     <glob pattern="*.pas"/>
     <glob pattern="*.dpr"/>
@@ -1283,7 +1470,7 @@
   </mime-type>
   <mime-type type="text/x-prolog">
     <comment>Prolog Script</comment>
-    <generic-icon name="text-x-prolog"/>
+    <icon name="text-x-prolog"/>
     <glob pattern="*.P"/>
     <glob pattern="*.prl"/>
     <glob pattern="*.pro"/>
@@ -1299,7 +1486,7 @@
   </mime-type>
   <mime-type type="text/x-python">
     <comment>Python Script</comment>
-    <generic-icon name="text-x-python"/>
+    <icon name="text-x-python"/>
     <glob pattern="*.py" weight="90"/>
     <glob pattern="*.py2" weight="90"/>
     <glob pattern="*.py3" weight="90"/>
@@ -1328,7 +1515,7 @@
   </mime-type>
   <mime-type type="text/x-r">
     <comment>R Script</comment>
-    <generic-icon name="text-x-r"/>
+    <icon name="text-x-r"/>
     <glob pattern="*.R" weight="95"/>
     <glob pattern="*.RData" weight="80"/>
     <glob pattern="*.rda" weight="70"/>
@@ -1342,7 +1529,7 @@
   </mime-type>
   <mime-type type="text/x-readme">
     <comment>README Document</comment>
-    <generic-icon name="text-x-readme"/>
+    <icon name="text-x-readme"/>
     <sub-class-of type="text/markdown"/>
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-markdown"/>
@@ -1379,25 +1566,25 @@
   </mime-type>
   <mime-type type="text/x-sam">
     <comment>SAM Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.sam"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-sass">
     <comment>Sass CSS Preprocessor File</comment>
-    <generic-icon name="text-x-sass"/>
+    <icon name="text-x-sass"/>
     <glob pattern="*.sass"/>
     <sub-class-of type="text/x-css"/>
   </mime-type>
   <mime-type type="text/x-scss">
     <comment>Sass CSS Preprocessor File</comment>
-    <generic-icon name="text-x-scss"/>
+    <icon name="text-x-scss"/>
     <glob pattern="*.scss"/>
     <sub-class-of type="text/x-css"/>
   </mime-type>
   <mime-type type="text/x-stockholm">
     <comment>Stockholm Bioinformatics Data File</comment>
-    <generic-icon name="text-x-bioinformatics"/>
+    <icon name="text-x-bioinformatics"/>
     <glob pattern="*.stockholm"/>
     <magic priority="95">
       <match offset="0" type="string" value="# STOCKHOLM "/>
@@ -1411,7 +1598,7 @@
   </mime-type>
   <mime-type type="text/x-swig">
     <comment>SWIG</comment>
-    <generic-icon name="text-x-swig"/>
+    <icon name="text-x-swig"/>
     <glob pattern="*.swg"/>
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-csrc"/>
@@ -1420,7 +1607,7 @@
     <acronym>SIS</acronym>
     <comment>SISX Package</comment>
     <expanded-acronym>Symbian Installation File</expanded-acronym>
-    <generic-icon name="package-x-generic"/>
+    <icon name="sisx"/>
     <glob pattern="*.sisx"/>
   </mime-type>
 </mime-info>
