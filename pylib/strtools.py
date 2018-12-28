@@ -74,7 +74,7 @@ from pybooster.libchar import (
     UPPER_LIMIT_UNICODE,
     UPPER_LIMIT_UTF8
 )
-from pybooster.libregex import CHAR_REF, ENTITY_REF, HEXESCTAG, HEXESCURI
+from pybooster.libregex import CHAR_REF, ENTITY_REF, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, split as rgxsplit, sub as resub
@@ -428,13 +428,13 @@ def implode(_str: str) -> str:
 
 
 def replace_odd_chars(_data: str) -> str:
-    r"""Replace odd characters with plain characters (i.e. replace non-breaking space with ASCII space)
+    r"""Replace odd characters with plain characters (e.g. replace non-breaking space with ASCII space)
 
     >>> replace_odd_chars('This\u200Cis a\u180Etest\u16EB')
     'This is a test.'
     """
     # Commas
-    _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6f5', r',')
+    _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6F5', r',')
     # Single-Quotes
     _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027')
     # Double-Quotes
@@ -442,7 +442,7 @@ def replace_odd_chars(_data: str) -> str:
     # Newlines
     _data = _data.replace('\u0085', '\n')
     # Spaces
-    _data = _data.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    _data = _data.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
     # Dashes, Hyphens, & Tildes
     _data = _data.replace('\u00AD', r'-').replace('\u1680', r'-').replace('\u2010', r'-').replace('\u2011', r'-').replace('\u2012', r'-').replace('\u2013', r'-').replace('\u2014', r'-').replace('\u2015', r'-').replace('\u203E', r'-').replace('\u2053', r'~')
     # Slashes
@@ -453,6 +453,8 @@ def replace_odd_chars(_data: str) -> str:
     _data = _data.replace('\u2045', '\u005B').replace('\u2046', '\u005D')
     # Periods, Exclamation-Points, & Question-Marks
     _data = _data.replace('\u16EB', r'.').replace('\uFE15', r'!').replace('\uFE16', r'?').replace('\u203C', r'!!').replace('\u203D', r'!?').replace('\u2047', r'??').replace('\u2048', r'?!').replace('\u2049', r'!?')
+    # Unicode Format Control Characters
+    _data = _data.replace('\u180B', r' ').replace('\u180C', r' ').replace('\u180D', r' ').replace('\u180E', r' ')
     # Full-Width Characters
     _data = _data.translate(FULLWIDTH2REGULAR)
     # Other Characters
@@ -516,7 +518,7 @@ def rmspecialwhitespace(_str: str) -> str:
     >>> rmspecialwhitespace('This\u202F is a test.')
     'This is a test.'
     """
-    return _str.replace('\u0082', r'').replace('\u0083', r'').replace('\u00A0', r'').replace('\u180E', r'').replace('\u2000', r'').replace('\u2001', r'').replace('\u2002', r'').replace('\u2003', r'').replace('\u2004', r'').replace('\u2005', r'').replace('\u2006', r'').replace('\u2007', r'').replace('\u2008', r'').replace('\u2009', r'').replace('\u200A', r'').replace('\u200B', r'').replace('\u200C', r'').replace('\u202F', r'').replace('\u205F', r'').replace('\u3000', r'').replace('\uFEFF', r'')
+    return _str.replace('\u0082', r'').replace('\u0083', r'').replace('\u00A0', r'').replace('\u2000', r'').replace('\u2001', r'').replace('\u2002', r'').replace('\u2003', r'').replace('\u2004', r'').replace('\u2005', r'').replace('\u2006', r'').replace('\u2007', r'').replace('\u2008', r'').replace('\u2009', r'').replace('\u200A', r'').replace('\u200B', r'').replace('\u200C', r'').replace('\u202F', r'').replace('\u205F', r'').replace('\u3000', r'').replace('\uFEFF', r'')
 
 
 def replacespecialwhitespace(_str: str) -> str:
@@ -525,7 +527,7 @@ def replacespecialwhitespace(_str: str) -> str:
     >>> replacespecialwhitespace('This\u202Fis a test.')
     'This is a test.'
     """
-    return _str.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u180E', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    return _str.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
 
 
 def rmpunct(_str: str) -> str:
@@ -1253,7 +1255,7 @@ def name2char(_name: str) -> str:
         return r''
 
 
-def num2char(_str: str) -> str:
+def num2char(_str: str) -> str:  # noqa: C901
     r"""Replace numerical character representations (as a string) with the respective characters
 
     >>> num2char('\\U00000026')
@@ -1266,9 +1268,9 @@ def num2char(_str: str) -> str:
     ' @ '
     >>> num2char('This is a test: \\u0040 .')
     'This is a test: @ .'
-    >>> num2char('\\U0001f9e6')
+    >>> num2char('\\U0001f9e6')  # UTF-32 Notation
     '🧦'
-    >>> num2char('0001f9e6')
+    >>> num2char('0001f9e6')  # UTF-32 Notation
     '🧦'
     >>> num2char('1f9e6')
     '🧦'
@@ -1276,37 +1278,70 @@ def num2char(_str: str) -> str:
     '🧦'
     >>> num2char('0x2ebe0')
     '𮯠'
-    >>> num2char('&#x2ebe0;')
+    >>> num2char('&#x2ebe0;')  # HTML Entity Hexadecimal Notation
     '𮯠'
-    >>> num2char('U+1f6f8')
+    >>> num2char('U+1f6f8')  # UTF-32 Notation
     '🛸'
     >>> num2char('%1f6f8')
     '🛸'
     >>> num2char('\\x26&#x2ebe0;U+1f6f8')
     '&𮯠🛸'
+    >>> num2char('\\U0001F44D\\U0001F3FC')
+    '👍🏼'
+    >>> num2char('\\U0001F44D\\U0001F3FC\\U0000︀FE0F')
+    '👍🏼\x00︀FE0F'
+    >>> num2char('\\U0000︀FE0F')
+    '\x00︀FE0F'
+    >>> num2char('\\x{1F596}')  # Perl Notation
+    '🖖'
+    >>> num2char('\\u{1F596}')  # Ruby Notation
+    '🖖'
+    >>> num2char('x{1F596}')  # Perl Notation
+    '🖖'
+    >>> num2char('u{1F596}')  # Ruby Notation
+    '🖖'
+    >>> num2char('\\01F596')  # CSS Notation
+    '🖖'
+    >>> num2char('\\N{GREEK CAPITAL LETTER DELTA}')
+    'Δ'
+    >>> num2char('N{GREEK CAPITAL LETTER DELTA}')
+    'Δ'
     """
     _pattern = rgxcompile(r'([0-9A-Fa-f]*)(.*)')
     if r'&#x' in _str:
         _str = HEXESCTAG.sub(r'0x\1', _str)
     if r'%' in _str:
         _str = HEXESCURI.sub(r'0x\1', _str)
+    if '\\' in _str:
+        _str = HEXESCCSS.sub(r'0x\1', _str)
+    if 'x\u007B' in _str:
+        _str = HEXESCPERL.sub(r'0x\1', _str)
+    if 'u\u007B' in _str:
+        _str = HEXESCRUBY.sub(r'0x\1', _str)
+    if _str.startswith(('\\N\u007B', 'N\u007B')) and _str.endswith('\u007D'):
+        try:
+            if '\\' in _str:
+                return literal_eval(r'"' + _str + r'"')
+            return literal_eval('"\\' + _str + r'"')
+        except SyntaxError:
+            return _str
     _data = rgxsplit(r'\\u|\\U|\\x|0x|U\+|U(?!\+)', _str)
     _out: list = []
     for _char in _data:
-        _postpend = r''
+        _append = r''
         _null = r''
         if not _char:
             continue
         try:
-            _null, _char, _postpend = rgxsplit(r'¶ж¶', _pattern.sub(r'¶ж¶\1¶ж¶\2', _char))
+            _null, _char, _append = rgxsplit(r'¶ж¶', _pattern.sub(r'¶ж¶\1¶ж¶\2', _char))
             del _null
             if ishex(_char):
-                _out.append(chr(int(_char, 16)) + _postpend)
+                _out.append(chr(int(_char, 16)) + _append)
                 continue
-            _out.append(_char + _postpend)
+            _out.append(_char + _append)
             continue
         except ValueError:
-            _out.append(_char + _postpend)
+            _out.append(_char + _append)
             continue
     return r''.join(_out)
 
@@ -1436,6 +1471,8 @@ def char2num(_char: str, _upcase: bool = False) -> str:
     '\\u0026\\U0001F9E6\\u0040'
     >>> char2num('𮯠', True)
     '\\U0002EBE0'
+    >>> char2num('👍🏼', True)
+    '\\U0001F44D\\U0001F3FC'
     """
     if not _char:
         raise ValueError(r'Invalid data passed to char2num()!')
