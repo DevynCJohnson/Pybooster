@@ -274,7 +274,7 @@ def m000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
 
 def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
     """S***: Check for potential security flaws and issues"""
-    if r'(' in log_line and r')' in log_line and not log_line.startswith(r'DECL_FUNC') and not log_line.startswith(r'LIB_FUNC'):
+    if r'(' in log_line and r')' in log_line and not log_line.startswith((r'DECL_FUNC', r'LIB_FUNC')):
         # S001
         _match = REGEX_GETS.search(log_line)
         if _match:
@@ -381,7 +381,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
             output_info(filepath, line_num, line, r'X008', r'Missing `L` before the literal wide-character', _match)
     # X009
     _match = REGEX_SEMICOLON_SPACE.search(log_line)
-    if _match and not line.strip().endswith(r'";') and not line.strip().endswith('\';'):
+    if _match and not line.strip().endswith((r'";', '\';')):
         output_info(filepath, line_num, line, r'X009', r'No white-space should be before a semi-colon', _match)
     if r'=' in log_line and r'= "' not in line and '= \'' not in line:
         # X010
@@ -489,10 +489,11 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
     _match = REGEX_OPERATOR_NO_SPACE1.search(log_line)
     _match2 = REGEX_OPERATOR_NO_SPACE2.search(log_line)
     _match3 = OPERATOR_SPACE_VALID.search(log_line)
-    if _match and not log_line.startswith(r':') and not _match3:
-        output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match)
-    elif _match2 and not log_line.startswith(r':') and not _match3:
-        output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match2)
+    if not log_line.startswith(r':'):
+        if _match and not _match3:
+            output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match)
+        elif _match2 and not _match3:
+            output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match2)
     # X034
     asm_match = REGEX_VALID_ASM.search(log_line)
     if r'=' in log_line and not log_line.startswith(r':') and not asm_match:
@@ -502,7 +503,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         if _match and not _match2 and not _match3:
             output_info(filepath, line_num, line, r'X034', r'Missing single white-space around `=`', _match)
     # X035
-    if (r'<' in log_line or '>' in log_line) and not log_line.strip().startswith(r'#') and not log_line.strip().startswith(r'template ') and r'->' not in log_line:
+    if (r'<' in log_line or '>' in log_line) and not log_line.startswith((r'#', r'template ')) and r'->' not in log_line:
         _match = LTGT_NO_SPACE.search(log_line)
         _match2 = LTGT_SPACE_VALID.search(log_line)
         _match3 = REGEX_SHIFT_COMPARE2.search(log_line)
@@ -538,7 +539,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         if r'/* ' not in NO_STR_LINE or ' */' not in NO_STR_LINE:
             output_info(filepath, line_num, line, r'X041', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
     # X042
-    if line.endswith(r' ') or line.endswith('\t'):
+    if line.endswith((r' ', '\t')):
         output_info(filepath, line_num, line, r'X042', r'Trailing white-space found')
     # X043
     if r'return  ' in log_line or 'return\t' in log_line:
@@ -654,7 +655,7 @@ if __name__ == '__main__':  # noqa: C901
             LINE_NUM += 1
             continue
         # Coding Lines
-        LOGICAL_LINE: str = strip_comments_and_strings(LINE)  # Logical line without strings and comments
+        LOGICAL_LINE: str = strip_comments_and_strings(LINE).strip()  # Logical line without strings and comments
         if REGEX_COMMENT_LINE.search(LINE):  # Physical comment line
             t000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
             c000_line(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
