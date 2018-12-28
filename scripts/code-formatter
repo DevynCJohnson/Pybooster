@@ -48,6 +48,7 @@ Help() {
     printf '%s\n' 'astyle - Format C source code'
     printf '%s\n' 'autopep8 - Format Python source code according to the PEP8 standard'
     printf '%s\n' 'cleancss - Minify CSS'
+    printf '%s\n' 'crimp - Minifies JavaScript source code'
     printf '%s\n' 'cssmin - Minify CSS'
     printf '%s\n' 'decomment - Remove comments from C/C++ source code'
     printf '%s\n' 'docformatter - Format Python documentation in source code'
@@ -55,6 +56,8 @@ Help() {
     printf '%s\n' 'minifyxml - Minify, repair, and format XML code'
     printf '%s\n' 'rmccmt - Remove comments from C/C++ source code'
     printf '%s\n' 'sedsed - Reformats SED source code'
+    printf '%s\n' 'slimit - Minifies JavaScript source code'
+    printf '%s\n' 'uglifyjs - Minifies JavaScript source code'
     printf '%s\n' 'untrigraph - Remove trigraphs from C source code'
 }
 
@@ -66,6 +69,9 @@ rndfname() { date +%Y%m%u%d%H%M%S%s%N; }  # Create a random filename
 
 
 GOPT="$(getopt -o cf:hpv --long csrc,css,decomment,file:,js,json,jsonm,py,script:,sed,svg,version,help -- "$@")"
+if [ "$?" != '0' ]; then
+    exit 1
+fi
 eval set -- "$GOPT"
 
 _file=''
@@ -83,6 +89,14 @@ while true; do  # Find input file prior to scanning other parameters
         --decomment)  # Remove comments
             DECOMMENT=1
             shift
+        ;;
+        -h|--help)  # Display help info
+            Help
+            exit 0
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            exit 0
         ;;
         -x)  # Enable extra features
             EXTRA_PARAMS=1
@@ -103,7 +117,7 @@ while true; do
     case "$1" in
         -c|--csrc)  # The input file is C source code (uses astyle)
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ "$DECOMMENT" -eq 1 ]; then
@@ -114,8 +128,7 @@ while true; do
                     rmccmt "$_file" > "$TMP_NAME"
                     mv -f "$TMP_NAME" "$_file"
                 else
-                    printf 'decomment: command not found!\n' >&2
-                    printf 'rmccmt: command not found!\n' >&2
+                    printf 'decomment: command not found!\nrmccmt: command not found!\n' >&2
                     exit 1
                 fi
             fi
@@ -140,7 +153,7 @@ while true; do
         ;;
         --css)  # The input file is CSS source code
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v cleancss)" ]; then
@@ -150,8 +163,7 @@ while true; do
                 cssmin < "$_file" > "$TMP_NAME"
                 mv -f "$TMP_NAME" "$_file"
             else
-                printf 'cleancss: command not found!\n' >&2
-                printf 'cssmin: command not found!\n' >&2
+                printf 'cleancss: command not found!\ncssmin: command not found!\n' >&2
                 exit 1
             fi
             exit 0
@@ -159,27 +171,29 @@ while true; do
         -f|--file|--script)  # Specify input file
             shift 2
         ;;
-        -h|--help)  # Display help info
-            Help
-            exit 0
-        ;;
         --js)  # The input file is JavaScript source code
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
-            if [ -x "$(command -v slimit)" ]; then
+            if [ -x "$(command -v uglifyjs)" ]; then
+                uglifyjs --no-mangle "$_file" > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            elif [ -x "$(command -v crimp)" ]; then
+                crimp "$_file" --drop-semi > "$TMP_NAME"
+                mv -f "$TMP_NAME" "$_file"
+            elif [ -x "$(command -v slimit)" ]; then
                 slimit "$_file" > "$TMP_NAME"
                 mv -f "$TMP_NAME" "$_file"
             else
-                printf 'slimit: command not found!\n' >&2
+                printf 'uglifyjs: command not found!\ncrimp: command not found!\nslimit: command not found!\n' >&2
                 exit 1
             fi
             exit 0
         ;;
         --json)  # The input file is JSON code
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v json_reformat)" ]; then
@@ -193,7 +207,7 @@ while true; do
         ;;
         --jsonm)  # The input file is JSON code
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v json_reformat)" ]; then
@@ -207,7 +221,7 @@ while true; do
         ;;
         -p|--py)  # The input file is Python source code (uses autopep8 & docformatter)
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v autopep8)" ]; then
@@ -234,7 +248,7 @@ while true; do
         ;;
         --sed)  # The input file is sed source code (uses sedsed)
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v sedsed)" ]; then
@@ -247,7 +261,7 @@ while true; do
         ;;
         --svg)  # The input file is SVG source code (uses minifyxml & xmllint)
             if [ -z "$_file" ]; then
-                printf "No file was specified using the '-f' flag!\n" >&2
+                printf 'No file was specified using the "-f" flag!\n' >&2
                 exit 1
             fi
             if [ -x "$(command -v minifyxml)" ]; then
@@ -261,10 +275,6 @@ while true; do
             else
                 printf 'xmllint: command not found!\n' >&2
             fi
-            exit 0
-        ;;
-        -v|--version)  # Display version
-            printf '%s\n' "$version"
             exit 0
         ;;
         --)  # End
