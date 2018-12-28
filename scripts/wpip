@@ -43,6 +43,9 @@ Help() {
 
 
 GOPT="$(getopt -o hi:lu:U:v --long help,install:,list,uninstall:,up:,update:,upgrade:,version -- "$@")"
+if [ "$?" != '0' ]; then
+    exit 1
+fi
 eval set -- "$GOPT"
 
 while true; do
