@@ -121,10 +121,21 @@ analyze() {
 
 
 GOPT="$(getopt -o 8abcf:hltvy --long analyze,anlys,anlyz,f8,pyf,rev,pep8,pep257,file:,script:,version,help -- "$@")"
+if [ "$?" != '0' ]; then
+    exit 1
+fi
 eval set -- "$GOPT"
 
 while true; do
     case "$1" in
+        -h|--help)  # Display help info
+            Help
+            exit 0
+        ;;
+        -v|--version)  # Display version
+            printf '%s\n' "$version"
+            exit 0
+        ;;
         -f|--file|--script)  # Specify input file
             _file="$2"
             if [ ! -r "$_file" ]; then
@@ -140,14 +151,6 @@ done
 eval set -- "$GOPT"
 while true; do
     case "$1" in
-        -h|--help)  # Display help info
-            Help
-            exit 0
-        ;;
-        -v|--version)  # Display version
-            printf '%s\n' "$version"
-            exit 0
-        ;;
         -8|--pep8)  # Check for pep8 compliance
             _pep8
             shift
