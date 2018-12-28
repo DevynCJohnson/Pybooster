@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
@@ -29,23 +29,27 @@ Help() {
 }
 
 
-#' Delete a list of directories; The list is a space-delimited string
+#' Delete a list of directories; The list is a unit-separator-delimited (0x1F) string
 rmDirFromList() {
-    if [ -n "${*:-}" ]; then
-        for _pathname in "$@"; do
-            rm -f -r "$_pathname" 2> /dev/null || true
-        done
-    fi
+    IFS=''
+    for _filename in "${@}"; do
+        if [ -n "${_filename:-}" ]; then
+            # shellcheck disable=SC2086
+            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f -r % 2> /dev/null || true
+        fi
+    done
 }
 
 
-#' Delete a list of files; The list is a space-delimited string
+#' Delete a list of files; The list is a unit-separator-delimited (0x1F) string
 rmFilesFromList() {
-    if [ -n "${*:-}" ]; then
-        for _filename in "$@"; do
-            rm -f "$_filename" 2> /dev/null || true
-        done
-    fi
+    IFS=''
+    for _filename in "${@}"; do
+        if [ -n "${_filename:-}" ]; then
+            # shellcheck disable=SC2086
+            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f % 2> /dev/null || true
+        fi
+    done
 }
 
 
@@ -87,6 +91,9 @@ fi
 
 
 GOPT="$(getopt -o dhlmsx --long deep-clean,help,locales,mem,mem-clean,ssd,ssd-clean -- "$@")"
+if [ "$?" != '0' ]; then
+    exit 1
+fi
 eval set -- "$GOPT"
 
 deep_clean=0
@@ -138,21 +145,23 @@ done
 
 # Cache, Cookies, History, Logs, Temporary Files, & Thumbnails
 
-RM_DIRS="${HOME}/.adobe/Acrobat/*/Cache/ ${HOME}/.adobe/Flash_Player/AssetCache/ ${HOME}/.adobe/Flash_Player/NativeCache/ ${HOME}/.amsn/*/logs/date/ ${HOME}/.aMule/Temp/ ${HOME}/.bash_sessions/ ${HOME}/.beagle/Indexes/ ${HOME}/.beagle/Log/ ${HOME}/.beagle/TextCache/ ${HOME}/.cache/ ${HOME}/.config/emesene1.0/*/cache/ ${HOME}/.config/emesene1.0/*/logs/ ${HOME}/.config/gpodder/cache/ ${HOME}/.config/libreoffice/*/user/uno_packages/cache/ ${HOME}/.evolution/cache/ ${HOME}/.exaile/cache/ ${HOME}/.exaile/covers/ ${HOME}/.gftp/cache/ ${HOME}/.gimp-2*/tmp/ ${HOME}/.gnome2/rhythmbox/jamendo/ ${HOME}/.gnome2/rhythmbox/magnatune/ ${HOME}/.googleearth/Cache/ ${HOME}/.googleearth/Temp/ ${HOME}/.hardinfo/ ${HOME}/.hippo_opensim_viewer/cache/ ${HOME}/.hippo_opensim_viewer/logs/ ${HOME}/.icedtea/cache/ ${HOME}/.icedteaplugin/cache/ ${HOME}/.java/deployment/cache/ ${HOME}/.kde/cache-*/ ${HOME}/.kde4/cache-*/ ${HOME}/.libreoffice/*/user/config/uno_packages/cache/ ${HOME}/.libreoffice/*/user/uno_packages/cache/ ${HOME}/.liferea_*/cache/ ${HOME}/.liferea_*/mozilla/liferea/Cache/ ${HOME}/.local/share/zeitgeist/ ${HOME}/.macromedia/ ${HOME}/.miro/mozilla/Cache/ ${HOME}/.nexuiz/data/dlcache/ ${HOME}/.nv/ComputeCache/ ${HOME}/.nv/GLCache/ ${HOME}/.octave_hist ${HOME}/.purple/logs/ ${HOME}/.recoll/xapiandb/ ${HOME}/.secondlife/cache/ ${HOME}/.secondlife/logs/ ${HOME}/.ssr/logs/ ${HOME}/.warzone2100*/logs/ ${HOME}/.wine/drive_c/windows/temp/ ${HOME}/.wine/drive_c/winetrickstmp/ ${HOME}/.winetrickscache/ ${HOME}/.xchat2/logs/ ${HOME}/.xchat2/scrollback/ ${HOME}/.xchat2/xchatlogs/"
+RM_DIRS="${HOME}/.adobe/Acrobat/*/Cache/${HOME}/.adobe/Flash_Player/AssetCache/${HOME}/.adobe/Flash_Player/NativeCache/${HOME}/.amsn/*/logs/date/${HOME}/.aMule/Temp/${HOME}/.bash_sessions/${HOME}/.beagle/Indexes/${HOME}/.beagle/Log/${HOME}/.beagle/TextCache/${HOME}/.cache/${HOME}/.config/emesene1.0/*/cache/${HOME}/.config/emesene1.0/*/logs/${HOME}/.config/gpodder/cache/${HOME}/.config/libreoffice/*/user/uno_packages/cache/${HOME}/.evolution/cache/${HOME}/.exaile/cache/${HOME}/.exaile/covers/${HOME}/.gftp/cache/${HOME}/.gimp-2*/tmp/${HOME}/.gnome2/rhythmbox/jamendo/${HOME}/.gnome2/rhythmbox/magnatune/${HOME}/.googleearth/Cache/${HOME}/.googleearth/Temp/${HOME}/.hardinfo/${HOME}/.hippo_opensim_viewer/cache/${HOME}/.hippo_opensim_viewer/logs/${HOME}/.icedtea/cache/${HOME}/.icedteaplugin/cache/${HOME}/.java/deployment/cache/${HOME}/.kde/cache-*/${HOME}/.kde4/cache-*/${HOME}/.libreoffice/*/user/config/uno_packages/cache/${HOME}/.libreoffice/*/user/uno_packages/cache/${HOME}/.liferea_*/cache/${HOME}/.liferea_*/mozilla/liferea/Cache/${HOME}/.local/share/zeitgeist/${HOME}/.macromedia/${HOME}/.miro/mozilla/Cache/${HOME}/.nexuiz/data/dlcache/${HOME}/.nv/ComputeCache/${HOME}/.nv/GLCache/${HOME}/.octave_hist${HOME}/.purple/logs/${HOME}/.recoll/xapiandb/${HOME}/.secondlife/cache/${HOME}/.secondlife/logs/${HOME}/.ssr/logs/${HOME}/.warzone2100*/logs/${HOME}/.wine/drive_c/windows/temp/${HOME}/.wine/drive_c/winetrickstmp/${HOME}/.winetrickscache/${HOME}/.xchat2/logs/${HOME}/.xchat2/scrollback/${HOME}/.xchat2/xchatlogs/"
 
-RM_FILES="${HOME}/*.log ${HOME}/.adobe/Acrobat/*/Preferences/reader_prefs ${HOME}/.amsn/*/displaypic/cache/*.dat ${HOME}/.amsn/*/displaypic/cache/*.png ${HOME}/.amsn/*/logs/*.log ${HOME}/.aMule/log* ${HOME}/.bash_history ${HOME}/.coffee_history ${HOME}/.config/audacious/log* ${HOME}/.config/easytag/*.history ${HOME}/.config/easytag/*.mask ${HOME}/.config/emesene2/*/log ${HOME}/.config/emesene2/*/log-journal ${HOME}/.config/real/rpcookies.txt ${HOME}/.config/Screenlets/*.log ${HOME}/.config/VirtualBox/*.log ${HOME}/.config/VirtualBox/*.log.* ${HOME}/.easytag/*.history ${HOME}/.easytag/*.mask ${HOME}/.easytag/easytag.log ${HOME}/.elinks/cookies ${HOME}/.elinks/globhist ${HOME}/.elinks/gotohist ${HOME}/.elinks/searchhist ${HOME}/.exaile/exaile.log ${HOME}/.gconf/apps/gnome-settings/gnome-panel/%gconf.xml ${HOME}/.gconf/apps/gnome-settings/gnome-search-tool/%gconf.xml ${HOME}/.gconf/desktop/%gconf.xml ${HOME}/.gconf/desktop/gnome/%gconf.xml ${HOME}/.gftp/gftp.log ${HOME}/.gnome2/gedit-metadata.xml ${HOME}/.idlerc/recent-files.lst ${HOME}/.kde/share/apps/gwenview/recentfolders/*rc ${HOME}/.kde/share/apps/gwenview/recenturls/*rc ${HOME}/.kde/share/apps/RecentDocuments/*.desktop ${HOME}/.kde4/share/apps/gwenview/recentfolders/*rc ${HOME}/.kde4/share/apps/gwenview/recenturls/*rc ${HOME}/.kde4/share/apps/RecentDocuments/*.desktop ${HOME}/.lesshst ${HOME}/.liferea_*/mozilla/liferea/cookies.sqlite ${HOME}/.links/links.his ${HOME}/.links2/links.his ${HOME}/.local/share/gnome-shell/application_state ${HOME}/.local/share/gvfs-metadata/*.log ${HOME}/.local/share/gvfs-metadata/*.log ${HOME}/.local/share/recently-used.xbel ${HOME}/.mandelbulb*/files.recent ${HOME}/.mc/filepos ${HOME}/.mc/history ${HOME}/.miro/*log ${HOME}/.miro/miro-log* ${HOME}/.nautilus/metafiles/*:*.xml ${HOME}/.nautilus/saved-session-* ${HOME}/.npm/_cacache ${HOME}/.ntrc_2/cookies.txt ${HOME}/.ntrc_2/history* ${HOME}/.python_history ${HOME}/.recently-used.xbel ${HOME}/.recently-used.xbel.* ${HOME}/.sh_history ${HOME}/.Skype/*/chatmsg[0-9]*.dbb ${HOME}/.Skype/*/chatsync/*/*.dat ${HOME}/.sqlite_history ${HOME}/.viminfo ${HOME}/.wget-hsts ${HOME}/.xine/catalog.cache ${HOME}/.xsession-errors ${HOME}/.xsession-errors.old"
+RM_FILES="${HOME}/*.log${HOME}/.adobe/Acrobat/*/Preferences/reader_prefs${HOME}/.amsn/*/displaypic/cache/*.dat${HOME}/.amsn/*/displaypic/cache/*.png${HOME}/.amsn/*/logs/*.log${HOME}/.aMule/log*${HOME}/.bash_history${HOME}/.coffee_history${HOME}/.config/audacious/log*${HOME}/.config/easytag/*.history${HOME}/.config/easytag/*.mask${HOME}/.config/emesene2/*/log${HOME}/.config/emesene2/*/log-journal${HOME}/.config/real/rpcookies.txt${HOME}/.config/Screenlets/*.log${HOME}/.config/VirtualBox/*.log${HOME}/.config/VirtualBox/*.log.*${HOME}/.easytag/*.history${HOME}/.easytag/*.mask${HOME}/.easytag/easytag.log${HOME}/.elinks/cookies${HOME}/.elinks/globhist${HOME}/.elinks/gotohist${HOME}/.elinks/searchhist${HOME}/.exaile/exaile.log${HOME}/.gconf/apps/gnome-settings/gnome-panel/%gconf.xml${HOME}/.gconf/apps/gnome-settings/gnome-search-tool/%gconf.xml${HOME}/.gconf/desktop/%gconf.xml${HOME}/.gconf/desktop/gnome/%gconf.xml${HOME}/.gftp/gftp.log${HOME}/.gnome2/gedit-metadata.xml${HOME}/.idlerc/recent-files.lst${HOME}/.kde/share/apps/gwenview/recentfolders/*rc${HOME}/.kde/share/apps/gwenview/recenturls/*rc${HOME}/.kde/share/apps/RecentDocuments/*.desktop${HOME}/.kde4/share/apps/gwenview/recentfolders/*rc${HOME}/.kde4/share/apps/gwenview/recenturls/*rc${HOME}/.kde4/share/apps/RecentDocuments/*.desktop${HOME}/.lesshst${HOME}/.liferea_*/mozilla/liferea/cookies.sqlite${HOME}/.links/links.his${HOME}/.links2/links.his${HOME}/.local/share/gnome-shell/application_state${HOME}/.local/share/gvfs-metadata/*.log${HOME}/.local/share/gvfs-metadata/*.log${HOME}/.local/share/recently-used.xbel${HOME}/.mandelbulb*/files.recent${HOME}/.mc/filepos${HOME}/.mc/history${HOME}/.miro/*log${HOME}/.miro/miro-log*${HOME}/.nautilus/metafiles/*:*.xml${HOME}/.nautilus/saved-session-*${HOME}/.npm/_cacache${HOME}/.ntrc_2/cookies.txt${HOME}/.ntrc_2/history*${HOME}/.python_history${HOME}/.recently-used.xbel${HOME}/.recently-used.xbel.*${HOME}/.sh_history${HOME}/.Skype/*/chatmsg[0-9]*.dbb${HOME}/.Skype/*/chatsync/*/*.dat${HOME}/.sqlite_history${HOME}/.viminfo${HOME}/.wget-hsts${HOME}/.xine/catalog.cache${HOME}/.xsession-errors${HOME}/.xsession-errors.old"
 
-rmDirFromList "${RM_DIRS[*]}"
-rmFilesFromList "${RM_FILES[*]}"
+rmDirFromList "${RM_DIRS}"
+rmFilesFromList "${RM_FILES}"
 
 # Web Browser Cache, Logs, History, & More
 
-RM_CHROME_DIRS="${HOME}/.config/chromium/Default/Thumbnails*/ ${HOME}/.config/chromium/Default/Application\ Cache/ ${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/Cache/ ${HOME}/.config/chromium/Default/databases/http*/ ${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/Cookies/ ${HOME}/.config/chromium/Default/Session\ Storage/ ${HOME}/.config/google-chrome/Default/Pepper\ Data/Shockwave\ Flash/CacheWritableAdobeRoot/ ${HOME}/.config/google-chrome/Default/Application\ Cache/ ${HOME}/.config/google-chrome/*/Pepper\ Data/Shockwave\ Flash/WritableRoot/ ${HOME}/.config/google-chrome/Default/Thumbnails/ ${HOME}/.config/google-chrome/Default/Session\ Storage/ ${HOME}/.config/google-chrome/Default/Sync\ Data\ Backup/"
+RM_CHROME_DIRS="${HOME}/.config/chromium/Default/Thumbnails*/${HOME}/.config/chromium/Default/Application Cache/${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Cache/${HOME}/.config/chromium/Default/databases/http*/${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Cookies/${HOME}/.config/chromium/Default/Session Storage/${HOME}/.config/google-chrome/Default/Pepper Data/Shockwave Flash/CacheWritableAdobeRoot/${HOME}/.config/google-chrome/Default/Application Cache/${HOME}/.config/google-chrome/*/Pepper Data/Shockwave Flash/WritableRoot/${HOME}/.config/google-chrome/Default/Thumbnails/${HOME}/.config/google-chrome/Default/Session Storage/${HOME}/.config/google-chrome/Default/Sync Data Backup/"
 
-RM_CHROME_FILES="${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local\ Settings/Application\ Data/Google/Chrome/User\ Data/Default/*istor* ${HOME}/.config/chromium/Default/Favicons ${HOME}/.config/chromium/Default/*istory ${HOME}/.config/chromium/Default/Histor* ${HOME}/.config/chromium/Default/Network\ Action\ Predict* ${HOME}/.config/chromium/Default/Origin\ Bound\ Certs-journal ${HOME}/.config/chromium/Default/Shortcut* ${HOME}/.config/chromium/Default/Cookies ${HOME}/.config/chromium/Default/Extension\ Cookies ${HOME}/.config/chromium/Default/Local\ Storage/http*localstorage ${HOME}/.config/chromium/Default/Web\ Data ${HOME}/.config/chromium/Default/Top\ Site* ${HOME}/.config/chromium/Default/Visited\ Links ${HOME}/.config/google-chrome/*/Cookies ${HOME}/.config/google-chrome/*/*Cookies ${HOME}/.config/google-chrome/*/Cookies* ${HOME}/.config/google-chrome/Default/Local\ Storage/http*localstorag* ${HOME}/.config/google-chrome/Default/databases/http*/* ${HOME}/.config/google-chrome/Default/Favicons ${HOME}/.config/google-chrome/chrome_shutdown_ms.txt ${HOME}/.config/google-chrome/Default/History ${HOME}/.config/google-chrome/Default/*Histor* ${HOME}/.config/google-chrome/Default/*Action\ Predicto* ${HOME}/.config/google-chrome/Default/Origin\ Bound\ Certs-journal ${HOME}/.config/google-chrome/Default/Shortcut* ${HOME}/.config/google-chrome/Default/Thumbnails-journal ${HOME}/.config/google-chrome/Default/Top\ Site* ${HOME}/.config/google-chrome/Default/Visited\ Links ${HOME}/.config/google-chrome/Default/History\ Index* ${HOME}/.config/google-chrome/Default/Current\ Session ${HOME}/.config/google-chrome/Default/Current\ Tabs ${HOME}/.config/google-chrome/Default/Last\ Session ${HOME}/.config/google-chrome/Default/Last\ Tabs"
+RM_CHROME_FILES="${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/*istor*${HOME}/.config/chromium/Default/Favicons${HOME}/.config/chromium/Default/*istory${HOME}/.config/chromium/Default/Histor*${HOME}/.config/chromium/Default/Network Action Predict*${HOME}/.config/chromium/Default/Origin Bound Certs-journal${HOME}/.config/chromium/Default/Shortcut*${HOME}/.config/chromium/Default/Cookies${HOME}/.config/chromium/Default/Extension Cookies${HOME}/.config/chromium/Default/Local Storage/http*localstorage${HOME}/.config/chromium/Default/Web Data${HOME}/.config/chromium/Default/Top Site*${HOME}/.config/chromium/Default/Visited Links${HOME}/.config/google-chrome/*/Cookies${HOME}/.config/google-chrome/*/*Cookies${HOME}/.config/google-chrome/*/Cookies*${HOME}/.config/google-chrome/Default/Local Storage/http*localstorag*${HOME}/.config/google-chrome/Default/databases/http*/*${HOME}/.config/google-chrome/Default/Favicons${HOME}/.config/google-chrome/chrome_shutdown_ms.txt${HOME}/.config/google-chrome/Default/History${HOME}/.config/google-chrome/Default/*Histor*${HOME}/.config/google-chrome/Default/*Action Predicto*${HOME}/.config/google-chrome/Default/Origin Bound Certs-journal${HOME}/.config/google-chrome/Default/Shortcut*${HOME}/.config/google-chrome/Default/Thumbnails-journal${HOME}/.config/google-chrome/Default/Top Site*${HOME}/.config/google-chrome/Default/Visited Links${HOME}/.config/google-chrome/Default/History Index*${HOME}/.config/google-chrome/Default/Current Session${HOME}/.config/google-chrome/Default/Current Tabs${HOME}/.config/google-chrome/Default/Last Session${HOME}/.config/google-chrome/Default/Last Tabs"
 
-rmDirFromList "${RM_CHROME_DIRS[*]}"  # Chrome/Chromium
-rmFilesFromList "${RM_CHROME_FILES[*]}"
+# Chrome/Chromium
+rmDirFromList "${RM_CHROME_DIRS}"
+rmFilesFromList "${RM_CHROME_FILES}"
+exit 0
 
 # Epiphany
 rm -f -r ~/.gnome2/epiphany/favicon_cache/ ~/.gnome2/epiphany/mozilla/epiphany/Cache/ ~/.local/share/webkitgtk/localstorage/ 2> /dev/null || true
