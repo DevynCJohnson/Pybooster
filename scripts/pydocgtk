@@ -512,8 +512,8 @@ if __name__ == '__main__':
     try:
         show_help(getdoc(resolve(INPUT)[0]))
     except ImportError:
-        show_help(r'No Python documentation found for `{0}`.'.format(INPUT))
+        show_help(r'No Python documentation found for `' + INPUT + r'`.')
     except BaseException:
-        show_help('An error occurred.\nNo Python documentation found for `{0}`.'.format(INPUT))
+        show_help('An error occurred.\nNo Python documentation found for `' + INPUT + r'`.')
         raise SystemExit(1)
     raise SystemExit(0)

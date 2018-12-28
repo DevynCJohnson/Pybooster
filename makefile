@@ -81,7 +81,7 @@ override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgr
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes unicalc win2unixlines
-override LIST_PIP_DEPS::=autopep8 bandit bashate cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
+override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
 override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-utils licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount xdg-utils
 
@@ -263,7 +263,7 @@ docc : fixperm
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	# Restructure Directory Hierarchy
-	[ ! -d $(DOCDIR)/man3/ ] && $(MKDIR) $(DOCDIR)/man3/) || true
+	([ ! -d $(DOCDIR)/man3/ ] && $(MKDIR) $(DOCDIR)/man3/) || true
 	$(MOVE) $(DOCDIR)/clib/man/man3/* $(DOCDIR)/man3/
 	$(MOVE) $(DOCDIR)/clib/html/* $(DOCDIR)/clib/
 	$(RMDIR) $(DOCDIR)/clib/html $(DOCDIR)/clib/man
@@ -352,8 +352,8 @@ upver :
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -print0 | xargs -0 sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/"
-	find $(XKBDIR)/* -mount -type f -name "XCompose" -print0 | xargs -0 sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/"
 	# Miscellaneous #
+	find $(ACCDIR)/* -mount -type f -name "XCompose" -print0 | xargs -0 sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/"
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.desktop" -print0 | xargs -0 sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/"
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "Doxy*" -print0 | xargs -0 sed -i "s/^PROJECT_NUMBER[ \t]*=[ \t]*20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PROJECT_NUMBER=$(__VERSION__)/"
 
@@ -677,7 +677,7 @@ uninstall_themes : uninstall_loginopticons uninstall_opticons
 
 install_xcompose :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing XCompose ==='
-	$(COPY) $(XKBDIR)/XCompose ~/.XCompose
+	$(COPY) $(ACCDIR)/XCompose ~/.XCompose
 
 uninstall_xcompose :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling XCompose ==='
@@ -788,7 +788,7 @@ $(BIN)/typesize : $(BIN) $(SRCDIR)/typesize.c $(MACROSPATH)
 
 
 $(BIN)/test_dev : $(BIN) $(SRCDIR)/test_dev.c $(MACROSPATH)
-	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@
+	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@ && md5sum --tag $@ && sha1sum --tag $@ && sha512sum --tag $@ && b2sum --tag $@
 
 $(TESTINGDIR)/test_dev.s : $(TESTINGDIR) $(SRCDIR)/test_dev.c $(MACROSPATH)
 	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(*F)\" $(MINEXE_PARAMS) -fverbose-asm -S $(SRCDIR)/$(@F).c -o $@

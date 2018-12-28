@@ -5,12 +5,14 @@ Follow the below guidelines when contributing to the development of PyBooster.
 Also, refer to _[Coding_Standards.md](./Coding_Standards.md)_ (in this same directory) for further guidelines.
 
 - Keep code and files organized
+    - CSS Libraries: `./accessory/css/`
     - C Library/Header Source-Code: `./include/`
     - C Program Source-Code: `./src/`
     - Compiled Binaries: `./bin/`
     - Data Files (CSV, JSON, SQLite, YAML, etc.): `./databases/`
     - Glade Files (for Programs): `./accessory/`
     - GTK Source-View Language Specs: `./accessory/lang-specs/`
+    - JavaScript Libraries: `./jslib/`
     - Man Pages: `./doc/man/`
     - Menu & \*.desktop Files: `./accessory/menu_files/`
     - NanoRC Files: `./accessory/nanorc/`

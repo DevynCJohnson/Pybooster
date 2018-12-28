@@ -293,21 +293,34 @@ XML_NAMESPACES: dict = {
     r'ADOBE_SVG_VIEWER': r'http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/',
     r'ADOBE_VARIABLES': r'http://ns.adobe.com/Variables/1.0/',
     r'ADOBE_XPATH': r'http://ns.adobe.com/XPath/1.0/',
+    r'ATOM': r'http://www.w3.org/2005/Atom',
     r'CC': r'http://creativecommons.org/ns#',
     r'DC': r'http://purl.org/dc/elements/1.1/',
+    r'FOAF': r'http://xmlns.com/foaf/0.1/',
+    r'GRDDL': r'http://www.w3.org/2003/g/data-view',
+    r'HCALENDAR': r'http://microformats.org/wiki/hcalendar',
+    r'HCARD': r'http://www.w3.org/2006/03/hcard',
+    r'HREVIEW': r'http://microformats.org/wiki/hreview',
     r'INKSCAPE': r'http://www.inkscape.org/namespaces/inkscape',
+    r'MATHML': r'http://www.w3.org/1998/Math/MathML',
+    r'OPENSEARCH': r'http://a9.com/-/spec/opensearch/1.1/',
     r'OSB': r'http://www.openswatchbook.org/uri/2009/osb',
     r'RDF': r'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     r'RDFS': r'http://www.w3.org/2000/01/rdf-schema#',
     r'SKETCH': r'http://www.bohemiancoding.com/sketch/ns',
     r'SODIPODI': r'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd',
     r'SVG': r'http://www.w3.org/2000/svg',
+    r'VCARD': r'http://www.w3.org/2006/vcard/ns#',
+    r'VCARD_V3': r'http://www.w3.org/2001/vcard-rdf/3.0#',
     r'X3D': r'http://www.web3d.org/specifications/x3d-3.2.xsd',
+    r'XFN': r'http://www.gmpg.org/xfn/11',
     r'XHTML': r'http://www.w3.org/1999/xhtml',
     r'XSI': r'http://www.w3.org/2001/XMLSchema-instance',
     r'XLINK': r'http://www.w3.org/1999/xlink',
     r'XPATH': r'http://ns.adobe.com/XPath/1.0/',
     r'XSD': r'http://www.w3.org/2001/XMLSchema-instance'
+
+    # hcard http://microformats.org/profile/hcard
 }
 
 

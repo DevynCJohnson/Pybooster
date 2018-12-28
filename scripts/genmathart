@@ -593,7 +593,7 @@ if __name__ == '__main__':
     )
     PARSER.add_argument(
         r'--format',
-        help=r'Specify image format (i.e. BMP, JPEG, PNG, etc.)',
+        help=r'Specify image format (e.g. BMP, JPEG, PNG, etc.)',
         default=r'PNG',
         type=str,
         metavar=r'FORMAT'

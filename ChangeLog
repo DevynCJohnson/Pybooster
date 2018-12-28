@@ -1,3 +1,33 @@
+2018-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Converted to a POSIX script from a Bash script & improved use of `getopt`
+	* clib:  Optimizations, fixes, reorganization, file splitting, & improved Doxygen comments
+	* clint:  Minor optimizations
+	* code-formatter:  Improved use of `getopt` & added uglifyjs & crimp
+	* Coding_Standards.md:  Minor fixes, additional rules, & added `PHP`
+	* cryptography.py:  Added `md5sum()`
+	* extras_rc.sh:  Added more code & optimized existing code
+	* Geany:  Improved many of the syntax files & added templates
+	* insn_count:  Added formatting options & added chart capabilities
+	* libchar.py:  Added some code for Unicode Format Control Characters
+	* libregex.py:  Added some code for Unicode Format Control Characters
+	* makefile_constants.mk:  Minor improvements
+	* pkg_rc.sh:  Added support for bower & yarn
+	* PyBooster:  Added ./accessory/css with CSS3 files
+	* PyBooster:  Added ./jslib with JavaScript libraries
+	* PyBooster:  Miscellaneous formatting, documentation improvements, & optimizations
+	* pyinspect:  Improved use of `getopt`
+	* pymake:  Improved use of `getopt`
+	* shanalysis:  Minor tweaks & improvements
+	* snippets.conf:  Added snippets for a variety of languages & reorganized file
+	* start_x86_64.s:  Added support for `envp`
+	* strtools.py:  Added some code for Unicode Format Control Characters
+	* strtools.py:  Improved `char2num()` & `num2char()`
+	* test_dev.c:  Minor fixes
+	* transpile:  Improved use of `getopt`
+	* wpip:  Improved use of `getopt`
+	* XCompose:  Added some character combinations
+
 2018-12-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* clib:  Applied some fixes for Clang 7

@@ -2,7 +2,7 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-"""@brief Replace odd characters with normal characters in stream (i.e. curly-commas to regular)
+"""@brief Replace odd characters with normal characters in stream (e.g. curly-commas to regular)
 
 @file replaceoddchars
 @version 2018.11.11
@@ -42,8 +42,8 @@ if __name__ == '__main__':
         DATA = stdin.read()
         stdout.write(replace_odd_chars(DATA))
     elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
-        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')
+        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (e.g. curly-commas to regular)\n')
     elif argv[1]:  # String as argument
         stdout.write(replace_odd_chars(argv[1]) + '\n')
     else:  # Help
-        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (i.e. curly-commas to regular)\n')
+        stdout.write('Usage 1: command | replaceoddchars\nUsage 2: replaceoddchars "string"\nReplace odd characters with normal characters in stream (e.g. curly-commas to regular)\n')
