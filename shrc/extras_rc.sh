@@ -88,11 +88,11 @@ fi
 if [ -x "$(command -v gsettings)" ]; then
     alias backupgset='gsettings list-recursively > "${HOME}/gsettings.lst"'
     # Recognised values of XDG_CURRENT_DESKTOP: gnome, kde, xfce, lxde, & mate
-    if ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]); then
+    if { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]; }; then
         alias setgtktheme='gsettings set org.mate.desktop.interface gtk-theme'
-    elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then
+    elif { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]; }; then
         alias setgtktheme='gsettings set org.gnome.desktop.interface gtk-theme'
-    elif ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]); then
+    elif { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]; }; then
         alias setgtktheme='xfconf-query -c xsettings -p /Net/ThemeName -s'
     fi
 fi
@@ -214,8 +214,8 @@ fcat() {
         printf 'Find an executable script with the given name (without regex) and open it with cat\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Find an executable script with the given name (without regex) and open it with cat\n'
-    elif [ -r "$(which "${1}")" ]; then
-        floc="$(which "${1}")"
+    elif [ -r "$(command -v "${1}")" ]; then
+        floc="$(command -v "${1}")"
         if file -b -L --mime "$floc" | grep -q '^text'; then
             cat "$floc"
         else
@@ -282,12 +282,43 @@ findfilex() {
     fi
 }
 
+#' @brief Locate all files in the specified (or current) directory that have the specified mimetype
+#' @param[in] $1 Specify mimetype using a string or flag
+#' @param[in] $2 Optional parameter for specifying the directory; The default is the current directory
+#' @usage findmime -zip /home
+findmime() {
+    local dir=.
+    [ -d "${2:-}" ] && dir="$2"
+    [ -z "${1:-}" ] && return 1
+    local opt
+    case "${1:-}" in
+        # Compressed
+        -rar) opt='x\-rar';;
+        -zip) opt='zip';;
+        # Documents
+        -csv) opt='text/csv';;
+        -office) opt='vnd\.openxmlformats\-officedocument';;
+        -pdf) opt='pdf';;
+        -txt) opt='text/';;
+        # Executables
+        -elf) opt='x\-(executable|sharedlib)';;
+        -macho) opt='x\-mach\-binary';;
+        -msi) opt='vnd\.ms\-office';;
+        -pe) opt='x\-dosexec';;
+        *) return;;
+    esac
+    # Buffering Results
+    local matches
+    matches="$(for i in "${dir}"/*; do filetype="$(file -Nb --mime-type "${i}")"; [[ "$filetype" =~ application/${opt} ]] && echo "${i#./*}"; done)"
+    [ -n "${matches:-}" ] && echo "${matches}" | tr -s / /
+}
+
 #' Find file and directory names (recursively) containing the specified pattern and rename the file/directory using the replacement text in-place if the found pattern in the current directory (unless specified otherwise)
 #' @param[in] $1 Text pattern to find in the file/directory names
 #' @param[in] $2 New text that will replace the found pattern
 #' @param[in] $3 (Optional) Directory to search recursively
 findrename() {
-    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+    if [ -n "${1:-}" ] && { [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; } && [ -z "${2:-}" ]; then
         printf 'USAGE: findrename "FIND" "REPLACE" [DIRECTORY]\n'
     elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
@@ -310,7 +341,7 @@ findrename() {
 #' @param[in] $3 (Optional) Directory to search recursively
 findrep() {
     # shellcheck disable=SC2038
-    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+    if [ -n "${1:-}" ] && { [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; } && [ -z "${2:-}" ]; then
         printf 'USAGE: findrep "FIND" "REPLACE" [DIRECTORY]\n'
     elif [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
@@ -348,7 +379,7 @@ rmfiles() {
 #' Find and delete Python cache directories recursively in the current directory (unless specified otherwise)
 #' @param[in] $1 (Optional) Directory to search recursively
 rmpycache() {
-    if [ -n "${1:-}" ] && ([ "${1}" = '-h' ] || [ "${1}" = '--help' ]) && [ -z "${2:-}" ]; then
+    if [ -n "${1:-}" ] && { [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; } && [ -z "${2:-}" ]; then
         printf 'USAGE: rmpycache [DIRECTORY]\n'
     else
         if [ -n "${1:-}" ] && [ -d "${1}" ]; then
@@ -429,6 +460,54 @@ if [ -x "$(command -v mail)" ]; then
         fi
     }
 fi
+
+# Math Functions
+
+#' Convert a string to a hexadecimal sequence
+#' DocTest
+#' str2hex 'This is a test.'
+#' >>> 54 68 69 73 20 69 73 20 61 20 74 65 73 74 2e
+#' str2hex -x 'This is a test.'
+#' >>> \x54\x68\x69\x73\x20\x69\x73\x20\x61\x20\x74\x65\x73\x74\x2e
+#' str2hex -0x 'This is a test.'
+#' >>> 0x54 0x68 0x69 0x73 0x20 0x69 0x73 0x20 0x61 0x20 0x74 0x65 0x73 0x74 0x2e
+#' str2hex -c 'This is a test.'
+#' >>> { 0x54, 0x68, 0x69, 0x73, 0x20, 0x69, 0x73, 0x20, 0x61, 0x20, 0x74, 0x65, 0x73, 0x74, 0x2e }
+str2hex() {
+    [ "$#" -eq 0 ] && return 1
+    [ -z "${1:-}" ] && return 1
+    case "$1" in
+        '-x') printf '%s\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "%02x"' | sed 's|..|\\x&|g' | tr -d '\n')";;
+        '-0x') printf '%s\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "0x%02x "' | sed 's|\(.*\) |\1|' | tr -d '\n')";;
+        '-c') printf '{ %s }\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "0x%02x, "' | sed 's|\(.*\), |\1|' | tr -d '\n')";;
+        *) printf '%s\n' "$(printf '%s' "$1" | hexdump -v -e '/1 "%02x "' | sed 's|\(.*\) |\1|' | tr -d '\n')";;
+    esac
+}
+
+#' Return the first parameter to the power of the second parameter
+pow() {
+    [ "$#" -lt 2 ] && return 1
+    echo "$(($1 ** $2))"
+}
+
+#' Shift the first parameter to the left by the number given in the second parameter
+shl() {
+    [ "$#" -lt 2 ] && return 1
+    echo "$(($1 << $2))"
+}
+
+
+#' Shift the first parameter to the right by the number given in the second parameter
+shr() {
+    [ "$#" -lt 2 ] && return 1
+    echo "$(($1 >> $2))"
+}
+
+#' Return the exclusive-or of two parameter
+xor() {
+    [ "$#" -lt 2 ] && return 1
+    echo "$(($1 ^ $2))"
+}
 
 # Patch Functions
 
@@ -530,16 +609,22 @@ if [ -x "$(command -v mawk)" ]; then
     fawk() { mawk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { mawk NF; }
+    #' Trim whitespace
+    trimwsp() { echo "${1:-}" | mawk '{$1=$1};1'; }
 elif [ -x "$(command -v nawk)" ]; then
     #' Use a faster Awk implementation (if available)
     fawk() { nawk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { nawk NF; }
+    #' Trim whitespace
+    trimwsp() { echo "${1:-}" | nawk '{$1=$1};1'; }
 else
     #' Use a faster Awk implementation (if available)
     fawk() { awk "${1:-}"; }
     #' Remove blank lines from a stream of text
     noblanks() { awk NF; }
+    #' Trim whitespace
+    trimwsp() { echo "${1:-}" | awk '{$1=$1};1'; }
 fi
 
 if [ -x "$(command -v gawk)" ]; then
@@ -673,20 +758,20 @@ fi
 if [ -d /usr/share/nano ]; then
     #' List all programming languages supported by Nano
     lsnanolangs() {
-        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "%s\n" '{}' +
+        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "%s\\n" '{}' +
     }
     #' Regenerate the ALL.nanorc file
     refreshnanorc() {
-        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\n" '{}' + | sudo tee /usr/share/nano/ALL.nanorc
+        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\\n" '{}' + | sudo tee /usr/share/nano/ALL.nanorc
     }
 elif [ -d /usr/local/share/nano ]; then
     #' List all programming languages supported by Nano
     lsnanolangs() {
-        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "%s\n" '{}' +
+        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "%s\\n" '{}' +
     }
     #' Regenerate the ALL.nanorc file
     refreshnanorc() {
-        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\n" '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
+        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\\n" '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
     }
 fi
 
@@ -706,13 +791,13 @@ if [ -x "$(command -v gsettings)" ]; then
         elif [ ! -r "$1" ]; then
             printf '%s: The specified file is non-readable or non-existent!\n' "$1" >&2
         else
-            if ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]); then  # Mate
+            if { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]; }; then  # Mate
                 gsettings set org.mate.desktop.background picture-filename "$1"
                 gsettings set org.mate.desktop.screensaver picture-uri "$1"
-            elif ([ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]) || ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]); then  # GNOME
+            elif { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]; }; then  # GNOME
                 gsettings set org.gnome.desktop.background picture-uri "$1"
                 gsettings set org.gnome.desktop.screensaver picture-uri "$1"
-            elif ([ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]); then  # XFCE
+            elif { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]; }; then  # XFCE
                 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set "$1"
             fi
         fi
