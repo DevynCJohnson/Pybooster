@@ -43,7 +43,7 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     FILE_TYPE='UNKNOWN'
     echo "$file" | grep -E -e '.*(bashrc|profile|*shrc)' > /dev/null && FILE_TYPE='SHELL'
     head -1 "$file" | grep -E -e '#!/bin/(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && FILE_TYPE='SHELL'
@@ -53,14 +53,14 @@ for file in "$@"; do
 
         if [ -x "$(command -v bashate)" ]; then
             printf '======  *BASHATE*  ======\n'
-            bashate --ignore E006 --verbose "$file" | awk_cmd '{ OFS=""; gsub(/^Running bashate on .+$/, ""); if (NF > 0) { print; } }'
+            bashate --ignore E006 --verbose "$file" | sed -E 's| : L([0-9]+)$|:\1:1|g' | awk_cmd '{ OFS=""; gsub(/^Running bashate on .+$/, ""); gsub(/^ \- /, ""); if (NF > 0) { print; } }'
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'bashate: command not found!\n' >&2
         fi
 
         if [ -x "$(command -v shellcheck)" ]; then
             printf '======  *SHELLCHECK*  ======\n'
-            shellcheck --color=auto --exclude=SC1090,SC1091 --external-sources --format=gcc "$file" | noblanks
+            shellcheck --color=auto --exclude=SC1090,SC1091,SC2181 --external-sources --format=gcc "$file" | noblanks
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'shellcheck: command not found!\n' >&2
         fi
