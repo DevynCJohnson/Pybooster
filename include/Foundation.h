@@ -37,7 +37,7 @@ Architectures:
 Operating Systems:
  - Linux
 
-@section Standard C Library
+@section Standard_C_Library
  - assert.h
  - complex.h
  - ctype.h
@@ -68,7 +68,7 @@ Operating Systems:
  - wchar.h
  - wctype.h
 
-@section POSIX C Library
+@section POSIX_C_Library
  - aio.h
  - arpa/inet.h
  - assert.h
@@ -152,7 +152,7 @@ Operating Systems:
  - wctype.h
  - wordexp.h
 
-@section BSD Library
+@section BSD_Library
  - db.h
  - err.h
  - fts.h
@@ -163,11 +163,11 @@ Operating Systems:
  - stdlib.h: arc4random(), daemon(), radixsort()
  - string.h: strlcat() and strlcpy()
 
-@section Other C Libraries
+@section Other_C_Libraries
  - reent.h (Newlib)
  - unctrl.h (Newlib)
 
-@section C Plus Plus Standard Library
+@section C_Plus_Plus_Standard_Library
  - array
  - deque
  - forward_list
@@ -220,7 +220,7 @@ Operating Systems:
  - utility
  - valarray
 
-@section Linux API Headers
+@section Linux_API_Headers
  - /usr/include/asm/
  - /usr/include/asm-generic/
  - /usr/include/drm/
@@ -232,7 +232,7 @@ Operating Systems:
  - /usr/include/video/
  - /usr/include/xen/
 
-@section Standards & Features
+@section Standards_&_Features
  - POSIX.1-1988: System interfaces and headers
  - POSIX.1-1990: POSIX.1-1988 update
  - POSIX.1b-1993: Realtime extensions
@@ -290,7 +290,7 @@ These are defined by the user and/or the compiler to specify the desired environ
  - _THREAD_SAFE: Enable features for thread-safety
  - _FORTIFY_SOURCE: If above 0, additional security measures are defined (according to the level)
 
-@section Setting Specifications
+@section Setting_Specifications
 These may be defined by this file and are used by the header files to decide what to declare or define:
  - __USE_ISOC11: Define ISO C11 symbols
  - __USE_ISOC99: Define ISO C99 symbols
@@ -315,6 +315,16 @@ These may be defined by this file and are used by the header files to decide wha
  - __USE_REENTRANT: Define reentrant *_r functions
  - __USE_FORTIFY_LEVEL: Additional security measures used, according to level
 
+@section POSIX_VERSION
+ - 198808L
+ - 199009L
+ - 199209L
+ - 199309L
+ - 199506L
+ - 200112L
+ - 200809L
+ - 201712L
+
 @section ANSI
 The `-ansi` switch to the GNU C compiler, and standards conformance options such as `-std=c99`, define __STRICT_ANSI__. If none of these are defined, or if _DEFAULT_SOURCE is defined, the default is to have _POSIX_SOURCE set to one and _POSIX_C_SOURCE set to 200809L, as well as enabling miscellaneous functions from BSD and SVID. If more than one of these are defined, they accumulate. For example __STRICT_ANSI__, _POSIX_SOURCE, and _POSIX_C_SOURCE together give you ISO C, 1003.1, and 1003.2, but nothing else.
 
@@ -324,7 +334,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - https://gcc.gnu.org/onlinedocs/gcc/Cilk-Plus-Builtins.html
  - https://gcc.gnu.org/onlinedocs/gcc/x86-Built-in-Functions.html
 
-@section Helpful Terminal Commands
+@section Helpful_Terminal_Commands
  - echo | gcc -dM -E -x c - | cut -c 9- | sort
  - echo | gcc -fwrapv -march=haswell -mavx -mmovbe -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -dM -E -x c - | cut -c 9- | sort
  - echo | clang -dM -E -x c - | cut -c 9- | sort
@@ -355,7 +365,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - pkg-config --cflags --libs gobject-introspection-1.0
  - gcc -Wl,-y,FUNCTION file.c  # List references and definitions of FUNCTION
 
-@section Machine Modes
+@section Machine_Modes
  - BI - 1 Bit
  - QI - Quarter Integer; 1 byte (8-bits)
  - HI - Half Integer; 2 bytes (16-bits)
@@ -420,7 +430,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - BND64 - 64-bit pointer bound
  - word - Word-sized integer
 
-@section Intel Intrinsics
+@section Intel_Intrinsics
  - __m64 - 2-float vector; MMX/XMM register
  - __m128 - 4-float vector; SSE register
  - __m128d - 2-double vector; SSE register
@@ -434,7 +444,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - "L" represents long type
  - "P" represents the pointer type
 
-@section Datamodel Systems
+@section Datamodel_Systems
  - IP16 Platforms: PDP-11 Unix
  - ILP32 Platforms: IBM370 and VAX Unix
  - ILP32LL/ILP32LL64 Platforms: Windows-32 and Convex
@@ -443,7 +453,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - LLP64/IL32P64 Platforms: Windows-64
  - SILP64 Platforms: Classic UNICOS
 
-@section Datamodel Definitions
+@section Datamodel_Definitions
  - ILP32: int, long, pointer = 32;
  - LP32: short, int = 16; long, pointer = 32
  - ILP64: short = 16; int, long, long long, pointer = 64
@@ -451,7 +461,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - LLP64/IL32P64/P64: short = 16; int, long = 32; long long, pointer = 64
  - SILP64: short, int, long, long long, pointer = 64
 
-@section Datatype Info
+@section Datatype_Info
  - __S<SIZE>_TYPE: signed
  - __U<SIZE>_TYPE: unsigned
  - 16: natural 16-bit type (always `short`)
@@ -464,7 +474,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - `long` is always word/address size
  - `long long` is always 64 bits
 
-@section Primary Fixed-point Datatypes
+@section Primary_Fixed-point_Datatypes
  - short _Fract
  - _Fract
  - long _Fract
@@ -472,7 +482,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - _Accum
  - long _Accum
 
-@section Saturating Fixed-point Datatypes
+@section Saturating_Fixed-point_Datatypes
  - _Sat short _Fract
  - _Sat _Fract
  - _Sat long _Fract
@@ -480,7 +490,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - _Sat _Accum
  - _Sat long _Accum
 
-@section Accumulator Fixed-point Datatypes
+@section Accumulator_Fixed-point_Datatypes
  - short _Accum
  - _Accum
  - long _Accum
@@ -488,7 +498,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - _Sat _Accum
  - _Sat long Accum
 
-@section Fixed-point Datatype Suffixes
+@section Fixed-point_Datatype_Suffixes
  - hr   signed short _Fract
  - r   signed _Fract
  - lr   signed long _Fract
@@ -506,7 +516,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - ulk   unsigned long _Accum
  - ullk   unsigned long long _Accum
 
-@section Strings & Characters
+@section Strings_&_Characters
  - ASCII: 7-bit encoding for 128 characters
  - Unicode: 32-bit encoding (136755 characters as of v10.0)
  - Byte Order Mark (BOM): Unicode character indicating the endianness and Unicode encoding
@@ -534,7 +544,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - UCS-2LE: 2 byte little-endian Unicode encoding (65535 characters)
  - UCS-4: Same as UTF-32
 
-@section Character & String Literals
+@section Character_&_String_Literals
  - L"": Wide-character String; wchar_t[]
  - u8"": UTF-8 String; char[]
  - u"": UTF-16 String; char16_t[]
@@ -547,7 +557,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - \\u####: 16-bit Unicode character specified by four hexadecimal digits
  - \\U########: 32-bit Unicode character specified by eight hexadecimal digits
 
-@section Floating-Point Constant Literals
+@section Floating-Point_Constant_Literals
  - 5.3876E4 = 53876
  - 4E-11 = 0.00000000004
  - 1e+5 = 100000
@@ -557,7 +567,7 @@ The `-ansi` switch to the GNU C compiler, and standards conformance options such
  - 0.45 = 0.45
  - 6.e10 = 60000000000
 
-@section Types of Numbers
+@section Types_of_Numbers
 https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - NATURAL/CARDINAL NUMBER (ℕ): Counting numbers (0, 1, 2, 3, …), are called natural numbers. (https://en.wikipedia.org/wiki/Natural_number)
  - INTEGER (ℤ): A number that can be written without a fractional component. For example, 17, 3, 0, and -1024 are integers, while 9.73, 5 1⁄2, and √2 are not integers. (https://en.wikipedia.org/wiki/Integer)
@@ -578,7 +588,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - OCTONION (𝕆): Normed division algebra over the real numbers. Octonions have eight dimensions; twice the number of dimensions of the quaternions. They are noncommutative and nonassociative, but satisfy a weaker form of associativity. (https://en.wikipedia.org/wiki/Octonion)
  - SEDENION (𝕊): 16-dimensional noncommutative and nonassociative numbers over the reals and obtained by applying the Cayley–Dickson construction to the octonions. (https://en.wikipedia.org/wiki/Sedenion)
 
-@section Parallel Computing APIs & Extensions
+@section Parallel_Computing_APIs_&_Extensions
 - Cilk: C extension for multithreaded parallel computing
 - Open Accelerators (OpenACC): Standard designed to simplify parallel programming of heterogeneous CPU/GPU systems
 - Open Computing Language (OpenCL): Framework for writing programs that execute across heterogeneous platforms consisting of CPUs, GPUs, Digital Signal Processors (DSPs), Field-Programmable Gate Arrays (FPGAs), and other processors/hardware-accelerators
@@ -586,12 +596,12 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
 - Open Hybrid Multicore Parallel Programming (OpenHMPP): Programming standard for heterogeneous computing based on compiler directives
 - Open Multi-Processing (OpenMP): API that supports multi-platform shared memory multiprocessing programming for CPUs
 
-@section Cilk Documentation
+@section Cilk_Documentation
  - https://www.cilkplus.org/
  - https://www.cilkplus.org/docs/doxygen/include-dir/
  - Intel Cilk Plus: https://software.intel.com/en-us/node/522579
 
-@section Intel Documentation
+@section Intel_Documentation
  - Automatic Vectorization: https://software.intel.com/en-us/node/522569
  - Graphics Technology: https://software.intel.com/en-us/node/522438
  - High-Level Optimization (HLO): https://software.intel.com/en-us/node/522438
@@ -599,7 +609,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - Interprocedural Optimization (IPO): https://software.intel.com/en-us/node/522666
  - OpenMP Support: https://software.intel.com/en-us/node/522678
 
-@section Float-Point Documentation
+@section Float-Point_Documentation
  - Minifloat - https://en.wikipedia.org/wiki/Minifloat
  - Half-precision (binary16) - https://en.wikipedia.org/wiki/Half-precision_floating-point_format
  - Single-precision (binary32) - https://en.wikipedia.org/wiki/Single-precision_floating-point_format
@@ -611,7 +621,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - Decimal128 - https://en.wikipedia.org/wiki/Decimal128_floating-point_format
  - IBM Floating Point Architecture - https://en.wikipedia.org/wiki/IBM_Floating_Point_Architecture
 
-@section Metric Units for Decimal Data Units
+@section Metric_Units_for_Decimal_Data_Units
  - Value	Abbr	Name
  - 1000		kB		Kilobyte
  - 1000^2	MB		Megabyte
@@ -622,7 +632,7 @@ https://en.wikipedia.org/wiki/List_of_types_of_numbers
  - 1000^7	ZB		Zettabyte
  - 1000^8	YB		Yottabyte
 
-@section ISO IEC 80000 Units for Binary Data Units
+@section ISO_IEC_80000_Units_for_Binary_Data_Units
  - Value	Abbr	Name
  - 1024		KiB		Kibibyte
  - 1024^2	MiB		Mebibyte
@@ -1060,9 +1070,8 @@ Macros flag indicates if the target operating system is a MAC system */
 
 // C STANDARD LIBRARIES
 
-/** @defgroup C_Standard_Library_Indicators
-Macros used to indicate and/or test the type of the present standard C library
-@{ */
+/** @defgroup C_Standard_Library_Indicators Macros used to indicate and/or test the type of the present standard C library
+@{ */  // (FB){
 
 /** @def STDLIB
 String name of the standard C library */
@@ -1137,14 +1146,13 @@ Boolean macros indicating whether the standard C library is Musl */
 #   define ALLOW_OBSOLETE_CARBON_OSUTILS   0
 #endif
 
-/** @} */
+/** @} */  // }
 
 
 // COMPILER TYPE
 
-/** @defgroup Compiler_Indicators
-Macros used to indicate and/or test the compiler type
-@{ */
+/** @defgroup Compiler_Indicators Macros used to indicate and/or test the compiler type
+@{ */  // (FB){
 
 /** @def IS_COMPILER
 This macros indicates that the software reading the code is a compiler if the macros equals `1` */
@@ -1248,7 +1256,7 @@ Boolean macros indicating whether the compiler is not GNU-GCC */
 #   define IS_NOT_GNUC   1
 #endif
 
-/** @} */
+/** @} */  // }
 
 
 // ASSEMBLER MACROS
@@ -1319,9 +1327,8 @@ This macros indicates that the software reading the code is not a linter if the 
 
 // COMPILER VERSION MACROS
 
-/** @defgroup Compiler_Version
-Macros for testing the version of the compiler
-@{ */
+/** @defgroup Compiler_Version Macros for testing the version of the compiler
+@{ */  // (FB){
 
 /** @def __NVCC_PREREQ(version)
 Test if the NVCC compiler matches the specified version number */
@@ -1445,7 +1452,7 @@ Test if the Microsoft compiler matches the specified version number */
 #   error   "MSVC version 19 or greater is required!"
 #endif
 
-/** @} */
+/** @} */  // }
 
 
 // ASSERT DATATYPE SIZES
@@ -1461,9 +1468,8 @@ _Static_assert(((sizeof(char*) == 4) || (sizeof(char*) == 8)), "The target syste
 
 // C VERSION MACROS
 
-/** @defgroup C_Versions
-Macros for testing types and versions of C
-@{ */
+/** @defgroup C_Versions Macros for testing types and versions of C
+@{ */  // (FB){
 
 /** @def IS_ANSI
 Macros test for ANSI C */
@@ -1820,7 +1826,7 @@ Boolean macros flag indicating support for OpenMP */
 #   define SUPPORTS_OPENMP   0
 #endif
 
-/** @} */
+/** @} */  // }
 
 
 // PLATFORM FEATURES & TYPES
@@ -2322,6 +2328,11 @@ Boolean macros flag indicating support for OpenMP */
 #   define CPU_PKU   1
 #else
 #   define CPU_PKU   0
+#endif
+#ifdef __XOP__
+#   define CPU_XOP   1
+#else
+#   define CPU_XOP   0
 #endif
 // MIPS CPUS
 #if ((defined(__MIPS64__) || defined(_M_MIPS64) || defined(__mips64) || defined(__mips64__) || defined(_R4000) || defined(_MIPS_ISA_MIPS3) || defined(__MIPS_ISA3__) || defined(_MIPS_ISA_MIPS4) || defined(__MIPS_ISA4__)) || defined(_MIPS_SIM_ABI64) || defined(_ABI64) || (defined(__mips) && (__mips == 64)))
@@ -5637,6 +5648,10 @@ The number of bits that represent the integer portion of Fract */
 
 // SIZEOF MISCELLANEOUS DATATYPES
 
+#ifndef _FP_W_TYPE_SIZE
+/** Size in bits of `_FP_W_TYPE` */
+#   define _FP_W_TYPE_SIZE   W_TYPE_SIZE
+#endif
 #define SIZEOF_DIV_T   SIZEOF_INT
 #define SIZEOF_LDIV_T   SIZEOF_LONG
 #define SIZEOF_LLDIV_T   SIZEOF_LONG_LONG
@@ -6735,7 +6750,7 @@ Maximum value representable as type sig_atomic_t */
 #   define QUAD_MIN   INT64_MIN
 #endif
 #define SIGEV_MAX_SIZE   64
-#define SIGEV_PAD_SIZE   13
+#define SIGEV_PAD_SIZE   16
 #if ((SIZE_MAX != ULONG_MAX) || (UINTMAX_MAX != ULLONG_MAX))
 #   define ODD_TYPES   1
 #   define HAS_ODD_TYPES   1
@@ -7378,9 +7393,8 @@ Maximum value representable as type sig_atomic_t */
 
 // TARGET ATTRIBUTES & MACROS
 
-/** @defgroup Build_Target
-Macros for specifying that a function be built for a particular target
-@{ */
+/** @defgroup Build_Target Macros for specifying that a function be built for a particular target
+@{ */  // (FB){
 
 #if IS_GNUC
 // PowerPC
@@ -7438,7 +7452,7 @@ Macros for specifying that a function be built for a particular target
 #   define BUILD_AVX2
 #endif
 
-/** @} */
+/** @} */  // }
 
 
 #endif  // ATTRIBUTES_H
@@ -7542,11 +7556,16 @@ Macros for specifying that a function be built for a particular target
 #if (IS_NOT_GNUC && (!defined(__has_builtin)))
 #   define __has_builtin(x)   0
 #endif
-#if ((!defined(COMPILER_CLANG)) && (!defined(__has_extension)))
-#   define __has_extension(x)   0
-#endif
 #if ((!defined(COMPILER_CLANG)) && (!defined(__has_feature)))
 #   define __has_feature(x)   0
+#endif
+#if (defined(COMPILER_CLANG) && (!defined(lacks_feature)))
+#   define lacks_feature(x)   (!__has_feature(x))
+#elif ((!defined(COMPILER_CLANG)) && (!defined(lacks_feature)))
+#   define lacks_feature(x)   0
+#endif
+#if ((!defined(COMPILER_CLANG)) && (!defined(__has_extension)))
+#   define __has_extension(x)   __has_feature(x)
 #endif
 #if ((!defined(COMPILER_CLANG)) && (!defined(__has_warning)))
 #   define __has_warning(x)   0
@@ -7569,6 +7588,15 @@ Macros for specifying that a function be built for a particular target
 #endif
 #ifndef has_include_next
 #   define has_include_next(x)    __has_include_next(x)
+#endif
+#ifndef has_extension
+#   define has_extension(x)   __has_extension(x)
+#endif
+#ifndef has_feature
+#   define has_feature(x)   __has_feature(x)
+#endif
+#ifndef has_builtin
+#   define has_builtin(x)   __has_builtin(x)
 #endif
 
 
@@ -7832,6 +7860,9 @@ Compile-time assertion */
 
 
 #if IS_NOT_LINTER
+#   if lacks_feature(c_atomic)
+#      error   "Atomics are required to use this library!"
+#   endif
 _Static_assert((('A' + 0x20 == 'a') && (' ' == 32)), "Invalid character encoding (must be UTF-8)!");
 _Static_assert((SIZEOF_CHAR == 1), "`char` datatype is not 8-bits!");
 _Static_assert((((SIZEOF_CHAR * 8) == NBBY) && ((sizeof(char) * 8) == NBBY)), "A byte is not 8-bits on this platform!");

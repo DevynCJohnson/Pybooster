@@ -463,10 +463,11 @@ typedef long*   PTR_LONG_TYPE;
 /** Similar to _BPTR_ALIGN (B, P, A), except optimize the common case where pointers can be converted to integers, aligned as integers, and converted back again; If PTR_INT_TYPE is narrower than a pointer (e.g., the AS/400), play it safe and compute the alignment relative to B; Otherwise, use the faster strategy of computing the alignment relative to 0 */
 #define __PTR_ALIGN(B, P, A)   __BPTR_ALIGN((((sizeof(PTR_INT_TYPE)) < BYTES_PER_POINTER) ? (B) : (char*)0), P, A)
 
-typedef struct attr_packed _obstack_chunk {
-	char* limit;  //!< 1 past end of this chunk
+typedef struct _obstack_chunk {
 	struct _obstack_chunk* prev;  //!< Address of prior chunk or `NULL`
+	char* limit;  //!< 1 past end of this chunk
 	char contents[4];  //!< Objects begin here
+	int pad0;  //!< Padding
 } obstack_chunk_t;
 
 DIAG_PUSH
@@ -602,24 +603,30 @@ DIAG_POP
 
 #if (IS_GNUC && (!defined(__GNUC_VA_LIST)))
 /** Type to hold information about variable arguments */
-typedef __builtin_va_list   __gnuc_va_list;
+typedef __builtin_va_list   va_list;
 #elif defined(__VMS__)
 /** Type to hold information about variable arguments */
-typedef char*   __gnuc_va_list;
+typedef char*   va_list;
 #else
-typedef struct va_list_struct {
-	char* __base;  //!< Pointer to first integer register
-	int __offset;  //!< Current byte-offset of the args
-} __gnuc_va_list;
+#   ifdef ARCHX86_64
+typedef struct va_struct {
+   uint32_t gp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available general purpose argument register is saved. If all the argument registers are exhausted, then it is set to the value `48`.
+   uint32_t fp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available ﬂoating point argument register is saved. If all the argument registers are exhausted, then it is set to the value `304`.
+   void* overflow_arg_area;  //!< Pointer used to fetch arguments passed on the stack. It is initialized with the address of the ﬁrst argument passed on the stack (if any). It is always updated to point to the start of the next argument on the stack.
+   void* reg_save_area;  //!< Pointer to the start of the register save area
+} va_list[1];
+#   else
+typedef uintptr_t   va_list;
+#   endif
 #endif
 #define __GNUC_VA_LIST   1
 #undef __need___va_list
 #define __DEFINED___isoc_va_list   (1)
 #define __DEFINED_va_list   (1)
 /** Type to hold information about variable arguments */
-#define p9va_list   __gnuc_va_list
+#define __gnuc_va_list   va_list
 /** Type to hold information about variable arguments */
-#define va_list   __gnuc_va_list
+#define p9va_list   __gnuc_va_list
 /** Type to hold information about variable arguments */
 #define _G_va_list   __gnuc_va_list
 /** Type to hold information about variable arguments */
@@ -644,7 +651,8 @@ typedef struct va_list_struct {
 // VA_START, VA_END, & VA_ARG
 
 /** Retrieve next argument */
-#define va_arg   __builtin_va_arg
+#define va_arg(v, datatype)   __builtin_va_arg(v, datatype)
+
 #if IS_GNUC
 #   define __builtin_stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
 #else
@@ -653,30 +661,33 @@ typedef struct va_list_struct {
 /** Initialize a variable argument list */
 #define va_start(v, argnum)   __builtin_va_start((v), (argnum))
 /** Initialize a variable argument list */
-#define _va_start(v, argnum)   va_start((v), (argnum))
+#define stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
 /** Initialize a variable argument list */
-#define __va_start(v, argnum)   va_start((v), (argnum))
+#define _stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define _va_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define __va_start(v, argnum)   __builtin_va_start((v), (argnum))
 /** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
 #define va_end(v)   __builtin_va_end((v))
 /** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
-#define _va_end(v)   va_end((v))
+#define _va_end(v)   __builtin_va_end((v))
 /** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
-#define __va_end(v)   va_end((v))
+#define __va_end(v)   __builtin_va_end((v))
 
 
 // VA_COPY
 
-// GCC only defines `va_copy` c99 mode, or if `-ansi` is not specified; va_copy is not in C90
-#if (IS_STDC99 || IS_NOT_STRICT_ANSI)
 /** Copy variable argument list */
-#   define va_copy(dest, src)   (*(dest) = *(src))  // __builtin_va_copy((dest), (src))
+#define va_copy(dest, src)   (*(dest) = *(src))  // __builtin_va_copy((dest), (src))
 /** Copy variable argument list */
-#   define _va_copy(dest, src)   va_copy((dest), (src))
+#define __builtin_va_copy(dest, src)   (*(dest) = *(src))
 /** Copy variable argument list */
-#   define __va_copy(dest, src)   va_copy((dest), (src))
+#define _va_copy(dest, src)   (*(dest) = *(src))
 /** Copy variable argument list */
-#   define gl_va_copy(dest, src)   va_copy((dest), (src))
-#endif
+#define __va_copy(dest, src)   (*(dest) = *(src))
+/** Copy variable argument list */
+#define gl_va_copy(dest, src)   (*(dest) = *(src))
 
 
 // MSVC COMPATIBILITY
@@ -686,10 +697,12 @@ typedef struct va_list_struct {
 #      define __ms_va_list   __builtin_ms_va_list
 #      define __ms_va_start(list, arg)   __builtin_ms_va_start((list), (arg))
 #      define __ms_va_end(list)   __builtin_ms_va_end((list))
+#      define __ms_va_copy(dest, src)   __builtin_ms_va_copy((dest), (src))
 #   else
 #      define __ms_va_list   va_list
 #      define __ms_va_start(list, arg)   va_start((list), (arg))
 #      define __ms_va_end(list)   va_end((list))
+#      define __ms_va_copy(dest, src)   (*(dest) = *(src))
 #   endif
 #endif
 
@@ -1682,21 +1695,6 @@ typedef _Sat unsigned long _Accum   suaccum_4_23_t;
 #endif
 
 
-// QUAD
-
-#define __quad_t   int64_t
-#define quad_t   int64_t
-#define __s_quad_t   int64_t
-#define s_quad_t   int64_t
-#define _quad_t   int64_t
-#define __u_quad_t   uint64_t
-#define u_quad_t   uint64_t
-#define uquad_t   uint64_t
-#define _u_quad_t   uint64_t
-#define __SQUAD_TYPE   int64_t
-#define __UQUAD_TYPE   uint64_t
-
-
 // UNSIGNED INTEGER U-DATATYPES
 
 typedef uint8_t   U_8;
@@ -2208,20 +2206,23 @@ typedef struct _FileRuneEntry {
 /** Number of ranges stored */
 typedef struct _FileRuneRange { uint32_t frr_nranges; }   _FileRuneRange;
 /** The lower 8 bits of runetype[] contain the digit value of the rune */
-typedef struct attr_packed _RuneEntry {
+typedef struct _RuneEntry {
+	unsigned long* types;  //!< Array of types in range
 	rune_t min;  //!< First rune of the range
 	rune_t max;  //!< Last rune (inclusive) of the range
 	rune_t map;  //!< First maps in mapping
-	unsigned long* types;  //!< Array of types in range
+	rune_t pad0;  //!< Padding
 } _RuneEntry;
 #define __RuneEntry   _RuneEntry
-typedef struct attr_packed _RuneRange {
-	int nranges;  //!< Number of ranges stored
+typedef struct _RuneRange {
 	_RuneEntry* ranges;  //!< Pointer to the ranges
+	int nranges;  //!< Number of ranges stored
+	int pad0;  //!< Padding
 } _RuneRange;
 #define __RuneRange   _RuneRange
-typedef struct attr_packed _RuneCharClass {
+typedef struct _RuneCharClass {
 	char __name[14];  //!< CHARCLASS_NAME_MAX = 14
+	short pad0;  //!< Padding
 	uint32_t __mask;  //!< charclass mask
 } _RuneCharClass;
 typedef struct _WCTransEntry {
@@ -2229,14 +2230,16 @@ typedef struct _WCTransEntry {
 	rune_t* te_cached;
 	_RuneRange* te_extmap;
 } _WCTransEntry;
-typedef struct attr_packed _WCTypeEntry {
+typedef struct _WCTypeEntry {
 	char* te_name;
-	_RuneType te_mask;
+	RuneType te_mask;
+	rune_t pad0;  //!< Padding
 } _WCTypeEntry;
-struct attr_packed old_tabs {
-	char ctype_tab[257];
+struct old_tabs {
 	short tolower_tab[257];
 	short toupper_tab[257];
+	char ctype_tab[257];
+	char pad0[3];  //!< Padding
 };
 typedef struct Fconv {
 	char* out;  //!< Pointer to next output
@@ -2803,15 +2806,17 @@ typedef __RLIM64_T_TYPE   rlim64_t;
 
 // File-lock structure & datatype
 #if (defined(ARCHALPHA) || defined(ARCHARM) || defined(ARCHITANIUM) || defined(ARCHPARISC) || defined(ARCHPOWERPC) || defined(ARCHS390) || defined(ARCHSPARC) || defined(ARCHX86))
-typedef struct attr_packed flock {
+typedef struct flock {
 	int16_t l_type, l_whence;
-	off_t l_start, l_len;
 	pid_t l_pid;
+	off_t l_start, l_len;
+	int64_t pad0;  //!< Padding
 } flock_t;
-typedef struct attr_packed flock64 {
+typedef struct flock64 {
 	int16_t l_type, l_whence;
-	loff_t l_start, l_len;
 	pid_t  l_pid;
+	loff_t l_start, l_len;
+	int64_t pad0;  //!< Padding
 } flock64_t;
 #elif defined(ARCHMIPS64)
 typedef struct flock {
@@ -2967,13 +2972,14 @@ typedef struct timeval32 { int32_t tv_sec, tv_usec; }   timeval32_t;
 typedef struct timeval64 { int64_t tv_sec, tv_usec; }   timeval64_t;
 #define STRUCT_TIMEVAL64   struct timeval64
 #define _STRUCT_TIMEVAL64   struct timeval64
-typedef struct attr_packed tm {
+typedef struct tm {
+	const char* __tm_zone;  //!< Timezone abbreviation
+	long __tm_gmtoff;  //!< Seconds east of UTC
 	int tm_sec, tm_min, tm_hour, tm_mday, tm_mon, tm_year;
 	int tm_wday;  //!< Day of week [0-6]
 	int tm_yday;  //!< Day in year [0-366]
 	int tm_isdst;  //!< Daylight Savings Time (DST)
-	long __tm_gmtoff;  //!< Seconds east of UTC
-	const char* __tm_zone;  //!< Timezone abbreviation
+	int pad0;  //!< Padding
 } tm_t;
 /** Structure representing a timezone */
 typedef struct timezone_struct {
@@ -2997,7 +3003,7 @@ typedef struct itimerspec { struct timespec it_interval, it_value; }   itimerspe
 typedef struct ntptimeval { struct timeval time; long maxerror, esterror; }   ntptimeval_t;
 typedef struct timeval50 { long tv_sec, tv_usec; }   timeval50_t;
 typedef struct itimerval50 { struct timeval50 it_interval; struct timeval50 it_value; }   itimerval50_t;
-typedef struct attr_packed timespec50 { int32_t tv_sec; long tv_nsec; }   timespec50_t;
+typedef struct timespec50 { long tv_nsec; int32_t tv_sec; int32_t pad0; }   timespec50_t;
 typedef struct itimerspec50 { struct timespec50 it_interval; struct timespec50 it_value; }   itimerspec50_t;
 #ifdef ARCHALPHA
 /** Datatype for variables used to store the time values */
@@ -3053,221 +3059,6 @@ typedef timespec_t   mach_timespec_t;
 #define BAD_ALRMTYPE(t)   (((t) & (~(TIME_RELATIVE))) != 0)
 
 
-// POINTER-RELATED DATATYPES
-
-#if (BITS_PER_POINTER == 64)
-#   define __sptr   int64_t
-#   define __uptr   uint64_t
-#elif (BITS_PER_POINTER == 32)
-#   define __sptr   int32_t
-#   define __uptr   uint32_t
-#else
-#   error   "Only 32-bit and 64-bit pointers are supported!"
-#endif
-#define POINTER_SIGNED   __sptr
-#define POINTER_UNSIGNED   __uptr
-#define FIRMWARE_PTR   uint32_t
-#define __ptr32   uint32_t
-#define ptr32_t   uint32_t
-#define POINTER_32   uint32_t
-#define POINTER_32_INT   uint32_t
-#define SPOINTER_32   int32_t
-#define UPOINTER_32   uint32_t
-#define __ptr64   uint64_t
-#define ptr64_t   uint64_t
-#define POINTER_64   uint64_t
-#define POINTER_64_INT   uint64_t
-#define SPOINTER_64   int64_t
-#define UPOINTER_64   uint64_t
-#ifndef PTRDIFF_TYPE
-#   define PTRDIFF_TYPE   __PTRDIFF_TYPE__
-#endif
-#ifndef __PTRDIFF_T_TYPE
-#   define __PTRDIFF_T_TYPE   __PTRDIFF_TYPE__
-#endif
-#ifndef __PTRDIFF_T_TYPE__
-#   define __PTRDIFF_T_TYPE__   __PTRDIFF_TYPE__
-#endif
-#ifndef PTRDIFF_T_TYPE
-#   define PTRDIFF_T_TYPE   __PTRDIFF_TYPE__
-#endif
-typedef __PTRDIFF_TYPE__   ptrdiff_t;
-#define __ptrdiff_t   ptrdiff_t
-#ifndef __INTPTR_T_TYPE__
-#   define __INTPTR_T_TYPE__   __INTPTR_TYPE__
-#endif
-#ifndef INTPTR_TYPE
-#   define INTPTR_TYPE   __INTPTR_TYPE__
-#endif
-#ifndef __intptr_t_defined
-typedef __INTPTR_TYPE__   intptr_t;
-#   define __intptr_t   intptr_t
-#   define __intptr_t_defined   (1)
-#endif
-#ifndef UINTPTR_TYPE
-#   define UINTPTR_TYPE   __UINTPTR_TYPE__
-#endif
-#ifndef __uintptr_t_defined
-typedef __UINTPTR_TYPE__   uintptr_t;
-#   define __uintptr_t   uintptr_t
-#   define __uintptr_t   uintptr_t
-#   define uintptr   uintptr_t
-#   define __uintptr_t_defined   (1)
-#endif
-#ifndef SIZEOF_UINTPTR_T
-#   define SIZEOF_UINTPTR_T   SIZEOF_UWORD_TYPE
-#endif
-/** Signed integer datatype that can hold a pointer beyond 64KB (from Atmel AVR) */
-typedef int32_t   int_farptr_t;
-/** Unsigned integer datatype that can hold a pointer beyond 64KB (from Atmel AVR) */
-typedef uint32_t   uint_farptr_t;
-typedef void*   LPVOID;
-#define PVOID   LPVOID
-#ifndef _LPCVOID_DEFINED
-#   define _LPCVOID_DEFINED   (1)
-typedef const void*   LPCVOID;
-#endif
-#if IS_64
-#   define __int3264   int64_t
-#   define ADDRESS_TAG_BIT   0x40000000000ULL
-typedef int32_t   HALF_PTR;
-typedef uint32_t   UHALF_PTR;
-typedef int32_t*   PHALF_PTR;
-typedef uint32_t*   PUHALF_PTR;
-typedef int64_t*   PINT_PTR;
-typedef uint64_t*   PUINT_PTR;
-typedef int64_t*   PLONG_PTR;
-typedef uint64_t*   PULONG_PTR;
-typedef int64_t   SHANDLE_PTR;
-typedef uint64_t   HANDLE_PTR;
-#elif IS_32
-#   define __int3264   int32_t
-#   define ADDRESS_TAG_BIT   0x80000000UL
-typedef int16_t   HALF_PTR;
-typedef uint16_t   UHALF_PTR;
-typedef int16_t*   PHALF_PTR;
-typedef uint16_t*   PUHALF_PTR;
-typedef int32_t*   PINT_PTR;
-typedef uint32_t*   PUINT_PTR;
-typedef long*   PLONG_PTR;
-typedef unsigned long*   PULONG_PTR;
-typedef int32_t   SHANDLE_PTR;
-typedef uint32_t   HANDLE_PTR;
-#endif
-#define PLONG   PLONG_PTR
-/** Character pointer */
-typedef char*   PCHAR;
-/** Unsigned character pointer */
-typedef unsigned char*   PUCHAR;
-typedef char*   PSZ;
-#define BYTE   unsigned char
-typedef BYTE*   PBYTE;
-typedef BYTE*   LPBYTE;
-/** Windows signed pointer datatype */
-typedef __INT_PTR_TYPE   INT_PTR;
-/** Windows unsigned pointer datatype */
-typedef __UINT_PTR_TYPE   UINT_PTR;
-/** Windows pointer datatype */
-typedef __UINT_PTR_TYPE   LONG_PTR;
-#define LONG_PTR_DEFINED   (1)
-/** Windows unsigned pointer datatype */
-typedef __UINT_PTR_TYPE   ULONG_PTR;
-typedef ULONG_PTR*   PDWORD_PTR;
-typedef __UINT_PTR_TYPE   KAFFINITY;
-typedef KAFFINITY*   PKAFFINITY;
-/** Windows pointer datatype */
-typedef __UINT_PTR_TYPE   DWORD_PTR;
-/** Windows datatype */
-typedef __UINT_PTR_TYPE   WPARAM;
-/** Windows datatype */
-typedef __UINT_PTR_TYPE   LPARAM;
-/** Windows datatype */
-typedef __UINT_PTR_TYPE   LRESULT;
-typedef char*   char_ptr_t;
-typedef short*   short_ptr_t;
-typedef short*   PSHORT;
-typedef int*   int_ptr_t;
-typedef int   _Mbstatet;
-typedef int*   PINT;
-typedef int*   LPINT;
-typedef int*   PLONG32;
-typedef int*   PINT32;
-typedef long*   long_ptr_t;
-typedef long*   LPLONG;
-typedef long*   PLARGE_INTEGER;
-typedef unsigned char*   uchar_ptr_t;
-typedef unsigned short*   ushort_ptr_t;
-typedef unsigned short*   PUSHORT;
-typedef unsigned int*   uint_ptr_t;
-typedef unsigned int*   PUINT;
-typedef unsigned int*   LPUINT;
-typedef unsigned int*   PULONG32;
-typedef unsigned int*   PDWORD32;
-typedef unsigned int*   PUINT32;
-typedef unsigned long*   ulong_ptr_t;
-typedef unsigned long*   PULONG;
-typedef quad_t*   quad_ptr_t;
-typedef int8_t*   PINT8;
-typedef int8_t*   s8_ptr_t;
-typedef int8_t*   i8_ptr_t;
-typedef int16_t*   PINT16;
-typedef int16_t*   s16_ptr_t;
-typedef int16_t*   i16_ptr_t;
-typedef int32_t*   s32_ptr_t;
-typedef int32_t*   i32_ptr_t;
-typedef int64_t*   PLONG64;
-typedef int64_t*   PINT64;
-typedef int64_t*   s64_ptr_t;
-typedef int64_t*   i64_ptr_t;
-typedef uint8_t*   PUINT8;
-typedef uint8_t*   u8_ptr_t;
-typedef uint8_t*   ptr8_t;
-typedef uint16_t*   PUINT16;
-typedef uint16_t*   u16_ptr_t;
-typedef uint16_t*   ptr16_t;
-typedef uint32_t*   u32_ptr_t;
-typedef uint64_t*   PULONG64;
-typedef uint64_t*   PDWORD64;
-typedef uint64_t*   PUINT64;
-typedef uint64_t*   u64_ptr_t;
-typedef size_t*   PSIZE_T;
-/** Windows pointer datatype */
-typedef ssize_t*   PSSIZE_T;
-typedef float*   float_ptr_t;
-typedef float*   PFLOAT;
-typedef double*   double_ptr_t;
-typedef double*   PDOUBLE;
-#define HandleToUlong(_handle)   ((unsigned long)(uintptr_t)((void*)(_handle)))
-#define HandleToLong(_handle)   ((long)(intptr_t)((void*)(_handle)))
-#define ULongToHandle(_handle)   ((void*)(UINT_PTR)((long)(_handle)))
-#define LongToHandle(_handle)   ((void*)(INT_PTR)((long)(_handle)))
-#define PtrToUlong(__ptr)   ((unsigned long)(uintptr_t)((void*)(__ptr)))
-#define PtrToUint(__ptr)   ((unsigned int)(UINT_PTR)((void*)(__ptr)))
-#define PtrToUshort(__ptr)   ((unsigned short)(uintptr_t)((void*)(__ptr)))
-#define PtrToLong(__ptr)   ((long)(intptr_t)((void*)(__ptr)))
-#define PtrToInt(__ptr)   ((int)(INT_PTR)((void*)(__ptr)))
-#define PtrToShort(__ptr)   ((short)(INT_PTR)((void*)(__ptr)))
-#define IntToPtr(__num)   ((void*)(INT_PTR)((int)(__num)))
-#define UIntToPtr(__num)   ((void*)(UINT_PTR)((unsigned int)(__num)))
-#define LongToPtr(__num)   ((void*)(intptr_t)((long)(__num)))
-#define ULongToPtr(__num)   ((void*)(uintptr_t)((unsigned long)(__num)))
-#define HandleToULong(_handle)   HandleToUlong((_handle))
-#define UlongToHandle(_handle)   ULongToHandle((_handle))
-#define UlongToPtr(__num)   ULongToPtr((__num))
-#define UintToPtr(__num)   UIntToPtr(__num)
-#define MAXUINT_PTR   (~((UINT_PTR)0))
-#define MAXINT_PTR   ((INT_PTR)(MAXUINT_PTR >> 1))
-#define MININT_PTR   (~(MAXINT_PTR))
-#define MAXULONG_PTR   (~((ULONG_PTR)0))
-#define MAXLONG_PTR   ((LONG_PTR)(MAXULONG_PTR >> 1))
-#define MINLONG_PTR   (~(MAXLONG_PTR))
-#define MAXUHALF_PTR   ((UHALF_PTR)~0)
-#define MAXHALF_PTR   ((HALF_PTR)(MAXUHALF_PTR >> 1))
-#define MINHALF_PTR   (~MAXHALF_PTR)
-#define MAXUINT   ((UINT)~((UINT)0))
-#define MAXULONGLONG   ((ULONGLONG)~((ULONGLONG)0))
-
-
 // SUN RPC ADDITIONS TO <sys/types.h>
 
 #ifndef __dontcare__
@@ -3287,7 +3078,7 @@ typedef uint32_t   rpcvers_t;
 /** The netbuf structure is used for transport-independent address storage */
 typedef struct netbuf { unsigned int maxlen, len; void* buf; }   netbuf_t;
 /** The format of the address and options arguments of the XTI t_bind call; Only provided for compatibility, it should not be used */
-typedef struct attr_packed t_bind { struct netbuf addr; unsigned int qlen; }   t_bind_t;
+typedef struct t_bind { struct netbuf addr; unsigned int qlen; int32_t pad0[3]; }   t_bind_t;
 /** Used with rpcbind */
 typedef struct rpc_sockinfo { int si_af, si_proto, si_socktype, si_alen; }   rpc_sockinfo_t;
 
@@ -4372,7 +4163,7 @@ typedef long unsigned int   vir_bytes;
 /** Asynchronous API */
 typedef int   bdev_id_t;
 typedef void*   bdev_param_t;
-typedef struct attr_packed bdev_callback {
+typedef struct bdev_callback {
 	dev_t dev;
 	bdev_id_t _id;
 	bdev_param_t param;
@@ -4387,7 +4178,7 @@ typedef unsigned int   phys_clicks;
 /** Process identifier */
 typedef int   endpoint_t;
 /** Machine info datatype */
-typedef struct attr_packed machine_struct {
+typedef struct machine_struct {
 	unsigned processors_count;  //!< Available CPUs
 	unsigned bsp_id;  //!< ID of the bootstrap cpu
 	int padding;
@@ -4398,7 +4189,7 @@ typedef struct attr_packed machine_struct {
 /** Memory chunks datatype */
 typedef struct memory_struct { phys_bytes base, size; }   memory_t;
 /** Structure for virtual copying by means of a vector with requests */
-typedef struct attr_packed vir_addr { endpoint_t proc_nr_e; vir_bytes offset; }   vir_addr_t;
+typedef struct vir_addr { endpoint_t proc_nr_e; vir_bytes offset; }   vir_addr_t;
 typedef struct vir_cp_req { struct vir_addr src, dst; phys_bytes count; }   vir_cp_req_t;
 #   define phys_cp_req   vir_cp_req
 #   define phys_cp_req_t   vir_cp_req_t
@@ -4421,7 +4212,7 @@ typedef struct iovec_struct {
 	vir_bytes iov_addr;  //!< Address of an I/O buffer
 	vir_bytes iov_size;  //!< Size of an I/O buffer
 } iovec_struct_t;
-typedef struct attr_packed iovec_s {
+typedef struct iovec_s {
 	cp_grant_id_t iov_grant;  //!< Grant ID of an I/O buffer
 	vir_bytes iov_size;  //!< Size of an I/O buffer
 } iovec_s_t;
@@ -4442,7 +4233,7 @@ typedef struct pgp_io_t {
 	void* errs;  //!< File stream to put error messages
 	void* res;  //!< File stream to put results
 } pgp_io_t;
-typedef struct attr_packed pgp_map { int type; const char* _string; }   pgp_map_t, pgp_errcode_name_map_t;
+typedef struct pgp_map { const char* _string; int type; int32_t pad0; }   pgp_map_t, pgp_errcode_name_map_t;
 /** Old, fixed size filehandle structures */
 typedef struct compat_30_fid {
 	unsigned short fid30_len, fid30_reserved;
@@ -4482,18 +4273,19 @@ typedef uint16_t   zone1_t;
 // PLAN9 DATATYPES
 
 /** Print format datatype */
-typedef struct attr_packed Fmt {
-	unsigned char runes;  //!< Output buffer is runes or chars
+typedef struct Fmt {
 	void* start;  //!< Beginning of buffer
 	void* to;  //!< Current place in the buffer
 	void* stop;  //!< End of the buffer; overwritten if flush fails
 	int (*flush)(struct Fmt*);  //!< Called when `to` == `stop`
 	void* farg;  //!< To make `flush()` a closure
-	int nfmt;  //!< Number of chars formatted so far
 	va_list args;  //!< Args passed to `dofmt`
+	int nfmt;  //!< Number of chars formatted so far
 	int r;  //!< Format Rune
 	int width, prec;
 	unsigned long flags;
+	unsigned char runes;  //!< Output buffer is runes or chars
+	char pad0[7];  //!< Padding
 } Fmt;
 #ifdef OSPLAN9
 enum FMT_enum {
@@ -4513,16 +4305,17 @@ enum FMT_enum {
 	FmtFlag = 8192
 };
 typedef struct Lock { long key, sem; }   Lock;
-typedef struct attr_packed QLp {
-	int inuse;
+typedef struct QLp {
 	struct QLp* next;
+	int inuse;
 	char state;
+	char pad0[3];  //!< Padding
 } QLp;
-typedef struct attr_packed QLock {
+typedef struct QLock {
+	QLp *head, *tail;
 	Lock lock;
 	int locked;
-	QLp* head;
-	QLp* tail;
+	int pad0[3];  //!< Padding
 } QLock;
 typedef struct RWLock {
 	Lock lock;
@@ -4547,10 +4340,11 @@ typedef struct NetConnInfo {
 	char* laddr;  //!< Local address
 	char* raddr;  //!< Remote address
 } NetConnInfo;
-typedef struct attr_packed Waitmsg {
-	int pid;
+typedef struct Waitmsg {
 	unsigned long time[3];
 	char* msg;
+	int pid;
+	int pad0;  //!< Padding
 } Waitmsg;
 enum rfork_enum {
 	RFNAMEG = 1,
@@ -4690,11 +4484,11 @@ typedef FILETIME*   LPFILETIME;
 
 #ifdef ALLOW_XNU_DATATYPES_H
 #   if IS_BIG_ENDIAN
-typedef struct wide { int32_t hi; uint32_t lo; }   wide;
-typedef struct UnsignedWide { uint32_t hi, lo; }   UnsignedWide;
+typedef struct wide_struct { int32_t hi; uint32_t lo; }   wide;
+typedef struct UnsignedWide_struct { uint32_t hi, lo; }   UnsignedWide;
 #   else
-typedef struct wide { uint32_t lo; int32_t hi; }   wide;
-typedef struct UnsignedWide { uint32_t lo, hi; }   UnsignedWide;
+typedef struct wide_struct { uint32_t lo; int32_t hi; }   wide;
+typedef struct UnsignedWide_struct { uint32_t lo, hi; }   UnsignedWide;
 #   endif  // IS_BIG_ENDIAN
 /** 8-bit signed integer plus 8-bit fraction */
 typedef int16_t   ShortFixed;
@@ -4704,9 +4498,9 @@ typedef int32_t   Fixed;
 typedef int32_t*   FixedPtr;
 /** 16-bit unsigned integer plus 16-bit fraction */
 typedef uint32_t   UnsignedFixed;
-typedef UnsignedFixed*   UnsignedFixedPtr;
+typedef uint32_t*   UnsignedFixedPtr;
 typedef char*   Ptr;
-typedef Ptr*   Handle;
+typedef char*   Handle;
 /** 16-bit result error code */
 typedef int16_t   OSErr;
 /** 32-bit result error code */
@@ -4730,7 +4524,7 @@ typedef int   dev_status_t[1024];
 typedef char   dev_name_t[128];
 typedef char   io_buf_ptr_inband_t[128];
 typedef char*   io_buf_ptr_t;
-typedef filter_t   filter_array_t[64];
+typedef short   filter_array_t[64];
 /** 32-bit millisecond timer for drivers */
 typedef int32_t   Duration;
 /** 64-bit clock */
@@ -4821,12 +4615,13 @@ typedef wide   CompTimeValue;
 /** 64-bit count of units (QuickTime TimeBase) */
 typedef int64_t   TimeValue64;
 /** An opaque reference to a time base (QuickTime TimeBase) */
-typedef struct attr_packed TimeBaseRecord*   TimeBase;
+typedef struct TimeBaseRecord*   TimeBase;
 /** Package of TimeBase, duration, and scale (QuickTime TimeBase) */
-typedef struct attr_packed TimeRecord {
+typedef struct TimeRecord {
 	CompTimeValue value;  //!< Units (duration or absolute)
-	TimeScale scale;  //!< Units per second
 	TimeBase base;  //!< Reference to the time base
+	TimeScale scale;  //!< Units per second
+	int32_t pad0;  //!< Padding
 } TimeRecord;
 /** Flags for general linker behavior */
 typedef enum kxld_flags { kKxldFlagDefault = 0, kKXLDFlagIncludeRelocs = 1 }   KXLDFlags;
@@ -5121,15 +4916,17 @@ typedef char*   data_t;
 typedef char   string_t[1024];
 typedef unsigned char   bitstr_t;
 typedef int*   intarray_t;
-typedef struct attr_packed ustat {
+typedef struct ustat {
+	unsigned long f_tinode;
 #   if (defined(ARCHMIPS) || (defined(ARCHSPARC) && (!defined(ARCHAARCH64))))
 	long f_tfree;
 #   else
 	int f_tfree;
+	int pad0;  //!< Padding
 #   endif
-	unsigned long f_tinode;
 	char f_fname[6];
 	char f_fpack[6];
+	char pad1[4];  //!< Padding
 } ustat_t;
 #define __asan_bad_ustat   ustat_t
 /** offset of a char string in log needs to be aligned on some systems because it is passed to db_set as a string */
@@ -5139,11 +4936,12 @@ typedef struct log_t_struct {
 } log_t;
 #define CHAR_T_OFFSET   ((char*)(((log_t*)0)->str) - (char*)0)
 /** Structure for building "argc/argv" vector of arguments */
-typedef struct attr_packed __args {
+typedef struct __args {
 	char* bp;  //!< Argument
 	size_t blen;  //!< Buffer length
 	size_t len;  //!< Argument length
 	unsigned char flags;  //!< If allocated space
+	char pad0[7];  //!< Padding
 } ARGS;
 /** Used to identify a trace stream attributes object */
 typedef int64_t   trace_attr_t;
@@ -5258,12 +5056,7 @@ enum coll_sort_rule {
 /** Collation encoding type */
 typedef enum collation_encoding_type { __cet_other, __cet_8bit, __cet_utf8 }   collation_encoding_t;
 
-typedef struct attr_packed __collate_struct {
-	uint16_t num_weights, num_starters;
-	uint16_t ii_shift, ti_shift, ii_len, ti_len;
-	uint16_t max_weight, num_col_base, max_col_index;
-	uint16_t undefined_idx, range_low, range_count;
-	uint16_t range_base_weight, range_rule_offset, ii_mask, ti_mask;
+typedef struct __collate_struct {
 	const uint16_t *index2weight_tbl, *index2ruleidx_tbl;
 	const uint16_t* multistart_tbl;
 	const uint16_t* wcs2colidt_tbl;
@@ -5271,15 +5064,23 @@ typedef struct attr_packed __collate_struct {
 	const uint16_t* weightstr;
 	const uint16_t* ruletable;
 	uint16_t *index2weight, *index2ruleidx;
+	size_t pad0;  //!< Padding
+	uint16_t num_weights, num_starters;
+	uint16_t ii_shift, ti_shift, ii_len, ti_len;
+	uint16_t max_weight, num_col_base, max_col_index;
+	uint16_t undefined_idx, range_low, range_count;
+	uint16_t range_base_weight, range_rule_offset, ii_mask, ti_mask;
 	uint16_t MAX_WEIGHTS;
+	uint16_t pad1[3];  //!< Padding
 } __collate_t;
 
 /** Structure describing locale data in core for a category */
-struct attr_packed __locale_data {
+struct __locale_data {
 	const char* name;
 	const char* filedata;  //!< Region mapping the file data
 	off_t filesize;  //!< Size of the file (and the region)
 	enum _alloc_e { ld_malloced, ld_mapped, ld_archive } alloc;  //!< Flavor of storage used
+	int32_t pad0;  //!< Padding
 	// This provides a slot for category-specific code to cache data computed about this locale; That code can set a cleanup function to deallocate the data
 	struct _private {
 		void (*cleanup)(struct __locale_data*) internal_function;
@@ -5292,6 +5093,7 @@ struct attr_packed __locale_data {
 	unsigned int usage_count;  //!< Counter for users
 	int use_translit;
 	unsigned int nstrings;  //!< Number of strings below
+	int32_t pad1;  //!< Padding
 	union locale_data_value {
 		const uint32_t* wstr;
 		const char* _string;
@@ -5312,7 +5114,7 @@ typedef __locale_t   locale_t;
 #define __DEFINED_locale_t   (1)
 
 /** Structure giving information about numeric and monetary notation */
-typedef struct attr_packed lconv {
+typedef struct lconv {
 	// Numeric (non-monetary) information
 	/** Decimal point character */
 	const char* decimal_point;
@@ -5371,6 +5173,7 @@ typedef struct attr_packed lconv {
 	 - 4: The sign string immediately follows the int_curr_symbol
 	*/
 	char int_p_sign_posn, int_n_sign_posn;
+	char pad0[2];  //!< Padding
 } lconv_t;
 
 /** Datatype used by the message catalog functions catopen(), catgets(), and catclose() to identify a catalog descriptor */
@@ -5450,10 +5253,10 @@ typedef struct sigev_thread {
 	void(*_function)(sigval_t);
 	void* _attribute;
 } sigev_thread_t;
-typedef struct attr_packed sigevent {
+typedef struct sigevent {
 	sigval_t sigev_value;
 	int32_t sigev_signo, sigev_notify;
-	union attr_packed _sigev_un {
+	union _sigev_un {
 		int32_t _pad[SIGEV_PAD_SIZE];
 		int32_t _tid;
 		sigev_thread_t _sigev_thread;
@@ -6578,10 +6381,11 @@ struct sigaction {
 // JUMP DATATYPES
 
 
-/** @def __jmp_buf
-@brief A buffer for storing, saving, and restoring the register values when performing jumps
+#if defined(ARCHX86)
+#   if IS_WORDSIZE_64
+/** @brief A buffer for storing, saving, and restoring the register values when performing jumps
 
-@section Stored Registers by CPU
+@section Stored_Registers_by_CPU
  - ARC: r13-r25, fp, sp, blink
  - AVR: r0-r7, sr, sp, lr
  - Blackfin: pregs, fp, sp, rregs, astat, lcregs, a0w, a0x, a1w, a1x, iregs, mregs, lregs, bregs, pc
@@ -6590,7 +6394,11 @@ struct sigaction {
  - Mips: pc, sp, regs, fp, gp, fpregs
  - SuperH: regs, pc, gbr, fpscr, fpregs
 */
-#ifdef ARCHALPHA
+typedef greg_t   __jmp_buf[8];
+#   else
+typedef greg_t   __jmp_buf[6];
+#   endif
+#elif defined(ARCHALPHA)
 typedef long   __jmp_buf[17];
 #elif defined(ARCHARC)
 typedef int   __jmp_buf[16];
@@ -6624,12 +6432,6 @@ typedef struct jmp_buf {
 } __jmp_buf[1];
 #elif defined(ARCHCRIS)
 typedef int   __jmp_buf[18];
-#elif defined(ARCHX86)
-#   if IS_WORDSIZE_64
-typedef greg_t   __jmp_buf[8];
-#   else
-typedef greg_t   __jmp_buf[6];
-#   endif
 #elif defined(ARCHITANIUM)
 typedef long align16   __jmp_buf[70];
 #elif defined(ARCHM68K)
@@ -6692,10 +6494,11 @@ typedef int __jmp_buf[6];
 #   error   "Unsupported target platform (__jmp_buf)!"
 #endif
 /** Calling environment, plus possibly a saved signal mask */
-struct attr_packed jmp_buf_tag {
+struct jmp_buf_tag {
 	__jmp_buf __jmpbuf;  //!< Calling environment
-	int __mask_was_saved;  //!< Saved the signal mask
 	sigset_t __saved_mask;  //!< Saved signal mask
+	int __mask_was_saved;  //!< Saved the signal mask
+	int pad0;  //!< Padding
 };
 typedef struct jmp_buf_tag   jmp_buf[1];
 /** The `__mask_was_saved` flag determines whether or not `longjmp` will restore the signal mask */
@@ -6727,7 +6530,9 @@ typedef pthread_t   bc_threadid_t;
 #define __have_pthread_attr_t   (1)
 /** Thread attribute datatype */
 typedef union pthread_attr {
-	char __size[SIZEOF_PTHREAD_ATTR_T]; long __align;
+	char __size[SIZEOF_PTHREAD_ATTR_T];
+	char pad0[64 - SIZEOF_PTHREAD_ATTR_T];  //!< Padding
+	long __align;
 } pthread_attr_t;
 typedef struct __pthread_internal_list {
 	struct __pthread_internal_list *__prev, *__next;
@@ -6760,65 +6565,67 @@ typedef volatile int32_t   OSSpinLock;
 /** POSIX barrier datatype */
 typedef union pthread_barrier {
 	char __size[SIZEOF_PTHREAD_BARRIER_T];
+	char pad0[64 - SIZEOF_PTHREAD_BARRIER_T];  //!< Padding
 	long __align;
 } pthread_barrier_t;
 #define __DEFINED_pthread_barrierattr_t   (1)
 /** POSIX barrier attribute datatype */
 typedef union pthread_barrierattr {
 	char __size[SIZEOF_PTHREAD_BARRIERATTR_T];
+	char pad0[64 - SIZEOF_PTHREAD_BARRIERATTR_T];  //!< Padding
 	int __align;
 } pthread_barrierattr_t;
 /** Data structure to contain the action information */
 struct __spawn_action {
 	enum __spawn_action_tag { spawn_do_close, spawn_do_dup2, spawn_do_open } tag;
+	int pad0;  //!< Padding
 	union __union__spawn_action {
 		struct { int fd; } close_action;
 		struct { int fd, newfd; } dup2_action;
-		struct attr_packed {
-			int fd;
+		struct {
 			char* path;
-			int oflag;
 			mode_t mode;
+			int fd;
+			int oflag;
+			int pad0;  //!< Padding
 		} open_action;
 	} action;
 };
 /** Data structure to contain attributes for thread creation */
-typedef struct attr_packed posix_spawnattr {
-	short __flags;
-	pid_t __pgrp;
+typedef struct posix_spawnattr {
 	sigset_t __sd, __ss;
+	pid_t __pgrp;
 	struct sched_param __sp;
 	int __policy;
-	int __pad[16];
+	short __flags;
+	short pad0;  //!< Padding
 } posix_spawnattr_t;
 /** Data structure to contain information about the actions to be performed in the new process with respect to file descriptors */
 typedef struct posix_spawn_file_actions {
 	int _allocated, _used;
 	struct __spawn_action *_actions;
-	int _pad[16];
+	int pad0[16];  //!< Padding
 } posix_spawn_file_actions_t;
 struct thread_cleanup_t {
 	struct thread_cleanup_t* next;
 	void (*func)(void*);
 	void* arg;
 };
+typedef struct _pthread_fastlock { int __spinlock; }   pthread_fastlock_t;
 #ifdef ARCHPARISC
-struct align16 _pthread_fastlock { int __spinlock; };
 #   define PTHREAD_SPIN_LOCKED   0
 #   define PTHREAD_SPIN_UNLOCKED   1
 #else
-struct _pthread_fastlock { int __spinlock; };
 #   define PTHREAD_SPIN_LOCKED   1
 #   define PTHREAD_SPIN_UNLOCKED   0
 #endif
-/** Thread descriptor */
-typedef struct attr_packed _pthread_descr_struct {
+/** POSIX Thread Descriptor */
+typedef struct _pthread_descr_struct {
 	struct _pthread_descr_struct* next;
 	struct _pthread_descr_struct** prev;
-	pid_t pid;
-	// Stack handling
 	void* stack_begin;  //!< Beginning of stack; lowest address
 	void* stack_end;  //!< End of stack
+	pid_t pid;
 	// Thread struct lock
 	struct _pthread_fastlock lock, wlock;
 	int errno;
@@ -6828,6 +6635,7 @@ typedef struct attr_packed _pthread_descr_struct {
 	// Joined threads
 	struct _pthread_descr_struct* jt;
 	struct _pthread_fastlock joined;
+	int pad0;  //!< Padding
 	// Conditional variables
 	struct _pthread_descr_struct* waitnext;
 	struct _pthread_descr_struct** waitprev;
@@ -6838,6 +6646,7 @@ typedef struct attr_packed _pthread_descr_struct {
 	volatile char dead;
 	volatile char canceled;
 	char detached, stack_free, p_sig;
+	char pad1;  //!< Padding
 	// Creation parameter
 	void*(*func)(void* arg);
 	void* arg;
@@ -7585,7 +7394,7 @@ typedef struct __ptcb {
 	void* __x;
 	struct __ptcb* __next;
 } ptcb_t;
-typedef struct attr_packed pthread {
+typedef struct pthread {
 	struct pthread* self;
 	void** dtv;
 	void* unused1;
@@ -7606,10 +7415,11 @@ typedef struct attr_packed pthread {
 	void** tsd;
 	pthread_attr_t attr;
 	volatile int dead;
+	int pad0;  //!< Padding
 	struct _pthread_robust_list {
 		volatile void* volatile head;
-		long off;
 		volatile void* volatile pending;
+		long off;
 	} robust_list;
 	int unblock_cancel;
 	volatile int timer_id;
@@ -7617,12 +7427,17 @@ typedef struct attr_packed pthread {
 	volatile int killlock[2];
 	volatile int exitlock[2];
 	volatile int startlock[2];
-	unsigned long sigmask[NSIG_S3 / SIZEOF_LONG];
+#if (SIZEOF_LONG == 4)
+	unsigned long sigmask[2];
+#else
+	unsigned long sigmask[1];
+#endif
 	char* dlerror_buf;
-	int dlerror_flag;
 	void* stdio_locks;
-	uintptr_t canary_at_end;
 	void** dtv_copy;
+	uintptr_t canary_at_end;
+	int dlerror_flag;
+	int pad1;  //!< Padding
 } struct_pthread_t;
 #define _pthread   pthread
 #define __pthread   pthread
@@ -7641,16 +7456,17 @@ typedef struct _G_fpos64 { off64_t __pos; mbstate_t __state; }   _G_fpos64_t;
 #define G_fpos64_t   _G_fpos64_t
 typedef struct cookie { wchar_t* ws; size_t l; }   cookie_t;
 
-typedef struct attr_packed _dirdesc {
-	int dd_fd;  //!< File descriptor associated with directory
+typedef struct _dirdesc {
+	char* dd_buf;  //!< Data buffer
+	void* dd_lock;  //!< Lock for concurrent access
 	long dd_loc;  //!< Offset in current buffer
 	long dd_size;  //!< Amount of data returned by getdents
-	char* dd_buf;  //!< Data buffer
-	int dd_len;  //!< Size of data buffer
-	off_t dd_seek;  //!< Magic cookie returned by getdents
 	long dd_rewind;  //!< Magic cookie for rewinding
+	off_t dd_seek;  //!< Magic cookie returned by getdents
+	int dd_fd;  //!< File descriptor associated with directory
+	int dd_len;  //!< Size of data buffer
 	int dd_flags;  //!< Flags for readdir
-	void* dd_lock;  //!< Lock for concurrent access
+	int pad0;  //!< Padding
 } dirdesc_t;
 #define dirfd(dirp)   (((struct _dirdesc*)dirp)->dd_fd)
 
@@ -7673,7 +7489,7 @@ typedef struct wms_cookie {
 
 
 /** File datatype */
-typedef struct attr_packed __sFILE {
+typedef struct __sFILE {
 	// Position Pointers
 	unsigned char* rpos;  //!< Current read position in buffer
 	unsigned char* rend;  //!< End of read area
@@ -7693,19 +7509,22 @@ typedef struct attr_packed __sFILE {
 	unsigned int flags;  //!< This FILE is free if 0
 	unsigned int thread_flags;  //!< Flags for thread access
 	int fd;  //!< File number (if Unix descriptor), else `-1`
-	int blksize;  //!< `stat.st_blksize` (may not equal buffer size)
 	fpos_t offset;  //!< Current `lseek()` offset
+	int blksize;  //!< `stat.st_blksize` (may not equal buffer size)
 	int pipe_pid;  //!< Process ID of Pipe
 	int mode;  //!< I/O Mode (Binary/Text)
 	// Locks & Threading
 	atomic volatile pid_t lock;  //!< PID owning the file lock
 	volatile int waiters;  //!< Number of waiting processes/threads
+	int pad0;  //!< Padding
 	atomic long lockcount;  //!< Count of recursive locks
-	bool lockinternal;  //!< Flag whether or not the lock is held inside stdio
 	int lockcancelstate;  //!< Stashed cancellation state on internal lock
+	bool lockinternal;  //!< Flag whether or not the lock is held inside stdio
+	char pad1[3];  //!< Padding
 	pthread_t lockowner;  //!< The thread currently holding the lock
 	pthread_cond_t lockcond;  //!< Condition variable for signalling lock releases
 	pthread_mutex_t mutex;  //!< Used for MT-safety
+	int pad2;  //!< Padding
 	struct __sFILE* prev_locked;  //!< Points to the previously locked file
 	struct __sFILE* next_locked;  //!< Points to the next locked file
 	// Operations
@@ -7715,16 +7534,16 @@ typedef struct attr_packed __sFILE {
 	off_t (*seek)(void*, const off_t, const int);  //!< Pointer to the function used to seek positions in the file
 	size_t (*write)(void*, const unsigned char*, const size_t);  //!< Pointer to the function used to write to the file
 	// Buffers
-	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
-	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
 	unsigned char* ub_base;  //!< Pointer to buffer for `ungetc()`
-	int ub_size;  //!< Size of `ungetc()` buffer
 	unsigned char* lb_base;  //!< Pointer to buffer for `fgetln()`
-	int lb_size;  //!< Size of `fgetln()` buffer
 	unsigned char* buf;  //!< Pointer to buffer
 	size_t buf_size;  //!< Size of the buffer `buf`
+	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
+	int ub_size;  //!< Size of `ungetc()` buffer
+	int lb_size;  //!< Size of `fgetln()` buffer
+	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
 	unsigned char ubuf[3];  //!< Guarantee a buffer for `ungetc()`
-	unsigned char nbuf[1];  //!< Guarantee a buffer for `getc()`
+	unsigned char nbuf[4];  //!< Guarantee a buffer for `getc()`
 	// Wide-Character I/O
 	mbstate_t wcio_mbstate_in;  //!< Incoming multi-byte character state
 	mbstate_t wcio_mbstate_out;  //!< Outgoing multi-byte character state
@@ -7732,9 +7551,9 @@ typedef struct attr_packed __sFILE {
 	size_t wcio_ungetwc_inbuf;  //!< Size of the `ungetwc()` buffer
 	wchar_t* wbuf;  //!< Pointer to the wchar buffer
 	size_t wbuf_size;  //!< Size of the buffer `wbuf`
-	int wcio_mode;  //!< Wide-character mode
 	char* fgetstr_buf;
 	size_t fgetstr_len;
+	int wcio_mode;  //!< Wide-character mode
 	// Miscellaneous
 	mbstate_t mbstate;  //!< Multibyte conversion state
 	int counted;  //!< Stream counted against `STREAM_MAX`
@@ -7767,7 +7586,7 @@ static UNUSED FILE* ofl_head = NULL;
 
 
 /** A smaller variation of `__sFILE` with only the minimal fields allocated */
-typedef struct attr_packed minFILE {
+typedef struct minFILE {
 	// Position Pointers
 	unsigned char* pos;  //!< Current position in buffer
 	int rspace;  //!< Read space left for `getc()`
@@ -7776,23 +7595,25 @@ typedef struct attr_packed minFILE {
 	unsigned int flags;  //!< This FILE is free if `0`
 	int fd;  //!< Fileno (if Unix descriptor), else `-1`
 	// Buffers
-	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
-	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
 	unsigned char* buf;  //!< Pointer to buffer
 	size_t buf_size;  //!< Size of the buffer `buf`
+	int lbfsize;  //!< `0` or `-buf_size` (inline `putc()`); used to make inline line-buffered output compact
+	signed char lbf;  //!< Line buffer; This stores the character used to mark the end-of-line
+	unsigned char ubuf[3];  //!< Guarantee a buffer for `ungetc()`
 } minFILE_t;
 
 /** Represents a lockfile; Used to hold the lock */
-typedef struct attr_packed lockfile_struct { char* filename; int fd; }   lockfile_t;
+typedef struct lockfile_struct { char* filename; int fd; int pad0; }   lockfile_t;
 
 /** The first few FILEs are statically allocated; others are dynamically allocated and linked in via this glue structure */
-typedef struct attr_packed glue {
+typedef struct glue {
 	struct glue* next;
-	int niobs;
 	FILE* iobs;
+	int niobs;
+	int pad0;  //!< Padding
 } glue_t;
 static UNUSED struct glue __sglue;
-typedef struct glue_with_file { glue_t glue; FILE file; }   glue_with_file_t;
+typedef struct glue_with_file { FILE file; glue_t glue; }   glue_with_file_t;
 
 typedef struct arg_scanf {
 	void* data;
@@ -7800,18 +7621,20 @@ typedef struct arg_scanf {
 	int (*putch)(int, void*);
 } arg_scanf_t;
 
-typedef struct attr_packed output {
+typedef struct output {
+	char* buf;
 	char* nextc;
 	int nleft;
-	char* buf;
 	int bufsize;
 	short fd, flags;
+	int pad0;  //!< Padding
 } output_t;
 
-typedef struct attr_packed Qid {
+typedef struct Qid {
 	vulong_t path;
 	unsigned long vers;
 	unsigned char type;
+	char pad0[7];  //!< Padding
 } Qid;
 
 /** Possible values for struct Qid.type */
@@ -8027,6 +7850,7 @@ DECL_FUNC int putc(int c, FILE* fp);
 #define fputc(_char, fp)   putc((_char), (fp))
 DECL_FUNC void putc_no_output(const int c, FILE* fp);
 DECL_FUNC void puti(const int num);
+DECL_FUNC void puti64(const int64_t num);
 DECL_FUNC int puts(const char* src);
 DECL_FUNC int puts_err(const char* src);
 DECL_FUNC void puts_err_no_output(const char* src);
@@ -8140,9 +7964,9 @@ DECL_FUNC long double strtox(const char* restrict ptr, const char** endptr, cons
 
 /*@-compmempass@*/
 
-static UNUSED unsigned char align64 stdinbuf[UNGET + BUFSIZ] = { 0 };
+static UNUSED unsigned char stdinbuf[UNGET + BUFSIZ] = { 0 };
 
-static FILE align64 __stdin = {
+static FILE __stdin = {
 	// Position Pointers
 	.rpos = stdinbuf + UNGET,
 	.rend = stdinbuf + (sizeof(stdinbuf) - UNGET),
@@ -8162,19 +7986,22 @@ static FILE align64 __stdin = {
 	.flags = (unsigned int)(__SLBF | __SRD),
 	.thread_flags = 0U,
 	.fd = STDIN_FILENO,
-	.blksize = (int)0,
 	.offset = (fpos_t)0,
+	.blksize = (int)0,
 	.pipe_pid = (int)-1,
 	.mode = _O_UNCHANGED,
 	// Locks & Threading
 	.lock = -1,
 	.waiters = -1,
+	.pad0 = 0,
 	.lockcount = -1L,
-	.lockinternal = FALSE,
 	.lockcancelstate = 0,
+	.lockinternal = FALSE,
+	.pad1 = { 0, 0, 0},
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
+	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8184,14 +8011,14 @@ static FILE align64 __stdin = {
 	.seek = &__stdio_seek_helper,
 	.write = NULL,
 	// Buffers
-	.lbf = (signed char)0,
-	.lbfsize = (int)0,
 	.ub_base = NULL,
-	.ub_size = 0,
 	.lb_base = NULL,
-	.lb_size = 0,
 	.buf = stdinbuf + UNGET,
 	.buf_size = (sizeof(stdinbuf) - UNGET),
+	.lbfsize = (int)0,
+	.ub_size = 0,
+	.lb_size = 0,
+	.lbf = (signed char)0,
 	.ubuf = { 0 },
 	.nbuf = { 0 },
 	// Wide-Character I/O
@@ -8201,9 +8028,9 @@ static FILE align64 __stdin = {
 	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
 	.wbuf = NULL,
 	.wbuf_size = (size_t)0,
-	.wcio_mode = _O_UNCHANGED,
 	.fgetstr_buf = NULL_CHAR,
 	.fgetstr_len = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
 	// Miscellaneous
 	.mbstate = { 0 },
 	.counted = 0,
@@ -8217,9 +8044,9 @@ UNUSED FILE* __stdinp = &__stdin;
 #define stdin   __stdinp
 #define __stdin_used   __stdinp
 
-static UNUSED unsigned char align64 stdoutbuf[UNGET + BUFSIZ] = { 0 };
+static UNUSED unsigned char stdoutbuf[UNGET + BUFSIZ] = { 0 };
 
-static FILE align64 __stdout = {
+static FILE __stdout = {
 	// Position Pointers
 	.rpos = NULL_UCHAR,
 	.rend = NULL_UCHAR,
@@ -8239,19 +8066,22 @@ static FILE align64 __stdout = {
 	.flags = (unsigned int)(__SLBF | __SWR),
 	.thread_flags = 0U,
 	.fd = STDOUT_FILENO,
-	.blksize = (int)0,
 	.offset = (fpos_t)0,
+	.blksize = (int)0,
 	.pipe_pid = (int)-1,
 	.mode = _O_UNCHANGED,
 	// Locks & Threading
 	.lock = -1,
 	.waiters = -1,
+	.pad0 = 0,
 	.lockcount = -1L,
-	.lockinternal = FALSE,
 	.lockcancelstate = 0,
+	.lockinternal = FALSE,
+	.pad1 = { 0, 0, 0},
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
+	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8261,14 +8091,14 @@ static FILE align64 __stdout = {
 	.seek = &__stdio_seek_helper,
 	.write = &__stdio_write_helper,
 	// Buffers
-	.lbf = '\n',
-	.lbfsize = (int)0,
 	.ub_base = NULL,
-	.ub_size = 0,
 	.lb_base = NULL,
-	.lb_size = 0,
 	.buf = stdoutbuf + UNGET,
 	.buf_size = (sizeof(stdoutbuf) - UNGET),
+	.lbfsize = (int)0,
+	.ub_size = 0,
+	.lb_size = 0,
+	.lbf = '\n',
 	.ubuf = { 0 },
 	.nbuf = { 0 },
 	// Wide-Character I/O
@@ -8278,9 +8108,9 @@ static FILE align64 __stdout = {
 	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
 	.wbuf = NULL,
 	.wbuf_size = (size_t)0,
-	.wcio_mode = _O_UNCHANGED,
 	.fgetstr_buf = NULL_CHAR,
 	.fgetstr_len = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
 	// Miscellaneous
 	.mbstate = { 0 },
 	.counted = 0,
@@ -8294,9 +8124,9 @@ UNUSED FILE* __stdoutp = &__stdout;
 #define stdout   __stdoutp
 #define __stdout_used   __stdoutp
 
-static UNUSED unsigned char align64 stderrbuf[UNGET + BUFSIZ] = { 0 };
+static UNUSED unsigned char stderrbuf[UNGET + BUFSIZ] = { 0 };
 
-static FILE align64 __stderr = {
+static FILE __stderr = {
 	// Position Pointers
 	.rpos = NULL_UCHAR,
 	.rend = NULL_UCHAR,
@@ -8316,19 +8146,22 @@ static FILE align64 __stderr = {
 	.flags = (unsigned int)(__SLBF | __SWR),
 	.thread_flags = 0U,
 	.fd = STDERR_FILENO,
-	.blksize = (int)0,
 	.offset = (fpos_t)0,
+	.blksize = (int)0,
 	.pipe_pid = (int)-1,
 	.mode = _O_UNCHANGED,
 	// Locks & Threading
 	.lock = -1,
 	.waiters = -1,
+	.pad0 = 0,
 	.lockcount = -1L,
-	.lockinternal = FALSE,
 	.lockcancelstate = 0,
+	.lockinternal = FALSE,
+	.pad1 = { 0, 0, 0},
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
+	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8338,14 +8171,14 @@ static FILE align64 __stderr = {
 	.seek = &__stdio_seek_helper,
 	.write = &__stdio_write_helper,
 	// Buffers
-	.lbf = '\n',
-	.lbfsize = (int)0,
 	.ub_base = NULL,
-	.ub_size = 0,
 	.lb_base = NULL,
-	.lb_size = 0,
 	.buf = stderrbuf + UNGET,
 	.buf_size = (sizeof(stderrbuf) - UNGET),
+	.lbfsize = (int)0,
+	.ub_size = 0,
+	.lb_size = 0,
+	.lbf = '\n',
 	.ubuf = { 0 },
 	.nbuf = { 0 },
 	// Wide-Character I/O
@@ -8355,9 +8188,9 @@ static FILE align64 __stderr = {
 	.wcio_ungetwc_inbuf = (size_t)WCIO_UNGETWC_BUFSIZE,
 	.wbuf = NULL,
 	.wbuf_size = (size_t)0,
-	.wcio_mode = _O_UNCHANGED,
 	.fgetstr_buf = NULL_CHAR,
 	.fgetstr_len = (size_t)0,
+	.wcio_mode = _O_UNCHANGED,
 	// Miscellaneous
 	.mbstate = { 0 },
 	.counted = 0,
@@ -8639,7 +8472,8 @@ static UNUSED struct lconv C_LOCALE_INITIALIZER = {
 	(const char*)&period, NULL, NULL, NULL, NULL, NULL,  // Decimal_point - mon_decimal_point
 	NULL, NULL, NULL, NULL, 127, 127,  // mon_thousands_sep - frac_digits
 	127, 127, 127, 127, 127, 127,  // p_cs_precedes - n_sign_posn
-	127, 127, 127, 127, 127, 127  // int_p_cs_precedes - int_n_sign_posn
+	127, 127, 127, 127, 127, 127,  // int_p_cs_precedes - int_n_sign_posn
+	{ 0, 0 }
 };
 #define locale_table   C_LOCALE_INITIALIZER
 /*@=immediatetrans@*/
@@ -10290,10 +10124,10 @@ typedef enum iio_event_direction {
 
 /** Call parameter type */
 typedef enum vbox_type {
-	VBOX_TYPE_INVALID,  // Invalid type
-	VBOX_TYPE_U32,  // 32-bit value
-	VBOX_TYPE_U64,  // 64-bit value
-	VBOX_TYPE_PTR  // Pointer to granted memory area
+	VBOX_TYPE_INVALID,  //!< Invalid type
+	VBOX_TYPE_U32,  //!< 32-bit value
+	VBOX_TYPE_U64,  //!< 64-bit value
+	VBOX_TYPE_PTR  //!< Pointer to granted memory area
 } vbox_type_t;
 
 // Call parameter transfer direction
@@ -10304,17 +10138,17 @@ typedef enum vbox_type {
 #define VBOX_DIR_INOUT   (VBOX_DIR_IN | VBOX_DIR_OUT)
 
 /** Call parameter */
-typedef struct attr_packed vbox_param {
-	vbox_type_t type;
+typedef struct vbox_param {
 	union _vbox_data {
 		uint32_t data_u32;
 		uint64_t data_u64;
-		struct attr_packed vbox_param_ptr {
-			cp_grant_id_t grant;
+		struct vbox_param_ptr {
 			size_t off, size;
+			cp_grant_id_t grant;
 			unsigned int dir;
 		} ptr;
 	} _vbox_data;
+	vbox_type_t type;
 } vbox_param_t;
 
 
@@ -10480,9 +10314,9 @@ typedef struct attr_packed vbox_param {
 #define PMAGIC   0xc0ffee1
 // MINIX_KERNFLAGS flags
 /** SYSENTER available and supported */
-#define MKF_I386_INTEL_SYSENTER   (1L)
+#define MKF_I386_INTEL_SYSENTER   1L
 /** SYSCALL available and supported */
-#define MKF_I386_AMD_SYSCALL   (2L)
+#define MKF_I386_AMD_SYSCALL   2L
 
 
 #endif  // MINIX_CONST_H
@@ -10754,15 +10588,15 @@ enum vmcs_field {
 #define VECTORING_INFO_TYPE_MASK   INTR_INFO_INTR_TYPE_MASK
 #define VECTORING_INFO_DELIVER_CODE_MASK   INTR_INFO_DELIVER_CODE_MASK
 #define VECTORING_INFO_VALID_MASK   INTR_INFO_VALID_MASK
-/** External interrupt */
-#define INTR_TYPE_EXT_INTR   (0)
-#define INTR_TYPE_NMI_INTR   (0x200)
-/** Processor exception */
-#define INTR_TYPE_HARD_EXCEPTION   (0x300)
-/** Software interrupt */
-#define INTR_TYPE_SOFT_INTR   (0x400)
-/** Software exception */
-#define INTR_TYPE_SOFT_EXCEPTION   (0x600)
+
+/** INTERRUPT TYPE FLAGS */
+enum INTR_TYPE {
+	INTR_TYPE_EXT_INTR = 0,  //!< External interrupt
+	INTR_TYPE_NMI_INTR = 0x200,
+	INTR_TYPE_HARD_EXCEPTION = 0x300,  //!< Processor exception
+	INTR_TYPE_SOFT_INTR = 0x400,  //!< Software interrupt
+	INTR_TYPE_SOFT_EXCEPTION = 0x600  //!< Software exception
+};
 
 /** GUEST_INTERRUPTIBILITY_INFO FLAGS */
 enum GUEST_INTERRUPTIBILITY_INFO {
@@ -10781,27 +10615,27 @@ enum GUEST_ACTIVITY_STATE {
 };
 
 // EXIT QUALIFICATIONS FOR MOV FOR DEBUG REGISTER ACCESS
-#define DEBUG_REG_ACCESS_NUM    (7)
-#define DEBUG_REG_ACCESS_TYPE   (0x10)
-#define TYPE_MOV_TO_DR   (0)
-#define TYPE_MOV_FROM_DR   (0x10)
+#define DEBUG_REG_ACCESS_NUM    7
+#define DEBUG_REG_ACCESS_TYPE   0x10
+#define TYPE_MOV_TO_DR   0
+#define TYPE_MOV_FROM_DR   0x10
 #define DEBUG_REG_ACCESS_REG(eq)   (((eq) >> 8) & 0xf)
 
 // EXIT QUALIFICATIONS FOR APIC-ACCESS
-#define APIC_ACCESS_OFFSET   (0xfff)
-#define APIC_ACCESS_TYPE   (0xf000)
-#define TYPE_LINEAR_APIC_INST_READ   (0)
-#define TYPE_LINEAR_APIC_INST_WRITE   (0x1000)
-#define TYPE_LINEAR_APIC_INST_FETCH   (0x2000)
-#define TYPE_LINEAR_APIC_EVENT   (0x3000)
-#define TYPE_PHYSICAL_APIC_EVENT   (0xa000)
-#define TYPE_PHYSICAL_APIC_INST   (0xf000)
+#define APIC_ACCESS_OFFSET   0xfff
+#define APIC_ACCESS_TYPE   0xf000
+#define TYPE_LINEAR_APIC_INST_READ   0
+#define TYPE_LINEAR_APIC_INST_WRITE   0x1000
+#define TYPE_LINEAR_APIC_INST_FETCH   0x2000
+#define TYPE_LINEAR_APIC_EVENT   0x3000
+#define TYPE_PHYSICAL_APIC_EVENT   0xa000
+#define TYPE_PHYSICAL_APIC_INST   0xf000
 
 // EXIT QUALIFICATIONS FOR MOV FOR CONTROL REGISTER ACCESS
-#define CONTROL_REG_ACCESS_NUM   (7)
-#define CONTROL_REG_ACCESS_TYPE   (0x30)
-#define CONTROL_REG_ACCESS_REG   (0xf00)
-#define LMSW_SOURCE_DATA_SHIFT   (16)
+#define CONTROL_REG_ACCESS_NUM   7
+#define CONTROL_REG_ACCESS_TYPE   0x30
+#define CONTROL_REG_ACCESS_REG   0xf00
+#define LMSW_SOURCE_DATA_SHIFT   16
 #define LMSW_SOURCE_DATA   (UINT16_MAX << LMSW_SOURCE_DATA_SHIFT)
 enum VMX_REGISTERS {
 	REG_EAX = 0,
@@ -10823,60 +10657,60 @@ enum VMX_REGISTERS {
 };
 
 // SEGMENT AR
-#define SEGMENT_AR_L_MASK   (0x2000)
-#define AR_TYPE_ACCESSES_MASK   (1)
-#define AR_TYPE_READABLE_MASK   (2)
-#define AR_TYPE_WRITEABLE_MASK   (4)
-#define AR_TYPE_CODE_MASK   (8)
-#define AR_TYPE_MASK   (0xf)
-#define AR_TYPE_BUSY_64_TSS   (11)
-#define AR_TYPE_BUSY_32_TSS   (11)
-#define AR_TYPE_BUSY_16_TSS   (3)
-#define AR_TYPE_LDT   (2)
-#define AR_UNUSABLE_MASK   (0x10000)
-#define AR_S_MASK   (0x10)
-#define AR_P_MASK   (0x80)
-#define AR_L_MASK   (0x2000)
-#define AR_DB_MASK   (0x4000)
-#define AR_G_MASK   (0x8000)
-#define AR_DPL_SHIFT   (5)
+#define SEGMENT_AR_L_MASK   0x2000
+#define AR_TYPE_ACCESSES_MASK   1
+#define AR_TYPE_READABLE_MASK   2
+#define AR_TYPE_WRITEABLE_MASK   4
+#define AR_TYPE_CODE_MASK   8
+#define AR_TYPE_MASK   0xf
+#define AR_TYPE_BUSY_64_TSS   11
+#define AR_TYPE_BUSY_32_TSS   11
+#define AR_TYPE_BUSY_16_TSS   3
+#define AR_TYPE_LDT   2
+#define AR_UNUSABLE_MASK   0x10000
+#define AR_S_MASK   0x10
+#define AR_P_MASK   0x80
+#define AR_L_MASK   0x2000
+#define AR_DB_MASK   0x4000
+#define AR_G_MASK   0x8000
+#define AR_DPL_SHIFT   5
 #define AR_DPL(ar)   (((ar) >> AR_DPL_SHIFT) & 3)
 #define AR_RESERVD_MASK   0xfffe0f00
 #define TSS_PRIVATE_MEMSLOT   (KVM_USER_MEM_SLOTS)
 #define APIC_ACCESS_PAGE_PRIVATE_MEMSLOT   (KVM_USER_MEM_SLOTS + 1)
 #define IDENTITY_PAGETABLE_PRIVATE_MEMSLOT   (KVM_USER_MEM_SLOTS + 2)
-#define VMX_NR_VPIDS   (0x10000)
-#define VMX_VPID_EXTENT_SINGLE_CONTEXT   (1)
-#define VMX_VPID_EXTENT_ALL_CONTEXT   (2)
-#define VMX_EPT_EXTENT_INDIVIDUAL_ADDR   (0)
-#define VMX_EPT_EXTENT_CONTEXT   (1)
-#define VMX_EPT_EXTENT_GLOBAL   (2)
-#define VMX_EPT_EXTENT_SHIFT   (24)
-#define VMX_EPT_EXECUTE_ONLY_BIT   (1ULL)
-#define VMX_EPT_PAGE_WALK_4_BIT   (0x40ULL)
-#define VMX_EPTP_UC_BIT   (0x100ULL)
-#define VMX_EPTP_WB_BIT   (0x4000ULL)
-#define VMX_EPT_2MB_PAGE_BIT   (0x10000ULL)
-#define VMX_EPT_1GB_PAGE_BIT   (0x20000ULL)
-#define VMX_EPT_INVEPT_BIT   (0x100000ULL)
-#define VMX_EPT_AD_BIT   (0x200000)
-#define VMX_EPT_EXTENT_CONTEXT_BIT   (0x2000000ULL)
-#define VMX_EPT_EXTENT_GLOBAL_BIT   (0x4000000)
-#define VMX_VPID_EXTENT_SINGLE_CONTEXT_BIT   (0x200ULL)
-#define VMX_VPID_EXTENT_GLOBAL_CONTEXT_BIT   (0x400ULL)
-#define VMX_EPT_DEFAULT_GAW   (3)
-#define VMX_EPT_MAX_GAW   (4)
-#define VMX_EPT_MT_EPTE_SHIFT   (3)
-#define VMX_EPT_GAW_EPTP_SHIFT   (3)
-#define VMX_EPT_AD_ENABLE_BIT   (0x40ULL)
-#define VMX_EPT_DEFAULT_MT   (6ULL)
-#define VMX_EPT_READABLE_MASK   (1ULL)
-#define VMX_EPT_WRITABLE_MASK   (2ULL)
-#define VMX_EPT_EXECUTABLE_MASK   (4ULL)
-#define VMX_EPT_IPAT_BIT   (0x40ULL)
-#define VMX_EPT_ACCESS_BIT   (0x100ULL)
-#define VMX_EPT_DIRTY_BIT   (0x200ULL)
-#define VMX_EPT_IDENTITY_PAGETABLE_ADDR   (0xfffbc000UL)
+#define VMX_NR_VPIDS   0x10000
+#define VMX_VPID_EXTENT_SINGLE_CONTEXT   1
+#define VMX_VPID_EXTENT_ALL_CONTEXT   2
+#define VMX_EPT_EXTENT_INDIVIDUAL_ADDR   0
+#define VMX_EPT_EXTENT_CONTEXT   1
+#define VMX_EPT_EXTENT_GLOBAL   2
+#define VMX_EPT_EXTENT_SHIFT   24
+#define VMX_EPT_EXECUTE_ONLY_BIT   1ULL
+#define VMX_EPT_PAGE_WALK_4_BIT   0x40ULL
+#define VMX_EPTP_UC_BIT   0x100ULL
+#define VMX_EPTP_WB_BIT   0x4000ULL
+#define VMX_EPT_2MB_PAGE_BIT   0x10000ULL
+#define VMX_EPT_1GB_PAGE_BIT   0x20000ULL
+#define VMX_EPT_INVEPT_BIT   0x100000ULL
+#define VMX_EPT_AD_BIT   0x200000
+#define VMX_EPT_EXTENT_CONTEXT_BIT   0x2000000ULL
+#define VMX_EPT_EXTENT_GLOBAL_BIT   0x4000000
+#define VMX_VPID_EXTENT_SINGLE_CONTEXT_BIT   0x200ULL
+#define VMX_VPID_EXTENT_GLOBAL_CONTEXT_BIT   0x400ULL
+#define VMX_EPT_DEFAULT_GAW   3
+#define VMX_EPT_MAX_GAW   4
+#define VMX_EPT_MT_EPTE_SHIFT   3
+#define VMX_EPT_GAW_EPTP_SHIFT   3
+#define VMX_EPT_AD_ENABLE_BIT   0x40ULL
+#define VMX_EPT_DEFAULT_MT   6ULL
+#define VMX_EPT_READABLE_MASK   1ULL
+#define VMX_EPT_WRITABLE_MASK   2ULL
+#define VMX_EPT_EXECUTABLE_MASK   4ULL
+#define VMX_EPT_IPAT_BIT   0x40ULL
+#define VMX_EPT_ACCESS_BIT   0x100ULL
+#define VMX_EPT_DIRTY_BIT   0x200ULL
+#define VMX_EPT_IDENTITY_PAGETABLE_ADDR   0xfffbc000UL
 #define ASM_VMX_VMCLEAR_RAX   ".byte 0x66, 0x0f, 0xc7, 0x30"
 #define ASM_VMX_VMLAUNCH   ".byte 0x0f, 0x01, 0xc2"
 #define ASM_VMX_VMRESUME   ".byte 0x0f, 0x01, 0xc3"
@@ -10945,8 +10779,6 @@ enum vm_instruction_error_number {
 
 
 #ifdef WIN32
-
-
 #   define PR_EXPORT(__type)   extern dllexport __type
 #   define PR_EXPORT_DATA(__type)   extern dllexport __type
 #   define PR_IMPORT(__type)   dllimport __type
@@ -10958,11 +10790,7 @@ enum vm_instruction_error_number {
 #   define PR_CALLBACK
 #   define PR_CALLBACK_DECL
 #   define PR_STATIC_CALLBACK(__x)   static __x
-
-
 #elif defined(XP_BEOS)
-
-
 #   define PR_EXPORT(__type)   extern dllexport __type
 #   define PR_EXPORT_DATA(__type)   extern dllexport __type
 #   define PR_IMPORT(__type)   extern dllexport __type
@@ -10974,11 +10802,7 @@ enum vm_instruction_error_number {
 #   define PR_CALLBACK
 #   define PR_CALLBACK_DECL
 #   define PR_STATIC_CALLBACK(__x)   static __x
-
-
 #elif (defined(XP_OS2) && defined(__declspec))
-
-
 #   define PR_EXPORT(__type)   extern dllexport __type
 #   define PR_EXPORT_DATA(__type)   extern dllexport __type
 #   define PR_IMPORT(__type)   extern  dllimport __type
@@ -10990,11 +10814,7 @@ enum vm_instruction_error_number {
 #   define PR_CALLBACK
 #   define PR_CALLBACK_DECL
 #   define PR_STATIC_CALLBACK(__x)   static __x
-
-
 #elif defined(OSSYMBIAN)
-
-
 #   define PR_EXPORT(__type)   extern dllexport __type
 #   define PR_EXPORT_DATA(__type)   extern dllexport __type
 #   ifdef __WINS__
@@ -11011,11 +10831,7 @@ enum vm_instruction_error_number {
 #   define PR_CALLBACK
 #   define PR_CALLBACK_DECL
 #   define PR_STATIC_CALLBACK(__x)   static __x
-
-
 #else  // Unix
-
-
 #   if IS_GNUC
 #      define PR_VISIBILITY_DEFAULT   __dso_public
 #   else
@@ -11032,8 +10848,6 @@ enum vm_instruction_error_number {
 #   define PR_CALLBACK
 #   define PR_CALLBACK_DECL
 #   define PR_STATIC_CALLBACK(__x)   static __x
-
-
 #endif
 
 #ifdef _NSPR_BUILD_
@@ -11087,6 +10901,572 @@ enum vm_instruction_error_number {
 #endif  // PRTYPES_H
 
 
+/* WINDOWS BASE (<winbase.h>) */
+
+
+#if ((!(defined(WINBASE_H) || defined(_WINBASE_))) && defined(OSWINDOWS))
+#define WINBASE_H   (1)
+#define _WINBASE_   (1)
+
+
+#define PROCESS_NAME_NATIVE   1
+#define FILE_ENCRYPTABLE   0
+#define FILE_IS_ENCRYPTED   1
+#define FILE_SYSTEM_ATTR   2
+#define FILE_ROOT_DIR   3
+#define FILE_SYSTEM_DIR   4
+#define FILE_UNKNOWN   5
+#define FILE_SYSTEM_NOT_SUPPORT   6
+#define FILE_USER_DISALLOWED   7
+#define FILE_READ_ONLY   8
+#define FILE_DIR_DISALOWED   9
+#define COMMPROP_INITIALIZED   0xe73cf52e
+#define SP_SERIALCOMM   1
+#define PST_UNSPECIFIED   0
+#define PST_RS232   1
+#define PST_PARALLELPORT   2
+#define PST_RS422   3
+#define PST_RS423   4
+#define PST_RS449   5
+#define PST_MODEM   6
+#define PST_FAX   0x21
+#define PST_SCANNER   0x22
+#define PST_NETWORK_BRIDGE   0x100
+#define PST_LAT   0x101
+#define PST_TCPIP_TELNET   0x102
+#define PST_X25   0x103
+#define BAUD_075   1
+#define BAUD_110   2
+#define BAUD_134_5   4
+#define BAUD_150   8
+#define BAUD_300   16
+#define BAUD_600   32
+#define BAUD_1200   64
+#define BAUD_1800   128
+#define BAUD_2400   256
+#define BAUD_4800   512
+#define BAUD_7200   1024
+#define BAUD_9600   2048
+#define BAUD_14400   4096
+#define BAUD_19200   8192
+#define BAUD_38400   16384
+#define BAUD_56K   32768
+#define BAUD_128K   65536
+#define BAUD_115200   131072
+#define BAUD_57600   262144
+#define BAUD_USER   0x10000000
+#define PCF_DTRDSR   1
+#define PCF_RTSCTS   2
+#define PCF_RLSD   4
+#define PCF_PARITY_CHECK   8
+#define PCF_XONXOFF   16
+#define PCF_SETXCHAR   32
+#define PCF_TOTALTIMEOUTS   64
+#define PCF_INTTIMEOUTS 128
+#define PCF_SPECIALCHARS   256
+#define PCF_16BITMODE   512
+#define SP_PARITY   1
+#define SP_BAUD   2
+#define SP_DATABITS   4
+#define SP_STOPBITS   8
+#define SP_HANDSHAKING   16
+#define SP_PARITY_CHECK   32
+#define SP_RLSD   64
+#define DATABITS_5   1
+#define DATABITS_6   2
+#define DATABITS_7   4
+#define DATABITS_8   8
+#define DATABITS_16   16
+#define DATABITS_16X   32
+#define STOPBITS_10   1
+#define STOPBITS_15   2
+#define STOPBITS_20   4
+#define PARITY_NONE   256
+#define PARITY_ODD   512
+#define PARITY_EVEN   1024
+#define PARITY_MARK   2048
+#define PARITY_SPACE   4096
+#define EXCEPTION_DEBUG_EVENT   1
+#define CREATE_THREAD_DEBUG_EVENT   2
+#define CREATE_PROCESS_DEBUG_EVENT   3
+#define EXIT_THREAD_DEBUG_EVENT 4
+#define EXIT_PROCESS_DEBUG_EVENT   5
+#define LOAD_DLL_DEBUG_EVENT   6
+#define UNLOAD_DLL_DEBUG_EVENT  7
+#define OUTPUT_DEBUG_STRING_EVENT   8
+#define RIP_EVENT   9
+#define HFILE_ERROR   ((HFILE)-1)
+#define FILE_BEGIN   0
+#define FILE_CURRENT   1
+#define FILE_END   2
+#define INVALID_SET_FILE_POINTER   ((DWORD)-1)
+#define OF_READ   0
+#define OF_READWRITE   2
+#define OF_WRITE   1
+#define OF_SHARE_COMPAT   0
+#define OF_SHARE_DENY_NONE   64
+#define OF_SHARE_DENY_READ   48
+#define OF_SHARE_DENY_WRITE   32
+#define OF_SHARE_EXCLUSIVE   16
+#define OF_CANCEL   2048
+#define OF_CREATE   4096
+#define OF_DELETE   512
+#define OF_EXIST   16384
+#define OF_PARSE   256
+#define OF_PROMPT   8192
+#define OF_REOPEN   32768
+#define OF_VERIFY   1024
+#define NMPWAIT_NOWAIT   1
+#define NMPWAIT_WAIT_FOREVER   ((DWORD)-1)
+#define NMPWAIT_USE_DEFAULT_WAIT   0
+#define CE_BREAK   16
+#define CE_DNS   2048
+#define CE_FRAME   8
+#define CE_IOE   1024
+#define CE_MODE   32768
+#define CE_OOP   4096
+#define CE_OVERRUN   2
+#define CE_PTO   512
+#define CE_RXOVER   1
+#define CE_RXPARITY   4
+#define CE_TXFULL   256
+#define PROGRESS_CONTINUE   0
+#define PROGRESS_CANCEL   1
+#define PROGRESS_STOP   2
+#define PROGRESS_QUIET   3
+#define CALLBACK_CHUNK_FINISHED   0
+#define CALLBACK_STREAM_SWITCH   1
+#define OFS_MAXPATHNAME   128
+#define FILE_MAP_COPY   SECTION_QUERY
+#define FILE_MAP_WRITE   SECTION_MAP_WRITE
+#define FILE_MAP_READ   SECTION_MAP_READ
+#define FILE_MAP_ALL_ACCESS   SECTION_ALL_ACCESS
+#define FILE_MAP_EXECUTE   SECTION_MAP_EXECUTE_EXPLICIT
+#define MUTEX_ALL_ACCESS   0x1f0001
+#define MUTEX_MODIFY_STATE   1
+#define SEMAPHORE_ALL_ACCESS   0x1f0003
+#define SEMAPHORE_MODIFY_STATE   2
+#define EVENT_ALL_ACCESS   0x1f0003
+#define EVENT_MODIFY_STATE   2
+#define PIPE_ACCESS_DUPLEX   3
+#define PIPE_ACCESS_INBOUND   1
+#define PIPE_ACCESS_OUTBOUND   2
+#define PIPE_TYPE_BYTE   0
+#define PIPE_TYPE_MESSAGE   4
+#define PIPE_READMODE_BYTE   0
+#define PIPE_READMODE_MESSAGE   2
+#define PIPE_WAIT   0
+#define PIPE_NOWAIT   1
+#define PIPE_CLIENT_END   0
+#define PIPE_SERVER_END   1
+#define PIPE_UNLIMITED_INSTANCES   255
+#define DEBUG_PROCESS   1
+#define DEBUG_ONLY_THIS_PROCESS   2
+#define CREATE_SUSPENDED   4
+#define DETACHED_PROCESS   8
+#define CREATE_NEW_CONSOLE   0x10
+#define NORMAL_PRIORITY_CLASS   0x20
+#define IDLE_PRIORITY_CLASS   0x40
+#define HIGH_PRIORITY_CLASS   0x80
+#define REALTIME_PRIORITY_CLASS   0x100
+#define CREATE_NEW_PROCESS_GROUP   0x200
+#define CREATE_UNICODE_ENVIRONMENT   0x400
+#define CREATE_SEPARATE_WOW_VDM   0x800
+#define CREATE_SHARED_WOW_VDM   0x1000
+#define CREATE_FORCEDOS   0x2000
+#define BELOW_NORMAL_PRIORITY_CLASS   0x4000
+#define ABOVE_NORMAL_PRIORITY_CLASS   0x8000
+#define CREATE_BREAKAWAY_FROM_JOB   0x1000000
+#define CREATE_PRESERVE_CODE_AUTHZ_LEVEL   0x2000000
+#define CREATE_DEFAULT_ERROR_MODE   0x4000000
+#define CREATE_NO_WINDOW   0x8000000
+#define PROFILE_USER   0x10000000
+#define PROFILE_KERNEL   0x20000000
+#define PROFILE_SERVER   0x40000000
+#define CREATE_NEW   1
+#define CREATE_ALWAYS   2
+#define OPEN_EXISTING   3
+#define OPEN_ALWAYS   4
+#define TRUNCATE_EXISTING   5
+#define COPY_FILE_ALLOW_DECRYPTED_DESTINATION   8
+#define COPY_FILE_FAIL_IF_EXISTS   1
+#define COPY_FILE_RESTARTABLE   2
+#define COPY_FILE_OPEN_SOURCE_FOR_WRITE   4
+#define FILE_FLAG_WRITE_THROUGH   0x80000000
+#define FILE_FLAG_OVERLAPPED   1073741824
+#define FILE_FLAG_NO_BUFFERING   536870912
+#define FILE_FLAG_RANDOM_ACCESS   268435456
+#define FILE_FLAG_SEQUENTIAL_SCAN   134217728
+#define FILE_FLAG_DELETE_ON_CLOSE   67108864
+#define FILE_FLAG_BACKUP_SEMANTICS   33554432
+#define FILE_FLAG_POSIX_SEMANTICS   16777216
+#define FILE_FLAG_OPEN_REPARSE_POINT   2097152
+#define FILE_FLAG_OPEN_NO_RECALL   1048576
+#define FILE_FLAG_FIRST_PIPE_INSTANCE   524288
+#define CLRDTR   6
+#define CLRRTS   4
+#define SETDTR   5
+#define SETRTS   3
+#define SETXOFF   1
+#define SETXON   2
+#define RESETDEV   7
+#define SETBREAK   8
+#define CLRBREAK   9
+#define STILL_ACTIVE   0x103
+#define FIND_FIRST_EX_CASE_SENSITIVE   1
+#define FIND_FIRST_EX_LARGE_FETCH   2
+#define SCS_32BIT_BINARY   0
+#define SCS_64BIT_BINARY   6
+#define SCS_DOS_BINARY   1
+#define SCS_OS216_BINARY   5
+#define SCS_PIF_BINARY   3
+#define SCS_POSIX_BINARY   4
+#define SCS_WOW_BINARY   2
+#define MAX_COMPUTERNAME_LENGTH   15
+#define HW_PROFILE_GUIDLEN   39
+#define MAX_PROFILE_LEN   80
+#define DOCKINFO_UNDOCKED   1
+#define DOCKINFO_DOCKED   2
+#define DOCKINFO_USER_SUPPLIED   4
+#define DOCKINFO_USER_UNDOCKED   (DOCKINFO_USER_SUPPLIED | DOCKINFO_UNDOCKED)
+#define DOCKINFO_USER_DOCKED   (DOCKINFO_USER_SUPPLIED | DOCKINFO_DOCKED)
+#define DRIVE_REMOVABLE   2
+#define DRIVE_FIXED   3
+#define DRIVE_REMOTE   4
+#define DRIVE_CDROM   5
+#define DRIVE_RAMDISK   6
+#define DRIVE_UNKNOWN   0
+#define DRIVE_NO_ROOT_DIR   1
+#define FILE_TYPE_UNKNOWN   0
+#define FILE_TYPE_DISK   1
+#define FILE_TYPE_CHAR   2
+#define FILE_TYPE_PIPE   3
+#define FILE_TYPE_REMOTE   0x8000
+#ifndef HANDLE_FLAG_INHERIT
+#   define HANDLE_FLAG_INHERIT   1  // Also in &lt;ddk/ntapi.h&gt;
+#endif
+#ifndef HANDLE_FLAG_PROTECT_FROM_CLOSE
+#   define HANDLE_FLAG_PROTECT_FROM_CLOSE   2  // Also in &lt;ddk/ntapi.h&gt;
+#endif
+#define STD_INPUT_HANDLE   (DWORD)(0xfffffff6)
+#define STD_OUTPUT_HANDLE   (DWORD)(0xfffffff5)
+#define STD_ERROR_HANDLE   (DWORD)(0xfffffff4)
+#define INVALID_HANDLE_VALUE   (HANDLE)(-1)
+#define GET_TAPE_MEDIA_INFORMATION   0
+#define GET_TAPE_DRIVE_INFORMATION   1
+#define SET_TAPE_MEDIA_INFORMATION   0
+#define SET_TAPE_DRIVE_INFORMATION   1
+#define THREAD_PRIORITY_ABOVE_NORMAL   1
+#define THREAD_PRIORITY_BELOW_NORMAL   -1
+#define THREAD_PRIORITY_HIGHEST   2
+#define THREAD_PRIORITY_IDLE   -15
+#define THREAD_PRIORITY_LOWEST   -2
+#define THREAD_PRIORITY_NORMAL   0
+#define THREAD_PRIORITY_TIME_CRITICAL   15
+#define THREAD_PRIORITY_ERROR_RETURN   2147483647
+#define TIME_ZONE_ID_UNKNOWN   0
+#define TIME_ZONE_ID_STANDARD   1
+#define TIME_ZONE_ID_DAYLIGHT   2
+#define TIME_ZONE_ID_INVALID   UINT32_MAX
+#define FS_CASE_IS_PRESERVED   2
+#define FS_CASE_SENSITIVE   1
+#define FS_UNICODE_STORED_ON_DISK   4
+#define FS_PERSISTENT_ACLS   8
+#define FS_FILE_COMPRESSION   16
+#define FS_VOL_IS_COMPRESSED   32768
+#define GMEM_FIXED   0
+#define GMEM_MOVEABLE   2
+#define GMEM_MODIFY   128
+#define GPTR   64
+#define GHND   66
+#define GMEM_DDESHARE   8192
+#define GMEM_DISCARDABLE   256
+#define GMEM_LOWER   4096
+#define GMEM_NOCOMPACT   16
+#define GMEM_NODISCARD   32
+#define GMEM_NOT_BANKED   4096
+#define GMEM_NOTIFY   16384
+#define GMEM_SHARE   8192
+#define GMEM_ZEROINIT   64
+#define GMEM_DISCARDED   16384
+#define GMEM_INVALID_HANDLE   32768
+#define GMEM_LOCKCOUNT   255
+#define GMEM_VALID_FLAGS   32626
+#define EXCEPTION_ACCESS_VIOLATION   ((DWORD)0xc0000005)
+#define EXCEPTION_DATATYPE_MISALIGNMENT   ((DWORD)0x80000002)
+#define EXCEPTION_BREAKPOINT   ((DWORD)0x80000003)
+#define EXCEPTION_SINGLE_STEP   ((DWORD)0x80000004)
+#define EXCEPTION_ARRAY_BOUNDS_EXCEEDED   ((DWORD)0xc000008c)
+#define EXCEPTION_FLT_DENORMAL_OPERAND   ((DWORD)0xc000008d)
+#define EXCEPTION_FLT_DIVIDE_BY_ZERO   ((DWORD)0xc000008e)
+#define EXCEPTION_FLT_INEXACT_RESULT   ((DWORD)0xc000008f)
+#define EXCEPTION_FLT_INVALID_OPERATION   ((DWORD)0xc0000090)
+#define EXCEPTION_FLT_OVERFLOW   ((DWORD)0xc0000091)
+#define EXCEPTION_FLT_STACK_CHECK   ((DWORD)0xc0000092)
+#define EXCEPTION_FLT_UNDERFLOW   ((DWORD)0xc0000093)
+#define EXCEPTION_INT_DIVIDE_BY_ZERO   ((DWORD)0xc0000094)
+#define EXCEPTION_INT_OVERFLOW   ((DWORD)0xc0000095)
+#define EXCEPTION_PRIV_INSTRUCTION   ((DWORD)0xc0000096)
+#define EXCEPTION_IN_PAGE_ERROR   ((DWORD)0xc0000006)
+#define EXCEPTION_ILLEGAL_INSTRUCTION   ((DWORD)0xc000001d)
+#define EXCEPTION_NONCONTINUABLE_EXCEPTION   ((DWORD)0xc0000025)
+#define EXCEPTION_STACK_OVERFLOW   ((DWORD)0xc00000fd)
+#define EXCEPTION_INVALID_DISPOSITION   ((DWORD)0xc0000026)
+#define EXCEPTION_GUARD_PAGE   ((DWORD)0x80000001)
+#define EXCEPTION_INVALID_HANDLE   ((DWORD)0xc0000008L)
+#define CONTROL_C_EXIT   ((DWORD)0xc000013a)
+#define PROCESS_HEAP_REGION   1
+#define PROCESS_HEAP_UNCOMMITTED_RANGE   2
+#define PROCESS_HEAP_ENTRY_BUSY   4
+#define PROCESS_HEAP_ENTRY_MOVEABLE   16
+#define PROCESS_HEAP_ENTRY_DDESHARE   32
+#define DONT_RESOLVE_DLL_REFERENCES   1
+#define LOAD_LIBRARY_AS_DATAFILE   2
+#define LOAD_WITH_ALTERED_SEARCH_PATH   8
+#define LOAD_IGNORE_CODE_AUTHZ_LEVEL   16
+#define LOAD_LIBRARY_AS_IMAGE_RESOURCE   32
+#define LOAD_LIBRARY_AS_DATAFILE_EXCLUSIVE   64
+#define LMEM_FIXED   0
+#define LMEM_MOVEABLE   2
+#define LMEM_NONZEROLHND   2
+#define LMEM_NONZEROLPTR   0
+#define LMEM_DISCARDABLE   3840
+#define LMEM_NOCOMPACT   16
+#define LMEM_NODISCARD   32
+#define LMEM_ZEROINIT   64
+#define LMEM_DISCARDED   16384
+#define LMEM_MODIFY   128
+#define LMEM_INVALID_HANDLE   32768
+#define LMEM_LOCKCOUNT   255
+#define LMEM_VALID_FLAGS   0x0f72
+#define LPTR   64
+#define LHND   66
+#define NONZEROLHND   2
+#define NONZEROLPTR   0
+#define LOCKFILE_FAIL_IMMEDIATELY   1
+#define LOCKFILE_EXCLUSIVE_LOCK   2
+#define LOGON32_PROVIDER_DEFAULT   0
+#define LOGON32_PROVIDER_WINNT35   1
+#define LOGON32_PROVIDER_WINNT40   2
+#define LOGON32_PROVIDER_WINNT50   3
+#define LOGON32_LOGON_INTERACTIVE   2
+#define LOGON32_LOGON_NETWORK   3
+#define LOGON32_LOGON_BATCH   4
+#define LOGON32_LOGON_SERVICE   5
+#define LOGON32_LOGON_UNLOCK   7
+#define LOGON32_LOGON_NETWORK_CLEARTEXT   8
+#define LOGON32_LOGON_NEW_CREDENTIALS   9
+#define MOVEFILE_REPLACE_EXISTING   1
+#define MOVEFILE_COPY_ALLOWED   2
+#define MOVEFILE_DELAY_UNTIL_REBOOT   4
+#define MOVEFILE_WRITE_THROUGH   8
+#define MOVEFILE_CREATE_HARDLINK   16
+#define MOVEFILE_FAIL_IF_NOT_TRACKABLE   32
+#define MAXIMUM_WAIT_OBJECTS   64
+#define MAXIMUM_SUSPEND_COUNT   0x7f
+#define WAIT_OBJECT_0   0
+#define WAIT_ABANDONED_0   128
+#ifndef WAIT_TIMEOUT
+#   define WAIT_TIMEOUT   258  // Also in &lt;winerror.h&gt;
+#endif
+#define WAIT_IO_COMPLETION   0xc0
+#define WAIT_ABANDONED   128
+#define WAIT_FAILED   ((DWORD)UINT32_MAX)
+#define PURGE_TXABORT   1
+#define PURGE_RXABORT   2
+#define PURGE_TXCLEAR   4
+#define PURGE_RXCLEAR   8
+#define EVENTLOG_SUCCESS   0
+#define EVENTLOG_FORWARDS_READ   4
+#define EVENTLOG_BACKWARDS_READ   8
+#define EVENTLOG_SEEK_READ   2
+#define EVENTLOG_SEQUENTIAL_READ   1
+#define EVENTLOG_ERROR_TYPE   1
+#define EVENTLOG_WARNING_TYPE   2
+#define EVENTLOG_INFORMATION_TYPE   4
+#define EVENTLOG_AUDIT_SUCCESS   8
+#define EVENTLOG_AUDIT_FAILURE   16
+#define FORMAT_MESSAGE_ALLOCATE_BUFFER   256
+#define FORMAT_MESSAGE_IGNORE_INSERTS   512
+#define FORMAT_MESSAGE_FROM_STRING   1024
+#define FORMAT_MESSAGE_FROM_HMODULE   2048
+#define FORMAT_MESSAGE_FROM_SYSTEM   4096
+#define FORMAT_MESSAGE_ARGUMENT_ARRAY   8192
+#define FORMAT_MESSAGE_MAX_WIDTH_MASK   255
+#define EV_BREAK   64
+#define EV_CTS   8
+#define EV_DSR   16
+#define EV_ERR   128
+#define EV_EVENT1   2048
+#define EV_EVENT2   4096
+#define EV_PERR   512
+#define EV_RING   256
+#define EV_RLSD   32
+#define EV_RX80FULL   1024
+#define EV_RXCHAR   1
+#define EV_RXFLAG   2
+#define EV_TXEMPTY   4
+#define SEM_FAILCRITICALERRORS   1  // Also in ddk/ntapi.h
+#define SEM_NOGPFAULTERRORBOX   2  // Also in ddk/ntapi.h
+#define SEM_NOALIGNMENTFAULTEXCEPT   4  // Also in ddk/ntapi.h
+#define SEM_NOOPENFILEERRORBOX   0x8000  // Also in ddk/ntapi.h
+#define SLE_ERROR   1
+#define SLE_MINORERROR   2
+#define SLE_WARNING   3
+#define SHUTDOWN_NORETRY   1
+#define MAXINTATOM   0xc000
+#define INVALID_ATOM   ((ATOM)0)
+#ifndef IGNORE
+#   define IGNORE   0
+#endif
+#define INFINITE   UINT32_MAX
+#define NOPARITY   0
+#define ODDPARITY   1
+#define EVENPARITY   2
+#define MARKPARITY   3
+#define SPACEPARITY   4
+#define ONESTOPBIT   0
+#define ONE5STOPBITS   1
+#define TWOSTOPBITS   2
+#define CBR_110   110
+#define CBR_300   300
+#define CBR_600   600
+#define CBR_1200   1200
+#define CBR_2400   2400
+#define CBR_4800   4800
+#define CBR_9600   9600
+#define CBR_14400   14400
+#define CBR_19200   19200
+#define CBR_38400   38400
+#define CBR_56000   56000
+#define CBR_57600   57600
+#define CBR_115200   115200
+#define CBR_128000   128000
+#define CBR_256000   256000
+#define BACKUP_INVALID   0
+#define BACKUP_DATA   1
+#define BACKUP_EA_DATA   2
+#define BACKUP_SECURITY_DATA   3
+#define BACKUP_ALTERNATE_DATA   4
+#define BACKUP_LINK   5
+#define BACKUP_PROPERTY_DATA   6
+#define BACKUP_OBJECT_ID   7
+#define BACKUP_REPARSE_DATA   8
+#define BACKUP_SPARSE_BLOCK   9
+#define STREAM_NORMAL_ATTRIBUTE 0
+#define STREAM_MODIFIED_WHEN_READ 1
+#define STREAM_CONTAINS_SECURITY   2
+#define STREAM_CONTAINS_PROPERTIES   4
+#define STARTF_USESHOWWINDOW   1
+#define STARTF_USESIZE   2
+#define STARTF_USEPOSITION   4
+#define STARTF_USECOUNTCHARS   8
+#define STARTF_USEFILLATTRIBUTE   0x10
+#define STARTF_RUNFULLSCREEN   0x20
+#define STARTF_FORCEONFEEDBACK   0x40
+#define STARTF_FORCEOFFFEEDBACK   0x80
+#define STARTF_USESTDHANDLES   0x100
+#if (WINVER >= 0x400)
+#   define STARTF_USEHOTKEY   0x200
+#   define STARTF_TITLEISLINKNAME   0x800
+#   define STARTF_TITLEISAPPID   0x1000
+#   define STARTF_PREVENTPINNING   0x2000
+#endif  // (WINVER >= 0x400)
+#define TC_NORMAL   0
+#define TC_HARDERR   1
+#define TC_GP_TRAP   2
+#define TC_SIGNAL   3
+#define AC_LINE_OFFLINE   0
+#define AC_LINE_ONLINE   1
+#define AC_LINE_BACKUP_POWER   2
+#define AC_LINE_UNKNOWN   255
+#define BATTERY_FLAG_HIGH   1
+#define BATTERY_FLAG_LOW   2
+#define BATTERY_FLAG_CRITICAL   4
+#define BATTERY_FLAG_CHARGING   8
+#define BATTERY_FLAG_NO_BATTERY   128
+#define BATTERY_FLAG_UNKNOWN   255
+#define BATTERY_PERCENTAGE_UNKNOWN   255
+#define BATTERY_LIFE_UNKNOWN   UINT32_MAX
+#define DDD_RAW_TARGET_PATH   1
+#define DDD_REMOVE_DEFINITION   2
+#define DDD_EXACT_MATCH_ON_REMOVE   4
+#define DDD_NO_BROADCAST_SYSTEM   8
+#define DDD_LUID_BROADCAST_DRIVE   16
+#define HINSTANCE_ERROR   32
+#define MS_CTS_ON   16
+#define MS_DSR_ON   32
+#define MS_RING_ON   64
+#define MS_RLSD_ON   128
+#define DTR_CONTROL_DISABLE   0
+#define DTR_CONTROL_ENABLE   1
+#define DTR_CONTROL_HANDSHAKE   2
+#define RTS_CONTROL_DISABLE   0
+#define RTS_CONTROL_ENABLE   1
+#define RTS_CONTROL_HANDSHAKE   2
+#define RTS_CONTROL_TOGGLE   3
+#define SECURITY_ANONYMOUS   (SecurityAnonymous << 16)
+#define SECURITY_IDENTIFICATION   (SecurityIdentification << 16)
+#define SECURITY_IMPERSONATION   (SecurityImpersonation << 16)
+#define SECURITY_DELEGATION   (SecurityDelegation << 16)
+#define SECURITY_CONTEXT_TRACKING   0x40000
+#define SECURITY_EFFECTIVE_ONLY   0x80000
+#define SECURITY_SQOS_PRESENT   0x100000
+#define SECURITY_VALID_SQOS_FLAGS   0x1f0000
+#define INVALID_FILE_SIZE   UINT32_MAX
+#define TLS_OUT_OF_INDEXES   (DWORD)UINT32_MAX
+
+
+#endif  // WINBASE
+
+
+/* CHECKED SIZE_T COMPUTATIONS (<xsize.h>) */
+
+
+#if (!(defined(XSIZE_H) || defined(_XSIZE_H) || defined(_XSIZE_H_)))
+#define XSIZE_H   (1)
+#define _XSIZE_H   (1)
+#define _XSIZE_H_   (1)
+
+
+/** Convert an arbitrary value >= 0 to type size_t */
+#define xcast_size_t(_num)   ((_num) <= SIZE_MAX ? (size_t)(_num) : (size_t)SIZE_MAX)
+/** Multiplication of a count with an element size, with overflow check; The count must be >= 0 and the element size must be > 0 */
+#define xtimes(_num, _elem_size)   ((size_t)((_num) <= (SIZE_MAX / (_elem_size)) ? (size_t)(_num) * (_elem_size) : SIZE_MAX))
+/** Maximum of two sizes, with overflow check */
+#define xmax(size1, size2)   ((size_t)(((size_t)(size1) >= (size_t)(size2)) ? (size_t)(size1) : (size_t)(size2)))
+/** Check for overflow */
+#define size_overflow_p(size__)   ((size__) == SIZE_MAX)
+/** Check for overflow */
+#define size_overflow(size__)   size_overflow_p((size__))
+/** Check against overflow */
+#define size_in_bounds_p(size__)   ((size__) != SIZE_MAX)
+/** Check against overflow */
+#define size_in_bounds(size__)   size_in_bounds_p((size__))
+
+
+/** Sum of two sizes, with overflow check */
+LIB_FUNC size_t xsum(const size_t size1, const size_t size2) {
+	register size_t sum = size1 + size2;
+	return (size_t)(sum >= size1 ? sum : SIZE_MAX);
+}
+
+
+/** Sum of three sizes, with overflow check */
+LIB_FUNC size_t xsum3(const size_t size1, const size_t size2, const size_t size3) {
+	return (size_t)xsum(xsum(size1, size2), size3);
+}
+
+
+/** Sum of four sizes, with overflow check */
+LIB_FUNC size_t xsum4(const size_t size1, const size_t size2, const size_t size3, const size_t size4) {
+	return (size_t)xsum(xsum(xsum(size1, size2), size3), size4);
+}
+
+
+#endif  // XSIZE_H
+
+
 /* SIGNAL STACK (<bits/sigstack.h>) */
 
 
@@ -11100,87 +11480,35 @@ enum vm_instruction_error_number {
 #define SS_ONSTACK   1
 #define SS_DISABLE   2
 
-#ifdef ARCHALPHA
-/** Minimum stack size for a signal handler */
+/** @def MINSIGSTKSZ
+Minimum stack size for a signal handler */
+/** @def SIGSTKSZ
+System default stack size */
+#if (defined(ARCHALPHA) || defined(ARCHSPARC))
 #   define MINSIGSTKSZ   4096
-/** System default stack size */
 #   define SIGSTKSZ   16384
-/** Structure describing a signal stack */
-typedef struct attr_packed sigstack {
-	void* ss_sp;  // Signal stack pointer
-	int ss_onstack;  // Nonzero if executing on this stack
-} sigstack_t;
-/** Preferred signal stack interface */
-typedef struct attr_packed sigaltstack {
-	void* ss_sp;
-	int ss_flags;
-	size_t ss_size;
-} stack_t;
-#elif defined(ARCHMIPS)
-/** Minimum stack size for a signal handler */
-#   define MINSIGSTKSZ   2048
-/** System default stack size */
-#   define SIGSTKSZ   8192
-/** Structure describing a signal stack */
-typedef struct attr_packed sigstack {
-	void* ss_sp;  // Signal stack pointer
-	int ss_onstack;  // Nonzero if executing on this stack
-} sigstack_t;
-/** Preferred signal stack interface */
-typedef struct attr_packed sigaltstack {
-	void* ss_sp;
-	size_t ss_size;
-	int ss_flags;
-} stack_t;
 #elif defined(ARCHITANIUM)
-/** Minimum stack size for a signal handler */
 #   define MINSIGSTKSZ   131027
-/** System default stack size */
 #   define SIGSTKSZ   262144
-/** Structure describing a signal stack */
-typedef struct attr_packed sigstack {
-	void* ss_sp;  // Signal stack pointer
-	int ss_onstack;  // Nonzero if executing on this stack
-} sigstack_t;
-/** Preferred signal stack interface */
-typedef struct attr_packed sigaltstack {
-	void* ss_sp;
-	int ss_flags;
-	size_t ss_size;
-} stack_t;
-#elif defined(ARCHSPARC)
-/** Minimum stack size for a signal handler */
-#   define MINSIGSTKSZ   4096
-/** System default stack size */
-#   define SIGSTKSZ   16384
-/** Structure describing a signal stack */
-typedef struct attr_packed sigstack {
-	void* ss_sp;  // Signal stack pointer
-	int ss_onstack;  // Nonzero if executing on this stack
-} sigstack_t;
-/** Preferred signal stack interface */
-typedef struct attr_packed sigaltstack {
-	void* ss_sp;
-	int ss_flags;
-	size_t ss_size;
-} stack_t;
 #else
-/** Minimum stack size for a signal handler */
 #   define MINSIGSTKSZ   2048
-/** System default stack size */
 #   define SIGSTKSZ   8192
+#endif
+
+
 /** Structure describing a signal stack */
-typedef struct attr_packed sigstack {
-	void* ss_sp;  // Signal stack pointer
-	int ss_onstack;  // Nonzero if executing on this stack
+typedef struct sigstack {
+	void* ss_sp;  //!< Signal stack pointer
+	int ss_onstack;  //!< Nonzero if executing on this stack
+	int pad0;  //!< Padding
 } sigstack_t;
 /** Preferred signal stack interface */
-typedef struct attr_packed sigaltstack {
+typedef struct sigaltstack {
 	void* ss_sp;
-	int ss_flags;
 	size_t ss_size;
+	int ss_flags;
+	int pad0;  //!< Padding
 } stack_t;
-#endif  // ARCH
 
 
 #endif  // SIGSTACK_H
@@ -11259,7 +11587,7 @@ typedef struct __mcontext {
 	unsigned long __reserved1[8];
 } mcontext_t;
 /** Userlevel context */
-typedef struct attr_packed ucontext {
+typedef struct ucontext {
 	unsigned long uc_flags;
 	struct ucontext* uc_link;
 	stack_t uc_stack;
@@ -11332,7 +11660,7 @@ struct sigcontext {
 	"reptmovsl;" \
 	"movlt %c8-4(%%esp), %%esp;" \
 	: "=a"(__tmp1), "=d"(__tmp2), "=S"(__tmp3), "=c"(__tmp4) \
-	: "0"(handler), "1"(signo), "2"(&_ctx), "3"(sizeof(struct sigcontext) >> 2), "n"((sizeof(struct sigcontext) + 19) & (~15)), "i"(sizeof(struct sigcontext) >> 2) \
+	: "0"(handler), "1"(signo), "2"(&_ctx), "3"(sizeof(struct sigcontext) >> 2), "r,i,n"((sizeof(struct sigcontext) + 19) & (~15)), "i"(sizeof(struct sigcontext) >> 2) \
 	: "cc", "edi"); \
 } while (0x0)
 #   endif  // WORDSIZE
@@ -11553,35 +11881,35 @@ struct sigcontext {
 #   define CALL_SIGHANDLER(handler, signo, _ctx)   (handler)((signo), SIGCONTEXT_EXTRA_ARGS(_ctx))
 #elif defined(ARCHITANIUM)
 struct sigcontext {
-	unsigned long sc_flags;  // Manifest constants
-	unsigned long sc_nat;  // bit i == 1 if scratch reg gr[i] is a NaT
-	stack_t sc_stack;  // previously active stack
-	unsigned long sc_ip;  // instruction pointer
-	unsigned long sc_cfm;  // current frame marker
-	unsigned long sc_um;  // user mask bits
-	unsigned long sc_ar_rsc;  // register stack configuration register
-	unsigned long sc_ar_bsp;  // backing store pointer
-	unsigned long sc_ar_rnat;  // RSE NaT collection register
-	unsigned long sc_ar_ccv;  // compare & exchange compare value register
-	unsigned long sc_ar_unat;  // ar.unat of interrupted context
-	unsigned long sc_ar_fpsr;  // floating-point status register
-	unsigned long sc_ar_pfs;  // previous function state
-	unsigned long sc_ar_lc;  // loop count register
-	unsigned long sc_pr;  // predicate registers
-	unsigned long sc_br[8];  // branch registers
-	unsigned long sc_gr[32];  // general registers (static partition)
-	struct ia64_fpreg sc_fr[128];  // floating-point registers
-	unsigned long sc_rbs_base;  // NULL or new base of sighandler's rbs
-	unsigned long sc_loadrs;  // see description above
-	unsigned long sc_ar25;  // cmp8xchg16 uses this
-	unsigned long sc_ar26;  // rsvd for scratch use
-	unsigned long sc_rsvd[12];  // reserved for future use
-	unsigned long sc_mask;  // signal mask to restore after handler returns
+	unsigned long sc_flags;  //!< Manifest constants
+	unsigned long sc_nat;  //!< bit i == 1 if scratch reg gr[i] is a NaT
+	stack_t sc_stack;  //!< previously active stack
+	unsigned long sc_ip;  //!< instruction pointer
+	unsigned long sc_cfm;  //!< current frame marker
+	unsigned long sc_um;  //!< user mask bits
+	unsigned long sc_ar_rsc;  //!< register stack configuration register
+	unsigned long sc_ar_bsp;  //!< backing store pointer
+	unsigned long sc_ar_rnat;  //!< RSE NaT collection register
+	unsigned long sc_ar_ccv;  //!< compare & exchange compare value register
+	unsigned long sc_ar_unat;  //!< ar.unat of interrupted context
+	unsigned long sc_ar_fpsr;  //!< floating-point status register
+	unsigned long sc_ar_pfs;  //!< previous function state
+	unsigned long sc_ar_lc;  //!< loop count register
+	unsigned long sc_pr;  //!< predicate registers
+	unsigned long sc_br[8];  //!< branch registers
+	unsigned long sc_gr[32];  //!< general registers (static partition)
+	struct ia64_fpreg sc_fr[128];  //!< floating-point registers
+	unsigned long sc_rbs_base;  //!< NULL or new base of sighandler's rbs
+	unsigned long sc_loadrs;  //!< see description above
+	unsigned long sc_ar25;  //!< cmp8xchg16 uses this
+	unsigned long sc_ar26;  //!< rsvd for scratch use
+	unsigned long sc_rsvd[12];  //!< reserved for future use
+	unsigned long sc_mask;  //!< signal mask to restore after handler returns
 };
 // sc_flag bit definitions (manifest constants)
-#   define IA64_SC_FLAG_ONSTACK_BIT   0  // Is handler running on signal stack?
-#   define IA64_SC_FLAG_IN_SYSCALL_BIT   1  // did signal interrupt a syscall?
-#   define IA64_SC_FLAG_FPH_VALID_BIT   2  // is state in f[32]-f[127] valid?
+#   define IA64_SC_FLAG_ONSTACK_BIT   0  //!< Is handler running on signal stack?
+#   define IA64_SC_FLAG_IN_SYSCALL_BIT   1  //!< did signal interrupt a syscall?
+#   define IA64_SC_FLAG_FPH_VALID_BIT   2  //!< is state in f[32]-f[127] valid?
 #   define IA64_SC_FLAG_ONSTACK   1
 #   define IA64_SC_FLAG_IN_SYSCALL   2
 #   define IA64_SC_FLAG_FPH_VALID   4
@@ -11695,9 +12023,9 @@ struct sigcontext {
 #define FDS_BYTES(nr)   (FDS_LONGS(nr) * SIZEOF_LONG)
 // Access macros for `fd_set`
 #ifdef ARCHX86_32  // FD*
-#   define FD_SET(fd, fdsp)   do { vasm("btsl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
-#   define FD_CLR(fd, fdsp)   do { vasm("btrl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
-#   define FD_ISSET(fd, fdsp)   do { register char __result; vasm("btl %1, %2;" "setcb %b0;" : "=q"(__result) : "r"(((int)(fd)) % BITS_PER_FD_MASK), "m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "cc"); __result; } while (0x0)
+#   define FD_SET(fd, fdsp)   do { vasm("btsl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r,i,n"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
+#   define FD_CLR(fd, fdsp)   do { vasm("btrl %1, %0;" : "=m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "r,i,n"(((int)(fd)) % BITS_PER_FD_MASK) : "cc", "memory") } while (0x0)
+#   define FD_ISSET(fd, fdsp)   do { register char __result; vasm("btl %1, %2;" "setcb %b0;" : "=q"(__result) : "r,i,n"(((int)(fd)) % BITS_PER_FD_MASK), "m"(FDS_BITS(fdsp)[FD_ELT(fd)]) : "cc"); __result; } while (0x0)
 #else
 #   define FD_SET(d, s)   ((void)(FDS_BITS(s)[FD_ELT(d)] |= (FD_MASK(d))))
 #   define FD_CLR(d, s)   ((void)(FDS_BITS(s)[FD_ELT(d)] &= (~(FD_MASK(d)))))
@@ -11767,11 +12095,11 @@ typedef enum _Unwind_State {
 
 /** Virtual Register Set*/
 typedef enum _Unwind_VRS_RegClass {
-	_UVRSC_CORE = 0,  // Integer register
-	_UVRSC_VFP = 1,  // vfp
-	_UVRSC_FPA = 2,  // fpa
-	_UVRSC_WMMXD = 3,  // Intel WMMX data register
-	_UVRSC_WMMXC = 4  // Intel WMMX control register
+	_UVRSC_CORE = 0,  //!< Integer register
+	_UVRSC_VFP = 1,  //!< vfp
+	_UVRSC_FPA = 2,  //!< fpa
+	_UVRSC_WMMXD = 3,  //!< Intel WMMX data register
+	_UVRSC_WMMXC = 4  //!< Intel WMMX control register
 } _Unwind_VRS_RegClass;
 
 typedef enum _Unwind_VRS_DataRepresentation {
@@ -11792,33 +12120,33 @@ typedef enum _Unwind_VRS_Result {
 typedef struct _Unwind_Control_Block {
 	char exception_class[8];
 	void (*exception_cleanup)(_Unwind_Reason_Code, _Unwind_Control_Block*);
-	struct unwinder_cache_s {  // Unwinder cache; private fields for the unwinder's use
-		_uw reserved1;  // Forced unwind stop fn, 0 if not forced
-		_uw reserved2;  // Personality routine address
-		_uw reserved3;  // Saved callsite address
-		_uw reserved4;  // Forced unwind stop arg
+	struct unwinder_cache_s {  //!< Unwinder cache; private fields for the unwinder's use
+		_uw reserved1;  //!< Forced unwind stop fn, 0 if not forced
+		_uw reserved2;  //!< Personality routine address
+		_uw reserved3;  //!< Saved callsite address
+		_uw reserved4;  //!< Forced unwind stop arg
 		_uw reserved5;
 	} unwinder_cache;
-	struct barrier_cache_s {  // Propagation barrier cache (valid after phase 1)
+	struct barrier_cache_s {  //!< Propagation barrier cache (valid after phase 1)
 		_uw sp; _uw bitpattern[5];
 	} barrier_cache;
-	struct cleanup_cache_s { _uw bitpattern[4]; } cleanup_cache;  // Cleanup cache (preserved over cleanup)
-	struct pr_cache_s {  // Pr cache (for pr's benefit)
-		_uw fnstart;  // Function start address
-		_Unwind_EHT_Header* ehtp;  // Pointer to EHT entry header word
-		_uw additional;  // Additional data
+	struct cleanup_cache_s { _uw bitpattern[4]; } cleanup_cache;  //!< Cleanup cache (preserved over cleanup)
+	struct pr_cache_s {  //!< Pr cache (for pr's benefit)
+		_uw fnstart;  //!< Function start address
+		_Unwind_EHT_Header* ehtp;  //!< Pointer to EHT entry header word
+		_uw additional;  //!< Additional data
 		_uw reserved1;
 	} pr_cache;
-	long long padding:0;  // Force alignment to 8-byte boundary
+	long long padding:0;  //!< Force alignment to 8-byte boundary
 } _Unwind_Control_Block;
 #define _Unwind_Exception   _Unwind_Control_Block
 
 /** Frame unwinding state */
 typedef struct __gnu_unwind_state {
-	_uw data;  // The current word (bytes packed msb first)
-	_uw* next;  // Pointer to the next word of data
-	_uw8 bytes_left;  // The number of bytes left in this word
-	_uw8 words_left;  // The number of words pointed to by ptr
+	_uw data;  //!< The current word (bytes packed msb first)
+	_uw* next;  //!< Pointer to the next word of data
+	_uw8 bytes_left;  //!< The number of bytes left in this word
+	_uw8 words_left;  //!< The number of words pointed to by ptr
 } __gnu_unwind_state;
 
 
@@ -11900,15 +12228,15 @@ typedef struct avr_mcu {
 /** AVR device specific features */
 enum avr_device_specific_features {
 	AVR_ISA_NONE,
-	AVR_ISA_RMW = 1,  // Device has RMW instructions
-	AVR_SHORT_SP = 2,  // Stack Pointer has 8 bits width
-	AVR_ERRATA_SKIP = 4  // Device has a core erratum
+	AVR_ISA_RMW = 1,  //!< Device has RMW instructions
+	AVR_SHORT_SP = 2,  //!< Stack Pointer has 8 bits width
+	AVR_ERRATA_SKIP = 4  //!< Device has a core erratum
 };
 
 /** Map architecture to its texinfo string */
 typedef struct avr_arch_info {
-	enum avr_arch_id arch_id;  // Architecture ID
-	const char* texinfo;  // Textinfo source to describe the archtiecture
+	enum avr_arch_id arch_id;  //!< Architecture ID
+	const char* texinfo;  //!< Textinfo source to describe the archtiecture
 } avr_arch_info_t;
 
 /** Preprocessor macros to define depending on MCU type */
@@ -11938,10 +12266,11 @@ static const UNUSED avr_mcu_t avr_mcu_types[];
 #define pfn_to_phys(pfn)   ((pfn) << PAGE_SHIFT)
 #define pages_to_mb(x)   ((x) >> (20 - PAGE_SHIFT))
 
-typedef struct attr_packed pgp_memory_t {
+typedef struct pgp_memory_t {
 	uint8_t* buf;
 	size_t length, allocated;
 	unsigned int mmapped;
+	int pad0;  //!< Padding
 } pgp_memory_t;
 
 
@@ -12605,19 +12934,19 @@ void iogroup_map(int group, int direct);
 #define FB_BACKLIGHT_MAX   0xff
 
 
-typedef struct attr_packed fb_fix_screeninfo {
+typedef struct fb_fix_screeninfo {
 	char id[16];
 	unsigned long smem_start;
 	uint32_t smem_len, type;
-	uint32_t type_aux;  // Interleave for interleaved Planes
+	uint32_t type_aux;  //!< Interleave for interleaved Planes
 	uint32_t visual;
-	uint16_t xpanstep, ypanstep;  // Zero if no hardware panning
-	uint16_t ywrapstep;  // Zero if no hardware ywrap
-	uint32_t line_length;  // Length of a line in bytes
-	unsigned long mmio_start;  // Start of Memory Mapped I/O
-	uint32_t mmio_len;  // Length of Memory Mapped I/O
-	uint32_t accel;  // Indicate to driver the specific chip/card
+	uint16_t xpanstep, ypanstep;  //!< Zero if no hardware panning
+	uint16_t ywrapstep;  //!< Zero if no hardware ywrap
 	uint16_t capabilities;
+	unsigned long mmio_start;  //!< Start of Memory Mapped I/O
+	uint32_t line_length;  //!< Length of a line in bytes
+	uint32_t mmio_len;  //!< Length of Memory Mapped I/O
+	uint32_t accel;  //!< Indicate to driver the specific chip/card
 	uint16_t reserved[2];
 } fb_fix_screeninfo_t;
 
@@ -12659,25 +12988,27 @@ typedef struct fb_fillrect {
 	uint32_t dx, dy, width, height, color, rop;
 } fb_fillrect_t;
 
-typedef struct attr_packed fb_image {
-	uint32_t dx, dy;  // Where to place image
+typedef struct fb_image {
+	struct fb_cmap cmap;  //!< Color map info
+	const char* data;  //!< Pointer to image data
+	uint32_t dx, dy;  //!< Where to place image
 	uint32_t width, height;
-	uint32_t fg_color;  // Only used when a mono bitmap
+	uint32_t fg_color;  //!< Only used when a mono bitmap
 	uint32_t bg_color;
-	uint8_t depth;  // Depth of the image
-	const char* data;  // Pointer to image data
-	struct fb_cmap cmap;  // color map info
+	uint8_t depth;  //!< Depth of the image
+	uint8_t pad0[7];  //!< Padding
 } fb_image_t;
 
 typedef struct fbcurpos { uint16_t x, y; }   fbcurpos_t;
 
-typedef struct attr_packed fb_cursor {
-	uint16_t set;  // What to set
-	uint16_t enable;  // Cursor on/off
-	uint16_t rop;  // Bitop operation
-	const char* mask;  // Cursor mask bits
-	struct fbcurpos hot;  // Cursor hot spot
-	struct fb_image image;  // Cursor image
+typedef struct fb_cursor {
+	const char* mask;  //!< Cursor mask bits
+	struct fb_image image;  //!< Cursor image
+	struct fbcurpos hot;  //!< Cursor hot spot
+	uint16_t set;  //!< What to set
+	uint16_t enable;  //!< Cursor on/off
+	uint16_t rop;  //!< Bitop operation
+	uint16_t pad0[3];  //!< Padding
 } fb_cursor_t;
 
 
@@ -12877,17 +13208,18 @@ enum VGA_SAVE {
 };
 
 
-typedef struct attr_packed vgastate {
-	void __iomem* vgabase;  // mmio base, if supported
-	unsigned long membase;  // VGA window base, 0 for default - 0xa000
-	uint32_t memsize;  // VGA window size, 0 for default 64K
-	uint32_t flags;  // what state[s] to save (see VGA_SAVE_*)
-	uint32_t depth;  // current fb depth, not important
-	uint32_t num_attr;  // number of att registers, 0 for default
-	uint32_t num_crtc;  // number of crt registers, 0 for default
-	uint32_t num_gfx;  // number of gfx registers, 0 for default
-	uint32_t num_seq;  // number of seq registers, 0 for default
+typedef struct vgastate {
+	void __iomem* vgabase;  //!< mmio base, if supported
 	void* vidstate;
+	unsigned long membase;  //!< VGA window base, 0 for default - 0xa000
+	uint32_t memsize;  //!< VGA window size, 0 for default 64K
+	uint32_t flags;  //!< What state[s] to save (see VGA_SAVE_*)
+	uint32_t depth;  //!< Current fb depth, not important
+	uint32_t num_attr;  //!< Number of att registers, 0 for default
+	uint32_t num_crtc;  //!< Number of crt registers, 0 for default
+	uint32_t num_gfx;  //!< Number of gfx registers, 0 for default
+	uint32_t num_seq;  //!< Number of seq registers, 0 for default
+	uint32_t pad0;  //!< Padding
 } vgastate_t;
 
 
@@ -13627,49 +13959,49 @@ enum __encoding { CT_8BIT, CT_UTF8 };
 static volatile enum __encoding lc_ctype = CT_UTF8;
 
 typedef enum ctype_encoding {
-	__ctype_encoding_7_bit,  // C/POSIX
-	__ctype_encoding_utf8,  // UTF-8
-	__ctype_encoding_8_bit  // for 8-bit codeset locales
+	__ctype_encoding_7_bit,  //!< C/POSIX
+	__ctype_encoding_utf8,  //!< UTF-8
+	__ctype_encoding_8_bit  //!< for 8-bit codeset locales
 } ctype_encoding_t;
 
 typedef enum IS_ctype {
-	_ISupper = _ISbit(0),  // UPPERCASE (A-Z)
-	_ISlower = _ISbit(1),  // lowercase (a-z)
-	_ISalpha = _ISbit(2),  // Alphabetic (A-Za-z)
-	_ISdigit = _ISbit(3),  // Numeric (0-9)
-	_ISxdigit = _ISbit(4),  // Hexadecimal numeric (A-Fa-f0-9)
-	_ISspace = _ISbit(5),  // Whitespace (space \t \n \r \f \v)
-	_ISprint = _ISbit(6),  // Printable characters
-	_ISgraph = _ISbit(7),  // Graphical
-	_ISblank = _ISbit(8),  // Blank (space and tab)
-	_IScntrl = _ISbit(9),  // Control character
-	_ISpunct = _ISbit(10),  // Punctuation
-	_ISalnum = _ISbit(11)  // Alphanumeric
+	_ISupper = _ISbit(0),  //!< UPPERCASE (A-Z)
+	_ISlower = _ISbit(1),  //!< lowercase (a-z)
+	_ISalpha = _ISbit(2),  //!< Alphabetic (A-Za-z)
+	_ISdigit = _ISbit(3),  //!< Numeric (0-9)
+	_ISxdigit = _ISbit(4),  //!< Hexadecimal numeric (A-Fa-f0-9)
+	_ISspace = _ISbit(5),  //!< Whitespace (space \\t \\n \\r \\f \\v)
+	_ISprint = _ISbit(6),  //!< Printable characters
+	_ISgraph = _ISbit(7),  //!< Graphical
+	_ISblank = _ISbit(8),  //!< Blank (space and tab)
+	_IScntrl = _ISbit(9),  //!< Control character
+	_ISpunct = _ISbit(10),  //!< Punctuation
+	_ISalnum = _ISbit(11)  //!< Alphanumeric
 } IS_ctype_t;
 
 /** Character Categories */
 typedef enum CHAR_CLASSIFICATION {
 	// C99
-	cc_isblank = 1,  // space \t
-	cc_iscntrl = 2,  // nonprinting characters
-	cc_isdigit = 4,  // 0-9
-	cc_islower = 8,  // a-z
-	cc_isprint = 0x10,  // any printing character including ' '
-	cc_ispunct = 0x20,  // all punctuation
-	cc_isspace = 0x40,  // space \t \n \r \f \v
-	cc_isupper = 0x80,  // A-Z
-	cc_isxdigit = 0x100,  // 0-9A-Fa-f
+	cc_isblank = 1,  //!< space \\t
+	cc_iscntrl = 2,  //!< nonprinting characters
+	cc_isdigit = 4,  //!< 0-9
+	cc_islower = 8,  //!< a-z
+	cc_isprint = 0x10,  //!< any printing character including ' '
+	cc_ispunct = 0x20,  //!< all punctuation
+	cc_isspace = 0x40,  //!< space \\t \\n \\r \\f \\v
+	cc_isupper = 0x80,  //!< A-Z
+	cc_isxdigit = 0x100,  //!< 0-9A-Fa-f
 	// Extra categories
-	cc_isidst = 0x200,  // A-Za-z_
-	cc_isvsp = 0x400,  // \n \r
-	cc_isnvsp = 0x800,  // space \t \f \v \0
+	cc_isidst = 0x200,  //!< A-Za-z_
+	cc_isvsp = 0x400,  //!< \\n \\r
+	cc_isnvsp = 0x800,  //!< space \\t \\f \\v \\0
 	// Combinations
-	cc_isalpha = cc_isupper | cc_islower,  // A-Za-z
-	cc_isalnum = cc_isalpha | cc_isdigit,  // A-Za-z0-9
-	cc_isidnum = cc_isidst | cc_isdigit,  // A-Za-z0-9_
-	cc_isgraph = cc_isalnum | cc_ispunct,  // isprint (without space)
-	cc_iscppsp = cc_isvsp | cc_isnvsp,  // isspace + \0
-	cc_isbasic = cc_isprint | cc_iscppsp  // Basic charset of ISO C (plus ` and @)
+	cc_isalpha = cc_isupper | cc_islower,  //!< A-Za-z
+	cc_isalnum = cc_isalpha | cc_isdigit,  //!< A-Za-z0-9
+	cc_isidnum = cc_isidst | cc_isdigit,  //!< A-Za-z0-9_
+	cc_isgraph = cc_isalnum | cc_ispunct,  //!< isprint (without space)
+	cc_iscppsp = cc_isvsp | cc_isnvsp,  //!< isspace + \\0
+	cc_isbasic = cc_isprint | cc_iscppsp  //!< Basic charset of ISO C (plus \` and \@)
 } CHAR_CLASSIFICATION_t;
 // Shorthand Character Categories
 #define cc_bl   cc_isblank

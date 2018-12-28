@@ -2,7 +2,7 @@
 // vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :
 // kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 /**
-@brief Standard Macros Header with AT&T-style Assembly
+@brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
 @version 2018.11.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
@@ -479,6 +479,7 @@ typedef unsigned int __attribute__((__mode__(__PSI__)))   UPSItype;
 #define SUPPORTS_USITYPE   1
 typedef int __attribute__((__mode__(__SI__)))   SItype;
 #define SI   SItype
+#define CMPtype   SItype
 #define int_si_t   SItype
 #define HAVE_SI   1
 typedef unsigned int __attribute__((__mode__(__SI__)))   USItype;
@@ -2423,6 +2424,21 @@ typedef __SLONGWORD_TYPE   syscall_arg_t;
 #endif
 
 
+// QUAD
+
+#define __quad_t   int64_t
+#define quad_t   int64_t
+#define __s_quad_t   int64_t
+#define s_quad_t   int64_t
+#define _quad_t   int64_t
+#define __u_quad_t   uint64_t
+#define u_quad_t   uint64_t
+#define uquad_t   uint64_t
+#define _u_quad_t   uint64_t
+#define __SQUAD_TYPE   int64_t
+#define __UQUAD_TYPE   uint64_t
+
+
 // 128-BIT INTEGERS
 
 #if SUPPORTS_INT128
@@ -2489,6 +2505,203 @@ typedef uint512_t   uint_fast512_t;
 #endif
 
 
+// POINTER-RELATED DATATYPES
+
+#if (BITS_PER_POINTER == 64)
+#   define __sptr   int64_t
+#   define __uptr   uint64_t
+#elif (BITS_PER_POINTER == 32)
+#   define __sptr   int32_t
+#   define __uptr   uint32_t
+#else
+#   error   "Only 32-bit and 64-bit pointers are supported!"
+#endif
+#define POINTER_SIGNED   __sptr
+#define POINTER_UNSIGNED   __uptr
+#define FIRMWARE_PTR   uint32_t
+#define __ptr32   uint32_t
+#define ptr32_t   uint32_t
+#define POINTER_32   uint32_t
+#define POINTER_32_INT   uint32_t
+#define SPOINTER_32   int32_t
+#define UPOINTER_32   uint32_t
+#define __ptr64   uint64_t
+#define ptr64_t   uint64_t
+#define POINTER_64   uint64_t
+#define POINTER_64_INT   uint64_t
+#define SPOINTER_64   int64_t
+#define UPOINTER_64   uint64_t
+#ifndef PTRDIFF_TYPE
+#   define PTRDIFF_TYPE   __PTRDIFF_TYPE__
+#endif
+#ifndef __PTRDIFF_T_TYPE
+#   define __PTRDIFF_T_TYPE   __PTRDIFF_TYPE__
+#endif
+#ifndef __PTRDIFF_T_TYPE__
+#   define __PTRDIFF_T_TYPE__   __PTRDIFF_TYPE__
+#endif
+#ifndef PTRDIFF_T_TYPE
+#   define PTRDIFF_T_TYPE   __PTRDIFF_TYPE__
+#endif
+typedef __PTRDIFF_TYPE__   ptrdiff_t;
+#define __ptrdiff_t   ptrdiff_t
+#ifndef __INTPTR_T_TYPE__
+#   define __INTPTR_T_TYPE__   __INTPTR_TYPE__
+#endif
+#ifndef INTPTR_TYPE
+#   define INTPTR_TYPE   __INTPTR_TYPE__
+#endif
+#ifndef __intptr_t_defined
+typedef __INTPTR_TYPE__   intptr_t;
+#   define __intptr_t   intptr_t
+#   define __intptr_t_defined   (1)
+#endif
+#ifndef UINTPTR_TYPE
+#   define UINTPTR_TYPE   __UINTPTR_TYPE__
+#endif
+#ifndef __uintptr_t_defined
+typedef __UINTPTR_TYPE__   uintptr_t;
+#   define __uintptr_t   uintptr_t
+#   define __uintptr_t   uintptr_t
+#   define uintptr   uintptr_t
+#   define __uintptr_t_defined   (1)
+#endif
+#ifndef SIZEOF_UINTPTR_T
+#   define SIZEOF_UINTPTR_T   SIZEOF_UWORD_TYPE
+#endif
+/** Signed integer datatype that can hold a pointer beyond 64KB (from Atmel AVR) */
+typedef int32_t   int_farptr_t;
+/** Unsigned integer datatype that can hold a pointer beyond 64KB (from Atmel AVR) */
+typedef uint32_t   uint_farptr_t;
+typedef void*   LPVOID;
+#define PVOID   LPVOID
+#ifndef _LPCVOID_DEFINED
+#   define _LPCVOID_DEFINED   (1)
+typedef const void*   LPCVOID;
+#endif
+#if IS_64
+#   define __int3264   int64_t
+#   define ADDRESS_TAG_BIT   0x40000000000ULL
+typedef int32_t   HALF_PTR;
+typedef uint32_t   UHALF_PTR;
+typedef int32_t*   PHALF_PTR;
+typedef uint32_t*   PUHALF_PTR;
+typedef int64_t*   PINT_PTR;
+typedef uint64_t*   PUINT_PTR;
+typedef int64_t*   PLONG_PTR;
+typedef uint64_t*   PULONG_PTR;
+typedef int64_t   SHANDLE_PTR;
+typedef uint64_t   HANDLE_PTR;
+#elif IS_32
+#   define __int3264   int32_t
+#   define ADDRESS_TAG_BIT   0x80000000UL
+typedef int16_t   HALF_PTR;
+typedef uint16_t   UHALF_PTR;
+typedef int16_t*   PHALF_PTR;
+typedef uint16_t*   PUHALF_PTR;
+typedef int32_t*   PINT_PTR;
+typedef uint32_t*   PUINT_PTR;
+typedef long*   PLONG_PTR;
+typedef unsigned long*   PULONG_PTR;
+typedef int32_t   SHANDLE_PTR;
+typedef uint32_t   HANDLE_PTR;
+#endif
+#define PLONG   PLONG_PTR
+/** Character pointer */
+typedef char*   PCHAR;
+/** Unsigned character pointer */
+typedef unsigned char*   PUCHAR;
+typedef char*   PSZ;
+#define BYTE   unsigned char
+typedef BYTE*   PBYTE;
+typedef BYTE*   LPBYTE;
+/** Windows signed pointer datatype */
+typedef __INT_PTR_TYPE   INT_PTR;
+/** Windows unsigned pointer datatype */
+typedef __UINT_PTR_TYPE   UINT_PTR;
+/** Windows pointer datatype */
+typedef __UINT_PTR_TYPE   LONG_PTR;
+#define LONG_PTR_DEFINED   (1)
+/** Windows unsigned pointer datatype */
+typedef __UINT_PTR_TYPE   ULONG_PTR;
+typedef ULONG_PTR*   PDWORD_PTR;
+typedef __UINT_PTR_TYPE   KAFFINITY;
+typedef KAFFINITY*   PKAFFINITY;
+/** Windows pointer datatype */
+typedef __UINT_PTR_TYPE   DWORD_PTR;
+/** Windows datatype */
+typedef __UINT_PTR_TYPE   WPARAM;
+/** Windows datatype */
+typedef __UINT_PTR_TYPE   LPARAM;
+/** Windows datatype */
+typedef __UINT_PTR_TYPE   LRESULT;
+typedef char*   char_ptr_t;
+typedef short*   short_ptr_t;
+typedef short*   PSHORT;
+typedef int*   int_ptr_t;
+typedef int   _Mbstatet;
+typedef int*   PINT;
+typedef int*   LPINT;
+typedef int*   PLONG32;
+typedef int*   PINT32;
+typedef long*   long_ptr_t;
+typedef long*   LPLONG;
+typedef long*   PLARGE_INTEGER;
+typedef unsigned char*   uchar_ptr_t;
+typedef unsigned short*   ushort_ptr_t;
+typedef unsigned short*   PUSHORT;
+typedef unsigned int*   uint_ptr_t;
+typedef unsigned int*   PUINT;
+typedef unsigned int*   LPUINT;
+typedef unsigned int*   PULONG32;
+typedef unsigned int*   PDWORD32;
+typedef unsigned int*   PUINT32;
+typedef unsigned long*   ulong_ptr_t;
+typedef unsigned long*   PULONG;
+typedef quad_t*   quad_ptr_t;
+typedef int8_t*   PINT8;
+typedef int8_t*   s8_ptr_t;
+typedef int8_t*   i8_ptr_t;
+typedef int16_t*   PINT16;
+typedef int16_t*   s16_ptr_t;
+typedef int16_t*   i16_ptr_t;
+typedef int32_t*   s32_ptr_t;
+typedef int32_t*   i32_ptr_t;
+typedef int64_t*   PLONG64;
+typedef int64_t*   PINT64;
+typedef int64_t*   s64_ptr_t;
+typedef int64_t*   i64_ptr_t;
+typedef uint8_t*   PUINT8;
+typedef uint8_t*   u8_ptr_t;
+typedef uint8_t*   ptr8_t;
+typedef uint16_t*   PUINT16;
+typedef uint16_t*   u16_ptr_t;
+typedef uint16_t*   ptr16_t;
+typedef uint32_t*   u32_ptr_t;
+typedef uint64_t*   PULONG64;
+typedef uint64_t*   PDWORD64;
+typedef uint64_t*   PUINT64;
+typedef uint64_t*   u64_ptr_t;
+typedef size_t*   PSIZE_T;
+/** Windows pointer datatype */
+typedef ssize_t*   PSSIZE_T;
+typedef float*   float_ptr_t;
+typedef float*   PFLOAT;
+typedef double*   double_ptr_t;
+typedef double*   PDOUBLE;
+#define MAXUINT_PTR   (~((UINT_PTR)0))
+#define MAXINT_PTR   ((INT_PTR)(MAXUINT_PTR >> 1))
+#define MININT_PTR   (~(MAXINT_PTR))
+#define MAXULONG_PTR   (~((ULONG_PTR)0))
+#define MAXLONG_PTR   ((LONG_PTR)(MAXULONG_PTR >> 1))
+#define MINLONG_PTR   (~(MAXLONG_PTR))
+#define MAXUHALF_PTR   ((UHALF_PTR)~0)
+#define MAXHALF_PTR   ((HALF_PTR)(MAXUHALF_PTR >> 1))
+#define MINHALF_PTR   (~MAXHALF_PTR)
+#define MAXUINT   ((UINT)~((UINT)0))
+#define MAXULONGLONG   ((ULONGLONG)~((ULONGLONG)0))
+
+
 // DATATYPE DIAGNOSTICS
 
 #if IS_NOT_LINTER
@@ -2518,12 +2731,6 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRINTF_SCANF_FORMAT_SPECIFIERS_H   (1)
 
 
-// PRINTING FORMAT SPECIFIERS
-
-/** Casts the uint64_t value in `x` to the right type for an argument to printf */
-#define U64_PRINTF_ARG(x)   ((uint64_t)(x))
-/** Casts the int64_t value in `x` to the right type for an argument to printf */
-#define I64_PRINTF_ARG(x)   ((int64_t)(x))
 #if IS_WORDSIZE_64
 #   define __PRI64_PREFIX   "l"
 #   define __PRIPTR_PREFIX   "l"
@@ -2531,6 +2738,23 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #   define __PRI64_PREFIX   "ll"
 #   define __PRIPTR_PREFIX   "ll"
 # endif
+#ifndef PRI64_PREFIX
+#   define PRI64_PREFIX   __PRI64_PREFIX
+#endif
+#ifndef PRIPTR_PREFIX
+#   define PRIPTR_PREFIX   __PRIPTR_PREFIX
+#endif
+
+
+// PRINTING FORMAT SPECIFIERS
+
+/** @defgroup Printing_Format_Specifiers Macros for `printf()` (and other similar functions) format specifiers
+@{ */  // (FB){
+
+/** Casts the uint64_t value in `x` to the right type for an argument to printf */
+#define U64_PRINTF_ARG(x)   ((uint64_t)(x))
+/** Casts the int64_t value in `x` to the right type for an argument to printf */
+#define I64_PRINTF_ARG(x)   ((int64_t)(x))
 // Octal Notation
 #define PRIo8   "o"
 #define PRIo16   "o"
@@ -2541,8 +2765,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIoLEAST32   "o"
 #define PRIoLEAST64   __PRI64_PREFIX "o"
 #define PRIoFAST8   "o"
-#define PRIoFAST16   __PRIPTR_PREFIX "o"
-#define PRIoFAST32   __PRIPTR_PREFIX "o"
+#define PRIoFAST16   "o"
+#define PRIoFAST32   "o"
 #define PRIoFAST64   __PRI64_PREFIX "o"
 // Decimal Notation
 #define PRId8   "d"
@@ -2554,8 +2778,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIdLEAST32   "d"
 #define PRIdLEAST64   __PRI64_PREFIX "d"
 #define PRIdFAST8   "d"
-#define PRIdFAST16   __PRIPTR_PREFIX "d"
-#define PRIdFAST32   __PRIPTR_PREFIX "d"
+#define PRIdFAST16   "d"
+#define PRIdFAST32   "d"
 #define PRIdFAST64   __PRI64_PREFIX "d"
 // Lowercase Hexadecimal Notation
 #define PRIx8   "x"
@@ -2567,8 +2791,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIxLEAST32   "x"
 #define PRIxLEAST64   __PRI64_PREFIX "x"
 #define PRIxFAST8   "x"
-#define PRIxFAST16   __PRIPTR_PREFIX "x"
-#define PRIxFAST32   __PRIPTR_PREFIX "x"
+#define PRIxFAST16   "x"
+#define PRIxFAST32   "x"
 #define PRIxFAST64   __PRI64_PREFIX "x"
 // Uppercase Hexadecimal Notation
 #define PRIX8   "X"
@@ -2580,10 +2804,10 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIXLEAST32   "X"
 #define PRIXLEAST64   __PRI64_PREFIX "X"
 #define PRIXFAST8   "X"
-#define PRIXFAST16   __PRIPTR_PREFIX "X"
-#define PRIXFAST32   __PRIPTR_PREFIX "X"
+#define PRIXFAST16   "X"
+#define PRIXFAST32   "X"
 #define PRIXFAST64   __PRI64_PREFIX "X"
-// Singed Integer
+// Singed Integers
 #define PRIi8   "i"
 #define PRIi16   "i"
 #define PRIi32   "i"
@@ -2593,8 +2817,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIiLEAST32   "i"
 #define PRIiLEAST64   __PRI64_PREFIX "i"
 #define PRIiFAST8   "i"
-#define PRIiFAST16   __PRIPTR_PREFIX "i"
-#define PRIiFAST32   __PRIPTR_PREFIX "i"
+#define PRIiFAST16   "i"
+#define PRIiFAST32   "i"
 #define PRIiFAST64   __PRI64_PREFIX "i"
 // Unsigned Integers
 #define PRIu8   "u"
@@ -2606,8 +2830,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIuLEAST32   "u"
 #define PRIuLEAST64   __PRI64_PREFIX "u"
 #define PRIuFAST8   "u"
-#define PRIuFAST16   __PRIPTR_PREFIX "u"
-#define PRIuFAST32   __PRIPTR_PREFIX "u"
+#define PRIuFAST16   "u"
+#define PRIuFAST32   "u"
 #define PRIuFAST64   __PRI64_PREFIX "u"
 // Other Fixed-Width Integrals
 #define PRIsize   "zu"
@@ -2630,9 +2854,44 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define PRIuPTR   __PRIPTR_PREFIX "u"
 #define PRIxPTR   __PRIPTR_PREFIX "x"
 #define PRIXPTR   __PRIPTR_PREFIX "X"
+// Architecture-Specific Specifiers
+#ifdef ARCHARM
+#   define PRIuPSIZE   "lu"
+#   define PRIuVSIZE   "lu"
+#   define PRIxPADDR   "lx"
+#   define PRIxPSIZE   "lx"
+#   define PRIxREGISTER   "x"
+#   define PRIxVADDR   "lx"
+#   define PRIxVSIZE   "lx"
+#elif defined(ARCHX86_32)
+#   ifdef _KERNEL
+#      ifdef PAE
+#         define PRIuPSIZE   "llu"
+#         define PRIxPADDR   "llx"
+#         define PRIxPSIZE   "llx"
+#      else
+#         define PRIuPSIZE   "lu"
+#         define PRIxPADDR   "lx"
+#         define PRIxPSIZE   "lx"
+#      endif  // PAE
+#   else
+#      define PRIuPSIZE   "llu"
+#      define PRIxPADDR   "llx"
+#      define PRIxPSIZE   "llx"
+#   endif  // _KERNEL
+#   define PRIuVSIZE   "lu"
+#   define PRIxREGISTER   "x"
+#   define PRIxVADDR   "lx"
+#   define PRIxVSIZE   "lx"
+#endif
+
+/** @} */  // }
 
 
 // SCANNING FORMAT SPECIFIERS
+
+/** @defgroup Scanning_Format_Specifiers Macros for `scanf()` (and other similar functions) format specifiers
+@{ */  // (FB){
 
 // Octal Notation
 #define SCNo8   "hho"
@@ -2644,8 +2903,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNoLEAST32   "o"
 #define SCNoLEAST64   __PRI64_PREFIX "o"
 #define SCNoFAST8   "hho"
-#define SCNoFAST16   __PRIPTR_PREFIX "o"
-#define SCNoFAST32   __PRIPTR_PREFIX "o"
+#define SCNoFAST16   "ho"
+#define SCNoFAST32   "o"
 #define SCNoFAST64   __PRI64_PREFIX "o"
 // Signed Decimal Notation
 #define SCNd8   "hhd"
@@ -2657,8 +2916,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNdLEAST32   "d"
 #define SCNdLEAST64   __PRI64_PREFIX "d"
 #define SCNdFAST8   "hhd"
-#define SCNdFAST16   __PRIPTR_PREFIX "d"
-#define SCNdFAST32   __PRIPTR_PREFIX "d"
+#define SCNdFAST16   "hd"
+#define SCNdFAST32   "d"
 #define SCNdFAST64   __PRI64_PREFIX "d"
 // Hexadecimal Notation
 #define SCNx8   "hhx"
@@ -2670,8 +2929,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNxLEAST32   "x"
 #define SCNxLEAST64   __PRI64_PREFIX "x"
 #define SCNxFAST8   "hhx"
-#define SCNxFAST16   __PRIPTR_PREFIX "x"
-#define SCNxFAST32   __PRIPTR_PREFIX "x"
+#define SCNxFAST16   "hx"
+#define SCNxFAST32   "x"
 #define SCNxFAST64   __PRI64_PREFIX "x"
 // Signed Integer Notation
 #define SCNi8   "hhi"
@@ -2683,8 +2942,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNiLEAST32   "i"
 #define SCNiLEAST64   __PRI64_PREFIX "i"
 #define SCNiFAST8   "hhi"
-#define SCNiFAST16   __PRIPTR_PREFIX "i"
-#define SCNiFAST32   __PRIPTR_PREFIX "i"
+#define SCNiFAST16   "hi"
+#define SCNiFAST32   "i"
 #define SCNiFAST64   __PRI64_PREFIX "i"
 // Unsigned Integer Notation
 #define SCNu8   "hhu"
@@ -2696,8 +2955,8 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNuLEAST32   "u"
 #define SCNuLEAST64   __PRI64_PREFIX "u"
 #define SCNuFAST8   "hhu"
-#define SCNuFAST16   __PRIPTR_PREFIX "u"
-#define SCNuFAST32   __PRIPTR_PREFIX "u"
+#define SCNuFAST16   "hu"
+#define SCNuFAST32   "u"
 #define SCNuFAST64   __PRI64_PREFIX "u"
 // Scanning `intmax_t` & `uintmax_t`
 #define SCNdMAX   __PRI64_PREFIX "d"
@@ -2712,8 +2971,13 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define SCNuPTR   __PRIPTR_PREFIX "u"
 #define SCNxPTR   __PRIPTR_PREFIX "x"
 
+/** @} */  // }
+
 
 // MICROSOFT PRINTF & SCANF MACROS
+
+/** @defgroup MS_Microsoft_Printing_and_Scanning_Format_Specifiers MS-Microsoft-specific macros-based format specifiers for `printf()`, `scanf()`, and other related functions
+@{ */  // (FB){
 
 #ifdef OSWINDOWS
 #   define PFMT64x   "I64x"
@@ -2726,32 +2990,37 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #   define PFMT64u   "llu"
 #   define PFMT64o   "llo"
 #endif
+/** @def U64_FORMAT
+The formatting string used to put an `uint64_t` value in a `printf()` or `scanf()` function */
+/** @def I64_FORMAT
+The formatting string used to put an `int64_t` value in a `printf()` or `scanf()` function */
+/** @def U64_SCANF_ARG
+Casts the `uint64_t*` value in `x` to the right type for an argument to `scanf()` */
+/** @def U64_LITERAL
+Expands to a literal `uint64_t` constant for the value `n` */
 #if (defined(COMPILER_MICROSOFT) || defined(COMPILER_MINGW))
-/** The formatting string used to put a uint64_t value in a printf() or scanf() function */
 #   define U64_FORMAT   "%I64u"
-/** The formatting string used to put a int64_t value in a printf() or scanf() function */
 #   define I64_FORMAT   "%I64d"
-/** Casts the `uint64_t *` value in `x` to the right type for an argument to scanf */
 #   define U64_SCANF_ARG(x)   x
-/** Expands to a literal uint64_t-typed constant for the value `n` */
 #   define U64_LITERAL(n)   n ## ui64
 #   define I64_SCANF_ARG(x)   x
 #   define I64_LITERAL(n)   n ## i64
 #else
-/** The formatting string used to put a uint64_t value in a printf() or scanf() function */
 #   define U64_FORMAT   "%llu"
-/** The formatting string used to put a int64_t value in a printf() or scanf() function */
 #   define I64_FORMAT   "%lld"
-/** Casts the `uint64_t *` value in `x` to the right type for an argument to scanf */
 #   define U64_SCANF_ARG(x)   ((uint64_t*)(x))
-/** Expands to a literal uint64_t-typed constant for the value `n` */
 #   define U64_LITERAL(n)   n ## llu
 #   define I64_SCANF_ARG(x)   ((int64_t*)(x))
 #   define I64_LITERAL(n)   n ## ll
 #endif
 
+/** @} */  // }
+
 
 // PLAN9 PRINTF & SCANF MACROS
+
+/** @defgroup Plan9_Printing_and_Scanning_Format_Specifiers Plan9-specific macros-based format specifiers for `printf()`, `scanf()`, and other related functions
+@{ */  // (FB){
 
 #ifdef OSPLAN9
 #   pragma varargck type "d" int
@@ -2802,8 +3071,13 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #   pragma varargck flag 'h'
 #endif
 
+/** @} */  // }
+
 
 // MISCELLANEOUS PRINTF & SCANF MACROS
+
+/** @defgroup Miscellaneous_Printing_and_Scanning_Format_Specifiers Miscellaneous macros-based format specifiers for `printf()`, `scanf()`, and other related functions
+@{ */  // (FB){
 
 #define PTRDIFF_T_SUFFIX   l
 #define SIZE_T_SUFFIX   ul
@@ -2939,11 +3213,13 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define __UINT_LEAST8_FMTu__   "hhu"
 #define __UINT_LEAST8_FMTx__   "hhx"
 
+/** @} */  // }
+
 
 #endif  // PRINTF_SCANF_FORMAT_SPECIFIERS_H
 
 
-/* SPECIFICATIONS, FEATURES, & ARCHITECTURE MACROS */
+/* SPECIFICATIONS & FEATURES MACROS */
 
 
 #if (!(defined(SPECIFICATIONS_H) || defined(_SPECIFICATIONS_H_)))
@@ -2954,9 +3230,6 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 #define FEATURES_H   (1)  // <features.h>
 #define _FEATURES_H   (1)
 #define _FEATURES_H_   (1)
-#define SYS_REG_H   (1)
-#define _SYS_REG_H   (1)
-#define _SYS_REG_H_   (1)
 #define UNISTD_H   (1)  // http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/unistd.h.html
 #define _UNISTD_H   (1)  // <unistd.h>
 #define _UNISTD_H_   (1)
@@ -3010,7 +3283,10 @@ enum type_class {
 };
 
 
-// FUNCTION MACROS FOR INTEGER & FLOAT CONSTANTS
+// MACROS FOR INTEGER & FLOAT CONSTANTS
+
+/** @defgroup Macros_for_Datatype_Constants Macros for creating dataype constants dynamically in macros
+@{ */  // (FB){
 
 #ifndef __int_join
 #   define __int_join_(n, suffix)   n ## suffix
@@ -3151,7 +3427,7 @@ enum type_class {
 #      else
 #         define UINT64_C(num)   __UINT64_C((num))
 #      endif
-#   endif  // __WORDSIZE
+#   endif  // IS_WORDSIZE_64
 #   define LIT64(a)   __INT64_C(num)
 #   ifdef __INTMAX_C
 /** Expands to an integer constant (of type intmax_t) having the value specified by its argument */
@@ -3169,8 +3445,7 @@ enum type_class {
 #   endif
 #endif  // IS_NOT_CPLUSPLUS
 
-
-// FUNCTION MACROS FOR UNCOMMON INTEGRAL CONSTANTS
+// Uncommon Integral Constants
 
 #if SUPPORTS_INT24
 #   ifdef __INT24_C_SUFFIX__
@@ -3209,8 +3484,13 @@ enum type_class {
 #   endif
 #endif
 
+/** @} */  // }
+
 
 // MATH FEATURE SUPPORT
+
+/** @defgroup Math_Feature_Support Macros for testing and indicating the support status of various math features
+@{ */  // (FB){
 
 /** @def __NO_MATH_INLINES
 When compiling in strict ISO C compatible mode, inline functions must not be used since they do not set the `errno` variable correctly */
@@ -3233,8 +3513,13 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #   define FINITE_MATH_ONLY   0
 #endif
 
+/** @} */  // }
+
 
 // SUPPORTED HEADERS & FEATURES
+
+/** @defgroup Supported_Features_and_Headers Macros for testing and indicating the support status of various C features and headers
+@{ */  // (FB){
 
 #ifndef __STDC_NO_THREADS__
 /** No support for C11 <threads.h> */
@@ -3244,11 +3529,11 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 /** Defined if the target has a hosted environment (complete standard C library) */
 #   define __STDC_HOSTED__   0
 #endif
+/** @def IS_HOSTED
+Returns 1 (true) if the target has a hosted environment (complete standard C library) */
 #if ((!defined(IS_HOSTED)) && defined(__STDC_HOSTED__))
-/** Returns 1 (true) if the target has a hosted environment (complete standard C library) */
 #   define IS_HOSTED   1
 #elif (!defined(IS_HOSTED))
-/** Returns 1 (true) if the target has a hosted environment (complete standard C library) */
 #   define IS_HOSTED   0
 #endif
 #ifndef __STD_UTF_8__
@@ -3294,7 +3579,7 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #define HAVE_ATOMIC_H   1
 #define HAVE_CPIO_H   1
 #define HAVE_CTYPE_H   1
-#define HAVE_ERR_H   0
+#define HAVE_ERR_H   1
 #define HAVE_ERRNO_H   1
 #define HAVE_FENV_H   1
 #define HAVE_FLOAT_H   1
@@ -3306,9 +3591,9 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #define HAVE_LANGINFO_H   1
 #define HAVE_LIMITS_H   1
 #define HAVE_LOCALE_H   1
-#define HAVE_MBCTYPE_H   0
+#define HAVE_MBCTYPE_H   1
 #define HAVE_MATH_H   1
-#define HAVE_MONETARY_H   0
+#define HAVE_MONETARY_H   1
 #define HAVE_NET_ETHERNET_H   1
 #define HAVE_NET_IF_H   1
 #define HAVE_NET_IF_ARP_H   1
@@ -3318,27 +3603,27 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #define HAVE_NETINET_IN_H   1
 #define HAVE_NETINET_TCP_H   1
 #define HAVE_NL_TYPES_H   1
-#define HAVE_NSCD_PROTO_H   0
-#define HAVE_NSSWITCH_H   0
+#define HAVE_NSCD_PROTO_H   1
+#define HAVE_NSSWITCH_H   1
 #define HAVE_OBSTACK_H   1
 #define HAVE_PATHS_H   1
 #define HAVE_POLL_H   1
 #define HAVE_PPP_DEFS_H   1
 #define HAVE_SETJMP_H   1
-#define HAVE_SIGNAL_H   0
+#define HAVE_SIGNAL_H   1
 #define HAVE_STDALIGN_H   1
 #define HAVE_STDARG_H   1
 #define HAVE_STDATOMIC_H   1
 #define HAVE_STDBOOL_H   1
 #define HAVE_STDINT_H   1
-#define HAVE_STDIO_H   0
-#define HAVE_STDLIB_H   0
+#define HAVE_STDIO_H   1
+#define HAVE_STDLIB_H   1
 #define HAVE_STDNORETURN_H   1
-#define HAVE_STRERROR_R   0
+#define HAVE_STRERROR_R   1
 #define HAVE_STRING_H   1
 #define HAVE_STRINGS_H   1
-#define HAVE_STROPTS_H   0
-#define HAVE_SYSLOG_H   0
+#define HAVE_STROPTS_H   1
+#define HAVE_SYSLOG_H   1
 #define HAVE_SYS_FANOTIFY_H   1
 #define HAVE_SYS_INOTIFY_H   1
 #define HAVE_SYS_IPC_H   1
@@ -3347,9 +3632,9 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #define HAVE_SYS_SEM_H   1
 #define HAVE_SYS_SHM_H   1
 #define HAVE_SYS_SENDFILE_H   1
-#define HAVE_SYS_SIGNAL_H   0
+#define HAVE_SYS_SIGNAL_H   1
 #define HAVE_SYS_SOCKET_H   1
-#define HAVE_SYS_STAT_H   0
+#define HAVE_SYS_STAT_H   1
 #define HAVE_SYS_STATVFS_H   1
 #define HAVE_SYS_TIME_H   1
 #define HAVE_SYS_TIMES_H   1
@@ -3366,12 +3651,17 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #define HAVE_UTIME_H   1
 #define HAVE_VADEFS_H   1
 #define HAVE_VARARGS_H   1
-#define HAVE_WCHAR_H   0
+#define HAVE_WCHAR_H   1
 #define HAVE_WCTYPE_H   1
 #define HAVE_XLOCALE_H   1
 
+/** @} */  // }
+
 
 // ENABLE/DISABLE HEADERS & FEATURES
+
+/** @defgroup Enable_Disable_Headers_and_Features Macros used to enable/disable various headers and features in this library
+@{ */  // (FB){
 
 #ifdef ENABLE_BEOS_MACROS
 /** Allow BeOS macros to be used */
@@ -3410,8 +3700,13 @@ When compiling in strict ISO C compatible mode, inline functions must not be use
 #   define DISABLE_ANSI_SGR   1
 #endif
 
+/** @} */  // }
+
 
 // GNU, POSIX, XOPEN, & OTHER EXTENSIONS
+
+/** @defgroup GNU_POSIX_XOPEN_and_Other_Extensions Macros for setting, tweaking, and enabling/disabling various library extensions and features
+@{ */  // (FB){
 
 /** Define to 1 to enable a few rarely used encodings */
 #define ENABLE_EXTRA   1
@@ -3444,31 +3739,33 @@ This is to enable the ISO C99 extensions */
 /** This is to enable the ISO C11 extensions */
 #   define __USE_ISOC11   1
 #endif
-#ifndef _GNU_SOURCE
-#   ifdef OSPOSIX
-#      undef _POSIX_SOURCE
-#      undef _POSIX_C_SOURCE
-/** Special POSIX macro that is used to include POSIX functionality */
-#      define _POSIX_SOURCE   (200809L)
-/** Special POSIX macro used to include POSIX functionality */
-#      define _POSIX_C_SOURCE   (200809L)
-#   endif
-#   ifdef OSUNIX
-/** Special UNIX macro used to include functionality described in the X/Open Portability Guide */
-#      define _XOPEN_SOURCE   (700)
-/** Special UNIX macro used to include functionality described in the X/Open Portability Guide */
-#      define _XOPEN_VERSION   (700)
-/** Special UNIX macro used to include extra functionality described in the X/Open Portability Guide */
-#      define _XOPEN_SOURCE_EXTENDED
-#   endif
+#if IS_STDC17
+/** This is to enable the ISO C17 extensions */
+#   define __USE_ISOC17   1
 #endif
 /** @def _DEFAULT_SOURCE
-_BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
+`_BSD_SOURCE` and `_SVID_SOURCE` are deprecated aliases for `_DEFAULT_SOURCE` */
 #if (defined(_BSD_SOURCE) || defined(_SVID_SOURCE))
 #   undef _DEFAULT_SOURCE
 #   define _DEFAULT_SOURCE   1
 #endif
-#ifdef _GNU_SOURCE  // If _GNU_SOURCE was defined by the user, turn on all the other features
+/** @def _POSIX_SOURCE
+Special POSIX macro that is used to include POSIX functionality */
+/** @def _POSIX_C_SOURCE
+Special POSIX macro used to include POSIX functionality */
+#ifndef _GNU_SOURCE  // If `_GNU_SOURCE` was defined by the user, turn on all the other features
+#   ifdef OSPOSIX
+#      undef _POSIX_SOURCE
+#      undef _POSIX_C_SOURCE
+#      define _POSIX_SOURCE   (201712L)
+#      define _POSIX_C_SOURCE   (201712L)
+#   endif
+#   ifdef OSUNIX
+#      define _XOPEN_SOURCE   (700)
+#      define _XOPEN_VERSION   (700)
+#      define _XOPEN_SOURCE_EXTENDED
+#   endif
+#else
 #   undef _ISOC95_SOURCE
 #   define _ISOC95_SOURCE   1
 #   undef _ISOC99_SOURCE
@@ -3478,7 +3775,7 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #   undef _POSIX_SOURCE
 #   define _POSIX_SOURCE   1
 #   undef _POSIX_C_SOURCE
-#   define _POSIX_C_SOURCE   (200809L)
+#   define _POSIX_C_SOURCE   (201712L)
 #   undef _XOPEN_SOURCE
 #   define _XOPEN_SOURCE   (700)
 #   undef _XOPEN_SOURCE_EXTENDED
@@ -3493,12 +3790,12 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 /** Adds features for ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, and GNU extensions */
 #   define __USE_GNU   1
 #endif
-// If nothing (other than _GNU_SOURCE and _DEFAULT_SOURCE) is defined, define _DEFAULT_SOURCE
+// If nothing (other than `_GNU_SOURCE` and `_DEFAULT_SOURCE`) is defined, then define `_DEFAULT_SOURCE`
 #if (defined(_DEFAULT_SOURCE) || (IS_NOT_STRICT_ANSI && ((!(defined(_ISOC99_SOURCE)) || defined(_POSIX_SOURCE) || defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE)))))
 #   undef _DEFAULT_SOURCE
 #   define _DEFAULT_SOURCE   1
 #endif
-// If none of the ANSI/POSIX macros are defined, or if _DEFAULT_SOURCE is defined, use POSIX.1-2008 (or another version depending on _XOPEN_SOURCE)
+// If none of the ANSI nor POSIX macros are defined or if `_DEFAULT_SOURCE` is defined, then use POSIX.1-2017
 #ifdef _DEFAULT_SOURCE
 #   if ((!defined(_POSIX_SOURCE)) && (!defined(_POSIX_C_SOURCE)))
 #      define __USE_POSIX_IMPLICITLY   1
@@ -3506,18 +3803,17 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #   undef _POSIX_SOURCE
 #   define _POSIX_SOURCE   1
 #   undef _POSIX_C_SOURCE
-#   define _POSIX_C_SOURCE   (200809L)
+#   define _POSIX_C_SOURCE   (201712L)
 #endif
+
+// POSIX Specification
+
 #if ((IS_NOT_STRICT_ANSI || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) >= 500)) && (!defined(_POSIX_SOURCE)) && (!defined(_POSIX_C_SOURCE)))
 #   define _POSIX_SOURCE   1
-#   if (defined(_XOPEN_SOURCE) && ((_XOPEN_SOURCE - 0) < 500))
-#      define _POSIX_C_SOURCE   2
-#   elif (defined(_XOPEN_SOURCE) && ((_XOPEN_SOURCE - 0) < 600))
-#      define _POSIX_C_SOURCE   (199506L)
-#   elif (defined(_XOPEN_SOURCE) && ((_XOPEN_SOURCE - 0) < 700))
-#      define _POSIX_C_SOURCE   (200112L)
-#   else
+#   if (defined(_XOPEN_SOURCE) && ((_XOPEN_SOURCE - 0) < 700))
 #      define _POSIX_C_SOURCE   (200809L)
+#   else
+#      define _POSIX_C_SOURCE   (201712L)
 #   endif
 #   define __USE_POSIX_IMPLICITLY   1
 #endif
@@ -3527,30 +3823,93 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #if (defined(_POSIX_SOURCE) || (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE >= 2)) || defined(_XOPEN_SOURCE))
 #   define __USE_POSIX2   1
 #endif
-#ifdef _POSIX_C_SOURCE
-#   if ((_POSIX_C_SOURCE - 0) >= 199309L)
-#      define __USE_POSIX199309   1
-#   elif ((_POSIX_C_SOURCE - 0) >= 199506L)
-#      define __USE_POSIX199506   1
-#   elif ((_POSIX_C_SOURCE - 0) >= 200112L)
-#      define __USE_XOPEN2K   1
-#      undef __USE_ISOC95
-#      define __USE_ISOC95   1
-#      undef __USE_ISOC99
-#      define __USE_ISOC99   1
-#   elif ((_POSIX_C_SOURCE - 0) >= 200809L)
-#      define __USE_XOPEN2K8   1
-#      undef _ATFILE_SOURCE
-#      define _ATFILE_SOURCE   1
-#   endif
+#if ((defined(_POSIX_C_SOURCE) && ((_POSIX_C_SOURCE - 0) >= 200809L)) & (!defined(__USE_POSIX199309)) && (!defined(__USE_POSIX199506)))
+#   define __USE_XOPEN2K8   1
+#   undef _ATFILE_SOURCE
+#   define _ATFILE_SOURCE   1
+#else
+#   error   "This library requires `_POSIX_C_SOURCE` to be at least `200809`!"
 #endif
 #ifndef _POSIX_VERSION
-#   define _POSIX_VERSION   (200809L)
+#   define _POSIX_VERSION   _POSIX_C_SOURCE
 #endif
 #ifndef _POSIX2_VERSION
-#   define _POSIX2_VERSION   (200809L)
+#   define _POSIX2_VERSION   _POSIX_C_SOURCE
 #endif
+#ifndef __POSIX_VISIBLE
+#   define __POSIX_VISIBLE   _POSIX_C_SOURCE
+#endif
+#define _POSIX2_C_BIND   (200112L)
+#define _POSIX2_C_DEV   (200112L)
+#define _POSIX2_CHAR_TERM   (200112L)
+#define _POSIX2_FORT_DEV   (-1)
+#define _POSIX2_FORT_RUN   (200112L)
+#define _POSIX2_LOCALEDEF   (200112L)
+#define _POSIX2_PBS   (-1)
+#define _POSIX2_PBS_ACCOUNTING   (-1)
+#define _POSIX2_PBS_CHECKPOINT   (-1)
+#define _POSIX2_PBS_LOCATE   (-1)
+#define _POSIX2_PBS_MESSAGE   (-1)
+#define _POSIX2_PBS_TRACK   (-1)
+#define _POSIX2_SW_DEV   (200112L)
+#define _POSIX2_UPE   (200112L)
+#define _POSIX_ADVISORY_INFO   (-1)
+#define _POSIX_ASYNCHRONOUS_IO   (-1)
+#define _POSIX_BARRIERS   (-1)
+#define _POSIX_CHOWN_RESTRICTED   (200112L)
+#define _POSIX_CLOCK_SELECTION   (-1)
+#define _POSIX_CPUTIME   (200809L)
+#define _POSIX_FSYNC   (200112L)
+#define _POSIX_IPV6   (200112L)
+#define _POSIX_JOB_CONTROL   (200112L)
+#define _POSIX_MAPPED_FILES   (200809L)
+#define _POSIX_MEMLOCK   (-1)
+#define _POSIX_MEMLOCK_RANGE   (-1)
+#define _POSIX_MEMORY_PROTECTION   (200809L)
+#define _POSIX_MESSAGE_PASSING   (-1)
+#define _POSIX_MONOTONIC_CLOCK   (200809L)
+#define _POSIX_NO_TRUNC   (200112L)
+#define _POSIX_PRIORITIZED_IO   (-1)
+#define _POSIX_PRIORITY_SCHEDULING   (-1)
+#define _POSIX_RAW_SOCKETS   (-1)
+#define _POSIX_READER_WRITER_LOCKS   (200112L)
+#define _POSIX_REALTIME_SIGNALS   (200809L)
+#define _POSIX_REGEXP   (200112L)
+#define _POSIX_SAVED_IDS   (200112L)
+#define _POSIX_SEMAPHORES   (200112L)
+#define _POSIX_SHARED_MEMORY_OBJECTS   (-1)
+#define _POSIX_SHELL   (200112L)
+#define _POSIX_SPAWN   (-1)
+#define _POSIX_SPIN_LOCKS   (-1)
+#define _POSIX_SPORADIC_SERVER   (-1)
+#define _POSIX_SYNCHRONIZED_IO   (-1)
+#define _POSIX_THREAD_ATTR_STACKADDR   (200112L)
+#define _POSIX_THREAD_ATTR_STACKSIZE   (200809L)
+#define _POSIX_THREAD_CPUTIME   (200809L)
+#define _POSIX_THREAD_PRIO_INHERIT   (-1)
+#define _POSIX_THREAD_PRIO_PROTECT   (-1)
+#define _POSIX_THREAD_PRIORITY_SCHEDULING   (-1)
+#define _POSIX_THREAD_PROCESS_SHARED   (200809L)
+#define _POSIX_THREAD_SAFE_FUNCTIONS   (200112L)
+#define _POSIX_THREAD_SPORADIC_SERVER   (-1)
+#define _POSIX_THREADS   (200112L)
+#define _POSIX_TIMEOUTS   (-1)
+#define _POSIX_TIMERS   (200809L)
+#define _POSIX_TRACE   (-1)
+#define _POSIX_TRACE_EVENT_FILTER   (-1)
+#define _POSIX_TRACE_INHERIT   (-1)
+#define _POSIX_TRACE_LOG   (-1)
+#define _POSIX_TYPED_MEMORY_OBJECTS   (-1)
+
+// XOPEN Specification
+
 #ifdef _XOPEN_SOURCE
+/** @def _XOPEN_SOURCE
+Special UNIX macro used to include functionality described in the X/Open Portability Guide */
+/** @def _XOPEN_VERSION
+Special UNIX macro used to include functionality described in the X/Open Portability Guide */
+/** @def _XOPEN_SOURCE_EXTENDED
+Special UNIX macro used to include extra functionality described in the X/Open Portability Guide */
 #   define __USE_XOPEN   1
 #   if ((_XOPEN_SOURCE - 0) >= 500)
 #      define __USE_XOPEN_EXTENDED   1
@@ -3574,86 +3933,66 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #         define __USE_XOPEN_EXTENDED   1
 #      endif
 #   endif
+#   ifndef __XSI_VISIBLE
+#      if ((_XOPEN_SOURCE - 0) >= 700)
+#         define __XSI_VISIBLE   700
+#      elif ((_XOPEN_SOURCE - 0) >= 600)
+#         define __XSI_VISIBLE   600
+#      elif ((_XOPEN_SOURCE - 0) >= 500)
+#         define __XSI_VISIBLE   500
+#      endif
+#   endif
 #endif  // _XOPEN_SOURCE
 #if (defined(_POSIX_VERSION) && (_POSIX_VERSION > 0))
+#   define _XOPEN_CRYPT   1
+#   define _XOPEN_ENH_I18N   1
+#   define _XOPEN_SHM   1
+#   define _XOPEN_UNIX   1
 #   define _XOPEN_XPG2   1
 #   define _XOPEN_XPG3   1
 #   define _XOPEN_XPG4   1
-#   define _XOPEN_UNIX   1
-#   define _XOPEN_ENH_I18N   1
-#   define _XOPEN_CRYPT   1
 #endif
-#if (defined(_XOPEN_SOURCE ) && (!defined(__XSI_VISIBLE)))
-#   if ((_XOPEN_SOURCE - 0) >= 700)
-#      define __XSI_VISIBLE   700
-#   elif ((_XOPEN_SOURCE - 0) >= 600)
-#      define __XSI_VISIBLE   600
-#   elif ((_XOPEN_SOURCE - 0) >= 500)
-#      define __XSI_VISIBLE   500
-#   endif
+#ifndef _XOPEN_LEGACY
+#   define _XOPEN_LEGACY   (-1)
 #endif
-#ifdef _POSIX_C_SOURCE
-#   if (_POSIX_C_SOURCE >= 200809)
-#      define __POSIX_VISIBLE   200809
-#      define __ISO_C_VISIBLE   1999
-#   elif (_POSIX_C_SOURCE >= 200112)
-#      define __POSIX_VISIBLE   200112
-#      define __ISO_C_VISIBLE   1999
-#   elif (_POSIX_C_SOURCE >= 199506)
-#      define __POSIX_VISIBLE   199506
-#      define __ISO_C_VISIBLE   1990
-#   elif (_POSIX_C_SOURCE >= 199309)
-#      define __POSIX_VISIBLE   199309
-#      define __ISO_C_VISIBLE   1990
-#   elif (_POSIX_C_SOURCE >= 199209)
-#      define __POSIX_VISIBLE   199209
-#      define __ISO_C_VISIBLE   1990
-#   elif (_POSIX_C_SOURCE >= 199009)
-#      define __POSIX_VISIBLE   199009
-#      define __ISO_C_VISIBLE   1990
-#   else
-#      define __POSIX_VISIBLE   198808
-#      define __ISO_C_VISIBLE   0
-#   endif
-#else
-#   ifdef _ANSI_SOURCE
-#      define __POSIX_VISIBLE   0
-#      define __XSI_VISIBLE   0
-#      define __BSD_VISIBLE   0
-#      define __ISO_C_VISIBLE   1990
-#   elif defined(_C99_SOURCE)
-#      define __POSIX_VISIBLE   0
-#      define __XSI_VISIBLE   0
-#      define __BSD_VISIBLE   0
-#      define __ISO_C_VISIBLE   1999
-#   else  // Default environment
-#      define __POSIX_VISIBLE   200809
-#      define __XSI_VISIBLE   700
-#      define __BSD_VISIBLE   1
-#      define __ISO_C_VISIBLE   1999
-#   endif
+#ifndef _XOPEN_REALTIME
+#   define _XOPEN_REALTIME   (-1)
+#endif
+#ifndef _XOPEN_REALTIME_THREADS
+#   define _XOPEN_REALTIME_THREADS   (-1)
+#endif
+#ifndef _XOPEN_STREAMS
+#   define _XOPEN_STREAMS   (-1)
 #endif
 #ifndef __XPG_VISIBLE
 #   define __XPG_VISIBLE   (700)
 #endif
-#ifndef __POSIX_VISIBLE
-#   define __POSIX_VISIBLE   (200809)
-#endif
-#ifndef __ISO_C_VISIBLE
-#   define __ISO_C_VISIBLE   (1999)
-#endif
+
+// BSD Specifications
+
+#define BSD   (199506)
+/** BSD 4.3 Compliant */
+#define BSD4_3   1
+/** BSD 4.4 Compliant */
+#define BSD4_4   1
+/** NeXTBSD version (year, month, release) */
+#define NeXTBSD   (1995064)
+/** NeXTBSD 4.0 */
+#define NeXTBSD4_0   0
 #ifndef __BSD_VISIBLE
 #   define __BSD_VISIBLE   1
 #endif
-#ifndef __BIONIC__
-#   define __BIONIC__   1
-#endif
+
+// Darwin Specifications
+
+/** @def __DARWIN_C_ANSI
+Darwin extensions */
 #ifndef __DARWIN_C_ANSI
-/** Darwin extensions */
 #   define __DARWIN_C_ANSI   (010000L)
 #endif
+/** @def __DARWIN_C_FULL
+Darwin extensions */
 #ifndef __DARWIN_C_FULL
-/** Darwin extensions */
 #   define __DARWIN_C_FULL   (900000L)
 #endif
 #ifdef _ANSI_SOURCE
@@ -3677,6 +4016,32 @@ _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for _DEFAULT_SOURCE */
 #endif
 #if (IS_STRICT_ANSI && ((__STDC_VERSION__ - 0) < 199901L) && (!defined(__GNUG__)))
 #   define __DARWIN_NO_LONG_LONG   1
+#endif
+#ifndef __DARWIN_64_BIT_INO_T
+#   if ((defined(__INO_T_MATCHES_INO64_T) && (__INO_T_MATCHES_INO64_T > 0)) || (defined(__OFF_T_MATCHES_OFF64_T) && (__OFF_T_MATCHES_OFF64_T > 0)))
+#      define __DARWIN_64_BIT_INO_T   1
+#   else
+#      define __DARWIN_64_BIT_INO_T   SUPPORTS_LARGEFILE64
+#   endif
+#endif
+#ifndef DARWIN_64_BIT_INO_T
+#   define DARWIN_64_BIT_INO_T   __DARWIN_64_BIT_INO_T
+#endif
+#ifndef __DARWIN_ONLY_64_BIT_INO_T
+#   define __DARWIN_ONLY_64_BIT_INO_T   DARWIN_64_BIT_INO_T
+#endif
+#if DARWIN_64_BIT_INO_T
+/** Indicates that the ino_t type is 64-bit and structures modified for 64-bit inodes (like struct stat) will be used */
+#   define _DARWIN_FEATURE_64_BIT_INODE   1
+/** Indicates that the ino_t type may only be 64-bit; there is no support for 32-bit ino_t when this macro is defined (and non-zero); There is no struct stat64 either, as the regular struct stat will already be the 64-bit version */
+#   define _DARWIN_FEATURE_ONLY_64_BIT_INODE   1
+#endif
+
+#ifndef __ISO_C_VISIBLE
+#   define __ISO_C_VISIBLE   (2017)
+#endif
+#ifndef __BIONIC__
+#   define __BIONIC__   1
 #endif
 #ifdef _LARGEFILE_SOURCE
 #   define __USE_LARGEFILE   1
@@ -3707,25 +4072,6 @@ Indicates support for a 64-bit I/O interface, which allows large files and large
 #endif
 #if (defined(_ATFILE_SOURCE) && (!defined(__USE_ATFILE)))
 #   define __USE_ATFILE   1
-#endif
-#ifndef __DARWIN_64_BIT_INO_T
-#   if ((defined(__INO_T_MATCHES_INO64_T) && (__INO_T_MATCHES_INO64_T > 0)) || (defined(__OFF_T_MATCHES_OFF64_T) && (__OFF_T_MATCHES_OFF64_T > 0)))
-#      define __DARWIN_64_BIT_INO_T   1
-#   else
-#      define __DARWIN_64_BIT_INO_T   SUPPORTS_LARGEFILE64
-#   endif
-#endif
-#ifndef DARWIN_64_BIT_INO_T
-#   define DARWIN_64_BIT_INO_T   __DARWIN_64_BIT_INO_T
-#endif
-#ifndef __DARWIN_ONLY_64_BIT_INO_T
-#   define __DARWIN_ONLY_64_BIT_INO_T   DARWIN_64_BIT_INO_T
-#endif
-#if DARWIN_64_BIT_INO_T
-/** Indicates that the ino_t type is 64-bit and structures modified for 64-bit inodes (like struct stat) will be used */
-#   define _DARWIN_FEATURE_64_BIT_INODE   1
-/** Indicates that the ino_t type may only be 64-bit; there is no support for 32-bit ino_t when this macro is defined (and non-zero); There is no struct stat64 either, as the regular struct stat will already be the 64-bit version */
-#   define _DARWIN_FEATURE_ONLY_64_BIT_INODE   1
 #endif
 /** @def DEBUG
 Enable/Disable Debugging */
@@ -3772,6 +4118,8 @@ Adds code that detects buffer-overflow errors (if value above 0) */
 /** Indicates whether 'extern inline' is defined for functions in headers */
 #   define __USE_EXTERN_INLINES   1
 #endif
+/** @def __BIONIC_FORTIFY
+Adds lightweight checks (if value above 0) that detect some buffer overflow errors */
 #if ((defined(_FORTIFY_SOURCE) && (_FORTIFY_SOURCE > 0)) && IS_OPT_OVER_0)
 #   define __BIONIC_FORTIFY   1
 #else
@@ -3781,108 +4129,15 @@ Adds code that detects buffer-overflow errors (if value above 0) */
 #   define BIONIC_FORTIFY   __BIONIC_FORTIFY
 #endif
 
-
-// POSIX & UNIX MACROS
-
-#define BSD   (199506)
-/** BSD 4.3 Compliant */
-#define BSD4_3   1
-/** BSD 4.4 Compliant */
-#define BSD4_4   1
-/** NeXTBSD version (year, month, release) */
-#define NeXTBSD   (1995064)
-/** NeXTBSD 4.0 */
-#define NeXTBSD4_0   0
-#define _POSIX_SEMAPHORES   (200112L)
-#define _POSIX_THREADS   (200112L)
-#define _POSIX_MAPPED_FILES   (200809L)
-#define _POSIX_THREAD_PROCESS_SHARED   (200809L)
-#define _POSIX_THREAD_ATTR_STACKADDR   (200112L)
-#define _POSIX_THREAD_ATTR_STACKSIZE   (200809L)
-#define _POSIX_THREAD_PRIORITY_SCHEDULING   (-1)
-#define _POSIX_REALTIME_SIGNALS   (200809L)
-#define _POSIX_MEMORY_PROTECTION   (200809L)
-#define _POSIX_MONOTONIC_CLOCK   (200809L)
-#define _POSIX_TIMERS   (200809L)
-#define _POSIX_CPUTIME   (200809L)
-#define _POSIX_THREAD_CPUTIME   (200809L)
-#define _POSIX_ADVISORY_INFO   (-1)
-#define _POSIX_ASYNCHRONOUS_IO   (-1)
-#define _POSIX_BARRIERS   (-1)
-#define _POSIX_CHOWN_RESTRICTED   (200112L)
-#define _POSIX_CLOCK_SELECTION   (-1)
-#define _POSIX_FSYNC   (200112L)
-#define _POSIX_IPV6   (200112L)
-/** Implementation supports job control */
-#define _POSIX_JOB_CONTROL   (200112L)
-#define _POSIX_MEMLOCK   (-1)
-#define _POSIX_MEMLOCK_RANGE   (-1)
-#define _POSIX_MESSAGE_PASSING   (-1)
-#define _POSIX_NO_TRUNC   (200112L)
-#define _POSIX_PRIORITIZED_IO   (-1)
-#define _POSIX_PRIORITY_SCHEDULING   (-1)
-#define _POSIX_RAW_SOCKETS   (-1)
-#define _POSIX_READER_WRITER_LOCKS   (200112L)
-#define _POSIX_REGEXP   (200112L)
-#define _POSIX_SAVED_IDS   (200112L)
-#define _POSIX_SHARED_MEMORY_OBJECTS   (-1)
-#define _POSIX_SHELL   (200112L)
-#define _POSIX_SPAWN   (-1)
-#define _POSIX_SPIN_LOCKS   (-1)
-#define _POSIX_SPORADIC_SERVER   (-1)
-#define _POSIX_SYNCHRONIZED_IO   (-1)
-#define _POSIX_THREAD_PRIO_INHERIT   (-1)
-#define _POSIX_THREAD_PRIO_PROTECT   (-1)
-#define _POSIX_THREAD_PRIORITY_SCHEDULING   (-1)
-#define _POSIX_THREAD_SAFE_FUNCTIONS   (200112L)
-#define _POSIX_THREAD_SPORADIC_SERVER   (-1)
-#define _POSIX_TIMEOUTS   (-1)
-#define _POSIX_TRACE   (-1)
-#define _POSIX_TRACE_EVENT_FILTER   (-1)
-#define _POSIX_TRACE_INHERIT   (-1)
-#define _POSIX_TRACE_LOG   (-1)
-#define _POSIX_TYPED_MEMORY_OBJECTS   (-1)
-#define _POSIX2_C_BIND   (200112L)
-#define _POSIX2_C_DEV   (200112L)
-#define _POSIX2_CHAR_TERM   (200112L)
-#define _POSIX2_FORT_DEV   (-1)
-#define _POSIX2_FORT_RUN   (200112L)
-#define _POSIX2_LOCALEDEF   (200112L)
-#define _POSIX2_PBS   (-1)
-#define _POSIX2_PBS_ACCOUNTING   (-1)
-#define _POSIX2_PBS_CHECKPOINT   (-1)
-#define _POSIX2_PBS_LOCATE   (-1)
-#define _POSIX2_PBS_MESSAGE   (-1)
-#define _POSIX2_PBS_TRACK   (-1)
-#define _POSIX2_SW_DEV   (200112L)
-#define _POSIX2_UPE   (200112L)
-#ifndef _XOPEN_CRYPT
-#   define _XOPEN_CRYPT   1
-#endif
-#ifndef _XOPEN_ENH_I18N
-#   define _XOPEN_ENH_I18N   1
-#endif
-#ifndef _XOPEN_LEGACY
-#   define _XOPEN_LEGACY   (-1)
-#endif
-#ifndef _XOPEN_REALTIME
-#   define _XOPEN_REALTIME   (-1)
-#endif
-#ifndef _XOPEN_REALTIME_THREADS
-#   define _XOPEN_REALTIME_THREADS   (-1)
-#endif
-#ifndef _XOPEN_SHM
-#   define _XOPEN_SHM   1
-#endif
-#ifndef _XOPEN_STREAMS
-#   define _XOPEN_STREAMS   (-1)
-#endif
-#ifndef _XOPEN_UNIX
-#   define _XOPEN_UNIX   1
-#endif
+/** @} */  // }
 
 
-// POSIX MANDATED VALUES (<bits/posix1_lim.h>)
+// POSIX MANDATED VALUES
+
+/** @defgroup POSIX_Mandated_Values Macros used to store various limits and properties required by POSIX
+@{ */  // (FB){
+
+// POSIX.1 MANDATED VALUES (<bits/posix1_lim.h>)
 
 /** Number of files one process can have open at once */
 #define _POSIX_OPEN_MAX   20
@@ -3998,29 +4253,28 @@ Number of chars in a path name including NUL */
 #define _POSIX_CLOCKRES_MIN   20000000
 #define _POSIX_THREAD_DESTRUCTOR_ITERATIONS   4
 
-
-// POSIX2 MANDATED VALUES 2 (<bits/posix2_lim.h>)
+// POSIX.2 MANDATED VALUES (<bits/posix2_lim.h>)
 
 /** The maximum `ibase` and `obase` values allowed by the `bc` utility */
-#define _POSIX2_BC_BASE_MAX   (99)
+#define _POSIX2_BC_BASE_MAX   99
 /** The maximum number of elements allowed in an array by the `bc` utility */
-#define _POSIX2_BC_DIM_MAX   (2048)
+#define _POSIX2_BC_DIM_MAX   2048
 /** The maximum `scale` value allowed by the `bc` utility */
-#define _POSIX2_BC_SCALE_MAX   (99)
+#define _POSIX2_BC_SCALE_MAX   99
 /** The maximum length of a string constant accepted by the `bc` utility */
-#define _POSIX2_BC_STRING_MAX   (1000)
+#define _POSIX2_BC_STRING_MAX   1000
 /** The maximum number of weights that can be assigned to an entry of the LC_COLLATE `order` keyword in the locale definition file */
-#define _POSIX2_COLL_WEIGHTS_MAX   (2)
+#define _POSIX2_COLL_WEIGHTS_MAX   2
 /** The maximum number of expressions that can be nested within parentheses by the `expr` utility */
-#define _POSIX2_EXPR_NEST_MAX   (32)
+#define _POSIX2_EXPR_NEST_MAX   32
 /** The maximum length, in bytes, of an input line */
-#define _POSIX2_LINE_MAX   (2048)
+#define _POSIX2_LINE_MAX   2048
 /** POSIX 1003.2 RE length limit; The maximum number of repeated occurrences of a regular expression permitted when using the interval notation `\{M,N\}` */
-#define _POSIX2_RE_DUP_MAX   (255)
+#define _POSIX2_RE_DUP_MAX   255
 /** The maximum number of bytes in a character class name; There is no fixed limit */
-#define _POSIX2_CHARCLASS_NAME_MAX   (14)
+#define _POSIX2_CHARCLASS_NAME_MAX   14
 /** This value is defined like this in regex.h */
-#define RE_DUP_MAX   (0x7fff)
+#define RE_DUP_MAX   0x7fff
 // These values are implementation-specific, and may vary within the implementation
 #ifndef BC_BASE_MAX
 /** Maximum obase values allowed by the bc utility */
@@ -4049,62 +4303,77 @@ Number of chars in a path name including NUL */
 #   define CHARCLASS_NAME_MAX   _POSIX2_CHARCLASS_NAME_MAX
 #endif
 
+/** @} */  // }
+
 
 // SUS REQUIREMENTS
 
+/** @defgroup SUS_Requirements Macros used to store various limits and properties required by SUS
+@{ */  // (FB){
+
 /** The number of replenishment operations that may be simultaneously pending for a particular sporadic server scheduler */
-#define _POSIX_SS_REPL_MAX   (4)
+#define _POSIX_SS_REPL_MAX   4
 /** The number of data keys per process */
-#define _POSIX_THREAD_KEYS_MAX   (128)
-#define _POSIX_THREAD_THREADS_MAX   (64)
-#define _POSIX_TRACE_EVENT_NAME_MAX   (30)
-#define _POSIX_TRACE_NAME_MAX   (8)
-#define _POSIX_TRACE_SYS_MAX   (8)
-#define _POSIX_TRACE_USER_EVENT_MAX   (32)
+#define _POSIX_THREAD_KEYS_MAX   128
+#define _POSIX_THREAD_THREADS_MAX   64
+#define _POSIX_TRACE_EVENT_NAME_MAX   30
+#define _POSIX_TRACE_NAME_MAX   8
+#define _POSIX_TRACE_SYS_MAX   8
+#define _POSIX_TRACE_USER_EVENT_MAX   32
 /** Minimal requirement of SUSv2 */
 #define WCIO_UNGETWC_BUFSIZE   1
+
+/** @} */  // }
 
 
 // LIMITS FOR X/OPEN PORTABILITY (<bits/xopen_lim.h>)
 
+/** @defgroup XOPEN_Limits Macros used to store various limits and properties required by XOPEN for Portability
+@{ */  // (FB){
+
 /** Maximum number of bytes in a filename (not including the terminating null of a filename string) */
-#define _XOPEN_NAME_MAX   (255)
+#define _XOPEN_NAME_MAX   255
 /** Minimum number the implementation will accept as the maximum number of bytes in a pathname */
-#define _XOPEN_PATH_MAX   (1024)
-/** Maximum number of iovec structures that one process has available for use with readv() or writev() */
-#define IOV_MAX   (1024)
-/** Maximum number of `iovec` structures that one process has available for use with `readv` or writev` */
-#define _XOPEN_IOV_MAX   (16)
-/** Maximum value of `digit` in calls to the `printf` and `scanf` functions */
+#define _XOPEN_PATH_MAX   1024
+/** Maximum number of iovec structures that one process has available for use with `readv()` or `writev()` */
+#define IOV_MAX   1024
+/** Maximum number of `iovec` structures that one process has available for use with `readv()` or writev()` */
+#define _XOPEN_IOV_MAX   16
+/** Maximum value of `digit` in calls to the `printf()` and `scanf()` functions */
 #define NL_ARGMAX   _POSIX_ARG_MAX
 /** Maximum number of bytes in a `LANG` name */
 #define NL_LANGMAX   _POSIX2_LINE_MAX
 /** Maximum number of messages per set */
-#define NL_MGSMAX   (1024)
+#define NL_MGSMAX   1024
 /** Maximum number of bytes in a message */
-#define NL_TEXTMAX   (1024)
+#define NL_TEXTMAX   1024
 /** Default process priority (nice value) */
-#define NZERO   (20)
-#ifdef HAVE_BROKEN_VDISABLE  // _POSIX_VDISABLE
+#define NZERO   20
+/** @def _POSIX_VDISABLE
+POSIX 1003.1 tty disabling character; On some systems, `_POSIX_VDISABLE` is `\\377` since Ultrix does not honor `_POSIX_VDISABLE` (treats it as `^@`); The symptom is that the `^@` keystroke immediately drops the core */
+#ifdef HAVE_BROKEN_VDISABLE
 #   undef _POSIX_VDISABLE
-/** Hack _POSIX_VDISABLE to \\377 since Ultrix does not honor _POSIX_VDISABLE (treats it as ^@); The symptom is that the ^@ keystroke immediately drops the core */
 #   define _POSIX_VDISABLE   ((unsigned char)'\377')
 #else
-/** POSIX 1003.1 tty disabling character */
 #   define _POSIX_VDISABLE   -1
-#endif  // _POSIX_VDISABLE
+#endif
+
+/** @} */  // }
 
 
 // LINUX LIMITS
 
+/** @defgroup Linux_Limits Macros used to store various limits and properties required by Linux
+@{ */  // (FB){
+
 #ifndef RAND_MAX
-/** The largest number rand will return (same as INT_MAX) */
+/** The largest number rand will return (same as `INT_MAX`) */
 #   define RAND_MAX   (INT_MAX)
 #endif
-#define NR_OPEN   (1024)
-#define NLIMITS   (6)
-/** Maximum number of bytes of args + environ for exec() */
-#define ARG_MAX   (131072)
+#define NR_OPEN   1024
+#define NLIMITS   6
+/** Maximum number of bytes of args + environ for `exec()` */
+#define ARG_MAX   131072
 #ifndef NCARGS
 /** Max bytes for an exec function */
 #   define NCARGS   ARG_MAX
@@ -4119,172 +4388,178 @@ Number of chars in a path name including NUL */
 #   define MAXSYMLINKS   32
 #endif
 /** Size of the canonical input queue */
-#define MAX_CANON   (255)
+#define MAX_CANON   255
 /** Size of the type-ahead buffer */
 #define MAX_INPUT   _POSIX_MAX_INPUT
 /** Number of bytes in atomic write to a pipe */
 #define PIPE_BUF   _POSIX_PIPE_BUF
 /** Number of chars in an extended attribute name */
-#define XATTR_NAME_MAX   (255)
+#define XATTR_NAME_MAX   255
 /** Size of an extended attribute value (64k) */
-#define XATTR_SIZE_MAX   (65536)
+#define XATTR_SIZE_MAX   65536
 /** Size of extended attribute namelist (64k) */
-#define XATTR_LIST_MAX   (65536)
-#define RTSIG_MAX   (32)
-#define FILESIZEBITS   (64)
-#define WORD_BIT   (32)
+#define XATTR_LIST_MAX   65536
+#define RTSIG_MAX   32
+#define FILESIZEBITS   64
+#define WORD_BIT   32
 #define TZNAME_MAX   _POSIX_TZNAME_MAX
 #define TTY_NAME_MAX   _POSIX_TTY_NAME_MAX
 #define HOST_NAME_MAX   _POSIX_HOST_NAME_MAX
-#define PTHREAD_KEYS_MAX   (32)
-#define PTHREAD_STACK_MIN   (2048)
-#define PTHREAD_DESTRUCTOR_ITERATIONS   (1)
-#define SEM_VALUE_MAX   (0x7fffffff)
-#define SEM_NSEMS_MAX   (256)
+#define PTHREAD_KEYS_MAX   32
+#define PTHREAD_STACK_MIN   2048
+#define PTHREAD_DESTRUCTOR_ITERATIONS   1
+#define SEM_VALUE_MAX   0x7fffffff
+#define SEM_NSEMS_MAX   256
 #ifndef DELAYTIMER_MAX
-#   define DELAYTIMER_MAX   (0x7fffffff)
+#   define DELAYTIMER_MAX   0x7fffffff
 #endif
-#define MQ_PRIO_MAX   (32768)
+#define MQ_PRIO_MAX   32768
 #define LOGIN_NAME_MAX   _POSIX_LOGIN_NAME_MAX
 #ifndef MAXDOMNAMELEN
 /** Maximum domain name length */
-#   define MAXDOMNAMELEN   (255)
+#   define MAXDOMNAMELEN   255
 #endif
 #ifndef MAXHOSTNAMELEN
 /** Max hostname size */
-#   define MAXHOSTNAMELEN   (255)
+#   define MAXHOSTNAMELEN   255
 #endif
 #ifndef HOST_NAME_MAX
 #   define HOST_NAME_MAX   MAXHOSTNAMELEN
 #endif
 #ifndef NGROUPS
 /** Max number groups */
-#   define NGROUPS   (32)
+#   define NGROUPS   32
 #endif
 #ifndef NGROUPS_MAX
 /** Max number groups */
-#   define NGROUPS_MAX   (32)
+#   define NGROUPS_MAX   32
 #endif
 #ifndef NOGROUP
 /** Marker for empty group set member */
-#   define NOGROUP   (65535)
+#   define NOGROUP   65535
 #endif
 #ifndef CANBSIZE
-#   define CANBSIZE   (255)
+#   define CANBSIZE   255
 #endif
 #ifndef NOFILE
 /** Default max open files per process */
-#   define NOFILE   (256)
+#   define NOFILE   256
 #endif
 #ifndef DEV_BSIZE
 /** Unit of `st_blocks`; All (or most) references to `DEV_BSIZE` are for NetBSD's file images */
-#   define DEV_BSIZE   (512)
+#   define DEV_BSIZE   512
 #endif
 #ifndef NODEV
 /** Non-existent device */
 #   define NODEV   ((dev_t)-1)
 #endif
 /** Max command name remembered */
-#define MAXCOMLEN   (16)
+#define MAXCOMLEN   16
 /** Max interpreter filename length */
-#define MAXINTERP   (64)
+#define MAXINTERP   64
 /** Max simultaneous processes */
 #define MAXUPRC   CHILD_MAX
 /** ORed with pri for tsleep to check signals */
-#define PCATCH   (0x100)
+#define PCATCH   0x100
 /** For tty SIGTTOU and SIGTTIN blocking */
-#define PTTYBLOCK   (0x200)
+#define PTTYBLOCK   0x200
 /** ORed with pri to stop re-aquistion of mutex upon wakeup */
-#define PDROP   (0x400)
+#define PDROP   0x400
 /** ORed with pri to require mutex in spin mode upon wakeup */
-#define PSPIN   (0x800)
+#define PSPIN   0x800
 /** Default file mask: S_IWGRP|S_IWOTH */
-#define CMASK   (022)
-#define MAXBSIZE   (1048576)
+#define CMASK   022
+#define MAXBSIZE   1048576
 #define MAXPHYSIO   MAXPHYS
-#define MAXFRAG   (8)
-#define MAXPHYSIO_WIRED   (16777216)
+#define MAXFRAG   8
+#define MAXPHYSIO_WIRED   16777216
 /** MINBUCKET is the smallest unit of memory that will be allocated; It must be at least large enough to hold a pointer */
-#define MINBUCKET   (4)
-#define FSHIFT   (11)
-#define FSCALE   (0x800)
-#define LIM_NORAISE   (0)
+#define MINBUCKET   4
+#define FSHIFT   11
+#define FSCALE   0x800
+#define LIM_NORAISE   0
 /** Max secs cpu time */
-#define LIM_CPU   (1)
+#define LIM_CPU   1
 /** Max size of file created */
-#define LIM_FSIZE   (2)
+#define LIM_FSIZE   2
 /** Max growth of data space */
-#define LIM_DATA   (3)
+#define LIM_DATA   3
 /** Max growth of stack */
-#define LIM_STACK   (4)
+#define LIM_STACK   4
 /** Max size of `core` file */
-#define LIM_CORE   (5)
+#define LIM_CORE   5
 /** Max desired data+stack core usage */
-#define LIM_MAXRSS   (6)
+#define LIM_MAXRSS   6
 // Priorities; Note that with 32 run queues, differences less than 4 are insignificant
-#define PSWP   (0)
-#define PVM   (4)
-#define PINOD   (8)
-#define PRIBIO   (16)
-#define PVFS   (20)
-#define PZERO   (22)
-#define PSOCK   (24)
-#define PWAIT   (32)
-#define PLOCK   (36)
-#define PPAUSE   (40)
-#define PUSER   (50)
-#define MAXPRI   (127)
-#define PRIMASK   (0xff)
+#define PSWP   0
+#define PVM   4
+#define PINOD   8
+#define PRIBIO   16
+#define PVFS   20
+#define PZERO   22
+#define PSOCK   24
+#define PWAIT   32
+#define PLOCK   36
+#define PPAUSE   40
+#define PUSER   50
+#define MAXPRI   127
+#define PRIMASK   0xff
+
+/** @} */  // }
 
 
 // POSIX & UNIX I/O ENUMS & MACROS
 
 #define F_LINUX_SPECIFIC_BASE   1024
-// STDIO Buffer Sizes
+
+/** @defgroup STDIO_Buffer_Sizes STDIO Buffer Sizes
+@{ */  // (FB){
+
+/** @def BUFSIZ
+Size of the STDIO buffers */
 #ifndef BUFSIZ
 #   if (defined(WANT_SMALL_STDIO_BUFS) || defined(SMALL_STDIO_BUFS))
-/** Size of buffer used by setbuf */
 #      define BUFSIZ   128
 #   elif (defined(WANT_LARGE_STDIO_BUFS) || defined(LARGE_STDIO_BUFS))
-/** Size of buffer used by setbuf */
 #      define BUFSIZ   2048
 #   else
-/** Size of buffer used by setbuf */
 #      define BUFSIZ   1024
 #   endif
 #endif  // BUFSIZ
 #ifndef BUFSIZE
-/** Size of buffer used by setbuf */
+/** Size of the STDIO buffers */
 #      define BUFSIZE   BUFSIZ
 #endif
 #ifndef __STDIO_BUFSIZ
-/** Default buffer size */
+/** Size of the STDIO buffers */
 #   define __STDIO_BUFSIZ   BUFSIZ
 #endif
 #ifndef UNGET
-#   define UNGET   (8)
+#   define UNGET   8
 #endif
+
+/** @} */  // }
+
 #ifndef S_BLKSIZE
 /** Block size for `st_blocks` */
-#   define S_BLKSIZE   (512)
+#   define S_BLKSIZE   512
 #endif
-// Miscellaneous Macros
 #ifndef UTIME_NOW
-#   define UTIME_NOW   (0x3fffffffL)
+#   define UTIME_NOW   0x3fffffffL
 #endif
 #ifndef UTIME_OMIT
-#   define UTIME_OMIT   (0x3ffffffeL)
+#   define UTIME_OMIT   0x3ffffffeL
 #endif
 #if (defined(OSNETBSD) || defined(OSMINIX))
-#   define UF_SETTABLE   UINT16_MAX
-#   define UF_NODUMP   1
-#   define UF_IMMUTABLE   2
-#   define UF_APPEND   4
-#   define UF_OPAQUE   8
-#   define SF_SETTABLE   0xffff0000
+#   define SF_APPEND   0x40000
 #   define SF_ARCHIVED   0x10000
 #   define SF_IMMUTABLE   0x20000
-#   define SF_APPEND   0x40000
+#   define SF_SETTABLE   0xffff0000
+#   define UF_APPEND   4
+#   define UF_IMMUTABLE   2
+#   define UF_NODUMP   1
+#   define UF_OPAQUE   8
+#   define UF_SETTABLE   UINT16_MAX
 #endif
 #define F_OWNER_TID   0
 #define F_OWNER_PID   1
@@ -4301,7 +4576,12 @@ Number of chars in a path name including NUL */
 /** Add the seals given in the bit-mask argument `arg` to the set of seals of the inode referred to by the file descriptor */
 #define F_GET_SEALS   1034
 
-// File Orientations & Modes
+/** @defgroup File_Properties Macros and enums used to represent various file properties
+@{ */  // (FB){
+
+/** @defgroup File_Orientations_and_Modes Macros for file orientations & modes
+@{ */  // (FB){
+
 #define _O_BINARY   0x8000
 #define _O_BYTE   -1
 #define _O_NOINHERIT   0x80
@@ -4316,6 +4596,8 @@ Number of chars in a path name including NUL */
 #define _O_UNCHANGED   0x0
 #define _O_WIDE   1
 #define _O_WTEXT   0x10000
+
+/** @} */  // }
 
 /** POSIX 1003.1 names for standard file descriptors */
 enum STD_FD {
@@ -4362,6 +4644,9 @@ enum FILE_ACCESS_MODES {
 /** 4.4BSD extension to atomically obtain an exclusive lock on a file */
 #   define _O_EXLOCK   O_EXLOCK
 };
+
+/** @defgroup File_Permissions File permission values stored in enums and macros
+@{ */  // (FB){
 
 /** Stat file permission flags */
 enum STAT_FILE_PERM_FLAGS {
@@ -4427,85 +4712,73 @@ enum STAT_FILE_PERM_FLAGS {
 #   define S_ISUID   __S_ISUID
 };
 /** Read by group */
-#define S_IRGRP   (S_IRUSR >> 3)
+#define S_IRGRP   32
 /** Write by group */
-#define S_IWGRP   (S_IWUSR >> 3)
+#define S_IWGRP   16
 /** Read and write by group */
-#define S_IRWGRP   (S_IRWU >> 3)
+#define S_IRWGRP   48
 /** Execute by group */
-#define S_IXGRP   (S_IXUSR >> 3)
+#define S_IXGRP   8
 /** Read, write, and execute by group */
-#define S_IRWXG   (S_IRWXU >> 3)
+#define S_IRWXG   56
 /** Read by others */
-#define S_IROTH   (S_IRUSR >> 6)
+#define S_IROTH   4
 /** Write by others */
-#define S_IWOTH   (S_IWUSR >> 6)
+#define S_IWOTH   2
 /** Read and write by others */
-#define S_IRWOTH   (S_IRWU >> 6)
+#define S_IRWOTH   6
 /** Execute by others */
-#define S_IXOTH   (S_IXUSR >> 6)
+#define S_IXOTH   1
 /** Read, write, and execute by others */
-#define S_IRWXO   (S_IRWXU >> 6)
+#define S_IRWXO   7
 /** All users can read (0222) */
-#define ALL_S_IREAD   (S_IREAD | S_IRGRP | S_IROTH)
+#define ALL_S_IREAD   292
 /** All users can write (0444) */
-#define ALL_S_IWRITE   (S_IWRITE | S_IWGRP | S_IWOTH)
+#define ALL_S_IWRITE   146
 /** All users can read and write (0666) */
-#define ALL_S_IRW   (S_IRWU | S_IRWGRP | S_IRWOTH)
+#define ALL_S_IRW   438
 /** All users can read and write (0666) */
 #define DEFFILEMODE   ALL_S_IRW
 /** All users can execute (0111) */
-#define ALL_S_IEXEC   (S_IEXEC | S_IXGRP | S_IXOTH)
+#define ALL_S_IEXEC   73
 /** All users can read, write, and execute (0777) */
-#define ALL_S_IRWX   (S_IRWXU | S_IRWXG | S_IRWXO)
+#define ALL_S_IRWX   511
 /** All users can read, write, and execute (0777) */
 #define ACCESSPERMS   ALL_S_IRWX
 /** All users can read, write, and execute (7777) */
-#define ALLPERMS   (S_ISUID | S_ISGID | S_ISVTX | ALL_S_IRWX)
+#define ALLPERMS   4095
 /** All the mode bits that can be affected by chmod */
 #define CHMOD_MODE_BITS   ALLPERMS
 #define AT_FDCWD   -100
-#define AT_SYMLINK_NOFOLLOW   0x100
-#define AT_REMOVEDIR   0x200
-#define AT_EACCESS   0x200
-#define AT_SYMLINK_FOLLOW   0x400
-#define AT_NO_AUTOMOUNT   0x800
-#define AT_EMPTY_PATH   0x1000
+#define AT_SYMLINK_NOFOLLOW   256
+#define AT_REMOVEDIR   512
+#define AT_EACCESS   512
+#define AT_SYMLINK_FOLLOW   1024
+#define AT_NO_AUTOMOUNT   2048
+#define AT_EMPTY_PATH   4096
+
+/** @} */  // }
 
 /** File status flags for creating and manipulating files */
 enum FILE_STATUS_FLAGS {
 #   if (defined(ARCHITANIUM) || defined(ARCHS390) || defined(ARCHX86))
-/** Create if nonexistent */
-	O_CREAT = 0100,
-/** Error if already exists */
-	O_EXCL = 0200,
-/** Do not assign controlling terminal */
-	O_NOCTTY = 0400,
-/** Truncate to zero length */
-	O_TRUNC = 01000,
-/** Set append mode */
-	O_APPEND = 02000,
-/** No delay */
-	O_NONBLOCK = 04000,
-#      define O_NDELAY   O_NONBLOCK
-/** Synchronous writes (ext2, ext3, and ext4 filesystems only) */
-	O_SYNC = 010000,
-/** BSD compatibility */
-	FASYNC = 020000,
-/** Direct I/O hint */
-	O_DIRECT = 040000,
+	O_CREAT = 0100,  //!< O_CREAT Create if nonexistent
+	O_EXCL = 0200,  //!< Error if already exists
+	O_NOCTTY = 0400,  //!< Do not assign controlling terminal
+	O_TRUNC = 01000,  //!< Truncate to zero length
+	O_APPEND = 02000,  //!< Set append mode
+	O_NONBLOCK = 04000,  //!< No delay
+	O_SYNC = 010000,  //!< Synchronous writes (ext2, ext3, and ext4 filesystems only)
+	FASYNC = 020000,  //!< BSD compatibility
+	O_DIRECT = 040000,  //!< Direct I/O hint
 	O_LARGEFILE = 0100000,
-/** Fail if not a directory */
-	O_DIRECTORY = 0200000,
-/** Do not follow symlinks on the last */
-	O_NOFOLLOW = 0400000,
+	O_DIRECTORY = 0200000,  //!< Fail if not a directory
+	O_NOFOLLOW = 0400000,  //!< Do not follow symlinks on the last
 	O_NOATIME = 01000000,
-/** Resolve pathname but do not open file */
-	O_PATH = 010000000,
+	O_PATH = 010000000,  //!< Resolve pathname but do not open file
 	O_TMPFILE = 020200000
 #   elif defined(ARCHALPHA)
 	O_NONBLOCK = 4,
-#      define O_NDELAY   O_NONBLOCK
 	O_APPEND = 010,
 	O_CREAT = 01000,
 	O_TRUNC = 02000,
@@ -4528,7 +4801,6 @@ enum FILE_STATUS_FLAGS {
 	O_TRUNC = 01000,
 	O_APPEND = 02000,
 	O_NONBLOCK = 04000,
-#      define O_NDELAY   O_NONBLOCK
 	O_SYNC = 010000,
 	FASYNC = 020000,
 	O_DIRECTORY = 040000,
@@ -4542,7 +4814,6 @@ enum FILE_STATUS_FLAGS {
 	O_APPEND = 8,
 	O_SYNC = 0x10,
 	O_NONBLOCK = 0x80,
-#      define O_NDELAY   O_NONBLOCK
 	O_CREAT = 0x100,
 	O_TRUNC = 0x200,
 	O_EXCL = 0x400,
@@ -4568,15 +4839,10 @@ enum FILE_STATUS_FLAGS {
 	O_DIRECT = 040000,
 	O_SYNC = 0100000,
 	O_NONBLOCK = 0200004,
-#      define O_NDELAY   O_NONBLOCK
 	O_NOCTTY = 0400000,
-/** Write: I/O data completion (HPUX only) */
-	O_DSYNC = 01000000,
-/** Read: I/O completion as for write (HPUX only) */
-	O_RSYNC = 02000000,
+	O_DSYNC = 01000000,  //!< Write: I/O data completion (HPUX only)
+	O_RSYNC = 02000000,  //!< Read: I/O completion as for write (HPUX only)
 	O_NOATIME = 04000000,
-/** Invisible I/O (for DMAPI/XDSM) */
-#      define O_INVISIBLE   O_NOATIME
 	O_PATH = 020000000
 #   elif defined(ARCHPOWERPC)
 	O_CREAT = 0100,
@@ -4585,7 +4851,6 @@ enum FILE_STATUS_FLAGS {
 	O_TRUNC = 01000,
 	O_APPEND = 02000,
 	O_NONBLOCK = 04000,
-#      define O_NDELAY   O_NONBLOCK
 	O_SYNC = 010000,
 	FASYNC = 020000,
 	O_DIRECTORY = 040000,
@@ -4626,7 +4891,8 @@ enum FILE_STATUS_FLAGS {
 #define FAPPEND   O_APPEND
 #define FFSYNC   O_FSYNC
 #define FNONBLOCK   O_NONBLOCK
-#define FNDELAY   O_NDELAY
+#define FNDELAY   O_NONBLOCK
+#define O_NDELAY   O_NONBLOCK
 /** Skip exec permission checks */
 #define O_EXEC   O_PATH
 /** Skip search permission checks */
@@ -4647,11 +4913,18 @@ enum FILE_STATUS_FLAGS {
 /** Return EPIPE instead of raising SIGPIPE */
 #   define O_NOSIGPIPE   0
 #endif
+/** @def O_DSYNC
+Write: I/O data completion (HPUX only) */
+/** @def O_RSYNC
+Read: I/O completion as for write (HPUX only) */
 #ifndef O_DSYNC
-/** Write: I/O data completion (HPUX only) */
 #   define O_DSYNC   0
-/** Read: I/O completion as for write (HPUX only) */
 #   define O_RSYNC   0
+#endif
+/** @def O_INVISIBLE
+Invisible I/O (for DMAPI/XDSM) */
+#ifndef O_INVISIBLE
+#   define O_INVISIBLE   O_NOATIME
 #endif
 #define HONORED_STATE_MODES   (O_APPEND | O_ASYNC | O_FSYNC | O_NONBLOCK | O_NOATIME)
 /** All settable bits during open(2) */
@@ -4659,17 +4932,17 @@ enum FILE_STATUS_FLAGS {
 
 /** I/O Buffering Flags */
 enum IO_BUFFERING {
-/** setvbuf should set I/O fully buffered */
+/** `setvbuf()` should set I/O fully buffered */
 	_IOFBF = 0,
-/** setvbuf should set I/O fully buffered */
+/** `setvbuf()` should set I/O fully buffered */
 #   define __STDIO_IOFBF   _IOFBF
-/** setvbuf should set I/O line buffered */
+/** `setvbuf()` should set I/O line buffered */
 	_IOLBF = 1,
-/** setvbuf should set I/O line buffered */
+/** `setvbuf()` should set I/O line buffered */
 #   define __STDIO_IOLBF   _IOLBF
-/** setvbuf should set I/O unbuffered */
+/** `setvbuf()` should set I/O unbuffered */
 	_IONBF = 2
-/** setvbuf should set I/O unbuffered */
+/** `setvbuf()` should set I/O unbuffered */
 #   define __STDIO_IONBF   _IONBF
 };
 
@@ -4749,14 +5022,14 @@ enum STAT_FILETYPES {
 #   define S_IFMT   __S_IFMT
 };
 // Test Macros for Filetypes
-#define __S_ISTYPE(mode, mask)   (((mode) & S_IFMT) == (mask))
-#define S_ISDIR(mode)   __S_ISTYPE((mode), S_IFDIR)
-#define S_ISCHR(mode)   __S_ISTYPE((mode), S_IFCHR)
-#define S_ISBLK(mode)   __S_ISTYPE((mode), S_IFBLK)
-#define S_ISREG(mode)   __S_ISTYPE((mode), S_IFREG)
-#define S_ISFIFO(mode)   __S_ISTYPE((mode), S_IFIFO)
-#define S_ISLNK(mode)   __S_ISTYPE((mode), S_IFLNK)
-#define S_ISSOCK(mode)   __S_ISTYPE((mode), S_IFSOCK)
+#define __S_ISTYPE(mode, mask)   (((mode) & 0170000) == (mask))
+#define S_ISBLK(mode)   (((mode) & 0170000) == 060000)
+#define S_ISCHR(mode)   (((mode) & 0170000) == 020000)
+#define S_ISDIR(mode)   (((mode) & 0170000) == 040000)
+#define S_ISFIFO(mode)   (((mode) & 0170000) == 010000)
+#define S_ISLNK(mode)   (((mode) & 0170000) == 0120000)
+#define S_ISREG(mode)   (((mode) & 0170000) == 0100000)
+#define S_ISSOCK(mode)   (((mode) & 0170000) == 0140000)
 // POSIX.1b objects; Note that these macros always evaluate to zero
 #define __S_TYPEISMQ(buf)   (0)
 #define S_TYPEISMQ(buf)   (0)
@@ -5091,8 +5364,13 @@ enum SPLICE_FLAGS {
 	SPLICE_F_GIFT = 8
 };
 
+/** @} */  // }
+
 
 // SYSCONF
+
+/** @defgroup Sysconf_Values Macros values for various sysconf properties
+@{ */  // (FB){
 
 #if (defined(OSBEOS) || defined(OSHAIKU))
 #   define _PC_CHOWN_RESTRICTED   1
@@ -5178,7 +5456,7 @@ enum SPLICE_FLAGS {
 #   define _PC_SYMLINK_MAX   12
 #   define _PC_2_SYMLINKS   13
 #   define _PC_ACL_EXTENDED   14
-/** From OpenSolaris; used by SEEK_DATA/SEEK_HOLE */
+/** From OpenSolaris; used by `seek_data()`/`seek_hole()` */
 #   define _PC_MIN_HOLE_SIZE   15
 #   define _SC_ARG_MAX   1
 #   define _SC_CHILD_MAX   2
@@ -5388,6 +5666,21 @@ enum SPLICE_FLAGS {
 #   define _SC_MONOTONIC_CLOCK   0x64
 #endif  // SYSCONF
 
+/** @} */  // }
+
+
+#endif  // SPECIFICATIONS, FEATURES, & ARCHITECTURE MACROS
+
+
+/* ARCHITECTURE MACROS */
+
+
+#ifndef ARCHITECTURE_MACROS_SEEN
+#define ARCHITECTURE_MACROS_SEEN   (1)
+#define SYS_REG_H   (1)
+#define _SYS_REG_H   (1)
+#define _SYS_REG_H_   (1)
+
 
 // ARM MACROS
 
@@ -5425,13 +5718,6 @@ typedef unsigned char   __cpu_simple_lock_nv_t;
 typedef int   __cpu_simple_lock_nv_t;
 #endif
 typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
-#define PRIxPADDR   "lx"
-#define PRIxPSIZE   "lx"
-#define PRIuPSIZE   "lu"
-#define PRIxVADDR   "lx"
-#define PRIxVSIZE   "lx"
-#define PRIuVSIZE   "lu"
-#define PRIxREGISTER   "x"
 
 #define DEFAULT_HZ   1000
 #define __SIMPLELOCK_LOCKED   1
@@ -5547,22 +5833,13 @@ typedef struct label_t { int val[6]; }   label_t;
 #   ifdef PAE
 typedef unsigned long long   paddr_t;
 typedef unsigned long long   psize_t;
-#      define PRIxPADDR   "llx"
-#      define PRIxPSIZE   "llx"
-#      define PRIuPSIZE   "llu"
 #   else
 typedef unsigned long   paddr_t;
 typedef unsigned long   psize_t;
-#      define PRIxPADDR   "lx"
-#      define PRIxPSIZE   "lx"
-#      define PRIuPSIZE   "lu"
 #   endif  // PAE
 #else
 typedef unsigned long long   paddr_t;
 typedef unsigned long long   psize_t;
-#   define PRIxPADDR   "llx"
-#   define PRIxPSIZE   "llx"
-#   define PRIuPSIZE   "llu"
 #endif  // _KERNEL
 typedef unsigned long   vaddr_t;
 typedef unsigned long   vsize_t;
@@ -5570,10 +5847,6 @@ typedef int   pmc_evid_t;
 typedef unsigned long long   pmc_ctr_t;
 typedef unsigned char   __cpu_simple_lock_nv_t;
 typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
-#define PRIxVADDR   "lx"
-#define PRIxVSIZE   "lx"
-#define PRIuVSIZE   "lu"
-#define PRIxREGISTER   "x"
 
 #define __CPU_SIMPLE_LOCK_PAD
 #define __SIMPLELOCK_LOCKED   1
@@ -6204,7 +6477,7 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #endif  // OSWINDOWS
 
 
-#endif  // SPECIFICATIONS, FEATURES, & ARCHITECTURE MACROS
+#endif  // ARCHITECTURE_MACROS_SEEN
 
 
 /* STANDARD MACROS */
@@ -6312,6 +6585,9 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 // STRING MANIPULATION MACROS
 
+/** @defgroup String_Manipulation_Macros Macros used to manipulate macros strings
+@{ */  // (FB){
+
 #define PASTE_NAME(a, b)   PASTE_NAME1(a, b)
 #define PASTE_NAME1(a, b)   a ## b
 /** Used to test macros values */
@@ -6375,6 +6651,8 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #define EVAL3(...)   EVAL2(EVAL2(EVAL2(__VA_ARGS__)))
 #define EVAL4(...)   EVAL3(EVAL3(EVAL3(__VA_ARGS__)))
 #define EVAL(...)    EVAL4(EVAL4(EVAL4(__VA_ARGS__)))
+
+/** @} */  // }
 
 
 // C++ MACROS
@@ -6622,6 +6900,9 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 // GENERIC KEYWORD
 
+/** @defgroup Generic_Keyword Macros pertaining to the `Generic` keyword
+@{ */  // (FB){
+
 #ifndef Generic
 /** Alias for "_Generic" on systems that lack "Generic" */
 #   define Generic    _Generic
@@ -6814,8 +7095,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** Return the datatype of the given variable */
 #define get_type(type)   typename(type)
 
+/** @} */  // }
+
 
 // ASM KEYWORD
+
+/** @defgroup Asm_Keyword Macros pertaining to the `asm` keyword
+@{ */  // (FB){
 
 #if IS_LINTER
 #   define asm    /*@i@*/  //
@@ -6881,8 +7167,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define __REDIRECT_NTHNL(sym, proto, aliasname)    sym proto asm (__ASMNAME(#aliasname)) __THROWNL
 #endif
 
+/** @} */  // }
+
 
 // SIZEOF KEYWORD & MACROS
+
+/** @defgroup Sizeof_Keyword Macros pertaining to the `sizeof` keyword
+@{ */  // (FB){
 
 /** The type of sizeof may be (unsigned) long on some systems; Use the following macro for getting datatype sizes when expecting sizeof to return an int */
 #define usizeof(datatype)   ((unsigned)sizeof(datatype))
@@ -6946,8 +7237,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** Return the length of a constant unicode string */
 #define CONSTANT_USTRLEN(x)   (sizeof(x) - sizeof(U""))
 
+/** @} */  // }
+
 
 // TYPEOF KEYWORD
+
+/** @defgroup Typeof_Keyword Macros pertaining to the `typeof` keyword
+@{ */  // (FB){
 
 #if SUPPORTS_TYPEOF
 #   define typeof(OBJECT)   __typeof__(OBJECT)
@@ -6980,49 +7276,74 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** Test if the value is positive */
 #define is_positive(x)   ((x) >= 0)
 /** Return true if value 'a' fits in the unsigned type 't' */
-#define __type_fit_u(t, a)   (is_positive(a) && (__UINTMAX_TYPE__)((a) + __zeroull()) <= (__UINTMAX_TYPE__)__type_max_u(t))
+#define __type_fit_u(t, a)   (is_positive(a) && (__UINTMAX_TYPE__)((unsigned long long)(a) + __zeroull()) <= (__UINTMAX_TYPE__)__type_max_u(t))
 /** Return true if value 'a' fits in the signed type 't' */
 #define __type_fit_s(t, a)   (is_negative(a) ? ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)__type_min_s(t)) : ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)0 && (__INTMAX_TYPE__)((a) + __zeroll()) <= (__INTMAX_TYPE__)__type_max_s(t)))
 /** Return true if value 'a' fits in type 't' */
 #define __type_fit(t, a)   (__type_is_signed(t) ? __type_fit_s(t, a) : __type_fit_u(t, a))
 
+/** @} */  // }
+
 
 // POINTER CASTS
 
+/** @defgroup Pointer_Casts Macros used to cast pointers between different pointer attribute type
+@{ */  // (FB){
+
 #undef __UNCONST
 /** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define __UNCONST(x)   ((void*)(size_t)(const void*)(x))
+#define __UNCONST(x)   ((void*)(uintptr_t)(x))
 /** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define UNCONST(x)   __UNCONST((x))
+#define UNCONST(x)   ((void*)(uintptr_t)(x))
 #undef __UNVOLATILE
 /** The following macro is used to remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
-#define __UNVOLATILE(x)   ((void*)(size_t)(volatile void*)(x))
+#define __UNVOLATILE(x)   ((void*)(uintptr_t)(x))
+#ifndef UNVOLATILE
 /** The following macro is used to remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
-#define UNVOLATILE(x)   __UNVOLATILE((x))
+#   define UNVOLATILE(x)   ((void*)(uintptr_t)(x))
+#endif
 #ifndef __DECONST
-#   define __DECONST(type, var)   ((type)(uintptr_t)(const void*)(var))
+#   define __DECONST(type, var)   ((type)(uintptr_t)(var))
 #endif
 #ifndef DECONST
-#   define DECONST(type, var)   __DECONST((type), (var))
+#   define DECONST(type, var)   ((type)(uintptr_t)(var))
 #endif
 #ifndef __DEVOLATILE
-#   define __DEVOLATILE(type, var)   ((type)(uintptr_t)(volatile void*)(var))
+#   define __DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
 #endif
 #ifndef DEVOLATILE
-#   define DEVOLATILE(type, var)   __DEVOLATILE((type), (var))
+#   define DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
 #endif
 #ifndef __DEQUALIFY
-#   define __DEQUALIFY(type, var)   ((type)(uintptr_t)(const volatile void*)(var))
+#   define __DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
 #endif
 #ifndef DEQUALIFY
-#   define DEQUALIFY(type, var)   __DEQUALIFY((type), (var))
+#   define DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
 #endif
 /** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define rk_UNCONST(x)   ((void*)(__UINTPTR_TYPE__)(const void*)(x))
+#define rk_UNCONST(x)   ((void*)(uintptr_t)(x))
 /** Convert a pointer to an integer */
-#define PTR_TO_INT(PTR)   ((size_t)((char*)(PTR) - (char*)NULL))
+#define PTR_TO_INT(PTR)   ((size_t)((char*)(PTR) - NULL_CHAR))
+#define HandleToLong(x)   ((long)(intptr_t)((void*)(x)))
+#define HandleToULong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define HandleToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define IntToPtr(x)   ((void*)(intptr_t)((int)(x)))
+#define LongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define LongToPtr(x)   ((void*)(intptr_t)((long)(x)))
+#define PtrToInt(x)   ((int)(intptr_t)((void*)(x)))
+#define PtrToLong(x)   ((long)(intptr_t)((void*)(x)))
+#define PtrToShort(x)   ((short)(intptr_t)((void*)(x)))
+#define PtrToUint(x)   ((unsigned int)(uintptr_t)((void*)(x)))
+#define PtrToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define PtrToUshort(x)   ((unsigned short)(uintptr_t)((void*)(x)))
+#define UIntToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
+#define UintToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
+#define UlongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define ULongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define UlongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
+#define ULongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
 /** intptr_t if P is true, or T if P is false */
-#define integer_if_pointer_type_sub(T, P)   typeof(*(0 ? (typeof(0 ? (T*)0 : (void*)(P)))0 : (typeof(0 ? (__INTPTR_TYPE__*)0 : (void*)(!(P))))0))
+#define integer_if_pointer_type_sub(T, P)   typeof(*(0 ? (typeof(0 ? (T*)0 : (void*)(P)))0 : (typeof(0 ? (intptr_t*)0 : (void*)(!(P))))0))
 /** intptr_t if P is true, or T if P is false */
 #define __integer_if_pointer_type_sub(T, P)   integer_if_pointer_type_sub((T), (P))
 /** intptr_t if EXPR has a pointer type, or the type of EXPR otherwise */
@@ -7041,11 +7362,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 /** Get a void pointer and dereferences it to the specified datatype */
 #define vp_unpack(var, type)   (*((type*)var))
 /** Ignore the value of an expression when a cast to void does not suffice (in particular, for a call to a function declared with attribute warn_unused_result) */
-#define ignore_value(x)   __extension__ ({ typeof(x) __ignored_value = (x); (void)__ignored_value; })
+#define ignore_value(x)   __extension__ ({ typeof(x) tmpmvar = (x); (void)tmpmvar; })
 /** Return a pointer (void *const*) to the first element of SET */
 #define symbol_set_first_element(set)   ((void* const*)(&__start_ ## set))
 /** Return true if PTR (a void *const*) has been incremented past the last element in SET */
 #define symbol_set_end_p(set, ptr)   ((ptr) >= (void* const*) &__stop_ ## set)
+
+/** @} */  // }
 
 
 // ARRAY SIZES
@@ -7824,8 +8147,13 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #   define __bos0(_ptr)   __builtin_object_size(_ptr, 0)
 /** Determine the return address */
 #   define RETURN_ADDRESS(nr)   __builtin_extract_return_addr(__builtin_return_address((nr)))
-/** The -Wimplicit-fallthrough warning will not be triggered when a statement that falls through to another case label */
-#   define attr_fallthrough   __attribute__((__fallthrough__));
+/** @def attr_fallthrough
+The -Wimplicit-fallthrough warning will not be triggered when a statement that falls through to another case label */
+#   ifdef COMPILER_CLANG
+#      define attr_fallthrough
+#   else
+#      define attr_fallthrough   __attribute__((__fallthrough__));
+#   endif
 /** Specifies that an object or member declaration with type array of char or pointer to char is intended to store character arrays that do not necessarily contain a terminating NUL character */
 #   define attr_nonstring   __attribute__((__nonstring__))
 #   define patchable   __attribute__((__patchable_function_entry__))
@@ -8409,7 +8737,7 @@ static const UNUSED char* program_invocation_name = getprogname();
 
 // ASSEMBLY MACROS
 
-#define RELOC_HIDE(ptr, off)   do { unsigned long __ptr; asm volatile (";" : "=r"(__ptr) : "0"(ptr)); (typeof(ptr))(__ptr + (off)); } while (0x0)
+#define RELOC_HIDE(ptr, off)   do { unsigned long __ptr; vasm(";" : "=r"(__ptr) : "0"(ptr)); (typeof(ptr))(__ptr + (off)); } while (0x0)
 #define OPTIMIZER_HIDE_VAR(var)   asm (";" : "=r"(var) : "0"(var))
 #define asm_volatile_goto(x)   do { asm goto(x); asm (";"); } while (0x0)
 #if IS_GNUC
@@ -8659,7 +8987,7 @@ DECL_FUNC int not_null_ptr(const void* restrict ptr);
 LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
 	/*@-usedef@*/
 	const void* restrict q;
-	vasm(";" : "=r"(q) : "0"(ptr));
+	vasm(";" : "=r,m"(q) : "0"(ptr));
 	return (int)(q != 0);
 	/*@=usedef@*/
 }
@@ -8731,9 +9059,9 @@ static const UNUSED unsigned char align16 xbase64_tab[16] = {
 	0U, 0U, 0U, 0U, 0U, 0xa8U, 0xffU, 3U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
 };
 static const UNUSED int align16 nibblemap[16] = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
-#define A64L_TABLE_BASE   0x2e
-#define A64L_TABLE_SIZE   0x4d
-static const UNUSED char align64 a64l_table[0x4d] = {
+#define A64L_TABLE_BASE   46
+#define A64L_TABLE_SIZE   77
+static const UNUSED char align64 a64l_table[77] = {
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,
 	0x40, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 	27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 0x40, 0x40, 0x40, 0x40, 0x40,
@@ -8777,20 +9105,27 @@ static const UNUSED unsigned int __page_shift = (unsigned int)PAGE_SHIFT;
 #define _SYS_USER_H_   (1)
 
 
+/** @def NGREG
+Number of general registers */
+/** @def NFPREG
+Number of float-point registers */
+/** @typedef greg_t
+Container for all general registers */
+/** @typedef gregset_t
+Container for all general registers */
+/** @typedef elf_greg_t
+Container for all general registers */
+/** @typedef elf_gregset_t
+Container for all general registers */
 #ifdef ARCHALPHA
-/** Number of general registers */
 #   define NGREG   33
-/** Number of float-point registers */
 #   define NFPREG   32
-/** Type for general register */
 typedef long   greg_t, gregset_t[NGREG];
 /** Type for floating-point register */
 typedef long   fpreg_t, fpregset_t[NFPREG];
 #elif defined(ARCHARM)
 #   ifdef ARCHAARCH64
-/** Number of general registers */
 #      define NGREG   34
-#      define ELF_NREG   34
 typedef struct user_fpsimd_struct {
 	long double vregs[32];
 	unsigned int fpsr, fpcr;
@@ -8800,9 +9135,7 @@ typedef struct user_regs_struct {
 	unsigned long long sp, pc, pstate;
 } user_regs_struct_t;
 #   elif defined(ARCHAARCH32)
-/** Number of general registers */
 #      define NGREG   18
-#      define ELF_NGREG   18
 typedef struct user_fpregs {
 	struct fp_reg {
 		unsigned int sign1:1;
@@ -8819,7 +9152,7 @@ typedef struct user_fpregs {
 	unsigned int init_flag;
 } elf_fpregset_t;
 typedef struct user_regs { unsigned long uregs[18]; }   user_regs_t;
-typedef struct attr_packed user {
+typedef struct user {
 	struct user_regs regs;
 	int u_fpvalid;
 	unsigned long u_tsize, u_dsize, u_ssize, start_code, start_stack;
@@ -8833,7 +9166,6 @@ typedef struct attr_packed user {
 	struct user_fpregs* u_fp0;
 } user_t;
 #   endif
-/** Container for all general registers */
 typedef long   greg_t, gregset_t[NREG];
 typedef unsigned long   elf_greg_t, elf_gregset_t[NREG];
 /** Structure to describe FPU registers */
@@ -8858,9 +9190,7 @@ enum REGISTERS {
 	REG_R15
 };
 #elif defined(ARCHBLACKFIN)
-/** Number of general registers */
 #   define NGREG   47
-/** Type for general register */
 typedef int   greg_t, gregset_t[NGREG];
 /** Number of each register is the `gregset_t` array */
 enum REGISTERS {
@@ -8924,13 +9254,8 @@ struct pt_all_user_regs {
 	struct ia64_fpreg fr[128];
 };
 #elif defined(ARCHMIPS)
-/** Number of general registers */
 #   define NGREG   32
-#   define ELF_NGREG   32
-/** Number of float-point registers */
 #   define NFPREG   32
-#   define ELF_NFPREG   32
-/** Type for general register */
 typedef unsigned long long   greg_t, gregset_t[NGREG], elf_greg_t, elf_gregset_t[NGREG];
 /** Container for all FPU registers */
 typedef struct fpregset {
@@ -8943,7 +9268,7 @@ typedef struct fpregset {
 	} fp_r;
 } fpregset_t;
 typedef double   elf_fpreg_t, elf_fpregset_t[NFPREG];
-typedef struct attr_packed user {
+typedef struct user {
 	unsigned long regs[109];
 	unsigned long u_tsize, u_dsize, u_ssize, start_code, start_data, start_stack;
 	long signal;
@@ -8994,16 +9319,11 @@ enum REGISTERS {
 	EF_SIZE = 180,
 };
 #elif defined(ARCHPOWERPC64)
-/** Number of general registers (Includes r0-r31, nip, msr, lr, etc.) */
 #   define NGREG   48
-#   define ELF_NGREG   48
-/** Number of float-point registers (Includes fp0-fp31 &fpscr) */
 #   define NFPREG   33
-#   define ELF_NFPREG   33
 /** Number of vector registers (Includes v0-v31, vscr, & vrsave in split vectors) */
 #   define NVRREG   34
 #   define ELF_NVRREG   34
-/** Container for all general registers */
 typedef unsigned long   greg_t, gregset_t[NGREG], elf_greg_t, elf_gregset_t[NGREG];
 typedef double   fpregset_t[NFPREG], elf_fpreg_t, elf_fpregset_t[NFPREG];
 /** Container for Altivec/VMX Vector Status and Control Register; Only 32-bits but can only be copied to/from a 128-bit vector register; So we allocated a whole quadword speedup save/restore */
@@ -9019,7 +9339,7 @@ typedef struct pt_regs {
 	unsigned long gpr[32], nip, msr, orig_gpr3, ctr, link, xer, ccr, mq;
 	unsigned long trap, dar, dsisr, result;
 } pt_regs_t;
-typedef struct attr_packed user {
+typedef struct user {
 	struct pt_regs regs;
 	unsigned long u_tsize, u_dsize, u_ssize, start_code, start_data, start_stack;
 	long signal;
@@ -9029,16 +9349,11 @@ typedef struct attr_packed user {
 } user_t;
 typedef struct __elf_vrreg { unsigned u[4]; } aligned16   elf_vrreg_t, elf_vrregset_t[NVRREG];
 #elif defined(ARCHPOWERPC32)
-/** Number of general registers */
 #   define NGREG   48
-#   define ELF_NGREG   48
-/** Number of float-point registers */
 #   define NFPREG   33
-#   define ELF_NFPREG   33
 /** Number of vector registers */
 #   define NVRREG   34
 #   define ELF_NVRREG   34
-/** Container for all general registers */
 typedef unsigned long   gregset_t[NGREG];
 /** Container for floating-point registers and status */
 typedef struct _libc_fpstate {
@@ -9057,7 +9372,7 @@ typedef struct pt_regs {
 	unsigned long gpr[32], nip, msr, orig_gpr3, ctr, link, xer, ccr, mq;
 	unsigned long trap, dar, dsisr, result;
 } pt_regs_t;
-typedef struct attr_packed user {
+typedef struct user {
 	struct pt_regs regs;
 	unsigned long u_tsize, u_dsize, u_ssize, start_code, start_data, start_stack;
 	long signal;
@@ -9164,7 +9479,6 @@ typedef struct fpu {
 #   endif
 #elif defined(ARCHSUPERH)
 #   define NGREG   23
-#   define ELF_NGREG   23
 typedef long   greg_t;
 typedef unsigned long   elf_greg_t;
 typedef greg_t   gregset_t[NGREG];
@@ -9181,7 +9495,7 @@ typedef struct user_fpu_struct {
 	unsigned long fp_regs[16], xfp_regs[16];
 	unsigned long fpscr, fpul;
 } elf_fpregset_t;
-typedef struct attr_packed user {
+typedef struct user {
 	struct pt_regs regs;
 	struct user_fpu_struct fpu;
 	int u_fpvalid;
@@ -9223,11 +9537,9 @@ typedef struct _fpxreg {
 #   define _libc_fpxreg   _fpxreg
 typedef struct _xmmreg { uint32_t element[4]; }   _xmmreg_t;
 #   define _libc_xmmreg   _xmmreg
+#   define NFPREG   8
 #   if IS_WORDSIZE_64
-/** Number of general registers */
 #      define NGREG   27
-#      define ELF_NGREG   27
-/** Type for general register */
 typedef long   greg_t;
 typedef unsigned long long   elf_greg_t, elf_gregset_t[NGREG];
 struct _libc_fpstate {
@@ -9249,7 +9561,7 @@ typedef struct user_fpregs_struct {
 typedef struct user_regs_struct {
 	unsigned long r15, r14, r13, r12, rbp, rbx, r11, r10, r9, r8;
 	unsigned long rax, rcx, rdx, rsi, rdi, orig_rax, rip;
-	unsigned long cs, eflags, rsp, ss, fs_base, gs_base, ds, es, fs, gs;
+	unsigned long cs, eflags, rsp, ss, fs_base, gs_base, ds, es, fs, gs, pad0;
 } user_regs_t;
 /** FPU environment matching the 64-bit FXSAVE layout */
 struct _fpstate {
@@ -9262,13 +9574,15 @@ struct _fpstate {
 	struct _xmmreg _xmm[16];
 	uint32_t padding[24];
 };
-typedef struct attr_packed user {
+typedef struct user {
 	struct user_regs_struct regs;
-	int u_fpvalid;
 	struct user_fpregs_struct i387;
+	int u_fpvalid;
+	int pad0;  //!< Padding
 	unsigned long u_tsize, u_dsize, u_ssize, start_code, start_stack;
 	long signal;
 	int reserved;
+	int pad1;  //!< Padding
 	struct user_regs_struct* u_ar0;
 	struct user_fpregs_struct* u_fpstate;
 	unsigned long magic;
@@ -9331,10 +9645,7 @@ enum REGISTERS {
 	REG_CR2
 };
 #   else  // x86-32
-/** Number of general registers */
 #      define NGREG   19
-#      define ELF_NGREG   19
-/** Type for general register */
 typedef int   greg_t;
 typedef unsigned long   elf_greg_t, elf_gregset_t[NGREG];
 struct _libc_fpstate {
@@ -9369,7 +9680,7 @@ struct _fpstate {
 	struct _xmmreg _xmm[8];
 	uint32_t padding[56];
 };
-typedef struct attr_packed user {
+typedef struct user {
 	struct user_regs_struct regs;
 	int u_fpvalid;
 	struct user_fpregs_struct i387;
@@ -9424,7 +9735,6 @@ enum REGISTERS {
 	REG_SS
 };
 #   endif
-/** Container for all general registers */
 typedef greg_t   gregset_t[NGREG];
 #   define _rax   REG(rax)
 #   define _rbx   REG(rbx)
@@ -9492,6 +9802,12 @@ typedef greg_t   gregset_t[NGREG];
 #   define _cr3   REG(cr3)
 #   define _cr4   REG(cr4)
 #endif
+#ifndef ELF_NGREG
+#   define ELF_NGREG   NGREG
+#endif
+#if (defined(NFPREG) && (!defined(ELF_NFPREG)))
+#   define ELF_NFPREG   NFPREG
+#endif
 
 
 #endif  // REGISTERS_H
@@ -9508,9 +9824,8 @@ typedef greg_t   gregset_t[NGREG];
 #define __noreturn_is_defined   (1)
 
 
-/** @defgroup NoReturn
-Function declaration indicating that the function does not return by executing the return statement or by reaching the end of the function body
-@{ */
+/** @defgroup NoReturn Function declaration indicating that the function does not return by executing the return statement or by reaching the end of the function body
+@{ */  // (FB){
 
 #if (IS_STDC_BELOW_C11 && IS_GNUC)
 #   define noreturn   __attribute__((__noreturn__))
@@ -9531,7 +9846,7 @@ Function declaration indicating that the function does not return by executing t
 #define DECLSPEC_NORETURN   _Noreturn
 #define PR_PRETEND_NORETURN   _Noreturn
 
-/** @} */
+/** @} */  // }
 
 
 #endif  // STDNORETURN_H
@@ -9556,9 +9871,10 @@ Boolean Datatype */
 #   define _Bool   int
 #   define bool   int
 #elif IS_STDC_BELOW_C99
-typedef int   _Bool;
+#   define _Bool   int
+#   define bool   int
 #elif IS_NOT_CPLUSPLUS
-typedef _Bool   bool;
+#   define bool   _Bool
 #endif
 #if (!(defined(BOOL) || IS_OBJ_C))
 /** Support Objective-C-Style "BOOL" datatype */
@@ -9567,12 +9883,6 @@ typedef _Bool   bool;
 #   define __objc_no   ((bool)0)
 /** Objective-C true boolean constant */
 #   define __objc_yes   ((bool)1)
-#endif
-#ifndef objc_yes
-#   define objc_yes   __objc_yes
-#endif
-#ifndef objc_no
-#   define objc_no   __objc_no
 #endif
 /** MacOS historic boolean datatype */
 typedef unsigned char   Boolean;
@@ -9591,8 +9901,12 @@ typedef unsigned char   PRPackedBool;
 /** Status code used by some routines that have a single point of failure or special status return */
 typedef enum PRStatus_enum { PR_FAILURE = -1, PR_SUCCESS = 0 }   PRStatus;
 typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
+typedef enum truth_enum { Unknown = -1, False = 0, True = 1, Sometimes = 2, Depends = 3 }   truth;
+
+
 #define no   ((bool)0)
 #define NO   no
+#define NOPE   no
 #define yes   ((bool)1)
 #define YES   yes
 #ifndef NOT
@@ -9601,7 +9915,6 @@ typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
 #ifndef false
 #   define false   ((bool)0)
 #endif
-#define False   false
 #ifndef FALSE
 #   define FALSE   ((bool)0)
 #endif
@@ -9611,12 +9924,17 @@ typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
 #ifndef true
 #   define true   ((bool)1)
 #endif
-#define True   true
 #ifndef TRUE
 #   define TRUE   ((bool)1)
 #endif
 #ifndef _TRUE
 #   define _TRUE   ((bool)1)
+#endif
+#ifndef objc_yes
+#   define objc_yes   __objc_yes
+#endif
+#ifndef objc_no
+#   define objc_no   __objc_no
 #endif
 
 
@@ -9633,8 +9951,9 @@ typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
 #define MATH_X_STATIC_CONSTANTS_SEEN   (1)
 
 
-#define INFSTR   "Infinity"
-#define NANSTR   "NaN"
+/** @defgroup Float_Point_Zeros Macros and constants for float-point zero values
+@{ */  // (FB){
+
 #ifdef OSHPUX
 static const UNUSED float zerof = 0.0F;
 static const UNUSED double zerod = 0.0;
@@ -9668,136 +9987,153 @@ __extension__ static const UNUSED decimal128 zerodl = 0.0DL;
 #      endif
 #   endif
 #endif
-static const UNUSED float align64 ZEROF[2] = { 0.0F, -0.0F };
+static const UNUSED float align32 ZEROF[2] = { 0.0F, -0.0F };
 static const UNUSED double align64 ZERO[2] = { 0.0, -0.0 };
-#define ONEF   (1.0F)
-#define TINYF   (1.0E-30F)
-/** TINYF Squared */
-#define TINYF_SQ   (TINYF * TINYF)
-#define TINYF_STR   "1.0E-30"
-#define HUGEF   (1.0E+30F)
-/** HUGEF Squared */
-#define HUGEF_SQ   (HUGEF * HUGEF)
-#define HUGEF_STR   "1.0E+30"
-#define NEG_ZERO   (-0.0)
-#define ONE   (1.0)
-#define TINY   (1.0E-300)
-/** TINY Squared */
-#define TINY_SQ   (TINY * TINY)
-#define TINY_STR   "1.0E-300"
-#define HUGE   (1.0E+300)
-/** HUGE Squared */
-#define HUGE_SQ   (HUGE * HUGE)
-#define HUGE_STR   "1.0E+300"
-/** For the Bessel functions (j0, j1, jn, y0, y1, yn) this option defines the maximum absolute value of the ordinate before we assume total loss of significance (pi*2^52) */
-#define X_TLOSS   (1.414847550405688055153188683004904275E+16)
-/** For the Bessel functions (j0, j1, jn, y0, y1, yn) this option defines the maximum absolute value of the ordinate before we assume total loss of significance */
-#define XTLOSS   X_TLOSS
-/** SVID mode specifies returning this large value instead of infinity */
-#define SVID_HUGE   (3.40282346638528859811704183484516925440000000E+38F)
 #if SUPPORTS_LONG_DOUBLE
 static const UNUSED long double align64 ZEROL[2] = { 0.0L, -0.0L };
+#endif
+#if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
+__extension__ static const UNUSED float128 align64 ZEROQ[2] = { 0.0F128, -0.0F128 };
+#endif
+#if SUPPORTS_DECIMAL_FLOATS
+__extension__ static const UNUSED decimal32 align32 ZERODF[2] = { 0.0DF, -0.0DF };
+__extension__ static const UNUSED decimal64 align64 ZERODD[2] = { 0.0DD, -0.0DD };
+#   if SUPPORTS_DECIMAL128
+__extension__ static const UNUSED decimal128 align64 ZERODL[2] = { 0.0DL, -0.0DL };
+#   endif
+#endif
+#define NEG_ZERO   (-0.0)
+
+/** @} */  // }
+
+/** @defgroup Float_Point_Ones Macros and constants for float-point one values
+@{ */  // (FB){
+
+#define ONEF   (1.0F)
+#define ONE   (1.0)
+#if SUPPORTS_LONG_DOUBLE
 #   define ONEL   (1.0L)
+#endif
+#if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
+#   define ONEQ   (__extension__ (1.0F128))
+#endif
+#if SUPPORTS_DECIMAL_FLOATS
+#   define ONEDF   (1.0DF)
+#   define ONEDD   (1.0DD)
+#   if SUPPORTS_DECIMAL128
+#      define ONEDL   (1.0DL)
+#   endif
+#endif
+
+/** @} */  // }
+
+/** @defgroup Float_Point_Tiny Macros and constants for float-point `TINY` values
+@{ */  // (FB){
+
+#define TINYF   (1.0E-30F)
+#define TINY   (1.0E-300)
+/** TINYF Squared */
+#define TINYF_SQ   (TINYF * TINYF)
+/** TINY Squared */
+#define TINY_SQ   (TINY * TINY)
+#define TINYF_STR   "1.0E-30"
+#define TINY_STR   "1.0E-300"
+#if SUPPORTS_LONG_DOUBLE
 #   define TINYL   (1.0E-4930L)
 #   define TINYL_SQ   (TINYL * TINYL)
 #   define TINYL_STR   "1.0E-4930"
+#endif
+#if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
+#   define TINYQ   (__extension__ (1.0E-4930F128))
+#   define TINYQ_SQ   (TINYQ * TINYQ)
+#   define TINYQ_STR   "1.0E-4930"
+#endif
+#if SUPPORTS_DECIMAL_FLOATS
+#   define TINYDF   (1.0E-30DF)
+#   define TINYDF_SQ   (TINYDF * TINYDF)
+#   define TINYDD   (TINYDD * TINYDD)
+#   define TINYDD_SQ   (1.0E-300DD)
+#   if SUPPORTS_DECIMAL128
+#      define TINYDL   (1.0E-4930DL)
+#      define TINYDL_SQ   (TINYDL * TINYDL)
+#   endif
+#endif
+
+/** @} */  // }
+
+/** @defgroup Float_Point_Huge Macros and constants for float-point `HUGE` values
+@{ */  // (FB){
+
+#define HUGEF   (1.0E+30F)
+#define HUGE   (1.0E+300)
+/** HUGEF Squared */
+#define HUGEF_SQ   (HUGEF * HUGEF)
+/** HUGE Squared */
+#define HUGE_SQ   (HUGE * HUGE)
+#define HUGEF_STR   "1.0E+30"
+#define HUGE_STR   "1.0E+300"
+/** SVID mode specifies returning this large value instead of infinity */
+#define SVID_HUGE   (3.40282346638528859811704183484516925440000000E+38F)
+#if SUPPORTS_LONG_DOUBLE
 #   define HUGEL   (1.0E+4930L)
 #   define HUGEL_SQ   (HUGEL * HUGEL)
 #   define HUGEL_STR   "1.0E+4930"
 #endif
 #if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
-__extension__ static const UNUSED float128 align64 ZEROQ[2] = { 0.0F128, -0.0F128 };
-#   define ONEQ   (__extension__ (1.0F128))
-#   define TINYQ   (__extension__ (1.0E-4930F128))
-#   define TINYQ_SQ   (TINYQ * TINYQ)
-#   define TINYQ_STR   "1.0E-4930"
 #   define HUGEQ   (__extension__ (1.0E+4930F128))
 #   define HUGEQ_SQ   (HUGEQ * HUGEQ)
 #   define HUGEQ_STR   "1.0E+4930"
 #endif
 #if SUPPORTS_DECIMAL_FLOATS
-__extension__ static const UNUSED decimal32 align64 ZERODF[2] = { 0.0DF, -0.0DF };
-__extension__ static const UNUSED decimal64 align64 ZERODD[2] = { 0.0DD, -0.0DD };
-#   define ONEDF   (1.0DF)
-#   define TINYDF   (1.0E-30DF)
-#   define TINYDF_SQ   (TINYDF * TINYDF)
 #   define HUGEDF   (HUGEDF * HUGEDF)
 #   define HUGEDF_SQ   (1.0E+30DF)
-#   define ONEDD   (1.0DD)
-#   define TINYDD   (TINYDD * TINYDD)
-#   define TINYDD_SQ   (1.0E-300DD)
 #   define HUGEDD   (HUGEDD * HUGEDD)
 #   define HUGEDD_SQ   (1.0E+300DD)
 #   if SUPPORTS_DECIMAL128
-__extension__ static const UNUSED decimal128 align64 ZERODL[2] = { 0.0DL, -0.0DL };
-#      define ONEDL   (1.0DL)
-#      define TINYDL   (1.0E-4930DL)
-#      define TINYDL_SQ   (TINYDL * TINYDL)
 #      define HUGEDL   (1.0E+4930DL)
 #      define HUGEDL_SQ   (HUGEDL * HUGEDL)
 #   endif
 #endif
 
-/** 0x4b000000, 0xcb000000 */
-static const UNUSED float align64 TWO23[2] = { 8.3886080000E+6F, -8.3886080000E+6F };
+/** @} */  // }
 
-/** 0x43300000, 0xc3300000 */
-static const UNUSED double align64 TWO52[2] = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
+/** @defgroup Miscellaneous_Float_Point_Constants Macros and variables for miscellaneous float-point constants
+@{ */  // (FB){
 
+#define INFSTR   "Infinity"
+#define NANSTR   "NaN"
+/** For the Bessel functions (j0, j1, jn, y0, y1, yn) this option defines the maximum absolute value of the ordinate before we assume total loss of significance (pi*2^52) */
+#define X_TLOSS   (1.414847550405688055153188683004904275E+16)
+/** For the Bessel functions (j0, j1, jn, y0, y1, yn) this option defines the maximum absolute value of the ordinate before we assume total loss of significance */
+#define XTLOSS   X_TLOSS
+#define ERFC_CONTFRAC_CUTOFF   30.0
+#define ERFC_CONTFRAC_TERMS   50.0
+#define ERF_SERIES_CUTOFF   1.5
+#define ERF_SERIES_TERMS   25.0
+#define EULERS_CONSTANT   0.57721566490153286060651209008240243104215933593992359880576723488486772677766467093694706329174674951463144724980708248096050401448654283622417399764492353625350033374293733773767394279259525824709491600873520394816567085323315
+#define EULERS_CONSTANTF   eval_flt_join(EULERS_CONSTANT)
 #if SUPPORTS_LONG_DOUBLE
-/** 0x406f000000000000, 0xc06f000000000000 */
-static const UNUSED long double align64 TWO112[2] = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
+#   define EULERS_CONSTANTL   eval_ldbl_join(EULERS_CONSTANT)
 #endif
-
-static const UNUSED double align64 GAMMA_INTEGRAL[32] = {
-	1.0, 1.0, 2.0, 6.0,
-	24.0, 120.0, 720.0, 5040.0,
-	40320.0, 362880.0, 3628800.0, 39916800.0,
-	479001600.0,
-	6227020800.0,
-	87178291200.0,
-	1307674368000.0,
-	20922789888000.0,
-	355687428096000.0,
-	6402373705728000.0,
-	121645100408832000.0,
-	2432902008176640000.0,
-	51090942171709440000.0,
-	1124000727777607680000.0
-};
-
-static const UNUSED double align64 LANCZOS_DEN_COEFFS[16] = {
-	0.0, 39916800.0,
-	120543840.0, 150917976.0,
-	105258076.0, 45995730.0,
-	13339535.0, 2637558.0,
-	357423.0, 32670.0,
-	1925.0, 66.0, 1.0
-};
-
-static const UNUSED double align64 LANCZOS_NUM_COEFFS[16] = {
-	23531376880.410759688572007674451636754734846804940,
-	42919803642.649098768957899047001988850926355848959,
-	35711959237.355668049440185451547166705960488635843,
-	17921034426.037209699919755754458931112671403265390,
-	6039542586.3520280050642916443072979210699388420708,
-	1439720407.3117216736632230727949123939715485786772,
-	248874557.86205415651146038641322942321632125127801,
-	31426415.585400194380614231628318205362874684987640,
-	2876370.6289353724412254090516208496135991145378768,
-	186056.26539522349504029498971604569928220784236328,
-	8071.6720023658162106380029022722506138218516325024,
-	210.82427775157934587250973392071336271166969580291,
-	2.5066282746310002701649081771338373386264310793408
-};
-
+#define EXPONENTIAL_FACTORIAL_CONSTANT   1.61111492580837673611111111111111111
+/** The value returned by `ilogb` for 0 */
+#define FP_ILOGB0   -2147483647
+/** The value returned by `ilogb` for NaN */
+#define FP_ILOGBNAN   2147483647
+#define GOLDEN_ANGLE   2.39996322972865332223155550663361385
+#define GOLDEN_RATIO   1.6180339887498948482045868343656381177203091798057628621354486227052604628189024497072072041893911374
+#define HYPERBOLIC_TANGENT_OF_1   0.7615941559557648881194582826047935904127685972579365515968105001219532445766384834589475216736767144219027597015540775323683091147624854132970066696113211253965101376080877764393409926042066795531174758011305900662577831975245123799759179611
+#define I_SQUARED   -1
+#define LANCZOS_G   6.024680040776729583740234375
+#define LANCZOS_G_MINUS_HALF   5.524680040776729583740234375
+#define LOCHS_CONSTANT   0.97027011439203392574025601921001083378128470478516128661035052993125419989173704803621267490802902646924158952293898402230011729806683281830059035368670755943547596420700271601215730100349595546709328590981290394185183860996575
 #if LDBL_EQ_FLOAT128
 #   define ipio2_items   690
 #else
 #   define ipio2_items   66
 #endif
 
-static const UNUSED int32_t align64 ipio2[ipio2_items] = {
+static const UNUSED int32_t align32 ipio2[ipio2_items] = {
 	0xa2f983, 0x6e4e44, 0x1529fc, 0x2757d1, 0xf534dd, 0xc0db62,
 	0x95993c, 0x439041, 0xfe5163, 0xabdebb, 0xc561b7, 0x246e3a,
 	0x424dd2, 0xe00649, 0x2eea09, 0xd1921c, 0xfe1deb, 0x1cb129,
@@ -9917,6 +10253,66 @@ static const UNUSED int32_t align64 ipio2[ipio2_items] = {
 #   endif
 };
 
+/** 0x4b000000, 0xcb000000 */
+static const UNUSED float align32 TWO23[2] = { 8.3886080000E+6F, -8.3886080000E+6F };
+
+/** 0x43300000, 0xc3300000 */
+static const UNUSED double align64 TWO52[2] = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
+
+#if SUPPORTS_LONG_DOUBLE
+/** 0x406f000000000000, 0xc06f000000000000 */
+static const UNUSED long double align64 TWO112[2] = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
+#endif
+
+static const UNUSED double BIGX = 7.09782712893383973096E+2;
+static const UNUSED double SMALLX = -7.45133219101941108420E+2;
+static const UNUSED float z_rooteps_f = 1.7263349182589107E-4F;
+static const UNUSED double z_rooteps = 7.4505859692E-9;
+/** This variable is used by `gamma()` and `lgamma()` */
+extern UNUSED int signgam;
+
+static const UNUSED double align64 GAMMA_INTEGRAL[32] = {
+	1.0, 1.0, 2.0, 6.0,
+	24.0, 120.0, 720.0, 5040.0,
+	40320.0, 362880.0, 3628800.0, 39916800.0,
+	479001600.0,
+	6227020800.0,
+	87178291200.0,
+	1307674368000.0,
+	20922789888000.0,
+	355687428096000.0,
+	6402373705728000.0,
+	121645100408832000.0,
+	2432902008176640000.0,
+	51090942171709440000.0,
+	1124000727777607680000.0
+};
+
+static const UNUSED double align64 LANCZOS_DEN_COEFFS[16] = {
+	0.0, 39916800.0,
+	120543840.0, 150917976.0,
+	105258076.0, 45995730.0,
+	13339535.0, 2637558.0,
+	357423.0, 32670.0,
+	1925.0, 66.0, 1.0
+};
+
+static const UNUSED double align64 LANCZOS_NUM_COEFFS[16] = {
+	23531376880.410759688572007674451636754734846804940,
+	42919803642.649098768957899047001988850926355848959,
+	35711959237.355668049440185451547166705960488635843,
+	17921034426.037209699919755754458931112671403265390,
+	6039542586.3520280050642916443072979210699388420708,
+	1439720407.3117216736632230727949123939715485786772,
+	248874557.86205415651146038641322942321632125127801,
+	31426415.585400194380614231628318205362874684987640,
+	2876370.6289353724412254090516208496135991145378768,
+	186056.26539522349504029498971604569928220784236328,
+	8071.6720023658162106380029022722506138218516325024,
+	210.82427775157934587250973392071336271166969580291,
+	2.5066282746310002701649081771338373386264310793408
+};
+
 static const UNUSED double align64 PIo2[8] = {
 	1.57079625129699707031, 7.54978941586159635335E-08,
 	5.39030252995776476554E-15, 3.28200341580791294123E-22,
@@ -9924,7 +10320,7 @@ static const UNUSED double align64 PIo2[8] = {
 	2.73370053816464559624E-44, 2.16741683877804819444E-51
 };
 
-static const UNUSED char align64 debruijn32[32] = {
+static const UNUSED char align32 debruijn32[32] = {
 	0, 1, 23, 2, 29, 24, 19, 3, 30, 27, 25, 11, 20, 8, 4, 13,
 	31, 22, 28, 18, 26, 10, 7, 12, 21, 17, 9, 6, 16, 5, 15, 14
 };
@@ -9936,21 +10332,27 @@ static const UNUSED char align64 debruijn64[64] = {
 	32, 60, 20, 57, 16, 50, 31, 19, 15, 30, 14, 13, 12
 };
 
-static const UNUSED double BIGX = 7.09782712893383973096E+2;
-static const UNUSED double SMALLX = -7.45133219101941108420E+2;
-static const UNUSED float z_rooteps_f = 1.7263349182589107E-4F;
-static const UNUSED double z_rooteps = 7.4505859692E-9;
-/** This variable is used by `gamma` and `lgamma` */
-extern UNUSED int signgam;
+/** @} */  // }
 
+/** @defgroup Eular_Number_Constants Macros for Eular-Number constants
+@{ */  // (FB){
 
-// CONSTANT MATH MACROS
-
-// Eular Number Constants
 /** Eular's Number */
 #define M_E   2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274274663919320030599218174135966290435729003342952605956307381323286279434907632338298807531952510190115738341879307021540891499348841675092447
+#define M_EF   eval_flt_join(M_E)
+/** The inverse of Eular's Number */
 #define INVERSE_E   0.3678794411714423215955237701614608674458111310317678345078368016974614957448998033571472743459196437466273252768439952082469757927901290086266535894940987830921943673773381150486389911251456163449877199786844759579397473025498924954532393662
-// PI Constants
+#define INVERSE_EF   eval_flt_join(INVERSE_E)
+#if SUPPORTS_LONG_DOUBLE
+#   define M_EL   eval_ldbl_join(M_E)
+#   define INVERSE_EL   eval_ldbl_join(INVERSE_E)
+#endif
+
+/** @} */  // }
+
+/** @defgroup PI_Constants Macros for various PI constants
+@{ */  // (FB){
+
 #define __PI   3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652
 #define PI   __PI
 #define M_PI   __PI
@@ -9992,14 +10394,76 @@ extern UNUSED int signgam;
 #define pio2_3   2.02226624871116645580E-21
 /** pi/2 - (pio2_1+pio2_2+pio2_3); 0x397b839a, 0x252049c1 */
 #define pio2_3t   8.47842766036889956997E-32
-// Logarithm Constants
+#define M_PIF   eval_flt_join(M_PI)
+#define PIF   M_PIF
+#define PI2F   eval_flt_join(PI2)
+#define PI4F   eval_flt_join(PI4)
+#define M_PI_2F   eval_flt_join(M_PI_2)
+#define M_PI_4F   eval_flt_join(M_PI_4)
+#define PI_1_3F   eval_flt_join(PI_1_3)
+#define PI_2_3F   eval_flt_join(PI_2_3)
+#define PI_4_3F   eval_flt_join(PI_4_3)
+#define M_1_PIF   eval_flt_join(M_1_PI)
+#define INVERSE_PIF   M_1_PIF
+#define M_2_PIF   eval_flt_join(M_2_PI)
+#define PI_SQUAREDF   eval_flt_join(PI_SQUARED)
+#define PI_SQUARED_1_4F   eval_flt_join(PI_SQUARED_1_4)
+#define LN_PIF   eval_flt_join(LN_PI)
+#define LOG10_PIF   eval_flt_join(LOG10_PI)
+#define SQRT_PIF   eval_flt_join(SQRT_PI)
+#define M_2_SQRTPIF   eval_flt_join(M_2_SQRTPI)
+#define TAN_PIF   0.0F
+#if SUPPORTS_LONG_DOUBLE
+#   define M_PIL   eval_ldbl_join(M_PI)
+#   define PIL   M_PIL
+#   define PI2L   eval_ldbl_join(PI2)
+#   define PI4L   eval_ldbl_join(PI4)
+#   define M_PI_2L   eval_ldbl_join(M_PI_2)
+#   define M_PI_4L   eval_ldbl_join(M_PI_4)
+#   define PI_1_3L   eval_ldbl_join(PI_1_3)
+#   define PI_2_3L   eval_ldbl_join(PI_2_3)
+#   define PI_4_3L   eval_ldbl_join(PI_4_3)
+#   define M_1_PIL   eval_ldbl_join(M_1_PI)
+#   define INVERSE_PIL   M_1_PIL
+#   define M_2_PIL   eval_ldbl_join(M_2_PI)
+#   define PI_SQUAREDL   eval_ldbl_join(PI_SQUARED)
+#   define PI_SQUARED_1_4L   eval_ldbl_join(PI_SQUARED_1_4)
+#   define LN_PIL   eval_ldbl_join(LN_PI)
+#   define LOG10_PIL   eval_ldbl_join(LOG10_PI)
+#   define SQRT_PIL   eval_ldbl_join(SQRT_PI)
+#   define M_2_SQRTPIL   eval_ldbl_join(M_2_SQRTPI)
+#   define TAN_PIL   0.0L
+#   define pio2_hi   1.57079632679489661926L
+#   define pio2_lo   -2.50827880633416601173E-20L
+#   define __pio2_hi   pio2_hi
+#   define __pio2_lo   pio2_lo
+#endif
+
+/** @} */  // }
+
+/** @defgroup Logarithm_Constants Macros for various logarithm constants
+@{ */  // (FB){
+
 /** log2(e) */
 #define M_LOG2E   1.44269504088896340735992468100189213742664595415298593413544940693110921918118507988552662289350634449699751830965254425559310168716835964272066215822347933627453736988471849363070138766353201553389431891666483764312861542404747
 /** log10(e) */
 #define M_LOG10E   0.4342944819032518276511289189166050822943970058036665661144537831658646492088707747292249493384317483187061067447663037336416792871589639065692210646628122658521270865686703295933708696588266883311636077384905142844348666768646586085135561482
 #define LOG10_E   M_LOG10E
 #define LOG2_DIV_LOG10   0.30102999566398119521373889472449302676818988146210854131042746112710818927442450948692725211818617204068447719143099537909476788113352350599969233370469557506450296425419340266181973431160294350118390289817858261715443953186192
-// Natural Logarithm Constants
+#define M_LOG2EF   eval_flt_join(M_LOG2E)
+#define M_LOG10EF   eval_flt_join(M_LOG10E)
+#define LOG10_EF   M_LOG10EF
+#if SUPPORTS_LONG_DOUBLE
+#   define M_LOG2EL   eval_ldbl_join(M_LOG2E)
+#   define M_LOG10EL   eval_ldbl_join(M_LOG10E)
+#   define LOG10_EL   M_LOG10EL
+#endif
+
+/** @} */  // }
+
+/** @defgroup Natural_Logarithm_Constants Macros for various natural logarithm constants
+@{ */  // (FB){
+
 /** ln(2) */
 #define M_LN2   0.69314718055994530941723212145817656807550013436025525412068000949339362196969471560586332699641868754200148102057068573368552023575813055703267075163507596193072757082837143519030703862389167347112335011536449795523912047517268
 #define LN2     M_LN2
@@ -10008,7 +10472,24 @@ extern UNUSED int signgam;
 #define LN_E   1.0
 /** 1/ln(10) */
 #define M_IVLN10   0.43429448190325182765112891891660508229439700580366656611445378316586464920887077472922494933843174831870610674476630373364167928715896390656922106466281226585212708656867032959337086965882668833116360773849051428443486667686465
-// Square Root Constants
+#define M_LN2F   eval_flt_join(M_LN2)
+#define LN2F   M_LN2F
+#define M_LN10F   eval_flt_join(M_LN10)
+/** 1/ln(10) */
+#define M_IVLN10F   eval_flt_join(M_IVLN10)
+#if SUPPORTS_LONG_DOUBLE
+#   define M_LN2L   eval_ldbl_join(M_LN2)
+#   define LN2L   M_LN2L
+#   define M_LN10L   eval_ldbl_join(M_LN10)
+/** 1/ln(10) */
+#   define M_IVLN10l   eval_ldbl_join(M_IVLN10)
+#endif
+
+/** @} */  // }
+
+/** @defgroup Square_Root_Constants Macros for various square root constants
+@{ */  // (FB){
+
 /** sqrt(0.5) */
 #define SQRT_HALF   0.70710678118654752440084436210484903928483593768847403658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028573505477998580298513726729843
 #define __SQRT_HALF   SQRT_HALF
@@ -10038,9 +10519,45 @@ extern UNUSED int signgam;
 /** 1/sqrt(2) */
 #define M_SQRT1_2   0.70710678118654752440084436210484903928483593768847403658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028573505477998580298513726729843
 #define SQRT_E   1.6487212707001281468486507878141635716537761007101480115750793116406610211942156086327765200563666430028666377563077970046711669752196091598409714524900597969294226590984039147199484646594892448968689053364184657208410666568598
-// Trigonometry Constants
+/** sqrt(0.5) */
+#define SQRT_HALFF   eval_flt_join(SQRT_HALF)
+/** sqrt(3/4) */
+#define SQRT_3_DIV_4F   eval_flt_join(SQRT_3_DIV_4)
+#define M_SQRT2F   eval_flt_join(M_SQRT2)
+#define SQRT_2F   M_SQRT2L
+#define SQRT_3F   eval_flt_join(SQRT_3)
+/** 1/sqrt(2) */
+#define M_SQRT1_2F   eval_flt_join(M_SQRT1_2)
+#define SQRT_EF   eval_flt_join(SQRT_E)
+#if SUPPORTS_LONG_DOUBLE
+/** sqrt(0.5) */
+#define SQRT_HALFL   eval_ldbl_join(SQRT_HALF)
+/** sqrt(3/4) */
+#   define SQRT_3_DIV_4L   eval_ldbl_join(SQRT_3_DIV_4)
+#   define M_SQRT2L   eval_ldbl_join(M_SQRT2)
+#   define SQRT_2L   M_SQRT2L
+#   define SQRT_3L   eval_ldbl_join(SQRT_3)
+/** 1/sqrt(2) */
+#   define M_SQRT1_2L   eval_ldbl_join(M_SQRT1_2)
+#   define SQRT_EL   eval_ldbl_join(SQRT_E)
+#endif
+
+/** @} */  // }
+
+/** @defgroup Trigonometry_Constants Macros for various trigonometry constants
+@{ */  // (FB){
+
 #define TAN_E   -0.45054953406980749571063417770127929443957091173203671001233561163230090199510257284268170870246704398432546310
-// Angle Constants
+#define TAN_EF   eval_flt_join(TAN_E)
+#if SUPPORTS_LONG_DOUBLE
+#   define TAN_EL   eval_ldbl_join(TAN_E)
+#endif
+
+/** @} */  // }
+
+/** @defgroup Angle_Constants Macros for various angle constants
+@{ */  // (FB){
+
 #define DEG2GRAD   1.11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 #define DEG2RAD   0.01745329251994329576923690768488612713442871888541725456097191440171009114603449443682241569634509482212304492507379059248385469227528101239847421893404711731916824501501076956169755358123860530516878869127117208703296358960264
 #define GRAD2DEG   0.9
@@ -10052,7 +10569,12 @@ extern UNUSED int signgam;
 #define RIGHT_ANGLE_GRAD   100
 #define RIGHT_ANGLE_RAD   M_PI_2
 #define RIGHT_ANGLE_REV   0.25
-// Scientific Constants
+
+/** @} */  // }
+
+/** @defgroup Scientific_Constants Macros for various scientific constants
+@{ */  // (FB){
+
 #define ARTIN_CONSTANT   0.37395581361920228805472805434641641
 #define ATOMIC_UNIT_OF_CHARGE   1.602176565E-19
 #define ATOMIC_UNIT_OF_CURRENT   0.00662361795
@@ -10082,140 +10604,18 @@ extern UNUSED int signgam;
 #define SALEM_NUMBER   1.17628081825991750654407033847403505
 #define TWIN_PRIMES_CONSTANT   0.66016181584686957392781211001455577
 #define VARDI_CONSTANT   1.26408473530530111307959958416466949
-// Miscellaneous Constants
-#define ERFC_CONTFRAC_CUTOFF   30.0
-#define ERFC_CONTFRAC_TERMS   50.0
-#define ERF_SERIES_CUTOFF   1.5
-#define ERF_SERIES_TERMS   25.0
-#define EULERS_CONSTANT   0.57721566490153286060651209008240243104215933593992359880576723488486772677766467093694706329174674951463144724980708248096050401448654283622417399764492353625350033374293733773767394279259525824709491600873520394816567085323315
-#define EXPONENTIAL_FACTORIAL_CONSTANT   1.61111492580837673611111111111111111
-/** The value returned by `ilogb` for 0 */
-#define FP_ILOGB0   -2147483647
-/** The value returned by `ilogb` for NaN */
-#define FP_ILOGBNAN   2147483647
-#define GOLDEN_ANGLE   2.39996322972865332223155550663361385
-#define GOLDEN_RATIO   1.6180339887498948482045868343656381177203091798057628621354486227052604628189024497072072041893911374
-#define HYPERBOLIC_TANGENT_OF_1   0.7615941559557648881194582826047935904127685972579365515968105001219532445766384834589475216736767144219027597015540775323683091147624854132970066696113211253965101376080877764393409926042066795531174758011305900662577831975245123799759179611
-#define I_SQUARED   -1
-#define LANCZOS_G   6.024680040776729583740234375
-#define LANCZOS_G_MINUS_HALF   5.524680040776729583740234375
-#define LOCHS_CONSTANT   0.97027011439203392574025601921001083378128470478516128661035052993125419989173704803621267490802902646924158952293898402230011729806683281830059035368670755943547596420700271601215730100349595546709328590981290394185183860996575
 
-
-// FLOAT CONSTANT MATH MACROS
-
-
-// Eular Number Constants (Float)
-#define M_EF   eval_flt_join(M_E)
-#define INVERSE_EF   eval_flt_join(INVERSE_E)
-// PI Constants (Float)
-#define M_PIF   eval_flt_join(M_PI)
-#define PIF   M_PIF
-#define PI2F   eval_flt_join(PI2)
-#define PI4F   eval_flt_join(PI4)
-#define M_PI_2F   eval_flt_join(M_PI_2)
-#define M_PI_4F   eval_flt_join(M_PI_4)
-#define PI_1_3F   eval_flt_join(PI_1_3)
-#define PI_2_3F   eval_flt_join(PI_2_3)
-#define PI_4_3F   eval_flt_join(PI_4_3)
-#define M_1_PIF   eval_flt_join(M_1_PI)
-#define INVERSE_PIF   M_1_PIF
-#define M_2_PIF   eval_flt_join(M_2_PI)
-#define PI_SQUAREDF   eval_flt_join(PI_SQUARED)
-#define PI_SQUARED_1_4F   eval_flt_join(PI_SQUARED_1_4)
-#define LN_PIF   eval_flt_join(LN_PI)
-#define LOG10_PIF   eval_flt_join(LOG10_PI)
-#define SQRT_PIF   eval_flt_join(SQRT_PI)
-#define M_2_SQRTPIF   eval_flt_join(M_2_SQRTPI)
-#define TAN_PIF   0.0F
-// Logarithm Constants (Float)
-#define M_LOG2EF   eval_flt_join(M_LOG2E)
-#define M_LOG10EF   eval_flt_join(M_LOG10E)
-#define LOG10_EF   M_LOG10EF
-// Natural Logarithm Constants (Float)
-#define M_LN2F   eval_flt_join(M_LN2)
-#define LN2F   M_LN2F
-#define M_LN10F   eval_flt_join(M_LN10)
-/** 1/ln(10) */
-#define M_IVLN10F   eval_flt_join(M_IVLN10)
-// Square Root Constants (Float)
-/** sqrt(0.5) */
-#define SQRT_HALFF   eval_flt_join(SQRT_HALF)
-/** sqrt(3/4) */
-#define SQRT_3_DIV_4F   eval_flt_join(SQRT_3_DIV_4)
-#define M_SQRT2F   eval_flt_join(M_SQRT2)
-#define SQRT_2F   M_SQRT2L
-#define SQRT_3F   eval_flt_join(SQRT_3)
-/** 1/sqrt(2) */
-#define M_SQRT1_2F   eval_flt_join(M_SQRT1_2)
-#define SQRT_EF   eval_flt_join(SQRT_E)
-// Trigonometry Constants (Float)
-#define TAN_EF   eval_flt_join(TAN_E)
-// Miscellaneous Constants (Float)
-#define EULERS_CONSTANTF   eval_flt_join(EULERS_CONSTANT)
-
-
-// LONG DOUBLE CONSTANT MATH MACROS
-
-#if SUPPORTS_LONG_DOUBLE
-// Eular Number Constants (Long Double)
-#   define M_EL   eval_ldbl_join(M_E)
-#   define INVERSE_EL   eval_ldbl_join(INVERSE_E)
-// PI Constants (DLong ouble)
-#   define M_PIL   eval_ldbl_join(M_PI)
-#   define PIL   M_PIL
-#   define PI2L   eval_ldbl_join(PI2)
-#   define PI4L   eval_ldbl_join(PI4)
-#   define M_PI_2L   eval_ldbl_join(M_PI_2)
-#   define M_PI_4L   eval_ldbl_join(M_PI_4)
-#   define PI_1_3L   eval_ldbl_join(PI_1_3)
-#   define PI_2_3L   eval_ldbl_join(PI_2_3)
-#   define PI_4_3L   eval_ldbl_join(PI_4_3)
-#   define M_1_PIL   eval_ldbl_join(M_1_PI)
-#   define INVERSE_PIL   M_1_PIL
-#   define M_2_PIL   eval_ldbl_join(M_2_PI)
-#   define PI_SQUAREDL   eval_ldbl_join(PI_SQUARED)
-#   define PI_SQUARED_1_4L   eval_ldbl_join(PI_SQUARED_1_4)
-#   define LN_PIL   eval_ldbl_join(LN_PI)
-#   define LOG10_PIL   eval_ldbl_join(LOG10_PI)
-#   define SQRT_PIL   eval_ldbl_join(SQRT_PI)
-#   define M_2_SQRTPIL   eval_ldbl_join(M_2_SQRTPI)
-#   define TAN_PIL   0.0L
-#   define pio2_hi   1.57079632679489661926L
-#   define pio2_lo   -2.50827880633416601173E-20L
-#   define __pio2_hi   pio2_hi
-#   define __pio2_lo   pio2_lo
-// Logarithm Constants (Long Double)
-#   define M_LOG2EL   eval_ldbl_join(M_LOG2E)
-#   define M_LOG10EL   eval_ldbl_join(M_LOG10E)
-#   define LOG10_EL   M_LOG10EL
-// Natural Logarithm Constants (Long Double)
-#   define M_LN2L   eval_ldbl_join(M_LN2)
-#   define LN2L   M_LN2L
-#   define M_LN10L   eval_ldbl_join(M_LN10)
-/** 1/ln(10) */
-#   define M_IVLN10l   eval_ldbl_join(M_IVLN10)
-// Square Root Constants (Long Double)
-/** sqrt(0.5) */
-#define SQRT_HALFL   eval_ldbl_join(SQRT_HALF)
-/** sqrt(3/4) */
-#   define SQRT_3_DIV_4L   eval_ldbl_join(SQRT_3_DIV_4)
-#   define M_SQRT2L   eval_ldbl_join(M_SQRT2)
-#   define SQRT_2L   M_SQRT2L
-#   define SQRT_3L   eval_ldbl_join(SQRT_3)
-/** 1/sqrt(2) */
-#   define M_SQRT1_2L   eval_ldbl_join(M_SQRT1_2)
-#   define SQRT_EL   eval_ldbl_join(SQRT_E)
-// Trigonometry Constants (Long Double)
-#   define TAN_EL   eval_ldbl_join(TAN_E)
-// Miscellaneous Constants (Long Double)
-#   define EULERS_CONSTANTL   eval_ldbl_join(EULERS_CONSTANT)
-#endif
+/** @} */  // }
 
 
 // QUATERNION CONSTANTS
 
-#define QUATERNION_ZEROF   ({ 0.0F, 0.0F, 0.0F, 0.0F })  // quaternion_float
+/** @defgroup Quaternion_Constants Macros for various Quaternion constants
+@{ */  // (FB){
+
+// quaternion_float
+
+#define QUATERNION_ZEROF   ({ 0.0F, 0.0F, 0.0F, 0.0F })
 #define QUATERNION_ONEF   ({ 1.0, 0.0F, 0.0F, 0.0F })
 #define QUATERNION_EF   ({ M_EF, 0.0F, 0.0F, 0.0F })
 #define QUATERNION_PIF   ({ M_PIF, 0.0F, 0.0F, 0.0F })
@@ -10223,7 +10623,10 @@ extern UNUSED int signgam;
 #define QUATERNION_PI4F   ({ M_PI_4F, 0.0F, 0.0F, 0.0F })
 #define QUATERNION_INV_PIF   ({ INVERSE_PIF, 0.0F, 0.0F, 0.0F })
 #define QUATERNION_IDENTF   ({ 1.0F, 0.0F, 0.0F, 0.0F })
-#define QUATERNION_ZERO   ({ 0.0, 0.0, 0.0, 0.0 })  // quaternion
+
+// quaternion (`double`)
+
+#define QUATERNION_ZERO   ({ 0.0, 0.0, 0.0, 0.0 })
 #define QUATERNION_ONE   ({ 1.0, 0.0, 0.0, 0.0 })
 #define QUATERNION_E   ({ M_EF, 0.0, 0.0, 0.0 })
 #define QUATERNION_PI   ({ M_PI, 0.0, 0.0, 0.0 })
@@ -10231,8 +10634,11 @@ extern UNUSED int signgam;
 #define QUATERNION_PI4   ({ M_PI_4, 0.0, 0.0, 0.0 })
 #define QUATERNION_INV_PI   ({ INVERSE_PI, 0.0, 0.0, 0.0 })
 #define QUATERNION_IDENT   ({ 1.0, 0.0, 0.0, 0.0 })
+
+// quaternion_long_double
+
 #if SUPPORTS_LONG_DOUBLE
-#   define QUATERNION_ZEROL   ({ 0.0L, 0.0L, 0.0L, 0.0L })  // quaternion_long_double
+#   define QUATERNION_ZEROL   ({ 0.0L, 0.0L, 0.0L, 0.0L })
 #   define QUATERNION_ONEL   ({ 1.0, 0.0L, 0.0L, 0.0L })
 #   define QUATERNION_EL   ({ M_EL, 0.0L, 0.0L, 0.0L })
 #   define QUATERNION_PIL   ({ M_PIL, 0.0L, 0.0L, 0.0L })
@@ -10241,6 +10647,8 @@ extern UNUSED int signgam;
 #   define QUATERNION_INV_PIL   ({ INVERSE_PIL, 0.0L, 0.0L, 0.0L })
 #   define QUATERNION_IDENTL   ({ 1.0L, 0.0L, 0.0L, 0.0L })
 #endif
+
+/** @} */  // }
 
 
 #endif  // MATH_H_MATHDEF
@@ -10271,6 +10679,9 @@ extern UNUSED int signgam;
 
 // FLOAT-POINT CATEGORIES
 
+/** @defgroup Float_Point_Categories Macros representing the different categories of float-points
+@{ */  // (FB){
+
 /** Not-A-Number */
 #define FP_NAN   (0)
 /** Positive or negative infinity (overflow) */
@@ -10279,17 +10690,23 @@ extern UNUSED int signgam;
 #define FP_ZERO   (2)
 /** Sub-normal value (underflow) */
 #define FP_SUBNORMAL   (3)
-/** Normal value (not an underflow, overflow, zero, INF, or NAN) */
+/** Normal value (not an underflow, overflow, zero, `INF`, nor `NAN`) */
 #define FP_NORMAL   (4)
+
+/** @} */  // }
 
 
 // MATH_ERRHANDLING MACROS
 
+/** @defgroup Math_Errors Code associated with math-errors
+@{ */  // (FB){
+
 /** Bitmask for the math_errhandling macro; errno set by math function */
-#define MATH_ERRNO   (1)
+#define MATH_ERRNO   1
 /** Bitmask for the math_errhandling macro; Exception raised by math function */
-#define MATH_ERREXCEPT   (2)
+#define MATH_ERREXCEPT   2
 #define math_errhandling   (MATH_ERRNO | MATH_ERREXCEPT)
+
 /** Types of exceptions in the `type` field in `__exception` */
 enum MATHERR_TYPE {
 	DOMAIN = 1,
@@ -10299,6 +10716,7 @@ enum MATHERR_TYPE {
 	TLOSS = 5,
 	PLOSS = 6
 };
+
 /** Support for various different standard error handling behaviors */
 typedef enum _LIB_VERSION_TYPE {
 	/** IEEE754/IEEE854 */
@@ -10312,8 +10730,10 @@ typedef enum _LIB_VERSION_TYPE {
 	/** ISO C99 */
 	_ISOC_ = 3
 } _LIB_VERSION_TYPE;
+
 /** This variable can be changed at run-time to any of the values above to affect floating point error handling behavior (it may also be necessary to change the hardware FPU exception settings) */
 extern UNUSED _LIB_VERSION_TYPE _LIB_VERSION;
+
 #if ((!defined(LIBMVER)) || ((LIBMVER > 3) || (LIBMVER < -1)))  // _POSIX_ is the default
 #   define LIBMVER   2
 _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
@@ -10339,24 +10759,29 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #define IS_LIBM_POSIX   (LIBMVER == 2)
 #define IS_LIBM_ISOC   (LIBMVER == 3)
 
+/** @} */  // }
+
 
 // FP_FAST_FMA
 
 #ifdef __FP_FAST_FMAF
-/** The compiler will define __FP_FAST_FMAF if the fma builtins are supported for floats */
+/** The compiler will define `__FP_FAST_FMAF` if the `fma()` builtins are supported for floats */
 #   define FP_FAST_FMAF   (1)
 #endif
 #ifdef __FP_FAST_FMA
-/** The compiler will define __FP_FAST_FMA if the fma builtins are supported for doubles */
+/** The compiler will define `__FP_FAST_FMA` if the `fma()` builtins are supported for doubles */
 #   define FP_FAST_FMA   (1)
 #endif
 #ifdef __FP_FAST_FMAL
-/** The compiler will define __FP_FAST_FMAL if the fma builtins are supported for long doubles */
+/** The compiler will define `__FP_FAST_FMAL` if the `fma()` builtins are supported for long doubles */
 #   define FP_FAST_FMAL   (1)
 #endif
 
 
-// FLOAT16 (HALF-FLOAT) VALUES & PROPERTIES
+// FLOAT VALUES & PROPERTIES
+
+/** @defgroup Float16_Properties Macros providing special values and properties concerning half-floats (`float16`)
+@{ */  // (FB){
 
 #ifndef __FLT16_RADIX__
 /** Radix of exponent representation */
@@ -10505,8 +10930,11 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #   define FLT16_MAX_10_EXP   __FLT16_MAX_10_EXP__
 #endif
 
+/** @} */  // }
 
-// FLOAT VALUES & PROPERTIES
+
+/** @defgroup Float_Properties Macros providing special values and properties concerning single-floats (`float`)
+@{ */  // (FB){
 
 #ifndef __FLT_RADIX__
 /** Radix of exponent representation; Base or radix of exponent representation (integer >1) */
@@ -10671,8 +11099,11 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #define EXCESSF   126
 #define HIDDENF   0x800000
 
+/** @} */  // }
 
-// DOUBLE VALUES & PROPERTIES
+
+/** @defgroup Double_Properties Macros providing special values and properties concerning double-floats (`double`)
+@{ */  // (FB){
 
 #ifndef __DBL_RADIX__
 /** Radix of exponent representation */
@@ -10843,8 +11274,11 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #define EXCESSD   1022
 #define HIDDEND   0x100000
 
+/** @} */  // }
 
-// FLOAT32 VALUES & PROPERTIES
+
+/** @defgroup Float32_Properties Macros providing special values and properties concerning 32-bit floats (`float32`)
+@{ */  // (FB){
 
 #ifndef __FLT32_RADIX__
 /** Radix of exponent representation */
@@ -10994,8 +11428,11 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #endif
 #define FLT32_MAX_10   1.0E+38F
 
+/** @} */  // }
 
-// FLOAT64 VALUES & PROPERTIES
+
+/** @defgroup Float64_Properties Macros providing special values and properties concerning 64-bit floats (`float64`)
+@{ */  // (FB){
 
 #ifndef __FLT64_RADIX__
 /** Radix of exponent representation */
@@ -11145,8 +11582,11 @@ _LIB_VERSION_TYPE _LIB_VERSION = _POSIX_;
 #endif
 #define FLT64_MAX_10   1.0E+308
 
+/** @} */  // }
 
-// LONG DOUBLE VALUES & PROPERTIES
+
+/** @defgroup Long_Double_Properties Macros providing special values and properties concerning `long doubles`
+@{ */  // (FB){
 
 #ifdef SUPPORTS_LONG_DOUBLE
 #   ifndef __LDBL_RADIX__
@@ -11421,8 +11861,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #   define HIDDEND_LL   (0x10000000000000LL)
 #endif
 
+/** @} */  // }
 
-// FLOAT128 VALUES & PROPERTIES
+
+/** @defgroup Float128_Properties Macros providing special values and properties concerning 128-bit floats (`float128`)
+@{ */  // (FB){
 
 #ifdef SUPPORTS_FLOAT128
 #   ifndef __FLT128_RADIX__
@@ -11574,8 +12017,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #   define FLT128_MAX_10   1.0E+4932F128
 #endif
 
+/** @} */  // }
 
-// FLOAT32X VALUES & PROPERTIES
+
+/** @defgroup Float32x_Properties Macros providing special values and properties concerning `float32x`
+@{ */  // (FB){
 
 #ifndef __FLT32X_RADIX__
 /** Radix of exponent representation */
@@ -11725,8 +12171,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #endif
 #define FLT32X_MAX_10   1.0E+308F32X
 
+/** @} */  // }
 
-// FLOAT64X VALUES & PROPERTIES
+
+/** @defgroup Float64x_Properties Macros providing special values and properties concerning `float64x`
+@{ */  // (FB){
 
 #ifndef __FLT64X_RADIX__
 /** Radix of exponent representation */
@@ -11876,8 +12325,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #endif
 #define FLT64X_MAX_10   1.0E+4932F64X
 
+/** @} */  // }
 
-// DECIMAL32 VALUES & PROPERTIES
+
+/** @defgroup Decimal32_Properties Macros providing special values and properties concerning 32-bit decimal floats (`decimal32`)
+@{ */  // (FB){
 
 #if SUPPORTS_DECIMAL32
 #   ifndef __DEC32_RADIX__
@@ -11988,8 +12440,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #   define DECIMAL32_Ehigh   (DECIMAL32_Emax + DECIMAL32_Bias - DECIMAL32_Pmax + 1)
 #endif
 
+/** @} */  // }
 
-// DECIMAL64 VALUES & PROPERTIES
+
+/** @defgroup Decimal64_Properties Macros providing special values and properties concerning 64-bit decimal floats (`decimal64`)
+@{ */  // (FB){
 
 #if SUPPORTS_DECIMAL64
 #   ifndef __DEC64_RADIX__
@@ -12087,8 +12542,11 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #   endif
 #endif
 
+/** @} */  // }
 
-// DECIMAL128 VALUES & PROPERTIES
+
+/** @defgroup Decimal128_Properties Macros providing special values and properties concerning 128-bit decimal floats (`decimal128`)
+@{ */  // (FB){
 
 #if SUPPORTS_DECIMAL128
 #   ifndef __DEC128_RADIX__
@@ -12190,6 +12648,8 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #   endif
 #endif
 
+/** @} */  // }
+
 
 // MISCELLANEOUS VALUES (<floatio.h>)
 
@@ -12200,77 +12660,77 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #define MAXEXP   (308)
 /** Max decimal digits in a 128-bit fraction takes up 39 decimal digits */
 #define MAXFRACT   (39)
-/** MAXEXPDIG is the maximum number of decimal digits needed to store a floating-point exponent in the largest supported format; It should be ceil(log10(LDBL_MAX_10_EXP)) or (if hexadecimal floating-point conversions are supported) ceil(log10(LDBL_MAX_EXP)) */
+/** MAXEXPDIG is the maximum number of decimal digits needed to store a floating-point exponent in the largest supported format; It should be `ceil(log10(LDBL_MAX_10_EXP))` or `ceil(log10(LDBL_MAX_EXP))` (if hexadecimal floating-point conversions are supported) */
 #define MAXEXPDIG   (6)
 /** Zero-initialization; Used to avoid warnings */
 #define _FP_ZERO_INIT   0
+/** @def _FPIO_CONST_OFFSET
+Offset of the constants in the array `_fpioconst_pow10` */
 #if (BITS_PER_MP_LIMB == 32)
-/** Offset of the constants in the array `_fpioconst_pow10` */
 #   define _FPIO_CONST_OFFSET   2
 #else
-/** Offset of the constants in the array `_fpioconst_pow10` */
 #   define _FPIO_CONST_OFFSET   1
 #endif
 /** Offset of the constants in the array `_fpioconst_pow10` */
 #define FPIO_CONST_OFFSET   _FPIO_CONST_OFFSET
+/** @def FLT_UWORD_IS_FINITE
+True if a positive float with bitmask `x` is finite */
+/** @def FLT_UWORD_IS_NAN
+True if a positive float with bitmask `x` is not a number */
+/** @def FLT_UWORD_IS_INFINITE
+True if a positive float with bitmask `x` is +infinity */
+/** @def FLT_UWORD_EXP_MAX
+The bitmask of the largest finite exponent (129 if the largest exponent is used for finite numbers, 128 otherwise) */
+/** @def FLT_UWORD_LOG_MAX
+The bitmask of `log(FLT_MAX)` (rounded down); This value is the largest input that can be passed to `exp()` without producing overflow */
+/** @def FLT_UWORD_LOG_2MAX
+The bitmask of `log(2*FLT_MAX)` (rounded down); This value is the largest input than can be passed to `cosh()` without producing overflow */
 #ifdef _FLT_LARGEST_EXPONENT_IS_NORMAL
-/** True if a positive float with bitmask X is finite */
 #   define FLT_UWORD_IS_FINITE(x)   1
-/** True if a positive float with bitmask X is not a number */
 #   define FLT_UWORD_IS_NAN(x)   0
-/** True if a positive float with bitmask X is +infinity */
 #   define FLT_UWORD_IS_INFINITE(x)   0
 #   define FLT_UWORD_MAX   0x7fffffff
-/** The bitmask of the largest finite exponent (129 if the largest exponent is used for finite numbers, 128 otherwise) */
 #   define FLT_UWORD_EXP_MAX   0x43010000
-/** The bitmask of log(FLT_MAX), rounded down; This value is the largest input that can be passed to exp() without producing overflow */
 #   define FLT_UWORD_LOG_MAX   0x42b2d4fc
-/** The bitmask of log(2*FLT_MAX), rounded down; This value is the largest input than can be passed to cosh() without producing overflow */
 #   define FLT_UWORD_LOG_2MAX   0x42b437e0
 #else
-/** True if a positive float with bitmask X is finite */
 #   define FLT_UWORD_IS_FINITE(x)   ((x) < 0x7f800000L)
-/** True if a positive float with bitmask X is not a number */
 #   define FLT_UWORD_IS_NAN(x)   ((x) > 0x7f800000L)
-/** True if a positive float with bitmask X is +infinity */
 #   define FLT_UWORD_IS_INFINITE(x)   ((x) == 0x7f800000L)
 #   define FLT_UWORD_MAX   0x7f7fffffL
-/** The bitmask of the largest finite exponent (129 if the largest exponent is used for finite numbers, 128 otherwise) */
 #   define FLT_UWORD_EXP_MAX   0x43000000
-/** The bitmask of log(FLT_MAX), rounded down; This value is the largest input that can be passed to exp() without producing overflow */
 #   define FLT_UWORD_LOG_MAX   0x42b17217
-/** The bitmask of log(2*FLT_MAX), rounded down; This value is the largest input than can be passed to cosh() without producing overflow */
 #   define FLT_UWORD_LOG_2MAX   0x42b2d4fc
 #endif
 /** The bitmask of FLT_MAX/2 */
 #define FLT_UWORD_HALF_MAX   (FLT_UWORD_MAX - 100000000000000000000000L)
 /** The largest biased exponent that can be used for finite numbers (255 if the largest exponent is used for finite numbers, 254 otherwise) */
 #define FLT_LARGEST_EXP   (FLT_UWORD_MAX >> 23)
+/** @def FLT_UWORD_IS_ZERO
+True if a positive float with bitmask `x` is +0; Without denormals, any float with a zero exponent is a +0 representation; With denormals, the only +0 representation is a 0 bitmask */
+/** @def FLT_UWORD_IS_SUBNORMAL
+True if a non-zero positive float with bitmask `x` is subnormal (Routines should check for zeros first) */
+/** @def FLT_UWORD_MIN
+The bitmask of the smallest float above +0 */
+/** @def FLT_UWORD_EXP_MIN
+The bitmask of the float representation of `REAL_FLT_MIN`'s exponent */
+/** @def FLT_UWORD_LOG_MIN
+The bitmask of `log(REAL_FLT_MIN)` (rounding down) */
+/** @def FLT_SMALLEST_EXP
+`REAL_FLT_MIN`'s exponent - `EXP_BIAS` (1 if denormals are not supported, -22 if they are) */
 #ifdef _FLT_NO_DENORMALS
-/** True if a positive float with bitmask X is +0; Without denormals, any float with a zero exponent is a +0 representation; With denormals, the only +0 representation is a 0 bitmask */
 #   define FLT_UWORD_IS_ZERO(x)   ((x) < 0x800000L)
-/** True if a non-zero positive float with bitmask X is subnormal (Routines should check for zeros first) */
 #   define FLT_UWORD_IS_SUBNORMAL(x)   0
-/** The bitmask of the smallest float above +0 */
 #   define FLT_UWORD_MIN   0x800000
-/** The bitmask of the float representation of REAL_FLT_MIN's exponent */
 #   define FLT_UWORD_EXP_MIN   0x42fc0000
-/** The bitmask of |log(REAL_FLT_MIN)|, rounding down */
 #   define FLT_UWORD_LOG_MIN   0x42aeac50
-/** REAL_FLT_MIN's exponent - EXP_BIAS (1 if denormals are not supported, -22 if they are) */
 #   define FLT_SMALLEST_EXP   1
 #else
-/** True if a positive float with bitmask X is +0; Without denormals, any float with a zero exponent is a +0 representation; With denormals, the only +0 representation is a 0 bitmask */
 #   define FLT_UWORD_IS_ZERO(x)   ((x) == 0)
-/** True if a non-zero positive float with bitmask X is subnormal (Routines should check for zeros first) */
 #   define FLT_UWORD_IS_SUBNORMAL(x)   ((x) < 0x800000L)
-/** The bitmask of the smallest float above +0 */
 #   define FLT_UWORD_MIN   1
-/** The bitmask of the float representation of REAL_FLT_MIN's exponent */
 #   define FLT_UWORD_EXP_MIN   0x43160000
-/** The bitmask of |log(REAL_FLT_MIN)|, rounding down */
 #   define FLT_UWORD_LOG_MIN   0x42cff1b5
-/** REAL_FLT_MIN's exponent - EXP_BIAS (1 if denormals are not supported, -22 if they are) */
 #   define FLT_SMALLEST_EXP   -22
 #endif
 
@@ -12288,16 +12748,17 @@ _Static_assert((SIZEOF_LONG_DOUBLE == 16), "`long double` is not of the correct 
 #      define FLT_ROUNDS   __FLT_ROUNDS__
 #   endif
 #endif
-#if ((!defined(__FLT_EVAL_METHOD__)) && SUPPORTS_LONG_DOUBLE)  // ix87 FPU default
-/** Specifies the precision in which all floating-point arithmetic operations (other than assignment and cast) are performed
+/** @def __FLT_EVAL_METHOD__
+Specifies the precision in which all floating-point arithmetic operations (other than assignment and cast) are performed
 
-Values
+Values:
  - Negative (except -1): Implementation-defined behavior
  - -1: The default precision is not known
  - 0: All operations and constants evaluate in the range and precision of the type used. Additionally, float_t and double_t are equivalent to `float` and `double`, respectively
  - 1: All operations and constants evaluate in the range and precision of double, and float_t and double_t are equivalent to `double`
  - 2: All operations and constants evaluate in the range and precision of long double, so float_t and double_t are equivalent to `long double`
 */
+#if ((!defined(__FLT_EVAL_METHOD__)) && SUPPORTS_LONG_DOUBLE)  // ix87 FPU default
 #   define __FLT_EVAL_METHOD__   (2)
 #elif (!defined(__FLT_EVAL_METHOD__))
 #   define __FLT_EVAL_METHOD__   (0)
@@ -12350,8 +12811,9 @@ Values
 
 // FPMAX_T & FPMAX_*
 
+/** @typedef fpmax_t
+Float-point datatype that is equivalent to the largest float-point datatype supported by the target system */
 #ifdef LDBL_MANT_DIG
-/** Float-point datatype that is equivalent to the largest float-point datatype supported by the target system */
 typedef long double   fpmax_t;
 #   define FPMAX_TYPE   3
 #   define FPMAX_MANT_DIG   LDBL_MANT_DIG
@@ -12364,7 +12826,6 @@ typedef long double   fpmax_t;
 #   define FPMAX_MAX   LDBL_MAX
 #   define FPMAX_MAX_10_EXP   LDBL_MAX_10_EXP
 #elif defined(DBL_MANT_DIG)
-/** Float-point datatype that is equivalent to the largest float-point datatype supported by the target system */
 typedef double   fpmax_t;
 #   define FPMAX_TYPE   2
 #   define FPMAX_MANT_DIG   DBL_MANT_DIG
@@ -12377,7 +12838,6 @@ typedef double   fpmax_t;
 #   define FPMAX_MAX   DBL_MAX
 #   define FPMAX_MAX_10_EXP   DBL_MAX_10_EXP
 #elif defined(FLT_MANT_DIG)
-/** Float-point datatype that is equivalent to the largest float-point datatype supported by the target system */
 typedef float   fpmax_t;
 #   define FPMAX_TYPE   1
 #   define FPMAX_MANT_DIG   FLT_MANT_DIG
@@ -12404,17 +12864,15 @@ typedef float   fpmax_t;
 
 // FPU CONTROL DATATYPE
 
+/** @typedef fpu_control_t
+FPU Control Word Datatype */
 #if (defined(ARCHM68K) || defined(ARCHMIPS))
-/** FPU Control Word Datatype */
 typedef USItype   fpu_control_t;
 #elif defined(ARCHSPARC)
-/** FPU Control Word Datatype */
 typedef unsigned long   fpu_control_t;
 #elif defined(ARCHX86)
-/** FPU Control Word Datatype */
 typedef UHItype   fpu_control_t;
 #else
-/** FPU Control Word Datatype */
 typedef unsigned int   fpu_control_t;
 #endif
 #define __fpu_control_t   fpu_control_t
@@ -12425,6 +12883,31 @@ extern UNUSED fpu_control_t fpu_control;
 
 // FPU CONTROL MACROS
 
+/** @defgroup FPU_Control_Macros Macros used to manipulate the FPU
+@{ */  // (FB){
+
+/** @def _FPU_MASK_I
+Inexact operation */
+/** @def _FPU_MASK_O
+Overflow */
+/** @def _FPU_MASK_PM
+Inexact */
+/** @def _FPU_MASK_U
+Underflow */
+/** @def _FPU_MASK_XM
+Inexact */
+/** @def _FPU_MASK_Z
+Division by zero */
+/** @def _FPU_IEEE
+Default FPU control settings */
+/** @def _FPU_DEFAULT
+Default FPU control settings */
+/** @def _FPU_RESERVED
+Reserved FPU bits */
+/** @def _FPU_GETCW
+Macros for accessing the hardware control word (current status word) */
+/** @def _FPU_SETCW
+Get the current status word and set the control word */
 #ifdef ARCHALPHA
 #   define _FPU_MASK_IM   1
 #   define _FPU_MASK_DM   2
@@ -12439,85 +12922,140 @@ extern UNUSED fpu_control_t fpu_control;
 #   define _FPU_RC_DOWN   0x400
 #   define _FPU_RC_UP   0x800
 #   define _FPU_RC_ZERO   0xc00
+#   define FP_RND_NEAREST   FE_TONEAREST
+#   define FP_RND_ZERO   FE_TOWARDZERO
+#   define FP_RND_PINF   FE_UPWARD
+#   define FP_RND_MINF   FE_DOWNWARD
+#   define FP_ROUNDMODE   _round
+#   define FP_EX_INVALID   FE_INVALID
+#   define FP_EX_OVERFLOW   FE_OVERFLOW
+#   define FP_EX_UNDERFLOW   FE_UNDERFLOW
+#   define FP_EX_DIVZERO   FE_DIVBYZERO
+#   define FP_EX_INEXACT   FE_INEXACT
+#   define _FP_TININESS_AFTER_ROUNDING   1
 /** Reserved bits in cw */
 #   define _FPU_RESERVED   0xf0c0
 #   define _FPU_DEFAULT   0x137f
 #   define _FPU_IEEE   0x137f
-#elif defined(ARCHAARCH64)
-// Macros for accessing the FPCR & FPSR
-#   define _FPU_GETCW(fpcr)   asm volatile ("mrs %0, fpcr;" : "=r"(fpcr))
-#   define _FPU_SETCW(fpcr)   asm volatile ("msr fpcr, %0;" : : "r"(fpcr))
-#   define _FPU_GETFPSR(fpsr)   asm volatile ("mrs %0, fpsr;" : "=r"(fpsr))
-#   define _FPU_SETFPSR(fpsr)   asm volatile ("msr fpsr, %0;" : : "r"(fpsr))
-#   define _FPU_RESERVED   0xfe0fe0ff
-#   define _FPU_FPSR_RESERVED  0x0fffffe0
+#   define FPCR_ROUND_MASK   844424930131968UL
+#   define FPCR_ROUND_SHIFT   58
+#   define SWCR_MAP_MASK   12288UL
+#   define SWCR_ENABLE_SHIFT   16
+#   define SWCR_ENABLE_MASK   (FE_ALL_EXCEPT >> SWCR_ENABLE_SHIFT)
+#   define SWCR_STATUS_MASK   (FE_ALL_EXCEPT)
+#   define SWCR_ALL_MASK   (SWCR_ENABLE_MASK | SWCR_MAP_MASK | SWCR_STATUS_MASK)
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
+#elif defined(ARCHARM)
 #   define _FPU_DEFAULT   0
-#   define _FPU_FPSR_DEFAULT   0
-#   define _FPU_FPCR_RM_MASK   0xc00000
-#   define _FPU_FPCR_MASK_IXE   0x1000
-#   define _FPU_FPCR_MASK_UFE   0x800
-#   define _FPU_FPCR_MASK_OFE   0x400
-#   define _FPU_FPCR_MASK_DZE   0x200
-#   define _FPU_FPCR_MASK_IOE   0x100
-#   define _FPU_FPCR_IEEE   (_FPU_DEFAULT  | _FPU_FPCR_MASK_IXE | _FPU_FPCR_MASK_UFE | _FPU_FPCR_MASK_OFE | _FPU_FPCR_MASK_DZE | _FPU_FPCR_MASK_IOE)
-#   define _FPU_FPSR_IEEE   0
+#   if defined(ARCHAARCH64)
+#      define _FPU_GETCW(fpcr)   vasm("mrs %0, fpcr;" : "=r"(fpcr))
+#      define _FPU_SETCW(fpcr)   vasm("msr fpcr, %0;" : : "r"(fpcr))
+#      define _FPU_GETFPSR(fpsr)   vasm("mrs %0, fpsr;" : "=r"(fpsr))
+#      define _FPU_SETFPSR(fpsr)   vasm("msr fpsr, %0;" : : "r"(fpsr))
+#      define _FPU_RESERVED   0xfe0fe0ff
+#      define _FPU_FPSR_RESERVED  0x0fffffe0
+#      define _FPU_FPSR_DEFAULT   0
+#      define _FPU_FPCR_RM_MASK   0xc00000
+#      define _FPU_FPCR_MASK_IXE   0x1000
+#      define _FPU_FPCR_MASK_UFE   0x800
+#      define _FPU_FPCR_MASK_OFE   0x400
+#      define _FPU_FPCR_MASK_DZE   0x200
+#      define _FPU_FPCR_MASK_IOE   0x100
+#      define _FPU_FPCR_IEEE   (_FPU_DEFAULT  | _FPU_FPCR_MASK_IXE | _FPU_FPCR_MASK_UFE | _FPU_FPCR_MASK_OFE | _FPU_FPCR_MASK_DZE | _FPU_FPCR_MASK_IOE)
+#      define _FPU_FPSR_IEEE   0
+#      define FP_RND_NEAREST   FE_TONEAREST
+#      define FP_RND_ZERO   FE_TOWARDZERO
+#      define FP_RND_PINF   FE_UPWARD
+#      define FP_RND_MINF   FE_DOWNWARD
+#      define FP_EX_INVALID   FE_INVALID
+#      define FP_EX_OVERFLOW   FE_OVERFLOW
+#      define FP_EX_UNDERFLOW   FE_UNDERFLOW
+#      define FP_EX_DIVZERO   FE_DIVBYZERO
+#      define FP_EX_INEXACT   FE_INEXACT
+#      define FP_TRAPPING_EXCEPTIONS   ((_fcw >> FE_EXCEPT_SHIFT) & FE_ALL_EXCEPT)
+#      define _FP_W_TYPE   unsigned long long
+#      define _FP_WS_TYPE   signed long long
+#      define _FP_I_TYPE   long long
 typedef unsigned int   fpu_fpsr_t;
-#elif defined(ARCHAARCH32)
-#   if (!(defined(_LIBC) && (!defined(_LIBC_TEST))) && IS_SOFTFP)
-#      define _FPU_RESERVED   0xffffffff
-#      define _FPU_DEFAULT   0
-#   else
-/** Invalid operation */
-#      define _FPU_MASK_IM   0x100
-/** Divide by zero */
-#      define _FPU_MASK_ZM   0x200
-/** Overflow */
-#      define _FPU_MASK_OM   0x400
-/** Underflow */
-#      define _FPU_MASK_UM   0x800
-/** Inexact */
-#      define _FPU_MASK_PM   0x1000
+#   elif defined(ARCHAARCH32)
+#      if (!(defined(_LIBC) && (!defined(_LIBC_TEST))) && IS_SOFTFP)
+#         define _FPU_RESERVED   0xffffffff
+#      else
+#         define _FPU_MASK_IM   0x100
+#         define _FPU_MASK_ZM   0x200
+#         define _FPU_MASK_OM   0x400
+#         define _FPU_MASK_UM   0x800
+#         define _FPU_MASK_PM   0x1000
 /** NZCV flags */
-#      define _FPU_MASK_NZCV   0xf0000000
+#         define _FPU_MASK_NZCV   0xf0000000
 /** Rounding mode */
-#      define _FPU_MASK_RM   0xc00000
+#         define _FPU_MASK_RM   0xc00000
 /** All exception flags */
-#      define _FPU_MASK_EXCEPT   0x1f1f
-#      define _FPU_RESERVED   0x86060
-#      define _FPU_DEFAULT   0
-/** Default + exceptions enabled */
-#      define _FPU_IEEE   (_FPU_DEFAULT | 0x1f00)
-/** Macros for accessing the hardware control word */
-#      define _FPU_GETCW(cw)   asm volatile ("mrc p10, 7, %0, cr1, cr0, 0;" : "=r"(cw))
-#      define _FPU_SETCW(cw)   asm volatile ("mcr p10, 7, %0, cr1, cr0, 0;" : : "r"(cw))
-#   endif  // SOFTFP
-#elif defined(ARCHPARISC)
-/** Inexact (I) */
-#   define _FPU_MASK_PM   1
-/** Underflow (U) */
-#   define _FPU_MASK_UM   2
-/** Overflow (O) */
-#   define _FPU_MASK_OM   4
-/** Divide by zero (Z) */
-#   define _FPU_MASK_ZM   8
-/** Invalid operation (V) */
-#   define _FPU_MASK_IM   0x10
-/** Rounding mode mask */
-#   define _FPU_HPPA_MASK_RM   0x600
-/** Interrupt mask */
-#   define _FPU_HPPA_MASK_INT   0x1f
-#   define _FPU_HPPA_SHIFT_FLAGS   27
-/** There are no reserved bits in the PA fpsr (though some are undefined) */
-#   define _FPU_RESERVED   0
-/** Default is: No traps enabled, no flags set, round to nearest */
-#   define _FPU_DEFAULT   0
-/** Default + exceptions (FE_ALL_EXCEPT) enabled */
-#   define _FPU_IEEE   (_FPU_DEFAULT | _FPU_HPPA_MASK_INT)
-/** Get the current status word */
-#   define _FPU_GETCW(cw)   __extension__ ({ union __union_FPU_GETCW { unsigned long long __fpreg; unsigned int __halfreg[2]; } __fullfp; asm ("fstd %%fr0, 0(%1);" "fldd 0(%1), %%fr0;" : "=m"(__fullfp.__fpreg) : "r"(&__fullfp.__fpreg) : "%r0"); cw = __fullfp.__halfreg[0]; })
-/** Get the current status word and set the control word */
-#   define _FPU_SETCW(cw)   __extension__ ({ union __union_FPU_SETCW { unsigned long long __fpreg; unsigned int __halfreg[2]; } __fullfp; asm ("fstd %%fr0, 0(%1);" : "=m"(__fullfp.__fpreg) : "r"(&__fullfp.__fpreg) : "%r0"); __fullfp.__halfreg[0] = cw; asm ("fldd 0(%1), %%fr0;" : : "m"(__fullfp.__fpreg), "r"(&__fullfp.__fpreg) : "%r0" ); })
+#         define _FPU_MASK_EXCEPT   0x1f1f
+#         define _FPU_RESERVED   0x86060
+#         define _FPU_IEEE   (_FPU_DEFAULT | 0x1f00)
+#         define _FPU_GETCW(cw)   vasm("mrc p10, 7, %0, cr1, cr0, 0;" : "=r"(cw))
+#         define _FPU_SETCW(cw)   vasm("mcr p10, 7, %0, cr1, cr0, 0;" : : "r"(cw))
+#      endif  // SOFTFP
+#      define GET_FPSCR()   do { uint32_t _fpscr; vasm("fmrx %0, fpscr;" : "=r"(_fpscr)); _fpscr; } while (0x0)
+#      define SET_FPSCR(_fpscr)   vasm("fmxr fpscr, %0;" : : "r"(_fpscr))
+#      define FE_INEXACT   0x10
+#      define FE_UNDERFLOW   8
+#      define FE_OVERFLOW   4
+#      define FE_DIVBYZERO   2
+#      define FE_INVALID   1
+#      define FE_ALL_EXCEPT   0x1f
+#      define FE_TONEAREST   0
+#      define FE_UPWARD   0x400000
+#      define FE_DOWNWARD   0x800000
+#      define FE_TOWARDZERO   0xc00000
+#      define FE_ALL_RND   (FE_TONEAREST | FE_TOWARDZERO | FE_UPWARD | FE_DOWNWARD)
+#      define _FP_W_TYPE   unsigned long
+#      define _FP_WS_TYPE   signed long
+#      define _FP_I_TYPE   long
+#   endif
+#   define _FP_TININESS_AFTER_ROUNDING   0
+#   define JMPBUFSP   0
+#   define JMPBUFPC   1
+#   define JMPBUFDPC   0
+#   define FPINEX   0x1000
+#   define FPUNFL   0x800
+#   define FPOVFL   0x400
+#   define FPZDIV   0x200
+#   define FPINVAL   0x100
+#   define FPRNR   0
+#   define FPRZ   0x400000
+#   define FPRPINF   0x800000
+#   define FPRNINF   0xc00000
+#   define FPRMASK   0xc00000
+#   define FPPEXT   0
+#   define FPPSGL   0
+#   define FPPDBL   0
+#   define FPPMASK   0
+#   define FPAINEX   0x10
+#   define FPAUNFL   8
+#   define FPAOVFL   4
+#   define FPAZDIV   2
+#   define FPAINVAL   1
+#elif defined(ARCHITANIUM)
+#   define FE_INEXACT   0x20UL
+#   define FE_UNDERFLOW   0x10UL
+#   define FE_OVERFLOW   8UL
+#   define FE_DIVBYZERO   4UL
+#   define FE_UNNORMAL   2UL
+#   define FE_INVALID   1UL
+#   define FE_ALL_EXCEPT   (FE_INEXACT | FE_UNDERFLOW | FE_OVERFLOW | FE_DIVBYZERO | FE_UNNORMAL | FE_INVALID)
+#   define FE_TOWARDZERO   3
+#   define FE_UPWARD   2
+#   define FE_DOWNWARD   1
+#   define FE_TONEAREST   0
 #elif defined(ARCHM68K)
+#   define _FP_TININESS_AFTER_ROUNDING   0
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
 #   if (defined(ARCHCOLDFIRE) && (!defined(__mcffpu__)))
 #      define _FPU_RESERVED   0xffffffff
 #      define _FPU_DEFAULT    0
@@ -12534,43 +13072,50 @@ typedef unsigned int   fpu_fpsr_t;
 #      define _FPU_MASK_INEX2   0x100
 #      ifdef ARCHCOLDFIRE
 #         define _FPU_DOUBLE   0
+/** Reserved bits in fpucr */
+#         define _FPU_RESERVED   0xffff800f
 #      else
 #         define _FPU_EXTENDED   0
 #         define _FPU_DOUBLE   0x80
+/** Reserved bits in fpucr */
+#         define _FPU_RESERVED   0xffff000f
 #      endif
 #      define _FPU_SINGLE   0x40
 #      define _FPU_RC_NEAREST   0
 #      define _FPU_RC_ZERO   0x10
 #      define _FPU_RC_DOWN   0x20
 #      define _FPU_RC_UP   0x30
-#      ifdef ARCHCOLDFIRE
-/** Reserved bits in fpucr */
-#         define _FPU_RESERVED   0xffff800f
-#      else
-/** Reserved bits in fpucr */
-#         define _FPU_RESERVED   0xffff000f
-#      endif
 #      define _FPU_DEFAULT   0
 #      define _FPU_IEEE   1
 /** Macros for accessing the hardware control word */
-#      define _FPU_GETCW(cw)   asm ("fmove%.l %!, %0;" : "=dm"(cw))
-#      define _FPU_SETCW(cw)   asm volatile ("fmove%.l %0, %!;" : : "dm"(cw))
+#      define _FPU_GETCW(cw)   vasm("fmove%.l %!, %0;" : "=dm"(cw))
+#      define _FPU_SETCW(cw)   vasm("fmove%.l %0, %!;" : : "dm"(cw))
 #   endif
+#elif defined(ARCHMICROBLAZE)
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
+#   define _FP_TININESS_AFTER_ROUNDING   0
 #elif defined(ARCHMIPS)
+#   define ENABLE_MASK   0xf80U
+#   define CAUSE_MASK   0x1f000U
+#   define ENABLE_SHIFT   5
+#   define CAUSE_SHIFT   10
+#   ifndef __STDC_IEC_559__
+/** MIPS is not aligned to IEEE 754-2008 */
+#      define HIGH_ORDER_BIT_IS_SET_FOR_SNAN
+#   endif
 #   if IS_SOFTFP
 #      define _FPU_RESERVED   0xffffffff
 #      define _FPU_DEFAULT   0
 #   else
 /** Invalid operation */
 #      define _FPU_MASK_V   0x800
-/** Division by zero */
 #      define _FPU_MASK_Z   0x400
-/** Overflow */
 #      define _FPU_MASK_O   0x200
-/** Underflow */
 #      define _FPU_MASK_U   0x100
-/** Inexact operation */
 #      define _FPU_MASK_I   0x80
+#      define _FPU_MASK_ALL   (_FPU_MASK_V | _FPU_MASK_Z | _FPU_MASK_O |_FPU_MASK_U | _FPU_MASK_I | FE_ALL_EXCEPT)
 /** Flush denormalized numbers to zero */
 #      define _FPU_FLUSH_TZ   0x1000000
 /** IEEE 754-2008 compliance control */
@@ -12594,213 +13139,10 @@ typedef unsigned int   fpu_fpsr_t;
 #         define _FPU_GETCW(cw)   do { (cw) = __mips_fpu_getcw(); } while (0x0)
 #         define _FPU_SETCW(cw)   __mips_fpu_setcw(cw)
 #      else
-#         define _FPU_GETCW(cw)   asm volatile ("cfc1 %0, $31;" : "=r"(cw))
-#         define _FPU_SETCW(cw)   asm volatile ("ctc1 %0, $31;" : : "r"(cw))
+#         define _FPU_GETCW(cw)   vasm("cfc1 %0, $31;" : "=r"(cw))
+#         define _FPU_SETCW(cw)   vasm("ctc1 %0, $31;" : : "r"(cw))
 #      endif
 #   endif  // mips_soft_float
-#elif defined(ARCHSUPERH)
-#   ifndef __SH_FPU_ANY__
-#      define _FPU_RESERVED   0xffffffff
-#      define _FPU_DEFAULT   0
-#   else
-/** Invalid operation */
-#      define _FPU_MASK_VM   0x800
-/** Division by zero */
-#      define _FPU_MASK_ZM   0x400
-/** Overflow */
-#      define _FPU_MASK_OM   0x200
-/** Underflow */
-#      define _FPU_MASK_UM   0x100
-/** Inexact operation */
-#      define _FPU_MASK_IM   0x80
-#      define _FPU_RC_NEAREST   0
-#      define _FPU_RC_ZERO   1
-/** These bits are reserved */
-#      define _FPU_RESERVED   0xffc00000
-/** Default value */
-#      define _FPU_DEFAULT   0x80000
-/** Default + exceptions enabled */
-#      define _FPU_IEEE   0x80f80
-/** Macros for accessing the hardware control word */
-#      define _FPU_GETCW(cw)   asm ("sts fpscr, %0;" : "=r"(cw))
-#      define _FPU_SETCW(cw)   asm ("lds %0, fpscr;" : : "r"(cw))
-#      define __set_fpscr(cw)   asm ("lds %0, fpscr;" : : "r"(cw))
-#   endif  // SH_FPU_ANY
-#elif defined(ARCHS390)
-#   define _FPU_RESERVED   0x0707fffc
-/** Default value */
-#   define _FPU_DEFAULT   0
-#   define _FPU_GETCW(cw)   asm volatile ("efpc %0, 0;" : "=d"(cw))
-#   define _FPU_SETCW(cw)   asm volatile ("sfpc %0, 0;" : : "d"(cw))
-#elif defined(ARCHSPARC)
-#   define _FPU_MASK_IM   0x8000000
-#   define _FPU_MASK_OM   0x4000000
-#   define _FPU_MASK_UM   0x2000000
-#   define _FPU_MASK_ZM   0x1000000
-#   define _FPU_MASK_PM   0x800000
-#   define _FPU_EXTENDED   0
-#   define _FPU_DOUBLE   0x20000000
-#   define _FPU_80BIT   0x30000000
-#   define _FPU_SINGLE   0x10000000
-#   define _FPU_RC_DOWN   0xc0000000
-#   define _FPU_RC_UP   0x80000000
-#   define _FPU_RC_ZERO   0x40000000
-#   define _FPU_RC_NEAREST   0
-/** Reserved bits in cw */
-#   define _FPU_RESERVED   0x30300000
-#   define _FPU_DEFAULT   0
-#   define _FPU_IEEE   0
-#   if IS_WORDSIZE_64
-#      define _FPU_GETCW(cw)   asm volatile ("stx %%fsr, %0;" : "=m"(*&cw))
-#      define _FPU_SETCW(cw)   asm volatile ("ldx %0, %%fsr;" : : "m"(*&cw))
-#   else
-#      define _FPU_GETCW(cw)   asm volatile ("st %%fsr, %0;" : "=m"(*&cw))
-#      define _FPU_SETCW(cw)   asm volatile ("ld %0, %%fsr;" : : "m"(*&cw))
-#   endif
-#elif defined(ARCHPOWERPC)
-#   if IS_SOFTFP
-#      define _FPU_RESERVED   0xffffffff
-#      define _FPU_DEFAULT   0
-#   elif defined(__NO_FPRS__)  // e500
-#      define _FPU_RC_NEAREST   0
-#      define _FPU_RC_DOWN   3
-#      define _FPU_RC_UP   2
-#      define _FPU_RC_ZERO   1
-/** Zero divide */
-#      define _FPU_MASK_ZM   0x10
-/** Overflow */
-#      define _FPU_MASK_OM   4
-/** Underflow */
-#      define _FPU_MASK_UM   8
-/** Inexact */
-#      define _FPU_MASK_XM   0x40
-/** Invalid operation */
-#      define _FPU_MASK_IM   0x20
-/** These bits are reserved and not changed */
-#      define _FPU_RESERVED   0xc10080
-#      define _FPU_DEFAULT   0x3c
-#      define _FPU_IEEE   _FPU_DEFAULT
-#      define _FPU_GETCW(cw)   asm volatile ("mfspefscr %0;" : "=r"(cw))
-#      define _FPU_SETCW(cw)   asm volatile ("mtspefscr %0;" : : "r"(cw))
-#   else  // PowerPC 6xx floating-point
-#      define _FPU_RC_NEAREST   0
-#      define _FPU_RC_DOWN   3
-#      define _FPU_RC_UP   2
-#      define _FPU_RC_ZERO   1
-#      define _FPU_MASK_NI   4
-/** Zero divide */
-#      define _FPU_MASK_ZM   0x10
-/** Overflow */
-#      define _FPU_MASK_OM   0x40
-/** Underflow */
-#      define _FPU_MASK_UM   0x20
-/** Inexact */
-#      define _FPU_MASK_XM   8
-/** Invalid operation */
-#      define _FPU_MASK_IM   0x80
-#      define _FPU_RESERVED   0xffffff00
-#      define _FPU_DEFAULT   0
-#      define _FPU_IEEE   0xf0
-/** Macros for accessing the hardware control word */
-#      define _FPU_GETCW(cw)   __extension__ ({ union __union_FPU_GETCW { double __d; unsigned long long __ll; } __u; register double __fr; asm ("mffs %0;" : "=f"(__fr)); __u.__d = __fr; cw = (fpu_control_t)__u.__ll; (fpu_control_t) __u.__ll; })
-#      define _FPU_SETCW(cw)   __extension__ ({ union __union_FPU_SETCW { double __d; unsigned long long __ll; } __u = { .__ll = 0xfff80000LL << 32 }; register double __fr; __u.__ll |= ((cw) & UINT32_MAX); __fr = __u.__d; asm ("mtfsf 255, %0;" : : "f"(__fr)); })
-#   endif
-#elif defined(ARCHX86)
-#   define _FPU_MASK_IM   1
-#   define _FPU_MASK_DM   2
-#   define _FPU_MASK_ZM   4
-#   define _FPU_MASK_OM   8
-#   define _FPU_MASK_UM   0x10
-#   define _FPU_MASK_PM   0x20
-#   define _FPU_EXTENDED   0x300
-#   define _FPU_DOUBLE   0x200
-#   define _FPU_SINGLE   0
-#   define _FPU_RC_NEAREST  0
-#   define _FPU_RC_DOWN   0x400
-#   define _FPU_RC_UP   0x800
-#   define _FPU_RC_ZERO   0xc00
-#   define _FPU_RESERVED   0xf0c0
-#   define _FPU_DEFAULT   0x37f
-#   define _FPU_IEEE   0x37f
-#   define _FPU_GETCW(cw)   asm volatile ("fnstcw %0;" : "=m"(*&cw))
-#   define _FPU_SETCW(cw)   asm volatile ("fldcw %0;" : : "m"(*&cw))
-#else
-#   error   "Add FPU Control code for the target platform."
-#endif
-#if (defined(ARCHX86) && (!defined(ARCHI386)))
-#   define JMPBUFSP   0
-#   define JMPBUFPC   1
-#   define JMPBUFDPC   0
-#   define FPFTZ   0x8000
-#   define FPINEX   0x1000
-#   define FPUNFL   0x800
-#   define FPOVFL   0x400
-#   define FPZDIV   0x200
-#   define FPDNRM   0x100
-#   define FPINVAL   0x80
-#   define FPDAZ   0x40
-#   define FPRNR   0x0
-#   define FPRZ   0x6000
-#   define FPRPINF   0x4000
-#   define FPRNINF   0x2000
-#   define FPRMASK   0x6000
-#   define FPPEXT   0
-#   define FPPSGL   0
-#   define FPPDBL   0
-#   define FPPMASK   0
-#   define FPAINEX   0x20
-#   define FPAUNFL   0x10
-#   define FPAOVFL   8
-#   define FPAZDIV   4
-#   define FPADNRM   2
-#   define FPAINVAL   1
-#elif defined(ARCHI386)
-#   define JMPBUFSP   0
-#   define JMPBUFPC   1
-#   define JMPBUFDPC   0
-#   define FPINEX   0x20
-#   define FPUNFL   0x12
-#   define FPOVFL   8
-#   define FPZDIV   4
-#   define FPINVAL   1
-#   define FPRNR   0
-#   define FPRZ   0xc00
-#   define FPRPINF   0x800
-#   define FPRNINF   0x400
-#   define FPRMASK   0xc00
-#   define FPPEXT   0x300
-#   define FPPSGL   0
-#   define FPPDBL   0x200
-#   define FPPMASK   0x300
-#   define FPAINEX   FPINEX
-#   define FPAOVFL   FPOVFL
-#   define FPAUNFL   FPUNFL
-#   define FPAZDIV   FPZDIV
-#   define FPAINVAL   FPINVAL
-#elif defined(ARCHARM)
-#   define JMPBUFSP   0
-#   define JMPBUFPC   1
-#   define JMPBUFDPC   0
-#   define FPINEX   0x1000
-#   define FPUNFL   0x800
-#   define FPOVFL   0x400
-#   define FPZDIV   0x200
-#   define FPINVAL   0x100
-#   define FPRNR   0
-#   define FPRZ   0x400000
-#   define FPRPINF   0x800000
-#   define FPRNINF   0xc00000
-#   define FPRMASK   0xc00000
-#   define FPPEXT   0
-#   define FPPSGL   0
-#   define FPPDBL   0
-#   define FPPMASK   0
-#   define FPAINEX   0x10
-#   define FPAUNFL   8
-#   define FPAOVFL   4
-#   define FPAZDIV   2
-#   define FPAINVAL   1
-#elif defined(ARCHMIPS)
 #   define JMPBUFSP   0
 #   define JMPBUFPC   1
 #   define JMPBUFDPC   0
@@ -12824,99 +13166,207 @@ typedef unsigned int   fpu_fpsr_t;
 #   define FPAUNFL   8
 #   define FPAZDIV   0x20
 #   define FPAINVAL   0x40
-#elif defined(ARCHPOWERPC64)
+#   define _FP_TININESS_AFTER_ROUNDING   1
+#   ifdef ARCHMIPS64
+#      define _FP_W_TYPE   unsigned long long
+#      define _FP_WS_TYPE   signed long long
+#      define _FP_I_TYPE   long long
+#      define FP_RND_NEAREST   FE_TONEAREST
+#      define FP_RND_ZERO   FE_TOWARDZERO
+#      define FP_RND_PINF   FE_UPWARD
+#      define FP_RND_MINF   FE_DOWNWARD
+#      define FP_EX_INVALID   FE_INVALID
+#      define FP_EX_OVERFLOW   FE_OVERFLOW
+#      define FP_EX_UNDERFLOW   FE_UNDERFLOW
+#      define FP_EX_DIVZERO   FE_DIVBYZERO
+#      define FP_EX_INEXACT   FE_INEXACT
+#   elif defined(ARCHMIPS32)
+#      define _FP_W_TYPE   unsigned long
+#      define _FP_WS_TYPE   signed long
+#      define _FP_I_TYPE   long
+#      define FP_EX_INVALID   16
+#      define FP_EX_DIVZERO   8
+#      define FP_EX_OVERFLOW   4
+#      define FP_EX_UNDERFLOW   2
+#      define FP_EX_INEXACT   1
+#   endif
+#elif defined(ARCHPARISC)
+#   define _FPU_MASK_PM   1
+#   define _FPU_MASK_UM   2
+#   define _FPU_MASK_OM   4
+#   define _FPU_MASK_ZM   8
+#   define _FPU_MASK_IM   0x10
+#   define _FPU_HPPA_MASK_RM   0x600
+/** Interrupt mask */
+#   define _FPU_HPPA_MASK_INT   0x1f
+#   define _FPU_HPPA_SHIFT_FLAGS   27
+#   define _FPU_RESERVED   0
+#   define _FPU_DEFAULT   0
+#   define _FPU_IEEE   (_FPU_DEFAULT | _FPU_HPPA_MASK_INT)
+#   define _FPU_GETCW(cw)   __extension__ ({ union __union_FPU_GETCW { unsigned long long __fpreg; unsigned int __halfreg[2]; } __fullfp; asm ("fstd %%fr0, 0(%1);" "fldd 0(%1), %%fr0;" : "=m"(__fullfp.__fpreg) : "r"(&__fullfp.__fpreg) : "%r0"); cw = __fullfp.__halfreg[0]; })
+#   define _FPU_SETCW(cw)   __extension__ ({ union __union_FPU_SETCW { unsigned long long __fpreg; unsigned int __halfreg[2]; } __fullfp; asm ("fstd %%fr0, 0(%1);" : "=m"(__fullfp.__fpreg) : "r"(&__fullfp.__fpreg) : "%r0"); __fullfp.__halfreg[0] = cw; asm ("fldd 0(%1), %%fr0;" : : "m"(__fullfp.__fpreg), "r"(&__fullfp.__fpreg) : "%r0" ); })
+#elif defined(ARCHPOWERPC)
+#   if IS_SOFTFP
+#      define _FPU_RESERVED   0xffffffff
+#      define _FPU_DEFAULT   0
+#   elif defined(__NO_FPRS__)  // e500
+#      define _FPU_RC_NEAREST   0
+#      define _FPU_RC_DOWN   3
+#      define _FPU_RC_UP   2
+#      define _FPU_RC_ZERO   1
+#      define _FPU_MASK_ZM   0x10
+#      define _FPU_MASK_OM   4
+#      define _FPU_MASK_UM   8
+#      define _FPU_MASK_XM   0x40
+#      define _FPU_MASK_IM   0x20
+#      define _FPU_RESERVED   0xc10080
+#      define _FPU_DEFAULT   0x3c
+#      define _FPU_IEEE   _FPU_DEFAULT
+#      define _FPU_GETCW(cw)   vasm("mfspefscr %0;" : "=r"(cw))
+#      define _FPU_SETCW(cw)   vasm("mtspefscr %0;" : : "r"(cw))
+#   else  // PowerPC 6xx floating-point
+#      define _FPU_RC_NEAREST   0
+#      define _FPU_RC_DOWN   3
+#      define _FPU_RC_UP   2
+#      define _FPU_RC_ZERO   1
+#      define _FPU_MASK_NI   4
+#      define _FPU_MASK_ZM   0x10
+#      define _FPU_MASK_OM   0x40
+#      define _FPU_MASK_UM   0x20
+#      define _FPU_MASK_XM   8
+#      define _FPU_MASK_IM   0x80
+#      define _FPU_RESERVED   0xffffff00
+#      define _FPU_DEFAULT   0
+#      define _FPU_IEEE   0xf0
+#      define _FPU_GETCW(cw)   __extension__ ({ union __union_FPU_GETCW { double __d; unsigned long long __ll; } __u; register double __fr; asm ("mffs %0;" : "=f"(__fr)); __u.__d = __fr; cw = (fpu_control_t)__u.__ll; (fpu_control_t) __u.__ll; })
+#      define _FPU_SETCW(cw)   __extension__ ({ union __union_FPU_SETCW { double __d; unsigned long long __ll; } __u = { .__ll = 0xfff80000LL << 32 }; register double __fr; __u.__ll |= ((cw) & UINT32_MAX); __fr = __u.__d; asm ("mtfsf 255, %0;" : : "f"(__fr)); })
+#   endif
 #   define JMPBUFSP   0
 #   define JMPBUFPC   1
 #   define JMPBUFDPC   0
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
+
+/** Definitions of all the SPEFSCR bit numbers */
+enum SPEFSCR_BITS {
+	SPEFSCR_SOVH = 0x80000000,
+	SPEFSCR_OVH = 0x40000000,
+	SPEFSCR_FGH = 0x20000000,
+	SPEFSCR_FXH = 0x10000000,
+	SPEFSCR_FINVH = 0x8000000,
+	SPEFSCR_FDBZH = 0x4000000,
+	SPEFSCR_FUNFH = 0x2000000,
+	SPEFSCR_FOVFH = 0x1000000,
+	SPEFSCR_FINXS = 0x200000,
+	SPEFSCR_FINVS = 0x100000,
+	SPEFSCR_FDBZS = 0x80000,
+	SPEFSCR_FUNFS = 0x40000,
+	SPEFSCR_FOVFS = 0x20000,
+	SPEFSCR_ALL_EXCEPT = 0x3e0000,
+	SPEFSCR_MODE = 0x10000,
+	SPEFSCR_SOV = 0x8000,
+	SPEFSCR_OV = 0x4000,
+	SPEFSCR_FG = 0x2000,
+	SPEFSCR_FX = 0x1000,
+	SPEFSCR_FINV = 0x800,
+	SPEFSCR_FDBZ = 0x400,
+	SPEFSCR_FUNF = 0x200,
+	SPEFSCR_FOVF = 0x100,
+	SPEFSCR_FINXE = 0x40,
+	SPEFSCR_FINVE = 0x20,
+	SPEFSCR_FDBZE = 0x10,
+	SPEFSCR_FUNFE = 8,
+	SPEFSCR_FOVFE = 4,
+	SPEFSCR_ALL_EXCEPT_ENABLE = 0x7c,
+	SPEFSCR_FRMC = 3
+};
+
+/** Definitions of all the FPSCR bit numbers */
+enum FPSCR_BITS {
+	FPSCR_FX = 0,  //!< Exception summary
+	FPSCR_FEX,  //!< Enabled exception summary
+	FPSCR_VX,  //!< Invalid operation summary
+	FPSCR_OX,  //!< Overflow
+	FPSCR_UX,  //!< Underflow
+	FPSCR_ZX,  //!< Zero divide
+	FPSCR_XX,  //!< Inexact
+	FPSCR_VXSNAN,  //!< Invalid operation for sNaN
+	FPSCR_VXISI,  //!< Invalid operation for Inf-Inf
+	FPSCR_VXIDI,  //!< Invalid operation for Inf/Inf
+	FPSCR_VXZDZ,  //!< Invalid operation for 0/0
+	FPSCR_VXIMZ,  //!< Invalid operation for Inf*0
+	FPSCR_VXVC,  //!< Invalid operation for invalid compare
+	FPSCR_FR,  //!< Fraction rounded [fraction was incremented by round]
+	FPSCR_FI,  //!< Fraction inexact
+	FPSCR_FPRF_C,  //!< Result class descriptor
+	FPSCR_FPRF_FL,  //!< Result less than (usually, less than 0)
+	FPSCR_FPRF_FG,  //!< Result greater than
+	FPSCR_FPRF_FE,  //!< Result equal to
+	FPSCR_FPRF_FU,  //!< Result unordered
+	FPSCR_20,  //!< Reserved
+	FPSCR_VXSOFT,  //!< Invalid operation set by software
+	FPSCR_VXSQRT,  //!< Invalid operation for square root
+	FPSCR_VXCVI,  //!< Invalid operation for invalid integer convert
+	FPSCR_VE,  //!< Invalid operation exception enable
+	FPSCR_OE,  //!< Overflow exception enable
+	FPSCR_UE,  //!< Underflow exception enable
+	FPSCR_ZE,  //!< Zero divide exception enable
+	FPSCR_XE,  //!< Inexact exception enable
+#      ifdef _ARCH_PWR6
+	FPSCR_29  //!< Reserved in ISA 2.05
+#      else
+	FPSCR_NI  //!< Non-IEEE mode (typically, no denormalised numbers)
+#      endif  // _ARCH_PWR6
+};
+
 /** Exception summary (sticky) */
-#   define FPSFX   (0x80000000)
-/** Enabled exception summary */
-#   define FPSEX   (0x40000000)
-/** Invalid operation exception summary */
-#   define FPSVX   (0x20000000)
-/** Overflow exception OX (sticky) */
-#   define FPSOX   (0x10000000)
-/** Underflow exception UX (sticky) */
-#   define FPSUX   (0x8000000)
-/** Zero divide exception ZX (sticky) */
-#   define FPSZX   (0x4000000)
-/** Inexact exception XX (sticky) */
-#   define FPSXX   (0x2000000)
-/** Invalid operation exception for SNaN (sticky) */
-#   define FPSVXSNAN   (0x1000000)
-/** Invalid operation exception for ∞-∞ (sticky) */
-#   define FPSVXISI   (0x800000)
-/** Invalid operation exception for ∞/∞ (sticky) */
-#   define FPSVXIDI   (0x400000)
-/** Invalid operation exception for 0/0 (sticky) */
-#   define FPSVXZDZ   (0x200000)
-/** Invalid operation exception for ∞*0 (sticky) */
-#   define FPSVXIMZ   (0x100000)
-/** Invalid operation exception for invalid compare (sticky) */
-#   define FPSVXVC   (0x80000)
-/** Fraction rounded */
-#   define FPSFR   (0x40000)
-/** Fraction inexact */
-#   define FPSFI   (0x20000)
-/** Floating point result class */
-#   define FPSFPRF   (0x10000)
-/** <, >, =, unordered */
-#   define FPSFPCC   (0xf000)
-/** Enable exception for invalid integer convert (sticky) */
-#   define FPVXCVI   (0x100)
-/** Invalid operation exception enable */
-#   define FPVE   (0x80)
-/** Enable overflow exceptions */
-#   define FPOVFL   (0x40)
-/** Enable underflow */
-#   define FPUNFL   (0x20)
-/** Enable zero divide */
-#   define FPZDIV   (0x10)
-/** Enable inexact exceptions */
-#   define FPINEX   (8)
-/** Rounding mode */
-#   define FPRMASK   (3)
-#   define FPRNR   (0)
-#   define FPRZ   (1)
-#   define FPRPINF   (2)
-#   define FPRNINF   (3)
-#   define FPPEXT   0
-#   define FPPSGL   0
-#   define FPPDBL   0
-#   define FPPMASK   0
-#   define FPINVAL   FPVE
-#   define FPAOVFL   FPSOX
-#   define FPAINEX   FPSXX
-#   define FPAUNFL   FPSUX
-#   define FPAZDIV   FPSZX
-#   define FPAINVAL   FPSVX
-#elif defined(ARCHPOWERPC32)
-#   define JMPBUFSP   0
-#   define JMPBUFPC   1
-#   define JMPBUFDPC   0
 #   define FPSFX   0x80000000
+/** Enabled exception summary */
 #   define FPSEX   0x40000000
+/** Invalid operation exception summary */
 #   define FPSVX   0x20000000
+/** Overflow exception OX (sticky) */
 #   define FPSOX   0x10000000
+/** Underflow exception UX (sticky) */
 #   define FPSUX   0x8000000
+/** Zero divide exception ZX (sticky) */
 #   define FPSZX   0x4000000
+/** Inexact exception XX (sticky) */
 #   define FPSXX   0x2000000
+/** Invalid operation exception for SNaN (sticky) */
 #   define FPSVXSNAN   0x1000000
+/** Invalid operation exception for ∞-∞ (sticky) */
 #   define FPSVXISI   0x800000
+/** Invalid operation exception for ∞/∞ (sticky) */
 #   define FPSVXIDI   0x400000
+/** Invalid operation exception for 0/0 (sticky) */
 #   define FPSVXZDZ   0x200000
+/** Invalid operation exception for ∞*0 (sticky) */
 #   define FPSVXIMZ   0x100000
+/** Invalid operation exception for invalid compare (sticky) */
 #   define FPSVXVC   0x80000
+/** Fraction rounded */
 #   define FPSFR   0x40000
+/** Fraction inexact */
 #   define FPSFI   0x20000
+/** Floating point result class */
 #   define FPSFPRF   0x10000
+/** <, >, =, unordered */
 #   define FPSFPCC   0xf000
+/** Enable exception for invalid integer convert (sticky) */
 #   define FPVXCVI   0x100
+/** Invalid operation exception enable */
 #   define FPVE   0x80
+/** Enable overflow exceptions */
 #   define FPOVFL   0x40
+/** Enable underflow */
 #   define FPUNFL   0x20
+/** Enable zero divide */
 #   define FPZDIV   0x10
+/** Enable inexact exceptions */
 #   define FPINEX   8
+/** Rounding mode */
 #   define FPRMASK   3
 #   define FPRNR   0
 #   define FPRZ   1
@@ -12932,7 +13382,92 @@ typedef unsigned int   fpu_fpsr_t;
 #   define FPAUNFL   FPSUX
 #   define FPAZDIV   FPSZX
 #   define FPAINVAL   FPSVX
+#   define _FPU_MASK_ALL   (_FPU_MASK_ZM | _FPU_MASK_OM | _FPU_MASK_UM | _FPU_MASK_XM | _FPU_MASK_IM)
+/** Mask everything but the rounding moded and non-IEEE arithmetic flags */
+#   define _FPU_MASK_ROUNDING   0xffffffff00000007LL
+/** Mask restore rounding mode and exception enabled */
+#   define _FPU_MASK_EXCEPT_ROUND   0xffffffff1fffff00LL
+/** Mask exception enable but fraction rounded/inexact and FP result/CC bits */
+#   define _FPU_MASK_FRAC_INEX_RET_CC   0x1ff80fff
+#   define FE_INEXACT   0x2000000
+#   define FE_DIVBYZERO   0x4000000
+#   define FE_UNDERFLOW   0x8000000
+#   define FE_OVERFLOW   0x10000000
+#   define FE_INVALID   0x20000000
+#   define FE_ALL_EXCEPT   0x3e000000
+#   define FE_TONEAREST   0
+#   define FE_TOWARDZERO   1
+#   define FE_UPWARD   2
+#   define FE_DOWNWARD   3
+#   define FE_ALL_EXCEPT   (FE_INEXACT | FE_DIVBYZERO | FE_UNDERFLOW | FE_OVERFLOW | FE_INVALID)
+/** The sticky bits in the FPSCR indicating exceptions have occurred */
+#   define FPSCR_STICKY_BITS   ((FE_ALL_EXCEPT | FE_ALL_INVALID) & (~FE_INVALID))
+#   define FE_ALL_FLAGS   0xfff80300
+#elif defined(ARCHS390)
+#   define _FPU_RESERVED   0x0707fffc
+#   define _FPU_DEFAULT   0
+#   if (defined(__NO_FPRS__) && IS_HARDFP)
+#      define FP_EX_INEXACT   SPEFSCR_FINXS
+#      define FP_EX_INVALID   SPEFSCR_FINVS
+#      define FP_EX_DIVZERO   SPEFSCR_FDBZS
+#      define FP_EX_UNDERFLOW   SPEFSCR_FUNFS
+#      define FP_EX_OVERFLOW   SPEFSCR_FOVFS
+#   else
+#      define FP_EX_INVALID   536870912
+#      define FP_EX_OVERFLOW   268435456
+#      define FP_EX_UNDERFLOW   134217728
+#      define FP_EX_DIVZERO   67108864
+#      define FP_EX_INEXACT   33554432
+#   endif
+#   define _FPU_GETCW(cw)   vasm("efpc %0, 0;" : "=d"(cw))
+#   define _FPU_SETCW(cw)   vasm("sfpc %0, 0;" : : "d"(cw))
+/** Set/clear a particular FPSCR bit (for instance, `reset_fpscr_bit(FPSCR_VE)`; prevents `INVALID` exceptions from being raised) */
+#   define set_fpscr_bit(x)   vasm("mtfsb1 %0;" : : "r,i,n"(x))
+#   define reset_fpscr_bit(x)   vasm("mtfsb0 %0;" : : "r,i,n"(x))
 #elif defined(ARCHSPARC)
+#   define _FPU_MASK_IM   0x8000000
+#   define _FPU_MASK_OM   0x4000000
+#   define _FPU_MASK_UM   0x2000000
+#   define _FPU_MASK_ZM   0x1000000
+#   define _FPU_MASK_PM   0x800000
+#   define _FPU_EXTENDED   0
+#   define _FPU_DOUBLE   0x20000000
+#   define _FPU_80BIT   0x30000000
+#   define _FPU_SINGLE   0x10000000
+#   define _FPU_RC_DOWN   0xc0000000
+#   define _FPU_RC_UP   0x80000000
+#   define _FPU_RC_ZERO   0x40000000
+#   define _FPU_RC_NEAREST   0
+#   define _FPU_RESERVED   0x30300000
+#   define _FPU_DEFAULT   0
+#   define _FPU_IEEE   0
+#   define FE_INVALID   0x200
+#   define FE_OVERFLOW   0x100
+#   define FE_UNDERFLOW   0x80
+#   define FE_DIVBYZERO   0x40
+#   define FE_INEXACT   0x20
+#   define FE_ALL_EXCEPT   (FE_INEXACT | FE_DIVBYZERO | FE_UNDERFLOW | FE_OVERFLOW | FE_INVALID)
+#   define FE_TONEAREST   0
+#   define FE_TOWARDZERO   0x40000000
+#   define FE_UPWARD   0x80000000
+#   define FE_DOWNWARD   0xc0000000
+#   define __FE_ROUND_MASK   0xc0000000
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
+#   if IS_WORDSIZE_64
+#      define _FPU_GETCW(cw)   vasm("stx %%fsr, %0;" : "=m"(*&cw))
+#      define _FPU_SETCW(cw)   vasm("ldx %0, %%fsr;" : : "m"(*&cw))
+#   else
+#      define _FPU_GETCW(cw)   vasm("st %%fsr, %0;" : "=m"(*&cw))
+#      define _FPU_SETCW(cw)   vasm("ld %0, %%fsr;" : : "m"(*&cw))
+#   endif
+#   define FP_EX_INVALID   16
+#   define FP_EX_OVERFLOW   8
+#   define FP_EX_UNDERFLOW   4
+#   define FP_EX_DIVZERO   2
+#   define FP_EX_INEXACT   1
+#   define _FP_TININESS_AFTER_ROUNDING   0
 #   define JMPBUFSP   0
 #   define JMPBUFPC   1
 #   define JMPBUFDPC   -8
@@ -12955,10 +13490,148 @@ typedef unsigned int   fpu_fpsr_t;
 #   define FPAUNFL   0x80
 #   define FPAOVFL   0x100
 #   define FPAINVAL   0x200
-#endif  // ARCH
+#elif defined(ARCHSUPERH)
+#   ifndef __SH_FPU_ANY__
+#      define _FPU_RESERVED   0xffffffff
+#      define _FPU_DEFAULT   0
+#   else
+#      define _FPU_MASK_VM   0x800
+#      define _FPU_MASK_ZM   0x400
+#      define _FPU_MASK_OM   0x200
+#      define _FPU_MASK_UM   0x100
+#      define _FPU_MASK_IM   0x80
+#      define _FPU_RC_NEAREST   0
+#      define _FPU_RC_ZERO   1
+#      define _FPU_RESERVED   0xffc00000
+#      define _FPU_DEFAULT   0x80000
+#      define _FPU_IEEE   0x80f80
+#      define _FPU_GETCW(cw)   asm ("sts fpscr, %0;" : "=r"(cw))
+#      define _FPU_SETCW(cw)   asm ("lds %0, fpscr;" : : "r"(cw))
+#      define __set_fpscr(cw)   asm ("lds %0, fpscr;" : : "r"(cw))
+#   endif  // SH_FPU_ANY
+#   define _FP_W_TYPE   unsigned long
+#   define _FP_WS_TYPE   signed long
+#   define _FP_I_TYPE   long
+#   define FP_EX_INVALID   64
+#   define FP_EX_DIVZERO   32
+#   define FP_EX_OVERFLOW   16
+#   define FP_EX_UNDERFLOW   8
+#   define FP_EX_INEXACT   4
+#   define _FP_TININESS_AFTER_ROUNDING   1
+#elif defined(ARCHX86)
+#   define _FPU_MASK_IM   1
+#   define _FPU_MASK_DM   2
+#   define _FPU_MASK_ZM   4
+#   define _FPU_MASK_OM   8
+#   define _FPU_MASK_UM   0x10
+#   define _FPU_MASK_PM   0x20
+#   define _FPU_EXTENDED   0x300
+#   define _FPU_DOUBLE   0x200
+#   define _FPU_SINGLE   0
+#   define _FPU_RC_NEAREST  0
+#   define _FPU_RC_DOWN   0x400
+#   define _FPU_RC_UP   0x800
+#   define _FPU_RC_ZERO   0xc00
+#   define _FPU_RESERVED   0xf0c0
+#   define _FPU_DEFAULT   0x37f
+#   define _FPU_IEEE   0x37f
+#   define FE_INEXACT   0x20
+#   define FE_UNDERFLOW   0x10
+#   define FE_OVERFLOW   8
+#   define FE_DIVBYZERO   4
+#   define FE_INVALID   1
+#   define FE_TONEAREST   0
+#   define FE_DOWNWARD   0x400
+#   define FE_UPWARD   0x800
+#   define FE_TOWARDZERO   0xc00
+#   define FE_ALL_EXCEPT   (FE_INEXACT | FE_DIVBYZERO | FE_UNDERFLOW | FE_OVERFLOW | FE_INVALID)
+#   define FE_ALL_RND   (FE_TONEAREST | FE_TOWARDZERO | FE_UPWARD | FE_DOWNWARD)
+#   define DEFAULT_CONTROL   0x37f
+#   define DEFAULT_STATUS    0
+#   define DEFAULT_RESERVED   "\0\0\0\0\0\0\0"
+#   define DEFAULT_MXCSR   0x1f80
+#   define DEFAULT_MASK   (DEFAULT_MXCSR | 0x3f)
+#   define MXCSR_PLUS_FZ_DAZ   (DEFAULT_MXCSR | 0x8040)
+#   define _FPU_GETCW(cw)   vasm("fnstcw %0;" : "=m"(*&cw))
+#   define _FPU_SETCW(cw)   vasm("fldcw %0;" : : "m"(*&cw))
+#   define JMPBUFSP   0
+#   define JMPBUFPC   1
+#   define JMPBUFDPC   0
+#   define FPPSGL   0
+#   if (defined(ARCHX86) && (!defined(ARCHI386)))
+#      define FPFTZ   0x8000
+#      define FPINEX   0x1000
+#      define FPUNFL   0x800
+#      define FPOVFL   0x400
+#      define FPZDIV   0x200
+#      define FPDNRM   0x100
+#      define FPINVAL   0x80
+#      define FPDAZ   0x40
+#      define FPRNR   0x0
+#      define FPRZ   0x6000
+#      define FPRPINF   0x4000
+#      define FPRNINF   0x2000
+#      define FPRMASK   0x6000
+#      define FPPEXT   0
+#      define FPPDBL   0
+#      define FPPMASK   0
+#      define FPAINEX   0x20
+#      define FPAUNFL   0x10
+#      define FPAOVFL   8
+#      define FPAZDIV   4
+#      define FPADNRM   2
+#      define FPAINVAL   1
+#   elif defined(ARCHI386)
+#      define FPINEX   0x20
+#      define FPUNFL   0x12
+#      define FPOVFL   8
+#      define FPZDIV   4
+#      define FPINVAL   1
+#      define FPRNR   0
+#      define FPRZ   0xc00
+#      define FPRPINF   0x800
+#      define FPRNINF   0x400
+#      define FPRMASK   0xc00
+#      define FPPEXT   0x300
+#      define FPPDBL   0x200
+#      define FPPMASK   0x300
+#      define FPAINEX   FPINEX
+#      define FPAOVFL   FPOVFL
+#      define FPAUNFL   FPUNFL
+#      define FPAZDIV   FPZDIV
+#      define FPAINVAL   FPINVAL
+#   endif
+#else
+#   error   "Add FPU Control code for the target platform."
+#endif
+#ifndef _FPU_MASK_IM
+#   define _FPU_MASK_IM   _FPU_MASK_I
+#elif ((!defined(_FPU_MASK_I)) && defined(_FPU_MASK_IM))
+#   define _FPU_MASK_I   _FPU_MASK_IM
+#endif
+#ifndef _FPU_MASK_ZM
+#   define _FPU_MASK_ZM   _FPU_MASK_Z
+#elif ((!defined(_FPU_MASK_Z)) && defined(_FPU_MASK_ZM))
+#   define _FPU_MASK_Z   _FPU_MASK_ZM
+#endif
+#ifndef _FPU_MASK_OM
+#   define _FPU_MASK_OM   _FPU_MASK_O
+#elif ((!defined(_FPU_MASK_O)) && defined(_FPU_MASK_OM))
+#   define _FPU_MASK_O   _FPU_MASK_OM
+#endif
+#ifndef _FPU_MASK_UM
+#   define _FPU_MASK_UM   _FPU_MASK_U
+#elif ((!defined(_FPU_MASK_U)) && defined(_FPU_MASK_UM))
+#   define _FPU_MASK_U   _FPU_MASK_UM
+#endif
+#ifndef _FPU_MASK_PM
+#   define _FPU_MASK_PM   _FPU_MASK_XM
+#elif ((!defined(_FPU_MASK_XM)) && defined(_FPU_MASK_PM))
+#   define _FPU_MASK_XM   _FPU_MASK_PM
+#endif
 #ifndef _FPU_RESERVED
 /** These bits are reserved and not changed */
-#   define _FPU_RESERVED   (0xffffffff)
+#   define _FPU_RESERVED   0xffffffff
 #endif
 #ifndef FPU_RESERVED
 /** These bits are reserved and not changed */
@@ -12990,13 +13663,27 @@ typedef unsigned int   fpu_fpsr_t;
 #endif
 #ifndef HIGH_HALF
 #   if IS_BIG_ENDIAN
-#      define HIGH_HALF   (0)
-#      define LOW_HALF   (1)
-#   else  // LITTLE_ENDIAN
-#      define HIGH_HALF   (1)
-#      define LOW_HALF   (0)
+#      define HIGH_HALF   0
+#      define LOW_HALF   1
+#   else
+#      define HIGH_HALF   1
+#      define LOW_HALF   0
 #   endif
-#endif  // HIGH_HALF
+#endif
+#define FP_CLS_NORMAL   0
+#define FP_CLS_ZERO   1
+#define FP_CLS_INF   2
+#define FP_CLS_NAN   3
+#define _FP_CLS_COMBINE(x, y)   (((x) << 2) | (y))
+#define SI_BITS   (CHAR_BIT * (int)sizeof(SItype))
+#define DI_BITS   (CHAR_BIT * (int)sizeof(DItype))
+#define _FP_WORKBITS   3
+#define _FP_WORK_LSB   ((_FP_W_TYPE)8)
+#define _FP_WORK_ROUND   ((_FP_W_TYPE)4)
+#define _FP_WORK_GUARD   ((_FP_W_TYPE)2)
+#define _FP_WORK_STICKY   ((_FP_W_TYPE)1)
+
+/** @} */  // }
 
 
 // IEEE-754 & FLOAT-POINT DATATYPES
@@ -13242,7 +13929,7 @@ typedef union ieee854_long_double {
 	double d;
 	long double ld;
 #   ifdef ARCHPOWERPC
-	struct s854_bits {  // 128-bit float
+	struct attr_packed s854_bits {  // 128-bit float
 #      if IS_BIG_ENDIAN
 		unsigned int sign:1;
 		unsigned int exponent:11;
@@ -13259,7 +13946,7 @@ typedef union ieee854_long_double {
 	} s;
 #      define LDBL_EXP_BITS   11
 #   elif defined(ARCHARM)
-	struct s854_bits {  // 64-bit float
+	struct attr_packed s854_bits {  // 64-bit float
 #      if IS_LITTLE_ENDIAN
 		uint64_t significand:51;
 		unsigned int quiet:1;
@@ -13291,7 +13978,7 @@ typedef union ieee854_long_double {
 		} s;
 #      define LDBL_EXP_BITS   15
 #   endif
-	struct ieee854_bits {  // 128-bit float
+	struct attr_packed ieee854_bits {  // 128-bit float
 #      if IS_BIG_ENDIAN
 		unsigned int negative:1;
 		unsigned int exponent:15;
@@ -13308,7 +13995,7 @@ typedef union ieee854_long_double {
 		unsigned int negative:1;
 #      endif
 	} ieee;
-	struct ieee854_nan_bits {  // This format makes it easier to see if a NaN is a signalling NaN
+	struct attr_packed ieee854_nan_bits {  // This format makes it easier to see if a NaN is a signalling NaN
 #      if IS_BIG_ENDIAN
 		unsigned int negative:1;
 		unsigned int exponent:15;
@@ -14509,15 +15196,15 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #define _SYSEXITS_H_   (1)
 
 
+/** @def EXIT_FAILURE
+This macro expands to a system-dependent integral expression that signifies that the application failed (when used as the argument for the function exit) */
+/** @def EXIT_SUCCESS
+This macro expands to a system-dependent integral expression that signifies that the application was successful (when used as the argument for the function exit) */
 #ifdef VMS  // VMS is nonstandard
-/** This macro expands to a system-dependent integral expression that signifies that the application failed (when used as the argument for the function exit) */
 #   define EXIT_FAILURE   (0)
-/** This macro expands to a system-dependent integral expression that signifies that the application was successful (when used as the argument for the function exit) */
 #   define EXIT_SUCCESS   (1)
 #else
-/** This macro expands to a system-dependent integral expression that signifies that the application failed (when used as the argument for the function exit) */
 #   define EXIT_FAILURE   (1)
-/** This macro expands to a system-dependent integral expression that signifies that the application was successful (when used as the argument for the function exit) */
 #   define EXIT_SUCCESS   (0)
 #endif
 #ifndef exit_success
@@ -14528,6 +15215,10 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 /** This macro expands to a system-dependent integral expression that signifies that the application failed (when used as the argument for the function exit) */
 #   define exit_failure   EXIT_FAILURE
 #endif
+
+/** @defgroup Exit_Codes Macros for various exit codes
+@{ */  // (FB){
+
 /** Successful termination */
 #define EX_OK   0
 /** Base value for error messages */
@@ -14565,6 +15256,8 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 /** Maximum listed value */
 #define EX__MAX   78
 
+/** @} */  // }
+
 
 #endif  // SYSEXITS_H
 
@@ -14579,6 +15272,9 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 
 
 /* EFFECTS */
+
+/** @defgroup ANSI_SGR_Effects Macros for various ANSI SGR Effects
+@{ */  // (FB){
 
 #ifndef DISABLE_ANSI_SGR
 /** Reset ANSI SGR (Select Graphic Rendition) Settings */
@@ -14626,8 +15322,13 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #   define ANSI_SGR_SWAP_FG_BG
 #endif
 
+/** @} */  // }
+
 
 /* COLORS */
+
+/** @defgroup ANSI_SGR_Colors Macros for various ANSI SGR Colors
+@{ */  // (FB){
 
 #ifndef DISABLE_ANSI_SGR
 /** ANSI SGR (Select Graphic Rendition): Foreground Black */
@@ -14738,23 +15439,25 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #   define ANSI_SGR_CUR_START   "\x1b[1000D"
 #endif
 
+/** @} */  // }
+
 
 /* LENGTH OF ANSI STRINGS */
 
 #ifndef DISABLE_ANSI_SGR
 /** The string length of ANSI reset property */
-#   define ANSI_SGR_END_LEN   (4)
+#   define ANSI_SGR_END_LEN   4
 /** The string length of ANSI foreground property */
-#   define ANSI_SGR_FG_LEN   (5)
+#   define ANSI_SGR_FG_LEN   5
 /** The string length of ANSI foreground+bold property */
-#   define ANSI_SGR_FG_BOLD_LEN   (7)
+#   define ANSI_SGR_FG_BOLD_LEN   7
 /** The string length of ANSI cursor-start-of-line property */
-#   define ANSI_SGR_CUR_START_LEN   (7)
+#   define ANSI_SGR_CUR_START_LEN   7
 #else
-#   define ANSI_SGR_END_LEN   (0)
-#   define ANSI_SGR_FG_LEN   (0)
-#   define ANSI_SGR_FG_BOLD_LEN   (0)
-#   define ANSI_SGR_CUR_START_LEN   (0)
+#   define ANSI_SGR_END_LEN   0
+#   define ANSI_SGR_FG_LEN   0
+#   define ANSI_SGR_FG_BOLD_LEN   0
+#   define ANSI_SGR_CUR_START_LEN   0
 #endif
 
 
@@ -14774,20 +15477,20 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 
 #if IS_64
 /** Defined if the system is 64-bit */
-#   define __HAIKU_ARCH_64_BIT   (1)
+#   define __HAIKU_ARCH_64_BIT   1
 /** Defined if the system is 64-bit */
-#   define HAIKU_ARCH_64_BIT   (1)
+#   define HAIKU_ARCH_64_BIT   1
 /** Defined if the system is 64-bit */
-#   define HAIKU_HOST_PLATFORM_64_BIT   (1)
-#   define B_HAIKU_64_BIT   (1)
+#   define HAIKU_HOST_PLATFORM_64_BIT   1
+#   define B_HAIKU_64_BIT   1
 #else
 /** Defined if the system is 32-bit */
-#   define __HAIKU_ARCH_32_BIT   (1)
+#   define __HAIKU_ARCH_32_BIT   1
 /** Defined if the system is 32-bit */
-#   define HAIKU_ARCH_32_BIT   (1)
+#   define HAIKU_ARCH_32_BIT   1
 /** Defined if the system is 32-bit */
-#   define HAIKU_HOST_PLATFORM_32_BIT   (1)
-#   define B_HAIKU_32_BIT   (1)
+#   define HAIKU_HOST_PLATFORM_32_BIT   1
+#   define B_HAIKU_32_BIT   1
 #endif
 #if (defined(HAIKU_ARCH_64_BIT) && (!defined(HAIKU_ARCH_BITS)))
 #   define HAIKU_ARCH_BITS   64
@@ -14804,25 +15507,25 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #   define __HAIKU_ARCH_PHYSICAL_BITS   HAIKU_ARCH_BITS
 #endif
 #if (HAIKU_ARCH_PHYSICAL_BITS == 32)
-#   define HAIKU_ARCH_PHYSICAL_32_BIT   (1)
-#   define __HAIKU_ARCH_PHYSICAL_32_BIT   (1)
-#   define B_HAIKU_PHYSICAL_32_BIT   (1)
-#   define B_HAIKU_PHYSICAL_BITS   (32)
+#   define HAIKU_ARCH_PHYSICAL_32_BIT   1
+#   define __HAIKU_ARCH_PHYSICAL_32_BIT   1
+#   define B_HAIKU_PHYSICAL_32_BIT   1
+#   define B_HAIKU_PHYSICAL_BITS   32
 #elif (HAIKU_ARCH_PHYSICAL_BITS == 64)
-#   define HAIKU_ARCH_PHYSICAL_64_BIT   (1)
-#   define __HAIKU_ARCH_PHYSICAL_64_BIT   (1)
-#   define B_HAIKU_PHYSICAL_64_BIT   (1)
-#   define B_HAIKU_PHYSICAL_BITS   (64)
+#   define HAIKU_ARCH_PHYSICAL_64_BIT   1
+#   define __HAIKU_ARCH_PHYSICAL_64_BIT   1
+#   define B_HAIKU_PHYSICAL_64_BIT   1
+#   define B_HAIKU_PHYSICAL_BITS   64
 #else
 #   error   "Unsupported physical bitness (32-bit or 64-bit only)!"
 #endif
 #if ((!defined(__HAIKU_BIG_ENDIAN)) && (!defined(__HAIKU_LITTLE_ENDIAN)))
 #   if IS_LITTLE_ENDIAN
-#      define HAIKU_LITTLE_ENDIAN   (1)
-#      define __HAIKU_LITTLE_ENDIAN   (1)
+#      define HAIKU_LITTLE_ENDIAN   1
+#      define __HAIKU_LITTLE_ENDIAN   1
 #   elif IS_BIG_ENDIAN
-#      define HAIKU_BIG_ENDIAN   (1)
-#      define __HAIKU_BIG_ENDIAN   (1)
+#      define HAIKU_BIG_ENDIAN   1
+#      define __HAIKU_BIG_ENDIAN   1
 #   endif
 #endif
 #ifdef ARCHX86_64
@@ -14868,14 +15571,14 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #   error   "Unsupported Haiku architecture!"
 #endif
 /** BeOS R5 binary compatibility */
-#define HAIKU_BEOS_COMPATIBLE   (0)
+#define HAIKU_BEOS_COMPATIBLE   0
 /** BeOS R5 binary compatibility */
-#define __HAIKU_BEOS_COMPATIBLE   (0)
+#define __HAIKU_BEOS_COMPATIBLE   0
 #ifndef HAIKU_ARCH_64_BIT
 /** BeOS R5 compatible types */
-#   define HAIKU_BEOS_COMPATIBLE_TYPES   (1)
+#   define HAIKU_BEOS_COMPATIBLE_TYPES   1
 /** BeOS R5 compatible types */
-#   define __HAIKU_BEOS_COMPATIBLE_TYPES   (1)
+#   define __HAIKU_BEOS_COMPATIBLE_TYPES   1
 #endif
 
 
@@ -14900,8 +15603,8 @@ static const UNUSED __NINFD128_t __ninfd128 = { __NINFD128_bytes };
 #define haiku_std_int32   signed int
 #define haiku_std_uint32   unsigned int
 #ifndef __int64_t_defined
-#   define __int64_t_defined   (1)
-#   define __uint64_t_defined   (1)
+#   define __int64_t_defined   1
+#   define __uint64_t_defined   1
 #   if IS_WORDSIZE_64
 #      define haiku_std_int64   signed long
 #      define haiku_std_uint64   unsigned long
@@ -15015,93 +15718,6 @@ typedef haiku_phys_addr_t   haiku_generic_addr_t;
 #define __HAIKU_ARCH_HEADER(header)   HAIKU_ARCH_HEADER((header))
 #define HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   <subdir/arch/__HAIKU_ARCH/header>
 #define __HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   HAIKU_SUBDIR_ARCH_HEADER((subdir), (header))
-
-/** Conversion Flavors */
-typedef enum BEOS_CONVERSION_FLAVORS {
-	B_ISO1_CONVERSION,  // ISO 8859-x
-	B_ISO2_CONVERSION,
-	B_ISO3_CONVERSION,
-	B_ISO4_CONVERSION,
-	B_ISO5_CONVERSION,
-	B_ISO6_CONVERSION,
-	B_ISO7_CONVERSION,
-	B_ISO8_CONVERSION,
-	B_ISO9_CONVERSION,
-	B_ISO10_CONVERSION,
-	B_MAC_ROMAN_CONVERSION,  // Macintosh Roman
-	B_SJIS_CONVERSION,  // Shift-JIS
-	B_EUC_CONVERSION,  // EUC Packed Japanese
-	B_JIS_CONVERSION,  // JIS X 0208-1990
-	B_MS_WINDOWS_CONVERSION,  // Windows Latin-1 Codepage 1252
-	B_UNICODE_CONVERSION,  // Unicode 2.0, UCS-2
-	B_KOI8R_CONVERSION,  // KOI8-R
-	B_MS_WINDOWS_1251_CONVERSION,  // Windows Cyrillic Codepage 1251
-	B_MS_DOS_866_CONVERSION,  // MS-DOS Codepage 866
-	B_MS_DOS_CONVERSION,  // MS-DOS Codepage 437
-	B_EUC_KR_CONVERSION,  // EUC Korean
-	B_ISO13_CONVERSION,
-	B_ISO14_CONVERSION,
-	B_ISO15_CONVERSION,
-	B_BIG5_CONVERSION,  // Chinese Big5
-	B_GBK_CONVERSION,  // Chinese GB18030
-	B_UTF16_CONVERSION,  // Unicode UTF-16
-	B_MS_WINDOWS_1250_CONVERSION  // Windows Central European Codepage
-} beos_conversion_flavors_t;
-
-typedef enum BEOS_TYPE_CONSTANTS {
-	B_AFFINE_TRANSFORM_TYPE = 0x414d5458,  // "AMTX"
-	B_ALIGNMENT_TYPE = 0x414c474e,  // "ALGN"
-	B_ANY_TYPE = 0x414e5954,  // "ANYT"
-	B_ATOM_TYPE = 0x41544f4d,  // "ATOM"
-	B_ATOMREF_TYPE = 0x41544d52,  // "ATMR"
-	B_BOOL_TYPE = 0x424f4f4c,  // "BOOL"
-	B_CHAR_TYPE = 0x43484152,  // "CHAR"
-	B_COLOR_8_BIT_TYPE = 0x434c5242,  // "CLRB"
-	B_DOUBLE_TYPE = 0x44424c45,  // "DBLE"
-	B_FLOAT_TYPE = 0x464c4f54,  // "FLOT"
-	B_GRAYSCALE_8_BIT_TYPE = 0x47525942,  // "GRYB"
-	B_INT16_TYPE = 0x53485254,  // "SHRT"
-	B_INT32_TYPE = 0x4c4f4e47,  // "LONG"
-	B_INT64_TYPE = 0x4c4c4e47,  // "LLNG"
-	B_INT8_TYPE = 0x42595445,  // "BYTE"
-	B_LARGE_ICON_TYPE = 0x49434f4e,  // "ICON"
-	B_MEDIA_PARAMETER_GROUP_TYPE = 0x424d4347,  // "BMCG"
-	B_MEDIA_PARAMETER_TYPE = 0x424d4354,  // "BMCT"
-	B_MEDIA_PARAMETER_WEB_TYPE = 0x424d4357,  // "BMCW"
-	B_MESSAGE_TYPE = 0x4d534747,  // "MSGG"
-	B_MESSENGER_TYPE = 0x4d534e47,  // "MSNG"
-	B_MIME_TYPE = 0x4d494d45,  // "MIME"
-	B_MINI_ICON_TYPE = 0x4d49434e,  // "MICN"
-	B_MONOCHROME_1_BIT_TYPE = 0x4d4e4f42,  // "MNOB"
-	B_OBJECT_TYPE = 0x4f505452,  // "OPTR"
-	B_OFF_T_TYPE = 0x4f464654,  // "OFFT"
-	B_PATTERN_TYPE = 0x5041544e,  // "PATN"
-	B_POINTER_TYPE = 0x504e5452,  // "PNTR"
-	B_POINT_TYPE = 0x42504e54,  // "BPNT"
-	B_PROPERTY_INFO_TYPE = 0x53435444,  // "SCTD"
-	B_RAW_TYPE = 0x52415754,  // "RAWT"
-	B_RECT_TYPE = 0x52454354,  // "RECT"
-	B_REF_TYPE = 0x52524546,  // "RREF"
-	B_RGB_32_BIT_TYPE = 0x52474242,  // "RGBB"
-	B_RGB_COLOR_TYPE = 0x52474243,  // "RGBC"
-	B_SIZE_TYPE = 0x53495a45,  // "SIZE"
-	B_SIZE_T_TYPE = 0x53495a54,  // "SIZT"
-	B_SSIZE_T_TYPE = 0x53535a54,  // "SSZT"
-	B_STRING_TYPE = 0x43535452,  // "CSTR"
-	B_STRING_LIST_TYPE = 0x5354524c,  // "STRL"
-	B_TIME_TYPE = 0x54494d45,  // "TIME"
-	B_UINT16_TYPE = 0x55534854,  // "USHT"
-	B_UINT32_TYPE = 0x554c4e47,  // "ULNG"
-	B_UINT64_TYPE = 0x554c4c47,  // "ULLG"
-	B_UINT8_TYPE = 0x55425954,  // "UBYT"
-	B_VECTOR_ICON_TYPE = 0x5649434e,  // "VICN"
-	B_XATTR_TYPE = 0x58415452,  // "XATR"
-	B_NETWORK_ADDRESS_TYPE = 0x4e574144,  // "NWAD"
-	B_MIME_STRING_TYPE = 0x4d494d53,  // "MIMS"
-	B_ASCII_TYPE = 0x54455854  // "TEXT"
-} beos_type_constants_t;
-
-
 #define B_BEOS_VERSION_4   0x400
 #define B_BEOS_VERSION_4_5   0x450
 #define B_BEOS_VERSION_5   0x500
@@ -15143,6 +15759,95 @@ typedef enum BEOS_TYPE_CONSTANTS {
 #ifdef __HAIKU_BEOS_COMPATIBLE
 #   define B_HAIKU_BEOS_COMPATIBLE   1
 #endif
+
+
+// HAIKU ENUMS
+
+/** Conversion Flavors */
+typedef enum BEOS_CONVERSION_FLAVORS {
+	B_ISO1_CONVERSION,  //!< ISO 8859-x
+	B_ISO2_CONVERSION,
+	B_ISO3_CONVERSION,
+	B_ISO4_CONVERSION,
+	B_ISO5_CONVERSION,
+	B_ISO6_CONVERSION,
+	B_ISO7_CONVERSION,
+	B_ISO8_CONVERSION,
+	B_ISO9_CONVERSION,
+	B_ISO10_CONVERSION,
+	B_MAC_ROMAN_CONVERSION,  //!< Macintosh Roman
+	B_SJIS_CONVERSION,  //!< Shift-JIS
+	B_EUC_CONVERSION,  //!< EUC Packed Japanese
+	B_JIS_CONVERSION,  //!< JIS X 0208-1990
+	B_MS_WINDOWS_CONVERSION,  //!< Windows Latin-1 Codepage 1252
+	B_UNICODE_CONVERSION,  //!< Unicode 2.0, UCS-2
+	B_KOI8R_CONVERSION,  //!< KOI8-R
+	B_MS_WINDOWS_1251_CONVERSION,  //!< Windows Cyrillic Codepage 1251
+	B_MS_DOS_866_CONVERSION,  //!< MS-DOS Codepage 866
+	B_MS_DOS_CONVERSION,  //!< MS-DOS Codepage 437
+	B_EUC_KR_CONVERSION,  //!< EUC Korean
+	B_ISO13_CONVERSION,
+	B_ISO14_CONVERSION,
+	B_ISO15_CONVERSION,
+	B_BIG5_CONVERSION,  //!< Chinese Big5
+	B_GBK_CONVERSION,  //!< Chinese GB18030
+	B_UTF16_CONVERSION,  //!< Unicode UTF-16
+	B_MS_WINDOWS_1250_CONVERSION  //!< Windows Central European Codepage
+} beos_conversion_flavors_t;
+
+
+typedef enum BEOS_TYPE_CONSTANTS {
+	B_AFFINE_TRANSFORM_TYPE = 0x414d5458,  //!< "AMTX"
+	B_ALIGNMENT_TYPE = 0x414c474e,  //!< "ALGN"
+	B_ANY_TYPE = 0x414e5954,  //!< "ANYT"
+	B_ATOM_TYPE = 0x41544f4d,  //!< "ATOM"
+	B_ATOMREF_TYPE = 0x41544d52,  //!< "ATMR"
+	B_BOOL_TYPE = 0x424f4f4c,  //!< "BOOL"
+	B_CHAR_TYPE = 0x43484152,  //!< "CHAR"
+	B_COLOR_8_BIT_TYPE = 0x434c5242,  //!< "CLRB"
+	B_DOUBLE_TYPE = 0x44424c45,  //!< "DBLE"
+	B_FLOAT_TYPE = 0x464c4f54,  //!< "FLOT"
+	B_GRAYSCALE_8_BIT_TYPE = 0x47525942,  //!< "GRYB"
+	B_INT16_TYPE = 0x53485254,  //!< "SHRT"
+	B_INT32_TYPE = 0x4c4f4e47,  //!< "LONG"
+	B_INT64_TYPE = 0x4c4c4e47,  //!< "LLNG"
+	B_INT8_TYPE = 0x42595445,  //!< "BYTE"
+	B_LARGE_ICON_TYPE = 0x49434f4e,  //!< "ICON"
+	B_MEDIA_PARAMETER_GROUP_TYPE = 0x424d4347,  //!< "BMCG"
+	B_MEDIA_PARAMETER_TYPE = 0x424d4354,  //!< "BMCT"
+	B_MEDIA_PARAMETER_WEB_TYPE = 0x424d4357,  //!< "BMCW"
+	B_MESSAGE_TYPE = 0x4d534747,  //!< "MSGG"
+	B_MESSENGER_TYPE = 0x4d534e47,  //!< "MSNG"
+	B_MIME_TYPE = 0x4d494d45,  //!< "MIME"
+	B_MINI_ICON_TYPE = 0x4d49434e,  //!< "MICN"
+	B_MONOCHROME_1_BIT_TYPE = 0x4d4e4f42,  //!< "MNOB"
+	B_OBJECT_TYPE = 0x4f505452,  //!< "OPTR"
+	B_OFF_T_TYPE = 0x4f464654,  //!< "OFFT"
+	B_PATTERN_TYPE = 0x5041544e,  //!< "PATN"
+	B_POINTER_TYPE = 0x504e5452,  //!< "PNTR"
+	B_POINT_TYPE = 0x42504e54,  //!< "BPNT"
+	B_PROPERTY_INFO_TYPE = 0x53435444,  //!< "SCTD"
+	B_RAW_TYPE = 0x52415754,  //!< "RAWT"
+	B_RECT_TYPE = 0x52454354,  //!< "RECT"
+	B_REF_TYPE = 0x52524546,  //!< "RREF"
+	B_RGB_32_BIT_TYPE = 0x52474242,  //!< "RGBB"
+	B_RGB_COLOR_TYPE = 0x52474243,  //!< "RGBC"
+	B_SIZE_TYPE = 0x53495a45,  //!< "SIZE"
+	B_SIZE_T_TYPE = 0x53495a54,  //!< "SIZT"
+	B_SSIZE_T_TYPE = 0x53535a54,  //!< "SSZT"
+	B_STRING_TYPE = 0x43535452,  //!< "CSTR"
+	B_STRING_LIST_TYPE = 0x5354524c,  //!< "STRL"
+	B_TIME_TYPE = 0x54494d45,  //!< "TIME"
+	B_UINT16_TYPE = 0x55534854,  //!< "USHT"
+	B_UINT32_TYPE = 0x554c4e47,  //!< "ULNG"
+	B_UINT64_TYPE = 0x554c4c47,  //!< "ULLG"
+	B_UINT8_TYPE = 0x55425954,  //!< "UBYT"
+	B_VECTOR_ICON_TYPE = 0x5649434e,  //!< "VICN"
+	B_XATTR_TYPE = 0x58415452,  //!< "XATR"
+	B_NETWORK_ADDRESS_TYPE = 0x4e574144,  //!< "NWAD"
+	B_MIME_STRING_TYPE = 0x4d494d53,  //!< "MIMS"
+	B_ASCII_TYPE = 0x54455854  //!< "TEXT"
+} beos_type_constants_t;
 
 
 #endif  // BE_BUILD_H
@@ -15279,3 +15984,6 @@ typedef enum BEOS_TYPE_CONSTANTS {
 
 #include "MACROS2.h"
 #include "MACROS3.h"
+#include "MACROS_MATH.h"
+#include "MACROS_NET.h"
+#include "MACROS_MISC.h"
