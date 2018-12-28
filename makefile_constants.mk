@@ -58,13 +58,12 @@ override POSIX_LINK::=-L/lib -L/usr/lib -L/usr/local/lib -L/opt/lib -L~/.local/l
 ifndef OMP_THREAD_LIMIT
     OMP_THREAD_LIMIT::=4
 endif
-override LLVM_WARN::=-Werror -Wall -Wextra -Wpedantic -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wformat -Wformat-non-iso -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wnull-pointer-arithmetic -Wpacked -Wpointer-arith -Wpragma-pack -Wredundant-decls -Wshadow -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wswitch-bool -Wswitch-enum -Wtautological-compare -Wtautological-constant-compare -Wundef -Wunreachable-code -Wuninitialized -Wwrite-strings
+override LLVM_WARN::=-Werror -Wall -Wextra -Wpedantic -Wbad-function-cast -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wformat -Wformat-non-iso -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wnull-pointer-arithmetic -Wpacked -Wpointer-arith -Wpragma-pack -Wredundant-decls -Wshadow -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wswitch-bool -Wswitch-enum -Wtautological-compare -Wtautological-constant-compare -Wundef -Wunreachable-code -Wuninitialized -Wwrite-strings
 override LLVM_OPT::=-O3 -fforce-emit-vtables -fstrict-float-cast-overflow -funroll-loops -fwrapv -fomit-frame-pointer -ftree-vectorize -fvectorize -fstrict-enums -fno-dollars-in-identifiers -Xanalyzer -strip-dead-debug-info -Xclang
 override LLVM_OPT_X86::=
-override GCC_PARAMS::=--param ggc-min-expand=200 --param ggc-min-heapsize=393216 --param max-gcse-memory=134217728 --param sccvn-max-scc-size=20000 --param max-cselib-memory-locations=1023 --param max-reload-search-insns=511 --param max-sched-ready-insns=511 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=63 --param early-inlining-insns=16 --param inline-min-speedup=4 --param inline-unit-growth=40 --param ipcp-unit-growth=30 --param large-stack-frame=512 --param large-stack-frame-growth=1100 --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param integer-share-limit=65536 --param gcse-unrestricted-cost=2 --param max-hoist-depth=48 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=4 --param vect-max-version-for-alias-checks=8 --param max-iterations-to-track=2000 --param max-predicted-iterations=256 --param selsched-max-lookahead=64 --param prefetch-latency=128 --param simultaneous-prefetches=4 --param max-partial-antic-length=256 --param loop-invariant-max-bbs-in-loop=20000 --param loop-max-datarefs-for-datadeps=2000 --param ipa-cp-value-list-size=16
-override GCC_WARN::=-Werror -Wall -Wextra -Wpedantic -Waggregate-return -Walloc-zero -Wbad-function-cast -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmisleading-indentation -Wmissing-attributes -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wmultistatement-macros -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpacked-not-aligned -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshadow -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings -Wwrite-strings
-# TODO: Add -Wcast-align=strict
-override GCC_OPT::=$(GCC_PARAMS) -O3 -funroll-loops -funroll-all-loops -funswitch-loops -floop-unroll-and-jam -floop-interchange -faggressive-loop-optimizations -funsafe-loop-optimizations -fira-loop-pressure -fbranch-target-load-optimize2 -fwrapv -fwrapv-pointer -fno-verbose-asm -fdelete-dead-exceptions -fno-keep-static-consts -fomit-frame-pointer -fstdarg-opt -ftree-vectorize -fmodulo-sched -fmodulo-sched-allow-regmoves -fselective-scheduling -fselective-scheduling2 -freschedule-modulo-scheduled-loops -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -fgcse -fgcse-sm -fgcse-las -fgcse-after-reload -fdevirtualize-speculatively -fdevirtualize-at-ltrans -flive-range-shrinkage -fisolate-erroneous-paths-attribute
+override GCC_PARAMS::=--param ggc-min-expand=200 --param ggc-min-heapsize=393216 --param max-gcse-memory=134217728 --param sccvn-max-scc-size=20000 --param max-cselib-memory-locations=1023 --param max-reload-search-insns=511 --param max-sched-ready-insns=511 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=63 --param early-inlining-insns=16 --param inline-min-speedup=4 --param inline-unit-growth=40 --param ipcp-unit-growth=30 --param large-stack-frame=512 --param large-stack-frame-growth=1100 --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param integer-share-limit=65536 --param gcse-unrestricted-cost=2 --param max-hoist-depth=64 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=4 --param vect-max-version-for-alias-checks=8 --param max-iterations-to-track=2000 --param max-predicted-iterations=512 --param selsched-max-lookahead=128 --param prefetch-latency=128 --param simultaneous-prefetches=4 --param max-partial-antic-length=256 --param loop-invariant-max-bbs-in-loop=20000 --param loop-max-datarefs-for-datadeps=2000 --param ipa-cp-value-list-size=16
+override GCC_WARN::=-Werror -Wall -Wextra -Wpedantic -Waggregate-return -Walloc-zero -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmisleading-indentation -Wmissing-attributes -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wmultistatement-macros -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpacked-not-aligned -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshadow -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings -Wwrite-strings
+override GCC_OPT::=$(GCC_PARAMS) -O3 -funroll-loops -funroll-all-loops -funswitch-loops -floop-unroll-and-jam -floop-interchange -faggressive-loop-optimizations -funsafe-loop-optimizations -fira-loop-pressure -fbranch-target-load-optimize2 -fwrapv -fwrapv-pointer -fno-verbose-asm -fdelete-dead-exceptions -fno-keep-static-consts -fomit-frame-pointer -fstdarg-opt -ftree-vectorize -fmodulo-sched -fmodulo-sched-allow-regmoves -fselective-scheduling -fselective-scheduling2 -freschedule-modulo-scheduled-loops -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -fgcse -fgcse-sm -fgcse-las -fgcse-after-reload -fdevirtualize-speculatively -fdevirtualize-at-ltrans -flive-range-shrinkage -fisolate-erroneous-paths-attribute -flimit-function-alignment
 override GCC_OPT_X86::=-maccumulate-outgoing-args -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mlong-double-128 -mmmx -mmovbe -momit-leaf-frame-pointer -mpclmul -mpopcnt -mrdrnd -mrecip -msahf -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -Wl,-z,ibtplt
 override DCJ_LDZ::=-Wl,-O3,-z,relro,-z,now,--fatal-warnings,--hash-size=16368,--sort-common=descending
 override WIN_LDZ::=-Wl,-O3,--fatal-warnings,--hash-size=16368
@@ -135,6 +134,12 @@ YACC::=yacc
 YFLAGS::=
 
 # Flag used to indicate that Clang should be used
+ifdef dcj
+    ifeq ($(dcj),1c)
+        override dcj::=1
+        override USECLANG::=7
+    endif
+endif
 ifdef USECLANG
     ifeq ($(USECLANG),)
         override CLANG::=7
@@ -1159,9 +1164,9 @@ else
     endif
 endif
 ifdef USECLANG
-    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding $(STARTUP)
+    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs  -nostartfiles -ffreestanding $(STARTUP)
 else
-    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
+    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -fno-hosted -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
 endif
 
 
@@ -1254,7 +1259,7 @@ valchecksums :
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitstats lscontrib lstags previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitstats lscontrib lstags newchanges previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -1304,13 +1309,16 @@ gitlsfiles :
 	@git ls-files
 
 gitstats :
-	@gitstats ./ $(TESTINGDIR)/git/
+	-@gitstats ./ $(TESTINGDIR)/git/
 
 lscontrib :
 	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
 
 lstags :
 	@git tag
+
+newchanges :
+	@git diff
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix
