@@ -55,6 +55,9 @@ _llvm2cpp=0
 _llvm2c=0
 
 GOPT="$(getopt -o f:hv --long llvm2c,llvm2cpp,llvm2asm,c2llvmbc,c2llvmasm,bc2asm,asm2bc,llvmasm2js,llvmbc2js,cpp2js,c2js,scala2java,coffee2js,file:,script:,version,help -- "$@")"
+if [ "$?" != '0' ]; then
+    exit 1
+fi
 eval set -- "$GOPT"
 
 while true; do
