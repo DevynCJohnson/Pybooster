@@ -180,6 +180,18 @@ if [ -x "$(command -v npm)" ]; then
     alias jsrepocheck='sudo -H npm doctor'
     alias jsuninstall='sudo -H npm uninstall -g'
     alias jsupdate='sudo -H npm update -g'
+elif [ -x "$(command -v yarn)" ]; then
+    alias cleanjscache='sudo -H yarn autoclean --force && yarn cache clean'
+    alias jsinstall='sudo -H yarn global add'
+    alias jspkglsinst='yarn versions'
+    alias jsuninstall='sudo -H yarn global remove'
+    alias jsupdate='sudo -H yarn global upgrade'
+elif [ -x "$(command -v bower)" ]; then
+    alias cleanjscache='sudo -H bower cache clean'
+    alias jsinstall='sudo -H bower install'
+    alias jspkglsinst='bower list'
+    alias jsuninstall='sudo -H bower uninstall'
+    alias jsupdate='sudo -H bower update'
 fi
 
 
