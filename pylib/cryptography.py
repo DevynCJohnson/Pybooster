@@ -30,6 +30,7 @@ along with this software.
 
 
 from binascii import crc32, crc_hqx
+from hashlib import md5
 from itertools import cycle
 
 
@@ -45,6 +46,7 @@ __all__: list = [
     r'decrypt_xor_bytes_key_bytes',
     r'decrypt_xor_bytes_key_str',
     # CHECKSUMS #
+    r'md5sum',
     r'get_checksums'
 ]
 
@@ -134,6 +136,19 @@ def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
 
 
 # CHECKSUMS #
+
+
+def md5sum(byte_str: bytes) -> str:
+    """Generate the MD5 checksum for the given byte string
+
+    >>> md5sum(bytes(r'This is a test', r'utf8'))
+    'ce114e4501d2f4e2dcea3e17b546f339'
+    >>> md5sum(bytes(r'This is a test.', r'utf8'))
+    '120ea8a25e5d487bf68b5f7096440019'
+    >>> md5sum(br'This is a test.')
+    '120ea8a25e5d487bf68b5f7096440019'
+    """
+    return md5(byte_str).hexdigest()
 
 
 def get_checksums(_data: object) -> dict:
