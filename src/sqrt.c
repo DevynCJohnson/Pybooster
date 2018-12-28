@@ -4,7 +4,7 @@
 /**
 @brief Return the squareroot of the input
 @file sqrt.c
-@version 2018.11.11
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

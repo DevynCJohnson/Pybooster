@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2018.11.11
+#' @version 2018.12.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS

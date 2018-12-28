@@ -6,7 +6,7 @@
 @brief Various functions that can be used in an HTML/web-browser environment
 @file libhtml.js
 @package libhtml
-@version 2018.12.24
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

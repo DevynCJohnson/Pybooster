@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2018.11.11
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

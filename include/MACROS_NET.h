@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Networking Capabilities
 @file MACROS_NET.h
-@version 2018.12.21
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

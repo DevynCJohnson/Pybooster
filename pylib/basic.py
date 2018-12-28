@@ -6,7 +6,7 @@
 
 @file basic.py
 @package pybooster.basic
-@version 2018.11.11
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

@@ -5,7 +5,7 @@
 """@brief Flake8 plugin
 
 @file flake8_optimal.py
-@version 2018.11.11
+@version 2018.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -47,7 +47,7 @@ except ImportError:
 
 
 __docformat__: str = r'restructuredtext en'
-__version__: str = r'2018.11.11'
+__version__: str = r'2018.12.28'
 
 
 # PATTERNS #
