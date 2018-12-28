@@ -9,14 +9,177 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-if [ -z "${1:-}" ]; then
-    printf 'ERROR: A filename is required as a parameter!\n' >&2
+# SETUP
+
+
+POSIXLY_CORRECT=1
+
+
+Help() {
+    printf '%s\n\n' '=====  Instruction Count  ====='
+    printf '%s\n\n' 'Disassemble compiled code and count the number of each assembly instruction'
+    printf '%s\n\n' 'Usage: insn_count [options] filename'
+    printf '%s\n\n' 'Example: insn_count -m -f /bin/bash'
+    printf '%s\n' 'Options:'
+    printf '%s\n' '-h,--help              Display help info'
+    printf '%s\n' '-b,--bar               Save a PNG image of a bar chart'
+    printf '%s\n' '-c,--columns           Display output in columnar format'
+    printf '%s\n' '-f,--filename          Specify the input file'
+    printf '%s\n' '-j,--jpg               Save image as a JPEG instead of a PNG'
+    printf '%s\n' '-m,--machine           Display output in machine-friendly format'
+    printf '%s\n' '-n,--no-indent         Display output without indentation'
+    printf '%s\n' '--pdf                  Save image as a PDF instead of a PNG'
+    printf '%s\n' '-p,--pie               Save a PNG image of a pie chart'
+    printf '%s\n' '--svg                  Save image as a SVG instead of a PNG'
+}
+
+
+# GETOPT
+
+
+GOPT="$(getopt -o b,c,f:,h,j,m,n,p --long bar,col,column,columns,file:,filename:,help,jpeg,jpg,machine,no-indent,pdf,pie,svg -- "$@")"
+if [ "$?" != '0' ]; then
     exit 1
-elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
-    printf 'Specify the pathname of the compiled software to disassemble and produce an instruction count table.\n'
-    exit 0
-elif [ -r "$1" ]; then
-    objdump --disassemble --disassembler-options=att --no-show-raw-insn "$1" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock \1|; s|rep ([A-Za-z0-9]+) .+|rep \1|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n | column
+fi
+eval set -- "$GOPT"
+
+filename=''
+bar_chart=0
+pie_chart=0
+save_chart=0
+saveas='png'
+use_col=0
+use_mach=0
+use_no_indent=0
+
+while true; do
+    case "${1:-}" in
+        -h|--help)  # Display help info
+            Help
+            exit 0
+        ;;
+        -b|--bar)  # Save a PNG image of a bar chart
+            bar_chart=1
+            save_chart=1
+            shift
+        ;;
+        -c|--col|--column|--columns)  # Display output in columnar format
+            use_col=1
+            shift
+        ;;
+        -f|--file|--filename)  # Specify the input file
+            filename="${2:-}"
+            if [ ! -r "$filename" ]; then
+                printf 'ERROR: The given filename "%s" is either not a readable file or does not exist!\n' "$filename" >&2
+                exit 1
+            fi
+            shift 2
+        ;;
+        -j|--jpeg|--jpg)  # Save image as a JPEG instead of a PNG
+            saveas='jpg'
+            shift
+        ;;
+        -m|--machine)  # Display output in machine-friendly format
+            use_mach=1
+            shift
+        ;;
+        -n|--no-indent)  # Display output without indentation
+            use_no_indent=1
+            shift
+        ;;
+        --pdf)  # Save the image as a PDF instead of a PNG
+            saveas='pdf'
+            shift
+        ;;
+        -p|--pie)  # Save a PNG image of a pie chart
+            pie_chart=1
+            save_chart=1
+            shift
+        ;;
+        --svg)  # Save the image as a SVG instead of a PNG
+            saveas='svg'
+            shift
+        ;;
+        --)  # End
+            shift
+            break
+        ;;
+        *)  # Unknown/non-registered parameter
+            printf 'Unknown parameter!\n' >&2
+            exit 1
+        ;;
+    esac
+done
+
+
+if [ "$filename" == '' ]; then
+    filename="${1:-}"
+    if [ "$filename" == '' ]; then
+        printf 'ERROR: A filename is required as a parameter!\n' >&2
+        exit 1
+    elif [ ! -r "$filename" ]; then
+        printf 'ERROR: The given filename "%s" is either not a readable file or does not exist!\n' "$filename" >&2
+        exit 1
+    fi
 fi
 
-exit 0
+
+# MAIN PROCESSING
+
+
+disassembled_code="$(objdump --disassemble --disassembler-options=att --no-show-raw-insn "${filename}" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|; s|rep ([A-Za-z0-9]+) .+|rep\1|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n)"
+
+basic_format="$(echo "${disassembled_code}" | sed 's|| |g;' | awk '{$1=$1};1')"
+
+total_insns=''
+
+
+if [ "$use_mach" -ne 1 ] || [ "$save_chart" -ne 1 ]; then
+    equation="$(echo "${basic_format}" | cut -d ' ' -f 1 | paste -sd+)"
+    if [ -x "$(command -v wcalc)" ]; then
+        total_insns="$(echo "${equation}" | wcalc | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||')"
+    elif [ -x "$(command -v calc)" ]; then
+        total_insns="$(calc -d -- "${equation}" | cut -f 2)"
+    elif [ -x "$(command -v qalc)" ]; then
+        total_insns="$(echo "${equation}" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||')"
+    elif [ -x "$(command -v concalc)" ]; then
+        total_insns="$(echo "${equation}" | concalc)"
+    elif [ -x "$(command -v bc)" ]; then
+        total_insns="$(echo "${equation}" | bc -l)"
+    elif [ -x "$(command -v python3)" ]; then
+        total_insns="$(python3 -c "print(${equation})")"
+    else
+        printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc, calc, qcalc, concalc, or bc\n' >&2
+    fi
+fi
+
+
+if [ "$use_mach" -eq 1 ] || [ "$save_chart" -eq 1 ]; then
+    num_array="$(echo "${disassembled_code}" | awk '{print $1;}' | tr '\n' ' ' | sed 's| |,|g; s|^|[|; s|,$|]|;')"
+    insn_array="$(echo "${disassembled_code}" | awk '{print $2;}' | tr '\n' ' ' | sed 's| |","|g; s|^|"|; s|,"$||; s|| |g;')"
+fi
+
+
+# OUTPUT
+
+
+if [ "$save_chart" -eq 1 ]; then  # Save chart
+    exefile="$(basename "${filename}")"
+    if [ "$bar_chart" -eq 1 ]; then
+        octave --no-gui --no-history --norc --silent --eval "num_array = ${num_array}; num_insns = length(num_array); num_array = reshape(num_array, num_insns, 1); insn_array = {${insn_array}}; cnt = 1; if (${total_insns} > 50000) other = 0; for i = 1:length(num_array) if (num_array(i) < 100) other += num_array(i); cnt += 1; else break; endif; endfor; cnt -= 1; if (cnt > 0) num_array(cnt) = other; insn_array(cnt) = 'Other'; else cnt = 1; endif; endif; set(0, 'defaultaxesfontsize', 10); set(0, 'defaulttextfontsize', 10); figure(1,'position',[0,0,4800,4800]); output = barh(num_array(cnt:end), 0.7, 'facecolor', [0.42, 0.42, 0.14], 'linestyle', 'none'); axis('tight'); set(gca, 'box', 'off', 'YTick', [1:num_insns], 'YTickLabel', insn_array(cnt:end), 'yminorgrid', 'off', 'yminortick', 'off', 'ticklength', [0, 0], 'fontsize', 4); title('Assembly Instructions in \"${exefile}\"', 'fontsize', 12); print('insns_bar_${exefile}.${saveas}', '-d${saveas}', '-r600');" &
+    fi
+    if [ "$pie_chart" -eq 1 ]; then
+        octave --no-gui --no-history --norc --silent --eval "num_array = ${num_array}; insn_array = {${insn_array}}; insnlim = 1; if (${total_insns} < 300) insnlim = 1; elseif (${total_insns} < 500) insnlim = 2; elseif (${total_insns} < 1000) insnlim = 10; elseif (${total_insns} < 2000) insnlim = 20; elseif (${total_insns} < 5000) insnlim = 30; elseif (${total_insns} < 10000) insnlim = 50; elseif (${total_insns} < 100000) insnlim = 100; else insnlim = 1000; endif; other = 0; cnt = 1; for i = 1:length(num_array) if (num_array(1:1, i) < insnlim) other += num_array(1:1, i); cnt += 1; else break; endif; endfor; cnt -= 1; if (cnt > 0) num_array(1:1, cnt) = other; insn_array(cnt) = 'Other'; else cnt = 1; endif; set(0, 'defaultaxesfontsize', 6); set(0, 'defaulttextfontsize', 6); output = pie(shift(num_array(1:1, cnt:end), 1), shift(insn_array(cnt:end), 1)); title('Assembly Instructions in \"${exefile}\"', 'fontsize', 12); print('insns_pie_${exefile}.${saveas}', '-d${saveas}', '-r600');" &
+    fi
+elif [ "$use_col" -eq 1 ]; then  # Columnar format
+    echo "${disassembled_code}" | sed 's|| |g;' | column
+    printf '\nTotal Instructions: %s\n' "${total_insns}"
+elif [ "$use_mach" -eq 1 ]; then  # Default machine-friendly format
+    printf '%s, [%s]' "${num_array}" "${insn_array}"
+elif [ "$use_no_indent" -eq 1 ]; then  # Display output without indentation
+    printf '%s\n%s total\n' "${basic_format}" "${total_insns}"
+else  # Default format
+    printf '%s\n\nTotal Instructions: %s\n' "${disassembled_code}" "${total_insns}" | sed 's|| |g;'
+fi
+
+exit $?
