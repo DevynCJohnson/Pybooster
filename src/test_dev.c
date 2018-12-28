@@ -288,7 +288,7 @@ static void test_printf(const long long input_num) {
 	puts_no_output(OPEN_TEST_HEADER "PRINTF()" CLOSE_TEST_HEADER);
 	// Setup
 	int printf_status = 0;
-	const int printf_n = 0;
+	int printf_n = 0;
 	const size_t printf_szn = 0;
 	const size_t size_t_num = (size_t)255;
 	const ssize_t ssize_t_num = (ssize_t)-255;
@@ -339,7 +339,7 @@ static void test_printf(const long long input_num) {
 	puti(printf_status);
 	putsnl();
 	puts_no_output("* Test %p; Expect an address value *");
-	printf_status = printf("%p\n", &uintmax_t_num);
+	printf_status = printf("%p\n", UNCONST(&uintmax_t_num));
 	puts_no_output("\t- Printf() exit status (should be greater than 10):");
 	puti(printf_status);
 	putsnl();
@@ -922,7 +922,7 @@ static void test_x86_intrinsics(void) {
 
 
 /** Main Testing Function */
-noreturn int main(rargc, rargv) {
+noreturn void main(mainargs) {
 	TWO_ARGS_REQUIRED_F;
 	START_TIME();
 	const long long input_num = (long long)atoll(argv[1]);
