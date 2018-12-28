@@ -5,8 +5,13 @@ Coding Standards
 By Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 
 
-Case Style Definitions
-----------------------
+Preface
+-------
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119). For this document, disregard [RFC 8174](https://tools.ietf.org/html/rfc8174); lowercase variations of the listed words have the same meanings.
+
+
+### Case Style Definitions
 
 - **ALLCAPS:** Capitalize/Uppercase all letters, but do not use underscores nor hyphens
     - Also known as ALLUPPERCASE or UPPERCASE
@@ -51,15 +56,20 @@ General Rules
 
 ### General Practices
 
-- The file encoding of files must be UTF-8 (without BOM) unless otherwise specified for a specific language, filetype, or need
+- The file encoding of files must be UTF-8 (without BOM) unless otherwise specified for a specific language, filetype, or need/goal
+- Use the latest production/released version of [Unicode](http://www.unicode.org/versions/latest/)
 - Strip trailing line-spaces
 - Unless otherwise specified for a particular language, use line-feeds (Unix newlines - `\n`) not carriage-returns (Windows newlines - `\c\n`)
-- Avoid form-feeds (`\f` or `^L`) and vertical-tab (`\v` or `^K`) where possible
+- Avoid using form-feeds (e.g. `\f` or `^L`) and vertical-tab (e.g. `\v` or `^K`) in source-code files where possible, except in the below listed cases
+    - Such characters are being used within a string, data-structure, or markup file
+    - A particular platform, implementation, and/or algorithm requires such characters
 - One (and only one) trailing line is required at the end of the file
 - Document/Explain complicated algorithms via [Doxygen comments](http://www.stack.nl/~dimitri/doxygen/manual/config.html) (where applicable)
+- Use GNU-Style Changelogs for projects
 - Keep the source code highly organized and optimized
 - Try to reduce or eliminate third-party dependencies
-- Hexadecimal sequences mush use all uppercase letters
+- Hexadecimal sequences must use all uppercase letters (language-specific exceptions apply)
+- When testing conditionals, put l-values on the right and r-values on the left; This is know as a "Yoda-Style Condition"
 - Accepted "ToDo"/"Reminder" comments include the following
     - DEBUG
     - FINISH
@@ -149,11 +159,11 @@ Doxygen
     8. `@bug`
     9. `@todo`
     10. `@see`
-- Helpful documentation: https://www.stack.nl/~dimitri/doxygen/manual/commands.html
+- Helpful documentation: http://doxygen.nl/manual/commands.html
 
 ### Documentation Comment Styles
 
-Below is a list of documentation comment styles (multiline and single-line, where applicable) with examples on how they should be formatted.
+Below is a list of documentation comment styles (multiline and single-line, where applicable) with examples on how they must be formatted.
 
 #### Block Style
 
@@ -361,39 +371,7 @@ C
 - An empty block or block-like construct may be closed immediately after it is opened (i.e. ```{}```), unless it is a part of a multi-block statement, such as if/else statements
 - Put a space between reserved words (such as `if`, or `for`) and an open parenthesis
 - Put a space between reserved word (such as `else`) and a closing curly brace
-
-
-Changelog
----------
-
-- Changelogs must use tab-indentation
-- Each change-entry listed under a change-header is indented one level
-- One blank line goes after headers
-- One blank line goes before headers if the header is not at the beginning of the file
-- A single blank line must come before and after the summary
-- The summary must use the same indentation as the change-entries
-- Wildcards are allowed for the filename or group name of a change-entry
-- Single-line summaries are permitted and optional; some VCS expect such summaries
-- Single-line summaries (if used) must be placed between the header and the first change-entry
-
-### Formatting Rules
-
-- Dates must use the format `YYYY-MM-DD`
-- All headers will use the format `YYYY-MM-DD  AUTHOR NAME  <username@email.com>`
-- Begin a change-entry with `* FILENAME:` followed by a space and then the details of the changes
-- Documented changes (change-entries) to a file will use the format `* FILE:  BRIEF DESCRIPTION`
-- Documented changes to a group of files will use the format `* GROUPNAME:  BRIEF DESCRIPTION`
-- Documented changes to the project's infrastructure will use the format `* PROJECT:  BRIEF DESCRIPTION`
-- Documented changes to a particular function in a file will use the format `* FILE  (FUNCTION):  BRIEF DESCRIPTION`
-- In a change-entry, conditionals will be listed before the filename and separated by two spaces, such as ```[LINUX_X86_64]  (drivers.c)```
-- Documented changes to conditional code (such as code within macros) will use the format ```* FILE  [POWERPC]:  BRIEF DESCRIPTION```; this indicates that code specific to PowerPC targets was changed
-
-### Author Rules
-
-- All changes by the same author on the same date are listed under the same non-indented header
-- Do not place multiple authors and/or change dates under the same change-header
-- Changes by a group of authors will be listed under a change-header separately from the headers of the individual authors
-- If the author does not have or wish to list an email, use `NULL` as the email
+- Hexadecimal sequences must use all lowercase letters
 
 
 CoffeeScript
@@ -424,6 +402,39 @@ DTD
 
 - All code must be standards compliant and pass XML and DTD validators
 - Refer to the _XML_ section for further guidelines
+
+
+GNU-Style Changelog
+-------------------
+
+- Changelogs must use tab-indentation
+- Each change-entry listed under a change-header is indented one level
+- One blank line goes after headers
+- One blank line goes before headers if the header is not at the beginning of the file
+- A single blank line must come before and after the summary
+- The summary must use the same indentation as the change-entries
+- Wildcards are allowed for the filename or group name of a change-entry
+- Single-line summaries are permitted and optional; some VCS expect such summaries
+- Single-line summaries (if used) must be placed between the header and the first change-entry
+
+### Formatting Rules
+
+- Dates must use the format `YYYY-MM-DD`
+- All headers will use the format `YYYY-MM-DD  AUTHOR NAME  <username@email.com>`
+- Begin a change-entry with `* FILENAME:` followed by a space and then the details of the changes
+- Documented changes (change-entries) to a file will use the format `* FILE:  BRIEF DESCRIPTION`
+- Documented changes to a group of files will use the format `* GROUPNAME:  BRIEF DESCRIPTION`
+- Documented changes to the project's infrastructure will use the format `* PROJECT:  BRIEF DESCRIPTION`
+- Documented changes to a particular function in a file will use the format `* FILE  (FUNCTION):  BRIEF DESCRIPTION`
+- In a change-entry, conditionals will be listed before the filename and separated by two spaces, such as ```[LINUX_X86_64]  (drivers.c)```
+- Documented changes to conditional code (such as code within macros) will use the format ```* FILE  [POWERPC]:  BRIEF DESCRIPTION```; this indicates that code specific to PowerPC targets was changed
+
+### Author Rules
+
+- All changes by the same author on the same date are listed under the same non-indented header
+- Do not place multiple authors and/or change dates under the same change-header
+- Changes by a group of authors will be listed under a change-header separately from the headers of the individual authors
+- If the author does not have or wish to list an email, use `NULL` as the email
 
 
 HTML
@@ -550,9 +561,10 @@ JavaScript
 JSON
 ----
 
+- **Specification:** [RFC 8259](https://tools.ietf.org/html/rfc8259)
 - Use four spaces per indentation level
 - Use double-quotes around strings, not single-quotes
-- A single space must follow a colon in a key-value pair, but no whitespace should preceeed the colon
+- A single space must follow a colon in a key-value pair, but no whitespace shall not preceeed the colon
 
 
 Markdown
@@ -566,6 +578,26 @@ Markdown
 - One newline must follow Header-2 lines
 - One newline must proceed and follow Header-3, Header-4, Header-5, and Header-6 lines
 
+
+PHP
+---
+
+- Use one tab per indentation level
+- Use one statement per line, unless the statements are very closely related
+- Functions/Methods must not span multiple PHP files
+- For PHP code, only use ```<?php ?>``` tags never ```<?= ?>``` nor ```<? ?>```
+- Only use Perl/Shell style comments (i.e. `#`) for hashplings
+- Use `elseif`, not `else if`
+- Naming Conventions
+    - **Classes:** PascalCase
+    - **Constants:** ALLCAPS
+    - **Functions/Methods:** camelCase
+    - **Variable:** snake_case
+- Functions should not keep static variables that prevent a function from being reentrant
+- Follow the rules listed in the [PEAR2 Coding Standards](http://pear.php.net/manual/en/pear2cs.rules.php) (except for rules that conflict with this document)
+- Follow the "accepted" rules listed in the below listed in the [PHP Standards Recommendations](https://www.php-fig.org/psr/) (except for rules that conflict with this document)
+    - [PSR-1](https://www.php-fig.org/psr/psr-1/)
+    - [PSR-2](https://www.php-fig.org/psr/psr-2/)
 
 Python
 ------
@@ -625,7 +657,7 @@ R
 - Do not place a space before a comma, but always place one space after a comma
 - Place a space before a left parenthesis (except in a function call)
 - Never omit curly braces
-- An opening curly brace should never go on its own line, but a closing curly brace should always go on its own line
+- An opening curly brace must never go on its own line, but a closing curly brace should always go on its own line
 - Use ```<-``` for assignment, not ```=```
 
 
