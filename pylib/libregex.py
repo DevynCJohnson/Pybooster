@@ -35,6 +35,9 @@ __all__: list = [
     r'EMAIL',
     r'EXPNUM',
     r'GREEK_ALL',
+    r'HEXESCCSS',
+    r'HEXESCPERL',
+    r'HEXESCRUBY',
     r'HEXESCTAG',
     r'HEXESCURI',
     r'HEXNUM',
@@ -348,6 +351,9 @@ __all__: list = [
     r'PUA_A',
     r'PUA_B',
     r'CONTROL_CHARS',
+    r'REGIONAL_INDICATOR',
+    r'EMOJI_MODIFIER_FITZPATRICK',
+    r'INTERLINEAR_ANNOTATIONS',
     # XML SOURCE CODE PATTERNS #
     r'CHARREF',
     r'INCOMPLETE_REF',
@@ -375,6 +381,9 @@ BINNUM = rgxcompile(r'0[bB]([01]+)')
 EMAIL = rgxcompile(r'([A-Za-z0-9_\-!#\$%\' <>&"\(\),:;@\[\\\]\*\+/=\?\^`\{\|\}~\.]+)@([A-Za-z0-9\-]+)\.([A-Za-z0-9\-]+)')
 EXPNUM = rgxcompile(r'[eE]([-+]?)([0-9]+)')
 GREEK_ALL = rgxcompile(r'[\u0370-\u03FF \u1F00-\u1FFF]+')
+HEXESCCSS = rgxcompile(r'\\([A-Fa-f0-9]+)')
+HEXESCPERL = rgxcompile(r'[\\]?x\u007B([A-Fa-f0-9]+)\u007D')
+HEXESCRUBY = rgxcompile(r'[\\]?u\{([A-Fa-f0-9]+)\}')
 HEXESCTAG = rgxcompile(r'&#x([A-Fa-f0-9]+);')
 HEXESCURI = rgxcompile(r'%([A-Fa-f0-9]+)')
 HEXNUM = rgxcompile(r'0[xX]([A-Fa-f0-9]+)')
@@ -692,6 +701,10 @@ SSP = rgxcompile(r'([\U000E0000-\U000E01EF]+)')
 PUA_A = rgxcompile(r'([\U000F0000-\U000FFFFF]+)')
 PUA_B = rgxcompile(r'([\U00100000-\U0010FFFF]+)')
 CONTROL_CHARS = rgxcompile(r'([\x00-\x1F\x7F-\x9F]+)')
+REGIONAL_INDICATOR = rgxcompile(r'([\U0001F1E6-\U0001F1FF]+)')
+EMOJI_MODIFIER_FITZPATRICK = rgxcompile(r'([\U0001F3FB-\U0001F3FF]+)')
+INTERLINEAR_ANNOTATIONS = rgxcompile(r'([\uFFF9-\uFFFB]+)')
+BIDI_CONTROL_CHARACTERS = rgxcompile(r'([\u061C\u200E\u200F\u202A-\u202E\u2066-\u2069]+)')
 
 
 # XML SOURCE CODE PATTERNS #
