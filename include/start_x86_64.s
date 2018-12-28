@@ -12,8 +12,8 @@ _start:
 	leaq 8(%rsi, %rdi, 8), %rdx  /* %rdx = envp = (8*rdi)+%rsi+8 */
 	call main
 	/* EXIT */
-	/* movl $1, %eax
+	movl $1, %eax
 	xorl %ebx, %ebx
-	int $0x80 */
+	int $0x80
 
 .size _start, . - _start
