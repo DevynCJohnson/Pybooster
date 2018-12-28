@@ -1,6 +1,11 @@
 [keywords=HTML]
 
 [lexer_properties]
+fold.cpp.comment.explicit=1
+fold.cpp.comment.multiline=1
+fold.cpp.explicit.anywhere=1
+fold.cpp.explicit.end=// }
+fold.cpp.explicit.start=// (FB){
 phpscript.mode=1
 
 [settings]
@@ -14,8 +19,8 @@ context_action_cmd=
 xml_indent_tags=true
 
 [indentation]
-type=0
-width=2
+type=1
+width=4
 
 [build-menu]
 FT_00_LB=_Compile

@@ -5,9 +5,11 @@ secondary=bool char f32 f64 i16 i32 i64 i8 isize str u16 u32 u64 u8 usize
 tertiary=Self
 
 [lexer_properties]
-fold.d.explicit.anywhere=1
-fold.d.explicit.end=// }
-fold.d.explicit.start=// (FB){
+fold.rust.comment.explicit=1
+fold.rust.comment.multiline=1
+fold.rust.explicit.anywhere=1
+fold.rust.explicit.end=// }
+fold.rust.explicit.start=// (FB){
 lexer.cpp.track.preprocessor=0
 lexer.rust.fold.at.else=1
 styling.within.preprocessor=1

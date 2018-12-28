@@ -11,6 +11,11 @@ user4=
 
 [lexer_properties]
 fold.compact=0
+fold.cpp.comment.explicit=1
+fold.cpp.comment.multiline=1
+fold.cpp.explicit.anywhere=1
+fold.cpp.explicit.end=-- }
+fold.cpp.explicit.start=-- (FB){
 
 [settings]
 extension=lua

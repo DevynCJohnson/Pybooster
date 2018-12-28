@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.2//EN" "http://www.web3d.org/specifications/x3d-3.2.dtd">
+
+<X3D profile="Full|Immersive|Interact|Interchange" showLog="false" showStat="false" type="model/x3d+xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd" version="3.2">
+
+<head>
+  <meta content="{filename}" name="filename"/>
+</head>
+
+<Scene bboxcenter="0,0,0" bboxsize="-1,-1,-1" dopickpass="true" pickmode="idBuf" render="true">
+
+  <Viewpoint centerofrotation="0,0,0" description="defaultX3DViewpointNode" fieldofview="1.0" orientation="0.0 0.0 0.0 0.0" position="0.0 0.0 0.0" zfar="-1" znear="-1"></Viewpoint>
+
+  <Shape bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true" render="true">
+    <Appearance alphaclipthreshold="0.1" sorttype="auto">
+      <Material ambientintensity="0.2" diffuseColor="1 0 0" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></Material>
+    </Appearance>
+    <Box ccw="true" lit="true" size="2,2,2" solid="true" usegeocache="true"/>
+  </Shape>
+
+</Scene>
+
+</X3D>

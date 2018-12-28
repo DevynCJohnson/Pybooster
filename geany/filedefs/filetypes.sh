@@ -3,6 +3,8 @@ primary=alias break case continue do done elif else esac eval exec exit export f
 
 [lexer_properties]
 fold.compact=0
+shbang.bash=shell
+shbang.sh=shell
 
 [settings]
 extension=sh

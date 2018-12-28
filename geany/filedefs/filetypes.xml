@@ -1,6 +1,8 @@
-[lexer_properties]
-fold.compact=0
-lexer.xml.allow.scripts=1
+[keywords=HTML]
+
+[styling=HTML]
+
+[lexer_properties=HTML]
 
 [settings]
 extension=xml

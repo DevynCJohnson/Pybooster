@@ -4,6 +4,11 @@ preprocessor=#assert #define #else #elseif #endif #endmacro #error #if #ifdef #i
 user1=
 user2=
 
+[lexer_properties]
+fold.basic.explicit.anywhere=1
+fold.basic.explicit.end=' }
+fold.basic.explicit.start=' (FB){
+
 [settings]
 extension=bas
 comment_single='

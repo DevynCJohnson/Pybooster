@@ -3,6 +3,9 @@
 
 <?php
 
+if (!defined('%cursor%')) {
+  %newline%%ws%require('%cursor%');%newline%%ws%define('%cursor%', 1);%newline%{cb}
+
 ?>
 
 

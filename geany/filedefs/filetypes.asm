@@ -12,6 +12,7 @@ fold.asm.explicit.end=/* } */
 fold.asm.explicit.start=/* (FB){ */
 fold.asm.syntax.based=1
 fold.preprocessor=1
+lexer.asm.comment.delimiter=~
 lexer.cpp.track.preprocessor=0
 lexer.cpp.update.preprocessor=1
 preprocessor.end.$(file.patterns.cpp)=endif

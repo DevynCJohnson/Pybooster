@@ -1,0 +1,26 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=2DGraphics|3DGraphics|Accessibility|ActionGame|Adult|AdventureGame|Amusement|ArcadeGame|Archiving|Art|ArtificialIntelligence|Astronomy|Audio|AudioVideo|AudioVideoEditing|Biology|BlocksGame|BoardGame|Building|Calculator|Calendar|CardGame|Chart|Chat|Chemistry|Clock|Compression|ComputerScience|ConsoleOnly|Construction|ContactManagement|Core|Database|DataVisualization|Debugger|DesktopSettings|Development|Dialup|Dictionary|DiscBurning|Documentation|Economy|Education|Electricity|Electronics|Email|Emulators|Engineering|Feed|FileManager|Filesystem|FileTools|FileTransfer|Finance|FlowChart|Game|Geography|Geology|Geoscience|GNOME|Graphics|GTK|GUIDesigner|HamRadio|HardwareSettings|History|Humanities|IDE|ImageProcessing|InstantMessaging|IRCClient|Java|KDE|KidsGame|Languages|Literature|LogicGame|Maps|Math|MedicalSoftware|Midi|Mixer|Monitor|Motif|Music|Network|News|NumericalAnalysis|OCR|Office|P2P|PackageManager|ParallelComputing|PDA|Photography|Physics|Player|Presentation|Printing|Profiling|ProjectManagement|Publishing|Qt|RasterGraphics|Recorder|RemoteAccess|RevisionControl|Robotics|RolePlaying|Scanning|Science|Security|Sequencer|Settings|Shooter|Simulation|Spirituality|Sports|SportsGame|Spreadsheet|StrategyGame|System|Telephony|TelephonyTools|TerminalEmulator|TextEditor|TextTools|Translation|Tuner|TV|Utility|VectorGraphics|Video|VideoConference|Viewer|WebBrowser|WebDevelopment|WordProcessor|XFCE;
+Comment=
+DBusActivatable=false|true
+Exec={fname} %f
+GenericName=
+Hidden=false|true
+Icon=
+Keywords=kw1;kw2;kw3;
+MimeType=
+Name=
+NoDisplay=false|true
+NotShowIn=Cinnamon|EDE|GNOME|KDE|LXDE|LXQt|MATE|Old|Pantheon|Razor|ROX|TDE|Unity|XFCE
+OnlyShowIn=Cinnamon|EDE|GNOME|KDE|LXDE|LXQt|MATE|Old|Pantheon|Razor|ROX|TDE|Unity|XFCE
+Path=
+Terminal=false|true
+TryExec={fname}
+Type=Application|Directory|Link
+URL=
+Version=1.1
+
+# https://specifications.freedesktop.org/desktop-entry-spec/latest/
+# https://specifications.freedesktop.org/menu-spec/latest/
+# https://specifications.freedesktop.org/menu-spec/latest/apas02.html

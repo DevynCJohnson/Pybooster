@@ -5,6 +5,11 @@ secondary=bool byte complex128 complex64 error float32 float64 int int16 int32 i
 
 [lexer_properties]
 fold.preprocessor=0
+fold.cpp.comment.explicit=1
+fold.cpp.comment.multiline=1
+fold.cpp.explicit.anywhere=1
+fold.cpp.explicit.end=// }
+fold.cpp.explicit.start=// (FB){
 lexer.cpp.allow.dollars=0
 lexer.cpp.backquoted.strings=1
 styling.within.preprocessor=1
