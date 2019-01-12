@@ -1,0 +1,70 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Wrapper for scanning PHP files with various syntax checkers
+#' @file phpanalysis
+#' @version 2019.01.04
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each PHP file to scan.\n'
+    exit 0
+fi
+
+
+# SETUP #
+
+
+export LANG='en_US.UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
+export FirstLoopPass=0
+
+# Use a faster alternative if possible
+if [ -x "$(command -v mawk)" ]; then
+    awk_cmd() { mawk "${1}"; }
+    noblanks() { mawk NF; }
+elif [ -x "$(command -v nawk)" ]; then
+    awk_cmd() { nawk "${1}"; }
+    noblanks() { nawk NF; }
+else
+    awk_cmd() { awk "${1}"; }
+    noblanks() { awk NF; }
+fi
+
+
+# MAIN #
+
+
+for file in "$@"; do
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+
+    if [ -x "$(command -v coffeelint)" ]; then
+        printf '======  *PHPCS*  ======\n'
+        phpcs -d memory_limit=128M -s --report-width=512 --severity=1 --standard=PEAR,PSR2,Zend --exclude=Generic.Files.LineLength,Generic.WhiteSpace.DisallowTabIndent,PEAR.Commenting.FileComment,Zend.Files.ClosingTag,Zend.NamingConventions.ValidVariableName --tab-width=4 "$file" | awk_cmd '{ OFS=""; gsub(/^FILE: .+$/, ""); gsub(/^FOUND .+$/, ""); gsub(/^[\-]+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }' | tr '|' ':' | tr '\t' ' ' | sed -E -e 's|  | |g; s|  | |g; s| : |:|g; s|^ ([0-9]+):(.+)|'"${file}"':\1:1:\2|'
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'phpcs: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v coffeelint)" ]; then
+        printf '======  *PHPMD*  ======\n'
+        phpmd "$file" text cleancode,codesize,controversial,design,naming,unusedcode | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'phpmd: command not found!\n' >&2
+    fi
+
+    if [ -x "$(command -v code-analysis)" ]; then
+        code-analysis "$file"
+    elif [ "$FirstLoopPass" -eq 0 ]; then
+        printf 'code-analysis: command not found!\n' >&2
+    fi
+
+    FirstLoopPass=1
+
+done
