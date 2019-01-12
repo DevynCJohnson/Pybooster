@@ -175,6 +175,8 @@ if [ -z "${PAGER:-}" ]; then
     fi
 fi
 export MANPAGER="$PAGER"
+export SYSTEMD_LESS="$PAGER"
+export SYSTEMD_PAGER="$PAGER"
 [ -r /etc/lsb-release ] && . /etc/lsb-release
 [ -x "$(command -v watch)" ] && alias watch='watch '
 
@@ -208,6 +210,7 @@ fi
 [ -n "${SELECTED_EDITOR:-}" ] && sedit() { sudo "${SELECTED_EDITOR}" "$1"; }
 [ -x "$(command -v brew)" ] && export HOMEBREW_EDITOR="$EDITOR"
 export SUDO_EDITOR="$SELECTED_EDITOR"
+export SYSTEMD_EDITOR="$EDITOR"
 
 
 # LOAD SHELL STARTUP FILES #
