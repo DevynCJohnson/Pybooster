@@ -56,9 +56,9 @@ if [ -x "$(command -v openssl)" ]; then
 
 # Key Generators
 
-alias brainpool512='openssl ecparam ${OPENSSL_ENGINE:-} -name brainpoolP512t1 -genkey'  #' Generate an elliptic-curve key (brainpoolP512t1)
-alias c2tnb431r1='openssl ecparam ${OPENSSL_ENGINE:-} -name c2tnb431r1 -genkey'  #' Generate an elliptic-curve key (c2tnb431r1)
-alias prime256='openssl ecparam ${OPENSSL_ENGINE:-} -name prime256v1 -genkey'  #' Generate an elliptic-curve key (prime256v1)
+alias brainpool512='openssl ecparam ${OPENSSL_ENGINE:-} -name brainpoolP512t1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (brainpoolP512t1)
+alias c2tnb431r1='openssl ecparam ${OPENSSL_ENGINE:-} -name c2tnb431r1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (c2tnb431r1)
+alias prime256='openssl ecparam ${OPENSSL_ENGINE:-} -name prime256v1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (prime256v1)
 alias rsa1024='openssl genrsa 1024'  #' Generate a random 1024-bit RSA private key
 alias rsa2048='openssl genrsa 2048'  #' Generate a random 2048-bit RSA private key
 alias rsa4096='openssl genrsa 4096'  #' Generate a random 4096-bit RSA private key
@@ -69,10 +69,10 @@ alias rsa2048file='openssl genrsa -out rsa2048pri.pem 2048'  #' Generate a file 
 alias rsa4096file='openssl genrsa -out rsa4096pri.pem 4096'  #' Generate a file containing a random 4096-bit RSA private key
 alias rsa8192file='openssl genrsa -out rsa8192pri.pem 8192'  #' Generate a file containing a random 8192-bit RSA private key
 alias rsa16384file='openssl genrsa -out rsa16384pri.pem 16384'  #' Generate a file containing a random 16384-bit RSA private key
-alias secp521='openssl ecparam ${OPENSSL_ENGINE:-} -name secp521r1 -genkey'  #' Generate an elliptic-curve key (secp521r1)
-alias sect571k1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571k1 -genkey'  #' Generate an elliptic-curve key (sect571k1)
-alias sect571r1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571r1 -genkey'  #' Generate an elliptic-curve key (sect571r1)
-alias wtls12='openssl ecparam ${OPENSSL_ENGINE:-} -name wap-wsg-idm-ecid-wtls12 -genkey'  #' Generate an elliptic-curve key (wap-wsg-idm-ecid-wtls12)
+alias secp521='openssl ecparam ${OPENSSL_ENGINE:-} -name secp521r1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (secp521r1)
+alias sect571k1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571k1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (sect571k1)
+alias sect571r1='openssl ecparam ${OPENSSL_ENGINE:-} -name sect571r1 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (sect571r1)
+alias wtls12='openssl ecparam ${OPENSSL_ENGINE:-} -name wap-wsg-idm-ecid-wtls12 -genkey 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate an elliptic-curve key (wap-wsg-idm-ecid-wtls12)
 
 # Digests
 
@@ -85,13 +85,13 @@ alias rmd160='openssl dgst -rmd160'  #' Produce the RMD160 checksum for the give
 
 # Random
 
-alias rand4096base64='openssl rand ${OPENSSL_ENGINE:-} -base64 4096'  #' Generate 4096 bytes of base64-encoded random data
-alias randbase64='openssl rand ${OPENSSL_ENGINE:-} -base64'  #' Generate base64-encoded random data (specify the number of random bytes to generate)
-alias randbin1024='openssl rand ${OPENSSL_ENGINE:-} 1024'  #' Generate 1024 bytes of random data
-alias randbin2048='openssl rand ${OPENSSL_ENGINE:-} 2048'  #' Generate 2048 bytes of random data
-alias randbin4096='openssl rand ${OPENSSL_ENGINE:-} 4096'  #' Generate 4096 bytes of random data
-alias randbin8192='openssl rand ${OPENSSL_ENGINE:-} 8192'  #' Generate 8192 bytes of random data
-alias randbin16384='openssl rand ${OPENSSL_ENGINE:-} 16384'  #' Generate 16384 bytes of random data
+alias rand4096base64='openssl rand ${OPENSSL_ENGINE:-} -base64 4096 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 4096 bytes of base64-encoded random data
+alias randbase64='openssl rand ${OPENSSL_ENGINE:-} -base64 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate base64-encoded random data (specify the number of random bytes to generate)
+alias randbin1024='openssl rand ${OPENSSL_ENGINE:-} 1024 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 1024 bytes of random data
+alias randbin2048='openssl rand ${OPENSSL_ENGINE:-} 2048 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 2048 bytes of random data
+alias randbin4096='openssl rand ${OPENSSL_ENGINE:-} 4096 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 4096 bytes of random data
+alias randbin8192='openssl rand ${OPENSSL_ENGINE:-} 8192 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 8192 bytes of random data
+alias randbin16384='openssl rand ${OPENSSL_ENGINE:-} 16384 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;"'  #' Generate 16384 bytes of random data
 alias randprime='openssl prime -generate -bits'  #' Generate a random prime number (specify the bit-length)
 alias randhexprime='openssl prime -generate -hex -bits'  #' Generate a random prime number encoded in hexadecimal (specify the bit-length)
 alias randprime64='openssl prime -generate -bits 64'  #' Generate a random 64-bit prime number
@@ -114,11 +114,11 @@ alias randprime16384='openssl prime -generate -bits 16384'  #' Generate a random
 alias randhexprime16384='openssl prime -generate -bits 16384 -hex'  #' Generate a random 16384-bit prime number encoded in hexadecimal
 
 # Random Digest
-alias randb2s256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -blake2s256 | cut -d " " -f 2'  #' Generate a random BLAKE2S256 hash
-alias randmd4='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md4 | cut -d " " -f 2'  #' Generate a random MD4 hash
-alias randmd5='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md5 | cut -d " " -f 2'  #' Generate a random MD5 hash
-alias randsha256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha256 | cut -d " " -f 2'  #' Generate a random SHA256 hash
-alias randsha512='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha512 | cut -d " " -f 2'  #' Generate a random SHA512 hash
+alias randb2s256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -blake2s256 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;" | cut -d " " -f 2'  #' Generate a random BLAKE2S256 hash
+alias randmd4='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md4 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;" | cut -d " " -f 2'  #' Generate a random MD4 hash
+alias randmd5='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -md5 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;" | cut -d " " -f 2'  #' Generate a random MD5 hash
+alias randsha256='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha256 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;" | cut -d " " -f 2'  #' Generate a random SHA256 hash
+alias randsha512='openssl rand ${OPENSSL_ENGINE:-} 8192 | openssl dgst -sha512 2>&1 | sed -E -e "s|engine (.+)||; /^$/d;" | cut -d " " -f 2'  #' Generate a random SHA512 hash
 
 # Miscellaneous
 
