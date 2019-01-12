@@ -98,6 +98,6 @@ Miscellaneous Files
 
 There are some miscellaneous files and directories that may be useful to some developers and/or system administrators list below.
 
-- ./accessory/hosts: An enhanced hosts file that provides many aliases for important IP addresses as well as blocking against various malware and spam servers
-- ./accessory/XCompose: An extended XCompose file
-- ./accessory/nanorc/: Various nanorc files providing additional+better syntax highlighting
+- `./accessory/hosts`: An enhanced hosts file that provides many aliases for important IP addresses as well as blocking against various malware and spam servers
+- `./accessory/XCompose`: An extended XCompose file
+- `./accessory/nanorc/`: Various nanorc files providing additional+better syntax highlighting

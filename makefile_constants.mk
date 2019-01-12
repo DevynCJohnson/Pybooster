@@ -1265,7 +1265,7 @@ valchecksums :
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitstats lscontrib lstags newchanges previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitstats lscontrib lstags newchanges news previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -1325,6 +1325,9 @@ lstags :
 
 newchanges :
 	@git diff
+
+news :
+	@([ -f ./ChangeLog ] && $(COPY) ./ChangeLog ./NEWS) || true
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix

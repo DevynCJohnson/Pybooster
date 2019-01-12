@@ -26,8 +26,7 @@ playmusic() {
             printf 'ERROR: Unable to find a suitable audio player!\n' >&2
         fi
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Play an audio file\nUsage: playmusic AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nPlay an audio file\nUsage: playmusic AUDIO_FILE\n' >&2
     fi
 }
 
@@ -53,8 +52,7 @@ playmusicvisual() {
             printf 'ERROR: Unable to find a suitable audio player!\n' >&2
         fi
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Play an audio file with visuals\nUsage: playmusicvisual AUDIO_FILE [VISUAL]\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nPlay an audio file with visuals\nUsage: playmusicvisual AUDIO_FILE [VISUAL]\n' >&2
     fi
 }
 
@@ -80,8 +78,7 @@ audio2png() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=lin:size=2560x1440 "${outfile}.png"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Generate a linear visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nGenerate a linear visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png AUDIO_FILE\n' >&2
     fi
 }
 
@@ -101,8 +98,7 @@ audio2png_sqrt() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=sqrt:size=2560x1440 "${outfile}_sqrt.png"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Generate a squareroot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_sqrt AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nGenerate a squareroot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_sqrt AUDIO_FILE\n' >&2
     fi
 }
 
@@ -122,8 +118,7 @@ audio2png_cbrt() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=cbrt:size=2560x1440 "${outfile}_cbrt.png"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Generate a cuberoot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_cbrt AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nGenerate a cuberoot visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_cbrt AUDIO_FILE\n' >&2
     fi
 }
 
@@ -143,8 +138,7 @@ audio2png_log() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Generate a logarithmic visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_log AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nGenerate a logarithmic visualization of the audio wave (in the specified audio file) and save it as a PNG\nUsage: audio2png_log AUDIO_FILE\n' >&2
     fi
 }
 
@@ -170,8 +164,7 @@ audio2png_all() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -sn -vn -i "${1}" -filter_complex showwavespic=scale=log:size=2560x1440 "${outfile}_log.png"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Generate multiple visualizations of the audio wave (in the specified audio file) and save them as a PNG\nUsage: audio2png_all AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nGenerate multiple visualizations of the audio wave (in the specified audio file) and save them as a PNG\nUsage: audio2png_all AUDIO_FILE\n' >&2
     fi
 }
 
@@ -195,8 +188,7 @@ convert_to_aac() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a libfaac -ar 44100 -f aac "${outfile}.aac"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to AAC\nUsage: convert_to_aac AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to AAC\nUsage: convert_to_aac AUDIO_FILE\n' >&2
     fi
 }
 
@@ -211,8 +203,7 @@ convert_to_ac3() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a ac3 -ar 44100 -f ac3 "${outfile}.ac3"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to AC3\nUsage: convert_to_ac3 AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to AC3\nUsage: convert_to_ac3 AUDIO_FILE\n' >&2
     fi
 }
 
@@ -227,8 +218,7 @@ convert_to_ac3_fixed() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a ac3_fixed -ar 44100 "${outfile}.ac3"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to AC3 (Fixed)\nUsage: convert_to_ac3_fixed AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to AC3 (Fixed)\nUsage: convert_to_ac3_fixed AUDIO_FILE\n' >&2
     fi
 }
 
@@ -243,8 +233,7 @@ convert_to_flac() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a flac -b:a 320000 -ar 44100 -compression_level 12 -f flac "${outfile}.flac"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to Flac\nUsage: convert_to_flac AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to Flac\nUsage: convert_to_flac AUDIO_FILE\n' >&2
     fi
 }
 
@@ -259,8 +248,7 @@ convert_to_mp3() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a libmp3lame -b:a 320000 -ar 44100 -compression_level 0 -f mp3 "${outfile}.mp3"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to MP3\nUsage: convert_to_mp3 AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to MP3\nUsage: convert_to_mp3 AUDIO_FILE\n' >&2
     fi
 }
 
@@ -275,8 +263,7 @@ convert_to_ogg() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a libvorbis -ar 44100 -f ogg "${outfile}.ogg"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to OGG\nUsage: convert_to_ogg AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to OGG\nUsage: convert_to_ogg AUDIO_FILE\n' >&2
     fi
 }
 
@@ -291,8 +278,7 @@ convert_to_opus() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a libopus -compression_level 10 "${outfile}.opus"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to OPUS\nUsage: convert_to_opus AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to OPUS\nUsage: convert_to_opus AUDIO_FILE\n' >&2
     fi
 }
 
@@ -307,8 +293,7 @@ convert_to_wav() {
         outfile="${outfile%.*}"
         ffmpeg -hide_banner -loglevel panic -sn -vn -i "${1}" -codec:a pcm_s16le -ar 44100 -f wav "${outfile}.wav"
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Convert an audio file to WAV\nUsage: convert_to_wav AUDIO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nConvert an audio file to WAV\nUsage: convert_to_wav AUDIO_FILE\n' >&2
     fi
 }
 
@@ -331,8 +316,7 @@ playvideo() {
             printf 'ERROR: Unable to find a suitable audio player!\n' >&2
         fi
     else
-        printf 'ERROR: A pathname to a readable file is required!\n' >&2
-        printf 'Play a video file\nUsage: playvideo VIDEO_FILE\n' >&2
+        printf 'ERROR: A pathname to a readable file is required!\nPlay a video file\nUsage: playvideo VIDEO_FILE\n' >&2
     fi
 }
 
@@ -357,8 +341,7 @@ mergeaudiovideo() {
         # shellcheck disable=SC2086
         ffmpeg -hide_banner -loglevel panic ${hw_params} -i "$1" -i "$2" "${outfile}_merged.${file_ext}"
     else
-        printf 'ERROR: Two pathnames to readable files is required!\n' >&2
-        printf 'Play a video file\nUsage: mergeaudiovideo AUDIO_FILE VIDEO_FILE\n' >&2
+        printf 'ERROR: Two pathnames to readable files is required!\nPlay a video file\nUsage: mergeaudiovideo AUDIO_FILE VIDEO_FILE\n' >&2
     fi
 }
 
@@ -379,8 +362,7 @@ audioimg2mp4() {
         # shellcheck disable=SC2086
         ffmpeg -y -hide_banner -loglevel panic ${hw_params} -thread_queue_size 4096 -probesize 20M -analyzeduration 20M -i "$2" -i "$1" -c:v libx264 -crf 15 -tune stillimage -vf scale=2560:1440 -c:a libmp3lame -b:a 320000 -ar 44100 -compression_level 0 "${outfile}_merged.mp4"
     else
-        printf 'ERROR: Two pathnames to readable files is required!\n' >&2
-        printf 'Create an MP4 video given an audio file & an image file\nUsage: audioimg2mp4 AUDIO_FILE IMAGE_FILE\n' >&2
+        printf 'ERROR: Two pathnames to readable files is required!\nCreate an MP4 video given an audio file & an image file\nUsage: audioimg2mp4 AUDIO_FILE IMAGE_FILE\n' >&2
     fi
 }
 
