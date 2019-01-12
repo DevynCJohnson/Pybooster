@@ -125,7 +125,6 @@ if [ "$(id -u)" -eq 0 ] && [ -f /proc/sys/vm/drop_caches ]; then
 fi
 [ -x "$(command -v swapon)" ] && alias freeswap='sudo swapoff -a && sleep 2 && sudo swapon -a'
 alias killjobs='kill "$(jobs -ps)" 2> /dev/null'
-[ -x "$(command -v systemctl)" ] && alias lsenabledservices='systemctl list-unit-files | grep -F "enabled"'
 alias lsmount='mount | column -t'
 [ -x "$(command -v free)" ] && alias meminfo='free -m -l -t'
 [ -x "$(command -v xset)" ] && alias monitoroff='xset dpms force off'
@@ -666,7 +665,38 @@ gpumeminfo() {
     fi
 }
 
-[ -x "$(command -v systemctl)" ] && enabledservices() { systemctl list-unit-files | grep -F 'enabled' | awk '{ print $1 }' | sort; }
+if [ -x "$(command -v systemctl)" ]; then
+    lsservices() { systemctl --all list-unit-files | sed -E -e 's|.+ unit files listed.+||' | awk NF | sort; }
+    services_bad() { systemctl --all list-unit-files | grep -F 'bad' | awk '{ print $1 }' | sort; }
+    services_disabled() { systemctl --all list-unit-files | grep -F 'disabled' | awk '{ print $1 }' | sort; }
+    services_enabled() { systemctl --all list-unit-files | grep -F 'enabled' | awk '{ print $1 }' | sort; }
+    services_enabledruntime() { systemctl --all list-unit-files | grep -F 'enabled-runtime' | awk '{ print $1 }' | sort; }
+    services_generated() { systemctl --all list-unit-files | grep -F 'generated' | awk '{ print $1 }' | sort; }
+    services_indirect() { systemctl --all list-unit-files | grep -F 'indirect' | awk '{ print $1 }' | sort; }
+    services_linked() { systemctl --all list-unit-files | grep -F 'linked' | awk '{ print $1 }' | sort; }
+    services_linkedruntime() { systemctl --all list-unit-files | grep -F 'linked-runtime' | awk '{ print $1 }' | sort; }
+    services_masked() { systemctl --all list-unit-files | grep -F 'masked' | awk '{ print $1 }' | sort; }
+    services_maskedruntime() { systemctl --all list-unit-files | grep -F 'masked-runtime' | awk '{ print $1 }' | sort; }
+    services_static() { systemctl --all list-unit-files | grep -F 'static' | awk '{ print $1 }' | sort; }
+    services_transient() { systemctl --all list-unit-files | grep -F 'transient' | awk '{ print $1 }' | sort; }
+    lsjobs() { systemctl --all list-jobs; }
+    lssockets() { systemctl --all list-sockets; }
+    lstimers() { systemctl --all list-timers; }
+    lsunits() { systemctl --all list-units; }
+    sysctlprops() { systemctl show; }
+    servicedeps() { systemctl --all list-dependencies; }
+    servicedisable() { [ -n "${1:-}" ] && sudo systemctl disable "${@:-}"; }
+    serviceenable() { [ -n "${1:-}" ] && sudo systemctl enable "${@:-}"; }
+    servicelog() { journalctl -xe; }
+    servicereload() { [ -n "${1:-}" ] && sudo systemctl reload "${@:-}"; }
+    servicerestart() { [ -n "${1:-}" ] && sudo systemctl restart "${@:-}"; }
+    servicesrebuild() { sudo systemctl daemon-reload; }
+    servicestart() { [ -n "${1:-}" ] && sudo systemctl start "${@:-}"; }
+    servicestat() { [ -n "${1:-}" ] && sudo systemctl status "${@:-}"; }
+    servicestop() { [ -n "${1:-}" ] && sudo systemctl stop "${@:-}"; }
+    isserviceactive() { [ -n "${1:-}" ] && systemctl is-active "${1:-}"; }
+    isservicefailed() { [ -n "${1:-}" ] && systemctl is-failed "${1:-}"; }
+fi
 
 if [ -n "$(command -v StartService)" ] && [ -n "$(command -v RestartService)" ]; then
     #' Generic Action Handler
@@ -816,6 +846,12 @@ if [ -x "$(command -v sqlite3)" ]; then
         done
     }
 fi
+
+#' Update the XDG databases for the current user
+updatexdg() {
+    [ -x "$(command -v update-desktop-database)" ] && update-desktop-database "${HOME}/.local/share/applications/"
+    [ -x "$(command -v update-mime-database)" ] && update-mime-database "${HOME}/.local/share/mime/"
+}
 
 
 # AUTOCOMPLETE #
