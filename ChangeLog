@@ -6,7 +6,7 @@
 	* Geany:  Added many missing SQL keywords & improved some other files
 	* mimetype_booster.xml:  Fixed the SQL mimetypes & added many mimetypes
 	* Opticons:  Fixed the SQL icons & added an icon for Windows Registry files
-	* PyBooster:  Added phpanalysis
+	* PyBooster:  Added phpanalysis, hosts, and a Windows registry file
 	* snippets.conf:  Added snippets for a variety of languages
 
 2018-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

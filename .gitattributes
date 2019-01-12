@@ -128,6 +128,8 @@ static/* linguist-vendored
 *.py[dix] text eol=lf linguist-language=Cython linguist-vendored=false
 *.d text eol=lf linguist-language=D linguist-vendored=false
 *.di text eol=lf linguist-language=D linguist-vendored=false
+*.desktop text eol=lf linguist-generated=false linguist-language=desktop linguist-vendored=false
+*.fish text eol=lf linguist-language=fish linguist-vendored=false
 *.[Ff] text eol=lf linguist-language=Fortran linguist-vendored=false
 *.[Ff]03 text eol=lf linguist-language=Fortran linguist-vendored=false
 *.[Ff]08 text eol=lf linguist-language=Fortran linguist-vendored=false
@@ -149,7 +151,6 @@ static/* linguist-vendored
 *.[Cc][Ff][Gg] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Cc][Oo][Nn][Ff] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.config text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
-*.desktop text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Ii][Nn][Ii] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
@@ -166,6 +167,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.matlab text eol=lf linguist-language=Matlab linguist-vendored=false
 *.mlab text eol=lf linguist-language=Matlab linguist-vendored=false
 *.octave text eol=lf linguist-language=Matlab linguist-vendored=false
+*.nanorc text eol=lf linguist-language=nanorc linguist-vendored=false
 *.numpy text eol=lf linguist-language=NumPy linguist-vendored=false
 *.numpyw text eol=lf linguist-language=NumPy linguist-vendored=false
 *.numsc text eol=lf linguist-language=NumPy linguist-vendored=false
@@ -182,17 +184,20 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.[Pp][Hh][Pp]5 text eol=lf linguist-language=PHP linguist-vendored=false
 *.[Pp][Hh][Pp]6 text eol=lf linguist-language=PHP linguist-vendored=false
 *.[Pp][Hh][Pp]7 text eol=lf linguist-language=PHP linguist-vendored=false
-*.[Pp][Hh][Pp]s text eol=lf linguist-language=PHP linguist-vendored=false
-*.[Pp][Hh][Pp]t text eol=lf linguist-language=PHP linguist-vendored=false
+*.[Pp][Hh][Pp][Ss] text eol=lf linguist-language=PHP linguist-vendored=false
+*.[Pp][Hh][Pp][Tt] text eol=lf linguist-language=PHP linguist-vendored=false
+*.[Pp][Ss]1 text eol=lf linguist-language=PowerShell linguist-vendored=false
+*.[Pp][Ss][Dd]1 text eol=lf linguist-language=PowerShell linguist-vendored=false
+*.[Pp][Ss][Mm]1 text eol=lf linguist-language=PowerShell linguist-vendored=false
 *.py text eol=lf linguist-language=Python linguist-vendored=false
 *.py[23w] text eol=lf linguist-language=Python linguist-vendored=false
 *.pygtk text eol=lf linguist-language=Python linguist-vendored=false
 *.pyqt text eol=lf linguist-language=Python linguist-vendored=false
 *.pyside text eol=lf linguist-language=Python linguist-vendored=false
 *.[Rr] text eol=lf linguist-language=R linguist-vendored=false
-*.[Re][Ee][Gg] text eol=lf linguist-language=Reg linguist-vendored=false
 *.[12345678] text eol=lf linguist-language=Roff linguist-vendored=false
 *.man text eol=lf linguist-language=Roff linguist-vendored=false
+*.man[12345678] text eol=lf linguist-language=Roff linguist-vendored=false
 *.manpage text eol=lf linguist-language=Roff linguist-vendored=false
 *.mdoc text eol=lf linguist-language=Roff linguist-vendored=false
 *.[Ss][Aa][Ss][Ss] text eol=lf linguist-language=Sass linguist-vendored=false
@@ -209,7 +214,6 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.[Ss][Vv][Gg] text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
-*.nanorc text eol=lf linguist-language=Text linguist-vendored=false
 *.tags text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
@@ -227,9 +231,9 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.[Xx][Ss][Dd] text eol=lf linguist-language=XML linguist-vendored=false
 *.[Xx][Ss][Ll] text eol=lf linguist-language=XSLT linguist-vendored=false
 *.[Xx][Ss][Ll][Tt] text eol=lf linguist-language=XSLT linguist-vendored=false
-*.y text eol=lf linguist-language=Yacc linguist-vendored=false
-*.yacc text eol=lf linguist-language=Yacc linguist-vendored=false
-*.yy text eol=lf linguist-language=Yacc linguist-vendored=false
+*.[Yy] text eol=lf linguist-language=Yacc linguist-vendored=false
+*.[Yy][Aa][Cc][Cc] text eol=lf linguist-language=Yacc linguist-vendored=false
+*.[Yy][Yy] text eol=lf linguist-language=Yacc linguist-vendored=false
 *.[Yy][Aa][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
 *.[Yy][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
 accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
@@ -238,40 +242,40 @@ accessory/schemas/DTD/*.dtd text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/RelaxNG/*.rng text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/XSD/*.xsd text eol=lf linguist-language=XML linguist-vendored
 geany/colorschemes/* text eol=lf linguist-language=INI
-geany/filedefs/filetypes* text eol=lf linguist-language=INI
-geany/tags/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-geany/templates/* text eol=lf linguist-language=Text linguist-vendored
+geany/filedefs/filetypes.* text eol=lf linguist-language=INI
+geany/tags/*.tags text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
+geany/templates/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored=false
 geany/templates/files/Windows_Batch.bat text eol=crlf linguist-generated=true linguist-language=Text linguist-vendored=false
 
 
 # Documentation
 
-[Dd]oc/** linguist-detectable=false linguist-documentation
+[Dd][Oo][Cc]/** linguist-detectable=false linguist-documentation
 [Dd]ocumentation/** linguist-detectable=false linguist-documentation
 [Ee]xamples/** linguist-detectable=false linguist-documentation
-[Mm]an/** linguist-detectable=false linguist-documentation
-README.[Mm][Dd] text eol=lf linguist-language=Markdown linguist-documentation
+[Mm][Aa][Nn]/** linguist-detectable=false linguist-documentation
+[Rr][Ee][Aa][Dd][Mm][Ee].[Mm][Dd] text eol=lf linguist-language=Markdown linguist-documentation
 *.[Mm][Dd] text eol=lf linguist-language=Markdown linguist-documentation
-*.rst text eol=lf linguist-language=reStructuredText linguist-documentation
-*.txt text eol=lf linguist-documentation
+*.[Rr][Ee][Aa][Dd][Mm][Ee] text eol=lf linguist-language=Markdown linguist-documentation
+*.[Rr][Ss][Tt] text eol=lf linguist-language=reStructuredText linguist-documentation
+*.[Tt][Xx][Tt] text eol=lf linguist-documentation
 AUTHORS text eol=lf linguist-documentation
-BUGS text eol=lf linguist-documentation
+[Bb][Uu][Gg][Ss] text eol=lf linguist-documentation
 [Cc]hange[Ll]og text eol=lf linguist-documentation
 CONTRIBUTING text eol=lf linguist-documentation
 CONTRIBUTORS text eol=lf linguist-documentation
 COPYING text eol=lf linguist-documentation
 HACKING text eol=lf linguist-documentation
 INSTALL text eol=lf linguist-documentation
-License text eol=lf linguist-documentation
-LICENSE text eol=lf linguist-documentation
-LICENSE.* text eol=lf linguist-documentation
-LICENSE.txt text eol=lf linguist-documentation
+[Ll][Ii][Cc][Ee][Nn][Ss][Ee] text eol=lf linguist-documentation
+[Ll][Ii][Cc][Ee][Nn][Ss][Ee].* text eol=lf linguist-documentation
+[Ll][Ii][Cc][Ee][Nn][Ss][Ee].txt text eol=lf linguist-documentation
 MAINTAINERS text eol=lf linguist-documentation
-NEWS text eol=lf linguist-documentation
+[Nn][Ee][Ww][Ss] text eol=lf linguist-documentation
 PKG-INFO text eol=lf linguist-documentation
-README text eol=lf linguist-documentation
-README* text eol=lf linguist-documentation
+[Rr][Ee][Aa][Dd][Mm][Ee] text eol=lf linguist-documentation
+[Rr][Ee][Aa][Dd][Mm][Ee]* text eol=lf linguist-documentation
 THANKS text eol=lf linguist-documentation
-TODO text eol=lf linguist-documentation
-gpl-3.0.txt text eol=lf linguist-documentation
+[Tt][Oo][Dd][Oo] text eol=lf linguist-documentation
+[Gg][Pp][Ll]-3.0.txt text eol=lf linguist-documentation

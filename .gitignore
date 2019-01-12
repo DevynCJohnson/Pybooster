@@ -5,9 +5,9 @@
 
 *.[Ll][Oo][Gg]
 *.[Ll][Oo][Gg][Ss]
-.cache
-[Bb]in/
-[Dd]ebug/
+.[Cc][Aa][Cc][Hh][Ee]
+[Bb][Ii][Nn]/
+[Dd]{Ee][Bb][Uu][Gg]/
 [Ll][Oo][Gg][Ss]/
 [Tt]esting/
 build/
@@ -57,13 +57,13 @@ var/
 # Miscellaneous
 
 *.[Cc]ache
-*.tmp
+*.[Tt][Mm][Pp]
 *.todo.txt
 .lock-wscript
 .wafpickle-*
 .sh-session
 icon-theme.cache
-yarn.lock
+yarn.[Ll][Oo][Cc][Kk]
 
 
 ## TRANSLATIONS ##
@@ -78,9 +78,9 @@ yarn.lock
 
 # Executables
 
-*.app
-*.exe
-*.hex
+*.{Aa][Pp][Pp]
+*.[Ee][Xx][Ee]
+*.[Hh][Ee][Xx]
 *.i386
 *.i486
 *.i586
@@ -92,14 +92,14 @@ yarn.lock
 
 *.cubin
 *.fatbin
-*.gpu
+*.[Gg][Pp][Uu]
 *.i
 *.ii
 *.ptx
 
 # Debugging  & Profiling Files
 
-*.dSYM/
+*.[Dd][Ss][Yy][Mm]/
 *.gcda
 *.idb
 *.pdb
@@ -126,7 +126,7 @@ yarn.lock
 
 # Object Files
 
-*.dll
+*.[Dd][Ll][Ll]
 *.dylib
 *.elf
 *.ko
