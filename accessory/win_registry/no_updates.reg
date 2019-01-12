@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+; Disable automatic update retrieval and checking
+; Delete the added registry key to re-enable auto-updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"SetDisableUXWUAccess"="dword:00000001"
