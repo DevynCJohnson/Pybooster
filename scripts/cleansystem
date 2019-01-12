@@ -161,7 +161,6 @@ RM_CHROME_FILES="${HOME}/.cxchromium/chromium/drive_c/windows/profiles/crossover
 # Chrome/Chromium
 rmDirFromList "${RM_CHROME_DIRS}"
 rmFilesFromList "${RM_CHROME_FILES}"
-exit 0
 
 # Epiphany
 rm -f -r ~/.gnome2/epiphany/favicon_cache/ ~/.gnome2/epiphany/mozilla/epiphany/Cache/ ~/.local/share/webkitgtk/localstorage/ 2> /dev/null || true
@@ -187,7 +186,9 @@ if [ -d ~/.thunderbird/ ]; then
     rm -f ~/.thunderbird/*/*/cookies.sqlite ~/.thunderbird/*/cookies.sqlite 2> /dev/null || true
 fi
 # Tor
-rm -f -r ~/.tor/*/.cache/ 2> /dev/null || true
+if [ -d ~/.tor/ ]; then
+    rm -f -r ~/.tor/*/.cache/ 2> /dev/null || true
+fi
 
 # SQLite3 Cleaners
 
