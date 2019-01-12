@@ -1,3 +1,14 @@
+2019-01-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Fixes
+	* crypto_rc.sh:  Fixed some output-formatting bugs
+	* extras_rc.sh:  Added functions for `systemctl` & system services
+	* Geany:  Added many missing SQL keywords & improved some other files
+	* mimetype_booster.xml:  Fixed the SQL mimetypes & added many mimetypes
+	* Opticons:  Fixed the SQL icons & added an icon for Windows Registry files
+	* PyBooster:  Added phpanalysis
+	* snippets.conf:  Added snippets for a variety of languages
+
 2018-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Converted to a POSIX script from a Bash script & improved use of `getopt`

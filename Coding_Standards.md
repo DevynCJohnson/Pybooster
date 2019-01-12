@@ -327,6 +327,7 @@ REM ! Single-line Comment
 - **Fortran:** Fortran Style
 - **JavaScript:** JavaDoc Style
 - **Pascal:** Pascal Style
+- **PHP:** JavaDoc Style
 - **Posix Shell:** R Style
     - Aliases may have their Doxygen comment (if brief) be on the same line as the alias definition
 - **Python:** PyDoc Style
@@ -587,7 +588,9 @@ PHP
 - Functions/Methods must not span multiple PHP files
 - For PHP code, only use ```<?php ?>``` tags never ```<?= ?>``` nor ```<? ?>```
 - Only use Perl/Shell style comments (i.e. `#`) for hashplings
+- The booleans `true` and `false` are always in all lowercase letters
 - Use `elseif`, not `else if`
+- Use `const`, not `define()`
 - Naming Conventions
     - **Classes:** PascalCase
     - **Constants:** ALLCAPS

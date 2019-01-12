@@ -125,29 +125,12 @@
           <keyword>on</keyword>
           <keyword>off</keyword>
         </context>
-        <define-regex extended="true" id="statement-keyword">
-                    \b(return|break|continue|throw)\b
-                </define-regex>
-        <define-regex extended="true" id="loop-keyword">
-                    \b(for(\s+own)?|while|until|loop)\b
-                </define-regex>
-        <define-regex extended="true" id="conditional-keyword">
-                    \b(if|else|unless|switch|when|then|and|or|in|of|by|is|isnt|
-                    not)\b
-                </define-regex>
-        <define-regex extended="true" id="keywords-keyword">
-                    \b(instanceof|typeof|delete|new|where|class|extends|super|
-                    try|catch|finally)\b
-                </define-regex>
-        <define-regex extended="true" id="operator-regex">
-                    (-[\-=&gt;]?|\+[+=]?|[*&amp;|\/%=&lt;&gt;^~:!?]+)
-                </define-regex>
-        <define-regex extended="true" id="novalue-keywords">
-                    \%{statement-keyword}|
-                    \%{loop-keyword}|
-                    \%{conditional-keyword}|
-                    \%{keywords-keyword}
-                </define-regex>
+        <define-regex extended="true" id="statement-keyword">\b(return|break|continue|throw)\b</define-regex>
+        <define-regex extended="true" id="loop-keyword">\b(for(\s+own)?|while|until|loop)\b</define-regex>
+        <define-regex extended="true" id="conditional-keyword">\b(if|else|unless|switch|when|then|and|or|in|of|by|is|isnt|not)\b</define-regex>
+        <define-regex extended="true" id="keywords-keyword">\b(instanceof|typeof|delete|new|where|class|extends|super|try|catch|finally)\b</define-regex>
+        <define-regex extended="true" id="operator-regex">(-[\-=&gt;]?|\+[+=]?|[*&amp;|\/%=&lt;&gt;^~:!?]+)</define-regex>
+        <define-regex extended="true" id="novalue-keywords">\%{statement-keyword}|\%{loop-keyword}|\%{conditional-keyword}|\%{keywords-keyword}</define-regex>
         <context id="statement" style-ref="statement">
           <match>\%{statement-keyword}</match>
         </context>
@@ -179,17 +162,7 @@
           <match>\b[A-Z][A-Za-z0-9_]+\b(?!\.)</match>
         </context>
         <context id="application" style-ref="application">
-          <match extended="true">
-                    \b @? [A-Za-z0-9_]+ (
-                        (?= [(]) |
-                        \s+ (
-                            (?= [=-]&gt;) |
-                            (?=\S)(?!
-                                \%{novalue-keywords} | [\])}=:,#] |
-                                [-+*/]= | \%{operator-regex}\s )
-                        )
-                    )
-                    </match>
+          <match extended="true">\b @? [A-Za-z0-9_]+ ((?= [(]) | \s+ ((?= [=-]&gt;) | (?=\S)(?!\%{novalue-keywords} | [\])}=:,#] | [-+*/]= | \%{operator-regex}\s)))</match>
         </context>
       </include>
     </context>

@@ -78,7 +78,7 @@ override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise boolean clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo iterables libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath ymath
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes unicalc win2unixlines
 override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
@@ -88,7 +88,7 @@ override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-util
 # Search Parameters Used in Find
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
-override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
 override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
 
 
@@ -350,6 +350,8 @@ upver :
 	# Shell Scripts, Calc Files, makefiles, R, & Conf/INI Files #
 	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.calc" -o -name "*.cfg" -o -name "*.conf" -o -name "*.config" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
+	# Windows Registry Files #
+	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.reg" -print0 | xargs -0 sed -i "s/^; @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/; @version $(__VERSION__)/"
 	# XKB #
 	find $(XKBDIR)/* -mount -type f -name "usx*" -print0 | xargs -0 sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/"
 	# Miscellaneous #
@@ -515,7 +517,25 @@ install_mimetype_booster :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Mimetypes ==='
 	if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(COPY) $(ACCDIR)/mime.types /etc/mime.types
+	([ -f $(SYSMIMEDIR)/packages/apt.xml ] && $(RM) $(SYSMIMEDIR)/packages/apt.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/audacity.xml ] && $(RM) $(SYSMIMEDIR)/packages/audacity.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/cmakecache.xml ] && $(RM) $(SYSMIMEDIR)/packages/cmakecache.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/docutils.xml ] && $(RM) $(SYSMIMEDIR)/packages/docutils.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/fontforge.xml ] && $(RM) $(SYSMIMEDIR)/packages/fontforge.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/gcr-crypto-types.xml ] && $(RM) $(SYSMIMEDIR)/packages/gcr-crypto-types.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/genius.xml ] && $(RM) $(SYSMIMEDIR)/packages/genius.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/libreoffice.xml ] && $(RM) $(SYSMIMEDIR)/packages/libreoffice.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/meld.xml ] && $(RM) $(SYSMIMEDIR)/packages/meld.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/mysql-workbench.xml ] && $(RM) $(SYSMIMEDIR)/packages/mysql-workbench.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/remmina-mime.xml ] && $(RM) $(SYSMIMEDIR)/packages/remmina-mime.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/scilab.xml ] && $(RM) $(SYSMIMEDIR)/packages/scilab.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/view3dscene.xml ] && $(RM) $(SYSMIMEDIR)/packages/view3dscene.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/vinagre-mime.xml ] && $(RM) $(SYSMIMEDIR)/packages/vinagre-mime.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/virtualbox.xml ] && $(RM) $(SYSMIMEDIR)/packages/virtualbox.xml) || true
 	$(XDGMIME) install --mode system --novendor $(ACCDIR)/mimetype_booster.xml
+	$(RM) /home/*/.local/share/applications/mimeinfo.cache
+	$(RMDIR) /home/*/.thumbnails/ /home/*/.cache/thumbnails/
+	$(UPDATEDESKTOP) $(SYSAPPDIR)
 	$(UPDATEMIME) $(SYSMIMEDIR)
 
 uninstall_mimetype_booster :

@@ -108,7 +108,13 @@ ifneq ($(is_UPDATEICONCACHE_present),'')
 else
     override UPDATEICONCACHE::=printf '\x1b[31mgtk-update-icon-cache: command not found!\x1b[0m\n' #
 endif
+override is_UPDATEDESKTOP_present::=$(shell command -p -v update-desktop-database)
 override is_UPDATEMIME_present::=$(shell command -p -v update-mime-database)
+ifneq ($(is_UPDATEDESKTOP_present),'')
+    override UPDATEDESKTOP::=update-desktop-database
+else
+    override UPDATEDESKTOP::=printf '\x1b[31mupdate-desktop-database: command not found!\x1b[0m\n' #
+endif
 ifneq ($(is_UPDATEMIME_present),'')
     override UPDATEMIME::=update-mime-database
 else
