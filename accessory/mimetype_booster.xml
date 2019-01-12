@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE mime-info [
+  <!ELEMENT mime-info (mime-type)+>
+  <!ATTLIST mime-info xmlns CDATA #FIXED "http://www.freedesktop.org/standards/shared-mime-info">
+  <!ELEMENT mime-type (comment+, (acronym,expanded-acronym)? , (icon? | generic-icon? | glob | magic | treemagic | root-XML | alias | sub-class-of)*)>
+  <!ATTLIST mime-type type CDATA #REQUIRED>
+  <!ELEMENT comment (#PCDATA)>
+  <!ATTLIST comment xml:lang CDATA #IMPLIED>
+  <!ELEMENT acronym (#PCDATA)>
+  <!ATTLIST acronym xml:lang CDATA #IMPLIED>
+  <!ELEMENT expanded-acronym (#PCDATA)>
+  <!ATTLIST expanded-acronym xml:lang CDATA #IMPLIED>
+  <!ELEMENT icon EMPTY>
+  <!ATTLIST icon name CDATA #REQUIRED>
+  <!ELEMENT generic-icon EMPTY>
+  <!ATTLIST generic-icon name (application-x-executable|audio-x-generic|folder|font-x-generic|image-x-generic|package-x-generic|text-html|text-x-generic|text-x-generic-template|text-x-script|video-x-generic|x-office-address-book|x-office-calendar|x-office-document|x-office-presentation|x-office-spreadsheet) #REQUIRED>
+  <!ELEMENT glob EMPTY>
+  <!ATTLIST glob pattern CDATA #REQUIRED>
+  <!ATTLIST glob weight CDATA "50">
+  <!ATTLIST glob case-sensitive CDATA #IMPLIED>
+  <!ELEMENT magic (match)+>
+  <!ATTLIST magic priority CDATA "50">
+  <!ELEMENT match (match)*>
+  <!ATTLIST match offset CDATA #REQUIRED>
+  <!ATTLIST match type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED>
+  <!ATTLIST match value CDATA #REQUIRED>
+  <!ATTLIST match mask CDATA #IMPLIED>
+  <!ELEMENT treemagic (treematch)+>
+  <!ATTLIST treemagic priority CDATA "50">
+  <!ELEMENT treematch (treematch)*>
+  <!ATTLIST treematch path CDATA #REQUIRED>
+  <!ATTLIST treematch type (file|directory|link) #IMPLIED>
+  <!ATTLIST treematch match-case (true|false) #IMPLIED>
+  <!ATTLIST treematch executable (true|false) #IMPLIED>
+  <!ATTLIST treematch non-empty (true|false) #IMPLIED>
+  <!ATTLIST treematch mimetype CDATA #IMPLIED>
+  <!ELEMENT root-XML EMPTY>
+  <!ATTLIST root-XML namespaceURI CDATA #REQUIRED>
+  <!ATTLIST root-XML localName CDATA #REQUIRED>
+  <!ELEMENT alias EMPTY>
+  <!ATTLIST alias type CDATA #REQUIRED>
+  <!ELEMENT sub-class-of EMPTY>
+  <!ATTLIST sub-class-of type CDATA #REQUIRED>
+]>
+
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <!-- APPLICATION/* -->
+
   <mime-type type="application/andrew-inset">
     <comment>ATK Inset</comment>
     <acronym>ATK</acronym>
     <expanded-acronym>Andrew Toolkit</expanded-acronym>
     <generic-icon name="x-office-document"/>
     <glob pattern="*.ez"/>
+  </mime-type>
+  <mime-type type="application/dicom">
+    <comment>DICOM Image</comment>
+    <acronym>DICOM</acronym>
+    <expanded-acronym>Digital Imaging and Communications in Medicine</expanded-acronym>
+    <icon name="application-dicom"/>
+    <glob pattern="dicomdir"/>
+    <glob pattern="*.dcm"/>
+    <magic priority="50">
+      <match offset="128" type="string" value="DICM"/>
+    </magic>
   </mime-type>
   <mime-type type="application/epub+zip">
     <comment>Electronic Book Document</comment>
@@ -30,6 +88,13 @@
     <glob pattern="*.geojson"/>
     <glob pattern="*.geo.json"/>
     <sub-class-of type="application/json"/>
+  </mime-type>
+  <mime-type type="application/gnunet-directory">
+    <comment>GNUnet Search File</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="\211GND\r\n\032\n"/>
+    </magic>
+    <glob pattern="*.gnd"/>
   </mime-type>
   <mime-type type="application/illustrator">
     <comment>Adobe Illustrator Document</comment>
@@ -154,6 +219,16 @@
     <root-XML namespaceURI="urn:ietf:params:xml:ns:metalink" localName="metalink"/>
     <sub-class-of type="application/xml"/>
   </mime-type>
+  <mime-type type="application/mxf">
+    <comment>MXF Video</comment>
+    <acronym>MXF</acronym>
+    <expanded-acronym>Material Exchange Format</expanded-acronym>
+    <generic-icon name="video-x-generic"/>
+    <magic priority="50">
+      <match offset="0:256" type="string" value="\x06\x0e\x2b\x34\x02\x05\x01\x01\x0d\x01\x02\x01\x01\x02"/>
+    </magic>
+    <glob pattern="*.mxf"/>
+  </mime-type>
   <mime-type type="application/octet-stream">
     <comment>Unknown</comment>
     <glob pattern="*.bin"/>
@@ -179,10 +254,55 @@
       <match value="%PDF-" type="string" offset="0:1024"/>
     </magic>
   </mime-type>
+  <mime-type type="application/pgp-encrypted">
+    <alias type="application/pgp"/>
+    <comment>PGP/MIME-encrypted message header</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="-----BEGIN PGP MESSAGE-----"/>
+    </magic>
+    <glob pattern="*.pgp"/>
+    <glob pattern="*.gpg"/>
+    <glob pattern="*.asc" weight="10"/>
+  </mime-type>
+  <mime-type type="application/pgp-keys">
+    <comment>PGP keys</comment>
+    <acronym>PGP</acronym>
+    <expanded-acronym>Pretty Good Privacy</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="big16" value="0x9500"/>
+      <match offset="0" type="big16" value="0x9501"/>
+      <match offset="0" type="big16" value="0x9900"/>
+      <match offset="0" type="big16" value="0x9901"/>
+      <match offset="0" type="string" value="-----BEGIN PGP PRIVATE KEY BLOCK-----"/>
+      <match offset="0" type="string" value="-----BEGIN PGP PUBLIC KEY BLOCK-----"/>
+    </magic>
+    <glob pattern="*.asc" weight="10"/>
+    <glob pattern="*.gpg"/>
+    <glob pattern="*.pgp"/>
+    <glob pattern="*.pkr"/>
+    <glob pattern="*.skr"/>
+  </mime-type>
+  <mime-type type="application/pgp-signature">
+    <comment>Detached OpenPGP signature</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="-----BEGIN PGP SIGNATURE-----"/>
+    </magic>
+    <glob weight="10" pattern="*.asc"/>
+    <glob pattern="*.sig"/>
+    <glob pattern="*.pgp"/>
+    <glob pattern="*.gpg"/>
+  </mime-type>
   <mime-type type="application/pkcs10">
     <comment>PKCS#10 Certificate Request</comment>
     <acronym>PKCS#10</acronym>
     <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
+    <generic-icon name="text-x-generic"/>
     <glob pattern="*.p10"/>
     <glob pattern="*.csr"/>
   </mime-type>
@@ -206,10 +326,10 @@
     <acronym>PKCS#7</acronym>
     <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
     <generic-icon name="text-x-generic"/>
+    <glob pattern="*.p7b"/>
     <glob pattern="*.p7c"/>
     <glob pattern="*.p7m"/>
     <glob pattern="*.spc"/>
-    <glob pattern="*.p7b"/>
     <alias type="application/x-pkcs7-certificates"/>
   </mime-type>
   <mime-type type="application/pkcs7-mime+pem">
@@ -231,8 +351,15 @@
     <comment>PKCS#8 Personal Key</comment>
     <acronym>PKCS#8</acronym>
     <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
+    <generic-icon name="text-x-generic"/>
     <glob weight="75" pattern="*.p8"/>
     <glob pattern="*.pkcs8"/>
+  </mime-type>
+  <mime-type type="application/pkcs8-encrypted">
+    <comment>PKCS#8 Private Key (Encrypted)</comment>
+    <acronym>PKCS</acronym>
+    <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
+    <glob pattern="*.p8e"/>
   </mime-type>
   <mime-type type="application/pkcs8+pem">
     <comment>PKCS#8 Personal Key (PEM Format)</comment>
@@ -299,13 +426,53 @@
     <root-XML namespaceURI="http://www.w3.org/2005/SMIL21/Language" localName="smil"/>
     <root-XML namespaceURI="http://www.w3.org/ns/SMIL" localName="smil"/>
   </mime-type>
-  <mime-type type="application/sql">
-    <comment>SQL Code</comment>
-    <alias type="text/x-sql"/>
-    <icon name="text/x-sql"/>
-    <glob pattern="*.sql"/>
+  <mime-type type="application/xml">
+    <alias type="text/xml"/>
+    <acronym>XML</acronym>
+    <comment>XML Document</comment>
+    <expanded-acronym>eXtensible Markup Language</expanded-acronym>
+    <icon name="text-xml"/>
+    <glob pattern="*.rng"/>
+    <glob pattern="*.xbl"/>
+    <glob pattern="*.xml"/>
+    <glob pattern="*.xsd"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/xml-dtd">
+    <acronym>DTD</acronym>
+    <alias type="text/x-dtd"/>
+    <comment>DTD File</comment>
+    <expanded-acronym>Document Type Definition</expanded-acronym>
+    <icon name="text-xml"/>
+    <glob pattern="*.dtd"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="application/xslt+xml">
+    <acronym>XSLT</acronym>
+    <comment>XSLT Stylesheet</comment>
+    <expanded-acronym>eXtensible Stylesheet Language Transformation</expanded-acronym>
+    <icon name="text-xml"/>
+    <glob pattern="*.xsl"/>
+    <glob pattern="*.xslt"/>
+    <sub-class-of type="application/xml"/>
+  </mime-type>
+  <mime-type type="application/xspf+xml">
+    <comment>XSPF Playlist</comment>
+    <acronym>XSPF</acronym>
+    <expanded-acronym>XML Shareable Playlist Format</expanded-acronym>
+    <alias type="application/x-xspf+xml"/>
+    <generic-icon name="audio-x-generic"/>
+    <glob pattern="*.xspf"/>
+    <magic priority="50">
+      <match value="&lt;playlist version=&quot;1" type="string" offset="0:64"/>
+      <match value="&lt;playlist version='1" type="string" offset="0:64"/>
+    </magic>
+    <root-XML namespaceURI="http://xspf.org/ns/0/" localName="playlist"/>
+    <sub-class-of type="application/xml"/>
+  </mime-type>
+
+  <!-- APPLICATION/vnd.* -->
+
   <mime-type type="application/vnd.android.package-archive">
     <comment>Android Package</comment>
     <icon name="apk"/>
@@ -331,33 +498,89 @@
     <comment>Microsoft Excel Worksheet</comment>
     <glob pattern="*.xls"/>
   </mime-type>
+  <mime-type type="application/vnd.ms-excel.addin.macroEnabled.12">
+    <comment>Excel Add-In</comment>
+    <generic-icon name="x-office-spreadsheet"/>
+    <glob pattern="*.xlam"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+  </mime-type>
   <mime-type type="application/vnd.ms-excel.sheet.binary.macroEnabled.12">
     <comment>Microsoft Excel Worksheet</comment>
     <glob pattern="*.xlsb"/>
+    <generic-icon name="x-office-spreadsheet"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
   </mime-type>
   <mime-type type="application/vnd.ms-excel.sheet.macroEnabled.12">
     <comment>Microsoft Excel Worksheet</comment>
     <glob pattern="*.xlsm"/>
+    <generic-icon name="x-office-spreadsheet"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
   </mime-type>
   <mime-type type="application/vnd.ms-excel.template.macroEnabled.12">
     <comment>Microsoft Excel Worksheet Template</comment>
     <glob pattern="*.xltm"/>
+    <generic-icon name="x-office-spreadsheet"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.spreadsheetml.template"/>
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint">
     <comment>Microsoft PowerPoint Presentation</comment>
+    <generic-icon name="x-office-presentation"/>
+    <glob pattern="*.ppz"/>
     <glob pattern="*.ppt"/>
+    <glob pattern="*.pps"/>
+    <glob pattern="*.pot"/>
+    <alias type="application/mspowerpoint"/>
+    <alias type="application/powerpoint"/>
+    <alias type="application/x-mspowerpoint"/>
+  </mime-type>
+  <mime-type type="application/vnd.ms-powerpoint.addin.macroEnabled.12">
+    <comment>PowerPoint Add-In</comment>
+    <generic-icon name="x-office-presentation"/>
+    <glob pattern="*.ppam"/>
+  </mime-type>
+  <mime-type type="application/vnd.ms-powerpoint.slide.macroEnabled.12">
+    <comment>PowerPoint Slide</comment>
+    <generic-icon name="x-office-presentation"/>
+    <glob pattern="*.sldm"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.presentationml.slide"/>
+  </mime-type>
+  <mime-type type="application/vnd.ms-powerpoint.slideshow.macroEnabled.12">
+    <comment>PowerPoint Presentation</comment>
+    <generic-icon name="x-office-presentation"/>
+    <glob pattern="*.ppsm"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.presentationml.slideshow"/>
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint.presentation.macroEnabled.12">
     <comment>Microsoft PowerPoint Presentation</comment>
     <glob pattern="*.pptm"/>
+    <generic-icon name="x-office-presentation"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.presentationml.presentation"/>
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint.template.macroEnabled.12">
     <comment>Microsoft PowerPoint Presentation Template</comment>
     <glob pattern="*.potm"/>
+    <generic-icon name="x-office-presentation"/>
+    <sub-class-of type="application/vnd.openxmlformats-officedocument.presentationml.template"/>
   </mime-type>
   <mime-type type="application/vnd.ms-word">
     <comment>Microsoft Word Document</comment>
+    <alias type="application/vnd.ms-word"/>
+    <alias type="application/x-msword"/>
+    <alias type="zz-application/zz-winassoc-doc"/>
     <glob pattern="*.doc"/>
+    <sub-class-of type="application/x-ole-storage"/>
+    <generic-icon name="x-office-document"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\333\245-\0\0\0"/>
+      <match offset="0" type="string" value="\376\067\0\043"/>
+      <match offset="0" type="string" value="\x31\xbe\x00\x00"/>
+      <match offset="0" type="string" value="PO^Q`"/>
+      <match offset="2108" type="string" value="MSWordDoc"/>
+      <match offset="2112" type="string" value="Microsoft Word document data"/>
+      <match offset="2112" type="string" value="MSWordDoc"/>
+      <match offset="546" type="string" value="bjbj"/>
+      <match offset="546" type="string" value="jbjb"/>
+    </magic>
   </mime-type>
   <mime-type type="application/vnd.ms-word.document.macroEnabled.12">
     <comment>Microsoft Word Document</comment>
@@ -597,19 +820,46 @@
       <match value="Rar!" type="string" offset="0"/>
     </magic>
   </mime-type>
+  <mime-type type="application/vnd.rn-realmedia">
+    <comment>RealMedia Document</comment>
+    <generic-icon name="video-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value=".RMF"/>
+    </magic>
+    <glob pattern="*.rm"/>
+    <glob pattern="*.rmj"/>
+    <glob pattern="*.rmm"/>
+    <glob pattern="*.rms"/>
+    <glob pattern="*.rmx"/>
+    <glob pattern="*.rmvb"/>
+    <alias type="application/vnd.rn-realmedia-vbr"/>
+  </mime-type>
+  <mime-type type="application/vnd.snap">
+    <comment>Snap Package</comment>
+    <glob pattern="*.snap"/>
+    <sub-class-of type="application/vnd.squashfs"/>
+  </mime-type>
+  <mime-type type="application/vnd.sqlite2">
+    <comment>SQLite2 Database</comment>
+    <alias type="application/sql2"/>
+    <alias type="application/x-sqlite2"/>
+    <glob pattern="*.sqlite2" weight="100"/>
+    <icon name="application-x-sqlite"/>
+    <magic>
+      <match offset="0" type="string" value="** This file contains an SQLite"/>
+    </magic>
+  </mime-type>
   <mime-type type="application/vnd.sqlite3">
     <comment>SQLite3 Database</comment>
-    <alias type="application/vnd.sqlite2"/>
+    <alias type="application/sql"/>
+    <alias type="application/sql3"/>
     <alias type="application/x-sqlite"/>
-    <alias type="application/x-sqlite2"/>
     <alias type="application/x-sqlite3"/>
-    <icon name="text/x-sql"/>
-    <glob pattern="*.sql3"/>
-    <glob pattern="*.sqlite2"/>
-    <glob pattern="*.sqlite3"/>
+    <glob pattern="*.sqlite" weight="100"/>
+    <glob pattern="*.sqlite3" weight="100"/>
+    <icon name="application-x-sqlite"/>
     <magic>
-      <match value="** This file contains an SQLite" type="string" offset="0"/>
-      <match value="SQLite format 3" type="string" offset="0"/>
+      <match offset="0" type="string" value="SQLite format 3"/>
     </magic>
   </mime-type>
   <mime-type type="application/vnd.sun.xml.base">
@@ -663,6 +913,16 @@
     <comment>OpenOffice.org 1.0 Text Document Template</comment>
     <glob pattern="*.stw"/>
   </mime-type>
+
+  <!-- APPLICATION/x-* -->
+
+  <mime-type type="application/x-amiga-disk-format">
+    <comment>Amiga Disk Image</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="DOS\x00"/>
+    </magic>
+    <glob pattern="*.adf"/>
+  </mime-type>
   <mime-type type="application/x-archive">
     <comment>AR Archive</comment>
     <icon name="application-x-archive"/>
@@ -707,17 +967,57 @@
     <glob pattern="*.mawk" weight="95"/>
     <glob pattern="*.nawk" weight="95"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/awk -f"/>
-      <match offset="0" type="string" value="#!/usr/bin/bwk -f"/>
-      <match offset="0" type="string" value="#!/usr/bin/gawk -f"/>
-      <match offset="0" type="string" value="#!/usr/bin/jawk -f"/>
-      <match offset="0" type="string" value="#!/usr/bin/mawk -f"/>
-      <match offset="0" type="string" value="#!/usr/bin/nawk -f"/>
+      <match offset="0" type="string" value="#! /bin/awk"/>
+      <match offset="0" type="string" value="#! /bin/bwk"/>
+      <match offset="0" type="string" value="#! /bin/gawk"/>
+      <match offset="0" type="string" value="#! /bin/jawk"/>
+      <match offset="0" type="string" value="#! /bin/mawk"/>
+      <match offset="0" type="string" value="#! /bin/nawk"/>
+      <match offset="0" type="string" value="#! /usr/bin/awk"/>
+      <match offset="0" type="string" value="#! /usr/bin/bwk"/>
+      <match offset="0" type="string" value="#! /usr/bin/gawk"/>
+      <match offset="0" type="string" value="#! /usr/bin/jawk"/>
+      <match offset="0" type="string" value="#! /usr/bin/mawk"/>
+      <match offset="0" type="string" value="#! /usr/bin/nawk"/>
+      <match offset="0" type="string" value="#!/bin/awk"/>
+      <match offset="0" type="string" value="#!/bin/bwk"/>
+      <match offset="0" type="string" value="#!/bin/gawk"/>
+      <match offset="0" type="string" value="#!/bin/jawk"/>
+      <match offset="0" type="string" value="#!/bin/mawk"/>
+      <match offset="0" type="string" value="#!/bin/nawk"/>
+      <match offset="0" type="string" value="#!/usr/bin/awk"/>
+      <match offset="0" type="string" value="#!/usr/bin/bwk"/>
+      <match offset="0" type="string" value="#!/usr/bin/gawk"/>
+      <match offset="0" type="string" value="#!/usr/bin/jawk"/>
+      <match offset="0" type="string" value="#!/usr/bin/mawk"/>
+      <match offset="0" type="string" value="#!/usr/bin/nawk"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="application/x-shellscript"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+
+  <mime-type type="application/x-awk">
+    <comment>AWK Script</comment>
+    <sub-class-of type="application/x-executable"/>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-script"/>
+    <magic priority="50">
+      <match value="#!/bin/gawk" type="string" offset="0"/>
+      <match value="#! /bin/gawk" type="string" offset="0"/>
+      <match value="#!/usr/bin/gawk" type="string" offset="0"/>
+      <match value="#! /usr/bin/gawk" type="string" offset="0"/>
+      <match value="#!/usr/local/bin/gawk" type="string" offset="0"/>
+      <match value="#! /usr/local/bin/gawk" type="string" offset="0"/>
+      <match value="#!/bin/awk" type="string" offset="0"/>
+      <match value="#! /bin/awk" type="string" offset="0"/>
+      <match value="#!/usr/bin/awk" type="string" offset="0"/>
+      <match value="#! /usr/bin/awk" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.awk"/>
+  </mime-type>
+
+
   <mime-type type="application/x-brasero">
     <comment>Brasero Project File</comment>
     <icon name="application-x-brasero"/>
@@ -725,6 +1025,12 @@
       <match value="braseroproject" type="string" offset="0:50"/>
     </magic>
     <sub-class-of type="application/xml"/>
+  </mime-type>
+  <mime-type type="application/x-castle-anim-frames">
+    <sub-class-of type="text/xml"/>
+    <comment>Castle Game Engine Animation</comment>
+    <glob pattern="*.kanim"/>
+    <glob pattern="*.castle-anim-frames"/>
   </mime-type>
   <mime-type type="application/x-cmakecache">
     <comment>CMake Cache File</comment>
@@ -746,17 +1052,161 @@
     <glob pattern="*.dbp"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/x-doom-wad">
+    <comment>Doom WAD</comment>
+    <acronym>WAD</acronym>
+    <expanded-acronym>Where is All the Data</expanded-acronym>
+    <generic-icon name="package-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="IWAD"/>
+      <match offset="0" type="string" value="PWAD"/>
+    </magic>
+    <glob pattern="*.wad" weight="80"/>
+  </mime-type>
+  <mime-type type="application/x-fds-disk">
+    <comment>Nintendo FDS Disk Image</comment>
+    <acronym>FDS</acronym>
+    <expanded-acronym>Famicom Disk System</expanded-acronym>
+    <glob pattern="*.fds"/>
+    <magic>
+      <match offset="1" type="string" value="*NINTENDO-HVC*"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-afm">
+    <comment>Adobe Font Metrics</comment>
+    <generic-icon name="font-x-generic"/>
+    <glob pattern="*.afm"/>
+  </mime-type>
+  <mime-type type="application/x-font-bdf">
+    <comment>BDF Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="STARTFONT\040"/>
+    </magic>
+    <glob pattern="*.bdf"/>
+  </mime-type>
+  <mime-type type="application/x-font-dos">
+    <comment>DOS Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\xff\x46\x4f\x4e"/>
+      <match offset="7" type="string" value="\x00\x45\x47\x41"/>
+      <match offset="7" type="string" value="\x00\x56\x49\x44"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-framemaker">
+    <comment>Adobe FrameMaker Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="&lt;MakerScreenFont"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-libgrx">
+    <comment>LIBGRX Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\x14\x02\x59\x19"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-linux-psf">
+    <comment>Linux PSF console Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\x36\x04"/>
+    </magic>
+    <glob pattern="*.psf"/>
+  </mime-type>
+  <mime-type type="application/x-font-pcf">
+    <comment>PCF Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\001fcp"/>
+    </magic>
+    <glob pattern="*.pcf"/>
+    <glob pattern="*.pcf.Z"/>
+    <glob pattern="*.pcf.gz"/>
+  </mime-type>
+  <mime-type type="application/x-font-speedo">
+    <comment>Speedo Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="D1.0\015"/>
+    </magic>
+    <glob pattern="*.spd"/>
+  </mime-type>
+  <mime-type type="application/x-font-sunos-news">
+    <comment>SunOS News Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="StartFont"/>
+      <match offset="0" type="string" value="\x13\x7A\x29"/>
+      <match offset="8" type="string" value="\x13\x7A\x2B"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-tex">
+    <comment>TeX Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\367\203"/>
+      <match offset="0" type="string" value="\367\131"/>
+      <match offset="0" type="string" value="\367\312"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-font-type1">
+    <comment>PostScript Type-1 Font</comment>
+    <sub-class-of type="application/postscript"/>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="LWFN"/>
+      <match offset="65" type="string" value="LWFN"/>
+      <match offset="0" type="string" value="%!PS-AdobeFont-1."/>
+      <match offset="6" type="string" value="%!PS-AdobeFont-1."/>
+      <match offset="0" type="string" value="%!FontType1-1."/>
+      <match offset="6" type="string" value="%!FontType1-1."/>
+    </magic>
+    <glob pattern="*.gsf"/>
+    <glob pattern="*.pfa"/>
+    <glob pattern="*.pfb"/>
+  </mime-type>
+  <mime-type type="application/x-geo">
+    <sub-class-of type="text/plain"/>
+    <comment>Videoscape GEO Model</comment>
+    <glob pattern="*.geo"/>
+  </mime-type>
   <mime-type type="application/x-glade">
     <comment>Glade Project</comment>
     <icon name="application-x-glade"/>
     <glob pattern="*.glade" weight="95"/>
     <sub-class-of type="application/xml"/>
   </mime-type>
+  <mime-type type="application/x-gz-font-linux-psf">
+    <comment>Linux PSF Console font (Gzip-Compressed)</comment>
+    <sub-class-of type="application/gzip"/>
+    <generic-icon name="font-x-generic"/>
+    <glob pattern="*.psf.gz"/>
+  </mime-type>
+  <mime-type type="application/x-inventor">
+    <sub-class-of type="text/plain"/>
+    <comment>Inventor Model</comment>
+    <glob pattern="*.iv"/>
+  </mime-type>
   <mime-type type="application/x-ipynb+json">
     <comment>Jupyter Notebook</comment>
     <generic-icon name="x-office-document"/>
     <glob pattern="*.ipynb"/>
     <sub-class-of type="application/json"/>
+  </mime-type>
+  <mime-type type="application/x-kexiproject-sqlite2">
+    <comment>Kexi Database File-Based Project</comment>
+    <glob pattern="*.kexi"/>
+    <sub-class-of type="application/x-sqlite2"/>
+  </mime-type>
+  <mime-type type="application/x-kexiproject-sqlite3">
+    <comment>Kexi Database File-Based Project</comment>
+    <alias type="application/x-kexiproject-sqlite"/>
+    <alias type="application/x-vnd.kde.kexi"/>
+    <glob pattern="*.kexi"/>
+    <sub-class-of type="application/x-sqlite3"/>
   </mime-type>
   <mime-type type="application/x-linux">
     <comment>Linux Kernel</comment>
@@ -772,11 +1222,42 @@
   <mime-type type="application/x-macbinary">
     <comment>Macintosh MacBinary File</comment>
     <icon name="application-x-macbinary"/>
+    <magic priority="50">
+      <match offset="102" type="string" value="mBIN"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-md3">
+    <comment>MD3 (Quake 3 Engine) Model</comment>
+    <glob pattern="*.md3"/>
   </mime-type>
   <mime-type type="application/x-meld-comparison">
     <comment>Meld Comparison Description</comment>
     <glob pattern="*.meldcmp"/>
     <icon name="meld"/>
+  </mime-type>
+  <mime-type type="application/x-mimearchive">
+    <comment>MHTML Web Archive</comment>
+    <acronym>MHTML</acronym>
+    <expanded-acronym>MIME HTML</expanded-acronym>
+    <glob pattern="*.mhtml"/>
+    <glob pattern="*.mht"/>
+    <sub-class-of type="multipart/related"/>
+  </mime-type>
+  <mime-type type="application/x-ms-shortcut">
+    <glob pattern="*.lnk"/>
+    <comment>Shortcut</comment>
+  </mime-type>
+  <mime-type type="application/x-ms-dos-executable">
+    <comment>DOS/Windows Executable</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="MZ"/>
+    </magic>
+    <glob pattern="*.exe"/>
+  </mime-type>
+  <mime-type type="application/x-msdownload">
+    <glob pattern="*.dll"/>
+    <comment>Dynamic Loadable Library</comment>
   </mime-type>
   <mime-type type="application/x-msi">
     <comment>Windows Installer Package</comment>
@@ -790,6 +1271,22 @@
     <glob pattern="*.n64" weight="80"/>
     <glob pattern="*.v64" weight="80"/>
     <glob pattern="*.z64" weight="80"/>
+    <magic>
+      <match offset="0" type="big32" value="0x80371240"/>
+      <match offset="0" type="big32" value="0x37804012"/>
+      <match offset="0" type="big32" value="0x40123780"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-neo-geo-pocket-rom">
+    <comment>Neo-Geo Pocket ROM</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.ngp"/>
+    <magic>
+      <match offset="35" type="byte" value="0x0">
+        <match offset="0" type="string" value="COPYRIGHT BY SNK CORPORATION"/>
+        <match offset="0" type="string" value=" LICENSED BY SNK CORPORATION"/>
+      </match>
+    </magic>
   </mime-type>
   <mime-type type="application/x-nes-rom">
     <comment>NES ROM</comment>
@@ -822,7 +1319,8 @@
     </magic>
   </mime-type>
   <mime-type type="application/x-perl">
-    <comment>Perl script</comment>
+    <comment>Perl Script</comment>
+    <alias type="text/x-perl"/>
     <icon name="text-x-perl"/>
     <glob pattern="*.pl"/>
     <glob pattern="*.PL"/>
@@ -832,15 +1330,27 @@
     <glob pattern="*.pod"/>
     <glob pattern="*.t" weight="10"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/env perl"/>
-      <match offset="0" type="string" value="“#!/usr/bin/perl"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/perl"/>
+      <match offset="0" type="string" value='eval \"exec /usr/local/bin/perl'/>
+      <match offset="2:16" type="string" value="/bin/env perl"/>
+      <match offset="2:16" type="string" value="/bin/perl"/>
+    </magic>
+    <magic priority="50">
+      <match offset="0:256" type="string" value="BEGIN {"/>
+      <match offset="0:256" type="string" value="use diagnostics"/>
+      <match offset="0:256" type="string" value="use strict"/>
+      <match offset="0:256" type="string" value="use Test::"/>
+      <match offset="0:256" type="string" value="use warnings"/>
+    </magic>
+    <magic priority="40">
+      <match offset="0:256" type="string" value="\n=pod"/>
+      <match offset="0:256" type="string" value="\n=head1 NAME"/>
+      <match offset="0:256" type="string" value="\n=head1 DESCRIPTION"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-php">
-    <comment>PHP script</comment>
+    <comment>PHP Script</comment>
     <icon name="application-x-php"/>
     <glob pattern="*.php"/>
     <glob pattern="*.php3"/>
@@ -848,13 +1358,19 @@
     <glob pattern="*.php5"/>
     <glob pattern="*.php6"/>
     <glob pattern="*.php7"/>
+    <glob pattern="*.php8"/>
+    <glob pattern="*.php9"/>
     <glob pattern="*.phps"/>
+    <magic priority="80">
+      <match value="&lt;?php" type="string" offset="0:64"/>
+    </magic>
     <sub-class-of type="text/plain"/>
     <sub-class-of type="application/x-httpd-php"/>
   </mime-type>
   <mime-type type="application/x-pkcs12">
     <comment>PKCS#12 Personal Key and Certificates</comment>
     <acronym>PKCS#12</acronym>
+    <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
     <glob weight="75" pattern="*.p12"/>
     <glob pattern="*.pfx"/>
     <alias type="application/pkcs12"/>
@@ -872,6 +1388,9 @@
     <icon name="application-x-python-bytecode"/>
     <glob pattern="*.pyc" weight="95"/>
     <glob pattern="*.pyo" weight="95"/>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x994e0d0a"/>
+    </magic>
   </mime-type>
   <mime-type type="application/x-quattropro">
     <comment>Quattro Pro Spreadsheet</comment>
@@ -949,7 +1468,7 @@
     <comment>Scilab test</comment>
     <glob pattern="*.tst"/>
   </mime-type>
-    <mime-type type="application/x-scilab-xcos">
+  <mime-type type="application/x-scilab-xcos">
     <sub-class-of type="text/xml"/>
     <comment>Scilab/Xcos Schema</comment>
     <glob pattern="*.xcos"/>
@@ -1066,6 +1585,11 @@
     <comment>Remote Desktop (VNC) file</comment>
     <glob pattern="*.vnc"/>
   </mime-type>
+  <mime-type type="application/x-wavefront-obj">
+    <sub-class-of type="text/plain"/>
+    <comment>Wavefront OBJ Model</comment>
+    <glob pattern="*.obj"/>
+  </mime-type>
   <mime-type type="application/x-wii-rom">
     <alias type="application/x-wbfs"/>
     <alias type="application/x-wia"/>
@@ -1085,56 +1609,24 @@
     <glob pattern="*.themepack"/>
     <sub-class-of type="application/vnd.ms-cab-compressed"/>
   </mime-type>
+  <mime-type type="application/x-wine-extension-cpl">
+    <glob pattern="*.cpl"/>
+    <comment>Control Panel Item</comment>
+  </mime-type>
+  <mime-type type="application/x-wine-extension-inf">
+    <glob pattern="*.inf"/>
+    <comment>Setup Information</comment>
+  </mime-type>
+  <mime-type type="application/x-wine-extension-its">
+    <glob pattern="*.its"/>
+    <comment>Internet Document Set</comment>
+  </mime-type>
   <mime-type type="application/x-wwf">
     <comment>WWF Document</comment>
     <icon name="x-office-document"/>
     <glob pattern="*.wwf"/>
     <sub-class-of type="application/pdf"/>
     <alias type="application/wwf"/>
-  </mime-type>
-  <mime-type type="application/xml">
-    <alias type="text/xml"/>
-    <acronym>XML</acronym>
-    <comment>XML Document</comment>
-    <expanded-acronym>eXtensible Markup Language</expanded-acronym>
-    <icon name="text-xml"/>
-    <glob pattern="*.rng"/>
-    <glob pattern="*.xbl"/>
-    <glob pattern="*.xml"/>
-    <glob pattern="*.xsd"/>
-    <sub-class-of type="text/plain"/>
-  </mime-type>
-  <mime-type type="application/xml-dtd">
-    <acronym>DTD</acronym>
-    <alias type="text/x-dtd"/>
-    <comment>DTD File</comment>
-    <expanded-acronym>Document Type Definition</expanded-acronym>
-    <icon name="text-xml"/>
-    <glob pattern="*.dtd"/>
-    <sub-class-of type="text/plain"/>
-  </mime-type>
-  <mime-type type="application/xslt+xml">
-    <acronym>XSLT</acronym>
-    <comment>XSLT Stylesheet</comment>
-    <expanded-acronym>eXtensible Stylesheet Language Transformation</expanded-acronym>
-    <icon name="text-xml"/>
-    <glob pattern="*.xsl"/>
-    <glob pattern="*.xslt"/>
-    <sub-class-of type="application/xml"/>
-  </mime-type>
-  <mime-type type="application/xspf+xml">
-    <comment>XSPF Playlist</comment>
-    <acronym>XSPF</acronym>
-    <expanded-acronym>XML Shareable Playlist Format</expanded-acronym>
-    <alias type="application/x-xspf+xml"/>
-    <generic-icon name="audio-x-generic"/>
-    <glob pattern="*.xspf"/>
-    <magic priority="50">
-      <match value="&lt;playlist version=&quot;1" type="string" offset="0:64"/>
-      <match value="&lt;playlist version='1" type="string" offset="0:64"/>
-    </magic>
-    <root-XML namespaceURI="http://xspf.org/ns/0/" localName="playlist"/>
-    <sub-class-of type="application/xml"/>
   </mime-type>
   <mime-type type="application/x-yaml">
     <acronym>YAML</acronym>
@@ -1150,6 +1642,30 @@
     <alias type="text/x-yaml"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+
+  <!-- AUDIO/* -->
+
+  <mime-type type="audio/webm">
+    <comment>WebM Audio</comment>
+    <sub-class-of type="video/webm"/>
+  </mime-type>
+
+  <!-- AUDIO/vnd.* -->
+
+  <mime-type type="audio/vnd.dts">
+    <comment>DTS Audio</comment>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x7FFE8001"/>
+      <match offset="0" type="little32" value="0xFE7F0180"/>
+      <match offset="0" type="big32" value="0x1FFFE800"/>
+      <match offset="0" type="little32" value="0xFF1F00E8"/>
+    </magic>
+    <alias type="audio/x-dts"/>
+    <glob pattern="*.dts"/>
+  </mime-type>
+
+  <!-- AUDIO/x-* -->
+
   <mime-type type="audio/x-amzxml">
     <comment>AmazonMP3 Download File</comment>
     <glob pattern="*.amz"/>
@@ -1167,6 +1683,353 @@
       <match value="iriver UMS PLA" type="string" offset="4"/>
     </magic>
   </mime-type>
+  <mime-type type="audio/x-musepack">
+    <comment>Musepack Audio</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="MP+"/>
+    </magic>
+    <glob pattern="*.mpc"/>
+    <glob pattern="*.mpp"/>
+    <glob pattern="*.mp+"/>
+  </mime-type>
+
+  <!-- FONT/* -->
+
+  <mime-type type="font/collection">
+    <comment>Font Collection</comment>
+    <generic-icon name="font-x-generic"/>
+    <glob pattern="*.ttc"/>
+  </mime-type>
+  <mime-type type="font/otf">
+    <comment>OpenType Font</comment>
+    <sub-class-of type="font/ttf"/>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="OTTO"/>
+    </magic>
+    <glob pattern="*.otf"/>
+    <alias type="application/x-font-otf"/>
+  </mime-type>
+  <mime-type type="font/ttf">
+    <comment>TrueType Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="FFIL"/>
+      <match offset="65" type="string" value="FFIL"/>
+      <match offset="0" type="string" value="\000\001\000\000\000"/>
+    </magic>
+    <glob pattern="*.ttf"/>
+    <alias type="application/x-font-ttf"/>
+  </mime-type>
+  <mime-type type="font/woff">
+    <comment>WOFF Font</comment>
+    <acronym>WOFF</acronym>
+    <expanded-acronym>Web Open Font Format</expanded-acronym>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x774f4646"/>
+    </magic>
+    <glob pattern="*.woff"/>
+    <alias type="application/font-woff"/>
+  </mime-type>
+  <mime-type type="font/woff2">
+    <comment>WOFF2 Font</comment>
+    <acronym>WOFF2</acronym>
+    <expanded-acronym>Web Open Font Format 2.0</expanded-acronym>
+    <generic-icon name="font-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x774f4632"/>
+    </magic>
+    <glob pattern="*.woff2"/>
+  </mime-type>
+
+  <!-- IMAGE/* -->
+
+  <mime-type type="image/png">
+    <comment>PNG Image</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="\x89PNG"/>
+    </magic>
+    <glob pattern="*.png"/>
+  </mime-type>
+  <mime-type type="image/rle">
+    <comment>Run Length Encoded Bitmap Image</comment>
+    <glob pattern="*.rle"/>
+  </mime-type>
+  <mime-type type="image/svg+xml">
+    <comment>SVG Image</comment>
+    <acronym>SVG</acronym>
+    <expanded-acronym>Scalable Vector Graphics</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <magic priority="80">
+      <match offset="0:256" type="string" value="&lt;!DOCTYPE svg" />
+      <match offset="0:256" type="string" value="&lt;svg"/>
+    </magic>
+    <glob pattern="*.svg"/>
+    <root-XML localName="svg" namespaceURI="http://www.w3.org/2000/svg"/>
+  </mime-type>
+  <mime-type type="image/svg+xml-compressed">
+    <comment>Compressed SVG Image</comment>
+    <acronym>SVG</acronym>
+    <expanded-acronym>Scalable Vector Graphics</expanded-acronym>
+    <sub-class-of type="application/gzip"/>
+    <glob pattern="*.svgz"/>
+  </mime-type>
+  <mime-type type="image/tiff">
+    <comment>TIFF Image</comment>
+    <acronym>TIFF</acronym>
+    <expanded-acronym>Tagged Image File Format</expanded-acronym>
+    <magic priority="50">
+      <match offset="0" type="string" value="MM\x00\x2a"/>
+      <match offset="0" type="string" value="II\x2a\x00"/>
+    </magic>
+    <glob pattern="*.tif"/>
+    <glob pattern="*.tiff"/>
+  </mime-type>
+  <mime-type type="image/webp">
+    <comment>WebP Image</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="RIFF">
+        <match offset="8" type="string" value="WEBP"/>
+      </match>
+    </magic>
+    <glob pattern="*.webp"/>
+  </mime-type>
+
+  <!-- IMAGE/vnd.* -->
+
+  <mime-type type="image/vnd.djvu">
+    <comment>DjVu Image</comment>
+    <alias type="image/x-djvu"/>
+    <alias type="image/x.djvu"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="AT&amp;TFORM">
+        <match offset="12" type="string" value="DJVU"/>
+      </match>
+      <match offset="0" type="string" value="FORM">
+        <match offset="8" type="string" value="DJVU"/>
+      </match>
+    </magic>
+    <glob pattern="*.djvu"/>
+    <glob pattern="*.djv"/>
+  </mime-type>
+  <mime-type type="image/vnd.djvu+multipage">
+    <comment>DjVu Document</comment>
+    <generic-icon name="x-office-document"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="AT&amp;TFORM">
+        <match offset="12" type="string" value="DJVM"/>
+      </match>
+      <match offset="0" type="string" value="FORM">
+        <match offset="8" type="string" value="DJVM"/>
+      </match>
+    </magic>
+    <sub-class-of type="image/vnd.djvu"/>
+    <glob pattern="*.djvu"/>
+    <glob pattern="*.djv"/>
+  </mime-type>
+  <mime-type type="image/vnd.dwg">
+    <comment>AutoCAD Image</comment>
+    <glob pattern="*.dwg"/>
+  </mime-type>
+  <mime-type type="image/vnd.dxf">
+    <comment>DXF Vector Image</comment>
+    <glob pattern="*.dxf"/>
+    <magic priority="50">
+      <match offset="0:64" type="string" value="\nHEADER\n"/>
+      <match offset="0:64" type="string" value="\x0d\nHEADER\x0d\n"/>
+    </magic>
+  </mime-type>
+  <mime-type type="image/vnd.ms-modi">
+    <comment>Microsoft Document Imaging Format</comment>
+    <acronym>MDI</acronym>
+    <expanded-acronym>Microsoft Document Imaging</expanded-acronym>
+    <glob pattern="*.mdi"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\x45\x50\x2A\x00"/>
+    </magic>
+  </mime-type>
+  <mime-type type="image/vnd.rn-realpix">
+    <comment>RealPix Document</comment>
+    <glob pattern="*.rp"/>
+  </mime-type>
+
+  <!-- IMAGE/x-* -->
+
+  <mime-type type="image/x-3ds">
+    <comment>3DS Model</comment>
+    <glob pattern="*.3ds"/>
+  </mime-type>
+  <mime-type type="image/x-applix-graphics">
+    <comment>Applix Graphics Image</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="*BEGIN">
+        <match offset="7" type="string" value="GRAPHICS"/>
+      </match>
+    </magic>
+    <glob pattern="*.ag"/>
+  </mime-type>
+  <mime-type type="image/x-bzeps">
+    <comment>EPS Image (Bzip-Compressed)</comment>
+    <sub-class-of type="application/x-bzip"/>
+    <glob pattern="*.eps.bz2"/>
+    <glob pattern="*.epsi.bz2"/>
+    <glob pattern="*.epsf.bz2"/>
+  </mime-type>
+  <mime-type type="image/x-canon-cr2">
+    <comment>Canon CR2 Raw Image</comment>
+    <acronym>CR2</acronym>
+    <expanded-acronym>Canon Raw 2</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.cr2"/>
+  </mime-type>
+  <mime-type type="image/x-cmu-raster">
+    <comment>CMU Raster Image</comment>
+    <glob pattern="*.ras"/>
+  </mime-type>
+  <mime-type type="image/x-compressed-xcf">
+    <comment>Compressed GIMP Image</comment>
+    <glob pattern="*.xcf.gz"/>
+    <glob pattern="*.xcf.bz2"/>
+  </mime-type>
+  <mime-type type="image/x-fuji-raf">
+    <comment>Fuji RAF Raw Image</comment>
+    <acronym>RAF</acronym>
+    <expanded-acronym>RAw Format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="FUJIFILMCCD-RAW "/>
+    </magic>
+    <glob pattern="*.raf"/>
+  </mime-type>
+  <mime-type type="image/x-kodak-dcr">
+    <comment>Kodak DCR Raw Image</comment>
+    <acronym>DCR</acronym>
+    <expanded-acronym>Digital Camera Raw</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.dcr"/>
+  </mime-type>
+  <mime-type type="image/x-kodak-k25">
+    <comment>Kodak K25 Raw Image</comment>
+    <acronym>K25</acronym>
+    <expanded-acronym>Kodak DC25</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.k25"/>
+  </mime-type>
+  <mime-type type="image/x-kodak-kdc">
+    <comment>Kodak KDC Raw Image</comment>
+    <acronym>KDC</acronym>
+    <expanded-acronym>Kodak Digital Camera</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <magic priority="80">
+      <match offset="242" type="string" value="EASTMAN KODAK COMPANY" />
+    </magic>
+    <glob pattern="*.kdc"/>
+  </mime-type>
+  <mime-type type="image/x-luxrender-film">
+    <comment>LuxRender Film</comment>
+    <glob pattern="*.flm"/>
+  </mime-type>
+  <mime-type type="image/x-minolta-mrw">
+    <comment>Minolta MRW Raw Image</comment>
+    <acronym>MRW</acronym>
+    <expanded-acronym>Minolta RaW</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\x00MRM"/>
+    </magic>
+    <glob pattern="*.mrw"/>
+  </mime-type>
+  <mime-type type="image/x-nikon-nef">
+    <comment>Nikon NEF Raw Image</comment>
+    <acronym>NEF</acronym>
+    <expanded-acronym>Nikon Electronic Format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.nef"/>
+  </mime-type>
+  <mime-type type="image/x-olympus-orf">
+    <comment>Olympus ORF Raw Image</comment>
+    <acronym>ORF</acronym>
+    <expanded-acronym>Olympus Raw Format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="IIRO\x08\x00\x00\x00"/>
+    </magic>
+    <glob pattern="*.orf"/>
+  </mime-type>
+  <mime-type type="image/x-panasonic-rw">
+    <comment>Panasonic Raw Image</comment>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="IIU\x00\x08\x00\x00\x00"/>
+    </magic>
+    <glob pattern="*.raw"/>
+    <alias type="image/x-panasonic-raw"/>
+  </mime-type>
+  <mime-type type="image/x-panasonic-rw2">
+    <comment>Panasonic Raw2 Image</comment>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="IIU\x00\x18\x00\x00\x00"/>
+    </magic>
+    <glob pattern="*.rw2"/>
+    <alias type="image/x-panasonic-raw2"/>
+  </mime-type>
+  <mime-type type="image/x-pentax-pef">
+    <comment>Pentax PEF Raw Image</comment>
+    <acronym>PEF</acronym>
+    <expanded-acronym>Pentax Electronic Format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.pef"/>
+  </mime-type>
+  <mime-type type="image/x-sigma-x3f">
+    <comment>Sigma X3F Raw Image</comment>
+    <acronym>X3F</acronym>
+    <expanded-acronym>X3 Foveon</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="FOVb">
+        <match mask="0xFF00FF00" offset="4" type="little32" value="0x00FF00FF"/>
+      </match>
+    </magic>
+    <glob pattern="*.x3f"/>
+  </mime-type>
+  <mime-type type="image/x-sony-srf">
+    <comment>Sony SRF Raw Image</comment>
+    <acronym>SRF</acronym>
+    <expanded-acronym>Sony Raw Format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.srf"/>
+  </mime-type>
+  <mime-type type="image/x-sony-sr2">
+    <comment>Sony SR2 Raw Image</comment>
+    <acronym>SR2</acronym>
+    <expanded-acronym>Sony Raw Format 2</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.sr2"/>
+  </mime-type>
+  <mime-type type="image/x-sony-arw">
+    <comment>Sony ARW Raw Image</comment>
+    <acronym>ARW</acronym>
+    <expanded-acronym>Alpha Raw format</expanded-acronym>
+    <sub-class-of type="image/x-dcraw"/>
+    <sub-class-of type="image/tiff"/>
+    <glob pattern="*.arw"/>
+  </mime-type>
+  <mime-type type="image/x-tiff-multipage">
+    <comment>Multi-page TIFF Image</comment>
+    <acronym>TIFF</acronym>
+    <expanded-acronym>Tagged Image File Format</expanded-acronym>
+    <sub-class-of type="image/tiff"/>
+  </mime-type>
   <mime-type type="image/x-xcursor">
     <comment>X11 Cursor</comment>
     <icon name="image-x-xcursor"/>
@@ -1174,10 +2037,9 @@
       <match offset="0" type="string" value="Xcur"/>
     </magic>
   </mime-type>
-  <mime-type type="image/x-luxrender-film">
-    <comment>LuxRender Film</comment>
-    <glob pattern="*.flm"/>
-  </mime-type>
+
+  <!-- INODE/* -->
+
   <mime-type type="inode/blockdevice">
     <comment>Block Device</comment>
     <icon name="block-device"/>
@@ -1204,6 +2066,168 @@
   <mime-type type="inode/symlink">
     <comment>Symbolic Link</comment>
   </mime-type>
+
+  <!-- MESSAGE/* -->
+
+  <mime-type type="message/delivery-status">
+    <comment>Mail Delivery Report</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="message/disposition-notification">
+    <comment>Mail Disposition Report</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="message/external-body">
+    <comment>Reference to Remote File</comment>
+    <generic-icon name="text-x-generic"/>
+  </mime-type>
+  <mime-type type="message/news">
+    <comment>Usenet News Message</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match value="Article" type="string" offset="0"/>
+      <match value="Path:" type="string" offset="0"/>
+      <match value="Xref:" type="string" offset="0"/>
+    </magic>
+  </mime-type>
+  <mime-type type="message/partial">
+    <comment>partial Email Message</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="message/rfc822">
+    <comment>Email Message</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match value="#! rnews" type="string" offset="0"/>
+      <match value="Forward to" type="string" offset="0"/>
+      <match value="From:" type="string" offset="0"/>
+      <match value="N#! rnews" type="string" offset="0"/>
+      <match value="Pipe to" type="string" offset="0"/>
+      <match value="Received:" type="string" offset="0"/>
+      <match value="Relay-Version:" type="string" offset="0"/>
+      <match value="Return-Path:" type="string" offset="0"/>
+      <match value="Return-path:" type="string" offset="0"/>
+      <match value="Subject: " type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.eml"/>
+  </mime-type>
+
+  <!-- MESSAGE/x-* -->
+
+  <mime-type type="message/x-gnu-rmail">
+    <comment>GNU Mail Message</comment>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="RMAIL"/>
+  </mime-type>
+
+  <!-- MODEL/* -->
+
+  <mime-type type="model/iges">
+    <comment>IGES Document</comment>
+    <acronym>IGES</acronym>
+    <expanded-acronym>Initial Graphics Exchange Specification</expanded-acronym>
+    <generic-icon name="x-office-document"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="72" type="string" value="S      1\x0a"/>
+      <match offset="72" type="string" value="S0000001\x0a"/>
+    </magic>
+    <glob pattern="*.igs"/>
+    <glob pattern="*.iges"/>
+  </mime-type>
+  <mime-type type="model/stl">
+    <comment>STL 3D Model</comment>
+    <acronym>STL</acronym>
+    <expanded-acronym>StereoLithography</expanded-acronym>
+    <magic priority="50">
+      <match value="solid" type="string" offset="0"/>
+      <match value="SOLID" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.stl"/>
+    <alias type="model/x.stl-ascii"/>
+    <alias type="model/x.stl-binary"/>
+  </mime-type>
+  <mime-type type="model/vrml">
+    <comment>VRML Document</comment>
+    <acronym>VRML</acronym>
+    <expanded-acronym>Virtual Reality Modeling Language</expanded-acronym>
+    <generic-icon name="x-office-document"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="#VRML "/>
+    </magic>
+    <glob pattern="*.vrm"/>
+    <glob pattern="*.vrml"/>
+    <glob pattern="*.wrl"/>
+  </mime-type>
+  <mime-type type="model/x3d+binary">
+    <comment>X3D Model (Binary Compressed)</comment>
+    <glob pattern="*.x3db"/>
+    <glob pattern="*.x3db.gz"/>
+  </mime-type>
+  <mime-type type="model/x3d+vrml">
+    <sub-class-of type="text/plain"/>
+    <comment>X3D Model (Classic VRML Encoding)</comment>
+    <glob pattern="*.x3dv"/>
+    <glob pattern="*.x3dv.gz"/>
+    <glob pattern="*.x3dvz"/>
+  </mime-type>
+  <mime-type type="model/x3d+xml">
+    <sub-class-of type="text/xml"/>
+    <comment>X3D Model (XML Encoding)</comment>
+    <glob pattern="*.x3d"/>
+    <glob pattern="*.x3d.gz"/>
+    <glob pattern="*.x3dz"/>
+  </mime-type>
+
+  <!-- MODEL/vnd.* -->
+
+  <mime-type type="model/vnd.collada+xml">
+    <sub-class-of type="text/xml"/>
+    <comment>COLLADA Model</comment>
+    <glob pattern="*.dae"/>
+  </mime-type>
+
+  <!-- MULTIPART/* -->
+
+  <mime-type type="multipart/alternative">
+    <comment>Message in Several Formats</comment>
+  </mime-type>
+  <mime-type type="multipart/appledouble">
+    <comment>Macintosh AppleDouble-Encoded File</comment>
+  </mime-type>
+  <mime-type type="multipart/digest">
+    <comment>Message Digest</comment>
+  </mime-type>
+  <mime-type type="multipart/encrypted">
+    <comment>Encrypted Message</comment>
+  </mime-type>
+  <mime-type type="multipart/mixed">
+    <comment>Compound Documents</comment>
+  </mime-type>
+  <mime-type type="multipart/related">
+    <comment>Compound Document</comment>
+  </mime-type>
+  <mime-type type="multipart/report">
+    <comment>Mail System Report</comment>
+  </mime-type>
+  <mime-type type="multipart/signed">
+    <comment>Signed Message</comment>
+  </mime-type>
+
+  <!-- MULTIPART/x-* -->
+
+  <mime-type type="multipart/x-mixed-replace">
+    <comment>Stream of Data (Server Push)</comment>
+  </mime-type>
+
+  <!-- TEXT/* -->
+
   <mime-type type="text/css">
     <acronym>CSS</acronym>
     <comment>CSS stylesheet</comment>
@@ -1231,6 +2255,51 @@
     <glob pattern="*.csvs"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/sql">
+    <comment>SQL Query Code</comment>
+    <alias type="text/sql2"/>
+    <alias type="text/sql3"/>
+    <alias type="text/x-sql"/>
+    <alias type="text/x-sql2"/>
+    <alias type="text/x-sql3"/>
+    <icon name="text-x-sql"/>
+    <glob pattern="*.sql" weight="80"/>
+    <glob pattern="*.sql2" weight="90"/>
+    <glob pattern="*.sql3" weight="90"/>
+    <sub-class-of type="text/plain"/>
+    <magic>
+      <match value="-- SQLite format 2" type="string" offset="0"/>
+      <match value="-- SQLite Format 2" type="string" offset="0"/>
+      <match value="-- SQLite Format 3" type="string" offset="0"/>
+      <match value="-- SQLite format 3" type="string" offset="0"/>
+    </magic>
+  </mime-type>
+  <mime-type type="text/x.gcode">
+    <comment>G-code File</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.gcode"/>
+  </mime-type>
+
+  <!-- TEXT/vnd.* -->
+
+  <mime-type type="text/vnd.qt.linguist">
+    <comment>Message Catalog</comment>
+    <sub-class-of type="application/xml"/>
+    <magic>
+      <match offset="0:256" type="string" value="&lt;TS"/>
+    </magic>
+    <glob pattern="*.ts"/>
+    <alias type="application/x-linguist"/>
+    <alias type="text/vnd.trolltech.linguist"/>
+  </mime-type>
+  <mime-type type="text/vnd.rn-realtext">
+    <comment>RealText Document</comment>
+    <glob pattern="*.rt"/>
+  </mime-type>
+
+  <!-- TEXT/x-* -->
+
   <mime-type type="text/x-adasrc">
     <comment>Ada source code</comment>
     <icon name="text-x-ada"/>
@@ -1313,6 +2382,17 @@
     <glob case-sensitive="true" pattern="*.h"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
+  <mime-type type="text/x-cobol">
+    <comment>COBOL Source File</comment>
+    <acronym>COBOL</acronym>
+    <expanded-acronym>COmmon Business Oriented Language</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.cbl"/>
+    <glob pattern="*.cob"/>
+  </mime-type>
+  <mime-type type="text/x-component">
+    <glob pattern="*.htc"/>
+  </mime-type>
   <mime-type type="text/x-dockerfile">
     <comment>Dockerfile Build File</comment>
     <icon name="text-x-dockerfile"/>
@@ -1385,6 +2465,31 @@
     <glob pattern=".gitmodules"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-iptables">
+    <comment>IPTables Configuration File</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match value="/etc/sysconfig/iptables" type="string" offset="0:256"/>
+      <match value="*filter" type="string" offset="0:256">
+        <match value=":INPUT" type="string" offset="0:256">
+          <match value=":FORWARD" type="string" offset="0:256">
+            <match value=":OUTPUT" type="string" offset="0:256"/>
+          </match>
+        </match>
+      </match>
+      <match value="-A INPUT" type="string" offset="0:256">
+        <match value="-A FORWARD" type="string" offset="0:256">
+          <match value="-A OUTPUT" type="string" offset="0:256"/>
+        </match>
+      </match>
+      <match value="-P INPUT" type="string" offset="0:256">
+        <match value="-P FORWARD" type="string" offset="0:256">
+          <match value="-P OUTPUT" type="string" offset="0:256"/>
+        </match>
+      </match>
+    </magic>
+    <glob pattern="*.iptables"/>
+  </mime-type>
   <mime-type type="text/x-less">
     <comment>Leaner CSS Preprocessor File</comment>
     <icon name="text-x-less"/>
@@ -1436,6 +2541,17 @@
       <match offset="0" type="string" value="#!/usr/local/bin/rake"/>
     </magic>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-ms-regedit">
+    <comment>Windows Registry Extract</comment>
+    <sub-class-of type="text/plain"/>
+    <icon name="text-x-ms-regedit"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="REGEDIT"/>
+      <match offset="0" type="string" value="Windows Registry Editor Version 5.00"/>
+      <match offset="0" type="string" value="\xff\xfeW\x00i\x00n\x00d\x00o\x00w\x00s\x00 \x00R\x00e\x00g\x00i\x00s\x00t\x00r\x00y\x00 \x00E\x00d\x00i\x00t\x00o\x00r\x00"/>
+    </magic>
+    <glob pattern="*.reg"/>
   </mime-type>
   <mime-type type="text/x-nexus">
     <comment>Nexus Bioinformatics Data File</comment>
@@ -1603,11 +2719,198 @@
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-csrc"/>
   </mime-type>
+  <mime-type type="text/x-tcl">
+    <comment>Tcl Script</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.tcl"/>
+    <glob pattern="*.tk"/>
+  </mime-type>
+  <mime-type type="text/x-tex">
+    <comment>TeX Document</comment>
+    <sub-class-of type="text/plain"/>
+    <alias type="application/x-tex"/>
+    <glob pattern="*.cls"/>
+    <glob pattern="*.dtx"/>
+    <glob pattern="*.ins"/>
+    <glob pattern="*.latex"/>
+    <glob pattern="*.ltx"/>
+    <glob pattern="*.sty"/>
+    <glob pattern="*.tex"/>
+    <magic priority="10">
+      <match offset="0" type="string" value="%"/>
+    </magic>
+    <magic priority="50">
+      <match offset="0:100" type="string" value="\\documentclass"/>
+    </magic>
+    <magic priority="50">
+      <match offset="0:100" type="string" value="\\chapter"/>
+    </magic>
+    <magic priority="50">
+      <match offset="0:100" type="string" value="\\section"/>
+    </magic>
+  </mime-type>
+
+  <!-- VIDEO/* -->
+
+  <mime-type type="video/webm">
+    <comment>WebM Video</comment>
+    <glob pattern="*.webm"/>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x1a45dfa3">
+        <match offset="5:65" type="big16" value="0x4282">
+          <match offset="8:75" type="string" value="webm"/>
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+
+  <!-- VIDEO/vnd.* -->
+
+  <mime-type type="video/vnd.rn-realvideo">
+    <comment>RealVideo Document</comment>
+    <glob pattern="*.rv"/>
+    <glob pattern="*.rvx"/>
+    <alias type="video/x-real-video"/>
+  </mime-type>
+
+  <!-- VIDEO/x-* -->
+
+  <mime-type type="video/x-flv">
+    <comment>Flash Video</comment>
+    <alias type="application/x-flash-video"/>
+    <alias type="flv-application/octet-stream"/>
+    <alias type="video/flv"/>
+    <generic-icon name="video-x-generic"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="FLV"/>
+    </magic>
+    <glob pattern="*.flv"/>
+  </mime-type>
+  <mime-type type="video/x-matroska">
+    <comment>Matroska Video</comment>
+    <glob pattern="*.mkv"/>
+    <sub-class-of type="application/x-matroska"/>
+  </mime-type>
+  <mime-type type="video/x-matroska-3d">
+    <comment>Matroska 3D Video</comment>
+    <glob pattern="*.mk3d"/>
+    <sub-class-of type="application/x-matroska"/>
+  </mime-type>
+
+  <!-- X-CONTENT/* -->
+
+  <mime-type type="x-content/audio-cdda">
+    <comment>Audio CD</comment>
+  </mime-type>
+  <mime-type type="x-content/audio-dvd">
+    <comment>Audio DVD</comment>
+    <treemagic>
+      <treematch path="AUDIO_TS/AUDIO_TS.IFO" type="file"/>
+      <treematch path="AUDIO_TS/AUDIO_TS.IFO;1" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/audio-player">
+    <comment>Portable Audio Player</comment>
+  </mime-type>
+  <mime-type type="x-content/blank-bd">
+    <comment>Blank Blu-ray Disc</comment>
+  </mime-type>
+  <mime-type type="x-content/blank-cd">
+    <comment>Blank CD Disc</comment>
+  </mime-type>
+  <mime-type type="x-content/blank-dvd">
+    <comment>Blank DVD Disc</comment>
+  </mime-type>
+  <mime-type type="x-content/blank-hddvd">
+    <comment>Blank HD DVD Disc</comment>
+  </mime-type>
+  <mime-type type="x-content/ebook-reader">
+    <comment>Ebook Reader</comment>
+    <treemagic>
+      <treematch non-empty="true" path=".kobo" type="directory"/>
+      <treematch non-empty="false" path="system/com.amazon.ebook.booklet.reader"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/image-dcf">
+    <comment>Digital Photos</comment>
+    <treemagic>
+      <treematch non-empty="true" path="dcim" type="directory"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/image-picturecd">
+    <comment>Picture CD</comment>
+    <treemagic>
+      <treematch match-case="true" non-empty="true" path="PICTURES" type="directory"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/software">
+    <comment>Software</comment>
+  </mime-type>
+  <mime-type type="x-content/unix-software">
+    <comment>UNIX Software</comment>
+    <sub-class-of type="x-content/software"/>
+    <treemagic>
+      <treematch match-case="true" path=".autorun" type="file"/>
+      <treematch match-case="true" path="autorun" type="file"/>
+      <treematch match-case="true" path="autorun.sh" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/video-bluray">
+    <comment>Blu-ray Video Disc</comment>
+    <treemagic>
+      <treematch non-empty="true" path="BDAV" type="directory"/>
+      <treematch non-empty="true" path="BDMV" type="directory"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/video-dvd">
+    <comment>Video DVD</comment>
+    <treemagic>
+      <treematch path="VIDEO_TS/VIDEO_TS.IFO" type="file"/>
+      <treematch path="VIDEO_TS/VIDEO_TS.IFO;1" type="file"/>
+      <treematch path="VIDEO_TS.IFO" type="file"/>
+      <treematch path="VIDEO_TS.IFO;1" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/video-hddvd">
+    <comment>HD DVD Video Disc</comment>
+    <treemagic>
+      <treematch path="HVDVD_TS/HV000I01.IFO" type="file"/>
+      <treematch path="HVDVD_TS/HV001I01.IFO" type="file"/>
+      <treematch path="HVDVD_TS/HVA00001.VTI" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/video-svcd">
+    <comment>Super Video CD</comment>
+    <treemagic>
+      <treematch path="MPEG2/AVSEQ01.MPG" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/video-vcd">
+    <comment>Video CD</comment>
+    <treemagic>
+      <treematch path="mpegav/AVSEQ01.DAT" type="file"/>
+    </treemagic>
+  </mime-type>
+  <mime-type type="x-content/win32-software">
+    <comment>Windows Software</comment>
+    <sub-class-of type="x-content/software"/>
+    <treemagic>
+      <treematch executable="true" path="autorun.exe" type="file"/>
+      <treematch path="autorun.inf" type="file"/>
+    </treemagic>
+  </mime-type>
+
+  <!-- X-EPOC/* -->
+
   <mime-type type="x-epoc/x-sisx-app">
     <acronym>SIS</acronym>
     <comment>SISX Package</comment>
     <expanded-acronym>Symbian Installation File</expanded-acronym>
     <icon name="sisx"/>
     <glob pattern="*.sisx"/>
+    <magic priority="50">
+      <match offset="0" type="little32" value="0x10201a7a"/>
+    </magic>
   </mime-type>
+
 </mime-info>
