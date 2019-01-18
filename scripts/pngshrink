@@ -1,0 +1,41 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Shrink the Size of PNG Image Files
+#' @file pngshrink
+#' @version 2019.01.18
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ -z "${1:-}" ]; then
+    printf 'ERROR: A parameter is required!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v pngcrush)" ]; then
+    printf 'pngcrush: command not found!\n' >&2
+    exit 0
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+    printf 'Specify the pathname of each PNG source file to shrink.\n'
+    exit 0
+fi
+
+
+# SETUP #
+
+
+export LANG='en_US.UTF-8'
+export LC_ALL='C'
+export LC_CTYPE='C'
+
+
+# MAIN #
+
+
+for file in "$@"; do
+    if [ -r "$file" ] || [ -d "$file" ]; then
+        { [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } && [ -x "$(command -v zenity)" ] && zenity --error --height=200 --text="${file}:\nThe specified file is non-readable or non-existent!\n" --title='Error: pngshrink' --width=800 2> /dev/null
+        printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    fi
+    pngcrush -brute -l 9 -rem alla -rem text -rem time -rem gAMA -rem cHRM -rem iCCP -rem sRGB "${file}" "${file%.*}_reduced.png"
+done
