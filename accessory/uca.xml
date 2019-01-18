@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE actions [
+  <!ELEMENT actions (action)+>
+  <!ELEMENT action (icon|patterns|name|unique-id|command|description|directories|audio-files|image-files|other-files|text-files|video-files)*>
+  <!ELEMENT icon (#PCDATA)>
+  <!ELEMENT command (#PCDATA)>
+  <!ELEMENT patterns (#PCDATA)>
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST name xml:lang CDATA #IMPLIED>
+  <!ELEMENT unique-id (#PCDATA)>
+  <!ELEMENT description (#PCDATA)>
+  <!ATTLIST description xml:lang CDATA #IMPLIED>
+  <!ELEMENT startup-notify EMPTY>
+  <!ELEMENT directories EMPTY>
+  <!ELEMENT audio-files EMPTY>
+  <!ELEMENT image-files EMPTY>
+  <!ELEMENT other-files EMPTY>
+  <!ELEMENT text-files EMPTY>
+  <!ELEMENT video-files EMPTY>
+]>
+
+<!-- Special Variables
+`%f` — The path to the first selected file
+`%F` — The paths to all selected files
+`%d` — Directory containing the file passed in `%f`
+`%D` — Directories containing the files passed in `%F`
+`%n` — The first selected file name (without path)
+`%N` — the selected file names (without paths)
+-->
+
+<actions>
+
+  <!-- DIRECTORY ACTIONS -->
+
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open Terminal Here</name>
+    <unique-id>3700000000000001-1</unique-id>
+    <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+    <description>Open terminal</description>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open Root Terminal Here</name>
+    <unique-id>3700000000000002-1</unique-id>
+    <command>pkexec --user root exo-open --working-directory %f --launch TerminalEmulator</command>
+    <description>Open terminal as root</description>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+
+  <!-- FILE ACTIONS -->
+
+  <action>
+    <icon>gtkhash</icon>
+    <name>Checksum</name>
+    <unique-id>7300000000000001-1</unique-id>
+    <command>[ -x "$(command -v gtkhash)" ] &amp;&amp; gtkhash %f</command>
+    <description>Calculate checksum using GTKHash</description>
+    <patterns>*</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>meld</icon>
+    <name>Compare</name>
+    <unique-id>7300000000000002-1</unique-id>
+    <command>[ -x "$(command -v meld)" ] &amp;&amp; meld %F</command>
+    <description>Compare two or more files</description>
+    <patterns>*</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>png</icon>
+    <name>Shrink PNG</name>
+    <unique-id>7300000000000003-1</unique-id>
+    <command>[ -x "$(command -v pngshrink)" ] &amp;&amp; [ -x "$(command -v pngcrush)" ] &amp;&amp; pngshrink %F</command>
+    <description>Reduce the Size of PNG Files</description>
+    <patterns>*.png</patterns>
+    <image-files/>
+  </action>
+
+</actions>
