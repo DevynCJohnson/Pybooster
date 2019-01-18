@@ -40,13 +40,12 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
-
-    plainname="$(basename "${file}")"
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v csslint)" ]; then
         printf '======  *CSSLINT*  ======\n'
-        csslint --format=text "$file" | sed -E "s|^${plainname}$||; s|^(.+): error at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|; s|^(.+): warning at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        # shellcheck disable=SC1117
+        csslint --format=text "$file" | sed -E "s|^${file##*/}$||; s|^(.+): error at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|; s|^(.+): warning at line ([0-9]+), col ([0-9]+)$|${file}:\2:\3:|" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'csslint: command not found!\n' >&2
     fi

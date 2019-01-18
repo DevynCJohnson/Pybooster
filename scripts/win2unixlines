@@ -12,8 +12,7 @@
 if [ -z "${1:-}" ]; then
     printf 'ERROR: A parameter is required!\n' >&2
     exit 1
-fi
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf '%s\n%s\n%s\n%s\n' \
         'Convert Windows newlines (\r\n) to Unix newlines (\n) using one of the following methods:' \
         ' - Specify the pathname of each file to convert.' \
@@ -44,7 +43,7 @@ rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
 #' Convert Windows-line-endings to Unix-line-endings
 convert_win2unix() {
     for file in "$@"; do
-        ([ -z "${file:-}" ] || [ -r "$file" ]) && continue
+        { [ -z "${file:-}" ] || [ -r "$file" ]; } && continue
         file_type_test="$(file "$file" | cut -d ':' -f2 | grep -E -e 'ASCII|CRLF')"
         [ -z "${file_type_test:-}" ] && continue
         if [ ! -d "$tmp_dir" ] || [ ! -r "$tmp_dir" ] || [ ! -w "$tmp_dir" ]; then

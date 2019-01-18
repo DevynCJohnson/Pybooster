@@ -175,17 +175,17 @@ fi
 
 
 printf '\n\n# LIBRARY INFO #\n\n\n' >> "$FILE"
-[ -x "$(command -v gcc)" ] && printf '→ %s\n' "$(gcc --version)" >> "$FILE"
-[ -x "$(command -v bash)" ] && printf '→ %s\n' "$(bash --version)" >> "$FILE"
-[ -x "$(command -v zsh)" ] && printf '→ %s\n' "$(zsh --version)" >> "$FILE"
-[ -x "$(command -v npm)" ] && printf '→ %s\n' "$(npm version)" >> "$FILE"
-[ -x "$(command -v ocamlrun)" ] && printf '→ %s\n' "$(ocamlrun -version)" >> "$FILE"
-[ -x "$(command -v perl)" ] && printf '→ %s\n' "$(perl --version)" >> "$FILE"
-[ -x "$(command -v php)" ] && printf '→ %s\n' "$(php --version)" >> "$FILE"
-[ -x "$(command -v pip3)" ] && printf '→ %s\n' "$(pip3 --version)" >> "$FILE"
-[ -x "$(command -v python3)" ] && printf '→ %s\n' "$(python3 --version)" >> "$FILE"
-[ -x "$(command -v ruby)" ] && printf '→ %s\n' "$(ruby --version)" >> "$FILE"
-[ -x "$(command -v ldd)" ] && printf '→ %s\n' "$(ldd --version)" >> "$FILE"
+[ -x "$(command -v gcc)" ] && printf '\u2192 %s\n' "$(gcc --version)" >> "$FILE"
+[ -x "$(command -v bash)" ] && printf '\u2192 %s\n' "$(bash --version)" >> "$FILE"
+[ -x "$(command -v zsh)" ] && printf '\u2192 %s\n' "$(zsh --version)" >> "$FILE"
+[ -x "$(command -v npm)" ] && printf '\u2192 %s\n' "$(npm version)" >> "$FILE"
+[ -x "$(command -v ocamlrun)" ] && printf '\u2192 %s\n' "$(ocamlrun -version)" >> "$FILE"
+[ -x "$(command -v perl)" ] && printf '\u2192 %s\n' "$(perl --version)" >> "$FILE"
+[ -x "$(command -v php)" ] && printf '\u2192 %s\n' "$(php --version)" >> "$FILE"
+[ -x "$(command -v pip3)" ] && printf '\u2192 %s\n' "$(pip3 --version)" >> "$FILE"
+[ -x "$(command -v python3)" ] && printf '\u2192 %s\n' "$(python3 --version)" >> "$FILE"
+[ -x "$(command -v ruby)" ] && printf '\u2192 %s\n' "$(ruby --version)" >> "$FILE"
+[ -x "$(command -v ldd)" ] && printf '\u2192 %s\n' "$(ldd --version)" >> "$FILE"
 
 
 # GRAPHICS INFO #
@@ -193,9 +193,9 @@ printf '\n\n# LIBRARY INFO #\n\n\n' >> "$FILE"
 
 printf '\n\n# GRAPHICS INFO #\n\n\n' >> "$FILE"
 if [ -x "$(command -v ldd)" ] && [ -x "$(command -v clinfo)" ]; then
-    printf '\n%s\n' "$(ldd -v "$(which clinfo)")" >> "$FILE"
+    printf '\n%s\n' "$(ldd -v "$(command -v clinfo)")" >> "$FILE"
 elif [ -x "$(command -v ldd)" ] && [ -x "$(command -v glxinfo)" ]; then
-    printf '\n%s\n' "$(ldd -v "$(which glxinfo)")" >> "$FILE"
+    printf '\n%s\n' "$(ldd -v "$(command -v glxinfo)")" >> "$FILE"
 fi
 [ -x "$(command -v cginfo)" ] && printf '\nCg Library Info:\n%s\n' "$(cginfo 2> /dev/null)" >> "$FILE"
 [ -x "$(command -v clinfo)" ] && printf '\nOpenCL Platforms:\n%s\n' "$(clinfo 2> /dev/null)" >> "$FILE"

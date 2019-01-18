@@ -12,8 +12,7 @@
 if [ -z "${1:-}" ]; then
     printf 'ERROR: A parameter is required!\n' >&2
     exit 1
-fi
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each YAML file to scan.\n'
     exit 0
 fi
@@ -41,7 +40,7 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v yamllint)" ]; then
         printf '======  *YAMLLINT*  ======\n'

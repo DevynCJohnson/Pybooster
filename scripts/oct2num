@@ -41,10 +41,10 @@ if [ -x "$(command -v wcalc)" ]; then
     echo "$incoming_data" | sed 's|^0||; s|^|0|' | wcalc -dec | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v bc)" ]; then
     num="$(echo "${incoming_data}" | sed 's|^0||')"
-    printf "%s\n" "$(echo "obase=10;ibase=8;${num}" | bc)" | fmt4pipe
+    printf '%s\n' "$(echo "obase=10;ibase=8;${num}" | bc)" | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
     num="$(echo "${incoming_data}" | sed 's|^0||; s|^|0|')"
     python3 -c "print(int(${num}))" | fmt4pipe
 else
-    printf "%d\n" "$(echo "${incoming_data}" | sed 's|^0||; s|^|0|')" | fmt4pipe || printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
+    printf '%d\n' "$(echo "${incoming_data}" | sed 's|^0||; s|^|0|')" | fmt4pipe || printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
 fi

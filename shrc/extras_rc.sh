@@ -155,17 +155,13 @@ else
 fi
 alias findalias='alias | grep -i -F'
 alias findfunc='set | grep -i -F'
-alias lsfuncs='set | grep -F "()"'
+alias findmethod='alias | grep -i -F; set | grep -i -F'
+alias lsfuncs='set | grep -F " ()" | cut -d " " -f 1'
+alias lsmethods='alias; set | grep -F " ()" | cut -d " " -f 1'
 alias viewpath='echo "$PATH"'
 
 # Miscellaneous Aliases
 
-if [ -x "$(command -v notify-send)" ]; then
-    alias alert='notify-send --expire-time=4000 --urgency=critical --icon="important"'
-    alias desktopmsg='notify-send --expire-time=4000 --urgency=low --icon="info"'
-else
-    alias alert='printf "Alert\n"'
-fi
 alias ConsoleMessage='echo'
 [ -x "$(command -v du)" ] && [ -x "$(command -v less)" ] && alias du.='du -a -c -h | sort -h | less'  #' Show the disk usage of each directory
 [ -x "$(command -v df)" ] && [ -x "$(command -v less)" ] && alias df.='df -a -h -T | less'  #' Show disk usage for each filesystem
@@ -788,20 +784,20 @@ fi
 if [ -d /usr/share/nano ]; then
     #' List all programming languages supported by Nano
     lsnanolangs() {
-        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "%s\\n" '{}' +
+        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf '%s\n' '{}' +
     }
     #' Regenerate the ALL.nanorc file
     refreshnanorc() {
-        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\\n" '{}' + | sudo tee /usr/share/nano/ALL.nanorc
+        find /usr/share/nano/* -type f -name "*.nanorc" -exec printf 'include %s\n' '{}' + | sudo tee /usr/share/nano/ALL.nanorc
     }
 elif [ -d /usr/local/share/nano ]; then
     #' List all programming languages supported by Nano
     lsnanolangs() {
-        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "%s\\n" '{}' +
+        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf '%s\n' '{}' +
     }
     #' Regenerate the ALL.nanorc file
     refreshnanorc() {
-        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf "include %s\\n" '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
+        find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf 'include %s\n' '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
     }
 fi
 

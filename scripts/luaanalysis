@@ -40,7 +40,7 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     if [ -x "$(command -v luacheck)" ]; then
         printf '======  *LUACHECK*  ======\n'

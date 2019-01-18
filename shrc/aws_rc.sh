@@ -595,10 +595,9 @@ upload2bucket() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'At least two parameters are required!\n' >&2
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ]; then
-        filename="$(basename "${2}")"
         bucket_path="${1}"
         [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'
-        aws s3 cp "${2}" "${bucket_path}${filename}"
+        aws s3 cp "${2}" "${bucket_path}${2##*/}"
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ] && [ ! -z "${3:-}" ]; then
         bucket_path="${1}"
         [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'

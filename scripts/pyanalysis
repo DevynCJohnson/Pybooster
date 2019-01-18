@@ -15,8 +15,7 @@ if [ -z "${1:-}" ]; then
 elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each Python script to scan.\n'
     exit 0
-fi
-if [ ! -x "$(command -v python3)" ]; then
+elif [ ! -x "$(command -v python3)" ]; then
     printf 'python3: command not found!\n' >&2
     exit 1
 fi
@@ -62,7 +61,7 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     hashpling="$(head -1 "$file")"
     echo "$hashpling" | grep -v -E -e '#!/.+python[0-9\.]*' > /dev/null && printf '%s: The specified file is not a Python script!\n' "$file" >&2 && continue
 

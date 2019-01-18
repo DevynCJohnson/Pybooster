@@ -41,7 +41,7 @@ if [ -x "$(command -v wcalc)" ]; then
     echo "$incoming_data" | sed 's|0[Bb]||; s|^|0b|' | wcalc -hex | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe | tr '[:lower:]' '[:upper:]' | sed 's|0X|0x|'
 elif [ -x "$(command -v bc)" ]; then
     num="$(echo "${incoming_data}" | sed 's|0[Bb]||')"
-    printf "0x%s\n" "$(echo "obase=16;ibase=2;${num}" | bc | tr '[:lower:]' '[:upper:]')" | fmt4pipe
+    printf '0x%s\n' "$(echo "obase=16;ibase=2;${num}" | bc | tr '[:lower:]' '[:upper:]')" | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
     num="$(echo "${incoming_data}" | sed 's|0[Bb]||; s|^|0b|')"
     python3 -c "print(hex(int(${num})))" | fmt4pipe | sed 's|0X|0x|'

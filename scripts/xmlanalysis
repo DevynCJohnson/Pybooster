@@ -12,8 +12,7 @@
 if [ -z "${1:-}" ]; then
     printf 'ERROR: A parameter is required!\n' >&2
     exit 1
-fi
-if [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
+elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each XML file to scan.\n'
     exit 0
 fi
@@ -41,10 +40,10 @@ fi
 
 
 for file in "$@"; do
-    ([ ! -r "$file" ] || [ -d "$file" ]) && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
-    (head -1 "$file" | grep -v -F -e '<' > /dev/null) && (tail -2 "$file" | grep -v -F -e '>' > /dev/null) && printf '%s: The specified file is not an XML file!\n' "$file" >&2 && continue
+    { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+    { head -1 "$file" | grep -v -F -e '<' > /dev/null; } && { tail -2 "$file" | grep -v -F -e '>' > /dev/null; } && printf '%s: The specified file is not an XML file!\n' "$file" >&2 && continue
 
-    if [ -x "$(command -v weblint)" ] && (head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null); then
+    if [ -x "$(command -v weblint)" ] && { head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null; }; then
         printf '======  *WEBLINT*  ======\n'
         weblint --context=1 --fluff --helper --structure "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
@@ -53,7 +52,7 @@ for file in "$@"; do
 
     if [ -x "$(command -v xmllint)" ]; then
         printf '======  *XMLLINT*  ======\n'
-        if (head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null); then
+        if { head -5 "$file" | grep -F -e '<!DOCTYPE html' > /dev/null; }; then
             xmllint --valid --nowarning --noout --html "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
         else
             xmllint --valid --nowarning --noout "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'

@@ -81,14 +81,17 @@ alias wtls12='openssl ecparam ${OPENSSL_ENGINE:-} -outform PEM -name wap-wsg-idm
 
 # Digests
 
+alias b2b512='openssl blake2b512 | cut -d " " -f 2'  #' Produce the Blake2B512 checksum for the given data
 alias b2s256='openssl dgst -blake2s256 | cut -d " " -f 2'  #' Produce the Blake2S256 checksum for the given data
 alias gost='openssl gost | cut -d " " -f 2'  #' Produce the GOST checksum for the given data
 alias md2='openssl dgst -md2 | cut -d " " -f 2'  #' Produce the MD2 checksum for the given data
 alias md4='openssl dgst -md4 | cut -d " " -f 2'  #' Produce the MD4 checksum for the given data
 alias mdc2='openssl dgst -mdc2 | cut -d " " -f 2'  #' Produce the MD5 checksum for the given data
 alias rmd160='openssl dgst -ripemd160 | cut -d " " -f 2'  #' Produce the RIPEMD160 checksum for the given data
+alias sha3='openssl sha3-512 | cut -d " " -f 2'  #' Produce the SHA3-512 checksum for the given data
 alias shake128='openssl dgst -shake128 | cut -d " " -f 2'  #' Produce the SHAKE128 checksum for the given data
 alias sm3='openssl dgst -sm3 | cut -d " " -f 2'  #' Produce the SM3 checksum for the given data
+alias whirlpool='openssl dgst -whirlpool | cut -d " " -f 2'  #' Produce the Whirlpool checksum for the given data
 
 # Random
 
@@ -120,7 +123,7 @@ alias randhexprime8192='openssl prime -generate -bits 8192 -hex'  #' Generate a 
 alias randprime16384='openssl prime -generate -bits 16384'  #' Generate a random 16384-bit prime number
 alias randhexprime16384='openssl prime -generate -bits 16384 -hex'  #' Generate a random 16384-bit prime number encoded in hexadecimal
 
-# Random Digest
+# Random Digests
 
 alias randb2s256='openssl rand ${OPENSSL_ENGINE:-} 8192 2>&1 | sed -E -e "s|engine .+||; /^$/d;" | openssl dgst -blake2s256 | cut -d " " -f 2'  #' Generate a random BLAKE2S256 hash
 alias randgost='openssl rand ${OPENSSL_ENGINE:-} 8192 2>&1 | sed -E -e "s|engine .+||; /^$/d;" | openssl gost | cut -d " " -f 2'  #' Generate a random GOST hash
@@ -284,9 +287,7 @@ pkcs8_2_encrypted_ec() {
         else
             enctype="$(_enctype_input "${2:-}")"
         fi
-        filename="$(basename "${1:-}")"
-        filename="$(printf '%s' "${filename}" | sed -E -e "s|^ec_||;")"
-        openssl ec "${enctype}" -in "${1:-}" -out "ecx_${filename}"
+        openssl ec "${enctype}" -in "${1:-}" -out "ecx_$(printf '%s' "${1##*/}" | sed -E -e "s|^ec_||;")"
     fi
 }
 
@@ -299,9 +300,7 @@ encrypted_ec_2_pkcs8() {
     elif [ ! -f "${1:-}" ]; then
         printf 'ERROR: The first parameter must be a file!\n' >&2
     else
-        filename="$(basename "${1:-}")"
-        filename="$(printf '%s' "${filename}" | sed -E -e "s|^ecx_||;")"
-        openssl ec -in "${1:-}" -out "ec_${filename}"
+        openssl ec -in "${1:-}" -out "ec_$(printf '%s' "${1##*/}" | sed -E -e "s|^ecx_||;")"
     fi
 }
 
@@ -314,8 +313,8 @@ ecpub() {
     elif [ ! -f "${1:-}" ]; then
         printf 'ERROR: The first parameter must be a file!\n' >&2
     else
-        filename="$(basename "${1:-}" '_pri.pem')"
-        openssl ec -in "${1:-}" -pubout -out "${filename}_pub.pem"
+        filename="${1##*/}"
+        openssl ec -in "${1:-}" -pubout -out "${filename/_pri.pem/}_pub.pem"
     fi
 }
 

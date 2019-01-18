@@ -164,7 +164,7 @@ fi
 
 
 if [ "$save_chart" -eq 1 ]; then  # Save chart
-    exefile="$(basename "${filename}")"
+    exefile="${filename##*/}"
     if [ "$bar_chart" -eq 1 ]; then
         octave --no-gui --no-history --norc --silent --eval "num_array = ${num_array}; num_insns = length(num_array); num_array = reshape(num_array, num_insns, 1); insn_array = {${insn_array}}; cnt = 1; if (${total_insns} > 50000) other = 0; for i = 1:length(num_array) if (num_array(i) < 100) other += num_array(i); cnt += 1; else break; endif; endfor; cnt -= 1; if (cnt > 0) num_array(cnt) = other; insn_array(cnt) = 'Other'; else cnt = 1; endif; endif; set(0, 'defaultaxesfontsize', 10); set(0, 'defaulttextfontsize', 10); figure(1,'position',[0,0,4800,4800]); output = barh(num_array(cnt:end), 0.7, 'facecolor', [0.42, 0.42, 0.14], 'linestyle', 'none'); axis('tight'); set(gca, 'box', 'off', 'YTick', [1:num_insns], 'YTickLabel', insn_array(cnt:end), 'yminorgrid', 'off', 'yminortick', 'off', 'ticklength', [0, 0], 'fontsize', 4); title('Assembly Instructions in \"${exefile}\"', 'fontsize', 12); print('insns_bar_${exefile}.${saveas}', '-d${saveas}', '-r600');" &
     fi

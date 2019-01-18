@@ -10,4 +10,5 @@
 
 
 rm -f -r ~/.cache/thumbnails/ ~/.cache/thumbnail/ ~/.thumbnails/ ~/.thumbnail/ ~/.mandelbulb*/thumbnails/ ~/.miro/icon-cache/ ~/.purple/icons/ 2> /dev/null || true
+
 exit 0

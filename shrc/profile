@@ -39,8 +39,8 @@ export PROFILE_SHELL
 
 if [ -d /usr/lib/bash/ ]; then
     for plugin in /usr/lib/bash/*; do
-        ([ "${plugin}" == '/usr/lib/bash/Makefile.inc' ] || [ "${plugin}" == '/usr/lib/bash/finfo' ] || [ "${plugin}" == '/usr/lib/bash/mypid' ] || [ "${plugin}" == '/usr/lib/bash/truefalse' ]) && continue
-        enable -f "${plugin}" "$(basename "${plugin}")"
+        { [ "${plugin}" == '/usr/lib/bash/Makefile.inc' ] || [ "${plugin}" == '/usr/lib/bash/finfo' ] || [ "${plugin}" == '/usr/lib/bash/mypid' ] || [ "${plugin}" == '/usr/lib/bash/truefalse' ]; } && continue
+        enable -f "${plugin}" "${plugin##*/}"
     done
 fi
 
@@ -135,7 +135,7 @@ else
     ARCH='unknown'
 fi
 case "$ARCH" in
-    amd*|amd64|i686-64|x86-64|x86_64) readonly ARCH='x86_64';;
+    amd*|i686-64|x86-64|x86_64) readonly ARCH='x86_64';;
     i386*|i486*|i586*|i686*|i86pc*|x86|x86pc*) readonly ARCH='x86_32';;
     alpha*) readonly ARCH='alpha';;
     arm*) readonly ARCH='arm';;
@@ -175,7 +175,6 @@ if [ -z "${PAGER:-}" ]; then
     fi
 fi
 export MANPAGER="$PAGER"
-export SYSTEMD_LESS="$PAGER"
 export SYSTEMD_PAGER="$PAGER"
 [ -r /etc/lsb-release ] && . /etc/lsb-release
 [ -x "$(command -v watch)" ] && alias watch='watch '
@@ -381,14 +380,33 @@ export -f isFileWritable isFileOrDir isFunction ispts isSymLink istty strcontain
 
 
 if [ -x "$(command -v zenity)" ] && [ "$(istty)" = 'false' ]; then
-    #' Open a calendar window using Zenity
-    win_cal() { zenity --title=Calendar --calendar --text='' --day=1 --month=1 --year="$1" 2> /dev/null; }
-    #' Open an error message window using Zenity
-    win_err() { zenity --title=Error --error --text="${1}" 2> /dev/null; }
-    #' Open an info window using Zenity
-    win_info() { zenity --title=Information --info --text="${1}" 2> /dev/null; }
-    #' Open a warning message window using Zenity
-    win_warn() { zenity --title=Warning --warning --text="${1}" 2> /dev/null; }
+    #' @brief Open a calendar window using Zenity
+    #' @param[in] $1 Specify the starting year
+    #' @param[out] The entered date
+    win_cal() { zenity --calendar --day=1 --height=200 --month=1 --text='' --title='Calendar' --width=800 --year="${1:-}" 2> /dev/null; }
+    #' @brief Open an entry message window using Zenity
+    #' @param[in] $1 Specify the message
+    #' @param[in] $2 Optional parameter for specifying the window-title; The default is `Enter Input`
+    #' @param[out] The entered text
+    win_entry() { zenity --entry --height=200 --text="${1:-}" --title="${2:-Enter Input}" --width=800 2> /dev/null; }
+    #' @brief Open an error message window using Zenity
+    #' @param[in] $1 Specify the message
+    win_err() { zenity --error --height=200 --text="${1:-}" --title='Error' --width=800 2> /dev/null; }
+    #' @brief Open an info window using Zenity
+    #' @param[in] $1 Specify the message
+    win_info() { zenity --info --height=200 --text="${1:-}" --title='Information' --width=800 2> /dev/null; }
+    #' @brief Open a warning message window using Zenity
+    #' @param[in] $1 Specify the message
+    win_warn() { zenity --height=200 --text="${1:-}" --title='Warning' --warning --width=800 2> /dev/null; }
+fi
+
+if [ -x "$(command -v notify-send)" ] && [ "$(istty)" = 'false' ]; then
+    #' @brief Show an alert notification
+    #' @param[in] $1 Specify the message
+    alert() { notify-send --expire-time=4000 --icon='important' --urgency='critical'; }
+    #' @brief Show a message notification
+    #' @param[in] $1 Specify the message
+    desktopmsg() { notify-send --expire-time=4000 --icon='info' --urgency='low'; }
 fi
 
 
@@ -540,7 +558,7 @@ if [ -d /etc/shell_ext_modules ]; then
 # Load shell extension modules located in the same directory as this code
 elif [ ! -d /etc/shell_ext_modules ] && [ -n "${BASH_SOURCE:-}" ]; then
     curdir="$(dirname "${BASH_SOURCE[0]}")"
-    for file in ${curdir}/shell_ext_modules/*; do
+    for file in "${curdir}/shell_ext_modules"/*; do
         [ -r "${file}" ] && . "${file}"
     done
 fi

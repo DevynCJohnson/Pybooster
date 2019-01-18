@@ -41,9 +41,9 @@ if [ -x "$(command -v wcalc)" ]; then
     echo "$incoming_data" | wcalc -oct | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v bc)" ]; then
     num="$(echo "obase=8;${incoming_data}" | bc)"
-    printf "0%s\n" "${num}" | fmt4pipe
+    printf '0%s\n' "${num}" | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
     python3 -c "print(oct(${incoming_data}))" | fmt4pipe
 else
-    printf "0%o\n" "$incoming_data" | fmt4pipe || printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
+    printf '0%o\n' "$incoming_data" | fmt4pipe || printf 'ERROR: No suitable command-line calculator found!\nInstall one of the following: wcalc or bc\n' >&2
 fi

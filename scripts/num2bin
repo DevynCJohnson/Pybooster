@@ -41,7 +41,7 @@ if [ -x "$(command -v wcalc)" ]; then
     echo "$incoming_data" | wcalc -bin | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v bc)" ]; then
     num="$(echo "obase=2;${incoming_data}" | bc)"
-    printf "0b%s\n" "${num}" | fmt4pipe
+    printf '0b%s\n' "${num}" | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
     python3 -c "print(bin(${incoming_data}))" | fmt4pipe
 else
