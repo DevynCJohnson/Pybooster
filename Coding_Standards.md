@@ -68,7 +68,8 @@ General Rules
 - Use GNU-Style Changelogs for projects
 - Keep the source code highly organized and optimized
 - Try to reduce or eliminate third-party dependencies
-- Hexadecimal sequences must use all uppercase letters (language-specific exceptions apply)
+- Hexadecimal sequences must use all uppercase letters (checksum and language-specific exceptions apply)
+- Checksums must use the BSD-style format and lowercase letters
 - When testing conditionals, put l-values on the right and r-values on the left; This is know as a "Yoda-Style Condition"
 - Accepted "ToDo"/"Reminder" comments include the following
     - DEBUG
