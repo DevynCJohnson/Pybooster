@@ -208,6 +208,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.dash text eol=lf linguist-language=Shell linguist-vendored=false
 *.ksh text eol=lf linguist-language=Shell linguist-vendored=false
 *.sh text eol=lf linguist-language=Shell linguist-vendored=false
+*.tap text eol=lf linguist-language=Shell linguist-vendored=false
 *.zsh text eol=lf linguist-language=Shell linguist-vendored=false
 *profile text eol=lf linguist-language=Shell linguist-vendored=false
 *.[Ss][Qq][Ll] text eol=lf linguist-language=SQL linguist-vendored=false
