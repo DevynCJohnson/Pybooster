@@ -110,24 +110,26 @@
     <glob pattern="*.js"/>
     <glob pattern="*.jsm"/>
     <glob pattern="*.mjs"/>
-    <magic priority="95">
-      <match offset="2:6" type="string" value="/usr/bin/env gjs"/>
-      <match offset="2:6" type="string" value="/usr/bin/env jsc"/>
-      <match offset="2:6" type="string" value="/usr/bin/env node"/>
-      <match offset="2:6" type="string" value="/usr/bin/env rhino"/>
-      <match offset="2:6" type="string" value="/bin/env gjs"/>
-      <match offset="2:6" type="string" value="/bin/env jsc"/>
-      <match offset="2:6" type="string" value="/bin/env node"/>
-      <match offset="2:6" type="string" value="/bin/env rhino"/>
-      <match offset="2:6" type="string" value="/usr/bin/gjs"/>
-      <match offset="2:6" type="string" value="/usr/bin/jsc"/>
-      <match offset="2:6" type="string" value="/usr/bin/node"/>
-      <match offset="2:6" type="string" value="/usr/bin/rhino"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/gjs"/>
-      <match offset="0" type="string" value="#! /usr/local/bin/gjs"/>
+    <magic priority="100">
       <match offset="0" type="string" value="eval &quot;exec /bin/gjs"/>
       <match offset="0" type="string" value="eval &quot;exec /usr/bin/gjs"/>
       <match offset="0" type="string" value="eval &quot;exec /usr/local/bin/gjs"/>
+      <match offset="2:16" type="string" value="/bin/env gjs"/>
+      <match offset="2:16" type="string" value="/bin/env jsc"/>
+      <match offset="2:16" type="string" value="/bin/env node"/>
+      <match offset="2:16" type="string" value="/bin/env rhino"/>
+      <match offset="2:16" type="string" value="/usr/bin/env gjs"/>
+      <match offset="2:16" type="string" value="/usr/bin/env jsc"/>
+      <match offset="2:16" type="string" value="/usr/bin/env node"/>
+      <match offset="2:16" type="string" value="/usr/bin/env rhino"/>
+      <match offset="2:16" type="string" value="/usr/bin/gjs"/>
+      <match offset="2:16" type="string" value="/usr/bin/jsc"/>
+      <match offset="2:16" type="string" value="/usr/bin/node"/>
+      <match offset="2:16" type="string" value="/usr/bin/rhino"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/gjs"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/jsc"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/node"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/rhino"/>
     </magic>
     <sub-class-of type="application/ecmascript"/>
   </mime-type>
@@ -299,6 +301,7 @@
     </magic>
     <glob pattern="*.asc" weight="10"/>
     <glob pattern="*.gpg"/>
+    <glob pattern="*.key" weight="80"/>
     <glob pattern="*.pgp"/>
     <glob pattern="*.pkr"/>
     <glob pattern="*.skr"/>
@@ -310,9 +313,10 @@
     <magic priority="50">
       <match offset="0" type="string" value="-----BEGIN PGP SIGNATURE-----"/>
     </magic>
-    <glob weight="10" pattern="*.asc"/>
+    <glob pattern="*.asc" weight="10"/>
     <glob pattern="*.sig"/>
     <glob pattern="*.pgp"/>
+    <glob pattern="*.key" weight="80"/>
     <glob pattern="*.gpg"/>
   </mime-type>
   <mime-type type="application/pkcs10">
@@ -369,7 +373,7 @@
     <acronym>PKCS#8</acronym>
     <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
     <generic-icon name="text-x-generic"/>
-    <glob weight="75" pattern="*.p8"/>
+    <glob pattern="*.p8" weight="75"/>
     <glob pattern="*.pkcs8"/>
   </mime-type>
   <mime-type type="application/pkcs8-encrypted">
@@ -388,7 +392,7 @@
   </mime-type>
   <mime-type type="application/pkix-cert">
     <comment>X.509 Certificate</comment>
-    <glob weight="75" pattern="*.cer"/>
+    <glob pattern="*.cer" weight="75"/>
     <glob pattern="*.crt"/>
     <glob pattern="*.cert"/>
     <alias type="application/x-x509-ca-cert"/>
@@ -405,7 +409,7 @@
     <comment>Certificate Revocation List</comment>
     <acronym>CRL</acronym>
     <expanded-acronym>Certificate Revocation List</expanded-acronym>
-    <glob weight="75" pattern="*.crl"/>
+    <glob pattern="*.crl" weight="75"/>
   </mime-type>
   <mime-type type="application/pkix-crl+pem">
     <comment>Certificate Revocation List (PEM Format)</comment>
@@ -475,12 +479,34 @@
     <root-XML namespaceURI="http://www.w3.org/2005/SMIL21/Language" localName="smil"/>
     <root-XML namespaceURI="http://www.w3.org/ns/SMIL" localName="smil"/>
   </mime-type>
+  <mime-type type="application/xhtml+xml">
+    <comment>XHTML Page</comment>
+    <acronym>XHTML</acronym>
+    <expanded-acronym>Extensible HyperText Markup Language</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <generic-icon name="text-html"/>
+    <glob pattern="*.htm"/>
+    <glob pattern="*.html"/>
+    <glob pattern="*.xht"/>
+    <glob pattern="*.xhtml"/>
+    <magic priority="60">
+      <match offset="0:256" type="string" value="//W3C//DTD XHTML "/>
+      <match offset="0:256" type="string" value="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+      <match offset="0:256" type="string" value="&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml"/>
+      <match offset="0:256" type="string" value="&lt;HTML xmlns=&quot;http://www.w3.org/1999/xhtml"/>
+    </magic>
+    <root-XML namespaceURI="http://www.w3.org/1999/xhtml" localName="html"/>
+  </mime-type>
   <mime-type type="application/xml">
     <alias type="text/xml"/>
     <acronym>XML</acronym>
     <comment>XML Document</comment>
     <expanded-acronym>eXtensible Markup Language</expanded-acronym>
     <icon name="text-xml"/>
+    <magic priority="40">
+      <match offset="0" type="string" value="&lt;?xml"/>
+      <match offset="0" type="string" value="&lt;!--"/>
+    </magic>
     <glob pattern="*.rng"/>
     <glob pattern="*.xbl"/>
     <glob pattern="*.xml"/>
@@ -518,6 +544,14 @@
     </magic>
     <root-XML namespaceURI="http://xspf.org/ns/0/" localName="playlist"/>
     <sub-class-of type="application/xml"/>
+  </mime-type>
+  <mime-type type="application/zstd">
+    <_comment>Zstandard Archive</_comment>
+    <generic-icon name="package-x-generic"/>
+    <magic priority="60">
+      <match type="little32" value="0xFD2FB528" offset="0"/>
+    </magic>
+    <glob pattern="*.zst"/>
   </mime-type>
 
   <!-- APPLICATION/prs.* -->
@@ -593,6 +627,19 @@
     <alias type="application/x-mdb"/>
     <alias type="application/x-msaccess"/>
     <alias type="zz-application/zz-winassoc-mdb"/>
+  </mime-type>
+  <mime-type type="application/vnd.ms-asf">
+    <comment>ASF Video</comment>
+    <acronym>ASF</acronym>
+    <expanded-acronym>Advanced Streaming Format</expanded-acronym>
+    <alias type="video/x-ms-asf"/>
+    <alias type="video/x-ms-asf-plugin"/>
+    <alias type="video/x-ms-wm"/>
+    <glob pattern="*.asf"/>
+    <magic priority="50">
+      <match offset="0" type="big32" value="0x3026b275"/>
+      <match offset="0" type="string" value="[Reference]"/>
+    </magic>
   </mime-type>
   <mime-type type="application/vnd.ms-cab-compressed">
     <comment>Microsoft Cabinet Archive</comment>
@@ -1280,30 +1327,24 @@
     <glob pattern="*.mawk" weight="95"/>
     <glob pattern="*.nawk" weight="95"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#! /bin/awk"/>
-      <match offset="0" type="string" value="#! /bin/bwk"/>
-      <match offset="0" type="string" value="#! /bin/gawk"/>
-      <match offset="0" type="string" value="#! /bin/jawk"/>
-      <match offset="0" type="string" value="#! /bin/mawk"/>
-      <match offset="0" type="string" value="#! /bin/nawk"/>
-      <match offset="0" type="string" value="#! /usr/bin/awk"/>
-      <match offset="0" type="string" value="#! /usr/bin/bwk"/>
-      <match offset="0" type="string" value="#! /usr/bin/gawk"/>
-      <match offset="0" type="string" value="#! /usr/bin/jawk"/>
-      <match offset="0" type="string" value="#! /usr/bin/mawk"/>
-      <match offset="0" type="string" value="#! /usr/bin/nawk"/>
-      <match offset="0" type="string" value="#!/bin/awk"/>
-      <match offset="0" type="string" value="#!/bin/bwk"/>
-      <match offset="0" type="string" value="#!/bin/gawk"/>
-      <match offset="0" type="string" value="#!/bin/jawk"/>
-      <match offset="0" type="string" value="#!/bin/mawk"/>
-      <match offset="0" type="string" value="#!/bin/nawk"/>
-      <match offset="0" type="string" value="#!/usr/bin/awk"/>
-      <match offset="0" type="string" value="#!/usr/bin/bwk"/>
-      <match offset="0" type="string" value="#!/usr/bin/gawk"/>
-      <match offset="0" type="string" value="#!/usr/bin/jawk"/>
-      <match offset="0" type="string" value="#!/usr/bin/mawk"/>
-      <match offset="0" type="string" value="#!/usr/bin/nawk"/>
+      <match offset="2:16" type="string" value="/bin/awk"/>
+      <match offset="2:16" type="string" value="/bin/bwk"/>
+      <match offset="2:16" type="string" value="/bin/gawk"/>
+      <match offset="2:16" type="string" value="/bin/jawk"/>
+      <match offset="2:16" type="string" value="/bin/mawk"/>
+      <match offset="2:16" type="string" value="/bin/nawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/awk"/>
+      <match offset="2:16" type="string" value="/usr/bin/bwk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env awk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env bwk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env gawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env jawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env mawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/env nawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/gawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/jawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/mawk"/>
+      <match offset="2:16" type="string" value="/usr/bin/nawk"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="application/x-shellscript"/>
@@ -1621,7 +1662,7 @@
     <glob pattern="*.pod"/>
     <glob pattern="*.t" weight="10"/>
     <magic priority="100">
-      <match offset="0" type="string" value='eval \"exec /usr/local/bin/perl'/>
+      <match offset="0" type="string" value="eval &quot;exec /usr/local/bin/perl"/>
       <match offset="2:16" type="string" value="/bin/env perl"/>
       <match offset="2:16" type="string" value="/bin/perl"/>
     </magic>
@@ -1662,7 +1703,7 @@
     <comment>PKCS#12 Personal Key and Certificates</comment>
     <acronym>PKCS#12</acronym>
     <expanded-acronym>Public-Key Cryptography Standards</expanded-acronym>
-    <glob weight="75" pattern="*.p12"/>
+    <glob pattern="*.p12" weight="75"/>
     <glob pattern="*.pfx"/>
     <alias type="application/pkcs12"/>
   </mime-type>
@@ -1712,9 +1753,9 @@
     <icon name="application-x-ruby"/>
     <glob pattern="*.rb"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/env ruby"/>
-      <match offset="0" type="string" value="#!/usr/bin/ruby"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/ruby"/>
+      <match offset="2:16" type="string" value="/usr/bin/env ruby"/>
+      <match offset="2:16" type="string" value="/usr/bin/ruby"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/ruby"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
@@ -1775,8 +1816,12 @@
     <icon name="application-x-sed"/>
     <glob pattern="*.sed" weight="95"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/sed"/>
-      <match offset="0" type="string" value="#!/usr/bin/ssed"/>
+      <match offset="2:16" type="string" value="/bin/sed"/>
+      <match offset="2:16" type="string" value="/bin/ssed"/>
+      <match offset="2:16" type="string" value="/usr/bin/env sed"/>
+      <match offset="2:16" type="string" value="/usr/bin/env ssed"/>
+      <match offset="2:16" type="string" value="/usr/bin/sed"/>
+      <match offset="2:16" type="string" value="/usr/bin/ssed"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="application/x-shellscript"/>
@@ -1793,23 +1838,25 @@
     <alias type="text/x-sh"/>
     <comment>Shell Script</comment>
     <icon name="application-x-shellscript"/>
+    <glob pattern="*.ash" weight="95"/>
     <glob pattern="*.bash" weight="95"/>
     <glob pattern="*.csh" weight="95"/>
+    <glob pattern="*.dash" weight="95"/>
     <glob pattern="*.sh" weight="80"/>
     <glob pattern="*.zsh" weight="95"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/bin/ash"/>
-      <match offset="0" type="string" value="#!/bin/bash"/>
-      <match offset="0" type="string" value="#!/bin/csh"/>
-      <match offset="0" type="string" value="#!/bin/dash"/>
-      <match offset="0" type="string" value="#!/bin/sh"/>
-      <match offset="0" type="string" value="#!/bin/zsh"/>
-      <match offset="0" type="string" value="#!/usr/bin/env ash"/>
-      <match offset="0" type="string" value="#!/usr/bin/env bash"/>
-      <match offset="0" type="string" value="#!/usr/bin/env csh"/>
-      <match offset="0" type="string" value="#!/usr/bin/env dash"/>
-      <match offset="0" type="string" value="#!/usr/bin/env sh"/>
-      <match offset="0" type="string" value="#!/usr/bin/env zsh"/>
+      <match offset="2:16" type="string" value="/bin/ash"/>
+      <match offset="2:16" type="string" value="/bin/bash"/>
+      <match offset="2:16" type="string" value="/bin/csh"/>
+      <match offset="2:16" type="string" value="/bin/dash"/>
+      <match offset="2:16" type="string" value="/bin/sh"/>
+      <match offset="2:16" type="string" value="/bin/zsh"/>
+      <match offset="2:16" type="string" value="/usr/bin/env ash"/>
+      <match offset="2:16" type="string" value="/usr/bin/env bash"/>
+      <match offset="2:16" type="string" value="/usr/bin/env csh"/>
+      <match offset="2:16" type="string" value="/usr/bin/env dash"/>
+      <match offset="2:16" type="string" value="/usr/bin/env sh"/>
+      <match offset="2:16" type="string" value="/usr/bin/env zsh"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
@@ -1831,6 +1878,14 @@
     <glob pattern="*.theme"/>
     <sub-class-of type="application/x-desktop"/>
   </mime-type>
+  <mime-type type="application/x-trash">
+    <comment>Backup File</comment>
+    <glob pattern="*~"/>
+    <glob pattern="*%"/>
+    <glob pattern="*.bak" weight="60"/>
+    <glob pattern="*.old" weight="60"/>
+    <glob pattern="*.sik"/>
+  </mime-type>
   <mime-type type="application/x-ufraw">
     <comment>UFRaw ID Image</comment>
     <acronym>UFRaw</acronym>
@@ -1838,6 +1893,11 @@
     <sub-class-of type="application/xml"/>
     <generic-icon name="image-x-generic"/>
     <glob pattern="*.ufraw"/>
+  </mime-type>
+  <mime-type type="application/x-ustar">
+    <comment>Ustar Archive</comment>
+    <generic-icon name="package-x-generic"/>
+    <glob pattern="*.ustar"/>
   </mime-type>
   <mime-type type="application/x-virtualbox-hdd">
     <comment>Virtual Hard Disk</comment>
@@ -1884,6 +1944,12 @@
     <comment>Remote Desktop (VNC) file</comment>
     <glob pattern="*.vnc"/>
   </mime-type>
+  <mime-type type="application/x-wais-source">
+    <comment>WAIS Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.src"/>
+  </mime-type>
   <mime-type type="application/x-wavefront-obj">
     <sub-class-of type="text/plain"/>
     <comment>Wavefront OBJ Model</comment>
@@ -1920,12 +1986,48 @@
     <glob pattern="*.its"/>
     <comment>Internet Document Set</comment>
   </mime-type>
+  <mime-type type="application/x-wonderswan-rom">
+    <comment>Bandai WonderSwan ROM</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.ws"/>
+  </mime-type>
+  <mime-type type="application/x-wonderswan-color-rom">
+    <comment>Bandai WonderSwan Color ROM</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.wsc"/>
+  </mime-type>
+  <mime-type type="application/x-wpg">
+    <comment>WordPerfect/Drawperfect Image</comment>
+    <generic-icon name="image-x-generic"/>
+    <glob pattern="*.wpg"/>
+  </mime-type>
   <mime-type type="application/x-wwf">
     <comment>WWF Document</comment>
     <icon name="x-office-document"/>
     <glob pattern="*.wwf"/>
     <sub-class-of type="application/pdf"/>
     <alias type="application/wwf"/>
+  </mime-type>
+  <mime-type type="application/x-x509-ca-cert">
+    <comment>DER/PEM/Netscape-encoded X.509 Certificate</comment>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.cert"/>
+    <glob pattern="*.crt"/>
+    <glob pattern="*.der"/>
+    <glob pattern="*.pem"/>
+  </mime-type>
+  <mime-type type="application/x-xz-compressed-tar">
+    <comment>Tar Archive (XZ-Compressed)</comment>
+    <sub-class-of type="application/x-xz"/>
+    <generic-icon name="package-x-generic"/>
+    <glob pattern="*.tar.xz"/>
+    <glob pattern="*.txz"/>
+  </mime-type>
+  <mime-type type="application/x-xzpdf">
+    <comment>PDF Document (XZ-Compressed)</comment>
+    <sub-class-of type="application/x-xz"/>
+    <generic-icon name="x-office-document"/>
+    <glob pattern="*.pdf.xz"/>
   </mime-type>
   <mime-type type="application/x-yaml">
     <acronym>YAML</acronym>
@@ -1941,6 +2043,24 @@
     <alias type="text/x-yaml"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="application/x-zerosize">
+    <comment>Empty Document</comment>
+  </mime-type>
+  <mime-type type="application/x-zoo">
+    <comment>Zoo Archive</comment>
+    <generic-icon name="package-x-generic"/>
+    <magic priority="60">
+      <match offset="20" type="little32" value="0xfdc4a7dc"/>
+    </magic>
+    <glob pattern="*.zoo"/>
+  </mime-type>
+  <mime-type type="application/x-zstd-compressed-tar">
+    <comment>Tar Archive (Zstandard-Compressed)</comment>
+    <generic-icon name="package-x-generic"/>
+    <sub-class-of type="application/zstd"/>
+    <glob pattern="*.tar.zst"/>
+    <glob pattern="*.tzst"/>
+  </mime-type>
 
   <!-- AUDIO/* -->
 
@@ -1954,7 +2074,7 @@
     </magic>
     <glob pattern="*.aac"/>
     <glob pattern="*.adts"/>
-    <glob weight="10" pattern="*.ass"/>
+    <glob pattern="*.ass" weight="10"/>
     <alias type="audio/x-aac"/>
   </mime-type>
   <mime-type type="audio/ac3">
@@ -2627,6 +2747,17 @@
     </magic>
     <glob pattern="*.jpf"/>
     <glob pattern="*.jpx"/>
+  </mime-type>
+  <mime-type type="image/ktx">
+    <comment>Khronos Texture Image</comment>
+    <magic priority="80">
+      <match offset="0" type="big32" value="0xAB4B5458">
+        <match offset="4" type="big32" value="0x203131BB">
+          <match offset="8" type="big32" value="0x0D0A1A0A"/>
+        </match>
+      </match>
+    </magic>
+    <glob pattern="*.ktx"/>
   </mime-type>
   <mime-type type="image/openraster">
     <comment>OpenRaster Archiving Image</comment>
@@ -3358,6 +3489,33 @@
     <glob pattern="*.csvs"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/html">
+    <comment>HTML Document</comment>
+    <acronym>HTML</acronym>
+    <expanded-acronym>HyperText Markup Language</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="&lt;!--"/>
+      <match offset="0" type="string" value="&lt;!doctype HTML"/>
+      <match offset="0" type="string" value="&lt;!DOCTYPE html"/>
+      <match offset="0" type="string" value="&lt;BODY"/>
+      <match offset="0" type="string" value="&lt;body"/>
+      <match offset="0" type="string" value="&lt;h1"/>
+      <match offset="0" type="string" value="&lt;H1"/>
+      <match offset="0:256" type="string" value="&lt;!doctype html"/>
+      <match offset="0:256" type="string" value="&lt;!DOCTYPE HTML"/>
+      <match offset="0:256" type="string" value="&lt;HEAD"/>
+      <match offset="0:256" type="string" value="&lt;head"/>
+      <match offset="0:256" type="string" value="&lt;HTML"/>
+      <match offset="0:256" type="string" value="&lt;html"/>
+      <match offset="0:256" type="string" value="&lt;SCRIPT"/>
+      <match offset="0:256" type="string" value="&lt;script"/>
+      <match offset="0:256" type="string" value="&lt;TITLE"/>
+      <match offset="0:256" type="string" value="&lt;title"/>
+    </magic>
+    <glob pattern="*.html"/>
+    <glob pattern="*.htm"/>
+  </mime-type>
   <mime-type type="text/sql">
     <comment>SQL Query Code</comment>
     <alias type="text/sql2"/>
@@ -3377,15 +3535,43 @@
       <match offset="0" type="string" value="-- SQLite format 3"/>
     </magic>
   </mime-type>
-  <mime-type type="text/x.gcode">
-    <comment>G-code File</comment>
+  <mime-type type="text/troff">
+    <comment>Troff Document</comment>
     <sub-class-of type="text/plain"/>
-    <generic-icon name="text-x-generic"/>
-    <glob pattern="*.gcode"/>
+    <alias type="application/x-troff"/>
+    <alias type="text/x-troff"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="'.\\\&quot;"/>
+      <match offset="0" type="string" value="'\\\&quot;"/>
+      <match offset="0" type="string" value=".\\\&quot;"/>
+      <match offset="0" type="string" value="\\\&quot;"/>
+    </magic>
+    <glob pattern="*.roff"/>
+    <glob pattern="*.t" weight="10"/>
+    <glob pattern="*.tr"/>
+  </mime-type>
+  <mime-type type="text/xmcd">
+    <comment>XMCD CD Database</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="# xmcd"/>
+    </magic>
   </mime-type>
 
   <!-- TEXT/vnd.* -->
 
+  <mime-type type="text/vnd.graphviz">
+    <comment>Graphviz DOT Graph</comment>
+    <generic-icon name="x-office-document"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="digraph "/>
+      <match offset="0" type="string" value="graph "/>
+      <match offset="0" type="string" value="strict digraph "/>
+      <match offset="0" type="string" value="strict graph "/>
+    </magic>
+    <glob pattern="*.dot"/>
+    <glob pattern="*.gv"/>
+  </mime-type>
   <mime-type type="text/vnd.qt.linguist">
     <comment>Message Catalog</comment>
     <sub-class-of type="application/xml"/>
@@ -3399,6 +3585,40 @@
   <mime-type type="text/vnd.rn-realtext">
     <comment>RealText Document</comment>
     <glob pattern="*.rt"/>
+  </mime-type>
+  <mime-type type="text/vnd.senx.warpscript">
+    <comment>WarpScript Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.mc2"/>
+  </mime-type>
+  <mime-type type="text/vnd.sun.j2me.app-descriptor">
+    <comment>JAD Document</comment>
+    <acronym>JAD</acronym>
+    <expanded-acronym>Java Application Descriptor</expanded-acronym>
+    <magic priority="50">
+      <match offset="0" type="string" value="MIDlet-"/>
+    </magic>
+    <glob pattern="*.jad"/>
+  </mime-type>
+  <mime-type type="text/vnd.wap.wml">
+    <comment>WML Document</comment>
+    <acronym>WML</acronym>
+    <expanded-acronym>Wireless Markup Language</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <glob pattern="*.wml"/>
+  </mime-type>
+  <mime-type type="text/vnd.wap.wmlscript">
+    <comment>WMLScript program</comment>
+    <glob pattern="*.wmls"/>
+  </mime-type>
+
+  <!-- TEXT/x.* -->
+
+  <mime-type type="text/x.gcode">
+    <comment>G-code File</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.gcode"/>
   </mime-type>
 
   <!-- TEXT/x-* -->
@@ -3425,7 +3645,8 @@
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-authors">
-    <comment>Author List</comment>
+    <comment>Author Credit List</comment>
+    <alias type="text/x-credits"/>
     <icon name="text-x-authors"/>
     <glob pattern="AUTHORS" weight="95"/>
     <glob pattern="AUTHORS.md" weight="95"/>
@@ -3435,6 +3656,10 @@
     <glob pattern="CONTRIBUTORS.md" weight="95"/>
     <glob pattern="CONTRIBUTORS.rst" weight="95"/>
     <glob pattern="CONTRIBUTORS.txt" weight="95"/>
+    <glob pattern="CREDITS"/>
+    <glob pattern="CREDITS.md" weight="95"/>
+    <glob pattern="CREDITS.rst" weight="95"/>
+    <glob pattern="CREDITS.txt"/>
     <glob pattern="MAINTAINERS" weight="95"/>
     <glob pattern="MAINTAINERS.md" weight="95"/>
     <glob pattern="MAINTAINERS.rst" weight="95"/>
@@ -3453,6 +3678,16 @@
     <glob pattern="*.bed"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-c++hdr">
+    <comment>C++ Header</comment>
+    <sub-class-of type="text/x-c++src"/>
+    <icon name="text-x-c++hdr"/>
+    <glob pattern="*.h++"/>
+    <glob pattern="*.hh"/>
+    <glob pattern="*.hp"/>
+    <glob pattern="*.hpp"/>
+    <glob pattern="*.hxx"/>
+  </mime-type>
   <mime-type type="text/x-c++src">
     <comment>C++ Source Code</comment>
     <icon name="text-x-c++src"/>
@@ -3462,6 +3697,18 @@
     <glob pattern="*.cc"/>
     <glob case-sensitive="true" pattern="*.C"/>
     <sub-class-of type="text/x-csrc"/>
+    <magic priority="70">
+      <match offset="0:128" type="string" value="// vim: set fileencoding=utf-8 filetype=c++ "/>
+      <match offset="0:128" type="string" value="// vim: set fileencoding=utf-8 filetype=cpp "/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-mac; Mode: C++;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-mac; Mode: CPP;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-unix; Mode: C++;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-unix; Mode: CPP;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-win; Mode: C++;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-win; Mode: CPP;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8; Mode: C++;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8; Mode: CPP;"/>
+    </magic>
   </mime-type>
   <mime-type type="text/x-changelog">
     <comment>ChangeLog Document</comment>
@@ -3489,12 +3736,24 @@
     <icon name="text-x-csrc"/>
     <glob case-sensitive="true" pattern="*.c"/>
     <sub-class-of type="text/plain"/>
+    <magic priority="30">
+      <match offset="0" type="string" value="/*"/>
+      <match offset="0" type="string" value="//"/>
+      <match offset="0" type="string" value="#include"/>
+    </magic>
+    <magic priority="70">
+      <match offset="0:128" type="string" value="// vim: set fileencoding=utf-8 filetype=c "/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-mac; Mode: C;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-unix; Mode: C;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8-win; Mode: C;"/>
+      <match offset="0:32" type="string" value="// -*- coding: utf-8; Mode: C;"/>
+    </magic>
   </mime-type>
   <mime-type type="text/x-chdr">
     <comment>C Header</comment>
     <icon name="text-x-chdr"/>
-    <glob case-sensitive="true" pattern="*.h"/>
     <sub-class-of type="text/x-csrc"/>
+    <glob case-sensitive="true" pattern="*.h"/>
   </mime-type>
   <mime-type type="text/x-cobol">
     <comment>COBOL Source File</comment>
@@ -3506,6 +3765,36 @@
   </mime-type>
   <mime-type type="text/x-component">
     <glob pattern="*.htc"/>
+  </mime-type>
+  <mime-type type="text/x-copying">
+    <comment>License Terms</comment>
+    <icon name="text-x-readme"/>
+    <sub-class-of type="text/markdown"/>
+    <sub-class-of type="text/plain"/>
+    <sub-class-of type="text/x-markdown"/>
+    <sub-class-of type="text/x-rst"/>
+    <glob pattern="COPYING"/>
+    <glob pattern="COPYING.md"/>
+    <glob pattern="COPYING.rst"/>
+    <glob pattern="COPYING.txt"/>
+    <glob pattern="gpl-*.txt"/>
+    <glob pattern="lgpl-*.txt"/>
+    <glob pattern="LICENSE"/>
+    <glob pattern="LICENSE.md"/>
+    <glob pattern="LICENSE.rst"/>
+    <glob pattern="LICENSE.txt" weight="60"/>
+  </mime-type>
+  <mime-type type="text/x-csharp">
+    <comment>C# Source Code</comment>
+    <sub-class-of type="text/x-csrc"/>
+    <glob pattern="*.cs"/>
+  </mime-type>
+  <mime-type type="text/x-dcl">
+    <comment>DCL Script</comment>
+    <acronym>DCL</acronym>
+    <expanded-acronym>Data Conversion Laboratory</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.dcl"/>
   </mime-type>
   <mime-type type="text/x-dockerfile">
     <comment>Dockerfile Build File</comment>
@@ -3519,6 +3808,28 @@
     <glob pattern="Doxyfile"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-dsl">
+    <comment>DSSSL Document</comment>
+    <acronym>DSSSL</acronym>
+    <expanded-acronym>Document Style Semantics and Specification Language</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.dsl"/>
+  </mime-type>
+  <mime-type type="text/x-dbus-service">
+    <comment>D-Bus Service File</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="0:256" type="string" value="\n[D-BUS Service]\n"/>
+      <match offset="0" type="string" value="[D-BUS Service]\n"/>
+    </magic>
+    <glob pattern="*.service"/>
+  </mime-type>
+  <mime-type type="text/x-dsrc">
+    <comment>D Source Code</comment>
+    <icon name="text-x-dsrc"/>
+    <glob pattern="*.d"/>
+    <glob pattern="*.di"/>
+  </mime-type>
   <mime-type type="text/x-eiffel">
     <comment>Eiffel Source Code</comment>
     <icon name="text-x-eiffel"/>
@@ -3526,18 +3837,20 @@
     <glob pattern="*.eif"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-emacs-lisp">
+    <comment>Emacs Lisp Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="\012("/>
+      <match offset="0" type="string" value=";ELC\023\000\000\000"/>
+    </magic>
+    <glob pattern="*.el"/>
+  </mime-type>
   <mime-type type="text/x-erlang">
     <comment>Erlang Source Code</comment>
     <icon name="text-x-erlang"/>
     <glob pattern="*.erl"/>
     <sub-class-of type="text/plain"/>
-  </mime-type>
-  <mime-type type="text/x-dsrc">
-    <comment>D Source Code</comment>
-    <icon name="text-x-dsrc"/>
-    <glob pattern="*.d"/>
-    <glob pattern="*.di"/>
-    <sub-class-of type="text/x-csrc"/>
   </mime-type>
   <mime-type type="text/x-fasta">
     <comment>FASTA Bioinformatics Data File</comment>
@@ -3555,16 +3868,23 @@
     <comment>Fortran Source Code</comment>
     <icon name="text-x-fortran"/>
     <glob pattern="*.f"/>
-    <glob pattern="*.f77"/>
-    <glob pattern="*.f90"/>
-    <glob pattern="*.f95"/>
     <glob pattern="*.f03"/>
     <glob pattern="*.f08"/>
     <glob pattern="*.f15"/>
+    <glob pattern="*.f77"/>
+    <glob pattern="*.f90"/>
+    <glob pattern="*.f95"/>
+    <glob pattern="*.for"/>
+    <glob pattern="*.fortran"/>
     <glob pattern="*.fpp"/>
     <glob pattern="*.ftn"/>
-    <glob pattern="*.fortran"/>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-genie">
+    <comment>Genie Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.gs" case-sensitive="true"/>
+    <generic-icon name="text-x-generic"/>
   </mime-type>
   <mime-type type="text/x-genius">
     <comment>Genius GEL File</comment>
@@ -3578,6 +3898,32 @@
     <glob pattern=".gitignore"/>
     <glob pattern=".gitmodules"/>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-gradle">
+    <comment>Gradle Scripts</comment>
+    <sub-class-of type="text/x-groovy"/>
+    <glob pattern="*.gradle"/>
+  </mime-type>
+  <mime-type type="text/x-groovy">
+    <comment>Groovy Script</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.groovy"/>
+  </mime-type>
+  <mime-type type="text/x-haskell">
+    <comment>Haskell Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.hs"/>
+  </mime-type>
+  <mime-type type="text/x-install">
+    <comment>Installation Instructions</comment>
+    <icon name="text-x-install"/>
+    <sub-class-of type="text/markdown"/>
+    <sub-class-of type="text/plain"/>
+    <sub-class-of type="text/x-markdown"/>
+    <sub-class-of type="text/x-rst"/>
+    <glob pattern="INSTALL"/>
+    <glob pattern="INSTALL.*"/>
   </mime-type>
   <mime-type type="text/x-iptables">
     <comment>IPTables Configuration File</comment>
@@ -3610,6 +3956,24 @@
     <glob pattern="*.less"/>
     <sub-class-of type="text/x-css"/>
   </mime-type>
+  <mime-type type="text/x-lua">
+    <comment>Lua Script</comment>
+    <sub-class-of type="application/x-executable"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="100">
+      <match offset="2:16" type="string" value="/bin/env lua"/>
+      <match offset="2:16" type="string" value="/bin/env luajit"/>
+      <match offset="2:16" type="string" value="/bin/lua"/>
+      <match offset="2:16" type="string" value="/bin/luajit"/>
+      <match offset="2:16" type="string" value="/usr/bin/env lua"/>
+      <match offset="2:16" type="string" value="/usr/bin/env luajit"/>
+      <match offset="2:16" type="string" value="/usr/bin/lua"/>
+      <match offset="2:16" type="string" value="/usr/bin/luajit"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/lua"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/luajit"/>
+    </magic>
+    <glob pattern="*.lua"/>
+  </mime-type>
   <mime-type type="text/x-luxrender-materials">
     <comment>LuxRender Materials</comment>
     <glob pattern="*.lxm"/>
@@ -3629,32 +3993,42 @@
   <mime-type type="text/x-makefile">
     <comment>Makefile</comment>
     <icon name="text-x-makefile"/>
+    <alias type="text/x-cmake"/>
+    <glob pattern="*.cmake"/>
+    <glob pattern="*.mak" weight="30"/>
+    <glob pattern="*.mk" weight="30"/>
+    <glob pattern="CMakeLists.txt"/>
     <glob pattern="GNUmakefile" weight="95"/>
     <glob pattern="makefile" weight="95"/>
     <glob pattern="Makefile.*" weight="10"/>
-    <glob pattern="*.mak" weight="30"/>
-    <glob pattern="*.mk" weight="30"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/bmake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/bmake"/>
-      <match offset="0" type="string" value="#!/usr/bin/colormake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/colormake"/>
-      <match offset="0" type="string" value="#!/usr/bin/cmake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/cmake"/>
-      <match offset="0" type="string" value="#!/usr/bin/clmake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/clmake"/>
-      <match offset="0" type="string" value="#!/usr/bin/pmake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/pmake"/>
-      <match offset="0" type="string" value="#!/usr/bin/make"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/make"/>
-      <match offset="0" type="string" value="#!/usr/bin/makepp"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/makepp"/>
-      <match offset="0" type="string" value="#!/usr/bin/mpp"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/mpp"/>
-      <match offset="0" type="string" value="#!/usr/bin/rake"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/rake"/>
+      <match offset="2:16" type="string" value="/usr/bin/bmake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/bmake"/>
+      <match offset="2:16" type="string" value="/usr/bin/colormake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/colormake"/>
+      <match offset="2:16" type="string" value="/usr/bin/cmake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/cmake"/>
+      <match offset="2:16" type="string" value="/usr/bin/clmake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/clmake"/>
+      <match offset="2:16" type="string" value="/usr/bin/pmake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/pmake"/>
+      <match offset="2:16" type="string" value="/usr/bin/make"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/make"/>
+      <match offset="2:16" type="string" value="/usr/bin/makepp"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/makepp"/>
+      <match offset="2:16" type="string" value="/usr/bin/mpp"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/mpp"/>
+      <match offset="2:16" type="string" value="/usr/bin/rake"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/rake"/>
     </magic>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-maven+xml">
+    <comment>Maven Description File</comment>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="pom.xml"/>
+    <glob pattern="settings.xml"/>
+    <sub-class-of type="application/xml"/>
   </mime-type>
   <mime-type type="text/x-ms-regedit">
     <comment>Windows Registry Extract</comment>
@@ -3690,6 +4064,13 @@
     <glob pattern="*.mli"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
+  <mime-type type="text/x-ooc">
+    <comment>OOC Source Code</comment>
+    <acronym>OOC</acronym>
+    <expanded-acronym>Out Of Class</expanded-acronym>
+    <sub-class-of type="text/x-csrc"/>
+    <glob pattern="*.ooc"/>
+  </mime-type>
   <mime-type type="text/x-pascal">
     <comment>Pascal Source Code</comment>
     <icon name="text-x-pascal"/>
@@ -3706,10 +4087,14 @@
     <glob pattern="*.pro"/>
     <glob pattern="*.prolog"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/env gnuprolog"/>
-      <match offset="0" type="string" value="#!/usr/bin/env prolog"/>
-      <match offset="0" type="string" value="#!/usr/bin/env swipl"/>
-      <match offset="0" type="string" value="#!/usr/bin/env yap"/>
+      <match offset="2:16" type="string" value="/usr/bin/env gnuprolog"/>
+      <match offset="2:16" type="string" value="/usr/bin/env prolog"/>
+      <match offset="2:16" type="string" value="/usr/bin/env swipl"/>
+      <match offset="2:16" type="string" value="/usr/bin/env yap"/>
+      <match offset="2:16" type="string" value="/usr/bin/gnuprolog"/>
+      <match offset="2:16" type="string" value="/usr/bin/prolog"/>
+      <match offset="2:16" type="string" value="/usr/bin/swipl"/>
+      <match offset="2:16" type="string" value="/usr/bin/yap"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
@@ -3730,15 +4115,15 @@
     <glob pattern="*.wsgi"/>
     <glob pattern="__init__.py" weight="95"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/env python"/>
-      <match offset="0" type="string" value="#!/usr/bin/python"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/python"/>
       <match offset="0" type="big32" value="0x03f30d0a"/>
       <match offset="0" type="big32" value="0x3b0c0d0a"/>
       <match offset="0" type="big32" value="0x4f0c0d0a"/>
       <match offset="0" type="big32" value="0x6c0c0d0a"/>
       <match offset="0" type="big32" value="0x9e0c0d0a"/>
       <match offset="0" type="big32" value="0xee0c0d0a"/>
+      <match offset="2:16" type="string" value="/usr/bin/env python"/>
+      <match offset="2:16" type="string" value="/usr/bin/python"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/python"/>
     </magic>
     <sub-class-of type="application/x-executable"/>
     <sub-class-of type="text/plain"/>
@@ -3751,9 +4136,9 @@
     <glob pattern="*.rda" weight="70"/>
     <glob pattern="*.rds" weight="70"/>
     <magic priority="100">
-      <match offset="0" type="string" value="#!/usr/bin/env Rscript"/>
-      <match offset="0" type="string" value="#!/usr/bin/Rscript"/>
-      <match offset="0" type="string" value="#!/usr/local/bin/Rscript"/>
+      <match offset="2:16" type="string" value="/usr/bin/env Rscript"/>
+      <match offset="2:16" type="string" value="/usr/bin/Rscript"/>
+      <match offset="2:16" type="string" value="/usr/local/bin/Rscript"/>
     </magic>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -3764,8 +4149,6 @@
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-markdown"/>
     <sub-class-of type="text/x-rst"/>
-    <glob pattern="gpl-*.txt"/>
-    <glob pattern="lgpl-*.txt"/>
     <glob pattern="BUGS"/>
     <glob pattern="BUGS.md"/>
     <glob pattern="CODE_OF_CONDUCT"/>
@@ -3774,9 +4157,6 @@
     <glob pattern="CONTRIBUTING.md"/>
     <glob pattern="HACKING"/>
     <glob pattern="HACKING.md"/>
-    <glob pattern="LICENSE"/>
-    <glob pattern="LICENSE.md"/>
-    <glob pattern="LICENSE.txt" weight="60"/>
     <glob pattern="NEWS"/>
     <glob pattern="NEWS.md"/>
     <glob pattern="README"/>
@@ -3806,11 +4186,27 @@
     <glob pattern="*.sass"/>
     <sub-class-of type="text/x-css"/>
   </mime-type>
+  <mime-type type="text/x-scala">
+    <comment>Scala Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.scala"/>
+  </mime-type>
+  <mime-type type="text/x-scheme">
+    <comment>Scheme Source Code</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.scm"/>
+    <glob pattern="*.ss"/>
+  </mime-type>
   <mime-type type="text/x-scss">
     <comment>Sass CSS Preprocessor File</comment>
     <icon name="text-x-scss"/>
     <glob pattern="*.scss"/>
     <sub-class-of type="text/x-css"/>
+  </mime-type>
+  <mime-type type="text/x-setext">
+    <comment>Setext Document</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.etx"/>
   </mime-type>
   <mime-type type="text/x-stockholm">
     <comment>Stockholm Bioinformatics Data File</comment>
@@ -3832,6 +4228,45 @@
     <glob pattern="*.swg"/>
     <sub-class-of type="text/plain"/>
     <sub-class-of type="text/x-csrc"/>
+  </mime-type>
+  <mime-type type="text/x-systemd-unit">
+    <comment>Systemd Unit File</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="[Automount]\n"/>
+      <match offset="0" type="string" value="[Install]\n"/>
+      <match offset="0" type="string" value="[Mount]\n"/>
+      <match offset="0" type="string" value="[Path]\n"/>
+      <match offset="0" type="string" value="[Scope]\n"/>
+      <match offset="0" type="string" value="[Service]\n"/>
+      <match offset="0" type="string" value="[Slice]\n"/>
+      <match offset="0" type="string" value="[Socket]\n"/>
+      <match offset="0" type="string" value="[Swap]\n"/>
+      <match offset="0" type="string" value="[Timer]\n"/>
+      <match offset="0" type="string" value="[Unit]\n"/>
+      <match offset="0:256" type="string" value="\n[Automount]\n"/>
+      <match offset="0:256" type="string" value="\n[Install]\n"/>
+      <match offset="0:256" type="string" value="\n[Mount]\n"/>
+      <match offset="0:256" type="string" value="\n[Path]\n"/>
+      <match offset="0:256" type="string" value="\n[Scope]\n"/>
+      <match offset="0:256" type="string" value="\n[Service]\n"/>
+      <match offset="0:256" type="string" value="\n[Slice]\n"/>
+      <match offset="0:256" type="string" value="\n[Socket]\n"/>
+      <match offset="0:256" type="string" value="\n[Swap]\n"/>
+      <match offset="0:256" type="string" value="\n[Timer]\n"/>
+      <match offset="0:256" type="string" value="\n[Unit]\n"/>
+    </magic>
+    <glob pattern="*.automount"/>
+    <glob pattern="*.device"/>
+    <glob pattern="*.mount"/>
+    <glob pattern="*.path"/>
+    <glob pattern="*.scope"/>
+    <glob pattern="*.service"/>
+    <glob pattern="*.slice"/>
+    <glob pattern="*.socket"/>
+    <glob pattern="*.swap"/>
+    <glob pattern="*.target"/>
+    <glob pattern="*.timer"/>
   </mime-type>
   <mime-type type="text/x-tcl">
     <comment>Tcl Script</comment>
@@ -3862,6 +4297,74 @@
     <magic priority="50">
       <match offset="0:100" type="string" value="\\section"/>
     </magic>
+  </mime-type>
+  <mime-type type="text/x-texinfo">
+    <comment>TeXInfo Document</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.texi"/>
+    <glob pattern="*.texinfo"/>
+  </mime-type>
+  <mime-type type="text/x-troff-me">
+    <comment>Troff ME Input Document</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.me"/>
+  </mime-type>
+  <mime-type type="text/x-troff-mm">
+    <comment>Troff MM Input Document</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.mm"/>
+  </mime-type>
+  <mime-type type="text/x-troff-ms">
+    <comment>Troff MS Input Document</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.ms"/>
+  </mime-type>
+  <mime-type type="text/x-twig">
+    <comment>Twig Template</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.twig"/>
+    <generic-icon name="text-x-generic-template"/>
+  </mime-type>
+  <mime-type type="text/x-uil">
+    <comment>X-Motif UIL Table</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.uil"/>
+  </mime-type>
+  <mime-type type="text/x-uri">
+    <comment>Resource Location</comment>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="text/x-uuencode">
+    <comment>uuencoded File</comment>
+    <sub-class-of type="text/plain"/>
+    <glob pattern="*.uue"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="begin "/>
+    </magic>
+    <alias type="zz-application/zz-winassoc-uu"/>
+  </mime-type>
+  <mime-type type="text/x-vala">
+    <comment>Vala Source Code</comment>
+    <glob pattern="*.vala"/>
+    <glob pattern="*.vapi"/>
+  </mime-type>
+  <mime-type type="text/x-xmi">
+    <comment>XMI File</comment>
+    <acronym>XMI</acronym>
+    <expanded-acronym>XML Metadata Interchange</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <glob pattern="*.xmi"/>
+    <root-XML localName="XMI" namespaceURI="http://schema.omg.org/spec/XMI/2.0"/>
+    <root-XML localName="XMI" namespaceURI="http://schema.omg.org/spec/XMI/2.1"/>
+  </mime-type>
+  <mime-type type="text/x-xslfo">
+    <comment>XSL FO File</comment>
+    <acronym>XSL FO</acronym>
+    <expanded-acronym>XSL Formatting Objects</expanded-acronym>
+    <sub-class-of type="application/xml"/>
+    <glob pattern="*.fo"/>
+    <glob pattern="*.xslfo"/>
+    <root-XML localName="root" namespaceURI="http://www.w3.org/1999/XSL/Format"/>
   </mime-type>
 
   <!-- VIDEO/* -->
