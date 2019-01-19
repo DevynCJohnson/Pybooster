@@ -288,6 +288,197 @@ convert_to_wav() {
 fi
 
 
+# IMAGES #
+
+
+if [ -x "$(command -v convert)" ]; then
+
+
+#' Convert image to BMP
+#' @param[in] $1 pathname to the image file to convert
+img2bmp() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to BMP\nUsage: img2bmp IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.bmp"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to Windows Cursor
+#' @param[in] $1 pathname to the image file to convert
+img2cur() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to a Windows Cursor\nUsage: img2cur IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.cur"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to GIF
+#' @param[in] $1 pathname to the image file to convert
+img2gif() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to GIF\nUsage: img2gif IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.gif"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to ICNS
+#' @param[in] $1 pathname to the image file to convert
+img2icns() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to ICNS\nUsage: img2icns IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.icns"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to ICO
+#' @param[in] $1 pathname to the image file to convert
+img2ico() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to ICO\nUsage: img2ico IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.ico"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to JPG
+#' @param[in] $1 pathname to the image file to convert
+img2jpg() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to JPG\nUsage: img2jpg IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.jpg"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to PDF
+#' @param[in] $1 pathname to the image file to convert
+img2pdf() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to PDF\nUsage: img2pdf IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.pdf"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to PNG
+#' @param[in] $1 pathname to the image file to convert
+img2png() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to PNG\nUsage: img2png IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.png"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to PostScript
+#' @param[in] $1 pathname to the image file to convert
+img2ps() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to PostScript\nUsage: img2ps IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.ps"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to TIFF
+#' @param[in] $1 pathname to the image file to convert
+img2tiff() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to TIFF\nUsage: img2tiff IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.tiff"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to Unicode Braille
+#' @param[in] $1 pathname to the image file to convert
+img2ubrl() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to Unicode Braille\nUsage: img2ubrl IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.ubrl"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Convert image to XPM
+#' @param[in] $1 pathname to the image file to convert
+img2xpm() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Convert an image file to XPM\nUsage: img2xpm IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" "${1%.*}.xpm"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Rotate an image file 90-degrees clock-wise
+#' @param[in] $1 pathname to the image file to rotate
+rotate_img() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Rotate an image file 90-degrees clock-wise\nUsage: rotate_img IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" -rotate 90 "${1}"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+#' Rotate an image file 90-degrees counter-clock-wise
+#' @param[in] $1 pathname to the image file to rotate
+rotate_img_ccw() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
+        printf 'Rotate an image file 90-degrees counter-clock-wise\nUsage: rotate_img_ccw IMAGE_FILE\n'
+    elif [ -n "${1:-}" ] && [ -r "${1}" ] && [ -f "${1}" ]; then
+        convert "${1}" -rotate -90 "${1}"
+    else
+        printf 'ERROR: A pathname to a readable image file is required!\n' >&2
+    fi
+}
+
+
+fi
+
+
 # VIDEO #
 
 
