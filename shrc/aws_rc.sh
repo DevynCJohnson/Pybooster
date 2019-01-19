@@ -350,7 +350,7 @@ ecr_rmimg() {
     elif [ "$(expr "${2}" : '.*')" != 71 ] && [ "$(expr "${2}" : '.*')" -ge 64 ]; then
         case "${2}" in
             # Correct digest prefix is present
-            sha256:*) imgdigest="${2}";;
+            'sha256:'*) imgdigest="${2}";;
             # Missing digest prefix; it will be added
             *) imgdigest="sha256:${2}";;
         esac
@@ -404,7 +404,7 @@ ecr_addtag2tagless() {
     else
         case "${2:-}" in
             # Correct digest prefix is present
-            sha256:*) imgdigest="${2}";;
+            'sha256:'*) imgdigest="${2}";;
             # Missing digest prefix; it will be added
             *) imgdigest="sha256:${2}";;
         esac

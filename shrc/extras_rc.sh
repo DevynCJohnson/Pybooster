@@ -86,16 +86,14 @@ if [ -x "$(command -v dconf)" ]; then
     alias backupdconf='dconf dump / > "${HOME}/gsettings.dump"'
     alias restoredconf='dconf load <'
 fi
-if [ -x "$(command -v gsettings)" ]; then
-    alias backupgset='gsettings list-recursively > "${HOME}/gsettings.lst"'
-    # Recognised values of XDG_CURRENT_DESKTOP: gnome, kde, xfce, lxde, & mate
-    if { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]; }; then
-        alias setgtktheme='gsettings set org.mate.desktop.interface gtk-theme'
-    elif { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]; }; then
-        alias setgtktheme='gsettings set org.gnome.desktop.interface gtk-theme'
-    elif { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]; }; then
-        alias setgtktheme='xfconf-query -c xsettings -p /Net/ThemeName -s'
-    fi
+[ -x "$(command -v gsettings)" ] && alias backupgset='gsettings list-recursively > "${HOME}/gsettings.lst"'
+if [ "$DESKENV" = 'gnome' ]; then
+    [ -x "$(command -v gsettings)" ] && alias setgtktheme='gsettings set org.gnome.desktop.interface gtk-theme'
+elif [ "$DESKENV" = 'mate' ]; then
+    [ -x "$(command -v gsettings)" ] && alias setgtktheme='gsettings set org.mate.desktop.interface gtk-theme'
+elif [ "$DESKENV" = 'xfce' ]; then
+    [ -x "$(command -v xfconf-query)" ] && alias setgtktheme='xfconf-query -c xsettings -p /Net/ThemeName -s'
+    [ -x "$(command -v gsettings)" ] && alias setgtktheme='gsettings set org.gnome.desktop.interface gtk-theme'
 fi
 
 # String Manipulation Aliases
@@ -283,29 +281,31 @@ findfilex() {
 #' @param[in] $2 Optional parameter for specifying the directory; The default is the current directory
 #' @usage findmime -zip /home
 findmime() {
-    local dir=.
+    local dir='.'
     [ -d "${2:-}" ] && dir="$2"
     [ -z "${1:-}" ] && return 1
     local opt
     case "${1:-}" in
         # Compressed
-        -rar) opt='x\-rar';;
-        -zip) opt='zip';;
+        '-rar') opt='x\-rar';;
+        '-zip') opt='zip';;
         # Documents
-        -csv) opt='text/csv';;
-        -office) opt='vnd\.openxmlformats\-officedocument';;
-        -pdf) opt='pdf';;
-        -txt) opt='text/';;
+        '-csv') opt='text/csv';;
+        '-office') opt='vnd\.openxmlformats\-officedocument';;
+        '-pdf') opt='pdf';;
+        '-txt') opt='text/';;
         # Executables
-        -elf) opt='x\-(executable|sharedlib)';;
-        -macho) opt='x\-mach\-binary';;
-        -msi) opt='vnd\.ms\-office';;
-        -pe) opt='x\-dosexec';;
+        '-elf') opt='x\-(executable|sharedlib)';;
+        '-macho') opt='x\-mach\-binary';;
+        '-msi') opt='vnd\.ms\-office';;
+        '-pe') opt='x\-dosexec';;
         *) return;;
     esac
     # Buffering Results
+    IFS=''
+    fileslist="$(find "${dir}" -type f -exec printf '%s' '{}' +)"
     local matches
-    matches="$(for i in "${dir}"/*; do filetype="$(file -Nb --mime-type "${i}")"; [[ "$filetype" =~ application/${opt} ]] && echo "${i#./*}"; done)"
+    matches="$(for i in $fileslist; do filetype="$(file -Nb --mime-type "${i}")"; [[ "$filetype" =~ application/${opt} ]] && echo "${i#./*}"; done)"
     [ -n "${matches:-}" ] && echo "${matches}" | tr -s / /
 }
 
@@ -392,7 +392,7 @@ searchInPath() {
         printf 'ERROR: A parameter is required!\n' >&2
     else
         for searchIn in ${PATH//:/ }; do
-            find "$searchIn" -mount -type f -name "$1" -exec printf '%s\n' '{}' +
+            find "$searchIn" -type f -name "$1" -exec printf '%s\n' '{}' +
         done
     fi
 }
@@ -404,7 +404,7 @@ searchInPkgPath() {
         printf 'ERROR: A parameter is required!\n' >&2
     else
         for searchIn in ${PKG_CONFIG_PATH//:/ }; do
-            find "$searchIn" -mount -type f -name "$1" -exec printf '%s\n' '{}' +
+            find "$searchIn" -type f -name "$1" -exec printf '%s\n' '{}' +
         done
     fi
 }
@@ -472,7 +472,7 @@ fi
 str2hex() {
     [ "$#" -eq 0 ] && return 1
     [ -z "${1:-}" ] && return 1
-    case "$1" in
+    case "${1}" in
         '-x') printf '%s\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "%02x"' | sed 's|..|\\x&|g' | tr -d '\n')";;
         '-0x') printf '%s\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "0x%02x "' | sed 's|\(.*\) |\1|' | tr -d '\n')";;
         '-c') printf '{ %s }\n' "$(printf '%s' "${2}" | hexdump -v -e '/1 "0x%02x, "' | sed 's|\(.*\), |\1|' | tr -d '\n')";;
@@ -699,9 +699,9 @@ if [ -n "$(command -v StartService)" ] && [ -n "$(command -v RestartService)" ];
     #' Generic Action Handler
     RunService() {
         case "$1" in
-            start) StartService;;
-            stop) StopService;;
-            restart) RestartService;;
+            'start') StartService;;
+            'stop') StopService;;
+            'restart') RestartService;;
             *) printf '%s: unknown argument: %s\n' "$0" "$1";;
         esac
     }
@@ -810,26 +810,32 @@ if [ -x "$(command -v R)" ]; then
     Rexe() { R -q --slave -e "library('compiler'); loadcmp(${RC_FILE})"; }
 fi
 
-if [ -x "$(command -v gsettings)" ]; then
-    #' Set the desktop wallpaper to the specified image
-    setwallpaper() {
-        if [ -z "$1" ]; then
-            printf 'ERROR: A parameter is required!\n' >&2
-        elif [ ! -r "$1" ]; then
-            printf '%s: The specified file is non-readable or non-existent!\n' "$1" >&2
-        else
-            if { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'mate' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'MATE' ]; }; then  # Mate
-                gsettings set org.mate.desktop.background picture-filename "$1"
-                gsettings set org.mate.desktop.screensaver picture-uri "$1"
-            elif { [ -n "${XDG_SESSION_DESKTOP:-}" ] && [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; } || { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'GNOME' ]; }; then  # GNOME
+#' Set the desktop wallpaper to the specified image
+setwallpaper() {
+    if [ -z "$1" ]; then
+        printf 'ERROR: A parameter is required!\n' >&2
+    elif [ ! -r "$1" ]; then
+        printf '%s: The specified file is non-readable or non-existent!\n' "$1" >&2
+    else
+        case "$DESKTYPE" in
+            'gnome')
                 gsettings set org.gnome.desktop.background picture-uri "$1"
                 gsettings set org.gnome.desktop.screensaver picture-uri "$1"
-            elif { [ -n "${XDG_CURRENT_DESKTOP:-}" ] && [ "$XDG_CURRENT_DESKTOP" = 'XFCE' ]; }; then  # XFCE
+            ;;
+            'mate')
+                gsettings set org.mate.desktop.background picture-filename "$1"
+                gsettings set org.mate.desktop.screensaver picture-uri "$1"
+            ;;
+            'xfce')
                 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set "$1"
-            fi
-        fi
-    }
-fi
+            ;;
+            *)
+                printf 'ERROR: Currently, setwallpaper does not support your desktop environment!\n' >&2
+                exit 1
+            ;;
+        esac
+    fi
+}
 
 if [ -x "$(command -v sqlite3)" ]; then
     #' Vacuum the specified SQLite database files

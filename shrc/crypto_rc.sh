@@ -173,69 +173,69 @@ _enctype_input() {
     case "${1:-}" in
         # AES
         'aes-128-cbc') enctype='-aes-128-cbc';;
-        'aes-128-ecb' | 'aes-128') enctype='-aes-128-ecb';;
+        'aes-128-ecb'|'aes-128') enctype='-aes-128-ecb';;
         'aes-192-cbc') enctype='-aes-192-cbc';;
-        'aes-192-ecb' | 'aes-192') enctype='-aes-192-ecb';;
+        'aes-192-ecb'|'aes-192') enctype='-aes-192-ecb';;
         'aes-256-cbc') enctype='-aes-256-cbc';;
-        'aes-256-ecb' | 'aes-256' | 'aes') enctype='-aes-256-ecb';;
+        'aes-256-ecb'|'aes-256'|'aes') enctype='-aes-256-ecb';;
         # ARIA
         'aria-128-cbc') enctype='-aria-128-cbc';;
         'aria-128-cfb') enctype='-aria-128-cfb';;
         'aria-128-cfb1') enctype='-aria-128-cfb1';;
         'aria-128-cfb8') enctype='-aria-128-cfb8';;
         'aria-128-ctr') enctype='-aria-128-ctr';;
-        'aria-128-ecb' | 'aria-128') enctype='-aria-128-ecb';;
+        'aria-128-ecb'|'aria-128') enctype='-aria-128-ecb';;
         'aria-128-ofb') enctype='-aria-128-ofb';;
         'aria-192-cbc') enctype='-aria-192-cbc';;
         'aria-192-cfb') enctype='-aria-192-cfb';;
         'aria-192-cfb1') enctype='-aria-192-cfb1';;
         'aria-192-cfb8') enctype='-aria-192-cfb8';;
         'aria-192-ctr') enctype='-aria-192-ctr';;
-        'aria-192-ecb' | 'aria-192') enctype='-aria-192-ecb';;
+        'aria-192-ecb'|'aria-192') enctype='-aria-192-ecb';;
         'aria-192-ofb') enctype='-aria-192-ofb';;
         'aria-256-cbc') enctype='-aria-256-cbc';;
         'aria-256-cfb') enctype='-aria-256-cfb';;
         'aria-256-cfb1') enctype='-aria-256-cfb1';;
         'aria-256-cfb8') enctype='-aria-256-cfb8';;
         'aria-256-ctr') enctype='-aria-256-ctr';;
-        'aria-256-ecb' | 'aria-256' | 'aria') enctype='-aria-256-ecb';;
+        'aria-256-ecb'|'aria-256'|'aria') enctype='-aria-256-ecb';;
         'aria-256-ofb') enctype='-aria-256-ofb';;
         # BLOWFISH
-        'bf-cbc' | 'blowfish-cbc') enctype='-bf-cbc';;
-        'bf-cfb' | 'blowfish-cfb') enctype='-bf-cfb';;
-        'bf-ecb' | 'blowfish-ecb' | 'bf' | 'blowfish') enctype='-bf-ecb';;
-        'bf-ofb' | 'blowfish-ofb') enctype='-bf-ofb';;
+        'bf-cbc'|'blowfish-cbc') enctype='-bf-cbc';;
+        'bf-cfb'|'blowfish-cfb') enctype='-bf-cfb';;
+        'bf-ecb'|'blowfish-ecb'|'bf'|'blowfish') enctype='-bf-ecb';;
+        'bf-ofb'|'blowfish-ofb') enctype='-bf-ofb';;
         # CAMELLIA
         'camellia-128-cbc') enctype='-camellia-128-cbc';;
-        'camellia-128-ecb' | 'camellia-128') enctype='-camellia-128-ecb';;
+        'camellia-128-ecb'|'camellia-128') enctype='-camellia-128-ecb';;
         'camellia-192-cbc') enctype='-camellia-192-cbc';;
-        'camellia-192-ecb' | 'camellia-192') enctype='-camellia-192-ecb';;
+        'camellia-192-ecb'|'camellia-192') enctype='-camellia-192-ecb';;
         'camellia-256-cbc') enctype='-camellia-256-cbc';;
-        'camellia-256-ecb' | 'camellia-256' | 'camellia') enctype='-camellia-256-ecb';;
+        'camellia-256-ecb'|'camellia-256'|'camellia') enctype='-camellia-256-ecb';;
         # CAST
         'cast-cbc') enctype='-cast-cbc';;
         # CAST5
         'cast5-cbc') enctype='-cast5-cbc';;
         'cast5-cfb') enctype='-cast5-cfb';;
-        'cast5-ecb' | 'cast' | 'cast5') enctype='-cast5-ecb';;
+        'cast5-ecb'|'cast'|'cast5') enctype='-cast5-ecb';;
         'cast5-ofb') enctype='-cast5-ofb';;
         # CHACHA
-        'chacha20' | 'chacha') enctype='-chacha20';;
+        'chacha20'|'chacha') enctype='-chacha20';;
         # DES3
-        'des-ede3-cbc' | 'des3' | 'des-ede3') enctype='-des-ede3-cbc';;
+        'des-ede3-cbc'|'des3'|'des-ede3') enctype='-des-ede3-cbc';;
         'des-ede3-cfb') enctype='-des-ede3-cfb';;
         'des-ede3-ofb') enctype='-des-ede3-ofb';;
-        'desx-cbc' | 'desx') enctype='-desx-cbc';;
+        'desx-cbc'|'desx') enctype='-desx-cbc';;
         # RC2
         'rc2-cbc') enctype='-rc2-cbc';;
         'rc2-cfb') enctype='-rc2-cfb';;
-        'rc2-ecb' | 'rc2') enctype='-rc2-ecb';;
+        'rc2-ecb'|'rc2') enctype='-rc2-ecb';;
         'rc2-ofb') enctype='-rc2-ofb';;
         # SM4
         'sm4-cbc') enctype='-sm4-cbc';;
         'sm4-cfb') enctype='-sm4-cfb';;
         'sm4-ctr') enctype='-sm4-ctr';;
-        'sm4-ecb' | 'sm4') enctype='-sm4-ecb';;
+        'sm4-ecb'|'sm4') enctype='-sm4-ecb';;
         'sm4-ofb') enctype='-sm4-ofb';;
         *) enctype='-aes-256-ecb';;
     esac
