@@ -5,7 +5,7 @@ Collection of Software Libraries & Executables
 - **Email:** <DevynCJohnson@Gmail.com>
 - **License:** [LGPLv3](http://www.gnu.org/licenses/lgpl-3.0.txt)
 - **GitHub:** <https://github.com/DevynCJohnson/Pybooster>
-- **Documentation:** <http://dcjtech.info/Pybooster/>
+- **Documentation:** <http://dcjtech.info/Pybooster/> (Will be updated by February 2019)
 
 This project is a rolling-release. The software is stable and suitable for use in other projects.
 However, the C-Standard Libraries are still under construction, so do not expect them to work perfectly.
@@ -33,6 +33,12 @@ GNOME website: <http://www.gnome.org/>
 
 The icons based on or derived from Tango sources and the Tango project are public domain.
 Tango project website: <http://tango.freedesktop.org/Tango_Desktop_Project>
+
+
+Mimetype Booster
+----------------
+
+Many of the mimetypes in _[mimetype_booster.xml](./accessory/mimetype_booster.xml)_ derive from [FreeDesktop.org's](https://FreeDesktop.org) mimetype file.
 
 
 Requirements

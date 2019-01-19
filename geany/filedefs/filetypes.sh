@@ -1,5 +1,5 @@
 [keywords]
-primary=alias break case continue do done elif else esac eval exec exit export fi for function goto if in integer printf readonly return set shift then until while
+primary=alias break case continue do done elif else esac eval exec exit export fi for function goto if IFS in integer local printf readonly return set shift then unset until while
 
 [lexer_properties]
 fold.compact=0

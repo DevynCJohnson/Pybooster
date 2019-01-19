@@ -9,6 +9,7 @@
 	* multimedia_rc.sh:  Added many image conversion functions
 	* multimedia_rc.sh:  Optimized filename handling
 	* Opticons:  Added more icons
+	* profile:  Fixed `findmime()`
 	* PyBooster:  Added an enhanced uca.xml file (Thunar Custom Actions)
 	* PyBooster:  Added pngshrink
 	* PyBooster:  Miscellaneous optimizations applied to shell scripts
