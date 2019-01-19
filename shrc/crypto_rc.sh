@@ -252,7 +252,7 @@ encrypt() {
     elif [ ! -f "${1:-}" ]; then
         printf 'ERROR: The first parameter must be a file!\n' >&2
     else
-        enctype="$(_enctype_input "${1:-}")"
+        enctype="$(_enctype_input "${2:-}")"
         openssl enc -a -A -pbkdf2 -e "${enctype}" -in "${1}"
     fi
 }
@@ -267,7 +267,7 @@ decrypt() {
     elif [ ! -f "${1:-}" ]; then
         printf 'ERROR: The first parameter must be a file!\n' >&2
     else
-        enctype="$(_enctype_input "${1:-}")"
+        enctype="$(_enctype_input "${2:-}")"
         openssl enc -a -A -pbkdf2 -d "${enctype}" -in "${1}"
     fi
 }

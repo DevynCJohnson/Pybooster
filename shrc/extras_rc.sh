@@ -59,6 +59,7 @@ if [ -n "$(command -v chattr)" ]; then
     alias mkimmutable='chattr +i'
     alias mkmutable='chattr -i'
 fi
+alias rmemptydir='find . -type d -empty -delete'
 [ -z "$(command -v rmtree)" ] && alias rmtree='rm -f -r'
 [ -z "$(command -v shred)" ] && alias bleach='shred -f -u' && alias rrm='shred -f -u'
 [ -z "$(command -v softlink)" ] && alias softlink='ln -s'

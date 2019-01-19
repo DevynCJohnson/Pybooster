@@ -33,7 +33,7 @@ export LC_CTYPE='C'
 
 
 for file in "$@"; do
-    if [ -r "$file" ] || [ -d "$file" ]; then
+    if [ ! -r "$file" ] || [ -d "$file" ]; then
         { [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } && [ -x "$(command -v zenity)" ] && zenity --error --height=200 --text="${file}:\nThe specified file is non-readable or non-existent!\n" --title='Error: pngshrink' --width=800 2> /dev/null
         printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     fi
