@@ -50,6 +50,15 @@
     <patterns>*</patterns>
     <directories/>
   </action>
+  <action>
+    <icon>computerjanitor</icon>
+    <name>Delete Empty Directories</name>
+    <unique-id>3700000000000003-1</unique-id>
+    <command>find -P %f -type d -empty -delete</command>
+    <description>Delete empty directories recursively</description>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
 
   <!-- FILE ACTIONS -->
 
@@ -84,8 +93,104 @@
     <name>Shrink PNG</name>
     <unique-id>7300000000000003-1</unique-id>
     <command>[ -x "$(command -v pngshrink)" ] &amp;&amp; [ -x "$(command -v pngcrush)" ] &amp;&amp; pngshrink %F</command>
-    <description>Reduce the Size of PNG Files</description>
+    <description>Reduce the size of PNG files</description>
     <patterns>*.png</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Encrypt Using Blowfish-ECB</name>
+    <unique-id>7300000000000004-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to encrypt the data.' --title='Enter Password (OpenSSL Encrypt)' --width=800 2> /dev/null)" -e -bf-ecb -in "${filename}" -out "${filename}.enc" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Encryption' --width=800 2> /dev/null</command>
+    <description>Encrypt file using Blowfish-ECB</description>
+    <patterns>*</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Decrypt Using Blowfish-ECB</name>
+    <unique-id>7300000000000005-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to decrypt the data.' --title='Enter Password (OpenSSL Decrypt)' --width=800 2> /dev/null)" -d -bf-ecb -in "${filename}" -out "${filename}.decrypted" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Decryption' --width=800 2> /dev/null</command>
+    <description>Decrypt Blowfish-ECB encrypted-file</description>
+    <patterns>*.enc</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Encrypt Using Aria-256-ECB</name>
+    <unique-id>7300000000000006-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to encrypt the data.' --title='Enter Password (OpenSSL Encrypt)' --width=800 2> /dev/null)" -e -aria-256-ecb -in "${filename}" -out "${filename}.enc" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Encryption' --width=800 2> /dev/null</command>
+    <description>Encrypt file using Aria-256-ECB</description>
+    <patterns>*</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Decrypt Using Aria-256-ECB</name>
+    <unique-id>7300000000000007-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to decrypt the data.' --title='Enter Password (OpenSSL Decrypt)' --width=800 2> /dev/null)" -d -aria-256-ecb -in "${filename}" -out "${filename}.decrypted" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Decryption' --width=800 2> /dev/null</command>
+    <description>Decrypt Aria-256-ECB encrypted-file</description>
+    <patterns>*.enc</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Encrypt Using AES-256-ECB</name>
+    <unique-id>7300000000000008-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to encrypt the data.' --title='Enter Password (OpenSSL Encrypt)' --width=800 2> /dev/null)" -e -aes-256-ecb -in "${filename}" -out "${filename}.enc" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Encryption' --width=800 2> /dev/null</command>
+    <description>Encrypt file using AES-256-ECB</description>
+    <patterns>*</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>openssl</icon>
+    <name>Decrypt Using AES-256-ECB</name>
+    <unique-id>7300000000000009-1</unique-id>
+    <command>{ [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } &amp;&amp; { [ -x "$(command -v zenity)" ] &amp;&amp; [ -x "$(command -v openssl)" ] &amp;&amp; filename=%f; } || exit 1; results="$(openssl enc -a -A -pbkdf2 -k "$(zenity --password --height=200 --text='Enter the password used to decrypt the data.' --title='Enter Password (OpenSSL Decrypt)' --width=800 2> /dev/null)" -d -aes-256-ecb -in "${filename}" -out "${filename}.decrypted" 2>&amp;1)"; [ $? -ne 0 ] &amp;&amp; zenity --error --height=200 --text="An error occurred!&lt;hr/&gt;${results}" --title='Error: OpenSSL Decryption' --width=800 2> /dev/null</command>
+    <description>Decrypt AES-256-ECB encrypted-file</description>
+    <patterns>*.enc</patterns>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+  <action>
+    <icon>rotate-right</icon>
+    <name>Rotate Image Clockwise</name>
+    <unique-id>7300000000000010-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -rotate 90 %f</command>
+    <description>Rotate an image 90-degrees clockwise</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>rotate-left</icon>
+    <name>Rotate Image Counter-Clockwise</name>
+    <unique-id>7300000000000011-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -rotate -90 %f</command>
+    <description>Rotate an image 90-degrees counter-clockwise</description>
+    <patterns>*</patterns>
     <image-files/>
   </action>
 
