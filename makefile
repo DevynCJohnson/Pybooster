@@ -17,16 +17,16 @@
 #' $* - The stem with which an implicit rule matches
 #' $(@D) - The directory part of the file name of the target (with the trailing slash removed)
 #' $(@F) - The file-within-directory part of the file name of the target
-#' $(*D) - The directory part part of the stem
+#' $(*D) - The directory part of the stem
 #' $(*F) - The file-within-directory part of the stem
-#' $(%D) - The directory part part of the target archive member name
+#' $(%D) - The directory part of the target archive member name
 #' $(%F) - The file-within-directory part of the target archive member name
-#' $(<D) - The directory part part of the first prerequisite
+#' $(<D) - The directory part of the first prerequisite
 #' $(<F) - The file-within-directory part of the first prerequisite
-#' $(^D) - Lists of the directory parts parts of all prerequisites
-#' $(^F) - Lists of the file-within-directory parts of all prerequisites
-#' $(?D) - Lists of the directory parts parts of all prerequisites that are newer than the target
-#' $(?F) - Lists of the file-within-directory parts of all prerequisites that are newer than the target
+#' $(^D) - Lists the directory parts of all prerequisites
+#' $(^F) - Lists the file-within-directory parts of all prerequisites
+#' $(?D) - Lists the directory parts of all prerequisites that are newer than the target
+#' $(?F) - Lists the file-within-directory parts of all prerequisites that are newer than the target
 
 
 .POSIX :
@@ -78,7 +78,7 @@ override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise boolean clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo iterables libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath ymath
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis pngshrink progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars svgresizer termtest thumbnail-cleaner togglequotes unicalc win2unixlines
 override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
@@ -120,6 +120,7 @@ help :
 	printf '%s\n%s\n' 'Install Scripts:' '    sudo make install_scripts'
 	printf '%s\n%s\n' 'Install System Shell Profile:' '    sudo make install_shrc'
 	printf '%s\n%s\n' 'Install Themes & Icons:' '    sudo make install_themes'
+	printf '%s\n%s\n' 'Install Thunar Custom Actions:' '    sudo make install_uca'
 	printf '%s\n%s\n' 'Install XKB Files:' '    sudo make install_xkb'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* PROJECT MANAGEMENT *'
 	printf '%s\n%s\n' 'Backup Project:' '    make backup'
@@ -151,6 +152,7 @@ help :
 	printf '%s\n%s\n' 'Make the system more like OSX:' '    sudo make macify'
 	printf '%s\n%s\n' 'Undo the effects of `macify`:' '    sudo make unmacify'
 	printf '%s\n%s\n' 'Make the system more secure:' '    sudo make secure'
+	printf '%s\n%s\n' 'Fix the Thunar Archive Plugin (TAP):' '    sudo make fix_thunar_tap'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* VARIABLES *'
 	printf '%s\n%s\n%s\n' 'OS=string' '    POSIX: Linux, Unix, BSD, etc.' '    ANDROID: Android'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* ENABLE/DISABLE FEATURES/CODE *'
@@ -199,13 +201,13 @@ default :
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
-.PHONY : gitadd submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+.PHONY : gitadd presubmit submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
-.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
-.PHONY : macify secure unmacify
+.PHONY : fix_thunar_tap macify secure unmacify
 
 
 # BUILD COMMANDS #
@@ -252,12 +254,14 @@ svglint :
 
 
 cleandoc :
-	-@$(RMDIR) $(DOCDIR)/clib $(DOCDIR)/pylib
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Cleaning Documentation Files ==='
+	$(RMDIR) $(DOCDIR)/clib $(DOCDIR)/pylib
 
 doc : docc docpy manpages
 
 docc : fixperm
-	-@([ -f $(DOCDIR)/index.html ] && unlink $(DOCDIR)/index.html) || true
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Generating C-Documentation ==='
+	([ -f $(DOCDIR)/index.html ] && unlink $(DOCDIR)/index.html) || true
 	([ -d $(DOCDIR)/clib ] && $(RMDIR) $(DOCDIR)/clib) || true
 	doxygen ./Doxyfile > /dev/null
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
@@ -273,7 +277,8 @@ docc : fixperm
 	$(RM) $(DOCDIR)/man3/*_PyBooster_include_.3
 
 docpy : fixperm
-	-@([ -d $(DOCDIR)/pylib ] && $(RMDIR) $(DOCDIR)/pylib) || true
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Generating Python-Documentation ==='
+	([ -d $(DOCDIR)/pylib ] && $(RMDIR) $(DOCDIR)/pylib) || true
 	./tools/pydocgen.sh $(PYSRC) $(DOCDIR) $(LIST_PYTHON_LIBRARIES) > /dev/null
 	find $(DOCDIR) -mount -type d -exec $(CHMOD) 755 '{}' +
 	find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
@@ -283,7 +288,8 @@ doxy :
 	$(CHMOD) 644 ./Doxyfile
 
 manpages :
-	-@find $(MANDIRS) -mount -type f \( -name "*.1" -o -name "*.2" -o -name "*.3" -o -name "*.4" -o -name "*.5" -o -name "*.6" -o -name "*.7" -o -name "*.8" \) -print0 | xargs -0 gzip -9 -k
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Compressing ManPages ==='
+	find $(MANDIRS) -mount -type f \( -name "*.1" -o -name "*.2" -o -name "*.3" -o -name "*.4" -o -name "*.5" -o -name "*.6" -o -name "*.7" -o -name "*.8" \) -print0 | xargs -0 gzip -9 -k
 
 
 # PACKAGING #
@@ -348,7 +354,7 @@ upver :
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.py" -print0 | xargs -0 sed -i "s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^Version: 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version: $(__VERSION__)/"
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^@version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/@version $(__VERSION__)/; s/^__version__: str = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = '$(__VERSION__)'/; s/^__version__: str = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__: str = r'$(__VERSION__)'/; s/^__version__ = '20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = '$(__VERSION__)'/; s/^__version__ = r'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]'/__version__ = r'$(__VERSION__)'/"
 	# Shell Scripts, Calc Files, makefiles, R, & Conf/INI Files #
-	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.calc" -o -name "*.cfg" -o -name "*.conf" -o -name "*.config" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
+	find . -mount $(EXCLUDE_FROM_FIND) -type f \( -name "*.ash" -o -name "*.awk" -o -name "*.bash" -o -name "*.calc" -o -name "*.cfg" -o -name "*.conf" -o -name "*.config" -o -name "*.ini" -o -name "*.ksh" -o -name "makefile" -o -name "*.mk" -o -name "*.R" -o -name "*.nanorc" -o -name "*.sed" -o -name "*.sh" -o -name "*.tap" -o -name "*.zsh" -o -name "profile" -o -name "shell_ext" \) -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	find $(SCRIPTSRCDIR)/* -mount -type f -print0 | xargs -0 sed -i "s/^# @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/# @version $(__VERSION__)/; s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/; s/^version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/version=$(__VERSION__)/; s/^readonly version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/readonly version=$(__VERSION__)/"
 	# Windows Registry Files #
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.reg" -print0 | xargs -0 sed -i "s/^; @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/; @version $(__VERSION__)/"
@@ -366,12 +372,14 @@ upver :
 clean : rmtmp rmcache
 
 cleanall : rmtmp rmcache
-	-@$(RM) $(BIN)/*
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Cleaning Temporary Files & Cache ==='
+	$(RM) $(BIN)/*
 
 cleanfull : cleanall cleandoc
 
 fixperm :
-	-@find . -mount -type d -exec $(CHMOD) 755 '{}' +
+	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Fixing File Permissions ==='
+	find . -mount -type d -exec $(CHMOD) 755 '{}' +
 	find . -mount -not \( -path "./debugging" $(addprefix -prune -o -path ", $(addsuffix ", $(CHMOD644_NO_SEARCH))) \) -type f \( -name ".csslintrc" $(addprefix -o -name ", $(addsuffix ", $(LIST_CHMOD644_EXT))) \) -exec $(CHMOD) 644 '{}' +
 	find $(ACCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	([ -d $(DOCDIR)/ ] && find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +) || true
@@ -398,17 +406,32 @@ refresh : | cleanfull upver fixperm
 gitadd : cleanall fixperm
 	@git add --all
 
-submitall :
+presubmit : cleanall fixperm pkgzip changelogmd news genchecksums valchecksums
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Committing Changes ==='
+	git add --all
+	read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
+
+submitall : presubmit
 	@git checkout dev
 	git push --progress --verify origin dev
 	git checkout master && git merge --commit dev && git push --progress --verify origin master
 	git checkout dev
 
-submitdev :
-	@git push --progress --verify origin dev
+submitdev : presubmit
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Pushing Changes ==='
+	git push --progress --verify origin dev
 
-submitmaster :
+submitmaster : presubmit
 	@git push --progress --verify origin master
+
+submitrel : presubmit xtag pushtags
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Pushing Changes (dev) ==='
+	git push --progress --verify origin dev
+	printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Syncing Master Branch ==='
+	git checkout master
+	git merge --commit dev
+	git push --progress --verify origin master
+	git checkout dev
 
 sw2dev :
 	@git checkout dev
@@ -430,6 +453,10 @@ syncmaster :
 
 # MISCELLANEOUS #
 
+
+fix_thunar_tap :
+	-@if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	if [ -d /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/ ]; then $(LNDIR) /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/file-roller.tap /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/org.gnome.FileRoller.tap; fi
 
 macify :
 	-@if [ $(UID) != 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
@@ -695,12 +722,24 @@ install_themes : install_loginopticons install_opticons
 
 uninstall_themes : uninstall_loginopticons uninstall_opticons
 
+install_uca :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Thunar Custom Actions ==='
+	if [ $(UID) == 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
+	([ -n $(shell command -p -v thunar) ] && $(COPY) $(ACCDIR)/uca.xml ~/.config/Thunar/uca.xml) || true
+
+uninstall_uca :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Thunar Custom Actions ==='
+	if [ $(UID) == 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
+	$(RM) ~/.config/Thunar/uca.xml
+
 install_xcompose :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing XCompose ==='
+	if [ $(UID) == 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
 	$(COPY) $(ACCDIR)/XCompose ~/.XCompose
 
 uninstall_xcompose :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling XCompose ==='
+	if [ $(UID) == 0 ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
 	$(RM) ~/.XCompose
 
 install_xkb :
