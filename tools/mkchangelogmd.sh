@@ -16,5 +16,5 @@ if [ ! -r './ChangeLog' ] || [ ! -f './ChangeLog' ]; then
     printf 'ERROR: ./ChangeLog was not found or is not readable!\n' >&2
     exit 1
 else
-    awk NF < ./ChangeLog | sed -E -e 's|^[ \t]*\* ([^:]+):  (.+)$|- **\1:**  \2|; s|^([0-9]{4})\-([0-9]{2})\-([0-9]{2}) (.+) <(.+)>$|##\1-\2-\3 \4 <[\5](mailto:\5)>|;' > ./ChangeLog.md
+    sed -E -e 's|^[ \t]*\* ([^:]+):  (.+)$|- **\1:**  \2|; s|^([0-9]{4})\-([0-9]{2})\-([0-9]{2}) (.+) <(.+)>$|# \1-\2-\3 \4 <[\5](mailto:\5)>|;' > ./ChangeLog.md < ./ChangeLog
 fi
