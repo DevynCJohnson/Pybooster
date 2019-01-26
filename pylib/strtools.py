@@ -59,6 +59,8 @@ from pybooster.boolean import ishex
 from pybooster.libchar import (
     BRAILLE,
     GREEK_ALL,
+    HOLOGRAPHS,
+    NORMALIZE_HOLOGRAPHS,
     LOWER_LIMIT_ASCII_CTRL,
     LOWER_LIMIT_ASCII_EXT,
     LOWER_LIMIT_ASCII_PRNT,
@@ -106,6 +108,8 @@ __all__: list = [
     r'ordinal2num',
     r'explode',
     r'implode',
+    r'holograph2str',
+    r'str2holograph',
     r'replace_odd_chars',
     r'stripunicode',
     r'rmcurlycommas',
@@ -425,6 +429,36 @@ def implode(_str: str) -> str:
     'this is a test.'
     """
     return resub('(.?) (.?)', r'\1\2', _str).replace(r'  ', r' ').strip()
+
+
+def holograph2str(_str: str) -> str:
+    """Convert the holograph characters in the string to their normalized form
+
+    >>> holograph2str('Τһіѕ іѕ а ｔеѕｔ․')
+    'This is a test.'
+    """
+    _output: str = r''
+    for _char in _str:
+        try:
+            _output += NORMALIZE_HOLOGRAPHS[_char]
+        except KeyError:
+            _output += _char
+    return _output
+
+
+def str2holograph(_str: str) -> str:
+    """Convert the characters in the string to their holograph equivalents
+
+    >>> str2holograph('This is a test.')
+    'Τһіѕ іѕ а ｔеѕｔ․'
+    """
+    _output: str = r''
+    for _char in _str:
+        try:
+            _output += HOLOGRAPHS[_char][0]
+        except KeyError:
+            _output += _char
+    return _output
 
 
 def replace_odd_chars(_data: str) -> str:
