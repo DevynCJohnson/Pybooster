@@ -1,3 +1,7 @@
+2019-01-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Program-Analyzer:  Fixed some bugs & added multi-processing
+
 2019-01-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* extras_rc.sh:  Fixed some bugs & added more code

@@ -33,6 +33,7 @@ along with this software.
 
 from binascii import hexlify
 from datetime import datetime
+from multiprocessing import cpu_count, Pool
 from os import R_OK, access as fileaccess, stat
 from os.path import (
     isdir,
@@ -44,7 +45,7 @@ from os.path import (
 from signal import SIGINT, SIG_DFL, signal
 from subprocess import getoutput  # nosec
 from sys import argv, stderr
-from typing import Any, Tuple, Union
+from typing import Any, List, Tuple, Union
 
 from pybooster.filemagic import MIME_ENCODING, NONE_MAGIC
 from pybooster.fs import convumask
@@ -85,15 +86,34 @@ Author: Devyn Collier Johnson
   <!-- interface-description Display the symbols and tables of a compiled program or library -->
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkTextBuffer" id="buf_all_headers"/>
+  <object class="GtkTextBuffer" id="buf_const"/>
+  <object class="GtkTextBuffer" id="buf_dis"/>
+  <object class="GtkTextBuffer" id="buf_dis_att"/>
+  <object class="GtkTextBuffer" id="buf_dis_bin"/>
+  <object class="GtkTextBuffer" id="buf_dis_hex"/>
+  <object class="GtkTextBuffer" id="buf_dis_intel"/>
+  <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
+  <object class="GtkTextBuffer" id="buf_dyn_sym"/>
+  <object class="GtkTextBuffer" id="buf_func"/>
+  <object class="GtkTextBuffer" id="buf_header"/>
+  <object class="GtkTextBuffer" id="buf_nm_sym"/>
+  <object class="GtkTextBuffer" id="buf_priv_headers"/>
+  <object class="GtkTextBuffer" id="buf_prop"/>
+  <object class="GtkTextBuffer" id="buf_readelf"/>
+  <object class="GtkTextBuffer" id="buf_sec_headers"/>
+  <object class="GtkTextBuffer" id="buf_size"/>
+  <object class="GtkTextBuffer" id="buf_str"/>
+  <object class="GtkTextBuffer" id="buf_sym"/>
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">1000</property>
-    <property name="height_request">600</property>
+    <property name="width_request">1600</property>
+    <property name="height_request">1000</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title">Program-Analyzer</property>
     <property name="window_position">center</property>
-    <property name="default_width">1000</property>
-    <property name="default_height">600</property>
+    <property name="default_width">1600</property>
+    <property name="default_height">1000</property>
     <property name="icon_name">program-analyzer</property>
     <property name="has_resize_grip">True</property>
     <property name="show_menubar">False</property>
@@ -103,8 +123,8 @@ Author: Devyn Collier Johnson
     </child>
     <child>
       <object class="GtkBox" id="box">
-        <property name="width_request">1000</property>
-        <property name="height_request">600</property>
+        <property name="width_request">1600</property>
+        <property name="height_request">1000</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -186,8 +206,8 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -218,13 +238,14 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_prop">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_prop</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -251,13 +272,14 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_sym_tbl">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -289,13 +311,14 @@ objdump --special-syms --syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_sym">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_dyn_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -327,13 +350,14 @@ objdump --special-syms --dynamic-syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_nm_sym">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_nm_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -365,13 +389,14 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_reloc">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_dyn_reloc</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -403,12 +428,13 @@ objdump --dynamic-reloc</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -440,12 +466,13 @@ ndisasm</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_intel">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis_intel</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -462,7 +489,7 @@ ndisasm</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Display the disassembled code using Intel syntax
-objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=intel</property>
+objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
                 <property name="label" translatable="yes">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
@@ -477,12 +504,13 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=i
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_att">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis_att</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -499,7 +527,7 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=i
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=att</property>
+objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
                 <property name="label" translatable="yes">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
@@ -513,15 +541,21 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
               <object class="GtkScrolledWindow" id="scrolledwindow_dis_bin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="double_buffered">False</property>
+                <property name="hscrollbar_policy">never</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_bin">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="double_buffered">False</property>
                     <property name="wrap_mode">char</property>
-                    <property name="right_margin">15</property>
+                    <property name="justification">fill</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">5</property>
+                    <property name="buffer">buf_dis_bin</property>
                     <property name="accepts_tab">False</property>
                     <property name="input_purpose">digits</property>
                     <property name="monospace">True</property>
@@ -552,15 +586,21 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
               <object class="GtkScrolledWindow" id="scrolledwindow_dis_hex">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="double_buffered">False</property>
+                <property name="hscrollbar_policy">never</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_hex">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="wrap_mode">word-char</property>
-                    <property name="right_margin">15</property>
+                    <property name="double_buffered">False</property>
+                    <property name="wrap_mode">word</property>
+                    <property name="justification">fill</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">5</property>
+                    <property name="buffer">buf_dis_hex</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -591,14 +631,14 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_readelf">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                    <property name="right_margin">15</property>
+                    <property name="buffer">buf_readelf</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -632,13 +672,14 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_all_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_all_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -670,13 +711,14 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_header">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_header</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -708,13 +750,14 @@ objdump --file-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_priv_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_priv_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -746,13 +789,14 @@ objdump --private-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_sec_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_sec_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -784,13 +828,14 @@ objdump --section-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_size">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_size</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -823,13 +868,14 @@ size --format=SysV</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_str">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_str</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -861,13 +907,14 @@ strings --all</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_func">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_func</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -898,13 +945,14 @@ strings --all</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_const">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_const</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -952,9 +1000,10 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">Program-Analyzer
-Version: 2018.09.11
+Version: 2018.12.28
 Author: Devyn Collier Johnson
-&lt;DevynCJohnson@Gmail.com&gt;</property>
+&amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
+                        <property name="use_markup">True</property>
                         <property name="justify">center</property>
                         <property name="track_visited_links">False</property>
                       </object>
@@ -969,8 +1018,9 @@ Author: Devyn Collier Johnson
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">For more programs,
-- Visit DCJTech.info
+- Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
+                        <property name="use_markup">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
@@ -1182,11 +1232,11 @@ Author: Devyn Collier Johnson
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">750</property>
-    <property name="height_request">600</property>
+    <property name="width_request">1200</property>
+    <property name="height_request">800</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Choose a File</property>
+    <property name="title">Choose a File</property>
     <property name="window_position">center</property>
     <property name="icon_name">system-file-manager</property>
     <property name="type_hint">dialog</property>
@@ -1208,6 +1258,7 @@ Author: Devyn Collier Johnson
             <property name="can_focus">True</property>
             <property name="margin_bottom">5</property>
             <property name="create_folders">False</property>
+            <property name="do_overwrite_confirmation">True</property>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -1217,11 +1268,11 @@ Author: Devyn Collier Johnson
         </child>
         <child>
           <object class="GtkCheckButton" id="chkbtn2">
-            <property name="label" translatable="yes">Select current location</property>
+            <property name="label">Select current location</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes">Marked - The current location/folder is returned
+            <property name="tooltip_text">Marked - The current location/folder is returned
 
 Empty - The selected folder is returned</property>
             <property name="halign">center</property>
@@ -1247,7 +1298,7 @@ Empty - The selected folder is returned</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Submit selection to the program that opened this dialog.</property>
+                <property name="tooltip_text">Submit selection to the program that opened this dialog.</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin_top">5</property>
@@ -1263,11 +1314,11 @@ Empty - The selected folder is returned</property>
             </child>
             <child>
               <object class="GtkCheckButton" id="chkbtn1">
-                <property name="label" translatable="yes">View hidden files</property>
+                <property name="label">View hidden files</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Marked - Show hidden files
+                <property name="tooltip_text">Marked - Show hidden files
 Empty - Hidden files not seen</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -1285,7 +1336,7 @@ Empty - Hidden files not seen</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Cancel</property>
+                <property name="tooltip_text">Cancel</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_top">5</property>
@@ -1315,12 +1366,6 @@ Empty - Hidden files not seen</property>
 signal(SIGINT, SIG_DFL)
 
 
-# GLOBALS #
-
-
-GETDATA_RETURN = Union[Tuple[int, str], Tuple[int, str, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any]]
-
-
 # STATUSBAR MESSAGES #
 
 
@@ -1336,9 +1381,45 @@ STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 # CLASSES #
 
 
-class SavePath():  # pylint: disable=R0903
-    """Last pathname used to save files"""
+class DataTable:  # pylint: disable=R0903
+    """Global readonly table for all threads to get data"""
+    # Scan for Available Tools
+    is_insn_count_available: bool = is_program_aval(r'insn_count')
+    is_ndisasm_available: bool = is_program_aval(r'ndisasm')
+    is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
+    is_linux_arm_available: bool = is_program_aval(r'arm-linux-gnueabi-objdump')
+    is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
+    is_linux_hppa64_available: bool = is_program_aval(r'hppa64-linux-gnu-objdump')
+    is_linux_s390x_available: bool = is_program_aval(r's390x-linux-gnu-objdump')
+    is_linux_sparc64_available: bool = is_program_aval(r'sparc64-linux-gnu-objdump')
+    is_linux_x86_available: bool = is_program_aval(r'i686-linux-gnu-objdump')
+    is_linux_x86_64_available: bool = is_program_aval(r'x86_64-linux-gnu-objdump')
+    is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
+    is_win_x86_64_available: bool = is_program_aval(r'x86_64-w64-mingw32-objdump')
+
+
+class TempTable:  # pylint: disable=R0903
+    """Global table for all threads to set and get data"""
+    bin_data: str = r''
+    binsize: str = r''
+    constants: str = r''
+    functions: str = r''
+    hex_data: str = r''
     lastused: str = r''
+    nm_defined: str = r''
+    nm_symbols: str = r''
+    objdump_all_headers: str = r''
+    objdump_disassemble: str = r''
+    objdump_disassemble_att: str = r''
+    objdump_disassemble_intel: str = r''
+    objdump_dynamic_relocation: str = r''
+    objdump_dynamic_symbols: str = r''
+    objdump_file_header: str = r''
+    objdump_private_headers: str = r''
+    objdump_section_headers: str = r''
+    objdump_symbols: str = r''
+    readelf_all: str = r''
+    strings: str = r''
 
 
 class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
@@ -1384,6 +1465,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         self._filew = self.file_ui.get_object(r'filechooser')
         self._chkbtn_hidden = self.file_ui.get_object(r'chkbtn1')
         self._chkbtn_dir = self.file_ui.get_object(r'chkbtn2')
+        self._btn_ok = self.file_ui.get_object(r'btn1')
         # Set Widget Properties
         self._chkbtn_dir.set_visible(False)
         self._filew.set_create_folders(self._savefile)
@@ -1401,12 +1483,16 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
             self._chkbtn_dir.set_visible(not self._multiple)
         elif self._select_dir and self._savefile:
             self._multiple = False
+            self.filechooserwin.set_title(r'Save Data')
+            self._btn_ok.set_label(r'Save')
             self._filew.set_action(Gtk.FileChooserAction.CREATE_FOLDER)
             self._filew.set_do_overwrite_confirmation(True)
         elif self._select_file and not self._savefile:
             self._filew.set_action(Gtk.FileChooserAction.OPEN)
         elif self._select_file and self._savefile:
             self._multiple = False
+            self.filechooserwin.set_title(r'Save Data As')
+            self._btn_ok.set_label(r'Save')
             self._filew.set_action(Gtk.FileChooserAction.SAVE)
             self._filew.set_do_overwrite_confirmation(True)
         else:
@@ -1458,15 +1544,17 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
                 self._out = r' '.join(self._filew.get_current_folder())
             else:
                 self._out = self._filew.get_current_folder()
+            self.filechooserwin.destroy()
+            Gtk.main_quit()
+            return
+        if self._return_uri and self._return_dtype == r'str':
+            self._out = r' '.join(self._filew.get_uris())
+        elif self._return_uri and self._return_dtype != r'str':
+            self._out = self._filew.get_uris()
+        elif not self._return_uri and self._return_dtype == r'str':
+            self._out = r' '.join(self._filew.get_filenames())
         else:
-            if self._return_uri and self._return_dtype == r'str':
-                self._out = r' '.join(self._filew.get_uris())
-            elif self._return_uri and self._return_dtype != r'str':
-                self._out = self._filew.get_uris()
-            elif not self._return_uri and self._return_dtype == r'str':
-                self._out = r' '.join(self._filew.get_filenames())
-            else:
-                self._out = self._filew.get_filenames()
+            self._out = self._filew.get_filenames()
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
@@ -1510,10 +1598,10 @@ def gtk_open(_menuitem: Gtk.ImageMenuItem = None) -> None:
 
 def gtk_save(_button: Gtk.Button) -> None:
     """Save the data"""
-    if not isinstance(SavePath.lastused, str) or SavePath.lastused in {r'', r'cancel'}:
+    if not isinstance(TempTable.lastused, str) or TempTable.lastused in {r'', r'cancel'}:
         gtk_saveas(_button)
         return
-    save_data(tabs.get_current_page(), SavePath.lastused)
+    save_data(tabs.get_current_page(), TempTable.lastused)
 
 
 def gtk_saveas(_button: Gtk.Button) -> None:
@@ -1539,7 +1627,7 @@ def gtk_saveas(_button: Gtk.Button) -> None:
 
 def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901
     """Perform the actual data-save"""
-    SavePath.lastused = savefilepath
+    TempTable.lastused = savefilepath
     tabs_page_num = tabs.page_num
     if active_tab == tabs_page_num(scrolledwindow_prop):  # tab_prop
         save_buffer_data = textview_prop.get_buffer()
@@ -1583,11 +1671,11 @@ def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901
         write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
         del save_buffer_data
     except OSError:
-        SavePath.lastused = r''
+        TempTable.lastused = r''
         statusbar.push(context_id, r'OSError when writing file')
         stderr.write('OSError when writing file\n')
     except BaseException as _err:
-        SavePath.lastused = r''
+        TempTable.lastused = r''
         statusbar.push(context_id, r'Exception thrown when writing file')
         stderr.write(str(_err) + '\n')
     statusbar.push(context_id, r'File saved')
@@ -1618,7 +1706,69 @@ def show_hide_save(_notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWin
 # PROCESS & SHOW DATA #
 
 
-def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
+def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[str, str], Tuple[str, str, str]]:  # noqa: C901  # pylint: disable=R0911
+    """Thread helper for `getdis()`"""
+    if _var.startswith(r'OBJDUMP_'):
+        if _var == r'OBJDUMP_ALL_HEADERS':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_FILE_HEADER':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_PRIVATE_HEADERS':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_SECTION_HEADERS':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_SYMBOLS':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_DYNAMIC_SYMBOLS':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_DYNAMIC_RELOCATION':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_DISASSEMBLE':
+            return getoutput(cmd) if DataTable.is_ndisasm_available and _flag else r'ndisasm is unavailable'
+        if _var == r'OBJDUMP_DISASSEMBLE_INTEL':
+            return getoutput(cmd)
+        if _var == r'OBJDUMP_DISASSEMBLE_ATT':
+            return getoutput(cmd)
+        return r''
+    if _var == r'BINSIZE':
+        return getoutput(cmd)
+    if _var == r'NM_DEFINED':
+        _nm_defined = getoutput(cmd)
+        try:
+            _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+            _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+        except OSError:
+            _functions = _nm_defined
+            _constants = r'See function list'
+        if not _functions:
+            _functions = r'No global functions found!'
+        if not _constants:
+            _constants = r'No global constants found!'
+        return (_nm_defined, _functions, _constants)
+    if _var == r'NM_SYMBOLS':
+        return getoutput(cmd)
+    if _var == r'READELF_ALL':
+        return getoutput(cmd)
+    if _var == r'STRINGS':
+        return getoutput(cmd)
+    if _var == r'RAW':
+        if stat(cmd).st_size < 1000000:
+            hexified_data: bytes = b''
+            with open(cmd, mode=r'rb') as _fileobj:
+                hexified_data = hexlify(_fileobj.read())
+                del _fileobj
+                _bin_data = bin(int(hexified_data, 16))[2:].zfill(8)
+                _hex_data = str(hexified_data, encoding=r'utf-8')
+            del hexified_data
+            _hex_data = r' '.join(_x + _y for _x, _y in zip(_hex_data[::2], _hex_data[1::2]))
+            scrolledwindow_dis_bin.set_visible(True)
+            scrolledwindow_dis_hex.set_visible(True)
+            return (_bin_data, _hex_data)
+        return (r'', r'')
+    return r''
+
+
+def getdis(_file: str) -> Tuple[int, str]:  # noqa: C901  # pylint: disable=R0914
     """Get data from the file and disassemble"""
     statusbar.push(context_id, STATUS_ANALYZING[1])
     # Gather filetype information
@@ -1637,42 +1787,42 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
         return STATUS_UNSUPPORTED_FILETYPE
     if r'ELF' in _magic:
         if r'ARM' in _magic and _bits == r'32':
-            if is_linux_arm_available is False:
+            if DataTable.is_linux_arm_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r'arm'
         elif r'Alpha' in _magic:
-            if is_linux_alpha_available is False:
+            if DataTable.is_linux_alpha_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r'alpha'
         elif r'PA-RISC' in _magic and _bits == r'32':
-            if is_linux_hppa_available is False:
+            if DataTable.is_linux_hppa_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r'hppa'
         elif r'PA-RISC' in _magic and _bits == r'64':
-            if is_linux_hppa64_available is False:
+            if DataTable.is_linux_hppa64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r'hppa64'
         elif r's390x' in _magic:
-            if is_linux_s390x_available is False:
+            if DataTable.is_linux_s390x_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r's390x'
         elif r'SPARC' in _magic:
-            if is_linux_sparc64_available is False:
+            if DataTable.is_linux_sparc64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = False
             _prefix = r'sparc64'
         elif r'x86-64' in _magic:
-            if is_linux_x86_64_available is False:
+            if DataTable.is_linux_x86_64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
             _prefix = r'x86_64'
         elif r'x86-32' in _magic or r'i686' in _magic:
-            if is_linux_x86_available is False:
+            if DataTable.is_linux_x86_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
             _prefix = r'i686'
@@ -1692,7 +1842,7 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
             _strings = _prefix + r'-linux-gnu-strings'
     elif r'PE32' in _magic or r'Windows' in _magic or r'application/x-dosexec' in _magic:
         if _bits == r'64':
-            if is_win_x86_64_available is False:
+            if DataTable.is_win_x86_64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
             _nm = r'x86_64-w64-mingw32-nm'
@@ -1701,7 +1851,7 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
             _size = r'x86_64-w64-mingw32-size'
             _strings = r'x86_64-w64-mingw32-strings'
         elif _bits == r'32':
-            if is_win_x86_available is False:
+            if DataTable.is_win_x86_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
             _use_ndisasm = True
             _nm = r'i686-w64-mingw32-nm'
@@ -1713,37 +1863,55 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
             return STATUS_UNSUPPORTED_FILETYPE
     else:
         return STATUS_UNSUPPORTED_FILETYPE
-    # Get the data
-    _objdump_symbols: str = getoutput(_objdump + r' --special-syms --syms ' + _file)
-    _objdump_dynamic_symbols: str = getoutput(_objdump + r' --special-syms --dynamic-syms ' + _file)
-    _nm_symbols = getoutput(_nm + r' --dynamic --no-sort --special-syms --debug-syms ' + _file)
-    _objdump_dynamic_relocation: str = getoutput(_objdump + r' --dynamic-reloc ' + _file)
-    if is_ndisasm_available and _use_ndisasm:
-        _objdump_disassemble: str = getoutput(r'ndisasm -b ' + _bits + r' ' + _file)
-    else:
-        _objdump_disassemble = r'ndisasm is unavailable.'
-    _objdump_disassemble_intel: str = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=intel ' + _file)
-    _objdump_disassemble_att: str = getoutput(_objdump + r' --disassemble-all --source --disassemble-zeroes --disassembler-options=att ' + _file)
-    _readelf_all: str = getoutput(_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file)
-    _objdump_all_headers: str = getoutput(_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file)
-    _objdump_file_header: str = getoutput(_objdump + r' --file-headers ' + _file)
-    _objdump_private_headers: str = getoutput(_objdump + r' --private-headers ' + _file)
-    _objdump_section_headers: str = getoutput(_objdump + r' --section-headers ' + _file)
-    _size = getoutput(_size + r' --format=Berkeley ' + _file + r'; ' + _size + r' --format=SysV ' + _file)
-    _strings = getoutput(_strings + r' --all ' + _file)
-    _nm_defined: str = getoutput(_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"')  # tmp
-    try:
-        _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
-        _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i=3; i<=NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
-    except OSError:
-        _functions = _nm_defined
-        _constants = r'See function list'
-    # Manipulate data
-    del _nm_defined
-    if not _functions:
-        _functions = r'No global functions found!'
-    if not _constants:
-        _constants = r'No global constants found!'
+    # Get the data using parallel processing
+    poolsize: int = cpu_count()
+    poolsize = 16 if poolsize > 16 else poolsize
+    outbuf: List[Any] = [(r'', r'')]
+    with Pool(poolsize) as threadpool:
+        try:
+            outbuf = threadpool.starmap(analyze_binary, [
+                (_file, r'RAW'),
+                (_objdump + r' --special-syms --dynamic-syms ' + _file, r'OBJDUMP_DYNAMIC_SYMBOLS'),
+                (_nm + r' --dynamic --no-sort --special-syms --debug-syms ' + _file, r'NM_SYMBOLS'),
+                (_objdump + r' --dynamic-reloc ' + _file, r'OBJDUMP_DYNAMIC_RELOCATION'),
+                (r'ndisasm -b ' + _bits + r' ' + _file, r'OBJDUMP_DISASSEMBLE', _use_ndisasm),
+                (_objdump + r' --disassemble --disassembler-options=intel --no-show-raw-insn ' + _file, r'OBJDUMP_DISASSEMBLE_INTEL'),  # --disassemble-all --source --disassemble-zeroes
+                (_objdump + r' --disassemble --disassembler-options=att --no-show-raw-insn ' + _file, r'OBJDUMP_DISASSEMBLE_ATT'),
+                (_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file, r'READELF_ALL'),
+                (_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file, r'OBJDUMP_ALL_HEADERS'),
+                (_objdump + r' --file-headers ' + _file, r'OBJDUMP_FILE_HEADER'),
+                (_objdump + r' --private-headers ' + _file, r'OBJDUMP_PRIVATE_HEADERS'),
+                (_objdump + r' --section-headers ' + _file, r'OBJDUMP_SECTION_HEADERS'),
+                (_size + r' --format=Berkeley ' + _file + r'; ' + _size + r' --format=SysV ' + _file, r'BINSIZE'),
+                (_strings + r' --all ' + _file, r'STRINGS'),
+                (_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"', r'NM_DEFINED', TempTable),
+                (_objdump + r' --special-syms --syms ' + _file, r'OBJDUMP_SYMBOLS')
+            ])
+            TempTable.bin_data = outbuf[0][0]
+            TempTable.hex_data = outbuf[0][1]
+            TempTable.objdump_dynamic_symbols = outbuf[1]
+            TempTable.nm_symbols = outbuf[2]
+            TempTable.objdump_dynamic_relocation = outbuf[3]
+            TempTable.objdump_disassemble = outbuf[4]
+            TempTable.objdump_disassemble_intel = outbuf[5]
+            TempTable.objdump_disassemble_att = outbuf[6]
+            TempTable.readelf_all = outbuf[7]
+            TempTable.objdump_all_headers = outbuf[8]
+            TempTable.objdump_file_header = outbuf[9]
+            TempTable.objdump_private_headers = outbuf[10]
+            TempTable.objdump_section_headers = outbuf[11]
+            TempTable.binsize = outbuf[12]
+            TempTable.strings = outbuf[13]
+            TempTable.nm_defined = outbuf[14][0]
+            TempTable.functions = outbuf[14][1]
+            TempTable.constants = outbuf[14][2]
+            TempTable.objdump_symbols = outbuf[15]
+        except (KeyboardInterrupt, MemoryError):
+            threadpool.close()
+            threadpool.terminate()
+            raise SystemExit(1)
+        del outbuf
+    # Make the scrollable boxes within each tab visible
     scrolledwindow_sym_tbl.set_visible(True)
     scrolledwindow_dyn_sym.set_visible(True)
     scrolledwindow_nm_sym.set_visible(True)
@@ -1760,51 +1928,29 @@ def getdis(_file: str) -> GETDATA_RETURN:  # noqa: C901  # pylint: disable=R0914
     scrolledwindow_str.set_visible(True)
     scrolledwindow_func.set_visible(True)
     scrolledwindow_const.set_visible(True)
-    if stat(_file).st_size < 1000000:  # Get hexadecimal & binary representations
-        with open(_file, mode=r'rb') as _fileobj:
-            hexified_data = hexlify(_fileobj.read())
-            _bin_data = bin(int(hexified_data, 16))[2:].zfill(8)
-            _hex_data = str(hexified_data, encoding=r'utf-8')
-        if stat(_file).st_size < 10000:
-            index: int = 2
-            while len(_hex_data) != index:
-                _hex_data = _hex_data[:index] + r' ' + _hex_data[index:]
-                index += 3
-        scrolledwindow_dis_bin.set_visible(True)
-        scrolledwindow_dis_hex.set_visible(True)
-    else:
-        _bin_data = r''
-        _hex_data = r''
+    if not TempTable.bin_data:
         scrolledwindow_dis_bin.set_visible(False)
         scrolledwindow_dis_hex.set_visible(False)
     # Return
-    return (STATUS_FINISHED[0], STATUS_FINISHED[1] + _file, _objdump_symbols, _objdump_dynamic_symbols, _nm_symbols, _objdump_dynamic_relocation, _objdump_disassemble, _objdump_disassemble_intel, _objdump_disassemble_att, _readelf_all, _objdump_all_headers, _objdump_file_header, _objdump_private_headers, _objdump_section_headers, _size, _strings, _functions, _constants, _hex_data, _bin_data)
+    return STATUS_FINISHED
 
 
 def file_properties(_file: str) -> None:
-    """Display File Properties in `File Properties` tab"""
-    # Gather file properties
+    """Gather and display file properties in `File Properties` tab"""
     _stat = stat(_file, follow_symlinks=False)
     _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
     _mtime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_mtime)))
-    properties_str_buf: str = r'Mimetype: ' + NONE_MAGIC.file(_file)
-    properties_str_buf += '\nCharacter Set: ' + MIME_ENCODING.file(_file)
-    properties_str_buf += '\nIs link?: ' + str(islink(_file))
-    properties_str_buf += '\nFile size (bytes): ' + str(_stat.st_size)
-    properties_str_buf += '\nLast accessed: ' + str(_atime)
-    properties_str_buf += '\nInode Number: ' + str(_stat.st_ino)
-    properties_str_buf += '\nOwner UID: ' + str(_stat.st_uid)
-    properties_str_buf += '\nOwner GID: ' + str(_stat.st_gid)
-    properties_str_buf += '\nLast modified: ' + str(_mtime)
     _perm: str = oct(_stat.st_mode)[-3:]
-    properties_str_buf += '\nPermissions: ' + _perm
-    properties_str_buf += '\numask (symbolic): ' + convumask(list(_perm))
-    # Insert new data
+    properties_str_buf: str = r'Mimetype: ' + NONE_MAGIC.file(_file) + '\nCharacter Set: ' + MIME_ENCODING.file(_file) + '\nIs link?: ' + str(islink(_file)) + '\nFile size (bytes): ' + str(_stat.st_size) + '\nInode Number: ' + str(_stat.st_ino) + '\nLast accessed: ' + str(_atime) + '\nLast modified: ' + str(_mtime) + '\nOwner UID: ' + str(_stat.st_uid) + '\nOwner GID: ' + str(_stat.st_gid) + '\nPermissions: ' + _perm + '\numask (symbolic): ' + convumask(list(_perm))
+    # Count Assembly Instructions
+    if DataTable.is_insn_count_available:
+        properties_str_buf += '\n\n\n* INSTRUCTION COUNT *\n\n' + getoutput(r'insn_count -c ' + _file) + '\n\n\n' + getoutput(r'insn_count -m ' + _file)
+    # Place properties in the text-buffer
     textview_prop.get_buffer().set_text(properties_str_buf, len(properties_str_buf))
 
 
 def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901
-    """Change and display data about the file"""
+    """Place the data in the text-buffers of the window"""
     tabs.set_current_page(0)
     statusbar.push(context_id, STATUS_ANALYZING[1])
     if _datatuple[0] == -1:
@@ -1812,45 +1958,63 @@ def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901
         return
     # Set and display data
     _tmp_file_name = pathsplit(_file)[1]
-    _window.set_title(_tmp_file_name)
+    _window.set_title(r'Program-Analyzer: ' + _tmp_file_name)
     l_file.set_text(_tmp_file_name)
     del _tmp_file_name
-    if scrolledwindow_sym_tbl.is_visible:
-        textview_sym_tbl.get_buffer().set_text(_datatuple[2], len(_datatuple[2]))
-    if scrolledwindow_dyn_sym.is_visible:
-        textview_dyn_sym.get_buffer().set_text(_datatuple[3], len(_datatuple[3]))
-    if scrolledwindow_nm_sym.is_visible:
-        textview_nm_sym.get_buffer().set_text(_datatuple[4], len(_datatuple[4]))
-    if scrolledwindow_dyn_reloc.is_visible:
-        textview_dyn_reloc.get_buffer().set_text(_datatuple[5], len(_datatuple[5]))
-    if scrolledwindow_dis.is_visible:
-        textview_dis.get_buffer().set_text(_datatuple[6], len(_datatuple[6]))
-    if scrolledwindow_dis_intel.is_visible:
-        textview_dis_intel.get_buffer().set_text(_datatuple[7], len(_datatuple[7]))
-    if scrolledwindow_dis_att.is_visible:
-        textview_dis_att.get_buffer().set_text(_datatuple[8], len(_datatuple[8]))
     if scrolledwindow_dis_bin.is_visible:
-        textview_dis_bin.get_buffer().set_text(_datatuple[19], len(_datatuple[19]))
+        textview_dis_bin.get_buffer().set_text(TempTable.bin_data, len(TempTable.bin_data))
+    TempTable.bin_data = r''
     if scrolledwindow_dis_hex.is_visible:
-        textview_dis_hex.get_buffer().set_text(_datatuple[18], len(_datatuple[18]))
+        textview_dis_hex.get_buffer().set_text(TempTable.hex_data, len(TempTable.hex_data))
+    TempTable.hex_data = r''
+    if scrolledwindow_dis.is_visible:
+        textview_dis.get_buffer().set_text(TempTable.objdump_disassemble, len(TempTable.objdump_disassemble))
+    TempTable.objdump_disassemble = r''
+    if scrolledwindow_dis_intel.is_visible:
+        textview_dis_intel.get_buffer().set_text(TempTable.objdump_disassemble_intel, len(TempTable.objdump_disassemble_intel))
+    TempTable.objdump_disassemble_intel = r''
+    if scrolledwindow_dis_att.is_visible:
+        textview_dis_att.get_buffer().set_text(TempTable.objdump_disassemble_att, len(TempTable.objdump_disassemble_att))
+    TempTable.objdump_disassemble_att = r''
+    if scrolledwindow_sym_tbl.is_visible:
+        textview_sym_tbl.get_buffer().set_text(TempTable.objdump_symbols, len(TempTable.objdump_symbols))
+    TempTable.objdump_symbols = r''
+    if scrolledwindow_dyn_sym.is_visible:
+        textview_dyn_sym.get_buffer().set_text(TempTable.objdump_dynamic_symbols, len(TempTable.objdump_dynamic_symbols))
+    TempTable.objdump_dynamic_symbols = r''
+    if scrolledwindow_nm_sym.is_visible:
+        textview_nm_sym.get_buffer().set_text(TempTable.nm_symbols, len(TempTable.nm_symbols))
+    TempTable.nm_symbols = r''
+    if scrolledwindow_dyn_reloc.is_visible:
+        textview_dyn_reloc.get_buffer().set_text(TempTable.objdump_dynamic_relocation, len(TempTable.objdump_dynamic_relocation))
+    TempTable.objdump_dynamic_relocation = r''
     if scrolledwindow_header.is_visible:
-        textview_header.get_buffer().set_text(_datatuple[11], len(_datatuple[11]))
+        textview_header.get_buffer().set_text(TempTable.objdump_file_header, len(TempTable.objdump_file_header))
+    TempTable.objdump_file_header = r''
     if scrolledwindow_readelf.is_visible:
-        textview_readelf.get_buffer().set_text(_datatuple[9], len(_datatuple[9]))
+        textview_readelf.get_buffer().set_text(TempTable.readelf_all, len(TempTable.readelf_all))
+    TempTable.readelf_all = r''
     if scrolledwindow_all_headers.is_visible:
-        textview_all_headers.get_buffer().set_text(_datatuple[10], len(_datatuple[10]))
+        textview_all_headers.get_buffer().set_text(TempTable.objdump_all_headers, len(TempTable.objdump_all_headers))
+    TempTable.objdump_all_headers = r''
     if scrolledwindow_priv_headers.is_visible:
-        textview_priv_headers.get_buffer().set_text(_datatuple[12], len(_datatuple[12]))
+        textview_priv_headers.get_buffer().set_text(TempTable.objdump_private_headers, len(TempTable.objdump_private_headers))
+    TempTable.objdump_private_headers = r''
     if scrolledwindow_sec_headers.is_visible:
-        textview_sec_headers.get_buffer().set_text(_datatuple[13], len(_datatuple[13]))
+        textview_sec_headers.get_buffer().set_text(TempTable.objdump_section_headers, len(TempTable.objdump_section_headers))
+    TempTable.objdump_section_headers = r''
     if scrolledwindow_size.is_visible:
-        textview_size.get_buffer().set_text(_datatuple[14], len(_datatuple[14]))
+        textview_size.get_buffer().set_text(TempTable.binsize, len(TempTable.binsize))
+    TempTable.binsize = r''
     if scrolledwindow_str.is_visible:
-        textview_str.get_buffer().set_text(_datatuple[15], len(_datatuple[15]))
+        textview_str.get_buffer().set_text(TempTable.strings, len(TempTable.strings))
+    TempTable.strings = r''
     if scrolledwindow_func.is_visible:
-        textview_func.get_buffer().set_text(_datatuple[16], len(_datatuple[16]))
+        textview_func.get_buffer().set_text(TempTable.functions, len(TempTable.functions))
+    TempTable.functions = r''
     if scrolledwindow_const.is_visible:
-        textview_const.get_buffer().set_text(_datatuple[17], len(_datatuple[17]))
+        textview_const.get_buffer().set_text(TempTable.constants, len(TempTable.constants))
+    TempTable.constants = r''
     file_properties(_file)
     statusbar.push(context_id, STATUS_FINISHED[1])
     _window.queue_draw()
@@ -1863,7 +2027,7 @@ if __name__ == '__main__':
     # Entry Point
     GETFILEDATA: bool = False
     if len(argv) == 1:
-        FILEDATA: GETDATA_RETURN = STATUS_SELECT_FILE
+        FILEDATA: Tuple[int, str] = STATUS_SELECT_FILE
     elif len(argv) == 2:
         BINFILE = argv[1]
         if BINFILE == r'' or BINFILE is None:
@@ -1885,57 +2049,56 @@ if __name__ == '__main__':
     # Get GTK Objects
     ui_get_object = ui.get_object
     _window = ui_get_object(name=r'ezwin')
-    textview_prop = ui_get_object(name=r'textview_prop')
-    textview_sym_tbl = ui_get_object(name=r'textview_sym_tbl')
-    textview_dyn_sym = ui_get_object(name=r'textview_dyn_sym')
-    textview_nm_sym = ui_get_object(name=r'textview_nm_sym')
-    textview_dyn_reloc = ui_get_object(name=r'textview_dyn_reloc')
-    textview_dis = ui_get_object(name=r'textview_dis')
-    textview_dis_intel = ui_get_object(name=r'textview_dis_intel')
-    textview_dis_att = ui_get_object(name=r'textview_dis_att')
-    textview_dis_bin = ui_get_object(name=r'textview_dis_bin')
-    textview_dis_hex = ui_get_object(name=r'textview_dis_hex')
-    textview_header = ui_get_object(name=r'textview_header')
-    textview_readelf = ui_get_object(name=r'textview_readelf')
-    textview_all_headers = ui_get_object(name=r'textview_all_headers')
-    textview_priv_headers = ui_get_object(name=r'textview_priv_headers')
-    textview_sec_headers = ui_get_object(name=r'textview_sec_headers')
-    textview_size = ui_get_object(name=r'textview_size')
-    textview_str = ui_get_object(name=r'textview_str')
-    textview_func = ui_get_object(name=r'textview_func')
-    textview_const = ui_get_object(name=r'textview_const')
+    statusbar = ui_get_object(name=r'statusbar')
+    context_id = statusbar.get_context_id(r'NULL')
+    statusbar.push(context_id, r'')
+    tabs = ui_get_object(name=r'tabs')
+    tabs.set_current_page(0)
     about_box = ui_get_object(name=r'about_box')
     binutils_info = ui_get_object(name=r'binutils_info')
     btn_save = ui_get_object(name=r'btn_save')
     menuitem_save = ui_get_object(name=r'menuitem_save')
     menuitem_saveas = ui_get_object(name=r'menuitem_saveas')
     l_file = ui_get_object(name=r'l_file')
-    tabs = ui_get_object(name=r'tabs')
-    tabs.set_current_page(0)
-    statusbar = ui_get_object(name=r'statusbar')
-    context_id = statusbar.get_context_id(r'NULL')
-    statusbar.push(context_id, r'')
-    scrolledwindow_prop = ui_get_object(name=r'scrolledwindow_prop')
-    scrolledwindow_sym_tbl = ui_get_object(name=r'scrolledwindow_sym_tbl')
-    scrolledwindow_dyn_sym = ui_get_object(name=r'scrolledwindow_dyn_sym')
-    scrolledwindow_nm_sym = ui_get_object(name=r'scrolledwindow_nm_sym')
-    scrolledwindow_dyn_reloc = ui_get_object(name=r'scrolledwindow_dyn_reloc')
+    scrolledwindow_all_headers = ui_get_object(name=r'scrolledwindow_all_headers')
+    scrolledwindow_const = ui_get_object(name=r'scrolledwindow_const')
     scrolledwindow_dis = ui_get_object(name=r'scrolledwindow_dis')
-    scrolledwindow_dis_intel = ui_get_object(name=r'scrolledwindow_dis_intel')
     scrolledwindow_dis_att = ui_get_object(name=r'scrolledwindow_dis_att')
     scrolledwindow_dis_bin = ui_get_object(name=r'scrolledwindow_dis_bin')
     scrolledwindow_dis_hex = ui_get_object(name=r'scrolledwindow_dis_hex')
-    scrolledwindow_readelf = ui_get_object(name=r'scrolledwindow_readelf')
-    scrolledwindow_all_headers = ui_get_object(name=r'scrolledwindow_all_headers')
+    scrolledwindow_dis_intel = ui_get_object(name=r'scrolledwindow_dis_intel')
+    scrolledwindow_dyn_reloc = ui_get_object(name=r'scrolledwindow_dyn_reloc')
+    scrolledwindow_dyn_sym = ui_get_object(name=r'scrolledwindow_dyn_sym')
+    scrolledwindow_func = ui_get_object(name=r'scrolledwindow_func')
     scrolledwindow_header = ui_get_object(name=r'scrolledwindow_header')
+    scrolledwindow_nm_sym = ui_get_object(name=r'scrolledwindow_nm_sym')
     scrolledwindow_priv_headers = ui_get_object(name=r'scrolledwindow_priv_headers')
+    scrolledwindow_prop = ui_get_object(name=r'scrolledwindow_prop')
+    scrolledwindow_readelf = ui_get_object(name=r'scrolledwindow_readelf')
     scrolledwindow_sec_headers = ui_get_object(name=r'scrolledwindow_sec_headers')
     scrolledwindow_size = ui_get_object(name=r'scrolledwindow_size')
     scrolledwindow_str = ui_get_object(name=r'scrolledwindow_str')
-    scrolledwindow_func = ui_get_object(name=r'scrolledwindow_func')
-    scrolledwindow_const = ui_get_object(name=r'scrolledwindow_const')
+    scrolledwindow_sym_tbl = ui_get_object(name=r'scrolledwindow_sym_tbl')
+    textview_all_headers = ui_get_object(name=r'textview_all_headers')
+    textview_const = ui_get_object(name=r'textview_const')
+    textview_dis = ui_get_object(name=r'textview_dis')
+    textview_dis_att = ui_get_object(name=r'textview_dis_att')
+    textview_dis_bin = ui_get_object(name=r'textview_dis_bin')
+    textview_dis_hex = ui_get_object(name=r'textview_dis_hex')
+    textview_dis_intel = ui_get_object(name=r'textview_dis_intel')
+    textview_dyn_reloc = ui_get_object(name=r'textview_dyn_reloc')
+    textview_dyn_sym = ui_get_object(name=r'textview_dyn_sym')
+    textview_func = ui_get_object(name=r'textview_func')
+    textview_header = ui_get_object(name=r'textview_header')
+    textview_nm_sym = ui_get_object(name=r'textview_nm_sym')
+    textview_priv_headers = ui_get_object(name=r'textview_priv_headers')
+    textview_prop = ui_get_object(name=r'textview_prop')
+    textview_readelf = ui_get_object(name=r'textview_readelf')
+    textview_sec_headers = ui_get_object(name=r'textview_sec_headers')
+    textview_size = ui_get_object(name=r'textview_size')
+    textview_str = ui_get_object(name=r'textview_str')
+    textview_sym_tbl = ui_get_object(name=r'textview_sym_tbl')
     # Window Title
-    _window.set_title(r'Program-Analyzer')
     l_file.set_text(r'Program-Analyzer')
     # Set GNU-Binutls Info in About-tab
     binutils_info.set_text(getoutput(r'objdump --version'))
@@ -1947,18 +2110,6 @@ if __name__ == '__main__':
         r'show_hide_save': show_hide_save,
         r'_winexit': Gtk.main_quit
     })
-    # Scan for Available Tools
-    is_ndisasm_available: bool = is_program_aval(r'ndisasm')
-    is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
-    is_linux_arm_available: bool = is_program_aval(r'arm-linux-gnueabi-objdump')
-    is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
-    is_linux_hppa64_available: bool = is_program_aval(r'hppa64-linux-gnu-objdump')
-    is_linux_s390x_available: bool = is_program_aval(r's390x-linux-gnu-objdump')
-    is_linux_sparc64_available: bool = is_program_aval(r'sparc64-linux-gnu-objdump')
-    is_linux_x86_available: bool = is_program_aval(r'i686-linux-gnu-objdump')
-    is_linux_x86_64_available: bool = is_program_aval(r'x86_64-linux-gnu-objdump')
-    is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
-    is_win_x86_64_available: bool = is_program_aval(r'x86_64-w64-mingw32-objdump')
     # Begin Program
     if GETFILEDATA:
         FILEDATA = getdis(BINFILE)  # Get data from the chosen file

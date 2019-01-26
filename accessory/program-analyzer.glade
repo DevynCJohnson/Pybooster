@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -28,15 +28,34 @@ Author: Devyn Collier Johnson
   <!-- interface-description Display the symbols and tables of a compiled program or library -->
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkTextBuffer" id="buf_all_headers"/>
+  <object class="GtkTextBuffer" id="buf_const"/>
+  <object class="GtkTextBuffer" id="buf_dis"/>
+  <object class="GtkTextBuffer" id="buf_dis_att"/>
+  <object class="GtkTextBuffer" id="buf_dis_bin"/>
+  <object class="GtkTextBuffer" id="buf_dis_hex"/>
+  <object class="GtkTextBuffer" id="buf_dis_intel"/>
+  <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
+  <object class="GtkTextBuffer" id="buf_dyn_sym"/>
+  <object class="GtkTextBuffer" id="buf_func"/>
+  <object class="GtkTextBuffer" id="buf_header"/>
+  <object class="GtkTextBuffer" id="buf_nm_sym"/>
+  <object class="GtkTextBuffer" id="buf_priv_headers"/>
+  <object class="GtkTextBuffer" id="buf_prop"/>
+  <object class="GtkTextBuffer" id="buf_readelf"/>
+  <object class="GtkTextBuffer" id="buf_sec_headers"/>
+  <object class="GtkTextBuffer" id="buf_size"/>
+  <object class="GtkTextBuffer" id="buf_str"/>
+  <object class="GtkTextBuffer" id="buf_sym"/>
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">1000</property>
-    <property name="height_request">600</property>
+    <property name="width_request">1600</property>
+    <property name="height_request">1000</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title">Program-Analyzer</property>
     <property name="window_position">center</property>
-    <property name="default_width">1000</property>
-    <property name="default_height">600</property>
+    <property name="default_width">1600</property>
+    <property name="default_height">1000</property>
     <property name="icon_name">program-analyzer</property>
     <property name="has_resize_grip">True</property>
     <property name="show_menubar">False</property>
@@ -46,8 +65,8 @@ Author: Devyn Collier Johnson
     </child>
     <child>
       <object class="GtkBox" id="box">
-        <property name="width_request">1000</property>
-        <property name="height_request">600</property>
+        <property name="width_request">1600</property>
+        <property name="height_request">1000</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -129,8 +148,8 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -161,13 +180,14 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_prop">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_prop</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -194,13 +214,14 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_sym_tbl">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -232,13 +253,14 @@ objdump --special-syms --syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_sym">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_dyn_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -270,13 +292,14 @@ objdump --special-syms --dynamic-syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_nm_sym">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_nm_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -308,13 +331,14 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_reloc">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_dyn_reloc</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -346,12 +370,13 @@ objdump --dynamic-reloc</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -383,12 +408,13 @@ ndisasm</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_intel">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis_intel</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -405,7 +431,7 @@ ndisasm</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Display the disassembled code using Intel syntax
-objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=intel</property>
+objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
                 <property name="label" translatable="yes">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
@@ -420,12 +446,13 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=i
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_att">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="buffer">buf_dis_att</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -442,7 +469,7 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=i
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=att</property>
+objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
                 <property name="label" translatable="yes">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
@@ -456,15 +483,21 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
               <object class="GtkScrolledWindow" id="scrolledwindow_dis_bin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="double_buffered">False</property>
+                <property name="hscrollbar_policy">never</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_bin">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="double_buffered">False</property>
                     <property name="wrap_mode">char</property>
-                    <property name="right_margin">15</property>
+                    <property name="justification">fill</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">5</property>
+                    <property name="buffer">buf_dis_bin</property>
                     <property name="accepts_tab">False</property>
                     <property name="input_purpose">digits</property>
                     <property name="monospace">True</property>
@@ -495,15 +528,21 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
               <object class="GtkScrolledWindow" id="scrolledwindow_dis_hex">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="double_buffered">False</property>
+                <property name="hscrollbar_policy">never</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis_hex">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="wrap_mode">word-char</property>
-                    <property name="right_margin">15</property>
+                    <property name="double_buffered">False</property>
+                    <property name="wrap_mode">word</property>
+                    <property name="justification">fill</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">5</property>
+                    <property name="buffer">buf_dis_hex</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -534,14 +573,14 @@ objdump --disassemble-all --source --disassemble-zeroes --disassembler-options=a
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_readelf">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                    <property name="right_margin">15</property>
+                    <property name="buffer">buf_readelf</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -575,13 +614,14 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_all_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_all_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -613,13 +653,14 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_header">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_header</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -651,13 +692,14 @@ objdump --file-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_priv_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_priv_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -689,13 +731,14 @@ objdump --private-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_sec_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_sec_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -727,13 +770,14 @@ objdump --section-headers</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_size">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_size</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -766,13 +810,14 @@ size --format=SysV</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_str">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_str</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -804,13 +849,14 @@ strings --all</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_func">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_func</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -841,13 +887,14 @@ strings --all</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">700</property>
-                <property name="min_content_height">400</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_const">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
+                    <property name="buffer">buf_const</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
@@ -897,7 +944,8 @@ strings --all</property>
                         <property name="label" translatable="yes">Program-Analyzer
 Version: 2018.12.28
 Author: Devyn Collier Johnson
-&lt;DevynCJohnson@Gmail.com&gt;</property>
+&amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
+                        <property name="use_markup">True</property>
                         <property name="justify">center</property>
                         <property name="track_visited_links">False</property>
                       </object>
@@ -912,8 +960,9 @@ Author: Devyn Collier Johnson
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">For more programs,
-- Visit DCJTech.info
+- Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
+                        <property name="use_markup">True</property>
                         <property name="track_visited_links">False</property>
                       </object>
                       <packing>
