@@ -476,6 +476,12 @@ rotate_img_ccw() {
 }
 
 
+#' Repair SVG Files
+fixsvg() {
+    find ./ -type f -name "*.svg" -exec minifyxml --svg --inplace --remove-all-metadata {} \; && find ./ -type f -name "*.svg" -exec xmllint --valid --nowarning --noout {} \;
+}
+
+
 fi
 
 
