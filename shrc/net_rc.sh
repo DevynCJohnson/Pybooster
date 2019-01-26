@@ -37,38 +37,42 @@ fi
 
 #' Save/Backup firewall rules
 backupfwrules() {
-    if [ -n "${1:-}" ] && [ -d "${1}" ]; then
+    if [ "$(id -u)" != '0' ]; then
+        printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2
+    elif [ -n "${1:-}" ] && [ -d "${1}" ]; then
         if [[ ! "${1}" =~ ^.+/$ ]]; then
             _output_dir="${1}/"
         else
             _output_dir="${1}"
         fi
-        [ -x "$(command -v iptables-save)" ] && sudo iptables-save > "${_output_dir}Firewall_IPv4.bak"
-        [ -x "$(command -v ip6tables-save)" ] && sudo ip6tables-save > "${_output_dir}Firewall_IPv6.bak"
-        [ -x "$(command -v iptables-restore-translate)" ] && sudo iptables-restore-translate -f "${_output_dir}Firewall_IPv4.bak" > "${_output_dir}Firewall_IPv4.nft"
+        [ -x "$(command -v iptables-save)" ] && iptables-save > "${_output_dir}Firewall_IPv4.bak"
+        [ -x "$(command -v ip6tables-save)" ] && ip6tables-save > "${_output_dir}Firewall_IPv6.bak"
+        [ -x "$(command -v iptables-restore-translate)" ] && iptables-restore-translate -f "${_output_dir}Firewall_IPv4.bak" > "${_output_dir}Firewall_IPv4.nft"
     else
-        [ -x "$(command -v iptables-save)" ] && sudo iptables-save > "${HOME}/Firewall_IPv4.bak"
-        [ -x "$(command -v ip6tables-save)" ] && sudo ip6tables-save > "${HOME}/Firewall_IPv6.bak"
-        [ -x "$(command -v iptables-restore-translate)" ] && sudo iptables-restore-translate -f "${HOME}/Firewall_IPv4.bak" > "${HOME}/Firewall_IPv4.nft"
+        [ -x "$(command -v iptables-save)" ] && iptables-save > "${HOME}/Firewall_IPv4.bak"
+        [ -x "$(command -v ip6tables-save)" ] && ip6tables-save > "${HOME}/Firewall_IPv6.bak"
+        [ -x "$(command -v iptables-restore-translate)" ] && iptables-restore-translate -f "${HOME}/Firewall_IPv4.bak" > "${HOME}/Firewall_IPv4.nft"
     fi
 }
 
 
 #' Restore saved firewall rules
 restorefwrules() {
-    if [ -n "${1:-}" ] && [ -d "${1}" ]; then
+    if [ "$(id -u)" != '0' ]; then
+        printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2
+    elif [ -n "${1:-}" ] && [ -d "${1}" ]; then
         if [[ ! "${1}" =~ ^.+/$ ]]; then
             _input_dir="${1}/"
         else
             _input_dir="${1}"
         fi
-        [ -x "$(command -v iptables-save)" ] && sudo iptables-save > "${_input_dir}Firewall_IPv4.bak"
-        [ -x "$(command -v ip6tables-save)" ] && sudo ip6tables-save > "${_input_dir}Firewall_IPv6.bak"
-        [ -x "$(command -v nft)" ] && [ -r "${_input_dir}Firewall_IPv4.nft" ] && sudo nft -f "${_input_dir}Firewall_IPv4.nft"
+        [ -x "$(command -v iptables-save)" ] && iptables-save > "${_input_dir}Firewall_IPv4.bak"
+        [ -x "$(command -v ip6tables-save)" ] && ip6tables-save > "${_input_dir}Firewall_IPv6.bak"
+        [ -x "$(command -v nft)" ] && [ -r "${_input_dir}Firewall_IPv4.nft" ] && nft -f "${_input_dir}Firewall_IPv4.nft"
     else
-        [ -x "$(command -v iptables-save)" ] && sudo iptables-save > "${HOME}/Firewall_IPv4.bak"
-        [ -x "$(command -v ip6tables-save)" ] && sudo ip6tables-save > "${HOME}/Firewall_IPv6.bak"
-        [ -x "$(command -v nft)" ] && [ -r "${HOME}/Firewall_IPv4.nft" ] && sudo nft -f "${HOME}/Firewall_IPv4.nft"
+        [ -x "$(command -v iptables-save)" ] && iptables-save > "${HOME}/Firewall_IPv4.bak"
+        [ -x "$(command -v ip6tables-save)" ] && ip6tables-save > "${HOME}/Firewall_IPv6.bak"
+        [ -x "$(command -v nft)" ] && [ -r "${HOME}/Firewall_IPv4.nft" ] && nft -f "${HOME}/Firewall_IPv4.nft"
     fi
 }
 
@@ -89,7 +93,7 @@ restorefwrules() {
 
 if [ -x "$(command -v curl)" ]; then
     #' Test the response speed of the specified website
-    alias testwebtime="curl -s -w 'Testing Website Response Time: %{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null"
+    alias testwebtime="curl -s -w 'Testing Website Response Time: %{url_effective}\\n\\nLookup Time:\\t\\t%{time_namelookup}\\nConnect Time:\\t\\t%{time_connect}\\nPre-transfer Time:\\t%{time_pretransfer}\\nStart-transfer Time:\\t%{time_starttransfer}\\n\\nTotal Time:\\t\\t%{time_total}\\n' -o /dev/null"
     #' Display the web header of the specified website
     alias webheader='curl -I'
 fi
@@ -98,6 +102,71 @@ if [ -x "$(command -v wget)" ]; then
     #' Download the file at the specified web address
     alias download='wget --no-cache --no-cookies --no-cookies --no-dns-cache --quiet'
 fi
+
+
+# NETWORK FUNTIONS #
+
+
+#' Return an error if the Internet is unreachable; otherwise, return nothing
+chkinternet() {
+    httpget DCJTech.info > /dev/null 2>&1 || { httpget DuckDuckGo.com > /dev/null 2>&1 || { printf 'ERROR: No active internet connection\n' >&2; return 1; } }
+}
+
+
+#' Obtain a list of the DNS servers used by this system
+getdnsips() {
+    if [ -r /etc/resolv.conf ]; then
+        grep -i '^nameserver' /etc/resolv.conf | cut -d ' ' -f 2
+    else
+        printf 'getdnsips: The file "/etc/resolv.conf" does not exist or is not readable!\n' >&2
+        return 1
+    fi
+}
+
+
+#' Fetch the LAN IP address
+getlanip() {
+    if [ -x "$(command -v ifconfig)" ]; then
+        ifconfig | grep -E -o 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | cut -d ' ' -f 2
+    elif [ -x "$(command -v ip)" ]; then
+        ip addr show | grep -E -o 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | cut -d ' ' -f 2
+    else
+        printf 'getlanip: Unable to find the IP address of the LAN!' >&2
+        return 1
+    fi
+}
+
+
+#' Fetch the WAN IP address
+getwanip() {
+    httpget https://api.ipify.org?format=json | grep -Eo '[0-9.]*'
+}
+
+
+#' Fetch the IP address of the Router
+getrouterip() {
+    if [ -x "$(command -v netstat)" ]; then
+        netstat -r -n | grep '^0.0.0.0' | cut -d ' ' -f 2
+    elif [ -x "$(command -v ip)" ]; then
+        ip route | grep '^default\svia' | head -1 | cut -d ' ' -f 3
+    else
+        printf 'getrouterip: Unable to find the IP address of the router!' >&2
+        return 1
+    fi
+}
+
+
+#' Display a list of the MAC addresses on the system
+lsmacs() {
+    if [ -x "$(command -v ifconfig)" ]; then
+        ifconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | sort
+    elif [ -x "$(command -v ip)" ]; then
+        ip addr show | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | grep -v '00:00:00:00:00:00' | grep -v 'ff:ff:ff:ff:ff:ff' | sort | uniq
+    else
+        printf 'lsmacs: Unable to find the MAC addresses of the system!' >&2
+        return 1
+    fi
+}
 
 
 # NETWORK CONTROL #
@@ -129,8 +198,37 @@ fi
 
 
 #' Download & extract Bzip2
-downloadbzip() { wget -c "$1" -O - | tar -jx; }
+downloadbzip() { wget --no-cache --no-cookies --no-dns-cache --quiet -c "$1" -O - | tar -jx; }
 #' Download & extract Gzip
-downloadgzip() { wget -c "$1" -O - | tar -xz; }
+downloadgzip() { wget --no-cache --no-cookies --no-dns-cache --quiet -c "$1" -O - | tar -xz; }
 #' Download & extract XZ
-downloadxz() { wget -c "$1" -O - | tar -Jx; }
+downloadxz() { wget --no-cache --no-cookies --no-dns-cache --quiet -c "$1" -O - | tar -Jx; }
+#' Download & extract Zip
+downloadzip() { wget --no-cache --no-cookies --no-dns-cache --quiet -c "$1" -O new.zip && unzip -q -q new.zip && rm new.zip; }
+
+
+# WEATHER #
+
+
+#' Display the forecasted weather for the current location
+weatherhere() {
+    [ -z "${COUNTRY:-}" ] && COUNTRY="$(httpget ipinfo.io/country)" && export COUNTRY
+    if [ "$COUNTRY" = 'US' ]; then
+        [ -z "${CITY:-}" ] && CITY="$(httpget ipinfo.io/city)" && export CITY
+        [ -z "${REGION:-}" ] && REGION="$(httpget ipinfo.io/region)"
+        [ "$(echo "$REGION" | wc -w)" == '2' ] && REGION="$(echo "$REGION" | grep -E -o '[A-Z]*' | tr -d '[:space:]')" && export REGION
+        [ -z "${locale:-}" ] && locale="$(echo "$LANG" | cut -c 1-2)"
+        httpget "${locale:en}.wttr.in/$CITY,$REGION"
+    else
+        [ -z "${LOCATION:-}" ] && LOCATION="$(httpget ipinfo.io/loc)" && export LOCATION
+        httpget "${locale:en}.wttr.in/$LOCATION"
+    fi
+}
+
+
+#' Display the forecasted weather for the specified location
+#' param[in] $1 Specify the location using format "city,state" or "lat,lon"; Use quotes if the specified location name contains a space character
+weatherat() {
+    args="$(echo "$@" | tr " " + )"
+    httpget "$locale.wttr.in/${args}"
+}
