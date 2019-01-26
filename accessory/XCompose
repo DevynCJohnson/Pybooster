@@ -25,6 +25,8 @@
 <Multi_key> <asciicircum> <space> : "^" asciicircum  # CIRCUMFLEX ACCENT
 <Multi_key> <asciitilde> <nobreakspace> : "̃" U0303  # COMBINING TILDE
 <Multi_key> <asciitilde> <space> : "~" asciitilde  # TILDE
+<Multi_key> <backslash> <space> : "␣" U2423  # OPEN BOX
+<Multi_key> <c> <period> <period> : "⋯" U22EF  # MIDLINE HORIZONTAL ELLIPSIS
 <Multi_key> <caron> <nobreakspace> : "̌" U030C  # COMBINING CARON
 <Multi_key> <caron> <parenleft> : "₍" U208D  # SUBSCRIPT LEFT PARENTHESIS
 <Multi_key> <caron> <parenright> : "₎" U208E  # SUBSCRIPT RIGHT PARENTHESIS
@@ -44,7 +46,10 @@
 <Multi_key> <less> <slash> : "\\" backslash  # REVERSE SOLIDUS
 <Multi_key> <less> <space> : "ˇ" caron  # CARON
 <Multi_key> <macron> <nobreakspace> : "̄" U0304  # COMBINING MACRON
+<Multi_key> <minus> <2> <M> : "⸺" U2E3A  # TWO-EM DASH
+<Multi_key> <minus> <3> <M> : "⸻" U2E3B  # THREE-EM DASH
 <Multi_key> <minus> <asciicircum> : "¯" macron  # MACRON
+<Multi_key> <minus> <asciitilde> <minus> : "―" U2015  # HORIZONTAL BAR
 <Multi_key> <minus> <minus> <minus> : "—" U2014  # EM DASH
 <Multi_key> <minus> <minus> <period> : "–" U2013  # EN DASH
 <Multi_key> <minus> <minus> <space> : "­" U00AD  # SOFT HYPHEN
@@ -70,6 +75,7 @@
 <Multi_key> <S> <S> : "ẞ" U1E9E  # LATIN CAPITAL LETTER SHARP S
 <Multi_key> <slash> <asciicircum> : "|" bar  # VERTICAL LINE
 <Multi_key> <slash> <less> : "\\" backslash  # REVERSE SOLIDUS
+<Multi_key> <slash> <period> <period> : "⋰" U22F0  # UP RIGHT DIAGONAL ELLIPSIS
 <Multi_key> <slash> <slash> : "\\" backslash  # REVERSE SOLIDUS
 <Multi_key> <space> <apostrophe> : "'" apostrophe  # APOSTROPHE
 <Multi_key> <space> <asciicircum> : "^" asciicircum  # CIRCUMFLEX ACCENT
@@ -98,10 +104,12 @@
 <Multi_key> <underscore> <underscore> : "¯" macron  # MACRON
 <Multi_key> <V> <L> : "|" bar  # VERTICAL LINE
 <Multi_key> <v> <l> : "|" bar  # VERTICAL LINE
+<Multi_key> <v> <period> <period> : "⋮" U22EE  # VERTICAL ELLIPSIS
 
 
 # Quotation Marks
 
+<Multi_key> <2> <comma> : "„" U201E  # DOUBLE LOW-9 QUOTATION MARK
 <Multi_key> <apostrophe> <comma> : "‚" U201A  # SINGLE LOW-9 QUOTATION MARK
 <Multi_key> <apostrophe> <greater> : "’" U2019  # RIGHT SINGLE QUOTATION MARK
 <Multi_key> <apostrophe> <less> : "‘" U2018  # LEFT SINGLE QUOTATION MARK
@@ -122,8 +130,10 @@
 
 # Currency Symbols
 
-<Multi_key> <bar> <C> : "¢" cent  # CENT SIGN
+<Multi_key> <B> <bar> : "฿" U0E3F  # THAI CURRENCY SYMBOL BAHT
+<Multi_key> <B> <equal> : "₿" U20BF  # BITCOIN CURRENCY SIGN
 <Multi_key> <bar> <c> : "¢" cent  # CENT SIGN
+<Multi_key> <bar> <C> : "¢" cent  # CENT SIGN
 <Multi_key> <C> <bar> : "¢" cent  # CENT SIGN
 <Multi_key> <c> <bar> : "¢" cent  # CENT SIGN
 <Multi_key> <C> <E> : "₠" U20A0  # EURO-CURRENCY SIGN
@@ -134,8 +144,8 @@
 <Multi_key> <C> <slash> : "₡" U20A1  # COLON SIGN
 <Multi_key> <cedilla> <cent> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <cedilla> <ColonSign> : "₵" U20B5  # CEDI SIGN
-<Multi_key> <cedilla> <U00A4> <C> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <cedilla> <U00A4> <c> : "₵" U20B5  # CEDI SIGN
+<Multi_key> <cedilla> <U00A4> <C> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <Cyrillic_ES> <equal> : "€" EuroSign  # EURO SIGN
 <Multi_key> <Cyrillic_IE> <equal> : "€" EuroSign  # EURO SIGN
 <Multi_key> <d> <equal> : "₫" U20AB  # DONG SIGN
@@ -146,8 +156,8 @@
 <Multi_key> <equal> <Cyrillic_ES> : "€" EuroSign  # EURO SIGN
 <Multi_key> <equal> <Cyrillic_IE> : "€" EuroSign  # EURO SIGN
 <Multi_key> <equal> <d> : "₫" U20AB  # DONG SIGN
-<Multi_key> <equal> <E> : "€" EuroSign  # EURO SIGN
 <Multi_key> <equal> <e> : "€" EuroSign  # EURO SIGN
+<Multi_key> <equal> <E> : "€" EuroSign  # EURO SIGN
 <Multi_key> <equal> <L> : "₤" U20A4  # LIRA SIGN
 <Multi_key> <equal> <N> : "₦" U20A6  # NAIRA SIGN
 <Multi_key> <equal> <R> : "₹" U20B9  # INDIAN RUPEE SIGN
@@ -160,18 +170,18 @@
 <Multi_key> <L> <minus> : "£" sterling  # POUND SIGN
 <Multi_key> <l> <minus> : "£" sterling  # POUND SIGN
 <Multi_key> <m> <slash> : "₥" U20A5  # MILL SIGN
-<Multi_key> <minus> <L> : "£" sterling  # POUND SIGN
 <Multi_key> <minus> <l> : "£" sterling  # POUND SIGN
+<Multi_key> <minus> <L> : "£" sterling  # POUND SIGN
 <Multi_key> <minus> <Y> : "¥" yen  # YEN SIGN
 <Multi_key> <minus> <y> : "¥" yen  # YEN SIGN
 <Multi_key> <N> <equal> : "₦" U20A6  # NAIRA SIGN
 <Multi_key> <O> <X> : "¤" currency  # CURRENCY SIGN
+<Multi_key> <o> <x> : "¤" currency  # CURRENCY SIGN
 <Multi_key> <O> <x> : "¤" currency  # CURRENCY SIGN
 <Multi_key> <o> <X> : "¤" currency  # CURRENCY SIGN
-<Multi_key> <o> <x> : "¤" currency  # CURRENCY SIGN
 <Multi_key> <P> <t> : "₧" U20A7  # PESETA SIGN
-<Multi_key> <R> <equal> : "₹" U20B9  # INDIAN RUPEE SIGN
 <Multi_key> <r> <equal> : "₹" U20B9  # INDIAN RUPEE SIGN
+<Multi_key> <R> <equal> : "₹" U20B9  # INDIAN RUPEE SIGN
 <Multi_key> <R> <s> : "₨" U20A8  # RUPEE SIGN
 <Multi_key> <slash> <c> : "¢" cent  # CENT SIGN
 <Multi_key> <slash> <C> : "₡" U20A1  # COLON SIGN
@@ -182,10 +192,10 @@
 <Multi_key> <U00A4> <B> : "₱" U20B1  # PESO SIGN
 <Multi_key> <U00A4> <c> : "¢" cent  # CENT SIGN
 <Multi_key> <U00A4> <C> : "₡" ColonSign  # COLON SIGN
-<Multi_key> <U00A4> <Ccedilla> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <U00A4> <ccedilla> : "₵" U20B5  # CEDI SIGN
-<Multi_key> <U00A4> <cedilla> <C> : "₵" U20B5  # CEDI SIGN
+<Multi_key> <U00A4> <Ccedilla> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <U00A4> <cedilla> <c> : "₵" U20B5  # CEDI SIGN
+<Multi_key> <U00A4> <cedilla> <C> : "₵" U20B5  # CEDI SIGN
 <Multi_key> <U00A4> <d> : "₫" DongSign  # DONG SIGN
 <Multi_key> <U00A4> <D> : "₯" U20AF  # DRACHMA SIGN
 <Multi_key> <U00A4> <E> : "₠" EcuSign  # EURO-CURRENCY SIGN
@@ -198,8 +208,8 @@
 <Multi_key> <U00A4> <h> : "₴" U20B4  # HRYVNIA SIGN
 <Multi_key> <U00A4> <I> : "៛" U17DB  # KHMER CURRENCY SYMBOL RIEL
 <Multi_key> <U00A4> <i> : "﷼" UFDFC  # RIAL SIGN
-<Multi_key> <U00A4> <K> : "₭" U20AD  # KIP SIGN
 <Multi_key> <U00A4> <k> : "₭" U20AD  # KIP SIGN
+<Multi_key> <U00A4> <K> : "₭" U20AD  # KIP SIGN
 <Multi_key> <U00A4> <l> : "£" sterling  # POUND SIGN
 <Multi_key> <U00A4> <L> : "₤" LiraSign  # LIRA SIGN
 <Multi_key> <U00A4> <m> : "₥" MillSign  # MILL SIGN
@@ -746,6 +756,8 @@
 <Multi_key> <b> <g> : "ğ" U011F  # LATIN SMALL LETTER G WITH BREVE
 <Multi_key> <b> <I> : "Ĭ" U012C  # LATIN CAPITAL LETTER I WITH BREVE
 <Multi_key> <b> <i> : "ĭ" U012D  # LATIN SMALL LETTER I WITH BREVE
+<Multi_key> <b> <minus> : "ƀ" U0180  # LATIN SMALL LETTER B WITH STROKE
+<Multi_key> <B> <minus> : "Ƀ" U0243  # LATIN CAPITAL LETTER B WITH STROKE
 <Multi_key> <b> <O> : "Ŏ" U014E  # LATIN CAPITAL LETTER O WITH BREVE
 <Multi_key> <b> <o> : "ŏ" U014F  # LATIN SMALL LETTER O WITH BREVE
 <Multi_key> <B> <period> : "Ḃ" U1E02  # LATIN CAPITAL LETTER B WITH DOT ABOVE
@@ -1328,6 +1340,8 @@
 <Multi_key> <macron> <y> : "ȳ" U0233  # LATIN SMALL LETTER Y WITH MACRON
 <Multi_key> <minus> <A> : "Ā" U0100  # LATIN CAPITAL LETTER A WITH MACRON
 <Multi_key> <minus> <a> : "ā" U0101  # LATIN SMALL LETTER A WITH MACRON
+<Multi_key> <minus> <b> : "ƀ" U0180  # LATIN SMALL LETTER B WITH STROKE
+<Multi_key> <minus> <B> : "Ƀ" U0243  # LATIN CAPITAL LETTER B WITH STROKE
 <Multi_key> <minus> <D> : "Đ" Dstroke  # LATIN CAPITAL LETTER D WITH STROKE
 <Multi_key> <minus> <d> : "đ" dstroke  # LATIN SMALL LETTER D WITH STROKE
 <Multi_key> <minus> <E> : "Ē" U0112  # LATIN CAPITAL LETTER E WITH MACRON
@@ -2062,6 +2076,8 @@
 
 # Math Characters
 
+<Multi_key> <3> <s> <q> : "∛" U221B  # CUBE ROOT
+<Multi_key> <4> <s> <q> : "∜" U221C  # FOURTH ROOT
 <Multi_key> <8> <8> : "∞" U221E  # 8 8 INFINITY
 <Multi_key> <approximate> <U0338> : "≇" U2247  # NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
 <Multi_key> <asciitilde> <equal> : "≃" U2243  # ASYMPTOTICALLY EQUAL TO
@@ -2101,6 +2117,7 @@
 <Multi_key> <rightcaret> <U0338> : "≯" U226F  # NOT GREATER-THAN
 <Multi_key> <rightshoe> <U0338> : "⊅" U2285  # NOT A SUPERSET OF
 <Multi_key> <righttack> <U0338> : "⊬" U22AC  # DOES NOT PROVE
+<Multi_key> <s> <q> : "√" U221A  # SQUARE ROOT
 <Multi_key> <slash> <equal> : "≠" U2260  # NOT EQUAL TO
 <Multi_key> <slash> <v> : "√" U221A  # / v SQUARE ROOT
 <Multi_key> <U0323> <equal> : "⩦" U2A66  # EQUALS SIGN WITH DOT BELOW
@@ -4153,10 +4170,16 @@
 # Arrow Characters
 
 <Multi_key> <equal> <greater> : "⇒" U21D2  # RIGHTWARDS DOUBLE ARROW
+<Multi_key> <equal> <less> : "⇐" U21D0  # LEFTWARDS DOUBLE ARROW
+<Multi_key> <equal> <v> : "⇓" U21D3  # DOWNWARDS DOUBLE ARROW
 <Multi_key> <less> <minus> : "←" U2190  # LEFTWARDS ARROW
+<Multi_key> <less> <minus> <greater> : "↔" U2194  # LEFT RIGHT ARROW
+<Multi_key> <less> <minus> <o> : "⟲" U27F2  # ANTICLOCKWISE GAPPED CIRCLE ARROW
+<Multi_key> <minus> <2> : "↓" downarrow  # DOWNWARDS ARROW
+<Multi_key> <minus> <4> : "←" leftarrow  # LEFTWARDS ARROW
+<Multi_key> <minus> <6> : "→" rightarrow  # RIGHTWARDS ARROW
+<Multi_key> <minus> <8> : "↑" uparrow  # UPWARDS ARROW
 <Multi_key> <minus> <greater> : "→" U2192  # RIGHTWARDS ARROW
-<Multi_key> <slash> <leftarrow> : "↚" U219A  # LEFTWARDS ARROW WITH STROKE
-<Multi_key> <slash> <rightarrow> : "↛" U219B  # RIGHTWARDS ARROW WITH STROKE
 <Multi_key> <slash> <U2194> : "↮" U21AE  # LEFT RIGHT ARROW WITH STROKE
 
 
@@ -4394,19 +4417,33 @@
 <Multi_key> <5> <greater> : "♷" U2677  # RECYCLING SYMBOL FOR TYPE-5 PLASTICS
 <Multi_key> <6> <greater> : "♸" U2678  # RECYCLING SYMBOL FOR TYPE-6 PLASTICS
 <Multi_key> <7> <greater> : "♹" U2679  # RECYCLING SYMBOL FOR TYPE-7 PLASTICS
+<Multi_key> <a> <t> <o> <m> : "⚛" U269B  # ATOM SYMBOL
 <Multi_key> <b> <h> : "☣" U2623  # BIOHAZARD SIGN
+<Multi_key> <b> <r> <a> <n> <c> <h> : "⸙" U2E19  # PALM BRANCH
 <Multi_key> <bracketleft> <1> <bracketright> : "⚀" U2680  # DIE FACE-1
 <Multi_key> <bracketleft> <2> <bracketright> : "⚁" U2681  # DIE FACE-2
 <Multi_key> <bracketleft> <3> <bracketright> : "⚂" U2682  # DIE FACE-3
 <Multi_key> <bracketleft> <4> <bracketright> : "⚃" U2683  # DIE FACE-4
 <Multi_key> <bracketleft> <5> <bracketright> : "⚄" U2684  # DIE FACE-5
 <Multi_key> <bracketleft> <6> <bracketright> : "⚅" U2685  # DIE FACE-6
+<Multi_key> <C> <C> <C> <P> : "☭" U262D  # HAMMER AND SICKLE
+<Multi_key> <f> <d> <l> : "⚜" U269C  # FLEUR-DE-LIS
 <Multi_key> <k> <b> <d> : "⌨" U2328  # KEYBOARD
+<Multi_key> <M> <E> <D> : "☤" U2624  # CADEUCEUS
+<Multi_key> <m> <e> <d> : "⚕" U2695  # STAFF OF AESCULAPIUS
 <Multi_key> <o> <5> : "⌘" U2318  # PLACE OF INTEREST SIGN
+<Multi_key> <p> <a> <l> <m> : "⸙" U2E19  # PALM BRANCH
+<Multi_key> <p> <c> : "☮" U262E  # PEACE SYMBOL
 <Multi_key> <p> <w> <r> : "⏻" U23FB  # POWER SYMBOL
+<Multi_key> <r> <a> <d> : "☢" U2622  # RADIOACTIVE SIGN
 <Multi_key> <s> <o> <c> : "⚽" U26BD  # SOCCER BALL
 <Multi_key> <s> <u> : "☀" U2600  # BLACK SUN WITH RAYS
+<Multi_key> <slash> <exclam> <backslash> : "⚠" U26A0  # WARNING SIGN
+<Multi_key> <t> <e> <a> : "☕" U2615  # HOT BEVERAGE
+<Multi_key> <t> <e> <l> : "☎" U260E  # BLACK TELEPHONE
 <Multi_key> <w> <b> : "🗑" U26BD  # WASTEBASKET
+<Multi_key> <y> <y> : "☯" U262F  # YIN YANG
+<Multi_key> <z> <a> <p> : "⚡" U26A1  # HIGH VOLTAGE SIGN
 
 
 # Emojicons
@@ -4414,61 +4451,88 @@
 <Multi_key> <backslash> <o> <slash> : "🙌"  # PERSON RAISING BOTH HANDS IN CELEBRATION
 <Multi_key> <colon> <parenleft> : "☹" U2639  # WHITE FROWNING FACE
 <Multi_key> <colon> <parenright> : "☺" U263A  # WHITE SMILING FACE
+<Multi_key> <f> <d> : "☟" U261F  # WHITE DOWN POINTING INDEX
+<Multi_key> <f> <l> : "☜" U261C  # WHITE LEFT POINTING INDEX
+<Multi_key> <f> <p> <d> : "✎" U270E  # LOWER RIGHT PENCIL
+<Multi_key> <f> <p> <r> : "✏" U270F  # PENCIL
+<Multi_key> <f> <p> <u> : "✐" U2710  # UPPER RIGHT PENCIL
+<Multi_key> <f> <r> : "☞" U261E  # WHITE RIGHT POINTING INDEX
+<Multi_key> <f> <U> : "☝" U261D  # WHITE UP POINTING INDEX
 <Multi_key> <F> <U> : "🖕" U1F595  # REVERSED HAND WITH MIDDLE FINGER EXTENDED
+<Multi_key> <f> <v> : "✌" U270C  # VICTORY HAND
+<Multi_key> <f> <w> : "✍" U270D  # WRITING HAND
+<Multi_key> <h> <o> <u> <r> : "⌛" U231B  # HOURGLASS
 <Multi_key> <L> <L> <A> <P> : "🖖" U1F596  # RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS
 <Multi_key> <p> <o> <o> : "💩" U1F4A9  # PILE OF POO
+<Multi_key> <t> <i> <m> <e> : "⌚" U231A  # WATCH
+
+
+# English Shortcuts
+
+<Multi_key> <i> <m> : " I'm "
+<Multi_key> <n> <t> : "n't "
+<Multi_key> <space> <a> : " and "
+<Multi_key> <space> <t> : " the "
+<Multi_key> <space> <T> : " The "
+<Multi_key> <v> <e> : "'ve "
 
 
 # Miscellaneous Symbols
 
 <Multi_key> <0> <asterisk> : "°" degree  # DEGREE SIGN
-<Multi_key> <asciicircum> <S> <M> : "℠" U2120  # SERVICE MARK
-<Multi_key> <asciicircum> <S> <m> : "℠" U2120  # SERVICE MARK
-<Multi_key> <asciicircum> <s> <M> : "℠" U2120  # SERVICE MARK
+<Multi_key> <2> <asterisk> :"⁑" U2051  # TWO ASTERISKS ALIGNED VERTICALLY
+<Multi_key> <3> <asterisk> :"⁂" U2042  # ASTERISM
 <Multi_key> <asciicircum> <s> <m> : "℠" U2120  # SERVICE MARK
-<Multi_key> <asciicircum> <T> <M> : "™" U2122  # TRADE MARK SIGN
-<Multi_key> <asciicircum> <T> <m> : "™" U2122  # TRADE MARK SIGN
-<Multi_key> <asciicircum> <t> <M> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <asciicircum> <S> <M> : "℠" U2120  # SERVICE MARK
+<Multi_key> <asciicircum> <s> <M> : "℠" U2120  # SERVICE MARK
+<Multi_key> <asciicircum> <S> <m> : "℠" U2120  # SERVICE MARK
 <Multi_key> <asciicircum> <t> <m> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <asciicircum> <T> <M> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <asciicircum> <t> <M> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <asciicircum> <T> <m> : "™" U2122  # TRADE MARK SIGN
 <Multi_key> <asciicircum> <underscore> <a> : "ª" ordfeminine  # FEMININE ORDINAL INDICATOR
 <Multi_key> <asciicircum> <underscore> <o> : "º" masculine  # MASCULINE ORDINAL INDICATOR
 <Multi_key> <asterisk> <0> : "°" degree  # DEGREE SIGN
-<Multi_key> <C> <C> <C> <P> : "☭" U262D  # HAMMER AND SICKLE
+<Multi_key> <asterisk> <3> :"⁂" U2042  # ASTERISM
+<Multi_key> <asterisk> <asterisk> :"★" U2605  # BLACK STAR
+<Multi_key> <at> <numbersign> : "⌘" U2318  # PLACE OF INTEREST SIGN
 <Multi_key> <C> <0> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <c> <0> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <C> <O> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <C> <o> : "©" copyright  # COPYRIGHT SIGN
-<Multi_key> <Cyrillic_EN> <Cyrillic_O> : "№" numerosign  # NUMERO SIGN
 <Multi_key> <Cyrillic_EN> <Cyrillic_o> : "№" numerosign  # NUMERO SIGN
+<Multi_key> <Cyrillic_EN> <Cyrillic_O> : "№" numerosign  # NUMERO SIGN
 <Multi_key> <Cyrillic_pe> <Cyrillic_a> : "§" section  # SECTION SIGN
+<Multi_key> <equal> <period> <equal> : "⸎" U2E0E  # EDITORIAL CORONIS
 <Multi_key> <less> <3> : "♥" U2665  # BLACK HEART SUIT
+<Multi_key> <less> <X> <greater> : "❖" U2756  # BLACK DIAMOND MINUS WHITE X
 <Multi_key> <N> <O> : "№" numerosign  # NUMERO SIGN
 <Multi_key> <N> <o> : "№" numerosign  # NUMERO SIGN
+<Multi_key> <o> <C> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <O> <C> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <O> <c> : "©" copyright  # COPYRIGHT SIGN
-<Multi_key> <o> <C> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <o> <c> : "©" copyright  # COPYRIGHT SIGN
 <Multi_key> <o> <o> : "°" degree  # DEGREE SIGN
-<Multi_key> <O> <R> : "®" registered  # REGISTERED SIGN
+<Multi_key> <o> <r> : "®" registered  # REGISTERED SIGN
 <Multi_key> <O> <r> : "®" registered  # REGISTERED SIGN
 <Multi_key> <o> <R> : "®" registered  # REGISTERED SIGN
-<Multi_key> <o> <r> : "®" registered  # REGISTERED SIGN
-<Multi_key> <O> <S> : "§" section  # SECTION SIGN
+<Multi_key> <O> <R> : "®" registered  # REGISTERED SIGN
 <Multi_key> <o> <s> : "§" section  # SECTION SIGN
-<Multi_key> <P> <exclam> : "¶" paragraph  # PILCROW SIGN
+<Multi_key> <O> <S> : "§" section  # SECTION SIGN
 <Multi_key> <p> <exclam> : "¶" paragraph  # PILCROW SIGN
+<Multi_key> <P> <exclam> : "¶" paragraph  # PILCROW SIGN
 <Multi_key> <P> <P> : "¶" paragraph  # PILCROW SIGN
-<Multi_key> <R> <O> : "®" registered  # REGISTERED SIGN
 <Multi_key> <R> <o> : "®" registered  # REGISTERED SIGN
+<Multi_key> <R> <O> : "®" registered  # REGISTERED SIGN
 <Multi_key> <S> <exclam> : "§" section  # SECTION SIGN
 <Multi_key> <s> <exclam> : "§" section  # SECTION SIGN
-<Multi_key> <S> <M> : "℠" U2120  # SERVICE MARK
-<Multi_key> <S> <m> : "℠" U2120  # SERVICE MARK
 <Multi_key> <s> <M> : "℠" U2120  # SERVICE MARK
 <Multi_key> <s> <m> : "℠" U2120  # SERVICE MARK
+<Multi_key> <S> <m> : "℠" U2120  # SERVICE MARK
+<Multi_key> <S> <M> : "℠" U2120  # SERVICE MARK
 <Multi_key> <S> <O> : "§" section  # SECTION SIGN
 <Multi_key> <s> <o> : "§" section  # SECTION SIGN
-<Multi_key> <T> <M> : "™" U2122  # TRADE MARK SIGN
-<Multi_key> <T> <m> : "™" U2122  # TRADE MARK SIGN
 <Multi_key> <t> <M> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <T> <M> : "™" U2122  # TRADE MARK SIGN
 <Multi_key> <t> <m> : "™" U2122  # TRADE MARK SIGN
+<Multi_key> <T> <m> : "™" U2122  # TRADE MARK SIGN
