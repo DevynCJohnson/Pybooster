@@ -544,6 +544,22 @@ else
     command_not_found_handle() { printf '%s: command not found\n' "$1" >&2; return 127; }
 fi
 
+#' Function used to obtain data from HTTP servers
+httpget() {
+    if [ -x "$(command -v curl)" ]; then
+        curl -A curl -s "$@"
+    elif [ -x "$(command -v wget)" ]; then
+        fetch -q "$@"
+    elif [ -x "$(command -v http)" ]; then
+        http -b GET "$@"
+    elif [ -x "$(command -v fetch)" ]; then
+        wget --no-cache --no-cookies --no-dns-cache --quiet -O - "$@"
+    else
+        printf 'ERROR: Either curl, wget, httpie, or fetch must be installed!\n' >&2
+        return 1
+    fi
+}
+
 
 # COLORIZED TERMINAL #
 
@@ -615,6 +631,15 @@ if [ -x "$(command -v dircolors)" ]; then
     fi
     [ -n "$(command -v vdir)" ] && alias vdir='vdir --color=auto'
 fi
+
+
+# SPECIAL GLOBALS #
+
+
+[ -z "${COUNTRY:-}" ] && COUNTRY="$(httpget ipinfo.io/country)"
+[ -z "${CITY:-}" ] && CITY="$(httpget ipinfo.io/city)"
+[ -z "${REGION:-}" ] && REGION="$(httpget ipinfo.io/region)"
+[ -z "${LOCATION:-}" ] && export LOCATION="$(httpget ipinfo.io/loc)"
 
 
 # LOAD SHELL RC MODULES #
