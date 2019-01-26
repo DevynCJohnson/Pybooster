@@ -22,6 +22,7 @@
 [ -x "$(command -v p7zip)" ] && [ ! -x "$(command -v unp7zip)" ] && alias unp7zip='p7zip --decompress'
 [ -x "$(command -v runzip)" ] && [ ! -x "$(command -v unrzip)" ] && alias unrzip='runzip'
 [ -x "$(command -v tar)" ] && [ ! -x "$(command -v untar)" ] && alias untar='tar --extract -f' && alias untgz='tar -xzf'
+[ -x "$(command -v unzip)" ] && [ ! -x "$(command -v unzip)" ] && alias unzip='unzip -q -q'
 
 # Filesystem Maneuvering Aliases
 
@@ -630,21 +631,6 @@ fi
 
 # System Control Functions
 
-if [ -r /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
-    #' Set the CPU to performance mode (helper function)
-    ampupcpu_helper() {
-        for FILE in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-            [ ! -w "$FILE" ] && break
-            [ -w "$FILE" ] && echo -n performance > "$FILE"
-        done
-    }
-
-    #' Set the CPU to performance mode
-    ampupcpu() {
-        sudo -H sh -c "ampupcpu_helper"
-    }
-fi
-
 #' Check hardware sensors
 chkhw() {
     [ -x "$(command -v inxi)" ] && inxi -B -s -x -x -x
@@ -664,18 +650,18 @@ gpumeminfo() {
 
 if [ -x "$(command -v systemctl)" ]; then
     lsservices() { systemctl --all list-unit-files | sed -E -e 's|.+ unit files listed.+||' | awk NF | sort; }
-    services_bad() { systemctl --all list-unit-files | grep -F 'bad' | awk '{ print $1 }' | sort; }
-    services_disabled() { systemctl --all list-unit-files | grep -F 'disabled' | awk '{ print $1 }' | sort; }
-    services_enabled() { systemctl --all list-unit-files | grep -F 'enabled' | awk '{ print $1 }' | sort; }
-    services_enabledruntime() { systemctl --all list-unit-files | grep -F 'enabled-runtime' | awk '{ print $1 }' | sort; }
-    services_generated() { systemctl --all list-unit-files | grep -F 'generated' | awk '{ print $1 }' | sort; }
-    services_indirect() { systemctl --all list-unit-files | grep -F 'indirect' | awk '{ print $1 }' | sort; }
-    services_linked() { systemctl --all list-unit-files | grep -F 'linked' | awk '{ print $1 }' | sort; }
-    services_linkedruntime() { systemctl --all list-unit-files | grep -F 'linked-runtime' | awk '{ print $1 }' | sort; }
-    services_masked() { systemctl --all list-unit-files | grep -F 'masked' | awk '{ print $1 }' | sort; }
-    services_maskedruntime() { systemctl --all list-unit-files | grep -F 'masked-runtime' | awk '{ print $1 }' | sort; }
-    services_static() { systemctl --all list-unit-files | grep -F 'static' | awk '{ print $1 }' | sort; }
-    services_transient() { systemctl --all list-unit-files | grep -F 'transient' | awk '{ print $1 }' | sort; }
+    services_bad() { systemctl --all list-unit-files | grep -F 'bad' | cut -d ' ' -f 1 | sort; }
+    services_disabled() { systemctl --all list-unit-files | grep -F 'disabled' | cut -d ' ' -f 1 | sort; }
+    services_enabled() { systemctl --all list-unit-files | grep -F 'enabled' | cut -d ' ' -f 1 | sort; }
+    services_enabledruntime() { systemctl --all list-unit-files | grep -F 'enabled-runtime' | cut -d ' ' -f 1 | sort; }
+    services_generated() { systemctl --all list-unit-files | grep -F 'generated' | cut -d ' ' -f 1 | sort; }
+    services_indirect() { systemctl --all list-unit-files | grep -F 'indirect' | cut -d ' ' -f 1 | sort; }
+    services_linked() { systemctl --all list-unit-files | grep -F 'linked' | cut -d ' ' -f 1 | sort; }
+    services_linkedruntime() { systemctl --all list-unit-files | grep -F 'linked-runtime' | cut -d ' ' -f 1 | sort; }
+    services_masked() { systemctl --all list-unit-files | grep -F 'masked' | cut -d ' ' -f 1 | sort; }
+    services_maskedruntime() { systemctl --all list-unit-files | grep -F 'masked-runtime' | cut -d ' ' -f 1 | sort; }
+    services_static() { systemctl --all list-unit-files | grep -F 'static' | cut -d ' ' -f 1 | sort; }
+    services_transient() { systemctl --all list-unit-files | grep -F 'transient' | cut -d ' ' -f 1 | sort; }
     lsjobs() { systemctl --all list-jobs; }
     lssockets() { systemctl --all list-sockets; }
     lstimers() { systemctl --all list-timers; }
