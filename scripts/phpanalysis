@@ -47,14 +47,14 @@ for file in "$@"; do
 
     if [ -x "$(command -v coffeelint)" ]; then
         printf '======  *PHPCS*  ======\n'
-        phpcs -d memory_limit=128M -s --report-width=512 --severity=1 --standard=PEAR,PSR2,Zend --exclude=Generic.Files.LineLength,Generic.WhiteSpace.DisallowTabIndent,PEAR.Commenting.FileComment,Zend.Files.ClosingTag,Zend.NamingConventions.ValidVariableName --tab-width=4 "$file" | awk_cmd '{ OFS=""; gsub(/^FILE: .+$/, ""); gsub(/^FOUND .+$/, ""); gsub(/^[\-]+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }' | tr '|' ':' | tr '\t' ' ' | sed -E -e 's|  | |g; s|  | |g; s| : |:|g; s|^ ([0-9]+):(.+)|'"${file}"':\1:1:\2|'
+        phpcs -d memory_limit=128M -s --report-width=512 --severity=1 --standard=PEAR,PSR2,Zend --exclude=Generic.Commenting.DocComment,Generic.Files.LineLength,Generic.Functions.OpeningFunctionBraceBsdAllman,Generic.WhiteSpace.DisallowTabIndent,PEAR.Commenting.FileComment,PEAR.Commenting.FunctionComment,PEAR.ControlStructures.ControlSignature,PEAR.Functions.FunctionDeclaration,PEAR.WhiteSpace.ScopeClosingBrace,Squiz.Commenting.DocCommentAlignment,Squiz.ControlStructures.ControlSignature,Squiz.Functions.GlobalFunction,Squiz.Functions.MultiLineFunctionDeclaration,Squiz.WhiteSpace.ScopeClosingBrace,Zend.Files.ClosingTag,Zend.NamingConventions.ValidVariableName --tab-width=4 "$file" | awk_cmd '{ OFS=""; gsub(/^FILE: .+$/, ""); gsub(/^FOUND .+$/, ""); gsub(/^[\-]+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }' | tr '|' ':' | tr '\t' ' ' | sed -E -e 's|  | |g; s|  | |g; s| : |:|g; s|^ ([0-9]+):(.+)|'"${file}"':\1:1:\2|'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'phpcs: command not found!\n' >&2
     fi
 
     if [ -x "$(command -v coffeelint)" ]; then
         printf '======  *PHPMD*  ======\n'
-        phpmd "$file" text cleancode,codesize,controversial,design,naming,unusedcode | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        phpmd "$file" text cleancode,codesize,controversial,design,naming,unusedcode | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'phpmd: command not found!\n' >&2
     fi
