@@ -1,3 +1,22 @@
+2019-01-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* extras_rc.sh:  Fixed some bugs & added more code
+	* Geany:  Minor tweaks
+	* insn_count:  Optimized some code
+	* libchar.py:  Added `NORMALIZE_HOLOGRAPHS` & added more holographs
+	* mimetype_booster.xml:  Added many mimetypes
+	* mkchangelogmd.sh:  Made ChangeLog headers primary headers in the Markdown code
+	* multimedia_rc.sh:  Added `fixsvg()`
+	* net_rc.sh:  Fixed some bugs & added more code
+	* Opticons:  Added more icons
+	* phpanalysis:  Fixed some bugs
+	* profile:  Fixed some bugs & added more code
+	* PyBooster:  Added `./phplib/` with PHP libraries
+	* PyBooster:  Added ampupcpu, holograph2str, & str2holograph
+	* strtools.py:  Added `holograph2str()` & `str2holograph()`
+	* timeit:  Improved code
+	* XCompose:  Added additional character combinations
+
 2019-01-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* ChangeLog:  Improved formatting
@@ -44,8 +63,8 @@
 	* libregex.py:  Added some code for Unicode Format Control Characters
 	* makefile_constants.mk:  Minor improvements
 	* pkg_rc.sh:  Added support for bower & yarn
-	* PyBooster:  Added ./accessory/css with CSS3 files
-	* PyBooster:  Added ./jslib with JavaScript libraries
+	* PyBooster:  Added `./accessory/css/` with CSS3 files
+	* PyBooster:  Added `./jslib/` with JavaScript libraries
 	* PyBooster:  Miscellaneous formatting, documentation improvements, & optimizations
 	* pyinspect:  Improved use of `getopt`
 	* pymake:  Improved use of `getopt`
@@ -306,7 +325,7 @@
 2018-09-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Coding_Standards.md:  Added coding rules for `"ToDo"/"Reminder"` comments
-	* PyBooster:  Added NanoRC files under ./accessory/nanorc
+	* PyBooster:  Added NanoRC files under `./accessory/nanorc/`
 	* shanalysis:  Added `ash -n` & `dash -n` as a backup for `sh -n`
 
 2018-09-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
@@ -432,7 +451,7 @@
 2018-08-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added code to install Geany configuration files
-	* PyBooster:  Added Debian menu file for Program-Analyzer & moved ∗.desktop files to ./accessory/menu/
+	* PyBooster:  Added Debian menu file for Program-Analyzer & moved ∗.desktop files to `./accessory/menu/`
 	* mimetype_booster.xml:  Added awk & sed
 	* program-analyzer:  Created & added an icon
 
@@ -518,7 +537,7 @@
 
 2018-04-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster:  Added `win2unixlines()`, renamed ./src to ./include, & renamed ./utilsrc to ./src
+	* PyBooster:  Added `win2unixlines()`, renamed `./src/` to `./include/`, & renamed `./utilsrc/` to `./src/`
 
 2018-04-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
@@ -587,7 +606,7 @@
 
 2018-01-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster:  Added `∗.dtd`, `∗.rng`, & `∗.xsd` files to ./Accessory
+	* PyBooster:  Added `∗.dtd`, `∗.rng`, & `∗.xsd` files to `./accessory/`
 	* PyBooster:  Moved, renamed, & converted some Geany-plugins to general scripts
 	* strtools.py:  Removed XML/HTML functions (such code will be rewritten as its own module)
 
@@ -657,9 +676,9 @@
 
 2017-10-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster:  Added ./pyegg/ for Python Eggs
+	* PyBooster:  Added `./pyegg/` for Python Eggs
 	* PyBooster:  Merged installation scripts
-	* PyBooster:  Removed ./tools/PyTools/; files now in ./scripts/
+	* PyBooster:  Removed `./tools/PyTools/`; files now in `./scripts/`
 
 2017-10-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
@@ -702,7 +721,7 @@
 
 2016-03-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster:  Added ./tools/PyTools/ & neuralnet.py
+	* PyBooster:  Added `./tools/PyTools/` & neuralnet.py
 	* pychemistry.c:  Added molar masses of the elements
 	* pytools.c:  Added more functions & global constants
 
@@ -724,7 +743,7 @@
 	* MACROS.h:  Added more macros; integrated replacements for stdbool.h, ctype.h, & stdarg.h
 	* MATH_MACROS.h:  Added more math constants
 	* PyBooster:  Added Doxygen-Documentation & implemented a new file-comment standard
-	* PyBooster:  Added financial.py & moved ./lib/doc to ./doc
+	* PyBooster:  Added financial.py & moved `./lib/doc/` to `./doc/`
 	* PyBooster:  Merged datatype_∗.c files into extra_datatypes.c
 	* PyBooster:  Optimizations, enhanced cross-platform support, & fixed bugs
 	* pygeometry.c:  Added more functions

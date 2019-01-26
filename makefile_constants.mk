@@ -1260,7 +1260,6 @@ genchecksums :
 valchecksums :
 	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Validating Checksums ==='
 	sha512sum --check --quiet --strict ./checksums.sha512
-	b2sum --check --quiet --strict ./checksums.b2b512
 	sha1sum --check --quiet --strict ./checksums.sha1
 
 
