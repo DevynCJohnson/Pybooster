@@ -46,7 +46,7 @@ alias la='ls -A'
 alias lb='ls -a -B -i -l'
 alias ll='ls -a -l -F'
 alias lr='ls -a -l -F -R'
-alias lsl='if [ -x "$(command -v less)" ]; then ls -A -F -h -l | less; else ls -A -F -h -l | more; fi'
+alias lsl='if [ -n "$(command -v less)" ]; then ls -A -F -h -l | less; else ls -A -F -h -l | more; fi'
 alias lsz='ls -a -l -F -S -W'
 alias ltm='ls -a -l -F -t'
 
@@ -163,8 +163,8 @@ alias viewpath='echo "$PATH"'
 # Miscellaneous Aliases
 
 alias ConsoleMessage='echo'
-[ -x "$(command -v du)" ] && [ -x "$(command -v less)" ] && alias du.='du -a -c -h | sort -h | less'  #' Show the disk usage of each directory
-[ -x "$(command -v df)" ] && [ -x "$(command -v less)" ] && alias df.='df -a -h -T | less'  #' Show disk usage for each filesystem
+[ -x "$(command -v du)" ] && [ -n "$(command -v less)" ] && alias du.='du -a -c -h | sort -h | less'  #' Show the disk usage of each directory
+[ -x "$(command -v df)" ] && [ -n "$(command -v less)" ] && alias df.='df -a -h -T | less'  #' Show disk usage for each filesystem
 alias mkae='make'
 [ -x "$(command -v compiz)" ] && alias rgui='pidof compiz && killall -SIGHUP compiz'  #' Restart Compiz (fixes memory leak)
 alias py2path='python2.7 -c "import site; site._script()"'
@@ -421,7 +421,7 @@ if [ -x "$(command -v mail)" ]; then
         if [ -z "${NAME:-}" ]; then
             if [ -n "${USERNAME:-}" ]; then
                 NAME="${USERNAME}"
-            elif [ -x "$(command -v whoami)" ]; then
+            elif [ -n "$(command -v whoami)" ]; then
                 NAME="$(whoami)"
             else
                 printf 'ERROR: Unable to find the name of the sender (global variable "NAME" is missing)!\n' >&2
@@ -442,7 +442,7 @@ if [ -x "$(command -v mail)" ]; then
         if [ -z "${NAME:-}" ]; then
             if [ -n "${USERNAME:-}" ]; then
                 NAME="${USERNAME}"
-            elif [ -x "$(command -v whoami)" ]; then
+            elif [ -n "$(command -v whoami)" ]; then
                 NAME="$(whoami)"
             else
                 printf 'ERROR: Unable to find the name of the sender (global variable "NAME" is missing)!\n' >&2
@@ -554,7 +554,7 @@ uniquelines() {
         printf 'ERROR: Two file names are required!\n' >&2
     elif [ ! -x "$(command -v comm)" ]; then
         printf 'ERROR: The "comm" command was not found!\n' >&2
-    elif [ ! -x "$(command -v sort)" ]; then
+    elif [ -z "$(command -v sort)" ]; then
         printf 'ERROR: The "sort" command was not found!\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Show the unique lines of two files given two file names\n'
