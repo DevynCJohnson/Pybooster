@@ -31,7 +31,7 @@ fi
 
 
 printf '# GENERAL INFO #\n\n\nReport Generated: %s\n' "$(date +'%Y.%m.%d')" > "$FILE" || exit 1
-[ -x "$(command -v uname)" ] && printf '%s\nKernel Version: %s\nHostname: %s\n' "$(uname -m -o)" "$(uname -r)" "$(uname -n)" >> "$FILE"
+[ -n "$(command -v uname)" ] && printf '%s\nKernel Version: %s\nHostname: %s\n' "$(uname -m -o)" "$(uname -r)" "$(uname -n)" >> "$FILE"
 if [ -r /etc/debian_release ]; then
     printf 'Debian Version: %s\n' "$(cat /etc/debian_release)" >> "$FILE"
 elif [ -r /etc/debian_version ]; then
@@ -69,7 +69,7 @@ elif [ "$_ispresent_inxi" -eq 1 ]; then
 fi
 [ -x "$(command -v grub-install)" ] && printf '%s\n' "$(grub-install --version)" >> "$FILE"
 [ -x "$(command -v lshw)" ] && printf '%s\n' "$(lshw -C system)" >> "$FILE"
-[ -x "$(command -v systemctl)" ] && printf '\nSystemctl Enabled Services:\n%s\n' "$(systemctl list-unit-files | grep -F enabled)" >> "$FILE"
+[ -n "$(command -v systemctl)" ] && printf '\nSystemctl Enabled Services:\n%s\n' "$(systemctl list-unit-files | grep -F enabled)" >> "$FILE"
 
 
 # KERNEL INFO #
@@ -142,8 +142,8 @@ printf '\n\n# AUDIO INFO #\n\n\n' >> "$FILE"
 
 printf '\n\n# STORAGE INFO #\n\n\n' >> "$FILE"
 [ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -D -d -l -o -P -p -R -u -x -x -x)" >> "$FILE"
-[ -x "$(command -v free)" ] && printf '%s\n' "$(free)" >> "$FILE"
-[ -x "$(command -v df)" ] && printf '%s\n' "$(df -a -h)" >> "$FILE"
+[ -n "$(command -v free)" ] && printf '%s\n' "$(free)" >> "$FILE"
+[ -n "$(command -v df)" ] && printf '%s\n' "$(df -a -h)" >> "$FILE"
 [ -f /etc/fstab ] && printf '\nFilesystem Table:\n%s\n' "$(cat /etc/fstab)" >> "$FILE"
 [ -f /etc/mtab ] && printf '\nMemory Table:\n%s\n' "$(cat /etc/mtab)" >> "$FILE"
 [ -f /proc/partitions ] && printf '\nPartitions:\n%s\n' "$(cat /proc/partitions)" >> "$FILE"
@@ -153,10 +153,10 @@ printf '\n\n# STORAGE INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# NETWORK INFO #\n\n\n' >> "$FILE"
-[ -x "$(command -v hostname)" ] && printf '%s%s\n' 'Hostname: ' "$(hostname)" >> "$FILE"
+[ -n "$(command -v hostname)" ] && printf '%s%s\n' 'Hostname: ' "$(hostname)" >> "$FILE"
 [ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -i -N -n -x -x -x)" >> "$FILE"
-[ -x "$(command -v ifconfig)" ] && printf '%s\n\n' "$(ifconfig -a)" >> "$FILE"
-[ -x "$(command -v netstat)" ] && printf '%s\n' "$(netstat -n -r)" >> "$FILE"
+[ -n "$(command -v ifconfig)" ] && printf '%s\n\n' "$(ifconfig -a)" >> "$FILE"
+[ -n "$(command -v netstat)" ] && printf '%s\n' "$(netstat -n -r)" >> "$FILE"
 [ -x "$(command -v nmcli)" ] && printf '\n%s\n' "$(nmcli general status)" >> "$FILE"
 
 
