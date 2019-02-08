@@ -80,7 +80,7 @@ override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise boolean clibutil code_i
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis pngshrink progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh pkg_rc.sh
-override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc win2unixlines
+override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc webget win2unixlines
 override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
 override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
 override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-utils licensecheck llvm make moreutils python-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount xdg-utils
@@ -149,6 +149,9 @@ help :
 	printf '%s\n%s\n' 'Clean Git Project:' '    make cleangit'
 	printf '%s\n%s\n' 'Dry-run Clean Git Project:' '    make previewcleangit'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* MISCELLANEOUS *'
+	printf '%s\n%s\n' 'Create geolocation files under `/etc/`:' '    sudo make install_geofiles'
+	printf '%s\n%s\n' 'Remove geolocation files under `/etc/`:' '    sudo make uninstall_geofiles'
+	printf '%s\n%s\n' 'Update geolocation files under `/etc/`:' '    sudo make update_geofiles'
 	printf '%s\n%s\n' 'Make the system more like OSX:' '    sudo make macify'
 	printf '%s\n%s\n' 'Undo the effects of `macify`:' '    sudo make unmacify'
 	printf '%s\n%s\n' 'Make the system more secure:' '    sudo make secure'
@@ -194,8 +197,6 @@ default :
 .PHONY : ctags debug_xkb pathcheck pathchk print_xkb strip svglint TAGS
 # Documentation
 .PHONY : cleandoc doc docc docpy doxy manpages
-# Packaging
-.PHONY : backup pkg pkg7z pkglzma pkgSFX pkgxz pkgzip
 # General Project Utilities
 .PHONY : getdeps_deb getdeps_deb_all getdeps_pip update_doccmt_keywords update_reminders upver
 # Clean-up
@@ -207,7 +208,7 @@ default :
 # Uninstall
 .PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
-.PHONY : fix_thunar_tap macify secure unmacify
+.PHONY : fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
 
 
 # BUILD COMMANDS #
@@ -293,6 +294,9 @@ manpages :
 
 
 # PACKAGING #
+
+
+.PHONY : backup pkg pkg7z pkglzma pkgSFX pkgxz pkgzip
 
 
 backup : rmtmp
@@ -391,7 +395,7 @@ rmcache :
 	-@find . -mount -type d -name "__pycache__" -print0 | xargs -0 $(RMDIR)
 
 rmtmp :
-	-@find . -mount -type f \( -name "*.o" -o -name "*.ast" -o -name "*.bc" -o -name "*.dump" -o -name "*.i" -o -name "*.ii" -o -name "*.ll" -o -name "*.original" -o -name "*.gch" -o -name "*.pch" -o -name "*.xkm" \) -delete
+	-@find . -mount -type f \( -name "*.ast" -o -name "*.bc" -o -name "*.dll" -o -name "*.dump" -o -name "*.exp" -o -name "*.gch" -o -name "*.i" -o -name "*.ii" -o -name "*.lib" -o -name "*.ll" -o -name "*.o" -o -name "*.obj" -o -name "*.original" -o -name "*.pch" -o -name "*.xkm" \) -delete
 	find . -mount -type d \( -name "metrics" \) -exec $(RMDIR) '{}' + 2> /dev/null
 	$(RM) $(BIN)/test_dev
 	$(RMDIR) $(TESTINGDIR)/*
@@ -457,6 +461,22 @@ syncmaster :
 fix_thunar_tap :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	if [ -d /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/ ]; then $(LNDIR) /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/file-roller.tap /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/org.gnome.FileRoller.tap; fi
+
+install_geofiles :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	[ ! -f /etc/area_code ] && printf '%s' "$(./scripts/webget ipinfo.io/area_code)" > /etc/area_code
+	[ ! -f /etc/city ] && printf '%s' "$(./scripts/webget ipinfo.io/city)" > /etc/city
+	[ ! -f /etc/country ] && printf '%s' "$(./scripts/webget ipinfo.io/country)" > /etc/country
+	[ ! -f /etc/isp ] && printf '%s' "$(./scripts/webget ipinfo.io/isp)" > /etc/isp
+	[ ! -f /etc/location ] && printf '%s' "$(./scripts/webget ipinfo.io/loc)" > /etc/location
+	[ ! -f /etc/postal ] && printf '%s' "$(./scripts/webget ipinfo.io/postal)" > /etc/postal
+	[ ! -f /etc/region ] && printf '%s' "$(./scripts/webget ipinfo.io/region)" > /etc/region
+
+update_geofiles : uninstall_geofiles install_geofiles
+
+uninstall_geofiles :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RM) /etc/area_code /etc/city /etc/country /etc/isp /etc/location /etc/postal /etc/region
 
 macify :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
