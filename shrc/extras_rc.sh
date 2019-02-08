@@ -155,7 +155,6 @@ else
 fi
 alias findalias='alias | grep -i -F'
 alias findfunc='set | grep -i -F'
-alias findmethod='alias | grep -i -F; set | grep -i -F'
 alias lsfuncs='set | grep -F " ()" | cut -d " " -f 1'
 alias lsmethods='alias; set | grep -F " ()" | cut -d " " -f 1'
 alias viewpath='echo "$PATH"'
@@ -732,6 +731,8 @@ epoch2date() {
         date -d "@${1}"
     fi
 }
+
+findmethod() { alias | grep -i -F "$1"; set | grep -i -F "$1"; }
 
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
 
