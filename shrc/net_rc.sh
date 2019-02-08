@@ -81,15 +81,15 @@ restorefwrules() {
 
 
 #' Alias for ipconfig to call ifconfig
-[ -x "$(command -v ifconfig)" ] && [ -z "$(command -v ipconfig)" ] && alias ipconfig='ifconfig'
+[ -n "$(command -v ifconfig)" ] && [ -z "$(command -v ipconfig)" ] && alias ipconfig='ifconfig'
 #' Shorten `sudo iptables` to `ipt`
-[ -x "$(command -v iptables)" ] && alias ipt='sudo iptables'
+[ -n "$(command -v iptables)" ] && alias ipt='sudo iptables'
 #' List all available network interfaces
 [ -d /sys/class/net/ ] && alias lsnet='ls /sys/class/net/ | awk NF'
 #' List all currently open ports
-[ -x "$(command -v netstat)" ] && alias lsopenports='netstat -a -l -n -p -t -u'
+[ -n "$(command -v netstat)" ] && alias lsopenports='netstat -a -l -n -p -t -u'
 #' Test if the network as access to the Internet
-[ -x "$(command -v ping)" ] && alias testnet='ping -c 1 dcjtech.info || ping -c 1 duckduckgo.com'
+[ -n "$(command -v ping)" ] && alias testnet='ping -c 1 dcjtech.info || ping -c 1 duckduckgo.com'
 
 if [ -x "$(command -v curl)" ]; then
     #' Test the response speed of the specified website
@@ -126,9 +126,9 @@ getdnsips() {
 
 #' Fetch the LAN IP address
 getlanip() {
-    if [ -x "$(command -v ifconfig)" ]; then
+    if [ -n "$(command -v ifconfig)" ]; then
         ifconfig | grep -E -o 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | cut -d ' ' -f 2
-    elif [ -x "$(command -v ip)" ]; then
+    elif [ -n "$(command -v ip)" ]; then
         ip addr show | grep -E -o 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | cut -d ' ' -f 2
     else
         printf 'getlanip: Unable to find the IP address of the LAN!' >&2
@@ -139,15 +139,15 @@ getlanip() {
 
 #' Fetch the WAN IP address
 getwanip() {
-    httpget https://api.ipify.org?format=json | grep -Eo '[0-9.]*'
+    httpget ipinfo.io/ip  # httpget https://api.ipify.org?format=json | grep -Eo '[0-9.]*'
 }
 
 
 #' Fetch the IP address of the Router
 getrouterip() {
-    if [ -x "$(command -v netstat)" ]; then
+    if [ -n "$(command -v netstat)" ]; then
         netstat -r -n | grep '^0.0.0.0' | cut -d ' ' -f 2
-    elif [ -x "$(command -v ip)" ]; then
+    elif [ -n "$(command -v ip)" ]; then
         ip route | grep '^default\svia' | head -1 | cut -d ' ' -f 3
     else
         printf 'getrouterip: Unable to find the IP address of the router!' >&2
@@ -158,14 +158,20 @@ getrouterip() {
 
 #' Display a list of the MAC addresses on the system
 lsmacs() {
-    if [ -x "$(command -v ifconfig)" ]; then
+    if [ -n "$(command -v ifconfig)" ]; then
         ifconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | sort
-    elif [ -x "$(command -v ip)" ]; then
+    elif [ -n "$(command -v ip)" ]; then
         ip addr show | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | grep -v '00:00:00:00:00:00' | grep -v 'ff:ff:ff:ff:ff:ff' | sort | uniq
     else
         printf 'lsmacs: Unable to find the MAC addresses of the system!' >&2
         return 1
     fi
+}
+
+
+#' Fetch the the name of the ISP for the WAN
+whoismyisp() {
+    httpget ipinfo.io/org | cut -d ' ' -f 2-
 }
 
 
