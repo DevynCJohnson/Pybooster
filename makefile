@@ -464,13 +464,13 @@ fix_thunar_tap :
 
 install_geofiles :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	[ ! -f /etc/area_code ] && printf '%s' "$(./scripts/webget ipinfo.io/phone)" > /etc/area_code
-	[ ! -f /etc/city ] && printf '%s' "$(./scripts/webget ipinfo.io/city)" > /etc/city
-	[ ! -f /etc/country ] && printf '%s' "$(./scripts/webget ipinfo.io/country)" > /etc/country
-	[ ! -f /etc/isp ] && printf '%s' "$(./scripts/webget ipinfo.io/isp)" > /etc/isp
-	[ ! -f /etc/location ] && printf '%s' "$(./scripts/webget ipinfo.io/loc)" > /etc/location
-	[ ! -f /etc/postal ] && printf '%s' "$(./scripts/webget ipinfo.io/postal)" > /etc/postal
-	[ ! -f /etc/region ] && printf '%s' "$(./scripts/webget ipinfo.io/region)" > /etc/region
+	[ ! -f /etc/area_code ] && ./scripts/webget ipinfo.io/phone > /etc/area_code
+	[ ! -f /etc/city ] && ./scripts/webget ipinfo.io/city > /etc/city
+	[ ! -f /etc/country ] && ./scripts/webget ipinfo.io/country > /etc/country
+	[ ! -f /etc/isp ] && ./scripts/webget ipinfo.io/isp > /etc/isp
+	[ ! -f /etc/location ] && ./scripts/webget ipinfo.io/loc > /etc/location
+	[ ! -f /etc/postal ] && ./scripts/webget ipinfo.io/postal > /etc/postal
+	[ ! -f /etc/region ] && ./scripts/webget ipinfo.io/region > /etc/region
 
 update_geofiles : uninstall_geofiles install_geofiles
 
