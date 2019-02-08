@@ -637,9 +637,9 @@ fi
 
 if [ -z "${AREA_CODE:-}" ]; then
     if [ -f /etc/area_code ]; then
-        AREA_CODE="$(cat /etc/area_code)"
+        AREA_CODE="$(cat /etc/phone)"
     else
-        AREA_CODE="$(httpget ipinfo.io/area_code)"
+        AREA_CODE="$(httpget ipinfo.io/phone)"
     fi
 fi
 

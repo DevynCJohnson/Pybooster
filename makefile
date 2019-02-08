@@ -464,7 +464,7 @@ fix_thunar_tap :
 
 install_geofiles :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	[ ! -f /etc/area_code ] && printf '%s' "$(./scripts/webget ipinfo.io/area_code)" > /etc/area_code
+	[ ! -f /etc/area_code ] && printf '%s' "$(./scripts/webget ipinfo.io/phone)" > /etc/area_code
 	[ ! -f /etc/city ] && printf '%s' "$(./scripts/webget ipinfo.io/city)" > /etc/city
 	[ ! -f /etc/country ] && printf '%s' "$(./scripts/webget ipinfo.io/country)" > /etc/country
 	[ ! -f /etc/isp ] && printf '%s' "$(./scripts/webget ipinfo.io/isp)" > /etc/isp
