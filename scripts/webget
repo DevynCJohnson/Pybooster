@@ -1,0 +1,39 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Retrieve data via HTTP using the available utilities on the system
+#' @file webget
+#' @version 2019.02.08
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+httpget() {
+    if [ -x "$(command -v curl)" ]; then
+        curl -A curl -s "$@"
+    elif [ -x "$(command -v wget)" ]; then
+        fetch -q "$@"
+    elif [ -x "$(command -v http)" ]; then
+        http -b GET "$@"
+    elif [ -x "$(command -v fetch)" ]; then
+        wget --no-cache --no-cookies --no-dns-cache --quiet -O - "$@"
+    else
+        printf 'ERROR: Either curl, wget, httpie, or fetch must be installed!\n' >&2
+        return 1
+    fi
+}
+
+
+if [ -n "${1:-}" ]; then  # Parameter
+    incoming_data="$1"
+else  # Pipe
+    read -r incoming_data
+    if [ -z "${incoming_data:-}" ]; then
+        printf 'ERROR: There is no incoming data!\n' >&2
+        exit 1
+    fi
+fi
+
+
+httpget "$@"
