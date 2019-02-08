@@ -35,70 +35,70 @@ for file in "$@"; do
 
     printf '======  *FILE CHECKSUMS*  ======\n'
 
-    if [ -x "$(command -v base32)" ]; then
+    if [ -n "$(command -v base32)" ]; then
         printf '*** base32 ***\n'
         base32 "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'base32: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v base64)" ]; then
+    if [ -n "$(command -v base64)" ]; then
         printf '*** base64 ***\n'
         base64 "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'base64: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v b2sum)" ]; then
+    if [ -n "$(command -v b2sum)" ]; then
         printf '*** b2sum ***\n'
         b2sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'b2sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v cksum)" ]; then
+    if [ -n "$(command -v cksum)" ]; then
         printf '*** cksum ***\n'
         cksum "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'cksum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v md5sum)" ]; then
+    if [ -n "$(command -v md5sum)" ]; then
         printf '*** md5sum ***\n'
         md5sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'md5sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v sha1sum)" ]; then
+    if [ -n "$(command -v sha1sum)" ]; then
         printf '*** sha1sum ***\n'
         sha1sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sha1sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v sha224sum)" ]; then
+    if [ -n "$(command -v sha224sum)" ]; then
         printf '*** sha224sum ***\n'
         sha224sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sha224sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v sha256sum)" ]; then
+    if [ -n "$(command -v sha256sum)" ]; then
         printf '*** sha256sum ***\n'
         sha256sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sha256sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v sha384sum)" ]; then
+    if [ -n "$(command -v sha384sum)" ]; then
         printf '*** sha384sum ***\n'
         sha384sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'sha384sum: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v sha512sum)" ]; then
+    if [ -n "$(command -v sha512sum)" ]; then
         printf '*** sha512sum ***\n'
         sha512sum --binary --tag "$file"
     elif [ "$FirstLoopPass" -eq 0 ]; then
