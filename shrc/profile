@@ -93,7 +93,7 @@ if [ -n "${OS:-}" ]; then
     [ "${OSTEST:-}" = 'windows' ] && PLATFORM='windows'
     unset OSTEST
 fi
-if [ -x "$(command -v uname)" ]; then
+if [ -n "$(command -v uname)" ]; then
     unamestr="$(uname | tr '[:upper:]' '[:lower:]')"
 elif [ -f /proc/sys/kernel/ostype ] && [ -x "$(command -v sysctl)" ]; then
     unamestr="$(sysctl -n kernel.ostype | tr '[:upper:]' '[:lower:]')"
@@ -129,7 +129,7 @@ export OSFAMILY
 
 
 # Determine the CPU type of the currently running system
-if [ -x "$(command -v uname)" ]; then
+if [ -n "$(command -v uname)" ]; then
     ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
 else
     ARCH='unknown'
@@ -224,7 +224,6 @@ fi
 export MANPAGER="$PAGER"
 export SYSTEMD_PAGER="$PAGER"
 [ -r /etc/lsb-release ] && . /etc/lsb-release
-[ -x "$(command -v watch)" ] && alias watch='watch '
 
 
 # EDITOR VARIABLES #
@@ -303,7 +302,7 @@ export XDG_UTILS_DEBUG_LEVEL=0
 # Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
 [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && [ -f /etc/debian_version ] && export DEBIAN_FRONTEND='dialog'
 # Set an environment variable containing the kernel's release information (version)
-[ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -x "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
+[ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -n "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
 # Ensure that Python scripts are always compiled to bytecode
 export PYTHONOPTIMIZE=True
 
@@ -517,14 +516,14 @@ set +o noglob || true
 set +o verbose || true
 
 # Make `less` more friendly for non-text input files
-[ -x "$(command -v lesspipe)" ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -n "$(command -v lesspipe)" ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 
 # MISCELLANEOUS FEATURES #
 
 
 # Provide Apropos if Unavailable
-[ ! -x "$(command -v apropos)" ] && alias apropos='man -k'
+[ -z "$(command -v apropos)" ] && alias apropos='man -k'
 
 # Sudo Hint
 if [ ! -e "${HOME}/.sudo_as_admin_successful" ] && [ ! -e "${HOME}/.hushlogin" ]; then
@@ -572,7 +571,7 @@ if [ -n "${TERM:-}" ]; then
         *) color_prompt='no';;  # cons25, cons25-debian, dumb, mach*, pcansi, screen*, sun, vt*
     esac  # ls /lib/terminfo/*
 elif [ -n "${COLORTERM:-}" ]; then
-    if [ -x "$(command -v tput)" ] && tput setaf 1 2>&1 /dev/null; then
+    if [ -n "$(command -v tput)" ] && tput setaf 1 2>&1 /dev/null; then
         #' Color support present; assume it is compliant with Ecma-48 (ISO/IEC-6429)
         color_prompt='yes'
     else
@@ -636,10 +635,65 @@ fi
 # SPECIAL GLOBALS #
 
 
-[ -z "${COUNTRY:-}" ] && COUNTRY="$(httpget ipinfo.io/country)"
-[ -z "${CITY:-}" ] && CITY="$(httpget ipinfo.io/city)"
-[ -z "${REGION:-}" ] && REGION="$(httpget ipinfo.io/region)"
-[ -z "${LOCATION:-}" ] && export LOCATION="$(httpget ipinfo.io/loc)"
+if [ -z "${AREA_CODE:-}" ]; then
+    if [ -f /etc/area_code ]; then
+        AREA_CODE="$(cat /etc/area_code)"
+    else
+        AREA_CODE="$(httpget ipinfo.io/area_code)"
+    fi
+fi
+
+if [ -z "${COUNTRY:-}" ]; then
+    if [ -f /etc/country ]; then
+        COUNTRY="$(cat /etc/country)"
+    else
+        COUNTRY="$(httpget ipinfo.io/country)"
+    fi
+fi
+
+if [ -z "${CITY:-}" ]; then
+    if [ -f /etc/city ]; then
+        CITY="$(cat /etc/city)"
+    else
+        CITY="$(httpget ipinfo.io/city)"
+    fi
+fi
+
+if [ -z "${ISP:-}" ]; then
+    if [ -f /etc/isp ]; then
+        ISP="$(cat /etc/isp)"
+    else
+        ISP="$(httpget ipinfo.io/org | cut -d ' ' -f 2-)"
+    fi
+fi
+
+if [ -z "${LOCATION:-}" ]; then
+    if [ -f /etc/loc ]; then
+        LOCATION="$(cat /etc/loc)"
+    else
+        LOCATION="$(httpget ipinfo.io/loc)"
+    fi
+fi
+
+if [ -z "${POSTAL:-}" ]; then
+    if [ -f /etc/postal ]; then
+        POSTAL="$(cat /etc/postal)"
+    else
+        POSTAL="$(httpget ipinfo.io/postal)"
+    fi
+fi
+
+if [ -z "${REGION:-}" ]; then
+    if [ -f /etc/region ]; then
+        REGION="$(cat /etc/region)"
+    else
+        REGION="$(httpget ipinfo.io/region)"
+    fi
+fi
+
+
+#' Print the physical location of the system
+mygeo() { printf 'Location: %s\nConuntry: %s\nRegion: %s\nCity: %s\Zip Code: %s\nPhone Area Code: %s\n' "$LOCATION" "$COUNTRY" "$REGION" "$CITY" "$POSTAL" "$AREA_CODE"; }
 
 
 # LOAD SHELL RC MODULES #
