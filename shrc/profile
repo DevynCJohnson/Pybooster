@@ -130,24 +130,24 @@ export OSFAMILY
 
 # Determine the CPU type of the currently running system
 if [ -n "$(command -v uname)" ]; then
-    ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
+    CPU_ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
 else
-    ARCH='unknown'
+    CPU_ARCH='unknown'
 fi
-case "$ARCH" in
-    'amd'*|'i686-64'|'x86-64'|'x86_64') readonly ARCH='x86_64';;
-    'i386'*|'i486'*|'i586'*|'i686'*|'i86pc'*|'x86'|'x86pc'*) readonly ARCH='x86_32';;
-    'alpha'*) readonly ARCH='alpha';;
-    'arm'*) readonly ARCH='arm';;
-    'ia64'*|'ia_64'*|'itanium'*) readonly ARCH='itanium';;
-    'ip2'*|'ip3'*|'mips'*) readonly ARCH='mips';;
-    'm68k'*) readonly ARCH='m68k';;
-    'power'*|'ppc'*) readonly ARCH='powerpc';;
-    'sparc'*|'sun4u'*) readonly ARCH='sparc';;
-    'vax'*) readonly ARCH='vax';;
-    *) readonly ARCH='unknown';;
+case "$CPU_ARCH" in
+    'amd'*|'i686-64'|'x86-64'|'x86_64') readonly CPU_ARCH='x86_64';;
+    'i386'*|'i486'*|'i586'*|'i686'*|'i86pc'*|'x86'|'x86pc'*) readonly CPU_ARCH='x86_32';;
+    'alpha'*) readonly CPU_ARCH='alpha';;
+    'arm'*) readonly CPU_ARCH='arm';;
+    'ia64'*|'ia_64'*|'itanium'*) readonly CPU_ARCH='itanium';;
+    'ip2'*|'ip3'*|'mips'*) readonly CPU_ARCH='mips';;
+    'm68k'*) readonly CPU_ARCH='m68k';;
+    'power'*|'ppc'*) readonly CPU_ARCH='powerpc';;
+    'sparc'*|'sun4u'*) readonly CPU_ARCH='sparc';;
+    'vax'*) readonly CPU_ARCH='vax';;
+    *) readonly CPU_ARCH='unknown';;
 esac
-export ARCH
+export CPU_ARCH
 
 
 # DEKTOP ENVIRONMENT DETECTION #
