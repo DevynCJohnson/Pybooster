@@ -43,7 +43,6 @@
 <Multi_key> <greater> <space> : "^" asciicircum  # CIRCUMFLEX ACCENT
 <Multi_key> <L> <V> : "|" bar  # VERTICAL LINE
 <Multi_key> <l> <v> : "|" bar  # VERTICAL LINE
-<Multi_key> <less> <slash> : "\\" backslash  # REVERSE SOLIDUS
 <Multi_key> <less> <space> : "ˇ" caron  # CARON
 <Multi_key> <macron> <nobreakspace> : "̄" U0304  # COMBINING MACRON
 <Multi_key> <minus> <2> <M> : "⸺" U2E3A  # TWO-EM DASH
@@ -74,9 +73,7 @@
 <Multi_key> <s> <s> : "ß" ssharp  # LATIN SMALL LETTER SHARP S
 <Multi_key> <S> <S> : "ẞ" U1E9E  # LATIN CAPITAL LETTER SHARP S
 <Multi_key> <slash> <asciicircum> : "|" bar  # VERTICAL LINE
-<Multi_key> <slash> <less> : "\\" backslash  # REVERSE SOLIDUS
 <Multi_key> <slash> <period> <period> : "⋰" U22F0  # UP RIGHT DIAGONAL ELLIPSIS
-<Multi_key> <slash> <slash> : "\\" backslash  # REVERSE SOLIDUS
 <Multi_key> <space> <apostrophe> : "'" apostrophe  # APOSTROPHE
 <Multi_key> <space> <asciicircum> : "^" asciicircum  # CIRCUMFLEX ACCENT
 <Multi_key> <space> <asciitilde> : "~" asciitilde  # TILDE
@@ -251,8 +248,8 @@
 # Part 2 - Latin Characters #
 
 
-<Multi_key> <A> <A> : "Å" Aring  # LATIN CAPITAL LETTER A WITH RING ABOVE
-<Multi_key> <a> <a> : "å" aring  # LATIN SMALL LETTER A WITH RING ABOVE
+<Multi_key> <A> <A> : "Å" U00C5  # LATIN CAPITAL LETTER A WITH RING ABOVE
+<Multi_key> <a> <a> : "å" U00E5  # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <A> <acute> : "Á" Aacute  # LATIN CAPITAL LETTER A WITH ACUTE
 <Multi_key> <a> <acute> : "á" aacute  # LATIN SMALL LETTER A WITH ACUTE
 <Multi_key> <A> <apostrophe> : "Á" Aacute  # LATIN CAPITAL LETTER A WITH ACUTE
@@ -261,8 +258,8 @@
 <Multi_key> <a> <asciicircum> : "â" acircumflex  # LATIN SMALL LETTER A WITH CIRCUMFLEX
 <Multi_key> <A> <asciitilde> : "Ã" Atilde  # LATIN CAPITAL LETTER A WITH TILDE
 <Multi_key> <a> <asciitilde> : "ã" atilde  # LATIN SMALL LETTER A WITH TILDE
-<Multi_key> <A> <asterisk> : "Å" Aring  # LATIN CAPITAL LETTER A WITH RING ABOVE
-<Multi_key> <a> <asterisk> : "å" aring  # LATIN SMALL LETTER A WITH RING ABOVE
+<Multi_key> <A> <asterisk> : "Å" U00C5  # LATIN CAPITAL LETTER A WITH RING ABOVE
+<Multi_key> <a> <asterisk> : "å" U00E5  # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <A> <comma> : "Ą" U0104  # LATIN CAPITAL LETTER A WITH OGONEK
 <Multi_key> <a> <comma> : "ą" U0105  # LATIN SMALL LETTER A WITH OGONEK
 <Multi_key> <A> <diaeresis> : "Ä" Adiaeresis  # LATIN CAPITAL LETTER A WITH DIAERESIS
@@ -395,12 +392,10 @@
 <Multi_key> <acute> <emacron> : "ḗ" U1E17  # LATIN SMALL LETTER E WITH MACRON AND ACUTE
 <Multi_key> <acute> <G> : "Ǵ" U01F4  # LATIN CAPITAL LETTER G WITH ACUTE
 <Multi_key> <acute> <g> : "ǵ" U01F5  # LATIN SMALL LETTER G WITH ACUTE
-<Multi_key> <acute> <I> : "Í" Iacute  # LATIN CAPITAL LETTER I WITH ACUTE
-<Multi_key> <acute> <i> : "í" iacute  # LATIN SMALL LETTER I WITH ACUTE
+<Multi_key> <acute> <I> : "Í" U00CD  # LATIN CAPITAL LETTER I WITH ACUTE
+<Multi_key> <acute> <i> : "í" U00ED  # LATIN SMALL LETTER I WITH ACUTE
 <Multi_key> <acute> <Idiaeresis> : "Ḯ" U1E2E  # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 <Multi_key> <acute> <idiaeresis> : "ḯ" U1E2F  # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
-<Multi_key> <acute> <J> : "J́"  # LATIN CAPITAL LETTER J U004A with COMBINING ACUTE ACCENT U0301
-<Multi_key> <acute> <j> : "j́"  # LATIN SMALL LETTER J U006A with COMBINING ACUTE ACCENT U0301
 <Multi_key> <acute> <K> : "Ḱ" U1E30  # LATIN CAPITAL LETTER K WITH ACUTE
 <Multi_key> <acute> <k> : "ḱ" U1E31  # LATIN SMALL LETTER K WITH ACUTE
 <Multi_key> <acute> <L> : "Ĺ" U0139  # LATIN CAPITAL LETTER L WITH ACUTE
@@ -516,8 +511,6 @@
 <Multi_key> <apostrophe> <i> : "í" iacute  # LATIN SMALL LETTER I WITH ACUTE
 <Multi_key> <apostrophe> <Idiaeresis> : "Ḯ" U1E2E  # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 <Multi_key> <apostrophe> <idiaeresis> : "ḯ" U1E2F  # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
-<Multi_key> <apostrophe> <J> : "J́"  # LATIN CAPITAL LETTER J U004A with COMBINING ACUTE ACCENT U0301
-<Multi_key> <apostrophe> <j> : "j́"  # LATIN SMALL LETTER J U006A with COMBINING ACUTE ACCENT U0301
 <Multi_key> <apostrophe> <K> : "Ḱ" U1E30  # LATIN CAPITAL LETTER K WITH ACUTE
 <Multi_key> <apostrophe> <k> : "ḱ" U1E31  # LATIN SMALL LETTER K WITH ACUTE
 <Multi_key> <apostrophe> <L> : "Ĺ" U0139  # LATIN CAPITAL LETTER L WITH ACUTE
@@ -1216,10 +1209,6 @@
 <Multi_key> <i> <semicolon> : "į" U012F  # LATIN SMALL LETTER I WITH OGONEK
 <Multi_key> <I> <underscore> : "Ī" U012A  # LATIN CAPITAL LETTER I WITH MACRON
 <Multi_key> <i> <underscore> : "ī" U012B  # LATIN SMALL LETTER I WITH MACRON
-<Multi_key> <J> <acute> : "J́"  # LATIN CAPITAL LETTER J U004A with COMBINING ACUTE ACCENT U0301
-<Multi_key> <j> <acute> : "j́"  # LATIN SMALL LETTER J U006A with COMBINING ACUTE ACCENT U0301
-<Multi_key> <J> <apostrophe> : "J́"  # LATIN CAPITAL LETTER J U004A with COMBINING ACUTE ACCENT U0301
-<Multi_key> <j> <apostrophe> : "j́"  # LATIN SMALL LETTER J U006A with COMBINING ACUTE ACCENT U0301
 <Multi_key> <K> <comma> : "Ķ" U0136  # LATIN CAPITAL LETTER K WITH CEDILLA
 <Multi_key> <k> <comma> : "ķ" U0137  # LATIN SMALL LETTER K WITH CEDILLA
 <Multi_key> <k> <k> : "ĸ" U0138  # LATIN SMALL LETTER KRA
@@ -2471,50 +2460,14 @@
 # Part 5 - Cyrillic Characters #
 
 
-<Multi_key> <acute> <Cyrillic_A> : "А́"  # CYRILLIC CAPITAL LETTER A WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_a> : "а́"  # CYRILLIC SMALL LETTER A WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_ER> : "Р́"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_er> : "р́"  # CYRILLIC SMALL LETTER ER WITH COMBINING ACUTE ACCENT
 <Multi_key> <acute> <Cyrillic_GHE> : "Ѓ" U0403  # CYRILLIC CAPITAL LETTER GJE
 <Multi_key> <acute> <Cyrillic_ghe> : "ѓ" U0453  # CYRILLIC SMALL LETTER GJE
-<Multi_key> <acute> <Cyrillic_I> : "И́"  # CYRILLIC CAPITAL LETTER I WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_i> : "и́"  # CYRILLIC SMALL LETTER I WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_IE> : "Е́"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_ie> : "е́"  # CYRILLIC SMALL LETTER IE WITH COMBINING ACUTE ACCENT
 <Multi_key> <acute> <Cyrillic_KA> : "Ќ" U040C  # CYRILLIC CAPITAL LETTER KJE
 <Multi_key> <acute> <Cyrillic_ka> : "ќ" U045C  # CYRILLIC SMALL LETTER KJE
-<Multi_key> <acute> <Cyrillic_O> : "О́"  # CYRILLIC CAPITAL LETTER O WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_o> : "о́"  # CYRILLIC SMALL LETTER O WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_U> : "У́"  # CYRILLIC CAPITAL LETTER U WITH COMBINING ACUTE ACCENT
-<Multi_key> <acute> <Cyrillic_u> : "у́"  # CYRILLIC SMALL LETTER U WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_A> : "А́"  # CYRILLIC CAPITAL LETTER A WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_a> : "а́"  # CYRILLIC SMALL LETTER A WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_ER> : "Р́"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_er> : "р́"  # CYRILLIC SMALL LETTER ER WITH COMBINING ACUTE ACCENT
 <Multi_key> <apostrophe> <Cyrillic_GHE> : "Ѓ" U0403  # CYRILLIC CAPITAL LETTER GJE
 <Multi_key> <apostrophe> <Cyrillic_ghe> : "ѓ" U0453  # CYRILLIC SMALL LETTER GJE
-<Multi_key> <apostrophe> <Cyrillic_I> : "И́"  # CYRILLIC CAPITAL LETTER I WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_i> : "и́"  # CYRILLIC SMALL LETTER I WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_IE> : "Е́"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_ie> : "е́"  # CYRILLIC SMALL LETTER IE WITH COMBINING ACUTE ACCENT
 <Multi_key> <apostrophe> <Cyrillic_KA> : "Ќ" U040C  # CYRILLIC CAPITAL LETTER KJE
 <Multi_key> <apostrophe> <Cyrillic_ka> : "ќ" U045C  # CYRILLIC SMALL LETTER KJE
-<Multi_key> <apostrophe> <Cyrillic_O> : "О́"  # CYRILLIC CAPITAL LETTER O WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_o> : "о́"  # CYRILLIC SMALL LETTER O WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_U> : "У́"  # CYRILLIC CAPITAL LETTER U WITH COMBINING ACUTE ACCENT
-<Multi_key> <apostrophe> <Cyrillic_u> : "у́"  # CYRILLIC SMALL LETTER U WITH COMBINING ACUTE ACCENT
-<Multi_key> <asciicircum> <Cyrillic_A> : "А̂"  # CYRILLIC CAPITAL LETTER A WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_a> : "а̂"  # CYRILLIC SMALL LETTER A WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_ER> : "Р̂"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_er> : "р̂"  # CYRILLIC SMALL LETTER ER WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_I> : "И̂"  # CYRILLIC CAPITAL LETTER I WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_i> : "и̂"  # CYRILLIC SMALL LETTER I WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_IE> : "Е̂"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_ie> : "е̂"  # CYRILLIC SMALL LETTER IE WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_O> : "О̂"  # CYRILLIC CAPITAL LETTER O WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_o> : "о̂"  # CYRILLIC SMALL LETTER O WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_U> : "У̂"  # CYRILLIC CAPITAL LETTER U WITH COMBINING CIRCUMFLEX ACCENT
-<Multi_key> <asciicircum> <Cyrillic_u> : "у̂"  # CYRILLIC SMALL LETTER U WITH COMBINING CIRCUMFLEX ACCENT
 <Multi_key> <b> <Cyrillic_A> : "Ӑ" U04D0  # CYRILLIC CAPITAL LETTER A WITH BREVE
 <Multi_key> <b> <Cyrillic_a> : "ӑ" U04D1  # CYRILLIC SMALL LETTER A WITH BREVE
 <Multi_key> <b> <Cyrillic_I> : "Й" U0419  # CYRILLIC CAPITAL LETTER SHORT I
@@ -2555,40 +2508,12 @@
 <Multi_key> <doubleacute> <Cyrillic_u> : "ӳ" U04F3  # CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
 <Multi_key> <equal> <Cyrillic_U> : "Ӳ" U04F2  # CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE
 <Multi_key> <equal> <Cyrillic_u> : "ӳ" U04F3  # CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
-<Multi_key> <grave> <Cyrillic_A> : "А̀"  # CYRILLIC CAPITAL LETTER A WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_a> : "а̀"  # CYRILLIC SMALL LETTER A WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_ER> : "Р̀"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_er> : "р̀"  # CYRILLIC SMALL LETTER ER WITH COMBINING GRAVE ACCENT
 <Multi_key> <grave> <Cyrillic_I> : "Ѝ" U040D  # CYRILLIC CAPITAL LETTER I WITH GRAVE
 <Multi_key> <grave> <Cyrillic_i> : "ѝ" U045D  # CYRILLIC SMALL LETTER I WITH GRAVE
 <Multi_key> <grave> <Cyrillic_IE> : "Ѐ" U0400  # CYRILLIC CAPITAL LETTER IE WITH GRAVE
 <Multi_key> <grave> <Cyrillic_ie> : "ѐ" U0450  # CYRILLIC SMALL LETTER IE WITH GRAVE
-<Multi_key> <grave> <Cyrillic_O> : "О̀"  # CYRILLIC CAPITAL LETTER O WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_o> : "о̀"  # CYRILLIC SMALL LETTER O WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_U> : "У̀"  # CYRILLIC CAPITAL LETTER U WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <Cyrillic_u> : "у̀"  # CYRILLIC SMALL LETTER U WITH COMBINING GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_A> : "А̏"  # CYRILLIC CAPITAL LETTER A WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_a> : "а̏"  # CYRILLIC SMALL LETTER A WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_ER> : "Р̏"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_er> : "р̏"  # CYRILLIC SMALL LETTER ER WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_I> : "И̏"  # CYRILLIC CAPITAL LETTER I WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_i> : "и̏"  # CYRILLIC SMALL LETTER I WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_IE> : "Е̏"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_ie> : "е̏"  # CYRILLIC SMALL LETTER IE WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_O> : "О̏"  # CYRILLIC CAPITAL LETTER O WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_o> : "о̏"  # CYRILLIC SMALL LETTER O WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_U> : "У̏"  # CYRILLIC CAPITAL LETTER U WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <grave> <grave> <Cyrillic_u> : "у̏"  # CYRILLIC SMALL LETTER U WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <macron> <Cyrillic_A> : "А̄"  # CYRILLIC CAPITAL LETTER A WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_a> : "а̄"  # CYRILLIC SMALL LETTER A WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_ER> : "Р̄"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_er> : "р̄"  # CYRILLIC SMALL LETTER ER WITH COMBINING MACRON
 <Multi_key> <macron> <Cyrillic_I> : "Ӣ" U04E2  # CYRILLIC CAPITAL LETTER I WITH MACRON
 <Multi_key> <macron> <Cyrillic_i> : "ӣ" U04E3  # CYRILLIC SMALL LETTER I WITH MACRON
-<Multi_key> <macron> <Cyrillic_IE> : "Е̄"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_ie> : "е̄"  # CYRILLIC SMALL LETTER IE WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_O> : "О̄"  # CYRILLIC CAPITAL LETTER O WITH COMBINING MACRON
-<Multi_key> <macron> <Cyrillic_o> : "о̄"  # CYRILLIC SMALL LETTER O WITH COMBINING MACRON
 <Multi_key> <macron> <Cyrillic_U> : "Ӯ" U04EE  # CYRILLIC CAPITAL LETTER U WITH MACRON
 <Multi_key> <macron> <Cyrillic_u> : "ӯ" U04EF  # CYRILLIC SMALL LETTER U WITH MACRON
 <Multi_key> <quotedbl> <Cyrillic_A> : "Ӓ" U04D2  # CYRILLIC CAPITAL LETTER A WITH DIAERESIS
@@ -2633,32 +2558,8 @@
 <Multi_key> <U0306> <Cyrillic_u> : "ў" U045E  # CYRILLIC SMALL LETTER SHORT U
 <Multi_key> <U0306> <Cyrillic_ZHE> : "Ӂ" U04C1  # CYRILLIC CAPITAL LETTER ZHE WITH BREVE
 <Multi_key> <U0306> <Cyrillic_zhe> : "ӂ" U04C2  # CYRILLIC SMALL LETTER ZHE WITH BREVE
-<Multi_key> <U030F> <Cyrillic_A> : "А̏"  # CYRILLIC CAPITAL LETTER A WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_a> : "а̏"  # CYRILLIC SMALL LETTER A WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_ER> : "Р̏"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_er> : "р̏"  # CYRILLIC SMALL LETTER ER WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_I> : "И̏"  # CYRILLIC CAPITAL LETTER I WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_i> : "и̏"  # CYRILLIC SMALL LETTER I WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_IE> : "Е̏"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_ie> : "е̏"  # CYRILLIC SMALL LETTER IE WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_O> : "О̏"  # CYRILLIC CAPITAL LETTER O WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_o> : "о̏"  # CYRILLIC SMALL LETTER O WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_U> : "У̏"  # CYRILLIC CAPITAL LETTER U WITH COMBINING DOUBLE GRAVE ACCENT
-<Multi_key> <U030F> <Cyrillic_u> : "у̏"  # CYRILLIC SMALL LETTER U WITH COMBINING DOUBLE GRAVE ACCENT
 <Multi_key> <U030F> <U0474> : "Ѷ" U0476  # CYRILLIC CAPITAL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
 <Multi_key> <U030F> <U0475> : "ѷ" U0477  # CYRILLIC SMALL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
-<Multi_key> <U0311> <Cyrillic_A> : "А̑"  # CYRILLIC CAPITAL LETTER A WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_a> : "а̑"  # CYRILLIC SMALL LETTER A WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_ER> : "Р̑"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_er> : "р̑"  # CYRILLIC SMALL LETTER ER WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_I> : "И̑"  # CYRILLIC CAPITAL LETTER I WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_i> : "и̑"  # CYRILLIC SMALL LETTER I WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_IE> : "Е̑"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_ie> : "е̑"  # CYRILLIC SMALL LETTER IE WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_O> : "О̑"  # CYRILLIC CAPITAL LETTER O WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_o> : "о̑"  # CYRILLIC SMALL LETTER O WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_U> : "У̑"  # CYRILLIC CAPITAL LETTER U WITH COMBINING INVERTED BREVE
-<Multi_key> <U0311> <Cyrillic_u> : "у̑"  # CYRILLIC SMALL LETTER U WITH COMBINING INVERTED BREVE
 <Multi_key> <U> <Cyrillic_A> : "Ӑ" U04D0  # CYRILLIC CAPITAL LETTER A WITH BREVE
 <Multi_key> <U> <Cyrillic_a> : "ӑ" U04D1  # CYRILLIC SMALL LETTER A WITH BREVE
 <Multi_key> <U> <Cyrillic_I> : "Й" U0419  # CYRILLIC CAPITAL LETTER SHORT I
@@ -2669,16 +2570,8 @@
 <Multi_key> <U> <Cyrillic_u> : "ў" U045E  # CYRILLIC SMALL LETTER SHORT U
 <Multi_key> <U> <Cyrillic_ZHE> : "Ӂ" U04C1  # CYRILLIC CAPITAL LETTER ZHE WITH BREVE
 <Multi_key> <U> <Cyrillic_zhe> : "ӂ" U04C2  # CYRILLIC SMALL LETTER ZHE WITH BREVE
-<Multi_key> <underscore> <Cyrillic_A> : "А̄"  # CYRILLIC CAPITAL LETTER A WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_a> : "а̄"  # CYRILLIC SMALL LETTER A WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_ER> : "Р̄"  # CYRILLIC CAPITAL LETTER ER WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_er> : "р̄"  # CYRILLIC SMALL LETTER ER WITH COMBINING MACRON
 <Multi_key> <underscore> <Cyrillic_I> : "Ӣ" U04E2  # CYRILLIC CAPITAL LETTER I WITH MACRON
 <Multi_key> <underscore> <Cyrillic_i> : "ӣ" U04E3  # CYRILLIC SMALL LETTER I WITH MACRON
-<Multi_key> <underscore> <Cyrillic_IE> : "Е̄"  # CYRILLIC CAPITAL LETTER IE WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_ie> : "е̄"  # CYRILLIC SMALL LETTER IE WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_O> : "О̄"  # CYRILLIC CAPITAL LETTER O WITH COMBINING MACRON
-<Multi_key> <underscore> <Cyrillic_o> : "о̄"  # CYRILLIC SMALL LETTER O WITH COMBINING MACRON
 <Multi_key> <underscore> <Cyrillic_U> : "Ӯ" U04EE  # CYRILLIC CAPITAL LETTER U WITH MACRON
 <Multi_key> <underscore> <Cyrillic_u> : "ӯ" U04EF  # CYRILLIC SMALL LETTER U WITH MACRON
 
@@ -3667,110 +3560,6 @@
 # Part 7 - Miscellaneous Alphabets #
 
 
-# Diacritics used in African Languages
-
-<Multi_key> <acute> <asciitilde> <A> : "Ã́"  # LATIN CAPITAL LETTER A WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <a> : "ã́"  # LATIN SMALL LETTER A WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <E> : "Ẽ́"  # LATIN CAPITAL LETTER E WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <e> : "ẽ́"  # LATIN SMALL LETTER E WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <I> : "Ĩ́"  # LATIN CAPITAL LETTER I WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <i> : "ĩ́"  # LATIN SMALL LETTER I WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U0186> : "Ɔ̃́"  # LATIN CAPITAL LETTER OPEN O WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U018E> : "Ǝ̃́"  # LATIN CAPITAL LETTER TURNED E WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U0190> : "Ɛ̃́"  # LATIN CAPITAL LETTER EPSILON WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U01DD> : "ǝ̃́"  # LATIN SMALL LETTER TURNED E WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U0254> : "ɔ̃́"  # LATIN SMALL LETTER OPEN O WITH TILDE AND ACUTE
-<Multi_key> <acute> <asciitilde> <U025B> : "ɛ̃́"  # LATIN SMALL LETTER EPSILON WITH TILDE AND ACUTE
-<Multi_key> <acute> <ENG> : "Ŋ́"  # LATIN CAPITAL LETTER ENG WITH ACUTE
-<Multi_key> <acute> <eng> : "ŋ́"  # LATIN SMALL LETTER ENG WITH ACUTE
-<Multi_key> <acute> <U0186> : "Ɔ́"  # LATIN CAPITAL LETTER OPEN O WITH ACUTE
-<Multi_key> <acute> <U018E> : "Ǝ́"  # LATIN CAPITAL LETTER TURNED E WITH ACUTE
-<Multi_key> <acute> <U0190> : "Ɛ́"  # LATIN CAPITAL LETTER EPSILON WITH ACUTE
-<Multi_key> <acute> <U0196> : "Ɩ́"  # LATIN CAPITAL LETTER IOTA WITH ACUTE
-<Multi_key> <acute> <U01B1> : "Ʊ́"  # LATIN CAPITAL LETTER UPSILON WITH ACUTE
-<Multi_key> <acute> <U01B2> : "Ʋ́"  # LATIN CAPITAL LETTER V WITH HOOK WITH ACUTE
-<Multi_key> <acute> <U01DD> : "ǝ́"  # LATIN SMALL LETTER TURNED E WITH ACUTE
-<Multi_key> <acute> <U0254> : "ɔ́"  # LATIN SMALL LETTER OPEN O WITH ACUTE
-<Multi_key> <acute> <U025B> : "ɛ́"  # LATIN SMALL LETTER EPSILON WITH ACUTE
-<Multi_key> <acute> <U0269> : "ɩ́"  # LATIN SMALL LETTER IOTA WITH ACUTE
-<Multi_key> <acute> <U028A> : "ʊ́"  # LATIN SMALL LETTER UPSILON WITH ACUTE
-<Multi_key> <acute> <U028B> : "ʋ́"  # LATIN SMALL LETTER V WITH HOOK WITH ACUTE
-<Multi_key> <asciicircum> <U0186> : "Ɔ̂"  # LATIN CAPITAL LETTER OPEN O WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U018E> : "Ǝ̂"  # LATIN CAPITAL LETTER TURNED E WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U0190> : "Ɛ̂"  # LATIN CAPITAL LETTER EPSILON WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U0196> : "Ɩ̂"  # LATIN CAPITAL LETTER IOTA WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U01B1> : "Ʊ̂"  # LATIN CAPITAL LETTER UPSILON WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U01B2> : "Ʋ̂"  # LATIN CAPITAL LETTER V WITH HOOK WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U01DD> : "ǝ̂"  # LATIN SMALL LETTER TURNED E WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U0254> : "ɔ̂"  # LATIN SMALL LETTER OPEN O WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U025B> : "ɛ̂"  # LATIN SMALL LETTER EPSILON WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U0269> : "ɩ̂"  # LATIN SMALL LETTER IOTA WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U028A> : "ʊ̂"  # LATIN SMALL LETTER UPSILON WITH CIRCUMFLEX
-<Multi_key> <asciicircum> <U028B> : "ʋ̂"  # LATIN SMALL LETTER V WITH HOOK WITH CIRCUMFLEX
-<Multi_key> <asciitilde> <U0186> : "Ɔ̃"  # LATIN CAPITAL LETTER OPEN O WITH TILDE
-<Multi_key> <asciitilde> <U018E> : "Ǝ̃"  # LATIN CAPITAL LETTER TURNED E WITH TILDE
-<Multi_key> <asciitilde> <U0190> : "Ɛ̃"  # LATIN CAPITAL LETTER EPSILON WITH TILDE
-<Multi_key> <asciitilde> <U01DD> : "ǝ̃"  # LATIN SMALL LETTER TURNED E WITH TILDE
-<Multi_key> <asciitilde> <U0254> : "ɔ̃"  # LATIN SMALL LETTER OPEN O WITH TILDE
-<Multi_key> <asciitilde> <U025B> : "ɛ̃"  # LATIN SMALL LETTER EPSILON WITH TILDE
-<Multi_key> <caron> <U0186> : "Ɔ̌"  # LATIN CAPITAL LETTER OPEN O WITH CARON
-<Multi_key> <caron> <U018E> : "Ǝ̌"  # LATIN CAPITAL LETTER TURNED E WITH CARON
-<Multi_key> <caron> <U0190> : "Ɛ̌"  # LATIN CAPITAL LETTER EPSILON WITH CARON
-<Multi_key> <caron> <U0196> : "Ɩ̌"  # LATIN CAPITAL LETTER IOTA WITH CARON
-<Multi_key> <caron> <U01B1> : "Ʊ̌"  # LATIN CAPITAL LETTER UPSILON WITH CARON
-<Multi_key> <caron> <U01B2> : "Ʋ̌"  # LATIN CAPITAL LETTER V WITH HOOK WITH CARON
-<Multi_key> <caron> <U01DD> : "ǝ̌"  # LATIN SMALL LETTER TURNED E WITH CARON
-<Multi_key> <caron> <U0254> : "ɔ̌"  # LATIN SMALL LETTER OPEN O WITH CARON
-<Multi_key> <caron> <U025B> : "ɛ̌"  # LATIN SMALL LETTER EPSILON WITH CARON
-<Multi_key> <caron> <U0269> : "ɩ̌"  # LATIN SMALL LETTER IOTA WITH CARON
-<Multi_key> <caron> <U028A> : "ʊ̌"  # LATIN SMALL LETTER UPSILON WITH CARON
-<Multi_key> <caron> <U028B> : "ʋ̌"  # LATIN SMALL LETTER V WITH HOOK WITH CARON
-<Multi_key> <grave> <asciitilde> <A> : "Ã̀"  # LATIN CAPITAL LETTER A WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <a> : "ã̀"  # LATIN SMALL LETTER A WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <E> : "Ẽ̀"  # LATIN CAPITAL LETTER E WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <e> : "ẽ̀"  # LATIN SMALL LETTER E WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <I> : "Ĩ̀"  # LATIN CAPITAL LETTER I WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <i> : "ĩ̀"  # LATIN SMALL LETTER I WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <O> : "Õ̀"  # LATIN CAPITAL LETTER O WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <o> : "õ̀"  # LATIN SMALL LETTER O WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U0186> : "Ɔ̃̀"  # LATIN CAPITAL LETTER OPEN O WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U018E> : "Ǝ̃̀"  # LATIN CAPITAL LETTER TURNED E WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U0190> : "Ɛ̃̀"  # LATIN CAPITAL LETTER EPSILON WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U01DD> : "ǝ̃̀"  # LATIN SMALL LETTER TURNED E WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U0254> : "ɔ̃̀"  # LATIN SMALL LETTER OPEN O WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U025B> : "ɛ̃̀"  # LATIN SMALL LETTER EPSILON WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <U> : "Ũ̀"  # LATIN CAPITAL LETTER U WITH TILDE AND GRAVE
-<Multi_key> <grave> <asciitilde> <u> : "ũ̀"  # LATIN SMALL LETTER U WITH TILDE AND GRAVE
-<Multi_key> <grave> <ENG> : "Ŋ̀"  # LATIN CAPITAL LETTER ENG WITH GRAVE
-<Multi_key> <grave> <eng> : "ŋ̀"  # LATIN SMALL LETTER ENG WITH GRAVE
-<Multi_key> <grave> <M> : "M̀"  # LATIN CAPITAL LETTER M WITH GRAVE
-<Multi_key> <grave> <m> : "m̀"  # LATIN SMALL LETTER M WITH GRAVE
-<Multi_key> <grave> <U0186> : "Ɔ̀"  # LATIN CAPITAL LETTER OPEN O WITH GRAVE
-<Multi_key> <grave> <U018E> : "Ǝ̀"  # LATIN CAPITAL LETTER TURNED E WITH GRAVE
-<Multi_key> <grave> <U0190> : "Ɛ̀"  # LATIN CAPITAL LETTER EPSILON WITH GRAVE
-<Multi_key> <grave> <U0196> : "Ɩ̀"  # LATIN CAPITAL LETTER IOTA WITH GRAVE
-<Multi_key> <grave> <U01B1> : "Ʊ̀"  # LATIN CAPITAL LETTER UPSILONK WITH GRAVE
-<Multi_key> <grave> <U01B2> : "Ʋ̀"  # LATIN CAPITAL LETTER V WITH HOOK WITH GRAVE
-<Multi_key> <grave> <U01DD> : "ǝ̀"  # LATIN SMALL LETTER TURNED E WITH GRAVE
-<Multi_key> <grave> <U0254> : "ɔ̀"  # LATIN SMALL LETTER OPEN O WITH GRAVE
-<Multi_key> <grave> <U025B> : "ɛ̀"  # LATIN SMALL LETTER EPSILON WITH GRAVE
-<Multi_key> <grave> <U0269> : "ɩ̀"  # LATIN SMALL LETTER IOTA WITH GRAVE
-<Multi_key> <grave> <U028A> : "ʊ̀"  # LATIN SMALL LETTER UPSILONK WITH GRAVE
-<Multi_key> <grave> <U028B> : "ʋ̀"  # LATIN SMALL LETTER V WITH HOOK WITH GRAVE
-<Multi_key> <macron> <U0186> : "Ɔ̄"  # LATIN CAPITAL LETTER OPEN O WITH MACRON
-<Multi_key> <macron> <U018E> : "Ǝ̄"  # LATIN CAPITAL LETTER TURNED E WITH MACRON
-<Multi_key> <macron> <U0190> : "Ɛ̄"  # LATIN CAPITAL LETTER EPSILON WITH MACRON
-<Multi_key> <macron> <U0196> : "Ɩ̄"  # LATIN CAPITAL LETTER IOTA WITH MACRON
-<Multi_key> <macron> <U01B1> : "Ʊ̄"  # LATIN CAPITAL LETTER UPSILON WITH MACRON
-<Multi_key> <macron> <U01B2> : "Ʋ̄"  # LATIN CAPITAL LETTER V WITH HOOK WITH MACRON
-<Multi_key> <macron> <U01DD> : "ǝ̄"  # LATIN SMALL LETTER TURNED E WITH MACRON
-<Multi_key> <macron> <U0254> : "ɔ̄"  # LATIN SMALL LETTER OPEN O WITH MACRON
-<Multi_key> <macron> <U025B> : "ɛ̄"  # LATIN SMALL LETTER EPSILON WITH MACRON
-<Multi_key> <macron> <U0269> : "ɩ̄"  # LATIN SMALL LETTER IOTA WITH MACRON
-<Multi_key> <macron> <U028A> : "ʊ̄"  # LATIN SMALL LETTER UPSILON WITH MACRON
-<Multi_key> <macron> <U028B> : "ʋ̄"  # LATIN SMALL LETTER V WITH HOOK WITH MACRON
-
-
 # Arabic Characters
 
 <Multi_key> <U0653> <Arabic_alef> : "آ" U0622  # ARABIC LETTER ALEF WITH MADDA ABOVE
@@ -3781,10 +3570,6 @@
 <Multi_key> <U0654> <U06D2> : "ۓ" U06D3  # ARABIC LETTER YEH BARREE WITH HAMZA ABOVE
 <Multi_key> <U0654> <U06D5> : "ۀ" U06C0  # ARABIC LETTER HEH WITH YEH ABOVE
 <Multi_key> <U0655> <Arabic_alef> : "إ" U0625  # ARABIC LETTER ALEF WITH HAMZA BELOW
-<Multi_key> <UFEF5> : "لآ"  # ARABIC LIGATURE LAM WITH ALEF WITH MADDA ABOVE
-<Multi_key> <UFEF7> : "لأ"  # ARABIC LIGATURE LAM WITH ALEF WITH HAMZA ABOVE
-<Multi_key> <UFEF9> : "لإ"  # ARABIC LIGATURE LAM WITH ALEF WITH HAMZA BELOW
-<Multi_key> <UFEFB> : "لا"  # ARABIC LIGATURE LAM WITH ALEF
 
 
 # Hebrew Characters
@@ -3835,15 +3620,6 @@
 <Multi_key> <U05C2> <hebrew_shin> : "שׂ" UFB2B  # HEBREW LETTER SHIN WITH SIN DOT
 <Multi_key> <U05C2> <U05BC> <hebrew_shin> : "שּׂ" UFB2D  # HEBREW LETTER SHIN WITH DAGESH AND SIN DOT
 <Multi_key> <U05C2> <UFB49> : "שּׂ" UFB2D  # HEBREW LETTER SHIN WITH DAGESH AND SIN DOT
-
-
-# Khmer Digraphs
-
-<Multi_key> <U17FB> : "ុះ"
-<Multi_key> <U17FC> : "ុំ"
-<Multi_key> <U17FD> : "េះ"
-<Multi_key> <U17FE> : "ោះ"
-<Multi_key> <U17FF> : "ាំ"
 
 
 # Tibetan Characters
@@ -4419,7 +4195,6 @@
 <Multi_key> <7> <greater> : "♹" U2679  # RECYCLING SYMBOL FOR TYPE-7 PLASTICS
 <Multi_key> <a> <t> <o> <m> : "⚛" U269B  # ATOM SYMBOL
 <Multi_key> <b> <h> : "☣" U2623  # BIOHAZARD SIGN
-<Multi_key> <b> <r> <a> <n> <c> <h> : "⸙" U2E19  # PALM BRANCH
 <Multi_key> <bracketleft> <1> <bracketright> : "⚀" U2680  # DIE FACE-1
 <Multi_key> <bracketleft> <2> <bracketright> : "⚁" U2681  # DIE FACE-2
 <Multi_key> <bracketleft> <3> <bracketright> : "⚂" U2682  # DIE FACE-3
@@ -4465,16 +4240,6 @@
 <Multi_key> <L> <L> <A> <P> : "🖖" U1F596  # RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS
 <Multi_key> <p> <o> <o> : "💩" U1F4A9  # PILE OF POO
 <Multi_key> <t> <i> <m> <e> : "⌚" U231A  # WATCH
-
-
-# English Shortcuts
-
-<Multi_key> <i> <m> : " I'm "
-<Multi_key> <n> <t> : "n't "
-<Multi_key> <space> <a> : " and "
-<Multi_key> <space> <t> : " the "
-<Multi_key> <space> <T> : " The "
-<Multi_key> <v> <e> : "'ve "
 
 
 # Miscellaneous Symbols
