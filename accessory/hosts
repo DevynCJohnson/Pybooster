@@ -82,10 +82,6 @@ ff02::16 mld2-reports
 ff02::1:2 ip6-all-dhcp-servers
 ff02::1:3 ip6-all-llmnr-hosts
 ff05::1:3 ip6-all-local-dhcp-servers
-ff0x::fb ip6-mdns
-ff0x::101 ip6-ntp
-ff0x::108 ip6-nis
-ff0x::114 experiments
 
 
 # BLOCKED HOSTS #
