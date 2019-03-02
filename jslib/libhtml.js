@@ -29,6 +29,9 @@ along with this software.
 */
 
 
+'use strict';
+
+
 /** Test if the environment supports pseudoclasses */
 function isPseudoSupported(pseudo) {
   if (pseudo) { return false; }
@@ -46,3 +49,12 @@ function isPseudoSupported(pseudo) {
     return true;
   } catch(e) { return false; }
 };
+
+
+/** Test if the Caps-Lock key was pressed given the event */
+function wasCapsLockPressed(evt) {
+  kc = evt.keyCode ? evt.keyCode : evt.which;
+  sk = evt.shiftKey ? evt.shiftKey : ((kc === 16) ? true : false);
+  if (((kc >= 65 && kc <= 90) && !sk) || ((kc >= 97 && kc <= 122) && sk)) { return true; }
+  return false;
+}
