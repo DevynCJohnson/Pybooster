@@ -29,6 +29,9 @@ along with this software.
 */
 
 
+'use strict';
+
+
 function copyArray(aObject){
   if (!aObject) { return aObject; }
   let bObject = [];
@@ -37,4 +40,14 @@ function copyArray(aObject){
     bObject[k] = (typeof v === 'object') ? copyArray(v) : v;
   }
   return bObject;
+}
+
+
+function uuidv1() {
+  return 'xxxxxxxx-xxxx-1xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { let r = (Math.random() * 16) | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16); });
+}
+
+
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { let r = ((Math.random() * 16) | 0); return (c == 'x' ? r : (r & 3 | 8)).toString(16); });
 }
