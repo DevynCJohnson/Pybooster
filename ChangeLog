@@ -1,3 +1,31 @@
+2019-03-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Coding_Standards.md:  Added more rules
+	* extras_rc.sh:  Added `viewmit()` & `viewvul()`
+	* hosts:  Fixed some bugs
+	* libhtml.js:  Added `wasCapsLockPressed()`
+	* libutils.js:  Added `uuidv4()`
+	* MACROS∗.h:  Added the `sqlca` struct
+	* makefile:  Added `fix_nvidia`
+	* makefile_constants.mk:  Fixed some bugs
+	* mimetype_booster.xml:  Fixed some bugs
+	* pkg_rc.sh:  Added `chgdistrocodename()`, applied optimizations, & fixed some bugs
+	* profile:  Added `runmultitask()`
+	* PyBooster:  Added `'use strict';` to all JavaScript libraries
+	* PyBooster:  Added libajax.js & fix_nvidia.sh
+	* XCompose:  Fixed some bugs
+
+2019-02-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* code-analysis:  Fixed some bugs
+	* extras_rc.sh:  Fixed some bugs
+	* file-analysis:  Fixed some bugs
+	* getsysinfo:  Fixed some bugs
+	* libtime.js:  Added libtime.js
+	* makefile:  Added `install_geofiles`, `uninstall_geofiles`, `update_geofiles` & webget
+	* net_rc.sh:  Fixed some bugs & added `whoismyisp()`
+	* profile:  Fixed some bugs & added `mygeo()`
+
 2019-01-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Program-Analyzer:  Fixed some bugs & added multi-processing
