@@ -29,6 +29,9 @@ along with this software.
 */
 
 
+'use strict';
+
+
 Date.prototype.mmddyyyy = function() {
   let mm = this.getMonth() + 1;
   let dd = this.getDate();

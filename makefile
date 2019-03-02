@@ -149,6 +149,7 @@ help :
 	printf '%s\n%s\n' 'Clean Git Project:' '    make cleangit'
 	printf '%s\n%s\n' 'Dry-run Clean Git Project:' '    make previewcleangit'
 	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* MISCELLANEOUS *'
+	printf '%s\n%s\n' 'Fix various Nvidia issues:' '    sudo make fix_nvidia'
 	printf '%s\n%s\n' 'Create geolocation files under `/etc/`:' '    sudo make install_geofiles'
 	printf '%s\n%s\n' 'Remove geolocation files under `/etc/`:' '    sudo make uninstall_geofiles'
 	printf '%s\n%s\n' 'Update geolocation files under `/etc/`:' '    sudo make update_geofiles'
@@ -208,7 +209,7 @@ default :
 # Uninstall
 .PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
-.PHONY : fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
+.PHONY : fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
 
 
 # BUILD COMMANDS #
@@ -457,6 +458,10 @@ syncmaster :
 
 # MISCELLANEOUS #
 
+
+fix_nvidia :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(TOOLSDIR)/fix_nvidia.sh
 
 fix_thunar_tap :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
@@ -726,6 +731,8 @@ install_shrc :
 	([ -f /etc/profile.backup ] && $(RM) /etc/profile.backup) || true
 	([ -f /etc/profile ] && $(MOVE) /etc/profile /etc/profile.backup) || true
 	# Add new files
+	([ -x "$(command -v apt)" ] && [ ! -x "$(command -v apt-get)" ] && $(LNHARD) "$(command -v apt)" "$(command -v apt-get)") || true
+	([ -x "$(command -v apt-get)" ] && [ ! -x "$(command -v apt)" ] && $(LNHARD) "$(command -v apt-get)" "$(command -v apt)") || true
 	$(COPY) -t /etc/ $(SHRCDIR)/profile && $(CHMOD) 644 /etc/profile
 	$(LNHARD) /etc/profile /etc/bash.bashrc
 	([ ! -d $(INSTALLRCMODDIR) ] && $(MKDIRS) $(INSTALLRCMODDIR)) || true

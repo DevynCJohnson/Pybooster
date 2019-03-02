@@ -29,6 +29,9 @@ along with this software.
 */
 
 
+'use strict';
+
+
 /** Return the UTF16 high surrogate for the given code point integer */
 function getHighSurrogate(code_point) {
   return Math.floor((Code_Point - 0x10000) / 0x400) + 0xD800

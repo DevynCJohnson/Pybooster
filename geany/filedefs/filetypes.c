@@ -13,6 +13,7 @@ fold.cpp.comment.multiline=1
 fold.cpp.explicit.anywhere=1
 fold.cpp.explicit.start=// (FB){
 fold.cpp.explicit.end=// }
+# fold.on.open=1
 fold.preprocessor=1
 fold.cpp.preprocessor.at.else=1
 lexer.cpp.allow.dollars=1

@@ -3,6 +3,10 @@
 # vim: set fileencoding=utf-8 filetype=makefile syntax=makefile.doxygen fileformat=unix tabstop=4 :
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 # @brief Makefile constants header (contains common code)
+#' @file makefile
+#' @version 2018.12.28
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
 # VERSION TIMESTAMP #
@@ -1322,7 +1326,7 @@ gitundoadd :
 	-@git reset
 
 lscontrib :
-	@git log --format='%aN <%aE>' | awk '{ arr[$0]++ } END { for (i in arr) { print arr[i], i; } }' | sort -n -r | cut -d ' ' -f 2-
+	@git log --format='%aN <%aE>' | sort -n -r | uniq
 
 lstags :
 	@git tag
