@@ -530,6 +530,8 @@ JavaScript
 - Use ES6 (ECMAScript 2015)
 - Do not use JSX
 - Filenames must be lowercase and may include underscores or hyphens
+- Always use `'use strict';`
+- For JavaScript files, place `'use strict';` (with two new-lines before and after) after the file's documentation comment-block
 - Always put spaces around operators and after commas
 - Always end a simple statement with a semicolon
 - Do not end a compound-statement with a semicolon
@@ -706,6 +708,7 @@ SQL
 - Use four spaces per indentation level
 - A single space must be on each side of mathematical operators (especially in expressions & predicates)
 - Statements must end in a semicolon without a space on either side of the semicolon
+- When testing for inequality, use `<>` not `!=`
 - Datatypes & major commands (i.e. `UPDATE` & `SELECT`) must be in all capital letter
 - Table names & column names should use snake_case or PascalCase (unless not permitted by the SQL implementation)
 
