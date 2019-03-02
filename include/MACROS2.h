@@ -10322,6 +10322,36 @@ typedef struct vbox_param {
 #endif  // MINIX_CONST_H
 
 
+/* SQL COMMUNICATIONS AREA */
+
+
+#if (!(defined(SQLCA_H) || defined(_SQLCA_H) || defined(_SQLCA_H_)))
+#define SQLCA_H   (1)
+#define _SQLCA_H   (1)
+#define _SQLCA_H_   (1)
+
+
+#define SQLCA   1
+
+
+struct sqlca {
+	char sqlcaid[8];
+	long sqlabc;
+	long sqlcode;
+	struct _sqlerrm {
+		unsigned short sqlerrml;
+		char sqlerrmc[70];
+	} sqlerrm;
+	char sqlerrp[8];
+	long sqlerrd[6];
+	char sqlwarn[8];
+	char sqlext[8];
+};
+
+
+#endif  // SQLCA_H
+
+
 /* VMX ARCHITECTURE RELATED DEFINITIONS (<vmx.h>) */
 
 
