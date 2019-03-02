@@ -60,6 +60,8 @@ for file in "$@"; do
         [ -z "$(command -v wc)" ] && printf 'wc: command not found!\n' >&2
         if [ -z "$(command -v file)" ]; then
             printf 'file: command not found!\n' >&2
+        elif [ ! -x "$(command -v chardet3)" ]; then
+            printf 'chardet3: command not found!\n' >&2
         elif [ ! -x "$(command -v chardetect)" ]; then
             printf 'chardetect: command not found!\n' >&2
         elif [ ! -x "$(command -v uchardet)" ]; then
@@ -72,6 +74,8 @@ for file in "$@"; do
     if [ -n "$(command -v file)" ]; then
         file -b -i "$file"
         file -b "$file" | awk_cmd '{ gsub(/^a /, ""); gsub(/^an /, ""); if (NF > 0) { print; } }'
+    elif [ -x "$(command -v chardet3)" ]; then
+        chardet3 "$file"
     elif [ -x "$(command -v chardetect)" ]; then
         chardetect "$file"
     elif [ -x "$(command -v uchardet)" ]; then
