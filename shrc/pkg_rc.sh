@@ -43,10 +43,12 @@ if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin 
         repoinfo() { brew tap-info; }
         writebrewfile() { brew bundle cleanup; }
     fi
-elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
+elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-get)" ]; }; then  # Debian Linux Apt
     cleanrepocache() { sudo apt-get clean; }
     clrpkg() { sudo apt-get autoremove; }
     [ -n "$(command -v apt-cache)" ] && findpkg() { apt-cache search "$1"; }
+    # TODO: apt-mark showhold
+    fixApt() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; }
     getPkgChlog() { apt-get changelog "${@//;// }"; }
     getpkgsrc() { apt-get source --download-only "${@//;// }"; }
     pkginstall() { sudo apt-get install "${@//;// }"; }
@@ -55,10 +57,11 @@ elif [ -d /etc/apt ] && [ -x "$(command -v apt-get)" ]; then  # Debian Linux Apt
     pkgreinstall() { sudo apt-get install --reinstall "${@//;// }"; }
     pkguninstall() { sudo apt-get purge "${@//;// }"; }
     pkgupdate() { sudo apt-get install --only-upgrade "${@//;// }"; }
-    refreshrepo() { sudo apt-get update; }
+    refreshrepo() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get update; }
     repocheck() { sudo apt-get check; }
-    sysupdate() { sudo apt-get dist-upgrade; }
-    sysupgrade() { sudo apt-get update; sudo apt-get upgrade; sudo apt-get dist-upgrade; sudo do-release-upgrade -d; }
+    sysupdate() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get dist-upgrade; }
+    sysupgrade() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get update && sudo apt-get upgrade; sudo apt-get dist-upgrade && apt-get autoremove; sudo do-release-upgrade -d; }
+    chgdistrocodename() { [ -d /etc/apt/ ] && sudo sh -c "sed -i 's|${1}|${2}|g' /etc/apt/sources.list && find /etc/apt/sources.list.d/*.list -type f -print0 | xargs -0 grep -l -F ${1} | xargs sed -i 's|${1}|${2}|g'" 2> /dev/null; }
     if [ -x "$(command -v add-apt-repository)" ]; then
         addrepo() { sudo add-apt-repository "${@//;// }"; }
         rmrepo() { sudo add-apt-repository --remove "${@//;// }"; }
@@ -222,7 +225,7 @@ if [ -x "$(command -v pip3)" ]; then  # Python3
     alias pyrepocheck='sudo -H pip3 check'
     alias pyuninstall='sudo -H pip3 uninstall'
     alias pyupdate='sudo -H pip3 install -U'
-    pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
+    pysysupdate() { sudo -H sh -c "pip3 freeze --local | grep -v '^\\-e' | cut -d '=' -f 1 | xargs -n1 pip3 install -U"; }
 fi
 if [ -x "$(command -v pip2)" ] && [ -x "$(command -v python2)" ]; then  # Python2
     alias findpy2pkg='pip2 search'
@@ -237,7 +240,7 @@ if [ -x "$(command -v pip2)" ] && [ -x "$(command -v python2)" ]; then  # Python
     alias py2repocheck='sudo -H pip2 check'
     alias py2uninstall='sudo -H pip2 uninstall'
     alias py2update='sudo -H pip2 install -U'
-    py2sysupdate() { sudo -H sh -c "pip2 freeze --local | grep -v '^\-e' | cut -d '=' -f 1 | xargs -n1 pip2 install -U"; }
+    py2sysupdate() { sudo -H sh -c "pip2 freeze --local | grep -v '^\\-e' | cut -d '=' -f 1 | xargs -n1 pip2 install -U"; }
 fi
 
 
