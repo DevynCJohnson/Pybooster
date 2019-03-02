@@ -702,6 +702,17 @@ sethostname() {
     fi
 }
 
+
+#' View active CPU mitigation
+viewmit() {
+    [ -d /sys/devices/system/cpu/vulnerabilities/ ] && grep 'Mitigation' /sys/devices/system/cpu/vulnerabilities/*
+}
+
+#' View CPU vulnerabilities
+viewvul() {
+    [ -d /sys/devices/system/cpu/vulnerabilities/ ] && ls /sys/devices/system/cpu/vulnerabilities/
+}
+
 # Miscellaneous Functions
 
 if [ -x "$(command -v awk)" ]; then
