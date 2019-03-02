@@ -6800,8 +6800,14 @@
     <glob pattern="*.mk" weight="30"/>
     <glob pattern="CMakeLists.txt"/>
     <glob pattern="GNUmakefile" weight="95"/>
+    <glob pattern="Makefile" weight="70"/>
     <glob pattern="makefile" weight="95"/>
-    <glob pattern="Makefile.*" weight="10"/>
+    <glob pattern="Makefile.*" weight="70"/>
+    <glob pattern="makefile.prebuilt" weight="95"/>
+    <glob pattern="NMakefile" weight="95"/>
+    <glob pattern="NMakefile.build" weight="95"/>
+    <glob pattern="NMakefile.common" weight="95"/>
+    <glob pattern="NMakefile.def" weight="95"/>
     <magic priority="100">
       <match offset="2:16" type="string" value="/usr/bin/bmake"/>
       <match offset="2:16" type="string" value="/usr/bin/clmake"/>
