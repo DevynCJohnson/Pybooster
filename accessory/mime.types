@@ -1,17 +1,18 @@
 ###########################################################################
 #
-# MIME media types and represented file-extensions
+# MIME: Media Types and Represented File-extensions
 #
-# Users can define their own media types by creating a ".mime.types"
-# file in their home directory. Definitions included there will take
-# precedence over those listed here.
+# Users can define their own media types by creating a ".mime.types" in ~
+# Definitions included there will take precedence over those listed here
+#
+# Format:
+# Media-type	File-extensions
 #
 ###########################################################################
 
-# Media-type	File-extensions
 
 # APPLICATION/* #
-#application/vnd.ms-pki.stl	stl
+
 application/1d-interleaved-parityfec
 application/3gpdash-qoe-report+xml
 application/3gpp-ims+xml
@@ -404,6 +405,38 @@ application/vcard+json
 application/vcard+xml
 application/vda	vda
 application/vemmi
+application/x400-bp
+application/xacml+xml
+application/xcap-att+xml
+application/xcap-caps+xml
+application/xcap-diff+xml
+application/xcap-el+xml
+application/xcap-error+xml
+application/xcap-ns+xml
+application/xcon-conference-info+xml
+application/xcon-conference-info-diff+xml
+application/xenc+xml
+application/xhtml+xml	xhtml xht
+application/xml	xml xsd rng
+application/xml-dtd dtd
+application/xml-external-parsed-entity
+application/xml-patch+xml
+application/xmpp+xml
+application/xop+xml
+application/xslt+xml	xsl xslt
+application/xspf+xml	xspf
+application/xv+xml
+application/yang
+application/yang-data+json
+application/yang-data+xml
+application/yang-patch+json
+application/yang-patch+xml
+application/yin+xml
+application/zip	zip
+application/zlib
+
+# APPLICATION/vnd.* #
+
 application/vnd.1000minds.decision-model+xml
 application/vnd.3gpp-prose+xml
 application/vnd.3gpp-prose-pc3ch+xml
@@ -854,6 +887,7 @@ application/vnd.ms-officetheme	thmx
 application/vnd.ms-pki.certstore	sst
 application/vnd.ms-pki.pko	pko
 application/vnd.ms-pki.seccat	cat
+#application/vnd.ms-pki.stl	stl
 application/vnd.ms-playready.initiator+xml
 application/vnd.ms-powerpoint	ppt pps ppz pot
 application/vnd.ms-powerpoint.addin.macroEnabled.12	ppam
@@ -1333,6 +1367,9 @@ application/wordperfect6.0	w60
 application/wordperfect6.1	w61
 application/wsdl+xml
 application/wspolicy+xml
+
+# APPLICATION/x-* #
+
 application/x-123	wk wk1
 application/x-7z-compressed	7z
 application/x-abiword	abw
@@ -1517,37 +1554,9 @@ application/x-xcf	xcf
 application/x-xfig	fig
 application/x-xpinstall	xpi
 application/x-xz	xz
-application/x400-bp
-application/xacml+xml
-application/xcap-att+xml
-application/xcap-caps+xml
-application/xcap-diff+xml
-application/xcap-el+xml
-application/xcap-error+xml
-application/xcap-ns+xml
-application/xcon-conference-info+xml
-application/xcon-conference-info-diff+xml
-application/xenc+xml
-application/xhtml+xml	xhtml xht
-application/xml	xml xsd rng
-application/xml-dtd dtd
-application/xml-external-parsed-entity
-application/xml-patch+xml
-application/xmpp+xml
-application/xop+xml
-application/xslt+xml	xsl xslt
-application/xspf+xml	xspf
-application/xv+xml
-application/yang
-application/yang-data+json
-application/yang-data+xml
-application/yang-patch+json
-application/yang-patch+xml
-application/yin+xml
-application/zip	zip
-application/zlib
 
 # AUDIO/* #
+
 audio/1d-interleaved-parityfec
 audio/32kadpcm
 audio/3gpp
@@ -1664,6 +1673,13 @@ audio/uemclip
 audio/ulpfec
 audio/vdvi
 audio/vmr-wb
+audio/voc	voc
+audio/vorbis
+audio/vorbis-config
+audio/voxware	vox
+
+# AUDIO/vnd.* #
+
 audio/vnd.3gpp.iufp
 audio/vnd.4sb
 audio/vnd.audiokoz
@@ -1703,10 +1719,9 @@ audio/vnd.rhetorex.32kadpcm
 audio/vnd.rhetorex.32kadpcm
 audio/vnd.sealedmedia.softseal-mpeg
 audio/vnd.vmx.cvsd
-audio/voc	voc
-audio/vorbis
-audio/vorbis-config
-audio/voxware	vox
+
+# AUDIO/x-* #
+
 audio/x-aiff	aif aiff aifc
 audio/x-gsm	gsd gsm
 audio/x-liveaudio	lam
@@ -1725,8 +1740,7 @@ audio/x-vnd.audioexplosion.mjuicemediafile	mjf
 audio/x-wav	wav
 
 # CHEMICAL/* #
-#chemical/x-daylight-smiles	smi
-#chemical/x-mif	mif
+
 chemical/x-alchemy	alc
 chemical/x-cache	cac cache
 chemical/x-cache-csf	csf
@@ -1743,6 +1757,7 @@ chemical/x-crossfire	bsd
 chemical/x-csml	csml csm
 chemical/x-ctx	ctx
 chemical/x-cxf	cxf cef
+#chemical/x-daylight-smiles	smi
 chemical/x-embl-dl-nucleotide	emb embl
 chemical/x-galactic-spc	spc
 chemical/x-gamess-input	inp gam gamin
@@ -1763,6 +1778,7 @@ chemical/x-mdl-rdfile	rd
 chemical/x-mdl-rxnfile	rxn
 chemical/x-mdl-sdfile	sd sdf
 chemical/x-mdl-tgf	tgf
+#chemical/x-mif	mif
 chemical/x-mmcif	mcif
 chemical/x-mol2	mol2
 chemical/x-molconn-Z	b
@@ -1783,19 +1799,25 @@ chemical/x-xtel	xtel
 chemical/x-xyz	xyz
 
 # FONT/* #
-font/collection
+
+font/collection	ttc
 font/otf	otf
 font/tdpfr	pfr
 font/sfnt	otf ttf
 font/ttf	ttf
-font/vnd.ms-fontobject	eot
 font/woff	woff
 font/woff2	woff2
 
+# FONT/vnd.* #
+
+font/vnd.ms-fontobject	eot
+
 # I-WORLD/* #
+
 i-world/i-vrml	ivr
 
 # IMAGE/* #
+
 image/aces
 image/bmp	bm bmp
 image/cgm
@@ -1829,6 +1851,10 @@ image/t38
 image/tiff	tiff tif
 image/tiff-fx
 image/vasa	mcf
+image/wmf
+
+# IMAGE/vnd.* #
+
 image/vnd.adobe.photoshop
 image/vnd.airzip.accelerator.azv
 image/vnd.cns.inf2
@@ -1860,7 +1886,9 @@ image/vnd.valve.source.texture
 image/vnd.wap.wbmp	wbmp
 image/vnd.xiff	xif
 image/vnd.zbrush.pcx
-image/wmf
+
+# IMAGE/x-* #
+
 image/x-canon-cr2	cr2
 image/x-canon-crw	crw
 image/x-coreldraw	cdr
@@ -1889,15 +1917,20 @@ image/x-xpixmap	xpm
 image/x-xwindowdump	xwd
 
 # INODE/* #
+
 inode/blockdevice
 inode/chardevice
 inode/directory
 inode/directory-locked
 inode/fifo
 inode/socket
+
+# INODE/x-* #
+
 inode/x-empty
 
 # MESSAGE/* #
+
 message/cpim
 message/delivery-status
 message/disposition-notification
@@ -1916,16 +1949,30 @@ message/s-http
 message/sip
 message/sipfrag
 message/tracking-status
+
+# MESSAGE/vnd.* #
+
 message/vnd.si.simp
 message/vnd.wfa.wsc
 
 # MODEL/* #
+
 model/3mf
 model/example
 model/gltf+json
 model/gltf-binary
 model/iges	igs iges
 model/mesh	msh mesh silo
+model/vrml	wrl wrz vrml
+model/x-pov	pov
+model/x3d+binary	x3db
+model/x3d+fastinfoset
+model/x3d+vrml	x3dv
+model/x3d+xml	x3d
+model/x3d-vrml
+
+# MODEL/vnd.* #
+
 model/vnd.dwf
 model/vnd.collada+xml
 model/vnd.dwf	dwf
@@ -1941,15 +1988,9 @@ model/vnd.parasolid.transmit-text
 model/vnd.rosette.annotated-data-model
 model/vnd.valve.source.compiled-map
 model/vnd.vtu
-model/vrml	wrl wrz vrml
-model/x-pov	pov
-model/x3d+binary	x3db
-model/x3d+fastinfoset
-model/x3d+vrml	x3dv
-model/x3d+xml	x3d
-model/x3d-vrml
 
 # MULTIPART/* #
+
 multipart/alternative
 multipart/appledouble
 multipart/byteranges
@@ -1964,34 +2005,29 @@ multipart/parallel
 multipart/related
 multipart/report
 multipart/signed
-multipart/vnd.bint.med-plus
 multipart/voice-message
+
+# MULTIPART/vnd.* #
+
+multipart/vnd.bint.med-plus
+
+# MULTIPART/x-* #
+
 multipart/x-gzip	gzip
 multipart/x-mixed-replace
 multipart/x-ustar	ustar
 
 # MUSIC/* #
+
 music/crescendo	mid midi
 music/x-karaoke	kar
 
 # PALEOVU/* #
+
 paleovu/x-pv	pvu
 
 # TEXT/* #
-#text/x-script	hlb
-#text/x-script.csh	csh
-#text/x-script.elisp	el
-#text/x-script.guile	scm
-#text/x-script.ksh	ksh
-#text/x-script.lisp	lsp
-#text/x-script.perl	pl
-#text/x-script.perl-module	pm
-#text/x-script.python	py py3 py2 pygtk pyqt pyside
-#text/x-script.rexx	rexx
-#text/x-script.scheme	scm
-#text/x-script.sh	sh
-#text/x-script.tcl	tcl
-#text/x-script.tcsh	tcsh
+
 text/1d-interleaved-parityfec
 text/asp	asp
 text/cache-manifest	appcache
@@ -2044,6 +2080,10 @@ text/turtle	ttl
 text/ulpfec
 text/uri-list	uni unis uri uris
 text/vcard	vcf vcard
+text/webviewhtml	htt
+
+# TEXT/vnd.* #
+
 text/vnd.a
 text/vnd.abc	abc
 text/vnd.ascii-art
@@ -2073,7 +2113,9 @@ text/vnd.wap.si
 text/vnd.wap.sl
 text/vnd.wap.wml	wml
 text/vnd.wap.wmlscript	wmls
-text/webviewhtml	htt
+
+# TEXT/x-* #
+
 text/x-asm	asm asm51 s
 text/x-audiosoft-intra	aip
 text/x-bibtex	bib
@@ -2101,6 +2143,20 @@ text/x-perl	pl pm
 text/x-prolog	pro prl prolog P
 text/x-python	py py3 py2 pygtk pyqt pyside
 text/x-scala	scala scl
+#text/x-script	hlb
+#text/x-script.csh	csh
+#text/x-script.elisp	el
+#text/x-script.guile	scm
+#text/x-script.ksh	ksh
+#text/x-script.lisp	lsp
+#text/x-script.perl	pl
+#text/x-script.perl-module	pm
+#text/x-script.python	py py3 py2 pygtk pyqt pyside
+#text/x-script.rexx	rexx
+#text/x-script.scheme	scm
+#text/x-script.sh	sh
+#text/x-script.tcl	tcl
+#text/x-script.tcsh	tcsh
 text/x-server-parsed-html	ssi
 text/x-setext	etx
 text/x-sfv	sfv
@@ -2113,6 +2169,7 @@ text/x-uuencode	uu uue
 text/x-vcalendar	vcs
 
 # VIDEO/* #
+
 video/1d-interleaved-parityfec
 video/3gpp	3gp
 video/3gpp-tt
@@ -2163,6 +2220,12 @@ video/smpte292m
 video/ulpfec
 video/vc1
 video/vdo	vdo
+video/vosaic	vos
+video/vp8
+video/webm	webm
+
+# VIDEO/vnd.* #
+
 video/vnd.mpegurl
 video/vnd.cctv
 video/vnd.dece-mp4
@@ -2201,9 +2264,9 @@ video/vnd.sealed.mpeg4
 video/vnd.sealedmedia.softseal-mov
 video/vnd.uvvu-mp4
 video/vnd.vivo	viv vivo
-video/vosaic	vos
-video/vp8
-video/webm	webm
+
+# VIDEO/x-* #
+
 video/x-amt-demorun	xdr
 video/x-atomic3d-feature	fmf
 video/x-flv	flv
@@ -2223,21 +2286,26 @@ video/x-scm	scm
 video/x-sgi-movie	movie mv
 
 # WINDOWS/* #
+
 windows/metafile	wmf
 
 # WWW/* #
+
 www/mime	mime
 
 # X-*/* #
-#x-music/x-midi	mid midi
+
 x-conference/x-cooltalk	ice
 x-epoc/x-sisx-app	sisx
+#x-music/x-midi	mid midi
 
 # X-WORLD/* #
+
 x-world/x-3dmf	3dm 3dmf qd3 qd3d
 x-world/x-svr	svr
 x-world/x-vrml	vrm vrml wrl
 x-world/x-vrt	vrt
 
 # XGL/* #
+
 xgl/drawing	xgz
