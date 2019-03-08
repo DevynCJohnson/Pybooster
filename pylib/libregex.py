@@ -29,6 +29,12 @@ along with this software.
 """
 
 
+try:  # Regular Expression module
+    from regex import compile as rgxcompile
+except ImportError:
+    from re import compile as rgxcompile
+
+
 __all__: list = [
     # GENERAL PATTERNS #
     r'BINNUM',
@@ -366,12 +372,6 @@ __all__: list = [
     r'MACROS',
     r'PRINTF_FMT'
 ]
-
-
-try:  # Regular Expression module
-    from regex import compile as rgxcompile
-except ImportError:
-    from re import compile as rgxcompile
 
 
 # GENERAL PATTERNS #
