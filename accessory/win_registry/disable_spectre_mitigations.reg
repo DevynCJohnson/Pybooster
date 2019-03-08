@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+; Disable Spectre Variant 2, Meltdown, and Speculative Store Bypass mitigations
+; Delete the added registry key to re-enable auto-updates
+
+["HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"]
+"FeatureSettingsOverride"="dword:3"
+["HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"]
+"FeatureSettingsOverrideMask"="dword:3"
