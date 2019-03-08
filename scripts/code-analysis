@@ -58,16 +58,18 @@ for file in "$@"; do
     if [ "$FirstLoopPass" -eq 0 ]; then
         [ ! -x "$(command -v cloc)" ] && printf 'cloc: command not found!\n' >&2
         [ -z "$(command -v wc)" ] && printf 'wc: command not found!\n' >&2
-        if [ -z "$(command -v file)" ]; then
-            printf 'file: command not found!\n' >&2
-        elif [ ! -x "$(command -v chardet3)" ]; then
-            printf 'chardet3: command not found!\n' >&2
-        elif [ ! -x "$(command -v chardetect)" ]; then
-            printf 'chardetect: command not found!\n' >&2
-        elif [ ! -x "$(command -v uchardet)" ]; then
-            printf 'uchardet: command not found!\n' >&2
-        elif [ ! -x "$(command -v encguess)" ]; then
-            printf 'encguess: command not found!\n' >&2
+        if [ -z "$(command -v file)" ] && [ ! -x "$(command -v chardet3)" ] && [ ! -x "$(command -v chardetect)" ] && [ ! -x "$(command -v uchardet)" ] && [ ! -x "$(command -v encguess)" ]; then
+            if [ -z "$(command -v file)" ]; then
+                printf 'file: command not found!\n' >&2
+            elif [ ! -x "$(command -v chardet3)" ]; then
+                printf 'chardet3: command not found!\n' >&2
+            elif [ ! -x "$(command -v chardet3)" ] && [ ! -x "$(command -v chardetect)" ]; then
+                printf 'chardetect: command not found!\n' >&2
+            elif [ ! -x "$(command -v uchardet)" ]; then
+                printf 'uchardet: command not found!\n' >&2
+            elif [ ! -x "$(command -v encguess)" ]; then
+                printf 'encguess: command not found!\n' >&2
+            fi
         fi
     fi
     ls -a -b -F -h -l "$file"
