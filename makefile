@@ -72,7 +72,6 @@ override PYBDIR::=/usr/lib/pybooster
 
 # File Lists
 override LIST_LANGSPECS::=coffeescript
-override LIST_NANORC_FILES::=asm.nanorc autoconf.nanorc awk.nanorc changelog.nanorc cmake.nanorc c.nanorc css.nanorc debian.nanorc default.nanorc Dockerfile.nanorc elisp.nanorc email.nanorc fortran.nanorc gentoo.nanorc go.nanorc groff.nanorc guile.nanorc html.nanorc java.nanorc javascript.nanorc json.nanorc lua.nanorc makefile.nanorc man.nanorc mgp.nanorc mutt.nanorc nanohelp.nanorc nanorc.nanorc nftables.nanorc objc.nanorc ocaml.nanorc patch.nanorc perl.nanorc php.nanorc po.nanorc postgresql.nanorc pov.nanorc python.nanorc ruby.nanorc rust.nanorc sh.nanorc spec.nanorc tcl.nanorc texinfo.nanorc tex.nanorc xml.nanorc
 override LIST_MATH_PROGRAMS::=acos acosh asin asinh atan atanh cbrt cos cosh fib isprime sin sinh sqrt tan tanh
 override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
@@ -207,7 +206,7 @@ default :
 # Install
 .PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_nanorc uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
 
@@ -501,7 +500,7 @@ secure :
 
 install_dev : install_langspecs install_nanorc install_program_analyzer install_pyeggs install_scripts
 
-uninstall_dev : uninstall_langspecs uninstall_nanorc uninstall_pyeggs uninstall_pylib
+uninstall_dev : uninstall_langspecs uninstall_pyeggs uninstall_pylib
 
 install_clib : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing C Libraries ==='
@@ -612,12 +611,7 @@ uninstall_langspecs :
 install_nanorc :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing NanoRC ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	([ -d $(SYSNANORCDIR)/ ] && $(COPY) -t $(SYSNANORCDIR)/ $(addprefix $(NANORCDIR)/, $(LIST_NANORC_FILES))) || true
-
-uninstall_nanorc :
-	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling NanoRC ==='
-	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	([ -d $(SYSNANORCDIR)/ ] && $(RM) $(addprefix $(SYSNANORCDIR)/, $(LIST_NANORC_FILES))) || true
+	([ -d $(SYSNANORCDIR)/ ] && $(COPY) -t $(SYSNANORCDIR)/ $(NANORCDIR)/*.nanorc) || true
 
 install_opticons :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Opticons ==='

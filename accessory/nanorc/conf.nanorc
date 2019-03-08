@@ -3,11 +3,19 @@ comment "#"
 
 # DEFAULT TEXT #
 
-color magenta "^.*$"
+color cyan "^.*$"
+
+# NUMBERS #
+
+color brightmagenta "(\s*|[\<\>(){}=,])\s*[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
+
+# BLOCKS #
+
+color white,cyan "\{" "\}"
 
 # SECTION HEADINGS #
 
-icolor brightyellow "^\s*(\[([A-Z0-9_\.\-\+@\#%&=<>]|\s)+\])+\s*$" "^\[[A-Z0-9_\.\-\+@\#%&=<>]+\]$"
+color brightgreen,magenta "^\s*\[.*?\]\s*$"
 color brightcyan "^\s*((Sub)?Section\s*(=|\>)|End(Sub)?Section\s*$)"
 color brightcyan "^\s*\$(end)?if(\s|$)"
 
@@ -17,24 +25,20 @@ icolor brightblue "(^|\s|=)(default|true|false|on|off|yes|no)(\s|$)"
 
 # KEYS #
 
-icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%@#&\+\-]+\s*([:]|\>)" "^\s*(\$if )?([A-Z0-9_\/\.\%@#&\+\-]|\s)+="
+icolor brightyellow,blue "^\s*(set\s+)?[A-Z0-9_\/\.\%@#&\+\-]+\s*([:]|\>)" "^\s*(\$if )?([A-Z0-9_\/\.\%@#&\+\-])+="
 
 # COMMANDS #
 
-color blue "^\s*set\s+\<"
+color blue "^\s*set\s+\<" "="
 
 # STRINGS #
 
 color yellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
 
-# NUMBERS #
-
-color brightmagenta "(^|\s|[\[/:|\<\>(){}=,\]|\])[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
-
 # PUNCTUATION #
 
-color blue "[.]" "/"
-color brightwhite "(\]|[()\<\>\[\]{},;\:=])" "(^|\[|\{|\:)\s*\-(\s|$)"
+color brightwhite "[()\<\>,;\:]" "(^|\{|\:)\s*\-(\s|$)"
+color brightred,green "="
 
 # URLS #
 
@@ -42,9 +46,13 @@ icolor green "(([A-Z]+\://|www[.])[A-Z0-9/\:#\?&\$=_\.\-]+)(\b|$| )"
 
 # XML-LIKE TAGS #
 
-icolor brightcyan "</?\w+((\s*\w+\s*=)?\s*("[^"]*"|'[^']*'|!?[A-Z0-9_:/]))*(\s*/)?>"
+color brightcyan start="</\?" end="\?>"
 
 # COMMENTS #
 
 color red "^\s*(#|;).*$"
 color red start="<!--" end="-->"
+
+# WHITESPACE #
+
+color black "^\s*"
