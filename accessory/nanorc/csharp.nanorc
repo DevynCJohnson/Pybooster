@@ -1,0 +1,34 @@
+syntax "C#" "\.cs$"
+
+# CLASS #
+
+color brightmagenta "class +[A-Za-z0-9]+ *((:) +[A-Za-z0-9.]+)?"
+
+# ANNOTATION #
+
+color magenta   "@[A-Za-z]+"
+
+# KEYWORDS & FUNCTIONS #
+
+color brightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[()]"
+color green "\<(bool|byte|sbyte|char|decimal|double|float|IntPtr|int|uint|long|ulong|object|short|ushort|string|base|this|var|void)\>"
+color cyan  "\<(abstract|alias|as|async|case|catch|checked|class|const|default|delegate|do|dynamic|else|enum|event|explicit|extern|finally|fixed|for|foreach|get|goto|if|implicit|in|interface|internal|is|lock|namespace|new|null|operator|out|override|params|partial|private|protected|public|readonly|ref|return|sealed|set|sizeof|stackalloc|static|struct|switch|throw|try|typeof|unchecked|unsafe|using|value|virtual|volatile|while|yield)\>"
+color cyan "\<()\>"
+
+# LINQ-ONLY KEYWORDS #
+
+color cyan "\<(from|where|select|group|info|orderby|join|let|in|on|equals|by|ascending|descending)\>"
+color brightred "\<(break|continue)\>"
+color brightcyan "\<(true|false)\>"
+
+# MISCELLANEOUS #
+
+color red "[-+/*=<>?:!~%&|]"
+color blue "\<([0-9._]+|0x[A-Fa-f0-9_]+|0b[0-1_]+)[FL]?\>"
+color yellow "\"(\\.|[^\"])*\"|'(\\.|[^'])*'"
+color magenta "\\([btnfr]|'|\"|\\)" "\\u[A-Fa-f0-9]{4}"
+color brightblack "(^|[[:space:]])//.*"
+color brightblack start="/\*" end="\*/"
+color brightwhite,yellow "// (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color ,green "[[:space:]]+$"
+color ,red "	+ +| +	+"

@@ -1,0 +1,25 @@
+syntax "CSH" "\.csh$" "\.tcshrc" "\.cshrc" "\.login" "\.logout" "\.history"
+header "^#!.*/(env +)?(t)?csh( |$)"
+
+icolor brightgreen "^[0-9A-Z_]+\(\)"
+color green "\<(break|breaksw|case|continue|default|else|end|endif|endsw|exec|exit|foreach|goto|if|repeat|shift|switch|then|while)\>"
+color cyan "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)" "-[rfuMZwdgAUxlkebtAGoczpPsS]\>" "-(A\:|M\:|U\:|G\:)\>"
+color brightblue "\<(alias|bindkey|cat|cd|chmod|chown|complete|cp|echo|env|grep|install|ln|make|mkdir|mv|printenv|rm|sed|set|setenv|tar|touch|umask|unalias|uncomplete|unset|unsetenv)\>"
+
+# VARIABLE NAMES #
+
+color brightmagenta "^\s+[[:alnum:]_]+[[:space:]]+\(\)"
+color brightmagenta "\$\{?[[:alnum:]_!@#$*?-]+\}?"
+
+# STRINGS #
+
+color brightyellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
+
+# COMMENTS #
+
+color red "(^|[[:space:]])#.*$"
+color brightgreen "(^|[[:space:]])#' .*$"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"

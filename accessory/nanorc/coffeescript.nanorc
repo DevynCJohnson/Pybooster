@@ -1,0 +1,12 @@
+syntax "CoffeeScript" "\.coffee$"
+header "^#!.*/(env +)?coffee$"
+
+color red "[!&|=\/*+\-\<\>]|\<(and|or|is|isnt|not)\>"
+color brightblue "[A-Za-z_][A-Za-z0-9_]*:[[:space:]]*(->|\()" "->" "[()]"
+color cyan "\<((try|break|by|catch|class|continue|debugger|delete|do|else|extends|finally|for|if|in|instanceof|isnt|loop|new|null|of|of|return|super|switch|then|this|throw|typeof|undefined|unless|unless|until|when|while)\>"
+color brightcyan "\<(true|false|yes|no|on|off)\>"
+color brightyellow "@[A-Za-z0-9_]*"
+color yellow "\"(\\.|[^\"])*\"|'(\\.|[^'])*'"
+color brightblack,white "(^|[[:space:]])#([^{].*)?$"
+color ,green "[[:space:]]+$"
+color ,red "	+ +| +	+"

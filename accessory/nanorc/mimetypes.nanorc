@@ -1,0 +1,23 @@
+syntax "minetypes" "mime\.types"
+comment "#"
+
+# DEFAULT TEXT #
+
+icolor brightyellow,cyan "/[A-Z0-9\.\+\-]+([[:space:]]*|.*)$"
+color brightblue "[[:space:]]+[^/[[:space:]]]+$"
+
+# KEYS #
+
+color brightyellow,magenta "/vnd\."
+color brightyellow,green "/x\-"
+color brightyellow,blue "^[[:space:]]*(application|audio|chemical|font|i-world|image|inode|message|model|multipart|music|paleovu|text|video|windows|www|x-conference|x-epoc|x-music|x-world|xgl)"
+color brightblack,yellow "/"
+
+# COMMENTS #
+
+color red "^[[:space:]]*(#|;).*$"
+
+# WHITESPACE #
+
+color black "[[:space:]]*"
+color ,green "[[:space:]]+$"

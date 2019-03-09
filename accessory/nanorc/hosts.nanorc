@@ -1,0 +1,27 @@
+syntax "hosts" "hosts"
+comment "#"
+
+# DEFAULT TEXT #
+
+color cyan "^.*$"
+
+# URLS #
+
+color green " [^ ]+"
+
+# KEYS #
+
+color brightyellow,blue "^[[:space:]]*[^ ]+"
+
+# STRINGS #
+
+color yellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
+
+# COMMENTS #
+
+color red "^[[:space:]]*(#|;).*$"
+
+# WHITESPACE #
+
+color black "^[[:space:]]*"
+color ,green "[[:space:]]+$"

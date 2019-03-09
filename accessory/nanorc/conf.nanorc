@@ -1,4 +1,4 @@
-syntax "conf" "\.(conf|config|cfg|cnf|rc|lst|list|defs|ini|desktop|mime|types|preset|cache|seat|service|htaccess)$" "(^|/)(\w*crontab|mirrorlist|group|hosts|passwd|rpc|netconfig|shadow|fstab|inittab|inputrc|protocols|sudoers)$" "conf.d/" ".config/"
+syntax "conf" "\.([Cc][Oo][Nn][Ff]|config|cfg|cnf|rc|lst|list|defs|[Ii][Nn][Ii]|desktop|mime|types|preset|cache|seat|service|htaccess)$" "(^|/)(\w*crontab|mirrorlist|group|passwd|rpc|netconfig|shadow|fstab|inittab|inputrc|protocols|sudoers)$" "conf.d/" ".config/"
 comment "#"
 
 # DEFAULT TEXT #
@@ -7,7 +7,7 @@ color cyan "^.*$"
 
 # NUMBERS #
 
-color brightmagenta "(\s*|[\<\>(){}=,])\s*[\-\+]?[0-9](\.?[0-9])*%?($|\>)"
+color brightmagenta "([[:space:]]*|[\<\>(){}=,])[[:space:]]*[\-\+]?[0-9](\.?[0-9])*%?($|\>|\)|,)"
 
 # BLOCKS #
 
@@ -15,30 +15,30 @@ color white,cyan "\{" "\}"
 
 # SECTION HEADINGS #
 
-color brightgreen,magenta "^\s*\[.*?\]\s*$"
-color brightcyan "^\s*((Sub)?Section\s*(=|\>)|End(Sub)?Section\s*$)"
-color brightcyan "^\s*\$(end)?if(\s|$)"
+color brightgreen,magenta "^[[:space:]]*\[.*?\][[:space:]]*$"
+color brightcyan "^[[:space:]]*((Sub)?Section[[:space:]]*(=|\>)|End(Sub)?Section[[:space:]]*$)"
+color brightcyan "^[[:space:]]*\$(end)?if([[:space:]]|$)"
 
 # SPECIAL VALUES #
 
-icolor brightblue "(^|\s|=)(default|true|false|on|off|yes|no)(\s|$)"
+icolor brightblue "(^|[[:space:]]|=)(default|false|no|none|nul|null|off|on|true|yes)([[:space:]]|$)"
 
 # KEYS #
 
-icolor brightyellow,blue "^\s*(set\s+)?[A-Z0-9_\/\.\%@#&\+\-]+\s*([:]|\>)" "^\s*(\$if )?([A-Z0-9_\/\.\%@#&\+\-])+="
+icolor brightyellow,blue "^[[:space:]]*(set[[:space:]]+)?[A-Z0-9_\/\.\%@#&:\+\-]+[[:space:]]*([:]|\>)" "^[[:space:]]*(\$if )?([A-Z0-9_\/\.\%@#&:\+\-])+="
+
+# PUNCTUATION #
+
+color brightwhite "[,;]"
+color brightred,green "="
 
 # COMMANDS #
 
-color blue "^\s*set\s+\<" "="
+color blue "^[[:space:]]*set[[:space:]]+\<"
 
 # STRINGS #
 
 color yellow "\"(\\.|[^\"])*\"" "'(\\.|[^\'])*'"
-
-# PUNCTUATION #
-
-color brightwhite "[()\<\>,;\:]" "(^|\{|\:)\s*\-(\s|$)"
-color brightred,green "="
 
 # URLS #
 
@@ -50,9 +50,10 @@ color brightcyan start="</\?" end="\?>"
 
 # COMMENTS #
 
-color red "^\s*(#|;).*$"
+color red "^[[:space:]]*(#|;).*$"
 color red start="<!--" end="-->"
 
 # WHITESPACE #
 
-color black "^\s*"
+color black "^[[:space:]]*"
+color ,green "[[:space:]]+$"

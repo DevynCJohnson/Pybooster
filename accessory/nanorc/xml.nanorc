@@ -7,15 +7,43 @@ color white "^.+$"
 
 # TAGS #
 
-color green start="<" end=">"
-color cyan "<[^> ]+" ">"
-color magenta "\"[^"]*\""
+color brightyellow,blue start="<" end=">"
+color brightgreen,blue start="<xs:" end=">"
+color brightgreen,blue start="</xs:" end=">"
+color green start="<!DOCTYPE [A-Za-z0-9]+ \[" end="\]/?>"
+color green start="<!DOCTYPE" end="/?>"
+color yellow,magenta start="<!\[" end="\]>"
+color green start="<!(ATTLIST|ELEMENT|ENTITY)" end="/?>"
+color brightgreen start="<\?" end="\?>"
+icolor black,yellow start="<\?(DOC|PHP|XML)" end="\?>"
+color brightcyan "!(ATTLIST|ELEMENT|ENTITY)[[:space:]]+%[[:space:]]+[A-Za-z0-9_]+ "
+color black,cyan "!(ATTLIST|ELEMENT|ENTITY)"
+color brightyellow,magenta "!\[CDATA\["
+color brightblack,white "#(FIXED|IMPLIED|PCDATA|REQUIRED)"
+
+# ATTRIBUTES #
+
+color blue " [^ =]+="
+color brightmagenta " (xmlns:|xml:)[^:= ]+="
+
+# STRINGS #
+
+color brightyellow "\"(\\.|[^\"])*\""
+color yellow "'(\\.|[^\'])*'"
+
+# CHARACTER REFERENCES #
+
+color cyan "&[^;[:space:]]*;"
+
+# CODE BLOCKS #
+
+color yellow,green start="\{%" end="%\}"
+color yellow,green start="\{\{" end="\}\}"
 
 # COMMENTS #
 
-color yellow start="<!DOCTYPE" end="[/]?>"
-color yellow start="<!--" end="-->"
+color red start="<!--" end="-->"
 
-# ESCAPES #
+# WHITESPACE #
 
-color red "&[^;]*;"
+color ,green "[[:space:]]+$"

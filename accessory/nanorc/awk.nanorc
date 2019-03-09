@@ -1,5 +1,5 @@
 syntax "awk" "\.(awk|bwk|gawk|jawk|mawk|nawk)$"
-header "^/.+/(awk|bwk|gawk|jawk|mawk|nawk).*$"
+header "^#!.*bin/(env +)?(awk|bwk|gawk|jawk|mawk|nawk)[[:space:]]*$"
 magic "awk script"
 comment "#"
 
@@ -42,3 +42,7 @@ color brightblue "(^|[[:space:]])#.*$"
 # TRAILING WHITESPACE #
 
 color ,green "[[:space:]]+$"
+
+# MISCELLANEOUS #
+
+color ,red "	+ +| +	+"

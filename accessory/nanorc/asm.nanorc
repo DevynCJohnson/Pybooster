@@ -2,18 +2,24 @@ syntax "asm" "\.(S|s|asm|asm51)$"
 magic "assembler source"
 comment "//"
 
+# MAIN SYMBOLS #
+
 color red "\<[A-Z_]{2,}\>"
 color brightgreen "\.(data|subsection|text)"
 color green "\.(align|file|globl|global|hidden|section|size|type|weak)"
 color brightyellow "\.(ascii|asciz|byte|double|float|hword|int|long|short|single|struct|word)"
+
+# LABELS #
+
 icolor brightred "^[[:space:]]*[.0-9A-Z_]*:"
+
+# MACROS #
+
 color brightcyan "^[[:space:]]*#[[:space:]]*(define|undef|include|ifn?def|endif|elif|else|if|warning|error)"
 
 # STRINGS #
 
-color brightyellow "<[^= 	]*>" ""(\\.|[^"])*""
-# Multiline Strings
-##color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
+color brightyellow "<[^= 	]*>" "\"(\\.|[^\"])*\""
 
 # COMMENTS #
 

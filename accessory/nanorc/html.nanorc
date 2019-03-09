@@ -4,27 +4,45 @@ comment "<!--|-->"
 
 # TAGS #
 
-color brightmagenta "</?[biu]>" "<[[:alpha:]/!?][^>]*>"
+color brightyellow,blue start="<" end=">"
+color brightgreen,blue start="<xs:" end=">"
+color brightgreen,blue start="</xs:" end=">"
+color green start="<!DOCTYPE [A-Za-z0-9]+ \[" end="\]/?>"
+color green start="<!DOCTYPE" end="/?>"
+color yellow,magenta start="<!\[" end="\]>"
+color green start="<!(ATTLIST|ELEMENT|ENTITY)" end="/?>"
+color brightgreen start="<\?" end="\?>"
+icolor black,yellow start="<\?(DOC|PHP|XML)" end="\?>"
+color brightcyan "!(ATTLIST|ELEMENT|ENTITY)[[:space:]]+%[[:space:]]+[A-Za-z0-9_]+ "
+color black,cyan "!(ATTLIST|ELEMENT|ENTITY)"
+color brightyellow,magenta "!\[CDATA\["
+color brightblack,white "#(FIXED|IMPLIED|PCDATA|REQUIRED)"
 
 # CHARACTER REFERENCES #
 
-color cyan "&[^;[:space:]]*;"
-
-# STRINGS #
-
-color green ""(\\.|[^"])*""
+color brightyellow "\"(\\.|[^\"])*\""
+color yellow "'(\\.|[^\'])*'"
 
 # ATTRIBUTES #
 
-color blue "(abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border)="
-color blue "(cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
-color blue "(content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype)="
-color blue "(for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
-color blue "(label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple)="
-color blue "(name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev)="
-color blue "(rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary)="
-color blue "(tabindex|target|text|title|type|usemap|valign|value(type)?|vlink|vspace|width|xmlns|xml:space)="
+color brightcyan " [^ =]+="
+color blue " (abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border|cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?|content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype|for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap|label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple|name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev|rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary|tabindex|target|text|title|type|usemap|valign|value(type)?|version|vlink|vspace|width)="
+color brightmagenta " (xmlns:|xml:)[^:= ]+="
+
+# STRINGS #
+
+color brightyellow "\"(\\.|[^\"])*\""
+color yellow "'(\\.|[^\'])*'"
+
+# CODE BLOCKS #
+
+color yellow,green start="\{%" end="%\}"
+color yellow,green start="\{\{" end="\}\}"
 
 # COMMENTS #
 
 color red start="<!--" end="-->"
+
+# WHITESPACE #
+
+color ,green "[[:space:]]+$"

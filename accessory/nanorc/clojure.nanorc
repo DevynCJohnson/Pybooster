@@ -1,0 +1,16 @@
+syntax "clojure" "\.((clj[s|c]?)|edn)"
+
+icolor green "defn? [0-9A-Z_]+"
+color brightgreen "[#']" "\<fn\>"
+color green "\<(map|reduce|filter|println)\>"
+color brightyellow "\<(catch|condp?|do(all|run|seq|sync)?|finally|if(-(let|not))?|loop|recur|throw|try|when(-(let|not))?)\>"
+color yellow "(\:else) "  "\<(true|false|nil)\>"
+color brightcyan "\<(require|use|import|ns)\>"
+color cyan "(\:(require|use|import)) "
+color brightred "\<(let(fn)?|defn?)\>"
+color brightwhite "\((\/|((not|[<>\=])?\=?))" "\((\+|-|\*)'?" "\<(and|or|not|mod|quot|rem|inc|dec)\>"
+
+color magenta "[\(\)]" "(\[|\])"
+color brightyellow "([\"][^\"]*[^\\][\"])|(\"\")"
+color brightblue ";.*$"
+color ,green "[[:space:]]+$"

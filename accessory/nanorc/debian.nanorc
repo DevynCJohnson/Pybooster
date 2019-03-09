@@ -5,19 +5,19 @@ color brightmagenta "^deb.*"
 
 # DISTRIBUTION #
 
-color brightred "^deb(-src)?\s+.*((ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/\S+|cdrom:\[.+\]/)\s+\S+"
+color brightred "^deb(-src)?[[:space:]]+.*((ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/[[:space:]]+|cdrom:\[.+\]/)[[:space:]]+"
 
 # URIS #
 
-color brightgreen "^deb(-src)?\s+.*(ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/\S+"
+color brightgreen "^deb(-src)?[[:space:]]+.*(ftp|https?|rsh|ssh|copy|file|spacewalk|tor):/[[:space:]]+"
 
 # CDROMS #
 
-color brightgreen "^deb(-src)?\s+.*cdrom:\[.+\]/"
+color brightgreen "^deb(-src)?[[:space:]]+.*cdrom:\[.+\]/"
 
 # OPTIONS #
 
-color brightcyan "^deb(-src)?\s+\[.+\]\s+"
+color brightcyan "^deb(-src)?[[:space:]]+\[.+\][[:space:]]+"
 
 # INITIAL DEB TAG #
 

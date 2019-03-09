@@ -1,0 +1,27 @@
+syntax "Vala" "\.vala$"
+
+color green "\<(bool|char|double|float|int|long|short|uint|void|(un)?signed)\>"
+color brightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[()]"
+color cyan "\<(case|catch|class|const|default|delete|do|else|enum|extern|for|if|inline|new|null|operator|override|private|public|return|signal|static|struct|switch|this|throw|try|typedef|union|weak|while)\>"
+color brightmagenta "\<(goto|break|continue)\>"
+color brightcyan "\<(true|false)\>"
+color blue "\<([0-9]+)\>"
+color red "[-+/*=<>?:!~%&|]" "->"
+
+# STRINGS #
+
+color yellow "\"(\\.|[^\"])*\"|'(\\.|[^\'])*'"
+
+# COMMENTS #
+
+color red "(^|[[:space:]])//.*"
+color red start="/\*" end="\*/"
+color brightwhite,yellow "// (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+
+# TRAILING WHITESPACE #
+
+color ,green "[[:space:]]+$"
+
+# MISCELLANEOUS #
+
+color ,red "	+ +| +	+"

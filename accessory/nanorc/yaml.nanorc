@@ -3,19 +3,19 @@ header "^---" "%YAML"
 
 # VALUES #
 
-color green "(:|^|\s)+\S+"
+color green "(:|^|[[:space:]])+[[:space:]]+"
 
 # KEYS #
 
-color red "(^|\s+).*+\s*:(\s|$)"
+color red "(^|[[:space:]]+).*+[[:space:]]*:([[:space:]]|$)"
 
 # SPECIAL VALUES #
 
-color yellow "[:-]\s+(true|false|null)\s*$" "[:-]\s+[0-9]+\.?[0-9]*(\s*($|#))" "(^| )!!(binary|bool|float|int|map|null|omap|seq|set|str) "
+color yellow "[:-][[:space:]]+(true|false|null)[[:space:]]*$" "[:-][[:space:]]+[0-9]+\.?[0-9]*([[:space:]]*($|#))" "(^| )!!(binary|bool|float|int|map|null|omap|seq|set|str) "
 
 # SEPARATORS #
 
-color brightwhite "^\s+-" ":(\s|\t|$)"
+color brightwhite "^[[:space:]]+-" ":([[:space:]]|$)"
 
 # COMMENTS #
 
