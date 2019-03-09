@@ -1,3 +1,17 @@
+2019-03-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* code-analysis:  Minor changes
+	* hosts:  Removed some URLs that were preventing web-pages from loading
+	* libregex.py:  Minor changes
+	* mime.types: Improved the layout of the file
+	* NanoRC:  Fixed the conf.nanorc file & the installation process of the NanoRC files
+	* NanoRC:  Improved multiple NanoRC files & added some additional files
+	* PyBooster: Added a Windows Registry file to disable Spectre Variant 2, Meltdown, and Speculative Store Bypass mitigations
+
+2019-03-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem: Added many more files & file-patterns to delete
+
 2019-03-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* code-analysis: Switched from using `chardetect` (a.k.a. `chardet`) to `chardet3`
