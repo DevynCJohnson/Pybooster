@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
@@ -281,32 +281,64 @@ findfilex() {
 #' @param[in] $2 Optional parameter for specifying the directory; The default is the current directory
 #' @usage findmime -zip /home
 findmime() {
-    local dir='.'
-    [ -d "${2:-}" ] && dir="$2"
-    [ -z "${1:-}" ] && return 1
-    local opt
+    _dir="."
+    [ -d "${2:-}" ] && _dir="$2"
+    [ ! -d "${_dir:-}" ] && _dir="$(pwd)"
+    if [ -z "${1:-}" ]; then
+        printf 'ERROR: No mimetype was specified!\n' >&2
+        return 1
+    fi
+    _opt=''
     case "${1:-}" in
+        # Archive
+        '-tar') _opt='application/x\-tar';;
         # Compressed
-        '-rar') opt='x\-rar';;
-        '-zip') opt='zip';;
+        '-gzip') _opt='application/gzip';;
+        '-rar') _opt='application/x\-rar';;
+        '-zip') _opt='application/zip';;
         # Documents
-        '-csv') opt='text/csv';;
-        '-office') opt='vnd\.openxmlformats\-officedocument';;
-        '-pdf') opt='pdf';;
-        '-txt') opt='text/';;
+        '-csv') _opt='text/csv';;
+        '-office') _opt='application/vnd\.openxmlformats\-officedocument';;
+        '-pdf') _opt='application/pdf';;
+        '-txt') _opt='text/plain';;
         # Executables
-        '-elf') opt='x\-(executable|sharedlib)';;
-        '-macho') opt='x\-mach\-binary';;
-        '-msi') opt='vnd\.ms\-office';;
-        '-pe') opt='x\-dosexec';;
-        *) return;;
+        '-bin') _opt=' charset=binary';;
+        '-elf') _opt='application/x\-(executable|sharedlib)';;
+        '-exe') _opt='application/x\-executable';;
+        '-macho') _opt='application/x\-mach\-binary';;
+        '-msi') _opt='application/vnd\.ms\-office';;
+        '-oct') _opt='application/octet-stream';;
+        '-pe') _opt='application/x\-dosexec';;
+        '-pie') _opt='application/x\-pie\-executable';;
+        # Images
+        '-image') _opt='image/*';;
+        '-jpg'|'-jpeg') _opt='image/jpeg';;
+        # Multimedia
+        '-audio') _opt='audio/*';;
+        '-video') _opt='video/*';;
+        # Other
+        '-deb') _opt='application/vnd.debian.binary-package';;
+        # Fallback
+        *) _opt="${2}";;
     esac
     # Buffering Results
     IFS=''
-    fileslist="$(find "${dir}" -type f -exec printf '%s' '{}' +)"
-    local matches
-    matches="$(for i in $fileslist; do filetype="$(file -Nb --mime-type "${i}")"; [[ "$filetype" =~ application/${opt} ]] && echo "${i#./*}"; done)"
-    [ -n "${matches:-}" ] && echo "${matches}" | tr -s / /
+    fileslist="$(find "${_dir}" -type f -exec printf '%s' '{}' +)"
+    if [ -n "${fileslist}" ]; then
+        if [ "${_opt}" != ' charset=binary' ]; then
+            for i in ${fileslist}; do
+                filetype="$(file -b -N --mime-type "${i}")"
+                [ -z "${filetype##$_opt}" ] && echo "${i#./*}"
+            done
+        else
+            for i in ${fileslist}; do
+                filetype="$(file -b -i "${i}" | cut -d ';' -f 2)"
+                [ "${filetype}" = ' charset=binary' ] && echo "${i#./*}"
+            done
+        fi
+    else
+        return 2
+    fi
 }
 
 #' Find file and directory names (recursively) containing the specified pattern and rename the file/directory using the replacement text in-place if the found pattern in the current directory (unless specified otherwise)
@@ -326,7 +358,8 @@ findrename() {
         fi
         echo "${filenames}"
         for filename in ${filenames}; do
-            mv "${filename}" "${filename//${1}/${2}}"
+            newfilename="$(echo "${filename}" | sed "s|${1}|${2}|g")"
+            mv "${filename}" "${newfilename}"
         done
     fi
 }
@@ -391,8 +424,9 @@ searchInPath() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
-        for searchIn in ${PATH//:/ }; do
-            find "$searchIn" -type f -name "$1" -exec printf '%s\n' '{}' +
+        IFS=':'
+        for searchIn in ${PATH}; do
+            find "${searchIn}" -name "$1" -executable
         done
     fi
 }
@@ -403,8 +437,9 @@ searchInPkgPath() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
     else
-        for searchIn in ${PKG_CONFIG_PATH//:/ }; do
-            find "$searchIn" -type f -name "$1" -exec printf '%s\n' '{}' +
+        IFS=':'
+        for searchIn in ${PKG_CONFIG_PATH}; do
+            find "${searchIn}" -name "$1" -type f
         done
     fi
 }
@@ -480,11 +515,6 @@ str2hex() {
     esac
 }
 
-#' Return the first parameter to the power of the second parameter
-pow() {
-    [ "$#" -lt 2 ] && return 1
-    echo "$(($1 ** $2))"
-}
 
 #' Shift the first parameter to the left by the number given in the second parameter
 shl() {
@@ -529,8 +559,7 @@ createpatch() {
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Create a patch given two file names\n'
     elif [ -f "$1" ] && [ -f "$2" ]; then
-        curdir="$(dirname "${BASH_SOURCE[0]}")"
-        diff -u "$1" "$2" > "${curdir}/patch.diff"
+        diff -u "$1" "$2" > "$(pwd)/patch.diff"
     fi
 }
 
@@ -853,25 +882,3 @@ updatexdg() {
     [ -x "$(command -v update-desktop-database)" ] && update-desktop-database "${HOME}/.local/share/applications/"
     [ -x "$(command -v update-mime-database)" ] && update-mime-database "${HOME}/.local/share/mime/"
 }
-
-
-# AUTOCOMPLETE #
-
-
-if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
-    # Source/Import the Bash autocompletion feature
-    if [ -r /etc/bash_completion ]; then
-        . /etc/bash_completion
-    elif [ -r /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-    fi
-    # Autocomplete make targets
-    if [ -n "$(command -v make)" ]; then
-        _make_target_tmp() { make -pqs | sed '/^.+:=.*$/d; /^#.*$/d; /^\-.*$/d;' | grep -o -E '^[a-zA-Z0-9_\-]+:.*$' | cut -d ':' -f 1 | awk "/^${1}/"; }
-        _make_target_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; _make_target_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
-        if [ -n "$(command -v _make_autocomplete)" ]; then
-            complete -F _make_target_autocomplete -o nospace make
-            readonly -f _make_target_autocomplete
-        fi
-    fi
-fi
