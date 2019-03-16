@@ -4,16 +4,27 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Shell RC script providing aliases for various AWS commands
 #' @file aws_rc.sh
-#' @version 2018.12.28
+#' @version 2019.03.16
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+#' @section INSTALL_AWSCLI
+#' To install AWSCLI on Ubuntu with Docker (to upload Docker images to ECR), use the below commands
+#' sudo -H pip3 install awscli botocore
+#' aws configure
+#' sudo usermod -a -G docker "${USER}"
+#' sudo service docker restart
+#' @section ADD_EASY_CLI_LOGIN
+#' To add an easy command that will make logging into the AWSCLI easy, edit the below commands and place it in `~/.bashrc` or an equivalent file
+#' alias aws_login='export AWS_ID="PLACE_ID_HERE"; export AWS_ACCESS_KEY_ID="PLACE_ACCESS_KEY_HERE"; export AWS_SECRET_ACCESS_KEY="PLACE_SECRET_ACCESS_KEY_HERE"; export AWS_REGION="PLACE_REGION_HERE"; export AWS_PROFILE="default"; export ECR_REPO="${AWS_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/"; export ECR_BUCKET="PLACE_BUCKET_NAME_HERE"; aws configure --profile "${AWS_PROFILE}" && $(aws ecr get-login --no-include-email --region "${AWS_REGION}" --profile "${AWS_PROFILE}"); aws_refresh'
 
 
 if [ -x "$(command -v aws)" ]; then
 
 
-#' Synchronize the system's time with Amazon's NTP server
-alias awstime='sudo ntpdate 0.amazon.pool.ntp.org; sudo ntpdate 0.amazon.pool.ntp.org; sudo hwclock -w'
+if [ -x "$(command -v ntpdate)" ] && [ -x "$(command -v hwclock)" ]; then
+    #' Synchronize the system's time with Amazon's NTP server
+    alias awstime='sudo ntpdate 0.amazon.pool.ntp.org; sudo ntpdate 0.amazon.pool.ntp.org; sudo hwclock --systohc'
+fi
 
 
 # AWS BATCH #
@@ -496,10 +507,8 @@ s3cpdir() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
     else
-        PATHNAME="${1}"
-        DESTNAME="${2}"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${PATHNAME}/"
-        [[ ! "$DESTNAME" =~ ^.+/$ ]] && DESTNAME="${DESTNAME}/"
+        PATHNAME="${1%/}/"
+        DESTNAME="${2%/}/"
         if [[ ! "$PATHNAME" =~ ^s3://.+$ ]] && [[ ! "$DESTNAME" =~ ^s3://.+$ ]]; then
             printf 'ERROR: An S3 URI is required (no "s3://" found)!\n' >&2
         else
@@ -515,9 +524,7 @@ s3cpdir() {
 #' @param[in] $1 S3 path without "s3:/"
 s3ls() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1:-}"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
-        aws s3 ls "s3:/${PATHNAME}" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+        aws s3 ls "s3:/${1%/}/" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
     else
         aws s3 ls "s3://" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
     fi
@@ -530,9 +537,7 @@ s3ls() {
 #' @param[in] $1 S3 path without "s3:/"
 s3ll() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1}"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
-        aws s3 ls --human-readable --summarize "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
+        aws s3 ls --human-readable --summarize "s3:/${1%/}/" | sed 's|^[ tab]*||'
     else
         aws s3 ls --human-readable --summarize "s3://" | sed 's|^[ tab]*||'
     fi
@@ -545,9 +550,7 @@ s3ll() {
 #' @param[in] $1 S3 path without "s3:/"
 s3lr() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1}"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
-        aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
+        aws s3 ls --recursive "s3:/${1%/}/" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
     else
         aws s3 ls --recursive "s3://" | sed 's|^[ tab]*||; s|   | |g; s|  | |g; s|  | |g' | cut -d ' ' -f 4
     fi
@@ -560,9 +563,7 @@ s3lr() {
 #' @param[in] $1 S3 path without "s3:/"
 s3llr() {
     if [ -n "${1:-}" ]; then
-        PATHNAME="${1}"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
-        aws s3 ls --recursive "s3:/${PATHNAME}" | sed 's|^[ tab]*||'
+        aws s3 ls --recursive "s3:/${1%/}/" | sed 's|^[ tab]*||'
     else
         aws s3 ls --recursive "s3://" | sed 's|^[ tab]*||'
     fi
@@ -578,9 +579,7 @@ s3rename() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'ERROR: Two parameters are required (s3rename PATHNAME NEW_NAME)!\n' >&2
     else
-        PATHNAME="$(dirname "${1}")"
-        [[ ! "$PATHNAME" =~ ^.+/$ ]] && PATHNAME="${1}/"
-        aws s3 mv "s3:/${PATHNAME}" "${2}"
+        aws s3 mv "s3:/$(dirname "${1}")/" "${2}"
     fi
 }
 
@@ -595,13 +594,9 @@ upload2bucket() {
     if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
         printf 'At least two parameters are required!\n' >&2
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ]; then
-        bucket_path="${1}"
-        [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'
-        aws s3 cp "${2}" "${bucket_path}${2##*/}"
+        aws s3 cp "${2}" "${1%/}/${2##*/}"
     elif [ ! -z "${1:-}" ] && [ ! -z "${2:-}" ] && [ ! -z "${3:-}" ]; then
-        bucket_path="${1}"
-        [[ ! "${1}" =~ ^.+/$ ]] && bucket_path+='/'
-        aws s3 cp "${2}" "${bucket_path}${3}"
+        aws s3 cp "${2}" "${1%/}/${3}"
     fi
 }
 
