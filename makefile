@@ -95,70 +95,76 @@ override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -
 
 
 help :
-	@printf '\n\x1b[1;4;33m%s\x1b[0m\n\n' '* COMPILATION INSTRUCTIONS *'
-	printf '%s\n%s\n' 'Everything:' '    make all'
-	printf '%s\n%s\n' 'Everything (using Clang):' '    make all USECLANG=5.0  # Specify version'
-	printf '%s\n%s\n' 'Strip Binaries:' '    make strip'
-	printf '\n%s\n%s\n\n' 'Enable Pthread:' '    make all PTHREAD=1'
-	printf '%s\n%s\n%s\n' 'Particular Architechure:' '    make all ARCH=intel' '    make all ARCH=intel BITS=64'
-	printf '%s\n%s\n\n' '    make all ARCH=haswell' '    make all ARCH=armv7'
-	printf '%s\n%s\n%s\n' 'Cross-Compile:' '    make all CROSS_COMPILE=armhf' '    make all CROSS_COMPILE=x86-64'
-	printf '%s\n%s\n%s\n' '    make all CROSS_COMPILE=android' '    make all CROSS_COMPILE=rpi' '    NOTE: Windows may not be fully supported'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* INSTALL/UNINSTALL *'
-	printf '%s\n%s\n' 'Install:' '    sudo make install'
-	printf '%s\n%s\n' 'Uninstall:' '    sudo make uninstall'
-	printf '%s\n%s\n' 'Install /usr/bin Utils:' '    sudo make install_programs'
-	printf '%s\n%s\n' 'Install Additional Mimetypes:' '    sudo make install_mimetype_booster'
-	printf '%s\n%s\n' 'Install C Libraries:' '    sudo make install_clib'
-	printf '%s\n%s\n' 'Install Enhanced XCompose File:' '    make install_xcompose'
-	printf '%s\n%s\n' 'Install Language Specification Files:' '    sudo make install_langspecs'
-	printf '%s\n%s\n' 'Install NanoRC Files:' '    sudo make install_nanorc'
-	printf '%s\n%s\n' 'Install Opticons:' '    sudo make install_opticons'
-	printf '%s\n%s\n' 'Install Python Eggs:' '    sudo make install_pyeggs'
-	printf '%s\n%s\n' 'Install Python Libraries:' '    sudo make install_pylib'
-	printf '%s\n%s\n' 'Install Scripts:' '    sudo make install_scripts'
-	printf '%s\n%s\n' 'Install System Shell Profile:' '    sudo make install_shrc'
-	printf '%s\n%s\n' 'Install Themes & Icons:' '    sudo make install_themes'
-	printf '%s\n%s\n' 'Install Thunar Custom Actions:' '    sudo make install_uca'
-	printf '%s\n%s\n' 'Install XKB Files:' '    sudo make install_xkb'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* PROJECT MANAGEMENT *'
-	printf '%s\n%s\n' 'Backup Project:' '    make backup'
-	printf '%s\n%s\n' 'Create 7z Backup:' '    make pkg7z'
-	printf '%s\n%s\n' 'Create Zip Backup:' '    make pkgzip'
-	printf '%s\n%s\n' 'Fix File Permissions:' '    make fixperm'
-	printf '%s\n%s\n' 'Generate CTags:' '    make ctags'
-	printf '%s\n%s\n' 'Generate All Documentation:' '    make doc'
-	printf '%s\n%s\n' 'Generate C Documentation:' '    make docc'
-	printf '%s\n%s\n' 'Generate Python Documentation:' '    make docpy'
-	printf '%s\n%s\n' 'Package Release:' '    make pkg'
-	printf '%s\n%s\n' 'Refresh Files (cleanall, fixperm, & upver):' '    make refresh'
-	printf '%s\n%s\n' 'Syncronize Version Numbers:' '    make upver'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* CLEAN *'
-	printf '%s\n%s\n' 'Clean Everything and Documentation:' '    make cleanfull'
-	printf '%s\n%s\n' 'Clean Temp, Object, Cache, and Binary Files:' '    make cleanall'
-	printf '%s\n%s\n' 'Remove Documentation:' '    make cleandoc'
-	printf '%s\n%s\n' 'Remove Cache Files:' '    make rmcache'
-	printf '%s\n%s\n' 'Remove Temp and Object Files:' '    make rmtmp'
-	printf '%s\n%s\n' 'Remove Temp, Object, and Cache Files:' '    make clean'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* GIT *'
-	printf '%s\n%s\n' 'Add Files to Git:' '    make addgit'
-	printf '%s\n%s\n' 'Commit Changes to Git:' '    make commit'
-	printf '%s\n%s\n' 'Push Changes to Git:' '    make push'
-	printf '%s\n%s\n' 'Get Git Project Status:' '    make stat'
-	printf '%s\n%s\n' 'Clean Git Project:' '    make cleangit'
-	printf '%s\n%s\n' 'Dry-run Clean Git Project:' '    make previewcleangit'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* MISCELLANEOUS *'
-	printf '%s\n%s\n' 'Fix various Nvidia issues:' '    sudo make fix_nvidia'
-	printf '%s\n%s\n' 'Create geolocation files under `/etc/`:' '    sudo make install_geofiles'
-	printf '%s\n%s\n' 'Remove geolocation files under `/etc/`:' '    sudo make uninstall_geofiles'
-	printf '%s\n%s\n' 'Update geolocation files under `/etc/`:' '    sudo make update_geofiles'
-	printf '%s\n%s\n' 'Make the system more like OSX:' '    sudo make macify'
-	printf '%s\n%s\n' 'Undo the effects of `macify`:' '    sudo make unmacify'
-	printf '%s\n%s\n' 'Make the system more secure:' '    sudo make secure'
-	printf '%s\n%s\n' 'Fix the Thunar Archive Plugin (TAP):' '    sudo make fix_thunar_tap'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* VARIABLES *'
-	printf '%s\n%s\n%s\n' 'OS=string' '    POSIX: Linux, Unix, BSD, etc.' '    ANDROID: Android'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* ENABLE/DISABLE FEATURES/CODE *'
+	@printf '\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'COMPILATION INSTRUCTIONS'
+	printf '%s\n\t%s\n' 'Everything:' 'make all'
+	printf '%s\n\t%s\n' 'Everything (using Clang):' 'make all USECLANG=5.0  # Specify version'
+	printf '%s\n\t%s\n' 'Strip Binaries:' 'make strip'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'INSTALL/UNINSTALL'
+	printf '%s\n\t%s\n' 'Install:' 'sudo make install'
+	printf '%s\n\t%s\n' 'Uninstall:' 'sudo make uninstall'
+	printf '%s\n\t%s\n' '/usr/bin Utils:' 'sudo make install_programs'
+	printf '%s\n\t%s\n' 'Additional Mimetypes:' 'sudo make install_mimetype_booster'
+	printf '%s\n\t%s\n' 'C Libraries:' 'sudo make install_clib'
+	printf '%s\n\t%s\n' 'Enhanced XCompose File:' 'make install_xcompose'
+	printf '%s\n\t%s\n' 'Language Specification Files:' 'sudo make install_langspecs'
+	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
+	printf '%s\n\t%s\n' 'Opticons:' 'sudo make install_opticons'
+	printf '%s\n\t%s\n' 'Python Eggs:' 'sudo make install_pyeggs'
+	printf '%s\n\t%s\n' 'Python Libraries:' 'sudo make install_pylib'
+	printf '%s\n\t%s\n' 'Scripts:' 'sudo make install_scripts'
+	printf '%s\n\t%s\n' 'System Shell Profile:' 'sudo make install_shrc'
+	printf '\t • %s\n' 'nogeo=1: Do not create geofiles under `/etc/` and disable geolocation features in `profile`'
+	printf '\t • %s\n' 'nogeo=0: Enable and install geolocation features and files (Default)'
+	printf '\t • %s\n' 'nogeo=-1: Do not create geofiles under `/etc/`, but enable geolocation features in `profile`'
+	printf '\t • %s\n' 'nogeo=-2: Create geofiles under `/etc/`, but disable geolocation features in `profile`'
+	printf '%s\n\t%s\n' 'Themes & Icons:' 'sudo make install_themes'
+	printf '%s\n\t%s\n' 'Thunar Custom Actions:' 'sudo make install_uca'
+	printf '%s\n\t%s\n' 'XKB Files:' 'sudo make install_xkb'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'PROJECT MANAGEMENT'
+	printf '%s\n\t%s\n' 'Backup Project:' 'make backup'
+	printf '%s\n\t%s\n' 'Create 7z Backup:' 'make pkg7z'
+	printf '%s\n\t%s\n' 'Create Zip Backup:' 'make pkgzip'
+	printf '%s\n\t%s\n' 'Fix File Permissions:' 'make fixperm'
+	printf '%s\n\t%s\n' 'Generate CTags:' 'make ctags'
+	printf '%s\n\t%s\n' 'Generate All Documentation:' 'make doc'
+	printf '%s\n\t%s\n' 'Generate C Documentation:' 'make docc'
+	printf '%s\n\t%s\n' 'Generate Python Documentation:' 'make docpy'
+	printf '%s\n\t%s\n' 'Package Release:' 'make pkg'
+	printf '%s\n\t%s\n' 'Refresh Files (cleanall, fixperm, & upver):' 'make refresh'
+	printf '%s\n\t%s\n' 'Synchronize Version Numbers:' 'make upver'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'CLEAN'
+	printf '%s\n\t%s\n' 'Clean Everything and Documentation:' 'make cleanfull'
+	printf '%s\n\t%s\n' 'Clean Temp, Object, Cache, and Binary Files:' 'make cleanall'
+	printf '%s\n\t%s\n' 'Remove Documentation:' 'make cleandoc'
+	printf '%s\n\t%s\n' 'Remove Cache Files:' 'make rmcache'
+	printf '%s\n\t%s\n' 'Remove Temp and Object Files:' 'make rmtmp'
+	printf '%s\n\t%s\n' 'Remove Temp, Object, and Cache Files:' 'make clean'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'GIT'
+	printf '%s\n\t%s\n' 'Add Files to Git:' 'make addgit'
+	printf '%s\n\t%s\n' 'Commit Changes to Git:' 'make commit'
+	printf '%s\n\t%s\n' 'Push Changes to Git:' 'make push'
+	printf '%s\n\t%s\n' 'Get Git Project Status:' 'make stat'
+	printf '%s\n\t%s\n' 'Clean Git Project:' 'make cleangit'
+	printf '%s\n\t%s\n' 'Dry-run Clean Git Project:' 'make previewcleangit'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'MISCELLANEOUS'
+	printf '%s\n\t%s\n' 'Fix various Nvidia issues:' 'sudo make fix_nvidia'
+	printf '%s\n\t%s\n' 'Enable geolocation features in `profile`:' 'sudo make enable_geofiles'
+	printf '%s\n\t%s\n' 'Disable geolocation features in `profile`:' 'sudo make disable_geofiles'
+	printf '%s\n\t%s\n' 'Create geolocation files under `/etc/`:' 'sudo make install_geofiles'
+	printf '%s\n\t%s\n' 'Remove geolocation files under `/etc/`:' 'sudo make uninstall_geofiles'
+	printf '%s\n\t%s\n' 'Update geolocation files under `/etc/`:' 'sudo make update_geofiles'
+	printf '%s\n\t%s\n' 'Make the system more like OSX:' 'sudo make macify'
+	printf '%s\n\t%s\n' 'Undo the effects of `macify`:' 'sudo make unmacify'
+	printf '%s\n\t%s\n' 'Make the system more secure:' 'sudo make secure'
+	printf '%s\n\t%s\n' 'Fix the Thunar Archive Plugin (TAP):' 'sudo make fix_thunar_tap'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'VARIABLES'
+	printf '%s\n • %s\n • %s\n • %s\n' 'Specify OS:' 'OS=ANDROID' 'OS=LINUX' 'OS=POSIX'
+	printf '%s\n • %s\n • %s\n' 'Specify Architechure:' 'ARCH=armv7' 'ARCH=haswell'
+	printf ' • %s\n • %s\n • %s\n' 'ARCH=intel' 'ARCH=intel BITS=64' 'ARCH=skylake'
+	printf '%s\n • %s\n • %s\n' 'Cross-Compile:' 'CROSS_COMPILE=android' 'CROSS_COMPILE=armhf'
+	printf ' • %s\n • %s\n • %s\n' 'CROSS_COMPILE=rpi' 'CROSS_COMPILE=x86-64' 'NOTE: Windows may not be fully supported'
+	printf '%s\n' 'Enable Pthread: PTHREAD=1'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'ENABLE/DISABLE CODE & FEATURES'
 	printf '%s\n' '-DENABLE_BEOS_MACROS: Enable BeOS macros'
 	printf '%s\n' '-DENABLE_ELF_HEADERS: Enable ELF headers containing macros, datatypes, etc.'
 	printf '%s\n' '-DENABLE_EMBEDDED_DEVICE_DATATYPES: Enable embedded device datatypes'
@@ -168,7 +174,7 @@ help :
 	printf '%s\n' '-DENABLE_PRTYPES: Enable prtypes'
 	printf '%s\n' '-DENABLE_XNU_DATATYPES: Enable XNU datatypes'
 	printf '%s\n' '-DDISABLE_ANSI_SGR: Disable ANSI SGR features'
-	printf '\n\n\x1b[1;4;33m%s\x1b[0m\n\n' '* TWEAK PRINTF *'
+	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'TWEAK PRINTF'
 	printf '%s\n' '-DNO_PRINT_ACTION: Disable the `%n` (printf action) symbol'
 	printf '%s\n' '-DNO_PRINT_M: Disable the `%m` (error code) symbol'
 	printf '%s\n' '-DNO_PRINT_CHARS: Disable all character-related symbols'
@@ -208,7 +214,7 @@ default :
 # Uninstall
 .PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
-.PHONY : fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
+.PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
 
 
 # BUILD COMMANDS #
@@ -466,15 +472,23 @@ fix_thunar_tap :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	if [ -d /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/ ]; then $(LNDIR) /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/file-roller.tap /usr/lib/x86_64-linux-gnu/thunar-archive-plugin/org.gnome.FileRoller.tap; fi
 
+enable_geofiles :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ -f /etc/geoprofile_disable ] && $(RM) /etc/geoprofile_disable) || true
+
+disable_geofiles :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ ! -f /etc/geoprofile_disable ] && touch /etc/geoprofile_disable) || true
+
 install_geofiles :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	[ ! -f /etc/area_code ] && ./scripts/webget ipinfo.io/phone > /etc/area_code
-	[ ! -f /etc/city ] && ./scripts/webget ipinfo.io/city > /etc/city
-	[ ! -f /etc/country ] && ./scripts/webget ipinfo.io/country > /etc/country
-	[ ! -f /etc/isp ] && ./scripts/webget ipinfo.io/isp > /etc/isp
-	[ ! -f /etc/location ] && ./scripts/webget ipinfo.io/loc > /etc/location
-	[ ! -f /etc/postal ] && ./scripts/webget ipinfo.io/postal > /etc/postal
-	[ ! -f /etc/region ] && ./scripts/webget ipinfo.io/region > /etc/region
+	([ ! -f /etc/area_code ] && ./scripts/webget ipinfo.io/phone > /etc/area_code) || true
+	([ ! -f /etc/city ] && ./scripts/webget ipinfo.io/city > /etc/city) || true
+	([ ! -f /etc/country ] && ./scripts/webget ipinfo.io/country > /etc/country) || true
+	([ ! -f /etc/isp ] && ./scripts/webget ipinfo.io/isp > /etc/isp) || true
+	([ ! -f /etc/location ] && ./scripts/webget ipinfo.io/loc > /etc/location) || true
+	([ ! -f /etc/postal ] && ./scripts/webget ipinfo.io/postal > /etc/postal) || true
+	([ ! -f /etc/region ] && ./scripts/webget ipinfo.io/region > /etc/region) || true
 
 update_geofiles : uninstall_geofiles install_geofiles
 
@@ -716,8 +730,25 @@ uninstall_scripts :
 	# Uninstall ManPages
 	for page in $(addsuffix .1.gz, $(LIST_SCRIPT_PROGRAMS)) $(addsuffix .1.gz, $(LIST_DEV_SCRIPTS)) $(addsuffix .1.gz, $(LIST_PYTHON_SCRIPTS)); do if [ -f "$(MANPAGEDIR)/man1/$${page}" ]; then $(RM) "$(MAN1DIR)/man1/$${page}"; else continue; fi; done
 
-install_shrc :
+ifdef nogeo
+    ifeq ($(nogeo),1)
+        override geodeps::=disable_geofiles
+    else ifeq ($(nogeo),0)
+        override geodeps::=enable_geofiles install_geofiles
+    else ifeq ($(nogeo),-1)
+        override geodeps::=enable_geofiles
+    else ifeq ($(nogeo),-2)
+        override geodeps::=disable_geofiles install_geofiles
+    else
+        override geodeps::=enable_geofiles install_geofiles
+    endif
+else
+    override geodeps::=enable_geofiles install_geofiles
+endif
+
+install_shrc : $(geodeps)
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Shell Profiles ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	# Backup existing files
 	([ -f /etc/bash.bashrc.backup ] && $(RM) /etc/bash.bashrc.backup) || true
