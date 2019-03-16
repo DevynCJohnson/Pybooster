@@ -7,6 +7,10 @@
 #' @version 2018.12.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+#'
+#' @section GEOLOCATION
+#' To disable the geolocation features included in this file, create the file `/etc/geoprofile_disable`
+#'
 #' @section SYMBOLS
 #' ${var#pattern} - Removes smallest string from the left side that matches `pattern`
 #' ${var##pattern} - Removes the largest string from the left side that matches `pattern`
@@ -662,65 +666,69 @@ runmultitask() {
 # SPECIAL GLOBALS #
 
 
-if [ -z "${AREA_CODE:-}" ]; then
-    if [ -f /etc/phone ]; then
-        AREA_CODE="$(cat /etc/phone)"
-    else
-        AREA_CODE="$(httpget ipinfo.io/phone)"
+if [ ! -f /etc/geoprofile_disable ]; then
+
+    if [ -z "${AREA_CODE:-}" ]; then
+        if [ -f /etc/area_code ]; then
+            AREA_CODE="$(cat /etc/area_code)"
+        else
+            AREA_CODE="$(httpget ipinfo.io/phone)"
+        fi
     fi
-fi
 
-if [ -z "${COUNTRY:-}" ]; then
-    if [ -f /etc/country ]; then
-        COUNTRY="$(cat /etc/country)"
-    else
-        COUNTRY="$(httpget ipinfo.io/country)"
+    if [ -z "${CITY:-}" ]; then
+        if [ -f /etc/city ]; then
+            CITY="$(cat /etc/city)"
+        else
+            CITY="$(httpget ipinfo.io/city)"
+        fi
     fi
-fi
 
-if [ -z "${CITY:-}" ]; then
-    if [ -f /etc/city ]; then
-        CITY="$(cat /etc/city)"
-    else
-        CITY="$(httpget ipinfo.io/city)"
+    if [ -z "${COUNTRY:-}" ]; then
+        if [ -f /etc/country ]; then
+            COUNTRY="$(cat /etc/country)"
+        else
+            COUNTRY="$(httpget ipinfo.io/country)"
+        fi
     fi
-fi
 
-if [ -z "${ISP:-}" ]; then
-    if [ -f /etc/isp ]; then
-        ISP="$(cat /etc/isp)"
-    else
-        ISP="$(httpget ipinfo.io/org | cut -d ' ' -f 2-)"
+    if [ -z "${ISP:-}" ]; then
+        if [ -f /etc/isp ]; then
+            ISP="$(cat /etc/isp)"
+        else
+            ISP="$(httpget ipinfo.io/org | cut -d ' ' -f 2-)"
+        fi
     fi
-fi
 
-if [ -z "${LOCATION:-}" ]; then
-    if [ -f /etc/loc ]; then
-        LOCATION="$(cat /etc/loc)"
-    else
-        LOCATION="$(httpget ipinfo.io/loc)"
+    if [ -z "${LOCATION:-}" ]; then
+        if [ -f /etc/location ]; then
+            LOCATION="$(cat /etc/location)"
+        else
+            LOCATION="$(httpget ipinfo.io/loc)"
+        fi
     fi
-fi
 
-if [ -z "${POSTAL:-}" ]; then
-    if [ -f /etc/postal ]; then
-        POSTAL="$(cat /etc/postal)"
-    else
-        POSTAL="$(httpget ipinfo.io/postal)"
+    if [ -z "${POSTAL:-}" ]; then
+        if [ -f /etc/postal ]; then
+            POSTAL="$(cat /etc/postal)"
+        else
+            POSTAL="$(httpget ipinfo.io/postal)"
+        fi
     fi
-fi
 
-if [ -z "${REGION:-}" ]; then
-    if [ -f /etc/region ]; then
-        REGION="$(cat /etc/region)"
-    else
-        REGION="$(httpget ipinfo.io/region)"
+    if [ -z "${REGION:-}" ]; then
+        if [ -f /etc/region ]; then
+            REGION="$(cat /etc/region)"
+        else
+            REGION="$(httpget ipinfo.io/region)"
+        fi
     fi
+
+
+    #' Print the physical location of the system
+    mygeo() { printf 'Location: %s\nCountry: %s\nRegion: %s\nCity: %s\nZip Code: %s\nPhone Area Code: %s\n' "$LOCATION" "$COUNTRY" "$REGION" "$CITY" "$POSTAL" "$AREA_CODE"; }
+
 fi
-
-
-#' Print the physical location of the system
-mygeo() { printf 'Location: %s\nConuntry: %s\nRegion: %s\nCity: %s\Zip Code: %s\nPhone Area Code: %s\n' "$LOCATION" "$COUNTRY" "$REGION" "$CITY" "$POSTAL" "$AREA_CODE"; }
 
 
 # LOAD SHELL RC MODULES #
