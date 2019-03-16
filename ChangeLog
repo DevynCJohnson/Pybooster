@@ -1,3 +1,21 @@
+2019-03-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* aws_rc.sh:  Optimized & fixed some code
+	* docker_rc.sh:  Optimized & fixed some code & renamed many of the aliases & functions
+	* extras_rc.sh:  Optimized & fixed some code
+	* Geany:  Added the SIL license to the templates
+	* getsysinfo:  Added more information collecting for storage devices
+	* makefile:  Added the ability to disable geolocation features & improved the formatting of `help`
+	* profile:  Added the ability to disable geolocation features by creating the file /etc/geoprofile_disable
+	* profile:  Fixed bugs relating to the geographical information
+	* PyBooster:  Added the no_debugging_rc.sh shell-RC file
+	* usx:  Added the "Reverse Pilcrow" (U204B) & "Bullet" (U2022)
+	* usx:  Added the "Section Sign" (U00A7)
+
+2019-03-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added the `Dockerfile` template
+
 2019-03-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* code-analysis:  Minor changes
