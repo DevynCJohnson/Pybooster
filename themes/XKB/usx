@@ -277,10 +277,10 @@ default alphanumeric_keys alternate_group xkb_symbols "default" {
     key <AC08> { symbols = [k, K, Greek_sigma, Greek_SIGMA, Cyrillic_el, Cyrillic_EL] };
     key <AC09> { symbols = [l, L, Greek_lambda, Greek_LAMBDA, Cyrillic_de, Cyrillic_DE] };
     key <AC10> { type = "SIX_LEVEL", symbols = [semicolon, colon, paragraph, degree, Cyrillic_zhe, Cyrillic_ZHE] };
-    key <AC11> { type = "SIX_LEVEL", symbols = [apostrophe, quotedbl, U00A7, NoSymbol, Cyrillic_e, Cyrillic_E] };
+    key <AC11> { type = "SIX_LEVEL", symbols = [apostrophe, quotedbl, U00A7, U204B, Cyrillic_e, Cyrillic_E] };  // SECTION SIGN, REVERSE PILCROW SIGN
     // Row 2/B
     key <AB01> { symbols = [z, Z, ae, AE, Cyrillic_ya, Cyrillic_YA] };
-    key <AB02> { symbols = [x, X, NoSymbol, Greek_XI, Cyrillic_che, Cyrillic_CHE] };
+    key <AB02> { symbols = [x, X, U2022, Greek_XI, Cyrillic_che, Cyrillic_CHE] };  // BULLET
     key <AB03> { symbols = [c, C, copyright, cent, Cyrillic_es, Cyrillic_ES] };
     key <AB04> { symbols = [v, V, Greek_OMEGA, Greek_omega, Cyrillic_em, Cyrillic_EM] };
     key <AB05> { symbols = [b, B, Greek_beta, Greek_BETA, Cyrillic_i, Cyrillic_I] };
