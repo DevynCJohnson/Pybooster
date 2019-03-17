@@ -1,10 +1,13 @@
 2019-03-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Optimized & fixed some code
+	* cleansystem:  Added some more cleaners
 	* docker_rc.sh:  Optimized & fixed some code & renamed many of the aliases & functions
+	* extras_rc.sh:  Added `lsclocks`
 	* extras_rc.sh:  Optimized & fixed some code
 	* Geany:  Added the SIL license to the templates
 	* getsysinfo:  Added more information collecting for storage devices
+	* getsysinfo:  Disabled `inxi` due to some buffering issue & added `dmidecode`
 	* makefile:  Added the ability to disable geolocation features & improved the formatting of `help`
 	* profile:  Added the ability to disable geolocation features by creating the file /etc/geoprofile_disable
 	* profile:  Fixed bugs relating to the geographical information
