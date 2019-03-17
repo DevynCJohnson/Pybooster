@@ -125,6 +125,7 @@ if [ "$(id -u)" -eq 0 ] && [ -f /proc/sys/vm/drop_caches ]; then
 fi
 [ -x "$(command -v swapon)" ] && alias freeswap='sudo swapoff -a && sleep 2 && sudo swapon -a'
 alias killjobs='kill "$(jobs -ps)" 2> /dev/null'
+[ -f /sys/devices/system/clocksource/clocksource0/available_clocksource ] && alias lsclocks='cat /sys/devices/system/clocksource/clocksource0/available_clocksource'
 alias lsmount='mount | column -t'
 [ -x "$(command -v free)" ] && alias meminfo='free -m -l -t'
 [ -x "$(command -v xset)" ] && alias monitoroff='xset dpms force off'
