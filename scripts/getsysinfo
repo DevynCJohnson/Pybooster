@@ -16,15 +16,9 @@ if [ ! "$(id -u)" -eq 0 ]; then
     exec sudo -- "$0"
     exit $?
 fi
-readonly FILE="/tmp/System_Information.txt"
+readonly FILE='/tmp/System_Information.txt'
 
 [ ! "$(id -u)" -eq 0 ] && printf 'Root permissions are required!\n' >&2 && exit 1
-
-if [ -x "$(command -v inxi)" ]; then
-    _ispresent_inxi=1
-else
-    _ispresent_inxi=0
-fi
 
 
 # GENERAL INFO #
@@ -64,12 +58,12 @@ elif [ -r /etc/lsb-release ]; then
     cat /etc/lsb-release >> "$FILE"
 elif [ -x "$(command -v lsb_release)" ]; then
     lsb_release --all >> "$FILE"
-elif [ "$_ispresent_inxi" -eq 1 ]; then
-    printf '%s\n' "$(inxi -c 0 -M -S -x -x -x)" >> "$FILE"
+# elif [ -x "$(command -v inxi)" ]; then
+#     printf '%s\n' "$(inxi -c 0 -M -S -x -x -x)" >> "$FILE"
 fi
 [ -x "$(command -v grub-install)" ] && printf '%s\n' "$(grub-install --version)" >> "$FILE"
 [ -x "$(command -v lshw)" ] && printf '%s\n' "$(lshw -C system)" >> "$FILE"
-[ -n "$(command -v systemctl)" ] && printf '\nSystemctl Enabled Services:\n%s\n' "$(systemctl list-unit-files | grep -F enabled)" >> "$FILE"
+[ -n "$(command -v systemctl)" ] && printf '\nSystemctl Services:\n%s\n' "$(systemctl list-unit-files)" >> "$FILE"
 
 
 # KERNEL INFO #
@@ -89,14 +83,15 @@ fi
 
 printf '\n\n# CPU INFO #\n\n\n' >> "$FILE"
 [ -x "$(command -v lscpu)" ] && printf '%s\n' "$(lscpu)" >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -C -f -x -x)" >> "$FILE"
-
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t processor)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && inxi -C -f -x -x --output-file print > /tmp/INXI.txt
+echo 'HERE'
 
 # GPU INFO #
 
 
 printf '\n\n# GPU INFO #\n\n\n' >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -G -x -x -x)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -G -x -x -x)" >> "$FILE"
 [ -x "$(command -v nvidia-smi)" ] && printf '%s\n%s\n' "$(nvidia-smi -L)" "$(nvidia-smi)" >> "$FILE"
 
 
@@ -104,7 +99,9 @@ printf '\n\n# GPU INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# MEMORY INFO #\n\n\n' >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -m -x -x -x)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t cache)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t memory)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -m -x -x -x)" >> "$FILE"
 [ -x "$(command -v vmstat)" ] && printf '%s\n' "$(vmstat -a -n -s)" >> "$FILE"
 [ -f /proc/meminfo ] && printf '%s\n' "$(cat /proc/meminfo)" >> "$FILE"
 [ -x "$(command -v lsmem)" ] && printf '%s\n' "$(lsmem -a)" >> "$FILE"
@@ -114,6 +111,12 @@ printf '\n\n# MEMORY INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# HARDWARE INFO #\n\n\n' >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t bios)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t chassis)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t baseboard)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t system)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t connector)" >> "$FILE"
+[ -x "$(command -v dmidecode)" ] && printf '%s\n' "$(dmidecode -t slot)" >> "$FILE"
 [ -x "$(command -v lshw)" ] && printf '%s\n\n%s\n\n' "$(lshw)" "$(lshw -quiet -short)" >> "$FILE"
 [ -x "$(command -v lspci)" ] && printf '%s\n\n%s\n\n' "$(lspci)" "$(lspci -k -t -v -v -v)" >> "$FILE"
 [ -x "$(command -v lsusb)" ] && printf '%s\n' "$(lsusb --tree --verbose)" >> "$FILE"
@@ -123,7 +126,7 @@ printf '\n\n# HARDWARE INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# POWER & THERMAL INFO #\n\n\n' >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -B -s -x -x -x)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -B -s -x -x -x)" >> "$FILE"
 [ -x "$(command -v acpi)" ] && printf '%s\n' "$(acpi -i -s -V)" >> "$FILE"
 [ -x "$(command -v sensors)" ] && printf '%s\n' "$(sensors)" >> "$FILE"
 [ -x "$(command -v nvidia-smi)" ] && printf '%s\n' "$(nvidia-smi -q -d "POWER,TEMPERATURE" | awk 'NR > 6')" >> "$FILE"
@@ -133,7 +136,7 @@ printf '\n\n# POWER & THERMAL INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# AUDIO INFO #\n\n\n' >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -A -x -x -x)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -A -x -x -x)" >> "$FILE"
 [ -x "$(command -v pulseaudio)" ] && printf '\nPulseAudio Settings\n%s\n\nPulseAudio Modules\n%s\n\nPulseAudio Resample Methods\n%s\n' "$(pulseaudio --dump-conf)" "$(pulseaudio --dump-modules)" "$(pulseaudio --dump-resample-methods)" >> "$FILE"
 
 
@@ -142,7 +145,7 @@ printf '\n\n# AUDIO INFO #\n\n\n' >> "$FILE"
 
 printf '\n\n# STORAGE INFO #\n\n\n' >> "$FILE"
 [ -n "$(command -v udisksctl)" ] && printf '%s\n' "$(udisksctl status)" >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -D -d -l -o -P -p -R -u -x -x -x)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -D -d -l -o -P -p -R -u -x -x -x)" >> "$FILE"
 [ -n "$(command -v free)" ] && printf '%s\n' "$(free)" >> "$FILE"
 [ -n "$(command -v df)" ] && printf '%s\n' "$(df -a -h)" >> "$FILE"
 [ -f /etc/fstab ] && printf '\nFilesystem Table File:\n%s\n' "$(cat /etc/fstab)" >> "$FILE"
@@ -158,7 +161,7 @@ printf '\n\n# STORAGE INFO #\n\n\n' >> "$FILE"
 
 printf '\n\n# NETWORK INFO #\n\n\n' >> "$FILE"
 [ -n "$(command -v hostname)" ] && printf '%s%s\n' 'Hostname: ' "$(hostname)" >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -i -N -n -x -x -x)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -i -N -n -x -x -x)" >> "$FILE"
 [ -n "$(command -v ifconfig)" ] && printf '%s\n\n' "$(ifconfig -a)" >> "$FILE"
 [ -n "$(command -v netstat)" ] && printf '%s\n' "$(netstat -n -r)" >> "$FILE"
 [ -x "$(command -v nmcli)" ] && printf '\n%s\n' "$(nmcli general status)" >> "$FILE"
@@ -168,7 +171,7 @@ printf '\n\n# NETWORK INFO #\n\n\n' >> "$FILE"
 
 
 printf '\n\n# PACKAGE MANAGEMENT INFO #\n\n\n' >> "$FILE"
-[ "$_ispresent_inxi" -eq 1 ] && printf '%s\n' "$(inxi -c 0 -r)" >> "$FILE"
+# [ -x "$(command -v inxi)" ] && printf '%s\n' "$(inxi -c 0 -r)" >> "$FILE"
 if [ -x "$(command -v dpkg)" ]; then
     printf 'Default Architecture: %s\n' "$(dpkg --print-architecture)" >> "$FILE"
     printf 'Supported Architectures: %s\n' "$(dpkg --print-foreign-architectures)" >> "$FILE"
@@ -179,17 +182,17 @@ fi
 
 
 printf '\n\n# LIBRARY INFO #\n\n\n' >> "$FILE"
-[ -x "$(command -v gcc)" ] && printf '\u2192 %s\n' "$(gcc --version)" >> "$FILE"
-[ -x "$(command -v bash)" ] && printf '\u2192 %s\n' "$(bash --version)" >> "$FILE"
-[ -x "$(command -v zsh)" ] && printf '\u2192 %s\n' "$(zsh --version)" >> "$FILE"
-[ -x "$(command -v npm)" ] && printf '\u2192 %s\n' "$(npm version)" >> "$FILE"
-[ -x "$(command -v ocamlrun)" ] && printf '\u2192 %s\n' "$(ocamlrun -version)" >> "$FILE"
-[ -x "$(command -v perl)" ] && printf '\u2192 %s\n' "$(perl --version)" >> "$FILE"
-[ -x "$(command -v php)" ] && printf '\u2192 %s\n' "$(php --version)" >> "$FILE"
-[ -x "$(command -v pip3)" ] && printf '\u2192 %s\n' "$(pip3 --version)" >> "$FILE"
-[ -x "$(command -v python3)" ] && printf '\u2192 %s\n' "$(python3 --version)" >> "$FILE"
-[ -x "$(command -v ruby)" ] && printf '\u2192 %s\n' "$(ruby --version)" >> "$FILE"
-[ -x "$(command -v ldd)" ] && printf '\u2192 %s\n' "$(ldd --version)" >> "$FILE"
+[ -x "$(command -v gcc)" ] && printf '>>> %s\n' "$(gcc --version)" >> "$FILE"
+[ -x "$(command -v bash)" ] && printf '>>> %s\n' "$(bash --version)" >> "$FILE"
+[ -x "$(command -v zsh)" ] && printf '>>> %s\n' "$(zsh --version)" >> "$FILE"
+[ -x "$(command -v npm)" ] && printf '>>> %s\n' "$(npm version)" >> "$FILE"
+[ -x "$(command -v ocamlrun)" ] && printf '>>> %s\n' "$(ocamlrun -version)" >> "$FILE"
+[ -x "$(command -v perl)" ] && printf '>>> %s\n' "$(perl --version)" >> "$FILE"
+[ -x "$(command -v php)" ] && printf '>>> %s\n' "$(php --version)" >> "$FILE"
+[ -x "$(command -v pip3)" ] && printf '>>> %s\n' "$(pip3 --version)" >> "$FILE"
+[ -x "$(command -v python3)" ] && printf '>>> %s\n' "$(python3 --version)" >> "$FILE"
+[ -x "$(command -v ruby)" ] && printf '>>> %s\n' "$(ruby --version)" >> "$FILE"
+[ -x "$(command -v ldd)" ] && printf '>>> %s\n' "$(ldd --version)" >> "$FILE"
 
 
 # GRAPHICS INFO #
