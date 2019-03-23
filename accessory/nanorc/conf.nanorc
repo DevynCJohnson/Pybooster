@@ -7,7 +7,7 @@ color cyan "^.*$"
 
 # NUMBERS #
 
-color brightmagenta "([[:space:]]*|[\<\>(){}=,])[[:space:]]*[\-\+]?[0-9](\.?[0-9])*%?($|\>|\)|,)"
+color brightmagenta "([[:space:]]*|[\<\>(){}=,])[[:space:]]*[\-\+]?[0-9](\.?[0-9])*%?($|\>|\)|,)" "([[:space:]]*|[\<\>(){}=,])[[:space:]]*[\-\+]?0x[0-9A-Fa-f]+"
 
 # BLOCKS #
 
@@ -25,7 +25,7 @@ icolor brightblue "(^|[[:space:]]|=)(default|false|no|none|nul|null|off|on|true|
 
 # KEYS #
 
-icolor brightyellow,blue "^[[:space:]]*(set[[:space:]]+)?[A-Z0-9_\/\.\%@#&:\+\-]+[[:space:]]*([:]|\>)" "^[[:space:]]*(\$if )?([A-Z0-9_\/\.\%@#&:\+\-])+="
+icolor brightyellow,blue "^[[:space:]]*(set[[:space:]]+)?[A-Z0-9_ \!\/\.\%@#&:\+\-]+[[:space:]]*([:]|\>)" "^[[:space:]]*(\$if )?([A-Z0-9_ \!\/\.\%@#&:\+\-])+="
 
 # PUNCTUATION #
 
