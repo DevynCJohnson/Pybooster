@@ -43,6 +43,8 @@
   <!ATTLIST sub-class-of type CDATA #REQUIRED>
 ]>
 
+<!-- https://specifications.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html -->
+
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 
   <!-- APPLICATION/* -->
@@ -59,8 +61,8 @@
     <generic-icon name="video-x-generic"/>
     <magic priority="50">
       <match offset="0" type="string" value="OggS">
-        <match offset="28" type="string" value="fishead\0">
-          <match offset="56:512" type="string" value="CMML\0\0\0\0"/>
+        <match offset="28" type="string" value="fishead\x00">
+          <match offset="56:512" type="string" value="CMML\x00\x00\x00\x00"/>
         </match>
       </match>
     </magic>
@@ -103,7 +105,7 @@
     <generic-icon name="x-office-document"/>
     <glob pattern="*.epub"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/epub+zip"/>
           <match offset="43" type="string" value="application/epub+zip"/>
@@ -131,7 +133,7 @@
   <mime-type type="application/gnunet-directory">
     <comment>GNUnet Search File</comment>
     <magic priority="50">
-      <match offset="0" type="string" value="\211GND\r\n\032\n"/>
+      <match offset="0" type="string" value="\x89GND\r\n\xa1\n"/>
     </magic>
     <glob pattern="*.gnd"/>
   </mime-type>
@@ -151,18 +153,10 @@
     <comment>Gzip Archive</comment>
     <generic-icon name="package-x-generic"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\037\213"/>
+      <match offset="0" type="string" value="\x1f\x8b"/>
     </magic>
     <glob pattern="*.gz"/>
     <alias type="application/x-gzip"/>
-  </mime-type>
-  <mime-type type="application/x-ica">
-    <comment>Citrix ICA Settings File</comment>
-    <acronym>ICA</acronym>
-    <expanded-acronym>Independent Computing Architecture</expanded-acronym>
-    <sub-class-of type="text/plain"/>
-    <generic-icon name="text-x-generic"/>
-    <glob pattern="*.ica"/>
   </mime-type>
   <mime-type type="application/illustrator">
     <comment>Adobe Illustrator Document</comment>
@@ -354,7 +348,7 @@
     <alias type="application/nappdf"/>
     <generic-icon name="x-office-document"/>
     <glob pattern="*.pdf"/>
-    <magic priority="50">
+    <magic priority="60">
       <match offset="0:1024" type="string" value="%PDF-"/>
     </magic>
   </mime-type>
@@ -513,9 +507,9 @@
     <expanded-acronym>PostScript</expanded-acronym>
     <sub-class-of type="text/plain"/>
     <generic-icon name="x-office-document"/>
-    <magic priority="50">
-      <match offset="0" type="string" value="\004%!"/>
-      <match offset="0" type="string" value="%!"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\x04%!"/>
+      <match offset="0" type="string" value="%!PS"/>
     </magic>
     <glob pattern="*.ps"/>
   </mime-type>
@@ -553,6 +547,11 @@
     <glob pattern="*.rnc"/>
     <alias type="application/x-rnc"/>
   </mime-type>
+  <mime-type type="application/ringing-tones">
+    <comment>Ringing Tones</comment>
+    <generic-icon name="audio-x-generic"/>
+    <glob pattern="*.rng"/>
+  </mime-type>
   <mime-type type="application/rss+xml">
     <comment>RSS Summary</comment>
     <acronym>RSS</acronym>
@@ -573,7 +572,7 @@
     <alias type="text/rtf"/>
     <glob pattern="*.rtf"/>
     <icon name="application-rtf"/>
-    <magic priority="50">
+    <magic priority="60">
       <match offset="0" type="string" value="{\\rtf"/>
     </magic>
     <sub-class-of type="text/plain"/>
@@ -672,7 +671,7 @@
     <expanded-acronym>eXtensible Markup Language</expanded-acronym>
     <icon name="text-xml"/>
     <magic priority="40">
-      <match offset="0" type="string" value="&lt;?xml"/>
+      <match offset="0:32" type="string" value="&lt;?xml"/>
       <match offset="0" type="string" value="&lt;!--"/>
     </magic>
     <glob pattern="*.rng"/>
@@ -728,7 +727,7 @@
     <alias type="application/x-zip-compressed"/>
     <generic-icon name="package-x-generic"/>
     <magic priority="60">
-      <match offset="0" type="string" value="PK\003\004"/>
+      <match offset="0" type="string" value="PK\x03\x04"/>
     </magic>
     <glob pattern="*.zip"/>
   </mime-type>
@@ -748,6 +747,39 @@
 
   <!-- APPLICATION/prs.* -->
 
+  <mime-type type="application/prs.amz-kindle-update">
+    <comment>Amazon Kindle Update Package</comment>
+    <generic-icon name="application-octet-stream"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="SP01"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/prs.palm-desktop-calendar-archive">
+    <comment>Palm Desktop Calendar Archive</comment>
+    <generic-icon name="calendar-archive"/>
+    <magic priority="60">
+      <match offset="0" type="host32" value="0x00014454"/>
+      <match offset="0" type="host32" value="0xbebafeca"/>
+    </magic>
+    <glob pattern="*.dba"/>
+    <glob pattern="*.tda"/>
+  </mime-type>
+  <mime-type type="application/prs.palm-desktop-to-do-archive">
+    <comment>Palm Desktop To Do Archive</comment>
+    <generic-icon name="archive"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\x00\x01\x42\x44"/>
+    </magic>
+    <glob pattern="*.dba"/>
+  </mime-type>
+  <mime-type type="application/prs.palmpilot-document">
+    <comment>PalmPilot Database/Document File</comment>
+    <generic-icon name="document"/>
+    <magic priority="50">
+      <match offset="11" type="string" value="........................"/>
+    </magic>
+    <glob pattern="*.pdb"/>
+  </mime-type>
   <mime-type type="application/prs.plucker">
     <comment>Plucker Document</comment>
     <generic-icon name="x-office-document"/>
@@ -856,7 +888,7 @@
     <alias type="application/x-deb"/>
     <alias type="application/x-debian-package"/>
     <icon name="application-x-deb"/>
-    <magic priority="50">
+    <magic priority="80">
       <match offset="0" type="string" value="!&lt;arch&gt;">
         <match offset="8" type="string" value="debian"/>
       </match>
@@ -1022,6 +1054,7 @@
     <glob pattern="*.asf"/>
     <magic priority="50">
       <match offset="0" type="big32" value="0x3026b275"/>
+      <match offset="0" type="string" value="\x30\x26\xb2\x75\x8e\x66\xcf\x11\xa6\xd9\x00\xaa\x00\x62\xce\x6c"/>
       <match offset="0" type="string" value="[Reference]"/>
     </magic>
   </mime-type>
@@ -1029,7 +1062,7 @@
     <comment>Microsoft Cabinet Archive</comment>
     <generic-icon name="package-x-generic"/>
     <magic priority="60">
-      <match type="string" offset="0" value="MSCF\0\0\0\0"/>
+      <match type="string" offset="0" value="MSCF\x00\x00\x00\x00"/>
     </magic>
     <glob pattern="*.cab"/>
     <alias type="zz-application/zz-winassoc-cab"/>
@@ -1186,9 +1219,9 @@
     <sub-class-of type="application/x-ole-storage"/>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\333\245-\0\0\0"/>
-      <match offset="0" type="string" value="\376\067\0\043"/>
+      <match offset="0" type="string" value="\fe\x37\x00\x23"/>
       <match offset="0" type="string" value="\x31\xbe\x00\x00"/>
+      <match offset="0" type="string" value="\xdb\xa5-\x00\x00\x00"/>
       <match offset="0" type="string" value="PO^Q`"/>
       <match offset="2108" type="string" value="MSWordDoc"/>
       <match offset="2112" type="string" value="Microsoft Word document data"/>
@@ -1243,7 +1276,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.chart"/>
         </match>
@@ -1258,7 +1291,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.chart-template"/>
         </match>
@@ -1273,7 +1306,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.base"/>
           <match offset="38" type="string" value="application/vnd.sun.xml.base"/>
@@ -1291,7 +1324,7 @@
     <alias type="application/vnd.sun.xml.math"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.formula"/>
           <match offset="38" type="string" value="application/vnd.sun.xml.math"/>
@@ -1308,7 +1341,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.formula-template"/>
         </match>
@@ -1323,7 +1356,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="image-x-generic"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.graphics"/>
         </match>
@@ -1346,7 +1379,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="image-x-generic"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.graphics-template"/>
         </match>
@@ -1361,7 +1394,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="image-x-generic"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.image"/>
         </match>
@@ -1377,7 +1410,7 @@
     <alias type="application/vnd.sun.xml.impress"/>
     <generic-icon name="x-office-presentation"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.presentation"/>
           <match offset="38" type="string" value="application/vnd.sun.xml.impress"/>
@@ -1403,7 +1436,7 @@
     <alias type="application/vnd.sun.xml.impress.template"/>
     <generic-icon name="x-office-presentation"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.presentation-template"/>
           <match offset="38" type="string" value="application/vnd.sun.xml.impress"/>
@@ -1420,7 +1453,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.spreadsheet"/>
         </match>
@@ -1443,7 +1476,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.spreadsheet-template"/>
         </match>
@@ -1458,7 +1491,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.text"/>
         </match>
@@ -1482,7 +1515,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-        <match offset="0" type="string" value="PK\003\004">
+        <match offset="0" type="string" value="PK\x03\x04">
             <match offset="30" type="string" value="mimetype">
                 <match offset="38" type="string" value="application/vnd.oasis.opendocument.text-master"/>
             </match>
@@ -1493,7 +1526,7 @@
     <comment>OpenDocument Master Document Template</comment>
     <glob pattern="*.otm"/>
     <magic priority="60">
-        <match offset="0" type="string" value="PK\003\004">
+        <match offset="0" type="string" value="PK\x03\x04">
             <match offset="30" type="string" value="mimetype">
                 <match offset="38" type="string" value="application/vnd.oasis.opendocument.text-master-template"/>
             </match>
@@ -1507,7 +1540,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.text-template"/>
         </match>
@@ -1522,7 +1555,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="text-html"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.oasis.opendocument.text-web"/>
         </match>
@@ -1603,6 +1636,9 @@
     <magic priority="60">
       <match offset="0" type="string" value="Rar!"/>
     </magic>
+    <magic priority="80">
+      <match offset="0" type="string" value="Rar!\x52\x61\x72\x21\x1a\x07\x01\x00"/>
+    </magic>
   </mime-type>
   <mime-type type="application/vnd.rn-realmedia">
     <comment>RealMedia Document</comment>
@@ -1628,6 +1664,7 @@
     <alias type="application/sql2"/>
     <alias type="application/x-sqlite2"/>
     <glob pattern="*.sqlite2" weight="100"/>
+    <glob pattern="*.sqlitedb2" weight="100"/>
     <icon name="application-x-sqlite"/>
     <magic>
       <match offset="0" type="string" value="** This file contains an SQLite"/>
@@ -1641,9 +1678,12 @@
     <alias type="application/x-sqlite3"/>
     <glob pattern="*.sqlite" weight="100"/>
     <glob pattern="*.sqlite3" weight="100"/>
+    <glob pattern="*.sqlitedb" weight="100"/>
+    <glob pattern="*.sqlitedb3" weight="100"/>
     <icon name="application-x-sqlite"/>
     <magic>
       <match offset="0" type="string" value="SQLite format 3"/>
+      <match offset="0" type="string" value="SQLite format 3."/>
     </magic>
   </mime-type>
   <mime-type type="application/vnd.squashfs">
@@ -1700,7 +1740,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.calc"/>
         </match>
@@ -1713,7 +1753,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.calc"/>
         </match>
@@ -1726,7 +1766,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="image-x-generic"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.draw"/>
         </match>
@@ -1739,7 +1779,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="image-x-generic"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.draw"/>
         </match>
@@ -1752,7 +1792,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.writer"/>
         </match>
@@ -1765,7 +1805,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.writer"/>
         </match>
@@ -1778,7 +1818,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-document"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/vnd.sun.xml.writer"/>
         </match>
@@ -1797,8 +1837,8 @@
     <glob pattern="*.sis"/>
   </mime-type>
   <mime-type type="application/vnd.tcpdump.pcap">
-    <comment>Network Packet Capture</comment>
-    <magic priority="50">
+    <comment>Libpcap Network Packet Capture File</comment>
+    <magic priority="60">
       <match offset="0" type="host32" value="0xa1b2c3d4"/>
       <match offset="0" type="host32" value="0xd4c3b2a1"/>
     </magic>
@@ -1807,6 +1847,15 @@
     <glob pattern="*.pcap"/>
     <alias type="application/pcap"/>
     <alias type="application/x-pcap"/>
+  </mime-type>
+  <mime-type type="application/vnd.tcpdump.pcapng">
+    <comment>PCAP Next Generation Dump File Format</comment>
+    <magic priority="60">
+      <match offset="0" type="host32" value="0x0a0d0d0a"/>
+    </magic>
+    <glob pattern="*.pcapng"/>
+    <alias type="application/pcapng"/>
+    <alias type="application/x-pcapng"/>
   </mime-type>
   <mime-type type="application/vnd.visio">
     <comment>Microsoft Visio Document</comment>
@@ -1845,7 +1894,7 @@
     <comment>7-zip Archive</comment>
     <generic-icon name="package-x-generic"/>
     <magic priority="60">
-      <match offset="0" type="string" value="7z\274\257\047\034"/>
+      <match offset="0" type="string" value="7z\xbc\xaf\x27\x1c"/>
     </magic>
     <glob pattern="*.7z"/>
   </mime-type>
@@ -1904,6 +1953,9 @@
   </mime-type>
   <mime-type type="application/x-apple-diskimage">
     <comment>Apple Disk Image</comment>
+    <magic priority="70">
+      <match offset="0" type="string" value="\x78\x01\x73\x0D\x62\x62\x60"/>
+    </magic>
     <glob pattern="*.dmg"/>
   </mime-type>
   <mime-type type="application/x-applix-spreadsheet">
@@ -2141,6 +2193,11 @@
     <comment>Raw CD Image</comment>
     <sub-class-of type="application/x-raw-disk-image"/>
     <alias type="application/x-iso9660-image"/>
+    <magic priority="80">
+      <match offset="0x8001" type="string" value="CD001"/>
+      <match offset="0x8801" type="string" value="CD001"/>
+      <match offset="0x9001" type="string" value="CD001"/>
+    </magic>
     <glob pattern="*.iso" weight="80"/>
     <glob pattern="*.iso9660"/>
   </mime-type>
@@ -2182,7 +2239,8 @@
     <comment>UNIX-Compressed File</comment>
     <generic-icon name="package-x-generic"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\037\235"/>
+      <match offset="0" type="string" value="\x1F\x9D"/>
+      <match offset="0" type="string" value="\x1F\xA0"/>
     </magic>
     <glob pattern="*.Z"/>
   </mime-type>
@@ -2196,19 +2254,19 @@
   <mime-type type="application/x-core">
     <comment>Program Crash Data</comment>
     <magic priority="50">
-      <match value="\177ELF            \004" type="string" offset="0" mask="0xffffffff000000000000000000000000ff"/>
-      <match offset="0" type="string" value="\177ELF">
+      <match mask="0xffffffff000000000000000000000000ff" offset="0" type="string" value="\x7fELF            \x04"/>
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="1">
           <match offset="16" type="little16" value="4"/>
         </match>
       </match>
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7f">
         <match offset="5" type="byte" value="2">
           <match offset="16" type="big16" value="4"/>
         </match>
       </match>
-      <match offset="0" type="string" value="Core\001"/>
-      <match offset="0" type="string" value="Core\002"/>
+      <match offset="0" type="string" value="Core\x01"/>
+      <match offset="0" type="string" value="Core\x02"/>
     </magic>
     <glob pattern="core" case-sensitive="true"/>
   </mime-type>
@@ -2370,12 +2428,12 @@
     <comment>Executable</comment>
     <generic-icon name="application-x-executable"/>
     <magic priority="40">
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="1">
           <match offset="16" type="little16" value="2"/>
         </match>
       </match>
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="2">
           <match offset="16" type="big16" value="2"/>
         </match>
@@ -2425,8 +2483,8 @@
   <mime-type type="application/x-font-bdf">
     <comment>BDF Font</comment>
     <generic-icon name="font-x-generic"/>
-    <magic priority="50">
-      <match offset="0" type="string" value="STARTFONT\040"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="STARTFONT\x20"/>
     </magic>
     <glob pattern="*.bdf"/>
   </mime-type>
@@ -2464,8 +2522,8 @@
   <mime-type type="application/x-font-pcf">
     <comment>PCF Font</comment>
     <generic-icon name="font-x-generic"/>
-    <magic priority="50">
-      <match offset="0" type="string" value="\001fcp"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\x01fcp"/>
     </magic>
     <glob pattern="*.pcf"/>
     <glob pattern="*.pcf.Z"/>
@@ -2474,8 +2532,8 @@
   <mime-type type="application/x-font-speedo">
     <comment>Speedo Font</comment>
     <generic-icon name="font-x-generic"/>
-    <magic priority="50">
-      <match offset="0" type="string" value="D1.0\015"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="D1.0\x0d"/>
     </magic>
     <glob pattern="*.spd"/>
   </mime-type>
@@ -2492,17 +2550,17 @@
     <comment>TeX Font</comment>
     <generic-icon name="font-x-generic"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\367\203"/>
-      <match offset="0" type="string" value="\367\131"/>
-      <match offset="0" type="string" value="\367\312"/>
+      <match offset="0" type="string" value="\xf7\x83"/>
+      <match offset="0" type="string" value="\xf7\x59"/>
+      <match offset="0" type="string" value="\xf7\xca"/>
     </magic>
   </mime-type>
   <mime-type type="application/x-font-tex-tfm">
     <comment>TeX Font Metrics</comment>
     <generic-icon name="font-x-generic"/>
     <magic priority="50">
-      <match offset="2" type="string" value="\000\021"/>
-      <match offset="2" type="string" value="\000\022"/>
+      <match offset="2" type="string" value="\x00\x11"/>
+      <match offset="2" type="string" value="\x00\x12"/>
     </magic>
   </mime-type>
   <mime-type type="application/x-font-ttx">
@@ -2630,8 +2688,8 @@
   <mime-type type="application/x-gettext-translation">
     <comment>Translated Messages (Machine-Readable)</comment>
     <magic priority="50">
-      <match offset="0" type="string" value="\336\22\4\225"/>
-      <match offset="0" type="string" value="\225\4\22\336"/>
+      <match offset="0" type="string" value="\xde\x12\x04\x95"/>
+      <match offset="0" type="string" value="\x95\x04\x12\xde"/>
     </magic>
     <glob pattern="*.gmo"/>
     <glob pattern="*.mo"/>
@@ -2732,8 +2790,8 @@
     <expanded-acronym>Hierarchical Data Format</expanded-acronym>
     <generic-icon name="x-office-document"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\016\003\023\001"/>
-      <match offset="0" type="string" value="\211HDF\r\n\032\n"/>
+      <match offset="0" type="string" value="\x0E\x03\x13\x01"/>
+      <match offset="0" type="string" value="\x89HDF\r\n\xa1\n"/>
     </magic>
     <glob pattern="*.h4"/>
     <glob pattern="*.h5"/>
@@ -2751,6 +2809,14 @@
       <match offset="0" type="string" value="HXCPICFE"/>
     </magic>
     <alias type="application/x-hfe-file"/>
+  </mime-type>
+  <mime-type type="application/x-ica">
+    <comment>Citrix ICA Settings File</comment>
+    <acronym>ICA</acronym>
+    <expanded-acronym>Independent Computing Architecture</expanded-acronym>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.ica"/>
   </mime-type>
   <mime-type type="application/x-iff">
     <comment>IFF File</comment>
@@ -2812,7 +2878,7 @@
     <sub-class-of type="application/zip"/>
     <generic-icon name="x-office-presentation"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="index.apxl"/>
       </match>
     </magic>
@@ -2886,12 +2952,12 @@
     <comment>Karbon14 Drawing</comment>
     <generic-icon name="image-x-generic"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-karbon\004\006"/>
+          <match offset="18" type="string" value="application/x-karbon\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-karbon"/>
         </match>
@@ -2903,12 +2969,12 @@
     <comment>KChart Chart</comment>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kchart\004\006"/>
+          <match offset="18" type="string" value="application/x-kchart\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kchart"/>
         </match>
@@ -2940,12 +3006,12 @@
     <comment>KFormula Formula</comment>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kformula\004\006"/>
+          <match offset="18" type="string" value="application/x-kformula\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kformula"/>
         </match>
@@ -2957,9 +3023,9 @@
     <comment>KIllustrator Drawing</comment>
     <generic-icon name="image-x-generic"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-killustrator\004\006"/>
+          <match offset="18" type="string" value="application/x-killustrator\x04\x06"/>
         </match>
       </match>
     </magic>
@@ -2969,12 +3035,12 @@
     <comment>Kivio Flowchart</comment>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kivio\004\006"/>
+          <match offset="18" type="string" value="application/x-kivio\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kivio"/>
         </match>
@@ -2986,12 +3052,12 @@
     <comment>Kontour Drawing</comment>
     <generic-icon name="image-x-generic"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kontour\004\006"/>
+          <match offset="18" type="string" value="application/x-kontour\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kontour"/>
         </match>
@@ -3008,12 +3074,12 @@
     <comment>KPresenter Presentation</comment>
     <generic-icon name="x-office-presentation"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kpresenter\004\006"/>
+          <match offset="18" type="string" value="application/x-kpresenter\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kpresenter"/>
         </match>
@@ -3026,12 +3092,12 @@
     <comment>Krita Document</comment>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-krita\004\006"/>
+          <match offset="18" type="string" value="application/x-krita\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-krita"/>
         </match>
@@ -3043,12 +3109,12 @@
     <comment>KSpread Spreadsheet</comment>
     <generic-icon name="x-office-spreadsheet"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kspread\004\006"/>
+          <match offset="18" type="string" value="application/x-kspread\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kspread"/>
         </match>
@@ -3081,12 +3147,12 @@
     <comment>KWord Document</comment>
     <generic-icon name="x-office-document"/>
     <magic priority="60">
-      <match offset="0" type="string" value="\037\213">
+      <match offset="0" type="string" value="\x1f\x8b">
         <match offset="10" type="string" value="KOffice">
-          <match offset="18" type="string" value="application/x-kword\004\006"/>
+          <match offset="18" type="string" value="application/x-kword\x04\x06"/>
         </match>
       </match>
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="application/x-kword"/>
         </match>
@@ -3153,6 +3219,14 @@
     <sub-class-of type="application/x-lrzip"/>
     <glob pattern="*.tar.lrz"/>
     <glob pattern="*.tlrz"/>
+  </mime-type>
+  <mime-type type="application/x-lua-bytecode">
+    <comment>Lua Bytecode</comment>
+    <sub-class-of type="application/x-executable"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="\x1bLua"/>
+    </magic>
+    <glob pattern="*.luac"/>
   </mime-type>
   <mime-type type="application/x-lyx">
     <comment>LyX Document</comment>
@@ -3333,7 +3407,7 @@
     <acronym>WIM</acronym>
     <expanded-acronym>Windows Imaging Format</expanded-acronym>
     <magic>
-      <match offset="0" type="string" value="MSWIM\000\000\000"/>
+      <match offset="0" type="string" value="MSWIM\x00\x00\x00"/>
     </magic>
     <glob pattern="*.swm"/>
     <glob pattern="*.wim"/>
@@ -3412,6 +3486,9 @@
   <mime-type type="application/x-nes-rom">
     <comment>NES ROM</comment>
     <icon name="application-x-nes-rom"/>
+    <magic priority="50">
+      <match offset="0" type="string" value="NES\x1a"/>
+    </magic>
     <glob pattern="*.nes"/>
     <glob pattern="*.nez"/>
     <glob pattern="*.unf"/>
@@ -3458,12 +3535,12 @@
     <comment>Object Code</comment>
     <generic-icon name="x-office-document"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="1">
           <match offset="16" type="little16" value="1"/>
         </match>
       </match>
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="2">
           <match offset="16" type="big16" value="1"/>
         </match>
@@ -3482,8 +3559,8 @@
   <mime-type type="application/x-ole-storage">
     <comment>OLE2 Compound Document</comment>
     <generic-icon name="x-office-document"/>
-    <magic priority="50">
-      <match offset="0" type="string" value="\320\317\021\340\241\261\032\341"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\xd0\xcf\x11\xe0\xa1\xb1\xa1\xe1"/>
       <match offset="0" type="little32" value="0xe011cfd0"/>
     </magic>
   </mime-type>
@@ -3730,7 +3807,7 @@
     <comment>RPM Package</comment>
     <generic-icon name="package-x-generic"/>
     <alias type="application/x-redhat-package-manager"/>
-    <magic priority="50">
+    <magic priority="60">
       <match offset="0" type="string" value="\xed\xab\xee\xdb"/>
     </magic>
     <glob pattern="*.rpm"/>
@@ -3891,20 +3968,20 @@
     <icon name="application-x-sharedlib"/>
     <glob pattern="*.so" weight="95"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="1">
           <match offset="16" type="little16" value="3"/>
         </match>
       </match>
-      <match offset="0" type="string" value="\177ELF">
+      <match offset="0" type="string" value="\x7fELF">
         <match offset="5" type="byte" value="2">
           <match offset="16" type="big16" value="3"/>
         </match>
       </match>
       <match offset="0" type="little16" value="0603">
-        <match value="020000" type="little16" offset="22" mask="030000"/>
+        <match mask="030000" offset="22" type="little16" value="020000"/>
       </match>
-      <match value="\177ELF            \003" type="string" offset="0" mask="0xffffffff000000000000000000000000ff"/>
+      <match mask="0xffffffff000000000000000000000000ff" offset="0" type="string" value="\x7fELF            \x03"/>
     </magic>
   </mime-type>
   <mime-type type="application/x-shellscript">
@@ -4059,8 +4136,8 @@
     <generic-icon name="package-x-generic"/>
     <alias type="application/x-gtar"/>
     <magic priority="60">
-      <match offset="257" type="string" value="ustar\0"/>
-      <match offset="257" type="string" value="ustar\040\040\0"/>
+      <match offset="257" type="string" value="ustar\x00"/>
+      <match offset="257" type="string" value="ustar\x20\x20\x00"/>
     </magic>
     <glob pattern="*.gem"/>
     <glob pattern="*.gtar"/>
@@ -4202,6 +4279,9 @@
   </mime-type>
   <mime-type type="application/x-virtualbox-vmdk">
     <comment>Virtual Machine Disk Format</comment>
+    <magic priority="50">
+      <match offset="0" type="string" value="KDM"/>
+    </magic>
     <glob pattern="*.vmdk"/>
     <icon name="virtualbox-vmdk"/>
   </mime-type>
@@ -4228,9 +4308,9 @@
     <comment>Wii Disc Image</comment>
     <icon name="application-x-wii-wad"/>
     <glob pattern="*.iso"/>
-    <magic priority="60">
+    <magic priority="70">
       <match offset="0" type="string" value="WBFS"/>
-      <match offset="0" type="string" value="WII\001DISC"/>
+      <match offset="0" type="string" value="WII\x01DISC"/>
       <match offset="24" type="big32" value="0x5d1c9ea3"/>
     </magic>
   </mime-type>
@@ -4239,9 +4319,9 @@
     <icon name="application-x-wii-wad"/>
     <glob pattern="*.wad"/>
     <magic priority="60">
-      <match offset="4" type="string" value="Bk\0\0"/>
-      <match offset="4" type="string" value="ib\0\0"/>
-      <match offset="4" type="string" value="Is\0\0"/>
+      <match offset="4" type="string" value="Bk\x00\x00"/>
+      <match offset="4" type="string" value="ib\x00\x00"/>
+      <match offset="4" type="string" value="Is\x00\x00"/>
     </magic>
   </mime-type>
   <mime-type type="application/x-windows-themepack">
@@ -4298,6 +4378,7 @@
     <expanded-acronym>eXtensible ARchive</expanded-acronym>
     <generic-icon name="package-x-generic"/>
     <magic priority="60">
+      <match offset="0" type="string" value="xar!"/>
       <match offset="0" type="big32" value="0x78617221"/>
     </magic>
     <glob pattern="*.xar"/>
@@ -4319,6 +4400,12 @@
     <sub-class-of type="application/zip"/>
     <glob pattern="*.xpi"/>
   </mime-type>
+  <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-xpraconfig">
+      <comment>Xpra Session File</comment>
+      <glob pattern="*.xpra"/>
+    </mime-type>
+  </mime-info>
   <mime-type type="application/x-xz">
     <comment>XZ Archive</comment>
     <generic-icon name="package-x-generic"/>
@@ -4362,7 +4449,7 @@
     <sub-class-of type="application/zip"/>
     <glob pattern="*.fb2.zip"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30:256" type="string" value=".fb2"/>
       </match>
     </magic>
@@ -4432,8 +4519,8 @@
     <sub-class-of type="application/annodex"/>
     <magic priority="50">
       <match offset="0" type="string" value="OggS">
-        <match offset="28" type="string" value="fishead\0">
-          <match offset="56:512" type="string" value="CMML\0\0\0\0"/>
+        <match offset="28" type="string" value="fishead\x00">
+          <match offset="56:512" type="string" value="CMML\x00\x00\x00\x00"/>
         </match>
       </match>
     </magic>
@@ -4450,7 +4537,7 @@
   </mime-type>
   <mime-type type="audio/flac">
     <comment>FLAC Audio</comment>
-    <magic priority="50">
+    <magic priority="60">
       <match offset="0" type="string" value="fLaC"/>
     </magic>
     <glob pattern="*.flac"/>
@@ -4458,8 +4545,11 @@
   </mime-type>
   <mime-type type="audio/midi">
     <comment>MIDI Audio</comment>
+    <alias type="application/x-midi"/>
+    <alias type="audio/x-mid"/>
     <alias type="audio/x-midi"/>
-    <magic priority="50">
+    <alias type="x-music/x-midi"/>
+    <magic priority="60">
       <match offset="0" type="string" value="MThd"/>
     </magic>
     <glob pattern="*.kar"/>
@@ -4486,6 +4576,7 @@
     <alias type="audio/mp3"/>
     <alias type="audio/x-mp3"/>
     <alias type="audio/x-mpeg"/>
+    <alias type="audio/x-mpeg-3"/>
     <alias type="audio/x-mpg"/>
     <magic priority="50">
       <match offset="0" type="big16" value="0xfffb"/>
@@ -4622,7 +4713,7 @@
         <match offset="28" type="string" value="fLaC"/>
       </match>
       <match offset="0" type="string" value="OggS">
-        <match offset="28" type="string" value="\177FLAC"/>
+        <match offset="28" type="string" value="\x7fFLAC"/>
       </match>
     </magic>
     <glob pattern="*.oga"/>
@@ -4878,9 +4969,11 @@
     <comment>WAV Audio</comment>
     <alias type="audio/wav"/>
     <alias type="audio/vnd.wave"/>
-    <magic priority="50">
-      <match offset="8" type="string" value="WAVE"/>
-      <match offset="8" type="string" value="WAV "/>
+    <magic priority="70">
+      <match offset="0" type="string" value="RIFF">
+        <match offset="8" type="string" value="WAVE"/>
+        <match offset="8" type="string" value="WAV "/>
+      </match>
     </magic>
     <glob pattern="*.wav"/>
   </mime-type>
@@ -4917,13 +5010,84 @@
     <comment>XMF Audio</comment>
     <acronym>XMF</acronym>
     <expanded-acronym>eXtensible Music Format</expanded-acronym>
-    <magic priority="50">
+    <magic priority="70">
       <match offset="0" type="string" value="XMF_"/>
-      <match offset="0" type="string" value="\130\115\106\137\062\056\060\060\000\000\000\002"/>
+      <match offset="0" type="string" value="\x58\x4d\x46\x57\x32\x2e\x30\x30\x00\x00\x00\x02"/>
     </magic>
     <glob pattern="*.xmf"/>
     <alias type="audio/mobile-xmf"/>
     <alias type="audio/xmf"/>
+  </mime-type>
+
+  <!-- CHEMICAL/x-* -->
+
+  <mime-type type="chemical/x-alchemy">
+    <comment>Alchemy Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.alc"/>
+  </mime-type>
+  <mime-type type="chemical/x-chem3d">
+    <comment>Chem3D Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.c3d"/>
+  </mime-type>
+  <mime-type type="chemical/x-cmdf">
+    <comment>CrystalMaker Data Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.cmdf"/>
+  </mime-type>
+  <mime-type type="chemical/x-cml">
+    <comment>Chemical Markup Language</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.cml"/>
+  </mime-type>
+  <mime-type type="chemical/x-csml">
+    <comment>Chemical Style Markup Language</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.csml"/>
+  </mime-type>
+  <mime-type type="chemical/x-cxf">
+    <comment>Chemical Exchange Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.cef"/>
+    <glob pattern="*.cxf"/>
+  </mime-type>
+  <mime-type type="chemical/x-gaussian-checkpoint">
+    <comment>Gaussian Checkpoint Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.fch"/>
+    <glob pattern="*.fchk"/>
+  </mime-type>
+  <mime-type type="chemical/x-macromodel-input">
+    <comment>MacroModel Molecular Mechanics</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.mmd"/>
+    <glob pattern="*.mmod"/>
+  </mime-type>
+  <mime-type type="chemical/x-mmcif">
+    <comment>Macromolecular Crystallographic Information File</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.mcif"/>
+  </mime-type>
+  <mime-type type="chemical/x-mol2">
+    <comment>Tripos' Sybyl MOL2 Format</comment>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.mol2"/>
+  </mime-type>
+  <mime-type type="chemical/x-xyz">
+    <comment>XYZ Chemical Format</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="chemical-x-generic"/>
+    <glob pattern="*.xyz"/>
   </mime-type>
 
   <!-- FONT/* -->
@@ -4949,7 +5113,7 @@
     <magic priority="50">
       <match offset="0" type="string" value="FFIL"/>
       <match offset="65" type="string" value="FFIL"/>
-      <match offset="0" type="string" value="\000\001\000\000\000"/>
+      <match offset="0" type="string" value="\x00\x01\x00\x00\x00"/>
     </magic>
     <glob pattern="*.ttf"/>
     <alias type="application/x-font-ttf"/>
@@ -4976,12 +5140,28 @@
     <glob pattern="*.woff2"/>
   </mime-type>
 
+  <!-- FONT/vnd.* -->
+
+  <mime-type type="font/vnd.ms-fontobject">
+    <comment>Embedded OpenType Font</comment>
+    <generic-icon name="font-x-generic"/>
+    <glob pattern="*.eot"/>
+  </mime-type>
+
+  <!-- I-WORLD/* -->
+
+  <mime-type type="i-world/i-vrml">
+    <comment>Image-Worlds Virtual Reality Markup Language</comment>
+    <generic-icon name="markup"/>
+    <glob pattern="*.ivr"/>
+  </mime-type>
+
   <!-- IMAGE/* -->
 
   <mime-type type="image/bmp">
     <comment>Windows BMP Image</comment>
     <magic priority="50">
-      <match value="BMxxxx\000\000" type="string" offset="0" mask="0xffff00000000ffff"/>
+      <match mask="0xffff00000000ffff" offset="0" type="string" value="BMxxxx\x00\x00"/>
       <match offset="0" type="string" value="BM">
         <match offset="14" type="byte" value="12"/>
         <match offset="14" type="byte" value="64"/>
@@ -5024,7 +5204,9 @@
   </mime-type>
   <mime-type type="image/gif">
     <comment>GIF Image</comment>
-    <magic priority="50">
+    <magic priority="80">
+      <match offset="0" type="string" value="GIF87a"/>
+      <match offset="0" type="string" value="GIF89a"/>
       <match offset="0" type="string" value="GIF8"/>
     </magic>
     <glob pattern="*.gif"/>
@@ -5058,9 +5240,12 @@
   </mime-type>
   <mime-type type="image/jpeg">
     <comment>JPEG Image</comment>
-    <magic priority="50">
-      <match offset="0" type="string" value="\377\330\377"/>
-      <match offset="0" type="big16" value="0xffd8"/>
+    <magic priority="60">
+      <match offset="0" type="string" value="\xff\xd8\xff"/>
+      <match offset="0" type="string" value="\xff\xd8\xff\xe0\x00\x10\x4a\x46\x49\x46\x00\x01"/>
+      <match offset="0" type="string" value="\xff\xd8\xff\xe1">
+        <match offset="6" type="string" value="\x45\x78\x69\x66\x00\x00"/>
+      </match>
     </magic>
     <glob pattern="*.jpe"/>
     <glob pattern="*.jpeg"/>
@@ -5102,7 +5287,7 @@
     <comment>OpenRaster Archiving Image</comment>
     <sub-class-of type="application/zip"/>
     <magic priority="70">
-      <match offset="0" type="string" value="PK\003\004">
+      <match offset="0" type="string" value="PK\x03\x04">
         <match offset="30" type="string" value="mimetype">
           <match offset="38" type="string" value="image/openraster"/>
         </match>
@@ -5112,7 +5297,10 @@
   </mime-type>
   <mime-type type="image/png">
     <comment>PNG Image</comment>
-    <magic priority="50">
+    <magic priority="80">
+      <match offset="0" type="string" value="\x89PNG\x0D\x0A\x1A\x0A"/>
+    </magic>
+    <magic priority="60">
       <match offset="0" type="string" value="\x89PNG"/>
     </magic>
     <glob pattern="*.png"/>
@@ -5153,7 +5341,7 @@
   </mime-type>
   <mime-type type="image/webp">
     <comment>WebP Image</comment>
-    <magic priority="50">
+    <magic priority="70">
       <match offset="0" type="string" value="RIFF">
         <match offset="8" type="string" value="WEBP"/>
       </match>
@@ -5182,12 +5370,25 @@
     <alias type="image/x-wmf"/>
   </mime-type>
 
+  <!-- IMAGE/prs.* -->
+
+  <mime-type type="image/prs.itc">
+    <comment>ITC (CMU WM) Format</comment>
+    <acronym>ITC</acronym>
+    <expanded-acronym>iTunes Cover Flow Data File</expanded-acronym>
+    <magic priority="50">
+      <match offset="0" type="host32" value="0xf10040bb"/>
+      <match offset="0" type="string" value="00\x00\x01\x1Citch"/>
+    </magic>
+    <glob pattern="*.itc"/>
+  </mime-type>
+
   <!-- IMAGE/vnd.* -->
 
   <mime-type type="image/vnd.adobe.photoshop">
     <comment>Photoshop Image</comment>
     <magic priority="50">
-      <match value="8BPS  \000\000\000\000" type="string" offset="0" mask="0xffffffff0000ffffffff"/>
+      <match mask="0xffffffff0000ffffffff" offset="0" type="string" value="8BPS  \x00\x00\x00\x00"/>
     </magic>
     <glob pattern="*.psd"/>
     <alias type="application/photoshop"/>
@@ -5242,8 +5443,8 @@
   <mime-type type="image/vnd.microsoft.icon">
     <comment>Windows Icon</comment>
     <magic priority="50">
-      <match offset="0" type="string" value="\0\0\1\0">
-        <match offset="5" type="string" value="\0"/>
+      <match offset="0" type="host32" value="0x00000100">
+        <match offset="5" type="string" value="\x00"/>
       </match>
     </magic>
     <glob pattern="*.ico"/>
@@ -5325,6 +5526,9 @@
     <expanded-acronym>Canon Raw 2</expanded-acronym>
     <sub-class-of type="image/x-dcraw"/>
     <sub-class-of type="image/tiff"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="49\x49\x2A\x00\x10\x00\x00\x00\x43\x52"/>
+    </magic>
     <glob pattern="*.cr2"/>
   </mime-type>
   <mime-type type="image/x-canon-crw">
@@ -5339,6 +5543,9 @@
   </mime-type>
   <mime-type type="image/x-cmu-raster">
     <comment>CMU Raster Image</comment>
+    <magic priority="80">
+      <match offset="0" type="string" value="59\xa6\x6a\x95"/>
+    </magic>
     <glob pattern="*.ras"/>
   </mime-type>
   <mime-type type="image/x-compressed-xcf">
@@ -5361,7 +5568,7 @@
     <acronym>DIB</acronym>
     <expanded-acronym>Device Independent Bitmap</expanded-acronym>
     <magic priority="50">
-      <match offset="0" type="string" value="\x28\00\00\00"/>
+      <match offset="0" type="string" value="\x28\x00\x00\x00"/>
     </magic>
   </mime-type>
   <mime-type type="image/dpx">
@@ -5381,7 +5588,7 @@
       <match offset="0" type="string" value="%!">
         <match offset="15" type="string" value="EPS"/>
       </match>
-      <match offset="0" type="string" value="\004%!">
+      <match offset="0" type="string" value="\x04%!">
         <match offset="16" type="string" value="EPS"/>
       </match>
       <match offset="0" type="big32" value="0xC5D0D3C6"/>
@@ -5392,8 +5599,9 @@
   </mime-type>
   <mime-type type="image/x-exr">
     <comment>EXR Image</comment>
-    <magic priority="50">
+    <magic priority="60">
       <match offset="0" type="little32" value="20000630"/>
+      <match offset="0" type="string" value="\x76\x2F\x31\x01"/>
     </magic>
     <glob pattern="*.exr"/>
   </mime-type>
@@ -5403,6 +5611,7 @@
     <expanded-acronym>Flexible Image Transport System</expanded-acronym>
     <magic priority="50">
       <match offset="0" type="string" value="SIMPLE  ="/>
+      <match offset="10:100" type="string" value="                    T"/>
     </magic>
     <glob pattern="*.fits"/>
     <alias type="image/x-fits"/>
@@ -5478,9 +5687,12 @@
     <expanded-acronym>InterLeaved BitMap</expanded-acronym>
     <sub-class-of type="application/x-iff"/>
     <magic priority="50">
-      <match offset="8" type="string" value="ILBM"/>
-      <match offset="8" type="string" value="PBM "/>
+      <match offset="0" type="string" value="FORM">
+        <match offset="8" type="string" value="ILBM"/>
+        <match offset="8" type="string" value="PBM "/>
+      </match>
     </magic>
+    <glob pattern="*.ibm"/>
     <glob pattern="*.iff"/>
     <glob pattern="*.ilbm"/>
     <glob pattern="*.lbm"/>
@@ -5779,14 +5991,14 @@
     <acronym>TGA</acronym>
     <expanded-acronym>Truevision Graphics Adapter</expanded-acronym>
     <magic priority="10">
-      <match offset="1" type="string" value="\1\1"/>
-      <match offset="1" type="string" value="\1\11"/>
-      <match offset="1" type="string" value="\0\3"/>
-      <match offset="1" type="string" value="\0\xa"/>
-      <match offset="1" type="string" value="\0\xb"/>
+      <match offset="1" type="string" value="\x01\x01"/>
+      <match offset="1" type="string" value="\x01\x09"/>
+      <match offset="1" type="string" value="\x00\x03"/>
+      <match offset="1" type="string" value="\x00\x0a"/>
+      <match offset="1" type="string" value="\x00\x0b"/>
     </magic>
     <magic priority="50">
-      <match offset="1" type="string" value="\0\2">
+      <match offset="1" type="string" value="\x00\x02">
         <match offset="16" type="byte" value="0x08"/>
         <match offset="16" type="byte" value="0x10"/>
         <match offset="16" type="byte" value="0x18"/>
@@ -5809,8 +6021,8 @@
   <mime-type type="image/x-win-bitmap">
     <comment>Windows Cursor</comment>
     <magic priority="50">
-      <match offset="0" type="string" value="\0\0\2\0">
-        <match offset="5" type="string" value="\0"/>
+      <match offset="0" type="string" value="\x00\x00\x02\x00">
+        <match offset="5" type="string" value="\x00"/>
       </match>
     </magic>
     <glob pattern="*.cur"/>
@@ -5824,7 +6036,8 @@
   <mime-type type="image/x-xcf">
     <comment>GIMP Image</comment>
     <glob pattern="*.xcf"/>
-    <magic priority="50">
+    <magic priority="90">
+      <match offset="0" type="string" value="gimp xcf "/>
       <match offset="0" type="string" value="gimp xcf file"/>
       <match offset="0" type="string" value="gimp xcf v"/>
     </magic>
@@ -5847,8 +6060,8 @@
     <comment>XPM Image</comment>
     <acronym>XPM</acronym>
     <expanded-acronym>X PixMap</expanded-acronym>
-    <magic priority="50">
-      <match offset="0" type="string" value="/* XPM"/>
+    <magic priority="80">
+      <match offset="0" type="string" value="/* XPM */"/>
     </magic>
     <glob pattern="*.xpm"/>
     <alias type="image/x-xpm"/>
@@ -5977,6 +6190,7 @@
     <comment>VRML Document</comment>
     <acronym>VRML</acronym>
     <expanded-acronym>Virtual Reality Modeling Language</expanded-acronym>
+    <alias type="x-world/x-vrml"/>
     <generic-icon name="x-office-document"/>
     <sub-class-of type="text/plain"/>
     <magic priority="60">
@@ -6557,8 +6771,8 @@
     <comment>Emacs Lisp Source Code</comment>
     <sub-class-of type="text/plain"/>
     <magic priority="50">
-      <match offset="0" type="string" value="\012("/>
-      <match offset="0" type="string" value=";ELC\023\000\000\000"/>
+      <match offset="0" type="string" value="\x0a("/>
+      <match offset="0" type="string" value=";ELC\x13\x00\x00\x00"/>
     </magic>
     <glob pattern="*.el"/>
   </mime-type>
@@ -7422,7 +7636,7 @@
     <acronym>3GPP</acronym>
     <expanded-acronym>3rd Generation Partnership Project</expanded-acronym>
     <sub-class-of type="video/mp4"/>
-    <magic priority="50">
+    <magic priority="70">
       <match offset="4" type="string" value="ftyp3ge"/>
       <match offset="4" type="string" value="ftyp3gg"/>
       <match offset="4" type="string" value="ftyp3gp"/>
@@ -7458,8 +7672,8 @@
     <sub-class-of type="application/annodex"/>
     <magic priority="50">
       <match offset="0" type="string" value="OggS">
-        <match offset="28" type="string" value="fishead\0">
-          <match offset="56:512" type="string" value="CMML\0\0\0\0"/>
+        <match offset="28" type="string" value="fishead\x00">
+          <match offset="56:512" type="string" value="CMML\x00\x00\x00\x00"/>
         </match>
       </match>
     </magic>
@@ -7552,6 +7766,7 @@
       <match offset="0" type="big32" value="0x000001ba"/>
       <match offset="0" type="string" value="\x47\x3f\xff\x10"/>
     </magic>
+    <glob pattern="*.m2p"/>
     <glob pattern="*.mp2"/>
     <glob pattern="*.mpe"/>
     <glob pattern="*.mpeg"/>
@@ -7701,7 +7916,7 @@
     <alias type="video/msvideo"/>
     <alias type="video/vnd.divx"/>
     <alias type="video/x-avi"/>
-    <magic priority="50">
+    <magic priority="70">
       <match offset="0" type="string" value="RIFF">
         <match offset="8" type="string" value="AVI "/>
       </match>
@@ -7853,17 +8068,62 @@
     </treemagic>
   </mime-type>
 
+  <!-- X-CONFERENCE/* -->
+
+  <mime-type type="x-conference/x-cooltalk">
+    <comment>Cooltalk Audio</comment>
+    <icon name="archive"/>
+    <glob pattern="*.ice"/>
+  </mime-type>
+
   <!-- X-EPOC/* -->
 
   <mime-type type="x-epoc/x-sisx-app">
     <acronym>SISX</acronym>
     <comment>SISX Package</comment>
-    <expanded-acronym>Symbian Installation File</expanded-acronym>
+    <expanded-acronym>Symbian Series 3 Installation File</expanded-acronym>
     <icon name="sisx"/>
     <glob pattern="*.sisx"/>
     <magic priority="50">
       <match offset="0" type="little32" value="0x10201a7a"/>
     </magic>
+  </mime-type>
+
+  <!-- X-WORLD/* -->
+
+  <mime-type type="x-world/x-3dmf">
+    <comment>QuickDraw 3D Metafiles</comment>
+    <icon name="media-image"/>
+    <glob pattern="*.3dm"/>
+    <glob pattern="*.3dmf"/>
+    <glob pattern="*.qd3"/>
+    <glob pattern="*.qd3d"/>
+    <magic priority="75">
+      <match offset="0" type="string" value="3DMetafile"/>
+    </magic>
+  </mime-type>
+  <mime-type type="x-world/x-svr">
+    <comment>Compressed Virtual World for WWW</comment>
+    <icon name="media-image"/>
+    <glob pattern="*.svr"/>
+  </mime-type>
+  <mime-type type="x-world/x-vrt">
+    <acronym>GDAL</acronym>
+    <comment>Geospatial Data Abstraction Library File</comment>
+    <expanded-acronym>Geospatial Data Abstraction Library</expanded-acronym>
+    <icon name="media-image"/>
+    <glob pattern="*.vrt"/>
+    <magic priority="95">
+      <match offset="0" type="little32" value="&lt;VRTDataset rasterXSize&lt;&quot;"/>
+    </magic>
+  </mime-type>
+
+  <!-- XGL/* -->
+
+  <mime-type type="xgl/drawing">
+    <comment>MegaBitz XGL Vector Drawing</comment>
+    <icon name="media-image"/>
+    <glob pattern="*.xgz"/>
   </mime-type>
 
 </mime-info>
