@@ -6,7 +6,7 @@
 @brief Various functions that can be used in an HTML/web-browser environment
 @file libhtml.js
 @package libhtml
-@version 2018.12.28
+@version 2019.03.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,6 +32,27 @@ along with this software.
 'use strict';
 
 
+/** Delete all elements with the given class */
+function delByClass(_class) {
+  [].forEach.call(document.querySelectorAll('.' + _class), function(elem) { elem.classList.remove(elem); });
+}
+
+
+/** Exit Fullscreen */
+function exitFullscreen() {
+  let elem = document.documentElement;
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {  /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {  /* Chrome, Opera, and Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {  /* IE/Edge */
+    document.msExitFullscreen();
+  }
+}
+
+
 /** Test if the environment supports pseudoclasses */
 function isPseudoSupported(pseudo) {
   if (pseudo) { return false; }
@@ -49,6 +70,21 @@ function isPseudoSupported(pseudo) {
     return true;
   } catch(e) { return false; }
 };
+
+
+/** View in fullscreen */
+function openFullscreen() {
+  let elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) {  /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {  /* Chrome, Opera, and Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {  /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
 
 
 /** Test if the Caps-Lock key was pressed given the event */
