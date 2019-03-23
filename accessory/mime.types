@@ -123,7 +123,7 @@ application/emotionml+xml
 application/encaprtp
 application/envoy	evy
 application/epp+xml
-application/epub+zip
+application/epub+zip	epub
 application/eshop
 application/example
 application/excel	xls xla xlb xlc xld xlk xll xlm xlt
@@ -139,11 +139,11 @@ application/fractals	fif
 application/framework-attributes+xml
 application/freeloader	frl
 application/futuresplash	spl
-application/geo+json
+application/geo+json	geojson
 application/geo+json-seq
 application/geoxacml+xml
 application/ghostview
-application/gml+xml
+application/gml+xml	gml
 application/gnutar	tgz
 application/groupwise	vew
 application/gzip	gz
@@ -179,7 +179,7 @@ application/javascript	js
 application/jf2feed+json
 application/jose
 application/jose+json
-application/jrd+json
+application/jrd+json	jrd
 application/json	json geojson
 application/json-patch+json
 application/json-seq
@@ -284,8 +284,8 @@ application/pkcs10	p10
 application/pkcs12	p12
 application/pkcs7-mime	p7c p7m
 application/pkcs7-signature	p7s
-application/pkcs8
-application/pkcs8-encrypted
+application/pkcs8	pkcs8
+application/pkcs8-encrypted	p8e
 application/pkix-attr-cert
 application/pkix-cert	cer crt
 application/pkix-crl	crl
@@ -309,6 +309,7 @@ application/prs.rdf-xml-crypt
 application/prs.xsf+xml
 application/pskc+xml
 application/qsig
+application/raml+yaml	raml
 application/raptorfec
 application/rar	rar
 application/rdap+json
@@ -434,6 +435,10 @@ application/yang-patch+xml
 application/yin+xml
 application/zip	zip
 application/zlib
+
+# APPLICATION/prs.* #
+
+application/prs.plucker
 
 # APPLICATION/vnd.* #
 
@@ -1553,6 +1558,7 @@ application/x-x509-ca-cert	crt der
 application/x-xcf	xcf
 application/x-xfig	fig
 application/x-xpinstall	xpi
+application/x-xpraconfig	xpra
 application/x-xz	xz
 
 # AUDIO/* #
@@ -1678,6 +1684,10 @@ audio/vorbis
 audio/vorbis-config
 audio/voxware	vox
 
+# AUDIO/prs.* #
+
+audio/prs.sid	psid
+
 # AUDIO/vnd.* #
 
 audio/vnd.3gpp.iufp
@@ -1739,7 +1749,7 @@ audio/x-twinvq-plugin	vqe vql
 audio/x-vnd.audioexplosion.mjuicemediafile	mjf
 audio/x-wav	wav
 
-# CHEMICAL/* #
+# CHEMICAL/x-* #
 
 chemical/x-alchemy	alc
 chemical/x-cache	cac cache
