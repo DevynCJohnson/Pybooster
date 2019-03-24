@@ -1,3 +1,17 @@
+2019-03-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* color.py:  Added some functions, fixed bugs, & applied optimizations
+	* Geany:  Fixed some code in snippets.conf
+	* genmathart:  Added support for fractals & applied optimizations
+	* hosts:  Removed some URLs that were preventing web-pages from loading
+	* libhtml.js: Added more functions
+	* mime.types: Added more mimetypes
+	* mimetype_booster.xml:  Added more mimetypes & file signatures
+	* NanoRC:  Fixed the coffeescript.nanorc & conf.nanorc files
+	* Opticons:  Added more icons
+	* PyLib:  Created the `fractals` library
+	* ymath.py:  Add support for Cupy & Numba
+
 2019-03-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* aws_rc.sh:  Optimized & fixed some code
