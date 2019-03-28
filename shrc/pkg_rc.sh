@@ -47,8 +47,7 @@ elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-g
     cleanrepocache() { sudo apt-get clean; }
     clrpkg() { sudo apt-get autoremove; }
     [ -n "$(command -v apt-cache)" ] && findpkg() { apt-cache search "$1"; }
-    # TODO: apt-mark showhold
-    fixApt() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; }
+    fixApt() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; [ -x "$(command -v appstreamcli)" ] && appstreamcli refresh-cache > /dev/null; }
     getPkgChlog() { apt-get changelog "${@//;// }"; }
     getpkgsrc() { apt-get source --download-only "${@//;// }"; }
     pkginstall() { sudo apt-get install "${@//;// }"; }
@@ -57,7 +56,7 @@ elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-g
     pkgreinstall() { sudo apt-get install --reinstall "${@//;// }"; }
     pkguninstall() { sudo apt-get purge "${@//;// }"; }
     pkgupdate() { sudo apt-get install --only-upgrade "${@//;// }"; }
-    refreshrepo() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get update; }
+    refreshrepo() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; [ -x "$(command -v appstreamcli)" ] && appstreamcli refresh-cache > /dev/null; sudo apt-get update; }
     repocheck() { sudo apt-get check; }
     sysupdate() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get dist-upgrade; }
     sysupgrade() { [ -d /var/cache/apt/archives/partial/ ] && sudo chown -R _apt:root /var/cache/apt/archives/partial/ && sudo chmod -R 770 /var/cache/apt/archives/partial/; sudo apt-get update && sudo apt-get upgrade; sudo apt-get dist-upgrade && apt-get autoremove; sudo do-release-upgrade -d; }
@@ -70,6 +69,11 @@ elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-g
         alias filepkgorigin='dpkg-query -S'
         alias filesfrompkg='dpkg-query -L'
         alias pkglsinst='dpkg --list | grep ^i'
+        pkglshold() { dpkg --get-selections | grep hold; }
+        #' List removed packages that still have remaining/persistent configuration files
+        pkglsrc() { dpkg -l | grep ^rc; }
+        #' List half-installed packages
+        pkglshalfinst() { dpkg -l | grep ^.h; }
     fi
     [ -x "$(command -v dpkg-query)" ] && alias pkgfind='dpkg-query --list'
 elif [ -d /etc/dnf ] && [ -x "$(command -v dnf)" ]; then  # Fedora DNF
