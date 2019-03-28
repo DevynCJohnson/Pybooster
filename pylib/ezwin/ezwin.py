@@ -6,7 +6,7 @@
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -21,7 +21,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -62,7 +62,7 @@ __all__: list = [
 
 __author__: str = r'Devyn Collier Johnson'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2018.12.28'
+__version__: str = r'2019.03.28'
 
 
 __about__: str = (
@@ -605,9 +605,9 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
         Gtk.main_quit()
 
     ui.connect_signals({
-        r'_winexit': Gtk.main_quit,
-        r'_submit_text': _submit_text,
         r'_cancel': Gtk.main_quit,
+        r'_submit_text': _submit_text,
+        r'_winexit': Gtk.main_quit
     })
     l_msg = ui.get_object(r'l_msg')
     l_msg.set_text(_msg)

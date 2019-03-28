@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 
 [Desktop Entry]
-Categories=Development;
+Categories=Development;Utility;
 Comment=Disassemble and view information about a library or executable
 Exec=program-analyzer %f
 GenericName=Executable Viewer

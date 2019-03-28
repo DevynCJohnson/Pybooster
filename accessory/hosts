@@ -67,7 +67,7 @@
 # LOCALHOST IPv6 #
 
 
-::1 ip6-localhost ip6-loopback localhost6
+::1 ip6-localhost ip6-loopback localhost6 loopback6
 fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes

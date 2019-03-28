@@ -1,3 +1,14 @@
+2019-03-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* alphabetize_lines:  Added support for character sorting, added more delimiters, and changed the inner-workings of the script
+	* color.py:  Applied fixes & optimizations
+	* libchar.py:  Added more holographs
+	* Opticons:  Added an icon for MenuLibre
+	* PyBooster:  Added `Color-Kit` & associated files
+	* PyBooster:  Added `Desktop-Entry-Maker` & associated files
+	* PyBooster:  Miscellaneous fixes & tweaks
+	* strtools.py:  Added more holographs
+
 2019-03-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* color.py:  Added some functions, fixed bugs, & applied optimizations

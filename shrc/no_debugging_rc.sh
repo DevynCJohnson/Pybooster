@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Shell RC script providing environment variables that disable/reduce various debugging and logging activities
 #' @file no_debugging_rc.sh
-#' @version 2019.03.16
+#' @version 2019.03.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -22,6 +22,7 @@ if [ ! -f /etc/allow_debugging ] || { [ -n "${HOME:-}" ] && [ ! -f "${HOME:-}/.l
     export GTK_DEBUG=''
     export NO_AT_BRIDGE=1
     export ORC_DEBUG=0
+    export XDG_UTILS_DEBUG_LEVEL=0
 
 
 fi

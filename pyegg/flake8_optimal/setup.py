@@ -5,7 +5,7 @@
 """@brief Setup file for Flake8-Optimal plugin
 
 @file setup.py
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -73,7 +73,7 @@ if __name__ == '__main__':
             r'Development Status :: 5 - Production/Stable',
             r'Environment :: Console',
             r'Intended Audience :: Developers',
-            r'License :: OSI Approved :: LGPL3 License',
+            r'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
             r'Operating System :: OS Independent',
             r'Programming Language :: Python :: 3',
             r'Programming Language :: Python :: Implementation :: CPython',

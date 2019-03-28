@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Inspect Python scripts for syntax errors and stylistic issues
 #' @file pyinspect
-#' @version 2018.12.28
+#' @version 2019.03.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -32,7 +32,7 @@ elif [ ! -x "$(command -v pytest3)" ]; then
     exit 1
 fi
 
-version=2018.12.28
+version=2019.03.28
 PARAM="${*:-}"
 
 

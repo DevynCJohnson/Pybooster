@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.03.16
+#' @version 2019.03.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -105,6 +105,8 @@ help :
 	printf '%s\n\t%s\n' '/usr/bin Utils:' 'sudo make install_programs'
 	printf '%s\n\t%s\n' 'Additional Mimetypes:' 'sudo make install_mimetype_booster'
 	printf '%s\n\t%s\n' 'C Libraries:' 'sudo make install_clib'
+	printf '%s\n\t%s\n' 'Color Kit:' 'sudo make install_color_kit'
+	printf '%s\n\t%s\n' 'Desktop Entry Maker:' 'sudo make install_desktop_entry_maker'
 	printf '%s\n\t%s\n' 'Enhanced XCompose File:' 'make install_xcompose'
 	printf '%s\n\t%s\n' 'Language Specification Files:' 'sudo make install_langspecs'
 	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
@@ -210,9 +212,9 @@ default :
 # Git
 .PHONY : gitadd presubmit submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
 # Install
-.PHONY : install install_bin install_clib install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
 
@@ -535,6 +537,34 @@ uninstall_clib :
 	# Uninstall Documentation
 	([ -d $(SYSDOCDIR)/clib/ ] && $(RMDIR) $(SYSDOCDIR)/clib/) || true
 
+install_color_kit : | fixperm $(PYBDIR)/__init__.py
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Color Kit ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
+	$(COPY) $(SCRIPTSRCDIR)/color-kit $(INSTALLBINDIR)/
+	$(COPY) $(MENUDIR)/Color-Kit.desktop $(SYSAPPDIR)/
+	$(COPY) $(MENUDIR)/color-kit $(SYSMENUDIR)/
+	$(COPY) $(THEMEDIR)/Opticons/apps/color-kit.svg $(PIXMAPDIR)/
+
+uninstall_color_kit :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Color Kit ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RM) $(INSTALLBINDIR)/color-kit $(SYSAPPDIR)/Color-Kit.desktop $(SYSMENUDIR)/color-kit $(PIXMAPDIR)/color-kit.svg
+
+install_desktop_entry_maker : | fixperm $(PYBDIR)/__init__.py
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Desktop Entry Maker ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true
+	$(COPY) $(SCRIPTSRCDIR)/desktop-entry-maker $(INSTALLBINDIR)/
+	$(COPY) $(MENUDIR)/Desktop-Entry-Maker.desktop $(SYSAPPDIR)/
+	$(COPY) $(MENUDIR)/desktop-entry-maker $(SYSMENUDIR)/
+	$(COPY) $(THEMEDIR)/Opticons/apps/menu-editor.svg $(PIXMAPDIR)/
+
+uninstall_desktop_entry_maker :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Desktop Entry Maker ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RM) $(INSTALLBINDIR)/desktop-entry-maker $(SYSAPPDIR)/Desktop-Entry-Maker.desktop $(SYSMENUDIR)/desktop-entry-maker $(PIXMAPDIR)/menu-editor.svg
+
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='
 	if [ "$(UID)" == '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
@@ -665,8 +695,8 @@ install_pylib : | rmtmp fixperm
 	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
 	([ -d $(PYSRC)/__pycache__/ ] && $(RMDIR) $(PYSRC)/__pycache__/) || true
 	([ -d $(PYSRC)/ezwin/__pycache__/ ] && $(RMDIR) $(PYSRC)/ezwin/__pycache__/) || true
-	$(MKDIR) $(PYBDIR)/
-	$(CPDIR) $(PYSRC)/* $(PYBDIR)/
+	$(MKDIR) $(PYBDIR)
+	$(CPDIR) $(PYSRC)/* $(PYBDIR)
 	# Install Documentation
 	([ -d $(DOCDIR)/pylib/ ] && [ -d $(SYSDOCDIR)/ ] && [ ! -d $(SYSDOCDIR)/pylib/ ] && $(MKDIR) $(SYSDOCDIR)/pylib/) || true
 	([ -d $(DOCDIR)/pylib/ ] && [ -d $(SYSDOCDIR)/pylib/ ] && $(CPDIR) $(DOCDIR)/pylib/* $(SYSDOCDIR)/pylib/) || true
@@ -684,13 +714,14 @@ install_pylib : | rmtmp fixperm
 	([ -d $(PYPATH)3.7/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.7/pybooster) || true
 	([ -d $(PYPATH)3.8/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.8/pybooster) || true
 	([ -d $(PYPATH)3.9/ ] && $(LNDIR) $(PYBDIR) $(PYPATH)3.9/pybooster) || true
+	([ -d $(PYBDIR)/pybooster ] && $(RM) $(PYBDIR)/pybooster) || true
 
 uninstall_pylib : uninstall_program_analyzer uninstall_scripts
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Python Libraries ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(INSTALLBINDIR)/ezdisplay $(INSTALLBINDIR)/ezwin
-	([ -d $(PYBDIR)/ ] && $(RMDIR) $(PYBDIR)/) || true
 	$(RM) $(PYPATH)3.6/pybooster $(PYPATH)3.7/pybooster $(PYPATH)3.8/pybooster $(PYPATH)3.9/pybooster
+	([ -d $(PYBDIR) ] && $(RMDIR) $(PYBDIR)) || true
 	# Uninstall Documentation
 	([ -d $(SYSDOCDIR)/pylib/ ] && $(RMDIR) $(SYSDOCDIR)/pylib/) || true
 

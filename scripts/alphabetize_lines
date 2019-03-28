@@ -5,7 +5,7 @@
 """@brief Sort lines (or list) in data stream alphabetically
 
 @file alphabetize_lines
-@version 2019.03.24
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

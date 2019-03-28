@@ -6,7 +6,7 @@
 
 @file __init__.py
 @package pybooster.__init__
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -21,7 +21,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -78,5 +78,5 @@ __author__: str = r'Devyn Collier Johnson'
 __docformat__: str = r'restructuredtext en'
 __email__: str = r'DevynCJohnson@Gmail.com'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2018.12.28'
+__version__: str = r'2019.03.28'
 __description__: str = r'Collection of libraries for Python3'

@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable
 
 @file program-analyzer
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -20,7 +20,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -70,7 +70,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Program-Analyzer is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -1215,7 +1215,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 EzWin is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -1382,8 +1382,7 @@ STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 
 
 class DataTable:  # pylint: disable=R0903
-    """Global readonly table for all threads to get data"""
-    # Scan for Available Tools
+    """Global readonly table for all threads to get data concerning the available tools"""
     is_insn_count_available: bool = is_program_aval(r'insn_count')
     is_ndisasm_available: bool = is_program_aval(r'ndisasm')
     is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
@@ -1430,10 +1429,10 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         self.file_ui = Gtk.Builder()
         self.file_ui.add_from_string(buffer=_FILEGUI)
         self.file_ui.connect_signals({
-            r'_winexit': self._winexit,
             r'_cancel': self._cancel,
+            r'_hidden': self._hidden,
             r'_select': self._select,
-            r'_hidden': self._hidden
+            r'_winexit': self._winexit
         })
         self._out: Union[list, str] = []
 
@@ -1685,7 +1684,7 @@ def write2file(_filename: str, _write: str) -> None:
     """Send data to new file or overwrite file"""
     statusbar.push(context_id, STATUS_WRITING[1])
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(_write)
+        _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
 
 
 # SHOW/HIDE SAVE-BUTTONS #

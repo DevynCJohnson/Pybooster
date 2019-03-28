@@ -38,7 +38,7 @@ PROJECT_NAME           = "PyBooster (C Libraries)"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER=2018.12.28
+PROJECT_NUMBER=2019.03.28
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a

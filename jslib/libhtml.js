@@ -6,7 +6,7 @@
 @brief Various functions that can be used in an HTML/web-browser environment
 @file libhtml.js
 @package libhtml
-@version 2019.03.21
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -21,7 +21,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License

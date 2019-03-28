@@ -5,7 +5,7 @@
 """@brief Convert the characters in the string to their holograph equivalents
 
 @file str2holograph
-@version 2019.01.25
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Universal setup script for Posix-compatible shells
 #' @file profile
-#' @version 2019.03.16
+#' @version 2019.03.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #'
@@ -318,9 +318,8 @@ fi
 
 [ -x /usr/libexec/path_helper ] && eval "$(/usr/libexec/path_helper -s)"
 
-export XDG_UTILS_DEBUG_LEVEL=0
 # Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
-[ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && [ -f /etc/debian_version ] && export DEBIAN_FRONTEND='dialog'
+[ -d /etc/apt ] && [ -f /etc/debian_version ] && { [ -x "$(command -v apt-get)" ] || [ -x "$(command -v apt)" ]; } && export DEBIAN_FRONTEND='dialog'
 # Set an environment variable containing the kernel's release information (version)
 [ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -n "$(command -v uname)" ] && readonly KRELEASE="$(uname -r)" && export KRELEASE
 # Ensure that Python scripts are always compiled to bytecode
@@ -335,14 +334,23 @@ export PYTHONOPTIMIZE=True
 #' @param[out] Returns `0` if true (the input was found in `$PATH`)
 notinpath() { (echo "$PATH" | grep -F -q -v "$1" && return 0) || return 1; }
 # Setup the $PATH environment variable
+[ -d /usr/local/sbin ] && notinpath '/usr/local/sbin' && PATH="${PATH}:/usr/local/sbin"
+[ -d /usr/local/bin ] && notinpath '/usr/local/bin' && PATH="${PATH}:/usr/local/bin"
+[ -d /usr/sbin ] && notinpath '/usr/sbin' && PATH="${PATH}:/usr/sbin"
+[ -d /usr/bin ] && notinpath '/usr/bin' && PATH="${PATH}:/usr/bin"
+[ -d /sbin ] && notinpath '/sbin' && PATH="${PATH}:/sbin"
+[ -d /bin ] && notinpath '/bin' && PATH="${PATH}:/bin"
 [ -x "$(command -v brew)" ] && path_tmp="${PATH}:$(brew --cellar)" && PATH="$path_tmp" && unset path_tmp
 [ -d /usr/local/opt ] && notinpath '/usr/local/opt' && PATH="${PATH}:/usr/local/opt"
+[ -d /usr/opt ] && notinpath '/usr/opt' && PATH="${PATH}:/usr/opt"
 [ -d /opt/bin ] && notinpath '/opt/bin' && PATH="${PATH}:/opt/bin"
 [ -d /snap/bin ] && notinpath '/snap/bin' && PATH="${PATH}:/snap/bin"
 [ -d "${HOME}/bin" ] && notinpath "${HOME}/bin" && notinpath '\~/bin' && PATH="${HOME}/bin:${PATH}"
 [ -d "${HOME}/.local/bin" ] && notinpath "${HOME}/.local/bin" && notinpath '\~/.local/bin' && PATH="${HOME}/.local/bin:${PATH}"
 [ -d /wine/bin ] && notinpath '/wine/bin' && PATH="${PATH}:/wine/bin"
 [ -d /usr/X11/opt ] && notinpath '/usr/X11/opt' && PATH="${PATH}:/opt/X11/bin"
+[ -d /usr/local/games ] && notinpath '/usr/local/games' && PATH="${PATH}:/usr/local/games"
+[ -d /usr/games ] && notinpath '/usr/games' && PATH="${PATH}:/usr/games"
 export PATH
 
 

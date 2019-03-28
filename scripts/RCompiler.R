@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax r; indent-mode normal; eol unix; replace-tabs on; indent-width 2; tab-width 2; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for the R-Compiler
 #' @file RCompiler.R
-#' @version 2018.12.28
+#' @version 2019.03.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 

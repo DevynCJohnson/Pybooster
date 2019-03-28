@@ -6,7 +6,7 @@
 """@brief Wrapper for Pyflakes
 
 @file pyflakes3
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """

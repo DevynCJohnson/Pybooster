@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2018.12.28
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -21,7 +21,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -452,13 +452,19 @@ def writedata(_filename: str, _write: str, _encoding: str = r'utf-8') -> None:
 def append2file(_filename: str, _write: object) -> None:
     """Send data to new file or append to an existing file"""
     with open(_filename, mode=r'at', encoding=r'utf-8') as _file:
-        _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
+        if isinstance(_write, str):
+            _file.write(_write)
+        else:
+            _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
 
 
 def write2file(_filename: str, _write: object) -> None:
     """Send data to new file or overwrite file"""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
+        if isinstance(_write, str):
+            _file.write(_write)
+        else:
+            _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
 
 
 def writebin2file(_filename: str, _write: bytes) -> None:

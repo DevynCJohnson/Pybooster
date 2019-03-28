@@ -5,7 +5,7 @@
 """@brief CxFreeze setup file for Color-Kit
 
 @file setup_color_kit.py
-@version 2019.03.23
+@version 2019.03.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
