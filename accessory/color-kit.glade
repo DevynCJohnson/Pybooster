@@ -60,7 +60,7 @@ Author: Devyn Collier Johnson
             <property name="show_editor">True</property>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
@@ -107,7 +107,7 @@ Created by Devyn Collier Johnson
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
@@ -129,9 +129,9 @@ Created by Devyn Collier Johnson
           <object class="GtkGrid" id="convgrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="column_homogeneous">True</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="column_spacing">20</property>
             <child>
               <object class="GtkLabel" id="l_rgb">
                 <property name="visible">True</property>
@@ -221,8 +221,10 @@ NTSC color model
             </child>
             <child>
               <object class="GtkEntry" id="entry_rgb">
+                <property name="width_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
               </object>
               <packing>
@@ -232,8 +234,10 @@ NTSC color model
             </child>
             <child>
               <object class="GtkEntry" id="entry_hsi">
+                <property name="width_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
               </object>
               <packing>
@@ -243,8 +247,10 @@ NTSC color model
             </child>
             <child>
               <object class="GtkEntry" id="entry_hsv">
+                <property name="width_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
               </object>
               <packing>
@@ -254,8 +260,10 @@ NTSC color model
             </child>
             <child>
               <object class="GtkEntry" id="entry_cmyk">
+                <property name="width_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
               </object>
               <packing>
@@ -265,8 +273,10 @@ NTSC color model
             </child>
             <child>
               <object class="GtkEntry" id="entry_yiq">
+                <property name="width_request">600</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
               </object>
               <packing>
@@ -280,7 +290,6 @@ NTSC color model
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="halign">end</property>
                 <signal name="clicked" handler="conv_rgb" object="entry_rgb" swapped="no"/>
               </object>
               <packing>
@@ -294,8 +303,7 @@ NTSC color model
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="halign">end</property>
-                <signal name="clicked" handler="conv_hsi" object="l_hsi" swapped="no"/>
+                <signal name="clicked" handler="conv_hsi" object="entry_hsi" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -308,7 +316,6 @@ NTSC color model
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="halign">end</property>
                 <signal name="clicked" handler="conv_hsv" object="entry_hsv" swapped="no"/>
               </object>
               <packing>
@@ -322,7 +329,6 @@ NTSC color model
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="halign">end</property>
                 <signal name="clicked" handler="conv_cmyk" object="entry_cmyk" swapped="no"/>
               </object>
               <packing>
@@ -336,7 +342,6 @@ NTSC color model
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="halign">end</property>
                 <signal name="clicked" handler="conv_yiq" object="entry_yiq" swapped="no"/>
               </object>
               <packing>
@@ -346,7 +351,7 @@ NTSC color model
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">3</property>
           </packing>
