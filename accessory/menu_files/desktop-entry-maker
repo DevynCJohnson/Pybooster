@@ -1,0 +1,7 @@
+?package(python3):needs="X11" \
+    section="Applications/Development" \
+    title="Desktop-Entry-Maker" \
+    longtitle="Create Desktop Entry Files" \
+    hints="desktop,menu,maker" \
+    icon="/usr/share/icons/Opticons/apps/menu-editor.svg" \
+    command="desktop-entry-maker"

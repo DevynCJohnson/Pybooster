@@ -1,0 +1,1530 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Create Desktop Entry Files
+
+@file desktop-entry-maker
+@version 2019.03.28
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section STANDARDS
+ - http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+ - http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
+ - https://specifications.freedesktop.org/desktop-entry-spec/latest/
+ - https://specifications.freedesktop.org/menu-spec/latest/
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library.
+"""
+
+
+# pylint: disable=C0103
+
+
+from signal import SIGINT, SIG_DFL, signal
+from os import chmod, stat as osstat
+from typing import Tuple, Union
+from sys import stderr
+
+from gi import require_version
+require_version(r'Gtk', r'3.0')
+from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
+
+
+# GLOBALS #
+
+
+_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1
+
+Copyright (C) LGPLv3
+
+This file is part of Desktop-Entry-Maker.
+
+Desktop-Entry-Maker is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Desktop-Entry-Maker is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Desktop-Entry-Maker.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Devyn Collier Johnson
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name Desktop-Entry-Maker -->
+  <!-- interface-description Create Desktop Entry Files -->
+  <!-- interface-copyright LGPLv3 -->
+  <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkListStore" id="category_list">
+    <columns>
+      <!-- column-name Category -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">2DGraphics;</col>
+      </row>
+      <row>
+        <col id="0">3DGraphics;</col>
+      </row>
+      <row>
+        <col id="0">Accessibility;</col>
+      </row>
+      <row>
+        <col id="0">ActionGame;</col>
+      </row>
+      <row>
+        <col id="0">Adult;</col>
+      </row>
+      <row>
+        <col id="0">AdventureGame;</col>
+      </row>
+      <row>
+        <col id="0">Amusement;</col>
+      </row>
+      <row>
+        <col id="0">ArcadeGame;</col>
+      </row>
+      <row>
+        <col id="0">Archiving;</col>
+      </row>
+      <row>
+        <col id="0">Art;</col>
+      </row>
+      <row>
+        <col id="0">ArtificialIntelligence;</col>
+      </row>
+      <row>
+        <col id="0">Astronomy;</col>
+      </row>
+      <row>
+        <col id="0">Audio;</col>
+      </row>
+      <row>
+        <col id="0">AudioVideo;</col>
+      </row>
+      <row>
+        <col id="0">AudioVideoEditing;</col>
+      </row>
+      <row>
+        <col id="0">Biology;</col>
+      </row>
+      <row>
+        <col id="0">BlocksGame;</col>
+      </row>
+      <row>
+        <col id="0">BoardGame;</col>
+      </row>
+      <row>
+        <col id="0">Building;</col>
+      </row>
+      <row>
+        <col id="0">Calculator;</col>
+      </row>
+      <row>
+        <col id="0">Calendar;</col>
+      </row>
+      <row>
+        <col id="0">CardGame;</col>
+      </row>
+      <row>
+        <col id="0">Chart;</col>
+      </row>
+      <row>
+        <col id="0">Chat;</col>
+      </row>
+      <row>
+        <col id="0">Chemistry;</col>
+      </row>
+      <row>
+        <col id="0">Clock;</col>
+      </row>
+      <row>
+        <col id="0">Compression;</col>
+      </row>
+      <row>
+        <col id="0">ComputerScience;</col>
+      </row>
+      <row>
+        <col id="0">ConsoleOnly;</col>
+      </row>
+      <row>
+        <col id="0">Construction;</col>
+      </row>
+      <row>
+        <col id="0">ContactManagement;</col>
+      </row>
+      <row>
+        <col id="0">Core;</col>
+      </row>
+      <row>
+        <col id="0">Database;</col>
+      </row>
+      <row>
+        <col id="0">DataVisualization;</col>
+      </row>
+      <row>
+        <col id="0">Debugger;</col>
+      </row>
+      <row>
+        <col id="0">DesktopSettings;</col>
+      </row>
+      <row>
+        <col id="0">Development;</col>
+      </row>
+      <row>
+        <col id="0">Dialup;</col>
+      </row>
+      <row>
+        <col id="0">Dictionary;</col>
+      </row>
+      <row>
+        <col id="0">DiscBurning;</col>
+      </row>
+      <row>
+        <col id="0">Documentation;</col>
+      </row>
+      <row>
+        <col id="0">Economy;</col>
+      </row>
+      <row>
+        <col id="0">Education;</col>
+      </row>
+      <row>
+        <col id="0">Electricity;</col>
+      </row>
+      <row>
+        <col id="0">Electronics;</col>
+      </row>
+      <row>
+        <col id="0">Email;</col>
+      </row>
+      <row>
+        <col id="0">Emulators;</col>
+      </row>
+      <row>
+        <col id="0">Engineering;</col>
+      </row>
+      <row>
+        <col id="0">Feed;</col>
+      </row>
+      <row>
+        <col id="0">FileManager;</col>
+      </row>
+      <row>
+        <col id="0">Filesystem;</col>
+      </row>
+      <row>
+        <col id="0">FileTools;</col>
+      </row>
+      <row>
+        <col id="0">FileTransfer;</col>
+      </row>
+      <row>
+        <col id="0">Finance;</col>
+      </row>
+      <row>
+        <col id="0">FlowChart;</col>
+      </row>
+      <row>
+        <col id="0">Game;</col>
+      </row>
+      <row>
+        <col id="0">Geography;</col>
+      </row>
+      <row>
+        <col id="0">Geology;</col>
+      </row>
+      <row>
+        <col id="0">Geoscience;</col>
+      </row>
+      <row>
+        <col id="0">GNOME;</col>
+      </row>
+      <row>
+        <col id="0">Graphics;</col>
+      </row>
+      <row>
+        <col id="0">GTK;</col>
+      </row>
+      <row>
+        <col id="0">GUIDesigner;</col>
+      </row>
+      <row>
+        <col id="0">HamRadio;</col>
+      </row>
+      <row>
+        <col id="0">HardwareSettings;</col>
+      </row>
+      <row>
+        <col id="0">History;</col>
+      </row>
+      <row>
+        <col id="0">Humanities;</col>
+      </row>
+      <row>
+        <col id="0">IDE;</col>
+      </row>
+      <row>
+        <col id="0">ImageProcessing;</col>
+      </row>
+      <row>
+        <col id="0">InstantMessaging;</col>
+      </row>
+      <row>
+        <col id="0">IRCClient;</col>
+      </row>
+      <row>
+        <col id="0">Java;</col>
+      </row>
+      <row>
+        <col id="0">KDE;</col>
+      </row>
+      <row>
+        <col id="0">KidsGame;</col>
+      </row>
+      <row>
+        <col id="0">Languages;</col>
+      </row>
+      <row>
+        <col id="0">Literature;</col>
+      </row>
+      <row>
+        <col id="0">LogicGame;</col>
+      </row>
+      <row>
+        <col id="0">Maps;</col>
+      </row>
+      <row>
+        <col id="0">Math;</col>
+      </row>
+      <row>
+        <col id="0">MedicalSoftware;</col>
+      </row>
+      <row>
+        <col id="0">Midi;</col>
+      </row>
+      <row>
+        <col id="0">Mixer;</col>
+      </row>
+      <row>
+        <col id="0">Monitor;</col>
+      </row>
+      <row>
+        <col id="0">Motif;</col>
+      </row>
+      <row>
+        <col id="0">Music;</col>
+      </row>
+      <row>
+        <col id="0">Network;</col>
+      </row>
+      <row>
+        <col id="0">News;</col>
+      </row>
+      <row>
+        <col id="0">NumericalAnalysis;</col>
+      </row>
+      <row>
+        <col id="0">OCR;</col>
+      </row>
+      <row>
+        <col id="0">Office;</col>
+      </row>
+      <row>
+        <col id="0">P2P;</col>
+      </row>
+      <row>
+        <col id="0">PackageManager;</col>
+      </row>
+      <row>
+        <col id="0">ParallelComputing;</col>
+      </row>
+      <row>
+        <col id="0">PDA;</col>
+      </row>
+      <row>
+        <col id="0">Photography;</col>
+      </row>
+      <row>
+        <col id="0">Physics;</col>
+      </row>
+      <row>
+        <col id="0">Player;</col>
+      </row>
+      <row>
+        <col id="0">Presentation;</col>
+      </row>
+      <row>
+        <col id="0">Printing;</col>
+      </row>
+      <row>
+        <col id="0">Profiling;</col>
+      </row>
+      <row>
+        <col id="0">ProjectManagement;</col>
+      </row>
+      <row>
+        <col id="0">Publishing;</col>
+      </row>
+      <row>
+        <col id="0">Qt;</col>
+      </row>
+      <row>
+        <col id="0">RasterGraphics;</col>
+      </row>
+      <row>
+        <col id="0">Recorder;</col>
+      </row>
+      <row>
+        <col id="0">RemoteAccess;</col>
+      </row>
+      <row>
+        <col id="0">RevisionControl;</col>
+      </row>
+      <row>
+        <col id="0">Robotics;</col>
+      </row>
+      <row>
+        <col id="0">RolePlaying;</col>
+      </row>
+      <row>
+        <col id="0">Scanning;</col>
+      </row>
+      <row>
+        <col id="0">Science;</col>
+      </row>
+      <row>
+        <col id="0">Security;</col>
+      </row>
+      <row>
+        <col id="0">Sequencer;</col>
+      </row>
+      <row>
+        <col id="0">Settings;</col>
+      </row>
+      <row>
+        <col id="0">Shooter;</col>
+      </row>
+      <row>
+        <col id="0">Simulation;</col>
+      </row>
+      <row>
+        <col id="0">Spirituality;</col>
+      </row>
+      <row>
+        <col id="0">Sports;</col>
+      </row>
+      <row>
+        <col id="0">SportsGame;</col>
+      </row>
+      <row>
+        <col id="0">Spreadsheet;</col>
+      </row>
+      <row>
+        <col id="0">StrategyGame;</col>
+      </row>
+      <row>
+        <col id="0">System;</col>
+      </row>
+      <row>
+        <col id="0">Telephony;</col>
+      </row>
+      <row>
+        <col id="0">TelephonyTools;</col>
+      </row>
+      <row>
+        <col id="0">TerminalEmulator;</col>
+      </row>
+      <row>
+        <col id="0">TextEditor;</col>
+      </row>
+      <row>
+        <col id="0">TextTools;</col>
+      </row>
+      <row>
+        <col id="0">Translation;</col>
+      </row>
+      <row>
+        <col id="0">Tuner;</col>
+      </row>
+      <row>
+        <col id="0">TV;</col>
+      </row>
+      <row>
+        <col id="0">Utility;</col>
+      </row>
+      <row>
+        <col id="0">VectorGraphics;</col>
+      </row>
+      <row>
+        <col id="0">Video;</col>
+      </row>
+      <row>
+        <col id="0">VideoConference;</col>
+      </row>
+      <row>
+        <col id="0">Viewer;</col>
+      </row>
+      <row>
+        <col id="0">WebBrowser;</col>
+      </row>
+      <row>
+        <col id="0">WebDevelopment;</col>
+      </row>
+      <row>
+        <col id="0">WordProcessor;</col>
+      </row>
+      <row>
+        <col id="0">XFCE;</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkEntryCompletion" id="category_completion">
+    <property name="model">category_list</property>
+    <property name="minimum_key_length">3</property>
+    <property name="text_column">0</property>
+    <property name="inline_completion">True</property>
+    <property name="popup_completion">False</property>
+    <property name="inline_selection">True</property>
+  </object>
+  <object class="GtkApplicationWindow" id="desktop_entry_window">
+    <property name="width_request">1200</property>
+    <property name="height_request">600</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title">Desktop-Entry Maker</property>
+    <property name="window_position">center</property>
+    <property name="default_width">900</property>
+    <property name="default_height">600</property>
+    <property name="icon_name">menu-editor</property>
+    <property name="has_resize_grip">True</property>
+    <property name="show_menubar">False</property>
+    <signal name="destroy" handler="_winexit" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_left">5</property>
+        <property name="margin_right">5</property>
+        <property name="margin_top">5</property>
+        <property name="margin_bottom">5</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">5</property>
+        <child>
+          <object class="GtkGrid" id="entry_grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="column_spacing">5</property>
+            <child>
+              <object class="GtkLabel" id="label_name">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">The application's name as seen in menus (Required)</property>
+                <property name="label">Name</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_name">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">The application's name as seen in menus (Required)</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">*Required*</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_execute">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Command or path to executable (Required)
+Arguments
+%f - Single file
+%F - File list
+%u - Single URL
+%U - URL List</property>
+                <property name="label">Execute</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_execute">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">Command or path to executable (Required)
+Arguments
+%f - Single file
+%F - File list
+%u - Single URL
+%U - URL List</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">*Required*</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_genericname">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Used to indicate the application's general purpose
+Example: LibreOffice = Office Suite</property>
+                <property name="label">Generic Name</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_genericname">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">Used to indicate the application's general purpose
+Example: LibreOffice = Office Suite</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">Office Suite</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_comment">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Description shown in menu (optional)</property>
+                <property name="label">Comment</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_comment">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">Description shown in menu (optional)</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">Use a descriptive comment</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_keywords">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Keywords used for searching in the menu (optional)
+
+Separate words with a semicolon</property>
+                <property name="label">Keywords</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_keyword">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">Keywords used for searching in the menu (optional)
+
+Separate words with a semicolon</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">editor;cpu;programming;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_icon">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Icon path or icon name (optional)
+
+Icons can be found in -
+
+$HOME/.icons/
+$XDG_DATA_DIRS/icons/
+/usr/share/pixmaps/</property>
+                <property name="label">Icon</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_icon">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text">Icon path or icon name (optional)
+
+Icons can be found in -
+
+$HOME/.icons/
+$XDG_DATA_DIRS/icons/
+/usr/share/pixmaps/</property>
+                <property name="hexpand">True</property>
+                <property name="placeholder_text">Name or Path (/usr/share/icons/)</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_category">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Application categories (separated with a semicolon)
+
+Examples:
+
+Development
+Education
+Game
+GTK
+Java
+Office
+Settings
+System
+Utility</property>
+                <property name="label">Categories</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="category_grid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="column_spacing">10</property>
+                <child>
+                  <object class="GtkEntry" id="entry_category">
+                    <property name="width_request">500</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text">Application categories (separated with a semicolon)
+
+Examples:
+
+Development
+Education
+Game
+GTK
+Java
+Office
+Settings
+System
+Utility</property>
+                    <property name="hexpand">True</property>
+                    <property name="placeholder_text">System;Development;</property>
+                    <property name="completion">category_completion</property>
+                    <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="combobox_category">
+                    <property name="width_request">300</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text">Category List</property>
+                    <property name="hexpand">True</property>
+                    <property name="popup_fixed_width">False</property>
+                    <signal name="changed" handler="_add2list" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">6</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="options_grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkLabel" id="label_type">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Entry Type such as "Application", "Link", or "Directory" (Required)</property>
+                <property name="label">Type</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="combobox_type">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Entry Type such as "Application", "Link", or "Directory"</property>
+                <property name="hexpand">True</property>
+                <property name="active">0</property>
+                <items>
+                  <item>Application</item>
+                  <item>Link</item>
+                  <item>Directory</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_terminal">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Run in a terminal?</property>
+                <property name="label">Terminal</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_nodisplay">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Do not add application to "open with" and desktop/application menus</property>
+                <property name="label">NoDisplay</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="check_terminal">
+                <property name="label">True</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text">Run in a terminal?</property>
+                <property name="halign">center</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="check_nodisplay">
+                <property name="label">True</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text">Do not add application to "open with" and desktop/application menus</property>
+                <property name="halign">center</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_hidden">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Hide the entry from the menu</property>
+                <property name="label">Hidden</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="check_hidden">
+                <property name="label">True</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text">Hide the entry from the menu</property>
+                <property name="halign">center</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_version">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">XDG Desktop Entry Version</property>
+                <property name="label">Version</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="combobox_version">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">XDG Desktop Entry Version</property>
+                <property name="hexpand">True</property>
+                <property name="active">0</property>
+                <items>
+                  <item>1.1</item>
+                  <item>1.0</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_onlyshowin">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Only show this menu entry in one of he following desktop environments</property>
+                <property name="label">OnlyShowIn</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="combobox_onlyshowin">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Only show this menu entry in one of he following desktop environments</property>
+                <property name="hexpand">True</property>
+                <property name="active">0</property>
+                <items>
+                  <item translatable="yes"> </item>
+                  <item>Cinnamon</item>
+                  <item>EDE</item>
+                  <item translatable="yes">GNOME</item>
+                  <item translatable="yes">KDE</item>
+                  <item translatable="yes">LXDE</item>
+                  <item translatable="yes">LXQt</item>
+                  <item translatable="yes">MATE</item>
+                  <item translatable="yes">Old</item>
+                  <item translatable="yes">Pantheon</item>
+                  <item translatable="yes">Razor</item>
+                  <item translatable="yes">ROX</item>
+                  <item translatable="yes">TDE</item>
+                  <item translatable="yes">Unity</item>
+                  <item translatable="yes">XFCE</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">5</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="btn_grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="btn_close">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_text">Close this application</property>
+                <property name="halign">center</property>
+                <property name="use_stock">True</property>
+                <property name="image_position">right</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="_winexit" object="desktop_entry_window" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="_save_as">
+                <property name="label">gtk-save</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_text">Create the Desktop-Entry file in the selected location</property>
+                <property name="halign">center</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+                <signal name="clicked" handler="_save_as" object="desktop_entry_window" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label_about">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label">Version: 2019.03.28
+Author: Devyn Collier Johnson
+&amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
+            <property name="use_markup">True</property>
+            <property name="justify">center</property>
+            <property name="selectable">True</property>
+            <property name="track_visited_links">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>"""
+
+
+_FILECHOOSER: str = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1
+
+Copyright (C) LGPLv3
+
+This file is part of EzWin.
+
+EzWin is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+EzWin is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with EzWin.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Devyn Collier Johnson
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name EzWin -->
+  <!-- interface-description File Selection -->
+  <!-- interface-copyright LGPLv3 -->
+  <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkApplicationWindow" id="ezwin">
+    <property name="width_request">750</property>
+    <property name="height_request">600</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Choose a File</property>
+    <property name="window_position">center</property>
+    <property name="icon_name">system-file-manager</property>
+    <property name="type_hint">dialog</property>
+    <property name="show_menubar">False</property>
+    <signal name="delete-event" handler="_winexit" object="ezwin" swapped="no"/>
+    <signal name="destroy-event" handler="_winexit" object="ezwin" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_right">5</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFileChooserWidget" id="filechooser">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_bottom">5</property>
+            <property name="create_folders">False</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="chkbtn2">
+            <property name="label" translatable="yes">Select current location</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Marked - The current location/folder is returned
+
+Empty - The selected folder is returned</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="btn1">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Submit selection to the program that opened this dialog.</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="_select" object="filechooser" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chkbtn1">
+                <property name="label" translatable="yes">View hidden files</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Marked - Show hidden files
+Empty - Hidden files not seen</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="_hidden" object="filechooser" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn2">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Cancel</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="_cancel" object="ezwin" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>"""
+
+
+signal(SIGINT, SIG_DFL)
+
+
+# CLASSES #
+
+
+class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
+    """File Selection Window"""
+
+    def __init__(self) -> None:
+        """Initialize file selection window"""
+        self.file_ui = Gtk.Builder()
+        self.file_ui.add_from_string(buffer=_FILECHOOSER)
+        self.file_ui.connect_signals({
+            r'_cancel': self._cancel,
+            r'_hidden': self._hidden,
+            r'_select': self._select,
+            r'_winexit': self._winexit
+        })
+        self._out: Union[list, str] = []
+
+    def ezfilech(  # pylint: disable=R0915
+            self,
+            _select_file: bool = True,
+            _select_dir: bool = False,
+            _multiple: bool = False,
+            _savefile: bool = False,
+            _viewhidden: bool = False,
+            _file_exten: bool = True,
+            _init_path: str = r'',
+            _return_uri: bool = True,
+            _return_dtype: str = r'list',
+    ) -> Union[list, str]:
+        """File Chooser Dialog: Select a file or folder"""
+        # Parameters
+        self._select_file: bool = _select_file
+        self._select_dir: bool = _select_dir
+        self._multiple: bool = _multiple
+        self._savefile: bool = _savefile
+        self._viewhidden: bool = _viewhidden
+        self._file_exten: bool = _file_exten
+        self._init_path: str = _init_path
+        self._return_uri: bool = _return_uri
+        self._return_dtype: str = _return_dtype
+        # Window Objects
+        self.filechooserwin = self.file_ui.get_object(r'ezwin')
+        self._filew = self.file_ui.get_object(r'filechooser')
+        self._chkbtn_hidden = self.file_ui.get_object(r'chkbtn1')
+        self._chkbtn_dir = self.file_ui.get_object(r'chkbtn2')
+        self._btn_ok = self.file_ui.get_object(r'btn1')
+        # Set Widget Properties
+        self._chkbtn_dir.set_visible(False)
+        self._filew.set_create_folders(self._savefile)
+        self._filew.set_select_multiple(self._multiple)
+        self._filew.set_local_only(True)
+        self._filew.set_show_hidden(self._viewhidden)
+        self._chkbtn_hidden.set_active(self._viewhidden)
+        if self._init_path:
+            try:
+                self._filew.set_current_folder(self._init_path)
+            except (NameError, OSError, TypeError, ValueError):
+                pass
+        if self._select_dir and not self._savefile:
+            self._filew.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
+            self._chkbtn_dir.set_visible(not self._multiple)
+        elif self._select_dir and self._savefile:
+            self._multiple = False
+            self.filechooserwin.set_title(r'Save Data')
+            self._btn_ok.set_label(r'Save')
+            self._filew.set_action(Gtk.FileChooserAction.CREATE_FOLDER)
+            self._filew.set_do_overwrite_confirmation(True)
+        elif self._select_file and not self._savefile:
+            self._filew.set_action(Gtk.FileChooserAction.OPEN)
+        elif self._select_file and self._savefile:
+            self._multiple = False
+            self.filechooserwin.set_title(r'Save Data As')
+            self._btn_ok.set_label(r'Save')
+            self._filew.set_action(Gtk.FileChooserAction.SAVE)
+            self._filew.set_do_overwrite_confirmation(True)
+        else:
+            self._savefile = False
+            self._filew.set_action(Gtk.FileChooserAction.OPEN)
+        # File Filters
+        if self._select_file and self._file_exten:
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'All Files')
+            self._filter.add_pattern(r'*')
+            self._filew.add_filter(self._filter)
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'Desktop Entry Files')
+            self._filter.add_pattern(r'*.desktop')
+            self._filew.add_filter(self._filter)
+            self._filter = Gtk.FileFilter()
+            self._filter.set_name(r'Text Files')
+            self._filter.add_mime_type(r'text/plain')
+            self._filew.add_filter(self._filter)
+        # Begin Window
+        Gtk.main()
+        while Gtk.events_pending():
+            Gtk.main_iteration_do(True)
+        return self._out
+
+    def _winexit(self, *_x: Union[None, Tuple[Gtk.ApplicationWindow, None]]) -> None:  # pylint: disable=R0201
+        """Close Window"""
+        self.filechooserwin.destroy()
+        Gtk.main_quit()
+
+    def _cancel(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
+        """Cancel-Button functionality"""
+        self._out = r'cancel'
+        self.filechooserwin.destroy()
+        Gtk.main_quit()
+
+    def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
+        """Submit selection for processing using the select-button"""
+        if self._select_dir and not self._multiple and self._chkbtn_dir.get_active():
+            if self._return_uri and self._return_dtype == r'str':
+                self._out = r' '.join(self._filew.get_current_folder_uri())
+            elif self._return_uri and self._return_dtype != r'str':
+                self._out = self._filew.get_current_folder_uri()
+            elif not self._return_uri and self._return_dtype == r'str':
+                self._out = r' '.join(self._filew.get_current_folder())
+            else:
+                self._out = self._filew.get_current_folder()
+            self.filechooserwin.destroy()
+            Gtk.main_quit()
+            return
+        if self._return_uri and self._return_dtype == r'str':
+            self._out = r' '.join(self._filew.get_uris())
+        elif self._return_uri and self._return_dtype != r'str':
+            self._out = self._filew.get_uris()
+        elif not self._return_uri and self._return_dtype == r'str':
+            self._out = r' '.join(self._filew.get_filenames())
+        else:
+            self._out = self._filew.get_filenames()
+        self.filechooserwin.destroy()
+        Gtk.main_quit()
+
+    def _hidden(self, _chkbtn: Tuple[Gtk.CheckButton, None]) -> None:
+        """Toggle the visibility of hidden files using the hidden-checkbox"""
+        self._viewhidden = not self._viewhidden
+        self._filew.set_show_hidden(self._viewhidden)
+
+
+# FUNCTIONS #
+
+
+def write2file(_filename: str, _write: str) -> None:
+    """Send data to new file or overwrite file"""
+    with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
+        _file.write(_write)
+
+
+class MainWin():
+    """Main Window"""
+
+    def __init__(self):
+        """Main window"""
+        self.ui = Gtk.Builder()
+        self.ui.add_from_string(buffer=_GUI)
+        # Match signal to function (handler)
+        self.ui.connect_signals({
+            r'_add2list': self.add2list,
+            r'_save_as': self._save_as,
+            r'_winexit': Gtk.main_quit
+        })
+        self.entry_category = self.ui.get_object(r'entry_category')
+        self.combobox_category = self.ui.get_object(r'combobox_category')
+        self.category_list = self.ui.get_object(r'category_list')
+        self.category_completion = self.ui.get_object(r'category_completion')
+        self.category_completion.set_match_func(self.autocompletion_category)
+        self.combobox_category.set_model(self.category_list)
+        self.combobox_category.set_wrap_width(6)
+
+    def add2list(self, _selected: Gtk.ComboBoxText) -> None:
+        """Add category to list"""
+        _tmp: str = self.entry_category.get_text()
+        self.entry_category.set_text(_tmp + _selected.get_active_text())
+
+    @staticmethod
+    def autocompletion_category(completion: Gtk.EntryCompletion, entrystr: str, _iter: Gtk.TreeIter) -> bool:
+        """Test for auto-completion match"""
+        _entrystr: str = entrystr.split(r';')[-1].casefold().strip()
+        return completion.get_model()[_iter][0].casefold().startswith(_entrystr)
+
+    def _save_as(self, *_x) -> None:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
+        """Save XDG *.desktop file"""
+        # Get objects
+        entry_name = self.ui.get_object(r'entry_name')
+        entry_genericname = self.ui.get_object(r'entry_genericname')
+        entry_execute = self.ui.get_object(r'entry_execute')
+        entry_icon = self.ui.get_object(r'entry_icon')
+        combobox_version = self.ui.get_object(r'combobox_version')
+        combobox_onlyshowin = self.ui.get_object(r'combobox_onlyshowin')
+        combobox_type = self.ui.get_object(r'combobox_type')
+        check_terminal = self.ui.get_object(r'check_terminal')
+        check_nodisplay = self.ui.get_object(r'check_nodisplay')
+        check_hidden = self.ui.get_object(r'check_hidden')
+        entry_comment = self.ui.get_object(r'entry_comment')
+        entry_keyword = self.ui.get_object(r'entry_keyword')
+        entry_category = self.ui.get_object(r'entry_category')
+        # Get Data
+        _check_hidden: bool = check_hidden.get_active()
+        _check_nodisplay: bool = check_nodisplay.get_active()
+        _check_terminal: bool = check_terminal.get_active()
+        _combobox_onlyshowin: str = combobox_onlyshowin.get_active_text().strip()
+        _combobox_type: str = combobox_type.get_active_text()
+        _combobox_version: str = combobox_version.get_active_text()
+        _entry_category: str = entry_category.get_text().strip()
+        _entry_comment: str = entry_comment.get_text().strip()
+        _entry_execute: str = entry_execute.get_text().strip()
+        _entry_genericname: str = entry_genericname.get_text().strip()
+        _entry_icon: str = entry_icon.get_text().strip()
+        _entry_keyword: str = entry_keyword.get_text().strip()
+        _entry_name: str = entry_name.get_text().strip()
+        # Process Data
+        if not (_entry_name and _entry_name[0].isalnum() and (_entry_execute or _combobox_type != r'Application')):
+            return
+        _terminal: str = r'true' if _check_terminal else r'false'
+        _nodisplay: str = r'true' if _check_nodisplay else r'false'
+        _hidden: str = r'true' if _check_hidden else r'false'
+        _exec: str = r''
+        _url: str = r''
+        _entry_keyword = '\nKeywords=' + _entry_keyword + r';' if _entry_keyword and not _entry_keyword.endswith(r';') else '\nKeywords=' + _entry_keyword if _entry_keyword else r''
+        _entry_category = '\nCategories=' + _entry_category + r';' if _entry_category and not _entry_category.endswith(r';') else '\nCategories=' + _entry_category if _entry_category else r''
+        _entry_comment = '\nComment=' + _entry_comment if _entry_comment else '\nComment=' + _entry_name
+        _entry_genericname = '\nGenericName=' + _entry_genericname if _entry_genericname else r''
+        _entry_icon = '\nIcon=' + _entry_icon if _entry_icon else r''
+        _combobox_onlyshowin = '\nOnlyShowIn=' + _combobox_onlyshowin if _combobox_onlyshowin else r''
+        if _combobox_type == r'Link':
+            _entry_type = '\nType=Link'
+            _url = '\nURL=' + _entry_execute
+        elif _combobox_type == r'Directory':
+            _entry_type = '\nType=Directory'
+        else:
+            _entry_type = '\nType=Application'
+            _exec = '\nExec=' + _entry_execute
+        # Create Data
+        _data: str = str(
+            '#!/usr/bin/env xdg-open\n\n' +
+            r'[Desktop Entry]' +
+            _entry_category +
+            _entry_comment +
+            _exec +
+            _entry_genericname +
+            '\nHidden=' + _hidden +
+            _entry_icon +
+            _entry_keyword +
+            '\nName=' + _entry_name +
+            '\nNoDisplay=' + _nodisplay +
+            _combobox_onlyshowin +
+            '\nTerminal=' + _terminal +
+            _entry_type +
+            _url +
+            '\nVersion=' + _combobox_version
+        )
+        # Select Location
+        _filewin = FileChooserWin()
+        _path: str = str(_filewin.ezfilech(_select_file=True, _select_dir=False, _multiple=False, _savefile=True, _return_uri=False, _return_dtype=r'str'))
+        if _path.lower() in {r'', r'cancel', r'none'}:
+            return
+        _path = _path if _path.endswith(r'.desktop') else _path + r'.desktop'
+        # Write Data
+        try:
+            write2file(_path, _data)
+        except BaseException as _err:
+            stderr.write(str(_err))
+            raise SystemExit(1)
+        # Set Permissions
+        _st = osstat(_path)
+        chmod(_path, _st.st_mode)
+        # Close/End
+        Gtk.main_quit()
+        return
+
+
+# MAIN #
+
+
+if __name__ == '__main__':
+    MainWin()
+    Gtk.main()
+    raise SystemExit(0)
