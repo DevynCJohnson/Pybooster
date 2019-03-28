@@ -227,6 +227,10 @@ def html2rgb(_html: str) -> tuple:
 
     >>> html2rgb('#62B611')
     (98, 182, 17)
+    >>> html2rgb('#FF00FF')
+    (255, 0, 255)
+    >>> html2rgb('#Ff00fF')
+    (255, 0, 255)
     """
     return int(_html[1:3], 16), int(_html[3:5], 16), int(_html[-2:], 16)
 
@@ -492,7 +496,13 @@ def rgb2hls(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> HSI"""
+    """RGB -> HSI
+
+    >>> rgb2hsi(255, 0, 255, False)
+    (300.0, 1.0, 170.0)
+    >>> rgb2hsi(html2rgb('#FF00FF')[0], html2rgb('#FF00FF')[1], html2rgb('#FF00FF')[2], False)
+    (300.0, 1.0, 170.0)
+    """
     if _float_notation:
         _red = round(_red * 255.0, 6)
         _green = round(_green * 255.0, 6)
@@ -505,17 +515,21 @@ def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
         _blue = 0.0
     _intensity: float = (_red + _green + _blue) / 3.0
     _rgbmin: float = min(_red, _green, _blue)
-    _sat = 1.0 - 3.0 * (_rgbmin / (_red + _green + _blue))
-    _x0 = sqrt(((_red - _green) * (_red - _green)) + ((_red - _blue) * (_green - _blue)))
+    _sat = 1.0 - _rgbmin * (3.0 / (_red + _green + _blue))
+    _x0 = 0.0 if _red == _green and _green == _blue else sqrt(((_red - _green) * (_red - _green)) + ((_red - _blue) * (_green - _blue)))
     if _green >= _blue:
         _hue = acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
     else:
         _hue = 6.283185307179586 - acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
-    return _hue * 180.0 / 3.141592653589793, _sat, _intensity
+    return round(_hue * 180.0 / 3.141592653589793, 10), round(_sat, 9), round(_intensity, 9)
 
 
 def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> HSV"""
+    """RGB -> HSV
+
+    >>> rgb2hsv(255, 0, 255, False)
+    (0.833333333, 1.0, 1.0)
+    """
     if not _float_notation:
         _red /= 255.0
         _green /= 255.0
@@ -529,7 +543,7 @@ def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
     _gc: float = (maxc - _green) / minmaxc
     _bc: float = (maxc - _blue) / minmaxc
     _hue = ((_bc - _gc if _red == maxc else 2.0 + _rc - _bc if _green == maxc else 4.0 + _gc - _rc) * 0.16666666666666666) % 1.0
-    return _hue, minmaxc / maxc, maxc
+    return round(_hue, 9), round(minmaxc / maxc, 9), round(maxc, 9)
 
 
 def rgb2html(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True, _uppercase: bool = False) -> str:
@@ -577,7 +591,7 @@ def rgb2yiq(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
     _y: float = 0.30 * _red + 0.59 * _green + 0.11 * _blue
     _i: float = 0.74 * (_red - _y) - 0.27 * (_blue - _y)
     _q: float = 0.48 * (_red - _y) + 0.41 * (_blue - _y)
-    return _y, _i, _q
+    return round(_y, 9), round(_i, 9), round(_q, 9)
 
 
 # RGB & RGBA #
