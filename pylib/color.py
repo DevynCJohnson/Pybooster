@@ -89,6 +89,14 @@ __all__: list = [
 ]
 
 
+# GLOBALS #
+
+
+ONE_SIXTH: float = 1.0 / 6.0
+ONE_THIRD: float = 1.0 / 3.0
+TWO_THIRD: float = 2.0 / 3.0
+
+
 # FUNCTIONS #
 
 
@@ -116,12 +124,12 @@ def hilo(_x: Union[float, int], _y: Union[float, int], _z: Union[float, int]) ->
 def hue2value(_m1: float, _m2: float, _hue: float) -> float:
     """Get value from hue"""
     _hue %= 1.0
-    if _hue < 0.16666666666666666:
+    if _hue < ONE_SIXTH:
         return ((_m2 - _m1) * _hue * 6.0) + _m1
     if _hue < 0.5:
         return _m2
-    if _hue < 0.6666666666666666:
-        return ((_m2 - _m1) * (0.6666666666666666 - _hue) * 6.0) + _m1
+    if _hue < TWO_THIRD:
+        return ((_m2 - _m1) * (TWO_THIRD - _hue) * 6.0) + _m1
     return _m1
 
 
@@ -224,7 +232,13 @@ def html2rgb(_html: str) -> tuple:
 
 
 def shorthand2sixdigit(_shorthand: str) -> str:
-    """Shorthand HTML notation (#789) -> 6-digit HTML notation (#778899)"""
+    """Shorthand HTML notation (#789) -> 6-digit HTML notation (#778899)
+
+    >>> shorthand2sixdigit('#789')
+    '#778899'
+    >>> shorthand2sixdigit('#37B')
+    '#3377BB'
+    """
     if r'#' in _shorthand:
         _red = _shorthand[1] + _shorthand[1]
         _green = _shorthand[2] + _shorthand[2]
@@ -240,7 +254,11 @@ def shorthand2sixdigit(_shorthand: str) -> str:
 
 
 def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
-    """CMY -> CMYK"""
+    """CMY -> CMYK
+
+    >>> cmy2cmyk(0.537, 0.314, 0.273)
+    (0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
+    """
     _black: float = _yellow if _yellow < 1.0 else _magenta if _magenta < 1.0 else _cyan if _cyan < 1.0 else 1.0
     if _black == 1.0:
         return 0.0, 0.0, 0.0, _black
@@ -248,33 +266,49 @@ def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
 
 
 def cmy2rgb(_cyan: float, _magenta: float, _yellow: float, _rgb_float_notation: bool = True) -> tuple:
-    """CMY -> RGB"""
+    """CMY -> RGB
+
+    >>> cmy2rgb(0.537, 0.314, 0.273)
+    (0.46299999999999997, 0.6859999999999999, 0.727)
+    """
     if _rgb_float_notation:
         return 1.0 - _cyan, 1.0 - _magenta, 1.0 - _yellow
-    return (1.0 - _cyan) * 255.0, (1.0 - _magenta) * 255.0, (1.0 - _yellow) * 255.0
+    return int(round((1.0 - _cyan) * 255.0)), int(round((1.0 - _magenta) * 255.0)), int(round((1.0 - _yellow) * 255.0))
 
 
 # CMYK #
 
 
 def cmyk2cmy(_cyan: float, _magenta: float, _yellow: float, _black: float) -> tuple:
-    """CMYK -> CMY"""
+    """CMYK -> CMY
+
+    >>> cmyk2cmy(0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
+    (0.537, 0.314, 0.273)
+    """
     return _cyan * (1.0 - _black) + _black, _magenta * (1.0 - _black) + _black, _yellow * (1.0 - _black) + _black
 
 
 def cmyk2rgb(_cyan: float, _magenta: float, _yellow: float, _black: float, _rgb_float_notation: bool = True) -> tuple:
-    """CMYK -> RGB"""
+    """CMYK -> RGB
+
+    >>> cmyk2rgb(0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
+    (0.46299999999999997, 0.6859999999999999, 0.727)
+    """
     if _rgb_float_notation:
         return (1.0 - _cyan) * (1.0 - _black), (1.0 - _magenta) * (1.0 - _black), (1.0 - _yellow) * (1.0 - _black)
-    return int((1.0 - _cyan) * (1.0 - _black) * 255.0), int((1.0 - _magenta) * (1.0 - _black) * 255.0), int((1.0 - _yellow) * (1.0 - _black) * 255.0)
+    return int(round((1.0 - _cyan) * (1.0 - _black) * 255.0)), int(round((1.0 - _magenta) * (1.0 - _black) * 255.0)), int(round((1.0 - _yellow) * (1.0 - _black) * 255.0))
 
 
 # HSI #
 
 
 def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bool = True) -> tuple:  # noqa: C901
-    """HSI -> RGB"""
-    _huerad: float = 0.017453 * _hue  # Convert degrees to radians
+    """HSI -> RGB
+
+    >>> hsi2rgb(0.3334, 0.5777, 0.3311)
+    (0.002783669573166151, 0.0005632969758534564, 0.0005483275686274509)
+    """
+    _huerad: float = 0.017453292519943295 * _hue  # Convert degrees to radians
     _si: float = _sat * _intensity
     _si2: float = _si * 2.0
     if _hue == 0.0 or _hue >= 360.0:
@@ -282,9 +316,9 @@ def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bo
         _green = _intensity - _si
         _blue = _green
     elif 0.0 < _hue < 120.0:
-        _cosvar = round(round(57.295828 * cos(_huerad), 6) / (57.295828 * cos(1.04718 - _huerad)), 6)
+        _cosvar = 57.29577951308232 * cos(_huerad) / (57.29577951308232 * cos(1.0471975511965976 - _huerad))
         _red = _intensity + (_si * _cosvar)
-        _green = _intensity + (_si * (1 - _cosvar))
+        _green = _intensity + (_si * (1.0 - _cosvar))
         _blue = _intensity - _si
     elif _hue == 120.0:
         _red = _intensity - _si
@@ -292,21 +326,18 @@ def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bo
         _blue = _red
     elif 120.0 < _hue < 240.0:
         _red = _intensity - _si
-        _cosvar = round((57.295828 * cos(_huerad - 2.09436)) / (57.295828 * cos(3.1415926535 - _huerad)), 6)
+        _cosvar = 57.29577951308232 * cos(_huerad - 2.0943951023931953) / (57.29577951308232 * cos(3.141592653589793 - _huerad))
         _green = _intensity + (_si * _cosvar)
-        _blue = _intensity + (_si * (1 - _cosvar))
+        _blue = _intensity + (_si * (1.0 - _cosvar))
     elif _hue == 240.0:
         _red = _intensity - _si
         _green = _red
         _blue = _intensity + _si2
     elif 240.0 < _hue < 360.0:
-        _cosvar = round((round(57.295828 * cos(_huerad - 4.18872), 6)) / (57.295828 * cos(5.2359 - _huerad)), 6)
-        _red = _intensity + (_si * (1 - _cosvar))
+        _cosvar = 57.29577951308232 * cos(_huerad - 4.1887902047863905) / (57.29577951308232 * cos(5.235987755982989 - _huerad))
+        _red = _intensity + (_si * (1.0 - _cosvar))
         _green = _intensity - _si
         _blue = _intensity + (_si * _cosvar)
-    _red = round(_red, 6)
-    _green = round(_green, 6)
-    _blue = round(_blue, 6)
     if _red > 255.0:
         _red = 255.0
     if _green > 255.0:
@@ -315,14 +346,18 @@ def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bo
         _blue = 255.0
     if _rgb_float_notation:
         return _red / 255.0, _green / 255.0, _blue / 255.0
-    return _red, _green, _blue
+    return int(round(_red)), int(round(_green)), int(round(_blue))
 
 
 # HLS #
 
 
 def hls2hsv(_hue: float, _light: float, _sat: float) -> tuple:
-    """HLS -> HSV"""
+    """HLS -> HSV
+
+    >>> hls2hsv(0.1375, 0.497, 0.893)
+    (0.1375, 0.9434759640781828, 0.940821)
+    """
     _l: float = 2.0 * _light
     _value: float = (_l + _sat * (1.0 - abs(_l - 1.0))) * 0.5
     return _hue, (2.0 * (_value - _light)) / _value, _value
@@ -330,13 +365,15 @@ def hls2hsv(_hue: float, _light: float, _sat: float) -> tuple:
 
 def hls2rgb(_hue: float, _light: float, _sat: float, _rgb_float_notation: bool = True) -> tuple:
     """HLS -> RGB"""
-    if _sat == 0.0:
+    if _sat == 0.0 and not _rgb_float_notation:
+        return int(round(_light * 255.0)), int(round(_light * 255.0)), int(round(_light * 255.0))
+    if _sat == 0.0 and _rgb_float_notation:
         return _light, _light, _light
     _m2: float = _light * (1.0 + _sat) if _light <= 0.5 else _light + _sat - (_light * _sat)
     _m1: float = 2.0 * _light - _m2
     if _rgb_float_notation:
-        return hue2value(_m1, _m2, _hue + 0.3333333333333333), hue2value(_m1, _m2, _hue), hue2value(_m1, _m2, _hue - 0.3333333333333333)
-    return int(round(hue2value(_m1, _m2, _hue + 0.3333333333333333) * 255.0)), int(round(hue2value(_m1, _m2, _hue) * 255.0)), int(round(hue2value(_m1, _m2, _hue - 0.3333333333333333) * 255.0))
+        return hue2value(_m1, _m2, _hue + ONE_THIRD), hue2value(_m1, _m2, _hue), hue2value(_m1, _m2, _hue - ONE_THIRD)
+    return int(round(hue2value(_m1, _m2, _hue + ONE_THIRD) * 255.0)), int(round(hue2value(_m1, _m2, _hue) * 255.0)), int(round(hue2value(_m1, _m2, _hue - ONE_THIRD) * 255.0))
 
 
 # HSV #
@@ -349,7 +386,11 @@ def hsv2hls(_hue: float, _sat: float, _value: float) -> tuple:
 
 
 def hsv2rgb(_hue: float, _sat: float, _value: float, _rgb_float_notation: bool = True) -> tuple:
-    """HSV -> RGB"""
+    """HSV -> RGB
+
+    >>> hsv2rgb(0.5, 0.5, 0.5, False)
+    (64, 128, 128)
+    """
     if _sat == 0.0:
         return _value, _value, _value
     _i: int = int(_hue * 6.0)
@@ -357,18 +398,20 @@ def hsv2rgb(_hue: float, _sat: float, _value: float, _rgb_float_notation: bool =
     _p: float = _value * (1.0 - _sat)
     _i %= 6
     if _i == 0:
-        return _value, _value * (1.0 - _sat * (1.0 - _f)), _p
-    if _i == 1:
-        return _value * (1.0 - _sat * _f), _value, _p
-    if _i == 2:
-        return _p, _value, _value * (1.0 - _sat * (1.0 - _f))
-    if _i == 3:
-        return _p, _value * (1.0 - _sat * _f), _value
-    if _i == 4:
-        return _value * (1.0 - _sat * (1.0 - _f)), _p, _value
+        _output: tuple = (_value, _value * (1.0 - _sat * (1.0 - _f)), _p)
+    elif _i == 1:
+        _output = (_value * (1.0 - _sat * _f), _value, _p)
+    elif _i == 2:
+        _output = (_p, _value, _value * (1.0 - _sat * (1.0 - _f)))
+    elif _i == 3:
+        _output = (_p, _value * (1.0 - _sat * _f), _value)
+    elif _i == 4:
+        _output = (_value * (1.0 - _sat * (1.0 - _f)), _p, _value)
+    else:
+        _output = (_value, _p, _value * (1.0 - _sat * _f))
     if _rgb_float_notation:
-        return _value, _p, _value * (1.0 - _sat * _f)
-    return int(_value * 255.0), int(_p * 255.0), int(_value * (1.0 - _sat * _f) * 255.0)
+        return _output
+    return int(round(_output[0] * 255.0)), int(round(_output[1] * 255.0)), int(round(_output[2] * 255.0))
 
 
 # HUNTER LAB #
@@ -434,18 +477,18 @@ def rgb2hls(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
         _blue /= 255.0
     maxc: float = max(_red, _green, _blue)
     minc: float = min(_red, _green, _blue)
-    _light: float = (minc + maxc) * 0.5
+    _light: float = (minc + maxc) / 2.0
     if minc == maxc:
         return 0.0, _light, 0.0
     maxc_minc: float = maxc - minc
-    _sat: float = maxc_minc / (maxc + minc) if _light <= 0.5 else maxc_minc / (2.0 - maxc_minc)
+    _sat: float = maxc_minc / (maxc + minc) if _light <= 0.5 else maxc_minc / (2.001 - maxc_minc)
     if _red == maxc:
         _hue = ((maxc - _blue) / maxc_minc) - ((maxc - _green) / maxc_minc)
     elif _green == maxc:
         _hue = 2.0 + ((maxc - _red) / maxc_minc) - ((maxc - _blue) / maxc_minc)
     else:
         _hue = 4.0 + ((maxc - _green) / maxc_minc) - ((maxc - _red) / maxc_minc)
-    return (_hue * 0.16666666666666666) % 1.0, _light, _sat
+    return (_hue / 6.0) % 1.0, _light, _sat
 
 
 def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
@@ -460,23 +503,15 @@ def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
         _green = 0.0
     if isinstance(_blue, str) or _green < 0.0:
         _blue = 0.0
+    _intensity: float = (_red + _green + _blue) / 3.0
     _rgbmin: float = min(_red, _green, _blue)
-    _rgbplus: float = _red + _green + _blue
-    _var0: float = (_red * _green) - (_red * _blue) - (_green * _blue)
-    _var1: float = _red - (_green * 0.5) - (_blue * 0.5)
-    _var2: float = _var1 / round(sqrt((_red * _red) + (_green * _green) + (_blue * _blue) - _var0), 6)
-    _intensity: float = (_red + _green + _blue) * 0.333333333333333
-    if _rgbplus == 765:
-        return 0.0, 0.0, round(_intensity, 6)
-    if _intensity > 0.0:
-        _sat = 1.0 - (_rgbmin / _intensity)
-    elif _intensity == 0.0:
-        _sat = 0.0
+    _sat = 1.0 - 3.0 * (_rgbmin / (_red + _green + _blue))
+    _x0 = sqrt(((_red - _green) * (_red - _green)) + ((_red - _blue) * (_green - _blue)))
     if _green >= _blue:
-        _hue = 57.2958279088 * acos(_var2)
-    elif _blue > _green:
-        _hue = 360.0 - (57.2958279088 * acos(_var2))
-    return round(_hue, 6), round(_sat, 6), round(_intensity, 6)
+        _hue = acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
+    else:
+        _hue = 6.283185307179586 - acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
+    return _hue * 180.0 / 3.141592653589793, _sat, _intensity
 
 
 def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
@@ -642,7 +677,7 @@ def xyz2rgb(_x: float, _y: float, _z: float, _rgb_float_notation: bool = True) -
     _blue = 1.055 * (_blue ** 0.4166667) - 0.055 if _blue > 0.0031308 else 12.92 * _blue
     if _rgb_float_notation:
         return _red, _green, _blue
-    return _red * 255.0, _green * 255.0, _blue * 255.0
+    return int(round(_red * 255.0)), int(round(_green * 255.0)), int(round(_blue * 255.0))
 
 
 # YIQ #
@@ -667,4 +702,4 @@ def yiq2rgb(_yellow: float, _in_phase: float, _quadrature: float, _rgb_float_not
         _blue = 1.0
     if _rgb_float_notation:
         return _red, _green, _blue
-    return _red * 255.0, _green * 255.0, _blue * 255.0
+    return int(round(_red * 255.0)), int(round(_green * 255.0)), int(round(_blue * 255.0))
