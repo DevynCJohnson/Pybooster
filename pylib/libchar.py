@@ -32,7 +32,14 @@ along with this software.
 """
 
 
+# pylint: disable=C0302
+
+
 __all__: list = [
+    # SPECIAL CHARACTER CONSTANTS #
+    r'LANG_TAG',
+    r'VS15',
+    r'VS16',
     # CONSTANTS #
     r'ALPHASET',
     r'ORDINAL_LIST',
@@ -112,7 +119,6 @@ __all__: list = [
     r'EJECT',
     r'FUEL_PUMP',
     r'KEYBOARD',
-    r'LANG_TAG',
     r'LEFT',
     r'LOADING',
     r'MEDICINE',
@@ -135,6 +141,15 @@ __all__: list = [
 
 
 # CONSTANTS #
+
+
+LANG_TAG: str = '\U000E0001'
+
+
+VS15: str = '\uFE0E'
+
+
+VS16: str = '\uFE0F'
 
 
 ALPHASET: set = {
@@ -350,10 +365,10 @@ BUBBLE_TEXT: str = r'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈ�
 PLAIN_TEXT: str = r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789+-*/.='
 FULLWIDTH_TEXT: str = '\uFF01\uFF02\uFF03\uFF04\uFF05\uFF06\uFF07\uFF08\uFF09\uFF0A\uFF0B\uFF0C\uFF0D\uFF0E\uFF0F\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF1A\uFF1B\uFF1C\uFF1D\uFF1E\uFF1F\uFF20\uFF21\uFF22\uFF23\uFF24\uFF25\uFF26\uFF27\uFF28\uFF29\uFF2A\uFF2B\uFF2C\uFF2D\uFF2E\uFF2F\uFF30\uFF31\uFF32\uFF33\uFF34\uFF35\uFF36\uFF37\uFF38\uFF39\uFF3A\uFF3B\uFF3C\uFF3D\uFF3E\uFF3F\uFF40\uFF41\uFF42\uFF43\uFF44\uFF45\uFF46\uFF47\uFF48\uFF49\uFF4A\uFF4B\uFF4C\uFF4D\uFF4E\uFF4F\uFF50\uFF51\uFF52\uFF53\uFF54\uFF55\uFF56\uFF57\uFF58\uFF59\uFF5A\uFF5B\uFF5C\uFF5D\uFF5E\uFFE0\uFFE1'
 REGWIDTH_TEXT: str = '!\u0022#$%&\u0027\u0028\u0029*+\u002C\u002D\u002E\u002F0123456789:;\u003C\u003D\u003E?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\u005B\u005C\u005D\u005E\u005F\u0060abcdefghijklmnopqrstuvwxyz\u007B\u007C\u007D\u007E\u00A2\u00A3'
-TRANS_BUBBLE2TEST = str.maketrans(BUBBLE_TEXT, PLAIN_TEXT)
-TRANS_TEXT2BUBBLE = str.maketrans(PLAIN_TEXT, BUBBLE_TEXT)
-FULLWIDTH2REGULAR = str.maketrans(FULLWIDTH_TEXT, REGWIDTH_TEXT)
-REGULAR2FULLWIDTH = str.maketrans(REGWIDTH_TEXT, FULLWIDTH_TEXT)
+TRANS_BUBBLE2TEST: dict = str.maketrans(BUBBLE_TEXT, PLAIN_TEXT)
+TRANS_TEXT2BUBBLE: dict = str.maketrans(PLAIN_TEXT, BUBBLE_TEXT)
+FULLWIDTH2REGULAR: dict = str.maketrans(FULLWIDTH_TEXT, REGWIDTH_TEXT)
+REGULAR2FULLWIDTH: dict = str.maketrans(REGWIDTH_TEXT, FULLWIDTH_TEXT)
 
 
 # CHARACTER LISTS #
@@ -816,7 +831,6 @@ DOWN: str = r'↓'
 EJECT: str = r'⏏'
 FUEL_PUMP: str = r'⛽'
 KEYBOARD: str = r'⌨'
-LANG_TAG: str = r'\U000E0001'
 LEFT: str = r'←'
 LOADING: str = r'⌛'
 MEDICINE: str = r'☤'
@@ -837,9 +851,9 @@ HOLOGRAPHS: dict = {
     r'!': (r'！', r'ᆝǃⵑ︕﹗'),
     r'"': (r'＂', r'̎៉'),
     r'#': (r'＃', r'﹟'),
-    r'$': (r'﹩', r'＄'),
-    r'%': (r'﹪', r'％٪⁒'),
-    r'&': (r'＆', r'﹠🙲🙳🙴🙵'),
+    r'$': (r'﹩', r'＄💲'),
+    r'%': (r'﹪', r'٪⁒％𖬻'),
+    r'&': (r'＆', r'﹠🙲🙳🙴🙵⅋'),
     '\'': (r'＇', r'̍ʹʹ'),
     r'(': (r'（', r'﹙⁽₍⟮⦅'),
     r')': (r'）', r'﹚⁾₎⟯⦆'),
@@ -927,7 +941,11 @@ HOLOGRAPHS: dict = {
     r'{': (r'｛', r'﹛❴⦃'),
     r'|': (r'⎜', r'｜ǀᛁ⎜⎟⎢⎥⎪⎮￨︳ࡆᅵ⃒⼁〡丨︱'),
     r'}': (r'｝', r'﹜❵⦄'),
-    r'~': (r'～', r'˜⁓∼〜')
+    r'~': (r'～', r'˜⁓∼〜'),
+    r'¢': (r'₵', r'￠'),
+    r'£': (r'￡', r'₤'),
+    r'¥': (r'￥', r''),
+    r'π': (r'𝜋', r'ⲡ𝛑𝝅𝝿𝞹ℼⲠ')
 }
 
 

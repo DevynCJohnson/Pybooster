@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2018.12.28
+@version 2019.03.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -470,9 +470,9 @@ def replace_odd_chars(_data: str) -> str:
     # Commas
     _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6F5', r',')
     # Single-Quotes
-    _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027')
+    _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027').replace('\u2035', '\u0027')
     # Double-Quotes
-    _data = _data.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u2033', r'"').replace('\u2034', r'"')
+    _data = _data.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u201E', r'"').replace('\u201F', r'"').replace('\u2033', r'"').replace('\u2034', r'"').replace('\u2036', r'"').replace('\u2037', r'"').replace('\u2057', r'"')
     # Newlines
     _data = _data.replace('\u0085', '\n')
     # Spaces
@@ -482,7 +482,9 @@ def replace_odd_chars(_data: str) -> str:
     # Slashes
     _data = _data.replace('\u2044', r'/').replace('\u20E5', '\u005C').replace('\u2215', r'/').replace('\u2216', '\u005C').replace('\u244A', '\u005C\u005C').replace('\u29F5', '\u005C').replace('\u29F6', r'/').replace('\u29F7', '\u005C').replace('\u29F8', r'/').replace('\u29F9', '\u005C')
     # Colons & Semicolons
-    _data = _data.replace('\u16EC', r':').replace('\uFE13', r':').replace('\uFE14', r';')
+    _data = _data.replace('\u16EC', r':').replace('\u205A', r':').replace('\u2982', r':').replace('\uFE13', r':').replace('\uFE14', r';').replace('\u204F', r';').replace('\u236E', r';')
+    # Percent-signs
+    _data = _data.replace('\uFE6A', r'%').replace('\u066A', r'%').replace('\u2052', r'%').replace('\uFE6A', r'%').replace('\uFF05', r'%').replace('\U00016B3B', r'%')
     # Parenthesis & Brackets
     _data = _data.replace('\u2045', '\u005B').replace('\u2046', '\u005D')
     # Periods, Exclamation-Points, & Question-Marks
@@ -533,8 +535,10 @@ def rmcurlyquotes(_str: str) -> str:
 
     >>> rmcurlyquotes('This is a “test”.')
     'This is a test.'
+    >>> rmcurlyquotes('This is a ‷harder‴ ‶test″.')
+    'This is a harder test.'
     """
-    return _str.replace('\u201C', r'').replace('\u201D', r'').replace('\u2033', r'').replace('\u2034', r'').replace('\u2018', r'').replace('\u2019', r'').replace('\u2032', r'')
+    return _str.replace('\u2018', r'').replace('\u2019', r'').replace('\u2032', r'').replace('\u2035', r'').replace('\u201C', r'').replace('\u201D', r'').replace('\u201E', r'').replace('\u201F', r'').replace('\u2033', r'').replace('\u2034', r'').replace('\u2036', r'').replace('\u2037', r'').replace('\u2057', r'')
 
 
 def replacecurlyquotes(_str: str) -> str:
