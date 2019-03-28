@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Desktop;Development;System;Utility;XDG;
+Comment=Create Desktop Entry Files
+Exec=desktop-entry-maker
+GenericName=Desktop Entry Maker
+Icon=menu-editor
+Keywords=xdg;desktop;maker;
+Name=Desktop Entry Maker
+NoDisplay=false
+Terminal=false
+TryExec=desktop-entry-maker
+Type=Application
+Version=1.1
