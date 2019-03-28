@@ -1,0 +1,584 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Convert between color-spaces
+
+@file color-kit
+@version 2019.03.26
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+# pylint: disable=C0103
+
+
+from signal import SIGINT, SIG_DFL, signal
+
+try:  # Regular Expression module
+    from regex import compile as rgxcompile, sub as rgxsub
+except ImportError:
+    from re import compile as rgxcompile, sub as rgxsub
+
+from pybooster.color import cmyk2rgb, hsi2rgb, hsv2rgb, rgb2cmyk, rgb2hsi, rgb2hsv, rgb2yiq, yiq2rgb
+
+from gi import require_version
+require_version(r'Gtk', r'3.0')
+from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
+
+
+# GLOBALS #
+
+
+_GCOLOR: str = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1
+
+Copyright (C) LGPLv3
+
+This file is part of Color-Kit.
+
+Color-Kit is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Color-Kit is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Color-Kit.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Devyn Collier Johnson
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name Color-Kit -->
+  <!-- interface-description Convert between color-models and colors -->
+  <!-- interface-copyright LGPLv3 -->
+  <!-- interface-authors Devyn Collier Johnson -->
+  <object class="GtkApplicationWindow" id="ezwin">
+    <property name="width_request">700</property>
+    <property name="height_request">800</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Color-Kit</property>
+    <property name="window_position">center</property>
+    <property name="default_width">700</property>
+    <property name="default_height">800</property>
+    <property name="icon_name">color-kit</property>
+    <property name="has_resize_grip">True</property>
+    <property name="show_menubar">False</property>
+    <signal name="destroy" handler="_winexit" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="color_box">
+        <property name="visible">True</property>
+        <property name="app_paintable">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkColorChooserWidget" id="cc">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_top">5</property>
+            <property name="margin_bottom">5</property>
+            <property name="rgba">rgb(255,255,255)</property>
+            <property name="show_editor">True</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkLabel" id="About">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
+                <property name="label" translatable="yes">Version: 2019.03.26
+Created by Devyn Collier Johnson
+&amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
+                <property name="use_markup">True</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_color">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Convert selected color</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">5</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="convgrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">5</property>
+            <property name="margin_right">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkLabel" id="l_rgb">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">RGB = Red, Green, Blue
+
+Additive color model
+
+The values range from 0 to 255.</property>
+                <property name="label" translatable="yes">RGB</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_hsi">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">HSL = Hue, Saturation, Intensity</property>
+                <property name="label" translatable="yes">HSI</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_hsv">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">HSV = Hue, Saturation, Value
+HSB = Hue, Saturation, Brightness
+
+Mathematical transformation model
+
+The values range from 0% to 100%, but the hue values range from 0 degrees to 360 degrees.</property>
+                <property name="label" translatable="yes">HSV/HSB</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_cmyk">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">CMYK = Cyan, Magenta, Yellow, blacK
+
+Subtractive color model
+
+The values range from 0% to 100%.</property>
+                <property name="label" translatable="yes">CMYK</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_yiq">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">YIQ = Luminance, In-phase, Quadrature
+
+NTSC color model
+
+"Y" is a float-point between 0 and 1. "I" and "Q" values may be positive or negative.</property>
+                <property name="label" translatable="yes">YIQ</property>
+                <property name="justify">center</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_rgb">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_hsi">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_hsv">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_cmyk">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_yiq">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_rgb">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="conv_rgb" object="entry_rgb" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_hsi">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="conv_hsi" object="l_hsi" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_hsv">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="conv_hsv" object="entry_hsv" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_cmyk">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="conv_cmyk" object="entry_cmyk" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_yiq">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="conv_yiq" object="entry_yiq" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn">
+            <property name="label">gtk-close</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Close Dialog</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="margin_top">5</property>
+            <property name="margin_bottom">5</property>
+            <property name="use_stock">True</property>
+            <signal name="clicked" handler="_winexit" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">2</property>
+            <property name="pack_type">end</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>"""
+
+
+signal(SIGINT, SIG_DFL)
+
+
+PARSE_TUPLE_OF_3 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+)\)')
+PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+)\)')
+
+
+# WINDOW FUNCTIONS #
+
+
+def rgba_array(_rgba: object) -> list:
+    """Create a float array from GDK_RGBA object"""
+    _rgba_array: list = []
+    _rgba_array.append(round(_rgba.red, 6))  # type: ignore
+    _rgba_array.append(round(_rgba.green, 6))  # type: ignore
+    _rgba_array.append(round(_rgba.blue, 6))  # type: ignore
+    _rgba_array.append(round(_rgba.alpha, 6))  # type: ignore
+    return _rgba_array
+
+
+def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple) -> None:
+    """Place the values in the entry boxes"""
+    ENTRY_CMYK.set_text(str(_cmyk))
+    ENTRY_HSI.set_text(str(_hsi))
+    ENTRY_HSV.set_text(str(_hsv))
+    ENTRY_RGB.set_text(str(_rgb))
+    ENTRY_YIQ.set_text(str(_yiq))
+
+
+def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
+    """Convert selected color to *"""
+    _rgba = cc_widget.get_rgba()
+    _red: int = int(float(_rgba.red) * 255.0)
+    _green: int = int(float(_rgba.green) * 255.0)
+    _blue: int = int(float(_rgba.blue) * 255.0)
+    # Conversions
+    _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
+    _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
+    _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
+    _rgb: tuple = (_red, _green, _blue)
+    _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
+    # Display
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+
+def conv_rgb(entry_widget: Gtk.Entry) -> None:
+    """Convert RGB to *"""
+    _rgb_entry = entry_widget.get_text()
+    _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
+    _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
+    _blue: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\3', _rgb_entry))
+    # Conversions
+    _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
+    _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
+    _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
+    _rgb: tuple = (_red, _green, _blue)
+    _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
+    # Display
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+
+def conv_hsi(entry_widget: Gtk.Entry) -> None:
+    """Convert HSL to *"""
+    _hls_entry = entry_widget.get_text()
+    _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hls_entry))
+    _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hls_entry))
+    _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hls_entry))
+    # Conversions
+    _hls: tuple = (_hue, _light, _sat)
+    _rgb: tuple = hsi2rgb(_hue, _light, _sat, False)
+    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+    # Display
+    fillentry(_cmyk, _hls, _hsv, _rgb, _yiq)
+
+
+def conv_hsv(entry_widget: Gtk.Entry) -> None:
+    """Convert HSV to *"""
+    _hsv_entry = entry_widget.get_text()
+    _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
+    _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
+    _value: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsv_entry))
+    # Conversions
+    _hsv: tuple = (_hue, _sat, _value)
+    _rgb: tuple = hsv2rgb(_hue, _sat, _value, False)
+    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+    # Display
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+
+def conv_cmyk(entry_widget: Gtk.Entry) -> None:
+    """Convert CMYK to *"""
+    _cmyk_entry = entry_widget.get_text()
+    _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
+    _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
+    _yellow: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\3', _cmyk_entry))
+    _black: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\4', _cmyk_entry))
+    # Conversions
+    _cmyk: tuple = (_cyan, _magenta, _yellow, _black)
+    _rgb: tuple = cmyk2rgb(_cyan, _magenta, _yellow, _black, False)
+    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+    # Display
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+
+def conv_yiq(entry_widget: Gtk.Entry) -> None:
+    """Convert YIQ to *"""
+    _yiq = entry_widget.get_text()
+    _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq))
+    _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq))
+    _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq))
+    # Conversions
+    _rgb: tuple = yiq2rgb(_y, _i, _q, False)
+    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+    # Display
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+
+# MAIN #
+
+
+if __name__ == '__main__':
+    # Build GUI
+    USER_INTERFACE = Gtk.Builder()
+    USER_INTERFACE.add_from_string(buffer=_GCOLOR)
+    del _GCOLOR
+    # Get GTK Objects
+    UI_GET_OBJECT = USER_INTERFACE.get_object
+    ENTRY_CMYK = UI_GET_OBJECT(r'entry_cmyk')
+    ENTRY_HSI = UI_GET_OBJECT(r'entry_hsi')
+    ENTRY_HSV = UI_GET_OBJECT(r'entry_hsv')
+    ENTRY_RGB = UI_GET_OBJECT(r'entry_rgb')
+    ENTRY_YIQ = UI_GET_OBJECT(r'entry_yiq')
+    # Match signal to function (handler)
+    USER_INTERFACE.connect_signals({
+        r'_winexit': Gtk.main_quit,
+        r'conv_cmyk': conv_cmyk,
+        r'conv_color': conv_color,
+        r'conv_hsi': conv_hsi,
+        r'conv_hsv': conv_hsv,
+        r'conv_rgb': conv_rgb,
+        r'conv_yiq': conv_yiq
+    })
+    # Show Window
+    Gtk.main()
+    raise SystemExit(0)

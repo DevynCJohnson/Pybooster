@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Graphics;
+Comment=Convert between color-spaces
+Exec=color-kit
+GenericName=Color-Kit
+Icon=color-kit
+Keywords=cmyk;color;convert;gtk;hsi;hsv;rgb;rgba;
+Name=Color Kit
+NoDisplay=false
+Terminal=false
+TryExec=color-kit
+Type=Application
+Version=1.1

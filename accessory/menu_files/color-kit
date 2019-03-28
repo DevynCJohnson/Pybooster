@@ -1,0 +1,7 @@
+?package(python3):needs="X11" \
+    section="Applications/Graphics" \
+    title="Color-Kit" \
+    longtitle="Convert between color-spaces" \
+    hints="cmyk,color,convert,gtk,hsi,hsv,rgb,rgba" \
+    icon="/usr/share/icons/Opticons/apps/color-kit.svg" \
+    command="color-kit"
