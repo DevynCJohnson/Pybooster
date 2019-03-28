@@ -154,10 +154,12 @@ elif [ -w "${HOME}/.sh_history" ]; then
 else
     alias clsh='clear; history -c; exit'
 fi
-alias findalias='alias | grep -i -F'
-alias findfunc='set | grep -i -F'
-alias lsfuncs='set | grep -F " ()" | cut -d " " -f 1'
-alias lsmethods='alias; set | grep -F " ()" | cut -d " " -f 1'
+alias findalias='alias | cut -d " " -f 2 | cut -d "=" -f 1 | grep -i -F'
+alias findfunc='declare -F | cut -d " " -f 3 | grep -i -F'
+alias lsfuncs='declare -F | cut -d " " -f 3'
+[ -x "$(command -v compgen)" ] && alias lskeywords='compgen -k'
+[ -x "$(command -v compgen)" ] && alias lsbuiltins='compgen -b'
+alias lsmethods='alias | cut -d " " -f 2 | cut -d "=" -f 1; declare -F | cut -d " " -f 3'
 alias viewpath='echo "$PATH"'
 
 # Miscellaneous Aliases
@@ -773,7 +775,7 @@ epoch2date() {
     fi
 }
 
-findmethod() { alias | grep -i -F "$1"; set | grep -i -F "$1"; }
+findmethod() { alias | cut -d ' ' -f 2 | cut -d '=' -f 1 | grep -i -F "$1"; declare -F | cut -d ' ' -f 3 | grep -i -F "$1"; }
 
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
 
