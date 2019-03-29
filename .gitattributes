@@ -17,7 +17,7 @@ missing linguist-generated=true linguist-vendored
 mkinstalldirs linguist-generated=true linguist-vendored
 
 
-# Compressed Files
+# Archive & Compression Files
 
 *.bz2 binary linguist-generated=true linguist-vendored
 *.gz binary linguist-generated=true linguist-vendored
@@ -28,7 +28,14 @@ mkinstalldirs linguist-generated=true linguist-vendored
 *.tar.lzma binary linguist-generated=true linguist-vendored
 *.tar.xz binary linguist-generated=true linguist-vendored
 *.xz binary linguist-generated=true linguist-vendored
+*.Z binary linguist-generated=true linguist-vendored
 *.zip binary linguist-generated=true linguist-vendored
+
+
+# Package Files
+
+*.deb binary linguist-generated=true linguist-vendored
+*.rpm binary linguist-generated=true linguist-vendored
 
 
 # Databases
@@ -45,7 +52,6 @@ mkinstalldirs linguist-generated=true linguist-vendored
 *.Rc binary linguist-generated=true linguist-vendored
 *.xkb text eol=lf linguist-generated=true linguist-vendored
 *.xkm binary linguist-generated=true linguist-vendored
-*.zip binary linguist-generated=true linguist-vendored
 icon-theme.cache binary linguist-generated=true linguist-vendored
 
 
@@ -77,9 +83,15 @@ static/* linguist-vendored
 
 # Font Files
 
+*.bdf binary linguist-generated=true linguist-vendored
+*.eot binary linguist-generated=true linguist-vendored
+*.otf binary linguist-generated=true linguist-vendored
+*.pcf binary linguist-generated=true linguist-vendored
+*.psf binary linguist-generated=true linguist-vendored
+*.sfd binary linguist-generated=true linguist-vendored
+*.ttc binary linguist-generated=true linguist-vendored
 *.tte binary linguist-generated=true linguist-vendored
 *.ttf binary linguist-generated=true linguist-vendored
-*.otf binary linguist-generated=true linguist-vendored
 *.woff binary linguist-generated=true linguist-vendored
 *.woff2 binary linguist-generated=true linguist-vendored
 

@@ -551,7 +551,7 @@ uninstall_color_kit :
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(INSTALLBINDIR)/color-kit $(SYSAPPDIR)/Color-Kit.desktop $(SYSMENUDIR)/color-kit $(PIXMAPDIR)/color-kit.svg
 
-install_desktop_entry_maker : | fixperm $(PYBDIR)/__init__.py
+install_desktop_entry_maker : | fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Desktop Entry Maker ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ ! -d $(INSTALLBINDIR)/ ] && $(MKDIRS) $(INSTALLBINDIR)/) || true

@@ -7,7 +7,7 @@
 *.[Ll][Oo][Gg][Ss]
 .[Cc][Aa][Cc][Hh][Ee]
 [Bb][Ii][Nn]/
-[Dd]{Ee][Bb][Uu][Gg]/
+[Dd][Ee][Bb][Uu][Gg]/
 [Ll][Oo][Gg][Ss]/
 [Tt]esting/
 build/
@@ -16,6 +16,25 @@ htmlcov/
 metrics/
 python/
 var/
+
+# Archive & Compression Files
+
+*.bz2
+*.gz
+*.lzma
+*.tar
+*.tar.bz2
+*.tar.gz
+*.tar.lzma
+*.tar.xz
+*.xz
+*.Z
+*.zip
+
+# Package Files
+
+*.deb
+*.rpm
 
 # Project Configuration Files
 
