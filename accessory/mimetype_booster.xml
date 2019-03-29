@@ -3575,7 +3575,7 @@
   </mime-type>
   <mime-type type="application/x-pak">
     <comment>PAK Archive</comment>
-    <generic-icon name="package-x-generic"/>
+    <icon name="application-x-pak"/>
     <magic priority="80">
       <match offset="0" type="string" value="PACK"/>
     </magic>
@@ -3585,7 +3585,7 @@
     <comment>Parchive Archive</comment>
     <acronym>Parchive</acronym>
     <expanded-acronym>Parity Volume Set Archive</expanded-acronym>
-    <generic-icon name="package-x-generic"/>
+    <icon name="application-x-par2"/>
     <magic priority="60">
       <match offset="0" type="string" value="PAR2"/>
     </magic>
@@ -3594,7 +3594,7 @@
   </mime-type>
   <mime-type type="application/x-pc-engine-rom">
     <comment>PC Engine ROM</comment>
-    <generic-icon name="application-x-executable"/>
+    <generic-icon name="game"/>
     <glob pattern="*.pce"/>
   </mime-type>
   <mime-type type="application/x-pef-executable">
@@ -3729,7 +3729,7 @@
   </mime-type>
   <mime-type type="application/x-qpress">
     <comment>Qpress Archive</comment>
-    <generic-icon name="package-x-generic"/>
+    <icon name="application-x-qpress"/>
     <magic priority="60">
       <match offset="0" type="string" value="qpress10"/>
     </magic>
@@ -6896,6 +6896,13 @@
     <glob pattern="*.imy"/>
     <alias type="audio/iMelody"/>
     <alias type="audio/x-iMelody"/>
+  </mime-type>
+  <mime-type type="text/x-ini">
+    <comment>Configuration (INI) File</comment>
+    <icon name="ini"/>
+    <glob pattern="*.conf" weight="90"/>
+    <glob pattern="*.ini" weight="90"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-install">
     <comment>Installation Instructions</comment>
