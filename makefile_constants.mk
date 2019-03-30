@@ -454,8 +454,11 @@ else
     override DCJ_DEBUG::=$(DCJ_DEBUG) -Wl,--discard-all,--discard-locals,--gc-sections,--strip-all,--strip-debug,--strip-discarded,--unresolved-symbols=report-all
 endif
 ifdef DEBUG
-    ifeq ($(DEBUG),1)
+    ifeq ($(DEBUG),0)
         override DEBUG::=
+        override DCJ_DEBUG::=
+    else ifeq ($(DEBUG),1)
+        override DEBUG::=-DDEBUG
         override DCJ_DEBUG::=
     else ifeq ($(DEBUG),2)
         override DEBUG::=-DDEBUG -g -ggdb

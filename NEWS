@@ -1,3 +1,9 @@
+2019-03-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* clevo_kbd_backlight:  Applied some improvements
+	* desktop-entry-maker:  Fixed some bugs
+	* README.md:  Added screenshots & more information
+
 2019-03-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Added support for character sorting, added more delimiters, and changed the inner-workings of the script

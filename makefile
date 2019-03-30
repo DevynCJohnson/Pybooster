@@ -88,7 +88,7 @@ override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-util
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
 override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
-override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
+override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
 
 
 # HELP #
@@ -115,7 +115,7 @@ help :
 	printf '%s\n\t%s\n' 'Python Eggs:' 'sudo make install_pyeggs'
 	printf '%s\n\t%s\n' 'Python Libraries:' 'sudo make install_pylib'
 	printf '%s\n\t%s\n' 'Scripts:' 'sudo make install_scripts'
-	printf '%s\n\t%s\n' 'System Shell Profile:' 'sudo make install_shrc'
+	printf '%s\n\t%s\n' 'Shell RC Scripts:' 'sudo make install_shrc'
 	printf '\t • %s\n' 'nogeo=1: Do not create geofiles under `/etc/` and disable geolocation features in `profile`'
 	printf '\t • %s\n' 'nogeo=0: Enable and install geolocation features and files (Default)'
 	printf '\t • %s\n' 'nogeo=-1: Do not create geofiles under `/etc/`, but enable geolocation features in `profile`'
@@ -527,6 +527,8 @@ install_dkms_clevo_kbd_backlight :
 	cd ./dkms/clevo_kbd_backlight/
 	make build_install
 	cd ../..
+	groupadd --system clevo 2> /dev/null || true
+	usermod --append --groups clevo ${USER} 2> /dev/null || true
 
 
 # UNINSTALL DKMS DRIVER MODULES #

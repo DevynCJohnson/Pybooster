@@ -5,7 +5,7 @@ Collection of Software Libraries & Executables
 - **Email:** <DevynCJohnson@Gmail.com>
 - **License:** [LGPLv3](http://www.gnu.org/licenses/lgpl-3.0.txt)
 - **GitHub:** <https://github.com/DevynCJohnson/Pybooster>
-- **Documentation:** <http://dcjtech.info/Pybooster/> (Will be updated by February 2019)
+- **Documentation:** <http://dcjtech.info/Pybooster/>
 
 This project is a rolling-release. The software is stable and suitable for use in other projects.
 However, the C-Standard Libraries are still under construction, so do not expect them to work perfectly.
@@ -41,6 +41,36 @@ Mimetype Booster
 Many of the mimetypes in _[mimetype_booster.xml](./accessory/mimetype_booster.xml)_ derive from [FreeDesktop.org's](https://FreeDesktop.org) mimetype file.
 
 
+Included Software
+-----------------
+
+Below are screenshots and/or descriptions of some of the included software in this bundle. Read the "Installing/Uninstalling" section to see how to install the desired software.
+
+### Clevo Keyboard Backlight Driver Module for Linux
+
+The module "clevo_kbd_backlight" is a fully working DKMS module that provides support for Clevo keyboard backlights.
+
+### Color Kit
+
+Convert between different color-spaces using Color Kit.
+
+![Color Kit](./screenshots/Color_Kit.jpg "Color Kit")
+
+
+### Desktop Entry Maker
+
+Create XDG desktop entry files (*.desktop) with ease using Desktop Entry Maker.
+
+![Desktop Entry Maker](./screenshots/Desktop_Entry_Maker.jpg "Desktop Entry Maker")
+
+
+### Program Analyzer
+
+Disassemble and view information about a library or executable using Program Analyzer.
+
+![Program Analyzer](./screenshots/Program_Analyzer.jpg "Program Analyzer")
+
+
 Requirements
 ------------
 
@@ -61,30 +91,38 @@ Building
 
 To perform the listed build commands, open a terminal and type the given command:
 
-- To compile (nearly) everything, type `make all`
-- To generate the documentation, type `make doc`
-- To build the code for a Skylake system, type `make all ARCH=skylake`
-- To build the code for a 64-bit system, type `make all BITS=64`
+- Compile (nearly) everything: `make all`
+- Compile various command-line utilities (such as getpgid, getsid, microtime, ostype, statvfs, typesize, many math utilities, and more): `make programs`
+- Compile various command-line utilities (such as acos, asinh, cbrt, cosh, fib, isprime, sin, sinh, sqrt, and more): `make math_programs`
+- Compile (nearly) everything: `make all`
+- Generate the documentation: `make doc`
+- Build code for a Skylake system: `make all ARCH=skylake`
+- Build code for a 64-bit system: `make all BITS=64`
 
 
 Installing/Uninstalling
 -----------------------
 
-To install/uninstall software, open a terminal and type the needed command:
+To install/uninstall software, open a terminal and type the needed command (with Root privileges, if needed). To uninstall any other component, prefix "un" to the install keyword used to install the given component.
 
-- Install all of Pybooster: `make install`
-- Install Command Scripts: `make install_scripts`
-- Install Compiled Programs (after they are built): `make install_programs`
-- Install Program-Analyzer: `make install_program_analyzer`
-- Install Python Libraries: `make install_pylib`
-- Install Python Eggs: `make install_pyeggs`
-- Install Shell RC Scripts: `make install_shrc`
-- Install Language Specification Files (used by gtksourceview): `make install_langspecs`
-- Install Additional Mimetypes (XDG Desktops Only): `make install_mimetype_booster`
-- Install the Opticons Icon Theme (XDG Desktops Only): `make install_Opticons`
-- Install the Themes (XDG Desktops Only): `make install_themes`
+- Install Pybooster: `make install`
 - Uninstall PyBooster: `make uninstall`
-- To uninstall any other component, prefix "un" to the install keyword used to install the given component
+- Additional Mimetypes (XDG Desktops Only): `make install_mimetype_booster`
+- Color Kit: `make install_color_kit`
+- Command Scripts: `make install_scripts`
+- Compiled Programs (after they are built): `make install_programs`
+- Desktop Entry Maker: `make install_desktop_entry_maker`
+- Enhanced XCompose File: `make install_xcompose`
+- Language Specification Files (used by gtksourceview): `make install_langspecs`
+- Linux Driver Module for Clevo Keyboard Backlights: `make install_dkms_clevo_kbd_backlight`
+- NanoRC Files: `make install_nanorc`
+- Opticons Icon Theme (XDG Desktops Only): `make install_Opticons`
+- Program-Analyzer: `make install_program_analyzer`
+- Python Eggs: `make install_pyeggs`
+- Python Libraries: `make install_pylib`
+- Shell RC Scripts: `make install_shrc`
+- Themes (XDG Desktops Only): `make install_themes`
+- Thunar Custom Actions: `make install_uca`
 
 
 Clean-Up
