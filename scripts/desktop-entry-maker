@@ -1459,7 +1459,7 @@ class MainWin():
         _entry_genericname: str = entry_genericname.get_text().strip()
         _entry_icon: str = entry_icon.get_text().strip()
         _entry_keyword: str = entry_keyword.get_text().strip()
-        _entry_name: str = entry_name.get_text().strip()
+        _entry_name: str = entry_name.get_text().strip().replace(r'  ', r' ')
         # Process Data
         if not (_entry_name and _entry_name[0].isalnum() and (_entry_execute or _combobox_type != r'Application')):
             return
@@ -1468,8 +1468,10 @@ class MainWin():
         _hidden: str = r'true' if _check_hidden else r'false'
         _exec: str = r''
         _url: str = r''
-        _entry_keyword = '\nKeywords=' + _entry_keyword + r';' if _entry_keyword and not _entry_keyword.endswith(r';') else '\nKeywords=' + _entry_keyword if _entry_keyword else r''
-        _entry_category = '\nCategories=' + _entry_category + r';' if _entry_category and not _entry_category.endswith(r';') else '\nCategories=' + _entry_category if _entry_category else r''
+        _entry_keyword = '\nKeywords=' + r';'.join(sorted(list(set(_entry_keyword.casefold().replace(r' ', r'').replace(r';;', r';').split(r';'))), key=str.upper)).strip().replace(r' ', r'').replace(r';;', r';')
+        _entry_keyword = _entry_keyword.replace(r'=;', r'=') + r';' if _entry_keyword and not _entry_keyword.endswith(r';') else _entry_keyword.replace(r'=;', r'=')
+        _entry_category = '\nCategories=' + r';'.join(sorted(list(set(_entry_category.replace(r' ', r'').replace(r';;', r';').split(r';'))), key=str.upper)).strip() + r';'
+        _entry_category = _entry_category.replace(r'=;', r'=') + r';' if _entry_category and not _entry_category.endswith(r';') else _entry_category.replace(r'=;', r'=')
         _entry_comment = '\nComment=' + _entry_comment if _entry_comment else '\nComment=' + _entry_name
         _entry_genericname = '\nGenericName=' + _entry_genericname if _entry_genericname else r''
         _entry_icon = '\nIcon=' + _entry_icon if _entry_icon else r''
@@ -1516,9 +1518,6 @@ class MainWin():
         # Set Permissions
         _st = osstat(_path)
         chmod(_path, _st.st_mode)
-        # Close/End
-        Gtk.main_quit()
-        return
 
 
 # MAIN #
