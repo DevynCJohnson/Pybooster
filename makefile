@@ -109,6 +109,7 @@ help :
 	printf '%s\n\t%s\n' 'Desktop Entry Maker:' 'sudo make install_desktop_entry_maker'
 	printf '%s\n\t%s\n' 'Enhanced XCompose File:' 'make install_xcompose'
 	printf '%s\n\t%s\n' 'Language Specification Files:' 'sudo make install_langspecs'
+	printf '%s\n\t%s\n' 'Linux Driver Module for Clevo Keyboard Backlights:' 'sudo make install_dkms_clevo_kbd_backlight'
 	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
 	printf '%s\n\t%s\n' 'Opticons:' 'sudo make install_opticons'
 	printf '%s\n\t%s\n' 'Python Eggs:' 'sudo make install_pyeggs'
@@ -211,6 +212,10 @@ default :
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
 .PHONY : gitadd presubmit submitall submitdev submitmaster sw2dev sw2master syncdev syncmaster
+# Install DKMS Driver Modules
+.PHONY : install_dkms_clevo_kbd_backlight
+# Uninstall DKMS Driver Modules
+.PHONY : uninstall_dkms_clevo_kbd_backlight
 # Install
 .PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
@@ -374,6 +379,8 @@ upver :
 	find $(XKBDIR)/* -mount -type f -name "usx*" -print0 | xargs -0 sed -i "s/^\/\/ @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/\/\/ @version $(__VERSION__)/"
 	# Miscellaneous #
 	find $(ACCDIR)/* -mount -type f -name "XCompose" -print0 | xargs -0 sed -i "s/^#' @version 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/#' @version $(__VERSION__)/"
+	find ./dkms/* -mount -type f -name "dkms.conf" -print0 | xargs -0 sed -i "s/^PACKAGE_VERSION=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PACKAGE_VERSION=$(__VERSION__)/"
+	find ./dkms/* -mount -type f -name "Makefile" -print0 | xargs -0 sed -i "s/^VERSION := 20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/VERSION := $(__VERSION__)/"
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "*.desktop" -print0 | xargs -0 sed -i "s/^Version=20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/Version=$(__VERSION__)/"
 	find . -mount $(EXCLUDE_FROM_FIND) -type f -name "Doxy*" -print0 | xargs -0 sed -i "s/^PROJECT_NUMBER[ \t]*=[ \t]*20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]/PROJECT_NUMBER=$(__VERSION__)/"
 
@@ -509,6 +516,28 @@ unmacify :
 secure :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(TOOLSDIR)/secure_system.sh
+
+
+# INSTALL DKMS DRIVER MODULES #
+
+
+install_dkms_clevo_kbd_backlight :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Clevo Keyboard Backlight Driver ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	cd ./dkms/clevo_kbd_backlight/
+	make build_install
+	cd ../..
+
+
+# UNINSTALL DKMS DRIVER MODULES #
+
+
+uninstall_dkms_clevo_kbd_backlight :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Clevo Keyboard Backlight Driver ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	cd ./dkms/clevo_kbd_backlight/
+	make uninstall
+	cd ../..
 
 
 # INSTALL/UNINSTALL #

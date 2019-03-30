@@ -1,3 +1,19 @@
+2019-03-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* alphabetize_lines:  Added support for character sorting, added more delimiters, and changed the inner-workings of the script
+	* color-kit:  Various fixes & improvements
+	* color.py:  Applied fixes & optimizations
+	* extras_rc.sh:  Optimized some code
+	* libchar.py:  Added more holographs
+	* mimetype_booster.xml:  Added more mimetypes
+	* Opticons:  Added an icon for MenuLibre and added more mimetype icons
+	* pkg_rc.sh:  Added more functions for Debian-based systems
+	* PyBooster:  Added `Color-Kit` & associated files
+	* PyBooster:  Added `Desktop-Entry-Maker` & associated files
+	* PyBooster:  Added a Linux driver module for the Clevo keyboard backlight
+	* PyBooster:  Miscellaneous fixes & tweaks
+	* strtools.py:  Added more holographs
+
 2019-03-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* color.py:  Added some functions, fixed bugs, & applied optimizations
