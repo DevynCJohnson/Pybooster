@@ -48,9 +48,15 @@ along with this software.
 
 
 #define __CLEVO_PR(lvl, fmt, ...)   do { pr_##lvl(fmt, ## __VA_ARGS__); } while (0)
+#define CLEVO_EMERG(fmt, ...)   __CLEVO_PR(emerg, fmt, ## __VA_ARGS__)
+#define CLEVO_ALERT(fmt, ...)   __CLEVO_PR(alert, fmt, ## __VA_ARGS__)
+#define CLEVO_CRIT(fmt, ...)   __CLEVO_PR(crit, fmt, ## __VA_ARGS__)
 #define CLEVO_ERROR(fmt, ...)   __CLEVO_PR(err, fmt, ## __VA_ARGS__)
+#define CLEVO_WARN(fmt, ...)   __CLEVO_PR(warning, fmt, ## __VA_ARGS__)
+#define CLEVO_NOTICE(fmt, ...)   __CLEVO_PR(notice, fmt, ## __VA_ARGS__)
+#define CLEVO_INFO(fmt, ...)   __CLEVO_PR(info, fmt, ## __VA_ARGS__)
 #if defined(DEBUG) && DEBUG
-#   define CLEVO_DEBUG(fmt, ...)   __CLEVO_PR(debug, "[%s:%u] " fmt, __func__, __LINE__, ##__VA_ARGS__)
+#   define CLEVO_DEBUG(fmt, ...)   __CLEVO_PR(err, "[%s:%u] " fmt, __func__, __LINE__, ##__VA_ARGS__)
 #else
 #   define CLEVO_DEBUG(fmt, ...)   do { } while (0)
 #endif
@@ -95,8 +101,12 @@ along with this software.
 // Method IDs for CLEVO_GET
 
 #define GET_EVENT   1
+#define GET_POWER_STATE_FOR_3G   0x0A
 #define GET_AP   0x46
+#define SET_3G   0x4C
 #define SET_KB_LED   0x67
+#define AIRPLANE_BUTTON   0x6D
+#define TALK_BIOS_3G   0x78
 
 
 // WMI Codes
@@ -197,12 +207,6 @@ static int set_color(const uint32_t region, const uint32_t color);
 static int set_color_region(const char* buffer, const size_t size, const uint32_t region);
 
 
-/* ACPI FUNCTIONS */
-
-
-static int clevo_kbd_backlight_lid_notify(struct notifier_block* nb, const unsigned long val, void* unused);
-
-
 /* INIT & EXIT FUNCTIONS */
 
 
@@ -219,7 +223,7 @@ static int clevo_wmi_probe(struct platform_device* dev);
 static int clevo_wmi_remove(struct platform_device* dev);
 static int clevo_wmi_resume(struct platform_device* dev);
 static void clevo_wmi_notify(const uint32_t value, void* context);
-static int clevo_evaluate_method(const uint32_t method_id, const uint32_t arg, uint32_t* retval);
+static int clevo_evaluate_method(const uint32_t method_id, uint32_t arg, uint32_t* retval);
 
 
 /* PARAMETER VALIDATORS */
