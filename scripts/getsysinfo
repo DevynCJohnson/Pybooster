@@ -64,6 +64,8 @@ fi
 [ -x "$(command -v grub-install)" ] && printf '%s\n' "$(grub-install --version)" >> "$FILE"
 [ -x "$(command -v lshw)" ] && printf '%s\n' "$(lshw -C system)" >> "$FILE"
 [ -n "$(command -v systemctl)" ] && printf '\nSystemctl Services:\n%s\n' "$(systemctl list-unit-files)" >> "$FILE"
+[ -n "$(command -v systemctl)" ] && printf '\nHard Limits:\n%s\n' "$(ulimit -H -a)" >> "$FILE"
+[ -n "$(command -v systemctl)" ] && printf '\nSoft Limits:\n%s\n' "$(ulimit -S -a)" >> "$FILE"
 
 
 # KERNEL INFO #
