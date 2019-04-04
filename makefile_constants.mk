@@ -1273,7 +1273,7 @@ valchecksums :
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitstats gitundoadd lscontrib lstags newchanges news previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitlsuncommitted gitstats gitundoadd lscontrib lstags newchanges news previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -1321,6 +1321,9 @@ gitlsconfigs :
 
 gitlsfiles :
 	@git ls-files
+
+gitlsuncommitted :
+	@git diff
 
 gitstats :
 	-@gitstats ./ $(TESTINGDIR)/git/
