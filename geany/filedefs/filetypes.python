@@ -44,7 +44,7 @@ FT_01_LB=_PyAnalysis
 FT_01_CM=pyanalysis "%d/%f"
 FT_01_WD=
 FT_02_LB=PyLint
-FT_02_CM=pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "%d/%f"
+FT_02_CM=pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "%d/%f"
 FT_02_WD=
 FT_03_LB=DocTest
 FT_03_CM=python3 -m doctest "%d/%f"

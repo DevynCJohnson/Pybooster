@@ -10,7 +10,7 @@ install:
   - pip install flake8 pydocstyle pycodestyle pylint
 script:
   - flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero
-  - pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y
+  - pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y
   - pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics
   - pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400
 

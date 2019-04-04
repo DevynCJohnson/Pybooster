@@ -104,14 +104,14 @@ for file in "$@"; do
     if [ "$ispy2" -eq 1 ]; then
         if [ -x "$(command -v pylint2)" ]; then
             printf '======  *PYLINT2*  ======\n'
-            pylint2 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            pylint2 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'pylint2: command not found!\n' >&2
         fi
     else
         if [ -x "$(command -v pylint3)" ]; then
             printf '======  *PYLINT*  ======\n'
-            pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'pylint3: command not found!\n' >&2
         fi

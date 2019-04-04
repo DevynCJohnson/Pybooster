@@ -38,4 +38,4 @@ color magenta start="#!\[" end="\]"
 
 # REMINDERS #
 
-color brightcyan "(//|/\*|^) (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightcyan "(//|/\*|^) (DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"

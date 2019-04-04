@@ -352,8 +352,8 @@ update_doccmt_keywords :
 	-@find $(GEANYDIR)/filedefs -type f -exec grep -l -F 'docComment=' {} + | xargs sed -i "s/docComment=.*/docComment=$(DOCCMT_KEYWORDS)/g"
 
 update_reminders :
-	-@find . -type f -exec grep -l -F '$(OLD_REMINDERS)' {} + | xargs sed -i "s/$(OLD_REMINDERS)/$(REMINDER_CMTS)/g"
-	find . -type f -exec grep -l -F '$(subst |, \,, $(OLD_REMINDERS))' {} + | xargs sed -i "s/$(subst |, \,, $(OLD_REMINDERS))/$(subst |, \,, $(REMINDER_CMTS))/g"
+	find . -type f -exec grep -l -F '$(OLD_REMINDERS)' {} + | xargs sed -i "s/$(OLD_REMINDERS)/$(REMINDER_CMTS)/g"
+	find . -type f -exec grep -l -F '$(subst |,$(comma),$(OLD_REMINDERS))' {} + | xargs sed -i "s/$(subst |,$(comma),$(OLD_REMINDERS))/$(subst |,$(comma),$(REMINDER_CMTS))/g"
 
 upver :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Updating Software Versions ==='

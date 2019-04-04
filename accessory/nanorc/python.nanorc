@@ -35,7 +35,7 @@ color brightmagenta "\<(False|None|True)\>"
 
 # SPECIAL COMMENTS #
 
-color brightwhite,yellow "# (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "# (DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
 color blue,yellow "#[ 	]*(bandit|cython:|doctest:|EASY\-INSTALL\-ENTRY\-SCRIPT:|mypy:|noqa:|nosec|pylint:|type:)" "##(doc|doc\-class|doc\-method|doc\-module|header):"
 
 # TRAILING WHITESPACE #

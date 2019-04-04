@@ -16,7 +16,7 @@ color yellow "\"(\\.|[^\"])*\"|'(\\.|[^\'])*'"
 
 color red "(^|[[:space:]])//.*"
 color red start="/\*" end="\*/"
-color brightwhite,yellow "// (DEBUG|DEPRECATED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
+color brightwhite,yellow "// (DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)[ 	]*:[ 	]*"
 
 # TRAILING WHITESPACE #
 
