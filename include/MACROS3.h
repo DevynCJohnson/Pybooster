@@ -28134,6 +28134,22 @@ LIB_FUNC char* ctermid(char* s) {
 }
 
 
+/** Test if the given string is found in the specified file; `0` and `1` are used to indicate `false` and `true`, respectively, while `-1` indicates failure */
+LIB_FUNC int file_contains_string(const char* file_path, const char* char_string) {
+	FILE* file_ptr = fopen(file_path, "r");
+	if (!file_ptr) { return -1; }
+	char buffer[8192] = { 0 };
+	while (fgets(buffer, 8192, file_ptr) != NULL) {
+		if (strstr(buffer, char_string)) {
+			fclose(file_ptr);
+			return 1;
+		}
+	}
+	fclose(file_ptr);
+	return 0;
+}
+
+
 /* TODO: Add stdio functions
 FILE* fmemopen(void* restrict, size_t, const char* restrict);
 int pclose(FILE*);
