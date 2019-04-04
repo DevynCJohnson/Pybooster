@@ -15,7 +15,6 @@
 [ "$PROFILE_SHELL" = 'bash' ] && set -a
 
 if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin Package Managers
-    # TODO: Add MacPorts and Fink
     if [ -n "$(command -v brew)" ]; then  # MacOS Homebrew
         cleanrepocache() { brew cleanup; }
         clrpkg() { brew prune; }
@@ -30,7 +29,7 @@ if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin 
         pkglsup() { brew outdated; }
         pkgreinstall() { brew reinstall "${@//;// }"; }
         pkguninstall() { brew uninstall "${@//;// }"; }
-        pkgupdate() { ([ -n "${*:-}" ] && brew upgrade "${@//;// }") || ([ -z "${*:-}" ] && brew upgrade); }
+        pkgupdate() { brew upgrade "${@//;// }"; }
         refreshman() { brew man; }
         refreshrepo() { brew update --force; }
         repocheck() { brew doctor; }
@@ -41,7 +40,32 @@ if [ "$PLATFORM" = 'darwin' ] && [ "$PLATFORM" != 'gnu' ]; then  # Apple/Darwin 
         repofindopensuse() { brew search --opensuse "${@//;// }"; }
         repofindubuntu() { brew search --ubuntu "${@//;// }"; }
         repoinfo() { brew tap-info; }
+        sysupgrade() { brew upgrade; }
         writebrewfile() { brew bundle cleanup; }
+    elif [ -n "$(command -v fink)" ]; then  # MacOS Fink
+        cleanrepocache() { fink cleanup; }
+        pkgfind() { fink list "${1}"; }
+        pkginstall() { fink install "${@//;// }"; }
+        pkglsinst() { fink list; }
+        pkgreinstall() { fink reinstall "${@//;// }"; }
+        pkguninstall() { fink purge "${@//;// }"; }
+        pkgupdate() { fink update "${@//;// }"; }
+        refreshrepo() { fink index; }
+        sysupgrade() { fink index; fink update-all; }
+    elif [ -n "$(command -v fink)" ]; then  # MacOS MacPorts
+        cleanrepocache() { port reclaim; }
+        filesfrompkg() { port contents "${1}"; }
+        pkgfind() { port list "${1}"; }
+        pkginstall() { port install "${@//;// }"; }
+        pkglsavalup() { port outdated; }
+        pkglsdeps() { port dependents; }
+        pkglsinst() { port installed; }
+        pkgreinstall() { port uninstall "${@//;// }"; port install "${@//;// }"; }
+        pkguninstall() { port uninstall "${@//;// }"; }
+        pkgupdate() { port upgrade "${@//;// }"; }
+        refreshrepo() { port sync; }
+        repocheck() { port diagnose; }
+        sysupgrade() { port selfupdate; port upgrade outdated; }
     fi
 elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-get)" ]; }; then  # Debian Linux Apt
     cleanrepocache() { sudo apt-get clean; }
@@ -66,16 +90,18 @@ elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-g
         rmrepo() { sudo add-apt-repository --remove "${@//;// }"; }
     fi
     if [ -x "$(command -v dpkg)" ]; then
-        alias filepkgorigin='dpkg-query -S'
-        alias filesfrompkg='dpkg-query -L'
-        alias pkglsinst='dpkg --list | grep ^i'
+        if [ -x "$(command -v dpkg-query)" ]; then
+            filepkgorigin() { dpkg-query -S "${1}"; }
+            filesfrompkg() { dpkg-query -L "${1}"; }
+            pkgfind() { dpkg-query --list "${1}"; }
+        fi
+        pkglsinst() { dpkg-query --list | grep ^i "${1}"; }
         pkglshold() { dpkg --get-selections | grep hold; }
         #' List removed packages that still have remaining/persistent configuration files
         pkglsrc() { dpkg -l | grep ^rc; }
         #' List half-installed packages
         pkglshalfinst() { dpkg -l | grep ^.h; }
     fi
-    [ -x "$(command -v dpkg-query)" ] && alias pkgfind='dpkg-query --list'
 elif [ -d /etc/dnf ] && [ -x "$(command -v dnf)" ]; then  # Fedora DNF
     cleanrepocache() { sudo dnf clean all; }
     clrpkg() { sudo dnf autoremove; }
