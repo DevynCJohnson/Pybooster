@@ -106,8 +106,8 @@ __all__: list = [
 # CONSTANTS #
 
 
-GIGABYTE = 1000000000  # Gigabyte (Base 10)
-GIGIBYTE = 1073741824  # Gigibyte (Base 2)
+GIGABYTE: int = 1000000000  # Gigabyte (Base 10)
+GIGIBYTE: int = 1073741824  # Gigibyte (Base 2)
 
 
 # VALIDATION #
