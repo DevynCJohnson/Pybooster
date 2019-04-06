@@ -158,6 +158,7 @@ help :
 	printf '%s\n\t%s\n' 'Update geolocation files under `/etc/`:' 'sudo make update_geofiles'
 	printf '%s\n\t%s\n' 'Make the system more like OSX:' 'sudo make macify'
 	printf '%s\n\t%s\n' 'Undo the effects of `macify`:' 'sudo make unmacify'
+	printf '%s\n\t%s\n' 'Replace the current /etc/apt/sources.list with a new list (Ubuntu only):' 'sudo make replace_repos'
 	printf '%s\n\t%s\n' 'Make the system more secure:' 'sudo make secure'
 	printf '%s\n\t%s\n' 'Fix the Thunar Archive Plugin (TAP):' 'sudo make fix_thunar_tap'
 	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'VARIABLES'
@@ -512,6 +513,14 @@ macify :
 unmacify :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	unlink /private
+
+replace_repos :
+	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	if [ -f /etc/lsb-release ]; then . /etc/lsb-release; fi
+	[ -f /etc/lsb-release ] && . /etc/lsb-release
+	[ -z "$${DISTRIB_ID:-}" ] && [ "$${DISTRIB_ID:-}" == 'Ubuntu' ] && $(ACCDIR)/getgpgkeys.sh
+	[ -z "$${DISTRIB_ID:-}" ] && [ "$${DISTRIB_ID:-}" == 'Ubuntu' ] && $(COPY) $(ACCDIR)/Ubuntu_Repos.list /etc/apt/sources.list
+	[ -n "$${DISTRIB_CODENAME:-}" ] && [ "$${DISTRIB_ID:-}" == 'Ubuntu' ] && sed -i "s/cosmic/$${DISTRIB_CODENAME}/g" /etc/apt/sources.list;
 
 secure :
 	-@if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi

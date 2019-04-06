@@ -1,0 +1,74 @@
+# OFFICIAL REPOSITORIES #
+
+
+# Main Repositories
+deb http://us.archive.ubuntu.com/ubuntu/ cosmic main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu cosmic partner
+
+# Update Repositories
+deb http://us.archive.ubuntu.com/ubuntu/ cosmic-security main restricted universe multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ cosmic-updates main restricted universe multiverse
+# deb http://us.archive.ubuntu.com/ubuntu/ cosmic-proposed main restricted universe multiverse
+# deb http://us.archive.ubuntu.com/ubuntu/ cosmic-backports main restricted universe multiverse
+
+
+# 3RD-PARTY REPOSITORIES #
+
+
+# deb file:/var/cache/apt-build/repository apt-build main #Apt-Build
+# deb [arch=amd64] http://download.docker.com/linux/ubuntu cosmic stable #Docker
+# deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main #Google Chrome Browser
+# deb [arch=amd64] https://dl.google.com/linux/earth/deb/ stable main #Google Earth
+# deb [arch=amd64] https://dl.google.com/linux/webdesigner/deb/ stable main #Google Web Designer
+# deb http://ppa.launchpad.net/antumdeluge/debreate/ubuntu cosmic main #Debreate
+# deb http://ppa.launchpad.net/arunsivaraman/gpuviewer/ubuntu cosmic main #GPU Info
+# deb http://ppa.launchpad.net/boomaga/ppa/ubuntu cosmic main #Boomaga
+# deb http://ppa.launchpad.net/dhor/myway/ubuntu cosmic main #Highly Explosive
+# deb http://ppa.launchpad.net/eosrei/fonts/ubuntu cosmic main #Color Emoji Fonts
+# deb http://ppa.launchpad.net/fingerprint/fingerprint-gui/ubuntu cosmic main #FingerPrint-GUI
+# deb http://ppa.launchpad.net/fingerprint/fprint/ubuntu cosmic main #FPrint
+# deb http://ppa.launchpad.net/gambas-team/gambas-daily/ubuntu cosmic main #Gambas (Daily)
+# deb http://ppa.launchpad.net/gambas-team/gambas3/ubuntu cosmic main #Gambas
+# deb http://ppa.launchpad.net/geany-dev/ppa/ubuntu cosmic main #Geany
+# deb http://ppa.launchpad.net/geary-team/releases/ubuntu cosmic main #Geary
+# deb http://ppa.launchpad.net/graphics-drivers/dev/ubuntu cosmic main #Nvidia Graphics Drivers (Dev)
+# deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu cosmic main #Nvidia Graphics Drivers
+# deb http://ppa.launchpad.net/jcfp/nobetas/ubuntu cosmic main #SABnzbd (Final Releases)
+# deb http://ppa.launchpad.net/jcfp/ppa/ubuntu cosmic main #SABnzbd (All Releases)
+# deb http://ppa.launchpad.net/jcfp/sab-addons/ubuntu cosmic main #SABnzbd Add-ons
+# deb http://ppa.launchpad.net/kubuntu-ppa/backports/ubuntu cosmic main #Kubuntu Backports
+# deb http://ppa.launchpad.net/kubuntu-ppa/beta/ubuntu cosmic main #Kubuntu Beta Backports
+# deb http://ppa.launchpad.net/kubuntu-ppa/ppa/ubuntu cosmic main #Kubuntu Updates
+# deb http://ppa.launchpad.net/kubuntu-ppa/staging-misc/ubuntu cosmic main #Kubuntu Staging Miscellaneous
+# deb http://ppa.launchpad.net/kubuntu-ppa/staging-plasma/ubuntu cosmic main #Kubuntu Staging Plasma
+# deb http://ppa.launchpad.net/libreoffice/ppa/ubuntu cosmic main #LibreOffice
+# deb http://ppa.launchpad.net/minetestdevs/stable/ubuntu cosmic main #Minetest
+# deb http://ppa.launchpad.net/noobslab/apps/ubuntu cosmic main cosmic main #NoobsLab Applications
+# deb http://ppa.launchpad.net/noobslab/icons/ubuntu cosmic main #NoobsLab Icons
+# deb http://ppa.launchpad.net/noobslab/icons2/ubuntu cosmic main #NoobsLab Icons 2
+# deb http://ppa.launchpad.net/noobslab/macbuntu/ubuntu cosmic main #NoobsLab Macbuntu
+# deb http://ppa.launchpad.net/noobslab/themes/ubuntu cosmic main #NoobsLab Themes
+# deb http://ppa.launchpad.net/oguzhaninan/stacer/ubuntu cosmic main #Stacer
+# deb http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu cosmic main #Gimp
+# deb http://ppa.launchpad.net/ubuntu-mozilla-daily/ppa/ubuntu cosmic main #Mozilla Daily Build
+# deb http://ppa.launchpad.net/viktor-krivak/pycharm/ubuntu cosmic main #PyCharm
+# deb http://ppa.launchpad.net/webupd8team/atom/ubuntu cosmic main #Atomic Text Editor
+# deb http://ppa.launchpad.net/webupd8team/brackets/ubuntu cosmic main #Brackets
+# deb http://ppa.launchpad.net/webupd8team/java/ubuntu cosmic main #Oracle Java (JDK)
+# deb http://ppa.launchpad.net/webupd8team/mtpaint/ubuntu cosmic main #mtPaint
+# deb http://ppa.launchpad.net/webupd8team/y-ppa-manager/ubuntu cosmic main #Y PPA Manager
+# deb http://ppa.launchpad.net/xorg-edgers/ppa/ubuntu cosmic main #Xorg Edgers
+# deb http://repo.mongodb.org/apt/ubuntu/ cosmic 4.1 #MongoDB
+# deb https://apt.llvm.org/cosmic/ llvm-toolchain-cosmic-7 main #Clang and LLVM v7
+# deb https://apt.llvm.org/cosmic/ llvm-toolchain-cosmic-8 main #Clang and LLVM v8
+# deb https://apt.postgresql.org/pub/repos/apt/ cosmic-pgdg main #PostgreSQL
+# deb https://apt.syncthing.net/ syncthing release #Syncthing
+# deb https://deb.opera.com/opera-beta/ stable non-free #Opera Beta
+# deb https://deb.opera.com/opera/ stable non-free #Opera
+# deb https://deb.torproject.org/torproject.org cosmic main #Tor
+# deb https://repo.mysql.com/apt/ubuntu/ cosmic mysql-8.0 #MySQL v8
+# deb https://repo.mysql.com/apt/ubuntu/ cosmic mysql-tools #MySQL Tools
+# deb https://repo.skype.com/deb stable main #Skype
+# deb https://repository.spotify.com stable non-free #Spotify
+# deb https://winswitch.org/ cosmic main #WinSwitch & Xpra
+# deb https://winswitch.org/beta/ cosmic main #WinSwitch & Xpra-Beta
