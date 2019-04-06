@@ -222,7 +222,7 @@ default :
 # Uninstall
 .PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
-.PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify secure uninstall_geofiles unmacify update_geofiles
+.PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify replace_repos secure uninstall_geofiles unmacify update_geofiles
 
 
 # BUILD COMMANDS #
