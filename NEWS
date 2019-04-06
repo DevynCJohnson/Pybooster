@@ -1,3 +1,18 @@
+2019-04-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* snippets.conf:  Added snippets for Python & Shell-scripts
+	* profile:  Added distro detection
+	* PyBooster:  Added a `sources.list` file for Ubuntu
+
+2019-04-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* getsysinfo:  Added the system's hard & soft limits to the generated output
+	* MACROS3.h:  Added `file_contains_string()`
+	* makefile_constants.mk:  Added `gitlsuncommitted` to list recently changed code
+	* pkg_rc.sh:  Added support for Fink & MacPorts
+	* profile:  Fixed some bugs pertaining to the creation of `$PATH`
+	* PyBooster:  Added `DISABLED` to the list of special "TODO" comments
+
 2019-03-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* clevo_kbd_backlight:  Applied some improvements
