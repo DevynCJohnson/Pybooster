@@ -1258,17 +1258,17 @@ COMPILED_HEADERS::=$(CLANG) $(ARCH) $(STD) -x c-header
 
 genchecksums :
 	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Creating Checksums ==='
-	$(RM) ./checksums.b2b512 ./checksums.rmd160 ./checksums.sha1 ./checksums.sha512 ./checksums.whirlpool || true
-	find . -mount -type f -not \( -name 'checksums.sha512' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -sha512 > "${FOLDER}checksums.sha512"
-	find . -mount -type f -not \( -name 'checksums.whirlpool' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -whirlpool > "${FOLDER}checksums.whirlpool"
-	find . -mount -type f -not \( -name 'checksums.rmd160' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -ripemd160 > "${FOLDER}checksums.rmd160"
-	find . -mount -type f -not \( -name 'checksums.b2b512' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl blake2b512 > "${FOLDER}checksums.b2b512"
-	find . -mount -type f -not \( -name 'checksums.sha1' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -sha1 > "${FOLDER}checksums.sha1"
+	$(RM) ./.checksums.b2b512 ./.checksums.rmd160 ./.checksums.sha1 ./.checksums.sha512 ./.checksums.whirlpool || true
+	find . -mount -type f -not \( -name '.checksums.sha512' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -sha512 > "${FOLDER}.checksums.sha512"
+	find . -mount -type f -not \( -name '.checksums.whirlpool' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -whirlpool > "${FOLDER}.checksums.whirlpool"
+	find . -mount -type f -not \( -name '.checksums.rmd160' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -ripemd160 > "${FOLDER}.checksums.rmd160"
+	find . -mount -type f -not \( -name '.checksums.b2b512' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl blake2b512 > "${FOLDER}.checksums.b2b512"
+	find . -mount -type f -not \( -name '.checksums.sha1' -o -path "./bin/*" -o -path "./debugging/*" -o -path "./testing/*" -o -path "./.git/*" \) -print0 | xargs -0 openssl dgst -sha1 > "${FOLDER}.checksums.sha1"
 
 valchecksums :
 	-@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Validating Checksums ==='
-	sha512sum --check --quiet --strict ./checksums.sha512
-	sha1sum --check --quiet --strict ./checksums.sha1
+	sha512sum --check --quiet --strict ./.checksums.sha512
+	sha1sum --check --quiet --strict ./.checksums.sha1
 
 
 # GIT COMMANDS #
@@ -1278,7 +1278,7 @@ valchecksums :
 
 
 commit :
-	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG"
+	@printf 'Create a commit message: ' && read -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
 
 commithash :
 	@git log -1 --pretty=format:"%H"
@@ -1370,7 +1370,7 @@ uncommit :
 	@git reset --soft HEAD~
 
 xcommit :
-	@read -p 'Create a commit message: ' -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
+	@printf 'Create a commit message: ' && read -r GITMSG && git commit --cleanup=strip --message="$$GITMSG" --signoff
 
 xtag :
 	@git tag -s -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
@@ -1379,12 +1379,16 @@ xtag :
 # MISCELLANEOUS PROJECT COMMANDS #
 
 
-.PHONY : changelogmd news
+.PHONY : changelogmd gnuchangelog news
 
 changelogmd : ./tools/mkchangelogmd.sh
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Creating Markdown ChangeLog ==='
 	$(RM) ./ChangeLog.md
 	./tools/mkchangelogmd.sh
+
+gnuchangelog : ./git/
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Creating GNU ChangeLog from Git ==='
+	git log --pretty --numstat --summary | git2cl > GNU-ChangeLog
 
 news :
 	@([ -f ./ChangeLog ] && $(COPY) ./ChangeLog ./NEWS) || true
