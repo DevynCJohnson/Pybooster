@@ -1,0 +1,197 @@
+# format=tagmanager
+ZLIB_HÌ65536Ö0
+ZLIB_VERNUMÌ65536Ö0
+ZLIB_VERSIONÌ65536Ö0
+ZLIB_VER_MAJORÌ65536Ö0
+ZLIB_VER_MINORÌ65536Ö0
+ZLIB_VER_REVISIONÌ65536Ö0
+ZLIB_VER_SUBREVISIONÌ65536Ö0
+Z_ASCIIÌ65536Ö0
+Z_BEST_COMPRESSIONÌ65536Ö0
+Z_BEST_SPEEDÌ65536Ö0
+Z_BINARYÌ65536Ö0
+Z_BLOCKÌ65536Ö0
+Z_BUF_ERRORÌ65536Ö0
+Z_DATA_ERRORÌ65536Ö0
+Z_DEFAULT_COMPRESSIONÌ65536Ö0
+Z_DEFAULT_STRATEGYÌ65536Ö0
+Z_DEFLATEDÌ65536Ö0
+Z_ERRNOÌ65536Ö0
+Z_FILTEREDÌ65536Ö0
+Z_FINISHÌ65536Ö0
+Z_FIXEDÌ65536Ö0
+Z_FULL_FLUSHÌ65536Ö0
+Z_HUFFMAN_ONLYÌ65536Ö0
+Z_MEM_ERRORÌ65536Ö0
+Z_NEED_DICTÌ65536Ö0
+Z_NO_COMPRESSIONÌ65536Ö0
+Z_NO_FLUSHÌ65536Ö0
+Z_NULLÌ65536Ö0
+Z_OKÌ65536Ö0
+Z_PARTIAL_FLUSHÌ65536Ö0
+Z_RLEÌ65536Ö0
+Z_STREAM_ENDÌ65536Ö0
+Z_STREAM_ERRORÌ65536Ö0
+Z_SYNC_FLUSHÌ65536Ö0
+Z_TEXTÌ65536Ö0
+Z_TREESÌ65536Ö0
+Z_UNKNOWNÌ65536Ö0
+Z_VERSION_ERRORÌ65536Ö0
+adlerÌ64Îz_stream_sÖ0ÏuLong
+adler32Ì1024Í((uLong adler, const Bytef *buf, uInt len))Ö0ÏZEXTERN
+adler32_combineÌ1024Í((uLong, uLong, z_off_t))Ö0ÏZEXTERN
+adler32_combineÌ65536Ö0
+adler32_combine64Ì1024Í((uLong, uLong, z_off64_t))Ö0ÏZEXTERN
+adler32_combine64Ì1024Í((uLong, uLong, z_off_t))Ö0ÏZEXTERN
+adler32_zÌ1024Í((uLong adler, const Bytef *buf, z_size_t len))Ö0ÏZEXTERN
+alloc_funcÌ4096Ö0Ïtypedef voidpf
+avail_inÌ64Îz_stream_sÖ0ÏuInt
+avail_outÌ64Îz_stream_sÖ0ÏuInt
+comm_maxÌ64Îgz_header_sÖ0ÏuInt
+commentÌ64Îgz_header_sÖ0ÏBytef *
+compressÌ1024Í((Bytef *dest, uLongf *destLen, const Bytef *source, uLong sourceLen))Ö0ÏZEXTERN int
+compress2Ì1024Í((Bytef *dest, uLongf *destLen, const Bytef *source, uLong sourceLen, int level))Ö0ÏZEXTERN int
+compressBoundÌ1024Í((uLong sourceLen))Ö0ÏZEXTERN
+crc32Ì1024Í((uLong crc, const Bytef *buf, uInt len))Ö0ÏZEXTERN
+crc32_combineÌ1024Í((uLong, uLong, z_off_t))Ö0ÏZEXTERN
+crc32_combineÌ65536Ö0
+crc32_combine64Ì1024Í((uLong, uLong, z_off64_t))Ö0ÏZEXTERN
+crc32_combine64Ì1024Í((uLong, uLong, z_off_t))Ö0ÏZEXTERN
+crc32_zÌ1024Í((uLong adler, const Bytef *buf, z_size_t len))Ö0ÏZEXTERN
+data_typeÌ64Îz_stream_sÖ0Ïint
+deflateÌ1024Í((z_streamp strm, int flush))Ö0ÏZEXTERN int
+deflateBoundÌ1024Í((z_streamp strm, uLong sourceLen))Ö0ÏZEXTERN
+deflateCopyÌ1024Í((z_streamp dest, z_streamp source))Ö0ÏZEXTERN int
+deflateEndÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+deflateGetDictionaryÌ1024Í((z_streamp strm, Bytef *dictionary, uInt *dictLength))Ö0ÏZEXTERN int
+deflateInitÌ131072Í(strm, level)Ö0
+deflateInit2Ì131072Í(strm, level, method, windowBits, memLevel, strategy)Ö0
+deflateInit2_Ì1024Í((z_streamp strm, int level, int method, int windowBits, int memLevel, int strategy, const char *version, int stream_size))Ö0ÏZEXTERN int
+deflateInit_Ì1024Í((z_streamp strm, int level, const char *version, int stream_size))Ö0ÏZEXTERN int
+deflateParamsÌ1024Í((z_streamp strm, int level, int strategy))Ö0ÏZEXTERN int
+deflatePendingÌ1024Í((z_streamp strm, unsigned *pending, int *bits))Ö0ÏZEXTERN int
+deflatePrimeÌ1024Í((z_streamp strm, int bits, int value))Ö0ÏZEXTERN int
+deflateResetÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+deflateResetKeepÌ1024Í((z_streamp))Ö0ÏZEXTERN int
+deflateSetDictionaryÌ1024Í((z_streamp strm, const Bytef *dictionary, uInt dictLength))Ö0ÏZEXTERN int
+deflateSetHeaderÌ1024Í((z_streamp strm, gz_headerp head))Ö0ÏZEXTERN int
+deflateTuneÌ1024Í((z_streamp strm, int good_length, int max_lazy, int nice_length, int max_chain))Ö0ÏZEXTERN int
+doneÌ64Îgz_header_sÖ0Ïint
+extraÌ64Îgz_header_sÖ0ÏBytef *
+extra_lenÌ64Îgz_header_sÖ0ÏuInt
+extra_maxÌ64Îgz_header_sÖ0ÏuInt
+free_funcÌ4096Ö0Ïtypedef void
+get_crc_tableÌ1024Í((void))Ö0ÏZEXTERN const
+gzFileÌ4096Ö0ÏgzFile_s
+gzFile_sÌ2048Ö0
+gz_headerÌ4096Ö0Ïgz_header_s
+gz_header_sÌ2048Ö0
+gz_headerpÌ4096Ö0Ïgz_header
+gzbufferÌ1024Í((gzFile file, unsigned size))Ö0ÏZEXTERN int
+gzclearerrÌ1024Í((gzFile file))Ö0ÏZEXTERN void
+gzcloseÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzclose_rÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzclose_wÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzdirectÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzdopenÌ1024Í((int fd, const char *mode))Ö0ÏZEXTERN
+gzeofÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzerrorÌ1024Í((gzFile file, int *errnum))Ö0ÏZEXTERN const char *
+gzflushÌ1024Í((gzFile file, int flush))Ö0ÏZEXTERN int
+gzfreadÌ1024Í((voidp buf, z_size_t size, z_size_t nitems, gzFile file))Ö0ÏZEXTERN
+gzfwriteÌ1024Í((voidpc buf, z_size_t size, z_size_t nitems, gzFile file))Ö0ÏZEXTERN
+gzgetcÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzgetcÌ131072Í(g)Ö0
+gzgetc_Ì1024Í((gzFile file))Ö0ÏZEXTERN int
+gzgetsÌ1024Í((gzFile file, char *buf, int len))Ö0ÏZEXTERN char *
+gzoffsetÌ1024Í((gzFile))Ö0ÏZEXTERN
+gzoffsetÌ65536Ö0
+gzoffset64Ì1024Í((gzFile))Ö0ÏZEXTERN
+gzopenÌ1024Í((const char *, const char *))Ö0ÏZEXTERN
+gzopenÌ65536Ö0
+gzopen64Ì1024Í((const char *, const char *))Ö0ÏZEXTERN
+gzopen_wÌ1024Í((const wchar_t *path, const char *mode))Ö0ÏZEXTERN
+gzprintfÌ1024Í((gzFile file, const char *format, ...))Ö0ÏZEXTERN int
+gzputcÌ1024Í((gzFile file, int c))Ö0ÏZEXTERN int
+gzputsÌ1024Í((gzFile file, const char *s))Ö0ÏZEXTERN int
+gzreadÌ1024Í((gzFile file, voidp buf, unsigned len))Ö0ÏZEXTERN int
+gzrewindÌ1024Í((gzFile file))Ö0ÏZEXTERN int
+gzseekÌ1024Í((gzFile, z_off_t, int))Ö0ÏZEXTERN
+gzseekÌ65536Ö0
+gzseek64Ì1024Í((gzFile, z_off64_t, int))Ö0ÏZEXTERN
+gzseek64Ì1024Í((gzFile, z_off_t, int))Ö0ÏZEXTERN
+gzsetparamsÌ1024Í((gzFile file, int level, int strategy))Ö0ÏZEXTERN int
+gztellÌ1024Í((gzFile))Ö0ÏZEXTERN
+gztellÌ65536Ö0
+gztell64Ì1024Í((gzFile))Ö0ÏZEXTERN
+gzungetcÌ1024Í((int c, gzFile file))Ö0ÏZEXTERN int
+gzvprintfÌ1024Í((gzFile file, const char *format, va_list va))Ö0ÏZEXTERN int
+gzwriteÌ1024Í((gzFile file, voidpc buf, unsigned len))Ö0ÏZEXTERN int
+haveÌ64ÎgzFile_sÖ0
+hcrcÌ64Îgz_header_sÖ0Ïint
+in_funcÌ4096Ö0
+inflateÌ1024Í((z_streamp strm, int flush))Ö0ÏZEXTERN int
+inflateBackÌ1024Í((z_streamp strm, in_func in, void FAR *in_desc, out_func out, void FAR *out_desc))Ö0ÏZEXTERN int
+inflateBackEndÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+inflateBackInitÌ131072Í(strm, windowBits, window)Ö0
+inflateBackInit_Ì1024Í((z_streamp strm, int windowBits, unsigned char FAR *window, const char *version, int stream_size))Ö0ÏZEXTERN int
+inflateCodesUsedÌ1024Í((z_streamp))Ö0ÏZEXTERN unsigned long
+inflateCopyÌ1024Í((z_streamp dest, z_streamp source))Ö0ÏZEXTERN int
+inflateEndÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+inflateGetDictionaryÌ1024Í((z_streamp strm, Bytef *dictionary, uInt *dictLength))Ö0ÏZEXTERN int
+inflateGetHeaderÌ1024Í((z_streamp strm, gz_headerp head))Ö0ÏZEXTERN int
+inflateInitÌ131072Í(strm)Ö0
+inflateInit2Ì131072Í(strm, windowBits)Ö0
+inflateInit2_Ì1024Í((z_streamp strm, int windowBits, const char *version, int stream_size))Ö0ÏZEXTERN int
+inflateInit_Ì1024Í((z_streamp strm, const char *version, int stream_size))Ö0ÏZEXTERN int
+inflateMarkÌ1024Í((z_streamp strm))Ö0ÏZEXTERN long
+inflatePrimeÌ1024Í((z_streamp strm, int bits, int value))Ö0ÏZEXTERN int
+inflateResetÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+inflateReset2Ì1024Í((z_streamp strm, int windowBits))Ö0ÏZEXTERN int
+inflateResetKeepÌ1024Í((z_streamp))Ö0ÏZEXTERN int
+inflateSetDictionaryÌ1024Í((z_streamp strm, const Bytef *dictionary, uInt dictLength))Ö0ÏZEXTERN int
+inflateSyncÌ1024Í((z_streamp strm))Ö0ÏZEXTERN int
+inflateSyncPointÌ1024Í((z_streamp))Ö0ÏZEXTERN int
+inflateUndermineÌ1024Í((z_streamp, int))Ö0ÏZEXTERN int
+inflateValidateÌ1024Í((z_streamp, int))Ö0ÏZEXTERN int
+internal_stateÌ32768Ö0
+msgÌ64Îz_stream_sÖ0Ïz_const char *
+nameÌ64Îgz_header_sÖ0ÏBytef *
+name_maxÌ64Îgz_header_sÖ0ÏuInt
+nextÌ64ÎgzFile_sÖ0Ïunsigned char *
+next_inÌ64Îz_stream_sÖ0Ïz_const
+next_outÌ64Îz_stream_sÖ0ÏBytef *
+opaqueÌ64Îz_stream_sÖ0Ïvoidpf
+osÌ64Îgz_header_sÖ0Ïint
+out_funcÌ4096Ö0Ïtypedef int
+posÌ64ÎgzFile_sÖ0Ïz_off64_t
+reservedÌ64Îz_stream_sÖ0ÏuLong
+stateÌ64Îz_stream_sÖ0Ïinternal_state
+textÌ64Îgz_header_sÖ0Ïint
+timeÌ64Îgz_header_sÖ0ÏuLong
+total_inÌ64Îz_stream_sÖ0ÏuLong
+total_outÌ64Îz_stream_sÖ0ÏuLong
+uncompressÌ1024Í((Bytef *dest, uLongf *destLen, const Bytef *source, uLong sourceLen))Ö0ÏZEXTERN int
+uncompress2Ì1024Í((Bytef *dest, uLongf *destLen, const Bytef *source, uLong *sourceLen))Ö0ÏZEXTERN int
+xflagsÌ64Îgz_header_sÖ0Ïint
+zErrorÌ1024Í((int))Ö0ÏZEXTERN const char *
+z_adler32_combineÌ65536Ö0
+z_crc32_combineÌ65536Ö0
+z_deflateInitÌ131072Í(strm, level)Ö0
+z_deflateInit2Ì131072Í(strm, level, method, windowBits, memLevel, strategy)Ö0
+z_gzgetcÌ65536Ö0
+z_gzgetcÌ131072Í(g)Ö0
+z_gzoffsetÌ65536Ö0
+z_gzopenÌ65536Ö0
+z_gzseekÌ65536Ö0
+z_gztellÌ65536Ö0
+z_inflateBackInitÌ131072Í(strm, windowBits, window)Ö0
+z_inflateInitÌ131072Í(strm)Ö0
+z_inflateInit2Ì131072Í(strm, windowBits)Ö0
+z_streamÌ4096Ö0Ïz_stream_s
+z_stream_sÌ2048Ö0
+z_streampÌ4096Ö0Ïz_stream
+zallocÌ64Îz_stream_sÖ0Ïalloc_func
+zfreeÌ64Îz_stream_sÖ0Ïfree_func
+zlibCompileFlagsÌ1024Í((void))Ö0ÏZEXTERN
+zlibVersionÌ1024Í((void))Ö0ÏZEXTERN const char *
+zlib_versionÌ65536Ö0

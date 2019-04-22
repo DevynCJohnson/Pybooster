@@ -1,0 +1,1093 @@
+# format=tagmanager
+ACS_BBSSÌ65536Ö0
+ACS_BLOCKÌ65536Ö0
+ACS_BOARDÌ65536Ö0
+ACS_BSBSÌ65536Ö0
+ACS_BSSBÌ65536Ö0
+ACS_BSSSÌ65536Ö0
+ACS_BTEEÌ65536Ö0
+ACS_BULLETÌ65536Ö0
+ACS_CKBOARDÌ65536Ö0
+ACS_DARROWÌ65536Ö0
+ACS_DEGREEÌ65536Ö0
+ACS_DIAMONDÌ65536Ö0
+ACS_GEQUALÌ65536Ö0
+ACS_HLINEÌ65536Ö0
+ACS_LANTERNÌ65536Ö0
+ACS_LARROWÌ65536Ö0
+ACS_LEQUALÌ65536Ö0
+ACS_LLCORNERÌ65536Ö0
+ACS_LRCORNERÌ65536Ö0
+ACS_LTEEÌ65536Ö0
+ACS_NEQUALÌ65536Ö0
+ACS_PIÌ65536Ö0
+ACS_PLMINUSÌ65536Ö0
+ACS_PLUSÌ65536Ö0
+ACS_RARROWÌ65536Ö0
+ACS_RTEEÌ65536Ö0
+ACS_S1Ì65536Ö0
+ACS_S3Ì65536Ö0
+ACS_S7Ì65536Ö0
+ACS_S9Ì65536Ö0
+ACS_SBBSÌ65536Ö0
+ACS_SBSBÌ65536Ö0
+ACS_SBSSÌ65536Ö0
+ACS_SSBBÌ65536Ö0
+ACS_SSBSÌ65536Ö0
+ACS_SSSBÌ65536Ö0
+ACS_SSSSÌ65536Ö0
+ACS_STERLINGÌ65536Ö0
+ACS_TTEEÌ65536Ö0
+ACS_UARROWÌ65536Ö0
+ACS_ULCORNERÌ65536Ö0
+ACS_URCORNERÌ65536Ö0
+ACS_VLINEÌ65536Ö0
+ALL_MOUSE_EVENTSÌ65536Ö0
+A_ALTCHARSETÌ65536Ö0
+A_ATTRIBUTESÌ65536Ö0
+A_BLINKÌ65536Ö0
+A_BOLDÌ65536Ö0
+A_CHARTEXTÌ65536Ö0
+A_COLORÌ65536Ö0
+A_DIMÌ65536Ö0
+A_HORIZONTALÌ65536Ö0
+A_INVISÌ65536Ö0
+A_ITALICÌ65536Ö0
+A_LEFTÌ65536Ö0
+A_LOWÌ65536Ö0
+A_NORMALÌ65536Ö0
+A_PROTECTÌ65536Ö0
+A_REVERSEÌ65536Ö0
+A_RIGHTÌ65536Ö0
+A_STANDOUTÌ65536Ö0
+A_TOPÌ65536Ö0
+A_UNDERLINEÌ65536Ö0
+A_VERTICALÌ65536Ö0
+BUTTON1_CLICKEDÌ65536Ö0
+BUTTON1_DOUBLE_CLICKEDÌ65536Ö0
+BUTTON1_PRESSEDÌ65536Ö0
+BUTTON1_RELEASEDÌ65536Ö0
+BUTTON1_RESERVED_EVENTÌ65536Ö0
+BUTTON1_TRIPLE_CLICKEDÌ65536Ö0
+BUTTON2_CLICKEDÌ65536Ö0
+BUTTON2_DOUBLE_CLICKEDÌ65536Ö0
+BUTTON2_PRESSEDÌ65536Ö0
+BUTTON2_RELEASEDÌ65536Ö0
+BUTTON2_RESERVED_EVENTÌ65536Ö0
+BUTTON2_TRIPLE_CLICKEDÌ65536Ö0
+BUTTON3_CLICKEDÌ65536Ö0
+BUTTON3_DOUBLE_CLICKEDÌ65536Ö0
+BUTTON3_PRESSEDÌ65536Ö0
+BUTTON3_RELEASEDÌ65536Ö0
+BUTTON3_RESERVED_EVENTÌ65536Ö0
+BUTTON3_TRIPLE_CLICKEDÌ65536Ö0
+BUTTON4_CLICKEDÌ65536Ö0
+BUTTON4_DOUBLE_CLICKEDÌ65536Ö0
+BUTTON4_PRESSEDÌ65536Ö0
+BUTTON4_RELEASEDÌ65536Ö0
+BUTTON4_RESERVED_EVENTÌ65536Ö0
+BUTTON4_TRIPLE_CLICKEDÌ65536Ö0
+BUTTON5_CLICKEDÌ65536Ö0
+BUTTON5_DOUBLE_CLICKEDÌ65536Ö0
+BUTTON5_PRESSEDÌ65536Ö0
+BUTTON5_RELEASEDÌ65536Ö0
+BUTTON5_TRIPLE_CLICKEDÌ65536Ö0
+BUTTON_ALTÌ65536Ö0
+BUTTON_CLICKÌ131072Í(e, x)Ö0
+BUTTON_CTRLÌ65536Ö0
+BUTTON_DOUBLE_CLICKÌ131072Í(e, x)Ö0
+BUTTON_PRESSÌ131072Í(e, x)Ö0
+BUTTON_RELEASEÌ131072Í(e, x)Ö0
+BUTTON_RESERVED_EVENTÌ131072Í(e, x)Ö0
+BUTTON_SHIFTÌ65536Ö0
+BUTTON_TRIPLE_CLICKÌ131072Í(e, x)Ö0
+CCHARW_MAXÌ65536Ö0
+COLORSÌ65536Ö0
+COLOR_BLACKÌ65536Ö0
+COLOR_BLUEÌ65536Ö0
+COLOR_CYANÌ65536Ö0
+COLOR_GREENÌ65536Ö0
+COLOR_MAGENTAÌ65536Ö0
+COLOR_PAIRÌ131072Í(n)Ö0
+COLOR_PAIRSÌ65536Ö0
+COLOR_REDÌ65536Ö0
+COLOR_WHITEÌ65536Ö0
+COLOR_YELLOWÌ65536Ö0
+COLSÌ65536Ö0
+CURSESÌ65536Ö0
+CURSES_HÌ65536Ö0
+ERRÌ65536Ö0
+ESCDELAYÌ65536Ö0
+FALSEÌ65536Ö0
+GCC_NORETURNÌ65536Ö0
+GCC_PRINTFLIKEÌ131072Í(fmt,var)Ö0
+GCC_SCANFLIKEÌ131072Í(fmt,var)Ö0
+GCC_UNUSEDÌ65536Ö0
+ITEMCALLBACKÌ4096Ö0Ïtypedef bool
+KEY_A1Ì65536Ö0
+KEY_A3Ì65536Ö0
+KEY_B2Ì65536Ö0
+KEY_BACKSPACEÌ65536Ö0
+KEY_BEGÌ65536Ö0
+KEY_BREAKÌ65536Ö0
+KEY_BTABÌ65536Ö0
+KEY_C1Ì65536Ö0
+KEY_C3Ì65536Ö0
+KEY_CANCELÌ65536Ö0
+KEY_CATABÌ65536Ö0
+KEY_CLEARÌ65536Ö0
+KEY_CLOSEÌ65536Ö0
+KEY_CODE_YESÌ65536Ö0
+KEY_COMMANDÌ65536Ö0
+KEY_COPYÌ65536Ö0
+KEY_CREATEÌ65536Ö0
+KEY_CTABÌ65536Ö0
+KEY_DCÌ65536Ö0
+KEY_DLÌ65536Ö0
+KEY_DOWNÌ65536Ö0
+KEY_EICÌ65536Ö0
+KEY_ENDÌ65536Ö0
+KEY_ENTERÌ65536Ö0
+KEY_EOLÌ65536Ö0
+KEY_EOSÌ65536Ö0
+KEY_EVENTÌ65536Ö0
+KEY_EXITÌ65536Ö0
+KEY_FÌ131072Í(n)Ö0
+KEY_F0Ì65536Ö0
+KEY_FINDÌ65536Ö0
+KEY_HELPÌ65536Ö0
+KEY_HOMEÌ65536Ö0
+KEY_ICÌ65536Ö0
+KEY_ILÌ65536Ö0
+KEY_LEFTÌ65536Ö0
+KEY_LLÌ65536Ö0
+KEY_MARKÌ65536Ö0
+KEY_MAXÌ65536Ö0
+KEY_MESSAGEÌ65536Ö0
+KEY_MINÌ65536Ö0
+KEY_MOUSEÌ65536Ö0
+KEY_MOVEÌ65536Ö0
+KEY_NEXTÌ65536Ö0
+KEY_NPAGEÌ65536Ö0
+KEY_OPENÌ65536Ö0
+KEY_OPTIONSÌ65536Ö0
+KEY_PPAGEÌ65536Ö0
+KEY_PREVIOUSÌ65536Ö0
+KEY_PRINTÌ65536Ö0
+KEY_REDOÌ65536Ö0
+KEY_REFERENCEÌ65536Ö0
+KEY_REFRESHÌ65536Ö0
+KEY_REPLACEÌ65536Ö0
+KEY_RESETÌ65536Ö0
+KEY_RESIZEÌ65536Ö0
+KEY_RESTARTÌ65536Ö0
+KEY_RESUMEÌ65536Ö0
+KEY_RIGHTÌ65536Ö0
+KEY_SAVEÌ65536Ö0
+KEY_SBEGÌ65536Ö0
+KEY_SCANCELÌ65536Ö0
+KEY_SCOMMANDÌ65536Ö0
+KEY_SCOPYÌ65536Ö0
+KEY_SCREATEÌ65536Ö0
+KEY_SDCÌ65536Ö0
+KEY_SDLÌ65536Ö0
+KEY_SELECTÌ65536Ö0
+KEY_SENDÌ65536Ö0
+KEY_SEOLÌ65536Ö0
+KEY_SEXITÌ65536Ö0
+KEY_SFÌ65536Ö0
+KEY_SFINDÌ65536Ö0
+KEY_SHELPÌ65536Ö0
+KEY_SHOMEÌ65536Ö0
+KEY_SICÌ65536Ö0
+KEY_SLEFTÌ65536Ö0
+KEY_SMESSAGEÌ65536Ö0
+KEY_SMOVEÌ65536Ö0
+KEY_SNEXTÌ65536Ö0
+KEY_SOPTIONSÌ65536Ö0
+KEY_SPREVIOUSÌ65536Ö0
+KEY_SPRINTÌ65536Ö0
+KEY_SRÌ65536Ö0
+KEY_SREDOÌ65536Ö0
+KEY_SREPLACEÌ65536Ö0
+KEY_SRESETÌ65536Ö0
+KEY_SRIGHTÌ65536Ö0
+KEY_SRSUMEÌ65536Ö0
+KEY_SSAVEÌ65536Ö0
+KEY_SSUSPENDÌ65536Ö0
+KEY_STABÌ65536Ö0
+KEY_SUNDOÌ65536Ö0
+KEY_SUSPENDÌ65536Ö0
+KEY_UNDOÌ65536Ö0
+KEY_UPÌ65536Ö0
+LINESÌ65536Ö0
+MEVENTÌ4096Ö0Ïanon_struct_5
+NCURSES_ACSÌ131072Í(c)Ö0
+NCURSES_ATTR_SHIFTÌ65536Ö0
+NCURSES_ATTR_TÌ16384Ö0Ïattrset
+NCURSES_ATTR_TÌ65536Ö0
+NCURSES_BITSÌ131072Í(mask,shift)Ö0
+NCURSES_BOOLÌ4096Ö0Ïunsigned char
+NCURSES_BOOLÌ65536Ö0
+NCURSES_BUTTON_CLICKEDÌ65536Ö0
+NCURSES_BUTTON_PRESSEDÌ65536Ö0
+NCURSES_BUTTON_RELEASEDÌ65536Ö0
+NCURSES_CASTÌ131072Í(type,value)Ö0
+NCURSES_CH_TÌ65536Ö0
+NCURSES_COLOR_TÌ65536Ö0
+NCURSES_CONSTÌ65536Ö0
+NCURSES_CURSESAPP_H_inclÌ65536Ö0
+NCURSES_CURSESF_H_inclÌ65536Ö0
+NCURSES_CURSESM_H_inclÌ65536Ö0
+NCURSES_CURSESP_H_inclÌ65536Ö0
+NCURSES_CURSESW_H_inclÌ65536Ö0
+NCURSES_DOUBLE_CLICKEDÌ65536Ö0
+NCURSES_ENABLE_STDBOOL_HÌ65536Ö0
+NCURSES_EVENT_VERSIONÌ65536Ö0
+NCURSES_EXPORT_VARÌ1024Í(chtype)Ö0
+NCURSES_EXT_COLORSÌ65536Ö0
+NCURSES_EXT_FUNCSÌ65536Ö0
+NCURSES_INLINEÌ65536Ö0
+NCURSES_INTEROP_FUNCSÌ65536Ö0
+NCURSES_MOUSE_MASKÌ131072Í(b,m)Ö0
+NCURSES_MOUSE_VERSIONÌ65536Ö0
+NCURSES_OK_ADDRÌ131072Í(p)Ö0
+NCURSES_OPAQUEÌ65536Ö0
+NCURSES_OPAQUE_FORMÌ65536Ö0
+NCURSES_OPAQUE_MENUÌ65536Ö0
+NCURSES_OPAQUE_PANELÌ65536Ö0
+NCURSES_OUTCÌ4096Ö0Ïtypedef int
+NCURSES_PAIRS_TÌ16384Ö0Ïslk_color
+NCURSES_PAIRS_TÌ65536Ö0
+NCURSES_REENTRANTÌ65536Ö0
+NCURSES_RESERVED_EVENTÌ65536Ö0
+NCURSES_SCREEN_CBÌ4096Ö0Ïtypedef int
+NCURSES_SIZE_TÌ65536Ö0
+NCURSES_SP_FUNCSÌ65536Ö0
+NCURSES_SP_NAMEÌ131072Í(name)Ö0
+NCURSES_SP_OUTCÌ4096Ö0Ïtypedef int
+NCURSES_SP_OUTCÌ65536Ö0
+NCURSES_TPARM_ARGÌ65536Ö0
+NCURSES_TPARM_VARARGSÌ65536Ö0
+NCURSES_TRIPLE_CLICKEDÌ65536Ö0
+NCURSES_VERSIONÌ65536Ö0
+NCURSES_VERSION_MAJORÌ65536Ö0
+NCURSES_VERSION_MINORÌ65536Ö0
+NCURSES_VERSION_PATCHÌ65536Ö0
+NCURSES_WACSÌ131072Í(c)Ö0
+NCURSES_WATTR_MACROSÌ65536Ö0
+NCURSES_WCWIDTH_GRAPHICSÌ65536Ö0
+NCURSES_WIDECHARÌ65536Ö0
+NCURSES_WINDOW_CBÌ4096Ö0Ïtypedef int
+NCursesFormFieldÌ16384Ö0Ïclass
+OKÌ65536Ö0
+OPTIMIZE_ALLÌ65536Ö0
+OPTIMIZE_HASHMAPÌ65536Ö0
+OPTIMIZE_MVCURÌ65536Ö0
+OPTIMIZE_SCROLLÌ65536Ö0
+PAD_HIGHÌ16384Ö0Ïconst Pad_Request
+PAD_LOWÌ16384Ö0Ïconst Pad_Request
+PAIR_NUMBERÌ131072Í(a)Ö0
+Pad_RequestÌ4096Ö0Ïanon_enum_6
+REPORT_MOUSE_POSITIONÌ65536Ö0
+REQ_PAD_DOWNÌ4Îanon_enum_6Ö0
+REQ_PAD_EXITÌ4Îanon_enum_6Ö0
+REQ_PAD_LEFTÌ4Îanon_enum_6Ö0
+REQ_PAD_REFRESHÌ4Îanon_enum_6Ö0
+REQ_PAD_RIGHTÌ4Îanon_enum_6Ö0
+REQ_PAD_UPÌ4Îanon_enum_6Ö0
+SCREENÌ4096Ö0Ïscreen
+TABSIZEÌ65536Ö0
+TRACE_ATTRSÌ65536Ö0
+TRACE_BITSÌ65536Ö0
+TRACE_CALLSÌ65536Ö0
+TRACE_CCALLSÌ65536Ö0
+TRACE_CHARPUTÌ65536Ö0
+TRACE_DATABASEÌ65536Ö0
+TRACE_DISABLEÌ65536Ö0
+TRACE_ICALLSÌ65536Ö0
+TRACE_IEVENTÌ65536Ö0
+TRACE_MAXIMUMÌ65536Ö0
+TRACE_MOVEÌ65536Ö0
+TRACE_ORDINARYÌ65536Ö0
+TRACE_SHIFTÌ65536Ö0
+TRACE_TIMESÌ65536Ö0
+TRACE_TPUTSÌ65536Ö0
+TRACE_UPDATEÌ65536Ö0
+TRACE_VIRTPUTÌ65536Ö0
+TRUEÌ65536Ö0
+UNDEFÌ65536Ö0
+UNDEFÌ131072Í(name)Ö0
+WACS_BBDDÌ65536Ö0
+WACS_BBSSÌ65536Ö0
+WACS_BBTTÌ65536Ö0
+WACS_BDBDÌ65536Ö0
+WACS_BDDBÌ65536Ö0
+WACS_BDDDÌ65536Ö0
+WACS_BLOCKÌ65536Ö0
+WACS_BOARDÌ65536Ö0
+WACS_BSBSÌ65536Ö0
+WACS_BSSBÌ65536Ö0
+WACS_BSSSÌ65536Ö0
+WACS_BTBTÌ65536Ö0
+WACS_BTEEÌ65536Ö0
+WACS_BTTBÌ65536Ö0
+WACS_BTTTÌ65536Ö0
+WACS_BULLETÌ65536Ö0
+WACS_CKBOARDÌ65536Ö0
+WACS_DARROWÌ65536Ö0
+WACS_DBBDÌ65536Ö0
+WACS_DBDBÌ65536Ö0
+WACS_DBDDÌ65536Ö0
+WACS_DDBBÌ65536Ö0
+WACS_DDBDÌ65536Ö0
+WACS_DDDBÌ65536Ö0
+WACS_DDDDÌ65536Ö0
+WACS_DEGREEÌ65536Ö0
+WACS_DIAMONDÌ65536Ö0
+WACS_D_BTEEÌ65536Ö0
+WACS_D_HLINEÌ65536Ö0
+WACS_D_LLCORNERÌ65536Ö0
+WACS_D_LRCORNERÌ65536Ö0
+WACS_D_LTEEÌ65536Ö0
+WACS_D_PLUSÌ65536Ö0
+WACS_D_RTEEÌ65536Ö0
+WACS_D_TTEEÌ65536Ö0
+WACS_D_ULCORNERÌ65536Ö0
+WACS_D_URCORNERÌ65536Ö0
+WACS_D_VLINEÌ65536Ö0
+WACS_GEQUALÌ65536Ö0
+WACS_HLINEÌ65536Ö0
+WACS_LANTERNÌ65536Ö0
+WACS_LARROWÌ65536Ö0
+WACS_LEQUALÌ65536Ö0
+WACS_LLCORNERÌ65536Ö0
+WACS_LRCORNERÌ65536Ö0
+WACS_LTEEÌ65536Ö0
+WACS_NEQUALÌ65536Ö0
+WACS_PIÌ65536Ö0
+WACS_PLMINUSÌ65536Ö0
+WACS_PLUSÌ65536Ö0
+WACS_RARROWÌ65536Ö0
+WACS_RTEEÌ65536Ö0
+WACS_S1Ì65536Ö0
+WACS_S3Ì65536Ö0
+WACS_S7Ì65536Ö0
+WACS_S9Ì65536Ö0
+WACS_SBBSÌ65536Ö0
+WACS_SBSBÌ65536Ö0
+WACS_SBSSÌ65536Ö0
+WACS_SSBBÌ65536Ö0
+WACS_SSBSÌ65536Ö0
+WACS_SSSBÌ65536Ö0
+WACS_SSSSÌ65536Ö0
+WACS_STERLINGÌ65536Ö0
+WACS_TBBTÌ65536Ö0
+WACS_TBTBÌ65536Ö0
+WACS_TBTTÌ65536Ö0
+WACS_TTBBÌ65536Ö0
+WACS_TTBTÌ65536Ö0
+WACS_TTEEÌ65536Ö0
+WACS_TTTBÌ65536Ö0
+WACS_TTTTÌ65536Ö0
+WACS_T_BTEEÌ65536Ö0
+WACS_T_HLINEÌ65536Ö0
+WACS_T_LLCORNERÌ65536Ö0
+WACS_T_LRCORNERÌ65536Ö0
+WACS_T_LTEEÌ65536Ö0
+WACS_T_PLUSÌ65536Ö0
+WACS_T_RTEEÌ65536Ö0
+WACS_T_TTEEÌ65536Ö0
+WACS_T_ULCORNERÌ65536Ö0
+WACS_T_URCORNERÌ65536Ö0
+WACS_T_VLINEÌ65536Ö0
+WACS_UARROWÌ65536Ö0
+WACS_ULCORNERÌ65536Ö0
+WACS_URCORNERÌ65536Ö0
+WACS_VLINEÌ65536Ö0
+WA_ALTCHARSETÌ65536Ö0
+WA_ATTRIBUTESÌ65536Ö0
+WA_BLINKÌ65536Ö0
+WA_BOLDÌ65536Ö0
+WA_DIMÌ65536Ö0
+WA_HORIZONTALÌ65536Ö0
+WA_INVISÌ65536Ö0
+WA_ITALICÌ65536Ö0
+WA_LEFTÌ65536Ö0
+WA_LOWÌ65536Ö0
+WA_NORMALÌ65536Ö0
+WA_PROTECTÌ65536Ö0
+WA_REVERSEÌ65536Ö0
+WA_RIGHTÌ65536Ö0
+WA_STANDOUTÌ65536Ö0
+WA_TOPÌ65536Ö0
+WA_UNDERLINEÌ65536Ö0
+WA_VERTICALÌ65536Ö0
+WINDOWÌ4096Ö0Ï_win_st
+_ENDLINEÌ65536Ö0
+_FULLWINÌ65536Ö0
+_HASMOVEDÌ65536Ö0
+_ISPADÌ65536Ö0
+_NC_EVENT_FILEÌ65536Ö0
+_NC_EVENT_FILE_READABLEÌ65536Ö0
+_NC_EVENT_TIMEOUT_MSECÌ65536Ö0
+_NEWINDEXÌ65536Ö0
+_NOCHANGEÌ65536Ö0
+_SCROLLWINÌ65536Ö0
+_SUBWINÌ65536Ö0
+_WRAPPEDÌ65536Ö0
+_XOPEN_CURSESÌ65536Ö0
+__NCURSES_HÌ65536Ö0
+__attribute__Ì131072Í(p)Ö0
+_attrsÌ64Î_win_stÖ0Ïattr_t
+_begxÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_begyÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_bkgdÌ64Î_win_stÖ0Ïchtype
+_bkgrndÌ64Î_win_stÖ0Ïcchar_t
+_clearÌ64Î_win_stÖ0Ïbool
+_colorÌ64Î_win_stÖ0Ïint
+_curxÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_curyÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_delayÌ64Î_win_stÖ0Ïint
+_flagsÌ64Î_win_stÖ0Ïshort
+_idcokÌ64Î_win_stÖ0Ïbool
+_idlokÌ64Î_win_stÖ0Ïbool
+_immedÌ64Î_win_stÖ0Ïbool
+_leaveokÌ64Î_win_stÖ0Ïbool
+_lineÌ64Î_win_stÖ0Ïldat
+_maxxÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_maxyÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_nc_eventÌ4096Ö0Ïanon_struct_1
+_nc_eventlistÌ4096Ö0Ïanon_struct_4
+_nc_has_mouseÌ1024Í(void)Ö0Ïint
+_nc_ripofflineÌ1024Í(int, int (*init)(WINDOW*, int))Ö0Ïint
+_nc_xx_fld_ccheckÌ1024Í(int c, const void *)Ö0Ïbool
+_nc_xx_fld_fcheckÌ1024Í(FIELD *, const void*)Ö0Ïbool
+_nc_xx_fld_initÌ1024Í(FORM *)Ö0Ïvoid
+_nc_xx_fld_makeargÌ1024Í(va_list*)Ö0Ïvoid *
+_nc_xx_fld_termÌ1024Í(FORM *)Ö0Ïvoid
+_nc_xx_frm_initÌ1024Í(FORM *)Ö0Ïvoid
+_nc_xx_frm_termÌ1024Í(FORM *)Ö0Ïvoid
+_nc_xx_itm_initÌ1024Í(MENU *)Ö0Ïvoid
+_nc_xx_itm_termÌ1024Í(MENU *)Ö0Ïvoid
+_nc_xx_mnu_initÌ1024Í(MENU *)Ö0Ïvoid
+_nc_xx_mnu_termÌ1024Í(MENU *)Ö0Ïvoid
+_nc_xx_next_choiceÌ1024Í(FIELD*, const void *)Ö0Ïbool
+_nc_xx_prev_choiceÌ1024Í(FIELD*, const void *)Ö0Ïbool
+_nc_xx_ripoff_initÌ1024Í(WINDOW *, int)Ö0Ïint
+_no_flushokÌ65536Ö0
+_notimeoutÌ64Î_win_stÖ0Ïbool
+_padÌ64Î_win_stÖ0Ïpdat
+_pad_bottomÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_pad_leftÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_pad_rightÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_pad_topÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_pad_xÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_pad_yÌ64Î_win_st::pdatÖ0ÏNCURSES_SIZE_T
+_parentÌ64Î_win_stÖ0ÏWINDOW *
+_parxÌ64Î_win_stÖ0Ïint
+_paryÌ64Î_win_stÖ0Ïint
+_regbottomÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_regtopÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+_scrollÌ64Î_win_stÖ0Ïbool
+_syncÌ64Î_win_stÖ0Ïbool
+_tracech_tÌ65536Ö0
+_tracech_t2Ì65536Ö0
+_use_keypadÌ64Î_win_stÖ0Ïbool
+_win_stÌ2048Ö0
+_yoffsetÌ64Î_win_stÖ0ÏNCURSES_SIZE_T
+add_wchÌ131072Í(c)Ö0
+add_wchnstrÌ131072Í(str,n)Ö0
+add_wchstrÌ131072Í(str)Ö0
+addchÌ16Í(chtype ch)Ö0Ïinline int
+addchÌ65536Ö0
+addchÌ131072Í(ch)Ö0
+addchnstrÌ131072Í(str,n)Ö0
+addchstrÌ16Í(chtype *at)Ö0Ïinline int
+addchstrÌ65536Ö0
+addchstrÌ131072Í(str)Ö0
+addnstrÌ16Í(const char *str, int n)Ö0Ïinline int
+addnstrÌ65536Ö0
+addnstrÌ131072Í(str,n)Ö0
+addnwstrÌ131072Í(wstr,n)Ö0
+addstrÌ16Í(const char * str)Ö0Ïinline int
+addstrÌ65536Ö0
+addstrÌ131072Í(str)Ö0
+addwstrÌ131072Í(wstr)Ö0
+alloc_pairÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+anon_enum_6Ì2Ö0
+anon_struct_0Ì2048Ö0
+anon_struct_1Ì2048Ö0
+anon_struct_3Ì2048Îanon_struct_1::anon_union_2Ö0
+anon_struct_4Ì2048Ö0
+anon_struct_5Ì2048Ö0
+anon_union_2Ì8192Îanon_struct_1Ö0
+assume_default_colorsÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+attrÌ64Îanon_struct_0Ö0Ïattr_t
+attr_getÌ131072Í(ap,cp,o)Ö0
+attr_offÌ131072Í(a,o)Ö0
+attr_onÌ131072Í(a,o)Ö0
+attr_setÌ131072Í(a,c,o)Ö0
+attr_tÌ4096Ö0Ïchtype
+attr_tÌ16384Ö0Ï_traceattr
+attroffÌ16Í(chtype at)Ö0Ïinline int
+attroffÌ65536Ö0
+attroffÌ131072Í(at)Ö0
+attronÌ16Í(chtype at)Ö0Ïinline int
+attronÌ65536Ö0
+attronÌ131072Í(at)Ö0
+attrsetÌ16Í(chtype at)Ö0Ïinline
+attrsetÌ65536Ö0
+attrsetÌ131072Í(at)Ö0
+baudrateÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+beepÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+bkgdÌ16Í(chtype ch)Ö0Ïinline int
+bkgdÌ65536Ö0
+bkgdÌ131072Í(ch)Ö0
+bkgdsetÌ16Í(chtype ch)Ö0Ïinline void
+bkgdsetÌ65536Ö0
+bkgdsetÌ131072Í(ch)Ö0
+bkgrndÌ131072Í(c)Ö0
+bkgrndsetÌ131072Í(c)Ö0
+boolÌ16384Ö0Ïuse_extended_names
+boolÌ65536Ö0
+borderÌ16Í(chtype ls, chtype rs, chtype ts, chtype bs, chtype tl, chtype tr, chtype bl, chtype br)Ö0Ïinline int
+borderÌ65536Ö0
+borderÌ131072Í(ls, rs, ts, bs, tl, tr, bl, br)Ö0
+border_setÌ131072Í(l,r,t,b,tl,tr,bl,br)Ö0
+boxÌ16Í(WINDOW *win, int v, int h)Ö0Ïinline int
+boxÌ65536Ö0
+boxÌ131072Í(win, v, h)Ö0
+box_setÌ131072Í(w,v,h)Ö0
+bstateÌ64Îanon_struct_5Ö0Ïmmask_t
+cbreakÌ32768Ö0ÏNCURSES_EXPORT
+cchar_tÌ4096Ö0Ïanon_struct_0
+charsÌ64Îanon_struct_0Ö0Ïwchar_t
+chgatÌ16Í(int n, attr_t attr, NCURSES_PAIRS_T color, const void *opts)Ö0Ïinline int
+chgatÌ65536Ö0
+chgatÌ131072Í(n,a,c,o)Ö0
+chtypeÌ4096Ö0Ïuint32_t
+chtypeÌ16384Ö0Ï_tracechtype
+clearÌ16Í()Ö0Ïinline int
+clearÌ65536Ö0
+clearÌ131072Í()Ö0
+clearokÌ16Í(WINDOW* win, bool bf)Ö0Ïinline int
+clearokÌ1024Í(WINDOW*, bool)Ö0ÏNCURSES_IMPEXP int
+clearokÌ65536Ö0
+clrtobotÌ16Í()Ö0Ïinline int
+clrtobotÌ65536Ö0
+clrtobotÌ131072Í()Ö0
+clrtoeolÌ16Í()Ö0Ïinline int
+clrtoeolÌ65536Ö0
+clrtoeolÌ131072Í()Ö0
+color_contentÌ1024Í(SCREEN*, NCURSES_PAIRS_T, NCURSES_COLOR_T*, NCURSES_COLOR_T*, NCURSES_COLOR_T*)Ö0ÏNCURSES_SP_NAME
+color_setÌ16Í(NCURSES_PAIRS_T p, void* opts)Ö0Ïinline
+color_setÌ65536Ö0
+color_setÌ131072Í(c,o)Ö0
+countÌ64Îanon_struct_4Ö0Ïint
+crmodeÌ16Í(void)Ö0Ïinline int
+crmodeÌ65536Ö0
+crmodeÌ131072Í()Ö0
+curs_setÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+curscrÌ65536Ö0
+curses_versionÌ131072Í()Ö0
+dataÌ64Îanon_struct_1Ö0Ïanon_union_2
+def_prog_modeÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+def_shell_modeÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+define_keyÌ1024Í(SCREEN*, const char *, int)Ö0ÏNCURSES_SP_NAME
+delay_outputÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+delchÌ16Í()Ö0Ïinline int
+delchÌ65536Ö0
+delchÌ131072Í()Ö0
+deletelnÌ16Í()Ö0Ïinline int
+deletelnÌ65536Ö0
+deletelnÌ131072Í()Ö0
+doupdateÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+echoÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+echo_wcharÌ131072Í(c)Ö0
+echocharÌ16Í(chtype ch)Ö0Ïinline int
+echocharÌ65536Ö0
+echocharÌ131072Í(c)Ö0
+endwinÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+eraseÌ16Í()Ö0Ïinline int
+eraseÌ65536Ö0
+eraseÌ131072Í()Ö0
+erasecharÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+eventsÌ64Îanon_struct_4Ö0Ï_nc_event *
+ext_colorÌ64Îanon_struct_0Ö0Ïint
+extended_color_contentÌ1024Í(SCREEN*, int, int *, int *, int *)Ö0ÏNCURSES_SP_NAME
+extended_pair_contentÌ1024Í(SCREEN*, int, int *, int *)Ö0ÏNCURSES_SP_NAME
+extended_slk_colorÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+fdÌ64Îanon_struct_1::anon_union_2::anon_struct_3Ö0Ïint
+fevÌ64Îanon_struct_1::anon_union_2Ö0Ïanon_struct_3
+filterÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+find_pairÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+fixtermÌ16Í(void)Ö0Ïinline int
+fixtermÌ65536Ö0
+fixtermÌ131072Í()Ö0
+flagsÌ64Îanon_struct_1::anon_union_2::anon_struct_3Ö0Ïunsigned int
+flashÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+flushinpÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+flushokÌ16Í(WINDOW* _win, bool _bf)Ö0Ïinline int
+flushokÌ65536Ö0
+free_pairÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+get_escdelayÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+get_wchÌ131072Í(c)Ö0
+get_wstrÌ131072Í(t)Ö0
+getattrsÌ16Í(WINDOW *win)Ö0Ïinline int
+getattrsÌ65536Ö0
+getattrsÌ131072Í(win)Ö0
+getbegxÌ131072Í(win)Ö0
+getbegyÌ131072Í(win)Ö0
+getbegyxÌ16Í(WINDOW* win, int& y, int& x)Ö0Ïinline void
+getbegyxÌ65536Ö0
+getbegyxÌ131072Í(win,y,x)Ö0
+getbkgdÌ16Í(const WINDOW *win)Ö0Ïinline
+getbkgdÌ65536Ö0
+getbkgdÌ131072Í(win)Ö0
+getbkgrndÌ131072Í(wch)Ö0
+getchÌ16Í()Ö0Ïinline int
+getchÌ32768Ö0ÏNCURSES_EXPORT
+getchÌ65536Ö0
+getchÌ131072Í()Ö0
+getcurxÌ131072Í(win)Ö0
+getcuryÌ131072Í(win)Ö0
+getmaxxÌ131072Í(win)Ö0
+getmaxyÌ131072Í(win)Ö0
+getmaxyxÌ16Í(WINDOW* win, int& y, int& x)Ö0Ïinline void
+getmaxyxÌ65536Ö0
+getmaxyxÌ131072Í(win,y,x)Ö0
+getmouseÌ32768Ö0ÏNCURSES_EXPORT
+getn_wstrÌ131072Í(t,n)Ö0
+getnstrÌ16Í(char *_str, int n)Ö0Ïinline int
+getnstrÌ65536Ö0
+getnstrÌ131072Í(s, n)Ö0
+getparxÌ131072Í(win)Ö0
+getparyÌ131072Í(win)Ö0
+getparyxÌ16Í(WINDOW* win, int& y, int& x)Ö0Ïinline void
+getparyxÌ65536Ö0
+getparyxÌ131072Í(win,y,x)Ö0
+getstrÌ16Í(char *_str)Ö0Ïinline int
+getstrÌ65536Ö0
+getstrÌ131072Í(str)Ö0
+getsyxÌ131072Í(y,x)Ö0
+gettmodeÌ131072Í()Ö0
+getwinÌ1024Í(SCREEN*, FILE *)Ö0ÏNCURSES_SP_NAME
+getyxÌ16Í(const WINDOW* win, int& y, int& x)Ö0Ïinline void
+getyxÌ65536Ö0
+getyxÌ131072Í(win,y,x)Ö0
+halfdelayÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+has_icÌ32768Ö0ÏNCURSES_EXPORT
+has_keyÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+hlineÌ16Í(chtype ch, int n)Ö0Ïinline int
+hlineÌ32768Ö0ÏNCURSES_EXPORT
+hlineÌ65536Ö0
+hlineÌ131072Í(ch, n)Ö0
+hline_setÌ131072Í(c,n)Ö0
+idÌ64Îanon_struct_5Ö0Ïshort
+in_wchÌ131072Í(c)Ö0
+in_wchnstrÌ131072Í(c,n)Ö0
+in_wchstrÌ131072Í(c)Ö0
+inchÌ16Í()Ö0Ïinline
+inchÌ65536Ö0
+inchÌ131072Í()Ö0
+inchnstrÌ32768Ö0ÏNCURSES_EXPORT
+inchnstrÌ131072Í(s,n)Ö0
+inchstrÌ16Í(chtype *str)Ö0Ïinline int
+inchstrÌ65536Ö0
+inchstrÌ131072Í(s)Ö0
+init_colorÌ32768Ö0ÏNCURSES_EXPORT
+init_extended_colorÌ1024Í(SCREEN*, int, int, int, int)Ö0ÏNCURSES_SP_NAME
+init_extended_pairÌ1024Í(SCREEN*, int, int, int)Ö0ÏNCURSES_SP_NAME
+init_pairÌ1024Í(SCREEN*, NCURSES_PAIRS_T, NCURSES_COLOR_T, NCURSES_COLOR_T)Ö0ÏNCURSES_SP_NAME
+innstrÌ16Í(char *_str, int n)Ö0Ïinline int
+innstrÌ65536Ö0
+innstrÌ131072Í(s,n)Ö0
+innwstrÌ131072Í(c,n)Ö0
+ins_nwstrÌ131072Í(t,n)Ö0
+ins_wchÌ131072Í(c)Ö0
+ins_wstrÌ131072Í(t)Ö0
+inschÌ16Í(chtype c)Ö0Ïinline int
+inschÌ65536Ö0
+inschÌ131072Í(c)Ö0
+insdellnÌ16Í(int n)Ö0Ïinline int
+insdellnÌ65536Ö0
+insdellnÌ131072Í(n)Ö0
+insertlnÌ16Í()Ö0Ïinline int
+insertlnÌ65536Ö0
+insertlnÌ131072Í()Ö0
+insnstrÌ16Í(const char *_str, int n)Ö0Ïinline int
+insnstrÌ65536Ö0
+insnstrÌ131072Í(s,n)Ö0
+insstrÌ16Í(const char *_str)Ö0Ïinline int
+insstrÌ65536Ö0
+insstrÌ131072Í(s)Ö0
+instrÌ16Í(char *_str)Ö0Ïinline int
+instrÌ65536Ö0
+instrÌ131072Í(s)Ö0
+intrflushÌ16Í(WINDOW *win, bool bf)Ö0Ïinline void
+intrflushÌ1024Í(SCREEN*, WINDOW*, bool)Ö0ÏNCURSES_SP_NAME
+intrflushÌ65536Ö0
+inwstrÌ131072Í(c)Ö0
+is_clearedÌ131072Í(win)Ö0
+is_idcokÌ32768Ö0ÏNCURSES_EXPORT
+is_idcokÌ131072Í(win)Ö0
+is_idlokÌ131072Í(win)Ö0
+is_immedokÌ32768Ö0ÏNCURSES_EXPORT
+is_immedokÌ131072Í(win)Ö0
+is_keypadÌ131072Í(win)Ö0
+is_leaveokÌ32768Ö0ÏNCURSES_EXPORT
+is_leaveokÌ131072Í(win)Ö0
+is_linetouchedÌ16Í(WINDOW *w, int l)Ö0Ïinline int
+is_linetouchedÌ32768Ö0ÏNCURSES_EXPORT
+is_linetouchedÌ65536Ö0
+is_linetouchedÌ131072Í(w,l)Ö0
+is_nodelayÌ131072Í(win)Ö0
+is_notimeoutÌ32768Ö0ÏNCURSES_EXPORT
+is_notimeoutÌ131072Í(win)Ö0
+is_padÌ131072Í(win)Ö0
+is_scrollokÌ32768Ö0ÏNCURSES_EXPORT
+is_scrollokÌ131072Í(win)Ö0
+is_subwinÌ131072Í(win)Ö0
+is_syncokÌ32768Ö0ÏNCURSES_EXPORT
+is_syncokÌ131072Í(win)Ö0
+key_definedÌ32768Ö0ÏNCURSES_EXPORT
+keyboundÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+keyboundÌ32768Ö0ÏNCURSES_EXPORT
+keynameÌ32768Ö0ÏNCURSES_EXPORT
+keyokÌ1024Í(SCREEN*, int, bool)Ö0ÏNCURSES_SP_NAME
+killcharÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+ldatÌ32768Ö0
+leaveokÌ16Í(WINDOW* win, bool bf)Ö0Ïinline int
+leaveokÌ1024Í(WINDOW* win, bool bf)Ö0ÏNCURSES_IMPEXP int
+leaveokÌ65536Ö0
+linesÌ65536Ö0
+longnameÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+mcprintÌ1024Í(SCREEN*, char *, int)Ö0ÏNCURSES_SP_NAME
+mmask_tÌ4096Ö0Ïuint32_t
+mouse_trafoÌ32768Ö0ÏNCURSES_EXPORT
+mouse_trafoÌ131072Í(y,x,to_screen)Ö0
+mouseintervalÌ32768Ö0ÏNCURSES_EXPORT
+moveÌ16Í(int x, int y)Ö0Ïinline int
+moveÌ65536Ö0
+moveÌ131072Í(y,x)Ö0
+mvadd_wchÌ131072Í(y,x,c)Ö0
+mvadd_wchnstrÌ131072Í(y,x,s,n)Ö0
+mvadd_wchstrÌ131072Í(y,x,s)Ö0
+mvaddchÌ16Í(int y, int x, chtype ch)Ö0Ïinline int
+mvaddchÌ65536Ö0
+mvaddchÌ131072Í(y,x,ch)Ö0
+mvaddchnstrÌ131072Í(y,x,str,n)Ö0
+mvaddchstrÌ131072Í(y,x,str)Ö0
+mvaddnstrÌ16Í(int y, int x, const char *str, int n)Ö0Ïinline int
+mvaddnstrÌ65536Ö0
+mvaddnstrÌ131072Í(y,x,str,n)Ö0
+mvaddnwstrÌ131072Í(y,x,wstr,n)Ö0
+mvaddstrÌ16Í(int y, int x, const char * str)Ö0Ïinline int
+mvaddstrÌ65536Ö0
+mvaddstrÌ131072Í(y,x,str)Ö0
+mvaddwstrÌ131072Í(y,x,wstr)Ö0
+mvchgatÌ16Í(int y, int x, int n, attr_t attr, NCURSES_PAIRS_T color, const void *opts)Ö0Ïinline int
+mvchgatÌ65536Ö0
+mvchgatÌ131072Í(y,x,n,a,c,o)Ö0
+mvcurÌ1024Í(SCREEN*, int, int, int, int)Ö0ÏNCURSES_SP_NAME
+mvdelchÌ16Í(int y, int x)Ö0Ïinline int
+mvdelchÌ65536Ö0
+mvdelchÌ131072Í(y,x)Ö0
+mvget_wchÌ131072Í(y,x,c)Ö0
+mvget_wstrÌ131072Í(y,x,t)Ö0
+mvgetchÌ16Í(int y, int x)Ö0Ïinline int
+mvgetchÌ65536Ö0
+mvgetchÌ131072Í(y,x)Ö0
+mvgetn_wstrÌ131072Í(y,x,t,n)Ö0
+mvgetnstrÌ16Í(int y, int x, char *str, int n)Ö0Ïinline int
+mvgetnstrÌ65536Ö0
+mvgetnstrÌ131072Í(y,x,str,n)Ö0
+mvgetstrÌ16Í(int y, int x, char *str)Ö0Ïinline int
+mvgetstrÌ65536Ö0
+mvgetstrÌ131072Í(y,x,str)Ö0
+mvhlineÌ131072Í(y,x,c,n)Ö0
+mvhline_setÌ131072Í(y,x,c,n)Ö0
+mvin_wchÌ131072Í(y,x,c)Ö0
+mvin_wchnstrÌ131072Í(y,x,c,n)Ö0
+mvin_wchstrÌ131072Í(y,x,c)Ö0
+mvinchÌ16Í(int y, int x)Ö0Ïinline
+mvinchÌ65536Ö0
+mvinchÌ131072Í(y,x)Ö0
+mvinchnstrÌ32768Ö0ÏNCURSES_EXPORT
+mvinchnstrÌ131072Í(y,x,s,n)Ö0
+mvinchstrÌ131072Í(y,x,s)Ö0
+mvinnstrÌ16Í(int y, int x, char *_str, int n)Ö0Ïinline int
+mvinnstrÌ65536Ö0
+mvinnstrÌ131072Í(y,x,s,n)Ö0
+mvinnwstrÌ131072Í(y,x,c,n)Ö0
+mvins_nwstrÌ131072Í(y,x,t,n)Ö0
+mvins_wchÌ131072Í(y,x,c)Ö0
+mvins_wstrÌ131072Í(y,x,t)Ö0
+mvinschÌ16Í(int y, int x, chtype c)Ö0Ïinline int
+mvinschÌ65536Ö0
+mvinschÌ131072Í(y,x,c)Ö0
+mvinsnstrÌ16Í(int y, int x, const char *_str, int n)Ö0Ïinline int
+mvinsnstrÌ65536Ö0
+mvinsnstrÌ131072Í(y,x,s,n)Ö0
+mvinsstrÌ16Í(int y, int x, const char *_str)Ö0Ïinline int
+mvinsstrÌ65536Ö0
+mvinsstrÌ131072Í(y,x,s)Ö0
+mvinstrÌ131072Í(y,x,s)Ö0
+mvinwstrÌ131072Í(y,x,c)Ö0
+mvvlineÌ131072Í(y,x,c,n)Ö0
+mvvline_setÌ131072Í(y,x,c,n)Ö0
+mvwadd_wchÌ131072Í(win,y,x,c)Ö0
+mvwadd_wchnstrÌ131072Í(win,y,x,s,n)Ö0
+mvwadd_wchstrÌ131072Í(win,y,x,s)Ö0
+mvwaddchÌ16Í(WINDOW *win, int y, int x, const chtype ch)Ö0Ïinline int
+mvwaddchÌ65536Ö0
+mvwaddchÌ131072Í(win,y,x,ch)Ö0
+mvwaddchnstrÌ16Í(WINDOW *win, int y, int x, const chtype *str, int n)Ö0Ïinline int
+mvwaddchnstrÌ65536Ö0
+mvwaddchnstrÌ131072Í(win,y,x,str,n)Ö0
+mvwaddchstrÌ16Í(WINDOW *win, int y, int x, const chtype *str)Ö0Ïinline int
+mvwaddchstrÌ65536Ö0
+mvwaddchstrÌ131072Í(win,y,x,str)Ö0
+mvwaddnstrÌ16Í(WINDOW *win, int y, int x, const char *str, int n)Ö0Ïinline int
+mvwaddnstrÌ65536Ö0
+mvwaddnstrÌ131072Í(win,y,x,str,n)Ö0
+mvwaddnwstrÌ131072Í(win,y,x,wstr,n)Ö0
+mvwaddstrÌ16Í(WINDOW *win, int y, int x, const char * str)Ö0Ïinline int
+mvwaddstrÌ65536Ö0
+mvwaddstrÌ131072Í(win,y,x,str)Ö0
+mvwaddwstrÌ131072Í(win,y,x,wstr)Ö0
+mvwchgatÌ16Í(WINDOW *win, int y, int x, int n, attr_t attr, NCURSES_PAIRS_T color, const void *opts)Ö0Ïinline int
+mvwchgatÌ65536Ö0
+mvwchgatÌ131072Í(win,y,x,n,a,c,o)Ö0
+mvwdelchÌ16Í(WINDOW *win, int y, int x)Ö0Ïinline int
+mvwdelchÌ65536Ö0
+mvwdelchÌ131072Í(win,y,x)Ö0
+mvwget_wchÌ131072Í(win,y,x,c)Ö0
+mvwget_wstrÌ131072Í(win,y,x,t)Ö0
+mvwgetchÌ16Í(WINDOW *win, int y, int x)Ö0Ïinline int
+mvwgetchÌ65536Ö0
+mvwgetchÌ131072Í(win,y,x)Ö0
+mvwgetn_wstrÌ131072Í(win,y,x,t,n)Ö0
+mvwgetnstrÌ16Í(WINDOW *win, int y, int x, char *str, int n)Ö0Ïinline int
+mvwgetnstrÌ65536Ö0
+mvwgetnstrÌ131072Í(win,y,x,str,n)Ö0
+mvwgetstrÌ16Í(WINDOW *win, int y, int x, char *str)Ö0Ïinline int
+mvwgetstrÌ65536Ö0
+mvwgetstrÌ131072Í(win,y,x,str)Ö0
+mvwhlineÌ16Í(WINDOW *win, int y, int x, chtype c, int n)Ö0Ïinline int
+mvwhlineÌ65536Ö0
+mvwhlineÌ131072Í(win,y,x,c,n)Ö0
+mvwhline_setÌ131072Í(win,y,x,c,n)Ö0
+mvwin_wchÌ131072Í(win,y,x,c)Ö0
+mvwin_wchnstrÌ131072Í(win,y,x,c,n)Ö0
+mvwin_wchstrÌ131072Í(win,y,x,c)Ö0
+mvwinchÌ16Í(WINDOW *win, int y, int x)Ö0Ïinline
+mvwinchÌ65536Ö0
+mvwinchÌ131072Í(win,y,x)Ö0
+mvwinchnstrÌ16Í(WINDOW *win, int y, int x, chtype *str, int n)Ö0Ïinline int
+mvwinchnstrÌ32768Ö0ÏNCURSES_EXPORT
+mvwinchnstrÌ65536Ö0
+mvwinchnstrÌ131072Í(win,y,x,s,n)Ö0
+mvwinchstrÌ16Í(WINDOW *win, int y, int x, chtype *str)Ö0Ïinline int
+mvwinchstrÌ65536Ö0
+mvwinchstrÌ131072Í(win,y,x,s)Ö0
+mvwinnstrÌ16Í(WINDOW *win, int y, int x, char *_str, int n)Ö0Ïinline int
+mvwinnstrÌ65536Ö0
+mvwinnstrÌ131072Í(win,y,x,s,n)Ö0
+mvwinnwstrÌ131072Í(win,y,x,c,n)Ö0
+mvwins_nwstrÌ131072Í(win,y,x,t,n)Ö0
+mvwins_wchÌ131072Í(win,y,x,c)Ö0
+mvwins_wstrÌ131072Í(win,y,x,t)Ö0
+mvwinschÌ16Í(WINDOW *win, int y, int x, chtype c)Ö0Ïinline int
+mvwinschÌ65536Ö0
+mvwinschÌ131072Í(win,y,x,c)Ö0
+mvwinsnstrÌ16Í(WINDOW *w, int y, int x, const char *_str, int n)Ö0Ïinline int
+mvwinsnstrÌ65536Ö0
+mvwinsnstrÌ131072Í(win,y,x,s,n)Ö0
+mvwinsstrÌ16Í(WINDOW *w, int y, int x, const char *_str)Ö0Ïinline int
+mvwinsstrÌ65536Ö0
+mvwinsstrÌ131072Í(win,y,x,s)Ö0
+mvwinstrÌ131072Í(win,y,x,s)Ö0
+mvwinwstrÌ131072Í(win,y,x,c)Ö0
+mvwvlineÌ16Í(WINDOW *win, int y, int x, chtype c, int n)Ö0Ïinline int
+mvwvlineÌ65536Ö0
+mvwvlineÌ131072Í(win,y,x,c,n)Ö0
+mvwvline_setÌ131072Í(win,y,x,c,n)Ö0
+napmsÌ16Í(unsigned long x)Ö0Ïinline void
+napmsÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+napmsÌ65536Ö0
+newpadÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+newscrÌ65536Ö0
+newtermÌ1024Í(SCREEN*, NCURSES_CONST char *, FILE *, FILE *)Ö0ÏNCURSES_SP_NAME
+newwinÌ1024Í(SCREEN*, int, int, int, int)Ö0ÏNCURSES_SP_NAME
+nlÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+nocbreakÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+nocrmodeÌ16Í(void)Ö0Ïinline int
+nocrmodeÌ65536Ö0
+nocrmodeÌ131072Í()Ö0
+nodelayÌ16Í()Ö0Ïinline void
+nodelayÌ65536Ö0
+noechoÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+nofilterÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+nonlÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+noqiflushÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+norawÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+pair_contentÌ1024Í(SCREEN*, NCURSES_PAIRS_T, NCURSES_COLOR_T*, NCURSES_COLOR_T*)Ö0ÏNCURSES_SP_NAME
+pdatÌ2048Î_win_stÖ0
+qiflushÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+rawÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+redrawwinÌ16Í(WINDOW *win)Ö0Ïinline int
+redrawwinÌ65536Ö0
+redrawwinÌ131072Í(win)Ö0
+refreshÌ16Í()Ö0Ïinline int
+refreshÌ65536Ö0
+refreshÌ131072Í()Ö0
+reset_color_pairsÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+reset_prog_modeÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+reset_shell_modeÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+resettermÌ16Í(void)Ö0Ïinline int
+resettermÌ65536Ö0
+resettermÌ131072Í()Ö0
+resettyÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+resize_termÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+resizetermÌ1024Í(SCREEN*, int, int)Ö0ÏNCURSES_SP_NAME
+resultÌ64Îanon_struct_1::anon_union_2::anon_struct_3Ö0Ïunsigned int
+result_flagsÌ64Îanon_struct_4Ö0Ïint
+ripofflineÌ1024Í(SCREEN*, int, int (*)(WINDOW *, int))Ö0ÏNCURSES_SP_NAME
+savetermÌ16Í(void)Ö0Ïinline int
+savetermÌ65536Ö0
+savetermÌ131072Í()Ö0
+savettyÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+scr_initÌ1024Í(SCREEN*, const char *)Ö0ÏNCURSES_SP_NAME
+scr_restoreÌ1024Í(SCREEN*, const char *)Ö0ÏNCURSES_SP_NAME
+scr_setÌ1024Í(SCREEN*, const char *)Ö0ÏNCURSES_SP_NAME
+scrlÌ16Í(int l)Ö0Ïinline int
+scrlÌ65536Ö0
+scrlÌ131072Í(n)Ö0
+scrollÌ16Í(WINDOW *win)Ö0Ïinline int
+scrollÌ65536Ö0
+scrollÌ131072Í(win)Ö0
+scrollokÌ16Í(WINDOW* win, bool bf)Ö0Ïinline int
+scrollokÌ1024Í(WINDOW*, bool)Ö0ÏNCURSES_IMPEXP int
+scrollokÌ1024Í(WINDOW*, char)Ö0ÏNCURSES_IMPEXP int
+scrollokÌ65536Ö0
+set_escdelayÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+set_tabsizeÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+setscrregÌ16Í(int t, int b)Ö0Ïinline int
+setscrregÌ65536Ö0
+setscrregÌ131072Í(t,b)Ö0
+setsyxÌ131072Í(y,x)Ö0
+settermÌ131072Í(term)Ö0
+slk_attr_offÌ131072Í(a,v)Ö0
+slk_attr_onÌ131072Í(a,v)Ö0
+slk_attr_setÌ32768Ö0ÏNCURSES_EXPORT
+slk_attroffÌ1024Í(SCREEN*, const chtype)Ö0ÏNCURSES_SP_NAME
+slk_attronÌ1024Í(SCREEN*, const chtype)Ö0ÏNCURSES_SP_NAME
+slk_attrsetÌ1024Í(SCREEN*, const chtype)Ö0ÏNCURSES_SP_NAME
+slk_clearÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+slk_colorÌ1024Í(SCREEN*, NCURSES_PAIRS_T)Ö0ÏNCURSES_SP_NAME
+slk_initÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+slk_labelÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+slk_noutrefreshÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+slk_refreshÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+slk_restoreÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+slk_setÌ1024Í(SCREEN*, int, const char *, int)Ö0ÏNCURSES_SP_NAME
+slk_touchÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+standendÌ16Í()Ö0Ïinline int
+standendÌ65536Ö0
+standendÌ131072Í()Ö0
+standoutÌ16Í()Ö0Ïinline int
+standoutÌ65536Ö0
+standoutÌ131072Í()Ö0
+start_colorÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+stdscrÌ65536Ö0
+subpadÌ16Í(WINDOW *p, int l, int c, int y, int x)Ö0Ïinline
+subpadÌ65536Ö0
+termnameÌ32768Ö0ÏNCURSES_EXPORT
+timeoutÌ16Í(int delay)Ö0Ïinline void
+timeoutÌ65536Ö0
+timeoutÌ131072Í(delay)Ö0
+timeout_msecÌ64Îanon_struct_1::anon_union_2Ö0Ïlong
+touchlineÌ16Í(WINDOW *win, int s, int c)Ö0Ïinline int
+touchlineÌ65536Ö0
+touchlineÌ131072Í(win, s, c)Ö0
+touchwinÌ16Í(WINDOW *win)Ö0Ïinline int
+touchwinÌ65536Ö0
+touchwinÌ131072Í(win)Ö0
+ttytypeÌ65536Ö0
+typeÌ64Îanon_struct_1Ö0Ïint
+typeaheadÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+unget_wchÌ32768Ö0ÏNCURSES_EXPORT
+ungetchÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+ungetmouseÌ1024Í(SCREEN*,MEVENT *)Ö0ÏNCURSES_SP_NAME
+untouchwinÌ16Í(WINDOW *win)Ö0Ïinline int
+untouchwinÌ65536Ö0
+untouchwinÌ131072Í(win)Ö0
+use_default_colorsÌ1024Í(SCREEN*)Ö0ÏNCURSES_SP_NAME
+use_envÌ1024Í(SCREEN*, bool)Ö0ÏNCURSES_SP_NAME
+use_legacy_codingÌ1024Í(SCREEN*, int)Ö0ÏNCURSES_SP_NAME
+use_tioctlÌ1024Í(SCREEN*, bool)Ö0ÏNCURSES_SP_NAME
+vid_attrÌ1024Í(SCREEN*, attr_t, NCURSES_PAIRS_T, void *)Ö0ÏNCURSES_SP_NAME
+vid_attrÌ131072Í(a,pair,opts)Ö0
+vid_putsÌ1024Í(SCREEN*, attr_t, NCURSES_PAIRS_T, void *, NCURSES_SP_OUTC)Ö0ÏNCURSES_SP_NAME
+vidattrÌ1024Í(SCREEN*, chtype)Ö0ÏNCURSES_SP_NAME
+vidputsÌ1024Í(SCREEN*, chtype, NCURSES_SP_OUTC)Ö0ÏNCURSES_SP_NAME
+vlineÌ16Í(chtype ch, int n)Ö0Ïinline int
+vlineÌ65536Ö0
+vlineÌ131072Í(ch, n)Ö0
+vline_setÌ131072Í(c,n)Ö0
+vsscanfÌ131072Í(a,b,c)Ö0
+vw_printwÌ65536Ö0
+vw_scanwÌ65536Ö0
+wadd_wchstrÌ131072Í(win,str)Ö0
+waddchstrÌ16Í(WINDOW *win, chtype *at)Ö0Ïinline int
+waddchstrÌ65536Ö0
+waddchstrÌ131072Í(win,str)Ö0
+waddstrÌ16Í(WINDOW *win, char *str)Ö0Ïinline int
+waddstrÌ65536Ö0
+waddstrÌ131072Í(win,str)Ö0
+waddwstrÌ131072Í(win,wstr)Ö0
+wattr_getÌ131072Í(win,a,p,opts)Ö0
+wattr_setÌ131072Í(win,a,p,opts)Ö0
+wattroffÌ16Í(WINDOW *win, int att)Ö0Ïinline int
+wattroffÌ65536Ö0
+wattroffÌ131072Í(win,at)Ö0
+wattronÌ131072Í(win,at)Ö0
+wattrsetÌ16Í(WINDOW *win, int att)Ö0Ïinline int
+wattrsetÌ65536Ö0
+wattrsetÌ131072Í(win,at)Ö0
+wchar_tÌ16384Ö0Ïkey_name
+wdeletelnÌ131072Í(win)Ö0
+wencloseÌ32768Ö0ÏNCURSES_EXPORT
+wget_wstrÌ131072Í(w,t)Ö0
+wgetbkgrndÌ131072Í(win,wch)Ö0
+wgetdelayÌ131072Í(win)Ö0
+wgetparentÌ131072Í(win)Ö0
+wgetscrregÌ131072Í(win,t,b)Ö0
+wgetstrÌ131072Í(w, s)Ö0
+win_wchstrÌ131072Í(w,c)Ö0
+winchÌ16Í(const WINDOW* win)Ö0Ïinline
+winchÌ65536Ö0
+winchnstrÌ16Í(WINDOW *win, chtype *str, int n)Ö0Ïinline int
+winchnstrÌ32768Ö0ÏNCURSES_EXPORT
+winchnstrÌ65536Ö0
+winchstrÌ16Í(WINDOW *win, chtype *str)Ö0Ïinline int
+winchstrÌ65536Ö0
+winchstrÌ131072Í(w, s)Ö0
+wins_wstrÌ131072Í(w,t)Ö0
+winsertlnÌ131072Í(win)Ö0
+winsstrÌ16Í(WINDOW *w, const char *_str)Ö0Ïinline int
+winsstrÌ65536Ö0
+winsstrÌ131072Í(w, s)Ö0
+winstrÌ131072Í(w, s)Ö0
+wstandendÌ16Í(WINDOW *win)Ö0Ïinline int
+wstandendÌ65536Ö0
+wstandendÌ131072Í(win)Ö0
+wstandoutÌ16Í(WINDOW *win)Ö0Ïinline int
+wstandoutÌ65536Ö0
+wstandoutÌ131072Í(win)Ö0
+wunctrlÌ1024Í(SCREEN*, cchar_t *)Ö0ÏNCURSES_SP_NAME
+xÌ64Îanon_struct_5Ö0Ïint
+yÌ64Îanon_struct_5Ö0Ïint
+zÌ64Îanon_struct_5Ö0Ïint
