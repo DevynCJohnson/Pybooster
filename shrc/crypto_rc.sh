@@ -455,7 +455,7 @@ rsa16384pub() {
 #' @param[in] $1 The type of encryption (Optional); the default is AES-256
 rsapswd1024() {
     enctype="$(_enctype_input "${1:-}")"
-    read -p 'RSA Password: ' -s -r scrtpswd
+    printf 'RSA Password: ' && read -s -r scrtpswd
     clear
     openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa1024pri.pem 1024 && openssl rsa -passin pass:"${scrtpswd}" -in rsa1024pri.pem -pubout -out rsa1024pub.pem
     unset enctype scrtpswd
@@ -467,7 +467,7 @@ rsapswd1024() {
 #' @param[in] $1 The type of encryption (Optional); the default is AES-256
 rsapswd2048() {
     enctype="$(_enctype_input "${1:-}")"
-    read -p 'RSA Password: ' -s -r scrtpswd
+    printf 'RSA Password: ' && read -s -r scrtpswd
     clear
     openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa2048pri.pem 2048 && openssl rsa -passin pass:"${scrtpswd}" -in rsa2048pri.pem -pubout -out rsa2048pub.pem
     unset enctype scrtpswd
@@ -479,7 +479,7 @@ rsapswd2048() {
 #' @param[in] $1 The type of encryption (Optional); the default is AES-256
 rsapswd4096() {
     enctype="$(_enctype_input "${1:-}")"
-    read -p 'RSA Password: ' -s -r scrtpswd
+    printf 'RSA Password: ' && read -s -r scrtpswd
     clear
     openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa4096pri.pem 4096 && openssl rsa -passin pass:"${scrtpswd}" -in rsa4096pri.pem -pubout -out rsa4096pub.pem
     unset enctype scrtpswd
@@ -491,7 +491,7 @@ rsapswd4096() {
 #' @param[in] $1 The type of encryption (Optional); the default is AES-256
 rsapswd8192() {
     enctype="$(_enctype_input "${1:-}")"
-    read -p 'RSA Password: ' -s -r scrtpswd
+    printf 'RSA Password: ' && read -s -r scrtpswd
     clear
     openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa8192pri.pem 8192 && openssl rsa -passin pass:"${scrtpswd}" -in rsa8192pri.pem -pubout -out rsa8192pub.pem
     unset enctype scrtpswd
@@ -503,7 +503,7 @@ rsapswd8192() {
 #' @param[in] $1 The type of encryption (Optional); the default is AES-256
 rsapswd16384() {
     enctype="$(_enctype_input "${1:-}")"
-    read -p 'RSA Password: ' -s -r scrtpswd
+    printf 'RSA Password: ' && read -s -r scrtpswd
     clear
     openssl genrsa "${enctype}" -passout pass:"${scrtpswd}" -out rsa16384pri.pem 16384 && openssl rsa -passin pass:"${scrtpswd}" -in rsa16384pri.pem -pubout -out rsa16384pub.pem
     unset enctype scrtpswd
