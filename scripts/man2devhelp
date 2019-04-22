@@ -1,0 +1,219 @@
+#!/bin/bash
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+#' @brief Convert manpages to a devbook for Devhelp
+#' @file man2devhelp
+#' @version 2019.04.20
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+
+
+# SETUP #
+
+
+TASK=''
+if [ -n "${1:-}" ]; then
+    TASK="${1}"
+else
+    printf 'ERROR: An argument is required!\nUsage %s clear|generate|install|uninstall\n' "${0}" >&2
+    exit 1
+fi
+VERBOSE=''
+if [ -n "${2:-}" ]; then
+    VERBOSE='1'
+fi
+
+
+# FUNCTIONS #
+
+
+create_indexes() {
+    apropos --long . | sort -i | sed 's|     | |g;s|    | |g;s|   | |g;s|  | |g;s|  | |g' > ./full-index.txt
+}
+
+
+write_sections_chapters() {
+    while read -r -u 7 strLine; do
+        strSection="$(printf '%s' "${strLine}" | cut -d ' ' -f 2 | awk '{ sub(/[\(]/, ""); sub(/[\)]/, ""); print; }')"
+        strSectionLower="${strSection}"
+        strSection="$(printf '%s' "${strSection}" | tr '[:upper:]' '[:lower:]')"
+        [ -z "${strSection}" ] && continue
+        strCommand="$(printf '%s' "${strLine}" | cut -d ' ' -f 1)"
+        [ -z "${strCommand}" ] && continue
+        strDescription="$(printf '%s' "${strLine}" | cut -d ' ' -f 4-)"
+        sectionNum="$(printf '%s' "${strSection}" | cut -c -1)"
+        [ -n "${VERBOSE}" ] && printf 'Title: %s - Section: %s\n' "${strCommand}" "${strSection}"
+        strFileSection="./book/index-${strSection}.html"
+        strFileName="${strSection}/${strCommand}-${strSection}.html"
+        [ ! -d "./book/${strSection}" ] && mkdir "./book/${strSection}"
+        man --html=cat --warnings='' "/usr/share/man/man${sectionNum}/${strCommand}.${strSectionLower}.gz" 2> /dev/null | awk '{ if (NR > 2) { print $0; } }' | sed "s@<meta name=\"generator\" content=\"groff -Thtml, see www.gnu.org\">@<link rel=\"prev\" href=\"index-${strSection}.html\" title=\"Section ${strSection} Index\">@;s@</body>@</body><footer><a rel=\"home\" href=\"../index.html\">Home</a> | <a rel=\"prev\" href=\"../index-${strSection}.html\">Section ${strSection} Index</a></footer>@" > "./book/${strFileName}"
+        echo "      <sub name=\"${strCommand}\" link=\"${strFileName}\" />" >> "./chapter-${strSection}.xml"
+        [ ! -f "${strFileSection}" ] && cat > "${strFileSection}" <<EOD
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Section ${strSection} - ${sec_array[$strSection]}</title>
+        <link rel="home" href="index.html" title="Manpages Index">
+    </head>
+    <body>
+        <h1>Section ${strSection} - ${sec_array[$strSection]}</h1>
+        <p>${sectionDoc[$strSection]}</p>
+        <h2>List of Documented Symbols</h2>
+        <dl>
+EOD
+
+        echo "          <dt><a href=\"${strFileName}\" rel=\"tag\">${strCommand}</a></dt><dd>${strDescription}</dd>" >> "${strFileSection}"
+    done 7< full-index.txt
+}
+
+
+# MAIN #
+
+
+case "${TASK:-}" in
+    'install'|'--install')
+        if [ ! -d ./book/ ]; then
+            printf 'ERROR: The devbook must be generated first!\n' >&2
+            exit 1
+        fi
+        [ ! "$(id -u)" -eq 0 ] && { printf 'ERROR: Root privileges are required!\n' >&2; exit 1; }
+        [ -d /usr/share/devhelp/books/manpages/ ] && rm -f -r /usr/share/devhelp/books/manpages/
+        mkdir -p /usr/share/devhelp/books/manpages/
+        mv ./book/* /usr/share/devhelp/books/manpages/
+        rm -f -r ./book/
+        rm -f ./chapter-*.xml ./full-index.txt 2> /dev/null || true
+        exit 0;;
+    'uninstall'|'--uninstall')
+        [ ! "$(id -u)" -eq 0 ] && { printf 'ERROR: Root privileges are required!\n' >&2; exit 1; }
+        [ -d /usr/share/devhelp/books/manpages/ ] && rm -f -r /usr/share/devhelp/books/manpages/
+        exit 0;;
+    'clear'|'--clear')
+        rm -f -r ./book/
+        rm -f ./chapter-*.xml ./full-index.txt 2> /dev/null || true
+        exit 0;;
+    'generate'|'--generate')
+        rm -f -r ./book/
+        rm -f ./chapter-*.xml ./full-index.txt 2> /dev/null || true
+        create_indexes
+        declare -A sec_array
+        sec_array['1']='General Commands (Tools and Utilities)'
+        sec_array['1p']='Perl Commands (Tools and Utilities)'
+        sec_array['1ssl']='SSL Commands (Tools and Utilities)'
+        sec_array['2']='System Calls and Error Numbers'
+        sec_array['3']='Library Functions'
+        sec_array['3bsd']='Utility Functions from BSD Systems (libbsd, -lbsd)'
+        sec_array['3cocci']='Coccinelle OCaml Script Library Functions'
+        sec_array['3edit']='Command Line Editor Library (libedit, -ledit)'
+        sec_array['3gle']='GLE Library Functions'
+        sec_array['3o']='OCaml  Library Functions'
+        sec_array['3p']='Perl Library Functions'
+        sec_array['3perl']='Perl Library Functions'
+        sec_array['3pm']='Perl M Library Functions'
+        sec_array['3readline']='Readline Library Functions'
+        sec_array['3ssl']='SSL Library Functions'
+        sec_array['3tiff']='TIFF Library Functions'
+        sec_array['3tk']='TK Library Functions'
+        sec_array['4']='Device Drivers'
+        sec_array['5']='File Formats'
+        sec_array['5ssl']='SSL File Formats'
+        sec_array['6']='Games'
+        sec_array['7']='Miscellaneous Information'
+        sec_array['7gcc']='GCC Miscellaneous Information'
+        sec_array['7ssl']='SSL Miscellaneous Information'
+        sec_array['8']='System Maintenance and Operation Commands'
+        sec_array['9']='Kernel Internals'
+        sec_array['l']='Math Library Functions'
+        sec_array['n']='TCL Functions'
+        # TODO: https://linux.die.net/man/
+        declare -A sectionDoc
+        sectionDoc['1']=''
+        sectionDoc['1p']=''
+        sectionDoc['1ssl']=''
+        sectionDoc['2']='Section 2 of the manual describes the Linux system calls. A system call is an entry point into the Linux kernel. Usually, system calls are not invoked directly. Instead, most system calls have corresponding C library wrapper functions that perform the steps required (e.g., trapping to kernel mode) in order to invoke the system call. Thus, making a system call looks the same as invoking a normal library function.'
+        sectionDoc['3']='Section 3 of the manual describes all library functions excluding the library functions (system call wrappers) described in section 2, which implement system calls. Many of the functions described in the section are part of the Standard C Library (libc). Some functions are part of other libraries (e.g., the math library <i>libm</i> or the real-time library <i>librt</i>), in which case, the manual page will indicate the linker option needed to link against the required library (e.g., <i>-lm</i> and <i>-lrt</i>, respectively, for the aforementioned libraries). '
+        sectionDoc['3bsd']=''
+        sectionDoc['3cocci']=''
+        sectionDoc['3edit']=''
+        sectionDoc['3gle']=''
+        sectionDoc['3o']=''
+        sectionDoc['3p']=''
+        sectionDoc['3perl']=''
+        sectionDoc['3pm']=''
+        sectionDoc['3readline']=''
+        sectionDoc['3ssl']=''
+        sectionDoc['3tiff']=''
+        sectionDoc['3tk']=''
+        sectionDoc['4']=''
+        sectionDoc['5']=''
+        sectionDoc['5ssl']=''
+        sectionDoc['6']=''
+        sectionDoc['7']=''
+        sectionDoc['7gcc']=''
+        sectionDoc['7ssl']=''
+        sectionDoc['8']=''
+        sectionDoc['9']=''
+        sectionDoc['l']=''
+        sectionDoc['n']=''
+        [ ! -d ./book/ ] && mkdir ./book
+        cat > ./book/index.html <<EOD
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Manpages</title>
+        <link rel="next" href="index-1.html" title="Section 1 Index">
+    </head>
+    <body>
+        <h1>Manpages</h1>
+        <dl>
+            <dt>Section 1</dt><dd><a href="index-1.html" rel="tag">${sec_array['1']}</a></dd>
+            <dt>Section 1P</dt><dd><a href="index-1p.html" rel="tag">${sec_array['1p']}</a></dd>
+            <dt>Section 1SSL</dt><dd><a href="index-1ssl.html" rel="tag">${sec_array['1ssl']}</a></dd>
+            <dt>Section 2</dt><dd><a href="index-2.html" rel="tag">${sec_array['2']}</a></dd>
+            <dt>Section 3</dt><dd><a href="index-3.html" rel="tag">${sec_array['3']}</a></dd>
+            <dt>Section 4</dt><dd><a href="index-4.html" rel="tag">${sec_array['4']}</a></dd>
+            <dt>Section 5</dt><dd><a href="index-5.html" rel="tag">${sec_array['5']}</a></dd>
+            <dt>Section 5SSL</dt><dd><a href="index-5ssl.html" rel="tag">${sec_array['5ssl']}</a></dd>
+            <dt>Section 6</dt><dd><a href="index-6.html" rel="tag">${sec_array['6']}</a></dd>
+            <dt>Section 7</dt><dd><a href="index-7.html" rel="tag">${sec_array['7']}</a></dd>
+            <dt>Section 7GCC</dt><dd><a href="index-7gcc.html" rel="tag">${sec_array['7gcc']}</a></dd>
+            <dt>Section 7SSL</dt><dd><a href="index-7ssl.html" rel="tag">${sec_array['7ssl']}</a></dd>
+            <dt>Section 8</dt><dd><a href="index-8.html" rel="tag">${sec_array['8']}</a></dd>
+            <dt>Section 9</dt><dd><a href="index-9.html" rel="tag">${sec_array['9']}</a></dd>
+        </dl>
+    </body>
+</html>
+EOD
+
+    write_sections_chapters
+
+        cat > ./book/manpages.devhelp2 <<EOD
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/manpages/" language="unix" link="index.html" name="manpages" title="Manpages" version="2">
+  <chapters>
+EOD
+
+        find . -type f -name "chapter-*.xml" -print | sort | while read -r strFile; do
+            strSection="$(printf '%s' "${strFile}" | cut -d '-' -f 2 | cut -d '.' -f 1)"
+            [ -z "${strSection}" ] && continue
+            { echo "    <sub name=\"Section ${strSection}\" link=\"index-${strSection}.html\">"; cat "${strFile}"; echo '    </sub>'; } >> ./book/manpages.devhelp2
+            strFileSection="./book/index-${strSection}.html"
+            cat >> "${strFileSection}" <<EOD
+        </dl>
+    </body>
+</html>
+EOD
+        done
+
+        cat >> ./book/manpages.devhelp2 <<EOD
+  </chapters>
+</book>
+EOD
+
+        rm -f ./full-index.txt 2> /dev/null || true
+        exit 0;;
+    *)
+        printf 'Usage %s clear|generate|install|uninstall\n' "${0}"
+        exit 1;;
+esac
