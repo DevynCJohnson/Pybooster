@@ -245,9 +245,9 @@ finddirx() {
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find "$2" -type d -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type d -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find / -type d -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
@@ -273,9 +273,9 @@ findfilex() {
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find "$2" -type f -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type f -regextype awk -regex ".*/${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find / -type f -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
@@ -775,7 +775,8 @@ epoch2date() {
     fi
 }
 
-findmethod() { alias | cut -d ' ' -f 2 | cut -d '=' -f 1 | grep -i -F "$1"; declare -F | cut -d ' ' -f 3 | grep -i -F "$1"; }
+# shellcheck disable=SC2039
+findmethod() { alias | cut -d ' ' -f 2 | cut -d '=' -f 1 | grep -i -F "$1"; [ -x "$(command -v declare)" ] && declare -F | cut -d ' ' -f 3 | grep -i -F "$1"; }
 
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
 
@@ -831,6 +832,20 @@ elif [ -d /usr/local/share/nano ]; then
         find /usr/local/share/nano/* -type f -name "*.nanorc" -exec printf 'include %s\n' '{}' + | sudo tee /usr/local/share/nano/ALL.nanorc
     }
 fi
+
+#' Convert a manpage to HTML format
+manpage2html(){
+    if [ -n "${1:-}" ] && [ -n "${2:-}" ]; then
+        _sectionLower="$(printf '%s' "${2}" | tr '[:upper:]' '[:lower:]')"
+        _section="$(printf '%s' "${2}" | awk '{ string=substr($0, 1, 1); print string; }' | tr '[:upper:]' '[:lower:]')"
+        { [ ! -d "/usr/share/man/man${_section}" ] || [ ! -f "/usr/share/man/man${_section}/${1}.${_sectionLower}.gz" ]; } && { printf 'ERROR: Manpage not found!\n' >&2; exit 1; }
+        man --html=cat "/usr/share/man/man${_section}/${1}.${_sectionLower}.gz" | awk '{ if (NR > 2) { print $0; } }'
+    elif [ -n "${1:-}" ]; then
+        man --html=cat "$(ls /usr/share/man/man[1-8]/${1}.[A-Za-z0-9_]*.gz | sort | tr '\n' ' ' | cut -d ' ' -f 1)" | awk '{ if (NR > 2) { print $0; } }'
+    else
+        printf 'ERROR: At least one parameter is required!\n' >&2
+    fi
+}
 
 #' Create a random filename
 rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
