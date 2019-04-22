@@ -1,0 +1,24 @@
+/* CUSTOM GTK3 CSS FOR GEANY */
+
+
+/* Compiler Message Colors */
+#geany-compiler-context{color:#700}
+#geany-compiler-error{color:#F00}
+#geany-compiler-message{color:#25F}
+
+/* Document Status Colors */
+#geany-document-status-changed{color:#F00}
+#geany-document-status-disk-changed{color:#FA0}
+#geany-document-status-readonly{color:#25F}
+
+/* Red "Terminal" Label for Dirty Terminal */
+#geany-terminal-dirty{color:#F00;font-style:italic}
+
+/* Close Button on the Editor Tabs */
+#geany-close-tab-button{padding:5px}
+#geany-close-tab-button GtkImage,#geany-close-tab-button image{padding:5px}
+
+/* Search Entries */
+#GeanyDialogSearch GtkEntry,#GeanyDialogSearch entry{font-family:mononoki,monospace}
+#geany-search-entry-no-match{color:#FFF;background:#F66}
+#geany-search-entry-no-match:selected, #geany-search-entry-no-match selection{background-color:#711}
