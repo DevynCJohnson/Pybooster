@@ -279,6 +279,7 @@ AUTHORS text eol=lf linguist-documentation
 CONTRIBUTING text eol=lf linguist-documentation
 CONTRIBUTORS text eol=lf linguist-documentation
 COPYING text eol=lf linguist-documentation
+*.devhelp2 text eol=lf linguist-language=XML linguist-vendored=false
 HACKING text eol=lf linguist-documentation
 INSTALL text eol=lf linguist-documentation
 [Ll][Ii][Cc][Ee][Nn][Ss][Ee] text eol=lf linguist-documentation

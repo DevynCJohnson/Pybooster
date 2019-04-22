@@ -1,8 +1,21 @@
+2019-04-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* crypto_rc.sh:  Improved POSIX compliance
+	* extras_rc.sh:  Fixed some bugs & added some functions
+	* Geany:  Added several tags-files & `geany.css`
+	* makefile:  Added the code needed to install Devhelp files
+	* makefile_constants.mk:  Improved `genchecksums`
+	* pkg_rc.sh:  Fixed `pkglsinst()`
+	* profile:  Fixed `httpget()`
+	* PyBooster:  Added `run-in-git-proj` & `man2devhelp` scripts
+	* PyBooster:  Added Devhelp files
+	* snippets.conf:  Added snippets for JavaScript
+
 2019-04-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* snippets.conf:  Added snippets for Python & Shell-scripts
 	* profile:  Added distro detection
 	* PyBooster:  Added a `sources.list` file for Ubuntu
+	* snippets.conf:  Added snippets for Python & Shell-scripts
 
 2019-04-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
