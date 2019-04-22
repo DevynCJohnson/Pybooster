@@ -12,21 +12,35 @@
 #' To disable the geolocation features included in this file, create the file `/etc/geoprofile_disable`
 #'
 #' @section SYMBOLS
+#' Reference: https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 #' ${var#pattern} - Removes smallest string from the left side that matches `pattern`
 #' ${var##pattern} - Removes the largest string from the left side that matches `pattern`
 #' ${var%pattern} - Removes the smallest string from the right side that matches `pattern`
 #' ${var%%pattern} - Removes the largest string from the right side that matches `pattern`
+#' ${param/pattern/string} - `param` is expanded and the longest match of `pattern` against its value is replaced with `string`; if `pattern` begins with `#` or `%`, it must match at the beginning or end (respectively) of the expanded value of `param`; if `string` is null, matches of `pattern` are deleted and the `/` following `pattern` may be omitted
+#' ${param/pattern} - `param` is expanded and the longest match of `pattern` is deleted; if `pattern` begins with `#` or `%`, it must match at the beginning or end (respectively) of the expanded value of `param`
 #' ${param:-word} - If `param` is unset or null, the expansion of `word` is substituted; otherwise, the value of `param` is substituted
 #' ${param:=word} - If `param` is unset or null, the expansion of `word` is assigned to `param`; Positional parameters and special parameters cannot be assigned to in this manner
 #' ${param:?word} - If `param` is null or unset, the expansion of `word` (or a message to that effect if `word` is not present) is written to stderr (if not interactive, then exit); otherwise, the value of `param` is substituted
-#' ${param:+word} - If `param` is null or unset, nothing is substituted; otherwise, the expansion of word is substituted
-#' ${param:offset}
-#' ${param:offset:length}
+#' ${param:+word} - If `param` is null or unset, nothing is substituted; otherwise, the expansion of `word` is substituted
+#' ${param:offset} - Expansion of `word` is substituted by its `offset`; prefix negative values with a space
+#' ${param:offset:length} - Expansion of `word` is substituted by its `offset` up to the specified `length`; prefix negative values with a space
 #' ${!prefix*} - Expands to the names of variables whose names begin with `prefix`, separated by the first character of the `IFS` special variable
 #' ${!prefix@} - Expands to the names of variables whose names begin with `prefix`, separated by the first character of the `IFS` special variable; when `@` is used and the expansion appears within double quotes, then each variable name expands to a separate word
 #' ${!name[@]} - If `name` is an array variable, then expand to the list of array indices (keys) assigned in `name`
 #' ${!name[*]} - If `name` is an array variable, then expand to the list of array indices (keys) assigned in `name`; otherwise, if `name` is not an array, expands to `0` if `name` is set and `null` otherwise. When `@` is used and the expansion appears within double quotes, each key expands to a separate word
-#' ${#param} - The length of the expanded value of `param`
+#' ${param,,} - Expanded value of `param` in lowercase
+#' ${param^^} - Expanded value of `param` in uppercase
+#' ${param,,pattern} - Expands `param` and converts each character matching `pattern` to lowercase
+#' ${param^^pattern} - Expands `param` and converts each character matching `pattern` to uppercase
+#' ${param,pattern} - Expands `param` and converts only the first character matching `pattern` to lowercase
+#' ${param^pattern} - Expands `param` and converts only the first character matching `pattern` to uppercase
+#' ${#param} - Length of the expanded value of `param`
+#' ${param@A} - Expanded value of `param` to its assignment line (e.g. `param='This is an example.'`)
+#' ${param@a} - Expanded value of `param` to its attributes
+#' ${param@E} - Expanded value of `param` with backslash escape sequences expanded
+#' ${param@P} - Expanded value of `param` as if it were a prompt string, i.e. with backslash escape sequences and `$` variables expanded
+#' ${param@Q} - Expanded value of `param` in quotes
 
 
 # SHELL TYPE #
@@ -608,11 +622,11 @@ fi
 httpget() {
     if [ -x "$(command -v curl)" ]; then
         curl -A curl -s "$@"
-    elif [ -x "$(command -v wget)" ]; then
+    elif [ -x "$(command -v fetch)" ]; then
         fetch -q "$@"
     elif [ -x "$(command -v http)" ]; then
         http -b GET "$@"
-    elif [ -x "$(command -v fetch)" ]; then
+    elif [ -x "$(command -v wget)" ]; then
         wget --no-cache --no-cookies --no-dns-cache --quiet -O - "$@"
     else
         printf 'ERROR: Either curl, wget, httpie, or fetch must be installed!\n' >&2
