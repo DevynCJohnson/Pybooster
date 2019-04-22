@@ -95,7 +95,7 @@ elif [ -d /etc/apt ] && { [ -x "$(command -v apt)" ] || [ -x "$(command -v apt-g
             filesfrompkg() { dpkg-query -L "${1}"; }
             pkgfind() { dpkg-query --list "${1}"; }
         fi
-        pkglsinst() { dpkg-query --list | grep ^i "${1}"; }
+        pkglsinst() { dpkg-query --list | grep ^i; }
         pkglshold() { dpkg --get-selections | grep hold; }
         #' List removed packages that still have remaining/persistent configuration files
         pkglsrc() { dpkg -l | grep ^rc; }
