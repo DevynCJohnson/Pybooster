@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/numpy/" language="Python" link="index.html" name="Numpy" title="Numpy Documentation" version="2">
+  <chapters>
+    <sub name="Numpy Manual" link="index.html">
+      <sub name="User Guide" link="user/index.html" />
+      <sub name="Reference" link="reference/index.html" />
+      <sub name="C-API" link="reference/c-api.html" />
+      <sub name="F2Py" link="f2py/index.html" />
+      <sub name="Contributing" link="dev/index.html" />
+    </sub>
+    <sub name="Search" link="search.html" />
+    <sub name="Glossary" link="glossary.html" />
+    <sub name="Index" link="genindex.html" />
+  </chapters>
+</book>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/dpdk/" language="c" link="api/index.html" name="DPDK" title="DPDK API" version="2">
+  <chapters>
+    <sub name="API" link="api/index.html">
+      <sub name="Examples" link="api/examples.html" />
+      <sub name="Files" link="api/files.html" />
+      <sub name="Data Structures" link="api/annotated.html" />
+      <sub name="Globals" link="api/globals.html" />
+      <sub name="Global Enumerations" link="api/globals_enum.html" />
+      <sub name="Global Enumerators" link="api/globals_eval.html" />
+      <sub name="Global Functions" link="api/globals_func.html" />
+      <sub name="Global Macros" link="api/globals_defs.html" />
+      <sub name="Global Typedefs" link="api/globals_type.html" />
+      <sub name="Global Variables" link="api/globals_vars.html" />
+    </sub>
+    <sub name="Guides" link="guides/index.html">
+      <sub name="Release Notes" link="guides/rel_notes/index.html" />
+      <sub name="How-To" link="guides/howto/index.html" />
+      <sub name="Programmer's Guide" link="guides/prog_guide/index.html" />
+      <sub name="Tools" link="guides/tools/index.html" />
+    </sub>
+  </chapters>
+</book>

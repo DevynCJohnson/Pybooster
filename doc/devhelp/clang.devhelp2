@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/clang/" language="Compiler" link="index.html" name="Clang" title="Clang Documentation" version="2">
+  <chapters>
+    <sub name="Release Notes" link="ReleaseNotes.html" />
+    <sub name="Search" link="search.html" />
+    <sub name="Documentation" link="index.html">
+      <sub name="Using as a Compiler" link="index.html#using-clang-as-a-compiler" />
+      <sub name="Using as a Library" link="index.html#using-clang-as-a-library" />
+      <sub name="Using Clang Tools" link="index.html#using-clang-tools" />
+      <sub name="Design Documents" link="index.html#design-documents" />
+      <sub name="Indices and Tables" link="index.html#indices-and-tables" />
+    </sub>
+    <sub name="Index" link="genindex.html">
+      <sub name="Command-line" link="genindex.html#C" />
+      <sub name="Environment Variables" link="genindex.html#E" />
+      <sub name="Symbols" link="genindex.html#Symbols" />
+    </sub>
+  </chapters>
+</book>

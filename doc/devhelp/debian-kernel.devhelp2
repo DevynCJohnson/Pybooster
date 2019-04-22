@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/debian-kernel/" language="Debian" link="index.html" name="Debian Kernel" title="Debian-Kernel Documentation" version="2">
+  <chapters>
+    <sub name="Debian Kernel Reference" link="index.html" />
+    <sub name="Managing Modules" link="ch-modules.html" />
+    <sub name="Managing the Initramfs Archive" link="ch-initramfs.html" />
+    <sub name="Version Numbers and ABIs" link="ch-versions.html" />
+  </chapters>
+</book>

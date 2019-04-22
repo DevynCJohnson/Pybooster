@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/gcc/" language="Compiler" link="gcc.html" name="GNU-GCC" title="GNU-GCC Documentation" version="2">
+  <chapters>
+    <sub name="Compiler" link="gcc.html">
+      <sub name="Internals" link="gccint.html" />
+      <sub name="Command-line" link="gcc.html#Invoking-GCC" />
+      <sub name="C-Implementation" link="gcc.html#C-Implementation" />
+      <sub name="C++-Implementation" link="gcc.html#C_002b_002b-Implementation" />
+      <sub name="C Extensions" link="gcc.html#C-Extensions" />
+      <sub name="C++ Extensions" link="gcc.html#C_002b_002b-Extensions" />
+      <sub name="Supported Languages" link="gcc.html#Standards" />
+    </sub>
+    <sub name="Preprocessor" link="cpp.html">
+      <sub name="Diagnostics" link="cpp.html#Diagnostics" />
+      <sub name="Header Files" link="cpp.html#Header-Files" />
+      <sub name="Internals" link="cppint.html" />
+      <sub name="Macros" link="cpp.html#Macros" />
+      <sub name="Pragmas" link="cpp.html#Pragmas" />
+    </sub>
+    <sub name="libgomp" link="libgomp.html" />
+    <sub name="libitm" link="libitm.html" />
+    <sub name="libquadmath" link="libquadmath.html" />
+  </chapters>
+</book>

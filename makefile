@@ -45,6 +45,7 @@ override ACCDIR::=./accessory
 override BIN::=./bin
 override DBDIR::=./databases
 override DOCDIR::=./doc
+override DEVHELPDIR::=$(DOCDIR)/devhelp
 override PYEGGDIR::=./pyegg
 override PYSRC::=./pylib
 override EZWINSRC::=$(PYSRC)/ezwin
@@ -77,17 +78,17 @@ override LIST_UTIL_PROGRAMS::=getpgid getsid microtime ostype statvfs typesize
 override LIST_BIN_PROGRAMS::=$(LIST_MATH_PROGRAMS) $(LIST_UTIL_PROGRAMS)
 override LIST_PYTHON_LIBRARIES::=astronomy basic bitwise boolean clibutil code_interpreter color compress convarea convlength convmass convspeed convtemp convtime convvolume cryptography datastruct electronics ezdisplay filemagic financial fs geo iterables libchar libregex markup metric multimedia net neuralnet pipx pronouns religion science_data sing strtools system timeutil unix xmath ymath
 override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgrade-all py2dsc pymake pyreverse3 qt5py wpip
-override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis pngshrink progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
+override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis pngshrink progstrip pyanalysis py_directive_checker pydocgtk pyflakes2 pyflakes3 pyinspect pylint2 pylint3 pytest3 RCompiler.R RTidy.R run-in-git-proj shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh no_debugging_rc.sh pkg_rc.sh
-override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc webget win2unixlines
-override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yaml yamllint
-override LIST_DEV_DEPS::=binwalk bsdiff cccc complexity cppcheck doxygen doxygen-gui flawfinder geany geany-plugin-addons geany-plugin-ctags geany-plugin-lineoperations gitlint glade jsonlint kwstyle ltrace optipng pmccabe pngcrush pscan python3-demjson shc shellcheck splint strace uchardet undertaker vbindiff wamerican-insane yajl-tools
+override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc man2devhelp minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc webget win2unixlines
+override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-mypy mccabe mypy mypy_extensions Pillow pyaml pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django vulture yamllint
+override LIST_DEV_DEPS::=astyle binwalk bsdiff bsdiff cccc cgdb complexity cppcheck doxygen doxygen-gui flawfinder gdb geany geany-plugin-addons geany-plugin-automark geany-plugin-codenav geany-plugin-commander geany-plugin-ctags geany-plugin-defineformat geany-plugin-doc geany-plugin-extrasel geany-plugin-gendoc geany-plugin-insertnum geany-plugin-keyrecord geany-plugin-latex geany-plugin-lineoperations geany-plugin-lua geany-plugin-macro geany-plugin-miniscript geany-plugin-numberedbookmarks geany-plugin-overview geany-plugin-pairtaghighlighter geany-plugin-pg geany-plugin-pohelper geany-plugin-prettyprinter geany-plugin-prj geany-plugin-projectorganizer geany-plugin-shiftcolumn geany-plugin-spellcheck geany-plugin-tableconvert geany-plugin-treebrowser geany-plugin-vc geany-plugin-workbench geany-plugin-xmlsnippets git-cola git-extras git-flow git-gui gitlint gitstats glade jsonlint kwstyle ltrace optipng patchutils pmccabe pngcrush pscan python3-demjson qgit shc shellcheck splint strace uchardet undertaker universalindentgui vbindiff wamerican-insane xxdiff xxgdb yajl-tools
 override LIST_MAIN_DEPS::=clang cloc colormake coreutils doschk gcc libxml2-utils licensecheck llvm make moreutils python3-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 sloccount xdg-utils
 
 # Search Parameters Used in Find
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
-override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
 override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
 
 
@@ -107,6 +108,7 @@ help :
 	printf '%s\n\t%s\n' 'C Libraries:' 'sudo make install_clib'
 	printf '%s\n\t%s\n' 'Color Kit:' 'sudo make install_color_kit'
 	printf '%s\n\t%s\n' 'Desktop Entry Maker:' 'sudo make install_desktop_entry_maker'
+	printf '%s\n\t%s\n' 'Devhelp Files:' 'sudo make install_devhelp'
 	printf '%s\n\t%s\n' 'Enhanced XCompose File:' 'make install_xcompose'
 	printf '%s\n\t%s\n' 'Language Specification Files:' 'sudo make install_langspecs'
 	printf '%s\n\t%s\n' 'Linux Driver Module for Clevo Keyboard Backlights:' 'sudo make install_dkms_clevo_kbd_backlight'
@@ -218,9 +220,9 @@ default :
 # Uninstall DKMS Driver Modules
 .PHONY : uninstall_dkms_clevo_kbd_backlight
 # Install
-.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_devhelp install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_devhelp uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify replace_repos secure uninstall_geofiles unmacify update_geofiles
 
@@ -604,6 +606,30 @@ uninstall_desktop_entry_maker :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Desktop Entry Maker ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(RM) $(INSTALLBINDIR)/desktop-entry-maker $(SYSAPPDIR)/Desktop-Entry-Maker.desktop $(SYSMENUDIR)/desktop-entry-maker $(PIXMAPDIR)/menu-editor.svg
+
+install_devhelp : | fixperm
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Devhelp Files ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ -d /usr/share/debian-reference/ ] && [ ! -d /usr/share/devhelp/books/debian ] && $(LNDIR) /usr/share/debian-reference /usr/share/devhelp/books/debian && $(COPY) $(DEVHELPDIR)/debian.devhelp2 /usr/share/devhelp/books/debian/) || true
+	([ -d /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ ] && [ ! -d /usr/share/devhelp/books/debian-kernel ] && $(LNDIR) /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ /usr/share/devhelp/books/debian-kernel && $(COPY) $(DEVHELPDIR)/debian-kernel.devhelp2 /usr/share/devhelp/books/debian-kernel/) || true
+	([ -d /usr/share/doc/dpdk/ ] && [ ! -d /usr/share/devhelp/books/dpdk ] && $(LNDIR) /usr/share/doc/dpdk /usr/share/devhelp/books/dpdk && $(COPY) $(DEVHELPDIR)/dpdk.devhelp2 /usr/share/devhelp/books/dpdk/) || true
+	([ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && $(LNDIR) /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && $(COPY) $(DEVHELPDIR)/numpy.devhelp2 /usr/share/devhelp/books/numpy/) || true
+	CLANG_DOC='0'
+	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-9-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-9-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
+	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-8-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-8-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
+	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-7-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-7-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
+	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-6-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-6-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
+	GCC_DOC='0'
+	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-9-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-9-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
+	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-8-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
+	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-7-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
+	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-6-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-6-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
+
+uninstall_devhelp :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Devhelp Files ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RM) /usr/share/devhelp/books/clang/clang.devhelp2 /usr/share/devhelp/books/clang /usr/share/devhelp/books/dpdk/dpdk.devhelp2 /usr/share/devhelp/books/dpdk /usr/share/devhelp/books/gcc/gcc.devhelp2 /usr/share/devhelp/books/gcc /usr/share/devhelp/books/numpy/numpy.devhelp2 /usr/share/devhelp/books/numpy || true
+	([ -d /usr/share/devhelp/books/gcc/ ] && $(SCRIPTSRCDIR)/man2devhelp uninstall) || true
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='

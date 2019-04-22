@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/debian/" language="Debian" link="index.en.html" name="Debian" title="Debian Documentation" version="2">
+  <chapters>
+    <sub name="Package Management" link="ch02.en.html" />
+    <sub name="Programming" link="ch12.en.html" />
+    <sub name="System Tips" link="ch09.en.html" />
+    <sub name="X Window System" link="ch07.en.html" />
+  </chapters>
+</book>
