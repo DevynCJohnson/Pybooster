@@ -44,7 +44,7 @@ from zlib import compress as zcompress, decompress as zdecompress
 from pybooster.fs import ensurefileexists, getfile, write2file
 
 from pyaml import dump as yamldump
-from yaml import MarkedYAMLError, load as yamlload, YAMLError
+from yaml import MarkedYAMLError, safe_load as yamlload, YAMLError
 
 
 __all__ = [
@@ -88,6 +88,7 @@ __all__ = [
     r'json2csvstr',
     r'json2dict',
     r'json2yaml',
+    r'list2csv',
     r'str2base64url',
     r'yaml2dict',
     r'yaml2json',
@@ -130,10 +131,9 @@ def write2ini(_filename: str, _config: object) -> None:
 
 def ini2str(_file: object) -> str:
     """Get the string from the ConfigParser"""
-    _buf = StringIO(r'')
-    _out: str = r''
+    _buf: StringIO = StringIO(r'', '\n')
     _file.write(_buf)  # type: ignore
-    _out = _buf.getvalue()
+    _out: str = _buf.getvalue()
     _buf.close()
     return _out.replace('\n\n', '\n')
 
@@ -174,7 +174,7 @@ def set_ini_value(_file: Union[object, str], _section: str, _opt: str, _val: str
 
 def is_section_in_ini(_file: str, _section: str) -> bool:
     """Return a boolean value indicating the presence of the specified section"""
-    return True if _section in openinifile(_file) else False  # type: ignore
+    return bool(_section in openinifile(_file))  # type: ignore
 
 
 def convertinibool(_file: str, _destfile: str) -> None:
@@ -398,7 +398,7 @@ def ini2dict(_file: Union[object, str], _rawinistr: bool = False) -> dict:
     {'Default': {'0': "['Val1', 'Val2', 'Val3', 'Val4']", '1': "['1', '2', '3', '4']", '2': "['5', '6', '7', '8']", '3': "['9', '10', '11', '12']", '4': "['13', '14', '15', '16']", '5': "['17', '18', '19', '20']", '6': "['3.14', '6.28', '2.73', '1.57']"}}
     """
     if _rawinistr:
-        _buf = StringIO(r'')
+        _buf: StringIO = StringIO(r'', '\n')
         _buf.write(_file)  # type: ignore
         configfile = openinifile(_buf)
     else:
@@ -437,7 +437,7 @@ def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quo
     '0,1,2,3,4,5,6\nVal1,Val2,Val3,Val4\n1,2,3,4\n5,6,7,8\n9,10,11,12\n13,14,15,16\n17,18,19,20\n3.14,6.28,2.73,1.57\n'
     """
     _dict: Union[dict, list] = jloads(_str)
-    _buf = StringIO(r'')
+    _buf: StringIO = StringIO(r'', '\n')
     csvwriter = cwriter(_buf, dialect=_dialect, delimiter=_delimiter, quotechar=_quotechar, quoting=QUOTE_MINIMAL)
     if isinstance(_dict, dict):
         _tmpdict: list = [_dict[_key] for _key in _dict.keys()]
@@ -470,6 +470,19 @@ def json2yaml(_str: str) -> str:
     return yamldump(jloads(_str, object_pairs_hook=OrderedDict), safe=True)
 
 
+def list2csv(_list: list) -> str:
+    r"""Convert a list to a CSV string
+
+    >>> list2csv([["Val1","Val2","Val3","Val4"], ["1","2","3","4"], ["5","6","7","8"]])
+    'Val1,Val2,Val3,Val4\n1,2,3,4\n5,6,7,8\n'
+    """
+    _virt_file: StringIO = StringIO(r'', '\n')
+    csvwriter = cwriter(_virt_file, dialect=r'unix', delimiter=r',', quotechar=r'"', quoting=QUOTE_MINIMAL)
+    for _row in _list:
+        csvwriter.writerow(_row)
+    return _virt_file.getvalue()
+
+
 def str2base64url(_str: str) -> bytes:
     r"""Convert a string to a Base64URL (RFC 4648) byte-string
 
@@ -485,7 +498,7 @@ def yaml2dict(_yaml: str) -> dict:
     >>> yaml2dict("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n")
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
     """
-    _buf = StringIO(_yaml)
+    _buf: StringIO = StringIO(_yaml)
     _out: dict = yamlload(_buf)  # nosec
     _buf.close()
     return _out
@@ -499,7 +512,7 @@ def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bo
     >>> yaml2json("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n", _sort_keys=True, _minify=False)
         '{\n  "0": [\n    "Val1", \n    "Val2", \n    "Val3", \n    "Val4"\n  ], \n  "1": [\n    "1", \n    "2", \n    "3", \n    "4"\n  ], \n  "2": [\n    "5", \n    "6", \n    "7", \n    "8"\n  ], \n  "3": [\n    "9", \n    "10", \n    "11", \n    "12"\n  ], \n  "4": [\n    "13", \n    "14", \n    "15", \n    "16"\n  ], \n  "5": [\n    "17", \n    "18", \n    "19", \n    "20"\n  ], \n  "6": [\n    "3.14", \n    "6.28", \n    "2.73", \n    "1.57"\n  ]\n}'
     """
-    _buf = StringIO(_yaml)
+    _buf: StringIO = StringIO(_yaml)
     _tmpyaml: dict = yamlload(_buf)  # nosec
     _out: str = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
     _buf.close()
