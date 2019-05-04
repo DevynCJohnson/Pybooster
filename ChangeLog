@@ -1,3 +1,11 @@
+2019-05-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* pip3:  Fixed the main executable script to support pip version 19
+	* Program-Analyzer:  Fixed some minor linter issues
+	* pyanalysis:  Added support for `radon` & `uncalled`
+	* PyBooster:  Added `setup_dev_env.sh` & tweaked `.bandit.ini`
+	* shanalysis:  Added the `--force` parameter to `checkbashisms`
+
 2019-04-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* snippets.conf:  Added snippets for C & Python
