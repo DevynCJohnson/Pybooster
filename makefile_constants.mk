@@ -1339,7 +1339,7 @@ lstags :
 	@git tag
 
 newchanges :
-	@git diff
+	@git diff HEAD~1
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix
