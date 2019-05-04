@@ -1412,7 +1412,6 @@ typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
 #define _NETINET_IN_SYSTM_H   (1)  // <netinet/in_systm.h>
 #define _NETINET_IN_SYSTM_H_   (1)
 #define __WINE_LIMITS_H   (1)
-#define _SYS_SYSCONF_H_   (1)
 #define _MACHINE_LIMITS_H_   (1)
 #define POSIX_EXTRAS_H   (1)
 #define POSIX_EXTRAS_H_   (1)
