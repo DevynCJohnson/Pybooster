@@ -157,6 +157,12 @@ fi  # command -v openssl
 # CRYPTOGRAPHIC FUNCTIONS #
 
 
+if [ -x "$(command -v ssh-keygen)" ]; then
+    #' Convert a PEM public key to a SSH-RSA-Styled public key
+    conv_pem2ssh() { ssh-keygen -f "${1:-}" -i -mPKCS8; }
+fi
+
+
 if [ -x "$(command -v openssl)" ]; then
 
 
