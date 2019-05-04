@@ -136,6 +136,7 @@ alias reboot='history -c; sudo shutdown -r now'
 alias resudo='sudo -v'
 alias sedo='sudo -E'
 alias unmount='sudo umount'
+alias viewhugepages='grep --color=never -F -i huge /proc/meminfo'
 
 # Terminal Control Aliases
 
@@ -446,6 +447,9 @@ searchInPkgPath() {
         done
     fi
 }
+
+#' Gzip-equivalent of `less`
+zless(){ zcat "${1}" | less; }
 
 # Mail Functions
 
@@ -781,6 +785,9 @@ epoch2date() {
         date -d "@${1}"
     fi
 }
+
+#' Easily send messages to the wall
+msg(){ echo "${1}" | wall; }
 
 #' Calculate the distance between two times
 timediff() {
