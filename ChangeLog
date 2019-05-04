@@ -1,10 +1,19 @@
 2019-05-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* compress.py:  Added `getgzip_threaded`
+	* crypto_rc.sh:  Added `conv_pem2ssh`
+	* datastruct.py:  Added `list2csv`
+	* extras_rc.sh:  Fixed some bugs & added time-related functions
+	* extras_rc.sh:  Added miscellaneous functions
+	* MACROS2.h:  Removed unneeded line of code
+	* makefile_constants.mk:  Fixed `newchanges`
 	* pip3:  Fixed the main executable script to support pip version 19
 	* Program-Analyzer:  Fixed some minor linter issues
 	* pyanalysis:  Added support for `radon` & `uncalled`
-	* PyBooster:  Added `setup_dev_env.sh` & tweaked `.bandit.ini`
+	* PyBooster:  Added `setup_dev_env.sh` & tweaked `.bandit.ini` & `tox.ini`
+	* setup_dev_env.sh:  Added additional packages
 	* shanalysis:  Added the `--force` parameter to `checkbashisms`
+	* snippets.conf:  Added snippets for C, Python, & Posix Shell Script
 
 2019-04-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
