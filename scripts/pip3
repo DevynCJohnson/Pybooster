@@ -2,11 +2,11 @@
 # -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
-# EASY-INSTALL-ENTRY-SCRIPT: "pip3>=9.0.0","console_scripts","pip3"
+# EASY-INSTALL-ENTRY-SCRIPT: "pip3>=19.0.0","console_scripts","pip3"
 """@brief Wrapper for Pip3
 
 @file pip3
-@version 2019.03.28
+@version 2019.05.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
@@ -15,7 +15,10 @@
 from re import sub
 from sys import argv
 
-from pip import main
+try:
+    from pip import main
+except ImportError:
+    from pip._internal import main
 
 
 if __name__ == '__main__':
