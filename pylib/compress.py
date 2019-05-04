@@ -34,6 +34,7 @@ import bz2
 import gzip
 import lzma
 from pickle import dumps, loads  # nosec
+from queue import Queue
 import tarfile
 import zlib
 
@@ -45,6 +46,7 @@ __all__: list = [
     r'creategzipfile',
     r'gzipvar',
     r'getgzipvar',
+    r'getgzip_threaded',
     # BZIP #
     r'getbzip',
     r'write2bzip',
@@ -102,6 +104,18 @@ def gzipvar(data: str, _encoding: str = r'utf-8') -> bytes:
 def getgzipvar(data: bytes) -> str:
     """Get the contents of a Gzipped variable"""
     return bytes.decode(gzip.decompress(data))
+
+
+def getgzip_threaded(_filename: str, _queue_depth: int, _queue: Queue) -> None:
+    """Open and get the contents of a gzip file (thread-compatible)"""
+    with gzip.open(_filename, mode=r'rb') as _file:
+        while True:
+            _data = bytes.decode(_file.readline()).strip()
+            if not _data:
+                break
+            _queue.put(_data)
+    for i in range(_queue_depth):  # pylint: disable=W0612
+        _queue.put(r'quit')
 
 
 # BZIP2 #
