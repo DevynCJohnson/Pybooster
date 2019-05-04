@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.03.28
+#' @version 2019.05.04
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -131,11 +131,18 @@ for file in "$@"; do
         printf 'vulture: command not found!\n' >&2
     fi
 
+    printf '======  *UNCALLED*  ======\n'
+    if [ -x "$(command -v uncalled)" ] && grep -F --no-messages --quiet '__main__' "${1}"; then
+        uncalled --how both "${1}"
+    fi
+
     if [ -x "$(command -v bandit)" ]; then
         printf '======  *BANDIT (SECURITY ANALYZER)*  ======\n'
         if [ -n "${bandit_file:-}" ]; then
+            # shellcheck disable=SC2016
             bandit --aggregate vuln --configfile "$bandit_file" "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
         else
+            # shellcheck disable=SC2016
             bandit --aggregate vuln "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
         fi
     elif [ "$FirstLoopPass" -eq 0 ]; then
@@ -157,6 +164,16 @@ for file in "$@"; do
         python2 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
     else
         python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+    fi
+
+    printf '======  *RADON REPORT*  ======\n'
+    if [ -x "$(command -v radon)" ]; then
+        radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average
+        radon mi "${1}" --max C --min A --multi --show
+        radon raw "${1}" --summary
+        radon hal "${1}"
+        # Show complexity data for each individual function
+        # radon hal "${1}" --functions
     fi
 
     if [ -x "$(command -v code-analysis)" ]; then
