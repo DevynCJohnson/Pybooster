@@ -766,12 +766,33 @@ if [ -x "$(command -v awk)" ]; then
     }
 fi
 
-#' Convert seconds sinc ethe Epoch to the format of the current system locale
+#' Calculate the number of days between to dates
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    printf '%s days\n' $(( (d1 - d2) / 86400 ))
+}
+
+#' Convert seconds since the Epoch to the format of the current system locale
 epoch2date() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: No input provided!\n' >&2
     else
         date -d "@${1}"
+    fi
+}
+
+#' Calculate the distance between two times
+timediff() {
+    d1=$(date -d "${1}:00" +%s)
+    d2=$(date -d "${2}:00" +%s)
+    result=$(( (d1 - d2) / 60 ))
+    if [ -x "$(command -v wcalc)" ]; then
+        printf '%s hours \n' "$(wcalc "${result} / 60")" | sed 's| = ||'
+    elif [ -x "$(command -v calc)" ]; then
+        printf '%s hours \n' "$(calc -c -d -- "${result} / 60" | cut -f 2)" | sed 's| = ||'
+    else
+        printf 'ERROR: "calc" or "wcalc" must be installed!\n' >&2
     fi
 }
 
@@ -841,7 +862,12 @@ manpage2html(){
         { [ ! -d "/usr/share/man/man${_section}" ] || [ ! -f "/usr/share/man/man${_section}/${1}.${_sectionLower}.gz" ]; } && { printf 'ERROR: Manpage not found!\n' >&2; exit 1; }
         man --html=cat "/usr/share/man/man${_section}/${1}.${_sectionLower}.gz" | awk '{ if (NR > 2) { print $0; } }'
     elif [ -n "${1:-}" ]; then
-        man --html=cat "$(ls /usr/share/man/man[1-8]/${1}.[A-Za-z0-9_]*.gz | sort | tr '\n' ' ' | cut -d ' ' -f 1)" | awk '{ if (NR > 2) { print $0; } }'
+        _manfile="$(find /usr/share/man/ -type f -wholename "*/man[1-8]/${1}.*.gz" -exec printf '%s\n' '{}' + | sort | tr '\n' ' ' | cut -d ' ' -f 1)"
+        if [ -z "${_manfile:-}" ]; then
+            printf 'ERROR: The manpage was not found!\n' >&2
+            exit 1
+        fi
+        man --html=cat "${_manfile}" | awk '{ if (NR > 2) { print $0; } }'
     else
         printf 'ERROR: At least one parameter is required!\n' >&2
     fi
