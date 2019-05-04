@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable
 
 @file program-analyzer
-@version 2019.03.28
+@version 2019.05.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1673,7 +1673,7 @@ def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901
         TempTable.lastused = r''
         statusbar.push(context_id, r'OSError when writing file')
         stderr.write('OSError when writing file\n')
-    except BaseException as _err:
+    except BaseException as _err:  # pylint: disable=W0703
         TempTable.lastused = r''
         statusbar.push(context_id, r'Exception thrown when writing file')
         stderr.write(str(_err) + '\n')
@@ -2031,11 +2031,11 @@ if __name__ == '__main__':
         BINFILE = argv[1]
         if BINFILE == r'' or BINFILE is None:
             raise Exception(r'NULL PATHNAME GIVEN!')
-        elif not pathexists(BINFILE) or not isfile(BINFILE):
+        if not pathexists(BINFILE) or not isfile(BINFILE):
             raise FileNotFoundError
-        elif isdir(BINFILE):
+        if isdir(BINFILE):
             raise IsADirectoryError
-        elif not fileaccess(BINFILE, R_OK):
+        if not fileaccess(BINFILE, R_OK):
             raise PermissionError
         GETFILEDATA = True
         FILEDATA = STATUS_SELECT_FILE
