@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/gdb/" language="Debugger" link="gdb/index.html" name="GNU Debugger" title="GDB Documentation" version="2">
+  <chapters>
+    <sub name="Documentation" link="gdb/index.html" />
+    <sub name="GDB Man Page" link="gdb/gdb-man.html" />
+    <sub name="GDB-Server Man Page" link="gdb/gdbserver-man.html" />
+    <sub name="GDB-Init Man Page" link="gdb/gdbinit-man.html" />
+    <sub name="Stabs Index" link="stabs/index.html" />
+  </chapters>
+</book>

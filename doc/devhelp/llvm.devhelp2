@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/llvm/" language="Compiler" link="index.html" name="LLVM" title="LLVM Documentation" version="2">
+  <chapters>
+    <sub name="Release Notes" link="ReleaseNotes.html" />
+    <sub name="Search" link="search.html" />
+    <sub name="Command Guide" link="CommandGuide/index.html" />
+    <sub name="Tutorial" link="tutorial/index.html" />
+    <sub name="Documentation" link="index.html">
+      <sub name="Coding Standards" link="CodingStandards.html" />
+      <sub name="Command-line" link="CommandLine.html" />
+      <sub name="Atomics" link="Atomics.html" />
+      <sub name="Bit Code Format" link="BitCodeFormat.html" />
+      <sub name="Compile Cuda with LLVM" link="CompileCudaWithLLVM.html" />
+      <sub name="Coroutines" link="Coroutines.html" />
+      <sub name="Extensions" link="Extensions.html" />
+      <sub name="Fault Maps" link="FaultMaps.html" />
+      <sub name="Language Reference" link="LangRef.html" />
+      <sub name="Merge Functions" link="MergeFunctions.html" />
+      <sub name="NVPTX Usage" link="NVPTXUsage.html" />
+      <sub name="PDB" link="PDB/index.html" />
+      <sub name="Programmer's Manual" link="ProgrammersManual.html" />
+      <sub name="System Library" link="SystemLibrary.html" />
+      <sub name="TableGen" link="TableGen/index.html" />
+      <sub name="Vectorizers" link="Vectorizers.html" />
+      <sub name="XRay" link="XRay.html" />
+    </sub>
+    <sub name="Index" link="genindex.html">
+      <sub name="Symbols" link="genindex.html#Symbols" />
+      <sub name="Command-line" link="genindex.html#C" />
+      <sub name="llvm-* Command-line Options" link="genindex.html#L" />
+      <sub name="TableGen Command-line Options" link="genindex.html#T" />
+    </sub>
+    <sub name="FAQ" link="FAQ.html" />
+  </chapters>
+</book>

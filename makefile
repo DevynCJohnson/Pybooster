@@ -610,26 +610,38 @@ uninstall_desktop_entry_maker :
 install_devhelp : | fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Devhelp Files ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	# BASH
+	([ -d /usr/share/doc/bash/ ] && [ ! -d /usr/share/devhelp/books/bash ] && $(LNDIR) /usr/share/doc/bash /usr/share/devhelp/books/bash && $(COPY) $(DEVHELPDIR)/bash.devhelp2 /usr/share/devhelp/books/bash/) || true
+	# Debian
 	([ -d /usr/share/debian-reference/ ] && [ ! -d /usr/share/devhelp/books/debian ] && $(LNDIR) /usr/share/debian-reference /usr/share/devhelp/books/debian && $(COPY) $(DEVHELPDIR)/debian.devhelp2 /usr/share/devhelp/books/debian/) || true
 	([ -d /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ ] && [ ! -d /usr/share/devhelp/books/debian-kernel ] && $(LNDIR) /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ /usr/share/devhelp/books/debian-kernel && $(COPY) $(DEVHELPDIR)/debian-kernel.devhelp2 /usr/share/devhelp/books/debian-kernel/) || true
+	# DPDK
 	([ -d /usr/share/doc/dpdk/ ] && [ ! -d /usr/share/devhelp/books/dpdk ] && $(LNDIR) /usr/share/doc/dpdk /usr/share/devhelp/books/dpdk && $(COPY) $(DEVHELPDIR)/dpdk.devhelp2 /usr/share/devhelp/books/dpdk/) || true
+	# GDB
+	([ -d /usr/share/doc/gdb-doc/html/ ] && [ ! -d /usr/share/devhelp/books/gdb ] && $(LNDIR) /usr/share/doc/gdb-doc/html /usr/share/devhelp/books/gdb && $(COPY) $(DEVHELPDIR)/gdb.devhelp2 /usr/share/devhelp/books/gdb/) || true
+	# Python Numpy
 	([ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && $(LNDIR) /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && $(COPY) $(DEVHELPDIR)/numpy.devhelp2 /usr/share/devhelp/books/numpy/) || true
-	CLANG_DOC='0'
-	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-9-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-9-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
-	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-8-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-8-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
-	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-7-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-7-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
-	([ CLANG_DOC == '0' ] && [ -d /usr/share/doc/clang-6-doc/html ] && [ ! -d /usr/share/devhelp/books/clang ] && $(LNDIR) /usr/share/doc/clang-6-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/ && CLANG_DOC='1') || true
-	GCC_DOC='0'
-	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-9-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-9-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
-	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-8-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
-	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-7-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
-	([ GCC_DOC == '0' ] && [ -d /usr/share/doc/gcc-6-base ] && [ ! -d /usr/share/devhelp/books/gcc ] && $(LNDIR) /usr/share/doc/gcc-6-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/ && GCC_DOC='1') || true
+	# Clang
+	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-9-doc/html ] && $(LNDIR) /usr/share/doc/clang-9-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
+	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-8-doc/html ] && $(LNDIR) /usr/share/doc/clang-8-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
+	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-7-doc/html ] && $(LNDIR) /usr/share/doc/clang-7-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
+	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-6-doc/html ] && $(LNDIR) /usr/share/doc/clang-6-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
+	# LLVM
+	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-9-doc/html ] && $(LNDIR) /usr/share/doc/llvm-9-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
+	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-8-doc/html ] && $(LNDIR) /usr/share/doc/llvm-8-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
+	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-7-doc/html ] && $(LNDIR) /usr/share/doc/llvm-7-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
+	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-6-doc/html ] && $(LNDIR) /usr/share/doc/llvm-6-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
+	# GCC
+	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-9-base ] && $(LNDIR) /usr/share/doc/gcc-9-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
+	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-8-base ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
+	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-7-base ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
+	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-6-base ] && $(LNDIR) /usr/share/doc/gcc-6-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 
 uninstall_devhelp :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Devhelp Files ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	$(RM) /usr/share/devhelp/books/clang/clang.devhelp2 /usr/share/devhelp/books/clang /usr/share/devhelp/books/dpdk/dpdk.devhelp2 /usr/share/devhelp/books/dpdk /usr/share/devhelp/books/gcc/gcc.devhelp2 /usr/share/devhelp/books/gcc /usr/share/devhelp/books/numpy/numpy.devhelp2 /usr/share/devhelp/books/numpy || true
-	([ -d /usr/share/devhelp/books/gcc/ ] && $(SCRIPTSRCDIR)/man2devhelp uninstall) || true
+	$(RM) /usr/share/devhelp/books/bash/bash.devhelp2 /usr/share/devhelp/books/bash /usr/share/devhelp/books/clang/clang.devhelp2 /usr/share/devhelp/books/clang /usr/share/devhelp/books/dpdk/dpdk.devhelp2 /usr/share/devhelp/books/dpdk /usr/share/devhelp/books/gcc/gcc.devhelp2 /usr/share/devhelp/books/gcc /usr/share/devhelp/books/gdb/gdb.devhelp2 /usr/share/devhelp/books/gdb /usr/share/devhelp/books/llvm/llvm.devhelp2 /usr/share/devhelp/books/llvm /usr/share/devhelp/books/numpy/numpy.devhelp2 /usr/share/devhelp/books/numpy || true
+	([ -d /usr/share/devhelp/books/manpages/ ] && $(SCRIPTSRCDIR)/man2devhelp uninstall) || true
 
 install_geany_conf :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Geany Configuration Files ==='

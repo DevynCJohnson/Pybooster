@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/bash/" language="Bash" link="bash.html" name="Bash" title="Bash Documentation" version="2">
+  <chapters>
+    <sub name="Examples" link="examples/INDEX.html" />
+    <sub name="Reference Manual" link="bashref.html">
+      <sub name="BASH Features" link="bashref.html#Bash-Features" />
+      <sub name="Builtins Index" link="bashref.html#Builtin-Index" />
+      <sub name="Function Index" link="bashref.html#Function-Index" />
+      <sub name="Job Control" link="bashref.html#Job-Control" />
+      <sub name="Reserved Word Index" link="bashref.html#Reserved-Word-Index" />
+      <sub name="Shell Builtin Commands" link="bashref.html#Shell-Builtin-Commands" />
+      <sub name="Shell Features" link="bashref.html#Basic-Shell-Features" />
+      <sub name="Variable Index" link="bashref.html#Variable-Index" />
+    </sub>
+    <sub name="Bash Man Page" link="bash.html">
+      <sub name="Man Page Index" link="bash.html#index" />
+      <sub name="Readline" link="bash.html#lbCF" />
+    </sub>
+  </chapters>
+</book>
