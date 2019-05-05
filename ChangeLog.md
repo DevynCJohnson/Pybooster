@@ -1,3 +1,10 @@
+# 2019-05-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Devhelp:**  Added Devhelp files for Bash, GDB, & LLVM
+- **pkg_rc.sh:**  Improved compliance with the POSIX standards
+- **setup_dev_env.sh:**  Added documentation packages to the install list
+- **shanalysis:**  Fixed a minor bug
+
 # 2019-05-04  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **compress.py:**  Added `getgzip_threaded`
