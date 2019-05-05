@@ -80,7 +80,7 @@ for file in "$@"; do
 
         if [ -x "$(command -v checkbashisms)" ]; then
             printf '======  *BASHISMS*  ======\n'
-            checkbashisms --extra --force "$file" 2>&1 | awk_cmd '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); if (NF > 0) { print; } }'
+            checkbashisms --extra --force "$file" 2>&1 | awk_cmd '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); if (NF > 0) { print; } }' | sed -E 's|^possible bashism in (.+) line ([0-9]+)(.*)$|\1:\2: Possible Bashism - \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;'
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'checkbashisms: command not found!\n' >&2
         fi
