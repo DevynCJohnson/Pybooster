@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Retreieve the repository keys
 #' @file getgpgkeys.sh
-#' @version 2019.04.06
+#' @version 2019.05.11
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -56,6 +56,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7B2C3B0889BF5709A105D03
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8141A328E64AC6C85D337D03EFD5FA852F20733F  # FingerPrint
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94978FBE03F23B4439166BF2A02ACCC9C6DAEA80  # Boomaga
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 98703123E0F52B2BE16D586EF13930B14BB9F05F  # SABnzbd
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A8D5220E209CDE13BC5F44304AF34EE775B56966  # DD Rescue
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AE73297AC7B05AC2D05C88D24B4583F5325C1FAC  # PyCharm
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B34505EA326FEAEA07E3618DEF4186FE247510BE  # Mozilla Daily Build
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7A8ED84DF6AFA37B620BFB2E2B7D64D93330B78  # Highly Explosive
