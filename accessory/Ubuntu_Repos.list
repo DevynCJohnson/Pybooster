@@ -33,6 +33,7 @@ deb http://us.archive.ubuntu.com/ubuntu/ cosmic-updates main restricted universe
 # deb http://ppa.launchpad.net/geary-team/releases/ubuntu cosmic main #Geary
 # deb http://ppa.launchpad.net/graphics-drivers/dev/ubuntu cosmic main #Nvidia Graphics Drivers (Dev)
 # deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu cosmic main #Nvidia Graphics Drivers
+# deb http://ppa.launchpad.net/hamishmb/myppa/ubuntu cosmic main # DD Rescue
 # deb http://ppa.launchpad.net/jcfp/nobetas/ubuntu cosmic main #SABnzbd (Final Releases)
 # deb http://ppa.launchpad.net/jcfp/ppa/ubuntu cosmic main #SABnzbd (All Releases)
 # deb http://ppa.launchpad.net/jcfp/sab-addons/ubuntu cosmic main #SABnzbd Add-ons
