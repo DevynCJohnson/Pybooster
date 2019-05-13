@@ -438,6 +438,8 @@ submitall : presubmit
 	git push --progress --verify origin dev
 	git checkout master && git merge --commit dev && git push --progress --verify origin master
 	git checkout dev
+	git tag -s -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
+	git push origin --tags
 
 submitdev : presubmit
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Pushing Changes ==='
