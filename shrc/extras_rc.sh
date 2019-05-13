@@ -786,6 +786,12 @@ epoch2date() {
     fi
 }
 
+#' Create a Git tag
+gittag(){ git tag -s -a "v$(date +'%Y.%m.%d')" -m "${1}"; }
+
+#' Delete a Git tag both locally and remotely
+del_git_tag(){ git tag --delete "${1}"; git push origin ":refs/tags/${1}"; }
+
 #' Easily send messages to the wall
 msg(){ echo "${1}" | wall; }
 
