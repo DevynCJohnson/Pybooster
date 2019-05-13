@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2019.03.28
+@version 2019.05.12
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -198,7 +198,7 @@ CDATA_CONTENT_ELEMENTS: set = {r'script', r'style'}
 PRE_TAGS: tuple = (r'pre', r'textarea')
 ROOT_TAGS: set = {r'html', r'math', r'svg', r'x3d'}
 XML_ROOT_TAGS: set = {r'interface', r'math', r'mime-info', r'svg', r'x3d'}
-JUNK_ATTR: set = {r'xmlns:a', r'xmlns:cc', r'xmlns:cib', r'xmlns:dc', r'xmlns:inkscape', r'xmlns:osb' r'xmlns:ns1', r'xmlns:rdf', r'xmlns:sodipodi'}
+JUNK_ATTR: set = {r'xmlns:a', r'xmlns:cc', r'xmlns:cib', r'xmlns:dc', r'xmlns:inkscape', r'xmlns:osb', r'xmlns:ns1', r'xmlns:rdf', r'xmlns:sodipodi'}
 JUNK_NS: set = {r'cc:', r'cib:', r'dc:', r'inkscape:', r'osb:', r'rdf:', r'sodipodi:'}
 CC_NO_CLOSE_TAGS: set = {r'cc:license', r'cc:permits', r'cc:requires'}
 DC_NO_CLOSE_TAGS: set = {r'dc:type'}
@@ -299,7 +299,7 @@ XML_NAMESPACES: dict = {
     r'FOAF': r'http://xmlns.com/foaf/0.1/',
     r'GRDDL': r'http://www.w3.org/2003/g/data-view',
     r'HCALENDAR': r'http://microformats.org/wiki/hcalendar',
-    r'HCARD': r'http://www.w3.org/2006/03/hcard',
+    r'HCARD': r'http://www.w3.org/2006/03/hcard',  # hcard http://microformats.org/profile/hcard
     r'HREVIEW': r'http://microformats.org/wiki/hreview',
     r'INKSCAPE': r'http://www.inkscape.org/namespaces/inkscape',
     r'MATHML': r'http://www.w3.org/1998/Math/MathML',
@@ -319,8 +319,6 @@ XML_NAMESPACES: dict = {
     r'XLINK': r'http://www.w3.org/1999/xlink',
     r'XPATH': r'http://ns.adobe.com/XPath/1.0/',
     r'XSD': r'http://www.w3.org/2001/XMLSchema-instance'
-
-    # hcard http://microformats.org/profile/hcard
 }
 
 
@@ -589,10 +587,10 @@ def assert_is_xml(_doc_type: int, data: str, _filename: str) -> None:
     if r'<' not in data or r'>' not in data:
         stderr.write(r'Unsupported filetype (' + _filename + ')!\n')
         raise SystemExit(1)
-    elif _doc_type == FILETYPE_DTD and r'<!ELEMENT ' not in data and r'<!ATTLIST ' not in data:
+    if _doc_type == FILETYPE_DTD and r'<!ELEMENT ' not in data and r'<!ATTLIST ' not in data:
         stderr.write(r'Invalid DTD file (' + _filename + ')!\n')
         raise SystemExit(1)
-    elif _doc_type == FILETYPE_XSD and r'</xs:schema>' not in data and r'<xs:element ' not in data:
+    if _doc_type == FILETYPE_XSD and r'</xs:schema>' not in data and r'<xs:element ' not in data:
         stderr.write(r'Invalid XSD file (' + _filename + ')!\n')
         raise SystemExit(1)
 
@@ -650,12 +648,12 @@ def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:
 
 def is_xml_dtd(xmldata: str) -> bool:
     """Return true if the given data is DTD"""
-    return True if r'<!ELEMENT ' in xmldata and r'<!ATTLIST ' in xmldata else False
+    return bool(r'<!ELEMENT ' in xmldata and r'<!ATTLIST ' in xmldata)
 
 
 def is_xml_xsd(xmldata: str) -> bool:
     """Return true if the given data is XSD"""
-    return True if r'</xs:schema>' in xmldata and r'<xs:element ' in xmldata else False
+    return bool(r'</xs:schema>' in xmldata and r'<xs:element ' in xmldata)
 
 
 # ESCAPE MANIPULATIONS #
@@ -1187,15 +1185,28 @@ def insert_missing_xml_namespaces(xmldata: str) -> str:
 # CLASSES #
 
 
-class ParserBase:
+class ParserBase:  # pylint: disable=R0902
     """Parser class that provides common support methods used by the SGML/HTML & XHTML parsers"""
 
     def __init__(self) -> None:
         """Initialize basic parser"""
+        self._data_buffer: list = []
         self._decl_otherchars: str = r''
+        self.convrefs: bool = False
+        self.doc_type: int = FILETYPE_XML
+        self.keep_pre: bool = False
         self.lineno: int = 1
         self.offset: int = 0
+        self.pre_attr: str = r'pre'
+        self.pre_tags: tuple = PRE_TAGS
         self.rawdata: str = r''
+        self.reduce_bool_attrs: bool = False
+        self.reduce_empty_attributes: bool = False
+        self.remove_all_empty_space: bool = True
+        self.remove_comments: bool = True
+        self.remove_empty_space: bool = True
+        self.remove_metadata: int = 0
+        self.remove_opt_attr_quotes: bool = False
         if self.__class__ is ParserBase:
             raise RuntimeError(r'ParserBase must be subclassed')
 
@@ -1227,12 +1238,13 @@ class ParserBase:
         return j
 
     def handle_comment(self, data: str) -> None:
-        """Handle comment (Overridable)"""
-        pass
+        """Process comments"""
+        if not self.remove_comments or (data and (data[0] == r'!' or rgxmatch(r'^\[if\s', data))):
+            self._data_buffer.append(r'<!--{}-->'.format(data[1:] if data[0] == r'!' else data))
 
-    def handle_decl(self, decl: str) -> None:
+    def handle_decl(self, decl: str) -> None:  # pylint: disable=R0201,W0613
         """Handle declaration (Overridable)"""
-        pass
+        return
 
     def parse_declaration(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
         """Parse declaration tags"""
@@ -1690,11 +1702,11 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'<!':
             raise Exception(r'Unexpected call to parse_html_declaration()')
-        elif rawdata[i:i + 4] == r'<!--':  # This case is handled in goahead()
+        if rawdata[i:i + 4] == r'<!--':  # This case is handled in goahead()
             return self.parse_comment(i)
-        elif rawdata[i:i + 3] == r'<![':
+        if rawdata[i:i + 3] == r'<![':
             return self.parse_marked_section(i)
-        elif rawdata[i:i + 9].lower() == r'<!doctype':  # Find the closing >
+        if rawdata[i:i + 9].lower() == r'<!doctype':  # Find the closing >
             gtpos = rawdata.find(r'>', i + 9)
             if gtpos == -1:
                 return -1
@@ -1866,37 +1878,33 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             self.handle_starttag(tag, attrs)
             self.handle_endtag(tag)
 
-    def handle_starttag(self, tag: str, attrs: list) -> None:
+    def handle_starttag(self, tag: str, attrs: list) -> None:  # pylint: disable=R0201,W0613
         """Handle start tag (Overridable)"""
-        pass
+        return
 
-    def handle_endtag(self, tag: str) -> None:
+    def handle_endtag(self, tag: str) -> None:  # pylint: disable=R0201,W0613
         """Handle end tag (Overridable)"""
-        pass
+        return
 
-    def handle_charref(self, name: str) -> None:
+    def handle_charref(self, name: str) -> None:  # pylint: disable=R0201,W0613
         """Handle character reference (Overridable)"""
-        pass
+        return
 
-    def handle_entityref(self, name: str) -> None:
+    def handle_entityref(self, name: str) -> None:  # pylint: disable=R0201,W0613
         """Handle entity reference (Overridable)"""
-        pass
+        return
 
-    def handle_data(self, data: str) -> None:
+    def handle_data(self, data: str) -> None:  # pylint: disable=R0201,W0613
         """Handle data (Overridable)"""
-        pass
+        return
 
-    def handle_comment(self, data: str) -> None:
-        """Handle comment (Overridable)"""
-        pass
-
-    def handle_decl(self, decl: str) -> None:
+    def handle_decl(self, decl: str) -> None:  # pylint: disable=R0201,W0613
         """Handle declaration (Overridable)"""
-        pass
+        return
 
-    def handle_pi(self, data: str) -> None:
+    def handle_pi(self, data: str) -> None:  # pylint: disable=R0201,W0613
         """Handle processing instruction (Overridable)"""
-        pass
+        return
 
     def unknown_decl(self, data: str) -> None:
         """Handle unknown declarations (Overridable)"""
@@ -2185,11 +2193,6 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 self.__title_trailing_whitespace = False
             self._title_newly_opened = False
         self._data_buffer.append(r'&#{};'.format(name))
-
-    def handle_comment(self, data: str) -> None:
-        """Process comments"""
-        if not self.remove_comments or (data and (data[0] == r'!' or rgxmatch(r'^\[if\s', data))):
-            self._data_buffer.append(r'<!--{}-->'.format(data[1:] if data[0] == r'!' else data))
 
     def handle_data(self, data: str) -> None:  # noqa: C901  # pylint: disable=R0912
         """Process arbitrary data (such as <script> and <style>)"""
