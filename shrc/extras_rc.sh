@@ -566,7 +566,7 @@ createpatch() {
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
         printf 'Create a patch given two file names\n'
     elif [ -f "$1" ] && [ -f "$2" ]; then
-        diff -u "$1" "$2" > "$(pwd)/patch.diff"
+        diff -u "$1" "$2"
     fi
 }
 
