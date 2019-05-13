@@ -1,9 +1,11 @@
 2019-05-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* extras_rc.sh:  Added two git-related functions
 	* extras_rc.sh:  Applied minor changes to the patch-related functions
 	* EzWin:  Applied minor changes
 	* genmathart:  Added code for `signal`
 	* getgpgkeys.sh:  Added a GPG key
+	* makefile:  Fixed a bug
 	* markup.py:  Fixed some bugs
 	* pyanalysis:  Fixed a bug associated with `Radon`
 	* PyBooster:  Added `set_access_time` & `save_file_times`
