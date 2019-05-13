@@ -5,7 +5,7 @@
 """@brief Generate art using math and export as PNG files or math formulas
 
 @file genmathart
-@version 2019.03.28
+@version 2019.05.12
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -41,6 +41,7 @@ from os import urandom
 from os.path import exists, expanduser, isdir, isfile
 from pickle import dumps, loads  # nosec
 from random import choice, Random, random, seed  # noqa: E402  # pylint: disable=C0411
+from signal import SIGINT, SIG_DFL, signal
 from sys import stderr, stdout
 from time import strftime
 from timeit import default_timer as timer
@@ -67,6 +68,9 @@ except ImportError:
     def autojit(_func: object):
         """Provide a dummy decorator for systems lacking Numba"""
         return _func
+
+
+signal(SIGINT, SIG_DFL)
 
 
 # CONSTANTS #
