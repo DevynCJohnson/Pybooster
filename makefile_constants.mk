@@ -1358,7 +1358,7 @@ signoff :
 	@git commit --amend --signoff
 
 status :
-	@git status --ahead-behind --branch --short -v
+	@git status --ahead-behind --branch --short --verbose
 
 tag :
 	@git tag -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
