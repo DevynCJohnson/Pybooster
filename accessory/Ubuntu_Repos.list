@@ -20,6 +20,7 @@ deb http://us.archive.ubuntu.com/ubuntu/ cosmic-updates main restricted universe
 # deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main #Google Chrome Browser
 # deb [arch=amd64] https://dl.google.com/linux/earth/deb/ stable main #Google Earth
 # deb [arch=amd64] https://dl.google.com/linux/webdesigner/deb/ stable main #Google Web Designer
+# deb [arch=amd64] https://repo.skype.com/deb stable main #Skype
 # deb http://ppa.launchpad.net/antumdeluge/debreate/ubuntu cosmic main #Debreate
 # deb http://ppa.launchpad.net/arunsivaraman/gpuviewer/ubuntu cosmic main #GPU Info
 # deb http://ppa.launchpad.net/boomaga/ppa/ubuntu cosmic main #Boomaga
@@ -69,7 +70,6 @@ deb http://us.archive.ubuntu.com/ubuntu/ cosmic-updates main restricted universe
 # deb https://deb.torproject.org/torproject.org cosmic main #Tor
 # deb https://repo.mysql.com/apt/ubuntu/ cosmic mysql-8.0 #MySQL v8
 # deb https://repo.mysql.com/apt/ubuntu/ cosmic mysql-tools #MySQL Tools
-# deb https://repo.skype.com/deb stable main #Skype
 # deb https://repository.spotify.com stable non-free #Spotify
 # deb https://winswitch.org/ cosmic main #WinSwitch & Xpra
 # deb https://winswitch.org/beta/ cosmic main #WinSwitch & Xpra-Beta
