@@ -128,7 +128,12 @@ Doxygen
 - Doxygen keywords must be all lowercase
 - The Doxygen keywords (in a multiline block) have the same level of indentation as the code
 - Use `@author` for listing a single author and `@authors` for listing multiple authors
-- Use `@return` instead of `@returns`
+- Use `@author` instead of `@authors`; name one author per line (i.e., use `@author` multiple times)
+- Use `@extends` or `@implements` where the Doxygen keywords makes the most grammatical sense
+- Use `@include{DOC}` instead of `@includedoc`
+- Use `@include{LINENUM}` instead of `@includelineno`
+- Use `@related` instead of `@relates`
+- Use `@relatedalso` instead of `@relatesalso`
 - The Doxygen information comment-block (placed in the file header of source code) must be structured as follows
     1. `@brief`
         - For Python files, a blank line follows `@brief`
@@ -365,7 +370,7 @@ Awk
 C
 -
 
-- Use C Standard-2011 (C11) or newer
+- Use C Standard-2017 (C17) or newer
 - Files must use tab-indentation (one tab per level)
 - For inlined Assembly, refer to the _Assembly_ section in this document
 - For compound-statements (like if-constructs), put the opening bracket (with a preceeding space) at the end of the first line
