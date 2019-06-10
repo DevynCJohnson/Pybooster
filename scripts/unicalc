@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Get incoming data, pass it to a command-line calculator, and then return the results
 #' @file unicalc
-#' @version 2019.03.28
+#' @version 2019.06.02
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -38,15 +38,15 @@ fi
 
 
 if [ -x "$(command -v wcalc)" ]; then
-    echo "$incoming_data" | wcalc | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||' | fmt4pipe
+    echo "$incoming_data" | wcalc --bits8192 -EE --ints --quiet --radians | sed 's|^[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v calc)" ]; then
-    calc -c -d -- "${incoming_data}" | cut -f 2 | fmt4pipe
+    calc -c -d -m 0 -p -q "${incoming_data}" | fmt4pipe
 elif [ -x "$(command -v qalc)" ]; then
     echo "$incoming_data" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||' | fmt4pipe
 elif [ -x "$(command -v concalc)" ]; then
-    echo "$incoming_data" | concalc | fmt4pipe
+    echo "$incoming_data" | concalc --complex | fmt4pipe
 elif [ -x "$(command -v bc)" ]; then
-    echo "$incoming_data" | bc -l | fmt4pipe
+    echo "$incoming_data" | bc --mathlib --quiet | fmt4pipe
 elif [ -x "$(command -v python3)" ]; then
     python3 -c "print(${incoming_data})" | fmt4pipe
 else
