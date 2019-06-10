@@ -1,7 +1,7 @@
 [MASTER]
 extension-pkg-whitelist=
 ignore-patterns=
-ignore=CVS
+ignore=.bzr,.cvs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,CVS
 jobs=1
 load-plugins=
 persistent=no
@@ -9,7 +9,8 @@ suggestion-mode=yes
 unsafe-load-any-extension=no
 
 [MESSAGES CONTROL]
-; Show warnings with the listed confidence levels. Leave empty to show all
+; Show warnings with the listed confidence levels
+; Leave empty to show all
 ; Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
 confidence=
 disable=C0301,I0011
@@ -22,14 +23,14 @@ output-format=text
 reports=yes
 score=yes
 
+[LOGGING]
+logging-modules=logging
+
 [SIMILARITIES]
 ignore-comments=yes
 ignore-docstrings=yes
 ignore-imports=no
 min-similarity-lines=4
-
-[LOGGING]
-logging-modules=logging
 
 [SPELLING]
 max-spelling-suggestions=0
@@ -104,6 +105,9 @@ exclude-protected=_asdict,_fields,_replace,_source,_make
 valid-classmethod-first-arg=cls
 valid-metaclass-classmethod-first-arg=mcs
 
+[EXCEPTIONS]
+overgeneral-exceptions=Exception
+
 [IMPORTS]
 allow-wildcard-with-all=no
 analyse-fallback-blocks=no
@@ -114,9 +118,6 @@ int-import-graph=
 known-standard-library=
 known-third-party=enchant
 
-[EXCEPTIONS]
-overgeneral-exceptions=Exception
-
 [VARIABLES]
 additional-builtins=
 allow-global-unused-variables=yes
@@ -124,4 +125,4 @@ callbacks=cb_,_cb
 dummy-variables-rgx=_+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unused_
 ignored-argument-names=_.*|^ignored_|^unused_
 init-import=yes
-redefining-builtins-modules=six.moves,past.builtins,future.builtins
+redefining-builtins-modules=future.builtins,past.builtins,six.moves

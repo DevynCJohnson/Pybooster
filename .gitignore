@@ -10,7 +10,10 @@
 [Dd][Ee][Bb][Uu][Gg]/
 [Ll][Oo][Gg][Ss]/
 [Tt]esting/
+.compiled/
+bower_components/
 build/
+compiled/
 downloads/
 htmlcov/
 metrics/
@@ -41,6 +44,7 @@ var/
 #.astyle.ini
 #.bandit
 #.bandit.ini
+#.csslintrc
 #.csslint.rc
 #.editorconfig
 #.eslintrc
@@ -72,15 +76,17 @@ var/
 .git/
 .hg/
 .svn/
+.svk/
 
 # Miscellaneous
 
 *.[Cc]ache
 *.[Tt][Mm][Pp]
 *.todo.txt
+.DS_Store
 .lock-wscript
-.wafpickle-*
 .sh-session
+.wafpickle-*
 icon-theme.cache
 yarn.[Ll][Oo][Cc][Kk]
 
@@ -97,7 +103,7 @@ yarn.[Ll][Oo][Cc][Kk]
 
 # Executables
 
-*.{Aa][Pp][Pp]
+*.[Aa][Pp][Pp]
 *.[Ee][Xx][Ee]
 *.[Hh][Ee][Xx]
 *.i386
@@ -171,7 +177,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *__pycache__
 __pycache__/
 
-# Distribution
+# Distribution & Virtual Environments
 
 *.egg
 *.egg-info/
@@ -205,10 +211,3 @@ nosetests.xml
 # IPython Notebook
 
 .ipynb_checkpoints
-
-# dotenv, virtualenv, & pyenv
-
-.env
-.python-version
-ENV/
-venv/
