@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8-unix; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 """@brief Linter and checker for C source code
 
 @file clint
-@version 2019.03.28
+@version 2019.06.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -16,8 +16,9 @@ Codes
  - M*** = Macros Warnings & Errors
  - T000 = Todo Note
  - S*** = Security Issues & Flaws
- - V*** = Vague Code
  - X*** = Inconsistency
+ - XD** = Datatype Inconsistency
+ - XW** = White-Space Inconsistency
  - Z*** = Optimize
 
 @section LICENSE
@@ -53,10 +54,17 @@ except ImportError:
 ASM_STMT: str = r'(asm |__asm |__asm__ |vasm)(volatile |)'
 ATOMIC: str = r'(_Atomic|Atomic|atomic|)'
 ATTRIBUTE_SPECIFIER: str = r'UNUSED'
-QUALIFIER: str = r'(\*| \*|\* | \* |)(const|restrict|volatile|)(\*| \*|\* | \* |)'
-STORAGE_CLASS: str = r'(auto|extern|register|static|)'
+QUALIFIER: str = r'(\*| \*|\* | \* |)(_Atomic|Atomic|atomic|const|restrict|volatile|)+(\*| \*|\* | \* |)'
+STORAGE_CLASS: str = r'(_Thread_local|auto|extern|register|static|thread_local|)'
 THREAD_STORAGE: str = r'(thread_local|_Thread_local|)'
-SPECIFIER: str = ATTRIBUTE_SPECIFIER + ATOMIC + STORAGE_CLASS + ATOMIC + THREAD_STORAGE + QUALIFIER
+SPECIFIER: str = ATTRIBUTE_SPECIFIER + STORAGE_CLASS + QUALIFIER
+COMMENT_START_PATTERNS: str = r'(//[/\!\']?|/\*|/\*\*|/\*[\!%@#\']?)[ ]*'
+
+
+# CODE PATTERNS SETS #
+
+
+INDECREMENT_SET: set = {r'i = i + 1;', r'j = j + 1;', r'i = i - 1;', r'j = j - 1;', r'i += 1;', r'j += 1;', r'i -= 1;', r'j -= 1'}
 
 
 # REGEX PATTERNS #
@@ -71,7 +79,8 @@ REGEX_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = ".+";$')
 REGEX_INDENT = rgxcompile(r'^([ ]+)(.+)$')
 REGEX_LICENSE = rgxcompile(r'^[\w \*]+ __license__ = ".+";$')
 REGEX_MUL2 = rgxcompile(r' = ([^\w]2 \* [\w]+|[\w]+ \* (|\([\w ]+\))2[^[0-9]])')
-REGEX_SELF_STORE = rgxcompile(r'([\w]+) = ([\w]+) ([\w\+\-\*/%\|\^&]+);')
+REGEX_SELF_STORE = rgxcompile(r'([\w]+)[ ]*=[ ]*([\w]+)[ ]*([\w\+\-\*/%\|\^&]+);')
+REGEX_SELF_STORE2 = rgxcompile(r'([\w]+)[ ]*=[ ]*([\w]+)[ ]*[\+\*][ ]*([\w]+);')
 REGEX_SEMICOLON_SPACE = rgxcompile(r'^.+\s+;$')
 REGEX_VALID_EMAIL = rgxcompile(r'^[\w \*]+ __email__ = "[A-Za-z0-9\-\._]+@[A-Za-z0-9\-]+\.[A-Za-z0-9]+";')
 REGEX_VERSION = rgxcompile(r'^[\w \*]+ __version__ = (".+"|[0-9\.\-]+);$')
@@ -91,7 +100,7 @@ REGEX_COMMENT_MISSING_LEADING_SPACE = rgxcompile(r'^.*[^ ]([^ ]|[ ])//.+$')
 REGEX_COMMENT_MISSING_SPACE = rgxcompile(r'//[\!][\<][^ ].+')
 REGEX_COMMENT_MULTILINE_END = rgxcompile(r'^.*\*/.*$')  # End of multiline-comment
 REGEX_COMMENT_MULTILINE_START = rgxcompile(r'^.*/\*.*$')  # Start of multiline-comment
-REGEX_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)(:| |$)')
+REGEX_NOTE = rgxcompile(COMMENT_START_PATTERNS + r'(DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)(:| |$)')
 SPECIAL_CMTS: set = {r'/**', r'/*@', r'@*/', r'/*%', r'%*/'}
 
 # Datatypes
@@ -105,18 +114,20 @@ REGEX_LONG_DOUBLE_NUM = rgxcompile(r'(\(long double\)|\(tetra\))( |)[\+\-]*[0-9]
 REGEX_LONG_DOUBLE_NUM_VALID = rgxcompile(r'(\(long double\)|\(tetra\))[\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+L')
 REGEX_LONG_DOUBLE_VALID = rgxcompile(r'^' + SPECIFIER + r'(long double |tetra )[\w]+ = [\+\-]*[0-9]+[Xxp0-9A-Fa-f\.\-\+]+L;$')
 REGEX_LONGINT = rgxcompile(r'[\( ]?(long|long long) int[ \*\)]+')
+REGEX_POINTER_CAST = rgxcompile(r'\((unsigned |)(int|char|FILE)\)\*')
+REGEX_POINTERS = rgxcompile(r'[\( ]?([A-Za-z0-9_]+)[ \*\)]+(restrict |)[=]?')
 REGEX_WCHAR = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+( |)=( |)(L|)\'.+\';$')
 REGEX_WCHAR_VALID = rgxcompile(r'^' + SPECIFIER + r'wchar_t [\w]+ = L\'.+\';$')
 
 # Macros
-REGEX_INCLUDE = rgxcompile(r'^\s*#\s*include\s+(\"|<)[a-z0-9 _\-\./]+(>|\").+', flags=IGNORECASE)
-REGEX_INCLUDE_VALID = rgxcompile(r'^#[ ]*include (\"|<)[\w \-\./]+(>|\")(  // .+|)$')
-REGEX_MACROS = rgxcompile(r'^\s*#\s*[a-z]+ .+', flags=IGNORECASE)
+REGEX_INCLUDE = rgxcompile(r'^\s*#\s*include\s+("|<)[a-z0-9 _\-\./]+(>|").+', flags=IGNORECASE)
+REGEX_INCLUDE_VALID = rgxcompile(r'^#[ ]*include ("|<)[\w \-\./]+(>|")(  // .+|)$')
+REGEX_MACROS = rgxcompile(r'^\s*#\s*[a-z]+(\s+.+|)$', flags=IGNORECASE)
 REGEX_MACROS_INDENT = rgxcompile(r'^#([ ]+).+$')
 REGEX_MACROS_INVALID_SYNTAX = rgxcompile(r'^#[ ]*(ifdef|ifndef|undef)[ ]+[^A-Za-z_]')
-REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^\s+#[ ]*[a-z]+ .+$')
-REGEX_MACROS_SPACE = rgxcompile(r'^#\s*[a-z]+ \s+.+$')
-REGEX_MACROS_VALID = rgxcompile(r'^#[ ]*[a-z]+ .+$')
+REGEX_MACROS_LEADINGSPACE = rgxcompile(r'^(\s+)#([ ]*)([a-z]+) (.+)$')
+REGEX_MACROS_SPACE = rgxcompile(r'^#\s*[a-z]+ \s+.+$', flags=IGNORECASE)
+REGEX_MACROS_VALID = rgxcompile(r'^#[ ]*[a-z]+\s*.*$', flags=IGNORECASE)
 REGEX_MACROS_WARN_ERR_SPACE = rgxcompile(r'^#[ ]*(error|warning)([ ]+)".+"$')
 REGEX_OPERATOR_EXTRA_SPACE = rgxcompile(r'.+(  &&|  \|\||&&  |\|\|  ).+')
 
@@ -181,16 +192,22 @@ def getfile_list(_filename: str) -> list:
         return _file.readlines()
 
 
-def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str, _mstr: str = r'0') -> None:
+def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str, _mstr: str = r'0', truth: bool = True) -> None:
     """Display warning/error information on stderr"""
-    if _mstr == r'0' and (_line == r'' or _line is None):
-        stderr.write(_filepath + r':' + str(_linenum) + r':0: ' + _code + r' : ' + _msg + '\n')
-    elif _mstr == r'0':
-        stderr.write(_filepath + r':' + str(_linenum) + r':0: ' + _code + r' : ' + _msg + '\n' + _line + '\n')
-    elif (_line == r'' or _line is None) and not isinstance(_mstr, str):
-        stderr.write(_filepath + r':' + str(_linenum) + r':' + str(_mstr.start()) + r': ' + _code + r' : ' + _msg + '\n')
-    elif not isinstance(_mstr, str) and isinstance(_line, str):
-        stderr.write(_filepath + r':' + str(_linenum) + r':' + str(_mstr.start()) + r': ' + _code + r' : ' + _msg + '\n' + _line + '\n')
+    if not truth:
+        return
+    _writestr: str = r''
+    file_lineno: str = _filepath + r':' + str(_linenum) + r':'
+    code_msg: str = r': ' + _code + r' : ' + _msg + '\n'
+    if isinstance(_mstr, str):
+        _writestr = file_lineno + r'0' + code_msg if bool(_mstr == r'0') else r''
+    else:
+        _writestr = file_lineno + str(_mstr.start()) + code_msg
+    if _line and isinstance(_line, str):
+        _writestr += _line + '\n' if _mstr == r'0' else r''
+    stderr.write(_writestr)
+    if _msg == r'ERROR':
+        raise SystemExit(1)
 
 
 def strip_strings(_str: str) -> str:
@@ -210,52 +227,49 @@ def strip_comments_and_strings(_str: str) -> str:
 
 # Comment Warnings & Errors
 
-def c000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
+def c000(filepath: str, line_num: int, line: str) -> None:
     """C***: Check for formatting issues in comments"""
     # C001
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
-        output_info(filepath, line_num, line, r'C001', r'Missing single space after `//` or `//!<`', _match)
+        output_info(filepath, line_num, line, r'C001', r'Missing single space after `//` or `//!<`', _match, bool(_match))
     # C002
     _match = REGEX_COMMENT_MISSING_LEADING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
-        output_info(filepath, line_num, line, r'C002', r'Missing double-leading-space before `//` or `//!<`', _match)
+        output_info(filepath, line_num, line, r'C002', r'Missing double-leading-space before `//` or `//!<`', _match, bool(_match))
 
 
-def c000_line(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
+def c000_line(filepath: str, line_num: int, line: str) -> None:
     """C***: Check for formatting issues in comment lines"""
     # C000
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
-        output_info(filepath, line_num, line, r'C000', r'Missing single space after `//` in comment line', _match)
+        output_info(filepath, line_num, line, r'C000', r'Missing single space after `//` in comment line', _match, bool(_match))
 
 
 # Macros Warnings & Errors
 
-def m000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
+def m000(filepath: str, line_num: int, line: str) -> None:
     """M***: Check for issues in macros code (i.e. formatting, inconsistencies, security, etc.)"""
     # M001
     _match = REGEX_MACROS_LEADINGSPACE.search(line)
-    if _match:
+    if _match and line.strip() != line:
         output_info(filepath, line_num, line, r'M001', r'Macros should not have leading space', _match)
+        return
     # M002
     _match = REGEX_MACROS_VALID.search(line)
-    if not _match:
-        output_info(filepath, line_num, line, r'M002', r'Invalid macros format')
+    output_info(filepath, line_num, line, r'M002', r'Invalid macros format', truth=bool(not _match))
     # M003
-    if r'endif  //' not in line and r'else  //' not in line and r'error   "' not in line and r'warning   "' not in line:
-        _match = REGEX_MACROS_SPACE.search(line)
-        if _match:
-            output_info(filepath, line_num, line, r'M003', r'Extra space not needed after macros command', _match)
+    _match = REGEX_MACROS_SPACE.search(line)
+    if _match and all([r'endif  //' not in line, r'else  //' not in line, r'error   "' not in line, r'warning   "' not in line]):
+        output_info(filepath, line_num, line, r'M003', r'Extra space not needed after macros command', _match)
     # M004
     _match = REGEX_INCLUDE.search(line)
     _match2 = REGEX_INCLUDE_VALID.search(line)
-    if _match and not _match2:
-        output_info(filepath, line_num, line, r'M004', r'Invalid format for `#include` macros', _match)
+    output_info(filepath, line_num, line, r'M004', r'Invalid format for `#include` macros', _match, bool(_match and not _match2))
     # M005
     _match = REGEX_OPERATOR_EXTRA_SPACE.search(line)
-    if _match:
-        output_info(filepath, line_num, line, r'M005', r'Extra space is not needed around operators', _match)
+    output_info(filepath, line_num, line, r'M005', r'Extra space is not needed around operators', _match, bool(_match))
     # M006
     _match = REGEX_MACROS_INDENT.search(line)
     if _match and (len(_match.group(1)) % 3 != 0):
@@ -266,69 +280,228 @@ def m000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
         output_info(filepath, line_num, line, r'M007', r'Invalid spacing; use three spaces between error/warning macros and the string', _match)
     # M008
     _match = REGEX_MACROS_INVALID_SYNTAX.search(line)
-    if _match:
-        output_info(filepath, line_num, line, r'M008', r'Invalid macros syntax; "ifdef", "ifndef", & "undef" must only use a plain macros name as an argument', _match)
+    output_info(filepath, line_num, line, r'M008', r'Invalid macros syntax; "ifdef", "ifndef", & "undef" must only use a plain macros name as an argument', _match, bool(_match))
 
 
 # Security Issues & Flaws
 
-def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
+def s000_checks(filepath: str, line_num: int, line: str, log_line: str) -> None:
     """S***: Check for potential security flaws and issues"""
-    if r'(' in log_line and r')' in log_line and not log_line.startswith((r'DECL_FUNC', r'LIB_FUNC')):
-        # S001
-        _match = REGEX_GETS.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S001', r'To strengthen security, use `fgets()` instead of `gets()`', _match)
-        # S002
-        _match = REGEX_PRINTF.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S002', r'To strengthen security, use `fprintf()` instead of `printf()`', _match)
-        # S003
-        _match = REGEX_PUTC.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S003', r'To strengthen security, use `fputc()` instead of `putc()`', _match)
-        # S004
-        _match = REGEX_PUTS.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S004', r'To strengthen security, use `fputs()` instead of `puts()`', _match)
-        # S005
-        _match = REGEX_MALLOC.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S005', r'To strengthen security, use `calloc()` instead of `malloc()`', _match)
-        # S006
-        _match = REGEX_STRCPY.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S006', r'To strengthen security, use `strncpy()` instead of `strcpy()`', _match)
-        # S007
-        _match = REGEX_STRCMP.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S007', r'To strengthen security, use `strncmp()` instead of `strcmp()`', _match)
-        # S008
-        _match = REGEX_GETC.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'S008', r'To strengthen security, use `fgetc()` instead of `getc()`', _match)
+    # S001
+    _match = REGEX_GETS.search(log_line)
+    output_info(filepath, line_num, line, r'S001', r'To strengthen security, use `fgets()` instead of `gets()`', _match, bool(_match))
+    # S002
+    _match = REGEX_PRINTF.search(log_line)
+    output_info(filepath, line_num, line, r'S002', r'To strengthen security, use `fprintf()` instead of `printf()`', _match, bool(_match))
+    # S003
+    _match = REGEX_PUTC.search(log_line)
+    output_info(filepath, line_num, line, r'S003', r'To strengthen security, use `fputc()` instead of `putc()`', _match, bool(_match))
+    # S004
+    _match = REGEX_PUTS.search(log_line)
+    output_info(filepath, line_num, line, r'S004', r'To strengthen security, use `fputs()` instead of `puts()`', _match, bool(_match))
+    # S005
+    _match = REGEX_MALLOC.search(log_line)
+    output_info(filepath, line_num, line, r'S005', r'To strengthen security, use `calloc()` instead of `malloc()`', _match, bool(_match))
+    # S006
+    _match = REGEX_STRCPY.search(log_line)
+    output_info(filepath, line_num, line, r'S006', r'To strengthen security, use `strncpy()` instead of `strcpy()`', _match, bool(_match))
+    # S007
+    _match = REGEX_STRCMP.search(log_line)
+    output_info(filepath, line_num, line, r'S007', r'To strengthen security, use `strncmp()` instead of `strcmp()`', _match, bool(_match))
+    # S008
+    _match = REGEX_GETC.search(log_line)
+    output_info(filepath, line_num, line, r'S008', r'To strengthen security, use `fgetc()` instead of `getc()`', _match, bool(_match))
+
+
+def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:
+    """S***: Check for potential security flaws and issues"""
+    if log_line.startswith((r'DECL_FUNC', r'LIB_FUNC')):
+        return
+    if r'(' in log_line and r')' in log_line:
+        s000_checks(filepath, line_num, line, log_line)
 
 
 # "Todo" Note
 
-def t000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
+def t000(filepath: str, line_num: int, line: str) -> None:
     """T***: Look for "todo" notes"""
     # T000
     _match = REGEX_NOTE.search(line)
-    if _match:
-        output_info(filepath, line_num, line, r'T000', r'Todo note found', _match)
-
-
-# Vague Code
-
-def v000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=W0613,W0621
-    """V***: Check for vague code that may perform an unintended action. Remember, explicit code is better than implicit code"""
-    return None
+    output_info(filepath, line_num, line, r'T000', r'Todo note found', _match, bool(_match))
 
 
 # Inconsistency
 
-def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: C901,N803  # pylint: disable=C0103,R0912,R0915,W0613,W0621
+def xd00(filepath: str, line_num: int, line: str, no_str_line: str) -> None:  # noqa: C901,R701
+    """Find XD00 inconsistencies and bad formatting associated with datatypes"""
+    # XD01
+    _match = REGEX_LONGINT.search(no_str_line)
+    output_info(filepath, line_num, line, r'XD01', r'Use `long` instead of `long int` and `long long` instead of `long long int`', _match, bool(_match))
+    # XD02
+    if r'long double' in no_str_line:
+        _match = REGEX_LONG_DOUBLE.search(no_str_line)
+        _match2 = REGEX_LONG_DOUBLE_VALID.search(no_str_line)
+        _match3 = REGEX_LONG_DOUBLE_NUM.search(no_str_line)
+        _match4 = REGEX_LONG_DOUBLE_NUM_VALID.search(no_str_line)
+        if _match and not _match2:
+            output_info(filepath, line_num, line, r'XD02', r'Missing `L` after the assigned `long double` number', _match)
+        elif _match3 and not _match4:
+            output_info(filepath, line_num, line, r'XD02', r'Missing `L` after the assigned `long double` number', _match3)
+    # XD03
+    if r'float' in no_str_line:
+        _match = REGEX_FLOAT.search(no_str_line)
+        _match2 = REGEX_FLOAT_VALID.search(no_str_line)
+        _match3 = REGEX_FLOAT_NUM.search(no_str_line)
+        _match4 = REGEX_FLOAT_NUM_VALID.search(no_str_line)
+        if _match and not _match2:
+            output_info(filepath, line_num, line, r'XD03', r'Missing `F` after the assigned `float` number', _match)
+        elif _match3 and not _match4:
+            output_info(filepath, line_num, line, r'XD03', r'Missing `F` after the assigned `float` number', _match3)
+    # XD04
+    if r'wchar_t' in no_str_line:
+        _match = REGEX_WCHAR.search(line)
+        _match2 = REGEX_WCHAR_VALID.search(line)
+        if _match and not _match2:
+            output_info(filepath, line_num, line, r'XD04', r'Missing `L` before the literal wide-character', _match)
+
+
+def xw04(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: C901,R701
+    """Find XW04 inconsistencies and bad formatting (Single white-space only around math-operators)"""
+    if log_line.startswith(r':'):
+        return
+    if not any([r'+' in log_line, r'-' in log_line, r'/' in log_line, r'*' in log_line]):
+        return
+    _match = REGEX_DIV_SPACE.search(log_line)
+    if _match and all([' / \'' not in line, '\' / ' not in line, r' / "' not in line, r'" / ' not in line]):
+        output_info(filepath, line_num, line, r'XW04', r'Single white-space only around math-operators (`/`, `-`, `*`, `+`)', _match)
+    _match = REGEX_MINUS_SPACE.search(log_line)
+    if _match and all([' - \'' not in line, '\' - ' not in line, r' - "' not in line, r'" - ' not in line]):
+        output_info(filepath, line_num, line, r'XW04', r'Single white-space only around math-operators (`/`, `-`, `*`, `+`)', _match)
+    _match = REGEX_MUL_SPACE.search(log_line)
+    if _match and all([r'typedef ' not in log_line, r'*:' not in log_line]):
+        output_info(filepath, line_num, line, r'XW04', r'Single white-space only around math-operators (`/`, `-`, `*`, `+`)', _match)
+    _match = REGEX_PLUS_SPACE.search(log_line)
+    if _match and all([' + \'' not in line, '\' + ' not in line, r' + "' not in line, r'" + ' not in line]):
+        output_info(filepath, line_num, line, r'XW04', r'Single white-space only around math-operators (`/`, `-`, `*`, `+`)', _match)
+
+
+def xw05(filepath: str, line_num: int, line: str, log_line: str) -> None:
+    """Find XW05 inconsistencies and bad formatting (Single white-space only around assignment operators)"""
+    if r'=' in log_line:
+        _match = REGEX_PLUS_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `+=`', _match, bool(_match))
+        _match = REGEX_MINUS_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `-=`', _match, bool(_match))
+        _match = REGEX_MUL_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `*=`', _match, bool(_match))
+        _match = REGEX_DIV_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `/=`', _match, bool(_match))
+        _match = REGEX_MOD_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `%=`', _match, bool(_match))
+        _match = REGEX_LSHIFT_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `<<=`', _match, bool(_match))
+        _match = REGEX_RSHIFT_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `>>=`', _match, bool(_match))
+        _match = REGEX_AND_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `&=`', _match, bool(_match))
+        _match = REGEX_OR_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `^=`', _match, bool(_match))
+        _match = REGEX_XOR_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `|=`', _match, bool(_match))
+
+
+def xw00(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+    """XW**: Check for inconsistencies and bad formatting associated with white-space"""
+    asm_match = REGEX_VALID_ASM.search(log_line)
+    ptr_match = REGEX_POINTERS.search(log_line)
+    # XW01
+    _match = REGEX_SEMICOLON_SPACE.search(log_line)
+    if _match and not line.strip().endswith((r'";', '\';')):
+        output_info(filepath, line_num, line, r'XW01', r'No white-space should be before a semi-colon', _match)
+    if r'=' in log_line and not any([r'= "' in line, '= \'' in line]):
+        # XW02
+        _match = REGEX_EQUALS_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW02', r'Single white-space only around `=`', _match, bool(_match))
+        # XW03
+        _match = REGEX_NOT_EQUALS_SPACE.search(log_line)
+        if _match and ' != \'' not in line and '\' != ' not in line:
+            output_info(filepath, line_num, line, r'XW03', r'Single white-space only around `!=`', _match)
+    # XW04
+    xw04(filepath, line_num, line, log_line)
+    # XW05
+    xw05(filepath, line_num, line, log_line)
+    # XW06
+    output_info(filepath, line_num, line, r'XW06', r'Trailing white-space found', truth=bool(line.endswith((r' ', '\t'))))
+    # XW07
+    output_info(filepath, line_num, line, r'XW07', r'Unneeded extra white-space after return', truth=bool(r'return  ' in log_line or 'return\t' in log_line))
+    # XW08
+    _match = REGEX_CONSTRUCT_SPACE.search(log_line)
+    _match2 = REGEX_CONSTRUCT_SPACE_VALID.search(log_line)
+    output_info(filepath, line_num, line, 'XW08', 'Single space (never TAB) needed between a construct keyword and `(`', truth=bool(_match and not _match2))
+    # XW09
+    if r'%' in log_line and not log_line.startswith(r':'):
+        _match = REGEX_MOD_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW09', r'Single white-space only around `%`', _match, bool(_match))
+    # XW10
+    if r'&&' in log_line and all([' && \'' not in line, '\' && ' not in line, r' && "' not in line, r'" && ' not in line]):
+        _match = REGEX_AND_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW10', r'Single white-space only around `&&`', _match, bool(_match))
+    # XW11
+    if r'||' in log_line and all([' || \'' not in line, '\' || ' not in line, r' || "' not in line, r'" || ' not in line]):
+        _match = REGEX_OR_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW11', r'Single white-space only around `||`', _match, bool(_match))
+    # XW12
+    if r'?' in log_line and all([' ? \'' not in line, '\' ? ' not in line, r' ? "' not in line, r'" ? ' not in line]):
+        _match = REGEX_TERNARY_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW12', r'Single white-space before and after ternary operator (`?`)', _match, bool(_match))
+    # XW13
+    if r'!' in log_line:
+        _match = REGEX_NOT_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW13', r'Single white-space before `!` and no trailing white-space', _match, bool(_match))
+    # XW14
+    if r'<' in log_line and all([' < \'' not in line, '\' < ' not in line, r' <= ' not in log_line]):
+        _match = REGEX_LT_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW14', r'Single white-space before `<`', _match, bool(_match))
+    # XW15
+    if r'>' in log_line and all([' > \'' not in line, '\' > ' not in line, r' >= ' not in log_line]):
+        _match = REGEX_GT_SPACE.search(log_line)
+        output_info(filepath, line_num, line, r'XW15', r'Single white-space before `>`', _match, bool(_match))
+    # XW16
+    _match = REGEX_OPERATOR_NO_SPACE1.search(log_line)
+    _match2 = REGEX_OPERATOR_NO_SPACE2.search(log_line)
+    _match3 = OPERATOR_SPACE_VALID.search(log_line)
+    if not log_line.startswith(r':'):
+        if _match and not _match3:
+            output_info(filepath, line_num, line, r'XW16', r'Missing single white-space around operator', _match)
+        elif _match2 and not _match3:
+            output_info(filepath, line_num, line, r'XW16', r'Missing single white-space around operator', _match2)
+    # XW17
+    if r'=' in log_line and not log_line.startswith(r':') and not asm_match:
+        _match = EQUALS_INVALID_SPACE.search(log_line)
+        _match2 = EQUALS_SPACE_VALID.search(log_line)
+        _match3 = REGEX_SHIFT_COMPARE.search(log_line)
+        if _match and not _match2 and not _match3:
+            output_info(filepath, line_num, line, r'XW17', r'Missing single white-space around `=`', _match)
+    # XW18
+    if (r'<' in log_line or '>' in log_line) and not log_line.startswith((r'#', r'template ')) and r'->' not in log_line:
+        _match = LTGT_NO_SPACE.search(log_line)
+        _match2 = LTGT_SPACE_VALID.search(log_line)
+        _match3 = REGEX_SHIFT_COMPARE2.search(log_line)
+        if _match and not _match2 and not _match3:
+            output_info(filepath, line_num, line, r'XW18', r'Missing single white-space around `>` or `<` operator', _match)
+    # XW19
+    ptr_cast_match = REGEX_POINTER_CAST.search(log_line)
+    if any(_test in log_line for _test in {r'+', r'*', r'/', r'%'}) and not any(_test in log_line for _test in {r'++', r'--', r'%', r'<=', r'>=', r'!*', r'!&', r'(*', r'*)', r'return *'}) and not any(log_line.startswith(_test) for _test in {r'*', r'LIB_FUNC', r'DECL_FUNC'}) and not any([asm_match, ptr_match, ptr_cast_match]):
+        _match = MATH_OPERATOR_NO_SPACE.search(log_line)
+        _match2 = MATH_OPERATOR_SPACE_VALID.search(log_line)
+        _match3 = REGEX_FLOAT_POINT.search(log_line)
+        _match4 = DATATYPE_PTR.search(log_line)
+        _match5 = MATH_OPERATOR_POINTERS.search(log_line)
+        if _match and not _match2 and not _match3 and not _match4 and not _match5:
+            output_info(filepath, line_num, line, r'XW19', r'Missing single white-space around math operator', _match)
+
+
+def x000(filepath: str, line_num: int, line: str, log_line: str, no_str_line: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
     """X***: Check for inconsistencies and bad formatting"""
     if r'__' in log_line:
         # X001
@@ -347,234 +520,151 @@ def x000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
             output_info(filepath, line_num, line, r'X003', r'Use the format `"YYYY.MM.DD"` with `__version__`', _match)
     # X004
     _match = REGEX_INDENT.search(line)
-    if _match:
-        output_info(filepath, line_num, line, r'X004', r'Invalid indentation white-space; use one tab per indent level', _match)
-    # X005
-    _match = REGEX_LONGINT.search(log_line)
-    if _match:
-        output_info(filepath, line_num, line, r'X005', r'Use `long` instead of `long int` and `long long` instead of `long long int`', _match)
-    # X006
-    if r'long double' in log_line:
-        _match = REGEX_LONG_DOUBLE.search(log_line)
-        _match2 = REGEX_LONG_DOUBLE_VALID.search(log_line)
-        _match3 = REGEX_LONG_DOUBLE_NUM.search(log_line)
-        _match4 = REGEX_LONG_DOUBLE_NUM_VALID.search(log_line)
-        if _match and not _match2:
-            output_info(filepath, line_num, line, r'X006', r'Missing `L` after the assigned `long double` number', _match)
-        elif _match3 and not _match4:
-            output_info(filepath, line_num, line, r'X006', r'Missing `L` after the assigned `long double` number', _match3)
-    # X007
-    if r'float' in log_line:
-        _match = REGEX_FLOAT.search(log_line)
-        _match2 = REGEX_FLOAT_VALID.search(log_line)
-        _match3 = REGEX_FLOAT_NUM.search(log_line)
-        _match4 = REGEX_FLOAT_NUM_VALID.search(log_line)
-        if _match and not _match2:
-            output_info(filepath, line_num, line, r'X007', r'Missing `F` after the assigned `float` number', _match)
-        elif _match3 and not _match4:
-            output_info(filepath, line_num, line, r'X007', r'Missing `F` after the assigned `float` number', _match3)
-    # X008
-    if r'wchar_t' in log_line:
-        _match = REGEX_WCHAR.search(line)
-        _match2 = REGEX_WCHAR_VALID.search(line)
-        if _match and not _match2:
-            output_info(filepath, line_num, line, r'X008', r'Missing `L` before the literal wide-character', _match)
-    # X009
-    _match = REGEX_SEMICOLON_SPACE.search(log_line)
-    if _match and not line.strip().endswith((r'";', '\';')):
-        output_info(filepath, line_num, line, r'X009', r'No white-space should be before a semi-colon', _match)
-    if r'=' in log_line and r'= "' not in line and '= \'' not in line:
-        # X010
-        _match = REGEX_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X010', r'Single white-space only around `=`', _match)
-        # X011
-        _match = REGEX_NOT_EQUALS_SPACE.search(log_line)
-        if _match and ' != \'' not in line and '\' != ' not in line:
-            output_info(filepath, line_num, line, r'X011', r'Single white-space only around `!=`', _match)
-    if r'+' in log_line or r'-' in log_line or r'/' in log_line or r'*' in log_line and not log_line.startswith(r':'):
-        # X012
-        _match = REGEX_DIV_SPACE.search(log_line)
-        if _match and ' / \'' not in line and '\' / ' not in line and r' / "' not in line and r'" / ' not in line:
-            output_info(filepath, line_num, line, r'X012', r'Single white-space only around `/`', _match)
-        # X013
-        _match = REGEX_MINUS_SPACE.search(log_line)
-        if _match and ' - \'' not in line and '\' - ' not in line and r' - "' not in line and r'" - ' not in line:
-            output_info(filepath, line_num, line, r'X013', r'Single white-space only around `-`', _match)
-        # X014
-        _match = REGEX_MUL_SPACE.search(log_line)
-        if _match and r'typedef' not in log_line and r'*:' not in log_line:
-            output_info(filepath, line_num, line, r'X014', r'Single white-space only around `*`', _match)
-        # X015
-        _match = REGEX_PLUS_SPACE.search(log_line)
-        if _match and ' + \'' not in line and '\' + ' not in line and r' + "' not in line and r'" + ' not in line:
-            output_info(filepath, line_num, line, r'X015', r'Single white-space only around `+`', _match)
-    if r'=' in log_line:
-        # X016
-        _match = REGEX_PLUS_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X016', r'Single white-space only around `+=`', _match)
-        # X017
-        _match = REGEX_MINUS_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X017', r'Single white-space only around `-=`', _match)
-        # X018
-        _match = REGEX_MUL_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X018', r'Single white-space only around `*=`', _match)
-        # X019
-        _match = REGEX_DIV_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X019', r'Single white-space only around `/=`', _match)
-        # X020
-        _match = REGEX_MOD_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X020', r'Single white-space only around `%=`', _match)
-        # X021
-        _match = REGEX_LSHIFT_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X021', r'Single white-space only around `<<=`', _match)
-        # X022
-        _match = REGEX_RSHIFT_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X022', r'Single white-space only around `>>=`', _match)
-        # X023
-        _match = REGEX_AND_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X023', r'Single white-space only around `&=`', _match)
-        # X024
-        _match = REGEX_OR_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X024', r'Single white-space only around `^=`', _match)
-        # X025
-        _match = REGEX_XOR_EQUALS_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X025', r'Single white-space only around `|=`', _match)
-    # X026
-    if r'%' in log_line and not log_line.startswith(r':'):
-        _match = REGEX_MOD_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X026', r'Single white-space only around `%`', _match)
-    # X027
-    if r'&&' in log_line and ' && \'' not in line and '\' && ' not in line and r' && "' not in line and r'" && ' not in line:
-        _match = REGEX_AND_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X027', r'Single white-space only around `&&`', _match)
-    # X028
-    if r'||' in log_line and ' || \'' not in line and '\' || ' not in line and r' || "' not in line and r'" || ' not in line:
-        _match = REGEX_OR_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X028', r'Single white-space only around `||`', _match)
-    # X029
-    if r'?' in log_line and ' ? \'' not in line and '\' ? ' not in line and r' ? "' not in line and r'" ? ' not in line:
-        _match = REGEX_TERNARY_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X029', r'Single white-space before and after ternary operator (`?`)', _match)
-    # X030
-    if r'!' in log_line:
-        _match = REGEX_NOT_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X030', r'Single white-space before `!` and no trailing white-space', _match)
-    # X031
-    if r'<' in log_line and ' < \'' not in line and '\' < ' not in line and r' <= ' not in log_line:
-        _match = REGEX_LT_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X031', r'Single white-space before `<`', _match)
-    # X032
-    if r'>' in log_line and ' > \'' not in line and '\' > ' not in line and r' >= ' not in log_line:
-        _match = REGEX_GT_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X032', r'Single white-space before `>`', _match)
-    # X033
-    _match = REGEX_OPERATOR_NO_SPACE1.search(log_line)
-    _match2 = REGEX_OPERATOR_NO_SPACE2.search(log_line)
-    _match3 = OPERATOR_SPACE_VALID.search(log_line)
-    if not log_line.startswith(r':'):
-        if _match and not _match3:
-            output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match)
-        elif _match2 and not _match3:
-            output_info(filepath, line_num, line, r'X033', r'Missing single white-space around operator', _match2)
-    # X034
-    asm_match = REGEX_VALID_ASM.search(log_line)
-    if r'=' in log_line and not log_line.startswith(r':') and not asm_match:
-        _match = EQUALS_INVALID_SPACE.search(log_line)
-        _match2 = EQUALS_SPACE_VALID.search(log_line)
-        _match3 = REGEX_SHIFT_COMPARE.search(log_line)
-        if _match and not _match2 and not _match3:
-            output_info(filepath, line_num, line, r'X034', r'Missing single white-space around `=`', _match)
-    # X035
-    if (r'<' in log_line or '>' in log_line) and not log_line.startswith((r'#', r'template ')) and r'->' not in log_line:
-        _match = LTGT_NO_SPACE.search(log_line)
-        _match2 = LTGT_SPACE_VALID.search(log_line)
-        _match3 = REGEX_SHIFT_COMPARE2.search(log_line)
-        if _match and not _match2 and not _match3:
-            output_info(filepath, line_num, line, r'X035', r'Missing single white-space around `>` or `<` operator', _match)
-    # X036
-    asm_match = REGEX_VALID_ASM.search(log_line)
-    if any(_test in log_line for _test in {r'+', r'*', r'/', r'%'}) and not any(_test in log_line for _test in {r'++', r'--', r'%', r'<=', r'>=', r'!*', r'!&', r'(*', r'*)', r'return *', r'char* ', r'(int)*'}) and not any(log_line.startswith(_test) for _test in {r'*', r'LIB_FUNC', r'DECL_FUNC'}) and not asm_match:
-        _match = MATH_OPERATOR_NO_SPACE.search(log_line)
-        _match2 = MATH_OPERATOR_SPACE_VALID.search(log_line)
-        _match3 = REGEX_FLOAT_POINT.search(log_line)
-        _match4 = DATATYPE_PTR.search(log_line)
-        _match5 = MATH_OPERATOR_POINTERS.search(log_line)
-        if _match and not _match2 and not _match3 and not _match4 and not _match5:
-            output_info(filepath, line_num, line, r'X036', r'Missing single white-space around math operator', _match)
+    output_info(filepath, line_num, line, r'X004', r'Invalid indentation white-space; use one tab per indent level', _match, bool(_match))
     if r'{' in log_line:
-        # X037
+        # X009
         if line.startswith(r'{') and line.endswith(r'{'):
-            output_info(filepath, line_num, line, r'X037', r'A starting-bracket (`{`) should not start a line')
-        # X038
+            output_info(filepath, line_num, line, r'X009', r'A starting-bracket (`{`) should not start a line')
+        # X010
         _match = REGEX_BRACKET_NO_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X038', r'Missing single white-space before bracket', _match)
-        # X039
+        output_info(filepath, line_num, line, r'X010', r'Missing single white-space before bracket', _match, bool(_match))
+        # X011
         _match = REGEX_BRACKET_EXTRA_SPACE.search(log_line)
-        if _match:
-            output_info(filepath, line_num, line, r'X039', r'Single white-space before bracket, not more than one', _match)
-    if r'/*' in NO_STR_LINE and r'*/' in NO_STR_LINE and not any(_test in NO_STR_LINE for _test in SPECIAL_CMTS):
-        # X040
-        if r'<' not in NO_STR_LINE and NO_STR_LINE.upper() != NO_STR_LINE and r'" : ' not in NO_STR_LINE:
-            output_info(filepath, line_num, line, r'X040', r'Section headings (`/* SECTION */`) should not contain lowercase letters')
-        # X041
-        if r'/* ' not in NO_STR_LINE or ' */' not in NO_STR_LINE:
-            output_info(filepath, line_num, line, r'X041', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
-    # X042
-    if line.endswith((r' ', '\t')):
-        output_info(filepath, line_num, line, r'X042', r'Trailing white-space found')
-    # X043
-    if r'return  ' in log_line or 'return\t' in log_line:
-        output_info(filepath, line_num, line, r'X043', r'Unneeded extra white-space after return')
-    # X044
-    _match = REGEX_CONSTRUCT_SPACE.search(log_line)
-    _match2 = REGEX_CONSTRUCT_SPACE_VALID.search(log_line)
-    if _match and not _match2:
-        output_info(filepath, line_num, line, 'X044', 'Single space (never TAB) needed between a constrcut keyword and `(`')
-    # X045
+        output_info(filepath, line_num, line, r'X011', r'Single white-space before bracket, not more than one', _match, bool(_match))
+    if r'/*' in no_str_line and r'*/' in no_str_line and not any(_test in no_str_line for _test in SPECIAL_CMTS):
+        # X012
+        if r'<' not in no_str_line and no_str_line.upper() != no_str_line and r'" : ' not in no_str_line:
+            output_info(filepath, line_num, line, r'X012', r'Section headings (`/* SECTION */`) should not contain lowercase letters')
+        # X013
+        if r'/* ' not in no_str_line or ' */' not in no_str_line:
+            output_info(filepath, line_num, line, r'X013', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
+    # X014
     if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in {r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]'}) and not any(log_line.startswith(_test) for _test in {r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC'}):
-        output_info(filepath, line_num, line, r'X045', r'Invalid array size')
+        output_info(filepath, line_num, line, r'X014', r'Invalid array size')
 
 
 # Optimize
 
-def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: N803  # pylint: disable=C0103,W0613,W0621
+def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:
     """Z***: Check for code that can be optimized and suggest optimal code"""
     # Z001
-    if any(_pattern in log_line for _pattern in {r'i = i + 1;', r'j = j + 1;', r'i = i - 1;', r'j = j - 1;'}):
-        output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
-    # Z001
-    if any(_pattern in log_line for _pattern in {r'i += 1;', r'j += 1;', r'i -= 1;', r'j -= 1'}) and r'= 10' not in log_line:
-        output_info(filepath, line_num, line, r'Z001', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`')
+    output_info(filepath, line_num, line, r'Z001', r'Due to the multiplicative properties, `2 * x` is the same as `x + x`, which computers can compute more quickly', truth=bool(REGEX_MUL2.search(log_line)))
+    if r'=' not in log_line:
+        return
     # Z002
-    _match = REGEX_SELF_STORE.search(log_line)
-    if _match and _match.group(1) == _match.group(2) and r'.' + _match.group(1) not in log_line:
-        output_info(filepath, line_num, line, r'Z002', r'Re-write code in the format `x = x + 1` to `x += 1`')
+    output_info(filepath, line_num, line, r'Z002', r'Use an increment (`++`) or decrement (`--`) instead of code in the formats `x = x + 1` and `x += 1`', truth=bool(any(_pattern in log_line for _pattern in INDECREMENT_SET)))
     # Z003
-    _match = REGEX_MUL2.search(log_line)
-    if _match:
-        output_info(filepath, line_num, line, r'Z003', r'Due to the multiplicative properties, `2 * x` is the same as `x + x`, which computers can compute more quickly')
+    _match = REGEX_SELF_STORE.search(log_line)
+    _match2 = REGEX_SELF_STORE2.search(log_line)
+    if (_match and _match.group(1) == _match.group(2) and r'.' + _match.group(1) not in log_line) or (_match2 and _match2.group(1) == _match2.group(2)):
+        output_info(filepath, line_num, line, r'Z003', r'Re-write code from the format `x = x - 1` or `x = 3 * x` to `x -= 1` or `x *= 3`')
 
 
 # MAIN #
+
+
+def run_line_tests(filepath: str, line_num: int, line: str, no_str_line: str, has_valid_headers: bool) -> None:
+    """Perform the actual tests"""
+    if REGEX_COMMENT_LINE.search(line):  # Physical comment line
+        t000(filepath, line_num, line)
+        c000_line(filepath, line_num, line)
+    elif r'#' in line and REGEX_MACROS.search(line):  # M*** (Macros)
+        m000(filepath, line_num, line)
+    elif not line.startswith(r'#'):  # Regular C-code (Non-macros)
+        t000(filepath, line_num, line)
+        c000(filepath, line_num, line)
+        logical_line: str = strip_comments_and_strings(line).strip()  # Logical line without strings and comments
+        s000(filepath, line_num, line, logical_line)
+        if has_valid_headers:  # This checks for formatting that is more specific to the developer of this script
+            x000(filepath, line_num, line, logical_line, no_str_line)
+        xd00(filepath, line_num, line, no_str_line)
+        xw00(filepath, line_num, line, logical_line)
+        z000(filepath, line_num, line, logical_line)
+
+
+def analyze_src(src_file_list: list, filepath: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+    """Analyze the C source code against the various tests"""
+    # Set Variables #
+    line_num: int = 1
+    inside_multiline_comment: bool = False
+    has_valid_headers: bool = True
+    binfmtc_present: int = 0
+    # Analyze Source Code #
+    for line in src_file_list:  # Scan one line at-a-time (file-header first)
+        # Blank-line
+        if not line.strip():
+            line_num += 1
+            continue
+        # Magic Comments
+        inside_multiline_comment = line.strip().startswith((r'*', r'/*'))
+        if line_num == 1:  # Ensure that this is not a script
+            if line.startswith(r'#!'):
+                output_info(filepath, 1, line, r'ERROR', r'This appears to be a script')
+            if line.startswith(r'/* BINFMTC:'):
+                binfmtc_present = 1
+                if not line.endswith(r' */'):
+                    has_valid_headers = False
+                    output_info(filepath, 1, line, r'Binfmtc hashpling formatting error', r'The Binfmtc hashpling must all be on one line')
+                line_num += 1
+                continue
+        if line_num == 1 + binfmtc_present:  # MG0*: Magic-Emacs-Comment
+            _match = REGEX_EMACS.search(line)
+            _match2 = REGEX_EMACS_VALID.search(line)
+            if _match and not _match2:
+                has_valid_headers = False
+                output_info(filepath, line_num, line, r'MG01', r'Invalid format for Magic-Emacs-Comment; use `// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-`', _match)
+            elif not _match:
+                has_valid_headers = False
+                output_info(filepath, line_num, r'', r'MG02', r'Missing Magic-Emacs-Comment `// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-`')
+            line_num += 1
+            continue
+        elif line_num == 2 + binfmtc_present:  # MG0*: Magic-Vim-Comment
+            _match = REGEX_VIM.search(line)
+            _match2 = REGEX_VIM_VALID.search(line)
+            if _match and not _match2:
+                has_valid_headers = False
+                output_info(filepath, line_num, line, r'MG03', r'Invalid format for Magic-Vim-Comment; use `// vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :`', _match)
+            elif not _match:
+                has_valid_headers = False
+                output_info(filepath, line_num, r'', r'MG04', r'Missing Magic-Vim-Comment `// vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :`')
+            line_num += 1
+            continue
+        elif line_num == 3 + binfmtc_present:  # MG0*: Magic-Kate-Comment
+            _match = REGEX_KATE.search(line)
+            _match2 = REGEX_KATE_VALID.search(line)
+            if _match and not _match2:
+                has_valid_headers = False
+                output_info(filepath, line_num, line, r'MG05', r'Invalid format for Magic-Kate-Comment; use `// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;`', _match)
+            elif not _match:
+                has_valid_headers = False
+                output_info(filepath, line_num, r'', r'MG06', r'Missing Magic-Kate-Comment `// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;`')
+            line_num += 1
+            continue
+        if line_num >= 3 + binfmtc_present or line.startswith((r'*', r'/*')):
+            line_num += 1
+            break
+    for line in src_file_list[line_num - 1:]:  # Scan one line at-a-time
+        # Blank-line
+        if not line.strip():
+            line_num += 1
+            continue
+        # Multi-line Comments
+        no_str_line = strip_strings(line)  # Physical line without strings
+        if (REGEX_COMMENT_MULTILINE_START.search(no_str_line) or REGEX_COMMENT_DOC.search(no_str_line)) and r'*/' not in no_str_line:  # Start of multiline-comment
+            inside_multiline_comment = True
+            line_num += 1
+            continue
+        elif REGEX_COMMENT_MULTILINE_END.search(no_str_line) and r'/*' not in no_str_line:  # End of multiline-comment
+            inside_multiline_comment = False
+            line_num += 1
+            continue
+        if inside_multiline_comment:
+            line_num += 1
+            continue
+        # Coding Lines
+        run_line_tests(filepath, line_num, line, no_str_line, has_valid_headers)
+        line_num += 1
+        continue
 
 
 if __name__ == '__main__':  # noqa: C901
@@ -592,81 +682,6 @@ if __name__ == '__main__':  # noqa: C901
     else:
         stderr.write(r'Invalid parameters!\n')
         raise SystemExit(1)
-    # SET VARIABLES #
-    LINE_NUM: int = 1
-    INSIDE_MULTILINE_COMMENT: bool = False
-    BINFMTC_PRESENT: int = 0
-    # ANALYZE SRC #
-    for LINE in SRC_FILE_LIST:  # Scan one line at-a-time
-        if LINE_NUM is 1:  # Ensure that this is not a script
-            if LINE.startswith(r'#!'):
-                output_info(FILEPATH, 1, LINE, r'ERROR', r'This appears to be a script')
-                raise SystemExit(1)
-            elif LINE.startswith(r'/* BINFMTC:'):
-                BINFMTC_PRESENT = 1
-            if LINE.startswith(r'/* BINFMTC:') and not LINE.endswith(r' */'):
-                output_info(FILEPATH, 1, LINE, r'ERROR', r'The Binfmtc hashpling must all be on one line')
-                BINFMTC_PRESENT += 1
-        if LINE_NUM is 1 + BINFMTC_PRESENT:  # MG0*: Magic-Emacs-Comment
-            _match = REGEX_EMACS.search(LINE)
-            _match2 = REGEX_EMACS_VALID.search(LINE)
-            if _match and not _match2:
-                output_info(FILEPATH, LINE_NUM, LINE, r'MG01', r'Invalid format for Magic-Emacs-Comment; use `// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-`', _match)
-            elif not _match:
-                output_info(FILEPATH, LINE_NUM, r'', r'MG02', r'Missing Magic-Emacs-Comment `// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-`')
-            elif _match2:
-                LINE_NUM += 1
-                continue
-        elif LINE_NUM == 2 + BINFMTC_PRESENT:  # MG0*: Magic-Vim-Comment
-            _match = REGEX_VIM.search(LINE)
-            _match2 = REGEX_VIM_VALID.search(LINE)
-            if _match and not _match2:
-                output_info(FILEPATH, LINE_NUM, LINE, r'MG03', r'Invalid format for Magic-Vim-Comment; use `// vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :`', _match)
-            elif not _match:
-                output_info(FILEPATH, LINE_NUM, r'', r'MG04', r'Missing Magic-Vim-Comment `// vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :`')
-            elif _match2:
-                LINE_NUM += 1
-                continue
-        elif LINE_NUM == 3 + BINFMTC_PRESENT:  # MG0*: Magic-Kate-Comment
-            _match = REGEX_KATE.search(LINE)
-            _match2 = REGEX_KATE_VALID.search(LINE)
-            if _match and not _match2:
-                output_info(FILEPATH, LINE_NUM, LINE, r'MG05', r'Invalid format for Magic-Kate-Comment; use `// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;`', _match)
-            elif not _match:
-                output_info(FILEPATH, LINE_NUM, r'', r'MG06', r'Missing Magic-Kate-Comment `// kate: encoding utf-8; bom off; syntax c; indent-mode cstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;`')
-            elif _match2:
-                LINE_NUM += 1
-                continue
-        # Blank line
-        if not LINE.strip():
-            LINE_NUM += 1
-            continue
-        # Multi-line Comments
-        NO_STR_LINE = strip_strings(LINE)  # Physical line without strings
-        if (REGEX_COMMENT_MULTILINE_START.search(NO_STR_LINE) or REGEX_COMMENT_DOC.search(NO_STR_LINE)) and r'*/' not in NO_STR_LINE:  # Start of multiline-comment
-            INSIDE_MULTILINE_COMMENT = True
-            LINE_NUM += 1
-            continue
-        elif REGEX_COMMENT_MULTILINE_END.search(NO_STR_LINE) and r'/*' not in NO_STR_LINE:  # End of multiline-comment
-            INSIDE_MULTILINE_COMMENT = False
-            LINE_NUM += 1
-            continue
-        if INSIDE_MULTILINE_COMMENT:
-            LINE_NUM += 1
-            continue
-        # Coding Lines
-        LOGICAL_LINE: str = strip_comments_and_strings(LINE).strip()  # Logical line without strings and comments
-        if REGEX_COMMENT_LINE.search(LINE):  # Physical comment line
-            t000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            c000_line(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-        elif r'#' in LINE and REGEX_MACROS.search(LINE):  # M*** (Macros)
-            m000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-        elif not LINE.startswith(r'#'):  # Regular C-code (Non-macros)
-            t000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            c000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            s000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            v000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            x000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-            z000(FILEPATH, LINE_NUM, LINE, LOGICAL_LINE)
-        LINE_NUM += 1
-        continue
+    # BEGIN #
+    analyze_src(SRC_FILE_LIST, FILEPATH)
+    raise SystemExit(0)
