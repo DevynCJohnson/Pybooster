@@ -4,12 +4,12 @@
 /**
 @brief Return the squareroot of the input
 @file sqrt.c
-@version 2019.03.28
+@version 2019.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section COMPILE
-gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c11 -o ./sqrt ./sqrt.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./sqrt
+gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c17 -o ./sqrt ./sqrt.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./sqrt
 
 @section LICENSE
 GNU Lesser General Public License v3

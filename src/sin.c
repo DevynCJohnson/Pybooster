@@ -4,7 +4,7 @@
 /**
 @brief Return the sine of the input
 @file sin.c
-@version 2019.03.28
+@version 2019.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

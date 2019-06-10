@@ -4,12 +4,12 @@
 /**
 @brief Check if the given number is prime
 @file isprime.c
-@version 2019.03.28
+@version 2019.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section COMPILE
-gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c11 -o ./isprime ./isprime.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./isprime
+gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c17 -o ./isprime ./isprime.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./isprime
 
 @section LICENSE
 GNU Lesser General Public License v3

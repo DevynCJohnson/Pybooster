@@ -4,12 +4,12 @@
 /**
 @brief Returns the Process Group ID
 @file getpgid.c
-@version 2019.03.28
+@version 2019.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section COMPILE
-gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c11 -o ./getpgid ./getpgid.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./getpgid
+gcc -Wall -Wextra -Wpedantic -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -ffunction-sections -fdata-sections -std=c17 -o ./getpgid ./getpgid.c && strip --remove-section=.note --remove-section=.comment --strip-debug --strip-unneeded ./getpgid
 
 @section LICENSE
 GNU Lesser General Public License v3

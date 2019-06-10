@@ -4,7 +4,7 @@
 /**
 @brief Return the tangent of the input
 @file tan.c
-@version 2019.03.28
+@version 2019.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
