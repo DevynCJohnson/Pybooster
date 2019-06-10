@@ -1,0 +1,77 @@
+# CUSTOM GTK2 STYLE FOR GEANY #
+
+
+# Compiler Message Colors #
+
+style "geany-compiler-error-style" {
+	fg[NORMAL] = "#FFFF00000000"
+	fg[ACTIVE] = "#FFFF00000000"
+}
+style "geany-compiler-context-style" {
+	fg[NORMAL] = "#7F7F00000000"
+	fg[ACTIVE] = "#7F7F00000000"
+}
+style "geany-compiler-message-style" {
+	fg[NORMAL] = "#00000000D000"
+	fg[ACTIVE] = "#00000000D000"
+}
+widget "*.geany-compiler-error" style "geany-compiler-error-style"
+widget "*.geany-compiler-context" style "geany-compiler-context-style"
+widget "*.geany-compiler-message" style "geany-compiler-message-style"
+
+
+# Document Status Colors #
+
+style "geany-document-status-changed-style" {
+	fg[NORMAL] = "#FFFF00000000"
+	fg[ACTIVE] = "#FFFF00000000"
+}
+style "geany-document-status-disk-changed-style" {
+	fg[NORMAL] = "#FFFF7FFF0000"
+	fg[ACTIVE] = "#FFFF7FFF0000"
+}
+style "geany-document-status-readonly-style" {
+	fg[NORMAL] = "#00007FFF0000"
+	fg[ACTIVE] = "#00007FFF0000"
+}
+widget "*.geany-document-status-changed" style "geany-document-status-changed-style"
+widget "*.geany-document-status-disk-changed" style "geany-document-status-disk-changed-style"
+widget "*.geany-document-status-readonly" style "geany-document-status-readonly-style"
+
+
+# Red "Terminal" Label for Dirty Terminal #
+
+widget "*.geany-terminal-dirty" style "geany-document-status-changed-style"
+
+
+# Close Button on the Editor Tabs #
+
+style "geany-close-tab-button-style" {
+	GtkWidget::focus-padding = 0
+	GtkWidget::focus-line-width = 0
+	xthickness = 0
+	ythickness = 0
+}
+widget "*.geany-close-tab-button" style "geany-close-tab-button-style"
+
+
+# Search Entries #
+
+style "geany-monospace" {
+	font_name = "Monospace"
+}
+widget "GeanyDialogSearch.*.GtkEntry" style "geany-monospace"
+widget "GeanyDialogSearch.*.geany-search-entry-no-match" style "geany-monospace"
+
+style "geany-search-entry-no-match-style" {
+	base[NORMAL] = "#FFFF66666666"
+	text[NORMAL] = "#FFFFFFFFFFFF"
+	base[SELECTED] = "#777711111111"
+	engine "pixmap" {
+		image {
+			function = FLAT_BOX
+			detail = "entry_bg"
+		}
+	}
+}
+widget "*.geany-search-entry-no-match" style "geany-search-entry-no-match-style"
