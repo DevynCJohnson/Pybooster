@@ -28,8 +28,34 @@ along with this software.
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
+/* FUNCTION DECLARATIONS */
+
+
+
+
+
+/* FUNCTIONS */
+
+
+
+
+
+/* MAIN */
+
+
+/**
+@brief Short description about the function
+@param[in] argc The number of arguments supplied to the program
+@param[in] argv The array of pointers pointing to the program's arguments
+@return `EXIT_SUCCESS` or `EXIT_FAILURE`
+@retval EXIT_SUCCESS: The program executed without issues
+@retval EXIT_FAILURE: The program encountered an error
+@warning Warning text (if applicable)
+@bug Describe known bugs
+*/
 int main(int argc, char* argv[]) {
-    return 0;
+	exit(EXIT_SUCCESS);  // return 0;
 }

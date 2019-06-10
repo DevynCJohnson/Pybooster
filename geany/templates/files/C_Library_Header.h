@@ -31,8 +31,24 @@ along with this software.
 #include <stdlib.h>
 
 
+/* GLOBAL CONSTANTS */
+
+
 static const char __author__[22] = "{developer}";
 static const char __version__[11] = "{date}";
 
 
+/* FUNCTION DECLARATIONS */
+
+
+/**
+@brief Short description about the function
+@param[in] argc The number of arguments supplied to the program
+@param[in] argv The array of pointers pointing to the program's arguments
+@return `EXIT_SUCCESS` or `EXIT_FAILURE`
+@retval EXIT_SUCCESS: The program executed without issues
+@retval EXIT_FAILURE: The program encountered an error
+@warning Warning text (if applicable)
+@bug Describe known bugs
+*/
 unsigned int FUNC(unsigned int ARG);

@@ -30,7 +30,16 @@ along with this software.
 #include "LIB.h"
 
 
-/** DOCSTRING */
+/**
+@brief Short description about the function
+@param[in] argc The number of arguments supplied to the program
+@param[in] argv The array of pointers pointing to the program's arguments
+@return `EXIT_SUCCESS` or `EXIT_FAILURE`
+@retval EXIT_SUCCESS: The program executed without issues
+@retval EXIT_FAILURE: The program encountered an error
+@warning Warning text (if applicable)
+@bug Describe known bugs
+*/
 unsigned int FUNC(unsigned int ARG) {
-    return 0;
+	return 0;
 }
