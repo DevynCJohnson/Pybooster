@@ -246,6 +246,7 @@ programs : $(addprefix $(BIN)/, $(LIST_UTIL_PROGRAMS)) math_programs
 
 ctags : cleanall
 	-@geany -P -g $(TOOLSDIR)/PyBooster.c.tags $(INCDIR)/MACRO*.h
+	./$(TOOLSDIR)/generate_ctags.sh
 
 TAGS : ctags
 
