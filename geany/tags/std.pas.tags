@@ -1,8 +1,8 @@
 # format=pipe
 arc||(X: SmallInt, Y: SmallInt, StAngle: Word, EndAngle: Word, Radius: Word)|
 assigncrt||(File: Text)|
-bar3d||(x1: SmallInt; y1: SmallInt; x2: SmallInt; y2: SmallInt; depth: Word; top: Boolean)|
 bar||(x1: SmallInt; y1: SmallInt; x2: SmallInt; y2: SmallInt)|
+bar3d||(x1: SmallInt; y1: SmallInt; x2: SmallInt; y2: SmallInt; depth: Word; top: Boolean)|
 begin|||
 black|||
 blink|||
@@ -45,8 +45,8 @@ getmaxx|Smallint||
 getmaxy|Smallint||
 getmodename|String|(ModeNumber: SmallInt)|
 getmoderange||(GraphDriver: SmallInt; var LoMode: SmallInt; var HiMode: SmallInt)|
-getpalettesize|Smallint||
 getpalette||(var Palette: PaletteType)|
+getpalettesize|Smallint||
 gettextsettings||(var TextInfo: TextSettingsType)|
 getviewsettings||(var viewport: ViewPortType)|
 getx|Smallint||
@@ -83,18 +83,18 @@ pieslice||(X: SmallInt; Y: SmallInt; stangle: SmallInt; endAngle: SmallInt; Radi
 procedure|||
 program||(Title)|
 queryadapterinfo|PModeInfo||
-readkey|char||
+read||(Identifier)|
 readln||(Identifier)|
+readkey|char||
+readport||(Port: LongInt; var Value: Byte)|
+readport||(Port: LongInt; var Value: LongInt)|
+readport||(Port: LongInt; var Value: Word)|
 readportb|Byte|(Port: LongInt)|
 readportb||(Port: LongInt; var Buf; Count: LongInt)|
 readportl|LongInt|(Port: LongInt)|
 readportl||(Port: LongInt; var Buf; Count: LongInt)|
 readportw|Word|(Port: LongInt)|
 readportw||(Port: LongInt; var Buf; Count: LongInt)|
-readport||(Port: LongInt; var Value: Byte)|
-readport||(Port: LongInt; var Value: LongInt)|
-readport||(Port: LongInt; var Value: Word)|
-read||(Identifier)|
 rectangle||(x1: SmallInt; y1: SmallInt; x2: SmallInt; y2: SmallInt)|
 red|||
 registerbgidriver|Smallint|(driver: pointer)|
@@ -126,15 +126,15 @@ wherex|Byte||
 wherey|Byte||
 white|||
 window||(X1: Byte, Y1: Byte, X2: Byte, Y2: Byte)|
+write||(Output)|
 writeln||(Output)|
-writeportb||(Port: LongInt; Value: Byte)|
-writeportl||(Port: LongInt; Value: LongInt)|
-writeportw||(Port: LongInt; Value: Word)|
 writeport||(Port: LongInt; Value: Byte)|
 writeport||(Port: LongInt; Value: LongInt)|
 writeport||(Port: LongInt; Value: Word)|
-write||(Output)|
+writeportb||(Port: LongInt; Value: Byte)|
 wrtieportb||(Port: LongInt; var Buf; Count: LongInt)|
+writeportl||(Port: LongInt; Value: LongInt)|
 wrtieportl||(Port: LongInt; var Buf; Count: LongInt)|
+writeportw||(Port: LongInt; Value: Word)|
 wrtieportw||(Port: LongInt; var Buf; Count: LongInt)|
 yellow|||

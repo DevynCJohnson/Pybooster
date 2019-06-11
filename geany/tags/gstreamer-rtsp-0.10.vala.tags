@@ -1,0 +1,362 @@
+# format=tagmanager
+@1_0Ã4ŒGst.RTSPVersion÷0
+@1_1Ã4ŒGst.RTSPVersion÷0
+@newÃ128Õ(out Gst.RTSPMessage msg)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+@newÃ128Õ(out Gst.RTSPTransport transport)ŒGst.RTSPTransport÷0œpublic Gst.RTSPResult
+ACCEPTÃ4ŒGst.RTSPHeaderField÷0
+ACCEPT_CHARSETÃ4ŒGst.RTSPHeaderField÷0
+ACCEPT_ENCODINGÃ4ŒGst.RTSPHeaderField÷0
+ACCEPT_LANGUAGEÃ4ŒGst.RTSPHeaderField÷0
+AGGREGATE_OPERATION_NOT_ALLOWEDÃ4ŒGst.RTSPStatusCode÷0
+ALERTÃ4ŒGst.RTSPHeaderField÷0
+ALLOWÃ4ŒGst.RTSPHeaderField÷0
+ANNOUNCEÃ4ŒGst.RTSPMethod÷0
+AUTHENTICATION_INFOÃ4ŒGst.RTSPHeaderField÷0
+AUTHORIZATIONÃ4ŒGst.RTSPHeaderField÷0
+AVPÃ4ŒGst.RTSPProfile÷0
+BAD_GATEWAYÃ4ŒGst.RTSPStatusCode÷0
+BAD_REQUESTÃ4ŒGst.RTSPStatusCode÷0
+BANDWIDTHÃ4ŒGst.RTSPHeaderField÷0
+BASICÃ4ŒGst.RTSPAuthMethod÷0
+BLOCKSIZEÃ4ŒGst.RTSPHeaderField÷0
+CACHE_CONTROLÃ4ŒGst.RTSPHeaderField÷0
+CLIENT_CHALLENGEÃ4ŒGst.RTSPHeaderField÷0
+CLIENT_IDÃ4ŒGst.RTSPHeaderField÷0
+CLOCKÃ4ŒGst.RTSPRangeUnit÷0
+COMPANY_IDÃ4ŒGst.RTSPHeaderField÷0
+CONFERENCEÃ4ŒGst.RTSPHeaderField÷0
+CONFERENCE_NOT_FOUNDÃ4ŒGst.RTSPStatusCode÷0
+CONNECTIONÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_BASEÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_ENCODINGÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_LANGUAGEÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_LENGTHÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_LOCATIONÃ4ŒGst.RTSPHeaderField÷0
+CONTENT_TYPEÃ4ŒGst.RTSPHeaderField÷0
+CONTINUEÃ4ŒGst.RTSPStatusCode÷0
+CREATEDÃ4ŒGst.RTSPStatusCode÷0
+CSEQÃ4ŒGst.RTSPHeaderField÷0
+DATAÃ4ŒGst.RTSPMsgType÷0
+DATEÃ4ŒGst.RTSPHeaderField÷0
+DESCRIBEÃ4ŒGst.RTSPMethod÷0
+DESTINATION_UNREACHABLEÃ4ŒGst.RTSPStatusCode÷0
+DIGESTÃ4ŒGst.RTSPAuthMethod÷0
+EEOFÃ4ŒGst.RTSPResult÷0
+EINTRÃ4ŒGst.RTSPResult÷0
+EINVALÃ4ŒGst.RTSPResult÷0
+ELASTÃ4ŒGst.RTSPResult÷0
+ENDÃ4ŒGst.RTSPTimeType÷0
+ENETÃ4ŒGst.RTSPResult÷0
+ENOMEMÃ4ŒGst.RTSPResult÷0
+ENOTIMPLÃ4ŒGst.RTSPResult÷0
+ENOTIPÃ4ŒGst.RTSPResult÷0
+EPARSEÃ4ŒGst.RTSPResult÷0
+ERESOLVÃ4ŒGst.RTSPResult÷0
+ERRORÃ4ŒGst.RTSPResult÷0
+ESYSÃ4ŒGst.RTSPResult÷0
+ETAGÃ4ŒGst.RTSPHeaderField÷0
+ETGETÃ4ŒGst.RTSPResult÷0
+ETIMEOUTÃ4ŒGst.RTSPResult÷0
+ETPOSTÃ4ŒGst.RTSPResult÷0
+EWSASTARTÃ4ŒGst.RTSPResult÷0
+EWSAVERSIONÃ4ŒGst.RTSPResult÷0
+EXPIRESÃ4ŒGst.RTSPHeaderField÷0
+FORBIDDENÃ4ŒGst.RTSPStatusCode÷0
+FROMÃ4ŒGst.RTSPHeaderField÷0
+GATEWAY_TIMEOUTÃ4ŒGst.RTSPStatusCode÷0
+GETÃ4ŒGst.RTSPMethod÷0
+GET_PARAMETERÃ4ŒGst.RTSPMethod÷0
+GONEÃ4ŒGst.RTSPStatusCode÷0
+GUIDÃ4ŒGst.RTSPHeaderField÷0
+GstÃ256÷0
+HEADER_FIELD_NOT_VALID_FOR_RESOURCEÃ4ŒGst.RTSPStatusCode÷0
+HOSTÃ4ŒGst.RTSPHeaderField÷0
+HTTPÃ4ŒGst.RTSPLowerTrans÷0
+HTTP_REQUESTÃ4ŒGst.RTSPMsgType÷0
+HTTP_RESPONSEÃ4ŒGst.RTSPMsgType÷0
+IF_MATCHÃ4ŒGst.RTSPHeaderField÷0
+IF_MODIFIED_SINCEÃ4ŒGst.RTSPHeaderField÷0
+INETÃ4ŒGst.RTSPFamily÷0
+INET6Ã4ŒGst.RTSPFamily÷0
+INITÃ4ŒGst.RTSPState÷0
+INTERNAL_SERVER_ERRORÃ4ŒGst.RTSPStatusCode÷0
+INVALIDÃ4ŒGst.RTSPHeaderField÷0
+INVALIDÃ4ŒGst.RTSPMethod÷0
+INVALIDÃ4ŒGst.RTSPMsgType÷0
+INVALIDÃ4ŒGst.RTSPState÷0
+INVALIDÃ4ŒGst.RTSPStatusCode÷0
+INVALIDÃ4ŒGst.RTSPVersion÷0
+INVALID_RANGEÃ4ŒGst.RTSPStatusCode÷0
+LANGUAGEÃ4ŒGst.RTSPHeaderField÷0
+LASTÃ4ŒGst.RTSPHeaderField÷0
+LAST_MODIFIEDÃ4ŒGst.RTSPHeaderField÷0
+LENGTH_REQUIREDÃ4ŒGst.RTSPStatusCode÷0
+LOCATIONÃ4ŒGst.RTSPHeaderField÷0
+LOW_ON_STORAGEÃ4ŒGst.RTSPStatusCode÷0
+MAX_ASM_WIDTHÃ4ŒGst.RTSPHeaderField÷0
+METHOD_NOT_ALLOWEDÃ4ŒGst.RTSPStatusCode÷0
+METHOD_NOT_VALID_IN_THIS_STATEÃ4ŒGst.RTSPStatusCode÷0
+MOVED_PERMANENTLYÃ4ŒGst.RTSPStatusCode÷0
+MOVE_TEMPORARILYÃ4ŒGst.RTSPStatusCode÷0
+MULTIPLE_CHOICESÃ4ŒGst.RTSPStatusCode÷0
+NONEÃ4ŒGst.RTSPAuthMethod÷0
+NONEÃ4ŒGst.RTSPFamily÷0
+NOT_ACCEPTABLEÃ4ŒGst.RTSPStatusCode÷0
+NOT_ENOUGH_BANDWIDTHÃ4ŒGst.RTSPStatusCode÷0
+NOT_FOUNDÃ4ŒGst.RTSPStatusCode÷0
+NOT_IMPLEMENTEDÃ4ŒGst.RTSPStatusCode÷0
+NOT_MODIFIEDÃ4ŒGst.RTSPStatusCode÷0
+NOWÃ4ŒGst.RTSPTimeType÷0
+NPTÃ4ŒGst.RTSPRangeUnit÷0
+OKÃ4ŒGst.RTSPResult÷0
+OKÃ4ŒGst.RTSPStatusCode÷0
+ONLY_AGGREGATE_OPERATION_ALLOWEDÃ4ŒGst.RTSPStatusCode÷0
+OPTIONSÃ4ŒGst.RTSPMethod÷0
+OPTION_NOT_SUPPORTEDÃ4ŒGst.RTSPStatusCode÷0
+PARAMETER_IS_READONLYÃ4ŒGst.RTSPStatusCode÷0
+PARAMETER_NOT_UNDERSTOODÃ4ŒGst.RTSPStatusCode÷0
+PAUSEÃ4ŒGst.RTSPMethod÷0
+PAYMENT_REQUIREDÃ4ŒGst.RTSPStatusCode÷0
+PLAYÃ4ŒGst.RTSPMethod÷0
+PLAYER_START_TIMEÃ4ŒGst.RTSPHeaderField÷0
+PLAYINGÃ4ŒGst.RTSPState÷0
+POSTÃ4ŒGst.RTSPMethod÷0
+PRAGMAÃ4ŒGst.RTSPHeaderField÷0
+PRECONDITION_FAILEDÃ4ŒGst.RTSPStatusCode÷0
+PROXY_AUTHENTICATEÃ4ŒGst.RTSPHeaderField÷0
+PROXY_AUTH_REQUIREDÃ4ŒGst.RTSPStatusCode÷0
+PROXY_REQUIREÃ4ŒGst.RTSPHeaderField÷0
+PUBLICÃ4ŒGst.RTSPHeaderField÷0
+RANGEÃ4ŒGst.RTSPHeaderField÷0
+RDTÃ4ŒGst.RTSPTransMode÷0
+READÃ4ŒGst.RTSPEvent÷0
+READYÃ4ŒGst.RTSPState÷0
+REAL_CHALLENGE1Ã4ŒGst.RTSPHeaderField÷0
+REAL_CHALLENGE2Ã4ŒGst.RTSPHeaderField÷0
+REAL_CHALLENGE3Ã4ŒGst.RTSPHeaderField÷0
+RECORDÃ4ŒGst.RTSPMethod÷0
+RECORDINGÃ4ŒGst.RTSPState÷0
+REDIRECTÃ4ŒGst.RTSPMethod÷0
+REFERERÃ4ŒGst.RTSPHeaderField÷0
+REGION_DATAÃ4ŒGst.RTSPHeaderField÷0
+REQUESTÃ4ŒGst.RTSPMsgType÷0
+REQUEST_ENTITY_TOO_LARGEÃ4ŒGst.RTSPStatusCode÷0
+REQUEST_TIMEOUTÃ4ŒGst.RTSPStatusCode÷0
+REQUEST_URI_TOO_LARGEÃ4ŒGst.RTSPStatusCode÷0
+REQUIREÃ4ŒGst.RTSPHeaderField÷0
+RESPONSEÃ4ŒGst.RTSPMsgType÷0
+RETRY_AFTERÃ4ŒGst.RTSPHeaderField÷0
+RTPÃ4ŒGst.RTSPTransMode÷0
+RTP_INFOÃ4ŒGst.RTSPHeaderField÷0
+RTSPAuthMethodÃ2ŒGst÷0
+RTSPConnectionÃ1ŒGst÷0
+RTSPEventÃ2ŒGst÷0
+RTSPExtensionÃ32ŒGst÷0
+RTSPFamilyÃ2ŒGst÷0
+RTSPHeaderFieldÃ2ŒGst÷0
+RTSPLowerTransÃ2ŒGst÷0
+RTSPMessageÃ1ŒGst÷0
+RTSPMethodÃ2ŒGst÷0
+RTSPMsgTypeÃ2ŒGst÷0
+RTSPProfileÃ2ŒGst÷0
+RTSPRangeÃ1ŒGst÷0
+RTSPRangeUnitÃ2ŒGst÷0
+RTSPResultÃ2ŒGst÷0
+RTSPStateÃ2ŒGst÷0
+RTSPStatusCodeÃ2ŒGst÷0
+RTSPTimeÃ1ŒGst÷0
+RTSPTimeRangeÃ1ŒGst÷0
+RTSPTimeTypeÃ2ŒGst÷0
+RTSPTransModeÃ2ŒGst÷0
+RTSPTransportÃ1ŒGst÷0
+RTSPUrlÃ1ŒGst÷0
+RTSPVersionÃ2ŒGst÷0
+RTSPWatchÃ1ŒGst÷0
+RTSPWatchÃ128Õ(Gst.RTSPConnection conn, Gst.RTSPWatchFuncs funcs, GLib.DestroyNotify notify)ŒGst.RTSPWatch÷0
+RTSPWatchFuncsÃ1ŒGst÷0
+RTSP_DEFAULT_PORTÃ8ŒGst÷0œint
+RTSP_VERSION_NOT_SUPPORTEDÃ4ŒGst.RTSPStatusCode÷0
+SAVPÃ4ŒGst.RTSPProfile÷0
+SCALEÃ4ŒGst.RTSPHeaderField÷0
+SECONDSÃ4ŒGst.RTSPTimeType÷0
+SEEKINGÃ4ŒGst.RTSPState÷0
+SEE_OTHERÃ4ŒGst.RTSPStatusCode÷0
+SERVERÃ4ŒGst.RTSPHeaderField÷0
+SERVICE_UNAVAILABLEÃ4ŒGst.RTSPStatusCode÷0
+SESSIONÃ4ŒGst.RTSPHeaderField÷0
+SESSION_NOT_FOUNDÃ4ŒGst.RTSPStatusCode÷0
+SETUPÃ4ŒGst.RTSPMethod÷0
+SET_PARAMETERÃ4ŒGst.RTSPMethod÷0
+SMPTEÃ4ŒGst.RTSPRangeUnit÷0
+SMPTE_25Ã4ŒGst.RTSPRangeUnit÷0
+SMPTE_30_DROPÃ4ŒGst.RTSPRangeUnit÷0
+SPEEDÃ4ŒGst.RTSPHeaderField÷0
+SUBSCRIBEÃ4ŒGst.RTSPHeaderField÷0
+SUPPORTEDÃ4ŒGst.RTSPHeaderField÷0
+TCPÃ4ŒGst.RTSPLowerTrans÷0
+TEARDOWNÃ4ŒGst.RTSPMethod÷0
+TIMESTAMPÃ4ŒGst.RTSPHeaderField÷0
+TRANSPORTÃ4ŒGst.RTSPHeaderField÷0
+UDPÃ4ŒGst.RTSPLowerTrans÷0
+UDP_MCASTÃ4ŒGst.RTSPLowerTrans÷0
+UNAUTHORIZEDÃ4ŒGst.RTSPStatusCode÷0
+UNKNOWNÃ4ŒGst.RTSPLowerTrans÷0
+UNKNOWNÃ4ŒGst.RTSPProfile÷0
+UNKNOWNÃ4ŒGst.RTSPTransMode÷0
+UNSUPPORTEDÃ4ŒGst.RTSPHeaderField÷0
+UNSUPPORTED_MEDIA_TYPEÃ4ŒGst.RTSPStatusCode÷0
+UNSUPPORTED_TRANSPORTÃ4ŒGst.RTSPStatusCode÷0
+USER_AGENTÃ4ŒGst.RTSPHeaderField÷0
+USE_PROXYÃ4ŒGst.RTSPStatusCode÷0
+VARYÃ4ŒGst.RTSPHeaderField÷0
+VIAÃ4ŒGst.RTSPHeaderField÷0
+WRITEÃ4ŒGst.RTSPEvent÷0
+WWW_AUTHENTICATEÃ4ŒGst.RTSPHeaderField÷0
+X_ACCELERATE_STREAMINGÃ4ŒGst.RTSPHeaderField÷0
+X_ACCEPT_AUTHENTÃ4ŒGst.RTSPHeaderField÷0
+X_ACCEPT_PROXY_AUTHENTÃ4ŒGst.RTSPHeaderField÷0
+X_BROADCAST_IDÃ4ŒGst.RTSPHeaderField÷0
+X_BURST_STREAMINGÃ4ŒGst.RTSPHeaderField÷0
+X_NOTICEÃ4ŒGst.RTSPHeaderField÷0
+X_PLAYER_LAG_TIMEÃ4ŒGst.RTSPHeaderField÷0
+X_PLAYLISTÃ4ŒGst.RTSPHeaderField÷0
+X_PLAYLIST_CHANGE_NOTICEÃ4ŒGst.RTSPHeaderField÷0
+X_PLAYLIST_GEN_IDÃ4ŒGst.RTSPHeaderField÷0
+X_PLAYLIST_SEEK_IDÃ4ŒGst.RTSPHeaderField÷0
+X_PROXY_CLIENT_AGENTÃ4ŒGst.RTSPHeaderField÷0
+X_PROXY_CLIENT_VERBÃ4ŒGst.RTSPHeaderField÷0
+X_RECEDING_PLAYLISTCHANGEÃ4ŒGst.RTSPHeaderField÷0
+X_RTP_INFOÃ4ŒGst.RTSPHeaderField÷0
+X_SERVER_IP_ADDRESSÃ4ŒGst.RTSPHeaderField÷0
+X_SESSIONCOOKIEÃ4ŒGst.RTSPHeaderField÷0
+X_STARTUPPROFILEÃ4ŒGst.RTSPHeaderField÷0
+abspathÃ8ŒGst.RTSPUrl÷0
+acceptÃ128Õ(int sock, out unowned Gst.RTSPConnection conn)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+add_headerÃ128Õ(Gst.RTSPHeaderField field, string value)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+after_sendÃ128Õ(Gst.RTSPMessage req, Gst.RTSPMessage resp)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+appendÃ8ŒGst.RTSPTransport÷0œbool
+append_headersÃ128Õ(GLib.StringBuilder str)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+as_textÃ128Õ()ŒGst.RTSPTransport÷0
+attachÃ128Õ(GLib.MainContext context)ŒGst.RTSPWatch÷0
+before_sendÃ128Õ(Gst.RTSPMessage req)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+bodyÃ8ŒGst.RTSPMessage÷0œuchar
+body_sizeÃ8ŒGst.RTSPMessage÷0
+clear_auth_paramsÃ128Õ()ŒGst.RTSPConnection÷0œpublic void
+client_portÃ8ŒGst.RTSPTransport÷0œGst.RTSPRange
+closeÃ128Õ()ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+closedÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+configure_streamÃ128Õ(Gst.Caps caps)ŒGst.RTSPExtension÷0œpublic abstract bool
+connectÃ128Õ(GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+copyÃ128Õ()ŒGst.RTSPUrl÷0œpublic Gst.RTSPUrl
+createÃ128Õ(Gst.RTSPUrl url, out Gst.RTSPConnection conn)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+create_from_fdÃ128Õ(int fd, string ip, uint16 port, string initial_buffer, out unowned Gst.RTSPConnection conn)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+destinationÃ8ŒGst.RTSPTransport÷0
+detect_serverÃ128Õ(Gst.RTSPMessage resp)ŒGst.RTSPExtension÷0œpublic abstract bool
+do_tunnelÃ128Õ(Gst.RTSPConnection conn2)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+dumpÃ128Õ()ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+errorÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+error_fullÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+familyÃ8ŒGst.RTSPUrl÷0œGst.RTSPFamily
+flushÃ128Õ(bool flush)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+get_bodyÃ128Õ(out unowned uchar[] data, uint size)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+get_headerÃ128Õ(Gst.RTSPHeaderField field, out unowned string value, int indx)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+get_ipÃ128Õ()ŒGst.RTSPConnection÷0œpublic unowned string
+get_managerÃ128Õ(Gst.RTSPTransMode trans, string manager, uint option)ŒGst.RTSPTransport÷0œpublic Gst.RTSPResult
+get_mimeÃ128Õ(Gst.RTSPTransMode trans, string mime)ŒGst.RTSPTransport÷0œpublic Gst.RTSPResult
+get_portÃ128Õ(uint16 port)ŒGst.RTSPUrl÷0œpublic Gst.RTSPResult
+get_readfdÃ128Õ()ŒGst.RTSPConnection÷0œpublic int
+get_request_uriÃ128Õ()ŒGst.RTSPUrl÷0
+get_transportsÃ128Õ(Gst.RTSPLowerTrans protocols, string transport)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+get_tunnelidÃ128Õ()ŒGst.RTSPConnection÷0œpublic unowned string
+get_urlÃ128Õ()ŒGst.RTSPConnection÷0œpublic unowned
+get_writefdÃ128Õ()ŒGst.RTSPConnection÷0œpublic int
+hdr_fieldsÃ8ŒGst.RTSPMessage÷0œGLib.Array
+hostÃ8ŒGst.RTSPUrl÷0
+initÃ128Õ()ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+initÃ128Õ()ŒGst.RTSPTransport÷0œpublic Gst.RTSPResult
+init_dataÃ128Õ(uchar channel)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+init_requestÃ128Õ(Gst.RTSPMethod method, string uri)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+init_responseÃ128Õ(Gst.RTSPStatusCode code, string reason, Gst.RTSPMessage request)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+interleavedÃ8ŒGst.RTSPTransport÷0œGst.RTSPRange
+is_tunneledÃ128Õ()ŒGst.RTSPConnection÷0œpublic bool
+layersÃ8ŒGst.RTSPTransport÷0
+lower_transportÃ8ŒGst.RTSPTransport÷0œGst.RTSPLowerTrans
+maxÃ8ŒGst.RTSPRange÷0œint
+maxÃ8ŒGst.RTSPTimeRange÷0œGst.RTSPTime
+message_receivedÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+message_sentÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+minÃ8ŒGst.RTSPRange÷0œint
+minÃ8ŒGst.RTSPTimeRange÷0œGst.RTSPTime
+mode_playÃ8ŒGst.RTSPTransport÷0œbool
+mode_recordÃ8ŒGst.RTSPTransport÷0œbool
+new_dataÃ128Õ(out Gst.RTSPMessage msg, uchar channel)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+new_requestÃ128Õ(out Gst.RTSPMessage msg, Gst.RTSPMethod method, string uri)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+new_responseÃ128Õ(out Gst.RTSPMessage msg, Gst.RTSPStatusCode code, string reason, Gst.RTSPMessage request)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+next_timeoutÃ128Õ(GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+parseÃ128Õ(string rangestr, out Gst.RTSPTimeRange range)ŒGst.RTSPRange÷0œpublic Gst.RTSPResult
+parseÃ128Õ(string str, Gst.RTSPTransport transport)ŒGst.RTSPTransport÷0œpublic Gst.RTSPResult
+parseÃ128Õ(string urlstr, out Gst.RTSPUrl url)ŒGst.RTSPUrl÷0œpublic Gst.RTSPResult
+parse_dataÃ128Õ(uchar channel)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+parse_requestÃ128Õ(Gst.RTSPMethod method, string uri, Gst.RTSPVersion version)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+parse_responseÃ128Õ(Gst.RTSPStatusCode code, string reason, Gst.RTSPVersion version)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+parse_sdpÃ128Õ(Gst.SDPMessage sdp, Gst.Structure s)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+passwdÃ8ŒGst.RTSPUrl÷0
+pollÃ128Õ(Gst.RTSPEvent events, Gst.RTSPEvent revents, GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+portÃ8ŒGst.RTSPTransport÷0œGst.RTSPRange
+portÃ8ŒGst.RTSPUrl÷0œuint16
+profileÃ8ŒGst.RTSPTransport÷0œGst.RTSPProfile
+queryÃ8ŒGst.RTSPUrl÷0
+queue_dataÃ128Õ(uchar data, uint size)ŒGst.RTSPWatch÷0
+queue_messageÃ128Õ(Gst.RTSPMessage message)ŒGst.RTSPWatch÷0
+readÃ128Õ(uchar data, uint size, GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+receiveÃ128Õ(Gst.RTSPMessage message, GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+receive_requestÃ128Õ(Gst.RTSPMessage req)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+remove_headerÃ128Õ(Gst.RTSPHeaderField field, int indx)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+resetÃ128Õ()ŒGst.RTSPWatch÷0œpublic void
+reset_timeoutÃ128Õ()ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+rtsp_base64_decode_ipÃ128Õ(string data, size_t len)ŒGst÷0œpublic void
+rtsp_base64_encodeÃ128Õ(string data, size_t len)ŒGst÷0œpublic unowned string
+rtsp_find_header_fieldÃ128Õ(string header)ŒGst÷0œpublic Gst.RTSPHeaderField
+rtsp_find_methodÃ128Õ(string method)ŒGst÷0œpublic Gst.RTSPMethod
+rtsp_header_allow_multipleÃ128Õ(Gst.RTSPHeaderField field)ŒGst÷0œpublic bool
+rtsp_header_as_textÃ128Õ(Gst.RTSPHeaderField field)ŒGst÷0œpublic unowned string
+rtsp_method_as_textÃ128Õ(Gst.RTSPMethod method)ŒGst÷0œpublic unowned string
+rtsp_options_as_textÃ128Õ(Gst.RTSPMethod options)ŒGst÷0
+rtsp_status_as_textÃ128Õ(Gst.RTSPStatusCode code)ŒGst÷0œpublic unowned string
+rtsp_strresultÃ128Õ(Gst.RTSPResult _result)ŒGst÷0œpublic unowned string
+rtsp_version_as_textÃ128Õ(Gst.RTSPVersion version)ŒGst÷0œpublic unowned string
+secondsÃ8ŒGst.RTSPTime÷0œdouble
+sendÃ128Õ(Gst.RTSPMessage message, GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+sendÃ128Õ(void* req, void* resp)ŒGst.RTSPExtension÷0œpublic signal Gst.RTSPResult
+send_messageÃ128Õ(Gst.RTSPMessage message, uint id)ŒGst.RTSPWatch÷0œpublic Gst.RTSPResult
+server_portÃ8ŒGst.RTSPTransport÷0œGst.RTSPRange
+set_authÃ128Õ(Gst.RTSPAuthMethod method, string user, string pass)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+set_auth_paramÃ128Õ(string param, string value)ŒGst.RTSPConnection÷0œpublic void
+set_bodyÃ128Õ(uchar[] data, uint size)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+set_http_modeÃ128Õ(bool enable)ŒGst.RTSPConnection÷0œpublic void
+set_ipÃ128Õ(string ip)ŒGst.RTSPConnection÷0œpublic void
+set_portÃ128Õ(uint16 port)ŒGst.RTSPUrl÷0œpublic Gst.RTSPResult
+set_proxyÃ128Õ(string host, uint port)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+set_qos_dscpÃ128Õ(uint qos_dscp)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+set_tunneledÃ128Õ(bool tunneled)ŒGst.RTSPConnection÷0œpublic void
+setup_mediaÃ128Õ(Gst.SDPMedia media)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+sourceÃ8ŒGst.RTSPTransport÷0
+ssrcÃ8ŒGst.RTSPTransport÷0
+steal_bodyÃ128Õ(out uchar[] data, uint size)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+stream_selectÃ128Õ(Gst.RTSPUrl url)ŒGst.RTSPExtension÷0œpublic abstract Gst.RTSPResult
+take_bodyÃ128Õ(owned uchar[] data, uint size)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+take_headerÃ128Õ(Gst.RTSPHeaderField field, owned string value)ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+to_stringÃ128Õ(Gst.RTSPTimeRange range)ŒGst.RTSPRange÷0
+transÃ8ŒGst.RTSPTransport÷0œGst.RTSPTransMode
+transportsÃ8ŒGst.RTSPUrl÷0œGst.RTSPLowerTrans
+ttlÃ8ŒGst.RTSPTransport÷0
+tunnel_completeÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+tunnel_startÃ8ŒGst.RTSPWatchFuncs÷0œGLib.Callback
+typeÃ8ŒGst.RTSPMessage÷0œGst.RTSPMsgType
+typeÃ8ŒGst.RTSPTime÷0œGst.RTSPTimeType
+type_dataÃ8ŒGst.RTSPMessage÷0œvoid
+unitÃ8ŒGst.RTSPTimeRange÷0œGst.RTSPRangeUnit
+unsetÃ128Õ()ŒGst.RTSPMessage÷0œpublic Gst.RTSPResult
+userÃ8ŒGst.RTSPUrl÷0
+writeÃ128Õ(uchar data, uint size, GLib.TimeVal timeout)ŒGst.RTSPConnection÷0œpublic Gst.RTSPResult
+write_dataÃ128Õ(uchar data, uint size, uint id)ŒGst.RTSPWatch÷0œpublic Gst.RTSPResult

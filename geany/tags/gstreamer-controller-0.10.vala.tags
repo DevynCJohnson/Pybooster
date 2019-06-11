@@ -1,0 +1,89 @@
+# format=tagmanager
+@getÌ128Í(string property_name, Gst.ClockTime timestamp)ÎGst.ControllerÖ0Ïpublic Gst.Value
+@lockÌ8ÎGst.ControllerÖ0ÏGLib.Mutex
+@lockÌ8ÎGst.InterpolationControlSourceÖ0ÏGLib.Mutex
+@lockÌ8ÎGst.LFOControlSourceÖ0ÏGLib.Mutex
+@setÌ128Í(string property_name, Gst.ClockTime timestamp, Gst.Value value)ÎGst.ControllerÖ0Ïpublic bool
+@setÌ128Í(Gst.ClockTime timestamp, Gst.Value value)ÎGst.InterpolationControlSourceÖ0Ïpublic bool
+CUBICÌ4ÎGst.InterpolateModeÖ0
+ControlSourceÌ1ÎGstÖ0
+ControlSourceÌ128Í()ÎGst.ControlSourceÖ0
+ControlSourceBindÌ128Í(Gst.ControlSource _self, GLib.ParamSpec pspec)ÎGstÖ0Ïpublic delegate bool
+ControlSourceGetValueÌ128Í(Gst.ControlSource _self, Gst.ClockTime timestamp, Gst.Value value)ÎGstÖ0Ïpublic delegate bool
+ControlSourceGetValueArrayÌ128Í(Gst.ControlSource _self, Gst.ClockTime timestamp, Gst.ValueArray value_array)ÎGstÖ0Ïpublic delegate bool
+ControllerÌ1ÎGstÖ0
+ControllerÌ128Í(GLib.Object object, ...)ÎGst.ControllerÖ0
+Controller.listÌ128Í(GLib.Object object, GLib.List<string> list)ÎGst.ControllerÖ0
+Controller.valistÌ128Í(GLib.Object object, void* var_args)ÎGst.ControllerÖ0
+GstÌ256Ö0
+InterpolateModeÌ2ÎGstÖ0
+InterpolationControlSourceÌ1ÎGstÖ0
+InterpolationControlSourceÌ128Í()ÎGst.InterpolationControlSourceÖ0
+LFOControlSourceÌ1ÎGstÖ0
+LFOControlSourceÌ128Í()ÎGst.LFOControlSourceÖ0
+LFOWaveformÌ2ÎGstÖ0
+LINEARÌ4ÎGst.InterpolateModeÖ0
+NONEÌ4ÎGst.InterpolateModeÖ0
+QUADRATICÌ4ÎGst.InterpolateModeÖ0
+REVERSEÌ4ÎGst.LFOWaveformÖ0
+SAWÌ4ÎGst.LFOWaveformÖ0
+SINEÌ4ÎGst.LFOWaveformÖ0
+SQUAREÌ4ÎGst.LFOWaveformÖ0
+TRIANGLEÌ4ÎGst.LFOWaveformÖ0
+TRIGGERÌ4ÎGst.InterpolateModeÖ0
+TimedValueÌ1ÎGstÖ0
+USERÌ4ÎGst.InterpolateModeÖ0
+ValueArrayÌ1ÎGstÖ0
+amplitudeÌ8ÎGst.LFOControlSourceÖ0ÏGst.Value
+bindÌ128Í(GLib.ParamSpec pspec)ÎGst.ControlSourceÖ0Ïpublic bool
+boundÌ8ÎGst.ControlSourceÖ0Ïbool
+control_rateÌ8ÎGst.ControllerÖ0Ïuint64
+frequencyÌ8ÎGst.LFOControlSourceÖ0Ïdouble
+get_allÌ128Í(string property_name)ÎGst.ControllerÖ0Ïpublic GLib.List
+get_allÌ128Í()ÎGst.InterpolationControlSourceÖ0Ïpublic GLib.List
+get_control_sourceÌ128Í(string property_name)ÎGst.ControllerÖ0Ïpublic unowned
+get_countÌ128Í()ÎGst.InterpolationControlSourceÖ0Ïpublic int
+get_valueÌ128Í(Gst.ClockTime timestamp, Gst.Value value)ÎGst.ControlSourceÖ0Ïpublic bool
+get_value_arrayÌ128Í(Gst.ClockTime timestamp, Gst.ValueArray value_array)ÎGst.ControlSourceÖ0Ïpublic bool
+get_value_arrayÌ128Í(Gst.ClockTime timestamp, Gst.ValueArray value_array)ÎGst.ControllerÖ0Ïpublic bool
+get_value_arraysÌ128Í(Gst.ClockTime timestamp, GLib.SList<Gst.ValueArray> value_arrays)ÎGst.ControllerÖ0Ïpublic bool
+initÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ÎGst.ControllerÖ0Ïpublic bool
+nbsamplesÌ8ÎGst.ValueArrayÖ0Ïint
+objectÌ8ÎGst.ControllerÖ0ÏGLib.Object
+object_control_propertiesÌ128Í(GLib.Object object, ...)ÎGstÖ0Ïpublic unowned
+object_get_control_rateÌ128Í(GLib.Object object)ÎGstÖ0Ïpublic Gst.ClockTime
+object_get_control_sourceÌ128Í(GLib.Object object, string property_name)ÎGstÖ0Ïpublic unowned
+object_get_controllerÌ128Í(GLib.Object object)ÎGstÖ0Ïpublic unowned
+object_get_value_arrayÌ128Í(GLib.Object object, Gst.ClockTime timestamp, Gst.ValueArray value_array)ÎGstÖ0Ïpublic bool
+object_get_value_arraysÌ128Í(GLib.Object object, Gst.ClockTime timestamp, GLib.SList<Gst.ValueArray> value_arrays)ÎGstÖ0Ïpublic bool
+object_set_control_rateÌ128Í(GLib.Object object, Gst.ClockTime control_rate)ÎGstÖ0Ïpublic void
+object_set_control_sourceÌ128Í(GLib.Object object, string property_name, Gst.ControlSource csource)ÎGstÖ0Ïpublic bool
+object_set_controllerÌ128Í(GLib.Object object, Gst.Controller controller)ÎGstÖ0Ïpublic bool
+object_suggest_next_syncÌ128Í(GLib.Object object)ÎGstÖ0Ïpublic Gst.ClockTime
+object_sync_valuesÌ128Í(GLib.Object object, Gst.ClockTime timestamp)ÎGstÖ0Ïpublic bool
+object_uncontrol_propertiesÌ128Í(GLib.Object object, ...)ÎGstÖ0Ïpublic bool
+offsetÌ8ÎGst.LFOControlSourceÖ0ÏGst.Value
+propertiesÌ8ÎGst.ControllerÖ0ÏGLib.List
+property_nameÌ8ÎGst.ValueArrayÖ0
+remove_propertiesÌ128Í(...)ÎGst.ControllerÖ0Ïpublic bool
+remove_properties_listÌ128Í(GLib.List<string> list)ÎGst.ControllerÖ0Ïpublic bool
+remove_properties_valistÌ128Í(void* var_args)ÎGst.ControllerÖ0Ïpublic bool
+sample_intervalÌ8ÎGst.ValueArrayÖ0ÏGst.ClockTime
+set_control_sourceÌ128Í(string property_name, Gst.ControlSource csource)ÎGst.ControllerÖ0Ïpublic bool
+set_disabledÌ128Í(bool disabled)ÎGst.ControllerÖ0Ïpublic void
+set_from_listÌ128Í(string property_name, GLib.SList<Gst.TimedValue> timedvalues)ÎGst.ControllerÖ0Ïpublic bool
+set_from_listÌ128Í(GLib.SList<Gst.TimedValue> timedvalues)ÎGst.InterpolationControlSourceÖ0Ïpublic bool
+set_interpolation_modeÌ128Í(string property_name, Gst.InterpolateMode mode)ÎGst.ControllerÖ0Ïpublic bool
+set_interpolation_modeÌ128Í(Gst.InterpolateMode mode)ÎGst.InterpolationControlSourceÖ0Ïpublic bool
+set_property_disabledÌ128Í(string property_name, bool disabled)ÎGst.ControllerÖ0Ïpublic void
+suggest_next_syncÌ128Í()ÎGst.ControllerÖ0Ïpublic Gst.ClockTime
+sync_valuesÌ128Í(Gst.ClockTime timestamp)ÎGst.ControllerÖ0Ïpublic bool
+timeshiftÌ8ÎGst.LFOControlSourceÖ0Ïuint64
+timestampÌ8ÎGst.TimedValueÖ0ÏGst.ClockTime
+unsetÌ128Í(string property_name, Gst.ClockTime timestamp)ÎGst.ControllerÖ0Ïpublic bool
+unsetÌ128Í(Gst.ClockTime timestamp)ÎGst.InterpolationControlSourceÖ0Ïpublic bool
+unset_allÌ128Í(string property_name)ÎGst.ControllerÖ0Ïpublic bool
+unset_allÌ128Í()ÎGst.InterpolationControlSourceÖ0Ïpublic void
+valueÌ8ÎGst.TimedValueÖ0ÏGst.Value
+valuesÌ8ÎGst.ValueArrayÖ0Ïvoid
+waveformÌ8ÎGst.LFOControlSourceÖ0ÏGst.LFOWaveform

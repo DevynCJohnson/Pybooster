@@ -1,0 +1,25 @@
+# format=tagmanager
+GstÌ256Ö0
+IP4Ì4ÎGst.NetTypeÖ0
+IP6Ì4ÎGst.NetTypeÖ0
+NETADDRESS_MAX_LENÌ8ÎGstÖ0Ïint
+NetAddressÌ2048ÎGstÖ0
+NetBufferÌ1ÎGstÖ0
+NetBufferÌ128Í()ÎGst.NetBufferÖ0
+NetTypeÌ2ÎGstÖ0
+UNKNOWNÌ4ÎGst.NetTypeÖ0
+addressÌ8ÎGst.NetAddressÖ0Ïvoid
+bufferÌ8ÎGst.NetBufferÖ0ÏGst.Buffer
+equalÌ128Í(Gst.NetAddress naddr2)ÎGst.NetAddressÖ0Ïpublic bool
+fromÌ8ÎGst.NetBufferÖ0ÏGst.NetAddress
+get_address_bytesÌ128Í([CCode (array_length = false)] uchar[] address, out uint16 port)ÎGst.NetAddressÖ0Ïpublic int
+get_ip4_addressÌ128Í(out uint32 address, out uint16 port)ÎGst.NetAddressÖ0Ïpublic bool
+get_ip6_addressÌ128Í([CCode (array_length = false)] uchar[] address, out uint16 port)ÎGst.NetAddressÖ0Ïpublic bool
+get_net_typeÌ128Í()ÎGst.NetAddressÖ0Ïpublic Gst.NetType
+portÌ8ÎGst.NetAddressÖ0Ïuint16
+set_address_bytesÌ128Í(Gst.NetType type, [CCode (array_length = false)] uchar[] address, uint16 port)ÎGst.NetAddressÖ0Ïpublic int
+set_ip4_addressÌ128Í(uint32 address, uint16 port)ÎGst.NetAddressÖ0Ïpublic void
+set_ip6_addressÌ128Í([CCode (array_length = false)] uchar[] address, uint16 port)ÎGst.NetAddressÖ0Ïpublic void
+toÌ8ÎGst.NetBufferÖ0ÏGst.NetAddress
+to_stringÌ128Í(string dest, ulong len)ÎGst.NetAddressÖ0Ïpublic int
+typeÌ8ÎGst.NetAddressÖ0ÏGst.NetType

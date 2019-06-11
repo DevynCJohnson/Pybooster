@@ -1,0 +1,106 @@
+# format=tagmanager
+ASCIIÃ4ŒZLib.Data÷0
+AlgorithmÃ2ŒZLib÷0
+BEST_COMPRESSIONÃ4ŒZLib.Level÷0
+BEST_SPEEDÃ4ŒZLib.Level÷0
+BINARYÃ4ŒZLib.Data÷0
+BLOCKÃ4ŒZLib.Flush÷0
+BUF_ERRORÃ4ŒZLib.Status÷0
+DATA_ERRORÃ4ŒZLib.Status÷0
+DEFAULT_COMPRESSIONÃ4ŒZLib.Level÷0
+DEFAULT_STRATEGYÃ4ŒZLib.Strategy÷0
+DEFLATEDÃ4ŒZLib.Algorithm÷0
+DataÃ2ŒZLib÷0
+DeflateStreamÃ2048ŒZLib÷0
+DeflateStreamÃ128Õ(int level = Level.DEFAULT_COMPRESSION)ŒZLib.DeflateStream÷0
+DeflateStream.fullÃ128Õ(int level = Level.DEFAULT_COMPRESSION, int method = Algorithm.DEFLATED, int windowBits = 15, int memLevel = 8, int strategy = Strategy.DEFAULT_STRATEGY)ŒZLib.DeflateStream÷0
+ERRNOÃ4ŒZLib.Status÷0
+FILTEREDÃ4ŒZLib.Strategy÷0
+FINISHÃ4ŒZLib.Flush÷0
+FIXEDÃ4ŒZLib.Strategy÷0
+FULL_FLUSHÃ4ŒZLib.Flush÷0
+FlushÃ2ŒZLib÷0
+GZFileStreamÃ1ŒZLib÷0
+GZHeaderÃ2048ŒZLib÷0
+HUFFMAN_ONLYÃ4ŒZLib.Strategy÷0
+InflateStreamÃ2048ŒZLib÷0
+InflateStreamÃ128Õ()ŒZLib.InflateStream÷0
+InflateStream.fullÃ128Õ(int windowBits)ŒZLib.InflateStream÷0
+InitialÃ2ŒZLib÷0
+LevelÃ2ŒZLib÷0
+MAJORÃ8ŒZLib.VERSION÷0œint
+MEM_ERRORÃ4ŒZLib.Status÷0
+MINORÃ8ŒZLib.VERSION÷0œint
+NEED_DICTÃ4ŒZLib.Status÷0
+NO_COMPRESSIONÃ4ŒZLib.Level÷0
+NO_FLUSHÃ4ŒZLib.Flush÷0
+NULLÃ4ŒZLib.Initial÷0
+NUMBERÃ8ŒZLib.VERSION÷0œint
+OKÃ4ŒZLib.Status÷0
+REVISIONÃ8ŒZLib.VERSION÷0œint
+RLEÃ4ŒZLib.Strategy÷0
+STREAM_ENDÃ4ŒZLib.Status÷0
+STREAM_ERRORÃ4ŒZLib.Status÷0
+STRINGÃ8ŒZLib.VERSION÷0
+SYNC_FLUSHÃ4ŒZLib.Flush÷0
+StatusÃ2ŒZLib÷0
+StrategyÃ2ŒZLib÷0
+StreamÃ2048ŒZLib÷0
+UNKNOWNÃ4ŒZLib.Data÷0
+UtilityÃ256÷0
+VERSIONÃ256÷0
+VERSION_ERRORÃ4ŒZLib.Status÷0
+ZLibÃ256÷0
+adlerÃ8ŒZLib.Stream÷0
+adler32Ã128Õ(ulong crc = 0UL, [CCode (array_length_type = )] uint8[]? buf = null)ŒZLib.Utility÷0
+avail_inÃ8ŒZLib.Stream÷0
+avail_outÃ8ŒZLib.Stream÷0
+boundÃ128Õ(ulong sourceLen)ŒZLib.DeflateStream÷0
+commentÃ8ŒZLib.GZHeader÷0
+comment_maxÃ8ŒZLib.GZHeader÷0
+compressÃ128Õ([CCode (array_length = false)] uint8[] dest, ref ulong dest_length, [CCode (array_length_type = )] uint8[] source, int level = Level.DEFAULT_COMPRESSION)ŒZLib.Utility÷0œpublic int
+compress_boundÃ128Õ(ulong sourceLen)ŒZLib.Utility÷0œpublic int
+copyÃ128Õ(DeflateStream dest)ŒZLib.DeflateStream÷0œpublic int
+crc32Ã128Õ(ulong crc = 0UL, [CCode (array_length_type = )] uint8[]? buf = null)ŒZLib.Utility÷0
+data_typeÃ8ŒZLib.Stream÷0œint
+deflateÃ128Õ(int flush)ŒZLib.DeflateStream÷0œpublic int
+directÃ128Õ()ŒZLib.GZFileStream÷0œpublic bool
+doneÃ8ŒZLib.GZHeader÷0œint
+dopenÃ128Õ(int fd, string mode)ŒZLib.GZFileStream÷0œpublic GZFileStream
+eofÃ128Õ()ŒZLib.GZFileStream÷0œpublic bool
+extraÃ8ŒZLib.GZHeader÷0œuint8
+extra_maxÃ8ŒZLib.GZHeader÷0
+flushÃ128Õ(int flush)ŒZLib.GZFileStream÷0œpublic int
+get_headerÃ128Õ(out GZHeader head)ŒZLib.InflateStream÷0œpublic int
+getsÃ128Õ(char[] buf)ŒZLib.GZFileStream÷0œpublic unowned string
+hcrcÃ8ŒZLib.GZHeader÷0œint
+inflateÃ128Õ(int flush)ŒZLib.InflateStream÷0œpublic int
+msgÃ8ŒZLib.Stream÷0œstring?
+nameÃ8ŒZLib.GZHeader÷0œstring?
+name_maxÃ8ŒZLib.GZHeader÷0
+next_inÃ8ŒZLib.Stream÷0œuint8
+next_outÃ8ŒZLib.Stream÷0œuint8
+openÃ128Õ(string path, string mode = )ŒZLib.GZFileStream÷0œpublic GZFileStream
+osÃ8ŒZLib.GZHeader÷0œint
+paramsÃ128Õ(int level, int strategy)ŒZLib.DeflateStream÷0œpublic int
+primeÃ128Õ(int bits, int value)ŒZLib.DeflateStream÷0œpublic int
+primeÃ128Õ(int bits, int value)ŒZLib.InflateStream÷0œpublic int
+printfÃ128Õ(string format, ...)ŒZLib.GZFileStream÷0œpublic int
+putsÃ128Õ(string s)ŒZLib.GZFileStream÷0œpublic int
+readÃ128Õ(uint8[] buf)ŒZLib.GZFileStream÷0œpublic int
+resetÃ128Õ()ŒZLib.DeflateStream÷0œpublic int
+resetÃ128Õ()ŒZLib.InflateStream÷0œpublic int
+rewindÃ128Õ()ŒZLib.GZFileStream÷0œpublic int
+set_dictionaryÃ128Õ([CCode (array_length_type = )] uint8[] dictionary)ŒZLib.DeflateStream÷0œpublic int
+set_dictionaryÃ128Õ([CCode (array_length_type = )] uint8[] dictionary)ŒZLib.InflateStream÷0œpublic int
+set_headerÃ128Õ(GZHeader head)ŒZLib.DeflateStream÷0œpublic int
+setparamsÃ128Õ(int level, int strategy)ŒZLib.GZFileStream÷0œpublic int
+syncÃ128Õ()ŒZLib.InflateStream÷0œpublic int
+textÃ8ŒZLib.GZHeader÷0œint
+timeÃ8ŒZLib.GZHeader÷0
+total_inÃ8ŒZLib.Stream÷0
+total_outÃ8ŒZLib.Stream÷0
+tuneÃ128Õ(int good_length, int max_lazy, int nice_length, int max_chain)ŒZLib.DeflateStream÷0œpublic int
+uncompressÃ128Õ([CCode (array_length = false)] uint8[] dest, ref ulong dest_length, [CCode (array_length_type = )] uint8[] source)ŒZLib.Utility÷0œpublic int
+writeÃ128Õ(uint8[] buf)ŒZLib.GZFileStream÷0œpublic int
+xflagsÃ8ŒZLib.GZHeader÷0œint

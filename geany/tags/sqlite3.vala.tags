@@ -1,0 +1,267 @@
+# format=tagmanager
+@tryÃ128Õ()ŒSqlite.Mutex÷0œpublic int
+ABORTÃ8ŒSqlite÷0œint
+ALTER_TABLEÃ4ŒSqlite.Action÷0
+ANALYZEÃ4ŒSqlite.Action÷0
+ANYÃ8ŒSqlite÷0œint
+ATTACHÃ4ŒSqlite.Action÷0
+ATTACHEDÃ4ŒSqlite.Limit÷0
+AUTHÃ8ŒSqlite÷0œint
+ActionÃ2ŒSqlite÷0
+AuthorizeCallbackÃ128Õ(Sqlite.Action action, string? p1, string? p2, string db_name, string? responsible)ŒSqlite÷0œpublic delegate int
+BLOBÃ8ŒSqlite÷0œint
+BUSYÃ8ŒSqlite÷0œint
+BackupÃ1ŒSqlite÷0
+BackupÃ128Õ(Database dest, string dest_name, Database source, string source_name)ŒSqlite.Backup÷0
+CANTOPENÃ8ŒSqlite÷0œint
+COLUMNÃ4ŒSqlite.Limit÷0
+COMPOUND_SELECTÃ4ŒSqlite.Limit÷0
+CONSTRAINTÃ8ŒSqlite÷0œint
+COPYÃ4ŒSqlite.Action÷0
+CORRUPTÃ8ŒSqlite÷0œint
+CREATE_INDEXÃ4ŒSqlite.Action÷0
+CREATE_TABLEÃ4ŒSqlite.Action÷0
+CREATE_TEMP_INDEXÃ4ŒSqlite.Action÷0
+CREATE_TEMP_TABLEÃ4ŒSqlite.Action÷0
+CREATE_TEMP_TRIGGERÃ4ŒSqlite.Action÷0
+CREATE_TEMP_VIEWÃ4ŒSqlite.Action÷0
+CREATE_TRIGGERÃ4ŒSqlite.Action÷0
+CREATE_VIEWÃ4ŒSqlite.Action÷0
+CREATE_VTABLEÃ4ŒSqlite.Action÷0
+CallbackÃ128Õ(int n_columns, [CCode (array_length = false)] string[] values, [CCode (array_length = false)] string[] column_names)ŒSqlite÷0œpublic delegate int
+CommitCallbackÃ128Õ()ŒSqlite÷0œpublic delegate int
+CompareCallbackÃ128Õ(int alen, void* a, int blen, void* b)ŒSqlite÷0œpublic delegate int
+ConfigÃ2ŒSqlite÷0
+ContextÃ1ŒSqlite÷0
+DELETEÃ4ŒSqlite.Action÷0
+DETACHÃ4ŒSqlite.Action÷0
+DONEÃ8ŒSqlite÷0œint
+DROP_INDEXÃ4ŒSqlite.Action÷0
+DROP_TABLEÃ4ŒSqlite.Action÷0
+DROP_TEMP_INDEXÃ4ŒSqlite.Action÷0
+DROP_TEMP_TABLEÃ4ŒSqlite.Action÷0
+DROP_TEMP_TRIGGERÃ4ŒSqlite.Action÷0
+DROP_TEMP_VIEWÃ4ŒSqlite.Action÷0
+DROP_TRIGGERÃ4ŒSqlite.Action÷0
+DROP_VIEWÃ4ŒSqlite.Action÷0
+DROP_VTABLEÃ4ŒSqlite.Action÷0
+DatabaseÃ1ŒSqlite÷0
+DatabaseStatusÃ2ŒSqlite÷0
+EMPTYÃ8ŒSqlite÷0œint
+ERRORÃ8ŒSqlite÷0œint
+EXPR_DEPTHÃ4ŒSqlite.Limit÷0
+FLOATÃ8ŒSqlite÷0œint
+FORMATÃ8ŒSqlite÷0œint
+FULLÃ8ŒSqlite÷0œint
+FULLSCAN_STEPÃ4ŒSqlite.StatementStatus÷0
+FUNCTIONÃ4ŒSqlite.Action÷0
+FUNCTION_ARGÃ4ŒSqlite.Limit÷0
+GETMALLOCÃ4ŒSqlite.Config÷0
+GETMUTEXÃ4ŒSqlite.Config÷0
+GETPCACHEÃ4ŒSqlite.Config÷0
+HEAPÃ4ŒSqlite.Config÷0
+INSERTÃ4ŒSqlite.Action÷0
+INTEGERÃ8ŒSqlite÷0œint
+INTERNALÃ8ŒSqlite÷0œint
+INTERRUPTÃ8ŒSqlite÷0œint
+IOERRÃ8ŒSqlite÷0œint
+LENGTHÃ4ŒSqlite.Limit÷0
+LIKE_PATTERN_LENGTHÃ4ŒSqlite.Limit÷0
+LOCKEDÃ8ŒSqlite÷0œint
+LOGÃ4ŒSqlite.Config÷0
+LOOKASIDEÃ4ŒSqlite.Config÷0
+LOOKASIDE_USEDÃ4ŒSqlite.DatabaseStatus÷0
+LimitÃ2ŒSqlite÷0
+MALLOCÃ4ŒSqlite.Config÷0
+MALLOC_SIZEÃ4ŒSqlite.Status÷0
+MEMORY_USEDÃ4ŒSqlite.Status÷0
+MEMSTATUSÃ4ŒSqlite.Config÷0
+MISMATCHÃ8ŒSqlite÷0œint
+MISUSEÃ8ŒSqlite÷0œint
+MULTITHREADÃ4ŒSqlite.Config÷0
+MUTEXÃ4ŒSqlite.Config÷0
+MUTEX_FASTÃ8ŒSqlite÷0œint
+MUTEX_RECURSIVEÃ8ŒSqlite÷0œint
+MemoryÃ256÷0
+MutexÃ1ŒSqlite÷0
+MutexÃ128Õ(int mutex_type = MUTEX_RECURSIVE)ŒSqlite.Mutex÷0
+NOLFSÃ8ŒSqlite÷0œint
+NOMEMÃ8ŒSqlite÷0œint
+NOTADBÃ8ŒSqlite÷0œint
+NOTFOUNDÃ8ŒSqlite÷0œint
+NULLÃ8ŒSqlite÷0œint
+OKÃ8ŒSqlite÷0œint
+OPEN_CREATEÃ8ŒSqlite÷0œint
+OPEN_READONLYÃ8ŒSqlite÷0œint
+OPEN_READWRITEÃ8ŒSqlite÷0œint
+PAGECACHEÃ4ŒSqlite.Config÷0
+PAGECACHE_OVERFLOWÃ4ŒSqlite.Status÷0
+PAGECACHE_SIZEÃ4ŒSqlite.Status÷0
+PAGECACHE_USEDÃ4ŒSqlite.Status÷0
+PARSER_STACKÃ4ŒSqlite.Status÷0
+PCACHEÃ4ŒSqlite.Config÷0
+PERMÃ8ŒSqlite÷0œint
+PRAGMAÃ4ŒSqlite.Action÷0
+PROTOCOLÃ8ŒSqlite÷0œint
+ProfileCallbackÃ128Õ(string sql, uint64 time)ŒSqlite÷0œpublic delegate void
+ProgressCallbackÃ128Õ()ŒSqlite÷0œpublic delegate int
+RANGEÃ8ŒSqlite÷0œint
+READÃ4ŒSqlite.Action÷0
+READONLYÃ8ŒSqlite÷0œint
+REINDEXÃ4ŒSqlite.Action÷0
+ROWÃ8ŒSqlite÷0œint
+RollbackCallbackÃ128Õ()ŒSqlite÷0œpublic delegate void
+SAVEPOINTÃ4ŒSqlite.Action÷0
+SCHEMAÃ8ŒSqlite÷0œint
+SCRATCHÃ4ŒSqlite.Config÷0
+SCRATCH_OVERFLOWÃ4ŒSqlite.Status÷0
+SCRATCH_SIZEÃ4ŒSqlite.Status÷0
+SCRATCH_USEDÃ4ŒSqlite.Status÷0
+SELECTÃ4ŒSqlite.Action÷0
+SERIALIZEDÃ4ŒSqlite.Config÷0
+SINGLETHREADÃ4ŒSqlite.Config÷0
+SORTÃ4ŒSqlite.StatementStatus÷0
+SOURCE_IDÃ8ŒSqlite÷0
+SQL_LENGTHÃ4ŒSqlite.Limit÷0
+SqliteÃ256÷0
+StatementÃ1ŒSqlite÷0
+StatementStatusÃ2ŒSqlite÷0
+StatusÃ2ŒSqlite÷0
+TEXTÃ8ŒSqlite÷0œint
+TOOBIGÃ8ŒSqlite÷0œint
+TRANSACTIONÃ4ŒSqlite.Action÷0
+TRIGGER_DEPTHÃ4ŒSqlite.Limit÷0
+TraceCallbackÃ128Õ(string message)ŒSqlite÷0œpublic delegate void
+UPDATEÃ4ŒSqlite.Action÷0
+UTF16Ã8ŒSqlite÷0œint
+UTF16BEÃ8ŒSqlite÷0œint
+UTF16LEÃ8ŒSqlite÷0œint
+UTF16_ALIGNEDÃ8ŒSqlite÷0œint
+UTF8Ã8ŒSqlite÷0œint
+UpdateCallbackÃ128Õ(Sqlite.Action action, string dbname, string table, int64 rowid)ŒSqlite÷0œpublic delegate void
+UserFuncCallbackÃ128Õ(Sqlite.Context context, [CCode (array_length_pos = 1.1)] Sqlite.Value[] values)ŒSqlite÷0œpublic delegate void
+UserFuncFinishCallbackÃ128Õ(Sqlite.Context context)ŒSqlite÷0œpublic delegate void
+VARIABLE_NUMBERÃ4ŒSqlite.Limit÷0
+VDBE_OPÃ4ŒSqlite.Limit÷0
+VERSIONÃ8ŒSqlite÷0
+VERSION_NUMBERÃ8ŒSqlite÷0œint
+ValueÃ1ŒSqlite÷0
+WALHookCallbackÃ128Õ(Sqlite.Database db, string dbname, int pages)ŒSqlite÷0œpublic delegate int
+_bind_textÃ128Õ(int index, string value, int n = -1, GLib.DestroyNotify? destroy_notify = null)ŒSqlite.Statement÷0œpublic int
+_execÃ128Õ(string sql, Callback? sqlite3_callback = null, [CCode (type = )] out unowned string errmsg = null)ŒSqlite.Database÷0œpublic int
+_get_tableÃ128Õ(string sql, [CCode (array_length = false)] out unowned string[] resultp, out int nrow, out int ncolumn, [CCode (type = )] out unowned string? errmsg = null)ŒSqlite.Database÷0œpublic int
+aggregateÃ128Õ(int n_bytes)ŒSqlite.Context÷0œpublic void *
+bind_blobÃ128Õ(int index, void* value, int n, GLib.DestroyNotify? destroy_notify = null)ŒSqlite.Statement÷0œpublic int
+bind_doubleÃ128Õ(int index, double value)ŒSqlite.Statement÷0œpublic int
+bind_intÃ128Õ(int index, int value)ŒSqlite.Statement÷0œpublic int
+bind_int64Ã128Õ(int index, int64 value)ŒSqlite.Statement÷0œpublic int
+bind_nullÃ128Õ(int index)ŒSqlite.Statement÷0œpublic int
+bind_parameter_countÃ128Õ()ŒSqlite.Statement÷0œpublic int
+bind_parameter_indexÃ128Õ(string name)ŒSqlite.Statement÷0œpublic int
+bind_parameter_nameÃ128Õ(int index)ŒSqlite.Statement÷0œpublic unowned string
+bind_textÃ128Õ(int index, owned string value, int n = -1, GLib.DestroyNotify destroy_notify = GLib.g_free)ŒSqlite.Statement÷0œpublic int
+bind_valueÃ128Õ(int index, Value value)ŒSqlite.Statement÷0œpublic int
+bind_zeroblobÃ128Õ(int index, int n)ŒSqlite.Statement÷0œpublic int
+busy_timeoutÃ128Õ(int ms)ŒSqlite.Database÷0œpublic int
+changesÃ128Õ()ŒSqlite.Database÷0œpublic int
+clear_bindingsÃ128Õ()ŒSqlite.Statement÷0œpublic int
+column_blobÃ128Õ(int col)ŒSqlite.Statement÷0œpublic void *
+column_bytesÃ128Õ(int col)ŒSqlite.Statement÷0œpublic int
+column_countÃ128Õ()ŒSqlite.Statement÷0œpublic int
+column_database_nameÃ128Õ(int col)ŒSqlite.Statement÷0œpublic unowned string
+column_doubleÃ128Õ(int col)ŒSqlite.Statement÷0œpublic double
+column_intÃ128Õ(int col)ŒSqlite.Statement÷0œpublic int
+column_int64Ã128Õ(int col)ŒSqlite.Statement÷0œpublic int64
+column_nameÃ128Õ(int index)ŒSqlite.Statement÷0œpublic unowned string
+column_origin_nameÃ128Õ(int col)ŒSqlite.Statement÷0œpublic unowned string
+column_table_nameÃ128Õ(int col)ŒSqlite.Statement÷0œpublic unowned string
+column_textÃ128Õ(int col)ŒSqlite.Statement÷0œpublic unowned string
+column_typeÃ128Õ(int col)ŒSqlite.Statement÷0œpublic int
+column_valueÃ128Õ(int col)ŒSqlite.Statement÷0œpublic unowned
+commit_hookÃ128Õ(CommitCallback? commit_hook)ŒSqlite.Database÷0œpublic void
+compileoption_getÃ128Õ(int n)ŒSqlite÷0œpublic unowned
+compileoption_usedÃ128Õ(string option_name)ŒSqlite÷0œpublic int
+completeÃ128Õ(string sql)ŒSqlite÷0œpublic int
+completeÃ128Õ(string sql)ŒSqlite.Database÷0œpublic int
+configÃ128Õ(Sqlite.Config op, ...)ŒSqlite÷0œpublic int
+create_collationÃ128Õ(string zName, int eTextRep, [CCode (delegate_target_pos = 2.9, type = )] CompareCallback xCompare)ŒSqlite.Database÷0œpublic int
+create_functionÃ128Õ(string zFunctionName, int nArg, int eTextRep, void * user_data, UserFuncCallback? xFunc, UserFuncCallback? xStep, UserFuncFinishCallback? xFinal)ŒSqlite.Database÷0œpublic int
+create_function_v2Ã128Õ(string zFunctionName, int nArg, int eTextRep, void * user_data, UserFuncCallback? xFunc, UserFuncCallback? xStep, UserFuncFinishCallback? xFinal, GLib.DestroyNotify? destroy = null)ŒSqlite.Database÷0œpublic int
+data_countÃ128Õ()ŒSqlite.Statement÷0œpublic int
+db_handleÃ128Õ()ŒSqlite.Context÷0œpublic unowned
+db_handleÃ128Õ()ŒSqlite.Statement÷0œpublic unowned
+enterÃ128Õ()ŒSqlite.Mutex÷0œpublic void
+errcodeÃ128Õ()ŒSqlite.Database÷0œpublic int
+errmsgÃ128Õ()ŒSqlite.Database÷0œpublic unowned string
+execÃ128Õ(string sql, Callback? sqlite3_callback = null, out string errmsg = null)ŒSqlite.Database÷0œpublic int
+extended_result_codesÃ128Õ(int onoff)ŒSqlite.Database÷0œpublic int
+freeÃ128Õ(void* mem)ŒSqlite.Memory÷0œpublic void
+free_tableÃ128Õ([CCode (array_length = false)] string[] result)ŒSqlite.Database÷0œprivate void
+get_autocommitÃ128Õ()ŒSqlite.Database÷0œpublic int
+get_auxdataÃ128Õ(int N)ŒSqlite.Context÷0œpublic unowned
+get_tableÃ128Õ(string sql, out string[] resultp, out int nrow, out int ncolumn, out string? errmsg = null)ŒSqlite.Database÷0œpublic int
+heldÃ128Õ()ŒSqlite.Mutex÷0œpublic int
+highwaterÃ128Õ(int reset = 0)ŒSqlite.Memory÷0œpublic int64
+interruptÃ128Õ()ŒSqlite.Database÷0œpublic void
+last_insert_rowidÃ128Õ()ŒSqlite.Database÷0œpublic int64
+leaveÃ128Õ()ŒSqlite.Mutex÷0œpublic void
+libversionÃ128Õ()ŒSqlite÷0œpublic unowned string
+libversion_numberÃ128Õ()ŒSqlite÷0œpublic int
+limitÃ128Õ(Sqlite.Limit id, int new_val)ŒSqlite.Database÷0œpublic int
+logÃ128Õ(int error_code, string format, ...)ŒSqlite÷0œpublic void
+mallocÃ128Õ(int n_bytes)ŒSqlite.Memory÷0œpublic void *
+next_stmtÃ128Õ(Sqlite.Statement? current)ŒSqlite.Database÷0œpublic unowned
+notheldÃ128Õ()ŒSqlite.Mutex÷0œpublic int
+openÃ128Õ(string filename, out Database db)ŒSqlite.Database÷0œpublic int
+open_v2Ã128Õ(string filename, out Database db, int flags = OPEN_READWRITE | OPEN_CREATE, string? zVfs = null)ŒSqlite.Database÷0œpublic int
+pagecountÃ128Õ()ŒSqlite.Backup÷0œpublic int
+prepareÃ128Õ(string sql, int n_bytes, out Statement stmt, out unowned string tail = null)ŒSqlite.Database÷0œpublic int
+prepare_v2Ã128Õ(string sql, int n_bytes, out Statement stmt, out unowned string tail = null)ŒSqlite.Database÷0œpublic int
+profileÃ128Õ(ProfileCallback? xprofile)ŒSqlite.Database÷0œpublic void
+progress_handlerÃ128Õ(int n_opcodes, Sqlite.ProgressCallback? progress_handler)ŒSqlite.Database÷0œpublic void
+reallocÃ128Õ(void* mem, int n_bytes)ŒSqlite.Memory÷0œpublic void *
+releaseÃ128Õ(int bytes)ŒSqlite.Memory÷0œpublic int
+remainingÃ128Õ()ŒSqlite.Backup÷0œpublic int
+resetÃ128Õ()ŒSqlite.Statement÷0œpublic int
+result_blobÃ128Õ(owned uint8[] data, GLib.DestroyNotify? destroy_notify = GLib.g_free)ŒSqlite.Context÷0œpublic void
+result_doubleÃ128Õ(double value)ŒSqlite.Context÷0œpublic void
+result_errorÃ128Õ(string value, int error_code)ŒSqlite.Context÷0œpublic void
+result_error_codeÃ128Õ(int error_code)ŒSqlite.Context÷0œpublic void
+result_error_nomemÃ128Õ()ŒSqlite.Context÷0œpublic void
+result_error_toobigÃ128Õ()ŒSqlite.Context÷0œpublic void
+result_intÃ128Õ(int value)ŒSqlite.Context÷0œpublic void
+result_int64Ã128Õ(int64 value)ŒSqlite.Context÷0œpublic void
+result_nullÃ128Õ()ŒSqlite.Context÷0œpublic void
+result_textÃ128Õ(owned string value, int length = -1, GLib.DestroyNotify? destroy_notify = GLib.g_free)ŒSqlite.Context÷0œpublic void
+result_valueÃ128Õ(Sqlite.Value value)ŒSqlite.Context÷0œpublic void
+result_zeroblobÃ128Õ(int n)ŒSqlite.Context÷0œpublic void
+rollback_hookÃ128Õ(RollbackCallback? rollback_hook)ŒSqlite.Database÷0œpublic void
+set_authorizerÃ128Õ(AuthorizeCallback? auth)ŒSqlite.Database÷0œpublic int
+set_auxdataÃ128Õ(int N, owned T data)ŒSqlite.Context÷0œpublic void
+soft_heap_limitÃ128Õ(int limit)ŒSqlite.Memory÷0œpublic void
+soft_heap_limit64Ã128Õ(int64 limit = -1)ŒSqlite.Memory÷0œpublic int64
+sourceidÃ128Õ()ŒSqlite÷0œpublic unowned string
+sqlÃ128Õ()ŒSqlite.Statement÷0œpublic unowned string
+statusÃ128Õ(Sqlite.Status op, out int pCurrent, out int pHighwater, int resetFlag = 0)ŒSqlite÷0œpublic int
+statusÃ128Õ(Sqlite.DatabaseStatus op, out int pCurrent, out int pHighwater, int resetFlag = 0)ŒSqlite.Database÷0œpublic int
+statusÃ128Õ(Sqlite.StatementStatus op, int resetFlg = 0)ŒSqlite.Statement÷0œpublic int
+stepÃ128Õ(int nPage)ŒSqlite.Backup÷0œpublic int
+stepÃ128Õ()ŒSqlite.Statement÷0œpublic int
+table_column_metadataÃ128Õ(string db_name, string table_name, string column_name, out string? data_type, out string? collation_sequence, out int? not_null, out int? primary_key, out int? auto_increment)ŒSqlite.Database÷0œpublic int
+threadsafeÃ128Õ()ŒSqlite÷0œpublic int
+to_blobÃ128Õ()ŒSqlite.Value÷0œpublic void *
+to_bytesÃ128Õ()ŒSqlite.Value÷0œpublic int
+to_doubleÃ128Õ()ŒSqlite.Value÷0œpublic double
+to_intÃ128Õ()ŒSqlite.Value÷0œpublic int
+to_int64Ã128Õ()ŒSqlite.Value÷0œpublic int64
+to_numeric_typeÃ128Õ()ŒSqlite.Value÷0œpublic int
+to_textÃ128Õ()ŒSqlite.Value÷0œpublic unowned string
+to_typeÃ128Õ()ŒSqlite.Value÷0œpublic int
+total_changesÃ128Õ()ŒSqlite.Database÷0œpublic int
+traceÃ128Õ(TraceCallback? xtrace)ŒSqlite.Database÷0œpublic void
+update_hookÃ128Õ(UpdateCallback? update_hook)ŒSqlite.Database÷0œpublic void
+usedÃ128Õ()ŒSqlite.Memory÷0œpublic int64
+user_dataÃ128Õ()ŒSqlite.Context÷0œpublic unowned
+wal_autocheckpointÃ128Õ(int N)ŒSqlite.Database÷0œpublic int
+wal_checkpointÃ128Õ(string zDb)ŒSqlite.Database÷0œpublic int
+wal_hookÃ128Õ(WALHookCallback cb, string db_name, int page_count)ŒSqlite.Database÷0œpublic void *

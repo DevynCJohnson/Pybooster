@@ -1,0 +1,390 @@
+# format=tagmanager
+absÌ1024Í(genType x)Ö0ÏgenType
+absÌ1024Í(genIType x)Ö0ÏgenIType
+acosÌ1024Í(genType x)Ö0ÏgenType
+acoshÌ1024Í(genType x)Ö0ÏgenType
+allÌ1024Í(bvec x)Ö0Ïbool
+ambientÌ64Îgl_LightModelParametersÖ0Ïvec4
+ambientÌ64Îgl_LightProductsÖ0Ïvec4
+ambientÌ64Îgl_LightSourceParametersÖ0Ïvec4
+ambientÌ64Îgl_MaterialParametersÖ0Ïvec4
+anyÌ1024Í(bvec x)Ö0Ïbool
+asinÌ1024Í(genType x)Ö0ÏgenType
+asinhÌ1024Í(genType x)Ö0ÏgenType
+atanÌ1024Í(genType y, genType x)Ö0ÏgenType
+atanÌ1024Í(genType y_over_x)Ö0ÏgenType
+atanhÌ1024Í(genType x)Ö0ÏgenType
+ceilÌ1024Í(genType x)Ö0ÏgenType
+clampÌ1024Í(genType x, genType minVal, genType maxVal)Ö0ÏgenType
+clampÌ1024Í(genType x, float minVal, float maxVal)Ö0ÏgenType
+clampÌ1024Í(genIType x, genIType minVal, genIType maxVal)Ö0ÏgenIType
+clampÌ1024Í(genIType x, int minVal, int maxVal)Ö0ÏgenIType
+clampÌ1024Í(genUType x, genUType minVal, genUType maxVal)Ö0ÏgenUType
+clampÌ1024Í(genUType x, uint minVal, uint maxVal)Ö0ÏgenUType
+colorÌ64Îgl_FogParametersÖ0Ïvec4
+constantAttenuationÌ64Îgl_LightSourceParametersÖ0Ïfloat
+cosÌ1024Í(genType angle)Ö0ÏgenType
+coshÌ1024Í(genType x)Ö0ÏgenType
+crossÌ1024Í(vec3 x, vec3 y)Ö0Ïvec3
+dFdxÌ1024Í(genType p)Ö0ÏgenType
+dFdyÌ1024Í(genType p)Ö0ÏgenType
+degreesÌ1024Í(genType radians)Ö0ÏgenType
+densityÌ64Îgl_FogParametersÖ0Ïfloat
+diffÌ64Îgl_DepthRangeParametersÖ0Ïfloat
+diffuseÌ64Îgl_LightProductsÖ0Ïvec4
+diffuseÌ64Îgl_LightSourceParametersÖ0Ïvec4
+diffuseÌ64Îgl_MaterialParametersÖ0Ïvec4
+distanceÌ1024Í(genType p0, genType p1)Ö0Ïfloat
+distanceConstantAttenuationÌ64Îgl_PointParametersÖ0Ïfloat
+distanceLinearAttenuationÌ64Îgl_PointParametersÖ0Ïfloat
+distanceQuadraticAttenuationÌ64Îgl_PointParametersÖ0Ïfloat
+dotÌ1024Í(genType x, genType y)Ö0Ïfloat
+emissionÌ64Îgl_MaterialParametersÖ0Ïvec4
+endÌ64Îgl_FogParametersÖ0Ïfloat
+equalÌ1024Í(vec x, vec y)Ö0Ïbvec
+equalÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+equalÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+equalÌ1024Í(bvec x, bvec y)Ö0Ïbvec
+expÌ1024Í(genType x)Ö0ÏgenType
+exp2Ì1024Í(genType x)Ö0ÏgenType
+faceforwardÌ1024Í(genType N, genType I, genType Nref)Ö0ÏgenType
+fadeThresholdSizeÌ64Îgl_PointParametersÖ0Ïfloat
+farÌ64Îgl_DepthRangeParametersÖ0Ïfloat
+floorÌ1024Í(genType x)Ö0ÏgenType
+fractÌ1024Í(genType x)Ö0ÏgenType
+ftransformÌ1024Í()Ö0Ïvec4
+fwidthÌ1024Í(genType p)Ö0ÏgenType
+gl_BackColorÌ16384Ö0Ïout
+gl_BackLightModelProductÌ16384Ö0Ïuniform
+gl_BackLightProductÌ16384Ö0Ïuniform
+gl_BackMaterialÌ16384Ö0Ïuniform
+gl_BackSecondaryColorÌ16384Ö0Ïout
+gl_ClipDistanceÌ16384Ö0Ïin
+gl_ClipPlaneÌ16384Ö0Ïuniform
+gl_ClipVertexÌ16384Ö0Ïout
+gl_ColorÌ16384Ö0Ïin
+gl_DepthRangeÌ16384Ö0Ïuniform
+gl_DepthRangeParametersÌ2048Ö0
+gl_EyePlaneQÌ16384Ö0Ïuniform
+gl_EyePlaneRÌ16384Ö0Ïuniform
+gl_EyePlaneSÌ16384Ö0Ïuniform
+gl_EyePlaneTÌ16384Ö0Ïuniform
+gl_FogÌ16384Ö0Ïuniform
+gl_FogCoordÌ16384Ö0Ïin
+gl_FogFragCoordÌ16384Ö0Ïin
+gl_FogParametersÌ2048Ö0
+gl_FragColorÌ16384Ö0Ïout
+gl_FragCoordÌ16384Ö0Ïin
+gl_FragDataÌ16384Ö0Ïout
+gl_FragDepthÌ16384Ö0Ïout
+gl_FrontColorÌ16384Ö0Ïout
+gl_FrontFacingÌ16384Ö0Ïin
+gl_FrontLightModelProductÌ16384Ö0Ïuniform
+gl_FrontLightProductÌ16384Ö0Ïuniform
+gl_FrontMaterialÌ16384Ö0Ïuniform
+gl_FrontSecondaryColorÌ16384Ö0Ïout
+gl_LightModelÌ16384Ö0Ïuniform
+gl_LightModelParametersÌ2048Ö0
+gl_LightModelProductsÌ2048Ö0
+gl_LightProductsÌ2048Ö0
+gl_LightSourceÌ16384Ö0Ïuniform
+gl_LightSourceParametersÌ2048Ö0
+gl_MaterialParametersÌ2048Ö0
+gl_MaxClipDistancesÌ16384Ö0Ïint
+gl_MaxClipPlanesÌ16384Ö0Ïint
+gl_MaxCombinedTextureImageUnitsÌ16384Ö0Ïint
+gl_MaxDrawBuffersÌ16384Ö0Ïint
+gl_MaxFragmentUniformComponentsÌ16384Ö0Ïint
+gl_MaxTextureCoordsÌ16384Ö0Ïint
+gl_MaxTextureImageUnitsÌ16384Ö0Ïint
+gl_MaxTextureUnitsÌ16384Ö0Ïint
+gl_MaxVaryingComponentsÌ16384Ö0Ïint
+gl_MaxVaryingFloatsÌ16384Ö0Ïint
+gl_MaxVertexAttribsÌ16384Ö0Ïint
+gl_MaxVertexTextureImageUnitsÌ16384Ö0Ïint
+gl_MaxVertexUniformComponentsÌ16384Ö0Ïint
+gl_ModelViewMatrixÌ16384Ö0Ïuniform
+gl_ModelViewMatrixInverseÌ16384Ö0Ïuniform
+gl_ModelViewMatrixInverseTransposeÌ16384Ö0Ïuniform
+gl_ModelViewMatrixTransposeÌ16384Ö0Ïuniform
+gl_ModelViewProjectionMatrixÌ16384Ö0Ïuniform
+gl_ModelViewProjectionMatrixInverseÌ16384Ö0Ïuniform
+gl_ModelViewProjectionMatrixInverseTransposeÌ16384Ö0Ïuniform
+gl_ModelViewProjectionMatrixTransposeÌ16384Ö0Ïuniform
+gl_MultiTexCoord0Ì16384Ö0Ïin
+gl_MultiTexCoord1Ì16384Ö0Ïin
+gl_MultiTexCoord2Ì16384Ö0Ïin
+gl_MultiTexCoord3Ì16384Ö0Ïin
+gl_MultiTexCoord4Ì16384Ö0Ïin
+gl_MultiTexCoord5Ì16384Ö0Ïin
+gl_MultiTexCoord6Ì16384Ö0Ïin
+gl_MultiTexCoord7Ì16384Ö0Ïin
+gl_NormalÌ16384Ö0Ïin
+gl_NormalMatrixÌ16384Ö0Ïuniform
+gl_NormalScaleÌ16384Ö0Ïuniform
+gl_ObjectPlaneQÌ16384Ö0Ïuniform
+gl_ObjectPlaneRÌ16384Ö0Ïuniform
+gl_ObjectPlaneSÌ16384Ö0Ïuniform
+gl_ObjectPlaneTÌ16384Ö0Ïuniform
+gl_PointÌ16384Ö0Ïuniform
+gl_PointCoordÌ16384Ö0Ïin
+gl_PointParametersÌ2048Ö0
+gl_PointSizeÌ16384Ö0Ïout
+gl_PositionÌ16384Ö0Ïout
+gl_ProjectionMatrixÌ16384Ö0Ïuniform
+gl_ProjectionMatrixInverseÌ16384Ö0Ïuniform
+gl_ProjectionMatrixInverseTransposeÌ16384Ö0Ïuniform
+gl_ProjectionMatrixTransposeÌ16384Ö0Ïuniform
+gl_SecondaryColorÌ16384Ö0Ïin
+gl_TexCoordÌ16384Ö0Ïin
+gl_TextureEnvColorÌ16384Ö0Ïuniform
+gl_TextureMatrixÌ16384Ö0Ïuniform
+gl_TextureMatrixInverseÌ16384Ö0Ïuniform
+gl_TextureMatrixInverseTransposeÌ16384Ö0Ïuniform
+gl_TextureMatrixTransposeÌ16384Ö0Ïuniform
+gl_VertexÌ16384Ö0Ïin
+gl_VertexIDÌ16384Ö0Ïin
+greaterThanÌ1024Í(vec x, vec y)Ö0Ïbvec
+greaterThanÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+greaterThanÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+greaterThanEqualÌ1024Í(vec x, vec y)Ö0Ïbvec
+greaterThanEqualÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+greaterThanEqualÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+halfVectorÌ64Îgl_LightSourceParametersÖ0Ïvec4
+inversesqrtÌ1024Í(genType x)Ö0ÏgenType
+isinfÌ1024Í(genType x)Ö0Ïbvec
+isnanÌ1024Í(genType x)Ö0Ïbvec
+lengthÌ1024Í(genType x)Ö0Ïfloat
+lessThanÌ1024Í(vec x, vec y)Ö0Ïbvec
+lessThanÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+lessThanÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+lessThanEqualÌ1024Í(vec x, vec y)Ö0Ïbvec
+lessThanEqualÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+lessThanEqualÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+linearAttenuationÌ64Îgl_LightSourceParametersÖ0Ïfloat
+logÌ1024Í(genType x)Ö0ÏgenType
+log2Ì1024Í(genType x)Ö0ÏgenType
+matrixCompMultÌ1024Í(mat x, mat y)Ö0Ïmat
+maxÌ1024Í(genType x, genType y)Ö0ÏgenType
+maxÌ1024Í(genType x, float y)Ö0ÏgenType
+maxÌ1024Í(genIType x, genIType y)Ö0ÏgenIType
+maxÌ1024Í(genIType x, int y)Ö0ÏgenIType
+maxÌ1024Í(genUType x, genUType y)Ö0ÏgenUType
+maxÌ1024Í(genUType x, uint y)Ö0ÏgenUType
+minÌ1024Í(genType x, genType y)Ö0ÏgenType
+minÌ1024Í(genType x, float y)Ö0ÏgenType
+minÌ1024Í(genIType x, genIType y)Ö0ÏgenIType
+minÌ1024Í(genIType x, int y)Ö0ÏgenIType
+minÌ1024Í(genUType x, genUType y)Ö0ÏgenUType
+minÌ1024Í(genUType x, uint y)Ö0ÏgenUType
+mixÌ1024Í(genType x, genType y, bvec a)Ö0ÏgenType
+modÌ1024Í(genType x, float y)Ö0ÏgenType
+modÌ1024Í(genType x, genType y)Ö0ÏgenType
+modfÌ1024Í(genType x, out genType i)Ö0ÏgenType
+nearÌ64Îgl_DepthRangeParametersÖ0Ïfloat
+noise1Ì1024Í(genType x)Ö0Ïfloat
+noise2Ì1024Í(genType x)Ö0Ïvec2
+noise3Ì1024Í(genType x)Ö0Ïvec3
+noise4Ì1024Í(genType x)Ö0Ïvec4
+normalizeÌ1024Í(genType x)Ö0ÏgenType
+notÌ1024Í(bvec x)Ö0Ïbvec
+notEqualÌ1024Í(vec x, vec y)Ö0Ïbvec
+notEqualÌ1024Í(ivec x, ivec y)Ö0Ïbvec
+notEqualÌ1024Í(uvec x, uvec y)Ö0Ïbvec
+notEqualÌ1024Í(bvec x, bvec y)Ö0Ïbvec
+outerProductÌ1024Í(vec2 c, vec2 r)Ö0Ïmat2
+outerProductÌ1024Í(vec3 c, vec3 r)Ö0Ïmat3
+outerProductÌ1024Í(vec4 c, vec4 r)Ö0Ïmat4
+outerProductÌ1024Í(vec3 c, vec2 r)Ö0Ïmat2x3
+outerProductÌ1024Í(vec2 c, vec3 r)Ö0Ïmat3x2
+outerProductÌ1024Í(vec4 c, vec2 r)Ö0Ïmat2x4
+outerProductÌ1024Í(vec2 c, vec4 r)Ö0Ïmat4x2
+outerProductÌ1024Í(vec4 c, vec3 r)Ö0Ïmat3x4
+outerProductÌ1024Í(vec3 c, vec4 r)Ö0Ïmat4x3
+positionÌ64Îgl_LightSourceParametersÖ0Ïvec4
+powÌ1024Í(genType x, genType y)Ö0ÏgenType
+quadraticAttenuationÌ64Îgl_LightSourceParametersÖ0Ïfloat
+radiansÌ1024Í(genType degrees)Ö0ÏgenType
+reflectÌ1024Í(genType I, genType N)Ö0ÏgenType
+refractÌ1024Í(genType I, genType N, float eta)Ö0ÏgenType
+roundÌ1024Í(genType x)Ö0ÏgenType
+roundEvenÌ1024Í(genType x)Ö0ÏgenType
+scaleÌ64Îgl_FogParametersÖ0Ïfloat
+sceneColorÌ64Îgl_LightModelProductsÖ0Ïvec4
+shadow1DÌ1024Í(sampler1DShadow sampler, vec3 coord [, float bias] )Ö0Ïvec4
+shadow1DLodÌ1024Í(sampler1DShadow sampler, vec3 coord, float lod)Ö0Ïvec4
+shadow1DProjÌ1024Í(sampler1DShadow sampler, vec4 coord [, float bias] )Ö0Ïvec4
+shadow1DProjLodÌ1024Í(sampler1DShadow sampler, vec4 coord, float lod)Ö0Ïvec4
+shadow2DÌ1024Í(sampler2DShadow sampler, vec3 coord [, float bias] )Ö0Ïvec4
+shadow2DLodÌ1024Í(sampler2DShadow sampler, vec3 coord, float lod)Ö0Ïvec4
+shadow2DProjÌ1024Í(sampler2DShadow sampler, vec4 coord [, float bias] )Ö0Ïvec4
+shadow2DProjLodÌ1024Í(sampler2DShadow sampler, vec4 coord, float lod)Ö0Ïvec4
+shininessÌ64Îgl_MaterialParametersÖ0Ïfloat
+signÌ1024Í(genType x)Ö0ÏgenType
+signÌ1024Í(genIType x)Ö0ÏgenIType
+sinÌ1024Í(genType angle)Ö0ÏgenType
+sinhÌ1024Í(genType x)Ö0ÏgenType
+sizeÌ64Îgl_PointParametersÖ0Ïfloat
+sizeMaxÌ64Îgl_PointParametersÖ0Ïfloat
+sizeMinÌ64Îgl_PointParametersÖ0Ïfloat
+smoothstepÌ1024Í(genType edge0, genType edge1, genType x)Ö0ÏgenType
+smoothstepÌ1024Í(float edge0, float edge1, genType x)Ö0ÏgenType
+specularÌ64Îgl_LightProductsÖ0Ïvec4
+specularÌ64Îgl_LightSourceParametersÖ0Ïvec4
+specularÌ64Îgl_MaterialParametersÖ0Ïvec4
+spotCosCutoffÌ64Îgl_LightSourceParametersÖ0Ïfloat
+spotCutoffÌ64Îgl_LightSourceParametersÖ0Ïfloat
+spotDirectionÌ64Îgl_LightSourceParametersÖ0Ïvec3
+spotExponentÌ64Îgl_LightSourceParametersÖ0Ïfloat
+sqrtÌ1024Í(genType x)Ö0ÏgenType
+startÌ64Îgl_FogParametersÖ0Ïfloat
+stepÌ1024Í(genType edge, genType x)Ö0ÏgenType
+stepÌ1024Í(float edge, genType x)Ö0ÏgenType
+tanÌ1024Í(genType angle)Ö0ÏgenType
+tanhÌ1024Í(genType x)Ö0ÏgenType
+texelFetchÌ1024Í(gsampler1D sampler, int P, int lod)Ö0Ïgvec4
+texelFetchÌ1024Í(gsampler2D sampler, ivec2 P, int lod)Ö0Ïgvec4
+texelFetchÌ1024Í(gsampler3D sampler, ivec3 P, int lod)Ö0Ïgvec4
+texelFetchÌ1024Í(gsampler1DArray sampler, ivec2 P, int lod)Ö0Ïgvec4
+texelFetchÌ1024Í(gsampler2DArray sampler, ivec3 P, int lod)Ö0Ïgvec4
+texelFetchOffsetÌ1024Í(gsampler1D sampler, int P, int lod, int offset)Ö0Ïgvec4
+texelFetchOffsetÌ1024Í(gsampler2D sampler, ivec2 P, int lod, ivec2 offset)Ö0Ïgvec4
+texelFetchOffsetÌ1024Í(gsampler3D sampler, ivec3 P, int lod, ivec3 offset)Ö0Ïgvec4
+texelFetchOffsetÌ1024Í(gsampler1DArray sampler, ivec2 P, int lod, int offset)Ö0Ïgvec4
+texelFetchOffsetÌ1024Í(gsampler2DArray sampler, ivec3 P, int lod, ivec2 offset)Ö0Ïgvec4
+textureÌ1024Í(gsampler1D sampler, float P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(gsampler2D sampler, vec2 P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(gsampler3D sampler, vec3 P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(gsamplerCube sampler, vec3 P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(sampler2DShadow sampler, vec3 P [, float bias] )Ö0Ïfloat
+textureÌ1024Í(samplerCubeShadow sampler, vec4 P [, float bias] )Ö0Ïfloat
+textureÌ1024Í(gsampler1DArray sampler, vec2 P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(gsampler2DArray sampler, vec3 P [, float bias] )Ö0Ïgvec4
+textureÌ1024Í(sampler1DArrayShadow sampler, vec3 P [, float bias] )Ö0Ïfloat
+textureÌ1024Í(sampler2DArrayShadow sampler, vec4 P)Ö0Ïfloat
+texture1DÌ1024Í(sampler1D sampler, float coord [, float bias] )Ö0Ïvec4
+texture1DLodÌ1024Í(sampler1D sampler, float coord, float lod)Ö0Ïvec4
+texture1DProjÌ1024Í(sampler1D sampler, vec2 coord [, float bias] )Ö0Ïvec4
+texture1DProjÌ1024Í(sampler1D sampler, vec4 coord [, float bias] )Ö0Ïvec4
+texture1DProjLodÌ1024Í(sampler1D sampler, vec2 coord, float lod)Ö0Ïvec4
+texture1DProjLodÌ1024Í(sampler1D sampler, vec4 coord, float lod)Ö0Ïvec4
+texture2DÌ1024Í(sampler2D sampler, vec2 coord [, float bias] )Ö0Ïvec4
+texture2DLodÌ1024Í(sampler2D sampler, vec2 coord, float lod)Ö0Ïvec4
+texture2DProjÌ1024Í(sampler2D sampler, vec3 coord [, float bias] )Ö0Ïvec4
+texture2DProjÌ1024Í(sampler2D sampler, vec4 coord [, float bias] )Ö0Ïvec4
+texture2DProjLodÌ1024Í(sampler2D sampler, vec3 coord, float lod)Ö0Ïvec4
+texture2DProjLodÌ1024Í(sampler2D sampler, vec4 coord, float lod)Ö0Ïvec4
+texture3DÌ1024Í(sampler3D sampler, vec3 coord [, float bias] )Ö0Ïvec4
+texture3DLodÌ1024Í(sampler3D sampler, vec3 coord, float lod)Ö0Ïvec4
+texture3DProjÌ1024Í(sampler3D sampler, vec4 coord [, float bias] )Ö0Ïvec4
+texture3DProjLodÌ1024Í(sampler3D sampler, vec4 coord, float lod)Ö0Ïvec4
+textureCubeÌ1024Í(samplerCube sampler, vec3 coord [, float bias] )Ö0Ïvec4
+textureCubeLodÌ1024Í(samplerCube sampler, vec3 coord, float lod)Ö0Ïvec4
+textureGradÌ1024Í(gsampler1D sampler, float P, float dPdx, float dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(gsampler2D sampler, vec2 P, vec2 dPdx, vec2 dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(gsampler3D sampler, vec3 P, vec3 dPdx, vec3 dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(gsamplerCube sampler, vec3 P, vec3 dPdx, vec3 dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(sampler1DShadow sampler, vec3 P, float dPdx, float dPdy)Ö0Ïfloat
+textureGradÌ1024Í(sampler2DShadow sampler, vec3 P, vec2 dPdx, vec2 dPdy)Ö0Ïfloat
+textureGradÌ1024Í(samplerCubeShadow sampler, vec4 P, vec3 dPdx, vec3 dPdy)Ö0Ïfloat
+textureGradÌ1024Í(gsampler1DArray sampler, vec2 P, float dPdx, float dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(gsampler2DArray sampler, vec3 P, vec2 dPdx, vec2 dPdy)Ö0Ïgvec4
+textureGradÌ1024Í(sampler1DArrayShadow sampler, vec3 P, float dPdx, float dPdy)Ö0Ïfloat
+textureGradÌ1024Í(sampler2DArrayShadow sampler, vec4 P, vec2 dPdx, vec2 dPdy)Ö0Ïfloat
+textureGradOffsetÌ1024Í(gsampler1D sampler, float P, float dPdx, float dPdy, int offset)Ö0Ïgvec4
+textureGradOffsetÌ1024Í(gsampler2D sampler, vec2 P, vec2 dPdx, vec2 dPdy, ivec2 offset)Ö0Ïgvec4
+textureGradOffsetÌ1024Í(gsampler3D sampler, vec3 P, vec3 dPdx, vec3 dPdy, ivec3 offset)Ö0Ïgvec4
+textureGradOffsetÌ1024Í(sampler1DShadow sampler, vec3 P, float dPdx, float dPdy, int offset )Ö0Ïfloat
+textureGradOffsetÌ1024Í(sampler2DShadow sampler, vec3 P, vec2 dPdx, vec2 dPdy, ivec2 offset)Ö0Ïfloat
+textureGradOffsetÌ1024Í(samplerCubeShadow sampler, vec4 P, vec3 dPdx, vec3 dPdy, ivec2 offset)Ö0Ïfloat
+textureGradOffsetÌ1024Í(gsampler1DArray sampler, vec2 P, float dPdx, float dPdy, int offset)Ö0Ïgvec4
+textureGradOffsetÌ1024Í(gsampler2DArray sampler, vec3 P, vec2 dPdx, vec2 dPdy, ivec2 offset)Ö0Ïgvec4
+textureGradOffsetÌ1024Í(sampler1DArrayShadow sampler, vec3 P, float dPdx, float dPdy, int offset)Ö0Ïfloat
+textureGradOffsetÌ1024Í(sampler2DArrayShadow sampler, vec4 P, vec2 dPdx, vec2 dPdy, ivec2 offset)Ö0Ïfloat
+textureLodÌ1024Í(gsampler1D sampler, float P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(gsampler2D sampler, vec2 P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(gsampler3D sampler, vec3 P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(gsamplerCube sampler, vec3 P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(sampler1DShadow sampler, vec3 P, float lod)Ö0Ïfloat
+textureLodÌ1024Í(sampler2DShadow sampler, vec3 P, float lod)Ö0Ïfloat
+textureLodÌ1024Í(gsampler1DArray sampler, vec2 P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(gsampler2DArray sampler, vec3 P, float lod)Ö0Ïgvec4
+textureLodÌ1024Í(sampler1DArrayShadow sampler, vec3 P, float lod)Ö0Ïfloat
+textureLodOffsetÌ1024Í(gsampler1D sampler, float P, float lod, int offset)Ö0Ïgvec4
+textureLodOffsetÌ1024Í(gsampler2D sampler, vec2 P, float lod, ivec2 offset)Ö0Ïgvec4
+textureLodOffsetÌ1024Í(gsampler3D sampler, vec3 P, float lod, ivec3 offset)Ö0Ïgvec4
+textureLodOffsetÌ1024Í(sampler1DShadow sampler, vec3 P, float lod, int offset)Ö0Ïfloat
+textureLodOffsetÌ1024Í(sampler2DShadow sampler, vec3 P, float lod, ivec2 offset)Ö0Ïfloat
+textureLodOffsetÌ1024Í(gsampler1DArray sampler, vec2 P, float lod, int offset)Ö0Ïgvec4
+textureLodOffsetÌ1024Í(gsampler2DArray sampler, vec3 P, float lod, ivec2 offset)Ö0Ïgvec4
+textureLodOffsetÌ1024Í(sampler1DArrayShadow sampler, vec3 P, float lod, int offset)Ö0Ïfloat
+textureOffsetÌ1024Í(gsampler1D sampler, float P, int offset [, float bias] )Ö0Ïgvec4
+textureOffsetÌ1024Í(gsampler2D sampler, vec2 P, ivec2 offset [, float bias] )Ö0Ïgvec4
+textureOffsetÌ1024Í(gsampler3D sampler, vec3 P, ivec3 offset [, float bias] )Ö0Ïgvec4
+textureOffsetÌ1024Í(sampler1DShadow sampler, vec3 P, int offset [, float bias] )Ö0Ïfloat
+textureOffsetÌ1024Í(sampler2DShadow sampler, vec3 P, ivec2 offset [, float bias] )Ö0Ïfloat
+textureOffsetÌ1024Í(gsampler1DArray sampler, vec2 P, int offset [, float bias] )Ö0Ïgvec4
+textureOffsetÌ1024Í(gsampler2DArray sampler, vec3 P, ivec2 offset [, float bias] )Ö0Ïgvec4
+textureOffsetÌ1024Í(sampler1DArrayShadow sampler, vec3 P, int offset [, float bias] )Ö0Ïfloat
+textureProjÌ1024Í(gsampler1D sampler, vec2 P [, float bias] )Ö0Ïgvec4
+textureProjÌ1024Í(gsampler1D sampler, vec4 P [, float bias] )Ö0Ïgvec4
+textureProjÌ1024Í(gsampler2D sampler, vec3 P [, float bias] )Ö0Ïgvec4
+textureProjÌ1024Í(gsampler2D sampler, vec4 P [, float bias] )Ö0Ïgvec4
+textureProjÌ1024Í(gsampler3D sampler, vec4 P [, float bias] )Ö0Ïgvec4
+textureProjÌ1024Í(sampler1DShadow sampler, vec4 P [, float bias] )Ö0Ïfloat
+textureProjÌ1024Í(sampler2DShadow sampler, vec4 P [, float bias] )Ö0Ïfloat
+textureProjGradÌ1024Í(gsampler1D sampler, vec2 P, float dPdx, float dPdy)Ö0Ïgvec4
+textureProjGradÌ1024Í(gsampler1D sampler, vec4 P, float dPdx, float dPdy)Ö0Ïgvec4
+textureProjGradÌ1024Í(gsampler2D sampler, vec3 P, vec2 dPdx, vec2 dPdy)Ö0Ïgvec4
+textureProjGradÌ1024Í(gsampler2D sampler, vec4 P, vec2 dPdx, vec2 dPdy)Ö0Ïgvec4
+textureProjGradÌ1024Í(gsampler3D sampler, vec4 P, vec3 dPdx, vec3 dPdy)Ö0Ïgvec4
+textureProjGradÌ1024Í(sampler1DShadow sampler, vec4 P, float dPdx, float dPdy)Ö0Ïfloat
+textureProjGradÌ1024Í(sampler2DShadow sampler, vec4 P, vec2 dPdx, vec2 dPdy)Ö0Ïfloat
+textureProjGradOffsetÌ1024Í(gsampler1D sampler, vec2 P, float dPdx, float dPdy, int offset)Ö0Ïgvec4
+textureProjGradOffsetÌ1024Í(gsampler1D sampler, vec4 P, float dPdx, float dPdy, int offset)Ö0Ïgvec4
+textureProjGradOffsetÌ1024Í(gsampler2D sampler, vec3 P, vec2 dPdx, vec2 dPdy, vec2 offset)Ö0Ïgvec4
+textureProjGradOffsetÌ1024Í(gsampler2D sampler, vec4 P, vec2 dPdx, vec2 dPdy, vec2 offset)Ö0Ïgvec4
+textureProjGradOffsetÌ1024Í(gsampler3D sampler, vec4 P, vec3 dPdx, vec3 dPdy, vec3 offset)Ö0Ïgvec4
+textureProjGradOffsetÌ1024Í(sampler1DShadow sampler, vec4 P, float dPdx, float dPdy, int offset)Ö0Ïfloat
+textureProjGradOffsetÌ1024Í(sampler2DShadow sampler, vec4 P, vec2 dPdx, vec2 dPdy, vec2 offset)Ö0Ïfloat
+textureProjLodÌ1024Í(gsampler1D sampler, vec2 P, float lod)Ö0Ïgvec4
+textureProjLodÌ1024Í(gsampler1D sampler, vec4 P, float lod)Ö0Ïgvec4
+textureProjLodÌ1024Í(gsampler2D sampler, vec3 P, float lod)Ö0Ïgvec4
+textureProjLodÌ1024Í(gsampler2D sampler, vec4 P, float lod)Ö0Ïgvec4
+textureProjLodÌ1024Í(gsampler3D sampler, vec4 P, float lod)Ö0Ïgvec4
+textureProjLodÌ1024Í(sampler1DShadow sampler, vec4 P, float lod)Ö0Ïfloat
+textureProjLodÌ1024Í(sampler2DShadow sampler, vec4 P, float lod)Ö0Ïfloat
+textureProjLodOffsetÌ1024Í(gsampler1D sampler, vec2 P, float lod, int offset)Ö0Ïgvec4
+textureProjLodOffsetÌ1024Í(gsampler1D sampler, vec4 P, float lod, int offset)Ö0Ïgvec4
+textureProjLodOffsetÌ1024Í(gsampler2D sampler, vec3 P, float lod, ivec2 offset)Ö0Ïgvec4
+textureProjLodOffsetÌ1024Í(gsampler2D sampler, vec4 P, float lod, ivec2 offset)Ö0Ïgvec4
+textureProjLodOffsetÌ1024Í(gsampler3D sampler, vec4 P, float lod, ivec3 offset)Ö0Ïgvec4
+textureProjLodOffsetÌ1024Í(sampler1DShadow sampler, vec4 P, float lod, int offset)Ö0Ïfloat
+textureProjLodOffsetÌ1024Í(sampler2DShadow sampler, vec4 P, float lod, ivec2 offset)Ö0Ïfloat
+textureProjOffsetÌ1024Í(gsampler1D sampler, vec2 P, int offset [, float bias] )Ö0Ïgvec4
+textureProjOffsetÌ1024Í(gsampler1D sampler, vec4 P, int offset [, float bias] )Ö0Ïgvec4
+textureProjOffsetÌ1024Í(gsampler2D sampler, vec3 P, ivec2 offset [, float bias] )Ö0Ïgvec4
+textureProjOffsetÌ1024Í(gsampler2D sampler, vec4 P, ivec2 offset [, float bias] )Ö0Ïgvec4
+textureProjOffsetÌ1024Í(gsampler3D sampler, vec4 P, ivec3 offset [, float bias] )Ö0Ïgvec4
+textureProjOffsetÌ1024Í(sampler1DShadow sampler, vec4 P, int offset [, float bias] )Ö0Ïfloat
+textureProjOffsetÌ1024Í(sampler2DShadow sampler, vec4 P, ivec2 offset [, float bias] )Ö0Ïfloat
+textureSizeÌ1024Í(gsampler1D sampler, int lod)Ö0Ïint
+textureSizeÌ1024Í(gsampler2D sampler, int lod)Ö0Ïivec2
+textureSizeÌ1024Í(gsampler3D sampler, int lod)Ö0Ïivec3
+textureSizeÌ1024Í(gsamplerCube sampler, int lod)Ö0Ïivec2
+textureSizeÌ1024Í(sampler1DShadow sampler, int lod)Ö0Ïint
+textureSizeÌ1024Í(sampler2DShadow sampler, int lod)Ö0Ïivec2
+textureSizeÌ1024Í(gsampler1DArray sampler, int lod)Ö0Ïivec2
+textureSizeÌ1024Í(gsampler2DArray sampler, int lod)Ö0Ïivec3
+textureSizeÌ1024Í(sampler1DArrayShadow sampler, int lod)Ö0Ïivec2
+textureSizeÌ1024Í(sampler2DArrayShadow sampler, int lod)Ö0Ïivec3
+transposeÌ1024Í(mat2 m)Ö0Ïmat2
+transposeÌ1024Í(mat3 m)Ö0Ïmat3
+transposeÌ1024Í(mat4 m)Ö0Ïmat4
+transposeÌ1024Í(mat3x2 m)Ö0Ïmat2x3
+transposeÌ1024Í(mat2x3 m)Ö0Ïmat3x2
+transposeÌ1024Í(mat4x2 m)Ö0Ïmat2x4
+transposeÌ1024Í(mat2x4 m)Ö0Ïmat4x2
+transposeÌ1024Í(mat4x3 m)Ö0Ïmat3x4
+transposeÌ1024Í(mat3x4 m)Ö0Ïmat4x3
+truncÌ1024Í(genType x)Ö0ÏgenType

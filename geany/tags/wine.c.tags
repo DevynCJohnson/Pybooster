@@ -1,0 +1,140 @@
+# format=tagmanager
+COMPACT_DATAÃ4ŒECompactionLev÷0
+COMPACT_DATA_AND_PATHÃ4ŒECompactionLev÷0
+CompactÃ1024Õ( const WCHAR *pwcsName, ECompactionLev iLev)÷0œvirtual
+DPRINTFÃ65536÷0
+ECompactionLevÃ2÷0
+ECompactionLevÃ4096÷0
+EH_COLLIDED_UNWINDÃ65536÷0
+EH_EXIT_UNWINDÃ65536÷0
+EH_NESTED_CALLÃ65536÷0
+EH_NONCONTINUABLEÃ65536÷0
+EH_STACK_INVALIDÃ65536÷0
+EH_TARGET_UNWINDÃ65536÷0
+EH_UNWINDINGÃ65536÷0
+ERRÃ65536÷0
+ERR_Ã131072Õ(ch)÷0
+ERR_ONÃ131072Õ(ch)÷0
+EXCEPTION_WINE_ASSERTIONÃ65536÷0
+EXCEPTION_WINE_STUBÃ65536÷0
+FIXMEÃ65536÷0
+FIXME_Ã131072Õ(ch)÷0
+FIXME_ONÃ131072Õ(ch)÷0
+IITStorageÃ4096÷0œinterface
+IITStorageÃ16384÷0œinterface
+ITS_Control_DataÃ4096÷0œ_ITS_Control_Data
+MESSAGEÃ65536÷0
+PITS_Control_DataÃ4096÷0œ_ITS_Control_Data
+SNB_UserFreeÃ1024Õ(ULONG *, SNB *)÷0œvoid
+SNB_UserMarshalÃ1024Õ(ULONG *, unsigned char *, SNB *)÷0œunsigned char *
+SNB_UserSizeÃ1024Õ(ULONG *, ULONG, SNB *)÷0œULONG
+SNB_UserUnmarshalÃ1024Õ(ULONG *, unsigned char *, SNB *)÷0œunsigned char *
+StgCreateDocfileOnILockBytesÃ1024Õ( ILockBytes *plkbyt, DWORD grfMode, DWORD reserved, IStorage **ppstgOpen)÷0œvirtual
+StgIsStorageFileÃ1024Õ( const WCHAR *pwcsName)÷0œvirtual
+StgOpenStorageÃ1024Õ( const WCHAR *pwcsName, IStorage *pstgPriority, DWORD grfMode, SNB snbExclude, DWORD reserved, IStorage **ppstgOpen)÷0œvirtual
+StgOpenStorageOnILockBytesÃ1024Õ( ILockBytes *plkbyt, IStorage *pStgPriority, DWORD grfMode, SNB snbExclude, DWORD reserved, IStorage **ppstgOpen)÷0œvirtual
+StgSetTimesÃ1024Õ( const WCHAR *lpszName, const FILETIME *pctime, const FILETIME *patime, const FILETIME *pmtime)÷0œvirtual
+TRACEÃ65536÷0
+TRACE_Ã131072Õ(ch)÷0
+TRACE_ONÃ131072Õ(ch)÷0
+WARNÃ65536÷0
+WARN_Ã131072Õ(ch)÷0
+WARN_ONÃ131072Õ(ch)÷0
+WINE_DECLARE_DEBUG_CHANNELÃ131072Õ(ch)÷0
+WINE_DEFAULT_DEBUG_CHANNELÃ131072Õ(ch)÷0
+WINE_DPRINTFÃ65536÷0
+WINE_ERRÃ65536÷0
+WINE_ERR_Ã131072Õ(ch)÷0
+WINE_ERR_ONÃ131072Õ(ch)÷0
+WINE_FIXMEÃ65536÷0
+WINE_FIXMEÃ131072Õ(args...)÷0
+WINE_FIXMEÃ131072Õ(...)÷0
+WINE_FIXME_Ã131072Õ(ch)÷0
+WINE_FIXME_ONÃ131072Õ(ch)÷0
+WINE_MESSAGEÃ65536÷0
+WINE_TRACEÃ65536÷0
+WINE_TRACEÃ131072Õ(args...)÷0
+WINE_TRACEÃ131072Õ(...)÷0
+WINE_TRACE_Ã131072Õ(ch)÷0
+WINE_TRACE_ONÃ131072Õ(ch)÷0
+WINE_WARNÃ65536÷0
+WINE_WARNÃ131072Õ(args...)÷0
+WINE_WARNÃ131072Õ(...)÷0
+WINE_WARN_Ã131072Õ(ch)÷0
+WINE_WARN_ONÃ131072Õ(ch)÷0
+_GUIDÃ32768÷0
+_ITS_Control_DataÃ2048÷0
+__ENDTRYÃ65536÷0
+__EXCEPTÃ131072Õ(func)÷0
+__EXCEPT_ALLÃ65536÷0
+__EXCEPT_CTXÃ131072Õ(func, ctx)÷0
+__EXCEPT_PAGE_FAULTÃ65536÷0
+__FINALLYÃ131072Õ(func)÷0
+__FINALLY_CTXÃ131072Õ(func, ctx)÷0
+__IITStorage_FWD_DEFINED__Ã65536÷0
+__IITStorage_INTERFACE_DEFINED__Ã65536÷0
+__REQUIRED_RPCNDR_H_VERSION__Ã65536÷0
+__TRYÃ65536÷0
+__WINE_DBCL_ERRÃ4Œ__wine_debug_class÷0
+__WINE_DBCL_FIXMEÃ4Œ__wine_debug_class÷0
+__WINE_DBCL_INITÃ4Œ__wine_debug_class÷0
+__WINE_DBCL_TRACEÃ4Œ__wine_debug_class÷0
+__WINE_DBCL_WARNÃ4Œ__wine_debug_class÷0
+__WINE_DBG_LOGÃ131072Õ(args...)÷0
+__WINE_DBG_LOGÃ131072Õ(...)÷0
+__WINE_DPRINTFÃ131072Õ(dbcl,dbch)÷0
+__WINE_GET_DEBUGGINGÃ131072Õ(dbcl,dbch)÷0
+__WINE_GET_DEBUGGING_ERRÃ131072Õ(dbch)÷0
+__WINE_GET_DEBUGGING_FIXMEÃ131072Õ(dbch)÷0
+__WINE_GET_DEBUGGING_TRACEÃ131072Õ(dbch)÷0
+__WINE_GET_DEBUGGING_WARNÃ131072Õ(dbch)÷0
+__WINE_IS_DEBUG_ONÃ131072Õ(dbcl,dbch)÷0
+__WINE_PRINTF_ATTRÃ131072Õ(fmt,args)÷0
+__WINE_PRINTF_ATTRÃ131072Õ(fmt, args)÷0
+__WINE_WINE_DEBUG_HÃ65536÷0
+__WINE_WINE_EXCEPTION_HÃ65536÷0
+__attribute__Ã131072Õ(x)÷0
+__itss_h__Ã65536÷0
+__wine_dbg_get_channel_flagsÃ1024Õ( struct __wine_debug_channel *channel )÷0œunsigned char
+__wine_dbg_set_channel_flagsÃ1024Õ( struct __wine_debug_channel *channel, unsigned char set, unsigned char clear )÷0œint
+__wine_dbg_set_functionsÃ1024Õ( const struct __wine_debug_functions *new_funcs, struct __wine_debug_functions *old_funcs, size_t size )÷0œvoid
+__wine_debug_channelÃ2048÷0
+__wine_debug_classÃ2÷0
+__wine_debug_functionsÃ2048÷0
+__wine_get_frameÃ16Õ(void)÷0œinline
+__wine_pop_frameÃ16Õ( EXCEPTION_REGISTRATION_RECORD *frame )÷0œinline
+__wine_push_frameÃ16Õ( EXCEPTION_REGISTRATION_RECORD *frame )÷0œinline
+adwControlDataÃ64Œ_ITS_Control_Data÷0œUINT
+cdwControlDataÃ64Œ_ITS_Control_Data÷0œUINT
+dbg_vlogÃ1024Õ( enum __wine_debug_class cls, struct __wine_debug_channel *channel, const char *function, const char *format, va_list args )Œ__wine_debug_functions÷0œint
+dbg_vprintfÃ1024Õ( const char *format, va_list args )Œ__wine_debug_functions÷0œint
+dbgstr_anÃ1024Õ( const char * s, int n )Œ__wine_debug_functions÷0œconst char *
+dbgstr_wnÃ1024Õ( const WCHAR *s, int n )Œ__wine_debug_functions÷0œconst char *
+debugstr_aÃ16Õ( const char *s )÷0œinline const char *
+debugstr_anÃ16Õ( const char * s, int n )÷0œinline const char *
+debugstr_guidÃ16Õ( const struct _GUID *id )÷0œinline const char *
+debugstr_variantÃ16Õ( const VARIANT *v )÷0œinline const char *
+debugstr_vtÃ16Õ( VARTYPE vt )÷0œinline const char *
+debugstr_wÃ16Õ( const WCHAR *s )÷0œinline const char *
+debugstr_wnÃ16Õ( const WCHAR *s, int n )÷0œinline const char *
+flagsÃ64Œ__wine_debug_channel÷0œunsigned char
+get_temp_bufferÃ1024Õ( size_t n )Œ__wine_debug_functions÷0œchar *
+grfModeÃ16384÷0œDWORD
+nameÃ64Œ__wine_debug_channel÷0œchar
+pControlDataÃ16384÷0œvirtual
+plkbytÃ16384÷0œvirtual
+ppControlDataÃ16384÷0œvirtual
+ppstgOpenÃ16384÷0œIStorage * *
+pwcsNameÃ16384÷0œStgCreateDocfile const
+release_temp_bufferÃ1024Õ( char *buffer, size_t n )Œ__wine_debug_functions÷0œvoid
+reservedÃ16384÷0œDWORD
+wine_dbgstr_aÃ16Õ( const char *s )÷0œinline const char *
+wine_dbgstr_anÃ1024Õ( const char * s, int n )÷0œconst char *
+wine_dbgstr_guidÃ16Õ( const GUID *id )÷0œinline const char *
+wine_dbgstr_longlongÃ16Õ( ULONGLONG ll )÷0œinline const char *
+wine_dbgstr_pointÃ16Õ( const POINT *pt )÷0œinline const char *
+wine_dbgstr_rectÃ16Õ( const RECT *rect )÷0œinline const char *
+wine_dbgstr_variantÃ16Õ( const VARIANT *v )÷0œinline const char *
+wine_dbgstr_vtÃ16Õ( VARTYPE vt )÷0œinline const char *
+wine_dbgstr_wÃ16Õ( const WCHAR *s )÷0œinline const char *
+wine_dbgstr_wnÃ1024Õ( const WCHAR *s, int n )÷0œconst char *

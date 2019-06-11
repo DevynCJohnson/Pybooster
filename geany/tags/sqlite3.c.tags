@@ -1,0 +1,978 @@
+# format=tagmanager
+SQLITE3_TEXTÃ65536÷0
+SQLITE_ABORTÃ65536÷0
+SQLITE_ACCESS_EXISTSÃ65536÷0
+SQLITE_ACCESS_READÃ65536÷0
+SQLITE_ACCESS_READWRITEÃ65536÷0
+SQLITE_ALTER_TABLEÃ65536÷0
+SQLITE_ANALYZEÃ65536÷0
+SQLITE_ANYÃ65536÷0
+SQLITE_APIÃ65536÷0
+SQLITE_ATTACHÃ65536÷0
+SQLITE_AUTHÃ65536÷0
+SQLITE_BLOBÃ65536÷0
+SQLITE_BUSYÃ65536÷0
+SQLITE_BUSY_RECOVERYÃ65536÷0
+SQLITE_CANTOPENÃ65536÷0
+SQLITE_CANTOPEN_NOTEMPDIRÃ65536÷0
+SQLITE_CHECKPOINT_FULLÃ65536÷0
+SQLITE_CHECKPOINT_PASSIVEÃ65536÷0
+SQLITE_CHECKPOINT_RESTARTÃ65536÷0
+SQLITE_CONFIG_GETMALLOCÃ65536÷0
+SQLITE_CONFIG_GETMUTEXÃ65536÷0
+SQLITE_CONFIG_GETPCACHEÃ65536÷0
+SQLITE_CONFIG_HEAPÃ65536÷0
+SQLITE_CONFIG_LOGÃ65536÷0
+SQLITE_CONFIG_LOOKASIDEÃ65536÷0
+SQLITE_CONFIG_MALLOCÃ65536÷0
+SQLITE_CONFIG_MEMSTATUSÃ65536÷0
+SQLITE_CONFIG_MULTITHREADÃ65536÷0
+SQLITE_CONFIG_MUTEXÃ65536÷0
+SQLITE_CONFIG_PAGECACHEÃ65536÷0
+SQLITE_CONFIG_PCACHEÃ65536÷0
+SQLITE_CONFIG_SCRATCHÃ65536÷0
+SQLITE_CONFIG_SERIALIZEDÃ65536÷0
+SQLITE_CONFIG_SINGLETHREADÃ65536÷0
+SQLITE_CONSTRAINTÃ65536÷0
+SQLITE_COPYÃ65536÷0
+SQLITE_CORRUPTÃ65536÷0
+SQLITE_CREATE_INDEXÃ65536÷0
+SQLITE_CREATE_TABLEÃ65536÷0
+SQLITE_CREATE_TEMP_INDEXÃ65536÷0
+SQLITE_CREATE_TEMP_TABLEÃ65536÷0
+SQLITE_CREATE_TEMP_TRIGGERÃ65536÷0
+SQLITE_CREATE_TEMP_VIEWÃ65536÷0
+SQLITE_CREATE_TRIGGERÃ65536÷0
+SQLITE_CREATE_VIEWÃ65536÷0
+SQLITE_CREATE_VTABLEÃ65536÷0
+SQLITE_DBCONFIG_ENABLE_FKEYÃ65536÷0
+SQLITE_DBCONFIG_ENABLE_TRIGGERÃ65536÷0
+SQLITE_DBCONFIG_LOOKASIDEÃ65536÷0
+SQLITE_DBSTATUS_CACHE_USEDÃ65536÷0
+SQLITE_DBSTATUS_LOOKASIDE_HITÃ65536÷0
+SQLITE_DBSTATUS_LOOKASIDE_MISS_FULLÃ65536÷0
+SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZEÃ65536÷0
+SQLITE_DBSTATUS_LOOKASIDE_USEDÃ65536÷0
+SQLITE_DBSTATUS_MAXÃ65536÷0
+SQLITE_DBSTATUS_SCHEMA_USEDÃ65536÷0
+SQLITE_DBSTATUS_STMT_USEDÃ65536÷0
+SQLITE_DELETEÃ65536÷0
+SQLITE_DENYÃ65536÷0
+SQLITE_DEPRECATEDÃ65536÷0
+SQLITE_DETACHÃ65536÷0
+SQLITE_DONEÃ65536÷0
+SQLITE_DROP_INDEXÃ65536÷0
+SQLITE_DROP_TABLEÃ65536÷0
+SQLITE_DROP_TEMP_INDEXÃ65536÷0
+SQLITE_DROP_TEMP_TABLEÃ65536÷0
+SQLITE_DROP_TEMP_TRIGGERÃ65536÷0
+SQLITE_DROP_TEMP_VIEWÃ65536÷0
+SQLITE_DROP_TRIGGERÃ65536÷0
+SQLITE_DROP_VIEWÃ65536÷0
+SQLITE_DROP_VTABLEÃ65536÷0
+SQLITE_EMPTYÃ65536÷0
+SQLITE_ERRORÃ65536÷0
+SQLITE_EXPERIMENTALÃ65536÷0
+SQLITE_EXTENSION_INIT1Ã65536÷0
+SQLITE_EXTENSION_INIT2Ã131072Õ(v)÷0
+SQLITE_EXTERNÃ65536÷0
+SQLITE_FCNTL_CHUNK_SIZEÃ65536÷0
+SQLITE_FCNTL_FILE_POINTERÃ65536÷0
+SQLITE_FCNTL_LOCKSTATEÃ65536÷0
+SQLITE_FCNTL_SIZE_HINTÃ65536÷0
+SQLITE_FCNTL_SYNC_OMITTEDÃ65536÷0
+SQLITE_FLOATÃ65536÷0
+SQLITE_FORMATÃ65536÷0
+SQLITE_FULLÃ65536÷0
+SQLITE_FUNCTIONÃ65536÷0
+SQLITE_GET_LOCKPROXYFILEÃ65536÷0
+SQLITE_IGNOREÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_EQÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_GEÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_GTÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_LEÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_LTÃ65536÷0
+SQLITE_INDEX_CONSTRAINT_MATCHÃ65536÷0
+SQLITE_INSERTÃ65536÷0
+SQLITE_INTEGERÃ65536÷0
+SQLITE_INTERNALÃ65536÷0
+SQLITE_INTERRUPTÃ65536÷0
+SQLITE_IOCAP_ATOMICÃ65536÷0
+SQLITE_IOCAP_ATOMIC16KÃ65536÷0
+SQLITE_IOCAP_ATOMIC1KÃ65536÷0
+SQLITE_IOCAP_ATOMIC2KÃ65536÷0
+SQLITE_IOCAP_ATOMIC32KÃ65536÷0
+SQLITE_IOCAP_ATOMIC4KÃ65536÷0
+SQLITE_IOCAP_ATOMIC512Ã65536÷0
+SQLITE_IOCAP_ATOMIC64KÃ65536÷0
+SQLITE_IOCAP_ATOMIC8KÃ65536÷0
+SQLITE_IOCAP_SAFE_APPENDÃ65536÷0
+SQLITE_IOCAP_SEQUENTIALÃ65536÷0
+SQLITE_IOCAP_UNDELETABLE_WHEN_OPENÃ65536÷0
+SQLITE_IOERRÃ65536÷0
+SQLITE_IOERR_ACCESSÃ65536÷0
+SQLITE_IOERR_BLOCKEDÃ65536÷0
+SQLITE_IOERR_CHECKRESERVEDLOCKÃ65536÷0
+SQLITE_IOERR_CLOSEÃ65536÷0
+SQLITE_IOERR_DELETEÃ65536÷0
+SQLITE_IOERR_DIR_CLOSEÃ65536÷0
+SQLITE_IOERR_DIR_FSYNCÃ65536÷0
+SQLITE_IOERR_FSTATÃ65536÷0
+SQLITE_IOERR_FSYNCÃ65536÷0
+SQLITE_IOERR_LOCKÃ65536÷0
+SQLITE_IOERR_NOMEMÃ65536÷0
+SQLITE_IOERR_RDLOCKÃ65536÷0
+SQLITE_IOERR_READÃ65536÷0
+SQLITE_IOERR_SHMLOCKÃ65536÷0
+SQLITE_IOERR_SHMOPENÃ65536÷0
+SQLITE_IOERR_SHMSIZEÃ65536÷0
+SQLITE_IOERR_SHORT_READÃ65536÷0
+SQLITE_IOERR_TRUNCATEÃ65536÷0
+SQLITE_IOERR_UNLOCKÃ65536÷0
+SQLITE_IOERR_WRITEÃ65536÷0
+SQLITE_LAST_ERRNOÃ65536÷0
+SQLITE_LIMIT_ATTACHEDÃ65536÷0
+SQLITE_LIMIT_COLUMNÃ65536÷0
+SQLITE_LIMIT_COMPOUND_SELECTÃ65536÷0
+SQLITE_LIMIT_EXPR_DEPTHÃ65536÷0
+SQLITE_LIMIT_FUNCTION_ARGÃ65536÷0
+SQLITE_LIMIT_LENGTHÃ65536÷0
+SQLITE_LIMIT_LIKE_PATTERN_LENGTHÃ65536÷0
+SQLITE_LIMIT_SQL_LENGTHÃ65536÷0
+SQLITE_LIMIT_TRIGGER_DEPTHÃ65536÷0
+SQLITE_LIMIT_VARIABLE_NUMBERÃ65536÷0
+SQLITE_LIMIT_VDBE_OPÃ65536÷0
+SQLITE_LOCKEDÃ65536÷0
+SQLITE_LOCKED_SHAREDCACHEÃ65536÷0
+SQLITE_LOCK_EXCLUSIVEÃ65536÷0
+SQLITE_LOCK_NONEÃ65536÷0
+SQLITE_LOCK_PENDINGÃ65536÷0
+SQLITE_LOCK_RESERVEDÃ65536÷0
+SQLITE_LOCK_SHAREDÃ65536÷0
+SQLITE_MISMATCHÃ65536÷0
+SQLITE_MISUSEÃ65536÷0
+SQLITE_MUTEX_FASTÃ65536÷0
+SQLITE_MUTEX_RECURSIVEÃ65536÷0
+SQLITE_MUTEX_STATIC_LRUÃ65536÷0
+SQLITE_MUTEX_STATIC_LRU2Ã65536÷0
+SQLITE_MUTEX_STATIC_MASTERÃ65536÷0
+SQLITE_MUTEX_STATIC_MEMÃ65536÷0
+SQLITE_MUTEX_STATIC_MEM2Ã65536÷0
+SQLITE_MUTEX_STATIC_OPENÃ65536÷0
+SQLITE_MUTEX_STATIC_PMEMÃ65536÷0
+SQLITE_MUTEX_STATIC_PRNGÃ65536÷0
+SQLITE_NOLFSÃ65536÷0
+SQLITE_NOMEMÃ65536÷0
+SQLITE_NOTADBÃ65536÷0
+SQLITE_NOTFOUNDÃ65536÷0
+SQLITE_NULLÃ65536÷0
+SQLITE_OKÃ65536÷0
+SQLITE_OPEN_AUTOPROXYÃ65536÷0
+SQLITE_OPEN_CREATEÃ65536÷0
+SQLITE_OPEN_DELETEONCLOSEÃ65536÷0
+SQLITE_OPEN_EXCLUSIVEÃ65536÷0
+SQLITE_OPEN_FULLMUTEXÃ65536÷0
+SQLITE_OPEN_MAIN_DBÃ65536÷0
+SQLITE_OPEN_MAIN_JOURNALÃ65536÷0
+SQLITE_OPEN_MASTER_JOURNALÃ65536÷0
+SQLITE_OPEN_NOMUTEXÃ65536÷0
+SQLITE_OPEN_PRIVATECACHEÃ65536÷0
+SQLITE_OPEN_READONLYÃ65536÷0
+SQLITE_OPEN_READWRITEÃ65536÷0
+SQLITE_OPEN_SHAREDCACHEÃ65536÷0
+SQLITE_OPEN_SUBJOURNALÃ65536÷0
+SQLITE_OPEN_TEMP_DBÃ65536÷0
+SQLITE_OPEN_TEMP_JOURNALÃ65536÷0
+SQLITE_OPEN_TRANSIENT_DBÃ65536÷0
+SQLITE_OPEN_WALÃ65536÷0
+SQLITE_PERMÃ65536÷0
+SQLITE_PRAGMAÃ65536÷0
+SQLITE_PROTOCOLÃ65536÷0
+SQLITE_RANGEÃ65536÷0
+SQLITE_READÃ65536÷0
+SQLITE_READONLYÃ65536÷0
+SQLITE_REINDEXÃ65536÷0
+SQLITE_ROWÃ65536÷0
+SQLITE_SAVEPOINTÃ65536÷0
+SQLITE_SCHEMAÃ65536÷0
+SQLITE_SELECTÃ65536÷0
+SQLITE_SET_LOCKPROXYFILEÃ65536÷0
+SQLITE_SHM_EXCLUSIVEÃ65536÷0
+SQLITE_SHM_LOCKÃ65536÷0
+SQLITE_SHM_NLOCKÃ65536÷0
+SQLITE_SHM_SHAREDÃ65536÷0
+SQLITE_SHM_UNLOCKÃ65536÷0
+SQLITE_SOURCE_IDÃ65536÷0
+SQLITE_STATICÃ65536÷0
+SQLITE_STATUS_MALLOC_COUNTÃ65536÷0
+SQLITE_STATUS_MALLOC_SIZEÃ65536÷0
+SQLITE_STATUS_MEMORY_USEDÃ65536÷0
+SQLITE_STATUS_PAGECACHE_OVERFLOWÃ65536÷0
+SQLITE_STATUS_PAGECACHE_SIZEÃ65536÷0
+SQLITE_STATUS_PAGECACHE_USEDÃ65536÷0
+SQLITE_STATUS_PARSER_STACKÃ65536÷0
+SQLITE_STATUS_SCRATCH_OVERFLOWÃ65536÷0
+SQLITE_STATUS_SCRATCH_SIZEÃ65536÷0
+SQLITE_STATUS_SCRATCH_USEDÃ65536÷0
+SQLITE_STMTSTATUS_AUTOINDEXÃ65536÷0
+SQLITE_STMTSTATUS_FULLSCAN_STEPÃ65536÷0
+SQLITE_STMTSTATUS_SORTÃ65536÷0
+SQLITE_SYNC_DATAONLYÃ65536÷0
+SQLITE_SYNC_FULLÃ65536÷0
+SQLITE_SYNC_NORMALÃ65536÷0
+SQLITE_TESTCTRL_ALWAYSÃ65536÷0
+SQLITE_TESTCTRL_ASSERTÃ65536÷0
+SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKSÃ65536÷0
+SQLITE_TESTCTRL_BITVEC_TESTÃ65536÷0
+SQLITE_TESTCTRL_FAULT_INSTALLÃ65536÷0
+SQLITE_TESTCTRL_FIRSTÃ65536÷0
+SQLITE_TESTCTRL_ISKEYWORDÃ65536÷0
+SQLITE_TESTCTRL_LASTÃ65536÷0
+SQLITE_TESTCTRL_OPTIMIZATIONSÃ65536÷0
+SQLITE_TESTCTRL_PENDING_BYTEÃ65536÷0
+SQLITE_TESTCTRL_PGHDRSZÃ65536÷0
+SQLITE_TESTCTRL_PRNG_RESETÃ65536÷0
+SQLITE_TESTCTRL_PRNG_RESTOREÃ65536÷0
+SQLITE_TESTCTRL_PRNG_SAVEÃ65536÷0
+SQLITE_TESTCTRL_RESERVEÃ65536÷0
+SQLITE_TESTCTRL_SCRATCHMALLOCÃ65536÷0
+SQLITE_TEXTÃ65536÷0
+SQLITE_TOOBIGÃ65536÷0
+SQLITE_TRANSACTIONÃ65536÷0
+SQLITE_TRANSIENTÃ65536÷0
+SQLITE_UPDATEÃ65536÷0
+SQLITE_UTF16Ã65536÷0
+SQLITE_UTF16BEÃ65536÷0
+SQLITE_UTF16LEÃ65536÷0
+SQLITE_UTF16_ALIGNEDÃ65536÷0
+SQLITE_UTF8Ã65536÷0
+SQLITE_VERSIONÃ65536÷0
+SQLITE_VERSION_NUMBERÃ65536÷0
+_ANSI_STDARG_H_Ã65536÷0
+_FORTIFY_SOURCEÃ65536÷0
+_GNU_SOURCEÃ65536÷0
+_SQLITE3EXT_H_Ã65536÷0
+_SQLITE3RTREE_H_Ã65536÷0
+_SQLITE3_H_Ã65536÷0
+_STDARG_HÃ65536÷0
+_VA_LISTÃ65536÷0
+_VA_LIST_Ã65536÷0
+_VA_LIST_DEFINEDÃ65536÷0
+_VA_LIST_T_HÃ65536÷0
+__GNUC_VA_LISTÃ65536÷0
+__STDC_HOSTED__Ã65536÷0
+__STDC__Ã65536÷0
+__cplusplusÃ65536÷0
+__gnuc_va_listÃ4096÷0œ__builtin_va_list
+__need___va_listÃ65536÷0
+__va_copyÃ131072Õ(d,s)÷0
+__va_list__Ã65536÷0
+aConstraintÃ64Œsqlite3_index_info÷0œsqlite3_index_constraint
+aConstraintUsageÃ64Œsqlite3_index_info÷0œsqlite3_index_constraint_usage
+aOrderByÃ64Œsqlite3_index_info÷0œsqlite3_index_orderby
+aParamÃ64Œsqlite3_rtree_geometry÷0œdouble
+aggregate_contextÃ1024Õ(sqlite3_context*,int nBytes)Œsqlite3_api_routines÷0œvoid *
+aggregate_countÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œint
+argvIndexÃ64Œsqlite3_index_info::sqlite3_index_constraint_usage÷0œint
+backup_finishÃ1024Õ(sqlite3_backup*)Œsqlite3_api_routines÷0œint
+backup_initÃ1024Õ(sqlite3*,const char*,sqlite3*,const char*)Œsqlite3_api_routines÷0œsqlite3_backup *
+backup_pagecountÃ1024Õ(sqlite3_backup*)Œsqlite3_api_routines÷0œint
+backup_remainingÃ1024Õ(sqlite3_backup*)Œsqlite3_api_routines÷0œint
+backup_stepÃ1024Õ(sqlite3_backup*,int)Œsqlite3_api_routines÷0œint
+bind_blobÃ1024Õ(sqlite3_stmt*,int,const void*,int n,void(*)(void*))Œsqlite3_api_routines÷0œint
+bind_doubleÃ1024Õ(sqlite3_stmt*,int,double)Œsqlite3_api_routines÷0œint
+bind_intÃ1024Õ(sqlite3_stmt*,int,int)Œsqlite3_api_routines÷0œint
+bind_int64Ã1024Õ(sqlite3_stmt*,int,sqlite_int64)Œsqlite3_api_routines÷0œint
+bind_nullÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œint
+bind_parameter_countÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œint
+bind_parameter_indexÃ1024Õ(sqlite3_stmt*,const char*zName)Œsqlite3_api_routines÷0œint
+bind_parameter_nameÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst char *
+bind_textÃ1024Õ(sqlite3_stmt*,int,const char*,int n,void(*)(void*))Œsqlite3_api_routines÷0œint
+bind_text16Ã1024Õ(sqlite3_stmt*,int,const void*,int,void(*)(void*))Œsqlite3_api_routines÷0œint
+bind_valueÃ1024Õ(sqlite3_stmt*,int,const sqlite3_value*)Œsqlite3_api_routines÷0œint
+bind_zeroblobÃ1024Õ(sqlite3_stmt*,int,int)Œsqlite3_api_routines÷0œint
+blob_bytesÃ1024Õ(sqlite3_blob*)Œsqlite3_api_routines÷0œint
+blob_closeÃ1024Õ(sqlite3_blob*)Œsqlite3_api_routines÷0œint
+blob_openÃ1024Õ(sqlite3*,const char*,const char*,const char*,sqlite3_int64,int,sqlite3_blob**)Œsqlite3_api_routines÷0œint
+blob_readÃ1024Õ(sqlite3_blob*,void*,int,int)Œsqlite3_api_routines÷0œint
+blob_writeÃ1024Õ(sqlite3_blob*,const void*,int,int)Œsqlite3_api_routines÷0œint
+busy_handlerÃ1024Õ(sqlite3*,int(*)(void*,int),void*)Œsqlite3_api_routines÷0œint
+busy_timeoutÃ1024Õ(sqlite3*,int ms)Œsqlite3_api_routines÷0œint
+changesÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œint
+clear_bindingsÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œint
+closeÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œint
+collation_neededÃ1024Õ(sqlite3*,void*,void(*)(void*,sqlite3*,int eTextRep,const char*))Œsqlite3_api_routines÷0œint
+collation_needed16Ã1024Õ(sqlite3*,void*,void(*)(void*,sqlite3*,int eTextRep,const void*))Œsqlite3_api_routines÷0œint
+column_blobÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œconst void *
+column_bytesÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œint
+column_bytes16Ã1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œint
+column_countÃ1024Õ(sqlite3_stmt*pStmt)Œsqlite3_api_routines÷0œint
+column_database_nameÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst char *
+column_database_name16Ã1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst void *
+column_decltypeÃ1024Õ(sqlite3_stmt*,int i)Œsqlite3_api_routines÷0œconst char *
+column_decltype16Ã1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst void *
+column_doubleÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œdouble
+column_intÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œint
+column_int64Ã1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œsqlite_int64
+column_nameÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst char *
+column_name16Ã1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst void *
+column_origin_nameÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst char *
+column_origin_name16Ã1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst void *
+column_table_nameÃ1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst char *
+column_table_name16Ã1024Õ(sqlite3_stmt*,int)Œsqlite3_api_routines÷0œconst void *
+column_textÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œconst unsigned char *
+column_text16Ã1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œconst void *
+column_typeÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œint
+column_valueÃ1024Õ(sqlite3_stmt*,int iCol)Œsqlite3_api_routines÷0œsqlite3_value *
+commit_hookÃ1024Õ(sqlite3*,int(*)(void*),void*)Œsqlite3_api_routines÷0œvoid *
+compileoption_getÃ1024Õ(int)Œsqlite3_api_routines÷0œconst char *
+compileoption_usedÃ1024Õ(const char*)Œsqlite3_api_routines÷0œint
+completeÃ1024Õ(const char*sql)Œsqlite3_api_routines÷0œint
+complete16Ã1024Õ(const void*sql)Œsqlite3_api_routines÷0œint
+context_db_handleÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œsqlite3 *
+create_collationÃ1024Õ(sqlite3*,const char*,int,void*,int(*)(void*,int,const void*,int,const void*))Œsqlite3_api_routines÷0œint
+create_collation16Ã1024Õ(sqlite3*,const void*,int,void*,int(*)(void*,int,const void*,int,const void*))Œsqlite3_api_routines÷0œint
+create_collation_v2Ã1024Õ(sqlite3*,const char*,int,void*,int(*)(void*,int,const void*,int,const void*),void(*)(void*))Œsqlite3_api_routines÷0œint
+create_functionÃ1024Õ(sqlite3*,const char*,int,int,void*,void (*xFunc)(sqlite3_context*,int,sqlite3_value**),void (*xStep)(sqlite3_context*,int,sqlite3_value**),void (*xFinal)(sqlite3_context*))Œsqlite3_api_routines÷0œint
+create_function16Ã1024Õ(sqlite3*,const void*,int,int,void*,void (*xFunc)(sqlite3_context*,int,sqlite3_value**),void (*xStep)(sqlite3_context*,int,sqlite3_value**),void (*xFinal)(sqlite3_context*))Œsqlite3_api_routines÷0œint
+create_function_v2Ã1024Õ(sqlite3*,const char*,int,int,void*,void (*xFunc)(sqlite3_context*,int,sqlite3_value**),void (*xStep)(sqlite3_context*,int,sqlite3_value**),void (*xFinal)(sqlite3_context*),void(*xDestroy)(void*))Œsqlite3_api_routines÷0œint
+create_moduleÃ1024Õ(sqlite3*,const char*,const sqlite3_module*,void*)Œsqlite3_api_routines÷0œint
+create_module_v2Ã1024Õ(sqlite3*,const char*,const sqlite3_module*,void*,void (*xDestroy)(void *))Œsqlite3_api_routines÷0œint
+data_countÃ1024Õ(sqlite3_stmt*pStmt)Œsqlite3_api_routines÷0œint
+db_configÃ1024Õ(sqlite3*,int,...)Œsqlite3_api_routines÷0œint
+db_handleÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œsqlite3 *
+db_mutexÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œsqlite3_mutex *
+db_statusÃ1024Õ(sqlite3*,int,int*,int*,int)Œsqlite3_api_routines÷0œint
+declare_vtabÃ1024Õ(sqlite3*,const char*)Œsqlite3_api_routines÷0œint
+descÃ64Œsqlite3_index_info::sqlite3_index_orderby÷0œchar
+enable_shared_cacheÃ1024Õ(int)Œsqlite3_api_routines÷0œint
+errcodeÃ1024Õ(sqlite3*db)Œsqlite3_api_routines÷0œint
+errmsgÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œconst char *
+errmsg16Ã1024Õ(sqlite3*)Œsqlite3_api_routines÷0œconst void *
+estimatedCostÃ64Œsqlite3_index_info÷0œdouble
+execÃ1024Õ(sqlite3*,const char*,sqlite3_callback,void*,char**)Œsqlite3_api_routines÷0œint
+expiredÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œint
+extended_errcodeÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œint
+extended_result_codesÃ1024Õ(sqlite3*,int)Œsqlite3_api_routines÷0œint
+file_controlÃ1024Õ(sqlite3*,const char*,int,void*)Œsqlite3_api_routines÷0œint
+finalizeÃ1024Õ(sqlite3_stmt*pStmt)Œsqlite3_api_routines÷0œint
+freeÃ1024Õ(void*)Œsqlite3_api_routines÷0œvoid
+free_tableÃ1024Õ(char**result)Œsqlite3_api_routines÷0œvoid
+get_autocommitÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œint
+get_auxdataÃ1024Õ(sqlite3_context*,int)Œsqlite3_api_routines÷0œvoid *
+get_tableÃ1024Õ(sqlite3*,const char*,char***,int*,int*,char**)Œsqlite3_api_routines÷0œint
+global_recoverÃ1024Õ(void)Œsqlite3_api_routines÷0œint
+iColumnÃ64Œsqlite3_index_info::sqlite3_index_constraint÷0œint
+iColumnÃ64Œsqlite3_index_info::sqlite3_index_orderby÷0œint
+iTermOffsetÃ64Œsqlite3_index_info::sqlite3_index_constraint÷0œint
+iVersionÃ64Œsqlite3_io_methods÷0œint
+iVersionÃ64Œsqlite3_module÷0œint
+iVersionÃ64Œsqlite3_vfs÷0œint
+idxNumÃ64Œsqlite3_index_info÷0œint
+idxStrÃ64Œsqlite3_index_info÷0œchar
+interruptxÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œvoid
+last_insert_rowidÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œsqlite_int64
+libversionÃ1024Õ(void)Œsqlite3_api_routines÷0œconst char *
+libversion_numberÃ1024Õ(void)Œsqlite3_api_routines÷0œint
+limitÃ1024Õ(sqlite3*,int,int)Œsqlite3_api_routines÷0œint
+logÃ1024Õ(int,const char*,...)Œsqlite3_api_routines÷0œvoid
+mallocÃ1024Õ(int)Œsqlite3_api_routines÷0œvoid *
+memory_highwaterÃ1024Õ(int)Œsqlite3_api_routines÷0œsqlite3_int64
+memory_usedÃ1024Õ(void)Œsqlite3_api_routines÷0œsqlite3_int64
+mprintfÃ1024Õ(const char*,...)Œsqlite3_api_routines÷0œchar *
+mutex_allocÃ1024Õ(int)Œsqlite3_api_routines÷0œsqlite3_mutex *
+mutex_enterÃ1024Õ(sqlite3_mutex*)Œsqlite3_api_routines÷0œvoid
+mutex_freeÃ1024Õ(sqlite3_mutex*)Œsqlite3_api_routines÷0œvoid
+mutex_leaveÃ1024Õ(sqlite3_mutex*)Œsqlite3_api_routines÷0œvoid
+mutex_tryÃ1024Õ(sqlite3_mutex*)Œsqlite3_api_routines÷0œint
+mxPathnameÃ64Œsqlite3_vfs÷0œint
+nConstraintÃ64Œsqlite3_index_info÷0œint
+nOrderByÃ64Œsqlite3_index_info÷0œint
+nParamÃ64Œsqlite3_rtree_geometry÷0œint
+nRefÃ64Œsqlite3_vtab÷0œint
+needToFreeIdxStrÃ64Œsqlite3_index_info÷0œint
+next_stmtÃ1024Õ(sqlite3*,sqlite3_stmt*)Œsqlite3_api_routines÷0œsqlite3_stmt *
+omitÃ64Œsqlite3_index_info::sqlite3_index_constraint_usage÷0œchar
+opÃ64Œsqlite3_index_info::sqlite3_index_constraint÷0œchar
+openÃ1024Õ(const char*,sqlite3**)Œsqlite3_api_routines÷0œint
+open16Ã1024Õ(const void*,sqlite3**)Œsqlite3_api_routines÷0œint
+open_v2Ã1024Õ(const char*,sqlite3**,int,const char*)Œsqlite3_api_routines÷0œint
+orderByConsumedÃ64Œsqlite3_index_info÷0œint
+overload_functionÃ1024Õ(sqlite3*, const char *zFuncName, int nArg)Œsqlite3_api_routines÷0œint
+pAppDataÃ64Œsqlite3_mem_methods÷0œvoid
+pAppDataÃ64Œsqlite3_vfs÷0œvoid
+pArgÃ64Œsqlite3_pcache_methods÷0œvoid
+pContextÃ64Œsqlite3_rtree_geometry÷0œvoid
+pMethodsÃ64Œsqlite3_file÷0œsqlite3_io_methods
+pModuleÃ64Œsqlite3_vtab÷0œsqlite3_module
+pNextÃ64Œsqlite3_vfs÷0œsqlite3_vfs
+pUserÃ64Œsqlite3_rtree_geometry÷0œvoid
+pVtabÃ64Œsqlite3_vtab_cursor÷0œsqlite3_vtab
+prepareÃ1024Õ(sqlite3*,const char*,int,sqlite3_stmt**,const char**)Œsqlite3_api_routines÷0œint
+prepare16Ã1024Õ(sqlite3*,const void*,int,sqlite3_stmt**,const void**)Œsqlite3_api_routines÷0œint
+prepare16_v2Ã1024Õ(sqlite3*,const void*,int,sqlite3_stmt**,const void**)Œsqlite3_api_routines÷0œint
+prepare_v2Ã1024Õ(sqlite3*,const char*,int,sqlite3_stmt**,const char**)Œsqlite3_api_routines÷0œint
+profileÃ1024Õ(sqlite3*,void(*)(void*,const char*,sqlite_uint64),void*)Œsqlite3_api_routines÷0œvoid *
+progress_handlerÃ1024Õ(sqlite3*,int,int(*)(void*),void*)Œsqlite3_api_routines÷0œvoid
+randomnessÃ1024Õ(int,void*)Œsqlite3_api_routines÷0œvoid
+reallocÃ1024Õ(void*,int)Œsqlite3_api_routines÷0œvoid *
+release_memoryÃ1024Õ(int)Œsqlite3_api_routines÷0œint
+resetÃ1024Õ(sqlite3_stmt*pStmt)Œsqlite3_api_routines÷0œint
+result_blobÃ1024Õ(sqlite3_context*,const void*,int,void(*)(void*))Œsqlite3_api_routines÷0œvoid
+result_doubleÃ1024Õ(sqlite3_context*,double)Œsqlite3_api_routines÷0œvoid
+result_errorÃ1024Õ(sqlite3_context*,const char*,int)Œsqlite3_api_routines÷0œvoid
+result_error16Ã1024Õ(sqlite3_context*,const void*,int)Œsqlite3_api_routines÷0œvoid
+result_error_codeÃ1024Õ(sqlite3_context*,int)Œsqlite3_api_routines÷0œvoid
+result_error_nomemÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œvoid
+result_error_toobigÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œvoid
+result_intÃ1024Õ(sqlite3_context*,int)Œsqlite3_api_routines÷0œvoid
+result_int64Ã1024Õ(sqlite3_context*,sqlite_int64)Œsqlite3_api_routines÷0œvoid
+result_nullÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œvoid
+result_textÃ1024Õ(sqlite3_context*,const char*,int,void(*)(void*))Œsqlite3_api_routines÷0œvoid
+result_text16Ã1024Õ(sqlite3_context*,const void*,int,void(*)(void*))Œsqlite3_api_routines÷0œvoid
+result_text16beÃ1024Õ(sqlite3_context*,const void*,int,void(*)(void*))Œsqlite3_api_routines÷0œvoid
+result_text16leÃ1024Õ(sqlite3_context*,const void*,int,void(*)(void*))Œsqlite3_api_routines÷0œvoid
+result_valueÃ1024Õ(sqlite3_context*,sqlite3_value*)Œsqlite3_api_routines÷0œvoid
+result_zeroblobÃ1024Õ(sqlite3_context*,int)Œsqlite3_api_routines÷0œvoid
+rollback_hookÃ1024Õ(sqlite3*,void(*)(void*),void*)Œsqlite3_api_routines÷0œvoid *
+set_authorizerÃ1024Õ(sqlite3*,int(*)(void*,int,const char*,const char*,const char*,const char*),void*)Œsqlite3_api_routines÷0œint
+set_auxdataÃ1024Õ(sqlite3_context*,int,void*,void (*)(void*))Œsqlite3_api_routines÷0œvoid
+sleepÃ1024Õ(int)Œsqlite3_api_routines÷0œint
+snprintfÃ1024Õ(int,char*,const char*,...)Œsqlite3_api_routines÷0œchar *
+soft_heap_limitÃ1024Õ(int)Œsqlite3_api_routines÷0œvoid
+soft_heap_limit64Ã1024Õ(sqlite3_int64)Œsqlite3_api_routines÷0œsqlite3_int64
+sourceidÃ1024Õ(void)Œsqlite3_api_routines÷0œconst char *
+sqlÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œconst char *
+sqlite3Ã4096÷0
+sqlite3_aggregate_contextÃ1024Õ(sqlite3_context*, int nBytes)÷0œvoid *
+sqlite3_aggregate_contextÃ65536÷0
+sqlite3_aggregate_countÃ1024Õ(sqlite3_context*)÷0œint
+sqlite3_aggregate_countÃ65536÷0
+sqlite3_api_routinesÃ2048÷0
+sqlite3_api_routinesÃ4096÷0
+sqlite3_auto_extensionÃ1024Õ(void (*xEntryPoint)(void))÷0œint
+sqlite3_backupÃ4096÷0
+sqlite3_backup_finishÃ1024Õ(sqlite3_backup *p)÷0œint
+sqlite3_backup_finishÃ65536÷0
+sqlite3_backup_initÃ1024Õ( sqlite3 *pDest, const char *zDestName, sqlite3 *pSource, const char *zSourceName )÷0œsqlite3_backup *
+sqlite3_backup_initÃ65536÷0
+sqlite3_backup_pagecountÃ1024Õ(sqlite3_backup *p)÷0œint
+sqlite3_backup_pagecountÃ65536÷0
+sqlite3_backup_remainingÃ1024Õ(sqlite3_backup *p)÷0œint
+sqlite3_backup_remainingÃ65536÷0
+sqlite3_backup_stepÃ1024Õ(sqlite3_backup *p, int nPage)÷0œint
+sqlite3_backup_stepÃ65536÷0
+sqlite3_bind_blobÃ1024Õ(sqlite3_stmt*, int, const void*, int n, void(*)(void*))÷0œint
+sqlite3_bind_blobÃ65536÷0
+sqlite3_bind_doubleÃ1024Õ(sqlite3_stmt*, int, double)÷0œint
+sqlite3_bind_doubleÃ65536÷0
+sqlite3_bind_intÃ1024Õ(sqlite3_stmt*, int, int)÷0œint
+sqlite3_bind_intÃ65536÷0
+sqlite3_bind_int64Ã1024Õ(sqlite3_stmt*, int, sqlite3_int64)÷0œint
+sqlite3_bind_int64Ã65536÷0
+sqlite3_bind_nullÃ1024Õ(sqlite3_stmt*, int)÷0œint
+sqlite3_bind_nullÃ65536÷0
+sqlite3_bind_parameter_countÃ1024Õ(sqlite3_stmt*)÷0œint
+sqlite3_bind_parameter_countÃ65536÷0
+sqlite3_bind_parameter_indexÃ1024Õ(sqlite3_stmt*, const char *zName)÷0œint
+sqlite3_bind_parameter_indexÃ65536÷0
+sqlite3_bind_parameter_nameÃ1024Õ(sqlite3_stmt*, int)÷0œconst char *
+sqlite3_bind_parameter_nameÃ65536÷0
+sqlite3_bind_textÃ1024Õ(sqlite3_stmt*, int, const char*, int n, void(*)(void*))÷0œint
+sqlite3_bind_textÃ65536÷0
+sqlite3_bind_text16Ã1024Õ(sqlite3_stmt*, int, const void*, int, void(*)(void*))÷0œint
+sqlite3_bind_text16Ã65536÷0
+sqlite3_bind_valueÃ1024Õ(sqlite3_stmt*, int, const sqlite3_value*)÷0œint
+sqlite3_bind_valueÃ65536÷0
+sqlite3_bind_zeroblobÃ1024Õ(sqlite3_stmt*, int, int n)÷0œint
+sqlite3_bind_zeroblobÃ65536÷0
+sqlite3_blobÃ4096÷0
+sqlite3_blob_bytesÃ1024Õ(sqlite3_blob *)÷0œint
+sqlite3_blob_bytesÃ65536÷0
+sqlite3_blob_closeÃ1024Õ(sqlite3_blob *)÷0œint
+sqlite3_blob_closeÃ65536÷0
+sqlite3_blob_openÃ1024Õ( sqlite3*, const char *zDb, const char *zTable, const char *zColumn, sqlite3_int64 iRow, int flags, sqlite3_blob **ppBlob )÷0œint
+sqlite3_blob_openÃ65536÷0
+sqlite3_blob_readÃ1024Õ(sqlite3_blob *, void *Z, int N, int iOffset)÷0œint
+sqlite3_blob_readÃ65536÷0
+sqlite3_blob_reopenÃ1024Õ(sqlite3_blob *, sqlite3_int64)÷0œint
+sqlite3_blob_writeÃ1024Õ(sqlite3_blob *, const void *z, int n, int iOffset)÷0œint
+sqlite3_blob_writeÃ65536÷0
+sqlite3_busy_handlerÃ1024Õ(sqlite3*, int(*)(void*,int), void*)÷0œint
+sqlite3_busy_handlerÃ65536÷0
+sqlite3_busy_timeoutÃ1024Õ(sqlite3*, int ms)÷0œint
+sqlite3_busy_timeoutÃ65536÷0
+sqlite3_callbackÃ4096÷0œtypedef int
+sqlite3_changesÃ1024Õ(sqlite3*)÷0œint
+sqlite3_changesÃ65536÷0
+sqlite3_clear_bindingsÃ1024Õ(sqlite3_stmt*)÷0œint
+sqlite3_clear_bindingsÃ65536÷0
+sqlite3_closeÃ1024Õ(sqlite3 *)÷0œint
+sqlite3_closeÃ65536÷0
+sqlite3_collation_neededÃ1024Õ( sqlite3*, void*, void(*)(void*,sqlite3*,int eTextRep,const char*) )÷0œint
+sqlite3_collation_neededÃ65536÷0
+sqlite3_collation_needed16Ã1024Õ( sqlite3*, void*, void(*)(void*,sqlite3*,int eTextRep,const void*) )÷0œint
+sqlite3_collation_needed16Ã65536÷0
+sqlite3_column_blobÃ1024Õ(sqlite3_stmt*, int iCol)÷0œconst void *
+sqlite3_column_blobÃ65536÷0
+sqlite3_column_bytesÃ1024Õ(sqlite3_stmt*, int iCol)÷0œint
+sqlite3_column_bytesÃ65536÷0
+sqlite3_column_bytes16Ã1024Õ(sqlite3_stmt*, int iCol)÷0œint
+sqlite3_column_bytes16Ã65536÷0
+sqlite3_column_countÃ1024Õ(sqlite3_stmt *pStmt)÷0œint
+sqlite3_column_countÃ65536÷0
+sqlite3_column_database_nameÃ1024Õ(sqlite3_stmt*,int)÷0œconst char *
+sqlite3_column_database_nameÃ65536÷0
+sqlite3_column_database_name16Ã1024Õ(sqlite3_stmt*,int)÷0œconst void *
+sqlite3_column_database_name16Ã65536÷0
+sqlite3_column_decltypeÃ1024Õ(sqlite3_stmt*,int)÷0œconst char *
+sqlite3_column_decltypeÃ65536÷0
+sqlite3_column_decltype16Ã1024Õ(sqlite3_stmt*,int)÷0œconst void *
+sqlite3_column_decltype16Ã65536÷0
+sqlite3_column_doubleÃ1024Õ(sqlite3_stmt*, int iCol)÷0œdouble
+sqlite3_column_doubleÃ65536÷0
+sqlite3_column_intÃ1024Õ(sqlite3_stmt*, int iCol)÷0œint
+sqlite3_column_intÃ65536÷0
+sqlite3_column_int64Ã1024Õ(sqlite3_stmt*, int iCol)÷0œsqlite3_int64
+sqlite3_column_int64Ã65536÷0
+sqlite3_column_nameÃ1024Õ(sqlite3_stmt*, int N)÷0œconst char *
+sqlite3_column_nameÃ65536÷0
+sqlite3_column_name16Ã1024Õ(sqlite3_stmt*, int N)÷0œconst void *
+sqlite3_column_name16Ã65536÷0
+sqlite3_column_origin_nameÃ1024Õ(sqlite3_stmt*,int)÷0œconst char *
+sqlite3_column_origin_nameÃ65536÷0
+sqlite3_column_origin_name16Ã1024Õ(sqlite3_stmt*,int)÷0œconst void *
+sqlite3_column_origin_name16Ã65536÷0
+sqlite3_column_table_nameÃ1024Õ(sqlite3_stmt*,int)÷0œconst char *
+sqlite3_column_table_nameÃ65536÷0
+sqlite3_column_table_name16Ã1024Õ(sqlite3_stmt*,int)÷0œconst void *
+sqlite3_column_table_name16Ã65536÷0
+sqlite3_column_textÃ1024Õ(sqlite3_stmt*, int iCol)÷0œconst unsigned char *
+sqlite3_column_textÃ65536÷0
+sqlite3_column_text16Ã1024Õ(sqlite3_stmt*, int iCol)÷0œconst void *
+sqlite3_column_text16Ã65536÷0
+sqlite3_column_typeÃ1024Õ(sqlite3_stmt*, int iCol)÷0œint
+sqlite3_column_typeÃ65536÷0
+sqlite3_column_valueÃ1024Õ(sqlite3_stmt*, int iCol)÷0œsqlite3_value *
+sqlite3_column_valueÃ65536÷0
+sqlite3_commit_hookÃ1024Õ(sqlite3*, int(*)(void*), void*)÷0œvoid *
+sqlite3_commit_hookÃ65536÷0
+sqlite3_compileoption_getÃ1024Õ(int N)÷0œconst char *
+sqlite3_compileoption_getÃ65536÷0
+sqlite3_compileoption_usedÃ1024Õ(const char *zOptName)÷0œint
+sqlite3_compileoption_usedÃ65536÷0
+sqlite3_completeÃ1024Õ(const char *sql)÷0œint
+sqlite3_completeÃ65536÷0
+sqlite3_complete16Ã1024Õ(const void *sql)÷0œint
+sqlite3_complete16Ã65536÷0
+sqlite3_configÃ1024Õ(int, ...)÷0œint
+sqlite3_contextÃ4096÷0
+sqlite3_context_db_handleÃ1024Õ(sqlite3_context*)÷0œsqlite3 *
+sqlite3_context_db_handleÃ65536÷0
+sqlite3_create_collationÃ1024Õ( sqlite3*, const char *zName, int eTextRep, void *pArg, int(*xCompare)(void*,int,const void*,int,const void*) )÷0œint
+sqlite3_create_collationÃ65536÷0
+sqlite3_create_collation16Ã1024Õ( sqlite3*, const void *zName, int eTextRep, void *pArg, int(*xCompare)(void*,int,const void*,int,const void*) )÷0œint
+sqlite3_create_collation16Ã65536÷0
+sqlite3_create_collation_v2Ã1024Õ( sqlite3*, const char *zName, int eTextRep, void *pArg, int(*xCompare)(void*,int,const void*,int,const void*), void(*xDestroy)(void*) )÷0œint
+sqlite3_create_collation_v2Ã65536÷0
+sqlite3_create_functionÃ1024Õ( sqlite3 *db, const char *zFunctionName, int nArg, int eTextRep, void *pApp, void (*xFunc)(sqlite3_context*,int,sqlite3_value**), void (*xStep)(sqlite3_context*,int,sqlite3_value**), void (*xFinal)(sqlite3_context*) )÷0œint
+sqlite3_create_functionÃ65536÷0
+sqlite3_create_function16Ã1024Õ( sqlite3 *db, const void *zFunctionName, int nArg, int eTextRep, void *pApp, void (*xFunc)(sqlite3_context*,int,sqlite3_value**), void (*xStep)(sqlite3_context*,int,sqlite3_value**), void (*xFinal)(sqlite3_context*) )÷0œint
+sqlite3_create_function16Ã65536÷0
+sqlite3_create_function_v2Ã1024Õ( sqlite3 *db, const char *zFunctionName, int nArg, int eTextRep, void *pApp, void (*xFunc)(sqlite3_context*,int,sqlite3_value**), void (*xStep)(sqlite3_context*,int,sqlite3_value**), void (*xFinal)(sqlite3_context*), void(*xDestroy)(void*) )÷0œint
+sqlite3_create_function_v2Ã65536÷0
+sqlite3_create_moduleÃ1024Õ( sqlite3 *db, const char *zName, const sqlite3_module *p, void *pClientData )÷0œint
+sqlite3_create_moduleÃ65536÷0
+sqlite3_create_module_v2Ã1024Õ( sqlite3 *db, const char *zName, const sqlite3_module *p, void *pClientData, void(*xDestroy)(void*) )÷0œint
+sqlite3_create_module_v2Ã65536÷0
+sqlite3_data_countÃ1024Õ(sqlite3_stmt *pStmt)÷0œint
+sqlite3_data_countÃ65536÷0
+sqlite3_db_configÃ1024Õ(sqlite3*, int op, ...)÷0œint
+sqlite3_db_configÃ65536÷0
+sqlite3_db_handleÃ1024Õ(sqlite3_stmt*)÷0œsqlite3 *
+sqlite3_db_handleÃ65536÷0
+sqlite3_db_mutexÃ1024Õ(sqlite3*)÷0œsqlite3_mutex *
+sqlite3_db_mutexÃ65536÷0
+sqlite3_db_statusÃ1024Õ(sqlite3*, int op, int *pCur, int *pHiwtr, int resetFlg)÷0œint
+sqlite3_db_statusÃ65536÷0
+sqlite3_declare_vtabÃ1024Õ(sqlite3*, const char *zSQL)÷0œint
+sqlite3_declare_vtabÃ65536÷0
+sqlite3_destructor_typeÃ4096÷0œtypedef void
+sqlite3_enable_load_extensionÃ1024Õ(sqlite3 *db, int onoff)÷0œint
+sqlite3_enable_shared_cacheÃ1024Õ(int)÷0œint
+sqlite3_enable_shared_cacheÃ65536÷0
+sqlite3_errcodeÃ1024Õ(sqlite3 *db)÷0œint
+sqlite3_errcodeÃ65536÷0
+sqlite3_errmsgÃ1024Õ(sqlite3*)÷0œconst char *
+sqlite3_errmsgÃ65536÷0
+sqlite3_errmsg16Ã1024Õ(sqlite3*)÷0œconst void *
+sqlite3_errmsg16Ã65536÷0
+sqlite3_execÃ1024Õ( sqlite3*, const char *sql, int (*callback)(void*,int,char**,char**), void *, char **errmsg )÷0œint
+sqlite3_execÃ65536÷0
+sqlite3_expiredÃ1024Õ(sqlite3_stmt*)÷0œint
+sqlite3_expiredÃ65536÷0
+sqlite3_extended_errcodeÃ1024Õ(sqlite3 *db)÷0œint
+sqlite3_extended_errcodeÃ65536÷0
+sqlite3_extended_result_codesÃ1024Õ(sqlite3*, int onoff)÷0œint
+sqlite3_extended_result_codesÃ65536÷0
+sqlite3_fileÃ2048÷0
+sqlite3_fileÃ4096÷0
+sqlite3_file_controlÃ1024Õ(sqlite3*, const char *zDbName, int op, void*)÷0œint
+sqlite3_file_controlÃ65536÷0
+sqlite3_finalizeÃ1024Õ(sqlite3_stmt *pStmt)÷0œint
+sqlite3_finalizeÃ65536÷0
+sqlite3_freeÃ1024Õ(void*)÷0œvoid
+sqlite3_freeÃ65536÷0
+sqlite3_free_tableÃ1024Õ(char **result)÷0œvoid
+sqlite3_free_tableÃ65536÷0
+sqlite3_get_autocommitÃ1024Õ(sqlite3*)÷0œint
+sqlite3_get_autocommitÃ65536÷0
+sqlite3_get_auxdataÃ1024Õ(sqlite3_context*, int N)÷0œvoid *
+sqlite3_get_auxdataÃ65536÷0
+sqlite3_get_tableÃ1024Õ( sqlite3 *db, const char *zSql, char ***pazResult, int *pnRow, int *pnColumn, char **pzErrmsg )÷0œint
+sqlite3_get_tableÃ65536÷0
+sqlite3_global_recoverÃ1024Õ(void)÷0œint
+sqlite3_global_recoverÃ65536÷0
+sqlite3_index_constraintÃ2048Œsqlite3_index_info÷0
+sqlite3_index_constraint_usageÃ2048Œsqlite3_index_info÷0
+sqlite3_index_infoÃ2048÷0
+sqlite3_index_infoÃ4096÷0
+sqlite3_index_orderbyÃ2048Œsqlite3_index_info÷0
+sqlite3_initializeÃ1024Õ(void)÷0œint
+sqlite3_int64Ã4096÷0œsqlite_int64
+sqlite3_interruptÃ1024Õ(sqlite3*)÷0œvoid
+sqlite3_interruptÃ65536÷0
+sqlite3_io_methodsÃ2048÷0
+sqlite3_io_methodsÃ4096÷0
+sqlite3_last_insert_rowidÃ1024Õ(sqlite3*)÷0œsqlite3_int64
+sqlite3_last_insert_rowidÃ65536÷0
+sqlite3_libversionÃ1024Õ(void)÷0œconst char *
+sqlite3_libversionÃ65536÷0
+sqlite3_libversion_numberÃ1024Õ(void)÷0œint
+sqlite3_libversion_numberÃ65536÷0
+sqlite3_limitÃ1024Õ(sqlite3*, int id, int newVal)÷0œint
+sqlite3_limitÃ65536÷0
+sqlite3_load_extensionÃ1024Õ( sqlite3 *db, const char *zFile, const char *zProc, char **pzErrMsg )÷0œint
+sqlite3_logÃ1024Õ(int iErrCode, const char *zFormat, ...)÷0œvoid
+sqlite3_logÃ65536÷0
+sqlite3_mallocÃ1024Õ(int)÷0œvoid *
+sqlite3_mallocÃ65536÷0
+sqlite3_mem_methodsÃ2048÷0
+sqlite3_mem_methodsÃ4096÷0
+sqlite3_memory_alarmÃ1024Õ(void(*)(void*,sqlite3_int64,int),void*,sqlite3_int64)÷0œint
+sqlite3_memory_highwaterÃ1024Õ(int resetFlag)÷0œsqlite3_int64
+sqlite3_memory_highwaterÃ65536÷0
+sqlite3_memory_usedÃ1024Õ(void)÷0œsqlite3_int64
+sqlite3_memory_usedÃ65536÷0
+sqlite3_moduleÃ2048÷0
+sqlite3_moduleÃ4096÷0
+sqlite3_mprintfÃ1024Õ(const char*,...)÷0œchar *
+sqlite3_mprintfÃ65536÷0
+sqlite3_mutexÃ4096÷0
+sqlite3_mutex_allocÃ1024Õ(int)÷0œsqlite3_mutex *
+sqlite3_mutex_allocÃ65536÷0
+sqlite3_mutex_enterÃ1024Õ(sqlite3_mutex*)÷0œvoid
+sqlite3_mutex_enterÃ65536÷0
+sqlite3_mutex_freeÃ1024Õ(sqlite3_mutex*)÷0œvoid
+sqlite3_mutex_freeÃ65536÷0
+sqlite3_mutex_heldÃ1024Õ(sqlite3_mutex*)÷0œint
+sqlite3_mutex_leaveÃ1024Õ(sqlite3_mutex*)÷0œvoid
+sqlite3_mutex_leaveÃ65536÷0
+sqlite3_mutex_methodsÃ2048÷0
+sqlite3_mutex_methodsÃ4096÷0
+sqlite3_mutex_notheldÃ1024Õ(sqlite3_mutex*)÷0œint
+sqlite3_mutex_tryÃ1024Õ(sqlite3_mutex*)÷0œint
+sqlite3_mutex_tryÃ65536÷0
+sqlite3_next_stmtÃ1024Õ(sqlite3 *pDb, sqlite3_stmt *pStmt)÷0œsqlite3_stmt *
+sqlite3_next_stmtÃ65536÷0
+sqlite3_openÃ1024Õ( const char *filename, sqlite3 **ppDb )÷0œint
+sqlite3_openÃ65536÷0
+sqlite3_open16Ã1024Õ( const void *filename, sqlite3 **ppDb )÷0œint
+sqlite3_open16Ã65536÷0
+sqlite3_open_v2Ã1024Õ( const char *filename, sqlite3 **ppDb, int flags, const char *zVfs )÷0œint
+sqlite3_open_v2Ã65536÷0
+sqlite3_os_endÃ1024Õ(void)÷0œint
+sqlite3_os_initÃ1024Õ(void)÷0œint
+sqlite3_overload_functionÃ1024Õ(sqlite3*, const char *zFuncName, int nArg)÷0œint
+sqlite3_overload_functionÃ65536÷0
+sqlite3_pcacheÃ4096÷0
+sqlite3_pcache_methodsÃ2048÷0
+sqlite3_pcache_methodsÃ4096÷0
+sqlite3_prepareÃ1024Õ( sqlite3 *db, const char *zSql, int nByte, sqlite3_stmt **ppStmt, const char **pzTail )÷0œint
+sqlite3_prepareÃ65536÷0
+sqlite3_prepare16Ã1024Õ( sqlite3 *db, const void *zSql, int nByte, sqlite3_stmt **ppStmt, const void **pzTail )÷0œint
+sqlite3_prepare16Ã65536÷0
+sqlite3_prepare16_v2Ã1024Õ( sqlite3 *db, const void *zSql, int nByte, sqlite3_stmt **ppStmt, const void **pzTail )÷0œint
+sqlite3_prepare16_v2Ã65536÷0
+sqlite3_prepare_v2Ã1024Õ( sqlite3 *db, const char *zSql, int nByte, sqlite3_stmt **ppStmt, const char **pzTail )÷0œint
+sqlite3_prepare_v2Ã65536÷0
+sqlite3_profileÃ1024Õ(sqlite3*, void(*xProfile)(void*,const char*,sqlite3_uint64), void*)÷0œvoid *
+sqlite3_profileÃ65536÷0
+sqlite3_progress_handlerÃ1024Õ(sqlite3*, int, int(*)(void*), void*)÷0œvoid
+sqlite3_progress_handlerÃ65536÷0
+sqlite3_randomnessÃ1024Õ(int N, void *P)÷0œvoid
+sqlite3_randomnessÃ65536÷0
+sqlite3_reallocÃ1024Õ(void*, int)÷0œvoid *
+sqlite3_reallocÃ65536÷0
+sqlite3_release_memoryÃ1024Õ(int)÷0œint
+sqlite3_release_memoryÃ65536÷0
+sqlite3_resetÃ1024Õ(sqlite3_stmt *pStmt)÷0œint
+sqlite3_resetÃ65536÷0
+sqlite3_reset_auto_extensionÃ1024Õ(void)÷0œvoid
+sqlite3_result_blobÃ1024Õ(sqlite3_context*, const void*, int, void(*)(void*))÷0œvoid
+sqlite3_result_blobÃ65536÷0
+sqlite3_result_doubleÃ1024Õ(sqlite3_context*, double)÷0œvoid
+sqlite3_result_doubleÃ65536÷0
+sqlite3_result_errorÃ1024Õ(sqlite3_context*, const char*, int)÷0œvoid
+sqlite3_result_errorÃ65536÷0
+sqlite3_result_error16Ã1024Õ(sqlite3_context*, const void*, int)÷0œvoid
+sqlite3_result_error16Ã65536÷0
+sqlite3_result_error_codeÃ1024Õ(sqlite3_context*, int)÷0œvoid
+sqlite3_result_error_codeÃ65536÷0
+sqlite3_result_error_nomemÃ1024Õ(sqlite3_context*)÷0œvoid
+sqlite3_result_error_nomemÃ65536÷0
+sqlite3_result_error_toobigÃ1024Õ(sqlite3_context*)÷0œvoid
+sqlite3_result_error_toobigÃ65536÷0
+sqlite3_result_intÃ1024Õ(sqlite3_context*, int)÷0œvoid
+sqlite3_result_intÃ65536÷0
+sqlite3_result_int64Ã1024Õ(sqlite3_context*, sqlite3_int64)÷0œvoid
+sqlite3_result_int64Ã65536÷0
+sqlite3_result_nullÃ1024Õ(sqlite3_context*)÷0œvoid
+sqlite3_result_nullÃ65536÷0
+sqlite3_result_textÃ1024Õ(sqlite3_context*, const char*, int, void(*)(void*))÷0œvoid
+sqlite3_result_textÃ65536÷0
+sqlite3_result_text16Ã1024Õ(sqlite3_context*, const void*, int, void(*)(void*))÷0œvoid
+sqlite3_result_text16Ã65536÷0
+sqlite3_result_text16beÃ1024Õ(sqlite3_context*, const void*, int,void(*)(void*))÷0œvoid
+sqlite3_result_text16beÃ65536÷0
+sqlite3_result_text16leÃ1024Õ(sqlite3_context*, const void*, int,void(*)(void*))÷0œvoid
+sqlite3_result_text16leÃ65536÷0
+sqlite3_result_valueÃ1024Õ(sqlite3_context*, sqlite3_value*)÷0œvoid
+sqlite3_result_valueÃ65536÷0
+sqlite3_result_zeroblobÃ1024Õ(sqlite3_context*, int n)÷0œvoid
+sqlite3_result_zeroblobÃ65536÷0
+sqlite3_rollback_hookÃ1024Õ(sqlite3*, void(*)(void *), void*)÷0œvoid *
+sqlite3_rollback_hookÃ65536÷0
+sqlite3_rtree_geometryÃ2048÷0
+sqlite3_rtree_geometryÃ4096÷0
+sqlite3_rtree_geometry_callbackÃ1024Õ( sqlite3 *db, const char *zGeom, int (*xGeom)(sqlite3_rtree_geometry *, int nCoord, double *aCoord, int *pRes), void *pContext )÷0œint
+sqlite3_set_authorizerÃ1024Õ( sqlite3*, int (*xAuth)(void*,int,const char*,const char*,const char*,const char*), void *pUserData )÷0œint
+sqlite3_set_authorizerÃ65536÷0
+sqlite3_set_auxdataÃ1024Õ(sqlite3_context*, int N, void*, void (*)(void*))÷0œvoid
+sqlite3_set_auxdataÃ65536÷0
+sqlite3_shutdownÃ1024Õ(void)÷0œint
+sqlite3_sleepÃ1024Õ(int)÷0œint
+sqlite3_sleepÃ65536÷0
+sqlite3_snprintfÃ1024Õ(int,char*,const char*, ...)÷0œchar *
+sqlite3_snprintfÃ65536÷0
+sqlite3_soft_heap_limitÃ1024Õ(int N)÷0œvoid
+sqlite3_soft_heap_limitÃ65536÷0
+sqlite3_soft_heap_limit64Ã1024Õ(sqlite3_int64 N)÷0œsqlite3_int64
+sqlite3_soft_heap_limit64Ã65536÷0
+sqlite3_sourceidÃ1024Õ(void)÷0œconst char *
+sqlite3_sourceidÃ65536÷0
+sqlite3_sqlÃ1024Õ(sqlite3_stmt *pStmt)÷0œconst char *
+sqlite3_sqlÃ65536÷0
+sqlite3_statusÃ1024Õ(int op, int *pCurrent, int *pHighwater, int resetFlag)÷0œint
+sqlite3_statusÃ65536÷0
+sqlite3_stepÃ1024Õ(sqlite3_stmt*)÷0œint
+sqlite3_stepÃ65536÷0
+sqlite3_stmtÃ4096÷0
+sqlite3_stmt_readonlyÃ1024Õ(sqlite3_stmt *pStmt)÷0œint
+sqlite3_stmt_statusÃ1024Õ(sqlite3_stmt*, int op,int resetFlg)÷0œint
+sqlite3_stmt_statusÃ65536÷0
+sqlite3_strnicmpÃ1024Õ(const char *, const char *, int)÷0œint
+sqlite3_strnicmpÃ65536÷0
+sqlite3_syscall_ptrÃ4096÷0œtypedef void
+sqlite3_table_column_metadataÃ1024Õ( sqlite3 *db, const char *zDbName, const char *zTableName, const char *zColumnName, char const **pzDataType, char const **pzCollSeq, int *pNotNull, int *pPrimaryKey, int *pAutoinc )÷0œint
+sqlite3_table_column_metadataÃ65536÷0
+sqlite3_temp_directoryÃ32768÷0œchar
+sqlite3_test_controlÃ1024Õ(int op, ...)÷0œint
+sqlite3_test_controlÃ65536÷0
+sqlite3_thread_cleanupÃ1024Õ(void)÷0œvoid
+sqlite3_thread_cleanupÃ65536÷0
+sqlite3_threadsafeÃ1024Õ(void)÷0œint
+sqlite3_threadsafeÃ65536÷0
+sqlite3_total_changesÃ1024Õ(sqlite3*)÷0œint
+sqlite3_total_changesÃ65536÷0
+sqlite3_traceÃ1024Õ(sqlite3*, void(*xTrace)(void*,const char*), void*)÷0œvoid *
+sqlite3_traceÃ65536÷0
+sqlite3_transfer_bindingsÃ1024Õ(sqlite3_stmt*, sqlite3_stmt*)÷0œint
+sqlite3_transfer_bindingsÃ65536÷0
+sqlite3_uint64Ã4096÷0œsqlite_uint64
+sqlite3_unlock_notifyÃ1024Õ( sqlite3 *pBlocked, void (*xNotify)(void **apArg, int nArg), void *pNotifyArg )÷0œint
+sqlite3_unlock_notifyÃ65536÷0
+sqlite3_update_hookÃ1024Õ( sqlite3*, void(*)(void *,int ,char const *,char const *,sqlite3_int64), void* )÷0œvoid *
+sqlite3_update_hookÃ65536÷0
+sqlite3_user_dataÃ1024Õ(sqlite3_context*)÷0œvoid *
+sqlite3_user_dataÃ65536÷0
+sqlite3_valueÃ4096÷0œMem
+sqlite3_value_blobÃ1024Õ(sqlite3_value*)÷0œconst void *
+sqlite3_value_blobÃ65536÷0
+sqlite3_value_bytesÃ1024Õ(sqlite3_value*)÷0œint
+sqlite3_value_bytesÃ65536÷0
+sqlite3_value_bytes16Ã1024Õ(sqlite3_value*)÷0œint
+sqlite3_value_bytes16Ã65536÷0
+sqlite3_value_doubleÃ1024Õ(sqlite3_value*)÷0œdouble
+sqlite3_value_doubleÃ65536÷0
+sqlite3_value_intÃ1024Õ(sqlite3_value*)÷0œint
+sqlite3_value_intÃ65536÷0
+sqlite3_value_int64Ã1024Õ(sqlite3_value*)÷0œsqlite3_int64
+sqlite3_value_int64Ã65536÷0
+sqlite3_value_numeric_typeÃ1024Õ(sqlite3_value*)÷0œint
+sqlite3_value_numeric_typeÃ65536÷0
+sqlite3_value_textÃ1024Õ(sqlite3_value*)÷0œconst unsigned char *
+sqlite3_value_textÃ65536÷0
+sqlite3_value_text16Ã1024Õ(sqlite3_value*)÷0œconst void *
+sqlite3_value_text16Ã65536÷0
+sqlite3_value_text16beÃ1024Õ(sqlite3_value*)÷0œconst void *
+sqlite3_value_text16beÃ65536÷0
+sqlite3_value_text16leÃ1024Õ(sqlite3_value*)÷0œconst void *
+sqlite3_value_text16leÃ65536÷0
+sqlite3_value_typeÃ1024Õ(sqlite3_value*)÷0œint
+sqlite3_value_typeÃ65536÷0
+sqlite3_versionÃ32768÷0œchar
+sqlite3_vfsÃ2048÷0
+sqlite3_vfsÃ4096÷0
+sqlite3_vfs_findÃ1024Õ(const char *zVfsName)÷0œsqlite3_vfs *
+sqlite3_vfs_findÃ65536÷0
+sqlite3_vfs_registerÃ1024Õ(sqlite3_vfs*, int makeDflt)÷0œint
+sqlite3_vfs_registerÃ65536÷0
+sqlite3_vfs_unregisterÃ1024Õ(sqlite3_vfs*)÷0œint
+sqlite3_vfs_unregisterÃ65536÷0
+sqlite3_vmprintfÃ1024Õ(const char*, va_list)÷0œchar *
+sqlite3_vmprintfÃ65536÷0
+sqlite3_vsnprintfÃ1024Õ(int,char*,const char*, va_list)÷0œchar *
+sqlite3_vtabÃ2048÷0
+sqlite3_vtabÃ4096÷0
+sqlite3_vtab_cursorÃ2048÷0
+sqlite3_vtab_cursorÃ4096÷0
+sqlite3_wal_autocheckpointÃ1024Õ(sqlite3 *db, int N)÷0œint
+sqlite3_wal_autocheckpointÃ65536÷0
+sqlite3_wal_checkpointÃ1024Õ(sqlite3 *db, const char *zDb)÷0œint
+sqlite3_wal_checkpointÃ65536÷0
+sqlite3_wal_checkpoint_v2Ã1024Õ( sqlite3 *db, const char *zDb, int eMode, int *pnLog, int *pnCkpt )÷0œint
+sqlite3_wal_hookÃ1024Õ( sqlite3*, int(*)(void *,sqlite3*,const char*,int), void* )÷0œvoid *
+sqlite3_wal_hookÃ65536÷0
+sqlite_int64Ã4096÷0œlong
+sqlite_uint64Ã4096÷0œlong
+statusÃ1024Õ(int,int*,int*,int)Œsqlite3_api_routines÷0œint
+stepÃ1024Õ(sqlite3_stmt*)Œsqlite3_api_routines÷0œint
+stmt_statusÃ1024Õ(sqlite3_stmt*,int,int)Œsqlite3_api_routines÷0œint
+strnicmpÃ1024Õ(const char*,const char*,int)Œsqlite3_api_routines÷0œint
+szOsFileÃ64Œsqlite3_vfs÷0œint
+table_column_metadataÃ1024Õ(sqlite3*,const char*,const char*,const char*,char const**,char const**,int*,int*,int*)Œsqlite3_api_routines÷0œint
+test_controlÃ1024Õ(int, ...)Œsqlite3_api_routines÷0œint
+thread_cleanupÃ1024Õ(void)Œsqlite3_api_routines÷0œvoid
+total_changesÃ1024Õ(sqlite3*)Œsqlite3_api_routines÷0œint
+traceÃ1024Õ(sqlite3*,void(*xTrace)(void*,const char*),void*)Œsqlite3_api_routines÷0œvoid *
+transfer_bindingsÃ1024Õ(sqlite3_stmt*,sqlite3_stmt*)Œsqlite3_api_routines÷0œint
+unlock_notifyÃ1024Õ(sqlite3*,void(*)(void**,int),void*)Œsqlite3_api_routines÷0œint
+update_hookÃ1024Õ(sqlite3*,void(*)(void*,int ,char const*,char const*,sqlite_int64),void*)Œsqlite3_api_routines÷0œvoid *
+usableÃ64Œsqlite3_index_info::sqlite3_index_constraint÷0œchar
+user_dataÃ1024Õ(sqlite3_context*)Œsqlite3_api_routines÷0œvoid *
+va_argÃ131072Õ(v,l)÷0
+va_copyÃ131072Õ(d,s)÷0
+va_endÃ131072Õ(v)÷0
+va_listÃ4096÷0œ__gnuc_va_list
+va_startÃ131072Õ(v,l)÷0
+value_blobÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œconst void *
+value_bytesÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œint
+value_bytes16Ã1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œint
+value_doubleÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œdouble
+value_intÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œint
+value_int64Ã1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œsqlite_int64
+value_numeric_typeÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œint
+value_textÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œconst unsigned char *
+value_text16Ã1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œconst void *
+value_text16beÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œconst void *
+value_text16leÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œconst void *
+value_typeÃ1024Õ(sqlite3_value*)Œsqlite3_api_routines÷0œint
+vfs_findÃ1024Õ(const char*)Œsqlite3_api_routines÷0œsqlite3_vfs *
+vfs_registerÃ1024Õ(sqlite3_vfs*,int)Œsqlite3_api_routines÷0œint
+vfs_unregisterÃ1024Õ(sqlite3_vfs*)Œsqlite3_api_routines÷0œint
+vmprintfÃ1024Õ(const char*,va_list)Œsqlite3_api_routines÷0œchar *
+wal_autocheckpointÃ1024Õ(sqlite3*,int)Œsqlite3_api_routines÷0œint
+wal_checkpointÃ1024Õ(sqlite3*,const char*)Œsqlite3_api_routines÷0œint
+wal_hookÃ1024Õ(sqlite3*,int(*)(void*,sqlite3*,const char*,int),void*)Œsqlite3_api_routines÷0œvoid *
+xAccessÃ1024Õ(sqlite3_vfs*, const char *zName, int flags, int *pResOut)Œsqlite3_vfs÷0œint
+xBeginÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xBestIndexÃ1024Õ(sqlite3_vtab *pVTab, sqlite3_index_info*)Œsqlite3_module÷0œint
+xCachesizeÃ1024Õ(sqlite3_pcache*, int nCachesize)Œsqlite3_pcache_methods÷0œvoid
+xCheckReservedLockÃ1024Õ(sqlite3_file*, int *pResOut)Œsqlite3_io_methods÷0œint
+xCloseÃ1024Õ(sqlite3_file*)Œsqlite3_io_methods÷0œint
+xCloseÃ1024Õ(sqlite3_vtab_cursor*)Œsqlite3_module÷0œint
+xColumnÃ1024Õ(sqlite3_vtab_cursor*, sqlite3_context*, int)Œsqlite3_module÷0œint
+xCommitÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xConnectÃ1024Õ(sqlite3*, void *pAux, int argc, const char *const*argv, sqlite3_vtab **ppVTab, char**)Œsqlite3_module÷0œint
+xCreateÃ1024Õ(sqlite3*, void *pAux, int argc, const char *const*argv, sqlite3_vtab **ppVTab, char**)Œsqlite3_module÷0œint
+xCreateÃ1024Õ(int szPage, int bPurgeable)Œsqlite3_pcache_methods÷0œsqlite3_pcache *
+xCurrentTimeÃ1024Õ(sqlite3_vfs*, double*)Œsqlite3_vfs÷0œint
+xCurrentTimeInt64Ã1024Õ(sqlite3_vfs*, sqlite3_int64*)Œsqlite3_vfs÷0œint
+xDelUserÃ1024Õ(void *)Œsqlite3_rtree_geometry÷0œvoid
+xDeleteÃ1024Õ(sqlite3_vfs*, const char *zName, int syncDir)Œsqlite3_vfs÷0œint
+xDestroyÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xDestroyÃ1024Õ(sqlite3_pcache*)Œsqlite3_pcache_methods÷0œvoid
+xDeviceCharacteristicsÃ1024Õ(sqlite3_file*)Œsqlite3_io_methods÷0œint
+xDisconnectÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xDlCloseÃ1024Õ(sqlite3_vfs*, void*)Œsqlite3_vfs÷0œvoid
+xDlErrorÃ1024Õ(sqlite3_vfs*, int nByte, char *zErrMsg)Œsqlite3_vfs÷0œvoid
+xDlOpenÃ1024Õ(sqlite3_vfs*, const char *zFilename)Œsqlite3_vfs÷0œvoid *
+xDlSymÃ1024Õ(sqlite3_vfs*,void*, const char *zSymbol)Œsqlite3_vfs÷0œvoid
+xEofÃ1024Õ(sqlite3_vtab_cursor*)Œsqlite3_module÷0œint
+xFetchÃ1024Õ(sqlite3_pcache*, unsigned key, int createFlag)Œsqlite3_pcache_methods÷0œvoid *
+xFileControlÃ1024Õ(sqlite3_file*, int op, void *pArg)Œsqlite3_io_methods÷0œint
+xFileSizeÃ1024Õ(sqlite3_file*, sqlite3_int64 *pSize)Œsqlite3_io_methods÷0œint
+xFilterÃ1024Õ(sqlite3_vtab_cursor*, int idxNum, const char *idxStr, int argc, sqlite3_value **argv)Œsqlite3_module÷0œint
+xFindFunctionÃ1024Õ(sqlite3_vtab *pVtab, int nArg, const char *zName, void (**pxFunc)(sqlite3_context*,int,sqlite3_value**), void **ppArg)Œsqlite3_module÷0œint
+xFreeÃ1024Õ(void*)Œsqlite3_mem_methods÷0œvoid
+xFullPathnameÃ1024Õ(sqlite3_vfs*, const char *zName, int nOut, char *zOut)Œsqlite3_vfs÷0œint
+xGetLastErrorÃ1024Õ(sqlite3_vfs*, int, char *)Œsqlite3_vfs÷0œint
+xGetSystemCallÃ1024Õ(sqlite3_vfs*, const char *zName)Œsqlite3_vfs÷0œsqlite3_syscall_ptr
+xInitÃ1024Õ(void*)Œsqlite3_mem_methods÷0œint
+xInitÃ1024Õ(void*)Œsqlite3_pcache_methods÷0œint
+xLockÃ1024Õ(sqlite3_file*, int)Œsqlite3_io_methods÷0œint
+xMallocÃ1024Õ(int)Œsqlite3_mem_methods÷0œvoid *
+xMutexAllocÃ1024Õ(int)Œsqlite3_mutex_methods÷0œsqlite3_mutex *
+xMutexEndÃ1024Õ(void)Œsqlite3_mutex_methods÷0œint
+xMutexEnterÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œvoid
+xMutexFreeÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œvoid
+xMutexHeldÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œint
+xMutexInitÃ1024Õ(void)Œsqlite3_mutex_methods÷0œint
+xMutexLeaveÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œvoid
+xMutexNotheldÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œint
+xMutexTryÃ1024Õ(sqlite3_mutex *)Œsqlite3_mutex_methods÷0œint
+xNextÃ1024Õ(sqlite3_vtab_cursor*)Œsqlite3_module÷0œint
+xNextSystemCallÃ1024Õ(sqlite3_vfs*, const char *zName)Œsqlite3_vfs÷0œconst char *
+xOpenÃ1024Õ(sqlite3_vtab *pVTab, sqlite3_vtab_cursor **ppCursor)Œsqlite3_module÷0œint
+xOpenÃ1024Õ(sqlite3_vfs*, const char *zName, sqlite3_file*, int flags, int *pOutFlags)Œsqlite3_vfs÷0œint
+xPagecountÃ1024Õ(sqlite3_pcache*)Œsqlite3_pcache_methods÷0œint
+xRandomnessÃ1024Õ(sqlite3_vfs*, int nByte, char *zOut)Œsqlite3_vfs÷0œint
+xReadÃ1024Õ(sqlite3_file*, void*, int iAmt, sqlite3_int64 iOfst)Œsqlite3_io_methods÷0œint
+xReallocÃ1024Õ(void*,int)Œsqlite3_mem_methods÷0œvoid *
+xRekeyÃ1024Õ(sqlite3_pcache*, void*, unsigned oldKey, unsigned newKey)Œsqlite3_pcache_methods÷0œvoid
+xRenameÃ1024Õ(sqlite3_vtab *pVtab, const char *zNew)Œsqlite3_module÷0œint
+xRollbackÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xRoundupÃ1024Õ(int)Œsqlite3_mem_methods÷0œint
+xRowidÃ1024Õ(sqlite3_vtab_cursor*, sqlite3_int64 *pRowid)Œsqlite3_module÷0œint
+xSectorSizeÃ1024Õ(sqlite3_file*)Œsqlite3_io_methods÷0œint
+xSetSystemCallÃ1024Õ(sqlite3_vfs*, const char *zName, sqlite3_syscall_ptr)Œsqlite3_vfs÷0œint
+xShmBarrierÃ1024Õ(sqlite3_file*)Œsqlite3_io_methods÷0œvoid
+xShmLockÃ1024Õ(sqlite3_file*, int offset, int n, int flags)Œsqlite3_io_methods÷0œint
+xShmMapÃ1024Õ(sqlite3_file*, int iPg, int pgsz, int, void volatile**)Œsqlite3_io_methods÷0œint
+xShmUnmapÃ1024Õ(sqlite3_file*, int deleteFlag)Œsqlite3_io_methods÷0œint
+xShutdownÃ1024Õ(void*)Œsqlite3_mem_methods÷0œvoid
+xShutdownÃ1024Õ(void*)Œsqlite3_pcache_methods÷0œvoid
+xSizeÃ1024Õ(void*)Œsqlite3_mem_methods÷0œint
+xSleepÃ1024Õ(sqlite3_vfs*, int microseconds)Œsqlite3_vfs÷0œint
+xSyncÃ1024Õ(sqlite3_file*, int flags)Œsqlite3_io_methods÷0œint
+xSyncÃ1024Õ(sqlite3_vtab *pVTab)Œsqlite3_module÷0œint
+xTruncateÃ1024Õ(sqlite3_file*, sqlite3_int64 size)Œsqlite3_io_methods÷0œint
+xTruncateÃ1024Õ(sqlite3_pcache*, unsigned iLimit)Œsqlite3_pcache_methods÷0œvoid
+xUnlockÃ1024Õ(sqlite3_file*, int)Œsqlite3_io_methods÷0œint
+xUnpinÃ1024Õ(sqlite3_pcache*, void*, int discard)Œsqlite3_pcache_methods÷0œvoid
+xUpdateÃ1024Õ(sqlite3_vtab *, int, sqlite3_value **, sqlite3_int64 *)Œsqlite3_module÷0œint
+xWriteÃ1024Õ(sqlite3_file*, const void*, int iAmt, sqlite3_int64 iOfst)Œsqlite3_io_methods÷0œint
+xthreadsafeÃ1024Õ(void)Œsqlite3_api_routines÷0œint
+zErrMsgÃ64Œsqlite3_vtab÷0œchar
+zNameÃ64Œsqlite3_vfs÷0œchar

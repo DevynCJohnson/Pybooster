@@ -1,0 +1,74 @@
+# format=tagmanager
+AccessÌ128Í(string path, int mask)ÎFuseÖ0Ïpublic delegate int
+ChmodÌ128Í(string path, Posix.mode_t mode)ÎFuseÖ0Ïpublic delegate int
+ChownÌ128Í(string path, Posix.uid_t uid, Posix.gid_t gid)ÎFuseÖ0Ïpublic delegate int
+ContextÌ2048ÎFuseÖ0
+CreateÌ128Í(string path, Posix.mode_t mode, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+FileInfoÌ2048ÎFuseÖ0
+FillDirÌ128Í(void* buf, string name, Posix.Stat? st, Posix.off_t offset)ÎFuseÖ0Ïpublic delegate int
+FsyncÌ128Í(string path, int isdatasync, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+FuseÌ256Ö0
+FuseÌ2048ÎFuseÖ0
+GetAttrÌ128Í(string path, Posix.Stat* st)ÎFuseÖ0Ïpublic delegate int
+GetXAttrÌ128Í(string path, string name, char* value, size_t size)ÎFuseÖ0Ïpublic delegate int
+LinkÌ128Í(string from, string to)ÎFuseÖ0Ïpublic delegate int
+ListXAttrÌ128Í(string path, char* list, size_t size)ÎFuseÖ0Ïpublic delegate int
+MkDirÌ128Í(string path, Posix.mode_t mode)ÎFuseÖ0Ïpublic delegate int
+MkNodÌ128Í(string path, Posix.mode_t mode, Posix.dev_t rdev)ÎFuseÖ0Ïpublic delegate int
+OpenÌ128Í(string path, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+OperationsÌ2048ÎFuseÖ0
+ReadÌ128Í(string path, char* buf, size_t size, Posix.off_t offset, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+ReadDirÌ128Í(string path, void* buf, FillDir filler, Posix.off_t offset, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+ReadLinkÌ128Í(string path, char* buf, size_t size)ÎFuseÖ0Ïpublic delegate int
+ReleaseÌ128Í(string path, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+RemoveXAttrÌ128Í(string path, string name)ÎFuseÖ0Ïpublic delegate int
+RenameÌ128Í(string from, string to)ÎFuseÖ0Ïpublic delegate int
+RmDirÌ128Í(string path)ÎFuseÖ0Ïpublic delegate int
+SetXAttrÌ128Í(string path, string name, char* value, size_t size, int flags)ÎFuseÖ0Ïpublic delegate int
+StatFsÌ128Í(string path, Posix.statvfs *stbuf)ÎFuseÖ0Ïpublic delegate int
+SymlinkÌ128Í(string from, string to)ÎFuseÖ0Ïpublic delegate int
+TruncateÌ128Í(string path, Posix.off_t size)ÎFuseÖ0Ïpublic delegate int
+UnlinkÌ128Í(string path)ÎFuseÖ0Ïpublic delegate int
+UtimensÌ128Í(string path, Posix.timespec[] ts)ÎFuseÖ0Ïpublic delegate int
+WriteÌ128Í(string path, char* buf, size_t size, Posix.off_t offset, ref FileInfo fi)ÎFuseÖ0Ïpublic delegate int
+accessÌ8ÎFuse.OperationsÖ0ÏAccess
+chmodÌ8ÎFuse.OperationsÖ0ÏChmod
+chownÌ8ÎFuse.OperationsÖ0ÏChown
+createÌ8ÎFuse.OperationsÖ0ÏCreate
+direct_ioÌ8ÎFuse.FileInfoÖ0
+fhÌ8ÎFuse.FileInfoÖ0Ïuint64
+fh_oldÌ8ÎFuse.FileInfoÖ0
+flagsÌ8ÎFuse.FileInfoÖ0Ïint
+flushÌ8ÎFuse.FileInfoÖ0
+fsyncÌ8ÎFuse.OperationsÖ0ÏFsync
+fuseÌ8ÎFuse.ContextÖ0ÏFuse
+get_contextÌ128Í()ÎFuseÖ0Ïpublic Context
+getattrÌ8ÎFuse.OperationsÖ0ÏGetAttr
+getxattrÌ8ÎFuse.OperationsÖ0ÏGetXAttr
+gidÌ8ÎFuse.ContextÖ0ÏPosix.gid_t
+keep_cacheÌ8ÎFuse.FileInfoÖ0
+linkÌ8ÎFuse.OperationsÖ0ÏLink
+listxattrÌ8ÎFuse.OperationsÖ0ÏListXAttr
+lock_ownerÌ8ÎFuse.FileInfoÖ0Ïuint64
+mainÌ128Í([CCode (array_length_pos = 0.9)] string[] args, Operations oper, void *user_data)ÎFuseÖ0Ïpublic int
+mkdirÌ8ÎFuse.OperationsÖ0ÏMkDir
+mknodÌ8ÎFuse.OperationsÖ0ÏMkNod
+openÌ8ÎFuse.OperationsÖ0ÏOpen
+paddingÌ8ÎFuse.FileInfoÖ0
+private_dataÌ8ÎFuse.ContextÖ0Ïvoid
+readÌ8ÎFuse.OperationsÖ0ÏRead
+readdirÌ8ÎFuse.OperationsÖ0ÏReadDir
+readlinkÌ8ÎFuse.OperationsÖ0ÏReadLink
+releaseÌ8ÎFuse.OperationsÖ0ÏRelease
+removexattrÌ8ÎFuse.OperationsÖ0ÏRemoveXAttr
+renameÌ8ÎFuse.OperationsÖ0ÏRename
+rmdirÌ8ÎFuse.OperationsÖ0ÏRmDir
+setxattrÌ8ÎFuse.OperationsÖ0ÏSetXAttr
+statfsÌ8ÎFuse.OperationsÖ0ÏStatFs
+symlinkÌ8ÎFuse.OperationsÖ0ÏSymlink
+truncateÌ8ÎFuse.OperationsÖ0ÏTruncate
+uidÌ8ÎFuse.ContextÖ0ÏPosix.uid_t
+unlinkÌ8ÎFuse.OperationsÖ0ÏUnlink
+utimensÌ8ÎFuse.OperationsÖ0ÏUtimens
+writeÌ8ÎFuse.OperationsÖ0ÏWrite
+writepageÌ8ÎFuse.FileInfoÖ0Ïint

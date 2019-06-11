@@ -1,0 +1,494 @@
+# format=tagmanager
+ABORT_CHARÌ8ÎReadlineÖ0Ïchar
+ANYOTHERKEYÌ8ÎReadlineÖ0Ïint
+BEGINÌ4ÎReadline.UndoCodeÖ0
+CONTROL_CHARACTER_BITÌ8ÎReadlineÖ0Ïchar
+CONTROL_CHARACTER_MASKÌ8ÎReadlineÖ0Ïchar
+CONTROL_CHARACTER_THRESHOLDÌ8ÎReadlineÖ0Ïchar
+CommandFuncÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic delegate int
+CompdispFuncÌ128Í(string[] s, int a, int b)ÎReadlineÖ0Ïpublic delegate void
+CompentryFuncÌ128Í(string str, int a)ÎReadlineÖ0Ïpublic delegate string?
+CompignoreFuncÌ128Í(string[] strs)ÎReadlineÖ0Ïpublic delegate int
+CompletionFuncÌ128Í(string str, int a, int b)ÎReadlineÖ0
+CpiFuncÌ128Í(int s)ÎReadlineÖ0Ïpublic delegate unowned
+CpvFuncÌ128Í()ÎReadlineÖ0Ïpublic delegate unowned
+DELETEÌ4ÎReadline.UndoCodeÖ0
+DequoteFuncÌ128Í(string str, int a)ÎReadlineÖ0
+ENDÌ4ÎReadline.UndoCodeÖ0
+ESCÌ8ÎReadlineÖ0Ïchar
+EntryÌ2048ÎReadline.HistoryÖ0
+FunMapÌ2048ÎReadlineÖ0
+GetcFuncÌ128Í(GLib.FileStream s)ÎReadlineÖ0Ïpublic delegate int
+HistoryÌ256Ö0
+HookFuncÌ128Í()ÎReadlineÖ0Ïpublic delegate int
+INSERTÌ4ÎReadline.UndoCodeÖ0
+ISFUNCÌ8ÎReadlineÖ0Ïint
+ISKMAPÌ8ÎReadlineÖ0Ïint
+ISMACRÌ8ÎReadlineÖ0Ïint
+IcpFuncÌ128Í(string s)ÎReadlineÖ0Ïpublic delegate int
+IcppFuncÌ128Í(string[] s)ÎReadlineÖ0Ïpublic delegate int
+IntFuncÌ128Í(int a)ÎReadlineÖ0Ïpublic delegate int
+KEYMAP_ENTRY_ARRAYÌ8ÎReadlineÖ0ÏKeyMap
+KEYMAP_SIZEÌ8ÎReadlineÖ0Ïint
+KeyMapÌ2048ÎReadlineÖ0
+KeymapÌ8ÎReadlineÖ0ÏKeyMap
+LARGEST_CHARACTERÌ8ÎReadlineÖ0Ïchar
+LinebufFuncÌ128Í(string s, int a)ÎReadlineÖ0Ïpublic delegate int
+META_CHARACTER_BITÌ8ÎReadlineÖ0Ïchar
+META_CHARACTER_THRESHOLDÌ8ÎReadlineÖ0Ïchar
+MULT_MATCHÌ8ÎReadlineÖ0Ïint
+NEWLINEÌ8ÎReadlineÖ0Ïchar
+NO_MATCHÌ8ÎReadlineÖ0Ïint
+PAGEÌ8ÎReadlineÖ0Ïchar
+PROMPT_END_IGNOREÌ8ÎReadlineÖ0Ïchar
+PROMPT_START_IGNOREÌ8ÎReadlineÖ0Ïchar
+QuoteFuncÌ128Í(string str, int a, string b)ÎReadlineÖ0
+READERRÌ8ÎReadlineÖ0Ïint
+READLINE_VERSIONÌ8ÎReadlineÖ0
+RETURNÌ8ÎReadlineÖ0Ïchar
+RUBOUTÌ8ÎReadlineÖ0Ïchar
+ReadlineÌ256Ö0
+SINGLE_MATCHÌ8ÎReadlineÖ0Ïint
+SPACEÌ8ÎReadlineÖ0Ïchar
+STATE_CALLBACKÌ8ÎReadlineÖ0
+STATE_COMPLETINGÌ8ÎReadlineÖ0
+STATE_DISPATCHINGÌ8ÎReadlineÖ0
+STATE_DONEÌ8ÎReadlineÖ0
+STATE_INITIALIZEDÌ8ÎReadlineÖ0
+STATE_INITIALIZINGÌ8ÎReadlineÖ0
+STATE_INPUTPENDINGÌ8ÎReadlineÖ0
+STATE_ISEARCHÌ8ÎReadlineÖ0
+STATE_MACRODEFÌ8ÎReadlineÖ0
+STATE_MACROINPUTÌ8ÎReadlineÖ0
+STATE_METANEXTÌ8ÎReadlineÖ0
+STATE_MOREINPUTÌ8ÎReadlineÖ0
+STATE_MULTIKEYÌ8ÎReadlineÖ0
+STATE_NONEÌ8ÎReadlineÖ0
+STATE_NSEARCHÌ8ÎReadlineÖ0
+STATE_NUMERICARGÌ8ÎReadlineÖ0
+STATE_OVERWRITEÌ8ÎReadlineÖ0
+STATE_READCMDÌ8ÎReadlineÖ0
+STATE_SEARCHÌ8ÎReadlineÖ0
+STATE_SIGHANDLERÌ8ÎReadlineÖ0
+STATE_TERMPREPPEDÌ8ÎReadlineÖ0
+STATE_TTYCSAVEDÌ8ÎReadlineÖ0
+STATE_UNDOINGÌ8ÎReadlineÖ0
+STATE_VICMDONCEÌ8ÎReadlineÖ0
+STATE_VIMOTIONÌ8ÎReadlineÖ0
+STIFLEDÌ8ÎReadline.HistoryÖ0Ïint
+StateÌ2048ÎReadlineÖ0
+StateÌ2048ÎReadline.HistoryÖ0
+TABÌ8ÎReadlineÖ0Ïchar
+UndoCodeÌ2ÎReadlineÖ0
+UndoListÌ2048ÎReadlineÖ0
+VERSION_MAJORÌ8ÎReadlineÖ0Ïint
+VERSION_MINORÌ8ÎReadlineÖ0Ïint
+VcpFuncÌ128Í(string s)ÎReadlineÖ0Ïpublic delegate void
+VcppFuncÌ128Í(string[] s)ÎReadlineÖ0Ïpublic delegate void
+VintFuncÌ128Í(int a)ÎReadlineÖ0Ïpublic delegate void
+VoidFuncÌ128Í()ÎReadlineÖ0Ïpublic delegate void
+_freeÌ128Í(void* p)ÎReadlineÖ0Ïprivate void
+_readlineÌ128Í(string? prompt)ÎReadlineÖ0Ïpublic void *
+abortÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+addÌ128Í(string line)ÎReadline.HistoryÖ0Ïpublic void
+add_defunÌ128Í(string name, CommandFunc func, int key)ÎReadlineÖ0Ïpublic int
+add_funmap_entryÌ128Í(string name, CommandFunc func)ÎReadlineÖ0Ïpublic int
+add_timeÌ128Í(string ts)ÎReadline.HistoryÖ0Ïpublic void
+add_undoÌ128Í(UndoCode what, int start, int end, string text)ÎReadlineÖ0Ïpublic void
+alphabeticÌ128Í(int c)ÎReadlineÖ0Ïpublic int
+already_promptedÌ8ÎReadlineÖ0Ïint
+appendÌ128Í(int nelements, string filename)ÎReadline.HistoryÖ0Ïpublic int
+arg_extractÌ128Í(int first, int last, string s)ÎReadline.HistoryÖ0
+arrow_keysÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+attempted_completion_functionÌ8ÎReadlineÖ0ÏCompletionFunc
+attempted_completion_overÌ8ÎReadlineÖ0Ïint
+backwardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_byteÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_charÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_char_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_kill_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_kill_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+backward_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+baseÌ8ÎReadline.HistoryÖ0Ïint
+basic_quote_charactersÌ8ÎReadlineÖ0
+basic_word_break_charactersÌ8ÎReadlineÖ0
+beg_of_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+begin_undo_groupÌ128Í()ÎReadlineÖ0Ïpublic int
+beginning_of_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+bind_keyÌ128Í(int key, CommandFunc func)ÎReadlineÖ0Ïpublic int
+bind_key_if_unboundÌ128Í(int key, CommandFunc func)ÎReadlineÖ0Ïpublic int
+bind_key_if_unbound_in_mapÌ128Í(int key, CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+bind_key_in_mapÌ128Í(int key, CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+bind_keyseqÌ128Í(string keyseq, CommandFunc func)ÎReadlineÖ0Ïpublic int
+bind_keyseq_if_unboundÌ128Í(string keyseq, CommandFunc func)ÎReadlineÖ0Ïpublic int
+bind_keyseq_if_unbound_in_mapÌ128Í(string keyseq, CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+bind_keyseq_in_mapÌ128Í(string keyseq, CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+binding_keymapÌ8ÎReadlineÖ0ÏKeyMap
+bufferÌ8ÎReadline.StateÖ0
+buflenÌ8ÎReadline.StateÖ0Ïint
+call_last_kbd_macroÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+callback_handler_installÌ128Í(string prompt, VcpFunc func)ÎReadlineÖ0Ïpublic void
+callback_handler_removeÌ128Í()ÎReadlineÖ0Ïpublic void
+callback_read_charÌ128Í()ÎReadlineÖ0Ïpublic void
+capitalize_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+catch_signalsÌ8ÎReadlineÖ0Ïint
+catch_sigwinchÌ8ÎReadlineÖ0Ïint
+catchsigsÌ8ÎReadline.StateÖ0Ïint
+catchsigwinchÌ8ÎReadline.StateÖ0Ïint
+char_is_quoted_pÌ8ÎReadlineÖ0ÏLinebufFunc
+char_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+character_lenÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+cleanup_after_signalÌ128Í()ÎReadlineÖ0Ïpublic void
+clearÌ128Í()ÎReadline.HistoryÖ0Ïpublic void
+clear_messageÌ128Í()ÎReadlineÖ0Ïpublic int
+clear_pending_inputÌ128Í()ÎReadlineÖ0Ïpublic int
+clear_screenÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+clear_signalsÌ128Í()ÎReadlineÖ0Ïpublic int
+comment_charÌ8ÎReadline.HistoryÖ0Ïchar
+completeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+complete_internalÌ128Í(int what_to_do)ÎReadlineÖ0Ïpublic int
+completer_quote_charactersÌ8ÎReadlineÖ0
+completer_word_break_charactersÌ8ÎReadlineÖ0
+completion_append_characterÌ8ÎReadlineÖ0Ïint
+completion_display_matches_hookÌ8ÎReadlineÖ0ÏCompdispFunc
+completion_entry_functionÌ8ÎReadlineÖ0ÏCompentryFunc
+completion_found_quoteÌ8ÎReadlineÖ0Ïint
+completion_mark_symlink_dirsÌ8ÎReadlineÖ0Ïint
+completion_matchesÌ128Í(string text, CompentryFunc func)ÎReadlineÖ0Ïpublic unowned string
+completion_modeÌ128Í(CommandFunc func)ÎReadlineÖ0Ïpublic int
+completion_query_itemsÌ8ÎReadlineÖ0Ïint
+completion_quote_characterÌ8ÎReadlineÖ0Ïint
+completion_suppress_appendÌ8ÎReadlineÖ0Ïint
+completion_suppress_quoteÌ8ÎReadlineÖ0Ïint
+completion_typeÌ8ÎReadlineÖ0Ïint
+completion_word_break_hookÌ8ÎReadlineÖ0ÏCpvFunc
+copy_backward_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+copy_forward_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+copy_keymapÌ128Í(KeyMap map)ÎReadlineÖ0Ïpublic KeyMap
+copy_region_to_killÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+copy_textÌ128Í(int start, int end)ÎReadlineÖ0
+crlfÌ128Í()ÎReadlineÖ0Ïpublic int
+ctrlÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+ctrl_charÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+currentÌ128Í()ÎReadline.HistoryÖ0Ïpublic History.Entry?
+dataÌ8ÎReadline.History.EntryÖ0Ïvoid
+delÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+delete_horizontal_spaceÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+delete_or_show_completionsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+delete_textÌ128Í(int start, int end)ÎReadlineÖ0Ïpublic int
+deprep_term_functionÌ8ÎReadlineÖ0ÏVoidFunc
+deprep_terminalÌ128Í()ÎReadlineÖ0Ïpublic void
+digit_argumentÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+dingÌ128Í()ÎReadlineÖ0Ïpublic int
+directory_completion_hookÌ8ÎReadlineÖ0ÏIcppFunc
+directory_rewrite_hookÌ8ÎReadlineÖ0ÏIcppFunc
+discard_argumentÌ128Í()ÎReadlineÖ0Ïpublic int
+discard_keymapÌ128Í(KeyMap map)ÎReadlineÖ0Ïpublic void
+dispatchingÌ8ÎReadlineÖ0Ïint
+display_match_listÌ128Í(string[] matches, int len, int max)ÎReadlineÖ0Ïpublic void
+do_lowercase_versionÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+do_undoÌ128Í()ÎReadlineÖ0Ïpublic int
+doneÌ8ÎReadlineÖ0Ïint
+doneÌ8ÎReadline.StateÖ0Ïint
+downcase_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+dump_functionsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+dump_macrosÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+dump_variablesÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+editing_modeÌ8ÎReadlineÖ0Ïint
+edmodeÌ8ÎReadline.StateÖ0Ïint
+emacs_editing_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+endÌ8ÎReadlineÖ0Ïint
+endÌ8ÎReadline.StateÖ0Ïint
+endÌ8ÎReadline.UndoListÖ0Ïint
+end_kbd_macroÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+end_of_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+end_of_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+end_undo_groupÌ128Í()ÎReadlineÖ0Ïpublic int
+entriesÌ8ÎReadline.History.StateÖ0Ïunowned
+erase_empty_lineÌ8ÎReadlineÖ0Ïint
+event_hookÌ8ÎReadlineÖ0ÏHookFunc
+exchange_point_and_markÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+execute_nextÌ128Í(int c)ÎReadlineÖ0Ïpublic int
+executing_keymapÌ8ÎReadlineÖ0ÏKeyMap
+executing_macroÌ8ÎReadlineÖ0
+expandÌ128Í(string s, out string[] a)ÎReadline.HistoryÖ0Ïpublic int
+expand_promptÌ128Í(string prompt)ÎReadlineÖ0Ïpublic int
+expansion_charÌ8ÎReadline.HistoryÖ0Ïchar
+explicit_argÌ8ÎReadlineÖ0Ïint
+extend_line_bufferÌ128Í(int len)ÎReadlineÖ0Ïpublic void
+filename_completion_desiredÌ8ÎReadlineÖ0Ïint
+filename_completion_functionÌ128Í(string text, int state)ÎReadlineÖ0
+filename_dequoting_functionÌ8ÎReadlineÖ0ÏDequoteFunc
+filename_quote_charactersÌ8ÎReadlineÖ0
+filename_quoting_desiredÌ8ÎReadlineÖ0Ïint
+filename_quoting_functionÌ8ÎReadlineÖ0ÏQuoteFunc
+flagsÌ8ÎReadline.History.StateÖ0Ïint
+forced_update_displayÌ128Í()ÎReadlineÖ0Ïpublic int
+forwardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+forward_byteÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+forward_charÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+forward_search_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+forward_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+free_entryÌ128Í(History.Entry entry)ÎReadline.HistoryÖ0Ïpublic void *
+free_line_stateÌ128Í()ÎReadlineÖ0Ïpublic void
+free_undo_listÌ128Í()ÎReadlineÖ0Ïpublic void
+functionÌ8ÎReadline.FunMapÖ0ÏCommandFunc
+functionÌ8ÎReadline.KeyMapÖ0ÏCommandFunc
+function_dumperÌ128Í(int readable)ÎReadlineÖ0Ïpublic void
+function_of_keyseqÌ128Í(string keyseq, KeyMap map, out int type)ÎReadlineÖ0Ïpublic CommandFunc
+funmapÌ8ÎReadlineÖ0ÏFunMap
+funmap_namesÌ128Í()ÎReadlineÖ0Ïpublic unowned string
+generic_bindÌ128Í(int type, string keyseq, string data, KeyMap map)ÎReadlineÖ0Ïpublic int
+get_eventÌ128Í(string str, out int cindex, int qchar)ÎReadline.HistoryÖ0
+get_keymapÌ128Í()ÎReadlineÖ0Ïpublic KeyMap
+get_keymap_by_nameÌ128Í(string name)ÎReadlineÖ0Ïpublic KeyMap
+get_keymap_nameÌ128Í(KeyMap map)ÎReadlineÖ0
+get_keymap_name_from_edit_modeÌ128Í()ÎReadlineÖ0
+get_next_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+get_previous_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+get_screen_sizeÌ128Í(out int rows, out int cols)ÎReadlineÖ0Ïpublic void
+get_stateÌ128Í()ÎReadline.HistoryÖ0Ïpublic History.State
+get_termcapÌ128Í(string cap)ÎReadlineÖ0
+get_timeÌ128Í(History.Entry entry)ÎReadline.HistoryÖ0Ïpublic time_t
+getcÌ128Í(GLib.FileStream stream)ÎReadlineÖ0Ïpublic int
+getc_functionÌ8ÎReadlineÖ0ÏGetcFunc
+gnu_readline_pÌ8ÎReadlineÖ0Ïint
+history_search_backwardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+history_search_forwardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+ignore_completion_duplicatesÌ8ÎReadlineÖ0Ïint
+ignore_some_completions_functionÌ8ÎReadlineÖ0ÏCompignoreFunc
+infÌ8ÎReadline.StateÖ0ÏGLib.FileStream
+inhibit_completionÌ8ÎReadlineÖ0Ïint
+inhibit_expansion_functionÌ8ÎReadline.HistoryÖ0ÏLinebufFunc
+initializeÌ128Í()ÎReadlineÖ0Ïpublic int
+initialize_funmapÌ128Í()ÎReadlineÖ0Ïpublic void
+insertÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+insert_closeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+insert_commentÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+insert_completionsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+insert_modeÌ8ÎReadlineÖ0Ïint
+insert_textÌ128Í(string text)ÎReadlineÖ0Ïpublic int
+insmodeÌ8ÎReadline.StateÖ0Ïint
+instreamÌ8ÎReadlineÖ0ÏGLib.FileStream?
+invoking_keyseqsÌ128Í(CommandFunc func)ÎReadlineÖ0Ïpublic unowned string
+invoking_keyseqs_in_mapÌ128Í(CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic unowned string
+is_stateÌ128Í(uint s)ÎReadlineÖ0Ïpublic int
+is_stifledÌ128Í()ÎReadline.HistoryÖ0Ïpublic int
+kill_full_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+kill_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+kill_regionÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+kill_textÌ128Í(int start, int end)ÎReadlineÖ0Ïpublic int
+kill_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+kmapÌ8ÎReadline.StateÖ0ÏKeyMap
+kseqlenÌ8ÎReadline.StateÖ0Ïint
+last_funcÌ8ÎReadlineÖ0ÏCommandFunc
+lastfuncÌ8ÎReadline.StateÖ0ÏCommandFunc
+lengthÌ8ÎReadline.HistoryÖ0Ïint
+lengthÌ8ÎReadline.History.StateÖ0Ïint
+library_versionÌ8ÎReadlineÖ0Ïunowned
+lineÌ8ÎReadline.History.EntryÖ0
+line_bufferÌ8ÎReadlineÖ0
+listÌ128Í()ÎReadline.HistoryÖ0Ïpublic unowned
+list_funmap_namesÌ128Í()ÎReadlineÖ0Ïpublic void
+macroÌ8ÎReadline.StateÖ0
+macro_bindÌ128Í(string keyseq, string macro, KeyMap map)ÎReadlineÖ0Ïpublic int
+macro_dumperÌ128Í(int readable)ÎReadlineÖ0Ïpublic void
+make_bare_keymapÌ128Í()ÎReadlineÖ0Ïpublic KeyMap
+make_keymapÌ128Í()ÎReadlineÖ0Ïpublic KeyMap
+markÌ8ÎReadlineÖ0Ïint
+markÌ8ÎReadline.StateÖ0Ïint
+max_entriesÌ8ÎReadline.HistoryÖ0Ïint
+max_inputÌ8ÎReadline.HistoryÖ0Ïint
+maybe_replace_lineÌ128Í()ÎReadlineÖ0Ïpublic int
+maybe_save_lineÌ128Í()ÎReadlineÖ0Ïpublic int
+maybe_unsave_lineÌ128Í()ÎReadlineÖ0Ïpublic int
+menu_completeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+messageÌ128Í(string format, ...)ÎReadlineÖ0Ïpublic int
+metaÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+meta_charÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+modifyingÌ128Í(int start, int end)ÎReadlineÖ0Ïpublic int
+nameÌ8ÎReadline.FunMapÖ0
+named_functionÌ128Í(string name)ÎReadlineÖ0Ïpublic CommandFunc
+newlineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+nextÌ128Í()ÎReadline.HistoryÖ0Ïpublic History.Entry?
+nextÌ8ÎReadline.UndoListÖ0Ïvoid
+no_expand_charsÌ8ÎReadline.HistoryÖ0
+noninc_forward_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+noninc_forward_search_againÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+noninc_reverse_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+noninc_reverse_search_againÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+num_chars_to_readÌ8ÎReadlineÖ0Ïint
+numeric_argÌ8ÎReadlineÖ0Ïint
+offsetÌ8ÎReadline.History.StateÖ0Ïint
+on_new_lineÌ128Í()ÎReadlineÖ0Ïpublic int
+on_new_line_with_promptÌ128Í()ÎReadlineÖ0Ïpublic int
+outfÌ8ÎReadline.StateÖ0ÏGLib.FileStream
+outstreamÌ8ÎReadlineÖ0ÏGLib.FileStream?
+overwrite_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+parse_and_bindÌ128Í(owned string line)ÎReadlineÖ0Ïpublic int
+paste_from_clipboardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+pending_inputÌ8ÎReadlineÖ0Ïint
+pendinginÌ8ÎReadline.StateÖ0Ïint
+pointÌ8ÎReadlineÖ0Ïint
+pointÌ8ÎReadline.StateÖ0Ïint
+possible_completionsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+pre_input_hookÌ8ÎReadlineÖ0ÏHookFunc
+prefer_env_winsizeÌ8ÎReadlineÖ0Ïint
+prep_term_functionÌ8ÎReadlineÖ0ÏVintFunc
+prep_terminalÌ128Í(int meta_flag)ÎReadlineÖ0Ïpublic void
+previousÌ128Í()ÎReadline.HistoryÖ0Ïpublic History.Entry?
+promptÌ8ÎReadlineÖ0Ïstring?
+promptÌ8ÎReadline.StateÖ0
+push_macro_inputÌ128Í(string macro)ÎReadlineÖ0Ïpublic void
+quoted_insertÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+quotes_inhibit_expansionÌ8ÎReadline.HistoryÖ0Ïint
+re_read_init_fileÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+readÌ128Í(string filename)ÎReadline.HistoryÖ0Ïpublic int
+read_init_fileÌ128Í(string filename)ÎReadlineÖ0Ïpublic int
+read_keyÌ128Í()ÎReadlineÖ0Ïpublic int
+read_rangeÌ128Í(string filename, int from, int to)ÎReadline.HistoryÖ0Ïpublic int
+readlineÌ128Í(string? prompt)ÎReadlineÖ0Ïpublic string?
+readline_nameÌ8ÎReadlineÖ0Ïunowned
+readline_stateÌ8ÎReadlineÖ0Ïint
+readline_versionÌ8ÎReadlineÖ0Ïint
+redisplayÌ128Í()ÎReadlineÖ0Ïpublic void
+redisplay_functionÌ8ÎReadlineÖ0ÏVoidFunc
+refresh_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+removeÌ128Í(int which)ÎReadline.HistoryÖ0Ïpublic History.Entry?
+replace_entryÌ128Í(int which, string s, void* data)ÎReadline.HistoryÖ0Ïpublic History.Entry?
+replace_lineÌ128Í(string text, int clear_undo)ÎReadlineÖ0Ïpublic void
+reservedÌ8ÎReadline.StateÖ0Ïchar
+reset_after_signalÌ128Í()ÎReadlineÖ0Ïpublic void
+reset_line_stateÌ128Í()ÎReadlineÖ0Ïpublic int
+reset_screen_sizeÌ128Í()ÎReadlineÖ0Ïpublic void
+reset_terminalÌ128Í(string terminal_name)ÎReadlineÖ0Ïpublic int
+resize_terminalÌ128Í()ÎReadlineÖ0Ïpublic void
+restart_outputÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+restore_promptÌ128Í()ÎReadlineÖ0Ïpublic void
+restore_stateÌ128Í(State state)ÎReadlineÖ0Ïpublic int
+reverse_search_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+revert_lineÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+rlstateÌ8ÎReadline.StateÖ0Ïint
+ruboutÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+rubout_or_deleteÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+save_promptÌ128Í()ÎReadlineÖ0Ïpublic void
+save_stateÌ128Í(State state)ÎReadlineÖ0Ïpublic int
+searchÌ128Í(string s, int direction)ÎReadline.HistoryÖ0Ïpublic int
+search_delimiter_charsÌ8ÎReadline.HistoryÖ0
+search_posÌ128Í(string str, int direction, int pos)ÎReadline.HistoryÖ0Ïpublic int
+search_prefixÌ128Í(string prfx, int direction)ÎReadline.HistoryÖ0Ïpublic int
+set_keyÌ128Í(string keyseq, CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+set_keyboard_input_timeoutÌ128Í(int u)ÎReadlineÖ0Ïpublic int
+set_keymapÌ128Í(KeyMap map)ÎReadlineÖ0Ïpublic void
+set_keymap_from_edit_modeÌ128Í()ÎReadlineÖ0Ïpublic void
+set_markÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+set_paren_blink_timeoutÌ128Í(int u)ÎReadlineÖ0Ïpublic int
+set_posÌ128Í(int pos)ÎReadline.HistoryÖ0Ïpublic int
+set_promptÌ128Í(string prompt)ÎReadlineÖ0Ïpublic int
+set_screen_sizeÌ128Í(int rows, int cols)ÎReadlineÖ0Ïpublic void
+set_signalsÌ128Í()ÎReadlineÖ0Ïpublic int
+set_stateÌ128Í(uint s)ÎReadlineÖ0
+set_stateÌ128Í(History.State state)ÎReadline.HistoryÖ0Ïpublic void
+show_charÌ128Í(int c)ÎReadlineÖ0Ïpublic int
+sizeÌ8ÎReadline.History.StateÖ0Ïint
+special_prefixesÌ8ÎReadlineÖ0
+startÌ8ÎReadline.UndoListÖ0Ïint
+start_kbd_macroÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+startup_hookÌ8ÎReadlineÖ0ÏHookFunc
+stifleÌ128Í(int max)ÎReadline.HistoryÖ0Ïpublic void
+stop_outputÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+stuff_charÌ128Í(int c)ÎReadlineÖ0Ïpublic int
+subst_charÌ8ÎReadline.HistoryÖ0Ïchar
+tab_insertÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+terminal_nameÌ8ÎReadlineÖ0Ïunowned
+textÌ8ÎReadline.UndoListÖ0
+tilde_expandÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+timestampÌ8ÎReadline.History.EntryÖ0
+tokenizeÌ128Í(string s)ÎReadline.HistoryÖ0
+total_bytesÌ128Í()ÎReadline.HistoryÖ0Ïpublic int
+translate_keyseqÌ128Í(string a, string b, out int c)ÎReadlineÖ0Ïpublic int
+transpose_charsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+transpose_wordsÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+truncate_fileÌ128Í(string filename, int nlines)ÎReadline.HistoryÖ0Ïpublic int
+tty_set_default_bindingsÌ128Í(KeyMap map)ÎReadlineÖ0Ïpublic void
+tty_statusÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+tty_unset_default_bindingsÌ128Í(KeyMap map)ÎReadlineÖ0Ïpublic void
+typeÌ8ÎReadline.KeyMapÖ0Ïchar
+ulÌ8ÎReadline.StateÖ0ÏUndoList
+unbind_command_in_mapÌ128Í(string command, KeyMap map)ÎReadlineÖ0Ïpublic int
+unbind_function_in_mapÌ128Í(CommandFunc func, KeyMap map)ÎReadlineÖ0Ïpublic int
+unbind_keyÌ128Í(int key)ÎReadlineÖ0Ïpublic int
+unbind_key_in_mapÌ128Í(int key, KeyMap map)ÎReadlineÖ0Ïpublic int
+unctrlÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+undo_commandÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+undo_listÌ8ÎReadlineÖ0ÏUndoList
+universal_argumentÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+unix_filename_ruboutÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+unix_line_discardÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+unix_word_ruboutÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+unmetaÌ128Í(char c)ÎReadlineÖ0Ïpublic char
+unset_stateÌ128Í(uint s)ÎReadlineÖ0
+unstifleÌ128Í()ÎReadline.HistoryÖ0Ïpublic int
+untranslate_keyseqÌ128Í(int keyseq)ÎReadlineÖ0
+upcase_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+username_completion_functionÌ128Í(string text, int state)ÎReadlineÖ0
+variable_bindÌ128Í(string variable, string value)ÎReadlineÖ0Ïpublic int
+variable_dumperÌ128Í(int readable)ÎReadlineÖ0Ïpublic void
+variable_valueÌ128Í(string variable)ÎReadlineÖ0
+vi_append_eolÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_append_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_arg_digitÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_bWordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_back_to_indentÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_bracktypeÌ128Í(int a)ÎReadlineÖ0Ïpublic int
+vi_bwordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_change_caseÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_change_charÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_change_toÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_char_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_checkÌ128Í()ÎReadlineÖ0Ïpublic int
+vi_columnÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_completeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_deleteÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_delete_toÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_domoveÌ128Í(int a, out int b)ÎReadlineÖ0Ïpublic int
+vi_eWordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_editing_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_end_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_eof_maybeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_ewordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_fWordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_fetch_historyÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_first_printÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_fwordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_goto_markÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_insert_begÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_insertion_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_matchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_movement_modeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_next_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_overstrikeÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_overstrike_deleteÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_prev_wordÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_putÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_redoÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_replaceÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_ruboutÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_searchÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_search_againÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_set_markÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_start_insertingÌ128Í(int a, int b, int c)ÎReadlineÖ0Ïpublic void
+vi_substÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_tilde_expandÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_undoÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_yank_argÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+vi_yank_toÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+whatÌ8ÎReadline.UndoListÖ0ÏUndoCode
+whereÌ128Í()ÎReadline.HistoryÖ0Ïpublic int
+word_delimitersÌ8ÎReadline.HistoryÖ0
+writeÌ128Í(string filename)ÎReadline.HistoryÖ0Ïpublic int
+write_timestampsÌ8ÎReadline.HistoryÖ0Ïint
+yankÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+yank_last_argÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+yank_nth_argÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int
+yank_popÌ128Í(int a, int b)ÎReadlineÖ0Ïpublic int

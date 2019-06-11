@@ -1,0 +1,24 @@
+# format=tagmanager
+ANONYMOUSÌ4ÎRaptor.IdentifierTypeÖ0
+IdentifierTypeÌ2ÎRaptorÖ0
+LITERALÌ4ÎRaptor.IdentifierTypeÖ0
+ORDINALÌ4ÎRaptor.IdentifierTypeÖ0
+PREDICATEÌ4ÎRaptor.IdentifierTypeÖ0
+ParserÌ1ÎRaptorÖ0
+ParserÌ128Í(string name)ÎRaptor.ParserÖ0
+RESOURCEÌ4ÎRaptor.IdentifierTypeÖ0
+RaptorÌ256Ö0
+StatementÌ1ÎRaptorÖ0
+StatementHandlerÌ128Í(Statement statement)ÎRaptorÖ0Ïpublic delegate void
+UriÌ1ÎRaptorÖ0
+UriÌ128Í(string uri_string)ÎRaptor.UriÖ0
+XML_LITERALÌ4ÎRaptor.IdentifierTypeÖ0
+as_stringÌ128Í()ÎRaptor.UriÖ0Ïpublic unowned string
+filename_to_uri_stringÌ128Í(string filename)ÎRaptor.UriÖ0
+objectÌ8ÎRaptor.StatementÖ0Ïvoid
+object_typeÌ8ÎRaptor.StatementÖ0ÏIdentifierType
+parse_fileÌ128Í(Uri? uri, Uri? base_uri)ÎRaptor.ParserÖ0Ïpublic void
+predicateÌ8ÎRaptor.StatementÖ0Ïvoid
+set_statement_handlerÌ128Í([CCode (delegate_target_pos = 0.9)] StatementHandler handler)ÎRaptor.ParserÖ0Ïpublic void
+start_parseÌ128Í(Uri uri)ÎRaptor.ParserÖ0Ïpublic void
+subjectÌ8ÎRaptor.StatementÖ0Ïvoid

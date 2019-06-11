@@ -1,0 +1,67 @@
+# format=tagmanager
+AGAINÃ4ŒGst.TagDemuxResult÷0
+ARTISTÃ4ŒGst.TagImageType÷0
+BACK_COVERÃ4ŒGst.TagImageType÷0
+BAND_ARTIST_LOGOÃ4ŒGst.TagImageType÷0
+BAND_ORCHESTRAÃ4ŒGst.TagImageType÷0
+BROKEN_TAGÃ4ŒGst.TagDemuxResult÷0
+COMPOSERÃ4ŒGst.TagImageType÷0
+CONDUCTORÃ4ŒGst.TagImageType÷0
+DURING_PERFORMANCEÃ4ŒGst.TagImageType÷0
+DURING_RECORDINGÃ4ŒGst.TagImageType÷0
+FISHÃ4ŒGst.TagImageType÷0
+FRONT_COVERÃ4ŒGst.TagImageType÷0
+GstÃ256÷0
+ILLUSTRATIONÃ4ŒGst.TagImageType÷0
+LEAD_ARTISTÃ4ŒGst.TagImageType÷0
+LEAFLET_PAGEÃ4ŒGst.TagImageType÷0
+LYRICISTÃ4ŒGst.TagImageType÷0
+MEDIUMÃ4ŒGst.TagImageType÷0
+NONEÃ4ŒGst.TagImageType÷0
+OKÃ4ŒGst.TagDemuxResult÷0
+PUBLISHER_STUDIO_LOGOÃ4ŒGst.TagImageType÷0
+RECORDING_LOCATIONÃ4ŒGst.TagImageType÷0
+TAG_CDDA_CDDB_DISCIDÃ8ŒGst÷0
+TAG_CDDA_CDDB_DISCID_FULLÃ8ŒGst÷0
+TAG_CDDA_MUSICBRAINZ_DISCIDÃ8ŒGst÷0
+TAG_CDDA_MUSICBRAINZ_DISCID_FULLÃ8ŒGst÷0
+TAG_CMML_CLIPÃ8ŒGst÷0
+TAG_CMML_HEADÃ8ŒGst÷0
+TAG_CMML_STREAMÃ8ŒGst÷0
+TAG_MUSICBRAINZ_ALBUMARTISTIDÃ8ŒGst÷0
+TAG_MUSICBRAINZ_ALBUMIDÃ8ŒGst÷0
+TAG_MUSICBRAINZ_ARTISTIDÃ8ŒGst÷0
+TAG_MUSICBRAINZ_TRACKIDÃ8ŒGst÷0
+TAG_MUSICBRAINZ_TRMIDÃ8ŒGst÷0
+TagDemuxÃ1ŒGst÷0
+TagDemuxÃ128Õ()ŒGst.TagDemux÷0
+TagDemuxResultÃ2ŒGst÷0
+TagImageTypeÃ2ŒGst÷0
+UNDEFINEDÃ4ŒGst.TagImageType÷0
+VIDEO_CAPTUREÃ4ŒGst.TagImageType÷0
+identify_tagÃ128Õ(Gst.Buffer buffer, bool start_tag, out uint tag_size)ŒGst.TagDemux÷0œpublic virtual bool
+merge_tagsÃ128Õ(Gst.TagList start_tags, Gst.TagList end_tags)ŒGst.TagDemux÷0œpublic virtual unowned
+parse_tagÃ128Õ(Gst.Buffer buffer, bool start_tag, out uint tag_size, out Gst.TagList tags)ŒGst.TagDemux÷0œpublic virtual Gst.TagDemuxResult
+reservedÃ8ŒGst.TagDemux÷0œvoid
+tag_freeform_string_to_utf8Ã128Õ(string data, int size, string env_vars)ŒGst÷0
+tag_from_id3_tagÃ128Õ(string id3_tag)ŒGst÷0œpublic unowned string
+tag_from_id3_user_tagÃ128Õ(string type, string id3_user_tag)ŒGst÷0œpublic unowned string
+tag_from_vorbis_tagÃ128Õ(string vorbis_tag)ŒGst÷0œpublic unowned string
+tag_get_language_code_iso_639_1Ã128Õ(string lang_code)ŒGst÷0œpublic unowned string
+tag_get_language_code_iso_639_2BÃ128Õ(string lang_code)ŒGst÷0œpublic unowned string
+tag_get_language_code_iso_639_2TÃ128Õ(string lang_code)ŒGst÷0œpublic unowned string
+tag_get_language_codesÃ128Õ()ŒGst÷0œpublic unowned string
+tag_get_language_nameÃ128Õ(string language_code)ŒGst÷0œpublic unowned string
+tag_id3_genre_countÃ128Õ()ŒGst÷0
+tag_id3_genre_getÃ128Õ(uint id)ŒGst÷0œpublic unowned string
+tag_image_data_to_image_bufferÃ128Õ(uchar image_data, uint image_data_len, Gst.TagImageType image_type)ŒGst÷0œpublic Gst.Buffer
+tag_list_add_id3_imageÃ128Õ(Gst.TagList tag_list, uchar image_data, uint image_data_len, uint id3_picture_type)ŒGst÷0œpublic bool
+tag_list_from_vorbiscomment_bufferÃ128Õ(Gst.Buffer buffer, uchar id_data, uint id_data_length, out string vendor_string)ŒGst÷0œpublic Gst.TagList
+tag_list_new_from_id3v1Ã128Õ(uchar data)ŒGst÷0œpublic Gst.TagList
+tag_list_to_vorbiscomment_bufferÃ128Õ(Gst.TagList list, uchar id_data, uint id_data_length, string vendor_string)ŒGst÷0œpublic Gst.Buffer
+tag_parse_extended_commentÃ128Õ(string ext_comment, out string key, out string lang, out string value, bool fail_if_no_key)ŒGst÷0œpublic bool
+tag_register_musicbrainz_tagsÃ128Õ()ŒGst÷0œpublic void
+tag_to_id3_tagÃ128Õ(string gst_tag)ŒGst÷0œpublic unowned string
+tag_to_vorbis_commentsÃ128Õ(Gst.TagList list, string tag)ŒGst÷0œpublic GLib.List
+tag_to_vorbis_tagÃ128Õ(string gst_tag)ŒGst÷0œpublic unowned string
+vorbis_tag_addÃ128Õ(Gst.TagList list, string tag, string value)ŒGst÷0œpublic void

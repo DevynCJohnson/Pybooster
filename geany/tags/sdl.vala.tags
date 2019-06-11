@@ -1,0 +1,721 @@
+# format=tagmanager
+@signalÃ128Õ()ŒSDL.Condition÷0œpublic int
+@valueÃ8ŒSDL.JoyAxisEvent÷0œuint16
+@valueÃ8ŒSDL.JoyHatEvent÷0œuchar
+ACCELERATED_VISUALÃ4ŒSDL.GLattr÷0
+ACCUM_ALPHA_SIZEÃ4ŒSDL.GLattr÷0
+ACCUM_BLUE_SIZEÃ4ŒSDL.GLattr÷0
+ACCUM_GREEN_SIZEÃ4ŒSDL.GLattr÷0
+ACCUM_RED_SIZEÃ4ŒSDL.GLattr÷0
+ACTIVEÃ4ŒSDL.ActiveState÷0
+ACTIVEEVENTÃ4ŒSDL.EventType÷0
+ACTIVEEVENTMASKÃ4ŒSDL.EventMask÷0
+ADDEVENTÃ4ŒSDL.EventAction÷0
+ALPHA_SIZEÃ4ŒSDL.GLattr÷0
+ALTÃ4ŒSDL.KeyModifier÷0
+AMPERSANDÃ4ŒSDL.KeySymbol÷0
+ANYFORMATÃ4ŒSDL.SurfaceFlag÷0
+ASTERISKÃ4ŒSDL.KeySymbol÷0
+ASYNCBLITÃ4ŒSDL.SurfaceFlag÷0
+ATÃ4ŒSDL.KeySymbol÷0
+AUDIOÃ4ŒSDL.InitFlag÷0
+ActiveEventÃ2048ŒSDL÷0
+ActiveStateÃ2ŒSDL÷0
+AlossÃ8ŒSDL.PixelFormat÷0œuchar
+AmaskÃ8ŒSDL.PixelFormat÷0œuchar
+AshiftÃ8ŒSDL.PixelFormat÷0œuchar
+AudioÃ1ŒSDL÷0
+AudioConverterÃ1ŒSDL÷0
+AudioFormatÃ2ŒSDL÷0
+AudioSpecÃ1ŒSDL÷0
+AudioStatusÃ2ŒSDL÷0
+BACKQUOTEÃ4ŒSDL.KeySymbol÷0
+BACKSLASHÃ4ŒSDL.KeySymbol÷0
+BACKSPACEÃ4ŒSDL.KeySymbol÷0
+BLUE_SIZEÃ4ŒSDL.GLattr÷0
+BREAKÃ4ŒSDL.KeySymbol÷0
+BUFFER_SIZEÃ4ŒSDL.GLattr÷0
+BitsPerPixelÃ8ŒSDL.PixelFormat÷0œuchar
+BlossÃ8ŒSDL.PixelFormat÷0œuchar
+BmaskÃ8ŒSDL.PixelFormat÷0œuchar
+BshiftÃ8ŒSDL.PixelFormat÷0œuchar
+ButtonStateÃ2ŒSDL÷0
+BytesPerPixelÃ8ŒSDL.PixelFormat÷0œuchar
+CAPSÃ4ŒSDL.KeyModifier÷0
+CAPSLOCKÃ4ŒSDL.KeySymbol÷0
+CARETÃ4ŒSDL.KeySymbol÷0
+CDROMÃ4ŒSDL.InitFlag÷0
+CENTEREDÃ4ŒSDL.HatValue÷0
+CLEARÃ4ŒSDL.KeySymbol÷0
+COLONÃ4ŒSDL.KeySymbol÷0
+COMMAÃ4ŒSDL.KeySymbol÷0
+COMPOSEÃ4ŒSDL.KeySymbol÷0
+CTRLÃ4ŒSDL.KeyModifier÷0
+ColorÃ2048ŒSDL÷0
+ConditionÃ1ŒSDL÷0
+ConditionÃ128Õ()ŒSDL.Condition÷0
+CursorÃ1ŒSDL÷0
+CursorÃ128Õ(uchar* data, uchar* mask, int w, int h, int hot_x, int hot_y)ŒSDL.Cursor÷0
+DELETEÃ4ŒSDL.KeySymbol÷0
+DEPTH_SIZEÃ4ŒSDL.GLattr÷0
+DISABLEÃ4ŒSDL.EventState÷0
+DOLLARÃ4ŒSDL.KeySymbol÷0
+DOUBLEBUFÃ4ŒSDL.SurfaceFlag÷0
+DOUBLEBUFFERÃ4ŒSDL.GLattr÷0
+DOWNÃ4ŒSDL.HatValue÷0
+DOWNÃ4ŒSDL.KeySymbol÷0
+EFREADÃ4ŒSDL.Error÷0
+EFSEEKÃ4ŒSDL.Error÷0
+EFWRITEÃ4ŒSDL.Error÷0
+EIGHTÃ4ŒSDL.KeySymbol÷0
+ENABLEÃ4ŒSDL.EventState÷0
+ENDÃ4ŒSDL.KeySymbol÷0
+ENOMEMÃ4ŒSDL.Error÷0
+EQUALSÃ4ŒSDL.KeySymbol÷0
+ESCAPEÃ4ŒSDL.KeySymbol÷0
+EUROÃ4ŒSDL.KeySymbol÷0
+EVENTTHREADÃ4ŒSDL.InitFlag÷0
+EVERYTHINGÃ4ŒSDL.InitFlag÷0
+EXCLAIMÃ4ŒSDL.KeySymbol÷0
+ErrorÃ2ŒSDL÷0
+EventÃ2048ŒSDL÷0
+EventActionÃ2ŒSDL÷0
+EventMaskÃ2ŒSDL÷0
+EventStateÃ2ŒSDL÷0
+EventTypeÃ2ŒSDL÷0
+ExposeEventÃ2048ŒSDL÷0
+F1Ã4ŒSDL.KeySymbol÷0
+F10Ã4ŒSDL.KeySymbol÷0
+F11Ã4ŒSDL.KeySymbol÷0
+F12Ã4ŒSDL.KeySymbol÷0
+F13Ã4ŒSDL.KeySymbol÷0
+F14Ã4ŒSDL.KeySymbol÷0
+F15Ã4ŒSDL.KeySymbol÷0
+F2Ã4ŒSDL.KeySymbol÷0
+F3Ã4ŒSDL.KeySymbol÷0
+F4Ã4ŒSDL.KeySymbol÷0
+F5Ã4ŒSDL.KeySymbol÷0
+F6Ã4ŒSDL.KeySymbol÷0
+F7Ã4ŒSDL.KeySymbol÷0
+F8Ã4ŒSDL.KeySymbol÷0
+F9Ã4ŒSDL.KeySymbol÷0
+FIRSTÃ4ŒSDL.KeySymbol÷0
+FIVEÃ4ŒSDL.KeySymbol÷0
+FOURÃ4ŒSDL.KeySymbol÷0
+FULLSCREENÃ4ŒSDL.SurfaceFlag÷0
+GETEVENTÃ4ŒSDL.EventAction÷0
+GLÃ1ŒSDL÷0
+GLattrÃ2ŒSDL÷0
+GREATERÃ4ŒSDL.KeySymbol÷0
+GREEN_SIZEÃ4ŒSDL.GLattr÷0
+GlossÃ8ŒSDL.PixelFormat÷0œuchar
+GmaskÃ8ŒSDL.PixelFormat÷0œuchar
+GrabModeÃ2ŒSDL÷0
+GshiftÃ8ŒSDL.PixelFormat÷0œuchar
+HASHÃ4ŒSDL.KeySymbol÷0
+HELPÃ4ŒSDL.KeySymbol÷0
+HOMEÃ4ŒSDL.KeySymbol÷0
+HWACCELÃ4ŒSDL.SurfaceFlag÷0
+HWPALETTEÃ4ŒSDL.SurfaceFlag÷0
+HWSURFACEÃ4ŒSDL.SurfaceFlag÷0
+HatValueÃ2ŒSDL÷0
+IGNOREÃ4ŒSDL.EventState÷0
+INPUTFOCUSÃ4ŒSDL.ActiveState÷0
+INSERTÃ4ŒSDL.KeySymbol÷0
+IYUV_OVERLAYÃ4ŒSDL.OverlayFormat÷0
+InitFlagÃ2ŒSDL÷0
+JOYAXISMOTIONÃ4ŒSDL.EventType÷0
+JOYAXISMOTIONMASKÃ4ŒSDL.EventMask÷0
+JOYBALLMOTIONÃ4ŒSDL.EventType÷0
+JOYBALLMOTIONMASKÃ4ŒSDL.EventMask÷0
+JOYBUTTONDOWNÃ4ŒSDL.EventType÷0
+JOYBUTTONDOWNMASKÃ4ŒSDL.EventMask÷0
+JOYBUTTONUPÃ4ŒSDL.EventType÷0
+JOYBUTTONUPMASKÃ4ŒSDL.EventMask÷0
+JOYEVENTMASKÃ4ŒSDL.EventMask÷0
+JOYHATMOTIONÃ4ŒSDL.EventType÷0
+JOYHATMOTIONMASKÃ4ŒSDL.EventMask÷0
+JOYSTICKÃ4ŒSDL.InitFlag÷0
+JoyAxisEventÃ2048ŒSDL÷0
+JoyBallEventÃ2048ŒSDL÷0
+JoyButtonEventÃ2048ŒSDL÷0
+JoyHatEventÃ2048ŒSDL÷0
+JoystickÃ1ŒSDL÷0
+JoystickÃ128Õ(int device_index)ŒSDL.Joystick÷0
+KEYDOWNÃ4ŒSDL.EventType÷0
+KEYDOWNMASKÃ4ŒSDL.EventMask÷0
+KEYEVENTMASKÃ4ŒSDL.EventMask÷0
+KEYUPÃ4ŒSDL.EventType÷0
+KEYUPMASKÃ4ŒSDL.EventMask÷0
+KP0Ã4ŒSDL.KeySymbol÷0
+KP1Ã4ŒSDL.KeySymbol÷0
+KP2Ã4ŒSDL.KeySymbol÷0
+KP3Ã4ŒSDL.KeySymbol÷0
+KP4Ã4ŒSDL.KeySymbol÷0
+KP5Ã4ŒSDL.KeySymbol÷0
+KP6Ã4ŒSDL.KeySymbol÷0
+KP7Ã4ŒSDL.KeySymbol÷0
+KP8Ã4ŒSDL.KeySymbol÷0
+KP9Ã4ŒSDL.KeySymbol÷0
+KP_DIVIDEÃ4ŒSDL.KeySymbol÷0
+KP_ENTERÃ4ŒSDL.KeySymbol÷0
+KP_EQUALSÃ4ŒSDL.KeySymbol÷0
+KP_MINUSÃ4ŒSDL.KeySymbol÷0
+KP_MULTIPLYÃ4ŒSDL.KeySymbol÷0
+KP_PERIODÃ4ŒSDL.KeySymbol÷0
+KP_PLUSÃ4ŒSDL.KeySymbol÷0
+KeyÃ2048ŒSDL÷0
+KeyModifierÃ2ŒSDL÷0
+KeySymbolÃ2ŒSDL÷0
+KeyboardEventÃ2048ŒSDL÷0
+LALTÃ4ŒSDL.KeyModifier÷0
+LALTÃ4ŒSDL.KeySymbol÷0
+LASTÃ4ŒSDL.KeySymbol÷0
+LASTERRORÃ4ŒSDL.Error÷0
+LCTRLÃ4ŒSDL.KeyModifier÷0
+LCTRLÃ4ŒSDL.KeySymbol÷0
+LEFTÃ4ŒSDL.HatValue÷0
+LEFTÃ4ŒSDL.KeySymbol÷0
+LEFTÃ4ŒSDL.MouseButton÷0
+LEFTBRACKETÃ4ŒSDL.KeySymbol÷0
+LEFTDOWNÃ4ŒSDL.HatValue÷0
+LEFTPARENÃ4ŒSDL.KeySymbol÷0
+LEFTUPÃ4ŒSDL.HatValue÷0
+LESSÃ4ŒSDL.KeySymbol÷0
+LMETAÃ4ŒSDL.KeyModifier÷0
+LMETAÃ4ŒSDL.KeySymbol÷0
+LOGPALÃ4ŒSDL.PaletteFlags÷0
+LSHIFTÃ4ŒSDL.KeyModifier÷0
+LSHIFTÃ4ŒSDL.KeySymbol÷0
+LSUPERÃ4ŒSDL.KeySymbol÷0
+MENUÃ4ŒSDL.KeySymbol÷0
+METAÃ4ŒSDL.KeyModifier÷0
+MIDDLEÃ4ŒSDL.MouseButton÷0
+MINUSÃ4ŒSDL.KeySymbol÷0
+MODEÃ4ŒSDL.KeyModifier÷0
+MODEÃ4ŒSDL.KeySymbol÷0
+MOUSEBUTTONDOWNÃ4ŒSDL.EventType÷0
+MOUSEBUTTONDOWNMASKÃ4ŒSDL.EventMask÷0
+MOUSEBUTTONUPÃ4ŒSDL.EventType÷0
+MOUSEBUTTONUPMASKÃ4ŒSDL.EventMask÷0
+MOUSEEVENTMASKÃ4ŒSDL.EventMask÷0
+MOUSEFOCUSÃ4ŒSDL.ActiveState÷0
+MOUSEMOTIONÃ4ŒSDL.EventType÷0
+MOUSEMOTIONMASKÃ4ŒSDL.EventMask÷0
+MULTISAMPLEBUFFERSÃ4ŒSDL.GLattr÷0
+MULTISAMPLESAMPLESÃ4ŒSDL.GLattr÷0
+MouseButtonÃ2ŒSDL÷0
+MouseButtonEventÃ2048ŒSDL÷0
+MouseMotionEventÃ2048ŒSDL÷0
+MutexÃ1ŒSDL÷0
+MutexÃ128Õ()ŒSDL.Mutex÷0
+NINEÃ4ŒSDL.KeySymbol÷0
+NOEVENTÃ4ŒSDL.EventType÷0
+NOFRAMEÃ4ŒSDL.SurfaceFlag÷0
+NONEÃ4ŒSDL.KeyModifier÷0
+NOPARACHUTEÃ4ŒSDL.InitFlag÷0
+NUMÃ4ŒSDL.KeyModifier÷0
+NUMEVENTSÃ4ŒSDL.EventType÷0
+NUMLOCKÃ4ŒSDL.KeySymbol÷0
+OFFÃ4ŒSDL.GrabMode÷0
+ONÃ4ŒSDL.GrabMode÷0
+ONEÃ4ŒSDL.KeySymbol÷0
+OPAQUEÃ4ŒSDL.Opacity÷0
+OPENGLÃ4ŒSDL.SurfaceFlag÷0
+OPENGLBLITÃ4ŒSDL.SurfaceFlag÷0
+OpacityÃ2ŒSDL÷0
+OverlayÃ1ŒSDL÷0
+OverlayÃ128Õ(int width, int height, OverlayFormat format, Surface display)ŒSDL.Overlay÷0
+OverlayFormatÃ2ŒSDL÷0
+PAGEDOWNÃ4ŒSDL.KeySymbol÷0
+PAGEUPÃ4ŒSDL.KeySymbol÷0
+PAUSEÃ4ŒSDL.KeySymbol÷0
+PAUSEDÃ4ŒSDL.AudioStatus÷0
+PEEKEVENTÃ4ŒSDL.EventAction÷0
+PERIODÃ4ŒSDL.KeySymbol÷0
+PHYSPALÃ4ŒSDL.PaletteFlags÷0
+PLAYINGÃ4ŒSDL.AudioStatus÷0
+PLUSÃ4ŒSDL.KeySymbol÷0
+POWERÃ4ŒSDL.KeySymbol÷0
+PRESSEDÃ4ŒSDL.ButtonState÷0
+PRINTÃ4ŒSDL.KeySymbol÷0
+PaletteÃ1ŒSDL÷0
+PaletteFlagsÃ2ŒSDL÷0
+PixelFormatÃ1ŒSDL÷0
+QUERYÃ4ŒSDL.EventState÷0
+QUERYÃ4ŒSDL.GrabMode÷0
+QUESTIONÃ4ŒSDL.KeySymbol÷0
+QUITÃ4ŒSDL.EventType÷0
+QUITMASKÃ4ŒSDL.EventMask÷0
+QUOTEÃ4ŒSDL.KeySymbol÷0
+QUOTEDBLÃ4ŒSDL.KeySymbol÷0
+QuitEventÃ2048ŒSDL÷0
+RALTÃ4ŒSDL.KeyModifier÷0
+RALTÃ4ŒSDL.KeySymbol÷0
+RCTRLÃ4ŒSDL.KeyModifier÷0
+RCTRLÃ4ŒSDL.KeySymbol÷0
+RED_SIZEÃ4ŒSDL.GLattr÷0
+RELEASEDÃ4ŒSDL.ButtonState÷0
+RESERVEDÃ4ŒSDL.KeyModifier÷0
+RESIZABLEÃ4ŒSDL.SurfaceFlag÷0
+RETURNÃ4ŒSDL.KeySymbol÷0
+RIGHTÃ4ŒSDL.HatValue÷0
+RIGHTÃ4ŒSDL.KeySymbol÷0
+RIGHTÃ4ŒSDL.MouseButton÷0
+RIGHTBRACKETÃ4ŒSDL.KeySymbol÷0
+RIGHTDOWNÃ4ŒSDL.HatValue÷0
+RIGHTPARENÃ4ŒSDL.KeySymbol÷0
+RIGHTUPÃ4ŒSDL.HatValue÷0
+RLEACCELÃ4ŒSDL.SurfaceFlag÷0
+RMETAÃ4ŒSDL.KeyModifier÷0
+RMETAÃ4ŒSDL.KeySymbol÷0
+RSHIFTÃ4ŒSDL.KeyModifier÷0
+RSHIFTÃ4ŒSDL.KeySymbol÷0
+RSUPERÃ4ŒSDL.KeySymbol÷0
+RWopsÃ1ŒSDL÷0
+RWops.from_fileÃ128Õ(string file, string mode)ŒSDL.RWops÷0
+RWops.from_memÃ128Õ(void* mem, int size)ŒSDL.RWops÷0
+RectÃ2048ŒSDL÷0
+ResizeEventÃ2048ŒSDL÷0
+RlossÃ8ŒSDL.PixelFormat÷0œuchar
+RmaskÃ8ŒSDL.PixelFormat÷0œuchar
+RshiftÃ8ŒSDL.PixelFormat÷0œuchar
+S16Ã4ŒSDL.AudioFormat÷0
+S16LSBÃ4ŒSDL.AudioFormat÷0
+S16MSBÃ4ŒSDL.AudioFormat÷0
+S16SYSÃ4ŒSDL.AudioFormat÷0
+S8Ã4ŒSDL.AudioFormat÷0
+SCROLLOCKÃ4ŒSDL.KeySymbol÷0
+SDLÃ256÷0
+SEMICOLONÃ4ŒSDL.KeySymbol÷0
+SEVENÃ4ŒSDL.KeySymbol÷0
+SHIFTÃ4ŒSDL.KeyModifier÷0
+SIXÃ4ŒSDL.KeySymbol÷0
+SLASHÃ4ŒSDL.KeySymbol÷0
+SPACEÃ4ŒSDL.KeySymbol÷0
+SRCALPHAÃ4ŒSDL.SurfaceFlag÷0
+SRCCOLORKEYÃ4ŒSDL.SurfaceFlag÷0
+STENCIL_SIZEÃ4ŒSDL.GLattr÷0
+STEREOÃ4ŒSDL.GLattr÷0
+STOPPEDÃ4ŒSDL.AudioStatus÷0
+SWAP_CONTROLÃ4ŒSDL.GLattr÷0
+SWSURFACEÃ4ŒSDL.SurfaceFlag÷0
+SYSREQÃ4ŒSDL.KeySymbol÷0
+SYSWMEVENTÃ4ŒSDL.EventType÷0
+SYSWMEVENTMASKÃ4ŒSDL.EventMask÷0
+ScreenÃ1ŒSDL÷0
+SemaphoreÃ1ŒSDL÷0
+SemaphoreÃ128Õ(uint32 initial_value)ŒSDL.Semaphore÷0
+SurfaceÃ1ŒSDL÷0
+Surface.RGBÃ128Õ(uint32 flags, int width, int height, int depth, uint32 rmask, uint32 gmask, uint32 bmask, uint32 amask)ŒSDL.Surface÷0
+Surface.from_RGBÃ128Õ(void* pixels, int width, int height, int depth, int pitch, uint32 rmask, uint32 gmask, uint32 bmask, uint32 amask)ŒSDL.Surface÷0
+Surface.loadÃ128Õ(RWops src, int freesrc=0)ŒSDL.Surface÷0
+SurfaceFlagÃ2ŒSDL÷0
+SysWMEventÃ2048ŒSDL÷0
+SysWMmsgÃ1ŒSDL÷0
+TABÃ4ŒSDL.KeySymbol÷0
+THREEÃ4ŒSDL.KeySymbol÷0
+TIMERÃ4ŒSDL.InitFlag÷0
+TRANSPARENTÃ4ŒSDL.Opacity÷0
+TWOÃ4ŒSDL.KeySymbol÷0
+ThreadÃ1ŒSDL÷0
+ThreadÃ128Õ(ThreadFunc f, void* data)ŒSDL.Thread÷0
+ThreadFuncÃ128Õ(void* data)ŒSDL÷0œpublic delegate int
+TimerÃ1ŒSDL÷0
+TimerÃ128Õ(uint32 interval, TimerCallback callback, void* param)ŒSDL.Timer÷0
+TimerCallbackÃ128Õ(uint32 interval, void* param)ŒSDL÷0œpublic delegate uint32
+U16Ã4ŒSDL.AudioFormat÷0
+U16LSBÃ4ŒSDL.AudioFormat÷0
+U16MSBÃ4ŒSDL.AudioFormat÷0
+U16SYSÃ4ŒSDL.AudioFormat÷0
+U8Ã4ŒSDL.AudioFormat÷0
+UNDERSCOREÃ4ŒSDL.KeySymbol÷0
+UNDOÃ4ŒSDL.KeySymbol÷0
+UNKNOWNÃ4ŒSDL.KeySymbol÷0
+UNSUPPORTEDÃ4ŒSDL.Error÷0
+UPÃ4ŒSDL.HatValue÷0
+UPÃ4ŒSDL.KeySymbol÷0
+USEREVENTÃ4ŒSDL.EventType÷0
+UYVY_OVERLAYÃ4ŒSDL.OverlayFormat÷0
+UnusedBitsÃ8ŒSDL.Overlay÷0œuint32
+UnusedBits1Ã8ŒSDL.VideoInfo÷0œuint32
+UnusedBits2Ã8ŒSDL.VideoInfo÷0œuint32
+UnusedBits3Ã8ŒSDL.VideoInfo÷0œuint32
+UserEventÃ2048ŒSDL÷0
+VIDEOÃ4ŒSDL.InitFlag÷0
+VIDEOEXPOSEÃ4ŒSDL.EventType÷0
+VIDEOEXPOSEMASKÃ4ŒSDL.EventMask÷0
+VIDEORESIZEÃ4ŒSDL.EventType÷0
+VIDEORESIZEMASKÃ4ŒSDL.EventMask÷0
+VersionÃ1ŒSDL÷0
+VideoÃ1ŒSDL÷0
+VideoInfoÃ1ŒSDL÷0
+WHEELDOWNÃ4ŒSDL.MouseButton÷0
+WHEELUPÃ4ŒSDL.MouseButton÷0
+WORLD_0Ã4ŒSDL.KeySymbol÷0
+WORLD_1Ã4ŒSDL.KeySymbol÷0
+WORLD_10Ã4ŒSDL.KeySymbol÷0
+WORLD_11Ã4ŒSDL.KeySymbol÷0
+WORLD_12Ã4ŒSDL.KeySymbol÷0
+WORLD_13Ã4ŒSDL.KeySymbol÷0
+WORLD_14Ã4ŒSDL.KeySymbol÷0
+WORLD_15Ã4ŒSDL.KeySymbol÷0
+WORLD_16Ã4ŒSDL.KeySymbol÷0
+WORLD_17Ã4ŒSDL.KeySymbol÷0
+WORLD_18Ã4ŒSDL.KeySymbol÷0
+WORLD_19Ã4ŒSDL.KeySymbol÷0
+WORLD_2Ã4ŒSDL.KeySymbol÷0
+WORLD_20Ã4ŒSDL.KeySymbol÷0
+WORLD_21Ã4ŒSDL.KeySymbol÷0
+WORLD_22Ã4ŒSDL.KeySymbol÷0
+WORLD_23Ã4ŒSDL.KeySymbol÷0
+WORLD_24Ã4ŒSDL.KeySymbol÷0
+WORLD_25Ã4ŒSDL.KeySymbol÷0
+WORLD_26Ã4ŒSDL.KeySymbol÷0
+WORLD_27Ã4ŒSDL.KeySymbol÷0
+WORLD_28Ã4ŒSDL.KeySymbol÷0
+WORLD_29Ã4ŒSDL.KeySymbol÷0
+WORLD_3Ã4ŒSDL.KeySymbol÷0
+WORLD_30Ã4ŒSDL.KeySymbol÷0
+WORLD_31Ã4ŒSDL.KeySymbol÷0
+WORLD_32Ã4ŒSDL.KeySymbol÷0
+WORLD_33Ã4ŒSDL.KeySymbol÷0
+WORLD_34Ã4ŒSDL.KeySymbol÷0
+WORLD_35Ã4ŒSDL.KeySymbol÷0
+WORLD_36Ã4ŒSDL.KeySymbol÷0
+WORLD_37Ã4ŒSDL.KeySymbol÷0
+WORLD_38Ã4ŒSDL.KeySymbol÷0
+WORLD_39Ã4ŒSDL.KeySymbol÷0
+WORLD_4Ã4ŒSDL.KeySymbol÷0
+WORLD_40Ã4ŒSDL.KeySymbol÷0
+WORLD_41Ã4ŒSDL.KeySymbol÷0
+WORLD_42Ã4ŒSDL.KeySymbol÷0
+WORLD_43Ã4ŒSDL.KeySymbol÷0
+WORLD_44Ã4ŒSDL.KeySymbol÷0
+WORLD_45Ã4ŒSDL.KeySymbol÷0
+WORLD_46Ã4ŒSDL.KeySymbol÷0
+WORLD_47Ã4ŒSDL.KeySymbol÷0
+WORLD_48Ã4ŒSDL.KeySymbol÷0
+WORLD_49Ã4ŒSDL.KeySymbol÷0
+WORLD_5Ã4ŒSDL.KeySymbol÷0
+WORLD_50Ã4ŒSDL.KeySymbol÷0
+WORLD_51Ã4ŒSDL.KeySymbol÷0
+WORLD_52Ã4ŒSDL.KeySymbol÷0
+WORLD_53Ã4ŒSDL.KeySymbol÷0
+WORLD_54Ã4ŒSDL.KeySymbol÷0
+WORLD_55Ã4ŒSDL.KeySymbol÷0
+WORLD_56Ã4ŒSDL.KeySymbol÷0
+WORLD_57Ã4ŒSDL.KeySymbol÷0
+WORLD_58Ã4ŒSDL.KeySymbol÷0
+WORLD_59Ã4ŒSDL.KeySymbol÷0
+WORLD_6Ã4ŒSDL.KeySymbol÷0
+WORLD_60Ã4ŒSDL.KeySymbol÷0
+WORLD_61Ã4ŒSDL.KeySymbol÷0
+WORLD_62Ã4ŒSDL.KeySymbol÷0
+WORLD_63Ã4ŒSDL.KeySymbol÷0
+WORLD_64Ã4ŒSDL.KeySymbol÷0
+WORLD_65Ã4ŒSDL.KeySymbol÷0
+WORLD_66Ã4ŒSDL.KeySymbol÷0
+WORLD_67Ã4ŒSDL.KeySymbol÷0
+WORLD_68Ã4ŒSDL.KeySymbol÷0
+WORLD_69Ã4ŒSDL.KeySymbol÷0
+WORLD_7Ã4ŒSDL.KeySymbol÷0
+WORLD_70Ã4ŒSDL.KeySymbol÷0
+WORLD_71Ã4ŒSDL.KeySymbol÷0
+WORLD_72Ã4ŒSDL.KeySymbol÷0
+WORLD_73Ã4ŒSDL.KeySymbol÷0
+WORLD_74Ã4ŒSDL.KeySymbol÷0
+WORLD_75Ã4ŒSDL.KeySymbol÷0
+WORLD_76Ã4ŒSDL.KeySymbol÷0
+WORLD_77Ã4ŒSDL.KeySymbol÷0
+WORLD_78Ã4ŒSDL.KeySymbol÷0
+WORLD_79Ã4ŒSDL.KeySymbol÷0
+WORLD_8Ã4ŒSDL.KeySymbol÷0
+WORLD_80Ã4ŒSDL.KeySymbol÷0
+WORLD_81Ã4ŒSDL.KeySymbol÷0
+WORLD_82Ã4ŒSDL.KeySymbol÷0
+WORLD_83Ã4ŒSDL.KeySymbol÷0
+WORLD_84Ã4ŒSDL.KeySymbol÷0
+WORLD_85Ã4ŒSDL.KeySymbol÷0
+WORLD_86Ã4ŒSDL.KeySymbol÷0
+WORLD_87Ã4ŒSDL.KeySymbol÷0
+WORLD_88Ã4ŒSDL.KeySymbol÷0
+WORLD_89Ã4ŒSDL.KeySymbol÷0
+WORLD_9Ã4ŒSDL.KeySymbol÷0
+WORLD_90Ã4ŒSDL.KeySymbol÷0
+WORLD_91Ã4ŒSDL.KeySymbol÷0
+WORLD_92Ã4ŒSDL.KeySymbol÷0
+WORLD_93Ã4ŒSDL.KeySymbol÷0
+WORLD_94Ã4ŒSDL.KeySymbol÷0
+WORLD_95Ã4ŒSDL.KeySymbol÷0
+WindowManagerÃ1ŒSDL÷0
+YUY2_OVERLAYÃ4ŒSDL.OverlayFormat÷0
+YV12_OVERLAYÃ4ŒSDL.OverlayFormat÷0
+YVYU_OVERLAYÃ4ŒSDL.OverlayFormat÷0
+ZEROÃ4ŒSDL.KeySymbol÷0
+_list_modesÃ128Õ(PixelFormat? format, uint32 flags)ŒSDL.Video÷0œpublic void *
+aÃ4ŒSDL.KeySymbol÷0
+activeÃ8ŒSDL.Event÷0œActiveEvent
+alphaÃ8ŒSDL.PixelFormat÷0œuchar
+areaÃ8ŒSDL.Cursor÷0œRect
+axisÃ8ŒSDL.JoyAxisEvent÷0œuchar
+bÃ8ŒSDL.Color÷0œuchar
+bÃ4ŒSDL.KeySymbol÷0
+ballÃ8ŒSDL.JoyBallEvent÷0œuchar
+blitÃ128Õ(Rect? srcrect, Surface dst, Rect? dstrect)ŒSDL.Surface÷0œpublic int
+blit_fillÃ8ŒSDL.VideoInfo÷0œuint32
+blit_hwÃ8ŒSDL.VideoInfo÷0œuint32
+blit_hw_AÃ8ŒSDL.VideoInfo÷0œuint32
+blit_swÃ8ŒSDL.VideoInfo÷0œuint32
+blit_sw_AÃ8ŒSDL.VideoInfo÷0œuint32
+blit_sw_CCÃ8ŒSDL.VideoInfo÷0œuint32
+bliw_hw_CCÃ8ŒSDL.VideoInfo÷0œuint32
+broadcastÃ128Õ()ŒSDL.Condition÷0œpublic int
+bufÃ8ŒSDL.AudioConverter÷0œuchar
+buildÃ128Õ(AudioConverter cvt, AudioFormat src_format, uchar src_channels, int src_rate, AudioFormat dst_format, uchar dst_channels, int dst_rate)ŒSDL.AudioConverter÷0œpublic int
+buttonÃ8ŒSDL.Event÷0œMouseButtonEvent
+buttonÃ8ŒSDL.JoyButtonEvent÷0œuchar
+buttonÃ8ŒSDL.MouseButtonEvent÷0œuchar
+cÃ4ŒSDL.KeySymbol÷0
+channelsÃ8ŒSDL.AudioSpec÷0œuchar
+check_video_modeÃ128Õ(int width, int height, int bpp, uint32 flags)ŒSDL.Screen÷0œpublic int
+clear_errorÃ128Õ()ŒSDL÷0œpublic void
+closeÃ128Õ()ŒSDL.Audio÷0œpublic void
+codeÃ8ŒSDL.UserEvent÷0œint
+colorkeyÃ8ŒSDL.PixelFormat÷0œuint32
+colorsÃ8ŒSDL.Palette÷0œColor
+convertÃ128Õ()ŒSDL.AudioConverter÷0œpublic int
+convertÃ128Õ(PixelFormat? fmt, uint32 flags)ŒSDL.Surface÷0œpublic Surface?
+countÃ128Õ()ŒSDL.Joystick÷0œpublic int
+countÃ128Õ()ŒSDL.Semaphore÷0œpublic uint32
+current_hÃ8ŒSDL.VideoInfo÷0œint
+current_wÃ8ŒSDL.VideoInfo÷0œint
+cursorÃ8ŒSDL.Cursor÷0œvoid
+dÃ4ŒSDL.KeySymbol÷0
+dataÃ8ŒSDL.Cursor÷0œuchar
+data1Ã8ŒSDL.UserEvent÷0œvoid
+data2Ã8ŒSDL.UserEvent÷0œvoid
+delayÃ128Õ(uint32 ms)ŒSDL.Timer÷0œpublic void
+displayÃ128Õ(Rect dst)ŒSDL.Overlay÷0œpublic void
+do_lockÃ128Õ()ŒSDL.Audio÷0œpublic void
+do_lockÃ128Õ()ŒSDL.Mutex÷0œpublic int
+do_lockÃ128Õ()ŒSDL.Overlay÷0œpublic int
+do_lockÃ128Õ()ŒSDL.Surface÷0œpublic int
+driver_nameÃ128Õ(string namebuf, int maxlen)ŒSDL.Audio÷0œpublic unowned string
+driver_nameÃ128Õ(string namebuf, int maxlen)ŒSDL.Video÷0œpublic unowned
+dst_formatÃ8ŒSDL.AudioConverter÷0œAudioFormat
+eÃ4ŒSDL.KeySymbol÷0
+enable_unicodeÃ128Õ(int enable)ŒSDL.Key÷0œpublic int
+errorÃ128Õ(Error code)ŒSDL÷0œpublic void
+event_stateÃ128Õ(EventState state)ŒSDL.Joystick÷0œpublic int
+exposeÃ8ŒSDL.Event÷0œExposeEvent
+fÃ4ŒSDL.KeySymbol÷0
+fillÃ128Õ(Rect? dst, uint32 color)ŒSDL.Surface÷0œpublic int
+filter_indexÃ8ŒSDL.AudioConverter÷0œint
+flagsÃ8ŒSDL.Surface÷0œuint32
+flipÃ128Õ()ŒSDL.Surface÷0œpublic int
+formatÃ8ŒSDL.AudioSpec÷0œAudioFormat
+formatÃ8ŒSDL.Overlay÷0œuint32
+formatÃ8ŒSDL.Surface÷0œPixelFormat
+freeÃ128Õ(uchar* audio_buf)ŒSDL.Audio÷0œpublic void
+freqÃ8ŒSDL.AudioSpec÷0œint
+gÃ8ŒSDL.Color÷0œuchar
+gÃ4ŒSDL.KeySymbol÷0
+gainÃ8ŒSDL.ActiveEvent÷0œuchar
+get_attributeÃ128Õ(GLattr attr, ref int val)ŒSDL.GL÷0œpublic int
+get_axisÃ128Õ(int axis)ŒSDL.Joystick÷0œpublic int16
+get_ballÃ128Õ(int ball, ref int dx, ref int dy)ŒSDL.Joystick÷0œpublic HatValue
+get_buttonÃ128Õ(int button)ŒSDL.Joystick÷0œpublic ButtonState
+get_captionÃ128Õ(out string title, out string icon)ŒSDL.WindowManager÷0œpublic void
+get_cliprectÃ128Õ(Rect rect)ŒSDL.Surface÷0œpublic void
+get_errorÃ128Õ()ŒSDL÷0œpublic unowned string
+get_gamma_rampÃ128Õ(uint16* red, uint16* green, uint16* blue)ŒSDL.Video÷0œpublic int
+get_hatÃ128Õ(int hat)ŒSDL.Joystick÷0œpublic HatValue
+get_initializedÃ128Õ(uint32 flags)ŒSDL÷0œpublic uint32
+get_keysÃ128Õ()ŒSDL.Key÷0œpublic unowned
+get_modifiersÃ128Õ()ŒSDL.Key÷0œpublic KeyModifier
+get_nameÃ128Õ(int device_index)ŒSDL.Joystick÷0œpublic unowned string
+get_nameÃ128Õ(KeySymbol key)ŒSDL.Key÷0œpublic unowned string
+get_proc_addressÃ128Õ(string proc)ŒSDL.GL÷0œpublic void *
+get_relative_stateÃ128Õ(ref int x, ref int y)ŒSDL.Cursor÷0œpublic uchar
+get_repeatÃ128Õ(ref int delay, ref int interval)ŒSDL.Key÷0œpublic void
+get_rgbÃ128Õ(uint32 pixel, PixelFormat fmt, ref uchar r, ref uchar g, ref uchar b)ŒSDL.PixelFormat÷0œpublic void
+get_rgbaÃ128Õ(uint32 pixel, PixelFormat fmt, ref uchar r, ref uchar g, ref uchar b, ref uchar a)ŒSDL.PixelFormat÷0œpublic void
+get_stateÃ128Õ(ref int x, ref int y)ŒSDL.Cursor÷0œpublic uchar
+get_ticksÃ128Õ()ŒSDL.Timer÷0œpublic uint32
+grab_inputÃ128Õ(GrabMode mode)ŒSDL.WindowManager÷0œpublic GrabMode
+hÃ4ŒSDL.KeySymbol÷0
+hÃ8ŒSDL.Overlay÷0œint
+hÃ8ŒSDL.Rect÷0œuint16
+hÃ8ŒSDL.ResizeEvent÷0œint
+hÃ8ŒSDL.Surface÷0œint
+hatÃ8ŒSDL.JoyHatEvent÷0œuchar
+hot_xÃ8ŒSDL.Cursor÷0œint16
+hot_yÃ8ŒSDL.Cursor÷0œint16
+hw_availableÃ8ŒSDL.VideoInfo÷0œuint32
+hw_overlayÃ8ŒSDL.Overlay÷0œuint32
+iÃ4ŒSDL.KeySymbol÷0
+iconifyÃ128Õ()ŒSDL.WindowManager÷0œpublic int
+idÃ128Õ()ŒSDL.Thread÷0œpublic uint32
+indexÃ128Õ()ŒSDL.Joystick÷0œpublic int
+initÃ128Õ(uint32 flags = SDL.InitFlag.EVERYTHING)ŒSDL÷0œpublic int
+init_subsystemÃ128Õ(uint32 flags)ŒSDL÷0œpublic int
+instanceÃ128Õ()ŒSDL.Screen÷0œpublic unowned
+is_openÃ128Õ(int device_index)ŒSDL.Joystick÷0œpublic int
+jÃ4ŒSDL.KeySymbol÷0
+jaxisÃ8ŒSDL.Event÷0œJoyAxisEvent
+jballÃ8ŒSDL.Event÷0œJoyBallEvent
+jbuttonÃ8ŒSDL.Event÷0œJoyButtonEvent
+jhatÃ8ŒSDL.Event÷0œJoyHatEvent
+kÃ4ŒSDL.KeySymbol÷0
+keyÃ8ŒSDL.Event÷0œKeyboardEvent
+keysymÃ8ŒSDL.KeyboardEvent÷0œKey
+lÃ4ŒSDL.KeySymbol÷0
+lenÃ8ŒSDL.AudioConverter÷0œint
+len_cvtÃ8ŒSDL.AudioConverter÷0œint
+len_multÃ8ŒSDL.AudioConverter÷0œint
+len_ratioÃ8ŒSDL.AudioConverter÷0œdouble
+linkedÃ128Õ()ŒSDL.Version÷0œpublic unowned
+list_modesÃ128Õ(SDL.PixelFormat? format, uint32 flags, out bool any)ŒSDL.Video÷0œpublic unowned *
+loadÃ128Õ(RWops src, int freesrc=0, AudioSpec spec, uchar** audio_buf, ref uint32 audio_len)ŒSDL.Audio÷0œpublic AudioSpec
+load_libraryÃ128Õ(string path)ŒSDL.GL÷0œpublic int
+mÃ4ŒSDL.KeySymbol÷0
+majorÃ8ŒSDL.Version÷0œuchar
+map_rgbÃ128Õ(uchar r, uchar g, uchar b)ŒSDL.PixelFormat÷0œpublic uint32
+map_rgbaÃ128Õ(uchar r, uchar g, uchar b, uchar a)ŒSDL.PixelFormat÷0œpublic uint32
+maskÃ8ŒSDL.Cursor÷0œuchar
+minorÃ8ŒSDL.Version÷0œuchar
+mixÃ128Õ(uchar[] dst, uchar[] src, uint32 len, int volume)ŒSDL.Audio÷0œpublic void
+modÃ8ŒSDL.Key÷0œKeyModifier
+motionÃ8ŒSDL.Event÷0œMouseMotionEvent
+msgÃ8ŒSDL.SysWMEvent÷0œSysWMmsg
+nÃ4ŒSDL.KeySymbol÷0
+ncolorsÃ8ŒSDL.Palette÷0œint
+neededÃ8ŒSDL.AudioConverter÷0œint
+num_axesÃ128Õ()ŒSDL.Joystick÷0œpublic int
+num_ballsÃ128Õ()ŒSDL.Joystick÷0œpublic int
+num_buttonsÃ128Õ()ŒSDL.Joystick÷0œpublic int
+num_hatsÃ128Õ()ŒSDL.Joystick÷0œpublic int
+oÃ4ŒSDL.KeySymbol÷0
+openÃ128Õ(AudioSpec desired, AudioSpec obtained)ŒSDL.Audio÷0œpublic int
+pÃ4ŒSDL.KeySymbol÷0
+paddingÃ8ŒSDL.AudioSpec÷0œuint16
+paletteÃ8ŒSDL.PixelFormat÷0œPalette
+patchÃ8ŒSDL.Version÷0œuchar
+pauseÃ128Õ(int pause_on)ŒSDL.Audio÷0œpublic void
+peepÃ128Õ(Event* events, int numevents, EventAction action, EventMask mask)ŒSDL.Event÷0œpublic void
+pitchÃ8ŒSDL.Surface÷0œuint16
+pitchesÃ8ŒSDL.Overlay÷0œuint16
+pixelsÃ8ŒSDL.Overlay÷0œuchar
+pixelsÃ8ŒSDL.Surface÷0œvoid
+planesÃ8ŒSDL.Overlay÷0œint
+pollÃ128Õ(Event ev)ŒSDL.Event÷0œpublic int
+postÃ128Õ()ŒSDL.Semaphore÷0œpublic int
+pumpÃ128Õ()ŒSDL.Event÷0œpublic void
+pushÃ128Õ(Event ev)ŒSDL.Event÷0œpublic int
+qÃ4ŒSDL.KeySymbol÷0
+quitÃ128Õ()ŒSDL÷0œpublic void
+quitÃ8ŒSDL.Event÷0œQuitEvent
+quit_subsystemÃ128Õ(uint32 flags)ŒSDL÷0œpublic void
+rÃ8ŒSDL.Color÷0œuchar
+rÃ4ŒSDL.KeySymbol÷0
+rate_incrÃ8ŒSDL.AudioConverter÷0œdouble
+ref_countÃ8ŒSDL.Surface÷0œint
+resizeÃ8ŒSDL.Event÷0œResizeEvent
+sÃ4ŒSDL.KeySymbol÷0
+samplesÃ8ŒSDL.AudioSpec÷0œuint16
+saveÃ8ŒSDL.Cursor÷0œuchar
+saveÃ128Õ(RWops dst, int freedst=0)ŒSDL.Surface÷0œpublic int
+scancodeÃ8ŒSDL.Key÷0œuchar
+set_alphaÃ128Õ(uint32 flag, uchar alpha)ŒSDL.Surface÷0œpublic int
+set_attributeÃ128Õ(GLattr attr, int val)ŒSDL.GL÷0œpublic int
+set_captionÃ128Õ(string title, string icon)ŒSDL.WindowManager÷0œpublic void
+set_cliprectÃ128Õ(Rect? rect)ŒSDL.Surface÷0œpublic bool
+set_colorkeyÃ128Õ(uint32 flag, uint32 key)ŒSDL.Surface÷0œpublic int
+set_colorsÃ128Õ(Color* colors, int firstcolor, int ncolors)ŒSDL.Surface÷0œpublic int
+set_errorÃ128Õ(string format, ...)ŒSDL÷0œpublic void
+set_gammaÃ128Õ(float red, float green, float blue)ŒSDL.Video÷0œpublic int
+set_gamma_rampÃ128Õ(uint16* red, uint16* green, uint16* blue)ŒSDL.Video÷0œpublic int
+set_iconÃ128Õ(Surface icon, uchar* mask)ŒSDL.WindowManager÷0œpublic void
+set_modifiersÃ128Õ(KeyModifier modstate)ŒSDL.Key÷0œpublic void
+set_paletteÃ128Õ(int flags, Color* colors, int firstcolor, int ncolors)ŒSDL.Surface÷0œpublic int
+set_repeatÃ128Õ(int delay, int interval)ŒSDL.Key÷0œpublic int
+set_video_modeÃ128Õ(int width, int height, int bpp, uint32 flags)ŒSDL.Screen÷0œpublic unowned
+showÃ128Õ(int toggle)ŒSDL.Cursor÷0œpublic int
+silenceÃ8ŒSDL.AudioSpec÷0œuchar
+sizeÃ8ŒSDL.AudioSpec÷0œuint32
+src_formatÃ8ŒSDL.AudioConverter÷0œAudioFormat
+stateÃ8ŒSDL.ActiveEvent÷0œuchar
+stateÃ128Õ(uchar type, EventState state)ŒSDL.Event÷0œpublic uchar
+stateÃ8ŒSDL.JoyButtonEvent÷0œuchar
+stateÃ8ŒSDL.KeyboardEvent÷0œuchar
+stateÃ8ŒSDL.MouseButtonEvent÷0œuchar
+stateÃ8ŒSDL.MouseMotionEvent÷0œuchar
+statusÃ128Õ()ŒSDL.Audio÷0œpublic AudioStatus
+swap_buffersÃ128Õ()ŒSDL.GL÷0œpublic void
+symÃ8ŒSDL.Key÷0œKeySymbol
+syswmÃ8ŒSDL.Event÷0œSysWMEvent
+tÃ4ŒSDL.KeySymbol÷0
+toggle_fullscreenÃ128Õ(Surface surface)ŒSDL.WindowManager÷0œpublic int
+try_waitÃ128Õ()ŒSDL.Semaphore÷0œpublic int
+typeÃ8ŒSDL.ActiveEvent÷0œuchar
+typeÃ8ŒSDL.Event÷0œuchar
+typeÃ8ŒSDL.ExposeEvent÷0œuchar
+typeÃ8ŒSDL.JoyAxisEvent÷0œuchar
+typeÃ8ŒSDL.JoyBallEvent÷0œuchar
+typeÃ8ŒSDL.JoyButtonEvent÷0œuchar
+typeÃ8ŒSDL.JoyHatEvent÷0œuchar
+typeÃ8ŒSDL.KeyboardEvent÷0œuchar
+typeÃ8ŒSDL.MouseButtonEvent÷0œuchar
+typeÃ8ŒSDL.MouseMotionEvent÷0œuchar
+typeÃ8ŒSDL.QuitEvent÷0œuchar
+typeÃ8ŒSDL.ResizeEvent÷0œuchar
+typeÃ8ŒSDL.SysWMEvent÷0œuchar
+typeÃ8ŒSDL.UserEvent÷0œuchar
+uÃ4ŒSDL.KeySymbol÷0
+unicodeÃ8ŒSDL.Key÷0œuint16
+unlockÃ128Õ()ŒSDL.Audio÷0œpublic void
+unlockÃ128Õ()ŒSDL.Mutex÷0œpublic int
+unlockÃ128Õ()ŒSDL.Overlay÷0œpublic void
+unlockÃ128Õ()ŒSDL.Surface÷0œpublic void
+unusedÃ8ŒSDL.Color÷0œuchar
+update_allÃ128Õ()ŒSDL.Joystick÷0œpublic void
+update_rectÃ128Õ(int32 x, int32 y, uint32 w, uint32 h)ŒSDL.Surface÷0œpublic void
+update_rectsÃ128Õ(int numrects, Rect* rects)ŒSDL.Surface÷0œpublic void
+userÃ8ŒSDL.Event÷0œUserEvent
+userdataÃ8ŒSDL.AudioSpec÷0œvoid
+vÃ4ŒSDL.KeySymbol÷0
+vfmtÃ8ŒSDL.VideoInfo÷0œPixelFormat
+video_memÃ8ŒSDL.VideoInfo÷0œuint32
+wÃ4ŒSDL.KeySymbol÷0
+wÃ8ŒSDL.Overlay÷0œint
+wÃ8ŒSDL.Rect÷0œuint16
+wÃ8ŒSDL.ResizeEvent÷0œint
+wÃ8ŒSDL.Surface÷0œint
+waitÃ128Õ(Mutex mut)ŒSDL.Condition÷0œpublic int
+waitÃ128Õ(Event ev)ŒSDL.Event÷0œpublic int
+waitÃ128Õ()ŒSDL.Semaphore÷0œpublic int
+wait_timeoutÃ128Õ(Mutex mut, uint32 ms)ŒSDL.Condition÷0œpublic int
+wait_timeoutÃ128Õ(uint32 ms)ŒSDL.Semaphore÷0œpublic int
+warpÃ128Õ(uint16 x, uint16 y)ŒSDL.Cursor÷0œpublic void
+whichÃ8ŒSDL.JoyAxisEvent÷0œuchar
+whichÃ8ŒSDL.JoyBallEvent÷0œuchar
+whichÃ8ŒSDL.JoyButtonEvent÷0œuchar
+whichÃ8ŒSDL.JoyHatEvent÷0œuchar
+whichÃ8ŒSDL.KeyboardEvent÷0œuchar
+whichÃ8ŒSDL.MouseButtonEvent÷0œuchar
+whichÃ8ŒSDL.MouseMotionEvent÷0œuchar
+wm_availableÃ8ŒSDL.VideoInfo÷0œuint32
+xÃ4ŒSDL.KeySymbol÷0
+xÃ8ŒSDL.MouseButtonEvent÷0œuint16
+xÃ8ŒSDL.MouseMotionEvent÷0œuint16
+xÃ8ŒSDL.Rect÷0œint16
+xrelÃ8ŒSDL.JoyBallEvent÷0œint16
+xrelÃ8ŒSDL.MouseMotionEvent÷0œint16
+yÃ4ŒSDL.KeySymbol÷0
+yÃ8ŒSDL.MouseButtonEvent÷0œuint16
+yÃ8ŒSDL.MouseMotionEvent÷0œuint16
+yÃ8ŒSDL.Rect÷0œint16
+yrelÃ8ŒSDL.JoyBallEvent÷0œint16
+yrelÃ8ŒSDL.MouseMotionEvent÷0œint16
+zÃ4ŒSDL.KeySymbol÷0

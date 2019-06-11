@@ -1,0 +1,289 @@
+# format=tagmanager
+@1016Ã4ŒGst.RTPPayload÷0
+@dynamicÃ8ŒGst.BaseRTPPayload÷0œbool
+APPÃ4ŒGst.RTCPType÷0
+BYEÃ4ŒGst.RTCPType÷0
+BaseRTPAudioPayloadÃ1ŒGst÷0
+BaseRTPAudioPayloadÃ128Õ()ŒGst.BaseRTPAudioPayload÷0
+BaseRTPDepayloadÃ1ŒGst÷0
+BaseRTPDepayloadÃ128Õ()ŒGst.BaseRTPDepayload÷0
+BaseRTPPayloadÃ1ŒGst÷0
+BaseRTPPayloadÃ128Õ()ŒGst.BaseRTPPayload÷0
+CELLBÃ4ŒGst.RTPPayload÷0
+CNÃ4ŒGst.RTPPayload÷0
+CNAMEÃ4ŒGst.RTCPSDESType÷0
+DVI4_11025Ã4ŒGst.RTPPayload÷0
+DVI4_16000Ã4ŒGst.RTPPayload÷0
+DVI4_22050Ã4ŒGst.RTPPayload÷0
+DVI4_8000Ã4ŒGst.RTPPayload÷0
+EMAILÃ4ŒGst.RTCPSDESType÷0
+ENDÃ4ŒGst.RTCPSDESType÷0
+FB_TYPE_INVALIDÃ4ŒGst.RTCPFBType÷0
+G721Ã4ŒGst.RTPPayload÷0
+G722Ã4ŒGst.RTPPayload÷0
+G723Ã4ŒGst.RTPPayload÷0
+G728Ã4ŒGst.RTPPayload÷0
+G729Ã4ŒGst.RTPPayload÷0
+GSMÃ4ŒGst.RTPPayload÷0
+GstÃ256÷0
+H261Ã4ŒGst.RTPPayload÷0
+H263Ã4ŒGst.RTPPayload÷0
+INVALIDÃ4ŒGst.RTCPSDESType÷0
+INVALIDÃ4ŒGst.RTCPType÷0
+JPEGÃ4ŒGst.RTPPayload÷0
+L16_MONOÃ4ŒGst.RTPPayload÷0
+L16_STEREOÃ4ŒGst.RTPPayload÷0
+LOCÃ4ŒGst.RTCPSDESType÷0
+LPCÃ4ŒGst.RTPPayload÷0
+MP2TÃ4ŒGst.RTPPayload÷0
+MPAÃ4ŒGst.RTPPayload÷0
+MPVÃ4ŒGst.RTPPayload÷0
+NAMEÃ4ŒGst.RTCPSDESType÷0
+NOTEÃ4ŒGst.RTCPSDESType÷0
+NVÃ4ŒGst.RTPPayload÷0
+PCMAÃ4ŒGst.RTPPayload÷0
+PCMUÃ4ŒGst.RTPPayload÷0
+PHONEÃ4ŒGst.RTCPSDESType÷0
+PRIVÃ4ŒGst.RTCPSDESType÷0
+PSFBÃ4ŒGst.RTCPType÷0
+PSFB_TYPE_AFBÃ4ŒGst.RTCPFBType÷0
+PSFB_TYPE_PLIÃ4ŒGst.RTCPFBType÷0
+PSFB_TYPE_RPSIÃ4ŒGst.RTCPFBType÷0
+PSFB_TYPE_SLIÃ4ŒGst.RTCPFBType÷0
+QCELPÃ4ŒGst.RTPPayload÷0
+RRÃ4ŒGst.RTCPType÷0
+RTCPFBTypeÃ2ŒGst÷0
+RTCPPacketÃ2048ŒGst÷0
+RTCPSDESTypeÃ2ŒGst÷0
+RTCPTypeÃ2ŒGst÷0
+RTCP_MAX_BYE_SSRC_COUNTÃ8ŒGst÷0œint
+RTCP_MAX_RB_COUNTÃ8ŒGst÷0œint
+RTCP_MAX_SDESÃ8ŒGst÷0œint
+RTCP_MAX_SDES_ITEM_COUNTÃ8ŒGst÷0œint
+RTCP_VALID_MASKÃ8ŒGst÷0œint
+RTCP_VALID_VALUEÃ8ŒGst÷0œint
+RTCP_VERSIONÃ8ŒGst÷0œint
+RTPFBÃ4ŒGst.RTCPType÷0
+RTPFB_TYPE_NACKÃ4ŒGst.RTCPFBType÷0
+RTPPayloadÃ2ŒGst÷0
+RTPPayloadInfoÃ1ŒGst÷0
+RTP_PAYLOAD_1016_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_CELLB_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_CN_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_DVI4_11025_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_DVI4_16000_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_DVI4_22050_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_DVI4_8000_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_DYNAMIC_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G721_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G722_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G723_53Ã8ŒGst÷0œint
+RTP_PAYLOAD_G723_53_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G723_63Ã8ŒGst÷0œint
+RTP_PAYLOAD_G723_63_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G723_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G728_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_G729_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_GSM_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_H261_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_H263_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_JPEG_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_L16_MONO_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_L16_STEREO_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_LPC_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_MP2T_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_MPA_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_MPV_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_NV_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_PCMA_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_PCMU_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_QCELP_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_TS41Ã8ŒGst÷0œint
+RTP_PAYLOAD_TS41_STRINGÃ8ŒGst÷0
+RTP_PAYLOAD_TS48Ã8ŒGst÷0œint
+RTP_PAYLOAD_TS48_STRINGÃ8ŒGst÷0
+RTP_VERSIONÃ8ŒGst÷0œint
+SDESÃ4ŒGst.RTCPType÷0
+SRÃ4ŒGst.RTCPType÷0
+TOOLÃ4ŒGst.RTCPSDESType÷0
+abidataÃ8ŒGst.BaseRTPPayload÷0œvoid
+add_rbÃ128Õ(uint32 ssrc, uchar fractionlost, int32 packetslost, uint32 exthighestseq, uint32 jitter, uint32 lsr, uint32 dlsr)ŒGst.RTCPPacket÷0œpublic bool
+add_to_queueÃ128Õ(Gst.Buffer @in)ŒGst.BaseRTPDepayload÷0œpublic virtual Gst.FlowReturn
+base_tsÃ8ŒGst.BaseRTPAudioPayload÷0œGst.ClockTime
+bitrateÃ8ŒGst.RTPPayloadInfo÷0
+bufferÃ8ŒGst.RTCPPacket÷0œGst.Buffer
+buffer_listÃ8ŒGst.BaseRTPAudioPayload÷0œbool
+bye_add_ssrcÃ128Õ(uint32 ssrc)ŒGst.RTCPPacket÷0œpublic bool
+bye_add_ssrcsÃ128Õ(uint32 ssrc, uint len)ŒGst.RTCPPacket÷0œpublic bool
+bye_get_nth_ssrcÃ128Õ(uint nth)ŒGst.RTCPPacket÷0œpublic uint32
+bye_get_reasonÃ128Õ()ŒGst.RTCPPacket÷0œpublic unowned string
+bye_get_reason_lenÃ128Õ()ŒGst.RTCPPacket÷0œpublic uchar
+bye_get_ssrc_countÃ128Õ()ŒGst.RTCPPacket÷0
+bye_set_reasonÃ128Õ(string reason)ŒGst.RTCPPacket÷0œpublic bool
+clock_rateÃ8ŒGst.BaseRTPDepayload÷0
+clock_rateÃ8ŒGst.BaseRTPPayload÷0œuint32
+clock_rateÃ8ŒGst.RTPPayloadInfo÷0
+countÃ8ŒGst.RTCPPacket÷0œuchar
+current_ssrcÃ8ŒGst.BaseRTPPayload÷0
+encoding_nameÃ8ŒGst.BaseRTPPayload÷0
+encoding_nameÃ8ŒGst.RTPPayloadInfo÷0
+encoding_parametersÃ8ŒGst.RTPPayloadInfo÷0
+entry_offsetÃ8ŒGst.RTCPPacket÷0
+fb_get_media_ssrcÃ128Õ()ŒGst.RTCPPacket÷0œpublic uint32
+fb_get_sender_ssrcÃ128Õ()ŒGst.RTCPPacket÷0œpublic uint32
+fb_get_typeÃ128Õ()ŒGst.RTCPPacket÷0œpublic Gst.RTCPFBType
+fb_set_media_ssrcÃ128Õ(uint32 ssrc)ŒGst.RTCPPacket÷0œpublic void
+fb_set_sender_ssrcÃ128Õ(uint32 ssrc)ŒGst.RTCPPacket÷0œpublic void
+fb_set_typeÃ128Õ(Gst.RTCPFBType type)ŒGst.RTCPPacket÷0œpublic void
+flushÃ128Õ(uint payload_len, Gst.ClockTime timestamp)ŒGst.BaseRTPAudioPayload÷0œpublic Gst.FlowReturn
+for_nameÃ128Õ(string media, string encoding_name)ŒGst.RTPPayloadInfo÷0œpublic unowned
+for_ptÃ128Õ(uchar payload_type)ŒGst.RTPPayloadInfo÷0œpublic unowned
+frame_durationÃ8ŒGst.BaseRTPAudioPayload÷0œint
+frame_sizeÃ8ŒGst.BaseRTPAudioPayload÷0œint
+get_adapterÃ128Õ()ŒGst.BaseRTPAudioPayload÷0œpublic unowned
+get_capsÃ128Õ(Gst.Pad pad)ŒGst.BaseRTPPayload÷0œpublic virtual unowned
+get_countÃ128Õ()ŒGst.RTCPPacket÷0œpublic uchar
+get_lengthÃ128Õ()ŒGst.RTCPPacket÷0œpublic uint16
+get_paddingÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+get_rbÃ128Õ(uint nth, uint32 ssrc, uchar fractionlost, int32 packetslost, uint32 exthighestseq, uint32 jitter, uint32 lsr, uint32 dlsr)ŒGst.RTCPPacket÷0œpublic void
+get_rb_countÃ128Õ()ŒGst.RTCPPacket÷0
+handle_bufferÃ128Õ(Gst.Buffer buffer)ŒGst.BaseRTPPayload÷0œpublic virtual Gst.FlowReturn
+handle_eventÃ128Õ(Gst.Pad pad, Gst.Event event)ŒGst.BaseRTPPayload÷0œpublic virtual bool
+is_filledÃ128Õ(uint size, Gst.ClockTime duration)ŒGst.BaseRTPPayload÷0œpublic bool
+item_countÃ8ŒGst.RTCPPacket÷0
+item_offsetÃ8ŒGst.RTCPPacket÷0
+lengthÃ8ŒGst.RTCPPacket÷0œuint16
+max_ptimeÃ8ŒGst.BaseRTPPayload÷0œint64
+mediaÃ8ŒGst.BaseRTPPayload÷0
+mediaÃ8ŒGst.RTPPayloadInfo÷0
+min_ptimeÃ8ŒGst.BaseRTPPayload÷0œint64
+move_to_nextÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+mtuÃ8ŒGst.BaseRTPPayload÷0
+need_newsegmentÃ8ŒGst.BaseRTPDepayload÷0œbool
+offsetÃ8ŒGst.RTCPPacket÷0
+packet_lostÃ128Õ(Gst.Event event)ŒGst.BaseRTPDepayload÷0œpublic virtual bool
+paddingÃ8ŒGst.RTCPPacket÷0œbool
+payload_typeÃ8ŒGst.RTPPayloadInfo÷0œuchar
+perfect_rtptimeÃ8ŒGst.BaseRTPPayload÷0œbool
+processÃ128Õ(Gst.Buffer @in)ŒGst.BaseRTPDepayload÷0œpublic virtual unowned
+ptÃ8ŒGst.BaseRTPPayload÷0
+pushÃ128Õ(uchar data, uint payload_len, Gst.ClockTime timestamp)ŒGst.BaseRTPAudioPayload÷0œpublic Gst.FlowReturn
+pushÃ128Õ(Gst.Buffer out_buf)ŒGst.BaseRTPDepayload÷0œpublic Gst.FlowReturn
+pushÃ128Õ(Gst.Buffer buffer)ŒGst.BaseRTPPayload÷0œpublic Gst.FlowReturn
+push_listÃ128Õ(Gst.BufferList list)ŒGst.BaseRTPPayload÷0œpublic Gst.FlowReturn
+push_tsÃ128Õ(uint32 timestamp, Gst.Buffer out_buf)ŒGst.BaseRTPDepayload÷0œpublic Gst.FlowReturn
+queueÃ8ŒGst.BaseRTPDepayload÷0œGLib.Queue
+queue_delayÃ8ŒGst.BaseRTPDepayload÷0
+queuelockÃ8ŒGst.BaseRTPDepayload÷0œvoid
+removeÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+rr_get_ssrcÃ128Õ()ŒGst.RTCPPacket÷0œpublic uint32
+rr_set_ssrcÃ128Õ(uint32 ssrc)ŒGst.RTCPPacket÷0œpublic void
+rtcp_buffer_add_packetÃ128Õ(Gst.Buffer buffer, Gst.RTCPType type, ref Gst.RTCPPacket packet)ŒGst÷0œpublic bool
+rtcp_buffer_endÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic void
+rtcp_buffer_get_first_packetÃ128Õ(Gst.Buffer buffer, ref Gst.RTCPPacket packet)ŒGst÷0œpublic bool
+rtcp_buffer_get_packet_countÃ128Õ(Gst.Buffer buffer)ŒGst÷0
+rtcp_buffer_newÃ128Õ(uint mtu)ŒGst÷0œpublic unowned
+rtcp_buffer_new_copy_dataÃ128Õ(void* data, uint len)ŒGst÷0œpublic unowned
+rtcp_buffer_new_take_dataÃ128Õ(void* data, uint len)ŒGst÷0œpublic unowned
+rtcp_buffer_validateÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic bool
+rtcp_buffer_validate_dataÃ128Õ(uchar data, uint len)ŒGst÷0œpublic bool
+rtcp_ntp_to_unixÃ128Õ(uint64 ntptime)ŒGst÷0œpublic uint64
+rtcp_sdes_name_to_typeÃ128Õ(string name)ŒGst÷0œpublic Gst.RTCPSDESType
+rtcp_sdes_type_to_nameÃ128Õ(Gst.RTCPSDESType type)ŒGst÷0œpublic unowned string
+rtcp_unix_to_ntpÃ128Õ(uint64 unixtime)ŒGst÷0œpublic uint64
+rtp_buffer_allocate_dataÃ128Õ(Gst.Buffer buffer, uint payload_len, uchar pad_len, uchar csrc_count)ŒGst÷0œpublic void
+rtp_buffer_calc_header_lenÃ128Õ(uchar csrc_count)ŒGst÷0
+rtp_buffer_calc_packet_lenÃ128Õ(uint payload_len, uchar pad_len, uchar csrc_count)ŒGst÷0
+rtp_buffer_calc_payload_lenÃ128Õ(uint packet_len, uchar pad_len, uchar csrc_count)ŒGst÷0
+rtp_buffer_compare_seqnumÃ128Õ(uint16 seqnum1, uint16 seqnum2)ŒGst÷0œpublic int
+rtp_buffer_default_clock_rateÃ128Õ(uchar payload_type)ŒGst÷0œpublic uint32
+rtp_buffer_ext_timestampÃ128Õ(uint64 exttimestamp, uint32 timestamp)ŒGst÷0œpublic uint64
+rtp_buffer_get_csrcÃ128Õ(Gst.Buffer buffer, uchar idx)ŒGst÷0œpublic uint32
+rtp_buffer_get_csrc_countÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uchar
+rtp_buffer_get_extensionÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic bool
+rtp_buffer_get_extension_dataÃ128Õ(Gst.Buffer buffer, out uint16 bits, out void* data, out uint wordlen)ŒGst÷0œpublic bool
+rtp_buffer_get_header_lenÃ128Õ(Gst.Buffer buffer)ŒGst÷0
+rtp_buffer_get_markerÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic bool
+rtp_buffer_get_packet_lenÃ128Õ(Gst.Buffer buffer)ŒGst÷0
+rtp_buffer_get_paddingÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic bool
+rtp_buffer_get_payloadÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic void *
+rtp_buffer_get_payload_bufferÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic unowned
+rtp_buffer_get_payload_lenÃ128Õ(Gst.Buffer buffer)ŒGst÷0
+rtp_buffer_get_payload_subbufferÃ128Õ(Gst.Buffer buffer, uint offset, uint len)ŒGst÷0œpublic unowned
+rtp_buffer_get_payload_typeÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uchar
+rtp_buffer_get_seqÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uint16
+rtp_buffer_get_ssrcÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uint32
+rtp_buffer_get_timestampÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uint32
+rtp_buffer_get_versionÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic uchar
+rtp_buffer_list_get_payload_lenÃ128Õ(Gst.BufferList list)ŒGst÷0
+rtp_buffer_list_get_payload_typeÃ128Õ(Gst.BufferList list)ŒGst÷0œpublic uchar
+rtp_buffer_list_get_seqÃ128Õ(Gst.BufferList list)ŒGst÷0œpublic uint16
+rtp_buffer_list_get_ssrcÃ128Õ(Gst.BufferList list)ŒGst÷0œpublic uint32
+rtp_buffer_list_get_timestampÃ128Õ(Gst.BufferList list)ŒGst÷0œpublic uint32
+rtp_buffer_list_set_payload_typeÃ128Õ(Gst.BufferList list, uchar payload_type)ŒGst÷0œpublic void
+rtp_buffer_list_set_seqÃ128Õ(Gst.BufferList list, uint16 seq)ŒGst÷0œpublic uint16
+rtp_buffer_list_set_ssrcÃ128Õ(Gst.BufferList list, uint32 ssrc)ŒGst÷0œpublic void
+rtp_buffer_list_set_timestampÃ128Õ(Gst.BufferList list, uint32 timestamp)ŒGst÷0œpublic void
+rtp_buffer_list_validateÃ128Õ(Gst.BufferList list)ŒGst÷0œpublic bool
+rtp_buffer_new_allocateÃ128Õ(uint payload_len, uchar pad_len, uchar csrc_count)ŒGst÷0œpublic unowned
+rtp_buffer_new_allocate_lenÃ128Õ(uint packet_len, uchar pad_len, uchar csrc_count)ŒGst÷0œpublic unowned
+rtp_buffer_new_copy_dataÃ128Õ(void* data, uint len)ŒGst÷0œpublic unowned
+rtp_buffer_new_take_dataÃ128Õ(void* data, uint len)ŒGst÷0œpublic unowned
+rtp_buffer_pad_toÃ128Õ(Gst.Buffer buffer, uint len)ŒGst÷0œpublic void
+rtp_buffer_set_csrcÃ128Õ(Gst.Buffer buffer, uchar idx, uint32 csrc)ŒGst÷0œpublic void
+rtp_buffer_set_extensionÃ128Õ(Gst.Buffer buffer, bool extension)ŒGst÷0œpublic void
+rtp_buffer_set_extension_dataÃ128Õ(Gst.Buffer buffer, uint16 bits, uint16 length)ŒGst÷0œpublic bool
+rtp_buffer_set_markerÃ128Õ(Gst.Buffer buffer, bool marker)ŒGst÷0œpublic void
+rtp_buffer_set_packet_lenÃ128Õ(Gst.Buffer buffer, uint len)ŒGst÷0œpublic void
+rtp_buffer_set_paddingÃ128Õ(Gst.Buffer buffer, bool padding)ŒGst÷0œpublic void
+rtp_buffer_set_payload_typeÃ128Õ(Gst.Buffer buffer, uchar payload_type)ŒGst÷0œpublic void
+rtp_buffer_set_seqÃ128Õ(Gst.Buffer buffer, uint16 seq)ŒGst÷0œpublic void
+rtp_buffer_set_ssrcÃ128Õ(Gst.Buffer buffer, uint32 ssrc)ŒGst÷0œpublic void
+rtp_buffer_set_timestampÃ128Õ(Gst.Buffer buffer, uint32 timestamp)ŒGst÷0œpublic void
+rtp_buffer_set_versionÃ128Õ(Gst.Buffer buffer, uchar version)ŒGst÷0œpublic void
+rtp_buffer_validateÃ128Õ(Gst.Buffer buffer)ŒGst÷0œpublic bool
+rtp_buffer_validate_dataÃ128Õ(uchar data, uint len)ŒGst÷0œpublic bool
+sample_sizeÃ8ŒGst.BaseRTPAudioPayload÷0œint
+sdes_add_entryÃ128Õ(Gst.RTCPSDESType type, uchar len, uchar data)ŒGst.RTCPPacket÷0œpublic bool
+sdes_add_itemÃ128Õ(uint32 ssrc)ŒGst.RTCPPacket÷0œpublic bool
+sdes_copy_entryÃ128Õ(Gst.RTCPSDESType type, uchar len, uchar data)ŒGst.RTCPPacket÷0œpublic bool
+sdes_first_entryÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+sdes_first_itemÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+sdes_get_entryÃ128Õ(Gst.RTCPSDESType type, uchar len, uchar data)ŒGst.RTCPPacket÷0œpublic bool
+sdes_get_item_countÃ128Õ()ŒGst.RTCPPacket÷0
+sdes_get_ssrcÃ128Õ()ŒGst.RTCPPacket÷0œpublic uint32
+sdes_next_entryÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+sdes_next_itemÃ128Õ()ŒGst.RTCPPacket÷0œpublic bool
+segmentÃ8ŒGst.BaseRTPDepayload÷0œGst.Segment
+segmentÃ8ŒGst.BaseRTPPayload÷0œGst.Segment
+seq_randÃ8ŒGst.BaseRTPPayload÷0œGLib.Rand
+seqnumÃ8ŒGst.BaseRTPPayload÷0
+seqnum_baseÃ8ŒGst.BaseRTPPayload÷0œuint16
+seqnum_offsetÃ8ŒGst.BaseRTPPayload÷0œint
+set_capsÃ128Õ(Gst.Caps caps)ŒGst.BaseRTPDepayload÷0œpublic virtual bool
+set_capsÃ128Õ(Gst.Caps caps)ŒGst.BaseRTPPayload÷0œpublic virtual bool
+set_frame_basedÃ128Õ()ŒGst.BaseRTPAudioPayload÷0œpublic void
+set_frame_optionsÃ128Õ(int frame_duration, int frame_size)ŒGst.BaseRTPAudioPayload÷0œpublic void
+set_gst_timestampÃ128Õ(uint32 timestamp, Gst.Buffer buf)ŒGst.BaseRTPDepayload÷0œpublic virtual void
+set_optionsÃ128Õ(string media, bool @dynamic, string encoding_name, uint32 clock_rate)ŒGst.BaseRTPPayload÷0œpublic void
+set_outcapsÃ128Õ(string fieldname)ŒGst.BaseRTPPayload÷0œpublic bool
+set_rbÃ128Õ(uint nth, uint32 ssrc, uchar fractionlost, int32 packetslost, uint32 exthighestseq, uint32 jitter, uint32 lsr, uint32 dlsr)ŒGst.RTCPPacket÷0œpublic void
+set_sample_basedÃ128Õ()ŒGst.BaseRTPAudioPayload÷0œpublic void
+set_sample_optionsÃ128Õ(int sample_size)ŒGst.BaseRTPAudioPayload÷0œpublic void
+set_samplebits_optionsÃ128Õ(int sample_size)ŒGst.BaseRTPAudioPayload÷0œpublic void
+sinkpadÃ8ŒGst.BaseRTPDepayload÷0œGst.Pad
+sinkpadÃ8ŒGst.BaseRTPPayload÷0œGst.Pad
+sr_get_sender_infoÃ128Õ(uint32 ssrc, uint64 ntptime, uint32 rtptime, uint32 packet_count, uint32 octet_count)ŒGst.RTCPPacket÷0œpublic void
+sr_set_sender_infoÃ128Õ(uint32 ssrc, uint64 ntptime, uint32 rtptime, uint32 packet_count, uint32 octet_count)ŒGst.RTCPPacket÷0œpublic void
+srcpadÃ8ŒGst.BaseRTPDepayload÷0œGst.Pad
+srcpadÃ8ŒGst.BaseRTPPayload÷0œGst.Pad
+ssrcÃ8ŒGst.BaseRTPPayload÷0
+ssrc_randÃ8ŒGst.BaseRTPPayload÷0œGLib.Rand
+threadÃ8ŒGst.BaseRTPDepayload÷0œGLib.Thread
+thread_runningÃ8ŒGst.BaseRTPDepayload÷0œbool
+timestampÃ8ŒGst.BaseRTPPayload÷0
+timestamp_offsetÃ8ŒGst.BaseRTPPayload÷0
+ts_baseÃ8ŒGst.BaseRTPPayload÷0œuint32
+ts_offsetÃ8ŒGst.BaseRTPPayload÷0œint32
+ts_randÃ8ŒGst.BaseRTPPayload÷0œGLib.Rand
+typeÃ8ŒGst.RTCPPacket÷0œGst.RTCPType

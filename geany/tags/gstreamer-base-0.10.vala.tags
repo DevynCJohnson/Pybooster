@@ -1,0 +1,403 @@
+# format=tagmanager
+@asyncÌ8ÎGst.BaseSinkÖ0Ïbool
+@ownedÌ8ÎGst.ByteWriterÖ0Ïbool
+AdapterÌ1ÎGstÖ0
+AdapterÌ128Í()ÎGst.AdapterÖ0
+BaseSinkÌ1ÎGstÖ0
+BaseSinkÌ128Í()ÎGst.BaseSinkÖ0
+BaseSrcÌ1ÎGstÖ0
+BaseSrcÌ128Í()ÎGst.BaseSrcÖ0
+BaseSrc.seamless_segmentÌ128Í(Gst.BaseSrc src, int64 start, int64 stop, int64 position)ÎGst.BaseSrcÖ0
+BaseSrcFlagsÌ2ÎGstÖ0
+BaseTransformÌ1ÎGstÖ0
+BaseTransformÌ128Í()ÎGst.BaseTransformÖ0
+BitReaderÌ1ÎGstÖ0
+BitReaderÌ128Í(uchar data, uint size)ÎGst.BitReaderÖ0
+BitReader.from_bufferÌ128Í(Gst.Buffer buffer)ÎGst.BitReaderÖ0
+ByteReaderÌ1ÎGstÖ0
+ByteReaderÌ128Í(uchar data, uint size)ÎGst.ByteReaderÖ0
+ByteReader.from_bufferÌ128Í(Gst.Buffer buffer)ÎGst.ByteReaderÖ0
+ByteWriterÌ1ÎGstÖ0
+ByteWriterÌ128Í()ÎGst.ByteWriterÖ0
+ByteWriter.with_bufferÌ128Í(Gst.Buffer buffer, bool initialized)ÎGst.ByteWriterÖ0
+ByteWriter.with_dataÌ128Í(uchar data, uint size, bool initialized)ÎGst.ByteWriterÖ0
+ByteWriter.with_sizeÌ128Í(uint size, bool fixed)ÎGst.ByteWriterÖ0
+CollectDataÌ1ÎGstÖ0
+CollectDataDestroyNotifyÌ128Í()ÎGstÖ0Ïpublic delegate void
+CollectPadsÌ1ÎGstÖ0
+CollectPadsÌ128Í()ÎGst.CollectPadsÖ0
+CollectPadsClipFunctionÌ128Í(Gst.CollectPads pads, Gst.CollectData data, Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate unowned
+CollectPadsFunctionÌ128Í(Gst.CollectPads pads)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+DataQueueÌ1ÎGstÖ0
+DataQueueÌ128Í(Gst.DataQueueCheckFullFunction checkfull, void* checkdata)ÎGst.DataQueueÖ0
+DataQueue.new_with_callbacksÌ128Í(Gst.DataQueueCheckFullFunction checkfull, Gst.DataQueueFullCallback fullcallback, Gst.DataQueueEmptyCallback emptycallback, void* checkdata)ÎGst.DataQueueÖ0
+DataQueueCheckFullFunctionÌ128Í(Gst.DataQueue queue, uint visible, uint bytes, uint64 time, void* checkdata)ÎGstÖ0Ïpublic delegate bool
+DataQueueEmptyCallbackÌ128Í(Gst.DataQueue queue, void* checkdata)ÎGstÖ0Ïpublic delegate void
+DataQueueFullCallbackÌ128Í(Gst.DataQueue queue, void* checkdata)ÎGstÖ0Ïpublic delegate void
+DataQueueItemÌ1ÎGstÖ0
+DataQueueSizeÌ1ÎGstÖ0
+FLAG_LASTÌ4ÎGst.BaseSrcFlagsÖ0
+GstÌ256Ö0
+PushSrcÌ1ÎGstÖ0
+PushSrcÌ128Í()ÎGst.PushSrcÖ0
+SINK_NAMEÌ8ÎGst.BaseTransformÖ0
+SRC_NAMEÌ8ÎGst.BaseTransformÖ0
+STARTEDÌ4ÎGst.BaseSrcFlagsÖ0
+TypeFindHelperGetRangeFunctionÌ128Í(Gst.Object obj, uint64 offset, uint length, out unowned Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+activate_pullÌ128Í(bool active)ÎGst.BaseSinkÖ0Ïpublic virtual bool
+add_padÌ128Í(Gst.Pad pad, uint size)ÎGst.CollectPadsÖ0Ïpublic unowned
+add_pad_fullÌ128Í(Gst.Pad pad, uint size, Gst.CollectDataDestroyNotify destroy_notify)ÎGst.CollectPadsÖ0Ïpublic unowned
+alloc_sizeÌ8ÎGst.ByteWriterÖ0
+always_in_placeÌ8ÎGst.BaseTransformÖ0Ïbool
+async_playÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual Gst.StateChangeReturn
+availableÌ128Í()ÎGst.AdapterÖ0
+availableÌ128Í()ÎGst.CollectPadsÖ0
+available_fastÌ128Í()ÎGst.AdapterÖ0
+before_transformÌ128Í(Gst.Buffer buffer)ÎGst.BaseTransformÖ0Ïpublic virtual void
+bitÌ8ÎGst.BitReaderÖ0
+blocksizeÌ8ÎGst.BaseSinkÖ0
+blocksizeÌ8ÎGst.BaseSrcÖ0
+bufferÌ8ÎGst.CollectDataÖ0ÏGst.Buffer
+buffer_allocÌ128Í(uint64 offset, uint size, Gst.Caps caps, out unowned Gst.Buffer buf)ÎGst.BaseSinkÖ0Ïpublic virtual Gst.FlowReturn
+buffers_queuedÌ8ÎGst.BaseSinkÖ0Ïint
+byteÌ8ÎGst.BitReaderÖ0
+byteÌ8ÎGst.ByteReaderÖ0
+bytesÌ8ÎGst.DataQueueSizeÖ0
+cache_caps1Ì8ÎGst.BaseTransformÖ0ÏGst.Caps
+cache_caps1_sizeÌ8ÎGst.BaseTransformÖ0
+cache_caps2Ì8ÎGst.BaseTransformÖ0ÏGst.Caps
+cache_caps2_sizeÌ8ÎGst.BaseTransformÖ0
+can_activate_pullÌ8ÎGst.BaseSinkÖ0Ïbool
+can_activate_pushÌ8ÎGst.BaseSinkÖ0Ïbool
+can_activate_pushÌ8ÎGst.BaseSrcÖ0Ïbool
+check_get_rangeÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+checkdataÌ8ÎGst.DataQueueÖ0Ïvoid
+checkfullÌ8ÎGst.DataQueueÖ0ÏGst.DataQueueCheckFullFunction
+clearÌ128Í()ÎGst.AdapterÖ0Ïpublic void
+clock_idÌ8ÎGst.BaseSinkÖ0ÏGst.ClockID
+clock_idÌ8ÎGst.BaseSrcÖ0ÏGst.ClockID
+collectÌ8ÎGst.CollectDataÖ0ÏGst.CollectPads
+collectÌ128Í()ÎGst.CollectPadsÖ0Ïpublic Gst.FlowReturn
+collect_rangeÌ128Í(uint64 offset, uint length)ÎGst.CollectPadsÖ0Ïpublic Gst.FlowReturn
+condÌ8ÎGst.CollectPadsÖ0ÏGLib.Cond
+cookieÌ8ÎGst.CollectPadsÖ0Ïuint32
+copyÌ128Í(uchar dest, uint offset, uint size)ÎGst.AdapterÖ0Ïpublic void
+createÌ128Í(uint64 offset, uint size, out unowned Gst.Buffer buf)ÎGst.BaseSrcÖ0Ïpublic virtual Gst.FlowReturn
+createÌ128Í(out unowned Gst.Buffer buf)ÎGst.PushSrcÖ0Ïpublic virtual Gst.FlowReturn
+cur_levelÌ8ÎGst.DataQueueÖ0ÏGst.DataQueueSize
+current_level_bytesÌ8ÎGst.DataQueueÖ0
+current_level_timeÌ8ÎGst.DataQueueÖ0Ïuint64
+current_level_visibleÌ8ÎGst.DataQueueÖ0
+dataÌ8ÎGst.BaseSrcÖ0Ïvoid
+dataÌ8ÎGst.BitReaderÖ0Ïuchar
+dataÌ8ÎGst.ByteReaderÖ0Ïuchar
+dataÌ8ÎGst.CollectPadsÖ0ÏGLib.SList
+delay_configureÌ8ÎGst.BaseTransformÖ0Ïbool
+destroyÌ8ÎGst.DataQueueItemÖ0ÏGLib.DestroyNotify
+do_prerollÌ128Í(Gst.MiniObject obj)ÎGst.BaseSinkÖ0Ïpublic Gst.FlowReturn
+do_seekÌ128Í(Gst.Segment segment)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+do_timestampÌ8ÎGst.BaseSrcÖ0Ïbool
+drop_headÌ128Í(GLib.Type type)ÎGst.DataQueueÖ0Ïpublic bool
+dup_dataÌ128Í(uint size, uchar val)ÎGst.ByteReaderÖ0Ïpublic bool
+dup_string_utf16Ì128Í(uint16 str)ÎGst.ByteReaderÖ0Ïpublic bool
+dup_string_utf32Ì128Í(uint32 str)ÎGst.ByteReaderÖ0Ïpublic bool
+dup_string_utf8Ì128Í(string str)ÎGst.ByteReaderÖ0Ïpublic bool
+durationÌ8ÎGst.DataQueueItemÖ0Ïuint64
+emptyÌ128Í()ÎGst.DataQueueÖ0Ïpublic virtual signal void
+emptycallbackÌ8ÎGst.DataQueueÖ0ÏGst.DataQueueEmptyCallback
+end_timeÌ8ÎGst.BaseSinkÖ0ÏGst.ClockTime
+end_timeÌ8ÎGst.BaseSrcÖ0ÏGst.ClockTime
+ensure_free_spaceÌ128Í(uint size)ÎGst.ByteWriterÖ0Ïpublic bool
+eosÌ8ÎGst.BaseSinkÖ0Ïbool
+eos_queuedÌ8ÎGst.BaseSinkÖ0Ïbool
+eospadsÌ8ÎGst.CollectPadsÖ0
+eventÌ128Í(Gst.Event event)ÎGst.BaseSinkÖ0Ïpublic virtual bool
+eventÌ128Í(Gst.Event event)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+eventÌ128Í(Gst.Event event)ÎGst.BaseTransformÖ0Ïpublic virtual bool
+events_queuedÌ8ÎGst.BaseSinkÖ0Ïint
+fillÌ128Í(uchar value, uint size)ÎGst.ByteWriterÖ0Ïpublic bool
+fixateÌ128Í(Gst.Caps caps)ÎGst.BaseSinkÖ0Ïpublic virtual void
+fixateÌ128Í(Gst.Caps caps)ÎGst.BaseSrcÖ0Ïpublic virtual void
+fixate_capsÌ128Í(Gst.PadDirection direction, Gst.Caps caps, Gst.Caps othercaps)ÎGst.BaseTransformÖ0Ïpublic virtual void
+fixedÌ8ÎGst.ByteWriterÖ0Ïbool
+flushÌ128Í(uint flush)ÎGst.AdapterÖ0Ïpublic void
+flushÌ128Í(Gst.CollectData data, uint size)ÎGst.CollectPadsÖ0
+flushÌ128Í()ÎGst.DataQueueÖ0Ïpublic void
+flushingÌ8ÎGst.BaseSinkÖ0Ïbool
+flushingÌ8ÎGst.DataQueueÖ0Ïbool
+free_and_get_bufferÌ128Í()ÎGst.ByteWriterÖ0Ïpublic unowned
+free_and_get_dataÌ128Í()ÎGst.ByteWriterÖ0Ïpublic uchar
+fullÌ128Í()ÎGst.DataQueueÖ0Ïpublic virtual signal void
+fullcallbackÌ8ÎGst.DataQueueÖ0ÏGst.DataQueueFullCallback
+funcÌ8ÎGst.CollectPadsÖ0ÏGst.CollectPadsFunction
+get_bits_uint16Ì128Í(out uint16 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+get_bits_uint32Ì128Í(out uint32 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+get_bits_uint64Ì128Í(out uint64 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+get_bits_uint8Ì128Í(out uchar val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+get_blocksizeÌ128Í()ÎGst.BaseSinkÖ0
+get_blocksizeÌ128Í()ÎGst.BaseSrcÖ0
+get_capsÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual unowned
+get_capsÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual unowned
+get_dataÌ128Í(uint size, out uchar val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_do_timestampÌ128Í()ÎGst.BaseSrcÖ0Ïpublic bool
+get_float32_beÌ128Í(out float val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_float32_leÌ128Í(out float val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_float64_beÌ128Í(out double val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_float64_leÌ128Í(out double val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int16_beÌ128Í(out int16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int16_leÌ128Í(out int16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int24_beÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int24_leÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int32_beÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int32_leÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int64_beÌ128Í(out int64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int64_leÌ128Í(out int64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_int8Ì128Í(out char val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_last_bufferÌ128Í()ÎGst.BaseSinkÖ0Ïpublic unowned
+get_latencyÌ128Í()ÎGst.BaseSinkÖ0Ïpublic Gst.ClockTime
+get_levelÌ128Í(Gst.DataQueueSize level)ÎGst.DataQueueÖ0Ïpublic void
+get_max_latenessÌ128Í()ÎGst.BaseSinkÖ0Ïpublic int64
+get_posÌ128Í()ÎGst.BitReaderÖ0
+get_posÌ128Í()ÎGst.ByteReaderÖ0
+get_remainingÌ128Í()ÎGst.BitReaderÖ0
+get_remainingÌ128Í()ÎGst.ByteReaderÖ0
+get_remainingÌ128Í()ÎGst.ByteWriterÖ0
+get_render_delayÌ128Í()ÎGst.BaseSinkÖ0Ïpublic Gst.ClockTime
+get_sizeÌ128Í(uint64 size)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+get_sizeÌ128Í()ÎGst.BitReaderÖ0
+get_sizeÌ128Í()ÎGst.ByteReaderÖ0
+get_string_utf8Ì128Í(string str)ÎGst.ByteReaderÖ0Ïpublic bool
+get_syncÌ128Í()ÎGst.BaseSinkÖ0Ïpublic bool
+get_timesÌ128Í(Gst.Buffer buffer, out Gst.ClockTime start, out Gst.ClockTime end)ÎGst.BaseSinkÖ0Ïpublic virtual void
+get_timesÌ128Í(Gst.Buffer buffer, out Gst.ClockTime start, out Gst.ClockTime end)ÎGst.BaseSrcÖ0Ïpublic virtual void
+get_ts_offsetÌ128Í()ÎGst.BaseSinkÖ0Ïpublic Gst.ClockTimeDiff
+get_uint16_beÌ128Í(out uint16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint16_leÌ128Í(out uint16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint24_beÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint24_leÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint32_beÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint32_leÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint64_beÌ128Í(out uint64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint64_leÌ128Í(out uint64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_uint8Ì128Í(out uchar val)ÎGst.ByteReaderÖ0Ïpublic bool
+get_unit_sizeÌ128Í(Gst.Caps caps, out uint size)ÎGst.BaseTransformÖ0Ïpublic virtual bool
+have_newsegmentÌ8ÎGst.BaseSinkÖ0Ïbool
+have_newsegmentÌ8ÎGst.BaseTransformÖ0Ïbool
+have_prerollÌ8ÎGst.BaseSinkÖ0Ïbool
+have_same_capsÌ8ÎGst.BaseTransformÖ0Ïbool
+initÌ128Í(uchar data, uint size)ÎGst.BitReaderÖ0Ïpublic void
+initÌ128Í(uchar data, uint size)ÎGst.ByteReaderÖ0Ïpublic void
+initÌ128Í()ÎGst.ByteWriterÖ0Ïpublic void
+init_from_bufferÌ128Í(Gst.Buffer buffer)ÎGst.BitReaderÖ0Ïpublic void
+init_from_bufferÌ128Í(Gst.Buffer buffer)ÎGst.ByteReaderÖ0Ïpublic void
+init_with_bufferÌ128Í(Gst.Buffer buffer, bool initialized)ÎGst.ByteWriterÖ0Ïpublic void
+init_with_dataÌ128Í(uchar data, uint size, bool initialized)ÎGst.ByteWriterÖ0Ïpublic void
+init_with_sizeÌ128Í(uint size, bool fixed)ÎGst.ByteWriterÖ0Ïpublic void
+is_activeÌ128Í(Gst.Pad pad)ÎGst.CollectPadsÖ0Ïpublic bool
+is_async_enabledÌ128Í()ÎGst.BaseSinkÖ0Ïpublic bool
+is_emptyÌ128Í()ÎGst.DataQueueÖ0Ïpublic bool
+is_fullÌ128Í()ÎGst.DataQueueÖ0Ïpublic bool
+is_in_placeÌ128Í()ÎGst.BaseTransformÖ0Ïpublic bool
+is_liveÌ128Í()ÎGst.BaseSrcÖ0Ïpublic bool
+is_passthroughÌ128Í()ÎGst.BaseTransformÖ0Ïpublic bool
+is_qos_enabledÌ128Í()ÎGst.BaseSinkÖ0Ïpublic bool
+is_qos_enabledÌ128Í()ÎGst.BaseTransformÖ0Ïpublic bool
+is_seekableÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+item_addÌ8ÎGst.DataQueueÖ0ÏGLib.Cond
+item_delÌ8ÎGst.DataQueueÖ0ÏGLib.Cond
+last_bufferÌ8ÎGst.BaseSinkÖ0ÏGst.Buffer
+limits_changedÌ128Í()ÎGst.DataQueueÖ0Ïpublic void
+live_condÌ8ÎGst.BaseSrcÖ0ÏGLib.Cond
+live_lockÌ8ÎGst.BaseSrcÖ0ÏGLib.Mutex
+live_runningÌ8ÎGst.BaseSrcÖ0Ïbool
+masked_scan_uint32Ì128Í(uint32 mask, uint32 pattern, uint offset, uint size)ÎGst.AdapterÖ0
+masked_scan_uint32Ì128Í(uint32 mask, uint32 pattern, uint offset, uint size)ÎGst.ByteReaderÖ0
+max_latenessÌ8ÎGst.BaseSinkÖ0Ïint64
+need_newsegmentÌ8ÎGst.BaseSrcÖ0Ïbool
+need_prerollÌ8ÎGst.BaseSinkÖ0Ïbool
+negotiateÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+negotiatedÌ8ÎGst.BaseTransformÖ0Ïbool
+newsegmentÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+num_buffersÌ8ÎGst.BaseSrcÖ0Ïint
+num_buffers_leftÌ8ÎGst.BaseSrcÖ0Ïint
+numpadsÌ8ÎGst.CollectPadsÖ0
+objectÌ8ÎGst.DataQueueItemÖ0ÏGst.MiniObject
+offsetÌ8ÎGst.BaseSinkÖ0Ïuint64
+offsetÌ8ÎGst.BaseSrcÖ0Ïuint64
+padÌ8ÎGst.CollectDataÖ0ÏGst.Pad
+pad_modeÌ8ÎGst.BaseSinkÖ0ÏGst.ActivateMode
+pad_modeÌ8ÎGst.BaseSrcÖ0ÏGst.ActivateMode
+passthroughÌ8ÎGst.BaseTransformÖ0Ïbool
+peekÌ128Í(uint size)ÎGst.AdapterÖ0Ïpublic unowned
+peekÌ128Í(Gst.CollectData data)ÎGst.CollectPadsÖ0Ïpublic unowned
+peek_bits_uint16Ì128Í(out uint16 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+peek_bits_uint32Ì128Í(out uint32 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+peek_bits_uint64Ì128Í(out uint64 val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+peek_bits_uint8Ì128Í(out uchar val, uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+peek_dataÌ128Í(uint size, out uchar val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_float32_beÌ128Í(out float val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_float32_leÌ128Í(out float val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_float64_beÌ128Í(out double val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_float64_leÌ128Í(out double val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int16_beÌ128Í(out int16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int16_leÌ128Í(out int16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int24_beÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int24_leÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int32_beÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int32_leÌ128Í(out int32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int64_beÌ128Í(out int64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int64_leÌ128Í(out int64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_int8Ì128Í(out char val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_string_utf8Ì128Í(string str)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint16_beÌ128Í(out uint16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint16_leÌ128Í(out uint16 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint24_beÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint24_leÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint32_beÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint32_leÌ128Í(out uint32 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint64_beÌ128Í(out uint64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint64_leÌ128Í(out uint64 val)ÎGst.ByteReaderÖ0Ïpublic bool
+peek_uint8Ì128Í(out uchar val)ÎGst.ByteReaderÖ0Ïpublic bool
+pending_configureÌ8ÎGst.BaseTransformÖ0Ïbool
+playing_asyncÌ8ÎGst.BaseSinkÖ0Ïbool
+popÌ128Í(Gst.CollectData data)ÎGst.CollectPadsÖ0Ïpublic unowned
+popÌ128Í(out unowned Gst.DataQueueItem item)ÎGst.DataQueueÖ0Ïpublic bool
+posÌ8ÎGst.CollectDataÖ0
+prepare_output_bufferÌ128Í(Gst.Buffer input, int size, Gst.Caps caps, out unowned Gst.Buffer buf)ÎGst.BaseTransformÖ0Ïpublic virtual Gst.FlowReturn
+prepare_seek_segmentÌ128Í(Gst.Event seek, Gst.Segment segment)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+prerollÌ128Í(Gst.Buffer buffer)ÎGst.BaseSinkÖ0Ïpublic virtual Gst.FlowReturn
+preroll_queueÌ8ÎGst.BaseSinkÖ0ÏGLib.Queue
+preroll_queue_lenÌ8ÎGst.BaseSinkÖ0
+preroll_queue_max_lenÌ8ÎGst.BaseSinkÖ0Ïint
+preroll_queuedÌ8ÎGst.BaseSinkÖ0Ïint
+prev_timestampÌ128Í(uint64 distance)ÎGst.AdapterÖ0Ïpublic Gst.ClockTime
+pushÌ128Í(owned Gst.Buffer buf)ÎGst.AdapterÖ0Ïpublic void
+pushÌ128Í(Gst.DataQueueItem item)ÎGst.DataQueueÖ0Ïpublic bool
+put_dataÌ128Í(uchar data, uint size)ÎGst.ByteWriterÖ0Ïpublic bool
+put_float32_beÌ128Í(float val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_float32_leÌ128Í(float val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_float64_beÌ128Í(double val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_float64_leÌ128Í(double val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int16_beÌ128Í(int16 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int16_leÌ128Í(int16 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int24_beÌ128Í(int32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int24_leÌ128Í(int32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int32_beÌ128Í(int32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int32_leÌ128Í(int32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int64_beÌ128Í(int64 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int64_leÌ128Í(int64 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_int8Ì128Í(char val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_string_utf16Ì128Í(uint16 data)ÎGst.ByteWriterÖ0Ïpublic bool
+put_string_utf32Ì128Í(uint32 data)ÎGst.ByteWriterÖ0Ïpublic bool
+put_string_utf8Ì128Í(string data)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint16_beÌ128Í(uint16 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint16_leÌ128Í(uint16 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint24_beÌ128Í(uint32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint24_leÌ128Í(uint32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint32_beÌ128Í(uint32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint32_leÌ128Í(uint32 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint64_beÌ128Í(uint64 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint64_leÌ128Í(uint64 val)ÎGst.ByteWriterÖ0Ïpublic bool
+put_uint8Ì128Í(uchar val)ÎGst.ByteWriterÖ0Ïpublic bool
+qlockÌ8ÎGst.DataQueueÖ0ÏGLib.Mutex
+qosÌ8ÎGst.BaseSinkÖ0Ïbool
+qosÌ8ÎGst.BaseTransformÖ0Ïbool
+queryÌ128Í(Gst.Query query)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+query_latencyÌ128Í(bool live, bool upstream_live, out Gst.ClockTime min_latency, out Gst.ClockTime max_latency)ÎGst.BaseSinkÖ0Ïpublic bool
+query_latencyÌ128Í(bool live, out Gst.ClockTime min_latency, out Gst.ClockTime max_latency)ÎGst.BaseSrcÖ0Ïpublic bool
+queueÌ8ÎGst.DataQueueÖ0ÏGLib.Queue
+queuedpadsÌ8ÎGst.CollectPadsÖ0
+random_accessÌ8ÎGst.BaseSrcÖ0Ïbool
+readÌ128Í(Gst.CollectData data, uchar bytes, uint size)ÎGst.CollectPadsÖ0
+read_bufferÌ128Í(Gst.CollectData data, uint size)ÎGst.CollectPadsÖ0Ïpublic unowned
+reconfigureÌ128Í()ÎGst.BaseTransformÖ0Ïpublic void
+remove_padÌ128Í(Gst.Pad pad)ÎGst.CollectPadsÖ0Ïpublic bool
+renderÌ128Í(Gst.Buffer buffer)ÎGst.BaseSinkÖ0Ïpublic virtual Gst.FlowReturn
+render_delayÌ8ÎGst.BaseSinkÖ0Ïuint64
+render_listÌ128Í(Gst.BufferList buffer_list)ÎGst.BaseSinkÖ0Ïpublic virtual Gst.FlowReturn
+resetÌ128Í()ÎGst.ByteWriterÖ0Ïpublic void
+reset_and_get_bufferÌ128Í()ÎGst.ByteWriterÖ0Ïpublic unowned
+reset_and_get_dataÌ128Í()ÎGst.ByteWriterÖ0Ïpublic uchar
+seekableÌ8ÎGst.BaseSrcÖ0Ïbool
+segmentÌ8ÎGst.BaseSinkÖ0ÏGst.Segment
+segmentÌ8ÎGst.BaseSrcÖ0ÏGst.Segment
+segmentÌ8ÎGst.BaseTransformÖ0ÏGst.Segment
+segmentÌ8ÎGst.CollectDataÖ0ÏGst.Segment
+set_async_enabledÌ128Í(bool enabled)ÎGst.BaseSinkÖ0Ïpublic void
+set_blocksizeÌ128Í(uint blocksize)ÎGst.BaseSinkÖ0Ïpublic void
+set_blocksizeÌ128Í(ulong blocksize)ÎGst.BaseSrcÖ0Ïpublic void
+set_capsÌ128Í(Gst.Caps caps)ÎGst.BaseSinkÖ0Ïpublic virtual bool
+set_capsÌ128Í(Gst.Caps caps)ÎGst.BaseSrcÖ0Ïpublic virtual bool
+set_capsÌ128Í(Gst.Caps incaps, Gst.Caps outcaps)ÎGst.BaseTransformÖ0Ïpublic virtual bool
+set_clip_functionÌ128Í(Gst.CollectPadsClipFunction clipfunc)ÎGst.CollectPadsÖ0Ïpublic void
+set_do_timestampÌ128Í(bool timestamp)ÎGst.BaseSrcÖ0Ïpublic void
+set_flushingÌ128Í(bool flushing)ÎGst.CollectPadsÖ0Ïpublic void
+set_flushingÌ128Í(bool flushing)ÎGst.DataQueueÖ0Ïpublic void
+set_formatÌ128Í(Gst.Format format)ÎGst.BaseSrcÖ0Ïpublic void
+set_functionÌ128Í(Gst.CollectPadsFunction func)ÎGst.CollectPadsÖ0Ïpublic void
+set_gap_awareÌ128Í(bool gap_aware)ÎGst.BaseTransformÖ0Ïpublic void
+set_in_placeÌ128Í(bool in_place)ÎGst.BaseTransformÖ0Ïpublic void
+set_liveÌ128Í(bool live)ÎGst.BaseSrcÖ0Ïpublic void
+set_max_latenessÌ128Í(int64 max_lateness)ÎGst.BaseSinkÖ0Ïpublic void
+set_passthroughÌ128Í(bool passthrough)ÎGst.BaseTransformÖ0Ïpublic void
+set_posÌ128Í(uint pos)ÎGst.BitReaderÖ0Ïpublic bool
+set_posÌ128Í(uint pos)ÎGst.ByteReaderÖ0Ïpublic bool
+set_qos_enabledÌ128Í(bool enabled)ÎGst.BaseSinkÖ0Ïpublic void
+set_qos_enabledÌ128Í(bool enabled)ÎGst.BaseTransformÖ0Ïpublic void
+set_render_delayÌ128Í(Gst.ClockTime delay)ÎGst.BaseSinkÖ0Ïpublic void
+set_syncÌ128Í(bool sync)ÎGst.BaseSinkÖ0Ïpublic void
+set_ts_offsetÌ128Í(Gst.ClockTimeDiff offset)ÎGst.BaseSinkÖ0Ïpublic void
+sinkpadÌ8ÎGst.BaseSinkÖ0ÏGst.Pad
+sinkpadÌ8ÎGst.BaseTransformÖ0ÏGst.Pad
+sizeÌ8ÎGst.BaseSrcÖ0Ïuint64
+sizeÌ8ÎGst.BitReaderÖ0
+sizeÌ8ÎGst.ByteReaderÖ0
+sizeÌ8ÎGst.DataQueueItemÖ0
+skipÌ128Í(uint nbits)ÎGst.BitReaderÖ0Ïpublic bool
+skipÌ128Í(uint nbytes)ÎGst.ByteReaderÖ0Ïpublic bool
+skip_string_utf16Ì128Í()ÎGst.ByteReaderÖ0Ïpublic bool
+skip_string_utf32Ì128Í()ÎGst.ByteReaderÖ0Ïpublic bool
+skip_string_utf8Ì128Í()ÎGst.ByteReaderÖ0Ïpublic bool
+skip_to_byteÌ128Í()ÎGst.BitReaderÖ0Ïpublic bool
+src_eventÌ128Í(Gst.Event event)ÎGst.BaseTransformÖ0Ïpublic virtual bool
+srcpadÌ8ÎGst.BaseSrcÖ0ÏGst.Pad
+srcpadÌ8ÎGst.BaseTransformÖ0ÏGst.Pad
+startÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual bool
+startÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+startÌ128Í()ÎGst.BaseTransformÖ0Ïpublic virtual bool
+startÌ128Í()ÎGst.CollectPadsÖ0Ïpublic void
+startedÌ8ÎGst.CollectPadsÖ0Ïbool
+stopÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual bool
+stopÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+stopÌ128Í()ÎGst.BaseTransformÖ0Ïpublic virtual bool
+stopÌ128Í()ÎGst.CollectPadsÖ0Ïpublic void
+suggestÌ128Í(Gst.Caps caps, uint size)ÎGst.BaseTransformÖ0Ïpublic void
+syncÌ8ÎGst.BaseSinkÖ0Ïbool
+takeÌ128Í(uint nbytes)ÎGst.AdapterÖ0Ïpublic uchar
+take_bufferÌ128Í(uint nbytes)ÎGst.AdapterÖ0Ïpublic Gst.Buffer
+take_bufferÌ128Í(Gst.CollectData data, uint size)ÎGst.CollectPadsÖ0Ïpublic Gst.Buffer
+timeÌ8ÎGst.DataQueueSizeÖ0Ïuint64
+transformÌ128Í(Gst.Buffer inbuf, Gst.Buffer outbuf)ÎGst.BaseTransformÖ0Ïpublic virtual Gst.FlowReturn
+transform_capsÌ128Í(Gst.PadDirection direction, Gst.Caps caps)ÎGst.BaseTransformÖ0Ïpublic virtual Gst.Caps
+transform_ipÌ128Í(Gst.Buffer buf)ÎGst.BaseTransformÖ0Ïpublic virtual Gst.FlowReturn
+transform_lockÌ8ÎGst.BaseTransformÖ0ÏGLib.Mutex
+transform_sizeÌ128Í(Gst.PadDirection direction, Gst.Caps caps, uint size, Gst.Caps othercaps, out uint othersize)ÎGst.BaseTransformÖ0Ïpublic virtual bool
+ts_offsetÌ8ÎGst.BaseSinkÖ0Ïint64
+type_find_helperÌ128Í(Gst.Pad src, uint64 size)ÎGstÖ0Ïpublic unowned
+type_find_helper_for_bufferÌ128Í(Gst.Object obj, Gst.Buffer buf, Gst.TypeFindProbability prob)ÎGstÖ0Ïpublic unowned
+type_find_helper_for_extensionÌ128Í(Gst.Object obj, string extension)ÎGstÖ0Ïpublic Gst.Caps
+type_find_helper_get_rangeÌ128Í(Gst.Object obj, Gst.TypeFindHelperGetRangeFunction func, uint64 size, Gst.TypeFindProbability prob)ÎGstÖ0Ïpublic unowned
+type_find_helper_get_range_extÌ128Í(Gst.Object obj, Gst.TypeFindHelperGetRangeFunction func, uint64 size, string extension, Gst.TypeFindProbability prob)ÎGstÖ0Ïpublic unowned
+typefindÌ8ÎGst.BaseSrcÖ0Ïbool
+unlockÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual bool
+unlockÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+unlock_stopÌ128Í()ÎGst.BaseSinkÖ0Ïpublic virtual bool
+unlock_stopÌ128Í()ÎGst.BaseSrcÖ0Ïpublic virtual bool
+update_qosÌ128Í(double proportion, Gst.ClockTimeDiff diff, Gst.ClockTime timestamp)ÎGst.BaseTransformÖ0Ïpublic void
+user_dataÌ8ÎGst.CollectPadsÖ0Ïvoid
+visibleÌ8ÎGst.DataQueueItemÖ0Ïbool
+visibleÌ8ÎGst.DataQueueSizeÖ0
+wait_clockÌ128Í(Gst.ClockTime time, out Gst.ClockTimeDiff jitter)ÎGst.BaseSinkÖ0Ïpublic Gst.ClockReturn
+wait_eosÌ128Í(Gst.ClockTime time, out Gst.ClockTimeDiff jitter)ÎGst.BaseSinkÖ0Ïpublic Gst.FlowReturn
+wait_playingÌ128Í()ÎGst.BaseSrcÖ0Ïpublic Gst.FlowReturn
+wait_prerollÌ128Í()ÎGst.BaseSinkÖ0Ïpublic Gst.FlowReturn

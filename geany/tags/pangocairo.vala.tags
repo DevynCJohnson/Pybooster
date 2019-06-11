@@ -1,0 +1,33 @@
+# format=tagmanager
+@newÃ128Õ()ŒPango.CairoFontMap÷0œpublic unowned
+CairoFontÃ32ŒPango÷0
+CairoFontMapÃ32ŒPango÷0
+CairoShapeRendererFuncÃ128Õ(Cairo.Context cr, Pango.AttrShape attr, bool do_path)ŒPango÷0œpublic delegate void
+PangoÃ256÷0
+cairo_context_get_font_optionsÃ128Õ(Pango.Context context)ŒPango÷0œpublic unowned
+cairo_context_get_resolutionÃ128Õ(Pango.Context context)ŒPango÷0œpublic double
+cairo_context_get_shape_rendererÃ128Õ(Pango.Context context)ŒPango÷0œpublic unowned
+cairo_context_set_font_optionsÃ128Õ(Pango.Context context, Cairo.FontOptions options)ŒPango÷0œpublic void
+cairo_context_set_resolutionÃ128Õ(Pango.Context context, double dpi)ŒPango÷0œpublic void
+cairo_context_set_shape_rendererÃ128Õ(Pango.Context context, owned Pango.CairoShapeRendererFunc func)ŒPango÷0œpublic void
+cairo_create_contextÃ128Õ(Cairo.Context cr)ŒPango÷0œpublic Pango.Context
+cairo_create_layoutÃ128Õ(Cairo.Context cr)ŒPango÷0œpublic Pango.Layout
+cairo_error_underline_pathÃ128Õ(Cairo.Context cr, double x, double y, double width, double height)ŒPango÷0œpublic void
+cairo_glyph_string_pathÃ128Õ(Cairo.Context cr, Pango.Font font, Pango.GlyphString glyphs)ŒPango÷0œpublic void
+cairo_layout_line_pathÃ128Õ(Cairo.Context cr, Pango.LayoutLine line)ŒPango÷0œpublic void
+cairo_layout_pathÃ128Õ(Cairo.Context cr, Pango.Layout layout)ŒPango÷0œpublic void
+cairo_show_error_underlineÃ128Õ(Cairo.Context cr, double x, double y, double width, double height)ŒPango÷0œpublic void
+cairo_show_glyph_itemÃ128Õ(Cairo.Context cr, string text, Pango.GlyphItem glyph_item)ŒPango÷0œpublic void
+cairo_show_glyph_stringÃ128Õ(Cairo.Context cr, Pango.Font font, Pango.GlyphString glyphs)ŒPango÷0œpublic void
+cairo_show_layoutÃ128Õ(Cairo.Context cr, Pango.Layout layout)ŒPango÷0œpublic void
+cairo_show_layout_lineÃ128Õ(Cairo.Context cr, Pango.LayoutLine line)ŒPango÷0œpublic void
+cairo_update_contextÃ128Õ(Cairo.Context cr, Pango.Context context)ŒPango÷0œpublic void
+cairo_update_layoutÃ128Õ(Cairo.Context cr, Pango.Layout layout)ŒPango÷0œpublic void
+create_contextÃ128Õ()ŒPango.CairoFontMap÷0œpublic unowned
+get_defaultÃ128Õ()ŒPango.CairoFontMap÷0œpublic unowned
+get_font_typeÃ128Õ()ŒPango.CairoFontMap÷0œpublic Cairo.FontType
+get_resolutionÃ128Õ()ŒPango.CairoFontMap÷0œpublic double
+get_scaled_fontÃ128Õ()ŒPango.CairoFont÷0œpublic unowned
+new_for_font_typeÃ128Õ(Cairo.FontType fonttype)ŒPango.CairoFontMap÷0œpublic unowned
+set_defaultÃ128Õ()ŒPango.CairoFontMap÷0œpublic void
+set_resolutionÃ128Õ(double dpi)ŒPango.CairoFontMap÷0œpublic void

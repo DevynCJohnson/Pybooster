@@ -1,0 +1,1010 @@
+# format=tagmanager
+CARET_EVENÃ65536÷0
+CARET_JUMPSÃ65536÷0
+CARET_SLOPÃ65536÷0
+CARET_STRICTÃ65536÷0
+EDGE_BACKGROUNDÃ65536÷0
+EDGE_LINEÃ65536÷0
+EDGE_NONEÃ65536÷0
+GTK_IS_SCINTILLAÃ131072Õ(obj)÷0
+GTK_IS_SCINTILLA_CLASSÃ131072Õ(klass)÷0
+GTK_SCINTILLAÃ131072Õ(obj)÷0
+GTK_SCINTILLA_CLASSÃ131072Õ(klass)÷0
+GTK_TYPE_SCINTILLAÃ65536÷0
+GtkScintillaÃ4096÷0œ_GtkScintilla
+GtkScintillaClassÃ4096÷0œ_GtkScintillaClass
+INDIC0_MASKÃ65536÷0
+INDIC1_MASKÃ65536÷0
+INDIC2_MASKÃ65536÷0
+INDICS_MASKÃ65536÷0
+INDIC_DIAGONALÃ65536÷0
+INDIC_MAXÃ65536÷0
+INDIC_PLAINÃ65536÷0
+INDIC_SQUIGGLEÃ65536÷0
+INDIC_STRIKEÃ65536÷0
+INDIC_TTÃ65536÷0
+INVALID_POSITIONÃ65536÷0
+MARKER_MAXÃ65536÷0
+SCEN_CHANGEÃ65536÷0
+SCEN_KILLFOCUSÃ65536÷0
+SCEN_SETFOCUSÃ65536÷0
+SCE_ADA_CHARACTERÃ65536÷0
+SCE_ADA_CHARACTEREOLÃ65536÷0
+SCE_ADA_COMMENTLINEÃ65536÷0
+SCE_ADA_DEFAULTÃ65536÷0
+SCE_ADA_DELIMITERÃ65536÷0
+SCE_ADA_IDENTIFIERÃ65536÷0
+SCE_ADA_ILLEGALÃ65536÷0
+SCE_ADA_LABELÃ65536÷0
+SCE_ADA_NUMBERÃ65536÷0
+SCE_ADA_STRINGÃ65536÷0
+SCE_ADA_STRINGEOLÃ65536÷0
+SCE_ADA_WORDÃ65536÷0
+SCE_ASM_COMMENTÃ65536÷0
+SCE_ASM_CPUINSTRUCTIONÃ65536÷0
+SCE_ASM_DEFAULTÃ65536÷0
+SCE_ASM_DIRECTIVEÃ65536÷0
+SCE_ASM_DIRECTIVEOPERANDÃ65536÷0
+SCE_ASM_IDENTIFIERÃ65536÷0
+SCE_ASM_MATHINSTRUCTIONÃ65536÷0
+SCE_ASM_NUMBERÃ65536÷0
+SCE_ASM_OPERATORÃ65536÷0
+SCE_ASM_REGISTERÃ65536÷0
+SCE_ASM_STRINGÃ65536÷0
+SCE_AVE_COMMENTÃ65536÷0
+SCE_AVE_DEFAULTÃ65536÷0
+SCE_AVE_ENUMÃ65536÷0
+SCE_AVE_IDENTIFIERÃ65536÷0
+SCE_AVE_NUMBERÃ65536÷0
+SCE_AVE_OPERATORÃ65536÷0
+SCE_AVE_STRINGÃ65536÷0
+SCE_AVE_STRINGEOLÃ65536÷0
+SCE_AVE_WORDÃ65536÷0
+SCE_AVE_WORD1Ã65536÷0
+SCE_AVE_WORD2Ã65536÷0
+SCE_AVE_WORD3Ã65536÷0
+SCE_AVE_WORD4Ã65536÷0
+SCE_AVE_WORD5Ã65536÷0
+SCE_AVE_WORD6Ã65536÷0
+SCE_BAAN_COMMENTÃ65536÷0
+SCE_BAAN_COMMENTDOCÃ65536÷0
+SCE_BAAN_DEFAULTÃ65536÷0
+SCE_BAAN_IDENTIFIERÃ65536÷0
+SCE_BAAN_NUMBERÃ65536÷0
+SCE_BAAN_OPERATORÃ65536÷0
+SCE_BAAN_PREPROCESSORÃ65536÷0
+SCE_BAAN_STRINGÃ65536÷0
+SCE_BAAN_STRINGEOLÃ65536÷0
+SCE_BAAN_WORDÃ65536÷0
+SCE_BAAN_WORD2Ã65536÷0
+SCE_BAT_COMMANDÃ65536÷0
+SCE_BAT_COMMENTÃ65536÷0
+SCE_BAT_DEFAULTÃ65536÷0
+SCE_BAT_HIDEÃ65536÷0
+SCE_BAT_IDENTIFIERÃ65536÷0
+SCE_BAT_LABELÃ65536÷0
+SCE_BAT_OPERATORÃ65536÷0
+SCE_BAT_WORDÃ65536÷0
+SCE_B_COMMENTÃ65536÷0
+SCE_B_DATEÃ65536÷0
+SCE_B_DEFAULTÃ65536÷0
+SCE_B_IDENTIFIERÃ65536÷0
+SCE_B_KEYWORDÃ65536÷0
+SCE_B_NUMBERÃ65536÷0
+SCE_B_OPERATORÃ65536÷0
+SCE_B_PREPROCESSORÃ65536÷0
+SCE_B_STRINGÃ65536÷0
+SCE_CONF_COMMENTÃ65536÷0
+SCE_CONF_DEFAULTÃ65536÷0
+SCE_CONF_DIRECTIVEÃ65536÷0
+SCE_CONF_EXTENSIONÃ65536÷0
+SCE_CONF_IDENTIFIERÃ65536÷0
+SCE_CONF_IPÃ65536÷0
+SCE_CONF_NUMBERÃ65536÷0
+SCE_CONF_OPERATORÃ65536÷0
+SCE_CONF_PARAMETERÃ65536÷0
+SCE_CONF_STRINGÃ65536÷0
+SCE_CSS_CLASSÃ65536÷0
+SCE_CSS_COMMENTÃ65536÷0
+SCE_CSS_DEFAULTÃ65536÷0
+SCE_CSS_DIRECTIVEÃ65536÷0
+SCE_CSS_DOUBLESTRINGÃ65536÷0
+SCE_CSS_IDÃ65536÷0
+SCE_CSS_IDENTIFIERÃ65536÷0
+SCE_CSS_IMPORTANTÃ65536÷0
+SCE_CSS_OPERATORÃ65536÷0
+SCE_CSS_PSEUDOCLASSÃ65536÷0
+SCE_CSS_SINGLESTRINGÃ65536÷0
+SCE_CSS_TAGÃ65536÷0
+SCE_CSS_UNKNOWN_IDENTIFIERÃ65536÷0
+SCE_CSS_UNKNOWN_PSEUDOCLASSÃ65536÷0
+SCE_CSS_VALUEÃ65536÷0
+SCE_C_CHARACTERÃ65536÷0
+SCE_C_COMMENTÃ65536÷0
+SCE_C_COMMENTDOCÃ65536÷0
+SCE_C_COMMENTDOCKEYWORDÃ65536÷0
+SCE_C_COMMENTDOCKEYWORDERRORÃ65536÷0
+SCE_C_COMMENTLINEÃ65536÷0
+SCE_C_COMMENTLINEDOCÃ65536÷0
+SCE_C_DEFAULTÃ65536÷0
+SCE_C_IDENTIFIERÃ65536÷0
+SCE_C_NUMBERÃ65536÷0
+SCE_C_OPERATORÃ65536÷0
+SCE_C_PREPROCESSORÃ65536÷0
+SCE_C_REGEXÃ65536÷0
+SCE_C_STRINGÃ65536÷0
+SCE_C_STRINGEOLÃ65536÷0
+SCE_C_UUIDÃ65536÷0
+SCE_C_VERBATIMÃ65536÷0
+SCE_C_WORDÃ65536÷0
+SCE_C_WORD2Ã65536÷0
+SCE_DIFF_ADDEDÃ65536÷0
+SCE_DIFF_COMMANDÃ65536÷0
+SCE_DIFF_COMMENTÃ65536÷0
+SCE_DIFF_DEFAULTÃ65536÷0
+SCE_DIFF_DELETEDÃ65536÷0
+SCE_DIFF_HEADERÃ65536÷0
+SCE_DIFF_POSITIONÃ65536÷0
+SCE_EIFFEL_CHARACTERÃ65536÷0
+SCE_EIFFEL_COMMENTLINEÃ65536÷0
+SCE_EIFFEL_DEFAULTÃ65536÷0
+SCE_EIFFEL_IDENTIFIERÃ65536÷0
+SCE_EIFFEL_NUMBERÃ65536÷0
+SCE_EIFFEL_OPERATORÃ65536÷0
+SCE_EIFFEL_STRINGÃ65536÷0
+SCE_EIFFEL_STRINGEOLÃ65536÷0
+SCE_EIFFEL_WORDÃ65536÷0
+SCE_ERR_BORLANDÃ65536÷0
+SCE_ERR_CMDÃ65536÷0
+SCE_ERR_CTAGÃ65536÷0
+SCE_ERR_DEFAULTÃ65536÷0
+SCE_ERR_DIFF_ADDITIONÃ65536÷0
+SCE_ERR_DIFF_CHANGEDÃ65536÷0
+SCE_ERR_DIFF_DELETIONÃ65536÷0
+SCE_ERR_DIFF_MESSAGEÃ65536÷0
+SCE_ERR_ELFÃ65536÷0
+SCE_ERR_GCCÃ65536÷0
+SCE_ERR_IFCÃ65536÷0
+SCE_ERR_LUAÃ65536÷0
+SCE_ERR_MSÃ65536÷0
+SCE_ERR_NETÃ65536÷0
+SCE_ERR_PERLÃ65536÷0
+SCE_ERR_PHPÃ65536÷0
+SCE_ERR_PYTHONÃ65536÷0
+SCE_F_COMMENTÃ65536÷0
+SCE_F_CONTINUATIONÃ65536÷0
+SCE_F_DEFAULTÃ65536÷0
+SCE_F_IDENTIFIERÃ65536÷0
+SCE_F_LABELÃ65536÷0
+SCE_F_NUMBERÃ65536÷0
+SCE_F_OPERATORÃ65536÷0
+SCE_F_OPERATOR2Ã65536÷0
+SCE_F_PREPROCESSORÃ65536÷0
+SCE_F_STRING1Ã65536÷0
+SCE_F_STRING2Ã65536÷0
+SCE_F_STRINGEOLÃ65536÷0
+SCE_F_WORDÃ65536÷0
+SCE_F_WORD2Ã65536÷0
+SCE_F_WORD3Ã65536÷0
+SCE_HBA_COMMENTLINEÃ65536÷0
+SCE_HBA_DEFAULTÃ65536÷0
+SCE_HBA_IDENTIFIERÃ65536÷0
+SCE_HBA_NUMBERÃ65536÷0
+SCE_HBA_STARTÃ65536÷0
+SCE_HBA_STRINGÃ65536÷0
+SCE_HBA_STRINGEOLÃ65536÷0
+SCE_HBA_WORDÃ65536÷0
+SCE_HB_COMMENTLINEÃ65536÷0
+SCE_HB_DEFAULTÃ65536÷0
+SCE_HB_IDENTIFIERÃ65536÷0
+SCE_HB_NUMBERÃ65536÷0
+SCE_HB_STARTÃ65536÷0
+SCE_HB_STRINGÃ65536÷0
+SCE_HB_STRINGEOLÃ65536÷0
+SCE_HB_WORDÃ65536÷0
+SCE_HJA_COMMENTÃ65536÷0
+SCE_HJA_COMMENTDOCÃ65536÷0
+SCE_HJA_COMMENTLINEÃ65536÷0
+SCE_HJA_DEFAULTÃ65536÷0
+SCE_HJA_DOUBLESTRINGÃ65536÷0
+SCE_HJA_KEYWORDÃ65536÷0
+SCE_HJA_NUMBERÃ65536÷0
+SCE_HJA_REGEXÃ65536÷0
+SCE_HJA_SINGLESTRINGÃ65536÷0
+SCE_HJA_STARTÃ65536÷0
+SCE_HJA_STRINGEOLÃ65536÷0
+SCE_HJA_SYMBOLSÃ65536÷0
+SCE_HJA_WORDÃ65536÷0
+SCE_HJ_COMMENTÃ65536÷0
+SCE_HJ_COMMENTDOCÃ65536÷0
+SCE_HJ_COMMENTLINEÃ65536÷0
+SCE_HJ_DEFAULTÃ65536÷0
+SCE_HJ_DOUBLESTRINGÃ65536÷0
+SCE_HJ_KEYWORDÃ65536÷0
+SCE_HJ_NUMBERÃ65536÷0
+SCE_HJ_REGEXÃ65536÷0
+SCE_HJ_SINGLESTRINGÃ65536÷0
+SCE_HJ_STARTÃ65536÷0
+SCE_HJ_STRINGEOLÃ65536÷0
+SCE_HJ_SYMBOLSÃ65536÷0
+SCE_HJ_WORDÃ65536÷0
+SCE_HPA_CHARACTERÃ65536÷0
+SCE_HPA_CLASSNAMEÃ65536÷0
+SCE_HPA_COMMENTLINEÃ65536÷0
+SCE_HPA_DEFAULTÃ65536÷0
+SCE_HPA_DEFNAMEÃ65536÷0
+SCE_HPA_IDENTIFIERÃ65536÷0
+SCE_HPA_NUMBERÃ65536÷0
+SCE_HPA_OPERATORÃ65536÷0
+SCE_HPA_STARTÃ65536÷0
+SCE_HPA_STRINGÃ65536÷0
+SCE_HPA_TRIPLEÃ65536÷0
+SCE_HPA_TRIPLEDOUBLEÃ65536÷0
+SCE_HPA_WORDÃ65536÷0
+SCE_HPHP_COMMENTÃ65536÷0
+SCE_HPHP_COMMENTLINEÃ65536÷0
+SCE_HPHP_DEFAULTÃ65536÷0
+SCE_HPHP_HSTRINGÃ65536÷0
+SCE_HPHP_HSTRING_VARIABLEÃ65536÷0
+SCE_HPHP_NUMBERÃ65536÷0
+SCE_HPHP_OPERATORÃ65536÷0
+SCE_HPHP_SIMPLESTRINGÃ65536÷0
+SCE_HPHP_VARIABLEÃ65536÷0
+SCE_HPHP_WORDÃ65536÷0
+SCE_HP_CHARACTERÃ65536÷0
+SCE_HP_CLASSNAMEÃ65536÷0
+SCE_HP_COMMENTLINEÃ65536÷0
+SCE_HP_DEFAULTÃ65536÷0
+SCE_HP_DEFNAMEÃ65536÷0
+SCE_HP_IDENTIFIERÃ65536÷0
+SCE_HP_NUMBERÃ65536÷0
+SCE_HP_OPERATORÃ65536÷0
+SCE_HP_STARTÃ65536÷0
+SCE_HP_STRINGÃ65536÷0
+SCE_HP_TRIPLEÃ65536÷0
+SCE_HP_TRIPLEDOUBLEÃ65536÷0
+SCE_HP_WORDÃ65536÷0
+SCE_H_ASPÃ65536÷0
+SCE_H_ASPATÃ65536÷0
+SCE_H_ATTRIBUTEÃ65536÷0
+SCE_H_ATTRIBUTEUNKNOWNÃ65536÷0
+SCE_H_CDATAÃ65536÷0
+SCE_H_COMMENTÃ65536÷0
+SCE_H_DEFAULTÃ65536÷0
+SCE_H_DOUBLESTRINGÃ65536÷0
+SCE_H_ENTITYÃ65536÷0
+SCE_H_NUMBERÃ65536÷0
+SCE_H_OTHERÃ65536÷0
+SCE_H_QUESTIONÃ65536÷0
+SCE_H_SCRIPTÃ65536÷0
+SCE_H_SGML_1ST_PARAMÃ65536÷0
+SCE_H_SGML_1ST_PARAM_COMMENTÃ65536÷0
+SCE_H_SGML_BLOCK_DEFAULTÃ65536÷0
+SCE_H_SGML_COMMANDÃ65536÷0
+SCE_H_SGML_COMMENTÃ65536÷0
+SCE_H_SGML_DEFAULTÃ65536÷0
+SCE_H_SGML_DOUBLESTRINGÃ65536÷0
+SCE_H_SGML_ENTITYÃ65536÷0
+SCE_H_SGML_ERRORÃ65536÷0
+SCE_H_SGML_SIMPLESTRINGÃ65536÷0
+SCE_H_SGML_SPECIALÃ65536÷0
+SCE_H_SINGLESTRINGÃ65536÷0
+SCE_H_TAGÃ65536÷0
+SCE_H_TAGENDÃ65536÷0
+SCE_H_TAGUNKNOWNÃ65536÷0
+SCE_H_VALUEÃ65536÷0
+SCE_H_XCCOMMENTÃ65536÷0
+SCE_H_XMLENDÃ65536÷0
+SCE_H_XMLSTARTÃ65536÷0
+SCE_LISP_COMMENTÃ65536÷0
+SCE_LISP_DEFAULTÃ65536÷0
+SCE_LISP_IDENTIFIERÃ65536÷0
+SCE_LISP_KEYWORDÃ65536÷0
+SCE_LISP_NUMBERÃ65536÷0
+SCE_LISP_OPERATORÃ65536÷0
+SCE_LISP_STRINGÃ65536÷0
+SCE_LISP_STRINGEOLÃ65536÷0
+SCE_LUA_CHARACTERÃ65536÷0
+SCE_LUA_COMMENTÃ65536÷0
+SCE_LUA_COMMENTDOCÃ65536÷0
+SCE_LUA_COMMENTLINEÃ65536÷0
+SCE_LUA_DEFAULTÃ65536÷0
+SCE_LUA_IDENTIFIERÃ65536÷0
+SCE_LUA_LITERALSTRINGÃ65536÷0
+SCE_LUA_NUMBERÃ65536÷0
+SCE_LUA_OPERATORÃ65536÷0
+SCE_LUA_PREPROCESSORÃ65536÷0
+SCE_LUA_STRINGÃ65536÷0
+SCE_LUA_STRINGEOLÃ65536÷0
+SCE_LUA_WORDÃ65536÷0
+SCE_LUA_WORD2Ã65536÷0
+SCE_LUA_WORD3Ã65536÷0
+SCE_LUA_WORD4Ã65536÷0
+SCE_LUA_WORD5Ã65536÷0
+SCE_LUA_WORD6Ã65536÷0
+SCE_L_COMMANDÃ65536÷0
+SCE_L_COMMENTÃ65536÷0
+SCE_L_DEFAULTÃ65536÷0
+SCE_L_MATHÃ65536÷0
+SCE_L_TAGÃ65536÷0
+SCE_MAKE_COMMENTÃ65536÷0
+SCE_MAKE_DEFAULTÃ65536÷0
+SCE_MAKE_IDENTIFIERÃ65536÷0
+SCE_MAKE_IDEOLÃ65536÷0
+SCE_MAKE_OPERATORÃ65536÷0
+SCE_MAKE_PREPROCESSORÃ65536÷0
+SCE_MAKE_TARGETÃ65536÷0
+SCE_MATLAB_COMMANDÃ65536÷0
+SCE_MATLAB_COMMENTÃ65536÷0
+SCE_MATLAB_DEFAULTÃ65536÷0
+SCE_MATLAB_IDENTIFIERÃ65536÷0
+SCE_MATLAB_KEYWORDÃ65536÷0
+SCE_MATLAB_NUMBERÃ65536÷0
+SCE_MATLAB_OPERATORÃ65536÷0
+SCE_MATLAB_STRINGÃ65536÷0
+SCE_NNCRONTAB_ASTERISKÃ65536÷0
+SCE_NNCRONTAB_COMMENTÃ65536÷0
+SCE_NNCRONTAB_DEFAULTÃ65536÷0
+SCE_NNCRONTAB_ENVIRONMENTÃ65536÷0
+SCE_NNCRONTAB_IDENTIFIERÃ65536÷0
+SCE_NNCRONTAB_KEYWORDÃ65536÷0
+SCE_NNCRONTAB_MODIFIERÃ65536÷0
+SCE_NNCRONTAB_NUMBERÃ65536÷0
+SCE_NNCRONTAB_SECTIONÃ65536÷0
+SCE_NNCRONTAB_STRINGÃ65536÷0
+SCE_NNCRONTAB_TASKÃ65536÷0
+SCE_PL_ARRAYÃ65536÷0
+SCE_PL_BACKTICKSÃ65536÷0
+SCE_PL_CHARACTERÃ65536÷0
+SCE_PL_COMMENTLINEÃ65536÷0
+SCE_PL_DATASECTIONÃ65536÷0
+SCE_PL_DEFAULTÃ65536÷0
+SCE_PL_ERRORÃ65536÷0
+SCE_PL_HASHÃ65536÷0
+SCE_PL_HERE_DELIMÃ65536÷0
+SCE_PL_HERE_QÃ65536÷0
+SCE_PL_HERE_QQÃ65536÷0
+SCE_PL_HERE_QXÃ65536÷0
+SCE_PL_IDENTIFIERÃ65536÷0
+SCE_PL_LONGQUOTEÃ65536÷0
+SCE_PL_NUMBERÃ65536÷0
+SCE_PL_OPERATORÃ65536÷0
+SCE_PL_PODÃ65536÷0
+SCE_PL_PREPROCESSORÃ65536÷0
+SCE_PL_PUNCTUATIONÃ65536÷0
+SCE_PL_REGEXÃ65536÷0
+SCE_PL_REGSUBSTÃ65536÷0
+SCE_PL_SCALARÃ65536÷0
+SCE_PL_STRINGÃ65536÷0
+SCE_PL_STRING_QÃ65536÷0
+SCE_PL_STRING_QQÃ65536÷0
+SCE_PL_STRING_QRÃ65536÷0
+SCE_PL_STRING_QWÃ65536÷0
+SCE_PL_STRING_QXÃ65536÷0
+SCE_PL_SYMBOLTABLEÃ65536÷0
+SCE_PL_WORDÃ65536÷0
+SCE_POV_BRACEÃ65536÷0
+SCE_POV_COMMENTÃ65536÷0
+SCE_POV_COMMENTDOCÃ65536÷0
+SCE_POV_COMMENTLINEÃ65536÷0
+SCE_POV_DEFAULTÃ65536÷0
+SCE_POV_IDENTIFIERÃ65536÷0
+SCE_POV_NUMBERÃ65536÷0
+SCE_POV_OPERATORÃ65536÷0
+SCE_POV_STRINGÃ65536÷0
+SCE_POV_WORDÃ65536÷0
+SCE_POV_WORD2Ã65536÷0
+SCE_PROPS_ASSIGNMENTÃ65536÷0
+SCE_PROPS_COMMENTÃ65536÷0
+SCE_PROPS_DEFAULTÃ65536÷0
+SCE_PROPS_DEFVALÃ65536÷0
+SCE_PROPS_SECTIONÃ65536÷0
+SCE_P_CHARACTERÃ65536÷0
+SCE_P_CLASSNAMEÃ65536÷0
+SCE_P_COMMENTBLOCKÃ65536÷0
+SCE_P_COMMENTLINEÃ65536÷0
+SCE_P_DEFAULTÃ65536÷0
+SCE_P_DEFNAMEÃ65536÷0
+SCE_P_IDENTIFIERÃ65536÷0
+SCE_P_NUMBERÃ65536÷0
+SCE_P_OPERATORÃ65536÷0
+SCE_P_STRINGÃ65536÷0
+SCE_P_STRINGEOLÃ65536÷0
+SCE_P_TRIPLEÃ65536÷0
+SCE_P_TRIPLEDOUBLEÃ65536÷0
+SCE_P_WORDÃ65536÷0
+SCE_SCRIPTOL_CHARACTERÃ65536÷0
+SCE_SCRIPTOL_COMMENTÃ65536÷0
+SCE_SCRIPTOL_COMMENTBASICÃ65536÷0
+SCE_SCRIPTOL_COMMENTDOCÃ65536÷0
+SCE_SCRIPTOL_COMMENTDOCKEYWORDÃ65536÷0
+SCE_SCRIPTOL_COMMENTDOCKEYWORDERRORÃ65536÷0
+SCE_SCRIPTOL_COMMENTLINEÃ65536÷0
+SCE_SCRIPTOL_COMMENTLINEDOCÃ65536÷0
+SCE_SCRIPTOL_DEFAULTÃ65536÷0
+SCE_SCRIPTOL_IDENTIFIERÃ65536÷0
+SCE_SCRIPTOL_NUMBERÃ65536÷0
+SCE_SCRIPTOL_OPERATORÃ65536÷0
+SCE_SCRIPTOL_PREPROCESSORÃ65536÷0
+SCE_SCRIPTOL_REGEXÃ65536÷0
+SCE_SCRIPTOL_STRINGÃ65536÷0
+SCE_SCRIPTOL_STRINGEOLÃ65536÷0
+SCE_SCRIPTOL_UUIDÃ65536÷0
+SCE_SCRIPTOL_VERBATIMÃ65536÷0
+SCE_SCRIPTOL_WORDÃ65536÷0
+SCE_SCRIPTOL_WORD2Ã65536÷0
+SCFIND_MATCHCASEÃ65536÷0
+SCFIND_POSIXÃ65536÷0
+SCFIND_REGEXPÃ65536÷0
+SCFIND_WHOLEWORDÃ65536÷0
+SCFIND_WORDSTARTÃ65536÷0
+SCI_LEXER_STARTÃ65536÷0
+SCI_OPTIONAL_STARTÃ65536÷0
+SCI_STARTÃ65536÷0
+SCK_ADDÃ65536÷0
+SCK_BACKÃ65536÷0
+SCK_DELETEÃ65536÷0
+SCK_DIVIDEÃ65536÷0
+SCK_DOWNÃ65536÷0
+SCK_ENDÃ65536÷0
+SCK_ESCAPEÃ65536÷0
+SCK_HOMEÃ65536÷0
+SCK_INSERTÃ65536÷0
+SCK_LEFTÃ65536÷0
+SCK_NEXTÃ65536÷0
+SCK_PRIORÃ65536÷0
+SCK_RETURNÃ65536÷0
+SCK_RIGHTÃ65536÷0
+SCK_SUBTRACTÃ65536÷0
+SCK_TABÃ65536÷0
+SCK_UPÃ65536÷0
+SCLEX_ADAÃ65536÷0
+SCLEX_ASMÃ65536÷0
+SCLEX_ASPÃ65536÷0
+SCLEX_AUTOMATICÃ65536÷0
+SCLEX_AVEÃ65536÷0
+SCLEX_BAANÃ65536÷0
+SCLEX_BATCHÃ65536÷0
+SCLEX_BULLANTÃ65536÷0
+SCLEX_CONFÃ65536÷0
+SCLEX_CONTAINERÃ65536÷0
+SCLEX_CPPÃ65536÷0
+SCLEX_CPPNOCASEÃ65536÷0
+SCLEX_CSSÃ65536÷0
+SCLEX_DIFFÃ65536÷0
+SCLEX_EIFFELÃ65536÷0
+SCLEX_EIFFELKWÃ65536÷0
+SCLEX_ERRORLISTÃ65536÷0
+SCLEX_F77Ã65536÷0
+SCLEX_FORTRANÃ65536÷0
+SCLEX_HTMLÃ65536÷0
+SCLEX_LATEXÃ65536÷0
+SCLEX_LISPÃ65536÷0
+SCLEX_LUAÃ65536÷0
+SCLEX_MAKEFILEÃ65536÷0
+SCLEX_MATLABÃ65536÷0
+SCLEX_NNCRONTABÃ65536÷0
+SCLEX_NULLÃ65536÷0
+SCLEX_PASCALÃ65536÷0
+SCLEX_PERLÃ65536÷0
+SCLEX_PHPÃ65536÷0
+SCLEX_POVÃ65536÷0
+SCLEX_PROPERTIESÃ65536÷0
+SCLEX_PYTHONÃ65536÷0
+SCLEX_RUBYÃ65536÷0
+SCLEX_SCRIPTOLÃ65536÷0
+SCLEX_SQLÃ65536÷0
+SCLEX_TCLÃ65536÷0
+SCLEX_VBÃ65536÷0
+SCLEX_VBSCRIPTÃ65536÷0
+SCLEX_XCODEÃ65536÷0
+SCLEX_XMLÃ65536÷0
+SCMOD_ALTÃ65536÷0
+SCMOD_CTRLÃ65536÷0
+SCMOD_SHIFTÃ65536÷0
+SCWS_INVISIBLEÃ65536÷0
+SCWS_VISIBLEAFTERINDENTÃ65536÷0
+SCWS_VISIBLEALWAYSÃ65536÷0
+SC_CACHE_CARETÃ65536÷0
+SC_CACHE_DOCUMENTÃ65536÷0
+SC_CACHE_NONEÃ65536÷0
+SC_CACHE_PAGEÃ65536÷0
+SC_CASE_LOWERÃ65536÷0
+SC_CASE_MIXEDÃ65536÷0
+SC_CASE_UPPERÃ65536÷0
+SC_CHARSET_ANSIÃ65536÷0
+SC_CHARSET_ARABICÃ65536÷0
+SC_CHARSET_BALTICÃ65536÷0
+SC_CHARSET_CHINESEBIG5Ã65536÷0
+SC_CHARSET_DEFAULTÃ65536÷0
+SC_CHARSET_EASTEUROPEÃ65536÷0
+SC_CHARSET_GB2312Ã65536÷0
+SC_CHARSET_GREEKÃ65536÷0
+SC_CHARSET_HANGULÃ65536÷0
+SC_CHARSET_HEBREWÃ65536÷0
+SC_CHARSET_JOHABÃ65536÷0
+SC_CHARSET_MACÃ65536÷0
+SC_CHARSET_OEMÃ65536÷0
+SC_CHARSET_RUSSIANÃ65536÷0
+SC_CHARSET_SHIFTJISÃ65536÷0
+SC_CHARSET_SYMBOLÃ65536÷0
+SC_CHARSET_THAIÃ65536÷0
+SC_CHARSET_TURKISHÃ65536÷0
+SC_CHARSET_VIETNAMESEÃ65536÷0
+SC_CP_DBCSÃ65536÷0
+SC_CP_UTF8Ã65536÷0
+SC_CURSORNORMALÃ65536÷0
+SC_CURSORWAITÃ65536÷0
+SC_EOL_CRÃ65536÷0
+SC_EOL_CRLFÃ65536÷0
+SC_EOL_LFÃ65536÷0
+SC_FOLDFLAG_BOXÃ65536÷0
+SC_FOLDFLAG_LEVELNUMBERSÃ65536÷0
+SC_FOLDFLAG_LINEAFTER_CONTRACTEDÃ65536÷0
+SC_FOLDFLAG_LINEAFTER_EXPANDEDÃ65536÷0
+SC_FOLDFLAG_LINEBEFORE_CONTRACTEDÃ65536÷0
+SC_FOLDFLAG_LINEBEFORE_EXPANDEDÃ65536÷0
+SC_FOLDLEVELBASEÃ65536÷0
+SC_FOLDLEVELBOXFOOTERFLAGÃ65536÷0
+SC_FOLDLEVELBOXHEADERFLAGÃ65536÷0
+SC_FOLDLEVELCONTRACTEDÃ65536÷0
+SC_FOLDLEVELHEADERFLAGÃ65536÷0
+SC_FOLDLEVELNUMBERMASKÃ65536÷0
+SC_FOLDLEVELUNINDENTÃ65536÷0
+SC_FOLDLEVELWHITEFLAGÃ65536÷0
+SC_LASTSTEPINUNDOREDOÃ65536÷0
+SC_MARGIN_NUMBERÃ65536÷0
+SC_MARGIN_SYMBOLÃ65536÷0
+SC_MARKNUM_FOLDERÃ65536÷0
+SC_MARKNUM_FOLDERENDÃ65536÷0
+SC_MARKNUM_FOLDERMIDTAILÃ65536÷0
+SC_MARKNUM_FOLDEROPENÃ65536÷0
+SC_MARKNUM_FOLDEROPENMIDÃ65536÷0
+SC_MARKNUM_FOLDERSUBÃ65536÷0
+SC_MARKNUM_FOLDERTAILÃ65536÷0
+SC_MARK_ARROWÃ65536÷0
+SC_MARK_ARROWDOWNÃ65536÷0
+SC_MARK_ARROWSÃ65536÷0
+SC_MARK_BACKGROUNDÃ65536÷0
+SC_MARK_BOXMINUSÃ65536÷0
+SC_MARK_BOXMINUSCONNECTEDÃ65536÷0
+SC_MARK_BOXPLUSÃ65536÷0
+SC_MARK_BOXPLUSCONNECTEDÃ65536÷0
+SC_MARK_CHARACTERÃ65536÷0
+SC_MARK_CIRCLEÃ65536÷0
+SC_MARK_CIRCLEMINUSÃ65536÷0
+SC_MARK_CIRCLEMINUSCONNECTEDÃ65536÷0
+SC_MARK_CIRCLEPLUSÃ65536÷0
+SC_MARK_CIRCLEPLUSCONNECTEDÃ65536÷0
+SC_MARK_DOTDOTDOTÃ65536÷0
+SC_MARK_EMPTYÃ65536÷0
+SC_MARK_LCORNERÃ65536÷0
+SC_MARK_LCORNERCURVEÃ65536÷0
+SC_MARK_MINUSÃ65536÷0
+SC_MARK_PIXMAPÃ65536÷0
+SC_MARK_PLUSÃ65536÷0
+SC_MARK_ROUNDRECTÃ65536÷0
+SC_MARK_SHORTARROWÃ65536÷0
+SC_MARK_SMALLRECTÃ65536÷0
+SC_MARK_TCORNERÃ65536÷0
+SC_MARK_TCORNERCURVEÃ65536÷0
+SC_MARK_VLINEÃ65536÷0
+SC_MASK_FOLDERSÃ65536÷0
+SC_MODEVENTMASKALLÃ65536÷0
+SC_MOD_BEFOREDELETEÃ65536÷0
+SC_MOD_BEFOREINSERTÃ65536÷0
+SC_MOD_CHANGEFOLDÃ65536÷0
+SC_MOD_CHANGEMARKERÃ65536÷0
+SC_MOD_CHANGESTYLEÃ65536÷0
+SC_MOD_DELETETEXTÃ65536÷0
+SC_MOD_INSERTTEXTÃ65536÷0
+SC_PERFORMED_REDOÃ65536÷0
+SC_PERFORMED_UNDOÃ65536÷0
+SC_PERFORMED_USERÃ65536÷0
+SC_PRINT_BLACKONWHITEÃ65536÷0
+SC_PRINT_COLOURONWHITEÃ65536÷0
+SC_PRINT_COLOURONWHITEDEFAULTBGÃ65536÷0
+SC_PRINT_INVERTLIGHTÃ65536÷0
+SC_PRINT_NORMALÃ65536÷0
+SC_TIME_FOREVERÃ65536÷0
+SC_WRAP_NONEÃ65536÷0
+SC_WRAP_WORDÃ65536÷0
+STYLE_BRACEBADÃ65536÷0
+STYLE_BRACELIGHTÃ65536÷0
+STYLE_CONTROLCHARÃ65536÷0
+STYLE_DEFAULTÃ65536÷0
+STYLE_INDENTGUIDEÃ65536÷0
+STYLE_LASTPREDEFINEDÃ65536÷0
+STYLE_LINENUMBERÃ65536÷0
+STYLE_MAXÃ65536÷0
+VISIBLE_SLOPÃ65536÷0
+VISIBLE_STRICTÃ65536÷0
+_GtkScintillaÃ2048÷0
+_GtkScintillaClassÃ2048÷0
+__GTK_SCINTILLA_H__Ã65536÷0
+accel_groupÃ64Œ_GtkScintilla÷0œGtkAccelGroup
+char_addedÃ1024Õ(GtkWidget *w, gint ch)Œ_GtkScintillaClass÷0œvoid
+double_clickÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+dwell_endÃ1024Õ(GtkWidget *w, gint position)Œ_GtkScintillaClass÷0œvoid
+dwell_startÃ1024Õ(GtkWidget *w, gint position)Œ_GtkScintillaClass÷0œvoid
+gtk_scintilla_add_ref_documentÃ1024Õ(GtkScintilla *sci, int doc)÷0œvoid
+gtk_scintilla_add_textÃ1024Õ(GtkScintilla *sci, int length, const gchar * text)÷0œvoid
+gtk_scintilla_append_textÃ1024Õ(GtkScintilla *sci, int length, const gchar * text)÷0œvoid
+gtk_scintilla_autoc_activeÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_cancelÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_autoc_completeÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_autoc_get_auto_hideÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_get_cancel_at_startÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_get_choose_singleÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_get_drop_rest_of_wordÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_get_ignore_caseÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_autoc_get_separatorÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_autoc_get_type_separatorÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_autoc_pos_startÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_autoc_selectÃ1024Õ(GtkScintilla *sci, const gchar * text)÷0œvoid
+gtk_scintilla_autoc_set_auto_hideÃ1024Õ(GtkScintilla *sci, gint auto_hide)÷0œvoid
+gtk_scintilla_autoc_set_cancel_at_startÃ1024Õ(GtkScintilla *sci, gint cancel)÷0œvoid
+gtk_scintilla_autoc_set_choose_singleÃ1024Õ(GtkScintilla *sci, gint choose_single)÷0œvoid
+gtk_scintilla_autoc_set_drop_rest_of_wordÃ1024Õ(GtkScintilla *sci, gint drop_rest_of_word)÷0œvoid
+gtk_scintilla_autoc_set_fill_upsÃ1024Õ(GtkScintilla *sci, const gchar * character_set)÷0œvoid
+gtk_scintilla_autoc_set_ignore_caseÃ1024Õ(GtkScintilla *sci, gint ignore_case)÷0œvoid
+gtk_scintilla_autoc_set_separatorÃ1024Õ(GtkScintilla *sci, int separator_character)÷0œvoid
+gtk_scintilla_autoc_set_type_separatorÃ1024Õ(GtkScintilla *sci, int separator_character)÷0œvoid
+gtk_scintilla_autoc_showÃ1024Õ(GtkScintilla *sci, int len_entered, const gchar * item_list)÷0œvoid
+gtk_scintilla_autoc_stopsÃ1024Õ(GtkScintilla *sci, const gchar * character_set)÷0œvoid
+gtk_scintilla_back_tabÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_begin_undo_actionÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_brace_bad_lightÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_brace_highlightÃ1024Õ(GtkScintilla *sci, glong pos1, glong pos2)÷0œvoid
+gtk_scintilla_brace_matchÃ1024Õ(GtkScintilla *sci, glong pos)÷0œglong
+gtk_scintilla_call_tip_activeÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_call_tip_cancelÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_call_tip_pos_startÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_call_tip_set_backÃ1024Õ(GtkScintilla *sci, glong back)÷0œvoid
+gtk_scintilla_call_tip_set_foreÃ1024Õ(GtkScintilla *sci, glong fore)÷0œvoid
+gtk_scintilla_call_tip_set_fore_hltÃ1024Õ(GtkScintilla *sci, glong fore)÷0œvoid
+gtk_scintilla_call_tip_set_hltÃ1024Õ(GtkScintilla *sci, int start, int end)÷0œvoid
+gtk_scintilla_call_tip_showÃ1024Õ(GtkScintilla *sci, glong pos, const gchar * definition)÷0œvoid
+gtk_scintilla_can_pasteÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_can_redoÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_can_undoÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_cancelÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_char_leftÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_char_left_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_char_rightÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_char_right_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_choose_caret_xÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_clearÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_clear_allÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_clear_all_cmd_keysÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_clear_document_styleÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_clear_registered_imagesÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_colouriseÃ1024Õ(GtkScintilla *sci, glong start, glong end)÷0œvoid
+gtk_scintilla_convert_eolsÃ1024Õ(GtkScintilla *sci, int eol_mode)÷0œvoid
+gtk_scintilla_copyÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_create_documentÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_cutÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_del_line_leftÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_del_line_rightÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_del_word_leftÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_del_word_rightÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_delete_backÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_delete_back_not_lineÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_doc_line_from_visibleÃ1024Õ(GtkScintilla *sci, int line_display)÷0œint
+gtk_scintilla_document_endÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_document_end_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_document_startÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_document_start_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_edit_toggle_overtypeÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_empty_undo_bufferÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_end_undo_actionÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_ensure_visibleÃ1024Õ(GtkScintilla *sci, int line)÷0œvoid
+gtk_scintilla_ensure_visible_enforce_policyÃ1024Õ(GtkScintilla *sci, int line)÷0œvoid
+gtk_scintilla_find_textÃ1024Õ(GtkScintilla *sci, gint flags, gchar *text, glong chrg_min, glong chrg_max, glong *text_min, glong *text_max)÷0œglong
+gtk_scintilla_form_feedÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_get_anchorÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_backspace_unindentsÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_buffered_drawÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_caret_foreÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_caret_line_backÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_caret_line_visibleÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_caret_periodÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_caret_widthÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_char_atÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_get_code_pageÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_columnÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_get_control_char_symbolÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_cur_lineÃ1024Õ(GtkScintilla *sci, int length, gchar * text)÷0œint
+gtk_scintilla_get_current_posÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_cursorÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_direct_functionÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_direct_pointerÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_doc_pointerÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_edge_colourÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_edge_columnÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_edge_modeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_end_at_last_lineÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_end_styledÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_eol_modeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_first_visible_lineÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_focusÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_fold_expandedÃ1024Õ(GtkScintilla *sci, int line)÷0œgint
+gtk_scintilla_get_fold_levelÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_get_fold_parentÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_get_h_scroll_barÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_highlight_guideÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_indentÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_indentation_guidesÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_last_childÃ1024Õ(GtkScintilla *sci, int line, int level)÷0œint
+gtk_scintilla_get_layout_cacheÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_lengthÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_lexerÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_lineÃ1024Õ(GtkScintilla *sci, int line, gchar * text)÷0œint
+gtk_scintilla_get_line_countÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_line_end_positionÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_get_line_indent_positionÃ1024Õ(GtkScintilla *sci, int line)÷0œglong
+gtk_scintilla_get_line_indentationÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_get_line_stateÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_get_line_visibleÃ1024Õ(GtkScintilla *sci, int line)÷0œgint
+gtk_scintilla_get_margin_leftÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_margin_mask_nÃ1024Õ(GtkScintilla *sci, int margin)÷0œint
+gtk_scintilla_get_margin_rightÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_margin_sensitive_nÃ1024Õ(GtkScintilla *sci, int margin)÷0œgint
+gtk_scintilla_get_margin_type_nÃ1024Õ(GtkScintilla *sci, int margin)÷0œint
+gtk_scintilla_get_margin_width_nÃ1024Õ(GtkScintilla *sci, int margin)÷0œint
+gtk_scintilla_get_max_line_stateÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_mod_event_maskÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_modifyÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_mouse_down_capturesÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_mouse_dwell_timeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_overtypeÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_print_colour_modeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_print_magnificationÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_print_wrap_modeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_read_onlyÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_scroll_widthÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_search_flagsÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_sel_textÃ1024Õ(GtkScintilla *sci, gchar * text)÷0œint
+gtk_scintilla_get_selection_endÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_selection_startÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_statusÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_style_atÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_get_style_bitsÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_tab_indentsÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_tab_widthÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_target_endÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_target_startÃ1024Õ(GtkScintilla *sci)÷0œglong
+gtk_scintilla_get_textÃ1024Õ(GtkScintilla *sci, int length, gchar * text)÷0œint
+gtk_scintilla_get_text_lengthÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_text_rangeÃ1024Õ(GtkScintilla *sci, gint start, gint end, gint *length)÷0œgchar *
+gtk_scintilla_get_two_phase_drawÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_undo_collectionÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_use_paletteÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_use_tabsÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_v_scroll_barÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_view_eolÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_get_view_wsÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_wrap_modeÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_x_offsetÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_get_zoomÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_goto_lineÃ1024Õ(GtkScintilla *sci, int line)÷0œvoid
+gtk_scintilla_goto_posÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_grab_focusÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_hide_linesÃ1024Õ(GtkScintilla *sci, int line_start, int line_end)÷0œvoid
+gtk_scintilla_hide_selectionÃ1024Õ(GtkScintilla *sci, gint normal)÷0œvoid
+gtk_scintilla_homeÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_home_displayÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_home_display_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_home_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_home_wrapÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_home_wrap_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_indic_get_foreÃ1024Õ(GtkScintilla *sci, int indic)÷0œglong
+gtk_scintilla_indic_get_styleÃ1024Õ(GtkScintilla *sci, int indic)÷0œint
+gtk_scintilla_indic_set_foreÃ1024Õ(GtkScintilla *sci, int indic, glong fore)÷0œvoid
+gtk_scintilla_indic_set_styleÃ1024Õ(GtkScintilla *sci, int indic, int style)÷0œvoid
+gtk_scintilla_insert_textÃ1024Õ(GtkScintilla *sci, glong pos, const gchar * text)÷0œvoid
+gtk_scintilla_line_cutÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_deleteÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_downÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_down_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_duplicateÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_endÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_end_displayÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_end_display_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_end_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_end_wrapÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_end_wrap_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_from_positionÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_line_lengthÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_line_scrollÃ1024Õ(GtkScintilla *sci, int columns, int lines)÷0œvoid
+gtk_scintilla_line_scroll_downÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_scroll_upÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_transposeÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_upÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_line_up_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_lines_joinÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_lines_on_screenÃ1024Õ(GtkScintilla *sci)÷0œint
+gtk_scintilla_lines_splitÃ1024Õ(GtkScintilla *sci, int pixel_width)÷0œvoid
+gtk_scintilla_lower_caseÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_marker_addÃ1024Õ(GtkScintilla *sci, int line, int marker_number)÷0œint
+gtk_scintilla_marker_defineÃ1024Õ(GtkScintilla *sci, int marker_number, int marker_symbol)÷0œvoid
+gtk_scintilla_marker_define_pixmapÃ1024Õ(GtkScintilla *sci, int marker_number, const gchar * pixmap)÷0œvoid
+gtk_scintilla_marker_deleteÃ1024Õ(GtkScintilla *sci, int line, int marker_number)÷0œvoid
+gtk_scintilla_marker_delete_allÃ1024Õ(GtkScintilla *sci, int marker_number)÷0œvoid
+gtk_scintilla_marker_delete_handleÃ1024Õ(GtkScintilla *sci, int handle)÷0œvoid
+gtk_scintilla_marker_getÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_marker_line_from_handleÃ1024Õ(GtkScintilla *sci, int handle)÷0œint
+gtk_scintilla_marker_nextÃ1024Õ(GtkScintilla *sci, int line_start, int marker_mask)÷0œint
+gtk_scintilla_marker_previousÃ1024Õ(GtkScintilla *sci, int line_start, int marker_mask)÷0œint
+gtk_scintilla_marker_set_backÃ1024Õ(GtkScintilla *sci, int marker_number, glong back)÷0œvoid
+gtk_scintilla_marker_set_foreÃ1024Õ(GtkScintilla *sci, int marker_number, glong fore)÷0œvoid
+gtk_scintilla_move_caret_inside_viewÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_newÃ1024Õ(void)÷0œGtkWidget *
+gtk_scintilla_new_lineÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_nullÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_page_downÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_page_down_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_page_upÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_page_up_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_pasteÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_point_x_from_positionÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_point_y_from_positionÃ1024Õ(GtkScintilla *sci, glong pos)÷0œint
+gtk_scintilla_position_from_lineÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_position_from_pointÃ1024Õ(GtkScintilla *sci, int x, int y)÷0œint
+gtk_scintilla_position_from_point_closeÃ1024Õ(GtkScintilla *sci, int x, int y)÷0œint
+gtk_scintilla_redoÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_register_imageÃ1024Õ(GtkScintilla *sci, int type, const gchar * xpm_data)÷0œvoid
+gtk_scintilla_release_documentÃ1024Õ(GtkScintilla *sci, int doc)÷0œvoid
+gtk_scintilla_replace_selÃ1024Õ(GtkScintilla *sci, const gchar * text)÷0œvoid
+gtk_scintilla_replace_targetÃ1024Õ(GtkScintilla *sci, int length, const gchar * text)÷0œint
+gtk_scintilla_replace_target_reÃ1024Õ(GtkScintilla *sci, int length, const gchar * text)÷0œint
+gtk_scintilla_scroll_caretÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_search_anchorÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_search_in_targetÃ1024Õ(GtkScintilla *sci, int length, const gchar * text)÷0œint
+gtk_scintilla_search_nextÃ1024Õ(GtkScintilla *sci, int flags, const gchar * text)÷0œint
+gtk_scintilla_search_prevÃ1024Õ(GtkScintilla *sci, int flags, const gchar * text)÷0œint
+gtk_scintilla_select_allÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_selection_is_rectangleÃ1024Õ(GtkScintilla *sci)÷0œgint
+gtk_scintilla_set_anchorÃ1024Õ(GtkScintilla *sci, glong pos_anchor)÷0œvoid
+gtk_scintilla_set_backspace_unindentsÃ1024Õ(GtkScintilla *sci, gint bs_unindents)÷0œvoid
+gtk_scintilla_set_buffered_drawÃ1024Õ(GtkScintilla *sci, gint buffered)÷0œvoid
+gtk_scintilla_set_caret_foreÃ1024Õ(GtkScintilla *sci, glong fore)÷0œvoid
+gtk_scintilla_set_caret_line_backÃ1024Õ(GtkScintilla *sci, glong back)÷0œvoid
+gtk_scintilla_set_caret_line_visibleÃ1024Õ(GtkScintilla *sci, gint show)÷0œvoid
+gtk_scintilla_set_caret_periodÃ1024Õ(GtkScintilla *sci, int period_milliseconds)÷0œvoid
+gtk_scintilla_set_caret_widthÃ1024Õ(GtkScintilla *sci, int pixel_width)÷0œvoid
+gtk_scintilla_set_code_pageÃ1024Õ(GtkScintilla *sci, int code_page)÷0œvoid
+gtk_scintilla_set_control_char_symbolÃ1024Õ(GtkScintilla *sci, int symbol)÷0œvoid
+gtk_scintilla_set_current_posÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_set_cursorÃ1024Õ(GtkScintilla *sci, int cursor_type)÷0œvoid
+gtk_scintilla_set_doc_pointerÃ1024Õ(GtkScintilla *sci, int pointer)÷0œvoid
+gtk_scintilla_set_edge_colourÃ1024Õ(GtkScintilla *sci, glong edge_colour)÷0œvoid
+gtk_scintilla_set_edge_columnÃ1024Õ(GtkScintilla *sci, int column)÷0œvoid
+gtk_scintilla_set_edge_modeÃ1024Õ(GtkScintilla *sci, int mode)÷0œvoid
+gtk_scintilla_set_end_at_last_lineÃ1024Õ(GtkScintilla *sci, gint end_at_last_line)÷0œvoid
+gtk_scintilla_set_eol_modeÃ1024Õ(GtkScintilla *sci, int eol_mode)÷0œvoid
+gtk_scintilla_set_focusÃ1024Õ(GtkScintilla *sci, gint focus)÷0œvoid
+gtk_scintilla_set_fold_expandedÃ1024Õ(GtkScintilla *sci, int line, gint expanded)÷0œvoid
+gtk_scintilla_set_fold_flagsÃ1024Õ(GtkScintilla *sci, int flags)÷0œvoid
+gtk_scintilla_set_fold_levelÃ1024Õ(GtkScintilla *sci, int line, int level)÷0œvoid
+gtk_scintilla_set_fold_margin_colourÃ1024Õ(GtkScintilla *sci, gint use_setting, glong back)÷0œvoid
+gtk_scintilla_set_fold_margin_hi_colourÃ1024Õ(GtkScintilla *sci, gint use_setting, glong fore)÷0œvoid
+gtk_scintilla_set_h_scroll_barÃ1024Õ(GtkScintilla *sci, gint show)÷0œvoid
+gtk_scintilla_set_highlight_guideÃ1024Õ(GtkScintilla *sci, int column)÷0œvoid
+gtk_scintilla_set_indentÃ1024Õ(GtkScintilla *sci, int indent_size)÷0œvoid
+gtk_scintilla_set_indentation_guidesÃ1024Õ(GtkScintilla *sci, gint show)÷0œvoid
+gtk_scintilla_set_keywordsÃ1024Õ(GtkScintilla *sci, int keyword_set, const gchar * key_words)÷0œvoid
+gtk_scintilla_set_layout_cacheÃ1024Õ(GtkScintilla *sci, int mode)÷0œvoid
+gtk_scintilla_set_lexerÃ1024Õ(GtkScintilla *sci, int lexer)÷0œvoid
+gtk_scintilla_set_lexer_languageÃ1024Õ(GtkScintilla *sci, const gchar * language)÷0œvoid
+gtk_scintilla_set_line_indentationÃ1024Õ(GtkScintilla *sci, int line, int indent_size)÷0œvoid
+gtk_scintilla_set_line_stateÃ1024Õ(GtkScintilla *sci, int line, int state)÷0œvoid
+gtk_scintilla_set_margin_leftÃ1024Õ(GtkScintilla *sci, int pixel_width)÷0œvoid
+gtk_scintilla_set_margin_mask_nÃ1024Õ(GtkScintilla *sci, int margin, int mask)÷0œvoid
+gtk_scintilla_set_margin_rightÃ1024Õ(GtkScintilla *sci, int pixel_width)÷0œvoid
+gtk_scintilla_set_margin_sensitive_nÃ1024Õ(GtkScintilla *sci, int margin, gint sensitive)÷0œvoid
+gtk_scintilla_set_margin_type_nÃ1024Õ(GtkScintilla *sci, int margin, int margin_type)÷0œvoid
+gtk_scintilla_set_margin_width_nÃ1024Õ(GtkScintilla *sci, int margin, int pixel_width)÷0œvoid
+gtk_scintilla_set_mod_event_maskÃ1024Õ(GtkScintilla *sci, int mask)÷0œvoid
+gtk_scintilla_set_mouse_down_capturesÃ1024Õ(GtkScintilla *sci, gint captures)÷0œvoid
+gtk_scintilla_set_mouse_dwell_timeÃ1024Õ(GtkScintilla *sci, int period_milliseconds)÷0œvoid
+gtk_scintilla_set_overtypeÃ1024Õ(GtkScintilla *sci, gint overtype)÷0œvoid
+gtk_scintilla_set_print_colour_modeÃ1024Õ(GtkScintilla *sci, int mode)÷0œvoid
+gtk_scintilla_set_print_magnificationÃ1024Õ(GtkScintilla *sci, int magnification)÷0œvoid
+gtk_scintilla_set_print_wrap_modeÃ1024Õ(GtkScintilla *sci, int mode)÷0œvoid
+gtk_scintilla_set_propertyÃ1024Õ(GtkScintilla *sci, const gchar * key, const gchar * value)÷0œvoid
+gtk_scintilla_set_read_onlyÃ1024Õ(GtkScintilla *sci, gint read_only)÷0œvoid
+gtk_scintilla_set_save_pointÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_set_scroll_widthÃ1024Õ(GtkScintilla *sci, int pixel_width)÷0œvoid
+gtk_scintilla_set_search_flagsÃ1024Õ(GtkScintilla *sci, int flags)÷0œvoid
+gtk_scintilla_set_selÃ1024Õ(GtkScintilla *sci, glong start, glong end)÷0œvoid
+gtk_scintilla_set_sel_backÃ1024Õ(GtkScintilla *sci, gint use_setting, glong back)÷0œvoid
+gtk_scintilla_set_sel_foreÃ1024Õ(GtkScintilla *sci, gint use_setting, glong fore)÷0œvoid
+gtk_scintilla_set_selection_endÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_set_selection_startÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_set_statusÃ1024Õ(GtkScintilla *sci, int status_code)÷0œvoid
+gtk_scintilla_set_style_bitsÃ1024Õ(GtkScintilla *sci, int bits)÷0œvoid
+gtk_scintilla_set_stylingÃ1024Õ(GtkScintilla *sci, int length, int style)÷0œvoid
+gtk_scintilla_set_styling_exÃ1024Õ(GtkScintilla *sci, int length, const gchar * styles)÷0œvoid
+gtk_scintilla_set_tab_indentsÃ1024Õ(GtkScintilla *sci, gint tab_indents)÷0œvoid
+gtk_scintilla_set_tab_widthÃ1024Õ(GtkScintilla *sci, int tab_width)÷0œvoid
+gtk_scintilla_set_target_endÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_set_target_startÃ1024Õ(GtkScintilla *sci, glong pos)÷0œvoid
+gtk_scintilla_set_textÃ1024Õ(GtkScintilla *sci, const gchar * text)÷0œvoid
+gtk_scintilla_set_two_phase_drawÃ1024Õ(GtkScintilla *sci, gint two_phase)÷0œvoid
+gtk_scintilla_set_undo_collectionÃ1024Õ(GtkScintilla *sci, gint collect_undo)÷0œvoid
+gtk_scintilla_set_use_paletteÃ1024Õ(GtkScintilla *sci, gint use_palette)÷0œvoid
+gtk_scintilla_set_use_tabsÃ1024Õ(GtkScintilla *sci, gint use_tabs)÷0œvoid
+gtk_scintilla_set_v_scroll_barÃ1024Õ(GtkScintilla *sci, gint show)÷0œvoid
+gtk_scintilla_set_view_eolÃ1024Õ(GtkScintilla *sci, gint visible)÷0œvoid
+gtk_scintilla_set_view_wsÃ1024Õ(GtkScintilla *sci, int view_ws)÷0œvoid
+gtk_scintilla_set_visible_policyÃ1024Õ(GtkScintilla *sci, int visible_policy, int visible_slop)÷0œvoid
+gtk_scintilla_set_whitespace_backÃ1024Õ(GtkScintilla *sci, gint use_setting, glong back)÷0œvoid
+gtk_scintilla_set_whitespace_foreÃ1024Õ(GtkScintilla *sci, gint use_setting, glong fore)÷0œvoid
+gtk_scintilla_set_word_charsÃ1024Õ(GtkScintilla *sci, const gchar * characters)÷0œvoid
+gtk_scintilla_set_wrap_modeÃ1024Õ(GtkScintilla *sci, int mode)÷0œvoid
+gtk_scintilla_set_x_caret_policyÃ1024Õ(GtkScintilla *sci, int caret_policy, int caret_slop)÷0œvoid
+gtk_scintilla_set_x_offsetÃ1024Õ(GtkScintilla *sci, int new_offset)÷0œvoid
+gtk_scintilla_set_y_caret_policyÃ1024Õ(GtkScintilla *sci, int caret_policy, int caret_slop)÷0œvoid
+gtk_scintilla_set_zoomÃ1024Õ(GtkScintilla *sci, int zoom)÷0œvoid
+gtk_scintilla_show_linesÃ1024Õ(GtkScintilla *sci, int line_start, int line_end)÷0œvoid
+gtk_scintilla_start_recordÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_start_stylingÃ1024Õ(GtkScintilla *sci, glong pos, int mask)÷0œvoid
+gtk_scintilla_stop_recordÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_style_clear_allÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_style_reset_defaultÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_style_set_backÃ1024Õ(GtkScintilla *sci, int style, glong back)÷0œvoid
+gtk_scintilla_style_set_boldÃ1024Õ(GtkScintilla *sci, int style, gint bold)÷0œvoid
+gtk_scintilla_style_set_caseÃ1024Õ(GtkScintilla *sci, int style, int case_force)÷0œvoid
+gtk_scintilla_style_set_changeableÃ1024Õ(GtkScintilla *sci, int style, gint changeable)÷0œvoid
+gtk_scintilla_style_set_character_setÃ1024Õ(GtkScintilla *sci, int style, int character_set)÷0œvoid
+gtk_scintilla_style_set_eol_filledÃ1024Õ(GtkScintilla *sci, int style, gint filled)÷0œvoid
+gtk_scintilla_style_set_fontÃ1024Õ(GtkScintilla *sci, int style, const gchar * font_name)÷0œvoid
+gtk_scintilla_style_set_foreÃ1024Õ(GtkScintilla *sci, int style, glong fore)÷0œvoid
+gtk_scintilla_style_set_italicÃ1024Õ(GtkScintilla *sci, int style, gint italic)÷0œvoid
+gtk_scintilla_style_set_sizeÃ1024Õ(GtkScintilla *sci, int style, int size_points)÷0œvoid
+gtk_scintilla_style_set_underlineÃ1024Õ(GtkScintilla *sci, int style, gint underline)÷0œvoid
+gtk_scintilla_style_set_visibleÃ1024Õ(GtkScintilla *sci, int style, gint visible)÷0œvoid
+gtk_scintilla_tabÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_target_from_selectionÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_text_heightÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_text_widthÃ1024Õ(GtkScintilla *sci, int style, const gchar * text)÷0œint
+gtk_scintilla_toggle_foldÃ1024Õ(GtkScintilla *sci, int line)÷0œvoid
+gtk_scintilla_undoÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_upper_caseÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_use_pop_upÃ1024Õ(GtkScintilla *sci, gint allow_pop_up)÷0œvoid
+gtk_scintilla_user_list_showÃ1024Õ(GtkScintilla *sci, int list_type, const gchar * item_list)÷0œvoid
+gtk_scintilla_v_c_homeÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_v_c_home_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_v_c_home_wrapÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_v_c_home_wrap_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_visible_from_doc_lineÃ1024Õ(GtkScintilla *sci, int line)÷0œint
+gtk_scintilla_word_end_positionÃ1024Õ(GtkScintilla *sci, glong pos, gint only_word_characters)÷0œint
+gtk_scintilla_word_leftÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_left_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_part_leftÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_part_left_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_part_rightÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_part_right_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_rightÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_right_extendÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_word_start_positionÃ1024Õ(GtkScintilla *sci, glong pos, gint only_word_characters)÷0œint
+gtk_scintilla_zoom_inÃ1024Õ(GtkScintilla *sci)÷0œvoid
+gtk_scintilla_zoom_outÃ1024Õ(GtkScintilla *sci)÷0œvoid
+keyÃ1024Õ(GtkWidget *w, gint ch, gint modifiers)Œ_GtkScintillaClass÷0œvoid
+macro_recordÃ1024Õ(GtkWidget *w, gint message, gint wparam, gint lparam)Œ_GtkScintillaClass÷0œvoid
+margin_clickÃ1024Õ(GtkWidget *w, gint modifiers, gint position, gint margin)Œ_GtkScintillaClass÷0œvoid
+modifiedÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+modify_attempt_roÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+need_shownÃ1024Õ(GtkWidget *w, gint position, gint lenght)Œ_GtkScintillaClass÷0œvoid
+paintedÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+parentÃ64Œ_GtkScintilla÷0œGtkFrame
+parent_classÃ64Œ_GtkScintillaClass÷0œGtkFrameClass
+save_point_leftÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+save_point_reachedÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+scintillaÃ64Œ_GtkScintilla÷0œGtkWidget
+style_neededÃ1024Õ(GtkWidget *w, gint position)Œ_GtkScintillaClass÷0œvoid
+update_uiÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid
+uri_droppedÃ1024Õ(GtkWidget *w, gchar *text)Œ_GtkScintillaClass÷0œvoid
+user_list_selectionÃ1024Õ(GtkWidget *w, gint type, gchar *text)Œ_GtkScintillaClass÷0œvoid
+zoomÃ1024Õ(GtkWidget *w)Œ_GtkScintillaClass÷0œvoid

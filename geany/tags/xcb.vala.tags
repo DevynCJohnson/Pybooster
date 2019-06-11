@@ -1,0 +1,130 @@
+# format=tagmanager
+BACKING_PIXELÃ4ŒXcb.CW÷0
+BACKING_PLANESÃ4ŒXcb.CW÷0
+BACKING_STOREÃ4ŒXcb.CW÷0
+BACK_PIXELÃ4ŒXcb.CW÷0
+BACK_PIXMAPÃ4ŒXcb.CW÷0
+BIT_GRAVITYÃ4ŒXcb.CW÷0
+BORDER_PIXELÃ4ŒXcb.CW÷0
+BORDER_PIXMAPÃ4ŒXcb.CW÷0
+BUTTON_1MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_2MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_3MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_4MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_5MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_MOTIONÃ4ŒXcb.EventMask÷0
+BUTTON_PRESSÃ8ŒXcb÷0œuint8
+BUTTON_PRESSÃ4ŒXcb.EventMask÷0
+BUTTON_RELEASEÃ8ŒXcb÷0œuint8
+BUTTON_RELEASEÃ4ŒXcb.EventMask÷0
+ButtonÃ2048ŒXcb÷0
+ButtonPressEventÃ1ŒXcb÷0
+ButtonReleaseEventÃ1ŒXcb÷0
+COLORMAPÃ4ŒXcb.CW÷0
+COLOR_MAP_CHANGEÃ4ŒXcb.EventMask÷0
+COPY_FROM_PARENTÃ8ŒXcb÷0œchar
+COPY_FROM_PARENTÃ4ŒXcb.WindowClass÷0
+CURSORÃ4ŒXcb.CW÷0
+CWÃ2ŒXcb÷0
+ConnectionÃ1ŒXcb÷0
+DONT_PROPAGATEÃ4ŒXcb.CW÷0
+DepthÃ1ŒXcb÷0
+DepthIteratorÃ2048ŒXcb÷0
+DrawableÃ2048ŒXcb÷0
+ENTER_NOTIFYÃ8ŒXcb÷0œuint8
+ENTER_WINDOWÃ4ŒXcb.EventMask÷0
+EVENT_MASKÃ4ŒXcb.CW÷0
+EXPOSEÃ8ŒXcb÷0œuint8
+EXPOSUREÃ4ŒXcb.EventMask÷0
+EventMaskÃ2ŒXcb÷0
+ExposeEventÃ1ŒXcb÷0
+FOCUS_CHANGEÃ4ŒXcb.EventMask÷0
+GenericEventÃ1ŒXcb÷0
+INPUT_ONLYÃ4ŒXcb.WindowClass÷0
+INPUT_OUTPUTÃ4ŒXcb.WindowClass÷0
+KEYMAP_STATEÃ4ŒXcb.EventMask÷0
+KEY_PRESSÃ4ŒXcb.EventMask÷0
+KEY_RELEASEÃ4ŒXcb.EventMask÷0
+LEAVE_NOTIFYÃ8ŒXcb÷0œuint8
+LEAVE_WINDOWÃ4ŒXcb.EventMask÷0
+MOTION_NOTIFYÃ8ŒXcb÷0œuint8
+MotionNotifyEventÃ1ŒXcb÷0
+NO_EVENTÃ4ŒXcb.EventMask÷0
+OVERRIDE_REDIRECTÃ4ŒXcb.CW÷0
+OWNER_GRAB_BUTTONÃ4ŒXcb.EventMask÷0
+POINTER_MOTIONÃ4ŒXcb.EventMask÷0
+POINTER_MOTION_HINTÃ4ŒXcb.EventMask÷0
+PROPERTY_CHANGEÃ4ŒXcb.EventMask÷0
+RESIZE_REDIRECTÃ4ŒXcb.EventMask÷0
+SAVE_UNDERÃ4ŒXcb.CW÷0
+STRUCTURE_NOTIFYÃ4ŒXcb.EventMask÷0
+SUBSTRUCTURE_NOTIFYÃ4ŒXcb.EventMask÷0
+SUBSTRUCTURE_REDIRECTÃ4ŒXcb.EventMask÷0
+ScreenÃ1ŒXcb÷0
+ScreenIteratorÃ2048ŒXcb÷0
+SetupÃ1ŒXcb÷0
+VISIBILITY_CHANGEÃ4ŒXcb.EventMask÷0
+VisualIDÃ2048ŒXcb÷0
+VisualTypeÃ1ŒXcb÷0
+VisualTypeIteratorÃ2048ŒXcb÷0
+VoidCookieÃ2048ŒXcb÷0
+WIN_GRAVITYÃ4ŒXcb.CW÷0
+WindowÃ2048ŒXcb÷0
+WindowClassÃ2ŒXcb÷0
+XcbÃ256÷0
+_classÃ8ŒXcb.VisualType÷0œuint8
+allowed_depths_iteratorÃ128Õ()ŒXcb.Screen÷0œpublic DepthIterator
+bits_per_rgb_valueÃ8ŒXcb.VisualType÷0œuint8
+black_pixelÃ8ŒXcb.Screen÷0œuint32
+childÃ8ŒXcb.ButtonPressEvent÷0œWindow
+childÃ8ŒXcb.ButtonReleaseEvent÷0œWindow
+childÃ8ŒXcb.MotionNotifyEvent÷0œWindow
+connectÃ128Õ(string? display = null, out int screen = null)ŒXcb÷0œpublic Connection
+create_windowÃ128Õ(Connection connection, uint8 depth, Window wid, Window parent, int16 x, int16 y, uint16 width, uint16 height, uint16 border_width, uint16 _class, VisualID visual, uint32 value_mask, [CCode (array_length = false)] uint32[] value_list)ŒXcb÷0œpublic VoidCookie
+dataÃ8ŒXcb.DepthIterator÷0œunowned
+dataÃ8ŒXcb.ScreenIterator÷0œunowned
+dataÃ8ŒXcb.VisualTypeIterator÷0œunowned
+depthÃ8ŒXcb.Depth÷0œuint8
+detailÃ8ŒXcb.ButtonPressEvent÷0œButton
+detailÃ8ŒXcb.ButtonReleaseEvent÷0œButton
+disconnectÃ128Õ()ŒXcb.Connection÷0œpublic void
+eventÃ8ŒXcb.ButtonPressEvent÷0œWindow
+eventÃ8ŒXcb.ButtonReleaseEvent÷0œWindow
+eventÃ8ŒXcb.MotionNotifyEvent÷0œWindow
+event_xÃ8ŒXcb.ButtonPressEvent÷0œuint16
+event_xÃ8ŒXcb.ButtonReleaseEvent÷0œuint16
+event_xÃ8ŒXcb.MotionNotifyEvent÷0œuint16
+event_yÃ8ŒXcb.ButtonPressEvent÷0œuint16
+event_yÃ8ŒXcb.ButtonReleaseEvent÷0œuint16
+event_yÃ8ŒXcb.MotionNotifyEvent÷0œuint16
+flushÃ128Õ()ŒXcb.Connection÷0œpublic void
+generate_idÃ128Õ()ŒXcb.Connection÷0œpublic uint32
+get_setupÃ128Õ()ŒXcb.Connection÷0œpublic Setup
+heightÃ8ŒXcb.ExposeEvent÷0œuint16
+map_windowÃ128Õ(Connection connection, Window wid)ŒXcb÷0œpublic VoidCookie
+nextÃ128Õ()ŒXcb.DepthIterator÷0œpublic void
+nextÃ8ŒXcb.ScreenIterator÷0œint
+nextÃ128Õ()ŒXcb.VisualTypeIterator÷0œpublic void
+remÃ8ŒXcb.DepthIterator÷0œint
+remÃ8ŒXcb.ScreenIterator÷0œint
+remÃ8ŒXcb.VisualTypeIterator÷0œint
+response_typeÃ8ŒXcb.GenericEvent÷0œuint8
+rootÃ8ŒXcb.ButtonPressEvent÷0œWindow
+rootÃ8ŒXcb.ButtonReleaseEvent÷0œWindow
+rootÃ8ŒXcb.MotionNotifyEvent÷0œWindow
+rootÃ8ŒXcb.Screen÷0œWindow
+root_visualÃ8ŒXcb.Screen÷0œVisualID
+root_xÃ8ŒXcb.ButtonPressEvent÷0œuint16
+root_xÃ8ŒXcb.ButtonReleaseEvent÷0œuint16
+root_xÃ8ŒXcb.MotionNotifyEvent÷0œuint16
+root_yÃ8ŒXcb.ButtonPressEvent÷0œuint16
+root_yÃ8ŒXcb.ButtonReleaseEvent÷0œuint16
+root_yÃ8ŒXcb.MotionNotifyEvent÷0œuint16
+roots_iteratorÃ128Õ()ŒXcb.Setup÷0œpublic ScreenIterator
+visual_idÃ8ŒXcb.VisualType÷0œVisualID
+visuals_iteratorÃ128Õ()ŒXcb.Depth÷0œpublic VisualTypeIterator
+white_pixelÃ8ŒXcb.Screen÷0œuint32
+widthÃ8ŒXcb.ExposeEvent÷0œuint16
+windowÃ8ŒXcb.ExposeEvent÷0œWindow
+xÃ8ŒXcb.ExposeEvent÷0œuint16
+yÃ8ŒXcb.ExposeEvent÷0œuint16

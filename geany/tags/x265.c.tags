@@ -1,67 +1,180 @@
 # format=tagmanager
-ACTIVE_PARAMETER_SETSÃ4Œanon_enum_3÷0
-ALTERNATIVE_TRANSFER_CHARACTERISTICSÃ4Œanon_enum_3÷0
-AVC_INFOÃ4Œanon_enum_2÷0
-BUFFERING_PERIODÃ4Œanon_enum_3÷0
-CONTENT_LIGHT_LEVEL_INFOÃ4Œanon_enum_3÷0
-CTUInfoÃ4096÷0œanon_enum_1
-CTU_INFO_CHANGEÃ4Œanon_enum_1÷0
-DECODED_PICTURE_HASHÃ4Œanon_enum_3÷0
-DECODING_UNIT_INFOÃ4Œanon_enum_3÷0
-DISPLAY_ORIENTATIONÃ4Œanon_enum_3÷0
-FILLER_PAYLOADÃ4Œanon_enum_3÷0
-FILM_GRAIN_CHARACTERISTICSÃ4Œanon_enum_3÷0
-FRAME_PACKINGÃ4Œanon_enum_3÷0
-FULL_FRAME_SNAPSHOTÃ4Œanon_enum_3÷0
-HAS_CTU_INFOÃ4Œanon_enum_1÷0
+ACTIVE_PARAMETER_SETSÃ4Œanon_enum_6÷0
+ALTERNATIVE_TRANSFER_CHARACTERISTICSÃ4Œanon_enum_6÷0
+AVC_INFOÃ4Œanon_enum_5÷0
+BUFFERING_PERIODÃ4Œanon_enum_6÷0
+BUFSIZÃ65536÷0
+CONTENT_LIGHT_LEVEL_INFOÃ4Œanon_enum_6÷0
+CTUInfoÃ4096÷0œanon_enum_4
+CTU_INFO_CHANGEÃ4Œanon_enum_4÷0
+DECODED_PICTURE_HASHÃ4Œanon_enum_6÷0
+DECODING_UNIT_INFOÃ4Œanon_enum_6÷0
+DISPLAY_ORIENTATIONÃ4Œanon_enum_6÷0
+EOFÃ65536÷0
+FILEÃ4096÷0œ_IO_FILE
+FILENAME_MAXÃ65536÷0
+FILLER_PAYLOADÃ4Œanon_enum_6÷0
+FILM_GRAIN_CHARACTERISTICSÃ4Œanon_enum_6÷0
+FOPEN_MAXÃ65536÷0
+FRAME_PACKINGÃ4Œanon_enum_6÷0
+FULL_FRAME_SNAPSHOTÃ4Œanon_enum_6÷0
+HAS_CTU_INFOÃ4Œanon_enum_4÷0
+INT16_CÃ131072Õ(c)÷0
+INT16_MAXÃ65536÷0
+INT16_MINÃ65536÷0
+INT16_WIDTHÃ65536÷0
+INT32_CÃ131072Õ(c)÷0
+INT32_MAXÃ65536÷0
+INT32_MINÃ65536÷0
+INT32_WIDTHÃ65536÷0
+INT64_CÃ131072Õ(c)÷0
+INT64_MAXÃ65536÷0
+INT64_MINÃ65536÷0
+INT64_WIDTHÃ65536÷0
+INT8_CÃ131072Õ(c)÷0
+INT8_MAXÃ65536÷0
+INT8_MINÃ65536÷0
+INT8_WIDTHÃ65536÷0
+INTMAX_CÃ131072Õ(c)÷0
+INTMAX_MAXÃ65536÷0
+INTMAX_MINÃ65536÷0
+INTMAX_WIDTHÃ65536÷0
+INTPTR_MAXÃ65536÷0
+INTPTR_MINÃ65536÷0
+INTPTR_WIDTHÃ65536÷0
+INT_FAST16_MAXÃ65536÷0
+INT_FAST16_MINÃ65536÷0
+INT_FAST16_WIDTHÃ65536÷0
+INT_FAST32_MAXÃ65536÷0
+INT_FAST32_MINÃ65536÷0
+INT_FAST32_WIDTHÃ65536÷0
+INT_FAST64_MAXÃ65536÷0
+INT_FAST64_MINÃ65536÷0
+INT_FAST64_WIDTHÃ65536÷0
+INT_FAST8_MAXÃ65536÷0
+INT_FAST8_MINÃ65536÷0
+INT_FAST8_WIDTHÃ65536÷0
+INT_LEAST16_MAXÃ65536÷0
+INT_LEAST16_MINÃ65536÷0
+INT_LEAST16_WIDTHÃ65536÷0
+INT_LEAST32_MAXÃ65536÷0
+INT_LEAST32_MINÃ65536÷0
+INT_LEAST32_WIDTHÃ65536÷0
+INT_LEAST64_MAXÃ65536÷0
+INT_LEAST64_MINÃ65536÷0
+INT_LEAST64_WIDTHÃ65536÷0
+INT_LEAST8_MAXÃ65536÷0
+INT_LEAST8_MINÃ65536÷0
+INT_LEAST8_WIDTHÃ65536÷0
 IS_X265_TYPE_BÃ131072Õ(x)÷0
 IS_X265_TYPE_IÃ131072Õ(x)÷0
-MASTERING_DISPLAY_INFOÃ4Œanon_enum_3÷0
-MVRefineTypeÃ4096÷0œanon_enum_2
-NAL_UNIT_ACCESS_UNIT_DELIMITERÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_BLA_N_LPÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_BLA_W_LPÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_BLA_W_RADLÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_CRAÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_IDR_N_LPÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_IDR_W_RADLÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_RADL_NÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_RADL_RÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_RASL_NÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_RASL_RÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_STSA_NÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_STSA_RÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_TLA_RÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_TRAIL_NÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_TRAIL_RÃ4Œanon_enum_0÷0
-NAL_UNIT_CODED_SLICE_TSA_NÃ4Œanon_enum_0÷0
-NAL_UNIT_EOBÃ4Œanon_enum_0÷0
-NAL_UNIT_EOSÃ4Œanon_enum_0÷0
-NAL_UNIT_FILLER_DATAÃ4Œanon_enum_0÷0
-NAL_UNIT_INVALIDÃ4Œanon_enum_0÷0
-NAL_UNIT_PPSÃ4Œanon_enum_0÷0
-NAL_UNIT_PREFIX_SEIÃ4Œanon_enum_0÷0
-NAL_UNIT_SPSÃ4Œanon_enum_0÷0
-NAL_UNIT_SUFFIX_SEIÃ4Œanon_enum_0÷0
-NAL_UNIT_VPSÃ4Œanon_enum_0÷0
-NO_CTU_INFOÃ4Œanon_enum_1÷0
-NO_INFOÃ4Œanon_enum_2÷0
-NalUnitTypeÃ4096÷0œanon_enum_0
-PAN_SCAN_RECTÃ4Œanon_enum_3÷0
-PICTURE_TIMINGÃ4Œanon_enum_3÷0
-POST_FILTER_HINTÃ4Œanon_enum_3÷0
-PROGRESSIVE_REFINEMENT_SEGMENT_ENDÃ4Œanon_enum_3÷0
-PROGRESSIVE_REFINEMENT_SEGMENT_STARTÃ4Œanon_enum_3÷0
-RECOVERY_POINTÃ4Œanon_enum_3÷0
-REGION_REFRESH_INFOÃ4Œanon_enum_3÷0
-SCALABLE_NESTINGÃ4Œanon_enum_3÷0
-SCENE_INFOÃ4Œanon_enum_3÷0
-SEIPayloadTypeÃ4096÷0œanon_enum_3
-SOP_DESCRIPTIONÃ4Œanon_enum_3÷0
-TEMPORAL_LEVEL0_INDEXÃ4Œanon_enum_3÷0
-TONE_MAPPING_INFOÃ4Œanon_enum_3÷0
-USER_DATA_REGISTERED_ITU_T_T35Ã4Œanon_enum_3÷0
-USER_DATA_UNREGISTEREDÃ4Œanon_enum_3÷0
+L_ctermidÃ65536÷0
+L_cuseridÃ65536÷0
+L_tmpnamÃ65536÷0
+MASTERING_DISPLAY_INFOÃ4Œanon_enum_6÷0
+MVRefineTypeÃ4096÷0œanon_enum_5
+NAL_UNIT_ACCESS_UNIT_DELIMITERÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_BLA_N_LPÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_BLA_W_LPÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_BLA_W_RADLÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_CRAÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_IDR_N_LPÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_IDR_W_RADLÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_RADL_NÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_RADL_RÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_RASL_NÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_RASL_RÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_STSA_NÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_STSA_RÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_TLA_RÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_TRAIL_NÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_TRAIL_RÃ4Œanon_enum_3÷0
+NAL_UNIT_CODED_SLICE_TSA_NÃ4Œanon_enum_3÷0
+NAL_UNIT_EOBÃ4Œanon_enum_3÷0
+NAL_UNIT_EOSÃ4Œanon_enum_3÷0
+NAL_UNIT_FILLER_DATAÃ4Œanon_enum_3÷0
+NAL_UNIT_INVALIDÃ4Œanon_enum_3÷0
+NAL_UNIT_PPSÃ4Œanon_enum_3÷0
+NAL_UNIT_PREFIX_SEIÃ4Œanon_enum_3÷0
+NAL_UNIT_SPSÃ4Œanon_enum_3÷0
+NAL_UNIT_SUFFIX_SEIÃ4Œanon_enum_3÷0
+NAL_UNIT_VPSÃ4Œanon_enum_3÷0
+NO_CTU_INFOÃ4Œanon_enum_4÷0
+NO_INFOÃ4Œanon_enum_5÷0
+NULLÃ65536÷0
+NalUnitTypeÃ4096÷0œanon_enum_3
+PAN_SCAN_RECTÃ4Œanon_enum_6÷0
+PICTURE_TIMINGÃ4Œanon_enum_6÷0
+POST_FILTER_HINTÃ4Œanon_enum_6÷0
+PROGRESSIVE_REFINEMENT_SEGMENT_ENDÃ4Œanon_enum_6÷0
+PROGRESSIVE_REFINEMENT_SEGMENT_STARTÃ4Œanon_enum_6÷0
+PTRDIFF_MAXÃ65536÷0
+PTRDIFF_MINÃ65536÷0
+PTRDIFF_WIDTHÃ65536÷0
+P_tmpdirÃ65536÷0
+RECOVERY_POINTÃ4Œanon_enum_6÷0
+REGION_REFRESH_INFOÃ4Œanon_enum_6÷0
+RENAME_EXCHANGEÃ65536÷0
+RENAME_NOREPLACEÃ65536÷0
+RENAME_WHITEOUTÃ65536÷0
+SCALABLE_NESTINGÃ4Œanon_enum_6÷0
+SCENE_INFOÃ4Œanon_enum_6÷0
+SEEK_CURÃ65536÷0
+SEEK_DATAÃ65536÷0
+SEEK_ENDÃ65536÷0
+SEEK_HOLEÃ65536÷0
+SEEK_SETÃ65536÷0
+SEIPayloadTypeÃ4096÷0œanon_enum_6
+SIG_ATOMIC_MAXÃ65536÷0
+SIG_ATOMIC_MINÃ65536÷0
+SIG_ATOMIC_WIDTHÃ65536÷0
+SIZE_MAXÃ65536÷0
+SIZE_WIDTHÃ65536÷0
+SOP_DESCRIPTIONÃ4Œanon_enum_6÷0
+TEMPORAL_LEVEL0_INDEXÃ4Œanon_enum_6÷0
+TMP_MAXÃ65536÷0
+TONE_MAPPING_INFOÃ4Œanon_enum_6÷0
+UINT16_CÃ131072Õ(c)÷0
+UINT16_MAXÃ65536÷0
+UINT16_WIDTHÃ65536÷0
+UINT32_CÃ131072Õ(c)÷0
+UINT32_MAXÃ65536÷0
+UINT32_WIDTHÃ65536÷0
+UINT64_CÃ131072Õ(c)÷0
+UINT64_MAXÃ65536÷0
+UINT64_WIDTHÃ65536÷0
+UINT8_CÃ131072Õ(c)÷0
+UINT8_MAXÃ65536÷0
+UINT8_WIDTHÃ65536÷0
+UINTMAX_CÃ131072Õ(c)÷0
+UINTMAX_MAXÃ65536÷0
+UINTMAX_WIDTHÃ65536÷0
+UINTPTR_MAXÃ65536÷0
+UINTPTR_WIDTHÃ65536÷0
+UINT_FAST16_MAXÃ65536÷0
+UINT_FAST16_WIDTHÃ65536÷0
+UINT_FAST32_MAXÃ65536÷0
+UINT_FAST32_WIDTHÃ65536÷0
+UINT_FAST64_MAXÃ65536÷0
+UINT_FAST64_WIDTHÃ65536÷0
+UINT_FAST8_MAXÃ65536÷0
+UINT_FAST8_WIDTHÃ65536÷0
+UINT_LEAST16_MAXÃ65536÷0
+UINT_LEAST16_WIDTHÃ65536÷0
+UINT_LEAST32_MAXÃ65536÷0
+UINT_LEAST32_WIDTHÃ65536÷0
+UINT_LEAST64_MAXÃ65536÷0
+UINT_LEAST64_WIDTHÃ65536÷0
+UINT_LEAST8_MAXÃ65536÷0
+UINT_LEAST8_WIDTHÃ65536÷0
+USER_DATA_REGISTERED_ITU_T_T35Ã4Œanon_enum_6÷0
+USER_DATA_UNREGISTEREDÃ4Œanon_enum_6÷0
+WCHAR_MAXÃ65536÷0
+WCHAR_MINÃ65536÷0
+WCHAR_WIDTHÃ65536÷0
+WINT_MAXÃ65536÷0
+WINT_MINÃ65536÷0
+WINT_WIDTHÃ65536÷0
 X265_ANALYSIS_LOADÃ65536÷0
 X265_ANALYSIS_OFFÃ65536÷0
 X265_ANALYSIS_SAVEÃ65536÷0
@@ -76,9 +189,11 @@ X265_AQ_AUTO_VARIANCE_BIASEDÃ65536÷0
 X265_AQ_NONEÃ65536÷0
 X265_AQ_VARIANCEÃ65536÷0
 X265_BFRAME_MAXÃ65536÷0
+X265_BUILDÃ65536÷0
 X265_B_ADAPT_FASTÃ65536÷0
 X265_B_ADAPT_NONEÃ65536÷0
 X265_B_ADAPT_TRELLISÃ65536÷0
+X265_CONFIG_HÃ65536÷0
 X265_CPU_ALTIVECÃ65536÷0
 X265_CPU_ARMV6Ã65536÷0
 X265_CPU_AVXÃ65536÷0
@@ -121,11 +236,11 @@ X265_CSP_MAXÃ65536÷0
 X265_CSP_NV12Ã65536÷0
 X265_CSP_NV16Ã65536÷0
 X265_CSP_RGBÃ65536÷0
-X265_DIA_SEARCHÃ4Œanon_enum_4÷0
+X265_DIA_SEARCHÃ4Œanon_enum_7÷0
 X265_EXTENDED_SARÃ65536÷0
-X265_FULL_SEARCHÃ4Œanon_enum_4÷0
+X265_FULL_SEARCHÃ4Œanon_enum_7÷0
 X265_HÃ65536÷0
-X265_HEX_SEARCHÃ4Œanon_enum_4÷0
+X265_HEX_SEARCHÃ4Œanon_enum_7÷0
 X265_LOG_DEBUGÃ65536÷0
 X265_LOG_ERRORÃ65536÷0
 X265_LOG_FULLÃ65536÷0
@@ -136,19 +251,19 @@ X265_LOOKAHEAD_MAXÃ65536÷0
 X265_MAJOR_VERSIONÃ65536÷0
 X265_MAX_FRAME_THREADSÃ65536÷0
 X265_MAX_SUBPEL_LEVELÃ65536÷0
-X265_ME_METHODSÃ4096÷0œanon_enum_4
+X265_ME_METHODSÃ4096÷0œanon_enum_7
 X265_PARAM_BAD_NAMEÃ65536÷0
 X265_PARAM_BAD_VALUEÃ65536÷0
 X265_QP_AUTOÃ65536÷0
-X265_RC_ABRÃ4Œanon_enum_5÷0
-X265_RC_CQPÃ4Œanon_enum_5÷0
-X265_RC_CRFÃ4Œanon_enum_5÷0
-X265_RC_METHODSÃ4096÷0œanon_enum_5
+X265_RC_ABRÃ4Œanon_enum_8÷0
+X265_RC_CQPÃ4Œanon_enum_8÷0
+X265_RC_CRFÃ4Œanon_enum_8÷0
+X265_RC_METHODSÃ4096÷0œanon_enum_8
 X265_REFINE_INTER_LEVELSÃ65536÷0
 X265_REF_LIMIT_CUÃ65536÷0
 X265_REF_LIMIT_DEPTHÃ65536÷0
-X265_SEAÃ4Œanon_enum_4÷0
-X265_STAR_SEARCHÃ4Œanon_enum_4÷0
+X265_SEAÃ4Œanon_enum_7÷0
+X265_STAR_SEARCHÃ4Œanon_enum_7÷0
 X265_TU_LIMIT_BFSÃ65536÷0
 X265_TU_LIMIT_DFSÃ65536÷0
 X265_TU_LIMIT_NEIGHÃ65536÷0
@@ -158,7 +273,750 @@ X265_TYPE_BREFÃ65536÷0
 X265_TYPE_IÃ65536÷0
 X265_TYPE_IDRÃ65536÷0
 X265_TYPE_PÃ65536÷0
-X265_UMH_SEARCHÃ4Œanon_enum_4÷0
+X265_UMH_SEARCHÃ4Œanon_enum_7÷0
+_ATFILE_SOURCEÃ65536÷0
+_BITS_STDINT_INTN_HÃ65536÷0
+_BITS_STDINT_UINTN_HÃ65536÷0
+_BITS_STDIO_LIM_HÃ65536÷0
+_BITS_TYPESIZES_HÃ65536÷0
+_BITS_TYPES_HÃ65536÷0
+_BITS_WCHAR_HÃ65536÷0
+_BSD_SIZE_T_Ã65536÷0
+_BSD_SIZE_T_DEFINED_Ã65536÷0
+_DEFAULT_SOURCEÃ65536÷0
+_FEATURES_HÃ65536÷0
+_GCC_SIZE_TÃ65536÷0
+_GCC_WRAP_STDINT_HÃ65536÷0
+_GNU_SOURCEÃ65536÷0
+_G_fpos64_tÃ2048÷0
+_G_fpos_tÃ2048÷0
+_IOFBFÃ65536÷0
+_IOLBFÃ65536÷0
+_IONBFÃ65536÷0
+_IO_EOF_SEENÃ65536÷0
+_IO_ERR_SEENÃ65536÷0
+_IO_FILEÃ2048÷0
+_IO_FILEÃ32768÷0
+_IO_USER_LOCKÃ65536÷0
+_IO_backup_baseÃ64Œ_IO_FILE÷0œchar *
+_IO_buf_baseÃ64Œ_IO_FILE÷0œchar *
+_IO_buf_endÃ64Œ_IO_FILE÷0œchar *
+_IO_codecvtÃ32768÷0
+_IO_cookie_io_functions_tÃ2048÷0
+_IO_lock_tÃ4096÷0œvoid
+_IO_markerÃ32768÷0
+_IO_read_baseÃ64Œ_IO_FILE÷0œchar *
+_IO_read_endÃ64Œ_IO_FILE÷0œchar *
+_IO_read_ptrÃ64Œ_IO_FILE÷0œchar *
+_IO_save_baseÃ64Œ_IO_FILE÷0œchar *
+_IO_save_endÃ64Œ_IO_FILE÷0œchar *
+_IO_wide_dataÃ32768÷0
+_IO_write_baseÃ64Œ_IO_FILE÷0œchar *
+_IO_write_endÃ64Œ_IO_FILE÷0œchar *
+_IO_write_ptrÃ64Œ_IO_FILE÷0œchar *
+_ISOC11_SOURCEÃ65536÷0
+_ISOC95_SOURCEÃ65536÷0
+_ISOC99_SOURCEÃ65536÷0
+_LARGEFILE64_SOURCEÃ65536÷0
+_LARGEFILE_SOURCEÃ65536÷0
+_LP64Ã65536÷0
+_POSIX_C_SOURCEÃ65536÷0
+_POSIX_SOURCEÃ65536÷0
+_SIZET_Ã65536÷0
+_SIZE_TÃ65536÷0
+_SIZE_T_Ã65536÷0
+_SIZE_T_DECLAREDÃ65536÷0
+_SIZE_T_DEFINEDÃ65536÷0
+_SIZE_T_DEFINED_Ã65536÷0
+_STDC_PREDEF_HÃ65536÷0
+_STDINT_HÃ65536÷0
+_STDIO_HÃ65536÷0
+_SYS_CDEFS_HÃ65536÷0
+_SYS_SIZE_T_HÃ65536÷0
+_T_SIZEÃ65536÷0
+_T_SIZE_Ã65536÷0
+_VA_LIST_DEFINEDÃ65536÷0
+_XOPEN_SOURCEÃ65536÷0
+_XOPEN_SOURCE_EXTENDEDÃ65536÷0
+__ASMNAMEÃ131072Õ(cname)÷0
+__ASMNAME2Ã131072Õ(prefix,cname)÷0
+__ATOMIC_ACQUIREÃ65536÷0
+__ATOMIC_ACQ_RELÃ65536÷0
+__ATOMIC_CONSUMEÃ65536÷0
+__ATOMIC_HLE_ACQUIREÃ65536÷0
+__ATOMIC_HLE_RELEASEÃ65536÷0
+__ATOMIC_RELAXEDÃ65536÷0
+__ATOMIC_RELEASEÃ65536÷0
+__ATOMIC_SEQ_CSTÃ65536÷0
+__BEGIN_DECLSÃ65536÷0
+__BIGGEST_ALIGNMENT__Ã65536÷0
+__BLKCNT64_T_TYPEÃ65536÷0
+__BLKCNT_T_TYPEÃ65536÷0
+__BLKSIZE_T_TYPEÃ65536÷0
+__BYTE_ORDER__Ã65536÷0
+__CHAR16_TYPE__Ã65536÷0
+__CHAR32_TYPE__Ã65536÷0
+__CHAR_BIT__Ã65536÷0
+__CLOCKID_T_TYPEÃ65536÷0
+__CLOCK_T_TYPEÃ65536÷0
+__CONCATÃ131072Õ(x,y)÷0
+__CPU_MASK_TYPEÃ65536÷0
+__DADDR_T_TYPEÃ65536÷0
+__DBL_DECIMAL_DIG__Ã65536÷0
+__DBL_DENORM_MIN__Ã65536÷0
+__DBL_DIG__Ã65536÷0
+__DBL_EPSILON__Ã65536÷0
+__DBL_HAS_DENORM__Ã65536÷0
+__DBL_HAS_INFINITY__Ã65536÷0
+__DBL_HAS_QUIET_NAN__Ã65536÷0
+__DBL_MANT_DIG__Ã65536÷0
+__DBL_MAX_10_EXP__Ã65536÷0
+__DBL_MAX_EXP__Ã65536÷0
+__DBL_MAX__Ã65536÷0
+__DBL_MIN_10_EXP__Ã65536÷0
+__DBL_MIN_EXP__Ã65536÷0
+__DBL_MIN__Ã65536÷0
+__DEC128_EPSILON__Ã65536÷0
+__DEC128_MANT_DIG__Ã65536÷0
+__DEC128_MAX_EXP__Ã65536÷0
+__DEC128_MAX__Ã65536÷0
+__DEC128_MIN_EXP__Ã65536÷0
+__DEC128_MIN__Ã65536÷0
+__DEC128_SUBNORMAL_MIN__Ã65536÷0
+__DEC32_EPSILON__Ã65536÷0
+__DEC32_MANT_DIG__Ã65536÷0
+__DEC32_MAX_EXP__Ã65536÷0
+__DEC32_MAX__Ã65536÷0
+__DEC32_MIN_EXP__Ã65536÷0
+__DEC32_MIN__Ã65536÷0
+__DEC32_SUBNORMAL_MIN__Ã65536÷0
+__DEC64_EPSILON__Ã65536÷0
+__DEC64_MANT_DIG__Ã65536÷0
+__DEC64_MAX_EXP__Ã65536÷0
+__DEC64_MAX__Ã65536÷0
+__DEC64_MIN_EXP__Ã65536÷0
+__DEC64_MIN__Ã65536÷0
+__DEC64_SUBNORMAL_MIN__Ã65536÷0
+__DECIMAL_BID_FORMAT__Ã65536÷0
+__DECIMAL_DIG__Ã65536÷0
+__DEC_EVAL_METHOD__Ã65536÷0
+__DEPRECATEDÃ65536÷0
+__DEV_T_TYPEÃ65536÷0
+__ELF__Ã65536÷0
+__END_DECLSÃ65536÷0
+__EXCEPTIONSÃ65536÷0
+__FD_SETSIZEÃ65536÷0
+__FILEÃ4096÷0œ_IO_FILE
+__FILE_definedÃ65536÷0
+__FINITE_MATH_ONLY__Ã65536÷0
+__FLOAT_WORD_ORDER__Ã65536÷0
+__FLT128_DECIMAL_DIG__Ã65536÷0
+__FLT128_DENORM_MIN__Ã65536÷0
+__FLT128_DIG__Ã65536÷0
+__FLT128_EPSILON__Ã65536÷0
+__FLT128_HAS_DENORM__Ã65536÷0
+__FLT128_HAS_INFINITY__Ã65536÷0
+__FLT128_HAS_QUIET_NAN__Ã65536÷0
+__FLT128_MANT_DIG__Ã65536÷0
+__FLT128_MAX_10_EXP__Ã65536÷0
+__FLT128_MAX_EXP__Ã65536÷0
+__FLT128_MAX__Ã65536÷0
+__FLT128_MIN_10_EXP__Ã65536÷0
+__FLT128_MIN_EXP__Ã65536÷0
+__FLT128_MIN__Ã65536÷0
+__FLT32X_DECIMAL_DIG__Ã65536÷0
+__FLT32X_DENORM_MIN__Ã65536÷0
+__FLT32X_DIG__Ã65536÷0
+__FLT32X_EPSILON__Ã65536÷0
+__FLT32X_HAS_DENORM__Ã65536÷0
+__FLT32X_HAS_INFINITY__Ã65536÷0
+__FLT32X_HAS_QUIET_NAN__Ã65536÷0
+__FLT32X_MANT_DIG__Ã65536÷0
+__FLT32X_MAX_10_EXP__Ã65536÷0
+__FLT32X_MAX_EXP__Ã65536÷0
+__FLT32X_MAX__Ã65536÷0
+__FLT32X_MIN_10_EXP__Ã65536÷0
+__FLT32X_MIN_EXP__Ã65536÷0
+__FLT32X_MIN__Ã65536÷0
+__FLT32_DECIMAL_DIG__Ã65536÷0
+__FLT32_DENORM_MIN__Ã65536÷0
+__FLT32_DIG__Ã65536÷0
+__FLT32_EPSILON__Ã65536÷0
+__FLT32_HAS_DENORM__Ã65536÷0
+__FLT32_HAS_INFINITY__Ã65536÷0
+__FLT32_HAS_QUIET_NAN__Ã65536÷0
+__FLT32_MANT_DIG__Ã65536÷0
+__FLT32_MAX_10_EXP__Ã65536÷0
+__FLT32_MAX_EXP__Ã65536÷0
+__FLT32_MAX__Ã65536÷0
+__FLT32_MIN_10_EXP__Ã65536÷0
+__FLT32_MIN_EXP__Ã65536÷0
+__FLT32_MIN__Ã65536÷0
+__FLT64X_DECIMAL_DIG__Ã65536÷0
+__FLT64X_DENORM_MIN__Ã65536÷0
+__FLT64X_DIG__Ã65536÷0
+__FLT64X_EPSILON__Ã65536÷0
+__FLT64X_HAS_DENORM__Ã65536÷0
+__FLT64X_HAS_INFINITY__Ã65536÷0
+__FLT64X_HAS_QUIET_NAN__Ã65536÷0
+__FLT64X_MANT_DIG__Ã65536÷0
+__FLT64X_MAX_10_EXP__Ã65536÷0
+__FLT64X_MAX_EXP__Ã65536÷0
+__FLT64X_MAX__Ã65536÷0
+__FLT64X_MIN_10_EXP__Ã65536÷0
+__FLT64X_MIN_EXP__Ã65536÷0
+__FLT64X_MIN__Ã65536÷0
+__FLT64_DECIMAL_DIG__Ã65536÷0
+__FLT64_DENORM_MIN__Ã65536÷0
+__FLT64_DIG__Ã65536÷0
+__FLT64_EPSILON__Ã65536÷0
+__FLT64_HAS_DENORM__Ã65536÷0
+__FLT64_HAS_INFINITY__Ã65536÷0
+__FLT64_HAS_QUIET_NAN__Ã65536÷0
+__FLT64_MANT_DIG__Ã65536÷0
+__FLT64_MAX_10_EXP__Ã65536÷0
+__FLT64_MAX_EXP__Ã65536÷0
+__FLT64_MAX__Ã65536÷0
+__FLT64_MIN_10_EXP__Ã65536÷0
+__FLT64_MIN_EXP__Ã65536÷0
+__FLT64_MIN__Ã65536÷0
+__FLT_DECIMAL_DIG__Ã65536÷0
+__FLT_DENORM_MIN__Ã65536÷0
+__FLT_DIG__Ã65536÷0
+__FLT_EPSILON__Ã65536÷0
+__FLT_EVAL_METHOD_TS_18661_3__Ã65536÷0
+__FLT_EVAL_METHOD__Ã65536÷0
+__FLT_HAS_DENORM__Ã65536÷0
+__FLT_HAS_INFINITY__Ã65536÷0
+__FLT_HAS_QUIET_NAN__Ã65536÷0
+__FLT_MANT_DIG__Ã65536÷0
+__FLT_MAX_10_EXP__Ã65536÷0
+__FLT_MAX_EXP__Ã65536÷0
+__FLT_MAX__Ã65536÷0
+__FLT_MIN_10_EXP__Ã65536÷0
+__FLT_MIN_EXP__Ã65536÷0
+__FLT_MIN__Ã65536÷0
+__FLT_RADIX__Ã65536÷0
+__FSBLKCNT64_T_TYPEÃ65536÷0
+__FSBLKCNT_T_TYPEÃ65536÷0
+__FSFILCNT64_T_TYPEÃ65536÷0
+__FSFILCNT_T_TYPEÃ65536÷0
+__FSID_T_TYPEÃ65536÷0
+__FSWORD_T_TYPEÃ65536÷0
+__FXSR__Ã65536÷0
+__GCC_ASM_FLAG_OUTPUTS__Ã65536÷0
+__GCC_ATOMIC_BOOL_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_CHAR16_T_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_CHAR32_T_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_CHAR_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_INT_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_LLONG_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_LONG_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_POINTER_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_SHORT_LOCK_FREEÃ65536÷0
+__GCC_ATOMIC_TEST_AND_SET_TRUEVALÃ65536÷0
+__GCC_ATOMIC_WCHAR_T_LOCK_FREEÃ65536÷0
+__GCC_HAVE_DWARF2_CFI_ASMÃ65536÷0
+__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1Ã65536÷0
+__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2Ã65536÷0
+__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4Ã65536÷0
+__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8Ã65536÷0
+__GCC_IEC_559Ã65536÷0
+__GCC_IEC_559_COMPLEXÃ65536÷0
+__GID_T_TYPEÃ65536÷0
+__GLIBCXX_BITSIZE_INT_N_0Ã65536÷0
+__GLIBCXX_TYPE_INT_N_0Ã65536÷0
+__GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATIONÃ65536÷0
+__GLIBC_MINOR__Ã65536÷0
+__GLIBC_PREREQÃ131072Õ(maj,min)÷0
+__GLIBC_USEÃ131072Õ(F)÷0
+__GLIBC_USE_DEPRECATED_GETSÃ65536÷0
+__GLIBC_USE_IEC_60559_BFP_EXTÃ65536÷0
+__GLIBC_USE_IEC_60559_FUNCS_EXTÃ65536÷0
+__GLIBC_USE_IEC_60559_TYPES_EXTÃ65536÷0
+__GLIBC_USE_LIB_EXT2Ã65536÷0
+__GLIBC__Ã65536÷0
+__GNUC_MINOR__Ã65536÷0
+__GNUC_PATCHLEVEL__Ã65536÷0
+__GNUC_PREREQÃ131072Õ(maj,min)÷0
+__GNUC_STDC_INLINE__Ã65536÷0
+__GNUC_VA_LISTÃ65536÷0
+__GNUC__Ã65536÷0
+__GNUG__Ã65536÷0
+__GNU_LIBRARY__Ã65536÷0
+__GXX_ABI_VERSIONÃ65536÷0
+__GXX_EXPERIMENTAL_CXX0X__Ã65536÷0
+__GXX_RTTIÃ65536÷0
+__GXX_WEAK__Ã65536÷0
+__HAVE_GENERIC_SELECTIONÃ65536÷0
+__ID_T_TYPEÃ65536÷0
+__INO64_T_TYPEÃ65536÷0
+__INO_T_MATCHES_INO64_TÃ65536÷0
+__INO_T_TYPEÃ65536÷0
+__INT16_CÃ131072Õ(c)÷0
+__INT16_MAX__Ã65536÷0
+__INT16_TYPE__Ã65536÷0
+__INT32_CÃ131072Õ(c)÷0
+__INT32_MAX__Ã65536÷0
+__INT32_TYPE__Ã65536÷0
+__INT64_CÃ131072Õ(c)÷0
+__INT64_MAX__Ã65536÷0
+__INT64_TYPE__Ã65536÷0
+__INT8_CÃ131072Õ(c)÷0
+__INT8_MAX__Ã65536÷0
+__INT8_TYPE__Ã65536÷0
+__INTMAX_CÃ131072Õ(c)÷0
+__INTMAX_MAX__Ã65536÷0
+__INTMAX_TYPE__Ã65536÷0
+__INTMAX_WIDTH__Ã65536÷0
+__INTPTR_MAX__Ã65536÷0
+__INTPTR_TYPE__Ã65536÷0
+__INTPTR_WIDTH__Ã65536÷0
+__INT_FAST16_MAX__Ã65536÷0
+__INT_FAST16_TYPE__Ã65536÷0
+__INT_FAST16_WIDTH__Ã65536÷0
+__INT_FAST32_MAX__Ã65536÷0
+__INT_FAST32_TYPE__Ã65536÷0
+__INT_FAST32_WIDTH__Ã65536÷0
+__INT_FAST64_MAX__Ã65536÷0
+__INT_FAST64_TYPE__Ã65536÷0
+__INT_FAST64_WIDTH__Ã65536÷0
+__INT_FAST8_MAX__Ã65536÷0
+__INT_FAST8_TYPE__Ã65536÷0
+__INT_FAST8_WIDTH__Ã65536÷0
+__INT_LEAST16_MAX__Ã65536÷0
+__INT_LEAST16_TYPE__Ã65536÷0
+__INT_LEAST16_WIDTH__Ã65536÷0
+__INT_LEAST32_MAX__Ã65536÷0
+__INT_LEAST32_TYPE__Ã65536÷0
+__INT_LEAST32_WIDTH__Ã65536÷0
+__INT_LEAST64_MAX__Ã65536÷0
+__INT_LEAST64_TYPE__Ã65536÷0
+__INT_LEAST64_WIDTH__Ã65536÷0
+__INT_LEAST8_MAX__Ã65536÷0
+__INT_LEAST8_TYPE__Ã65536÷0
+__INT_LEAST8_WIDTH__Ã65536÷0
+__INT_MAX__Ã65536÷0
+__INT_WIDTH__Ã65536÷0
+__KERNEL_STRICT_NAMESÃ65536÷0
+__KEY_T_TYPEÃ65536÷0
+__LDBL_DECIMAL_DIG__Ã65536÷0
+__LDBL_DENORM_MIN__Ã65536÷0
+__LDBL_DIG__Ã65536÷0
+__LDBL_EPSILON__Ã65536÷0
+__LDBL_HAS_DENORM__Ã65536÷0
+__LDBL_HAS_INFINITY__Ã65536÷0
+__LDBL_HAS_QUIET_NAN__Ã65536÷0
+__LDBL_MANT_DIG__Ã65536÷0
+__LDBL_MAX_10_EXP__Ã65536÷0
+__LDBL_MAX_EXP__Ã65536÷0
+__LDBL_MAX__Ã65536÷0
+__LDBL_MIN_10_EXP__Ã65536÷0
+__LDBL_MIN_EXP__Ã65536÷0
+__LDBL_MIN__Ã65536÷0
+__LDBL_REDIRÃ131072Õ(name,proto)÷0
+__LDBL_REDIR1Ã131072Õ(name,proto,alias)÷0
+__LDBL_REDIR1_NTHÃ131072Õ(name,proto,alias)÷0
+__LDBL_REDIR_DECLÃ131072Õ(name)÷0
+__LDBL_REDIR_NTHÃ131072Õ(name,proto)÷0
+__LEAFÃ65536÷0
+__LEAF_ATTRÃ65536÷0
+__LONG_LONG_MAX__Ã65536÷0
+__LONG_LONG_WIDTH__Ã65536÷0
+__LONG_MAX__Ã65536÷0
+__LONG_WIDTH__Ã65536÷0
+__LP64__Ã65536÷0
+__MMX__Ã65536÷0
+__MODE_T_TYPEÃ65536÷0
+__NLINK_T_TYPEÃ65536÷0
+__NO_INLINE__Ã65536÷0
+__NTHÃ131072Õ(fct)÷0
+__NTHNLÃ131072Õ(fct)÷0
+__OFF64_T_TYPEÃ65536÷0
+__OFF_T_MATCHES_OFF64_TÃ65536÷0
+__OFF_T_TYPEÃ65536÷0
+__ORDER_BIG_ENDIAN__Ã65536÷0
+__ORDER_LITTLE_ENDIAN__Ã65536÷0
+__ORDER_PDP_ENDIAN__Ã65536÷0
+__PÃ65536÷0
+__PÃ131072Õ(args)÷0
+__PIC__Ã65536÷0
+__PID_T_TYPEÃ65536÷0
+__PIE__Ã65536÷0
+__PMTÃ65536÷0
+__PMTÃ131072Õ(args)÷0
+__PRAGMA_REDEFINE_EXTNAMEÃ65536÷0
+__PTRDIFF_MAX__Ã65536÷0
+__PTRDIFF_TYPE__Ã65536÷0
+__PTRDIFF_WIDTH__Ã65536÷0
+__REDIRECTÃ131072Õ(name,proto,alias)÷0
+__REDIRECT_LDBLÃ131072Õ(name,proto,alias)÷0
+__REDIRECT_NTHÃ131072Õ(name,proto,alias)÷0
+__REDIRECT_NTHNLÃ131072Õ(name,proto,alias)÷0
+__REDIRECT_NTH_LDBLÃ131072Õ(name,proto,alias)÷0
+__REGISTER_PREFIX__Ã65536÷0
+__RLIM64_T_TYPEÃ65536÷0
+__RLIM_T_MATCHES_RLIM64_TÃ65536÷0
+__RLIM_T_TYPEÃ65536÷0
+__S16_TYPEÃ65536÷0
+__S32_TYPEÃ65536÷0
+__S64_TYPEÃ65536÷0
+__SCHAR_MAX__Ã65536÷0
+__SCHAR_WIDTH__Ã65536÷0
+__SEG_FSÃ65536÷0
+__SEG_GSÃ65536÷0
+__SHRT_MAX__Ã65536÷0
+__SHRT_WIDTH__Ã65536÷0
+__SIG_ATOMIC_MAX__Ã65536÷0
+__SIG_ATOMIC_MIN__Ã65536÷0
+__SIG_ATOMIC_TYPE__Ã65536÷0
+__SIG_ATOMIC_WIDTH__Ã65536÷0
+__SIZEOF_DOUBLE__Ã65536÷0
+__SIZEOF_FLOAT128__Ã65536÷0
+__SIZEOF_FLOAT80__Ã65536÷0
+__SIZEOF_FLOAT__Ã65536÷0
+__SIZEOF_INT128__Ã65536÷0
+__SIZEOF_INT__Ã65536÷0
+__SIZEOF_LONG_DOUBLE__Ã65536÷0
+__SIZEOF_LONG_LONG__Ã65536÷0
+__SIZEOF_LONG__Ã65536÷0
+__SIZEOF_POINTER__Ã65536÷0
+__SIZEOF_PTRDIFF_T__Ã65536÷0
+__SIZEOF_SHORT__Ã65536÷0
+__SIZEOF_SIZE_T__Ã65536÷0
+__SIZEOF_WCHAR_T__Ã65536÷0
+__SIZEOF_WINT_T__Ã65536÷0
+__SIZE_MAX__Ã65536÷0
+__SIZE_TÃ65536÷0
+__SIZE_TYPE__Ã65536÷0
+__SIZE_T__Ã65536÷0
+__SIZE_WIDTH__Ã65536÷0
+__SLONG32_TYPEÃ65536÷0
+__SLONGWORD_TYPEÃ65536÷0
+__SQUAD_TYPEÃ65536÷0
+__SSE2_MATH__Ã65536÷0
+__SSE2__Ã65536÷0
+__SSE_MATH__Ã65536÷0
+__SSE__Ã65536÷0
+__SSIZE_T_TYPEÃ65536÷0
+__SSP_STRONG__Ã65536÷0
+__STDC_CONSTANT_MACROSÃ65536÷0
+__STDC_HOSTED__Ã65536÷0
+__STDC_IEC_559_COMPLEX__Ã65536÷0
+__STDC_IEC_559__Ã65536÷0
+__STDC_ISO_10646__Ã65536÷0
+__STDC_LIMIT_MACROSÃ65536÷0
+__STDC_UTF_16__Ã65536÷0
+__STDC_UTF_32__Ã65536÷0
+__STDC__Ã65536÷0
+__STD_TYPEÃ65536÷0
+__STRINGÃ131072Õ(x)÷0
+__SUSECONDS_T_TYPEÃ65536÷0
+__SWORD_TYPEÃ65536÷0
+__SYSCALL_SLONG_TYPEÃ65536÷0
+__SYSCALL_ULONG_TYPEÃ65536÷0
+__SYSCALL_WORDSIZEÃ65536÷0
+__THROWÃ65536÷0
+__THROWNLÃ65536÷0
+__TIMER_T_TYPEÃ65536÷0
+__TIME_T_TYPEÃ65536÷0
+__U16_TYPEÃ65536÷0
+__U32_TYPEÃ65536÷0
+__U64_TYPEÃ65536÷0
+__UID_T_TYPEÃ65536÷0
+__UINT16_CÃ131072Õ(c)÷0
+__UINT16_MAX__Ã65536÷0
+__UINT16_TYPE__Ã65536÷0
+__UINT32_CÃ131072Õ(c)÷0
+__UINT32_MAX__Ã65536÷0
+__UINT32_TYPE__Ã65536÷0
+__UINT64_CÃ131072Õ(c)÷0
+__UINT64_MAX__Ã65536÷0
+__UINT64_TYPE__Ã65536÷0
+__UINT8_CÃ131072Õ(c)÷0
+__UINT8_MAX__Ã65536÷0
+__UINT8_TYPE__Ã65536÷0
+__UINTMAX_CÃ131072Õ(c)÷0
+__UINTMAX_MAX__Ã65536÷0
+__UINTMAX_TYPE__Ã65536÷0
+__UINTPTR_MAX__Ã65536÷0
+__UINTPTR_TYPE__Ã65536÷0
+__UINT_FAST16_MAX__Ã65536÷0
+__UINT_FAST16_TYPE__Ã65536÷0
+__UINT_FAST32_MAX__Ã65536÷0
+__UINT_FAST32_TYPE__Ã65536÷0
+__UINT_FAST64_MAX__Ã65536÷0
+__UINT_FAST64_TYPE__Ã65536÷0
+__UINT_FAST8_MAX__Ã65536÷0
+__UINT_FAST8_TYPE__Ã65536÷0
+__UINT_LEAST16_MAX__Ã65536÷0
+__UINT_LEAST16_TYPE__Ã65536÷0
+__UINT_LEAST32_MAX__Ã65536÷0
+__UINT_LEAST32_TYPE__Ã65536÷0
+__UINT_LEAST64_MAX__Ã65536÷0
+__UINT_LEAST64_TYPE__Ã65536÷0
+__UINT_LEAST8_MAX__Ã65536÷0
+__UINT_LEAST8_TYPE__Ã65536÷0
+__ULONG32_TYPEÃ65536÷0
+__ULONGWORD_TYPEÃ65536÷0
+__UQUAD_TYPEÃ65536÷0
+__USECONDS_T_TYPEÃ65536÷0
+__USER_LABEL_PREFIX__Ã65536÷0
+__USE_ATFILEÃ65536÷0
+__USE_FILE_OFFSET64Ã65536÷0
+__USE_FORTIFY_LEVELÃ65536÷0
+__USE_GNUÃ65536÷0
+__USE_ISOC11Ã65536÷0
+__USE_ISOC95Ã65536÷0
+__USE_ISOC99Ã65536÷0
+__USE_ISOCXX11Ã65536÷0
+__USE_LARGEFILEÃ65536÷0
+__USE_LARGEFILE64Ã65536÷0
+__USE_MISCÃ65536÷0
+__USE_POSIXÃ65536÷0
+__USE_POSIX199309Ã65536÷0
+__USE_POSIX199506Ã65536÷0
+__USE_POSIX2Ã65536÷0
+__USE_UNIX98Ã65536÷0
+__USE_XOPENÃ65536÷0
+__USE_XOPEN2KÃ65536÷0
+__USE_XOPEN2K8Ã65536÷0
+__USE_XOPEN2K8XSIÃ65536÷0
+__USE_XOPEN2KXSIÃ65536÷0
+__USE_XOPEN_EXTENDEDÃ65536÷0
+__UWORD_TYPEÃ65536÷0
+__VERSION__Ã65536÷0
+__WCHAR_MAXÃ65536÷0
+__WCHAR_MAX__Ã65536÷0
+__WCHAR_MINÃ65536÷0
+__WCHAR_MIN__Ã65536÷0
+__WCHAR_TYPE__Ã65536÷0
+__WCHAR_WIDTH__Ã65536÷0
+__WINT_MAX__Ã65536÷0
+__WINT_MIN__Ã65536÷0
+__WINT_TYPE__Ã65536÷0
+__WINT_WIDTH__Ã65536÷0
+__WORDSIZEÃ65536÷0
+__WORDSIZE_TIME64_COMPAT32Ã65536÷0
+____FILE_definedÃ65536÷0
+_____fpos64_t_definedÃ65536÷0
+_____fpos_t_definedÃ65536÷0
+____mbstate_t_definedÃ65536÷0
+___int_size_t_hÃ65536÷0
+__always_inlineÃ65536÷0
+__amd64Ã65536÷0
+__amd64__Ã65536÷0
+__attribute_alloc_size__Ã131072Õ(params)÷0
+__attribute_artificial__Ã65536÷0
+__attribute_const__Ã65536÷0
+__attribute_deprecated__Ã65536÷0
+__attribute_deprecated_msg__Ã131072Õ(msg)÷0
+__attribute_format_arg__Ã131072Õ(x)÷0
+__attribute_format_strfmon__Ã131072Õ(a,b)÷0
+__attribute_malloc__Ã65536÷0
+__attribute_noinline__Ã65536÷0
+__attribute_nonstring__Ã65536÷0
+__attribute_pure__Ã65536÷0
+__attribute_used__Ã65536÷0
+__attribute_warn_unused_result__Ã65536÷0
+__blkcnt64_tÃ4096÷0œlong int
+__blkcnt_tÃ4096÷0œlong int
+__blksize_tÃ4096÷0œlong int
+__bosÃ131072Õ(ptr)÷0
+__bos0Ã131072Õ(ptr)÷0
+__caddr_tÃ4096÷0œchar *
+__clock_tÃ4096÷0œlong int
+__clockid_tÃ4096÷0œint
+__code_model_small__Ã65536÷0
+__cookie_io_functions_t_definedÃ65536÷0
+__countÃ64Œanon_struct_1÷0œint
+__cplusplusÃ65536÷0
+__cpp_aggregate_nsdmiÃ65536÷0
+__cpp_alias_templatesÃ65536÷0
+__cpp_attributesÃ65536÷0
+__cpp_binary_literalsÃ65536÷0
+__cpp_constexprÃ65536÷0
+__cpp_decltypeÃ65536÷0
+__cpp_decltype_autoÃ65536÷0
+__cpp_delegating_constructorsÃ65536÷0
+__cpp_digit_separatorsÃ65536÷0
+__cpp_exceptionsÃ65536÷0
+__cpp_generic_lambdasÃ65536÷0
+__cpp_hex_floatÃ65536÷0
+__cpp_inheriting_constructorsÃ65536÷0
+__cpp_init_capturesÃ65536÷0
+__cpp_initializer_listsÃ65536÷0
+__cpp_lambdasÃ65536÷0
+__cpp_nsdmiÃ65536÷0
+__cpp_range_based_forÃ65536÷0
+__cpp_raw_stringsÃ65536÷0
+__cpp_ref_qualifiersÃ65536÷0
+__cpp_return_type_deductionÃ65536÷0
+__cpp_rttiÃ65536÷0
+__cpp_runtime_arraysÃ65536÷0
+__cpp_rvalue_referenceÃ65536÷0
+__cpp_rvalue_referencesÃ65536÷0
+__cpp_sized_deallocationÃ65536÷0
+__cpp_static_assertÃ65536÷0
+__cpp_threadsafe_static_initÃ65536÷0
+__cpp_unicode_charactersÃ65536÷0
+__cpp_unicode_literalsÃ65536÷0
+__cpp_user_defined_literalsÃ65536÷0
+__cpp_variable_templatesÃ65536÷0
+__cpp_variadic_templatesÃ65536÷0
+__daddr_tÃ4096÷0œint
+__dev_tÃ4096÷0œunsigned long int
+__errordeclÃ131072Õ(name,msg)÷0
+__extern_always_inlineÃ65536÷0
+__extern_inlineÃ65536÷0
+__feof_unlocked_bodyÃ131072Õ(_fp)÷0
+__ferror_unlocked_bodyÃ131072Õ(_fp)÷0
+__flexarrÃ65536÷0
+__fortify_functionÃ65536÷0
+__fpos64_tÃ4096÷0œ_G_fpos64_t
+__fpos_tÃ4096÷0œ_G_fpos_t
+__fsblkcnt64_tÃ4096÷0œunsigned long int
+__fsblkcnt_tÃ4096÷0œunsigned long int
+__fsfilcnt64_tÃ4096÷0œunsigned long int
+__fsfilcnt_tÃ4096÷0œunsigned long int
+__fsid_tÃ4096÷0œanon_struct_0
+__fsword_tÃ4096÷0œlong int
+__getc_unlocked_bodyÃ131072Õ(_fp)÷0
+__getdelimÃ1024Õ(char **__restrict __lineptr, size_t *__restrict __n, int __delimiter, FILE *__restrict __stream)÷0œ__ssize_t
+__gid_tÃ4096÷0œunsigned int
+__glibc_c99_flexarr_availableÃ65536÷0
+__glibc_clang_has_extensionÃ131072Õ(ext)÷0
+__glibc_clang_prereqÃ131072Õ(maj,min)÷0
+__glibc_has_attributeÃ131072Õ(attr)÷0
+__glibc_likelyÃ131072Õ(cond)÷0
+__glibc_macro_warningÃ131072Õ(message)÷0
+__glibc_macro_warning1Ã131072Õ(message)÷0
+__glibc_unlikelyÃ131072Õ(cond)÷0
+__gnu_linux__Ã65536÷0
+__gnuc_va_listÃ4096÷0œ__builtin_va_list
+__has_includeÃ131072Õ(STR)÷0
+__has_include_nextÃ131072Õ(STR)÷0
+__id_tÃ4096÷0œunsigned int
+__ino64_tÃ4096÷0œunsigned long int
+__ino_tÃ4096÷0œunsigned long int
+__int16_tÃ4096÷0œsigned short int
+__int32_tÃ4096÷0œsigned int
+__int64_tÃ4096÷0œsigned long int
+__int8_tÃ4096÷0œsigned char
+__int_least16_tÃ4096÷0œ__int16_t
+__int_least32_tÃ4096÷0œ__int32_t
+__int_least64_tÃ4096÷0œ__int64_t
+__int_least8_tÃ4096÷0œ__int8_t
+__intmax_tÃ4096÷0œlong int
+__intptr_tÃ4096÷0œlong int
+__intptr_t_definedÃ65536÷0
+__k8Ã65536÷0
+__k8__Ã65536÷0
+__key_tÃ4096÷0œint
+__linuxÃ65536÷0
+__linux__Ã65536÷0
+__loff_tÃ4096÷0œ__off64_t
+__mbstate_tÃ4096÷0œanon_struct_1
+__mode_tÃ4096÷0œunsigned int
+__need_NULLÃ65536÷0
+__need___va_listÃ65536÷0
+__need_size_tÃ65536÷0
+__nlink_tÃ4096÷0œunsigned long int
+__nonnullÃ131072Õ(params)÷0
+__off64_tÃ4096÷0œlong int
+__off64_t_definedÃ65536÷0
+__off_tÃ4096÷0œlong int
+__off_t_definedÃ65536÷0
+__overflowÃ1024Õ(FILE *, int)÷0œint
+__pad5Ã64Œ_IO_FILE÷0œsize_t
+__pic__Ã65536÷0
+__pid_tÃ4096÷0œint
+__pie__Ã65536÷0
+__posÃ64Œ_G_fpos64_t÷0œ__off64_t
+__posÃ64Œ_G_fpos_t÷0œ__off_t
+__ptr_tÃ65536÷0
+__putc_unlocked_bodyÃ131072Õ(_ch,_fp)÷0
+__quad_tÃ4096÷0œlong int
+__restrict_arrÃ65536÷0
+__rlim64_tÃ4096÷0œunsigned long int
+__rlim_tÃ4096÷0œunsigned long int
+__sig_atomic_tÃ4096÷0œint
+__size_tÃ65536÷0
+__size_t__Ã65536÷0
+__socklen_tÃ4096÷0œunsigned int
+__ssize_tÃ4096÷0œlong int
+__ssize_t_definedÃ65536÷0
+__stateÃ64Œ_G_fpos64_t÷0œ__mbstate_t
+__stateÃ64Œ_G_fpos_t÷0œ__mbstate_t
+__struct_FILE_definedÃ65536÷0
+__stub___compat_bdflushÃ65536÷0
+__stub_chflagsÃ65536÷0
+__stub_fattachÃ65536÷0
+__stub_fchflagsÃ65536÷0
+__stub_fdetachÃ65536÷0
+__stub_getmsgÃ65536÷0
+__stub_gttyÃ65536÷0
+__stub_lchmodÃ65536÷0
+__stub_putmsgÃ65536÷0
+__stub_revokeÃ65536÷0
+__stub_setloginÃ65536÷0
+__stub_sigreturnÃ65536÷0
+__stub_sstkÃ65536÷0
+__stub_sttyÃ65536÷0
+__suseconds_tÃ4096÷0œlong int
+__syscall_slong_tÃ4096÷0œlong int
+__syscall_ulong_tÃ4096÷0œunsigned long int
+__time_tÃ4096÷0œlong int
+__timer_tÃ4096÷0œvoid *
+__u_charÃ4096÷0œunsigned char
+__u_intÃ4096÷0œunsigned int
+__u_longÃ4096÷0œunsigned long int
+__u_quad_tÃ4096÷0œunsigned long int
+__u_shortÃ4096÷0œunsigned short int
+__uflowÃ1024Õ(FILE *)÷0œint
+__uid_tÃ4096÷0œunsigned int
+__uint16_tÃ4096÷0œunsigned short int
+__uint32_tÃ4096÷0œunsigned int
+__uint64_tÃ4096÷0œunsigned long int
+__uint8_tÃ4096÷0œunsigned char
+__uint_least16_tÃ4096÷0œ__uint16_t
+__uint_least32_tÃ4096÷0œ__uint32_t
+__uint_least64_tÃ4096÷0œ__uint64_t
+__uint_least8_tÃ4096÷0œ__uint8_t
+__uintmax_tÃ4096÷0œunsigned long int
+__unixÃ65536÷0
+__unix__Ã65536÷0
+__useconds_tÃ4096÷0œunsigned int
+__va_arg_packÃ131072Õ()÷0
+__va_arg_pack_lenÃ131072Õ()÷0
+__valÃ64Œanon_struct_0÷0œint
+__valueÃ64Œanon_struct_1÷0œanon_union_2
+__warnattrÃ131072Õ(msg)÷0
+__warndeclÃ131072Õ(name,msg)÷0
+__wchÃ64Œanon_struct_1::anon_union_2÷0œunsigned int
+__wchbÃ64Œanon_struct_1::anon_union_2÷0œchar
+__wurÃ65536÷0
+__x86_64Ã65536÷0
+__x86_64__Ã65536÷0
+_chainÃ64Œ_IO_FILE÷0œ_IO_FILE
+_codecvtÃ64Œ_IO_FILE÷0œ_IO_codecvt
+_cur_columnÃ64Œ_IO_FILE÷0œunsigned short
+_filenoÃ64Œ_IO_FILE÷0œint
+_flagsÃ64Œ_IO_FILE÷0œint
+_flags2Ã64Œ_IO_FILE÷0œint
+_freeres_bufÃ64Œ_IO_FILE÷0œvoid *
+_freeres_listÃ64Œ_IO_FILE÷0œ_IO_FILE
+_lockÃ64Œ_IO_FILE÷0œ_IO_lock_t *
+_markersÃ64Œ_IO_FILE÷0œ_IO_marker
+_modeÃ64Œ_IO_FILE÷0œint
+_offsetÃ64Œ_IO_FILE÷0œ__off64_t
+_old_offsetÃ64Œ_IO_FILE÷0œ__off_t
+_shortbufÃ64Œ_IO_FILE÷0œchar
+_sys_errlistÃ32768÷0œconst char *const
+_sys_nerrÃ32768÷0œint
+_unused2Ã64Œ_IO_FILE÷0œchar
+_vtable_offsetÃ64Œ_IO_FILE÷0œsigned char
+_wide_dataÃ64Œ_IO_FILE÷0œ_IO_wide_data
 accBitsÃ64Œx265_stats÷0œuint64_t
 aggregateVmafScoreÃ64Œx265_stats÷0œdouble
 analysis2PassÃ64Œx265_picture÷0œx265_analysis_2Pass
@@ -172,19 +1030,22 @@ analysisReuseLevelÃ64Œx265_analysis_validate÷0œint
 analysisReuseLevelÃ64Œx265_param÷0œint
 analysisReuseModeÃ64Œx265_param÷0œint
 analysisSaveÃ64Œx265_param÷0œconst char *
-anon_enum_0Ã2÷0
-anon_enum_1Ã2÷0
-anon_enum_2Ã2÷0
 anon_enum_3Ã2÷0
 anon_enum_4Ã2÷0
 anon_enum_5Ã2÷0
-anon_struct_6Ã2048Œx265_param÷0
-anon_struct_7Ã2048Œx265_param÷0
+anon_enum_6Ã2÷0
+anon_enum_7Ã2÷0
+anon_enum_8Ã2÷0
+anon_struct_0Ã2048÷0
+anon_struct_1Ã2048÷0
+anon_struct_10Ã2048Œx265_param÷0
+anon_struct_9Ã2048Œx265_param÷0
+anon_union_2Ã8192Œanon_struct_1÷0
 api_build_numberÃ64Œx265_api÷0œint
 api_major_versionÃ64Œx265_api÷0œint
-aqModeÃ64Œx265_param::anon_struct_6÷0œint
-aqStrengthÃ64Œx265_param::anon_struct_6÷0œdouble
-aspectRatioIdcÃ64Œx265_param::anon_struct_7÷0œint
+aqModeÃ64Œx265_param::anon_struct_9÷0œint
+aqStrengthÃ64Œx265_param::anon_struct_9÷0œdouble
+aspectRatioIdcÃ64Œx265_param::anon_struct_10÷0œint
 avgChromaDistortionÃ64Œx265_frame_stats÷0œdouble
 avgChromaULevelÃ64Œx265_frame_stats÷0œdouble
 avgChromaVLevelÃ64Œx265_frame_stats÷0œdouble
@@ -214,24 +1075,24 @@ bEmitVUIHRDInfoÃ64Œx265_param÷0œint
 bEmitVUITimingInfoÃ64Œx265_param÷0œint
 bEnableAMPÃ64Œx265_param÷0œint
 bEnableAccessUnitDelimitersÃ64Œx265_param÷0œint
-bEnableChromaLocInfoPresentFlagÃ64Œx265_param::anon_struct_7÷0œint
-bEnableColorDescriptionPresentFlagÃ64Œx265_param::anon_struct_7÷0œint
-bEnableConstVbvÃ64Œx265_param::anon_struct_6÷0œint
+bEnableChromaLocInfoPresentFlagÃ64Œx265_param::anon_struct_10÷0œint
+bEnableColorDescriptionPresentFlagÃ64Œx265_param::anon_struct_10÷0œint
+bEnableConstVbvÃ64Œx265_param::anon_struct_9÷0œint
 bEnableConstrainedIntraÃ64Œx265_param÷0œint
-bEnableDefaultDisplayWindowFlagÃ64Œx265_param::anon_struct_7÷0œint
+bEnableDefaultDisplayWindowFlagÃ64Œx265_param::anon_struct_10÷0œint
 bEnableEarlySkipÃ64Œx265_param÷0œint
 bEnableFastIntraÃ64Œx265_param÷0œint
-bEnableGrainÃ64Œx265_param::anon_struct_6÷0œint
+bEnableGrainÃ64Œx265_param::anon_struct_9÷0œint
 bEnableLoopFilterÃ64Œx265_param÷0œint
-bEnableOverscanAppropriateFlagÃ64Œx265_param::anon_struct_7÷0œint
-bEnableOverscanInfoPresentFlagÃ64Œx265_param::anon_struct_7÷0œint
+bEnableOverscanAppropriateFlagÃ64Œx265_param::anon_struct_10÷0œint
+bEnableOverscanInfoPresentFlagÃ64Œx265_param::anon_struct_10÷0œint
 bEnablePsnrÃ64Œx265_param÷0œint
 bEnableRdRefineÃ64Œx265_param÷0œint
 bEnableRectInterÃ64Œx265_param÷0œint
 bEnableRecursionSkipÃ64Œx265_param÷0œint
 bEnableSAOÃ64Œx265_param÷0œint
 bEnableSignHidingÃ64Œx265_param÷0œint
-bEnableSlowFirstPassÃ64Œx265_param::anon_struct_6÷0œint
+bEnableSlowFirstPassÃ64Œx265_param::anon_struct_9÷0œint
 bEnableSplitRdSkipÃ64Œx265_param÷0œint
 bEnableSsimÃ64Œx265_param÷0œint
 bEnableStrongIntraSmoothingÃ64Œx265_param÷0œint
@@ -239,8 +1100,8 @@ bEnableTSkipFastÃ64Œx265_param÷0œint
 bEnableTemporalMvpÃ64Œx265_param÷0œint
 bEnableTemporalSubLayersÃ64Œx265_param÷0œint
 bEnableTransformSkipÃ64Œx265_param÷0œint
-bEnableVideoFullRangeFlagÃ64Œx265_param::anon_struct_7÷0œint
-bEnableVideoSignalTypePresentFlagÃ64Œx265_param::anon_struct_7÷0œint
+bEnableVideoFullRangeFlagÃ64Œx265_param::anon_struct_10÷0œint
+bEnableVideoSignalTypePresentFlagÃ64Œx265_param::anon_struct_10÷0œint
 bEnableWavefrontÃ64Œx265_param÷0œint
 bEnableWeightedBiPredÃ64Œx265_param÷0œint
 bEnableWeightedPredÃ64Œx265_param÷0œint
@@ -269,31 +1130,35 @@ bScenecutÃ64Œx265_frame_stats÷0œint
 bSingleSeiNalÃ64Œx265_param÷0œint
 bSourceReferenceEstimationÃ64Œx265_param÷0œint
 bSsimRdÃ64Œx265_param÷0œint
-bStatReadÃ64Œx265_param::anon_struct_6÷0œint
-bStatWriteÃ64Œx265_param::anon_struct_6÷0œint
-bStrictCbrÃ64Œx265_param::anon_struct_6÷0œint
+bStatReadÃ64Œx265_param::anon_struct_9÷0œint
+bStatWriteÃ64Œx265_param::anon_struct_9÷0œint
+bStrictCbrÃ64Œx265_param::anon_struct_9÷0œint
 bUseAnalysisFileÃ64Œx265_param÷0œint
 bUseRcStatsÃ64Œx265_param÷0œint
 bframesÃ64Œx265_analysis_validate÷0œint
 bframesÃ64Œx265_param÷0œint
 bitDepthÃ64Œx265_picture÷0œint
 bit_depthÃ64Œx265_api÷0œint
-bitrateÃ64Œx265_param::anon_struct_6÷0œint
+bitrateÃ64Œx265_param::anon_struct_9÷0œint
 bitrateÃ64Œx265_sliceType_stats÷0œdouble
 bitrateÃ64Œx265_stats÷0œdouble
 bitrateFactorÃ64Œx265_zone÷0œfloat
 bitsÃ64Œx265_frame_stats÷0œuint64_t
 bufferFillÃ64Œx265_frame_stats÷0œdouble
 build_info_strÃ64Œx265_api÷0œconst char *
-calculate_vmaf_framelevelscoreÃ1024Õ(x265_vmaf_framedata *)Œx265_api÷0œdouble
-calculate_vmafscoreÃ1024Õ(x265_param *, x265_vmaf_data *)Œx265_api÷0œdouble
 cbQpOffsetÃ64Œx265_param÷0œint
-chromaSampleLocTypeBottomFieldÃ64Œx265_param::anon_struct_7÷0œint
-chromaSampleLocTypeTopFieldÃ64Œx265_param::anon_struct_7÷0œint
+chromaSampleLocTypeBottomFieldÃ64Œx265_param::anon_struct_10÷0œint
+chromaSampleLocTypeTopFieldÃ64Œx265_param::anon_struct_10÷0œint
 cleanupÃ1024Õ(void)Œx265_api÷0œvoid
-colorPrimariesÃ64Œx265_param::anon_struct_7÷0œint
+closeÃ64Œ_IO_cookie_io_functions_t÷0œcookie_close_function_t *
+colorPrimariesÃ64Œx265_param::anon_struct_10÷0œint
 colorSpaceÃ64Œx265_picture÷0œint
-complexityBlurÃ64Œx265_param::anon_struct_6÷0œdouble
+complexityBlurÃ64Œx265_param::anon_struct_9÷0œdouble
+cookie_close_function_tÃ4096÷0œtypedef int
+cookie_io_functions_tÃ4096÷0œ_IO_cookie_io_functions_t
+cookie_read_function_tÃ4096÷0œtypedef __ssize_t
+cookie_seek_function_tÃ4096÷0œtypedef int
+cookie_write_function_tÃ4096÷0œtypedef __ssize_t
 countRowBlocksÃ64Œx265_frame_stats÷0œint
 cpuidÃ64Œx265_param÷0œint
 crQpOffsetÃ64Œx265_param÷0œint
@@ -307,21 +1172,23 @@ ctuAddressÃ64Œx265_ctu_info_t÷0œint32_t
 ctuInfoÃ64Œx265_ctu_info_t÷0œvoid *
 ctuPartitionsÃ64Œx265_ctu_info_t÷0œint32_t
 cuStatsÃ64Œx265_frame_stats÷0œx265_cu_stats
-cuTreeÃ64Œx265_param::anon_struct_6÷0œint
+cuTreeÃ64Œx265_param::anon_struct_9÷0œint
+cuseridÃ1024Õ(char *__s)÷0œchar *
 deblockingFilterBetaOffsetÃ64Œx265_param÷0œint
 deblockingFilterTCOffsetÃ64Œx265_param÷0œint
 decideWaitTimeÃ64Œx265_frame_stats÷0œdouble
 decodedPictureHashSEIÃ64Œx265_param÷0œint
-defDispWinBottomOffsetÃ64Œx265_param::anon_struct_7÷0œint
-defDispWinLeftOffsetÃ64Œx265_param::anon_struct_7÷0œint
-defDispWinRightOffsetÃ64Œx265_param::anon_struct_7÷0œint
-defDispWinTopOffsetÃ64Œx265_param::anon_struct_7÷0œint
+defDispWinBottomOffsetÃ64Œx265_param::anon_struct_10÷0œint
+defDispWinLeftOffsetÃ64Œx265_param::anon_struct_10÷0œint
+defDispWinRightOffsetÃ64Œx265_param::anon_struct_10÷0œint
+defDispWinTopOffsetÃ64Œx265_param::anon_struct_10÷0œint
 depthBytesÃ64Œx265_analysis_data÷0œuint32_t
 disable_avxÃ64Œx265_vmaf_commondata÷0œint
 disable_clipÃ64Œx265_vmaf_commondata÷0œint
 distorted_fileÃ64Œx265_vmaf_data÷0œFILE *
 distorted_frameÃ64Œx265_vmaf_framedata÷0œvoid *
 dither_imageÃ1024Õ(x265_picture*, int, int, int16_t*, int)Œx265_api÷0œvoid
+dprintfÃ1024Õ(int __fd, const char *__restrict __fmt, ...)÷0œint
 dtsÃ64Œx265_lookahead_data÷0œint64_t
 dtsÃ64Œx265_picture÷0œint64_t
 dynamicRdÃ64Œx265_param÷0œdouble
@@ -341,11 +1208,30 @@ encoder_openÃ1024Õ(x265_param*)Œx265_api÷0œx265_encoder *
 encoder_parametersÃ1024Õ(x265_encoder*, x265_param*)Œx265_api÷0œvoid
 encoder_reconfigÃ1024Õ(x265_encoder*, x265_param*)Œx265_api÷0œint
 endFrameÃ64Œx265_zone÷0œint
+fcloseÃ1024Õ(FILE *__stream)÷0œint
+fcloseallÃ1024Õ(void)÷0œint
+fflushÃ1024Õ(FILE *__stream)÷0œint
+fflush_unlockedÃ1024Õ(FILE *__stream)÷0œint
+fgetcÃ1024Õ(FILE *__stream)÷0œint
+fgetc_unlockedÃ1024Õ(FILE *__stream)÷0œint
+fgetposÃ1024Õ(FILE *__restrict __stream, fpos_t *__restrict __pos)÷0œint
+fgetpos64Ã1024Õ(FILE *__restrict __stream, fpos64_t *__restrict __pos)÷0œint
+fgetsÃ1024Õ(char *__restrict __s, int __n, FILE *__restrict __stream)÷0œchar *
+fgets_unlockedÃ1024Õ(char *__restrict __s, int __n, FILE *__restrict __stream)÷0œchar *
+fopenÃ1024Õ(const char *__restrict __filename, const char *__restrict __modes)÷0œFILE *
+fopen64Ã1024Õ(const char *__restrict __filename, const char *__restrict __modes)÷0œFILE *
 forceFlushÃ64Œx265_param÷0œint
 forceqpÃ64Œx265_picture÷0œint
 formatÃ64Œx265_vmaf_commondata÷0œchar *
+fpos64_tÃ4096÷0œ__fpos64_t
+fpos_tÃ4096÷0œ__fpos_t
+fprintfÃ1024Õ(FILE *__restrict __stream, const char *__restrict __format, ...)÷0œint
 fpsDenomÃ64Œx265_param÷0œuint32_t
 fpsNumÃ64Œx265_param÷0œuint32_t
+fputcÃ1024Õ(int __c, FILE *__stream)÷0œint
+fputc_unlockedÃ1024Õ(int __c, FILE *__stream)÷0œint
+fputsÃ1024Õ(const char *__restrict __s, FILE *__restrict __stream)÷0œint
+fputs_unlockedÃ1024Õ(const char *__restrict __s, FILE *__restrict __stream)÷0œint
 frameDataÃ64Œx265_picture÷0œx265_frame_stats
 frameLatencyÃ64Œx265_frame_stats÷0œint
 frameNumThreadsÃ64Œx265_param÷0œint
@@ -353,8 +1239,30 @@ frameRecordSizeÃ64Œx265_analysis_2Pass÷0œuint32_t
 frameRecordSizeÃ64Œx265_analysis_data÷0œuint32_t
 frame_setÃ64Œx265_vmaf_framedata÷0œint
 framesizeÃ64Œx265_picture÷0œuint64_t
+freadÃ1024Õ(void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream)÷0œsize_t
+fread_unlockedÃ1024Õ(void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream)÷0œsize_t
+freopenÃ1024Õ(const char *__restrict __filename, const char *__restrict __modes, FILE *__restrict __stream)÷0œFILE *
+freopen64Ã1024Õ(const char *__restrict __filename, const char *__restrict __modes, FILE *__restrict __stream)÷0œFILE *
+fscanfÃ1024Õ(FILE *__restrict __stream, const char *__restrict __format, ...)÷0œint
+fseekÃ1024Õ(FILE *__stream, long int __off, int __whence)÷0œint
+fseekoÃ1024Õ(FILE *__stream, __off_t __off, int __whence)÷0œint
+fseeko64Ã1024Õ(FILE *__stream, __off64_t __off, int __whence)÷0œint
+fsetposÃ1024Õ(FILE *__stream, const fpos_t *__pos)÷0œint
+fsetpos64Ã1024Õ(FILE *__stream, const fpos64_t *__pos)÷0œint
+ftellÃ1024Õ(FILE *__stream)÷0œlong int
+ftelloÃ1024Õ(FILE *__stream)÷0œ__off_t
+ftello64Ã1024Õ(FILE *__stream)÷0œ__off64_t
+fwriteÃ1024Õ(const void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __s)÷0œsize_t
+fwrite_unlockedÃ1024Õ(const void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream)÷0œsize_t
 get_ref_frame_listÃ1024Õ(x265_encoder*, x265_picyuv**, x265_picyuv**, int, int, int*, int*)Œx265_api÷0œint
 get_slicetype_poc_and_scenecutÃ1024Õ(x265_encoder*, int*, int*, int*)Œx265_api÷0œint
+getcÃ1024Õ(FILE *__stream)÷0œint
+getc_unlockedÃ1024Õ(FILE *__stream)÷0œint
+getcharÃ1024Õ(void)÷0œint
+getchar_unlockedÃ1024Õ(void)÷0œint
+getdelimÃ1024Õ(char **__restrict __lineptr, size_t *__restrict __n, int __delimiter, FILE *__restrict __stream)÷0œ__ssize_t
+getlineÃ1024Õ(char **__restrict __lineptr, size_t *__restrict __n, FILE *__restrict __stream)÷0œ__ssize_t
+getwÃ1024Õ(FILE *__stream)÷0œint
 globalPsnrÃ64Œx265_stats÷0œdouble
 globalPsnrUÃ64Œx265_stats÷0œdouble
 globalPsnrVÃ64Œx265_stats÷0œdouble
@@ -366,6 +1274,18 @@ heightÃ64Œx265_cli_csp÷0œint
 heightÃ64Œx265_picture÷0œint
 heightÃ64Œx265_vmaf_data÷0œint
 heightÃ64Œx265_vmaf_framedata÷0œint
+int16_tÃ4096÷0œ__int16_t
+int32_tÃ4096÷0œ__int32_t
+int64_tÃ4096÷0œ__int64_t
+int8_tÃ4096÷0œ__int8_t
+int_fast16_tÃ4096÷0œlong int
+int_fast32_tÃ4096÷0œlong int
+int_fast64_tÃ4096÷0œlong int
+int_fast8_tÃ4096÷0œsigned char
+int_least16_tÃ4096÷0œ__int_least16_t
+int_least32_tÃ4096÷0œ__int_least32_t
+int_least64_tÃ4096÷0œ__int_least64_t
+int_least8_tÃ4096÷0œ__int_least8_t
 interDataÃ64Œx265_analysis_data÷0œvoid *
 interRefineÃ64Œx265_param÷0œint
 interlaceModeÃ64Œx265_param÷0œint
@@ -373,23 +1293,26 @@ internalBitDepthÃ64Œx265_param÷0œint
 internalBitDepthÃ64Œx265_vmaf_data÷0œint
 internalBitDepthÃ64Œx265_vmaf_framedata÷0œint
 internalCspÃ64Œx265_param÷0œint
+intmax_tÃ4096÷0œ__intmax_t
+intptr_tÃ4096÷0œlong int
 intraDataÃ64Œx265_analysis_data÷0œvoid *
 intraRefineÃ64Œx265_param÷0œint
 intraSatdForVbvÃ64Œx265_lookahead_data÷0œuint32_t *
 intraVbvCostÃ64Œx265_lookahead_data÷0œuint32_t *
 ipCostRatioÃ64Œx265_frame_stats÷0œdouble
-ipFactorÃ64Œx265_param::anon_struct_6÷0œdouble
+ipFactorÃ64Œx265_param::anon_struct_9÷0œdouble
 keyframeÃ64Œx265_lookahead_data÷0œint
 keyframeMaxÃ64Œx265_analysis_validate÷0œint
 keyframeMaxÃ64Œx265_param÷0œint
 keyframeMinÃ64Œx265_analysis_validate÷0œint
 keyframeMinÃ64Œx265_param÷0œint
-lambdaFileNameÃ64Œx265_param::anon_struct_6÷0œconst char *
+lambdaFileNameÃ64Œx265_param::anon_struct_9÷0œconst char *
 lastMiniGopBFrameÃ64Œx265_lookahead_data÷0œint
 levelIdcÃ64Œx265_param÷0œint
 limitModesÃ64Œx265_param÷0œuint32_t
 limitReferencesÃ64Œx265_param÷0œuint32_t
 limitTUÃ64Œx265_param÷0œuint32_t
+linuxÃ65536÷0
 list0POCÃ64Œx265_frame_stats÷0œint
 list1POCÃ64Œx265_frame_stats÷0œint
 log2MaxPocLsbÃ64Œx265_param÷0œint
@@ -402,7 +1325,7 @@ lookaheadDepthÃ64Œx265_param÷0œint
 lookaheadSlicesÃ64Œx265_param÷0œint
 lookaheadThreadsÃ64Œx265_param÷0œint
 masteringDisplayColorVolumeÃ64Œx265_param÷0œconst char *
-matrixCoeffsÃ64Œx265_param::anon_struct_7÷0œint
+matrixCoeffsÃ64Œx265_param::anon_struct_10÷0œint
 maxAUSizeFactorÃ64Œx265_param÷0œdouble
 maxCLLÃ64Œx265_param÷0œuint16_t
 maxCLLÃ64Œx265_stats÷0œuint16_t
@@ -440,6 +1363,9 @@ numPartitionsÃ64Œx265_analysis_data÷0œuint32_t
 numPayloadsÃ64Œx265_sei÷0œint
 numPicsÃ64Œx265_sliceType_stats÷0œuint32_t
 numaPoolsÃ64Œx265_param÷0œconst char *
+obstackÃ32768÷0
+off64_tÃ4096÷0œ__off64_t
+off_tÃ4096÷0œ__off_t
 offsetÃ64Œx265_vmaf_data÷0œsize_t
 openGOPÃ64Œx265_analysis_validate÷0œint
 param_allocÃ1024Õ(void)Œx265_api÷0œx265_param *
@@ -453,7 +1379,8 @@ payloadÃ64Œx265_sei_payload÷0œuint8_t *
 payloadSizeÃ64Œx265_sei_payload÷0œint
 payloadTypeÃ64Œx265_sei_payload÷0œSEIPayloadType
 payloadsÃ64Œx265_sei÷0œx265_sei_payload *
-pbFactorÃ64Œx265_param::anon_struct_6÷0œdouble
+pbFactorÃ64Œx265_param::anon_struct_9÷0œdouble
+pcloseÃ1024Õ(FILE *__stream)÷0œint
 percentAmpPuÃ64Œx265_pu_stats÷0œdouble
 percentInterDistributionÃ64Œx265_cu_stats÷0œdouble
 percentInterPuÃ64Œx265_pu_stats÷0œdouble
@@ -465,6 +1392,7 @@ percentMergePuÃ64Œx265_pu_stats÷0œdouble
 percentNxNÃ64Œx265_pu_stats÷0œdouble
 percentSkipCuÃ64Œx265_cu_stats÷0œdouble
 percentSkipPuÃ64Œx265_pu_stats÷0œdouble
+perrorÃ1024Õ(const char *__s)÷0œvoid
 phone_modelÃ64Œx265_vmaf_commondata÷0œint
 pictureStructureÃ64Œx265_param÷0œint
 picture_allocÃ1024Õ(void)Œx265_api÷0œx265_picture *
@@ -479,7 +1407,9 @@ pocÃ64Œx265_analysis_data÷0œuint32_t
 pocÃ64Œx265_frame_stats÷0œint
 pocÃ64Œx265_picture÷0œint
 poolÃ64Œx265_vmaf_commondata÷0œchar *
+popenÃ1024Õ(const char *__command, const char *__modes)÷0œFILE *
 preferredTransferCharacteristicsÃ64Œx265_param÷0œint
+printfÃ1024Õ(const char *__restrict __format, ...)÷0œint
 psnrÃ64Œx265_frame_stats÷0œdouble
 psnrÃ64Œx265_vmaf_commondata÷0œint
 psnrUÃ64Œx265_frame_stats÷0œdouble
@@ -492,48 +1422,59 @@ psyRdÃ64Œx265_param÷0œdouble
 psyRdoqÃ64Œx265_param÷0œdouble
 ptsÃ64Œx265_picture÷0œint64_t
 puStatsÃ64Œx265_frame_stats÷0œx265_pu_stats
-qCompressÃ64Œx265_param::anon_struct_6÷0œdouble
-qblurÃ64Œx265_param::anon_struct_6÷0œdouble
-qgSizeÃ64Œx265_param::anon_struct_6÷0œuint32_t
+putcÃ1024Õ(int __c, FILE *__stream)÷0œint
+putc_unlockedÃ1024Õ(int __c, FILE *__stream)÷0œint
+putcharÃ1024Õ(int __c)÷0œint
+putchar_unlockedÃ1024Õ(int __c)÷0œint
+putsÃ1024Õ(const char *__s)÷0œint
+putwÃ1024Õ(int __w, FILE *__stream)÷0œint
+qCompressÃ64Œx265_param::anon_struct_9÷0œdouble
+qblurÃ64Œx265_param::anon_struct_9÷0œdouble
+qgSizeÃ64Œx265_param::anon_struct_9÷0œuint32_t
 qpÃ64Œx265_frame_stats÷0œdouble
-qpÃ64Œx265_param::anon_struct_6÷0œint
+qpÃ64Œx265_param::anon_struct_9÷0œint
 qpÃ64Œx265_zone÷0œint
-qpMaxÃ64Œx265_param::anon_struct_6÷0œint
-qpMinÃ64Œx265_param::anon_struct_6÷0œint
-qpStepÃ64Œx265_param::anon_struct_6÷0œint
+qpMaxÃ64Œx265_param::anon_struct_9÷0œint
+qpMinÃ64Œx265_param::anon_struct_9÷0œint
+qpStepÃ64Œx265_param::anon_struct_9÷0œint
 quantOffsetsÃ64Œx265_picture÷0œfloat *
 radlÃ64Œx265_analysis_validate÷0œint
 radlÃ64Œx265_param÷0œint
-rateControlModeÃ64Œx265_param::anon_struct_6÷0œint
+rateControlModeÃ64Œx265_param::anon_struct_9÷0œint
 rateFactorÃ64Œx265_frame_stats÷0œdouble
-rcÃ64Œx265_param÷0œanon_struct_6
+rcÃ64Œx265_param÷0œanon_struct_9
 rcDataÃ64Œx265_picture÷0œvoid *
 rdLevelÃ64Œx265_param÷0œint
 rdPenaltyÃ64Œx265_param÷0œint
 rdoqLevelÃ64Œx265_param÷0œint
+readÃ64Œ_IO_cookie_io_functions_t÷0œcookie_read_function_t *
 refWaitWallTimeÃ64Œx265_frame_stats÷0œdouble
 reference_fileÃ64Œx265_vmaf_data÷0œFILE *
 reference_frameÃ64Œx265_vmaf_framedata÷0œvoid *
 reorderedPtsÃ64Œx265_lookahead_data÷0œint64_t
 reorderedPtsÃ64Œx265_picture÷0œint64_t
-rfConstantÃ64Œx265_param::anon_struct_6÷0œdouble
-rfConstantMaxÃ64Œx265_param::anon_struct_6÷0œdouble
-rfConstantMinÃ64Œx265_param::anon_struct_6÷0œdouble
+rewindÃ1024Õ(FILE *__stream)÷0œvoid
+rfConstantÃ64Œx265_param::anon_struct_9÷0œdouble
+rfConstantMaxÃ64Œx265_param::anon_struct_9÷0œdouble
+rfConstantMinÃ64Œx265_param::anon_struct_9÷0œdouble
 row0WaitTimeÃ64Œx265_frame_stats÷0œdouble
-sarHeightÃ64Œx265_param::anon_struct_7÷0œint
-sarWidthÃ64Œx265_param::anon_struct_7÷0œint
+sarHeightÃ64Œx265_param::anon_struct_10÷0œint
+sarWidthÃ64Œx265_param::anon_struct_10÷0œint
 satdCostÃ64Œx265_analysis_data÷0œint64_t
 satdForVbvÃ64Œx265_lookahead_data÷0œuint32_t *
 saveParamÃ64Œx265_analysis_data÷0œx265_analysis_validate
 scaleFactorÃ64Œx265_analysis_validate÷0œint
 scaleFactorÃ64Œx265_param÷0œint
 scalingListsÃ64Œx265_param÷0œconst char *
+scanfÃ1024Õ(const char *__restrict __format, ...)÷0œint
 scenecutBiasÃ64Œx265_param÷0œdouble
 scenecutThresholdÃ64Œx265_param÷0œint
 searchMethodÃ64Œx265_param÷0œint
 searchRangeÃ64Œx265_param÷0œint
+seekÃ64Œ_IO_cookie_io_functions_t÷0œcookie_seek_function_t *
 set_analysis_dataÃ1024Õ(x265_encoder *encoder, x265_analysis_data *analysis_data, int poc, uint32_t cuBytes)Œx265_api÷0œint
 sizeBytesÃ64Œx265_nal÷0œuint32_t
+size_tÃ4096÷0œlong unsigned int
 sizeof_analysis_dataÃ64Œx265_api÷0œint
 sizeof_frame_statsÃ64Œx265_api÷0œint
 sizeof_paramÃ64Œx265_api÷0œint
@@ -548,43 +1489,76 @@ sourceWidthÃ64Œx265_param÷0œint
 ssimÃ64Œx265_frame_stats÷0œdouble
 ssimÃ64Œx265_sliceType_stats÷0œdouble
 ssimÃ64Œx265_vmaf_commondata÷0œint
+ssize_tÃ4096÷0œ__ssize_t
 stallTimeÃ64Œx265_frame_stats÷0œdouble
 startFrameÃ64Œx265_zone÷0œint
-statFileNameÃ64Œx265_param::anon_struct_6÷0œconst char *
+statFileNameÃ64Œx265_param::anon_struct_9÷0œconst char *
 statsBÃ64Œx265_stats÷0œx265_sliceType_stats
 statsIÃ64Œx265_stats÷0œx265_sliceType_stats
 statsPÃ64Œx265_stats÷0œx265_sliceType_stats
+stderrÃ32768÷0œFILE *
+stderrÃ65536÷0
+stdinÃ32768÷0œFILE *
+stdinÃ65536÷0
+stdoutÃ32768÷0œFILE *
+stdoutÃ65536÷0
 strideÃ64Œx265_picture÷0œint
 subpelRefineÃ64Œx265_param÷0œint
+sys_errlistÃ32768÷0œconst char *const
+sys_nerrÃ32768÷0œint
+tmpfileÃ1024Õ(void)÷0œFILE *
+tmpfile64Ã1024Õ(void)÷0œFILE *
 toneMapFileÃ64Œx265_param÷0œconst char *
 totalCTUTimeÃ64Œx265_frame_stats÷0œdouble
 totalFrameTimeÃ64Œx265_frame_stats÷0œdouble
 totalFramesÃ64Œx265_param÷0œint
 totalWPFramesÃ64Œx265_stats÷0œuint32_t
-transferCharacteristicsÃ64Œx265_param::anon_struct_7÷0œint
+transferCharacteristicsÃ64Œx265_param::anon_struct_10÷0œint
 tuQTMaxInterDepthÃ64Œx265_param÷0œuint32_t
 tuQTMaxIntraDepthÃ64Œx265_param÷0œuint32_t
 typeÃ64Œx265_nal÷0œuint32_t
 uhdBlurayÃ64Œx265_param÷0œint
+uint16_tÃ4096÷0œ__uint16_t
+uint32_tÃ4096÷0œ__uint32_t
+uint64_tÃ4096÷0œ__uint64_t
+uint8_tÃ4096÷0œ__uint8_t
+uint_fast16_tÃ4096÷0œunsigned long int
+uint_fast32_tÃ4096÷0œunsigned long int
+uint_fast64_tÃ4096÷0œunsigned long int
+uint_fast8_tÃ4096÷0œunsigned char
+uint_least16_tÃ4096÷0œ__uint_least16_t
+uint_least32_tÃ4096÷0œ__uint_least32_t
+uint_least64_tÃ4096÷0œ__uint_least64_t
+uint_least8_tÃ4096÷0œ__uint_least8_t
+uintmax_tÃ4096÷0œ__uintmax_t
+uintptr_tÃ4096÷0œunsigned long int
+ungetcÃ1024Õ(int __c, FILE *__stream)÷0œint
 unitSizeDepthÃ64Œx265_param÷0œuint32_t
+unixÃ65536÷0
 userDataÃ64Œx265_picture÷0œvoid *
 userSEIÃ64Œx265_picture÷0œx265_sei
+va_listÃ4096÷0œ__gnuc_va_list
 vbvBufferEndÃ64Œx265_param÷0œdouble
-vbvBufferInitÃ64Œx265_param::anon_struct_6÷0œdouble
-vbvBufferSizeÃ64Œx265_param::anon_struct_6÷0œint
+vbvBufferInitÃ64Œx265_param::anon_struct_9÷0œdouble
+vbvBufferSizeÃ64Œx265_param::anon_struct_9÷0œint
 vbvCostÃ64Œx265_lookahead_data÷0œuint32_t *
 vbvEndFrameAdjustÃ64Œx265_param÷0œdouble
-vbvMaxBitrateÃ64Œx265_param::anon_struct_6÷0œint
+vbvMaxBitrateÃ64Œx265_param::anon_struct_9÷0œint
 vcdÃ16384÷0œconst x265_vmaf_commondata
+vdprintfÃ1024Õ(int __fd, const char *__restrict __fmt, __gnuc_va_list __arg)÷0œint
 version_strÃ64Œx265_api÷0œconst char *
-videoFormatÃ64Œx265_param::anon_struct_7÷0œint
+vfprintfÃ1024Õ(FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg)÷0œint
+vfscanfÃ1024Õ(FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg)÷0œint
+videoFormatÃ64Œx265_param::anon_struct_10÷0œint
 vmafFrameScoreÃ64Œx265_frame_stats÷0œdouble
-vmaf_encoder_logÃ1024Õ(x265_encoder*, int, char**, x265_param *, x265_vmaf_data *)Œx265_api÷0œvoid
-vuiÃ64Œx265_param÷0œanon_struct_7
+vprintfÃ1024Õ(const char *__restrict __format, __gnuc_va_list __arg)÷0œint
+vscanfÃ1024Õ(const char *__restrict __format, __gnuc_va_list __arg)÷0œint
+vuiÃ64Œx265_param÷0œanon_struct_10
 wallTimeÃ64Œx265_frame_stats÷0œdouble
 widthÃ64Œx265_cli_csp÷0œint
 widthÃ64Œx265_vmaf_data÷0œint
 widthÃ64Œx265_vmaf_framedata÷0œint
+writeÃ64Œ_IO_cookie_io_functions_t÷0œcookie_write_function_t *
 wtÃ64Œx265_analysis_data÷0œvoid *
 x265_ADAPT_RD_STRENGTHÃ65536÷0
 x265_analysis_2PassÃ2048÷0
@@ -596,15 +1570,13 @@ x265_analysis_validateÃ2048÷0
 x265_analysis_validateÃ4096÷0
 x265_apiÃ2048÷0
 x265_apiÃ4096÷0
-x265_api_getÃ1024Õ(int bitDepth)÷0œconst x265_api *
 x265_api_getÃ65536÷0
-x265_api_glue1Ã131072Õ(x, y)÷0
-x265_api_glue2Ã131072Õ(x, y)÷0
+x265_api_get_160Ã1024Õ(int bitDepth)÷0œconst x265_api *
+x265_api_glue1Ã131072Õ(x,y)÷0
+x265_api_glue2Ã131072Õ(x,y)÷0
 x265_api_queryÃ1024Õ(int bitDepth, int apiVersion, int* err)÷0œconst x265_api *
 x265_api_query_errnamesÃ16384÷0œconst char *const
-x265_build_info_strÃ32768÷0œX265_API const char *
-x265_calculate_vmaf_framelevelscoreÃ1024Õ(x265_vmaf_framedata*)÷0œdouble
-x265_calculate_vmafscoreÃ1024Õ(x265_param*, x265_vmaf_data*)÷0œdouble
+x265_build_info_strÃ32768÷0œconst char *
 x265_cleanupÃ1024Õ(void)÷0œvoid
 x265_cli_cspÃ2048÷0
 x265_cli_cspÃ4096÷0
@@ -624,13 +1596,13 @@ x265_encoder_closeÃ1024Õ(x265_encoder *)÷0œvoid
 x265_encoder_ctu_infoÃ1024Õ(x265_encoder *, int poc, x265_ctu_info_t** ctu)÷0œint
 x265_encoder_encodeÃ1024Õ(x265_encoder *encoder, x265_nal **pp_nal, uint32_t *pi_nal, x265_picture *pic_in, x265_picture *pic_out)÷0œint
 x265_encoder_get_statsÃ1024Õ(x265_encoder *encoder, x265_stats *, uint32_t statsSizeBytes)÷0œvoid
-x265_encoder_glue1Ã131072Õ(x, y)÷0
-x265_encoder_glue2Ã131072Õ(x, y)÷0
+x265_encoder_glue1Ã131072Õ(x,y)÷0
+x265_encoder_glue2Ã131072Õ(x,y)÷0
 x265_encoder_headersÃ1024Õ(x265_encoder *, x265_nal **pp_nal, uint32_t *pi_nal)÷0œint
 x265_encoder_intra_refreshÃ1024Õ(x265_encoder *)÷0œint
 x265_encoder_logÃ1024Õ(x265_encoder *encoder, int argc, char **argv)÷0œvoid
-x265_encoder_openÃ1024Õ(x265_param *)÷0œx265_encoder *
 x265_encoder_openÃ65536÷0
+x265_encoder_open_160Ã1024Õ(x265_param *)÷0œx265_encoder *
 x265_encoder_parametersÃ1024Õ(x265_encoder *, x265_param *)÷0œvoid
 x265_encoder_reconfigÃ1024Õ(x265_encoder *, x265_param *)÷0œint
 x265_frame_statsÃ2048÷0
@@ -641,7 +1613,7 @@ x265_get_slicetype_poc_and_scenecutÃ1024Õ(x265_encoder *encoder, int *slicetype,
 x265_interlace_namesÃ16384÷0œconst char *const
 x265_lookahead_dataÃ2048÷0
 x265_lookahead_dataÃ4096÷0
-x265_max_bit_depthÃ32768÷0œX265_API const int
+x265_max_bit_depthÃ32768÷0œconst int
 x265_motion_est_namesÃ16384÷0œconst char *const
 x265_nalÃ2048÷0
 x265_nalÃ4096÷0
@@ -676,16 +1648,15 @@ x265_statsÃ2048÷0
 x265_statsÃ4096÷0
 x265_transfer_namesÃ16384÷0œconst char *const
 x265_tune_namesÃ16384÷0œconst char *const
-x265_version_strÃ32768÷0œX265_API const char *
+x265_version_strÃ32768÷0œconst char *
 x265_video_format_namesÃ16384÷0œconst char *const
 x265_vmaf_commondataÃ2048÷0
 x265_vmaf_commondataÃ4096÷0
 x265_vmaf_dataÃ2048÷0
 x265_vmaf_dataÃ4096÷0
-x265_vmaf_encoder_logÃ1024Õ(x265_encoder *encoder, int argc, char **argv, x265_param*, x265_vmaf_data*)÷0œvoid
 x265_vmaf_framedataÃ2048÷0
 x265_vmaf_framedataÃ4096÷0
 x265_zoneÃ2048÷0
 x265_zoneÃ4096÷0
-zoneCountÃ64Œx265_param::anon_struct_6÷0œint
-zonesÃ64Œx265_param::anon_struct_6÷0œx265_zone *
+zoneCountÃ64Œx265_param::anon_struct_9÷0œint
+zonesÃ64Œx265_param::anon_struct_9÷0œx265_zone *

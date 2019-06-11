@@ -1,0 +1,40 @@
+# format=tagmanager
+@0_2Ì4ÎGst.DPVersionÖ0
+@1_0Ì4ÎGst.DPVersionÖ0
+BUFFERÌ4ÎGst.DPPayloadTypeÖ0
+CAPSÌ4ÎGst.DPPayloadTypeÖ0
+CRCÌ4ÎGst.DPHeaderFlagÖ0
+CRC_HEADERÌ4ÎGst.DPHeaderFlagÖ0
+CRC_PAYLOADÌ4ÎGst.DPHeaderFlagÖ0
+DPHeaderFlagÌ2ÎGstÖ0
+DPHeaderFromBufferFunctionÌ128Í(Gst.Buffer buffer, Gst.DPHeaderFlag flags, uint length, uchar header)ÎGstÖ0Ïpublic delegate bool
+DPPacketFromCapsFunctionÌ128Í(Gst.Caps caps, Gst.DPHeaderFlag flags, uint length, uchar header, uchar payload)ÎGstÖ0Ïpublic delegate bool
+DPPacketFromEventFunctionÌ128Í(Gst.Event event, Gst.DPHeaderFlag flags, uint length, uchar header, uchar payload)ÎGstÖ0Ïpublic delegate bool
+DPPacketizerÌ1ÎGstÖ0
+DPPacketizerÌ128Í(Gst.DPVersion version)ÎGst.DPPacketizerÖ0
+DPPayloadTypeÌ2ÎGstÖ0
+DPVersionÌ2ÎGstÖ0
+DP_HEADER_LENGTHÌ8ÎGstÖ0Ïint
+DP_VERSION_MAJORÌ8ÎGstÖ0Ïint
+DP_VERSION_MINORÌ8ÎGstÖ0Ïint
+EVENT_NONEÌ4ÎGst.DPPayloadTypeÖ0
+GstÌ256Ö0
+NONEÌ4ÎGst.DPHeaderFlagÖ0
+NONEÌ4ÎGst.DPPayloadTypeÖ0
+dp_buffer_from_headerÌ128Í(uint header_length, uchar header)ÎGstÖ0Ïpublic unowned
+dp_caps_from_packetÌ128Í(uint header_length, uchar header, uchar payload)ÎGstÖ0Ïpublic unowned
+dp_crcÌ128Í(uchar buffer, uint length)ÎGstÖ0Ïpublic uint16
+dp_event_from_packetÌ128Í(uint header_length, uchar header, uchar payload)ÎGstÖ0Ïpublic unowned
+dp_header_from_bufferÌ128Í(Gst.Buffer buffer, Gst.DPHeaderFlag flags, uint length, uchar header)ÎGstÖ0Ïpublic bool
+dp_header_payload_lengthÌ128Í(uchar header)ÎGstÖ0Ïpublic uint32
+dp_header_payload_typeÌ128Í(uchar header)ÎGstÖ0Ïpublic Gst.DPPayloadType
+dp_initÌ128Í()ÎGstÖ0Ïpublic void
+dp_packet_from_capsÌ128Í(Gst.Caps caps, Gst.DPHeaderFlag flags, uint length, uchar header, uchar payload)ÎGstÖ0Ïpublic bool
+dp_packet_from_eventÌ128Í(Gst.Event event, Gst.DPHeaderFlag flags, uint length, uchar header, uchar payload)ÎGstÖ0Ïpublic bool
+dp_validate_headerÌ128Í(uint header_length, uchar header)ÎGstÖ0Ïpublic bool
+dp_validate_packetÌ128Í(uint header_length, uchar header, uchar payload)ÎGstÖ0Ïpublic bool
+dp_validate_payloadÌ128Í(uint header_length, uchar header, uchar payload)ÎGstÖ0Ïpublic bool
+header_from_bufferÌ8ÎGst.DPPacketizerÖ0ÏGst.DPHeaderFromBufferFunction
+packet_from_capsÌ8ÎGst.DPPacketizerÖ0ÏGst.DPPacketFromCapsFunction
+packet_from_eventÌ8ÎGst.DPPacketizerÖ0ÏGst.DPPacketFromEventFunction
+versionÌ8ÎGst.DPPacketizerÖ0ÏGst.DPVersion

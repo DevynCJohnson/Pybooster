@@ -1,0 +1,195 @@
+# format=tagmanager
+@getÌ128Í()ÎVte.ReaperÖ0Ïpublic unowned
+ASCII_BACKSPACEÌ4ÎVte.TerminalEraseBindingÖ0
+ASCII_DELETEÌ4ÎVte.TerminalEraseBindingÖ0
+AUTOÌ4ÎVte.TerminalEraseBindingÖ0
+BLOCKÌ4ÎVte.TerminalCursorShapeÖ0
+CharAttributesÌ1ÎVteÖ0
+DEFAULTÌ4ÎVte.TerminalWriteFlagsÖ0
+DELETE_SEQUENCEÌ4ÎVte.TerminalEraseBindingÖ0
+FORCE_DISABLEÌ4ÎVte.TerminalAntiAliasÖ0
+FORCE_ENABLEÌ4ÎVte.TerminalAntiAliasÖ0
+IBEAMÌ4ÎVte.TerminalCursorShapeÖ0
+MAJOR_VERSIONÌ8ÎVteÖ0Ïint
+MICRO_VERSIONÌ8ÎVteÖ0Ïint
+MINOR_VERSIONÌ8ÎVteÖ0Ïint
+OFFÌ4ÎVte.TerminalCursorBlinkModeÖ0
+ONÌ4ÎVte.TerminalCursorBlinkModeÖ0
+ReaperÌ1ÎVteÖ0
+ReaperÌ128Í()ÎVte.ReaperÖ0
+SYSTEMÌ4ÎVte.TerminalCursorBlinkModeÖ0
+SelectionFuncÌ128Í(Vte.Terminal terminal, long column, long row)ÎVteÖ0Ïpublic delegate bool
+TTYÌ4ÎVte.TerminalEraseBindingÖ0
+TerminalÌ1ÎVteÖ0
+TerminalÌ128Í()ÎVte.TerminalÖ0
+TerminalAccessibleÌ1ÎVteÖ0
+TerminalAccessibleÌ128Í(Vte.Terminal terminal)ÎVte.TerminalAccessibleÖ0
+TerminalAccessibleFactoryÌ1ÎVteÖ0
+TerminalAccessibleFactoryÌ128Í()ÎVte.TerminalAccessibleFactoryÖ0
+TerminalAntiAliasÌ2ÎVteÖ0
+TerminalCursorBlinkModeÌ2ÎVteÖ0
+TerminalCursorShapeÌ2ÎVteÖ0
+TerminalEraseBindingÌ2ÎVteÖ0
+TerminalWriteFlagsÌ2ÎVteÖ0
+UNDERLINEÌ4ÎVte.TerminalCursorShapeÖ0
+USE_DEFAULTÌ4ÎVte.TerminalAntiAliasÖ0
+VteÌ256Ö0
+add_childÌ128Í(GLib.Pid pid)ÎVte.ReaperÖ0Ïpublic int
+adjustmentÌ8ÎVte.TerminalÖ0ÏGtk.Adjustment
+allow_boldÌ8ÎVte.TerminalÖ0Ïbool
+audible_bellÌ8ÎVte.TerminalÖ0Ïbool
+backÌ8ÎVte.CharAttributesÖ0ÏGdk.Color
+background_image_fileÌ8ÎVte.TerminalÖ0
+background_image_pixbufÌ8ÎVte.TerminalÖ0ÏGdk.Pixbuf
+background_opacityÌ8ÎVte.TerminalÖ0Ïdouble
+background_saturationÌ8ÎVte.TerminalÖ0Ïdouble
+background_tint_colorÌ8ÎVte.TerminalÖ0ÏGdk.Color
+background_transparentÌ8ÎVte.TerminalÖ0Ïbool
+backspace_bindingÌ8ÎVte.TerminalÖ0ÏVte.TerminalEraseBinding
+beepÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+char_ascentÌ8ÎVte.TerminalÖ0Ïlong
+char_descentÌ8ÎVte.TerminalÖ0Ïlong
+char_heightÌ8ÎVte.TerminalÖ0Ïlong
+char_size_changedÌ128Í(uint char_width, uint char_height)ÎVte.TerminalÖ0Ïpublic virtual signal void
+char_widthÌ8ÎVte.TerminalÖ0Ïlong
+child_exitedÌ128Í(int p0, int p1)ÎVte.ReaperÖ0Ïpublic virtual signal void
+child_exitedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+columnÌ8ÎVte.CharAttributesÖ0Ïlong
+column_countÌ8ÎVte.TerminalÖ0Ïlong
+commitÌ128Í(string text, uint size)ÎVte.TerminalÖ0Ïpublic virtual signal void
+contents_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+copy_clipboardÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+copy_primaryÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+cursor_blink_modeÌ8ÎVte.TerminalÖ0ÏVte.TerminalCursorBlinkMode
+cursor_movedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+cursor_shapeÌ8ÎVte.TerminalÖ0ÏVte.TerminalCursorShape
+decrease_font_sizeÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+deiconify_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+delete_bindingÌ8ÎVte.TerminalÖ0ÏVte.TerminalEraseBinding
+emulationÌ8ÎVte.TerminalÖ0
+emulation_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+encodingÌ8ÎVte.TerminalÖ0
+encoding_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+eofÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+feedÌ128Í(string data, long length)ÎVte.TerminalÖ0Ïpublic void
+feed_childÌ128Í(string text, long length)ÎVte.TerminalÖ0Ïpublic void
+feed_child_binaryÌ128Í(string data, long length)ÎVte.TerminalÖ0Ïpublic void
+font_descÌ8ÎVte.TerminalÖ0ÏPango.FontDescription
+foreÌ8ÎVte.CharAttributesÖ0ÏGdk.Color
+fork_commandÌ128Í(string? command, [CCode (array_length = false)] string[]? argv, [CCode (array_length = false)] string[]? envv, string? directory, bool lastlog, bool utmp, bool wtmp)ÎVte.TerminalÖ0Ïpublic int
+forkptyÌ128Í(string[] envv, string directory, bool lastlog, bool utmp, bool wtmp)ÎVte.TerminalÖ0Ïpublic int
+get_adjustmentÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned
+get_allow_boldÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_audible_bellÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_char_ascentÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_char_descentÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_char_heightÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_char_widthÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_child_exit_statusÌ128Í()ÎVte.TerminalÖ0Ïpublic int
+get_column_countÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_cursor_blink_modeÌ128Í()ÎVte.TerminalÖ0Ïpublic Vte.TerminalCursorBlinkMode
+get_cursor_positionÌ128Í(out long column, out long row)ÎVte.TerminalÖ0Ïpublic void
+get_cursor_shapeÌ128Í()ÎVte.TerminalÖ0Ïpublic Vte.TerminalCursorShape
+get_default_emulationÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+get_emulationÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+get_encodingÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+get_fontÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned
+get_has_selectionÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_icon_titleÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+get_mouse_autohideÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_paddingÌ128Í(int xpad, int ypad)ÎVte.TerminalÖ0Ïpublic void
+get_ptyÌ128Í()ÎVte.TerminalÖ0Ïpublic int
+get_row_countÌ128Í()ÎVte.TerminalÖ0Ïpublic long
+get_status_lineÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+get_textÌ128Í(Vte.SelectionFunc is_selected, void* data, GLib.Array attributes)ÎVte.TerminalÖ0Ïpublic unowned string
+get_text_include_trailing_spacesÌ128Í(Vte.SelectionFunc is_selected, void* data, GLib.Array attributes)ÎVte.TerminalÖ0Ïpublic unowned string
+get_text_rangeÌ128Í(long start_row, long start_col, long end_row, long end_col, Vte.SelectionFunc is_selected, void* data, GLib.Array attributes)ÎVte.TerminalÖ0Ïpublic unowned string
+get_using_xftÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_visible_bellÌ128Í()ÎVte.TerminalÖ0Ïpublic bool
+get_window_titleÌ128Í()ÎVte.TerminalÖ0Ïpublic unowned string
+icon_titleÌ8ÎVte.TerminalÖ0
+icon_title_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+iconify_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+im_append_menuitemsÌ128Í(Gtk.MenuShell menushell)ÎVte.TerminalÖ0Ïpublic void
+increase_font_sizeÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+is_word_charÌ128Í(unichar c)ÎVte.TerminalÖ0Ïpublic bool
+lower_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+match_addÌ128Í(string match)ÎVte.TerminalÖ0Ïpublic int
+match_add_gregexÌ128Í(GLib.Regex regex, GLib.RegexMatchFlags flags)ÎVte.TerminalÖ0Ïpublic int
+match_checkÌ128Í(long column, long row, int tag)ÎVte.TerminalÖ0Ïpublic unowned string
+match_clear_allÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+match_removeÌ128Í(int tag)ÎVte.TerminalÖ0Ïpublic void
+match_set_cursorÌ128Í(int tag, Gdk.Cursor cursor)ÎVte.TerminalÖ0Ïpublic void
+match_set_cursor_nameÌ128Í(int tag, string cursor_name)ÎVte.TerminalÖ0Ïpublic void
+match_set_cursor_typeÌ128Í(int tag, Gdk.CursorType cursor_type)ÎVte.TerminalÖ0Ïpublic void
+maximize_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+move_windowÌ128Í(uint x, uint y)ÎVte.TerminalÖ0Ïpublic virtual signal void
+paste_clipboardÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+paste_primaryÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+pointer_autohideÌ8ÎVte.TerminalÖ0Ïbool
+ptyÌ8ÎVte.TerminalÖ0Ïint
+raise_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+refresh_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+resetÌ128Í(bool full, bool clear_history)ÎVte.TerminalÖ0Ïpublic void
+resize_windowÌ128Í(uint width, uint height)ÎVte.TerminalÖ0Ïpublic virtual signal void
+restore_windowÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+rowÌ8ÎVte.CharAttributesÖ0Ïlong
+row_countÌ8ÎVte.TerminalÖ0Ïlong
+scroll_backgroundÌ8ÎVte.TerminalÖ0Ïbool
+scroll_on_keystrokeÌ8ÎVte.TerminalÖ0Ïbool
+scroll_on_outputÌ8ÎVte.TerminalÖ0Ïbool
+scrollback_linesÌ8ÎVte.TerminalÖ0
+select_allÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+select_noneÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+selection_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+set_allow_boldÌ128Í(bool allow_bold)ÎVte.TerminalÖ0Ïpublic void
+set_audible_bellÌ128Í(bool is_audible)ÎVte.TerminalÖ0Ïpublic void
+set_background_imageÌ128Í(Gdk.Pixbuf image)ÎVte.TerminalÖ0Ïpublic void
+set_background_image_fileÌ128Í(string path)ÎVte.TerminalÖ0Ïpublic void
+set_background_saturationÌ128Í(double saturation)ÎVte.TerminalÖ0Ïpublic void
+set_background_tint_colorÌ128Í(Gdk.Color color)ÎVte.TerminalÖ0Ïpublic void
+set_background_transparentÌ128Í(bool transparent)ÎVte.TerminalÖ0Ïpublic void
+set_backspace_bindingÌ128Í(Vte.TerminalEraseBinding binding)ÎVte.TerminalÖ0Ïpublic void
+set_color_backgroundÌ128Í(Gdk.Color background)ÎVte.TerminalÖ0Ïpublic void
+set_color_boldÌ128Í(Gdk.Color bold)ÎVte.TerminalÖ0Ïpublic void
+set_color_cursorÌ128Í(Gdk.Color cursor_background)ÎVte.TerminalÖ0Ïpublic void
+set_color_dimÌ128Í(Gdk.Color dim)ÎVte.TerminalÖ0Ïpublic void
+set_color_foregroundÌ128Í(Gdk.Color foreground)ÎVte.TerminalÖ0Ïpublic void
+set_color_highlightÌ128Í(Gdk.Color highlight_background)ÎVte.TerminalÖ0Ïpublic void
+set_colorsÌ128Í(Gdk.Color foreground, Gdk.Color background, Gdk.Color[] palette)ÎVte.TerminalÖ0Ïpublic void
+set_cursor_blink_modeÌ128Í(Vte.TerminalCursorBlinkMode mode)ÎVte.TerminalÖ0Ïpublic void
+set_cursor_blinksÌ128Í(bool blink)ÎVte.TerminalÖ0Ïpublic void
+set_cursor_shapeÌ128Í(Vte.TerminalCursorShape shape)ÎVte.TerminalÖ0Ïpublic void
+set_default_colorsÌ128Í()ÎVte.TerminalÖ0Ïpublic void
+set_delete_bindingÌ128Í(Vte.TerminalEraseBinding binding)ÎVte.TerminalÖ0Ïpublic void
+set_emulationÌ128Í(string emulation)ÎVte.TerminalÖ0Ïpublic void
+set_encodingÌ128Í(string codeset)ÎVte.TerminalÖ0Ïpublic void
+set_fontÌ128Í(Pango.FontDescription font_desc)ÎVte.TerminalÖ0Ïpublic void
+set_font_from_stringÌ128Í(string name)ÎVte.TerminalÖ0Ïpublic void
+set_font_from_string_fullÌ128Í(string name, Vte.TerminalAntiAlias antialias)ÎVte.TerminalÖ0Ïpublic void
+set_font_fullÌ128Í(Pango.FontDescription font_desc, Vte.TerminalAntiAlias antialias)ÎVte.TerminalÖ0Ïpublic void
+set_mouse_autohideÌ128Í(bool setting)ÎVte.TerminalÖ0Ïpublic void
+set_opacityÌ128Í(uint16 opacity)ÎVte.TerminalÖ0Ïpublic void
+set_ptyÌ128Í(int pty_master)ÎVte.TerminalÖ0Ïpublic void
+set_scroll_adjustmentsÌ128Í(Gtk.Adjustment hadjustment, Gtk.Adjustment vadjustment)ÎVte.TerminalÖ0Ïpublic virtual signal void
+set_scroll_backgroundÌ128Í(bool scroll)ÎVte.TerminalÖ0Ïpublic void
+set_scroll_on_keystrokeÌ128Í(bool scroll)ÎVte.TerminalÖ0Ïpublic void
+set_scroll_on_outputÌ128Í(bool scroll)ÎVte.TerminalÖ0Ïpublic void
+set_scrollback_linesÌ128Í(long lines)ÎVte.TerminalÖ0Ïpublic void
+set_sizeÌ128Í(long columns, long rows)ÎVte.TerminalÖ0Ïpublic void
+set_visible_bellÌ128Í(bool is_visible)ÎVte.TerminalÖ0Ïpublic void
+set_word_charsÌ128Í(string spec)ÎVte.TerminalÖ0Ïpublic void
+status_line_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+strikethroughÌ8ÎVte.CharAttributesÖ0
+text_deletedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+text_insertedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+text_modifiedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+text_scrolledÌ128Í(int delta)ÎVte.TerminalÖ0Ïpublic virtual signal void
+underlineÌ8ÎVte.CharAttributesÖ0
+visible_bellÌ8ÎVte.TerminalÖ0Ïbool
+vte_reserved3Ì128Í()ÎVte.TerminalÖ0Ïpublic virtual void
+vte_reserved4Ì128Í()ÎVte.TerminalÖ0Ïpublic virtual void
+window_titleÌ8ÎVte.TerminalÖ0
+window_title_changedÌ128Í()ÎVte.TerminalÖ0Ïpublic virtual signal void
+word_charsÌ8ÎVte.TerminalÖ0
+write_contentsÌ128Í(GLib.OutputStream stream, Vte.TerminalWriteFlags flags, GLib.Cancellable cancellable)ÎVte.TerminalÖ0Ïpublic bool

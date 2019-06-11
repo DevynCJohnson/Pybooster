@@ -1,0 +1,246 @@
+# format=tagmanager
+AC3Ã4ŒGst.BufferFormat÷0
+AC3Ã4ŒGst.BufferFormatType÷0
+AUDIO_DEF_RATEÃ8ŒGst÷0œint
+AUDIO_FLOAT_PAD_TEMPLATE_CAPSÃ8ŒGst÷0
+AUDIO_FLOAT_STANDARD_PAD_TEMPLATE_CAPSÃ8ŒGst÷0
+AUDIO_INT_PAD_TEMPLATE_CAPSÃ8ŒGst÷0
+AUDIO_INT_STANDARD_PAD_TEMPLATE_CAPSÃ8ŒGst÷0
+A_LAWÃ4ŒGst.BufferFormat÷0
+A_LAWÃ4ŒGst.BufferFormatType÷0
+AudioChannelPositionÃ2ŒGst÷0
+AudioClockÃ1ŒGst÷0
+AudioClockÃ128Õ(string name, Gst.AudioClockGetTimeFunc func)ŒGst.AudioClock÷0
+AudioClockGetTimeFuncÃ128Õ(Gst.Clock clock)ŒGst÷0œpublic delegate Gst.ClockTime
+AudioFieldFlagÃ2ŒGst÷0
+AudioFilterÃ1ŒGst÷0
+AudioFilterÃ128Õ()ŒGst.AudioFilter÷0
+AudioMixerFilterFuncÃ128Õ(Gst.Mixer mixer)ŒGst÷0œpublic delegate bool
+AudioSinkÃ1ŒGst÷0
+AudioSinkÃ128Õ()ŒGst.AudioSink÷0
+AudioSrcÃ1ŒGst÷0
+AudioSrcÃ128Õ()ŒGst.AudioSrc÷0
+BaseAudioSinkÃ1ŒGst÷0
+BaseAudioSinkÃ128Õ()ŒGst.BaseAudioSink÷0
+BaseAudioSinkSlaveMethodÃ2ŒGst÷0
+BaseAudioSrcÃ1ŒGst÷0
+BaseAudioSrcÃ128Õ()ŒGst.BaseAudioSrc÷0
+BaseAudioSrcSlaveMethodÃ2ŒGst÷0
+BufferFormatÃ2ŒGst÷0
+BufferFormatTypeÃ2ŒGst÷0
+CHANNELSÃ4ŒGst.AudioFieldFlag÷0
+DEPTHÃ4ŒGst.AudioFieldFlag÷0
+DTSÃ4ŒGst.BufferFormat÷0
+DTSÃ4ŒGst.BufferFormatType÷0
+EAC3Ã4ŒGst.BufferFormat÷0
+EAC3Ã4ŒGst.BufferFormatType÷0
+EMPTYÃ4ŒGst.RingBufferSegState÷0
+ENDIANNESSÃ4ŒGst.AudioFieldFlag÷0
+FILLEDÃ4ŒGst.RingBufferSegState÷0
+FLOATÃ4ŒGst.BufferFormatType÷0
+FLOAT32_BEÃ4ŒGst.BufferFormat÷0
+FLOAT32_LEÃ4ŒGst.BufferFormat÷0
+FLOAT64_BEÃ4ŒGst.BufferFormat÷0
+FLOAT64_LEÃ4ŒGst.BufferFormat÷0
+FRONT_CENTERÃ4ŒGst.AudioChannelPosition÷0
+FRONT_LEFTÃ4ŒGst.AudioChannelPosition÷0
+FRONT_LEFT_OF_CENTERÃ4ŒGst.AudioChannelPosition÷0
+FRONT_MONOÃ4ŒGst.AudioChannelPosition÷0
+FRONT_RIGHTÃ4ŒGst.AudioChannelPosition÷0
+FRONT_RIGHT_OF_CENTERÃ4ŒGst.AudioChannelPosition÷0
+GSMÃ4ŒGst.BufferFormat÷0
+GSMÃ4ŒGst.BufferFormatType÷0
+GstÃ256÷0
+IEC958Ã4ŒGst.BufferFormat÷0
+IEC958Ã4ŒGst.BufferFormatType÷0
+IMA_ADPCMÃ4ŒGst.BufferFormat÷0
+IMA_ADPCMÃ4ŒGst.BufferFormatType÷0
+INVALIDÃ4ŒGst.AudioChannelPosition÷0
+INVALIDÃ4ŒGst.RingBufferSegState÷0
+LFEÃ4ŒGst.AudioChannelPosition÷0
+LINEARÃ4ŒGst.BufferFormatType÷0
+MPEGÃ4ŒGst.BufferFormat÷0
+MPEGÃ4ŒGst.BufferFormatType÷0
+MU_LAWÃ4ŒGst.BufferFormat÷0
+MU_LAWÃ4ŒGst.BufferFormatType÷0
+NONEÃ4ŒGst.AudioChannelPosition÷0
+NONEÃ4ŒGst.BaseAudioSinkSlaveMethod÷0
+NONEÃ4ŒGst.BaseAudioSrcSlaveMethod÷0
+NUMÃ4ŒGst.AudioChannelPosition÷0
+PARTIALÃ4ŒGst.RingBufferSegState÷0
+PAUSEDÃ4ŒGst.RingBufferState÷0
+RATEÃ4ŒGst.AudioFieldFlag÷0
+REAR_CENTERÃ4ŒGst.AudioChannelPosition÷0
+REAR_LEFTÃ4ŒGst.AudioChannelPosition÷0
+REAR_RIGHTÃ4ŒGst.AudioChannelPosition÷0
+RESAMPLEÃ4ŒGst.BaseAudioSinkSlaveMethod÷0
+RESAMPLEÃ4ŒGst.BaseAudioSrcSlaveMethod÷0
+RETIMESTAMPÃ4ŒGst.BaseAudioSrcSlaveMethod÷0
+RingBufferÃ1ŒGst÷0
+RingBufferÃ128Õ()ŒGst.RingBuffer÷0
+RingBufferCallbackÃ128Õ(Gst.RingBuffer rbuf, uchar data, uint len)ŒGst÷0œpublic delegate void
+RingBufferSegStateÃ2ŒGst÷0
+RingBufferSpecÃ1ŒGst÷0
+RingBufferStateÃ2ŒGst÷0
+S16_BEÃ4ŒGst.BufferFormat÷0
+S16_LEÃ4ŒGst.BufferFormat÷0
+S18_3BEÃ4ŒGst.BufferFormat÷0
+S18_3LEÃ4ŒGst.BufferFormat÷0
+S20_3BEÃ4ŒGst.BufferFormat÷0
+S20_3LEÃ4ŒGst.BufferFormat÷0
+S24_3BEÃ4ŒGst.BufferFormat÷0
+S24_3LEÃ4ŒGst.BufferFormat÷0
+S24_BEÃ4ŒGst.BufferFormat÷0
+S24_LEÃ4ŒGst.BufferFormat÷0
+S32_BEÃ4ŒGst.BufferFormat÷0
+S32_LEÃ4ŒGst.BufferFormat÷0
+S8Ã4ŒGst.BufferFormat÷0
+SIDE_LEFTÃ4ŒGst.AudioChannelPosition÷0
+SIDE_RIGHTÃ4ŒGst.AudioChannelPosition÷0
+SIGNEDÃ4ŒGst.AudioFieldFlag÷0
+SKEWÃ4ŒGst.BaseAudioSinkSlaveMethod÷0
+SKEWÃ4ŒGst.BaseAudioSrcSlaveMethod÷0
+STARTEDÃ4ŒGst.RingBufferState÷0
+STOPPEDÃ4ŒGst.RingBufferState÷0
+U16_BEÃ4ŒGst.BufferFormat÷0
+U16_LEÃ4ŒGst.BufferFormat÷0
+U18_3BEÃ4ŒGst.BufferFormat÷0
+U18_3LEÃ4ŒGst.BufferFormat÷0
+U20_3BEÃ4ŒGst.BufferFormat÷0
+U20_3LEÃ4ŒGst.BufferFormat÷0
+U24_3BEÃ4ŒGst.BufferFormat÷0
+U24_3LEÃ4ŒGst.BufferFormat÷0
+U24_BEÃ4ŒGst.BufferFormat÷0
+U24_LEÃ4ŒGst.BufferFormat÷0
+U32_BEÃ4ŒGst.BufferFormat÷0
+U32_LEÃ4ŒGst.BufferFormat÷0
+U8Ã4ŒGst.BufferFormat÷0
+UNKNOWNÃ4ŒGst.BufferFormat÷0
+WIDTHÃ4ŒGst.AudioFieldFlag÷0
+abidataÃ8ŒGst.AudioClock÷0œvoid
+abidataÃ8ŒGst.RingBuffer÷0œvoid
+acquireÃ128Õ(Gst.RingBufferSpec spec)ŒGst.RingBuffer÷0œpublic virtual bool
+acquiredÃ8ŒGst.RingBuffer÷0œbool
+activateÃ128Õ(bool active)ŒGst.RingBuffer÷0œpublic virtual bool
+actual_buffer_timeÃ8ŒGst.BaseAudioSrc÷0œint64
+actual_latency_timeÃ8ŒGst.BaseAudioSrc÷0œint64
+add_pad_templatesÃ128Õ(Gst.Caps allowed_caps)ŒGst.AudioFilter÷0œpublic class void
+adjustÃ128Õ(Gst.Clock clock, Gst.ClockTime time)ŒGst.AudioClock÷0œpublic Gst.ClockTime
+advanceÃ128Õ(uint advance)ŒGst.RingBuffer÷0œpublic void
+audio_buffer_clipÃ128Õ(Gst.Buffer buffer, Gst.Segment segment, int rate, int frame_size)ŒGst÷0œpublic unowned
+audio_check_channel_positionsÃ128Õ(Gst.AudioChannelPosition pos, uint channels)ŒGst÷0œpublic bool
+audio_default_registry_mixer_filterÃ128Õ(Gst.AudioMixerFilterFunc filter_func, bool first)ŒGst÷0œpublic GLib.List
+audio_duration_from_pad_bufferÃ128Õ(Gst.Pad pad, Gst.Buffer buf)ŒGst÷0œpublic Gst.ClockTime
+audio_fixate_channel_positionsÃ128Õ(Gst.Structure str)ŒGst÷0œpublic Gst.AudioChannelPosition
+audio_frame_byte_sizeÃ128Õ(Gst.Pad pad)ŒGst÷0œpublic int
+audio_frame_lengthÃ128Õ(Gst.Pad pad, Gst.Buffer buf)ŒGst÷0œpublic long
+audio_get_channel_positionsÃ128Õ(Gst.Structure str)ŒGst÷0œpublic Gst.AudioChannelPosition
+audio_is_buffer_framedÃ128Õ(Gst.Pad pad, Gst.Buffer buf)ŒGst÷0œpublic bool
+audio_set_caps_channel_positions_listÃ128Õ(Gst.Caps caps, Gst.AudioChannelPosition pos, int num_positions)ŒGst÷0œpublic void
+audio_set_channel_positionsÃ128Õ(Gst.Structure str, Gst.AudioChannelPosition pos)ŒGst÷0œpublic void
+audio_set_structure_channel_positions_listÃ128Õ(Gst.Structure str, Gst.AudioChannelPosition pos, int num_positions)ŒGst÷0œpublic void
+audio_structure_set_intÃ128Õ(Gst.Structure structure, Gst.AudioFieldFlag flag)ŒGst÷0œpublic void
+bigendÃ8ŒGst.RingBufferSpec÷0œbool
+buffer_timeÃ8ŒGst.BaseAudioSink÷0œint64
+buffer_timeÃ8ŒGst.BaseAudioSrc÷0œint64
+buffer_timeÃ8ŒGst.RingBufferSpec÷0œuint64
+bytes_per_sampleÃ8ŒGst.RingBufferSpec÷0œint
+callbackÃ8ŒGst.RingBuffer÷0œGst.RingBufferCallback
+can_activate_pullÃ8ŒGst.BaseAudioSink÷0œbool
+capsÃ8ŒGst.RingBufferSpec÷0œGst.Caps
+cb_dataÃ8ŒGst.RingBuffer÷0œvoid
+channelsÃ8ŒGst.RingBufferSpec÷0œint
+clearÃ128Õ(int segment)ŒGst.RingBuffer÷0œpublic void
+clear_allÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual void
+clockÃ8ŒGst.BaseAudioSrc÷0œGst.Clock
+closeÃ128Õ()ŒGst.AudioSink÷0œpublic virtual bool
+closeÃ128Õ()ŒGst.AudioSrc÷0œpublic virtual bool
+close_deviceÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+commitÃ128Õ(uint64 sample, uchar[] data, uint len)ŒGst.RingBuffer÷0
+commit_fullÃ128Õ(uint64 sample, uchar[] data, int in_samples, int out_samples, ref int accum)ŒGst.RingBuffer÷0
+condÃ8ŒGst.RingBuffer÷0œGLib.Cond
+convertÃ128Õ(Gst.Format src_fmt, int64 src_val, Gst.Format dest_fmt, out int64 dest_val)ŒGst.RingBuffer÷0œpublic bool
+create_ringbufferÃ128Õ()ŒGst.BaseAudioSink÷0œpublic virtual unowned
+create_ringbufferÃ128Õ()ŒGst.BaseAudioSrc÷0œpublic virtual unowned
+dataÃ8ŒGst.RingBuffer÷0œGst.Buffer
+debug_spec_buffÃ128Õ(Gst.RingBufferSpec spec)ŒGst.RingBuffer÷0œpublic void
+debug_spec_capsÃ128Õ(Gst.RingBufferSpec spec)ŒGst.RingBuffer÷0œpublic void
+delayÃ128Õ()ŒGst.AudioSink÷0
+delayÃ128Õ()ŒGst.AudioSrc÷0
+delayÃ128Õ()ŒGst.RingBuffer÷0
+depthÃ8ŒGst.RingBufferSpec÷0œint
+device_is_openÃ128Õ()ŒGst.RingBuffer÷0œpublic bool
+drift_toleranceÃ8ŒGst.BaseAudioSink÷0œint64
+empty_segÃ8ŒGst.RingBuffer÷0œuchar
+formatÃ8ŒGst.AudioFilter÷0œGst.RingBufferSpec
+formatÃ8ŒGst.RingBufferSpec÷0œGst.BufferFormat
+funcÃ8ŒGst.AudioClock÷0œGst.AudioClockGetTimeFunc
+get_provide_clockÃ128Õ()ŒGst.BaseAudioSink÷0œpublic bool
+get_provide_clockÃ128Õ()ŒGst.BaseAudioSrc÷0œpublic bool
+get_slave_methodÃ128Õ()ŒGst.BaseAudioSink÷0œpublic Gst.BaseAudioSinkSlaveMethod
+get_slave_methodÃ128Õ()ŒGst.BaseAudioSrc÷0œpublic Gst.BaseAudioSrcSlaveMethod
+get_timeÃ128Õ(Gst.Clock clock)ŒGst.AudioClock÷0œpublic Gst.ClockTime
+is_acquiredÃ128Õ()ŒGst.RingBuffer÷0œpublic bool
+is_activeÃ128Õ()ŒGst.RingBuffer÷0œpublic bool
+last_timeÃ8ŒGst.AudioClock÷0œGst.ClockTime
+latency_timeÃ8ŒGst.BaseAudioSink÷0œint64
+latency_timeÃ8ŒGst.BaseAudioSrc÷0œint64
+latency_timeÃ8ŒGst.RingBufferSpec÷0œuint64
+may_startÃ128Õ(bool allowed)ŒGst.RingBuffer÷0œpublic void
+next_sampleÃ8ŒGst.BaseAudioSink÷0œuint64
+next_sampleÃ8ŒGst.BaseAudioSrc÷0œuint64
+openÃ128Õ()ŒGst.AudioSink÷0œpublic virtual bool
+openÃ128Õ()ŒGst.AudioSrc÷0œpublic virtual bool
+openÃ8ŒGst.RingBuffer÷0œbool
+open_deviceÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+parse_capsÃ128Õ(Gst.RingBufferSpec spec, Gst.Caps caps)ŒGst.RingBuffer÷0œpublic bool
+pauseÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+prepareÃ128Õ(Gst.RingBufferSpec spec)ŒGst.AudioSink÷0œpublic virtual bool
+prepareÃ128Õ(Gst.RingBufferSpec spec)ŒGst.AudioSrc÷0œpublic virtual bool
+prepare_readÃ128Õ(int segment, uchar readptr, int len)ŒGst.RingBuffer÷0œpublic bool
+provide_clockÃ8ŒGst.BaseAudioSink÷0œbool
+provide_clockÃ8ŒGst.BaseAudioSrc÷0œbool
+provided_clockÃ8ŒGst.BaseAudioSink÷0œGst.Clock
+rateÃ8ŒGst.RingBufferSpec÷0œint
+readÃ128Õ(void* data, uint length)ŒGst.AudioSrc÷0
+readÃ128Õ(uint64 sample, uchar[] data, uint len)ŒGst.RingBuffer÷0
+releaseÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+resetÃ128Õ(Gst.ClockTime time)ŒGst.AudioClock÷0œpublic void
+resetÃ128Õ()ŒGst.AudioSink÷0œpublic virtual void
+resetÃ128Õ()ŒGst.AudioSrc÷0œpublic virtual void
+resumeÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+ringbufferÃ8ŒGst.BaseAudioSink÷0œGst.RingBuffer
+ringbufferÃ8ŒGst.BaseAudioSrc÷0œGst.RingBuffer
+samples_doneÃ128Õ()ŒGst.RingBuffer÷0œpublic uint64
+samples_per_segÃ8ŒGst.RingBuffer÷0œint
+segbaseÃ8ŒGst.RingBuffer÷0œint
+segdoneÃ8ŒGst.RingBuffer÷0œint
+seglatencyÃ8ŒGst.RingBufferSpec÷0œint
+segsizeÃ8ŒGst.RingBufferSpec÷0œint
+segstateÃ8ŒGst.RingBuffer÷0œGst.RingBufferSegState
+segtotalÃ8ŒGst.RingBufferSpec÷0œint
+set_callbackÃ128Õ(Gst.RingBufferCallback cb)ŒGst.RingBuffer÷0œpublic void
+set_flushingÃ128Õ(bool flushing)ŒGst.RingBuffer÷0œpublic void
+set_provide_clockÃ128Õ(bool provide)ŒGst.BaseAudioSink÷0œpublic void
+set_provide_clockÃ128Õ(bool provide)ŒGst.BaseAudioSrc÷0œpublic void
+set_sampleÃ128Õ(uint64 sample)ŒGst.RingBuffer÷0œpublic void
+set_slave_methodÃ128Õ(Gst.BaseAudioSinkSlaveMethod method)ŒGst.BaseAudioSink÷0œpublic void
+set_slave_methodÃ128Õ(Gst.BaseAudioSrcSlaveMethod method)ŒGst.BaseAudioSrc÷0œpublic void
+setupÃ128Õ(Gst.RingBufferSpec format)ŒGst.AudioFilter÷0œpublic virtual bool
+signÃ8ŒGst.RingBufferSpec÷0œbool
+silence_sampleÃ8ŒGst.RingBufferSpec÷0œuchar
+slave_methodÃ8ŒGst.BaseAudioSink÷0œGst.BaseAudioSinkSlaveMethod
+slave_methodÃ8ŒGst.BaseAudioSrc÷0œGst.BaseAudioSrcSlaveMethod
+specÃ8ŒGst.RingBuffer÷0œGst.RingBufferSpec
+startÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+stateÃ8ŒGst.RingBuffer÷0œint
+stopÃ128Õ()ŒGst.RingBuffer÷0œpublic virtual bool
+threadÃ8ŒGst.AudioSink÷0œGLib.Thread
+threadÃ8ŒGst.AudioSrc÷0œGLib.Thread
+typeÃ8ŒGst.RingBufferSpec÷0œGst.BufferFormatType
+unprepareÃ128Õ()ŒGst.AudioSink÷0œpublic virtual bool
+unprepareÃ128Õ()ŒGst.AudioSrc÷0œpublic virtual bool
+user_dataÃ8ŒGst.AudioClock÷0œvoid
+waitingÃ8ŒGst.RingBuffer÷0œint
+widthÃ8ŒGst.RingBufferSpec÷0œint
+writeÃ128Õ(void* data, uint length)ŒGst.AudioSink÷0

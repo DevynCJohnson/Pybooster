@@ -1,0 +1,539 @@
+# format=tagmanager
+@classÌ8ÎX.WindowAttributesÖ0Ïint
+@flagsÌ8ÎX.SizeHintsÖ0Ïlong
+AfterFlushÌ4ÎX.QueuedModeÖ0
+AfterReadingÌ4ÎX.QueuedModeÖ0
+AllowEventsModeÌ2ÎXÖ0
+AlreadyÌ4ÎX.QueuedModeÖ0
+AnyEventÌ2048ÎXÖ0
+AppendÌ4ÎX.PropModeÖ0
+AsyncÌ4ÎX.GrabModeÖ0
+AsyncBothÌ4ÎX.AllowEventsModeÖ0
+AsyncKeyboardÌ4ÎX.AllowEventsModeÖ0
+AsyncPointerÌ4ÎX.AllowEventsModeÖ0
+AtomÌ2048ÎXÖ0
+BackPixelÌ4ÎX.CWÖ0
+BackPixmapÌ4ÎX.CWÖ0
+BackingPixelÌ4ÎX.CWÖ0
+BackingPlanesÌ4ÎX.CWÖ0
+BackingStoreÌ4ÎX.CWÖ0
+BitGravityÌ4ÎX.CWÖ0
+BorderPixelÌ4ÎX.CWÖ0
+BorderPixmapÌ4ÎX.CWÖ0
+BorderWidthÌ4ÎX.CWÖ0
+Button1MotionMaskÌ4ÎX.EventMaskÖ0
+Button2MotionMaskÌ4ÎX.EventMaskÖ0
+Button3MotionMaskÌ4ÎX.EventMaskÖ0
+Button4MotionMaskÌ4ÎX.EventMaskÖ0
+Button5MotionMaskÌ4ÎX.EventMaskÖ0
+ButtonEventÌ2048ÎXÖ0
+ButtonMotionMaskÌ4ÎX.EventMaskÖ0
+ButtonPressÌ4ÎX.EventTypeÖ0
+ButtonPressMaskÌ4ÎX.EventMaskÖ0
+ButtonReleaseÌ4ÎX.EventTypeÖ0
+ButtonReleaseMaskÌ4ÎX.EventMaskÖ0
+COPY_FROM_PARENTÌ8ÎXÖ0Ïint
+CURRENT_TIMEÌ8ÎXÖ0
+CWÌ2ÎXÖ0
+CirculateEventÌ2048ÎXÖ0
+CirculateNotifyÌ4ÎX.EventTypeÖ0
+CirculateRequestÌ4ÎX.EventTypeÖ0
+CirculateRequestEventÌ2048ÎXÖ0
+ClientMessageÌ4ÎX.EventTypeÖ0
+ClientMessageEventÌ2048ÎXÖ0
+ClientMessageEventDataÌ2048ÎXÖ0
+ColormapÌ2048ÎXÖ0
+ColormapÌ4ÎX.CWÖ0
+ColormapChangeMaskÌ4ÎX.EventMaskÖ0
+ColormapNotifyÌ4ÎX.EventTypeÖ0
+ConfigureEventÌ2048ÎXÖ0
+ConfigureNotifyÌ4ÎX.EventTypeÖ0
+ConfigureRequestÌ4ÎX.EventTypeÖ0
+ConfigureRequestEventÌ2048ÎXÖ0
+ControlMaskÌ4ÎX.KeyMaskÖ0
+CreateNotifyÌ4ÎX.EventTypeÖ0
+CreateWindowEventÌ2048ÎXÖ0
+CrossingEventÌ2048ÎXÖ0
+CursorÌ4ÎX.CWÖ0
+DestroyNotifyÌ4ÎX.EventTypeÖ0
+DestroyWindowEventÌ2048ÎXÖ0
+DisplayÌ1ÎXÖ0
+DisplayÌ128Í(string? name = null)ÎX.DisplayÖ0
+DontPropagateÌ4ÎX.CWÖ0
+DrawableÌ2048ÎXÖ0
+EnterNotifyÌ4ÎX.EventTypeÖ0
+EnterWindowMaskÌ4ÎX.EventMaskÖ0
+EventÌ2048ÎXÖ0
+EventMaskÌ2ÎXÖ0
+EventMaskÌ4ÎX.CWÖ0
+EventTypeÌ2ÎXÖ0
+ExposeÌ4ÎX.EventTypeÖ0
+ExposureMaskÌ4ÎX.EventMaskÖ0
+FocusChangeMaskÌ4ÎX.EventMaskÖ0
+FocusInÌ4ÎX.EventTypeÖ0
+FocusOutÌ4ÎX.EventTypeÖ0
+GCÌ2048ÎXÖ0
+GrabModeÌ2ÎXÖ0
+GraphicsExposeÌ4ÎX.EventTypeÖ0
+GravityEventÌ2048ÎXÖ0
+GravityNotifyÌ4ÎX.EventTypeÖ0
+HeightÌ4ÎX.CWÖ0
+IDÌ2048ÎXÖ0
+IsUnmappedÌ4ÎX.MapStateÖ0
+IsUnviewableÌ4ÎX.MapStateÖ0
+IsViewableÌ4ÎX.MapStateÖ0
+KeyEventÌ2048ÎXÖ0
+KeyMaskÌ2ÎXÖ0
+KeyPressÌ4ÎX.EventTypeÖ0
+KeyPressMaskÌ4ÎX.EventMaskÖ0
+KeyReleaseÌ4ÎX.EventTypeÖ0
+KeyReleaseMaskÌ4ÎX.EventMaskÖ0
+KeymapNotifyÌ4ÎX.EventTypeÖ0
+KeymapStateMaskÌ4ÎX.EventMaskÖ0
+LeaveNotifyÌ4ÎX.EventTypeÖ0
+LeaveWindowMaskÌ4ÎX.EventMaskÖ0
+LockMaskÌ4ÎX.KeyMaskÖ0
+MapEventÌ2048ÎXÖ0
+MapNotifyÌ4ÎX.EventTypeÖ0
+MapRequestÌ4ÎX.EventTypeÖ0
+MapRequestEventÌ2048ÎXÖ0
+MapStateÌ2ÎXÖ0
+MappingNotifyÌ4ÎX.EventTypeÖ0
+Mod1MaskÌ4ÎX.KeyMaskÖ0
+Mod2MaskÌ4ÎX.KeyMaskÖ0
+Mod3MaskÌ4ÎX.KeyMaskÖ0
+Mod4MaskÌ4ÎX.KeyMaskÖ0
+Mod5MaskÌ4ÎX.KeyMaskÖ0
+ModifierKeymapÌ1ÎXÖ0
+MotionEventÌ2048ÎXÖ0
+MotionNotifyÌ4ÎX.EventTypeÖ0
+NoEventMaskÌ4ÎX.EventMaskÖ0
+NoExposeÌ4ÎX.EventTypeÖ0
+NoneÌ8ÎXÖ0ÏX.ID
+NoneÌ4ÎX.RevertToÖ0
+OverrideRedirectÌ4ÎX.CWÖ0
+OwnerGrabButtonMaskÌ4ÎX.EventMaskÖ0
+ParentÌ4ÎX.RevertToÖ0
+PixmapÌ2048ÎXÖ0
+PointerMotionHintMaskÌ4ÎX.EventMaskÖ0
+PointerMotionMaskÌ4ÎX.EventMaskÖ0
+PointerRootÌ4ÎX.RevertToÖ0
+PrependÌ4ÎX.PropModeÖ0
+PropModeÌ2ÎXÖ0
+PropertyChangeMaskÌ4ÎX.EventMaskÖ0
+PropertyEventÌ2048ÎXÖ0
+PropertyNotifyÌ4ÎX.EventTypeÖ0
+QueuedModeÌ2ÎXÖ0
+RectangleÌ2048ÎXÖ0
+ReparentEventÌ2048ÎXÖ0
+ReparentNotifyÌ4ÎX.EventTypeÖ0
+ReplaceÌ4ÎX.PropModeÖ0
+ReplayKeyboardÌ4ÎX.AllowEventsModeÖ0
+ReplayPointerÌ4ÎX.AllowEventsModeÖ0
+ResizeRedirectMaskÌ4ÎX.EventMaskÖ0
+ResizeRequestÌ4ÎX.EventTypeÖ0
+RevertToÌ2ÎXÖ0
+SaveUnderÌ4ÎX.CWÖ0
+ScreenÌ1ÎXÖ0
+SelectionClearÌ4ÎX.EventTypeÖ0
+SelectionEventÌ2048ÎXÖ0
+SelectionNotifyÌ4ÎX.EventTypeÖ0
+SelectionRequestÌ4ÎX.EventTypeÖ0
+SetWindowAttributesÌ2048ÎXÖ0
+ShiftMaskÌ4ÎX.KeyMaskÖ0
+SiblingÌ4ÎX.CWÖ0
+SizeHintsÌ2048ÎXÖ0
+StackModeÌ4ÎX.CWÖ0
+StatusÌ2048ÎXÖ0
+StructureNotifyMaskÌ4ÎX.EventMaskÖ0
+SubstructureNotifyMaskÌ4ÎX.EventMaskÖ0
+SubstructureRedirectMaskÌ4ÎX.EventMaskÖ0
+SuccessÌ8ÎXÖ0Ïint
+SyncÌ4ÎX.GrabModeÖ0
+SyncBothÌ4ÎX.AllowEventsModeÖ0
+SyncKeyboardÌ4ÎX.AllowEventsModeÖ0
+SyncPointerÌ4ÎX.AllowEventsModeÖ0
+UnmapEventÌ2048ÎXÖ0
+UnmapNotifyÌ4ÎX.EventTypeÖ0
+VisibilityChangeMaskÌ4ÎX.EventMaskÖ0
+VisibilityNotifyÌ4ÎX.EventTypeÖ0
+VisualÌ2048ÎXÖ0
+WidthÌ4ÎX.CWÖ0
+WinGravityÌ4ÎX.CWÖ0
+WindowÌ2048ÎXÖ0
+WindowAttributesÌ2048ÎXÖ0
+WindowChangesÌ2048ÎXÖ0
+XÌ256Ö0
+XÌ4ÎX.CWÖ0
+XA_ATOMÌ8ÎXÖ0ÏX.Atom
+XA_CARDINALÌ8ÎXÖ0ÏX.Atom
+XA_WINDOWÌ8ÎXÖ0ÏX.Atom
+XA_WM_CLASSÌ8ÎXÖ0ÏX.Atom
+XA_WM_HINTSÌ8ÎXÖ0ÏX.Atom
+XA_WM_ICON_NAMEÌ8ÎXÖ0ÏX.Atom
+XA_WM_NAMEÌ8ÎXÖ0ÏX.Atom
+XA_WM_NORMAL_HINTSÌ8ÎXÖ0ÏX.Atom
+XA_WM_TRANSIENT_FORÌ8ÎXÖ0ÏX.Atom
+XK_Num_LockÌ8ÎXÖ0
+XK_Scroll_LockÌ8ÎXÖ0
+XK_Super_LÌ8ÎXÖ0
+XK_Super_RÌ8ÎXÖ0
+YÌ4ÎX.CWÖ0
+aboveÌ8ÎX.ConfigureEventÖ0ÏWindow
+aboveÌ8ÎX.ConfigureRequestEventÖ0ÏWindow
+activate_screensaverÌ128Í()ÎX.DisplayÖ0Ïpublic void
+add_to_save_setÌ128Í(Window w)ÎX.DisplayÖ0Ïpublic int
+all_event_masksÌ8ÎX.WindowAttributesÖ0Ïlong
+allow_eventsÌ128Í(int event_mode, int time)ÎX.DisplayÖ0Ïpublic int
+atomÌ8ÎX.PropertyEventÖ0ÏAtom
+bÌ8ÎX.ClientMessageEventDataÖ0Ïunowned
+background_pixelÌ8ÎX.SetWindowAttributesÖ0
+backing_pixelÌ8ÎX.SetWindowAttributesÖ0
+backing_pixelÌ8ÎX.WindowAttributesÖ0
+backing_planesÌ8ÎX.SetWindowAttributesÖ0
+backing_planesÌ8ÎX.WindowAttributesÖ0
+backing_storeÌ8ÎX.SetWindowAttributesÖ0Ïint
+backing_storeÌ8ÎX.WindowAttributesÖ0Ïint
+bit_gravityÌ8ÎX.SetWindowAttributesÖ0Ïint
+bit_gravityÌ8ÎX.WindowAttributesÖ0Ïint
+bitmap_bit_orderÌ128Í()ÎX.DisplayÖ0Ïpublic int
+bitmap_scanline_paddingÌ128Í()ÎX.DisplayÖ0Ïpublic int
+bitmap_scanline_unitÌ128Í()ÎX.DisplayÖ0Ïpublic int
+black_pixel_of_screenÌ128Í()ÎX.ScreenÖ0
+border_pixelÌ8ÎX.SetWindowAttributesÖ0
+border_widthÌ8ÎX.ConfigureEventÖ0Ïint
+border_widthÌ8ÎX.ConfigureRequestEventÖ0Ïint
+border_widthÌ8ÎX.CreateWindowEventÖ0Ïint
+border_widthÌ8ÎX.WindowAttributesÖ0Ïint
+border_widthÌ8ÎX.WindowChangesÖ0Ïint
+buttonÌ8ÎX.ButtonEventÖ0
+cells_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+change_propertyÌ128Í(Window w, Atom property, Atom type, int format, int mode, [CCode (array_length = false)] uchar[] data, int nelements)ÎX.DisplayÖ0Ïpublic int
+change_window_attributesÌ128Í(Window w, ulong valuemask, SetWindowAttributes attributes)ÎX.DisplayÖ0Ïpublic int
+configure_windowÌ128Í(Window w, uint value_mask, WindowChanges values)ÎX.DisplayÖ0Ïpublic int
+connection_numberÌ128Í()ÎX.DisplayÖ0Ïpublic int
+create_windowÌ128Í(Display display, Window parent, int x, int y, uint width, uint height, uint border_width, int depth, uint @class, Visual? visual, X.CW valuemask, ref SetWindowAttributes attributes)ÎXÖ0Ïpublic Window
+dataÌ8ÎX.ClientMessageEventÖ0ÏClientMessageEventData
+default_colormap_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic Colormap
+default_depth_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+default_gc_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic GC
+default_root_windowÌ128Í()ÎX.DisplayÖ0Ïpublic Window
+default_screenÌ128Í()ÎX.DisplayÖ0Ïpublic unowned
+default_visual_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic Visual
+depthÌ8ÎX.WindowAttributesÖ0Ïint
+detailÌ8ÎX.ConfigureRequestEventÖ0Ïint
+detailÌ8ÎX.CrossingEventÖ0Ïint
+displayÌ8ÎX.AnyEventÖ0Ïunowned
+displayÌ8ÎX.ButtonEventÖ0Ïunowned
+displayÌ8ÎX.CirculateEventÖ0Ïunowned
+displayÌ8ÎX.CirculateRequestEventÖ0Ïunowned
+displayÌ8ÎX.ClientMessageEventÖ0Ïunowned
+displayÌ8ÎX.ConfigureEventÖ0Ïunowned
+displayÌ8ÎX.ConfigureRequestEventÖ0Ïunowned
+displayÌ8ÎX.CreateWindowEventÖ0Ïunowned
+displayÌ8ÎX.CrossingEventÖ0Ïunowned
+displayÌ8ÎX.DestroyWindowEventÖ0Ïunowned
+displayÌ8ÎX.GravityEventÖ0Ïunowned
+displayÌ8ÎX.KeyEventÖ0Ïunowned
+displayÌ8ÎX.MapEventÖ0Ïunowned
+displayÌ8ÎX.MapRequestEventÖ0Ïunowned
+displayÌ8ÎX.MotionEventÖ0Ïunowned
+displayÌ8ÎX.PropertyEventÖ0Ïunowned
+displayÌ8ÎX.ReparentEventÖ0Ïunowned
+displayÌ8ÎX.ScreenÖ0ÏDisplay
+displayÌ8ÎX.SelectionEventÖ0Ïunowned
+displayÌ8ÎX.UnmapEventÖ0Ïunowned
+display_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic unowned
+display_stringÌ128Í()ÎX.DisplayÖ0
+do_not_propagate_maskÌ8ÎX.SetWindowAttributesÖ0Ïlong
+do_not_propagate_maskÌ8ÎX.WindowAttributesÖ0Ïlong
+does_backing_storeÌ128Í()ÎX.ScreenÖ0Ïpublic int
+does_save_undersÌ128Í()ÎX.ScreenÖ0Ïpublic bool
+eventÌ8ÎX.CirculateEventÖ0ÏWindow
+eventÌ8ÎX.ConfigureEventÖ0ÏWindow
+eventÌ8ÎX.DestroyWindowEventÖ0ÏWindow
+eventÌ8ÎX.GravityEventÖ0ÏWindow
+eventÌ8ÎX.MapEventÖ0ÏWindow
+eventÌ8ÎX.ReparentEventÖ0ÏWindow
+eventÌ8ÎX.UnmapEventÖ0ÏWindow
+event_maskÌ8ÎX.SetWindowAttributesÖ0Ïlong
+event_mask_of_ScreenÌ128Í()ÎX.ScreenÖ0Ïpublic long
+event_queue_lengthÌ128Í()ÎX.DisplayÖ0Ïpublic int
+events_queuedÌ128Í(int mode)ÎX.DisplayÖ0Ïpublic int
+flushÌ128Í()ÎX.DisplayÖ0Ïpublic int
+focusÌ8ÎX.CrossingEventÖ0Ïbool
+force_screensaverÌ128Í(int mode)ÎX.DisplayÖ0Ïpublic void
+formatÌ8ÎX.ClientMessageEventÖ0Ïint
+freeÌ128Í(void* data)ÎXÖ0Ïpublic int
+from_configureÌ8ÎX.UnmapEventÖ0Ïbool
+get_all_planesÌ128Í()ÎX.DisplayÖ0
+get_keyboard_mappingÌ128Í(uint first_keycode, int keycode_count, ref int keysyms_per_keycode_return)ÎX.DisplayÖ0Ïpublic unowned uint
+get_modifier_mappingÌ128Í()ÎX.DisplayÖ0Ïpublic ModifierKeymap
+get_screenÌ128Í(Display disp, int screen_number)ÎX.ScreenÖ0Ïpublic unowned
+get_screensaverÌ128Í(out int timeout, out int interval, out int prefer_blanking, out int allow_exposures)ÎX.DisplayÖ0Ïpublic void
+get_selection_ownerÌ128Í(Atom selection)ÎX.DisplayÖ0Ïpublic Window
+get_window_attributesÌ128Í(Window w, out WindowAttributes window_attributes_return)ÎX.DisplayÖ0Ïpublic void
+get_window_propertyÌ128Í(Window w, Atom property, long long_offset, long long_length, bool delete, Atom req_type, out Atom actual_type_return, out int actual_format_return, out ulong nitems_return, out ulong bytes_after_return, [CCode (type = )] out void* prop_return)ÎX.DisplayÖ0Ïpublic int
+grab_buttonÌ128Í(uint button, uint modifiers, Window grab_window, bool owner_events, uint event_mask, int pointer_mode, int keyboard_mode, Window confine_to, uint cursor)ÎX.DisplayÖ0Ïpublic int
+grab_keyÌ128Í(int keycode, uint modifiers, Window grab_window, bool owner_events, int pointer_mode, int keyboard_mode)ÎX.DisplayÖ0Ïpublic int
+grab_pointerÌ128Í(Window grab_window, bool owner_events, uint event_mask, int pointer_mode, int keyboard_mode, Window confine_to, uint cursor, int time)ÎX.DisplayÖ0Ïpublic int
+grab_serverÌ128Í()ÎX.DisplayÖ0Ïpublic int
+heightÌ8ÎX.ConfigureEventÖ0Ïint
+heightÌ8ÎX.ConfigureRequestEventÖ0Ïint
+heightÌ8ÎX.CreateWindowEventÖ0Ïint
+heightÌ8ÎX.RectangleÖ0Ïshort
+heightÌ8ÎX.ScreenÖ0Ïint
+heightÌ8ÎX.SizeHintsÖ0Ïint
+heightÌ8ÎX.WindowAttributesÖ0Ïint
+heightÌ8ÎX.WindowChangesÖ0Ïint
+height_in_mm_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+height_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+image_byte_orderÌ128Í()ÎX.DisplayÖ0Ïpublic int
+init_threadsÌ128Í()ÎXÖ0Ïpublic Status
+intern_atomÌ128Í(string atom_name, bool only_if_exists)ÎX.DisplayÖ0Ïpublic Atom
+intern_atomsÌ128Í(string[] names, bool only_if_exists, [CCode (array_length = false)] Atom[] atoms_return)ÎX.DisplayÖ0Ïpublic void
+internal_connection_numbersÌ128Í(ref int[] fd_return)ÎX.DisplayÖ0Ïpublic Status
+is_hintÌ8ÎX.MotionEventÖ0Ïchar
+keycodeÌ8ÎX.KeyEventÖ0
+keycodesÌ128Í(ref int min_keycodes_return, ref int max_keycodes_return)ÎX.DisplayÖ0Ïpublic int
+keysym_to_keycodeÌ128Í(uint keysym)ÎX.DisplayÖ0Ïpublic int
+lÌ8ÎX.ClientMessageEventDataÖ0Ïunowned
+last_known_request_processedÌ128Í()ÎX.DisplayÖ0
+lock_displayÌ128Í()ÎX.DisplayÖ0Ïpublic void
+map_installedÌ8ÎX.WindowAttributesÖ0Ïbool
+map_stateÌ8ÎX.WindowAttributesÖ0Ïint
+map_windowÌ128Í(Window w)ÎX.DisplayÖ0Ïpublic int
+max_colormaps_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+max_extended_request_sizeÌ128Í()ÎX.DisplayÖ0Ïpublic long
+max_keypermodÌ8ÎX.ModifierKeymapÖ0Ïint
+max_request_sizeÌ128Í()ÎX.DisplayÖ0Ïpublic long
+message_typeÌ8ÎX.ClientMessageEventÖ0ÏAtom
+min_colormaps_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+modeÌ8ÎX.CrossingEventÖ0Ïint
+modifiermapÌ8ÎX.ModifierKeymapÖ0Ïuchar
+move_windowÌ128Í(Window window, int x, int y)ÎX.DisplayÖ0Ïpublic void
+next_eventÌ128Í(ref Event event_return)ÎX.DisplayÖ0Ïpublic int
+next_requestÌ128Í()ÎX.DisplayÖ0
+no_operationÌ128Í()ÎX.DisplayÖ0Ïpublic void
+number_of_screensÌ128Í()ÎX.DisplayÖ0Ïpublic int
+override_redirectÌ8ÎX.ConfigureEventÖ0Ïbool
+override_redirectÌ8ÎX.CreateWindowEventÖ0Ïbool
+override_redirectÌ8ÎX.MapEventÖ0Ïbool
+override_redirectÌ8ÎX.ReparentEventÖ0Ïbool
+override_redirectÌ8ÎX.SetWindowAttributesÖ0Ïbool
+override_redirectÌ8ÎX.WindowAttributesÖ0Ïbool
+parentÌ8ÎX.CirculateRequestEventÖ0ÏWindow
+parentÌ8ÎX.ConfigureRequestEventÖ0ÏWindow
+parentÌ8ÎX.CreateWindowEventÖ0ÏWindow
+parentÌ8ÎX.MapRequestEventÖ0ÏWindow
+parentÌ8ÎX.ReparentEventÖ0ÏWindow
+pendingÌ128Í()ÎX.DisplayÖ0Ïpublic int
+placeÌ8ÎX.CirculateEventÖ0Ïint
+placeÌ8ÎX.CirculateRequestEventÖ0Ïint
+planes_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+process_internal_connectionÌ128Í(int fd)ÎX.DisplayÖ0Ïpublic void
+propertyÌ8ÎX.SelectionEventÖ0ÏAtom
+protocol_revisionÌ128Í()ÎX.DisplayÖ0Ïpublic int
+protocol_versionÌ128Í()ÎX.DisplayÖ0Ïpublic int
+query_treeÌ128Í(Window w, out Window root_return, out Window parent_return, out Window[] children_return)ÎX.DisplayÖ0Ïpublic void
+raise_windowÌ128Í(Window w)ÎX.DisplayÖ0Ïpublic int
+reparent_windowÌ128Í(Window w, Window parent, int x, int y)ÎX.DisplayÖ0Ïpublic int
+requestorÌ8ÎX.SelectionEventÖ0ÏWindow
+reset_screensaverÌ128Í()ÎX.DisplayÖ0Ïpublic void
+resize_windowÌ128Í(Window w, uint width, uint height)ÎX.DisplayÖ0Ïpublic int
+rootÌ8ÎX.CrossingEventÖ0ÏWindow
+rootÌ8ÎX.KeyEventÖ0ÏWindow
+rootÌ8ÎX.ScreenÖ0ÏWindow
+rootÌ8ÎX.WindowAttributesÖ0ÏWindow
+root_windowÌ128Í(int screen_number)ÎX.DisplayÖ0Ïpublic Window
+root_window_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic Window
+sÌ8ÎX.ClientMessageEventDataÖ0Ïunowned
+same_screenÌ8ÎX.ButtonEventÖ0Ïbool
+same_screenÌ8ÎX.CrossingEventÖ0Ïbool
+same_screenÌ8ÎX.KeyEventÖ0Ïbool
+same_screenÌ8ÎX.MotionEventÖ0Ïbool
+save_underÌ8ÎX.SetWindowAttributesÖ0Ïbool
+save_underÌ8ÎX.WindowAttributesÖ0Ïbool
+screen_by_idÌ128Í(int screen_number)ÎX.DisplayÖ0Ïpublic unowned
+screen_countÌ128Í()ÎX.DisplayÖ0Ïpublic int
+screen_number_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+screen_of_displayÌ128Í(int screen_number)ÎX.DisplayÖ0Ïpublic unowned
+select_inputÌ128Í(Window w, long event_mask)ÎX.DisplayÖ0Ïpublic int
+selectionÌ8ÎX.SelectionEventÖ0ÏAtom
+send_eventÌ8ÎX.AnyEventÖ0Ïbool
+send_eventÌ8ÎX.ButtonEventÖ0Ïbool
+send_eventÌ8ÎX.CirculateEventÖ0Ïbool
+send_eventÌ8ÎX.CirculateRequestEventÖ0Ïbool
+send_eventÌ8ÎX.ClientMessageEventÖ0Ïbool
+send_eventÌ8ÎX.ConfigureEventÖ0Ïbool
+send_eventÌ8ÎX.ConfigureRequestEventÖ0Ïbool
+send_eventÌ8ÎX.CreateWindowEventÖ0Ïbool
+send_eventÌ8ÎX.CrossingEventÖ0Ïbool
+send_eventÌ8ÎX.DestroyWindowEventÖ0Ïbool
+send_eventÌ128Í(Window w, bool prpagate, long event_mask, ref Event event_send)ÎX.DisplayÖ0Ïpublic void
+send_eventÌ8ÎX.GravityEventÖ0Ïbool
+send_eventÌ8ÎX.KeyEventÖ0Ïbool
+send_eventÌ8ÎX.MapEventÖ0Ïbool
+send_eventÌ8ÎX.MapRequestEventÖ0Ïbool
+send_eventÌ8ÎX.MotionEventÖ0Ïbool
+send_eventÌ8ÎX.PropertyEventÖ0Ïbool
+send_eventÌ8ÎX.ReparentEventÖ0Ïbool
+send_eventÌ8ÎX.SelectionEventÖ0Ïbool
+send_eventÌ8ÎX.UnmapEventÖ0Ïbool
+serialÌ8ÎX.AnyEventÖ0
+serialÌ8ÎX.ButtonEventÖ0
+serialÌ8ÎX.CirculateEventÖ0
+serialÌ8ÎX.CirculateRequestEventÖ0
+serialÌ8ÎX.ClientMessageEventÖ0
+serialÌ8ÎX.ConfigureEventÖ0
+serialÌ8ÎX.ConfigureRequestEventÖ0
+serialÌ8ÎX.CreateWindowEventÖ0
+serialÌ8ÎX.CrossingEventÖ0
+serialÌ8ÎX.DestroyWindowEventÖ0
+serialÌ8ÎX.GravityEventÖ0
+serialÌ8ÎX.KeyEventÖ0
+serialÌ8ÎX.MapEventÖ0
+serialÌ8ÎX.MapRequestEventÖ0
+serialÌ8ÎX.MotionEventÖ0
+serialÌ8ÎX.PropertyEventÖ0
+serialÌ8ÎX.ReparentEventÖ0
+serialÌ8ÎX.SelectionEventÖ0
+serialÌ8ÎX.UnmapEventÖ0
+set_close_down_modeÌ128Í(int close_mode)ÎX.DisplayÖ0Ïpublic void
+set_input_focusÌ128Í(Window focus, int revert_to, int time)ÎX.DisplayÖ0Ïpublic int
+set_screensaverÌ128Í(int timeout, int interval, int prefer_blanking, int allow_exposures)ÎX.DisplayÖ0Ïpublic void
+set_selection_ownerÌ128Í(Atom selection, Window owner, int time)ÎX.DisplayÖ0Ïpublic Window
+siblingÌ8ÎX.WindowChangesÖ0ÏWindow
+stack_modeÌ8ÎX.WindowChangesÖ0Ïint
+stateÌ8ÎX.ButtonEventÖ0
+stateÌ8ÎX.CrossingEventÖ0
+stateÌ8ÎX.KeyEventÖ0
+stateÌ8ÎX.MotionEventÖ0
+stateÌ8ÎX.PropertyEventÖ0Ïint
+subwindowÌ8ÎX.ButtonEventÖ0ÏWindow
+subwindowÌ8ÎX.CrossingEventÖ0ÏWindow
+subwindowÌ8ÎX.KeyEventÖ0ÏWindow
+subwindowÌ8ÎX.MotionEventÖ0ÏWindow
+targetÌ8ÎX.SelectionEventÖ0ÏAtom
+timeÌ8ÎX.ButtonEventÖ0
+timeÌ8ÎX.CrossingEventÖ0
+timeÌ8ÎX.KeyEventÖ0
+timeÌ8ÎX.MotionEventÖ0
+timeÌ8ÎX.PropertyEventÖ0
+timeÌ8ÎX.SelectionEventÖ0
+typeÌ8ÎX.AnyEventÖ0Ïint
+typeÌ8ÎX.ButtonEventÖ0Ïint
+typeÌ8ÎX.CirculateEventÖ0Ïint
+typeÌ8ÎX.CirculateRequestEventÖ0Ïint
+typeÌ8ÎX.ClientMessageEventÖ0Ïint
+typeÌ8ÎX.ConfigureEventÖ0Ïint
+typeÌ8ÎX.ConfigureRequestEventÖ0Ïint
+typeÌ8ÎX.CreateWindowEventÖ0Ïint
+typeÌ8ÎX.CrossingEventÖ0Ïint
+typeÌ8ÎX.DestroyWindowEventÖ0Ïint
+typeÌ8ÎX.EventÖ0Ïint
+typeÌ8ÎX.GravityEventÖ0Ïint
+typeÌ8ÎX.KeyEventÖ0Ïint
+typeÌ8ÎX.MapEventÖ0Ïint
+typeÌ8ÎX.MapRequestEventÖ0Ïint
+typeÌ8ÎX.MotionEventÖ0Ïint
+typeÌ8ÎX.PropertyEventÖ0Ïint
+typeÌ8ÎX.ReparentEventÖ0Ïint
+typeÌ8ÎX.SelectionEventÖ0Ïint
+typeÌ8ÎX.UnmapEventÖ0Ïint
+ungrab_buttonÌ128Í(uint button, uint modifiers, Window grab_window)ÎX.DisplayÖ0Ïpublic int
+ungrab_keyÌ128Í(int keycode, uint modifiers, Window grab_window)ÎX.DisplayÖ0Ïpublic int
+ungrab_pointerÌ128Í(int time)ÎX.DisplayÖ0Ïpublic int
+ungrab_serverÌ128Í()ÎX.DisplayÖ0Ïpublic int
+unlock_displayÌ128Í()ÎX.DisplayÖ0Ïpublic void
+unmap_windowÌ128Í(Window w)ÎX.DisplayÖ0Ïpublic int
+value_maskÌ8ÎX.ConfigureRequestEventÖ0
+visualÌ8ÎX.WindowAttributesÖ0ÏVisual
+white_pixel_of_screenÌ128Í()ÎX.ScreenÖ0
+widthÌ8ÎX.ConfigureEventÖ0Ïint
+widthÌ8ÎX.ConfigureRequestEventÖ0Ïint
+widthÌ8ÎX.CreateWindowEventÖ0Ïint
+widthÌ8ÎX.RectangleÖ0Ïshort
+widthÌ8ÎX.ScreenÖ0Ïint
+widthÌ8ÎX.SizeHintsÖ0Ïint
+widthÌ8ÎX.WindowAttributesÖ0Ïint
+widthÌ8ÎX.WindowChangesÖ0Ïint
+width_in_mm_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+width_of_screenÌ128Í()ÎX.ScreenÖ0Ïpublic int
+win_gravityÌ8ÎX.SetWindowAttributesÖ0Ïint
+win_gravityÌ8ÎX.WindowAttributesÖ0Ïint
+windowÌ8ÎX.AnyEventÖ0ÏWindow
+windowÌ8ÎX.ButtonEventÖ0ÏWindow
+windowÌ8ÎX.CirculateEventÖ0ÏWindow
+windowÌ8ÎX.CirculateRequestEventÖ0ÏWindow
+windowÌ8ÎX.ClientMessageEventÖ0ÏWindow
+windowÌ8ÎX.ConfigureEventÖ0ÏWindow
+windowÌ8ÎX.ConfigureRequestEventÖ0ÏWindow
+windowÌ8ÎX.CreateWindowEventÖ0ÏWindow
+windowÌ8ÎX.CrossingEventÖ0ÏWindow
+windowÌ8ÎX.DestroyWindowEventÖ0ÏWindow
+windowÌ8ÎX.GravityEventÖ0ÏWindow
+windowÌ8ÎX.KeyEventÖ0ÏWindow
+windowÌ8ÎX.MapEventÖ0ÏWindow
+windowÌ8ÎX.MapRequestEventÖ0ÏWindow
+windowÌ8ÎX.MotionEventÖ0ÏWindow
+windowÌ8ÎX.PropertyEventÖ0ÏWindow
+windowÌ8ÎX.ReparentEventÖ0ÏWindow
+windowÌ8ÎX.UnmapEventÖ0ÏWindow
+window_eventÌ128Í(Window w, EventMask event_mask, out Event event_return)ÎX.DisplayÖ0Ïpublic int
+xÌ8ÎX.ButtonEventÖ0Ïint
+xÌ8ÎX.ConfigureEventÖ0Ïint
+xÌ8ÎX.ConfigureRequestEventÖ0Ïint
+xÌ8ÎX.CreateWindowEventÖ0Ïint
+xÌ8ÎX.CrossingEventÖ0Ïint
+xÌ8ÎX.GravityEventÖ0Ïint
+xÌ8ÎX.KeyEventÖ0Ïint
+xÌ8ÎX.MotionEventÖ0Ïint
+xÌ8ÎX.RectangleÖ0Ïshort
+xÌ8ÎX.ReparentEventÖ0Ïint
+xÌ8ÎX.SizeHintsÖ0Ïint
+xÌ8ÎX.WindowAttributesÖ0Ïint
+xÌ8ÎX.WindowChangesÖ0Ïint
+x_rootÌ8ÎX.ButtonEventÖ0Ïint
+x_rootÌ8ÎX.CrossingEventÖ0Ïint
+x_rootÌ8ÎX.KeyEventÖ0Ïint
+x_rootÌ8ÎX.MotionEventÖ0Ïint
+xanyÌ8ÎX.EventÖ0ÏAnyEvent
+xbuttonÌ8ÎX.EventÖ0ÏButtonEvent
+xcirculateÌ8ÎX.EventÖ0ÏCirculateEvent
+xcirculaterequestÌ8ÎX.EventÖ0ÏCirculateRequestEvent
+xclientÌ8ÎX.EventÖ0ÏClientMessageEvent
+xconfigureÌ8ÎX.EventÖ0ÏConfigureEvent
+xconfigurerequestÌ8ÎX.EventÖ0ÏConfigureRequestEvent
+xcreatewindowÌ8ÎX.EventÖ0ÏCreateWindowEvent
+xcrossingÌ8ÎX.EventÖ0ÏCrossingEvent
+xdestroywindowÌ8ÎX.EventÖ0ÏDestroyWindowEvent
+xgravityÌ8ÎX.EventÖ0ÏGravityEvent
+xkeyÌ8ÎX.EventÖ0ÏKeyEvent
+xmapÌ8ÎX.EventÖ0ÏMapEvent
+xmaprequestÌ8ÎX.EventÖ0ÏMapRequestEvent
+xmotionÌ8ÎX.EventÖ0ÏMotionEvent
+xpropertyÌ8ÎX.EventÖ0ÏPropertyEvent
+xreparentÌ8ÎX.EventÖ0ÏReparentEvent
+xselectionÌ8ÎX.EventÖ0ÏSelectionEvent
+xserver_vendor_nameÌ128Í()ÎX.DisplayÖ0
+xserver_vendor_releaseÌ128Í()ÎX.DisplayÖ0
+xunmapÌ8ÎX.EventÖ0ÏUnmapEvent
+yÌ8ÎX.ButtonEventÖ0Ïint
+yÌ8ÎX.ConfigureEventÖ0Ïint
+yÌ8ÎX.ConfigureRequestEventÖ0Ïint
+yÌ8ÎX.CreateWindowEventÖ0Ïint
+yÌ8ÎX.CrossingEventÖ0Ïint
+yÌ8ÎX.GravityEventÖ0Ïint
+yÌ8ÎX.KeyEventÖ0Ïint
+yÌ8ÎX.MotionEventÖ0Ïint
+yÌ8ÎX.RectangleÖ0Ïshort
+yÌ8ÎX.ReparentEventÖ0Ïint
+yÌ8ÎX.SizeHintsÖ0Ïint
+yÌ8ÎX.WindowAttributesÖ0Ïint
+yÌ8ÎX.WindowChangesÖ0Ïint
+y_rootÌ8ÎX.ButtonEventÖ0Ïint
+y_rootÌ8ÎX.CrossingEventÖ0Ïint
+y_rootÌ8ÎX.KeyEventÖ0Ïint
+y_rootÌ8ÎX.MotionEventÖ0Ïint
+your_event_maskÌ8ÎX.WindowAttributesÖ0Ïlong

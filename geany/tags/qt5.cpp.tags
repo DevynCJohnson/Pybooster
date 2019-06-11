@@ -1,0 +1,2204 @@
+# format=tagmanager
+AboutQtRoleÌ4ÎQAction::MenuRoleÖ0
+AboutRoleÌ4ÎQAction::MenuRoleÖ0
+AcceleratingFlickMaximumTimeÌ4ÎQScrollerProperties::ScrollMetricÖ0
+AcceleratingFlickSpeedupFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+ActionEventÌ2ÎQActionÖ0
+AllÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+AllNonFixedFieldsGrowÌ4ÎQFormLayout::FieldGrowthPolicyÖ0
+AnchorDataÌ32768Ö0
+AnimationHintÌ4ÎQGraphicsBlurEffect::BlurHintÖ0
+ApplicationSpecificRoleÌ4ÎQAction::MenuRoleÖ0
+AreaOptionÌ2ÎQMdiAreaÖ0
+AxisLockThresholdÌ4ÎQScrollerProperties::ScrollMetricÖ0
+BlurHintÌ2ÎQGraphicsBlurEffectÖ0
+BottomToTopÌ4ÎQProgressBar::DirectionÖ0
+ButtonBoxÌ4ÎQSizePolicy::ControlTypeÖ0
+ButtonPositionÌ2ÎQTabBarÖ0
+CancelAllInContextÌ4ÎQGesture::GestureCancelPolicyÖ0
+CancelNoneÌ4ÎQGesture::GestureCancelPolicyÖ0
+CenterPointChangedÌ4ÎQPinchGesture::ChangeFlagÖ0
+ChangeFlagÌ2ÎQGraphicsEffectÖ0
+ChangeFlagÌ2ÎQPinchGestureÖ0
+CheckBoxÌ4ÎQSizePolicy::ControlTypeÖ0
+CheckedÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+ChildIndicatorPolicyÌ2ÎQTreeWidgetItemÖ0
+ComboBoxÌ4ÎQSizePolicy::ControlTypeÖ0
+ControlTypeÌ2ÎQSizePolicyÖ0
+DESIGNABLEÌ1024Í(qobject_cast<QMainWindow *>(parentWidget()) != 0)ÎQToolBarÖ0ÏQ_OBJECT
+DecelerationFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+DefaultTypeÌ4ÎQSizePolicy::ControlTypeÖ0
+DirectÌ4ÎQColormap::ModeÖ0
+DirectionÌ2ÎQProgressBarÖ0
+DisabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+DontMaximizeSubWindowOnActivationÌ4ÎQMdiArea::AreaOptionÖ0
+DontShowIndicatorÌ4ÎQTreeWidgetItem::ChildIndicatorPolicyÖ0
+DontShowIndicatorWhenChildlessÌ4ÎQTreeWidgetItem::ChildIndicatorPolicyÖ0
+DontWrapRowsÌ4ÎQFormLayout::RowWrapPolicyÖ0
+DownÌ4ÎQSwipeGesture::SwipeDirectionÖ0
+DragDisabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+DragEnabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+DragStartDistanceÌ4ÎQScrollerProperties::ScrollMetricÖ0
+DragVelocitySmoothingFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+DraggingÌ4ÎQScroller::StateÖ0
+DrawingHintÌ2ÎQDrawBorderPixmapÖ0
+DropDisabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+DropEnabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+EastÌ4ÎQTabWidget::TabPositionÖ0
+EditableÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+EnabledÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+ExpandFlagÌ4ÎQSizePolicy::PolicyFlagÖ0
+ExpandingÌ4ÎQSizePolicy::PolicyÖ0
+ExpandingFieldsGrowÌ4ÎQFormLayout::FieldGrowthPolicyÖ0
+FieldGrowthPolicyÌ2ÎQFormLayoutÖ0
+FieldRoleÌ4ÎQFormLayout::ItemRoleÖ0
+FieldsStayAtSizeHintÌ4ÎQFormLayout::FieldGrowthPolicyÖ0
+FixedÌ4ÎQSizePolicy::PolicyÖ0
+Fps20Ì4ÎQScrollerProperties::FrameRatesÖ0
+Fps30Ì4ÎQScrollerProperties::FrameRatesÖ0
+Fps60Ì4ÎQScrollerProperties::FrameRatesÖ0
+FrameÌ4ÎQSizePolicy::ControlTypeÖ0
+FrameRateÌ4ÎQScrollerProperties::ScrollMetricÖ0
+FrameRatesÌ2ÎQScrollerPropertiesÖ0
+GestureCancelPolicyÌ2ÎQGestureÖ0
+GrayÌ4ÎQColormap::ModeÖ0
+GroupBoxÌ4ÎQSizePolicy::ControlTypeÖ0
+GrowFlagÌ4ÎQSizePolicy::PolicyFlagÖ0
+HasChildrenÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+HiddenÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+HighPriorityÌ4ÎQAction::PriorityÖ0
+HorizontalOvershootPolicyÌ4ÎQScrollerProperties::ScrollMetricÖ0
+HoverÌ4ÎQAction::ActionEventÖ0
+IgnoreFlagÌ4ÎQSizePolicy::PolicyFlagÖ0
+IgnoredÌ4ÎQSizePolicy::PolicyÖ0
+InactiveÌ4ÎQScroller::StateÖ0
+IndexedÌ4ÎQColormap::ModeÖ0
+InputÌ2ÎQScrollerÖ0
+InputMoveÌ4ÎQScroller::InputÖ0
+InputPressÌ4ÎQScroller::InputÖ0
+InputReleaseÌ4ÎQScroller::InputÖ0
+ItemRoleÌ2ÎQFormLayoutÖ0
+ItemTypeÌ2ÎQTableWidgetItemÖ0
+ItemTypeÌ2ÎQTreeWidgetItemÖ0
+IteratorFlagÌ2ÎQTreeWidgetItemIteratorÖ0
+LabelÌ4ÎQSizePolicy::ControlTypeÖ0
+LabelRoleÌ4ÎQFormLayout::ItemRoleÖ0
+LeftÌ4ÎQSwipeGesture::SwipeDirectionÖ0
+LeftMouseButtonGestureÌ4ÎQScroller::ScrollerGestureTypeÖ0
+LeftSideÌ4ÎQTabBar::ButtonPositionÖ0
+LineÌ4ÎQSizePolicy::ControlTypeÖ0
+LineEditÌ4ÎQSizePolicy::ControlTypeÖ0
+LowPriorityÌ4ÎQAction::PriorityÖ0
+MaximumÌ4ÎQSizePolicy::PolicyÖ0
+MaximumClickThroughVelocityÌ4ÎQScrollerProperties::ScrollMetricÖ0
+MaximumVelocityÌ4ÎQScrollerProperties::ScrollMetricÖ0
+MenuRoleÌ2ÎQActionÖ0
+MiddleMouseButtonGestureÌ4ÎQScroller::ScrollerGestureTypeÖ0
+MinimumÌ4ÎQSizePolicy::PolicyÖ0
+MinimumExpandingÌ4ÎQSizePolicy::PolicyÖ0
+MinimumVelocityÌ4ÎQScrollerProperties::ScrollMetricÖ0
+ModeÌ2ÎQColormapÖ0
+MousePressEventDelayÌ4ÎQScrollerProperties::ScrollMetricÖ0
+NoChildrenÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+NoDirectionÌ4ÎQSwipeGesture::SwipeDirectionÖ0
+NoRoleÌ4ÎQAction::MenuRoleÖ0
+NormalPriorityÌ4ÎQAction::PriorityÖ0
+NorthÌ4ÎQTabWidget::TabPositionÖ0
+NotCheckedÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+NotEditableÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+NotHiddenÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+NotSelectableÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+OpaqueAllÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueBottomÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueBottomLeftÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueBottomRightÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueCenterÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueCornersÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueEdgesÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueFrameÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueLeftÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueRightÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueTopÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueTopLeftÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OpaqueTopRightÌ4ÎQDrawBorderPixmap::DrawingHintÖ0
+OvershootAlwaysOffÌ4ÎQScrollerProperties::OvershootPolicyÖ0
+OvershootAlwaysOnÌ4ÎQScrollerProperties::OvershootPolicyÖ0
+OvershootDragDistanceFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+OvershootDragResistanceFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+OvershootPolicyÌ2ÎQScrollerPropertiesÖ0
+OvershootScrollDistanceFactorÌ4ÎQScrollerProperties::ScrollMetricÖ0
+OvershootScrollTimeÌ4ÎQScrollerProperties::ScrollMetricÖ0
+OvershootWhenScrollableÌ4ÎQScrollerProperties::OvershootPolicyÖ0
+PPK_CollateCopiesÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_ColorModeÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_CopyCountÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_CreatorÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_CustomBaseÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_CustomPaperSizeÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_DocumentNameÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_DuplexÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_FontEmbeddingÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_FullPageÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_NumberOfCopiesÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_OrientationÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_OutputFileNameÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PageMarginsÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PageOrderÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PageRectÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PageSizeÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PaperRectÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PaperSizeÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PaperSourceÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PaperSourcesÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PrinterNameÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_PrinterProgramÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_ResolutionÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_SelectionOptionÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_SupportedResolutionsÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_SupportsMultipleCopiesÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PPK_WindowsPageSizeÌ4ÎQPrintEngine::PrintEnginePropertyKeyÖ0
+PerformanceHintÌ4ÎQGraphicsBlurEffect::BlurHintÖ0
+PolicyÌ2ÎQSizePolicyÖ0
+PolicyFlagÌ2ÎQSizePolicyÖ0
+PreferencesRoleÌ4ÎQAction::MenuRoleÖ0
+PreferredÌ4ÎQSizePolicy::PolicyÖ0
+PressedÌ4ÎQScroller::StateÖ0
+PrintEnginePropertyKeyÌ2ÎQPrintEngineÖ0
+PriorityÌ2ÎQActionÖ0
+PushButtonÌ4ÎQSizePolicy::ControlTypeÖ0
+QABSTRACTITEMDELEGATE_HÌ65536Ö0
+QACTION_HÌ65536Ö0
+QAbstractItemDelegateÌ1Ö0
+QAbstractItemDelegateÌ1024Í(QObjectPrivate &, QObject *parent = 0)ÎQAbstractItemDelegateÖ0
+QAbstractItemModelÌ32768Ö0
+QAbstractItemViewÌ32768Ö0
+QAbstractScrollAreaPrivateÌ32768Ö0
+QAccessibleTabBarÌ32768Ö0
+QAccessibleTableÌ32768Ö0
+QAccessibleTableCellÌ32768Ö0
+QAccessibleTreeÌ32768Ö0
+QActionÌ1Ö0
+QActionÌ32768Ö0
+QActionÌ1024Í(QObject* parent)ÎQActionÖ0
+QActionÌ1024Í(const QString &text, QObject* parent)ÎQActionÖ0
+QActionÌ1024Í(const QIcon &icon, const QString &text, QObject* parent)ÎQActionÖ0
+QActionÌ1024Í(QActionPrivate &dd, QObject *parent)ÎQActionÖ0
+QActionGroupÌ32768Ö0
+QActionPrivateÌ32768Ö0
+QApplicationÌ32768Ö0
+QApplicationPrivateÌ32768Ö0
+QBrushÌ32768Ö0
+QCHECKBOX_HÌ65536Ö0
+QCOCOAVIEWCONTAINER_HÌ65536Ö0
+QCOLORMAP_HÌ65536Ö0
+QCOLUMNVIEW_HÌ65536Ö0
+QCOMMONSTYLE_HÌ65536Ö0
+QCheckBoxÌ1Ö0
+QCheckBoxÌ1024Í(QWidget *parent=0)ÎQCheckBoxÖ0
+QCheckBoxÌ1024Í(const QString &text, QWidget *parent=0)ÎQCheckBoxÖ0
+QCheckBoxPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QColorÌ32768Ö0ÏQT_END_NAMESPACE
+QColormapÌ1Ö0
+QColormapÌ1024Í(const QColormap &colormap)ÎQColormapÖ0
+QColormapÌ1024Í()ÎQColormapÖ0
+QColormapPrivateÌ32768Ö0
+QColumnViewÌ1Ö0
+QColumnViewÌ1024Í(QWidget *parent = 0)ÎQColumnViewÖ0
+QColumnViewÌ1024Í(QColumnViewPrivate &dd, QWidget *parent = 0)ÎQColumnViewÖ0
+QColumnViewPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QComboBoxÌ32768Ö0
+QCommonStyleÌ1Ö0
+QCommonStyleÌ1024Í(QCommonStylePrivate &dd)ÎQCommonStyleÖ0
+QCommonStylePrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QDESKTOPWIDGET_HÌ65536Ö0
+QDIAL_HÌ65536Ö0
+QDRAWUTIL_HÌ65536Ö0
+QDYNAMICTOOLBAR_HÌ65536Ö0
+QDesktopWidgetÌ1Ö0
+QDesktopWidgetÌ1024Í()ÎQDesktopWidgetÖ0
+QDesktopWidgetPrivateÌ32768Ö0
+QDialÌ1Ö0
+QDialÌ1024Í(QWidget *parent = 0)ÎQDialÖ0
+QDialPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QDrawBorderPixmapÌ256Ö0
+QERRORMESSAGE_HÌ65536Ö0
+QErrorMessageÌ1Ö0
+QErrorMessageÌ1024Í(QWidget* parent = 0)ÎQErrorMessageÖ0
+QErrorMessagePrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QFORMLAYOUT_HÌ65536Ö0
+QFlickGestureRecognizerÌ32768Ö0
+QFontÌ32768Ö0ÏQT_END_NAMESPACE
+QFontMetricsÌ32768Ö0
+QFormLayoutÌ1Ö0
+QFormLayoutÌ1024Í(QWidget *parent = 0)ÎQFormLayoutÖ0
+QFormLayoutPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QGESTURE_HÌ65536Ö0
+QGRAPHICSANCHORLAYOUT_HÌ65536Ö0
+QGRAPHICSEFFECT_HÌ65536Ö0
+QGRAPHICSITEMANIMATION_HÌ65536Ö0
+QGRAPHICSLAYOUT_HÌ65536Ö0
+QGRAPHICSWIDGET_HÌ65536Ö0
+QGestureÌ1Ö0
+QGestureÌ32768Ö0
+QGestureÌ1024Í(QObject *parent = 0)ÎQGestureÖ0
+QGestureÌ1024Í(QGesturePrivate &dd, QObject *parent)ÎQGestureÖ0
+QGestureEventÌ1Ö0
+QGestureEventÌ32768Ö0
+QGestureEventÌ1024Í(const QList<QGesture *> &gestures)ÎQGestureEventÖ0
+QGestureEventPrivateÌ32768Ö0
+QGestureManagerÌ32768Ö0
+QGesturePrivateÌ32768Ö0ÏQT_BEGIN_NAMESPACE
+QGestureRecognizerÌ32768Ö0
+QGraphicsAnchorÌ1Ö0
+QGraphicsAnchorÌ32768Ö0
+QGraphicsAnchorÌ1024Í(QGraphicsAnchorLayout *parent)ÎQGraphicsAnchorÖ0
+QGraphicsAnchorLayoutÌ1Ö0
+QGraphicsAnchorLayoutÌ32768Ö0
+QGraphicsAnchorLayoutÌ1024Í(QGraphicsLayoutItem *parent = 0)ÎQGraphicsAnchorLayoutÖ0
+QGraphicsAnchorLayoutPrivateÌ32768Ö0
+QGraphicsAnchorPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QGraphicsBlurEffectÌ1Ö0
+QGraphicsBlurEffectPrivateÌ32768Ö0
+QGraphicsColorizeEffectÌ1Ö0
+QGraphicsColorizeEffectÌ1024Í(QObject *parent = 0)ÎQGraphicsColorizeEffectÖ0
+QGraphicsColorizeEffectPrivateÌ32768Ö0
+QGraphicsDropShadowEffectÌ1Ö0
+QGraphicsDropShadowEffectÌ1024Í(QObject *parent = 0)ÎQGraphicsDropShadowEffectÖ0
+QGraphicsDropShadowEffectPrivateÌ32768Ö0
+QGraphicsEffectÌ1Ö0
+QGraphicsEffectÌ1024Í(QObject *parent = 0)ÎQGraphicsEffectÖ0
+QGraphicsEffectÌ1024Í(QGraphicsEffectPrivate &d, QObject *parent = 0)ÎQGraphicsEffectÖ0
+QGraphicsEffectPrivateÌ32768Ö0
+QGraphicsEffectSourceÌ32768Ö0
+QGraphicsItemÌ32768Ö0
+QGraphicsItemAnimationÌ1Ö0
+QGraphicsItemAnimationPrivateÌ32768Ö0
+QGraphicsItemPrivateÌ32768Ö0
+QGraphicsLayoutÌ1Ö0
+QGraphicsLayoutÌ32768Ö0
+QGraphicsLayoutÌ1024Í(QGraphicsLayoutItem *parent = 0)ÎQGraphicsLayoutÖ0
+QGraphicsLayoutÌ1024Í(QGraphicsLayoutPrivate &, QGraphicsLayoutItem *)ÎQGraphicsLayoutÖ0
+QGraphicsLayoutItemÌ32768Ö0
+QGraphicsLayoutPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QGraphicsOpacityEffectÌ1Ö0
+QGraphicsOpacityEffectÌ1024Í(QObject *parent = 0)ÎQGraphicsOpacityEffectÖ0
+QGraphicsOpacityEffectPrivateÌ32768Ö0
+QGraphicsSceneÌ32768Ö0
+QGraphicsSceneMoveEventÌ32768Ö0
+QGraphicsScenePrivateÌ32768Ö0
+QGraphicsSceneResizeEventÌ32768Ö0
+QGraphicsViewÌ32768Ö0
+QGraphicsWidgetÌ1Ö0
+QGraphicsWidgetÌ32768Ö0
+QGraphicsWidgetÌ1024Í(QGraphicsItem *parent = 0, Qt::WindowFlags wFlags = 0)ÎQGraphicsWidgetÖ0
+QGraphicsWidgetÌ1024Í(QGraphicsWidgetPrivate &, QGraphicsItem *parent, Qt::WindowFlags wFlags = 0)ÎQGraphicsWidgetÖ0
+QGraphicsWidgetPrivateÌ32768Ö0
+QHeaderViewÌ32768Ö0
+QHelpEventÌ32768Ö0
+QITEMDELEGATE_HÌ65536Ö0
+QIconÌ32768Ö0ÏQT_END_NAMESPACE
+QItemDelegateÌ1Ö0
+QItemDelegateÌ1024Í(QObject *parent = 0)ÎQItemDelegateÖ0
+QItemDelegatePrivateÌ32768Ö0ÏQT_END_HEADER
+QItemEditorFactoryÌ32768Ö0
+QLabelÌ32768Ö0
+QListÌ32768Ö0
+QMDIAREA_HÌ65536Ö0
+QMENU_HÌ65536Ö0
+QMOUSEEVENTTRANSITION_HÌ65536Ö0
+QMacCocoaViewContainerÌ1Ö0
+QMacCocoaViewContainerPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QMainWindowÌ32768Ö0
+QMainWindowLayoutÌ32768Ö0
+QMatrixÌ32768Ö0
+QMdiAreaÌ1Ö0
+QMdiAreaÌ1024Í(QWidget *parent = 0)ÎQMdiAreaÖ0
+QMdiAreaPrivateÌ32768Ö0
+QMdiSubWindowÌ32768Ö0ÏQT_END_NAMESPACE
+QMenuÌ1Ö0
+QMenuÌ32768Ö0
+QMenuÌ1024Í(QWidget *parent = 0)ÎQMenuÖ0
+QMenuÌ1024Í(const QString &title, QWidget *parent = 0)ÎQMenuÖ0
+QMenuÌ1024Í(QMenuPrivate &dd, QWidget* parent = 0)ÎQMenuÖ0
+QMenuBarÌ32768Ö0
+QMenuBarPrivateÌ32768Ö0
+QMenuPrivateÌ32768Ö0
+QModelIndexÌ32768Ö0
+QMouseEventTransitionÌ1Ö0
+QMouseEventTransitionÌ1024Í(QState *sourceState = 0)ÎQMouseEventTransitionÖ0
+QMouseEventTransitionÌ1024Í(QObject *object, QEvent::Type type, Qt::MouseButton button, QState *sourceState = 0)ÎQMouseEventTransitionÖ0
+QMouseEventTransitionPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QMouseFlickGestureRecognizerÌ32768Ö0
+QPRINTENGINE_HÌ65536Ö0
+QPRINTPREVIEWDIALOG_HÌ65536Ö0
+QPROGRESSBAR_HÌ65536Ö0
+QPROGRESSDIALOG_HÌ65536Ö0
+QPUSHBUTTON_HÌ65536Ö0
+QPainterÌ32768Ö0
+QPainterPathÌ32768Ö0
+QPairÌ32768Ö0
+QPaletteÌ32768Ö0
+QPanGestureÌ1Ö0
+QPanGestureÌ1024Í(QObject *parent = 0)ÎQPanGestureÖ0
+QPanGesturePrivateÌ32768Ö0
+QPanGestureRecognizerÌ32768Ö0
+QPinchGestureÌ1Ö0
+QPinchGestureÌ1024Í(QObject *parent = 0)ÎQPinchGestureÖ0
+QPinchGesturePrivateÌ32768Ö0
+QPinchGestureRecognizerÌ32768Ö0
+QPixmapÌ32768Ö0
+QPlatformMenuÌ32768Ö0
+QPointÌ32768Ö0
+QPointFÌ32768Ö0
+QPrintEngineÌ1Ö0
+QPrintPreviewDialogÌ1Ö0
+QPrintPreviewDialogÌ1024Í(QWidget *parent = 0, Qt::WindowFlags flags = 0)ÎQPrintPreviewDialogÖ0
+QPrintPreviewDialogÌ1024Í(QPrinter *printer, QWidget *parent = 0, Qt::WindowFlags flags = 0)ÎQPrintPreviewDialogÖ0
+QPrintPreviewDialogPrivateÌ32768Ö0
+QPrinterÌ32768Ö0
+QProgressBarÌ1Ö0
+QProgressBarÌ32768Ö0
+QProgressBarÌ1024Í(QWidget *parent = 0)ÎQProgressBarÖ0
+QProgressBarPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QProgressDialogÌ1Ö0
+QProgressDialogÌ1024Í(QWidget *parent = 0, Qt::WindowFlags flags = 0)ÎQProgressDialogÖ0
+QProgressDialogÌ1024Í(const QString &labelText, const QString &cancelButtonText, int minimum, int maximum, QWidget *parent = 0, Qt::WindowFlags flags = 0)ÎQProgressDialogÖ0
+QProgressDialogPrivateÌ32768Ö0
+QPushButtonÌ1Ö0
+QPushButtonÌ32768Ö0ÏQT_END_NAMESPACE
+QPushButtonÌ1024Í(QWidget *parent=0)ÎQPushButtonÖ0
+QPushButtonÌ1024Í(const QString &text, QWidget *parent=0)ÎQPushButtonÖ0
+QPushButtonÌ1024Í(const QIcon& icon, const QString &text, QWidget *parent=0)ÎQPushButtonÖ0
+QPushButtonÌ1024Í(QPushButtonPrivate &dd, QWidget* parent = 0)ÎQPushButtonÖ0
+QPushButtonPrivateÌ32768Ö0ÏQT_END_HEADER
+QRectÌ32768Ö0
+QSCROLLBAR_HÌ65536Ö0
+QSCROLLERPROPERTIES_HÌ65536Ö0
+QSCROLLER_HÌ65536Ö0
+QSIZEPOLICY_HÌ65536Ö0
+QSPLASHSCREEN_HÌ65536Ö0
+QSPLITTER_HÌ65536Ö0
+QSTYLEFACTORY_HÌ65536Ö0
+QScrollBarÌ1Ö0
+QScrollBarÌ1024Í(Qt::Orientation, QWidget *parent=0)ÎQScrollBarÖ0
+QScrollBarPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QScrollerÌ1Ö0
+QScrollerÌ32768Ö0
+QScrollerÌ1024Í(QObject *target)ÎQScrollerÖ0
+QScrollerPrivateÌ32768Ö0
+QScrollerPropertiesÌ1Ö0
+QScrollerPropertiesÌ32768Ö0
+QScrollerPropertiesÌ1024Í()ÎQScrollerPropertiesÖ0
+QScrollerPropertiesÌ1024Í(const QScrollerProperties &sp)ÎQScrollerPropertiesÖ0
+QScrollerPropertiesÌ1024Í(QScrollerPropertiesPrivate &dd)ÎQScrollerPropertiesÖ0
+QScrollerPropertiesPrivateÌ32768Ö0
+QSizePolicyÌ1Ö0
+QSizePolicyÌ16Í(Policy horizontal, Policy vertical, ControlType type = DefaultType)ÎQSizePolicyÖ0
+QSizePolicyÌ16Í(int i)ÎQSizePolicyÖ0
+QSplashScreenÌ1Ö0
+QSplashScreenÌ1024Í(QWidget *parent, const QPixmap &pixmap = QPixmap(), Qt::WindowFlags f = 0)ÎQSplashScreenÖ0
+QSplashScreenPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QSplitterÌ1Ö0
+QSplitterÌ1024Í(QWidget* parent = 0)ÎQSplitterÖ0
+QSplitterÌ1024Í(Qt::Orientation, QWidget* parent = 0)ÎQSplitterÖ0
+QSplitterHandleÌ1Ö0
+QSplitterHandleÌ32768Ö0
+QSplitterHandlePrivateÌ32768Ö0
+QSplitterPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QStyleÌ32768Ö0ÏQT_END_NAMESPACE
+QStyleFactoryÌ1Ö0
+QStyleOptionÌ32768Ö0
+QStyleOptionButtonÌ32768Ö0
+QStyleOptionMenuItemÌ32768Ö0
+QStyleOptionProgressBarÌ32768Ö0
+QStyleOptionSliderÌ32768Ö0
+QStyleOptionTabÌ32768Ö0
+QStyleOptionTabWidgetFrameÌ32768Ö0
+QStyleOptionToolBarÌ32768Ö0
+QSwipeGestureÌ1Ö0
+QSwipeGestureÌ1024Í(QObject *parent = 0)ÎQSwipeGestureÖ0
+QSwipeGesturePrivateÌ32768Ö0ÏQT_BEGIN_NAMESPACE
+QSwipeGestureRecognizerÌ32768Ö0
+QTABBAR_HÌ65536Ö0
+QTABLEWIDGET_HÌ65536Ö0
+QTABWIDGET_HÌ65536Ö0
+QTEXTBROWSER_HÌ65536Ö0
+QTREEVIEW_HÌ65536Ö0
+QTREEWIDGETITEMITERATOR_HÌ65536Ö0
+QTREEWIDGET_HÌ65536Ö0
+QTabBarÌ1Ö0
+QTabBarÌ32768Ö0ÏQT_END_NAMESPACE
+QTabBarÌ1024Í(QWidget* parent=0)ÎQTabBarÖ0
+QTabBarPrivateÌ32768Ö0
+QTabWidgetÌ1Ö0
+QTabWidgetÌ1024Í(QWidget *parent = 0)ÎQTabWidgetÖ0
+QTabWidgetPrivateÌ32768Ö0
+QTableModelÌ32768Ö0
+QTableWidgetÌ1Ö0
+QTableWidgetÌ32768Ö0
+QTableWidgetÌ1024Í(QWidget *parent = 0)ÎQTableWidgetÖ0
+QTableWidgetÌ1024Í(int rows, int columns, QWidget *parent = 0)ÎQTableWidgetÖ0
+QTableWidgetItemÌ1Ö0
+QTableWidgetItemÌ1024Í(int type = Type)ÎQTableWidgetItemÖ0
+QTableWidgetItemÌ1024Í(const QString &text, int type = Type)ÎQTableWidgetItemÖ0
+QTableWidgetItemÌ1024Í(const QIcon &icon, const QString &text, int type = Type)ÎQTableWidgetItemÖ0
+QTableWidgetItemÌ1024Í(const QTableWidgetItem &other)ÎQTableWidgetItemÖ0
+QTableWidgetItemPrivateÌ32768Ö0
+QTableWidgetPrivateÌ32768Ö0
+QTableWidgetSelectionRangeÌ1Ö0
+QTableWidgetSelectionRangeÌ1024Í()ÎQTableWidgetSelectionRangeÖ0
+QTableWidgetSelectionRangeÌ1024Í(int top, int left, int bottom, int right)ÎQTableWidgetSelectionRangeÖ0
+QTableWidgetSelectionRangeÌ1024Í(const QTableWidgetSelectionRange &other)ÎQTableWidgetSelectionRangeÖ0
+QTapAndHoldGestureÌ1Ö0
+QTapAndHoldGestureÌ1024Í(QObject *parent = 0)ÎQTapAndHoldGestureÖ0
+QTapAndHoldGesturePrivateÌ32768Ö0
+QTapAndHoldGestureRecognizerÌ32768Ö0
+QTapGestureÌ1Ö0
+QTapGestureÌ1024Í(QObject *parent = 0)ÎQTapGestureÖ0
+QTapGesturePrivateÌ32768Ö0
+QTapGestureRecognizerÌ32768Ö0
+QTextBrowserÌ1Ö0
+QTextBrowserÌ1024Í(QWidget* parent = 0)ÎQTextBrowserÖ0
+QTextBrowserPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QTextStreamÌ32768Ö0
+QTileRulesÌ2048Ö0
+QTileRulesÌ16Í(Qt::TileRule horizontalRule, Qt::TileRule verticalRule)ÎQTileRulesÖ0
+QTileRulesÌ16Í(Qt::TileRule rule = Qt::StretchTile)ÎQTileRulesÖ0
+QTimeLineÌ32768Ö0
+QTimerÌ32768Ö0
+QToolBarÌ1Ö0
+QToolBarÌ1024Í(QWidget *parent = 0)ÎQToolBarÖ0
+QToolBarAreaLayoutÌ32768Ö0
+QToolBarLayoutÌ32768Ö0
+QToolBarPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QToolButtonÌ32768Ö0
+QToolButtonPrivateÌ32768Ö0
+QTornOffMenuÌ32768Ö0
+QTreeModelÌ32768Ö0
+QTreeViewÌ1Ö0
+QTreeViewÌ1024Í(QWidget *parent = 0)ÎQTreeViewÖ0
+QTreeViewÌ1024Í(QTreeViewPrivate &dd, QWidget *parent = 0)ÎQTreeViewÖ0
+QTreeViewPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QTreeWidgetÌ1Ö0
+QTreeWidgetÌ32768Ö0
+QTreeWidgetÌ1024Í(QWidget *parent = 0)ÎQTreeWidgetÖ0
+QTreeWidgetItemÌ1Ö0
+QTreeWidgetItemÌ32768Ö0
+QTreeWidgetItemÌ1024Í(int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(const QStringList &strings, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidget *view, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidget *view, const QStringList &strings, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidget *view, QTreeWidgetItem *after, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidgetItem *parent, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidgetItem *parent, const QStringList &strings, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(QTreeWidgetItem *parent, QTreeWidgetItem *after, int type = Type)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemÌ1024Í(const QTreeWidgetItem &other)ÎQTreeWidgetItemÖ0
+QTreeWidgetItemIteratorÌ1Ö0
+QTreeWidgetItemIteratorÌ32768Ö0
+QTreeWidgetItemIteratorÌ1024Í(QTreeWidget *widget, IteratorFlags flags = All)ÎQTreeWidgetItemIteratorÖ0
+QTreeWidgetItemIteratorÌ1024Í(QTreeWidgetItem *item, IteratorFlags flags = All)ÎQTreeWidgetItemIteratorÖ0
+QTreeWidgetItemIteratorPrivateÌ32768Ö0
+QTreeWidgetItemPrivateÌ32768Ö0
+QTreeWidgetPrivateÌ32768Ö0
+QUNDOGROUP_HÌ65536Ö0
+QUNDOVIEW_HÌ65536Ö0
+QUndoGroupÌ1Ö0
+QUndoGroupÌ32768Ö0
+QUndoGroupÌ1024Í(QObject *parent = 0)ÎQUndoGroupÖ0
+QUndoGroupPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QUndoStackÌ32768Ö0
+QUndoViewÌ1Ö0
+QUndoViewÌ1024Í(QWidget *parent = 0)ÎQUndoViewÖ0
+QUndoViewÌ1024Í(QUndoStack *stack, QWidget *parent = 0)ÎQUndoViewÖ0
+QUndoViewÌ1024Í(QUndoGroup *group, QWidget *parent = 0)ÎQUndoViewÖ0
+QUndoViewPrivateÌ32768Ö0ÏQT_END_NAMESPACE
+QVariantÌ32768Ö0ÏQT_END_NAMESPACE
+QWidgetÌ32768Ö0
+QWidgetItemDataÌ32768Ö0
+QWidgetPrivateÌ32768Ö0
+QWinNativePanGestureRecognizerÌ32768Ö0
+Q_DECLARE_FLAGSÌ16Í(ChangeFlags, ChangeFlag)ÎQGraphicsEffectÖ0
+Q_DECLARE_FLAGSÌ16Í(AreaOptions, AreaOption)ÎQMdiAreaÖ0
+Q_DECLARE_FLAGSÌ16Í(ControlTypes, ControlType)ÎQSizePolicyÖ0
+Q_OBJECTÌ1024Í(QObject *parent = 0)ÎQAbstractItemDelegateÖ0
+Q_OBJECTÌ1024Í()ÎQCommonStyleÖ0
+Q_OBJECTÌ1024Í(QObject *parent = 0)ÎQGraphicsItemAnimationÖ0
+Q_OBJECTÌ1024Í(void *cocoaViewToWrap, QWidget *parent = 0)ÎQMacCocoaViewContainerÖ0
+Q_OBJECTÌ1024Í(QWidget *parent=0)ÎQScrollBarÖ0
+Q_OBJECTÌ1024Í(const QPixmap &pixmap = QPixmap(), Qt::WindowFlags f = 0)ÎQSplashScreenÖ0
+Q_OBJECTÌ1024Í(Qt::Orientation o, QSplitter *parent)ÎQSplitterHandleÖ0
+Q_SIGNALSÌ64ÎQAbstractItemDelegateÖ0
+Q_SIGNALSÌ64ÎQCheckBoxÖ0
+Q_SIGNALSÌ64ÎQColumnViewÖ0
+Q_SIGNALSÌ64ÎQDesktopWidgetÖ0
+Q_SIGNALSÌ64ÎQGraphicsBlurEffectÖ0
+Q_SIGNALSÌ64ÎQGraphicsColorizeEffectÖ0
+Q_SIGNALSÌ64ÎQGraphicsDropShadowEffectÖ0
+Q_SIGNALSÌ64ÎQGraphicsEffectÖ0
+Q_SIGNALSÌ64ÎQGraphicsOpacityEffectÖ0
+Q_SIGNALSÌ64ÎQGraphicsWidgetÖ0
+Q_SIGNALSÌ64ÎQMdiAreaÖ0
+Q_SIGNALSÌ64ÎQMenuÖ0
+Q_SIGNALSÌ64ÎQPrintPreviewDialogÖ0
+Q_SIGNALSÌ64ÎQProgressBarÖ0
+Q_SIGNALSÌ64ÎQProgressDialogÖ0
+Q_SIGNALSÌ64ÎQScrollerÖ0
+Q_SIGNALSÌ64ÎQSplashScreenÖ0
+Q_SIGNALSÌ64ÎQSplitterÖ0
+Q_SIGNALSÌ64ÎQTabBarÖ0
+Q_SIGNALSÌ64ÎQTabWidgetÖ0
+Q_SIGNALSÌ64ÎQTableWidgetÖ0
+Q_SIGNALSÌ64ÎQTextBrowserÖ0
+Q_SIGNALSÌ64ÎQToolBarÖ0
+Q_SIGNALSÌ64ÎQTreeViewÖ0
+Q_SIGNALSÌ64ÎQTreeWidgetÖ0
+Q_SIGNALSÌ64ÎQUndoGroupÖ0
+Q_SLOTSÌ64ÎQActionÖ0
+Q_SLOTSÌ64ÎQDialÖ0
+Q_SLOTSÌ64ÎQErrorMessageÖ0
+Q_SLOTSÌ64ÎQGraphicsBlurEffectÖ0
+Q_SLOTSÌ64ÎQGraphicsColorizeEffectÖ0
+Q_SLOTSÌ64ÎQGraphicsDropShadowEffectÖ0
+Q_SLOTSÌ64ÎQGraphicsEffectÖ0
+Q_SLOTSÌ64ÎQGraphicsItemAnimationÖ0
+Q_SLOTSÌ64ÎQGraphicsOpacityEffectÖ0
+Q_SLOTSÌ64ÎQGraphicsWidgetÖ0
+Q_SLOTSÌ64ÎQMdiAreaÖ0
+Q_SLOTSÌ64ÎQMenuÖ0
+Q_SLOTSÌ64ÎQProgressBarÖ0
+Q_SLOTSÌ64ÎQProgressDialogÖ0
+Q_SLOTSÌ64ÎQPushButtonÖ0
+Q_SLOTSÌ64ÎQScrollerÖ0
+Q_SLOTSÌ64ÎQSplashScreenÖ0
+Q_SLOTSÌ64ÎQTabBarÖ0
+Q_SLOTSÌ64ÎQTabWidgetÖ0
+Q_SLOTSÌ64ÎQTableWidgetÖ0
+Q_SLOTSÌ64ÎQTextBrowserÖ0
+Q_SLOTSÌ64ÎQToolBarÖ0
+Q_SLOTSÌ64ÎQTreeViewÖ0
+Q_SLOTSÌ64ÎQTreeWidgetÖ0
+Q_SLOTSÌ64ÎQUndoGroupÖ0
+Q_SLOTSÌ64ÎQUndoViewÖ0
+QualityHintÌ4ÎQGraphicsBlurEffect::BlurHintÖ0
+QuitRoleÌ4ÎQAction::MenuRoleÖ0
+RadioButtonÌ4ÎQSizePolicy::ControlTypeÖ0
+RightÌ4ÎQSwipeGesture::SwipeDirectionÖ0
+RightMouseButtonGestureÌ4ÎQScroller::ScrollerGestureTypeÖ0
+RightSideÌ4ÎQTabBar::ButtonPositionÖ0
+RotationAngleChangedÌ4ÎQPinchGesture::ChangeFlagÖ0
+RoundedÌ4ÎQTabWidget::TabShapeÖ0
+RoundedEastÌ4ÎQTabBar::ShapeÖ0
+RoundedNorthÌ4ÎQTabBar::ShapeÖ0
+RoundedSouthÌ4ÎQTabBar::ShapeÖ0
+RoundedWestÌ4ÎQTabBar::ShapeÖ0
+RowWrapPolicyÌ2ÎQFormLayoutÖ0
+ScaleFactorChangedÌ4ÎQPinchGesture::ChangeFlagÖ0
+ScrollMetricÌ2ÎQScrollerPropertiesÖ0
+ScrollMetricCountÌ4ÎQScrollerProperties::ScrollMetricÖ0
+ScrollerGestureTypeÌ2ÎQScrollerÖ0
+ScrollingÌ4ÎQScroller::StateÖ0
+ScrollingCurveÌ4ÎQScrollerProperties::ScrollMetricÖ0
+SelectLeftTabÌ4ÎQTabBar::SelectionBehaviorÖ0
+SelectPreviousTabÌ4ÎQTabBar::SelectionBehaviorÖ0
+SelectRightTabÌ4ÎQTabBar::SelectionBehaviorÖ0
+SelectableÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+SelectedÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+SelectionBehaviorÌ2ÎQTabBarÖ0
+ShapeÌ2ÎQTabBarÖ0
+ShowIndicatorÌ4ÎQTreeWidgetItem::ChildIndicatorPolicyÖ0
+ShrinkFlagÌ4ÎQSizePolicy::PolicyFlagÖ0
+SliderÌ4ÎQSizePolicy::ControlTypeÖ0
+SnapPositionRatioÌ4ÎQScrollerProperties::ScrollMetricÖ0
+SnapTimeÌ4ÎQScrollerProperties::ScrollMetricÖ0
+SourceAttachedÌ4ÎQGraphicsEffect::ChangeFlagÖ0
+SourceBoundingRectChangedÌ4ÎQGraphicsEffect::ChangeFlagÖ0
+SourceDetachedÌ4ÎQGraphicsEffect::ChangeFlagÖ0
+SourceInvalidatedÌ4ÎQGraphicsEffect::ChangeFlagÖ0
+SouthÌ4ÎQTabWidget::TabPositionÖ0
+SpanningRoleÌ4ÎQFormLayout::ItemRoleÖ0
+SpinBoxÌ4ÎQSizePolicy::ControlTypeÖ0
+StandardÌ4ÎQScrollerProperties::FrameRatesÖ0
+StateÌ2ÎQScrollerÖ0
+SubWindowViewÌ4ÎQMdiArea::ViewModeÖ0
+SwipeDirectionÌ2ÎQSwipeGestureÖ0
+TabPositionÌ2ÎQTabWidgetÖ0
+TabShapeÌ2ÎQTabWidgetÖ0
+TabWidgetÌ4ÎQSizePolicy::ControlTypeÖ0
+TabbedViewÌ4ÎQMdiArea::ViewModeÖ0
+TextHeuristicRoleÌ4ÎQAction::MenuRoleÖ0
+ToolButtonÌ4ÎQSizePolicy::ControlTypeÖ0
+TopToBottomÌ4ÎQProgressBar::DirectionÖ0
+TouchGestureÌ4ÎQScroller::ScrollerGestureTypeÖ0
+TriangularÌ4ÎQTabWidget::TabShapeÖ0
+TriangularEastÌ4ÎQTabBar::ShapeÖ0
+TriangularNorthÌ4ÎQTabBar::ShapeÖ0
+TriangularSouthÌ4ÎQTabBar::ShapeÖ0
+TriangularWestÌ4ÎQTabBar::ShapeÖ0
+TriggerÌ4ÎQAction::ActionEventÖ0
+TypeÌ4ÎQGraphicsWidget::anon_enum_2Ö0
+TypeÌ4ÎQTableWidgetItem::ItemTypeÖ0
+TypeÌ4ÎQTreeWidgetItem::ItemTypeÖ0
+UnselectedÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+UpÌ4ÎQSwipeGesture::SwipeDirectionÖ0
+UserFlagÌ4ÎQTreeWidgetItemIterator::IteratorFlagÖ0
+UserTypeÌ4ÎQTableWidgetItem::ItemTypeÖ0
+UserTypeÌ4ÎQTreeWidgetItem::ItemTypeÖ0
+VerticalOvershootPolicyÌ4ÎQScrollerProperties::ScrollMetricÖ0
+ViewModeÌ2ÎQMdiAreaÖ0
+WestÌ4ÎQTabWidget::TabPositionÖ0
+WrapAllRowsÌ4ÎQFormLayout::RowWrapPolicyÖ0
+WrapLongRowsÌ4ÎQFormLayout::RowWrapPolicyÖ0
+abortÌ1024Í()ÎQPrintEngineÖ0Ïvirtual bool
+aboutToHideÌ1024Í()ÎQMenuÖ0Ïvoid
+accelerationÌ1024Í()ÎQPanGestureÖ0Ïqreal
+acceptÌ16Í()ÎQGestureEventÖ0Ïinline void
+acceptÌ1024Í(QGesture *)ÎQGestureEventÖ0Ïvoid
+acceptÌ1024Í(Qt::GestureType)ÎQGestureEventÖ0Ïvoid
+actionAtÌ1024Í(const QPoint &)ÎQMenuÖ0ÏQAction *
+actionAtÌ16Í(int ax, int ay)ÎQToolBarÖ0Ïinline QAction *
+actionAtÌ1024Í(const QPoint &p)ÎQToolBarÖ0ÏQAction *
+actionAtÌ1024Í(int x, int y)ÎQToolBarÖ0Ïinline QAction *
+actionEventÌ1024Í(QActionEvent *)ÎQMenuÖ0Ïvoid
+actionEventÌ1024Í(QActionEvent *event)ÎQToolBarÖ0Ïvoid
+actionGeometryÌ1024Í(QAction *)ÎQMenuÖ0ÏQRect
+actionGeometryÌ1024Í(QAction *action)ÎQToolBarÖ0ÏQRect
+actionGroupÌ1024Í()ÎQActionÖ0ÏQActionGroup *
+actionsÌ1024Í()ÎQGraphicsWidgetÖ0ÏQList
+activateÌ1024Í(ActionEvent event)ÎQActionÖ0Ïvoid
+activateÌ1024Í()ÎQGraphicsLayoutÖ0Ïvoid
+activateNextSubWindowÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+activatePreviousSubWindowÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+activationOrderÌ1024Í()ÎQMdiAreaÖ0ÏWindowOrder
+activeActionÌ1024Í()ÎQMenuÖ0ÏQAction *
+activeGesturesÌ1024Í()ÎQGestureEventÖ0ÏQList
+activeScrollersÌ1024Í()ÎQScrollerÖ0ÏQList
+activeStackÌ1024Í()ÎQUndoGroupÖ0ÏQUndoStack *
+activeSubWindowÌ1024Í()ÎQMdiAreaÖ0ÏQMdiSubWindow *
+addActionÌ1024Í(QAction *action)ÎQGraphicsWidgetÖ0Ïvoid
+addActionÌ16Í(QAction *action)ÎQMenuÖ0Ïinline void
+addActionÌ1024Í(const QString &text)ÎQMenuÖ0ÏQAction *
+addActionÌ1024Í(const QIcon &icon, const QString &text)ÎQMenuÖ0ÏQAction *
+addActionÌ1024Í(const QString &text, const QObject *receiver, const char* member, const QKeySequence &shortcut = 0)ÎQMenuÖ0ÏQAction *
+addActionÌ1024Í(const QIcon &icon, const QString &text, const QObject *receiver, const char* member, const QKeySequence &shortcut = 0)ÎQMenuÖ0ÏQAction *
+addActionÌ16Í(QAction *action)ÎQToolBarÖ0Ïinline void
+addActionÌ1024Í(const QString &text)ÎQToolBarÖ0ÏQAction *
+addActionÌ1024Í(const QIcon &icon, const QString &text)ÎQToolBarÖ0ÏQAction *
+addActionÌ1024Í(const QString &text, const QObject *receiver, const char* member)ÎQToolBarÖ0ÏQAction *
+addActionÌ1024Í(const QIcon &icon, const QString &text, const QObject *receiver, const char* member)ÎQToolBarÖ0ÏQAction *
+addActionsÌ1024Í(QList<QAction*> actions)ÎQGraphicsWidgetÖ0Ïvoid
+addAnchorÌ1024Í(QGraphicsLayoutItem *firstItem, Qt::AnchorPoint firstEdge, QGraphicsLayoutItem *secondItem, Qt::AnchorPoint secondEdge)ÎQGraphicsAnchorLayoutÖ0ÏQGraphicsAnchor *
+addAnchorsÌ1024Í(QGraphicsLayoutItem *firstItem, QGraphicsLayoutItem *secondItem, Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+addChildÌ1024Í(QTreeWidgetItem *child)ÎQTreeWidgetItemÖ0Ïvoid
+addChildLayoutItemÌ1024Í(QGraphicsLayoutItem *layoutItem)ÎQGraphicsLayoutÖ0Ïvoid
+addChildrenÌ1024Í(const QList<QTreeWidgetItem*> &children)ÎQTreeWidgetItemÖ0Ïvoid
+addCornerAnchorsÌ1024Í(QGraphicsLayoutItem *firstItem, Qt::Corner firstCorner, QGraphicsLayoutItem *secondItem, Qt::Corner secondCorner)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+addItemÌ1024Í(QLayoutItem *item)ÎQFormLayoutÖ0Ïvoid
+addMenuÌ1024Í(QMenu *menu)ÎQMenuÖ0ÏQAction *
+addMenuÌ1024Í(const QString &title)ÎQMenuÖ0ÏQMenu *
+addMenuÌ1024Í(const QIcon &icon, const QString &title)ÎQMenuÖ0ÏQMenu *
+addRowÌ1024Í(QWidget *label, QWidget *field)ÎQFormLayoutÖ0Ïvoid
+addRowÌ1024Í(QWidget *label, QLayout *field)ÎQFormLayoutÖ0Ïvoid
+addRowÌ1024Í(const QString &labelText, QWidget *field)ÎQFormLayoutÖ0Ïvoid
+addRowÌ1024Í(const QString &labelText, QLayout *field)ÎQFormLayoutÖ0Ïvoid
+addRowÌ1024Í(QWidget *widget)ÎQFormLayoutÖ0Ïvoid
+addRowÌ1024Í(QLayout *layout)ÎQFormLayoutÖ0Ïvoid
+addSeparatorÌ1024Í()ÎQMenuÖ0ÏQAction *
+addSeparatorÌ1024Í()ÎQToolBarÖ0ÏQAction *
+addStackÌ1024Í(QUndoStack *stack)ÎQUndoGroupÖ0Ïvoid
+addSubWindowÌ1024Í(QWidget *widget, Qt::WindowFlags flags = 0)ÎQMdiAreaÖ0ÏQMdiSubWindow *
+addTabÌ1024Í(const QString &text)ÎQTabBarÖ0Ïint
+addTabÌ1024Í(const QIcon &icon, const QString &text)ÎQTabBarÖ0Ïint
+addTabÌ1024Í(QWidget *widget, const QString &)ÎQTabWidgetÖ0Ïint
+addTabÌ1024Í(QWidget *widget, const QIcon& icon, const QString &label)ÎQTabWidgetÖ0Ïint
+addTopLevelItemÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+addTopLevelItemsÌ1024Í(const QList<QTreeWidgetItem*> &items)ÎQTreeWidgetÖ0Ïvoid
+addWidgetÌ1024Í(QWidget *widget)ÎQSplitterÖ0Ïvoid
+addWidgetÌ1024Í(QWidget *widget)ÎQToolBarÖ0ÏQAction *
+adjustSizeÌ1024Í()ÎQGraphicsWidgetÖ0Ïvoid
+afterAnimationStepÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïvirtual void
+alignmentÌ1024Í()ÎQProgressBarÖ0ÏQt
+alignmentÌ64ÎQSplashScreenÖ0ÏQ_SLOTS
+allColumnsShowFocusÌ1024Í()ÎQTreeViewÖ0Ïbool
+allowedAreasÌ1024Í()ÎQToolBarÖ0ÏQt
+allowedAreasChangedÌ1024Í(Qt::ToolBarAreas allowedAreas)ÎQToolBarÖ0Ïvoid
+anchorÌ1024Í(QGraphicsLayoutItem *firstItem, Qt::AnchorPoint firstEdge, QGraphicsLayoutItem *secondItem, Qt::AnchorPoint secondEdge)ÎQGraphicsAnchorLayoutÖ0ÏQGraphicsAnchor *
+anchorClickedÌ1024Í(const QUrl &)ÎQTextBrowserÖ0Ïvoid
+anon_enum_2Ì2ÎQGraphicsWidgetÖ0
+anon_struct_1Ì2048ÎQSizePolicy::anon_union_0Ö0
+anon_union_0Ì8192ÎQSizePolicyÖ0
+associatedGraphicsWidgetsÌ1024Í()ÎQActionÖ0ÏQList
+associatedWidgetsÌ1024Í()ÎQActionÖ0ÏQList
+autoCloseÌ1024Í()ÎQProgressDialogÖ0Ïbool
+autoDefaultÌ1024Í()ÎQPushButtonÖ0Ïbool
+autoExpandDelayÌ1024Í()ÎQTreeViewÖ0Ïint
+autoFillBackgroundÌ1024Í()ÎQGraphicsWidgetÖ0Ïbool
+autoRepeatÌ1024Í()ÎQActionÖ0Ïbool
+autoResetÌ1024Í()ÎQProgressDialogÖ0Ïbool
+availableGeometryÌ16Í(const QPoint &point)ÎQDesktopWidgetÖ0Ïconst QRect
+availableGeometryÌ1024Í(int screen = -1)ÎQDesktopWidgetÖ0Ïconst QRect
+availableGeometryÌ1024Í(const QWidget *widget)ÎQDesktopWidgetÖ0Ïconst QRect
+backgroundÌ1024Í()ÎQMdiAreaÖ0ÏQBrush
+backgroundÌ16Í()ÎQTableWidgetItemÖ0Ïinline QBrush
+backgroundÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QBrush
+backgroundColorÌ16Í()ÎQTableWidgetItemÖ0Ïinline QColor
+backgroundColorÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QColor
+backwardÌ1024Í()ÎQTextBrowserÖ0Ïvirtual void
+backwardHistoryCountÌ1024Í()ÎQTextBrowserÖ0Ïint
+beforeAnimationStepÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïvirtual void
+bitsÌ64ÎQSizePolicy::anon_union_0Ö0Ïanon_struct_1
+blurHintsÌ1024Í()ÎQGraphicsBlurEffectÖ0ÏBlurHints
+blurHintsChangedÌ1024Í(BlurHints hints)ÎQGraphicsBlurEffectÖ0Ïvoid
+blurRadiusÌ1024Í()ÎQGraphicsBlurEffectÖ0Ïqreal
+blurRadiusÌ1024Í()ÎQGraphicsDropShadowEffectÖ0Ïqreal
+blurRadiusChangedÌ1024Í(qreal blurRadius)ÎQGraphicsDropShadowEffectÖ0Ïvoid
+bottomÌ64ÎQTableWidgetSelectionRangeÖ0Ïint
+bottomRowÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+boundingRectÌ1024Í()ÎQGraphicsEffectÖ0ÏQRectF
+boundingRectÌ1024Í()ÎQGraphicsWidgetÖ0ÏQRectF
+boundingRectForÌ1024Í(const QRectF &rect)ÎQGraphicsDropShadowEffectÖ0ÏQRectF
+boundingRectForÌ1024Í(const QRectF &sourceRect)ÎQGraphicsEffectÖ0Ïvirtual QRectF
+buttonÌ1024Í()ÎQMouseEventTransitionÖ0ÏQt
+canRedoÌ1024Í()ÎQUndoGroupÖ0Ïbool
+canRedoChangedÌ1024Í(bool canRedo)ÎQUndoGroupÖ0Ïvoid
+canUndoÌ1024Í()ÎQUndoGroupÖ0Ïbool
+canUndoChangedÌ1024Í(bool canUndo)ÎQUndoGroupÖ0Ïvoid
+canceledGesturesÌ1024Í()ÎQGestureEventÖ0ÏQList
+cascadeSubWindowsÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+cellActivatedÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellChangedÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellClickedÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellDoubleClickedÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellEnteredÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellPressedÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+cellWidgetÌ1024Í(int row, int column)ÎQTableWidgetÖ0ÏQWidget *
+centerPointÌ1024Í()ÎQPinchGestureÖ0ÏQPointF
+changeEventÌ1024Í(QEvent *e)ÎQErrorMessageÖ0Ïvoid
+changeEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+changeEventÌ1024Í(QEvent *)ÎQMenuÖ0Ïvoid
+changeEventÌ1024Í(QEvent *event)ÎQProgressDialogÖ0Ïvoid
+changeEventÌ1024Í(QEvent *)ÎQSplitterÖ0Ïvoid
+changeEventÌ1024Í(QEvent *)ÎQTabBarÖ0Ïvoid
+changeEventÌ1024Í(QEvent *)ÎQTabWidgetÖ0Ïvoid
+changeEventÌ1024Í(QEvent *event)ÎQToolBarÖ0Ïvoid
+changeFlagsÌ1024Í()ÎQPinchGestureÖ0ÏChangeFlags
+changedÌ1024Í()Ö0ÏQ_SIGNALS void
+checkStateÌ1024Í()ÎQCheckBoxÖ0ÏQt
+checkStateÌ16Í()ÎQTableWidgetItemÖ0Ïinline Qt
+checkStateÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline Qt
+checkStateSetÌ1024Í()ÎQCheckBoxÖ0Ïvoid
+childÌ16Í(int index)ÎQTreeWidgetItemÖ0Ïinline QTreeWidgetItem *
+childCountÌ16Í()ÎQTreeWidgetItemÖ0Ïinline int
+childEventÌ1024Í(QChildEvent *childEvent)ÎQMdiAreaÖ0Ïvoid
+childEventÌ1024Í(QChildEvent *)ÎQSplitterÖ0Ïvoid
+childIndicatorPolicyÌ1024Í()ÎQTreeWidgetItemÖ0ÏQTreeWidgetItem
+childrenÌ16Í()ÎQGraphicsWidgetÖ0Ïconst QObjectList
+childrenÌ64ÎQTreeWidgetItemÖ0ÏQList
+childrenCheckStateÌ1024Í(int column)ÎQTreeWidgetItemÖ0ÏQVariant
+childrenCollapsibleÌ1024Í()ÎQSplitterÖ0Ïbool
+cleanChangedÌ1024Í(bool clean)ÎQUndoGroupÖ0Ïvoid
+cleanIconÌ1024Í()ÎQUndoViewÖ0ÏQIcon
+cleanupÌ1024Í()ÎQColormapÖ0Ïvoid
+clearÌ1024Í()ÎQGraphicsItemAnimationÖ0Ïvoid
+clearÌ1024Í()ÎQMenuÖ0Ïvoid
+clearÌ1024Í()ÎQTabWidgetÖ0Ïvoid
+clearÌ1024Í()ÎQTableWidgetÖ0Ïvoid
+clearÌ1024Í()ÎQToolBarÖ0Ïvoid
+clearÌ1024Í()ÎQTreeWidgetÖ0Ïvoid
+clearContentsÌ1024Í()ÎQTableWidgetÖ0Ïvoid
+clearHistoryÌ1024Í()ÎQTextBrowserÖ0Ïvoid
+clearMessageÌ1024Í()ÎQSplashScreenÖ0Ïvoid
+cloneÌ1024Í()ÎQTableWidgetItemÖ0Ïvirtual QTableWidgetItem *
+cloneÌ1024Í()ÎQTreeWidgetItemÖ0Ïvirtual QTreeWidgetItem *
+closeActiveSubWindowÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+closeAllSubWindowsÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+closeEditorÌ1024Í(QWidget *editor, QAbstractItemDelegate::EndEditHint hint = NoHint)ÎQAbstractItemDelegateÖ0Ïvoid
+closeEventÌ1024Í(QCloseEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+closeEventÌ1024Í(QCloseEvent *event)ÎQProgressDialogÖ0Ïvoid
+closePersistentEditorÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+closePersistentEditorÌ1024Í(QTreeWidgetItem *item, int column = 0)ÎQTreeWidgetÖ0Ïvoid
+closestLegalPositionÌ1024Í(int, int)ÎQSplitterÖ0Ïint
+closestLegalPositionÌ1024Í(int p)ÎQSplitterHandleÖ0Ïint
+cocoaViewÌ1024Í()ÎQMacCocoaViewContainerÖ0Ïvoid *
+collapseÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïvoid
+collapseAllÌ1024Í()ÎQTreeViewÖ0Ïvoid
+collapseItemÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+collapsedÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïvoid
+colorÌ1024Í()ÎQGraphicsColorizeEffectÖ0ÏQColor
+colorÌ1024Í()ÎQGraphicsDropShadowEffectÖ0ÏQColor
+colorÌ64ÎQSplashScreenÖ0ÏQ_SLOTS
+colorAtÌ1024Í(uint pixel)ÎQColormapÖ0Ïconst QColor
+colorChangedÌ1024Í(const QColor &color)ÎQGraphicsDropShadowEffectÖ0Ïvoid
+colormapÌ1024Í()ÎQColormapÖ0Ïconst QVector
+columnÌ1024Í(const QTableWidgetItem *item)ÎQTableWidgetÖ0Ïint
+columnÌ16Í()ÎQTableWidgetItemÖ0Ïinline int
+columnÌ1024Í()ÎQTableWidgetItemÖ0Ïinline int
+columnÌ64ÎQTreeWidgetÖ0ÏQ_SIGNALS
+columnAtÌ1024Í(int x)ÎQTreeViewÖ0Ïint
+columnCountÌ1024Í()ÎQMenuÖ0Ïint
+columnCountÌ1024Í()ÎQTableWidgetÖ0Ïint
+columnCountÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+columnCountÌ1024Í()ÎQTreeWidgetÖ0Ïint
+columnCountÌ16Í()ÎQTreeWidgetItemÖ0Ïinline int
+columnCountChangedÌ1024Í(int oldCount, int newCount)ÎQTreeViewÖ0Ïvoid
+columnMovedÌ1024Í()ÎQTreeViewÖ0Ïvoid
+columnViewportPositionÌ1024Í(int column)ÎQTreeViewÖ0Ïint
+columnWidthÌ1024Í(int column)ÎQTreeViewÖ0Ïint
+columnWidthsÌ1024Í()ÎQColumnViewÖ0ÏQList
+contextMenuEventÌ1024Í(QContextMenuEvent *)ÎQScrollBarÖ0Ïvoid
+controlTypeÌ1024Í()ÎQSizePolicyÖ0ÏControlType
+cornerWidgetÌ1024Í(Qt::Corner corner = Qt::TopRightCorner)ÎQTabWidgetÖ0ÏQWidget *
+countÌ1024Í()ÎQFormLayoutÖ0Ïint
+countÌ1024Í()ÎQGraphicsAnchorLayoutÖ0Ïint
+countÌ1024Í()ÎQGraphicsLayoutÖ0Ïvirtual int
+countÌ1024Í()ÎQSplitterÖ0Ïint
+countÌ1024Í()ÎQTabBarÖ0Ïint
+countÌ1024Í()ÎQTabWidgetÖ0Ïint
+createÌ1024Í(const QString&)ÎQStyleFactoryÖ0ÏQStyle *
+createColumnÌ1024Í(const QModelIndex &rootIndex)ÎQColumnViewÖ0Ïvirtual QAbstractItemView *
+createEditorÌ1024Í(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual QWidget *
+createEditorÌ1024Í(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0ÏQWidget *
+createHandleÌ1024Í()ÎQSplitterÖ0Ïvirtual QSplitterHandle *
+createRedoActionÌ1024Í(QObject *parent, const QString &prefix = QString())ÎQUndoGroupÖ0ÏQAction *
+createUndoActionÌ1024Í(QObject *parent, const QString &prefix = QString())ÎQUndoGroupÖ0ÏQAction *
+ctypeÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+currentÌ64ÎQTreeWidgetItemIteratorÖ0ÏQTreeWidgetItem
+currentCellChangedÌ1024Í(int currentRow, int currentColumn, int previousRow, int previousColumn)ÎQTableWidgetÖ0Ïvoid
+currentChangedÌ1024Í(const QModelIndex &current, const QModelIndex &previous)ÎQColumnViewÖ0Ïvoid
+currentChangedÌ1024Í(const QModelIndex &current, const QModelIndex &previous)ÎQTreeViewÖ0Ïvoid
+currentColumnÌ1024Í()ÎQTableWidgetÖ0Ïint
+currentColumnÌ1024Í()ÎQTreeWidgetÖ0Ïint
+currentIndexÌ1024Í()ÎQTabBarÖ0Ïint
+currentIndexÌ1024Í()ÎQTabWidgetÖ0Ïint
+currentItemÌ1024Í()ÎQTableWidgetÖ0ÏQTableWidgetItem *
+currentItemÌ1024Í()ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+currentItemChangedÌ1024Í(QTableWidgetItem *current, QTableWidgetItem *previous)ÎQTableWidgetÖ0Ïvoid
+currentItemChangedÌ1024Í(QTreeWidgetItem *current, QTreeWidgetItem *previous)ÎQTreeWidgetÖ0Ïvoid
+currentRowÌ1024Í()ÎQTableWidgetÖ0Ïint
+currentSubWindowÌ1024Í()ÎQMdiAreaÖ0ÏQMdiSubWindow *
+currentWidgetÌ1024Í()ÎQTabWidgetÖ0ÏQWidget *
+dÌ64ÎQColormapÖ0ÏQColormapPrivate
+dÌ64ÎQScrollerPropertiesÖ0ÏQScopedPointer
+dÌ64ÎQTableWidgetItemÖ0ÏQTableWidgetItemPrivate
+dÌ64ÎQTreeWidgetItemÖ0ÏQTreeWidgetItemPrivate
+d_funcÌ1024Í()ÎQMenuÖ0ÏQ_PRIVATE_SLOT
+d_funcÌ1024Í()ÎQPrintPreviewDialogÖ0ÏQ_PRIVATE_SLOT
+d_ptrÌ64ÎQScrollerÖ0ÏQScrollerPrivate
+d_ptrÌ64ÎQTreeWidgetItemIteratorÖ0ÏQScopedPointer
+dataÌ1024Í()ÎQActionÖ0ÏQVariant
+dataÌ64ÎQSizePolicy::anon_union_0Ö0Ïquint32
+dataÌ1024Í(int role)ÎQTableWidgetItemÖ0Ïvirtual QVariant
+dataÌ1024Í(int column, int role)ÎQTreeWidgetItemÖ0Ïvirtual QVariant
+dataChangedÌ1024Í(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>())ÎQTreeViewÖ0Ïvoid
+decorationÌ1024Í(const QStyleOptionViewItem &option, const QVariant &variant)ÎQItemDelegateÖ0ÏQPixmap
+defaultActionÌ1024Í()ÎQMenuÖ0ÏQAction *
+deltaÌ1024Í()ÎQPanGestureÖ0ÏQPointF
+depthÌ1024Í()ÎQColormapÖ0Ïint
+destroyEditorÌ1024Í(QWidget *editor, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual void
+doCheckÌ1024Í(const QStyleOptionViewItem &option, const QRect &bounding, const QVariant &variant)ÎQItemDelegateÖ0ÏQRect
+doItemsLayoutÌ1024Í()ÎQTreeViewÖ0Ïvoid
+doLayoutÌ1024Í(const QStyleOptionViewItem &option, QRect *checkRect, QRect *iconRect, QRect *textRect, bool hint)ÎQItemDelegateÖ0Ïvoid
+documentModeÌ1024Í()ÎQMdiAreaÖ0Ïbool
+documentModeÌ1024Í()ÎQTabBarÖ0Ïbool
+documentModeÌ1024Í()ÎQTabWidgetÖ0Ïbool
+doneÌ1024Í(int)ÎQErrorMessageÖ0Ïvoid
+doneÌ1024Í(int result)ÎQPrintPreviewDialogÖ0Ïvoid
+dragMoveEventÌ1024Í(QDragMoveEvent *event)ÎQTreeViewÖ0Ïvoid
+drawÌ1024Í(QPainter *painter)ÎQGraphicsBlurEffectÖ0Ïvoid
+drawÌ1024Í(QPainter *painter)ÎQGraphicsColorizeEffectÖ0Ïvoid
+drawÌ1024Í(QPainter *painter)ÎQGraphicsDropShadowEffectÖ0Ïvoid
+drawÌ1024Í(QPainter *painter)ÎQGraphicsEffectÖ0Ïvirtual void
+drawÌ1024Í(QPainter *painter)ÎQGraphicsOpacityEffectÖ0Ïvoid
+drawBackgroundÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0Ïvoid
+drawBaseÌ1024Í()ÎQTabBarÖ0Ïbool
+drawBranchesÌ1024Í(QPainter *painter, const QRect &rect, const QModelIndex &index)ÎQTreeViewÖ0Ïvirtual void
+drawCheckÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, Qt::CheckState state)ÎQItemDelegateÖ0Ïvirtual void
+drawComplexControlÌ1024Í(ComplexControl cc, const QStyleOptionComplex *opt, QPainter *p, const QWidget *w = 0)ÎQCommonStyleÖ0Ïvoid
+drawContentsÌ1024Í(QPainter *painter)ÎQSplashScreenÖ0Ïvirtual void
+drawControlÌ1024Í(ControlElement element, const QStyleOption *opt, QPainter *p, const QWidget *w = 0)ÎQCommonStyleÖ0Ïvoid
+drawDecorationÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, const QPixmap &pixmap)ÎQItemDelegateÖ0Ïvirtual void
+drawDisplayÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, const QString &text)ÎQItemDelegateÖ0Ïvirtual void
+drawFocusÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect)ÎQItemDelegateÖ0Ïvirtual void
+drawPrimitiveÌ1024Í(PrimitiveElement pe, const QStyleOption *opt, QPainter *p, const QWidget *w = 0)ÎQCommonStyleÖ0Ïvoid
+drawRowÌ1024Í(QPainter *painter, const QStyleOptionViewItem &options, const QModelIndex &index)ÎQTreeViewÖ0Ïvirtual void
+drawSourceÌ1024Í(QPainter *painter)ÎQGraphicsEffectÖ0Ïvoid
+drawTreeÌ1024Í(QPainter *painter, const QRegion &region)ÎQTreeViewÖ0Ïvoid
+dropEventÌ1024Í(QDropEvent *event)ÎQTableWidgetÖ0Ïvoid
+dropEventÌ1024Í(QDropEvent *event)ÎQTreeWidgetÖ0Ïvoid
+dropMimeDataÌ1024Í(int row, int column, const QMimeData *data, Qt::DropAction action)ÎQTableWidgetÖ0Ïvirtual bool
+dropMimeDataÌ1024Í(QTreeWidgetItem *parent, int index, const QMimeData *data, Qt::DropAction action)ÎQTreeWidgetÖ0Ïvirtual bool
+editItemÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+editItemÌ1024Í(QTreeWidgetItem *item, int column = 0)ÎQTreeWidgetÖ0Ïvoid
+editorEventÌ1024Í(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual bool
+editorEventÌ1024Í(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0Ïbool
+elideModeÌ1024Í()ÎQTabBarÖ0ÏQt
+elideModeÌ1024Í()ÎQTabWidgetÖ0ÏQt
+elidedTextÌ1024Í(const QFontMetrics &fontMetrics, int width, Qt::TextElideMode mode, const QString &text)ÎQAbstractItemDelegateÖ0ÏQString
+emitDataChangedÌ1024Í()ÎQTreeWidgetItemÖ0Ïvoid
+emptyLabelÌ1024Í()ÎQUndoViewÖ0ÏQString
+ensureVisibleÌ1024Í(const QRectF &rect, qreal xmargin, qreal ymargin)ÎQScrollerÖ0Ïvoid
+ensureVisibleÌ1024Í(const QRectF &rect, qreal xmargin, qreal ymargin, int scrollTime)ÎQScrollerÖ0Ïvoid
+enterEventÌ1024Í(QEvent *)ÎQMenuÖ0Ïvoid
+eventÌ1024Í(QEvent *)ÎQActionÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQCheckBoxÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQDialÖ0Ïbool
+eventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïbool
+eventÌ1024Í(QEvent *event)ÎQMdiAreaÖ0Ïbool
+eventÌ1024Í(QEvent *)ÎQMenuÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQProgressBarÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQPushButtonÖ0Ïbool
+eventÌ1024Í(QEvent *event)ÎQScrollBarÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQSplashScreenÖ0Ïbool
+eventÌ1024Í(QEvent *)ÎQSplitterÖ0Ïbool
+eventÌ1024Í(QEvent *)ÎQSplitterHandleÖ0Ïbool
+eventÌ1024Í(QEvent *)ÎQTabBarÖ0Ïbool
+eventÌ1024Í(QEvent *)ÎQTabWidgetÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQTableWidgetÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQTextBrowserÖ0Ïbool
+eventÌ1024Í(QEvent *event)ÎQToolBarÖ0Ïbool
+eventÌ1024Í(QEvent *e)ÎQTreeWidgetÖ0Ïbool
+eventFilterÌ1024Í(QObject *object, QEvent *event)ÎQItemDelegateÖ0Ïbool
+eventFilterÌ1024Í(QObject *object, QEvent *event)ÎQMdiAreaÖ0Ïbool
+eventTestÌ1024Í(QEvent *event)ÎQMouseEventTransitionÖ0Ïbool
+execÌ1024Í()ÎQMenuÖ0ÏQAction *
+execÌ1024Í(const QPoint &pos, QAction *at=0)ÎQMenuÖ0ÏQAction *
+execÌ1024Í(QList<QAction*> actions, const QPoint &pos, QAction *at=0, QWidget *parent=0)ÎQMenuÖ0ÏQAction *
+executePendingSortÌ1024Í()ÎQTreeWidgetItemÖ0Ïvoid
+expandÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïvoid
+expandAllÌ1024Í()ÎQTreeViewÖ0Ïvoid
+expandItemÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+expandToDepthÌ1024Í(int depth)ÎQTreeViewÖ0Ïvoid
+expandingÌ1024Í()ÎQTabBarÖ0Ïbool
+expandingDirectionsÌ1024Í()ÎQFormLayoutÖ0ÏQt
+expandingDirectionsÌ16Í()ÎQSizePolicyÖ0ÏQt
+expandsOnDoubleClickÌ1024Í()ÎQTreeViewÖ0Ïbool
+fieldGrowthPolicyÌ1024Í()ÎQFormLayoutÖ0ÏFieldGrowthPolicy
+finalPositionÌ1024Í()ÎQScrollerÖ0ÏQPointF
+findItemsÌ1024Í(const QString &text, Qt::MatchFlags flags)ÎQTableWidgetÖ0ÏQList
+findItemsÌ1024Í(const QString &text, Qt::MatchFlags flags, int column = 0)ÎQTreeWidgetÖ0ÏQList
+finishÌ1024Í(QWidget *w)ÎQSplashScreenÖ0Ïvoid
+flagsÌ16Í()ÎQTableWidgetItemÖ0Ïinline Qt
+flagsÌ1024Í()ÎQTreeWidgetItemÖ0ÏQt
+flagsÌ64ÎQTreeWidgetItemIteratorÖ0ÏIteratorFlags
+focusInEventÌ1024Í(QFocusEvent *event)ÎQGraphicsWidgetÖ0Ïvoid
+focusInEventÌ1024Í(QFocusEvent *)ÎQPushButtonÖ0Ïvoid
+focusNextPrevChildÌ1024Í(bool next)ÎQGraphicsWidgetÖ0Ïvirtual bool
+focusNextPrevChildÌ1024Í(bool next)ÎQMenuÖ0Ïbool
+focusNextPrevChildÌ1024Í(bool next)ÎQTextBrowserÖ0Ïvirtual bool
+focusOutEventÌ1024Í(QFocusEvent *event)ÎQGraphicsWidgetÖ0Ïvoid
+focusOutEventÌ1024Í(QFocusEvent *)ÎQPushButtonÖ0Ïvoid
+focusOutEventÌ1024Í(QFocusEvent *ev)ÎQTextBrowserÖ0Ïvirtual void
+focusPolicyÌ1024Í()ÎQGraphicsWidgetÖ0ÏQt
+focusWidgetÌ1024Í()ÎQGraphicsWidgetÖ0ÏQGraphicsWidget *
+fontÌ1024Í()ÎQActionÖ0ÏQFont
+fontÌ1024Í()ÎQGraphicsWidgetÖ0ÏQFont
+fontÌ16Í()ÎQTableWidgetItemÖ0Ïinline QFont
+fontÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QFont
+foregroundÌ16Í()ÎQTableWidgetItemÖ0Ïinline QBrush
+foregroundÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QBrush
+formAlignmentÌ1024Í()ÎQFormLayoutÖ0ÏQt
+formatÌ1024Í()ÎQProgressBarÖ0ÏQString
+forwardÌ1024Í()ÎQTextBrowserÖ0Ïvirtual void
+forwardAvailableÌ1024Í(bool)ÎQTextBrowserÖ0Ïvoid
+forwardHistoryCountÌ1024Í()ÎQTextBrowserÖ0Ïint
+generatedIconPixmapÌ1024Í(QIcon::Mode iconMode, const QPixmap &pixmap, const QStyleOption *opt)ÎQCommonStyleÖ0ÏQPixmap
+gestureÌ1024Í(Qt::GestureType type)ÎQGestureEventÖ0ÏQGesture *
+gestureCancelPolicyÌ1024Í()ÎQGestureÖ0ÏGestureCancelPolicy
+gestureTypeÌ1024Í()ÎQGestureÖ0ÏQt
+gesturesÌ1024Í()ÎQGestureEventÖ0ÏQList
+getContentsMarginsÌ1024Í(qreal *left, qreal *top, qreal *right, qreal *bottom)ÎQGraphicsLayoutÖ0Ïvoid
+getContentsMarginsÌ1024Í(qreal *left, qreal *top, qreal *right, qreal *bottom)ÎQGraphicsWidgetÖ0Ïvoid
+getItemPositionÌ1024Í(int index, int *rowPtr, ItemRole *rolePtr)ÎQFormLayoutÖ0Ïvoid
+getLayoutPositionÌ1024Í(QLayout *layout, int *rowPtr, ItemRole *rolePtr)ÎQFormLayoutÖ0Ïvoid
+getRangeÌ1024Í(int index, int *, int *)ÎQSplitterÖ0Ïvoid
+getWidgetPositionÌ1024Í(QWidget *widget, int *rowPtr, ItemRole *rolePtr)ÎQFormLayoutÖ0Ïvoid
+getWindowFrameMarginsÌ1024Í(qreal *left, qreal *top, qreal *right, qreal *bottom)ÎQGraphicsWidgetÖ0Ïvoid
+grabGestureÌ1024Í(QObject *target, ScrollerGestureType gestureType = TouchGesture)ÎQScrollerÖ0ÏQt
+grabKeyboardEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+grabMouseEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+grabShortcutÌ1024Í(const QKeySequence &sequence, Qt::ShortcutContext context = Qt::WindowShortcut)ÎQGraphicsWidgetÖ0Ïint
+grabbedGestureÌ1024Í(QObject *target)ÎQScrollerÖ0ÏQt
+groupÌ1024Í()ÎQUndoViewÖ0ÏQUndoGroup *
+hPalÌ1024Í()ÎQColormapÖ0ÏHPALETTE
+handleÌ1024Í(int index)ÎQSplitterÖ0ÏQSplitterHandle *
+handleInputÌ1024Í(Input input, const QPointF &position, qint64 timestamp = 0)ÎQScrollerÖ0Ïbool
+handleWidthÌ1024Í()ÎQSplitterÖ0Ïint
+hasClippingÌ1024Í()ÎQItemDelegateÖ0Ïbool
+hasHeightForWidthÌ1024Í()ÎQFormLayoutÖ0Ïbool
+hasHeightForWidthÌ16Í()ÎQSizePolicyÖ0Ïbool
+hasHeightForWidthÌ1024Í()ÎQTabWidgetÖ0Ïbool
+hasHotSpotÌ1024Í()ÎQGestureÖ0Ïbool
+hasScrollerÌ1024Í(QObject *target)ÎQScrollerÖ0Ïbool
+hasWidthForHeightÌ16Í()ÎQSizePolicyÖ0Ïbool
+headerÌ1024Í()ÎQTreeViewÖ0ÏQHeaderView *
+headerItemÌ1024Í()ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+heightForWidthÌ1024Í(int width)ÎQFormLayoutÖ0Ïint
+heightForWidthÌ1024Í(int width)ÎQTabWidgetÖ0Ïint
+helpEventÌ1024Í(QHelpEvent *event, QAbstractItemView *view, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual bool
+hfwÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+hideEventÌ1024Í(QHideEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+hideEventÌ1024Í(QHideEvent *)ÎQMenuÖ0Ïvoid
+hideEventÌ1024Í(QHideEvent*)ÎQScrollBarÖ0Ïvoid
+hideEventÌ1024Í(QHideEvent *)ÎQTabBarÖ0Ïvoid
+hideTearOffMenuÌ1024Í()ÎQMenuÖ0Ïvoid
+highlightedÌ1024Í(const QUrl &)ÎQTextBrowserÖ0Ïvoid
+highlightedÌ1024Í(const QString &)ÎQTextBrowserÖ0Ïvoid
+hintÌ64ÎQTableWidgetÖ0ÏQ_SLOTS
+hintÌ64ÎQTreeWidgetÖ0ÏQ_SLOTS
+historyChangedÌ1024Í()ÎQTextBrowserÖ0Ïvoid
+historyTitleÌ1024Í(int)ÎQTextBrowserÖ0ÏQString
+historyUrlÌ1024Í(int)ÎQTextBrowserÖ0ÏQUrl
+hitButtonÌ1024Í(const QPoint &pos)ÎQCheckBoxÖ0Ïbool
+hitButtonÌ1024Í(const QPoint &pos)ÎQPushButtonÖ0Ïbool
+hitTestComplexControlÌ1024Í(ComplexControl cc, const QStyleOptionComplex *opt, const QPoint &pt, const QWidget *w = 0)ÎQCommonStyleÖ0ÏSubControl
+hitTestPathÌ1024Í()ÎQMouseEventTransitionÖ0ÏQPainterPath
+homeÌ1024Í()ÎQTextBrowserÖ0Ïvirtual void
+horPolicyÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+horStretchÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+horizontalÌ64ÎQTileRulesÖ0ÏQt
+horizontalDirectionÌ1024Í()ÎQSwipeGestureÖ0ÏSwipeDirection
+horizontalHeaderItemÌ1024Í(int column)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+horizontalOffsetÌ1024Í()ÎQColumnViewÖ0Ïint
+horizontalOffsetÌ1024Í()ÎQTreeViewÖ0Ïint
+horizontalPolicyÌ16Í()ÎQSizePolicyÖ0ÏPolicy
+horizontalScaleAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+horizontalScrollbarActionÌ1024Í(int action)ÎQTreeViewÖ0Ïvoid
+horizontalShearAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+horizontalSpacingÌ1024Í()ÎQFormLayoutÖ0Ïint
+horizontalSpacingÌ1024Í()ÎQGraphicsAnchorLayoutÖ0Ïqreal
+horizontalStretchÌ16Í()ÎQSizePolicyÖ0Ïint
+hotSpotÌ1024Í()ÎQGestureÖ0ÏQPointF
+hoverÌ16Í()Ö0Ïclass Q_WIDGETS_EXPORT void
+hoverLeaveEventÌ1024Í(QGraphicsSceneHoverEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+hoverMoveEventÌ1024Í(QGraphicsSceneHoverEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+hoveredÌ1024Í()Ö0Ïvoid
+hoveredÌ1024Í(QAction *action)ÎQMenuÖ0Ïvoid
+iconÌ1024Í()ÎQActionÖ0ÏQIcon
+iconÌ1024Í()ÎQMenuÖ0ÏQIcon
+iconÌ16Í()ÎQTableWidgetItemÖ0Ïinline QIcon
+iconÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QIcon
+iconSizeÌ1024Í()ÎQTabBarÖ0ÏQSize
+iconSizeÌ1024Í()ÎQTabWidgetÖ0ÏQSize
+iconSizeÌ1024Í()ÎQToolBarÖ0ÏQSize
+iconSizeChangedÌ1024Í(const QSize &iconSize)ÎQToolBarÖ0Ïvoid
+iconTextÌ1024Í()ÎQActionÖ0ÏQString
+ignoreÌ16Í()ÎQGestureEventÖ0Ïinline void
+ignoreÌ1024Í(QGesture *)ÎQGestureEventÖ0Ïvoid
+ignoreÌ1024Í(Qt::GestureType)ÎQGestureEventÖ0Ïvoid
+indentationÌ1024Í()ÎQTreeViewÖ0Ïint
+indexÌ64ÎQSplitterÖ0ÏQ_SIGNALS
+indexAboveÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0ÏQModelIndex
+indexAtÌ1024Í(const QPoint &point)ÎQColumnViewÖ0ÏQModelIndex
+indexAtÌ1024Í(const QPoint &p)ÎQTreeViewÖ0ÏQModelIndex
+indexBelowÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0ÏQModelIndex
+indexChangedÌ1024Í(int idx)ÎQUndoGroupÖ0Ïvoid
+indexFromItemÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0ÏQModelIndex
+indexFromItemÌ1024Í(QTreeWidgetItem *item, int column = 0)ÎQTreeWidgetÖ0ÏQModelIndex
+indexOfÌ1024Í(QWidget *w)ÎQSplitterÖ0Ïint
+indexOfÌ1024Í(QWidget *widget)ÎQTabWidgetÖ0Ïint
+indexOfChildÌ16Í(QTreeWidgetItem *achild)ÎQTreeWidgetItemÖ0Ïinline int
+indexOfChildÌ1024Í(QTreeWidgetItem *child)ÎQTreeWidgetItemÖ0Ïinline int
+indexOfTopLevelItemÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïint
+indexRowSizeHintÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïint
+initStyleOptionÌ1024Í(QStyleOptionButton *option)ÎQCheckBoxÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionSlider *option)ÎQDialÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOption *option)ÎQGraphicsWidgetÖ0Ïvirtual void
+initStyleOptionÌ1024Í(QStyleOptionMenuItem *option, const QAction *action)ÎQMenuÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionProgressBar *option)ÎQProgressBarÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionButton *option)ÎQPushButtonÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionSlider *option)ÎQScrollBarÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionTab *option, int tabIndex)ÎQTabBarÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionTabWidgetFrame *option)ÎQTabWidgetÖ0Ïvoid
+initStyleOptionÌ1024Í(QStyleOptionToolBar *option)ÎQToolBarÖ0Ïvoid
+initializeÌ1024Í()ÎQColormapÖ0Ïvoid
+initializeColumnÌ1024Í(QAbstractItemView *column)ÎQColumnViewÖ0Ïvoid
+insertActionÌ1024Í(QAction *before, QAction *action)ÎQGraphicsWidgetÖ0Ïvoid
+insertActionsÌ1024Í(QAction *before, QList<QAction*> actions)ÎQGraphicsWidgetÖ0Ïvoid
+insertChildÌ1024Í(int index, QTreeWidgetItem *child)ÎQTreeWidgetItemÖ0Ïvoid
+insertChildrenÌ1024Í(int index, const QList<QTreeWidgetItem*> &children)ÎQTreeWidgetItemÖ0Ïvoid
+insertColumnÌ1024Í(int column)ÎQTableWidgetÖ0Ïvoid
+insertMenuÌ1024Í(QAction *before, QMenu *menu)ÎQMenuÖ0ÏQAction *
+insertRowÌ1024Í(int row, QWidget *label, QWidget *field)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row, QWidget *label, QLayout *field)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row, const QString &labelText, QWidget *field)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row, const QString &labelText, QLayout *field)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row, QWidget *widget)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row, QLayout *layout)ÎQFormLayoutÖ0Ïvoid
+insertRowÌ1024Í(int row)ÎQTableWidgetÖ0Ïvoid
+insertSeparatorÌ1024Í(QAction *before)ÎQMenuÖ0ÏQAction *
+insertSeparatorÌ1024Í(QAction *before)ÎQToolBarÖ0ÏQAction *
+insertTabÌ1024Í(int index, const QString &text)ÎQTabBarÖ0Ïint
+insertTabÌ1024Í(int index, const QIcon&icon, const QString &text)ÎQTabBarÖ0Ïint
+insertTabÌ1024Í(int index, QWidget *widget, const QString &)ÎQTabWidgetÖ0Ïint
+insertTabÌ1024Í(int index, QWidget *widget, const QIcon& icon, const QString &label)ÎQTabWidgetÖ0Ïint
+insertTopLevelItemÌ1024Í(int index, QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+insertTopLevelItemsÌ1024Í(int index, const QList<QTreeWidgetItem*> &items)ÎQTreeWidgetÖ0Ïvoid
+insertWidgetÌ1024Í(int index, QWidget *widget)ÎQSplitterÖ0Ïvoid
+insertWidgetÌ1024Í(QAction *before, QWidget *widget)ÎQToolBarÖ0ÏQAction *
+instanceÌ1024Í(int screen = -1)ÎQColormapÖ0ÏQColormap
+instantInvalidatePropagationÌ1024Í()ÎQGraphicsLayoutÖ0Ïbool
+internalDelayedPopupÌ1024Í()ÎQMenuÖ0Ïvoid
+invalidateÌ1024Í()ÎQFormLayoutÖ0Ïvoid
+invalidateÌ1024Í()ÎQGraphicsAnchorLayoutÖ0Ïvoid
+invalidateÌ1024Í()ÎQGraphicsLayoutÖ0Ïvirtual void
+invertedAppearanceÌ1024Í()ÎQProgressBarÖ0Ïbool
+invisibleRootItemÌ1024Í()ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+isAcceptedÌ16Í()ÎQGestureEventÖ0Ïinline bool
+isAcceptedÌ1024Í(QGesture *)ÎQGestureEventÖ0Ïbool
+isAcceptedÌ1024Í(Qt::GestureType)ÎQGestureEventÖ0Ïbool
+isActivatedÌ1024Í()ÎQGraphicsLayoutÖ0Ïbool
+isActiveWindowÌ1024Í()ÎQGraphicsWidgetÖ0Ïbool
+isAnimatedÌ1024Í()ÎQTreeViewÖ0Ïbool
+isAreaAllowedÌ16Í(Qt::ToolBarArea area)ÎQToolBarÖ0Ïinline bool
+isBackwardAvailableÌ1024Í()ÎQTextBrowserÖ0Ïbool
+isCheckableÌ1024Í()ÎQActionÖ0Ïbool
+isCheckedÌ1024Í()ÎQActionÖ0Ïbool
+isCleanÌ1024Í()ÎQUndoGroupÖ0Ïbool
+isCollapsibleÌ1024Í(int index)ÎQSplitterÖ0Ïbool
+isColumnHiddenÌ1024Í(int column)ÎQTreeViewÖ0Ïbool
+isDefaultÌ1024Í()ÎQPushButtonÖ0Ïbool
+isDisabledÌ16Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isDisabledÌ1024Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isEmptyÌ1024Í()ÎQMenuÖ0Ïbool
+isEnabledÌ1024Í()ÎQActionÖ0Ïbool
+isEnabledÌ1024Í()ÎQGraphicsEffectÖ0Ïbool
+isExpandedÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïbool
+isExpandedÌ16Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isExpandedÌ1024Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isFirstColumnSpannedÌ1024Í(int row, const QModelIndex &parent)ÎQTreeViewÖ0Ïbool
+isFirstColumnSpannedÌ16Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isFirstColumnSpannedÌ1024Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isFirstItemColumnSpannedÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïbool
+isFlatÌ1024Í()ÎQPushButtonÖ0Ïbool
+isFloatableÌ1024Í()ÎQToolBarÖ0Ïbool
+isFloatingÌ1024Í()ÎQToolBarÖ0Ïbool
+isForwardAvailableÌ1024Í()ÎQTextBrowserÖ0Ïbool
+isHeaderHiddenÌ1024Í()ÎQTreeViewÖ0Ïbool
+isHiddenÌ16Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isHiddenÌ1024Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isIconVisibleInMenuÌ1024Í()ÎQActionÖ0Ïbool
+isIndexHiddenÌ1024Í(const QModelIndex &index)ÎQColumnViewÖ0Ïbool
+isIndexHiddenÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïbool
+isItemExpandedÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïbool
+isItemHiddenÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïbool
+isItemSelectedÌ1024Í(const QTableWidgetItem *item)ÎQTableWidgetÖ0Ïbool
+isItemSelectedÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïbool
+isMovableÌ1024Í()ÎQTabBarÖ0Ïbool
+isMovableÌ1024Í()ÎQTabWidgetÖ0Ïbool
+isMovableÌ1024Í()ÎQToolBarÖ0Ïbool
+isRowHiddenÌ1024Í(int row, const QModelIndex &parent)ÎQTreeViewÖ0Ïbool
+isSelectedÌ16Í()ÎQTableWidgetItemÖ0Ïinline bool
+isSelectedÌ1024Í()ÎQTableWidgetItemÖ0Ïinline bool
+isSelectedÌ16Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isSelectedÌ1024Í()ÎQTreeWidgetItemÖ0Ïinline bool
+isSeparatorÌ1024Í()ÎQActionÖ0Ïbool
+isSortingEnabledÌ1024Í()ÎQTableWidgetÖ0Ïbool
+isSortingEnabledÌ1024Í()ÎQTreeViewÖ0Ïbool
+isTabEnabledÌ1024Í(int index)ÎQTabBarÖ0Ïbool
+isTabEnabledÌ1024Í(int index)ÎQTabWidgetÖ0Ïbool
+isTearOffEnabledÌ1024Í()ÎQMenuÖ0Ïbool
+isTearOffMenuVisibleÌ1024Í()ÎQMenuÖ0Ïbool
+isTextVisibleÌ1024Í()ÎQProgressBarÖ0Ïbool
+isTristateÌ1024Í()ÎQCheckBoxÖ0Ïbool
+isVirtualDesktopÌ1024Í()ÎQDesktopWidgetÖ0Ïbool
+isVisibleÌ1024Í()ÎQActionÖ0Ïbool
+itemÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQGraphicsItem *
+itemÌ1024Í(int row, int column)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+itemAboveÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+itemActivatedÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+itemActivatedÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+itemAtÌ1024Í(int row, ItemRole role)ÎQFormLayoutÖ0ÏQLayoutItem *
+itemAtÌ1024Í(int index)ÎQFormLayoutÖ0ÏQLayoutItem *
+itemAtÌ1024Í(int index)ÎQGraphicsAnchorLayoutÖ0ÏQGraphicsLayoutItem *
+itemAtÌ1024Í(int i)ÎQGraphicsLayoutÖ0Ïvirtual QGraphicsLayoutItem *
+itemAtÌ16Í(int ax, int ay)ÎQTableWidgetÖ0Ïinline QTableWidgetItem *
+itemAtÌ1024Í(const QPoint &p)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+itemAtÌ1024Í(int x, int y)ÎQTableWidgetÖ0Ïinline QTableWidgetItem *
+itemAtÌ16Í(int ax, int ay)ÎQTreeWidgetÖ0Ïinline QTreeWidgetItem *
+itemAtÌ1024Í(const QPoint &p)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+itemAtÌ1024Í(int x, int y)ÎQTreeWidgetÖ0Ïinline QTreeWidgetItem *
+itemBelowÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+itemChangeÌ1024Í(GraphicsItemChange change, const QVariant &value)ÎQGraphicsWidgetÖ0ÏQVariant
+itemChangedÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+itemChangedÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+itemChangedÌ1024Í()ÎQTreeWidgetItemÖ0Ïvoid
+itemClickedÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+itemClickedÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+itemCollapsedÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+itemDoubleClickedÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+itemDoubleClickedÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+itemEditorFactoryÌ1024Í()ÎQItemDelegateÖ0ÏQItemEditorFactory *
+itemEnteredÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+itemEnteredÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+itemExpandedÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+itemFlagsÌ64ÎQTableWidgetItemÖ0ÏQt
+itemFlagsÌ64ÎQTreeWidgetItemÖ0ÏQt
+itemFromIndexÌ1024Í(const QModelIndex &index)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+itemFromIndexÌ1024Í(const QModelIndex &index)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+itemPrototypeÌ1024Í()ÎQTableWidgetÖ0Ïconst QTableWidgetItem *
+itemSelectionChangedÌ1024Í()ÎQTableWidgetÖ0Ïvoid
+itemSelectionChangedÌ1024Í()ÎQTreeWidgetÖ0Ïvoid
+itemWidgetÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0ÏQWidget *
+itemsÌ1024Í(const QMimeData *data)ÎQTableWidgetÖ0ÏQList
+itemsÌ1024Í(const QMimeData *data)ÎQTreeWidgetÖ0ÏQList
+itemsExpandableÌ1024Í()ÎQTreeViewÖ0Ïbool
+keyPressEventÌ1024Í(QKeyEvent *)ÎQMenuÖ0Ïvoid
+keyPressEventÌ1024Í(QKeyEvent *)ÎQPushButtonÖ0Ïvoid
+keyPressEventÌ1024Í(QKeyEvent *)ÎQTabBarÖ0Ïvoid
+keyPressEventÌ1024Í(QKeyEvent *)ÎQTabWidgetÖ0Ïvoid
+keyPressEventÌ1024Í(QKeyEvent *ev)ÎQTextBrowserÖ0Ïvirtual void
+keyPressEventÌ1024Í(QKeyEvent *event)ÎQTreeViewÖ0Ïvoid
+keyboardSearchÌ1024Í(const QString &search)ÎQTreeViewÖ0Ïvoid
+keysÌ1024Í()ÎQStyleFactoryÖ0ÏQStringList
+labelAlignmentÌ1024Í()ÎQFormLayoutÖ0ÏQt
+labelForFieldÌ1024Í(QWidget *field)ÎQFormLayoutÖ0ÏQWidget *
+labelForFieldÌ1024Í(QLayout *field)ÎQFormLayoutÖ0ÏQWidget *
+labelTextÌ1024Í()ÎQProgressDialogÖ0ÏQString
+lastCenterPointÌ1024Í()ÎQPinchGestureÖ0ÏQPointF
+lastOffsetÌ1024Í()ÎQPanGestureÖ0ÏQPointF
+lastRotationAngleÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+lastScaleFactorÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+layoutÌ1024Í()ÎQGraphicsWidgetÖ0ÏQGraphicsLayout *
+layoutChangedÌ1024Í()ÎQGraphicsWidgetÖ0Ïvoid
+layoutDirectionÌ1024Í()ÎQGraphicsWidgetÖ0ÏQt
+layoutSpacingÌ1024Í(QSizePolicy::ControlType control1, QSizePolicy::ControlType control2, Qt::Orientation orientation, const QStyleOption *option = 0, const QWidget *widget = 0)ÎQCommonStyleÖ0Ïint
+leaveEventÌ1024Í(QEvent *)ÎQMenuÖ0Ïvoid
+leftÌ64ÎQTableWidgetSelectionRangeÖ0Ïint
+leftColumnÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+loadResourceÌ1024Í(int type, const QUrl &name)ÎQTextBrowserÖ0Ïvirtual QVariant
+m_acceptedÌ64ÎQGestureEventÖ0ÏQMap
+m_gesturesÌ64ÎQGestureEventÖ0ÏQList
+m_targetWidgetsÌ64ÎQGestureEventÖ0ÏQMap
+m_widgetÌ64ÎQGestureEventÖ0ÏQWidget
+mapToGraphicsSceneÌ1024Í(const QPointF &gesturePoint)ÎQGestureEventÖ0ÏQPointF
+matchesFlagsÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetItemIteratorÖ0Ïbool
+matrixAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0ÏQMatrix
+maximumÌ1024Í()ÎQProgressBarÖ0Ïint
+maximumÌ1024Í()ÎQProgressDialogÖ0Ïint
+menuÌ1024Í()ÎQActionÖ0ÏQMenu *
+menuÌ1024Í()ÎQPushButtonÖ0ÏQMenu *
+menuActionÌ1024Í()ÎQMenuÖ0ÏQAction *
+menuRoleÌ1024Í()ÎQActionÖ0ÏMenuRole
+metricÌ1024Í(QPaintDevice::PaintDeviceMetric)ÎQPrintEngineÖ0Ïvirtual int
+mimeDataÌ1024Í(const QList<QTableWidgetItem*> items)ÎQTableWidgetÖ0Ïvirtual QMimeData *
+mimeDataÌ1024Í(const QList<QTreeWidgetItem*> items)ÎQTreeWidgetÖ0Ïvirtual QMimeData *
+mimeTypesÌ1024Í()ÎQTableWidgetÖ0Ïvirtual QStringList
+mimeTypesÌ1024Í()ÎQTreeWidgetÖ0Ïvirtual QStringList
+minimumÌ1024Í()ÎQProgressBarÖ0Ïint
+minimumÌ1024Í()ÎQProgressDialogÖ0Ïint
+minimumDurationÌ1024Í()ÎQProgressDialogÖ0Ïint
+minimumSizeÌ1024Í()ÎQFormLayoutÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQCheckBoxÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQDialÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQMdiAreaÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQProgressBarÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQPushButtonÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQSplitterÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQTabBarÖ0ÏQSize
+minimumSizeHintÌ1024Í()ÎQTabWidgetÖ0ÏQSize
+minimumTabSizeHintÌ1024Í(int index)ÎQTabBarÖ0Ïvirtual QSize
+modeÌ1024Í()ÎQColormapÖ0ÏMode
+modifierMaskÌ1024Í()ÎQMouseEventTransitionÖ0ÏQt
+mouseDoubleClickEventÌ1024Í(QMouseEvent *event)ÎQTreeViewÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *)ÎQCheckBoxÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *me)ÎQDialÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *)ÎQMenuÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *)ÎQScrollBarÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *)ÎQSplitterHandleÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *)ÎQTabBarÖ0Ïvoid
+mouseMoveEventÌ1024Í(QMouseEvent *ev)ÎQTextBrowserÖ0Ïvirtual void
+mouseMoveEventÌ1024Í(QMouseEvent *event)ÎQTreeViewÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *me)ÎQDialÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *)ÎQMenuÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *)ÎQScrollBarÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *)ÎQSplashScreenÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *)ÎQSplitterHandleÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *)ÎQTabBarÖ0Ïvoid
+mousePressEventÌ1024Í(QMouseEvent *ev)ÎQTextBrowserÖ0Ïvirtual void
+mousePressEventÌ1024Í(QMouseEvent *event)ÎQTreeViewÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *me)ÎQDialÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *)ÎQMenuÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *)ÎQScrollBarÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *)ÎQSplitterHandleÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *)ÎQTabBarÖ0Ïvoid
+mouseReleaseEventÌ1024Í(QMouseEvent *ev)ÎQTextBrowserÖ0Ïvirtual void
+mouseReleaseEventÌ1024Í(QMouseEvent *event)ÎQTreeViewÖ0Ïvoid
+movableChangedÌ1024Í(bool movable)ÎQToolBarÖ0Ïvoid
+moveCursorÌ1024Í(CursorAction cursorAction, Qt::KeyboardModifiers modifiers)ÎQColumnViewÖ0ÏQModelIndex
+moveCursorÌ1024Í(CursorAction cursorAction, Qt::KeyboardModifiers modifiers)ÎQTreeViewÖ0ÏQModelIndex
+moveEventÌ1024Í(QGraphicsSceneMoveEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+moveSplitterÌ1024Í(int pos, int index)ÎQSplitterÖ0Ïvoid
+moveSplitterÌ1024Í(int p)ÎQSplitterHandleÖ0Ïvoid
+moveTabÌ1024Í(int from, int to)ÎQTabBarÖ0Ïvoid
+newPageÌ1024Í()ÎQPrintEngineÖ0Ïvirtual bool
+newSizeÌ64ÎQTreeViewÖ0ÏQ_SLOTS
+nextCheckStateÌ1024Í()ÎQCheckBoxÖ0Ïvoid
+notchSizeÌ1024Í()ÎQDialÖ0Ïint
+notchTargetÌ1024Í()ÎQDialÖ0Ïqreal
+notchesVisibleÌ1024Í()ÎQDialÖ0Ïbool
+numScreensÌ1024Í()ÎQDesktopWidgetÖ0Ïint
+offsetÌ1024Í()ÎQGraphicsDropShadowEffectÖ0ÏQPointF
+offsetÌ1024Í()ÎQPanGestureÖ0ÏQPointF
+oldSizeÌ64ÎQTreeViewÖ0ÏQ_SLOTS
+onTransitionÌ1024Í(QEvent *event)ÎQMouseEventTransitionÖ0Ïvoid
+opacityÌ1024Í()ÎQGraphicsOpacityEffectÖ0Ïqreal
+opacityMaskÌ1024Í()ÎQGraphicsOpacityEffectÖ0ÏQBrush
+opacityMaskChangedÌ1024Í(const QBrush &mask)ÎQGraphicsOpacityEffectÖ0Ïvoid
+opaqueResizeÌ1024Í()ÎQSplitterÖ0Ïbool
+opaqueResizeÌ1024Í()ÎQSplitterHandleÖ0Ïbool
+openÌ16Í()ÎQPrintPreviewDialogÖ0Ïvoid
+openÌ1024Í(QObject *receiver, const char *member)ÎQPrintPreviewDialogÖ0Ïvoid
+openÌ16Í()ÎQProgressDialogÖ0Ïvoid
+openÌ1024Í(QObject *receiver, const char *member)ÎQProgressDialogÖ0Ïvoid
+openExternalLinksÌ1024Í()ÎQTextBrowserÖ0Ïbool
+openLinksÌ1024Í()ÎQTextBrowserÖ0Ïbool
+openPersistentEditorÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+openPersistentEditorÌ1024Í(QTreeWidgetItem *item, int column = 0)ÎQTreeWidgetÖ0Ïvoid
+operator !=Ì1024ÎQScrollerPropertiesÖ0Ïbool
+operator !=Ì16ÎQSizePolicyÖ0Ïbool
+operator *Ì16ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItem *
+operator *Ì1024ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItem *
+operator ++Ì16ÎQTreeWidgetItemIteratorÖ0Ïinline const QTreeWidgetItemIterator QTreeWidgetItemIterator
+operator ++Ì1024ÎQTreeWidgetItemIteratorÖ0Ïinline const QTreeWidgetItemIterator
+operator +=Ì16ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItemIterator QTreeWidgetItemIterator
+operator +=Ì1024ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItemIterator
+operator --Ì16ÎQTreeWidgetItemIteratorÖ0Ïinline const QTreeWidgetItemIterator QTreeWidgetItemIterator
+operator --Ì1024ÎQTreeWidgetItemIteratorÖ0Ïinline const QTreeWidgetItemIterator
+operator -=Ì16ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItemIterator QTreeWidgetItemIterator
+operator -=Ì1024ÎQTreeWidgetItemIteratorÖ0Ïinline QTreeWidgetItemIterator
+operator <Ì1024ÎQTableWidgetItemÖ0Ïvirtual bool
+operator <Ì1024ÎQTreeWidgetItemÖ0Ïvirtual bool
+operator <<Ì1024Ö0ÏQ_WIDGETS_EXPORT
+operator <<Ì1024ÎQSizePolicyÖ0Ïfriend Q_WIDGETS_EXPORT
+operator =Ì1024ÎQColormapÖ0ÏQColormap
+operator =Ì1024ÎQScrollerPropertiesÖ0ÏQScrollerProperties
+operator =Ì1024ÎQTableWidgetItemÖ0ÏQTableWidgetItem
+operator =Ì1024ÎQTreeWidgetItemÖ0ÏQTreeWidgetItem
+operator =Ì1024ÎQTreeWidgetItemIteratorÖ0ÏQTreeWidgetItemIterator
+operator ==Ì1024ÎQScrollerPropertiesÖ0Ïbool
+operator ==Ì16ÎQSizePolicyÖ0Ïbool
+operator >>Ì1024Ö0ÏQ_WIDGETS_EXPORT
+operator >>Ì1024ÎQSizePolicyÖ0Ïfriend Q_WIDGETS_EXPORT
+operator QVariantÌ1024Í()ÎQSizePolicyÖ0
+orientationÌ1024Í()ÎQProgressBarÖ0ÏQt
+orientationÌ1024Í()ÎQSplitterÖ0ÏQt
+orientationÌ1024Í()ÎQSplitterHandleÖ0ÏQt
+orientationÌ1024Í()ÎQToolBarÖ0ÏQt
+orientationChangedÌ1024Í(Qt::Orientation orientation)ÎQToolBarÖ0Ïvoid
+paddingÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+paintÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual void
+paintÌ1024Í(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0)ÎQGraphicsWidgetÖ0Ïvoid
+paintÌ1024Í(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQCheckBoxÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *pe)ÎQDialÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *paintEvent)ÎQMdiAreaÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQMenuÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQProgressBarÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQPushButtonÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQScrollBarÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQSplitterHandleÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQTabBarÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *)ÎQTabWidgetÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *e)ÎQTextBrowserÖ0Ïvirtual void
+paintEventÌ1024Í(QPaintEvent *event)ÎQToolBarÖ0Ïvoid
+paintEventÌ1024Í(QPaintEvent *event)ÎQTreeViewÖ0Ïvoid
+paintWindowFrameÌ1024Í(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0)ÎQGraphicsWidgetÖ0Ïvirtual void
+paintingRolesÌ1024Í()ÎQAbstractItemDelegateÖ0Ïvirtual QVector
+paletteÌ1024Í()ÎQGraphicsWidgetÖ0ÏQPalette
+parÌ64ÎQTreeWidgetItemÖ0ÏQTreeWidgetItem
+parentÌ16Í()ÎQTreeWidgetItemÖ0Ïinline QTreeWidgetItem *
+parentWidgetÌ1024Í()ÎQActionÖ0ÏQWidget *
+pixelÌ1024Í(const QColor &color)ÎQColormapÖ0Ïuint
+pixelMetricÌ1024Í(PixelMetric m, const QStyleOption *opt = 0, const QWidget *widget = 0)ÎQCommonStyleÖ0Ïint
+pixelPerMeterÌ1024Í()ÎQScrollerÖ0ÏQPointF
+pixmapÌ1024Í()ÎQSplashScreenÖ0Ïconst QPixmap
+platformMenuÌ1024Í()ÎQMenuÖ0ÏQPlatformMenu *
+polishÌ1024Í(QPalette &)ÎQCommonStyleÖ0Ïvoid
+polishÌ1024Í(QApplication *app)ÎQCommonStyleÖ0Ïvoid
+polishÌ1024Í(QWidget *widget)ÎQCommonStyleÖ0Ïvoid
+polishEventÌ1024Í()ÎQGraphicsWidgetÖ0Ïvirtual void
+popupÌ1024Í(const QPoint &pos, QAction *at=0)ÎQMenuÖ0Ïvoid
+posAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0ÏQPointF
+posListÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQList
+positionÌ1024Í()ÎQTapAndHoldGestureÖ0ÏQPointF
+positionÌ1024Í()ÎQTapGestureÖ0ÏQPointF
+previewWidgetÌ1024Í()ÎQColumnViewÖ0ÏQWidget *
+primaryScreenÌ1024Í()ÎQDesktopWidgetÖ0Ïint
+printerÌ1024Í()ÎQPrintPreviewDialogÖ0ÏQPrinter *
+printerStateÌ1024Í()ÎQPrintEngineÖ0Ïvirtual QPrinter
+priorityÌ1024Í()ÎQActionÖ0ÏPriority
+propertyÌ1024Í(PrintEnginePropertyKey key)ÎQPrintEngineÖ0Ïvirtual QVariant
+propertyChangeÌ1024Í(const QString &propertyName, const QVariant &value)ÎQGraphicsWidgetÖ0Ïvirtual QVariant
+qDrawBorderPixmapÌ16Í(QPainter *painter, const QRect &target, const QMargins &margins, const QPixmap &pixmap)Ö0Ïinline void
+qDrawBorderPixmapÌ1024Í(QPainter *painter, const QRect &targetRect, const QMargins &targetMargins, const QPixmap &pixmap, const QRect &sourceRect, const QMargins &sourceMargins, const QTileRules &rules = QTileRules() #ifndef Q_QDOC , QDrawBorderPixmap::DrawingHints hints = 0 #endif )Ö0Ïnamespace QDrawBorderPixmap void
+qDrawPlainRectÌ1024Í(QPainter *p, int x, int y, int w, int h, const QColor &, int lineWidth = 1, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawPlainRectÌ1024Í(QPainter *p, const QRect &r, const QColor &, int lineWidth = 1, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadeLineÌ1024Í(QPainter *p, int x1, int y1, int x2, int y2, const QPalette &pal, bool sunken = true, int lineWidth = 1, int midLineWidth = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadeLineÌ1024Í(QPainter *p, const QPoint &p1, const QPoint &p2, const QPalette &pal, bool sunken = true, int lineWidth = 1, int midLineWidth = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadePanelÌ1024Í(QPainter *p, int x, int y, int w, int h, const QPalette &pal, bool sunken = false, int lineWidth = 1, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadePanelÌ1024Í(QPainter *p, const QRect &r, const QPalette &pal, bool sunken = false, int lineWidth = 1, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadeRectÌ1024Í(QPainter *p, int x, int y, int w, int h, const QPalette &pal, bool sunken = false, int lineWidth = 1, int midLineWidth = 0, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawShadeRectÌ1024Í(QPainter *p, const QRect &r, const QPalette &pal, bool sunken = false, int lineWidth = 1, int midLineWidth = 0, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawWinButtonÌ1024Í(QPainter *p, int x, int y, int w, int h, const QPalette &pal, bool sunken = false, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawWinButtonÌ1024Í(QPainter *p, const QRect &r, const QPalette &pal, bool sunken = false, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawWinPanelÌ1024Í(QPainter *p, int x, int y, int w, int h, const QPalette &pal, bool sunken = false, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qDrawWinPanelÌ1024Í(QPainter *p, const QRect &r, const QPalette &pal, bool sunken = false, const QBrush *fill = 0)Ö0ÏQ_WIDGETS_EXPORT void
+qtHandlerÌ1024Í()ÎQErrorMessageÖ0ÏQErrorMessage *
+qt_mac_clear_status_textÌ1024Í(QAction *action)Ö0Ïfriend void
+qt_mac_emit_menuSignalsÌ1024Í(QMenu *menu, bool show)ÎQMenuÖ0Ïfriend void
+qt_mac_menu_emit_hoveredÌ1024Í(QMenu *menu, QAction *action)ÎQMenuÖ0Ïfriend void
+qt_qscrollbarStyleOptionÌ1024Í(QScrollBar *scrollBar)ÎQScrollBarÖ0Ïfriend Q_WIDGETS_EXPORT
+readÌ1024Í(QDataStream &in)ÎQTableWidgetItemÖ0Ïvirtual void
+readÌ1024Í(QDataStream &in)ÎQTreeWidgetItemÖ0Ïvirtual void
+rectÌ16Í()ÎQGraphicsWidgetÖ0Ïinline QRectF
+rectÌ1024Í(const QStyleOptionViewItem &option, const QModelIndex &index, int role)ÎQItemDelegateÖ0ÏQRect
+redoÌ1024Í()ÎQUndoGroupÖ0Ïvoid
+redoTextÌ1024Í()ÎQUndoGroupÖ0ÏQString
+redoTextChangedÌ1024Í(const QString &redoText)ÎQUndoGroupÖ0Ïvoid
+reexpandÌ1024Í()ÎQTreeViewÖ0Ïvoid
+refreshÌ1024Í()ÎQSplitterÖ0Ïvoid
+releaseShortcutÌ1024Í(int id)ÎQGraphicsWidgetÖ0Ïvoid
+reloadÌ1024Í()ÎQTextBrowserÖ0Ïvirtual void
+removeActionÌ1024Í(QAction *action)ÎQGraphicsWidgetÖ0Ïvoid
+removeAtÌ1024Í(int index)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+removeAtÌ1024Í(int index)ÎQGraphicsLayoutÖ0Ïvirtual void
+removeCellWidgetÌ16Í(int arow, int acolumn)ÎQTableWidgetÖ0Ïinline void
+removeCellWidgetÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïinline void
+removeChildÌ1024Í(QTreeWidgetItem *child)ÎQTreeWidgetItemÖ0Ïvoid
+removeColumnÌ1024Í(int column)ÎQTableWidgetÖ0Ïvoid
+removeItemWidgetÌ16Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïinline void
+removeItemWidgetÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïinline void
+removeRowÌ1024Í(int row)ÎQTableWidgetÖ0Ïvoid
+removeStackÌ1024Í(QUndoStack *stack)ÎQUndoGroupÖ0Ïvoid
+removeSubWindowÌ1024Í(QWidget *widget)ÎQMdiAreaÖ0Ïvoid
+removeTabÌ1024Í(int index)ÎQTabBarÖ0Ïvoid
+removeTabÌ1024Í(int index)ÎQTabWidgetÖ0Ïvoid
+repaintÌ1024Í()ÎQSplashScreenÖ0Ïvoid
+resendPrepareEventÌ1024Í()ÎQScrollerÖ0Ïvoid
+resetÌ1024Í()ÎQGraphicsItemAnimationÖ0Ïvoid
+resetÌ1024Í()ÎQProgressDialogÖ0Ïvoid
+resetÌ1024Í()ÎQTreeViewÖ0Ïvoid
+resetFieldGrowthPolicyÌ1024Í()ÎQFormLayoutÖ0Ïvoid
+resetFormAlignmentÌ1024Í()ÎQFormLayoutÖ0Ïvoid
+resetLabelAlignmentÌ1024Í()ÎQFormLayoutÖ0Ïvoid
+resetRowWrapPolicyÌ1024Í()ÎQFormLayoutÖ0Ïvoid
+resizeÌ16Í(qreal w, qreal h)ÎQGraphicsWidgetÖ0Ïinline void
+resizeÌ1024Í(const QSizeF &size)ÎQGraphicsWidgetÖ0Ïvoid
+resizeColumnToContentsÌ1024Í(int column)ÎQTreeViewÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *event)ÎQColumnViewÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *e)ÎQDesktopWidgetÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *re)ÎQDialÖ0Ïvoid
+resizeEventÌ1024Í(QGraphicsSceneResizeEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+resizeEventÌ1024Í(QResizeEvent *resizeEvent)ÎQMdiAreaÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *event)ÎQProgressDialogÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *)ÎQSplitterÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *)ÎQSplitterHandleÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *)ÎQTabBarÖ0Ïvoid
+resizeEventÌ1024Í(QResizeEvent *)ÎQTabWidgetÖ0Ïvoid
+resizeGripsVisibleÌ1024Í()ÎQColumnViewÖ0Ïbool
+restoreStateÌ1024Í(const QByteArray &state)ÎQSplitterÖ0Ïbool
+rightÌ64ÎQTableWidgetSelectionRangeÖ0Ïint
+rightColumnÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+rootIsDecoratedÌ1024Í()ÎQTreeViewÖ0Ïbool
+rotationAngleÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+rotationAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+rotationListÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQList
+rowÌ1024Í(const QTableWidgetItem *item)ÎQTableWidgetÖ0Ïint
+rowÌ16Í()ÎQTableWidgetItemÖ0Ïinline int
+rowÌ1024Í()ÎQTableWidgetItemÖ0Ïinline int
+rowCountÌ1024Í()ÎQFormLayoutÖ0Ïint
+rowCountÌ1024Í()ÎQTableWidgetÖ0Ïint
+rowCountÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+rowHeightÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïint
+rowWrapPolicyÌ1024Í()ÎQFormLayoutÖ0ÏRowWrapPolicy
+rowsAboutToBeRemovedÌ1024Í(const QModelIndex &parent, int start, int end)ÎQTreeViewÖ0Ïvoid
+rowsInsertedÌ1024Í(const QModelIndex &parent, int start, int end)ÎQColumnViewÖ0Ïvoid
+rowsInsertedÌ1024Í(const QModelIndex &parent, int start, int end)ÎQTreeViewÖ0Ïvoid
+rowsRemovedÌ1024Í(const QModelIndex &parent, int first, int last)ÎQTreeViewÖ0Ïvoid
+rttiÌ64ÎQTableWidgetItemÖ0Ïint
+rttiÌ64ÎQTreeWidgetItemÖ0Ïint
+saveStateÌ1024Í()ÎQSplitterÖ0ÏQByteArray
+scaleFactorÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+scaleListÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQList
+sceneEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïbool
+screenÌ1024Í(int screen = -1)ÎQDesktopWidgetÖ0ÏQWidget *
+screenCountÌ16Í()ÎQDesktopWidgetÖ0Ïinline int
+screenCountÌ1024Í()ÎQDesktopWidgetÖ0Ïint
+screenCountChangedÌ1024Í(int)ÎQDesktopWidgetÖ0Ïvoid
+screenGeometryÌ16Í(const QPoint &point)ÎQDesktopWidgetÖ0Ïconst QRect
+screenGeometryÌ1024Í(int screen = -1)ÎQDesktopWidgetÖ0Ïconst QRect
+screenGeometryÌ1024Í(const QWidget *widget)ÎQDesktopWidgetÖ0Ïconst QRect
+screenNumberÌ1024Í(const QWidget *widget = 0)ÎQDesktopWidgetÖ0Ïint
+screenNumberÌ1024Í(const QPoint &)ÎQDesktopWidgetÖ0Ïint
+scrollContentsByÌ1024Í(int dx, int dy)ÎQColumnViewÖ0Ïvoid
+scrollContentsByÌ1024Í(int dx, int dy)ÎQMdiAreaÖ0Ïvoid
+scrollContentsByÌ1024Í(int dx, int dy)ÎQTreeViewÖ0Ïvoid
+scrollMetricÌ1024Í(ScrollMetric metric)ÎQScrollerPropertiesÖ0ÏQVariant
+scrollToÌ1024Í(const QModelIndex &index, ScrollHint hint = EnsureVisible)ÎQColumnViewÖ0Ïvoid
+scrollToÌ1024Í(const QPointF &pos)ÎQScrollerÖ0Ïvoid
+scrollToÌ1024Í(const QPointF &pos, int scrollTime)ÎQScrollerÖ0Ïvoid
+scrollToÌ1024Í(const QModelIndex &index, ScrollHint hint = EnsureVisible)ÎQTreeViewÖ0Ïvoid
+scrollerÌ1024Í(QObject *target)ÎQScrollerÖ0ÏQScroller *
+scrollerÌ1024Í(const QObject *target)ÎQScrollerÖ0Ïconst QScroller *
+scrollerPropertiesÌ1024Í()ÎQScrollerÖ0ÏQScrollerProperties
+scrollerPropertiesChangedÌ1024Í(const QScrollerProperties &)ÎQScrollerÖ0Ïvoid
+searchPathsÌ1024Í()ÎQTextBrowserÖ0ÏQStringList
+selectAllÌ1024Í()ÎQColumnViewÖ0Ïvoid
+selectAllÌ1024Í()ÎQTreeViewÖ0Ïvoid
+selectedÌ1024Í(const QPixmap &pixmap, const QPalette &palette, bool enabled)ÎQItemDelegateÖ0ÏQPixmap *
+selectedIndexesÌ1024Í()ÎQTreeViewÖ0ÏQModelIndexList
+selectedItemsÌ1024Í()ÎQTableWidgetÖ0ÏQList
+selectedItemsÌ1024Í()ÎQTreeWidgetÖ0ÏQList
+selectedRangesÌ1024Í()ÎQTableWidgetÖ0ÏQList
+selectionBehaviorOnRemoveÌ1024Í()ÎQTabBarÖ0ÏSelectionBehavior
+selectionChangedÌ1024Í(const QItemSelection &selected, const QItemSelection &deselected)ÎQTreeViewÖ0Ïvoid
+separatorsCollapsibleÌ1024Í()ÎQMenuÖ0Ïbool
+setAccelerationÌ1024Í(qreal value)ÎQPanGestureÖ0Ïvoid
+setAcceptedÌ16Í(bool accepted)ÎQGestureEventÖ0Ïinline void
+setAcceptedÌ1024Í(QGesture *, bool)ÎQGestureEventÖ0Ïvoid
+setAcceptedÌ1024Í(Qt::GestureType, bool)ÎQGestureEventÖ0Ïvoid
+setActionGroupÌ1024Í(QActionGroup *group)ÎQActionÖ0Ïvoid
+setActivationOrderÌ1024Í(WindowOrder order)ÎQMdiAreaÖ0Ïvoid
+setActiveActionÌ1024Í(QAction *act)ÎQMenuÖ0Ïvoid
+setActiveStackÌ1024Í(QUndoStack *stack)ÎQUndoGroupÖ0Ïvoid
+setAlignmentÌ1024Í(Qt::Alignment alignment)ÎQProgressBarÖ0Ïvoid
+setAllColumnsShowFocusÌ1024Í(bool enable)ÎQTreeViewÖ0Ïvoid
+setAllowedAreasÌ1024Í(Qt::ToolBarAreas areas)ÎQToolBarÖ0Ïvoid
+setAnimatedÌ1024Í(bool enable)ÎQTreeViewÖ0Ïvoid
+setAttributeÌ1024Í(Qt::WidgetAttribute attribute, bool on = true)ÎQGraphicsWidgetÖ0Ïvoid
+setAutoCloseÌ1024Í(bool close)ÎQProgressDialogÖ0Ïvoid
+setAutoDefaultÌ1024Í(bool)ÎQPushButtonÖ0Ïvoid
+setAutoExpandDelayÌ1024Í(int delay)ÎQTreeViewÖ0Ïvoid
+setAutoFillBackgroundÌ1024Í(bool enabled)ÎQGraphicsWidgetÖ0Ïvoid
+setAutoRepeatÌ1024Í(bool)ÎQActionÖ0Ïvoid
+setAutoResetÌ1024Í(bool reset)ÎQProgressDialogÖ0Ïvoid
+setBackgroundÌ1024Í(const QBrush &background)ÎQMdiAreaÖ0Ïvoid
+setBackgroundÌ16Í(const QBrush &brush)ÎQTableWidgetItemÖ0Ïinline void
+setBackgroundÌ16Í(int column, const QBrush &brush)ÎQTreeWidgetItemÖ0Ïinline void
+setBackgroundColorÌ16Í(const QColor &color)ÎQTableWidgetItemÖ0Ïinline void
+setBackgroundColorÌ16Í(int column, const QColor &color)ÎQTreeWidgetItemÖ0Ïinline void
+setBarÌ1024Í(QProgressBar *bar)ÎQProgressDialogÖ0Ïvoid
+setBlurHintsÌ1024Í(BlurHints hints)ÎQGraphicsBlurEffectÖ0Ïvoid
+setBlurRadiusÌ1024Í(qreal blurRadius)ÎQGraphicsDropShadowEffectÖ0Ïvoid
+setButtonÌ1024Í(Qt::MouseButton button)ÎQMouseEventTransitionÖ0Ïvoid
+setCancelButtonÌ1024Í(QPushButton *button)ÎQProgressDialogÖ0Ïvoid
+setCancelButtonTextÌ1024Í(const QString &text)ÎQProgressDialogÖ0Ïvoid
+setCellWidgetÌ1024Í(int row, int column, QWidget *widget)ÎQTableWidgetÖ0Ïvoid
+setCenterPointÌ1024Í(const QPointF &value)ÎQPinchGestureÖ0Ïvoid
+setChangeFlagsÌ1024Í(ChangeFlags value)ÎQPinchGestureÖ0Ïvoid
+setCheckStateÌ1024Í(Qt::CheckState state)ÎQCheckBoxÖ0Ïvoid
+setCheckStateÌ16Í(Qt::CheckState state)ÎQTableWidgetItemÖ0Ïinline void
+setCheckStateÌ16Í(int column, Qt::CheckState state)ÎQTreeWidgetItemÖ0Ïinline void
+setCheckableÌ1024Í(bool)ÎQActionÖ0Ïvoid
+setCheckedÌ1024Í(bool)Ö0Ïvoid
+setChildIndicatorPolicyÌ1024Í(QTreeWidgetItem::ChildIndicatorPolicy policy)ÎQTreeWidgetItemÖ0Ïvoid
+setChildrenCollapsibleÌ1024Í(bool)ÎQSplitterÖ0Ïvoid
+setCleanIconÌ1024Í(const QIcon &icon)ÎQUndoViewÖ0Ïvoid
+setClippingÌ1024Í(bool clip)ÎQItemDelegateÖ0Ïvoid
+setCocoaViewÌ1024Í(void *cocoaViewToWrap)ÎQMacCocoaViewContainerÖ0Ïvoid
+setCollapsibleÌ1024Í(int index, bool)ÎQSplitterÖ0Ïvoid
+setColorÌ1024Í(const QColor &color)ÎQGraphicsDropShadowEffectÖ0Ïvoid
+setColumnCountÌ1024Í(int columns)ÎQTableWidgetÖ0Ïvoid
+setColumnCountÌ1024Í(int columns)ÎQTreeWidgetÖ0Ïvoid
+setColumnHiddenÌ1024Í(int column, bool hide)ÎQTreeViewÖ0Ïvoid
+setColumnWidthÌ1024Í(int column, int width)ÎQTreeViewÖ0Ïvoid
+setColumnWidthsÌ1024Í(const QList<int> &list)ÎQColumnViewÖ0Ïvoid
+setContentsMarginsÌ1024Í(qreal left, qreal top, qreal right, qreal bottom)ÎQGraphicsLayoutÖ0Ïvoid
+setContentsMarginsÌ1024Í(qreal left, qreal top, qreal right, qreal bottom)ÎQGraphicsWidgetÖ0Ïvoid
+setControlTypeÌ1024Í(ControlType type)ÎQSizePolicyÖ0Ïvoid
+setCornerWidgetÌ1024Í(QWidget * w, Qt::Corner corner = Qt::TopRightCorner)ÎQTabWidgetÖ0Ïvoid
+setCurrentCellÌ1024Í(int row, int column)ÎQTableWidgetÖ0Ïvoid
+setCurrentCellÌ1024Í(int row, int column, QItemSelectionModel::SelectionFlags command)ÎQTableWidgetÖ0Ïvoid
+setCurrentItemÌ1024Í(QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+setCurrentItemÌ1024Í(QTableWidgetItem *item, QItemSelectionModel::SelectionFlags command)ÎQTableWidgetÖ0Ïvoid
+setCurrentItemÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+setCurrentItemÌ1024Í(QTreeWidgetItem *item, int column)ÎQTreeWidgetÖ0Ïvoid
+setCurrentItemÌ1024Í(QTreeWidgetItem *item, int column, QItemSelectionModel::SelectionFlags command)ÎQTreeWidgetÖ0Ïvoid
+setCurrentWidgetÌ1024Í(QWidget *widget)ÎQTabWidgetÖ0Ïvoid
+setDataÌ1024Í(const QVariant &var)ÎQActionÖ0Ïvoid
+setDataÌ1024Í(int role, const QVariant &value)ÎQTableWidgetItemÖ0Ïvirtual void
+setDataÌ1024Í(int column, int role, const QVariant &value)ÎQTreeWidgetItemÖ0Ïvirtual void
+setDefaultÌ1024Í(bool)ÎQPushButtonÖ0Ïvoid
+setDefaultActionÌ1024Í(QAction *)ÎQMenuÖ0Ïvoid
+setDefaultScrollerPropertiesÌ1024Í(const QScrollerProperties &sp)ÎQScrollerPropertiesÖ0Ïvoid
+setDisabledÌ16Í(bool b)Ö0Ïinline void
+setDisabledÌ16Í(bool disabled)ÎQTreeWidgetItemÖ0Ïinline void
+setDisabledÌ1024Í(bool disabled)ÎQTreeWidgetItemÖ0Ïinline void
+setDocumentModeÌ1024Í(bool enabled)ÎQMdiAreaÖ0Ïvoid
+setDocumentModeÌ1024Í(bool set)ÎQTabBarÖ0Ïvoid
+setDocumentModeÌ1024Í(bool set)ÎQTabWidgetÖ0Ïvoid
+setDrawBaseÌ1024Í(bool drawTheBase)ÎQTabBarÖ0Ïvoid
+setEditorDataÌ1024Í(QWidget *editor, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual void
+setEditorDataÌ1024Í(QWidget *editor, const QModelIndex &index)ÎQItemDelegateÖ0Ïvoid
+setElideModeÌ1024Í(Qt::TextElideMode)ÎQTabBarÖ0Ïvoid
+setElideModeÌ1024Í(Qt::TextElideMode)ÎQTabWidgetÖ0Ïvoid
+setEmptyLabelÌ1024Í(const QString &label)ÎQUndoViewÖ0Ïvoid
+setEnabledÌ1024Í(bool)Ö0Ïvoid
+setExpandedÌ1024Í(const QModelIndex &index, bool expand)ÎQTreeViewÖ0Ïvoid
+setExpandedÌ16Í(bool aexpand)ÎQTreeWidgetItemÖ0Ïinline void
+setExpandedÌ1024Í(bool expand)ÎQTreeWidgetItemÖ0Ïinline void
+setExpandingÌ1024Í(bool enabled)ÎQTabBarÖ0Ïvoid
+setExpandsOnDoubleClickÌ1024Í(bool enable)ÎQTreeViewÖ0Ïvoid
+setFieldGrowthPolicyÌ1024Í(FieldGrowthPolicy policy)ÎQFormLayoutÖ0Ïvoid
+setFirstColumnSpannedÌ1024Í(int row, const QModelIndex &parent, bool span)ÎQTreeViewÖ0Ïvoid
+setFirstColumnSpannedÌ16Í(bool aspan)ÎQTreeWidgetItemÖ0Ïinline void
+setFirstColumnSpannedÌ1024Í(bool span)ÎQTreeWidgetItemÖ0Ïinline void
+setFirstItemColumnSpannedÌ1024Í(const QTreeWidgetItem *item, bool span)ÎQTreeWidgetÖ0Ïvoid
+setFlagsÌ1024Í(Qt::ItemFlags flags)ÎQTableWidgetItemÖ0Ïvoid
+setFlagsÌ1024Í(Qt::ItemFlags flags)ÎQTreeWidgetItemÖ0Ïvoid
+setFlatÌ1024Í(bool)ÎQPushButtonÖ0Ïvoid
+setFloatableÌ1024Í(bool floatable)ÎQToolBarÖ0Ïvoid
+setFocusPolicyÌ1024Í(Qt::FocusPolicy policy)ÎQGraphicsWidgetÖ0Ïvoid
+setFontÌ1024Í(const QFont &font)ÎQActionÖ0Ïvoid
+setFontÌ1024Í(const QFont &font)ÎQGraphicsWidgetÖ0Ïvoid
+setFontÌ16Í(const QFont &afont)ÎQTableWidgetItemÖ0Ïinline void
+setFontÌ1024Í(const QFont &font)ÎQTableWidgetItemÖ0Ïinline void
+setFontÌ16Í(int column, const QFont &afont)ÎQTreeWidgetItemÖ0Ïinline void
+setFontÌ1024Í(int column, const QFont &font)ÎQTreeWidgetItemÖ0Ïinline void
+setForegroundÌ16Í(const QBrush &brush)ÎQTableWidgetItemÖ0Ïinline void
+setForegroundÌ16Í(int column, const QBrush &brush)ÎQTreeWidgetItemÖ0Ïinline void
+setFormAlignmentÌ1024Í(Qt::Alignment alignment)ÎQFormLayoutÖ0Ïvoid
+setFormatÌ1024Í(const QString &format)ÎQProgressBarÖ0Ïvoid
+setGeometryÌ1024Í(const QRect &rect)ÎQFormLayoutÖ0Ïvoid
+setGeometryÌ1024Í(const QRectF &rect)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+setGeometryÌ16Í(qreal ax, qreal ay, qreal aw, qreal ah)ÎQGraphicsWidgetÖ0Ïinline void
+setGeometryÌ1024Í(const QRectF &rect)ÎQGraphicsWidgetÖ0Ïvoid
+setGeometryÌ1024Í(qreal x, qreal y, qreal w, qreal h)ÎQGraphicsWidgetÖ0Ïinline void
+setGestureCancelPolicyÌ1024Í(GestureCancelPolicy policy)ÎQGestureÖ0Ïvoid
+setGroupÌ1024Í(QUndoGroup *group)ÎQUndoViewÖ0Ïvoid
+setHandleWidthÌ1024Í(int)ÎQSplitterÖ0Ïvoid
+setHeaderÌ1024Í(QHeaderView *header)ÎQTreeViewÖ0Ïvoid
+setHeaderHiddenÌ1024Í(bool hide)ÎQTreeViewÖ0Ïvoid
+setHeaderItemÌ1024Í(QTreeWidgetItem *item)ÎQTreeWidgetÖ0Ïvoid
+setHeaderLabelÌ16Í(const QString &alabel)ÎQTreeWidgetÖ0Ïinline void
+setHeaderLabelÌ1024Í(const QString &label)ÎQTreeWidgetÖ0Ïinline void
+setHeaderLabelsÌ1024Í(const QStringList &labels)ÎQTreeWidgetÖ0Ïvoid
+setHeightForWidthÌ16Í(bool b)ÎQSizePolicyÖ0Ïvoid
+setHiddenÌ16Í(bool ahide)ÎQTreeWidgetItemÖ0Ïinline void
+setHiddenÌ1024Í(bool hide)ÎQTreeWidgetItemÖ0Ïinline void
+setHitTestPathÌ1024Í(const QPainterPath &path)ÎQMouseEventTransitionÖ0Ïvoid
+setHorizontalHeaderItemÌ1024Í(int column, QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+setHorizontalHeaderLabelsÌ1024Í(const QStringList &labels)ÎQTableWidgetÖ0Ïvoid
+setHorizontalPolicyÌ16Í(Policy d)ÎQSizePolicyÖ0Ïvoid
+setHorizontalSpacingÌ1024Í(int spacing)ÎQFormLayoutÖ0Ïvoid
+setHorizontalSpacingÌ1024Í(qreal spacing)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+setHorizontalStretchÌ16Í(int stretchFactor)ÎQSizePolicyÖ0Ïvoid
+setHotSpotÌ1024Í(const QPointF &value)ÎQGestureÖ0Ïvoid
+setIconÌ1024Í(const QIcon &icon)ÎQActionÖ0Ïvoid
+setIconÌ1024Í(const QIcon &icon)ÎQMenuÖ0Ïvoid
+setIconÌ16Í(const QIcon &aicon)ÎQTableWidgetItemÖ0Ïinline void
+setIconÌ1024Í(const QIcon &icon)ÎQTableWidgetItemÖ0Ïinline void
+setIconÌ16Í(int column, const QIcon &aicon)ÎQTreeWidgetItemÖ0Ïinline void
+setIconÌ1024Í(int column, const QIcon &icon)ÎQTreeWidgetItemÖ0Ïinline void
+setIconSizeÌ1024Í(const QSize &size)ÎQTabBarÖ0Ïvoid
+setIconSizeÌ1024Í(const QSize &size)ÎQTabWidgetÖ0Ïvoid
+setIconTextÌ1024Í(const QString &text)ÎQActionÖ0Ïvoid
+setIconVisibleInMenuÌ1024Í(bool visible)ÎQActionÖ0Ïvoid
+setIndentationÌ1024Í(int i)ÎQTreeViewÖ0Ïvoid
+setInstantInvalidatePropagationÌ1024Í(bool enable)ÎQGraphicsLayoutÖ0Ïvoid
+setInvertedAppearanceÌ1024Í(bool invert)ÎQProgressBarÖ0Ïvoid
+setItemÌ1024Í(int row, ItemRole role, QLayoutItem *item)ÎQFormLayoutÖ0Ïvoid
+setItemÌ1024Í(QGraphicsItem *item)ÎQGraphicsItemAnimationÖ0Ïvoid
+setItemÌ1024Í(int row, int column, QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+setItemEditorFactoryÌ1024Í(QItemEditorFactory *factory)ÎQItemDelegateÖ0Ïvoid
+setItemExpandedÌ1024Í(const QTreeWidgetItem *item, bool expand)ÎQTreeWidgetÖ0Ïvoid
+setItemHiddenÌ1024Í(const QTreeWidgetItem *item, bool hide)ÎQTreeWidgetÖ0Ïvoid
+setItemPrototypeÌ1024Í(const QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+setItemSelectedÌ1024Í(const QTableWidgetItem *item, bool select)ÎQTableWidgetÖ0Ïvoid
+setItemSelectedÌ1024Í(const QTreeWidgetItem *item, bool select)ÎQTreeWidgetÖ0Ïvoid
+setItemWidgetÌ1024Í(QTreeWidgetItem *item, int column, QWidget *widget)ÎQTreeWidgetÖ0Ïvoid
+setItemsExpandableÌ1024Í(bool enable)ÎQTreeViewÖ0Ïvoid
+setLabelÌ1024Í(QLabel *label)ÎQProgressDialogÖ0Ïvoid
+setLabelAlignmentÌ1024Í(Qt::Alignment alignment)ÎQFormLayoutÖ0Ïvoid
+setLabelTextÌ1024Í(const QString &text)ÎQProgressDialogÖ0Ïvoid
+setLastCenterPointÌ1024Í(const QPointF &value)ÎQPinchGestureÖ0Ïvoid
+setLastOffsetÌ1024Í(const QPointF &value)ÎQPanGestureÖ0Ïvoid
+setLastRotationAngleÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setLastScaleFactorÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setLayoutÌ1024Í(int row, ItemRole role, QLayout *layout)ÎQFormLayoutÖ0Ïvoid
+setLayoutÌ1024Í(QGraphicsLayout *layout)ÎQGraphicsWidgetÖ0Ïvoid
+setLayoutDirectionÌ1024Í(Qt::LayoutDirection direction)ÎQGraphicsWidgetÖ0Ïvoid
+setMaximumÌ1024Í(int maximum)ÎQProgressBarÖ0Ïvoid
+setMaximumÌ1024Í(int maximum)ÎQProgressDialogÖ0Ïvoid
+setMenuÌ1024Í(QMenu *menu)ÎQActionÖ0Ïvoid
+setMenuÌ1024Í(QMenu* menu)ÎQPushButtonÖ0Ïvoid
+setMenuRoleÌ1024Í(MenuRole menuRole)ÎQActionÖ0Ïvoid
+setMinimumÌ1024Í(int minimum)ÎQProgressBarÖ0Ïvoid
+setMinimumÌ1024Í(int minimum)ÎQProgressDialogÖ0Ïvoid
+setMinimumDurationÌ1024Í(int ms)ÎQProgressDialogÖ0Ïvoid
+setModelÌ1024Í(QAbstractItemModel *model)ÎQColumnViewÖ0Ïvoid
+setModelÌ1024Í(QAbstractItemModel *model)ÎQTableWidgetÖ0Ïvoid
+setModelÌ1024Í(QAbstractItemModel *model)ÎQTreeViewÖ0Ïvoid
+setModelÌ1024Í(QAbstractItemModel *model)ÎQTreeWidgetÖ0Ïvoid
+setModelDataÌ1024Í(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual void
+setModelDataÌ1024Í(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index)ÎQItemDelegateÖ0Ïvoid
+setModifierMaskÌ1024Í(Qt::KeyboardModifiers modifiers)ÎQMouseEventTransitionÖ0Ïvoid
+setMovableÌ1024Í(bool movable)ÎQTabBarÖ0Ïvoid
+setMovableÌ1024Í(bool movable)ÎQTabWidgetÖ0Ïvoid
+setMovableÌ1024Í(bool movable)ÎQToolBarÖ0Ïvoid
+setNoReplayForÌ1024Í(QWidget *widget)ÎQMenuÖ0Ïvoid
+setNotchTargetÌ1024Í(double target)ÎQDialÖ0Ïvoid
+setOffsetÌ16Í(qreal dx, qreal dy)ÎQGraphicsDropShadowEffectÖ0Ïinline void
+setOffsetÌ16Í(qreal d)ÎQGraphicsDropShadowEffectÖ0Ïinline void
+setOffsetÌ1024Í(const QPointF &value)ÎQPanGestureÖ0Ïvoid
+setOpacityMaskÌ1024Í(const QBrush &mask)ÎQGraphicsOpacityEffectÖ0Ïvoid
+setOpaqueResizeÌ1024Í(bool opaque = true)ÎQSplitterÖ0Ïvoid
+setOpenExternalLinksÌ1024Í(bool open)ÎQTextBrowserÖ0Ïvoid
+setOpenLinksÌ1024Í(bool open)ÎQTextBrowserÖ0Ïvoid
+setOptionÌ1024Í(AreaOption option, bool on = true)ÎQMdiAreaÖ0Ïvoid
+setOptionsÌ1024Í(const QModelIndex &index, const QStyleOptionViewItem &option)ÎQItemDelegateÖ0ÏQStyleOptionViewItem
+setOrientationÌ1024Í(Qt::Orientation)ÎQProgressBarÖ0Ïvoid
+setOrientationÌ1024Í(Qt::Orientation)ÎQSplitterÖ0Ïvoid
+setOrientationÌ1024Í(Qt::Orientation o)ÎQSplitterHandleÖ0Ïvoid
+setOrientationÌ1024Í(Qt::Orientation orientation)ÎQToolBarÖ0Ïvoid
+setPaletteÌ1024Í(const QPalette &palette)ÎQGraphicsWidgetÖ0Ïvoid
+setPixmapÌ1024Í(const QPixmap &pixmap)ÎQSplashScreenÖ0Ïvoid
+setPosAtÌ1024Í(qreal step, const QPointF &pos)ÎQGraphicsItemAnimationÖ0Ïvoid
+setPositionÌ1024Í(const QPointF &pos)ÎQTapAndHoldGestureÖ0Ïvoid
+setPositionÌ1024Í(const QPointF &pos)ÎQTapGestureÖ0Ïvoid
+setPreviewWidgetÌ1024Í(QWidget *widget)ÎQColumnViewÖ0Ïvoid
+setPriorityÌ1024Í(Priority priority)ÎQActionÖ0Ïvoid
+setPropertyÌ1024Í(PrintEnginePropertyKey key, const QVariant &value)ÎQPrintEngineÖ0Ïvirtual void
+setRangeÌ1024Í(int minimum, int maximum)ÎQProgressBarÖ0Ïvoid
+setRangeÌ1024Í(int minimum, int maximum)ÎQProgressDialogÖ0Ïvoid
+setRangeSelectedÌ1024Í(const QTableWidgetSelectionRange &range, bool select)ÎQTableWidgetÖ0Ïvoid
+setResizeGripsVisibleÌ1024Í(bool visible)ÎQColumnViewÖ0Ïvoid
+setRootIndexÌ1024Í(const QModelIndex &index)ÎQColumnViewÖ0Ïvoid
+setRootIndexÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïvoid
+setRootIsDecoratedÌ1024Í(bool show)ÎQTreeViewÖ0Ïvoid
+setRotationAngleÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setRotationAtÌ1024Í(qreal step, qreal angle)ÎQGraphicsItemAnimationÖ0Ïvoid
+setRowCountÌ1024Í(int rows)ÎQTableWidgetÖ0Ïvoid
+setRowHiddenÌ1024Í(int row, const QModelIndex &parent, bool hide)ÎQTreeViewÖ0Ïvoid
+setRowWrapPolicyÌ1024Í(RowWrapPolicy policy)ÎQFormLayoutÖ0Ïvoid
+setRubberBandÌ1024Í(int position)ÎQSplitterÖ0Ïvoid
+setScaleAtÌ1024Í(qreal step, qreal sx, qreal sy)ÎQGraphicsItemAnimationÖ0Ïvoid
+setScaleFactorÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setScrollMetricÌ1024Í(ScrollMetric metric, const QVariant &value)ÎQScrollerPropertiesÖ0Ïvoid
+setSearchPathsÌ1024Í(const QStringList &paths)ÎQTextBrowserÖ0Ïvoid
+setSelectedÌ16Í(bool aselect)ÎQTableWidgetItemÖ0Ïinline void
+setSelectedÌ1024Í(bool select)ÎQTableWidgetItemÖ0Ïinline void
+setSelectedÌ16Í(bool aselect)ÎQTreeWidgetItemÖ0Ïinline void
+setSelectedÌ1024Í(bool select)ÎQTreeWidgetItemÖ0Ïinline void
+setSelectionÌ1024Í(const QRect & rect, QItemSelectionModel::SelectionFlags command)ÎQColumnViewÖ0Ïvoid
+setSelectionÌ1024Í(const QRect &rect, QItemSelectionModel::SelectionFlags command)ÎQTreeViewÖ0Ïvoid
+setSelectionBehaviorOnRemoveÌ1024Í(SelectionBehavior behavior)ÎQTabBarÖ0Ïvoid
+setSelectionModelÌ1024Í(QItemSelectionModel * selectionModel)ÎQColumnViewÖ0Ïvoid
+setSelectionModelÌ1024Í(QItemSelectionModel *selectionModel)ÎQTreeViewÖ0Ïvoid
+setSelectionModelÌ1024Í(QItemSelectionModel *selectionModel)ÎQTreeWidgetÖ0Ïvoid
+setSeparatorÌ1024Í(bool b)ÎQActionÖ0Ïvoid
+setSeparatorsCollapsibleÌ1024Í(bool collapse)ÎQMenuÖ0Ïvoid
+setShapeÌ1024Í(Shape shape)ÎQTabBarÖ0Ïvoid
+setShearAtÌ1024Í(qreal step, qreal sh, qreal sv)ÎQGraphicsItemAnimationÖ0Ïvoid
+setShortcutÌ1024Í(const QKeySequence &shortcut)ÎQActionÖ0Ïvoid
+setShortcutAutoRepeatÌ1024Í(int id, bool enabled = true)ÎQGraphicsWidgetÖ0Ïvoid
+setShortcutContextÌ1024Í(Qt::ShortcutContext context)ÎQActionÖ0Ïvoid
+setShortcutEnabledÌ1024Í(int id, bool enabled = true)ÎQGraphicsWidgetÖ0Ïvoid
+setShortcutsÌ1024Í(const QList<QKeySequence> &shortcuts)ÎQActionÖ0Ïvoid
+setShortcutsÌ1024Í(QKeySequence::StandardKey)ÎQActionÖ0Ïvoid
+setSizeHintÌ16Í(const QSize &size)ÎQTableWidgetItemÖ0Ïinline void
+setSizeHintÌ16Í(int column, const QSize &size)ÎQTreeWidgetItemÖ0Ïinline void
+setSizePolicyÌ1024Í(QSizePolicy::Policy policy)ÎQGraphicsAnchorÖ0Ïvoid
+setSizesÌ1024Í(const QList<int> &list)ÎQSplitterÖ0Ïvoid
+setSnapPositionsXÌ1024Í( const QList<qreal> &positions )ÎQScrollerÖ0Ïvoid
+setSnapPositionsXÌ1024Í( qreal first, qreal interval )ÎQScrollerÖ0Ïvoid
+setSnapPositionsYÌ1024Í( const QList<qreal> &positions )ÎQScrollerÖ0Ïvoid
+setSnapPositionsYÌ1024Í( qreal first, qreal interval )ÎQScrollerÖ0Ïvoid
+setSortingEnabledÌ1024Í(bool enable)ÎQTableWidgetÖ0Ïvoid
+setSortingEnabledÌ1024Í(bool enable)ÎQTreeViewÖ0Ïvoid
+setSpacingÌ1024Í(int)ÎQFormLayoutÖ0Ïvoid
+setSpacingÌ1024Í(qreal spacing)ÎQGraphicsAnchorÖ0Ïvoid
+setSpacingÌ1024Í(qreal spacing)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+setStartCenterPointÌ1024Í(const QPointF &value)ÎQPinchGestureÖ0Ïvoid
+setStatusTipÌ1024Í(const QString &statusTip)ÎQActionÖ0Ïvoid
+setStatusTipÌ16Í(const QString &astatusTip)ÎQTableWidgetItemÖ0Ïinline void
+setStatusTipÌ1024Í(const QString &statusTip)ÎQTableWidgetItemÖ0Ïinline void
+setStatusTipÌ16Í(int column, const QString &astatusTip)ÎQTreeWidgetItemÖ0Ïinline void
+setStatusTipÌ1024Í(int column, const QString &statusTip)ÎQTreeWidgetItemÖ0Ïinline void
+setStrengthÌ1024Í(qreal strength)ÎQGraphicsColorizeEffectÖ0Ïvoid
+setStretchFactorÌ1024Í(int index, int stretch)ÎQSplitterÖ0Ïvoid
+setStyleÌ1024Í(QStyle *style)ÎQGraphicsWidgetÖ0Ïvoid
+setSwipeAngleÌ1024Í(qreal value)ÎQSwipeGestureÖ0Ïvoid
+setTabBarÌ1024Í(QTabBar *)ÎQTabWidgetÖ0Ïvoid
+setTabButtonÌ1024Í(int index, ButtonPosition position, QWidget *widget)ÎQTabBarÖ0Ïvoid
+setTabDataÌ1024Í(int index, const QVariant &data)ÎQTabBarÖ0Ïvoid
+setTabEnabledÌ1024Í(int index, bool)ÎQTabBarÖ0Ïvoid
+setTabEnabledÌ1024Í(int index, bool)ÎQTabWidgetÖ0Ïvoid
+setTabIconÌ1024Í(int index, const QIcon &icon)ÎQTabBarÖ0Ïvoid
+setTabIconÌ1024Í(int index, const QIcon & icon)ÎQTabWidgetÖ0Ïvoid
+setTabOrderÌ1024Í(QGraphicsWidget *first, QGraphicsWidget *second)ÎQGraphicsWidgetÖ0Ïvoid
+setTabPositionÌ1024Í(QTabWidget::TabPosition position)ÎQMdiAreaÖ0Ïvoid
+setTabPositionÌ1024Í(TabPosition)ÎQTabWidgetÖ0Ïvoid
+setTabShapeÌ1024Í(QTabWidget::TabShape shape)ÎQMdiAreaÖ0Ïvoid
+setTabShapeÌ1024Í(TabShape s)ÎQTabWidgetÖ0Ïvoid
+setTabTextÌ1024Í(int index, const QString &text)ÎQTabBarÖ0Ïvoid
+setTabTextÌ1024Í(int index, const QString &)ÎQTabWidgetÖ0Ïvoid
+setTabTextColorÌ1024Í(int index, const QColor &color)ÎQTabBarÖ0Ïvoid
+setTabToolTipÌ1024Í(int index, const QString &tip)ÎQTabBarÖ0Ïvoid
+setTabToolTipÌ1024Í(int index, const QString & tip)ÎQTabWidgetÖ0Ïvoid
+setTabWhatsThisÌ1024Í(int index, const QString &text)ÎQTabBarÖ0Ïvoid
+setTabWhatsThisÌ1024Í(int index, const QString &text)ÎQTabWidgetÖ0Ïvoid
+setTabsClosableÌ1024Í(bool closable)ÎQMdiAreaÖ0Ïvoid
+setTabsClosableÌ1024Í(bool closable)ÎQTabBarÖ0Ïvoid
+setTabsClosableÌ1024Í(bool closeable)ÎQTabWidgetÖ0Ïvoid
+setTabsMovableÌ1024Í(bool movable)ÎQMdiAreaÖ0Ïvoid
+setTearOffEnabledÌ1024Í(bool)ÎQMenuÖ0Ïvoid
+setTextÌ1024Í(const QString &text)ÎQActionÖ0Ïvoid
+setTextÌ16Í(const QString &atext)ÎQTableWidgetItemÖ0Ïinline void
+setTextÌ1024Í(const QString &text)ÎQTableWidgetItemÖ0Ïinline void
+setTextÌ16Í(int column, const QString &atext)ÎQTreeWidgetItemÖ0Ïinline void
+setTextÌ1024Í(int column, const QString &text)ÎQTreeWidgetItemÖ0Ïinline void
+setTextAlignmentÌ16Í(int alignment)ÎQTableWidgetItemÖ0Ïinline void
+setTextAlignmentÌ16Í(int column, int alignment)ÎQTreeWidgetItemÖ0Ïinline void
+setTextColorÌ16Í(const QColor &color)ÎQTableWidgetItemÖ0Ïinline void
+setTextColorÌ16Í(int column, const QColor &color)ÎQTreeWidgetItemÖ0Ïinline void
+setTextDirectionÌ1024Í(QProgressBar::Direction textDirection)ÎQProgressBarÖ0Ïvoid
+setTextVisibleÌ1024Í(bool visible)ÎQProgressBarÖ0Ïvoid
+setTimeLineÌ1024Í(QTimeLine *timeLine)ÎQGraphicsItemAnimationÖ0Ïvoid
+setTimeoutÌ1024Í(int msecs)ÎQTapAndHoldGestureÖ0Ïvoid
+setTitleÌ1024Í(const QString &title)ÎQMenuÖ0Ïvoid
+setToolButtonStyleÌ1024Í(Qt::ToolButtonStyle toolButtonStyle)ÎQToolBarÖ0Ïvoid
+setToolTipÌ1024Í(const QString &tip)ÎQActionÖ0Ïvoid
+setToolTipÌ16Í(const QString &atoolTip)ÎQTableWidgetItemÖ0Ïinline void
+setToolTipÌ1024Í(const QString &toolTip)ÎQTableWidgetItemÖ0Ïinline void
+setToolTipÌ16Í(int column, const QString &atoolTip)ÎQTreeWidgetItemÖ0Ïinline void
+setToolTipÌ1024Í(int column, const QString &toolTip)ÎQTreeWidgetItemÖ0Ïinline void
+setTotalChangeFlagsÌ1024Í(ChangeFlags value)ÎQPinchGestureÖ0Ïvoid
+setTotalRotationAngleÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setTotalScaleFactorÌ1024Í(qreal value)ÎQPinchGestureÖ0Ïvoid
+setTranslationAtÌ1024Í(qreal step, qreal dx, qreal dy)ÎQGraphicsItemAnimationÖ0Ïvoid
+setTristateÌ1024Í(bool y = true)ÎQCheckBoxÖ0Ïvoid
+setUniformRowHeightsÌ1024Í(bool uniform)ÎQTreeViewÖ0Ïvoid
+setUsesScrollButtonsÌ1024Í(bool useButtons)ÎQTabBarÖ0Ïvoid
+setUsesScrollButtonsÌ1024Í(bool useButtons)ÎQTabWidgetÖ0Ïvoid
+setValueÌ1024Í(int value)ÎQProgressBarÖ0Ïvoid
+setValueÌ1024Í(int progress)ÎQProgressDialogÖ0Ïvoid
+setVerticalHeaderItemÌ1024Í(int row, QTableWidgetItem *item)ÎQTableWidgetÖ0Ïvoid
+setVerticalHeaderLabelsÌ1024Í(const QStringList &labels)ÎQTableWidgetÖ0Ïvoid
+setVerticalPolicyÌ16Í(Policy d)ÎQSizePolicyÖ0Ïvoid
+setVerticalSpacingÌ1024Í(int spacing)ÎQFormLayoutÖ0Ïvoid
+setVerticalSpacingÌ1024Í(qreal spacing)ÎQGraphicsAnchorLayoutÖ0Ïvoid
+setVerticalStretchÌ16Í(int stretchFactor)ÎQSizePolicyÖ0Ïvoid
+setViewModeÌ1024Í(ViewMode mode)ÎQMdiAreaÖ0Ïvoid
+setVisibleÌ1024Í(bool)Ö0Ïvoid
+setVisibleÌ1024Í(bool visible)ÎQPrintPreviewDialogÖ0Ïvoid
+setWhatsThisÌ1024Í(const QString &what)ÎQActionÖ0Ïvoid
+setWhatsThisÌ16Í(const QString &awhatsThis)ÎQTableWidgetItemÖ0Ïinline void
+setWhatsThisÌ1024Í(const QString &whatsThis)ÎQTableWidgetItemÖ0Ïinline void
+setWhatsThisÌ16Í(int column, const QString &awhatsThis)ÎQTreeWidgetItemÖ0Ïinline void
+setWhatsThisÌ1024Í(int column, const QString &whatsThis)ÎQTreeWidgetItemÖ0Ïinline void
+setWidgetÌ1024Í(int row, ItemRole role, QWidget *widget)ÎQFormLayoutÖ0Ïvoid
+setWidgetÌ1024Í(QWidget *widget)ÎQGestureEventÖ0Ïvoid
+setWidthForHeightÌ16Í(bool b)ÎQSizePolicyÖ0Ïvoid
+setWindowFlagsÌ1024Í(Qt::WindowFlags wFlags)ÎQGraphicsWidgetÖ0Ïvoid
+setWindowFrameMarginsÌ1024Í(qreal left, qreal top, qreal right, qreal bottom)ÎQGraphicsWidgetÖ0Ïvoid
+setWindowTitleÌ1024Í(const QString &title)ÎQGraphicsWidgetÖ0Ïvoid
+setWordWrapÌ1024Í(bool on)ÎQTreeViewÖ0Ïvoid
+setWrappingÌ1024Í(bool on)ÎQDialÖ0Ïvoid
+setXOffsetÌ16Í(qreal dx)ÎQGraphicsDropShadowEffectÖ0Ïinline void
+setYOffsetÌ16Í(qreal dy)ÎQGraphicsDropShadowEffectÖ0Ïinline void
+shapeÌ1024Í()ÎQGraphicsWidgetÖ0ÏQPainterPath
+shapeÌ1024Í()ÎQTabBarÖ0ÏShape
+shearListÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQList
+shortcutÌ1024Í()ÎQActionÖ0ÏQKeySequence
+shortcutContextÌ1024Í()ÎQActionÖ0ÏQt
+shortcutsÌ1024Í()ÎQActionÖ0ÏQList
+showColumnÌ1024Í(int column)ÎQTreeViewÖ0Ïvoid
+showEventÌ1024Í(QShowEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+showEventÌ1024Í(QShowEvent *showEvent)ÎQMdiAreaÖ0Ïvoid
+showEventÌ1024Í(QShowEvent *event)ÎQProgressDialogÖ0Ïvoid
+showEventÌ1024Í(QShowEvent *)ÎQTabBarÖ0Ïvoid
+showEventÌ1024Í(QShowEvent *)ÎQTabWidgetÖ0Ïvoid
+showMessageÌ1024Í(const QString &message, const QString &type)ÎQErrorMessageÖ0Ïvoid
+showStatusTextÌ1024Í(QWidget *widget=0)ÎQActionÖ0Ïbool
+sizeÌ1024Í()ÎQColormapÖ0Ïint
+sizeÌ1024Í()ÎQGraphicsWidgetÖ0ÏQSizeF
+sizeFromContentsÌ1024Í(ContentsType ct, const QStyleOption *opt, const QSize &contentsSize, const QWidget *widget = 0)ÎQCommonStyleÖ0ÏQSize
+sizeHintÌ1024Í(const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual QSize
+sizeHintÌ1024Í()ÎQCheckBoxÖ0ÏQSize
+sizeHintÌ1024Í()ÎQColumnViewÖ0ÏQSize
+sizeHintÌ1024Í()ÎQDialÖ0ÏQSize
+sizeHintÌ1024Í()ÎQFormLayoutÖ0ÏQSize
+sizeHintÌ1024Í(Qt::SizeHint which, const QSizeF &constraint = QSizeF())ÎQGraphicsAnchorLayoutÖ0ÏQSizeF
+sizeHintÌ1024Í(Qt::SizeHint which, const QSizeF &constraint = QSizeF())ÎQGraphicsWidgetÖ0ÏQSizeF
+sizeHintÌ1024Í(const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0ÏQSize
+sizeHintÌ1024Í()ÎQMdiAreaÖ0ÏQSize
+sizeHintÌ1024Í()ÎQMenuÖ0ÏQSize
+sizeHintÌ1024Í()ÎQProgressBarÖ0ÏQSize
+sizeHintÌ1024Í()ÎQProgressDialogÖ0ÏQSize
+sizeHintÌ1024Í()ÎQPushButtonÖ0ÏQSize
+sizeHintÌ1024Í()ÎQScrollBarÖ0ÏQSize
+sizeHintÌ1024Í()ÎQSplitterÖ0ÏQSize
+sizeHintÌ1024Í()ÎQSplitterHandleÖ0ÏQSize
+sizeHintÌ1024Í()ÎQTabBarÖ0ÏQSize
+sizeHintÌ1024Í()ÎQTabWidgetÖ0ÏQSize
+sizeHintÌ16Í()ÎQTableWidgetItemÖ0Ïinline QSize
+sizeHintÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QSize
+sizeHintChangedÌ1024Í(const QModelIndex &)ÎQAbstractItemDelegateÖ0Ïvoid
+sizeHintForColumnÌ1024Í(int column)ÎQTreeViewÖ0Ïint
+sizePolicyÌ1024Í()ÎQGraphicsAnchorÖ0ÏQSizePolicy
+sizesÌ1024Í()ÎQSplitterÖ0ÏQList
+sliderChangeÌ1024Í(SliderChange change)ÎQDialÖ0Ïvoid
+sliderChangeÌ1024Í(SliderChange change)ÎQScrollBarÖ0Ïvoid
+sortByColumnÌ1024Í(int column, Qt::SortOrder order)ÎQTreeViewÖ0Ïvoid
+sortByColumnÌ1024Í(int column)ÎQTreeViewÖ0Ïvoid
+sortChildrenÌ16Í(int column, Qt::SortOrder order)ÎQTreeWidgetItemÖ0Ïinline void
+sortChildrenÌ1024Í(int column, Qt::SortOrder order, bool climb)ÎQTreeWidgetItemÖ0Ïvoid
+sortColumnÌ1024Í()ÎQTreeWidgetÖ0Ïint
+sortItemsÌ1024Í(int column, Qt::SortOrder order = Qt::AscendingOrder)ÎQTableWidgetÖ0Ïvoid
+sortItemsÌ1024Í(int column, Qt::SortOrder order)ÎQTreeWidgetÖ0Ïvoid
+sourceÌ1024Í()ÎQGraphicsEffectÖ0ÏQGraphicsEffectSource *
+sourceÌ1024Í()ÎQTextBrowserÖ0ÏQUrl
+sourceBoundingRectÌ1024Í(Qt::CoordinateSystem system = Qt::LogicalCoordinates)ÎQGraphicsEffectÖ0ÏQRectF
+sourceChangedÌ1024Í(ChangeFlags flags)ÎQGraphicsEffectÖ0Ïvirtual void
+sourceChangedÌ1024Í(const QUrl &)ÎQTextBrowserÖ0Ïvoid
+sourceIsPixmapÌ1024Í()ÎQGraphicsEffectÖ0Ïbool
+sourcePixmapÌ1024Í(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint *offset = 0, PixmapPadMode mode = PadToEffectiveBoundingRect)ÎQGraphicsEffectÖ0ÏQPixmap
+spacingÌ1024Í()ÎQFormLayoutÖ0Ïint
+spacingÌ1024Í()ÎQGraphicsAnchorÖ0Ïqreal
+splitterÌ1024Í()ÎQSplitterHandleÖ0ÏQSplitter *
+stackÌ1024Í()ÎQUndoViewÖ0ÏQUndoStack *
+stacksÌ1024Í()ÎQUndoGroupÖ0ÏQList
+standardIconÌ1024Í(StandardPixmap standardIcon, const QStyleOption *opt = 0, const QWidget *widget = 0)ÎQCommonStyleÖ0ÏQIcon
+standardPixmapÌ1024Í(StandardPixmap sp, const QStyleOption *opt = 0, const QWidget *widget = 0)ÎQCommonStyleÖ0ÏQPixmap
+startCenterPointÌ1024Í()ÎQPinchGestureÖ0ÏQPointF
+stateÌ1024Í()ÎQGestureÖ0ÏQt
+stateÌ1024Í()ÎQScrollerÖ0ÏState
+statusTipÌ1024Í()ÎQActionÖ0ÏQString
+statusTipÌ16Í()ÎQTableWidgetItemÖ0Ïinline QString
+statusTipÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QString
+stopÌ1024Í()ÎQScrollerÖ0Ïvoid
+strengthÌ1024Í()ÎQGraphicsColorizeEffectÖ0Ïqreal
+strengthChangedÌ1024Í(qreal strength)ÎQGraphicsColorizeEffectÖ0Ïvoid
+styleÌ1024Í()ÎQGraphicsWidgetÖ0ÏQStyle *
+styleHintÌ1024Í(StyleHint sh, const QStyleOption *opt = 0, const QWidget *w = 0, QStyleHintReturn *shret = 0)ÎQCommonStyleÖ0Ïint
+subControlRectÌ1024Í(ComplexControl cc, const QStyleOptionComplex *opt, SubControl sc, const QWidget *w = 0)ÎQCommonStyleÖ0ÏQRect
+subElementRectÌ1024Í(SubElement r, const QStyleOption *opt, const QWidget *widget = 0)ÎQCommonStyleÖ0ÏQRect
+subWindowListÌ1024Í(WindowOrder order = CreationOrder)ÎQMdiAreaÖ0ÏQList
+supportedDropActionsÌ1024Í()ÎQTableWidgetÖ0Ïvirtual Qt
+supportedDropActionsÌ1024Í()ÎQTreeWidgetÖ0Ïvirtual Qt
+swipeAngleÌ1024Í()ÎQSwipeGestureÖ0Ïqreal
+tabAtÌ1024Í(const QPoint &pos)ÎQTabBarÖ0Ïint
+tabBarÌ1024Í()ÎQTabWidgetÖ0ÏQTabBar *
+tabButtonÌ1024Í(int index, ButtonPosition position)ÎQTabBarÖ0ÏQWidget *
+tabCloseRequestedÌ1024Í(int index)ÎQTabBarÖ0Ïvoid
+tabCloseRequestedÌ1024Í(int index)ÎQTabWidgetÖ0Ïvoid
+tabDataÌ1024Í(int index)ÎQTabBarÖ0ÏQVariant
+tabIconÌ1024Í(int index)ÎQTabBarÖ0ÏQIcon
+tabIconÌ1024Í(int index)ÎQTabWidgetÖ0ÏQIcon
+tabInsertedÌ1024Í(int index)ÎQTabBarÖ0Ïvirtual void
+tabInsertedÌ1024Í(int index)ÎQTabWidgetÖ0Ïvirtual void
+tabLayoutChangeÌ1024Í()ÎQTabBarÖ0Ïvirtual void
+tabMovedÌ1024Í(int from, int to)ÎQTabBarÖ0Ïvoid
+tabPositionÌ1024Í()ÎQMdiAreaÖ0ÏQTabWidget
+tabPositionÌ1024Í()ÎQTabWidgetÖ0ÏTabPosition
+tabRectÌ1024Í(int index)ÎQTabBarÖ0ÏQRect
+tabRemovedÌ1024Í(int index)ÎQTabBarÖ0Ïvirtual void
+tabRemovedÌ1024Í(int index)ÎQTabWidgetÖ0Ïvirtual void
+tabShapeÌ1024Í()ÎQMdiAreaÖ0ÏQTabWidget
+tabShapeÌ1024Í()ÎQTabWidgetÖ0ÏTabShape
+tabSizeHintÌ1024Í(int index)ÎQTabBarÖ0Ïvirtual QSize
+tabTextÌ1024Í(int index)ÎQTabBarÖ0ÏQString
+tabTextÌ1024Í(int index)ÎQTabWidgetÖ0ÏQString
+tabTextColorÌ1024Í(int index)ÎQTabBarÖ0ÏQColor
+tabToolTipÌ1024Í(int index)ÎQTabBarÖ0ÏQString
+tabToolTipÌ1024Í(int index)ÎQTabWidgetÖ0ÏQString
+tabWhatsThisÌ1024Í(int index)ÎQTabBarÖ0ÏQString
+tabWhatsThisÌ1024Í(int index)ÎQTabWidgetÖ0ÏQString
+tableWidgetÌ16Í()ÎQTableWidgetItemÖ0Ïinline QTableWidget *
+tabsClosableÌ1024Í()ÎQMdiAreaÖ0Ïbool
+tabsClosableÌ1024Í()ÎQTabBarÖ0Ïbool
+tabsClosableÌ1024Í()ÎQTabWidgetÖ0Ïbool
+tabsMovableÌ1024Í()ÎQMdiAreaÖ0Ïbool
+takeAtÌ1024Í(int index)ÎQFormLayoutÖ0ÏQLayoutItem *
+takeChildÌ1024Í(int index)ÎQTreeWidgetItemÖ0ÏQTreeWidgetItem *
+takeChildrenÌ1024Í()ÎQTreeWidgetItemÖ0ÏQList
+takeHorizontalHeaderItemÌ1024Í(int column)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+takeItemÌ1024Í(int row, int column)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+takeTopLevelItemÌ1024Í(int index)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+takeVerticalHeaderItemÌ1024Í(int row)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+targetÌ1024Í()ÎQScrollerÖ0ÏQObject *
+testAttributeÌ1024Í(Qt::WidgetAttribute attribute)ÎQGraphicsWidgetÖ0Ïbool
+testOptionÌ1024Í(AreaOption opton)ÎQMdiAreaÖ0Ïbool
+textÌ1024Í()ÎQActionÖ0ÏQString
+textÌ1024Í()ÎQProgressBarÖ0Ïvirtual QString
+textÌ16Í()ÎQTableWidgetItemÖ0Ïinline QString
+textÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QString
+textAlignmentÌ16Í()ÎQTableWidgetItemÖ0Ïinline int
+textAlignmentÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline int
+textColorÌ16Í()ÎQTableWidgetItemÖ0Ïinline QColor
+textColorÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QColor
+textDirectionÌ1024Í()ÎQProgressBarÖ0ÏQProgressBar
+textRectangleÌ1024Í(QPainter *painter, const QRect &rect, const QFont &font, const QString &text)ÎQItemDelegateÖ0ÏQRect
+tileSubWindowsÌ1024Í()ÎQMdiAreaÖ0Ïvoid
+timeLineÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQTimeLine *
+timeoutÌ1024Í()ÎQTapAndHoldGestureÖ0Ïint
+timerEventÌ1024Í(QTimerEvent *timerEvent)ÎQMdiAreaÖ0Ïvoid
+timerEventÌ1024Í(QTimerEvent *)ÎQMenuÖ0Ïvoid
+timerEventÌ1024Í(QTimerEvent *event)ÎQTreeViewÖ0Ïvoid
+titleÌ1024Í()ÎQMenuÖ0ÏQString
+toggleÌ1024Í()Ö0Ïvoid
+toggleViewActionÌ1024Í()ÎQToolBarÖ0ÏQAction *
+toggledÌ1024Í(bool)Ö0Ïvoid
+toolButtonStyleÌ1024Í()ÎQToolBarÖ0ÏQt
+toolButtonStyleChangedÌ1024Í(Qt::ToolButtonStyle toolButtonStyle)ÎQToolBarÖ0Ïvoid
+toolTipÌ1024Í()ÎQActionÖ0ÏQString
+toolTipÌ16Í()ÎQTableWidgetItemÖ0Ïinline QString
+toolTipÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QString
+topÌ64ÎQTableWidgetSelectionRangeÖ0Ïint
+topLevelChangedÌ1024Í(bool topLevel)ÎQToolBarÖ0Ïvoid
+topLevelItemÌ1024Í(int index)ÎQTreeWidgetÖ0ÏQTreeWidgetItem *
+topLevelItemCountÌ1024Í()ÎQTreeWidgetÖ0Ïint
+topRowÌ16Í()ÎQTableWidgetSelectionRangeÖ0Ïinline int
+totalChangeFlagsÌ1024Í()ÎQPinchGestureÖ0ÏChangeFlags
+totalRotationAngleÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+totalScaleFactorÌ1024Í()ÎQPinchGestureÖ0Ïqreal
+translationListÌ1024Í()ÎQGraphicsItemAnimationÖ0ÏQList
+transposeÌ16Í()ÎQSizePolicyÖ0Ïinline void
+transposeÌ1024Í()ÎQSizePolicyÖ0Ïvoid
+treeWidgetÌ16Í()ÎQTreeWidgetItemÖ0Ïinline QTreeWidget *
+triggeredÌ1024Í(bool checked = false)Ö0Ïvoid
+triggeredÌ1024Í(QAction *action)ÎQMenuÖ0Ïvoid
+typeÌ1024Í()ÎQGraphicsWidgetÖ0Ïint
+typeÌ16Í()ÎQTableWidgetItemÖ0Ïinline int
+typeÌ16Í()ÎQTreeWidgetItemÖ0Ïinline int
+undoTextÌ1024Í()ÎQUndoGroupÖ0ÏQString
+undoTextChangedÌ1024Í(const QString &undoText)ÎQUndoGroupÖ0Ïvoid
+ungrabGestureÌ1024Í(QObject *target)ÎQScrollerÖ0Ïvoid
+ungrabKeyboardEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+ungrabMouseEventÌ1024Í(QEvent *event)ÎQGraphicsWidgetÖ0Ïvirtual void
+uniformRowHeightsÌ1024Í()ÎQTreeViewÖ0Ïbool
+unpolishÌ1024Í(QWidget *widget)ÎQCommonStyleÖ0Ïvoid
+unpolishÌ1024Í(QApplication *application)ÎQCommonStyleÖ0Ïvoid
+unsetDefaultScrollerPropertiesÌ1024Í()ÎQScrollerPropertiesÖ0Ïvoid
+unsetHotSpotÌ1024Í()ÎQGestureÖ0Ïvoid
+unsetLayoutDirectionÌ1024Í()ÎQGraphicsWidgetÖ0Ïvoid
+unsetSpacingÌ1024Í()ÎQGraphicsAnchorÖ0Ïvoid
+unsetWindowFrameMarginsÌ1024Í()ÎQGraphicsWidgetÖ0Ïvoid
+updateÌ1024Í()ÎQGraphicsEffectÖ0Ïvoid
+updateBoundingRectÌ1024Í()ÎQGraphicsEffectÖ0Ïvoid
+updateEditorGeometryÌ1024Í(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQAbstractItemDelegateÖ0Ïvirtual void
+updateEditorGeometryÌ1024Í(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index)ÎQItemDelegateÖ0Ïvoid
+updateGeometriesÌ1024Í()ÎQTreeViewÖ0Ïvoid
+updateGeometryÌ1024Í()ÎQGraphicsLayoutÖ0Ïvirtual void
+updateGeometryÌ1024Í()ÎQGraphicsWidgetÖ0Ïvoid
+usesScrollButtonsÌ1024Í()ÎQTabBarÖ0Ïbool
+usesScrollButtonsÌ1024Í()ÎQTabWidgetÖ0Ïbool
+valueÌ1024Í()ÎQProgressBarÖ0Ïint
+valueÌ1024Í()ÎQProgressDialogÖ0Ïint
+valuesÌ64ÎQTableWidgetItemÖ0ÏQVector
+valuesÌ64ÎQTreeWidgetItemÖ0ÏQVector
+velocityÌ1024Í()ÎQScrollerÖ0ÏQPointF
+verPolicyÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+verStretchÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+verticalÌ64ÎQTileRulesÖ0ÏQt
+verticalDirectionÌ1024Í()ÎQSwipeGestureÖ0ÏSwipeDirection
+verticalHeaderItemÌ1024Í(int row)ÎQTableWidgetÖ0ÏQTableWidgetItem *
+verticalOffsetÌ1024Í()ÎQColumnViewÖ0Ïint
+verticalOffsetÌ1024Í()ÎQTreeViewÖ0Ïint
+verticalPolicyÌ16Í()ÎQSizePolicyÖ0ÏPolicy
+verticalScaleAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+verticalShearAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+verticalSpacingÌ1024Í()ÎQFormLayoutÖ0Ïint
+verticalSpacingÌ1024Í()ÎQGraphicsAnchorLayoutÖ0Ïqreal
+verticalStretchÌ16Í()ÎQSizePolicyÖ0Ïint
+viewÌ64ÎQTableWidgetItemÖ0ÏQTableWidget
+viewÌ64ÎQTreeWidgetItemÖ0ÏQTreeWidget
+viewModeÌ1024Í()ÎQMdiAreaÖ0ÏViewMode
+viewportEventÌ1024Í(QEvent *event)ÎQMdiAreaÖ0Ïbool
+viewportEventÌ1024Í(QEvent *event)ÎQTreeViewÖ0Ïbool
+visibilityChangedÌ1024Í(bool visible)ÎQToolBarÖ0Ïvoid
+visualColumnÌ1024Í(int logicalColumn)ÎQTableWidgetÖ0Ïint
+visualIndexÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0Ïint
+visualItemRectÌ1024Í(const QTableWidgetItem *item)ÎQTableWidgetÖ0ÏQRect
+visualItemRectÌ1024Í(const QTreeWidgetItem *item)ÎQTreeWidgetÖ0ÏQRect
+visualRectÌ1024Í(const QModelIndex &index)ÎQColumnViewÖ0ÏQRect
+visualRectÌ1024Í(const QModelIndex &index)ÎQTreeViewÖ0ÏQRect
+visualRegionForSelectionÌ1024Í(const QItemSelection &selection)ÎQColumnViewÖ0ÏQRegion
+visualRegionForSelectionÌ1024Í(const QItemSelection &selection)ÎQTreeViewÖ0ÏQRegion
+visualRowÌ1024Í(int logicalRow)ÎQTableWidgetÖ0Ïint
+wasCanceledÌ1024Í()ÎQProgressDialogÖ0Ïbool
+wceCommandsÌ1024Í(uint command)ÎQMenuÖ0ÏQAction *
+wceMenuÌ1024Í()ÎQMenuÖ0ÏHMENU
+wfhÌ64ÎQSizePolicy::anon_union_0::anon_struct_1Ö0Ïquint32
+whatsThisÌ1024Í()ÎQActionÖ0ÏQString
+whatsThisÌ16Í()ÎQTableWidgetItemÖ0Ïinline QString
+whatsThisÌ16Í(int column)ÎQTreeWidgetItemÖ0Ïinline QString
+wheelEventÌ1024Í(QWheelEvent *)ÎQMenuÖ0Ïvoid
+wheelEventÌ1024Í(QWheelEvent *)ÎQScrollBarÖ0Ïvoid
+wheelEventÌ1024Í(QWheelEvent *event)ÎQTabBarÖ0Ïvoid
+widgetÌ1024Í()ÎQGestureEventÖ0ÏQWidget *
+widgetÌ1024Í(int index)ÎQSplitterÖ0ÏQWidget *
+widgetÌ1024Í(int index)ÎQTabWidgetÖ0ÏQWidget *
+widgetEventÌ1024Í(QEvent *e)ÎQGraphicsLayoutÖ0Ïvirtual void
+widgetForActionÌ1024Í(QAction *action)ÎQToolBarÖ0ÏQWidget *
+windowFlagsÌ1024Í()ÎQGraphicsWidgetÖ0ÏQt
+windowFrameEventÌ1024Í(QEvent *e)ÎQGraphicsWidgetÖ0Ïvirtual bool
+windowFrameGeometryÌ1024Í()ÎQGraphicsWidgetÖ0ÏQRectF
+windowFrameRectÌ1024Í()ÎQGraphicsWidgetÖ0ÏQRectF
+windowFrameSectionAtÌ1024Í(const QPointF& pos)ÎQGraphicsWidgetÖ0Ïvirtual Qt
+windowTitleÌ1024Í()ÎQGraphicsWidgetÖ0ÏQString
+windowTypeÌ1024Í()ÎQGraphicsWidgetÖ0ÏQt
+wordWrapÌ1024Í()ÎQTreeViewÖ0Ïbool
+workAreaResizedÌ1024Í(int)ÎQDesktopWidgetÖ0Ïvoid
+wrappingÌ1024Í()ÎQDialÖ0Ïbool
+writeÌ1024Í(QDataStream &out)ÎQTableWidgetItemÖ0Ïvirtual void
+writeÌ1024Í(QDataStream &out)ÎQTreeWidgetItemÖ0Ïvirtual void
+xOffsetÌ16Í()ÎQGraphicsDropShadowEffectÖ0Ïinline qreal
+xTranslationAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+yOffsetÌ16Í()ÎQGraphicsDropShadowEffectÖ0Ïinline qreal
+yTranslationAtÌ1024Í(qreal step)ÎQGraphicsItemAnimationÖ0Ïqreal
+~QAbstractItemDelegateÌ1024Í()ÎQAbstractItemDelegateÖ0
+~QActionÌ1024Í()ÎQActionÖ0
+~QCheckBoxÌ1024Í()ÎQCheckBoxÖ0
+~QColormapÌ1024Í()ÎQColormapÖ0
+~QColumnViewÌ1024Í()ÎQColumnViewÖ0
+~QCommonStyleÌ1024Í()ÎQCommonStyleÖ0
+~QDesktopWidgetÌ1024Í()ÎQDesktopWidgetÖ0
+~QDialÌ1024Í()ÎQDialÖ0
+~QErrorMessageÌ1024Í()ÎQErrorMessageÖ0
+~QFormLayoutÌ1024Í()ÎQFormLayoutÖ0
+~QGestureÌ1024Í()ÎQGestureÖ0
+~QGestureEventÌ1024Í()ÎQGestureEventÖ0
+~QGraphicsAnchorÌ1024Í()ÎQGraphicsAnchorÖ0
+~QGraphicsAnchorLayoutÌ1024Í()ÎQGraphicsAnchorLayoutÖ0
+~QGraphicsColorizeEffectÌ1024Í()ÎQGraphicsColorizeEffectÖ0
+~QGraphicsDropShadowEffectÌ1024Í()ÎQGraphicsDropShadowEffectÖ0
+~QGraphicsEffectÌ1024Í()ÎQGraphicsEffectÖ0
+~QGraphicsItemAnimationÌ1024Í()ÎQGraphicsItemAnimationÖ0
+~QGraphicsLayoutÌ1024Í()ÎQGraphicsLayoutÖ0
+~QGraphicsOpacityEffectÌ1024Í()ÎQGraphicsOpacityEffectÖ0
+~QGraphicsWidgetÌ1024Í()ÎQGraphicsWidgetÖ0
+~QItemDelegateÌ1024Í()ÎQItemDelegateÖ0
+~QMacCocoaViewContainerÌ1024Í()ÎQMacCocoaViewContainerÖ0
+~QMdiAreaÌ1024Í()ÎQMdiAreaÖ0
+~QMenuÌ1024Í()ÎQMenuÖ0
+~QMouseEventTransitionÌ1024Í()ÎQMouseEventTransitionÖ0
+~QPanGestureÌ1024Í()ÎQPanGestureÖ0
+~QPinchGestureÌ1024Í()ÎQPinchGestureÖ0
+~QPrintEngineÌ16Í()ÎQPrintEngineÖ0
+~QPrintPreviewDialogÌ1024Í()ÎQPrintPreviewDialogÖ0
+~QProgressBarÌ1024Í()ÎQProgressBarÖ0
+~QProgressDialogÌ1024Í()ÎQProgressDialogÖ0
+~QPushButtonÌ1024Í()ÎQPushButtonÖ0
+~QScrollBarÌ1024Í()ÎQScrollBarÖ0
+~QScrollerÌ1024Í()ÎQScrollerÖ0
+~QScrollerPropertiesÌ1024Í()ÎQScrollerPropertiesÖ0
+~QSplashScreenÌ1024Í()ÎQSplashScreenÖ0
+~QSplitterÌ1024Í()ÎQSplitterÖ0
+~QSplitterHandleÌ1024Í()ÎQSplitterHandleÖ0
+~QSwipeGestureÌ1024Í()ÎQSwipeGestureÖ0
+~QTabBarÌ1024Í()ÎQTabBarÖ0
+~QTabWidgetÌ1024Í()ÎQTabWidgetÖ0
+~QTableWidgetÌ1024Í()ÎQTableWidgetÖ0
+~QTableWidgetItemÌ1024Í()ÎQTableWidgetItemÖ0
+~QTableWidgetSelectionRangeÌ1024Í()ÎQTableWidgetSelectionRangeÖ0
+~QTapAndHoldGestureÌ1024Í()ÎQTapAndHoldGestureÖ0
+~QTapGestureÌ1024Í()ÎQTapGestureÖ0
+~QTextBrowserÌ1024Í()ÎQTextBrowserÖ0
+~QToolBarÌ1024Í()ÎQToolBarÖ0
+~QTreeViewÌ1024Í()ÎQTreeViewÖ0
+~QTreeWidgetÌ1024Í()ÎQTreeWidgetÖ0
+~QTreeWidgetItemÌ1024Í()ÎQTreeWidgetItemÖ0
+~QTreeWidgetItemIteratorÌ1024Í()ÎQTreeWidgetItemIteratorÖ0
+~QUndoGroupÌ1024Í()ÎQUndoGroupÖ0
+~QUndoViewÌ1024Í()ÎQUndoViewÖ0

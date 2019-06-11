@@ -1,0 +1,214 @@
+# format=tagmanager
+ACTIVATEÃ4ŒGst.NavigationCommand÷0
+ANGLESÃ4ŒGst.NavigationQueryType÷0
+ANGLES_CHANGEDÃ4ŒGst.NavigationMessageType÷0
+AUDIOÃ4ŒGst.TunerChannelFlags÷0
+AUTO_NOTIFICATIONSÃ4ŒGst.MixerFlags÷0
+COMMANDÃ4ŒGst.NavigationEventType÷0
+COMMANDSÃ4ŒGst.NavigationQueryType÷0
+COMMANDS_CHANGEDÃ4ŒGst.NavigationMessageType÷0
+CUBICÃ4ŒGst.StreamVolumeFormat÷0
+ColorBalanceÃ32ŒGst÷0
+ColorBalanceChannelÃ1ŒGst÷0
+ColorBalanceChannelÃ128Õ()ŒGst.ColorBalanceChannel÷0
+ColorBalanceTypeÃ2ŒGst÷0
+DBÃ4ŒGst.StreamVolumeFormat÷0
+DOWNÃ4ŒGst.NavigationCommand÷0
+FREQUENCYÃ4ŒGst.TunerChannelFlags÷0
+GROUPINGÃ4ŒGst.MixerFlags÷0
+GstÃ256÷0
+HARDWAREÃ4ŒGst.ColorBalanceType÷0
+HARDWAREÃ4ŒGst.MixerType÷0
+HAS_WHITELISTÃ4ŒGst.MixerFlags÷0
+INPUTÃ4ŒGst.MixerTrackFlags÷0
+INPUTÃ4ŒGst.TunerChannelFlags÷0
+INVALIDÃ4ŒGst.MixerMessageType÷0
+INVALIDÃ4ŒGst.NavigationCommand÷0
+INVALIDÃ4ŒGst.NavigationEventType÷0
+INVALIDÃ4ŒGst.NavigationMessageType÷0
+INVALIDÃ4ŒGst.NavigationQueryType÷0
+KEY_PRESSÃ4ŒGst.NavigationEventType÷0
+KEY_RELEASEÃ4ŒGst.NavigationEventType÷0
+LEFTÃ4ŒGst.NavigationCommand÷0
+LINEARÃ4ŒGst.StreamVolumeFormat÷0
+MASTERÃ4ŒGst.MixerTrackFlags÷0
+MENU1Ã4ŒGst.NavigationCommand÷0
+MENU2Ã4ŒGst.NavigationCommand÷0
+MENU3Ã4ŒGst.NavigationCommand÷0
+MENU4Ã4ŒGst.NavigationCommand÷0
+MENU5Ã4ŒGst.NavigationCommand÷0
+MENU6Ã4ŒGst.NavigationCommand÷0
+MENU7Ã4ŒGst.NavigationCommand÷0
+MIXER_CHANGEDÃ4ŒGst.MixerMessageType÷0
+MOUSE_BUTTON_PRESSÃ4ŒGst.NavigationEventType÷0
+MOUSE_BUTTON_RELEASEÃ4ŒGst.NavigationEventType÷0
+MOUSE_MOVEÃ4ŒGst.NavigationEventType÷0
+MOUSE_OVERÃ4ŒGst.NavigationMessageType÷0
+MUTEÃ4ŒGst.MixerTrackFlags÷0
+MUTE_TOGGLEDÃ4ŒGst.MixerMessageType÷0
+MixerÃ32ŒGst÷0
+MixerFlagsÃ2ŒGst÷0
+MixerMessageTypeÃ2ŒGst÷0
+MixerOptionsÃ1ŒGst÷0
+MixerOptionsÃ128Õ()ŒGst.MixerOptions÷0
+MixerTrackÃ1ŒGst÷0
+MixerTrackÃ128Õ()ŒGst.MixerTrack÷0
+MixerTrackFlagsÃ2ŒGst÷0
+MixerTypeÃ2ŒGst÷0
+NEXT_ANGLEÃ4ŒGst.NavigationCommand÷0
+NONEÃ4ŒGst.MixerFlags÷0
+NO_MUTEÃ4ŒGst.MixerTrackFlags÷0
+NO_RECORDÃ4ŒGst.MixerTrackFlags÷0
+NavigationÃ32ŒGst÷0
+NavigationCommandÃ2ŒGst÷0
+NavigationEventTypeÃ2ŒGst÷0
+NavigationMessageTypeÃ2ŒGst÷0
+NavigationQueryTypeÃ2ŒGst÷0
+OPTIONS_LIST_CHANGEDÃ4ŒGst.MixerMessageType÷0
+OPTION_CHANGEDÃ4ŒGst.MixerMessageType÷0
+OUTPUTÃ4ŒGst.MixerTrackFlags÷0
+OUTPUTÃ4ŒGst.TunerChannelFlags÷0
+PREV_ANGLEÃ4ŒGst.NavigationCommand÷0
+PropertyProbeÃ32ŒGst÷0
+READONLYÃ4ŒGst.MixerTrackFlags÷0
+RECORDÃ4ŒGst.MixerTrackFlags÷0
+RECORD_TOGGLEDÃ4ŒGst.MixerMessageType÷0
+RIGHTÃ4ŒGst.NavigationCommand÷0
+SOFTWAREÃ4ŒGst.ColorBalanceType÷0
+SOFTWAREÃ4ŒGst.MixerTrackFlags÷0
+SOFTWAREÃ4ŒGst.MixerType÷0
+StreamVolumeÃ32ŒGst÷0
+StreamVolumeFormatÃ2ŒGst÷0
+TunerÃ32ŒGst÷0
+TunerChannelÃ1ŒGst÷0
+TunerChannelÃ128Õ()ŒGst.TunerChannel÷0
+TunerChannelFlagsÃ2ŒGst÷0
+TunerNormÃ1ŒGst÷0
+TunerNormÃ128Õ()ŒGst.TunerNorm÷0
+UPÃ4ŒGst.NavigationCommand÷0
+VOLUME_CHANGEDÃ4ŒGst.MixerMessageType÷0
+VideoOrientationÃ32ŒGst÷0
+WHITELISTÃ4ŒGst.MixerTrackFlags÷0
+WRITEONLYÃ4ŒGst.MixerTrackFlags÷0
+XOverlayÃ32ŒGst÷0
+changedÃ128Õ(Gst.Tuner tuner, Gst.TunerChannel channel)ŒGst.TunerChannel÷0œpublic void
+changedÃ128Õ(Gst.Tuner tuner, Gst.TunerNorm norm)ŒGst.TunerNorm÷0œpublic void
+channel_changedÃ128Õ(Gst.TunerChannel channel)ŒGst.Tuner÷0œpublic signal void
+convert_volumeÃ128Õ(Gst.StreamVolumeFormat from, Gst.StreamVolumeFormat to, double val)ŒGst.StreamVolume÷0œpublic double
+event_get_typeÃ128Õ(Gst.Event event)ŒGst.Navigation÷0œpublic Gst.NavigationEventType
+event_parse_commandÃ128Õ(Gst.Event event, Gst.NavigationCommand command)ŒGst.Navigation÷0œpublic bool
+event_parse_key_eventÃ128Õ(Gst.Event event, string key)ŒGst.Navigation÷0œpublic bool
+event_parse_mouse_button_eventÃ128Õ(Gst.Event event, int button, double x, double y)ŒGst.Navigation÷0œpublic bool
+event_parse_mouse_move_eventÃ128Õ(Gst.Event event, double x, double y)ŒGst.Navigation÷0œpublic bool
+exposeÃ128Õ()ŒGst.XOverlay÷0œpublic abstract void
+find_channel_by_nameÃ128Õ(string channel)ŒGst.Tuner÷0œpublic unowned
+find_norm_by_nameÃ128Õ(string norm)ŒGst.Tuner÷0œpublic unowned
+flagsÃ8ŒGst.MixerTrack÷0
+flagsÃ8ŒGst.TunerChannel÷0œGst.TunerChannelFlags
+framerateÃ8ŒGst.TunerNorm÷0œGst.Value
+freq_multiplicatorÃ8ŒGst.TunerChannel÷0œfloat
+frequency_changedÃ128Õ(Gst.TunerChannel channel, ulong frequency)ŒGst.Tuner÷0œpublic signal void
+frequency_changedÃ128Õ(ulong frequency)ŒGst.TunerChannel÷0œpublic virtual signal void
+get_balance_typeÃ128Õ()ŒGst.ColorBalance÷0œpublic Gst.ColorBalanceType
+get_channelÃ128Õ()ŒGst.Tuner÷0œpublic abstract unowned
+get_frequencyÃ128Õ(Gst.TunerChannel channel)ŒGst.Tuner÷0
+get_hcenterÃ128Õ(int center)ŒGst.VideoOrientation÷0œpublic abstract bool
+get_hflipÃ128Õ(bool flip)ŒGst.VideoOrientation÷0œpublic abstract bool
+get_mixer_flagsÃ128Õ()ŒGst.Mixer÷0œpublic abstract Gst.MixerFlags
+get_mixer_typeÃ128Õ()ŒGst.Mixer÷0œpublic Gst.MixerType
+get_muteÃ128Õ()ŒGst.StreamVolume÷0œpublic bool
+get_normÃ128Õ()ŒGst.Tuner÷0œpublic abstract unowned
+get_optionÃ128Õ(Gst.MixerOptions opts)ŒGst.Mixer÷0œpublic abstract unowned string
+get_propertiesÃ128Õ()ŒGst.PropertyProbe÷0œpublic abstract unowned
+get_propertyÃ128Õ(string name)ŒGst.PropertyProbe÷0œpublic unowned
+get_valueÃ128Õ(Gst.ColorBalanceChannel channel)ŒGst.ColorBalance÷0œpublic abstract int
+get_valuesÃ128Õ()ŒGst.MixerOptions÷0œpublic unowned
+get_valuesÃ128Õ(GLib.ParamSpec pspec)ŒGst.PropertyProbe÷0œpublic abstract unowned
+get_values_nameÃ128Õ(string name)ŒGst.PropertyProbe÷0œpublic unowned
+get_vcenterÃ128Õ(int center)ŒGst.VideoOrientation÷0œpublic abstract bool
+get_vflipÃ128Õ(bool flip)ŒGst.VideoOrientation÷0œpublic abstract bool
+get_volumeÃ128Õ(Gst.MixerTrack track, int volumes)ŒGst.Mixer÷0œpublic abstract void
+get_volumeÃ128Õ(Gst.StreamVolumeFormat format)ŒGst.StreamVolume÷0œpublic double
+got_xwindow_idÃ128Õ(ulong xwindow_id)ŒGst.XOverlay÷0œpublic void
+handle_eventsÃ128Õ(bool handle_events)ŒGst.XOverlay÷0œpublic abstract void
+indexÃ8ŒGst.MixerTrack÷0
+labelÃ8ŒGst.ColorBalanceChannel÷0
+labelÃ8ŒGst.MixerTrack÷0
+labelÃ8ŒGst.TunerChannel÷0
+labelÃ8ŒGst.TunerNorm÷0
+list_changedÃ128Õ(Gst.Mixer mixer, Gst.MixerOptions opts)ŒGst.MixerOptions÷0œpublic void
+list_channelsÃ128Õ()ŒGst.ColorBalance÷0œpublic abstract unowned
+list_channelsÃ128Õ()ŒGst.Tuner÷0œpublic abstract unowned
+list_normsÃ128Õ()ŒGst.Tuner÷0œpublic abstract unowned
+list_tracksÃ128Õ()ŒGst.Mixer÷0œpublic abstract unowned
+max_frequencyÃ8ŒGst.TunerChannel÷0
+max_signalÃ8ŒGst.TunerChannel÷0œint
+max_valueÃ8ŒGst.ColorBalanceChannel÷0œint
+max_volumeÃ8ŒGst.MixerTrack÷0œint
+message_get_typeÃ128Õ(Gst.Message message)ŒGst.Mixer÷0œpublic Gst.MixerMessageType
+message_get_typeÃ128Õ(Gst.Message message)ŒGst.Navigation÷0œpublic Gst.NavigationMessageType
+message_new_angles_changedÃ128Õ(Gst.Object src, uint cur_angle, uint n_angles)ŒGst.Navigation÷0œpublic unowned
+message_new_commands_changedÃ128Õ(Gst.Object src)ŒGst.Navigation÷0œpublic unowned
+message_new_mouse_overÃ128Õ(Gst.Object src, bool active)ŒGst.Navigation÷0œpublic unowned
+message_parse_angles_changedÃ128Õ(Gst.Message message, uint cur_angle, uint n_angles)ŒGst.Navigation÷0œpublic bool
+message_parse_mouse_overÃ128Õ(Gst.Message message, bool active)ŒGst.Navigation÷0œpublic bool
+message_parse_mute_toggledÃ128Õ(Gst.Message message, out unowned Gst.MixerTrack track, bool mute)ŒGst.Mixer÷0œpublic void
+message_parse_option_changedÃ128Õ(Gst.Message message, out unowned Gst.MixerOptions options, string value)ŒGst.Mixer÷0œpublic void
+message_parse_options_list_changedÃ128Õ(Gst.Message message, out unowned Gst.MixerOptions options)ŒGst.Mixer÷0œpublic void
+message_parse_record_toggledÃ128Õ(Gst.Message message, out unowned Gst.MixerTrack track, bool record)ŒGst.Mixer÷0œpublic void
+message_parse_volume_changedÃ128Õ(Gst.Message message, out unowned Gst.MixerTrack track, int volumes, int num_channels)ŒGst.Mixer÷0œpublic void
+min_frequencyÃ8ŒGst.TunerChannel÷0
+min_signalÃ8ŒGst.TunerChannel÷0œint
+min_valueÃ8ŒGst.ColorBalanceChannel÷0œint
+min_volumeÃ8ŒGst.MixerTrack÷0œint
+mixer_changedÃ128Õ()ŒGst.Mixer÷0œpublic void
+muteÃ8ŒGst.StreamVolume÷0œbool
+mute_toggledÃ128Õ(Gst.MixerTrack channel, bool mute)ŒGst.Mixer÷0œpublic signal void
+needs_probeÃ128Õ(GLib.ParamSpec pspec)ŒGst.PropertyProbe÷0œpublic abstract bool
+needs_probe_nameÃ128Õ(string name)ŒGst.PropertyProbe÷0œpublic bool
+norm_changedÃ128Õ(Gst.TunerNorm norm)ŒGst.Tuner÷0œpublic signal void
+num_channelsÃ8ŒGst.MixerTrack÷0œint
+option_changedÃ128Õ(Gst.MixerOptions opts, string option)ŒGst.Mixer÷0œpublic signal void
+prepare_xwindow_idÃ128Õ()ŒGst.XOverlay÷0œpublic void
+probe_and_get_valuesÃ128Õ(GLib.ParamSpec pspec)ŒGst.PropertyProbe÷0œpublic unowned
+probe_and_get_values_nameÃ128Õ(string name)ŒGst.PropertyProbe÷0œpublic unowned
+probe_neededÃ128Õ(void* pspec)ŒGst.PropertyProbe÷0œpublic signal void
+probe_propertyÃ128Õ(GLib.ParamSpec pspec)ŒGst.PropertyProbe÷0œpublic abstract void
+probe_property_nameÃ128Õ(string name)ŒGst.PropertyProbe÷0œpublic void
+query_get_typeÃ128Õ(Gst.Query query)ŒGst.Navigation÷0œpublic Gst.NavigationQueryType
+query_new_anglesÃ128Õ()ŒGst.Navigation÷0œpublic unowned
+query_new_commandsÃ128Õ()ŒGst.Navigation÷0œpublic unowned
+query_parse_anglesÃ128Õ(Gst.Query query, uint cur_angle, uint n_angles)ŒGst.Navigation÷0œpublic bool
+query_parse_commands_lengthÃ128Õ(Gst.Query query, uint n_cmds)ŒGst.Navigation÷0œpublic bool
+query_parse_commands_nthÃ128Õ(Gst.Query query, uint nth, Gst.NavigationCommand cmd)ŒGst.Navigation÷0œpublic bool
+query_set_anglesÃ128Õ(Gst.Query query, uint cur_angle, uint n_angles)ŒGst.Navigation÷0œpublic void
+query_set_commandsÃ128Õ(Gst.Query query, int n_cmds)ŒGst.Navigation÷0œpublic void
+query_set_commandsvÃ128Õ(Gst.Query query, int n_cmds, Gst.NavigationCommand cmds)ŒGst.Navigation÷0œpublic void
+record_toggledÃ128Õ(Gst.MixerTrack channel, bool record)ŒGst.Mixer÷0œpublic signal void
+send_commandÃ128Õ(Gst.NavigationCommand command)ŒGst.Navigation÷0œpublic void
+send_eventÃ128Õ(Gst.Structure structure)ŒGst.Navigation÷0œpublic abstract void
+send_key_eventÃ128Õ(string event, string key)ŒGst.Navigation÷0œpublic void
+send_mouse_eventÃ128Õ(string event, int button, double x, double y)ŒGst.Navigation÷0œpublic void
+set_channelÃ128Õ(Gst.TunerChannel channel)ŒGst.Tuner÷0œpublic abstract void
+set_frequencyÃ128Õ(Gst.TunerChannel channel, ulong frequency)ŒGst.Tuner÷0œpublic abstract void
+set_hcenterÃ128Õ(int center)ŒGst.VideoOrientation÷0œpublic abstract bool
+set_hflipÃ128Õ(bool flip)ŒGst.VideoOrientation÷0œpublic abstract bool
+set_muteÃ128Õ(Gst.MixerTrack track, bool mute)ŒGst.Mixer÷0œpublic abstract void
+set_muteÃ128Õ(bool mute)ŒGst.StreamVolume÷0œpublic void
+set_normÃ128Õ(Gst.TunerNorm norm)ŒGst.Tuner÷0œpublic abstract void
+set_optionÃ128Õ(Gst.MixerOptions opts, string value)ŒGst.Mixer÷0œpublic abstract void
+set_recordÃ128Õ(Gst.MixerTrack track, bool record)ŒGst.Mixer÷0œpublic abstract void
+set_valueÃ128Õ(Gst.ColorBalanceChannel channel, int value)ŒGst.ColorBalance÷0œpublic abstract void
+set_vcenterÃ128Õ(int center)ŒGst.VideoOrientation÷0œpublic abstract bool
+set_vflipÃ128Õ(bool flip)ŒGst.VideoOrientation÷0œpublic abstract bool
+set_volumeÃ128Õ(Gst.MixerTrack track, int volumes)ŒGst.Mixer÷0œpublic abstract void
+set_volumeÃ128Õ(Gst.StreamVolumeFormat format, double val)ŒGst.StreamVolume÷0œpublic void
+set_xwindow_idÃ128Õ(ulong xwindow_id)ŒGst.XOverlay÷0œpublic abstract void
+signal_changedÃ128Õ(Gst.TunerChannel channel, int @signal)ŒGst.Tuner÷0œpublic signal void
+signal_changedÃ128Õ(int @signal)ŒGst.TunerChannel÷0œpublic virtual signal void
+signal_strengthÃ128Õ(Gst.TunerChannel channel)ŒGst.Tuner÷0œpublic abstract int
+untranslated_labelÃ8ŒGst.MixerTrack÷0
+value_changedÃ128Õ(Gst.ColorBalanceChannel channel, int value)ŒGst.ColorBalance÷0œpublic signal void
+value_changedÃ128Õ(int value)ŒGst.ColorBalanceChannel÷0œpublic virtual signal void
+volumeÃ8ŒGst.StreamVolume÷0œdouble
+volume_changedÃ128Õ(Gst.MixerTrack channel, void* volumes)ŒGst.Mixer÷0œpublic signal void

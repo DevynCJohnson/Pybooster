@@ -1,0 +1,369 @@
+# format=tagmanager
+AFTERÃ4ŒGtk.SourceSmartHomeEndType÷0
+ALLÃ4ŒGtk.SourceDrawSpacesFlags÷0
+ALREADY_BOUNDÃ4ŒGtk.SourceCompletionError÷0
+ALWAYSÃ4ŒGtk.SourceSmartHomeEndType÷0
+BEFOREÃ4ŒGtk.SourceSmartHomeEndType÷0
+CASE_INSENSITIVEÃ4ŒGtk.SourceSearchFlags÷0
+DISABLEDÃ4ŒGtk.SourceSmartHomeEndType÷0
+GtkÃ256÷0
+INTERACTIVEÃ4ŒGtk.SourceCompletionActivation÷0
+LEADINGÃ4ŒGtk.SourceDrawSpacesFlags÷0
+LINESÃ4ŒGtk.SourceViewGutterPosition÷0
+MARKSÃ4ŒGtk.SourceViewGutterPosition÷0
+NBSPÃ4ŒGtk.SourceDrawSpacesFlags÷0
+NEWLINEÃ4ŒGtk.SourceDrawSpacesFlags÷0
+NONEÃ4ŒGtk.SourceCompletionActivation÷0
+NOT_BOUNDÃ4ŒGtk.SourceCompletionError÷0
+SOURCE_COMPLETION_CAPABILITY_AUTOMATICÃ8ŒGtk÷0
+SOURCE_COMPLETION_CAPABILITY_INTERACTIVEÃ8ŒGtk÷0
+SPACEÃ4ŒGtk.SourceDrawSpacesFlags÷0
+SourceBufferÃ1ŒGtk÷0
+SourceBufferÃ128Õ(Gtk.TextTagTable? table)ŒGtk.SourceBuffer÷0
+SourceBuffer.with_languageÃ128Õ(Gtk.SourceLanguage language)ŒGtk.SourceBuffer÷0
+SourceCompletionÃ1ŒGtk÷0
+SourceCompletionÃ128Õ()ŒGtk.SourceCompletion÷0
+SourceCompletionActivationÃ2ŒGtk÷0
+SourceCompletionContextÃ1ŒGtk÷0
+SourceCompletionContextÃ128Õ()ŒGtk.SourceCompletionContext÷0
+SourceCompletionErrorÃ2ŒGtk÷0
+SourceCompletionInfoÃ1ŒGtk÷0
+SourceCompletionInfoÃ128Õ()ŒGtk.SourceCompletionInfo÷0
+SourceCompletionItemÃ1ŒGtk÷0
+SourceCompletionItemÃ128Õ(string label, string text, Gdk.Pixbuf? icon, string? info)ŒGtk.SourceCompletionItem÷0
+SourceCompletionItem.from_stockÃ128Õ(string label, string text, string stock, string info)ŒGtk.SourceCompletionItem÷0
+SourceCompletionItem.with_markupÃ128Õ(string markup, string text, Gdk.Pixbuf icon, string info)ŒGtk.SourceCompletionItem÷0
+SourceCompletionProposalÃ32ŒGtk÷0
+SourceCompletionProviderÃ32ŒGtk÷0
+SourceCompletionWordsÃ1ŒGtk÷0
+SourceCompletionWordsÃ128Õ(string name, Gdk.Pixbuf icon)ŒGtk.SourceCompletionWords÷0
+SourceDrawSpacesFlagsÃ2ŒGtk÷0
+SourceGutterÃ1ŒGtk÷0
+SourceGutterÃ128Õ()ŒGtk.SourceGutter÷0
+SourceGutterDataFuncÃ128Õ(Gtk.SourceGutter gutter, Gtk.CellRenderer cell, int line_number, bool current_line)ŒGtk÷0œpublic delegate void
+SourceGutterSizeFuncÃ128Õ(Gtk.SourceGutter gutter, Gtk.CellRenderer cell)ŒGtk÷0œpublic delegate void
+SourceLanguageÃ1ŒGtk÷0
+SourceLanguageÃ128Õ()ŒGtk.SourceLanguage÷0
+SourceLanguageManagerÃ1ŒGtk÷0
+SourceLanguageManagerÃ128Õ()ŒGtk.SourceLanguageManager÷0
+SourceMarkÃ1ŒGtk÷0
+SourceMarkÃ128Õ(string name, string category)ŒGtk.SourceMark÷0
+SourcePrintCompositorÃ1ŒGtk÷0
+SourcePrintCompositorÃ128Õ(Gtk.SourceBuffer buffer)ŒGtk.SourcePrintCompositor÷0
+SourcePrintCompositor.from_viewÃ128Õ(Gtk.SourceView view)ŒGtk.SourcePrintCompositor÷0
+SourceSearchFlagsÃ2ŒGtk÷0
+SourceSmartHomeEndTypeÃ2ŒGtk÷0
+SourceStyleÃ1ŒGtk÷0
+SourceStyleÃ128Õ()ŒGtk.SourceStyle÷0
+SourceStyleSchemeÃ1ŒGtk÷0
+SourceStyleSchemeÃ128Õ()ŒGtk.SourceStyleScheme÷0
+SourceStyleSchemeManagerÃ1ŒGtk÷0
+SourceStyleSchemeManagerÃ128Õ()ŒGtk.SourceStyleSchemeManager÷0
+SourceUndoManagerÃ32ŒGtk÷0
+SourceViewÃ1ŒGtk÷0
+SourceViewÃ128Õ()ŒGtk.SourceView÷0
+SourceView.with_bufferÃ128Õ(Gtk.SourceBuffer buffer)ŒGtk.SourceView÷0
+SourceViewGutterPositionÃ2ŒGtk÷0
+SourceViewMarkTooltipFuncÃ128Õ(Gtk.SourceMark mark)ŒGtk÷0œpublic delegate unowned string
+TABÃ4ŒGtk.SourceDrawSpacesFlags÷0
+TEXTÃ4ŒGtk.SourceDrawSpacesFlags÷0
+TEXT_ONLYÃ4ŒGtk.SourceSearchFlags÷0
+TRAILINGÃ4ŒGtk.SourceDrawSpacesFlags÷0
+USER_REQUESTEDÃ4ŒGtk.SourceCompletionActivation÷0
+VISIBLE_ONLYÃ4ŒGtk.SourceSearchFlags÷0
+acceleratorsÃ8ŒGtk.SourceCompletion÷0
+activate_proposalÃ128Õ()ŒGtk.SourceCompletion÷0œpublic virtual signal void
+activate_proposalÃ128Õ(Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)ŒGtk.SourceCompletionProvider÷0œpublic virtual bool
+activationÃ8ŒGtk.SourceCompletionContext÷0œGtk.SourceCompletionActivation
+add_proposalsÃ128Õ(Gtk.SourceCompletionProvider provider, GLib.List<Gtk.SourceCompletionProposal> proposals, bool finished)ŒGtk.SourceCompletionContext÷0œpublic void
+add_providerÃ128Õ(Gtk.SourceCompletionProvider provider)ŒGtk.SourceCompletion÷0œpublic bool
+append_search_pathÃ128Õ(string path)ŒGtk.SourceStyleSchemeManager÷0œpublic void
+auto_complete_delayÃ8ŒGtk.SourceCompletion÷0
+auto_indentÃ8ŒGtk.SourceView÷0œbool
+backgroundÃ8ŒGtk.SourceStyle÷0
+background_setÃ8ŒGtk.SourceStyle÷0œbool
+backward_iter_to_source_markÃ128Õ(Gtk.TextIter iter, string category)ŒGtk.SourceBuffer÷0œpublic bool
+before_showÃ128Õ()ŒGtk.SourceCompletionInfo÷0œpublic virtual signal void
+begin_not_undoable_actionÃ128Õ()ŒGtk.SourceBuffer÷0œpublic void
+begin_not_undoable_actionÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract void
+block_interactiveÃ128Õ()ŒGtk.SourceCompletion÷0œpublic void
+body_font_nameÃ8ŒGtk.SourcePrintCompositor÷0
+boldÃ8ŒGtk.SourceStyle÷0œbool
+bold_setÃ8ŒGtk.SourceStyle÷0œbool
+bufferÃ8ŒGtk.SourcePrintCompositor÷0œGtk.SourceBuffer
+can_redoÃ8ŒGtk.SourceBuffer÷0œbool
+can_redoÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract bool
+can_redo_changedÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic signal void
+can_undoÃ8ŒGtk.SourceBuffer÷0œbool
+can_undoÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract bool
+can_undo_changedÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic signal void
+cancelledÃ128Õ()ŒGtk.SourceCompletionContext÷0œpublic virtual signal void
+categoryÃ8ŒGtk.SourceMark÷0
+cell_activatedÃ128Õ(Gtk.CellRenderer renderer, Gtk.TextIter iter, Gdk.Event event)ŒGtk.SourceGutter÷0œpublic virtual signal void
+changedÃ128Õ()ŒGtk.SourceCompletionProposal÷0œpublic signal void
+completionÃ8ŒGtk.SourceCompletionContext÷0œGtk.SourceCompletion
+completionÃ8ŒGtk.SourceView÷0œGtk.SourceCompletion
+copyÃ128Õ()ŒGtk.SourceStyle÷0œpublic Gtk.SourceStyle
+create_contextÃ128Õ(Gtk.TextIter? position = null)ŒGtk.SourceCompletion÷0œpublic unowned
+create_source_markÃ128Õ(string name, string category, Gtk.TextIter where)ŒGtk.SourceBuffer÷0œpublic unowned
+descriptionÃ8ŒGtk.SourceStyleScheme÷0
+draw_pageÃ128Õ(Gtk.PrintContext context, int page_nr)ŒGtk.SourcePrintCompositor÷0œpublic void
+draw_spacesÃ8ŒGtk.SourceView÷0œGtk.SourceDrawSpacesFlags
+end_not_undoable_actionÃ128Õ()ŒGtk.SourceBuffer÷0œpublic void
+end_not_undoable_actionÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract void
+ensure_highlightÃ128Õ(Gtk.TextIter start, Gtk.TextIter end)ŒGtk.SourceBuffer÷0œpublic void
+equalÃ128Õ(Gtk.SourceCompletionProposal other)ŒGtk.SourceCompletionProposal÷0œpublic virtual bool
+error_quarkÃ128Õ()ŒGtk.SourceCompletion÷0œpublic GLib.Quark
+filenameÃ8ŒGtk.SourceStyleScheme÷0
+footer_font_nameÃ8ŒGtk.SourcePrintCompositor÷0
+force_rescanÃ128Õ()ŒGtk.SourceStyleSchemeManager÷0œpublic void
+foregroundÃ8ŒGtk.SourceStyle÷0
+foreground_setÃ8ŒGtk.SourceStyle÷0œbool
+forward_iter_to_source_markÃ128Õ(Gtk.TextIter iter, string category)ŒGtk.SourceBuffer÷0œpublic bool
+get_activationÃ128Õ()ŒGtk.SourceCompletionContext÷0œpublic Gtk.SourceCompletionActivation
+get_activationÃ128Õ()ŒGtk.SourceCompletionProvider÷0œpublic virtual Gtk.SourceCompletionActivation
+get_authorsÃ128Õ()ŒGtk.SourceStyleScheme÷0œpublic unowned string
+get_auto_indentÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_body_font_nameÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic unowned string
+get_bottom_marginÃ128Õ(Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic double
+get_bufferÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic unowned
+get_categoryÃ128Õ()ŒGtk.SourceMark÷0œpublic unowned string
+get_completionÃ128Õ()ŒGtk.SourceView÷0œpublic unowned
+get_context_classes_at_iterÃ128Õ(Gtk.TextIter iter)ŒGtk.SourceBuffer÷0œpublic unowned string
+get_defaultÃ128Õ()ŒGtk.SourceLanguageManager÷0œpublic unowned
+get_defaultÃ128Õ()ŒGtk.SourceStyleSchemeManager÷0œpublic unowned
+get_descriptionÃ128Õ()ŒGtk.SourceStyleScheme÷0œpublic unowned string
+get_draw_spacesÃ128Õ()ŒGtk.SourceView÷0œpublic Gtk.SourceDrawSpacesFlags
+get_filenameÃ128Õ()ŒGtk.SourceStyleScheme÷0œpublic unowned string
+get_footer_font_nameÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic unowned string
+get_globsÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_gutterÃ128Õ(Gtk.TextWindowType window_type)ŒGtk.SourceView÷0œpublic unowned
+get_header_font_nameÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic unowned string
+get_hiddenÃ128Õ()ŒGtk.SourceLanguage÷0œpublic bool
+get_highlight_current_lineÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_highlight_matching_bracketsÃ128Õ()ŒGtk.SourceBuffer÷0œpublic bool
+get_highlight_syntaxÃ128Õ()ŒGtk.SourceBuffer÷0œpublic bool
+get_highlight_syntaxÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic bool
+get_iconÃ128Õ()ŒGtk.SourceCompletionProposal÷0œpublic virtual unowned
+get_iconÃ128Õ()ŒGtk.SourceCompletionProvider÷0œpublic virtual unowned
+get_idÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_idÃ128Õ()ŒGtk.SourceStyleScheme÷0œpublic unowned string
+get_indent_on_tabÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_indent_widthÃ128Õ()ŒGtk.SourceView÷0œpublic int
+get_infoÃ128Õ()ŒGtk.SourceCompletionProposal÷0
+get_info_widgetÃ128Õ(Gtk.SourceCompletionProposal proposal)ŒGtk.SourceCompletionProvider÷0œpublic virtual unowned
+get_info_windowÃ128Õ()ŒGtk.SourceCompletion÷0œpublic unowned
+get_insert_spaces_instead_of_tabsÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_interactive_delayÃ128Õ()ŒGtk.SourceCompletionProvider÷0œpublic virtual int
+get_iterÃ128Õ(Gtk.TextIter iter)ŒGtk.SourceCompletionContext÷0œpublic void
+get_labelÃ128Õ()ŒGtk.SourceCompletionProposal÷0
+get_languageÃ128Õ()ŒGtk.SourceBuffer÷0œpublic unowned
+get_languageÃ128Õ(string id)ŒGtk.SourceLanguageManager÷0œpublic unowned
+get_language_idsÃ128Õ()ŒGtk.SourceLanguageManager÷0œpublic unowned string
+get_left_marginÃ128Õ(Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic double
+get_line_numbers_font_nameÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic unowned string
+get_mark_category_backgroundÃ128Õ(string category, Gdk.Color dest)ŒGtk.SourceView÷0œpublic bool
+get_mark_category_pixbufÃ128Õ(string category)ŒGtk.SourceView÷0œpublic unowned
+get_mark_category_priorityÃ128Õ(string category)ŒGtk.SourceView÷0œpublic int
+get_markupÃ128Õ()ŒGtk.SourceCompletionProposal÷0
+get_max_undo_levelsÃ128Õ()ŒGtk.SourceBuffer÷0œpublic int
+get_metadataÃ128Õ(string name)ŒGtk.SourceLanguage÷0œpublic unowned string
+get_mime_typesÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_n_pagesÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic int
+get_nameÃ128Õ()ŒGtk.SourceCompletionProvider÷0
+get_nameÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_nameÃ128Õ()ŒGtk.SourceStyleScheme÷0œpublic unowned string
+get_pagination_progressÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic double
+get_print_footerÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic bool
+get_print_headerÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic bool
+get_print_line_numbersÃ128Õ()ŒGtk.SourcePrintCompositor÷0
+get_priorityÃ128Õ()ŒGtk.SourceCompletionProvider÷0œpublic virtual int
+get_providersÃ128Õ()ŒGtk.SourceCompletion÷0œpublic unowned
+get_right_marginÃ128Õ(Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic double
+get_right_margin_positionÃ128Õ()ŒGtk.SourceView÷0
+get_schemeÃ128Õ(string scheme_id)ŒGtk.SourceStyleSchemeManager÷0œpublic unowned
+get_scheme_idsÃ128Õ()ŒGtk.SourceStyleSchemeManager÷0œpublic unowned string
+get_search_pathÃ128Õ()ŒGtk.SourceLanguageManager÷0œpublic unowned string
+get_search_pathÃ128Õ()ŒGtk.SourceStyleSchemeManager÷0œpublic unowned string
+get_sectionÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_show_line_marksÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_show_line_numbersÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_show_right_marginÃ128Õ()ŒGtk.SourceView÷0œpublic bool
+get_smart_home_endÃ128Õ()ŒGtk.SourceView÷0œpublic Gtk.SourceSmartHomeEndType
+get_source_marks_at_iterÃ128Õ(Gtk.TextIter iter, string category)ŒGtk.SourceBuffer÷0œpublic unowned
+get_source_marks_at_lineÃ128Õ(int line, string category)ŒGtk.SourceBuffer÷0œpublic unowned
+get_start_iterÃ128Õ(Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)ŒGtk.SourceCompletionProvider÷0œpublic virtual bool
+get_styleÃ128Õ(string style_id)ŒGtk.SourceStyleScheme÷0œpublic unowned
+get_style_idsÃ128Õ()ŒGtk.SourceLanguage÷0œpublic unowned string
+get_style_nameÃ128Õ(string style_id)ŒGtk.SourceLanguage÷0œpublic unowned string
+get_style_schemeÃ128Õ()ŒGtk.SourceBuffer÷0œpublic unowned
+get_tab_widthÃ128Õ()ŒGtk.SourcePrintCompositor÷0
+get_tab_widthÃ128Õ()ŒGtk.SourceView÷0
+get_textÃ128Õ()ŒGtk.SourceCompletionProposal÷0
+get_top_marginÃ128Õ(Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic double
+get_undo_managerÃ128Õ()ŒGtk.SourceBuffer÷0œpublic unowned
+get_viewÃ128Õ()ŒGtk.SourceCompletion÷0œpublic void *
+get_widgetÃ128Õ()ŒGtk.SourceCompletionInfo÷0œpublic unowned
+get_windowÃ128Õ()ŒGtk.SourceGutter÷0œpublic unowned
+get_wrap_modeÃ128Õ()ŒGtk.SourcePrintCompositor÷0œpublic Gtk.WrapMode
+guess_languageÃ128Õ(string? filename, string? content_type)ŒGtk.SourceLanguageManager÷0œpublic unowned
+hashÃ128Õ()ŒGtk.SourceCompletionProposal÷0
+header_font_nameÃ8ŒGtk.SourcePrintCompositor÷0
+hiddenÃ8ŒGtk.SourceLanguage÷0œbool
+hideÃ128Õ()ŒGtk.SourceCompletion÷0œpublic virtual signal void
+highlight_current_lineÃ8ŒGtk.SourceView÷0œbool
+highlight_matching_bracketsÃ8ŒGtk.SourceBuffer÷0œbool
+highlight_syntaxÃ8ŒGtk.SourceBuffer÷0œbool
+highlight_syntaxÃ8ŒGtk.SourcePrintCompositor÷0œbool
+highlight_updatedÃ128Õ(Gtk.TextIter p0, Gtk.TextIter p1)ŒGtk.SourceBuffer÷0œpublic virtual signal void
+iconÃ8ŒGtk.SourceCompletionItem÷0œGdk.Pixbuf
+iconÃ8ŒGtk.SourceCompletionWords÷0œGdk.Pixbuf
+idÃ8ŒGtk.SourceLanguage÷0
+idÃ8ŒGtk.SourceStyleScheme÷0
+indent_on_tabÃ8ŒGtk.SourceView÷0œbool
+indent_widthÃ8ŒGtk.SourceView÷0œint
+infoÃ8ŒGtk.SourceCompletionItem÷0
+insertÃ128Õ(Gtk.CellRenderer renderer, int position)ŒGtk.SourceGutter÷0œpublic void
+insert_spaces_instead_of_tabsÃ8ŒGtk.SourceView÷0œbool
+interactive_delayÃ8ŒGtk.SourceCompletionWords÷0œint
+italicÃ8ŒGtk.SourceStyle÷0œbool
+italic_setÃ8ŒGtk.SourceStyle÷0œbool
+iterÃ8ŒGtk.SourceCompletionContext÷0œGtk.TextIter
+iter_backward_to_context_class_toggleÃ128Õ(Gtk.TextIter iter, string context_class)ŒGtk.SourceBuffer÷0œpublic bool
+iter_forward_to_context_class_toggleÃ128Õ(Gtk.TextIter iter, string context_class)ŒGtk.SourceBuffer÷0œpublic bool
+iter_has_context_classÃ128Õ(Gtk.TextIter iter, string context_class)ŒGtk.SourceBuffer÷0œpublic bool
+labelÃ8ŒGtk.SourceCompletionItem÷0
+languageÃ8ŒGtk.SourceBuffer÷0œGtk.SourceLanguage
+language_idsÃ8ŒGtk.SourceLanguageManager÷0
+line_backgroundÃ8ŒGtk.SourceStyle÷0
+line_background_setÃ8ŒGtk.SourceStyle÷0œbool
+line_mark_activatedÃ128Õ(Gtk.TextIter iter, Gdk.Event event)ŒGtk.SourceView÷0œpublic virtual signal void
+line_numbers_font_nameÃ8ŒGtk.SourcePrintCompositor÷0
+markupÃ8ŒGtk.SourceCompletionItem÷0
+matchÃ128Õ(Gtk.SourceCompletionContext context)ŒGtk.SourceCompletionProvider÷0œpublic virtual bool
+max_heightÃ8ŒGtk.SourceCompletionInfo÷0œint
+max_undo_levelsÃ8ŒGtk.SourceBuffer÷0œint
+max_widthÃ8ŒGtk.SourceCompletionInfo÷0œint
+minimum_word_sizeÃ8ŒGtk.SourceCompletionWords÷0
+move_cursorÃ128Õ(Gtk.ScrollStep step, int num)ŒGtk.SourceCompletion÷0œpublic virtual signal void
+move_linesÃ128Õ(bool copy, int step)ŒGtk.SourceView÷0œpublic virtual signal void
+move_pageÃ128Õ(Gtk.ScrollStep step, int num)ŒGtk.SourceCompletion÷0œpublic virtual signal void
+move_to_iterÃ128Õ(Gtk.TextView view, Gtk.TextIter? iter = null)ŒGtk.SourceCompletionInfo÷0œpublic void
+move_windowÃ128Õ(Gtk.TextIter iter)ŒGtk.SourceCompletion÷0œpublic void
+n_pagesÃ8ŒGtk.SourcePrintCompositor÷0œint
+nameÃ8ŒGtk.SourceCompletionWords÷0
+nameÃ8ŒGtk.SourceLanguage÷0
+nameÃ8ŒGtk.SourceStyleScheme÷0
+nextÃ128Õ(string category)ŒGtk.SourceMark÷0œpublic unowned
+paginateÃ128Õ(Gtk.PrintContext context)ŒGtk.SourcePrintCompositor÷0œpublic bool
+populateÃ128Õ(Gtk.SourceCompletionContext context)ŒGtk.SourceCompletionProvider÷0œpublic virtual void
+populate_contextÃ128Õ(Gtk.SourceCompletionContext context)ŒGtk.SourceCompletion÷0œpublic virtual signal void
+prepend_search_pathÃ128Õ(string path)ŒGtk.SourceStyleSchemeManager÷0œpublic void
+prevÃ128Õ(string category)ŒGtk.SourceMark÷0œpublic unowned
+print_footerÃ8ŒGtk.SourcePrintCompositor÷0œbool
+print_headerÃ8ŒGtk.SourcePrintCompositor÷0œbool
+print_line_numbersÃ8ŒGtk.SourcePrintCompositor÷0
+priorityÃ8ŒGtk.SourceCompletionWords÷0œint
+process_resizeÃ128Õ()ŒGtk.SourceCompletionInfo÷0œpublic void
+proposal_activatedÃ128Õ(Gtk.SourceCompletionProvider provider, Gtk.SourceCompletionProposal proposal)ŒGtk.SourceCompletion÷0œpublic virtual bool
+proposal_page_sizeÃ8ŒGtk.SourceCompletion÷0
+proposals_batch_sizeÃ8ŒGtk.SourceCompletionWords÷0
+provider_page_sizeÃ8ŒGtk.SourceCompletion÷0
+query_tooltipÃ128Õ(Gtk.CellRenderer renderer, Gtk.TextIter iter, Gtk.Tooltip tooltip)ŒGtk.SourceGutter÷0œpublic virtual signal bool
+queue_drawÃ128Õ()ŒGtk.SourceGutter÷0œpublic void
+redoÃ128Õ()ŒGtk.SourceBuffer÷0œpublic virtual signal void
+redoÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract void
+redoÃ128Õ()ŒGtk.SourceView÷0œpublic virtual signal void
+registerÃ128Õ(Gtk.TextBuffer buffer)ŒGtk.SourceCompletionWords÷0œpublic void
+remember_info_visibilityÃ8ŒGtk.SourceCompletion÷0œbool
+removeÃ128Õ(Gtk.CellRenderer renderer)ŒGtk.SourceGutter÷0œpublic void
+remove_providerÃ128Õ(Gtk.SourceCompletionProvider provider)ŒGtk.SourceCompletion÷0œpublic bool
+remove_source_marksÃ128Õ(Gtk.TextIter start, Gtk.TextIter end, string category)ŒGtk.SourceBuffer÷0œpublic void
+reorderÃ128Õ(Gtk.CellRenderer renderer, int position)ŒGtk.SourceGutter÷0œpublic void
+right_margin_positionÃ8ŒGtk.SourceView÷0
+scan_batch_sizeÃ8ŒGtk.SourceCompletionWords÷0
+scheme_idsÃ8ŒGtk.SourceStyleSchemeManager÷0
+search_pathÃ8ŒGtk.SourceLanguageManager÷0
+search_pathÃ8ŒGtk.SourceStyleSchemeManager÷0
+sectionÃ8ŒGtk.SourceLanguage÷0
+select_on_showÃ8ŒGtk.SourceCompletion÷0œbool
+set_auto_indentÃ128Õ(bool enable)ŒGtk.SourceView÷0œpublic void
+set_body_font_nameÃ128Õ(string font_name)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_bottom_marginÃ128Õ(double margin, Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_cell_data_funcÃ128Õ(Gtk.CellRenderer renderer, Gtk.SourceGutterDataFunc func, void* func_data, GLib.DestroyNotify destroy)ŒGtk.SourceGutter÷0œpublic void
+set_cell_size_funcÃ128Õ(Gtk.CellRenderer renderer, Gtk.SourceGutterSizeFunc func, void* func_data, GLib.DestroyNotify destroy)ŒGtk.SourceGutter÷0œpublic void
+set_draw_spacesÃ128Õ(Gtk.SourceDrawSpacesFlags flags)ŒGtk.SourceView÷0œpublic void
+set_footer_font_nameÃ128Õ(string font_name)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_footer_formatÃ128Õ(bool separator, string left, string center, string right)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_header_font_nameÃ128Õ(string font_name)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_header_formatÃ128Õ(bool separator, string left, string center, string right)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_highlight_current_lineÃ128Õ(bool show)ŒGtk.SourceView÷0œpublic void
+set_highlight_matching_bracketsÃ128Õ(bool highlight)ŒGtk.SourceBuffer÷0œpublic void
+set_highlight_syntaxÃ128Õ(bool highlight)ŒGtk.SourceBuffer÷0œpublic void
+set_highlight_syntaxÃ128Õ(bool highlight)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_indent_on_tabÃ128Õ(bool enable)ŒGtk.SourceView÷0œpublic void
+set_indent_widthÃ128Õ(int width)ŒGtk.SourceView÷0œpublic void
+set_insert_spaces_instead_of_tabsÃ128Õ(bool enable)ŒGtk.SourceView÷0œpublic void
+set_languageÃ128Õ(Gtk.SourceLanguage language)ŒGtk.SourceBuffer÷0œpublic void
+set_left_marginÃ128Õ(double margin, Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_line_numbers_font_nameÃ128Õ(string font_name)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_mark_category_backgroundÃ128Õ(string category, Gdk.Color color)ŒGtk.SourceView÷0œpublic void
+set_mark_category_icon_from_icon_nameÃ128Õ(string category, string name)ŒGtk.SourceView÷0œpublic void
+set_mark_category_icon_from_pixbufÃ128Õ(string category, Gdk.Pixbuf pixbuf)ŒGtk.SourceView÷0œpublic void
+set_mark_category_icon_from_stockÃ128Õ(string category, string stock_id)ŒGtk.SourceView÷0œpublic void
+set_mark_category_pixbufÃ128Õ(string category, Gdk.Pixbuf pixbuf)ŒGtk.SourceView÷0œpublic void
+set_mark_category_priorityÃ128Õ(string category, int priority)ŒGtk.SourceView÷0œpublic void
+set_mark_category_tooltip_funcÃ128Õ(string category, Gtk.SourceViewMarkTooltipFunc func, GLib.DestroyNotify user_data_notify)ŒGtk.SourceView÷0œpublic void
+set_mark_category_tooltip_markup_funcÃ128Õ(string category, Gtk.SourceViewMarkTooltipFunc markup_func, GLib.DestroyNotify user_data_notify)ŒGtk.SourceView÷0œpublic void
+set_max_undo_levelsÃ128Õ(int max_undo_levels)ŒGtk.SourceBuffer÷0œpublic void
+set_print_footerÃ128Õ(bool print)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_print_headerÃ128Õ(bool print)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_print_line_numbersÃ128Õ(uint interval)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_right_marginÃ128Õ(double margin, Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_right_margin_positionÃ128Õ(uint pos)ŒGtk.SourceView÷0œpublic void
+set_search_pathÃ128Õ([CCode (array_length = false)] string[]? dirs)ŒGtk.SourceLanguageManager÷0œpublic void
+set_search_pathÃ128Õ(string path)ŒGtk.SourceStyleSchemeManager÷0œpublic void
+set_show_line_marksÃ128Õ(bool show)ŒGtk.SourceView÷0œpublic void
+set_show_line_numbersÃ128Õ(bool show)ŒGtk.SourceView÷0œpublic void
+set_show_right_marginÃ128Õ(bool show)ŒGtk.SourceView÷0œpublic void
+set_sizingÃ128Õ(int width, int height, bool shrink_width, bool shrink_height)ŒGtk.SourceCompletionInfo÷0œpublic void
+set_smart_home_endÃ128Õ(Gtk.SourceSmartHomeEndType smart_he)ŒGtk.SourceView÷0œpublic void
+set_style_schemeÃ128Õ(Gtk.SourceStyleScheme scheme)ŒGtk.SourceBuffer÷0œpublic void
+set_tab_widthÃ128Õ(uint width)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_tab_widthÃ128Õ(uint width)ŒGtk.SourceView÷0œpublic void
+set_top_marginÃ128Õ(double margin, Gtk.Unit unit)ŒGtk.SourcePrintCompositor÷0œpublic void
+set_undo_managerÃ128Õ(Gtk.SourceUndoManager manager)ŒGtk.SourceBuffer÷0œpublic void
+set_widgetÃ128Õ(Gtk.Widget widget)ŒGtk.SourceCompletionInfo÷0œpublic void
+set_wrap_modeÃ128Õ(Gtk.WrapMode wrap_mode)ŒGtk.SourcePrintCompositor÷0œpublic void
+showÃ128Õ()ŒGtk.SourceCompletion÷0œpublic virtual signal void
+show_completionÃ128Õ()ŒGtk.SourceView÷0œpublic virtual signal void
+show_headersÃ8ŒGtk.SourceCompletion÷0œbool
+show_iconsÃ8ŒGtk.SourceCompletion÷0œbool
+show_line_marksÃ8ŒGtk.SourceView÷0œbool
+show_line_numbersÃ8ŒGtk.SourceView÷0œbool
+show_right_marginÃ8ŒGtk.SourceView÷0œbool
+shrink_heightÃ8ŒGtk.SourceCompletionInfo÷0œbool
+shrink_widthÃ8ŒGtk.SourceCompletionInfo÷0œbool
+smart_home_endÃ8ŒGtk.SourceView÷0œGtk.SourceSmartHomeEndType
+source_iter_backward_searchÃ128Õ(Gtk.TextIter iter, string str, Gtk.SourceSearchFlags flags, out Gtk.TextIter match_start, out Gtk.TextIter match_end, Gtk.TextIter? limit)ŒGtk÷0œpublic bool
+source_iter_forward_searchÃ128Õ(Gtk.TextIter iter, string str, Gtk.SourceSearchFlags flags, out Gtk.TextIter match_start, out Gtk.TextIter match_end, Gtk.TextIter? limit)ŒGtk÷0œpublic bool
+source_mark_updatedÃ128Õ(Gtk.TextMark p0)ŒGtk.SourceBuffer÷0œpublic virtual signal void
+strikethroughÃ8ŒGtk.SourceStyle÷0œbool
+strikethrough_setÃ8ŒGtk.SourceStyle÷0œbool
+style_schemeÃ8ŒGtk.SourceBuffer÷0œGtk.SourceStyleScheme
+tab_widthÃ8ŒGtk.SourcePrintCompositor÷0
+tab_widthÃ8ŒGtk.SourceView÷0
+textÃ8ŒGtk.SourceCompletionItem÷0
+unblock_interactiveÃ128Õ()ŒGtk.SourceCompletion÷0œpublic void
+underlineÃ8ŒGtk.SourceStyle÷0œbool
+underline_setÃ8ŒGtk.SourceStyle÷0œbool
+undoÃ128Õ()ŒGtk.SourceBuffer÷0œpublic virtual signal void
+undoÃ128Õ()ŒGtk.SourceUndoManager÷0œpublic abstract void
+undoÃ128Õ()ŒGtk.SourceView÷0œpublic virtual signal void
+undo_managerÃ8ŒGtk.SourceBuffer÷0œGtk.SourceUndoManager
+unregisterÃ128Õ(Gtk.TextBuffer buffer)ŒGtk.SourceCompletionWords÷0œpublic void
+update_infoÃ128Õ(Gtk.SourceCompletionProposal proposal, Gtk.SourceCompletionInfo info)ŒGtk.SourceCompletionProvider÷0œpublic virtual void
+viewÃ8ŒGtk.SourceCompletion÷0œGtk.SourceView
+viewÃ8ŒGtk.SourceGutter÷0œGtk.SourceView
+window_typeÃ8ŒGtk.SourceGutter÷0œGtk.TextWindowType
+wrap_modeÃ8ŒGtk.SourcePrintCompositor÷0œGtk.WrapMode

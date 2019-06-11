@@ -1,0 +1,1015 @@
+# format=tagmanager
+@setÃ128Õ(int cpu)ŒPosix.CpuSet÷0œpublic void
+@set_sizedÃ128Õ(int cpu, size_t num)ŒPosix.CpuSet÷0œpublic void
+@yieldÃ128Õ()ŒPosix.Sched÷0œpublic int
+AF_INETÃ8ŒPosix÷0œint
+AF_INET6Ã8ŒPosix÷0œint
+AF_UNIXÃ8ŒPosix÷0œint
+ANYMARKÃ8ŒPosix÷0œint
+AlgorithmÃ2ŒPosix.Sched÷0
+AtExitFuncÃ128Õ()ŒPosix÷0œpublic delegate void
+B0Ã8ŒPosix÷0œspeed_t
+B110Ã8ŒPosix÷0œspeed_t
+B115200Ã8ŒPosix÷0œspeed_t
+B1200Ã8ŒPosix÷0œspeed_t
+B134Ã8ŒPosix÷0œspeed_t
+B150Ã8ŒPosix÷0œspeed_t
+B1800Ã8ŒPosix÷0œspeed_t
+B19200Ã8ŒPosix÷0œspeed_t
+B200Ã8ŒPosix÷0œspeed_t
+B230400Ã8ŒPosix÷0œspeed_t
+B2400Ã8ŒPosix÷0œspeed_t
+B300Ã8ŒPosix÷0œspeed_t
+B38400Ã8ŒPosix÷0œspeed_t
+B4800Ã8ŒPosix÷0œspeed_t
+B50Ã8ŒPosix÷0œspeed_t
+B57600Ã8ŒPosix÷0œspeed_t
+B600Ã8ŒPosix÷0œspeed_t
+B75Ã8ŒPosix÷0œspeed_t
+B9600Ã8ŒPosix÷0œspeed_t
+BATCHÃ4ŒPosix.Sched.Algorithm÷0
+BRKINTÃ8ŒPosix÷0œtcflag_t
+BS0Ã8ŒPosix÷0œtcflag_t
+BS1Ã8ŒPosix÷0œtcflag_t
+BSDLYÃ8ŒPosix÷0œtcflag_t
+CLOCALÃ8ŒPosix÷0œtcflag_t
+CR0Ã8ŒPosix÷0œtcflag_t
+CR1Ã8ŒPosix÷0œtcflag_t
+CR2Ã8ŒPosix÷0œtcflag_t
+CR3Ã8ŒPosix÷0œtcflag_t
+CRDLYÃ8ŒPosix÷0œtcflag_t
+CREADÃ8ŒPosix÷0œtcflag_t
+CS5Ã8ŒPosix÷0œtcflag_t
+CS6Ã8ŒPosix÷0œtcflag_t
+CS7Ã8ŒPosix÷0œtcflag_t
+CS8Ã8ŒPosix÷0œtcflag_t
+CSIZEÃ8ŒPosix÷0œtcflag_t
+CSTOPBÃ8ŒPosix÷0œtcflag_t
+CpuSetÃ1ŒPosix÷0
+CpuSetÃ128Õ(int num = 1)ŒPosix.CpuSet÷0
+DirÃ1ŒPosix÷0
+DirEntÃ1ŒPosix÷0
+E2BIGÃ8ŒPosix÷0œint
+EACCESÃ8ŒPosix÷0œint
+EADDRINUSEÃ8ŒPosix÷0œint
+EADDRNOTAVAILÃ8ŒPosix÷0œint
+EAFNOSUPPORTÃ8ŒPosix÷0œint
+EAGAINÃ8ŒPosix÷0œint
+EALREADYÃ8ŒPosix÷0œint
+EBADFÃ8ŒPosix÷0œint
+EBADMSGÃ8ŒPosix÷0œint
+EBUSYÃ8ŒPosix÷0œint
+ECANCELEDÃ8ŒPosix÷0œint
+ECHILDÃ8ŒPosix÷0œint
+ECHOÃ8ŒPosix÷0œtcflag_t
+ECHOEÃ8ŒPosix÷0œtcflag_t
+ECHOKÃ8ŒPosix÷0œtcflag_t
+ECHONLÃ8ŒPosix÷0œtcflag_t
+ECONNABORTEDÃ8ŒPosix÷0œint
+ECONNREFUSEDÃ8ŒPosix÷0œint
+ECONNRESETÃ8ŒPosix÷0œint
+EDEADLKÃ8ŒPosix÷0œint
+EDESTADDRREQÃ8ŒPosix÷0œint
+EDOMÃ8ŒPosix÷0œint
+EDQUOTÃ8ŒPosix÷0œint
+EEXISTÃ8ŒPosix÷0œint
+EFAULTÃ8ŒPosix÷0œint
+EFBIGÃ8ŒPosix÷0œint
+EHOSTUNREACHÃ8ŒPosix÷0œint
+EIDRMÃ8ŒPosix÷0œint
+EILSEQÃ8ŒPosix÷0œint
+EINPROGRESSÃ8ŒPosix÷0œint
+EINTRÃ8ŒPosix÷0œint
+EINVALÃ8ŒPosix÷0œint
+EIOÃ8ŒPosix÷0œint
+EISCONNÃ8ŒPosix÷0œint
+EISDIRÃ8ŒPosix÷0œint
+ELOOPÃ8ŒPosix÷0œint
+EMFILEÃ8ŒPosix÷0œint
+EMLINKÃ8ŒPosix÷0œint
+EMSGSIZEÃ8ŒPosix÷0œint
+EMULTIHOPÃ8ŒPosix÷0œint
+ENAMETOOLONGÃ8ŒPosix÷0œint
+ENETDOWNÃ8ŒPosix÷0œint
+ENETRESETÃ8ŒPosix÷0œint
+ENETUNREACHÃ8ŒPosix÷0œint
+ENFILEÃ8ŒPosix÷0œint
+ENOBUFSÃ8ŒPosix÷0œint
+ENODATAÃ8ŒPosix÷0œint
+ENODEVÃ8ŒPosix÷0œint
+ENOENTÃ8ŒPosix÷0œint
+ENOEXECÃ8ŒPosix÷0œint
+ENOLCKÃ8ŒPosix÷0œint
+ENOLINKÃ8ŒPosix÷0œint
+ENOMEMÃ8ŒPosix÷0œint
+ENOMSGÃ8ŒPosix÷0œint
+ENOPROTOOPTÃ8ŒPosix÷0œint
+ENOSPCÃ8ŒPosix÷0œint
+ENOSRÃ8ŒPosix÷0œint
+ENOSTRÃ8ŒPosix÷0œint
+ENOSYSÃ8ŒPosix÷0œint
+ENOTCONNÃ8ŒPosix÷0œint
+ENOTDIRÃ8ŒPosix÷0œint
+ENOTEMPTYÃ8ŒPosix÷0œint
+ENOTSOCKÃ8ŒPosix÷0œint
+ENOTSUPÃ8ŒPosix÷0œint
+ENOTTYÃ8ŒPosix÷0œint
+ENXIOÃ8ŒPosix÷0œint
+EOFÃ8ŒPosix.FILE÷0œint
+EOPNOTSUPPÃ8ŒPosix÷0œint
+EOVERFLOWÃ8ŒPosix÷0œint
+EPERMÃ8ŒPosix÷0œint
+EPIPEÃ8ŒPosix÷0œint
+EPROTOÃ8ŒPosix÷0œint
+EPROTONOSUPPORTÃ8ŒPosix÷0œint
+EPROTOTYPEÃ8ŒPosix÷0œint
+ERANGEÃ8ŒPosix÷0œint
+EROFSÃ8ŒPosix÷0œint
+ESPIPEÃ8ŒPosix÷0œint
+ESRCHÃ8ŒPosix÷0œint
+ESTALEÃ8ŒPosix÷0œint
+ETIMEÃ8ŒPosix÷0œint
+ETIMEDOUTÃ8ŒPosix÷0œint
+ETXTBSYÃ8ŒPosix÷0œint
+EWOULDBLOCKÃ8ŒPosix÷0œint
+EXDEVÃ8ŒPosix÷0œint
+EXIT_FAILUREÃ8ŒPosix÷0œint
+EXIT_SUCCESSÃ8ŒPosix÷0œint
+FD_CLOEXECÃ8ŒPosix÷0œint
+FD_CLRÃ128Õ(int fd, fd_set @set)ŒPosix÷0œpublic void
+FD_ISSETÃ128Õ(int fd, fd_set @set)ŒPosix÷0œpublic int
+FD_SETÃ128Õ(int fd, fd_set @set)ŒPosix÷0œpublic void
+FD_ZEROÃ128Õ(fd_set @set)ŒPosix÷0œpublic void
+FF0Ã8ŒPosix÷0œtcflag_t
+FF1Ã8ŒPosix÷0œtcflag_t
+FFDLYÃ8ŒPosix÷0œtcflag_t
+FIFOÃ4ŒPosix.Sched.Algorithm÷0
+FILEÃ1ŒPosix÷0
+FLUSHRÃ8ŒPosix÷0œint
+FLUSHRWÃ8ŒPosix÷0œint
+FLUSHWÃ8ŒPosix÷0œint
+F_DUPFDÃ8ŒPosix÷0œint
+F_GETFDÃ8ŒPosix÷0œint
+F_GETFLÃ8ŒPosix÷0œint
+F_GETLKÃ8ŒPosix÷0œint
+F_GETOWNÃ8ŒPosix÷0œint
+F_OKÃ8ŒPosix÷0œint
+F_RDLCKÃ8ŒPosix÷0œint
+F_SETFDÃ8ŒPosix÷0œint
+F_SETFLÃ8ŒPosix÷0œint
+F_SETLKÃ8ŒPosix÷0œint
+F_SETLKWÃ8ŒPosix÷0œint
+F_SETOWNÃ8ŒPosix÷0œint
+F_UNLCKÃ8ŒPosix÷0œint
+F_WRLCKÃ8ŒPosix÷0œint
+GroupÃ1ŒPosix÷0
+HUPCLÃ8ŒPosix÷0œtcflag_t
+ICANONÃ8ŒPosix÷0œtcflag_t
+ICRNLÃ8ŒPosix÷0œtcflag_t
+IDLEÃ4ŒPosix.Sched.Algorithm÷0
+IEXTENÃ8ŒPosix÷0œtcflag_t
+IGNBRKÃ8ŒPosix÷0œtcflag_t
+IGNCRÃ8ŒPosix÷0œtcflag_t
+IGNPARÃ8ŒPosix÷0œtcflag_t
+INLCRÃ8ŒPosix÷0œtcflag_t
+INPCKÃ8ŒPosix÷0œtcflag_t
+ISIGÃ8ŒPosix÷0œtcflag_t
+ISTRIPÃ8ŒPosix÷0œtcflag_t
+IXANYÃ8ŒPosix÷0œtcflag_t
+IXOFFÃ8ŒPosix÷0œtcflag_t
+IXONÃ8ŒPosix÷0œtcflag_t
+I_ATMARKÃ8ŒPosix÷0œint
+I_CANPUTÃ8ŒPosix÷0œint
+I_CKBANDÃ8ŒPosix÷0œint
+I_FDINSERTÃ8ŒPosix÷0œint
+I_FINDÃ8ŒPosix÷0œint
+I_FLUSHÃ8ŒPosix÷0œint
+I_FLUSHBANDÃ8ŒPosix÷0œint
+I_GETBANDÃ8ŒPosix÷0œint
+I_GETCLTIMEÃ8ŒPosix÷0œint
+I_GETSIGÃ8ŒPosix÷0œint
+I_GRDOPTÃ8ŒPosix÷0œint
+I_GWROPTÃ8ŒPosix÷0œint
+I_LINKÃ8ŒPosix÷0œint
+I_LISTÃ8ŒPosix÷0œint
+I_LOOKÃ8ŒPosix÷0œint
+I_NREADÃ8ŒPosix÷0œint
+I_PEEKÃ8ŒPosix÷0œint
+I_PLINKÃ8ŒPosix÷0œint
+I_POPÃ8ŒPosix÷0œint
+I_PUNLINKÃ8ŒPosix÷0œint
+I_PUSHÃ8ŒPosix÷0œint
+I_RECVFDÃ8ŒPosix÷0œint
+I_SENDFDÃ8ŒPosix÷0œint
+I_SETCLTIMEÃ8ŒPosix÷0œint
+I_SETSIGÃ8ŒPosix÷0œint
+I_SRDOPTÃ8ŒPosix÷0œint
+I_STRÃ8ŒPosix÷0œint
+I_SWROPTÃ8ŒPosix÷0œint
+I_UNLINKÃ8ŒPosix÷0œint
+InAddrÃ2048ŒPosix÷0
+LASTMARKÃ8ŒPosix÷0œint
+LOG_ALERTÃ8ŒPosix÷0œint
+LOG_AUTHPRIVÃ8ŒPosix÷0œint
+LOG_CONSÃ8ŒPosix÷0œint
+LOG_CRITÃ8ŒPosix÷0œint
+LOG_CRONÃ8ŒPosix÷0œint
+LOG_DAEMONÃ8ŒPosix÷0œint
+LOG_DEBUGÃ8ŒPosix÷0œint
+LOG_EMERGÃ8ŒPosix÷0œint
+LOG_ERRÃ8ŒPosix÷0œint
+LOG_FTPÃ8ŒPosix÷0œint
+LOG_INFOÃ8ŒPosix÷0œint
+LOG_KERNÃ8ŒPosix÷0œint
+LOG_LOCAL0Ã8ŒPosix÷0œint
+LOG_LOCAL1Ã8ŒPosix÷0œint
+LOG_LOCAL2Ã8ŒPosix÷0œint
+LOG_LOCAL3Ã8ŒPosix÷0œint
+LOG_LOCAL4Ã8ŒPosix÷0œint
+LOG_LOCAL5Ã8ŒPosix÷0œint
+LOG_LOCAL6Ã8ŒPosix÷0œint
+LOG_LOCAL7Ã8ŒPosix÷0œint
+LOG_LPRÃ8ŒPosix÷0œint
+LOG_MAILÃ8ŒPosix÷0œint
+LOG_NDELAYÃ8ŒPosix÷0œint
+LOG_NEWSÃ8ŒPosix÷0œint
+LOG_NOTICEÃ8ŒPosix÷0œint
+LOG_NOWAITÃ8ŒPosix÷0œint
+LOG_ODELAYÃ8ŒPosix÷0œint
+LOG_PIDÃ8ŒPosix÷0œint
+LOG_SYSLOGÃ8ŒPosix÷0œint
+LOG_USERÃ8ŒPosix÷0œint
+LOG_UUCPÃ8ŒPosix÷0œint
+LOG_WARNINGÃ8ŒPosix÷0œint
+MAP_FAILEDÃ8ŒPosix÷0œvoid
+MAP_FIXEDÃ8ŒPosix÷0œint
+MAP_PRIVATEÃ8ŒPosix÷0œint
+MAP_SHAREDÃ8ŒPosix÷0œint
+MORECTLÃ8ŒPosix÷0œint
+MOREDATAÃ8ŒPosix÷0œint
+MSG_ANYÃ8ŒPosix÷0œint
+MSG_BANDÃ8ŒPosix÷0œint
+MSG_HIPRIÃ8ŒPosix÷0œint
+MS_ASYNCÃ8ŒPosix÷0œint
+MS_INVALIDATEÃ8ŒPosix÷0œint
+MS_SYNCÃ8ŒPosix÷0œint
+MUXID_ALLÃ8ŒPosix÷0œint
+NL0Ã8ŒPosix÷0œtcflag_t
+NL1Ã8ŒPosix÷0œtcflag_t
+NLDLYÃ8ŒPosix÷0œtcflag_t
+NOFLSHÃ8ŒPosix÷0œtcflag_t
+OCRNLÃ8ŒPosix÷0œtcflag_t
+OFILLÃ8ŒPosix÷0œtcflag_t
+ONLCRÃ8ŒPosix÷0œtcflag_t
+ONLRETÃ8ŒPosix÷0œtcflag_t
+ONOCRÃ8ŒPosix÷0œtcflag_t
+OPOSTÃ8ŒPosix÷0œtcflag_t
+OTHERÃ4ŒPosix.Sched.Algorithm÷0
+O_ACCMODEÃ8ŒPosix÷0œint
+O_APPENDÃ8ŒPosix÷0œint
+O_CREATÃ8ŒPosix÷0œint
+O_DSYNCÃ8ŒPosix÷0œint
+O_EXCLÃ8ŒPosix÷0œint
+O_NOCTTYÃ8ŒPosix÷0œint
+O_NONBLOCKÃ8ŒPosix÷0œint
+O_RDONLYÃ8ŒPosix÷0œint
+O_RDWRÃ8ŒPosix÷0œint
+O_RSYNCÃ8ŒPosix÷0œint
+O_SYNCÃ8ŒPosix÷0œint
+O_TRUNCÃ8ŒPosix÷0œint
+O_WRONLYÃ8ŒPosix÷0œint
+PARENBÃ8ŒPosix÷0œtcflag_t
+PARMRKÃ8ŒPosix÷0œtcflag_t
+PARODDÃ8ŒPosix÷0œtcflag_t
+POLLERRÃ8ŒPosix÷0œint
+POLLHUPÃ8ŒPosix÷0œint
+POLLINÃ8ŒPosix÷0œint
+POLLNVALÃ8ŒPosix÷0œint
+POLLOUTÃ8ŒPosix÷0œint
+POLLPRIÃ8ŒPosix÷0œint
+POLLRDHUPÃ8ŒPosix÷0œint
+POSIX_FADV_DONTNEEDÃ8ŒPosix÷0œint
+POSIX_FADV_NOREUSEÃ8ŒPosix÷0œint
+POSIX_FADV_NORMALÃ8ŒPosix÷0œint
+POSIX_FADV_RANDOMÃ8ŒPosix÷0œint
+POSIX_FADV_SEQUENTIALÃ8ŒPosix÷0œint
+POSIX_FADV_WILLNEEDÃ8ŒPosix÷0œint
+PRIO_PGRPÃ8ŒPosix÷0œint
+PRIO_PROCESSÃ8ŒPosix÷0œint
+PRIO_USERÃ8ŒPosix÷0œint
+PROT_EXECÃ8ŒPosix÷0œint
+PROT_READÃ8ŒPosix÷0œint
+PROT_WRITEÃ8ŒPosix÷0œint
+ParamÃ2048ŒPosix.Sched÷0
+PasswdÃ1ŒPosix÷0
+PosixÃ256÷0
+RMSGDÃ8ŒPosix÷0œint
+RMSGNÃ8ŒPosix÷0œint
+RNORMÃ8ŒPosix÷0œint
+RPROTDATÃ8ŒPosix÷0œint
+RPROTDISÃ8ŒPosix÷0œint
+RPROTNORNÃ8ŒPosix÷0œint
+RRÃ4ŒPosix.Sched.Algorithm÷0
+RS_HIPRIÃ8ŒPosix÷0œint
+R_OKÃ8ŒPosix÷0œint
+SEEK_CURÃ8ŒPosix÷0œint
+SEEK_CURÃ8ŒPosix.FILE÷0œint
+SEEK_ENDÃ8ŒPosix÷0œint
+SEEK_ENDÃ8ŒPosix.FILE÷0œint
+SEEK_SETÃ8ŒPosix÷0œint
+SEEK_SETÃ8ŒPosix.FILE÷0œint
+SHUT_RDÃ8ŒPosix÷0œint
+SHUT_RDWRÃ8ŒPosix÷0œint
+SHUT_WRÃ8ŒPosix÷0œint
+SIGABRTÃ8ŒPosix÷0œint
+SIGALRMÃ8ŒPosix÷0œint
+SIGBUSÃ8ŒPosix÷0œint
+SIGCHLDÃ8ŒPosix÷0œint
+SIGCONTÃ8ŒPosix÷0œint
+SIGFPEÃ8ŒPosix÷0œint
+SIGHUPÃ8ŒPosix÷0œint
+SIGILLÃ8ŒPosix÷0œint
+SIGINTÃ8ŒPosix÷0œint
+SIGIOTÃ8ŒPosix÷0œint
+SIGKILLÃ8ŒPosix÷0œint
+SIGPIPEÃ8ŒPosix÷0œint
+SIGPOLLÃ8ŒPosix÷0œint
+SIGPROFÃ8ŒPosix÷0œint
+SIGQUITÃ8ŒPosix÷0œint
+SIGSEGVÃ8ŒPosix÷0œint
+SIGSTKFLTÃ8ŒPosix÷0œint
+SIGSTOPÃ8ŒPosix÷0œint
+SIGSYSÃ8ŒPosix÷0œint
+SIGTERMÃ8ŒPosix÷0œint
+SIGTRAPÃ8ŒPosix÷0œint
+SIGTSTPÃ8ŒPosix÷0œint
+SIGTTINÃ8ŒPosix÷0œint
+SIGTTOUÃ8ŒPosix÷0œint
+SIGURGÃ8ŒPosix÷0œint
+SIGUSR1Ã8ŒPosix÷0œint
+SIGUSR2Ã8ŒPosix÷0œint
+SIGVTALRMÃ8ŒPosix÷0œint
+SIGXCPUÃ8ŒPosix÷0œint
+SIGXFSZÃ8ŒPosix÷0œint
+SIG_DFLÃ8ŒPosix÷0œsighandler_t
+SIG_ERRÃ8ŒPosix÷0œsighandler_t
+SIG_IGNÃ8ŒPosix÷0œsighandler_t
+SNDZEROÃ8ŒPosix÷0œint
+SOCK_DGRAMÃ8ŒPosix÷0œint
+SOCK_RAWÃ8ŒPosix÷0œint
+SOCK_SEQPACKETÃ8ŒPosix÷0œint
+SOCK_STREAMÃ8ŒPosix÷0œint
+STDERR_FILENOÃ8ŒPosix÷0œint
+STDIN_FILENOÃ8ŒPosix÷0œint
+STDOUT_FILENOÃ8ŒPosix÷0œint
+S_BANDURGÃ8ŒPosix÷0œint
+S_ERRORÃ8ŒPosix÷0œint
+S_HANGUPÃ8ŒPosix÷0œint
+S_HIPRIÃ8ŒPosix÷0œint
+S_IFBLKÃ8ŒPosix÷0œmode_t
+S_IFCHRÃ8ŒPosix÷0œmode_t
+S_IFDIRÃ8ŒPosix÷0œmode_t
+S_IFIFOÃ8ŒPosix÷0œmode_t
+S_IFLNKÃ8ŒPosix÷0œmode_t
+S_IFMTÃ8ŒPosix÷0œmode_t
+S_IFREGÃ8ŒPosix÷0œmode_t
+S_IFSOCKÃ8ŒPosix÷0œmode_t
+S_INPUTÃ8ŒPosix÷0œint
+S_IRGRPÃ8ŒPosix÷0œmode_t
+S_IROTHÃ8ŒPosix÷0œmode_t
+S_IRUSRÃ8ŒPosix÷0œmode_t
+S_IRWXGÃ8ŒPosix÷0œmode_t
+S_IRWXOÃ8ŒPosix÷0œmode_t
+S_IRWXUÃ8ŒPosix÷0œmode_t
+S_ISBLKÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISCHRÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISDIRÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISFIFOÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISGIDÃ8ŒPosix÷0œmode_t
+S_ISLNKÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISREGÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISSOCKÃ128Õ(mode_t mode)ŒPosix÷0œpublic bool
+S_ISUIDÃ8ŒPosix÷0œmode_t
+S_ISVTXÃ8ŒPosix÷0œmode_t
+S_IWGRPÃ8ŒPosix÷0œmode_t
+S_IWOTHÃ8ŒPosix÷0œmode_t
+S_IWUSRÃ8ŒPosix÷0œmode_t
+S_IXGRPÃ8ŒPosix÷0œmode_t
+S_IXOTHÃ8ŒPosix÷0œmode_t
+S_IXUSRÃ8ŒPosix÷0œmode_t
+S_MSGÃ8ŒPosix÷0œint
+S_OUTPUTÃ8ŒPosix÷0œint
+S_RDBANDÃ8ŒPosix÷0œint
+S_RDNORMÃ8ŒPosix÷0œint
+S_WRBANDÃ8ŒPosix÷0œint
+S_WRNORMÃ8ŒPosix÷0œint
+SchedÃ256÷0
+SockAddrÃ2048ŒPosix÷0
+SockAddrInÃ2048ŒPosix÷0
+StatÃ2048ŒPosix÷0
+TAB0Ã8ŒPosix÷0œtcflag_t
+TAB1Ã8ŒPosix÷0œtcflag_t
+TAB2Ã8ŒPosix÷0œtcflag_t
+TAB3Ã8ŒPosix÷0œtcflag_t
+TABDLYÃ8ŒPosix÷0œtcflag_t
+TCIFLUSHÃ8ŒPosix÷0œint
+TCIOFFÃ8ŒPosix÷0œint
+TCIOFLUSHÃ8ŒPosix÷0œint
+TCIONÃ8ŒPosix÷0œint
+TCOFLUSHÃ8ŒPosix÷0œint
+TCOOFFÃ8ŒPosix÷0œint
+TCOONÃ8ŒPosix÷0œint
+TCSADRAINÃ8ŒPosix÷0œint
+TCSAFLUSHÃ8ŒPosix÷0œint
+TCSANOWÃ8ŒPosix÷0œint
+TOSTOPÃ8ŒPosix÷0œtcflag_t
+VEOFÃ8ŒPosix÷0œint
+VEOLÃ8ŒPosix÷0œint
+VERASEÃ8ŒPosix÷0œint
+VINTRÃ8ŒPosix÷0œint
+VKILLÃ8ŒPosix÷0œint
+VMINÃ8ŒPosix÷0œint
+VQUITÃ8ŒPosix÷0œint
+VSTARTÃ8ŒPosix÷0œint
+VSTOPÃ8ŒPosix÷0œint
+VSUSPÃ8ŒPosix÷0œint
+VT0Ã8ŒPosix÷0œtcflag_t
+VT1Ã8ŒPosix÷0œtcflag_t
+VTDLYÃ8ŒPosix÷0œtcflag_t
+VTIMEÃ8ŒPosix÷0œint
+WCONTINUEDÃ8ŒPosix÷0œint
+WNOHANGÃ8ŒPosix÷0œint
+WUNTRACEDÃ8ŒPosix÷0œint
+W_OKÃ8ŒPosix÷0œint
+X_OKÃ8ŒPosix÷0œint
+_SC_2_C_DEVÃ8ŒPosix÷0œint
+_SC_2_FORT_DEVÃ8ŒPosix÷0œint
+_SC_2_FORT_RUNÃ8ŒPosix÷0œint
+_SC_2_LOCALEDEFÃ8ŒPosix÷0œint
+_SC_2_SW_DEVÃ8ŒPosix÷0œint
+_SC_2_VERSIONÃ8ŒPosix÷0œint
+_SC_ARG_MAXÃ8ŒPosix÷0œint
+_SC_BASE_MAXÃ8ŒPosix÷0œint
+_SC_BC_DIM_MAXÃ8ŒPosix÷0œint
+_SC_BC_SCALE_MAXÃ8ŒPosix÷0œint
+_SC_BC_STRING_MAXÃ8ŒPosix÷0œint
+_SC_CHILD_MAXÃ8ŒPosix÷0œint
+_SC_CLK_TCKÃ8ŒPosix÷0œint
+_SC_COLL_WEIGHTS_MAXÃ8ŒPosix÷0œint
+_SC_EXRP_NEST_MAXÃ8ŒPosix÷0œint
+_SC_HOST_NAME_MAXÃ8ŒPosix÷0œint
+_SC_LINE_MAXÃ8ŒPosix÷0œint
+_SC_LOGIN_NAME_MAXÃ8ŒPosix÷0œint
+_SC_OPEN_MAXÃ8ŒPosix÷0œint
+_SC_PAGESIZEÃ8ŒPosix÷0œint
+_SC_RE_DUP_MAXÃ8ŒPosix÷0œint
+_SC_STREAM_MAXÃ8ŒPosix÷0œint
+_SC_SYMLOOP_MAXÃ8ŒPosix÷0œint
+_SC_TTY_NAME_MAXÃ8ŒPosix÷0œint
+_SC_TZNAME_MAXÃ8ŒPosix÷0œint
+_SC_VERSIONÃ8ŒPosix÷0œint
+_exitÃ128Õ(int status)ŒPosix÷0œpublic void
+abortÃ128Õ()ŒPosix÷0œpublic void
+acceptÃ128Õ(int sfd, ... )ŒPosix÷0œpublic int
+accessÃ128Õ(string patchname, int mode)ŒPosix÷0œpublic int
+acctÃ128Õ(string name)ŒPosix÷0œpublic int
+acosÃ128Õ(double x)ŒPosix÷0œpublic double
+acosfÃ128Õ(float x)ŒPosix÷0œpublic float
+acoshÃ128Õ(double x)ŒPosix÷0œpublic double
+acoshfÃ128Õ(float x)ŒPosix÷0œpublic float
+alarmÃ128Õ(uint seconds)ŒPosix÷0
+alloc_sizeÃ128Õ(int num = 1)ŒPosix.CpuSet÷0œpublic size_t
+andÃ128Õ(CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+and_sizedÃ128Õ(size_t num, CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+asinÃ128Õ(double x)ŒPosix÷0œpublic double
+asinfÃ128Õ(float x)ŒPosix÷0œpublic float
+asinhÃ128Õ(double x)ŒPosix÷0œpublic double
+asinhfÃ128Õ(float x)ŒPosix÷0œpublic float
+assertÃ128Õ(bool expression)ŒPosix÷0œpublic void
+atanÃ128Õ(double x)ŒPosix÷0œpublic double
+atan2Ã128Õ(double y, double x)ŒPosix÷0œpublic double
+atan2fÃ128Õ(float y, float x)ŒPosix÷0œpublic float
+atanfÃ128Õ(float x)ŒPosix÷0œpublic float
+atanhÃ128Õ(double x)ŒPosix÷0œpublic double
+atanhfÃ128Õ(float x)ŒPosix÷0œpublic float
+atexitÃ128Õ(AtExitFunc func)ŒPosix÷0œpublic void
+bindÃ128Õ(int sockfd, ...)ŒPosix÷0œpublic int
+blkcnt_tÃ2048ŒPosix÷0
+blksize_tÃ2048ŒPosix÷0
+boolÃ2048÷0
+bsearchÃ128Õ(void* key, void* base, size_t nmemb, size_t size, compar_fn_t func)ŒPosix÷0œpublic void *
+c_ccÃ8ŒPosix.termios÷0œunowned
+c_cflagÃ8ŒPosix.termios÷0œtcflag_t
+c_iflagÃ8ŒPosix.termios÷0œtcflag_t
+c_ispeedÃ8ŒPosix.termios÷0œspeed_t
+c_lflagÃ8ŒPosix.termios÷0œtcflag_t
+c_lineÃ8ŒPosix.termios÷0œcc_t
+c_oflagÃ8ŒPosix.termios÷0œtcflag_t
+c_ospeedÃ8ŒPosix.termios÷0œspeed_t
+cbrtÃ128Õ(double x)ŒPosix÷0œpublic double
+cbrtfÃ128Õ(float x)ŒPosix÷0œpublic float
+cc_tÃ2048ŒPosix÷0
+ceilÃ128Õ(double x)ŒPosix÷0œpublic double
+ceilfÃ128Õ(float x)ŒPosix÷0œpublic float
+cfgetispeedÃ128Õ(termios termios_p)ŒPosix÷0œpublic speed_t
+cfgetospeedÃ128Õ(termios termios_p)ŒPosix÷0œpublic speed_t
+cfmakerawÃ128Õ(termios termios_p)ŒPosix÷0œpublic void
+cfsetispeedÃ128Õ(termios termios_p, speed_t speed)ŒPosix÷0œpublic int
+cfsetospeedÃ128Õ(termios termios_p, speed_t speed)ŒPosix÷0œpublic int
+cfsetspeedÃ128Õ(termios termios, speed_t speed)ŒPosix÷0œpublic int
+chdirÃ128Õ(string filepath)ŒPosix÷0œpublic int
+chmodÃ128Õ(string filename, mode_t mode)ŒPosix÷0œpublic int
+chownÃ128Õ(string filename, uid_t owner, gid_t group)ŒPosix÷0œpublic int
+chrootÃ128Õ(string path)ŒPosix÷0œpublic int
+clearerrÃ128Õ()ŒPosix.FILE÷0œpublic void
+closeÃ128Õ(int fd)ŒPosix÷0œpublic int
+closelogÃ128Õ()ŒPosix÷0œpublic void
+clrÃ128Õ(int cpu)ŒPosix.CpuSet÷0œpublic void
+clr_sizedÃ128Õ(int cpu, size_t num)ŒPosix.CpuSet÷0œpublic void
+compar_fn_tÃ128Õ(void* key1, void* key2)ŒPosix÷0œpublic delegate int
+connectÃ128Õ(int sfd, ... )ŒPosix÷0œpublic int
+copysignÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+copysignfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+cosÃ128Õ(double x)ŒPosix÷0œpublic double
+cosfÃ128Õ(float x)ŒPosix÷0œpublic float
+coshÃ128Õ(double x)ŒPosix÷0œpublic double
+coshfÃ128Õ(float x)ŒPosix÷0œpublic float
+countÃ128Õ()ŒPosix.CpuSet÷0œpublic int
+count_sizedÃ128Õ(size_t num)ŒPosix.CpuSet÷0œpublic int
+creatÃ128Õ(string path, mode_t mode)ŒPosix÷0œpublic int
+d_inoÃ8ŒPosix.DirEnt÷0œino_t
+d_nameÃ8ŒPosix.DirEnt÷0œchar
+d_offÃ8ŒPosix.DirEnt÷0œoff_t
+d_reclenÃ8ŒPosix.DirEnt÷0
+d_typeÃ8ŒPosix.DirEnt÷0œchar
+dev_tÃ2048ŒPosix÷0
+dirfdÃ128Õ(Dir dir)ŒPosix÷0œpublic int
+dremÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+dremfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+dupÃ128Õ(int fd)ŒPosix÷0œpublic int
+dup2Ã128Õ(int fd1, int fd2)ŒPosix÷0œpublic int
+eaccessÃ128Õ(string patchname, int mode)ŒPosix÷0œpublic int
+endgrentÃ128Õ()ŒPosix÷0œpublic void
+endpwentÃ128Õ()ŒPosix÷0œpublic void
+endusershellÃ128Õ()ŒPosix÷0œpublic void
+eofÃ128Õ()ŒPosix.FILE÷0œpublic bool
+equalÃ128Õ(CpuSet cs1, CpuSet cs2)ŒPosix.CpuSet÷0œpublic bool
+equal_sizedÃ128Õ(size_t num, CpuSet cs1, CpuSet cs2)ŒPosix.CpuSet÷0œpublic bool
+erfÃ128Õ(double x0)ŒPosix÷0œpublic double
+erfcÃ128Õ(double x0)ŒPosix÷0œpublic double
+erfcfÃ128Õ(float x0)ŒPosix÷0œpublic float
+erffÃ128Õ(float x0)ŒPosix÷0œpublic float
+errnoÃ8ŒPosix÷0œint
+errorÃ128Õ()ŒPosix.FILE÷0œpublic int
+euidaccessÃ128Õ(string patchname, int mode)ŒPosix÷0œpublic int
+eventsÃ8ŒPosix.pollfd÷0œint
+execlÃ128Õ(string path, params string[] arg)ŒPosix÷0œpublic int
+execlpÃ128Õ(string path, params string[] arg)ŒPosix÷0œpublic int
+exitÃ128Õ(int status)ŒPosix÷0œpublic void
+expÃ128Õ(double x)ŒPosix÷0œpublic double
+exp10Ã128Õ(double x)ŒPosix÷0œpublic double
+exp10fÃ128Õ(float x)ŒPosix÷0œpublic float
+exp2Ã128Õ(double x)ŒPosix÷0œpublic double
+exp2fÃ128Õ(float x)ŒPosix÷0œpublic float
+expfÃ128Õ(float x)ŒPosix÷0œpublic float
+expm1Ã128Õ(double x)ŒPosix÷0œpublic double
+expm1fÃ128Õ(float x)ŒPosix÷0œpublic float
+f_bavailÃ8ŒPosix.statvfs÷0œfsblkcnt_t
+f_bfreeÃ8ŒPosix.statvfs÷0œfsblkcnt_t
+f_blocksÃ8ŒPosix.statvfs÷0œfsblkcnt_t
+f_bsizeÃ8ŒPosix.statvfs÷0
+f_favailÃ8ŒPosix.statvfs÷0œfsfilcnt_t
+f_ffreeÃ8ŒPosix.statvfs÷0œfsfilcnt_t
+f_filesÃ8ŒPosix.statvfs÷0œfsfilcnt_t
+f_frsizeÃ8ŒPosix.statvfs÷0
+fabsÃ128Õ(double x)ŒPosix÷0œpublic double
+fabsfÃ128Õ(float x)ŒPosix÷0œpublic float
+fchdirÃ128Õ(int file)ŒPosix÷0œpublic int
+fchownÃ128Õ(int fd, uid_t owner, gid_t group)ŒPosix÷0œpublic int
+fcntlÃ128Õ(int fd, int cmd, ...)ŒPosix÷0œpublic int
+fdÃ8ŒPosix.pollfd÷0œint
+fd_setÃ2048ŒPosix÷0
+fdatasyncÃ128Õ(int fd)ŒPosix÷0œpublic int
+fdimÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+fdimfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+fdopenÃ128Õ(int fildes, string mode)ŒPosix.FILE÷0œpublic FILE?
+fdopendirÃ128Õ(int fd)ŒPosix÷0œpublic Dir?
+filenoÃ128Õ()ŒPosix.FILE÷0œpublic int
+finiteÃ128Õ(double value)ŒPosix÷0œpublic int
+finitefÃ128Õ(float value)ŒPosix÷0œpublic int
+floorÃ128Õ(double x)ŒPosix÷0œpublic double
+floorfÃ128Õ(float x)ŒPosix÷0œpublic float
+flushÃ128Õ()ŒPosix.FILE÷0œpublic int
+fmaÃ128Õ(double x, double y, double z)ŒPosix÷0œpublic double
+fmafÃ128Õ(float x, float y, float z)ŒPosix÷0œpublic float
+fmaxÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+fmaxfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+fminÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+fminfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+fmodÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+fmodfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+forkÃ128Õ()ŒPosix÷0œpublic pid_t
+frexpÃ128Õ(double x, out int exponent)ŒPosix÷0œpublic double
+frexpfÃ128Õ(float x, out int exponent)ŒPosix÷0œpublic float
+fsblkcnt_tÃ2048ŒPosix÷0
+fsfilcnt_tÃ2048ŒPosix÷0
+fstatÃ128Õ( int fd, out Stat buf)ŒPosix÷0œint
+fsyncÃ128Õ(int fd)ŒPosix÷0œpublic int
+ftruncateÃ128Õ(int fd, off_t length)ŒPosix÷0œpublic int
+gammaÃ128Õ(double x0)ŒPosix÷0œpublic double
+gammafÃ128Õ(float x0)ŒPosix÷0œpublic float
+get_priority_maxÃ128Õ(int algorithm)ŒPosix.Sched÷0œpublic int
+get_priority_minÃ128Õ(int algorithm)ŒPosix.Sched÷0œpublic int
+get_time_of_dayÃ128Õ(void * timezone = null)ŒPosix.timeval÷0œpublic int
+getaffinityÃ128Õ(size_t num, [CCode(pos = 0)]Posix.pid_t pid = 0)ŒPosix.CpuSet÷0œpublic int
+getcÃ128Õ()ŒPosix.FILE÷0œpublic int
+getdtablesizeÃ128Õ()ŒPosix÷0œpublic int
+getegidÃ128Õ()ŒPosix÷0œpublic gid_t
+geteuidÃ128Õ()ŒPosix÷0œpublic uid_t
+getgidÃ128Õ()ŒPosix÷0œpublic gid_t
+getgrentÃ128Õ()ŒPosix÷0œpublic unowned
+gethostnameÃ128Õ(char[] name)ŒPosix÷0œpublic int
+getloginÃ128Õ()ŒPosix÷0œpublic unowned string
+getpagesizeÃ128Õ()ŒPosix÷0œpublic int
+getparamÃ128Õ(Posix.pid_t pid, out Sched.Param param)ŒPosix.Sched÷0œpublic int
+getpassÃ128Õ(string promt)ŒPosix÷0œpublic unowned string
+getpgidÃ128Õ(pid_t pid)ŒPosix÷0œpublic pid_t
+getpgrpÃ128Õ()ŒPosix÷0œpublic pid_t
+getpidÃ128Õ()ŒPosix÷0œpublic pid_t
+getppidÃ128Õ()ŒPosix÷0œpublic pid_t
+getpriorityÃ128Õ(int which, int who)ŒPosix÷0œpublic int
+getpwentÃ128Õ()ŒPosix÷0œpublic unowned
+getpwnamÃ128Õ(string name)ŒPosix÷0œpublic unowned
+getsÃ128Õ(char[] s)ŒPosix.FILE÷0œpublic unowned string
+getschedulerÃ128Õ(Posix.pid_t pid)ŒPosix.Sched÷0œpublic Algorithm
+getsidÃ128Õ(pid_t pid)ŒPosix÷0œpublic pid_t
+getsockoptÃ128Õ(int sockfd, int level, int optname, void* optval, out socklen_t optlen)ŒPosix÷0œpublic int
+getuidÃ128Õ()ŒPosix÷0œpublic uid_t
+getusershellÃ128Õ()ŒPosix÷0œpublic unowned string
+gid_tÃ2048ŒPosix÷0
+gr_gidÃ8ŒPosix.Group÷0œgid_t
+gr_memÃ8ŒPosix.Group÷0
+gr_nameÃ8ŒPosix.Group÷0
+gr_passwdÃ8ŒPosix.Group÷0
+grantptÃ128Õ(int fd)ŒPosix÷0œpublic int
+group_memberÃ128Õ(gid_t gid)ŒPosix÷0œpublic int
+htonlÃ128Õ(uint32 hostlong)ŒPosix÷0œpublic uint32
+htonsÃ128Õ(uint16 hostshort)ŒPosix÷0œpublic uint16
+hypotÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+hypotfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+ilogbÃ128Õ(double x)ŒPosix÷0œpublic int
+ilogbfÃ128Õ(float x)ŒPosix÷0œpublic int
+inet_addrÃ128Õ(string host)ŒPosix÷0œpublic uint32
+inet_ntoaÃ128Õ(InAddr addr)ŒPosix÷0œpublic unowned string
+initÃ128Õ(int num = 1)ŒPosix.CpuSet÷0œpublic CpuSet
+ino_tÃ2048ŒPosix÷0
+int16Ã2048÷0
+int32Ã2048÷0
+int64Ã2048÷0
+int8Ã2048÷0
+ioctlÃ128Õ(int fildes, int request, ...)ŒPosix÷0œpublic int
+iov_baseÃ8ŒPosix.iovector÷0œvoid
+iov_lenÃ8ŒPosix.iovector÷0œsize_t
+iovectorÃ2048ŒPosix÷0
+is_equalÃ128Õ(CpuSet cs)ŒPosix.CpuSet÷0œpublic bool
+is_equal_sizedÃ128Õ(size_t num, CpuSet cs)ŒPosix.CpuSet÷0œpublic bool
+is_setÃ128Õ(int cpu)ŒPosix.CpuSet÷0œpublic bool
+is_set_sizedÃ128Õ(int cpu, size_t num)ŒPosix.CpuSet÷0œpublic bool
+isalnumÃ128Õ(int c)ŒPosix÷0œpublic bool
+isalphaÃ128Õ(int c)ŒPosix÷0œpublic bool
+isasciiÃ128Õ(int c)ŒPosix÷0œpublic bool
+isattyÃ128Õ(int fd)ŒPosix÷0œpublic bool
+iscntrlÃ128Õ(int c)ŒPosix÷0œpublic bool
+isdigitÃ128Õ(int c)ŒPosix÷0œpublic bool
+isgraphÃ128Õ(int c)ŒPosix÷0œpublic bool
+isinfÃ128Õ(double value)ŒPosix÷0œpublic int
+isinffÃ128Õ(float value)ŒPosix÷0œpublic int
+islowerÃ128Õ(int c)ŒPosix÷0œpublic bool
+isnanÃ128Õ(double value)ŒPosix÷0œpublic int
+isnanfÃ128Õ(float value)ŒPosix÷0œpublic int
+isprintÃ128Õ(int c)ŒPosix÷0œpublic bool
+ispunctÃ128Õ(int c)ŒPosix÷0œpublic bool
+isspaceÃ128Õ(int c)ŒPosix÷0œpublic bool
+isupperÃ128Õ(int c)ŒPosix÷0œpublic bool
+isxdigitÃ128Õ(int c)ŒPosix÷0œpublic bool
+j0Ã128Õ(double x0)ŒPosix÷0œpublic double
+j0fÃ128Õ(float x0)ŒPosix÷0œpublic float
+j1Ã128Õ(double x0)ŒPosix÷0œpublic double
+j1fÃ128Õ(float x0)ŒPosix÷0œpublic float
+jnÃ128Õ(int x0, double x1)ŒPosix÷0œpublic double
+jnfÃ128Õ(int x0, float x1)ŒPosix÷0œpublic float
+key_tÃ2048ŒPosix÷0
+killÃ128Õ(pid_t pid, int signum)ŒPosix÷0œpublic int
+killpgÃ128Õ(pid_t pgpr, int signum)ŒPosix÷0œpublic int
+lchownÃ128Õ(string filename, uid_t owner, gid_t group)ŒPosix÷0œpublic int
+ldexpÃ128Õ(double x, int exponent)ŒPosix÷0œpublic double
+ldexpfÃ128Õ(float x, int exponent)ŒPosix÷0œpublic float
+lenÃ128Õ()÷0œpublic int
+lgammaÃ128Õ(double x0)ŒPosix÷0œpublic double
+lgamma_rÃ128Õ(double x0, out int signgamp)ŒPosix÷0œpublic double
+lgamma_rfÃ128Õ(float x0, out int signgamp)ŒPosix÷0œpublic float
+lgammafÃ128Õ(float x0)ŒPosix÷0œpublic float
+linkÃ128Õ(string from, string to)ŒPosix÷0œpublic int
+listenÃ128Õ(int sfd, int backlog)ŒPosix÷0œpublic int
+llrintÃ128Õ(double x)ŒPosix÷0œpublic int64
+llrintfÃ128Õ(float x)ŒPosix÷0œpublic int64
+llroundÃ128Õ(double x)ŒPosix÷0œpublic int64
+llroundfÃ128Õ(float x)ŒPosix÷0œpublic int64
+logÃ128Õ(double x)ŒPosix÷0œpublic double
+log10Ã128Õ(double x)ŒPosix÷0œpublic double
+log10fÃ128Õ(float x)ŒPosix÷0œpublic float
+log1pÃ128Õ(double x)ŒPosix÷0œpublic double
+log1pfÃ128Õ(float x)ŒPosix÷0œpublic float
+log2Ã128Õ(double x)ŒPosix÷0œpublic double
+log2fÃ128Õ(float x)ŒPosix÷0œpublic float
+logbÃ128Õ(double x)ŒPosix÷0œpublic double
+logbfÃ128Õ(float x)ŒPosix÷0œpublic float
+logfÃ128Õ(float x)ŒPosix÷0œpublic float
+lrintÃ128Õ(double x)ŒPosix÷0œpublic long
+lrintfÃ128Õ(float x)ŒPosix÷0œpublic long
+lroundÃ128Õ(double x)ŒPosix÷0œpublic long
+lroundfÃ128Õ(float x)ŒPosix÷0œpublic long
+lseekÃ128Õ(int fildes, off_t offset, int whence)ŒPosix÷0œpublic off_t
+lstatÃ128Õ(string filename, out Stat buf)ŒPosix÷0œint
+machineÃ8ŒPosix.utsname÷0œunowned
+memccpyÃ128Õ(void* s1, void* s2, int c, size_t n)ŒPosix÷0œpublic void *
+memchrÃ128Õ(void* s, int c, size_t n)ŒPosix÷0œpublic void *
+memcmpÃ128Õ(void* s1, void* s2, size_t n)ŒPosix÷0œpublic int
+memcpyÃ128Õ(void* s1, void* s2, size_t n)ŒPosix÷0œpublic void *
+memmoveÃ128Õ(void* s1, void* s2, size_t n)ŒPosix÷0œpublic void *
+memsetÃ128Õ(void* s, int c, size_t n)ŒPosix÷0œpublic void *
+mkdirÃ128Õ(string path, mode_t mode)ŒPosix÷0œpublic int
+mkfifoÃ128Õ(string filename, mode_t mode)ŒPosix÷0œpublic int
+mknodÃ128Õ(string pathname, mode_t mode, dev_t dev)ŒPosix÷0œpublic pid_t
+mkostempÃ128Õ(string template, int flags)ŒPosix÷0œpublic int
+mkstempÃ128Õ(string template)ŒPosix÷0œpublic int
+mlockÃ128Õ(void *addr, size_t len)ŒPosix÷0œpublic int
+mmapÃ128Õ(void *addr, size_t length, int prot, int flags, int fd, off_t offset)ŒPosix÷0œpublic void *
+mode_tÃ2048ŒPosix÷0
+modfÃ128Õ(double x, out double iptr)ŒPosix÷0œpublic double
+modffÃ128Õ(float x, out float iptr)ŒPosix÷0œpublic float
+mprotectÃ128Õ(void *addr, size_t len, int prot)ŒPosix÷0œpublic int
+msyncÃ128Õ(void *addr, size_t len, int flags)ŒPosix÷0œpublic int
+munlockÃ128Õ(void *addr, size_t len)ŒPosix÷0œpublic int
+munmapÃ128Õ(void *addr, size_t length)ŒPosix÷0œpublic int
+nanÃ128Õ(string tagb)ŒPosix÷0œpublic double
+nanfÃ128Õ(string tagb)ŒPosix÷0œpublic float
+nearbyintÃ128Õ(double x)ŒPosix÷0œpublic double
+nearbyintfÃ128Õ(float x)ŒPosix÷0œpublic float
+nextafterÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+nextafterfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+nexttowardÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+nexttowardfÃ128Õ(float x, double y)ŒPosix÷0œpublic float
+nfds_tÃ2048ŒPosix÷0
+niceÃ128Õ(int inc)ŒPosix÷0œpublic int
+nlink_tÃ2048ŒPosix÷0
+nodenameÃ8ŒPosix.utsname÷0œunowned
+ntohlÃ128Õ(uint32 netlong)ŒPosix÷0œpublic uint32
+ntohsÃ128Õ(uint16 netshort)ŒPosix÷0œpublic uint16
+off_tÃ2048ŒPosix÷0
+openÃ128Õ(string path, int oflag, mode_t mode=0)ŒPosix÷0œpublic int
+openÃ128Õ(string path, string mode)ŒPosix.FILE÷0œpublic FILE?
+opendirÃ128Õ(string filename)ŒPosix÷0œpublic Dir?
+openlogÃ128Õ(string ident, int option, int facility )ŒPosix÷0œpublic void
+orÃ128Õ(CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+or_sizedÃ128Õ(size_t num, CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+pauseÃ128Õ()ŒPosix÷0œpublic int
+pid_tÃ2048ŒPosix÷0
+pipeÃ128Õ([CCode (array_length = false, null_terminated = false)] int[] pipefd)ŒPosix÷0œpublic int
+pollÃ128Õ(pollfd[] fds, int timeout)ŒPosix÷0œpublic int
+pollfdÃ2048ŒPosix÷0
+popenÃ128Õ(string command, string mode)ŒPosix.FILE÷0œpublic FILE?
+posix_fadviseÃ128Õ(int fd, long offset, long len, int advice)ŒPosix÷0œpublic int
+posix_fallocateÃ128Õ(int fd, long offset, long len)ŒPosix÷0œpublic int
+posix_openptÃ128Õ(int flags)ŒPosix÷0œpublic int
+powÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+pow10Ã128Õ(double x)ŒPosix÷0œpublic double
+pow10fÃ128Õ(float x)ŒPosix÷0œpublic float
+powfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+ppollÃ128Õ(pollfd[] fds, timespec? timeout, sigset_t? sigmask)ŒPosix÷0œpublic int
+preadÃ128Õ(int fd, void* buf, size_t count, off_t offset)ŒPosix÷0œpublic ssize_t
+printÃ128Õ(string format,...)÷0œpublic void
+printfÃ128Õ(string format,...)ŒPosix÷0œpublic void
+printfÃ128Õ(string format, ...)ŒPosix.FILE÷0œpublic void
+pselectÃ128Õ(int nfds, fd_set? readfds, fd_set? writefds, fd_set? exceptfds, timespec timeout, sigset_t sigmask)ŒPosix÷0œpublic int
+putcÃ128Õ(char c)ŒPosix.FILE÷0œpublic void
+putsÃ128Õ(string s)ŒPosix.FILE÷0œpublic void
+pw_dirÃ8ŒPosix.Passwd÷0
+pw_gecosÃ8ŒPosix.Passwd÷0
+pw_gidÃ8ŒPosix.Passwd÷0œgid_t
+pw_nameÃ8ŒPosix.Passwd÷0
+pw_passwdÃ8ŒPosix.Passwd÷0
+pw_shellÃ8ŒPosix.Passwd÷0
+pw_uidÃ8ŒPosix.Passwd÷0œuid_t
+pwriteÃ128Õ(int fd, void* buf, size_t count, off_t offset)ŒPosix÷0œpublic ssize_t
+qsortÃ128Õ(void* base, size_t nmemb, size_t size, compar_fn_t func)ŒPosix÷0œpublic void
+qsort_rÃ128Õ(void* base, size_t nmemb, size_t size, compar_fn_t func, void* arg)ŒPosix÷0œpublic void
+raiseÃ128Õ(int signum)ŒPosix÷0œpublic int
+readÃ128Õ(int fd, void* buf, size_t count)ŒPosix÷0œpublic ssize_t
+readdirÃ128Õ(Dir dir)ŒPosix÷0œpublic unowned
+readlinkÃ128Õ(string path, char[] buf)ŒPosix÷0œpublic ssize_t
+readvÃ128Õ(int fd, iovector vector, int iovcnt)ŒPosix÷0œpublic ssize_t
+recvÃ128Õ(int sockfd, void *buf, size_t len, int flags)ŒPosix÷0œpublic ssize_t
+releaseÃ8ŒPosix.utsname÷0œunowned
+remainderÃ128Õ(double x, double y)ŒPosix÷0œpublic double
+remainderfÃ128Õ(float x, float y)ŒPosix÷0œpublic float
+remquoÃ128Õ(double x, double y, out int quo)ŒPosix÷0œpublic double
+remquofÃ128Õ(float x, float y, out int quo)ŒPosix÷0œpublic float
+reventsÃ8ŒPosix.pollfd÷0œint
+revokeÃ128Õ(string file)ŒPosix÷0œpublic int
+rewindÃ128Õ()ŒPosix.FILE÷0œpublic void
+rewinddirÃ128Õ(Dir dir)ŒPosix÷0œpublic void
+rintÃ128Õ(double x)ŒPosix÷0œpublic double
+rintfÃ128Õ(float x)ŒPosix÷0œpublic float
+rmdirÃ128Õ(string path)ŒPosix÷0œpublic int
+roundÃ128Õ(double x)ŒPosix÷0œpublic double
+roundfÃ128Õ(float x)ŒPosix÷0œpublic float
+rr_get_intervalÃ128Õ(Posix.pid_t pid, out Posix.timespec? interval)ŒPosix.Sched÷0œpublic int
+s_addrÃ8ŒPosix.InAddr÷0œuint32
+sa_flagsÃ8ŒPosix.sigaction_t÷0œint
+sa_handlerÃ8ŒPosix.sigaction_t÷0œsighandler_t
+sa_maskÃ8ŒPosix.sigaction_t÷0œsigset_t
+scalbÃ128Õ(double x, double n)ŒPosix÷0œpublic double
+scalbfÃ128Õ(float x, float n)ŒPosix÷0œpublic float
+scalblnÃ128Õ(double x, long n)ŒPosix÷0œpublic double
+scalblnfÃ128Õ(float x, long n)ŒPosix÷0œpublic float
+scalbnÃ128Õ(double x, int n)ŒPosix÷0œpublic double
+scalbnfÃ128Õ(float x, int n)ŒPosix÷0œpublic float
+scanfÃ128Õ(string format, ...)ŒPosix.FILE÷0œpublic int
+sched_priorityÃ8ŒPosix.Sched.Param÷0œint
+seekÃ128Õ(long offset, int whence)ŒPosix.FILE÷0œpublic int
+seekdirÃ128Õ(Dir dir, long pos)ŒPosix÷0œpublic void
+selectÃ128Õ(int nfds, fd_set? readfds, fd_set? writefds, fd_set? exceptfds, timeval timeout)ŒPosix÷0œpublic int
+sendÃ128Õ(int sockfd, void* buf, size_t len, int flags)ŒPosix÷0œpublic ssize_t
+sendmsgÃ128Õ(int sockfd, ...)ŒPosix÷0œpublic ssize_t
+sendtoÃ128Õ(int sockfd, void* buf, size_t len, int flags, ...)ŒPosix÷0œpublic ssize_t
+set_time_of_dayÃ128Õ(void * timezone = null)ŒPosix.timeval÷0œpublic int
+setaffinityÃ128Õ(size_t num, [CCode(pos = 0)]Posix.pid_t pid = 0)ŒPosix.CpuSet÷0œpublic int
+setgidÃ128Õ(gid_t gid)ŒPosix÷0œpublic int
+setgrentÃ128Õ()ŒPosix÷0œpublic void
+setparamÃ128Õ(Posix.pid_t pid, ref Sched.Param param)ŒPosix.Sched÷0œpublic int
+setpgidÃ128Õ(pid_t pid, pid_t pgid)ŒPosix÷0œpublic int
+setpgrpÃ128Õ()ŒPosix÷0œpublic pid_t
+setpriorityÃ128Õ(int which, int who, int prio)ŒPosix÷0œpublic int
+setpwentÃ128Õ()ŒPosix÷0œpublic void
+setschedulerÃ128Õ(Posix.pid_t pid, Algorithm policy, ref Sched.Param param)ŒPosix.Sched÷0œpublic int
+setsidÃ128Õ()ŒPosix÷0œpublic pid_t
+setsockoptÃ128Õ(int sockfd, int level, int optname, void* optval, socklen_t optlen)ŒPosix÷0œpublic int
+setuidÃ128Õ(uid_t uid)ŒPosix÷0œpublic int
+setusershellÃ128Õ()ŒPosix÷0œpublic void
+shutdownÃ128Õ(int sockfd, int how)ŒPosix÷0œpublic int
+sigactionÃ128Õ(int signum, sigaction_t? act, out sigaction_t? oldact)ŒPosix÷0œpublic int
+sigaction_tÃ2048ŒPosix÷0
+sigaddsetÃ128Õ(sigset_t sigset, int signo)ŒPosix÷0œpublic int
+sigdelsetÃ128Õ(sigset_t sigset, int __signo)ŒPosix÷0œpublic int
+sigemptysetÃ128Õ(sigset_t sigset)ŒPosix÷0œpublic int
+sigfillsetÃ128Õ(sigset_t sigset)ŒPosix÷0œpublic int
+sighandler_tÃ128Õ(int signal)ŒPosix÷0œpublic delegate void
+sigismemberÃ128Õ(sigset_t sigset, int __signo)ŒPosix÷0œpublic int
+significandÃ128Õ(double x)ŒPosix÷0œpublic double
+significandfÃ128Õ(float x)ŒPosix÷0œpublic float
+sigpendingÃ128Õ(sigset_t sigset)ŒPosix÷0œpublic int
+sigprocmaskÃ128Õ(int how, sigset_t sigset, sigset_t oset)ŒPosix÷0œpublic int
+sigset_tÃ2048ŒPosix÷0
+sigsuspendÃ128Õ(sigset_t sigset)ŒPosix÷0œpublic int
+sigwaitÃ128Õ(sigset_t sigset, out int sig)ŒPosix÷0œpublic int
+sinÃ128Õ(double x)ŒPosix÷0œpublic double
+sin_addrÃ8ŒPosix.SockAddrIn÷0œInAddr
+sin_familyÃ8ŒPosix.SockAddrIn÷0œint
+sin_portÃ8ŒPosix.SockAddrIn÷0œuint16
+sincosÃ128Õ(double x, out double sinx, out double cosx)ŒPosix÷0œpublic void
+sincosfÃ128Õ(float x, out float sinx, out float cosx)ŒPosix÷0œpublic void
+sinfÃ128Õ(float x)ŒPosix÷0œpublic float
+sinhÃ128Õ(double x)ŒPosix÷0œpublic double
+sinhfÃ128Õ(float x)ŒPosix÷0œpublic float
+sizeÃ8ŒPosix.CpuSet÷0œsize_t
+sleepÃ128Õ(uint seconds)ŒPosix÷0
+socketÃ128Õ(int domain, int type, int protocol)ŒPosix÷0œpublic int
+socketpairÃ128Õ(int domain, int type, int protocol, int[] sv)ŒPosix÷0œpublic int
+socklen_tÃ2048ŒPosix÷0
+speed_tÃ2048ŒPosix÷0
+sqrtÃ128Õ(double x)ŒPosix÷0œpublic double
+sqrtfÃ128Õ(float x)ŒPosix÷0œpublic float
+ssize_tÃ2048÷0
+st_atimeÃ8ŒPosix.Stat÷0œtime_t
+st_blksizeÃ8ŒPosix.Stat÷0œblksize_t
+st_blocksÃ8ŒPosix.Stat÷0œblkcnt_t
+st_ctimeÃ8ŒPosix.Stat÷0œtime_t
+st_devÃ8ŒPosix.Stat÷0œdev_t
+st_gidÃ8ŒPosix.Stat÷0œgid_t
+st_inoÃ8ŒPosix.Stat÷0œino_t
+st_modeÃ8ŒPosix.Stat÷0œmode_t
+st_mtimeÃ8ŒPosix.Stat÷0œtime_t
+st_nlinkÃ8ŒPosix.Stat÷0œnlink_t
+st_rdevÃ8ŒPosix.Stat÷0œdev_t
+st_sizeÃ8ŒPosix.Stat÷0œsize_t
+st_uidÃ8ŒPosix.Stat÷0œuid_t
+statÃ128Õ(string filename, out Stat buf)ŒPosix÷0œint
+statvfsÃ2048ŒPosix÷0
+stderrÃ8ŒPosix÷0œFILE
+stdinÃ8ŒPosix÷0œFILE
+stdoutÃ8ŒPosix÷0œFILE
+strcatÃ128Õ(string s1, string s2)ŒPosix÷0œpublic unowned string
+strchrÃ128Õ(string s, int c)ŒPosix÷0œpublic unowned string
+strcmpÃ128Õ(string s1, string s2)ŒPosix÷0œpublic int
+strcollÃ128Õ(string s1, string s2)ŒPosix÷0œpublic int
+strcpyÃ128Õ(string s1, string s2)ŒPosix÷0œpublic unowned string
+strcspnÃ128Õ(string s1, string s2)ŒPosix÷0œpublic size_t
+strdupÃ128Õ(string s1)ŒPosix÷0œpublic unowned string
+strerrorÃ128Õ(int errnum)ŒPosix÷0œpublic unowned string
+strerror_rÃ128Õ(int errnum, string strerrbuf, size_t buflen)ŒPosix÷0œpublic int *
+strlenÃ128Õ(string s)ŒPosix÷0œpublic size_t
+strncatÃ128Õ(string s1, string s2, size_t n)ŒPosix÷0œpublic unowned string
+strncmpÃ128Õ(string s1, string s2, size_t n)ŒPosix÷0œpublic int
+strncpyÃ128Õ(string s1, string s2, size_t n)ŒPosix÷0œpublic unowned string
+strpbrkÃ128Õ(string s1, string s2)ŒPosix÷0œpublic unowned string
+strrchrÃ128Õ(string s, int c)ŒPosix÷0œpublic unowned string
+strspnÃ128Õ(string s1, string s2)ŒPosix÷0œpublic size_t
+strstrÃ128Õ(string s1, string s2)ŒPosix÷0œpublic unowned string
+strtokÃ128Õ(string s1, string s2)ŒPosix÷0œpublic unowned string
+strtok_rÃ128Õ(string s, string sep, out string lasts)ŒPosix÷0œpublic unowned string
+strxfrmÃ128Õ(string s1, string s2, size_t n)ŒPosix÷0œpublic size_t
+symlinkÃ128Õ(string from, string to)ŒPosix÷0œpublic int
+syncÃ128Õ()ŒPosix÷0œpublic int
+sysconfÃ128Õ(int name)ŒPosix÷0œpublic long
+syslogÃ128Õ(int priority, string format, ... )ŒPosix÷0œpublic void
+sysnameÃ8ŒPosix.utsname÷0œunowned
+systemÃ128Õ(string command)ŒPosix÷0œpublic int
+tanÃ128Õ(double x)ŒPosix÷0œpublic double
+tanfÃ128Õ(float x)ŒPosix÷0œpublic float
+tanhÃ128Õ(double x)ŒPosix÷0œpublic double
+tanhfÃ128Õ(float x)ŒPosix÷0œpublic float
+tcdrainÃ128Õ(int fd)ŒPosix÷0œpublic int
+tcflag_tÃ2048ŒPosix÷0
+tcflowÃ128Õ(int fd, int action)ŒPosix÷0œpublic int
+tcflushÃ128Õ(int fd, int queue_selector)ŒPosix÷0œpublic int
+tcgetattrÃ128Õ(int fd, termios termios_p)ŒPosix÷0œpublic int
+tcgetpgrpÃ128Õ(int fd)ŒPosix÷0œpublic pid_t
+tcgetsidÃ128Õ(int fd)ŒPosix÷0œpublic pid_t
+tcsendbreakÃ128Õ(int fd, int duration)ŒPosix÷0œpublic int
+tcsetattrÃ128Õ(int fd, int optional_actions, termios termios_p)ŒPosix÷0œpublic int
+tcsetpgrpÃ128Õ(int fd, pid_t pgrp_id)ŒPosix÷0œpublic int
+tellÃ128Õ()ŒPosix.FILE÷0œpublic long
+telldirÃ128Õ(Dir dir)ŒPosix÷0œpublic long
+termiosÃ2048ŒPosix÷0
+tgammaÃ128Õ(double x0)ŒPosix÷0œpublic double
+tgammafÃ128Õ(float x0)ŒPosix÷0œpublic float
+time_tÃ2048÷0
+time_tÃ128Õ()Œtime_t÷0
+timespecÃ2048ŒPosix÷0
+timevalÃ2048ŒPosix÷0
+tmÃ2048ŒPosix÷0
+tm_hourÃ8ŒPosix.tm÷0œint
+tm_isdstÃ8ŒPosix.tm÷0œint
+tm_mdayÃ8ŒPosix.tm÷0œint
+tm_minÃ8ŒPosix.tm÷0œint
+tm_monÃ8ŒPosix.tm÷0œint
+tm_secÃ8ŒPosix.tm÷0œint
+tm_wdayÃ8ŒPosix.tm÷0œint
+tm_ydayÃ8ŒPosix.tm÷0œint
+tm_yearÃ8ŒPosix.tm÷0œint
+to_intÃ128Õ()÷0œpublic int
+to_int64Ã128Õ()÷0œpublic int64
+to_longÃ128Õ()÷0œpublic long
+toasciiÃ128Õ(int c)ŒPosix÷0œpublic int
+tolowerÃ128Õ(int c)ŒPosix÷0œpublic int
+toupperÃ128Õ(int c)ŒPosix÷0œpublic int
+truncÃ128Õ(double x)ŒPosix÷0œpublic double
+truncateÃ128Õ(string path, off_t length)ŒPosix÷0œpublic int
+truncfÃ128Õ(float x)ŒPosix÷0œpublic float
+ttynameÃ128Õ(int fd)ŒPosix÷0œpublic unowned string
+ttyname_rÃ128Õ(int fd, char[] buf)ŒPosix÷0œpublic int
+tv_nsecÃ8ŒPosix.timespec÷0œlong
+tv_secÃ8ŒPosix.timespec÷0œtime_t
+tv_secÃ8ŒPosix.timeval÷0œtime_t
+tv_usecÃ8ŒPosix.timeval÷0œlong
+ualarmÃ128Õ(uint useconds)ŒPosix÷0
+ucharÃ2048÷0
+uid_tÃ2048ŒPosix÷0
+uint16Ã2048÷0
+uint32Ã2048÷0
+uint64Ã2048÷0
+uint8Ã2048÷0
+umaskÃ128Õ(mode_t mask)ŒPosix÷0œpublic mode_t
+unlinkÃ128Õ(string filename)ŒPosix÷0œpublic int
+unlockptÃ128Õ(int fd)ŒPosix÷0œpublic int
+usleepÃ128Õ(uint useconds)ŒPosix÷0
+utsnameÃ2048ŒPosix÷0
+utsnameÃ128Õ()ŒPosix.utsname÷0
+versionÃ8ŒPosix.utsname÷0œunowned
+vforkÃ128Õ()ŒPosix÷0œpublic pid_t
+vhangupÃ128Õ()ŒPosix÷0œpublic int
+waitÃ128Õ(out int status)ŒPosix÷0œpublic pid_t
+waitpidÃ128Õ(pid_t pid, out int status, int options)ŒPosix÷0œpublic pid_t
+writeÃ128Õ(int fd, void* buf, size_t count)ŒPosix÷0œpublic ssize_t
+writevÃ128Õ(int fd, iovector vector, int iovcnt)ŒPosix÷0œpublic ssize_t
+xorÃ128Õ(CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+xor_sizedÃ128Õ(size_t num, CpuSet destset, CpuSet srcset)ŒPosix.CpuSet÷0œpublic void
+y0Ã128Õ(double x0)ŒPosix÷0œpublic double
+y0fÃ128Õ(float x0)ŒPosix÷0œpublic float
+y1Ã128Õ(double x0)ŒPosix÷0œpublic double
+y1fÃ128Õ(float x0)ŒPosix÷0œpublic float
+ynÃ128Õ(int x0, double x1)ŒPosix÷0œpublic double
+ynfÃ128Õ(int x0, float x1)ŒPosix÷0œpublic float
+zeroÃ128Õ()ŒPosix.CpuSet÷0œpublic void
+zero_sizedÃ128Õ(size_t num)ŒPosix.CpuSet÷0œpublic void
