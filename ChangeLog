@@ -1,3 +1,32 @@
+2019-06-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* clint:  Applied many tweaks & improvements
+	* Coding_Standards.md:  Changed the documentation to specify that the C17 Standard must be used
+	* Devhelp:  Applied some fixes & changes to the devhelp files
+	* Doxyfile:  Tweaked some of the settings
+	* extras_rc.sh:  Fixed some bugs
+	* Geany:  Added `keybindings.conf` & `ui_toolbar.xml`
+	* Geany:  Added numerous tag files
+	* Geany:  Added some additional filetypes & tweaked some existing filetypes
+	* Geany:  Added, modified, fixed, & improved many Geany snippets
+	* Geany:  Improved the styling/appearance files for Geany
+	* Geany:  Improved the templates
+	* MACROS_MATH.h:  Tweaked the documentation for `fib128()`
+	* makefile:  Added a call to generate_ctags.sh under `ctags`
+	* makefile:  Added more Pip packages to the list of Python3 dependencies
+	* makefile_constants.mk:  Minor tweak
+	* mimetype_booster.xml:  Fixed some major bugs
+	* PyBooster:  Added `.cppcheckrc`
+	* PyBooster:  Added `generate_ctags.sh`
+	* PyBooster:  Added `set_access_time` & `save_file_times`
+	* PyBooster:  Replaced `utf-8-unix` with `utf-8` in the Emacs comment of all Python scripts
+	* PyBooster:  Tweaked some of the dot-files
+	* PyBooster:  Updated the compiling instructions for the `./src/*` files to use `-std=c17`
+	* PyLib:  Replaced `utf-8-unix` with `utf-8` in the Emacs comment
+	* tox.ini:  Tweaked some of the settings
+	* Ubuntu_Repos.list:  Edited the Skype entry
+	* unicalc:  Improved the output & optimized the code
+
 2019-05-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* extras_rc.sh:  Added two git-related functions
@@ -8,7 +37,6 @@
 	* makefile:  Fixed a bug
 	* markup.py:  Fixed some bugs
 	* pyanalysis:  Fixed a bug associated with `Radon`
-	* PyBooster:  Added `set_access_time` & `save_file_times`
 	* snippets.conf:  Added additional snippets
 	* Ubuntu_Repos.list:  Added a repository
 
