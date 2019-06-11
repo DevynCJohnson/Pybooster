@@ -25,7 +25,7 @@
 /* Search Entries */
 
 entry:focus,GtkEntry:focus{border-color:#77C;border-width:2px}
-#GeanyDialogSearch entry,#GeanyDialogSearch GtkEntry,#GeanyToolbar entry,#GeanyToolbar GtkEntry,#GotoEntry entry,#GotoEntry GtkEntry,#SearchEntry entry,#SearchEntry GtkEntry{font-family:mononoki,monospace;font-size:32px;margin:0px 4px;min-height:32px;padding:0px 4px}
+#GeanyDialogSearch entry,#GeanyDialogSearch GtkEntry,#GeanyToolbar entry,#GeanyToolbar GtkEntry,#GotoEntry entry,#GotoEntry GtkEntry,#SearchEntry entry,#SearchEntry GtkEntry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:0px 4px}
 #GeanyDialogSearch entry,#GeanyDialogSearch GtkEntry,#SearchEntry entry,#SearchEntry GtkEntry{min-width:320px}
 #GotoEntry entry,#GotoEntry GtkEntry{min-width:64px}
 #GeanyDialogSearch GtkEntry GtkImage,#GeanyToolbar GtkEntry GtkImage,#GotoEntry GtkEntry GtkImage,#SearchEntry GtkEntry GtkImage,#GeanyDialogSearch entry image,#GeanyToolbar entry image,#GotoEntry entry image,#SearchEntry entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
