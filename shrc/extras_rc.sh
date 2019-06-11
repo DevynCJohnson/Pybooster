@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Shell RC script providing miscellaneous aliases and functions
 #' @file extras_rc.sh
-#' @version 2019.06.01
+#' @version 2019.06.10
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -145,6 +145,8 @@ alias viewhugepages='grep --color=never -F -i huge /proc/meminfo'
 alias CLEAR='clear'
 alias clr='clear'
 alias CLR='clear'
+#' @alias fclr Clear the terminal and history before changing directory to home
+alias fclr='cd ~; history -c; clear'
 #' @alias clsh Clear the terminal and history prior to exiting
 if [ "$PROFILE_SHELL" = 'bash' ]; then
     alias clsh='clear; history -c; echo "" > ${HOME}/.bash_history; exit'
