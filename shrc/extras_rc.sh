@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Shell RC script providing miscellaneous aliases and functions
 #' @file extras_rc.sh
-#' @version 2019.03.28
+#' @version 2019.06.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -103,6 +103,8 @@ fi
 alias lowercase="tr '[:upper:]' '[:lower:]'"
 #' Recursively search the specified/current directory for the specified string
 alias rfind='grep -r -F'
+#' Recursively search the specified/current directory for the specified string and only lists the filenames containing the string
+alias rfindls='grep -l -r -F'
 #' Remove the first X columns
 alias rm1stxcols='cut -d " " -f'
 #' Convert string to uppercase
@@ -368,8 +370,8 @@ findrename() {
     fi
 }
 
-#' Find and replace text recursively in the current directory (unless specified otherwise)
-#' @param[in] $1 Text pattern to find
+#' Find and replace text (with Regex support) recursively in the current directory (unless specified otherwise)
+#' @param[in] $1 Text pattern to find (ERE)
 #' @param[in] $2 New text that will replace the found pattern
 #' @param[in] $3 (Optional) Directory to search recursively
 findrep() {
@@ -380,9 +382,9 @@ findrep() {
         printf 'ERROR: Expected at least two parameters ("Find" & "Replace with")!\n' >&2
     else
         if [ -n "${3:-}" ] && [ -d "${3}" ]; then
-            find "${3}" -type f -exec grep -l -F "${1}" {} + | xargs sed -i "s|${1}|${2}|g"
+            grep -l -r -E -Z "${1}" "${3}" | xargs -0 sed -i -e "s|${1}|${2}|g"
         elif [ -z "${3:-}" ]; then
-            find . -type f -exec grep -l -F "${1}" {} + | xargs sed -i "s|${1}|${2}|g"
+            grep -l -r -E -Z "${1}" . | xargs -0 sed -i -e "s|${1}|${2}|g"
         fi
     fi
 }
