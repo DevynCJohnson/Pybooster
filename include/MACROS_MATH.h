@@ -12196,13 +12196,13 @@ LIB_FUNC MATH_FUNC uint128_t fib128(const uint64_t num) {
 
 
 /**
-	@brief Fibonacci Prime Number Generator; return 0 on error
+@brief Fibonacci Prime Number Generator; return 0 on error
 
-	@section DESCRIPTION
-	A Fibonacci prime is a Fibonacci number that is prime.
+@section DESCRIPTION
+A Fibonacci prime is a Fibonacci number that is prime.
 
-	@param[in] num Specify the first, second, etc. Fibonacci Prime
-	@return Fibonacci Prime
+@param[in] num Specify the first, second, etc. Fibonacci Prime
+@return Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC uint64_t fibprime(const uint64_t num) {
 	if (num > (uint64_t)11) { return 0; }
@@ -12226,13 +12226,13 @@ LIB_FUNC MATH_FUNC uint64_t fibprime(const uint64_t num) {
 
 #if SUPPORTS_UINT128
 /**
-	@brief Fibonacci Prime Number Generator; return 0 on error
+@brief Fibonacci Prime Number Generator; return 0 on error
 
-	@section DESCRIPTION
-	A Fibonacci prime is a Fibonacci number that is prime.
+@section DESCRIPTION
+A Fibonacci prime is a Fibonacci number that is prime.
 
-	@param[in] num Specify the first, second, etc. Fibonacci Prime
-	@return Fibonacci Prime
+@param[in] num Specify the first, second, etc. Fibonacci Prime
+@return Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC uint128_t fibprime128(const uint64_t num) {
 	if (num > (uint64_t)13) { return 0; }
@@ -12295,13 +12295,13 @@ LIB_FUNC MATH_FUNC unsigned long lucas(const unsigned long num) {
 
 
 /**
-	@brief Lucas Prime Number Generator; return 0 on error
+@brief Lucas Prime Number Generator; return 0 on error
 
-	@section DESCRIPTION
-	A Lucas prime is a Lucas number that is prime.
+@section DESCRIPTION
+A Lucas prime is a Lucas number that is prime.
 
-	@param[in] num Specify the first, second, etc. Lucas Prime
-	@return Lucas Prime
+@param[in] num Specify the first, second, etc. Lucas Prime
+@return Lucas Prime
 */
 LIB_FUNC MATH_FUNC uint64_t lucasprime(const uint64_t num) {
 	if (num > (uint64_t)14) { return 0; }
@@ -13187,10 +13187,10 @@ LIB_FUNC MATH_FUNC int isullcomposite(const unsigned long long num) {
 
 
 /**
-	@brief Test if an uint64_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
-	@param[in] num A 64-bit integer
-	@retval 0 False: This is not a Fibonacci Prime
-	@retval 1 True: This is a Fibonacci Prime
+@brief Test if an uint64_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
+@param[in] num A 64-bit integer
+@retval 0 False: This is not a Fibonacci Prime
+@retval 1 True: This is a Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 	switch (num) {
@@ -13214,10 +13214,10 @@ LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 
 #if SUPPORTS_UINT128
 /**
-	@brief Test if an uint128_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
-	@param[in] num A 128-bit integer
-	@retval 0 False: This is not a Fibonacci Prime
-	@retval 1 True: This is a Fibonacci Prime
+@brief Test if an uint128_t is a Fibonacci Prime; A Fibonacci prime is a Fibonacci number that is prime
+@param[in] num A 128-bit integer
+@retval 0 False: This is not a Fibonacci Prime
+@retval 1 True: This is a Fibonacci Prime
 */
 LIB_FUNC MATH_FUNC int isfibprime128(const uint128_t num) {
 	switch (num) {
@@ -13302,10 +13302,10 @@ LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
 
 
 /**
-	@brief Test if an uint64_t is a Lucas Prime; A Lucas prime is a Lucas number that is prime
-	@param[in] num A 64-bit integer
-	@retval 0 False: This is not a Lucas Prime
-	@retval 1 True: This is a Lucas Prime
+@brief Test if an uint64_t is a Lucas Prime; A Lucas prime is a Lucas number that is prime
+@param[in] num A 64-bit integer
+@retval 0 False: This is not a Lucas Prime
+@retval 1 True: This is a Lucas Prime
 */
 LIB_FUNC MATH_FUNC int islucasprime(const uint64_t num) {
 	switch (num) {
