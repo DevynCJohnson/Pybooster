@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.05.12
+#' @version 2019.06.02
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -25,25 +25,105 @@ fi
 
 
 export NO_AT_BRIDGE=1
-export LANG='en_US.UTF-8'
-export LC_ALL='C'
-export LC_CTYPE='C'
-export PYTHONIOENCODING='utf8'
-export RADONFILESENCODING='utf-8'
+export PYTHONCOERCECLOCALE=0
+export PYTHONIOENCODING='UTF-8'
+export PYTHONUTF8=1
+export RADONFILESENCODING='UTF-8'
+# export LANG='en_US.UTF-8'
+# export LANGUAGE='en_US.UTF-8'
+# export LC_ALL='en_US.UTF-8'
+# export LC_CTYPE='en_US.UTF-8'
+
 export FirstLoopPass=0
+export RADON_MAX_CC=10
+EXTRA_FLAKE8_FLAGS=''
 
+IGNORE_DIRECTORIES='.bzr,.cache,.cvs,.eggs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,build,CVS,dist,*.egg-info'
+IGNORE_VAR_NAMES='i,j,k,v,ex,key,Run,val,_'
+TODO_COMMENTS='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX'
 
-if [ -r ./.bandit.ini ]; then
-    export bandit_file=./.bandit.ini
-elif [ -r ../.bandit.ini ]; then
-    export bandit_file=../.bandit.ini
-elif [ -r ./.bandit ]; then
-    export bandit_file=./.bandit
-elif [ -r ../.bandit ]; then
-    export bandit_file=../.bandit
-else
-    export bandit_file=''
+# Setup Commands
+
+BANDIT_EXISTS=0
+if [ -x "$(command -v bandit)" ]; then
+    BANDIT_EXISTS=1
+    # Find the Bandit configuration file
+    if [ -r ./.bandit.ini ]; then
+        bandit_file=./.bandit.ini
+    elif [ -r ../.bandit.ini ]; then
+        bandit_file=../.bandit.ini
+    elif [ -r ../../.bandit.ini ]; then
+        bandit_file=../../.bandit.ini
+    elif [ -r ./.bandit ]; then
+        bandit_file=./.bandit
+    elif [ -r ../.bandit ]; then
+        bandit_file=../.bandit
+    elif [ -r ../../.bandit ]; then
+        bandit_file=../../.bandit
+    else
+        bandit_file=''
+    fi
+    EXTRA_BANDIT_FLAGS=''
+    if [ -n "${bandit_file:-}" ]; then
+        EXTRA_BANDIT_FLAGS="--configfile=${bandit_file}"
+    fi
 fi
+
+FLAKE8_EXISTS=0
+if [ -x "$(command -v flake8)" ]; then
+    FLAKE8_EXISTS=1
+fi
+
+PYFLAKES2_EXISTS=0
+if [ -x "$(command -v pyflakes2)" ]; then
+    PYFLAKES2_EXISTS=1
+fi
+
+PYFLAKES3_EXISTS=0
+if [ -x "$(command -v pyflakes3)" ]; then
+    PYFLAKES3_EXISTS=1
+fi
+
+PYLINT2_EXISTS=0
+if [ -x "$(command -v pylint2)" ]; then
+    PYLINT2_EXISTS=1
+fi
+
+PYLINT3_EXISTS=0
+if [ -x "$(command -v pylint3)" ]; then
+    PYLINT3_EXISTS=1
+fi
+
+if [ "$PYLINT2_EXISTS" -eq 1 ] | [ "$PYLINT3_EXISTS" -eq 1 ]; then
+    # Find the PyLint configuration file
+    if [ -r ./.pylintrc ]; then
+        pylintrc_file=./.pylintrc
+    elif [ -r ../.pylintrc ]; then
+        pylintrc_file=../.pylintrc
+    elif [ -r ../../.pylintrc ]; then
+        pylintrc_file=../../.pylintrc
+    elif [ -r ./.pylint.ini ]; then
+        pylintrc_file=./.pylint.ini
+    elif [ -r ../.pylint.ini ]; then
+        pylintrc_file=../.pylint.ini
+    elif [ -r ../../.pylint.ini ]; then
+        pylintrc_file=../../.pylint.ini
+    else
+        pylintrc_file=''
+    fi
+fi
+
+RADON_EXISTS=0
+if [ -x "$(command -v radon)" ]; then
+    RADON_EXISTS=1
+    EXTRA_FLAKE8_FLAGS="--radon-max-cc=${RADON_MAX_CC}"
+fi
+
+VULTURE_EXISTS=0
+if [ -x "$(command -v vulture)" ]; then
+    VULTURE_EXISTS=1
+fi
+
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -69,22 +149,22 @@ for file in "$@"; do
     ispy2=0
     echo "$hashpling" | grep -q -E -e '#!/.+python2.*' && ispy2=1
 
-    if [ -x "$(command -v flake8)" ]; then
+    if [ "$FLAKE8_EXISTS" -eq 1 ]; then
         printf '======  *FLAKE8*  ======\n'
-        flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --valid-encodings='utf-8,utf-8-unix' --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flake8: command not found!\n' >&2
     fi
 
     if [ "$ispy2" -eq 1 ]; then
-        if [ -x "$(command -v pyflakes2)" ]; then
+        if [ "$PYFLAKES2_EXISTS" -eq 1 ]; then
             printf '======  *PYFLAKES2*  ======\n'
             pyflakes2 "$file" | noblanks
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'pyflakes2: command not found!\n' >&2
         fi
     else
-        if [ -x "$(command -v pyflakes3)" ]; then
+        if [ "$PYFLAKES3_EXISTS" -eq 1 ]; then
             printf '======  *PYFLAKES*  ======\n'
             pyflakes3 "$file" | noblanks
         elif [ "$FirstLoopPass" -eq 0 ]; then
@@ -103,16 +183,24 @@ for file in "$@"; do
     fi
 
     if [ "$ispy2" -eq 1 ]; then
-        if [ -x "$(command -v pylint2)" ]; then
+        if [ "$PYLINT2_EXISTS" -eq 1 ]; then
             printf '======  *PYLINT2*  ======\n'
-            pylint2 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            if [ -n "${pylintrc_file:-}" ]; then
+                pylint2 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            else
+                pylint2 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            fi
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'pylint2: command not found!\n' >&2
         fi
     else
-        if [ -x "$(command -v pylint3)" ]; then
+        if [ "$PYLINT3_EXISTS" -eq 1 ]; then
             printf '======  *PYLINT*  ======\n'
-            pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            if [ -n "${pylintrc_file:-}" ]; then
+                pylint3 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            else
+                pylint3 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            fi
         elif [ "$FirstLoopPass" -eq 0 ]; then
             printf 'pylint3: command not found!\n' >&2
         fi
@@ -125,7 +213,7 @@ for file in "$@"; do
         printf 'py_directive_checker: command not found!\n' >&2
     fi
 
-    if [ -x "$(command -v vulture)" ]; then
+    if [ "$VULTURE_EXISTS" -eq 1 ]; then
         printf '======  *VULTURE (DEAD CODE CHECKER)*  ======\n'
         vulture --min-confidence=65 "$file" | noblanks
     elif [ "$FirstLoopPass" -eq 0 ]; then
@@ -137,15 +225,10 @@ for file in "$@"; do
         uncalled --how both "${1}"
     fi
 
-    if [ -x "$(command -v bandit)" ]; then
+    if [ "$BANDIT_EXISTS" -eq 1 ]; then
         printf '======  *BANDIT (SECURITY ANALYZER)*  ======\n'
-        if [ -n "${bandit_file:-}" ]; then
-            # shellcheck disable=SC2016
-            bandit --aggregate vuln --configfile "$bandit_file" "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
-        else
-            # shellcheck disable=SC2016
-            bandit --aggregate vuln "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
-        fi
+        # shellcheck disable=SC2016
+        bandit --aggregate vuln "${EXTRA_BANDIT_FLAGS}" "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'bandit: command not found!\n' >&2
     fi
@@ -168,7 +251,7 @@ for file in "$@"; do
     fi
 
     printf '======  *RADON REPORT*  ======\n'
-    if [ -x "$(command -v radon)" ]; then
+    if [ "$RADON_EXISTS" -eq 1 ]; then
         radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average
         radon mi "${1}" --max C --min A --multi --show
         radon raw "${1}" --summary

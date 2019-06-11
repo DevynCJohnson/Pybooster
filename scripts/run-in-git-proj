@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Find the top-level directory of the GIT project and execute the specified command
 #' @file run-in-git-proj
-#' @version 2019.04.20
+#' @version 2019.05.12
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -25,6 +25,15 @@ elif [ -d '../../.git' ]; then
     sh -c "${@}"
 elif [ -d '../../../.git' ]; then
     cd ../../.. || { printf 'Failed to change directory!\n' >&2; exit 1; }
+    sh -c "${@}"
+elif [ -d '../../../../.git' ]; then
+    cd ../../../.. || { printf 'Failed to change directory!\n' >&2; exit 1; }
+    sh -c "${@}"
+elif [ -d '../../../../../.git' ]; then
+    cd ../../../../.. || { printf 'Failed to change directory!\n' >&2; exit 1; }
+    sh -c "${@}"
+elif [ -d '../../../../../../.git' ]; then
+    cd ../../../../../.. || { printf 'Failed to change directory!\n' >&2; exit 1; }
     sh -c "${@}"
 else
     [ -x "$(command -v ezwin)" ] && ezwin --err "No Git project found" && exit 1

@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
 #' @brief Wrapper for scanning C source code with various syntax checkers
 #' @file canalysis
-#' @version 2019.03.28
+#' @version 2019.05.31
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -56,7 +56,22 @@ for file in "$@"; do
 
     if [ -x "$(command -v cppcheck)" ]; then
         printf '======  *CPPCHECK*  ======\n'
-        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
+        if [ -f ./.cppcheckrc ]; then
+            supressions='--suppressions-list=./.cppcheckrc'
+        elif [ -f ../.cppcheckrc ]; then
+            supressions='--suppressions-list=../.cppcheckrc'
+        elif [ -f ../../.cppcheckrc ]; then
+            supressions='--suppressions-list=../../.cppcheckrc'
+        elif [ -f ../../../.cppcheckrc ]; then
+            supressions='--suppressions-list=../../../.cppcheckrc'
+        elif [ -f "${HOME}/.cppcheckrc" ]; then
+            supressions="--suppressions-list=${HOME}/.cppcheckrc"
+        elif [ -f "${HOME}/.config/cppcheckrc" ]; then
+            supressions="--suppressions-list=${HOME}/.config/cppcheckrc"
+        else
+            supressions=''
+        fi
+        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "${supressions}" "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'cppcheck: command not found!\n' >&2
     fi
@@ -70,8 +85,13 @@ for file in "$@"; do
 
     if [ -x "$(command -v splint)" ]; then
         printf '======  *SPLINT*  ======\n'
-        splint -nof -tmpdir /tmp/ -I. -I../include -commentchar '@' +trytorecover -nolib -checks -booltype _Bool -booltype Bool -booltype bool -booltype Boolean +boolint -boolops +charint +enumint +enumindex -fixedformalarray +ignorequals -initallelements -namechecks -nullassign -preproc +ptrnegate +stats -stringliteralsmaller -warnlintcomments "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
-        sleep 0.5
+        if grep -q -E '#include <(dirent|libgen|unistd)\.h>' "$file"; then
+            splint_posix='+posixlib'
+        else
+            splint_posix='-nolib'
+        fi
+        splint -nof -tmpdir /tmp/ -I. -I.. -I../include -I/usr/include -I/usr/local/include -commentchar '@' +trytorecover "${splint_posix}" -checks -booltype _Bool -booltype Bool -booltype bool -booltype Boolean +boolint -boolops +charint +enumint +enumindex -fixedformalarray +ignorequals -initallelements -namechecks -nullassign -preproc +ptrnegate +stats -stringliteralsmaller -warnlintcomments -warnposix "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
+        sleep 1
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'splint: command not found!\n' >&2
     fi
