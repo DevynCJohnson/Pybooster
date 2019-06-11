@@ -1,0 +1,38 @@
+<ui>
+
+<!--
+This is Geany's toolbar UI definition.
+DTD: http://library.gnome.org/devel/gtk/stable/GtkUIManager.html#GtkUIManager.description
+
+Freely add, remove, and re-order all/any items available
+Everything added or changed must be inside the /ui/toolbar/ path
+
+For changes to take effect, restart Geany
+
+A list of available actions can be found in the documentation included with Geany or
+at https://www.geany.org/manual/current/index.html#customizing-the-toolbar
+-->
+
+	<toolbar name='GeanyToolbar'>
+		<toolitem action='New' />
+		<toolitem action='Open' />
+		<toolitem action='Save' />
+		<toolitem action='SaveAll' />
+		<toolitem action='Undo' />
+		<toolitem action='Redo' />
+		<separator/>
+		<toolitem action='Build' />
+		<toolitem action='Compile' />
+		<toolitem action='Run' />
+		<separator/>
+		<toolitem action='Color' />
+		<separator/>
+		<toolitem action='SearchEntry' />
+		<toolitem action='Search' />
+		<toolitem action='Replace' />
+		<separator/>
+		<toolitem action='GotoEntry' />
+		<toolitem action='Goto' />
+
+	</toolbar>
+</ui>
