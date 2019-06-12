@@ -1,3 +1,18 @@
+2019-06-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* .gitignore:  Added `.isort.cfg`
+	* Geany:  Added more tag files
+	* makefile:  Added more flake8 plugins as Python dependencies under `LIST_PIP_DEPS`
+	* snippets.conf:  Fixed some snippets
+	* tox.ini:  Added additional settings
+
+2019-06-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* .gitignore:  Added `*.geany`
+	* extras_rc.sh:  Added the `fclr` alias
+	* Geany:  Fixed the font size for the entry-boxes in the CSS files
+	* snippets.conf:  Fixed some snippets
+
 2019-06-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* clint:  Applied many tweaks & improvements
@@ -8,7 +23,6 @@
 	* Geany:  Added `keybindings.conf` & `ui_toolbar.xml`
 	* Geany:  Added numerous tag files
 	* Geany:  Added some additional filetypes & tweaked some existing filetypes
-	* Geany:  Added, modified, fixed, & improved many Geany snippets
 	* Geany:  Improved the styling/appearance files for Geany
 	* Geany:  Improved the templates
 	* MACROS_MATH.h:  Tweaked the documentation for `fib128()`
@@ -23,6 +37,7 @@
 	* PyBooster:  Tweaked some of the dot-files
 	* PyBooster:  Updated the compiling instructions for the `./src/*` files to use `-std=c17`
 	* PyLib:  Replaced `utf-8-unix` with `utf-8` in the Emacs comment
+	* snippets.conf:  Added, modified, fixed, & improved many Geany snippets
 	* tox.ini:  Tweaked some of the settings
 	* Ubuntu_Repos.list:  Edited the Skype entry
 	* unicalc:  Improved the output & optimized the code
