@@ -54,6 +54,7 @@ var/
 #.eslintrc.yml
 #.flake8
 #.gitlint
+#.isort.cfg
 #.mypy.ini
 #.npmrc
 #.pycodestyle
