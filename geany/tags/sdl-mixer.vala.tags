@@ -1,0 +1,85 @@
+# format=tagmanager
+CMDÃ4ŒSDLMixer.MusicType÷0
+ChannelÃ2048ŒSDLMixer÷0
+ChannelFinishedCallbackÃ128Õ(int channel)ŒSDLMixer÷0œpublic delegate void
+ChannelGroupÃ2048ŒSDLMixer÷0
+ChunkÃ1ŒSDLMixer÷0
+Chunk.QuickRAWÃ128Õ(uchar[] mem)ŒSDLMixer.Chunk÷0
+Chunk.QuickWAVÃ128Õ([CCode (array_length = false)] uchar[] mem)ŒSDLMixer.Chunk÷0
+Chunk.WAVÃ128Õ(SDL.RWops src, int freesrc=0)ŒSDLMixer.Chunk÷0
+EffectÃ1ŒSDLMixer÷0
+EffectCallbackÃ128Õ(int chan, void* stream, int len, void* udata)ŒSDLMixer÷0œpublic delegate void
+EffectDoneCallbackÃ128Õ(int chan, void* udata)ŒSDLMixer÷0œpublic delegate void
+FADING_INÃ4ŒSDLMixer.FadeStatus÷0
+FADING_OUTÃ4ŒSDLMixer.FadeStatus÷0
+FadeStatusÃ2ŒSDLMixer÷0
+MIDÃ4ŒSDLMixer.MusicType÷0
+MODÃ4ŒSDLMixer.MusicType÷0
+MP3Ã4ŒSDLMixer.MusicType÷0
+MP3_MADÃ4ŒSDLMixer.MusicType÷0
+MixFunctionÃ128Õ(void* udata, uchar[] stream)ŒSDLMixer÷0œpublic delegate void
+MusicÃ1ŒSDLMixer÷0
+MusicÃ128Õ(string file)ŒSDLMixer.Music÷0
+Music.RWÃ128Õ(SDL.RWops rw)ŒSDLMixer.Music÷0
+MusicFinishedCallbackÃ128Õ()ŒSDLMixer÷0œpublic delegate void
+MusicTypeÃ2ŒSDLMixer÷0
+NONEÃ4ŒSDLMixer.MusicType÷0
+NO_FADINGÃ4ŒSDLMixer.FadeStatus÷0
+OGGÃ4ŒSDLMixer.MusicType÷0
+SDLMixerÃ256÷0
+WAVÃ4ŒSDLMixer.MusicType÷0
+addÃ128Õ(int channel, int group)ŒSDLMixer.ChannelGroup÷0œpublic int
+add_rangeÃ128Õ(int from_channel, int to_channel, int group)ŒSDLMixer.ChannelGroup÷0œpublic int
+allocateÃ128Õ(int num_channels)ŒSDLMixer.Channel÷0œpublic int
+closeÃ128Õ()ŒSDLMixer÷0œpublic void
+countÃ128Õ()ŒSDLMixer.ChannelGroup÷0œpublic int
+distanceÃ128Õ(uchar distance)ŒSDLMixer.Channel÷0œpublic int
+expireÃ128Õ(int ticks)ŒSDLMixer.Channel÷0œpublic int
+fade_inÃ128Õ(Chunk chunk, int loops, int ms, int ticks=-1)ŒSDLMixer.Channel÷0œpublic int
+fade_inÃ128Õ(int loops, int ms, double position=0.0)ŒSDLMixer.Music÷0œpublic int
+fade_outÃ128Õ(int ms)ŒSDLMixer.Channel÷0œpublic int
+fade_outÃ128Õ(int ms)ŒSDLMixer.ChannelGroup÷0œpublic int
+fade_outÃ128Õ(int ms)ŒSDLMixer.Music÷0œpublic int
+first_availableÃ128Õ()ŒSDLMixer.ChannelGroup÷0œpublic int
+get_chunkÃ128Õ()ŒSDLMixer.Channel÷0œpublic Chunk?
+get_hook_dataÃ128Õ()ŒSDLMixer.Music÷0œpublic void *
+get_synchro_valueÃ128Õ()ŒSDLMixer÷0œpublic int
+haltÃ128Õ()ŒSDLMixer.Channel÷0œpublic int
+haltÃ128Õ()ŒSDLMixer.ChannelGroup÷0œpublic int
+haltÃ128Õ()ŒSDLMixer.Music÷0œpublic int
+hook_finishedÃ128Õ(ChannelFinishedCallback? cb)ŒSDLMixer.Channel÷0œpublic void
+hook_finishedÃ128Õ(MusicFinishedCallback cb)ŒSDLMixer.Music÷0œpublic void
+hook_mixerÃ128Õ(MixFunction? f, void* arg)ŒSDLMixer.Music÷0œpublic void
+is_fadingÃ128Õ()ŒSDLMixer.Channel÷0œpublic FadeStatus
+is_fadingÃ128Õ()ŒSDLMixer.Music÷0œpublic FadeStatus
+is_pausedÃ128Õ()ŒSDLMixer.Channel÷0œpublic int
+is_pausedÃ128Õ()ŒSDLMixer.Music÷0œpublic int
+is_playingÃ128Õ()ŒSDLMixer.Channel÷0œpublic int
+is_playingÃ128Õ()ŒSDLMixer.Music÷0œpublic int
+linkedÃ128Õ()ŒSDLMixer÷0œpublic unowned
+newestÃ128Õ()ŒSDLMixer.ChannelGroup÷0œpublic int
+oldestÃ128Õ()ŒSDLMixer.ChannelGroup÷0œpublic int
+openÃ128Õ(int frequency, uint16 format, int channels, int chunksize)ŒSDLMixer÷0œpublic int
+panÃ128Õ(uchar left, uchar right)ŒSDLMixer.Channel÷0œpublic int
+pauseÃ128Õ()ŒSDLMixer.Channel÷0œpublic void
+pauseÃ128Õ()ŒSDLMixer.Music÷0œpublic void
+playÃ128Õ(Chunk chunk, int loops, int ticks=-1)ŒSDLMixer.Channel÷0œpublic int
+playÃ128Õ(int loops)ŒSDLMixer.Music÷0œpublic int
+positionÃ128Õ(int16 degrees, uchar distance)ŒSDLMixer.Channel÷0œpublic int
+positionÃ128Õ(double position)ŒSDLMixer.Music÷0œpublic int
+queryÃ128Õ(ref int frequency, ref uint16 format, ref int channels)ŒSDLMixer÷0œpublic int
+registerÃ128Õ(int chan, EffectCallback f, EffectDoneCallback? d, void* arg)ŒSDLMixer.Effect÷0œpublic int
+reserveÃ128Õ(int num_channels)ŒSDLMixer.Channel÷0œpublic int
+resumeÃ128Õ()ŒSDLMixer.Channel÷0œpublic void
+resumeÃ128Õ()ŒSDLMixer.Music÷0œpublic void
+reverse_stereoÃ128Õ(int flip)ŒSDLMixer.Channel÷0œpublic int
+rewindÃ128Õ()ŒSDLMixer.Music÷0œpublic void
+set_play_commandÃ128Õ(string command)ŒSDLMixer.Music÷0œpublic int
+set_post_mixerÃ128Õ(MixFunction f, void* arg)ŒSDLMixer÷0œpublic void
+set_synchro_valueÃ128Õ(int value)ŒSDLMixer÷0œpublic int
+typeÃ128Õ()ŒSDLMixer.Music÷0œpublic MusicType
+unregisterÃ128Õ(int chan, EffectCallback f)ŒSDLMixer.Effect÷0œpublic int
+unregister_allÃ128Õ(int channel)ŒSDLMixer.Effect÷0œpublic int
+volumeÃ128Õ(int num)ŒSDLMixer.Channel÷0œpublic int
+volumeÃ128Õ(int num)ŒSDLMixer.Chunk÷0œpublic int
+volumeÃ128Õ(int num)ŒSDLMixer.Music÷0œpublic int

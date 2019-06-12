@@ -1,0 +1,83 @@
+# format=tagmanager
+ABRTÃ4ŒDaemon.Sig÷0
+ALERTÃ4ŒDaemon.LogPriority÷0
+ALRMÃ4ŒDaemon.Sig÷0
+AUTOÃ4ŒDaemon.LogFlags÷0
+BUSÃ4ŒDaemon.Sig÷0
+CHLDÃ4ŒDaemon.Sig÷0
+CLDÃ4ŒDaemon.Sig÷0
+CONTÃ4ŒDaemon.Sig÷0
+CRITÃ4ŒDaemon.LogPriority÷0
+DEBUGÃ4ŒDaemon.LogPriority÷0
+DaemonÃ256÷0
+EMERGÃ4ŒDaemon.LogPriority÷0
+ERRÃ4ŒDaemon.LogPriority÷0
+FPEÃ4ŒDaemon.Sig÷0
+HUPÃ4ŒDaemon.Sig÷0
+ILLÃ4ŒDaemon.Sig÷0
+INFOÃ4ŒDaemon.LogPriority÷0
+INTÃ4ŒDaemon.Sig÷0
+IOÃ4ŒDaemon.Sig÷0
+IOTÃ4ŒDaemon.Sig÷0
+KILLÃ4ŒDaemon.Sig÷0
+LogFlagsÃ2ŒDaemon÷0
+LogPriorityÃ2ŒDaemon÷0
+NOTICEÃ4ŒDaemon.LogPriority÷0
+PIPEÃ4ŒDaemon.Sig÷0
+POLLÃ4ŒDaemon.Sig÷0
+PROFÃ4ŒDaemon.Sig÷0
+PWRÃ4ŒDaemon.Sig÷0
+PidFileProcÃ128Õ()ŒDaemon÷0
+QUITÃ4ŒDaemon.Sig÷0
+SEGVÃ4ŒDaemon.Sig÷0
+STDERRÃ4ŒDaemon.LogFlags÷0
+STDOUTÃ4ŒDaemon.LogFlags÷0
+STKFLTÃ4ŒDaemon.Sig÷0
+STOPÃ4ŒDaemon.Sig÷0
+SYSÃ4ŒDaemon.Sig÷0
+SYSLOGÃ4ŒDaemon.LogFlags÷0
+SigÃ2ŒDaemon÷0
+TERMÃ4ŒDaemon.Sig÷0
+TRAPÃ4ŒDaemon.Sig÷0
+TSTPÃ4ŒDaemon.Sig÷0
+TTINÃ4ŒDaemon.Sig÷0
+TTOUÃ4ŒDaemon.Sig÷0
+UNUSEDÃ4ŒDaemon.Sig÷0
+URGÃ4ŒDaemon.Sig÷0
+USR1Ã4ŒDaemon.Sig÷0
+USR2Ã4ŒDaemon.Sig÷0
+VTALRMÃ4ŒDaemon.Sig÷0
+WARNINGÃ4ŒDaemon.LogPriority÷0
+WINCHÃ4ŒDaemon.Sig÷0
+XCPUÃ4ŒDaemon.Sig÷0
+XFSZÃ4ŒDaemon.Sig÷0
+close_allÃ128Õ(int except_fd, ...)ŒDaemon÷0œpublic int
+close_allvÃ128Õ([CCode (array_length = false)] int[] except_fds)ŒDaemon÷0œpublic int
+execÃ128Õ(string dir, out int ret, string prog, ...)ŒDaemon÷0œpublic int
+forkÃ128Õ()ŒDaemon÷0œpublic GLib.Pid
+ident_from_argv0Ã128Õ(string argv0)ŒDaemon÷0œpublic unowned string
+logÃ128Õ(int prio, string t, ...)ŒDaemon÷0œpublic void
+log_identÃ8ŒDaemon÷0
+log_useÃ8ŒDaemon÷0œLogFlags
+nonblockÃ128Õ(int fd, int b)ŒDaemon÷0œpublic int
+pid_file_createÃ128Õ()ŒDaemon÷0œpublic int
+pid_file_identÃ8ŒDaemon÷0
+pid_file_is_runningÃ128Õ()ŒDaemon÷0œpublic GLib.Pid
+pid_file_killÃ128Õ(Sig s)ŒDaemon÷0œpublic int
+pid_file_kill_waitÃ128Õ(Sig s, int m)ŒDaemon÷0œpublic int
+pid_file_procÃ8ŒDaemon÷0œPidFileProc
+pid_file_proc_defaultÃ128Õ()ŒDaemon÷0œpublic unowned string
+pid_file_removeÃ128Õ()ŒDaemon÷0œpublic int
+reset_sigsÃ128Õ(int except, ...)ŒDaemon÷0œpublic int
+reset_sigsvÃ128Õ([CCode (array_length = false)] int[] except)ŒDaemon÷0œpublic int
+retval_doneÃ128Õ()ŒDaemon÷0œpublic void
+retval_initÃ128Õ()ŒDaemon÷0œpublic int
+retval_sendÃ128Õ(int s)ŒDaemon÷0œpublic int
+retval_waitÃ128Õ(int timeout)ŒDaemon÷0œpublic int
+signal_doneÃ128Õ()ŒDaemon÷0œpublic void
+signal_fdÃ128Õ()ŒDaemon÷0œpublic int
+signal_initÃ128Õ(Sig s, ...)ŒDaemon÷0œpublic int
+signal_installÃ128Õ(Sig s)ŒDaemon÷0œpublic int
+signal_nextÃ128Õ()ŒDaemon÷0œpublic int
+unblock_sigsÃ128Õ(int except, ...)ŒDaemon÷0œpublic int
+unblock_sigsvÃ128Õ([CCode (array_length = false)] int[] except)ŒDaemon÷0œpublic int

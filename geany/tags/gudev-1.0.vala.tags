@@ -1,0 +1,62 @@
+# format=tagmanager
+BLOCKÃ4ŒGUdev.DeviceType÷0
+CHARÃ4ŒGUdev.DeviceType÷0
+ClientÃ1ŒGUdev÷0
+ClientÃ128Õ([CCode (array_length = false)] string[]? subsystems)ŒGUdev.Client÷0
+DeviceÃ1ŒGUdev÷0
+DeviceÃ128Õ()ŒGUdev.Device÷0
+DeviceNumberÃ2048ŒGUdev÷0
+DeviceTypeÃ2ŒGUdev÷0
+GUdevÃ256÷0
+NONEÃ4ŒGUdev.DeviceType÷0
+get_actionÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_device_fileÃ128Õ()ŒGUdev.Device÷0œpublic unowned
+get_device_file_symlinksÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_device_numberÃ128Õ()ŒGUdev.Device÷0œpublic GUdev.DeviceNumber
+get_device_typeÃ128Õ()ŒGUdev.Device÷0œpublic GUdev.DeviceType
+get_devtypeÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_driverÃ128Õ()ŒGUdev.Device÷0œpublic unowned
+get_nameÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_numberÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_parentÃ128Õ()ŒGUdev.Device÷0œpublic unowned
+get_parent_with_subsystemÃ128Õ(string subsystem, string? devtype)ŒGUdev.Device÷0œpublic unowned
+get_propertyÃ128Õ(string key)ŒGUdev.Device÷0œpublic unowned
+get_property_as_booleanÃ128Õ(string key)ŒGUdev.Device÷0œpublic bool
+get_property_as_doubleÃ128Õ(string key)ŒGUdev.Device÷0œpublic double
+get_property_as_intÃ128Õ(string key)ŒGUdev.Device÷0œpublic int
+get_property_as_strvÃ128Õ(string key)ŒGUdev.Device÷0œpublic unowned
+get_property_as_uint64Ã128Õ(string key)ŒGUdev.Device÷0œpublic uint64
+get_property_keysÃ128Õ()ŒGUdev.Device÷0œpublic unowned
+get_seqnumÃ128Õ()ŒGUdev.Device÷0œpublic uint64
+get_subsystemÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+get_sysfs_attrÃ128Õ(string name)ŒGUdev.Device÷0œpublic unowned
+get_sysfs_attr_as_booleanÃ128Õ(string name)ŒGUdev.Device÷0œpublic bool
+get_sysfs_attr_as_doubleÃ128Õ(string name)ŒGUdev.Device÷0œpublic double
+get_sysfs_attr_as_intÃ128Õ(string name)ŒGUdev.Device÷0œpublic int
+get_sysfs_attr_as_strvÃ128Õ(string name)ŒGUdev.Device÷0œpublic unowned
+get_sysfs_attr_as_uint64Ã128Õ(string name)ŒGUdev.Device÷0œpublic uint64
+get_sysfs_pathÃ128Õ()ŒGUdev.Device÷0œpublic unowned string
+has_propertyÃ128Õ(string key)ŒGUdev.Device÷0œpublic bool
+query_by_device_fileÃ128Õ(string device_file)ŒGUdev.Client÷0œpublic unowned
+query_by_device_numberÃ128Õ(GUdev.DeviceType type, GUdev.DeviceNumber number)ŒGUdev.Client÷0œpublic unowned
+query_by_subsystemÃ128Õ(string? subsystem)ŒGUdev.Client÷0œpublic GLib.List
+query_by_subsystem_and_nameÃ128Õ(string subsystem, string name)ŒGUdev.Client÷0œpublic unowned
+query_by_sysfs_pathÃ128Õ(string sysfs_path)ŒGUdev.Client÷0œpublic unowned
+reserved1Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved1Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved2Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved2Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved3Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved3Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved4Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved4Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved5Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved5Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved6Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved6Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved7Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved7Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+reserved8Ã128Õ()ŒGUdev.Client÷0œpublic virtual void
+reserved8Ã128Õ()ŒGUdev.Device÷0œpublic virtual void
+subsystemsÃ8ŒGUdev.Client÷0
+ueventÃ128Õ(string action, GUdev.Device device)ŒGUdev.Client÷0œpublic virtual signal void

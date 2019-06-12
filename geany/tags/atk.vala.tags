@@ -1,0 +1,564 @@
+# format=tagmanager
+ACCEL_LABELÃ4ŒAtk.Role÷0
+ACTIVEÃ4ŒAtk.StateType÷0
+ALERTÃ4ŒAtk.Role÷0
+ANIMATEDÃ4ŒAtk.StateType÷0
+ANIMATIONÃ4ŒAtk.Role÷0
+APPLICATIONÃ4ŒAtk.Role÷0
+ARMEDÃ4ŒAtk.StateType÷0
+ARROWÃ4ŒAtk.Role÷0
+AUTOCOMPLETEÃ4ŒAtk.Role÷0
+ActionÃ32ŒAtk÷0
+AtkÃ256÷0
+AttributeÃ1ŒAtk÷0
+AttributeSetÃ1ŒAtk÷0
+BACKGROUNDÃ4ŒAtk.Layer÷0
+BG_COLORÃ4ŒAtk.TextAttribute÷0
+BG_FULL_HEIGHTÃ4ŒAtk.TextAttribute÷0
+BG_STIPPLEÃ4ŒAtk.TextAttribute÷0
+BOTHÃ4ŒAtk.TextClipType÷0
+BUSYÃ4ŒAtk.StateType÷0
+CALENDARÃ4ŒAtk.Role÷0
+CANVASÃ4ŒAtk.Layer÷0
+CANVASÃ4ŒAtk.Role÷0
+CAPTIONÃ4ŒAtk.Role÷0
+CHARÃ4ŒAtk.TextBoundary÷0
+CHARTÃ4ŒAtk.Role÷0
+CHECKEDÃ4ŒAtk.StateType÷0
+CHECK_BOXÃ4ŒAtk.Role÷0
+CHECK_MENU_ITEMÃ4ŒAtk.Role÷0
+COLOR_CHOOSERÃ4ŒAtk.Role÷0
+COLUMN_HEADERÃ4ŒAtk.Role÷0
+COMBO_BOXÃ4ŒAtk.Role÷0
+CONTROLLED_BYÃ4ŒAtk.RelationType÷0
+CONTROLLER_FORÃ4ŒAtk.RelationType÷0
+ComponentÃ32ŒAtk÷0
+CoordTypeÃ2ŒAtk÷0
+DATE_EDITORÃ4ŒAtk.Role÷0
+DEFAULTÃ4ŒAtk.StateType÷0
+DEFUNCTÃ4ŒAtk.StateType÷0
+DESCRIBED_BYÃ4ŒAtk.RelationType÷0
+DESCRIPTION_FORÃ4ŒAtk.RelationType÷0
+DESKTOP_FRAMEÃ4ŒAtk.Role÷0
+DESKTOP_ICONÃ4ŒAtk.Role÷0
+DIALÃ4ŒAtk.Role÷0
+DIALOGÃ4ŒAtk.Role÷0
+DIRECTIONÃ4ŒAtk.TextAttribute÷0
+DIRECTORY_PANEÃ4ŒAtk.Role÷0
+DOCUMENT_FRAMEÃ4ŒAtk.Role÷0
+DRAWING_AREAÃ4ŒAtk.Role÷0
+DocumentÃ32ŒAtk÷0
+EDITABLEÃ4ŒAtk.StateType÷0
+EDITABLEÃ4ŒAtk.TextAttribute÷0
+EDITBARÃ4ŒAtk.Role÷0
+EMBEDDEDÃ4ŒAtk.Role÷0
+EMBEDDED_BYÃ4ŒAtk.RelationType÷0
+EMBEDSÃ4ŒAtk.RelationType÷0
+ENABLEDÃ4ŒAtk.StateType÷0
+ENTRYÃ4ŒAtk.Role÷0
+EXPANDABLEÃ4ŒAtk.StateType÷0
+EXPANDEDÃ4ŒAtk.StateType÷0
+EditableTextÃ32ŒAtk÷0
+EventListenerÃ128Õ(Atk.Object obj)ŒAtk÷0œpublic delegate void
+EventListenerInitÃ128Õ()ŒAtk÷0œpublic delegate void
+FAMILY_NAMEÃ4ŒAtk.TextAttribute÷0
+FG_COLORÃ4ŒAtk.TextAttribute÷0
+FG_STIPPLEÃ4ŒAtk.TextAttribute÷0
+FILE_CHOOSERÃ4ŒAtk.Role÷0
+FILLERÃ4ŒAtk.Role÷0
+FLOWS_FROMÃ4ŒAtk.RelationType÷0
+FLOWS_TOÃ4ŒAtk.RelationType÷0
+FOCUSABLEÃ4ŒAtk.StateType÷0
+FOCUSEDÃ4ŒAtk.StateType÷0
+FONT_CHOOSERÃ4ŒAtk.Role÷0
+FOOTERÃ4ŒAtk.Role÷0
+FORMÃ4ŒAtk.Role÷0
+FRAMEÃ4ŒAtk.Role÷0
+FocusHandlerÃ128Õ(Atk.Object p1, bool p2)ŒAtk÷0œpublic delegate void
+FunctionÃ128Õ()ŒAtk÷0œpublic delegate bool
+GLASS_PANEÃ4ŒAtk.Role÷0
+GObjectAccessibleÃ1ŒAtk÷0
+GObjectAccessibleÃ128Õ()ŒAtk.GObjectAccessible÷0
+HEADERÃ4ŒAtk.Role÷0
+HEADINGÃ4ŒAtk.Role÷0
+HORIZONTALÃ4ŒAtk.StateType÷0
+HTML_CONTAINERÃ4ŒAtk.Role÷0
+HyperlinkÃ1ŒAtk÷0
+HyperlinkÃ128Õ()ŒAtk.Hyperlink÷0
+HyperlinkImplÃ32ŒAtk÷0
+HyperlinkStateFlagsÃ2ŒAtk÷0
+HypertextÃ32ŒAtk÷0
+ICONÃ4ŒAtk.Role÷0
+ICONIFIEDÃ4ŒAtk.StateType÷0
+IMAGEÃ4ŒAtk.Role÷0
+INDENTÃ4ŒAtk.TextAttribute÷0
+INDETERMINATEÃ4ŒAtk.StateType÷0
+INLINEÃ4ŒAtk.HyperlinkStateFlags÷0
+INPUT_METHOD_WINDOWÃ4ŒAtk.Role÷0
+INTERNAL_FRAMEÃ4ŒAtk.Role÷0
+INVALIDÃ4ŒAtk.Layer÷0
+INVALIDÃ4ŒAtk.Role÷0
+INVALIDÃ4ŒAtk.StateType÷0
+INVALIDÃ4ŒAtk.TextAttribute÷0
+INVALID_ENTRYÃ4ŒAtk.StateType÷0
+INVISIBLEÃ4ŒAtk.TextAttribute÷0
+ImageÃ32ŒAtk÷0
+ImplementorÃ32ŒAtk÷0
+JUSTIFICATIONÃ4ŒAtk.TextAttribute÷0
+KeyEventStructÃ1ŒAtk÷0
+KeyEventTypeÃ2ŒAtk÷0
+KeySnoopFuncÃ128Õ(Atk.KeyEventStruct event, void* func_data)ŒAtk÷0œpublic delegate int
+LABELÃ4ŒAtk.Role÷0
+LABELLED_BYÃ4ŒAtk.RelationType÷0
+LABEL_FORÃ4ŒAtk.RelationType÷0
+LANGUAGEÃ4ŒAtk.TextAttribute÷0
+LAST_DEFINEDÃ4ŒAtk.KeyEventType÷0
+LAST_DEFINEDÃ4ŒAtk.RelationType÷0
+LAST_DEFINEDÃ4ŒAtk.Role÷0
+LAST_DEFINEDÃ4ŒAtk.StateType÷0
+LAST_DEFINEDÃ4ŒAtk.TextAttribute÷0
+LAYERED_PANEÃ4ŒAtk.Role÷0
+LEFT_MARGINÃ4ŒAtk.TextAttribute÷0
+LINE_ENDÃ4ŒAtk.TextBoundary÷0
+LINE_STARTÃ4ŒAtk.TextBoundary÷0
+LINKÃ4ŒAtk.Role÷0
+LISTÃ4ŒAtk.Role÷0
+LIST_ITEMÃ4ŒAtk.Role÷0
+LayerÃ2ŒAtk÷0
+MANAGES_DESCENDANTSÃ4ŒAtk.StateType÷0
+MAXÃ4ŒAtk.TextClipType÷0
+MDIÃ4ŒAtk.Layer÷0
+MEMBER_OFÃ4ŒAtk.RelationType÷0
+MENUÃ4ŒAtk.Role÷0
+MENU_BARÃ4ŒAtk.Role÷0
+MENU_ITEMÃ4ŒAtk.Role÷0
+MINÃ4ŒAtk.TextClipType÷0
+MODALÃ4ŒAtk.StateType÷0
+MULTISELECTABLEÃ4ŒAtk.StateType÷0
+MULTI_LINEÃ4ŒAtk.StateType÷0
+MiscÃ1ŒAtk÷0
+MiscÃ128Õ()ŒAtk.Misc÷0
+NODE_CHILD_OFÃ4ŒAtk.RelationType÷0
+NODE_PARENT_OFÃ4ŒAtk.RelationType÷0
+NONEÃ4ŒAtk.TextClipType÷0
+NULLÃ4ŒAtk.RelationType÷0
+NoOpObjectÃ1ŒAtk÷0
+NoOpObjectÃ128Õ(GLib.Object obj)ŒAtk.NoOpObject÷0
+NoOpObjectFactoryÃ1ŒAtk÷0
+NoOpObjectFactoryÃ128Õ()ŒAtk.NoOpObjectFactory÷0
+OPAQUEÃ4ŒAtk.StateType÷0
+OPTION_PANEÃ4ŒAtk.Role÷0
+OVERLAYÃ4ŒAtk.Layer÷0
+ObjectÃ1ŒAtk÷0
+ObjectÃ128Õ()ŒAtk.Object÷0
+ObjectFactoryÃ1ŒAtk÷0
+ObjectFactoryÃ128Õ()ŒAtk.ObjectFactory÷0
+PAGEÃ4ŒAtk.Role÷0
+PAGE_TABÃ4ŒAtk.Role÷0
+PAGE_TAB_LISTÃ4ŒAtk.Role÷0
+PANELÃ4ŒAtk.Role÷0
+PARAGRAPHÃ4ŒAtk.Role÷0
+PARENT_WINDOW_OFÃ4ŒAtk.RelationType÷0
+PASSWORD_TEXTÃ4ŒAtk.Role÷0
+PIXELS_ABOVE_LINESÃ4ŒAtk.TextAttribute÷0
+PIXELS_BELOW_LINESÃ4ŒAtk.TextAttribute÷0
+PIXELS_INSIDE_WRAPÃ4ŒAtk.TextAttribute÷0
+POPUPÃ4ŒAtk.Layer÷0
+POPUP_FORÃ4ŒAtk.RelationType÷0
+POPUP_MENUÃ4ŒAtk.Role÷0
+PRESSÃ4ŒAtk.KeyEventType÷0
+PRESSEDÃ4ŒAtk.StateType÷0
+PROGRESS_BARÃ4ŒAtk.Role÷0
+PUSH_BUTTONÃ4ŒAtk.Role÷0
+PlugÃ1ŒAtk÷0
+PlugÃ128Õ()ŒAtk.Plug÷0
+PropertyChangeHandlerÃ128Õ(Atk.Object p1, Atk.PropertyValues p2)ŒAtk÷0œpublic delegate void
+PropertyValuesÃ1ŒAtk÷0
+RADIO_BUTTONÃ4ŒAtk.Role÷0
+RADIO_MENU_ITEMÃ4ŒAtk.Role÷0
+REDUNDANT_OBJECTÃ4ŒAtk.Role÷0
+RELEASEÃ4ŒAtk.KeyEventType÷0
+REQUIREDÃ4ŒAtk.StateType÷0
+RESIZABLEÃ4ŒAtk.StateType÷0
+RIGHT_MARGINÃ4ŒAtk.TextAttribute÷0
+RISEÃ4ŒAtk.TextAttribute÷0
+ROOT_PANEÃ4ŒAtk.Role÷0
+ROW_HEADERÃ4ŒAtk.Role÷0
+RULERÃ4ŒAtk.Role÷0
+RectangleÃ2048ŒAtk÷0
+RegistryÃ1ŒAtk÷0
+RegistryÃ128Õ()ŒAtk.Registry÷0
+RelationÃ1ŒAtk÷0
+RelationÃ128Õ(Atk.Object[] targets, Atk.RelationType relationship)ŒAtk.Relation÷0
+RelationSetÃ1ŒAtk÷0
+RelationSetÃ128Õ()ŒAtk.RelationSet÷0
+RelationTypeÃ2ŒAtk÷0
+RoleÃ2ŒAtk÷0
+SCALEÃ4ŒAtk.TextAttribute÷0
+SCREENÃ4ŒAtk.CoordType÷0
+SCROLL_BARÃ4ŒAtk.Role÷0
+SCROLL_PANEÃ4ŒAtk.Role÷0
+SECTIONÃ4ŒAtk.Role÷0
+SELECTABLEÃ4ŒAtk.StateType÷0
+SELECTABLE_TEXTÃ4ŒAtk.StateType÷0
+SELECTEDÃ4ŒAtk.StateType÷0
+SENSITIVEÃ4ŒAtk.StateType÷0
+SENTENCE_ENDÃ4ŒAtk.TextBoundary÷0
+SENTENCE_STARTÃ4ŒAtk.TextBoundary÷0
+SEPARATORÃ4ŒAtk.Role÷0
+SHOWINGÃ4ŒAtk.StateType÷0
+SINGLE_LINEÃ4ŒAtk.StateType÷0
+SIZEÃ4ŒAtk.TextAttribute÷0
+SLIDERÃ4ŒAtk.Role÷0
+SPIN_BUTTONÃ4ŒAtk.Role÷0
+SPLIT_PANEÃ4ŒAtk.Role÷0
+STALEÃ4ŒAtk.StateType÷0
+STATUSBARÃ4ŒAtk.Role÷0
+STRETCHÃ4ŒAtk.TextAttribute÷0
+STRIKETHROUGHÃ4ŒAtk.TextAttribute÷0
+STYLEÃ4ŒAtk.TextAttribute÷0
+SUBWINDOW_OFÃ4ŒAtk.RelationType÷0
+SUPPORTS_AUTOCOMPLETIONÃ4ŒAtk.StateType÷0
+SelectionÃ32ŒAtk÷0
+SocketÃ1ŒAtk÷0
+SocketÃ128Õ()ŒAtk.Socket÷0
+StateÃ2048ŒAtk÷0
+StateSetÃ1ŒAtk÷0
+StateSetÃ128Õ()ŒAtk.StateSet÷0
+StateTypeÃ2ŒAtk÷0
+StreamableContentÃ32ŒAtk÷0
+TABLEÃ4ŒAtk.Role÷0
+TABLE_CELLÃ4ŒAtk.Role÷0
+TABLE_COLUMN_HEADERÃ4ŒAtk.Role÷0
+TABLE_ROW_HEADERÃ4ŒAtk.Role÷0
+TEAR_OFF_MENU_ITEMÃ4ŒAtk.Role÷0
+TERMINALÃ4ŒAtk.Role÷0
+TEXTÃ4ŒAtk.Role÷0
+TOGGLE_BUTTONÃ4ŒAtk.Role÷0
+TOOL_BARÃ4ŒAtk.Role÷0
+TOOL_TIPÃ4ŒAtk.Role÷0
+TRANSIENTÃ4ŒAtk.StateType÷0
+TREEÃ4ŒAtk.Role÷0
+TREE_TABLEÃ4ŒAtk.Role÷0
+TRUNCATEDÃ4ŒAtk.StateType÷0
+TableÃ32ŒAtk÷0
+TextÃ32ŒAtk÷0
+TextAttributeÃ2ŒAtk÷0
+TextBoundaryÃ2ŒAtk÷0
+TextClipTypeÃ2ŒAtk÷0
+TextRangeÃ1ŒAtk÷0
+TextRectangleÃ1ŒAtk÷0
+UNDERLINEÃ4ŒAtk.TextAttribute÷0
+UNKNOWNÃ4ŒAtk.Role÷0
+UtilÃ1ŒAtk÷0
+UtilÃ128Õ()ŒAtk.Util÷0
+VARIANTÃ4ŒAtk.TextAttribute÷0
+VERTICALÃ4ŒAtk.StateType÷0
+VIEWPORTÃ4ŒAtk.Role÷0
+VISIBLEÃ4ŒAtk.StateType÷0
+VISITEDÃ4ŒAtk.StateType÷0
+ValueÃ32ŒAtk÷0
+WEIGHTÃ4ŒAtk.TextAttribute÷0
+WIDGETÃ4ŒAtk.Layer÷0
+WINDOWÃ4ŒAtk.CoordType÷0
+WINDOWÃ4ŒAtk.Layer÷0
+WINDOWÃ4ŒAtk.Role÷0
+WORD_ENDÃ4ŒAtk.TextBoundary÷0
+WORD_STARTÃ4ŒAtk.TextBoundary÷0
+WRAP_MODEÃ4ŒAtk.TextAttribute÷0
+accessible_component_layerÃ8ŒAtk.Object÷0œint
+accessible_component_mdi_zorderÃ8ŒAtk.Object÷0œint
+accessible_descriptionÃ8ŒAtk.Object÷0
+accessible_hypertext_nlinksÃ8ŒAtk.Object÷0œint
+accessible_nameÃ8ŒAtk.Object÷0
+accessible_parentÃ8ŒAtk.Object÷0œAtk.Object
+accessible_roleÃ8ŒAtk.Object÷0œint
+accessible_table_captionÃ8ŒAtk.Object÷0
+accessible_table_caption_objectÃ8ŒAtk.Object÷0œAtk.Object
+accessible_table_column_descriptionÃ8ŒAtk.Object÷0
+accessible_table_column_headerÃ8ŒAtk.Object÷0œAtk.Object
+accessible_table_row_descriptionÃ8ŒAtk.Object÷0
+accessible_table_row_headerÃ8ŒAtk.Object÷0œAtk.Object
+accessible_table_summaryÃ8ŒAtk.Object÷0œAtk.Object
+accessible_valueÃ8ŒAtk.Object÷0œdouble
+active_descendant_changedÃ128Õ(void* child)ŒAtk.Object÷0œpublic virtual signal void
+addÃ128Õ(Atk.Relation relation)ŒAtk.RelationSet÷0œpublic void
+add_column_selectionÃ128Õ(int column)ŒAtk.Table÷0œpublic abstract bool
+add_focus_handlerÃ128Õ(Atk.FocusHandler handler)ŒAtk.Component÷0
+add_focus_trackerÃ128Õ(Atk.EventListener focus_tracker)ŒAtk÷0
+add_global_event_listenerÃ128Õ(GLib.SignalEmissionHook listener, string event_type)ŒAtk÷0
+add_global_event_listenerÃ128Õ(GLib.SignalEmissionHook listener, string event_type)ŒAtk.Util÷0
+add_key_event_listenerÃ128Õ(Atk.KeySnoopFunc listener, void* data)ŒAtk÷0
+add_key_event_listenerÃ128Õ(Atk.KeySnoopFunc listener, void* data)ŒAtk.Util÷0
+add_relation_by_typeÃ128Õ(Atk.RelationType relationship, Atk.Object target)ŒAtk.RelationSet÷0œpublic void
+add_relationshipÃ128Õ(Atk.RelationType relationship, Atk.Object target)ŒAtk.Object÷0œpublic bool
+add_row_selectionÃ128Õ(int row)ŒAtk.Table÷0œpublic abstract bool
+add_selectionÃ128Õ(int i)ŒAtk.Selection÷0œpublic abstract bool
+add_selectionÃ128Õ(int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract bool
+add_stateÃ128Õ(Atk.StateType type)ŒAtk.StateSet÷0œpublic bool
+add_statesÃ128Õ(Atk.StateType[] types)ŒAtk.StateSet÷0œpublic void
+add_targetÃ128Õ(Atk.Object target)ŒAtk.Relation÷0œpublic void
+and_setsÃ128Õ(Atk.StateSet compare_set)ŒAtk.StateSet÷0œpublic unowned
+attribute_for_nameÃ128Õ(string name)ŒAtk.Text÷0œpublic Atk.TextAttribute
+attribute_get_nameÃ128Õ(Atk.TextAttribute attr)ŒAtk.Text÷0œpublic unowned string
+attribute_get_valueÃ128Õ(Atk.TextAttribute attr, int index_)ŒAtk.Text÷0œpublic unowned string
+attribute_registerÃ128Õ(string name)ŒAtk.Text÷0œpublic Atk.TextAttribute
+boundsÃ8ŒAtk.TextRange÷0œAtk.TextRectangle
+bounds_changedÃ128Õ(Atk.Rectangle bounds)ŒAtk.Component÷0œpublic signal void
+children_changedÃ128Õ(uint change_index, void* changed_child)ŒAtk.Object÷0œpublic virtual signal void
+clear_selectionÃ128Õ()ŒAtk.Selection÷0œpublic abstract bool
+clear_statesÃ128Õ()ŒAtk.StateSet÷0œpublic void
+column_deletedÃ128Õ(int column, int num_deleted)ŒAtk.Table÷0œpublic signal void
+column_insertedÃ128Õ(int column, int num_inserted)ŒAtk.Table÷0œpublic signal void
+column_reorderedÃ128Õ()ŒAtk.Table÷0œpublic signal void
+connect_property_change_handlerÃ128Õ(Atk.PropertyChangeHandler handler)ŒAtk.Object÷0
+containsÃ128Õ(int x, int y, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract bool
+containsÃ128Õ(Atk.RelationType relationship)ŒAtk.RelationSet÷0œpublic bool
+contains_stateÃ128Õ(Atk.StateType type)ŒAtk.StateSet÷0œpublic bool
+contains_statesÃ128Õ(Atk.StateType[] types)ŒAtk.StateSet÷0œpublic bool
+contentÃ8ŒAtk.TextRange÷0
+copy_textÃ128Õ(int start_pos, int end_pos)ŒAtk.EditableText÷0œpublic abstract void
+create_accessibleÃ128Õ(GLib.Object obj)ŒAtk.ObjectFactory÷0œpublic virtual unowned
+cut_textÃ128Õ(int start_pos, int end_pos)ŒAtk.EditableText÷0œpublic abstract void
+delete_textÃ128Õ(int start_pos, int end_pos)ŒAtk.EditableText÷0œpublic abstract void
+descriptionÃ8ŒAtk.Object÷0
+do_actionÃ128Õ(int i)ŒAtk.Action÷0œpublic abstract bool
+embedÃ128Õ(string plug_id)ŒAtk.Socket÷0œpublic virtual void
+embedded_plug_idÃ8ŒAtk.Socket÷0
+end_indexÃ8ŒAtk.Hyperlink÷0œint
+end_offsetÃ8ŒAtk.TextRange÷0œint
+factory_singleton_cacheÃ8ŒAtk.Registry÷0œGLib.HashTable
+factory_type_registryÃ8ŒAtk.Registry÷0œGLib.HashTable
+focus_eventÃ128Õ(bool focus_in)ŒAtk.Object÷0œpublic virtual signal void
+focus_tracker_initÃ128Õ(Atk.EventListenerInit init)ŒAtk÷0œpublic void
+focus_tracker_notifyÃ128Õ(Atk.Object object)ŒAtk÷0œpublic void
+for_objectÃ128Õ(GLib.Object obj)ŒAtk.GObjectAccessible÷0œpublic unowned
+free_rangesÃ128Õ(out unowned Atk.TextRange ranges)ŒAtk.Text÷0œpublic void
+get_accessible_typeÃ128Õ()ŒAtk.ObjectFactory÷0œpublic virtual GLib.Type
+get_alphaÃ128Õ()ŒAtk.Component÷0œpublic abstract double
+get_attribute_valueÃ128Õ(string attribute_name)ŒAtk.Document÷0œpublic unowned string
+get_attributesÃ128Õ()ŒAtk.Document÷0œpublic unowned
+get_attributesÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned
+get_bounded_rangesÃ128Õ(Atk.TextRectangle rect, Atk.CoordType coord_type, Atk.TextClipType x_clip_type, Atk.TextClipType y_clip_type)ŒAtk.Text÷0œpublic abstract unowned
+get_captionÃ128Õ()ŒAtk.Table÷0œpublic abstract unowned
+get_caret_offsetÃ128Õ()ŒAtk.Text÷0œpublic abstract int
+get_character_at_offsetÃ128Õ(int offset)ŒAtk.Text÷0œpublic abstract unichar
+get_character_countÃ128Õ()ŒAtk.Text÷0œpublic abstract int
+get_character_extentsÃ128Õ(int offset, int x, int y, int width, int height, Atk.CoordType coords)ŒAtk.Text÷0œpublic abstract void
+get_column_at_indexÃ128Õ(int index_)ŒAtk.Table÷0œpublic abstract int
+get_column_descriptionÃ128Õ(int column)ŒAtk.Table÷0œpublic abstract unowned string
+get_column_extent_atÃ128Õ(int row, int column)ŒAtk.Table÷0œpublic abstract int
+get_column_headerÃ128Õ(int column)ŒAtk.Table÷0œpublic abstract unowned
+get_current_valueÃ128Õ(GLib.Value value)ŒAtk.Value÷0œpublic abstract void
+get_default_attributesÃ128Õ()ŒAtk.Text÷0œpublic abstract unowned
+get_default_registryÃ128Õ()ŒAtk÷0œpublic unowned
+get_descriptionÃ128Õ(int i)ŒAtk.Action÷0œpublic abstract unowned string
+get_descriptionÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned string
+get_documentÃ128Õ()ŒAtk.Document÷0œpublic abstract void *
+get_document_attribute_valueÃ128Õ(string attribute_name)ŒAtk.Document÷0œpublic abstract unowned string
+get_document_attributesÃ128Õ()ŒAtk.Document÷0œpublic abstract unowned
+get_document_localeÃ128Õ()ŒAtk.Document÷0œpublic abstract unowned string
+get_document_typeÃ128Õ()ŒAtk.Document÷0œpublic abstract unowned string
+get_end_indexÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual int
+get_extentsÃ128Õ(int x, int y, int width, int height, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract void
+get_factoryÃ128Õ(GLib.Type type)ŒAtk.Registry÷0œpublic unowned
+get_factory_typeÃ128Õ(GLib.Type type)ŒAtk.Registry÷0œpublic GLib.Type
+get_focus_objectÃ128Õ()ŒAtk÷0œpublic unowned
+get_hyperlinkÃ128Õ()ŒAtk.HyperlinkImpl÷0œpublic abstract unowned
+get_idÃ128Õ()ŒAtk.Plug÷0œpublic unowned string
+get_image_descriptionÃ128Õ()ŒAtk.Image÷0œpublic abstract unowned string
+get_image_localeÃ128Õ()ŒAtk.Image÷0œpublic abstract unowned string
+get_image_positionÃ128Õ(int x, int y, Atk.CoordType coord_type)ŒAtk.Image÷0œpublic abstract void
+get_image_sizeÃ128Õ(int width, int height)ŒAtk.Image÷0œpublic abstract void
+get_index_atÃ128Õ(int row, int column)ŒAtk.Table÷0œpublic abstract int
+get_index_in_parentÃ128Õ()ŒAtk.Object÷0œpublic virtual int
+get_instanceÃ128Õ()ŒAtk.Misc÷0œpublic unowned
+get_keybindingÃ128Õ(int i)ŒAtk.Action÷0œpublic abstract unowned string
+get_layerÃ128Õ()ŒAtk.Component÷0œpublic abstract Atk.Layer
+get_layerÃ128Õ()ŒAtk.Object÷0œpublic virtual Atk.Layer
+get_linkÃ128Õ(int link_index)ŒAtk.Hypertext÷0œpublic abstract unowned
+get_link_indexÃ128Õ(int char_index)ŒAtk.Hypertext÷0œpublic abstract int
+get_localeÃ128Õ()ŒAtk.Document÷0œpublic unowned string
+get_localized_nameÃ128Õ(int i)ŒAtk.Action÷0œpublic abstract unowned string
+get_maximum_valueÃ128Õ(GLib.Value value)ŒAtk.Value÷0œpublic abstract void
+get_mdi_zorderÃ128Õ()ŒAtk.Component÷0œpublic abstract int
+get_mdi_zorderÃ128Õ()ŒAtk.Object÷0œpublic virtual int
+get_mime_typeÃ128Õ(int i)ŒAtk.StreamableContent÷0œpublic abstract unowned string
+get_minimum_incrementÃ128Õ(GLib.Value value)ŒAtk.Value÷0œpublic abstract void
+get_minimum_valueÃ128Õ(GLib.Value value)ŒAtk.Value÷0œpublic abstract void
+get_n_accessible_childrenÃ128Õ()ŒAtk.Object÷0œpublic int
+get_n_actionsÃ128Õ()ŒAtk.Action÷0œpublic abstract int
+get_n_anchorsÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual int
+get_n_childrenÃ128Õ()ŒAtk.Object÷0œpublic virtual int
+get_n_columnsÃ128Õ()ŒAtk.Table÷0œpublic abstract int
+get_n_linksÃ128Õ()ŒAtk.Hypertext÷0œpublic abstract int
+get_n_mime_typesÃ128Õ()ŒAtk.StreamableContent÷0œpublic abstract int
+get_n_relationsÃ128Õ()ŒAtk.RelationSet÷0œpublic int
+get_n_rowsÃ128Õ()ŒAtk.Table÷0œpublic abstract int
+get_n_selectionsÃ128Õ()ŒAtk.Text÷0œpublic abstract int
+get_nameÃ128Õ(int i)ŒAtk.Action÷0œpublic abstract unowned string
+get_nameÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned string
+get_objectÃ128Õ()ŒAtk.GObjectAccessible÷0œpublic unowned
+get_objectÃ128Õ(int i)ŒAtk.Hyperlink÷0œpublic virtual unowned
+get_object_idÃ128Õ()ŒAtk.Plug÷0œpublic virtual unowned string
+get_offset_at_pointÃ128Õ(int x, int y, Atk.CoordType coords)ŒAtk.Text÷0œpublic abstract int
+get_parentÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned
+get_positionÃ128Õ(int x, int y, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract void
+get_range_extentsÃ128Õ(int start_offset, int end_offset, Atk.CoordType coord_type, Atk.TextRectangle rect)ŒAtk.Text÷0œpublic abstract void
+get_relationÃ128Õ(int i)ŒAtk.RelationSet÷0œpublic unowned
+get_relation_by_typeÃ128Õ(Atk.RelationType relationship)ŒAtk.RelationSet÷0œpublic unowned
+get_relation_typeÃ128Õ()ŒAtk.Relation÷0œpublic Atk.RelationType
+get_roleÃ128Õ()ŒAtk.Object÷0œpublic virtual Atk.Role
+get_rootÃ128Õ()ŒAtk÷0œpublic unowned
+get_rootÃ128Õ()ŒAtk.Util÷0œpublic virtual unowned
+get_row_at_indexÃ128Õ(int index_)ŒAtk.Table÷0œpublic abstract int
+get_row_descriptionÃ128Õ(int row)ŒAtk.Table÷0œpublic abstract unowned string
+get_row_extent_atÃ128Õ(int row, int column)ŒAtk.Table÷0œpublic abstract int
+get_row_headerÃ128Õ(int row)ŒAtk.Table÷0œpublic abstract unowned
+get_run_attributesÃ128Õ(int offset, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned
+get_selected_columnsÃ128Õ(int selected)ŒAtk.Table÷0œpublic abstract int
+get_selected_rowsÃ128Õ(int selected)ŒAtk.Table÷0œpublic abstract int
+get_selectionÃ128Õ(int selection_num, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned string
+get_selection_countÃ128Õ()ŒAtk.Selection÷0œpublic abstract int
+get_sizeÃ128Õ(int width, int height)ŒAtk.Component÷0œpublic abstract void
+get_start_indexÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual int
+get_streamÃ128Õ(string mime_type)ŒAtk.StreamableContent÷0œpublic abstract unowned
+get_summaryÃ128Õ()ŒAtk.Table÷0œpublic abstract unowned
+get_targetÃ128Õ()ŒAtk.Relation÷0œpublic unowned
+get_textÃ128Õ(int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned string
+get_text_after_offsetÃ128Õ(int offset, Atk.TextBoundary boundary_type, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned string
+get_text_at_offsetÃ128Õ(int offset, Atk.TextBoundary boundary_type, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned string
+get_text_before_offsetÃ128Õ(int offset, Atk.TextBoundary boundary_type, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract unowned string
+get_toolkit_nameÃ128Õ()ŒAtk÷0œpublic unowned string
+get_toolkit_nameÃ128Õ()ŒAtk.Util÷0œpublic virtual unowned string
+get_toolkit_versionÃ128Õ()ŒAtk÷0œpublic unowned string
+get_toolkit_versionÃ128Õ()ŒAtk.Util÷0œpublic virtual unowned string
+get_uriÃ128Õ(int i)ŒAtk.Hyperlink÷0œpublic virtual unowned string
+get_uriÃ128Õ(string mime_type)ŒAtk.StreamableContent÷0œpublic abstract unowned string
+get_versionÃ128Õ()ŒAtk÷0œpublic unowned string
+grab_focusÃ128Õ()ŒAtk.Component÷0œpublic abstract bool
+heightÃ8ŒAtk.Rectangle÷0œint
+heightÃ8ŒAtk.TextRectangle÷0œint
+initializeÃ128Õ(void* data)ŒAtk.Object÷0œpublic virtual void
+insert_textÃ128Õ(string str, int length, int position)ŒAtk.EditableText÷0œpublic abstract void
+invalidateÃ128Õ()ŒAtk.ObjectFactory÷0œpublic virtual void
+is_child_selectedÃ128Õ(int i)ŒAtk.Selection÷0œpublic abstract bool
+is_column_selectedÃ128Õ(int column)ŒAtk.Table÷0œpublic abstract bool
+is_emptyÃ128Õ()ŒAtk.StateSet÷0œpublic bool
+is_inlineÃ128Õ()ŒAtk.Hyperlink÷0œpublic bool
+is_occupiedÃ128Õ()ŒAtk.Socket÷0œpublic bool
+is_row_selectedÃ128Õ(int row)ŒAtk.Table÷0œpublic abstract bool
+is_selectedÃ128Õ(int row, int column)ŒAtk.Table÷0œpublic abstract bool
+is_selected_linkÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual bool
+is_validÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual bool
+keycodeÃ8ŒAtk.KeyEventStruct÷0œuint16
+keyvalÃ8ŒAtk.KeyEventStruct÷0
+layerÃ8ŒAtk.Object÷0œAtk.Layer
+lengthÃ8ŒAtk.KeyEventStruct÷0œint
+link_activatedÃ128Õ()ŒAtk.Hyperlink÷0œpublic virtual signal void
+link_selectedÃ128Õ(int link_index)ŒAtk.Hypertext÷0œpublic signal void
+link_stateÃ128Õ()ŒAtk.Hyperlink÷0
+load_completeÃ128Õ()ŒAtk.Document÷0œpublic signal void
+load_stoppedÃ128Õ()ŒAtk.Document÷0œpublic signal void
+model_changedÃ128Õ()ŒAtk.Table÷0œpublic signal void
+nameÃ8ŒAtk.Attribute÷0
+nameÃ8ŒAtk.Object÷0
+new_valueÃ8ŒAtk.PropertyValues÷0œGLib.Value
+notify_state_changeÃ128Õ(Atk.State state, bool value)ŒAtk.Object÷0œpublic void
+number_of_anchorsÃ8ŒAtk.Hyperlink÷0œint
+old_valueÃ8ŒAtk.PropertyValues÷0œGLib.Value
+or_setsÃ128Õ(Atk.StateSet compare_set)ŒAtk.StateSet÷0œpublic unowned
+paste_textÃ128Õ(int position)ŒAtk.EditableText÷0œpublic abstract void
+property_changeÃ128Õ(void* values)ŒAtk.Object÷0œpublic virtual signal void
+property_nameÃ8ŒAtk.PropertyValues÷0
+ref_accessibleÃ128Õ()ŒAtk.Implementor÷0œpublic abstract unowned
+ref_accessible_at_pointÃ128Õ(int x, int y, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract unowned
+ref_accessible_childÃ128Õ(int i)ŒAtk.Object÷0œpublic unowned
+ref_atÃ128Õ(int row, int column)ŒAtk.Table÷0œpublic abstract unowned
+ref_childÃ128Õ(int i)ŒAtk.Object÷0œpublic virtual unowned
+ref_relation_setÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned
+ref_selectionÃ128Õ(int i)ŒAtk.Selection÷0œpublic abstract unowned
+ref_state_setÃ128Õ()ŒAtk.Object÷0œpublic virtual unowned
+relation_setÃ8ŒAtk.Object÷0œAtk.RelationSet
+relation_typeÃ8ŒAtk.Relation÷0œAtk.RelationType
+relationsÃ8ŒAtk.RelationSet÷0œGLib.GenericArray
+relationshipÃ8ŒAtk.Relation÷0œAtk.RelationType
+reloadÃ128Õ()ŒAtk.Document÷0œpublic signal void
+removeÃ128Õ(Atk.Relation relation)ŒAtk.RelationSet÷0œpublic void
+remove_column_selectionÃ128Õ(int column)ŒAtk.Table÷0œpublic abstract bool
+remove_focus_handlerÃ128Õ(uint handler_id)ŒAtk.Component÷0œpublic abstract void
+remove_focus_trackerÃ128Õ(uint tracker_id)ŒAtk÷0œpublic void
+remove_global_event_listenerÃ128Õ(uint listener_id)ŒAtk÷0œpublic void
+remove_global_event_listenerÃ128Õ(uint listener_id)ŒAtk.Util÷0œpublic virtual void
+remove_key_event_listenerÃ128Õ(uint listener_id)ŒAtk÷0œpublic void
+remove_key_event_listenerÃ128Õ(uint listener_id)ŒAtk.Util÷0œpublic virtual void
+remove_property_change_handlerÃ128Õ(uint handler_id)ŒAtk.Object÷0œpublic virtual void
+remove_relationshipÃ128Õ(Atk.RelationType relationship, Atk.Object target)ŒAtk.Object÷0œpublic bool
+remove_row_selectionÃ128Õ(int row)ŒAtk.Table÷0œpublic abstract bool
+remove_selectionÃ128Õ(int i)ŒAtk.Selection÷0œpublic abstract bool
+remove_selectionÃ128Õ(int selection_num)ŒAtk.Text÷0œpublic abstract bool
+remove_stateÃ128Õ(Atk.StateType type)ŒAtk.StateSet÷0œpublic bool
+remove_targetÃ128Õ(Atk.Object target)ŒAtk.Relation÷0œpublic bool
+roleÃ8ŒAtk.Object÷0œAtk.Role
+role_for_nameÃ128Õ(string name)ŒAtk÷0œpublic Atk.Role
+role_get_localized_nameÃ128Õ(Atk.Role role)ŒAtk÷0œpublic unowned string
+role_get_nameÃ128Õ(Atk.Role role)ŒAtk÷0œpublic unowned string
+role_registerÃ128Õ(string name)ŒAtk÷0œpublic Atk.Role
+row_deletedÃ128Õ(int row, int num_deleted)ŒAtk.Table÷0œpublic signal void
+row_insertedÃ128Õ(int row, int num_inserted)ŒAtk.Table÷0œpublic signal void
+row_reorderedÃ128Õ()ŒAtk.Table÷0œpublic signal void
+select_all_selectionÃ128Õ()ŒAtk.Selection÷0œpublic abstract bool
+selected_linkÃ8ŒAtk.Hyperlink÷0œbool
+selection_changedÃ128Õ()ŒAtk.Selection÷0œpublic signal void
+set_attribute_valueÃ128Õ(string attribute_name, string attribute_value)ŒAtk.Document÷0œpublic bool
+set_captionÃ128Õ(Atk.Object caption)ŒAtk.Table÷0œpublic abstract void
+set_caret_offsetÃ128Õ(int offset)ŒAtk.Text÷0œpublic abstract bool
+set_column_descriptionÃ128Õ(int column, string description)ŒAtk.Table÷0œpublic abstract void
+set_column_headerÃ128Õ(int column, Atk.Object header)ŒAtk.Table÷0œpublic abstract void
+set_current_valueÃ128Õ(GLib.Value value)ŒAtk.Value÷0œpublic abstract bool
+set_descriptionÃ128Õ(int i, string desc)ŒAtk.Action÷0œpublic abstract bool
+set_descriptionÃ128Õ(string description)ŒAtk.Object÷0œpublic virtual void
+set_document_attributeÃ128Õ(string attribute_name, string attribute_value)ŒAtk.Document÷0œpublic abstract bool
+set_extentsÃ128Õ(int x, int y, int width, int height, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract bool
+set_factory_typeÃ128Õ(GLib.Type type, GLib.Type factory_type)ŒAtk.Registry÷0œpublic void
+set_image_descriptionÃ128Õ(string description)ŒAtk.Image÷0œpublic abstract bool
+set_nameÃ128Õ(string name)ŒAtk.Object÷0œpublic virtual void
+set_parentÃ128Õ(Atk.Object parent)ŒAtk.Object÷0œpublic virtual void
+set_positionÃ128Õ(int x, int y, Atk.CoordType coord_type)ŒAtk.Component÷0œpublic abstract bool
+set_roleÃ128Õ(Atk.Role role)ŒAtk.Object÷0œpublic virtual void
+set_row_descriptionÃ128Õ(int row, string description)ŒAtk.Table÷0œpublic abstract void
+set_row_headerÃ128Õ(int row, Atk.Object header)ŒAtk.Table÷0œpublic abstract void
+set_run_attributesÃ128Õ(Atk.AttributeSet attrib_set, int start_offset, int end_offset)ŒAtk.EditableText÷0œpublic abstract bool
+set_selectionÃ128Õ(int selection_num, int start_offset, int end_offset)ŒAtk.Text÷0œpublic abstract bool
+set_sizeÃ128Õ(int width, int height)ŒAtk.Component÷0œpublic abstract bool
+set_summaryÃ128Õ(Atk.Object accessible)ŒAtk.Table÷0œpublic abstract void
+set_text_contentsÃ128Õ(string str)ŒAtk.EditableText÷0œpublic abstract void
+start_indexÃ8ŒAtk.Hyperlink÷0œint
+start_offsetÃ8ŒAtk.TextRange÷0œint
+stateÃ8ŒAtk.KeyEventStruct÷0
+state_changeÃ128Õ(string name, bool state_set)ŒAtk.Object÷0œpublic virtual signal void
+strÃ8ŒAtk.KeyEventStruct÷0
+targetÃ8ŒAtk.Relation÷0œGLib.ValueArray
+text_attributes_changedÃ128Õ()ŒAtk.Text÷0œpublic signal void
+text_caret_movedÃ128Õ(int location)ŒAtk.Text÷0œpublic signal void
+text_changedÃ128Õ(int position, int length)ŒAtk.Text÷0œpublic signal void
+text_selection_changedÃ128Õ()ŒAtk.Text÷0œpublic signal void
+threads_enterÃ128Õ()ŒAtk.Misc÷0œpublic virtual void
+threads_leaveÃ128Õ()ŒAtk.Misc÷0œpublic virtual void
+timestampÃ8ŒAtk.KeyEventStruct÷0œuint32
+typeÃ8ŒAtk.KeyEventStruct÷0œint
+type_for_nameÃ128Õ(string name)ŒAtk.Relation÷0œpublic Atk.RelationType
+type_for_nameÃ128Õ(string name)ŒAtk.State÷0œpublic Atk.StateType
+type_get_nameÃ128Õ(Atk.RelationType type)ŒAtk.Relation÷0œpublic unowned string
+type_get_nameÃ128Õ(Atk.StateType type)ŒAtk.State÷0œpublic unowned string
+type_registerÃ128Õ(string name)ŒAtk.Relation÷0œpublic Atk.RelationType
+type_registerÃ128Õ(string name)ŒAtk.State÷0œpublic Atk.StateType
+valueÃ8ŒAtk.Attribute÷0
+visible_data_changedÃ128Õ()ŒAtk.Object÷0œpublic virtual signal void
+widthÃ8ŒAtk.Rectangle÷0œint
+widthÃ8ŒAtk.TextRectangle÷0œint
+xÃ8ŒAtk.Rectangle÷0œint
+xÃ8ŒAtk.TextRectangle÷0œint
+xor_setsÃ128Õ(Atk.StateSet compare_set)ŒAtk.StateSet÷0œpublic unowned
+yÃ8ŒAtk.Rectangle÷0œint
+yÃ8ŒAtk.TextRectangle÷0œint

@@ -1,0 +1,181 @@
+# format=tagmanager
+@foreachÌ128Í(Iterator func)ÎCCss.StyleÖ0Ïpublic void
+@foreachÌ128Í(Iterator func)ÎCCss.StylesheetÖ0Ïpublic void
+AUTHORÌ4ÎCCss.Stylesheet.PrecedenceÖ0
+AUTOÌ4ÎCCss.Position.TypeÖ0
+BOTTOMÌ4ÎCCss.Position.TypeÖ0
+BackgroundÌ1ÎCCssÖ0
+BackgroundAttachmentÌ1ÎCCssÖ0
+BackgroundImageÌ1ÎCCssÖ0
+BackgroundPositionÌ1ÎCCssÖ0
+BackgroundRepeatÌ1ÎCCssÖ0
+BackgroundSizeÌ1ÎCCssÖ0
+BlockÌ1ÎCCssÖ0
+BorderImageÌ1ÎCCssÖ0
+BorderRadiusÌ1ÎCCssÖ0
+BorderSpacingÌ1ÎCCssÖ0
+BorderStyleÌ1ÎCCssÖ0
+BorderWidthÌ1ÎCCssÖ0
+CCssÌ256Ö0
+CENTERÌ4ÎCCss.Position.TypeÖ0
+CONTAINÌ4ÎCCss.Position.TypeÖ0
+COVERÌ4ÎCCss.Position.TypeÖ0
+ColorÌ1ÎCCssÖ0
+ConvertÌ128Í(Property property, Type target, void* value)ÎCCss.PropertyÖ0Ïpublic delegate bool
+CreateÌ128Í(Grammar grammar, void* values)ÎCCss.PropertyÖ0Ïpublic delegate Property
+DASHEDÌ4ÎCCss.BorderStyle.TypeÖ0
+DOTTEDÌ4ÎCCss.BorderStyle.TypeÖ0
+DOUBLEÌ4ÎCCss.BorderStyle.TypeÖ0
+DOUBLEÌ4ÎCCss.Property.TypeÖ0
+DestroyÌ128Í(Property property)ÎCCss.PropertyÖ0Ïpublic delegate void
+ERROR_OVERFLOWÌ4ÎCCss.Property.StateÖ0
+FIXEDÌ4ÎCCss.BackgroundAttachment.TypeÖ0
+FactoryÌ128Í(Grammar grammar, Block block, string name, void* values)ÎCCss.PropertyÖ0Ïpublic delegate bool
+FunctionÌ1ÎCCssÖ0
+FunctionÌ128Í(string name, FunctionDelegate function)ÎCCss.FunctionÖ0
+FunctionDelegateÌ128Í(GLib.SList<string> args, void* user_data)ÎCCssÖ0Ïpublic delegate string?
+GROOVEÌ4ÎCCss.BorderStyle.TypeÖ0
+GetAttributeÌ128Í(Node node, string name)ÎCCss.NodeÖ0Ïpublic delegate string?
+GetBaseStyleÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate Node?
+GetClassesÌ128Í(Node node)ÎCCss.NodeÖ0
+GetContainerÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate Node?
+GetIdÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate string?
+GetInstanceÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate long
+GetPseudoClassesÌ128Í(Node node)ÎCCss.NodeÖ0
+GetStyleÌ128Í(Node node, uint descriptor)ÎCCss.NodeÖ0Ïpublic delegate string?
+GetTypeÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate string?
+GetViewportÌ128Í(Node node, double x, double y, double width, double height)ÎCCss.NodeÖ0Ïpublic delegate bool
+GrammarÌ1ÎCCssÖ0
+Grammar.cssÌ128Í()ÎCCss.GrammarÖ0
+Grammar.genericÌ128Í()ÎCCss.GrammarÖ0
+HIDDENÌ4ÎCCss.BorderStyle.TypeÖ0
+INHERITÌ4ÎCCss.Property.StateÖ0
+INSETÌ4ÎCCss.BorderStyle.TypeÖ0
+INVALIDÌ4ÎCCss.Property.StateÖ0
+InheritÌ128Í(Style container_style, Style style)ÎCCss.PropertyÖ0Ïpublic delegate bool
+IsAÌ128Í(Node node, string type_name)ÎCCss.NodeÖ0Ïpublic delegate bool
+IteratorÌ128Í(Style style, string property_name)ÎCCss.StyleÖ0Ïpublic delegate void
+IteratorÌ128Í(Stylesheet stylesheet, string type_name)ÎCCss.StylesheetÖ0Ïpublic delegate void
+LEFTÌ4ÎCCss.Position.TypeÖ0
+LENGTHÌ4ÎCCss.Position.TypeÖ0
+MASK_AUTOÌ4ÎCCss.Position.TypeÖ0
+MASK_HORIZONTALÌ4ÎCCss.Position.TypeÖ0
+MASK_NUMERICÌ4ÎCCss.Position.TypeÖ0
+MASK_VERTICALÌ4ÎCCss.Position.TypeÖ0
+NONEÌ4ÎCCss.Property.StateÖ0
+NO_REPEATÌ4ÎCCss.BackgroundRepeat.TypeÖ0
+NodeÌ1ÎCCssÖ0
+NodeÌ128Í(NodeClass node_class, uint n_methods, void* user_data)ÎCCss.NodeÖ0
+NodeClassÌ2048ÎCCssÖ0
+OUTSETÌ4ÎCCss.BorderStyle.TypeÖ0
+PERCENTAGEÌ4ÎCCss.Position.TypeÖ0
+PaddingÌ1ÎCCssÖ0
+PositionÌ1ÎCCssÖ0
+PrecedenceÌ2ÎCCss.StylesheetÖ0
+PropertyÌ1ÎCCssÖ0
+PropertyClassÌ1ÎCCssÖ0
+REPEATÌ4ÎCCss.BackgroundRepeat.TypeÖ0
+REPEATÌ4ÎCCss.BorderImage.TilingÖ0
+REPEAT_XÌ4ÎCCss.BackgroundRepeat.TypeÖ0
+REPEAT_YÌ4ÎCCss.BackgroundRepeat.TypeÖ0
+RIDGEÌ4ÎCCss.BorderStyle.TypeÖ0
+RIGHTÌ4ÎCCss.Position.TypeÖ0
+ROUNDÌ4ÎCCss.BorderImage.TilingÖ0
+ReleaseÌ128Í(Node node)ÎCCss.NodeÖ0Ïpublic delegate void
+SCROLLÌ4ÎCCss.BackgroundAttachment.TypeÖ0
+SETÌ4ÎCCss.Property.StateÖ0
+SOLIDÌ4ÎCCss.BorderStyle.TypeÖ0
+STRETCHÌ4ÎCCss.BorderImage.TilingÖ0
+STRINGÌ4ÎCCss.Property.TypeÖ0
+SerializeÌ128Í(Property property)ÎCCss.PropertyÖ0
+StateÌ2ÎCCss.PropertyÖ0
+StateÌ4ÎCCss.Property.StateÖ0
+StyleÌ1ÎCCssÖ0
+StylesheetÌ1ÎCCssÖ0
+TOPÌ4ÎCCss.Position.TypeÖ0
+TilingÌ2ÎCCss.BorderImageÖ0
+TypeÌ2ÎCCss.BackgroundAttachmentÖ0
+TypeÌ2ÎCCss.BackgroundRepeatÖ0
+TypeÌ2ÎCCss.BorderStyleÖ0
+TypeÌ2ÎCCss.PositionÖ0
+TypeÌ2ÎCCss.PropertyÖ0
+USERÌ4ÎCCss.Stylesheet.PrecedenceÖ0
+USER_AGENTÌ4ÎCCss.Stylesheet.PrecedenceÖ0
+add_from_bufferÌ128Í(char[] buffer, Precedence precedence, void* user_data)ÎCCss.StylesheetÖ0
+add_from_fileÌ128Í(string css_file, Precedence precedence, void* user_data)ÎCCss.StylesheetÖ0
+add_functionÌ128Í(Function function)ÎCCss.GrammarÖ0Ïpublic void
+add_propertyÌ128Í(string property_name, Property property)ÎCCss.BlockÖ0Ïpublic void
+alphaÌ8ÎCCss.ColorÖ0Ïdouble
+attachmentÌ8ÎCCss.BackgroundÖ0ÏBackgroundAttachment
+attachmentÌ8ÎCCss.BackgroundAttachmentÖ0ÏType
+blueÌ8ÎCCss.ColorÖ0Ïdouble
+bottomÌ8ÎCCss.BorderImageÖ0ÏPosition
+colorÌ8ÎCCss.BackgroundÖ0ÏColor
+convertÌ8ÎCCss.PropertyClassÖ0ÏProperty.Convert
+createÌ8ÎCCss.PropertyClassÖ0ÏProperty.Create
+create_stylesheetÌ128Í()ÎCCss.GrammarÖ0Ïpublic Stylesheet
+create_stylesheet_from_bufferÌ128Í(char[] buffer, void* user_data)ÎCCss.GrammarÖ0Ïpublic Stylesheet
+create_stylesheet_from_fileÌ128Í(string css_file, void* user_data)ÎCCss.GrammarÖ0Ïpublic Stylesheet
+destroyÌ8ÎCCss.PropertyClassÖ0ÏProperty.Destroy
+dumpÌ128Í()ÎCCss.StyleÖ0Ïpublic void
+dumpÌ128Í()ÎCCss.StylesheetÖ0Ïpublic void
+factoryÌ8ÎCCss.PropertyClassÖ0ÏProperty.Factory
+get_attributeÌ8ÎCCss.NodeClassÖ0ÏNode.GetAttribute
+get_base_styleÌ8ÎCCss.NodeClassÖ0ÏNode.GetBaseStyle
+get_classesÌ8ÎCCss.NodeClassÖ0ÏNode.GetClasses
+get_containerÌ8ÎCCss.NodeClassÖ0ÏNode.GetContainer
+get_doubleÌ128Í(string property_name, out double value)ÎCCss.StyleÖ0Ïpublic bool
+get_hsizeÌ128Í(double extent_x, double extent_y, double width, double height)ÎCCss.PositionÖ0Ïpublic double
+get_idÌ8ÎCCss.NodeClassÖ0ÏNode.GetId
+get_instanceÌ8ÎCCss.NodeClassÖ0ÏNode.GetInstance
+get_posÌ128Í(double extent, double size)ÎCCss.PositionÖ0Ïpublic double
+get_propertyÌ128Í(string property_name, out unowned Property value)ÎCCss.StyleÖ0Ïpublic bool
+get_pseudo_classesÌ8ÎCCss.NodeClassÖ0ÏNode.GetPseudoClasses
+get_sizeÌ128Í(double extent)ÎCCss.PositionÖ0Ïpublic double
+get_stateÌ8ÎCCss.PropertyÖ0ÏState
+get_stringÌ128Í(string property_name, out unowned string value)ÎCCss.StyleÖ0Ïpublic bool
+get_styleÌ8ÎCCss.NodeClassÖ0ÏNode.GetStyle
+get_typeÌ8ÎCCss.NodeClassÖ0ÏNode.GetType
+get_user_dataÌ128Í()ÎCCss.NodeÖ0Ïpublic void *
+get_viewportÌ8ÎCCss.NodeClassÖ0ÏNode.GetViewport
+get_vsizeÌ128Í(double extent_x, double extent_y, double width, double height)ÎCCss.PositionÖ0Ïpublic double
+grammarÌ8ÎCCss.StylesheetÖ0ÏGrammar
+greenÌ8ÎCCss.ColorÖ0Ïdouble
+hashÌ8ÎCCss.StyleÖ0ÏGLib.HashFunc
+heightÌ8ÎCCss.BackgroundSizeÖ0ÏPosition
+horizontal_positionÌ8ÎCCss.BackgroundPositionÖ0ÏPosition
+imageÌ8ÎCCss.BackgroundÖ0ÏBackgroundImage
+inheritÌ8ÎCCss.PropertyClassÖ0ÏProperty.Inherit
+is_aÌ8ÎCCss.NodeClassÖ0ÏNode.IsA
+leftÌ8ÎCCss.BorderImageÖ0ÏPosition
+left_middle_right_vertical_tilingÌ8ÎCCss.BorderImageÖ0ÏTiling
+lookup_functionÌ128Í(string name)ÎCCss.GrammarÖ0Ïpublic unowned
+nameÌ8ÎCCss.PropertyClassÖ0
+paddingÌ8ÎCCss.PaddingÖ0Ïdouble
+parseÌ4ÎCCss.Property.StateÖ0
+positionÌ8ÎCCss.BackgroundÖ0ÏBackgroundPosition
+queryÌ128Í(Node node)ÎCCss.StylesheetÖ0Ïpublic Style?
+query_typeÌ128Í(string type_name)ÎCCss.StylesheetÖ0Ïpublic Style?
+radiusÌ8ÎCCss.BorderRadiusÖ0Ïdouble
+redÌ8ÎCCss.ColorÖ0Ïdouble
+releaseÌ8ÎCCss.NodeClassÖ0ÏNode.Release
+repeatÌ8ÎCCss.BackgroundÖ0ÏBackgroundRepeat
+repeatÌ8ÎCCss.BackgroundRepeatÖ0ÏType
+rightÌ8ÎCCss.BorderImageÖ0ÏPosition
+serializeÌ128Í()ÎCCss.PositionÖ0
+serializeÌ4ÎCCss.Property.StateÖ0
+serializeÌ8ÎCCss.PropertyClassÖ0ÏProperty.Serialize
+sizeÌ8ÎCCss.BackgroundÖ0ÏBackgroundSize
+spacingÌ8ÎCCss.BorderSpacingÖ0Ïdouble
+styleÌ8ÎCCss.BorderStyleÖ0ÏType
+stylesheetÌ8ÎCCss.StyleÖ0ÏStylesheet
+topÌ8ÎCCss.BorderImageÖ0ÏPosition
+top_middle_bottom_horizontal_tilingÌ8ÎCCss.BorderImageÖ0ÏTiling
+typeÌ8ÎCCss.PropertyÖ0ÏType
+unloadÌ128Í(uint descriptor)ÎCCss.StylesheetÖ0Ïpublic bool
+unownedÌ4ÎCCss.Property.StateÖ0
+uriÌ8ÎCCss.BackgroundImageÖ0
+uriÌ8ÎCCss.BorderImageÖ0
+vertical_positionÌ8ÎCCss.BackgroundPositionÖ0ÏPosition
+widthÌ8ÎCCss.BackgroundSizeÖ0ÏPosition
+widthÌ8ÎCCss.BorderWidthÖ0Ïdouble

@@ -1,0 +1,346 @@
+# format=tagmanager
+@getÃ128Õ(ulong xwindow)ŒWnck.Application÷0œpublic unowned
+@getÃ128Õ(string res_class)ŒWnck.ClassGroup÷0œpublic unowned
+@getÃ128Õ(int index)ŒWnck.Screen÷0œpublic unowned
+@getÃ128Õ(ulong xwindow)ŒWnck.Window÷0œpublic unowned
+ABOVEÃ4ŒWnck.WindowActions÷0
+ABOVEÃ4ŒWnck.WindowState÷0
+ALWAYS_GROUPÃ4ŒWnck.TasklistGroupingType÷0
+APPLICATIONÃ4ŒWnck.ClientType÷0
+AUTO_GROUPÃ4ŒWnck.TasklistGroupingType÷0
+ActionMenuÃ1ŒWnck÷0
+ActionMenuÃ128Õ(Wnck.Window window)ŒWnck.ActionMenu÷0
+ApplicationÃ1ŒWnck÷0
+ApplicationÃ128Õ()ŒWnck.Application÷0
+BELOWÃ4ŒWnck.WindowActions÷0
+BELOWÃ4ŒWnck.WindowState÷0
+CENTERÃ4ŒWnck.WindowGravity÷0
+CHANGE_WORKSPACEÃ4ŒWnck.WindowActions÷0
+CLOSEÃ4ŒWnck.WindowActions÷0
+CONTENTÃ4ŒWnck.PagerDisplayMode÷0
+CURRENTÃ4ŒWnck.WindowGravity÷0
+ClassGroupÃ1ŒWnck÷0
+ClassGroupÃ128Õ()ŒWnck.ClassGroup÷0
+ClientTypeÃ2ŒWnck÷0
+DEMANDS_ATTENTIONÃ4ŒWnck.WindowState÷0
+DESKTOPÃ4ŒWnck.WindowType÷0
+DIALOGÃ4ŒWnck.WindowType÷0
+DOCKÃ4ŒWnck.WindowType÷0
+DOWNÃ4ŒWnck.MotionDirection÷0
+EASTÃ4ŒWnck.WindowGravity÷0
+FULLSCREENÃ4ŒWnck.WindowActions÷0
+FULLSCREENÃ4ŒWnck.WindowState÷0
+HEIGHTÃ4ŒWnck.WindowMoveResizeMask÷0
+HIDDENÃ4ŒWnck.WindowState÷0
+LEFTÃ4ŒWnck.MotionDirection÷0
+LoadIconFunctionÃ128Õ(string icon_name, int size, uint flags)ŒWnck÷0œpublic delegate unowned
+MAXIMIZEÃ4ŒWnck.WindowActions÷0
+MAXIMIZED_HORIZONTALLYÃ4ŒWnck.WindowState÷0
+MAXIMIZED_VERTICALLYÃ4ŒWnck.WindowState÷0
+MAXIMIZE_HORIZONTALLYÃ4ŒWnck.WindowActions÷0
+MAXIMIZE_VERTICALLYÃ4ŒWnck.WindowActions÷0
+MENUÃ4ŒWnck.WindowType÷0
+MINIMIZEÃ4ŒWnck.WindowActions÷0
+MINIMIZEDÃ4ŒWnck.WindowState÷0
+MOVEÃ4ŒWnck.WindowActions÷0
+MotionDirectionÃ2ŒWnck÷0
+NAMEÃ4ŒWnck.PagerDisplayMode÷0
+NEVER_GROUPÃ4ŒWnck.TasklistGroupingType÷0
+NORMALÃ4ŒWnck.WindowType÷0
+NORTHÃ4ŒWnck.WindowGravity÷0
+NORTHEASTÃ4ŒWnck.WindowGravity÷0
+NORTHWESTÃ4ŒWnck.WindowGravity÷0
+PAGERÃ4ŒWnck.ClientType÷0
+PagerÃ1ŒWnck÷0
+PagerÃ128Õ(Wnck.Screen screen)ŒWnck.Pager÷0
+PagerDisplayModeÃ2ŒWnck÷0
+RESIZEÃ4ŒWnck.WindowActions÷0
+RIGHTÃ4ŒWnck.MotionDirection÷0
+ResourceUsageÃ1ŒWnck÷0
+SHADEÃ4ŒWnck.WindowActions÷0
+SHADEDÃ4ŒWnck.WindowState÷0
+SKIP_PAGERÃ4ŒWnck.WindowState÷0
+SKIP_TASKLISTÃ4ŒWnck.WindowState÷0
+SOUTHÃ4ŒWnck.WindowGravity÷0
+SOUTHEASTÃ4ŒWnck.WindowGravity÷0
+SOUTHWESTÃ4ŒWnck.WindowGravity÷0
+SPLASHSCREENÃ4ŒWnck.WindowType÷0
+STATICÃ4ŒWnck.WindowGravity÷0
+STICKÃ4ŒWnck.WindowActions÷0
+STICKYÃ4ŒWnck.WindowState÷0
+ScreenÃ1ŒWnck÷0
+ScreenÃ128Õ()ŒWnck.Screen÷0
+SelectorÃ1ŒWnck÷0
+SelectorÃ128Õ()ŒWnck.Selector÷0
+TOOLBARÃ4ŒWnck.WindowType÷0
+TasklistÃ1ŒWnck÷0
+TasklistÃ128Õ(Wnck.Screen screen)ŒWnck.Tasklist÷0
+TasklistGroupingTypeÃ2ŒWnck÷0
+UNMAXIMIZEÃ4ŒWnck.WindowActions÷0
+UNMAXIMIZE_HORIZONTALLYÃ4ŒWnck.WindowActions÷0
+UNMAXIMIZE_VERTICALLYÃ4ŒWnck.WindowActions÷0
+UNMINIMIZEÃ4ŒWnck.WindowActions÷0
+UNSHADEÃ4ŒWnck.WindowActions÷0
+UNSTICKÃ4ŒWnck.WindowActions÷0
+UPÃ4ŒWnck.MotionDirection÷0
+URGENTÃ4ŒWnck.WindowState÷0
+UTILITYÃ4ŒWnck.WindowType÷0
+WESTÃ4ŒWnck.WindowGravity÷0
+WIDTHÃ4ŒWnck.WindowMoveResizeMask÷0
+WindowÃ1ŒWnck÷0
+WindowÃ128Õ()ŒWnck.Window÷0
+WindowActionsÃ2ŒWnck÷0
+WindowGravityÃ2ŒWnck÷0
+WindowMoveResizeMaskÃ2ŒWnck÷0
+WindowStateÃ2ŒWnck÷0
+WindowTypeÃ2ŒWnck÷0
+WnckÃ256÷0
+WorkspaceÃ1ŒWnck÷0
+WorkspaceÃ128Õ()ŒWnck.Workspace÷0
+WorkspaceLayoutÃ1ŒWnck÷0
+XÃ4ŒWnck.WindowMoveResizeMask÷0
+YÃ4ŒWnck.WindowMoveResizeMask÷0
+actions_changedÃ128Õ(Wnck.WindowActions changed_mask, Wnck.WindowActions new_actions)ŒWnck.Window÷0œpublic virtual signal void
+activateÃ128Õ(uint32 timestamp)ŒWnck.Window÷0œpublic void
+activateÃ128Õ(uint32 timestamp)ŒWnck.Workspace÷0œpublic void
+activate_transientÃ128Õ(uint32 timestamp)ŒWnck.Window÷0œpublic void
+active_window_changedÃ128Õ(Wnck.Window? previous_window)ŒWnck.Screen÷0œpublic virtual signal void
+active_workspace_changedÃ128Õ(Wnck.Workspace? previous_workspace)ŒWnck.Screen÷0œpublic virtual signal void
+application_closedÃ128Õ(Wnck.Application app)ŒWnck.Screen÷0œpublic virtual signal void
+application_openedÃ128Õ(Wnck.Application app)ŒWnck.Screen÷0œpublic virtual signal void
+background_changedÃ128Õ()ŒWnck.Screen÷0œpublic virtual signal void
+calc_workspace_layoutÃ128Õ(int num_workspaces, int space_index, Wnck.WorkspaceLayout layout)ŒWnck.Screen÷0œpublic void
+change_nameÃ128Õ(string name)ŒWnck.Workspace÷0œpublic void
+change_workspace_countÃ128Õ(int count)ŒWnck.Screen÷0œpublic void
+class_group_closedÃ128Õ(Wnck.ClassGroup class_group)ŒWnck.Screen÷0œpublic virtual signal void
+class_group_openedÃ128Õ(Wnck.ClassGroup class_group)ŒWnck.Screen÷0œpublic virtual signal void
+closeÃ128Õ(uint32 timestamp)ŒWnck.Window÷0œpublic void
+colsÃ8ŒWnck.WorkspaceLayout÷0œint
+create_window_action_menuÃ128Õ(Wnck.Window window)ŒWnck÷0œpublic unowned
+current_colÃ8ŒWnck.WorkspaceLayout÷0œint
+current_rowÃ8ŒWnck.WorkspaceLayout÷0œint
+force_updateÃ128Õ()ŒWnck.Screen÷0œpublic void
+free_workspace_layoutÃ128Õ(Wnck.WorkspaceLayout layout)ŒWnck.Screen÷0œpublic void
+geometry_changedÃ128Õ()ŒWnck.Window÷0œpublic virtual signal void
+get_actionsÃ128Õ()ŒWnck.Window÷0œpublic Wnck.WindowActions
+get_active_windowÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_active_workspaceÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_applicationÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_background_pixmapÃ128Õ()ŒWnck.Screen÷0
+get_class_groupÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_client_window_geometryÃ128Õ(int xp, int yp, int widthp, int heightp)ŒWnck.Window÷0œpublic void
+get_defaultÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_for_rootÃ128Õ(ulong root_window_id)ŒWnck.Screen÷0œpublic unowned
+get_geometryÃ128Õ(out int xp, out int yp, out int widthp, out int heightp)ŒWnck.Window÷0œpublic void
+get_group_leaderÃ128Õ()ŒWnck.Window÷0
+get_heightÃ128Õ()ŒWnck.Screen÷0œpublic int
+get_heightÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_iconÃ128Õ()ŒWnck.Application÷0œpublic unowned
+get_iconÃ128Õ()ŒWnck.ClassGroup÷0œpublic unowned
+get_iconÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_icon_is_fallbackÃ128Õ()ŒWnck.Application÷0œpublic bool
+get_icon_is_fallbackÃ128Õ()ŒWnck.Window÷0œpublic bool
+get_icon_nameÃ128Õ()ŒWnck.Application÷0œpublic unowned string
+get_icon_nameÃ128Õ()ŒWnck.Window÷0œpublic unowned string
+get_layout_columnÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_layout_rowÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_mini_iconÃ128Õ()ŒWnck.Application÷0œpublic unowned
+get_mini_iconÃ128Õ()ŒWnck.ClassGroup÷0œpublic unowned
+get_mini_iconÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_minimum_heightÃ128Õ()ŒWnck.Tasklist÷0œpublic int
+get_minimum_widthÃ128Õ()ŒWnck.Tasklist÷0œpublic int
+get_n_windowsÃ128Õ()ŒWnck.Application÷0œpublic int
+get_nameÃ128Õ()ŒWnck.Application÷0œpublic unowned string
+get_nameÃ128Õ()ŒWnck.ClassGroup÷0œpublic unowned string
+get_nameÃ128Õ()ŒWnck.Window÷0œpublic unowned string
+get_nameÃ128Õ()ŒWnck.Workspace÷0œpublic unowned string
+get_neighborÃ128Õ(Wnck.MotionDirection direction)ŒWnck.Workspace÷0œpublic unowned
+get_numberÃ128Õ()ŒWnck.Screen÷0œpublic int
+get_numberÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_pidÃ128Õ()ŒWnck.Application÷0œpublic int
+get_pidÃ128Õ()ŒWnck.Window÷0œpublic int
+get_previously_active_windowÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_res_classÃ128Õ()ŒWnck.ClassGroup÷0œpublic unowned string
+get_screenÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_screenÃ128Õ()ŒWnck.Workspace÷0œpublic unowned
+get_session_idÃ128Õ()ŒWnck.Window÷0œpublic unowned string
+get_session_id_utf8Ã128Õ()ŒWnck.Window÷0œpublic unowned string
+get_showing_desktopÃ128Õ()ŒWnck.Screen÷0œpublic bool
+get_size_hint_listÃ128Õ(int n_elements)ŒWnck.Tasklist÷0œpublic int
+get_sort_orderÃ128Õ()ŒWnck.Window÷0œpublic int
+get_startup_idÃ128Õ()ŒWnck.Application÷0œpublic unowned string
+get_stateÃ128Õ()ŒWnck.Window÷0œpublic Wnck.WindowState
+get_transientÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_viewport_xÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_viewport_yÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_widthÃ128Õ()ŒWnck.Screen÷0œpublic int
+get_widthÃ128Õ()ŒWnck.Workspace÷0œpublic int
+get_window_manager_nameÃ128Õ()ŒWnck.Screen÷0œpublic unowned string
+get_window_typeÃ128Õ()ŒWnck.Window÷0œpublic Wnck.WindowType
+get_windowsÃ128Õ()ŒWnck.Application÷0œpublic unowned
+get_windowsÃ128Õ()ŒWnck.ClassGroup÷0œpublic unowned
+get_windowsÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_windows_stackedÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_workspaceÃ128Õ(int workspace)ŒWnck.Screen÷0œpublic unowned
+get_workspaceÃ128Õ()ŒWnck.Window÷0œpublic unowned
+get_workspace_countÃ128Õ()ŒWnck.Screen÷0œpublic int
+get_workspace_indexÃ128Õ(Wnck.Workspace space)ŒWnck.Screen÷0œpublic int
+get_workspace_neighborÃ128Õ(Wnck.Workspace space, Wnck.MotionDirection direction)ŒWnck.Screen÷0œpublic unowned
+get_workspacesÃ128Õ()ŒWnck.Screen÷0œpublic unowned
+get_xidÃ128Õ()ŒWnck.Application÷0
+get_xidÃ128Õ()ŒWnck.Window÷0
+gridÃ8ŒWnck.WorkspaceLayout÷0œint
+grid_areaÃ8ŒWnck.WorkspaceLayout÷0œint
+gtk_window_set_dock_typeÃ128Õ(Gtk.Window window)ŒWnck÷0œpublic void
+has_icon_nameÃ128Õ()ŒWnck.Window÷0œpublic bool
+has_nameÃ128Õ()ŒWnck.Window÷0œpublic bool
+icon_changedÃ128Õ()ŒWnck.Application÷0œpublic virtual signal void
+icon_changedÃ128Õ()ŒWnck.ClassGroup÷0œpublic virtual signal void
+icon_changedÃ128Õ()ŒWnck.Window÷0œpublic virtual signal void
+is_aboveÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_activeÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_belowÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_fullscreenÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_in_viewportÃ128Õ(Wnck.Workspace workspace)ŒWnck.Window÷0œpublic bool
+is_maximizedÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_maximized_horizontallyÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_maximized_verticallyÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_minimizedÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_most_recently_activatedÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_on_workspaceÃ128Õ(Wnck.Workspace workspace)ŒWnck.Window÷0œpublic bool
+is_pinnedÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_shadedÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_skip_pagerÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_skip_tasklistÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_stickyÃ128Õ()ŒWnck.Window÷0œpublic bool
+is_virtualÃ128Õ()ŒWnck.Workspace÷0œpublic bool
+is_visible_on_workspaceÃ128Õ(Wnck.Workspace workspace)ŒWnck.Window÷0œpublic bool
+keyboard_moveÃ128Õ()ŒWnck.Window÷0œpublic void
+keyboard_sizeÃ128Õ()ŒWnck.Window÷0œpublic void
+make_aboveÃ128Õ()ŒWnck.Window÷0œpublic void
+make_belowÃ128Õ()ŒWnck.Window÷0œpublic void
+maximizeÃ128Õ()ŒWnck.Window÷0œpublic void
+maximize_horizontallyÃ128Õ()ŒWnck.Window÷0œpublic void
+maximize_verticallyÃ128Õ()ŒWnck.Window÷0œpublic void
+minimizeÃ128Õ()ŒWnck.Window÷0œpublic void
+move_to_workspaceÃ128Õ(Wnck.Workspace space)ŒWnck.Window÷0œpublic void
+move_viewportÃ128Õ(int x, int y)ŒWnck.Screen÷0œpublic void
+n_colormap_entriesÃ8ŒWnck.ResourceUsage÷0
+n_cursorsÃ8ŒWnck.ResourceUsage÷0
+n_fontsÃ8ŒWnck.ResourceUsage÷0
+n_gcsÃ8ŒWnck.ResourceUsage÷0
+n_glyphsetsÃ8ŒWnck.ResourceUsage÷0
+n_otherÃ8ŒWnck.ResourceUsage÷0
+n_passive_grabsÃ8ŒWnck.ResourceUsage÷0
+n_picturesÃ8ŒWnck.ResourceUsage÷0
+n_pixmapsÃ8ŒWnck.ResourceUsage÷0
+n_windowsÃ8ŒWnck.ResourceUsage÷0
+name_changedÃ128Õ()ŒWnck.Application÷0œpublic virtual signal void
+name_changedÃ128Õ()ŒWnck.ClassGroup÷0œpublic virtual signal void
+name_changedÃ128Õ()ŒWnck.Window÷0œpublic virtual signal void
+name_changedÃ128Õ()ŒWnck.Workspace÷0œpublic virtual signal void
+needs_attentionÃ128Õ()ŒWnck.Window÷0œpublic bool
+net_wm_supportsÃ128Õ(string atom)ŒWnck.Screen÷0œpublic bool
+or_transient_needs_attentionÃ128Õ()ŒWnck.Window÷0œpublic bool
+pad1Ã128Õ()ŒWnck.ActionMenu÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.Application÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.ClassGroup÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.Pager÷0œpublic virtual void
+pad1Ã8ŒWnck.ResourceUsage÷0
+pad1Ã128Õ()ŒWnck.Selector÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.Tasklist÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.Window÷0œpublic virtual void
+pad1Ã128Õ()ŒWnck.Workspace÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.ActionMenu÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Application÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.ClassGroup÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Pager÷0œpublic virtual void
+pad2Ã8ŒWnck.ResourceUsage÷0
+pad2Ã128Õ()ŒWnck.Screen÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Selector÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Tasklist÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Window÷0œpublic virtual void
+pad2Ã128Õ()ŒWnck.Workspace÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.ActionMenu÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Application÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.ClassGroup÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Pager÷0œpublic virtual void
+pad3Ã8ŒWnck.ResourceUsage÷0
+pad3Ã128Õ()ŒWnck.Screen÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Selector÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Tasklist÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Window÷0œpublic virtual void
+pad3Ã128Õ()ŒWnck.Workspace÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.ActionMenu÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Application÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.ClassGroup÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Pager÷0œpublic virtual void
+pad4Ã8ŒWnck.ResourceUsage÷0
+pad4Ã128Õ()ŒWnck.Screen÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Selector÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Tasklist÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Window÷0œpublic virtual void
+pad4Ã128Õ()ŒWnck.Workspace÷0œpublic virtual void
+pad5Ã8ŒWnck.ResourceUsage÷0
+pad5Ã128Õ()ŒWnck.Screen÷0œpublic virtual void
+pad6Ã8ŒWnck.ResourceUsage÷0
+pad6Ã128Õ()ŒWnck.Screen÷0œpublic virtual void
+pad7Ã8ŒWnck.ResourceUsage÷0
+pad8Ã8ŒWnck.ResourceUsage÷0
+pad9Ã8ŒWnck.ResourceUsage÷0
+pid_read_resource_usageÃ128Õ(Gdk.Display gdk_display, ulong pid, Wnck.ResourceUsage usage)ŒWnck÷0œpublic void
+pinÃ128Õ()ŒWnck.Window÷0œpublic void
+pixmap_bytesÃ8ŒWnck.ResourceUsage÷0
+release_workspace_layoutÃ128Õ(int current_token)ŒWnck.Screen÷0œpublic void
+rowsÃ8ŒWnck.WorkspaceLayout÷0œint
+set_button_reliefÃ128Õ(Gtk.ReliefStyle relief)ŒWnck.Tasklist÷0œpublic void
+set_client_typeÃ128Õ(Wnck.ClientType ewmh_sourceindication_client_type)ŒWnck÷0œpublic void
+set_display_modeÃ128Õ(Wnck.PagerDisplayMode mode)ŒWnck.Pager÷0œpublic void
+set_fullscreenÃ128Õ(bool fullscreen)ŒWnck.Window÷0œpublic void
+set_geometryÃ128Õ(Wnck.WindowGravity gravity, Wnck.WindowMoveResizeMask geometry_mask, int x, int y, int width, int height)ŒWnck.Window÷0œpublic void
+set_groupingÃ128Õ(Wnck.TasklistGroupingType grouping)ŒWnck.Tasklist÷0œpublic void
+set_grouping_limitÃ128Õ(int limit)ŒWnck.Tasklist÷0œpublic void
+set_icon_geometryÃ128Õ(int x, int y, int width, int height)ŒWnck.Window÷0œpublic void
+set_icon_loaderÃ128Õ(Wnck.LoadIconFunction load_icon_func, void* data, GLib.DestroyNotify free_data_func)ŒWnck.Tasklist÷0œpublic void
+set_include_all_workspacesÃ128Õ(bool include_all_workspaces)ŒWnck.Tasklist÷0œpublic void
+set_minimum_heightÃ128Õ(int size)ŒWnck.Tasklist÷0œpublic void
+set_minimum_widthÃ128Õ(int size)ŒWnck.Tasklist÷0œpublic void
+set_n_rowsÃ128Õ(int n_rows)ŒWnck.Pager÷0œpublic bool
+set_orientationÃ128Õ(Gtk.Orientation orientation)ŒWnck.Pager÷0œpublic bool
+set_orientationÃ128Õ(Gtk.Orientation orient)ŒWnck.Tasklist÷0œpublic void
+set_screenÃ128Õ(Wnck.Screen screen)ŒWnck.Pager÷0œpublic void
+set_screenÃ128Õ(Wnck.Screen screen)ŒWnck.Tasklist÷0œpublic void
+set_shadow_typeÃ128Õ(Gtk.ShadowType shadow_type)ŒWnck.Pager÷0œpublic void
+set_show_allÃ128Õ(bool show_all_workspaces)ŒWnck.Pager÷0œpublic void
+set_skip_pagerÃ128Õ(bool skip)ŒWnck.Window÷0œpublic void
+set_skip_tasklistÃ128Õ(bool skip)ŒWnck.Window÷0œpublic void
+set_sort_orderÃ128Õ(int order)ŒWnck.Window÷0œpublic void
+set_switch_workspace_on_unminimizeÃ128Õ(bool switch_workspace_on_unminimize)ŒWnck.Tasklist÷0œpublic void
+set_window_typeÃ128Õ(Wnck.WindowType wintype)ŒWnck.Window÷0œpublic void
+shadeÃ128Õ()ŒWnck.Window÷0œpublic void
+showing_desktop_changedÃ128Õ()ŒWnck.Screen÷0œpublic virtual signal void
+state_changedÃ128Õ(Wnck.WindowState changed_mask, Wnck.WindowState new_state)ŒWnck.Window÷0œpublic virtual signal void
+stickÃ128Õ()ŒWnck.Window÷0œpublic void
+toggle_showing_desktopÃ128Õ(bool show)ŒWnck.Screen÷0œpublic void
+total_bytes_estimateÃ8ŒWnck.ResourceUsage÷0
+transient_is_most_recently_activatedÃ128Õ()ŒWnck.Window÷0œpublic bool
+try_set_workspace_layoutÃ128Õ(int current_token, int rows, int columns)ŒWnck.Screen÷0œpublic int
+unmake_aboveÃ128Õ()ŒWnck.Window÷0œpublic void
+unmake_belowÃ128Õ()ŒWnck.Window÷0œpublic void
+unmaximizeÃ128Õ()ŒWnck.Window÷0œpublic void
+unmaximize_horizontallyÃ128Õ()ŒWnck.Window÷0œpublic void
+unmaximize_verticallyÃ128Õ()ŒWnck.Window÷0œpublic void
+unminimizeÃ128Õ(uint32 timestamp)ŒWnck.Window÷0œpublic void
+unpinÃ128Õ()ŒWnck.Window÷0œpublic void
+unshadeÃ128Õ()ŒWnck.Window÷0œpublic void
+unstickÃ128Õ()ŒWnck.Window÷0œpublic void
+viewports_changedÃ128Õ()ŒWnck.Screen÷0œpublic virtual signal void
+windowÃ8ŒWnck.ActionMenu÷0œvoid
+window_closedÃ128Õ(Wnck.Window window)ŒWnck.Screen÷0œpublic virtual signal void
+window_manager_changedÃ128Õ()ŒWnck.Screen÷0œpublic virtual signal void
+window_openedÃ128Õ(Wnck.Window window)ŒWnck.Screen÷0œpublic virtual signal void
+window_stacking_changedÃ128Õ()ŒWnck.Screen÷0œpublic virtual signal void
+workspace_changedÃ128Õ()ŒWnck.Window÷0œpublic virtual signal void
+workspace_createdÃ128Õ(Wnck.Workspace space)ŒWnck.Screen÷0œpublic virtual signal void
+workspace_destroyedÃ128Õ(Wnck.Workspace space)ŒWnck.Screen÷0œpublic virtual signal void
+xid_read_resource_usageÃ128Õ(Gdk.Display gdk_display, ulong xid, Wnck.ResourceUsage usage)ŒWnck÷0œpublic void

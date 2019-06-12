@@ -1,0 +1,151 @@
+# format=tagmanager
+@getÃ128Õ()ŒGnome.Program÷0œpublic unowned
+APP_CONFIGÃ4ŒGnome.FileDomain÷0
+APP_DATADIRÃ4ŒGnome.FileDomain÷0
+APP_HELPÃ4ŒGnome.FileDomain÷0
+APP_LIBDIRÃ4ŒGnome.FileDomain÷0
+APP_PIXMAPÃ4ŒGnome.FileDomain÷0
+APP_SOUNDÃ4ŒGnome.FileDomain÷0
+CANCELLEDÃ4ŒGnome.URLError÷0
+COMMANDÃ4ŒGnome.TriggerType÷0
+CONFIGÃ4ŒGnome.FileDomain÷0
+DATADIRÃ4ŒGnome.FileDomain÷0
+DOT_GNOMEÃ8ŒGnome÷0
+DOT_GNOME_PRIVATEÃ8ŒGnome÷0
+FUNCTIONÃ4ŒGnome.TriggerType÷0
+FileDomainÃ2ŒGnome÷0
+GnomeÃ256÷0
+HELPÃ4ŒGnome.FileDomain÷0
+HelpErrorÃ2ŒGnome÷0
+INTERNALÃ4ŒGnome.HelpError÷0
+LAUNCHÃ4ŒGnome.URLError÷0
+LIBDIRÃ4ŒGnome.FileDomain÷0
+MEDIAPLAYÃ4ŒGnome.TriggerType÷0
+ModuleClassInitHookÃ128Õ(void* klass, Gnome.ModuleInfo mod_info)ŒGnome÷0œpublic delegate void
+ModuleGetGOptionGroupFuncÃ128Õ()ŒGnome÷0œpublic delegate unowned
+ModuleHookÃ128Õ(Gnome.Program program, Gnome.ModuleInfo mod_info)ŒGnome÷0œpublic delegate void
+ModuleInfoÃ1ŒGnome÷0
+ModuleInitHookÃ128Õ(Gnome.ModuleInfo mod_info)ŒGnome÷0œpublic delegate void
+ModuleRequirementÃ1ŒGnome÷0
+NONEÃ4ŒGnome.TriggerType÷0
+NOT_FOUNDÃ4ŒGnome.HelpError÷0
+NOT_SUPPORTEDÃ4ŒGnome.URLError÷0
+NO_DEFAULTÃ4ŒGnome.URLError÷0
+PARAM_APP_DATADIRÃ8ŒGnome÷0
+PARAM_APP_IDÃ8ŒGnome÷0
+PARAM_APP_LIBDIRÃ8ŒGnome÷0
+PARAM_APP_PREFIXÃ8ŒGnome÷0
+PARAM_APP_SYSCONFDIRÃ8ŒGnome÷0
+PARAM_APP_VERSIONÃ8ŒGnome÷0
+PARAM_CREATE_DIRECTORIESÃ8ŒGnome÷0
+PARAM_ENABLE_SOUNDÃ8ŒGnome÷0
+PARAM_ESPEAKERÃ8ŒGnome÷0
+PARAM_GNOME_DATADIRÃ8ŒGnome÷0
+PARAM_GNOME_LIBDIRÃ8ŒGnome÷0
+PARAM_GNOME_PATHÃ8ŒGnome÷0
+PARAM_GNOME_PREFIXÃ8ŒGnome÷0
+PARAM_GNOME_SYSCONFDIRÃ8ŒGnome÷0
+PARAM_GOPTION_CONTEXTÃ8ŒGnome÷0
+PARAM_HUMAN_READABLE_NAMEÃ8ŒGnome÷0
+PARAM_POPT_CONTEXTÃ8ŒGnome÷0
+PARAM_POPT_FLAGSÃ8ŒGnome÷0
+PARAM_POPT_TABLEÃ8ŒGnome÷0
+PARSEÃ4ŒGnome.URLError÷0
+PIXMAPÃ4ŒGnome.FileDomain÷0
+ProgramÃ1ŒGnome÷0
+ProgramÃ128Õ()ŒGnome.Program÷0
+SOUNDÃ4ŒGnome.FileDomain÷0
+TriggerÃ1ŒGnome÷0
+TriggerActionFunctionÃ128Õ(string msg, string level, string[] supinfo)ŒGnome÷0œpublic delegate void
+TriggerTypeÃ2ŒGnome÷0
+UNKNOWNÃ4ŒGnome.FileDomain÷0
+URLÃ4ŒGnome.URLError÷0
+URLErrorÃ2ŒGnome÷0
+VFSÃ4ŒGnome.URLError÷0
+app_datadirÃ8ŒGnome.Program÷0
+app_idÃ8ŒGnome.Program÷0
+app_libdirÃ8ŒGnome.Program÷0
+app_prefixÃ8ŒGnome.Program÷0
+app_sysconfdirÃ8ŒGnome.Program÷0
+app_versionÃ8ŒGnome.Program÷0
+bonobo_module_info_getÃ128Õ()ŒGnome÷0œpublic unowned
+class_initÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleClassInitHook
+clearenvÃ128Õ()ŒGnome÷0œpublic void
+create_directoriesÃ8ŒGnome.Program÷0œbool
+descriptionÃ8ŒGnome.ModuleInfo÷0
+enable_soundÃ8ŒGnome.Program÷0œbool
+espeakerÃ8ŒGnome.Program÷0
+execute_asyncÃ128Õ(string dir, [CCode (array_length_pos = 1.9)] string[] argv)ŒGnome÷0œpublic int
+execute_async_fdsÃ128Õ(string dir, [CCode (array_length_pos = 1.9)] string[] argv, bool close_fds)ŒGnome÷0œpublic int
+execute_async_with_envÃ128Õ(string dir, [CCode (array_length_pos = 1.9)] string[] argv, string[] envv)ŒGnome÷0œpublic int
+execute_async_with_env_fdsÃ128Õ(string dir, [CCode (array_length_pos = 1.9)] string[] argv, [CCode (array_length_pos = 2.9)] string[] envv, bool close_fds)ŒGnome÷0œpublic int
+execute_shellÃ128Õ(string dir, string commandline)ŒGnome÷0œpublic int
+execute_shell_fdsÃ128Õ(string dir, string commandline, bool close_fds)ŒGnome÷0œpublic int
+execute_terminal_shellÃ128Õ(string dir, string commandline)ŒGnome÷0œpublic int
+execute_terminal_shell_fdsÃ128Õ(string dir, string commandline, bool close_fds)ŒGnome÷0œpublic int
+g_extension_pointerÃ128Õ(string path)ŒGnome÷0œpublic unowned string
+gconf_get_app_settings_relativeÃ128Õ(Gnome.Program program, string subkey)ŒGnome÷0œpublic unowned string
+gconf_get_gnome_libs_settings_relativeÃ128Õ(string subkey)ŒGnome÷0œpublic unowned string
+get_app_idÃ128Õ()ŒGnome.Program÷0œpublic unowned string
+get_app_versionÃ128Õ()ŒGnome.Program÷0œpublic unowned string
+get_goption_group_funcÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleGetGOptionGroupFunc
+get_human_readable_nameÃ128Õ()ŒGnome.Program÷0œpublic unowned string
+gnome_datadirÃ8ŒGnome.Program÷0
+gnome_libdirÃ8ŒGnome.Program÷0
+gnome_pathÃ8ŒGnome.Program÷0
+gnome_prefixÃ8ŒGnome.Program÷0
+gnome_sysconfdirÃ8ŒGnome.Program÷0
+goption_contextÃ8ŒGnome.Program÷0œvoid
+help_displayÃ128Õ(string file_name, string link_id)ŒGnome÷0œpublic bool
+help_display_desktopÃ128Õ(Gnome.Program program, string doc_id, string file_name, string link_id)ŒGnome÷0œpublic bool
+help_display_desktop_with_envÃ128Õ(Gnome.Program program, string doc_id, string file_name, string link_id, out unowned string envp)ŒGnome÷0œpublic bool
+help_display_uriÃ128Õ(string help_uri)ŒGnome÷0œpublic bool
+help_display_uri_with_envÃ128Õ(string help_uri, out unowned string envp)ŒGnome÷0œpublic bool
+help_display_with_doc_idÃ128Õ(Gnome.Program program, string doc_id, string file_name, string link_id)ŒGnome÷0œpublic bool
+help_display_with_doc_id_and_envÃ128Õ(Gnome.Program program, string doc_id, string file_name, string link_id, out unowned string envp)ŒGnome÷0œpublic bool
+help_error_quarkÃ128Õ()ŒGnome÷0œpublic GLib.Quark
+human_readable_nameÃ8ŒGnome.Program÷0
+initÃ128Õ(string app_id, string app_version, Gnome.ModuleInfo module_info, [CCode (array_length_pos = 3.9)] string[] argv, ...)ŒGnome.Program÷0œpublic unowned
+init_paramvÃ128Õ(GLib.Type type, string app_id, string app_version, Gnome.ModuleInfo module_info, [CCode (array_length_pos = 4.9)] string[] argv, uint nparams, GLib.Parameter @params)ŒGnome.Program÷0œpublic unowned
+init_passÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleInitHook
+initvÃ128Õ(GLib.Type type, string app_id, string app_version, Gnome.ModuleInfo module_info, [CCode (array_length_pos = 4.9)] string[] argv, string first_property_name, void* args)ŒGnome.Program÷0œpublic unowned
+install_propertyÃ128Õ(GLib.ObjectGetPropertyFunc get_fn, GLib.ObjectSetPropertyFunc set_fn, GLib.ParamSpec pspec)ŒGnome.Program÷0
+instance_initÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleHook
+levelÃ8ŒGnome.Trigger÷0
+libgnome_module_info_getÃ128Õ()ŒGnome÷0œpublic unowned
+locate_fileÃ128Õ(Gnome.FileDomain domain, string file_name, bool only_if_exists, GLib.SList ret_locations)ŒGnome.Program÷0œpublic unowned string
+module_infoÃ8ŒGnome.ModuleRequirement÷0œGnome.ModuleInfo
+module_loadÃ128Õ(string mod_name)ŒGnome.Program÷0œpublic unowned
+module_registerÃ128Õ(Gnome.ModuleInfo module_info)ŒGnome.Program÷0œpublic void
+module_registeredÃ128Õ(Gnome.ModuleInfo module_info)ŒGnome.Program÷0œpublic bool
+nameÃ8ŒGnome.ModuleInfo÷0
+opt_prefixÃ8ŒGnome.ModuleInfo÷0
+popt_contextÃ8ŒGnome.Program÷0œvoid
+popt_flagsÃ8ŒGnome.Program÷0œint
+popt_tableÃ8ŒGnome.Program÷0œvoid
+post_args_parseÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleHook
+pre_args_parseÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleHook
+prepend_terminal_to_vectorÃ128Õ(int argc, out unowned string argv)ŒGnome÷0œpublic void
+required_versionÃ8ŒGnome.ModuleRequirement÷0
+requirementsÃ8ŒGnome.ModuleInfo÷0œGnome.ModuleRequirement
+setenvÃ128Õ(string name, string value, bool overwrite)ŒGnome÷0œpublic int
+sound_connection_getÃ128Õ()ŒGnome÷0œpublic int
+sound_initÃ128Õ(string hostname)ŒGnome÷0œpublic void
+sound_playÃ128Õ(string filename)ŒGnome÷0œpublic void
+sound_sample_loadÃ128Õ(string sample_name, string filename)ŒGnome÷0œpublic int
+sound_shutdownÃ128Õ()ŒGnome÷0œpublic void
+triggers_add_triggerÃ128Õ(Gnome.Trigger nt)ŒGnome÷0œpublic void
+triggers_doÃ128Õ(string msg, string level)ŒGnome÷0œpublic void
+triggers_vadd_triggerÃ128Õ(Gnome.Trigger nt, string[] supinfo)ŒGnome÷0œpublic void
+triggers_vdoÃ128Õ(string msg, string level, string[] supinfo)ŒGnome÷0œpublic void
+typeÃ8ŒGnome.Trigger÷0œGnome.TriggerType
+uÃ8ŒGnome.Trigger÷0œvoid
+unsetenvÃ128Õ(string name)ŒGnome÷0œpublic void
+url_error_quarkÃ128Õ()ŒGnome÷0œpublic GLib.Quark
+url_showÃ128Õ(string url)ŒGnome÷0œpublic bool
+url_show_with_envÃ128Õ(string url, out unowned string envp)ŒGnome÷0œpublic bool
+user_accels_dir_getÃ128Õ()ŒGnome÷0œpublic unowned string
+user_dir_getÃ128Õ()ŒGnome÷0œpublic unowned string
+user_private_dir_getÃ128Õ()ŒGnome÷0œpublic unowned string
+util_user_shellÃ128Õ()ŒGnome÷0œpublic unowned string
+versionÃ8ŒGnome.ModuleInfo÷0

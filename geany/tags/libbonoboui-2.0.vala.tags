@@ -1,0 +1,8 @@
+# format=tagmanager
+BonoboUIÌ256Ö0
+ComponentÌ1ÎBonoboUIÖ0
+VerbÌ2048ÎBonoboUIÖ0
+VerbFnÌ128Í(Component component, void* user_data, string cname)ÎBonoboUIÖ0Ïpublic delegate void
+cbÌ8ÎBonoboUI.VerbÖ0ÏVerbFn
+cnameÌ8ÎBonoboUI.VerbÖ0
+user_dataÌ8ÎBonoboUI.VerbÖ0Ïvoid

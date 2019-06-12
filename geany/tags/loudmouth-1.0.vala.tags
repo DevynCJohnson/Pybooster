@@ -1,0 +1,167 @@
+# format=tagmanager
+ALLOW_MORE_HANDLERSÃ4ŒLm.HandlerResult÷0
+AUTHÃ4ŒLm.MessageType÷0
+AUTHENTICATEDÃ4ŒLm.ConnectionState÷0
+AUTHENTICATINGÃ4ŒLm.ConnectionState÷0
+AUTH_FAILEDÃ4ŒLm.Error÷0
+AVAILABLEÃ4ŒLm.MessageSubType÷0
+CERT_EXPIREDÃ4ŒLm.SSLStatus÷0
+CERT_FINGERPRINT_MISMATCHÃ4ŒLm.SSLStatus÷0
+CERT_HOSTNAME_MISMATCHÃ4ŒLm.SSLStatus÷0
+CERT_NOT_ACTIVATEDÃ4ŒLm.SSLStatus÷0
+CHALLENGEÃ4ŒLm.MessageType÷0
+CHATÃ4ŒLm.MessageSubType÷0
+CLOSEDÃ4ŒLm.ConnectionState÷0
+CONNECTION_FAILEDÃ4ŒLm.Error÷0
+CONNECTION_NOT_OPENÃ4ŒLm.Error÷0
+CONNECTION_OPENÃ4ŒLm.Error÷0
+CONTINUEÃ4ŒLm.SSLResponse÷0
+CertificateStatusÃ2ŒLm÷0
+ConnectionÃ1ŒLm÷0
+ConnectionÃ128Õ(string server)ŒLm.Connection÷0
+Connection.with_contextÃ128Õ(string server, GLib.MainContext context)ŒLm.Connection÷0
+ConnectionStateÃ2ŒLm÷0
+DEFAULT_PORTÃ8ŒLm.Connection÷0œint
+DEFAULT_PORT_SSLÃ8ŒLm.Connection÷0œint
+DisconnectFunctionÃ128Õ(Lm.Connection connection, Lm.DisconnectReason reason)ŒLm÷0œpublic delegate void
+DisconnectReasonÃ2ŒLm÷0
+ERRORÃ4ŒLm.DisconnectReason÷0
+ERRORÃ4ŒLm.MessageSubType÷0
+ErrorÃ2ŒLm÷0
+FAILUREÃ4ŒLm.MessageType÷0
+FIRSTÃ4ŒLm.HandlerPriority÷0
+GENERIC_ERRORÃ4ŒLm.SSLStatus÷0
+GETÃ4ŒLm.MessageSubType÷0
+GROUPCHATÃ4ŒLm.MessageSubType÷0
+HEADLINEÃ4ŒLm.MessageSubType÷0
+HTTPÃ4ŒLm.ProxyType÷0
+HUPÃ4ŒLm.DisconnectReason÷0
+HandleMessageFunctionÃ128Õ(Lm.MessageHandler handler, Lm.Connection connection, Lm.Message message)ŒLm÷0œpublic delegate Lm.HandlerResult
+HandlerPriorityÃ2ŒLm÷0
+HandlerResultÃ2ŒLm÷0
+INVALIDÃ4ŒLm.CertificateStatus÷0
+INVALID_XMLÃ4ŒLm.DisconnectReason÷0
+IQÃ4ŒLm.MessageType÷0
+ISSUER_NOT_FOUNDÃ4ŒLm.CertificateStatus÷0
+LASTÃ4ŒLm.HandlerPriority÷0
+LmÃ256÷0
+MESSAGEÃ4ŒLm.MessageType÷0
+MessageÃ1ŒLm÷0
+MessageÃ128Õ(string? to, Lm.MessageType type)ŒLm.Message÷0
+Message.with_sub_typeÃ128Õ(string? to, Lm.MessageType type, Lm.MessageSubType sub_type)ŒLm.Message÷0
+MessageHandlerÃ1ŒLm÷0
+MessageHandlerÃ128Õ(Lm.HandleMessageFunction function, GLib.DestroyNotify? notify)ŒLm.MessageHandler÷0
+MessageNodeÃ1ŒLm÷0
+MessageSubTypeÃ2ŒLm÷0
+MessageTypeÃ2ŒLm÷0
+NONEÃ4ŒLm.ProxyType÷0
+NORMALÃ4ŒLm.HandlerPriority÷0
+NORMALÃ4ŒLm.MessageSubType÷0
+NOT_SETÃ4ŒLm.MessageSubType÷0
+NO_CERT_FOUNDÃ4ŒLm.SSLStatus÷0
+OKÃ4ŒLm.DisconnectReason÷0
+OPENÃ4ŒLm.ConnectionState÷0
+OPENINGÃ4ŒLm.ConnectionState÷0
+PING_TIME_OUTÃ4ŒLm.DisconnectReason÷0
+PRESENCEÃ4ŒLm.MessageType÷0
+PROBEÃ4ŒLm.MessageSubType÷0
+PROCEEDÃ4ŒLm.MessageType÷0
+ProxyÃ1ŒLm÷0
+ProxyÃ128Õ(Lm.ProxyType type)ŒLm.Proxy÷0
+Proxy.with_serverÃ128Õ(Lm.ProxyType type, string server, uint port)ŒLm.Proxy÷0
+ProxyTypeÃ2ŒLm÷0
+REMOVE_MESSAGEÃ4ŒLm.HandlerResult÷0
+RESOURCE_CONFLICTÃ4ŒLm.DisconnectReason÷0
+RESPONSEÃ4ŒLm.MessageType÷0
+RESULTÃ4ŒLm.MessageSubType÷0
+REVOKEDÃ4ŒLm.CertificateStatus÷0
+ResultFunctionÃ128Õ(Lm.Connection connection, bool success)ŒLm÷0œpublic delegate void
+SETÃ4ŒLm.MessageSubType÷0
+SSLÃ1ŒLm÷0
+SSLÃ128Õ(string expected_fingerprint, Lm.SSLFunction ssl_function, GLib.DestroyNotify? notify)ŒLm.SSL÷0
+SSLFunctionÃ128Õ(Lm.SSL ssl, Lm.SSLStatus status)ŒLm÷0œpublic delegate Lm.SSLResponse
+SSLResponseÃ2ŒLm÷0
+SSLStatusÃ2ŒLm÷0
+STARTTLSÃ4ŒLm.MessageType÷0
+STOPÃ4ŒLm.SSLResponse÷0
+STREAMÃ4ŒLm.MessageType÷0
+STREAM_ERRORÃ4ŒLm.MessageType÷0
+STREAM_FEATURESÃ4ŒLm.MessageType÷0
+SUBSCRIBEÃ4ŒLm.MessageSubType÷0
+SUBSCRIBEDÃ4ŒLm.MessageSubType÷0
+SUCCESSÃ4ŒLm.MessageType÷0
+UNAVAILABLEÃ4ŒLm.MessageSubType÷0
+UNKNOWNÃ4ŒLm.DisconnectReason÷0
+UNKNOWNÃ4ŒLm.MessageType÷0
+UNSUBSCRIBEÃ4ŒLm.MessageSubType÷0
+UNSUBSCRIBEDÃ4ŒLm.MessageSubType÷0
+UNTRUSTED_CERTÃ4ŒLm.SSLStatus÷0
+add_childÃ128Õ(string name, string? value)ŒLm.MessageNode÷0œpublic unowned
+authenticateÃ128Õ(string username, string password, string resource, Lm.ResultFunction function, GLib.DestroyNotify? notify)ŒLm.Connection÷0œpublic bool
+authenticate_and_blockÃ128Õ(string username, string password, string resource)ŒLm.Connection÷0œpublic bool
+cancel_openÃ128Õ()ŒLm.Connection÷0œpublic void
+childrenÃ8ŒLm.MessageNode÷0œLm.MessageNode
+closeÃ128Õ()ŒLm.Connection÷0œpublic bool
+error_quarkÃ128Õ()ŒLm÷0œpublic GLib.Quark
+find_childÃ128Õ(string child_name)ŒLm.MessageNode÷0œpublic unowned
+get_attributeÃ128Õ(string name)ŒLm.MessageNode÷0œpublic unowned string
+get_childÃ128Õ(string child_name)ŒLm.MessageNode÷0œpublic unowned
+get_fingerprintÃ128Õ()ŒLm.SSL÷0œpublic unowned string
+get_full_jidÃ128Õ()ŒLm.Connection÷0œpublic unowned string
+get_jidÃ128Õ()ŒLm.Connection÷0œpublic unowned string
+get_keep_alive_rateÃ128Õ()ŒLm.Connection÷0
+get_local_hostÃ128Õ()ŒLm.Connection÷0
+get_nodeÃ128Õ()ŒLm.Message÷0œpublic unowned
+get_passwordÃ128Õ()ŒLm.Proxy÷0œpublic unowned string
+get_portÃ128Õ()ŒLm.Connection÷0
+get_portÃ128Õ()ŒLm.Proxy÷0
+get_proxyÃ128Õ()ŒLm.Connection÷0œpublic unowned
+get_raw_modeÃ128Õ()ŒLm.MessageNode÷0œpublic bool
+get_require_starttlsÃ128Õ()ŒLm.SSL÷0œpublic bool
+get_serverÃ128Õ()ŒLm.Connection÷0œpublic unowned string
+get_serverÃ128Õ()ŒLm.Proxy÷0œpublic unowned string
+get_sslÃ128Õ()ŒLm.Connection÷0œpublic unowned
+get_stateÃ128Õ()ŒLm.Connection÷0œpublic Lm.ConnectionState
+get_sub_typeÃ128Õ()ŒLm.Message÷0œpublic Lm.MessageSubType
+get_typeÃ128Õ()ŒLm.Message÷0œpublic Lm.MessageType
+get_use_starttlsÃ128Õ()ŒLm.SSL÷0œpublic bool
+get_usernameÃ128Õ()ŒLm.Proxy÷0œpublic unowned string
+get_valueÃ128Õ()ŒLm.MessageNode÷0œpublic unowned string
+invalidateÃ128Õ()ŒLm.MessageHandler÷0œpublic void
+is_authenticatedÃ128Õ()ŒLm.Connection÷0œpublic bool
+is_openÃ128Õ()ŒLm.Connection÷0œpublic bool
+is_supportedÃ128Õ()ŒLm.SSL÷0œpublic bool
+is_validÃ128Õ()ŒLm.MessageHandler÷0œpublic bool
+nameÃ8ŒLm.MessageNode÷0
+nextÃ8ŒLm.MessageNode÷0œLm.MessageNode
+nodeÃ8ŒLm.Message÷0œLm.MessageNode
+openÃ128Õ(Lm.ResultFunction function, GLib.DestroyNotify? notify)ŒLm.Connection÷0œpublic bool
+open_and_blockÃ128Õ()ŒLm.Connection÷0œpublic bool
+parentÃ8ŒLm.MessageNode÷0œLm.MessageNode
+prevÃ8ŒLm.MessageNode÷0œLm.MessageNode
+raw_modeÃ8ŒLm.MessageNode÷0œbool
+register_message_handlerÃ128Õ(Lm.MessageHandler handler, Lm.MessageType type, Lm.HandlerPriority priority)ŒLm.Connection÷0œpublic void
+sendÃ128Õ(Lm.Message message)ŒLm.Connection÷0œpublic bool
+send_rawÃ128Õ(string str)ŒLm.Connection÷0œpublic bool
+send_with_replyÃ128Õ(Lm.Message message, Lm.MessageHandler handler)ŒLm.Connection÷0œpublic bool
+send_with_reply_and_blockÃ128Õ(Lm.Message message)ŒLm.Connection÷0œpublic Lm.Message
+set_attributeÃ128Õ(string name, string value)ŒLm.MessageNode÷0œpublic void
+set_attributesÃ128Õ(string name, ...)ŒLm.MessageNode÷0œpublic void
+set_disconnect_functionÃ128Õ(Lm.DisconnectFunction function, GLib.DestroyNotify? notify)ŒLm.Connection÷0œpublic void
+set_jidÃ128Õ(string jid)ŒLm.Connection÷0œpublic void
+set_keep_alive_rateÃ128Õ(uint rate)ŒLm.Connection÷0œpublic void
+set_passwordÃ128Õ(string password)ŒLm.Proxy÷0œpublic void
+set_portÃ128Õ(uint port)ŒLm.Connection÷0œpublic void
+set_portÃ128Õ(uint port)ŒLm.Proxy÷0œpublic void
+set_proxyÃ128Õ(Lm.Proxy proxy)ŒLm.Connection÷0œpublic void
+set_raw_modeÃ128Õ(bool raw_mode)ŒLm.MessageNode÷0œpublic void
+set_serverÃ128Õ(string server)ŒLm.Connection÷0œpublic void
+set_serverÃ128Õ(string server)ŒLm.Proxy÷0œpublic void
+set_sslÃ128Õ(Lm.SSL ssl)ŒLm.Connection÷0œpublic void
+set_typeÃ128Õ(Lm.ProxyType type)ŒLm.Proxy÷0œpublic void
+set_usernameÃ128Õ(string username)ŒLm.Proxy÷0œpublic void
+set_valueÃ128Õ(string value)ŒLm.MessageNode÷0œpublic void
+to_stringÃ128Õ()ŒLm.MessageNode÷0
+unregister_message_handlerÃ128Õ(Lm.MessageHandler handler, Lm.MessageType type)ŒLm.Connection÷0œpublic void
+use_starttlsÃ128Õ(bool use_starttls, bool require)ŒLm.SSL÷0œpublic void
+valueÃ8ŒLm.MessageNode÷0

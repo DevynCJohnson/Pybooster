@@ -1,0 +1,190 @@
+# format=tagmanager
+ETHOS_API_VERSION_SÃ65536÷0
+ETHOS_CHECK_VERSIONÃ131072Õ(major,minor,micro)÷0
+ETHOS_ERRORÃ65536÷0
+ETHOS_ERROR_FILE_NOT_FOUNDÃ4Œanon_enum_0÷0
+ETHOS_ERROR_INVALID_KEY_FILEÃ4Œanon_enum_0÷0
+ETHOS_ERROR_PLUGINÃ4Œanon_enum_0÷0
+ETHOS_ERROR_PLUGIN_LOADERÃ4Œanon_enum_0÷0
+ETHOS_IS_MANAGERÃ131072Õ(obj)÷0
+ETHOS_IS_MANAGER_CLASSÃ131072Õ(klass)÷0
+ETHOS_IS_PLUGINÃ131072Õ(obj)÷0
+ETHOS_IS_PLUGIN_CLASSÃ131072Õ(klass)÷0
+ETHOS_IS_PLUGIN_INFOÃ131072Õ(obj)÷0
+ETHOS_IS_PLUGIN_INFO_CLASSÃ131072Õ(klass)÷0
+ETHOS_IS_PLUGIN_LOADERÃ131072Õ(obj)÷0
+ETHOS_MAJOR_VERSIONÃ65536÷0
+ETHOS_MANAGERÃ131072Õ(obj)÷0
+ETHOS_MANAGER_CLASSÃ131072Õ(klass)÷0
+ETHOS_MANAGER_CONSTÃ131072Õ(obj)÷0
+ETHOS_MANAGER_GET_CLASSÃ131072Õ(obj)÷0
+ETHOS_MICRO_VERSIONÃ65536÷0
+ETHOS_MINOR_VERSIONÃ65536÷0
+ETHOS_PLUGINÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_CLASSÃ131072Õ(klass)÷0
+ETHOS_PLUGIN_CONSTÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_GET_CLASSÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_INFOÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_INFO_CLASSÃ131072Õ(klass)÷0
+ETHOS_PLUGIN_INFO_CONSTÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_INFO_GET_CLASSÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_LOADERÃ131072Õ(obj)÷0
+ETHOS_PLUGIN_LOADER_GET_INTERFACEÃ131072Õ(obj)÷0
+ETHOS_TYPE_ERRORÃ65536÷0
+ETHOS_TYPE_MANAGERÃ65536÷0
+ETHOS_TYPE_PLUGINÃ65536÷0
+ETHOS_TYPE_PLUGIN_INFOÃ65536÷0
+ETHOS_TYPE_PLUGIN_LOADERÃ65536÷0
+ETHOS_UI_CONFIGURABLEÃ131072Õ(obj)÷0
+ETHOS_UI_CONFIGURABLE_GET_INTERFACEÃ131072Õ(obj)÷0
+ETHOS_UI_IS_CONFIGURABLEÃ131072Õ(obj)÷0
+ETHOS_UI_IS_MANAGER_WIDGETÃ131072Õ(obj)÷0
+ETHOS_UI_IS_MANAGER_WIDGET_CLASSÃ131072Õ(klass)÷0
+ETHOS_UI_MANAGER_WIDGETÃ131072Õ(obj)÷0
+ETHOS_UI_MANAGER_WIDGET_CLASSÃ131072Õ(klass)÷0
+ETHOS_UI_MANAGER_WIDGET_CONSTÃ131072Õ(obj)÷0
+ETHOS_UI_MANAGER_WIDGET_GET_CLASSÃ131072Õ(obj)÷0
+ETHOS_UI_TYPE_CONFIGURABLEÃ65536÷0
+ETHOS_UI_TYPE_MANAGER_WIDGETÃ65536÷0
+ETHOS_VERSION_HEXÃ65536÷0
+ETHOS_VERSION_SÃ65536÷0
+EthosErrorÃ4096÷0œanon_enum_0
+EthosManagerÃ4096÷0œG_BEGIN_DECLS
+EthosManagerClassÃ4096÷0œ_EthosManagerClass
+EthosManagerPrivateÃ4096÷0œ_EthosManagerPrivate
+EthosPluginÃ4096÷0œG_END_DECLS
+EthosPluginClassÃ4096÷0œ_EthosPluginClass
+EthosPluginInfoÃ4096÷0œG_END_DECLS
+EthosPluginInfoClassÃ4096÷0œ_EthosPluginInfoClass
+EthosPluginInfoPrivateÃ4096÷0œ_EthosPluginInfoPrivate
+EthosPluginLoaderÃ4096÷0œG_END_DECLS
+EthosPluginLoaderIfaceÃ4096÷0œ_EthosPluginLoaderIface
+EthosPluginPrivateÃ4096÷0œ_EthosPluginPrivate
+EthosUIConfigurableÃ4096÷0œG_END_DECLS
+EthosUIConfigurableIfaceÃ4096÷0œ_EthosUIConfigurableIface
+EthosUIManagerWidgetÃ4096÷0œG_END_DECLS
+EthosUIManagerWidgetClassÃ4096÷0œ_EthosUIManagerWidgetClass
+EthosUIManagerWidgetPrivateÃ4096÷0œ_EthosUIManagerWidgetPrivate
+_EthosManagerÃ2048÷0
+_EthosManagerClassÃ2048÷0
+_EthosPluginÃ2048÷0
+_EthosPluginClassÃ2048÷0
+_EthosPluginInfoÃ2048÷0
+_EthosPluginInfoClassÃ2048÷0
+_EthosPluginLoaderIfaceÃ2048÷0
+_EthosUIConfigurableIfaceÃ2048÷0
+_EthosUIManagerWidgetÃ2048÷0
+_EthosUIManagerWidgetClassÃ2048÷0
+__ETHOS_ERROR_H__Ã65536÷0
+__ETHOS_H__Ã65536÷0
+__ETHOS_MANAGER_H__Ã65536÷0
+__ETHOS_PLUGIN_H__Ã65536÷0
+__ETHOS_PLUGIN_INFO_H__Ã65536÷0
+__ETHOS_PLUGIN_LOADER_H__Ã65536÷0
+__ETHOS_UI_CONFIGURABLE_H__Ã65536÷0
+__ETHOS_UI_H__Ã65536÷0
+__ETHOS_UI_MANAGER_WIDGET_H__Ã65536÷0
+__ETHOS_VERSION_H__Ã65536÷0
+activatedÃ1024Õ(EthosPlugin *plugin)Œ_EthosPluginClass÷0œvoid
+anon_enum_0Ã2÷0
+configureÃ1024Õ(EthosUIConfigurable *configurable, GtkWidget *parent)Œ_EthosUIConfigurableIface÷0œvoid
+deactivatedÃ1024Õ(EthosPlugin *plugin)Œ_EthosPluginClass÷0œvoid
+ethos_error_get_typeÃ1024Õ(void)÷0œGType
+ethos_error_quarkÃ1024Õ(void)÷0œGQuark
+ethos_manager_get_app_nameÃ1024Õ(EthosManager *manager)÷0œG_CONST_RETURN *
+ethos_manager_get_pluginÃ1024Õ(EthosManager *manager, EthosPluginInfo *plugin_info)÷0œEthosPlugin *
+ethos_manager_get_plugin_dirsÃ1024Õ(EthosManager *manager)÷0œG_CONST_RETURN * *
+ethos_manager_get_plugin_infoÃ1024Õ(EthosManager *manager)÷0œGList *
+ethos_manager_get_plugin_loadersÃ1024Õ(EthosManager *manager)÷0œGList *
+ethos_manager_initializeÃ1024Õ(EthosManager *manager)÷0œvoid
+ethos_manager_load_pluginÃ1024Õ(EthosManager *manager, EthosPluginInfo *plugin_info, GError **error)÷0œgboolean
+ethos_manager_newÃ1024Õ(void)÷0œEthosManager *
+ethos_manager_new_fullÃ1024Õ(const gchar *app_name, gchar **plugin_dirs)÷0œEthosManager *
+ethos_manager_set_app_nameÃ1024Õ(EthosManager *manager, const gchar *app_name)÷0œvoid
+ethos_manager_set_plugin_dirsÃ1024Õ(EthosManager *manager, gchar **plugin_dirs)÷0œvoid
+ethos_manager_unloadÃ1024Õ(EthosManager *manager)÷0œvoid
+ethos_manager_unload_pluginÃ1024Õ(EthosManager *manager, EthosPluginInfo *plugin_info, GError **error)÷0œgboolean
+ethos_plugin_activateÃ1024Õ(EthosPlugin *plugin)÷0œvoid
+ethos_plugin_deactivateÃ1024Õ(EthosPlugin *plugin)÷0œvoid
+ethos_plugin_info_get_activeÃ1024Õ(EthosPluginInfo *plugin_info)÷0œgboolean
+ethos_plugin_info_get_authorsÃ1024Õ(EthosPluginInfo *plugin_info)÷0œgchar * *
+ethos_plugin_info_get_copyrightÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_dependenciesÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_descriptionÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_errorsÃ1024Õ(EthosPluginInfo *plugin_info)÷0œGList *
+ethos_plugin_info_get_filenameÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_iageÃ1024Õ(EthosPluginInfo *plugin_info)÷0œguint
+ethos_plugin_info_get_icon_nameÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_idÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_loaderÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_moduleÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_nameÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_versionÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_get_websiteÃ1024Õ(EthosPluginInfo *plugin_info)÷0œG_CONST_RETURN *
+ethos_plugin_info_has_errorsÃ1024Õ(EthosPluginInfo *plugin_info)÷0œgboolean
+ethos_plugin_info_load_from_dataÃ1024Õ(EthosPluginInfo *plugin_info, const gchar *group, const gchar *data, gsize length, GError **error)÷0œgboolean
+ethos_plugin_info_load_from_fileÃ1024Õ(EthosPluginInfo *plugin_info, const gchar *group, const gchar *filename, GError **error)÷0œgboolean
+ethos_plugin_info_load_from_key_fileÃ1024Õ(EthosPluginInfo *plugin_info, const gchar *group, GKeyFile *key_file, GError **error)÷0œgboolean
+ethos_plugin_info_newÃ1024Õ(void)÷0œEthosPluginInfo *
+ethos_plugin_info_set_activeÃ1024Õ(EthosPluginInfo *plugin_info, gboolean active)÷0œvoid
+ethos_plugin_info_set_filenameÃ1024Õ(EthosPluginInfo *plugin_info, const gchar *filename)÷0œvoid
+ethos_plugin_info_set_idÃ1024Õ(EthosPluginInfo *plugin_info, const gchar *id)÷0œvoid
+ethos_plugin_loader_gcÃ1024Õ(EthosPluginLoader *plugin_loader)÷0œvoid
+ethos_plugin_loader_get_nameÃ1024Õ(EthosPluginLoader *plugin_loader)÷0œG_CONST_RETURN *
+ethos_plugin_loader_initializeÃ1024Õ(EthosPluginLoader *plugin_loader, EthosManager *manager)÷0œvoid
+ethos_plugin_loader_loadÃ1024Õ(EthosPluginLoader *plugin_loader, EthosPluginInfo *plugin_info, GError **error)÷0œEthosPlugin *
+ethos_plugin_loader_register_pluginÃ1024Õ(EthosPluginLoader *plugin_loader, EthosPlugin *plugin)÷0œvoid
+ethos_plugin_loader_unloadÃ1024Õ(EthosPluginLoader *plugin_loader)÷0œvoid
+ethos_register_runtime_pluginÃ1024Õ(EthosPlugin *plugin)÷0œvoid
+ethos_ui_configurable_configureÃ1024Õ(EthosUIConfigurable *configurable, GtkWidget *parent)÷0œvoid
+ethos_ui_manager_widget_newÃ1024Õ(void)÷0œGtkWidget *
+ethos_ui_manager_widget_set_managerÃ1024Õ(EthosUIManagerWidget *widget, EthosManager *manager)÷0œvoid
+gcÃ1024Õ(EthosPluginLoader *plugin_loader)Œ_EthosPluginLoaderIface÷0œvoid
+get_nameÃ1024Õ(EthosPluginLoader *plugin_loader)Œ_EthosPluginLoaderIface÷0œconst gchar *
+initializeÃ1024Õ(EthosPluginLoader *plugin_loader, EthosManager *manager)Œ_EthosPluginLoaderIface÷0œvoid
+initializedÃ1024Õ(EthosManager *manager)Œ_EthosManagerClass÷0œvoid
+loadÃ1024Õ(EthosPluginLoader *plugin_loader, EthosPluginInfo *plugin_info, GError **error)Œ_EthosPluginLoaderIface÷0œEthosPlugin *
+load_pluginÃ1024Õ(EthosManager *manager, EthosPlugin *plugin, GError **error)Œ_EthosManagerClass÷0œgboolean
+parentÃ64Œ_EthosManager÷0œGObject
+parentÃ64Œ_EthosPlugin÷0œGObject
+parentÃ64Œ_EthosPluginInfo÷0œGObject
+parentÃ64Œ_EthosUIManagerWidget÷0œGtkVBox
+parent_classÃ64Œ_EthosManagerClass÷0œGObjectClass
+parent_classÃ64Œ_EthosPluginClass÷0œGObjectClass
+parent_classÃ64Œ_EthosPluginInfoClass÷0œGObjectClass
+parent_classÃ64Œ_EthosPluginLoaderIface÷0œGObjectClass
+parent_classÃ64Œ_EthosUIConfigurableIface÷0œGObjectClass
+parent_classÃ64Œ_EthosUIManagerWidgetClass÷0œGtkVBoxClass
+plugin_loadedÃ1024Õ(EthosManager *manager, EthosPluginInfo *plugin_info)Œ_EthosManagerClass÷0œvoid
+plugin_unloadedÃ1024Õ(EthosManager *manager, EthosPluginInfo *plugin_info)Œ_EthosManagerClass÷0œvoid
+privÃ64Œ_EthosManager÷0œEthosManagerPrivate
+privÃ64Œ_EthosPlugin÷0œEthosPluginPrivate
+privÃ64Œ_EthosPluginInfo÷0œEthosPluginInfoPrivate
+privÃ64Œ_EthosUIManagerWidget÷0œEthosUIManagerWidgetPrivate
+register_pluginÃ1024Õ(EthosPluginLoader *plugin_loader, EthosPlugin *plugin)Œ_EthosPluginLoaderIface÷0œvoid
+reserved1Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved1Ã1024Õ(void)Œ_EthosPluginClass÷0œvoid
+reserved1Ã1024Õ(void)Œ_EthosPluginInfoClass÷0œvoid
+reserved1Ã1024Õ(void)Œ_EthosPluginLoaderIface÷0œvoid
+reserved1Ã1024Õ(void)Œ_EthosUIConfigurableIface÷0œvoid
+reserved2Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved2Ã1024Õ(void)Œ_EthosPluginClass÷0œvoid
+reserved2Ã1024Õ(void)Œ_EthosPluginInfoClass÷0œvoid
+reserved2Ã1024Õ(void)Œ_EthosPluginLoaderIface÷0œvoid
+reserved2Ã1024Õ(void)Œ_EthosUIConfigurableIface÷0œvoid
+reserved3Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved3Ã1024Õ(void)Œ_EthosPluginClass÷0œvoid
+reserved3Ã1024Õ(void)Œ_EthosPluginInfoClass÷0œvoid
+reserved3Ã1024Õ(void)Œ_EthosPluginLoaderIface÷0œvoid
+reserved3Ã1024Õ(void)Œ_EthosUIConfigurableIface÷0œvoid
+reserved4Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved4Ã1024Õ(void)Œ_EthosPluginClass÷0œvoid
+reserved4Ã1024Õ(void)Œ_EthosPluginInfoClass÷0œvoid
+reserved4Ã1024Õ(void)Œ_EthosPluginLoaderIface÷0œvoid
+reserved4Ã1024Õ(void)Œ_EthosUIConfigurableIface÷0œvoid
+reserved5Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved6Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved7Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+reserved8Ã1024Õ(void)Œ_EthosManagerClass÷0œvoid
+unloadÃ1024Õ(EthosPluginLoader *plugin_loader)Œ_EthosPluginLoaderIface÷0œvoid
+unload_pluginÃ1024Õ(EthosManager *manager, EthosPlugin *plugin, GError **error)Œ_EthosManagerClass÷0œgboolean

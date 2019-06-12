@@ -1,0 +1,20 @@
+# format=tagmanager
+ClutterGstÌ256Ö0
+HEXÌ8ÎClutterGst.VersionÖ0Ïint
+MAJORÌ8ÎClutterGst.VersionÖ0Ïint
+MICROÌ8ÎClutterGst.VersionÖ0Ïint
+MINORÌ8ÎClutterGst.VersionÖ0Ïint
+STRINGÌ8ÎClutterGst.VersionÖ0
+VersionÌ256Ö0
+VideoSinkÌ1ÎClutterGstÖ0
+VideoSinkÌ128Í(Clutter.Texture texture)ÎClutterGst.VideoSinkÖ0
+VideoTextureÌ1ÎClutterGstÖ0
+VideoTextureÌ128Í()ÎClutterGst.VideoTextureÖ0
+checkÌ128Í(int major, int minor, int micro)ÎClutterGst.VersionÖ0Ïpublic bool
+get_pipelineÌ128Í()ÎClutterGst.VideoTextureÖ0Ïpublic unowned
+idle_materialÌ8ÎClutterGst.VideoTextureÖ0ÏCogl.Handle
+initÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ÎClutterGstÖ0Ïpublic Clutter.InitError
+init_with_argsÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv, string parameter_string, [CCode (array_length = false)] GLib.OptionEntry[] entries, string translation_domain)ÎClutterGstÖ0Ïpublic Clutter.InitError
+textureÌ8ÎClutterGst.VideoSinkÖ0ÏClutter.Texture
+update_priorityÌ8ÎClutterGst.VideoSinkÖ0Ïint
+user_agentÌ8ÎClutterGst.VideoTextureÖ0

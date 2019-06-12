@@ -1,0 +1,197 @@
+# format=tagmanager
+AUTO_INCREMENTÃ4ŒMysql.FieldFlag÷0
+BINARYÃ4ŒMysql.FieldFlag÷0
+BINCMPÃ4ŒMysql.FieldFlag÷0
+BITÃ4ŒMysql.FieldType÷0
+BLOBÃ4ŒMysql.FieldFlag÷0
+BLOBÃ4ŒMysql.FieldType÷0
+COMPRESSÃ4ŒMysql.ClientFlag÷0
+CONNECT_WITH_DBÃ4ŒMysql.ClientFlag÷0
+ClientFlagÃ2ŒMysql÷0
+CursorTypeÃ2ŒMysql÷0
+DATEÃ4ŒMysql.FieldType÷0
+DATETIMEÃ4ŒMysql.FieldType÷0
+DECIMALÃ4ŒMysql.FieldType÷0
+DOUBLEÃ4ŒMysql.FieldType÷0
+DatabaseÃ1ŒMysql÷0
+DatabaseÃ128Õ(Database? mysql = null)ŒMysql.Database÷0
+ENUMÃ4ŒMysql.FieldFlag÷0
+ENUMÃ4ŒMysql.FieldType÷0
+FIELD_IN_ADD_INDEXÃ4ŒMysql.FieldFlag÷0
+FIELD_IN_PART_FUNCÃ4ŒMysql.FieldFlag÷0
+FIELD_IS_RENAMEDÃ4ŒMysql.FieldFlag÷0
+FLOATÃ4ŒMysql.FieldType÷0
+FOR_UPDATEÃ4ŒMysql.CursorType÷0
+FOUND_ROWSÃ4ŒMysql.ClientFlag÷0
+FieldÃ2048ŒMysql÷0
+FieldFlagÃ2ŒMysql÷0
+FieldTypeÃ2ŒMysql÷0
+GEOMETRYÃ4ŒMysql.FieldType÷0
+GET_FIXED_FIELDSÃ4ŒMysql.FieldFlag÷0
+GROUPÃ4ŒMysql.FieldFlag÷0
+IGNORE_SIGPIPEÃ4ŒMysql.ClientFlag÷0
+IGNORE_SPACEÃ4ŒMysql.ClientFlag÷0
+INIT_COMMANDÃ4ŒMysql.Option÷0
+INT24Ã4ŒMysql.FieldType÷0
+INTERACTIVEÃ4ŒMysql.ClientFlag÷0
+LOCAL_FILESÃ4ŒMysql.ClientFlag÷0
+LONGÃ4ŒMysql.FieldType÷0
+LONGLONGÃ4ŒMysql.FieldType÷0
+LONG_BLOBÃ4ŒMysql.FieldType÷0
+LONG_FLAGÃ4ŒMysql.ClientFlag÷0
+LONG_PASSWORDÃ4ŒMysql.ClientFlag÷0
+MEDIUM_BLOBÃ4ŒMysql.FieldType÷0
+MULTIPLE_KEYÃ4ŒMysql.FieldFlag÷0
+MULTI_RESULTSÃ4ŒMysql.ClientFlag÷0
+MULTI_STATEMENTSÃ4ŒMysql.ClientFlag÷0
+MULTI_STATEMENTS_OFFÃ4ŒMysql.SetOption÷0
+MULTI_STATEMENTS_ONÃ4ŒMysql.SetOption÷0
+MysqlÃ256÷0
+NEWDATEÃ4ŒMysql.FieldType÷0
+NEWDECIMALÃ4ŒMysql.FieldType÷0
+NOT_NULLÃ4ŒMysql.FieldFlag÷0
+NO_CURSORÃ4ŒMysql.CursorType÷0
+NO_DEFAULT_VALUEÃ4ŒMysql.FieldFlag÷0
+NO_SCHEMAÃ4ŒMysql.ClientFlag÷0
+NULLÃ4ŒMysql.FieldType÷0
+NUMÃ4ŒMysql.FieldFlag÷0
+ODBCÃ4ŒMysql.ClientFlag÷0
+ON_UPDATE_NOWÃ4ŒMysql.FieldFlag÷0
+OPT_COMPRESSÃ4ŒMysql.Option÷0
+OPT_CONNECT_TIMEOUTÃ4ŒMysql.Option÷0
+OPT_GUESS_CONNECTIONÃ4ŒMysql.Option÷0
+OPT_LOCAL_INFILEÃ4ŒMysql.Option÷0
+OPT_NAMED_PIPEÃ4ŒMysql.Option÷0
+OPT_PROTOCOLÃ4ŒMysql.Option÷0
+OPT_READ_TIMEOUTÃ4ŒMysql.Option÷0
+OPT_RECONNECTÃ4ŒMysql.Option÷0
+OPT_SSL_VERIFY_SERVER_CERTÃ4ŒMysql.Option÷0
+OPT_USE_EMBEDDED_CONNECTIONÃ4ŒMysql.Option÷0
+OPT_USE_REMOTE_CONNECTIONÃ4ŒMysql.Option÷0
+OPT_USE_RESULTÃ4ŒMysql.Option÷0
+OPT_WRITE_TIMEOUTÃ4ŒMysql.Option÷0
+OptionÃ2ŒMysql÷0
+PART_KEYÃ4ŒMysql.FieldFlag÷0
+PRI_KEYÃ4ŒMysql.FieldFlag÷0
+PROTOCOL_41Ã4ŒMysql.ClientFlag÷0
+READ_DEFAULT_FILEÃ4ŒMysql.Option÷0
+READ_DEFAULT_GROUPÃ4ŒMysql.Option÷0
+READ_ONLYÃ4ŒMysql.CursorType÷0
+REMEMBER_OPTIONSÃ4ŒMysql.ClientFlag÷0
+REPORT_DATA_TRUNCATIONÃ4ŒMysql.Option÷0
+RESERVEDÃ4ŒMysql.ClientFlag÷0
+ResultÃ1ŒMysql÷0
+SCROLLABLEÃ4ŒMysql.CursorType÷0
+SECURE_AUTHÃ4ŒMysql.Option÷0
+SECURE_CONNECTIONÃ4ŒMysql.ClientFlag÷0
+SETÃ4ŒMysql.FieldFlag÷0
+SETÃ4ŒMysql.FieldType÷0
+SET_CHARSET_DIRÃ4ŒMysql.Option÷0
+SET_CHARSET_NAMEÃ4ŒMysql.Option÷0
+SET_CLIENT_IPÃ4ŒMysql.Option÷0
+SHARED_MEMORY_BASE_NAMEÃ4ŒMysql.Option÷0
+SHORTÃ4ŒMysql.FieldType÷0
+SSLÃ4ŒMysql.ClientFlag÷0
+SSL_VERIFY_SERVER_CERTÃ4ŒMysql.ClientFlag÷0
+STRINGÃ4ŒMysql.FieldType÷0
+SetOptionÃ2ŒMysql÷0
+TIMEÃ4ŒMysql.FieldType÷0
+TIMESTAMPÃ4ŒMysql.FieldFlag÷0
+TIMESTAMPÃ4ŒMysql.FieldType÷0
+TINYÃ4ŒMysql.FieldType÷0
+TINY_BLOBÃ4ŒMysql.FieldType÷0
+TRANSACTIONSÃ4ŒMysql.ClientFlag÷0
+UNIQUEÃ4ŒMysql.FieldFlag÷0
+UNIQUE_KEYÃ4ŒMysql.FieldFlag÷0
+UNSIGNEDÃ4ŒMysql.FieldFlag÷0
+VARCHARÃ4ŒMysql.FieldType÷0
+VAR_STRINGÃ4ŒMysql.FieldType÷0
+YEARÃ4ŒMysql.FieldType÷0
+ZEROFILLÃ4ŒMysql.FieldFlag÷0
+_fetch_fieldsÃ128Õ()ŒMysql.Result÷0œpublic unowned
+_fetch_lengthsÃ128Õ()ŒMysql.Result÷0œpublic unowned ulong
+_fetch_rowÃ128Õ()ŒMysql.Result÷0œpublic unowned string
+affected_rowsÃ128Õ()ŒMysql.Database÷0
+autocommitÃ128Õ(bool mode)ŒMysql.Database÷0œpublic bool
+catalogÃ8ŒMysql.Field÷0œunowned
+catalog_lengthÃ8ŒMysql.Field÷0
+change_userÃ128Õ(string username, string passwd, string? dbname = null)ŒMysql.Database÷0œpublic bool
+character_set_nameÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+charsetnrÃ8ŒMysql.Field÷0
+commitÃ128Õ()ŒMysql.Database÷0œpublic bool
+data_seekÃ128Õ(ulong offset)ŒMysql.Result÷0œpublic bool
+dbÃ8ŒMysql.Field÷0œunowned
+db_lengthÃ8ŒMysql.Field÷0
+debugÃ128Õ(string msg)ŒMysql÷0œpublic void
+decimalsÃ8ŒMysql.Field÷0
+defÃ8ŒMysql.Field÷0œunowned
+def_lengthÃ8ŒMysql.Field÷0
+dump_debug_infoÃ128Õ()ŒMysql.Database÷0œpublic int
+eofÃ128Õ()ŒMysql.Result÷0œpublic bool
+errnoÃ128Õ()ŒMysql.Database÷0
+errorÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+extensionÃ8ŒMysql.Field÷0œvoid
+fetch_countÃ128Õ()ŒMysql.Result÷0
+fetch_fieldÃ128Õ()ŒMysql.Result÷0œpublic Field *
+fetch_field_directÃ128Õ(uint field_nbr)ŒMysql.Result÷0œpublic Field *
+fetch_fieldsÃ128Õ()ŒMysql.Result÷0œpublic unowned
+fetch_lengthsÃ128Õ()ŒMysql.Result÷0œpublic unowned ulong
+fetch_rowÃ128Õ()ŒMysql.Result÷0œpublic unowned string
+flagsÃ8ŒMysql.Field÷0
+get_client_infoÃ128Õ()ŒMysql÷0œpublic unowned string
+get_client_versionÃ128Õ()ŒMysql÷0
+get_host_infoÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+get_proto_infoÃ128Õ()ŒMysql.Database÷0
+get_server_infoÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+get_server_versionÃ128Õ()ŒMysql.Database÷0
+get_ssl_cipherÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+hex_stringÃ128Õ(string to, string from, ulong length)ŒMysql÷0
+infoÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+insert_idÃ128Õ()ŒMysql.Database÷0
+killÃ128Õ(ulong pid)ŒMysql.Database÷0œpublic int
+lengthÃ8ŒMysql.Field÷0
+library_endÃ128Õ()ŒMysql÷0œpublic void
+library_initÃ128Õ([CCode (array_length_pos = 0.1)] string[] argv, [CCode (array_length = false, array_null_terminated = true)] string[]? groups = null)ŒMysql÷0œpublic int
+list_dbsÃ128Õ(string? wild = null)ŒMysql.Database÷0œpublic Result?
+list_fieldsÃ128Õ(string table, string? wild = null)ŒMysql.Database÷0œpublic Result?
+list_processesÃ128Õ()ŒMysql.Database÷0œpublic Result?
+list_tablesÃ128Õ(string? wild = null)ŒMysql.Database÷0œpublic Result?
+max_lengthÃ8ŒMysql.Field÷0
+more_resultsÃ128Õ()ŒMysql.Database÷0œpublic bool
+nameÃ8ŒMysql.Field÷0œunowned
+name_lengthÃ8ŒMysql.Field÷0
+next_resultÃ128Õ()ŒMysql.Database÷0œpublic int
+num_fieldsÃ128Õ()ŒMysql.Result÷0
+num_rowsÃ128Õ()ŒMysql.Result÷0
+optionsÃ128Õ(Option option, string arg)ŒMysql.Database÷0œpublic int
+org_nameÃ8ŒMysql.Field÷0œunowned
+org_name_lengthÃ8ŒMysql.Field÷0
+org_tableÃ8ŒMysql.Field÷0œunowned
+org_table_lengthÃ8ŒMysql.Field÷0
+pingÃ128Õ()ŒMysql.Database÷0œpublic int
+queryÃ128Õ(string stmt_str)ŒMysql.Database÷0œpublic int
+real_connectÃ128Õ(string? host = null, string? username = null, string? passwd = null, string? dbname = null, uint port = 0, string? unix_socket = null, ClientFlag client_flag = 0)ŒMysql.Database÷0œpublic bool
+real_escape_stringÃ128Õ(string to, string from, ulong length)ŒMysql.Database÷0
+real_queryÃ128Õ(string query, ulong len)ŒMysql.Database÷0œpublic int
+reloadÃ128Õ()ŒMysql.Database÷0œpublic int
+rollbackÃ128Õ()ŒMysql.Database÷0œpublic bool
+select_dbÃ128Õ(string dbname)ŒMysql.Database÷0œpublic int
+server_endÃ128Õ()ŒMysql÷0œpublic void
+server_initÃ128Õ([CCode (array_length_pos = 0.1)] string[] argv, [CCode (array_length = false, array_null_terminated = true)] string[]? groups = null)ŒMysql÷0œpublic int
+set_character_setÃ128Õ(string csname)ŒMysql.Database÷0œpublic int
+set_local_infile_defaultÃ128Õ()ŒMysql.Database÷0œpublic void
+set_server_optionÃ128Õ(SetOption option)ŒMysql.Database÷0œpublic int
+shutdownÃ128Õ(int shutdown_level)ŒMysql.Database÷0œpublic int
+sqlstateÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+ssl_setÃ128Õ(string key, string cert, string ca, string capath, string cipher)ŒMysql.Database÷0œpublic bool
+statÃ128Õ()ŒMysql.Database÷0œpublic unowned string
+store_resultÃ128Õ()ŒMysql.Database÷0œpublic Result?
+tableÃ8ŒMysql.Field÷0œunowned
+table_lengthÃ8ŒMysql.Field÷0
+thread_endÃ128Õ()ŒMysql÷0œpublic void
+thread_idÃ128Õ()ŒMysql.Database÷0
+thread_initÃ128Õ()ŒMysql÷0œpublic bool
+thread_safeÃ128Õ()ŒMysql÷0
+typeÃ8ŒMysql.Field÷0œFieldType
+use_resultÃ128Õ()ŒMysql.Database÷0œpublic Result?
+warning_countÃ128Õ()ŒMysql.Database÷0

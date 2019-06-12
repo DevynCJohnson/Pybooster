@@ -1,0 +1,109 @@
+# format=tagmanager
+ApplicationAutosaveCallbackÃ128Õ(void* data)ŒOsso÷0œpublic delegate void
+ApplicationTopCallbackÃ128Õ(string arguments, void* data)ŒOsso÷0œpublic delegate void
+CloseÃ4ŒOsso.KeySym÷0
+ContextÃ1ŒOsso÷0
+ContextÃ128Õ(string application, string version, bool activation, GLib.MainContext? context)ŒOsso.Context÷0
+DIMMEDÃ4ŒOsso.DisplayState÷0
+DevModeÃ2ŒOsso÷0
+DisplayEventCallbackÃ128Õ(DisplayState state, void* data)ŒOsso÷0œpublic delegate void
+DisplayStateÃ2ŒOsso÷0
+DownÃ4ŒOsso.KeySym÷0
+ERRORÃ4ŒOsso.Status÷0
+ERRORÃ4ŒOsso.SystemNoteType÷0
+ERROR_NAMEÃ4ŒOsso.Status÷0
+ERROR_NO_STATEÃ4ŒOsso.Status÷0
+ERROR_STATE_SIZEÃ4ŒOsso.Status÷0
+FLIGHTÃ4ŒOsso.DevMode÷0
+FullScreenÃ4ŒOsso.KeySym÷0
+HWCallbackÃ128Õ(ref HWState state, void* data)ŒOsso÷0œpublic delegate void
+HWStateÃ2048ŒOsso÷0
+INVALIDÃ4ŒOsso.DevMode÷0
+INVALIDÃ4ŒOsso.Status÷0
+KeySymÃ2ŒOsso÷0
+LeftÃ4ŒOsso.KeySym÷0
+LocaleChangeCallbackÃ128Õ(string new_locale, void* data)ŒOsso÷0œpublic delegate void
+MimeCallbackÃ128Õ(void* data, string[] args)ŒOsso÷0œpublic delegate void
+NORMALÃ4ŒOsso.DevMode÷0
+NOTICEÃ4ŒOsso.SystemNoteType÷0
+OFFÃ4ŒOsso.DisplayState÷0
+OFFLINEÃ4ŒOsso.DevMode÷0
+OKÃ4ŒOsso.Status÷0
+ONÃ4ŒOsso.DisplayState÷0
+OpenMenuÃ4ŒOsso.KeySym÷0
+OssoÃ256÷0
+PowerÃ4ŒOsso.KeySym÷0
+RPC_ERRORÃ4ŒOsso.Status÷0
+RightÃ4ŒOsso.KeySym÷0
+RpcÃ2048ŒOsso÷0
+RpcAsyncÃ128Õ(string iface, string method, out Rpc rpc, void* data)ŒOsso÷0œpublic delegate int
+RpcCallbackÃ128Õ(string iface, string method, GLib.Array arguments, void* data, out Rpc rpc)ŒOsso÷0œpublic delegate int
+SelectÃ4ŒOsso.KeySym÷0
+ShowHomeÃ4ŒOsso.KeySym÷0
+StateÃ2048ŒOsso÷0
+StatusÃ2ŒOsso÷0
+SystemNoteTypeÃ2ŒOsso÷0
+TimeCallbackÃ128Õ(void* data)ŒOsso÷0œpublic delegate void
+UpÃ4ŒOsso.KeySym÷0
+WAITÃ4ŒOsso.SystemNoteType÷0
+WARNINGÃ4ŒOsso.SystemNoteType÷0
+ZoomInÃ4ŒOsso.KeySym÷0
+ZoomOutÃ4ŒOsso.KeySym÷0
+application_autosave_forceÃ128Õ()ŒOsso.Context÷0œpublic Status
+application_topÃ128Õ(string application, string arguments)ŒOsso.Context÷0œpublic Status
+application_userdata_changedÃ128Õ()ŒOsso.Context÷0œpublic Status
+bÃ8ŒOsso.Rpc÷0œbool
+dÃ8ŒOsso.Rpc÷0œdouble
+display_blanking_pauseÃ128Õ()ŒOsso.Context÷0œpublic Status
+display_state_onÃ128Õ()ŒOsso.Context÷0œpublic Status
+get_application_nameÃ128Õ()ŒOsso.Context÷0
+get_application_versionÃ128Õ()ŒOsso.Context÷0
+get_dbus_connectionÃ128Õ()ŒOsso.Context÷0œpublic void *
+get_rpc_timeoutÃ128Õ(ref int timeout)ŒOsso.Context÷0œpublic Status
+get_sys_dbus_connectionÃ128Õ()ŒOsso.Context÷0œpublic void *
+iÃ8ŒOsso.Rpc÷0œint32
+memory_low_indÃ8ŒOsso.HWState÷0œbool
+plugin_executeÃ128Õ(string filename, void* data, bool user_activated)ŒOsso.Context÷0œpublic Status
+plugin_saveÃ128Õ(string filename, void* data)ŒOsso.Context÷0œpublic Status
+rpc_async_runÃ128Õ(string service, string object_path, string iface, string method, RpcAsync? async_callback, void* data, int argument_type, ...)ŒOsso.Context÷0œpublic Status
+rpc_async_run_with_defaultsÃ128Õ(string application, string method, RpcAsync? async_callback, void* data,int argument_type, ...)ŒOsso.Context÷0œpublic Status
+rpc_runÃ128Õ(string service, string object_path, string iface, string method, out Rpc retval, int argument_type, ...)ŒOsso.Context÷0œpublic Status
+rpc_run_systemÃ128Õ(string service, string object_path, string iface, string method, out Rpc retval, int argument_type, ...)ŒOsso.Context÷0œpublic Status
+rpc_run_with_defaultsÃ128Õ(string application, string method, out Rpc retval, int argument_type, ...)ŒOsso.Context÷0œpublic Status
+sÃ8ŒOsso.Rpc÷0
+save_unsaved_data_indÃ8ŒOsso.HWState÷0œbool
+set_application_autosave_callbackÃ128Õ(ApplicationAutosaveCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_application_top_callbackÃ128Õ(ApplicationTopCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_hw_display_event_callbackÃ128Õ(DisplayEventCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_hw_event_callbackÃ128Õ(void* state, HWCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_localeÃ128Õ(string new_locale)ŒOsso.Context÷0œpublic Status
+set_locale_change_notification_callbackÃ128Õ(LocaleChangeCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_mime_callbackÃ128Õ(MimeCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_rpc_callbackÃ128Õ(string service, string object_path, string iface, RpcCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_rpc_default_callbackÃ128Õ(RpcCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+set_rpc_timeoutÃ128Õ(int timeout)ŒOsso.Context÷0œpublic Status
+set_time_notification_callbackÃ128Õ(TimeCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+shutdown_indÃ8ŒOsso.HWState÷0œbool
+sig_device_mode_indÃ8ŒOsso.HWState÷0œDevMode
+state_dataÃ8ŒOsso.State÷0œvoid
+state_readÃ128Õ(ref State state)ŒOsso.Context÷0œpublic Status
+state_sizeÃ8ŒOsso.State÷0œuint32
+state_writeÃ128Õ(ref State state)ŒOsso.Context÷0œpublic Status
+statusbar_send_eventÃ128Õ(string name, int argument1, int argument2, string argument3, out Rpc retval)ŒOsso.Context÷0œpublic Status
+system_inactivity_indÃ8ŒOsso.HWState÷0œbool
+system_note_dialogÃ128Õ(string message, SystemNoteType type, out Rpc retval)ŒOsso.Context÷0œpublic Status
+system_note_infoprintÃ128Õ(string text, out Rpc retval)ŒOsso.Context÷0œpublic Status
+to_boolÃ128Õ()ŒOsso.Rpc÷0œpublic bool
+to_doubleÃ128Õ()ŒOsso.Rpc÷0œpublic double
+to_int32Ã128Õ()ŒOsso.Rpc÷0œpublic int32
+to_stringÃ128Õ()ŒOsso.Rpc÷0œpublic unowned string
+to_uint32Ã128Õ()ŒOsso.Rpc÷0œpublic uint32
+typeÃ8ŒOsso.Rpc÷0œint
+uÃ8ŒOsso.Rpc÷0œuint32
+unset_application_autosave_callbackÃ128Õ(ApplicationAutosaveCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+unset_application_top_callbackÃ128Õ(ApplicationTopCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+unset_hw_event_callbackÃ128Õ(ref HWState state, void* data)ŒOsso.Context÷0œpublic Status
+unset_mime_callbackÃ128Õ()ŒOsso.Context÷0œpublic Status
+unset_mime_callback_fullÃ128Õ(MimeCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+unset_rpc_callbackÃ128Õ(string service, string object_path, string iface, RpcCallback cb, void* data)ŒOsso.Context÷0œpublic Status
+unset_rpc_default_callbackÃ128Õ(RpcCallback cb, void* data)ŒOsso.Context÷0œpublic Status

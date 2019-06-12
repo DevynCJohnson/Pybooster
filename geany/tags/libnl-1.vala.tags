@@ -1,0 +1,40 @@
+# format=tagmanager
+@foreachÌ128Í(Callback cb)ÎNetlink.CacheÖ0Ïpublic void
+AddrCacheÌ1ÎNetlinkÖ0
+AddressÌ1ÎNetlinkÖ0
+AddressÌ128Í()ÎNetlink.AddressÖ0
+CacheÌ1ÎNetlinkÖ0
+CallbackÌ128Í(Object obj)ÎNetlinkÖ0Ïpublic delegate void
+LinkCacheÌ1ÎNetlinkÖ0
+MessageÌ1ÎNetlinkÖ0
+NetlinkÌ256Ö0
+ObjectÌ1ÎNetlinkÖ0
+RouteAddressÌ1ÎNetlinkÖ0
+RouteAddressÌ128Í()ÎNetlink.RouteAddressÖ0
+SocketÌ1ÎNetlinkÖ0
+SocketÌ128Í()ÎNetlink.SocketÖ0
+addr_alloc_cacheÌ128Í()ÎNetlink.SocketÖ0Ïpublic AddrCache
+alloc_nameÌ128Í(string name, out Cache c)ÎNetlink.CacheÖ0Ïpublic int
+build_add_requestÌ128Í(int a, out Message m)ÎNetlink.AddressÖ0Ïpublic int
+build_delete_requestÌ128Í(int a, out Message m)ÎNetlink.AddressÖ0Ïpublic int
+connectÌ128Í(int family)ÎNetlink.SocketÖ0Ïpublic int
+foreach_filterÌ128Í(Object obj, Callback cb)ÎNetlink.CacheÖ0Ïpublic void
+get_binary_addrÌ128Í()ÎNetlink.AddressÖ0Ïpublic void *
+get_familyÌ128Í()ÎNetlink.AddressÖ0Ïpublic int
+get_flagsÌ128Í()ÎNetlink.AddressÖ0
+get_ifindexÌ128Í()ÎNetlink.RouteAddressÖ0Ïpublic int
+get_labelÌ128Í()ÎNetlink.AddressÖ0
+get_localÌ128Í()ÎNetlink.RouteAddressÖ0Ïpublic unowned
+get_prefixlenÌ128Í()ÎNetlink.AddressÖ0Ïpublic int
+get_scopeÌ128Í()ÎNetlink.AddressÖ0Ïpublic int
+link_alloc_cacheÌ128Í()ÎNetlink.SocketÖ0Ïpublic LinkCache
+name2iÌ128Í(string name)ÎNetlink.LinkCacheÖ0Ïpublic int
+putÌ128Í()ÎNetlink.AddressÖ0Ïpublic void
+set_familyÌ128Í(int family)ÎNetlink.AddressÖ0Ïpublic void
+set_flagsÌ128Í(uint flags)ÎNetlink.AddressÖ0Ïpublic void
+set_ifindexÌ128Í(int index )ÎNetlink.RouteAddressÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎNetlink.AddressÖ0Ïpublic int
+set_prefixlenÌ128Í(int len)ÎNetlink.AddressÖ0Ïpublic void
+set_scopeÌ128Í(int scope)ÎNetlink.AddressÖ0Ïpublic void
+to_stringÌ128Í(char[] buf)ÎNetlink.AddressÖ0
+unset_flagsÌ128Í(uint flags)ÎNetlink.AddressÖ0Ïpublic void

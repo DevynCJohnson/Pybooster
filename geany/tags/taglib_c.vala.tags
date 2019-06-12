@@ -1,0 +1,41 @@
+# format=tagmanager
+AudioPropertiesÌ1ÎTagLibÖ0
+EncodingÌ2ÎTagLib.ID3v2Ö0
+FLACÌ4ÎTagLib.FileTypeÖ0
+FileÌ1ÎTagLibÖ0
+FileÌ128Í(string filename)ÎTagLib.FileÖ0
+File.typeÌ128Í(string filename, FileType type)ÎTagLib.FileÖ0
+FileTypeÌ2ÎTagLibÖ0
+ID3v2Ì256Ö0
+Latin1Ì4ÎTagLib.ID3v2.EncodingÖ0
+MPCÌ4ÎTagLib.FileTypeÖ0
+MPEGÌ4ÎTagLib.FileTypeÖ0
+OggFlacÌ4ÎTagLib.FileTypeÖ0
+OggVorbisÌ4ÎTagLib.FileTypeÖ0
+SpeexÌ4ÎTagLib.FileTypeÖ0
+TagÌ1ÎTagLibÖ0
+TagLibÌ256Ö0
+TrueAudioÌ4ÎTagLib.FileTypeÖ0
+UTF16Ì4ÎTagLib.ID3v2.EncodingÖ0
+UTF16BEÌ4ÎTagLib.ID3v2.EncodingÖ0
+UTF8Ì4ÎTagLib.ID3v2.EncodingÖ0
+WavPackÌ4ÎTagLib.FileTypeÖ0
+albumÌ8ÎTagLib.TagÖ0Ïunowned
+artistÌ8ÎTagLib.TagÖ0Ïunowned
+audiopropertiesÌ8ÎTagLib.FileÖ0Ïunowned
+bitrateÌ8ÎTagLib.AudioPropertiesÖ0Ïint
+channelsÌ8ÎTagLib.AudioPropertiesÖ0Ïint
+commentÌ8ÎTagLib.TagÖ0Ïunowned
+free_stringsÌ128Í()ÎTagLib.TagÖ0Ïpublic void
+genreÌ8ÎTagLib.TagÖ0Ïunowned
+is_validÌ128Í()ÎTagLib.FileÖ0Ïpublic bool
+lengthÌ8ÎTagLib.AudioPropertiesÖ0Ïint
+samplerateÌ8ÎTagLib.AudioPropertiesÖ0Ïint
+saveÌ128Í()ÎTagLib.FileÖ0Ïpublic bool
+set_default_text_encodingÌ128Í(Encoding encoding)ÎTagLib.ID3v2Ö0Ïpublic void
+set_string_management_enabledÌ128Í(bool management)ÎTagLibÖ0Ïpublic void
+set_strings_unicodeÌ128Í(bool unicode)ÎTagLibÖ0Ïpublic void
+tagÌ8ÎTagLib.FileÖ0Ïunowned
+titleÌ8ÎTagLib.TagÖ0Ïunowned
+trackÌ8ÎTagLib.TagÖ0
+yearÌ8ÎTagLib.TagÖ0

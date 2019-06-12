@@ -1,0 +1,59 @@
+# format=tagmanager
+AGDIGRAPHÃ4ŒGvc.GraphKind÷0
+AGDIGRAPHSTRICTÃ4ŒGvc.GraphKind÷0
+AGERRÃ4ŒGvc.ErrorLevel÷0
+AGMAXÃ4ŒGvc.ErrorLevel÷0
+AGMETAGRAPHÃ4ŒGvc.GraphKind÷0
+AGPREVÃ4ŒGvc.ErrorLevel÷0
+AGRAPHÃ4ŒGvc.GraphKind÷0
+AGRAPHSTRICTÃ4ŒGvc.GraphKind÷0
+AGWARNÃ4ŒGvc.ErrorLevel÷0
+ContextÃ1ŒGvc÷0
+ContextÃ128Õ()ŒGvc.Context÷0
+EdgeÃ1ŒGvc÷0
+ErrorÃ256÷0
+ErrorLevelÃ2ŒGvc÷0
+GraphÃ1ŒGvc÷0
+GraphÃ128Õ([CCode (type = )] string graph_name, GraphKind kind)ŒGvc.Graph÷0
+GraphKindÃ2ŒGvc÷0
+GvcÃ256÷0
+HtmlStringÃ1ŒGvc÷0
+HtmlStringÃ128Õ(string markup)ŒGvc.HtmlString÷0
+NodeÃ1ŒGvc÷0
+create_edgeÃ128Õ(Node from, Node to)ŒGvc.Graph÷0œpublic Edge
+create_nodeÃ128Õ([CCode (type = )] string node_name)ŒGvc.Graph÷0œpublic Node
+create_subgraphÃ128Õ([CCode (type = )] string? name)ŒGvc.Graph÷0œpublic unowned
+create_subgraph_idÃ128Õ(ulong id)ŒGvc.Graph÷0œpublic Graph
+delete_subgraphÃ128Õ(Graph subgraph)ŒGvc.Graph÷0œpublic int
+errnoÃ8ŒGvc.Error÷0œErrorLevel
+errorÃ128Õ(ErrorLevel level, string fmt, ...)ŒGvc.Error÷0œpublic int
+errorfÃ128Õ(string format, ...)ŒGvc.Error÷0œpublic void
+errorsÃ128Õ()ŒGvc.Error÷0œpublic int
+find_nodeÃ128Õ([CCode (type = )] string node_name)ŒGvc.Graph÷0œpublic Node?
+find_subgraphÃ128Õ([CCode (type = )] string name)ŒGvc.Graph÷0œpublic Graph
+free_layoutÃ128Õ(Graph graph)ŒGvc.Context÷0œpublic int
+get_first_nodeÃ128Õ()ŒGvc.Graph÷0œpublic Node?
+get_first_subgraphÃ128Õ()ŒGvc.Graph÷0œpublic Graph
+get_next_nodeÃ128Õ(Node node)ŒGvc.Graph÷0œpublic Node?
+get_next_subgraphÃ128Õ()ŒGvc.Graph÷0œpublic Graph
+get_parent_graphÃ128Õ()ŒGvc.Graph÷0œpublic Graph
+initÃ128Õ()ŒGvc÷0œpublic void
+initlibÃ128Õ( size_t graphinfo, size_t nodeinfo, size_t edgeinfo)ŒGvc÷0œpublic void
+is_directedÃ128Õ()ŒGvc.Graph÷0œpublic bool
+is_strictÃ128Õ()ŒGvc.Graph÷0œpublic bool
+last_errorÃ128Õ()ŒGvc.Error÷0œpublic string?
+layoutÃ128Õ(Graph graph, [CCode (type = )] string layout_engine)ŒGvc.Context÷0œpublic int
+layout_jobsÃ128Õ(Graph graph)ŒGvc.Context÷0œpublic int
+nameÃ8ŒGvc.Node÷0
+parse_argsÃ128Õ( [CCode (array_length_pos = 0.9)] string[] argv )ŒGvc.Context÷0œpublic int
+readÃ128Õ(GLib.FileStream file)ŒGvc.Graph÷0œpublic Graph
+read_stringÃ128Õ(string str)ŒGvc.Graph÷0œpublic Graph
+renderÃ128Õ(Graph graph, [CCode (type = )] string file_type, GLib.FileStream? file)ŒGvc.Context÷0œpublic int
+render_dataÃ128Õ(Graph graph, [CCode (type = )] string file_type, [CCode (type = )] out uint8[] output_data)ŒGvc.Context÷0œpublic int
+render_filenameÃ128Õ(Graph graph, [CCode (type = )] string file_type, [CCode (type = )] string filename)ŒGvc.Context÷0œpublic int
+render_jobsÃ128Õ(Graph graph)ŒGvc.Context÷0œpublic int
+safe_setÃ128Õ([CCode (type = )] string attribute_name, [CCode (type = )] string attribute_value, [CCode (type = )] string? default_value)ŒGvc.Edge÷0œpublic int
+safe_setÃ128Õ([CCode (type = )] string attribute_name, [CCode (type = )] string attribute_value, [CCode (type = )] string? default_value)ŒGvc.Graph÷0œpublic int
+safe_setÃ128Õ([CCode (type = )] string attribute_name, [CCode (type = )] string attribute_value, [CCode (type = )] string? default_value)ŒGvc.Node÷0œpublic void
+set_errorÃ128Õ(ErrorLevel err)ŒGvc.Error÷0œpublic void
+warningfÃ128Õ(string fmt, ...)ŒGvc.Error÷0œvoid

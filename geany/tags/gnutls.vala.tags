@@ -1,0 +1,924 @@
+# format=tagmanager
+AA_COMPROMISEÃ4ŒGnuTLS.X509.RevocationReasons÷0
+ACCESS_DENIEDÃ4ŒGnuTLS.AlertDescription÷0
+AES_128_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+AES_256_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+AFFILIATION_CHANGEDÃ4ŒGnuTLS.X509.RevocationReasons÷0
+AGAINÃ4ŒGnuTLS.ErrorCode÷0
+ALLOW_ANY_X509_V1_CA_CRTÃ4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+ALLOW_SIGN_RSA_MD2Ã4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+ALLOW_SIGN_RSA_MD5Ã4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+ALLOW_X509_V1_CA_CRTÃ4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+ANONÃ4ŒGnuTLS.CredentialsType÷0
+ANON_DHÃ4ŒGnuTLS.KXAlgorithm÷0
+APPLICATION_ERROR_MAXÃ4ŒGnuTLS.ErrorCode÷0
+APPLICATION_ERROR_MINÃ4ŒGnuTLS.ErrorCode÷0
+ARCFOURÃ4ŒGnuTLS.CipherAlgorithm÷0
+ARCFOUR_128Ã4ŒGnuTLS.CipherAlgorithm÷0
+ARCFOUR_40Ã4ŒGnuTLS.CipherAlgorithm÷0
+ASN1_DER_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_DER_OVERFLOWÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_ELEMENT_NOT_FOUNDÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_GENERIC_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_IDENTIFIER_NOT_FOUNDÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_SYNTAX_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_TAG_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_TAG_IMPLICITÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_TYPE_ANY_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_VALUE_NOT_FOUNDÃ4ŒGnuTLS.ErrorCode÷0
+ASN1_VALUE_NOT_VALIDÃ4ŒGnuTLS.ErrorCode÷0
+AlertDescriptionÃ2ŒGnuTLS÷0
+AlertDescriptionÃ4ŒGnuTLS.ErrorCode÷0
+AlertLevelÃ2ŒGnuTLS÷0
+AllocFunctionÃ128Õ(size_t size)ŒGnuTLS÷0œpublic delegate void *
+AnonClientCredentialsÃ1ŒGnuTLS÷0
+AnonServerCredentialsÃ1ŒGnuTLS÷0
+AvaÃ2048ŒGnuTLS.X509÷0
+BAD_CERTIFICATEÃ4ŒGnuTLS.AlertDescription÷0
+BAD_RECORD_MACÃ4ŒGnuTLS.AlertDescription÷0
+BASE64Ã4ŒGnuTLS.OpenPGP.CertificateFormat÷0
+BASE64_DECODING_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+BASE64_ENCODING_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+BASE64_UNEXPECTED_HEADER_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+CAMELLIA_128_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+CAMELLIA_256_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+CA_COMPROMISEÃ4ŒGnuTLS.X509.RevocationReasons÷0
+CERTIFICATEÃ4ŒGnuTLS.CredentialsType÷0
+CERTIFICATEÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+CERTIFICATE_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+CERTIFICATE_EXPIREDÃ4ŒGnuTLS.AlertDescription÷0
+CERTIFICATE_HOLDÃ4ŒGnuTLS.X509.RevocationReasons÷0
+CERTIFICATE_KEY_MISMATCHÃ4ŒGnuTLS.ErrorCode÷0
+CERTIFICATE_PKTÃ4ŒGnuTLS.HandshakeDescription÷0
+CERTIFICATE_REQUESTÃ4ŒGnuTLS.HandshakeDescription÷0
+CERTIFICATE_REVOKEDÃ4ŒGnuTLS.AlertDescription÷0
+CERTIFICATE_UNKNOWNÃ4ŒGnuTLS.AlertDescription÷0
+CERTIFICATE_UNOBTAINABLEÃ4ŒGnuTLS.AlertDescription÷0
+CERTIFICATE_VERIFYÃ4ŒGnuTLS.HandshakeDescription÷0
+CESSATION_OF_OPERATIONÃ4ŒGnuTLS.X509.RevocationReasons÷0
+CLIENT_HELLOÃ4ŒGnuTLS.HandshakeDescription÷0
+CLIENT_KEY_EXCHANGEÃ4ŒGnuTLS.HandshakeDescription÷0
+CLOSE_NOTIFYÃ4ŒGnuTLS.AlertDescription÷0
+COMPRESSION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+CONSTRAINT_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+CRLÃ1ŒGnuTLS.X509÷0
+CRLÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+CRL_SIGNÃ4ŒGnuTLS.KeyUsage÷0
+CRYPTO_ALREADY_REGISTEREDÃ4ŒGnuTLS.ErrorCode÷0
+CallocFunctionÃ128Õ(size_t count, size_t block_size)ŒGnuTLS÷0œpublic delegate void *
+CertificateÃ1ŒGnuTLS.OpenPGP÷0
+CertificateÃ1ŒGnuTLS.X509÷0
+CertificateCredentialsÃ1ŒGnuTLS÷0
+CertificateFormatÃ2ŒGnuTLS.OpenPGP÷0
+CertificateFormatÃ2ŒGnuTLS.X509÷0
+CertificateImportFlagsÃ2ŒGnuTLS.X509÷0
+CertificatePrintFormatsÃ2ŒGnuTLS÷0
+CertificateRequestÃ2ŒGnuTLS÷0
+CertificateRequestÃ1ŒGnuTLS.X509÷0
+CertificateStatusÃ2ŒGnuTLS÷0
+CertificateTypeÃ2ŒGnuTLS÷0
+CertificateTypeÃ4ŒGnuTLS.CertificateType÷0
+CertificateVerifyFlagsÃ2ŒGnuTLS.X509÷0
+CipherAlgorithmÃ2ŒGnuTLS÷0
+CipherAlgorithmÃ4ŒGnuTLS.CipherAlgorithm÷0
+ClientCertificateRetrieveFunctionÃ128Õ(Session session, Datum[] req_ca_rdn, PKAlgorithm[] pk_algos, out RetrStruct st)ŒGnuTLS÷0œpublic delegate int
+ClientSessionÃ1ŒGnuTLS÷0
+CloseRequestÃ2ŒGnuTLS÷0
+CompressionMethodÃ2ŒGnuTLS÷0
+CompressionMethodÃ4ŒGnuTLS.CompressionMethod÷0
+CredentialsTypeÃ2ŒGnuTLS÷0
+DATA_ENCIPHERMENTÃ4ŒGnuTLS.KeyUsage÷0
+DBRemoveFuncÃ128Õ(void* ptr, Datum key)ŒGnuTLS÷0œpublic delegate int
+DBRetrieveFuncÃ128Õ(void* ptr, Datum key)ŒGnuTLS÷0œpublic delegate Datum
+DBStoreFuncÃ128Õ(void* ptr, Datum key, Datum data)ŒGnuTLS÷0œpublic delegate int
+DB_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+DECIPHER_ONLYÃ4ŒGnuTLS.KeyUsage÷0
+DECODE_ERRORÃ4ŒGnuTLS.AlertDescription÷0
+DECOMPRESSION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+DECOMPRESSION_FAILUREÃ4ŒGnuTLS.AlertDescription÷0
+DECRYPTION_FAILEDÃ4ŒGnuTLS.AlertDescription÷0
+DECRYPTION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+DECRYPT_ERRORÃ4ŒGnuTLS.AlertDescription÷0
+DEFLATEÃ4ŒGnuTLS.CompressionMethod÷0
+DERÃ4ŒGnuTLS.X509.CertificateFormat÷0
+DES_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+DHÃ4ŒGnuTLS.ParamsType÷0
+DHE_DSSÃ4ŒGnuTLS.KXAlgorithm÷0
+DHE_PSKÃ4ŒGnuTLS.KXAlgorithm÷0
+DHE_RSAÃ4ŒGnuTLS.KXAlgorithm÷0
+DHParamsÃ1ŒGnuTLS÷0
+DH_PRIME_UNACCEPTABLEÃ4ŒGnuTLS.ErrorCode÷0
+DIGITAL_SIGNATUREÃ4ŒGnuTLS.KeyUsage÷0
+DISABLE_CA_SIGNÃ4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+DNÃ1ŒGnuTLS.X509÷0
+DNÃ4ŒGnuTLS.X509.SubjectAltName÷0
+DNSÃ4ŒGnuTLS.ServerNameType÷0
+DNSNAMEÃ4ŒGnuTLS.X509.SubjectAltName÷0
+DO_NOT_ALLOW_SAMEÃ4ŒGnuTLS.X509.CertificateVerifyFlags÷0
+DSAÃ4ŒGnuTLS.PKAlgorithm÷0
+DSA_SHA1Ã4ŒGnuTLS.SignAlgorithm÷0
+DatumÃ2048ŒGnuTLS÷0
+DigestAlgorithmÃ2ŒGnuTLS÷0
+EMPTYÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+ENCIPHER_ONLYÃ4ŒGnuTLS.KeyUsage÷0
+ENCRYPTEDÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+ENCRYPTION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+ERROR_IN_FINISHED_PACKETÃ4ŒGnuTLS.ErrorCode÷0
+EXPIREDÃ4ŒGnuTLS.ErrorCode÷0
+EXPORT_RESTRICTIONÃ4ŒGnuTLS.AlertDescription÷0
+ErrorCodeÃ2ŒGnuTLS÷0
+FATALÃ4ŒGnuTLS.AlertLevel÷0
+FATAL_ALERT_RECEIVEDÃ4ŒGnuTLS.ErrorCode÷0
+FILE_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+FINISHEDÃ4ŒGnuTLS.HandshakeDescription÷0
+FULLÃ4ŒGnuTLS.CertificatePrintFormats÷0
+FreeFunctionÃ128Õ(void* ptr)ŒGnuTLS÷0œpublic delegate void
+GOT_APPLICATION_DATAÃ4ŒGnuTLS.ErrorCode÷0
+GnuTLSÃ256÷0
+HANDSHAKE_FAILUREÃ4ŒGnuTLS.AlertDescription÷0
+HANDSHAKE_TOO_LARGEÃ4ŒGnuTLS.ErrorCode÷0
+HASH_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+HELLO_REQUESTÃ4ŒGnuTLS.HandshakeDescription÷0
+HEXÃ4ŒGnuTLS.PSKKeyFlags÷0
+HandshakeDescriptionÃ2ŒGnuTLS÷0
+HandshakePostClientHelloFuncÃ128Õ(Session session)ŒGnuTLS÷0œpublic delegate int
+IAÃ4ŒGnuTLS.CredentialsType÷0
+IA_VERIFY_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+IGNOREÃ4ŒGnuTLS.CertificateRequest÷0
+ILLEGAL_PARAMETERÃ4ŒGnuTLS.AlertDescription÷0
+ILLEGAL_SRP_USERNAMEÃ4ŒGnuTLS.ErrorCode÷0
+INCOMPATIBLE_CRYPTO_LIBRARYÃ4ŒGnuTLS.ErrorCode÷0
+INCOMPATIBLE_LIBTASN1_LIBRARYÃ4ŒGnuTLS.ErrorCode÷0
+INIT_LIBEXTRAÃ4ŒGnuTLS.ErrorCode÷0
+INNER_APPLICATION_FAILUREÃ4ŒGnuTLS.AlertDescription÷0
+INNER_APPLICATION_VERIFICATIONÃ4ŒGnuTLS.AlertDescription÷0
+INSECURE_ALGORITHMÃ4ŒGnuTLS.CertificateStatus÷0
+INSUFFICIENT_CREDENTIALSÃ4ŒGnuTLS.ErrorCode÷0
+INSUFFICIENT_SECURITYÃ4ŒGnuTLS.AlertDescription÷0
+INTERNAL_ERRORÃ4ŒGnuTLS.AlertDescription÷0
+INTERNAL_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+INTERRUPTEDÃ4ŒGnuTLS.ErrorCode÷0
+INVALIDÃ4ŒGnuTLS.CertificateStatus÷0
+INVALID_PASSWORDÃ4ŒGnuTLS.ErrorCode÷0
+INVALID_REQUESTÃ4ŒGnuTLS.ErrorCode÷0
+INVALID_SESSIONÃ4ŒGnuTLS.ErrorCode÷0
+IPADDRESSÃ4ŒGnuTLS.X509.SubjectAltName÷0
+IsSecureFunctionÃ128Õ(void* ptr)ŒGnuTLS÷0œpublic delegate int
+KEY_AGREEMENTÃ4ŒGnuTLS.KeyUsage÷0
+KEY_CERT_SIGNÃ4ŒGnuTLS.KeyUsage÷0
+KEY_COMPROMISEÃ4ŒGnuTLS.X509.RevocationReasons÷0
+KEY_ENCIPHERMENTÃ4ŒGnuTLS.KeyUsage÷0
+KEY_USAGE_VIOLATIONÃ4ŒGnuTLS.ErrorCode÷0
+KP_ANYÃ8ŒGnuTLS.X509÷0
+KP_CODE_SIGNINGÃ8ŒGnuTLS.X509÷0
+KP_EMAIL_PROTECTIONÃ8ŒGnuTLS.X509÷0
+KP_OCSP_SIGNINGÃ8ŒGnuTLS.X509÷0
+KP_TIME_STAMPINGÃ8ŒGnuTLS.X509÷0
+KP_TLS_WWW_CLIENTÃ8ŒGnuTLS.X509÷0
+KP_TLS_WWW_SERVERÃ8ŒGnuTLS.X509÷0
+KXAlgorithmÃ2ŒGnuTLS÷0
+KXAlgorithmÃ4ŒGnuTLS.KXAlgorithm÷0
+KeyUsageÃ2ŒGnuTLS÷0
+KeyringÃ1ŒGnuTLS.OpenPGP÷0
+LARGE_PACKETÃ4ŒGnuTLS.ErrorCode÷0
+LIBRARY_VERSION_MISMATCHÃ4ŒGnuTLS.ErrorCode÷0
+LIST_IMPORT_FAIL_IF_EXCEEDÃ4ŒGnuTLS.X509.CertificateImportFlags÷0
+LZOÃ4ŒGnuTLS.CompressionMethod÷0
+LZO_INIT_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+LogFuncÃ128Õ(int level, string msg)ŒGnuTLS÷0œpublic delegate void
+MAC_VERIFY_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+MAX_ALGORITHM_NUMÃ8ŒGnuTLS÷0œint
+MAX_SESSION_IDÃ8ŒGnuTLS.Session÷0œint
+MD2Ã4ŒGnuTLS.DigestAlgorithm÷0
+MD2Ã4ŒGnuTLS.MacAlgorithm÷0
+MD5Ã4ŒGnuTLS.DigestAlgorithm÷0
+MD5Ã4ŒGnuTLS.MacAlgorithm÷0
+MEMORY_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+MPI_PRINT_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+MPI_SCAN_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+MacAlgorithmÃ2ŒGnuTLS÷0
+MacAlgorithmÃ4ŒGnuTLS.MacAlgorithm÷0
+NON_REPUDIATIONÃ4ŒGnuTLS.KeyUsage÷0
+NO_CERTIFICATE_FOUNDÃ4ŒGnuTLS.ErrorCode÷0
+NO_CIPHER_SUITESÃ4ŒGnuTLS.ErrorCode÷0
+NO_COMPRESSION_ALGORITHMSÃ4ŒGnuTLS.ErrorCode÷0
+NO_RENEGOTIATIONÃ4ŒGnuTLS.AlertDescription÷0
+NO_TEMPORARY_DH_PARAMSÃ4ŒGnuTLS.ErrorCode÷0
+NO_TEMPORARY_RSA_PARAMSÃ4ŒGnuTLS.ErrorCode÷0
+NULLÃ4ŒGnuTLS.CipherAlgorithm÷0
+NULLÃ4ŒGnuTLS.CompressionMethod÷0
+NULLÃ4ŒGnuTLS.DigestAlgorithm÷0
+NULLÃ4ŒGnuTLS.MacAlgorithm÷0
+OID_LDAP_DCÃ8ŒGnuTLS.X509÷0
+OID_LDAP_UIDÃ8ŒGnuTLS.X509÷0
+OID_PKCS9_EMAILÃ8ŒGnuTLS.X509÷0
+OID_PKIX_COUNTRY_OF_CITIZENSHIPÃ8ŒGnuTLS.X509÷0
+OID_PKIX_COUNTRY_OF_RESIDENCEÃ8ŒGnuTLS.X509÷0
+OID_PKIX_DATE_OF_BIRTHÃ8ŒGnuTLS.X509÷0
+OID_PKIX_GENDERÃ8ŒGnuTLS.X509÷0
+OID_PKIX_PLACE_OF_BIRTHÃ8ŒGnuTLS.X509÷0
+OID_X520_COMMON_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_COUNTRY_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_DN_QUALIFIERÃ8ŒGnuTLS.X509÷0
+OID_X520_GENERATION_QUALIFIERÃ8ŒGnuTLS.X509÷0
+OID_X520_GIVEN_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_INITIALSÃ8ŒGnuTLS.X509÷0
+OID_X520_LOCALITY_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_ORGANIZATIONAL_UNIT_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_ORGANIZATION_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_PSEUDONYMÃ8ŒGnuTLS.X509÷0
+OID_X520_STATE_OR_PROVINCE_NAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_SURNAMEÃ8ŒGnuTLS.X509÷0
+OID_X520_TITLEÃ8ŒGnuTLS.X509÷0
+ONELINEÃ4ŒGnuTLS.CertificatePrintFormats÷0
+OPENPGPÃ4ŒGnuTLS.CertificateType÷0
+OPENPGP_FINGERPRINT_UNSUPPORTEDÃ4ŒGnuTLS.ErrorCode÷0
+OPENPGP_GETKEY_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+OPENPGP_KEYRING_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+OPENPGP_SUBKEY_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+OPENPGP_UID_REVOKEDÃ4ŒGnuTLS.ErrorCode÷0
+OTHERNAMEÃ4ŒGnuTLS.X509.SubjectAltName÷0
+OTHERNAME_XMPPÃ4ŒGnuTLS.X509.SubjectAltName÷0
+OpenPGPÃ256÷0
+OprfiCallbackFuncÃ128Õ(Session session, [CCode (array_length_pos = , array_length_type = )] uint8[] in_oprfi, [CCode (array_length_pos = , array_length_type = )] uint8[] out_oprfi)ŒGnuTLS÷0œpublic delegate int
+PEMÃ4ŒGnuTLS.X509.CertificateFormat÷0
+PKAlgorithmÃ2ŒGnuTLS÷0
+PKCS12Ã1ŒGnuTLS.X509÷0
+PKCS12BagÃ1ŒGnuTLS.X509÷0
+PKCS12BagTypeÃ2ŒGnuTLS.X509÷0
+PKCS1_WRONG_PADÃ4ŒGnuTLS.ErrorCode÷0
+PKCS7Ã1ŒGnuTLS.X509÷0
+PKCS8_ENCRYPTED_KEYÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+PKCS8_KEYÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+PKCSEncryptFlagsÃ2ŒGnuTLS.X509÷0
+PK_DECRYPTION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+PK_ENCRYPTION_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+PK_SIGN_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+PK_SIG_VERIFY_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+PLAINÃ4ŒGnuTLS.X509.PKCSEncryptFlags÷0
+PRIVILEGE_WITHDRAWNÃ4ŒGnuTLS.X509.RevocationReasons÷0
+PROTOCOL_VERSIONÃ4ŒGnuTLS.AlertDescription÷0
+PSKÃ4ŒGnuTLS.CredentialsType÷0
+PSKÃ4ŒGnuTLS.KXAlgorithm÷0
+PSKClientCredentialsÃ1ŒGnuTLS÷0
+PSKClientCredentialsFunctionÃ128Õ(Session session, out string username, out Datum key)ŒGnuTLS÷0œpublic delegate int
+PSKKeyFlagsÃ2ŒGnuTLS÷0
+PSKServerCredentialsÃ1ŒGnuTLS÷0
+PSKServerCredentialsFunctionÃ128Õ(Session session, string username, ref Datum key)ŒGnuTLS÷0œpublic delegate int
+PULL_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+PUSH_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+ParamsÃ2048ŒGnuTLS÷0
+ParamsFunctionÃ128Õ(Session session, ParamsType type, Params params)ŒGnuTLS÷0œpublic delegate int
+ParamsTypeÃ2ŒGnuTLS÷0
+PriorityÃ1ŒGnuTLS÷0
+PrivateKeyÃ1ŒGnuTLS.OpenPGP÷0
+PrivateKeyÃ1ŒGnuTLS.X509÷0
+ProtocolÃ2ŒGnuTLS÷0
+ProtocolÃ4ŒGnuTLS.Protocol÷0
+PullFuncÃ128Õ(void* transport_ptr, void* buffer, size_t count)ŒGnuTLS÷0œpublic delegate ssize_t
+PushFuncÃ128Õ(void* transport_ptr, void* buffer, size_t count)ŒGnuTLS÷0œpublic delegate ssize_t
+RANDOM_FAILEDÃ4ŒGnuTLS.ErrorCode÷0
+RAWÃ4ŒGnuTLS.OpenPGP.CertificateFormat÷0
+RAWÃ4ŒGnuTLS.PSKKeyFlags÷0
+RC2_40_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+RDWRÃ4ŒGnuTLS.CloseRequest÷0
+RECEIVED_ILLEGAL_EXTENSIONÃ4ŒGnuTLS.ErrorCode÷0
+RECEIVED_ILLEGAL_PARAMETERÃ4ŒGnuTLS.ErrorCode÷0
+RECORD_LIMIT_REACHEDÃ4ŒGnuTLS.ErrorCode÷0
+RECORD_OVERFLOWÃ4ŒGnuTLS.AlertDescription÷0
+REHANDSHAKEÃ4ŒGnuTLS.ErrorCode÷0
+REQUESTÃ4ŒGnuTLS.CertificateRequest÷0
+REQUESTED_DATA_NOT_AVAILABLEÃ4ŒGnuTLS.ErrorCode÷0
+REQUIREÃ4ŒGnuTLS.CertificateRequest÷0
+REVOKEDÃ4ŒGnuTLS.CertificateStatus÷0
+RFC822NAMEÃ4ŒGnuTLS.X509.SubjectAltName÷0
+RIJNDAEL_128_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+RIJNDAEL_256_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+RIJNDAEL_CBCÃ4ŒGnuTLS.CipherAlgorithm÷0
+RMD160Ã4ŒGnuTLS.DigestAlgorithm÷0
+RMD160Ã4ŒGnuTLS.MacAlgorithm÷0
+RSAÃ4ŒGnuTLS.KXAlgorithm÷0
+RSAÃ4ŒGnuTLS.PKAlgorithm÷0
+RSAParamsÃ1ŒGnuTLS÷0
+RSA_EXPORTÃ4ŒGnuTLS.KXAlgorithm÷0
+RSA_EXPORTÃ4ŒGnuTLS.ParamsType÷0
+RSA_MD2Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_MD5Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_RMD160Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_SHA1Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_SHA224Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_SHA256Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_SHA384Ã4ŒGnuTLS.SignAlgorithm÷0
+RSA_SHA512Ã4ŒGnuTLS.SignAlgorithm÷0
+ReallocFunctionÃ128Õ(void* ptr, size_t new_size)ŒGnuTLS÷0œpublic delegate void *
+RecvKeyFuncÃ128Õ(Session session, uint8[] keyfpr, out Datum key)ŒGnuTLS.OpenPGP÷0œpublic delegate int
+RetrStructÃ2048ŒGnuTLS÷0
+RevocationReasonsÃ2ŒGnuTLS.X509÷0
+SERVER_HELLOÃ4ŒGnuTLS.HandshakeDescription÷0
+SERVER_HELLO_DONEÃ4ŒGnuTLS.HandshakeDescription÷0
+SERVER_KEY_EXCHANGEÃ4ŒGnuTLS.HandshakeDescription÷0
+SHA1Ã4ŒGnuTLS.DigestAlgorithm÷0
+SHA1Ã4ŒGnuTLS.MacAlgorithm÷0
+SHA224Ã4ŒGnuTLS.DigestAlgorithm÷0
+SHA256Ã4ŒGnuTLS.DigestAlgorithm÷0
+SHA256Ã4ŒGnuTLS.MacAlgorithm÷0
+SHA384Ã4ŒGnuTLS.DigestAlgorithm÷0
+SHA384Ã4ŒGnuTLS.MacAlgorithm÷0
+SHA512Ã4ŒGnuTLS.DigestAlgorithm÷0
+SHA512Ã4ŒGnuTLS.MacAlgorithm÷0
+SHORT_MEMORY_BUFFERÃ4ŒGnuTLS.ErrorCode÷0
+SIGNER_NOT_CAÃ4ŒGnuTLS.CertificateStatus÷0
+SIGNER_NOT_FOUNDÃ4ŒGnuTLS.CertificateStatus÷0
+SRPÃ4ŒGnuTLS.CredentialsType÷0
+SRPÃ4ŒGnuTLS.KXAlgorithm÷0
+SRPClientCredentialsÃ1ŒGnuTLS÷0
+SRPClientCredentialsFunctionÃ128Õ(Session session, out string username, out string password)ŒGnuTLS÷0œpublic delegate int
+SRPServerCredentialsÃ1ŒGnuTLS÷0
+SRPServerCredentialsFunctionÃ128Õ(Session session, string username, out Datum salt, out Datum verifier, out Datum generator, out Datum prime)ŒGnuTLS÷0œpublic delegate int
+SRP_DSSÃ4ŒGnuTLS.KXAlgorithm÷0
+SRP_PWD_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+SRP_PWD_PARSING_ERRORÃ4ŒGnuTLS.ErrorCode÷0
+SRP_RSAÃ4ŒGnuTLS.KXAlgorithm÷0
+SSL3Ã4ŒGnuTLS.Protocol÷0
+SSL3_NO_CERTIFICATEÃ4ŒGnuTLS.AlertDescription÷0
+SUCCESSÃ4ŒGnuTLS.ErrorCode÷0
+SUPERSEEDEDÃ4ŒGnuTLS.X509.RevocationReasons÷0
+SUPPLEMENTALÃ4ŒGnuTLS.HandshakeDescription÷0
+ServerCertificateRetrieveFunctionÃ128Õ(Session session, out RetrStruct st)ŒGnuTLS÷0œpublic delegate int
+ServerNameTypeÃ2ŒGnuTLS÷0
+ServerSessionÃ1ŒGnuTLS÷0
+SessionÃ1ŒGnuTLS÷0
+SignAlgorithmÃ2ŒGnuTLS÷0
+SignFuncÃ128Õ(Session session, CertificateType cert_type, ref Datum cert, ref Datum hash, out Datum signature)ŒGnuTLS÷0œpublic delegate int
+SubjectAltNameÃ2ŒGnuTLS.X509÷0
+SupplementalDataFormatTypeÃ2ŒGnuTLS÷0
+TLS1Ã4ŒGnuTLS.Protocol÷0
+TLS1_0Ã4ŒGnuTLS.Protocol÷0
+TLS1_1Ã4ŒGnuTLS.Protocol÷0
+TLS1_2Ã4ŒGnuTLS.Protocol÷0
+TLS_MASTER_SIZEÃ8ŒGnuTLS÷0œint
+TLS_RANDOM_SIZEÃ8ŒGnuTLS÷0œint
+TOO_MANY_EMPTY_PACKETSÃ4ŒGnuTLS.ErrorCode÷0
+UNEXPECTED_HANDSHAKE_PACKETÃ4ŒGnuTLS.ErrorCode÷0
+UNEXPECTED_MESSAGEÃ4ŒGnuTLS.AlertDescription÷0
+UNEXPECTED_PACKETÃ4ŒGnuTLS.ErrorCode÷0
+UNEXPECTED_PACKET_LENGTHÃ4ŒGnuTLS.ErrorCode÷0
+UNIMPLEMENTED_FEATUREÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWNÃ4ŒGnuTLS.CertificateType÷0
+UNKNOWNÃ4ŒGnuTLS.CipherAlgorithm÷0
+UNKNOWNÃ4ŒGnuTLS.CompressionMethod÷0
+UNKNOWNÃ4ŒGnuTLS.KXAlgorithm÷0
+UNKNOWNÃ4ŒGnuTLS.MacAlgorithm÷0
+UNKNOWNÃ4ŒGnuTLS.PKAlgorithm÷0
+UNKNOWNÃ4ŒGnuTLS.Protocol÷0
+UNKNOWNÃ4ŒGnuTLS.SignAlgorithm÷0
+UNKNOWNÃ4ŒGnuTLS.X509.PKCS12BagType÷0
+UNKNOWN_ALGORITHMÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_CAÃ4ŒGnuTLS.AlertDescription÷0
+UNKNOWN_CIPHER_SUITEÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_CIPHER_TYPEÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_COMPRESSION_ALGORITHMÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_HASH_ALGORITHMÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_PKCS_BAG_TYPEÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_PKCS_CONTENT_TYPEÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_PK_ALGORITHMÃ4ŒGnuTLS.ErrorCode÷0
+UNKNOWN_PSK_IDENTITYÃ4ŒGnuTLS.AlertDescription÷0
+UNRECOGNIZED_NAMEÃ4ŒGnuTLS.AlertDescription÷0
+UNSIGNED_FULLÃ4ŒGnuTLS.CertificatePrintFormats÷0
+UNSUPPORTED_CERTIFICATEÃ4ŒGnuTLS.AlertDescription÷0
+UNSUPPORTED_CERTIFICATE_TYPEÃ4ŒGnuTLS.ErrorCode÷0
+UNSUPPORTED_EXTENSIONÃ4ŒGnuTLS.AlertDescription÷0
+UNSUPPORTED_VERSION_PACKETÃ4ŒGnuTLS.ErrorCode÷0
+UNUSEDÃ4ŒGnuTLS.X509.RevocationReasons÷0
+UNWANTED_ALGORITHMÃ4ŒGnuTLS.ErrorCode÷0
+URIÃ4ŒGnuTLS.X509.SubjectAltName÷0
+USER_CANCELEDÃ4ŒGnuTLS.AlertDescription÷0
+USER_MAPPING_DATAÃ4ŒGnuTLS.SupplementalDataFormatType÷0
+USE_PBES2_3DESÃ4ŒGnuTLS.X509.PKCSEncryptFlags÷0
+USE_PKCS12_3DESÃ4ŒGnuTLS.X509.PKCSEncryptFlags÷0
+USE_PKCS12_ARCFOURÃ4ŒGnuTLS.X509.PKCSEncryptFlags÷0
+USE_PKCS12_RC2_40Ã4ŒGnuTLS.X509.PKCSEncryptFlags÷0
+VERSIONÃ8ŒGnuTLS÷0
+VERSION_MAJORÃ8ŒGnuTLS÷0œint
+VERSION_MINORÃ8ŒGnuTLS÷0œint
+VERSION_NUMBERÃ8ŒGnuTLS÷0œint
+VERSION_PATCHÃ8ŒGnuTLS÷0œint
+WARNINGÃ4ŒGnuTLS.AlertLevel÷0
+WARNING_ALERT_RECEIVEDÃ4ŒGnuTLS.ErrorCode÷0
+WARNING_IA_FPHF_RECEIVEDÃ4ŒGnuTLS.ErrorCode÷0
+WARNING_IA_IPHF_RECEIVEDÃ4ŒGnuTLS.ErrorCode÷0
+WRÃ4ŒGnuTLS.CloseRequest÷0
+X509Ã256÷0
+X509Ã4ŒGnuTLS.CertificateType÷0
+X509_UNKNOWN_SANÃ4ŒGnuTLS.ErrorCode÷0
+X509_UNSUPPORTED_ATTRIBUTEÃ4ŒGnuTLS.ErrorCode÷0
+X509_UNSUPPORTED_CRITICAL_EXTENSIONÃ4ŒGnuTLS.ErrorCode÷0
+X509_UNSUPPORTED_OIDÃ4ŒGnuTLS.ErrorCode÷0
+ZLIBÃ4ŒGnuTLS.CompressionMethod÷0
+allocateÃ128Õ(out AnonClientCredentials credentials)ŒGnuTLS.AnonClientCredentials÷0œprivate int
+allocateÃ128Õ(out AnonServerCredentials credentials)ŒGnuTLS.AnonServerCredentials÷0œprivate int
+allocateÃ128Õ(out CertificateCredentials credentials)ŒGnuTLS.CertificateCredentials÷0œprivate int
+allocateÃ128Õ(out PSKClientCredentials sc)ŒGnuTLS.PSKClientCredentials÷0œprivate int
+allocateÃ128Õ(out PSKServerCredentials sc)ŒGnuTLS.PSKServerCredentials÷0œprivate int
+allocateÃ128Õ(out SRPClientCredentials sc)ŒGnuTLS.SRPClientCredentials÷0œprivate int
+allocateÃ128Õ(out SRPServerCredentials sc)ŒGnuTLS.SRPServerCredentials÷0œprivate int
+allow_private_extensionsÃ128Õ(bool allow)ŒGnuTLS.Session÷0œpublic void
+boolÃ4ŒGnuTLS.ErrorCode÷0
+byeÃ128Õ(CloseRequest how)ŒGnuTLS.Session÷0œpublic int
+callocÃ128Õ(size_t count, size_t block_size)ŒGnuTLS÷0œpublic void *
+cert_pgpÃ8ŒGnuTLS.RetrStruct÷0œOpenPGP.Certificate
+cert_x509Ã8ŒGnuTLS.RetrStruct÷0œX509.Certificate
+check_hostnameÃ128Õ(string hostname)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+check_hostnameÃ128Õ(string hostname)ŒGnuTLS.X509.Certificate÷0œpublic bool
+check_idÃ128Õ( uchar* keyid, uint flags)ŒGnuTLS.OpenPGP.Keyring÷0œpublic int
+check_issuerÃ128Õ(Certificate issuer)ŒGnuTLS.X509.CRL÷0œpublic int
+check_issuerÃ128Õ(Certificate issuer)ŒGnuTLS.X509.Certificate÷0œpublic int
+check_pendingÃ128Õ()ŒGnuTLS.Session÷0œpublic size_t
+check_revocationÃ128Õ(CRL[] crl_list)ŒGnuTLS.X509.Certificate÷0œpublic int
+check_versionÃ128Õ(string? req_version)ŒGnuTLS÷0œpublic unowned
+cipher_suite_get_nameÃ128Õ(KXAlgorithm kx, CipherAlgorithm cipher, MacAlgorithm mac)ŒGnuTLS÷0œpublic unowned
+cipher_suite_infoÃ128Õ(size_t index, [CCode (array_length = )] char[] cs_id, out KXAlgorithm kx, out CipherAlgorithm cipher, out MacAlgorithm mac, out Protocol version)ŒGnuTLS÷0œpublic unowned
+clear_credentialsÃ128Õ()ŒGnuTLS.Session÷0œpublic void
+cpyÃ128Õ(DHParams source)ŒGnuTLS.DHParams÷0œprivate int
+cpyÃ128Õ(RSAParams source)ŒGnuTLS.RSAParams÷0œprivate int
+cpyÃ128Õ(PrivateKey source)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+cpy_crl_dist_pointsÃ128Õ(Certificate source)ŒGnuTLS.X509.Certificate÷0œpublic int
+createÃ128Õ()ŒGnuTLS.AnonClientCredentials÷0œpublic AnonClientCredentials
+createÃ128Õ()ŒGnuTLS.AnonServerCredentials÷0œpublic AnonServerCredentials
+createÃ128Õ()ŒGnuTLS.CertificateCredentials÷0œpublic CertificateCredentials
+createÃ128Õ()ŒGnuTLS.ClientSession÷0œpublic ClientSession
+createÃ128Õ()ŒGnuTLS.DHParams÷0œpublic DHParams
+createÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic Certificate
+createÃ128Õ()ŒGnuTLS.OpenPGP.Keyring÷0œpublic Keyring
+createÃ128Õ()ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic PrivateKey
+createÃ128Õ()ŒGnuTLS.PSKClientCredentials÷0œpublic PSKClientCredentials
+createÃ128Õ()ŒGnuTLS.PSKServerCredentials÷0œpublic PSKServerCredentials
+createÃ128Õ(string priority, out ErrorCode err = null, out char* err_pos = null)ŒGnuTLS.Priority÷0œpublic Priority
+createÃ128Õ()ŒGnuTLS.RSAParams÷0œpublic RSAParams
+createÃ128Õ()ŒGnuTLS.SRPClientCredentials÷0œpublic SRPClientCredentials
+createÃ128Õ()ŒGnuTLS.SRPServerCredentials÷0œpublic SRPServerCredentials
+createÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic ServerSession
+createÃ128Õ(int con_end)ŒGnuTLS.Session÷0œprotected Session?
+createÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic CRL
+createÃ128Õ()ŒGnuTLS.X509.Certificate÷0œpublic Certificate
+createÃ128Õ()ŒGnuTLS.X509.CertificateRequest÷0œpublic CertificateRequest
+createÃ128Õ()ŒGnuTLS.X509.DN÷0œpublic DN
+createÃ128Õ()ŒGnuTLS.X509.PKCS12÷0œpublic PKCS12
+createÃ128Õ()ŒGnuTLS.X509.PKCS12Bag÷0œpublic PKCS12Bag
+createÃ128Õ()ŒGnuTLS.X509.PKCS7÷0œpublic PKCS7
+createÃ128Õ()ŒGnuTLS.X509.PrivateKey÷0œpublic PrivateKey
+dataÃ8ŒGnuTLS.Datum÷0œvoid
+db_check_entryÃ128Õ(Datum session_entry)ŒGnuTLS.ServerSession÷0œpublic int
+db_get_ptrÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic void *
+db_remove_sessionÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic void
+db_set_cache_expirationÃ128Õ(int seconds)ŒGnuTLS.ServerSession÷0œpublic void
+db_set_ptrÃ128Õ(void* ptr)ŒGnuTLS.ServerSession÷0œpublic void
+db_set_remove_functionÃ128Õ(DBRemoveFunc func)ŒGnuTLS.ServerSession÷0œpublic void
+db_set_retrieve_functionÃ128Õ(DBRetrieveFunc func)ŒGnuTLS.ServerSession÷0œpublic void
+db_set_store_functionÃ128Õ(DBStoreFunc func)ŒGnuTLS.ServerSession÷0œpublic void
+decryptÃ128Õ(string pass)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+deinitÃ8ŒGnuTLS.Params÷0œbool
+deinit_allÃ8ŒGnuTLS.RetrStruct÷0
+delete_crlÃ128Õ(int index)ŒGnuTLS.X509.PKCS7÷0œpublic int
+delete_crtÃ128Õ(int index)ŒGnuTLS.X509.PKCS7÷0œpublic int
+dh_paramsÃ8ŒGnuTLS.Params÷0œDHParams
+disable_record_paddingÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic void
+disable_sending_x509_rdn_sequenceÃ128Õ(bool disable)ŒGnuTLS.ServerSession÷0œpublic void
+dn_oid_knownÃ128Õ(string oid)ŒGnuTLS.X509.Certificate÷0œpublic bool
+enable_compatibility_modeÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic void
+enable_oprfiÃ128Õ([CCode (array_length_pos = , array_length_type = )] uint8[] data)ŒGnuTLS.ClientSession÷0œpublic void
+enable_oprfiÃ128Õ(OprfiCallbackFunc cb)ŒGnuTLS.ServerSession÷0œpublic void
+encryptÃ128Õ(string pass, PKCSEncryptFlags flags)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+exportÃ128Õ(CertificateFormat format, string password, uint flags, void* output, ref size_t output_size)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.CRL÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.DN÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.PKCS12÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.PKCS7÷0œpublic int
+exportÃ128Õ(CertificateFormat format, void* output, ref size_t output_size)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+export_dsa_rawÃ128Õ(out Datum p, out Datum q, out Datum g, out Datum y, out Datum x)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+export_dsa_rawÃ128Õ(out Datum p, out Datum q, out Datum g, out Datum y, out Datum x)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+export_pkcs1Ã128Õ(X509.CertificateFormat format, void* params_data, ref size_t params_data_size)ŒGnuTLS.RSAParams÷0œpublic int
+export_pkcs3Ã128Õ(X509.CertificateFormat format, void* params_data, ref size_t params_data_size)ŒGnuTLS.DHParams÷0œpublic int
+export_pkcs8Ã128Õ(CertificateFormat format, string password, PKCSEncryptFlags flags, void* output, ref size_t output_size)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+export_rawÃ128Õ( ref Datum prime, ref Datum generator, out uint bits)ŒGnuTLS.DHParams÷0œpublic int
+export_rawÃ128Õ( ref Datum m, ref Datum e, ref Datum d, ref Datum p, ref Datum q, ref Datum u, out uint bits)ŒGnuTLS.RSAParams÷0œpublic int
+export_rsa_rawÃ128Õ(out Datum m, out Datum e, out Datum d, out Datum p, out Datum q, out Datum u)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+export_rsa_rawÃ128Õ(out Datum m, out Datum e, out Datum d, out Datum p, out Datum q, out Datum u)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+export_subkey_dsa_rawÃ128Õ(uint idx, out Datum p, out Datum q, out Datum g, out Datum y, out Datum x)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+export_subkey_rsa_rawÃ128Õ(uint idx, out Datum m, out Datum e, out Datum d, out Datum p, out Datum q, out Datum u)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+fingerprintÃ4ŒGnuTLS.DigestAlgorithm÷0
+fixÃ128Õ()ŒGnuTLS.X509.PrivateKey÷0œpublic int
+freeÃ128Õ(void* ptr)ŒGnuTLS÷0œpublic void
+free_ca_namesÃ128Õ()ŒGnuTLS.CertificateCredentials÷0œpublic void
+free_casÃ128Õ()ŒGnuTLS.CertificateCredentials÷0œpublic void
+free_crlsÃ128Õ()ŒGnuTLS.CertificateCredentials÷0œpublic void
+free_dataÃ128Õ([CCode (array_length = false)] owned uint[] data)ŒGnuTLS÷0œpublic void
+free_keysÃ128Õ()ŒGnuTLS.CertificateCredentials÷0œpublic void
+from_nameÃ4ŒGnuTLS.CertificateType÷0
+from_nameÃ4ŒGnuTLS.CipherAlgorithm÷0
+from_nameÃ4ŒGnuTLS.CompressionMethod÷0
+from_nameÃ4ŒGnuTLS.KXAlgorithm÷0
+from_nameÃ4ŒGnuTLS.MacAlgorithm÷0
+from_nameÃ4ŒGnuTLS.Protocol÷0
+generateÃ128Õ(uint bits)ŒGnuTLS.DHParams÷0œpublic int
+generateÃ128Õ(PKAlgorithm algo, uint bits, uint flags = 0)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+generate2Ã128Õ(uint bits)ŒGnuTLS.RSAParams÷0œpublic int
+generate_macÃ128Õ(string pass)ŒGnuTLS.X509.PKCS12÷0œpublic int
+get_activation_timeÃ128Õ()ŒGnuTLS.X509.Certificate÷0œpublic time_t
+get_attribute_by_oidÃ128Õ(string oid, int index, void* buf, ref size_t buf_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_auth_subkeyÃ128Õ(uchar* keyid, uint flag)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_auth_typeÃ128Õ()ŒGnuTLS.Session÷0œpublic CredentialsType
+get_authority_key_idÃ128Õ(void* ret, ref size_t ret_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_bagÃ128Õ(int index, PKCS12Bag bag)ŒGnuTLS.X509.PKCS12÷0œpublic int
+get_basic_constraintsÃ128Õ(out bool critical, out int ca, out int pathlen)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_ca_statusÃ128Õ(out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_certificateÃ128Õ(int index, uchar* serial, ref size_t serial_size, out time_t t)ŒGnuTLS.X509.CRL÷0œpublic int
+get_certificate_countÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic int
+get_certificate_request_statusÃ128Õ()ŒGnuTLS.ClientSession÷0œpublic int
+get_certificate_typeÃ128Õ()ŒGnuTLS.Session÷0œpublic CertificateType
+get_challenge_passwordÃ128Õ(char* pass, ref size_t pass_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_cipherÃ128Õ()ŒGnuTLS.Session÷0œpublic CipherAlgorithm
+get_client_randomÃ128Õ()ŒGnuTLS.Session÷0œpublic void *
+get_compressionÃ128Õ()ŒGnuTLS.Session÷0œpublic CompressionMethod
+get_countÃ128Õ()ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+get_creation_timeÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic time_t
+get_crl_countÃ128Õ()ŒGnuTLS.X509.PKCS7÷0œpublic int
+get_crl_dist_pointsÃ128Õ(uint seq, void* ret, ref size_t ret_size, out RevocationReasons reason_flags, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_crl_rawÃ128Õ(int index, void* crl, ref size_t crl_size)ŒGnuTLS.X509.PKCS7÷0œpublic int
+get_crtÃ128Õ(uint index, out Certificate cert)ŒGnuTLS.OpenPGP.Keyring÷0œpublic int
+get_crt_countÃ128Õ()ŒGnuTLS.OpenPGP.Keyring÷0œpublic int
+get_crt_countÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic int
+get_crt_countÃ128Õ()ŒGnuTLS.X509.PKCS7÷0œpublic int
+get_crt_rawÃ128Õ(int index, void* certificate, ref size_t certificate_size)ŒGnuTLS.X509.PKCS7÷0œpublic int
+get_crt_serialÃ128Õ(int index, uchar* serial, ref size_t serial_size, out time_t t)ŒGnuTLS.X509.CRL÷0œpublic int
+get_dataÃ128Õ(int index, out Datum data)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+get_dh_groupÃ128Õ(out Datum raw_gen, out Datum raw_prime)ŒGnuTLS.Session÷0œpublic int
+get_dh_prime_bitsÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+get_dh_pubkeyÃ128Õ(out Datum raw_key)ŒGnuTLS.Session÷0œpublic int
+get_dh_secret_bitsÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+get_dnÃ128Õ(char* buf, ref size_t buf_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_dnÃ128Õ(char* buf, ref size_t buf_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_dn_by_oidÃ128Õ(string oid, int index, uint raw_flag, void* buf, ref size_t buf_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_dn_by_oidÃ128Õ(string oid, int index, uint raw_flag, void* buf, ref size_t buf_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_dn_oidÃ128Õ(int index, void* oid, ref size_t oid_size)ŒGnuTLS.X509.CRL÷0œpublic int
+get_dn_oidÃ128Õ(int index, void* oid, ref size_t oid_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_dn_oidÃ128Õ(int index, void* oid, ref size_t oid_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_expiration_timeÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic time_t
+get_expiration_timeÃ128Õ()ŒGnuTLS.X509.Certificate÷0œpublic time_t
+get_extension_by_oidÃ128Õ(string oid, int index, void* buf, ref size_t buf_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_extension_dataÃ128Õ(int index, void* data, ref size_t data_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_extension_infoÃ128Õ(int index, void* oid, ref size_t oid_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_extension_oidÃ128Õ(int index, void* oid, ref size_t oid_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_fingerprintÃ128Õ(void* fpr, ref size_t fpr_size)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_fingerprintÃ128Õ(void* fpr, ref size_t fpr_size)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_fingerprintÃ128Õ(DigestAlgorithm algo, void* buf, ref size_t buf_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_friendly_nameÃ128Õ(int index, out unowned string name)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+get_idÃ128Õ(void* session_id, ref size_t session_id_size)ŒGnuTLS.Session÷0œpublic int
+get_issuerÃ128Õ(out DN dn)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_issuer_dnÃ128Õ(char* buf, ref size_t buf_size)ŒGnuTLS.X509.CRL÷0œpublic int
+get_issuer_dnÃ128Õ(char* buf, ref size_t buf_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_issuer_dn_by_oidÃ128Õ(string oid, int index, uint raw_flag, void* buf, ref size_t buf_size)ŒGnuTLS.X509.CRL÷0œpublic int
+get_issuer_dn_by_oidÃ128Õ(string oid, int index, uint raw_flag, void* buf, ref size_t buf_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_issuer_dn_oidÃ128Õ(int index, void* oid, ref size_t oid_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_key_idÃ128Õ(uchar* keyid)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_key_idÃ128Õ(uchar* keyid)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_key_idÃ128Õ(uint flags, uchar* output, ref size_t output_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_key_idÃ128Õ(int index, out Datum id)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+get_key_idÃ128Õ(uint flags, uchar* output, ref size_t output_size)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+get_key_purpose_oidÃ128Õ(int index, void* oid, ref size_t oid_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_key_sizeÃ4ŒGnuTLS.CipherAlgorithm÷0
+get_key_sizeÃ4ŒGnuTLS.MacAlgorithm÷0
+get_key_usageÃ128Õ(out KeyUsage key_usage)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_key_usageÃ128Õ(out KeyUsage key_usage, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_kxÃ128Õ()ŒGnuTLS.Session÷0œpublic KXAlgorithm
+get_last_alertÃ128Õ()ŒGnuTLS.Session÷0œpublic AlertDescription
+get_last_directionÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+get_last_in_handshakeÃ128Õ()ŒGnuTLS.Session÷0œpublic HandshakeDescription
+get_last_out_handshakeÃ128Õ()ŒGnuTLS.Session÷0œpublic HandshakeDescription
+get_macÃ128Õ()ŒGnuTLS.Session÷0œpublic MacAlgorithm
+get_master_secretÃ128Õ()ŒGnuTLS.Session÷0œpublic void *
+get_max_record_sizeÃ128Õ()ŒGnuTLS.Session÷0œpublic size_t
+get_nameÃ4ŒGnuTLS.AlertDescription÷0
+get_nameÃ4ŒGnuTLS.CertificateType÷0
+get_nameÃ4ŒGnuTLS.CipherAlgorithm÷0
+get_nameÃ4ŒGnuTLS.CompressionMethod÷0
+get_nameÃ4ŒGnuTLS.KXAlgorithm÷0
+get_nameÃ4ŒGnuTLS.MacAlgorithm÷0
+get_nameÃ128Õ(int index, char* buf, ref size_t buf_size)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_nameÃ4ŒGnuTLS.PKAlgorithm÷0
+get_nameÃ4ŒGnuTLS.Protocol÷0
+get_nameÃ4ŒGnuTLS.SignAlgorithm÷0
+get_nameÃ4ŒGnuTLS.SupplementalDataFormatType÷0
+get_next_updateÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic time_t
+get_openpgp_keyringÃ128Õ(out unowned OpenPGP.Keyring keyring)ŒGnuTLS.CertificateCredentials÷0œpublic void
+get_our_certificateÃ128Õ()ŒGnuTLS.Session÷0œpublic unowned
+get_peer_certificatesÃ128Õ()ŒGnuTLS.Session÷0œpublic unowned
+get_peers_dh_public_bitsÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+get_pk_algorithmÃ128Õ(out uint bits)ŒGnuTLS.OpenPGP.Certificate÷0œpublic PKAlgorithm
+get_pk_algorithmÃ128Õ(out uint bits)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic PKAlgorithm
+get_pk_algorithmÃ128Õ(out uint bits)ŒGnuTLS.X509.Certificate÷0œpublic PKAlgorithm
+get_pk_algorithmÃ128Õ(out uint bits)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+get_pk_algorithmÃ128Õ()ŒGnuTLS.X509.PrivateKey÷0œpublic int
+get_pk_dsa_rawÃ128Õ(out Datum p, out Datum q, out Datum g, out Datum y)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_pk_dsa_rawÃ128Õ(out Datum p, out Datum q, out Datum g, out Datum y)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_pk_rsa_rawÃ128Õ(out Datum m, out Datum e)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_pk_rsa_rawÃ128Õ(out Datum modulus, out Datum exponent)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_preferred_key_idÃ128Õ(uchar* keyid)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_preferred_key_idÃ128Õ(uchar* keyid)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_protocol_versionÃ128Õ()ŒGnuTLS.Session÷0œpublic Protocol
+get_proxyÃ128Õ(out bool critical, out int pathlen, [CCode (array_length = )] out char[] policyLanguage, out char[] policy)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_psk_hintÃ128Õ()ŒGnuTLS.ClientSession÷0œpublic unowned string
+get_psk_usernameÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic unowned string
+get_ptrÃ128Õ()ŒGnuTLS.Session÷0œpublic void *
+get_raw_dnÃ128Õ(out unowned Datum start)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_raw_issuer_dnÃ128Õ(out unowned Datum start)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_rdn_avaÃ128Õ(int irdn, int iava, out unowned Ava ava)ŒGnuTLS.X509.DN÷0œpublic int
+get_revoked_statusÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_revoked_statusÃ128Õ()ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_rsa_export_modulus_bitsÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+get_rsa_export_pubkeyÃ128Õ(out Datum exponent, out Datum modulus)ŒGnuTLS.Session÷0œpublic int
+get_serialÃ128Õ(void* result, ref size_t result_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_server_nameÃ128Õ(void* data, out size_t data_length, out ServerNameType type, uint index)ŒGnuTLS.ClientSession÷0œpublic int
+get_server_randomÃ128Õ()ŒGnuTLS.Session÷0œpublic void *
+get_session_dataÃ128Õ(void* session_data, out size_t session_data_size)ŒGnuTLS.ClientSession÷0œpublic int
+get_session_data2Ã128Õ(out Datum data)ŒGnuTLS.ClientSession÷0œpublic int
+get_sign_callbackÃ128Õ()ŒGnuTLS.Session÷0œpublic SignFunc
+get_signatureÃ128Õ(char* sig, ref size_t sig_size)ŒGnuTLS.X509.CRL÷0œpublic int
+get_signatureÃ128Õ(char* sig, ref size_t sig_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_signature_algorithmÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic int
+get_signature_algorithmÃ128Õ()ŒGnuTLS.X509.Certificate÷0œpublic SignAlgorithm
+get_subjectÃ128Õ(out DN dn)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_subject_alt_nameÃ128Õ(uint seq, void* ret, ref size_t ret_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_subject_alt_name2Ã128Õ(uint seq, void* ret, ref size_t ret_size, out SubjectAltName ret_type, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_subject_alt_othername_oidÃ128Õ(uint seq, void* ret, ref size_t ret_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_subject_key_idÃ128Õ(void* ret, ref size_t ret_size, out bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+get_subkey_countÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_countÃ128Õ()ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_subkey_creation_timeÃ128Õ(uint idx)ŒGnuTLS.OpenPGP.Certificate÷0œpublic time_t
+get_subkey_creation_timeÃ128Õ(uint idx)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic time_t
+get_subkey_expiration_timeÃ128Õ(uint idx)ŒGnuTLS.OpenPGP.Certificate÷0œpublic time_t
+get_subkey_expiration_timeÃ128Õ(uint idx)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic time_t
+get_subkey_fingerprintÃ128Õ(uint index, void* fpr, ref size_t fpr_size)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_fingerprintÃ128Õ(uint idx, void* fpr, ref size_t fpr_size)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_subkey_idÃ128Õ(uint idx, uchar* keyid)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_idÃ128Õ(uint idx, uchar* keyid)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_subkey_idxÃ128Õ( uchar* keyid)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_idxÃ128Õ( uchar* keyid)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_subkey_pk_algorithmÃ128Õ(uint idx, out uint bits)ŒGnuTLS.OpenPGP.Certificate÷0œpublic PKAlgorithm
+get_subkey_pk_algorithmÃ128Õ(uint idx, out uint bits)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic PKAlgorithm
+get_subkey_pk_dsa_rawÃ128Õ(uint index, out Datum p, out Datum q, out Datum g, out Datum y)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_pk_rsa_rawÃ128Õ(uint index, out Datum m, out Datum e)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_revoked_statusÃ128Õ(uint idx)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_subkey_revoked_statusÃ128Õ(uint index)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+get_subkey_usageÃ128Õ(uint idx, out KeyUsage key_usage)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_this_updateÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic time_t
+get_typeÃ128Õ(int index)ŒGnuTLS.X509.PKCS12Bag÷0œpublic PKCS12BagType
+get_usernameÃ128Õ()ŒGnuTLS.SRPServerCredentials÷0
+get_versionÃ128Õ()ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+get_versionÃ128Õ()ŒGnuTLS.X509.CRL÷0œpublic int
+get_versionÃ128Õ()ŒGnuTLS.X509.Certificate÷0œpublic int
+get_x509_casÃ128Õ([CCode (array_length_type = )] out unowned X509.Certificate[] x509_ca_list)ŒGnuTLS.CertificateCredentials÷0œpublic void
+get_x509_crlsÃ128Õ([CCode (array_length_type = )] out unowned X509.CRL[] x509_crl_list)ŒGnuTLS.CertificateCredentials÷0œpublic void
+global_deinitÃ128Õ()ŒGnuTLS÷0œpublic void
+global_initÃ128Õ()ŒGnuTLS÷0œpublic int
+handshakeÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+hex2binÃ128Õ(string hex_data, size_t hex_size, void* bin_data, ref size_t bin_size)ŒGnuTLS÷0œpublic int
+hex_decodeÃ128Õ( ref Datum hex_data, [CCode (array_length = )] char[] result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+hex_encodeÃ128Õ( ref Datum data, [CCode (array_length = )] char[] result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.OpenPGP.Keyring÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format, string pass, uint flags)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.X509.CRL÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.X509.Certificate÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+importÃ128Õ(ref Datum data)ŒGnuTLS.X509.DN÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format, uint flags)ŒGnuTLS.X509.PKCS12÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.X509.PKCS7÷0œpublic int
+importÃ128Õ(ref Datum data, CertificateFormat format)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+import_dsa_rawÃ128Õ(ref Datum p, ref Datum q, ref Datum g, ref Datum y, ref Datum x)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+import_pkcs1Ã128Õ( ref Datum pkcs1_params, X509.CertificateFormat format)ŒGnuTLS.RSAParams÷0œpublic int
+import_pkcs3Ã128Õ( ref Datum pkcs3_params, X509.CertificateFormat format)ŒGnuTLS.DHParams÷0œpublic int
+import_pkcs8Ã128Õ(ref Datum data, CertificateFormat format, string? password, PKCSEncryptFlags flags)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+import_rawÃ128Õ( ref Datum prime, ref Datum generator)ŒGnuTLS.DHParams÷0œpublic int
+import_rawÃ128Õ( ref Datum m, ref Datum e, ref Datum d, ref Datum p, ref Datum q, ref Datum u)ŒGnuTLS.RSAParams÷0œpublic int
+import_rsa_rawÃ128Õ(ref Datum m, ref Datum e, ref Datum d, ref Datum p, ref Datum q, ref Datum u)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+initÃ128Õ(out DHParams dh_params)ŒGnuTLS.DHParams÷0œprivate int
+initÃ128Õ(out Certificate crt)ŒGnuTLS.OpenPGP.Certificate÷0œprivate int
+initÃ128Õ(out Keyring keyring)ŒGnuTLS.OpenPGP.Keyring÷0œprivate int
+initÃ128Õ(out PrivateKey key)ŒGnuTLS.OpenPGP.PrivateKey÷0œprivate int
+initÃ128Õ(out Priority self, string priority, out char* err_pos)ŒGnuTLS.Priority÷0œprivate int
+initÃ128Õ(out RSAParams dh_params)ŒGnuTLS.RSAParams÷0œprivate int
+initÃ128Õ(out Session session, int con_end)ŒGnuTLS.Session÷0œprivate int
+initÃ128Õ(out CRL crl)ŒGnuTLS.X509.CRL÷0œprivate int
+initÃ128Õ(out Certificate cert)ŒGnuTLS.X509.Certificate÷0œprivate int
+initÃ128Õ(out CertificateRequest request)ŒGnuTLS.X509.CertificateRequest÷0œprivate int
+initÃ128Õ(out DN dn)ŒGnuTLS.X509.DN÷0œprivate int
+initÃ128Õ(out PKCS12 request)ŒGnuTLS.X509.PKCS12÷0œprivate int
+initÃ128Õ(out PKCS12Bag request)ŒGnuTLS.X509.PKCS12Bag÷0œprivate int
+initÃ128Õ(out PKCS7 pkcs7)ŒGnuTLS.X509.PKCS7÷0œprivate int
+initÃ128Õ(out PrivateKey key)ŒGnuTLS.X509.PrivateKey÷0œprivate int
+is_fatalÃ4ŒGnuTLS.ErrorCode÷0
+is_resumedÃ128Õ()ŒGnuTLS.Session÷0œpublic bool
+key_pgpÃ8ŒGnuTLS.RetrStruct÷0œOpenPGP.PrivateKey
+key_x509Ã8ŒGnuTLS.RetrStruct÷0œX509.PrivateKey
+listÃ4ŒGnuTLS.CertificateType÷0
+listÃ4ŒGnuTLS.CipherAlgorithm÷0
+listÃ4ŒGnuTLS.CompressionMethod÷0
+listÃ4ŒGnuTLS.KXAlgorithm÷0
+listÃ4ŒGnuTLS.MacAlgorithm÷0
+listÃ4ŒGnuTLS.Protocol÷0
+list_verifyÃ128Õ(Certificate[] cert_list, Certificate[] CA_list, Certificate[] CLR_list, CertificateVerifyFlags flags, out CertificateStatus verify)ŒGnuTLS.X509.Certificate÷0œpublic int
+mallocÃ128Õ(size_t size)ŒGnuTLS÷0œpublic void *
+oidÃ8ŒGnuTLS.X509.Ava÷0œuint8
+pem_base64_decodeÃ128Õ(string header, ref Datum b64_data, void* result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+pem_base64_decode_allocÃ128Õ(string header, ref Datum b64_data, out Datum result)ŒGnuTLS÷0œpublic int
+pem_base64_encodeÃ128Õ(string msg, ref Datum data, void* result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+pem_base64_encode_allocÃ128Õ(string msg, ref Datum data, out Datum result)ŒGnuTLS÷0œpublic int
+prfÃ128Õ(Session session, size_t label_size, string label, bool server_random_first, size_t extra_size, void* extra, size_t output_size, void* output)ŒGnuTLS÷0œpublic int
+prf_rawÃ128Õ(Session session, size_t label_size, string label, size_t seed_size, void* seed, size_t output_size, void* output)ŒGnuTLS÷0œpublic int
+printÃ4ŒGnuTLS.ErrorCode÷0
+printÃ128Õ(CertificatePrintFormats format, out Datum output)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+printÃ128Õ(CertificatePrintFormats format, out Datum output)ŒGnuTLS.X509.CRL÷0œpublic int
+printÃ128Õ(CertificatePrintFormats format, out Datum output)ŒGnuTLS.X509.Certificate÷0œpublic int
+psk_netconf_derive_keyÃ128Õ(string password, string psk_identity, string psk_identity_hint, out Datum output_key)ŒGnuTLS÷0œpublic int
+rdn_getÃ128Õ(ref Datum idn, char* buf, ref size_t buf_size)ŒGnuTLS.X509÷0œpublic int
+rdn_get_by_oidÃ128Õ(ref Datum idn, string oid, int index, uint raw_flag, void* buf, ref size_t buf_size)ŒGnuTLS.X509÷0œpublic int
+rdn_get_oidÃ128Õ(ref Datum idn, int index, void* buf, ref size_t buf_size)ŒGnuTLS.X509÷0œpublic int
+reallocÃ128Õ(void* ptr, size_t new_size)ŒGnuTLS÷0œpublic void *
+receiveÃ128Õ(void* buffer, size_t count)ŒGnuTLS.Session÷0œpublic ssize_t
+rehandshakeÃ128Õ()ŒGnuTLS.ServerSession÷0œpublic int
+rsa_paramsÃ8ŒGnuTLS.Params÷0œRSAParams
+secure_mallocÃ128Õ(size_t size)ŒGnuTLS÷0œpublic void *
+sendÃ128Õ(void* buffer, size_t count)ŒGnuTLS.Session÷0œpublic ssize_t
+send_alertÃ128Õ(AlertLevel level, AlertDescription desc)ŒGnuTLS.Session÷0œpublic int
+send_appropriate_alertÃ128Õ(ErrorCode err)ŒGnuTLS.Session÷0œpublic int
+set_activation_timeÃ128Õ(time_t act_time)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_attribute_by_oidÃ128Õ(string oid, void* buf, size_t buf_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+set_authority_key_idÃ128Õ(void* id, size_t id_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_bagÃ128Õ(PKCS12Bag bag)ŒGnuTLS.X509.PKCS12÷0œpublic int
+set_basic_constraintsÃ128Õ(uint ca, int pathLenConstraint)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_ca_statusÃ128Õ(uint ca)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_certificate_requestÃ128Õ(CertificateRequest req)ŒGnuTLS.ServerSession÷0œpublic void
+set_certificate_type_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] CertificateType[] list)ŒGnuTLS.Session÷0œpublic int
+set_challenge_passwordÃ128Õ(string pass)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+set_cipher_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] CipherAlgorithm[] list)ŒGnuTLS.Session÷0œpublic int
+set_client_certificate_retrieve_functionÃ128Õ(ClientCertificateRetrieveFunction func)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_compression_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] CompressionMethod[] list)ŒGnuTLS.Session÷0œpublic int
+set_credentialsÃ128Õ(string username, ref Datum key, PSKKeyFlags format)ŒGnuTLS.PSKClientCredentials÷0œpublic int
+set_credentialsÃ128Õ(string username, string password)ŒGnuTLS.SRPClientCredentials÷0œpublic int
+set_credentialsÃ128Õ(CredentialsType type, void* cred)ŒGnuTLS.Session÷0œpublic int
+set_credentials_fileÃ128Õ(string password_file)ŒGnuTLS.PSKServerCredentials÷0œpublic int
+set_credentials_fileÃ128Õ(string password_file, string password_conf_file)ŒGnuTLS.SRPServerCredentials÷0œpublic int
+set_credentials_functionÃ128Õ(PSKClientCredentialsFunction func)ŒGnuTLS.PSKClientCredentials÷0œpublic void
+set_credentials_functionÃ128Õ(PSKServerCredentialsFunction func)ŒGnuTLS.PSKServerCredentials÷0œpublic void
+set_credentials_functionÃ128Õ(SRPClientCredentialsFunction func)ŒGnuTLS.SRPClientCredentials÷0œpublic void
+set_credentials_functionÃ128Õ(SRPServerCredentialsFunction func)ŒGnuTLS.SRPServerCredentials÷0œpublic void
+set_credentials_hintÃ128Õ(string hint)ŒGnuTLS.PSKServerCredentials÷0œpublic int
+set_crlÃ128Õ(CRL crl)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+set_crlÃ128Õ(CRL crl)ŒGnuTLS.X509.PKCS7÷0œpublic int
+set_crl_dist_pointsÃ128Õ(SubjectAltName type, void* data_string, RevocationReasons reason_flags)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_crl_rawÃ128Õ(ref Datum crt)ŒGnuTLS.X509.PKCS7÷0œpublic int
+set_crqÃ128Õ(CertificateRequest crq)ŒGnuTLS.X509.Certificate÷0œprivate int
+set_crtÃ128Õ(Certificate crt, time_t revocation_time)ŒGnuTLS.X509.CRL÷0œpublic int
+set_crtÃ128Õ(Certificate crt)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+set_crtÃ128Õ(Certificate crt)ŒGnuTLS.X509.PKCS7÷0œpublic int
+set_crt_rawÃ128Õ(ref Datum crt)ŒGnuTLS.X509.PKCS7÷0œpublic int
+set_crt_serialÃ128Õ(void* serial, size_t serial_size, time_t revocation_time)ŒGnuTLS.X509.CRL÷0œpublic int
+set_dataÃ128Õ(PKCS12BagType type, ref Datum data)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+set_default_export_priorityÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+set_default_priorityÃ128Õ()ŒGnuTLS.Session÷0œpublic int
+set_dh_paramsÃ128Õ(DHParams dh_params)ŒGnuTLS.AnonServerCredentials÷0œpublic void
+set_dh_paramsÃ128Õ(DHParams dh_params)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_dh_paramsÃ128Õ(DHParams dh_params)ŒGnuTLS.PSKServerCredentials÷0œpublic void
+set_dh_prime_bitsÃ128Õ(uint bits)ŒGnuTLS.ClientSession÷0œpublic void
+set_dn_by_oidÃ128Õ(string oid, uint raw_flag, void* name, uint name_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_dn_by_oidÃ128Õ(string oid, uint raw_flag, void* name, uint name_size)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+set_errnoÃ128Õ(int err)ŒGnuTLS.Session÷0œpublic void
+set_expiration_timeÃ128Õ(time_t exp_time)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_extension_by_oidÃ128Õ(string oid, void* buf, size_t buf_size, bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_friendly_nameÃ128Õ(int index, string name)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+set_global_errnoÃ128Õ(int err)ŒGnuTLS÷0œpublic void
+set_issuer_dn_by_oidÃ128Õ(string oid, uint raw_flag, void* name, uint name_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_keyÃ128Õ(PrivateKey key)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_keyÃ128Õ(PrivateKey key)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+set_key_idÃ128Õ(int index, ref Datum id)ŒGnuTLS.X509.PKCS12Bag÷0œpublic int
+set_key_purpose_oidÃ128Õ(string oid, bool critical)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_key_usageÃ128Õ(KeyUsage usage)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_kx_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] KXAlgorithm[] list)ŒGnuTLS.Session÷0œpublic int
+set_log_functionÃ128Õ(LogFunc func)ŒGnuTLS÷0œpublic void
+set_log_levelÃ128Õ(int level)ŒGnuTLS÷0œpublic void
+set_lowatÃ128Õ(int num)ŒGnuTLS.Session÷0œpublic void
+set_mac_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] MacAlgorithm[] list)ŒGnuTLS.Session÷0œpublic int
+set_max_handshake_packet_lengthÃ128Õ(size_t max)ŒGnuTLS.ServerSession÷0œpublic void
+set_max_record_sizeÃ128Õ(size_t size)ŒGnuTLS.ClientSession÷0œpublic ssize_t
+set_mem_functionsÃ128Õ(AllocFunction alloc_func, AllocFunction secure_alloc_func, IsSecureFunction is_secure_func, ReallocFunction realloc_func, FreeFunction free_func)ŒGnuTLS÷0œpublic void
+set_next_updateÃ128Õ(time_t exp_time)ŒGnuTLS.X509.CRL÷0œpublic int
+set_openpgp_keyÃ128Õ(OpenPGP.Certificate key, OpenPGP.PrivateKey pkey)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_key_fileÃ128Õ(string certfile, string keyfile, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_key_file2Ã128Õ(string certfile, string keyfile, string keyid, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_key_memÃ128Õ(ref Datum cert, ref Datum key, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_key_mem2Ã128Õ(ref Datum cert, ref Datum key, string keyid, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_keyring_fileÃ128Õ(string file, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_keyring_memÃ128Õ(uchar* data, size_t data_size, OpenPGP.CertificateFormat format)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_openpgp_recv_key_functionÃ128Õ(OpenPGP.RecvKeyFunc func)ŒGnuTLS.ServerSession÷0œpublic void
+set_openpgp_send_certÃ128Õ(bool fingerprint_only)ŒGnuTLS.ClientSession÷0œpublic void
+set_params_functionÃ128Õ(ParamsFunction func)ŒGnuTLS.AnonServerCredentials÷0œpublic void
+set_params_functionÃ128Õ(ParamsFunction func)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_params_functionÃ128Õ(ParamsFunction func)ŒGnuTLS.PSKServerCredentials÷0œpublic void
+set_post_client_hello_functionÃ128Õ(HandshakePostClientHelloFunc func)ŒGnuTLS.ServerSession÷0œpublic void
+set_preferred_key_idÃ128Õ( uchar* keyid)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+set_preferred_key_idÃ128Õ( uchar* keyid)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+set_priorityÃ128Õ(Priority priority)ŒGnuTLS.Session÷0œpublic int
+set_priority_from_stringÃ128Õ(string priority, out unowned string err_pos = null)ŒGnuTLS.Session÷0œpublic int
+set_protocol_priorityÃ128Õ([CCode (array_length = , array_null_terminated = )] Protocol[] list)ŒGnuTLS.Session÷0œpublic int
+set_proxyÃ128Õ(int pathLenConstraint, string policyLanguage, [CCode (array_length_type = )] uint8[] policy)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_proxy_dnÃ128Õ(Certificate eecrt, uint raw_flag, void* name, uint name_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_ptrÃ128Õ(void* ptr)ŒGnuTLS.Session÷0œpublic void
+set_pull_functionÃ128Õ(PullFunc func)ŒGnuTLS.Session÷0œpublic void
+set_push_functionÃ128Õ(PushFunc func)ŒGnuTLS.Session÷0œpublic void
+set_rsa_export_paramsÃ128Õ(RSAParams rsa_params)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_serialÃ128Õ(void* serial, size_t serial_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_server_certificate_retrieve_functionÃ128Õ(ServerCertificateRetrieveFunction func)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_server_nameÃ128Õ(ServerNameType type, void* data, size_t data_length)ŒGnuTLS.ServerSession÷0œpublic int
+set_session_dataÃ128Õ(void* session_data, size_t session_data_size)ŒGnuTLS.ClientSession÷0œpublic int
+set_sign_callbackÃ128Õ(SignFunc func)ŒGnuTLS.Session÷0œpublic void
+set_subject_alternative_nameÃ128Õ(SubjectAltName type, string data_string)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_subject_key_idÃ128Õ(void* id, size_t id_size)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_this_updateÃ128Õ(time_t act_time)ŒGnuTLS.X509.CRL÷0œpublic int
+set_transport_ptrÃ128Õ(void* ptr)ŒGnuTLS.Session÷0œpublic void
+set_transport_ptr2Ã128Õ(void* recv_ptr, void* send_ptr)ŒGnuTLS.Session÷0œpublic void
+set_verify_flagsÃ128Õ(X509.CertificateVerifyFlags flags)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_verify_limitsÃ128Õ(uint max_bits, uint max_depth)ŒGnuTLS.CertificateCredentials÷0œpublic void
+set_versionÃ128Õ(uint version)ŒGnuTLS.X509.CRL÷0œpublic int
+set_versionÃ128Õ(uint version)ŒGnuTLS.X509.Certificate÷0œpublic int
+set_versionÃ128Õ(uint version)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+set_x509_crlÃ128Õ(X509.CRL[] crl_list)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_crl_fileÃ128Õ(string crlfile, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_crl_memÃ128Õ( ref Datum crldata, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_keyÃ128Õ(X509.Certificate[] cert_list, X509.PrivateKey key)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_key_fileÃ128Õ(string certfile, string keyfile, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_key_memÃ128Õ( ref Datum certdata, ref Datum keydata, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_simple_pkcs12_fileÃ128Õ(string pkcs12file, X509.CertificateFormat type, string? password = null)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_trustÃ128Õ(X509.Certificate[] ca_list)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_trust_fileÃ128Õ(string cafile, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+set_x509_trust_memÃ128Õ( ref Datum cadata, X509.CertificateFormat type)ŒGnuTLS.CertificateCredentials÷0œpublic int
+signÃ128Õ(Certificate issuer, PrivateKey issuer_key)ŒGnuTLS.X509.CRL÷0œpublic int
+signÃ128Õ(Certificate issuer, PrivateKey issuer_key)ŒGnuTLS.X509.Certificate÷0œpublic int
+signÃ128Õ(PrivateKey key)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+sign2Ã128Õ(Certificate issuer, PrivateKey issuer_key, DigestAlgorithm algo, uint flags)ŒGnuTLS.X509.CRL÷0œpublic int
+sign2Ã128Õ(Certificate issuer, PrivateKey issuer_key, DigestAlgorithm alg, uint flags)ŒGnuTLS.X509.Certificate÷0œpublic int
+sign2Ã128Õ(PrivateKey key, DigestAlgorithm algo, uint flags)ŒGnuTLS.X509.CertificateRequest÷0œpublic int
+sign_dataÃ128Õ(DigestAlgorithm digest, uint flags, ref Datum data, void* signature, ref size_t signature_size)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+sign_hashÃ128Õ(ref Datum hash, out Datum signature)ŒGnuTLS.OpenPGP.PrivateKey÷0œpublic int
+sign_hashÃ128Õ(ref Datum hash, out Datum signature)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+sizeÃ8ŒGnuTLS.Datum÷0
+srp_1024_group_generatorÃ8ŒGnuTLS÷0œDatum
+srp_1024_group_primeÃ8ŒGnuTLS÷0œDatum
+srp_1536_group_generatorÃ8ŒGnuTLS÷0œDatum
+srp_1536_group_primeÃ8ŒGnuTLS÷0œDatum
+srp_2048_group_generatorÃ8ŒGnuTLS÷0œDatum
+srp_2048_group_primeÃ8ŒGnuTLS÷0œDatum
+srp_base64_decodeÃ128Õ( ref Datum b64_data, [CCode (array_length = false)] uint8[] result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+srp_base64_decode_allocÃ128Õ( ref Datum b64_data, out Datum result)ŒGnuTLS÷0œpublic int
+srp_base64_encodeÃ128Õ( ref Datum data, [CCode (array_length = )] char[] result, ref size_t result_size)ŒGnuTLS÷0œpublic int
+srp_base64_encode_allocÃ128Õ( ref Datum data, out Datum result)ŒGnuTLS÷0œpublic int
+srp_verifierÃ128Õ(string username, string password, ref Datum salt, ref Datum generator, ref Datum prime, out Datum result)ŒGnuTLS÷0œpublic int
+strdupÃ128Õ(string str)ŒGnuTLS÷0
+string?Ã4ŒGnuTLS.AlertDescription÷0
+string?Ã4ŒGnuTLS.CertificateType÷0
+string?Ã4ŒGnuTLS.CipherAlgorithm÷0
+string?Ã4ŒGnuTLS.CompressionMethod÷0
+string?Ã4ŒGnuTLS.KXAlgorithm÷0
+string?Ã4ŒGnuTLS.MacAlgorithm÷0
+string?Ã4ŒGnuTLS.PKAlgorithm÷0
+string?Ã4ŒGnuTLS.Protocol÷0
+string?Ã4ŒGnuTLS.SignAlgorithm÷0
+string?Ã4ŒGnuTLS.SupplementalDataFormatType÷0
+to_alertÃ4ŒGnuTLS.ErrorCode÷0
+to_stringÃ4ŒGnuTLS.ErrorCode÷0
+typeÃ8ŒGnuTLS.Params÷0œParamsType
+typeÃ8ŒGnuTLS.RetrStruct÷0œCertificateType
+unownedÃ4ŒGnuTLS.AlertDescription÷0
+unownedÃ4ŒGnuTLS.CertificateType÷0
+unownedÃ4ŒGnuTLS.CipherAlgorithm÷0
+unownedÃ4ŒGnuTLS.CompressionMethod÷0
+unownedÃ4ŒGnuTLS.ErrorCode÷0
+unownedÃ4ŒGnuTLS.KXAlgorithm÷0
+unownedÃ4ŒGnuTLS.MacAlgorithm÷0
+unownedÃ4ŒGnuTLS.PKAlgorithm÷0
+unownedÃ4ŒGnuTLS.Protocol÷0
+unownedÃ4ŒGnuTLS.SignAlgorithm÷0
+unownedÃ4ŒGnuTLS.SupplementalDataFormatType÷0
+valueÃ8ŒGnuTLS.X509.Ava÷0œuint8
+value_tagÃ8ŒGnuTLS.X509.Ava÷0
+verifyÃ128Õ(Certificate[] ca_list, CertificateVerifyFlags flags, out CertificateStatus verify)ŒGnuTLS.X509.CRL÷0œpublic int
+verifyÃ128Õ(Certificate[] CA_list, CertificateVerifyFlags flags, out CertificateStatus verify)ŒGnuTLS.X509.Certificate÷0œpublic int
+verify_dataÃ128Õ(uint flags, ref Datum data, ref Datum signature)ŒGnuTLS.X509.Certificate÷0œpublic int
+verify_dataÃ128Õ(uint flags, ref Datum data, ref Datum signature)ŒGnuTLS.X509.PrivateKey÷0œpublic int
+verify_macÃ128Õ(string pass)ŒGnuTLS.X509.PKCS12÷0œpublic int
+verify_peer_certificateÃ128Õ(out CertificateStatus status)ŒGnuTLS.Session÷0œpublic int
+verify_ringÃ128Õ(Keyring keyring, uint flags, out CertificateStatus verify)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int
+verify_selfÃ128Õ(uint flags, out CertificateStatus verify)ŒGnuTLS.OpenPGP.Certificate÷0œpublic int

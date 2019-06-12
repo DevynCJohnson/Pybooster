@@ -1,0 +1,300 @@
+# format=tagmanager
+ALLOW_DISKS_WITH_INSUFFICIENT_SPACEÌ4ÎGdu.DiskSelectionWidgetFlagsÖ0
+ALLOW_MSDOS_EXTENDEDÌ4ÎGdu.FormatDialogFlagsÖ0
+ALLOW_MULTIPLEÌ4ÎGdu.DiskSelectionWidgetFlagsÖ0
+AddComponentLinuxMdDialogÌ1ÎGduÖ0
+AddComponentLinuxMdDialogÌ128Í(Gtk.Window parent, Gdu.AddComponentLinuxMdFlags flags, Gdu.LinuxMdDrive linux_md_drive)ÎGdu.AddComponentLinuxMdDialogÖ0
+AddComponentLinuxMdFlagsÌ2ÎGduÖ0
+AddPvLinuxLvm2DialogÌ1ÎGduÖ0
+AddPvLinuxLvm2DialogÌ128Í(Gtk.Window parent, Gdu.LinuxLvm2VolumeGroup vg)ÎGdu.AddPvLinuxLvm2DialogÖ0
+AtaSmartDialogÌ1ÎGduÖ0
+AtaSmartDialogÌ128Í(Gtk.Window parent, Gdu.Drive drive)ÎGdu.AtaSmartDialogÖ0
+ButtonElementÌ1ÎGduÖ0
+ButtonElementÌ128Í(string icon_name, string primary_text, string secondary_text)ÎGdu.ButtonElementÖ0
+ButtonTableÌ1ÎGduÖ0
+ButtonTableÌ128Í(uint num_columns, GLib.GenericArray<Gdu.ButtonElement> elements)ÎGdu.ButtonTableÖ0
+CAN_BE_TOGGLEDÌ4ÎGdu.PoolTreeModelColumnÖ0
+ColorÌ1ÎGduÖ0
+ConfirmationDialogÌ1ÎGduÖ0
+ConfirmationDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, string message, string button_text)ÎGdu.ConfirmationDialogÖ0
+ConfirmationDialog.for_driveÌ128Í(Gtk.Window parent, Gdu.Device device, string message, string button_text)ÎGdu.ConfirmationDialogÖ0
+ConfirmationDialog.for_volumeÌ128Í(Gtk.Window parent, Gdu.Device device, string message, string button_text)ÎGdu.ConfirmationDialogÖ0
+ConnectToServerDialogÌ1ÎGduÖ0
+ConnectToServerDialogÌ128Í(Gtk.Window parent)ÎGdu.ConnectToServerDialogÖ0
+CreateLinuxLvm2VolumeDialogÌ1ÎGduÖ0
+CreateLinuxLvm2VolumeDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, uint64 max_size, Gdu.FormatDialogFlags flags)ÎGdu.CreateLinuxLvm2VolumeDialogÖ0
+CreateLinuxMdDialogÌ1ÎGduÖ0
+CreateLinuxMdDialogÌ128Í(Gtk.Window parent, Gdu.Pool pool)ÎGdu.CreateLinuxMdDialogÖ0
+CreatePartitionDialogÌ1ÎGduÖ0
+CreatePartitionDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, uint64 max_size, Gdu.FormatDialogFlags flags)ÎGdu.CreatePartitionDialogÖ0
+CreatePartitionDialog.for_driveÌ128Í(Gtk.Window parent, Gdu.Device device, uint64 max_size, Gdu.FormatDialogFlags flags)ÎGdu.CreatePartitionDialogÖ0
+CurveÌ1ÎGduÖ0
+DESCRIPTIONÌ4ÎGdu.PoolTreeModelColumnÖ0
+DISK_UTILITY_BUTTONÌ4ÎGdu.FormatDialogFlagsÖ0
+DetailsElementÌ1ÎGduÖ0
+DetailsElementÌ128Í(string heading, string text, string tooltip)ÎGdu.DetailsElementÖ0
+DetailsTableÌ1ÎGduÖ0
+DetailsTableÌ128Í(uint num_columns, GLib.GenericArray<Gdu.DetailsElement> elements)ÎGdu.DetailsTableÖ0
+DialogÌ1ÎGduÖ0
+DialogÌ128Í()ÎGdu.DialogÖ0
+DiskSelectionWidgetÌ1ÎGduÖ0
+DiskSelectionWidgetÌ128Í(Gdu.Pool pool, Gdu.DiskSelectionWidgetFlags flags)ÎGdu.DiskSelectionWidgetÖ0
+DiskSelectionWidgetFlagsÌ2ÎGduÖ0
+DriveBenchmarkDialogÌ1ÎGduÖ0
+DriveBenchmarkDialogÌ128Í(Gtk.Window parent, Gdu.Drive drive)ÎGdu.DriveBenchmarkDialogÖ0
+EXPANSIONÌ4ÎGdu.AddComponentLinuxMdFlagsÖ0
+EditLinuxLvm2DialogÌ1ÎGduÖ0
+EditLinuxLvm2DialogÌ128Í(Gtk.Window parent, Gdu.LinuxLvm2VolumeGroup vg)ÎGdu.EditLinuxLvm2DialogÖ0
+EditLinuxMdDialogÌ1ÎGduÖ0
+EditLinuxMdDialogÌ128Í(Gtk.Window parent, Gdu.LinuxMdDrive linux_md_drive)ÎGdu.EditLinuxMdDialogÖ0
+EditNameDialogÌ1ÎGduÖ0
+EditNameDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, string name, uint name_max_bytes, string message, string entry_mnemonic)ÎGdu.EditNameDialogÖ0
+EditPartitionDialogÌ1ÎGduÖ0
+EditPartitionDialogÌ128Í(Gtk.Window parent, Gdu.Presentable volume)ÎGdu.EditPartitionDialogÖ0
+ErrorDialogÌ1ÎGduÖ0
+ErrorDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, string message, GLib.Error error)ÎGdu.ErrorDialogÖ0
+ErrorDialog.for_driveÌ128Í(Gtk.Window parent, Gdu.Device device, string message, GLib.Error error)ÎGdu.ErrorDialogÖ0
+ErrorDialog.for_volumeÌ128Í(Gtk.Window parent, Gdu.Device device, string message, GLib.Error error)ÎGdu.ErrorDialogÖ0
+FormatDialogÌ1ÎGduÖ0
+FormatDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable, Gdu.FormatDialogFlags flags)ÎGdu.FormatDialogÖ0
+FormatDialog.for_driveÌ128Í(Gtk.Window parent, Gdu.Device device, Gdu.FormatDialogFlags flags)ÎGdu.FormatDialogÖ0
+FormatDialog.for_volumeÌ128Í(Gtk.Window parent, Gdu.Device device, Gdu.FormatDialogFlags flags)ÎGdu.FormatDialogÖ0
+FormatDialogFlagsÌ2ÎGduÖ0
+GduÌ256Ö0
+GraphÌ1ÎGduÖ0
+ICONÌ4ÎGdu.PoolTreeModelColumnÖ0
+NAMEÌ4ÎGdu.PoolTreeModelColumnÖ0
+NONEÌ4ÎGdu.AddComponentLinuxMdFlagsÖ0
+NONEÌ4ÎGdu.DiskSelectionWidgetFlagsÖ0
+NONEÌ4ÎGdu.FormatDialogFlagsÖ0
+NONEÌ4ÎGdu.PoolTreeModelFlagsÖ0
+NONEÌ4ÎGdu.PoolTreeViewFlagsÖ0
+NO_UNALLOCATABLE_DRIVESÌ4ÎGdu.PoolTreeModelFlagsÖ0
+NO_VOLUMESÌ4ÎGdu.PoolTreeModelFlagsÖ0
+PRESENTABLEÌ4ÎGdu.PoolTreeModelColumnÖ0
+PartitionDialogÌ1ÎGduÖ0
+PartitionDialogÌ128Í(Gtk.Window parent, Gdu.Presentable presentable)ÎGdu.PartitionDialogÖ0
+PartitionDialog.for_driveÌ128Í(Gtk.Window parent, Gdu.Device device)ÎGdu.PartitionDialogÖ0
+PoolTreeModelÌ1ÎGduÖ0
+PoolTreeModelÌ128Í(GLib.GenericArray<Gdu.Pool> pools, Gdu.Presentable root, Gdu.PoolTreeModelFlags flags)ÎGdu.PoolTreeModelÖ0
+PoolTreeModelColumnÌ2ÎGduÖ0
+PoolTreeModelFlagsÌ2ÎGduÖ0
+PoolTreeViewÌ1ÎGduÖ0
+PoolTreeViewÌ128Í(Gdu.PoolTreeModel model, Gdu.PoolTreeViewFlags flags)ÎGdu.PoolTreeViewÖ0
+PoolTreeViewFlagsÌ2ÎGduÖ0
+SHOW_TOGGLEÌ4ÎGdu.PoolTreeViewFlagsÖ0
+SIMPLEÌ4ÎGdu.FormatDialogFlagsÖ0
+SPAREÌ4ÎGdu.AddComponentLinuxMdFlagsÖ0
+SampleÌ1ÎGduÖ0
+SizeWidgetÌ1ÎGduÖ0
+SizeWidgetÌ128Í(uint64 size, uint64 min_size, uint64 max_size)ÎGdu.SizeWidgetÖ0
+SpinnerÌ1ÎGduÖ0
+SpinnerÌ128Í()ÎGdu.SpinnerÖ0
+TOGGLEDÌ4ÎGdu.PoolTreeModelColumnÖ0
+TimeLabelÌ1ÎGduÖ0
+TimeLabelÌ128Í(GLib.TimeVal time)ÎGdu.TimeLabelÖ0
+VISIBLEÌ4ÎGdu.PoolTreeModelColumnÖ0
+VPD_NAMEÌ4ÎGdu.PoolTreeModelColumnÖ0
+VolumeGridÌ1ÎGduÖ0
+VolumeGridÌ128Í(Gdu.Drive drive)ÎGdu.VolumeGridÖ0
+action_textÌ8ÎGdu.DetailsElementÖ0
+action_tooltipÌ8ÎGdu.DetailsElementÖ0
+action_uriÌ8ÎGdu.DetailsElementÖ0
+activatedÌ128Í(string uri)ÎGdu.DetailsElementÖ0Ïpublic virtual signal void
+add_spare_button_clickedÌ128Í()ÎGdu.EditLinuxMdDialogÖ0Ïpublic virtual signal void
+addressÌ8ÎGdu.ConnectToServerDialogÖ0
+affirmative_button_mnemonicÌ8ÎGdu.FormatDialogÖ0
+attach_button_clickedÌ128Í(Gdu.Device slave)ÎGdu.EditLinuxMdDialogÖ0Ïpublic virtual signal void
+button_textÌ8ÎGdu.ConfirmationDialogÖ0
+changedÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic virtual signal void
+changedÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic virtual signal void
+changedÌ128Í()ÎGdu.DiskSelectionWidgetÖ0Ïpublic virtual signal void
+changedÌ128Í()ÎGdu.SizeWidgetÖ0Ïpublic virtual signal void
+changedÌ128Í()ÎGdu.VolumeGridÖ0Ïpublic virtual signal void
+clickedÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic virtual signal void
+colorÌ8ÎGdu.SpinnerÖ0
+component_sizeÌ8ÎGdu.CreateLinuxMdDialogÖ0Ïuint64
+component_sizeÌ8ÎGdu.DiskSelectionWidgetÖ0Ïuint64
+driveÌ8ÎGdu.AddPvLinuxLvm2DialogÖ0ÏGdu.Drive
+driveÌ8ÎGdu.VolumeGridÖ0ÏGdu.Drive
+drive_deviceÌ8ÎGdu.DialogÖ0ÏGdu.Device
+drivesÌ8ÎGdu.AddComponentLinuxMdDialogÖ0ÏGLib.GenericArray
+drivesÌ8ÎGdu.CreateLinuxMdDialogÖ0ÏGLib.GenericArray
+elementsÌ8ÎGdu.ButtonTableÖ0ÏGLib.GenericArray
+elementsÌ8ÎGdu.DetailsTableÖ0ÏGLib.GenericArray
+encryptÌ8ÎGdu.FormatDialogÖ0Ïbool
+entry_mnemonicÌ8ÎGdu.EditNameDialogÖ0
+errorÌ8ÎGdu.ErrorDialogÖ0ÏGdu.Error
+expand_button_clickedÌ128Í()ÎGdu.EditLinuxMdDialogÖ0Ïpublic virtual signal void
+flagsÌ8ÎGdu.AddComponentLinuxMdDialogÖ0ÏGdu.AddComponentLinuxMdFlags
+flagsÌ8ÎGdu.DiskSelectionWidgetÖ0ÏGdu.DiskSelectionWidgetFlags
+flagsÌ8ÎGdu.FormatDialogÖ0ÏGdu.FormatDialogFlags
+flagsÌ8ÎGdu.PoolTreeModelÖ0ÏGdu.PoolTreeModelFlags
+flagsÌ8ÎGdu.PoolTreeViewÖ0ÏGdu.PoolTreeViewFlags
+fs_labelÌ8ÎGdu.FormatDialogÖ0
+fs_optionsÌ8ÎGdu.FormatDialogÖ0
+fs_typeÌ8ÎGdu.FormatDialogÖ0
+get_action_textÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_action_tooltipÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_action_uriÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_addressÌ128Í()ÎGdu.ConnectToServerDialogÖ0Ïpublic unowned string
+get_component_sizeÌ128Í()ÎGdu.CreateLinuxMdDialogÖ0Ïpublic uint64
+get_component_sizeÌ128Í()ÎGdu.DiskSelectionWidgetÖ0Ïpublic uint64
+get_deviceÌ128Í()ÎGdu.DialogÖ0Ïpublic unowned
+get_driveÌ128Í()ÎGdu.AddPvLinuxLvm2DialogÖ0Ïpublic unowned
+get_drivesÌ128Í()ÎGdu.AddComponentLinuxMdDialogÖ0Ïpublic unowned
+get_drivesÌ128Í()ÎGdu.CreateLinuxMdDialogÖ0Ïpublic GLib.GenericArray
+get_elementsÌ128Í()ÎGdu.ButtonTableÖ0Ïpublic GLib.GenericArray
+get_elementsÌ128Í()ÎGdu.DetailsTableÖ0Ïpublic GLib.GenericArray
+get_encryptÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic bool
+get_fs_labelÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic unowned string
+get_fs_optionsÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic unowned string
+get_fs_typeÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic unowned string
+get_headingÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_iconÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned
+get_icon_nameÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic unowned string
+get_is_spinningÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic bool
+get_iter_for_presentableÌ128Í(Gdu.Presentable presentable, Gtk.TreeIter out_iter)ÎGdu.PoolTreeModelÖ0Ïpublic bool
+get_largest_segment_for_allÌ128Í()ÎGdu.DiskSelectionWidgetÖ0Ïpublic uint64
+get_largest_segment_for_selectedÌ128Í()ÎGdu.DiskSelectionWidgetÖ0Ïpublic uint64
+get_levelÌ128Í()ÎGdu.CreateLinuxMdDialogÖ0Ïpublic unowned string
+get_max_sizeÌ128Í()ÎGdu.CreateLinuxLvm2VolumeDialogÖ0Ïpublic uint64
+get_max_sizeÌ128Í()ÎGdu.CreatePartitionDialogÖ0Ïpublic uint64
+get_max_sizeÌ128Í()ÎGdu.SizeWidgetÖ0Ïpublic uint64
+get_min_sizeÌ128Í()ÎGdu.SizeWidgetÖ0Ïpublic uint64
+get_num_available_disksÌ128Í()ÎGdu.DiskSelectionWidgetÖ0
+get_num_columnsÌ128Í()ÎGdu.ButtonTableÖ0
+get_num_columnsÌ128Í()ÎGdu.DetailsTableÖ0
+get_partition_flagsÌ128Í()ÎGdu.EditPartitionDialogÖ0Ïpublic unowned string
+get_partition_labelÌ128Í()ÎGdu.EditPartitionDialogÖ0Ïpublic unowned string
+get_partition_typeÌ128Í()ÎGdu.EditPartitionDialogÖ0Ïpublic unowned string
+get_poolÌ128Í()ÎGdu.DialogÖ0Ïpublic unowned
+get_presentableÌ128Í()ÎGdu.DialogÖ0Ïpublic unowned
+get_primary_textÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic unowned string
+get_progressÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic double
+get_schemeÌ128Í()ÎGdu.PartitionDialogÖ0Ïpublic unowned string
+get_secondary_textÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic unowned string
+get_selectedÌ128Í()ÎGdu.VolumeGridÖ0Ïpublic unowned
+get_selected_drivesÌ128Í()ÎGdu.DiskSelectionWidgetÖ0Ïpublic unowned
+get_selected_presentableÌ128Í()ÎGdu.PoolTreeViewÖ0Ïpublic unowned
+get_sizeÌ128Í()ÎGdu.AddComponentLinuxMdDialogÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎGdu.AddPvLinuxLvm2DialogÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎGdu.CreateLinuxLvm2VolumeDialogÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎGdu.CreateLinuxMdDialogÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎGdu.CreatePartitionDialogÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎGdu.SizeWidgetÖ0Ïpublic uint64
+get_stripe_sizeÌ128Í()ÎGdu.CreateLinuxMdDialogÖ0Ïpublic uint64
+get_tableÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic unowned
+get_take_ownershipÌ128Í()ÎGdu.FormatDialogÖ0Ïpublic bool
+get_textÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_timeÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic uint64
+get_tooltipÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned string
+get_user_nameÌ128Í()ÎGdu.ConnectToServerDialogÖ0Ïpublic unowned string
+get_visibleÌ128Í()ÎGdu.ButtonElementÖ0Ïpublic bool
+get_widgetÌ128Í()ÎGdu.DetailsElementÖ0Ïpublic unowned
+headingÌ8ÎGdu.DetailsElementÖ0
+iconÌ8ÎGdu.DetailsElementÖ0ÏGLib.Icon
+icon_nameÌ8ÎGdu.ButtonElementÖ0
+is_drive_ignoredÌ128Í(Gdu.Drive drive)ÎGdu.DiskSelectionWidgetÖ0Ïpublic virtual signal unowned string
+is_spinningÌ8ÎGdu.DetailsElementÖ0Ïbool
+largest_segment_for_allÌ8ÎGdu.DiskSelectionWidgetÖ0Ïuint64
+largest_segment_for_selectedÌ8ÎGdu.DiskSelectionWidgetÖ0Ïuint64
+levelÌ8ÎGdu.CreateLinuxMdDialogÖ0
+linesÌ8ÎGdu.SpinnerÖ0
+max_sizeÌ8ÎGdu.CreateLinuxLvm2VolumeDialogÖ0Ïuint64
+max_sizeÌ8ÎGdu.CreatePartitionDialogÖ0Ïuint64
+max_sizeÌ8ÎGdu.SizeWidgetÖ0Ïuint64
+messageÌ8ÎGdu.ConfirmationDialogÖ0
+messageÌ8ÎGdu.EditNameDialogÖ0
+messageÌ8ÎGdu.ErrorDialogÖ0
+min_sizeÌ8ÎGdu.SizeWidgetÖ0Ïuint64
+nameÌ8ÎGdu.CreateLinuxMdDialogÖ0
+nameÌ8ÎGdu.EditNameDialogÖ0
+name_max_bytesÌ8ÎGdu.EditNameDialogÖ0
+new_button_clickedÌ128Í()ÎGdu.EditLinuxLvm2DialogÖ0Ïpublic virtual signal void
+num_available_disksÌ8ÎGdu.DiskSelectionWidgetÖ0
+num_columnsÌ8ÎGdu.ButtonTableÖ0
+num_columnsÌ8ÎGdu.DetailsTableÖ0
+partition_flagsÌ8ÎGdu.EditPartitionDialogÖ0
+partition_labelÌ8ÎGdu.EditPartitionDialogÖ0
+partition_typeÌ8ÎGdu.EditPartitionDialogÖ0
+poolÌ8ÎGdu.CreateLinuxMdDialogÖ0ÏGdu.Pool
+poolÌ8ÎGdu.DiskSelectionWidgetÖ0ÏGdu.Pool
+pool_tree_modelÌ8ÎGdu.PoolTreeViewÖ0ÏGdu.PoolTreeModel
+poolsÌ8ÎGdu.PoolTreeModelÖ0ÏGLib.GenericArray
+presentableÌ8ÎGdu.DialogÖ0ÏGdu.Presentable
+primary_textÌ8ÎGdu.ButtonElementÖ0
+progressÌ8ÎGdu.DetailsElementÖ0Ïdouble
+remove_button_clickedÌ128Í(string pv_uuid)ÎGdu.EditLinuxLvm2DialogÖ0Ïpublic virtual signal void
+remove_button_clickedÌ128Í(Gdu.Device slave)ÎGdu.EditLinuxMdDialogÖ0Ïpublic virtual signal void
+rootÌ8ÎGdu.PoolTreeModelÖ0ÏGdu.Presentable
+schemeÌ8ÎGdu.PartitionDialogÖ0
+secondary_textÌ8ÎGdu.ButtonElementÖ0
+selectÌ128Í(Gdu.Presentable volume)ÎGdu.VolumeGridÖ0Ïpublic bool
+select_first_presentableÌ128Í()ÎGdu.PoolTreeViewÖ0Ïpublic void
+select_presentableÌ128Í(Gdu.Presentable presentable)ÎGdu.PoolTreeViewÖ0Ïpublic void
+selected_drivesÌ8ÎGdu.DiskSelectionWidgetÖ0ÏGLib.GenericArray
+set_action_textÌ128Í(string action_text)ÎGdu.DetailsElementÖ0Ïpublic void
+set_action_tooltipÌ128Í(string action_tooltip)ÎGdu.DetailsElementÖ0Ïpublic void
+set_action_uriÌ128Í(string action_uri)ÎGdu.DetailsElementÖ0Ïpublic void
+set_component_sizeÌ128Í(uint64 component_size)ÎGdu.DiskSelectionWidgetÖ0Ïpublic void
+set_elementsÌ128Í(GLib.GenericArray<Gdu.ButtonElement> elements)ÎGdu.ButtonTableÖ0Ïpublic void
+set_elementsÌ128Í(GLib.GenericArray<Gdu.DetailsElement> elements)ÎGdu.DetailsTableÖ0Ïpublic void
+set_headingÌ128Í(string heading)ÎGdu.DetailsElementÖ0Ïpublic void
+set_iconÌ128Í(GLib.Icon icon)ÎGdu.DetailsElementÖ0Ïpublic void
+set_icon_nameÌ128Í(string icon_name)ÎGdu.ButtonElementÖ0Ïpublic void
+set_is_spinningÌ128Í(bool is_spinning)ÎGdu.DetailsElementÖ0Ïpublic void
+set_max_sizeÌ128Í(uint64 max_size)ÎGdu.SizeWidgetÖ0Ïpublic void
+set_min_sizeÌ128Í(uint64 min_size)ÎGdu.SizeWidgetÖ0Ïpublic void
+set_num_columnsÌ128Í(uint num_columns)ÎGdu.ButtonTableÖ0Ïpublic void
+set_num_columnsÌ128Í(uint num_columns)ÎGdu.DetailsTableÖ0Ïpublic void
+set_poolsÌ128Í(GLib.GenericArray<Gdu.Pool> pools)ÎGdu.PoolTreeModelÖ0Ïpublic void
+set_primary_textÌ128Í(string primary_text)ÎGdu.ButtonElementÖ0Ïpublic void
+set_progressÌ128Í(double progress)ÎGdu.DetailsElementÖ0Ïpublic void
+set_secondary_textÌ128Í(string primary_text)ÎGdu.ButtonElementÖ0Ïpublic void
+set_sizeÌ128Í(uint64 size)ÎGdu.SizeWidgetÖ0Ïpublic void
+set_textÌ128Í(string text)ÎGdu.DetailsElementÖ0Ïpublic void
+set_timeÌ128Í(uint64 time)ÎGdu.DetailsElementÖ0Ïpublic void
+set_timeÌ128Í(GLib.TimeVal time)ÎGdu.TimeLabelÖ0Ïpublic void
+set_tooltipÌ128Í(string tooltip)ÎGdu.DetailsElementÖ0Ïpublic void
+set_visibleÌ128Í(bool visible)ÎGdu.ButtonElementÖ0Ïpublic void
+set_widgetÌ128Í(Gtk.Widget widget)ÎGdu.DetailsElementÖ0Ïpublic void
+sizeÌ8ÎGdu.AddComponentLinuxMdDialogÖ0Ïuint64
+sizeÌ8ÎGdu.AddPvLinuxLvm2DialogÖ0Ïuint64
+sizeÌ8ÎGdu.CreateLinuxLvm2VolumeDialogÖ0Ïuint64
+sizeÌ8ÎGdu.CreateLinuxMdDialogÖ0Ïuint64
+sizeÌ8ÎGdu.CreatePartitionDialogÖ0Ïuint64
+sizeÌ8ÎGdu.SizeWidgetÖ0Ïuint64
+startÌ128Í()ÎGdu.SpinnerÖ0Ïpublic void
+stopÌ128Í()ÎGdu.SpinnerÖ0Ïpublic void
+stripe_sizeÌ8ÎGdu.CreateLinuxMdDialogÖ0Ïuint64
+take_ownershipÌ8ÎGdu.FormatDialogÖ0Ïbool
+textÌ8ÎGdu.DetailsElementÖ0
+timeÌ8ÎGdu.DetailsElementÖ0Ïuint64
+timeÌ8ÎGdu.TimeLabelÖ0ÏGLib.TimeVal
+tooltipÌ8ÎGdu.DetailsElementÖ0
+user_nameÌ8ÎGdu.ConnectToServerDialogÖ0
+util_delete_confirmation_dialogÌ128Í(Gtk.Widget parent_window, string title, string primary_text, string secondary_text, string affirmative_action_button_mnemonic)ÎGduÖ0Ïpublic bool
+util_dialog_ask_for_new_secretÌ128Í(Gtk.Widget parent_window, bool save_in_keyring, bool save_in_keyring_session)ÎGduÖ0Ïpublic unowned string
+util_dialog_ask_for_secretÌ128Í(Gtk.Widget parent_window, Gdu.Presentable presentable, bool bypass_keyring, bool indicate_wrong_passphrase, bool asked_user)ÎGduÖ0Ïpublic unowned string
+util_dialog_change_secretÌ128Í(Gtk.Widget parent_window, Gdu.Presentable presentable, out unowned string old_secret, out unowned string new_secret, bool save_in_keyring, bool save_in_keyring_session, bool bypass_keyring, bool indicate_wrong_passphrase)ÎGduÖ0Ïpublic bool
+util_dialog_show_filesystem_busyÌ128Í(Gtk.Widget parent_window, Gdu.Presentable presentable)ÎGduÖ0Ïpublic bool
+util_fstype_combo_box_createÌ128Í(Gdu.Pool pool, string include_extended_partitions_for_scheme)ÎGduÖ0Ïpublic unowned
+util_fstype_combo_box_get_selectedÌ128Í(Gtk.Widget combo_box)ÎGduÖ0Ïpublic unowned string
+util_fstype_combo_box_rebuildÌ128Í(Gtk.Widget combo_box, Gdu.Pool pool, string include_extended_partitions_for_scheme)ÎGduÖ0Ïpublic void
+util_fstype_combo_box_selectÌ128Í(Gtk.Widget combo_box, string fstype)ÎGduÖ0Ïpublic bool
+util_fstype_combo_box_set_desc_labelÌ128Í(Gtk.Widget combo_box, Gtk.Widget desc_label)ÎGduÖ0Ïpublic void
+util_get_mix_colorÌ128Í(Gtk.Widget widget, Gtk.StateType state, string color_buf, size_t color_buf_size)ÎGduÖ0Ïpublic void
+util_get_pixbuf_for_presentableÌ128Í(Gdu.Presentable presentable, Gtk.IconSize size)ÎGduÖ0Ïpublic unowned
+util_get_pixbuf_for_presentable_at_pixel_sizeÌ128Í(Gdu.Presentable presentable, int pixel_size)ÎGduÖ0Ïpublic unowned
+util_part_table_type_combo_box_createÌ128Í()ÎGduÖ0Ïpublic unowned
+util_part_table_type_combo_box_get_selectedÌ128Í(Gtk.Widget combo_box)ÎGduÖ0Ïpublic unowned string
+util_part_table_type_combo_box_selectÌ128Í(Gtk.Widget combo_box, string part_table_type)ÎGduÖ0Ïpublic bool
+util_part_table_type_combo_box_set_desc_labelÌ128Í(Gtk.Widget combo_box, Gtk.Widget desc_label)ÎGduÖ0Ïpublic void
+util_part_type_combo_box_createÌ128Í(string part_scheme)ÎGduÖ0Ïpublic unowned
+util_part_type_combo_box_get_selectedÌ128Í(Gtk.Widget combo_box)ÎGduÖ0Ïpublic unowned string
+util_part_type_combo_box_rebuildÌ128Í(Gtk.Widget combo_box, string part_scheme)ÎGduÖ0Ïpublic void
+util_part_type_combo_box_selectÌ128Í(Gtk.Widget combo_box, string part_type)ÎGduÖ0Ïpublic bool
+visibleÌ8ÎGdu.ButtonElementÖ0Ïbool
+volume_deviceÌ8ÎGdu.DialogÖ0ÏGdu.Device
+widgetÌ8ÎGdu.DetailsElementÖ0ÏGtk.Widget

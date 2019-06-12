@@ -1,0 +1,1935 @@
+# format=tagmanager
+@deleteÃ128Õ()ŒGLib.AppInfo÷0œpublic bool
+@deleteÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+@getÃ128Õ(GLib.BusType bus_type, GLib.Cancellable? cancellable = null)ŒGLib.Bus÷0œpublic async
+@getÃ128Õ(string key, string format, ...)ŒGLib.Settings÷0œpublic void
+@getÃ128Õ()ŒGLib.VolumeMonitor÷0œpublic GLib.VolumeMonitor
+@lockÃ128Õ()ŒGLib.DBusMessage÷0œpublic void
+@newÃ128Õ(GLib.Type object_type, GLib.Cancellable? cancellable, ...)ŒGLib.Initable÷0œpublic void *
+@newÃ128Õ(GLib.IOStream base_io_stream, GLib.SocketConnectable server_identity)ŒGLib.TlsClientConnection÷0œpublic unowned
+@newÃ128Õ(GLib.IOStream base_io_stream, GLib.TlsCertificate certificate)ŒGLib.TlsServerConnection÷0œpublic unowned
+@setÃ128Õ(string key, string format, ...)ŒGLib.Settings÷0œpublic bool
+@signalÃ128Õ(string path, string interface_, string @signal)ŒGLib.DBusMessage÷0œpublic DBusMessage.
+ABORTEDÃ4ŒGLib.MountOperationResult÷0
+ABSTRACTÃ4ŒGLib.UnixSocketAddressType÷0
+ABSTRACT_PADDEDÃ4ŒGLib.UnixSocketAddressType÷0
+ACCESS_DENIEDÃ4ŒGLib.DBusError÷0
+ADDRESS_IN_USEÃ4ŒGLib.DBusError÷0
+ADDRESS_IN_USEÃ4ŒGLib.IOError÷0
+ADT_AUDIT_DATA_UNKNOWNÃ4ŒGLib.DBusError÷0
+ALLOW_REPLACEMENTÃ4ŒGLib.BusNameOwnerFlags÷0
+ALL_METADATAÃ4ŒGLib.FileCopyFlags÷0
+ALREADY_MOUNTEDÃ4ŒGLib.IOError÷0
+ANONYMOUSÃ4ŒGLib.UnixSocketAddressType÷0
+ANONYMOUS_SUPPORTEDÃ4ŒGLib.AskPasswordFlags÷0
+ANYÃ4ŒGLib.DataStreamNewlineType÷0
+ATTRIBUTE_CHANGEDÃ4ŒGLib.FileMonitorEvent÷0
+AUTHENTICATION_ALLOW_ANONYMOUSÃ4ŒGLib.DBusConnectionFlags÷0
+AUTHENTICATION_ALLOW_ANONYMOUSÃ4ŒGLib.DBusServerFlags÷0
+AUTHENTICATION_CLIENTÃ4ŒGLib.DBusConnectionFlags÷0
+AUTHENTICATION_SERVERÃ4ŒGLib.DBusConnectionFlags÷0
+AUTH_FAILEDÃ4ŒGLib.DBusError÷0
+AUTO_STARTÃ4ŒGLib.BusNameWatcherFlags÷0
+ActionÃ32ŒGLib÷0
+ActionGroupÃ32ŒGLib÷0
+AppInfoÃ32ŒGLib÷0
+AppInfoCreateFlagsÃ2ŒGLib÷0
+AppLaunchContextÃ1ŒGLib÷0
+AppLaunchContextÃ128Õ()ŒGLib.AppLaunchContext÷0
+ApplicationÃ1ŒGLib÷0
+ApplicationÃ128Õ(string application_id, GLib.ApplicationFlags flags)ŒGLib.Application÷0
+ApplicationCommandLineÃ1ŒGLib÷0
+ApplicationCommandLineÃ128Õ()ŒGLib.ApplicationCommandLine÷0
+ApplicationFlagsÃ2ŒGLib÷0
+AskPasswordFlagsÃ2ŒGLib÷0
+AsyncInitableÃ32ŒGLib÷0
+AsyncReadyCallbackÃ128Õ(GLib.Object? source_object, GLib.AsyncResult res)ŒGLib÷0œpublic delegate void
+AsyncResultÃ32ŒGLib÷0
+BACKUPÃ4ŒGLib.FileCopyFlags÷0
+BAD_ADDRESSÃ4ŒGLib.DBusError÷0
+BAD_CERTIFICATEÃ4ŒGLib.TlsError÷0
+BAD_IDENTITYÃ4ŒGLib.TlsCertificateFlags÷0
+BIG_ENDIANÃ4ŒGLib.DBusMessageByteOrder÷0
+BIG_ENDIANÃ4ŒGLib.DataStreamByteOrder÷0
+BOOLEANÃ4ŒGLib.FileAttributeType÷0
+BUSYÃ4ŒGLib.IOError÷0
+BYTE_STRINGÃ4ŒGLib.FileAttributeType÷0
+BufferedInputStreamÃ1ŒGLib÷0
+BufferedInputStreamÃ128Õ(GLib.InputStream base_stream)ŒGLib.BufferedInputStream÷0
+BufferedInputStream.sizedÃ128Õ(GLib.InputStream base_stream, size_t size)ŒGLib.BufferedInputStream÷0
+BufferedOutputStreamÃ1ŒGLib÷0
+BufferedOutputStreamÃ128Õ(GLib.OutputStream base_stream)ŒGLib.BufferedOutputStream÷0
+BufferedOutputStream.sizedÃ128Õ(GLib.OutputStream base_stream, size_t size)ŒGLib.BufferedOutputStream÷0
+BusÃ256÷0
+BusAcquiredCallbackÃ128Õ(GLib.DBusConnection connection, string name)ŒGLib÷0œpublic delegate void
+BusNameAcquiredCallbackÃ128Õ(GLib.DBusConnection connection, string name)ŒGLib÷0œpublic delegate void
+BusNameAppearedCallbackÃ128Õ(GLib.DBusConnection connection, string name, string name_owner)ŒGLib÷0œpublic delegate void
+BusNameLostCallbackÃ128Õ(GLib.DBusConnection connection, string name)ŒGLib÷0œpublic delegate void
+BusNameOwnerFlagsÃ2ŒGLib÷0
+BusNameVanishedCallbackÃ128Õ(GLib.DBusConnection connection, string name)ŒGLib÷0œpublic delegate void
+BusNameWatcherFlagsÃ2ŒGLib÷0
+BusTypeÃ2ŒGLib÷0
+CANCELLEDÃ4ŒGLib.IOError÷0
+CANT_CREATE_BACKUPÃ4ŒGLib.IOError÷0
+CERTIFICATE_REQUIREDÃ4ŒGLib.TlsError÷0
+CHANGEDÃ4ŒGLib.FileMonitorEvent÷0
+CHANGES_DONE_HINTÃ4ŒGLib.FileMonitorEvent÷0
+CLOSEDÃ4ŒGLib.IOError÷0
+CLOSE_SOURCEÃ4ŒGLib.OutputStreamSpliceFlags÷0
+CLOSE_STREAM1Ã4ŒGLib.IOStreamSpliceFlags÷0
+CLOSE_STREAM2Ã4ŒGLib.IOStreamSpliceFlags÷0
+CLOSE_TARGETÃ4ŒGLib.OutputStreamSpliceFlags÷0
+CONNECTION_REFUSEDÃ4ŒGLib.IOError÷0
+CONVERTEDÃ4ŒGLib.ConverterResult÷0
+COPY_WHEN_MOVEDÃ4ŒGLib.FileAttributeInfoFlags÷0
+COPY_WITH_FILEÃ4ŒGLib.FileAttributeInfoFlags÷0
+CRÃ4ŒGLib.DataStreamNewlineType÷0
+CREATEDÃ4ŒGLib.FileMonitorEvent÷0
+CR_LFÃ4ŒGLib.DataStreamNewlineType÷0
+CancellableÃ1ŒGLib÷0
+CancellableÃ128Õ()ŒGLib.Cancellable÷0
+CancellableSourceFuncÃ128Õ(GLib.Cancellable cancellable)ŒGLib÷0œpublic delegate bool
+CharsetConverterÃ1ŒGLib÷0
+CharsetConverterÃ128Õ(string to_charset, string from_charset)ŒGLib.CharsetConverter÷0
+ContentTypeÃ256÷0
+ConverterÃ32ŒGLib÷0
+ConverterFlagsÃ2ŒGLib÷0
+ConverterInputStreamÃ1ŒGLib÷0
+ConverterInputStreamÃ128Õ(GLib.InputStream base_stream, GLib.Converter converter)ŒGLib.ConverterInputStream÷0
+ConverterOutputStreamÃ1ŒGLib÷0
+ConverterOutputStreamÃ128Õ(GLib.OutputStream base_stream, GLib.Converter converter)ŒGLib.ConverterOutputStream÷0
+ConverterResultÃ2ŒGLib÷0
+CredentialsÃ1ŒGLib÷0
+CredentialsÃ128Õ()ŒGLib.Credentials÷0
+CredentialsClassÃ1ŒGLib÷0
+CredentialsTypeÃ2ŒGLib÷0
+DATAGRAMÃ4ŒGLib.SocketType÷0
+DBUS_ERRORÃ4ŒGLib.IOError÷0
+DBusAnnotationInfoÃ1ŒGLib÷0
+DBusArgInfoÃ1ŒGLib÷0
+DBusAuthObserverÃ1ŒGLib÷0
+DBusAuthObserverÃ128Õ()ŒGLib.DBusAuthObserver÷0
+DBusCallFlagsÃ2ŒGLib÷0
+DBusCapabilityFlagsÃ2ŒGLib÷0
+DBusConnectionÃ1ŒGLib÷0
+DBusConnectionÃ128Õ(GLib.IOStream stream, string guid, GLib.DBusConnectionFlags flags, GLib.DBusAuthObserver? observer = null, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+DBusConnection.for_addressÃ128Õ(string address, GLib.DBusConnectionFlags flags, GLib.DBusAuthObserver? observer = null, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+DBusConnection.for_address_syncÃ128Õ(string address, GLib.DBusConnectionFlags flags, GLib.DBusAuthObserver? observer = null, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0
+DBusConnection.syncÃ128Õ(GLib.IOStream stream, string guid, GLib.DBusConnectionFlags flags, GLib.DBusAuthObserver? observer = null, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0
+DBusConnectionFlagsÃ2ŒGLib÷0
+DBusErrorÃ2ŒGLib÷0
+DBusErrorEntryÃ1ŒGLib÷0
+DBusInterfaceGetPropertyFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path, string interface_name, string property_name, GLib.Error error)ŒGLib÷0œpublic delegate unowned
+DBusInterfaceInfoÃ1ŒGLib÷0
+DBusInterfaceMethodCallFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path, string interface_name, string method_name, GLib.Variant parameters, GLib.DBusMethodInvocation invocation)ŒGLib÷0œpublic delegate void
+DBusInterfaceSetPropertyFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path, string interface_name, string property_name, GLib.Variant value, GLib.Error error)ŒGLib÷0œpublic delegate bool
+DBusInterfaceVTableÃ1ŒGLib÷0
+DBusMessageÃ1ŒGLib÷0
+DBusMessageÃ128Õ()ŒGLib.DBusMessage÷0
+DBusMessage.from_blobÃ128Õ(uchar[] blob, size_t blob_len, GLib.DBusCapabilityFlags capabilities)ŒGLib.DBusMessage÷0
+DBusMessage.method_callÃ128Õ(string name, string path, string interface_, string method)ŒGLib.DBusMessage÷0
+DBusMessage.method_errorÃ128Õ(GLib.DBusMessage method_call_message, string error_name, string error_message_format)ŒGLib.DBusMessage÷0
+DBusMessage.method_error_literalÃ128Õ(GLib.DBusMessage method_call_message, string error_name, string error_message)ŒGLib.DBusMessage÷0
+DBusMessage.method_error_valistÃ128Õ(GLib.DBusMessage method_call_message, string error_name, string error_message_format, void* var_args)ŒGLib.DBusMessage÷0
+DBusMessage.method_replyÃ128Õ(GLib.DBusMessage method_call_message)ŒGLib.DBusMessage÷0
+DBusMessageByteOrderÃ2ŒGLib÷0
+DBusMessageFilterFunctionÃ128Õ(GLib.DBusConnection connection, GLib.DBusMessage message, bool incoming)ŒGLib÷0œpublic delegate unowned
+DBusMessageFlagsÃ2ŒGLib÷0
+DBusMessageHeaderFieldÃ2ŒGLib÷0
+DBusMessageTypeÃ2ŒGLib÷0
+DBusMethodInfoÃ1ŒGLib÷0
+DBusMethodInvocationÃ1ŒGLib÷0
+DBusMethodInvocationÃ128Õ()ŒGLib.DBusMethodInvocation÷0
+DBusNodeInfoÃ1ŒGLib÷0
+DBusNodeInfo.for_xmlÃ128Õ(string xml_data)ŒGLib.DBusNodeInfo÷0
+DBusPropertyInfoÃ1ŒGLib÷0
+DBusPropertyInfoFlagsÃ2ŒGLib÷0
+DBusProxyÃ1ŒGLib÷0
+DBusProxyÃ128Õ(GLib.DBusConnection connection, GLib.DBusProxyFlags flags, GLib.DBusInterfaceInfo? info, string name, string object_path, string interface_name, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0œpublic async
+DBusProxy.for_busÃ128Õ(GLib.BusType bus_type, GLib.DBusProxyFlags flags, GLib.DBusInterfaceInfo? info, string name, string object_path, string interface_name, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0œpublic async
+DBusProxy.for_bus_syncÃ128Õ(GLib.BusType bus_type, GLib.DBusProxyFlags flags, GLib.DBusInterfaceInfo? info, string name, string object_path, string interface_name, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0
+DBusProxy.syncÃ128Õ(GLib.DBusConnection connection, GLib.DBusProxyFlags flags, GLib.DBusInterfaceInfo? info, string name, string object_path, string interface_name, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0
+DBusProxyFlagsÃ2ŒGLib÷0
+DBusSendMessageFlagsÃ2ŒGLib÷0
+DBusServerÃ1ŒGLib÷0
+DBusServerÃ128Õ()ŒGLib.DBusServer÷0
+DBusServer.syncÃ128Õ(string address, GLib.DBusServerFlags flags, string guid, GLib.DBusAuthObserver? observer = null, GLib.Cancellable? cancellable = null)ŒGLib.DBusServer÷0
+DBusServerFlagsÃ2ŒGLib÷0
+DBusSignalCallbackÃ128Õ(GLib.DBusConnection connection, string sender_name, string object_path, string interface_name, string signal_name, GLib.Variant parameters)ŒGLib÷0œpublic delegate void
+DBusSignalFlagsÃ2ŒGLib÷0
+DBusSignalInfoÃ1ŒGLib÷0
+DBusSubtreeDispatchFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path, string interface_name, string node, void* out_user_data)ŒGLib÷0œpublic delegate unowned
+DBusSubtreeEnumerateFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path)ŒGLib÷0œpublic delegate unowned string
+DBusSubtreeFlagsÃ2ŒGLib÷0
+DBusSubtreeIntrospectFuncÃ128Õ(GLib.DBusConnection connection, string sender, string object_path, string node)ŒGLib÷0œpublic delegate unowned
+DBusSubtreeVTableÃ1ŒGLib÷0
+DEFAULTÃ4ŒGLib.SettingsBindFlags÷0
+DEFAULTÃ4ŒGLib.SocketProtocol÷0
+DELAY_MESSAGE_PROCESSINGÃ4ŒGLib.DBusConnectionFlags÷0
+DELETEDÃ4ŒGLib.FileMonitorEvent÷0
+DESTINATIONÃ4ŒGLib.DBusMessageHeaderField÷0
+DEVICEÃ4ŒGLib.EmblemOrigin÷0
+DIRECTORYÃ4ŒGLib.FileType÷0
+DISCONNECTEDÃ4ŒGLib.DBusError÷0
+DISPATCH_TO_UNENUMERATED_NODESÃ4ŒGLib.DBusSubtreeFlags÷0
+DONTROUTEÃ4ŒGLib.SocketMsgFlags÷0
+DO_NOT_AUTO_STARTÃ4ŒGLib.DBusProxyFlags÷0
+DO_NOT_CONNECT_SIGNALSÃ4ŒGLib.DBusProxyFlags÷0
+DO_NOT_LOAD_PROPERTIESÃ4ŒGLib.DBusProxyFlags÷0
+DataInputStreamÃ1ŒGLib÷0
+DataInputStreamÃ128Õ(GLib.InputStream base_stream)ŒGLib.DataInputStream÷0
+DataOutputStreamÃ1ŒGLib÷0
+DataOutputStreamÃ128Õ(GLib.OutputStream base_stream)ŒGLib.DataOutputStream÷0
+DataStreamByteOrderÃ2ŒGLib÷0
+DataStreamNewlineTypeÃ2ŒGLib÷0
+DriveÃ32ŒGLib÷0
+DriveStartFlagsÃ2ŒGLib÷0
+DriveStartStopTypeÃ2ŒGLib÷0
+EOFÃ4ŒGLib.TlsError÷0
+ERRORÃ4ŒGLib.ConverterResult÷0
+ERRORÃ4ŒGLib.DBusMessageType÷0
+ERROR_NAMEÃ4ŒGLib.DBusMessageHeaderField÷0
+ERROR_SETTINGÃ4ŒGLib.FileAttributeStatus÷0
+EXISTSÃ4ŒGLib.IOError÷0
+EXPIREDÃ4ŒGLib.TlsCertificateFlags÷0
+EmblemÃ1ŒGLib÷0
+EmblemÃ128Õ(GLib.Icon icon)ŒGLib.Emblem÷0
+Emblem.with_originÃ128Õ(GLib.Icon icon, GLib.EmblemOrigin origin)ŒGLib.Emblem÷0
+EmblemClassÃ1ŒGLib÷0
+EmblemOriginÃ2ŒGLib÷0
+EmblemedIconÃ1ŒGLib÷0
+EmblemedIconÃ128Õ(GLib.Icon icon, GLib.Emblem emblem)ŒGLib.EmblemedIcon÷0
+FAILEDÃ4ŒGLib.DBusError÷0
+FAILEDÃ4ŒGLib.IOError÷0
+FAILED_HANDLEDÃ4ŒGLib.IOError÷0
+FILENAME_TOO_LONGÃ4ŒGLib.IOError÷0
+FILE_ATTRIBUTE_ACCESS_CAN_DELETEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ACCESS_CAN_EXECUTEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ACCESS_CAN_READÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ACCESS_CAN_RENAMEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ACCESS_CAN_TRASHÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ACCESS_CAN_WRITEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_DOS_IS_ARCHIVEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_DOS_IS_SYSTEMÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ETAG_VALUEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_FILESYSTEM_FREEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_FILESYSTEM_READONLYÃ8ŒGLib÷0
+FILE_ATTRIBUTE_FILESYSTEM_SIZEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_FILESYSTEM_TYPEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEWÃ8ŒGLib÷0
+FILE_ATTRIBUTE_GVFS_BACKENDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ID_FILEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_ID_FILESYSTEMÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_POLLÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_STARTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADEDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_STOPÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_HAL_UDIÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATICÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_OWNER_GROUPÃ8ŒGLib÷0
+FILE_ATTRIBUTE_OWNER_USERÃ8ŒGLib÷0
+FILE_ATTRIBUTE_OWNER_USER_REALÃ8ŒGLib÷0
+FILE_ATTRIBUTE_PREVIEW_ICONÃ8ŒGLib÷0
+FILE_ATTRIBUTE_SELINUX_CONTEXTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_CONTENT_TYPEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_COPY_NAMEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_DESCRIPTIONÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_DISPLAY_NAMEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_EDIT_NAMEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_ICONÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_IS_BACKUPÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_IS_HIDDENÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_IS_SYMLINKÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_IS_VIRTUALÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_NAMEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_SIZEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_SORT_ORDERÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGETÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_TARGET_URIÃ8ŒGLib÷0
+FILE_ATTRIBUTE_STANDARD_TYPEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_THUMBNAILING_FAILEDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_THUMBNAIL_PATHÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_ACCESSÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_ACCESS_USECÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_CHANGEDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_CHANGED_USECÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_CREATEDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_CREATED_USECÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_MODIFIEDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TIME_MODIFIED_USECÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TRASH_DELETION_DATEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TRASH_ITEM_COUNTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_TRASH_ORIG_PATHÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_BLOCKSÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_BLOCK_SIZEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_DEVICEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_GIDÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_INODEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINTÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_MODEÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_NLINKÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_RDEVÃ8ŒGLib÷0
+FILE_ATTRIBUTE_UNIX_UIDÃ8ŒGLib÷0
+FILE_EXISTSÃ4ŒGLib.DBusError÷0
+FILE_NOT_FOUNDÃ4ŒGLib.DBusError÷0
+FINISHEDÃ4ŒGLib.ConverterResult÷0
+FLAGS_NONEÃ4ŒGLib.ApplicationFlags÷0
+FLUSHÃ4ŒGLib.ConverterFlags÷0
+FLUSHEDÃ4ŒGLib.ConverterResult÷0
+FORCEÃ4ŒGLib.MountUnmountFlags÷0
+FOR_SESSIONÃ4ŒGLib.PasswordSave÷0
+FREEBSD_CMSGCREDÃ4ŒGLib.CredentialsType÷0
+FileÃ32ŒGLib÷0
+FileAttributeInfoÃ1ŒGLib÷0
+FileAttributeInfoFlagsÃ2ŒGLib÷0
+FileAttributeInfoListÃ1ŒGLib÷0
+FileAttributeInfoListÃ128Õ()ŒGLib.FileAttributeInfoList÷0
+FileAttributeMatcherÃ1ŒGLib÷0
+FileAttributeMatcherÃ128Õ(string attributes)ŒGLib.FileAttributeMatcher÷0
+FileAttributeStatusÃ2ŒGLib÷0
+FileAttributeTypeÃ2ŒGLib÷0
+FileCopyFlagsÃ2ŒGLib÷0
+FileCreateFlagsÃ2ŒGLib÷0
+FileEnumeratorÃ1ŒGLib÷0
+FileEnumeratorÃ128Õ()ŒGLib.FileEnumerator÷0
+FileIOStreamÃ1ŒGLib÷0
+FileIOStreamÃ128Õ()ŒGLib.FileIOStream÷0
+FileIconÃ1ŒGLib÷0
+FileIconÃ128Õ(GLib.File file)ŒGLib.FileIcon÷0
+FileIconClassÃ1ŒGLib÷0
+FileInfoÃ1ŒGLib÷0
+FileInfoÃ128Õ()ŒGLib.FileInfo÷0
+FileInfoClassÃ1ŒGLib÷0
+FileInputStreamÃ1ŒGLib÷0
+FileInputStreamÃ128Õ()ŒGLib.FileInputStream÷0
+FileMonitorÃ1ŒGLib÷0
+FileMonitorÃ128Õ()ŒGLib.FileMonitor÷0
+FileMonitorEventÃ2ŒGLib÷0
+FileMonitorFlagsÃ2ŒGLib÷0
+FileOutputStreamÃ1ŒGLib÷0
+FileOutputStreamÃ128Õ()ŒGLib.FileOutputStream÷0
+FileProgressCallbackÃ128Õ(int64 current_num_bytes, int64 total_num_bytes)ŒGLib÷0œpublic delegate void
+FileQueryInfoFlagsÃ2ŒGLib÷0
+FileReadMoreCallbackÃ128Õ(string file_contents, int64 file_size, void* callback_data)ŒGLib÷0œpublic delegate bool
+FileTypeÃ2ŒGLib÷0
+FilenameCompleterÃ1ŒGLib÷0
+FilenameCompleterÃ128Õ()ŒGLib.FilenameCompleter÷0
+FilesystemPreviewTypeÃ2ŒGLib÷0
+FilterInputStreamÃ1ŒGLib÷0
+FilterInputStreamÃ128Õ()ŒGLib.FilterInputStream÷0
+FilterOutputStreamÃ1ŒGLib÷0
+FilterOutputStreamÃ128Õ()ŒGLib.FilterOutputStream÷0
+GENERIC_ERRORÃ4ŒGLib.TlsCertificateFlags÷0
+GETÃ4ŒGLib.SettingsBindFlags÷0
+GET_NO_CHANGESÃ4ŒGLib.SettingsBindFlags÷0
+GLibÃ256÷0
+GLib.ErrorÃ8ŒGLib.AppInfo÷0
+GZIPÃ4ŒGLib.ZlibCompressorFormat÷0
+HANDLEDÃ4ŒGLib.MountOperationResult÷0
+HANDLES_COMMAND_LINEÃ4ŒGLib.ApplicationFlags÷0
+HANDLES_OPENÃ4ŒGLib.ApplicationFlags÷0
+HANDSHAKEÃ4ŒGLib.TlsError÷0
+HOST_ENDIANÃ4ŒGLib.DataStreamByteOrder÷0
+HOST_NOT_FOUNDÃ4ŒGLib.IOError÷0
+HOST_UNREACHABLEÃ4ŒGLib.IOError÷0
+IF_ALWAYSÃ4ŒGLib.FilesystemPreviewType÷0
+IF_LOCALÃ4ŒGLib.FilesystemPreviewType÷0
+INPUT_AT_ENDÃ4ŒGLib.ConverterFlags÷0
+INSECUREÃ4ŒGLib.TlsCertificateFlags÷0
+INT32Ã4ŒGLib.FileAttributeType÷0
+INT64Ã4ŒGLib.FileAttributeType÷0
+INTERFACEÃ4ŒGLib.DBusMessageHeaderField÷0
+INTERNALÃ4ŒGLib.ResolverError÷0
+INVALIDÃ4ŒGLib.CredentialsType÷0
+INVALIDÃ4ŒGLib.DBusMessageHeaderField÷0
+INVALIDÃ4ŒGLib.DBusMessageType÷0
+INVALIDÃ4ŒGLib.FileAttributeType÷0
+INVALIDÃ4ŒGLib.SocketFamily÷0
+INVALIDÃ4ŒGLib.SocketType÷0
+INVALIDÃ4ŒGLib.UnixSocketAddressType÷0
+INVALID_ARGSÃ4ŒGLib.DBusError÷0
+INVALID_ARGUMENTÃ4ŒGLib.IOError÷0
+INVALID_DATAÃ4ŒGLib.IOError÷0
+INVALID_FILENAMEÃ4ŒGLib.IOError÷0
+INVALID_FILE_CONTENTÃ4ŒGLib.DBusError÷0
+INVALID_SIGNATUREÃ4ŒGLib.DBusError÷0
+INVERT_BOOLEANÃ4ŒGLib.SettingsBindFlags÷0
+IOErrorÃ2ŒGLib÷0
+IOExtensionÃ1ŒGLib÷0
+IOExtensionPointÃ1ŒGLib÷0
+IOModuleÃ1ŒGLib÷0
+IOModuleÃ128Õ(string filename)ŒGLib.IOModule÷0
+IOModuleClassÃ1ŒGLib÷0
+IOSchedulerJobÃ1ŒGLib÷0
+IOSchedulerJobFuncÃ128Õ(GLib.IOSchedulerJob job, GLib.Cancellable cancellable)ŒGLib÷0œpublic delegate bool
+IOStreamÃ1ŒGLib÷0
+IOStreamÃ128Õ()ŒGLib.IOStream÷0
+IOStreamAdapterÃ1ŒGLib÷0
+IOStreamSpliceFlagsÃ2ŒGLib÷0
+IO_ERRORÃ4ŒGLib.DBusError÷0
+IPV4Ã4ŒGLib.SocketFamily÷0
+IPV6Ã4ŒGLib.SocketFamily÷0
+IS_DIRECTORYÃ4ŒGLib.IOError÷0
+IS_LAUNCHERÃ4ŒGLib.ApplicationFlags÷0
+IS_SERVICEÃ4ŒGLib.ApplicationFlags÷0
+IconÃ32ŒGLib÷0
+InetAddressÃ1ŒGLib÷0
+InetAddressÃ128Õ()ŒGLib.InetAddress÷0
+InetAddress.anyÃ128Õ(GLib.SocketFamily family)ŒGLib.InetAddress÷0
+InetAddress.from_bytesÃ128Õ(uchar bytes, GLib.SocketFamily family)ŒGLib.InetAddress÷0
+InetAddress.from_stringÃ128Õ(string str)ŒGLib.InetAddress÷0
+InetAddress.loopbackÃ128Õ(GLib.SocketFamily family)ŒGLib.InetAddress÷0
+InetSocketAddressÃ1ŒGLib÷0
+InetSocketAddressÃ128Õ(GLib.InetAddress address, uint16 port)ŒGLib.InetSocketAddress÷0
+InitableÃ32ŒGLib÷0
+InputStreamÃ1ŒGLib÷0
+InputStreamÃ128Õ()ŒGLib.InputStream÷0
+InputVectorÃ1ŒGLib÷0
+LFÃ4ŒGLib.DataStreamNewlineType÷0
+LIMITS_EXCEEDEDÃ4ŒGLib.DBusError÷0
+LINUX_UCREDÃ4ŒGLib.CredentialsType÷0
+LITTLE_ENDIANÃ4ŒGLib.DBusMessageByteOrder÷0
+LITTLE_ENDIANÃ4ŒGLib.DataStreamByteOrder÷0
+LIVEMETADATAÃ4ŒGLib.EmblemOrigin÷0
+LoadableIconÃ32ŒGLib÷0
+MATCH_RULE_INVALIDÃ4ŒGLib.DBusError÷0
+MATCH_RULE_NOT_FOUNDÃ4ŒGLib.DBusError÷0
+MEMBERÃ4ŒGLib.DBusMessageHeaderField÷0
+MESSAGE_BUS_CONNECTIONÃ4ŒGLib.DBusConnectionFlags÷0
+METHOD_CALLÃ4ŒGLib.DBusMessageType÷0
+METHOD_RETURNÃ4ŒGLib.DBusMessageType÷0
+MISCÃ4ŒGLib.TlsError÷0
+MOUNTABLEÃ4ŒGLib.FileType÷0
+MOVEDÃ4ŒGLib.FileMonitorEvent÷0
+MULTIDISKÃ4ŒGLib.DriveStartStopType÷0
+MemoryInputStreamÃ1ŒGLib÷0
+MemoryInputStreamÃ128Õ()ŒGLib.MemoryInputStream÷0
+MemoryInputStream.from_dataÃ128Õ([CCode (array_length_type = )] owned uint8[] data, GLib.DestroyNotify? destroy)ŒGLib.MemoryInputStream÷0
+MemoryOutputStreamÃ1ŒGLib÷0
+MountÃ32ŒGLib÷0
+MountMountFlagsÃ2ŒGLib÷0
+MountOperationÃ1ŒGLib÷0
+MountOperationÃ128Õ()ŒGLib.MountOperation÷0
+MountOperationResultÃ2ŒGLib÷0
+MountUnmountFlagsÃ2ŒGLib÷0
+NAME_HAS_NO_OWNERÃ4ŒGLib.DBusError÷0
+NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+NEEDS_TERMINALÃ4ŒGLib.AppInfoCreateFlags÷0
+NEED_DOMAINÃ4ŒGLib.AskPasswordFlags÷0
+NEED_PASSWORDÃ4ŒGLib.AskPasswordFlags÷0
+NEED_USERNAMEÃ4ŒGLib.AskPasswordFlags÷0
+NETWORKÃ4ŒGLib.DriveStartStopType÷0
+NETWORK_UNREACHABLEÃ4ŒGLib.IOError÷0
+NEVERÃ4ŒGLib.FilesystemPreviewType÷0
+NEVERÃ4ŒGLib.PasswordSave÷0
+NEVERÃ4ŒGLib.TlsRehandshakeMode÷0
+NOFOLLOW_SYMLINKSÃ4ŒGLib.FileCopyFlags÷0
+NOFOLLOW_SYMLINKSÃ4ŒGLib.FileQueryInfoFlags÷0
+NONEÃ4ŒGLib.AppInfoCreateFlags÷0
+NONEÃ4ŒGLib.BusNameOwnerFlags÷0
+NONEÃ4ŒGLib.BusNameWatcherFlags÷0
+NONEÃ4ŒGLib.BusType÷0
+NONEÃ4ŒGLib.DBusCallFlags÷0
+NONEÃ4ŒGLib.DBusCapabilityFlags÷0
+NONEÃ4ŒGLib.DBusConnectionFlags÷0
+NONEÃ4ŒGLib.DBusMessageFlags÷0
+NONEÃ4ŒGLib.DBusPropertyInfoFlags÷0
+NONEÃ4ŒGLib.DBusProxyFlags÷0
+NONEÃ4ŒGLib.DBusSendMessageFlags÷0
+NONEÃ4ŒGLib.DBusServerFlags÷0
+NONEÃ4ŒGLib.DBusSignalFlags÷0
+NONEÃ4ŒGLib.DBusSubtreeFlags÷0
+NONEÃ4ŒGLib.DriveStartFlags÷0
+NONEÃ4ŒGLib.FileAttributeInfoFlags÷0
+NONEÃ4ŒGLib.FileCopyFlags÷0
+NONEÃ4ŒGLib.FileCreateFlags÷0
+NONEÃ4ŒGLib.FileMonitorFlags÷0
+NONEÃ4ŒGLib.FileQueryInfoFlags÷0
+NONEÃ4ŒGLib.IOStreamSpliceFlags÷0
+NONEÃ4ŒGLib.MountMountFlags÷0
+NONEÃ4ŒGLib.MountUnmountFlags÷0
+NONEÃ4ŒGLib.OutputStreamSpliceFlags÷0
+NONEÃ4ŒGLib.SocketMsgFlags÷0
+NONEÃ4ŒGLib.TlsAuthenticationMode÷0
+NOT_ACTIVATEDÃ4ŒGLib.TlsCertificateFlags÷0
+NOT_DIRECTORYÃ4ŒGLib.IOError÷0
+NOT_EMPTYÃ4ŒGLib.IOError÷0
+NOT_FOUNDÃ4ŒGLib.IOError÷0
+NOT_FOUNDÃ4ŒGLib.ResolverError÷0
+NOT_INITIALIZEDÃ4ŒGLib.IOError÷0
+NOT_MOUNTABLE_FILEÃ4ŒGLib.IOError÷0
+NOT_MOUNTEDÃ4ŒGLib.IOError÷0
+NOT_REGULAR_FILEÃ4ŒGLib.IOError÷0
+NOT_SUPPORTEDÃ4ŒGLib.DBusError÷0
+NOT_SUPPORTEDÃ4ŒGLib.IOError÷0
+NOT_SYMBOLIC_LINKÃ4ŒGLib.IOError÷0
+NOT_TLSÃ4ŒGLib.TlsError÷0
+NO_AUTO_STARTÃ4ŒGLib.DBusCallFlags÷0
+NO_AUTO_STARTÃ4ŒGLib.DBusMessageFlags÷0
+NO_FALLBACK_FOR_MOVEÃ4ŒGLib.FileCopyFlags÷0
+NO_FLAGSÃ4ŒGLib.ConverterFlags÷0
+NO_MATCH_RULEÃ4ŒGLib.DBusSignalFlags÷0
+NO_MEMORYÃ4ŒGLib.DBusError÷0
+NO_NETWORKÃ4ŒGLib.DBusError÷0
+NO_REPLYÃ4ŒGLib.DBusError÷0
+NO_REPLY_EXPECTEDÃ4ŒGLib.DBusMessageFlags÷0
+NO_SENSITIVITYÃ4ŒGLib.SettingsBindFlags÷0
+NO_SERVERÃ4ŒGLib.DBusError÷0
+NO_SPACEÃ4ŒGLib.IOError÷0
+NUM_UNIX_FDSÃ4ŒGLib.DBusMessageHeaderField÷0
+NativeVolumeMonitorÃ1ŒGLib÷0
+NativeVolumeMonitorÃ128Õ()ŒGLib.NativeVolumeMonitor÷0
+NetworkAddressÃ1ŒGLib÷0
+NetworkAddressÃ128Õ(string hostname, uint16 port)ŒGLib.NetworkAddress÷0
+NetworkServiceÃ1ŒGLib÷0
+NetworkServiceÃ128Õ(string service, string protocol, string domain)ŒGLib.NetworkService÷0
+OBJECTÃ4ŒGLib.FileAttributeType÷0
+OBJECT_PATH_IN_USEÃ4ŒGLib.DBusError÷0
+OOBÃ4ŒGLib.SocketMsgFlags÷0
+OVERWRITEÃ4ŒGLib.FileCopyFlags÷0
+OutputStreamÃ1ŒGLib÷0
+OutputStreamÃ128Õ()ŒGLib.OutputStream÷0
+OutputStreamSpliceFlagsÃ2ŒGLib÷0
+OutputVectorÃ1ŒGLib÷0
+PARTIAL_INPUTÃ4ŒGLib.IOError÷0
+PASSWORDÃ4ŒGLib.DriveStartStopType÷0
+PATHÃ4ŒGLib.DBusMessageHeaderField÷0
+PATHÃ4ŒGLib.UnixSocketAddressType÷0
+PEEKÃ4ŒGLib.SocketMsgFlags÷0
+PENDINGÃ4ŒGLib.IOError÷0
+PERMANENTLYÃ4ŒGLib.PasswordSave÷0
+PERMISSION_DENIEDÃ4ŒGLib.IOError÷0
+PRESERVE_SERIALÃ4ŒGLib.DBusSendMessageFlags÷0
+PRE_UNMOUNTÃ4ŒGLib.FileMonitorEvent÷0
+PRIVATEÃ4ŒGLib.FileCreateFlags÷0
+PROXY_AUTH_FAILEDÃ4ŒGLib.IOError÷0
+PROXY_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+PROXY_FAILEDÃ4ŒGLib.IOError÷0
+PROXY_NEED_AUTHÃ4ŒGLib.IOError÷0
+PROXY_NOT_ALLOWEDÃ4ŒGLib.IOError÷0
+PROXY_RESOLVER_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+PasswordSaveÃ2ŒGLib÷0
+PermissionÃ1ŒGLib÷0
+PermissionÃ128Õ()ŒGLib.Permission÷0
+PollableInputStreamÃ32ŒGLib÷0
+PollableOutputStreamÃ32ŒGLib÷0
+PollableSourceFuncÃ128Õ(GLib.Object pollable_stream)ŒGLib÷0œpublic delegate bool
+ProxyÃ32ŒGLib÷0
+ProxyAddressÃ1ŒGLib÷0
+ProxyAddressÃ128Õ(GLib.InetAddress inetaddr, uint16 port, string protocol, string dest_hostname, uint16 dest_port, string username, string password)ŒGLib.ProxyAddress÷0
+ProxyAddressEnumeratorÃ1ŒGLib÷0
+ProxyAddressEnumeratorÃ128Õ()ŒGLib.ProxyAddressEnumerator÷0
+ProxyResolverÃ32ŒGLib÷0
+RAWÃ4ŒGLib.ZlibCompressorFormat÷0
+READABLEÃ4ŒGLib.DBusPropertyInfoFlags÷0
+READ_ONLYÃ4ŒGLib.IOError÷0
+REGULARÃ4ŒGLib.FileType÷0
+REPLACEÃ4ŒGLib.BusNameOwnerFlags÷0
+REPLACE_DESTINATIONÃ4ŒGLib.FileCreateFlags÷0
+REPLY_SERIALÃ4ŒGLib.DBusMessageHeaderField÷0
+REQUESTEDÃ4ŒGLib.TlsAuthenticationMode÷0
+REQUIREDÃ4ŒGLib.TlsAuthenticationMode÷0
+REVOKEDÃ4ŒGLib.TlsCertificateFlags÷0
+RUN_IN_THREADÃ4ŒGLib.DBusServerFlags÷0
+ReallocFuncÃ128Õ(void* data, size_t size)ŒGLib÷0œpublic delegate void *
+ResolverÃ1ŒGLib÷0
+ResolverÃ128Õ()ŒGLib.Resolver÷0
+ResolverErrorÃ2ŒGLib÷0
+SAFELYÃ4ŒGLib.TlsRehandshakeMode÷0
+SAVING_SUPPORTEDÃ4ŒGLib.AskPasswordFlags÷0
+SCTPÃ4ŒGLib.SocketProtocol÷0
+SELINUX_SECURITY_CONTEXT_UNKNOWNÃ4ŒGLib.DBusError÷0
+SENDERÃ4ŒGLib.DBusMessageHeaderField÷0
+SEND_ENVIRONMENTÃ4ŒGLib.ApplicationFlags÷0
+SEND_MOVEDÃ4ŒGLib.FileMonitorFlags÷0
+SEQPACKETÃ4ŒGLib.SocketType÷0
+SERVICE_UNKNOWNÃ4ŒGLib.DBusError÷0
+SESSIONÃ4ŒGLib.BusType÷0
+SETÃ4ŒGLib.FileAttributeStatus÷0
+SETÃ4ŒGLib.SettingsBindFlags÷0
+SHORTCUTÃ4ŒGLib.FileType÷0
+SHUTDOWNÃ4ŒGLib.DriveStartStopType÷0
+SIGNALÃ4ŒGLib.DBusMessageType÷0
+SIGNATUREÃ4ŒGLib.DBusMessageHeaderField÷0
+SPAWN_CHILD_EXITEDÃ4ŒGLib.DBusError÷0
+SPAWN_CHILD_SIGNALEDÃ4ŒGLib.DBusError÷0
+SPAWN_CONFIG_INVALIDÃ4ŒGLib.DBusError÷0
+SPAWN_EXEC_FAILEDÃ4ŒGLib.DBusError÷0
+SPAWN_FAILEDÃ4ŒGLib.DBusError÷0
+SPAWN_FILE_INVALIDÃ4ŒGLib.DBusError÷0
+SPAWN_FORK_FAILEDÃ4ŒGLib.DBusError÷0
+SPAWN_NO_MEMORYÃ4ŒGLib.DBusError÷0
+SPAWN_PERMISSIONS_INVALIDÃ4ŒGLib.DBusError÷0
+SPAWN_SERVICE_INVALIDÃ4ŒGLib.DBusError÷0
+SPAWN_SERVICE_NOT_FOUNDÃ4ŒGLib.DBusError÷0
+SPAWN_SETUP_FAILEDÃ4ŒGLib.DBusError÷0
+SPECIALÃ4ŒGLib.FileType÷0
+STARTERÃ4ŒGLib.BusType÷0
+STREAMÃ4ŒGLib.SocketType÷0
+STRINGÃ4ŒGLib.FileAttributeType÷0
+STRINGVÃ4ŒGLib.FileAttributeType÷0
+SUPPORTS_STARTUP_NOTIFICATIONÃ4ŒGLib.AppInfoCreateFlags÷0
+SUPPORTS_URISÃ4ŒGLib.AppInfoCreateFlags÷0
+SYMBOLIC_LINKÃ4ŒGLib.FileType÷0
+SYSTEMÃ4ŒGLib.BusType÷0
+SeekableÃ32ŒGLib÷0
+SettingsÃ1ŒGLib÷0
+SettingsÃ128Õ(string schema)ŒGLib.Settings÷0
+Settings.with_backendÃ128Õ(string schema, GLib.SettingsBackend backend)ŒGLib.Settings÷0
+Settings.with_backend_and_pathÃ128Õ(string schema, GLib.SettingsBackend backend, string path)ŒGLib.Settings÷0
+Settings.with_pathÃ128Õ(string schema, string path)ŒGLib.Settings÷0
+SettingsBackendÃ1ŒGLib÷0
+SettingsBindFlagsÃ2ŒGLib÷0
+SettingsBindGetMappingÃ128Õ(GLib.Value value, GLib.Variant variant)ŒGLib÷0œpublic delegate bool
+SettingsBindSetMappingÃ128Õ(GLib.Value value, GLib.VariantType expected_type)ŒGLib÷0œpublic delegate unowned
+SettingsGetMappingÃ128Õ(GLib.Variant value, void* result)ŒGLib÷0œpublic delegate bool
+SimpleActionÃ1ŒGLib÷0
+SimpleActionÃ128Õ(string name, GLib.VariantType parameter_type)ŒGLib.SimpleAction÷0
+SimpleAction.statefulÃ128Õ(string name, GLib.VariantType parameter_type, GLib.Variant state)ŒGLib.SimpleAction÷0
+SimpleActionGroupÃ1ŒGLib÷0
+SimpleActionGroupÃ128Õ()ŒGLib.SimpleActionGroup÷0
+SimpleAsyncResultÃ1ŒGLib÷0
+SimpleAsyncResultÃ128Õ(GLib.Object? source_object, GLib.AsyncReadyCallback callback, void* source_tag)ŒGLib.SimpleAsyncResult÷0
+SimpleAsyncResult.errorÃ128Õ(GLib.Object source_object, GLib.AsyncReadyCallback callback, GLib.Quark domain, int code, string format)ŒGLib.SimpleAsyncResult÷0
+SimpleAsyncResult.from_errorÃ128Õ(GLib.Object source_object, GLib.AsyncReadyCallback callback, GLib.Error error)ŒGLib.SimpleAsyncResult÷0
+SimpleAsyncResultClassÃ1ŒGLib÷0
+SimpleAsyncThreadFuncÃ128Õ(GLib.SimpleAsyncResult res, GLib.Object object, GLib.Cancellable cancellable)ŒGLib÷0œpublic delegate void
+SimplePermissionÃ1ŒGLib÷0
+SimplePermissionÃ128Õ(bool allowed)ŒGLib.SimplePermission÷0
+SocketÃ1ŒGLib÷0
+SocketÃ128Õ(GLib.SocketFamily family, GLib.SocketType type, GLib.SocketProtocol protocol)ŒGLib.Socket÷0
+Socket.from_fdÃ128Õ(int fd)ŒGLib.Socket÷0
+SocketAddressÃ1ŒGLib÷0
+SocketAddressÃ128Õ()ŒGLib.SocketAddress÷0
+SocketAddress.from_nativeÃ128Õ(void* native, size_t len)ŒGLib.SocketAddress÷0
+SocketAddressEnumeratorÃ1ŒGLib÷0
+SocketAddressEnumeratorÃ128Õ()ŒGLib.SocketAddressEnumerator÷0
+SocketClientÃ1ŒGLib÷0
+SocketClientÃ128Õ()ŒGLib.SocketClient÷0
+SocketConnectableÃ32ŒGLib÷0
+SocketConnectionÃ1ŒGLib÷0
+SocketConnectionÃ128Õ()ŒGLib.SocketConnection÷0
+SocketControlMessageÃ1ŒGLib÷0
+SocketControlMessageÃ128Õ()ŒGLib.SocketControlMessage÷0
+SocketFamilyÃ2ŒGLib÷0
+SocketListenerÃ1ŒGLib÷0
+SocketListenerÃ128Õ()ŒGLib.SocketListener÷0
+SocketMsgFlagsÃ2ŒGLib÷0
+SocketProtocolÃ2ŒGLib÷0
+SocketServiceÃ1ŒGLib÷0
+SocketServiceÃ128Õ()ŒGLib.SocketService÷0
+SocketSourceÃ1ŒGLib÷0
+SocketSourceFuncÃ128Õ(GLib.Socket socket, GLib.IOCondition condition)ŒGLib÷0œpublic delegate bool
+SocketTypeÃ2ŒGLib÷0
+SrvTargetÃ1ŒGLib÷0
+SrvTargetÃ128Õ(string hostname, uint16 port, uint16 priority, uint16 weight)ŒGLib.SrvTarget÷0
+TAGÃ4ŒGLib.EmblemOrigin÷0
+TARGET_DEFAULT_PERMSÃ4ŒGLib.FileCopyFlags÷0
+TCPÃ4ŒGLib.SocketProtocol÷0
+TEMPORARY_FAILUREÃ4ŒGLib.ResolverError÷0
+TIMED_OUTÃ4ŒGLib.DBusError÷0
+TIMED_OUTÃ4ŒGLib.IOError÷0
+TIMEOUTÃ4ŒGLib.DBusError÷0
+TLS_BACKEND_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+TOO_MANY_LINKSÃ4ŒGLib.IOError÷0
+TOO_MANY_OPEN_FILESÃ4ŒGLib.IOError÷0
+TcpConnectionÃ1ŒGLib÷0
+TcpConnectionÃ128Õ()ŒGLib.TcpConnection÷0
+TcpWrapperConnectionÃ1ŒGLib÷0
+TcpWrapperConnectionÃ128Õ(GLib.IOStream base_io_stream, GLib.Socket socket)ŒGLib.TcpWrapperConnection÷0
+ThemedIconÃ1ŒGLib÷0
+ThemedIconÃ128Õ(string iconname)ŒGLib.ThemedIcon÷0
+ThemedIcon.from_namesÃ128Õ(string[] iconnames)ŒGLib.ThemedIcon÷0
+ThemedIcon.with_default_fallbacksÃ128Õ(string iconname)ŒGLib.ThemedIcon÷0
+ThemedIconClassÃ1ŒGLib÷0
+ThreadedSocketServiceÃ1ŒGLib÷0
+ThreadedSocketServiceÃ128Õ(int max_threads)ŒGLib.ThreadedSocketService÷0
+TlsAuthenticationModeÃ2ŒGLib÷0
+TlsBackendÃ32ŒGLib÷0
+TlsCertificateÃ1ŒGLib÷0
+TlsCertificateÃ128Õ()ŒGLib.TlsCertificate÷0
+TlsCertificate.from_fileÃ128Õ(string file)ŒGLib.TlsCertificate÷0
+TlsCertificate.from_filesÃ128Õ(string cert_file, string key_file)ŒGLib.TlsCertificate÷0
+TlsCertificate.from_pemÃ128Õ(string data, ssize_t length)ŒGLib.TlsCertificate÷0
+TlsCertificateFlagsÃ2ŒGLib÷0
+TlsClientConnectionÃ32ŒGLib÷0
+TlsClientContextÃ1ŒGLib÷0
+TlsConnectionÃ1ŒGLib÷0
+TlsConnectionÃ128Õ()ŒGLib.TlsConnection÷0
+TlsContextÃ1ŒGLib÷0
+TlsErrorÃ2ŒGLib÷0
+TlsRehandshakeModeÃ2ŒGLib÷0
+TlsServerConnectionÃ32ŒGLib÷0
+TlsServerContextÃ1ŒGLib÷0
+UDPÃ4ŒGLib.SocketProtocol÷0
+UINT32Ã4ŒGLib.FileAttributeType÷0
+UINT64Ã4ŒGLib.FileAttributeType÷0
+UNAVAILABLEÃ4ŒGLib.TlsError÷0
+UNHANDLEDÃ4ŒGLib.MountOperationResult÷0
+UNIXÃ4ŒGLib.SocketFamily÷0
+UNIX_FD_PASSINGÃ4ŒGLib.DBusCapabilityFlags÷0
+UNIX_PROCESS_ID_UNKNOWNÃ4ŒGLib.DBusError÷0
+UNKNOWNÃ4ŒGLib.DriveStartStopType÷0
+UNKNOWNÃ4ŒGLib.EmblemOrigin÷0
+UNKNOWNÃ4ŒGLib.FileType÷0
+UNKNOWNÃ4ŒGLib.SocketProtocol÷0
+UNKNOWN_CAÃ4ŒGLib.TlsCertificateFlags÷0
+UNKNOWN_METHODÃ4ŒGLib.DBusError÷0
+UNMOUNTEDÃ4ŒGLib.FileMonitorEvent÷0
+UNSAFELYÃ4ŒGLib.TlsRehandshakeMode÷0
+UNSETÃ4ŒGLib.FileAttributeStatus÷0
+UnixCredentialsMessageÃ1ŒGLib÷0
+UnixFDListÃ1ŒGLib÷0
+UnixSocketAddressTypeÃ2ŒGLib÷0
+VALIDATE_ALLÃ4ŒGLib.TlsCertificateFlags÷0
+VFS_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+VOLUME_IDENTIFIER_KIND_HAL_UDIÃ8ŒGLib÷0
+VOLUME_IDENTIFIER_KIND_LABELÃ8ŒGLib÷0
+VOLUME_IDENTIFIER_KIND_NFS_MOUNTÃ8ŒGLib÷0
+VOLUME_IDENTIFIER_KIND_UNIX_DEVICEÃ8ŒGLib÷0
+VOLUME_IDENTIFIER_KIND_UUIDÃ8ŒGLib÷0
+VOLUME_MONITOR_EXTENSION_POINT_NAMEÃ8ŒGLib÷0
+VfsÃ1ŒGLib÷0
+VfsÃ128Õ()ŒGLib.Vfs÷0
+VolumeÃ32ŒGLib÷0
+VolumeMonitorÃ1ŒGLib÷0
+VolumeMonitorÃ128Õ()ŒGLib.VolumeMonitor÷0
+WAIT_FOR_BOTHÃ4ŒGLib.IOStreamSpliceFlags÷0
+WATCH_MOUNTSÃ4ŒGLib.FileMonitorFlags÷0
+WOULD_BLOCKÃ4ŒGLib.IOError÷0
+WOULD_MERGEÃ4ŒGLib.IOError÷0
+WOULD_RECURSEÃ4ŒGLib.IOError÷0
+WRITABLEÃ4ŒGLib.DBusPropertyInfoFlags÷0
+WRONG_ETAGÃ4ŒGLib.IOError÷0
+ZLIBÃ4ŒGLib.ZlibCompressorFormat÷0
+ZlibCompressorÃ1ŒGLib÷0
+ZlibCompressorÃ128Õ(GLib.ZlibCompressorFormat format, int level = -1)ŒGLib.ZlibCompressor÷0
+ZlibCompressorFormatÃ2ŒGLib÷0
+ZlibDecompressorÃ1ŒGLib÷0
+ZlibDecompressorÃ128Õ(GLib.ZlibCompressorFormat format)ŒGLib.ZlibDecompressor÷0
+abortedÃ128Õ()ŒGLib.MountOperation÷0œpublic virtual signal void
+acceptÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic GLib.Socket
+acceptÃ128Õ(out unowned GLib.Object source_object, GLib.Cancellable? cancellable = null)ŒGLib.SocketListener÷0œpublic unowned
+accept_asyncÃ128Õ(GLib.Cancellable? cancellable = null, out GLib.Object? source_object = null)ŒGLib.SocketListener÷0œpublic async
+accept_certificateÃ128Õ(GLib.TlsCertificate peer_cert, GLib.TlsCertificateFlags errors)ŒGLib.TlsConnection÷0œpublic virtual signal bool
+accept_socketÃ128Õ(out unowned GLib.Object source_object, GLib.Cancellable? cancellable = null)ŒGLib.SocketListener÷0œpublic unowned
+accept_socket_asyncÃ128Õ(GLib.Cancellable? cancellable = null, out GLib.Object? source_object = null)ŒGLib.SocketListener÷0œpublic async
+accepted_casÃ8ŒGLib.TlsClientConnection÷0œvoid
+acquireÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Permission÷0œpublic virtual bool
+acquire_asyncÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Permission÷0œpublic virtual async
+action_addedÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic signal void
+action_enabled_changedÃ128Õ(string action_name, bool enabled)ŒGLib.ActionGroup÷0œpublic signal void
+action_groupÃ8ŒGLib.Application÷0œGLib.ActionGroup
+action_removedÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic signal void
+action_state_changedÃ128Õ(string action_name, GLib.Variant value)ŒGLib.ActionGroup÷0œpublic signal void
+activateÃ128Õ(GLib.Variant parameter)ŒGLib.Action÷0œpublic abstract void
+activateÃ128Õ()ŒGLib.Application÷0œpublic virtual signal void
+activateÃ128Õ(GLib.Variant parameter)ŒGLib.SimpleAction÷0œpublic virtual signal void
+activate_actionÃ128Õ(string action_name, GLib.Variant parameter)ŒGLib.ActionGroup÷0œpublic abstract void
+activeÃ8ŒGLib.DBusServer÷0œbool
+addÃ128Õ(string name, GLib.FileAttributeType type, GLib.FileAttributeInfoFlags flags)ŒGLib.FileAttributeInfoList÷0œpublic void
+add_addressÃ128Õ(GLib.SocketAddress address, GLib.SocketType type, GLib.SocketProtocol protocol, GLib.Object? source_object, out unowned GLib.SocketAddress effective_address)ŒGLib.SocketListener÷0œpublic bool
+add_any_inet_portÃ128Õ(GLib.Object source_object)ŒGLib.SocketListener÷0œpublic uint16
+add_application_proxyÃ128Õ(string protocol)ŒGLib.SocketClient÷0œpublic void
+add_dataÃ128Õ([CCode (array_length_type = )] owned uint8[] data, GLib.DestroyNotify? destroy)ŒGLib.MemoryInputStream÷0œpublic void
+add_emblemÃ128Õ(GLib.Emblem emblem)ŒGLib.EmblemedIcon÷0œpublic void
+add_filterÃ128Õ(owned GLib.DBusMessageFilterFunction filter_function)ŒGLib.DBusConnection÷0
+add_inet_portÃ128Õ(uint16 port, GLib.Object? source_object)ŒGLib.SocketListener÷0œpublic bool
+add_platform_dataÃ128Õ(GLib.VariantBuilder builder)ŒGLib.Application÷0œpublic virtual void
+add_socketÃ128Õ(GLib.Socket socket, GLib.Object? source_object)ŒGLib.SocketListener÷0œpublic bool
+add_supports_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic abstract bool
+add_writable_namespacesÃ128Õ(GLib.FileAttributeInfoList list)ŒGLib.Vfs÷0œpublic virtual void
+addressÃ8ŒGLib.DBusConnection÷0
+addressÃ8ŒGLib.DBusServer÷0
+addressÃ8ŒGLib.InetSocketAddress÷0œGLib.InetAddress
+adopt_orphan_mountÃ128Õ(GLib.Mount mount)ŒGLib.VolumeMonitor÷0œpublic virtual unowned
+after_emitÃ128Õ(GLib.Variant platform_data)ŒGLib.Application÷0œpublic virtual void
+allowedÃ8ŒGLib.Permission÷0œbool
+annotationsÃ8ŒGLib.DBusAnnotationInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusArgInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusInterfaceInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusMethodInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusNodeInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusPropertyInfo÷0œGLib.DBusAnnotationInfo
+annotationsÃ8ŒGLib.DBusSignalInfo÷0œGLib.DBusAnnotationInfo
+anonymousÃ8ŒGLib.MountOperation÷0œbool
+append_nameÃ128Õ(string iconname)ŒGLib.ThemedIcon÷0œpublic void
+append_toÃ128Õ(GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileOutputStream
+append_to_asyncÃ128Õ(GLib.FileCreateFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+application_idÃ8ŒGLib.Application÷0
+applyÃ128Õ()ŒGLib.Settings÷0œpublic void
+argsÃ8ŒGLib.DBusSignalInfo÷0œGLib.DBusArgInfo
+argumentsÃ8ŒGLib.ApplicationCommandLine÷0œGLib.Variant
+ask_passwordÃ128Õ(string message, string default_user, string default_domain, GLib.AskPasswordFlags flags)ŒGLib.MountOperation÷0œpublic virtual signal void
+ask_questionÃ128Õ(string message, string[] choices)ŒGLib.MountOperation÷0œpublic virtual signal void
+authentication_modeÃ8ŒGLib.TlsServerConnection÷0œGLib.TlsAuthenticationMode
+authentication_observerÃ8ŒGLib.DBusConnection÷0œGLib.DBusAuthObserver
+authentication_observerÃ8ŒGLib.DBusServer÷0œGLib.DBusAuthObserver
+authorize_authenticated_peerÃ128Õ(GLib.IOStream p0, GLib.Credentials p1)ŒGLib.DBusAuthObserver÷0œpublic virtual signal bool
+auto_growÃ8ŒGLib.BufferedOutputStream÷0œbool
+backendÃ8ŒGLib.Settings÷0œGLib.SettingsBackend
+base_io_streamÃ8ŒGLib.TcpWrapperConnection÷0œGLib.IOStream
+base_io_streamÃ8ŒGLib.TlsConnection÷0œGLib.IOStream
+base_streamÃ8ŒGLib.FilterInputStream÷0œGLib.InputStream
+base_streamÃ8ŒGLib.FilterOutputStream÷0œGLib.OutputStream
+before_emitÃ128Õ(GLib.Variant platform_data)ŒGLib.Application÷0œpublic virtual void
+bindÃ128Õ(string key, void* object, string property, GLib.SettingsBindFlags flags)ŒGLib.Settings÷0œpublic void
+bindÃ128Õ(GLib.SocketAddress address, bool allow_reuse)ŒGLib.Socket÷0œpublic bool
+bind_with_mappingÃ128Õ(string key, void* object, string property, GLib.SettingsBindFlags flags, GLib.SettingsBindGetMapping get_mapping, GLib.SettingsBindSetMapping set_mapping, GLib.DestroyNotify destroy)ŒGLib.Settings÷0œpublic void
+bind_writableÃ128Õ(string key, void* object, string property, bool inverted)ŒGLib.Settings÷0œpublic void
+blockingÃ8ŒGLib.Socket÷0œbool
+bufferÃ8ŒGLib.InputVector÷0œuint8
+bufferÃ8ŒGLib.OutputVector÷0œuint8
+buffer_sizeÃ8ŒGLib.BufferedInputStream÷0
+buffer_sizeÃ8ŒGLib.BufferedOutputStream÷0
+byte_orderÃ8ŒGLib.DataInputStream÷0œGLib.DataStreamByteOrder
+byte_orderÃ8ŒGLib.DataOutputStream÷0œGLib.DataStreamByteOrder
+bytesÃ8ŒGLib.InetAddress÷0œvoid
+bytes_neededÃ128Õ(uchar[] blob, size_t blob_len)ŒGLib.DBusMessage÷0œpublic ssize_t
+callÃ128Õ(string bus_name, string object_path, string interface_name, string method_name, GLib.Variant? parameters, GLib.VariantType reply_type, GLib.DBusCallFlags flags, int timeout_msec, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+callÃ128Õ(string method_name, GLib.Variant? parameters, GLib.DBusCallFlags flags, int timeout_msec, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0œpublic async
+call_syncÃ128Õ(string bus_name, string object_path, string interface_name, string method_name, GLib.Variant? parameters, GLib.VariantType reply_type, GLib.DBusCallFlags flags, int timeout_msec, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic GLib.Variant
+call_syncÃ128Õ(string method_name, GLib.Variant? parameters, GLib.DBusCallFlags flags, int timeout_msec, GLib.Cancellable? cancellable = null)ŒGLib.DBusProxy÷0œpublic GLib.Variant
+can_acquireÃ8ŒGLib.Permission÷0œbool
+can_be_executableÃ128Õ(string type)ŒGLib.ContentType÷0œpublic bool
+can_deleteÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+can_ejectÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+can_ejectÃ128Õ()ŒGLib.Mount÷0œpublic abstract bool
+can_ejectÃ128Õ()ŒGLib.Volume÷0œpublic abstract bool
+can_mountÃ128Õ()ŒGLib.Volume÷0œpublic abstract bool
+can_pollÃ128Õ()ŒGLib.PollableInputStream÷0œpublic abstract bool
+can_pollÃ128Õ()ŒGLib.PollableOutputStream÷0œpublic abstract bool
+can_poll_for_mediaÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+can_releaseÃ8ŒGLib.Permission÷0œbool
+can_remove_supports_typeÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+can_seekÃ128Õ()ŒGLib.FileIOStream÷0œpublic virtual bool
+can_seekÃ128Õ()ŒGLib.FileInputStream÷0œpublic virtual bool
+can_seekÃ128Õ()ŒGLib.FileOutputStream÷0œpublic virtual bool
+can_seekÃ128Õ()ŒGLib.Seekable÷0œpublic abstract bool
+can_startÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+can_start_degradedÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+can_stopÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+can_truncateÃ128Õ()ŒGLib.FileIOStream÷0œpublic virtual bool
+can_truncateÃ128Õ()ŒGLib.FileOutputStream÷0œpublic virtual bool
+can_truncateÃ128Õ()ŒGLib.Seekable÷0œpublic abstract bool
+can_unmountÃ128Õ()ŒGLib.Mount÷0œpublic abstract bool
+cancelÃ128Õ()ŒGLib.Cancellable÷0œpublic void
+cancelÃ128Õ()ŒGLib.FileMonitor÷0œpublic virtual bool
+cancelledÃ128Õ()ŒGLib.Cancellable÷0œpublic virtual signal void
+cancelledÃ8ŒGLib.FileMonitor÷0œbool
+capabilitiesÃ8ŒGLib.DBusConnection÷0œGLib.DBusCapabilityFlags
+certificateÃ8ŒGLib.TlsCertificate÷0œGLib.ByteArray
+certificateÃ8ŒGLib.TlsConnection÷0œGLib.TlsCertificate
+certificate_pemÃ8ŒGLib.TlsCertificate÷0
+change_action_stateÃ128Õ(string action_name, GLib.Variant value)ŒGLib.ActionGroup÷0œpublic abstract void
+change_eventÃ128Õ(void* keys, int n_keys)ŒGLib.Settings÷0œpublic virtual signal bool
+changedÃ128Õ()ŒGLib.Drive÷0œpublic signal void
+changedÃ128Õ(GLib.File file, GLib.File? other_file, GLib.FileMonitorEvent event_type)ŒGLib.FileMonitor÷0œpublic virtual signal void
+changedÃ128Õ()ŒGLib.Mount÷0œpublic signal void
+changedÃ128Õ(string key)ŒGLib.Settings÷0œpublic virtual signal void
+changedÃ128Õ()ŒGLib.SocketListener÷0œpublic virtual void
+changedÃ128Õ()ŒGLib.Volume÷0œpublic signal void
+check_connect_resultÃ128Õ()ŒGLib.Socket÷0œpublic bool
+choiceÃ8ŒGLib.MountOperation÷0œint
+clear_emblemsÃ128Õ()ŒGLib.EmblemedIcon÷0œpublic void
+clear_pendingÃ128Õ()ŒGLib.IOStream÷0œpublic void
+clear_pendingÃ128Õ()ŒGLib.InputStream÷0œpublic void
+clear_pendingÃ128Õ()ŒGLib.OutputStream÷0œpublic void
+clear_statusÃ128Õ()ŒGLib.FileInfo÷0œpublic void
+client_addressÃ8ŒGLib.DBusServer÷0
+closeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+closeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.FileEnumerator÷0œpublic bool
+closeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.IOStream÷0œpublic bool
+closeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic bool
+closeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic bool
+closeÃ128Õ()ŒGLib.Socket÷0œpublic bool
+closeÃ128Õ()ŒGLib.SocketListener÷0œpublic void
+close_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.FileEnumerator÷0œpublic virtual async
+close_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.IOStream÷0œpublic virtual async
+close_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual async
+close_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual async
+close_base_streamÃ8ŒGLib.FilterInputStream÷0œbool
+close_base_streamÃ8ŒGLib.FilterOutputStream÷0œbool
+close_fnÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.FileEnumerator÷0œpublic virtual bool
+close_fnÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.IOStream÷0œpublic virtual bool
+close_fnÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual bool
+close_fnÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual bool
+close_syncÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic bool
+closedÃ128Õ(bool p0, GLib.Error p1)ŒGLib.DBusConnection÷0œpublic virtual signal void
+closedÃ8ŒGLib.IOStream÷0œbool
+command_lineÃ128Õ(GLib.ApplicationCommandLine command_line)ŒGLib.Application÷0œpublic virtual signal int
+completeÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic void
+complete_in_idleÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic void
+condition_checkÃ128Õ(GLib.IOCondition condition)ŒGLib.Socket÷0œpublic GLib.IOCondition
+condition_waitÃ128Õ(GLib.IOCondition condition, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic bool
+connectÃ128Õ([CCode (type = )] owned GLib.Func<GLib.Cancellable> callback)ŒGLib.Cancellable÷0
+connectÃ128Õ(GLib.IOStream connection, GLib.ProxyAddress proxy_address, GLib.Cancellable? cancellable = null)ŒGLib.Proxy÷0œpublic abstract unowned
+connectÃ128Õ(GLib.SocketAddress address, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic bool
+connectÃ128Õ(GLib.SocketConnectable connectable, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic unowned
+connect_asyncÃ128Õ(GLib.IOStream connection, GLib.ProxyAddress proxy_address, GLib.Cancellable? cancellable = null)ŒGLib.Proxy÷0œpublic abstract async
+connect_asyncÃ128Õ(GLib.SocketConnectable connectable, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic async
+connect_to_hostÃ128Õ(string host_and_port, uint16 default_port, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic unowned
+connect_to_host_asyncÃ128Õ(string host_and_port, uint16 default_port, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic async
+connect_to_serviceÃ128Õ(string domain, string service, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic unowned
+connect_to_service_asyncÃ128Õ(string domain, string service, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic async
+connect_to_uriÃ128Õ(string uri, uint16 default_port, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic unowned
+connect_to_uri_asyncÃ128Õ(string uri, uint16 default_port, GLib.Cancellable? cancellable = null)ŒGLib.SocketClient÷0œpublic async
+connectableÃ8ŒGLib.ProxyAddressEnumerator÷0œGLib.SocketConnectable
+containerÃ8ŒGLib.FileEnumerator÷0œGLib.File
+convertÃ128Õ([CCode (array_length_type = )] uint8[] inbuf, [CCode (array_length_type = )] uint8[] outbuf, GLib.ConverterFlags flags, out size_t bytes_read, out size_t bytes_written)ŒGLib.Converter÷0œpublic abstract GLib.ConverterResult
+converterÃ8ŒGLib.ConverterInputStream÷0œGLib.Converter
+converterÃ8ŒGLib.ConverterOutputStream÷0œGLib.Converter
+copyÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned
+copyÃ128Õ(GLib.File destination, GLib.FileCopyFlags flags, GLib.Cancellable? cancellable = null, GLib.FileProgressCallback? progress_callback = null)ŒGLib.File÷0œpublic abstract bool
+copyÃ128Õ()ŒGLib.SrvTarget÷0œpublic GLib.SrvTarget
+copy_asyncÃ128Õ(GLib.File destination, GLib.FileCopyFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null, GLib.FileProgressCallback? progress_callback = null)ŒGLib.File÷0œpublic abstract async
+copy_attributesÃ128Õ(GLib.File destination, GLib.FileCopyFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+copy_intoÃ128Õ(GLib.FileInfo dest_info)ŒGLib.FileInfo÷0œpublic void
+createÃ128Õ(GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileOutputStream
+create_asyncÃ128Õ(GLib.FileCreateFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+create_from_commandlineÃ128Õ(string commandline, string? application_name, GLib.AppInfoCreateFlags flags)ŒGLib.AppInfo÷0œpublic unowned
+create_readwriteÃ128Õ(GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+create_readwrite_asyncÃ128Õ(GLib.FileCreateFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+create_sourceÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.PollableInputStream÷0œpublic abstract unowned
+create_sourceÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.PollableOutputStream÷0œpublic abstract unowned
+create_sourceÃ128Õ(GLib.IOCondition condition, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic GLib.SocketSource
+dataÃ8ŒGLib.MemoryOutputStream÷0œvoid
+data_sizeÃ8ŒGLib.MemoryOutputStream÷0
+dbus_error_nameÃ8ŒGLib.DBusErrorEntry÷0
+delayÃ128Õ()ŒGLib.Settings÷0œpublic void
+delay_applyÃ8ŒGLib.Settings÷0œbool
+delete_fileÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+deserializeÃ128Õ(int level, int type, [CCode (array_length_type = , array_length_pos = 2.9)] uint8[] data)ŒGLib.SocketControlMessage÷0œpublic virtual GLib.SocketControlMessage
+destination_hostnameÃ8ŒGLib.ProxyAddress÷0
+destination_portÃ8ŒGLib.ProxyAddress÷0
+destroy_functionÃ8ŒGLib.MemoryOutputStream÷0œvoid
+disconnectÃ128Õ(ulong handler_id)ŒGLib.Cancellable÷0œpublic void
+disconnectedÃ128Õ()ŒGLib.Drive÷0œpublic signal void
+dispatchÃ8ŒGLib.DBusSubtreeVTable÷0œGLib.DBusSubtreeDispatchFunc
+do_deleteÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+domainÃ8ŒGLib.MountOperation÷0
+domainÃ8ŒGLib.NetworkService÷0
+drive_changedÃ128Õ(GLib.Drive drive)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+drive_connectedÃ128Õ(GLib.Drive drive)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+drive_disconnectedÃ128Õ(GLib.Drive drive)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+drive_eject_buttonÃ128Õ(GLib.Drive drive)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+drive_stop_buttonÃ128Õ(GLib.Drive drive)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+dupÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned
+dupÃ128Õ()ŒGLib.File÷0œpublic abstract unowned
+dupÃ128Õ()ŒGLib.FileAttributeInfoList÷0œpublic unowned
+dupÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned
+ejectÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.Drive÷0œpublic abstract async
+ejectÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async
+ejectÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.Volume÷0œpublic abstract async
+eject_buttonÃ128Õ()ŒGLib.Drive÷0œpublic signal void
+eject_mountableÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+eject_mountable_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+eject_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Drive÷0œpublic abstract async
+eject_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async
+eject_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Volume÷0œpublic abstract async
+emit_accept_certificateÃ128Õ(GLib.TlsCertificate peer_cert, GLib.TlsCertificateFlags errors)ŒGLib.TlsConnection÷0œpublic bool
+emit_eventÃ128Õ(GLib.File child, GLib.File other_file, GLib.FileMonitorEvent event_type)ŒGLib.FileMonitor÷0œpublic void
+emit_signalÃ128Õ(string? destination_bus_name, string object_path, string interface_name, string signal_name, GLib.Variant parameters)ŒGLib.DBusConnection÷0œpublic bool
+enable_proxyÃ8ŒGLib.SocketClient÷0œbool
+enabledÃ8ŒGLib.Action÷0œbool
+enabledÃ8ŒGLib.SimpleAction÷0œbool
+enumerateÃ8ŒGLib.DBusSubtreeVTable÷0œGLib.DBusSubtreeEnumerateFunc
+enumerateÃ128Õ()ŒGLib.SocketConnectable÷0œpublic abstract unowned
+enumerate_childrenÃ128Õ(string attributes, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileEnumerator
+enumerate_children_asyncÃ128Õ(string attributes, GLib.FileQueryInfoFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+enumerate_identifiersÃ128Õ()ŒGLib.Drive÷0œpublic abstract unowned string
+enumerate_identifiersÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned string
+enumerate_namespaceÃ128Õ(string ns)ŒGLib.FileAttributeMatcher÷0œpublic bool
+enumerate_nextÃ128Õ()ŒGLib.FileAttributeMatcher÷0œpublic unowned string
+equalÃ128Õ(GLib.AppInfo appinfo2)ŒGLib.AppInfo÷0œpublic abstract bool
+equalÃ128Õ(GLib.File file2)ŒGLib.File÷0œpublic abstract bool
+equalÃ128Õ(GLib.Icon icon2)ŒGLib.Icon÷0œpublic abstract bool
+equalsÃ128Õ(string type1, string type2)ŒGLib.ContentType÷0œpublic bool
+error_codeÃ8ŒGLib.DBusErrorEntry÷0œint
+error_quarkÃ128Õ()ŒGLib.Resolver÷0œpublic GLib.Quark
+exit_on_closeÃ8ŒGLib.DBusConnection÷0œbool
+factory_create_connectionÃ128Õ(GLib.Socket socket)ŒGLib.SocketConnection÷0œpublic unowned
+factory_lookup_typeÃ128Õ(GLib.SocketFamily family, GLib.SocketType type, int protocol_id)ŒGLib.SocketConnection÷0œpublic GLib.Type
+factory_register_typeÃ128Õ(GLib.Type g_type, GLib.SocketFamily family, GLib.SocketType type, int protocol)ŒGLib.SocketConnection÷0œpublic void
+familyÃ8ŒGLib.InetAddress÷0œGLib.SocketFamily
+familyÃ8ŒGLib.Socket÷0œGLib.SocketFamily
+familyÃ8ŒGLib.SocketAddress÷0œGLib.SocketFamily
+familyÃ8ŒGLib.SocketClient÷0œGLib.SocketFamily
+fdÃ8ŒGLib.Socket÷0œint
+fileÃ8ŒGLib.FileIcon÷0œGLib.File
+file_equalÃ8ŒGLib÷0œGLib.EqualFunc
+file_hashÃ8ŒGLib÷0œGLib.HashFunc
+file_infoÃ8ŒGLib.ZlibCompressor÷0œGLib.FileInfo
+file_infoÃ8ŒGLib.ZlibDecompressor÷0œGLib.FileInfo
+fillÃ128Õ(ssize_t count, GLib.Cancellable? cancellable = null)ŒGLib.BufferedInputStream÷0œpublic virtual ssize_t
+fill_asyncÃ128Õ(ssize_t count, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.BufferedInputStream÷0œpublic virtual async
+find_enclosing_mountÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.Mount
+find_enclosing_mount_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+flagsÃ8ŒGLib.Application÷0œGLib.ApplicationFlags
+flagsÃ8ŒGLib.DBusConnection÷0œGLib.DBusConnectionFlags
+flagsÃ8ŒGLib.DBusPropertyInfo÷0œGLib.DBusPropertyInfoFlags
+flagsÃ8ŒGLib.DBusServer÷0œGLib.DBusServerFlags
+flagsÃ8ŒGLib.FileAttributeInfo÷0œGLib.FileAttributeInfoFlags
+flushÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+flushÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual bool
+flush_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual async
+flush_syncÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic bool
+formatÃ8ŒGLib.ZlibCompressor÷0œGLib.ZlibCompressorFormat
+formatÃ8ŒGLib.ZlibDecompressor÷0œGLib.ZlibCompressorFormat
+from_charsetÃ8ŒGLib.CharsetConverter÷0
+from_mime_typeÃ128Õ(string mime_type)ŒGLib.ContentType÷0
+from_tokensÃ128Õ(string tokens, int num_tokens, int version)ŒGLib.Icon÷0œpublic abstract unowned
+g_bus_typeÃ8ŒGLib.DBusProxy÷0œGLib.BusType
+g_connectionÃ8ŒGLib.DBusProxy÷0œGLib.DBusConnection
+g_content_type_can_be_executableÃ128Õ(string type)ŒGLib÷0œpublic bool
+g_content_type_equalsÃ128Õ(string type1, string type2)ŒGLib÷0œpublic bool
+g_content_type_from_mime_typeÃ128Õ(string mime_type)ŒGLib÷0
+g_content_type_get_descriptionÃ128Õ(string type)ŒGLib÷0
+g_content_type_get_iconÃ128Õ(string type)ŒGLib÷0œpublic GLib.Icon
+g_content_type_get_mime_typeÃ128Õ(string type)ŒGLib÷0
+g_content_type_guessÃ128Õ(string filename, uchar[] data, out bool result_uncertain)ŒGLib÷0
+g_content_type_guess_for_treeÃ128Õ(GLib.File root)ŒGLib÷0
+g_content_type_is_aÃ128Õ(string type, string supertype)ŒGLib÷0œpublic bool
+g_content_type_is_unknownÃ128Õ(string type)ŒGLib÷0œpublic bool
+g_content_types_get_registeredÃ128Õ()ŒGLib÷0œpublic GLib.List
+g_dbus_address_get_for_bus_syncÃ128Õ(GLib.BusType bus_type, GLib.Cancellable? cancellable = null)ŒGLib÷0œpublic unowned string
+g_dbus_address_get_streamÃ128Õ(string address, GLib.Cancellable? cancellable = null)ŒGLib÷0œpublic async void
+g_dbus_address_get_stream_finishÃ128Õ(GLib.AsyncResult res, string out_guid)ŒGLib÷0œpublic unowned
+g_dbus_address_get_stream_syncÃ128Õ(string address, string out_guid, GLib.Cancellable? cancellable = null)ŒGLib÷0œpublic unowned
+g_dbus_error_encode_gerrorÃ128Õ(GLib.Error error)ŒGLib÷0œpublic unowned string
+g_dbus_error_get_remote_errorÃ128Õ(GLib.Error error)ŒGLib÷0œpublic unowned string
+g_dbus_error_is_remote_errorÃ128Õ(GLib.Error error)ŒGLib÷0œpublic bool
+g_dbus_error_new_for_dbus_errorÃ128Õ(string dbus_error_name, string dbus_error_message)ŒGLib÷0œpublic unowned
+g_dbus_error_quarkÃ128Õ()ŒGLib÷0œpublic GLib.Quark
+g_dbus_error_register_errorÃ128Õ(GLib.Quark error_domain, int error_code, string dbus_error_name)ŒGLib÷0œpublic bool
+g_dbus_error_register_error_domainÃ128Õ(string error_domain_quark_name, size_t quark_volatile, GLib.DBusErrorEntry entries, uint num_entries)ŒGLib÷0œpublic void
+g_dbus_error_set_dbus_errorÃ128Õ(string dbus_error_name, string dbus_error_message, string format)ŒGLib÷0œpublic void
+g_dbus_error_set_dbus_error_valistÃ128Õ(string dbus_error_name, string dbus_error_message, string format, void* var_args)ŒGLib÷0œpublic void
+g_dbus_error_strip_remote_errorÃ128Õ(GLib.Error error)ŒGLib÷0œpublic bool
+g_dbus_error_unregister_errorÃ128Õ(GLib.Quark error_domain, int error_code, string dbus_error_name)ŒGLib÷0œpublic bool
+g_dbus_generate_guidÃ128Õ()ŒGLib÷0œpublic unowned string
+g_dbus_is_addressÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_guidÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_interface_nameÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_member_nameÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_nameÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_supported_addressÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_dbus_is_unique_nameÃ128Õ(string str)ŒGLib÷0œpublic bool
+g_default_timeoutÃ8ŒGLib.DBusProxy÷0œint
+g_flagsÃ8ŒGLib.DBusProxy÷0œGLib.DBusProxyFlags
+g_interface_infoÃ8ŒGLib.DBusProxy÷0œGLib.DBusInterfaceInfo
+g_interface_nameÃ8ŒGLib.DBusProxy÷0
+g_io_error_from_errnoÃ128Õ(int err_no)ŒGLib÷0œpublic unowned
+g_io_error_quarkÃ128Õ()ŒGLib÷0œpublic GLib.Quark
+g_io_modules_load_all_in_directoryÃ128Õ(string dirname)ŒGLib÷0œpublic GLib.List
+g_io_modules_scan_all_in_directoryÃ128Õ(string dirname)ŒGLib÷0œpublic void
+g_io_scheduler_cancel_all_jobsÃ128Õ()ŒGLib÷0œpublic void
+g_io_scheduler_push_jobÃ128Õ(owned GLib.IOSchedulerJobFunc job_func, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib÷0œpublic void
+g_nameÃ8ŒGLib.DBusProxy÷0
+g_name_ownerÃ8ŒGLib.DBusProxy÷0
+g_object_pathÃ8ŒGLib.DBusProxy÷0
+g_pollable_source_newÃ128Õ(GLib.Object pollable_stream)ŒGLib÷0œpublic unowned
+g_properties_changedÃ128Õ(GLib.Variant changed_properties, [CCode (array_length = false, array_null_terminated = true)] string[] invalidated_properties)ŒGLib.DBusProxy÷0œpublic virtual signal void
+g_signalÃ128Õ(string sender_name, string signal_name, GLib.Variant parameters)ŒGLib.DBusProxy÷0œpublic virtual signal void
+g_simple_async_report_error_in_idleÃ128Õ(GLib.Object object, GLib.AsyncReadyCallback callback, GLib.Quark domain, int code, string format)ŒGLib÷0œpublic void
+g_simple_async_report_gerror_in_idleÃ128Õ(GLib.Object object, GLib.AsyncReadyCallback callback, GLib.Error error)ŒGLib÷0œpublic void
+g_simple_async_report_take_gerror_in_idleÃ128Õ(GLib.Object object, GLib.AsyncReadyCallback callback, GLib.Error error)ŒGLib÷0œpublic void
+g_tls_error_quarkÃ128Õ()ŒGLib÷0œpublic GLib.Quark
+generate_xmlÃ128Õ(uint indent, GLib.StringBuilder string_builder)ŒGLib.DBusInterfaceInfo÷0œpublic void
+generate_xmlÃ128Õ(uint indent, GLib.StringBuilder string_builder)ŒGLib.DBusNodeInfo÷0œpublic void
+get_accepted_casÃ128Õ()ŒGLib.TlsClientConnection÷0œpublic unowned
+get_action_enabledÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract bool
+get_action_parameter_typeÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract unowned
+get_action_stateÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract unowned
+get_action_state_hintÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract unowned
+get_action_state_typeÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract unowned
+get_activation_rootÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned
+get_addressÃ128Õ()ŒGLib.InetSocketAddress÷0œpublic unowned
+get_allÃ128Õ()ŒGLib.AppInfo÷0œpublic GLib.List
+get_all_for_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic GLib.List
+get_allowedÃ128Õ()ŒGLib.Permission÷0œpublic bool
+get_anonymousÃ128Õ()ŒGLib.MountOperation÷0œpublic bool
+get_application_idÃ128Õ()ŒGLib.Application÷0œpublic unowned string
+get_arg0Ã128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_argumentsÃ128Õ()ŒGLib.ApplicationCommandLine÷0
+get_attribute_as_stringÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic unowned string
+get_attribute_booleanÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic bool
+get_attribute_byte_stringÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic unowned string
+get_attribute_dataÃ128Õ(string attribute, GLib.FileAttributeType? type, void* value_pp, GLib.FileAttributeStatus? status)ŒGLib.FileInfo÷0œpublic bool
+get_attribute_int32Ã128Õ(string attribute)ŒGLib.FileInfo÷0œpublic int32
+get_attribute_int64Ã128Õ(string attribute)ŒGLib.FileInfo÷0œpublic int64
+get_attribute_objectÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic unowned
+get_attribute_statusÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic GLib.FileAttributeStatus
+get_attribute_stringÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic unowned string
+get_attribute_stringvÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic unowned string
+get_attribute_typeÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic GLib.FileAttributeType
+get_attribute_uint32Ã128Õ(string attribute)ŒGLib.FileInfo÷0œpublic uint32
+get_attribute_uint64Ã128Õ(string attribute)ŒGLib.FileInfo÷0œpublic uint64
+get_auto_growÃ128Õ()ŒGLib.BufferedOutputStream÷0œpublic bool
+get_availableÃ128Õ()ŒGLib.BufferedInputStream÷0œpublic size_t
+get_base_io_streamÃ128Õ()ŒGLib.TcpWrapperConnection÷0œpublic unowned
+get_base_streamÃ128Õ()ŒGLib.FilterInputStream÷0œpublic unowned
+get_base_streamÃ128Õ()ŒGLib.FilterOutputStream÷0œpublic unowned
+get_basenameÃ128Õ()ŒGLib.File÷0œpublic abstract string?
+get_blockingÃ128Õ()ŒGLib.Socket÷0œpublic bool
+get_bodyÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned
+get_booleanÃ128Õ(string key)ŒGLib.Settings÷0œpublic bool
+get_buffer_sizeÃ128Õ()ŒGLib.BufferedInputStream÷0œpublic size_t
+get_buffer_sizeÃ128Õ()ŒGLib.BufferedOutputStream÷0œpublic size_t
+get_byte_orderÃ128Õ()ŒGLib.DBusMessage÷0œpublic GLib.DBusMessageByteOrder
+get_byte_orderÃ128Õ()ŒGLib.DataInputStream÷0œpublic GLib.DataStreamByteOrder
+get_byte_orderÃ128Õ()ŒGLib.DataOutputStream÷0œpublic GLib.DataStreamByteOrder
+get_cached_propertyÃ128Õ(string property_name)ŒGLib.DBusProxy÷0œpublic unowned
+get_cached_property_namesÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned string
+get_can_acquireÃ128Õ()ŒGLib.Permission÷0œpublic bool
+get_can_releaseÃ128Õ()ŒGLib.Permission÷0œpublic bool
+get_capabilitiesÃ128Õ()ŒGLib.DBusConnection÷0œpublic GLib.DBusCapabilityFlags
+get_certificateÃ128Õ()ŒGLib.TlsConnection÷0œpublic unowned
+get_certificate_typeÃ128Õ()ŒGLib.TlsBackend÷0œpublic abstract GLib.Type
+get_childÃ128Õ(string name)ŒGLib.File÷0œpublic GLib.File
+get_childÃ128Õ(string name)ŒGLib.Settings÷0œpublic unowned
+get_child_for_display_nameÃ128Õ(string display_name)ŒGLib.File÷0œpublic abstract GLib.File
+get_choiceÃ128Õ()ŒGLib.MountOperation÷0œpublic int
+get_client_addressÃ128Õ()ŒGLib.DBusServer÷0œpublic unowned string
+get_client_connection_typeÃ128Õ()ŒGLib.TlsBackend÷0œpublic abstract GLib.Type
+get_close_base_streamÃ128Õ()ŒGLib.FilterInputStream÷0œpublic bool
+get_close_base_streamÃ128Õ()ŒGLib.FilterOutputStream÷0œpublic bool
+get_commandlineÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_completion_suffixÃ128Õ(string initial_text)ŒGLib.FilenameCompleter÷0œpublic unowned string
+get_completionsÃ128Õ(string initial_text)ŒGLib.FilenameCompleter÷0œpublic unowned string
+get_connected_drivesÃ128Õ()ŒGLib.VolumeMonitor÷0œpublic virtual GLib.List
+get_connectionÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned
+get_connectionÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned
+get_containerÃ128Õ()ŒGLib.FileEnumerator÷0œpublic unowned
+get_content_typeÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_converterÃ128Õ()ŒGLib.ConverterInputStream÷0œpublic unowned
+get_converterÃ128Õ()ŒGLib.ConverterOutputStream÷0œpublic unowned
+get_credentialsÃ128Õ()ŒGLib.Socket÷0œpublic unowned
+get_currentÃ128Õ()ŒGLib.Cancellable÷0œpublic unowned
+get_cwdÃ128Õ()ŒGLib.ApplicationCommandLine÷0œpublic unowned string
+get_dataÃ128Õ()ŒGLib.MemoryOutputStream÷0œpublic unowned
+get_data_sizeÃ128Õ()ŒGLib.MemoryOutputStream÷0œpublic size_t
+get_defaultÃ128Õ()ŒGLib.ProxyResolver÷0œpublic unowned
+get_defaultÃ128Õ()ŒGLib.Resolver÷0œpublic unowned
+get_defaultÃ128Õ()ŒGLib.TlsBackend÷0œpublic unowned
+get_defaultÃ128Õ()ŒGLib.Vfs÷0œpublic unowned
+get_default_for_protocolÃ128Õ(string protocol)ŒGLib.Proxy÷0œpublic unowned
+get_default_for_typeÃ128Õ(string content_type, bool must_support_uris)ŒGLib.AppInfo÷0œpublic unowned
+get_default_for_uri_schemeÃ128Õ(string uri_scheme)ŒGLib.AppInfo÷0œpublic unowned
+get_default_locationÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned
+get_default_timeoutÃ128Õ()ŒGLib.DBusProxy÷0œpublic int
+get_descriptionÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_descriptionÃ128Õ(string type)ŒGLib.ContentType÷0
+get_destinationÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_destination_hostnameÃ128Õ()ŒGLib.ProxyAddress÷0œpublic unowned string
+get_destination_portÃ128Õ()ŒGLib.ProxyAddress÷0œpublic uint16
+get_displayÃ128Õ(GLib.AppInfo info, GLib.List<GLib.File> files)ŒGLib.AppLaunchContext÷0
+get_display_nameÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_display_nameÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_domainÃ128Õ()ŒGLib.MountOperation÷0œpublic unowned string
+get_domainÃ128Õ()ŒGLib.NetworkService÷0œpublic unowned string
+get_doubleÃ128Õ(string key)ŒGLib.Settings÷0œpublic double
+get_driveÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned
+get_driveÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned
+get_edit_nameÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_emblemsÃ128Õ()ŒGLib.EmblemedIcon÷0œpublic unowned
+get_enable_proxyÃ128Õ()ŒGLib.SocketClient÷0œpublic bool
+get_enabledÃ128Õ()ŒGLib.Action÷0œpublic abstract bool
+get_enumÃ128Õ(string key)ŒGLib.Settings÷0œpublic int
+get_environÃ128Õ()ŒGLib.ApplicationCommandLine÷0œpublic unowned string
+get_error_nameÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_etagÃ128Õ()ŒGLib.FileIOStream÷0œpublic virtual unowned string
+get_etagÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_etagÃ128Õ()ŒGLib.FileOutputStream÷0œpublic virtual unowned string
+get_executableÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_exit_on_closeÃ128Õ()ŒGLib.DBusConnection÷0œpublic bool
+get_exit_statusÃ128Õ()ŒGLib.ApplicationCommandLine÷0œpublic int
+get_extension_by_nameÃ128Õ(string name)ŒGLib.IOExtensionPoint÷0œpublic unowned
+get_extensionsÃ128Õ()ŒGLib.IOExtensionPoint÷0œpublic unowned
+get_fallback_for_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic unowned
+get_familyÃ128Õ()ŒGLib.InetAddress÷0œpublic GLib.SocketFamily
+get_familyÃ128Õ()ŒGLib.Socket÷0œpublic GLib.SocketFamily
+get_familyÃ128Õ()ŒGLib.SocketAddress÷0œpublic virtual GLib.SocketFamily
+get_familyÃ128Õ()ŒGLib.SocketClient÷0œpublic GLib.SocketFamily
+get_fdÃ128Õ()ŒGLib.Cancellable÷0œpublic int
+get_fdÃ128Õ()ŒGLib.Socket÷0œpublic int
+get_fileÃ128Õ()ŒGLib.FileIcon÷0œpublic unowned
+get_file_for_pathÃ128Õ(string path)ŒGLib.Vfs÷0œpublic virtual GLib.File
+get_file_for_uriÃ128Õ(string uri)ŒGLib.Vfs÷0œpublic virtual GLib.File
+get_file_infoÃ128Õ()ŒGLib.ZlibCompressor÷0œpublic unowned
+get_file_infoÃ128Õ()ŒGLib.ZlibDecompressor÷0œpublic unowned
+get_file_typeÃ128Õ()ŒGLib.FileInfo÷0œpublic GLib.FileType
+get_flagsÃ128Õ()ŒGLib.Application÷0œpublic GLib.ApplicationFlags
+get_flagsÃ128Õ()ŒGLib.DBusMessage÷0œpublic GLib.DBusMessageFlags
+get_flagsÃ128Õ()ŒGLib.DBusProxy÷0œpublic GLib.DBusProxyFlags
+get_flagsÃ128Õ()ŒGLib.DBusServer÷0œpublic GLib.DBusServerFlags
+get_flagsÃ128Õ(string key)ŒGLib.Settings÷0
+get_graceful_disconnectÃ128Õ()ŒGLib.TcpConnection÷0œpublic bool
+get_guidÃ128Õ()ŒGLib.DBusConnection÷0œpublic unowned string
+get_guidÃ128Õ()ŒGLib.DBusServer÷0œpublic unowned string
+get_has_unappliedÃ128Õ()ŒGLib.Settings÷0œpublic bool
+get_headerÃ128Õ(GLib.DBusMessageHeaderField header_field)ŒGLib.DBusMessage÷0œpublic unowned
+get_header_fieldsÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned
+get_hostnameÃ128Õ()ŒGLib.NetworkAddress÷0œpublic unowned string
+get_hostnameÃ128Õ()ŒGLib.SrvTarget÷0œpublic unowned string
+get_iconÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned
+get_iconÃ128Õ(string type)ŒGLib.ContentType÷0œpublic GLib.Icon
+get_iconÃ128Õ()ŒGLib.Drive÷0œpublic abstract unowned
+get_iconÃ128Õ()ŒGLib.Emblem÷0œpublic unowned
+get_iconÃ128Õ()ŒGLib.EmblemedIcon÷0œpublic unowned
+get_iconÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned
+get_iconÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned
+get_iconÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned
+get_idÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_identifierÃ128Õ(string kind)ŒGLib.Drive÷0œpublic abstract unowned string
+get_identifierÃ128Õ(string kind)ŒGLib.Volume÷0œpublic abstract unowned string
+get_inactivity_timeoutÃ128Õ()ŒGLib.Application÷0
+get_input_streamÃ128Õ()ŒGLib.IOStream÷0œpublic virtual unowned
+get_intÃ128Õ(string key)ŒGLib.Settings÷0œpublic int
+get_interfaceÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_interface_infoÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned
+get_interface_nameÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned string
+get_interface_nameÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned string
+get_is_anyÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_backupÃ128Õ()ŒGLib.FileInfo÷0œpublic bool
+get_is_hiddenÃ128Õ()ŒGLib.FileInfo÷0œpublic bool
+get_is_link_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_loopbackÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_mc_globalÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_mc_link_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_mc_node_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_mc_org_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_mc_site_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_multicastÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_registeredÃ128Õ()ŒGLib.Application÷0œpublic bool
+get_is_remoteÃ128Õ()ŒGLib.Application÷0œpublic bool
+get_is_remoteÃ128Õ()ŒGLib.ApplicationCommandLine÷0œpublic bool
+get_is_site_localÃ128Õ()ŒGLib.InetAddress÷0œpublic bool
+get_is_symlinkÃ128Õ()ŒGLib.FileInfo÷0œpublic bool
+get_issuerÃ128Õ()ŒGLib.TlsCertificate÷0œpublic unowned
+get_keepaliveÃ128Õ()ŒGLib.Socket÷0œpublic bool
+get_levelÃ128Õ()ŒGLib.SocketControlMessage÷0œpublic virtual int
+get_listen_backlogÃ128Õ()ŒGLib.Socket÷0œpublic int
+get_localÃ128Õ()ŒGLib.Vfs÷0œpublic unowned
+get_local_addressÃ128Õ()ŒGLib.Socket÷0œpublic unowned
+get_local_addressÃ128Õ()ŒGLib.SocketClient÷0œpublic unowned
+get_local_addressÃ128Õ()ŒGLib.SocketConnection÷0œpublic unowned
+get_lockedÃ128Õ()ŒGLib.DBusMessage÷0œpublic bool
+get_mappedÃ128Õ(string key, GLib.SettingsGetMapping mapping)ŒGLib.Settings÷0œpublic void *
+get_memberÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_messageÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned
+get_message_typeÃ128Õ()ŒGLib.DBusMessage÷0œpublic GLib.DBusMessageType
+get_method_infoÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned
+get_method_nameÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned string
+get_mime_typeÃ128Õ(string type)ŒGLib.ContentType÷0
+get_modification_timeÃ128Õ(out GLib.TimeVal _result)ŒGLib.FileInfo÷0œpublic void
+get_mountÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned
+get_mount_for_mount_pathÃ128Õ(string mount_path, GLib.Cancellable? cancellable = null)ŒGLib.NativeVolumeMonitor÷0œpublic virtual unowned
+get_mount_for_uuidÃ128Õ(string uuid)ŒGLib.VolumeMonitor÷0œpublic virtual GLib.Mount
+get_mountsÃ128Õ()ŒGLib.VolumeMonitor÷0œpublic virtual GLib.List
+get_msg_typeÃ128Õ()ŒGLib.SocketControlMessage÷0œpublic int
+get_nameÃ128Õ()ŒGLib.Action÷0œpublic abstract unowned string
+get_nameÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract unowned string
+get_nameÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned string
+get_nameÃ128Õ()ŒGLib.Drive÷0œpublic abstract unowned string
+get_nameÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_nameÃ128Õ()ŒGLib.IOExtension÷0œpublic unowned string
+get_nameÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned string
+get_nameÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned string
+get_name_ownerÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned string
+get_namesÃ128Õ()ŒGLib.ThemedIcon÷0œpublic unowned string
+get_nativeÃ128Õ(GLib.CredentialsType native_type)ŒGLib.Credentials÷0œpublic void *
+get_native_sizeÃ128Õ()ŒGLib.InetAddress÷0œpublic size_t
+get_native_sizeÃ128Õ()ŒGLib.SocketAddress÷0œpublic virtual ssize_t
+get_newline_typeÃ128Õ()ŒGLib.DataInputStream÷0œpublic GLib.DataStreamNewlineType
+get_num_fallbacksÃ128Õ()ŒGLib.CharsetConverter÷0
+get_num_unix_fdsÃ128Õ()ŒGLib.DBusMessage÷0œpublic uint32
+get_object_pathÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned string
+get_object_pathÃ128Õ()ŒGLib.DBusProxy÷0œpublic unowned string
+get_op_res_gbooleanÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic bool
+get_op_res_gpointerÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic void *
+get_op_res_gssizeÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic ssize_t
+get_originÃ128Õ()ŒGLib.Emblem÷0œpublic GLib.EmblemOrigin
+get_output_streamÃ128Õ()ŒGLib.IOStream÷0œpublic virtual unowned
+get_parameter_typeÃ128Õ()ŒGLib.Action÷0œpublic abstract unowned
+get_parametersÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned
+get_parentÃ128Õ()ŒGLib.File÷0œpublic abstract GLib.File?
+get_parse_nameÃ128Õ()ŒGLib.File÷0
+get_passwordÃ128Õ()ŒGLib.MountOperation÷0œpublic unowned string
+get_passwordÃ128Õ()ŒGLib.ProxyAddress÷0œpublic unowned string
+get_password_saveÃ128Õ()ŒGLib.MountOperation÷0œpublic GLib.PasswordSave
+get_pathÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_pathÃ128Õ()ŒGLib.File÷0œpublic abstract string?
+get_peer_certificateÃ128Õ()ŒGLib.TlsConnection÷0œpublic unowned
+get_peer_certificate_errorsÃ128Õ()ŒGLib.TlsConnection÷0œpublic GLib.TlsCertificateFlags
+get_peer_credentialsÃ128Õ()ŒGLib.DBusConnection÷0œpublic unowned
+get_platform_dataÃ128Õ()ŒGLib.ApplicationCommandLine÷0œpublic GLib.Variant?
+get_portÃ128Õ()ŒGLib.InetSocketAddress÷0œpublic uint16
+get_portÃ128Õ()ŒGLib.NetworkAddress÷0œpublic uint16
+get_portÃ128Õ()ŒGLib.SrvTarget÷0œpublic uint16
+get_priorityÃ128Õ()ŒGLib.IOExtension÷0œpublic int
+get_priorityÃ128Õ()ŒGLib.SrvTarget÷0œpublic uint16
+get_propertyÃ8ŒGLib.DBusInterfaceVTable÷0œGLib.DBusInterfaceGetPropertyFunc
+get_protocolÃ128Õ()ŒGLib.NetworkService÷0œpublic unowned string
+get_protocolÃ128Õ()ŒGLib.ProxyAddress÷0œpublic unowned string
+get_protocolÃ128Õ()ŒGLib.Socket÷0œpublic GLib.SocketProtocol
+get_protocolÃ128Õ()ŒGLib.SocketClient÷0œpublic GLib.SocketProtocol
+get_proxyÃ128Õ(GLib.BusType bus_type, string name, string object_path, GLib.DBusProxyFlags flags = 0, GLib.Cancellable? cancellable = null)ŒGLib.Bus÷0œpublic async
+get_proxyÃ128Õ(string? name, string object_path, GLib.DBusProxyFlags flags = 0, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+get_proxy_syncÃ128Õ(GLib.BusType bus_type, string name, string object_path, GLib.DBusProxyFlags flags = 0, GLib.Cancellable? cancellable = null)ŒGLib.Bus÷0œpublic T
+get_proxy_syncÃ128Õ(string? name, string object_path, GLib.DBusProxyFlags flags = 0, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic T
+get_rangeÃ128Õ(string key)ŒGLib.Settings÷0œpublic unowned
+get_recommended_for_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic unowned
+get_rehandshake_modeÃ128Õ()ŒGLib.TlsConnection÷0œpublic GLib.TlsRehandshakeMode
+get_relative_pathÃ128Õ(GLib.File descendant)ŒGLib.File÷0œpublic abstract string?
+get_remote_addressÃ128Õ()ŒGLib.Socket÷0œpublic unowned
+get_remote_addressÃ128Õ()ŒGLib.SocketConnection÷0œpublic unowned
+get_reply_serialÃ128Õ()ŒGLib.DBusMessage÷0œpublic uint32
+get_require_close_notifyÃ128Õ()ŒGLib.TlsConnection÷0œpublic bool
+get_required_typeÃ128Õ()ŒGLib.IOExtensionPoint÷0œpublic GLib.Type
+get_rootÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned
+get_schemeÃ128Õ()ŒGLib.NetworkAddress÷0œpublic unowned string
+get_schemeÃ128Õ()ŒGLib.NetworkService÷0œpublic unowned string
+get_senderÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_senderÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic unowned string
+get_serialÃ128Õ()ŒGLib.DBusMessage÷0œpublic uint32
+get_server_connection_typeÃ128Õ()ŒGLib.TlsBackend÷0œpublic abstract GLib.Type
+get_server_identityÃ128Õ()ŒGLib.TlsClientConnection÷0œpublic unowned
+get_serviceÃ128Õ()ŒGLib.NetworkService÷0œpublic unowned string
+get_signatureÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned string
+get_sizeÃ128Õ()ŒGLib.FileInfo÷0œpublic int64
+get_sizeÃ128Õ()ŒGLib.MemoryOutputStream÷0œpublic size_t
+get_sizeÃ128Õ()ŒGLib.SocketControlMessage÷0œpublic virtual size_t
+get_socketÃ128Õ()ŒGLib.SocketConnection÷0œpublic unowned
+get_socket_typeÃ128Õ()ŒGLib.Socket÷0œpublic GLib.SocketType
+get_socket_typeÃ128Õ()ŒGLib.SocketClient÷0œpublic GLib.SocketType
+get_sort_orderÃ128Õ()ŒGLib.FileInfo÷0œpublic int32
+get_source_objectÃ128Õ()ŒGLib.AsyncResult÷0œpublic abstract unowned
+get_source_tagÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic void *
+get_start_stop_typeÃ128Õ()ŒGLib.Drive÷0œpublic abstract GLib.DriveStartStopType
+get_startup_notify_idÃ128Õ(GLib.AppInfo info, GLib.List<GLib.File> files)ŒGLib.AppLaunchContext÷0
+get_stateÃ128Õ()ŒGLib.Action÷0œpublic abstract unowned
+get_state_hintÃ128Õ()ŒGLib.Action÷0œpublic abstract unowned
+get_state_typeÃ128Õ()ŒGLib.Action÷0œpublic abstract unowned
+get_streamÃ128Õ()ŒGLib.DBusConnection÷0œpublic unowned
+get_stringÃ128Õ(string key)ŒGLib.Settings÷0
+get_strvÃ128Õ(string key)ŒGLib.Settings÷0
+get_supported_uri_schemesÃ128Õ()ŒGLib.Vfs÷0œpublic virtual unowned string
+get_symlink_targetÃ128Õ()ŒGLib.FileInfo÷0œpublic unowned string
+get_syncÃ128Õ(GLib.BusType bus_type, GLib.Cancellable? cancellable = null)ŒGLib.Bus÷0œpublic GLib.DBusConnection
+get_timeoutÃ128Õ()ŒGLib.Socket÷0
+get_timeoutÃ128Õ()ŒGLib.SocketClient÷0
+get_tlsÃ128Õ()ŒGLib.SocketClient÷0œpublic bool
+get_tls_validation_flagsÃ128Õ()ŒGLib.SocketClient÷0œpublic GLib.TlsCertificateFlags
+get_typeÃ128Õ()ŒGLib.IOExtension÷0œpublic GLib.Type
+get_typeÃ128Õ()ŒGLib.SocketControlMessage÷0œpublic virtual int
+get_unique_nameÃ128Õ()ŒGLib.DBusConnection÷0œpublic unowned string
+get_unix_fd_listÃ128Õ()ŒGLib.DBusMessage÷0œpublic unowned
+get_unix_userÃ128Õ()ŒGLib.Credentials÷0
+get_uriÃ128Õ()ŒGLib.File÷0
+get_uri_schemeÃ128Õ()ŒGLib.File÷0
+get_use_fallbackÃ128Õ()ŒGLib.CharsetConverter÷0œpublic bool
+get_use_ssl3Ã128Õ()ŒGLib.TlsClientConnection÷0œpublic bool
+get_use_system_certdbÃ128Õ()ŒGLib.TlsConnection÷0œpublic bool
+get_user_dataÃ128Õ()ŒGLib.AsyncResult÷0œpublic abstract void *
+get_user_dataÃ128Õ()ŒGLib.DBusMethodInvocation÷0œpublic void *
+get_usernameÃ128Õ()ŒGLib.MountOperation÷0œpublic unowned string
+get_usernameÃ128Õ()ŒGLib.ProxyAddress÷0œpublic unowned string
+get_uuidÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned string
+get_uuidÃ128Õ()ŒGLib.Volume÷0œpublic abstract unowned string
+get_validation_flagsÃ128Õ()ŒGLib.TlsClientConnection÷0œpublic GLib.TlsCertificateFlags
+get_valueÃ128Õ(string key)ŒGLib.Settings÷0œpublic GLib.Variant
+get_volumeÃ128Õ()ŒGLib.Mount÷0œpublic abstract unowned
+get_volume_for_uuidÃ128Õ(string uuid)ŒGLib.VolumeMonitor÷0œpublic virtual GLib.Volume
+get_volumesÃ128Õ()ŒGLib.Drive÷0œpublic abstract GLib.List
+get_volumesÃ128Õ()ŒGLib.VolumeMonitor÷0œpublic virtual GLib.List
+get_weightÃ128Õ()ŒGLib.SrvTarget÷0œpublic uint16
+getenvÃ128Õ(string name)ŒGLib.ApplicationCommandLine÷0œpublic unowned string
+giconÃ8ŒGLib.EmblemedIcon÷0œGLib.Icon
+got_completion_dataÃ128Õ()ŒGLib.FilenameCompleter÷0œpublic virtual signal void
+graceful_disconnectÃ8ŒGLib.TcpConnection÷0œbool
+guessÃ128Õ(string? filename, uchar[] data, out bool result_uncertain)ŒGLib.ContentType÷0
+guess_content_typeÃ128Õ(bool force_rescan, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async string
+guess_content_type_syncÃ128Õ(bool force_rescan, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract unowned string
+guess_for_treeÃ128Õ(GLib.File root)ŒGLib.ContentType÷0
+guidÃ8ŒGLib.DBusConnection÷0
+guidÃ8ŒGLib.DBusServer÷0
+handshakeÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.TlsConnection÷0œpublic virtual bool
+handshake_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.TlsConnection÷0œpublic virtual async
+has_actionÃ128Õ(string action_name)ŒGLib.ActionGroup÷0œpublic abstract bool
+has_attributeÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic bool
+has_mediaÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+has_namespaceÃ128Õ(string name_space)ŒGLib.FileInfo÷0œpublic bool
+has_parentÃ128Õ(GLib.File? parent)ŒGLib.File÷0œpublic bool
+has_pendingÃ128Õ()ŒGLib.FileEnumerator÷0œpublic bool
+has_pendingÃ128Õ()ŒGLib.IOStream÷0œpublic bool
+has_pendingÃ128Õ()ŒGLib.InputStream÷0œpublic bool
+has_pendingÃ128Õ()ŒGLib.OutputStream÷0œpublic bool
+has_prefixÃ128Õ(GLib.File prefix)ŒGLib.File÷0œpublic bool
+has_unappliedÃ8ŒGLib.Settings÷0œbool
+has_uri_schemeÃ128Õ(string uri_scheme)ŒGLib.File÷0œpublic abstract bool
+has_volumesÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+hashÃ128Õ()ŒGLib.File÷0
+hashÃ128Õ(void* icon)ŒGLib.Icon÷0
+holdÃ128Õ()ŒGLib.Application÷0œpublic void
+hostnameÃ8ŒGLib.NetworkAddress÷0
+iconÃ8ŒGLib.Emblem÷0œGLib.Object
+id_is_validÃ128Õ(string application_id)ŒGLib.Application÷0œpublic bool
+impl_updateÃ128Õ(bool allowed, bool can_acquire, bool can_release)ŒGLib.Permission÷0œpublic void
+implementÃ128Õ(string extension_point_name, GLib.Type type, string extension_name, int priority)ŒGLib.IOExtensionPoint÷0œpublic unowned
+in_argsÃ8ŒGLib.DBusMethodInfo÷0œGLib.DBusArgInfo
+inactivity_timeoutÃ8ŒGLib.Application÷0
+incomingÃ128Õ(GLib.SocketConnection connection, GLib.Object? source_object)ŒGLib.SocketService÷0œpublic virtual signal bool
+infosÃ8ŒGLib.FileAttributeInfoList÷0œGLib.FileAttributeInfo
+initÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Initable÷0œpublic abstract bool
+init_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.AsyncInitable÷0œpublic abstract async
+input_streamÃ8ŒGLib.IOStream÷0œGLib.InputStream
+insertÃ128Õ(GLib.Action action)ŒGLib.SimpleActionGroup÷0œpublic void
+interfacesÃ8ŒGLib.DBusNodeInfo÷0œGLib.DBusInterfaceInfo
+introspectÃ8ŒGLib.DBusSubtreeVTable÷0œGLib.DBusSubtreeIntrospectFunc
+is_aÃ128Õ(string type, string supertype)ŒGLib.ContentType÷0œpublic bool
+is_activeÃ128Õ()ŒGLib.DBusServer÷0œpublic bool
+is_activeÃ128Õ()ŒGLib.SocketService÷0œpublic bool
+is_activeÃ128Õ()ŒGLib.Vfs÷0œpublic virtual bool
+is_anyÃ8ŒGLib.InetAddress÷0œbool
+is_cancelledÃ128Õ()ŒGLib.Cancellable÷0œpublic bool
+is_cancelledÃ128Õ()ŒGLib.FileMonitor÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.DBusConnection÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.FileEnumerator÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.IOStream÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.InputStream÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.OutputStream÷0œpublic bool
+is_closedÃ128Õ()ŒGLib.Socket÷0œpublic bool
+is_closingÃ128Õ()ŒGLib.OutputStream÷0œpublic bool
+is_connectedÃ128Õ()ŒGLib.Socket÷0œpublic bool
+is_link_localÃ8ŒGLib.InetAddress÷0œbool
+is_loopbackÃ8ŒGLib.InetAddress÷0œbool
+is_mc_globalÃ8ŒGLib.InetAddress÷0œbool
+is_mc_link_localÃ8ŒGLib.InetAddress÷0œbool
+is_mc_node_localÃ8ŒGLib.InetAddress÷0œbool
+is_mc_org_localÃ8ŒGLib.InetAddress÷0œbool
+is_mc_site_localÃ8ŒGLib.InetAddress÷0œbool
+is_media_check_automaticÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+is_media_removableÃ128Õ()ŒGLib.Drive÷0œpublic abstract bool
+is_multicastÃ8ŒGLib.InetAddress÷0œbool
+is_nativeÃ128Õ()ŒGLib.File÷0œpublic abstract bool
+is_readableÃ128Õ()ŒGLib.PollableInputStream÷0œpublic abstract bool
+is_registeredÃ8ŒGLib.Application÷0œbool
+is_remoteÃ8ŒGLib.Application÷0œbool
+is_remoteÃ8ŒGLib.ApplicationCommandLine÷0œbool
+is_same_userÃ128Õ(GLib.Credentials other_credentials)ŒGLib.Credentials÷0œpublic bool
+is_shadowedÃ128Õ()ŒGLib.Mount÷0œpublic bool
+is_site_localÃ8ŒGLib.InetAddress÷0œbool
+is_supportedÃ128Õ()ŒGLib.ProxyResolver÷0œpublic abstract bool
+is_supportedÃ128Õ()ŒGLib.VolumeMonitor÷0œpublic virtual bool
+is_unknownÃ128Õ(string type)ŒGLib.ContentType÷0œpublic bool
+is_validÃ128Õ(GLib.AsyncResult _result, GLib.Object source, void* source_tag)ŒGLib.SimpleAsyncResult÷0œpublic bool
+is_writableÃ128Õ()ŒGLib.PollableOutputStream÷0œpublic abstract bool
+is_writableÃ128Õ(string name)ŒGLib.Settings÷0œpublic bool
+issuerÃ8ŒGLib.TlsCertificate÷0œGLib.TlsCertificate
+keepaliveÃ8ŒGLib.Socket÷0œbool
+keyÃ8ŒGLib.DBusAnnotationInfo÷0
+launch_default_for_uriÃ128Õ(string uri, GLib.AppLaunchContext? launch_context)ŒGLib.AppInfo÷0œpublic bool
+launch_failedÃ128Õ(string startup_notify_id)ŒGLib.AppLaunchContext÷0œpublic virtual void
+levelÃ8ŒGLib.ZlibCompressor÷0œint
+list_actionsÃ128Õ()ŒGLib.ActionGroup÷0œpublic abstract unowned string
+list_attributesÃ128Õ(string name_space)ŒGLib.FileInfo÷0œpublic unowned string
+list_childrenÃ128Õ()ŒGLib.Settings÷0
+list_keysÃ128Õ()ŒGLib.Settings÷0
+list_new_from_fileÃ128Õ(string file)ŒGLib.TlsCertificate÷0œpublic unowned
+list_relocatable_schemasÃ128Õ()ŒGLib.Settings÷0œpublic unowned string
+list_schemasÃ128Õ()ŒGLib.Settings÷0œpublic unowned string
+list_sortÃ128Õ(owned GLib.List<GLib.SrvTarget> targets)ŒGLib.SrvTarget÷0œpublic GLib.List
+listenÃ128Õ()ŒGLib.Socket÷0œpublic bool
+listen_backlogÃ8ŒGLib.Socket÷0œint
+listen_backlogÃ8ŒGLib.SocketListener÷0œint
+loadÃ128Õ()ŒGLib.IOModule÷0œpublic void
+loadÃ128Õ(int size, out unowned string? type, GLib.Cancellable? cancellable = null)ŒGLib.LoadableIcon÷0œpublic abstract unowned
+load_asyncÃ128Õ(int size, GLib.Cancellable? cancellable, out unowned string? type)ŒGLib.LoadableIcon÷0œpublic abstract async
+load_contentsÃ128Õ(GLib.Cancellable? cancellable = null, out string contents, out size_t length = null, out string etag_out = null)ŒGLib.File÷0œpublic bool
+load_contents_asyncÃ128Õ(GLib.Cancellable? cancellable = null, out string contents, out size_t length = null, out string etag_out = null)ŒGLib.File÷0œpublic async
+load_partial_contents_asyncÃ128Õ(GLib.Cancellable? cancellable, GLib.FileReadMoreCallback read_more_callback, out string contents, out size_t length = null, out string etag_out = null)ŒGLib.File÷0œpublic async
+local_addressÃ8ŒGLib.Socket÷0œGLib.SocketAddress
+local_addressÃ8ŒGLib.SocketClient÷0œGLib.SocketAddress
+local_command_lineÃ128Õ([CCode (array_length = false, array_null_terminated = true)] ref unowned string[] arguments, out int exit_status)ŒGLib.Application÷0œpublic virtual bool
+local_file_add_infoÃ128Õ(string filename, uint64 device, GLib.FileAttributeMatcher attribute_matcher, GLib.FileInfo info, GLib.Cancellable? cancellable = null, void* extra_data = null, GLib.DestroyNotify? free_extra_data = null)ŒGLib.Vfs÷0œpublic virtual void
+local_file_movedÃ128Õ(string source, string dest)ŒGLib.Vfs÷0œpublic virtual void
+local_file_removedÃ128Õ(string filename)ŒGLib.Vfs÷0œpublic virtual void
+local_file_set_attributesÃ128Õ(string filename, GLib.FileInfo info, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.Vfs÷0œpublic virtual bool
+lockedÃ8ŒGLib.DBusMessage÷0œbool
+lookupÃ128Õ(string name)ŒGLib.DBusAnnotationInfo÷0œpublic unowned string
+lookupÃ128Õ(string name)ŒGLib.FileAttributeInfoList÷0œpublic unowned
+lookupÃ128Õ(string name)ŒGLib.IOExtensionPoint÷0œpublic unowned
+lookupÃ128Õ(string uri, GLib.Cancellable? cancellable = null)ŒGLib.ProxyResolver÷0œpublic abstract unowned string
+lookupÃ128Õ(string action_name)ŒGLib.SimpleActionGroup÷0œpublic unowned
+lookup_asyncÃ128Õ(string uri, GLib.Cancellable? cancellable = null)ŒGLib.ProxyResolver÷0œpublic abstract async string
+lookup_by_addressÃ128Õ(GLib.InetAddress address, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual unowned string
+lookup_by_address_asyncÃ128Õ(GLib.InetAddress address, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual async string
+lookup_by_nameÃ128Õ(string hostname, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual GLib.List
+lookup_by_name_asyncÃ128Õ(string hostname, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual async
+lookup_interfaceÃ128Õ(string name)ŒGLib.DBusNodeInfo÷0œpublic unowned
+lookup_methodÃ128Õ(string name)ŒGLib.DBusInterfaceInfo÷0œpublic unowned
+lookup_propertyÃ128Õ(string name)ŒGLib.DBusInterfaceInfo÷0œpublic unowned
+lookup_serviceÃ128Õ(string service, string protocol, string domain, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual GLib.List
+lookup_service_asyncÃ128Õ(string service, string protocol, string domain, GLib.Cancellable? cancellable = null)ŒGLib.Resolver÷0œpublic virtual async
+lookup_signalÃ128Õ(string name)ŒGLib.DBusInterfaceInfo÷0œpublic unowned
+make_directoryÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+make_directory_with_parentsÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+make_pollfdÃ128Õ(GLib.PollFD pollfd)ŒGLib.Cancellable÷0œpublic bool
+make_symbolic_linkÃ128Õ(string symlink_value, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+matchesÃ128Õ(string attribute)ŒGLib.FileAttributeMatcher÷0œpublic bool
+matches_onlyÃ128Õ(string attribute)ŒGLib.FileAttributeMatcher÷0œpublic bool
+max_threadsÃ8ŒGLib.ThreadedSocketService÷0œint
+method_callÃ8ŒGLib.DBusInterfaceVTable÷0œGLib.DBusInterfaceMethodCallFunc
+methodsÃ8ŒGLib.DBusInterfaceInfo÷0œGLib.DBusMethodInfo
+monitorÃ128Õ(GLib.FileMonitorFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic unowned
+monitor_directoryÃ128Õ(GLib.FileMonitorFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileMonitor
+monitor_fileÃ128Õ(GLib.FileMonitorFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileMonitor
+mountÃ128Õ(GLib.MountMountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Volume÷0œpublic async
+mount_addedÃ128Õ(GLib.Mount mount)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+mount_changedÃ128Õ(GLib.Mount mount)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+mount_enclosing_volumeÃ128Õ(GLib.MountMountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+mount_fnÃ128Õ(GLib.MountMountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback)ŒGLib.Volume÷0œpublic abstract void
+mount_mountableÃ128Õ(GLib.MountMountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+mount_pre_unmountÃ128Õ(GLib.Mount mount)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+mount_removedÃ128Õ(GLib.Mount mount)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+moveÃ128Õ(GLib.File destination, GLib.FileCopyFlags flags, GLib.Cancellable? cancellable = null, GLib.FileProgressCallback? progress_callback = null)ŒGLib.File÷0œpublic abstract bool
+n_infosÃ8ŒGLib.FileAttributeInfoList÷0œint
+nameÃ8ŒGLib.Action÷0
+nameÃ8ŒGLib.DBusArgInfo÷0
+nameÃ8ŒGLib.DBusInterfaceInfo÷0
+nameÃ8ŒGLib.DBusMethodInfo÷0
+nameÃ8ŒGLib.DBusPropertyInfo÷0
+nameÃ8ŒGLib.DBusSignalInfo÷0
+nameÃ8ŒGLib.FileAttributeInfo÷0
+nameÃ8ŒGLib.SimpleAction÷0
+nameÃ8ŒGLib.ThemedIcon÷0
+namesÃ8ŒGLib.ThemedIcon÷0
+new_asyncÃ128Õ(GLib.Type object_type, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable, ...)ŒGLib.AsyncInitable÷0œpublic async
+new_connectionÃ128Õ(GLib.DBusConnection p0)ŒGLib.DBusServer÷0œpublic virtual signal bool
+new_for_commandline_argÃ128Õ(string arg)ŒGLib.File÷0œpublic GLib.File
+new_for_pathÃ128Õ(string path)ŒGLib.File÷0œpublic GLib.File
+new_for_stringÃ128Õ(string str)ŒGLib.Icon÷0œpublic GLib.Icon?
+new_for_uriÃ128Õ(string uri)ŒGLib.File÷0œpublic GLib.File
+new_valistÃ128Õ(GLib.Type object_type, string first_property_name, void* var_args, GLib.Cancellable? cancellable = null)ŒGLib.Initable÷0œpublic unowned
+new_valist_asyncÃ128Õ(GLib.Type object_type, string first_property_name, void* var_args, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.AsyncInitable÷0œpublic async void
+newline_typeÃ8ŒGLib.DataInputStream÷0œGLib.DataStreamNewlineType
+newvÃ128Õ(GLib.Type object_type, uint n_parameters, GLib.Parameter parameters, GLib.Cancellable? cancellable = null)ŒGLib.Initable÷0œpublic void *
+newv_asyncÃ128Õ(GLib.Type object_type, uint n_parameters, GLib.Parameter parameters, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.AsyncInitable÷0œpublic async void
+nextÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.SocketAddressEnumerator÷0œpublic virtual unowned
+next_asyncÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.SocketAddressEnumerator÷0œpublic virtual async
+next_fileÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.FileEnumerator÷0œpublic virtual GLib.FileInfo
+next_files_asyncÃ128Õ(int num_files, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.FileEnumerator÷0œpublic virtual async
+nodesÃ8ŒGLib.DBusNodeInfo÷0œGLib.DBusNodeInfo
+openÃ128Õ(GLib.File[] files, string hint)ŒGLib.Application÷0œpublic virtual signal void
+open_readwriteÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+open_readwrite_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+originÃ8ŒGLib.Emblem÷0œGLib.EmblemOrigin
+out_argsÃ8ŒGLib.DBusMethodInfo÷0œGLib.DBusArgInfo
+output_streamÃ8ŒGLib.IOStream÷0œGLib.OutputStream
+own_nameÃ128Õ(GLib.BusType bus_type, string name, GLib.BusNameOwnerFlags flags, [CCode (type = )] owned GLib.BusAcquiredCallback bus_acquired_handler, [CCode (type = )] owned GLib.BusNameAcquiredCallback name_acquired_handler, [CCode (type = )] owned GLib.BusNameLostCallback name_lost_handler)ŒGLib.Bus÷0
+own_name_on_connectionÃ128Õ(GLib.DBusConnection connection, string name, GLib.BusNameOwnerFlags flags, [CCode (type = )] owned GLib.BusNameAcquiredCallback name_acquired_handler, [CCode (type = )] owned GLib.BusNameLostCallback name_lost_handler)ŒGLib.Bus÷0
+paddingÃ8ŒGLib.DBusInterfaceVTable÷0œvoid
+paddingÃ8ŒGLib.DBusSubtreeVTable÷0œvoid
+parameter_typeÃ8ŒGLib.Action÷0œGLib.VariantType
+parameter_typeÃ8ŒGLib.SimpleAction÷0œGLib.VariantType
+parseÃ128Õ(string host_and_port, uint16 default_port)ŒGLib.NetworkAddress÷0œpublic unowned
+parse_nameÃ128Õ(string parse_name)ŒGLib.File÷0œpublic unowned
+parse_nameÃ128Õ(string parse_name)ŒGLib.Vfs÷0œpublic virtual unowned
+parse_uriÃ128Õ(string uri, uint16 default_port)ŒGLib.NetworkAddress÷0œpublic unowned
+passwordÃ8ŒGLib.MountOperation÷0
+passwordÃ8ŒGLib.ProxyAddress÷0
+password_saveÃ8ŒGLib.MountOperation÷0œGLib.PasswordSave
+pathÃ8ŒGLib.DBusNodeInfo÷0
+pathÃ8ŒGLib.Settings÷0
+peekÃ128Õ([CCode (array_length_type = , array_length_pos = 2.9)] uint8[] buffer, size_t offset = 0)ŒGLib.BufferedInputStream÷0œpublic size_t
+peek_bufferÃ128Õ()ŒGLib.BufferedInputStream÷0œpublic unowned
+peer_certificateÃ8ŒGLib.TlsConnection÷0œGLib.TlsCertificate
+peer_certificate_errorsÃ8ŒGLib.TlsConnection÷0œGLib.TlsCertificateFlags
+platform_dataÃ8ŒGLib.ApplicationCommandLine÷0œGLib.Variant
+poll_for_mediaÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Drive÷0œpublic abstract async
+poll_mountableÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+pop_currentÃ128Õ()ŒGLib.Cancellable÷0œpublic void
+portÃ8ŒGLib.InetSocketAddress÷0
+portÃ8ŒGLib.NetworkAddress÷0
+pre_unmountÃ128Õ()ŒGLib.Mount÷0œpublic signal void
+prefix_matchesÃ128Õ(GLib.File file)ŒGLib.File÷0œpublic abstract bool
+prepend_nameÃ128Õ(string iconname)ŒGLib.ThemedIcon÷0œpublic void
+printÃ128Õ(string format)ŒGLib.ApplicationCommandLine÷0œpublic void
+printÃ128Õ(uint indent = 0)ŒGLib.DBusMessage÷0œpublic unowned string
+print_literalÃ128Õ(string message)ŒGLib.ApplicationCommandLine÷0œpublic virtual void
+printerrÃ128Õ(string format)ŒGLib.ApplicationCommandLine÷0œpublic void
+printerr_literalÃ128Õ(string message)ŒGLib.ApplicationCommandLine÷0œpublic virtual void
+private_keyÃ8ŒGLib.TlsCertificate÷0œGLib.ByteArray
+private_key_pemÃ8ŒGLib.TlsCertificate÷0
+propagate_errorÃ128Õ()ŒGLib.SimpleAsyncResult÷0œpublic bool
+propertiesÃ8ŒGLib.DBusInterfaceInfo÷0œGLib.DBusPropertyInfo
+protocolÃ8ŒGLib.NetworkService÷0
+protocolÃ8ŒGLib.ProxyAddress÷0
+protocolÃ8ŒGLib.Socket÷0œGLib.SocketProtocol
+protocolÃ8ŒGLib.SocketClient÷0œGLib.SocketProtocol
+proxy_enumerateÃ128Õ()ŒGLib.SocketConnectable÷0œpublic abstract unowned
+push_currentÃ128Õ()ŒGLib.Cancellable÷0œpublic void
+put_byteÃ128Õ(uchar data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_int16Ã128Õ(int16 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_int32Ã128Õ(int32 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_int64Ã128Õ(int64 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_stringÃ128Õ(string str, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_uint16Ã128Õ(uint16 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_uint32Ã128Õ(uint32 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+put_uint64Ã128Õ(uint64 data, GLib.Cancellable? cancellable = null)ŒGLib.DataOutputStream÷0œpublic bool
+queryÃ128Õ()ŒGLib.IOModule÷0œpublic unowned string
+query_default_handlerÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic GLib.AppInfo
+query_existsÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+query_file_typeÃ128Õ(GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic GLib.FileType
+query_filesystem_infoÃ128Õ(string attributes, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+query_filesystem_info_asyncÃ128Õ(string attributes, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+query_infoÃ128Õ(string attributes, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileInfo
+query_infoÃ128Õ(string attributes, GLib.Cancellable? cancellable = null)ŒGLib.FileIOStream÷0œpublic virtual unowned
+query_infoÃ128Õ(string attributes, GLib.Cancellable? cancellable = null)ŒGLib.FileInputStream÷0œpublic virtual unowned
+query_infoÃ128Õ(string attributes, GLib.Cancellable? cancellable = null)ŒGLib.FileOutputStream÷0œpublic virtual unowned
+query_info_asyncÃ128Õ(string attributes, GLib.FileQueryInfoFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+query_info_asyncÃ128Õ(string attributes, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.FileIOStream÷0œpublic virtual async
+query_info_asyncÃ128Õ(string attributes, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.FileInputStream÷0œpublic virtual async
+query_info_asyncÃ128Õ(string attributes, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.FileOutputStream÷0œpublic virtual async
+query_settable_attributesÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+query_writable_namespacesÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+quitÃ128Õ(GLib.Variant? platform_data = null)ŒGLib.Application÷0œpublic bool
+quit_mainloopÃ128Õ()ŒGLib.Application÷0œpublic virtual void
+range_checkÃ128Õ(string key, GLib.Variant value)ŒGLib.Settings÷0œpublic bool
+rate_limitÃ8ŒGLib.FileMonitor÷0œint
+readÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic GLib.FileInputStream
+readÃ128Õ([CCode (array_length_type = )] uint8[] buffer, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual ssize_t
+read_allÃ128Õ([CCode (array_length_type = )] uint8[] buffer, out size_t bytes_read, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic bool
+read_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+read_asyncÃ128Õ([CCode (array_length_type = )] uint8[] buffer, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual async
+read_byteÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.BufferedInputStream÷0œpublic int
+read_byteÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic uchar
+read_fnÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+read_int16Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic int16
+read_int32Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic int32
+read_int64Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic int64
+read_lineÃ128Õ(out size_t length, GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic string?
+read_line_asyncÃ128Õ(int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null, out size_t? length = null)ŒGLib.DataInputStream÷0œpublic async
+read_nonblockingÃ128Õ(void* buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.PollableInputStream÷0œpublic abstract ssize_t
+read_uint16Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic uint16
+read_uint32Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic uint32
+read_uint64Ã128Õ(GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic uint64
+read_untilÃ128Õ(string stop_chars, out size_t length, GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic string?
+read_until_asyncÃ128Õ(string stop_chars, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null, out size_t? length = null)ŒGLib.DataInputStream÷0œpublic async
+read_uptoÃ128Õ(string stop_chars, ssize_t stop_chars_len, out size_t length, GLib.Cancellable? cancellable = null)ŒGLib.DataInputStream÷0œpublic string?
+read_upto_asyncÃ128Õ(string stop_chars, ssize_t stop_chars_len, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null, out size_t? length = null)ŒGLib.DataInputStream÷0œpublic async
+realloc_functionÃ8ŒGLib.MemoryOutputStream÷0œvoid
+receiveÃ128Õ(string buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+receive_fromÃ128Õ(out unowned GLib.SocketAddress address, string buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+receive_messageÃ128Õ(out unowned GLib.SocketAddress address, GLib.InputVector vectors, int num_vectors, out unowned GLib.SocketControlMessage messages, int num_messages, int flags, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+receive_with_blockingÃ128Õ(string buffer, size_t size, bool blocking, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+ref_classÃ128Õ()ŒGLib.IOExtension÷0œpublic unowned
+ref_countÃ8ŒGLib.DBusAnnotationInfo÷0œint
+ref_countÃ8ŒGLib.DBusArgInfo÷0œint
+ref_countÃ8ŒGLib.DBusInterfaceInfo÷0œint
+ref_countÃ8ŒGLib.DBusMethodInfo÷0œint
+ref_countÃ8ŒGLib.DBusNodeInfo÷0œint
+ref_countÃ8ŒGLib.DBusPropertyInfo÷0œint
+ref_countÃ8ŒGLib.DBusSignalInfo÷0œint
+registerÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Application÷0œpublic bool
+registerÃ128Õ(string name)ŒGLib.IOExtensionPoint÷0œpublic unowned
+register_objectÃ128Õ(string object_path, T object)ŒGLib.DBusConnection÷0
+register_subtreeÃ128Õ(string object_path, GLib.DBusSubtreeVTable vtable, GLib.DBusSubtreeFlags flags, GLib.DestroyNotify user_data_free_func)ŒGLib.DBusConnection÷0
+rehandshake_modeÃ8ŒGLib.TlsConnection÷0œGLib.TlsRehandshakeMode
+releaseÃ128Õ()ŒGLib.Application÷0œpublic void
+releaseÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Permission÷0œpublic virtual bool
+release_asyncÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.Permission÷0œpublic virtual async
+release_fdÃ128Õ()ŒGLib.Cancellable÷0œpublic void
+reloadÃ128Õ()ŒGLib.Resolver÷0œpublic virtual signal void
+remote_addressÃ8ŒGLib.Socket÷0œGLib.SocketAddress
+remountÃ128Õ(GLib.MountMountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async
+removeÃ128Õ(string action_name)ŒGLib.SimpleActionGroup÷0œpublic void
+remove_attributeÃ128Õ(string attribute)ŒGLib.FileInfo÷0œpublic void
+remove_filterÃ128Õ(uint filter_id)ŒGLib.DBusConnection÷0œpublic void
+remove_supports_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic abstract bool
+removedÃ128Õ()ŒGLib.Volume÷0œpublic signal void
+replaceÃ128Õ(string? etag, bool make_backup, GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract GLib.FileOutputStream
+replace_asyncÃ128Õ(string? etag, bool make_backup, GLib.FileCreateFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+replace_contentsÃ128Õ(string contents, size_t length, string? etag, bool make_backup, GLib.FileCreateFlags flags, out string? new_etag, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+replace_contents_asyncÃ128Õ(string contents, size_t length, string? etag, bool make_backup, GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null, out string? new_etag = null)ŒGLib.File÷0œpublic async
+replace_readwriteÃ128Õ(string? etag, bool make_backup, GLib.FileCreateFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+replace_readwrite_asyncÃ128Õ(string? etag, bool make_backup, GLib.FileCreateFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+replyÃ128Õ(GLib.MountOperationResult result)ŒGLib.MountOperation÷0œpublic virtual signal void
+require_close_notifyÃ8ŒGLib.TlsConnection÷0œbool
+resetÃ128Õ()ŒGLib.Cancellable÷0œpublic void
+resetÃ128Õ()ŒGLib.Converter÷0œpublic abstract void
+resetÃ128Õ(string key)ŒGLib.Settings÷0œpublic void
+reset_type_associationsÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic void
+resolve_relative_pathÃ128Õ(string relative_path)ŒGLib.File÷0œpublic abstract GLib.File
+return_dbus_errorÃ128Õ(string error_name, string error_message)ŒGLib.DBusMethodInvocation÷0œpublic void
+return_errorÃ128Õ(GLib.Quark domain, int code, string format)ŒGLib.DBusMethodInvocation÷0œpublic void
+return_error_literalÃ128Õ(GLib.Quark domain, int code, string message)ŒGLib.DBusMethodInvocation÷0œpublic void
+return_error_valistÃ128Õ(GLib.Quark domain, int code, string format, void* var_args)ŒGLib.DBusMethodInvocation÷0œpublic void
+return_gerrorÃ128Õ(GLib.Error error)ŒGLib.DBusMethodInvocation÷0œpublic void
+return_valueÃ128Õ(GLib.Variant parameters)ŒGLib.DBusMethodInvocation÷0œpublic void
+revertÃ128Õ()ŒGLib.Settings÷0œpublic void
+runÃ128Õ([CCode (array_length_pos = 0.9)] string[]? argv = null)ŒGLib.Application÷0œpublic int
+runÃ128Õ(GLib.SocketConnection connection, GLib.Object source_object)ŒGLib.ThreadedSocketService÷0œpublic virtual signal bool
+run_in_threadÃ128Õ(GLib.SimpleAsyncThreadFunc func, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.SimpleAsyncResult÷0œpublic void
+run_mainloopÃ128Õ()ŒGLib.Application÷0œpublic virtual void
+schemaÃ8ŒGLib.Settings÷0
+schemeÃ8ŒGLib.NetworkAddress÷0
+schemeÃ8ŒGLib.NetworkService÷0
+seekÃ128Õ(int64 offset, GLib.SeekType type, GLib.Cancellable? cancellable = null)ŒGLib.FileIOStream÷0œpublic virtual bool
+seekÃ128Õ(int64 offset, GLib.SeekType type, GLib.Cancellable? cancellable = null)ŒGLib.FileInputStream÷0œpublic virtual bool
+seekÃ128Õ(int64 offset, GLib.SeekType type, GLib.Cancellable? cancellable = null)ŒGLib.FileOutputStream÷0œpublic virtual bool
+seekÃ128Õ(int64 offset, GLib.SeekType type, GLib.Cancellable? cancellable = null)ŒGLib.Seekable÷0œpublic abstract bool
+sendÃ128Õ(string buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+send_messageÃ128Õ(GLib.DBusMessage message, GLib.DBusSendMessageFlags flags, out uint32 out_serial)ŒGLib.DBusConnection÷0œpublic bool
+send_messageÃ128Õ(GLib.SocketAddress address, GLib.OutputVector vectors, int num_vectors, out unowned GLib.SocketControlMessage messages, int num_messages, int flags, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+send_message_with_replyÃ128Õ(GLib.DBusMessage message, GLib.DBusSendMessageFlags flags, int timeout_msec, out uint32 out_serial, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic async
+send_message_with_reply_syncÃ128Õ(GLib.DBusMessage message, GLib.DBusSendMessageFlags flags, int timeout_msec, out uint32 out_serial, GLib.Cancellable? cancellable = null)ŒGLib.DBusConnection÷0œpublic GLib.DBusMessage
+send_toÃ128Õ(GLib.SocketAddress address, string buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+send_to_mainloopÃ128Õ(owned GLib.SourceFunc func)ŒGLib.IOSchedulerJob÷0œpublic bool
+send_to_mainloop_asyncÃ128Õ(owned GLib.SourceFunc func)ŒGLib.IOSchedulerJob÷0œpublic void
+send_with_blockingÃ128Õ(string buffer, size_t size, bool blocking, GLib.Cancellable? cancellable = null)ŒGLib.Socket÷0œpublic ssize_t
+serializeÃ128Õ([CCode (array_length = false)] uint8[] data)ŒGLib.SocketControlMessage÷0œpublic virtual void
+server_identityÃ8ŒGLib.TlsClientConnection÷0œGLib.SocketConnectable
+serviceÃ8ŒGLib.NetworkService÷0
+set_action_groupÃ128Õ(GLib.ActionGroup action_group)ŒGLib.Application÷0œpublic void
+set_anonymousÃ128Õ(bool anonymous)ŒGLib.MountOperation÷0œpublic void
+set_application_idÃ128Õ(string application_id)ŒGLib.Application÷0œpublic void
+set_as_default_for_extensionÃ128Õ(string extension)ŒGLib.AppInfo÷0œpublic abstract bool
+set_as_default_for_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic abstract bool
+set_as_last_used_for_typeÃ128Õ(string content_type)ŒGLib.AppInfo÷0œpublic abstract bool
+set_attributeÃ128Õ(string attribute, GLib.FileAttributeType type, void* value_p, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+set_attributeÃ128Õ(string attribute, GLib.FileAttributeType type, void* value_p)ŒGLib.FileInfo÷0œpublic void
+set_attribute_booleanÃ128Õ(string attribute, bool attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_byte_stringÃ128Õ(string attribute, string value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_byte_stringÃ128Õ(string attribute, string attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_int32Ã128Õ(string attribute, int32 value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_int32Ã128Õ(string attribute, int32 attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_int64Ã128Õ(string attribute, int64 value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_int64Ã128Õ(string attribute, int64 attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_maskÃ128Õ(GLib.FileAttributeMatcher mask)ŒGLib.FileInfo÷0œpublic void
+set_attribute_objectÃ128Õ(string attribute, GLib.Object attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_statusÃ128Õ(string attribute, GLib.FileAttributeStatus status)ŒGLib.FileInfo÷0œpublic bool
+set_attribute_stringÃ128Õ(string attribute, string value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_stringÃ128Õ(string attribute, string attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_stringvÃ128Õ(string attribute, out unowned string attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_uint32Ã128Õ(string attribute, uint32 value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_uint32Ã128Õ(string attribute, uint32 attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attribute_uint64Ã128Õ(string attribute, uint64 value, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic bool
+set_attribute_uint64Ã128Õ(string attribute, uint64 attr_value)ŒGLib.FileInfo÷0œpublic void
+set_attributes_asyncÃ128Õ(GLib.FileInfo info, GLib.FileQueryInfoFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable, out unowned GLib.FileInfo info_out)ŒGLib.File÷0œpublic abstract async
+set_attributes_from_infoÃ128Õ(GLib.FileInfo info, GLib.FileQueryInfoFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+set_auto_growÃ128Õ(bool auto_grow)ŒGLib.BufferedOutputStream÷0œpublic void
+set_backlogÃ128Õ(int listen_backlog)ŒGLib.SocketListener÷0œpublic void
+set_blockingÃ128Õ(bool blocking)ŒGLib.Socket÷0œpublic void
+set_bodyÃ128Õ(GLib.Variant body)ŒGLib.DBusMessage÷0œpublic void
+set_booleanÃ128Õ(string key, bool value)ŒGLib.Settings÷0œpublic bool
+set_buffer_sizeÃ128Õ(size_t size)ŒGLib.BufferedInputStream÷0œpublic void
+set_buffer_sizeÃ128Õ(size_t size)ŒGLib.BufferedOutputStream÷0œpublic void
+set_byte_orderÃ128Õ(GLib.DBusMessageByteOrder byte_order)ŒGLib.DBusMessage÷0œpublic void
+set_byte_orderÃ128Õ(GLib.DataStreamByteOrder order)ŒGLib.DataInputStream÷0œpublic void
+set_byte_orderÃ128Õ(GLib.DataStreamByteOrder order)ŒGLib.DataOutputStream÷0œpublic void
+set_cached_propertyÃ128Õ(string property_name, GLib.Variant value)ŒGLib.DBusProxy÷0œpublic void
+set_callbackÃ128Õ([CCode (type = )] owned GLib.SocketSourceFunc func)ŒGLib.SocketSource÷0œpublic void
+set_certificateÃ128Õ(GLib.TlsCertificate certificate)ŒGLib.TlsConnection÷0œpublic void
+set_choiceÃ128Õ(int choice)ŒGLib.MountOperation÷0œpublic void
+set_close_base_streamÃ128Õ(bool close_base)ŒGLib.FilterInputStream÷0œpublic void
+set_close_base_streamÃ128Õ(bool close_base)ŒGLib.FilterOutputStream÷0œpublic void
+set_content_typeÃ128Õ(string content_type)ŒGLib.FileInfo÷0œpublic void
+set_defaultÃ128Õ()ŒGLib.Resolver÷0œpublic void
+set_default_timeoutÃ128Õ(int timeout_msec)ŒGLib.DBusProxy÷0œpublic void
+set_destinationÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_dirs_onlyÃ128Õ(bool dirs_only)ŒGLib.FilenameCompleter÷0œpublic void
+set_display_nameÃ128Õ(string display_name, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract unowned
+set_display_nameÃ128Õ(string display_name)ŒGLib.FileInfo÷0œpublic void
+set_display_name_asyncÃ128Õ(string display_name, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+set_domainÃ128Õ(string domain)ŒGLib.MountOperation÷0œpublic void
+set_doubleÃ128Õ(string key, double value)ŒGLib.Settings÷0œpublic bool
+set_edit_nameÃ128Õ(string edit_name)ŒGLib.FileInfo÷0œpublic void
+set_enable_proxyÃ128Õ(bool enable)ŒGLib.SocketClient÷0œpublic void
+set_enabledÃ128Õ(bool enabled)ŒGLib.SimpleAction÷0œpublic void
+set_enumÃ128Õ(string key, int value)ŒGLib.Settings÷0œpublic bool
+set_errorÃ128Õ(GLib.Quark domain, int code, string format)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_error_if_cancelledÃ128Õ()ŒGLib.Cancellable÷0œpublic bool
+set_error_nameÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_error_vaÃ128Õ(GLib.Quark domain, int code, string format, void* args)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_exit_on_closeÃ128Õ(bool exit_on_close)ŒGLib.DBusConnection÷0œpublic void
+set_exit_statusÃ128Õ(int exit_status)ŒGLib.ApplicationCommandLine÷0œpublic void
+set_familyÃ128Õ(GLib.SocketFamily family)ŒGLib.SocketClient÷0œpublic void
+set_file_infoÃ128Õ(GLib.FileInfo file_info)ŒGLib.ZlibCompressor÷0œpublic void
+set_file_typeÃ128Õ(GLib.FileType type)ŒGLib.FileInfo÷0œpublic void
+set_flagsÃ128Õ(GLib.ApplicationFlags flags)ŒGLib.Application÷0œpublic void
+set_flagsÃ128Õ(GLib.DBusMessageFlags flags)ŒGLib.DBusMessage÷0œpublic void
+set_flagsÃ128Õ(string key, uint value)ŒGLib.Settings÷0œpublic bool
+set_from_errorÃ128Õ(GLib.Error error)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_graceful_disconnectÃ128Õ(bool graceful_disconnect)ŒGLib.TcpConnection÷0œpublic void
+set_handle_cancellationÃ128Õ(bool handle_cancellation)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_headerÃ128Õ(GLib.DBusMessageHeaderField header_field, GLib.Variant value)ŒGLib.DBusMessage÷0œpublic void
+set_iconÃ128Õ(GLib.Icon icon)ŒGLib.FileInfo÷0œpublic void
+set_inactivity_timeoutÃ128Õ(uint inactivity_timeout)ŒGLib.Application÷0œpublic void
+set_intÃ128Õ(string key, int value)ŒGLib.Settings÷0œpublic bool
+set_interfaceÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_interface_infoÃ128Õ(GLib.DBusInterfaceInfo info)ŒGLib.DBusProxy÷0œpublic void
+set_is_hiddenÃ128Õ(bool is_hidden)ŒGLib.FileInfo÷0œpublic void
+set_is_symlinkÃ128Õ(bool is_symlink)ŒGLib.FileInfo÷0œpublic void
+set_keepaliveÃ128Õ(bool keepalive)ŒGLib.Socket÷0œpublic void
+set_listen_backlogÃ128Õ(int backlog)ŒGLib.Socket÷0œpublic void
+set_local_addressÃ128Õ(GLib.SocketAddress address)ŒGLib.SocketClient÷0œpublic void
+set_memberÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_message_typeÃ128Õ(GLib.DBusMessageType type)ŒGLib.DBusMessage÷0œpublic void
+set_modification_timeÃ128Õ(GLib.TimeVal mtime)ŒGLib.FileInfo÷0œpublic void
+set_nameÃ128Õ(string name)ŒGLib.FileInfo÷0œpublic void
+set_nativeÃ128Õ(GLib.CredentialsType native_type, void* native)ŒGLib.Credentials÷0œpublic void
+set_newline_typeÃ128Õ(GLib.DataStreamNewlineType type)ŒGLib.DataInputStream÷0œpublic void
+set_num_unix_fdsÃ128Õ(uint32 value)ŒGLib.DBusMessage÷0œpublic void
+set_op_res_gbooleanÃ128Õ(bool op_res)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_op_res_gpointerÃ128Õ(void* op_res, GLib.DestroyNotify destroy_op_res)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_op_res_gssizeÃ128Õ(ssize_t op_res)ŒGLib.SimpleAsyncResult÷0œpublic void
+set_passwordÃ128Õ(string password)ŒGLib.MountOperation÷0œpublic void
+set_password_saveÃ128Õ(GLib.PasswordSave save)ŒGLib.MountOperation÷0œpublic void
+set_pathÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_pendingÃ128Õ(bool pending)ŒGLib.FileEnumerator÷0œpublic void
+set_pendingÃ128Õ()ŒGLib.IOStream÷0œpublic bool
+set_pendingÃ128Õ()ŒGLib.InputStream÷0œpublic bool
+set_pendingÃ128Õ()ŒGLib.OutputStream÷0œpublic bool
+set_propertyÃ8ŒGLib.DBusInterfaceVTable÷0œGLib.DBusInterfaceSetPropertyFunc
+set_protocolÃ128Õ(GLib.SocketProtocol protocol)ŒGLib.SocketClient÷0œpublic void
+set_rate_limitÃ128Õ(int limit_msecs)ŒGLib.FileMonitor÷0œpublic void
+set_rehandshake_modeÃ128Õ(GLib.TlsRehandshakeMode mode)ŒGLib.TlsConnection÷0œpublic void
+set_reply_serialÃ128Õ(uint32 value)ŒGLib.DBusMessage÷0œpublic void
+set_require_close_notifyÃ128Õ(bool require_close_notify)ŒGLib.TlsConnection÷0œpublic void
+set_required_typeÃ128Õ(GLib.Type type)ŒGLib.IOExtensionPoint÷0œpublic void
+set_schemeÃ128Õ(string scheme)ŒGLib.NetworkService÷0œpublic void
+set_senderÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_serialÃ128Õ(uint32 serial)ŒGLib.DBusMessage÷0œpublic void
+set_server_identityÃ128Õ(GLib.SocketConnectable identity)ŒGLib.TlsClientConnection÷0œpublic void
+set_signatureÃ128Õ(string value)ŒGLib.DBusMessage÷0œpublic void
+set_sizeÃ128Õ(int64 size)ŒGLib.FileInfo÷0œpublic void
+set_socket_typeÃ128Õ(GLib.SocketType type)ŒGLib.SocketClient÷0œpublic void
+set_sort_orderÃ128Õ(int32 sort_order)ŒGLib.FileInfo÷0œpublic void
+set_stateÃ128Õ(GLib.Variant value)ŒGLib.Action÷0œpublic abstract void
+set_stringÃ128Õ(string key, string value)ŒGLib.Settings÷0œpublic bool
+set_strvÃ128Õ(string key, [CCode (array_length = false)] string[] value)ŒGLib.Settings÷0œpublic bool
+set_symlink_targetÃ128Õ(string symlink_target)ŒGLib.FileInfo÷0œpublic void
+set_timeoutÃ128Õ(uint timeout)ŒGLib.Socket÷0œpublic void
+set_timeoutÃ128Õ(uint timeout)ŒGLib.SocketClient÷0œpublic void
+set_tlsÃ128Õ(bool tls)ŒGLib.SocketClient÷0œpublic void
+set_tls_validation_flagsÃ128Õ(GLib.TlsCertificateFlags flags)ŒGLib.SocketClient÷0œpublic void
+set_unix_fd_listÃ128Õ(GLib.UnixFDList fd_list)ŒGLib.DBusMessage÷0œpublic void
+set_unix_userÃ128Õ(uint uid)ŒGLib.Credentials÷0œpublic bool
+set_use_fallbackÃ128Õ(bool use_fallback)ŒGLib.CharsetConverter÷0œpublic void
+set_use_ssl3Ã128Õ(bool use_ssl3)ŒGLib.TlsClientConnection÷0œpublic void
+set_use_system_certdbÃ128Õ(bool use_system_certdb)ŒGLib.TlsConnection÷0œpublic void
+set_usernameÃ128Õ(string username)ŒGLib.MountOperation÷0œpublic void
+set_validation_flagsÃ128Õ(GLib.TlsCertificateFlags flags)ŒGLib.TlsClientConnection÷0œpublic void
+set_valueÃ128Õ(string key, GLib.Variant value)ŒGLib.Settings÷0œpublic bool
+shadowÃ128Õ()ŒGLib.Mount÷0œpublic void
+should_automountÃ128Õ()ŒGLib.Volume÷0œpublic abstract bool
+should_showÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+show_processesÃ128Õ(string message, GLib.Array processes, string[] choices)ŒGLib.MountOperation÷0œpublic virtual signal void
+shutdownÃ128Õ(bool shutdown_read, bool shutdown_write)ŒGLib.Socket÷0œpublic bool
+signal_subscribeÃ128Õ(string? sender, string? interface_name, string? member, string? object_path, string? arg0, GLib.DBusSignalFlags flags, owned GLib.DBusSignalCallback callback)ŒGLib.DBusConnection÷0
+signal_unsubscribeÃ128Õ(uint subscription_id)ŒGLib.DBusConnection÷0œpublic void
+signalsÃ8ŒGLib.DBusInterfaceInfo÷0œGLib.DBusSignalInfo
+signatureÃ8ŒGLib.DBusArgInfo÷0
+signatureÃ8ŒGLib.DBusPropertyInfo÷0
+sizeÃ8ŒGLib.MemoryOutputStream÷0
+skipÃ128Õ(size_t count, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual ssize_t
+skip_asyncÃ128Õ(size_t count, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.InputStream÷0œpublic virtual async
+socketÃ8ŒGLib.SocketConnection÷0œGLib.Socket
+source_newÃ128Õ()ŒGLib.Cancellable÷0œpublic unowned
+speaks_ipv4Ã128Õ()ŒGLib.Socket÷0œpublic bool
+spliceÃ128Õ(GLib.InputStream source, GLib.OutputStreamSpliceFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual ssize_t
+splice_asyncÃ128Õ(GLib.IOStream stream2, GLib.IOStreamSpliceFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.IOStream÷0œpublic async
+splice_asyncÃ128Õ(GLib.InputStream source, GLib.OutputStreamSpliceFlags flags, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual async
+startÃ128Õ()ŒGLib.DBusServer÷0œpublic void
+startÃ128Õ(GLib.DriveStartFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Drive÷0œpublic abstract async
+startÃ128Õ()ŒGLib.SocketService÷0œpublic void
+start_message_processingÃ128Õ()ŒGLib.DBusConnection÷0œpublic void
+start_mountableÃ128Õ(GLib.DriveStartFlags flags, GLib.MountOperation start_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+startupÃ128Õ()ŒGLib.Application÷0œpublic virtual signal void
+stateÃ8ŒGLib.Action÷0œGLib.Variant
+stateÃ8ŒGLib.SimpleAction÷0œGLib.Variant
+state_typeÃ8ŒGLib.Action÷0œGLib.VariantType
+state_typeÃ8ŒGLib.SimpleAction÷0œGLib.VariantType
+steal_dataÃ128Õ()ŒGLib.MemoryOutputStream÷0œpublic uint8
+stopÃ128Õ()ŒGLib.DBusServer÷0œpublic void
+stopÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Drive÷0œpublic abstract async
+stopÃ128Õ()ŒGLib.SocketService÷0œpublic void
+stop_buttonÃ128Õ()ŒGLib.Drive÷0œpublic signal void
+stop_mountableÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+streamÃ8ŒGLib.DBusConnection÷0œGLib.IOStream
+supports_filesÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+supports_hostnameÃ128Õ()ŒGLib.Proxy÷0œpublic abstract bool
+supports_thread_contextsÃ128Õ()ŒGLib.File÷0œpublic bool
+supports_tlsÃ128Õ()ŒGLib.TlsBackend÷0œpublic abstract bool
+supports_urisÃ128Õ()ŒGLib.AppInfo÷0œpublic abstract bool
+syncÃ128Õ()ŒGLib.Settings÷0œpublic void
+take_errorÃ128Õ(GLib.Error error)ŒGLib.SimpleAsyncResult÷0œpublic void
+tellÃ128Õ()ŒGLib.FileIOStream÷0œpublic virtual int64
+tellÃ128Õ()ŒGLib.FileInputStream÷0œpublic virtual int64
+tellÃ128Õ()ŒGLib.FileOutputStream÷0œpublic virtual int64
+tellÃ128Õ()ŒGLib.Seekable÷0œpublic abstract int64
+timeoutÃ8ŒGLib.Socket÷0
+timeoutÃ8ŒGLib.SocketClient÷0
+tlsÃ8ŒGLib.SocketClient÷0œbool
+tls_validation_flagsÃ8ŒGLib.SocketClient÷0œGLib.TlsCertificateFlags
+to_blobÃ128Õ(size_t out_size, GLib.DBusCapabilityFlags capabilities)ŒGLib.DBusMessage÷0œpublic unowned
+to_bytesÃ128Õ()ŒGLib.InetAddress÷0œpublic virtual unowned
+to_charsetÃ8ŒGLib.CharsetConverter÷0
+to_gerrorÃ128Õ()ŒGLib.DBusMessage÷0œpublic bool
+to_nativeÃ128Õ(void* dest, size_t destlen)ŒGLib.SocketAddress÷0œpublic virtual bool
+to_stringÃ128Õ()ŒGLib.Credentials÷0œpublic unowned string
+to_stringÃ128Õ()ŒGLib.Icon÷0
+to_stringÃ128Õ()ŒGLib.InetAddress÷0
+to_tokensÃ128Õ(GLib.GenericArray tokens, int out_version)ŒGLib.Icon÷0œpublic abstract bool
+trashÃ128Õ(GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract bool
+truncateÃ128Õ(int64 offset, GLib.Cancellable? cancellable = null)ŒGLib.Seekable÷0œpublic abstract bool
+truncate_fnÃ128Õ(int64 size, GLib.Cancellable? cancellable = null)ŒGLib.FileIOStream÷0œpublic virtual bool
+truncate_fnÃ128Õ(int64 size, GLib.Cancellable? cancellable = null)ŒGLib.FileOutputStream÷0œpublic virtual bool
+typeÃ8ŒGLib.FileAttributeInfo÷0œGLib.FileAttributeType
+typeÃ8ŒGLib.Socket÷0œGLib.SocketType
+typeÃ8ŒGLib.SocketClient÷0œGLib.SocketType
+unbindÃ128Õ(void* object, string property)ŒGLib.Settings÷0œpublic void
+unique_nameÃ8ŒGLib.DBusConnection÷0
+unloadÃ128Õ()ŒGLib.IOModule÷0œpublic void
+unmountÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async
+unmount_mountableÃ128Õ(GLib.MountUnmountFlags flags, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+unmount_mountable_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.File÷0œpublic abstract async
+unmount_with_operationÃ128Õ(GLib.MountUnmountFlags flags, GLib.MountOperation? mount_operation, GLib.Cancellable? cancellable = null)ŒGLib.Mount÷0œpublic abstract async
+unmountedÃ128Õ()ŒGLib.Mount÷0œpublic signal void
+unown_nameÃ128Õ(uint owner_id)ŒGLib.Bus÷0œpublic void
+unregister_objectÃ128Õ(uint registration_id)ŒGLib.DBusConnection÷0œpublic bool
+unregister_subtreeÃ128Õ(uint registration_id)ŒGLib.DBusConnection÷0œpublic bool
+unset_attribute_maskÃ128Õ()ŒGLib.FileInfo÷0œpublic void
+unshadowÃ128Õ()ŒGLib.Mount÷0œpublic void
+unwatch_nameÃ128Õ(uint watcher_id)ŒGLib.Bus÷0œpublic void
+uriÃ8ŒGLib.ProxyAddressEnumerator÷0
+use_default_fallbacksÃ8ŒGLib.ThemedIcon÷0œbool
+use_fallbackÃ8ŒGLib.CharsetConverter÷0œbool
+use_ssl3Ã8ŒGLib.TlsClientConnection÷0œbool
+use_system_certdbÃ8ŒGLib.TlsConnection÷0œbool
+usernameÃ8ŒGLib.MountOperation÷0
+usernameÃ8ŒGLib.ProxyAddress÷0
+validation_flagsÃ8ŒGLib.TlsClientConnection÷0œGLib.TlsCertificateFlags
+valueÃ8ŒGLib.DBusAnnotationInfo÷0
+verifyÃ128Õ(GLib.SocketConnectable identity, GLib.TlsCertificate trusted_ca)ŒGLib.TlsCertificate÷0œpublic virtual GLib.TlsCertificateFlags
+volume_addedÃ128Õ(GLib.Volume volume)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+volume_changedÃ128Õ(GLib.Volume volume)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+volume_removedÃ128Õ(GLib.Volume volume)ŒGLib.VolumeMonitor÷0œpublic virtual signal void
+watch_nameÃ128Õ(GLib.BusType bus_type, string name, GLib.BusNameWatcherFlags flags, [CCode (type = )] owned GLib.BusNameAppearedCallback name_appeared_handler, [CCode (type = )] owned GLib.BusNameVanishedCallback name_vanished_handler)ŒGLib.Bus÷0
+watch_name_on_connectionÃ128Õ(GLib.DBusConnection connection, string name, GLib.BusNameWatcherFlags flags, [CCode (type = )] owned GLib.BusNameAppearedCallback name_appeared_handler, [CCode (type = )] owned GLib.BusNameVanishedCallback name_vanished_handler)ŒGLib.Bus÷0
+writable_change_eventÃ128Õ(uint key)ŒGLib.Settings÷0œpublic virtual signal bool
+writable_changedÃ128Õ(string key)ŒGLib.Settings÷0œpublic virtual signal void
+writeÃ128Õ([CCode (array_length_type = )] uint8[] buffer, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual ssize_t
+write_allÃ128Õ([CCode (array_length_type = )] uint8[] buffer, out size_t bytes_written, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic bool
+write_asyncÃ128Õ([CCode (array_length_type = )] uint8[] buffer, int io_priority = GLib.Priority.DEFAULT, GLib.Cancellable? cancellable = null)ŒGLib.OutputStream÷0œpublic virtual async
+write_nonblockingÃ128Õ(void* buffer, size_t size, GLib.Cancellable? cancellable = null)ŒGLib.PollableOutputStream÷0œpublic abstract ssize_t

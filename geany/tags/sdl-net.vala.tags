@@ -1,0 +1,47 @@
+# format=tagmanager
+ANYÌ8ÎSDLNet.IPAddressÖ0
+IPAddressÌ2048ÎSDLNetÖ0
+NONEÌ8ÎSDLNet.IPAddressÖ0
+SDLNetÌ256Ö0
+SocketÌ1ÎSDLNetÖ0
+SocketSetÌ1ÎSDLNetÖ0
+SocketSetÌ128Í(int maxsockets)ÎSDLNet.SocketSetÖ0
+TCPSocketÌ1ÎSDLNetÖ0
+TCPSocketÌ128Í(IPAddress ip)ÎSDLNet.TCPSocketÖ0
+UDPPacketÌ1ÎSDLNetÖ0
+UDPPacketÌ128Í(int size)ÎSDLNet.UDPPacketÖ0
+UDPSocketÌ1ÎSDLNetÖ0
+UDPSocketÌ128Í(uint16 port)ÎSDLNet.UDPSocketÖ0
+acceptÌ128Í()ÎSDLNet.TCPSocketÖ0Ïpublic TCPSocket?
+addÌ128Í(Socket socket)ÎSDLNet.SocketSetÖ0Ïpublic int
+addressÌ8ÎSDLNet.UDPPacketÖ0ÏIPAddress
+bindÌ128Í(int channel, IPAddress address)ÎSDLNet.UDPSocketÖ0Ïpublic int
+channelÌ8ÎSDLNet.UDPPacketÖ0Ïint
+dataÌ8ÎSDLNet.UDPPacketÖ0Ïuchar
+from_hostÌ128Í(out IPAddress address, string? host, uint16 port)ÎSDLNet.IPAddressÖ0Ïpublic int
+get_addressÌ128Í()ÎSDLNet.TCPSocketÖ0Ïpublic IPAddress?
+get_addressÌ128Í(int channel)ÎSDLNet.UDPSocketÖ0Ïpublic IPAddress?
+has_dataÌ128Í(uint timeout)ÎSDLNet.SocketSetÖ0Ïpublic int
+hostÌ8ÎSDLNet.IPAddressÖ0
+initÌ128Í()ÎSDLNetÖ0Ïpublic int
+lenÌ8ÎSDLNet.UDPPacketÖ0Ïint
+linkedÌ128Í()ÎSDLNetÖ0Ïpublic SDL.Version
+lookupÌ128Í()ÎSDLNet.IPAddressÖ0Ïpublic unowned
+maxlenÌ8ÎSDLNet.UDPPacketÖ0Ïint
+portÌ8ÎSDLNet.IPAddressÖ0Ïuint16
+quitÌ128Í()ÎSDLNetÖ0Ïpublic void
+read16Ì128Í(void *area)ÎSDLNetÖ0Ïpublic uint16
+read32Ì128Í(void *area)ÎSDLNetÖ0
+readyÌ8ÎSDLNet.SocketÖ0Ïint
+receiveÌ128Í(uchar[] data)ÎSDLNet.TCPSocketÖ0Ïpublic int
+receiveÌ128Í(UDPPacket packet)ÎSDLNet.UDPSocketÖ0Ïpublic int
+receive_manyÌ128Í([CCode (array_length = false)] UDPPacket[] packets)ÎSDLNet.UDPSocketÖ0Ïpublic int
+removeÌ128Í(Socket socket)ÎSDLNet.SocketSetÖ0Ïpublic int
+resizeÌ128Í(int newsize)ÎSDLNet.UDPPacketÖ0Ïpublic int
+sendÌ128Í(uchar[] data)ÎSDLNet.TCPSocketÖ0Ïpublic int
+sendÌ128Í(int channel, UDPPacket packet)ÎSDLNet.UDPSocketÖ0Ïpublic int
+send_manyÌ128Í(UDPPacket[] packets)ÎSDLNet.UDPSocketÖ0Ïpublic int
+statusÌ8ÎSDLNet.UDPPacketÖ0Ïint
+unbindÌ128Í(int channel)ÎSDLNet.UDPSocketÖ0Ïpublic void
+write16Ì128Í(uint16 value, void *area)ÎSDLNetÖ0Ïpublic void
+write32Ì128Í(uint value, void *area)ÎSDLNetÖ0Ïpublic void

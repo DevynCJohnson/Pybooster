@@ -1,0 +1,265 @@
+# format=tagmanager
+@foreachÃ128Õ(GConf.ChangeSetForeachFunc func)ŒGConf.ChangeSet÷0œpublic void
+@foreachÃ128Õ(GConf.ListenersForeach callback)ŒGConf.Listeners÷0œpublic void
+@getÃ128Õ(string key)ŒGConf.Client÷0œpublic GConf.Value?
+@getÃ128Õ(string key)ŒGConf.Engine÷0œpublic unowned
+@setÃ128Õ(string key, GConf.Value value)ŒGConf.ChangeSet÷0œpublic void
+@setÃ128Õ(string key, GConf.Value val)ŒGConf.Client÷0œpublic void
+@setÃ128Õ(string key, GConf.Value value)ŒGConf.Engine÷0œpublic bool
+ALLÃ4ŒGConf.ClientErrorHandlingMode÷0
+BAD_ADDRESSÃ4ŒGConf.Error÷0
+BAD_KEYÃ4ŒGConf.Error÷0
+BOOLÃ4ŒGConf.ValueType÷0
+CORRUPTÃ4ŒGConf.Error÷0
+ChangeSetÃ1ŒGConf÷0
+ChangeSetÃ128Õ()ŒGConf.ChangeSet÷0
+ChangeSetForeachFuncÃ128Õ(GConf.ChangeSet cs, string key, GConf.Value value)ŒGConf÷0œpublic delegate void
+ClientÃ1ŒGConf÷0
+ClientÃ128Õ()ŒGConf.Client÷0
+ClientErrorHandlerFuncÃ128Õ(GConf.Client client, GLib.Error error)ŒGConf÷0œpublic delegate void
+ClientErrorHandlingModeÃ2ŒGConf÷0
+ClientNotifyFuncÃ128Õ(GConf.Client client, uint cnxn_id, GConf.Entry entry)ŒGConf÷0œpublic delegate void
+ClientPreloadTypeÃ2ŒGConf÷0
+EngineÃ1ŒGConf÷0
+EntryÃ1ŒGConf÷0
+EntryÃ128Õ(string key, GConf.Value val)ŒGConf.Entry÷0
+Entry.nocopyÃ128Õ(string key, GConf.Value val)ŒGConf.Entry÷0
+EnumStringPairÃ1ŒGConf÷0
+ErrorÃ2ŒGConf÷0
+FAILEDÃ4ŒGConf.Error÷0
+FLOATÃ4ŒGConf.ValueType÷0
+GConfÃ256÷0
+INTÃ4ŒGConf.ValueType÷0
+INVALIDÃ4ŒGConf.ValueType÷0
+IN_SHUTDOWNÃ4ŒGConf.Error÷0
+IS_DIRÃ4ŒGConf.Error÷0
+IS_KEYÃ4ŒGConf.Error÷0
+LISTÃ4ŒGConf.ValueType÷0
+LOCAL_ENGINEÃ4ŒGConf.Error÷0
+LOCK_FAILEDÃ4ŒGConf.Error÷0
+ListenersÃ1ŒGConf÷0
+ListenersÃ128Õ()ŒGConf.Listeners÷0
+ListenersCallbackÃ128Õ(GConf.Listeners listeners, string all_above_key, uint cnxn_id, void* listener_data)ŒGConf÷0œpublic delegate void
+ListenersForeachÃ128Õ(string location, uint cnxn_id, void* listener_data)ŒGConf÷0œpublic delegate void
+ListenersPredicateÃ128Õ(string location, uint cnxn_id, void* listener_data)ŒGConf÷0œpublic delegate bool
+MetaInfoÃ1ŒGConf÷0
+MetaInfoÃ128Õ()ŒGConf.MetaInfo÷0
+NAMESÃ4ŒGConf.UnsetFlags÷0
+NONEÃ4ŒGConf.ClientErrorHandlingMode÷0
+NONEÃ4ŒGConf.ClientPreloadType÷0
+NO_PERMISSIONÃ4ŒGConf.Error÷0
+NO_SERVERÃ4ŒGConf.Error÷0
+NO_WRITABLE_DATABASEÃ4ŒGConf.Error÷0
+NotifyFuncÃ128Õ(GConf.Engine conf, uint cnxn_id, GConf.Entry entry)ŒGConf÷0œpublic delegate void
+OAF_ERRORÃ4ŒGConf.Error÷0
+ONELEVELÃ4ŒGConf.ClientPreloadType÷0
+OVERRIDDENÃ4ŒGConf.Error÷0
+PAIRÃ4ŒGConf.ValueType÷0
+PARSE_ERRORÃ4ŒGConf.Error÷0
+RECURSIVEÃ4ŒGConf.ClientPreloadType÷0
+SCHEMAÃ4ŒGConf.ValueType÷0
+STRINGÃ4ŒGConf.ValueType÷0
+SUCCESSÃ4ŒGConf.Error÷0
+SchemaÃ1ŒGConf÷0
+SchemaÃ128Õ()ŒGConf.Schema÷0
+TYPE_MISMATCHÃ4ŒGConf.Error÷0
+UNRETURNEDÃ4ŒGConf.ClientErrorHandlingMode÷0
+UnsetFlagsÃ2ŒGConf÷0
+ValueÃ1ŒGConf÷0
+ValueÃ128Õ(GConf.ValueType type)ŒGConf.Value÷0
+Value.from_stringÃ128Õ(GConf.ValueType type, string str)ŒGConf.Value÷0
+ValueTypeÃ2ŒGConf÷0
+addÃ128Õ(string listen_point, void* listener_data, GLib.FreeFunc destroy_notify)ŒGConf.Listeners÷0
+add_dirÃ128Õ(string dir, GConf.ClientPreloadType preload)ŒGConf.Client÷0œpublic void
+all_dirsÃ128Õ(string dir)ŒGConf.Client÷0œpublic GLib.SList
+all_dirsÃ128Õ(string dir)ŒGConf.Engine÷0œpublic GLib.SList
+all_entriesÃ128Õ(string dir)ŒGConf.Client÷0œpublic GLib.SList
+all_entriesÃ128Õ(string dir)ŒGConf.Engine÷0œpublic GLib.SList
+associate_schemaÃ128Õ(string key, string schema_key)ŒGConf.Engine÷0œpublic bool
+cache_dirsÃ8ŒGConf.Client÷0œGLib.HashTable
+cache_hashÃ8ŒGConf.Client÷0œGLib.HashTable
+change_set_from_currentÃ128Õ(...)ŒGConf.Client÷0œpublic unowned
+change_set_from_currentÃ128Õ(...)ŒGConf.Engine÷0œpublic unowned
+change_set_from_currentvÃ128Õ(string keys)ŒGConf.Client÷0œpublic unowned
+change_set_from_currentvÃ128Õ(string keys)ŒGConf.Engine÷0œpublic unowned
+check_valueÃ128Õ(string key, out unowned GConf.Value value_retloc)ŒGConf.ChangeSet÷0œpublic bool
+clearÃ128Õ()ŒGConf.ChangeSet÷0œpublic void
+clear_cacheÃ128Õ()ŒGConf.Client÷0œpublic void
+commit_change_setÃ128Õ(GConf.ChangeSet cs, bool remove_committed)ŒGConf.Client÷0œpublic bool
+commit_change_setÃ128Õ(GConf.ChangeSet cs, bool remove_committed)ŒGConf.Engine÷0œpublic bool
+compareÃ128Õ(GConf.Value value_b)ŒGConf.Value÷0œpublic int
+concat_dir_and_keyÃ128Õ(string dir, string key)ŒGConf÷0œpublic unowned string
+copyÃ128Õ()ŒGConf.Entry÷0œpublic GConf.Entry
+copyÃ128Õ()ŒGConf.Schema÷0œpublic GConf.Schema
+copyÃ128Õ()ŒGConf.Value÷0œpublic GConf.Value
+countÃ128Õ()ŒGConf.Listeners÷0
+debug_shutdownÃ128Õ()ŒGConf÷0œpublic int
+decodeÃ128Õ(string encoded)ŒGConf.Value÷0œpublic unowned
+dir_existsÃ128Õ(string dir)ŒGConf.Client÷0œpublic bool
+dir_existsÃ128Õ(string dir)ŒGConf.Engine÷0œpublic bool
+dir_hashÃ8ŒGConf.Client÷0œGLib.HashTable
+encodeÃ128Õ()ŒGConf.Value÷0œpublic unowned string
+engineÃ8ŒGConf.Client÷0œGConf.Engine
+enum_to_stringÃ128Õ(GConf.EnumStringPair[] lookup_table, int enum_value)ŒGConf÷0œpublic unowned string
+enum_valueÃ8ŒGConf.EnumStringPair÷0œint
+equalÃ128Õ(GConf.Entry b)ŒGConf.Entry÷0œpublic bool
+errorÃ128Õ(void* error)ŒGConf.Client÷0œpublic virtual signal void
+error_modeÃ8ŒGConf.Client÷0œGConf.ClientErrorHandlingMode
+error_quarkÃ128Õ()ŒGConf÷0œpublic GLib.Quark
+escape_keyÃ128Õ(string arbitrary_text, int len)ŒGConf÷0œpublic unowned string
+get_boolÃ128Õ(string key)ŒGConf.Client÷0œpublic bool
+get_boolÃ128Õ(string key)ŒGConf.Engine÷0œpublic bool
+get_boolÃ128Õ()ŒGConf.Value÷0œpublic bool
+get_carÃ128Õ()ŒGConf.Value÷0œpublic unowned
+get_car_typeÃ128Õ()ŒGConf.Schema÷0œpublic GConf.ValueType
+get_cdrÃ128Õ()ŒGConf.Value÷0œpublic unowned
+get_cdr_typeÃ128Õ()ŒGConf.Schema÷0œpublic GConf.ValueType
+get_dataÃ128Õ(uint cnxn_id, void* listener_data_p, string location_p)ŒGConf.Listeners÷0œpublic bool
+get_defaultÃ128Õ()ŒGConf.Client÷0œpublic unowned
+get_defaultÃ128Õ()ŒGConf.Engine÷0œpublic unowned
+get_default_from_schemaÃ128Õ(string key)ŒGConf.Client÷0œpublic GConf.Value?
+get_default_from_schemaÃ128Õ(string key)ŒGConf.Engine÷0œpublic unowned
+get_default_valueÃ128Õ()ŒGConf.Schema÷0œpublic unowned
+get_entryÃ128Õ(string key, string? locale, bool use_schema_default)ŒGConf.Client÷0œpublic GConf.Entry
+get_entryÃ128Õ(string key, string locale, bool use_schema_default)ŒGConf.Engine÷0œpublic unowned
+get_floatÃ128Õ(string key)ŒGConf.Client÷0œpublic double
+get_floatÃ128Õ(string key)ŒGConf.Engine÷0œpublic double
+get_floatÃ128Õ()ŒGConf.Value÷0œpublic double
+get_for_addressÃ128Õ(string address)ŒGConf.Engine÷0œpublic unowned
+get_for_addressesÃ128Õ(GLib.SList<string> addresses)ŒGConf.Engine÷0œpublic unowned
+get_for_engineÃ128Õ(GConf.Engine engine)ŒGConf.Client÷0œpublic unowned
+get_intÃ128Õ(string key)ŒGConf.Client÷0œpublic int
+get_intÃ128Õ(string key)ŒGConf.Engine÷0œpublic int
+get_intÃ128Õ()ŒGConf.Value÷0œpublic int
+get_is_defaultÃ128Õ()ŒGConf.Entry÷0œpublic bool
+get_is_writableÃ128Õ()ŒGConf.Entry÷0œpublic bool
+get_keyÃ128Õ()ŒGConf.Entry÷0œpublic unowned string
+get_listÃ128Õ(string key, GConf.ValueType list_type)ŒGConf.Client÷0œpublic GLib.SList
+get_listÃ128Õ(string key, GConf.ValueType list_type)ŒGConf.Engine÷0œpublic GLib.SList
+get_listÃ128Õ()ŒGConf.Value÷0œpublic unowned
+get_list_typeÃ128Õ()ŒGConf.Schema÷0œpublic GConf.ValueType
+get_list_typeÃ128Õ()ŒGConf.Value÷0œpublic GConf.ValueType
+get_localeÃ128Õ()ŒGConf.Schema÷0œpublic unowned string
+get_long_descÃ128Õ()ŒGConf.Schema÷0œpublic unowned string
+get_mod_timeÃ128Õ()ŒGConf.MetaInfo÷0œpublic GLib.Time
+get_mod_userÃ128Õ()ŒGConf.MetaInfo÷0œpublic unowned string
+get_ownerÃ128Õ()ŒGConf.Schema÷0œpublic unowned string
+get_pairÃ128Õ(string key, GConf.ValueType car_type, GConf.ValueType cdr_type, void* car_retloc, void* cdr_retloc)ŒGConf.Client÷0œpublic bool
+get_pairÃ128Õ(string key, GConf.ValueType car_type, GConf.ValueType cdr_type, void* car_retloc, void* cdr_retloc)ŒGConf.Engine÷0œpublic bool
+get_schemaÃ128Õ(string key)ŒGConf.Client÷0œpublic GConf.Schema?
+get_schemaÃ128Õ(string key)ŒGConf.Engine÷0œpublic unowned
+get_schemaÃ128Õ()ŒGConf.MetaInfo÷0œpublic unowned string
+get_schemaÃ128Õ()ŒGConf.Value÷0œpublic unowned
+get_schema_nameÃ128Õ()ŒGConf.Entry÷0œpublic unowned string
+get_short_descÃ128Õ()ŒGConf.Schema÷0œpublic unowned string
+get_stringÃ128Õ(string key)ŒGConf.Client÷0œpublic string?
+get_stringÃ128Õ(string key)ŒGConf.Engine÷0œpublic unowned string
+get_stringÃ128Õ()ŒGConf.Value÷0œpublic unowned string
+get_user_dataÃ128Õ()ŒGConf.ChangeSet÷0œpublic void *
+get_user_dataÃ128Õ()ŒGConf.Engine÷0œpublic void *
+get_valueÃ128Õ()ŒGConf.Entry÷0œpublic unowned
+get_with_localeÃ128Õ(string key, string locale)ŒGConf.Engine÷0œpublic unowned
+get_without_defaultÃ128Õ(string key)ŒGConf.Client÷0œpublic GConf.Value?
+get_without_defaultÃ128Õ(string key)ŒGConf.Engine÷0œpublic unowned
+is_initializedÃ128Õ()ŒGConf÷0œpublic bool
+keyÃ8ŒGConf.Entry÷0
+key_is_belowÃ128Õ(string above, string below)ŒGConf÷0œpublic bool
+key_is_writableÃ128Õ(string key)ŒGConf.Client÷0œpublic bool
+key_is_writableÃ128Õ(string key)ŒGConf.Engine÷0œpublic bool
+listenersÃ8ŒGConf.Client÷0œGConf.Listeners
+mod_timeÃ8ŒGConf.MetaInfo÷0œGLib.Time
+mod_userÃ8ŒGConf.MetaInfo÷0
+notifyÃ128Õ(string key)ŒGConf.Client÷0œpublic void
+notifyÃ128Õ(string all_above, GConf.ListenersCallback callback)ŒGConf.Listeners÷0œpublic void
+notify_addÃ128Õ(string namespace_section, owned GConf.ClientNotifyFunc func)ŒGConf.Client÷0
+notify_addÃ128Õ(string namespace_section, GConf.NotifyFunc func)ŒGConf.Engine÷0
+notify_handlerÃ8ŒGConf.Client÷0
+notify_listÃ8ŒGConf.Client÷0œGLib.SList
+notify_removeÃ128Õ(uint cnxn)ŒGConf.Client÷0œpublic void
+notify_removeÃ128Õ(uint cnxn)ŒGConf.Engine÷0œpublic void
+pad2Ã8ŒGConf.Client÷0œint
+pending_notify_countÃ8ŒGConf.Client÷0œint
+preloadÃ128Õ(string dirname, GConf.ClientPreloadType type)ŒGConf.Client÷0œpublic void
+recursive_unsetÃ128Õ(string key, GConf.UnsetFlags flags)ŒGConf.Client÷0œpublic bool
+removeÃ128Õ(string key)ŒGConf.ChangeSet÷0œpublic void
+removeÃ128Õ(uint cnxn_id)ŒGConf.Listeners÷0œpublic void
+remove_dirÃ128Õ(string dir)ŒGConf.Client÷0œpublic void
+remove_dirÃ128Õ(string dir)ŒGConf.Engine÷0œpublic void
+remove_ifÃ128Õ(GConf.ListenersPredicate predicate)ŒGConf.Listeners÷0œpublic void
+reverse_change_setÃ128Õ(GConf.ChangeSet cs)ŒGConf.Client÷0œpublic unowned
+reverse_change_setÃ128Õ(GConf.ChangeSet cs)ŒGConf.Engine÷0œpublic unowned
+schemaÃ8ŒGConf.MetaInfo÷0
+set_boolÃ128Õ(string key, bool val)ŒGConf.ChangeSet÷0œpublic void
+set_boolÃ128Õ(string key, bool val)ŒGConf.Client÷0œpublic bool
+set_boolÃ128Õ(string key, bool val)ŒGConf.Engine÷0œpublic bool
+set_boolÃ128Õ(bool the_bool)ŒGConf.Value÷0œpublic void
+set_carÃ128Õ(GConf.Value car)ŒGConf.Value÷0œpublic void
+set_car_nocopyÃ128Õ(GConf.Value car)ŒGConf.Value÷0œpublic void
+set_car_typeÃ128Õ(GConf.ValueType type)ŒGConf.Schema÷0œpublic void
+set_cdrÃ128Õ(GConf.Value cdr)ŒGConf.Value÷0œpublic void
+set_cdr_nocopyÃ128Õ(GConf.Value cdr)ŒGConf.Value÷0œpublic void
+set_cdr_typeÃ128Õ(GConf.ValueType type)ŒGConf.Schema÷0œpublic void
+set_default_valueÃ128Õ(GConf.Value val)ŒGConf.Schema÷0œpublic void
+set_default_value_nocopyÃ128Õ(GConf.Value val)ŒGConf.Schema÷0œpublic void
+set_error_handlingÃ128Õ(GConf.ClientErrorHandlingMode mode)ŒGConf.Client÷0œpublic void
+set_floatÃ128Õ(string key, double val)ŒGConf.ChangeSet÷0œpublic void
+set_floatÃ128Õ(string key, double val)ŒGConf.Client÷0œpublic bool
+set_floatÃ128Õ(string key, double val)ŒGConf.Engine÷0œpublic bool
+set_floatÃ128Õ(double the_float)ŒGConf.Value÷0œpublic void
+set_global_default_error_handlerÃ128Õ(GConf.ClientErrorHandlerFunc func)ŒGConf.Client÷0œpublic void
+set_intÃ128Õ(string key, int val)ŒGConf.ChangeSet÷0œpublic void
+set_intÃ128Õ(string key, int val)ŒGConf.Client÷0œpublic bool
+set_intÃ128Õ(string key, int val)ŒGConf.Engine÷0œpublic bool
+set_intÃ128Õ(int the_int)ŒGConf.Value÷0œpublic void
+set_is_defaultÃ128Õ(bool is_default)ŒGConf.Entry÷0œpublic void
+set_is_writableÃ128Õ(bool is_writable)ŒGConf.Entry÷0œpublic void
+set_listÃ128Õ(string key, GConf.ValueType list_type, GLib.SList list)ŒGConf.ChangeSet÷0œpublic void
+set_listÃ128Õ(string key, GConf.ValueType list_type, GLib.SList list)ŒGConf.Client÷0œpublic bool
+set_listÃ128Õ(string key, GConf.ValueType list_type, GLib.SList list)ŒGConf.Engine÷0œpublic bool
+set_listÃ128Õ(GLib.SList<GConf.Value> list)ŒGConf.Value÷0œpublic void
+set_list_nocopyÃ128Õ(owned GLib.SList<GConf.Value> list)ŒGConf.Value÷0œpublic void
+set_list_typeÃ128Õ(GConf.ValueType type)ŒGConf.Schema÷0œpublic void
+set_list_typeÃ128Õ(GConf.ValueType type)ŒGConf.Value÷0œpublic void
+set_localeÃ128Õ(string locale)ŒGConf.Schema÷0œpublic void
+set_long_descÃ128Õ(string desc)ŒGConf.Schema÷0œpublic void
+set_mod_timeÃ128Õ(GLib.Time mod_time)ŒGConf.MetaInfo÷0œpublic void
+set_mod_userÃ128Õ(string mod_user)ŒGConf.MetaInfo÷0œpublic void
+set_nocopyÃ128Õ(string key, GConf.Value value)ŒGConf.ChangeSet÷0œpublic void
+set_ownerÃ128Õ(string owner)ŒGConf.Schema÷0œpublic void
+set_pairÃ128Õ(string key, GConf.ValueType car_type, GConf.ValueType cdr_type, void* address_of_car, void* address_of_cdr)ŒGConf.ChangeSet÷0œpublic void
+set_pairÃ128Õ(string key, GConf.ValueType car_type, GConf.ValueType cdr_type, void* address_of_car, void* address_of_cdr)ŒGConf.Client÷0œpublic bool
+set_pairÃ128Õ(string key, GConf.ValueType car_type, GConf.ValueType cdr_type, void* address_of_car, void* address_of_cdr)ŒGConf.Engine÷0œpublic bool
+set_schemaÃ128Õ(string key, GConf.Schema val)ŒGConf.ChangeSet÷0œpublic void
+set_schemaÃ128Õ(string key, GConf.Schema val)ŒGConf.Client÷0œpublic bool
+set_schemaÃ128Õ(string key, GConf.Schema val)ŒGConf.Engine÷0œpublic bool
+set_schemaÃ128Õ(string schema_name)ŒGConf.MetaInfo÷0œpublic void
+set_schemaÃ128Õ(GConf.Schema sc)ŒGConf.Value÷0œpublic void
+set_schema_nameÃ128Õ(string name)ŒGConf.Entry÷0œpublic void
+set_schema_nocopyÃ128Õ(GConf.Schema sc)ŒGConf.Value÷0œpublic void
+set_short_descÃ128Õ(string desc)ŒGConf.Schema÷0œpublic void
+set_stringÃ128Õ(string key, string val)ŒGConf.ChangeSet÷0œpublic void
+set_stringÃ128Õ(string key, string val)ŒGConf.Client÷0œpublic bool
+set_stringÃ128Õ(string key, string val)ŒGConf.Engine÷0œpublic bool
+set_stringÃ128Õ(string the_str)ŒGConf.Value÷0œpublic void
+set_typeÃ128Õ(GConf.ValueType type)ŒGConf.Schema÷0œpublic void
+set_user_dataÃ128Õ(void* data, GLib.DestroyNotify dnotify)ŒGConf.ChangeSet÷0œpublic void
+set_user_dataÃ128Õ(void* data, GLib.DestroyNotify dnotify)ŒGConf.Engine÷0œpublic void
+set_valueÃ128Õ(GConf.Value val)ŒGConf.Entry÷0œpublic void
+set_value_nocopyÃ128Õ(GConf.Value val)ŒGConf.Entry÷0œpublic void
+sizeÃ128Õ()ŒGConf.ChangeSet÷0
+steal_valueÃ128Õ()ŒGConf.Entry÷0œpublic unowned
+strÃ8ŒGConf.EnumStringPair÷0
+string_to_enumÃ128Õ(GConf.EnumStringPair[] lookup_table, string str, int enum_value_retloc)ŒGConf÷0œpublic bool
+suggest_syncÃ128Õ()ŒGConf.Client÷0œpublic void
+suggest_syncÃ128Õ()ŒGConf.Engine÷0œpublic void
+to_stringÃ128Õ()ŒGConf.Value÷0œpublic unowned string
+typeÃ8ŒGConf.Value÷0œGConf.ValueType
+unescape_keyÃ128Õ(string escaped_key, int len)ŒGConf÷0œpublic unowned string
+unique_keyÃ128Õ()ŒGConf÷0œpublic unowned string
+unreturned_errorÃ128Õ(void* error)ŒGConf.Client÷0œpublic virtual signal void
+unsetÃ128Õ(string key)ŒGConf.ChangeSet÷0œpublic void
+unsetÃ128Õ(string key)ŒGConf.Client÷0œpublic bool
+unsetÃ128Õ(string key)ŒGConf.Engine÷0œpublic bool
+valid_keyÃ128Õ(string key, string why_invalid)ŒGConf÷0œpublic bool
+valueÃ8ŒGConf.Entry÷0œGConf.Value
+value_changedÃ128Õ(string key, void* value)ŒGConf.Client÷0œpublic virtual signal void

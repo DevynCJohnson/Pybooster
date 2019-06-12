@@ -1,0 +1,43 @@
+# format=tagmanager
+BACKENDÌ4ÎSexy.SpellErrorÖ0
+IconEntryÌ1ÎSexyÖ0
+IconEntryÌ128Í()ÎSexy.IconEntryÖ0
+IconEntryPositionÌ2ÎSexyÖ0
+PRIMARYÌ4ÎSexy.IconEntryPositionÖ0
+SECONDARYÌ4ÎSexy.IconEntryPositionÖ0
+SexyÌ256Ö0
+SpellEntryÌ1ÎSexyÖ0
+SpellEntryÌ128Í()ÎSexy.SpellEntryÖ0
+SpellErrorÌ2ÎSexyÖ0
+TooltipÌ1ÎSexyÖ0
+TooltipÌ128Í()ÎSexy.TooltipÖ0
+Tooltip.with_labelÌ128Í(string text)ÎSexy.TooltipÖ0
+TreeViewÌ1ÎSexyÖ0
+TreeViewÌ128Í()ÎSexy.TreeViewÖ0
+UrlLabelÌ1ÎSexyÖ0
+UrlLabelÌ128Í()ÎSexy.UrlLabelÖ0
+activate_default_languagesÌ128Í()ÎSexy.SpellEntryÖ0Ïpublic void
+activate_languageÌ128Í(string lang)ÎSexy.SpellEntryÖ0Ïpublic bool
+add_clear_buttonÌ128Í()ÎSexy.IconEntryÖ0Ïpublic void
+deactivate_languageÌ128Í(string lang)ÎSexy.SpellEntryÖ0Ïpublic void
+get_active_languagesÌ128Í()ÎSexy.SpellEntryÖ0Ïpublic unowned
+get_iconÌ128Í(Sexy.IconEntryPosition position)ÎSexy.IconEntryÖ0Ïpublic unowned
+get_icon_highlightÌ128Í(Sexy.IconEntryPosition position)ÎSexy.IconEntryÖ0Ïpublic bool
+get_language_nameÌ128Í(string lang)ÎSexy.SpellEntryÖ0Ïpublic unowned string
+get_languagesÌ128Í()ÎSexy.SpellEntryÖ0Ïpublic unowned
+get_tooltipÌ128Í(Gtk.TreePath path, Gtk.TreeViewColumn column)ÎSexy.TreeViewÖ0Ïpublic virtual signal unowned
+icon_pressedÌ128Í(int icon_pos, int button)ÎSexy.IconEntryÖ0Ïpublic virtual signal void
+icon_releasedÌ128Í(int icon_pos, int button)ÎSexy.IconEntryÖ0Ïpublic virtual signal void
+is_checkedÌ128Í()ÎSexy.SpellEntryÖ0Ïpublic bool
+language_is_activeÌ128Í(string lang)ÎSexy.SpellEntryÖ0Ïpublic bool
+position_to_rectÌ128Í(Gdk.Rectangle rect, Gdk.Screen screen)ÎSexy.TooltipÖ0Ïpublic void
+position_to_widgetÌ128Í(Gtk.Widget widget)ÎSexy.TooltipÖ0Ïpublic void
+set_active_languagesÌ128Í(GLib.SList langs)ÎSexy.SpellEntryÖ0Ïpublic bool
+set_checkedÌ128Í(bool checked)ÎSexy.SpellEntryÖ0Ïpublic void
+set_iconÌ128Í(Sexy.IconEntryPosition position, Gtk.Image? icon)ÎSexy.IconEntryÖ0Ïpublic void
+set_icon_highlightÌ128Í(Sexy.IconEntryPosition position, bool highlight)ÎSexy.IconEntryÖ0Ïpublic void
+set_markupÌ128Í(string markup)ÎSexy.UrlLabelÖ0Ïpublic void
+set_tooltip_label_columnÌ128Í(uint column)ÎSexy.TreeViewÖ0Ïpublic void
+spell_error_quarkÌ128Í()ÎSexyÖ0Ïpublic GLib.Quark
+url_activatedÌ128Í(string url)ÎSexy.UrlLabelÖ0Ïpublic virtual signal void
+word_checkÌ128Í(string word)ÎSexy.SpellEntryÖ0Ïpublic virtual signal bool

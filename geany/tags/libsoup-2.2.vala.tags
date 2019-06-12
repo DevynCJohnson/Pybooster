@@ -1,0 +1,509 @@
+# format=tagmanager
+@1_0Ì4ÎSoup.HttpVersionÖ0
+@1_1Ì4ÎSoup.HttpVersionÖ0
+@interfaceÌ8ÎSoup.ServerÖ0ÏSoup.Address
+ACCEPTEDÌ4ÎSoup.KnownStatusCodeÖ0
+ADDRESS_ANY_PORTÌ8ÎSoupÖ0Ïint
+ARRAYÌ4ÎSoup.XmlrpcValueTypeÖ0
+AddressÌ1ÎSoupÖ0
+AddressÌ128Í(string name, uint port)ÎSoup.AddressÖ0
+Address.anyÌ128Í(Soup.AddressFamily family, uint port)ÎSoup.AddressÖ0
+AddressCallbackÌ128Í(Soup.Address addr, uint status)ÎSoupÖ0Ïpublic delegate void
+AddressFamilyÌ2ÎSoupÖ0
+AuthTypeÌ2ÎSoupÖ0
+BADÌ4ÎSoup.XmlrpcValueTypeÖ0
+BAD_GATEWAYÌ4ÎSoup.KnownStatusCodeÖ0
+BAD_REQUESTÌ4ÎSoup.KnownStatusCodeÖ0
+BASE64Ì4ÎSoup.XmlrpcValueTypeÖ0
+BASICÌ4ÎSoup.AuthTypeÖ0
+BODY_CHUNKÌ4ÎSoup.HandlerPhaseÖ0
+BOOLEANÌ4ÎSoup.XmlrpcValueTypeÖ0
+BYTERANGESÌ4ÎSoup.TransferEncodingÖ0
+CANCELLEDÌ4ÎSoup.KnownStatusCodeÖ0
+CANT_CONNECTÌ4ÎSoup.KnownStatusCodeÖ0
+CANT_CONNECT_PROXYÌ4ÎSoup.KnownStatusCodeÖ0
+CANT_RESOLVEÌ4ÎSoup.KnownStatusCodeÖ0
+CANT_RESOLVE_PROXYÌ4ÎSoup.KnownStatusCodeÖ0
+CHUNKEDÌ4ÎSoup.TransferEncodingÖ0
+CLIENT_ERRORÌ4ÎSoup.StatusClassÖ0
+CONFLICTÌ4ÎSoup.KnownStatusCodeÖ0
+CONNECTÌ4ÎSoup.MethodIdÖ0
+CONNECTINGÌ4ÎSoup.MessageStatusÖ0
+CONNECTION_ASYNC_CONTEXTÌ8ÎSoupÖ0
+CONNECTION_HÌ8ÎSoupÖ0Ïint
+CONNECTION_MESSAGE_FILTERÌ8ÎSoupÖ0
+CONNECTION_ORIGIN_URIÌ8ÎSoupÖ0
+CONNECTION_PROXY_URIÌ8ÎSoupÖ0
+CONNECTION_SSL_CREDENTIALSÌ8ÎSoupÖ0
+CONNECTION_TIMEOUTÌ8ÎSoupÖ0
+CONTENT_LENGTHÌ4ÎSoup.TransferEncodingÖ0
+CONTINUEÌ4ÎSoup.KnownStatusCodeÖ0
+COPYÌ4ÎSoup.MethodIdÖ0
+CREATEDÌ4ÎSoup.KnownStatusCodeÖ0
+ConnectionÌ1ÎSoupÖ0
+ConnectionÌ128Í(string propname1)ÎSoup.ConnectionÖ0
+ConnectionCallbackÌ128Í(Soup.Connection conn, uint status)ÎSoupÖ0Ïpublic delegate void
+DATETIMEÌ4ÎSoup.XmlrpcValueTypeÖ0
+DATE_HÌ8ÎSoupÖ0Ïint
+DELETEÌ4ÎSoup.MethodIdÖ0
+DIGESTÌ4ÎSoup.AuthTypeÖ0
+DOUBLEÌ4ÎSoup.XmlrpcValueTypeÖ0
+DataBufferÌ2048ÎSoupÖ0
+DigestAlgorithmÌ2ÎSoupÖ0
+EOFÌ4ÎSoup.SocketIOStatusÖ0
+EOFÌ4ÎSoup.TransferEncodingÖ0
+ERRORÌ4ÎSoup.SocketIOStatusÖ0
+EXPECTATION_FAILEDÌ4ÎSoup.KnownStatusCodeÖ0
+EXPECT_CONTINUEÌ4ÎSoup.MessageFlagsÖ0
+FAILED_DEPENDENCYÌ4ÎSoup.KnownStatusCodeÖ0
+FINISHEDÌ4ÎSoup.MessageStatusÖ0
+FORBIDDENÌ4ÎSoup.KnownStatusCodeÖ0
+FOUNDÌ4ÎSoup.KnownStatusCodeÖ0
+GATEWAY_TIMEOUTÌ4ÎSoup.KnownStatusCodeÖ0
+GETÌ4ÎSoup.MethodIdÖ0
+GONEÌ4ÎSoup.KnownStatusCodeÖ0
+HÌ8ÎSoupÖ0Ïint
+HEADÌ4ÎSoup.MethodIdÖ0
+HEADERS_HÌ8ÎSoupÖ0Ïint
+HTTP_VERSION_NOT_SUPPORTEDÌ4ÎSoup.KnownStatusCodeÖ0
+HandlerPhaseÌ2ÎSoupÖ0
+HttpVersionÌ2ÎSoupÖ0
+IDLEÌ4ÎSoup.MessageStatusÖ0
+INFORMATIONALÌ4ÎSoup.StatusClassÖ0
+INSUFFICIENT_STORAGEÌ4ÎSoup.KnownStatusCodeÖ0
+INTÌ4ÎSoup.XmlrpcValueTypeÖ0
+INTERNAL_SERVER_ERRORÌ4ÎSoup.KnownStatusCodeÖ0
+INVALID_RANGEÌ4ÎSoup.KnownStatusCodeÖ0
+IO_ERRORÌ4ÎSoup.KnownStatusCodeÖ0
+IPV4Ì4ÎSoup.AddressFamilyÖ0
+IPV6Ì4ÎSoup.AddressFamilyÖ0
+KnownStatusCodeÌ2ÎSoupÖ0
+LENGTH_REQUIREDÌ4ÎSoup.KnownStatusCodeÖ0
+LOCKÌ4ÎSoup.MethodIdÖ0
+LOCKEDÌ4ÎSoup.KnownStatusCodeÖ0
+MALFORMEDÌ4ÎSoup.KnownStatusCodeÖ0
+MD5Ì4ÎSoup.DigestAlgorithmÖ0
+MD5_SESSÌ4ÎSoup.DigestAlgorithmÖ0
+MESSAGE_FILTER_HÌ8ÎSoupÖ0Ïint
+MESSAGE_HÌ8ÎSoupÖ0Ïint
+MESSAGE_QUEUE_HÌ8ÎSoupÖ0Ïint
+METHOD_CONNECTÌ8ÎSoupÖ0
+METHOD_COPYÌ8ÎSoupÖ0
+METHOD_DELETEÌ8ÎSoupÖ0
+METHOD_GETÌ8ÎSoupÖ0
+METHOD_HÌ8ÎSoupÖ0Ïint
+METHOD_HEADÌ8ÎSoupÖ0
+METHOD_LOCKÌ8ÎSoupÖ0
+METHOD_MKCOLÌ8ÎSoupÖ0
+METHOD_MOVEÌ8ÎSoupÖ0
+METHOD_NOT_ALLOWEDÌ4ÎSoup.KnownStatusCodeÖ0
+METHOD_OPTIONSÌ8ÎSoupÖ0
+METHOD_PATCHÌ8ÎSoupÖ0
+METHOD_POSTÌ8ÎSoupÖ0
+METHOD_PROPFINDÌ8ÎSoupÖ0
+METHOD_PROPPATCHÌ8ÎSoupÖ0
+METHOD_PUTÌ8ÎSoupÖ0
+METHOD_TRACEÌ8ÎSoupÖ0
+METHOD_UNLOCKÌ8ÎSoupÖ0
+MISC_HÌ8ÎSoupÖ0Ïint
+MKCOLÌ4ÎSoup.MethodIdÖ0
+MOVEÌ4ÎSoup.MethodIdÖ0
+MOVED_PERMANENTLYÌ4ÎSoup.KnownStatusCodeÖ0
+MOVED_TEMPORARILYÌ4ÎSoup.KnownStatusCodeÖ0
+MULTIPLE_CHOICESÌ4ÎSoup.KnownStatusCodeÖ0
+MULTI_STATUSÌ4ÎSoup.KnownStatusCodeÖ0
+MessageÌ1ÎSoupÖ0
+MessageÌ128Í(string method, string uri_string)ÎSoup.MessageÖ0
+Message.from_uriÌ128Í(string method, Soup.Uri uri)ÎSoup.MessageÖ0
+MessageCallbackFnÌ128Í(Soup.Message req)ÎSoupÖ0Ïpublic delegate void
+MessageFilterÌ32ÎSoupÖ0
+MessageFlagsÌ2ÎSoupÖ0
+MessageQueueÌ1ÎSoupÖ0
+MessageQueueÌ128Í()ÎSoup.MessageQueueÖ0
+MessageQueueIterÌ1ÎSoupÖ0
+MessageStatusÌ2ÎSoupÖ0
+MethodIdÌ2ÎSoupÖ0
+NONEÌ4ÎSoup.KnownStatusCodeÖ0
+NONEÌ4ÎSoup.TransferEncodingÖ0
+NON_AUTHORITATIVEÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_ACCEPTABLEÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_APPEARING_IN_THIS_PROTOCOLÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_EXTENDEDÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_FOUNDÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_IMPLEMENTEDÌ4ÎSoup.KnownStatusCodeÖ0
+NOT_MODIFIEDÌ4ÎSoup.KnownStatusCodeÖ0
+NO_CONTENTÌ4ÎSoup.KnownStatusCodeÖ0
+NO_REDIRECTÌ4ÎSoup.MessageFlagsÖ0
+OKÌ4ÎSoup.KnownStatusCodeÖ0
+OKÌ4ÎSoup.SocketIOStatusÖ0
+OPTIONSÌ4ÎSoup.MethodIdÖ0
+OVERWRITE_CHUNKSÌ4ÎSoup.MessageFlagsÖ0
+OwnershipÌ2ÎSoupÖ0
+PARTIAL_CONTENTÌ4ÎSoup.KnownStatusCodeÖ0
+PATCHÌ4ÎSoup.MethodIdÖ0
+PAYMENT_REQUIREDÌ4ÎSoup.KnownStatusCodeÖ0
+POSTÌ4ÎSoup.MethodIdÖ0
+POST_BODYÌ4ÎSoup.HandlerPhaseÖ0
+POST_REQUESTÌ4ÎSoup.HandlerPhaseÖ0
+PRECONDITION_FAILEDÌ4ÎSoup.KnownStatusCodeÖ0
+PRE_BODYÌ4ÎSoup.HandlerPhaseÖ0
+PROCESSINGÌ4ÎSoup.KnownStatusCodeÖ0
+PROPFINDÌ4ÎSoup.MethodIdÖ0
+PROPPATCHÌ4ÎSoup.MethodIdÖ0
+PROXY_AUTHENTICATION_REQUIREDÌ4ÎSoup.KnownStatusCodeÖ0
+PROXY_UNAUTHORIZEDÌ4ÎSoup.KnownStatusCodeÖ0
+PUTÌ4ÎSoup.MethodIdÖ0
+ProtocolÌ1ÎSoupÖ0
+QUEUEDÌ4ÎSoup.MessageStatusÖ0
+REDIRECTÌ4ÎSoup.StatusClassÖ0
+REQUESTED_RANGE_NOT_SATISFIABLEÌ4ÎSoup.KnownStatusCodeÖ0
+REQUEST_ENTITY_TOO_LARGEÌ4ÎSoup.KnownStatusCodeÖ0
+REQUEST_TIMEOUTÌ4ÎSoup.KnownStatusCodeÖ0
+REQUEST_URI_TOO_LONGÌ4ÎSoup.KnownStatusCodeÖ0
+RESET_CONTENTÌ4ÎSoup.KnownStatusCodeÖ0
+RUNNINGÌ4ÎSoup.MessageStatusÖ0
+SEE_OTHERÌ4ÎSoup.KnownStatusCodeÖ0
+SERVER_ASYNC_CONTEXTÌ8ÎSoupÖ0
+SERVER_AUTH_HÌ8ÎSoupÖ0Ïint
+SERVER_ERRORÌ4ÎSoup.StatusClassÖ0
+SERVER_HÌ8ÎSoupÖ0Ïint
+SERVER_INTERFACEÌ8ÎSoupÖ0
+SERVER_MESSAGE_HÌ8ÎSoupÖ0Ïint
+SERVER_PORTÌ8ÎSoupÖ0
+SERVER_SSL_CERT_FILEÌ8ÎSoupÖ0
+SERVER_SSL_KEY_FILEÌ8ÎSoupÖ0
+SERVICE_UNAVAILABLEÌ4ÎSoup.KnownStatusCodeÖ0
+SESSION_ASYNC_CONTEXTÌ8ÎSoupÖ0
+SESSION_ASYNC_HÌ8ÎSoupÖ0Ïint
+SESSION_HÌ8ÎSoupÖ0Ïint
+SESSION_MAX_CONNSÌ8ÎSoupÖ0
+SESSION_MAX_CONNS_PER_HOSTÌ8ÎSoupÖ0
+SESSION_PROXY_URIÌ8ÎSoupÖ0
+SESSION_SSL_CA_FILEÌ8ÎSoupÖ0
+SESSION_SYNC_HÌ8ÎSoupÖ0Ïint
+SESSION_TIMEOUTÌ8ÎSoupÖ0
+SESSION_USE_NTLMÌ8ÎSoupÖ0
+SOAP_MESSAGE_HÌ8ÎSoupÖ0Ïint
+SOCKET_ASYNC_CONTEXTÌ8ÎSoupÖ0
+SOCKET_FLAG_CLOEXECÌ8ÎSoupÖ0
+SOCKET_FLAG_NODELAYÌ8ÎSoupÖ0
+SOCKET_FLAG_NONBLOCKINGÌ8ÎSoupÖ0
+SOCKET_FLAG_REUSEADDRÌ8ÎSoupÖ0
+SOCKET_HÌ8ÎSoupÖ0Ïint
+SOCKET_IS_SERVERÌ8ÎSoupÖ0
+SOCKET_SSL_CREDENTIALSÌ8ÎSoupÖ0
+SOCKET_TIMEOUTÌ8ÎSoupÖ0
+SSL_FAILEDÌ4ÎSoup.KnownStatusCodeÖ0
+STATICÌ4ÎSoup.OwnershipÖ0
+STATUS_HÌ8ÎSoupÖ0Ïint
+STRINGÌ4ÎSoup.XmlrpcValueTypeÖ0
+STRUCTÌ4ÎSoup.XmlrpcValueTypeÖ0
+SUCCESSÌ4ÎSoup.StatusClassÖ0
+SWITCHING_PROTOCOLSÌ4ÎSoup.KnownStatusCodeÖ0
+SYSTEM_OWNEDÌ4ÎSoup.OwnershipÖ0
+ServerÌ1ÎSoupÖ0
+ServerÌ128Í(string optname1, ...)ÎSoup.ServerÖ0
+ServerAuthÌ1ÎSoupÖ0
+ServerAuthÌ128Í(Soup.ServerAuthContext auth_ctx, GLib.SList auth_hdrs, Soup.Message msg)ÎSoup.ServerAuthÖ0
+ServerAuthBasicÌ1ÎSoupÖ0
+ServerAuthCallbackFnÌ128Í(Soup.ServerAuthContext auth_ctx, Soup.ServerAuth auth, Soup.Message msg)ÎSoupÖ0Ïpublic delegate bool
+ServerAuthContextÌ1ÎSoupÖ0
+ServerAuthDigestÌ1ÎSoupÖ0
+ServerCallbackFnÌ128Í(Soup.ServerContext context, Soup.Message msg)ÎSoupÖ0Ïpublic delegate void
+ServerContextÌ1ÎSoupÖ0
+ServerHandlerÌ1ÎSoupÖ0
+ServerMessageÌ1ÎSoupÖ0
+ServerMessageÌ128Í(Soup.Server server)ÎSoup.ServerMessageÖ0
+ServerUnregisterFnÌ128Í(Soup.Server server, Soup.ServerHandler handler)ÎSoupÖ0Ïpublic delegate void
+SessionÌ1ÎSoupÖ0
+SessionÌ128Í()ÎSoup.SessionÖ0
+SessionAsyncÌ1ÎSoupÖ0
+SessionAsyncÌ128Í()ÎSoup.SessionAsyncÖ0
+SessionAsync.with_optionsÌ128Í(string optname1)ÎSoup.SessionAsyncÖ0
+SessionSyncÌ1ÎSoupÖ0
+SessionSyncÌ128Í()ÎSoup.SessionSyncÖ0
+SessionSync.with_optionsÌ128Í(string optname1)ÎSoup.SessionSyncÖ0
+SoapParameterÌ1ÎSoupÖ0
+SocketÌ1ÎSoupÖ0
+SocketÌ128Í(string optname1)ÎSoup.SocketÖ0
+SocketCallbackÌ128Í(Soup.Socket sock, uint status)ÎSoupÖ0Ïpublic delegate void
+SocketIOStatusÌ2ÎSoupÖ0
+SocketListenerCallbackÌ128Í(Soup.Socket listener, Soup.Socket sock)ÎSoupÖ0Ïpublic delegate void
+SoupÌ256Ö0
+StatusClassÌ2ÎSoupÖ0
+TEMPORARY_REDIRECTÌ4ÎSoup.KnownStatusCodeÖ0
+TRACEÌ4ÎSoup.MethodIdÖ0
+TRANSPORT_ERRORÌ4ÎSoup.StatusClassÖ0
+TRY_AGAINÌ4ÎSoup.KnownStatusCodeÖ0
+TYPES_HÌ8ÎSoupÖ0Ïint
+TransferEncodingÌ2ÎSoupÖ0
+UNAUTHORIZEDÌ4ÎSoup.KnownStatusCodeÖ0
+UNKNOWNÌ4ÎSoup.MethodIdÖ0
+UNKNOWNÌ4ÎSoup.TransferEncodingÖ0
+UNLOCKÌ4ÎSoup.MethodIdÖ0
+UNPROCESSABLE_ENTITYÌ4ÎSoup.KnownStatusCodeÖ0
+UNSUPPORTED_MEDIA_TYPEÌ4ÎSoup.KnownStatusCodeÖ0
+URI_HÌ8ÎSoupÖ0Ïint
+USER_OWNEDÌ4ÎSoup.OwnershipÖ0
+USE_PROXYÌ4ÎSoup.KnownStatusCodeÖ0
+UriÌ1ÎSoupÖ0
+UriÌ128Í(string uri_string)ÎSoup.UriÖ0
+Uri.with_baseÌ128Í(Soup.Uri @base, string uri_string)ÎSoup.UriÖ0
+WOULD_BLOCKÌ4ÎSoup.SocketIOStatusÖ0
+XmlrpcValueÌ1ÎSoupÖ0
+XmlrpcValueArrayIteratorÌ1ÎSoupÖ0
+XmlrpcValueTypeÌ2ÎSoupÖ0
+abortÌ128Í()ÎSoup.SessionÖ0Ïpublic void
+add_chunkÌ128Í(Soup.Ownership owner, owned string body, uint length)ÎSoup.MessageÖ0Ïpublic void
+add_filterÌ128Í(Soup.MessageFilter filter)ÎSoup.SessionÖ0Ïpublic void
+add_final_chunkÌ128Í()ÎSoup.MessageÖ0Ïpublic void
+add_handlerÌ128Í(Soup.HandlerPhase phase, Soup.MessageCallbackFn handler_cb)ÎSoup.MessageÖ0Ïpublic void
+add_handlerÌ128Í(string path, Soup.ServerAuthContext auth_ctx, Soup.ServerCallbackFn callback, Soup.ServerUnregisterFn unreg, void* data)ÎSoup.ServerÖ0Ïpublic void
+add_headerÌ128Í(GLib.HashTable hash, string name, string value)ÎSoup.MessageÖ0Ïpublic void
+add_header_handlerÌ128Í(string header, Soup.HandlerPhase phase, Soup.MessageCallbackFn handler_cb)ÎSoup.MessageÖ0Ïpublic void
+add_idleÌ128Í(GLib.MainContext async_context, GLib.SourceFunc function, void* data)ÎSoupÖ0Ïpublic unowned
+add_status_class_handlerÌ128Í(Soup.StatusClass status_class, Soup.HandlerPhase phase, Soup.MessageCallbackFn handler_cb)ÎSoup.MessageÖ0Ïpublic void
+add_status_code_handlerÌ128Í(uint status_code, Soup.HandlerPhase phase, Soup.MessageCallbackFn handler_cb)ÎSoup.MessageÖ0Ïpublic void
+add_timeoutÌ128Í(GLib.MainContext async_context, uint interval, GLib.SourceFunc function, void* data)ÎSoupÖ0Ïpublic unowned
+algorithmÌ8ÎSoup.ServerAuthDigestÖ0ÏSoup.DigestAlgorithm
+appendÌ128Í(Soup.Message msg)ÎSoup.MessageQueueÖ0Ïpublic void
+array_get_iteratorÌ128Í(out unowned Soup.XmlrpcValueArrayIterator iter)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+async_contextÌ8ÎSoup.ConnectionÖ0Ïvoid
+async_contextÌ8ÎSoup.ServerÖ0Ïvoid
+async_contextÌ8ÎSoup.SessionÖ0Ïvoid
+async_contextÌ8ÎSoup.SocketÖ0Ïvoid
+authÌ8ÎSoup.ServerContextÖ0ÏSoup.ServerAuth
+auth_ctxÌ8ÎSoup.ServerHandlerÖ0ÏSoup.ServerAuthContext
+authenticateÌ128Í(Soup.Message p0, string auth_type, string auth_realm, void* username, void* password)ÎSoup.ConnectionÖ0Ïpublic virtual signal void
+authenticateÌ128Í(Soup.Message p0, string auth_type, string auth_realm, void* username, void* password)ÎSoup.SessionÖ0Ïpublic virtual signal void
+base64_decodeÌ128Í(string text, int out_len)ÎSoupÖ0Ïpublic unowned string
+base64_decode_stepÌ128Í(uchar[] @in, int len, uchar[] @out, int state, uint save)ÎSoupÖ0Ïpublic int
+base64_encodeÌ128Í(string text, int len)ÎSoupÖ0Ïpublic unowned string
+base64_encode_closeÌ128Í(uchar[] @in, int inlen, bool break_lines, uchar[] @out, int state, int save)ÎSoupÖ0Ïpublic int
+base64_encode_stepÌ128Í(uchar[] @in, int len, bool break_lines, uchar[] @out, int state, int save)ÎSoupÖ0Ïpublic int
+basicÌ8ÎSoup.ServerAuthÖ0ÏSoup.ServerAuthBasic
+basic_infoÌ8ÎSoup.ServerAuthContextÖ0Ïvoid
+bodyÌ8ÎSoup.DataBufferÖ0
+broken_encodingÌ8ÎSoup.UriÖ0Ïbool
+callbackÌ8ÎSoup.ServerAuthContextÖ0ÏSoup.ServerAuthCallbackFn
+callbackÌ8ÎSoup.ServerHandlerÖ0ÏSoup.ServerCallbackFn
+cancel_messageÌ128Í(Soup.Message msg)ÎSoup.SessionÖ0Ïpublic virtual void
+challengeÌ128Í(Soup.Message msg, string header_name)ÎSoup.ServerAuthContextÖ0Ïpublic void
+check_passwdÌ128Í(string passwd)ÎSoup.ServerAuthÖ0Ïpublic bool
+clear_headersÌ128Í(GLib.HashTable hash)ÎSoup.MessageÖ0Ïpublic void
+client_new_asyncÌ128Í(string hostname, uint port, void* ssl_creds, Soup.SocketCallback callback)ÎSoup.SocketÖ0Ïpublic unowned
+client_new_syncÌ128Í(string hostname, uint port, void* ssl_creds, uint status_ret)ÎSoup.SocketÖ0Ïpublic unowned
+cloexecÌ8ÎSoup.SocketÖ0Ïbool
+cnonceÌ8ÎSoup.ServerAuthDigestÖ0
+connectÌ128Í(Soup.Address remote_addr)ÎSoup.SocketÖ0
+connect_asyncÌ128Í(Soup.ConnectionCallback callback)ÎSoup.ConnectionÖ0Ïpublic void
+connect_resultÌ128Í(int p0)ÎSoup.ConnectionÖ0Ïpublic virtual signal void
+connect_resultÌ128Í(int p0)ÎSoup.SocketÖ0Ïpublic virtual signal void
+connect_syncÌ128Í()ÎSoup.ConnectionÖ0
+copyÌ128Í()ÎSoup.UriÖ0Ïpublic Soup.Uri
+copy_rootÌ128Í()ÎSoup.UriÖ0Ïpublic unowned
+curÌ8ÎSoup.MessageQueueIterÖ0ÏGLib.List
+date_generateÌ128Í(ulong when)ÎSoupÖ0Ïpublic unowned string
+date_iso8601_parseÌ128Í(string timestamp)ÎSoupÖ0
+date_parseÌ128Í(string timestamp)ÎSoupÖ0
+decodeÌ128Í(string part)ÎSoup.UriÖ0Ïpublic void
+digestÌ8ÎSoup.ServerAuthÖ0ÏSoup.ServerAuthDigest
+digest_infoÌ8ÎSoup.ServerAuthContextÖ0Ïvoid
+digest_responseÌ8ÎSoup.ServerAuthDigestÖ0
+digest_uriÌ8ÎSoup.ServerAuthDigestÖ0
+disconnectÌ128Í()ÎSoup.ConnectionÖ0Ïpublic void
+disconnectÌ128Í()ÎSoup.SocketÖ0Ïpublic void
+disconnectedÌ128Í()ÎSoup.ConnectionÖ0Ïpublic virtual signal void
+disconnectedÌ128Í()ÎSoup.SocketÖ0Ïpublic virtual signal void
+dns_resultÌ128Í(int status)ÎSoup.AddressÖ0Ïpublic virtual signal void
+dumpÌ128Í()ÎSoup.XmlrpcValueÖ0Ïpublic void
+encodeÌ128Í(string part, string escape_extra)ÎSoup.UriÖ0
+equalÌ128Í(Soup.Uri uri2)ÎSoup.UriÖ0Ïpublic bool
+finishÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic void
+finishedÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+firstÌ128Í(Soup.MessageQueueIter iter)ÎSoup.MessageQueueÖ0Ïpublic unowned
+fragmentÌ8ÎSoup.UriÖ0
+free_iterÌ128Í(Soup.MessageQueueIter iter)ÎSoup.MessageQueueÖ0Ïpublic void
+get_async_contextÌ128Í()ÎSoup.ServerÖ0Ïpublic unowned
+get_async_contextÌ128Í()ÎSoup.SessionÖ0Ïpublic unowned
+get_base64Ì128Í(out unowned GLib.ByteArray data)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_booleanÌ128Í(bool b)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_client_addressÌ128Í()ÎSoup.ServerContextÖ0Ïpublic unowned
+get_client_hostÌ128Í()ÎSoup.ServerContextÖ0Ïpublic unowned string
+get_connectionÌ128Í(Soup.Message msg, bool try_pruning, bool is_new)ÎSoup.SessionÖ0Ïpublic unowned
+get_datetimeÌ128Í(ulong timeval)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_doubleÌ128Í(double b)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_encodingÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic Soup.TransferEncoding
+get_first_childÌ128Í()ÎSoup.SoapParameterÖ0Ïpublic unowned
+get_first_child_by_nameÌ128Í(string name)ÎSoup.SoapParameterÖ0Ïpublic unowned
+get_flagsÌ128Í()ÎSoup.MessageÖ0
+get_handlerÌ128Í(string path)ÎSoup.ServerÖ0Ïpublic unowned
+get_headerÌ128Í(GLib.HashTable hash, string name)ÎSoup.MessageÖ0Ïpublic unowned string
+get_header_listÌ128Í(GLib.HashTable hash, string name)ÎSoup.MessageÖ0Ïpublic unowned
+get_http_versionÌ128Í()ÎSoup.MessageÖ0Ïpublic Soup.HttpVersion
+get_intÌ128Í(long i)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_int_valueÌ128Í()ÎSoup.SoapParameterÖ0Ïpublic int
+get_listenerÌ128Í()ÎSoup.ServerÖ0Ïpublic unowned
+get_local_addressÌ128Í()ÎSoup.SocketÖ0Ïpublic unowned
+get_nameÌ128Í()ÎSoup.AddressÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎSoup.SoapParameterÖ0Ïpublic unowned string
+get_next_childÌ128Í()ÎSoup.SoapParameterÖ0Ïpublic unowned
+get_next_child_by_nameÌ128Í(string name)ÎSoup.SoapParameterÖ0Ïpublic unowned
+get_physicalÌ128Í()ÎSoup.AddressÖ0Ïpublic unowned string
+get_portÌ128Í()ÎSoup.AddressÖ0
+get_portÌ128Í()ÎSoup.ServerÖ0
+get_propertyÌ128Í(string prop_name)ÎSoup.SoapParameterÖ0Ïpublic unowned string
+get_protocolÌ128Í()ÎSoup.ServerÖ0Ïpublic unowned
+get_remote_addressÌ128Í()ÎSoup.SocketÖ0Ïpublic unowned
+get_request_encodingÌ128Í(uint content_length)ÎSoup.MessageÖ0Ïpublic Soup.TransferEncoding
+get_response_encodingÌ128Í(uint content_length)ÎSoup.MessageÖ0Ïpublic Soup.TransferEncoding
+get_serverÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic unowned
+get_sockaddrÌ128Í(int len)ÎSoup.AddressÖ0Ïpublic void *
+get_stringÌ128Í(out unowned string str)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_string_valueÌ128Í()ÎSoup.SoapParameterÖ0Ïpublic unowned string
+get_structÌ128Í(GLib.HashTable table)ÎSoup.XmlrpcValueÖ0Ïpublic bool
+get_uriÌ128Í()ÎSoup.MessageÖ0Ïpublic unowned
+get_userÌ128Í()ÎSoup.ServerAuthÖ0Ïpublic unowned string
+get_valueÌ128Í(out unowned Soup.XmlrpcValue value)ÎSoup.XmlrpcValueArrayIteratorÖ0Ïpublic bool
+gmtimeÌ128Í(ulong when, void* tm)ÎSoupÖ0Ïpublic void
+got_bodyÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+got_chunkÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+got_headersÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+got_informationalÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+handlerÌ8ÎSoup.ServerContextÖ0ÏSoup.ServerHandler
+header_param_copy_tokenÌ128Í(GLib.HashTable tokens, string t)ÎSoupÖ0Ïpublic unowned string
+header_param_decode_tokenÌ128Í(out unowned string @in)ÎSoupÖ0Ïpublic unowned string
+header_param_destroy_hashÌ128Í(GLib.HashTable table)ÎSoupÖ0Ïpublic void
+header_param_parse_listÌ128Í(string header)ÎSoupÖ0Ïpublic unowned
+headers_parse_requestÌ128Í(string str, int len, GLib.HashTable dest, out unowned string req_method, out unowned string req_path, Soup.HttpVersion ver)ÎSoupÖ0Ïpublic bool
+headers_parse_responseÌ128Í(string str, int len, GLib.HashTable dest, Soup.HttpVersion ver, uint status_code, out unowned string reason_phrase)ÎSoupÖ0Ïpublic bool
+headers_parse_status_lineÌ128Í(string status_line, Soup.HttpVersion ver, uint status_code, out unowned string reason_phrase)ÎSoupÖ0Ïpublic bool
+hostÌ8ÎSoup.UriÖ0
+integrityÌ8ÎSoup.ServerAuthDigestÖ0Ïbool
+io_in_progressÌ128Í()ÎSoup.MessageÖ0Ïpublic bool
+io_pauseÌ128Í()ÎSoup.MessageÖ0Ïpublic void
+io_stopÌ128Í()ÎSoup.MessageÖ0Ïpublic void
+io_unpauseÌ128Í()ÎSoup.MessageÖ0Ïpublic void
+is_connectedÌ128Í()ÎSoup.SocketÖ0Ïpublic bool
+is_finishedÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic bool
+is_in_useÌ128Í()ÎSoup.ConnectionÖ0Ïpublic bool
+is_keepaliveÌ128Í()ÎSoup.MessageÖ0Ïpublic bool
+is_serverÌ8ÎSoup.SocketÖ0Ïbool
+is_startedÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic bool
+last_usedÌ128Í()ÎSoup.ConnectionÖ0
+lengthÌ8ÎSoup.DataBufferÖ0
+list_handlersÌ128Í()ÎSoup.ServerÖ0Ïpublic unowned
+listenÌ128Í(Soup.Address local_addr)ÎSoup.SocketÖ0Ïpublic bool
+max_connsÌ8ÎSoup.SessionÖ0Ïint
+max_conns_per_hostÌ8ÎSoup.SessionÖ0Ïint
+message_filterÌ8ÎSoup.ConnectionÖ0Ïvoid
+methodÌ8ÎSoup.MessageÖ0
+method_get_idÌ128Í(string method)ÎSoupÖ0Ïpublic Soup.MethodId
+method_idÌ8ÎSoup.ServerContextÖ0ÏSoup.MethodId
+msgÌ8ÎSoup.ServerContextÖ0ÏSoup.Message
+new_connectionÌ128Í(Soup.Socket p0)ÎSoup.SocketÖ0Ïpublic virtual signal void
+nextÌ128Í(Soup.MessageQueueIter iter)ÎSoup.MessageQueueÖ0Ïpublic unowned
+nextÌ8ÎSoup.MessageQueueIterÖ0ÏGLib.List
+nextÌ128Í()ÎSoup.XmlrpcValueArrayIteratorÖ0Ïpublic unowned
+nodelayÌ8ÎSoup.SocketÖ0Ïbool
+non_blockingÌ8ÎSoup.SocketÖ0Ïbool
+nonceÌ8ÎSoup.ServerAuthDigestÖ0
+nonce_countÌ8ÎSoup.ServerAuthDigestÖ0Ïint
+origin_uriÌ8ÎSoup.ConnectionÖ0Ïvoid
+ownerÌ8ÎSoup.DataBufferÖ0ÏSoup.Ownership
+passwdÌ8ÎSoup.ServerAuthBasicÖ0
+passwdÌ8ÎSoup.UriÖ0
+pathÌ8ÎSoup.ServerContextÖ0
+pathÌ8ÎSoup.ServerHandlerÖ0
+pathÌ8ÎSoup.UriÖ0
+portÌ8ÎSoup.ServerÖ0
+portÌ8ÎSoup.UriÖ0
+prevÌ128Í()ÎSoup.XmlrpcValueArrayIteratorÖ0Ïpublic unowned
+protocolÌ8ÎSoup.UriÖ0ÏSoup.Protocol
+proxy_uriÌ8ÎSoup.ConnectionÖ0Ïvoid
+proxy_uriÌ8ÎSoup.SessionÖ0Ïvoid
+queryÌ8ÎSoup.UriÖ0
+queueÌ8ÎSoup.SessionÖ0ÏSoup.MessageQueue
+queue_messageÌ128Í(owned Soup.Message msg, Soup.MessageCallbackFn callback)ÎSoup.SessionÖ0Ïpublic virtual void
+quitÌ128Í()ÎSoup.ServerÖ0Ïpublic void
+readÌ128Í(void* buffer, size_t len, size_t nread)ÎSoup.SocketÖ0Ïpublic Soup.SocketIOStatus
+read_requestÌ128Í(Soup.Socket sock)ÎSoup.MessageÖ0Ïpublic void
+read_untilÌ128Í(void* buffer, size_t len, void* boundary, size_t boundary_len, size_t nread, bool got_boundary)ÎSoup.SocketÖ0Ïpublic Soup.SocketIOStatus
+readableÌ128Í()ÎSoup.SocketÖ0Ïpublic virtual signal void
+realmÌ8ÎSoup.ServerAuthDigestÖ0
+reason_phraseÌ8ÎSoup.MessageÖ0
+reauthenticateÌ128Í(Soup.Message p0, string auth_type, string auth_realm, void* username, void* password)ÎSoup.ConnectionÖ0Ïpublic virtual signal void
+reauthenticateÌ128Í(Soup.Message p0, string auth_type, string auth_realm, void* username, void* password)ÎSoup.SessionÖ0Ïpublic virtual signal void
+releaseÌ128Í()ÎSoup.ConnectionÖ0Ïpublic void
+removeÌ128Í(Soup.MessageQueueIter iter)ÎSoup.MessageQueueÖ0Ïpublic unowned
+remove_filterÌ128Í(Soup.MessageFilter filter)ÎSoup.SessionÖ0Ïpublic void
+remove_handlerÌ128Í(Soup.HandlerPhase phase, Soup.MessageCallbackFn handler_cb)ÎSoup.MessageÖ0Ïpublic void
+remove_handlerÌ128Í(string path)ÎSoup.ServerÖ0Ïpublic void
+remove_headerÌ128Í(GLib.HashTable hash, string name)ÎSoup.MessageÖ0Ïpublic void
+remove_messageÌ128Í(Soup.Message msg)ÎSoup.MessageQueueÖ0Ïpublic void
+requestÌ8ÎSoup.MessageÖ0ÏSoup.DataBuffer
+request_headersÌ8ÎSoup.MessageÖ0ÏGLib.HashTable
+request_methodÌ8ÎSoup.ServerAuthDigestÖ0
+requeue_messageÌ128Í(Soup.Message msg)ÎSoup.SessionÖ0Ïpublic virtual void
+reserveÌ128Í()ÎSoup.ConnectionÖ0Ïpublic void
+resolve_asyncÌ128Í(Soup.AddressCallback callback)ÎSoup.AddressÖ0Ïpublic void
+resolve_async_fullÌ128Í(GLib.MainContext async_context, Soup.AddressCallback callback)ÎSoup.AddressÖ0Ïpublic void
+resolve_syncÌ128Í()ÎSoup.AddressÖ0
+responseÌ8ÎSoup.MessageÖ0ÏSoup.DataBuffer
+response_headersÌ8ÎSoup.MessageÖ0ÏGLib.HashTable
+restartedÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+reuseaddrÌ8ÎSoup.SocketÖ0Ïbool
+runÌ128Í()ÎSoup.ServerÖ0Ïpublic void
+run_asyncÌ128Í()ÎSoup.ServerÖ0Ïpublic void
+send_messageÌ128Í(Soup.Message msg)ÎSoup.SessionÖ0
+send_requestÌ128Í(Soup.Message req)ÎSoup.ConnectionÖ0Ïpublic virtual void
+send_requestÌ128Í(Soup.Socket sock, bool is_via_proxy)ÎSoup.MessageÖ0Ïpublic void
+serverÌ8ÎSoup.ServerContextÖ0ÏSoup.Server
+server_newÌ128Í(Soup.Address local_addr, void* ssl_creds, Soup.SocketListenerCallback callback)ÎSoup.SocketÖ0Ïpublic unowned
+set_encodingÌ128Í(Soup.TransferEncoding encoding)ÎSoup.ServerMessageÖ0Ïpublic void
+set_flagsÌ128Í(uint flags)ÎSoup.MessageÖ0Ïpublic void
+set_http_versionÌ128Í(Soup.HttpVersion version)ÎSoup.MessageÖ0Ïpublic void
+set_requestÌ128Í(string content_type, Soup.Ownership req_owner, owned string req_body, ulong req_length)ÎSoup.MessageÖ0Ïpublic void
+set_responseÌ128Í(string content_type, Soup.Ownership resp_owner, owned string resp_body, ulong resp_length)ÎSoup.MessageÖ0Ïpublic void
+set_statusÌ128Í(uint status_code)ÎSoup.MessageÖ0Ïpublic void
+set_status_fullÌ128Í(uint status_code, string reason_phrase)ÎSoup.MessageÖ0Ïpublic void
+set_uriÌ128Í(Soup.Uri uri)ÎSoup.MessageÖ0Ïpublic void
+setup_messageÌ128Í(Soup.Message msg)ÎSoup.MessageFilterÖ0Ïpublic abstract void
+signal_connect_onceÌ128Í(void* instance, string detailed_signal, GLib.Callback c_handler, void* data)ÎSoupÖ0
+sockÌ8ÎSoup.ServerContextÖ0ÏSoup.Socket
+ssl_ca_fileÌ8ÎSoup.SessionÖ0
+ssl_cert_fileÌ8ÎSoup.ServerÖ0
+ssl_credsÌ8ÎSoup.ConnectionÖ0Ïvoid
+ssl_credsÌ8ÎSoup.SocketÖ0Ïvoid
+ssl_key_fileÌ8ÎSoup.ServerÖ0
+startÌ128Í()ÎSoup.ServerMessageÖ0Ïpublic void
+start_proxy_sslÌ128Í(string ssl_host)ÎSoup.SocketÖ0Ïpublic bool
+start_sslÌ128Í()ÎSoup.SocketÖ0Ïpublic bool
+statusÌ8ÎSoup.MessageÖ0ÏSoup.MessageStatus
+status_codeÌ8ÎSoup.MessageÖ0
+status_get_phraseÌ128Í(uint status_code)ÎSoupÖ0Ïpublic unowned string
+str_case_equalÌ128Í(void* v1, void* v2)ÎSoupÖ0Ïpublic bool
+str_case_hashÌ128Í(void* key)ÎSoupÖ0
+timeoutÌ8ÎSoup.ConnectionÖ0
+timeoutÌ8ÎSoup.SessionÖ0
+timeoutÌ8ÎSoup.SocketÖ0
+to_stringÌ128Í(bool just_path)ÎSoup.UriÖ0Ïpublic unowned string
+try_prune_connectionÌ128Í()ÎSoup.SessionÖ0Ïpublic bool
+typeÌ8ÎSoup.ServerAuthÖ0ÏSoup.AuthType
+typeÌ8ÎSoup.ServerAuthBasicÖ0ÏSoup.AuthType
+typeÌ8ÎSoup.ServerAuthDigestÖ0ÏSoup.AuthType
+typesÌ8ÎSoup.ServerAuthContextÖ0
+unregisterÌ8ÎSoup.ServerHandlerÖ0ÏSoup.ServerUnregisterFn
+use_ntlmÌ8ÎSoup.SessionÖ0Ïbool
+userÌ8ÎSoup.ServerAuthBasicÖ0
+userÌ8ÎSoup.ServerAuthDigestÖ0
+userÌ8ÎSoup.UriÖ0
+user_dataÌ8ÎSoup.ServerAuthContextÖ0Ïvoid
+user_dataÌ8ÎSoup.ServerHandlerÖ0Ïvoid
+uses_default_portÌ128Í()ÎSoup.UriÖ0Ïpublic bool
+writableÌ128Í()ÎSoup.SocketÖ0Ïpublic virtual signal void
+writeÌ128Í(void* buffer, size_t len, size_t nwrote)ÎSoup.SocketÖ0Ïpublic Soup.SocketIOStatus
+wrote_bodyÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+wrote_chunkÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+wrote_headersÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void
+wrote_informationalÌ128Í()ÎSoup.MessageÖ0Ïpublic virtual signal void

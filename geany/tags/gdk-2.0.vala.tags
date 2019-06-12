@@ -1,0 +1,1479 @@
+# format=tagmanager
+@2BUTTON_PRESSÃ4ŒGdk.EventType÷0
+@3BUTTON_PRESSÃ4ŒGdk.EventType÷0
+@getÃ128Õ()ŒGdk.DisplayManager÷0œpublic unowned
+@getÃ128Õ()ŒGdk.Event÷0œpublic unowned
+@inÃ8ŒGdk.EventFocus÷0œint16
+ABOVEÃ4ŒGdk.WindowState÷0
+ALLÃ4ŒGdk.ExtensionMode÷0
+ALLÃ4ŒGdk.WMDecoration÷0
+ALLÃ4ŒGdk.WMFunction÷0
+ALL_EVENTS_MASKÃ4ŒGdk.EventMask÷0
+ALREADY_GRABBEDÃ4ŒGdk.GrabStatus÷0
+ANCESTORÃ4ŒGdk.NotifyType÷0
+ANDÃ4ŒGdk.Function÷0
+AND_INVERTÃ4ŒGdk.Function÷0
+AND_REVERSEÃ4ŒGdk.Function÷0
+APPENDÃ4ŒGdk.PropMode÷0
+ARROWÃ4ŒGdk.CursorType÷0
+ASKÃ4ŒGdk.DragAction÷0
+ASPECTÃ4ŒGdk.WindowHints÷0
+AppLaunchContextÃ1ŒGdk÷0
+AppLaunchContextÃ128Õ()ŒGdk.AppLaunchContext÷0
+AtomÃ2048ŒGdk÷0
+AxisUseÃ2ŒGdk÷0
+BACKGROUNDÃ4ŒGdk.GCValuesMask÷0
+BASED_ARROW_DOWNÃ4ŒGdk.CursorType÷0
+BASED_ARROW_UPÃ4ŒGdk.CursorType÷0
+BASE_SIZEÃ4ŒGdk.WindowHints÷0
+BELOWÃ4ŒGdk.WindowState÷0
+BEVELÃ4ŒGdk.JoinStyle÷0
+BLANK_CURSORÃ4ŒGdk.CursorType÷0
+BOATÃ4ŒGdk.CursorType÷0
+BOGOSITYÃ4ŒGdk.CursorType÷0
+BORDERÃ4ŒGdk.WMDecoration÷0
+BOTTOM_LEFT_CORNERÃ4ŒGdk.CursorType÷0
+BOTTOM_RIGHT_CORNERÃ4ŒGdk.CursorType÷0
+BOTTOM_SIDEÃ4ŒGdk.CursorType÷0
+BOTTOM_TEEÃ4ŒGdk.CursorType÷0
+BOX_SPIRALÃ4ŒGdk.CursorType÷0
+BUTTÃ4ŒGdk.CapStyle÷0
+BUTTON1_MASKÃ4ŒGdk.ModifierType÷0
+BUTTON1_MOTION_MASKÃ4ŒGdk.EventMask÷0
+BUTTON2_MASKÃ4ŒGdk.ModifierType÷0
+BUTTON2_MOTION_MASKÃ4ŒGdk.EventMask÷0
+BUTTON3_MASKÃ4ŒGdk.ModifierType÷0
+BUTTON3_MOTION_MASKÃ4ŒGdk.EventMask÷0
+BUTTON4_MASKÃ4ŒGdk.ModifierType÷0
+BUTTON5_MASKÃ4ŒGdk.ModifierType÷0
+BUTTON_MOTION_MASKÃ4ŒGdk.EventMask÷0
+BUTTON_PRESSÃ4ŒGdk.EventType÷0
+BUTTON_PRESS_MASKÃ4ŒGdk.EventMask÷0
+BUTTON_RELEASEÃ4ŒGdk.EventType÷0
+BUTTON_RELEASE_MASKÃ4ŒGdk.EventMask÷0
+BitmapÃ1ŒGdk÷0
+ByteOrderÃ2ŒGdk÷0
+CAP_STYLEÃ4ŒGdk.GCValuesMask÷0
+CENTERÃ4ŒGdk.Gravity÷0
+CENTER_PTRÃ4ŒGdk.CursorType÷0
+CHANGEDÃ4ŒGdk.SettingAction÷0
+CHILDÃ4ŒGdk.WindowType÷0
+CIRCLEÃ4ŒGdk.CursorType÷0
+CLEARÃ4ŒGdk.Function÷0
+CLIENT_EVENTÃ4ŒGdk.EventType÷0
+CLIP_BY_CHILDRENÃ4ŒGdk.SubwindowMode÷0
+CLIP_MASKÃ4ŒGdk.GCValuesMask÷0
+CLIP_X_ORIGINÃ4ŒGdk.GCValuesMask÷0
+CLIP_Y_ORIGINÃ4ŒGdk.GCValuesMask÷0
+CLOCKÃ4ŒGdk.CursorType÷0
+CLOSEÃ4ŒGdk.OwnerChange÷0
+CLOSEÃ4ŒGdk.WMFunction÷0
+COFFEE_MUGÃ4ŒGdk.CursorType÷0
+COLORMAPÃ4ŒGdk.WindowAttributesType÷0
+COMBOÃ4ŒGdk.WindowTypeHint÷0
+CONFIGUREÃ4ŒGdk.EventType÷0
+CONTINUEÃ4ŒGdk.FilterReturn÷0
+CONTROL_MASKÃ4ŒGdk.ModifierType÷0
+COPYÃ4ŒGdk.DragAction÷0
+COPYÃ4ŒGdk.Function÷0
+COPY_INVERTÃ4ŒGdk.Function÷0
+CROSSÃ4ŒGdk.CursorType÷0
+CROSSHAIRÃ4ŒGdk.CursorType÷0
+CROSS_REVERSEÃ4ŒGdk.CursorType÷0
+CURRENT_TIMEÃ8ŒGdk÷0œint
+CURSORÃ4ŒGdk.ExtensionMode÷0
+CURSORÃ4ŒGdk.InputSource÷0
+CURSORÃ4ŒGdk.WindowAttributesType÷0
+CURSOR_IS_PIXMAPÃ4ŒGdk.CursorType÷0
+CapStyleÃ2ŒGdk÷0
+ColorÃ2048ŒGdk÷0
+ColormapÃ1ŒGdk÷0
+ColormapÃ128Õ(Gdk.Visual visual, bool allocate)ŒGdk.Colormap÷0
+CrossingModeÃ2ŒGdk÷0
+CursorÃ1ŒGdk÷0
+CursorÃ128Õ(Gdk.CursorType cursor_type)ŒGdk.Cursor÷0
+Cursor.for_displayÃ128Õ(Gdk.Display display, Gdk.CursorType cursor_type)ŒGdk.Cursor÷0
+Cursor.from_nameÃ128Õ(Gdk.Display display, string name)ŒGdk.Cursor÷0
+Cursor.from_pixbufÃ128Õ(Gdk.Display display, Gdk.Pixbuf pixbuf, int x, int y)ŒGdk.Cursor÷0
+Cursor.from_pixmapÃ128Õ(Gdk.Pixmap source, Gdk.Pixmap mask, Gdk.Color fg, Gdk.Color bg, int x, int y)ŒGdk.Cursor÷0
+CursorTypeÃ2ŒGdk÷0
+DAMAGEÃ4ŒGdk.EventType÷0
+DEFAULTÃ4ŒGdk.DragAction÷0
+DELETEÃ4ŒGdk.EventType÷0
+DELETEÃ4ŒGdk.PropertyState÷0
+DELETEDÃ4ŒGdk.SettingAction÷0
+DESKTOPÃ4ŒGdk.WindowTypeHint÷0
+DESTROYÃ4ŒGdk.EventType÷0
+DESTROYÃ4ŒGdk.OwnerChange÷0
+DIALOGÃ4ŒGdk.WindowType÷0
+DIALOGÃ4ŒGdk.WindowTypeHint÷0
+DIAMOND_CROSSÃ4ŒGdk.CursorType÷0
+DIRECT_COLORÃ4ŒGdk.VisualType÷0
+DISABLEDÃ4ŒGdk.InputMode÷0
+DNDÃ4ŒGdk.WindowTypeHint÷0
+DOCKÃ4ŒGdk.WindowTypeHint÷0
+DOTÃ4ŒGdk.CursorType÷0
+DOTBOXÃ4ŒGdk.CursorType÷0
+DOUBLE_ARROWÃ4ŒGdk.CursorType÷0
+DOUBLE_DASHÃ4ŒGdk.LineStyle÷0
+DOWNÃ4ŒGdk.ScrollDirection÷0
+DRAFT_LARGEÃ4ŒGdk.CursorType÷0
+DRAFT_SMALLÃ4ŒGdk.CursorType÷0
+DRAG_ENTERÃ4ŒGdk.EventType÷0
+DRAG_LEAVEÃ4ŒGdk.EventType÷0
+DRAG_MOTIONÃ4ŒGdk.EventType÷0
+DRAG_STATUSÃ4ŒGdk.EventType÷0
+DRAPED_BOXÃ4ŒGdk.CursorType÷0
+DROPDOWN_MENUÃ4ŒGdk.WindowTypeHint÷0
+DROP_FINISHEDÃ4ŒGdk.EventType÷0
+DROP_STARTÃ4ŒGdk.EventType÷0
+DeviceÃ1ŒGdk÷0
+DeviceÃ128Õ()ŒGdk.Device÷0
+DeviceAxisÃ2048ŒGdk÷0
+DeviceKeyÃ2048ŒGdk÷0
+DisplayÃ1ŒGdk÷0
+DisplayÃ128Õ()ŒGdk.Display÷0
+DisplayManagerÃ1ŒGdk÷0
+DisplayManagerÃ128Õ()ŒGdk.DisplayManager÷0
+DisplayPointerHooksÃ1ŒGdk÷0
+DragActionÃ2ŒGdk÷0
+DragContextÃ1ŒGdk÷0
+DragContextÃ128Õ()ŒGdk.DragContext÷0
+DragProtocolÃ2ŒGdk÷0
+DrawableÃ1ŒGdk÷0
+DrawableÃ128Õ()ŒGdk.Drawable÷0
+EASTÃ4ŒGdk.Gravity÷0
+EASTÃ4ŒGdk.WindowEdge÷0
+ENTER_NOTIFYÃ4ŒGdk.EventType÷0
+ENTER_NOTIFY_MASKÃ4ŒGdk.EventMask÷0
+EQUIVÃ4ŒGdk.Function÷0
+ERASERÃ4ŒGdk.InputSource÷0
+ERRORÃ4ŒGdk.Status÷0
+ERROR_FILEÃ4ŒGdk.Status÷0
+ERROR_MEMÃ4ŒGdk.Status÷0
+ERROR_PARAMÃ4ŒGdk.Status÷0
+EVENT_LASTÃ4ŒGdk.EventType÷0
+EVEN_ODD_RULEÃ4ŒGdk.FillRule÷0
+EXCEPTIONÃ4ŒGdk.InputCondition÷0
+EXCHANGEÃ4ŒGdk.CursorType÷0
+EXPOSEÃ4ŒGdk.EventType÷0
+EXPOSURESÃ4ŒGdk.GCValuesMask÷0
+EXPOSURE_MASKÃ4ŒGdk.EventMask÷0
+EventÃ1ŒGdk÷0
+EventÃ128Õ(Gdk.EventType type)ŒGdk.Event÷0
+EventAnyÃ2048ŒGdk÷0
+EventButtonÃ2048ŒGdk÷0
+EventClientÃ2048ŒGdk÷0
+EventConfigureÃ2048ŒGdk÷0
+EventCrossingÃ2048ŒGdk÷0
+EventDNDÃ2048ŒGdk÷0
+EventExposeÃ2048ŒGdk÷0
+EventFocusÃ2048ŒGdk÷0
+EventFuncÃ128Õ(Gdk.Event event)ŒGdk÷0œpublic delegate void
+EventGrabBrokenÃ2048ŒGdk÷0
+EventKeyÃ2048ŒGdk÷0
+EventMaskÃ2ŒGdk÷0
+EventMotionÃ2048ŒGdk÷0
+EventNoExposeÃ2048ŒGdk÷0
+EventOwnerChangeÃ2048ŒGdk÷0
+EventPropertyÃ2048ŒGdk÷0
+EventProximityÃ2048ŒGdk÷0
+EventScrollÃ2048ŒGdk÷0
+EventSelectionÃ2048ŒGdk÷0
+EventSettingÃ2048ŒGdk÷0
+EventTypeÃ2ŒGdk÷0
+EventVisibilityÃ2048ŒGdk÷0
+EventWindowStateÃ2048ŒGdk÷0
+ExtensionModeÃ2ŒGdk÷0
+FASTESTÃ4ŒGdk.ImageType÷0
+FILLÃ4ŒGdk.GCValuesMask÷0
+FLEURÃ4ŒGdk.CursorType÷0
+FOCUS_CHANGEÃ4ŒGdk.EventType÷0
+FOCUS_CHANGE_MASKÃ4ŒGdk.EventMask÷0
+FONTÃ4ŒGdk.FontType÷0
+FONTÃ4ŒGdk.GCValuesMask÷0
+FONTSETÃ4ŒGdk.FontType÷0
+FOREGROUNDÃ4ŒGdk.GCValuesMask÷0
+FOREIGNÃ4ŒGdk.WindowType÷0
+FROZENÃ4ŒGdk.GrabStatus÷0
+FULLSCREENÃ4ŒGdk.WindowState÷0
+FULLY_OBSCUREDÃ4ŒGdk.VisibilityState÷0
+FUNCTIONÃ4ŒGdk.GCValuesMask÷0
+FillÃ2ŒGdk÷0
+FillRuleÃ2ŒGdk÷0
+FilterFuncÃ128Õ(Gdk.XEvent xevent, Gdk.Event event)ŒGdk÷0œpublic delegate Gdk.FilterReturn
+FilterReturnÃ2ŒGdk÷0
+FontÃ1ŒGdk÷0
+FontTypeÃ2ŒGdk÷0
+FunctionÃ2ŒGdk÷0
+GCÃ1ŒGdk÷0
+GCÃ128Õ(Gdk.Drawable drawable)ŒGdk.GC÷0
+GC.with_valuesÃ128Õ(Gdk.Drawable drawable, Gdk.GCValues values, Gdk.GCValuesMask values_mask)ŒGdk.GC÷0
+GCValuesÃ2048ŒGdk÷0
+GCValuesMaskÃ2ŒGdk÷0
+GOBBLERÃ4ŒGdk.CursorType÷0
+GRABÃ4ŒGdk.CrossingMode÷0
+GRAB_BROKENÃ4ŒGdk.EventType÷0
+GRAYSCALEÃ4ŒGdk.VisualType÷0
+GTK_GRABÃ4ŒGdk.CrossingMode÷0
+GTK_UNGRABÃ4ŒGdk.CrossingMode÷0
+GUMBYÃ4ŒGdk.CursorType÷0
+GdkÃ256÷0
+GeometryÃ2048ŒGdk÷0
+GrabStatusÃ2ŒGdk÷0
+GravityÃ2ŒGdk÷0
+HAND1Ã4ŒGdk.CursorType÷0
+HAND2Ã4ŒGdk.CursorType÷0
+HEARTÃ4ŒGdk.CursorType÷0
+HYPER_MASKÃ4ŒGdk.ModifierType÷0
+ICONÃ4ŒGdk.CursorType÷0
+ICONIFIEDÃ4ŒGdk.WindowState÷0
+IGNOREÃ4ŒGdk.AxisUse÷0
+INÃ4ŒGdk.OverlapType÷0
+INCLUDE_INFERIORSÃ4ŒGdk.SubwindowMode÷0
+INFERIORÃ4ŒGdk.NotifyType÷0
+INPUT_ONLYÃ4ŒGdk.WindowClass÷0
+INPUT_OUTPUTÃ4ŒGdk.WindowClass÷0
+INVALID_TIMEÃ4ŒGdk.GrabStatus÷0
+INVERTÃ4ŒGdk.Function÷0
+IRON_CROSSÃ4ŒGdk.CursorType÷0
+ImageÃ1ŒGdk÷0
+ImageÃ128Õ(Gdk.ImageType type, Gdk.Visual visual, int width, int height)ŒGdk.Image÷0
+ImageTypeÃ2ŒGdk÷0
+InputConditionÃ2ŒGdk÷0
+InputFunctionÃ128Õ(void* data, int source, Gdk.InputCondition condition)ŒGdk÷0œpublic delegate void
+InputModeÃ2ŒGdk÷0
+InputSourceÃ2ŒGdk÷0
+JOIN_STYLEÃ4ŒGdk.GCValuesMask÷0
+JoinStyleÃ2ŒGdk÷0
+KEY_PRESSÃ4ŒGdk.EventType÷0
+KEY_PRESS_MASKÃ4ŒGdk.EventMask÷0
+KEY_RELEASEÃ4ŒGdk.EventType÷0
+KEY_RELEASE_MASKÃ4ŒGdk.EventMask÷0
+KeyboardGrabInfoÃ1ŒGdk÷0
+KeymapÃ1ŒGdk÷0
+KeymapÃ128Õ()ŒGdk.Keymap÷0
+KeymapKeyÃ2048ŒGdk÷0
+LASTÃ4ŒGdk.AxisUse÷0
+LAST_CURSORÃ4ŒGdk.CursorType÷0
+LEAVE_NOTIFYÃ4ŒGdk.EventType÷0
+LEAVE_NOTIFY_MASKÃ4ŒGdk.EventMask÷0
+LEFTÃ4ŒGdk.ScrollDirection÷0
+LEFTBUTTONÃ4ŒGdk.CursorType÷0
+LEFT_PTRÃ4ŒGdk.CursorType÷0
+LEFT_SIDEÃ4ŒGdk.CursorType÷0
+LEFT_TEEÃ4ŒGdk.CursorType÷0
+LINE_STYLEÃ4ŒGdk.GCValuesMask÷0
+LINE_WIDTHÃ4ŒGdk.GCValuesMask÷0
+LINKÃ4ŒGdk.DragAction÷0
+LL_ANGLEÃ4ŒGdk.CursorType÷0
+LOCALÃ4ŒGdk.DragProtocol÷0
+LOCK_MASKÃ4ŒGdk.ModifierType÷0
+LR_ANGLEÃ4ŒGdk.CursorType÷0
+LSB_FIRSTÃ4ŒGdk.ByteOrder÷0
+LineStyleÃ2ŒGdk÷0
+MANÃ4ŒGdk.CursorType÷0
+MAPÃ4ŒGdk.EventType÷0
+MAXÃ4ŒGdk.RgbDither÷0
+MAXIMIZEÃ4ŒGdk.WMDecoration÷0
+MAXIMIZEÃ4ŒGdk.WMFunction÷0
+MAXIMIZEDÃ4ŒGdk.WindowState÷0
+MAX_SIZEÃ4ŒGdk.WindowHints÷0
+MAX_TIMECOORD_AXESÃ8ŒGdk÷0œint
+MENUÃ4ŒGdk.WMDecoration÷0
+MENUÃ4ŒGdk.WindowTypeHint÷0
+META_MASKÃ4ŒGdk.ModifierType÷0
+MIDDLEBUTTONÃ4ŒGdk.CursorType÷0
+MINIMIZEÃ4ŒGdk.WMDecoration÷0
+MINIMIZEÃ4ŒGdk.WMFunction÷0
+MIN_SIZEÃ4ŒGdk.WindowHints÷0
+MITERÃ4ŒGdk.JoinStyle÷0
+MOD1_MASKÃ4ŒGdk.ModifierType÷0
+MOD2_MASKÃ4ŒGdk.ModifierType÷0
+MOD3_MASKÃ4ŒGdk.ModifierType÷0
+MOD4_MASKÃ4ŒGdk.ModifierType÷0
+MOD5_MASKÃ4ŒGdk.ModifierType÷0
+MODIFIER_MASKÃ4ŒGdk.ModifierType÷0
+MOTIFÃ4ŒGdk.DragProtocol÷0
+MOTION_NOTIFYÃ4ŒGdk.EventType÷0
+MOUSEÃ4ŒGdk.CursorType÷0
+MOUSEÃ4ŒGdk.InputSource÷0
+MOVEÃ4ŒGdk.DragAction÷0
+MOVEÃ4ŒGdk.WMFunction÷0
+MSB_FIRSTÃ4ŒGdk.ByteOrder÷0
+ModifierTypeÃ2ŒGdk÷0
+NANDÃ4ŒGdk.Function÷0
+NEWÃ4ŒGdk.SettingAction÷0
+NEW_OWNERÃ4ŒGdk.OwnerChange÷0
+NEW_VALUEÃ4ŒGdk.PropertyState÷0
+NONEÃ8ŒGdk.Atom÷0œGdk.Atom
+NONEÃ4ŒGdk.DragProtocol÷0
+NONEÃ4ŒGdk.ExtensionMode÷0
+NONEÃ4ŒGdk.RgbDither÷0
+NONLINEARÃ4ŒGdk.NotifyType÷0
+NONLINEAR_VIRTUALÃ4ŒGdk.NotifyType÷0
+NOOPÃ4ŒGdk.Function÷0
+NORÃ4ŒGdk.Function÷0
+NOREDIRÃ4ŒGdk.WindowAttributesType÷0
+NORMALÃ4ŒGdk.CrossingMode÷0
+NORMALÃ4ŒGdk.ImageType÷0
+NORMALÃ4ŒGdk.RgbDither÷0
+NORMALÃ4ŒGdk.WindowTypeHint÷0
+NORTHÃ4ŒGdk.Gravity÷0
+NORTHÃ4ŒGdk.WindowEdge÷0
+NORTH_EASTÃ4ŒGdk.Gravity÷0
+NORTH_EASTÃ4ŒGdk.WindowEdge÷0
+NORTH_WESTÃ4ŒGdk.Gravity÷0
+NORTH_WESTÃ4ŒGdk.WindowEdge÷0
+NOTHINGÃ4ŒGdk.EventType÷0
+NOTIFICATIONÃ4ŒGdk.WindowTypeHint÷0
+NOT_LASTÃ4ŒGdk.CapStyle÷0
+NOT_VIEWABLEÃ4ŒGdk.GrabStatus÷0
+NO_EXPOSEÃ4ŒGdk.EventType÷0
+NativeWindowÃ2048ŒGdk÷0
+NotifyTypeÃ2ŒGdk÷0
+OFFSCREENÃ4ŒGdk.WindowType÷0
+OKÃ4ŒGdk.Status÷0
+OLE2Ã4ŒGdk.DragProtocol÷0
+ON_OFF_DASHÃ4ŒGdk.LineStyle÷0
+OPAQUE_STIPPLEDÃ4ŒGdk.Fill÷0
+ORÃ4ŒGdk.Function÷0
+OR_INVERTÃ4ŒGdk.Function÷0
+OR_REVERSEÃ4ŒGdk.Function÷0
+OUTÃ4ŒGdk.OverlapType÷0
+OWNER_CHANGEÃ4ŒGdk.EventType÷0
+OverlapTypeÃ2ŒGdk÷0
+OwnerChangeÃ2ŒGdk÷0
+PARENT_RELATIVEÃ8ŒGdk÷0œint
+PARTÃ4ŒGdk.OverlapType÷0
+PARTIALÃ4ŒGdk.VisibilityState÷0
+PENÃ4ŒGdk.InputSource÷0
+PENCILÃ4ŒGdk.CursorType÷0
+PIRATEÃ4ŒGdk.CursorType÷0
+PLUSÃ4ŒGdk.CursorType÷0
+POINTER_MOTION_HINT_MASKÃ4ŒGdk.EventMask÷0
+POINTER_MOTION_MASKÃ4ŒGdk.EventMask÷0
+POPUP_MENUÃ4ŒGdk.WindowTypeHint÷0
+POSÃ4ŒGdk.WindowHints÷0
+PREPENDÃ4ŒGdk.PropMode÷0
+PRESSUREÃ4ŒGdk.AxisUse÷0
+PRIORITY_REDRAWÃ8ŒGdk÷0œint
+PRIVATEÃ4ŒGdk.DragAction÷0
+PROJECTINGÃ4ŒGdk.CapStyle÷0
+PROPERTY_CHANGE_MASKÃ4ŒGdk.EventMask÷0
+PROPERTY_NOTIFYÃ4ŒGdk.EventType÷0
+PROXIMITY_INÃ4ŒGdk.EventType÷0
+PROXIMITY_IN_MASKÃ4ŒGdk.EventMask÷0
+PROXIMITY_OUTÃ4ŒGdk.EventType÷0
+PROXIMITY_OUT_MASKÃ4ŒGdk.EventMask÷0
+PSEUDO_COLORÃ4ŒGdk.VisualType÷0
+PangoAttrEmbossColorÃ2048ŒGdk÷0
+PangoAttrEmbossColorÃ128Õ(Gdk.Color color)ŒGdk.PangoAttrEmbossColor÷0
+PangoAttrEmbossedÃ2048ŒGdk÷0
+PangoAttrEmbossedÃ128Õ(bool embossed)ŒGdk.PangoAttrEmbossed÷0
+PangoAttrStippleÃ2048ŒGdk÷0
+PangoAttrStippleÃ128Õ(Gdk.Bitmap stipple)ŒGdk.PangoAttrStipple÷0
+PangoRendererÃ1ŒGdk÷0
+PangoRendererÃ128Õ(Gdk.Screen screen)ŒGdk.PangoRenderer÷0
+PixmapÃ1ŒGdk÷0
+PixmapÃ128Õ(Gdk.Drawable? drawable, int width, int height, int depth)ŒGdk.Pixmap÷0
+PointÃ2048ŒGdk÷0
+PointerHooksÃ1ŒGdk÷0
+PointerWindowInfoÃ1ŒGdk÷0
+PropModeÃ2ŒGdk÷0
+PropertyStateÃ2ŒGdk÷0
+QUESTION_ARROWÃ4ŒGdk.CursorType÷0
+READÃ4ŒGdk.InputCondition÷0
+RELEASE_MASKÃ4ŒGdk.ModifierType÷0
+REMOVEÃ4ŒGdk.FilterReturn÷0
+REPLACEÃ4ŒGdk.PropMode÷0
+RESIZEÃ4ŒGdk.WMFunction÷0
+RESIZEHÃ4ŒGdk.WMDecoration÷0
+RESIZE_INCÃ4ŒGdk.WindowHints÷0
+RIGHTÃ4ŒGdk.ScrollDirection÷0
+RIGHTBUTTONÃ4ŒGdk.CursorType÷0
+RIGHT_PTRÃ4ŒGdk.CursorType÷0
+RIGHT_SIDEÃ4ŒGdk.CursorType÷0
+RIGHT_TEEÃ4ŒGdk.CursorType÷0
+ROOTÃ4ŒGdk.WindowType÷0
+ROOTWINÃ4ŒGdk.DragProtocol÷0
+ROUNDÃ4ŒGdk.CapStyle÷0
+ROUNDÃ4ŒGdk.JoinStyle÷0
+RTL_LOGOÃ4ŒGdk.CursorType÷0
+RectangleÃ2048ŒGdk÷0
+RegionÃ1ŒGdk÷0
+RegionÃ128Õ()ŒGdk.Region÷0
+RgbCmapÃ2048ŒGdk÷0
+RgbCmapÃ128Õ(uint32[] colors)ŒGdk.RgbCmap÷0
+RgbDitherÃ2ŒGdk÷0
+SAILBOATÃ4ŒGdk.CursorType÷0
+SB_DOWN_ARROWÃ4ŒGdk.CursorType÷0
+SB_H_DOUBLE_ARROWÃ4ŒGdk.CursorType÷0
+SB_LEFT_ARROWÃ4ŒGdk.CursorType÷0
+SB_RIGHT_ARROWÃ4ŒGdk.CursorType÷0
+SB_UP_ARROWÃ4ŒGdk.CursorType÷0
+SB_V_DOUBLE_ARROWÃ4ŒGdk.CursorType÷0
+SCREENÃ4ŒGdk.InputMode÷0
+SCROLLÃ4ŒGdk.EventType÷0
+SCROLL_MASKÃ4ŒGdk.EventMask÷0
+SELECTION_CLEARÃ4ŒGdk.EventType÷0
+SELECTION_CLIPBOARDÃ8ŒGdk÷0œGdk.Atom
+SELECTION_NOTIFYÃ4ŒGdk.EventType÷0
+SELECTION_PRIMARYÃ8ŒGdk÷0œGdk.Atom
+SELECTION_REQUESTÃ4ŒGdk.EventType÷0
+SELECTION_SECONDARYÃ8ŒGdk÷0œGdk.Atom
+SETÃ4ŒGdk.Function÷0
+SETTINGÃ4ŒGdk.EventType÷0
+SHAREDÃ4ŒGdk.ImageType÷0
+SHIFT_MASKÃ4ŒGdk.ModifierType÷0
+SHUTTLEÃ4ŒGdk.CursorType÷0
+SIZINGÃ4ŒGdk.CursorType÷0
+SOLIDÃ4ŒGdk.Fill÷0
+SOLIDÃ4ŒGdk.LineStyle÷0
+SOUTHÃ4ŒGdk.Gravity÷0
+SOUTHÃ4ŒGdk.WindowEdge÷0
+SOUTH_EASTÃ4ŒGdk.Gravity÷0
+SOUTH_EASTÃ4ŒGdk.WindowEdge÷0
+SOUTH_WESTÃ4ŒGdk.Gravity÷0
+SOUTH_WESTÃ4ŒGdk.WindowEdge÷0
+SPIDERÃ4ŒGdk.CursorType÷0
+SPLASHSCREENÃ4ŒGdk.WindowTypeHint÷0
+SPRAYCANÃ4ŒGdk.CursorType÷0
+STARÃ4ŒGdk.CursorType÷0
+STATE_CHANGEDÃ4ŒGdk.CrossingMode÷0
+STATICÃ4ŒGdk.Gravity÷0
+STATIC_COLORÃ4ŒGdk.VisualType÷0
+STATIC_GRAYÃ4ŒGdk.VisualType÷0
+STICKYÃ4ŒGdk.WindowState÷0
+STIPPLEÃ4ŒGdk.GCValuesMask÷0
+STIPPLEDÃ4ŒGdk.Fill÷0
+STRUCTURE_MASKÃ4ŒGdk.EventMask÷0
+SUBSTRUCTURE_MASKÃ4ŒGdk.EventMask÷0
+SUBWINDOWÃ4ŒGdk.GCValuesMask÷0
+SUCCESSÃ4ŒGdk.GrabStatus÷0
+SUPER_MASKÃ4ŒGdk.ModifierType÷0
+ScreenÃ1ŒGdk÷0
+ScreenÃ128Õ()ŒGdk.Screen÷0
+ScrollDirectionÃ2ŒGdk÷0
+SegmentÃ2048ŒGdk÷0
+SelectionÃ256÷0
+SettingActionÃ2ŒGdk÷0
+SpanÃ2048ŒGdk÷0
+SpanFuncÃ128Õ(Gdk.Span span)ŒGdk÷0œpublic delegate void
+StatusÃ2ŒGdk÷0
+SubwindowModeÃ2ŒGdk÷0
+TARGETÃ4ŒGdk.CursorType÷0
+TCROSSÃ4ŒGdk.CursorType÷0
+TEMPÃ4ŒGdk.WindowType÷0
+TILEÃ4ŒGdk.GCValuesMask÷0
+TILEDÃ4ŒGdk.Fill÷0
+TITLEÃ4ŒGdk.WMDecoration÷0
+TITLEÃ4ŒGdk.WindowAttributesType÷0
+TOOLBARÃ4ŒGdk.WindowTypeHint÷0
+TOOLTIPÃ4ŒGdk.WindowTypeHint÷0
+TOPLEVELÃ4ŒGdk.WindowType÷0
+TOP_LEFT_ARROWÃ4ŒGdk.CursorType÷0
+TOP_LEFT_CORNERÃ4ŒGdk.CursorType÷0
+TOP_RIGHT_CORNERÃ4ŒGdk.CursorType÷0
+TOP_SIDEÃ4ŒGdk.CursorType÷0
+TOP_TEEÃ4ŒGdk.CursorType÷0
+TRANSLATEÃ4ŒGdk.FilterReturn÷0
+TREKÃ4ŒGdk.CursorType÷0
+TRUE_COLORÃ4ŒGdk.VisualType÷0
+TS_X_ORIGINÃ4ŒGdk.GCValuesMask÷0
+TS_Y_ORIGINÃ4ŒGdk.GCValuesMask÷0
+TYPE_HINTÃ4ŒGdk.WindowAttributesType÷0
+TimeCoordÃ2048ŒGdk÷0
+TrapezoidÃ2048ŒGdk÷0
+UL_ANGLEÃ4ŒGdk.CursorType÷0
+UMBRELLAÃ4ŒGdk.CursorType÷0
+UNGRABÃ4ŒGdk.CrossingMode÷0
+UNKNOWNÃ4ŒGdk.NotifyType÷0
+UNMAPÃ4ŒGdk.EventType÷0
+UNOBSCUREDÃ4ŒGdk.VisibilityState÷0
+UPÃ4ŒGdk.ScrollDirection÷0
+UR_ANGLEÃ4ŒGdk.CursorType÷0
+USER_POSÃ4ŒGdk.WindowHints÷0
+USER_SIZEÃ4ŒGdk.WindowHints÷0
+UTILITYÃ4ŒGdk.WindowTypeHint÷0
+VIRTUALÃ4ŒGdk.NotifyType÷0
+VISIBILITY_NOTIFYÃ4ŒGdk.EventType÷0
+VISIBILITY_NOTIFY_MASKÃ4ŒGdk.EventMask÷0
+VISUALÃ4ŒGdk.WindowAttributesType÷0
+VisibilityStateÃ2ŒGdk÷0
+VisualÃ1ŒGdk÷0
+VisualÃ128Õ()ŒGdk.Visual÷0
+VisualTypeÃ2ŒGdk÷0
+WATCHÃ4ŒGdk.CursorType÷0
+WCharÃ2048ŒGdk÷0
+WESTÃ4ŒGdk.Gravity÷0
+WESTÃ4ŒGdk.WindowEdge÷0
+WHEELÃ4ŒGdk.AxisUse÷0
+WIN32_DROPFILESÃ4ŒGdk.DragProtocol÷0
+WINDING_RULEÃ4ŒGdk.FillRule÷0
+WINDOWÃ4ŒGdk.InputMode÷0
+WINDOW_STATEÃ4ŒGdk.EventType÷0
+WIN_GRAVITYÃ4ŒGdk.WindowHints÷0
+WITHDRAWNÃ4ŒGdk.WindowState÷0
+WMCLASSÃ4ŒGdk.WindowAttributesType÷0
+WMDecorationÃ2ŒGdk÷0
+WMFunctionÃ2ŒGdk÷0
+WRITEÃ4ŒGdk.InputCondition÷0
+WindowÃ1ŒGdk÷0
+WindowÃ128Õ(Gdk.Window? parent, Gdk.WindowAttr attributes, int attributes_mask)ŒGdk.Window÷0
+WindowAttrÃ2048ŒGdk÷0
+WindowAttributesTypeÃ2ŒGdk÷0
+WindowClassÃ2ŒGdk÷0
+WindowEdgeÃ2ŒGdk÷0
+WindowHintsÃ2ŒGdk÷0
+WindowRedirectÃ2048ŒGdk÷0
+WindowStateÃ2ŒGdk÷0
+WindowTypeÃ2ŒGdk÷0
+WindowTypeHintÃ2ŒGdk÷0
+XÃ4ŒGdk.AxisUse÷0
+XÃ4ŒGdk.WindowAttributesType÷0
+XDNDÃ4ŒGdk.DragProtocol÷0
+XEventÃ2048ŒGdk÷0
+XORÃ4ŒGdk.Function÷0
+XTERMÃ4ŒGdk.CursorType÷0
+XTILTÃ4ŒGdk.AxisUse÷0
+X_CURSORÃ4ŒGdk.CursorType÷0
+YÃ4ŒGdk.AxisUse÷0
+YÃ4ŒGdk.WindowAttributesType÷0
+YTILTÃ4ŒGdk.AxisUse÷0
+actionÃ8ŒGdk.DragContext÷0œGdk.DragAction
+actionÃ8ŒGdk.EventSetting÷0œGdk.SettingAction
+actionsÃ8ŒGdk.DragContext÷0œGdk.DragAction
+add_client_message_filterÃ128Õ(Gdk.Atom message_type, Gdk.FilterFunc func)ŒGdk÷0œpublic void
+add_client_message_filterÃ128Õ(Gdk.Atom message_type, Gdk.FilterFunc func)ŒGdk.Display÷0œpublic void
+add_filterÃ128Õ(Gdk.FilterFunc function)ŒGdk.Window÷0œpublic void
+add_option_entries_libgtk_onlyÃ128Õ(GLib.OptionGroup group)ŒGdk÷0œpublic void
+add_virtual_modifiersÃ128Õ(Gdk.ModifierType state)ŒGdk.Keymap÷0œpublic void
+alloc_colorÃ128Õ(Gdk.Color color, bool writeable, bool best_match)ŒGdk.Colormap÷0œpublic bool
+alloc_colorsÃ128Õ(Gdk.Color[] colors, bool writeable, bool best_match, bool success)ŒGdk.Colormap÷0œpublic int
+anyÃ8ŒGdk.Event÷0œGdk.EventAny
+areaÃ8ŒGdk.EventExpose÷0œGdk.Rectangle
+ascentÃ8ŒGdk.Font÷0œint
+at_pointerÃ128Õ(out int win_x, out int win_y)ŒGdk.Window÷0œpublic unowned
+atomÃ8ŒGdk.EventProperty÷0œGdk.Atom
+attrÃ8ŒGdk.PangoAttrEmbossColor÷0œPango.Attribute
+attrÃ8ŒGdk.PangoAttrEmbossed÷0œPango.Attribute
+attrÃ8ŒGdk.PangoAttrStipple÷0œPango.Attribute
+axesÃ8ŒGdk.Device÷0œGdk.DeviceAxis
+axesÃ8ŒGdk.EventButton÷0œdouble
+axesÃ8ŒGdk.EventMotion÷0œdouble
+axesÃ8ŒGdk.TimeCoord÷0œdouble
+backgroundÃ8ŒGdk.GCValues÷0œGdk.Color
+base_heightÃ8ŒGdk.Geometry÷0œint
+base_widthÃ8ŒGdk.Geometry÷0œint
+beepÃ128Õ()ŒGdk÷0œpublic void
+beepÃ128Õ()ŒGdk.Display÷0œpublic void
+beepÃ128Õ()ŒGdk.Window÷0œpublic void
+begin_move_dragÃ128Õ(int button, int root_x, int root_y, uint32 timestamp)ŒGdk.Window÷0œpublic void
+begin_paint_rectÃ128Õ(Gdk.Rectangle rectangle)ŒGdk.Window÷0œpublic void
+begin_paint_regionÃ128Õ(Gdk.Region region)ŒGdk.Window÷0œpublic void
+begin_resize_dragÃ128Õ(Gdk.WindowEdge edge, int button, int root_x, int root_y, uint32 timestamp)ŒGdk.Window÷0œpublic void
+bits_per_pixelÃ8ŒGdk.Image÷0œuint16
+bits_per_rgbÃ8ŒGdk.Visual÷0œint
+blueÃ8ŒGdk.Color÷0œuint16
+blue_maskÃ8ŒGdk.Visual÷0œuint32
+blue_precÃ8ŒGdk.Visual÷0œint
+blue_shiftÃ8ŒGdk.Visual÷0œint
+bplÃ8ŒGdk.Image÷0œuint16
+bppÃ8ŒGdk.Image÷0œuint16
+broadcast_client_messageÃ128Õ(Gdk.Event event)ŒGdk.Screen÷0œpublic void
+buttonÃ8ŒGdk.Event÷0œGdk.EventButton
+buttonÃ8ŒGdk.EventButton÷0
+buttonÃ8ŒGdk.PointerWindowInfo÷0œuint32
+button_click_timeÃ8ŒGdk.Display÷0œuint32
+button_numberÃ8ŒGdk.Display÷0œint
+button_windowÃ8ŒGdk.Display÷0œGdk.Window
+button_xÃ8ŒGdk.Display÷0œint
+button_yÃ8ŒGdk.Display÷0œint
+byte_orderÃ8ŒGdk.Image÷0œGdk.ByteOrder
+byte_orderÃ8ŒGdk.Visual÷0œGdk.ByteOrder
+cairo_createÃ128Õ(Gdk.Drawable drawable)ŒGdk÷0œpublic Cairo.Context
+cairo_rectangleÃ128Õ(Cairo.Context cr, Gdk.Rectangle rectangle)ŒGdk÷0œpublic void
+cairo_regionÃ128Õ(Cairo.Context cr, Gdk.Region region)ŒGdk÷0œpublic void
+cairo_reset_clipÃ128Õ(Cairo.Context cr, Gdk.Drawable drawable)ŒGdk÷0œpublic void
+cairo_set_source_colorÃ128Õ(Cairo.Context cr, Gdk.Color color)ŒGdk÷0œpublic void
+cairo_set_source_pixbufÃ128Õ(Cairo.Context cr, Gdk.Pixbuf pixbuf, double pixbuf_x, double pixbuf_y)ŒGdk÷0œpublic void
+cairo_set_source_pixmapÃ128Õ(Cairo.Context cr, Gdk.Pixmap pixmap, double pixmap_x, double pixmap_y)ŒGdk÷0œpublic void
+cap_styleÃ8ŒGdk.GCValues÷0œGdk.CapStyle
+changeÃ128Õ(int ncolors)ŒGdk.Colormap÷0œpublic void
+changed_maskÃ8ŒGdk.EventWindowState÷0œGdk.WindowState
+clearÃ128Õ()ŒGdk.Window÷0œpublic void
+clear_areaÃ128Õ(int x, int y, int width, int height)ŒGdk.Window÷0œpublic void
+clear_area_eÃ128Õ(int x, int y, int width, int height)ŒGdk.Window÷0œpublic void
+clientÃ8ŒGdk.Event÷0œGdk.EventClient
+clip_maskÃ8ŒGdk.GCValues÷0œGdk.Pixmap
+clip_x_originÃ8ŒGdk.GC÷0œint
+clip_x_originÃ8ŒGdk.GCValues÷0œint
+clip_y_originÃ8ŒGdk.GC÷0œint
+clip_y_originÃ8ŒGdk.GCValues÷0œint
+closeÃ128Õ()ŒGdk.Display÷0œpublic void
+closedÃ128Õ(bool is_error)ŒGdk.Display÷0œpublic virtual signal void
+closedÃ8ŒGdk.Screen÷0
+colorÃ8ŒGdk.PangoAttrEmbossColor÷0œPango.Color
+colormapÃ8ŒGdk.GC÷0œGdk.Colormap
+colormapÃ8ŒGdk.Image÷0œGdk.Colormap
+colormapÃ8ŒGdk.WindowAttr÷0œGdk.Colormap
+colormap_create_from_xpmÃ128Õ(Gdk.Drawable drawable, Gdk.Colormap colormap, out unowned Gdk.Bitmap mask, Gdk.Color transparent_color, string filename)ŒGdk.Pixmap÷0œpublic unowned
+colormap_create_from_xpm_dÃ128Õ(Gdk.Drawable drawable, Gdk.Colormap colormap, out unowned Gdk.Bitmap mask, Gdk.Color transparent_color, string data)ŒGdk.Pixmap÷0œpublic unowned
+colormap_sizeÃ8ŒGdk.Visual÷0œint
+colorsÃ8ŒGdk.Colormap÷0œGdk.Color
+colorsÃ8ŒGdk.RgbCmap÷0œuint32
+colors_allocÃ128Õ(Gdk.Colormap colormap, bool contiguous, ulong planes, int nplanes, ulong pixels, int npixels)ŒGdk÷0œpublic int
+colors_freeÃ128Õ(Gdk.Colormap colormap, ulong pixels, int npixels, ulong planes)ŒGdk÷0œpublic void
+composited_changedÃ128Õ()ŒGdk.Screen÷0œpublic virtual signal void
+configureÃ8ŒGdk.Event÷0œGdk.EventConfigure
+configure_finishedÃ128Õ()ŒGdk.Window÷0œpublic void
+constrain_sizeÃ128Õ(Gdk.Geometry geometry, uint flags, int width, int height, out int new_width, out int new_height)ŒGdk.Window÷0œpublic void
+contextÃ8ŒGdk.EventDND÷0œGdk.DragContext
+convertÃ128Õ(Gdk.Window requestor, Gdk.Atom selection, Gdk.Atom target, uint32 time_)ŒGdk.Selection÷0œpublic void
+coords_from_parentÃ128Õ(double parent_x, double parent_y, double x, double y)ŒGdk.Window÷0œpublic void
+coords_to_parentÃ128Õ(double x, double y, double parent_x, double parent_y)ŒGdk.Window÷0œpublic void
+copyÃ128Õ()ŒGdk.Color÷0œpublic Gdk.Color
+copyÃ128Õ()ŒGdk.Event÷0œpublic Gdk.Event
+copyÃ128Õ(Gdk.GC src_gc)ŒGdk.GC÷0œpublic void
+copyÃ128Õ()ŒGdk.Region÷0œpublic Gdk.Region
+copy_to_imageÃ128Õ(Gdk.Image image, int src_x, int src_y, int dest_x, int dest_y, int width, int height)ŒGdk.Drawable÷0œpublic unowned
+core_pointerÃ8ŒGdk.Display÷0œGdk.Device
+countÃ8ŒGdk.EventExpose÷0œint
+create_cairo_surfaceÃ128Õ(int width, int height)ŒGdk.Drawable÷0œpublic virtual unowned
+create_from_dataÃ128Õ(Gdk.Drawable drawable, string data, int width, int height)ŒGdk.Bitmap÷0œpublic Gdk.Bitmap
+create_from_dataÃ128Õ(Gdk.Drawable drawable, string data, int width, int height, int depth, Gdk.Color fg, Gdk.Color bg)ŒGdk.Pixmap÷0œpublic unowned
+create_from_xpmÃ128Õ(Gdk.Drawable drawable, out unowned Gdk.Bitmap mask, Gdk.Color transparent_color, string filename)ŒGdk.Pixmap÷0œpublic unowned
+create_from_xpm_dÃ128Õ(Gdk.Drawable drawable, out unowned Gdk.Bitmap mask, Gdk.Color transparent_color, string data)ŒGdk.Pixmap÷0œpublic unowned
+create_gcÃ128Õ(Gdk.GCValues values, Gdk.GCValuesMask mask)ŒGdk.Drawable÷0œpublic virtual unowned
+create_similar_surfaceÃ128Õ(Cairo.Content content, int width, int height)ŒGdk.Window÷0œpublic Cairo.Surface
+crossingÃ8ŒGdk.Event÷0œGdk.EventCrossing
+cursorÃ8ŒGdk.Window÷0œGdk.Cursor
+cursorÃ8ŒGdk.WindowAttr÷0œGdk.Cursor
+dataÃ8ŒGdk.EventClient÷0œvoid
+data_formatÃ8ŒGdk.EventClient÷0
+default_displayÃ8ŒGdk.DisplayManager÷0œGdk.Display
+deiconifyÃ128Õ()ŒGdk.Window÷0œpublic void
+depthÃ8ŒGdk.Image÷0œuint16
+depthÃ8ŒGdk.Visual÷0œint
+descentÃ8ŒGdk.Font÷0œint
+dest_windowÃ8ŒGdk.DragContext÷0œGdk.Window
+destroyÃ128Õ()ŒGdk.Window÷0œpublic void
+detailÃ8ŒGdk.EventCrossing÷0œGdk.NotifyType
+deviceÃ8ŒGdk.EventButton÷0œGdk.Device
+deviceÃ8ŒGdk.EventMotion÷0œGdk.Device
+deviceÃ8ŒGdk.EventProximity÷0œGdk.Device
+deviceÃ8ŒGdk.EventScroll÷0œGdk.Device
+devices_listÃ128Õ()ŒGdk÷0œpublic unowned
+directionÃ8ŒGdk.EventScroll÷0œGdk.ScrollDirection
+direction_changedÃ128Õ()ŒGdk.Keymap÷0œpublic virtual signal void
+displayÃ8ŒGdk.Keymap÷0œGdk.Display
+display_openedÃ128Õ(Gdk.Display display)ŒGdk.DisplayManager÷0œpublic virtual signal void
+dndÃ8ŒGdk.Event÷0œGdk.EventDND
+double_click_distanceÃ8ŒGdk.Display÷0
+double_click_timeÃ8ŒGdk.Display÷0
+drag_abortÃ128Õ(Gdk.DragContext context, uint32 time_)ŒGdk÷0œpublic void
+drag_beginÃ128Õ(Gdk.Window window, GLib.List<Gdk.Atom> targets)ŒGdk÷0œpublic unowned
+drag_dropÃ128Õ(Gdk.DragContext context, uint32 time_)ŒGdk÷0œpublic void
+drag_drop_succeededÃ128Õ(Gdk.DragContext context)ŒGdk÷0œpublic bool
+drag_find_windowÃ128Õ(Gdk.DragContext context, Gdk.Window drag_window, int x_root, int y_root, out unowned Gdk.Window dest_window, Gdk.DragProtocol protocol)ŒGdk÷0œpublic void
+drag_find_window_for_screenÃ128Õ(Gdk.DragContext context, Gdk.Window drag_window, Gdk.Screen screen, int x_root, int y_root, out unowned Gdk.Window dest_window, Gdk.DragProtocol protocol)ŒGdk÷0œpublic void
+drag_get_protocolÃ128Õ(Gdk.NativeWindow xid, Gdk.DragProtocol protocol)ŒGdk÷0œpublic Gdk.NativeWindow
+drag_get_protocol_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow xid, Gdk.DragProtocol protocol)ŒGdk÷0œpublic Gdk.NativeWindow
+drag_get_selectionÃ128Õ(Gdk.DragContext context)ŒGdk÷0œpublic Gdk.Atom
+drag_motionÃ128Õ(Gdk.DragContext context, Gdk.Window dest_window, Gdk.DragProtocol protocol, int x_root, int y_root, Gdk.DragAction suggested_action, Gdk.DragAction possible_actions, uint32 time_)ŒGdk÷0œpublic bool
+drag_statusÃ128Õ(Gdk.DragContext context, Gdk.DragAction action, uint32 time_)ŒGdk÷0œpublic void
+draw_arcÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, bool filled, int x, int y, int width, int height, int angle1, int angle2)ŒGdk÷0œpublic void
+draw_arcÃ128Õ(Gdk.GC gc, bool filled, int x, int y, int width, int height, int angle1, int angle2)ŒGdk.Drawable÷0œpublic virtual void
+draw_drawableÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Drawable src, int xsrc, int ysrc, int xdest, int ydest, int width, int height)ŒGdk÷0œpublic void
+draw_drawableÃ128Õ(Gdk.GC gc, Gdk.Drawable src, int xsrc, int ysrc, int xdest, int ydest, int width, int height)ŒGdk.Drawable÷0œpublic virtual void
+draw_glyphsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Pango.Font font, int x, int y, Pango.GlyphString glyphs)ŒGdk÷0œpublic void
+draw_glyphsÃ128Õ(Gdk.GC gc, Pango.Font font, int x, int y, Pango.GlyphString glyphs)ŒGdk.Drawable÷0œpublic virtual void
+draw_glyphs_transformedÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Pango.Matrix matrix, Pango.Font font, int x, int y, Pango.GlyphString glyphs)ŒGdk÷0œpublic void
+draw_glyphs_transformedÃ128Õ(Gdk.GC gc, Pango.Matrix matrix, Pango.Font font, int x, int y, Pango.GlyphString glyphs)ŒGdk.Drawable÷0œpublic virtual void
+draw_gray_imageÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] buf, int rowstride)ŒGdk÷0œpublic void
+draw_imageÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Image image, int xsrc, int ysrc, int xdest, int ydest, int width, int height)ŒGdk÷0œpublic void
+draw_imageÃ128Õ(Gdk.GC gc, Gdk.Image image, int xsrc, int ysrc, int xdest, int ydest, int width, int height)ŒGdk.Drawable÷0œpublic virtual void
+draw_indexed_imageÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] buf, int rowstride, Gdk.RgbCmap cmap)ŒGdk÷0œpublic void
+draw_layoutÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, Pango.Layout layout)ŒGdk÷0œpublic void
+draw_layout_lineÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, Pango.LayoutLine line)ŒGdk÷0œpublic void
+draw_layout_line_with_colorsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, Pango.LayoutLine line, Gdk.Color foreground, Gdk.Color background)ŒGdk÷0œpublic void
+draw_layout_with_colorsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, Pango.Layout layout, Gdk.Color foreground, Gdk.Color background)ŒGdk÷0œpublic void
+draw_lineÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x1_, int y1_, int x2_, int y2_)ŒGdk÷0œpublic void
+draw_linesÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Point[] points)ŒGdk÷0œpublic void
+draw_linesÃ128Õ(Gdk.GC gc, Gdk.Point[] points)ŒGdk.Drawable÷0œpublic virtual void
+draw_pixbufÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Pixbuf pixbuf, int src_x, int src_y, int dest_x, int dest_y, int width, int height, Gdk.RgbDither dither, int x_dither, int y_dither)ŒGdk÷0œpublic void
+draw_pixbufÃ128Õ(Gdk.GC? gc, Gdk.Pixbuf pixbuf, int src_x, int src_y, int dest_x, int dest_y, int width, int height, Gdk.RgbDither dither, int x_dither, int y_dither)ŒGdk.Drawable÷0œpublic virtual void
+draw_pointÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y)ŒGdk÷0œpublic void
+draw_pointsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Point[] points)ŒGdk÷0œpublic void
+draw_pointsÃ128Õ(Gdk.GC gc, Gdk.Point[] points)ŒGdk.Drawable÷0œpublic virtual void
+draw_polygonÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, bool filled, Gdk.Point[] points)ŒGdk÷0œpublic void
+draw_polygonÃ128Õ(Gdk.GC gc, bool filled, Gdk.Point[] points)ŒGdk.Drawable÷0œpublic virtual void
+draw_rectangleÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, bool filled, int x, int y, int width, int height)ŒGdk÷0œpublic void
+draw_rectangleÃ128Õ(Gdk.GC gc, bool filled, int x, int y, int width, int height)ŒGdk.Drawable÷0œpublic virtual void
+draw_rgb_32_imageÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] buf, int rowstride)ŒGdk÷0œpublic void
+draw_rgb_32_image_dithalignÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] buf, int rowstride, int xdith, int ydith)ŒGdk÷0œpublic void
+draw_rgb_imageÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] rgb_buf, int rowstride)ŒGdk÷0œpublic void
+draw_rgb_image_dithalignÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, int x, int y, int width, int height, Gdk.RgbDither dith, [CCode (array_length = false)] uchar[] rgb_buf, int rowstride, int xdith, int ydith)ŒGdk÷0œpublic void
+draw_segmentsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Segment[] segs)ŒGdk÷0œpublic void
+draw_segmentsÃ128Õ(Gdk.GC gc, Gdk.Segment[] segs)ŒGdk.Drawable÷0œpublic virtual void
+draw_textÃ128Õ(Gdk.Drawable drawable, Gdk.Font font, Gdk.GC gc, int x, int y, string text, int text_length)ŒGdk÷0œpublic void
+draw_textÃ128Õ(Gdk.Font font, Gdk.GC gc, int x, int y, string text, int text_length)ŒGdk.Drawable÷0œpublic virtual void
+draw_text_wcÃ128Õ(Gdk.Drawable drawable, Gdk.Font font, Gdk.GC gc, int x, int y, Gdk.WChar text, int text_length)ŒGdk÷0œpublic void
+draw_text_wcÃ128Õ(Gdk.Font font, Gdk.GC gc, int x, int y, Gdk.WChar text, int text_length)ŒGdk.Drawable÷0œpublic virtual void
+draw_trapezoidsÃ128Õ(Gdk.Drawable drawable, Gdk.GC gc, Gdk.Trapezoid[] trapezoids)ŒGdk÷0œpublic void
+draw_trapezoidsÃ128Õ(Gdk.GC gc, Gdk.Trapezoid[] trapezoids)ŒGdk.Drawable÷0œpublic virtual void
+drop_finishÃ128Õ(Gdk.DragContext context, bool success, uint32 time_)ŒGdk÷0œpublic void
+drop_replyÃ128Õ(Gdk.DragContext context, bool ok, uint32 time_)ŒGdk÷0œpublic void
+embossedÃ8ŒGdk.PangoAttrEmbossed÷0œbool
+emptyÃ128Õ()ŒGdk.Region÷0œpublic bool
+enable_synchronized_configureÃ128Õ()ŒGdk.Window÷0œpublic void
+end_paintÃ128Õ()ŒGdk.Window÷0œpublic void
+ensure_nativeÃ128Õ()ŒGdk.Window÷0œpublic bool
+equalÃ128Õ(Gdk.Color colorb)ŒGdk.Color÷0œpublic bool
+equalÃ128Õ(Gdk.Font fontb)ŒGdk.Font÷0œpublic bool
+equalÃ128Õ(Gdk.Region region2)ŒGdk.Region÷0œpublic bool
+error_trap_popÃ128Õ()ŒGdk÷0œpublic int
+error_trap_pushÃ128Õ()ŒGdk÷0œpublic void
+event_maskÃ8ŒGdk.WindowAttr÷0œint
+events_pendingÃ128Õ()ŒGdk÷0œpublic bool
+exposeÃ8ŒGdk.Event÷0œGdk.EventExpose
+exposure_gcsÃ8ŒGdk.Screen÷0œGdk.GC
+fillÃ8ŒGdk.GCValues÷0œGdk.Fill
+flushÃ128Õ()ŒGdk÷0œpublic void
+flushÃ128Õ()ŒGdk.Display÷0œpublic void
+flushÃ128Õ()ŒGdk.Window÷0œpublic void
+focusÃ8ŒGdk.EventCrossing÷0œbool
+focusÃ128Õ(uint32 timestamp)ŒGdk.Window÷0œpublic void
+focus_changeÃ8ŒGdk.Event÷0œGdk.EventFocus
+fontÃ8ŒGdk.GCValues÷0œGdk.Font
+font_optionsÃ8ŒGdk.Screen÷0œvoid
+fontset_load_for_displayÃ128Õ(Gdk.Display display, string fontset_name)ŒGdk÷0œpublic unowned
+foregroundÃ8ŒGdk.GCValues÷0œGdk.Color
+foreign_newÃ128Õ(Gdk.NativeWindow anid)ŒGdk.Pixmap÷0œpublic unowned
+foreign_newÃ128Õ(Gdk.NativeWindow anid)ŒGdk.Window÷0œpublic unowned
+foreign_new_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow anid)ŒGdk.Pixmap÷0œpublic unowned
+foreign_new_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow anid)ŒGdk.Window÷0œpublic unowned
+foreign_new_for_screenÃ128Õ(Gdk.Screen screen, Gdk.NativeWindow anid, int width, int height, int depth)ŒGdk.Pixmap÷0œpublic unowned
+freeÃ128Õ()ŒGdk.Color÷0œpublic void
+freeÃ128Õ()ŒGdk.RgbCmap÷0œpublic void
+free_colorsÃ128Õ(Gdk.Color[] colors)ŒGdk.Colormap÷0œpublic void
+free_compound_textÃ128Õ(uchar[] ctext)ŒGdk÷0œpublic void
+free_historyÃ128Õ(Gdk.TimeCoord[] events)ŒGdk.Device÷0œpublic void
+free_text_listÃ128Õ(string list)ŒGdk÷0œpublic void
+freeze_toplevel_updates_libgtk_onlyÃ128Õ()ŒGdk.Window÷0œpublic void
+freeze_updatesÃ128Õ()ŒGdk.Window÷0œpublic void
+from_description_for_displayÃ128Õ(Gdk.Display display, Pango.FontDescription font_desc)ŒGdk.Font÷0œpublic unowned
+from_embedderÃ128Õ(double p0, double p1, void* p2, void* p3)ŒGdk.Window÷0œpublic virtual signal void
+fullscreenÃ128Õ()ŒGdk.Window÷0œpublic void
+functionÃ8ŒGdk.GCValues÷0œGdk.Function
+geometry_changedÃ128Õ()ŒGdk.Window÷0œpublic void
+get_accept_focusÃ128Õ()ŒGdk.Window÷0œpublic bool
+get_actionsÃ128Õ()ŒGdk.DragContext÷0œpublic Gdk.DragAction
+get_active_windowÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_axisÃ128Õ([CCode (array_length = false)] double[] axes, Gdk.AxisUse use, out double value)ŒGdk.Device÷0œpublic bool
+get_axisÃ128Õ(Gdk.AxisUse axis_use, out double value)ŒGdk.Event÷0œpublic bool
+get_axis_useÃ128Õ(uint index)ŒGdk.Device÷0œpublic Gdk.AxisUse
+get_background_patternÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_bestÃ128Õ()ŒGdk.Visual÷0œpublic unowned
+get_best_depthÃ128Õ()ŒGdk.Visual÷0œpublic int
+get_best_typeÃ128Õ()ŒGdk.Visual÷0œpublic Gdk.VisualType
+get_best_with_bothÃ128Õ(int depth, Gdk.VisualType visual_type)ŒGdk.Visual÷0œpublic unowned
+get_best_with_depthÃ128Õ(int depth)ŒGdk.Visual÷0œpublic unowned
+get_best_with_typeÃ128Õ(Gdk.VisualType visual_type)ŒGdk.Visual÷0œpublic unowned
+get_bits_per_pixelÃ128Õ()ŒGdk.Image÷0œpublic uint16
+get_bits_per_rgbÃ128Õ()ŒGdk.Visual÷0œpublic int
+get_blue_pixel_detailsÃ128Õ(uint32 mask, int shift, int precision)ŒGdk.Visual÷0œpublic void
+get_byte_orderÃ128Õ()ŒGdk.Image÷0œpublic Gdk.ByteOrder
+get_byte_orderÃ128Õ()ŒGdk.Visual÷0œpublic Gdk.ByteOrder
+get_bytes_per_lineÃ128Õ()ŒGdk.Image÷0œpublic uint16
+get_bytes_per_pixelÃ128Õ()ŒGdk.Image÷0œpublic uint16
+get_caps_lock_stateÃ128Õ()ŒGdk.Keymap÷0œpublic bool
+get_childrenÃ128Õ()ŒGdk.Window÷0œpublic GLib.List
+get_clip_regionÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_clipboxÃ128Õ(out Gdk.Rectangle rectangle)ŒGdk.Region÷0œpublic void
+get_colormapÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_colormapÃ128Õ()ŒGdk.GC÷0œpublic unowned
+get_colormapÃ128Õ()ŒGdk.Image÷0œpublic unowned
+get_colormap_sizeÃ128Õ()ŒGdk.Visual÷0œpublic int
+get_composite_drawableÃ128Õ(int x, int y, int width, int height, int composite_x_offset, int composite_y_offset)ŒGdk.Drawable÷0œpublic virtual unowned
+get_compositedÃ128Õ()ŒGdk.Window÷0œpublic bool
+get_coordsÃ128Õ(out double x_win, out double y_win)ŒGdk.Event÷0œpublic bool
+get_core_pointerÃ128Õ()ŒGdk.Device÷0œpublic unowned
+get_core_pointerÃ128Õ()ŒGdk.Display÷0œpublic unowned
+get_cursorÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_cursor_typeÃ128Õ()ŒGdk.Cursor÷0œpublic Gdk.CursorType
+get_decorationsÃ128Õ(out Gdk.WMDecoration decorations)ŒGdk.Window÷0œpublic bool
+get_defaultÃ128Õ()ŒGdk.Display÷0œpublic unowned
+get_defaultÃ128Õ()ŒGdk.Keymap÷0œpublic unowned
+get_defaultÃ128Õ(Gdk.Screen screen)ŒGdk.PangoRenderer÷0œpublic unowned
+get_defaultÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_default_colormapÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_default_cursor_sizeÃ128Õ()ŒGdk.Display÷0
+get_default_displayÃ128Õ()ŒGdk.DisplayManager÷0œpublic unowned
+get_default_groupÃ128Õ()ŒGdk.Display÷0œpublic unowned
+get_default_root_windowÃ128Õ()ŒGdk÷0œpublic unowned
+get_default_screenÃ128Õ()ŒGdk.Display÷0œpublic virtual unowned
+get_depthÃ128Õ()ŒGdk.Drawable÷0œpublic virtual int
+get_depthÃ128Õ()ŒGdk.Image÷0œpublic uint16
+get_depthÃ128Õ()ŒGdk.Visual÷0œpublic int
+get_deskrelative_originÃ128Õ(out int x, out int y)ŒGdk.Window÷0œpublic bool
+get_directionÃ128Õ()ŒGdk.Keymap÷0œpublic Pango.Direction
+get_displayÃ128Õ()ŒGdk÷0œpublic unowned string
+get_displayÃ128Õ()ŒGdk.Cursor÷0œpublic unowned
+get_displayÃ128Õ()ŒGdk.Drawable÷0œpublic unowned
+get_displayÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_display_arg_nameÃ128Õ()ŒGdk÷0œpublic unowned string
+get_display_nameÃ128Õ()ŒGdk.Display÷0œpublic virtual unowned string
+get_effective_parentÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_effective_toplevelÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_entries_for_keycodeÃ128Õ(uint hardware_keycode, out unowned Gdk.KeymapKey[] keys, out unowned uint[] keyvals, int n_entries)ŒGdk.Keymap÷0œpublic bool
+get_entries_for_keyvalÃ128Õ(uint keyval, out unowned Gdk.KeymapKey[] keys)ŒGdk.Keymap÷0œpublic bool
+get_eventÃ128Õ()ŒGdk.Display÷0œpublic Gdk.Event
+get_eventsÃ128Õ()ŒGdk.Window÷0œpublic Gdk.EventMask
+get_focus_on_mapÃ128Õ()ŒGdk.Window÷0œpublic bool
+get_font_optionsÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_for_displayÃ128Õ(Gdk.Display display)ŒGdk.Keymap÷0œpublic unowned
+get_frame_extentsÃ128Õ(out Gdk.Rectangle rect)ŒGdk.Window÷0œpublic void
+get_geometryÃ128Õ(out int x, out int y, out int width, out int height, out int depth)ŒGdk.Window÷0œpublic void
+get_green_pixel_detailsÃ128Õ(uint32 mask, int shift, int precision)ŒGdk.Visual÷0œpublic void
+get_groupÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_has_cursorÃ128Õ()ŒGdk.Device÷0œpublic bool
+get_heightÃ128Õ()ŒGdk.Image÷0œpublic int
+get_heightÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_height_mmÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_historyÃ128Õ(Gdk.Window window, uint32 start, uint32 stop, Gdk.TimeCoord[] events)ŒGdk.Device÷0œpublic bool
+get_imageÃ128Õ()ŒGdk.Cursor÷0œpublic unowned
+get_imageÃ128Õ(int x, int y, int width, int height)ŒGdk.Drawable÷0œpublic virtual unowned
+get_image_typeÃ128Õ()ŒGdk.Image÷0œpublic Gdk.ImageType
+get_internal_paint_infoÃ128Õ(out unowned Gdk.Drawable real_drawable, out int x_offset, out int y_offset)ŒGdk.Window÷0œpublic void
+get_keyÃ128Õ(uint index, uint keyval, Gdk.ModifierType modifiers)ŒGdk.Device÷0œpublic void
+get_maximal_cursor_sizeÃ128Õ(out uint width, out uint height)ŒGdk.Display÷0œpublic void
+get_modal_hintÃ128Õ()ŒGdk.Window÷0œpublic bool
+get_modeÃ128Õ()ŒGdk.Device÷0œpublic Gdk.InputMode
+get_monitor_at_pointÃ128Õ(int x, int y)ŒGdk.Screen÷0œpublic int
+get_monitor_at_windowÃ128Õ(Gdk.Window window)ŒGdk.Screen÷0œpublic int
+get_monitor_geometryÃ128Õ(int monitor_num, out Gdk.Rectangle dest)ŒGdk.Screen÷0œpublic void
+get_monitor_height_mmÃ128Õ(int monitor_num)ŒGdk.Screen÷0œpublic int
+get_monitor_plug_nameÃ128Õ(int monitor_num)ŒGdk.Screen÷0œpublic unowned string
+get_monitor_width_mmÃ128Õ(int monitor_num)ŒGdk.Screen÷0œpublic int
+get_n_axesÃ128Õ()ŒGdk.Device÷0œpublic int
+get_n_monitorsÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_n_screensÃ128Õ()ŒGdk.Display÷0œpublic virtual int
+get_nameÃ128Õ()ŒGdk.Device÷0œpublic unowned string
+get_nameÃ128Õ()ŒGdk.Display÷0œpublic unowned string
+get_numberÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_originÃ128Õ(out int x, out int y)ŒGdk.Window÷0œpublic int
+get_parentÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_pixelÃ128Õ(int x, int y)ŒGdk.Image÷0œpublic uint32
+get_pointerÃ128Õ(out unowned Gdk.Screen screen, out int x, out int y, out Gdk.ModifierType mask)ŒGdk.Display÷0œpublic void
+get_pointerÃ8ŒGdk.DisplayPointerHooks÷0œGLib.Callback
+get_pointerÃ8ŒGdk.PointerHooks÷0œGLib.Callback
+get_pointerÃ128Õ(out int x, out int y, out Gdk.ModifierType mask)ŒGdk.Window÷0œpublic unowned
+get_positionÃ128Õ(out int x, out int y)ŒGdk.Window÷0œpublic void
+get_primary_monitorÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_program_classÃ128Õ()ŒGdk÷0œpublic unowned string
+get_rectanglesÃ128Õ(out Gdk.Rectangle[] rectangles)ŒGdk.Region÷0œpublic void
+get_red_pixel_detailsÃ128Õ(uint32 mask, int shift, int precision)ŒGdk.Visual÷0œpublic void
+get_resolutionÃ128Õ()ŒGdk.Screen÷0œpublic double
+get_rgb_colormapÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_rgb_visualÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_rgba_colormapÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_rgba_visualÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_root_coordsÃ128Õ(out double x_root, out double y_root)ŒGdk.Event÷0œpublic bool
+get_root_coordsÃ128Õ(int x, int y, int root_x, int root_y)ŒGdk.Window÷0œpublic void
+get_root_originÃ128Õ(out int x, out int y)ŒGdk.Window÷0œpublic void
+get_root_windowÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_screenÃ128Õ()ŒGdk.Colormap÷0œpublic unowned
+get_screenÃ128Õ(int screen_num)ŒGdk.Display÷0œpublic virtual unowned
+get_screenÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_screenÃ128Õ()ŒGdk.Event÷0œpublic unowned
+get_screenÃ128Õ()ŒGdk.GC÷0œpublic unowned
+get_screenÃ128Õ()ŒGdk.Visual÷0œpublic unowned
+get_selected_actionÃ128Õ()ŒGdk.DragContext÷0œpublic Gdk.DragAction
+get_settingÃ128Õ(string name, GLib.Value value)ŒGdk.Screen÷0œpublic bool
+get_show_eventsÃ128Õ()ŒGdk÷0œpublic bool
+get_sizeÃ128Õ(out int width, out int height)ŒGdk.Drawable÷0œpublic virtual void
+get_sourceÃ128Õ()ŒGdk.Device÷0œpublic Gdk.InputSource
+get_source_drawableÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_source_windowÃ128Õ()ŒGdk.DragContext÷0œpublic unowned
+get_stateÃ128Õ(Gdk.Window window, double axes, Gdk.ModifierType mask)ŒGdk.Device÷0œpublic void
+get_stateÃ128Õ(out Gdk.ModifierType state)ŒGdk.Event÷0œpublic bool
+get_stateÃ128Õ()ŒGdk.Window÷0œpublic Gdk.WindowState
+get_suggested_actionÃ128Õ()ŒGdk.DragContext÷0œpublic Gdk.DragAction
+get_systemÃ128Õ()ŒGdk.Colormap÷0œpublic unowned
+get_systemÃ128Õ()ŒGdk.Visual÷0œpublic unowned
+get_system_colormapÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_system_visualÃ128Õ()ŒGdk.Screen÷0œpublic unowned
+get_timeÃ128Õ()ŒGdk.Event÷0œpublic uint32
+get_toplevelÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_toplevel_windowsÃ128Õ()ŒGdk.Screen÷0œpublic GLib.List
+get_type_hintÃ128Õ()ŒGdk.Window÷0œpublic Gdk.WindowTypeHint
+get_update_areaÃ128Õ()ŒGdk.Window÷0œpublic unowned
+get_user_dataÃ128Õ(void* data)ŒGdk.Window÷0œpublic void
+get_valuesÃ128Õ(out Gdk.GCValues values)ŒGdk.GC÷0œpublic virtual void
+get_visible_regionÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_visualÃ128Õ()ŒGdk.Colormap÷0œpublic unowned
+get_visualÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+get_visualÃ128Õ()ŒGdk.Image÷0œpublic unowned
+get_visual_typeÃ128Õ()ŒGdk.Visual÷0œpublic Gdk.VisualType
+get_widthÃ128Õ()ŒGdk.Image÷0œpublic int
+get_widthÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_width_mmÃ128Õ()ŒGdk.Screen÷0œpublic int
+get_window_at_pointerÃ128Õ(int win_x, int win_y)ŒGdk.Display÷0œpublic unowned
+get_window_stackÃ128Õ()ŒGdk.Screen÷0œpublic GLib.List
+get_window_typeÃ128Õ()ŒGdk.Window÷0œpublic Gdk.WindowType
+grab_brokenÃ8ŒGdk.Event÷0œGdk.EventGrabBroken
+grab_windowÃ8ŒGdk.EventGrabBroken÷0œGdk.Window
+graphics_exposuresÃ8ŒGdk.GCValues÷0œint
+greenÃ8ŒGdk.Color÷0œuint16
+green_maskÃ8ŒGdk.Visual÷0œuint32
+green_precÃ8ŒGdk.Visual÷0œint
+green_shiftÃ8ŒGdk.Visual÷0œint
+groupÃ8ŒGdk.EventKey÷0œuchar
+groupÃ8ŒGdk.KeymapKey÷0œint
+handler_setÃ128Õ(owned Gdk.EventFunc func)ŒGdk.Event÷0œpublic void
+hardware_keycodeÃ8ŒGdk.EventKey÷0œuint16
+has_cursorÃ8ŒGdk.Device÷0œbool
+has_nativeÃ128Õ()ŒGdk.Window÷0œpublic bool
+hashÃ128Õ()ŒGdk.Color÷0
+have_bidi_layoutsÃ128Õ()ŒGdk.Keymap÷0œpublic bool
+heightÃ8ŒGdk.EventConfigure÷0œint
+heightÃ8ŒGdk.Image÷0œint
+heightÃ8ŒGdk.Rectangle÷0œint
+heightÃ128Õ()ŒGdk.Screen÷0œpublic int
+heightÃ8ŒGdk.WindowAttr÷0œint
+height_incÃ8ŒGdk.Geometry÷0œint
+height_mmÃ128Õ()ŒGdk.Screen÷0œpublic int
+hideÃ128Õ()ŒGdk.Window÷0œpublic void
+iconifyÃ128Õ()ŒGdk.Window÷0œpublic void
+idÃ128Õ()ŒGdk.Font÷0œpublic int
+ignore_core_eventsÃ8ŒGdk.Display÷0
+implicitÃ8ŒGdk.EventGrabBroken÷0œbool
+info_listÃ8ŒGdk.RgbCmap÷0œGLib.SList
+initÃ128Õ([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ŒGdk÷0œpublic void
+init_checkÃ128Õ([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ŒGdk÷0œpublic bool
+input_set_extension_eventsÃ128Õ(Gdk.Window window, int mask, Gdk.ExtensionMode mode)ŒGdk÷0œpublic void
+input_shape_combine_maskÃ128Õ(Gdk.Bitmap? mask, int x, int y)ŒGdk.Window÷0œpublic void
+input_shape_combine_regionÃ128Õ(Gdk.Region shape_region, int offset_x, int offset_y)ŒGdk.Window÷0œpublic void
+internÃ128Õ(string atom_name, bool only_if_exists)ŒGdk.Atom÷0œpublic Gdk.Atom
+intern_static_stringÃ128Õ(string atom_name)ŒGdk.Atom÷0œpublic Gdk.Atom
+intersectÃ128Õ(Gdk.Rectangle src2, out Gdk.Rectangle dest)ŒGdk.Rectangle÷0œpublic bool
+intersectÃ128Õ(Gdk.Region source2)ŒGdk.Region÷0œpublic void
+invalidate_maybe_recurseÃ128Õ(Gdk.Region region, GLib.Callback child_func)ŒGdk.Window÷0œpublic void
+invalidate_rectÃ128Õ(Gdk.Rectangle? rect, bool invalidate_children)ŒGdk.Window÷0œpublic void
+invalidate_regionÃ128Õ(Gdk.Region region, bool invalidate_children)ŒGdk.Window÷0œpublic void
+is_closedÃ128Õ()ŒGdk.Display÷0œpublic bool
+is_compositedÃ128Õ()ŒGdk.Screen÷0œpublic bool
+is_destroyedÃ128Õ()ŒGdk.Window÷0œpublic bool
+is_hintÃ8ŒGdk.EventMotion÷0œbool
+is_input_onlyÃ128Õ()ŒGdk.Window÷0œpublic bool
+is_modifierÃ8ŒGdk.EventKey÷0
+is_shapedÃ128Õ()ŒGdk.Window÷0œpublic bool
+is_sourceÃ8ŒGdk.DragContext÷0œbool
+is_viewableÃ128Õ()ŒGdk.Window÷0œpublic bool
+is_visibleÃ128Õ()ŒGdk.Window÷0œpublic bool
+join_styleÃ8ŒGdk.GCValues÷0œGdk.JoinStyle
+keyÃ8ŒGdk.Event÷0œGdk.EventKey
+keyboardÃ8ŒGdk.EventGrabBroken÷0œbool
+keyboard_grabÃ128Õ(Gdk.Window window, bool owner_events, uint32 time_)ŒGdk÷0œpublic Gdk.GrabStatus
+keyboard_grabÃ8ŒGdk.Display÷0œGdk.KeyboardGrabInfo
+keyboard_ungrabÃ128Õ(uint32 time_)ŒGdk÷0œpublic void
+keyboard_ungrabÃ128Õ(uint32 time_)ŒGdk.Display÷0œpublic void
+keycodeÃ8ŒGdk.KeymapKey÷0
+keysÃ8ŒGdk.Device÷0œGdk.DeviceKey
+keys_changedÃ128Õ()ŒGdk.Keymap÷0œpublic virtual signal void
+keyvalÃ8ŒGdk.DeviceKey÷0
+keyvalÃ8ŒGdk.EventKey÷0
+keyval_convert_caseÃ128Õ(uint symbol, uint lower, uint upper)ŒGdk÷0œpublic void
+keyval_from_nameÃ128Õ(string keyval_name)ŒGdk÷0
+keyval_is_lowerÃ128Õ(uint keyval)ŒGdk÷0œpublic bool
+keyval_is_upperÃ128Õ(uint keyval)ŒGdk÷0œpublic bool
+keyval_nameÃ128Õ(uint keyval)ŒGdk÷0œpublic unowned string
+keyval_to_lowerÃ128Õ(uint keyval)ŒGdk÷0
+keyval_to_unicodeÃ128Õ(uint keyval)ŒGdk÷0œpublic uint32
+keyval_to_upperÃ128Õ(uint keyval)ŒGdk÷0
+last_event_timeÃ8ŒGdk.Display÷0œuint32
+lengthÃ8ŒGdk.EventKey÷0œint
+levelÃ8ŒGdk.KeymapKey÷0œint
+libgtk_onlyÃ128Õ(Gdk.Display display, out unowned Gdk.Window grab_window, bool owner_events)ŒGdk.KeyboardGrabInfo÷0œpublic bool
+line_styleÃ8ŒGdk.GCValues÷0œGdk.LineStyle
+line_widthÃ8ŒGdk.GCValues÷0œint
+list_devicesÃ128Õ()ŒGdk.Display÷0œpublic unowned
+list_displaysÃ128Õ()ŒGdk.DisplayManager÷0œpublic GLib.SList
+list_targetsÃ128Õ()ŒGdk.DragContext÷0œpublic unowned
+list_visualsÃ128Õ()ŒGdk÷0œpublic GLib.List
+list_visualsÃ128Õ()ŒGdk.Screen÷0œpublic GLib.List
+load_for_displayÃ128Õ(Gdk.Display display, string font_name)ŒGdk.Font÷0œpublic unowned
+lookupÃ128Õ(Gdk.NativeWindow anid)ŒGdk.Pixmap÷0œpublic unowned
+lookupÃ128Õ(Gdk.NativeWindow anid)ŒGdk.Window÷0œpublic unowned
+lookup_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow anid)ŒGdk.Pixmap÷0œpublic unowned
+lookup_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow anid)ŒGdk.Window÷0œpublic unowned
+lookup_keyÃ128Õ(Gdk.KeymapKey key)ŒGdk.Keymap÷0
+lowerÃ128Õ()ŒGdk.Window÷0œpublic void
+make_display_nameÃ128Õ()ŒGdk.Screen÷0œpublic unowned string
+map_virtual_modifiersÃ128Õ(Gdk.ModifierType state)ŒGdk.Keymap÷0œpublic bool
+maxÃ8ŒGdk.DeviceAxis÷0œdouble
+max_aspectÃ8ŒGdk.Geometry÷0œdouble
+max_heightÃ8ŒGdk.Geometry÷0œint
+max_widthÃ8ŒGdk.Geometry÷0œint
+maximizeÃ128Õ()ŒGdk.Window÷0œpublic void
+memÃ8ŒGdk.Image÷0œvoid
+merge_child_input_shapesÃ128Õ()ŒGdk.Window÷0œpublic void
+merge_child_shapesÃ128Õ()ŒGdk.Window÷0œpublic void
+message_typeÃ8ŒGdk.EventClient÷0œGdk.Atom
+minÃ8ŒGdk.DeviceAxis÷0œdouble
+min_aspectÃ8ŒGdk.Geometry÷0œdouble
+min_heightÃ8ŒGdk.Geometry÷0œint
+min_widthÃ8ŒGdk.Geometry÷0œint
+modeÃ8ŒGdk.Device÷0œGdk.InputMode
+modeÃ8ŒGdk.EventCrossing÷0œGdk.CrossingMode
+modifiersÃ8ŒGdk.DeviceKey÷0œGdk.ModifierType
+monitors_changedÃ128Õ()ŒGdk.Screen÷0œpublic virtual signal void
+motionÃ8ŒGdk.Event÷0œGdk.EventMotion
+motion_hint_serialÃ8ŒGdk.PointerWindowInfo÷0
+moveÃ128Õ(int x, int y)ŒGdk.Window÷0œpublic void
+move_regionÃ128Õ(Gdk.Region region, int dx, int dy)ŒGdk.Window÷0œpublic void
+move_resizeÃ128Õ(int x, int y, int width, int height)ŒGdk.Window÷0œpublic void
+n_colorsÃ8ŒGdk.RgbCmap÷0œint
+nameÃ128Õ()ŒGdk.Atom÷0œpublic unowned string
+nameÃ8ŒGdk.Device÷0
+nameÃ8ŒGdk.EventSetting÷0
+native_windowÃ8ŒGdk.KeyboardGrabInfo÷0œGdk.Window
+new_window_stateÃ8ŒGdk.EventWindowState÷0œGdk.WindowState
+no_exposeÃ8ŒGdk.Event÷0œGdk.EventNoExpose
+normal_gcsÃ8ŒGdk.Screen÷0œGdk.GC
+notify_startup_completeÃ128Õ()ŒGdk÷0œpublic void
+notify_startup_complete_with_idÃ128Õ(string startup_id)ŒGdk÷0œpublic void
+num_axesÃ8ŒGdk.Device÷0œint
+num_keysÃ8ŒGdk.Device÷0œint
+offscreen_window_get_embedderÃ128Õ(Gdk.Window window)ŒGdk÷0œpublic unowned
+offscreen_window_get_pixmapÃ128Õ(Gdk.Window window)ŒGdk÷0œpublic unowned
+offscreen_window_set_embedderÃ128Õ(Gdk.Window window, Gdk.Window embedder)ŒGdk÷0œpublic void
+offsetÃ128Õ(int x_offset, int y_offset)ŒGdk.GC÷0œpublic void
+offsetÃ128Õ(int dx, int dy)ŒGdk.Region÷0œpublic void
+openÃ128Õ(string display_name)ŒGdk.Display÷0œpublic unowned
+open_default_libgtk_onlyÃ128Õ()ŒGdk.Display÷0œpublic unowned
+override_redirectÃ8ŒGdk.WindowAttr÷0œbool
+ownerÃ8ŒGdk.EventOwnerChange÷0œGdk.NativeWindow
+owner_changeÃ8ŒGdk.Event÷0œGdk.EventOwnerChange
+owner_eventsÃ8ŒGdk.KeyboardGrabInfo÷0œbool
+owner_getÃ128Õ(Gdk.Atom selection)ŒGdk.Selection÷0œpublic unowned
+owner_get_for_displayÃ128Õ(Gdk.Display display, Gdk.Atom selection)ŒGdk.Selection÷0œpublic unowned
+owner_setÃ128Õ(Gdk.Window owner, Gdk.Atom selection, uint32 time_, bool send_event)ŒGdk.Selection÷0œpublic bool
+owner_set_for_displayÃ128Õ(Gdk.Display display, Gdk.Window owner, Gdk.Atom selection, uint32 time_, bool send_event)ŒGdk.Selection÷0œpublic bool
+pango_context_getÃ128Õ()ŒGdk÷0œpublic unowned
+pango_context_get_for_screenÃ128Õ(Gdk.Screen screen)ŒGdk÷0œpublic unowned
+pango_layout_get_clip_regionÃ128Õ(Pango.Layout layout, int x_origin, int y_origin, int index_ranges, int n_ranges)ŒGdk÷0œpublic unowned
+pango_layout_line_get_clip_regionÃ128Õ(Pango.LayoutLine line, int x_origin, int y_origin, int index_ranges, int n_ranges)ŒGdk÷0œpublic unowned
+parent_instanceÃ8ŒGdk.Bitmap÷0œGLib.Object
+parseÃ128Õ(string spec, out Gdk.Color color)ŒGdk.Color÷0œpublic bool
+parse_argsÃ128Õ(int argc, string argv)ŒGdk÷0œpublic void
+peekÃ128Õ()ŒGdk.Event÷0œpublic unowned
+peek_childrenÃ128Õ()ŒGdk.Window÷0œpublic unowned
+peek_eventÃ128Õ()ŒGdk.Display÷0œpublic Gdk.Event
+pick_embedded_childÃ128Õ(double p0, double p1)ŒGdk.Window÷0œpublic virtual signal unowned
+pixbuf_get_from_drawableÃ128Õ(Gdk.Pixbuf? dest, Gdk.Drawable src, Gdk.Colormap? cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height)ŒGdk÷0œpublic unowned
+pixbuf_get_from_imageÃ128Õ(Gdk.Pixbuf? dest, Gdk.Image src, Gdk.Colormap? cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height)ŒGdk÷0œpublic unowned
+pixbuf_render_pixmap_and_maskÃ128Õ(Gdk.Pixbuf pixbuf, out unowned Gdk.Pixmap pixmap_return, out unowned Gdk.Bitmap mask_return, int alpha_threshold)ŒGdk÷0œpublic void
+pixbuf_render_pixmap_and_mask_for_colormapÃ128Õ(Gdk.Pixbuf pixbuf, Gdk.Colormap colormap, out unowned Gdk.Pixmap pixmap_return, out unowned Gdk.Bitmap mask_return, int alpha_threshold)ŒGdk÷0œpublic void
+pixbuf_render_threshold_alphaÃ128Õ(Gdk.Pixbuf pixbuf, Gdk.Bitmap bitmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height, int alpha_threshold)ŒGdk÷0œpublic void
+pixelÃ8ŒGdk.Color÷0œuint32
+point_inÃ128Õ(int x, int y)ŒGdk.Region÷0œpublic bool
+pointer_grabÃ128Õ(Gdk.Window window, bool owner_events, Gdk.EventMask event_mask, Gdk.Window? confine_to, Gdk.Cursor? cursor, uint32 time_)ŒGdk÷0œpublic Gdk.GrabStatus
+pointer_grab_info_libgtk_onlyÃ128Õ(Gdk.Display display, out unowned Gdk.Window grab_window, bool owner_events)ŒGdk÷0œpublic bool
+pointer_grabsÃ8ŒGdk.Display÷0œGLib.List
+pointer_hooksÃ8ŒGdk.Display÷0œGdk.DisplayPointerHooks
+pointer_infoÃ8ŒGdk.Display÷0œGdk.PointerWindowInfo
+pointer_is_grabbedÃ128Õ()ŒGdk÷0œpublic bool
+pointer_is_grabbedÃ128Õ()ŒGdk.Display÷0œpublic bool
+pointer_ungrabÃ128Õ(uint32 time_)ŒGdk÷0œpublic void
+pointer_ungrabÃ128Õ(uint32 time_)ŒGdk.Display÷0œpublic void
+polygonÃ128Õ(Gdk.Point[] points, Gdk.FillRule fill_rule)ŒGdk.Region÷0œpublic Gdk.Region
+pre_parse_libgtk_onlyÃ128Õ()ŒGdk÷0œpublic void
+process_all_updatesÃ128Õ()ŒGdk.Window÷0œpublic void
+process_updatesÃ128Õ(bool update_children)ŒGdk.Window÷0œpublic void
+propertyÃ8ŒGdk.Event÷0œGdk.EventProperty
+propertyÃ8ŒGdk.EventSelection÷0œGdk.Atom
+property_changeÃ128Õ(Gdk.Window window, Gdk.Atom property, Gdk.Atom type, int format, Gdk.PropMode mode, [CCode (array_length = false)] uchar[] data, int nelements)ŒGdk÷0œpublic void
+property_deleteÃ128Õ(Gdk.Window window, Gdk.Atom property)ŒGdk÷0œpublic void
+property_getÃ128Õ(Gdk.Window window, Gdk.Atom property, Gdk.Atom type, ulong offset, ulong length, int pdelete, out Gdk.Atom actual_property_type, out int actual_format, [CCode (array_length_pos = 8.9)] out uchar[] data)ŒGdk÷0œpublic bool
+property_getÃ128Õ(Gdk.Window requestor, uchar[] data, out Gdk.Atom prop_type, int prop_format)ŒGdk.Selection÷0œpublic int
+protocolÃ8ŒGdk.DragContext÷0œGdk.DragProtocol
+proximityÃ8ŒGdk.Event÷0œGdk.EventProximity
+putÃ128Õ()ŒGdk.Event÷0œpublic void
+put_eventÃ128Õ(Gdk.Event event)ŒGdk.Display÷0œpublic void
+put_pixelÃ128Õ(int x, int y, uint32 pixel)ŒGdk.Image÷0œpublic void
+query_colorÃ128Õ(ulong pixel, out Gdk.Color _result)ŒGdk.Colormap÷0œpublic void
+query_depthsÃ128Õ(int depths, int count)ŒGdk÷0œpublic void
+query_visual_typesÃ128Õ(out Gdk.VisualType visual_types, int count)ŒGdk÷0œpublic void
+queued_eventsÃ8ŒGdk.Display÷0œGLib.List
+queued_tailÃ8ŒGdk.Display÷0œGLib.List
+raiseÃ128Õ()ŒGdk.Window÷0œpublic void
+reasonÃ8ŒGdk.EventOwnerChange÷0œGdk.OwnerChange
+rect_equalÃ128Õ(Gdk.Rectangle rectangle)ŒGdk.Region÷0œpublic bool
+rect_inÃ128Õ(Gdk.Rectangle rectangle)ŒGdk.Region÷0œpublic Gdk.OverlapType
+rectangleÃ128Õ(Gdk.Rectangle rectangle)ŒGdk.Region÷0œpublic Gdk.Region
+redÃ8ŒGdk.Color÷0œuint16
+red_maskÃ8ŒGdk.Visual÷0œuint32
+red_precÃ8ŒGdk.Visual÷0œint
+red_shiftÃ8ŒGdk.Visual÷0œint
+ref_cairo_surfaceÃ128Õ()ŒGdk.Drawable÷0œpublic virtual unowned
+ref_countÃ8ŒGdk.Cursor÷0
+regionÃ8ŒGdk.EventExpose÷0œGdk.Region
+register_dndÃ128Õ()ŒGdk.Window÷0œpublic void
+remove_filterÃ128Õ(Gdk.FilterFunc function)ŒGdk.Window÷0œpublic void
+remove_redirectionÃ128Õ()ŒGdk.Window÷0œpublic void
+reparentÃ128Õ(Gdk.Window new_parent, int x, int y)ŒGdk.Window÷0œpublic void
+request_motionsÃ128Õ(Gdk.EventMotion event)ŒGdk.Event÷0œpublic void
+request_selection_notificationÃ128Õ(Gdk.Atom selection)ŒGdk.Display÷0œpublic bool
+requestorÃ8ŒGdk.EventSelection÷0œGdk.NativeWindow
+resizeÃ128Õ(int width, int height)ŒGdk.Window÷0œpublic void
+resolutionÃ8ŒGdk.Screen÷0œdouble
+restackÃ128Õ(Gdk.Window sibling, bool above)ŒGdk.Window÷0œpublic void
+rgb_colormap_ditherableÃ128Õ(Gdk.Colormap cmap)ŒGdk÷0œpublic bool
+rgb_ditherableÃ128Õ()ŒGdk÷0œpublic bool
+rgb_find_colorÃ128Õ(Gdk.Colormap colormap, ref Gdk.Color color)ŒGdk÷0œpublic void
+rgb_get_colormapÃ128Õ()ŒGdk÷0œpublic unowned
+rgb_get_visualÃ128Õ()ŒGdk÷0œpublic unowned
+rgb_set_installÃ128Õ(bool install)ŒGdk÷0œpublic void
+rgb_set_min_colorsÃ128Õ(int min_colors)ŒGdk÷0œpublic void
+rgb_set_verboseÃ128Õ(bool verbose)ŒGdk÷0œpublic void
+screenÃ8ŒGdk.PangoRenderer÷0œGdk.Screen
+scrollÃ8ŒGdk.Event÷0œGdk.EventScroll
+scrollÃ128Õ(int dx, int dy)ŒGdk.Window÷0œpublic void
+selectionÃ8ŒGdk.Event÷0œGdk.EventSelection
+selectionÃ8ŒGdk.EventOwnerChange÷0œGdk.Atom
+selectionÃ8ŒGdk.EventSelection÷0œGdk.Atom
+selection_convertÃ128Õ(Gdk.Window requestor, Gdk.Atom selection, Gdk.Atom target, uint32 time_)ŒGdk÷0œpublic void
+selection_owner_getÃ128Õ(Gdk.Atom selection)ŒGdk÷0œpublic unowned
+selection_owner_get_for_displayÃ128Õ(Gdk.Display display, Gdk.Atom selection)ŒGdk÷0œpublic unowned
+selection_owner_setÃ128Õ(Gdk.Window owner, Gdk.Atom selection, uint32 time_, bool send_event)ŒGdk÷0œpublic bool
+selection_owner_set_for_displayÃ128Õ(Gdk.Display display, Gdk.Window owner, Gdk.Atom selection, uint32 time_, bool send_event)ŒGdk÷0œpublic bool
+selection_property_getÃ128Õ(Gdk.Window requestor, uchar[] data, out Gdk.Atom prop_type, int prop_format)ŒGdk÷0œpublic int
+selection_send_notifyÃ128Õ(Gdk.NativeWindow requestor, Gdk.Atom selection, Gdk.Atom target, Gdk.Atom property, uint32 time_)ŒGdk÷0œpublic void
+selection_send_notify_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow requestor, Gdk.Atom selection, Gdk.Atom target, Gdk.Atom property, uint32 time_)ŒGdk÷0œpublic void
+selection_timeÃ8ŒGdk.EventOwnerChange÷0œuint32
+send_client_messageÃ128Õ(Gdk.NativeWindow winid)ŒGdk.Event÷0œpublic bool
+send_client_message_for_displayÃ128Õ(Gdk.Display display, Gdk.Event event, Gdk.NativeWindow winid)ŒGdk.Event÷0œpublic bool
+send_clientmessage_toallÃ128Õ()ŒGdk.Event÷0œpublic void
+send_eventÃ8ŒGdk.EventAny÷0œchar
+send_eventÃ8ŒGdk.EventButton÷0œchar
+send_eventÃ8ŒGdk.EventClient÷0œchar
+send_eventÃ8ŒGdk.EventConfigure÷0œchar
+send_eventÃ8ŒGdk.EventCrossing÷0œchar
+send_eventÃ8ŒGdk.EventDND÷0œchar
+send_eventÃ8ŒGdk.EventExpose÷0œchar
+send_eventÃ8ŒGdk.EventFocus÷0œchar
+send_eventÃ8ŒGdk.EventGrabBroken÷0œchar
+send_eventÃ8ŒGdk.EventKey÷0œchar
+send_eventÃ8ŒGdk.EventMotion÷0œchar
+send_eventÃ8ŒGdk.EventNoExpose÷0œchar
+send_eventÃ8ŒGdk.EventOwnerChange÷0œchar
+send_eventÃ8ŒGdk.EventProperty÷0œchar
+send_eventÃ8ŒGdk.EventProximity÷0œchar
+send_eventÃ8ŒGdk.EventScroll÷0œchar
+send_eventÃ8ŒGdk.EventSelection÷0œchar
+send_eventÃ8ŒGdk.EventSetting÷0œchar
+send_eventÃ8ŒGdk.EventVisibility÷0œchar
+send_eventÃ8ŒGdk.EventWindowState÷0œchar
+send_notifyÃ128Õ(Gdk.NativeWindow requestor, Gdk.Atom selection, Gdk.Atom target, Gdk.Atom property, uint32 time_)ŒGdk.Selection÷0œpublic void
+send_notify_for_displayÃ128Õ(Gdk.Display display, Gdk.NativeWindow requestor, Gdk.Atom selection, Gdk.Atom target, Gdk.Atom property, uint32 time_)ŒGdk.Selection÷0œpublic void
+serialÃ8ŒGdk.KeyboardGrabInfo÷0
+set_accept_focusÃ128Õ(bool accept_focus)ŒGdk.Window÷0œpublic void
+set_axis_useÃ128Õ(uint index_, Gdk.AxisUse use)ŒGdk.Device÷0œpublic void
+set_back_pixmapÃ128Õ(Gdk.Pixmap? pixmap, bool parent_relative)ŒGdk.Window÷0œpublic void
+set_backgroundÃ128Õ(Gdk.Color color)ŒGdk.GC÷0œpublic void
+set_backgroundÃ128Õ(Gdk.Color color)ŒGdk.Window÷0œpublic void
+set_cairo_clipÃ128Õ(Cairo.Context cr)ŒGdk.Drawable÷0œpublic virtual void
+set_child_input_shapesÃ128Õ()ŒGdk.Window÷0œpublic void
+set_child_shapesÃ128Õ()ŒGdk.Window÷0œpublic void
+set_clip_maskÃ128Õ(Gdk.Bitmap mask)ŒGdk.GC÷0œpublic void
+set_clip_originÃ128Õ(int x, int y)ŒGdk.GC÷0œpublic void
+set_clip_rectangleÃ128Õ(Gdk.Rectangle rectangle)ŒGdk.GC÷0œpublic void
+set_clip_regionÃ128Õ(Gdk.Region region)ŒGdk.GC÷0œpublic void
+set_colormapÃ128Õ(Gdk.Colormap colormap)ŒGdk.Drawable÷0œpublic virtual void
+set_colormapÃ128Õ(Gdk.Colormap colormap)ŒGdk.GC÷0œpublic void
+set_colormapÃ128Õ(Gdk.Colormap colormap)ŒGdk.Image÷0œpublic void
+set_compositedÃ128Õ(bool composited)ŒGdk.Window÷0œpublic void
+set_cursorÃ128Õ(Gdk.Cursor? cursor)ŒGdk.Window÷0œpublic void
+set_dashesÃ128Õ(int dash_offset, char[] dash_list, int n)ŒGdk.GC÷0œpublic virtual void
+set_debug_updatesÃ128Õ(bool setting)ŒGdk.Window÷0œpublic void
+set_decorationsÃ128Õ(Gdk.WMDecoration decorations)ŒGdk.Window÷0œpublic void
+set_default_colormapÃ128Õ(Gdk.Colormap colormap)ŒGdk.Screen÷0œpublic void
+set_default_displayÃ128Õ(Gdk.Display display)ŒGdk.DisplayManager÷0œpublic void
+set_desktopÃ128Õ(int desktop)ŒGdk.AppLaunchContext÷0œpublic void
+set_displayÃ128Õ(Gdk.Display display)ŒGdk.AppLaunchContext÷0œpublic void
+set_double_click_distanceÃ128Õ(uint distance)ŒGdk.Display÷0œpublic void
+set_double_click_timeÃ128Õ(uint msec)ŒGdk÷0œpublic void
+set_double_click_timeÃ128Õ(uint msec)ŒGdk.Display÷0œpublic void
+set_drawableÃ128Õ(Gdk.Drawable drawable)ŒGdk.PangoRenderer÷0œpublic void
+set_eventsÃ128Õ(Gdk.EventMask event_mask)ŒGdk.Window÷0œpublic void
+set_exposuresÃ128Õ(bool exposures)ŒGdk.GC÷0œpublic void
+set_fillÃ128Õ(Gdk.Fill fill)ŒGdk.GC÷0œpublic void
+set_focus_on_mapÃ128Õ(bool focus_on_map)ŒGdk.Window÷0œpublic void
+set_font_optionsÃ128Õ(Cairo.FontOptions options)ŒGdk.Screen÷0œpublic void
+set_foregroundÃ128Õ(Gdk.Color color)ŒGdk.GC÷0œpublic void
+set_functionÃ128Õ(Gdk.Function function)ŒGdk.GC÷0œpublic void
+set_functionsÃ128Õ(Gdk.WMFunction functions)ŒGdk.Window÷0œpublic void
+set_gcÃ128Õ(Gdk.GC gc)ŒGdk.PangoRenderer÷0œpublic void
+set_geometry_hintsÃ128Õ(Gdk.Geometry geometry, Gdk.WindowHints geom_mask)ŒGdk.Window÷0œpublic void
+set_groupÃ128Õ(Gdk.Window leader)ŒGdk.Window÷0œpublic void
+set_iconÃ128Õ(GLib.Icon icon)ŒGdk.AppLaunchContext÷0œpublic void
+set_iconÃ128Õ(Gdk.Window icon_window, Gdk.Pixmap pixmap, Gdk.Bitmap mask)ŒGdk.Window÷0œpublic void
+set_icon_listÃ128Õ(GLib.List<Gdk.Pixbuf> pixbufs)ŒGdk.Window÷0œpublic void
+set_icon_nameÃ128Õ(string icon_name)ŒGdk.AppLaunchContext÷0œpublic void
+set_icon_nameÃ128Õ(string name)ŒGdk.Window÷0œpublic void
+set_keep_aboveÃ128Õ(bool setting)ŒGdk.Window÷0œpublic void
+set_keep_belowÃ128Õ(bool setting)ŒGdk.Window÷0œpublic void
+set_keyÃ128Õ(uint index_, uint keyval, Gdk.ModifierType modifiers)ŒGdk.Device÷0œpublic void
+set_line_attributesÃ128Õ(int line_width, Gdk.LineStyle line_style, Gdk.CapStyle cap_style, Gdk.JoinStyle join_style)ŒGdk.GC÷0œpublic void
+set_localeÃ128Õ()ŒGdk÷0œpublic unowned string
+set_modal_hintÃ128Õ(bool modal)ŒGdk.Window÷0œpublic void
+set_modeÃ128Õ(Gdk.InputMode mode)ŒGdk.Device÷0œpublic bool
+set_opacityÃ128Õ(double opacity)ŒGdk.Window÷0œpublic void
+set_override_colorÃ128Õ(Pango.RenderPart part, Gdk.Color color)ŒGdk.PangoRenderer÷0œpublic void
+set_override_redirectÃ128Õ(bool override_redirect)ŒGdk.Window÷0œpublic void
+set_pointer_hooksÃ128Õ(Gdk.PointerHooks new_hooks)ŒGdk÷0œpublic unowned
+set_pointer_hooksÃ128Õ(Gdk.DisplayPointerHooks new_hooks)ŒGdk.Display÷0œpublic unowned
+set_program_classÃ128Õ(string program_class)ŒGdk÷0œpublic void
+set_resolutionÃ128Õ(double dpi)ŒGdk.Screen÷0œpublic void
+set_rgb_bg_colorÃ128Õ(Gdk.Color color)ŒGdk.GC÷0œpublic void
+set_rgb_fg_colorÃ128Õ(Gdk.Color color)ŒGdk.GC÷0œpublic void
+set_roleÃ128Õ(string role)ŒGdk.Window÷0œpublic void
+set_screenÃ128Õ(Gdk.Screen screen)ŒGdk.AppLaunchContext÷0œpublic void
+set_screenÃ128Õ(Gdk.Screen screen)ŒGdk.Event÷0œpublic void
+set_show_eventsÃ128Õ(bool show_events)ŒGdk÷0œpublic void
+set_skip_pager_hintÃ128Õ(bool skips_pager)ŒGdk.Window÷0œpublic void
+set_skip_taskbar_hintÃ128Õ(bool skips_taskbar)ŒGdk.Window÷0œpublic void
+set_sm_client_idÃ128Õ(string sm_client_id)ŒGdk÷0œpublic void
+set_sourceÃ128Õ(Gdk.InputSource source)ŒGdk.Device÷0œpublic void
+set_startup_idÃ128Õ(string startup_id)ŒGdk.Window÷0œpublic void
+set_static_gravitiesÃ128Õ(bool use_static)ŒGdk.Window÷0œpublic bool
+set_stippleÃ128Õ(Gdk.Pixmap stipple)ŒGdk.GC÷0œpublic void
+set_stippleÃ128Õ(Pango.RenderPart part, Gdk.Bitmap stipple)ŒGdk.PangoRenderer÷0œpublic void
+set_subwindowÃ128Õ(Gdk.SubwindowMode mode)ŒGdk.GC÷0œpublic void
+set_tileÃ128Õ(Gdk.Pixmap tile)ŒGdk.GC÷0œpublic void
+set_timestampÃ128Õ(uint32 timestamp)ŒGdk.AppLaunchContext÷0œpublic void
+set_titleÃ128Õ(string title)ŒGdk.Window÷0œpublic void
+set_transient_forÃ128Õ(Gdk.Window parent)ŒGdk.Window÷0œpublic void
+set_ts_originÃ128Õ(int x, int y)ŒGdk.GC÷0œpublic void
+set_type_hintÃ128Õ(Gdk.WindowTypeHint hint)ŒGdk.Window÷0œpublic void
+set_urgency_hintÃ128Õ(bool urgent)ŒGdk.Window÷0œpublic void
+set_user_dataÃ128Õ(void* user_data)ŒGdk.Window÷0œpublic void
+set_valuesÃ128Õ(Gdk.GCValues values, Gdk.GCValuesMask values_mask)ŒGdk.GC÷0œpublic virtual void
+settingÃ8ŒGdk.Event÷0œGdk.EventSetting
+setting_getÃ128Õ(string name, GLib.Value value)ŒGdk÷0œpublic bool
+shape_combine_maskÃ128Õ(Gdk.Bitmap mask, int x, int y)ŒGdk.Window÷0œpublic void
+shape_combine_regionÃ128Õ(Gdk.Region shape_region, int offset_x, int offset_y)ŒGdk.Window÷0œpublic void
+showÃ128Õ()ŒGdk.Window÷0œpublic void
+show_unraisedÃ128Õ()ŒGdk.Window÷0œpublic void
+shrinkÃ128Õ(int dx, int dy)ŒGdk.Region÷0œpublic void
+sizeÃ8ŒGdk.Colormap÷0œint
+size_changedÃ128Õ()ŒGdk.Screen÷0œpublic virtual signal void
+sourceÃ8ŒGdk.Device÷0œGdk.InputSource
+source_windowÃ8ŒGdk.DragContext÷0œGdk.Window
+spans_intersect_foreachÃ128Õ(Gdk.Span[] spans, bool sorted, Gdk.SpanFunc function, void* data)ŒGdk.Region÷0œpublic void
+spawn_command_line_on_screenÃ128Õ(Gdk.Screen screen, string command_line)ŒGdk÷0œpublic bool
+spawn_on_screenÃ128Õ(Gdk.Screen screen, string? working_directory, [CCode (array_length = false)] string[] argv, [CCode (array_length = false)] string[]? envp, GLib.SpawnFlags flags, GLib.SpawnChildSetupFunc? child_setup, out int child_pid)ŒGdk÷0œpublic bool
+spawn_on_screen_with_pipesÃ128Õ(Gdk.Screen screen, string? working_directory, [CCode (array_length = false)] string[] argv, [CCode (array_length = false)] string[] envp, GLib.SpawnFlags flags, GLib.SpawnChildSetupFunc? child_setup, out int child_pid, out int standard_input, out int standard_output, out int standard_error)ŒGdk÷0œpublic bool
+start_timeÃ8ŒGdk.DragContext÷0œuint32
+stateÃ8ŒGdk.EventButton÷0œGdk.ModifierType
+stateÃ8ŒGdk.EventCrossing÷0œGdk.ModifierType
+stateÃ8ŒGdk.EventKey÷0œGdk.ModifierType
+stateÃ8ŒGdk.EventMotion÷0œGdk.ModifierType
+stateÃ8ŒGdk.EventProperty÷0œGdk.PropertyState
+stateÃ8ŒGdk.EventScroll÷0œGdk.ModifierType
+stateÃ8ŒGdk.EventVisibility÷0œGdk.VisibilityState
+stateÃ8ŒGdk.PointerWindowInfo÷0œuint32
+state_changedÃ128Õ()ŒGdk.Keymap÷0œpublic virtual signal void
+stickÃ128Õ()ŒGdk.Window÷0œpublic void
+stippleÃ8ŒGdk.GCValues÷0œGdk.Pixmap
+stippleÃ8ŒGdk.PangoAttrStipple÷0œGdk.Bitmap
+store_clipboardÃ128Õ(Gdk.Window clipboard_window, uint32 time_, Gdk.Atom[] targets)ŒGdk.Display÷0œpublic void
+strÃ8ŒGdk.EventKey÷0
+string_to_compound_textÃ128Õ(string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ŒGdk÷0œpublic int
+string_to_compound_text_for_displayÃ128Õ(Gdk.Display display, string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ŒGdk÷0œpublic int
+subtractÃ128Õ(Gdk.Region source2)ŒGdk.Region÷0œpublic void
+subwindowÃ8ŒGdk.EventCrossing÷0œGdk.Window
+subwindow_gcsÃ8ŒGdk.Screen÷0œGdk.GC
+subwindow_modeÃ8ŒGdk.GCValues÷0œGdk.SubwindowMode
+suggested_actionÃ8ŒGdk.DragContext÷0œGdk.DragAction
+supports_clipboard_persistenceÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_compositeÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_cursor_alphaÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_cursor_colorÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_input_shapesÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_selection_notificationÃ128Õ()ŒGdk.Display÷0œpublic bool
+supports_shapesÃ128Õ()ŒGdk.Display÷0œpublic bool
+syncÃ128Õ()ŒGdk.Display÷0œpublic void
+targetÃ8ŒGdk.EventSelection÷0œGdk.Atom
+targetsÃ8ŒGdk.DragContext÷0œGLib.List
+test_render_syncÃ128Õ(Gdk.Window window)ŒGdk÷0œpublic void
+test_simulate_buttonÃ128Õ(Gdk.Window window, int x, int y, uint button, Gdk.ModifierType modifiers, Gdk.EventType button_pressrelease)ŒGdk÷0œpublic bool
+test_simulate_keyÃ128Õ(Gdk.Window window, int x, int y, uint keyval, Gdk.ModifierType modifiers, Gdk.EventType key_pressrelease)ŒGdk÷0œpublic bool
+text_property_to_text_listÃ128Õ(Gdk.Atom encoding, int format, uchar[] text, int length, string list)ŒGdk÷0œpublic int
+text_property_to_text_list_for_displayÃ128Õ(Gdk.Display display, Gdk.Atom encoding, int format, uchar[] text, int length, string list)ŒGdk÷0œpublic int
+text_property_to_utf8_listÃ128Õ(Gdk.Atom encoding, int format, uchar[] text, int length, string list)ŒGdk÷0œpublic int
+text_property_to_utf8_list_for_displayÃ128Õ(Gdk.Display display, Gdk.Atom encoding, int format, uchar[] text, int length, string list)ŒGdk÷0œpublic int
+thaw_toplevel_updates_libgtk_onlyÃ128Õ()ŒGdk.Window÷0œpublic void
+thaw_updatesÃ128Õ()ŒGdk.Window÷0œpublic void
+threads_add_idleÃ128Õ(GLib.SourceFunc function)ŒGdk÷0
+threads_add_idle_fullÃ128Õ(int priority, owned GLib.SourceFunc function)ŒGdk÷0
+threads_add_timeoutÃ128Õ(uint interval, GLib.SourceFunc function)ŒGdk÷0
+threads_add_timeout_fullÃ128Õ(int priority, uint interval, owned GLib.SourceFunc function)ŒGdk÷0
+threads_add_timeout_secondsÃ128Õ(uint interval, GLib.SourceFunc function)ŒGdk÷0
+threads_add_timeout_seconds_fullÃ128Õ(int priority, uint interval, owned GLib.SourceFunc function)ŒGdk÷0
+threads_enterÃ128Õ()ŒGdk÷0œpublic void
+threads_initÃ128Õ()ŒGdk÷0œpublic void
+threads_leaveÃ128Õ()ŒGdk÷0œpublic void
+threads_set_lock_functionsÃ128Õ(GLib.Callback enter_fn, GLib.Callback leave_fn)ŒGdk÷0œpublic void
+tileÃ8ŒGdk.GCValues÷0œGdk.Pixmap
+timeÃ8ŒGdk.EventButton÷0œuint32
+timeÃ8ŒGdk.EventCrossing÷0œuint32
+timeÃ8ŒGdk.EventDND÷0œuint32
+timeÃ8ŒGdk.EventKey÷0œuint32
+timeÃ8ŒGdk.EventMotion÷0œuint32
+timeÃ8ŒGdk.EventOwnerChange÷0œuint32
+timeÃ8ŒGdk.EventProperty÷0œuint32
+timeÃ8ŒGdk.EventProximity÷0œuint32
+timeÃ8ŒGdk.EventScroll÷0œuint32
+timeÃ8ŒGdk.EventSelection÷0œuint32
+timeÃ8ŒGdk.KeyboardGrabInfo÷0œuint32
+timeÃ8ŒGdk.TimeCoord÷0œuint32
+titleÃ8ŒGdk.WindowAttr÷0
+to_drawableÃ128Õ(Gdk.Window window, Gdk.Drawable drawable, int src_x, int src_y, int dest_x, int dest_y, int width, int height)ŒGdk.WindowRedirect÷0œpublic void
+to_embedderÃ128Õ(double p0, double p1, void* p2, void* p3)ŒGdk.Window÷0œpublic virtual signal void
+to_stringÃ128Õ()ŒGdk.Color÷0
+toplevel_under_pointerÃ8ŒGdk.PointerWindowInfo÷0œGdk.Window
+toplevel_xÃ8ŒGdk.PointerWindowInfo÷0œdouble
+toplevel_yÃ8ŒGdk.PointerWindowInfo÷0œdouble
+translate_keyboard_stateÃ128Õ(uint hardware_keycode, Gdk.ModifierType state, int group, uint keyval, int effective_group, int level, Gdk.ModifierType consumed_modifiers)ŒGdk.Keymap÷0œpublic bool
+ts_x_originÃ8ŒGdk.GC÷0œint
+ts_x_originÃ8ŒGdk.GCValues÷0œint
+ts_y_originÃ8ŒGdk.GC÷0œint
+ts_y_originÃ8ŒGdk.GCValues÷0œint
+typeÃ8ŒGdk.Cursor÷0œGdk.CursorType
+typeÃ8ŒGdk.Event÷0œGdk.EventType
+typeÃ8ŒGdk.EventAny÷0œGdk.EventType
+typeÃ8ŒGdk.EventButton÷0œGdk.EventType
+typeÃ8ŒGdk.EventClient÷0œGdk.EventType
+typeÃ8ŒGdk.EventConfigure÷0œGdk.EventType
+typeÃ8ŒGdk.EventCrossing÷0œGdk.EventType
+typeÃ8ŒGdk.EventDND÷0œGdk.EventType
+typeÃ8ŒGdk.EventExpose÷0œGdk.EventType
+typeÃ8ŒGdk.EventFocus÷0œGdk.EventType
+typeÃ8ŒGdk.EventGrabBroken÷0œGdk.EventType
+typeÃ8ŒGdk.EventKey÷0œGdk.EventType
+typeÃ8ŒGdk.EventMotion÷0œGdk.EventType
+typeÃ8ŒGdk.EventNoExpose÷0œGdk.EventType
+typeÃ8ŒGdk.EventOwnerChange÷0œGdk.EventType
+typeÃ8ŒGdk.EventProperty÷0œGdk.EventType
+typeÃ8ŒGdk.EventProximity÷0œGdk.EventType
+typeÃ8ŒGdk.EventScroll÷0œGdk.EventType
+typeÃ8ŒGdk.EventSelection÷0œGdk.EventType
+typeÃ8ŒGdk.EventSetting÷0œGdk.EventType
+typeÃ8ŒGdk.EventVisibility÷0œGdk.EventType
+typeÃ8ŒGdk.EventWindowState÷0œGdk.EventType
+typeÃ8ŒGdk.Font÷0œGdk.FontType
+typeÃ8ŒGdk.Image÷0œGdk.ImageType
+typeÃ8ŒGdk.Visual÷0œGdk.VisualType
+type_hintÃ8ŒGdk.WindowAttr÷0œGdk.WindowTypeHint
+unfullscreenÃ128Õ()ŒGdk.Window÷0œpublic void
+unicode_to_keyvalÃ128Õ(uint32 wc)ŒGdk÷0
+unionÃ128Õ(Gdk.Rectangle src2, out Gdk.Rectangle dest)ŒGdk.Rectangle÷0œpublic void
+unionÃ128Õ(Gdk.Region source2)ŒGdk.Region÷0œpublic void
+union_with_rectÃ128Õ(Gdk.Rectangle rect)ŒGdk.Region÷0œpublic void
+unmaximizeÃ128Õ()ŒGdk.Window÷0œpublic void
+unstickÃ128Õ()ŒGdk.Window÷0œpublic void
+useÃ8ŒGdk.DeviceAxis÷0œGdk.AxisUse
+utf8_to_compound_textÃ128Õ(string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ŒGdk÷0œpublic bool
+utf8_to_compound_text_for_displayÃ128Õ(Gdk.Display display, string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ŒGdk÷0œpublic bool
+utf8_to_string_targetÃ128Õ(string str)ŒGdk÷0œpublic unowned string
+visibilityÃ8ŒGdk.Event÷0œGdk.EventVisibility
+visualÃ8ŒGdk.Colormap÷0œGdk.Visual
+visualÃ8ŒGdk.Image÷0œGdk.Visual
+visualÃ8ŒGdk.WindowAttr÷0œGdk.Visual
+warp_pointerÃ128Õ(Gdk.Screen screen, int x, int y)ŒGdk.Display÷0œpublic void
+wclassÃ8ŒGdk.WindowAttr÷0œGdk.WindowClass
+widthÃ8ŒGdk.EventConfigure÷0œint
+widthÃ8ŒGdk.Image÷0œint
+widthÃ8ŒGdk.Rectangle÷0œint
+widthÃ128Õ()ŒGdk.Screen÷0œpublic int
+widthÃ8ŒGdk.Span÷0œint
+widthÃ8ŒGdk.WindowAttr÷0œint
+width_incÃ8ŒGdk.Geometry÷0œint
+width_mmÃ128Õ()ŒGdk.Screen÷0œpublic int
+win_gravityÃ8ŒGdk.Geometry÷0œGdk.Gravity
+windowÃ8ŒGdk.EventAny÷0œGdk.Window
+windowÃ8ŒGdk.EventButton÷0œGdk.Window
+windowÃ8ŒGdk.EventClient÷0œGdk.Window
+windowÃ8ŒGdk.EventConfigure÷0œGdk.Window
+windowÃ8ŒGdk.EventCrossing÷0œGdk.Window
+windowÃ8ŒGdk.EventDND÷0œGdk.Window
+windowÃ8ŒGdk.EventExpose÷0œGdk.Window
+windowÃ8ŒGdk.EventFocus÷0œGdk.Window
+windowÃ8ŒGdk.EventGrabBroken÷0œGdk.Window
+windowÃ8ŒGdk.EventKey÷0œGdk.Window
+windowÃ8ŒGdk.EventMotion÷0œGdk.Window
+windowÃ8ŒGdk.EventNoExpose÷0œGdk.Window
+windowÃ8ŒGdk.EventOwnerChange÷0œGdk.Window
+windowÃ8ŒGdk.EventProperty÷0œGdk.Window
+windowÃ8ŒGdk.EventProximity÷0œGdk.Window
+windowÃ8ŒGdk.EventScroll÷0œGdk.Window
+windowÃ8ŒGdk.EventSelection÷0œGdk.Window
+windowÃ8ŒGdk.EventSetting÷0œGdk.Window
+windowÃ8ŒGdk.EventVisibility÷0œGdk.Window
+windowÃ8ŒGdk.EventWindowState÷0œGdk.Window
+windowÃ8ŒGdk.KeyboardGrabInfo÷0œGdk.Window
+window_at_pointerÃ8ŒGdk.DisplayPointerHooks÷0œGLib.Callback
+window_at_pointerÃ8ŒGdk.PointerHooks÷0œGLib.Callback
+window_get_pointerÃ8ŒGdk.DisplayPointerHooks÷0œGLib.Callback
+window_stateÃ8ŒGdk.Event÷0œGdk.EventWindowState
+window_typeÃ8ŒGdk.WindowAttr÷0œGdk.WindowType
+window_under_pointerÃ8ŒGdk.PointerWindowInfo÷0œGdk.Window
+windowing_dataÃ8ŒGdk.Colormap÷0œvoid
+windowing_dataÃ8ŒGdk.DragContext÷0œvoid
+windowing_dataÃ8ŒGdk.Image÷0œvoid
+withdrawÃ128Õ()ŒGdk.Window÷0œpublic void
+wmclass_classÃ8ŒGdk.WindowAttr÷0
+wmclass_nameÃ8ŒGdk.WindowAttr÷0
+xÃ8ŒGdk.EventButton÷0œdouble
+xÃ8ŒGdk.EventConfigure÷0œint
+xÃ8ŒGdk.EventCrossing÷0œdouble
+xÃ8ŒGdk.EventMotion÷0œdouble
+xÃ8ŒGdk.EventScroll÷0œdouble
+xÃ8ŒGdk.Point÷0œint
+xÃ8ŒGdk.Rectangle÷0œint
+xÃ8ŒGdk.Span÷0œint
+xÃ8ŒGdk.WindowAttr÷0œint
+x1Ã8ŒGdk.Segment÷0œint
+x11Ã8ŒGdk.Trapezoid÷0œdouble
+x12Ã8ŒGdk.Trapezoid÷0œdouble
+x2Ã8ŒGdk.Segment÷0œint
+x21Ã8ŒGdk.Trapezoid÷0œdouble
+x22Ã8ŒGdk.Trapezoid÷0œdouble
+x_rootÃ8ŒGdk.EventButton÷0œdouble
+x_rootÃ8ŒGdk.EventCrossing÷0œdouble
+x_rootÃ8ŒGdk.EventDND÷0œshort
+x_rootÃ8ŒGdk.EventMotion÷0œdouble
+x_rootÃ8ŒGdk.EventScroll÷0œdouble
+xorÃ128Õ(Gdk.Region source2)ŒGdk.Region÷0œpublic void
+yÃ8ŒGdk.EventButton÷0œdouble
+yÃ8ŒGdk.EventConfigure÷0œint
+yÃ8ŒGdk.EventCrossing÷0œdouble
+yÃ8ŒGdk.EventMotion÷0œdouble
+yÃ8ŒGdk.EventScroll÷0œdouble
+yÃ8ŒGdk.Point÷0œint
+yÃ8ŒGdk.Rectangle÷0œint
+yÃ8ŒGdk.Span÷0œint
+yÃ8ŒGdk.WindowAttr÷0œint
+y1Ã8ŒGdk.Segment÷0œint
+y1Ã8ŒGdk.Trapezoid÷0œdouble
+y2Ã8ŒGdk.Segment÷0œint
+y2Ã8ŒGdk.Trapezoid÷0œdouble
+y_rootÃ8ŒGdk.EventButton÷0œdouble
+y_rootÃ8ŒGdk.EventCrossing÷0œdouble
+y_rootÃ8ŒGdk.EventDND÷0œshort
+y_rootÃ8ŒGdk.EventMotion÷0œdouble
+y_rootÃ8ŒGdk.EventScroll÷0œdouble

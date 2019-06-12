@@ -1,0 +1,182 @@
+# format=tagmanager
+@interfaceÃ8ŒFTDI.Context÷0œint
+AÃ4ŒFTDI.Interface÷0
+AMÃ4ŒFTDI.ChipType÷0
+ANYÃ4ŒFTDI.Interface÷0
+BÃ4ŒFTDI.Interface÷0
+BITBANGÃ4ŒFTDI.MPSSEMode÷0
+BITMODEÃ8ŒFTDI.ShiftingCommands÷0œint
+BITS_7Ã4ŒFTDI.BitsType÷0
+BITS_8Ã4ŒFTDI.BitsType÷0
+BIT_1Ã4ŒFTDI.StopBitsType÷0
+BIT_15Ã4ŒFTDI.StopBitsType÷0
+BIT_2Ã4ŒFTDI.StopBitsType÷0
+BMÃ4ŒFTDI.ChipType÷0
+BM_type_chipÃ8ŒFTDI.EEPROM÷0œint
+BitsTypeÃ2ŒFTDI÷0
+BreakTypeÃ2ŒFTDI÷0
+CÃ4ŒFTDI.ChipType÷0
+CBUSÃ4ŒFTDI.MPSSEMode÷0
+ChipTypeÃ2ŒFTDI÷0
+ContextÃ1ŒFTDI÷0
+ContextÃ128Õ()ŒFTDI.Context÷0
+DEFAULT_EEPROM_SIZEÃ8ŒFTDI÷0œint
+DISABLE_FLOW_CTRLÃ8ŒFTDI÷0œint
+DO_READÃ8ŒFTDI.ShiftingCommands÷0œint
+DO_WRITEÃ8ŒFTDI.ShiftingCommands÷0œint
+DTR_DSR_HSÃ8ŒFTDI÷0œint
+DeviceListÃ2048ŒFTDI÷0
+EEPROMÃ2048ŒFTDI÷0
+EVENÃ4ŒFTDI.ParityType÷0
+FTDIÃ256÷0
+GET_BITS_HIGHÃ8ŒFTDI.MPSSECommands÷0œint
+GET_BITS_LOWÃ8ŒFTDI.MPSSECommands÷0œint
+HostEmultationModeCommandsÃ256÷0
+InterfaceÃ2ŒFTDI÷0
+LOOPBACK_ENDÃ8ŒFTDI.MPSSECommands÷0œint
+LOOPBACK_STARTÃ8ŒFTDI.MPSSECommands÷0œint
+LSBÃ8ŒFTDI.ShiftingCommands÷0œint
+MARKÃ4ŒFTDI.ParityType÷0
+MCUÃ4ŒFTDI.MPSSEMode÷0
+MODEM_CTRLÃ8ŒFTDI÷0œint
+MPSSEÃ4ŒFTDI.MPSSEMode÷0
+MPSSECommandsÃ256÷0
+MPSSEModeÃ2ŒFTDI÷0
+NONEÃ4ŒFTDI.ParityType÷0
+ODDÃ4ŒFTDI.ParityType÷0
+OFFÃ4ŒFTDI.BreakType÷0
+ONÃ4ŒFTDI.BreakType÷0
+OPTOÃ4ŒFTDI.MPSSEMode÷0
+ParityTypeÃ2ŒFTDI÷0
+RÃ4ŒFTDI.ChipType÷0
+READ_EXTENDEDÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+READ_NEGÃ8ŒFTDI.ShiftingCommands÷0œint
+READ_SHORTÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+RESETÃ8ŒFTDI÷0œint
+RESETÃ4ŒFTDI.MPSSEMode÷0
+RESET_PURGE_RXÃ8ŒFTDI÷0œint
+RESET_PURGE_TXÃ8ŒFTDI÷0œint
+RESET_REQUESTÃ8ŒFTDI÷0œint
+RESET_REQUEST_TYPEÃ8ŒFTDI÷0œint
+RESET_SIOÃ8ŒFTDI÷0œint
+RTS_CTS_HSÃ8ŒFTDI÷0œint
+SEND_IMMEDIATEÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+SEND_IMMEDIATEÃ8ŒFTDI.MPSSECommands÷0œint
+SET_BAUDRATE_REQUESTÃ8ŒFTDI÷0œint
+SET_BAUDRATE_REQUEST_TYPEÃ8ŒFTDI÷0œint
+SET_BAUD_RATEÃ8ŒFTDI÷0œint
+SET_BITS_HIGHÃ8ŒFTDI.MPSSECommands÷0œint
+SET_BITS_LOWÃ8ŒFTDI.MPSSECommands÷0œint
+SET_DATAÃ8ŒFTDI÷0œint
+SET_DATA_REQUESTÃ8ŒFTDI÷0œint
+SET_DATA_REQUEST_TYPEÃ8ŒFTDI÷0œint
+SET_DTR_HIGHÃ8ŒFTDI÷0œint
+SET_DTR_LOWÃ8ŒFTDI÷0œint
+SET_DTR_MASKÃ8ŒFTDI÷0œint
+SET_FLOW_CTRLÃ8ŒFTDI÷0œint
+SET_FLOW_CTRL_REQUESTÃ8ŒFTDI÷0œint
+SET_FLOW_CTRL_REQUEST_TYPEÃ8ŒFTDI÷0œint
+SET_MODEM_CTRL_REQUESTÃ8ŒFTDI÷0œint
+SET_MODEM_CTRL_REQUEST_TYPEÃ8ŒFTDI÷0œint
+SET_RTS_HIGHÃ8ŒFTDI÷0œint
+SET_RTS_LOWÃ8ŒFTDI÷0œint
+SET_RTS_MASKÃ8ŒFTDI÷0œint
+SPACEÃ4ŒFTDI.ParityType÷0
+SYNCBBÃ4ŒFTDI.MPSSEMode÷0
+ShiftingCommandsÃ256÷0
+StopBitsTypeÃ2ŒFTDI÷0
+TCK_DIVISORÃ8ŒFTDI.MPSSECommands÷0œint
+URB_USERCONTEXT_COOKIEÃ8ŒFTDI÷0œint
+WAIT_ON_HIGHÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+WAIT_ON_HIGHÃ8ŒFTDI.MPSSECommands÷0œint
+WAIT_ON_LOWÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+WAIT_ON_LOWÃ8ŒFTDI.MPSSECommands÷0œint
+WRITE_EXTENDEDÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+WRITE_NEGÃ8ŒFTDI.ShiftingCommands÷0œint
+WRITE_SHORTÃ8ŒFTDI.HostEmultationModeCommands÷0œint
+WRITE_TMSÃ8ŒFTDI.ShiftingCommands÷0œint
+XON_XOFF_HSÃ8ŒFTDI÷0œint
+async_completeÃ128Õ(int wait_for_more)ŒFTDI.Context÷0œpublic void
+async_usb_bufferÃ8ŒFTDI.Context÷0œchar
+baudrateÃ8ŒFTDI.Context÷0œint
+bitbang_enabledÃ8ŒFTDI.Context÷0œuchar
+bitbang_modeÃ8ŒFTDI.Context÷0œuchar
+buildÃ128Õ([CCode (array_length = false)] uchar[] output)ŒFTDI.EEPROM÷0œpublic int
+change_usb_versionÃ8ŒFTDI.EEPROM÷0œint
+decodeÃ128Õ(uchar[] buffer)ŒFTDI.EEPROM÷0œpublic int
+deinitÃ128Õ()ŒFTDI.Context÷0œpublic void
+devÃ8ŒFTDI.DeviceList÷0œUSB.Device
+disable_bitbangÃ128Õ()ŒFTDI.Context÷0œpublic int
+div_valueÃ128Õ(int rate)ŒFTDI÷0œpublic int
+eeprom_setsizeÃ128Õ(EEPROM eeprom, int size)ŒFTDI.Context÷0œpublic void
+eeprom_sizeÃ8ŒFTDI.Context÷0œint
+enable_bitbangÃ128Õ(uchar bitmask)ŒFTDI.Context÷0œpublic int
+erase_eepromÃ128Õ()ŒFTDI.Context÷0œpublic int
+error_strÃ8ŒFTDI.Context÷0œunowned
+get_error_stringÃ128Õ()ŒFTDI.Context÷0œpublic unowned string
+get_latency_timerÃ128Õ(out uchar latency)ŒFTDI.Context÷0œpublic int
+in_epÃ8ŒFTDI.Context÷0œint
+in_is_isochronousÃ8ŒFTDI.EEPROM÷0œint
+indexÃ8ŒFTDI.Context÷0œint
+initÃ128Õ()ŒFTDI.Context÷0œpublic int
+initdefaultsÃ128Õ()ŒFTDI.EEPROM÷0œpublic void
+manufacturerÃ8ŒFTDI.EEPROM÷0œunowned
+max_powerÃ8ŒFTDI.EEPROM÷0œint
+nextÃ8ŒFTDI.DeviceList÷0œDeviceList
+out_epÃ8ŒFTDI.Context÷0œint
+out_is_isochronousÃ8ŒFTDI.EEPROM÷0œint
+poll_modem_statusÃ128Õ(out ushort status)ŒFTDI.Context÷0œpublic int
+productÃ8ŒFTDI.EEPROM÷0œunowned
+product_idÃ8ŒFTDI.EEPROM÷0œint
+read_chipidÃ128Õ(out uint chipid)ŒFTDI.Context÷0œpublic int
+read_dataÃ128Õ(uchar[] buf)ŒFTDI.Context÷0œpublic int
+read_data_get_chunksizeÃ128Õ(out int chunksize)ŒFTDI.Context÷0œpublic int
+read_data_set_chunksizeÃ128Õ(int chunksize)ŒFTDI.Context÷0œpublic int
+read_eepromÃ128Õ([CCode (array_length = false)] uchar[] eeprom)ŒFTDI.Context÷0œpublic int
+read_eeprom_getsizeÃ128Õ(uchar[] eeprom)ŒFTDI.Context÷0œpublic int
+read_pinsÃ128Õ(out uchar pins)ŒFTDI.Context÷0œpublic int
+readbufferÃ8ŒFTDI.Context÷0œuchar
+readbuffer_chunksizeÃ8ŒFTDI.Context÷0
+readbuffer_offsetÃ8ŒFTDI.Context÷0
+readbuffer_remainingÃ8ŒFTDI.Context÷0
+remote_wakeupÃ8ŒFTDI.EEPROM÷0œint
+self_poweredÃ8ŒFTDI.EEPROM÷0œint
+serialÃ8ŒFTDI.EEPROM÷0œunowned
+set_baudrateÃ128Õ(int baudrate)ŒFTDI.Context÷0œpublic int
+set_bitmodeÃ128Õ(uchar bitmask, uchar mode)ŒFTDI.Context÷0œpublic int
+set_error_charÃ128Õ(uchar errorch, uchar enable)ŒFTDI.Context÷0œpublic int
+set_event_charÃ128Õ(uchar eventch, uchar enable)ŒFTDI.Context÷0œpublic int
+set_interfaceÃ128Õ(Interface iface)ŒFTDI.Context÷0œpublic int
+set_latency_timerÃ128Õ(uchar latency)ŒFTDI.Context÷0œpublic int
+set_line_propertyÃ128Õ(BitsType bits, StopBitsType sbit, ParityType parity)ŒFTDI.Context÷0œpublic int
+set_line_property2Ã128Õ(BitsType bits, StopBitsType sbit, ParityType parity, BreakType break_type)ŒFTDI.Context÷0œpublic int
+set_usbdevÃ128Õ(USB.DeviceHandle usbdev)ŒFTDI.Context÷0œpublic void
+setdtrÃ128Õ(int state)ŒFTDI.Context÷0œpublic int
+setdtr_rtsÃ128Õ(int dtr, int rts)ŒFTDI.Context÷0œpublic int
+setflowctrlÃ128Õ(int flowctrl)ŒFTDI.Context÷0œpublic int
+setrtsÃ128Õ(int state)ŒFTDI.Context÷0œpublic int
+sizeÃ8ŒFTDI.EEPROM÷0œint
+suspend_pull_downsÃ8ŒFTDI.EEPROM÷0œint
+typeÃ8ŒFTDI.Context÷0œChipType
+usb_closeÃ128Õ()ŒFTDI.Context÷0œpublic int
+usb_devÃ8ŒFTDI.Context÷0œUSB.DeviceHandle
+usb_find_allÃ128Õ(out DeviceList devlist, int vendor, int product)ŒFTDI.Context÷0œpublic int
+usb_get_stringsÃ128Õ(USB.Device usbdev, [CCode (array_length = false)] char[] manufacturer, int manufacturer_len, [CCode (array_length = false)] char[] description, int description_len, [CCode (array_length = false)] char[] serial, int serial_len)ŒFTDI.Context÷0œpublic int
+usb_openÃ128Õ(int vendor, int product)ŒFTDI.Context÷0œpublic int
+usb_open_descÃ128Õ(int vendor, int product, string description, string serial)ŒFTDI.Context÷0œpublic int
+usb_open_devÃ128Õ(USB.Device usbdev)ŒFTDI.Context÷0œpublic int
+usb_purge_buffersÃ128Õ()ŒFTDI.Context÷0œpublic int
+usb_purge_rx_buffersÃ128Õ()ŒFTDI.Context÷0œpublic int
+usb_purge_tx_buffersÃ128Õ()ŒFTDI.Context÷0œpublic int
+usb_read_timeoutÃ8ŒFTDI.Context÷0œint
+usb_resetÃ128Õ()ŒFTDI.Context÷0œpublic int
+usb_versionÃ8ŒFTDI.EEPROM÷0œint
+usb_write_timeoutÃ8ŒFTDI.Context÷0œint
+use_serialÃ8ŒFTDI.EEPROM÷0œint
+vendor_idÃ8ŒFTDI.EEPROM÷0œint
+write_dataÃ128Õ(uchar[] buf)ŒFTDI.Context÷0œpublic int
+write_data_asyncÃ128Õ(uchar[] buf)ŒFTDI.Context÷0œpublic int
+write_data_get_chunksizeÃ128Õ(out int chunksize)ŒFTDI.Context÷0œpublic int
+write_data_set_chunksizeÃ128Õ(int chunksize)ŒFTDI.Context÷0œpublic int
+write_eepromÃ128Õ([CCode (array_length = false)] uchar[] eeprom)ŒFTDI.Context÷0œpublic int
+writebuffer_chunksizeÃ8ŒFTDI.Context÷0

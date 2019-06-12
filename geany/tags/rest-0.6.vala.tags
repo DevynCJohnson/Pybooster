@@ -1,0 +1,122 @@
+# format=tagmanager
+CANCELLEDÃ4ŒRest.ProxyError÷0
+CONNECTIONÃ4ŒRest.ProxyError÷0
+FAILEDÃ4ŒRest.ProxyCallError÷0
+FAILEDÃ4ŒRest.ProxyError÷0
+HMAC_SHA1Ã4ŒRest.OAuthSignatureMethod÷0
+HTTP_BAD_GATEWAYÃ4ŒRest.ProxyError÷0
+HTTP_BAD_REQUESTÃ4ŒRest.ProxyError÷0
+HTTP_CONFLICTÃ4ŒRest.ProxyError÷0
+HTTP_EXPECTATION_FAILEDÃ4ŒRest.ProxyError÷0
+HTTP_FORBIDDENÃ4ŒRest.ProxyError÷0
+HTTP_FOUNDÃ4ŒRest.ProxyError÷0
+HTTP_FOUROHTWOÃ4ŒRest.ProxyError÷0
+HTTP_GATEWAY_TIMEOUTÃ4ŒRest.ProxyError÷0
+HTTP_GONEÃ4ŒRest.ProxyError÷0
+HTTP_HTTP_VERSION_NOT_SUPPORTEDÃ4ŒRest.ProxyError÷0
+HTTP_INTERNAL_SERVER_ERRORÃ4ŒRest.ProxyError÷0
+HTTP_LENGTH_REQUIREDÃ4ŒRest.ProxyError÷0
+HTTP_METHOD_NOT_ALLOWEDÃ4ŒRest.ProxyError÷0
+HTTP_MOVED_PERMANENTLYÃ4ŒRest.ProxyError÷0
+HTTP_MULTIPLE_CHOICESÃ4ŒRest.ProxyError÷0
+HTTP_NOT_ACCEPTABLEÃ4ŒRest.ProxyError÷0
+HTTP_NOT_FOUNDÃ4ŒRest.ProxyError÷0
+HTTP_NOT_IMPLEMENTEDÃ4ŒRest.ProxyError÷0
+HTTP_NOT_MODIFIEDÃ4ŒRest.ProxyError÷0
+HTTP_PRECONDITION_FAILEDÃ4ŒRest.ProxyError÷0
+HTTP_PROXY_AUTHENTICATION_REQUIREDÃ4ŒRest.ProxyError÷0
+HTTP_REQUESTED_RANGE_NOT_SATISFIABLEÃ4ŒRest.ProxyError÷0
+HTTP_REQUEST_ENTITY_TOO_LARGEÃ4ŒRest.ProxyError÷0
+HTTP_REQUEST_TIMEOUTÃ4ŒRest.ProxyError÷0
+HTTP_REQUEST_URI_TOO_LONGÃ4ŒRest.ProxyError÷0
+HTTP_SEE_OTHERÃ4ŒRest.ProxyError÷0
+HTTP_SERVICE_UNAVAILABLEÃ4ŒRest.ProxyError÷0
+HTTP_TEMPORARY_REDIRECTÃ4ŒRest.ProxyError÷0
+HTTP_THREEOHSIXÃ4ŒRest.ProxyError÷0
+HTTP_UNAUTHORIZEDÃ4ŒRest.ProxyError÷0
+HTTP_UNSUPPORTED_MEDIA_TYPEÃ4ŒRest.ProxyError÷0
+HTTP_USE_PROXYÃ4ŒRest.ProxyError÷0
+IOÃ4ŒRest.ProxyError÷0
+OAuthProxyÃ1ŒRest÷0
+OAuthProxyÃ128Õ(string consumer_key, string consumer_secret, string url_format, bool binding_required)ŒRest.OAuthProxy÷0
+OAuthProxy.with_tokenÃ128Õ(string consumer_key, string consumer_secret, string token, string token_secret, string url_format, bool binding_required)ŒRest.OAuthProxy÷0
+OAuthProxyAuthCallbackÃ128Õ(Rest.OAuthProxy proxy, GLib.Error? error, GLib.Object? weak_object)ŒRest÷0œpublic delegate void
+OAuthProxyCallÃ1ŒRest÷0
+OAuthProxyCallÃ128Õ()ŒRest.OAuthProxyCall÷0
+OAuthSignatureMethodÃ2ŒRest÷0
+PLAINTEXTÃ4ŒRest.OAuthSignatureMethod÷0
+ProxyÃ1ŒRest÷0
+ProxyÃ128Õ(string url_format, bool binding_required)ŒRest.Proxy÷0
+ProxyCallÃ1ŒRest÷0
+ProxyCallÃ128Õ()ŒRest.ProxyCall÷0
+ProxyCallAsyncCallbackÃ128Õ(Rest.ProxyCall call, GLib.Error? error, GLib.Object? weak_object)ŒRest÷0œpublic delegate void
+ProxyCallErrorÃ2ŒRest÷0
+ProxyErrorÃ2ŒRest÷0
+RESOLUTIONÃ4ŒRest.ProxyError÷0
+RestÃ256÷0
+SSLÃ4ŒRest.ProxyError÷0
+XmlNodeÃ1ŒRest÷0
+XmlParserÃ1ŒRest÷0
+XmlParserÃ128Õ()ŒRest.XmlParser÷0
+access_tokenÃ128Õ(string function, string verifier)ŒRest.OAuthProxy÷0œpublic bool
+access_token_asyncÃ128Õ(string function, string verifier, [CCode (delegate_target_pos = 4.9)] Rest.OAuthProxyAuthCallback callback, GLib.Object? weak_object)ŒRest.OAuthProxy÷0œpublic bool
+add_headerÃ128Õ(string header, string value)ŒRest.ProxyCall÷0œpublic void
+add_headersÃ128Õ(...)ŒRest.ProxyCall÷0œpublic void
+add_headers_from_valistÃ128Õ(void* headers)ŒRest.ProxyCall÷0œpublic void
+add_paramÃ128Õ(string param, string value)ŒRest.ProxyCall÷0œpublic void
+add_paramsÃ128Õ(...)ŒRest.ProxyCall÷0œpublic void
+add_params_from_valistÃ128Õ(void* @params)ŒRest.ProxyCall÷0œpublic void
+attrsÃ8ŒRest.XmlNode÷0œGLib.HashTable
+auth_stepÃ128Õ(string function)ŒRest.OAuthProxy÷0œpublic bool
+auth_step_asyncÃ128Õ(string function, [CCode (delegate_target_pos = 3.9)] Rest.OAuthProxyAuthCallback callback, GLib.Object? weak_object)ŒRest.OAuthProxy÷0œpublic bool
+bindÃ128Õ(...)ŒRest.Proxy÷0œpublic bool
+bind_valistÃ128Õ(void* @params)ŒRest.Proxy÷0œpublic virtual bool
+binding_requiredÃ8ŒRest.Proxy÷0œbool
+cancelÃ128Õ()ŒRest.ProxyCall÷0œpublic bool
+childrenÃ8ŒRest.XmlNode÷0œGLib.HashTable
+consumer_keyÃ8ŒRest.OAuthProxy÷0
+consumer_secretÃ8ŒRest.OAuthProxy÷0
+contentÃ8ŒRest.XmlNode÷0
+error_quarkÃ128Õ()ŒRest.Proxy÷0œpublic GLib.Quark
+error_quarkÃ128Õ()ŒRest.ProxyCall÷0œpublic GLib.Quark
+findÃ128Õ(string tag)ŒRest.XmlNode÷0œpublic unowned
+get_attrÃ128Õ(string attr_name)ŒRest.XmlNode÷0œpublic unowned string
+get_methodÃ128Õ()ŒRest.ProxyCall÷0œpublic unowned string
+get_paramsÃ128Õ()ŒRest.ProxyCall÷0œpublic GLib.HashTable
+get_payloadÃ128Õ()ŒRest.ProxyCall÷0œpublic unowned string
+get_payload_lengthÃ128Õ()ŒRest.ProxyCall÷0œpublic int64
+get_response_headersÃ128Õ()ŒRest.ProxyCall÷0œpublic unowned
+get_status_codeÃ128Õ()ŒRest.ProxyCall÷0
+get_status_messageÃ128Õ()ŒRest.ProxyCall÷0œpublic unowned string
+get_tokenÃ128Õ()ŒRest.OAuthProxy÷0œpublic unowned string
+get_token_secretÃ128Õ()ŒRest.OAuthProxy÷0œpublic unowned string
+get_user_agentÃ128Õ()ŒRest.Proxy÷0œpublic unowned string
+is_oauth10aÃ128Õ()ŒRest.OAuthProxy÷0œpublic bool
+lookup_headerÃ128Õ(string header)ŒRest.ProxyCall÷0œpublic unowned string
+lookup_paramÃ128Õ(string param)ŒRest.ProxyCall÷0œpublic unowned string
+lookup_response_headerÃ128Õ(string header)ŒRest.ProxyCall÷0œpublic unowned string
+nameÃ8ŒRest.XmlNode÷0
+new_callÃ128Õ()ŒRest.Proxy÷0œpublic virtual Rest.ProxyCall
+nextÃ8ŒRest.XmlNode÷0œRest.XmlNode
+parse_from_dataÃ128Õ(string data, int64 len)ŒRest.XmlParser÷0œpublic unowned
+prepareÃ128Õ()ŒRest.ProxyCall÷0œpublic virtual bool
+proxyÃ8ŒRest.ProxyCall÷0œRest.Proxy
+ref_countÃ8ŒRest.XmlNode÷0œint
+remove_headerÃ128Õ(string header)ŒRest.ProxyCall÷0œpublic void
+remove_paramÃ128Õ(string param)ŒRest.ProxyCall÷0œpublic void
+request_tokenÃ128Õ(string function, string callback_uri)ŒRest.OAuthProxy÷0œpublic bool
+request_token_asyncÃ128Õ(string function, string callback_uri, [CCode (delegate_target_pos = 4.9)] Rest.OAuthProxyAuthCallback callback, GLib.Object? weak_object)ŒRest.OAuthProxy÷0œpublic bool
+runÃ128Õ(out unowned GLib.MainLoop loop)ŒRest.ProxyCall÷0œpublic bool
+run_asyncÃ128Õ([CCode (delegate_target_pos = 2.9)] Rest.ProxyCallAsyncCallback callback, GLib.Object? weak_object)ŒRest.ProxyCall÷0œpublic bool
+set_functionÃ128Õ(string function)ŒRest.ProxyCall÷0œpublic void
+set_methodÃ128Õ(string method)ŒRest.ProxyCall÷0œpublic void
+set_tokenÃ128Õ(string token)ŒRest.OAuthProxy÷0œpublic void
+set_token_secretÃ128Õ(string token_secret)ŒRest.OAuthProxy÷0œpublic void
+set_user_agentÃ128Õ(string user_agent)ŒRest.Proxy÷0œpublic void
+simple_runÃ128Õ(string payload, int64 len)ŒRest.Proxy÷0œpublic bool
+simple_run_valistÃ128Õ(string payload, int64 len, void* @params)ŒRest.Proxy÷0œpublic virtual bool
+syncÃ128Õ()ŒRest.ProxyCall÷0œpublic bool
+tokenÃ8ŒRest.OAuthProxy÷0
+token_secretÃ8ŒRest.OAuthProxy÷0
+url_formatÃ8ŒRest.Proxy÷0
+user_agentÃ8ŒRest.Proxy÷0

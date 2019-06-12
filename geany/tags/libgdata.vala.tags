@@ -1,0 +1,1333 @@
+# format=tagmanager
+ACCESS_ROLE_NONEÌ8ÎGDataÖ0
+ACCESS_SCOPE_DEFAULTÌ8ÎGDataÖ0
+ACCESS_SCOPE_DOMAINÌ8ÎGDataÖ0
+ACCESS_SCOPE_USERÌ8ÎGDataÖ0
+ACCOUNT_DELETEDÌ4ÎGData.AuthenticationErrorÖ0
+ACCOUNT_DISABLEDÌ4ÎGData.AuthenticationErrorÖ0
+ALLÌ4ÎGData.YouTubeUploaderÖ0
+ALLOWEDÌ4ÎGData.YouTubePermissionÖ0
+ALL_TIMEÌ4ÎGData.YouTubeAgeÖ0
+API_QUOTA_EXCEEDEDÌ4ÎGData.YouTubeServiceErrorÖ0
+ASCENDINGÌ4ÎGData.YouTubeSortOrderÖ0
+AUDIOÌ4ÎGData.MediaMediumÖ0
+AUTHENTICATIONÌ4ÎGData.OperationTypeÖ0
+AUTHENTICATION_REQUIREDÌ4ÎGData.ServiceErrorÖ0
+AccessHandlerÌ32ÎGDataÖ0
+AccessRuleÌ1ÎGDataÖ0
+AccessRuleÌ128Í(string id)ÎGData.AccessRuleÖ0
+AuthenticationErrorÌ2ÎGDataÖ0
+AuthorÌ1ÎGDataÖ0
+AuthorÌ128Í(string name, string uri, string email_address)ÎGData.AuthorÖ0
+BAD_AUTHENTICATIONÌ4ÎGData.AuthenticationErrorÖ0
+BAD_QUERY_PARAMETERÌ4ÎGData.ServiceErrorÖ0
+CALENDAR_ACCESS_ROLE_EDITORÌ8ÎGDataÖ0
+CALENDAR_ACCESS_ROLE_FREE_BUSYÌ8ÎGDataÖ0
+CALENDAR_ACCESS_ROLE_OWNERÌ8ÎGDataÖ0
+CALENDAR_ACCESS_ROLE_READÌ8ÎGDataÖ0
+CALENDAR_ACCESS_ROLE_ROOTÌ8ÎGDataÖ0
+CAPTCHA_REQUIREDÌ4ÎGData.AuthenticationErrorÖ0
+CONFLICTÌ4ÎGData.ServiceErrorÖ0
+CSVÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+CalendarCalendarÌ1ÎGDataÖ0
+CalendarCalendarÌ128Í(string id)ÎGData.CalendarCalendarÖ0
+CalendarEventÌ1ÎGDataÖ0
+CalendarEventÌ128Í(string id)ÎGData.CalendarEventÖ0
+CalendarFeedÌ1ÎGDataÖ0
+CalendarFeedÌ128Í()ÎGData.CalendarFeedÖ0
+CalendarQueryÌ1ÎGDataÖ0
+CalendarQueryÌ128Í(string q)ÎGData.CalendarQueryÖ0
+CalendarQuery.with_limitsÌ128Í(string q, GLib.TimeVal start_min, GLib.TimeVal start_max)ÎGData.CalendarQueryÖ0
+CalendarServiceÌ1ÎGDataÖ0
+CalendarServiceÌ128Í(string client_id)ÎGData.CalendarServiceÖ0
+CategoryÌ1ÎGDataÖ0
+CategoryÌ128Í(string term, string scheme, string label)ÎGData.CategoryÖ0
+ColorÌ1ÎGDataÖ0
+ContactsContactÌ1ÎGDataÖ0
+ContactsContactÌ128Í(string id)ÎGData.ContactsContactÖ0
+ContactsQueryÌ1ÎGDataÖ0
+ContactsQueryÌ128Í(string q)ÎGData.ContactsQueryÖ0
+ContactsQuery.with_limitsÌ128Í(string q, int start_index, int max_results)ÎGData.ContactsQueryÖ0
+ContactsServiceÌ1ÎGDataÖ0
+ContactsServiceÌ128Í(string client_id)ÎGData.ContactsServiceÖ0
+DELETIONÌ4ÎGData.OperationTypeÖ0
+DENIEDÌ4ÎGData.YouTubePermissionÖ0
+DESCENDINGÌ4ÎGData.YouTubeSortOrderÖ0
+DOCÌ4ÎGData.DocumentsTextFormatÖ0
+DOCUMENTÌ4ÎGData.MediaMediumÖ0
+DOCUMENTS_ACCESS_ROLE_OWNERÌ8ÎGDataÖ0
+DOCUMENTS_ACCESS_ROLE_READERÌ8ÎGDataÖ0
+DOCUMENTS_ACCESS_ROLE_WRITERÌ8ÎGDataÖ0
+DOWNLOADÌ4ÎGData.OperationTypeÖ0
+DocumentsEntryÌ1ÎGDataÖ0
+DocumentsEntryÌ128Í()ÎGData.DocumentsEntryÖ0
+DocumentsFeedÌ1ÎGDataÖ0
+DocumentsFeedÌ128Í()ÎGData.DocumentsFeedÖ0
+DocumentsFolderÌ1ÎGDataÖ0
+DocumentsFolderÌ128Í(string id)ÎGData.DocumentsFolderÖ0
+DocumentsPresentationÌ1ÎGDataÖ0
+DocumentsPresentationÌ128Í(string id)ÎGData.DocumentsPresentationÖ0
+DocumentsPresentationFormatÌ2ÎGDataÖ0
+DocumentsQueryÌ1ÎGDataÖ0
+DocumentsQueryÌ128Í(string q)ÎGData.DocumentsQueryÖ0
+DocumentsQuery.with_limitsÌ128Í(string q, int start_index, int max_results)ÎGData.DocumentsQueryÖ0
+DocumentsServiceÌ1ÎGDataÖ0
+DocumentsServiceÌ128Í(string client_id)ÎGData.DocumentsServiceÖ0
+DocumentsServiceErrorÌ2ÎGDataÖ0
+DocumentsSpreadsheetÌ1ÎGDataÖ0
+DocumentsSpreadsheetÌ128Í(string id)ÎGData.DocumentsSpreadsheetÖ0
+DocumentsSpreadsheetFormatÌ2ÎGDataÖ0
+DocumentsTextÌ1ÎGDataÖ0
+DocumentsTextÌ128Í(string id)ÎGData.DocumentsTextÖ0
+DocumentsTextFormatÌ2ÎGDataÖ0
+DownloadStreamÌ1ÎGDataÖ0
+DownloadStreamÌ128Í(GData.Service service, string download_uri)ÎGData.DownloadStreamÖ0
+EMPTY_DOCUMENTÌ4ÎGData.ParserErrorÖ0
+ENTRY_ALREADY_INSERTEDÌ4ÎGData.ServiceErrorÖ0
+ENTRY_QUOTA_EXCEEDEDÌ4ÎGData.YouTubeServiceErrorÖ0
+EXECUTABLEÌ4ÎGData.MediaMediumÖ0
+EntryÌ1ÎGDataÖ0
+EntryÌ128Í(string id)ÎGData.EntryÖ0
+FORBIDDENÌ4ÎGData.ServiceErrorÖ0
+FULLÌ4ÎGData.MediaExpressionÖ0
+FeedÌ1ÎGDataÖ0
+FeedÌ128Í()ÎGData.FeedÖ0
+GCONTACT_CALENDAR_FREE_BUSYÌ8ÎGDataÖ0
+GCONTACT_CALENDAR_HOMEÌ8ÎGDataÖ0
+GCONTACT_CALENDAR_WORKÌ8ÎGDataÖ0
+GCONTACT_EVENT_ANNIVERSARYÌ8ÎGDataÖ0
+GCONTACT_EVENT_OTHERÌ8ÎGDataÖ0
+GCONTACT_JOT_HOMEÌ8ÎGDataÖ0
+GCONTACT_JOT_KEYWORDSÌ8ÎGDataÖ0
+GCONTACT_JOT_OTHERÌ8ÎGDataÖ0
+GCONTACT_JOT_USERÌ8ÎGDataÖ0
+GCONTACT_JOT_WORKÌ8ÎGDataÖ0
+GCONTACT_RELATION_ASSISTANTÌ8ÎGDataÖ0
+GCONTACT_RELATION_BROTHERÌ8ÎGDataÖ0
+GCONTACT_RELATION_CHILDÌ8ÎGDataÖ0
+GCONTACT_RELATION_DOMESTIC_PARTNERÌ8ÎGDataÖ0
+GCONTACT_RELATION_FATHERÌ8ÎGDataÖ0
+GCONTACT_RELATION_FRIENDÌ8ÎGDataÖ0
+GCONTACT_RELATION_MANAGERÌ8ÎGDataÖ0
+GCONTACT_RELATION_MOTHERÌ8ÎGDataÖ0
+GCONTACT_RELATION_PARENTÌ8ÎGDataÖ0
+GCONTACT_RELATION_PARTNERÌ8ÎGDataÖ0
+GCONTACT_RELATION_REFERRERÌ8ÎGDataÖ0
+GCONTACT_RELATION_RELATIVEÌ8ÎGDataÖ0
+GCONTACT_RELATION_SISTERÌ8ÎGDataÖ0
+GCONTACT_RELATION_SPOUSEÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_BLOGÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_FTPÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_HOMEÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_HOME_PAGEÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_OTHERÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_PROFILEÌ8ÎGDataÖ0
+GCONTACT_WEBSITE_WORKÌ8ÎGDataÖ0
+GContactCalendarÌ1ÎGDataÖ0
+GContactCalendarÌ128Í(string uri, string relation_type, string label, bool is_primary)ÎGData.GContactCalendarÖ0
+GContactEventÌ1ÎGDataÖ0
+GContactEventÌ128Í(GLib.Date date, string relation_type, string label)ÎGData.GContactEventÖ0
+GContactJotÌ1ÎGDataÖ0
+GContactJotÌ128Í(string content, string relation_type)ÎGData.GContactJotÖ0
+GContactRelationÌ1ÎGDataÖ0
+GContactRelationÌ128Í(string name, string relation_type, string label)ÎGData.GContactRelationÖ0
+GContactWebsiteÌ1ÎGDataÖ0
+GContactWebsiteÌ128Í(string uri, string relation_type, string label, bool is_primary)ÎGData.GContactWebsiteÖ0
+GDEmailAddressÌ1ÎGDataÖ0
+GDEmailAddressÌ128Í(string address, string relation_type, string label, bool is_primary)ÎGData.GDEmailAddressÖ0
+GDFeedLinkÌ1ÎGDataÖ0
+GDFeedLinkÌ128Í(string href, string rel, uint count_hint, bool read_only)ÎGData.GDFeedLinkÖ0
+GDIMAddressÌ1ÎGDataÖ0
+GDIMAddressÌ128Í(string address, string protocol, string relation_type, string label, bool is_primary)ÎGData.GDIMAddressÖ0
+GDNameÌ1ÎGDataÖ0
+GDNameÌ128Í(string given_name, string family_name)ÎGData.GDNameÖ0
+GDOrganizationÌ1ÎGDataÖ0
+GDOrganizationÌ128Í(string name, string title, string relation_type, string label, bool is_primary)ÎGData.GDOrganizationÖ0
+GDPhoneNumberÌ1ÎGDataÖ0
+GDPhoneNumberÌ128Í(string number, string relation_type, string label, string uri, bool is_primary)ÎGData.GDPhoneNumberÖ0
+GDPostalAddressÌ1ÎGDataÖ0
+GDPostalAddressÌ128Í(string relation_type, string label, bool is_primary)ÎGData.GDPostalAddressÖ0
+GDRatingÌ1ÎGDataÖ0
+GDRatingÌ128Í(uint min, uint max, uint num_raters, double average)ÎGData.GDRatingÖ0
+GDReminderÌ1ÎGDataÖ0
+GDReminderÌ128Í(string method, GLib.TimeVal absolute_time, int relative_time)ÎGData.GDReminderÖ0
+GDWhenÌ1ÎGDataÖ0
+GDWhenÌ128Í(GLib.TimeVal start_time, GLib.TimeVal end_time, bool is_date)ÎGData.GDWhenÖ0
+GDWhereÌ1ÎGDataÖ0
+GDWhereÌ128Í(string relation_type, string value_string, string label)ÎGData.GDWhereÖ0
+GDWhoÌ1ÎGDataÖ0
+GDWhoÌ128Í(string relation_type, string value_string, string email_address)ÎGData.GDWhoÖ0
+GD_ADDRESS_USAGE_GENERALÌ8ÎGDataÖ0
+GD_ADDRESS_USAGE_LOCALÌ8ÎGDataÖ0
+GD_EMAIL_ADDRESS_HOMEÌ8ÎGDataÖ0
+GD_EMAIL_ADDRESS_OTHERÌ8ÎGDataÖ0
+GD_EMAIL_ADDRESS_WORKÌ8ÎGDataÖ0
+GD_EVENT_STATUS_CANCELEDÌ8ÎGDataÖ0
+GD_EVENT_STATUS_CONFIRMEDÌ8ÎGDataÖ0
+GD_EVENT_STATUS_TENTATIVEÌ8ÎGDataÖ0
+GD_EVENT_TRANSPARENCY_OPAQUEÌ8ÎGDataÖ0
+GD_EVENT_TRANSPARENCY_TRANSPARENTÌ8ÎGDataÖ0
+GD_EVENT_VISIBILITY_CONFIDENTIALÌ8ÎGDataÖ0
+GD_EVENT_VISIBILITY_DEFAULTÌ8ÎGDataÖ0
+GD_EVENT_VISIBILITY_PRIVATEÌ8ÎGDataÖ0
+GD_EVENT_VISIBILITY_PUBLICÌ8ÎGDataÖ0
+GD_IM_ADDRESS_HOMEÌ8ÎGDataÖ0
+GD_IM_ADDRESS_NETMEETINGÌ8ÎGDataÖ0
+GD_IM_ADDRESS_OTHERÌ8ÎGDataÖ0
+GD_IM_ADDRESS_WORKÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_AIMÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_GOOGLE_TALKÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_ICQÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_JABBERÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_LIVE_MESSENGERÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_QQÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_SKYPEÌ8ÎGDataÖ0
+GD_IM_PROTOCOL_YAHOO_MESSENGERÌ8ÎGDataÖ0
+GD_MAIL_CLASS_BOTHÌ8ÎGDataÖ0
+GD_MAIL_CLASS_LETTERSÌ8ÎGDataÖ0
+GD_MAIL_CLASS_NEITHERÌ8ÎGDataÖ0
+GD_MAIL_CLASS_PARCELSÌ8ÎGDataÖ0
+GD_ORGANIZATION_OTHERÌ8ÎGDataÖ0
+GD_ORGANIZATION_WORKÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_ASSISTANTÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_CALLBACKÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_CARÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_COMPANY_MAINÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_FAXÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_HOMEÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_HOME_FAXÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_ISDNÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_MAINÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_MOBILEÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_OTHERÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_OTHER_FAXÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_PAGERÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_RADIOÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_TELEXÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_TTY_TDDÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_WORKÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_WORK_FAXÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_WORK_MOBILEÌ8ÎGDataÖ0
+GD_PHONE_NUMBER_WORK_PAGERÌ8ÎGDataÖ0
+GD_POSTAL_ADDRESS_HOMEÌ8ÎGDataÖ0
+GD_POSTAL_ADDRESS_OTHERÌ8ÎGDataÖ0
+GD_POSTAL_ADDRESS_WORKÌ8ÎGDataÖ0
+GD_REMINDER_ALERTÌ8ÎGDataÖ0
+GD_REMINDER_EMAILÌ8ÎGDataÖ0
+GD_REMINDER_SMSÌ8ÎGDataÖ0
+GD_WHERE_EVENTÌ8ÎGDataÖ0
+GD_WHERE_EVENT_ALTERNATEÌ8ÎGDataÖ0
+GD_WHERE_EVENT_PARKINGÌ8ÎGDataÖ0
+GD_WHO_EVENT_ATTENDEEÌ8ÎGDataÖ0
+GD_WHO_EVENT_ORGANIZERÌ8ÎGDataÖ0
+GD_WHO_EVENT_PERFORMERÌ8ÎGDataÖ0
+GD_WHO_EVENT_SPEAKERÌ8ÎGDataÖ0
+GDataÌ256Ö0
+GTimeValÌ1ÎGDataÖ0
+GeneratorÌ1ÎGDataÖ0
+GeneratorÌ128Í(string name, string uri, string version)ÎGData.GeneratorÖ0
+HTMLÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+HTMLÌ4ÎGData.DocumentsTextFormatÖ0
+HTTP_SWFÌ4ÎGData.YouTubeFormatÖ0
+IMAGEÌ4ÎGData.MediaMediumÖ0
+INSERTIONÌ4ÎGData.OperationTypeÖ0
+LINK_ALTERNATEÌ8ÎGDataÖ0
+LINK_EDITÌ8ÎGDataÖ0
+LINK_EDIT_MEDIAÌ8ÎGDataÖ0
+LINK_ENCLOSUREÌ8ÎGDataÖ0
+LINK_RELATEDÌ8ÎGDataÖ0
+LINK_SELFÌ8ÎGDataÖ0
+LINK_VIAÌ8ÎGDataÖ0
+LinkÌ1ÎGDataÖ0
+LinkÌ128Í(string uri, string relation_type)ÎGData.LinkÖ0
+MODERATEÌ4ÎGData.YouTubeSafeSearchÖ0
+MODERATEDÌ4ÎGData.YouTubePermissionÖ0
+MOST_DISCUSSED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MOST_LINKED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MOST_POPULAR_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MOST_RECENT_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MOST_RESPONDED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MOST_VIEWED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+MediaCategoryÌ1ÎGDataÖ0
+MediaCategoryÌ128Í(string category, string scheme, string label)ÎGData.MediaCategoryÖ0
+MediaContentÌ1ÎGDataÖ0
+MediaContentÌ128Í(string uri, string type, bool is_default, GData.MediaExpression expression, int duration, int format)ÎGData.MediaContentÖ0
+MediaCreditÌ1ÎGDataÖ0
+MediaCreditÌ128Í(string credit, bool partner)ÎGData.MediaCreditÖ0
+MediaExpressionÌ2ÎGDataÖ0
+MediaMediumÌ2ÎGDataÖ0
+MediaRatingÌ1ÎGDataÖ0
+MediaRatingÌ128Í(string scheme, string country)ÎGData.MediaRatingÖ0
+MediaRestrictionÌ1ÎGDataÖ0
+MediaRestrictionÌ128Í(string countries, bool relationship)ÎGData.MediaRestrictionÖ0
+MediaThumbnailÌ1ÎGDataÖ0
+MediaThumbnailÌ128Í(string uri, uint width, uint height, int64 _time)ÎGData.MediaThumbnailÖ0
+NETWORK_ERRORÌ4ÎGData.ServiceErrorÖ0
+NONEÌ4ÎGData.YouTubeSafeSearchÖ0
+NONEÌ4ÎGData.YouTubeSortOrderÖ0
+NONSTOPÌ4ÎGData.MediaExpressionÖ0
+NOT_FOUNDÌ4ÎGData.ServiceErrorÖ0
+NOT_VERIFIEDÌ4ÎGData.AuthenticationErrorÖ0
+ODSÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+ODTÌ4ÎGData.DocumentsTextFormatÖ0
+OperationTypeÌ2ÎGDataÖ0
+PARSING_STRINGÌ4ÎGData.ParserErrorÖ0
+PARTNERÌ4ÎGData.YouTubeUploaderÖ0
+PDFÌ4ÎGData.DocumentsPresentationFormatÖ0
+PDFÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+PDFÌ4ÎGData.DocumentsTextFormatÖ0
+PICASAWEB_VIDEO_STATUS_FAILEDÌ8ÎGDataÖ0
+PICASAWEB_VIDEO_STATUS_FINALÌ8ÎGDataÖ0
+PICASAWEB_VIDEO_STATUS_PENDINGÌ8ÎGDataÖ0
+PICASAWEB_VIDEO_STATUS_READYÌ8ÎGDataÖ0
+PNGÌ4ÎGData.DocumentsPresentationFormatÖ0
+PNGÌ4ÎGData.DocumentsTextFormatÖ0
+PPTÌ4ÎGData.DocumentsPresentationFormatÖ0
+PRIVATEÌ4ÎGData.PicasaWebVisibilityÖ0
+PROTOCOL_ERRORÌ4ÎGData.ServiceErrorÖ0
+PROXY_ERRORÌ4ÎGData.ServiceErrorÖ0
+PUBLICÌ4ÎGData.PicasaWebVisibilityÖ0
+ParsableÌ1ÎGDataÖ0
+ParsableÌ128Í()ÎGData.ParsableÖ0
+Parsable.from_xmlÌ128Í(GLib.Type parsable_type, string xml, int length)ÎGData.ParsableÖ0
+ParserErrorÌ2ÎGDataÖ0
+PicasaWebAlbumÌ1ÎGDataÖ0
+PicasaWebAlbumÌ128Í(string id)ÎGData.PicasaWebAlbumÖ0
+PicasaWebFeedÌ1ÎGDataÖ0
+PicasaWebFeedÌ128Í()ÎGData.PicasaWebFeedÖ0
+PicasaWebFileÌ1ÎGDataÖ0
+PicasaWebFileÌ128Í(string id)ÎGData.PicasaWebFileÖ0
+PicasaWebQueryÌ1ÎGDataÖ0
+PicasaWebQueryÌ128Í(string q)ÎGData.PicasaWebQueryÖ0
+PicasaWebQuery.with_limitsÌ128Í(string q, int start_index, int max_results)ÎGData.PicasaWebQueryÖ0
+PicasaWebServiceÌ1ÎGDataÖ0
+PicasaWebServiceÌ128Í(string client_id)ÎGData.PicasaWebServiceÖ0
+PicasaWebUserÌ1ÎGDataÖ0
+PicasaWebUserÌ128Í()ÎGData.PicasaWebUserÖ0
+PicasaWebVisibilityÌ2ÎGDataÖ0
+QUERYÌ4ÎGData.OperationTypeÖ0
+QueryÌ1ÎGDataÖ0
+QueryÌ128Í(string q)ÎGData.QueryÖ0
+Query.with_limitsÌ128Í(string q, int start_index, int max_results)ÎGData.QueryÖ0
+QueryProgressCallbackÌ128Í(GData.Entry entry, uint entry_key, uint entry_count)ÎGDataÖ0Ïpublic delegate void
+RECENTLY_FEATURED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+RTFÌ4ÎGData.DocumentsTextFormatÖ0
+RTSP_H263_AMRÌ4ÎGData.YouTubeFormatÖ0
+RTSP_MPEG4_AACÌ4ÎGData.YouTubeFormatÖ0
+SAMPLEÌ4ÎGData.MediaExpressionÖ0
+SERVICE_DISABLEDÌ4ÎGData.AuthenticationErrorÖ0
+STRICTÌ4ÎGData.YouTubeSafeSearchÖ0
+SWFÌ4ÎGData.DocumentsPresentationFormatÖ0
+ServiceÌ1ÎGDataÖ0
+ServiceÌ128Í()ÎGData.ServiceÖ0
+ServiceErrorÌ2ÎGDataÖ0
+TERMS_NOT_AGREEDÌ4ÎGData.AuthenticationErrorÖ0
+THIS_MONTHÌ4ÎGData.YouTubeAgeÖ0
+THIS_WEEKÌ4ÎGData.YouTubeAgeÖ0
+TODAYÌ4ÎGData.YouTubeAgeÖ0
+TOP_FAVORITES_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+TOP_RATED_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+TSVÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+TXTÌ4ÎGData.DocumentsPresentationFormatÖ0
+TXTÌ4ÎGData.DocumentsTextFormatÖ0
+TYPEÌ4ÎGData.DocumentsServiceErrorÖ0
+UNAVAILABLEÌ4ÎGData.ServiceErrorÖ0
+UNKNOWNÌ4ÎGData.MediaMediumÖ0
+UNKNOWNÌ4ÎGData.YouTubeFormatÖ0
+UPDATEÌ4ÎGData.OperationTypeÖ0
+UPLOADÌ4ÎGData.OperationTypeÖ0
+UploadStreamÌ1ÎGDataÖ0
+UploadStreamÌ128Í(GData.Service service, string method, string upload_uri, GData.Entry entry, string slug, string content_type)ÎGData.UploadStreamÖ0
+VIDEOÌ4ÎGData.MediaMediumÖ0
+WATCH_ON_MOBILE_FEEDÌ4ÎGData.YouTubeStandardFeedTypeÖ0
+XLSÌ4ÎGData.DocumentsSpreadsheetFormatÖ0
+YOUTUBE_ACTION_COMMENTÌ8ÎGDataÖ0
+YOUTUBE_ACTION_COMMENT_VOTEÌ8ÎGDataÖ0
+YOUTUBE_ACTION_EMBEDÌ8ÎGDataÖ0
+YOUTUBE_ACTION_RATEÌ8ÎGDataÖ0
+YOUTUBE_ACTION_SYNDICATEÌ8ÎGDataÖ0
+YOUTUBE_ACTION_VIDEO_RESPONDÌ8ÎGDataÖ0
+YOUTUBE_ASPECT_RATIO_WIDESCREENÌ8ÎGDataÖ0
+YOUTUBE_CREDIT_ENTITY_PARTNERÌ8ÎGDataÖ0
+YouTubeAgeÌ2ÎGDataÖ0
+YouTubeContentÌ1ÎGDataÖ0
+YouTubeContentÌ128Í()ÎGData.YouTubeContentÖ0
+YouTubeCreditÌ1ÎGDataÖ0
+YouTubeCreditÌ128Í()ÎGData.YouTubeCreditÖ0
+YouTubeFormatÌ2ÎGDataÖ0
+YouTubePermissionÌ2ÎGDataÖ0
+YouTubeQueryÌ1ÎGDataÖ0
+YouTubeQueryÌ128Í(string q)ÎGData.YouTubeQueryÖ0
+YouTubeSafeSearchÌ2ÎGDataÖ0
+YouTubeServiceÌ1ÎGDataÖ0
+YouTubeServiceÌ128Í(string developer_key, string client_id)ÎGData.YouTubeServiceÖ0
+YouTubeServiceErrorÌ2ÎGDataÖ0
+YouTubeSortOrderÌ2ÎGDataÖ0
+YouTubeStandardFeedTypeÌ2ÎGDataÖ0
+YouTubeStateÌ1ÎGDataÖ0
+YouTubeStateÌ128Í(string name, string message, string reason_code, string help_uri)ÎGData.YouTubeStateÖ0
+YouTubeUploaderÌ2ÎGDataÖ0
+YouTubeVideoÌ1ÎGDataÖ0
+YouTubeVideoÌ128Í(string id)ÎGData.YouTubeVideoÖ0
+ZIPÌ4ÎGData.DocumentsTextFormatÖ0
+absolute_timeÌ8ÎGData.GDReminderÖ0ÏGLib.TimeVal
+access_levelÌ8ÎGData.CalendarCalendarÖ0
+add_authorÌ128Í(GData.Author author)ÎGData.EntryÖ0Ïpublic void
+add_calendarÌ128Í(GData.GContactCalendar calendar)ÎGData.ContactsContactÖ0Ïpublic void
+add_categoryÌ128Í(GData.Category category)ÎGData.EntryÖ0Ïpublic void
+add_collaboratorÌ128Í(string email_address)ÎGData.DocumentsQueryÖ0Ïpublic void
+add_email_addressÌ128Í(GData.GDEmailAddress email_address)ÎGData.ContactsContactÖ0Ïpublic void
+add_eventÌ128Í(GData.GContactEvent event)ÎGData.ContactsContactÖ0Ïpublic void
+add_groupÌ128Í(string href)ÎGData.ContactsContactÖ0Ïpublic void
+add_im_addressÌ128Í(GData.GDIMAddress im_address)ÎGData.ContactsContactÖ0Ïpublic void
+add_jotÌ128Í(GData.GContactJot jot)ÎGData.ContactsContactÖ0Ïpublic void
+add_linkÌ128Í(GData.Link link)ÎGData.EntryÖ0Ïpublic void
+add_organizationÌ128Í(GData.GDOrganization organization)ÎGData.ContactsContactÖ0Ïpublic void
+add_personÌ128Í(GData.GDWho who)ÎGData.CalendarEventÖ0Ïpublic void
+add_phone_numberÌ128Í(GData.GDPhoneNumber phone_number)ÎGData.ContactsContactÖ0Ïpublic void
+add_placeÌ128Í(GData.GDWhere where)ÎGData.CalendarEventÖ0Ïpublic void
+add_postal_addressÌ128Í(GData.GDPostalAddress postal_address)ÎGData.ContactsContactÖ0Ïpublic void
+add_readerÌ128Í(string email_address)ÎGData.DocumentsQueryÖ0Ïpublic void
+add_relationÌ128Í(GData.GContactRelation relation)ÎGData.ContactsContactÖ0Ïpublic void
+add_reminderÌ128Í(GData.GDReminder reminder)ÎGData.GDWhenÖ0Ïpublic void
+add_timeÌ128Í(GData.GDWhen when)ÎGData.CalendarEventÖ0Ïpublic void
+add_websiteÌ128Í(GData.GContactWebsite website)ÎGData.ContactsContactÖ0Ïpublic void
+additional_nameÌ8ÎGData.GDNameÖ0
+addressÌ8ÎGData.GDEmailAddressÖ0
+addressÌ8ÎGData.GDIMAddressÖ0
+addressÌ8ÎGData.GDPostalAddressÖ0
+ageÌ8ÎGData.YouTubeQueryÖ0ÏGData.YouTubeAge
+agentÌ8ÎGData.GDPostalAddressÖ0
+album_idÌ8ÎGData.PicasaWebAlbumÖ0
+album_idÌ8ÎGData.PicasaWebFileÖ0
+anyone_can_add_selfÌ8ÎGData.CalendarEventÖ0Ïbool
+append_query_headersÌ128Í(Soup.Message message)ÎGData.ServiceÖ0Ïpublic virtual void
+aspect_ratioÌ8ÎGData.YouTubeVideoÖ0
+authenticateÌ128Í(string username, string password, GLib.Cancellable? cancellable)ÎGData.ServiceÖ0Ïpublic bool
+authenticate_asyncÌ128Í(string username, string password, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic async
+authenticatedÌ8ÎGData.ServiceÖ0Ïbool
+authentication_error_quarkÌ128Í()ÎGDataÖ0Ïpublic GLib.Quark
+authorÌ8ÎGData.QueryÖ0
+averageÌ8ÎGData.GDRatingÖ0Ïdouble
+average_ratingÌ8ÎGData.YouTubeVideoÖ0Ïdouble
+birthdayÌ8ÎGData.ContactsContactÖ0ÏGLib.Date
+birthday_has_yearÌ8ÎGData.ContactsContactÖ0Ïbool
+blueÌ8ÎGData.ColorÖ0Ïuint16
+build_timeÌ128Í(int64 _time)ÎGData.MediaThumbnailÖ0Ïpublic unowned string
+bytes_usedÌ8ÎGData.PicasaWebAlbumÖ0Ïlong
+captcha_challengeÌ128Í(string p0)ÎGData.ServiceÖ0Ïpublic virtual signal unowned string
+captionÌ8ÎGData.PicasaWebFileÖ0
+categoriesÌ8ÎGData.QueryÖ0
+categoryÌ8ÎGData.MediaCategoryÖ0
+categoryÌ8ÎGData.YouTubeVideoÖ0ÏGData.MediaCategory
+checksumÌ8ÎGData.PicasaWebFileÖ0
+cityÌ8ÎGData.GDPostalAddressÖ0
+clientÌ8ÎGData.PicasaWebFileÖ0
+client_idÌ8ÎGData.ServiceÖ0
+colorÌ8ÎGData.CalendarCalendarÖ0ÏGData.Color
+comment_countÌ8ÎGData.PicasaWebAlbumÖ0
+comment_countÌ8ÎGData.PicasaWebFileÖ0
+compareÌ128Í(GData.Author b)ÎGData.AuthorÖ0Ïpublic int
+compareÌ128Í(GData.Category b)ÎGData.CategoryÖ0Ïpublic int
+compareÌ128Í(GData.GContactCalendar b)ÎGData.GContactCalendarÖ0Ïpublic int
+compareÌ128Í(GData.GContactWebsite b)ÎGData.GContactWebsiteÖ0Ïpublic int
+compareÌ128Í(GData.GDEmailAddress b)ÎGData.GDEmailAddressÖ0Ïpublic int
+compareÌ128Í(GData.GDFeedLink b)ÎGData.GDFeedLinkÖ0Ïpublic int
+compareÌ128Í(GData.GDIMAddress b)ÎGData.GDIMAddressÖ0Ïpublic int
+compareÌ128Í(GData.GDName b)ÎGData.GDNameÖ0Ïpublic int
+compareÌ128Í(GData.GDOrganization b)ÎGData.GDOrganizationÖ0Ïpublic int
+compareÌ128Í(GData.GDPhoneNumber b)ÎGData.GDPhoneNumberÖ0Ïpublic int
+compareÌ128Í(GData.GDPostalAddress b)ÎGData.GDPostalAddressÖ0Ïpublic int
+compareÌ128Í(GData.GDRating b)ÎGData.GDRatingÖ0Ïpublic int
+compareÌ128Í(GData.GDReminder b)ÎGData.GDReminderÖ0Ïpublic int
+compareÌ128Í(GData.GDWhen b)ÎGData.GDWhenÖ0Ïpublic int
+compareÌ128Í(GData.GDWhere b)ÎGData.GDWhereÖ0Ïpublic int
+compareÌ128Í(GData.GDWho b)ÎGData.GDWhoÖ0Ïpublic int
+compareÌ128Í(GData.Generator b)ÎGData.GeneratorÖ0Ïpublic int
+compareÌ128Í(GData.Link b)ÎGData.LinkÖ0Ïpublic int
+contentÌ8ÎGData.EntryÖ0
+contentÌ8ÎGData.GContactJotÖ0
+content_lengthÌ8ÎGData.DownloadStreamÖ0Ïlong
+content_typeÌ8ÎGData.DownloadStreamÖ0
+content_typeÌ8ÎGData.LinkÖ0
+content_typeÌ8ÎGData.MediaContentÖ0
+content_typeÌ8ÎGData.UploadStreamÖ0
+count_hintÌ8ÎGData.GDFeedLinkÖ0
+countriesÌ8ÎGData.MediaRestrictionÖ0
+countryÌ8ÎGData.GDPostalAddressÖ0
+countryÌ8ÎGData.MediaRatingÖ0
+country_codeÌ8ÎGData.GDPostalAddressÖ0
+creditÌ8ÎGData.MediaCreditÖ0
+creditÌ8ÎGData.PicasaWebFileÖ0
+creditÌ8ÎGData.YouTubeVideoÖ0ÏGData.YouTubeCredit
+dateÌ8ÎGData.GContactEventÖ0ÏGLib.Date
+delete_entryÌ128Í(GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic bool
+delete_entry_asyncÌ128Í(GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic async
+delete_ruleÌ128Í(GData.Service service, GData.AccessRule rule, GLib.Cancellable cancellable)ÎGData.AccessHandlerÖ0Ïpublic bool
+deletedÌ8ÎGData.ContactsContactÖ0Ïbool
+departmentÌ8ÎGData.GDOrganizationÖ0
+descriptionÌ8ÎGData.YouTubeVideoÖ0
+developer_keyÌ8ÎGData.YouTubeServiceÖ0
+display_nameÌ8ÎGData.GDEmailAddressÖ0
+distanceÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+document_idÌ8ÎGData.DocumentsEntryÖ0
+downloadÌ128Í(GData.Service service, string default_filename, GLib.File target_dest_file, bool replace_file_if_exists, GLib.Cancellable cancellable)ÎGData.MediaContentÖ0Ïpublic unowned
+downloadÌ128Í(GData.Service service, string default_filename, GLib.File target_dest_file, bool replace_file_if_exists, GLib.Cancellable cancellable)ÎGData.MediaThumbnailÖ0Ïpublic unowned
+download_documentÌ128Í(GData.DocumentsService service, string content_type, GData.DocumentsPresentationFormat export_format, GLib.File destination_file, bool replace_file_if_exists, GLib.Cancellable cancellable)ÎGData.DocumentsPresentationÖ0Ïpublic unowned
+download_documentÌ128Í(GData.DocumentsService service, string content_type, GData.DocumentsSpreadsheetFormat export_format, int gid, GLib.File destination_file, bool replace_file_if_exists, GLib.Cancellable cancellable)ÎGData.DocumentsSpreadsheetÖ0Ïpublic unowned
+download_documentÌ128Í(GData.DocumentsService service, string content_type, GData.DocumentsTextFormat export_format, GLib.File destination_file, bool replace_file_if_exists, GLib.Cancellable cancellable)ÎGData.DocumentsTextÖ0Ïpublic unowned
+download_uriÌ8ÎGData.DownloadStreamÖ0
+durationÌ8ÎGData.MediaContentÖ0Ïint64
+durationÌ8ÎGData.YouTubeVideoÖ0
+editedÌ8ÎGData.AccessRuleÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.CalendarCalendarÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.CalendarEventÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.ContactsContactÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.DocumentsEntryÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.PicasaWebAlbumÖ0ÏGLib.TimeVal
+editedÌ8ÎGData.PicasaWebFileÖ0ÏGLib.TimeVal
+email_addressÌ8ÎGData.AuthorÖ0
+email_addressÌ8ÎGData.GDWhoÖ0
+end_timeÌ8ÎGData.GDWhenÖ0ÏGLib.TimeVal
+entity_typeÌ8ÎGData.YouTubeCreditÖ0
+entryÌ8ÎGData.UploadStreamÖ0ÏGData.Entry
+error_quarkÌ128Í()ÎGData.DocumentsServiceÖ0Ïpublic GLib.Quark
+error_quarkÌ128Í()ÎGData.ServiceÖ0Ïpublic GLib.Quark
+error_quarkÌ128Í()ÎGData.YouTubeServiceÖ0Ïpublic GLib.Quark
+etagÌ8ÎGData.EntryÖ0
+etagÌ8ÎGData.FeedÖ0
+etagÌ8ÎGData.QueryÖ0
+exact_titleÌ8ÎGData.DocumentsQueryÖ0Ïbool
+exposureÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+expressionÌ8ÎGData.MediaContentÖ0ÏGData.MediaExpression
+family_nameÌ8ÎGData.GDNameÖ0
+favorite_countÌ8ÎGData.YouTubeVideoÖ0
+file_idÌ8ÎGData.PicasaWebFileÖ0
+filesizeÌ8ÎGData.MediaContentÖ0
+flashÌ8ÎGData.PicasaWebFileÖ0Ïbool
+focal_lengthÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+folder_idÌ8ÎGData.DocumentsQueryÖ0
+formatÌ8ÎGData.YouTubeContentÖ0ÏGData.YouTubeFormat
+formatÌ8ÎGData.YouTubeQueryÖ0ÏGData.YouTubeFormat
+from_hexadecimalÌ128Í(string hexadecimal, GData.Color color)ÎGData.ColorÖ0Ïpublic bool
+fstopÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+full_nameÌ8ÎGData.GDNameÖ0
+future_eventsÌ8ÎGData.CalendarQueryÖ0Ïbool
+generatorÌ8ÎGData.FeedÖ0ÏGData.Generator
+get_absolute_timeÌ128Í(GLib.TimeVal absolute_time)ÎGData.GDReminderÖ0Ïpublic void
+get_access_controlÌ128Í(string action)ÎGData.YouTubeVideoÖ0Ïpublic GData.YouTubePermission
+get_access_levelÌ128Í()ÎGData.CalendarCalendarÖ0Ïpublic unowned string
+get_additional_nameÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_addressÌ128Í()ÎGData.GDEmailAddressÖ0Ïpublic unowned string
+get_addressÌ128Í()ÎGData.GDIMAddressÖ0Ïpublic unowned string
+get_addressÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_ageÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic GData.YouTubeAge
+get_agentÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_album_idÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_anyone_can_add_selfÌ128Í()ÎGData.CalendarEventÖ0Ïpublic bool
+get_aspect_ratioÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_authorÌ128Í()ÎGData.QueryÖ0Ïpublic unowned string
+get_authorsÌ128Í()ÎGData.FeedÖ0Ïpublic unowned
+get_birthdayÌ128Í(GLib.Date birthday)ÎGData.ContactsContactÖ0Ïpublic bool
+get_bounding_boxÌ128Í(double north, double east, double south, double west)ÎGData.PicasaWebQueryÖ0Ïpublic void
+get_bytes_usedÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic long
+get_calendarsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_captionÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_categoriesÌ128Í()ÎGData.EntryÖ0Ïpublic unowned
+get_categoriesÌ128Í()ÎGData.FeedÖ0Ïpublic unowned
+get_categoriesÌ128Í()ÎGData.QueryÖ0Ïpublic unowned string
+get_categoryÌ128Í()ÎGData.MediaCategoryÖ0Ïpublic unowned string
+get_categoryÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned
+get_checksumÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_cityÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_clientÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_client_idÌ128Í()ÎGData.ServiceÖ0Ïpublic unowned string
+get_collaborator_addressesÌ128Í()ÎGData.DocumentsQueryÖ0Ïpublic unowned
+get_colorÌ128Í(GData.Color color)ÎGData.CalendarCalendarÖ0Ïpublic void
+get_comment_countÌ128Í()ÎGData.PicasaWebAlbumÖ0
+get_comment_countÌ128Í()ÎGData.PicasaWebFileÖ0
+get_contentÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_contentÌ128Í()ÎGData.GContactJotÖ0Ïpublic unowned string
+get_content_lengthÌ128Í()ÎGData.DownloadStreamÖ0Ïpublic ssize_t
+get_content_typeÌ128Í()ÎGData.DownloadStreamÖ0Ïpublic unowned string
+get_content_typeÌ128Í()ÎGData.LinkÖ0Ïpublic unowned string
+get_content_typeÌ128Í()ÎGData.MediaContentÖ0Ïpublic unowned string
+get_content_typeÌ128Í()ÎGData.UploadStreamÖ0Ïpublic unowned string
+get_contentsÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned
+get_contentsÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned
+get_coordinatesÌ128Í(double latitude, double longitude)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+get_coordinatesÌ128Í(double latitude, double longitude)ÎGData.PicasaWebFileÖ0Ïpublic void
+get_countryÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_country_codeÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_creditÌ128Í()ÎGData.MediaCreditÖ0Ïpublic unowned string
+get_creditÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_creditÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned
+get_dateÌ128Í(GLib.Date date)ÎGData.GContactEventÖ0Ïpublic void
+get_departmentÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_descriptionÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_developer_keyÌ128Í()ÎGData.YouTubeServiceÖ0Ïpublic unowned string
+get_display_nameÌ128Í()ÎGData.GDEmailAddressÖ0Ïpublic unowned string
+get_distanceÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic double
+get_document_idÌ128Í()ÎGData.DocumentsEntryÖ0Ïpublic unowned string
+get_download_uriÌ128Í(GData.DocumentsPresentationFormat export_format)ÎGData.DocumentsPresentationÖ0Ïpublic unowned string
+get_download_uriÌ128Í(GData.DocumentsSpreadsheetFormat export_format, int gid)ÎGData.DocumentsSpreadsheetÖ0Ïpublic unowned string
+get_download_uriÌ128Í(GData.DocumentsTextFormat export_format)ÎGData.DocumentsTextÖ0Ïpublic unowned string
+get_download_uriÌ128Í()ÎGData.DownloadStreamÖ0Ïpublic unowned string
+get_durationÌ128Í()ÎGData.MediaContentÖ0Ïpublic int64
+get_durationÌ128Í()ÎGData.YouTubeVideoÖ0
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.AccessRuleÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.CalendarCalendarÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.CalendarEventÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.ContactsContactÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.DocumentsEntryÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+get_editedÌ128Í(GLib.TimeVal edited)ÎGData.PicasaWebFileÖ0Ïpublic void
+get_email_addressÌ128Í()ÎGData.AuthorÖ0Ïpublic unowned string
+get_email_addressÌ128Í()ÎGData.GDWhoÖ0Ïpublic unowned string
+get_email_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_end_timeÌ128Í(GLib.TimeVal end_time)ÎGData.GDWhenÖ0Ïpublic void
+get_entity_typeÌ128Í()ÎGData.YouTubeCreditÖ0Ïpublic unowned string
+get_entriesÌ128Í()ÎGData.FeedÖ0Ïpublic unowned
+get_entryÌ128Í()ÎGData.UploadStreamÖ0Ïpublic unowned
+get_entry_uriÌ128Í(string id)ÎGData.EntryÖ0Ïpublic virtual unowned string
+get_etagÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_etagÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_etagÌ128Í()ÎGData.QueryÖ0Ïpublic unowned string
+get_eventsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_exact_titleÌ128Í()ÎGData.DocumentsQueryÖ0Ïpublic bool
+get_exposureÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic double
+get_expressionÌ128Í()ÎGData.MediaContentÖ0Ïpublic GData.MediaExpression
+get_extended_propertiesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_extended_propertyÌ128Í(string name)ÎGData.ContactsContactÖ0Ïpublic unowned string
+get_family_nameÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_favorite_countÌ128Í()ÎGData.YouTubeVideoÖ0
+get_filesizeÌ128Í()ÎGData.MediaContentÖ0Ïpublic size_t
+get_flashÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic bool
+get_focal_lengthÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic double
+get_folder_idÌ128Í()ÎGData.DocumentsQueryÖ0Ïpublic unowned string
+get_formatÌ128Í()ÎGData.YouTubeContentÖ0Ïpublic GData.YouTubeFormat
+get_formatÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic GData.YouTubeFormat
+get_fstopÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic double
+get_full_nameÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_future_eventsÌ128Í()ÎGData.CalendarQueryÖ0Ïpublic bool
+get_generatorÌ128Í()ÎGData.FeedÖ0Ïpublic unowned
+get_given_nameÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_groupÌ128Í()ÎGData.ContactsQueryÖ0Ïpublic unowned string
+get_groupsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_guests_can_invite_othersÌ128Í()ÎGData.CalendarEventÖ0Ïpublic bool
+get_guests_can_modifyÌ128Í()ÎGData.CalendarEventÖ0Ïpublic bool
+get_guests_can_see_guestsÌ128Í()ÎGData.CalendarEventÖ0Ïpublic bool
+get_heightÌ128Í()ÎGData.MediaContentÖ0
+get_heightÌ128Í()ÎGData.MediaThumbnailÖ0
+get_heightÌ128Í()ÎGData.PicasaWebFileÖ0
+get_help_uriÌ128Í()ÎGData.YouTubeStateÖ0Ïpublic unowned string
+get_house_nameÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_iconÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_idÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_idÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_idÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned string
+get_idÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_im_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_image_sizeÌ128Í()ÎGData.PicasaWebQueryÖ0Ïpublic unowned string
+get_image_unique_idÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_isoÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic int
+get_items_per_pageÌ128Í()ÎGData.FeedÖ0
+get_job_descriptionÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_jotsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_keywordsÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.CategoryÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GContactCalendarÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GContactEventÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GContactRelationÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GContactWebsiteÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDEmailAddressÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDIMAddressÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDPhoneNumberÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.GDWhereÖ0Ïpublic unowned string
+get_labelÌ128Í()ÎGData.MediaCategoryÖ0Ïpublic unowned string
+get_languageÌ128Í()ÎGData.LinkÖ0Ïpublic unowned string
+get_languageÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic unowned string
+get_last_modified_byÌ128Í()ÎGData.DocumentsEntryÖ0Ïpublic unowned
+get_last_viewedÌ128Í(GLib.TimeVal last_viewed)ÎGData.DocumentsEntryÖ0Ïpublic void
+get_lengthÌ128Í()ÎGData.LinkÖ0Ïpublic int
+get_linksÌ128Í()ÎGData.FeedÖ0Ïpublic unowned
+get_locationÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned
+get_locationÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned string
+get_locationÌ128Í()ÎGData.PicasaWebQueryÖ0Ïpublic unowned string
+get_locationÌ128Í(double latitude, double longitude, double radius, bool has_location)ÎGData.YouTubeQueryÖ0Ïpublic void
+get_locationÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_logoÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_mail_classÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_makeÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_max_photos_per_albumÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic int
+get_max_resultsÌ128Í()ÎGData.QueryÖ0Ïpublic int
+get_mediumÌ128Í()ÎGData.MediaContentÖ0Ïpublic GData.MediaMedium
+get_messageÌ128Í()ÎGData.YouTubeStateÖ0Ïpublic unowned string
+get_methodÌ128Í()ÎGData.GDReminderÖ0Ïpublic unowned string
+get_modelÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGData.AuthorÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_nameÌ128Í()ÎGData.GContactRelationÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGData.GeneratorÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGData.YouTubeStateÖ0Ïpublic unowned string
+get_namespacesÌ128Í(GLib.HashTable namespaces)ÎGData.ParsableÖ0Ïpublic virtual void
+get_neighborhoodÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_nicknameÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned string
+get_nicknameÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned string
+get_nicknameÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic unowned string
+get_num_photosÌ128Í()ÎGData.PicasaWebAlbumÖ0
+get_num_photos_remainingÌ128Í()ÎGData.PicasaWebAlbumÖ0
+get_numberÌ128Í()ÎGData.GDPhoneNumberÖ0Ïpublic unowned string
+get_order_byÌ128Í()ÎGData.CalendarQueryÖ0Ïpublic unowned string
+get_order_byÌ128Í()ÎGData.ContactsQueryÖ0Ïpublic unowned string
+get_order_byÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic unowned string
+get_organizationsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_original_event_detailsÌ128Í(string event_id, string event_uri)ÎGData.CalendarEventÖ0Ïpublic void
+get_passwordÌ128Í()ÎGData.ServiceÖ0Ïpublic unowned string
+get_pathÌ128Í()ÎGData.DocumentsEntryÖ0Ïpublic unowned string
+get_peopleÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned
+get_phone_numbersÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_photoÌ128Í(GData.ContactsService service, size_t length, string content_type, GLib.Cancellable cancellable)ÎGData.ContactsContactÖ0Ïpublic unowned string
+get_placesÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned
+get_player_uriÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_po_boxÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_positionÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic double
+get_postal_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_postcodeÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_prefixÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_primary_calendarÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_email_addressÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_im_addressÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_organizationÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_phone_numberÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_postal_addressÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_primary_timeÌ128Í(GLib.TimeVal start_time, GLib.TimeVal end_time, out unowned GData.GDWhen when)ÎGData.CalendarEventÖ0Ïpublic bool
+get_primary_websiteÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_protocolÌ128Í()ÎGData.GDIMAddressÖ0Ïpublic unowned string
+get_proxy_uriÌ128Í()ÎGData.ServiceÖ0Ïpublic unowned
+get_publishedÌ128Í(GLib.TimeVal published)ÎGData.EntryÖ0Ïpublic void
+get_published_maxÌ128Í(GLib.TimeVal published_max)ÎGData.QueryÖ0Ïpublic void
+get_published_minÌ128Í(GLib.TimeVal published_min)ÎGData.QueryÖ0Ïpublic void
+get_qÌ128Í()ÎGData.QueryÖ0Ïpublic unowned string
+get_query_uriÌ128Í(string feed_uri)ÎGData.QueryÖ0Ïpublic virtual void
+get_quota_currentÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic int64
+get_quota_limitÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic int64
+get_ratingÌ128Í(uint min, uint max, uint count, double average)ÎGData.YouTubeVideoÖ0Ïpublic void
+get_reader_addressesÌ128Í()ÎGData.DocumentsQueryÖ0Ïpublic unowned
+get_reason_codeÌ128Í()ÎGData.YouTubeStateÖ0Ïpublic unowned string
+get_recordedÌ128Í(GLib.TimeVal recorded)ÎGData.YouTubeVideoÖ0Ïpublic void
+get_recurrenceÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned string
+get_recurrence_expansion_endÌ128Í(GLib.TimeVal end)ÎGData.CalendarQueryÖ0Ïpublic void
+get_recurrence_expansion_startÌ128Í(GLib.TimeVal start)ÎGData.CalendarQueryÖ0Ïpublic void
+get_regionÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GContactCalendarÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GContactEventÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GContactJotÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GContactRelationÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GContactWebsiteÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDEmailAddressÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDIMAddressÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDPhoneNumberÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDWhereÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.GDWhoÖ0Ïpublic unowned string
+get_relation_typeÌ128Í()ÎGData.LinkÖ0Ïpublic unowned string
+get_relationsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_relative_timeÌ128Í()ÎGData.GDReminderÖ0Ïpublic int
+get_remindersÌ128Í()ÎGData.GDWhenÖ0Ïpublic unowned
+get_responseÌ128Í(ssize_t length)ÎGData.UploadStreamÖ0Ïpublic unowned string
+get_restrictionÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic unowned string
+get_rightsÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_roleÌ128Í()ÎGData.AccessRuleÖ0Ïpublic unowned string
+get_roleÌ128Í()ÎGData.MediaCreditÖ0Ïpublic unowned string
+get_rotationÌ128Í()ÎGData.PicasaWebFileÖ0
+get_rulesÌ128Í(GData.Service service, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.AccessHandlerÖ0Ïpublic unowned
+get_safe_searchÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic GData.YouTubeSafeSearch
+get_schemeÌ128Í()ÎGData.CategoryÖ0Ïpublic unowned string
+get_schemeÌ128Í()ÎGData.MediaCategoryÖ0Ïpublic unowned string
+get_schemeÌ128Í()ÎGData.MediaCreditÖ0Ïpublic unowned string
+get_scopeÌ128Í(string type, string value)ÎGData.AccessRuleÖ0Ïpublic void
+get_sequenceÌ128Í()ÎGData.CalendarEventÖ0
+get_serviceÌ128Í()ÎGData.DownloadStreamÖ0Ïpublic unowned
+get_serviceÌ128Í()ÎGData.UploadStreamÖ0Ïpublic unowned
+get_single_eventsÌ128Í()ÎGData.CalendarQueryÖ0Ïpublic bool
+get_sizeÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic size_t
+get_slugÌ128Í()ÎGData.UploadStreamÖ0Ïpublic unowned string
+get_sort_orderÌ128Í()ÎGData.CalendarQueryÖ0Ïpublic unowned string
+get_sort_orderÌ128Í()ÎGData.ContactsQueryÖ0Ïpublic unowned string
+get_sort_orderÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic GData.YouTubeSortOrder
+get_start_indexÌ128Í()ÎGData.FeedÖ0
+get_start_indexÌ128Í()ÎGData.QueryÖ0Ïpublic int
+get_start_maxÌ128Í(GLib.TimeVal start_max)ÎGData.CalendarQueryÖ0Ïpublic void
+get_start_minÌ128Í(GLib.TimeVal start_min)ÎGData.CalendarQueryÖ0Ïpublic void
+get_start_timeÌ128Í(GLib.TimeVal start_time)ÎGData.GDWhenÖ0Ïpublic void
+get_stateÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned
+get_statusÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned string
+get_streetÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_subregionÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_subtitleÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_suffixÌ128Í()ÎGData.GDNameÖ0Ïpublic unowned string
+get_summaryÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_symbolÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_tagÌ128Í()ÎGData.PicasaWebQueryÖ0Ïpublic unowned string
+get_tagsÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned string
+get_tagsÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_termÌ128Í()ÎGData.CategoryÖ0Ïpublic unowned string
+get_thumbnail_sizeÌ128Í()ÎGData.PicasaWebQueryÖ0Ïpublic unowned string
+get_thumbnail_uriÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic unowned string
+get_thumbnailsÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned
+get_thumbnailsÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned
+get_thumbnailsÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned
+get_timeÌ128Í()ÎGData.MediaThumbnailÖ0Ïpublic int64
+get_timesÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned
+get_times_cleanedÌ128Í()ÎGData.CalendarCalendarÖ0
+get_times_cleanedÌ128Í()ÎGData.CalendarFeedÖ0
+get_timestampÌ128Í(GLib.TimeVal timestamp)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+get_timestampÌ128Í(GLib.TimeVal timestamp)ÎGData.PicasaWebFileÖ0Ïpublic void
+get_timezoneÌ128Í()ÎGData.CalendarCalendarÖ0Ïpublic unowned string
+get_timezoneÌ128Í()ÎGData.CalendarFeedÖ0Ïpublic unowned string
+get_timezoneÌ128Í()ÎGData.CalendarQueryÖ0Ïpublic unowned string
+get_titleÌ128Í()ÎGData.DocumentsQueryÖ0Ïpublic unowned string
+get_titleÌ128Í()ÎGData.EntryÖ0Ïpublic unowned string
+get_titleÌ128Í()ÎGData.FeedÖ0Ïpublic unowned string
+get_titleÌ128Í()ÎGData.GDOrganizationÖ0Ïpublic unowned string
+get_titleÌ128Í()ÎGData.LinkÖ0Ïpublic unowned string
+get_total_resultsÌ128Í()ÎGData.FeedÖ0
+get_transparencyÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned string
+get_uidÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned string
+get_updatedÌ128Í(GLib.TimeVal updated)ÎGData.EntryÖ0Ïpublic void
+get_updatedÌ128Í(GLib.TimeVal updated)ÎGData.FeedÖ0Ïpublic void
+get_updated_maxÌ128Í(GLib.TimeVal updated_max)ÎGData.QueryÖ0Ïpublic void
+get_updated_minÌ128Í(GLib.TimeVal updated_min)ÎGData.QueryÖ0Ïpublic void
+get_upload_uriÌ128Í(GData.DocumentsFolder folder)ÎGData.DocumentsServiceÖ0Ïpublic unowned string
+get_upload_uriÌ128Í()ÎGData.UploadStreamÖ0Ïpublic unowned string
+get_uploadedÌ128Í(GLib.TimeVal uploaded)ÎGData.YouTubeVideoÖ0Ïpublic void
+get_uploaderÌ128Í()ÎGData.YouTubeQueryÖ0Ïpublic GData.YouTubeUploader
+get_uriÌ128Í()ÎGData.AuthorÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.GContactCalendarÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.GContactWebsiteÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.GDPhoneNumberÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.GeneratorÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.LinkÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.MediaContentÖ0Ïpublic unowned string
+get_uriÌ128Í()ÎGData.MediaThumbnailÖ0Ïpublic unowned string
+get_usageÌ128Í()ÎGData.GDPostalAddressÖ0Ïpublic unowned string
+get_userÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic unowned string
+get_userÌ128Í(string username, GLib.Cancellable cancellable)ÎGData.PicasaWebServiceÖ0Ïpublic unowned
+get_userÌ128Í()ÎGData.PicasaWebUserÖ0Ïpublic unowned string
+get_usernameÌ128Í()ÎGData.ServiceÖ0Ïpublic unowned string
+get_value_stringÌ128Í()ÎGData.GDWhenÖ0Ïpublic unowned string
+get_value_stringÌ128Í()ÎGData.GDWhereÖ0Ïpublic unowned string
+get_value_stringÌ128Í()ÎGData.GDWhoÖ0Ïpublic unowned string
+get_versionÌ128Í()ÎGData.GeneratorÖ0Ïpublic unowned string
+get_versionÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_video_idÌ128Í()ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_video_id_from_uriÌ128Í(string video_uri)ÎGData.YouTubeVideoÖ0Ïpublic unowned string
+get_video_statusÌ128Í()ÎGData.PicasaWebFileÖ0Ïpublic unowned string
+get_view_countÌ128Í()ÎGData.YouTubeVideoÖ0
+get_visibilityÌ128Í()ÎGData.CalendarEventÖ0Ïpublic unowned string
+get_visibilityÌ128Í()ÎGData.PicasaWebAlbumÖ0Ïpublic GData.PicasaWebVisibility
+get_visibilityÌ128Í()ÎGData.PicasaWebQueryÖ0Ïpublic GData.PicasaWebVisibility
+get_websitesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic unowned
+get_widthÌ128Í()ÎGData.MediaContentÖ0
+get_widthÌ128Í()ÎGData.MediaThumbnailÖ0
+get_widthÌ128Í()ÎGData.PicasaWebFileÖ0
+get_xmlÌ128Í()ÎGData.ParsableÖ0Ïpublic virtual void
+get_youtube_userÌ128Í()ÎGData.YouTubeServiceÖ0Ïpublic unowned string
+given_nameÌ8ÎGData.GDNameÖ0
+greenÌ8ÎGData.ColorÖ0Ïuint16
+groupÌ8ÎGData.ContactsQueryÖ0
+guests_can_invite_othersÌ8ÎGData.CalendarEventÖ0Ïbool
+guests_can_modifyÌ8ÎGData.CalendarEventÖ0Ïbool
+guests_can_see_guestsÌ8ÎGData.CalendarEventÖ0Ïbool
+has_locationÌ8ÎGData.YouTubeQueryÖ0Ïbool
+has_photoÌ8ÎGData.ContactsContactÖ0Ïbool
+heightÌ8ÎGData.MediaContentÖ0
+heightÌ8ÎGData.MediaThumbnailÖ0
+heightÌ8ÎGData.PicasaWebFileÖ0
+help_uriÌ8ÎGData.YouTubeStateÖ0
+house_nameÌ8ÎGData.GDPostalAddressÖ0
+hrefÌ8ÎGData.GDFeedLinkÖ0
+iconÌ8ÎGData.FeedÖ0
+idÌ8ÎGData.EntryÖ0
+idÌ8ÎGData.FeedÖ0
+image_sizeÌ8ÎGData.PicasaWebQueryÖ0
+image_unique_idÌ8ÎGData.PicasaWebFileÖ0
+insert_albumÌ128Í(GData.PicasaWebAlbum album, GLib.Cancellable cancellable)ÎGData.PicasaWebServiceÖ0Ïpublic unowned
+insert_contactÌ128Í(GData.ContactsContact contact, GLib.Cancellable cancellable)ÎGData.ContactsServiceÖ0Ïpublic unowned
+insert_entryÌ128Í(string upload_uri, GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic unowned
+insert_entry_asyncÌ128Í(string upload_uri, GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic async
+insert_eventÌ128Í(GData.CalendarEvent event, GLib.Cancellable cancellable)ÎGData.CalendarServiceÖ0Ïpublic unowned
+insert_ruleÌ128Í(GData.Service service, GData.AccessRule rule, GLib.Cancellable cancellable)ÎGData.AccessHandlerÖ0Ïpublic unowned
+is_absolute_timeÌ8ÎGData.GDReminderÖ0Ïbool
+is_authenticatedÌ128Í()ÎGData.ServiceÖ0Ïpublic bool
+is_commenting_enabledÌ8ÎGData.PicasaWebAlbumÖ0Ïbool
+is_commenting_enabledÌ8ÎGData.PicasaWebFileÖ0Ïbool
+is_dateÌ8ÎGData.GDWhenÖ0Ïbool
+is_defaultÌ8ÎGData.MediaContentÖ0Ïbool
+is_deletedÌ128Í()ÎGData.ContactsContactÖ0Ïpublic bool
+is_deletedÌ8ÎGData.DocumentsEntryÖ0Ïbool
+is_draftÌ8ÎGData.YouTubeVideoÖ0Ïbool
+is_exceptionÌ128Í()ÎGData.CalendarEventÖ0Ïpublic bool
+is_group_deletedÌ128Í(string href)ÎGData.ContactsContactÖ0Ïpublic bool
+is_hiddenÌ8ÎGData.CalendarCalendarÖ0Ïbool
+is_insertedÌ8ÎGData.EntryÖ0Ïbool
+is_owner_ruleÌ128Í(GData.AccessRule rule)ÎGData.AccessHandlerÖ0Ïpublic abstract bool
+is_primaryÌ8ÎGData.GContactCalendarÖ0Ïbool
+is_primaryÌ8ÎGData.GContactWebsiteÖ0Ïbool
+is_primaryÌ8ÎGData.GDEmailAddressÖ0Ïbool
+is_primaryÌ8ÎGData.GDIMAddressÖ0Ïbool
+is_primaryÌ8ÎGData.GDOrganizationÖ0Ïbool
+is_primaryÌ8ÎGData.GDPhoneNumberÖ0Ïbool
+is_primaryÌ8ÎGData.GDPostalAddressÖ0Ïbool
+is_privateÌ8ÎGData.YouTubeVideoÖ0Ïbool
+is_restricted_in_countryÌ128Í(string country)ÎGData.YouTubeVideoÖ0Ïpublic bool
+is_selectedÌ8ÎGData.CalendarCalendarÖ0Ïbool
+is_strictÌ8ÎGData.QueryÖ0Ïbool
+isoÌ8ÎGData.PicasaWebFileÖ0Ïlong
+items_per_pageÌ8ÎGData.FeedÖ0
+job_descriptionÌ8ÎGData.GDOrganizationÖ0
+keywordsÌ8ÎGData.YouTubeVideoÖ0
+labelÌ8ÎGData.CategoryÖ0
+labelÌ8ÎGData.GContactCalendarÖ0
+labelÌ8ÎGData.GContactEventÖ0
+labelÌ8ÎGData.GContactRelationÖ0
+labelÌ8ÎGData.GContactWebsiteÖ0
+labelÌ8ÎGData.GDEmailAddressÖ0
+labelÌ8ÎGData.GDIMAddressÖ0
+labelÌ8ÎGData.GDOrganizationÖ0
+labelÌ8ÎGData.GDPhoneNumberÖ0
+labelÌ8ÎGData.GDPostalAddressÖ0
+labelÌ8ÎGData.GDWhereÖ0
+labelÌ8ÎGData.MediaCategoryÖ0
+languageÌ8ÎGData.LinkÖ0
+languageÌ8ÎGData.YouTubeQueryÖ0
+last_modified_byÌ8ÎGData.DocumentsEntryÖ0ÏGData.Author
+last_viewedÌ8ÎGData.DocumentsEntryÖ0ÏGLib.TimeVal
+latitudeÌ8ÎGData.PicasaWebAlbumÖ0Ïdouble
+latitudeÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+latitudeÌ8ÎGData.YouTubeQueryÖ0Ïdouble
+lengthÌ8ÎGData.LinkÖ0Ïint
+locationÌ8ÎGData.GDOrganizationÖ0ÏGData.GDWhere
+locationÌ8ÎGData.PicasaWebAlbumÖ0
+locationÌ8ÎGData.PicasaWebQueryÖ0
+locationÌ8ÎGData.YouTubeVideoÖ0
+location_radiusÌ8ÎGData.YouTubeQueryÖ0Ïdouble
+logoÌ8ÎGData.FeedÖ0
+longitudeÌ8ÎGData.PicasaWebAlbumÖ0Ïdouble
+longitudeÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+longitudeÌ8ÎGData.YouTubeQueryÖ0Ïdouble
+look_up_contentÌ128Í(string type)ÎGData.YouTubeVideoÖ0Ïpublic unowned
+look_up_entryÌ128Í(string id)ÎGData.FeedÖ0Ïpublic unowned
+look_up_linkÌ128Í(string rel)ÎGData.EntryÖ0Ïpublic unowned
+look_up_linkÌ128Í(string rel)ÎGData.FeedÖ0Ïpublic unowned
+look_up_linksÌ128Í(string rel)ÎGData.EntryÖ0Ïpublic unowned
+mail_classÌ8ÎGData.GDPostalAddressÖ0
+makeÌ8ÎGData.PicasaWebFileÖ0
+maxÌ8ÎGData.GDRatingÖ0
+max_photos_per_albumÌ8ÎGData.PicasaWebUserÖ0Ïint
+max_ratingÌ8ÎGData.YouTubeVideoÖ0
+max_resultsÌ8ÎGData.QueryÖ0Ïint
+mediumÌ8ÎGData.MediaContentÖ0ÏGData.MediaMedium
+messageÌ8ÎGData.YouTubeStateÖ0
+methodÌ8ÎGData.GDReminderÖ0
+minÌ8ÎGData.GDRatingÖ0
+min_ratingÌ8ÎGData.YouTubeVideoÖ0
+modelÌ8ÎGData.PicasaWebFileÖ0
+move_document_to_folderÌ128Í(GData.DocumentsEntry document, GData.DocumentsFolder folder, GLib.Cancellable cancellable)ÎGData.DocumentsServiceÖ0Ïpublic unowned
+nameÌ8ÎGData.AuthorÖ0
+nameÌ8ÎGData.ContactsContactÖ0ÏGData.GDName
+nameÌ8ÎGData.GContactRelationÖ0
+nameÌ8ÎGData.GDOrganizationÖ0
+nameÌ8ÎGData.GeneratorÖ0
+nameÌ8ÎGData.YouTubeStateÖ0
+neighborhoodÌ8ÎGData.GDPostalAddressÖ0
+next_pageÌ128Í()ÎGData.QueryÖ0Ïpublic void
+nicknameÌ8ÎGData.ContactsContactÖ0
+nicknameÌ8ÎGData.PicasaWebAlbumÖ0
+nicknameÌ8ÎGData.PicasaWebUserÖ0
+num_photosÌ8ÎGData.PicasaWebAlbumÖ0
+num_photos_remainingÌ8ÎGData.PicasaWebAlbumÖ0
+num_ratersÌ8ÎGData.GDRatingÖ0
+numberÌ8ÎGData.GDPhoneNumberÖ0
+order_byÌ8ÎGData.CalendarQueryÖ0
+order_byÌ8ÎGData.ContactsQueryÖ0
+order_byÌ8ÎGData.YouTubeQueryÖ0
+original_event_idÌ8ÎGData.CalendarEventÖ0
+original_event_uriÌ8ÎGData.CalendarEventÖ0
+parse_authentication_responseÌ128Í(uint status, string response_body, int length)ÎGData.ServiceÖ0Ïpublic virtual bool
+parse_error_responseÌ128Í(GData.OperationType operation_type, uint status, string reason_phrase, string response_body, int length)ÎGData.ServiceÖ0Ïpublic virtual void
+parse_timeÌ128Í(string time_string)ÎGData.MediaThumbnailÖ0Ïpublic int64
+parse_xmlÌ128Í(Xml.Doc doc, Xml.Node node)ÎGData.ParsableÖ0Ïpublic virtual bool
+parser_error_quarkÌ128Í()ÎGDataÖ0Ïpublic GLib.Quark
+passwordÌ8ÎGData.ServiceÖ0
+player_uriÌ8ÎGData.YouTubeVideoÖ0
+po_boxÌ8ÎGData.GDPostalAddressÖ0
+positionÌ8ÎGData.PicasaWebFileÖ0Ïdouble
+post_parse_xmlÌ128Í(void* user_data)ÎGData.ParsableÖ0Ïpublic virtual bool
+postcodeÌ8ÎGData.GDPostalAddressÖ0
+pre_get_xmlÌ128Í(GLib.StringBuilder xml_string)ÎGData.ParsableÖ0Ïpublic virtual void
+pre_parse_xmlÌ128Í(Xml.Doc doc, Xml.Node root_node)ÎGData.ParsableÖ0Ïpublic virtual bool
+prefixÌ8ÎGData.GDNameÖ0
+previous_pageÌ128Í()ÎGData.QueryÖ0Ïpublic bool
+protocolÌ8ÎGData.GDIMAddressÖ0
+proxy_uriÌ8ÎGData.ServiceÖ0ÏSoup.URI
+publishedÌ8ÎGData.EntryÖ0ÏGLib.TimeVal
+published_maxÌ8ÎGData.QueryÖ0ÏGLib.TimeVal
+published_minÌ8ÎGData.QueryÖ0ÏGLib.TimeVal
+qÌ8ÎGData.QueryÖ0
+queryÌ128Í(string feed_uri, GData.Query query, GLib.Type entry_type, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.ServiceÖ0Ïpublic unowned
+query_all_albumsÌ128Í(GData.Query? query, string? username, GLib.Cancellable? cancellable, GData.QueryProgressCallback? progress_callback)ÎGData.PicasaWebServiceÖ0Ïpublic unowned
+query_all_albums_asyncÌ128Í(GData.Query? query, string username, GLib.Cancellable? cancellable, GData.QueryProgressCallback progress_callback)ÎGData.PicasaWebServiceÖ0Ïpublic async void
+query_all_calendarsÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.CalendarServiceÖ0Ïpublic unowned
+query_all_calendars_asyncÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.CalendarServiceÖ0Ïpublic async void
+query_asyncÌ128Í(string feed_uri, GData.Query query, GLib.Type entry_type, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.ServiceÖ0Ïpublic async
+query_contactsÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.ContactsServiceÖ0Ïpublic unowned
+query_contacts_asyncÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.ContactsServiceÖ0Ïpublic async void
+query_documentsÌ128Í(GData.DocumentsQuery query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.DocumentsServiceÖ0Ïpublic unowned
+query_documents_asyncÌ128Í(GData.DocumentsQuery query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.DocumentsServiceÖ0Ïpublic async void
+query_eventsÌ128Í(GData.CalendarCalendar calendar, GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.CalendarServiceÖ0Ïpublic unowned
+query_filesÌ128Í(GData.PicasaWebAlbum album, GData.Query? query, GLib.Cancellable? cancellable, GData.QueryProgressCallback? progress_callback)ÎGData.PicasaWebServiceÖ0Ïpublic unowned
+query_own_calendarsÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.CalendarServiceÖ0Ïpublic unowned
+query_own_calendars_asyncÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.CalendarServiceÖ0Ïpublic async void
+query_relatedÌ128Í(GData.YouTubeVideo video, GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.YouTubeServiceÖ0Ïpublic unowned
+query_related_asyncÌ128Í(GData.YouTubeVideo video, GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.YouTubeServiceÖ0Ïpublic async void
+query_single_entryÌ128Í(string entry_id, GData.Query query, GLib.Type entry_type, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic unowned
+query_single_entry_asyncÌ128Í(string entry_id, GData.Query query, GLib.Type entry_type, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic async
+query_standard_feedÌ128Í(GData.YouTubeStandardFeedType feed_type, GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.YouTubeServiceÖ0Ïpublic unowned
+query_standard_feed_asyncÌ128Í(GData.YouTubeStandardFeedType feed_type, GData.Query? query, GLib.Cancellable? cancellable, GData.QueryProgressCallback? progress_callback)ÎGData.YouTubeServiceÖ0Ïpublic async void
+query_videosÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.YouTubeServiceÖ0Ïpublic unowned
+query_videos_asyncÌ128Í(GData.Query query, GLib.Cancellable cancellable, GData.QueryProgressCallback progress_callback, void* progress_user_data)ÎGData.YouTubeServiceÖ0Ïpublic async void
+quota_currentÌ8ÎGData.PicasaWebUserÖ0Ïint64
+quota_limitÌ8ÎGData.PicasaWebUserÖ0Ïint64
+rating_countÌ8ÎGData.YouTubeVideoÖ0
+read_onlyÌ8ÎGData.GDFeedLinkÖ0Ïbool
+reason_codeÌ8ÎGData.YouTubeStateÖ0
+recordedÌ8ÎGData.YouTubeVideoÖ0ÏGLib.TimeVal
+recurrenceÌ8ÎGData.CalendarEventÖ0
+recurrence_expansion_endÌ8ÎGData.CalendarQueryÖ0ÏGLib.TimeVal
+recurrence_expansion_startÌ8ÎGData.CalendarQueryÖ0ÏGLib.TimeVal
+redÌ8ÎGData.ColorÖ0Ïuint16
+regionÌ8ÎGData.GDPostalAddressÖ0
+relÌ8ÎGData.GDFeedLinkÖ0
+relation_typeÌ8ÎGData.GContactCalendarÖ0
+relation_typeÌ8ÎGData.GContactEventÖ0
+relation_typeÌ8ÎGData.GContactJotÖ0
+relation_typeÌ8ÎGData.GContactRelationÖ0
+relation_typeÌ8ÎGData.GContactWebsiteÖ0
+relation_typeÌ8ÎGData.GDEmailAddressÖ0
+relation_typeÌ8ÎGData.GDIMAddressÖ0
+relation_typeÌ8ÎGData.GDOrganizationÖ0
+relation_typeÌ8ÎGData.GDPhoneNumberÖ0
+relation_typeÌ8ÎGData.GDPostalAddressÖ0
+relation_typeÌ8ÎGData.GDWhereÖ0
+relation_typeÌ8ÎGData.GDWhoÖ0
+relation_typeÌ8ÎGData.LinkÖ0
+relationshipÌ8ÎGData.MediaRestrictionÖ0Ïbool
+relative_timeÌ8ÎGData.GDReminderÖ0Ïint
+remove_all_calendarsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_email_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_eventsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_im_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_jotsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_organizationsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_phone_numbersÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_postal_addressesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_relationsÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_all_websitesÌ128Í()ÎGData.ContactsContactÖ0Ïpublic void
+remove_document_from_folderÌ128Í(GData.DocumentsEntry document, GData.DocumentsFolder folder, GLib.Cancellable cancellable)ÎGData.DocumentsServiceÖ0Ïpublic unowned
+remove_groupÌ128Í(string href)ÎGData.ContactsContactÖ0Ïpublic void
+restrictionÌ8ÎGData.YouTubeQueryÖ0
+rightsÌ8ÎGData.EntryÖ0
+roleÌ8ÎGData.AccessRuleÖ0
+roleÌ8ÎGData.MediaCreditÖ0
+rotationÌ8ÎGData.PicasaWebFileÖ0
+safe_searchÌ8ÎGData.YouTubeQueryÖ0ÏGData.YouTubeSafeSearch
+schemeÌ8ÎGData.CategoryÖ0
+schemeÌ8ÎGData.MediaCategoryÖ0
+schemeÌ8ÎGData.MediaCreditÖ0
+schemeÌ8ÎGData.MediaRatingÖ0
+scope_typeÌ8ÎGData.AccessRuleÖ0
+scope_valueÌ8ÎGData.AccessRuleÖ0
+sequenceÌ8ÎGData.CalendarEventÖ0
+serviceÌ8ÎGData.DownloadStreamÖ0ÏGData.Service
+serviceÌ8ÎGData.UploadStreamÖ0ÏGData.Service
+set_absolute_timeÌ128Í(GLib.TimeVal absolute_time)ÎGData.GDReminderÖ0Ïpublic void
+set_access_controlÌ128Í(string action, GData.YouTubePermission permission)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_additional_nameÌ128Í(string additional_name)ÎGData.GDNameÖ0Ïpublic void
+set_addressÌ128Í(string address)ÎGData.GDEmailAddressÖ0Ïpublic void
+set_addressÌ128Í(string address)ÎGData.GDIMAddressÖ0Ïpublic void
+set_addressÌ128Í(string address)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_ageÌ128Í(GData.YouTubeAge age)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_agentÌ128Í(string agent)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_album_idÌ128Í(string album_id)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_anyone_can_add_selfÌ128Í(bool anyone_can_add_self)ÎGData.CalendarEventÖ0Ïpublic void
+set_aspect_ratioÌ128Í(string aspect_ratio)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_authorÌ128Í(string author)ÎGData.QueryÖ0Ïpublic void
+set_birthdayÌ128Í(GLib.Date birthday, bool birthday_has_year)ÎGData.ContactsContactÖ0Ïpublic void
+set_bounding_boxÌ128Í(double north, double east, double south, double west)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_captionÌ128Í(string caption)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_categoriesÌ128Í(string categories)ÎGData.QueryÖ0Ïpublic void
+set_categoryÌ128Í(string category)ÎGData.MediaCategoryÖ0Ïpublic void
+set_categoryÌ128Í(GData.MediaCategory category)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_checksumÌ128Í(string checksum)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_cityÌ128Í(string city)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_clientÌ128Í(string client)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_colorÌ128Í(GData.Color color)ÎGData.CalendarCalendarÖ0Ïpublic void
+set_contentÌ128Í(string content)ÎGData.EntryÖ0Ïpublic void
+set_contentÌ128Í(string content)ÎGData.GContactJotÖ0Ïpublic void
+set_content_typeÌ128Í(string content_type)ÎGData.LinkÖ0Ïpublic void
+set_coordinatesÌ128Í(double latitude, double longitude)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_coordinatesÌ128Í(double latitude, double longitude)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_countryÌ128Í(string country, string country_code)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_dateÌ128Í(GLib.Date date)ÎGData.GContactEventÖ0Ïpublic void
+set_departmentÌ128Í(string department)ÎGData.GDOrganizationÖ0Ïpublic void
+set_descriptionÌ128Í(string description)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_display_nameÌ128Í(string display_name)ÎGData.GDEmailAddressÖ0Ïpublic void
+set_email_addressÌ128Í(string email_address)ÎGData.AuthorÖ0Ïpublic void
+set_email_addressÌ128Í(string email_address)ÎGData.GDWhoÖ0Ïpublic void
+set_end_timeÌ128Í(GLib.TimeVal end_time)ÎGData.GDWhenÖ0Ïpublic void
+set_etagÌ128Í(string etag)ÎGData.QueryÖ0Ïpublic void
+set_extended_propertyÌ128Í(string name, string value)ÎGData.ContactsContactÖ0Ïpublic bool
+set_family_nameÌ128Í(string family_name)ÎGData.GDNameÖ0Ïpublic void
+set_folder_idÌ128Í(string folder_id)ÎGData.DocumentsQueryÖ0Ïpublic void
+set_formatÌ128Í(GData.YouTubeFormat format)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_full_nameÌ128Í(string full_name)ÎGData.GDNameÖ0Ïpublic void
+set_future_eventsÌ128Í(bool future_events)ÎGData.CalendarQueryÖ0Ïpublic void
+set_given_nameÌ128Í(string given_name)ÎGData.GDNameÖ0Ïpublic void
+set_groupÌ128Í(string group)ÎGData.ContactsQueryÖ0Ïpublic void
+set_guests_can_invite_othersÌ128Í(bool guests_can_invite_others)ÎGData.CalendarEventÖ0Ïpublic void
+set_guests_can_modifyÌ128Í(bool guests_can_modify)ÎGData.CalendarEventÖ0Ïpublic void
+set_guests_can_see_guestsÌ128Í(bool guests_can_see_guests)ÎGData.CalendarEventÖ0Ïpublic void
+set_house_nameÌ128Í(string house_name)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_image_sizeÌ128Í(string image_size)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_is_commenting_enabledÌ128Í(bool is_commenting_enabled)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_is_commenting_enabledÌ128Í(bool is_commenting_enabled)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_is_dateÌ128Í(bool is_date)ÎGData.GDWhenÖ0Ïpublic void
+set_is_draftÌ128Í(bool is_draft)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_is_hiddenÌ128Í(bool is_hidden)ÎGData.CalendarCalendarÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GContactCalendarÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GContactWebsiteÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GDEmailAddressÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GDIMAddressÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GDOrganizationÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GDPhoneNumberÖ0Ïpublic void
+set_is_primaryÌ128Í(bool is_primary)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_is_privateÌ128Í(bool is_private)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_is_selectedÌ128Í(bool is_selected)ÎGData.CalendarCalendarÖ0Ïpublic void
+set_is_strictÌ128Í(bool is_strict)ÎGData.QueryÖ0Ïpublic void
+set_job_descriptionÌ128Í(string job_description)ÎGData.GDOrganizationÖ0Ïpublic void
+set_keywordsÌ128Í(string keywords)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.CategoryÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GContactCalendarÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GContactEventÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GContactRelationÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GContactWebsiteÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDEmailAddressÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDIMAddressÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDOrganizationÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDPhoneNumberÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.GDWhereÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎGData.MediaCategoryÖ0Ïpublic void
+set_languageÌ128Í(string language)ÎGData.LinkÖ0Ïpublic void
+set_languageÌ128Í(string language)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_lengthÌ128Í(int length)ÎGData.LinkÖ0Ïpublic void
+set_locationÌ128Í(GData.GDWhere location)ÎGData.GDOrganizationÖ0Ïpublic void
+set_locationÌ128Í(string location)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_locationÌ128Í(string location)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_locationÌ128Í(double latitude, double longitude, double radius, bool has_location)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_locationÌ128Í(string location)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_mail_classÌ128Í(string mail_class)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_max_resultsÌ128Í(int max_results)ÎGData.QueryÖ0Ïpublic void
+set_methodÌ128Í(string method)ÎGData.GDReminderÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎGData.AuthorÖ0Ïpublic void
+set_nameÌ128Í(GData.GDName name)ÎGData.ContactsContactÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎGData.GContactRelationÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎGData.GDOrganizationÖ0Ïpublic void
+set_neighborhoodÌ128Í(string neighborhood)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_nicknameÌ128Í(string nickname)ÎGData.ContactsContactÖ0Ïpublic void
+set_numberÌ128Í(string number)ÎGData.GDPhoneNumberÖ0Ïpublic void
+set_order_byÌ128Í(string order_by)ÎGData.CalendarQueryÖ0Ïpublic void
+set_order_byÌ128Í(string order_by)ÎGData.ContactsQueryÖ0Ïpublic void
+set_order_byÌ128Í(string order_by)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_photoÌ128Í(GData.Service service, string data, size_t length, GLib.Cancellable cancellable)ÎGData.ContactsContactÖ0Ïpublic bool
+set_po_boxÌ128Í(string po_box)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_positionÌ128Í(double position)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_postcodeÌ128Í(string postcode)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_prefixÌ128Í(string prefix)ÎGData.GDNameÖ0Ïpublic void
+set_protocolÌ128Í(string protocol)ÎGData.GDIMAddressÖ0Ïpublic void
+set_proxy_uriÌ128Í(Soup.URI proxy_uri)ÎGData.ServiceÖ0Ïpublic void
+set_published_maxÌ128Í(GLib.TimeVal published_max)ÎGData.QueryÖ0Ïpublic void
+set_published_minÌ128Í(GLib.TimeVal published_min)ÎGData.QueryÖ0Ïpublic void
+set_qÌ128Í(string q)ÎGData.QueryÖ0Ïpublic void
+set_recordedÌ128Í(GLib.TimeVal recorded)ÎGData.YouTubeVideoÖ0Ïpublic void
+set_recurrenceÌ128Í(string recurrence)ÎGData.CalendarEventÖ0Ïpublic void
+set_recurrence_expansion_endÌ128Í(GLib.TimeVal end)ÎGData.CalendarQueryÖ0Ïpublic void
+set_recurrence_expansion_startÌ128Í(GLib.TimeVal start)ÎGData.CalendarQueryÖ0Ïpublic void
+set_regionÌ128Í(string region)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GContactCalendarÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GContactEventÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GContactJotÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GContactRelationÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GContactWebsiteÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDEmailAddressÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDIMAddressÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDOrganizationÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDPhoneNumberÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDWhereÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.GDWhoÖ0Ïpublic void
+set_relation_typeÌ128Í(string relation_type)ÎGData.LinkÖ0Ïpublic void
+set_relative_timeÌ128Í(int relative_time)ÎGData.GDReminderÖ0Ïpublic void
+set_restrictionÌ128Í(string restriction)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_rightsÌ128Í(string rights)ÎGData.EntryÖ0Ïpublic void
+set_roleÌ128Í(string role)ÎGData.AccessRuleÖ0Ïpublic void
+set_rotationÌ128Í(uint rotation)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_safe_searchÌ128Í(GData.YouTubeSafeSearch safe_search)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_schemeÌ128Í(string scheme)ÎGData.CategoryÖ0Ïpublic void
+set_schemeÌ128Í(string scheme)ÎGData.MediaCategoryÖ0Ïpublic void
+set_scopeÌ128Í(string type, string value)ÎGData.AccessRuleÖ0Ïpublic void
+set_sequenceÌ128Í(uint sequence)ÎGData.CalendarEventÖ0Ïpublic void
+set_show_deletedÌ128Í(bool show_deleted)ÎGData.ContactsQueryÖ0Ïpublic void
+set_show_deletedÌ128Í(bool show_deleted)ÎGData.DocumentsQueryÖ0Ïpublic void
+set_show_foldersÌ128Í(bool show_folders)ÎGData.DocumentsQueryÖ0Ïpublic void
+set_single_eventsÌ128Í(bool single_events)ÎGData.CalendarQueryÖ0Ïpublic void
+set_sort_orderÌ128Í(string sort_order)ÎGData.CalendarQueryÖ0Ïpublic void
+set_sort_orderÌ128Í(string sort_order)ÎGData.ContactsQueryÖ0Ïpublic void
+set_sort_orderÌ128Í(GData.YouTubeSortOrder sort_order)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_start_indexÌ128Í(int start_index)ÎGData.QueryÖ0Ïpublic void
+set_start_maxÌ128Í(GLib.TimeVal start_max)ÎGData.CalendarQueryÖ0Ïpublic void
+set_start_minÌ128Í(GLib.TimeVal start_min)ÎGData.CalendarQueryÖ0Ïpublic void
+set_start_timeÌ128Í(GLib.TimeVal start_time)ÎGData.GDWhenÖ0Ïpublic void
+set_statusÌ128Í(string status)ÎGData.CalendarEventÖ0Ïpublic void
+set_streetÌ128Í(string street)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_subregionÌ128Í(string subregion)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_suffixÌ128Í(string suffix)ÎGData.GDNameÖ0Ïpublic void
+set_summaryÌ128Í(string summary)ÎGData.EntryÖ0Ïpublic void
+set_symbolÌ128Í(string symbol)ÎGData.GDOrganizationÖ0Ïpublic void
+set_tagÌ128Í(string tag)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_tagsÌ128Í(string tags)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_tagsÌ128Í(string tags)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_termÌ128Í(string term)ÎGData.CategoryÖ0Ïpublic void
+set_thumbnail_sizeÌ128Í(string thumbnail_size)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_timestampÌ128Í(GLib.TimeVal timestamp)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_timestampÌ128Í(GLib.TimeVal timestamp)ÎGData.PicasaWebFileÖ0Ïpublic void
+set_timezoneÌ128Í(string _timezone)ÎGData.CalendarCalendarÖ0Ïpublic void
+set_timezoneÌ128Í(string _timezone)ÎGData.CalendarQueryÖ0Ïpublic void
+set_titleÌ128Í(string title, bool exact_title)ÎGData.DocumentsQueryÖ0Ïpublic void
+set_titleÌ128Í(string title)ÎGData.EntryÖ0Ïpublic void
+set_titleÌ128Í(string title)ÎGData.GDOrganizationÖ0Ïpublic void
+set_titleÌ128Í(string title)ÎGData.LinkÖ0Ïpublic void
+set_transparencyÌ128Í(string transparency)ÎGData.CalendarEventÖ0Ïpublic void
+set_uidÌ128Í(string uid)ÎGData.CalendarEventÖ0Ïpublic void
+set_updated_maxÌ128Í(GLib.TimeVal updated_max)ÎGData.QueryÖ0Ïpublic void
+set_updated_minÌ128Í(GLib.TimeVal updated_min)ÎGData.QueryÖ0Ïpublic void
+set_uploaderÌ128Í(GData.YouTubeUploader uploader)ÎGData.YouTubeQueryÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGData.AuthorÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGData.GContactCalendarÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGData.GContactWebsiteÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGData.GDPhoneNumberÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGData.LinkÖ0Ïpublic void
+set_usageÌ128Í(string usage)ÎGData.GDPostalAddressÖ0Ïpublic void
+set_value_stringÌ128Í(string value_string)ÎGData.GDWhenÖ0Ïpublic void
+set_value_stringÌ128Í(string value_string)ÎGData.GDWhereÖ0Ïpublic void
+set_value_stringÌ128Í(string value_string)ÎGData.GDWhoÖ0Ïpublic void
+set_visibilityÌ128Í(string visibility)ÎGData.CalendarEventÖ0Ïpublic void
+set_visibilityÌ128Í(GData.PicasaWebVisibility visibility)ÎGData.PicasaWebAlbumÖ0Ïpublic void
+set_visibilityÌ128Í(GData.PicasaWebVisibility visibility)ÎGData.PicasaWebQueryÖ0Ïpublic void
+set_writers_can_inviteÌ128Í(bool writers_can_invite)ÎGData.DocumentsEntryÖ0Ïpublic void
+show_deletedÌ8ÎGData.ContactsQueryÖ0Ïbool
+show_deletedÌ8ÎGData.DocumentsQueryÖ0Ïbool
+show_foldersÌ8ÎGData.DocumentsQueryÖ0Ïbool
+single_eventsÌ8ÎGData.CalendarQueryÖ0Ïbool
+sizeÌ8ÎGData.PicasaWebFileÖ0
+slugÌ8ÎGData.UploadStreamÖ0
+sort_orderÌ8ÎGData.CalendarQueryÖ0
+sort_orderÌ8ÎGData.ContactsQueryÖ0
+sort_orderÌ8ÎGData.YouTubeQueryÖ0ÏGData.YouTubeSortOrder
+spreadsheet_serviceÌ8ÎGData.DocumentsServiceÖ0ÏGData.Service
+start_indexÌ8ÎGData.FeedÖ0
+start_indexÌ8ÎGData.QueryÖ0Ïint
+start_maxÌ8ÎGData.CalendarQueryÖ0ÏGLib.TimeVal
+start_minÌ8ÎGData.CalendarQueryÖ0ÏGLib.TimeVal
+start_timeÌ8ÎGData.GDWhenÖ0ÏGLib.TimeVal
+stateÌ8ÎGData.YouTubeVideoÖ0ÏGData.YouTubeState
+statusÌ8ÎGData.CalendarEventÖ0
+streetÌ8ÎGData.GDPostalAddressÖ0
+subregionÌ8ÎGData.GDPostalAddressÖ0
+subtitleÌ8ÎGData.FeedÖ0
+suffixÌ8ÎGData.GDNameÖ0
+summaryÌ8ÎGData.EntryÖ0
+symbolÌ8ÎGData.GDOrganizationÖ0
+tagÌ8ÎGData.PicasaWebQueryÖ0
+tagsÌ8ÎGData.PicasaWebAlbumÖ0
+tagsÌ8ÎGData.PicasaWebFileÖ0
+termÌ8ÎGData.CategoryÖ0
+thumbnail_sizeÌ8ÎGData.PicasaWebQueryÖ0
+thumbnail_uriÌ8ÎGData.PicasaWebUserÖ0
+timeÌ8ÎGData.MediaThumbnailÖ0Ïint64
+times_cleanedÌ8ÎGData.CalendarCalendarÖ0
+times_cleanedÌ8ÎGData.CalendarFeedÖ0
+timestampÌ8ÎGData.PicasaWebAlbumÖ0ÏGLib.TimeVal
+timestampÌ8ÎGData.PicasaWebFileÖ0ÏGLib.TimeVal
+timezoneÌ8ÎGData.CalendarCalendarÖ0
+timezoneÌ8ÎGData.CalendarFeedÖ0
+timezoneÌ8ÎGData.CalendarQueryÖ0
+titleÌ8ÎGData.DocumentsQueryÖ0
+titleÌ8ÎGData.EntryÖ0
+titleÌ8ÎGData.FeedÖ0
+titleÌ8ÎGData.GDOrganizationÖ0
+titleÌ8ÎGData.LinkÖ0
+to_hexadecimalÌ128Í()ÎGData.ColorÖ0Ïpublic unowned string
+total_resultsÌ8ÎGData.FeedÖ0
+transparencyÌ8ÎGData.CalendarEventÖ0
+uidÌ8ÎGData.CalendarEventÖ0
+update_contactÌ128Í(GData.ContactsContact contact, GLib.Cancellable cancellable)ÎGData.ContactsServiceÖ0Ïpublic unowned
+update_documentÌ128Í(GData.DocumentsEntry document, GLib.File document_file, GLib.Cancellable cancellable)ÎGData.DocumentsServiceÖ0Ïpublic unowned
+update_entryÌ128Í(GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic unowned
+update_entry_asyncÌ128Í(GData.Entry entry, GLib.Cancellable cancellable)ÎGData.ServiceÖ0Ïpublic async
+update_ruleÌ128Í(GData.Service service, GData.AccessRule rule, GLib.Cancellable cancellable)ÎGData.AccessHandlerÖ0Ïpublic unowned
+updatedÌ8ÎGData.EntryÖ0ÏGLib.TimeVal
+updatedÌ8ÎGData.FeedÖ0ÏGLib.TimeVal
+updated_maxÌ8ÎGData.QueryÖ0ÏGLib.TimeVal
+updated_minÌ8ÎGData.QueryÖ0ÏGLib.TimeVal
+upload_documentÌ128Í(GData.DocumentsEntry document, GLib.File document_file, GData.DocumentsFolder folder, GLib.Cancellable cancellable)ÎGData.DocumentsServiceÖ0Ïpublic unowned
+upload_fileÌ128Í(GData.PicasaWebAlbum album, GData.PicasaWebFile file_entry, GLib.File file_data, GLib.Cancellable cancellable)ÎGData.PicasaWebServiceÖ0Ïpublic unowned
+upload_file_asyncÌ128Í(GData.PicasaWebAlbum album, GData.PicasaWebFile file_entry, GLib.File file_data, GLib.Cancellable? cancellable = null)ÎGData.PicasaWebServiceÖ0Ïpublic async
+upload_uriÌ8ÎGData.UploadStreamÖ0
+upload_videoÌ128Í(GData.YouTubeVideo video, GLib.File video_file, GLib.Cancellable cancellable)ÎGData.YouTubeServiceÖ0Ïpublic unowned
+uploadedÌ8ÎGData.YouTubeVideoÖ0ÏGLib.TimeVal
+uploaderÌ8ÎGData.YouTubeQueryÖ0ÏGData.YouTubeUploader
+uriÌ8ÎGData.AuthorÖ0
+uriÌ8ÎGData.GContactCalendarÖ0
+uriÌ8ÎGData.GContactWebsiteÖ0
+uriÌ8ÎGData.GDPhoneNumberÖ0
+uriÌ8ÎGData.GeneratorÖ0
+uriÌ8ÎGData.LinkÖ0
+uriÌ8ÎGData.MediaContentÖ0
+uriÌ8ÎGData.MediaThumbnailÖ0
+usageÌ8ÎGData.GDPostalAddressÖ0
+userÌ8ÎGData.PicasaWebAlbumÖ0
+userÌ8ÎGData.PicasaWebUserÖ0
+usernameÌ8ÎGData.ServiceÖ0
+value_stringÌ8ÎGData.GDWhenÖ0
+value_stringÌ8ÎGData.GDWhereÖ0
+value_stringÌ8ÎGData.GDWhoÖ0
+versionÌ8ÎGData.GeneratorÖ0
+versionÌ8ÎGData.PicasaWebFileÖ0
+video_idÌ8ÎGData.YouTubeVideoÖ0
+video_statusÌ8ÎGData.PicasaWebFileÖ0
+view_countÌ8ÎGData.YouTubeVideoÖ0
+visibilityÌ8ÎGData.CalendarEventÖ0
+visibilityÌ8ÎGData.PicasaWebAlbumÖ0ÏGData.PicasaWebVisibility
+visibilityÌ8ÎGData.PicasaWebQueryÖ0Ïint
+widthÌ8ÎGData.MediaContentÖ0
+widthÌ8ÎGData.MediaThumbnailÖ0
+widthÌ8ÎGData.PicasaWebFileÖ0
+writers_can_inviteÌ8ÎGData.DocumentsEntryÖ0Ïbool
+youtube_userÌ8ÎGData.YouTubeServiceÖ0

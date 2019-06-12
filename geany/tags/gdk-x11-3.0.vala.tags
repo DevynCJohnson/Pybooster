@@ -1,0 +1,77 @@
+# format=tagmanager
+GdkÌ256Ö0
+X11AppLaunchContextÌ1ÎGdkÖ0
+X11AppLaunchContextÌ128Í()ÎGdk.X11AppLaunchContextÖ0
+X11AppLaunchContextClassÌ1ÎGdkÖ0
+X11CursorÌ1ÎGdkÖ0
+X11CursorÌ128Í()ÎGdk.X11CursorÖ0
+X11CursorClassÌ1ÎGdkÖ0
+X11DisplayÌ1ÎGdkÖ0
+X11DisplayÌ128Í()ÎGdk.X11DisplayÖ0
+X11DisplayClassÌ1ÎGdkÖ0
+X11DisplayManagerÌ1ÎGdkÖ0
+X11DisplayManagerÌ128Í()ÎGdk.X11DisplayManagerÖ0
+X11DisplayManagerClassÌ1ÎGdkÖ0
+X11DragContextÌ1ÎGdkÖ0
+X11DragContextÌ128Í()ÎGdk.X11DragContextÖ0
+X11DragContextClassÌ1ÎGdkÖ0
+X11KeymapÌ1ÎGdkÖ0
+X11KeymapÌ128Í()ÎGdk.X11KeymapÖ0
+X11KeymapClassÌ1ÎGdkÖ0
+X11ScreenÌ1ÎGdkÖ0
+X11ScreenÌ128Í()ÎGdk.X11ScreenÖ0
+X11ScreenClassÌ1ÎGdkÖ0
+X11VisualÌ1ÎGdkÖ0
+X11VisualÌ128Í()ÎGdk.X11VisualÖ0
+X11VisualClassÌ1ÎGdkÖ0
+X11WindowÌ1ÎGdkÖ0
+X11WindowÌ128Í()ÎGdk.X11WindowÖ0
+X11WindowClassÌ1ÎGdkÖ0
+broadcast_startup_messageÌ128Í(Gdk.Display display, string message_type)ÎGdk.X11DisplayÖ0Ïpublic void
+error_trap_popÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic int
+error_trap_pop_ignoredÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic void
+error_trap_pushÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic void
+foreign_new_for_displayÌ128Í(Gdk.Display display, X.Window window)ÎGdk.X11WindowÖ0Ïpublic unowned
+get_monitor_outputÌ128Í(Gdk.Screen screen, int monitor_num)ÎGdk.X11ScreenÖ0Ïpublic X.ID
+get_screen_numberÌ128Í(Gdk.Screen screen)ÎGdk.X11ScreenÖ0Ïpublic int
+get_startup_notification_idÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic unowned string
+get_user_timeÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic uint32
+get_window_manager_nameÌ128Í(Gdk.Screen screen)ÎGdk.X11ScreenÖ0Ïpublic unowned string
+get_xcursorÌ128Í(Gdk.Cursor cursor)ÎGdk.X11CursorÖ0Ïpublic unowned
+get_xdisplayÌ128Í(Gdk.Cursor cursor)ÎGdk.X11CursorÖ0Ïpublic unowned
+get_xdisplayÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic unowned
+get_xidÌ128Í(Gdk.Window window)ÎGdk.X11WindowÖ0Ïpublic X.Window
+get_xscreenÌ128Í(Gdk.Screen screen)ÎGdk.X11ScreenÖ0Ïpublic unowned
+get_xvisualÌ128Í(Gdk.Visual visual)ÎGdk.X11VisualÖ0Ïpublic unowned
+grabÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic void
+lookup_for_displayÌ128Í(Gdk.Display display, X.Window window)ÎGdk.X11WindowÖ0Ïpublic unowned
+lookup_visualÌ128Í(Gdk.Screen screen, uint32 xvisualid)ÎGdk.X11ScreenÖ0Ïpublic unowned
+move_to_current_desktopÌ128Í(Gdk.Window window)ÎGdk.X11WindowÖ0Ïpublic void
+set_cursor_themeÌ128Í(Gdk.Display display, string theme, int size)ÎGdk.X11DisplayÖ0Ïpublic void
+set_startup_notification_idÌ128Í(Gdk.Display display, string startup_id)ÎGdk.X11DisplayÖ0Ïpublic void
+set_user_timeÌ128Í(Gdk.Window window, uint32 timestamp)ÎGdk.X11WindowÖ0Ïpublic void
+string_to_compound_textÌ128Í(Gdk.Display display, string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ÎGdk.X11DisplayÖ0Ïpublic int
+supports_net_wm_hintÌ128Í(Gdk.Screen screen, Gdk.Atom property)ÎGdk.X11ScreenÖ0Ïpublic bool
+text_property_to_text_listÌ128Í(Gdk.Display display, Gdk.Atom encoding, int format, uchar[] text, int length, string list)ÎGdk.X11DisplayÖ0Ïpublic int
+ungrabÌ128Í(Gdk.Display display)ÎGdk.X11DisplayÖ0Ïpublic void
+utf8_to_compound_textÌ128Í(Gdk.Display display, string str, out Gdk.Atom encoding, int format, uchar[] ctext, int length)ÎGdk.X11DisplayÖ0Ïpublic bool
+window_manager_changedÌ128Í()ÎGdk.X11ScreenÖ0Ïpublic virtual signal void
+x11_atom_to_xatomÌ128Í(Gdk.Atom atom)ÎGdkÖ0Ïpublic X.Atom
+x11_atom_to_xatom_for_displayÌ128Í(Gdk.Display display, Gdk.Atom atom)ÎGdkÖ0Ïpublic X.Atom
+x11_free_compound_textÌ128Í(uchar[] ctext)ÎGdkÖ0Ïpublic void
+x11_free_text_listÌ128Í(string list)ÎGdkÖ0Ïpublic void
+x11_get_default_root_xwindowÌ128Í()ÎGdkÖ0Ïpublic X.Window
+x11_get_default_screenÌ128Í()ÎGdkÖ0Ïpublic int
+x11_get_default_xdisplayÌ128Í()ÎGdkÖ0Ïpublic unowned
+x11_get_server_timeÌ128Í(Gdk.Window window)ÎGdkÖ0Ïpublic uint32
+x11_get_xatom_by_nameÌ128Í(string atom_name)ÎGdkÖ0Ïpublic X.Atom
+x11_get_xatom_by_name_for_displayÌ128Í(Gdk.Display display, string atom_name)ÎGdkÖ0Ïpublic X.Atom
+x11_get_xatom_nameÌ128Í(X.Atom xatom)ÎGdkÖ0Ïpublic unowned string
+x11_get_xatom_name_for_displayÌ128Í(Gdk.Display display, X.Atom xatom)ÎGdkÖ0Ïpublic unowned string
+x11_grab_serverÌ128Í()ÎGdkÖ0Ïpublic void
+x11_lookup_xdisplayÌ128Í(X.Display xdisplay)ÎGdkÖ0Ïpublic unowned
+x11_register_standard_event_typeÌ128Í(Gdk.Display display, int event_base, int n_events)ÎGdkÖ0Ïpublic void
+x11_set_sm_client_idÌ128Í(string sm_client_id)ÎGdkÖ0Ïpublic void
+x11_ungrab_serverÌ128Í()ÎGdkÖ0Ïpublic void
+x11_xatom_to_atomÌ128Í(X.Atom xatom)ÎGdkÖ0Ïpublic Gdk.Atom
+x11_xatom_to_atom_for_displayÌ128Í(Gdk.Display display, X.Atom xatom)ÎGdkÖ0Ïpublic Gdk.Atom

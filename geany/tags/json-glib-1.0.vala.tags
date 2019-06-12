@@ -1,0 +1,189 @@
+# format=tagmanager
+ARRAYÌ4ÎJson.NodeTypeÖ0
+ArrayÌ1ÎJsonÖ0
+ArrayÌ128Í()ÎJson.ArrayÖ0
+ArrayForeachÌ128Í(Json.Array array, uint index_, Json.Node element_node)ÎJsonÖ0Ïpublic delegate void
+BoxedDeserializeFuncÌ128Í(Json.Node node)ÎJsonÖ0Ïpublic delegate void *
+BoxedSerializeFuncÌ128Í(void* boxed)ÎJsonÖ0Ïpublic delegate unowned
+BuilderÌ1ÎJsonÖ0
+BuilderÌ128Í()ÎJson.BuilderÖ0
+GeneratorÌ1ÎJsonÖ0
+GeneratorÌ128Í()ÎJson.GeneratorÖ0
+INVALID_BAREWORDÌ4ÎJson.ParserErrorÖ0
+INVALID_INDEXÌ4ÎJson.ReaderErrorÖ0
+INVALID_MEMBERÌ4ÎJson.ReaderErrorÖ0
+JsonÌ256Ö0
+MAJOR_VERSIONÌ8ÎJsonÖ0Ïint
+MICRO_VERSIONÌ8ÎJsonÖ0Ïint
+MINOR_VERSIONÌ8ÎJsonÖ0Ïint
+MISSING_COLONÌ4ÎJson.ParserErrorÖ0
+MISSING_COMMAÌ4ÎJson.ParserErrorÖ0
+NO_ARRAYÌ4ÎJson.ReaderErrorÖ0
+NO_OBJECTÌ4ÎJson.ReaderErrorÖ0
+NULLÌ4ÎJson.NodeTypeÖ0
+NodeÌ1ÎJsonÖ0
+NodeÌ128Í(Json.NodeType type)ÎJson.NodeÖ0
+NodeTypeÌ2ÎJsonÖ0
+OBJECTÌ4ÎJson.NodeTypeÖ0
+ObjectÌ1ÎJsonÖ0
+ObjectÌ128Í()ÎJson.ObjectÖ0
+ObjectForeachÌ128Í(Json.Object object, string member_name, Json.Node member_node)ÎJsonÖ0Ïpublic delegate void
+PARSEÌ4ÎJson.ParserErrorÖ0
+ParserÌ1ÎJsonÖ0
+ParserÌ128Í()ÎJson.ParserÖ0
+ParserErrorÌ2ÎJsonÖ0
+ReaderÌ1ÎJsonÖ0
+ReaderÌ128Í(Json.Node node)ÎJson.ReaderÖ0
+ReaderErrorÌ2ÎJsonÖ0
+SerializableÌ32ÎJsonÖ0
+TRAILING_COMMAÌ4ÎJson.ParserErrorÖ0
+UNKNOWNÌ4ÎJson.ParserErrorÖ0
+VALUEÌ4ÎJson.NodeTypeÖ0
+VERSION_HEXÌ8ÎJsonÖ0Ïint
+VERSION_SÌ8ÎJsonÖ0
+add_array_elementÌ128Í(owned Json.Array value)ÎJson.ArrayÖ0Ïpublic void
+add_boolean_elementÌ128Í(bool value)ÎJson.ArrayÖ0Ïpublic void
+add_boolean_valueÌ128Í(bool value)ÎJson.BuilderÖ0Ïpublic unowned
+add_double_elementÌ128Í(double value)ÎJson.ArrayÖ0Ïpublic void
+add_double_valueÌ128Í(double value)ÎJson.BuilderÖ0Ïpublic unowned
+add_elementÌ128Í(owned Json.Node node)ÎJson.ArrayÖ0Ïpublic void
+add_int_elementÌ128Í(int64 value)ÎJson.ArrayÖ0Ïpublic void
+add_int_valueÌ128Í(int64 value)ÎJson.BuilderÖ0Ïpublic unowned
+add_memberÌ128Í(string member_name, owned Json.Node node)ÎJson.ObjectÖ0Ïpublic void
+add_null_elementÌ128Í()ÎJson.ArrayÖ0Ïpublic void
+add_null_valueÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+add_object_elementÌ128Í(owned Json.Object value)ÎJson.ArrayÖ0Ïpublic void
+add_string_elementÌ128Í(string value)ÎJson.ArrayÖ0Ïpublic void
+add_string_valueÌ128Í(string value)ÎJson.BuilderÖ0Ïpublic unowned
+add_valueÌ128Í(Json.Node node)ÎJson.BuilderÖ0Ïpublic unowned
+array_elementÌ128Í(Json.Array array, int index_)ÎJson.ParserÖ0Ïpublic virtual signal void
+array_endÌ128Í(Json.Array array)ÎJson.ParserÖ0Ïpublic virtual signal void
+array_startÌ128Í()ÎJson.ParserÖ0Ïpublic virtual signal void
+begin_arrayÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+begin_objectÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+boxed_can_deserializeÌ128Í(GLib.Type gboxed_type, Json.NodeType node_type)ÎJsonÖ0Ïpublic bool
+boxed_can_serializeÌ128Í(GLib.Type gboxed_type, Json.NodeType node_type)ÎJsonÖ0Ïpublic bool
+boxed_deserializeÌ128Í(GLib.Type gboxed_type, Json.Node node)ÎJsonÖ0Ïpublic void *
+boxed_register_deserialize_funcÌ128Í(GLib.Type gboxed_type, Json.NodeType node_type, Json.BoxedDeserializeFunc deserialize_func)ÎJsonÖ0Ïpublic void
+boxed_register_serialize_funcÌ128Í(GLib.Type gboxed_type, Json.NodeType node_type, Json.BoxedSerializeFunc serialize_func)ÎJsonÖ0Ïpublic void
+boxed_serializeÌ128Í(GLib.Type gboxed_type, void* boxed)ÎJsonÖ0Ïpublic unowned
+construct_gobjectÌ128Í(GLib.Type gtype, string data, size_t length)ÎJsonÖ0Ïpublic GLib.Object
+copyÌ128Í()ÎJson.NodeÖ0Ïpublic Json.Node
+count_elementsÌ128Í()ÎJson.ReaderÖ0Ïpublic int
+count_membersÌ128Í()ÎJson.ReaderÖ0Ïpublic int
+default_deserialize_propertyÌ128Í(string property_name, GLib.Value value, GLib.ParamSpec pspec, Json.Node property_node)ÎJson.SerializableÖ0Ïpublic bool
+default_serialize_propertyÌ128Í(string property_name, GLib.Value value, GLib.ParamSpec pspec)ÎJson.SerializableÖ0Ïpublic unowned
+deserialize_propertyÌ128Í(string property_name, out GLib.Value value, GLib.ParamSpec pspec, Json.Node property_node)ÎJson.SerializableÖ0Ïpublic abstract bool
+dup_arrayÌ128Í()ÎJson.NodeÖ0Ïpublic Json.Array
+dup_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic unowned
+dup_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic unowned
+dup_objectÌ128Í()ÎJson.NodeÖ0Ïpublic Json.Object
+dup_stringÌ128Í()ÎJson.NodeÖ0
+end_arrayÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+end_elementÌ128Í()ÎJson.ReaderÖ0Ïpublic void
+end_memberÌ128Í()ÎJson.ReaderÖ0Ïpublic void
+end_objectÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+errorÌ128Í(void* error)ÎJson.ParserÖ0Ïpublic virtual signal void
+error_quarkÌ128Í()ÎJson.ParserÖ0Ïpublic GLib.Quark
+error_quarkÌ128Í()ÎJson.ReaderÖ0Ïpublic GLib.Quark
+foreach_elementÌ128Í(Json.ArrayForeach func)ÎJson.ArrayÖ0Ïpublic void
+foreach_memberÌ128Í(Json.ObjectForeach func)ÎJson.ObjectÖ0Ïpublic void
+get_arrayÌ128Í()ÎJson.NodeÖ0Ïpublic unowned
+get_array_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic unowned
+get_array_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic unowned
+get_booleanÌ128Í()ÎJson.NodeÖ0Ïpublic bool
+get_boolean_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic bool
+get_boolean_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic bool
+get_boolean_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic bool
+get_current_lineÌ128Í()ÎJson.ParserÖ0
+get_current_posÌ128Í()ÎJson.ParserÖ0
+get_doubleÌ128Í()ÎJson.NodeÖ0Ïpublic double
+get_double_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic double
+get_double_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic double
+get_double_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic double
+get_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic unowned
+get_elementsÌ128Í()ÎJson.ArrayÖ0Ïpublic GLib.List
+get_errorÌ128Í()ÎJson.ReaderÖ0Ïpublic unowned
+get_intÌ128Í()ÎJson.NodeÖ0Ïpublic int64
+get_int_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic int64
+get_int_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic int64
+get_int_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic int64
+get_lengthÌ128Í()ÎJson.ArrayÖ0
+get_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic unowned
+get_membersÌ128Í()ÎJson.ObjectÖ0Ïpublic GLib.List
+get_node_typeÌ128Í()ÎJson.NodeÖ0Ïpublic Json.NodeType
+get_null_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic bool
+get_null_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic bool
+get_null_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic bool
+get_objectÌ128Í()ÎJson.NodeÖ0Ïpublic unowned
+get_object_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic unowned
+get_object_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic unowned
+get_parentÌ128Í()ÎJson.NodeÖ0Ïpublic unowned
+get_rootÌ128Í()ÎJson.BuilderÖ0Ïpublic unowned
+get_rootÌ128Í()ÎJson.ParserÖ0Ïpublic unowned
+get_sizeÌ128Í()ÎJson.ObjectÖ0
+get_stringÌ128Í()ÎJson.NodeÖ0Ïpublic unowned string
+get_string_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic unowned string
+get_string_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic unowned string
+get_string_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic unowned string
+get_valueÌ128Í(out GLib.Value value)ÎJson.NodeÖ0Ïpublic void
+get_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic unowned
+get_value_typeÌ128Í()ÎJson.NodeÖ0Ïpublic GLib.Type
+get_valuesÌ128Í()ÎJson.ObjectÖ0Ïpublic GLib.List
+gobject_deserializeÌ128Í(GLib.Type gtype, Json.Node node)ÎJsonÖ0Ïpublic GLib.Object
+gobject_from_dataÌ128Í(GLib.Type gtype, string data, ssize_t length = -1)ÎJsonÖ0Ïpublic GLib.Object
+gobject_serializeÌ128Í(GLib.Object gobject)ÎJsonÖ0Ïpublic Json.Node
+gobject_to_dataÌ128Í(GLib.Object gobject, out size_t length)ÎJsonÖ0
+has_assignmentÌ128Í(out unowned string variable_name)ÎJson.ParserÖ0Ïpublic bool
+has_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic bool
+indentÌ8ÎJson.GeneratorÖ0
+indent_charÌ8ÎJson.GeneratorÖ0
+is_arrayÌ128Í()ÎJson.ReaderÖ0Ïpublic bool
+is_nullÌ128Í()ÎJson.NodeÖ0Ïpublic bool
+is_objectÌ128Í()ÎJson.ReaderÖ0Ïpublic bool
+is_valueÌ128Í()ÎJson.ReaderÖ0Ïpublic bool
+load_from_dataÌ128Í(string data, ssize_t length = -1)ÎJson.ParserÖ0Ïpublic bool
+load_from_fileÌ128Í(string filename)ÎJson.ParserÖ0Ïpublic bool
+load_from_streamÌ128Í(GLib.InputStream stream, GLib.Cancellable cancellable)ÎJson.ParserÖ0Ïpublic bool
+load_from_stream_asyncÌ128Í(GLib.InputStream stream, GLib.Cancellable cancellable)ÎJson.ParserÖ0Ïpublic async
+object_endÌ128Í(Json.Object object)ÎJson.ParserÖ0Ïpublic virtual signal void
+object_memberÌ128Í(Json.Object object, string member_name)ÎJson.ParserÖ0Ïpublic virtual signal void
+object_startÌ128Í()ÎJson.ParserÖ0Ïpublic virtual signal void
+parse_endÌ128Í()ÎJson.ParserÖ0Ïpublic virtual signal void
+parse_startÌ128Í()ÎJson.ParserÖ0Ïpublic virtual signal void
+prettyÌ8ÎJson.GeneratorÖ0Ïbool
+read_elementÌ128Í(uint index_)ÎJson.ReaderÖ0Ïpublic bool
+read_memberÌ128Í(string member_name)ÎJson.ReaderÖ0Ïpublic bool
+remove_elementÌ128Í(uint index_)ÎJson.ArrayÖ0Ïpublic void
+remove_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic void
+resetÌ128Í()ÎJson.BuilderÖ0Ïpublic void
+rootÌ8ÎJson.GeneratorÖ0ÏJson.Node
+rootÌ8ÎJson.ReaderÖ0ÏJson.Node
+serialize_gobjectÌ128Í(GLib.Object gobject, out size_t length)ÎJsonÖ0
+serialize_propertyÌ128Í(string property_name, GLib.Value value, GLib.ParamSpec pspec)ÎJson.SerializableÖ0Ïpublic abstract Json.Node
+set_arrayÌ128Í(Json.Array array)ÎJson.NodeÖ0Ïpublic void
+set_array_memberÌ128Í(string member_name, owned Json.Array value)ÎJson.ObjectÖ0Ïpublic void
+set_booleanÌ128Í(bool value)ÎJson.NodeÖ0Ïpublic void
+set_boolean_memberÌ128Í(string member_name, bool value)ÎJson.ObjectÖ0Ïpublic void
+set_doubleÌ128Í(double value)ÎJson.NodeÖ0Ïpublic void
+set_double_memberÌ128Í(string member_name, double value)ÎJson.ObjectÖ0Ïpublic void
+set_intÌ128Í(int64 value)ÎJson.NodeÖ0Ïpublic void
+set_int_memberÌ128Í(string member_name, int64 value)ÎJson.ObjectÖ0Ïpublic void
+set_memberÌ128Í(string member_name, owned Json.Node node)ÎJson.ObjectÖ0Ïpublic void
+set_member_nameÌ128Í(string member_name)ÎJson.BuilderÖ0Ïpublic unowned
+set_null_memberÌ128Í(string member_name)ÎJson.ObjectÖ0Ïpublic void
+set_objectÌ128Í(Json.Object object)ÎJson.NodeÖ0Ïpublic void
+set_object_memberÌ128Í(string member_name, owned Json.Object value)ÎJson.ObjectÖ0Ïpublic void
+set_parentÌ128Í(Json.Node parent)ÎJson.NodeÖ0Ïpublic void
+set_rootÌ128Í(Json.Node node)ÎJson.GeneratorÖ0Ïpublic void
+set_rootÌ128Í(Json.Node root)ÎJson.ReaderÖ0Ïpublic void
+set_stringÌ128Í(string value)ÎJson.NodeÖ0Ïpublic void
+set_string_memberÌ128Í(string member_name, string value)ÎJson.ObjectÖ0Ïpublic void
+set_valueÌ128Í(GLib.Value value)ÎJson.NodeÖ0Ïpublic void
+sized_newÌ128Í(uint n_elements)ÎJson.ArrayÖ0Ïpublic unowned
+take_arrayÌ128Í(owned Json.Array array)ÎJson.NodeÖ0Ïpublic void
+take_objectÌ128Í(owned Json.Object object)ÎJson.NodeÖ0Ïpublic void
+to_dataÌ128Í(out size_t length)ÎJson.GeneratorÖ0
+to_fileÌ128Í(string filename)ÎJson.GeneratorÖ0Ïpublic bool
+to_streamÌ128Í(GLib.OutputStream stream, GLib.Cancellable cancellable)ÎJson.GeneratorÖ0Ïpublic bool
+type_nameÌ128Í()ÎJson.NodeÖ0Ïpublic unowned string

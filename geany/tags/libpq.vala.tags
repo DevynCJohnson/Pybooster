@@ -1,0 +1,195 @@
+# format=tagmanager
+ACTIVEÌ4ÎPostgres.PollingStatusÖ0
+ACTIVEÌ4ÎPostgres.TransactionStatusÖ0
+AUTH_OKÌ4ÎPostgres.ConnectionStatusÖ0
+AWAITING_RESPONSEÌ4ÎPostgres.ConnectionStatusÖ0
+ArgBlockÌ2048ÎPostgresÖ0
+BADÌ4ÎPostgres.ConnectionStatusÖ0
+BAD_RESPONSEÌ4ÎPostgres.ExecStatusÖ0
+COMMAND_OKÌ4ÎPostgres.ExecStatusÖ0
+CONTEXTÌ4ÎPostgres.FieldCodeÖ0
+COPY_INÌ4ÎPostgres.ExecStatusÖ0
+COPY_OUTÌ4ÎPostgres.ExecStatusÖ0
+CancelÌ1ÎPostgresÖ0
+ConnectionOptionsÌ1ÎPostgresÖ0
+ConnectionStatusÌ2ÎPostgresÖ0
+DEFAULTÌ4ÎPostgres.VerbosityÖ0
+DatabaseÌ1ÎPostgresÖ0
+EMPTY_QUERYÌ4ÎPostgres.ExecStatusÖ0
+ExecStatusÌ2ÎPostgresÖ0
+FAILEDÌ4ÎPostgres.PollingStatusÖ0
+FATAL_ERRORÌ4ÎPostgres.ExecStatusÖ0
+FieldCodeÌ2ÎPostgresÖ0
+IDLEÌ4ÎPostgres.TransactionStatusÖ0
+INERRORÌ4ÎPostgres.TransactionStatusÖ0
+INTERNAL_POSITIONÌ4ÎPostgres.FieldCodeÖ0
+INTERNAL_QUERYÌ4ÎPostgres.FieldCodeÖ0
+INTRANSÌ4ÎPostgres.TransactionStatusÖ0
+InvalidOidÌ8ÎPostgresÖ0
+MADEÌ4ÎPostgres.ConnectionStatusÖ0
+MESSAGE_DETAILÌ4ÎPostgres.FieldCodeÖ0
+MESSAGE_HINTÌ4ÎPostgres.FieldCodeÖ0
+MESSAGE_PRIMARYÌ4ÎPostgres.FieldCodeÖ0
+NEEDEDÌ4ÎPostgres.ConnectionStatusÖ0
+NONFATAL_ERRORÌ4ÎPostgres.ExecStatusÖ0
+NoticeProcessorFuncÌ128Í(void* arg, string message)ÎPostgresÖ0Ïpublic delegate void
+NoticeReceiverFuncÌ128Í(void* arg, Result res)ÎPostgresÖ0Ïpublic delegate void
+NotifyÌ2048ÎPostgresÖ0
+OKÌ4ÎPostgres.ConnectionStatusÖ0
+OKÌ4ÎPostgres.PollingStatusÖ0
+OidÌ2048ÎPostgresÖ0
+PollingStatusÌ2ÎPostgresÖ0
+PostgresÌ256Ö0
+PrintOptÌ2048ÎPostgresÖ0
+READINGÌ4ÎPostgres.PollingStatusÖ0
+ResultÌ1ÎPostgresÖ0
+SETENVÌ4ÎPostgres.ConnectionStatusÖ0
+SEVERITYÌ4ÎPostgres.FieldCodeÖ0
+SOURCE_FILEÌ4ÎPostgres.FieldCodeÖ0
+SOURCE_FUNCTIONÌ4ÎPostgres.FieldCodeÖ0
+SOURCE_LINEÌ4ÎPostgres.FieldCodeÖ0
+SQLSTATEÌ4ÎPostgres.FieldCodeÖ0
+SSL_STARTUPÌ4ÎPostgres.ConnectionStatusÖ0
+STARTEDÌ4ÎPostgres.ConnectionStatusÖ0
+STATEMENT_POSITIONÌ4ÎPostgres.FieldCodeÖ0
+TERSEÌ4ÎPostgres.VerbosityÖ0
+TUPLES_OKÌ4ÎPostgres.ExecStatusÖ0
+ThreadLockFuncÌ128Í(int acquire)ÎPostgresÖ0Ïpublic delegate void
+TransactionStatusÌ2ÎPostgresÖ0
+UNKNOWNÌ4ÎPostgres.TransactionStatusÖ0
+VERBOSEÌ4ÎPostgres.VerbosityÖ0
+VerbosityÌ2ÎPostgresÖ0
+WRITINGÌ4ÎPostgres.PollingStatusÖ0
+alignÌ8ÎPostgres.PrintOptÖ0Ïbool
+be_pidÌ8ÎPostgres.NotifyÖ0Ïint
+cancelÌ128Í(char[] errbuf, int errbufsize)ÎPostgres.CancelÖ0Ïpublic bool
+captionÌ8ÎPostgres.PrintOptÖ0
+char_to_encodingÌ128Í(string name)ÎPostgresÖ0Ïpublic int
+compiledÌ8ÎPostgres.ConnectionOptionsÖ0
+connect_dbÌ128Í(string conninfo)ÎPostgresÖ0Ïpublic Database
+connect_pollÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic PollingStatus
+connect_startÌ128Í(string conninfo)ÎPostgresÖ0Ïpublic Database
+connection_needs_passwordÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+connection_used_passwordÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+consume_inputÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+describe_portalÌ128Í(string portal)ÎPostgres.DatabaseÖ0Ïpublic Result
+describe_preparedÌ128Í(string stmt)ÎPostgres.DatabaseÖ0Ïpublic Result
+dispcharÌ8ÎPostgres.ConnectionOptionsÖ0
+dispsizeÌ8ÎPostgres.ConnectionOptionsÖ0Ïint
+dsp_lenÌ128Í(string s, int encoding)ÎPostgresÖ0Ïpublic int
+encoding_to_charÌ128Í(int encoding)ÎPostgresÖ0Ïpublic unowned string
+encrypt_passwordÌ128Í(string passwd, string user)ÎPostgresÖ0Ïpublic unowned string
+env2encodingÌ128Í()ÎPostgresÖ0Ïpublic int
+envvarÌ8ÎPostgres.ConnectionOptionsÖ0
+escape_bytea_connÌ128Í(string from, size_t from_length, out size_t to_length)ÎPostgres.DatabaseÖ0Ïpublic uchar
+escape_string_connÌ128Í(string to, string from, size_t length, out int error)ÎPostgres.DatabaseÖ0Ïpublic size_t
+execÌ128Í(string query)ÎPostgres.DatabaseÖ0Ïpublic Result
+exec_paramsÌ128Í(string command, int nParams, Oid[] paramTypes, string[] paramValues, int[] paramLengths, int[] paramFormats, int resultFormat)ÎPostgres.DatabaseÖ0Ïpublic Result
+exec_preparedÌ128Í(string stmtName, int nParams, string[] paramValues, int[] paramLengths, int[] paramFormats, int resultFormat)ÎPostgres.DatabaseÖ0Ïpublic Result
+expandedÌ8ÎPostgres.PrintOptÖ0Ïbool
+extraÌ8ÎPostgres.NotifyÖ0
+fieldNameÌ8ÎPostgres.PrintOptÖ0
+fieldSepÌ8ÎPostgres.PrintOptÖ0
+flushÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+fnÌ128Í(int fnid, int[] result_buf, out int result_len, int result_is_int, ArgBlock args, int nargs)ÎPostgres.DatabaseÖ0Ïpublic Result
+free_memÌ128Í(void* ptr)ÎPostgresÖ0Ïpublic void
+get_backend_pidÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+get_cancelÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic Cancel
+get_client_encodingÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+get_cmd_statusÌ128Í()ÎPostgres.ResultÖ0Ïpublic unowned string
+get_cmd_tuplesÌ128Í()ÎPostgres.ResultÖ0Ïpublic unowned string
+get_copy_dataÌ128Í(string[] buffer, int async)ÎPostgres.DatabaseÖ0Ïpublic int
+get_dbÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_default_optionsÌ128Í()ÎPostgresÖ0Ïpublic ConnectionOptions
+get_error_fieldÌ128Í(FieldCode field_code)ÎPostgres.ResultÖ0Ïpublic unowned string
+get_error_messageÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_error_messageÌ128Í()ÎPostgres.ResultÖ0Ïpublic unowned string
+get_field_formatÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic int
+get_field_modÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic int
+get_field_nameÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic unowned string
+get_field_numberÌ128Í(string field_name)ÎPostgres.ResultÖ0Ïpublic int
+get_field_tableÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic Oid
+get_field_table_colÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic int
+get_field_typeÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic Oid
+get_fsizeÌ128Í(int field_num)ÎPostgres.ResultÖ0Ïpublic int
+get_hostÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_lengthÌ128Í(int tup_num, int field_num)ÎPostgres.ResultÖ0Ïpublic int
+get_n_fieldsÌ128Í()ÎPostgres.ResultÖ0Ïpublic int
+get_n_paramsÌ128Í()ÎPostgres.ResultÖ0Ïpublic int
+get_n_tuplesÌ128Í()ÎPostgres.ResultÖ0Ïpublic int
+get_notifiesÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic Notify
+get_oid_valueÌ128Í()ÎPostgres.ResultÖ0Ïpublic Oid
+get_optionsÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_param_typeÌ128Í(int param_num)ÎPostgres.ResultÖ0Ïpublic int
+get_parameter_statusÌ128Í(string param_name)ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_passwdÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_portÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_protocol_VersionÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+get_resultÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic Result
+get_server_versionÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+get_socketÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+get_sslÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic void *
+get_statusÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic ConnectionStatus
+get_statusÌ128Í()ÎPostgres.ResultÖ0Ïpublic ExecStatus
+get_transaction_statusÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic TransactionStatus
+get_ttyÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_userÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic unowned string
+get_valueÌ128Í(int tup_num, int field_num)ÎPostgres.ResultÖ0Ïpublic unowned string
+headerÌ8ÎPostgres.PrintOptÖ0Ïbool
+html3Ì8ÎPostgres.PrintOptÖ0Ïbool
+init_sslÌ128Í(int do_init)ÎPostgresÖ0Ïpublic void
+is_binary_tuplesÌ128Í()ÎPostgres.ResultÖ0Ïpublic bool
+is_busyÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+is_non_blockingÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+is_nullÌ128Í(int tup_num, int field_num)ÎPostgres.ResultÖ0Ïpublic bool
+is_thread_safeÌ128Í()ÎPostgresÖ0Ïpublic int
+isintÌ8ÎPostgres.ArgBlockÖ0Ïint
+keywordÌ8ÎPostgres.ConnectionOptionsÖ0
+labelÌ8ÎPostgres.ConnectionOptionsÖ0
+lenÌ8ÎPostgres.ArgBlockÖ0Ïint
+lo_closeÌ128Í(int fd)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_creatÌ128Í(int mode)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_createÌ128Í(int lobj_id)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_exportÌ128Í(int lobj_id, string filename)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_importÌ128Í(string filename)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_lseekÌ128Í(int fd, int offset, int whence)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_openÌ128Í(int lobj_id, int mode)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_readÌ128Í(int fd, string buf, size_t len)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_tellÌ128Í(int fd)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_truncateÌ128Í(int fd, size_t len)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_unlinkÌ128Í(int lobj_id)ÎPostgres.DatabaseÖ0Ïpublic int
+lo_writeÌ128Í(int fd, string buf, size_t len)ÎPostgres.DatabaseÖ0Ïpublic int
+make_empty_resultÌ128Í(ExecStatus status)ÎPostgres.DatabaseÖ0Ïpublic Result
+mb_lenÌ128Í(string s, int encoding)ÎPostgresÖ0Ïpublic int
+pagerÌ8ÎPostgres.PrintOptÖ0Ïbool
+prepareÌ128Í(string stmtName, string query, int nParams, Oid[] paramTypes)ÎPostgres.DatabaseÖ0Ïpublic Result
+printÌ128Í(GLib.FileStream fout, Result res, PrintOpt ps)ÎPostgresÖ0Ïpublic void
+put_copy_dataÌ128Í(string buffer, int nbytes)ÎPostgres.DatabaseÖ0Ïpublic int
+put_copy_endÌ128Í(string error_msg)ÎPostgres.DatabaseÖ0Ïpublic int
+register_thread_lockÌ128Í(ThreadLockFunc newhandler)ÎPostgresÖ0Ïpublic ThreadLockFunc
+relnameÌ8ÎPostgres.NotifyÖ0
+request_cancelÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+resetÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic void
+reset_pollÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic PollingStatus
+reset_startÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic int
+result_statusÌ128Í(ExecStatus status)ÎPostgresÖ0Ïpublic unowned string
+send_describe_portalÌ128Í(string portal)ÎPostgres.DatabaseÖ0Ïpublic int
+send_describe_preparedÌ128Í(string stmt)ÎPostgres.DatabaseÖ0Ïpublic int
+send_prepareÌ128Í(string stmtName, string query, int nParams, Oid[] paramTypes)ÎPostgres.DatabaseÖ0Ïpublic int
+send_queryÌ128Í(string query)ÎPostgres.DatabaseÖ0Ïpublic int
+send_query_paramsÌ128Í(string command, int nParams, Oid[] paramTypes, string[] paramValues, int[] paramLengths, int[] paramFormats, int resultFormat)ÎPostgres.DatabaseÖ0Ïpublic int
+send_query_preparedÌ128Í(string stmtName, int nParams, string[] paramValues, int[] paramLengths, int[] paramFormats, int resultFormat)ÎPostgres.DatabaseÖ0Ïpublic int
+set_client_encodingÌ128Í(string encoding)ÎPostgres.DatabaseÖ0Ïpublic int
+set_dbÌ128Í(string host, string port, string options, string gtty, string db_name)ÎPostgresÖ0Ïpublic Database
+set_db_loginÌ128Í(string host, string port, string options, string gtty, string db_name, string login, string pwd)ÎPostgresÖ0Ïpublic Database
+set_error_verbosityÌ128Í(Verbosity verbosity)ÎPostgres.DatabaseÖ0Ïpublic Verbosity
+set_non_blockingÌ128Í(int arg)ÎPostgres.DatabaseÖ0Ïpublic int
+set_notice_processorÌ128Í(NoticeProcessorFunc proc_func, void* arg)ÎPostgres.DatabaseÖ0Ïpublic NoticeProcessorFunc
+set_notice_receiverÌ128Í(NoticeReceiverFunc proc_func, void* arg)ÎPostgres.DatabaseÖ0Ïpublic NoticeReceiverFunc
+standardÌ8ÎPostgres.PrintOptÖ0Ïbool
+tableOptÌ8ÎPostgres.PrintOptÖ0
+traceÌ128Í(GLib.FileStream debug_port)ÎPostgres.DatabaseÖ0Ïpublic void
+unescape_byteaÌ128Í(uchar[] strtext, out size_t retbuflen)ÎPostgresÖ0Ïpublic uchar
+untraceÌ128Í()ÎPostgres.DatabaseÖ0Ïpublic void
+valÌ8ÎPostgres.ConnectionOptionsÖ0
+valid_server_encoding_idÌ128Í(int encoding)ÎPostgresÖ0Ïpublic int

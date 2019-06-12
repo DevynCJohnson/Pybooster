@@ -1,0 +1,5 @@
+# format=tagmanager
+CairoÃ256÷0
+XcbSurfaceÃ1ŒCairo÷0
+XcbSurfaceÃ128Õ(Xcb.Connection connection, Xcb.Drawable drawable, Xcb.VisualType visual, int width, int height)ŒCairo.XcbSurface÷0
+set_sizeÃ128Õ(int width, int height)ŒCairo.XcbSurface÷0œpublic void

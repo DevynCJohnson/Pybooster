@@ -1,0 +1,2880 @@
+# format=tagmanager
+@defaultÃ8ŒGsl.RNGTypes÷0œRNGType
+@getÃ128Õ(size_t i)ŒGsl.Combination÷0œpublic size_t
+@getÃ128Õ(size_t i)ŒGsl.Histogram÷0œpublic double
+@getÃ128Õ(size_t i, size_t j)ŒGsl.Histogram2d÷0œpublic double
+@getÃ128Õ(size_t i, size_t j)ŒGsl.Matrix÷0œpublic double
+@getÃ128Õ(size_t i, size_t j)ŒGsl.MatrixComplex÷0œpublic double
+@getÃ128Õ(size_t i)ŒGsl.Permutation÷0œpublic size_t
+@getÃ128Õ([CCode (array_length = false)] double[] x)ŒGsl.QRNG÷0œpublic int
+@getÃ8ŒGsl.QRNGType÷0œQRNGGetState2
+@getÃ128Õ()ŒGsl.RNG÷0
+@getÃ8ŒGsl.RNGType÷0œRNGGetState
+@getÃ128Õ(size_t i)ŒGsl.Vector÷0œpublic double
+@getÃ128Õ(size_t i)ŒGsl.VectorComplex÷0œpublic Complex
+@setÃ128Õ(double omega, double L, QAWO sine)ŒGsl.IntegrationQAWOTable÷0œpublic int
+@setÃ128Õ(double alpha, double beta, int mu, int nu)ŒGsl.IntegrationQAWSTable÷0œpublic int
+@setÃ128Õ(size_t i, size_t j, double x)ŒGsl.Matrix÷0œpublic void
+@setÃ128Õ(size_t i, size_t j, double x)ŒGsl.MatrixComplex÷0œpublic void
+@setÃ128Õ(Function* f, double x_minimum, double x_lower, double x_upper)ŒGsl.MinFminimizer÷0œpublic int
+@setÃ8ŒGsl.MinFminimizerType÷0œMinSet
+@setÃ128Õ(MultifitFunctionFdf* fdf, Vector x)ŒGsl.MultifitFdfsolver÷0œpublic int
+@setÃ8ŒGsl.MultifitFdfsolverType÷0œMultifitFdfSet
+@setÃ128Õ(MultifitFunction* f, Vector x)ŒGsl.MultifitFsolver÷0œpublic int
+@setÃ8ŒGsl.MultifitFsolverType÷0œMultifitFSet
+@setÃ128Õ(MultiminFunctionFdf* fdf, Vector x, double step_size, double tol)ŒGsl.MultiminFdfminimizer÷0œpublic int
+@setÃ8ŒGsl.MultiminFdfminimizerType÷0œMultiminFdfSet
+@setÃ128Õ(MultiminFunction* f, Vector x, Vector step_size)ŒGsl.MultiminFminimizer÷0œpublic int
+@setÃ8ŒGsl.MultiminFminimizerType÷0œMultiminFSet
+@setÃ128Õ(MultirootFunctionFdf* fdf, Vector x)ŒGsl.MultirootFdfsolver÷0œpublic int
+@setÃ8ŒGsl.MultirootFdfsolverType÷0œMultirootFdfSet
+@setÃ128Õ(MultirootFunction* f, Vector x)ŒGsl.MultirootFsolver÷0œpublic int
+@setÃ8ŒGsl.MultirootFsolverType÷0œMultirootFSet
+@setÃ128Õ(ulong s)ŒGsl.RNG÷0œpublic void
+@setÃ8ŒGsl.RNGType÷0œRNGSetState
+@setÃ128Õ(FunctionFdf* fdf, double root)ŒGsl.RootFdfsolver÷0œpublic int
+@setÃ8ŒGsl.RootFdfsolverType÷0œRootFdfsolverSet
+@setÃ128Õ(Function* f, double x_lower, double x_upper)ŒGsl.RootFsolver÷0œpublic int
+@setÃ8ŒGsl.RootFsolverType÷0œRootFsolverSet
+@setÃ128Õ(size_t i, double x)ŒGsl.Vector÷0œpublic void
+@setÃ128Õ(size_t i, Complex x)ŒGsl.VectorComplex÷0œpublic void
+AÃ8ŒGsl.MultifitLinearWorkspace÷0œMatrix
+AÃ8ŒGsl.RanDiscrete÷0œsize_t
+ABS_ASCÃ4ŒGsl.EigenSortType÷0
+ABS_DESCÃ4ŒGsl.EigenSortType÷0
+ACREÃ4ŒGsl.ConstCGS÷0
+ACREÃ4ŒGsl.ConstCGSM÷0
+ACREÃ4ŒGsl.ConstMKS÷0
+ACREÃ4ŒGsl.ConstMKSA÷0
+ANGSTROMÃ4ŒGsl.ConstCGS÷0
+ANGSTROMÃ4ŒGsl.ConstCGSM÷0
+ANGSTROMÃ4ŒGsl.ConstMKS÷0
+ANGSTROMÃ4ŒGsl.ConstMKSA÷0
+APPROXÃ4ŒGsl.Mode÷0
+ASTRONOMICAL_UNITÃ4ŒGsl.ConstCGS÷0
+ASTRONOMICAL_UNITÃ4ŒGsl.ConstCGSM÷0
+ASTRONOMICAL_UNITÃ4ŒGsl.ConstMKS÷0
+ASTRONOMICAL_UNITÃ4ŒGsl.ConstMKSA÷0
+ATTOÃ4ŒGsl.ConstNum÷0
+AVOGADROÃ4ŒGsl.ConstNum÷0
+AiÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Ai_derivÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Ai_deriv_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Ai_deriv_scaledÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Ai_deriv_scaled_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Ai_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Ai_scaledÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Ai_scaled_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+AiryÃ256÷0
+BÃ8ŒGsl.BsplineWorkspace÷0œVector
+BARÃ4ŒGsl.ConstCGS÷0
+BARÃ4ŒGsl.ConstCGSM÷0
+BARÃ4ŒGsl.ConstMKS÷0
+BARÃ4ŒGsl.ConstMKSA÷0
+BARNÃ4ŒGsl.ConstCGS÷0
+BARNÃ4ŒGsl.ConstCGSM÷0
+BARNÃ4ŒGsl.ConstMKS÷0
+BARNÃ4ŒGsl.ConstMKSA÷0
+BOHR_MAGNETONÃ4ŒGsl.ConstCGS÷0
+BOHR_MAGNETONÃ4ŒGsl.ConstCGSM÷0
+BOHR_MAGNETONÃ4ŒGsl.ConstMKS÷0
+BOHR_MAGNETONÃ4ŒGsl.ConstMKSA÷0
+BOHR_RADIUSÃ4ŒGsl.ConstCGS÷0
+BOHR_RADIUSÃ4ŒGsl.ConstCGSM÷0
+BOHR_RADIUSÃ4ŒGsl.ConstMKS÷0
+BOHR_RADIUSÃ4ŒGsl.ConstMKSA÷0
+BOLTZMANNÃ4ŒGsl.ConstCGS÷0
+BOLTZMANNÃ4ŒGsl.ConstCGSM÷0
+BOLTZMANNÃ4ŒGsl.ConstMKS÷0
+BOLTZMANNÃ4ŒGsl.ConstMKSA÷0
+BTUÃ4ŒGsl.ConstCGS÷0
+BTUÃ4ŒGsl.ConstCGSM÷0
+BTUÃ4ŒGsl.ConstMKS÷0
+BTUÃ4ŒGsl.ConstMKSA÷0
+BesselÃ256÷0
+BiÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Bi_derivÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Bi_deriv_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Bi_deriv_scaledÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Bi_deriv_scaled_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Bi_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+Bi_scaledÃ128Õ(double x, Mode mode)ŒGsl.Airy÷0œpublic double
+Bi_scaled_eÃ128Õ(double x, Mode mode, out Result result)ŒGsl.Airy÷0œpublic int
+BlockÃ1ŒGsl÷0
+BlockÃ128Õ(size_t n)ŒGsl.Block÷0
+Block.with_zerosÃ128Õ(size_t n)ŒGsl.Block÷0
+BlockComplexÃ1ŒGsl÷0
+BlockComplexÃ128Õ(size_t n)ŒGsl.BlockComplex÷0
+BlockComplex.with_zerosÃ128Õ(size_t n)ŒGsl.BlockComplex÷0
+BsplineWorkspaceÃ1ŒGsl÷0
+BsplineWorkspaceÃ128Õ(size_t k, size_t nbreak)ŒGsl.BsplineWorkspace÷0
+C1Ã128Õ(double lambda, double x)ŒGsl.GegenPoly÷0œpublic double
+C1_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.GegenPoly÷0œpublic double
+C2Ã128Õ(double lambda, double x)ŒGsl.GegenPoly÷0œpublic double
+C2_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.GegenPoly÷0œpublic double
+C3Ã128Õ(double lambda, double x)ŒGsl.GegenPoly÷0œpublic double
+C3_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.GegenPoly÷0œpublic double
+CALORIEÃ4ŒGsl.ConstCGS÷0
+CALORIEÃ4ŒGsl.ConstCGSM÷0
+CALORIEÃ4ŒGsl.ConstMKS÷0
+CALORIEÃ4ŒGsl.ConstMKSA÷0
+CANADIAN_GALLONÃ4ŒGsl.ConstCGS÷0
+CANADIAN_GALLONÃ4ŒGsl.ConstCGSM÷0
+CANADIAN_GALLONÃ4ŒGsl.ConstMKS÷0
+CANADIAN_GALLONÃ4ŒGsl.ConstMKSA÷0
+CARATÃ4ŒGsl.ConstCGS÷0
+CARATÃ4ŒGsl.ConstCGSM÷0
+CARATÃ4ŒGsl.ConstMKS÷0
+CARATÃ4ŒGsl.ConstMKSA÷0
+CDFÃ256÷0
+CL_arrayÃ128Õ(double lmin, int kmax, double eta, [CCode (array_length = false)] double[] cl)ŒGsl.Coulomb÷0œpublic int
+CL_eÃ128Õ(double l, double eta, out Result result)ŒGsl.Coulomb÷0œpublic int
+CONTINUEÃ4ŒGsl.Status÷0
+COSINEÃ4ŒGsl.QAWO÷0
+CUPÃ4ŒGsl.ConstCGS÷0
+CUPÃ4ŒGsl.ConstCGSM÷0
+CUPÃ4ŒGsl.ConstMKS÷0
+CUPÃ4ŒGsl.ConstMKSA÷0
+CURIEÃ4ŒGsl.ConstCGS÷0
+CURIEÃ4ŒGsl.ConstCGSM÷0
+CURIEÃ4ŒGsl.ConstMKS÷0
+CURIEÃ4ŒGsl.ConstMKSA÷0
+ChebSeriesÃ1ŒGsl÷0
+ChebSeriesÃ128Õ(size_t order)ŒGsl.ChebSeries÷0
+ChiÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+Chi_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+CiÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+Ci_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+ClausenÃ256÷0
+CnÃ128Õ(double lambda, double x)ŒGsl.GegenPoly÷0œpublic double
+Cn_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.GegenPoly÷0œpublic double
+CombinationÃ1ŒGsl÷0
+CombinationÃ128Õ(size_t n, size_t k)ŒGsl.Combination÷0
+Combination.with_zerosÃ128Õ(size_t n, size_t k)ŒGsl.Combination÷0
+ComplexÃ2048ŒGsl÷0
+ConstCGSÃ2ŒGsl÷0
+ConstCGSMÃ2ŒGsl÷0
+ConstMKSÃ2ŒGsl÷0
+ConstMKSAÃ2ŒGsl÷0
+ConstNumÃ2ŒGsl÷0
+CoulombÃ256÷0
+CoulombWaveÃ256÷0
+CouplingÃ256÷0
+DÃ128Õ(double phi, double k, double n, Mode mode)ŒGsl.EllInt÷0œpublic double
+DÃ8ŒGsl.MultifitLinearWorkspace÷0œVector
+D1Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D1_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+D2Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D2_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+D3Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D3_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+D4Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D4_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+D5Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D5_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+D6Ã128Õ(double x)ŒGsl.Debye÷0œpublic double
+D6_eÃ128Õ(double x, out Result result)ŒGsl.Debye÷0œpublic int
+DAYÃ4ŒGsl.ConstCGS÷0
+DAYÃ4ŒGsl.ConstCGSM÷0
+DAYÃ4ŒGsl.ConstMKS÷0
+DAYÃ4ŒGsl.ConstMKSA÷0
+DEBYEÃ4ŒGsl.ConstMKS÷0
+DEBYEÃ4ŒGsl.ConstMKSA÷0
+DECÃ4ŒGsl.OdeivHadjustTypes÷0
+DHTÃ1ŒGsl÷0
+DHTÃ128Õ(size_t size)ŒGsl.DHT÷0
+DHT.recalcÃ128Õ(size_t size, double nu, double xmax)ŒGsl.DHT÷0
+DOUBLEÃ4ŒGsl.Mode÷0
+DYNEÃ4ŒGsl.ConstCGS÷0
+DYNEÃ4ŒGsl.ConstCGSM÷0
+DYNEÃ4ŒGsl.ConstMKS÷0
+DYNEÃ4ŒGsl.ConstMKSA÷0
+D_eÃ128Õ(double phi, double k, double n, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+DawsonÃ256÷0
+DebyeÃ256÷0
+DerivÃ256÷0
+DilogÃ256÷0
+EÃ128Õ(double phi, double k, Mode mode)ŒGsl.EllInt÷0œpublic double
+EBADFUNCÃ4ŒGsl.Status÷0
+EBADLENÃ4ŒGsl.Status÷0
+EBADTOLÃ4ŒGsl.Status÷0
+ECACHEÃ4ŒGsl.Status÷0
+EDIVERGEÃ4ŒGsl.Status÷0
+EDOMÃ4ŒGsl.Status÷0
+EFACTORÃ4ŒGsl.Status÷0
+EFAILEDÃ4ŒGsl.Status÷0
+EFAULTÃ4ŒGsl.Status÷0
+EINVALÃ4ŒGsl.Status÷0
+ELECTRON_CHARGEÃ4ŒGsl.ConstCGS÷0
+ELECTRON_CHARGEÃ4ŒGsl.ConstCGSM÷0
+ELECTRON_CHARGEÃ4ŒGsl.ConstMKS÷0
+ELECTRON_CHARGEÃ4ŒGsl.ConstMKSA÷0
+ELECTRON_MAGNETIC_MOMENTÃ4ŒGsl.ConstCGS÷0
+ELECTRON_MAGNETIC_MOMENTÃ4ŒGsl.ConstCGSM÷0
+ELECTRON_MAGNETIC_MOMENTÃ4ŒGsl.ConstMKS÷0
+ELECTRON_MAGNETIC_MOMENTÃ4ŒGsl.ConstMKSA÷0
+ELECTRON_VOLTÃ4ŒGsl.ConstCGS÷0
+ELECTRON_VOLTÃ4ŒGsl.ConstCGSM÷0
+ELECTRON_VOLTÃ4ŒGsl.ConstMKS÷0
+ELECTRON_VOLTÃ4ŒGsl.ConstMKSA÷0
+ELOSSÃ4ŒGsl.Status÷0
+EMAXITERÃ4ŒGsl.Status÷0
+ENOMEMÃ4ŒGsl.Status÷0
+ENOPROGÃ4ŒGsl.Status÷0
+ENOPROGJÃ4ŒGsl.Status÷0
+ENOTSQRÃ4ŒGsl.Status÷0
+EOFÃ4ŒGsl.Status÷0
+EOVRFLWÃ4ŒGsl.Status÷0
+ERANGEÃ4ŒGsl.Status÷0
+ERGÃ4ŒGsl.ConstCGS÷0
+ERGÃ4ŒGsl.ConstCGSM÷0
+ERGÃ4ŒGsl.ConstMKS÷0
+ERGÃ4ŒGsl.ConstMKSA÷0
+EROUNDÃ4ŒGsl.Status÷0
+ERUNAWAYÃ4ŒGsl.Status÷0
+ESANITYÃ4ŒGsl.Status÷0
+ESINGÃ4ŒGsl.Status÷0
+ETABLEÃ4ŒGsl.Status÷0
+ETOLÃ4ŒGsl.Status÷0
+ETOLFÃ4ŒGsl.Status÷0
+ETOLGÃ4ŒGsl.Status÷0
+ETOLXÃ4ŒGsl.Status÷0
+EUNDRFLWÃ4ŒGsl.Status÷0
+EUNIMPLÃ4ŒGsl.Status÷0
+EUNSUPÃ4ŒGsl.Status÷0
+EXAÃ4ŒGsl.ConstNum÷0
+EZERODIVÃ4ŒGsl.Status÷0
+E_eÃ128Õ(double phi, double k, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+EcompÃ128Õ(double k, Mode mode)ŒGsl.EllInt÷0œpublic double
+Ecomp_eÃ128Õ(double k, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+Efunc_tÃ128Õ(void *xp)ŒGsl.Siman÷0œpublic delegate double
+EigenGenWorkspaceÃ1ŒGsl÷0
+EigenGenWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGenWorkspace÷0
+EigenGenhermWorkspaceÃ1ŒGsl÷0
+EigenGenhermWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGenhermWorkspace÷0
+EigenGenhermvWorkspaceÃ1ŒGsl÷0
+EigenGenhermvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGenhermvWorkspace÷0
+EigenGensymmWorkspaceÃ1ŒGsl÷0
+EigenGensymmWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGensymmWorkspace÷0
+EigenGensymmvWorkspaceÃ1ŒGsl÷0
+EigenGensymmvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGensymmvWorkspace÷0
+EigenGenvWorkspaceÃ1ŒGsl÷0
+EigenGenvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenGenvWorkspace÷0
+EigenHermWorkspaceÃ1ŒGsl÷0
+EigenHermWorkspaceÃ128Õ(size_t n)ŒGsl.EigenHermWorkspace÷0
+EigenHermvWorkspaceÃ1ŒGsl÷0
+EigenHermvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenHermvWorkspace÷0
+EigenNonsymmWorkspaceÃ1ŒGsl÷0
+EigenNonsymmWorkspaceÃ128Õ(size_t n)ŒGsl.EigenNonsymmWorkspace÷0
+EigenNonsymmvWorkspaceÃ1ŒGsl÷0
+EigenNonsymmvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenNonsymmvWorkspace÷0
+EigenSortÃ256÷0
+EigenSortTypeÃ2ŒGsl÷0
+EigenSymmWorkspaceÃ1ŒGsl÷0
+EigenSymmWorkspaceÃ128Õ(size_t n)ŒGsl.EigenSymmWorkspace÷0
+EigenSymmvWorkspaceÃ1ŒGsl÷0
+EigenSymmvWorkspaceÃ128Õ(size_t n)ŒGsl.EigenSymmvWorkspace÷0
+EllIntÃ256÷0
+EllJacÃ256÷0
+ErfÃ256÷0
+ErrorÃ256÷0
+ErrorHandlerÃ128Õ(string reason, string file, int line, int errno)ŒGsl÷0œpublic delegate void
+ExpÃ256÷0
+ExpintÃ256÷0
+FÃ128Õ(double phi, double k, Mode mode)ŒGsl.EllInt÷0œpublic double
+FÃ8ŒGsl.RanDiscrete÷0œdouble
+F0Ã128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+F0Ã128Õ(double a, double b, double x)ŒGsl.Hyperg÷0œpublic double
+F0_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+F0_eÃ128Õ(double a, double b, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1Ã128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+F1Ã128Õ(double c, double x)ŒGsl.Hyperg÷0œpublic double
+F1Ã128Õ(double a, double b, double x)ŒGsl.Hyperg÷0œpublic double
+F1Ã128Õ(double a, double b, double c, double x)ŒGsl.Hyperg÷0œpublic double
+F1_conjÃ128Õ(double aR, double aI, double c, double x)ŒGsl.Hyperg÷0œpublic double
+F1_conj_eÃ128Õ(double aR, double aI, double c, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_conj_renormÃ128Õ(double aR, double aI, double c, double x)ŒGsl.Hyperg÷0œpublic double
+F1_conj_renorm_eÃ128Õ(double aR, double aI, double c, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+F1_eÃ128Õ(double c, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_eÃ128Õ(double a, double b, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_eÃ128Õ(double a, double b, double c, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_intÃ128Õ(int m, int n, double x)ŒGsl.Hyperg÷0œpublic double
+F1_int_eÃ128Õ(int m, int n, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F1_renormÃ128Õ(double a, double b, double c, double x)ŒGsl.Hyperg÷0œpublic double
+F1_renorm_eÃ128Õ(double a, double b, double c, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+F2Ã128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+F2_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+FAILUREÃ4ŒGsl.Status÷0
+FARADAYÃ4ŒGsl.ConstCGS÷0
+FARADAYÃ4ŒGsl.ConstCGSM÷0
+FARADAYÃ4ŒGsl.ConstMKS÷0
+FARADAYÃ4ŒGsl.ConstMKSA÷0
+FATHOMÃ4ŒGsl.ConstCGS÷0
+FATHOMÃ4ŒGsl.ConstCGSM÷0
+FATHOMÃ4ŒGsl.ConstMKS÷0
+FATHOMÃ4ŒGsl.ConstMKSA÷0
+FEMTOÃ4ŒGsl.ConstNum÷0
+FFTComplexÃ256÷0
+FFTComplexWavetableÃ1ŒGsl÷0
+FFTComplexWavetableÃ128Õ(size_t n)ŒGsl.FFTComplexWavetable÷0
+FFTComplexWorkspaceÃ1ŒGsl÷0
+FFTComplexWorkspaceÃ128Õ(size_t n)ŒGsl.FFTComplexWorkspace÷0
+FFTDirectionÃ2ŒGsl÷0
+FFTHalfcomplexÃ256÷0
+FFTHalfcomplexWavetableÃ1ŒGsl÷0
+FFTHalfcomplexWavetableÃ128Õ(size_t n)ŒGsl.FFTHalfcomplexWavetable÷0
+FFTRealÃ256÷0
+FFTRealWavetableÃ1ŒGsl÷0
+FFTRealWavetableÃ128Õ(size_t n)ŒGsl.FFTRealWavetable÷0
+FFTRealWorkspaceÃ1ŒGsl÷0
+FFTRealWorkspaceÃ128Õ(size_t n)ŒGsl.FFTRealWorkspace÷0
+FG_arrayÃ128Õ(double l_min, int kmax, double eta, double x, [CCode (array_length = false)] double[] fc_array, [CCode (array_length = false)] double[] gc_array, out double f_exponent, out double g_exponent)ŒGsl.CoulombWave÷0œpublic int
+FG_eÃ128Õ(double eta, double x, double l_f, int k, out Result f, out Result fp, out Result g, out Result gp, out double exp_f, out double exp_g)ŒGsl.CoulombWave÷0œpublic int
+FGp_arrayÃ128Õ(double l_min, int kmax, double eta, double x, [CCode (array_length = false)] double[] fc_array, [CCode (array_length = false)] double[] fcp_array, [CCode (array_length = false)] double[] gc_array, [CCode (array_length = false)] double[] gcp_array, out double f_exponent, out double g_exponent)ŒGsl.CoulombWave÷0œpublic int
+FINE_STRUCTUREÃ4ŒGsl.ConstNum÷0
+FLUID_OUNCEÃ4ŒGsl.ConstCGS÷0
+FLUID_OUNCEÃ4ŒGsl.ConstCGSM÷0
+FLUID_OUNCEÃ4ŒGsl.ConstMKS÷0
+FLUID_OUNCEÃ4ŒGsl.ConstMKSA÷0
+FOOTÃ4ŒGsl.ConstCGS÷0
+FOOTÃ4ŒGsl.ConstCGSM÷0
+FOOTÃ4ŒGsl.ConstMKS÷0
+FOOTÃ4ŒGsl.ConstMKSA÷0
+FOOTCANDLEÃ4ŒGsl.ConstCGS÷0
+FOOTCANDLEÃ4ŒGsl.ConstCGSM÷0
+FOOTCANDLEÃ4ŒGsl.ConstMKS÷0
+FOOTCANDLEÃ4ŒGsl.ConstMKSA÷0
+FOOTLAMBERTÃ4ŒGsl.ConstCGS÷0
+FOOTLAMBERTÃ4ŒGsl.ConstCGSM÷0
+FOOTLAMBERTÃ4ŒGsl.ConstMKS÷0
+FOOTLAMBERTÃ4ŒGsl.ConstMKSA÷0
+F_arrayÃ128Õ(double l_min, int kmax, double eta, double x, [CCode (array_length = false)] double[] fc_array, out double f_exponent)ŒGsl.CoulombWave÷0œpublic int
+F_eÃ128Õ(double phi, double k, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+FermiDiracÃ256÷0
+FintÃ128Õ(int j, double x)ŒGsl.FermiDirac÷0œpublic double
+Fint_eÃ128Õ(int j, double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+FitÃ256÷0
+FunctionÃ2048ŒGsl÷0
+FunctionFdfÃ2048ŒGsl÷0
+GAUSSÃ4ŒGsl.ConstCGS÷0
+GAUSSÃ4ŒGsl.ConstCGSM÷0
+GAUSSÃ4ŒGsl.ConstMKS÷0
+GAUSSÃ4ŒGsl.ConstMKSA÷0
+GAUSS15Ã4ŒGsl.GaussRules÷0
+GAUSS21Ã4ŒGsl.GaussRules÷0
+GAUSS31Ã4ŒGsl.GaussRules÷0
+GAUSS41Ã4ŒGsl.GaussRules÷0
+GAUSS51Ã4ŒGsl.GaussRules÷0
+GAUSS61Ã4ŒGsl.GaussRules÷0
+GIGAÃ4ŒGsl.ConstNum÷0
+GRAM_FORCEÃ4ŒGsl.ConstCGS÷0
+GRAM_FORCEÃ4ŒGsl.ConstCGSM÷0
+GRAM_FORCEÃ4ŒGsl.ConstMKS÷0
+GRAM_FORCEÃ4ŒGsl.ConstMKSA÷0
+GRAVITATIONAL_CONSTANTÃ4ŒGsl.ConstCGS÷0
+GRAVITATIONAL_CONSTANTÃ4ŒGsl.ConstCGSM÷0
+GRAVITATIONAL_CONSTANTÃ4ŒGsl.ConstMKS÷0
+GRAVITATIONAL_CONSTANTÃ4ŒGsl.ConstMKSA÷0
+GRAV_ACCELÃ4ŒGsl.ConstCGS÷0
+GRAV_ACCELÃ4ŒGsl.ConstCGSM÷0
+GRAV_ACCELÃ4ŒGsl.ConstMKS÷0
+GRAV_ACCELÃ4ŒGsl.ConstMKSA÷0
+GammaBetaÃ256÷0
+GaussRulesÃ2ŒGsl÷0
+GegenPolyÃ256÷0
+GslÃ256÷0
+HÃ8ŒGsl.EigenGenWorkspace÷0œMatrix
+H3dÃ128Õ(int l, double lambda, double eta)ŒGsl.LegendrePoly÷0œpublic double
+H3d_0Ã128Õ(double lambda, double eta)ŒGsl.LegendrePoly÷0œpublic double
+H3d_0_eÃ128Õ(double lambda, double eta, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+H3d_1Ã128Õ(double lambda, double eta)ŒGsl.LegendrePoly÷0œpublic double
+H3d_1_eÃ128Õ(double lambda, double eta, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+H3d_arrayÃ128Õ(int lmax, double lambda, double eta, [CCode (array_length = false)] double[] result_array)ŒGsl.LegendrePoly÷0œpublic int
+H3d_eÃ128Õ(int l, double lambda, double eta, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+HECTAREÃ4ŒGsl.ConstCGS÷0
+HECTAREÃ4ŒGsl.ConstCGSM÷0
+HECTAREÃ4ŒGsl.ConstMKS÷0
+HECTAREÃ4ŒGsl.ConstMKSA÷0
+HH_solveÃ128Õ(Matrix A, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+HH_svxÃ128Õ(Matrix A, Vector x)ŒGsl.LinAlg÷0œpublic int
+HORSEPOWERÃ4ŒGsl.ConstCGS÷0
+HORSEPOWERÃ4ŒGsl.ConstCGSM÷0
+HORSEPOWERÃ4ŒGsl.ConstMKS÷0
+HORSEPOWERÃ4ŒGsl.ConstMKSA÷0
+HOURÃ4ŒGsl.ConstCGS÷0
+HOURÃ4ŒGsl.ConstCGSM÷0
+HOURÃ4ŒGsl.ConstMKS÷0
+HOURÃ4ŒGsl.ConstMKSA÷0
+HistogramÃ1ŒGsl÷0
+HistogramÃ128Õ(size_t n)ŒGsl.Histogram÷0
+Histogram.uniformÃ128Õ(size_t n, double xmin, double xmax)ŒGsl.Histogram÷0
+Histogram.with_rangeÃ128Õ(size_t n, [CCode (array_length = false)] double[] range)ŒGsl.Histogram÷0
+Histogram.with_zerosÃ128Õ(size_t n)ŒGsl.Histogram÷0
+Histogram2dÃ1ŒGsl÷0
+Histogram2dÃ128Õ(size_t nx, size_t ny)ŒGsl.Histogram2d÷0
+Histogram2d.rangeÃ128Õ(size_t nx, size_t ny, out double xrange, out double yrange)ŒGsl.Histogram2d÷0
+Histogram2d.uniformÃ128Õ(size_t nx, size_t ny, double xmin, double xmax, double ymin, double ymax)ŒGsl.Histogram2d÷0
+Histogram2d.with_zerosÃ128Õ(size_t nx, size_t ny)ŒGsl.Histogram2d÷0
+Histogram2dPDFÃ1ŒGsl÷0
+Histogram2dPDFÃ128Õ(size_t nx, size_t ny)ŒGsl.Histogram2dPDF÷0
+HistogramPDFÃ1ŒGsl÷0
+HistogramPDFÃ128Õ(size_t n)ŒGsl.HistogramPDF÷0
+HydrogenicÃ256÷0
+HypergÃ256÷0
+I0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+I0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+I0_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+I0_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+I1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+I1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+I1_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+I1_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+IMPORTANCEÃ4ŒGsl.MonteVegasMode÷0
+IMPORTANCE_ONLYÃ4ŒGsl.MonteVegasMode÷0
+INCÃ4ŒGsl.OdeivHadjustTypes÷0
+INCHÃ4ŒGsl.ConstCGS÷0
+INCHÃ4ŒGsl.ConstCGSM÷0
+INCHÃ4ŒGsl.ConstMKS÷0
+INCHÃ4ŒGsl.ConstMKSA÷0
+INCH_OF_MERCURYÃ4ŒGsl.ConstCGS÷0
+INCH_OF_MERCURYÃ4ŒGsl.ConstCGSM÷0
+INCH_OF_MERCURYÃ4ŒGsl.ConstMKS÷0
+INCH_OF_MERCURYÃ4ŒGsl.ConstMKSA÷0
+INCH_OF_WATERÃ4ŒGsl.ConstCGS÷0
+INCH_OF_WATERÃ4ŒGsl.ConstCGSM÷0
+INCH_OF_WATERÃ4ŒGsl.ConstMKS÷0
+INCH_OF_WATERÃ4ŒGsl.ConstMKSA÷0
+InÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+In_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+In_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+In_scaledÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+In_scaled_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+In_scaled_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+IntegrationÃ256÷0
+IntegrationQAWOTableÃ1ŒGsl÷0
+IntegrationQAWOTableÃ128Õ(double omega, double L, QAWO sine, size_t n)ŒGsl.IntegrationQAWOTable÷0
+IntegrationQAWSTableÃ1ŒGsl÷0
+IntegrationQAWSTableÃ128Õ(double alpha, double beta, int mu, int nu)ŒGsl.IntegrationQAWSTable÷0
+IntegrationWorkspaceÃ1ŒGsl÷0
+IntegrationWorkspaceÃ128Õ(size_t n)ŒGsl.IntegrationWorkspace÷0
+InterpÃ1ŒGsl÷0
+InterpÃ128Õ(InterpType T, size_t n)ŒGsl.Interp÷0
+InterpAccelÃ1ŒGsl÷0
+InterpAccelÃ128Õ()ŒGsl.InterpAccel÷0
+InterpAllocÃ128Õ(size_t size)ŒGsl÷0œpublic delegate void *
+InterpEvalÃ128Õ(void* t, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size, double x, InterpAccel* i, out double y)ŒGsl÷0œpublic delegate int
+InterpEvalDerivÃ128Õ(void* t, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size, double x, InterpAccel* i, out double y_p)ŒGsl÷0œpublic delegate int
+InterpEvalDeriv2Ã128Õ(void* t, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size, double x, InterpAccel* i, out double y_pp)ŒGsl÷0œpublic delegate int
+InterpEvalIntegÃ128Õ(void* t, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size, InterpAccel* i, double a, double b, out double result)ŒGsl÷0œpublic delegate int
+InterpFreeÃ128Õ(void* t)ŒGsl÷0œpublic delegate void
+InterpInitÃ128Õ(void* t, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size)ŒGsl÷0œpublic delegate int
+InterpTypeÃ2048ŒGsl÷0
+InterpTypesÃ256÷0
+InuÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Inu_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+Inu_scaledÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Inu_scaled_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+JÃ8ŒGsl.MultifitFdfsolver÷0œVector
+JÃ8ŒGsl.MultirootFdfsolver÷0œMatrix
+J0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+J0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+J1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+J1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+J2Ã8ŒGsl.DHT÷0œdouble
+JOULEÃ4ŒGsl.ConstCGS÷0
+JOULEÃ4ŒGsl.ConstCGSM÷0
+JOULEÃ4ŒGsl.ConstMKS÷0
+JOULEÃ4ŒGsl.ConstMKSA÷0
+JjjÃ8ŒGsl.DHT÷0œdouble
+JnÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+Jn_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+Jn_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+JnuÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Jnu_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+KÃ8ŒGsl.RanDiscrete÷0œsize_t
+K0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+K0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+K0_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+K0_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+K1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+K1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+K1_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+K1_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+KILOÃ4ŒGsl.ConstNum÷0
+KILOMETERS_PER_HOURÃ4ŒGsl.ConstCGS÷0
+KILOMETERS_PER_HOURÃ4ŒGsl.ConstCGSM÷0
+KILOMETERS_PER_HOURÃ4ŒGsl.ConstMKS÷0
+KILOMETERS_PER_HOURÃ4ŒGsl.ConstMKSA÷0
+KILOPOUND_FORCEÃ4ŒGsl.ConstCGS÷0
+KILOPOUND_FORCEÃ4ŒGsl.ConstCGSM÷0
+KILOPOUND_FORCEÃ4ŒGsl.ConstMKS÷0
+KILOPOUND_FORCEÃ4ŒGsl.ConstMKSA÷0
+KNOTÃ4ŒGsl.ConstCGS÷0
+KNOTÃ4ŒGsl.ConstCGSM÷0
+KNOTÃ4ŒGsl.ConstMKS÷0
+KNOTÃ4ŒGsl.ConstMKSA÷0
+KcompÃ128Õ(double k, Mode mode)ŒGsl.EllInt÷0œpublic double
+Kcomp_eÃ128Õ(double k, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+KnÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+Kn_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+Kn_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+Kn_scaledÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+Kn_scaled_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+Kn_scaled_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+KnuÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Knu_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+Knu_scaledÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Knu_scaled_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+LÃ8ŒGsl.IntegrationQAWOTable÷0œdouble
+L1Ã128Õ(double a, double x)ŒGsl.Laguerre÷0œpublic double
+L1_eÃ128Õ(double a, double x, out Result result)ŒGsl.Laguerre÷0œpublic double
+L2Ã128Õ(double a, double x)ŒGsl.Laguerre÷0œpublic double
+L2_eÃ128Õ(double a, double x, out Result result)ŒGsl.Laguerre÷0œpublic double
+L3Ã128Õ(double a, double x)ŒGsl.Laguerre÷0œpublic double
+L3_eÃ128Õ(double a, double x, out Result result)ŒGsl.Laguerre÷0œpublic double
+LAMBERTÃ4ŒGsl.ConstCGS÷0
+LAMBERTÃ4ŒGsl.ConstCGSM÷0
+LAMBERTÃ4ŒGsl.ConstMKS÷0
+LAMBERTÃ4ŒGsl.ConstMKSA÷0
+LIGHT_YEARÃ4ŒGsl.ConstCGS÷0
+LIGHT_YEARÃ4ŒGsl.ConstCGSM÷0
+LIGHT_YEARÃ4ŒGsl.ConstMKS÷0
+LIGHT_YEARÃ4ŒGsl.ConstMKSA÷0
+LITERÃ4ŒGsl.ConstCGS÷0
+LITERÃ4ŒGsl.ConstCGSM÷0
+LITERÃ4ŒGsl.ConstMKS÷0
+LITERÃ4ŒGsl.ConstMKSA÷0
+LUMENÃ4ŒGsl.ConstCGS÷0
+LUMENÃ4ŒGsl.ConstCGSM÷0
+LUMENÃ4ŒGsl.ConstMKS÷0
+LUMENÃ4ŒGsl.ConstMKSA÷0
+LUXÃ4ŒGsl.ConstCGS÷0
+LUXÃ4ŒGsl.ConstCGSM÷0
+LUXÃ4ŒGsl.ConstMKS÷0
+LUXÃ4ŒGsl.ConstMKSA÷0
+LU_decompÃ128Õ(Matrix A, Permutation p, out int signum)ŒGsl.LinAlg÷0œpublic int
+LU_detÃ128Õ(Matrix LU, int signum)ŒGsl.LinAlg÷0œpublic double
+LU_invertÃ128Õ(Matrix LU, Permutation p, Matrix inverse)ŒGsl.LinAlg÷0œpublic int
+LU_lndetÃ128Õ(Matrix LU)ŒGsl.LinAlg÷0œpublic double
+LU_refineÃ128Õ(Matrix A, Matrix LU, Permutation p, Vector b, Vector x, Vector residual)ŒGsl.LinAlg÷0œpublic int
+LU_sgndetÃ128Õ(Matrix LU, int signum)ŒGsl.LinAlg÷0œpublic int
+LU_solveÃ128Õ(Matrix LU, Permutation p, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+LU_svxÃ128Õ(Matrix LU, Permutation p, Vector x)ŒGsl.LinAlg÷0œpublic int
+LaguerreÃ256÷0
+LambertÃ256÷0
+LegendrePolyÃ256÷0
+LinAlgÃ256÷0
+LnÃ128Õ(int n, double a, double x)ŒGsl.Laguerre÷0œpublic double
+Ln_eÃ128Õ(int n, double a, double x, out Result result)ŒGsl.Laguerre÷0œpublic double
+LogÃ256÷0
+MASS_ELECTRONÃ4ŒGsl.ConstCGS÷0
+MASS_ELECTRONÃ4ŒGsl.ConstCGSM÷0
+MASS_ELECTRONÃ4ŒGsl.ConstMKS÷0
+MASS_ELECTRONÃ4ŒGsl.ConstMKSA÷0
+MASS_MUONÃ4ŒGsl.ConstCGS÷0
+MASS_MUONÃ4ŒGsl.ConstCGSM÷0
+MASS_MUONÃ4ŒGsl.ConstMKS÷0
+MASS_MUONÃ4ŒGsl.ConstMKSA÷0
+MASS_NEUTRONÃ4ŒGsl.ConstCGS÷0
+MASS_NEUTRONÃ4ŒGsl.ConstCGSM÷0
+MASS_NEUTRONÃ4ŒGsl.ConstMKS÷0
+MASS_NEUTRONÃ4ŒGsl.ConstMKSA÷0
+MASS_PROTONÃ4ŒGsl.ConstCGS÷0
+MASS_PROTONÃ4ŒGsl.ConstCGSM÷0
+MASS_PROTONÃ4ŒGsl.ConstMKS÷0
+MASS_PROTONÃ4ŒGsl.ConstMKSA÷0
+MEGAÃ4ŒGsl.ConstNum÷0
+METER_OF_MERCURYÃ4ŒGsl.ConstCGS÷0
+METER_OF_MERCURYÃ4ŒGsl.ConstCGSM÷0
+METER_OF_MERCURYÃ4ŒGsl.ConstMKS÷0
+METER_OF_MERCURYÃ4ŒGsl.ConstMKSA÷0
+METRIC_TONÃ4ŒGsl.ConstCGS÷0
+METRIC_TONÃ4ŒGsl.ConstCGSM÷0
+METRIC_TONÃ4ŒGsl.ConstMKS÷0
+METRIC_TONÃ4ŒGsl.ConstMKSA÷0
+MICROÃ4ŒGsl.ConstNum÷0
+MICRONÃ4ŒGsl.ConstCGS÷0
+MICRONÃ4ŒGsl.ConstCGSM÷0
+MICRONÃ4ŒGsl.ConstMKS÷0
+MICRONÃ4ŒGsl.ConstMKSA÷0
+MILÃ4ŒGsl.ConstCGS÷0
+MILÃ4ŒGsl.ConstCGSM÷0
+MILÃ4ŒGsl.ConstMKS÷0
+MILÃ4ŒGsl.ConstMKSA÷0
+MILEÃ4ŒGsl.ConstCGS÷0
+MILEÃ4ŒGsl.ConstCGSM÷0
+MILEÃ4ŒGsl.ConstMKS÷0
+MILEÃ4ŒGsl.ConstMKSA÷0
+MILES_PER_HOURÃ4ŒGsl.ConstCGS÷0
+MILES_PER_HOURÃ4ŒGsl.ConstCGSM÷0
+MILES_PER_HOURÃ4ŒGsl.ConstMKS÷0
+MILES_PER_HOURÃ4ŒGsl.ConstMKSA÷0
+MILLIÃ4ŒGsl.ConstNum÷0
+MINUTEÃ4ŒGsl.ConstCGS÷0
+MINUTEÃ4ŒGsl.ConstCGSM÷0
+MINUTEÃ4ŒGsl.ConstMKS÷0
+MINUTEÃ4ŒGsl.ConstMKSA÷0
+MOLAR_GASÃ4ŒGsl.ConstCGS÷0
+MOLAR_GASÃ4ŒGsl.ConstCGSM÷0
+MOLAR_GASÃ4ŒGsl.ConstMKS÷0
+MOLAR_GASÃ4ŒGsl.ConstMKSA÷0
+M_1_PIÃ4ŒGsl.MathConst÷0
+M_2_PIÃ4ŒGsl.MathConst÷0
+M_2_SQRTPIÃ4ŒGsl.MathConst÷0
+M_EÃ4ŒGsl.MathConst÷0
+M_EULERÃ4ŒGsl.MathConst÷0
+M_LN10Ã4ŒGsl.MathConst÷0
+M_LN2Ã4ŒGsl.MathConst÷0
+M_LNPIÃ4ŒGsl.MathConst÷0
+M_LOG10EÃ4ŒGsl.MathConst÷0
+M_LOG2EÃ4ŒGsl.MathConst÷0
+M_PIÃ4ŒGsl.MathConst÷0
+M_PI_2Ã4ŒGsl.MathConst÷0
+M_PI_4Ã4ŒGsl.MathConst÷0
+M_SQRT1_2Ã4ŒGsl.MathConst÷0
+M_SQRT2Ã4ŒGsl.MathConst÷0
+M_SQRT3Ã4ŒGsl.MathConst÷0
+MathConstÃ2ŒGsl÷0
+MathieuWorkspaceÃ1ŒGsl÷0
+MathieuWorkspaceÃ128Õ(size_t nn, double qq)ŒGsl.MathieuWorkspace÷0
+MatrixÃ1ŒGsl÷0
+MatrixÃ128Õ(size_t n1, size_t n2)ŒGsl.Matrix÷0
+Matrix.from_blockÃ128Õ(Block b, size_t offset, size_t n1, size_t n2, size_t d2)ŒGsl.Matrix÷0
+Matrix.from_matrixÃ128Õ(Matrix m, size_t k1, size_t k2, size_t n1, size_t n2)ŒGsl.Matrix÷0
+Matrix.with_zerosÃ128Õ(size_t n1, size_t n2)ŒGsl.Matrix÷0
+MatrixComplexÃ1ŒGsl÷0
+MatrixComplexÃ128Õ(size_t n1, size_t n2)ŒGsl.MatrixComplex÷0
+MatrixComplex.from_blockÃ128Õ(BlockComplex b, size_t offset, size_t n1, size_t n2, size_t d2)ŒGsl.MatrixComplex÷0
+MatrixComplex.from_matrixÃ128Õ(MatrixComplex m, size_t k1, size_t k2, size_t n1, size_t n2)ŒGsl.MatrixComplex÷0
+MatrixComplex.with_zerosÃ128Õ(size_t n1, size_t n2)ŒGsl.MatrixComplex÷0
+MatrixComplexViewÃ2048ŒGsl÷0
+MatrixViewÃ2048ŒGsl÷0
+McÃ128Õ(int kind, int order, double qq, double zz, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+Mc_arrayÃ128Õ(int kind, int nmin, int nmax, double qq, double zz, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+MinBracketingFunctionÃ128Õ(Function* f, double* x_minimum, double* f_minimum, double* x_lower, double* f_lower, double* x_upper, double* f_upper, size_t eval_max)ŒGsl÷0œpublic delegate int
+MinFminimizerÃ1ŒGsl÷0
+MinFminimizerÃ128Õ(MinFminimizerType* T)ŒGsl.MinFminimizer÷0
+MinFminimizerTypeÃ2048ŒGsl÷0
+MinFminimizerTypesÃ256÷0
+MinIterateÃ128Õ(void *state, Function* f, double* x_minimum, double* f_minimum, double* x_lower, double* f_lower, double* x_upper, double* f_upper)ŒGsl÷0œpublic delegate int
+MinSetÃ128Õ(void* state, Function* f, double xminimun, double f_minimum, double x_lower, double f_lower, double x_upper, double f_upper)ŒGsl÷0œpublic delegate int
+MinTestÃ256÷0
+ModeÃ2ŒGsl÷0
+MonteFuncÃ128Õ([CCode (array_length = false)] double[] x_array, size_t dim, void* params)ŒGsl÷0œpublic delegate double
+MonteFunctionÃ2048ŒGsl÷0
+MonteMiserStateÃ1ŒGsl÷0
+MonteMiserStateÃ128Õ(size_t dim)ŒGsl.MonteMiserState÷0
+MontePlainStateÃ1ŒGsl÷0
+MontePlainStateÃ128Õ(size_t dim)ŒGsl.MontePlainState÷0
+MonteVegasModeÃ2ŒGsl÷0
+MonteVegasStateÃ1ŒGsl÷0
+MonteVegasStateÃ128Õ(size_t dim)ŒGsl.MonteVegasState÷0
+MsÃ128Õ(int kind, int order, double qq, double zz, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+Ms_arrayÃ128Õ(int kind, int nmin, int nmax, double qq, double zz, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+MultifitÃ256÷0
+MultifitDfÃ128Õ(Vector x, void* params, Matrix df)ŒGsl÷0œpublic delegate int
+MultifitFÃ128Õ(Vector x, void* params, Vector f)ŒGsl÷0œpublic delegate int
+MultifitFAllocÃ128Õ(void* state, size_t n, size_t p)ŒGsl÷0œpublic delegate int
+MultifitFFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate void
+MultifitFIterateÃ128Õ(void* state, MultifitFunction* function, Vector x, Vector f, Vector dx)ŒGsl÷0œpublic delegate int
+MultifitFSetÃ128Õ(void* state, MultifitFunction* function, Vector x, Vector f, Vector dx)ŒGsl÷0œpublic delegate int
+MultifitFdfÃ128Õ(Vector x, void* params, Vector f, Matrix df)ŒGsl÷0œpublic delegate int
+MultifitFdfAllocÃ128Õ(void* state, size_t n, size_t p)ŒGsl÷0œpublic delegate int
+MultifitFdfFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate void
+MultifitFdfIterateÃ128Õ(void* state, MultifitFunctionFdf fdf, Vector x, Vector f, Matrix J, Vector dx)ŒGsl÷0œpublic delegate int
+MultifitFdfSetÃ128Õ(void* state, MultifitFunctionFdf fdf, Vector x, Vector f, Matrix J, Vector dx)ŒGsl÷0œpublic delegate int
+MultifitFdfsolverÃ1ŒGsl÷0
+MultifitFdfsolverÃ128Õ(MultifitFdfsolverType* T, size_t n, size_t p)ŒGsl.MultifitFdfsolver÷0
+MultifitFdfsolverTypeÃ2048ŒGsl÷0
+MultifitFdfsolverTypesÃ256÷0
+MultifitFsolverÃ1ŒGsl÷0
+MultifitFsolverÃ128Õ(MultifitFsolverType* T, size_t n, size_t p)ŒGsl.MultifitFsolver÷0
+MultifitFsolverTypeÃ2048ŒGsl÷0
+MultifitFunctionÃ2048ŒGsl÷0
+MultifitFunctionFdfÃ2048ŒGsl÷0
+MultifitLinearWorkspaceÃ1ŒGsl÷0
+MultifitLinearWorkspaceÃ128Õ(size_t n, size_t p)ŒGsl.MultifitLinearWorkspace÷0
+MultifitTestÃ256÷0
+MultiminDfÃ128Õ(Vector x, void* params, Vector df)ŒGsl÷0œpublic delegate void
+MultiminFÃ128Õ(Vector x, void* params)ŒGsl÷0œpublic delegate double
+MultiminFAllocÃ128Õ(void *state, size_t n)ŒGsl÷0œpublic delegate int
+MultiminFFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate int
+MultiminFIterateÃ128Õ(void* state, MultiminFunction* f, Vector x, double* size, double* fval)ŒGsl÷0œpublic delegate int
+MultiminFSetÃ128Õ(void* state, MultiminFunction* f, Vector x, double* size)ŒGsl÷0œpublic delegate int
+MultiminFdfÃ128Õ(Vector x, void* params, double* f, Vector df)ŒGsl÷0œpublic delegate void
+MultiminFdfAllocÃ128Õ(void *state, size_t n)ŒGsl÷0œpublic delegate int
+MultiminFdfFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate int
+MultiminFdfIterateÃ128Õ(void* state, MultiminFunctionFdf* fdf, Vector x, double* f, Vector gradient, Vector dx)ŒGsl÷0œpublic delegate int
+MultiminFdfRestartÃ128Õ(void* state)ŒGsl÷0œpublic delegate int
+MultiminFdfSetÃ128Õ(void* state, MultiminFunctionFdf* fdf, Vector x, double* f, Vector gradient, double step_size, double tol)ŒGsl÷0œpublic delegate int
+MultiminFdfminimizerÃ1ŒGsl÷0
+MultiminFdfminimizerÃ128Õ(MultiminFdfminimizerType* T, size_t n)ŒGsl.MultiminFdfminimizer÷0
+MultiminFdfminimizerTypeÃ2048ŒGsl÷0
+MultiminFdfminimizerTypesÃ256÷0
+MultiminFminimizerÃ1ŒGsl÷0
+MultiminFminimizerÃ128Õ(MultiminFminimizerType* T, size_t n)ŒGsl.MultiminFminimizer÷0
+MultiminFminimizerTypeÃ2048ŒGsl÷0
+MultiminFminimizerTypesÃ256÷0
+MultiminFunctionÃ2048ŒGsl÷0
+MultiminFunctionFdfÃ2048ŒGsl÷0
+MultiminTestÃ256÷0
+MultiplyÃ256÷0
+MultirootDFÃ128Õ(Vector x, void* params, Matrix df)ŒGsl÷0œpublic delegate int
+MultirootFÃ128Õ(Vector x, void* params, Vector f)ŒGsl÷0œpublic delegate int
+MultirootFAllocÃ128Õ(void* state, size_t n)ŒGsl÷0œpublic delegate int
+MultirootFDFÃ128Õ(Vector x, void* params, Vector f, Matrix df)ŒGsl÷0œpublic delegate int
+MultirootFFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate void
+MultirootFIterateÃ128Õ(void* state, MultirootFunction* function, Vector x, Vector f, Vector dx)ŒGsl÷0œpublic delegate int
+MultirootFSetÃ128Õ(void* state, MultirootFunction* function, Vector x, Vector f, Vector dx)ŒGsl÷0œpublic delegate int
+MultirootFdfAllocÃ128Õ(void* state, size_t n)ŒGsl÷0œpublic delegate int
+MultirootFdfFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate int
+MultirootFdfIterateÃ128Õ(void* state, MultirootFunctionFdf* fdf, Vector x, Vector f, Matrix J, Vector dx)ŒGsl÷0œpublic delegate int
+MultirootFdfSetÃ128Õ(void* state, MultirootFunctionFdf* fdf, Vector x, Vector f, Matrix J, Vector dx)ŒGsl÷0œpublic delegate int
+MultirootFdfsolverÃ1ŒGsl÷0
+MultirootFdfsolverÃ128Õ(MultirootFdfsolverType* T, size_t n)ŒGsl.MultirootFdfsolver÷0
+MultirootFdfsolverTypeÃ2048ŒGsl÷0
+MultirootFdfsolverTypesÃ256÷0
+MultirootFsolverÃ1ŒGsl÷0
+MultirootFsolverÃ128Õ(MultirootFsolverType* T, size_t n)ŒGsl.MultirootFsolver÷0
+MultirootFsolverTypeÃ2048ŒGsl÷0
+MultirootFsolverTypesÃ256÷0
+MultirootFunctionÃ2048ŒGsl÷0
+MultirootFunctionFdfÃ2048ŒGsl÷0
+MultirootTestÃ256÷0
+NANOÃ4ŒGsl.ConstNum÷0
+NAUTICAL_MILEÃ4ŒGsl.ConstCGS÷0
+NAUTICAL_MILEÃ4ŒGsl.ConstCGSM÷0
+NAUTICAL_MILEÃ4ŒGsl.ConstMKS÷0
+NAUTICAL_MILEÃ4ŒGsl.ConstMKSA÷0
+NEWTONÃ4ŒGsl.ConstCGS÷0
+NEWTONÃ4ŒGsl.ConstCGSM÷0
+NEWTONÃ4ŒGsl.ConstMKS÷0
+NEWTONÃ4ŒGsl.ConstMKSA÷0
+NILÃ4ŒGsl.OdeivHadjustTypes÷0
+NTupleÃ1ŒGsl÷0
+NTupleFuncÃ128Õ(void* ntuple_data, void* params)ŒGsl÷0œpublic delegate int
+NTupleSelectFnÃ2048ŒGsl÷0
+NTupleValueFnÃ2048ŒGsl÷0
+NUCLEAR_MAGNETONÃ4ŒGsl.ConstCGS÷0
+NUCLEAR_MAGNETONÃ4ŒGsl.ConstCGSM÷0
+NUCLEAR_MAGNETONÃ4ŒGsl.ConstMKS÷0
+NUCLEAR_MAGNETONÃ4ŒGsl.ConstMKSA÷0
+OUNCE_MASSÃ4ŒGsl.ConstCGS÷0
+OUNCE_MASSÃ4ŒGsl.ConstCGSM÷0
+OUNCE_MASSÃ4ŒGsl.ConstMKS÷0
+OUNCE_MASSÃ4ŒGsl.ConstMKSA÷0
+OdeivControlÃ1ŒGsl÷0
+OdeivControlÃ128Õ(OdeivControlType* T)ŒGsl.OdeivControl÷0
+OdeivControl.scaledÃ128Õ(double eps_abs, double eps_rel, double a_y, double a_dydt, double[] scale_abs)ŒGsl.OdeivControl÷0
+OdeivControl.standardÃ128Õ(double eps_abs, double eps_rel, double a_y, double a_dydt)ŒGsl.OdeivControl÷0
+OdeivControl.yÃ128Õ(double eps_abs, double eps_rel)ŒGsl.OdeivControl÷0
+OdeivControl.ypÃ128Õ(double eps_abs, double eps_rel)ŒGsl.OdeivControl÷0
+OdeivControlAllocÃ128Õ()ŒGsl÷0œpublic delegate void *
+OdeivControlFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate void
+OdeivControlHadjustÃ128Õ(void* state, size_t dim, uint ord, [CCode (array_length = false)] double[] y, [CCode (array_length = false)] double[] yerr, [CCode (array_length = false)] double[] yp, [CCode (array_length = false)] double[] h)ŒGsl÷0œpublic delegate int
+OdeivControlInitÃ128Õ(void* state, double eps_abs, double eps_rel, double a_y, double a_dydt)ŒGsl÷0œpublic delegate int
+OdeivControlTypeÃ2048ŒGsl÷0
+OdeivEvolveÃ1ŒGsl÷0
+OdeivEvolveÃ128Õ(size_t dim)ŒGsl.OdeivEvolve÷0
+OdeivFunctionÃ128Õ(double t, [CCode (array_length = false)] double[] y, [CCode (array_length = false)] double[] dydt, void* params)ŒGsl÷0œpublic delegate int
+OdeivHadjustTypesÃ2ŒGsl÷0
+OdeivJacobianÃ128Õ(double t, [CCode (array_length = false)] double[] y, [CCode (array_length = false)] double[] dfdy, [CCode (array_length = false)] double[] dfdt, void* params)ŒGsl÷0œpublic delegate int
+OdeivStepÃ1ŒGsl÷0
+OdeivStepÃ128Õ(OdeivStepType* T, size_t dim)ŒGsl.OdeivStep÷0
+OdeivStepAllocÃ128Õ(size_t dim)ŒGsl÷0œpublic delegate void *
+OdeivStepApplyÃ128Õ(void* state, size_t dim, double t, double h, [CCode (array_length = false)] double[] y, [CCode (array_length = false)] double[] yerr, [CCode (array_length = false)] double[] dydt_in, [CCode (array_length = false)] double[] dydt_out, OdeivSystem* dydt)ŒGsl÷0œpublic delegate int
+OdeivStepFreeÃ128Õ(void* state)ŒGsl÷0œpublic delegate void
+OdeivStepOrderÃ128Õ(void* state)ŒGsl÷0
+OdeivStepResetÃ128Õ(void* state, size_t dim)ŒGsl÷0œpublic delegate int
+OdeivStepTypeÃ2048ŒGsl÷0
+OdeivStepTypesÃ256÷0
+OdeivSystemÃ2048ŒGsl÷0
+PÃ128Õ(double phi, double k, double n, Mode mode)ŒGsl.EllInt÷0œpublic double
+P1Ã128Õ(double x)ŒGsl.LegendrePoly÷0œpublic double
+P1_eÃ128Õ(double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+P2Ã128Õ(double x)ŒGsl.LegendrePoly÷0œpublic double
+P2_eÃ128Õ(double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+P3Ã128Õ(double x)ŒGsl.LegendrePoly÷0œpublic double
+P3_eÃ128Õ(double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+PARSECÃ4ŒGsl.ConstCGS÷0
+PARSECÃ4ŒGsl.ConstCGSM÷0
+PARSECÃ4ŒGsl.ConstMKS÷0
+PARSECÃ4ŒGsl.ConstMKSA÷0
+PETAÃ4ŒGsl.ConstNum÷0
+PHOTÃ4ŒGsl.ConstCGS÷0
+PHOTÃ4ŒGsl.ConstCGSM÷0
+PHOTÃ4ŒGsl.ConstMKS÷0
+PHOTÃ4ŒGsl.ConstMKSA÷0
+PICOÃ4ŒGsl.ConstNum÷0
+PINTÃ4ŒGsl.ConstCGS÷0
+PINTÃ4ŒGsl.ConstCGSM÷0
+PINTÃ4ŒGsl.ConstMKS÷0
+PINTÃ4ŒGsl.ConstMKSA÷0
+PLANCKS_CONSTANT_HÃ4ŒGsl.ConstCGS÷0
+PLANCKS_CONSTANT_HÃ4ŒGsl.ConstCGSM÷0
+PLANCKS_CONSTANT_HÃ4ŒGsl.ConstMKS÷0
+PLANCKS_CONSTANT_HÃ4ŒGsl.ConstMKSA÷0
+PLANCKS_CONSTANT_HBARÃ4ŒGsl.ConstCGS÷0
+PLANCKS_CONSTANT_HBARÃ4ŒGsl.ConstCGSM÷0
+PLANCKS_CONSTANT_HBARÃ4ŒGsl.ConstMKS÷0
+PLANCKS_CONSTANT_HBARÃ4ŒGsl.ConstMKSA÷0
+POINTÃ4ŒGsl.ConstCGS÷0
+POINTÃ4ŒGsl.ConstCGSM÷0
+POINTÃ4ŒGsl.ConstMKS÷0
+POINTÃ4ŒGsl.ConstMKSA÷0
+POISEÃ4ŒGsl.ConstCGS÷0
+POISEÃ4ŒGsl.ConstCGSM÷0
+POISEÃ4ŒGsl.ConstMKS÷0
+POISEÃ4ŒGsl.ConstMKSA÷0
+POUNDALÃ4ŒGsl.ConstCGS÷0
+POUNDALÃ4ŒGsl.ConstCGSM÷0
+POUNDALÃ4ŒGsl.ConstMKS÷0
+POUNDALÃ4ŒGsl.ConstMKSA÷0
+POUND_FORCEÃ4ŒGsl.ConstCGS÷0
+POUND_FORCEÃ4ŒGsl.ConstCGSM÷0
+POUND_FORCEÃ4ŒGsl.ConstMKS÷0
+POUND_FORCEÃ4ŒGsl.ConstMKSA÷0
+POUND_MASSÃ4ŒGsl.ConstCGS÷0
+POUND_MASSÃ4ŒGsl.ConstCGSM÷0
+POUND_MASSÃ4ŒGsl.ConstMKS÷0
+POUND_MASSÃ4ŒGsl.ConstMKSA÷0
+PROTON_MAGNETIC_MOMENTÃ4ŒGsl.ConstCGS÷0
+PROTON_MAGNETIC_MOMENTÃ4ŒGsl.ConstCGSM÷0
+PROTON_MAGNETIC_MOMENTÃ4ŒGsl.ConstMKS÷0
+PROTON_MAGNETIC_MOMENTÃ4ŒGsl.ConstMKSA÷0
+PSIÃ4ŒGsl.ConstCGS÷0
+PSIÃ4ŒGsl.ConstCGSM÷0
+PSIÃ4ŒGsl.ConstMKS÷0
+PSIÃ4ŒGsl.ConstMKSA÷0
+P_eÃ128Õ(double phi, double k, double n, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+PcompÃ128Õ(double k, double n, Mode mode)ŒGsl.EllInt÷0œpublic double
+Pcomp_eÃ128Õ(double k, double n, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+PermutationÃ1ŒGsl÷0
+PermutationÃ128Õ(size_t n)ŒGsl.Permutation÷0
+Permutation.with_zerosÃ128Õ(size_t n)ŒGsl.Permutation÷0
+PermuteÃ256÷0
+PermuteComplexÃ256÷0
+PermuteVectorÃ256÷0
+PermuteVectorComplexÃ256÷0
+PlÃ128Õ(int l, double x)ŒGsl.LegendrePoly÷0œpublic double
+Pl_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.LegendrePoly÷0œpublic int
+Pl_deriv_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array, [CCode (array_length = false)] double[] result_deriv_array)ŒGsl.LegendrePoly÷0œpublic int
+Pl_eÃ128Õ(int l, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+PlmÃ128Õ(int l, int m, double x)ŒGsl.LegendrePoly÷0œpublic double
+Plm_arrayÃ128Õ(int lmax, int m, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.LegendrePoly÷0œpublic int
+Plm_deriv_arrayÃ128Õ(int lmax, int m, double x, double[] result_array, [CCode (array_length = false)] double[] result_deriv_array)ŒGsl.LegendrePoly÷0œpublic int
+Plm_eÃ128Õ(int l, int m, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+PolyÃ256÷0
+PolyComplexWorkspaceÃ1ŒGsl÷0
+PolyComplexWorkspaceÃ128Õ(size_t n)ŒGsl.PolyComplexWorkspace÷0
+PowÃ256÷0
+PsiÃ256÷0
+QÃ8ŒGsl.EigenGenWorkspace÷0œMatrix
+QÃ8ŒGsl.EigenGenvWorkspace÷0œMatrix
+QÃ8ŒGsl.MultifitLinearWorkspace÷0œMatrix
+Q0Ã128Õ(double x)ŒGsl.LegendrePoly÷0œpublic double
+Q0_eÃ128Õ(double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+Q1Ã128Õ(double x)ŒGsl.LegendrePoly÷0œpublic double
+Q1_eÃ128Õ(double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+QAWOÃ2ŒGsl÷0
+QRNGÃ1ŒGsl÷0
+QRNGÃ128Õ(QRNGType* T, uint d)ŒGsl.QRNG÷0
+QRNGAlgorithmsÃ256÷0
+QRNGGetState2Ã128Õ(void* state, uint dimension, out double x)ŒGsl÷0œpublic delegate int
+QRNGInitStateÃ128Õ(void* state, uint dimension)ŒGsl÷0œpublic delegate int
+QRNGStateSizeÃ128Õ(uint dimension)ŒGsl÷0œpublic delegate size_t
+QRNGTypeÃ2048ŒGsl÷0
+QRPT_QRsolveÃ128Õ(Matrix Q, Matrix R, Permutation p, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QRPT_RsolveÃ128Õ(Matrix QR, Permutation p, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QRPT_RsvxÃ128Õ(Matrix QR, Permutation p, Vector x)ŒGsl.LinAlg÷0œpublic int
+QRPT_decompÃ128Õ(Matrix A, Vector tau, Permutation p, out int signum, Vector norm)ŒGsl.LinAlg÷0œpublic int
+QRPT_decomp2Ã128Õ(Matrix A, Matrix q, Matrix r, Vector tau, Permutation p, out int signum, Vector norm)ŒGsl.LinAlg÷0œpublic int
+QRPT_solveÃ128Õ(Matrix QR, Vector tau, Permutation p, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QRPT_svxÃ128Õ(Matrix QR, Vector tau, Permutation p, Vector x)ŒGsl.LinAlg÷0œpublic int
+QRPT_updateÃ128Õ(Matrix Q, Matrix R, Permutation p, Vector u, Vector v)ŒGsl.LinAlg÷0œpublic int
+QR_QRsolveÃ128Õ(Matrix Q, Matrix R, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QR_QTmatÃ128Õ(Matrix QR, Vector tau, Matrix A)ŒGsl.LinAlg÷0œpublic int
+QR_QTvecÃ128Õ(Matrix QR, Vector tau, Vector v)ŒGsl.LinAlg÷0œpublic int
+QR_QvecÃ128Õ(Matrix QR, Vector tau, Vector v)ŒGsl.LinAlg÷0œpublic int
+QR_RsolveÃ128Õ(Matrix QR, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QR_RsvxÃ128Õ(Matrix QR, Vector x)ŒGsl.LinAlg÷0œpublic int
+QR_decompÃ128Õ(Matrix A, Vector tau)ŒGsl.LinAlg÷0œpublic int
+QR_lssolveÃ128Õ(Matrix QR, Vector tau, Vector b, Vector x, Vector residual)ŒGsl.LinAlg÷0œpublic int
+QR_solveÃ128Õ(Matrix QR, Vector tau, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+QR_svxÃ128Õ(Matrix QR, Vector tau, Vector x)ŒGsl.LinAlg÷0œpublic int
+QR_unpackÃ128Õ(Matrix QR, Vector tau, Matrix Q, Matrix R)ŒGsl.LinAlg÷0œpublic int
+QR_updateÃ128Õ(Matrix Q, Matrix R, Vector w, Vector v)ŒGsl.LinAlg÷0œpublic int
+QSIÃ8ŒGsl.MultifitLinearWorkspace÷0œMatrix
+QUARTÃ4ŒGsl.ConstCGS÷0
+QUARTÃ4ŒGsl.ConstCGSM÷0
+QUARTÃ4ŒGsl.ConstMKS÷0
+QUARTÃ4ŒGsl.ConstMKSA÷0
+QlÃ128Õ(int l, double x)ŒGsl.LegendrePoly÷0œpublic double
+Ql_eÃ128Õ(int l, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+RÃ8ŒGsl.EigenGenWorkspace÷0œMatrix
+RADÃ4ŒGsl.ConstCGS÷0
+RADÃ4ŒGsl.ConstCGSM÷0
+RADÃ4ŒGsl.ConstMKS÷0
+RADÃ4ŒGsl.ConstMKSA÷0
+RCÃ128Õ(double x, double y, Mode mode)ŒGsl.EllInt÷0œpublic double
+RC_eÃ128Õ(double x, double y, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+RDÃ128Õ(double x, double y, double z, Mode mode)ŒGsl.EllInt÷0œpublic double
+RD_eÃ128Õ(double x, double y, double z, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+RFÃ128Õ(double x, double y, double z, Mode mode)ŒGsl.EllInt÷0œpublic double
+RF_eÃ128Õ(double x, double y, double z, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+RJÃ128Õ(double x, double y, double z, double p, Mode mode)ŒGsl.EllInt÷0œpublic double
+RJ_eÃ128Õ(double x, double y, double z, double p, Mode mode, out Result result)ŒGsl.EllInt÷0œpublic int
+RNGÃ1ŒGsl÷0
+RNGÃ128Õ(RNGType* T)ŒGsl.RNG÷0
+RNGGetDoubleÃ128Õ(void* state)ŒGsl÷0œpublic delegate double
+RNGGetStateÃ128Õ(void* state)ŒGsl÷0
+RNGSetStateÃ128Õ(void *state, ulong seed)ŒGsl÷0œpublic delegate void
+RNGTypeÃ2048ŒGsl÷0
+RNGTypesÃ256÷0
+ROENTGENÃ4ŒGsl.ConstCGS÷0
+ROENTGENÃ4ŒGsl.ConstCGSM÷0
+ROENTGENÃ4ŒGsl.ConstMKS÷0
+ROENTGENÃ4ŒGsl.ConstMKSA÷0
+RYDBERGÃ4ŒGsl.ConstCGS÷0
+RYDBERGÃ4ŒGsl.ConstCGSM÷0
+RYDBERGÃ4ŒGsl.ConstMKS÷0
+RYDBERGÃ4ŒGsl.ConstMKSA÷0
+R_solveÃ128Õ(Matrix R, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+R_svxÃ128Õ(Matrix R, Vector x)ŒGsl.LinAlg÷0œpublic int
+RanDiscreteÃ1ŒGsl÷0
+RanDiscreteÃ128Õ(size_t K, double* P)ŒGsl.RanDiscrete÷0
+RandistÃ256÷0
+ResultÃ2048ŒGsl÷0
+ResultE10Ã2048ŒGsl÷0
+RootFdfsolverÃ1ŒGsl÷0
+RootFdfsolverÃ128Õ(RootFdfsolverType* T)ŒGsl.RootFdfsolver÷0
+RootFdfsolverIterateÃ128Õ(void* state, FunctionFdf* d, double* root)ŒGsl÷0œpublic delegate int
+RootFdfsolverSetÃ128Õ(void* state, FunctionFdf* f, double* root)ŒGsl÷0œpublic delegate int
+RootFdfsolverTypeÃ2048ŒGsl÷0
+RootFdfsolverTypesÃ256÷0
+RootFsolverÃ1ŒGsl÷0
+RootFsolverÃ128Õ(RootFsolverType* T)ŒGsl.RootFsolver÷0
+RootFsolverIterateÃ128Õ(void* state, Function* f, double* root, double* x_lower, double* x_upper)ŒGsl÷0œpublic delegate int
+RootFsolverSetÃ128Õ(void* state, Function* f, double* root, double x_lower, double x_upper)ŒGsl÷0œpublic delegate int
+RootFsolverTypeÃ2048ŒGsl÷0
+RootFsolverTypesÃ256÷0
+RootTestÃ256÷0
+SÃ8ŒGsl.MultifitLinearWorkspace÷0œVector
+SINEÃ4ŒGsl.QAWO÷0
+SINGLEÃ4ŒGsl.Mode÷0
+SOLAR_MASSÃ4ŒGsl.ConstCGS÷0
+SOLAR_MASSÃ4ŒGsl.ConstCGSM÷0
+SOLAR_MASSÃ4ŒGsl.ConstMKS÷0
+SOLAR_MASSÃ4ŒGsl.ConstMKSA÷0
+SPEED_OF_LIGHTÃ4ŒGsl.ConstCGS÷0
+SPEED_OF_LIGHTÃ4ŒGsl.ConstCGSM÷0
+SPEED_OF_LIGHTÃ4ŒGsl.ConstMKS÷0
+SPEED_OF_LIGHTÃ4ŒGsl.ConstMKSA÷0
+STANDARD_GAS_VOLUMEÃ4ŒGsl.ConstCGS÷0
+STANDARD_GAS_VOLUMEÃ4ŒGsl.ConstCGSM÷0
+STANDARD_GAS_VOLUMEÃ4ŒGsl.ConstMKS÷0
+STANDARD_GAS_VOLUMEÃ4ŒGsl.ConstMKSA÷0
+STD_ATMOSPHEREÃ4ŒGsl.ConstCGS÷0
+STD_ATMOSPHEREÃ4ŒGsl.ConstCGSM÷0
+STD_ATMOSPHEREÃ4ŒGsl.ConstMKS÷0
+STD_ATMOSPHEREÃ4ŒGsl.ConstMKSA÷0
+STEFAN_BOLTZMANN_CONSTANTÃ4ŒGsl.ConstCGS÷0
+STEFAN_BOLTZMANN_CONSTANTÃ4ŒGsl.ConstCGSM÷0
+STEFAN_BOLTZMANN_CONSTANTÃ4ŒGsl.ConstMKS÷0
+STEFAN_BOLTZMANN_CONSTANTÃ4ŒGsl.ConstMKSA÷0
+STILBÃ4ŒGsl.ConstCGS÷0
+STILBÃ4ŒGsl.ConstCGSM÷0
+STILBÃ4ŒGsl.ConstMKS÷0
+STILBÃ4ŒGsl.ConstMKSA÷0
+STOKESÃ4ŒGsl.ConstCGS÷0
+STOKESÃ4ŒGsl.ConstCGSM÷0
+STOKESÃ4ŒGsl.ConstMKS÷0
+STOKESÃ4ŒGsl.ConstMKSA÷0
+STRATIFIEDÃ4ŒGsl.MonteVegasMode÷0
+SUCCESSÃ4ŒGsl.Status÷0
+SV_decompÃ128Õ(Matrix A, Matrix V, Vector S, Vector work)ŒGsl.LinAlg÷0œpublic int
+SV_decomp_jacobiÃ128Õ(Matrix A, Matrix V, Vector S)ŒGsl.LinAlg÷0œpublic int
+SV_decomp_modÃ128Õ(Matrix A, Matrix X, Matrix V, Vector S, Vector work)ŒGsl.LinAlg÷0œpublic int
+SV_solveÃ128Õ(Matrix U, Matrix V, Vector S, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+ShiÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+Shi_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+SiÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+Si_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+SimanÃ256÷0
+SimanParamsÃ2048ŒGsl÷0
+SortÃ256÷0
+SortVectorÃ256÷0
+SplineÃ1ŒGsl÷0
+SplineÃ128Õ(InterpType* T, size_t size)ŒGsl.Spline÷0
+StatsÃ256÷0
+StatusÃ2ŒGsl÷0
+StreamÃ256÷0
+StreamHandlerÃ128Õ(string label, string file, int line, string reason)ŒGsl÷0œpublic delegate void
+SumLevinUÃ256÷0
+SumLevinUWorkspaceÃ1ŒGsl÷0
+SumLevinUWorkspaceÃ128Õ(size_t n)ŒGsl.SumLevinUWorkspace÷0
+SumLevinUtruncÃ256÷0
+SumLevinUtruncWorkspaceÃ1ŒGsl÷0
+SumLevinUtruncWorkspaceÃ128Õ(size_t n)ŒGsl.SumLevinUtruncWorkspace÷0
+SynchrotronÃ256÷0
+TABLESPOONÃ4ŒGsl.ConstCGS÷0
+TABLESPOONÃ4ŒGsl.ConstCGSM÷0
+TABLESPOONÃ4ŒGsl.ConstMKS÷0
+TABLESPOONÃ4ŒGsl.ConstMKSA÷0
+TEASPOONÃ4ŒGsl.ConstCGS÷0
+TEASPOONÃ4ŒGsl.ConstCGSM÷0
+TEASPOONÃ4ŒGsl.ConstMKS÷0
+TEASPOONÃ4ŒGsl.ConstMKSA÷0
+TERAÃ4ŒGsl.ConstNum÷0
+TEXPOINTÃ4ŒGsl.ConstCGS÷0
+TEXPOINTÃ4ŒGsl.ConstCGSM÷0
+TEXPOINTÃ4ŒGsl.ConstMKS÷0
+TEXPOINTÃ4ŒGsl.ConstMKSA÷0
+THERMÃ4ŒGsl.ConstCGS÷0
+THERMÃ4ŒGsl.ConstCGSM÷0
+THERMÃ4ŒGsl.ConstMKS÷0
+THERMÃ4ŒGsl.ConstMKSA÷0
+THOMSON_CROSS_SECTIONÃ4ŒGsl.ConstCGS÷0
+THOMSON_CROSS_SECTIONÃ4ŒGsl.ConstCGSM÷0
+THOMSON_CROSS_SECTIONÃ4ŒGsl.ConstMKS÷0
+THOMSON_CROSS_SECTIONÃ4ŒGsl.ConstMKSA÷0
+TONÃ4ŒGsl.ConstCGS÷0
+TONÃ4ŒGsl.ConstCGSM÷0
+TONÃ4ŒGsl.ConstMKS÷0
+TONÃ4ŒGsl.ConstMKSA÷0
+TORRÃ4ŒGsl.ConstCGS÷0
+TORRÃ4ŒGsl.ConstCGSM÷0
+TORRÃ4ŒGsl.ConstMKS÷0
+TORRÃ4ŒGsl.ConstMKSA÷0
+TROY_OUNCEÃ4ŒGsl.ConstCGS÷0
+TROY_OUNCEÃ4ŒGsl.ConstCGSM÷0
+TROY_OUNCEÃ4ŒGsl.ConstMKS÷0
+TROY_OUNCEÃ4ŒGsl.ConstMKSA÷0
+TransportÃ256÷0
+TrigÃ256÷0
+UÃ128Õ(double a, double b, double x)ŒGsl.Hyperg÷0œpublic double
+UK_GALLONÃ4ŒGsl.ConstCGS÷0
+UK_GALLONÃ4ŒGsl.ConstCGSM÷0
+UK_GALLONÃ4ŒGsl.ConstMKS÷0
+UK_GALLONÃ4ŒGsl.ConstMKSA÷0
+UK_TONÃ4ŒGsl.ConstCGS÷0
+UK_TONÃ4ŒGsl.ConstCGSM÷0
+UK_TONÃ4ŒGsl.ConstMKS÷0
+UK_TONÃ4ŒGsl.ConstMKSA÷0
+UNIFIED_ATOMIC_MASSÃ4ŒGsl.ConstCGS÷0
+UNIFIED_ATOMIC_MASSÃ4ŒGsl.ConstCGSM÷0
+UNIFIED_ATOMIC_MASSÃ4ŒGsl.ConstMKS÷0
+UNIFIED_ATOMIC_MASSÃ4ŒGsl.ConstMKSA÷0
+US_GALLONÃ4ŒGsl.ConstCGS÷0
+US_GALLONÃ4ŒGsl.ConstCGSM÷0
+US_GALLONÃ4ŒGsl.ConstMKS÷0
+US_GALLONÃ4ŒGsl.ConstMKSA÷0
+U_eÃ128Õ(double a, double b, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+U_e10_eÃ128Õ(double a, double b, double x, out ResultE10 result)ŒGsl.Hyperg÷0œpublic int
+U_intÃ128Õ(int m, int n, double x)ŒGsl.Hyperg÷0œpublic double
+U_int_eÃ128Õ(int m, int n, double x, out Result result)ŒGsl.Hyperg÷0œpublic int
+U_int_e10_eÃ128Õ(int m, int n, double x, out ResultE10 result)ŒGsl.Hyperg÷0œpublic int
+VACUUM_PERMEABILITYÃ4ŒGsl.ConstMKS÷0
+VACUUM_PERMEABILITYÃ4ŒGsl.ConstMKSA÷0
+VACUUM_PERMITTIVITYÃ4ŒGsl.ConstMKS÷0
+VACUUM_PERMITTIVITYÃ4ŒGsl.ConstMKSA÷0
+VAL_ASCÃ4ŒGsl.EigenSortType÷0
+VAL_DESCÃ4ŒGsl.EigenSortType÷0
+VectorÃ1ŒGsl÷0
+VectorÃ128Õ(size_t n)ŒGsl.Vector÷0
+Vector.from_blockÃ128Õ(Block b, size_t offset, size_t n, size_t stride)ŒGsl.Vector÷0
+Vector.from_vectorÃ128Õ(Vector v, size_t offset, size_t n, size_t stride)ŒGsl.Vector÷0
+Vector.with_zerosÃ128Õ(size_t n)ŒGsl.Vector÷0
+VectorComplexÃ1ŒGsl÷0
+VectorComplexÃ128Õ(size_t n)ŒGsl.VectorComplex÷0
+VectorComplex.from_blockÃ128Õ(BlockComplex b, size_t offset, size_t n, size_t stride)ŒGsl.VectorComplex÷0
+VectorComplex.from_vectorÃ128Õ(VectorComplex v, size_t offset, size_t n, size_t stride)ŒGsl.VectorComplex÷0
+VectorComplex.with_zerosÃ128Õ(size_t n)ŒGsl.VectorComplex÷0
+VectorComplexViewÃ2048ŒGsl÷0
+VectorViewÃ2048ŒGsl÷0
+W0Ã128Õ(double x)ŒGsl.Lambert÷0œpublic double
+W0_eÃ128Õ(double x, out Result result)ŒGsl.Lambert÷0œpublic int
+WEEKÃ4ŒGsl.ConstCGS÷0
+WEEKÃ4ŒGsl.ConstCGSM÷0
+WEEKÃ4ŒGsl.ConstMKS÷0
+WEEKÃ4ŒGsl.ConstMKSA÷0
+WaveletÃ1ŒGsl÷0
+WaveletÃ128Õ(WaveletType* T, size_t k)ŒGsl.Wavelet÷0
+WaveletDirectionÃ2ŒGsl÷0
+WaveletInitÃ128Õ(double** h1, double** g1, double** h2, double** g2, size_t* nc, size_t* offset, size_t member)ŒGsl÷0œpublic delegate int
+WaveletTypeÃ2048ŒGsl÷0
+WaveletTypesÃ256÷0
+WaveletWorkspaceÃ1ŒGsl÷0
+WaveletWorkspaceÃ128Õ(size_t n)ŒGsl.WaveletWorkspace÷0
+Wm1Ã128Õ(double x)ŒGsl.Lambert÷0œpublic double
+Wm1_eÃ128Õ(double x, out Result result)ŒGsl.Lambert÷0œpublic int
+Y0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+Y0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+Y1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+Y1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+YARDÃ4ŒGsl.ConstCGS÷0
+YARDÃ4ŒGsl.ConstCGSM÷0
+YARDÃ4ŒGsl.ConstMKS÷0
+YARDÃ4ŒGsl.ConstMKSA÷0
+YOCTOÃ4ŒGsl.ConstNum÷0
+YOTTAÃ4ŒGsl.ConstNum÷0
+YnÃ128Õ(int n, double x)ŒGsl.Bessel÷0œpublic double
+Yn_arrayÃ128Õ(int nmin, int nmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+Yn_eÃ128Õ(int n, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+YnuÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+Ynu_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+ZÃ8ŒGsl.EigenGenWorkspace÷0œMatrix
+ZÃ8ŒGsl.EigenGenvWorkspace÷0œMatrix
+ZÃ8ŒGsl.EigenNonsymmWorkspace÷0œMatrix
+ZÃ8ŒGsl.EigenNonsymmvWorkspace÷0œMatrix
+ZEPTOÃ4ŒGsl.ConstNum÷0
+ZETTAÃ4ŒGsl.ConstNum÷0
+ZetaÃ256÷0
+_FunctionÃ128Õ(double x, void* params)ŒGsl÷0œpublic delegate double
+_FunctionFdfÃ128Õ(double x, void* params, out double f, out double df)ŒGsl÷0œpublic delegate void
+aÃ8ŒGsl.ChebSeries÷0œdouble
+aÃ128Õ(int order, double qq, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+a_arrayÃ128Õ(int order_min, int order_max, double qq, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+a_coeffÃ128Õ(int order, double qq, double aa, [CCode (array_length = false)] double[] coeff)ŒGsl.MathieuWorkspace÷0œpublic int
+aaÃ8ŒGsl.MathieuWorkspace÷0œdouble
+absÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic double
+abs2Ã128Õ(Complex z)ŒGsl.Complex÷0œpublic double
+absdevÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+absdev_mÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+accelÃ128Õ(double[] array, SumLevinUWorkspace w, out double sum_accel, out double abserr)ŒGsl.SumLevinU÷0œpublic int
+accelÃ128Õ(double[] array, SumLevinUtruncWorkspace w, out double sum_accel, out double abserr_trunc)ŒGsl.SumLevinUtrunc÷0œpublic int
+accumulateÃ128Õ(double x, double weight)ŒGsl.Histogram÷0œpublic int
+accumulateÃ128Õ(double x, double y, double weight)ŒGsl.Histogram2d÷0œpublic int
+addÃ128Õ(Complex a, Complex b)ŒGsl.Complex÷0œpublic Complex
+addÃ128Õ(Histogram h2)ŒGsl.Histogram÷0œpublic int
+addÃ128Õ(Histogram h2)ŒGsl.Histogram2d÷0œpublic int
+addÃ128Õ(Matrix b)ŒGsl.Matrix÷0œpublic int
+addÃ128Õ(MatrixComplex b)ŒGsl.MatrixComplex÷0œpublic int
+addÃ128Õ(Vector b)ŒGsl.Vector÷0œpublic int
+addÃ128Õ(VectorComplex b)ŒGsl.VectorComplex÷0œpublic int
+add_constantÃ128Õ(double x)ŒGsl.Matrix÷0œpublic int
+add_constantÃ128Õ(double x)ŒGsl.MatrixComplex÷0œpublic int
+add_constantÃ128Õ(double x)ŒGsl.Vector÷0œpublic int
+add_constantÃ128Õ(double x)ŒGsl.VectorComplex÷0œpublic int
+add_diagonalÃ128Õ(double x)ŒGsl.Matrix÷0œpublic int
+add_diagonalÃ128Õ(double x)ŒGsl.MatrixComplex÷0œpublic int
+add_imagÃ128Õ(Complex a, double y)ŒGsl.Complex÷0œpublic Complex
+add_realÃ128Õ(Complex a, double x)ŒGsl.Complex÷0œpublic Complex
+akimaÃ8ŒGsl.InterpTypes÷0œInterpType
+akima_periodicÃ8ŒGsl.InterpTypes÷0œInterpType
+alistÃ8ŒGsl.IntegrationWorkspace÷0œdouble
+allocÃ8ŒGsl.InterpType÷0œInterpAlloc
+allocÃ8ŒGsl.MultifitFdfsolverType÷0œMultifitFdfAlloc
+allocÃ8ŒGsl.MultifitFsolverType÷0œMultifitFAlloc
+allocÃ8ŒGsl.MultiminFdfminimizerType÷0œMultiminFdfAlloc
+allocÃ8ŒGsl.MultiminFminimizerType÷0œMultiminFAlloc
+allocÃ8ŒGsl.MultirootFdfsolverType÷0œMultirootFdfAlloc
+allocÃ8ŒGsl.MultirootFsolverType÷0œMultirootFAlloc
+allocÃ8ŒGsl.OdeivControlType÷0œOdeivControlAlloc
+allocÃ8ŒGsl.OdeivStepType÷0œOdeivStepAlloc
+alloc_col_from_matrixÃ128Õ(size_t j)ŒGsl.Matrix÷0œpublic Vector
+alloc_col_from_matrixÃ128Õ(size_t j)ŒGsl.MatrixComplex÷0œpublic VectorComplex
+alloc_row_from_matrixÃ128Õ(size_t i)ŒGsl.Matrix÷0œpublic Vector
+alloc_row_from_matrixÃ128Õ(size_t i)ŒGsl.MatrixComplex÷0œpublic VectorComplex
+alphaÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+alphaÃ8ŒGsl.MonteMiserState÷0œdouble
+alphaÃ8ŒGsl.MonteVegasState÷0œdouble
+angle_restrict_posÃ128Õ(double theta)ŒGsl.Trig÷0œpublic double
+angle_restrict_pos_eÃ128Õ(out double theta)ŒGsl.Trig÷0œpublic int
+angle_restrict_symmÃ128Õ(double theta)ŒGsl.Trig÷0œpublic double
+angle_restrict_symm_eÃ128Õ(out double theta)ŒGsl.Trig÷0œpublic int
+applyÃ128Õ([CCode (array_length = false)] double[] f_in, [CCode (array_length = false)] double[] f_out)ŒGsl.DHT÷0œpublic int
+applyÃ128Õ(OdeivControl con, OdeivStep step, OdeivSystem* dydt, [CCode (array_length = false)] double[] t, double t1, [CCode (array_length = false)] double[] h, [CCode (array_length = false)] double[] y)ŒGsl.OdeivEvolve÷0œpublic int
+applyÃ128Õ(double t, double h, [CCode (array_length = false)] double[] y, [CCode (array_length = false)] double[] yerr, [CCode (array_length = false)] double[] dydt_in, [CCode (array_length = false)] double[] dydt_out, OdeivSystem* dydt)ŒGsl.OdeivStep÷0œpublic int
+applyÃ8ŒGsl.OdeivStepType÷0œOdeivStepApply
+arccosÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arccos_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+arccoshÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arccosh_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+arccotÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arccothÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arccscÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arccsc_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+arccschÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arcsecÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arcsec_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+arcsechÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arcsinÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arcsin_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+arcsinhÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arctanÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arctanhÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+arctanh_realÃ128Õ(double z)ŒGsl.Complex÷0œpublic Complex
+argÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic double
+arrayÃ128Õ(int nmax, double lambda, double x, out Result result)ŒGsl.GegenPoly÷0œpublic int
+arrayÃ128Õ([CCode (array_length = false)] double[] v, size_t n1, size_t n2)ŒGsl.MatrixComplexView÷0œpublic MatrixComplexView
+arrayÃ128Õ([CCode (array_length = false)] double[] v, size_t n1, size_t n2)ŒGsl.MatrixView÷0œpublic MatrixView
+arrayÃ128Õ(double[] v)ŒGsl.VectorComplexView÷0œpublic VectorComplexView
+arrayÃ128Õ(double[] v)ŒGsl.VectorView÷0œpublic VectorView
+array_sizeÃ128Õ(int lmax, int m)ŒGsl.LegendrePoly÷0œpublic int
+array_with_strideÃ128Õ([CCode (array_length = false)] double[] v, size_t stride, size_t n)ŒGsl.VectorComplexView÷0œpublic VectorComplexView
+array_with_strideÃ128Õ([CCode (array_length = false)] double[] v, size_t stride, size_t n)ŒGsl.VectorView÷0œpublic VectorView
+array_with_tdaÃ128Õ([CCode (array_length = false)] double[] v, size_t n1, size_t n2, size_t tda)ŒGsl.MatrixComplexView÷0œpublic MatrixComplexView
+array_with_tdaÃ128Õ([CCode (array_length = false)] double[] v, size_t n1, size_t n2, size_t tda)ŒGsl.MatrixView÷0œpublic MatrixView
+ascaleÃ8ŒGsl.EigenGenWorkspace÷0œdouble
+atanintÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+atanint_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic double
+atolÃ8ŒGsl.EigenGenWorkspace÷0œdouble
+bÃ8ŒGsl.ChebSeries÷0œdouble
+bÃ128Õ(int order, double qq, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+b_arrayÃ128Õ(int order_min, int order_max, double qq, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+b_coeffÃ128Õ(int order, double qq, double aa, [CCode (array_length = false)] double[] coeff)ŒGsl.MathieuWorkspace÷0œpublic int
+backwardÃ128Õ(Function* f, double x, double h, out double result, out double abserr)ŒGsl.Deriv÷0œpublic int
+backwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTComplexWavetable wavetable, FFTComplexWorkspace work)ŒGsl.FFTComplex÷0œpublic int
+backwardÃ4ŒGsl.FFTDirection÷0
+backwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTHalfcomplexWavetable wavetable, FFTRealWorkspace work)ŒGsl.FFTHalfcomplex÷0œpublic int
+backwardÃ4ŒGsl.WaveletDirection÷0
+balance_matrixÃ128Õ(Matrix A, Vector D)ŒGsl.LinAlg÷0œpublic int
+bbÃ8ŒGsl.MathieuWorkspace÷0œdouble
+bernoulliÃ128Õ(RNG r, double p)ŒGsl.Randist÷0
+bernoulli_pdfÃ128Õ(uint k, double p)ŒGsl.Randist÷0œpublic double
+betaÃ128Õ(double a, double b)ŒGsl.GammaBeta÷0œpublic double
+betaÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+betaÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+beta_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+beta_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+beta_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+beta_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+beta_eÃ128Õ(double a, double b, out Result result)ŒGsl.GammaBeta÷0œpublic int
+beta_incÃ128Õ(double a, double b, double x)ŒGsl.GammaBeta÷0œpublic double
+beta_inc_eÃ128Õ(double a, double b, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+beta_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+bidiag_decompÃ128Õ(Matrix A, Vector tau_U, Vector tau_V)ŒGsl.LinAlg÷0œpublic int
+bidiag_unpackÃ128Õ(Matrix A, Vector tau_U, Matrix U, Vector tau_V, Matrix V, Vector diag, Vector superdiag)ŒGsl.LinAlg÷0œpublic int
+bidiag_unpack2Ã128Õ(Matrix A, Vector tau_U, Vector tau_V, Matrix V)ŒGsl.LinAlg÷0œpublic int
+bidiag_unpack_BÃ128Õ(Matrix A, Vector diag, Vector superdiag)ŒGsl.LinAlg÷0œpublic int
+binÃ8ŒGsl.Histogram÷0œdouble
+binÃ8ŒGsl.Histogram2d÷0œdouble
+binÃ8ŒGsl.MonteVegasState÷0œint
+binomialÃ128Õ(RNG r, double p, uint n)ŒGsl.Randist÷0
+binomial_PÃ128Õ(uint k, double p, uint n)ŒGsl.CDF÷0œpublic double
+binomial_QÃ128Õ(uint k, double p, uint n)ŒGsl.CDF÷0œpublic double
+binomial_knuthÃ128Õ(RNG r, double p, uint n)ŒGsl.Randist÷0
+binomial_pdfÃ128Õ(uint k, double p, uint n)ŒGsl.Randist÷0œpublic double
+binomial_tpeÃ128Õ(RNG r, double p, uint n)ŒGsl.Randist÷0
+binsÃ128Õ()ŒGsl.Histogram÷0œpublic size_t
+binsÃ8ŒGsl.MonteVegasState÷0
+bins_maxÃ8ŒGsl.MonteVegasState÷0œsize_t
+bisectionÃ8ŒGsl.RootFsolverTypes÷0œRootFsolverType
+bivariate_gaussianÃ128Õ(RNG r, double sigma_x, double sigma_y, double rho, out double x, out double y)ŒGsl.Randist÷0œpublic void
+bivariate_gaussian_pdfÃ128Õ(double x, double y, double sigma_x, double sigma_y, double rho)ŒGsl.Randist÷0œpublic double
+blistÃ8ŒGsl.IntegrationWorkspace÷0œdouble
+blockÃ8ŒGsl.Matrix÷0œBlock
+blockÃ8ŒGsl.MatrixComplex÷0œBlockComplex
+blockÃ8ŒGsl.Vector÷0œBlock
+blockÃ8ŒGsl.VectorComplex÷0œBlockComplex
+bookdataÃ128Õ()ŒGsl.NTuple÷0œpublic int
+borosh13Ã8ŒGsl.RNGTypes÷0œRNGType
+boxÃ8ŒGsl.MonteVegasState÷0œint
+boxesÃ8ŒGsl.MonteVegasState÷0
+breakpointÃ128Õ(size_t i)ŒGsl.BsplineWorkspace÷0œpublic double
+brentÃ8ŒGsl.MinFminimizerTypes÷0œMinFminimizerType
+brentÃ8ŒGsl.RootFsolverTypes÷0œRootFsolverType
+broydenÃ8ŒGsl.MultirootFsolverTypes÷0œMultirootFsolverType
+bscaleÃ8ŒGsl.EigenGenWorkspace÷0œdouble
+bsearchÃ128Õ([CCode (array_length = false)] double[] x_array, double x, size_t index_lo, size_t index_hi)ŒGsl.Interp÷0œpublic size_t
+bsimpÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+bsplineÃ8ŒGsl.WaveletTypes÷0œWaveletType
+bspline_centeredÃ8ŒGsl.WaveletTypes÷0œWaveletType
+btolÃ8ŒGsl.EigenGenWorkspace÷0œdouble
+cÃ8ŒGsl.ChebSeries÷0œdouble
+cacheÃ8ŒGsl.InterpAccel÷0œsize_t
+calc_derivÃ128Õ(ChebSeries cs)ŒGsl.ChebSeries÷0œpublic int
+calc_integÃ128Õ(ChebSeries cs)ŒGsl.ChebSeries÷0œpublic int
+calls_per_boxÃ8ŒGsl.MonteVegasState÷0
+can_use_dydt_inÃ8ŒGsl.OdeivStepType÷0œint
+canonical_cyclesÃ128Õ()ŒGsl.Permutation÷0œpublic size_t
+canonical_to_linearÃ128Õ(Permutation q)ŒGsl.Permutation÷0œpublic int
+cauchyÃ128Õ(RNG r, double a)ŒGsl.Randist÷0œpublic double
+cauchy_PÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+cauchy_PinvÃ128Õ(double P, double a)ŒGsl.CDF÷0œpublic double
+cauchy_QÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+cauchy_QinvÃ128Õ(double Q, double a)ŒGsl.CDF÷0œpublic double
+cauchy_pdfÃ128Õ(double x, double a)ŒGsl.Randist÷0œpublic double
+ceÃ128Õ(int order, double qq, double zz, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+ce_arrayÃ128Õ(int nmin, int nmax, double qq, double zz, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+centralÃ128Õ(Function* f, double x, double h, out double result, out double abserr)ŒGsl.Deriv÷0œpublic int
+chebmoÃ8ŒGsl.IntegrationQAWOTable÷0œdouble
+chi_sumÃ8ŒGsl.MonteVegasState÷0œdouble
+chisqÃ8ŒGsl.MonteVegasState÷0œdouble
+chisqÃ128Õ(RNG r, double nu)ŒGsl.Randist÷0œpublic double
+chisq_PÃ128Õ(double x, double nu)ŒGsl.CDF÷0œpublic double
+chisq_PinvÃ128Õ(double P, double nu)ŒGsl.CDF÷0œpublic double
+chisq_QÃ128Õ(double x, double nu)ŒGsl.CDF÷0œpublic double
+chisq_QinvÃ128Õ(double Q, double nu)ŒGsl.CDF÷0œpublic double
+chisq_pdfÃ128Õ(double x, double nu)ŒGsl.Randist÷0œpublic double
+cholesky_decompÃ128Õ(Matrix A)ŒGsl.LinAlg÷0œpublic int
+cholesky_solveÃ128Õ(Matrix cholesky, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+cholesky_svxÃ128Õ(Matrix cholesky, Vector x)ŒGsl.LinAlg÷0œpublic int
+chooseÃ128Õ(uint n, uint m)ŒGsl.GammaBeta÷0œpublic double
+chooseÃ128Õ(RNG r, void* dest, size_t k, void* src, size_t n, size_t size)ŒGsl.Randist÷0œpublic int
+choose_eÃ128Õ(uint n, uint m, out Result result)ŒGsl.GammaBeta÷0œpublic int
+clausenÃ128Õ(double x)ŒGsl.Clausen÷0œpublic double
+clausen_eÃ128Õ(double x, out Result result)ŒGsl.Clausen÷0œpublic int
+cloneÃ128Õ()ŒGsl.Histogram÷0œpublic Histogram
+cloneÃ128Õ()ŒGsl.Histogram2d÷0œpublic Histogram2d
+cloneÃ128Õ()ŒGsl.QRNG÷0œpublic QRNG
+cloneÃ128Õ()ŒGsl.RNG÷0œpublic RNG
+cmrgÃ8ŒGsl.RNGTypes÷0œRNGType
+columnÃ128Õ(size_t j)ŒGsl.Matrix÷0œpublic VectorView
+columnÃ128Õ(size_t j)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+complex_LU_decompÃ128Õ(MatrixComplex A, Permutation p, out int signum)ŒGsl.LinAlg÷0œpublic int
+complex_LU_detÃ128Õ(MatrixComplex LU, int signum)ŒGsl.LinAlg÷0œpublic Complex
+complex_LU_invertÃ128Õ(MatrixComplex LU, Permutation p, Matrix inverse)ŒGsl.LinAlg÷0œpublic int
+complex_LU_lndetÃ128Õ(MatrixComplex LU)ŒGsl.LinAlg÷0œpublic double
+complex_LU_refineÃ128Õ(MatrixComplex A, MatrixComplex LU, Permutation p, VectorComplex b, VectorComplex x, VectorComplex residual)ŒGsl.LinAlg÷0œpublic int
+complex_LU_sgndetÃ128Õ(MatrixComplex LU, int signum)ŒGsl.LinAlg÷0œpublic Complex
+complex_LU_solveÃ128Õ(MatrixComplex LU, Permutation p, VectorComplex b, VectorComplex x)ŒGsl.LinAlg÷0œpublic int
+complex_LU_svxÃ128Õ(MatrixComplex LU, Permutation p, VectorComplex x)ŒGsl.LinAlg÷0œpublic int
+complex_cholesky_decompÃ128Õ(MatrixComplex A)ŒGsl.LinAlg÷0œpublic int
+complex_cholesky_solveÃ128Õ(MatrixComplex cholesky, VectorComplex b, VectorComplex x)ŒGsl.LinAlg÷0œpublic int
+complex_cholesky_svxÃ128Õ(MatrixComplex cholesky, VectorComplex x)ŒGsl.LinAlg÷0œpublic int
+complex_cos_eÃ128Õ(double zr, double zi, out Result czr, out Result czi)ŒGsl.Trig÷0œpublic double
+complex_dilog_eÃ128Õ(double r, double theta, out Result result_re, out Result result_im)ŒGsl.Dilog÷0œpublic int
+complex_evalÃ128Õ(double[] c, Complex z)ŒGsl.Poly÷0œpublic Complex
+complex_householder_hmÃ128Õ(Complex tau, VectorComplex V, MatrixComplex A)ŒGsl.LinAlg÷0œpublic int
+complex_householder_hvÃ128Õ(Complex tau, VectorComplex V, VectorComplex w)ŒGsl.LinAlg÷0œpublic int
+complex_householder_mhÃ128Õ(Complex tau, VectorComplex V, MatrixComplex A)ŒGsl.LinAlg÷0œpublic int
+complex_householder_transformÃ128Õ(VectorComplex V)ŒGsl.LinAlg÷0œpublic Complex
+complex_imagÃ128Õ()ŒGsl.VectorComplex÷0œpublic VectorView
+complex_log_eÃ128Õ(double zr, double zi, out Result result, out Result theta)ŒGsl.Log÷0œpublic int
+complex_logsin_eÃ128Õ(double zr, double zi, out Result lszr, out Result lszi)ŒGsl.Trig÷0œpublic double
+complex_realÃ128Õ()ŒGsl.VectorComplex÷0œpublic VectorView
+complex_sin_eÃ128Õ(double zr, double zi, out Result szr, out Result szi)ŒGsl.Trig÷0œpublic double
+complex_solve_cubicÃ128Õ(double a, double b, double c, out Complex z0, out Complex z1, out Complex z2)ŒGsl.Poly÷0œpublic int
+complex_solve_quadraticÃ128Õ(double a, double b, double c, out Complex z0, out Complex z1)ŒGsl.Poly÷0œpublic int
+compute_sÃ8ŒGsl.EigenGenWorkspace÷0œint
+compute_tÃ8ŒGsl.EigenGenWorkspace÷0œint
+conicalP_0Ã128Õ(double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_0_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conicalP_1Ã128Õ(double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_1_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conicalP_cyl_regÃ128Õ(int m, double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_cyl_reg_eÃ128Õ(int m, double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conicalP_halfÃ128Õ(double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_half_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conicalP_mhalfÃ128Õ(double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_mhalf_eÃ128Õ(double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conicalP_sph_regÃ128Õ(int l, double lambda, double x)ŒGsl.LegendrePoly÷0œpublic double
+conicalP_sph_reg_eÃ128Õ(int l, double lambda, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+conjugateÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+conjugate_frÃ8ŒGsl.MultiminFdfminimizerTypes÷0œMultiminFdfminimizerType
+conjugate_prÃ8ŒGsl.MultiminFdfminimizerTypes÷0œMultiminFdfminimizerType
+copy_construct_tÃ128Õ(void* xp)ŒGsl.Siman÷0œpublic delegate void
+copy_tÃ128Õ(void* source, void* dest)ŒGsl.Siman÷0œpublic delegate void
+correlationÃ128Õ([CCode (array_length = false)] double[] data1, size_t stride1, [CCode (array_length = false)] double[] data2, size_t stride2, size_t n)ŒGsl.Stats÷0œpublic double
+cosÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+cosÃ128Õ(double x)ŒGsl.Trig÷0œpublic double
+cos_eÃ128Õ(double x, out Result result)ŒGsl.Trig÷0œpublic int
+cos_err_eÃ128Õ(double x, double dx, out Result result)ŒGsl.Trig÷0œpublic int
+coshÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+cotÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+cothÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+countÃ8ŒGsl.OdeivEvolve÷0
+covÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+covarÃ128Õ(Matrix J, double epsrel, Matrix covar)ŒGsl.Multifit÷0œpublic int
+covarianceÃ128Õ([CCode (array_length = false)] double[] data1, size_t stride1, [CCode (array_length = false)] double[] data2, size_t stride2, size_t n)ŒGsl.Stats÷0œpublic double
+covariance_mÃ128Õ([CCode (array_length = false)] double[] data1, size_t stride1, [CCode (array_length = false)] double[] data2, size_t stride2, size_t n, double mean1, double mean2)ŒGsl.Stats÷0œpublic double
+coveyouÃ8ŒGsl.RNGTypes÷0œRNGType
+createÃ128Õ(string filename, void* ntuple_data, size_t size)ŒGsl.NTuple÷0œpublic NTuple
+cscÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+cschÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+csplineÃ8ŒGsl.InterpTypes÷0œInterpType
+cspline_periodicÃ8ŒGsl.InterpTypes÷0œInterpType
+dÃ8ŒGsl.EigenHermWorkspace÷0œdouble
+dÃ8ŒGsl.EigenHermvWorkspace÷0œdouble
+dÃ8ŒGsl.EigenSymmWorkspace÷0œdouble
+dÃ8ŒGsl.EigenSymmvWorkspace÷0œdouble
+dÃ8ŒGsl.MonteVegasState÷0œdouble
+dataÃ8ŒGsl.Block÷0œdouble
+dataÃ8ŒGsl.BlockComplex÷0œdouble
+dataÃ8ŒGsl.Combination÷0œsize_t
+dataÃ8ŒGsl.Matrix÷0œdouble
+dataÃ8ŒGsl.MatrixComplex÷0œdouble
+dataÃ8ŒGsl.Permutation÷0œsize_t
+dataÃ8ŒGsl.Vector÷0œdouble
+dataÃ8ŒGsl.VectorComplex÷0œdouble
+daubechiesÃ8ŒGsl.WaveletTypes÷0œWaveletType
+daubechies_centeredÃ8ŒGsl.WaveletTypes÷0œWaveletType
+dawsonÃ128Õ(double x)ŒGsl.Dawson÷0œpublic double
+dawson_eÃ128Õ(double x, out Result result)ŒGsl.Dawson÷0œpublic int
+ddÃ8ŒGsl.MathieuWorkspace÷0œdouble
+dd_evalÃ128Õ([CCode (array_length = false)] double[] dd, [CCode (array_length = false)] double[] xa, size_t size, double x)ŒGsl.Poly÷0œpublic double
+dd_initÃ128Õ([CCode (array_length = false)] double[] dd, [CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size)ŒGsl.Poly÷0œpublic int
+dd_taylorÃ128Õ([CCode (array_length = false)] double[] c, double xp, [CCode (array_length = false)] double[] dd, [CCode (array_length = false)] double[] xa, size_t size, [CCode (array_length = false)] double[] w)ŒGsl.Poly÷0œpublic int
+default_seedÃ8ŒGsl.RNGTypes÷0
+deltaÃ128Õ(Vector dx, Vector x, double epsabs, double epsrel)ŒGsl.MultifitTest÷0œpublic int
+deltaÃ128Õ(Vector dx, Vector x, double epsabs, double epsrel)ŒGsl.MultirootTest÷0œpublic int
+deltaÃ128Õ(double x1, double x0, double epsabs, double epsrel)ŒGsl.RootTest÷0œpublic int
+deltalÃ8ŒGsl.BsplineWorkspace÷0œVector
+deltarÃ8ŒGsl.BsplineWorkspace÷0œVector
+delxÃ8ŒGsl.MonteVegasState÷0œdouble
+depthÃ8ŒGsl.MonteMiserState÷0œint
+destroy_tÃ128Õ(void* xp)ŒGsl.Siman÷0œpublic delegate void
+dfÃ8ŒGsl.FunctionFdf÷0œ_Function
+dfÃ8ŒGsl.MultifitFunctionFdf÷0œMultifitDf
+dfÃ8ŒGsl.MultiminFunctionFdf÷0œMultiminDf
+dfÃ8ŒGsl.MultirootFunctionFdf÷0œMultirootDF
+diagÃ8ŒGsl.EigenNonsymmWorkspace÷0œVector
+diagonalÃ128Õ()ŒGsl.Matrix÷0œpublic VectorView
+diagonalÃ128Õ()ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+dilogÃ128Õ(double x)ŒGsl.Dilog÷0œpublic double
+dilog_eÃ128Õ(double x, out Result result)ŒGsl.Dilog÷0œpublic int
+dimÃ8ŒGsl.MonteFunction÷0œsize_t
+dimÃ8ŒGsl.MonteMiserState÷0œsize_t
+dimÃ8ŒGsl.MontePlainState÷0œsize_t
+dimÃ8ŒGsl.MonteVegasState÷0œsize_t
+dimensionÃ8ŒGsl.OdeivEvolve÷0œsize_t
+dimensionÃ8ŒGsl.OdeivStep÷0œsize_t
+dimensionÃ8ŒGsl.OdeivSystem÷0œsize_t
+dimensionÃ8ŒGsl.QRNG÷0
+dir_2dÃ128Õ(RNG r, out double x, out double y)ŒGsl.Randist÷0œpublic void
+dir_2d_trig_methodÃ128Õ(RNG r, out double x, out double y)ŒGsl.Randist÷0œpublic void
+dir_3dÃ128Õ(RNG r, out double x, out double y, out double z)ŒGsl.Randist÷0œpublic void
+dir_ndÃ128Õ(RNG r, size_t n, out double x)ŒGsl.Randist÷0œpublic void
+dirichletÃ128Õ(RNG r, size_t K, out double alpha, out double theta)ŒGsl.Randist÷0œpublic void
+dirichlet_lnpdfÃ128Õ(size_t K, out double alpha, out double theta)ŒGsl.Randist÷0œpublic double
+dirichlet_pdfÃ128Õ(size_t K, out double alpha, out double theta)ŒGsl.Randist÷0œpublic double
+discreteÃ128Õ(RNG g)ŒGsl.RanDiscrete÷0œpublic size_t
+ditherÃ8ŒGsl.MonteMiserState÷0œdouble
+divÃ128Õ(Complex a, Complex b)ŒGsl.Complex÷0œpublic Complex
+divÃ128Õ(Histogram h2)ŒGsl.Histogram÷0œpublic int
+divÃ128Õ(Histogram2d h2)ŒGsl.Histogram2d÷0œpublic int
+divÃ128Õ(Vector b)ŒGsl.Vector÷0œpublic int
+divÃ128Õ(VectorComplex b)ŒGsl.VectorComplex÷0œpublic int
+div_elementsÃ128Õ(Matrix b)ŒGsl.Matrix÷0œpublic int
+div_elementsÃ128Õ(MatrixComplex b)ŒGsl.MatrixComplex÷0œpublic int
+div_imagÃ128Õ(Complex a, double y)ŒGsl.Complex÷0œpublic Complex
+div_realÃ128Õ(Complex a, double x)ŒGsl.Complex÷0œpublic Complex
+dnewtonÃ8ŒGsl.MultirootFsolverTypes÷0œMultirootFsolverType
+do_balanceÃ8ŒGsl.EigenNonsymmWorkspace÷0œint
+doublefactÃ128Õ(uint n)ŒGsl.GammaBeta÷0œpublic double
+doublefact_eÃ128Õ(uint n, out Result result)ŒGsl.GammaBeta÷0œpublic int
+dq_denÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+dq_numÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+dsumÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+dsumÃ8ŒGsl.SumLevinUtruncWorkspace÷0œdouble
+dxÃ8ŒGsl.MultifitFdfsolver÷0œVector
+dxÃ8ŒGsl.MultifitFsolver÷0œVector
+dxÃ8ŒGsl.MultiminFdfminimizer÷0œVector
+dxÃ8ŒGsl.MultirootFdfsolver÷0œVector
+dxÃ8ŒGsl.MultirootFsolver÷0œVector
+dydt_inÃ8ŒGsl.OdeivEvolve÷0œdouble
+dydt_outÃ8ŒGsl.OdeivEvolve÷0œdouble
+eÃ128Õ(double u, double m, out double sn, out double cn, out double dn)ŒGsl.EllJac÷0œpublic int
+eÃ128Õ(double x, double y, out Result result)ŒGsl.Multiply÷0œpublic int
+e10Ã8ŒGsl.ResultE10÷0œint
+e2Ã8ŒGsl.MathieuWorkspace÷0œdouble
+eeÃ8ŒGsl.MathieuWorkspace÷0œdouble
+elistÃ8ŒGsl.IntegrationWorkspace÷0œdouble
+env_setupÃ128Õ()ŒGsl.RNG÷0œpublic RNGType *
+equal_bins_pÃ128Õ(Histogram h2)ŒGsl.Histogram÷0œpublic int
+equal_bins_pÃ128Õ(Histogram h2)ŒGsl.Histogram2d÷0œpublic int
+erfÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+erf_QÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+erf_Q_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+erf_ZÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+erf_Z_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+erf_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+erfcÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+erfc_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+erlangÃ128Õ(RNG r, double a, double n)ŒGsl.Randist÷0œpublic double
+erlang_pdfÃ128Õ(double x, double a, double n)ŒGsl.Randist÷0œpublic double
+errÃ8ŒGsl.Result÷0œdouble
+errÃ8ŒGsl.ResultE10÷0œdouble
+err_eÃ128Õ(double x, double dx, double y, double dy, out Result result)ŒGsl.Multiply÷0œpublic int
+errorÃ128Õ(string reason, string file, int line, int errno)ŒGsl.Error÷0œpublic void
+eshiftÃ8ŒGsl.EigenGenWorkspace÷0œdouble
+estimate_fracÃ8ŒGsl.MonteMiserState÷0œdouble
+estimate_styleÃ8ŒGsl.MonteMiserState÷0œint
+etaÃ128Õ(double s)ŒGsl.Zeta÷0œpublic double
+eta_eÃ128Õ(double s, out Result result)ŒGsl.Zeta÷0œpublic int
+eta_intÃ128Õ(int n)ŒGsl.Zeta÷0œpublic double
+eta_int_eÃ128Õ(int n, out Result result)ŒGsl.Zeta÷0œpublic int
+evalÃ128Õ(double x, Vector B)ŒGsl.BsplineWorkspace÷0œpublic int
+evalÃ128Õ(double x)ŒGsl.ChebSeries÷0œpublic double
+evalÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a)ŒGsl.Interp÷0œpublic double
+evalÃ8ŒGsl.InterpType÷0œInterpEval
+evalÃ8ŒGsl.MathieuWorkspace÷0œVector
+evalÃ128Õ(double[] c, double x)ŒGsl.Poly÷0œpublic double
+evalÃ128Õ(double x, InterpAccel a)ŒGsl.Spline÷0œpublic double
+eval_derivÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a)ŒGsl.Interp÷0œpublic double
+eval_derivÃ8ŒGsl.InterpType÷0œInterpEvalDeriv
+eval_derivÃ128Õ(double x, InterpAccel a)ŒGsl.Spline÷0œpublic double
+eval_deriv2Ã128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a)ŒGsl.Interp÷0œpublic double
+eval_deriv2Ã8ŒGsl.InterpType÷0œInterpEvalDeriv2
+eval_deriv2Ã128Õ(double x, InterpAccel a)ŒGsl.Spline÷0œpublic double
+eval_deriv2_eÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a, out double d2)ŒGsl.Interp÷0œpublic int
+eval_deriv2_eÃ128Õ(double x, InterpAccel a, out double y)ŒGsl.Spline÷0œpublic int
+eval_deriv_eÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a, out double d)ŒGsl.Interp÷0œpublic int
+eval_deriv_eÃ128Õ(double x, InterpAccel a, out double y)ŒGsl.Spline÷0œpublic int
+eval_eÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double x, InterpAccel a, out double y)ŒGsl.Interp÷0œpublic int
+eval_eÃ128Õ(double x, InterpAccel a, out double y)ŒGsl.Spline÷0œpublic int
+eval_errÃ128Õ(double x, out double result, out double abserr)ŒGsl.ChebSeries÷0œpublic int
+eval_integÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double a, double b, InterpAccel acc)ŒGsl.Interp÷0œpublic double
+eval_integÃ8ŒGsl.InterpType÷0œInterpEvalInteg
+eval_integÃ128Õ(double a, double b, InterpAccel acc)ŒGsl.Spline÷0œpublic double
+eval_integ_eÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, double a, double b, InterpAccel acc, out double result)ŒGsl.Interp÷0œpublic int
+eval_integ_eÃ128Õ(double a, double b, InterpAccel acc, out double y)ŒGsl.Spline÷0œpublic int
+eval_modeÃ128Õ(double x, Mode mode)ŒGsl.ChebSeries÷0œpublic double
+eval_mode_eÃ128Õ(double x, Mode mode, out double result, out double abserr)ŒGsl.ChebSeries÷0œpublic int
+eval_nÃ128Õ(size_t order, double x)ŒGsl.ChebSeries÷0œpublic double
+eval_n_errÃ128Õ(size_t order, double x, out double result, out double abserr)ŒGsl.ChebSeries÷0œpublic int
+evecÃ8ŒGsl.MathieuWorkspace÷0œMatrix
+even_orderÃ8ŒGsl.MathieuWorkspace÷0œsize_t
+expÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+expÃ128Õ(double x)ŒGsl.Exp÷0œpublic double
+exp_eÃ128Õ(double x, out Result result)ŒGsl.Exp÷0œpublic int
+exp_e10_eÃ128Õ(double x, out ResultE10 result)ŒGsl.Exp÷0œpublic int
+exp_err_eÃ128Õ(double x, double dx, out Result result)ŒGsl.Exp÷0œpublic int
+exp_err_e10_eÃ128Õ(double x, double dx, out ResultE10 result)ŒGsl.Exp÷0œpublic int
+exp_mul_err_eÃ128Õ(double x, double dx, double y, double dy, out Result result)ŒGsl.Exp÷0œpublic int
+exp_mul_err_e10_eÃ128Õ(double x, double dx, double y, double dy, out ResultE10 result)ŒGsl.Exp÷0œpublic int
+exp_multÃ128Õ(double x, double y)ŒGsl.Exp÷0œpublic double
+exp_mult_eÃ128Õ(double x, double y, out Result result)ŒGsl.Exp÷0œpublic int
+exp_mult_e10_eÃ128Õ(double x, double y, out ResultE10 result)ŒGsl.Exp÷0œpublic int
+expint_E1Ã128Õ(double x)ŒGsl.Expint÷0œpublic double
+expint_E1_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+expint_E2Ã128Õ(double x)ŒGsl.Expint÷0œpublic double
+expint_E2_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+expint_EiÃ128Õ(double x)ŒGsl.Expint÷0œpublic double
+expint_Ei_3Ã128Õ(double x)ŒGsl.Expint÷0œpublic double
+expint_Ei_3_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+expint_Ei_eÃ128Õ(double x, out Result result)ŒGsl.Expint÷0œpublic int
+expint_EnÃ128Õ(int n, double x)ŒGsl.Expint÷0œpublic double
+expint_En_eÃ128Õ(int n, double x, out Result result)ŒGsl.Expint÷0œpublic int
+expm1Ã128Õ(double x)ŒGsl.Exp÷0œpublic double
+expm1_eÃ128Õ(double x, out Result result)ŒGsl.Exp÷0œpublic int
+exponentialÃ128Õ(RNG r, double mu)ŒGsl.Randist÷0œpublic double
+exponential_PÃ128Õ(double x, double mu)ŒGsl.CDF÷0œpublic double
+exponential_PinvÃ128Õ(double P, double mu)ŒGsl.CDF÷0œpublic double
+exponential_QÃ128Õ(double x, double mu)ŒGsl.CDF÷0œpublic double
+exponential_QinvÃ128Õ(double Q, double mu)ŒGsl.CDF÷0œpublic double
+exponential_pdfÃ128Õ(double x, double mu)ŒGsl.Randist÷0œpublic double
+exppowÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+exppow_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+exppow_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+exppow_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+exprelÃ128Õ(double x)ŒGsl.Exp÷0œpublic double
+exprel_2Ã128Õ(double x)ŒGsl.Exp÷0œpublic double
+exprel_2_eÃ128Õ(double x, out Result result)ŒGsl.Exp÷0œpublic int
+exprel_eÃ128Õ(double x, out Result result)ŒGsl.Exp÷0œpublic int
+exprel_nÃ128Õ(int n, double x)ŒGsl.Exp÷0œpublic double
+exprel_n_eÃ128Õ(int n, double x, out Result result)ŒGsl.Exp÷0œpublic int
+extra_valuesÃ8ŒGsl.MathieuWorkspace÷0œint
+fÃ8ŒGsl.ChebSeries÷0œdouble
+fÃ8ŒGsl.FunctionFdf÷0œ_Function
+fÃ8ŒGsl.MonteFunction÷0œMonteFunc
+fÃ8ŒGsl.MultifitFdfsolver÷0œVector
+fÃ8ŒGsl.MultifitFsolver÷0œVector
+fÃ8ŒGsl.MultifitFunction÷0œMultifitF
+fÃ8ŒGsl.MultifitFunctionFdf÷0œMultifitF
+fÃ8ŒGsl.MultiminFdfminimizer÷0œdouble
+fÃ8ŒGsl.MultiminFminimizer÷0œMultiminFunction
+fÃ8ŒGsl.MultiminFunction÷0œMultiminF
+fÃ8ŒGsl.MultiminFunctionFdf÷0œMultiminF
+fÃ8ŒGsl.MultirootFdfsolver÷0œVector
+fÃ8ŒGsl.MultirootFsolver÷0œVector
+fÃ8ŒGsl.MultirootFunction÷0œMultirootF
+fÃ8ŒGsl.MultirootFunctionFdf÷0œMultirootF
+f_lowerÃ8ŒGsl.MinFminimizer÷0œdouble
+f_minimumÃ8ŒGsl.MinFminimizer÷0œdouble
+f_upperÃ8ŒGsl.MinFminimizer÷0œdouble
+factÃ128Õ(uint n)ŒGsl.GammaBeta÷0œpublic double
+fact_eÃ128Õ(uint n, out Result result)ŒGsl.GammaBeta÷0œpublic int
+factorÃ8ŒGsl.FFTComplexWavetable÷0œsize_t
+factorÃ8ŒGsl.FFTHalfcomplexWavetable÷0œsize_t
+factorÃ8ŒGsl.FFTRealWavetable÷0œsize_t
+failed_stepsÃ8ŒGsl.OdeivEvolve÷0
+falseposÃ8ŒGsl.RootFsolverTypes÷0œRootFsolverType
+fdfÃ8ŒGsl.FunctionFdf÷0œ_FunctionFdf
+fdfÃ8ŒGsl.MultifitFdfsolver÷0œMultifitFunctionFdf
+fdfÃ8ŒGsl.MultifitFunctionFdf÷0œMultifitFdf
+fdfÃ8ŒGsl.MultiminFdfminimizer÷0œMultiminFunctionFdf
+fdfÃ8ŒGsl.MultiminFunctionFdf÷0œMultiminFdf
+fdfÃ8ŒGsl.MultirootFdfsolver÷0œMultirootFunctionFdf
+fdfÃ8ŒGsl.MultirootFunctionFdf÷0œMultirootFDF
+fdfÃ8ŒGsl.RootFdfsolver÷0œFunctionFdf
+fdistÃ128Õ(RNG r, double nu1, double nu2)ŒGsl.Randist÷0œpublic double
+fdist_PÃ128Õ(double x, double nu1, double nu2)ŒGsl.CDF÷0œpublic double
+fdist_PinvÃ128Õ(double P, double nu1, double nu2)ŒGsl.CDF÷0œpublic double
+fdist_QÃ128Õ(double x, double nu1, double nu2)ŒGsl.CDF÷0œpublic double
+fdist_QinvÃ128Õ(double Q, double nu1, double nu2)ŒGsl.CDF÷0œpublic double
+fdist_pdfÃ128Õ(double x, double nu1, double nu2)ŒGsl.Randist÷0œpublic double
+fileÃ8ŒGsl.NTuple÷0œGLib.FileStream
+findÃ128Õ(double x, out size_t i)ŒGsl.Histogram÷0œpublic int
+findÃ128Õ(double x, double y, out size_t i, out size_t j)ŒGsl.Histogram2d÷0œpublic int
+findÃ128Õ(double[] x_array, double x)ŒGsl.InterpAccel÷0œpublic size_t
+find_bracketÃ128Õ(Function* f, double* x_minimum, double* f_minimum, double* x_lower, double* f_lower, double* x_upper, double* f_upper, size_t eval_max)ŒGsl÷0œpublic int
+fishman18Ã8ŒGsl.RNGTypes÷0œRNGType
+fishman20Ã8ŒGsl.RNGTypes÷0œRNGType
+fishman2xÃ8ŒGsl.RNGTypes÷0œRNGType
+flatÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+flat_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+flat_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+flat_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+flat_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+flat_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+fmax_lÃ8ŒGsl.MonteMiserState÷0œdouble
+fmax_rÃ8ŒGsl.MonteMiserState÷0œdouble
+fmin_lÃ8ŒGsl.MonteMiserState÷0œdouble
+fmin_rÃ8ŒGsl.MonteMiserState÷0œdouble
+forwardÃ128Õ(Function* f, double x, double h, out double result, out double abserr)ŒGsl.Deriv÷0œpublic int
+forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTComplexWavetable wavetable, FFTComplexWorkspace work)ŒGsl.FFTComplex÷0œpublic int
+forwardÃ4ŒGsl.FFTDirection÷0
+forwardÃ4ŒGsl.WaveletDirection÷0
+fprintfÃ128Õ(GLib.FileStream stream, Block b, string format)ŒGsl.Block÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, BlockComplex b, string format)ŒGsl.BlockComplex÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Combination c, string format)ŒGsl.Combination÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Histogram h, string range_format, string bin_format)ŒGsl.Histogram÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Histogram h, string range_format, string bin_format)ŒGsl.Histogram2d÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Matrix m, string format)ŒGsl.Matrix÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, MatrixComplex m, string format)ŒGsl.MatrixComplex÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Permutation p, string format)ŒGsl.Permutation÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, Vector v, string format)ŒGsl.Vector÷0œpublic int
+fprintfÃ128Õ(GLib.FileStream stream, VectorComplex v, string format)ŒGsl.VectorComplex÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Block÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.BlockComplex÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Combination÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram2d÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Matrix÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.MatrixComplex÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Permutation÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.RNG÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.Vector÷0œpublic int
+freadÃ128Õ(GLib.FileStream stream)ŒGsl.VectorComplex÷0œpublic int
+freeÃ8ŒGsl.InterpType÷0œInterpFree
+freeÃ8ŒGsl.MultifitFdfsolverType÷0œMultifitFdfFree
+freeÃ8ŒGsl.MultifitFsolverType÷0œMultifitFFree
+freeÃ8ŒGsl.MultiminFdfminimizerType÷0œMultiminFdfFree
+freeÃ8ŒGsl.MultiminFminimizerType÷0œMultiminFFree
+freeÃ8ŒGsl.MultirootFdfsolverType÷0œMultirootFdfFree
+freeÃ8ŒGsl.MultirootFsolverType÷0œMultirootFFree
+freeÃ8ŒGsl.OdeivControlType÷0œOdeivControlFree
+freeÃ8ŒGsl.OdeivStepType÷0œOdeivStepFree
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Block÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.BlockComplex÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Combination÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram2d÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Matrix÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.MatrixComplex÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Permutation÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.Vector÷0œpublic int
+fscanfÃ128Õ(GLib.FileStream stream)ŒGsl.VectorComplex÷0œpublic int
+fsum2_lÃ8ŒGsl.MonteMiserState÷0œdouble
+fsum2_rÃ8ŒGsl.MonteMiserState÷0œdouble
+fsum_lÃ8ŒGsl.MonteMiserState÷0œdouble
+fsum_rÃ8ŒGsl.MonteMiserState÷0œdouble
+functionÃ8ŒGsl.Function÷0œ_Function
+functionÃ8ŒGsl.MinFminimizer÷0œFunction
+functionÃ8ŒGsl.MultifitFsolver÷0œMultifitFunction
+functionÃ8ŒGsl.MultirootFsolver÷0œMultirootFunction
+functionÃ8ŒGsl.NTupleSelectFn÷0œNTupleFunc
+functionÃ8ŒGsl.NTupleValueFn÷0œNTupleFunc
+functionÃ8ŒGsl.OdeivSystem÷0œOdeivFunction
+functionÃ8ŒGsl.RootFsolver÷0œFunction
+fvalÃ8ŒGsl.MultiminFminimizer÷0œdouble
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Block÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.BlockComplex÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Combination÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Histogram2d÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Matrix÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.MatrixComplex÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Permutation÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.RNG÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.Vector÷0œpublic int
+fwriteÃ128Õ(GLib.FileStream stream)ŒGsl.VectorComplex÷0œpublic int
+g1Ã8ŒGsl.Wavelet÷0œdouble
+g2Ã8ŒGsl.Wavelet÷0œdouble
+gammaÃ128Õ(double x)ŒGsl.GammaBeta÷0œpublic double
+gammaÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+gamma_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gamma_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+gamma_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gamma_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+gamma_eÃ128Õ(double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gamma_incÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+gamma_inc_PÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+gamma_inc_P_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gamma_inc_QÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+gamma_inc_Q_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gamma_inc_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gamma_intÃ128Õ(RNG r, uint a)ŒGsl.Randist÷0œpublic double
+gamma_knuthÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+gamma_mtÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+gamma_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+gammainvÃ128Õ(double x)ŒGsl.GammaBeta÷0œpublic double
+gammainv_eÃ128Õ(double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gammastarÃ128Õ(double x)ŒGsl.GammaBeta÷0œpublic double
+gammastar_eÃ128Õ(double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+gaussianÃ128Õ(RNG r, double sigma)ŒGsl.Randist÷0œpublic double
+gaussian_PÃ128Õ(double x, double sigma)ŒGsl.CDF÷0œpublic double
+gaussian_PinvÃ128Õ(double P, double sigma)ŒGsl.CDF÷0œpublic double
+gaussian_QÃ128Õ(double x, double sigma)ŒGsl.CDF÷0œpublic double
+gaussian_QinvÃ128Õ(double Q, double sigma)ŒGsl.CDF÷0œpublic double
+gaussian_pdfÃ128Õ(double x, double sigma)ŒGsl.Randist÷0œpublic double
+gaussian_ratio_methodÃ128Õ(RNG r, double sigma)ŒGsl.Randist÷0œpublic double
+gaussian_tailÃ128Õ(RNG r, double a, double sigma)ŒGsl.Randist÷0œpublic double
+gaussian_tail_pdfÃ128Õ(double x, double a, double sigma)ŒGsl.Randist÷0œpublic double
+gaussian_zigguratÃ128Õ(RNG r, double sigma)ŒGsl.Randist÷0œpublic double
+gcÃ8ŒGsl.EigenHermvWorkspace÷0œdouble
+gcÃ8ŒGsl.EigenSymmvWorkspace÷0œdouble
+gear1Ã8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+gear2Ã8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+gen_workspace_pÃ8ŒGsl.EigenGenvWorkspace÷0œEigenGenWorkspace
+genhermv_sortÃ128Õ(Vector eval, MatrixComplex evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+gensymmv_sortÃ128Õ(Vector eval, Matrix evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+genv_sortÃ128Õ(VectorComplex alpha, Vector beta, MatrixComplex evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+geometricÃ128Õ(RNG r, double p)ŒGsl.Randist÷0
+geometric_PÃ128Õ(uint k, double p)ŒGsl.CDF÷0œpublic double
+geometric_QÃ128Õ(uint k, double p)ŒGsl.CDF÷0œpublic double
+geometric_pdfÃ128Õ(uint k, double p)ŒGsl.Randist÷0œpublic double
+get_colÃ128Õ(Vector v, Matrix m, size_t j)ŒGsl.Matrix÷0œpublic int
+get_colÃ128Õ(VectorComplex v, MatrixComplex m, size_t j)ŒGsl.MatrixComplex÷0œpublic int
+get_doubleÃ8ŒGsl.RNGType÷0œRNGGetDouble
+get_rangeÃ128Õ(size_t i, out double lower, out double upper)ŒGsl.Histogram÷0œpublic int
+get_rowÃ128Õ(Vector v, Matrix m, size_t i)ŒGsl.Matrix÷0œpublic int
+get_rowÃ128Õ(VectorComplex v, MatrixComplex m, size_t i)ŒGsl.MatrixComplex÷0œpublic int
+get_xrangeÃ128Õ(size_t i, out double xlower, out double xupper)ŒGsl.Histogram2d÷0œpublic int
+get_yrangeÃ128Õ(size_t j, out double ylower, out double yupper)ŒGsl.Histogram2d÷0œpublic int
+gfsr4Ã8ŒGsl.RNGTypes÷0œRNGType
+gives_exact_dydt_outÃ8ŒGsl.OdeivStepType÷0œint
+gnewtonÃ8ŒGsl.MultirootFdfsolverTypes÷0œMultirootFdfsolverType
+goldensectionÃ8ŒGsl.MinFminimizerTypes÷0œMinFminimizerType
+gradientÃ128Õ(Matrix J, Vector f, Vector g)ŒGsl.Multifit÷0œpublic int
+gradientÃ128Õ(Vector g, double epsabs)ŒGsl.MultifitTest÷0œpublic int
+gradientÃ8ŒGsl.MultiminFdfminimizer÷0œVector
+gradientÃ128Õ(Vector g, double epsabs)ŒGsl.MultiminTest÷0œpublic int
+gsÃ8ŒGsl.EigenHermvWorkspace÷0œdouble
+gsÃ8ŒGsl.EigenSymmvWorkspace÷0œdouble
+gumbel1Ã128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+gumbel1_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel1_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel1_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel1_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel1_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+gumbel2Ã128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+gumbel2_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel2_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel2_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel2_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+gumbel2_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+h1Ã8ŒGsl.Wavelet÷0œdouble
+h2Ã8ŒGsl.Wavelet÷0œdouble
+haarÃ8ŒGsl.WaveletTypes÷0œWaveletType
+haar_centeredÃ8ŒGsl.WaveletTypes÷0œWaveletType
+hadjustÃ128Õ(OdeivStep s, out double y, out double yerr, out double dydt, out double h)ŒGsl.OdeivControl÷0œpublic int
+hadjustÃ8ŒGsl.OdeivControlType÷0œOdeivControlHadjust
+halfÃ128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+half_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+haltonÃ8ŒGsl.QRNGAlgorithms÷0œQRNGType
+hazardÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+hazard_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+herm_workspace_pÃ8ŒGsl.EigenGenhermWorkspace÷0œEigenHermWorkspace
+hermtd_decompÃ128Õ(MatrixComplex A, VectorComplex tau)ŒGsl.LinAlg÷0œpublic int
+hermtd_unpackÃ128Õ(MatrixComplex A, VectorComplex tau, MatrixComplex Q, Vector diag, Vector subdiag)ŒGsl.LinAlg÷0œpublic int
+hermtd_unpack_TÃ128Õ(MatrixComplex A, Vector diag, Vector subdiag)ŒGsl.LinAlg÷0œpublic int
+hermv_sortÃ128Õ(Vector eval, MatrixComplex evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+hermv_workspace_pÃ8ŒGsl.EigenGenhermvWorkspace÷0œEigenHermvWorkspace
+hessenberg_decompÃ128Õ(Matrix A, Vector tau)ŒGsl.LinAlg÷0œpublic int
+hessenberg_set_zeroÃ128Õ(Matrix H)ŒGsl.LinAlg÷0œpublic int
+hessenberg_unpackÃ128Õ(Matrix H, Vector tau, Matrix U)ŒGsl.LinAlg÷0œpublic int
+hessenberg_unpack_accumÃ128Õ(Matrix H, Vector tau, Matrix V)ŒGsl.LinAlg÷0œpublic int
+hesstri_decompÃ128Õ(Matrix A, Matrix B, Matrix U, Matrix V, Vector work)ŒGsl.LinAlg÷0œpublic int
+hit_countÃ8ŒGsl.InterpAccel÷0œsize_t
+hits_lÃ8ŒGsl.MonteMiserState÷0œsize_t
+hits_rÃ8ŒGsl.MonteMiserState÷0œsize_t
+householder_hmÃ128Õ(double tau, Vector v, Matrix A)ŒGsl.LinAlg÷0œpublic int
+householder_hvÃ128Õ(double tau, Vector v, Vector w)ŒGsl.LinAlg÷0œpublic int
+householder_mhÃ128Õ(double tau, Vector v, Matrix A)ŒGsl.LinAlg÷0œpublic int
+householder_tansformÃ128Õ(Vector v)ŒGsl.LinAlg÷0œpublic int
+hybridÃ8ŒGsl.MultirootFsolverTypes÷0œMultirootFsolverType
+hybridjÃ8ŒGsl.MultirootFdfsolverTypes÷0œMultirootFdfsolverType
+hybridsÃ8ŒGsl.MultirootFsolverTypes÷0œMultirootFsolverType
+hybridsjÃ8ŒGsl.MultirootFdfsolverTypes÷0œMultirootFdfsolverType
+hydrogenicRÃ128Õ(int n, int l, double z, double r)ŒGsl.Hydrogenic÷0œpublic double
+hydrogenicR_1Ã128Õ(double z, double r)ŒGsl.Hydrogenic÷0œpublic double
+hydrogenicR_1_eÃ128Õ(double z, double r, out Result result)ŒGsl.Hydrogenic÷0œpublic int
+hydrogenicR_eÃ128Õ(int n, int l, double z, double r, out Result result)ŒGsl.Hydrogenic÷0œpublic int
+hypergeometricÃ128Õ(RNG r, uint n1, uint n2, uint t)ŒGsl.Randist÷0
+hypergeometric_PÃ128Õ(uint k, uint n1, uint n2, uint t)ŒGsl.CDF÷0œpublic double
+hypergeometric_QÃ128Õ(uint k, uint n1, uint n2, uint t)ŒGsl.CDF÷0œpublic double
+hypergeometric_pdfÃ128Õ(uint k, uint n1, uint n2, uint t)ŒGsl.Randist÷0œpublic double
+hypotÃ128Õ(double x, double y)ŒGsl.Trig÷0œpublic double
+hypot_eÃ128Õ(double x, double y, out Result result)ŒGsl.Trig÷0œpublic int
+hzetaÃ128Õ(double s, double q)ŒGsl.Zeta÷0œpublic double
+hzeta_eÃ128Õ(double s, double q, out Result result)ŒGsl.Zeta÷0œpublic int
+iÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+iÃ8ŒGsl.SumLevinUWorkspace÷0œsize_t
+iÃ8ŒGsl.SumLevinUtruncWorkspace÷0œsize_t
+i0_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+i0_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+i1_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+i1_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+i2_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+i2_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+il_scaledÃ128Õ(int l, double x)ŒGsl.Bessel÷0œpublic double
+il_scaled_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+il_scaled_eÃ128Õ(int l, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+imagÃ8ŒGsl.Complex÷0œdouble
+inc_0Ã128Õ(double x, double b)ŒGsl.FermiDirac÷0œpublic double
+inc_0_eÃ128Õ(double x, double b, out Result result)ŒGsl.FermiDirac÷0œpublic int
+incrementÃ128Õ(double x)ŒGsl.Histogram÷0œpublic int
+incrementÃ128Õ(double x, double y)ŒGsl.Histogram2d÷0œpublic int
+initÃ128Õ(Function* func, double a, double b)ŒGsl.ChebSeries÷0œpublic int
+initÃ128Õ(double nu, double xmax)ŒGsl.DHT÷0œpublic int
+initÃ128Õ(Matrix A, Matrix B, VectorComplex alpha, Vector beta)ŒGsl.EigenGenWorkspace÷0œpublic int
+initÃ128Õ(MatrixComplex A, MatrixComplex B, Vector eval)ŒGsl.EigenGenhermWorkspace÷0œpublic int
+initÃ128Õ(MatrixComplex A, MatrixComplex B, Vector eval, MatrixComplex evec)ŒGsl.EigenGenhermvWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, Matrix B, Vector eval)ŒGsl.EigenGensymmWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, Matrix B, Vector eval, Matrix evec)ŒGsl.EigenGensymmvWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, Matrix B, VectorComplex alpha, Vector beta, MatrixComplex evec)ŒGsl.EigenGenvWorkspace÷0œpublic int
+initÃ128Õ(MatrixComplex A, VectorComplex eval)ŒGsl.EigenHermWorkspace÷0œpublic int
+initÃ128Õ(MatrixComplex A, VectorComplex eval, MatrixComplex evec)ŒGsl.EigenHermvWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, VectorComplex eval)ŒGsl.EigenNonsymmWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, VectorComplex eval, MatrixComplex evec)ŒGsl.EigenNonsymmvWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, Vector eval)ŒGsl.EigenSymmWorkspace÷0œpublic int
+initÃ128Õ(Matrix A, Vector eval, Matrix evec)ŒGsl.EigenSymmvWorkspace÷0œpublic int
+initÃ128Õ(Histogram2d h)ŒGsl.Histogram2dPDF÷0œpublic int
+initÃ128Õ(Histogram h)ŒGsl.HistogramPDF÷0œpublic int
+initÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size)ŒGsl.Interp÷0œpublic int
+initÃ8ŒGsl.InterpType÷0œInterpInit
+initÃ128Õ()ŒGsl.MonteMiserState÷0œpublic int
+initÃ128Õ()ŒGsl.MontePlainState÷0œpublic int
+initÃ128Õ()ŒGsl.MonteVegasState÷0œpublic int
+initÃ128Õ(double eps_abs, double eps_rel, double a_y, double a_dydt)ŒGsl.OdeivControl÷0œpublic int
+initÃ8ŒGsl.OdeivControlType÷0œOdeivControlInit
+initÃ128Õ()ŒGsl.Permutation÷0œpublic void
+initÃ128Õ()ŒGsl.QRNG÷0œpublic void
+initÃ128Õ([CCode (array_length = false)] double[] xa, [CCode (array_length = false)] double[] ya, size_t size)ŒGsl.Spline÷0œpublic int
+initÃ8ŒGsl.WaveletType÷0œWaveletInit
+init_QZÃ128Õ(Matrix A, Matrix B, VectorComplex alpha, Vector beta, Matrix Q, Matrix Z)ŒGsl.EigenGenWorkspace÷0œpublic int
+init_QZÃ128Õ(Matrix A, Matrix B, VectorComplex alpha, Vector beta, MatrixComplex evec, Matrix Q, Matrix Z)ŒGsl.EigenGenvWorkspace÷0œpublic int
+init_ZÃ128Õ(Matrix A, VectorComplex eval, Matrix Z)ŒGsl.EigenNonsymmWorkspace÷0œpublic int
+init_ZÃ128Õ(Matrix A, VectorComplex eval, MatrixComplex evec, Matrix Z)ŒGsl.EigenNonsymmvWorkspace÷0œpublic int
+init_firstÃ128Õ()ŒGsl.Combination÷0œpublic void
+init_lastÃ128Õ()ŒGsl.Combination÷0œpublic void
+init_stateÃ8ŒGsl.QRNGType÷0œQRNGInitState
+integrateÃ128Õ(MonteFunction* f, [CCode (array_length = false)] double[] xl, [CCode (array_length = false)] double[] xh, size_t dim, size_t calls, RNG r, MonteMiserState state, out double result, out double abserr)ŒGsl.MonteMiserState÷0œpublic int
+integrateÃ128Õ(MonteFunction* f, [CCode (array_length = false)] double[] xl, [CCode (array_length = false)] double[] xu, size_t dim, size_t calls, RNG r, MontePlainState state, out double result, out double abserr)ŒGsl.MontePlainState÷0œpublic int
+integrateÃ128Õ(MonteFunction* f, [CCode (array_length = false)] double[] xl, [CCode (array_length = false)] double[] xu, size_t dim, size_t calls, RNG r, MonteVegasState state, out double result, out double abserr)ŒGsl.MonteVegasState÷0œpublic int
+interpÃ8ŒGsl.Spline÷0œInterp
+intervalÃ128Õ(double x_lower, double x_upper, double epsabs, double epsrel)ŒGsl.MinTest÷0œpublic int
+intervalÃ128Õ(double x_lower, double x_upper, double epsabs, double epsrel)ŒGsl.RootTest÷0œpublic int
+inverseÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTComplexWavetable wavetable, FFTComplexWorkspace work)ŒGsl.FFTComplex÷0œpublic int
+inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTHalfcomplexWavetable wavetable, FFTRealWorkspace work)ŒGsl.FFTHalfcomplex÷0œpublic int
+inverseÃ128Õ(Permutation p)ŒGsl.Permutation÷0œpublic int
+inversionsÃ128Õ()ŒGsl.Permutation÷0œpublic size_t
+isnegÃ128Õ()ŒGsl.Matrix÷0œpublic bool
+isnegÃ128Õ()ŒGsl.MatrixComplex÷0œpublic bool
+isnegÃ128Õ()ŒGsl.Vector÷0œpublic bool
+isnegÃ128Õ()ŒGsl.VectorComplex÷0œpublic bool
+isnonnegÃ128Õ()ŒGsl.Matrix÷0œpublic bool
+isnonnegÃ128Õ()ŒGsl.MatrixComplex÷0œpublic bool
+isnonnegÃ128Õ()ŒGsl.Vector÷0œpublic bool
+isnonnegÃ128Õ()ŒGsl.VectorComplex÷0œpublic bool
+isnullÃ128Õ()ŒGsl.Matrix÷0œpublic bool
+isnullÃ128Õ()ŒGsl.MatrixComplex÷0œpublic bool
+isnullÃ128Õ()ŒGsl.Vector÷0œpublic bool
+isnullÃ128Õ()ŒGsl.VectorComplex÷0œpublic bool
+isposÃ128Õ()ŒGsl.Matrix÷0œpublic bool
+isposÃ128Õ()ŒGsl.MatrixComplex÷0œpublic bool
+isposÃ128Õ()ŒGsl.Vector÷0œpublic bool
+isposÃ128Õ()ŒGsl.VectorComplex÷0œpublic bool
+it_numÃ8ŒGsl.MonteVegasState÷0
+it_startÃ8ŒGsl.MonteVegasState÷0
+iterateÃ128Õ()ŒGsl.MinFminimizer÷0œpublic int
+iterateÃ8ŒGsl.MinFminimizerType÷0œMinIterate
+iterateÃ128Õ()ŒGsl.MultifitFdfsolver÷0œpublic int
+iterateÃ8ŒGsl.MultifitFdfsolverType÷0œMultifitFdfIterate
+iterateÃ128Õ()ŒGsl.MultifitFsolver÷0œpublic int
+iterateÃ8ŒGsl.MultifitFsolverType÷0œMultifitFIterate
+iterateÃ128Õ()ŒGsl.MultiminFdfminimizer÷0œpublic int
+iterateÃ8ŒGsl.MultiminFdfminimizerType÷0œMultiminFdfIterate
+iterateÃ128Õ()ŒGsl.MultiminFminimizer÷0œpublic int
+iterateÃ8ŒGsl.MultiminFminimizerType÷0œMultiminFIterate
+iterateÃ128Õ()ŒGsl.MultirootFdfsolver÷0œpublic int
+iterateÃ8ŒGsl.MultirootFdfsolverType÷0œMultirootFdfIterate
+iterateÃ128Õ()ŒGsl.MultirootFsolver÷0œpublic int
+iterateÃ8ŒGsl.MultirootFsolverType÷0œMultirootFIterate
+iterateÃ128Õ()ŒGsl.RootFdfsolver÷0œpublic int
+iterateÃ8ŒGsl.RootFdfsolverType÷0œRootFdfsolverIterate
+iterateÃ128Õ()ŒGsl.RootFsolver÷0œpublic int
+iterateÃ8ŒGsl.RootFsolverType÷0œRootFsolverIterate
+iterationsÃ8ŒGsl.MonteVegasState÷0
+iters_fixed_TÃ8ŒGsl.SimanParams÷0œint
+jÃ128Õ(int two_ja, int two_jb, int two_jc, int two_ma, int two_mb, int two_mc)ŒGsl.Coupling÷0œpublic double
+jÃ128Õ(int two_ja, int two_jb, int two_jc, int two_jd, int two_je, int two_jf)ŒGsl.Coupling÷0œpublic double
+jÃ128Õ(int two_ja, int two_jb, int two_jc, int two_jd, int two_je, int two_jf, int two_jg, int two_jh, int two_ji)ŒGsl.Coupling÷0œpublic double
+jÃ8ŒGsl.DHT÷0œdouble
+j0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+j0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+j1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+j1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+j2Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+j2_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+j_eÃ128Õ(int two_ja, int two_jb, int two_jc, int two_ma, int two_mb, int two_mc, out Result result)ŒGsl.Coupling÷0œpublic int
+j_eÃ128Õ(int two_ja, int two_jb, int two_jc, int two_jd, int two_je, int two_jf, out Result result)ŒGsl.Coupling÷0œpublic int
+j_eÃ128Õ(int two_ja, int two_jb, int two_jc, int two_jd, int two_je, int two_jf, int two_jg, int two_jh, int two_ji, out Result result)ŒGsl.Coupling÷0œpublic int
+jacÃ8ŒGsl.MonteVegasState÷0œdouble
+jacobianÃ8ŒGsl.OdeivSystem÷0œOdeivJacobian
+jlÃ128Õ(int l, double x)ŒGsl.Bessel÷0œpublic double
+jl_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+jl_eÃ128Õ(int l, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+jl_steed_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] jl_x_array)ŒGsl.Bessel÷0œpublic int
+kÃ8ŒGsl.BsplineWorkspace÷0œsize_t
+kÃ8ŒGsl.Combination÷0œsize_t
+kÃ8ŒGsl.SimanParams÷0œdouble
+k0_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+k0_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+k1_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+k1_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+k2_scaledÃ128Õ(double x)ŒGsl.Bessel÷0œpublic double
+k2_scaled_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+k_sampleÃ128Õ(int n)ŒGsl.DHT÷0œpublic double
+kl_scaledÃ128Õ(int l, double x)ŒGsl.Bessel÷0œpublic double
+kl_scaled_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+kl_scaled_eÃ128Õ(int l, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+km1Ã8ŒGsl.BsplineWorkspace÷0œsize_t
+kmaxÃ8ŒGsl.DHT÷0œdouble
+knotsÃ8ŒGsl.BsplineWorkspace÷0œVector
+knots_uniformÃ128Õ(double a, double b)ŒGsl.BsplineWorkspace÷0œpublic int
+knuthranÃ8ŒGsl.RNGTypes÷0œRNGType
+knuthran2Ã8ŒGsl.RNGTypes÷0œRNGType
+knuthran2002Ã8ŒGsl.RNGTypes÷0œRNGType
+kurtosisÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+kurtosis_m_sdÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean, double sd)ŒGsl.Stats÷0œpublic double
+lÃ8ŒGsl.BsplineWorkspace÷0œsize_t
+lag1_autocorrelationÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+lag1_autocorrelation_mÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+landauÃ128Õ(RNG r)ŒGsl.Randist÷0œpublic double
+landau_pdfÃ128Õ(double x)ŒGsl.Randist÷0œpublic double
+laplaceÃ128Õ(RNG r, double a)ŒGsl.Randist÷0œpublic double
+laplace_PÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+laplace_PinvÃ128Õ(double P, double a)ŒGsl.CDF÷0œpublic double
+laplace_QÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+laplace_QinvÃ128Õ(double Q, double a)ŒGsl.CDF÷0œpublic double
+laplace_pdfÃ128Õ(double x, double a)ŒGsl.Randist÷0œpublic double
+largestÃ128Õ([CCode (array_length = false)] double[] dest, size_t k, [CCode (array_length = false)] double[] src, size_t stride, size_t n)ŒGsl.Sort÷0œpublic int
+largestÃ128Õ([CCode (array_length = false)] double[] dest, size_t k, Vector v)ŒGsl.SortVector÷0œpublic int
+largest_indexÃ128Õ([CCode (array_length = false)] size_t[] p, size_t k, [CCode (array_length = false)] double[] src, size_t stride, size_t n)ŒGsl.Sort÷0œpublic int
+largest_indexÃ128Õ([CCode (array_length = false)] size_t[] p, size_t k, Vector v)ŒGsl.SortVector÷0œpublic int
+last_stepÃ8ŒGsl.OdeivEvolve÷0œdouble
+lecuyer21Ã8ŒGsl.RNGTypes÷0œRNGType
+levelÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+levyÃ128Õ(RNG r, double c, double alpha)ŒGsl.Randist÷0œpublic double
+levy_skewÃ128Õ(RNG r, double c, double alpha, double beta)ŒGsl.Randist÷0œpublic double
+limitÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+linearÃ128Õ([CCode (array_length = false)] double[] x, size_t xstride, [CCode (array_length = false)] double[] y, size_t ystride, size_t n, out double c0, out double c1, out double cov00, out double cov01, out double cov11, out double sumsq)ŒGsl.Fit÷0œpublic int
+linearÃ8ŒGsl.InterpTypes÷0œInterpType
+linearÃ128Õ(Matrix X, Vector y, Vector c, Matrix cov, out double chisq, MultifitLinearWorkspace work)ŒGsl.Multifit÷0œpublic int
+linear_cyclesÃ128Õ()ŒGsl.Permutation÷0œpublic size_t
+linear_estÃ128Õ(double x, double c0, double c1, double cov00, double cov01, double cov11, out double y, out double y_err)ŒGsl.Fit÷0œpublic int
+linear_estÃ128Õ(Vector x, Vector c, Matrix cov, out double y, out double y_err)ŒGsl.Multifit÷0œpublic int
+linear_residualsÃ128Õ(Matrix X, Vector y, Vector c, Vector r)ŒGsl.Multifit÷0œpublic int
+linear_svdÃ128Õ(Matrix X, Vector y, double tol, out size_t rank, Vector c, Matrix cov, out double chisq, MultifitLinearWorkspace work)ŒGsl.Multifit÷0œpublic int
+linear_to_canonicalÃ128Õ(Permutation p)ŒGsl.Permutation÷0œpublic int
+lmderÃ8ŒGsl.MultifitFdfsolverTypes÷0œMultifitFdfsolverType
+lmsderÃ8ŒGsl.MultifitFdfsolverTypes÷0œMultifitFdfsolverType
+lnKnuÃ128Õ(double nu, double x)ŒGsl.Bessel÷0œpublic double
+lnKnu_eÃ128Õ(double nu, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+lnbetaÃ128Õ(double a, double b)ŒGsl.GammaBeta÷0œpublic double
+lnbeta_eÃ128Õ(double a, double b, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lnchooseÃ128Õ(uint n, uint m)ŒGsl.GammaBeta÷0œpublic double
+lnchoose_eÃ128Õ(uint n, uint m, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lncoshÃ128Õ(double x)ŒGsl.Trig÷0œpublic double
+lncosh_eÃ128Õ(double x, out Result result)ŒGsl.Trig÷0œpublic int
+lndoublefactÃ128Õ(uint n)ŒGsl.GammaBeta÷0œpublic double
+lndoublefact_eÃ128Õ(uint n, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lnfactÃ128Õ(uint n)ŒGsl.GammaBeta÷0œpublic double
+lnfact_eÃ128Õ(uint n, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lngammaÃ128Õ(double x)ŒGsl.GammaBeta÷0œpublic double
+lngamma_complex_eÃ128Õ(double zr, double zi, out Result lnr, out Result arg)ŒGsl.GammaBeta÷0œpublic int
+lngamma_eÃ128Õ(double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lngamma_sgn_eÃ128Õ(double x, out Result result, out double sgn)ŒGsl.GammaBeta÷0œpublic int
+lnpochÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+lnpoch_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+lnpoch_sgn_eÃ128Õ(double a, double x, out Result result, out double sgn)ŒGsl.GammaBeta÷0œpublic int
+lnsinhÃ128Õ(double x)ŒGsl.Trig÷0œpublic double
+lnsinh_eÃ128Õ(double x, out Result result)ŒGsl.Trig÷0œpublic int
+logÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+logÃ128Õ(double x)ŒGsl.Log÷0œpublic double
+log10Ã128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+log_1plusxÃ128Õ(double x)ŒGsl.Log÷0œpublic double
+log_1plusx_eÃ128Õ(double x, out Result result)ŒGsl.Log÷0œpublic int
+log_1plusx_mxÃ128Õ(double x)ŒGsl.Log÷0œpublic double
+log_1plusx_mx_eÃ128Õ(double x, out Result result)ŒGsl.Log÷0œpublic int
+log_absÃ128Õ(double x)ŒGsl.Log÷0œpublic double
+log_abs_eÃ128Õ(double x, out Result result)ŒGsl.Log÷0œpublic int
+log_bÃ128Õ(Complex z, Complex b)ŒGsl.Complex÷0œpublic Complex
+log_eÃ128Õ(double x, out Result result)ŒGsl.Log÷0œpublic int
+log_erfcÃ128Õ(double x)ŒGsl.Erf÷0œpublic double
+log_erfc_eÃ128Õ(double x, out Result result)ŒGsl.Erf÷0œpublic int
+logabsÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic double
+logarithmicÃ128Õ(RNG r, double p)ŒGsl.Randist÷0
+logarithmic_pdfÃ128Õ(uint k, double p)ŒGsl.Randist÷0œpublic double
+logisticÃ128Õ(RNG r, double a)ŒGsl.Randist÷0œpublic double
+logistic_PÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+logistic_PinvÃ128Õ(double P, double a)ŒGsl.CDF÷0œpublic double
+logistic_QÃ128Õ(double x, double a)ŒGsl.CDF÷0œpublic double
+logistic_QinvÃ128Õ(double Q, double a)ŒGsl.CDF÷0œpublic double
+logistic_pdfÃ128Õ(double x, double a)ŒGsl.Randist÷0œpublic double
+lognormalÃ128Õ(RNG r, double zeta, double sigma)ŒGsl.Randist÷0œpublic double
+lognormal_PÃ128Õ(double x, double zeta, double sigma)ŒGsl.CDF÷0œpublic double
+lognormal_PinvÃ128Õ(double P, double zeta, double sigma)ŒGsl.CDF÷0œpublic double
+lognormal_QÃ128Õ(double x, double zeta, double sigma)ŒGsl.CDF÷0œpublic double
+lognormal_QinvÃ128Õ(double Q, double zeta, double sigma)ŒGsl.CDF÷0œpublic double
+lognormal_pdfÃ128Õ(double x, double zeta, double sigma)ŒGsl.Randist÷0œpublic double
+m1Ã128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+m1_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+matrixÃ8ŒGsl.MatrixComplexView÷0œunowned
+matrixÃ8ŒGsl.MatrixView÷0œunowned
+matrixÃ8ŒGsl.PolyComplexWorkspace÷0œdouble
+maxÃ128Õ()ŒGsl.Histogram÷0œpublic double
+maxÃ128Õ()ŒGsl.Matrix÷0œpublic double
+maxÃ128Õ()ŒGsl.MatrixComplex÷0œpublic double
+maxÃ128Õ()ŒGsl.RNG÷0
+maxÃ8ŒGsl.RNGType÷0
+maxÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+maxÃ128Õ()ŒGsl.Vector÷0œpublic double
+maxÃ128Õ()ŒGsl.VectorComplex÷0œpublic double
+max_binÃ128Õ()ŒGsl.Histogram÷0œpublic size_t
+max_binÃ128Õ(out size_t i, out size_t j)ŒGsl.Histogram2d÷0œpublic void
+max_dimensionÃ8ŒGsl.QRNGType÷0
+max_indexÃ128Õ(out size_t imax, out size_t jmax)ŒGsl.Matrix÷0œpublic void
+max_indexÃ128Õ(out size_t imax, out size_t jmax)ŒGsl.MatrixComplex÷0œpublic void
+max_indexÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic size_t
+max_indexÃ128Õ()ŒGsl.Vector÷0œpublic size_t
+max_indexÃ128Õ()ŒGsl.VectorComplex÷0œpublic size_t
+max_iterationsÃ8ŒGsl.EigenGenWorkspace÷0œsize_t
+max_valÃ128Õ()ŒGsl.Histogram÷0œpublic double
+max_valÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+maximum_levelÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+meanÃ128Õ()ŒGsl.Histogram÷0œpublic double
+meanÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+median_from_sorted_dataÃ128Õ([CCode (array_length = false)] double[] sorted_data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+memcpyÃ128Õ(Combination src)ŒGsl.Combination÷0œpublic int
+memcpyÃ128Õ(FFTComplexWavetable src)ŒGsl.FFTComplexWavetable÷0œpublic int
+memcpyÃ128Õ(Histogram source)ŒGsl.Histogram÷0œpublic int
+memcpyÃ128Õ(Histogram2d source)ŒGsl.Histogram2d÷0œpublic int
+memcpyÃ128Õ(Matrix src)ŒGsl.Matrix÷0œpublic int
+memcpyÃ128Õ(MatrixComplex src)ŒGsl.MatrixComplex÷0œpublic int
+memcpyÃ128Õ(Permutation src)ŒGsl.Permutation÷0œpublic int
+memcpyÃ128Õ(QRNG src)ŒGsl.QRNG÷0œpublic int
+memcpyÃ128Õ(RNG src)ŒGsl.RNG÷0œpublic int
+memcpyÃ128Õ(Vector src)ŒGsl.Vector÷0œpublic int
+memcpyÃ128Õ(VectorComplex src)ŒGsl.VectorComplex÷0œpublic int
+metric_tÃ128Õ(void *xp, void* yp)ŒGsl.Siman÷0œpublic delegate double
+mhalfÃ128Õ(double x)ŒGsl.FermiDirac÷0œpublic double
+mhalf_eÃ128Õ(double x, out Result result)ŒGsl.FermiDirac÷0œpublic int
+minÃ128Õ()ŒGsl.Histogram÷0œpublic double
+minÃ128Õ()ŒGsl.Matrix÷0œpublic double
+minÃ128Õ()ŒGsl.MatrixComplex÷0œpublic double
+minÃ128Õ()ŒGsl.RNG÷0
+minÃ8ŒGsl.RNGType÷0
+minÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+minÃ128Õ()ŒGsl.Vector÷0œpublic double
+minÃ128Õ()ŒGsl.VectorComplex÷0œpublic double
+min_binÃ128Õ()ŒGsl.Histogram÷0œpublic size_t
+min_binÃ128Õ(out size_t i, out size_t j)ŒGsl.Histogram2d÷0œpublic void
+min_callsÃ8ŒGsl.MonteMiserState÷0œsize_t
+min_calls_per_bisectionÃ8ŒGsl.MonteMiserState÷0œsize_t
+min_indexÃ128Õ(out size_t imin, out size_t jmin)ŒGsl.Matrix÷0œpublic void
+min_indexÃ128Õ(out size_t imin, out size_t jmin)ŒGsl.MatrixComplex÷0œpublic void
+min_indexÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic size_t
+min_indexÃ128Õ()ŒGsl.Vector÷0œpublic size_t
+min_indexÃ128Õ()ŒGsl.VectorComplex÷0œpublic size_t
+min_sizeÃ128Õ()ŒGsl.Interp÷0
+min_sizeÃ8ŒGsl.InterpType÷0
+min_sizeÃ128Õ()ŒGsl.Spline÷0
+min_valÃ128Õ()ŒGsl.Histogram÷0œpublic double
+min_valÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+minimumÃ128Õ()ŒGsl.MultiminFdfminimizer÷0œpublic double
+minimumÃ128Õ()ŒGsl.MultiminFminimizer÷0œpublic double
+minmaxÃ128Õ(out double min_out, out double max_out)ŒGsl.Matrix÷0œpublic void
+minmaxÃ128Õ(out double min_out, out double max_out)ŒGsl.MatrixComplex÷0œpublic void
+minmaxÃ128Õ(out double min, out double max, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic void
+minmaxÃ128Õ(double[] array, size_t min_terms, size_t max_terms, SumLevinUWorkspace w, out double sum_accel, out double abserr)ŒGsl.SumLevinU÷0œpublic int
+minmaxÃ128Õ(double[] array, size_t min_terms, size_t max_terms, SumLevinUtruncWorkspace w, out double sum_accel, out double abserr_trunc)ŒGsl.SumLevinUtrunc÷0œpublic int
+minmaxÃ128Õ(out double min_out, out double max_out)ŒGsl.Vector÷0œpublic void
+minmaxÃ128Õ(out double min_out, out double max_out)ŒGsl.VectorComplex÷0œpublic void
+minmax_indexÃ128Õ(out size_t imin, out size_t jmin, out size_t imax, out size_t jmax)ŒGsl.Matrix÷0œpublic void
+minmax_indexÃ128Õ(out size_t imin, out size_t jmin, out size_t imax, out size_t jmax)ŒGsl.MatrixComplex÷0œpublic void
+minmax_indexÃ128Õ(out size_t min, out size_t max, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic void
+minmax_indexÃ128Õ(out size_t imin, out size_t imax)ŒGsl.Vector÷0œpublic void
+minmax_indexÃ128Õ(out size_t imin, out size_t imax)ŒGsl.VectorComplex÷0œpublic void
+minstdÃ8ŒGsl.RNGTypes÷0œRNGType
+miss_countÃ8ŒGsl.InterpAccel÷0œsize_t
+modeÃ8ŒGsl.MonteVegasState÷0œint
+mrgÃ8ŒGsl.RNGTypes÷0œRNGType
+mt19937Ã8ŒGsl.RNGTypes÷0œRNGType
+mt19937_1998Ã8ŒGsl.RNGTypes÷0œRNGType
+mt19937_1999Ã8ŒGsl.RNGTypes÷0œRNGType
+muÃ8ŒGsl.IntegrationQAWSTable÷0œint
+mu_tÃ8ŒGsl.SimanParams÷0œdouble
+mulÃ128Õ(Complex a, Complex b)ŒGsl.Complex÷0œpublic Complex
+mulÃ128Õ([CCode (array_length = false)] double[] x, size_t xstride, [CCode (array_length = false)] double[] y, size_t ystride, size_t n, out double c1, out double cov11, out double sumsq)ŒGsl.Fit÷0œpublic int
+mulÃ128Õ(Histogram h2)ŒGsl.Histogram÷0œpublic int
+mulÃ128Õ(Histogram2d h2)ŒGsl.Histogram2d÷0œpublic int
+mulÃ128Õ(Permutation pa, Permutation pb)ŒGsl.Permutation÷0œpublic int
+mulÃ128Õ(Vector b)ŒGsl.Vector÷0œpublic int
+mulÃ128Õ(VectorComplex b)ŒGsl.VectorComplex÷0œpublic int
+mul_elementsÃ128Õ(Matrix b)ŒGsl.Matrix÷0œpublic int
+mul_elementsÃ128Õ(MatrixComplex b)ŒGsl.MatrixComplex÷0œpublic int
+mul_estÃ128Õ(double x, double c1, double cov11, out double y, out double y_err)ŒGsl.Fit÷0œpublic int
+mul_imagÃ128Õ(Complex a, double y)ŒGsl.Complex÷0œpublic Complex
+mul_realÃ128Õ(Complex a, double x)ŒGsl.Complex÷0œpublic Complex
+multimin_diffÃ128Õ(MultiminFunction* f, Vector x, Vector g)ŒGsl÷0œpublic int
+multinomialÃ128Õ(RNG r, size_t K, uint N, [CCode (array_length = false)] double[] p, [CCode (array_length = false)] uint[] n)ŒGsl.Randist÷0œpublic void
+multinomial_lnpdfÃ128Õ(size_t K, [CCode (array_length = false)] double[] p, [CCode (array_length = false)] uint[] n)ŒGsl.Randist÷0œpublic double
+multinomial_pdfÃ128Õ(size_t K, [CCode (array_length = false)] double[] p, [CCode (array_length = false)] uint[] n)ŒGsl.Randist÷0œpublic double
+multiroot_fdjacobianÃ128Õ(MultirootFunction* F, Vector x, Vector f, double epsrel, Matrix jacobian)ŒGsl÷0œpublic int
+nÃ8ŒGsl.BsplineWorkspace÷0œsize_t
+nÃ8ŒGsl.Combination÷0œsize_t
+nÃ8ŒGsl.FFTComplexWavetable÷0œsize_t
+nÃ8ŒGsl.FFTComplexWorkspace÷0œsize_t
+nÃ8ŒGsl.FFTHalfcomplexWavetable÷0œsize_t
+nÃ8ŒGsl.FFTRealWavetable÷0œsize_t
+nÃ8ŒGsl.FFTRealWorkspace÷0œsize_t
+nÃ8ŒGsl.Histogram÷0œsize_t
+nÃ8ŒGsl.HistogramPDF÷0œsize_t
+nÃ8ŒGsl.IntegrationQAWOTable÷0œsize_t
+nÃ8ŒGsl.MultifitFunction÷0œsize_t
+nÃ8ŒGsl.MultifitFunctionFdf÷0œsize_t
+nÃ8ŒGsl.MultifitLinearWorkspace÷0œsize_t
+nÃ8ŒGsl.MultiminFunction÷0œsize_t
+nÃ8ŒGsl.MultiminFunctionFdf÷0œsize_t
+nÃ8ŒGsl.MultirootFunction÷0œsize_t
+nÃ8ŒGsl.MultirootFunctionFdf÷0œsize_t
+nÃ8ŒGsl.WaveletWorkspace÷0œsize_t
+n_evalsÃ8ŒGsl.EigenGenWorkspace÷0œsize_t
+n_evalsÃ8ŒGsl.EigenNonsymmWorkspace÷0œsize_t
+n_iterÃ8ŒGsl.EigenGenWorkspace÷0œsize_t
+n_triesÃ8ŒGsl.SimanParams÷0œint
+nameÃ128Õ()ŒGsl.Interp÷0
+nameÃ8ŒGsl.InterpType÷0
+nameÃ128Õ()ŒGsl.MinFminimizer÷0œpublic unowned string
+nameÃ8ŒGsl.MinFminimizerType÷0
+nameÃ128Õ()ŒGsl.MultifitFdfsolver÷0œpublic unowned string
+nameÃ8ŒGsl.MultifitFdfsolverType÷0
+nameÃ128Õ()ŒGsl.MultifitFsolver÷0œpublic unowned string
+nameÃ8ŒGsl.MultifitFsolverType÷0
+nameÃ128Õ()ŒGsl.MultiminFdfminimizer÷0œpublic unowned string
+nameÃ8ŒGsl.MultiminFdfminimizerType÷0
+nameÃ128Õ()ŒGsl.MultiminFminimizer÷0œpublic unowned string
+nameÃ8ŒGsl.MultiminFminimizerType÷0
+nameÃ128Õ()ŒGsl.MultirootFdfsolver÷0œpublic unowned string
+nameÃ8ŒGsl.MultirootFdfsolverType÷0
+nameÃ128Õ()ŒGsl.MultirootFsolver÷0œpublic unowned string
+nameÃ8ŒGsl.MultirootFsolverType÷0
+nameÃ128Õ()ŒGsl.OdeivControl÷0
+nameÃ8ŒGsl.OdeivControlType÷0
+nameÃ128Õ()ŒGsl.OdeivStep÷0
+nameÃ8ŒGsl.OdeivStepType÷0
+nameÃ128Õ()ŒGsl.QRNG÷0
+nameÃ8ŒGsl.QRNGType÷0
+nameÃ128Õ()ŒGsl.RNG÷0
+nameÃ8ŒGsl.RNGType÷0
+nameÃ128Õ()ŒGsl.RootFdfsolver÷0œpublic unowned string
+nameÃ8ŒGsl.RootFdfsolverType÷0
+nameÃ128Õ()ŒGsl.RootFsolver÷0œpublic unowned string
+nameÃ8ŒGsl.RootFsolverType÷0
+nameÃ128Õ()ŒGsl.Spline÷0
+nameÃ128Õ()ŒGsl.Wavelet÷0
+nameÃ8ŒGsl.WaveletType÷0
+nbreakÃ8ŒGsl.BsplineWorkspace÷0œsize_t
+ncÃ8ŒGsl.PolyComplexWorkspace÷0œsize_t
+ncÃ8ŒGsl.Wavelet÷0œsize_t
+ncoeffsÃ128Õ()ŒGsl.BsplineWorkspace÷0œpublic size_t
+needtopÃ8ŒGsl.EigenGenWorkspace÷0œint
+negativeÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+negative_binomialÃ128Õ(RNG r, double p, double n)ŒGsl.Randist÷0
+negative_binomial_PÃ128Õ(uint k, double p, double n)ŒGsl.CDF÷0œpublic double
+negative_binomial_QÃ128Õ(uint k, double p, double n)ŒGsl.CDF÷0œpublic double
+negative_binomial_pdfÃ128Õ(uint k, double p, double n)ŒGsl.Randist÷0œpublic double
+newtonÃ8ŒGsl.MultirootFdfsolverTypes÷0œMultirootFdfsolverType
+newtonÃ8ŒGsl.RootFdfsolverTypes÷0œRootFdfsolverType
+nextÃ128Õ()ŒGsl.Combination÷0œpublic int
+nextÃ128Õ()ŒGsl.Permutation÷0œpublic int
+nfÃ8ŒGsl.FFTComplexWavetable÷0œsize_t
+nfÃ8ŒGsl.FFTHalfcomplexWavetable÷0œsize_t
+nfÃ8ŒGsl.FFTRealWavetable÷0œsize_t
+niederreiter_2Ã8ŒGsl.QRNGAlgorithms÷0œQRNGType
+nmsimplexÃ8ŒGsl.MultiminFminimizerTypes÷0œMultiminFminimizerType
+nonsymm_workspace_pÃ8ŒGsl.EigenNonsymmvWorkspace÷0œEigenNonsymmWorkspace
+nonsymmv_sortÃ128Õ(VectorComplex eval, MatrixComplex evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+nrmaxÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+nstransformÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletDirection dir,WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+nstransform_forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+nstransform_inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletWorkspace * work)ŒGsl.Wavelet÷0œpublic int
+nstransform_matrixÃ128Õ(Matrix a, WaveletDirection dir, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+nstransform_matrix_forwardÃ128Õ(Matrix a, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+nstransform_matrix_inverseÃ128Õ(Matrix a, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+ntrupel_dataÃ8ŒGsl.NTuple÷0œvoid
+nuÃ8ŒGsl.DHT÷0œdouble
+nuÃ8ŒGsl.IntegrationQAWSTable÷0œint
+nxÃ8ŒGsl.Histogram2d÷0œsize_t
+nxÃ8ŒGsl.Histogram2dPDF÷0œsize_t
+nyÃ8ŒGsl.Histogram2d÷0œsize_t
+nyÃ8ŒGsl.Histogram2dPDF÷0œsize_t
+odd_orderÃ8ŒGsl.MathieuWorkspace÷0œsize_t
+offsetÃ8ŒGsl.Wavelet÷0œsize_t
+omegaÃ8ŒGsl.IntegrationQAWOTable÷0œdouble
+openÃ128Õ(string filename, void* ntuple_data, size_t size)ŒGsl.NTuple÷0œpublic NTuple
+orderÃ128Õ()ŒGsl.BsplineWorkspace÷0œpublic size_t
+orderÃ8ŒGsl.ChebSeries÷0œsize_t
+orderÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+orderÃ128Õ()ŒGsl.OdeivStep÷0
+orderÃ8ŒGsl.OdeivStepType÷0œOdeivStepOrder
+order_spÃ8ŒGsl.ChebSeries÷0œsize_t
+ostreamÃ8ŒGsl.MonteVegasState÷0œGLib.FileStream
+ownerÃ8ŒGsl.Matrix÷0œint
+ownerÃ8ŒGsl.MatrixComplex÷0œint
+ownerÃ8ŒGsl.Vector÷0œint
+ownerÃ8ŒGsl.VectorComplex÷0œint
+pÃ8ŒGsl.MultifitFunction÷0œsize_t
+pÃ8ŒGsl.MultifitFunctionFdf÷0œsize_t
+pÃ8ŒGsl.MultifitLinearWorkspace÷0œsize_t
+parÃ8ŒGsl.IntegrationQAWOTable÷0œdouble
+paramsÃ128Õ(int compute_s, int compute_t, int balance)ŒGsl.EigenGenWorkspace÷0œpublic void
+paramsÃ128Õ(int compute_t, int balance)ŒGsl.EigenNonsymmWorkspace÷0œpublic void
+paramsÃ8ŒGsl.Function÷0œvoid
+paramsÃ8ŒGsl.FunctionFdf÷0œvoid
+paramsÃ8ŒGsl.MonteFunction÷0œvoid
+paramsÃ8ŒGsl.MultifitFunction÷0œvoid
+paramsÃ8ŒGsl.MultifitFunctionFdf÷0œvoid
+paramsÃ8ŒGsl.MultiminFunction÷0œvoid
+paramsÃ8ŒGsl.MultiminFunctionFdf÷0œvoid
+paramsÃ8ŒGsl.MultirootFunction÷0œvoid
+paramsÃ8ŒGsl.MultirootFunctionFdf÷0œvoid
+paramsÃ8ŒGsl.NTupleSelectFn÷0œvoid
+paramsÃ8ŒGsl.NTupleValueFn÷0œvoid
+paramsÃ8ŒGsl.OdeivSystem÷0œvoid
+paretoÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+pareto_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+pareto_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+pareto_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+pareto_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+pareto_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+pascalÃ128Õ(RNG r, double p, uint n)ŒGsl.Randist÷0
+pascal_PÃ128Õ(uint k, double p, uint n)ŒGsl.CDF÷0œpublic double
+pascal_QÃ128Õ(uint k, double p, uint n)ŒGsl.CDF÷0œpublic double
+pascal_pdfÃ128Õ(uint k, double p, uint n)ŒGsl.Randist÷0œpublic double
+pdfÃ128Õ(size_t k)ŒGsl.RanDiscrete÷0œpublic double
+permuteÃ128Õ(size_t* p, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Permute÷0œpublic int
+permuteÃ128Õ(size_t* p, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.PermuteComplex÷0œpublic int
+permuteÃ128Õ(Permutation p, Vector v)ŒGsl.PermuteVector÷0œpublic int
+permuteÃ128Õ(Permutation p, Vector v)ŒGsl.PermuteVectorComplex÷0œpublic int
+permute_inverseÃ128Õ(size_t* p, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Permute÷0œpublic int
+permute_inverseÃ128Õ(size_t* p, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.PermuteComplex÷0œpublic int
+permute_inverseÃ128Õ(Permutation p, Vector v)ŒGsl.PermuteVector÷0œpublic int
+permute_inverseÃ128Õ(Permutation p, Vector v)ŒGsl.PermuteVectorComplex÷0œpublic int
+pochÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+poch_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+pochrelÃ128Õ(double a, double x)ŒGsl.GammaBeta÷0œpublic double
+pochrel_eÃ128Õ(double a, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+poissonÃ128Õ(RNG r, double mu)ŒGsl.Randist÷0
+poisson_PÃ128Õ(uint k, double mu)ŒGsl.CDF÷0œpublic double
+poisson_QÃ128Õ(uint k, double mu)ŒGsl.CDF÷0œpublic double
+poisson_arrayÃ128Õ(RNG r, size_t n, [CCode (array_length = false)] uint[] array, double mu)ŒGsl.Randist÷0œpublic void
+poisson_pdfÃ128Õ(uint k, double mu)ŒGsl.Randist÷0œpublic double
+polarÃ128Õ(double r, double theta)ŒGsl.Complex÷0œpublic Complex
+polar_to_rectÃ128Õ(double r, double theta, out Result x, out Result y)ŒGsl.Trig÷0œpublic int
+poly_complex_evalÃ128Õ(Complex[] c, Complex z)ŒGsl.Poly÷0œpublic Complex
+polynomialÃ8ŒGsl.InterpTypes÷0œInterpType
+positionÃ128Õ()ŒGsl.MultifitFdfsolver÷0œpublic Vector
+positionÃ128Õ()ŒGsl.MultifitFsolver÷0œpublic Vector
+powÃ128Õ(Complex z, Complex a)ŒGsl.Complex÷0œpublic Complex
+pow_intÃ128Õ(double x, int n)ŒGsl.Pow÷0œpublic double
+pow_int_eÃ128Õ(double x, int n, out Result result)ŒGsl.Pow÷0œpublic int
+pow_realÃ128Õ(Complex z, double x)ŒGsl.Complex÷0œpublic Complex
+prevÃ128Õ()ŒGsl.Combination÷0œpublic int
+prevÃ128Õ()ŒGsl.Permutation÷0œpublic int
+print_stateÃ128Õ()ŒGsl.RNG÷0œpublic void
+print_tÃ128Õ(void* xp)ŒGsl.Siman÷0œpublic delegate void
+printfÃ128Õ(string label, string file, int line, string reason)ŒGsl.Stream÷0œpublic void
+projectÃ128Õ(Histogram h, NTuple ntuple, NTupleValueFn* value_func, NTupleSelectFn* select_func)ŒGsl.NTuple÷0œpublic int
+psiÃ128Õ(double x)ŒGsl.Psi÷0œpublic double
+psi_1Ã128Õ(double x)ŒGsl.Psi÷0œpublic double
+psi_1_eÃ128Õ(double x, out Result result)ŒGsl.Psi÷0œpublic int
+psi_1_intÃ128Õ(int n)ŒGsl.Psi÷0œpublic double
+psi_1_int_eÃ128Õ(int n, out Result result)ŒGsl.Psi÷0œpublic int
+psi_1piyÃ128Õ(double y)ŒGsl.Psi÷0œpublic double
+psi_1piy_eÃ128Õ(double y, out Result result)ŒGsl.Psi÷0œpublic int
+psi_eÃ128Õ(double x, out Result result)ŒGsl.Psi÷0œpublic int
+psi_e_nÃ128Õ(int n, double x, out Result result)ŒGsl.Psi÷0œpublic int
+psi_intÃ128Õ(int n)ŒGsl.Psi÷0œpublic double
+psi_int_eÃ128Õ(int n, out Result result)ŒGsl.Psi÷0œpublic int
+psi_nÃ128Õ(int n, double x)ŒGsl.Psi÷0œpublic double
+ptrÃ128Õ(size_t i, size_t j)ŒGsl.Matrix÷0œpublic double *
+ptrÃ128Õ(size_t i, size_t j)ŒGsl.MatrixComplex÷0œpublic double *
+ptrÃ128Õ(size_t i)ŒGsl.Vector÷0œpublic double *
+ptrÃ128Õ(size_t i)ŒGsl.VectorComplex÷0œpublic Complex *
+q_denÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+q_denÃ8ŒGsl.SumLevinUtruncWorkspace÷0œdouble
+q_numÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+q_numÃ8ŒGsl.SumLevinUtruncWorkspace÷0œdouble
+qaÃ8ŒGsl.MathieuWorkspace÷0œdouble
+qagÃ128Õ(Function* f, double a, double b, double epsabs, double epsrel, size_t limit, int key, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qagiÃ128Õ(Function* f, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qagilÃ128Õ(Function* f, double b, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qagiuÃ128Õ(Function* f, double a, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qagpÃ128Õ(Function* f, [CCode (array_length = false)] double[] pts, size_t npts, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qagsÃ128Õ(Function* f, double a, double b, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qawcÃ128Õ(Function* f, double a, double b, double c, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qawfÃ128Õ(Function* f, double a, double epsabs, size_t limit, IntegrationWorkspace workspace, IntegrationWorkspace cycle_workspace, IntegrationQAWOTable wf, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qawoÃ128Õ(Function* f, double a, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, IntegrationQAWOTable wf, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qawsÃ128Õ(Function* f, double a, double b, IntegrationQAWSTable t, double epsabs, double epsrel, size_t limit, IntegrationWorkspace workspace, out double result, out double abserr)ŒGsl.Integration÷0œpublic int
+qbÃ8ŒGsl.MathieuWorkspace÷0œdouble
+qchebÃ128Õ(Function* f, double a, double b, out double cheb12, out double cheb24)ŒGsl.Integration÷0œpublic void
+qkÃ128Õ(int n, [CCode (array_length = false)] double[] xgk, [CCode (array_length = false)] double[] wg, [CCode (array_length = false)] double[] wgk, [CCode (array_length = false)] double[] fv1, [CCode (array_length = false)] double[] fv2, Function* f, double a, double b, out double result, out double abserr, out double resabs, double resasc)ŒGsl.Integration÷0œpublic void
+qk15Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qk21Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qk31Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qk41Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qk51Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qk61Ã128Õ(Function* f, double a, double b, out double result, out double abserr, out double resabs, out double resasc)ŒGsl.Integration÷0œpublic void
+qngÃ128Õ(Function* f, double a, double b, double epsabs, double epsrel, out double result, out double abserr, out size_t neval)ŒGsl.Integration÷0œpublic int
+quantile_from_sorted_dataÃ128Õ([CCode (array_length = false)] double[] sorted_data, size_t stride, size_t n, double f)ŒGsl.Stats÷0œpublic double
+r250Ã8ŒGsl.RNGTypes÷0œRNGType
+radix2_backwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_backwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTHalfcomplex÷0œpublic int
+radix2_dif_backwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_dif_forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_dif_inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_dif_transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTDirection sign)ŒGsl.FFTComplex÷0œpublic int
+radix2_forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTReal÷0œpublic int
+radix2_inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTComplex÷0œpublic int
+radix2_inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTHalfcomplex÷0œpublic int
+radix2_transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTDirection sign)ŒGsl.FFTComplex÷0œpublic int
+radix2_transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.FFTHalfcomplex÷0œpublic int
+radix2_unpackÃ128Õ([CCode (array_length = false)] double[] halfcomplex_coefficient, [CCode (array_length = false)] double[] complex_coefficient, size_t stride, size_t n)ŒGsl.FFTHalfcomplex÷0œpublic int
+ran0Ã8ŒGsl.RNGTypes÷0œRNGType
+ran1Ã8ŒGsl.RNGTypes÷0œRNGType
+ran2Ã8ŒGsl.RNGTypes÷0œRNGType
+ran3Ã8ŒGsl.RNGTypes÷0œRNGType
+randÃ8ŒGsl.RNGTypes÷0œRNGType
+rand48Ã8ŒGsl.RNGTypes÷0œRNGType
+random128_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random128_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random128_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+random256_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random256_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random256_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+random32_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random32_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random32_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+random64_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random64_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random64_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+random8_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random8_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random8_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+random_bsdÃ8ŒGsl.RNGTypes÷0œRNGType
+random_glibc2Ã8ŒGsl.RNGTypes÷0œRNGType
+random_libc5Ã8ŒGsl.RNGTypes÷0œRNGType
+randuÃ8ŒGsl.RNGTypes÷0œRNGType
+ranfÃ8ŒGsl.RNGTypes÷0œRNGType
+rangeÃ8ŒGsl.Histogram÷0œdouble
+rangeÃ8ŒGsl.HistogramPDF÷0œdouble
+ranluxÃ8ŒGsl.RNGTypes÷0œRNGType
+ranlux389Ã8ŒGsl.RNGTypes÷0œRNGType
+ranlxd1Ã8ŒGsl.RNGTypes÷0œRNGType
+ranlxd2Ã8ŒGsl.RNGTypes÷0œRNGType
+ranlxs0Ã8ŒGsl.RNGTypes÷0œRNGType
+ranlxs1Ã8ŒGsl.RNGTypes÷0œRNGType
+ranlxs2Ã8ŒGsl.RNGTypes÷0œRNGType
+ranmarÃ8ŒGsl.RNGTypes÷0œRNGType
+rayleighÃ128Õ(RNG r, double sigma)ŒGsl.Randist÷0œpublic double
+rayleigh_PÃ128Õ(double x, double sigma)ŒGsl.CDF÷0œpublic double
+rayleigh_PinvÃ128Õ(double P, double sigma)ŒGsl.CDF÷0œpublic double
+rayleigh_QÃ128Õ(double x, double sigma)ŒGsl.CDF÷0œpublic double
+rayleigh_QinvÃ128Õ(double Q, double sigma)ŒGsl.CDF÷0œpublic double
+rayleigh_pdfÃ128Õ(double x, double sigma)ŒGsl.Randist÷0œpublic double
+rayleigh_tailÃ128Õ(RNG r, double a, double sigma)ŒGsl.Randist÷0œpublic double
+rayleigh_tail_pdfÃ128Õ(double x, double a, double sigma)ŒGsl.Randist÷0œpublic double
+readÃ128Õ()ŒGsl.NTuple÷0œpublic int
+realÃ8ŒGsl.Complex÷0œdouble
+rectÃ128Õ(double x, double y)ŒGsl.Complex÷0œpublic Complex
+rect_to_polarÃ128Õ(double x, double y, out Result r, out Result theta)ŒGsl.Trig÷0œpublic int
+resetÃ128Õ()ŒGsl.Histogram÷0œpublic void
+resetÃ128Õ()ŒGsl.Histogram2d÷0œpublic void
+resetÃ128Õ()ŒGsl.InterpAccel÷0œpublic int
+resetÃ128Õ()ŒGsl.OdeivEvolve÷0œpublic int
+resetÃ128Õ()ŒGsl.OdeivStep÷0œpublic int
+resetÃ8ŒGsl.OdeivStepType÷0œOdeivStepReset
+residualÃ128Õ(Vector f, double epsabs)ŒGsl.MultirootTest÷0œpublic int
+residualÃ128Õ(double f, double epsabs)ŒGsl.RootTest÷0œpublic int
+restartÃ128Õ()ŒGsl.MultiminFdfminimizer÷0œpublic int
+restartÃ8ŒGsl.MultiminFdfminimizerType÷0œMultiminFdfRestart
+resultÃ8ŒGsl.MonteVegasState÷0œdouble
+reverseÃ128Õ()ŒGsl.Permutation÷0œpublic void
+reverseÃ128Õ()ŒGsl.Vector÷0œpublic int
+reverseÃ128Õ()ŒGsl.VectorComplex÷0œpublic int
+reversehaltonÃ8ŒGsl.QRNGAlgorithms÷0œQRNGType
+rgÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+rhÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+riÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+rjÃ8ŒGsl.IntegrationQAWSTable÷0œdouble
+rk2Ã8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rk2impÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rk2simpÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rk4Ã8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rk4impÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rk8pdÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rkckÃ8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rkf45Ã8ŒGsl.OdeivStepTypes÷0œOdeivStepType
+rlistÃ8ŒGsl.IntegrationWorkspace÷0œdouble
+rootÃ128Õ()ŒGsl.MultirootFdfsolver÷0œpublic Vector
+rootÃ128Õ()ŒGsl.MultirootFsolver÷0œpublic Vector
+rootÃ8ŒGsl.RootFdfsolver÷0œdouble
+rootÃ8ŒGsl.RootFsolver÷0œdouble
+rowÃ128Õ(size_t i)ŒGsl.Matrix÷0œpublic VectorView
+rowÃ128Õ(size_t i)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+sampleÃ128Õ(double r1, double r2, out double x, out double y)ŒGsl.Histogram2dPDF÷0œpublic int
+sampleÃ128Õ(double r)ŒGsl.HistogramPDF÷0œpublic double
+sampleÃ128Õ(RNG r, void* dest, size_t k, void* src, size_t n, size_t size)ŒGsl.Randist÷0œpublic void
+samplesÃ8ŒGsl.MonteVegasState÷0
+scaleÃ128Õ(double scale)ŒGsl.Histogram÷0œpublic int
+scaleÃ128Õ(double scale)ŒGsl.Histogram2d÷0œpublic int
+scaleÃ128Õ(double x)ŒGsl.Matrix÷0œpublic int
+scaleÃ128Õ(double x)ŒGsl.MatrixComplex÷0œpublic int
+scaleÃ128Õ(double x)ŒGsl.Vector÷0œpublic int
+scaleÃ128Õ(double x)ŒGsl.VectorComplex÷0œpublic int
+scratchÃ8ŒGsl.FFTComplexWorkspace÷0œdouble
+scratchÃ8ŒGsl.FFTRealWorkspace÷0œdouble
+scratchÃ8ŒGsl.WaveletWorkspace÷0œdouble
+sdÃ8ŒGsl.EigenHermWorkspace÷0œdouble
+sdÃ8ŒGsl.EigenHermvWorkspace÷0œdouble
+sdÃ8ŒGsl.EigenSymmWorkspace÷0œdouble
+sdÃ8ŒGsl.EigenSymmvWorkspace÷0œdouble
+sdÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+sd_mÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+sd_with_fixed_meanÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+seÃ128Õ(int order, double qq, double zz, out Result result)ŒGsl.MathieuWorkspace÷0œpublic int
+se_arrayÃ128Õ(int nmin, int nmax, double qq, double zz, MathieuWorkspace work, [CCode (array_length = false)] double[] result_array)ŒGsl.MathieuWorkspace÷0œpublic int
+secÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+secantÃ8ŒGsl.RootFdfsolverTypes÷0œRootFdfsolverType
+sechÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+sequence_Jnu_eÃ128Õ(double nu, Mode mode, size_t size, [CCode (array_length = false)] double[] v)ŒGsl.Bessel÷0œpublic int
+set_allÃ128Õ(double x)ŒGsl.Matrix÷0œpublic void
+set_allÃ128Õ(double x)ŒGsl.MatrixComplex÷0œpublic void
+set_allÃ128Õ(double x)ŒGsl.Vector÷0œpublic void
+set_allÃ128Õ(Complex x)ŒGsl.VectorComplex÷0œpublic void
+set_basisÃ128Õ(size_t i)ŒGsl.Vector÷0œpublic void
+set_basisÃ128Õ(size_t i)ŒGsl.VectorComplex÷0œpublic void
+set_colÃ128Õ(size_t j, Vector v)ŒGsl.Matrix÷0œpublic int
+set_colÃ128Õ(size_t j, VectorComplex v)ŒGsl.MatrixComplex÷0œpublic int
+set_error_handlerÃ128Õ(ErrorHandler? new_handler)ŒGsl.Error÷0œpublic ErrorHandler
+set_error_handler_offÃ128Õ()ŒGsl.Error÷0œpublic ErrorHandler
+set_identityÃ128Õ()ŒGsl.Matrix÷0œpublic void
+set_identityÃ128Õ()ŒGsl.MatrixComplex÷0œpublic void
+set_lengthÃ128Õ(double L)ŒGsl.IntegrationQAWOTable÷0œpublic int
+set_rangesÃ128Õ(double[] range)ŒGsl.Histogram÷0œpublic int
+set_rangesÃ128Õ(double[] xrange, double[] yrange)ŒGsl.Histogram2d÷0œpublic int
+set_ranges_uniformÃ128Õ(double xmin, double xmax)ŒGsl.Histogram÷0œpublic int
+set_ranges_uniformÃ128Õ(double xmin, double xmax, double ymin, double ymax)ŒGsl.Histogram2d÷0œpublic int
+set_rowÃ128Õ(size_t i, Vector v)ŒGsl.Matrix÷0œpublic int
+set_rowÃ128Õ(size_t i, VectorComplex v)ŒGsl.MatrixComplex÷0œpublic int
+set_streamÃ128Õ(GLib.FileStream new_stream)ŒGsl.Stream÷0œpublic GLib.FileStream
+set_stream_handlerÃ128Õ(StreamHandler new_handler)ŒGsl.Stream÷0œpublic StreamHandler
+set_with_valuesÃ128Õ(Function* f, double x_minimum, double f_minimum, double x_lower, double f_lower, double x_upper, double f_upper)ŒGsl.MinFminimizer÷0œpublic int
+set_zeroÃ128Õ()ŒGsl.Matrix÷0œpublic void
+set_zeroÃ128Õ()ŒGsl.MatrixComplex÷0œpublic void
+set_zeroÃ128Õ()ŒGsl.Vector÷0œpublic void
+set_zeroÃ128Õ()ŒGsl.VectorComplex÷0œpublic void
+shiftÃ128Õ(double shift)ŒGsl.Histogram÷0œpublic int
+shiftÃ128Õ(double shift)ŒGsl.Histogram2d÷0œpublic int
+shuffleÃ128Õ(RNG r, void* b, size_t nmembm, size_t size)ŒGsl.Randist÷0œpublic void
+sigmaÃ128Õ()ŒGsl.Histogram÷0œpublic double
+sigmaÃ8ŒGsl.MonteVegasState÷0œdouble
+sigma_lÃ8ŒGsl.MonteMiserState÷0œdouble
+sigma_rÃ8ŒGsl.MonteMiserState÷0œdouble
+sinÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+sinÃ128Õ(double x)ŒGsl.Trig÷0œpublic double
+sin_eÃ128Õ(double x, out Result result)ŒGsl.Trig÷0œpublic int
+sin_err_eÃ128Õ(double x, double dx, out Result result)ŒGsl.Trig÷0œpublic int
+sincÃ128Õ(double x)ŒGsl.Trig÷0œpublic double
+sinc_eÃ128Õ(double x, out Result result)ŒGsl.Trig÷0œpublic int
+sineÃ8ŒGsl.IntegrationQAWOTable÷0œQAWO
+sinhÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+sizeÃ8ŒGsl.Block÷0œsize_t
+sizeÃ8ŒGsl.BlockComplex÷0œsize_t
+sizeÃ8ŒGsl.DHT÷0œsize_t
+sizeÃ8ŒGsl.EigenGenWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenGenhermWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenGenhermvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenGensymmWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenGensymmvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenGenvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenHermWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenHermvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenNonsymmWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenNonsymmvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenSymmWorkspace÷0œsize_t
+sizeÃ8ŒGsl.EigenSymmvWorkspace÷0œsize_t
+sizeÃ8ŒGsl.IntegrationWorkspace÷0œsize_t
+sizeÃ8ŒGsl.Interp÷0œsize_t
+sizeÃ8ŒGsl.MathieuWorkspace÷0œsize_t
+sizeÃ8ŒGsl.MinFminimizerType÷0œsize_t
+sizeÃ8ŒGsl.MultifitFdfsolverType÷0œsize_t
+sizeÃ8ŒGsl.MultifitFsolverType÷0œsize_t
+sizeÃ8ŒGsl.MultiminFdfminimizerType÷0œsize_t
+sizeÃ8ŒGsl.MultiminFminimizer÷0œdouble
+sizeÃ8ŒGsl.MultiminFminimizerType÷0œsize_t
+sizeÃ128Õ(double size, double epsabs)ŒGsl.MultiminTest÷0œpublic int
+sizeÃ8ŒGsl.MultirootFdfsolverType÷0œsize_t
+sizeÃ8ŒGsl.MultirootFsolverType÷0œsize_t
+sizeÃ8ŒGsl.NTuple÷0œsize_t
+sizeÃ8ŒGsl.Permutation÷0œsize_t
+sizeÃ128Õ()ŒGsl.QRNG÷0œpublic size_t
+sizeÃ128Õ()ŒGsl.RNG÷0œpublic size_t
+sizeÃ8ŒGsl.RNGType÷0œsize_t
+sizeÃ8ŒGsl.RootFdfsolverType÷0œsize_t
+sizeÃ8ŒGsl.RootFsolverType÷0œsize_t
+sizeÃ8ŒGsl.Spline÷0œsize_t
+sizeÃ8ŒGsl.SumLevinUWorkspace÷0œsize_t
+sizeÃ8ŒGsl.SumLevinUtruncWorkspace÷0œsize_t
+sizeÃ8ŒGsl.Vector÷0œsize_t
+sizeÃ8ŒGsl.VectorComplex÷0œsize_t
+size1Ã8ŒGsl.Matrix÷0œsize_t
+size1Ã8ŒGsl.MatrixComplex÷0œsize_t
+size2Ã8ŒGsl.Matrix÷0œsize_t
+size2Ã8ŒGsl.MatrixComplex÷0œsize_t
+skewÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+skew_m_sdÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean, double sd)ŒGsl.Stats÷0œpublic double
+slatecÃ8ŒGsl.RNGTypes÷0œRNGType
+smallestÃ128Õ([CCode (array_length = false)] double[] dest, size_t k, [CCode (array_length = false)] double[] src, size_t stride, size_t n)ŒGsl.Sort÷0œpublic int
+smallestÃ128Õ([CCode (array_length = false)] double[] dest, size_t k, Vector v)ŒGsl.SortVector÷0œpublic int
+smallest_indexÃ128Õ([CCode (array_length = false)] size_t[] p, size_t k, [CCode (array_length = false)] double[] src, size_t stride, size_t n)ŒGsl.Sort÷0œpublic int
+smallest_indexÃ128Õ([CCode (array_length = false)] size_t[] p, size_t k, Vector v)ŒGsl.SortVector÷0œpublic int
+sobolÃ8ŒGsl.QRNGAlgorithms÷0œQRNGType
+solveÃ128Õ(double[]a, PolyComplexWorkspace w, out double z)ŒGsl.PolyComplexWorkspace÷0œpublic int
+solveÃ128Õ(RNG r, void *x0_p, Efunc_t Ef, step_t take_step, metric_t distance, print_t print_position, copy_t copyfunc, copy_construct_t copy_constructor, destroy_t destructor, size_t element_size, SimanParams params)ŒGsl.Siman÷0œpublic void
+solve_cubicÃ128Õ(double a, double b, double c, out double x0, out double x1, out double x2)ŒGsl.Poly÷0œpublic int
+solve_cyc_tridiagÃ128Õ(Vector diag, Vector e, Vector f, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+solve_manyÃ128Õ(RNG r, void *x0_p, Efunc_t Ef, step_t take_step, metric_t distance, print_t print_position, size_t element_size, SimanParams params)ŒGsl.Siman÷0œpublic void
+solve_quadraticÃ128Õ(double a, double b, double c, out double x0, out double x1)ŒGsl.Poly÷0œpublic int
+solve_symm_cyc_tridiagÃ128Õ(Vector diag, Vector e, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+solve_symm_tridiagÃ128Õ(Vector diag, Vector e, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+solve_tridiagÃ128Õ(Vector diag, Vector e, Vector f, Vector b, Vector x)ŒGsl.LinAlg÷0œpublic int
+sortÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Sort÷0œpublic void
+sortÃ128Õ(Vector v)ŒGsl.SortVector÷0œpublic void
+sort_indexÃ128Õ([CCode (array_length = false)] size_t[] p, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Sort÷0œpublic void
+sort_indexÃ128Õ(Permutation p, Vector v)ŒGsl.SortVector÷0œpublic int
+sphF_arrayÃ128Õ(double l_min, int kmax, double eta, double x, [CCode (array_length = false)] double[] fc_array, [CCode (array_length = false)] double[] f_exponent)ŒGsl.CoulombWave÷0œpublic int
+sphPlmÃ128Õ(int l, int m, double x)ŒGsl.LegendrePoly÷0œpublic double
+sphPlm_arrayÃ128Õ(int lmax, int m, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.LegendrePoly÷0œpublic int
+sphPlm_deriv_arrayÃ128Õ(int lmax, int m, double x, double[] result_array, [CCode (array_length = false)] double[] result_deriv_array)ŒGsl.LegendrePoly÷0œpublic int
+sphPlm_eÃ128Õ(int l, int m, double x, out Result result)ŒGsl.LegendrePoly÷0œpublic int
+sqrtÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+sqrt_realÃ128Õ(double x)ŒGsl.Complex÷0œpublic Complex
+stageÃ8ŒGsl.MonteVegasState÷0œint
+stateÃ8ŒGsl.Interp÷0œvoid
+stateÃ8ŒGsl.MinFminimizer÷0œvoid
+stateÃ8ŒGsl.MultifitFdfsolver÷0œvoid
+stateÃ8ŒGsl.MultifitFsolver÷0œvoid
+stateÃ8ŒGsl.MultiminFdfminimizer÷0œvoid
+stateÃ8ŒGsl.MultiminFminimizer÷0œvoid
+stateÃ8ŒGsl.MultirootFdfsolver÷0œvoid
+stateÃ8ŒGsl.MultirootFsolver÷0œvoid
+stateÃ8ŒGsl.OdeivControl÷0œvoid
+stateÃ8ŒGsl.OdeivStep÷0œvoid
+stateÃ8ŒGsl.QRNG÷0œvoid
+stateÃ8ŒGsl.RNG÷0œvoid
+stateÃ8ŒGsl.RootFdfsolver÷0œvoid
+stateÃ8ŒGsl.RootFsolver÷0œvoid
+state_sizeÃ8ŒGsl.QRNG÷0œsize_t
+state_sizeÃ8ŒGsl.QRNGType÷0œQRNGStateSize
+steepest_descentÃ8ŒGsl.MultiminFdfminimizerTypes÷0œMultiminFdfminimizerType
+steffensonÃ8ŒGsl.RootFdfsolverTypes÷0œRootFdfsolverType
+stepÃ128Õ(double term, size_t n, size_t nmax, SumLevinUWorkspace w, out double sum_accel)ŒGsl.SumLevinU÷0œpublic int
+stepÃ128Õ(double term, size_t n, SumLevinUtruncWorkspace w, out double sum_accel)ŒGsl.SumLevinUtrunc÷0œpublic int
+step_sizeÃ8ŒGsl.SimanParams÷0œdouble
+step_tÃ128Õ(RNG r, void *xp, double step_size)ŒGsl.Siman÷0œpublic delegate void
+strerrorÃ128Õ(int errno)ŒGsl.Error÷0œpublic unowned string
+strideÃ8ŒGsl.Vector÷0œsize_t
+strideÃ8ŒGsl.VectorComplex÷0œsize_t
+subÃ128Õ(Complex a, Complex b)ŒGsl.Complex÷0œpublic Complex
+subÃ128Õ(Histogram h2)ŒGsl.Histogram÷0œpublic int
+subÃ128Õ(Histogram h2)ŒGsl.Histogram2d÷0œpublic int
+subÃ128Õ(Matrix b)ŒGsl.Matrix÷0œpublic int
+subÃ128Õ(MatrixComplex b)ŒGsl.MatrixComplex÷0œpublic int
+subÃ128Õ(Vector b)ŒGsl.Vector÷0œpublic int
+subÃ128Õ(VectorComplex b)ŒGsl.VectorComplex÷0œpublic int
+sub_imagÃ128Õ(Complex a, double y)ŒGsl.Complex÷0œpublic Complex
+sub_realÃ128Õ(Complex a, double x)ŒGsl.Complex÷0œpublic Complex
+subcolumnÃ128Õ(size_t i, size_t offset, size_t n)ŒGsl.Matrix÷0œpublic VectorView
+subcolumnÃ128Õ(size_t i, size_t offset, size_t n)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+subdiagonalÃ128Õ(size_t k)ŒGsl.Matrix÷0œpublic VectorView
+subdiagonalÃ128Õ(size_t k)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+submatrixÃ128Õ(size_t k, size_t k2, size_t n1, size_t n2)ŒGsl.Matrix÷0œpublic MatrixView
+submatrixÃ128Õ(size_t k, size_t k2, size_t n1, size_t n2)ŒGsl.MatrixComplex÷0œpublic MatrixComplexView
+subrowÃ128Õ(size_t i, size_t offset, size_t n)ŒGsl.Matrix÷0œpublic VectorView
+subrowÃ128Õ(size_t i, size_t offset, size_t n)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+subvectorÃ128Õ(size_t offset, size_t n)ŒGsl.Vector÷0œpublic VectorView
+subvectorÃ128Õ(size_t i, size_t n)ŒGsl.VectorComplex÷0œpublic VectorComplexView
+subvector_with_strideÃ128Õ(size_t offset, size_t stride, size_t n)ŒGsl.Vector÷0œpublic VectorView
+subvector_with_strideÃ128Õ(size_t i, size_t stride, size_t n)ŒGsl.VectorComplex÷0œpublic VectorComplexView
+sumÃ128Õ()ŒGsl.Histogram÷0œpublic double
+sumÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+sumÃ8ŒGsl.Histogram2dPDF÷0œdouble
+sumÃ8ŒGsl.HistogramPDF÷0œdouble
+sum_plainÃ8ŒGsl.SumLevinUWorkspace÷0œdouble
+sum_plainÃ8ŒGsl.SumLevinUtruncWorkspace÷0œdouble
+sum_wgtsÃ8ŒGsl.MonteVegasState÷0œdouble
+superdiagonalÃ128Õ(size_t k)ŒGsl.Matrix÷0œpublic VectorView
+superdiagonalÃ128Õ(size_t k)ŒGsl.MatrixComplex÷0œpublic VectorComplexView
+swapÃ128Õ(Matrix m2)ŒGsl.Matrix÷0œpublic int
+swapÃ128Õ(MatrixComplex m2)ŒGsl.MatrixComplex÷0œpublic int
+swapÃ128Õ(size_t i, size_t j)ŒGsl.Permutation÷0œpublic int
+swapÃ128Õ(Vector w)ŒGsl.Vector÷0œpublic int
+swapÃ128Õ(VectorComplex w)ŒGsl.VectorComplex÷0œpublic int
+swap_columnsÃ128Õ(size_t i, size_t j)ŒGsl.Matrix÷0œpublic int
+swap_columnsÃ128Õ(size_t i, size_t j)ŒGsl.MatrixComplex÷0œpublic int
+swap_elementsÃ128Õ(size_t i, size_t j)ŒGsl.Vector÷0œpublic int
+swap_elementsÃ128Õ(size_t i, size_t j)ŒGsl.VectorComplex÷0œpublic int
+swap_rowcolÃ128Õ(size_t i, size_t j)ŒGsl.Matrix÷0œpublic int
+swap_rowcolÃ128Õ(size_t i, size_t j)ŒGsl.MatrixComplex÷0œpublic int
+swap_rowsÃ128Õ(size_t i, size_t j)ŒGsl.Matrix÷0œpublic int
+swap_rowsÃ128Õ(size_t i, size_t j)ŒGsl.MatrixComplex÷0œpublic int
+symm_workspace_pÃ8ŒGsl.EigenGensymmWorkspace÷0œEigenSymmWorkspace
+symmtd_decompÃ128Õ(Matrix A, Vector tau)ŒGsl.LinAlg÷0œpublic int
+symmtd_unpackÃ128Õ(Matrix A, Vector tau, Matrix Q, Vector diag, Vector subdiag)ŒGsl.LinAlg÷0œpublic int
+symmtd_unpack_TÃ128Õ(Matrix A, Vector diag, Vector subdiag)ŒGsl.LinAlg÷0œpublic int
+symmv_sortÃ128Õ(Vector eval, Matrix evec, EigenSortType sort_type)ŒGsl.EigenSort÷0œpublic int
+symmv_workspace_pÃ8ŒGsl.EigenGensymmvWorkspace÷0œEigenSymmvWorkspace
+synchrotron_1Ã128Õ(double x)ŒGsl.Synchrotron÷0œpublic double
+synchrotron_1_eÃ128Õ(double x, out Result result)ŒGsl.Synchrotron÷0œpublic int
+synchrotron_2Ã128Õ(double x)ŒGsl.Synchrotron÷0œpublic double
+synchrotron_2_eÃ128Õ(double x, out Result result)ŒGsl.Synchrotron÷0œpublic double
+tÃ8ŒGsl.MultifitLinearWorkspace÷0œVector
+t_initialÃ8ŒGsl.SimanParams÷0œdouble
+t_minÃ8ŒGsl.SimanParams÷0œdouble
+tanÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+tanhÃ128Õ(Complex z)ŒGsl.Complex÷0œpublic Complex
+tauÃ8ŒGsl.EigenHermWorkspace÷0œdouble
+tauÃ8ŒGsl.EigenHermvWorkspace÷0œdouble
+tauÃ8ŒGsl.EigenNonsymmWorkspace÷0œVector
+tausÃ8ŒGsl.RNGTypes÷0œRNGType
+taus113Ã8ŒGsl.RNGTypes÷0œRNGType
+taus2Ã8ŒGsl.RNGTypes÷0œRNGType
+taylorcoeffÃ128Õ(int n, double x)ŒGsl.GammaBeta÷0œpublic double
+taylorcoeff_eÃ128Õ(int n, double x, out Result result)ŒGsl.GammaBeta÷0œpublic int
+tdaÃ8ŒGsl.Matrix÷0œsize_t
+tdaÃ8ŒGsl.MatrixComplex÷0œsize_t
+tdistÃ128Õ(RNG r, double nu)ŒGsl.Randist÷0œpublic double
+tdist_PÃ128Õ(double x, double nu)ŒGsl.CDF÷0œpublic double
+tdist_PinvÃ128Õ(double P, double nu)ŒGsl.CDF÷0œpublic double
+tdist_QÃ128Õ(double x, double nu)ŒGsl.CDF÷0œpublic double
+tdist_QinvÃ128Õ(double Q, double nu)ŒGsl.CDF÷0œpublic double
+tdist_pdfÃ128Õ(double x, double nu)ŒGsl.Randist÷0œpublic double
+terms_usedÃ8ŒGsl.SumLevinUWorkspace÷0œsize_t
+terms_usedÃ8ŒGsl.SumLevinUtruncWorkspace÷0œsize_t
+transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTComplexWavetable wavetable, FFTComplexWorkspace work, FFTDirection sign)ŒGsl.FFTComplex÷0œpublic int
+transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTHalfcomplexWavetable wavetable, FFTRealWorkspace work)ŒGsl.FFTHalfcomplex÷0œpublic int
+transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, FFTRealWavetable wavetable, FFTRealWorkspace work)ŒGsl.FFTReal÷0œpublic int
+transformÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, WaveletDirection dir, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_2dÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletDirection dir, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_forwardÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_forward_2dÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_inverseÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_inverse_2dÃ128Õ([CCode (array_length = false)] double[] data, size_t tda, size_t size1, size_t size2, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_matrixÃ128Õ(Matrix a, WaveletDirection dir, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_matrix_forwardÃ128Õ(Matrix a, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transform_matrix_inverseÃ128Õ(Matrix a, WaveletWorkspace work)ŒGsl.Wavelet÷0œpublic int
+transport_2Ã128Õ(double x)ŒGsl.Transport÷0œpublic double
+transport_2_eÃ128Õ(double x, out Result result)ŒGsl.Transport÷0œpublic int
+transport_3Ã128Õ(double x)ŒGsl.Transport÷0œpublic double
+transport_3_eÃ128Õ(double x, out Result result)ŒGsl.Transport÷0œpublic int
+transport_4Ã128Õ(double x)ŒGsl.Transport÷0œpublic double
+transport_4_eÃ128Õ(double x, out Result result)ŒGsl.Transport÷0œpublic int
+transport_5Ã128Õ(double x)ŒGsl.Transport÷0œpublic double
+transport_5_eÃ128Õ(double x, out Result result)ŒGsl.Transport÷0œpublic int
+transposeÃ128Õ()ŒGsl.Matrix÷0œpublic int
+transposeÃ128Õ()ŒGsl.MatrixComplex÷0œpublic int
+transpose_memcpyÃ128Õ(Matrix src)ŒGsl.Matrix÷0œpublic int
+transpose_memcpyÃ128Õ(MatrixComplex src)ŒGsl.MatrixComplex÷0œpublic int
+transputerÃ8ŒGsl.RNGTypes÷0œRNGType
+trigÃ8ŒGsl.FFTComplexWavetable÷0œComplex
+trigÃ8ŒGsl.FFTHalfcomplexWavetable÷0œComplex
+trigÃ8ŒGsl.FFTRealWavetable÷0œComplex
+tssÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+tss_mÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+ttÃ8ŒGsl.MathieuWorkspace÷0œdouble
+tt800Ã8ŒGsl.RNGTypes÷0œRNGType
+twiddleÃ8ŒGsl.FFTComplexWavetable÷0œComplex
+twiddleÃ8ŒGsl.FFTHalfcomplexWavetable÷0œComplex
+twiddleÃ8ŒGsl.FFTRealWavetable÷0œComplex
+typeÃ8ŒGsl.Interp÷0œInterpType
+typeÃ8ŒGsl.MinFminimizer÷0œMinFminimizerType
+typeÃ8ŒGsl.MultifitFdfsolver÷0œMultifitFdfsolverType
+typeÃ8ŒGsl.MultifitFsolver÷0œMultifitFsolverType
+typeÃ8ŒGsl.MultiminFdfminimizer÷0œMultiminFdfminimizerType
+typeÃ8ŒGsl.MultiminFminimizer÷0œMultiminFminimizerType
+typeÃ8ŒGsl.MultirootFdfsolver÷0œMultirootFdfsolverType
+typeÃ8ŒGsl.MultirootFsolver÷0œMultirootFsolverType
+typeÃ8ŒGsl.OdeivControl÷0œOdeivControlType
+typeÃ8ŒGsl.OdeivStep÷0œOdeivStepType
+typeÃ8ŒGsl.QRNG÷0œQRNGType
+typeÃ8ŒGsl.RNG÷0œRNGType
+typeÃ8ŒGsl.RootFdfsolver÷0œRootFdfsolverType
+typeÃ8ŒGsl.RootFsolver÷0œRootFsolverType
+typeÃ8ŒGsl.Wavelet÷0œWaveletType
+ugaussianÃ128Õ(RNG r)ŒGsl.Randist÷0œpublic double
+ugaussian_PÃ128Õ(double x)ŒGsl.CDF÷0œpublic double
+ugaussian_PinvÃ128Õ(double P)ŒGsl.CDF÷0œpublic double
+ugaussian_QÃ128Õ(double x)ŒGsl.CDF÷0œpublic double
+ugaussian_QinvÃ128Õ(double Q)ŒGsl.CDF÷0œpublic double
+ugaussian_pdfÃ128Õ(double x)ŒGsl.Randist÷0œpublic double
+ugaussian_ratio_methodÃ128Õ(RNG r)ŒGsl.Randist÷0œpublic double
+ugaussian_tailÃ128Õ(RNG r, double a)ŒGsl.Randist÷0œpublic double
+ugaussian_tail_pdfÃ128Õ(double x, double a)ŒGsl.Randist÷0œpublic double
+uniÃ8ŒGsl.RNGTypes÷0œRNGType
+uni32Ã8ŒGsl.RNGTypes÷0œRNGType
+uniformÃ128Õ()ŒGsl.RNG÷0œpublic double
+uniform_intÃ128Õ(ulong n)ŒGsl.RNG÷0
+uniform_posÃ128Õ()ŒGsl.RNG÷0œpublic double
+unpackÃ128Õ([CCode (array_length = false)] double[] halfcomplex_coefficient, [CCode (array_length = false)] double[] complex_coefficient, size_t stride, size_t n)ŒGsl.FFTHalfcomplex÷0œpublic int
+unpackÃ128Õ([CCode (array_length = false)] double[] real_coefficient, [CCode (array_length = false)] double[] complex_coeficient, size_t stride, size_t n)ŒGsl.FFTReal÷0œpublic int
+valÃ8ŒGsl.Result÷0œdouble
+valÃ8ŒGsl.ResultE10÷0œdouble
+validÃ128Õ()ŒGsl.Combination÷0œpublic int
+validÃ128Õ()ŒGsl.Permutation÷0œpublic int
+varianceÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+variance_mÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+variance_with_fixed_meanÃ128Õ([CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+vaxÃ8ŒGsl.RNGTypes÷0œRNGType
+vectorÃ128Õ(VectorComplex v, size_t n1, size_t n2)ŒGsl.MatrixComplexView÷0œpublic MatrixComplexView
+vectorÃ128Õ(Vector v, size_t n1, size_t n2)ŒGsl.MatrixView÷0œpublic MatrixView
+vectorÃ8ŒGsl.VectorComplexView÷0œunowned
+vectorÃ8ŒGsl.VectorView÷0œunowned
+vector_bfgsÃ8ŒGsl.MultiminFdfminimizerTypes÷0œMultiminFdfminimizerType
+vector_bfgs2Ã8ŒGsl.MultiminFdfminimizerTypes÷0œMultiminFdfminimizerType
+vectr_with_tdaÃ128Õ(VectorComplex v, size_t n1, size_t n2, size_t tda)ŒGsl.MatrixComplexView÷0œpublic MatrixComplexView
+vectr_with_tdaÃ128Õ(Vector v, size_t n1, size_t n2, size_t tda)ŒGsl.MatrixView÷0œpublic MatrixView
+verboseÃ8ŒGsl.MonteMiserState÷0œint
+verboseÃ8ŒGsl.MonteVegasState÷0œint
+volÃ8ŒGsl.MonteVegasState÷0œdouble
+wabsdevÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wabsdev_mÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean)ŒGsl.Stats÷0œpublic double
+waterman14Ã8ŒGsl.RNGTypes÷0œRNGType
+weibullÃ128Õ(RNG r, double a, double b)ŒGsl.Randist÷0œpublic double
+weibull_PÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+weibull_PinvÃ128Õ(double P, double a, double b)ŒGsl.CDF÷0œpublic double
+weibull_QÃ128Õ(double x, double a, double b)ŒGsl.CDF÷0œpublic double
+weibull_QinvÃ128Õ(double Q, double a, double b)ŒGsl.CDF÷0œpublic double
+weibull_pdfÃ128Õ(double x, double a, double b)ŒGsl.Randist÷0œpublic double
+weightÃ8ŒGsl.MonteVegasState÷0œdouble
+wkurtosisÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wkurtosis_m_sdÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean, double wsd)ŒGsl.Stats÷0œpublic double
+wlinearÃ128Õ([CCode (array_length = false)] double[] x, size_t xstride, [CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] y, size_t ystride, size_t n, out double c0, out double c1, out double cov00, out double cov01, out double cov11, double chisq)ŒGsl.Fit÷0œpublic int
+wlinearÃ128Õ(Matrix X, Vector w, Vector y, Vector c, Matrix cov, out double chisq, MultifitLinearWorkspace work)ŒGsl.Multifit÷0œpublic int
+wlinear_svdÃ128Õ(Matrix X, Vector w, Vector y, double tol, out size_t rank, Vector c, Matrix cov, out double chisq, MultifitLinearWorkspace work)ŒGsl.Multifit÷0œpublic int
+wmatÃ8ŒGsl.MathieuWorkspace÷0œEigenSymmvWorkspace
+wmeanÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wmulÃ128Õ([CCode (array_length = false)] double[] x, size_t xstride, [CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] y, size_t ystride, size_t n, out double c1, out double cov11, out double sumsq)ŒGsl.Fit÷0œpublic int
+workÃ8ŒGsl.EigenGenWorkspace÷0œVector
+workÃ8ŒGsl.EigenNonsymmvWorkspace÷0œVector
+work1Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+work2Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+work2Ã8ŒGsl.EigenNonsymmvWorkspace÷0œVector
+work3Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+work3Ã8ŒGsl.EigenNonsymmvWorkspace÷0œVector
+work4Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+work5Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+work6Ã8ŒGsl.EigenGenvWorkspace÷0œVector
+writeÃ128Õ()ŒGsl.NTuple÷0œpublic int
+wsdÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wsd_mÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean)ŒGsl.Stats÷0œpublic double
+wsd_with_fixed_meanÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean)ŒGsl.Stats÷0œpublic double
+wskewÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wskew_m_sdÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean, double wsd)ŒGsl.Stats÷0œpublic double
+wtd_int_sumÃ8ŒGsl.MonteVegasState÷0œdouble
+wtssÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wtss_mÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double mean)ŒGsl.Stats÷0œpublic double
+wvarianceÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n)ŒGsl.Stats÷0œpublic double
+wvariance_mÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean)ŒGsl.Stats÷0œpublic double
+wvariance_with_fixed_meanÃ128Õ([CCode (array_length = false)] double[] w, size_t wstride, [CCode (array_length = false)] double[] data, size_t stride, size_t n, double wmean)ŒGsl.Stats÷0œpublic double
+xÃ8ŒGsl.MonteMiserState÷0œdouble
+xÃ8ŒGsl.MontePlainState÷0œdouble
+xÃ8ŒGsl.MonteVegasState÷0œdouble
+xÃ8ŒGsl.MultifitFdfsolver÷0œVector
+xÃ8ŒGsl.MultifitFsolver÷0œVector
+xÃ8ŒGsl.MultiminFdfminimizer÷0œVector
+xÃ8ŒGsl.MultiminFminimizer÷0œVector
+xÃ8ŒGsl.MultirootFdfsolver÷0œVector
+xÃ8ŒGsl.MultirootFsolver÷0œVector
+xÃ8ŒGsl.Spline÷0œdouble
+x_lowerÃ8ŒGsl.MinFminimizer÷0œdouble
+x_lowerÃ8ŒGsl.RootFsolver÷0œdouble
+x_minimumÃ8ŒGsl.MinFminimizer÷0œdouble
+x_sampleÃ128Õ(int n)ŒGsl.DHT÷0œpublic double
+x_upperÃ8ŒGsl.MinFminimizer÷0œdouble
+x_upperÃ8ŒGsl.RootFsolver÷0œdouble
+xiÃ8ŒGsl.MonteVegasState÷0œdouble
+xinÃ8ŒGsl.MonteVegasState÷0œdouble
+xmaxÃ8ŒGsl.DHT÷0œdouble
+xmaxÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+xmaxÃ8ŒGsl.Interp÷0œdouble
+xmeanÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+xmidÃ8ŒGsl.MonteMiserState÷0œdouble
+xminÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+xminÃ8ŒGsl.Interp÷0œdouble
+xrangeÃ8ŒGsl.Histogram2d÷0œdouble
+xrangeÃ8ŒGsl.Histogram2dPDF÷0œdouble
+xsigmaÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+xtÃ8ŒGsl.MultifitLinearWorkspace÷0œVector
+yÃ8ŒGsl.Spline÷0œdouble
+y0Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+y0Ã8ŒGsl.OdeivEvolve÷0œdouble
+y0_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+y1Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+y1_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+y2Ã128Õ(double x)ŒGsl.Bessel÷0œpublic double
+y2_eÃ128Õ(double x, out Result result)ŒGsl.Bessel÷0œpublic int
+yerrÃ8ŒGsl.OdeivEvolve÷0œdouble
+ylÃ128Õ(int l, double x)ŒGsl.Bessel÷0œpublic double
+yl_arrayÃ128Õ(int lmax, double x, [CCode (array_length = false)] double[] result_array)ŒGsl.Bessel÷0œpublic int
+yl_eÃ128Õ(int l, double x, out Result result)ŒGsl.Bessel÷0œpublic int
+ymaxÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+ymeanÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+yminÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+yrangeÃ8ŒGsl.Histogram2d÷0œdouble
+yrangeÃ8ŒGsl.Histogram2dPDF÷0œdouble
+ysigmaÃ128Õ()ŒGsl.Histogram2d÷0œpublic double
+zero_AiÃ128Õ(uint s)ŒGsl.Airy÷0œpublic double
+zero_Ai_derivÃ128Õ(uint s)ŒGsl.Airy÷0œpublic double
+zero_Ai_deriv_eÃ128Õ(uint s, out Result result)ŒGsl.Airy÷0œpublic int
+zero_Ai_eÃ128Õ(uint s, out Result result)ŒGsl.Airy÷0œpublic int
+zero_BiÃ128Õ(uint s)ŒGsl.Airy÷0œpublic double
+zero_Bi_derivÃ128Õ(uint s)ŒGsl.Airy÷0œpublic double
+zero_Bi_deriv_eÃ128Õ(uint s, out Result result)ŒGsl.Airy÷0œpublic int
+zero_Bi_eÃ128Õ(uint s, out Result result)ŒGsl.Airy÷0œpublic int
+zero_J0Ã128Õ(uint s)ŒGsl.Bessel÷0œpublic double
+zero_J0_eÃ128Õ(uint s, out Result result)ŒGsl.Bessel÷0œpublic int
+zero_J1Ã128Õ(uint s)ŒGsl.Bessel÷0œpublic double
+zero_J1_eÃ128Õ(uint s, out Result result)ŒGsl.Bessel÷0œpublic int
+zero_JnuÃ128Õ(double nu, uint s)ŒGsl.Bessel÷0œpublic double
+zero_Jnu_eÃ128Õ(double nu, uint s, out Result result)ŒGsl.Bessel÷0œpublic int
+zetaÃ128Õ(double s)ŒGsl.Zeta÷0œpublic double
+zeta_eÃ128Õ(double s, out Result result)ŒGsl.Zeta÷0œpublic int
+zeta_intÃ128Õ(int n)ŒGsl.Zeta÷0œpublic double
+zeta_int_eÃ128Õ(int n, out Result result)ŒGsl.Zeta÷0œpublic int
+zetam1Ã128Õ(double s)ŒGsl.Zeta÷0œpublic double
+zetam1_eÃ128Õ(double s, out Result result)ŒGsl.Zeta÷0œpublic int
+zetam1_intÃ128Õ(int n)ŒGsl.Zeta÷0œpublic double
+zetam1_int_eÃ128Õ(int n, out Result result)ŒGsl.Zeta÷0œpublic int
+zufÃ8ŒGsl.RNGTypes÷0œRNGType
+zzÃ8ŒGsl.MathieuWorkspace÷0œdouble

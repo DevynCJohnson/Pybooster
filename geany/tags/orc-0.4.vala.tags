@@ -1,0 +1,56 @@
+# format=tagmanager
+CompileResultÃ2ŒOrc÷0
+CompilerÃ1ŒOrc÷0
+DEBUGÃ4ŒOrc.DebugLevel÷0
+DebugÃ256÷0
+DebugLevelÃ2ŒOrc÷0
+ERRORÃ4ŒOrc.DebugLevel÷0
+ExecutorÃ1ŒOrc÷0
+ExecutorÃ128Õ(Orc.Program p)ŒOrc.Executor÷0
+INFOÃ4ŒOrc.DebugLevel÷0
+LOGÃ4ŒOrc.DebugLevel÷0
+MISSING_RULEÃ4ŒOrc.CompileResult÷0
+NONEÃ4ŒOrc.DebugLevel÷0
+OKÃ4ŒOrc.CompileResult÷0
+OrcÃ256÷0
+PARSEÃ4ŒOrc.CompileResult÷0
+ProgramÃ1ŒOrc÷0
+ProgramÃ128Õ()ŒOrc.Program÷0
+Program.dssÃ128Õ(int size1, int size2, int size3)ŒOrc.Program÷0
+UNKNOWN_COMPILEÃ4ŒOrc.CompileResult÷0
+UNKNOWN_PARSEÃ4ŒOrc.CompileResult÷0
+VARIABLEÃ4ŒOrc.CompileResult÷0
+WARNINGÃ4ŒOrc.DebugLevel÷0
+add_accumulatorÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+add_constantÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+add_destinationÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+add_parameterÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+add_sourceÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+add_temporaryÃ128Õ(int size, owned string name)ŒOrc.Program÷0œpublic void
+appendÃ128Õ(string opcode, int arg0, int arg1, int arg2)ŒOrc.Program÷0œpublic void
+append_dsÃ128Õ(string opcode, int arg0, int arg1)ŒOrc.Program÷0œpublic void
+append_ds_strÃ128Õ(string opcode, string arg0, string arg1)ŒOrc.Program÷0œpublic void
+append_strÃ128Õ(string opcode, string arg0, string arg1, string arg2)ŒOrc.Program÷0œpublic void
+boolÃ4ŒOrc.CompileResult÷0
+compileÃ128Õ()ŒOrc.Program÷0œpublic Orc.CompileResult
+emulateÃ128Õ()ŒOrc.Executor÷0œpublic void
+find_var_by_nameÃ128Õ(string name)ŒOrc.Program÷0œpublic int
+get_accumulatorÃ128Õ(int n)ŒOrc.Executor÷0œpublic int
+get_accumulator_strÃ128Õ(string name)ŒOrc.Executor÷0œpublic int
+get_asm_codeÃ128Õ()ŒOrc.Program÷0
+get_nameÃ128Õ()ŒOrc.Program÷0œpublic unowned string
+initÃ128Õ()ŒOrc÷0œpublic void
+is_fatalÃ4ŒOrc.CompileResult÷0
+is_successfulÃ4ŒOrc.CompileResult÷0
+runÃ128Õ()ŒOrc.Executor÷0œpublic void
+set_2dÃ128Õ()ŒOrc.Executor÷0œpublic void
+set_2dÃ128Õ()ŒOrc.Program÷0œpublic void
+set_arrayÃ128Õ(int _var, void* ptr)ŒOrc.Executor÷0œpublic void
+set_array_strÃ128Õ(string _var, void* ptr)ŒOrc.Executor÷0œpublic void
+set_levelÃ128Õ(Orc.DebugLevel l)ŒOrc.Debug÷0œpublic void
+set_mÃ128Õ(int n)ŒOrc.Executor÷0œpublic void
+set_nÃ128Õ(int n)ŒOrc.Executor÷0œpublic void
+set_paramÃ128Õ(int n, int val)ŒOrc.Executor÷0œpublic int
+set_param_strÃ128Õ(string name, int val)ŒOrc.Executor÷0œpublic int
+set_programÃ128Õ(Orc.Program p)ŒOrc.Executor÷0œpublic void
+set_strideÃ128Õ(int _var, int stride)ŒOrc.Executor÷0œpublic void

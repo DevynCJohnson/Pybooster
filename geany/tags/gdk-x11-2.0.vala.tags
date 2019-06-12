@@ -1,0 +1,51 @@
+# format=tagmanager
+GdkÌ256Ö0
+x11_atom_to_xatomÌ128Í(Gdk.Atom atom)ÎGdkÖ0Ïpublic X.Atom
+x11_atom_to_xatom_for_displayÌ128Í(Gdk.Display display, Gdk.Atom atom)ÎGdkÖ0Ïpublic X.Atom
+x11_colormap_foreign_newÌ128Í(Gdk.Visual visual, X.Colormap xcolormap)ÎGdkÖ0Ïpublic unowned
+x11_colormap_get_xcolormapÌ128Í(Gdk.Colormap colormap)ÎGdkÖ0Ïpublic X.Colormap
+x11_colormap_get_xdisplayÌ128Í(Gdk.Colormap colormap)ÎGdkÖ0Ïpublic unowned
+x11_cursor_get_xcursorÌ128Í(Gdk.Cursor cursor)ÎGdkÖ0Ïpublic unowned
+x11_cursor_get_xdisplayÌ128Í(Gdk.Cursor cursor)ÎGdkÖ0Ïpublic unowned
+x11_display_broadcast_startup_messageÌ128Í(Gdk.Display display, string message_type)ÎGdkÖ0Ïpublic void
+x11_display_get_startup_notification_idÌ128Í(Gdk.Display display)ÎGdkÖ0Ïpublic unowned string
+x11_display_get_user_timeÌ128Í(Gdk.Display display)ÎGdkÖ0Ïpublic uint32
+x11_display_get_xdisplayÌ128Í(Gdk.Display display)ÎGdkÖ0Ïpublic unowned
+x11_display_grabÌ128Í(Gdk.Display display)ÎGdkÖ0Ïpublic void
+x11_display_set_cursor_themeÌ128Í(Gdk.Display display, string theme, int size)ÎGdkÖ0Ïpublic void
+x11_display_ungrabÌ128Í(Gdk.Display display)ÎGdkÖ0Ïpublic void
+x11_drawable_get_xdisplayÌ128Í(Gdk.Drawable drawable)ÎGdkÖ0Ïpublic unowned
+x11_drawable_get_xidÌ128Í(Gdk.Drawable drawable)ÎGdkÖ0Ïpublic X.ID
+x11_gc_get_xdisplayÌ128Í(Gdk.GC gc)ÎGdkÖ0Ïpublic unowned
+x11_gc_get_xgcÌ128Í(Gdk.GC gc)ÎGdkÖ0Ïpublic X.GC
+x11_get_default_root_xwindowÌ128Í()ÎGdkÖ0Ïpublic X.Window
+x11_get_default_screenÌ128Í()ÎGdkÖ0Ïpublic int
+x11_get_default_xdisplayÌ128Í()ÎGdkÖ0Ïpublic unowned
+x11_get_server_timeÌ128Í(Gdk.Window window)ÎGdkÖ0Ïpublic uint32
+x11_get_xatom_by_nameÌ128Í(string atom_name)ÎGdkÖ0Ïpublic X.Atom
+x11_get_xatom_by_name_for_displayÌ128Í(Gdk.Display display, string atom_name)ÎGdkÖ0Ïpublic X.Atom
+x11_get_xatom_nameÌ128Í(X.Atom xatom)ÎGdkÖ0Ïpublic unowned string
+x11_get_xatom_name_for_displayÌ128Í(Gdk.Display display, X.Atom xatom)ÎGdkÖ0Ïpublic unowned string
+x11_grab_serverÌ128Í()ÎGdkÖ0Ïpublic void
+x11_image_get_xdisplayÌ128Í(Gdk.Image image)ÎGdkÖ0Ïpublic unowned
+x11_image_get_ximageÌ128Í(Gdk.Image image)ÎGdkÖ0Ïpublic void *
+x11_lookup_xdisplayÌ128Í(X.Display xdisplay)ÎGdkÖ0Ïpublic unowned
+x11_net_wm_supportsÌ128Í(Gdk.Atom property)ÎGdkÖ0Ïpublic bool
+x11_pixmap_get_drawable_implÌ128Í(Gdk.Pixmap pixmap)ÎGdkÖ0Ïpublic unowned
+x11_register_standard_event_typeÌ128Í(Gdk.Display display, int event_base, int n_events)ÎGdkÖ0Ïpublic void
+x11_screen_get_monitor_outputÌ128Í(Gdk.Screen screen, int monitor_num)ÎGdkÖ0Ïpublic X.ID
+x11_screen_get_screen_numberÌ128Í(Gdk.Screen screen)ÎGdkÖ0Ïpublic int
+x11_screen_get_window_manager_nameÌ128Í(Gdk.Screen screen)ÎGdkÖ0Ïpublic unowned string
+x11_screen_get_xscreenÌ128Í(Gdk.Screen screen)ÎGdkÖ0Ïpublic unowned
+x11_screen_lookup_visualÌ128Í(Gdk.Screen screen, uint32 xvisualid)ÎGdkÖ0Ïpublic unowned
+x11_screen_supports_net_wm_hintÌ128Í(Gdk.Screen screen, Gdk.Atom property)ÎGdkÖ0Ïpublic bool
+x11_ungrab_serverÌ128Í()ÎGdkÖ0Ïpublic void
+x11_visual_getÌ128Í(uint32 xvisualid)ÎGdkÖ0Ïpublic unowned
+x11_visual_get_xvisualÌ128Í(Gdk.Visual visual)ÎGdkÖ0Ïpublic unowned
+x11_window_get_drawable_implÌ128Í(Gdk.Window window)ÎGdkÖ0Ïpublic unowned
+x11_window_move_to_current_desktopÌ128Í(Gdk.Window window)ÎGdkÖ0Ïpublic void
+x11_window_set_user_timeÌ128Í(Gdk.Window window, uint32 timestamp)ÎGdkÖ0Ïpublic void
+x11_xatom_to_atomÌ128Í(X.Atom xatom)ÎGdkÖ0Ïpublic Gdk.Atom
+x11_xatom_to_atom_for_displayÌ128Í(Gdk.Display display, X.Atom xatom)ÎGdkÖ0Ïpublic Gdk.Atom
+x11_xid_table_lookupÌ128Í(X.ID xid)ÎGdkÖ0Ïpublic void *
+x11_xid_table_lookup_for_displayÌ128Í(Gdk.Display display, X.ID xid)ÎGdkÖ0Ïpublic void *

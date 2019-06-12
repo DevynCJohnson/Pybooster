@@ -1,0 +1,37 @@
+# format=tagmanager
+ActionÃ2ŒBZLib÷0
+BZLibÃ256÷0
+CONFIG_ERRORÃ4ŒBZLib.Status÷0
+DATA_ERRORÃ4ŒBZLib.Status÷0
+DATA_ERROR_MAGICKÃ4ŒBZLib.Status÷0
+FINISHÃ4ŒBZLib.Action÷0
+FINISH_OKÃ4ŒBZLib.Status÷0
+FLUSHÃ4ŒBZLib.Action÷0
+FLUSH_OKÃ4ŒBZLib.Status÷0
+IO_ERRORÃ4ŒBZLib.Status÷0
+MEM_ERRORÃ4ŒBZLib.Status÷0
+OKÃ4ŒBZLib.Status÷0
+OUTBUFF_FULLÃ4ŒBZLib.Status÷0
+RUNÃ4ŒBZLib.Action÷0
+RUN_OKÃ4ŒBZLib.Status÷0
+SEQUENCE_ERRORÃ4ŒBZLib.Status÷0
+STREAM_ENDÃ4ŒBZLib.Status÷0
+StatusÃ2ŒBZLib÷0
+StreamÃ2048ŒBZLib÷0
+UNEXPECTED_EOFÃ4ŒBZLib.Status÷0
+avail_inÃ8ŒBZLib.Stream÷0
+avail_outÃ8ŒBZLib.Stream÷0
+compressÃ128Õ(Action action)ŒBZLib.Stream÷0œpublic Status
+compress_endÃ128Õ()ŒBZLib.Stream÷0œpublic Status
+compress_initÃ128Õ(int block_size_100k, int verbosity, int work_factor)ŒBZLib.Stream÷0œpublic Status
+decompressÃ128Õ()ŒBZLib.Stream÷0œpublic Status
+decompress_endÃ128Õ()ŒBZLib.Stream÷0œpublic Status
+decompress_initÃ128Õ(int verbosity, int small)ŒBZLib.Stream÷0œpublic Status
+next_inÃ8ŒBZLib.Stream÷0
+next_outÃ8ŒBZLib.Stream÷0
+opaqueÃ8ŒBZLib.Stream÷0œvoid
+stateÃ8ŒBZLib.Stream÷0œvoid
+total_in_hi32Ã8ŒBZLib.Stream÷0
+total_out_hi32Ã8ŒBZLib.Stream÷0
+totoal_in_lo32Ã8ŒBZLib.Stream÷0
+totoal_out_lo32Ã8ŒBZLib.Stream÷0

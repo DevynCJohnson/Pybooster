@@ -1,0 +1,327 @@
+# format=tagmanager
+AÃ4ŒPixman.FormatType÷0
+A1Ã4ŒPixman.Format÷0
+A1B1G1R1Ã4ŒPixman.Format÷0
+A1B5G5R5Ã4ŒPixman.Format÷0
+A1R1G1B1Ã4ŒPixman.Format÷0
+A1R5G5B5Ã4ŒPixman.Format÷0
+A2B10G10R10Ã4ŒPixman.Format÷0
+A2B2G2R2Ã4ŒPixman.Format÷0
+A2R10G10B10Ã4ŒPixman.Format÷0
+A2R2G2B2Ã4ŒPixman.Format÷0
+A4Ã4ŒPixman.Format÷0
+A4B4G4R4Ã4ŒPixman.Format÷0
+A4R4G4B4Ã4ŒPixman.Format÷0
+A8Ã4ŒPixman.Format÷0
+A8B8G8R8Ã4ŒPixman.Format÷0
+A8R8G8B8Ã4ŒPixman.Format÷0
+ABGRÃ4ŒPixman.FormatType÷0
+ADDÃ4ŒPixman.Operation÷0
+ARGBÃ4ŒPixman.FormatType÷0
+ATOPÃ4ŒPixman.Operation÷0
+ATOP_REVERSEÃ4ŒPixman.Operation÷0
+B1G2R1Ã4ŒPixman.Format÷0
+B2G3R3Ã4ŒPixman.Format÷0
+B5G6R5Ã4ŒPixman.Format÷0
+B8G8R8Ã4ŒPixman.Format÷0
+B8G8R8A8Ã4ŒPixman.Format÷0
+B8G8R8X8Ã4ŒPixman.Format÷0
+BESTÃ4ŒPixman.Filter÷0
+BGRAÃ4ŒPixman.FormatType÷0
+BILINEARÃ4ŒPixman.Filter÷0
+Box16Ã2048ŒPixman÷0
+Box32Ã2048ŒPixman÷0
+C4Ã4ŒPixman.Format÷0
+C8Ã4ŒPixman.Format÷0
+CLEARÃ4ŒPixman.Operation÷0
+COLORÃ4ŒPixman.FormatType÷0
+COLOR_BURNÃ4ŒPixman.Operation÷0
+COLOR_DODGEÃ4ŒPixman.Operation÷0
+CONJOINT_ATOPÃ4ŒPixman.Operation÷0
+CONJOINT_ATOP_REVERSEÃ4ŒPixman.Operation÷0
+CONJOINT_CLEARÃ4ŒPixman.Operation÷0
+CONJOINT_DSTÃ4ŒPixman.Operation÷0
+CONJOINT_INÃ4ŒPixman.Operation÷0
+CONJOINT_IN_REVERSEÃ4ŒPixman.Operation÷0
+CONJOINT_OUTÃ4ŒPixman.Operation÷0
+CONJOINT_OUT_REVERSEÃ4ŒPixman.Operation÷0
+CONJOINT_OVERÃ4ŒPixman.Operation÷0
+CONJOINT_OVER_REVERSEÃ4ŒPixman.Operation÷0
+CONJOINT_SRCÃ4ŒPixman.Operation÷0
+CONJOINT_XORÃ4ŒPixman.Operation÷0
+CONVOLUTIONÃ4ŒPixman.Filter÷0
+ColorÃ2048ŒPixman÷0
+DARKENÃ4ŒPixman.Operation÷0
+DIFFERENCEÃ4ŒPixman.Operation÷0
+DISJOINT_ATOPÃ4ŒPixman.Operation÷0
+DISJOINT_ATOP_REVERSEÃ4ŒPixman.Operation÷0
+DISJOINT_CLEARÃ4ŒPixman.Operation÷0
+DISJOINT_DSTÃ4ŒPixman.Operation÷0
+DISJOINT_INÃ4ŒPixman.Operation÷0
+DISJOINT_IN_REVERSEÃ4ŒPixman.Operation÷0
+DISJOINT_OUTÃ4ŒPixman.Operation÷0
+DISJOINT_OUT_REVERSEÃ4ŒPixman.Operation÷0
+DISJOINT_OVERÃ4ŒPixman.Operation÷0
+DISJOINT_OVER_REVERSEÃ4ŒPixman.Operation÷0
+DISJOINT_SRCÃ4ŒPixman.Operation÷0
+DISJOINT_XORÃ4ŒPixman.Operation÷0
+DSTÃ4ŒPixman.Operation÷0
+EXCLUSIONÃ4ŒPixman.Operation÷0
+EdgeÃ2048ŒPixman÷0
+EdgeÃ128Õ(int bpp, Pixman.Fixed y_start, Pixman.Fixed x_top, Pixman.Fixed y_top, Pixman.Fixed x_bot, Pixman.Fixed y_bot)ŒPixman.Edge÷0
+Edge.line_fixedÃ128Õ(int bpp, Pixman.Fixed y, Pixman.LineFixed line, int x_off, int y_off)ŒPixman.Edge÷0
+FASTÃ4ŒPixman.Filter÷0
+FilterÃ2ŒPixman÷0
+FixedÃ2048ŒPixman÷0
+Fixed1616Ã2048ŒPixman÷0
+FormatÃ2ŒPixman÷0
+FormatTypeÃ2ŒPixman÷0
+G1Ã4ŒPixman.Format÷0
+G4Ã4ŒPixman.Format÷0
+G8Ã4ŒPixman.Format÷0
+GOODÃ4ŒPixman.Filter÷0
+GRAYÃ4ŒPixman.FormatType÷0
+GradientStopÃ2048ŒPixman÷0
+HARD_LIGHTÃ4ŒPixman.Operation÷0
+HSL_COLORÃ4ŒPixman.Operation÷0
+HSL_HUEÃ4ŒPixman.Operation÷0
+HSL_LUMINOSITYÃ4ŒPixman.Operation÷0
+HSL_SATURATIONÃ4ŒPixman.Operation÷0
+INÃ4ŒPixman.Operation÷0
+INÃ4ŒPixman.RegionOverlap÷0
+INTÃ8ŒPixman.Version÷0œint
+IN_REVERSEÃ4ŒPixman.Operation÷0
+ImageÃ1ŒPixman÷0
+Image.bitsÃ128Õ(Pixman.Format format, int width, int height, [CCode (type = , array_length = false)] uint8[] bits, int rowstride_bytes)ŒPixman.Image÷0
+Image.conical_gradientÃ128Õ(Pixman.PointFixed center, Pixman.Fixed angle, Pixman.GradientStop[] stops)ŒPixman.Image÷0
+Image.linear_gradientÃ128Õ(Pixman.PointFixed p1, Pixman.PointFixed p2, Pixman.GradientStop[] stops)ŒPixman.Image÷0
+Image.radial_gradientÃ128Õ(Pixman.PointFixed inner, Pixman.PointFixed outer, Pixman.Fixed inner_radius, Pixman.Fixed outer_radius, Pixman.GradientStop[] stops)ŒPixman.Image÷0
+Image.solid_fillÃ128Õ(Pixman.Color color)ŒPixman.Image÷0
+IndexedÃ2048ŒPixman÷0
+LIGHTENÃ4ŒPixman.Operation÷0
+LineFixedÃ2048ŒPixman÷0
+MAJORÃ8ŒPixman.Version÷0œint
+MICROÃ8ŒPixman.Version÷0œint
+MINORÃ8ŒPixman.Version÷0œint
+MULTIPLYÃ4ŒPixman.Operation÷0
+NEARESTÃ4ŒPixman.Filter÷0
+NONEÃ4ŒPixman.Repeat÷0
+NORMALÃ4ŒPixman.Repeat÷0
+OTHERÃ4ŒPixman.FormatType÷0
+OUTÃ4ŒPixman.Operation÷0
+OUTÃ4ŒPixman.RegionOverlap÷0
+OUT_REVERSEÃ4ŒPixman.Operation÷0
+OVERÃ4ŒPixman.Operation÷0
+OVERLAYÃ4ŒPixman.Operation÷0
+OVER_REVERSEÃ4ŒPixman.Operation÷0
+OperationÃ2ŒPixman÷0
+PADÃ4ŒPixman.Repeat÷0
+PARTÃ4ŒPixman.RegionOverlap÷0
+PixmanÃ256÷0
+Pixman.FormatÃ4ŒPixman.Format÷0
+PointFixedÃ2048ŒPixman÷0
+R1G2B1Ã4ŒPixman.Format÷0
+R3G3B2Ã4ŒPixman.Format÷0
+R5G6B5Ã4ŒPixman.Format÷0
+R8G8B8Ã4ŒPixman.Format÷0
+REFLECTÃ4ŒPixman.Repeat÷0
+ReadMemoryFuncÃ128Õ([CCode (type = )] uint8[] src)ŒPixman÷0œpublic delegate int32
+Rectangle16Ã2048ŒPixman÷0
+Rectangle32Ã2048ŒPixman÷0
+Region16Ã2048ŒPixman÷0
+Region16Ã128Õ()ŒPixman.Region16÷0
+Region16.rectÃ128Õ(int x, int y, uint width, uint height)ŒPixman.Region16÷0
+Region16.rectsÃ128Õ(Pixman.Box16[] boxes)ŒPixman.Region16÷0
+Region16.with_extentsÃ128Õ(Pixman.Box16 extents)ŒPixman.Region16÷0
+Region32Ã2048ŒPixman÷0
+Region32Ã128Õ()ŒPixman.Region32÷0
+Region32.rectÃ128Õ(int x, int y, uint width, uint height)ŒPixman.Region32÷0
+Region32.rectsÃ128Õ(Pixman.Box32[] boxes)ŒPixman.Region32÷0
+Region32.with_extentsÃ128Õ(Pixman.Box32 extents)ŒPixman.Region32÷0
+RegionOverlapÃ2ŒPixman÷0
+RepeatÃ2ŒPixman÷0
+SATURATEÃ4ŒPixman.Operation÷0
+SCREENÃ4ŒPixman.Operation÷0
+SOFT_LIGHTÃ4ŒPixman.Operation÷0
+SRCÃ4ŒPixman.Operation÷0
+STRINGÃ8ŒPixman.Version÷0
+SpanFixÃ2048ŒPixman÷0
+TransformÃ2048ŒPixman÷0
+Transform.identityÃ128Õ()ŒPixman.Transform÷0
+Transform.init_rotateÃ128Õ(Pixman.Fixed cos, Pixman.Fixed sin)ŒPixman.Transform÷0
+Transform.init_scaleÃ128Õ(Pixman.Fixed sx, Pixman.Fixed sy)ŒPixman.Transform÷0
+Transform.init_translateÃ128Õ(Pixman.Fixed tx, Pixman.Fixed ty)ŒPixman.Transform÷0
+TrapÃ2048ŒPixman÷0
+TrapezoidÃ2048ŒPixman÷0
+VectorÃ2048ŒPixman÷0
+VersionÃ256÷0
+WriteMemoryFuncÃ128Õ([CCode (type = , array_length = false)] uint8[] dst, uint32 value, int size)ŒPixman÷0œpublic delegate void
+X14R6G6B6Ã4ŒPixman.Format÷0
+X1B5G5R5Ã4ŒPixman.Format÷0
+X1R5G5B5Ã4ŒPixman.Format÷0
+X2B10G10R10Ã4ŒPixman.Format÷0
+X2R10G10B10Ã4ŒPixman.Format÷0
+X4A4Ã4ŒPixman.Format÷0
+X4B4G4R4Ã4ŒPixman.Format÷0
+X4C4Ã4ŒPixman.Format÷0
+X4G4Ã4ŒPixman.Format÷0
+X4R4G4B4Ã4ŒPixman.Format÷0
+X8B8G8R8Ã4ŒPixman.Format÷0
+X8R8G8B8Ã4ŒPixman.Format÷0
+XORÃ4ŒPixman.Operation÷0
+YUV2Ã4ŒPixman.FormatType÷0
+YUY2Ã4ŒPixman.Format÷0
+YV12Ã4ŒPixman.Format÷0
+YV12Ã4ŒPixman.FormatType÷0
+add_trapezoidsÃ128Õ(int16 x_off, int y_off, [CCode (array_length_pos = 2.9)] Pixman.Trap[] traps)ŒPixman.Image÷0œpublic void
+add_trapsÃ128Õ(int16 x_off, int16 y_off, [CCode (array_length_pos = 2.9)] Pixman.Trap[] traps)ŒPixman.Image÷0œpublic void
+alphaÃ8ŒPixman.Color÷0œuint16
+bltÃ128Õ([CCode (array_length = false, type = )] uint8[] src_bits, [CCode (array_length = false, type = )] uint8[] dst_bits, int src_stride, int dst_stride, int src_bpp, int dst_bpp, int src_x, int src_y, int dst_x, int dst_y, int width, int height)ŒPixman÷0œpublic bool
+blueÃ8ŒPixman.Color÷0œuint16
+boolÃ4ŒPixman.Format÷0
+boolÃ4ŒPixman.FormatType÷0
+botÃ8ŒPixman.Trap÷0œPixman.SpanFix
+bottomÃ8ŒPixman.Trapezoid÷0œPixman.Fixed
+boundsÃ128Õ(Pixman.Box16 b)ŒPixman.Transform÷0œpublic bool
+ceilÃ128Õ()ŒPixman.Fixed÷0œpublic Fixed
+clip_regionÃ8ŒPixman.Image÷0œPixman.Region16
+clip_region32Ã8ŒPixman.Image÷0œPixman.Region32
+colorÃ8ŒPixman.GradientStop÷0œPixman.Color
+colorÃ8ŒPixman.Indexed÷0œbool
+component_alphaÃ8ŒPixman.Image÷0œbool
+compositeÃ128Õ(Pixman.Operation op, Pixman.Image src, Pixman.Image? mask, Pixman.Image dest, int16 src_x, int16 src_y, int16 mask_x, int16 mask_y, int16 dest_x, int16 dest_y, uint16 width, uint16 height)ŒPixman.Image÷0œpublic void
+compute_composite_regionÃ128Õ(Pixman.Region16 region, Pixman.Image src_image, Pixman.Image? mask_image, Pixman.Image dst_image, int src_x, int src_y, int mask_x, int mask_y, int dest_x, int dest_y, int width, int height)ŒPixman.Image÷0œpublic bool
+contains_pointÃ128Õ(int x, int y, Pixman.Box16 box)ŒPixman.Region16÷0œpublic bool
+contains_pointÃ128Õ(int x, int y, Pixman.Box32 box)ŒPixman.Region32÷0œpublic bool
+contains_rectangleÃ128Õ(Pixman.Box16 prect)ŒPixman.Region16÷0œpublic Pixman.RegionOverlap
+contains_rectangleÃ128Õ(Pixman.Box32 prect)ŒPixman.Region32÷0œpublic Pixman.RegionOverlap
+copyÃ128Õ(out Pixman.Region16 region)ŒPixman.Region16÷0œpublic bool
+copyÃ128Õ(out Pixman.Region32 region)ŒPixman.Region32÷0œpublic bool
+createÃ4ŒPixman.Format÷0
+depthÃ8ŒPixman.Image÷0œint
+dxÃ8ŒPixman.Edge÷0œPixman.Fixed
+dx_bigÃ8ŒPixman.Edge÷0œPixman.Fixed
+dx_smallÃ8ŒPixman.Edge÷0œPixman.Fixed
+dyÃ8ŒPixman.Edge÷0œPixman.Fixed
+eÃ8ŒPixman.Edge÷0œPixman.Fixed
+encodeÃ128Õ(int major, int minor, int micro)ŒPixman.Version÷0œpublic int
+entÃ8ŒPixman.Indexed÷0œuint8
+equalÃ128Õ(Pixman.Region16 region2)ŒPixman.Region16÷0œpublic bool
+equalÃ128Õ(Pixman.Region32 region2)ŒPixman.Region32÷0œpublic bool
+extentsÃ8ŒPixman.Rectangle16÷0œPixman.Box16
+extentsÃ8ŒPixman.Rectangle32÷0œPixman.Box32
+extentsÃ128Õ()ŒPixman.Region16÷0œpublic Pixman.Box16 *
+extentsÃ128Õ()ŒPixman.Region32÷0œpublic Pixman.Box32 *
+fillÃ128Õ([CCode (array_length = false, type = )] uint8[] bits, int stride, int bpp, int x, int y, int width, int height, uint32 _xor)ŒPixman÷0œpublic bool
+fill_rectanglesÃ128Õ(Pixman.Operation op, Pixman.Color color, [CCode (array_length_pos = 2.1)] Pixman.Rectangle16[] rects)ŒPixman.Image÷0œpublic bool
+floorÃ128Õ()ŒPixman.Fixed÷0œpublic Fixed
+fracÃ128Õ()ŒPixman.Fixed÷0œpublic Fixed
+fractionÃ128Õ()ŒPixman.Fixed÷0œpublic Fixed
+get_dataÃ128Õ()ŒPixman.Image÷0œpublic uint32
+get_depthÃ128Õ()ŒPixman.Image÷0œpublic int
+get_heightÃ128Õ()ŒPixman.Image÷0œpublic int
+get_strideÃ128Õ()ŒPixman.Image÷0œpublic int
+get_widthÃ128Õ()ŒPixman.Image÷0œpublic int
+greenÃ8ŒPixman.Color÷0œuint16
+has_client_clipÃ8ŒPixman.Image÷0œbool
+heightÃ8ŒPixman.Image÷0œint
+heightÃ8ŒPixman.Region16÷0œuint16
+heightÃ8ŒPixman.Region32÷0œuint32
+indexedÃ8ŒPixman.Image÷0œPixman.Indexed
+intersectÃ128Õ(out Pixman.Region16 new_reg, Pixman.Region16 reg2)ŒPixman.Region16÷0œpublic bool
+intersectÃ128Õ(out Pixman.Region32 new_reg, Pixman.Region32 reg2)ŒPixman.Region32÷0œpublic bool
+inverseÃ128Õ(out Pixman.Region16 new_reg, Pixman.Box16 inv_rect)ŒPixman.Region16÷0œpublic bool
+inverseÃ128Õ(out Pixman.Region32 new_reg, Pixman.Box32 inv_rect)ŒPixman.Region32÷0œpublic bool
+is_colorÃ4ŒPixman.FormatType÷0
+is_identityÃ128Õ()ŒPixman.Transform÷0œpublic bool
+is_int_translateÃ128Õ()ŒPixman.Transform÷0œpublic bool
+is_inverseÃ128Õ(Pixman.Transform b)ŒPixman.Transform÷0œpublic bool
+is_scaleÃ128Õ()ŒPixman.Transform÷0œpublic bool
+lÃ8ŒPixman.SpanFix÷0œPixman.Fixed
+leftÃ8ŒPixman.Trapezoid÷0œPixman.LineFixed
+library_intÃ128Õ()ŒPixman.Version÷0œpublic int
+library_stringÃ128Õ()ŒPixman.Version÷0œpublic unowned string
+matrixÃ8ŒPixman.Transform÷0œPixman.Fixed
+mod_2Ã128Õ()ŒPixman.Fixed÷0œpublic Fixed
+multiplyÃ128Õ(Pixman.Transform l, Pixman.Transform r)ŒPixman.Transform÷0œpublic bool
+n_rectsÃ128Õ()ŒPixman.Region16÷0œpublic int
+n_rectsÃ128Õ()ŒPixman.Region32÷0œpublic int
+not_emptyÃ128Õ()ŒPixman.Region16÷0œpublic bool
+not_emptyÃ128Õ()ŒPixman.Region32÷0œpublic bool
+p1Ã8ŒPixman.LineFixed÷0œPixman.PointFixed
+p2Ã8ŒPixman.LineFixed÷0œPixman.PointFixed
+pointÃ128Õ()ŒPixman.Transform÷0œpublic bool
+point_3dÃ128Õ(Pixman.Vector vector)ŒPixman.Transform÷0œpublic bool
+rÃ8ŒPixman.SpanFix÷0œPixman.Fixed
+rasterize_edgesÃ128Õ(Pixman.Edge l, Pixman.Edge r, Pixman.Fixed t, Pixman.Fixed b)ŒPixman.Image÷0œpublic void
+rasterize_trapezoidÃ128Õ(Pixman.Trapezoid trap, int x_off, int y_off)ŒPixman.Image÷0œpublic void
+rectanglesÃ128Õ()ŒPixman.Region16÷0œpublic Pixman.Box16
+rectanglesÃ128Õ()ŒPixman.Region32÷0œpublic Pixman.Box32
+redÃ8ŒPixman.Color÷0œuint16
+repeatÃ8ŒPixman.Image÷0œPixman.Repeat
+resetÃ128Õ(Pixman.Box16 box)ŒPixman.Region16÷0œpublic void
+resetÃ128Õ(Pixman.Box32 box)ŒPixman.Region32÷0œpublic void
+rgbaÃ8ŒPixman.Indexed÷0œuint32
+rightÃ8ŒPixman.Trapezoid÷0œPixman.LineFixed
+rotateÃ128Õ(Pixman.Transform reverse, Pixman.Fixed c, Pixman.Fixed s)ŒPixman.Transform÷0œpublic bool
+sample_ceil_yÃ128Õ(int bpp)ŒPixman.Fixed÷0œpublic Fixed
+sample_floor_yÃ128Õ(int bpp)ŒPixman.Fixed÷0œpublic Fixed
+scaleÃ128Õ(Pixman.Transform reverse, Pixman.Fixed sx, Pixman.Fixed sy)ŒPixman.Transform÷0œpublic bool
+selfcheckÃ128Õ()ŒPixman.Region16÷0œpublic bool
+selfcheckÃ128Õ()ŒPixman.Region32÷0œpublic bool
+set_accessorsÃ128Õ(Pixman.ReadMemoryFunc read_func, Pixman.WriteMemoryFunc write_func)ŒPixman.Image÷0œpublic bool
+set_alpha_mapÃ128Õ(Pixman.Image alpha_map, int16 x, int16 y)ŒPixman.Image÷0œpublic void
+set_clip_regionÃ128Õ(Pixman.Region16 clip_region)ŒPixman.Image÷0œpublic bool
+set_clip_region32Ã128Õ(Pixman.Region32 clip_region32)ŒPixman.Image÷0œpublic bool
+set_component_alphaÃ128Õ(bool component_alpha)ŒPixman.Image÷0œpublic void
+set_filterÃ128Õ(Pixman.Filter filter, Pixman.Fixed[] filter_params)ŒPixman.Image÷0œpublic bool
+set_has_client_clipÃ128Õ(bool client_clip)ŒPixman.Image÷0œpublic void
+set_indexedÃ128Õ(Pixman.Indexed indexed)ŒPixman.Image÷0œpublic bool
+set_repeatÃ128Õ(Pixman.Repeat repeat)ŒPixman.Image÷0œpublic void
+set_source_clippingÃ128Õ(bool source_clipping)ŒPixman.Image÷0œpublic void
+set_transformÃ128Õ(Pixman.Transform transform)ŒPixman.Image÷0œpublic bool
+signdxÃ8ŒPixman.Edge÷0œPixman.Fixed
+source_clippingÃ8ŒPixman.Image÷0œbool
+stepÃ128Õ(int n)ŒPixman.Edge÷0œpublic void
+stepxÃ8ŒPixman.Edge÷0œPixman.Fixed
+stepx_bigÃ8ŒPixman.Edge÷0œPixman.Fixed
+stepx_smallÃ8ŒPixman.Edge÷0œPixman.Fixed
+strideÃ8ŒPixman.Image÷0œint
+subtractÃ128Õ(out Pixman.Region16 reg_d, Pixman.Region16 reg_s)ŒPixman.Region16÷0œpublic bool
+subtractÃ128Õ(out Pixman.Region32 reg_d, Pixman.Region32 reg_s)ŒPixman.Region32÷0œpublic bool
+supported_destinationÃ4ŒPixman.Format÷0
+supported_sourceÃ4ŒPixman.Format÷0
+to_doubleÃ128Õ()ŒPixman.Fixed÷0œpublic double
+to_intÃ128Õ()ŒPixman.Fixed÷0œpublic int
+topÃ8ŒPixman.Trap÷0œPixman.SpanFix
+topÃ8ŒPixman.Trapezoid÷0œPixman.Fixed
+transformÃ8ŒPixman.Image÷0œPixman.Transform
+translateÃ128Õ(int x, int y)ŒPixman.Region16÷0œpublic void
+translateÃ128Õ(int x, int y)ŒPixman.Region32÷0œpublic void
+translateÃ128Õ(Pixman.Transform reverse, Pixman.Fixed tx, Pixman.Fixed ty)ŒPixman.Transform÷0œpublic bool
+unionÃ128Õ(out Pixman.Region16 new_reg, Pixman.Region16 reg2)ŒPixman.Region16÷0œpublic bool
+unionÃ128Õ(out Pixman.Region32 new_reg, Pixman.Region32 reg2)ŒPixman.Region32÷0œpublic bool
+union_rectÃ128Õ(out Pixman.Region16 dest, int x, int y, uint width, uint height)ŒPixman.Region16÷0œpublic bool
+union_rectÃ128Õ(out Pixman.Region32 dest, int x, int y, uint width, uint height)ŒPixman.Region32÷0œpublic bool
+validÃ128Õ()ŒPixman.Trapezoid÷0œpublic bool
+vectorÃ8ŒPixman.Vector÷0œPixman.Fixed
+widthÃ8ŒPixman.Image÷0œint
+widthÃ8ŒPixman.Region16÷0œuint16
+widthÃ8ŒPixman.Region32÷0œuint32
+xÃ8ŒPixman.Edge÷0œPixman.Fixed
+xÃ8ŒPixman.GradientStop÷0œPixman.Fixed
+xÃ8ŒPixman.PointFixed÷0œPixman.Fixed
+xÃ8ŒPixman.Region16÷0œint16
+xÃ8ŒPixman.Region32÷0œint32
+x1Ã8ŒPixman.Box16÷0œint16
+x1Ã8ŒPixman.Box32÷0œint32
+x2Ã8ŒPixman.Box16÷0œint16
+x2Ã8ŒPixman.Box32÷0œint32
+yÃ8ŒPixman.PointFixed÷0œPixman.Fixed
+yÃ8ŒPixman.Region16÷0œint16
+yÃ8ŒPixman.Region32÷0œint32
+yÃ8ŒPixman.SpanFix÷0œPixman.Fixed
+y1Ã8ŒPixman.Box16÷0œint16
+y1Ã8ŒPixman.Box32÷0œint32
+y2Ã8ŒPixman.Box16÷0œint16
+y2Ã8ŒPixman.Box32÷0œint32

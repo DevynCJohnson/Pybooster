@@ -1,0 +1,242 @@
+# format=tagmanager
+ACLÃ4ŒArchive.ExtractFlags÷0
+ARÃ4ŒArchive.Format÷0
+AR_BSDÃ4ŒArchive.Format÷0
+AR_GNUÃ4ŒArchive.Format÷0
+ArchiveÃ256÷0
+ArchiveÃ1ŒArchive÷0
+BASE_MASKÃ4ŒArchive.Format÷0
+BZIP2Ã4ŒArchive.Compression÷0
+COMPRESSÃ4ŒArchive.Compression÷0
+CPIOÃ4ŒArchive.Format÷0
+CPIO_BIN_BEÃ4ŒArchive.Format÷0
+CPIO_BIN_LEÃ4ŒArchive.Format÷0
+CPIO_POSIXÃ4ŒArchive.Format÷0
+CPIO_SVR4_CRCÃ4ŒArchive.Format÷0
+CPIO_SVR4_NOCRCÃ4ŒArchive.Format÷0
+CleanupÃ128Õ()ŒArchive.WriteDisk÷0œpublic delegate void
+CloseCallbackÃ128Õ(Archive archive)ŒArchive÷0œpublic delegate int
+CompressionÃ2ŒArchive÷0
+EMPTYÃ4ŒArchive.Format÷0
+EOFÃ4ŒArchive.Result÷0
+EntryÃ1ŒArchive÷0
+EntryÃ128Õ()ŒArchive.Entry÷0
+ExtractFlagsÃ2ŒArchive÷0
+ExtractProgressCallbackÃ128Õ()ŒArchive÷0œpublic delegate void
+FAILEDÃ4ŒArchive.Result÷0
+FFLAGSÃ4ŒArchive.ExtractFlags÷0
+FormatÃ2ŒArchive÷0
+GZIPÃ4ŒArchive.Compression÷0
+GroupLookupÃ128Õ(string group, Posix.gid_t gid)ŒArchive.WriteDisk÷0œpublic delegate Posix.gid_t
+ISO9660Ã4ŒArchive.Format÷0
+ISO9660_ROCKRIDGEÃ4ŒArchive.Format÷0
+LZMAÃ4ŒArchive.Compression÷0
+LinkResolverÃ1ŒArchive.Entry÷0
+LinkResolverÃ128Õ()ŒArchive.Entry.LinkResolver÷0
+MTREEÃ4ŒArchive.Format÷0
+NONEÃ4ŒArchive.Compression÷0
+NO_AUTODIRÃ4ŒArchive.ExtractFlags÷0
+NO_OVERWRITEÃ4ŒArchive.ExtractFlags÷0
+NO_OVERWRITE_NEWERÃ4ŒArchive.ExtractFlags÷0
+OKÃ4ŒArchive.Result÷0
+OWNERÃ4ŒArchive.ExtractFlags÷0
+OpenCallbackÃ128Õ(Archive archive)ŒArchive÷0œpublic delegate int
+PERMÃ4ŒArchive.ExtractFlags÷0
+PROGRAMÃ4ŒArchive.Compression÷0
+RETRYÃ4ŒArchive.Result÷0
+ReadÃ1ŒArchive÷0
+ReadÃ128Õ()ŒArchive.Read÷0
+ReadCallbackÃ128Õ(Archive archive, out void* buffer)ŒArchive÷0œpublic delegate ssize_t
+ResultÃ2ŒArchive÷0
+SECURE_NODOTDOTÃ4ŒArchive.ExtractFlags÷0
+SECURE_SYMLINKSÃ4ŒArchive.ExtractFlags÷0
+SHARÃ4ŒArchive.Format÷0
+SHAR_BASEÃ4ŒArchive.Format÷0
+SHAR_DUMPÃ4ŒArchive.Format÷0
+SPARSEÃ4ŒArchive.ExtractFlags÷0
+SkipCallbackÃ128Õ(Archive archive, Posix.off_t request)ŒArchive÷0œpublic delegate Posix.off_t
+TARÃ4ŒArchive.Format÷0
+TAR_GNUTARÃ4ŒArchive.Format÷0
+TAR_PAX_INTERCHANGEÃ4ŒArchive.Format÷0
+TAR_PAX_RESTRICTEDÃ4ŒArchive.Format÷0
+TAR_USTARÃ4ŒArchive.Format÷0
+TIMEÃ4ŒArchive.ExtractFlags÷0
+UNLINKÃ4ŒArchive.ExtractFlags÷0
+UserLookupÃ128Õ(string user, Posix.uid_t uid)ŒArchive.WriteDisk÷0œpublic delegate Posix.uid_t
+VERSION_NUMBERÃ8ŒArchive÷0œint
+VERSION_STRINGÃ8ŒArchive÷0
+WARNÃ4ŒArchive.Result÷0
+WriteÃ1ŒArchive÷0
+WriteÃ128Õ()ŒArchive.Write÷0
+WriteCallbackÃ128Õ(Archive archive, void* buffer, size_t length)ŒArchive÷0œpublic delegate ssize_t
+WriteDiskÃ1ŒArchive÷0
+WriteDiskÃ128Õ()ŒArchive.WriteDisk÷0
+XATTRÃ4ŒArchive.ExtractFlags÷0
+ZIPÃ4ŒArchive.Format÷0
+atimeÃ128Õ()ŒArchive.Entry÷0œpublic time_t
+atime_is_setÃ128Õ()ŒArchive.Entry÷0œpublic bool
+atime_nsecÃ128Õ()ŒArchive.Entry÷0œpublic long
+birthtimeÃ128Õ()ŒArchive.Entry÷0œpublic time_t
+birthtime_is_setÃ128Õ()ŒArchive.Entry÷0œpublic bool
+birthtime_nsecÃ128Õ()ŒArchive.Entry÷0œpublic long
+clearÃ128Õ()ŒArchive.Entry÷0œpublic unowned
+clear_errorÃ128Õ()ŒArchive.Archive÷0œpublic void
+cloneÃ128Õ()ŒArchive.Entry÷0œpublic Entry
+closeÃ128Õ()ŒArchive.Read÷0œpublic Result
+closeÃ128Õ()ŒArchive.Write÷0œpublic Result
+compressionÃ128Õ()ŒArchive.Archive÷0œpublic Compression
+compression_nameÃ128Õ()ŒArchive.Archive÷0œpublic unowned string
+copy_errorÃ128Õ(Archive src)ŒArchive.Archive÷0œpublic void
+copy_fflags_textÃ128Õ(string text)ŒArchive.Entry÷0œpublic unowned string
+copy_sourcepathÃ128Õ(string sourcepath)ŒArchive.Entry÷0œpublic void
+copy_statÃ128Õ(Posix.Stat stat)ŒArchive.Entry÷0œpublic void
+ctimeÃ128Õ()ŒArchive.Entry÷0œpublic time_t
+ctime_is_setÃ128Õ()ŒArchive.Entry÷0œpublic bool
+ctime_nsecÃ128Õ()ŒArchive.Entry÷0œpublic long
+devÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+devmajorÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+devminorÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+errnoÃ128Õ()ŒArchive.Archive÷0œpublic int
+error_stringÃ128Õ()ŒArchive.Archive÷0œpublic unowned string
+extractÃ128Õ(Entry entry, ExtractFlags? flags=0)ŒArchive.Read÷0œpublic Result
+extract2Ã128Õ(Entry entry, Write dest)ŒArchive.Read÷0œpublic Result
+extract_set_progress_callbackÃ128Õ(ExtractProgressCallback cb)ŒArchive.Read÷0œpublic void
+extract_set_skip_fileÃ128Õ(Posix.dev_t dev, Posix.ino_t ino)ŒArchive.Read÷0œpublic void
+fflags_textÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+filetypeÃ128Õ()ŒArchive.Entry÷0œpublic Posix.mode_t
+finish_entryÃ128Õ()ŒArchive.Write÷0œpublic Result
+formatÃ128Õ()ŒArchive.Archive÷0œpublic Format
+format_nameÃ128Õ()ŒArchive.Archive÷0œpublic unowned string
+get_bytes_in_last_blockÃ128Õ()ŒArchive.Write÷0œpublic int
+get_bytes_per_blockÃ128Õ()ŒArchive.Write÷0œpublic int
+gidÃ128Õ()ŒArchive.Entry÷0œpublic Posix.gid_t
+gnameÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+hardlinkÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+header_positionÃ128Õ()ŒArchive.Read÷0œpublic int64
+inoÃ128Õ()ŒArchive.Entry÷0œpublic Posix.ino_t
+linkifyÃ128Õ(Entry a, Entry b)ŒArchive.Entry.LinkResolver÷0œpublic void
+modeÃ128Õ()ŒArchive.Entry÷0œpublic Posix.mode_t
+mtimeÃ128Õ()ŒArchive.Entry÷0œpublic time_t
+mtime_is_setÃ128Õ()ŒArchive.Entry÷0œpublic bool
+mtime_nsecÃ128Õ()ŒArchive.Entry÷0œpublic long
+next_headerÃ128Õ(out unowned Entry entry)ŒArchive.Read÷0œpublic Result
+nlinkÃ128Õ()ŒArchive.Entry÷0
+openÃ128Õ( [CCode (delegate_target_pos = 0.9)] OpenCallback ocb, [CCode (delegate_target_pos = 0.9)] ReadCallback rcb, [CCode (delegate_target_pos = 0.9)] CloseCallback ccb )ŒArchive.Read÷0œpublic Result
+openÃ128Õ( [CCode (delegate_target_pos = 0.9)] OpenCallback ocb, [CCode (delegate_target_pos = 0.9)] WriteCallback rcb, [CCode (delegate_target_pos = 0.9)] CloseCallback ccb )ŒArchive.Write÷0œpublic Result
+open2Ã128Õ( [CCode (delegate_target_pos = 0.9)] OpenCallback ocb, [CCode (delegate_target_pos = 0.9)] ReadCallback rcb, [CCode (delegate_target_pos = 0.9)] SkipCallback scb, [CCode (delegate_target_pos = 0.9)] CloseCallback ccb )ŒArchive.Read÷0œpublic Result
+open_FILEÃ128Õ(Posix.FILE file)ŒArchive.Read÷0œpublic Result
+open_FILEÃ128Õ(GLib.FileStream file)ŒArchive.Read÷0œpublic Result
+open_FILEÃ128Õ(Posix.FILE file)ŒArchive.Write÷0œpublic Result
+open_FILEÃ128Õ(GLib.FileStream file)ŒArchive.Write÷0œpublic Result
+open_fdÃ128Õ(int fd, size_t block_size)ŒArchive.Read÷0œpublic Result
+open_fdÃ128Õ(int fd)ŒArchive.Write÷0œpublic Result
+open_filenameÃ128Õ(string filename, size_t _block_size)ŒArchive.Read÷0œpublic Result
+open_filenameÃ128Õ(string filename)ŒArchive.Write÷0œpublic Result
+open_memoryÃ128Õ(void* buff, size_t size)ŒArchive.Read÷0œpublic Result
+open_memoryÃ128Õ(void* buffer, size_t buff_size, out size_t used)ŒArchive.Write÷0œpublic Result
+pathnameÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+position_compressedÃ128Õ()ŒArchive.Archive÷0œpublic int64
+position_uncompressedÃ128Õ()ŒArchive.Archive÷0œpublic int64
+rdevÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+rdevmajorÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+rdevminorÃ128Õ()ŒArchive.Entry÷0œpublic Posix.dev_t
+read_dataÃ128Õ(void* buffer, size_t size)ŒArchive.Read÷0œpublic ssize_t
+read_data_blockÃ128Õ(out void* buff, out size_t size, out Posix.off_t offset)ŒArchive.Read÷0œpublic Result
+read_data_into_bufferÃ128Õ(void* buffer, ssize_t len)ŒArchive.Read÷0œpublic Result
+read_data_into_fdÃ128Õ(int fd)ŒArchive.Read÷0œpublic Result
+read_data_skipÃ128Õ()ŒArchive.Read÷0œpublic Result
+set_atimeÃ128Õ(time_t atime, long blah)ŒArchive.Entry÷0œpublic void
+set_birthtimeÃ128Õ(time_t birthtime, long blah)ŒArchive.Entry÷0œpublic void
+set_bytes_in_last_blockÃ128Õ(int bytes_in_last_block)ŒArchive.Write÷0œpublic Result
+set_bytes_per_blockÃ128Õ(int bytes_per_block)ŒArchive.Write÷0œpublic Result
+set_compression_bzip2Ã128Õ()ŒArchive.Write÷0œpublic Result
+set_compression_compressÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_compression_gzipÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_compression_noneÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_compression_programÃ128Õ(string cmd)ŒArchive.Write÷0œpublic Result
+set_ctimeÃ128Õ(time_t atime, long blah)ŒArchive.Entry÷0œpublic void
+set_devÃ128Õ(Posix.dev_t dev)ŒArchive.Entry÷0œpublic void
+set_devmajorÃ128Õ(Posix.dev_t major)ŒArchive.Entry÷0œpublic void
+set_devminorÃ128Õ(Posix.dev_t major)ŒArchive.Entry÷0œpublic void
+set_errorÃ128Õ(int err, string fmt, ...)ŒArchive.Archive÷0œpublic void
+set_fflagsÃ128Õ(ulong set, ulong clear)ŒArchive.Entry÷0œpublic void
+set_filetypeÃ128Õ(uint filetype)ŒArchive.Entry÷0œpublic void
+set_formatÃ128Õ(Format format)ŒArchive.Write÷0œpublic Result
+set_format_ar_bsdÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_ar_svr4Ã128Õ()ŒArchive.Write÷0œpublic Result
+set_format_by_nameÃ128Õ(string name)ŒArchive.Write÷0œpublic Result
+set_format_cpioÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_cpio_newcÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_mtreeÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_paxÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_pax_restrictedÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_sharÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_shar_dumpÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_format_ustarÃ128Õ()ŒArchive.Write÷0œpublic Result
+set_gidÃ128Õ(Posix.gid_t gid)ŒArchive.Entry÷0œpublic void
+set_gnameÃ128Õ(string gname)ŒArchive.Entry÷0œpublic void
+set_group_lookupÃ128Õ( [CCode (delegate_target_pos = 0.9) ] GroupLookup lookup, [CCode (delegate_target_pos = 0.9) ] Cleanup? cleanup = null )ŒArchive.WriteDisk÷0œpublic Result
+set_hardlinkÃ128Õ(string link)ŒArchive.Entry÷0œpublic void
+set_inoÃ128Õ(ulong ino)ŒArchive.Entry÷0œpublic void
+set_linkÃ128Õ(string link)ŒArchive.Entry÷0œpublic void
+set_modeÃ128Õ(Posix.mode_t mode)ŒArchive.Entry÷0œpublic void
+set_mtimeÃ128Õ(time_t mtime, long blah)ŒArchive.Entry÷0œpublic void
+set_nlinkÃ128Õ(uint nlink)ŒArchive.Entry÷0œpublic void
+set_optionsÃ128Õ(ExtractFlags flags)ŒArchive.WriteDisk÷0œpublic Result
+set_pathnameÃ128Õ(string pathname)ŒArchive.Entry÷0œpublic void
+set_permÃ128Õ(Posix.mode_t mode)ŒArchive.Entry÷0œpublic void
+set_rdevÃ128Õ(Posix.dev_t dev)ŒArchive.Entry÷0œpublic void
+set_rdevmajorÃ128Õ(Posix.dev_t devmajor)ŒArchive.Entry÷0œpublic void
+set_rdevminorÃ128Õ(Posix.dev_t devminor)ŒArchive.Entry÷0œpublic void
+set_sizeÃ128Õ(int64 size)ŒArchive.Entry÷0œpublic void
+set_skip_fileÃ128Õ(Posix.dev_t dev, Posix.ino_t ino)ŒArchive.Write÷0œpublic Result
+set_skip_fileÃ128Õ(Posix.dev_t dev, Posix.ino_t ino)ŒArchive.WriteDisk÷0œpublic Result
+set_standard_lookupÃ128Õ()ŒArchive.WriteDisk÷0œpublic Result
+set_strategyÃ128Õ(Format format_code)ŒArchive.Entry.LinkResolver÷0œpublic void
+set_symlinkÃ128Õ(string symlink)ŒArchive.Entry÷0œpublic void
+set_uidÃ128Õ(Posix.uid_t uid)ŒArchive.Entry÷0œpublic void
+set_unameÃ128Õ(string uname)ŒArchive.Entry÷0œpublic void
+set_user_lookupÃ128Õ( [CCode (delegate_target_pos = 0.9) ] UserLookup lookup, [CCode (delegate_target_pos = 0.9) ] Cleanup? cleanup = null )ŒArchive.WriteDisk÷0œpublic Result
+sizeÃ128Õ()ŒArchive.Entry÷0œpublic int64
+size_is_setÃ128Õ()ŒArchive.Entry÷0œpublic bool
+sourcepathÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+statÃ128Õ()ŒArchive.Entry÷0œpublic unowned
+strmodeÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+support_compression_allÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_bzip2Ã128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_compressÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_gzipÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_lzmaÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_noneÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_compression_programÃ128Õ(string command)ŒArchive.Read÷0œpublic Result
+support_format_allÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_arÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_cpioÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_emptyÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_gnutarÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_iso9660Ã128Õ()ŒArchive.Read÷0œpublic Result
+support_format_mtreeÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_tarÃ128Õ()ŒArchive.Read÷0œpublic Result
+support_format_zipÃ128Õ()ŒArchive.Read÷0œpublic Result
+symlinkÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+uidÃ128Õ()ŒArchive.Entry÷0œpublic Posix.uid_t
+unameÃ128Õ()ŒArchive.Entry÷0œpublic unowned string
+unset_atimeÃ128Õ()ŒArchive.Entry÷0œpublic void
+unset_birthtimeÃ128Õ()ŒArchive.Entry÷0œpublic void
+unset_ctimeÃ128Õ()ŒArchive.Entry÷0œpublic void
+unset_mtimeÃ128Õ()ŒArchive.Entry÷0œpublic void
+unset_sizeÃ128Õ()ŒArchive.Entry÷0œpublic void
+update_gname_utf8Ã128Õ(string gname)ŒArchive.Entry÷0œpublic Result
+update_link_utf8Ã128Õ(string link)ŒArchive.Entry÷0œpublic Result
+update_pathname_utf8Ã128Õ(string pathname)ŒArchive.Entry÷0œpublic Result
+update_uname_utf8Ã128Õ(string uname)ŒArchive.Entry÷0œpublic Result
+version_numberÃ128Õ()ŒArchive÷0œpublic int
+version_stringÃ128Õ()ŒArchive÷0œpublic unowned string
+write_dataÃ128Õ(void* data, size_t size)ŒArchive.Write÷0œpublic ssize_t
+write_data_blockÃ128Õ(void* data, size_t size, Posix.off_t offset)ŒArchive.Write÷0œpublic ssize_t
+write_headerÃ128Õ(Entry entry)ŒArchive.Write÷0œpublic Result
+xattr_add_entryÃ128Õ(string name, void* value, size_t size)ŒArchive.Entry÷0œpublic void
+xattr_clearÃ128Õ()ŒArchive.Entry÷0œpublic void
+xattr_countÃ128Õ()ŒArchive.Entry÷0œpublic int
+xattr_nextÃ128Õ(out unowned string name, out void* value, out size_t size)ŒArchive.Entry÷0œpublic Result
+xattr_resetÃ128Õ()ŒArchive.Entry÷0œpublic Result

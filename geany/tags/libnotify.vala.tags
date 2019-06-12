@@ -1,0 +1,45 @@
+# format=tagmanager
+ActionCallbackÃ128Õ(Notify.Notification notification, string action)ŒNotify÷0œpublic delegate void
+CRITICALÃ4ŒNotify.Urgency÷0
+EXPIRES_DEFAULTÃ8ŒNotify÷0œint
+EXPIRES_NEVERÃ8ŒNotify÷0œint
+LOWÃ4ŒNotify.Urgency÷0
+NORMALÃ4ŒNotify.Urgency÷0
+NotificationÃ1ŒNotify÷0
+NotificationÃ128Õ(string summary, string? body, string? icon)ŒNotify.Notification÷0
+NotifyÃ256÷0
+UrgencyÃ2ŒNotify÷0
+VERSION_MAJORÃ8ŒNotify÷0œint
+VERSION_MICROÃ8ŒNotify÷0œint
+VERSION_MINORÃ8ŒNotify÷0œint
+add_actionÃ128Õ(string action, string label, owned Notify.ActionCallback callback)ŒNotify.Notification÷0œpublic void
+bodyÃ8ŒNotify.Notification÷0
+clear_actionsÃ128Õ()ŒNotify.Notification÷0œpublic void
+clear_hintsÃ128Õ()ŒNotify.Notification÷0œpublic void
+closeÃ128Õ()ŒNotify.Notification÷0œpublic bool
+closedÃ128Õ()ŒNotify.Notification÷0œpublic virtual signal void
+closed_reasonÃ8ŒNotify.Notification÷0œint
+get_app_nameÃ128Õ()ŒNotify÷0œpublic unowned string
+get_closed_reasonÃ128Õ()ŒNotify.Notification÷0œpublic int
+get_server_capsÃ128Õ()ŒNotify÷0œpublic unowned
+get_server_infoÃ128Õ(out unowned string ret_name, out unowned string ret_vendor, out unowned string ret_version, out unowned string ret_spec_version)ŒNotify÷0œpublic bool
+icon_nameÃ8ŒNotify.Notification÷0
+idÃ8ŒNotify.Notification÷0œint
+initÃ128Õ(string app_name)ŒNotify÷0œpublic bool
+is_inittedÃ128Õ()ŒNotify÷0œpublic bool
+set_categoryÃ128Õ(string category)ŒNotify.Notification÷0œpublic void
+set_hintÃ128Õ(string key, GLib.Variant value)ŒNotify.Notification÷0œpublic void
+set_hint_byteÃ128Õ(string key, uchar value)ŒNotify.Notification÷0œpublic void
+set_hint_byte_arrayÃ128Õ(string key, uchar[] value, size_t len)ŒNotify.Notification÷0œpublic void
+set_hint_doubleÃ128Õ(string key, double value)ŒNotify.Notification÷0œpublic void
+set_hint_int32Ã128Õ(string key, int value)ŒNotify.Notification÷0œpublic void
+set_hint_stringÃ128Õ(string key, string value)ŒNotify.Notification÷0œpublic void
+set_hint_uint32Ã128Õ(string key, uint value)ŒNotify.Notification÷0œpublic void
+set_icon_from_pixbufÃ128Õ(Gdk.Pixbuf icon)ŒNotify.Notification÷0œpublic void
+set_image_from_pixbufÃ128Õ(Gdk.Pixbuf image)ŒNotify.Notification÷0œpublic void
+set_timeoutÃ128Õ(int timeout)ŒNotify.Notification÷0œpublic void
+set_urgencyÃ128Õ(Notify.Urgency urgency)ŒNotify.Notification÷0œpublic void
+showÃ128Õ()ŒNotify.Notification÷0œpublic bool
+summaryÃ8ŒNotify.Notification÷0
+uninitÃ128Õ()ŒNotify÷0œpublic void
+updateÃ128Õ(string summary, string body, string icon)ŒNotify.Notification÷0œpublic bool

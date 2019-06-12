@@ -1,0 +1,89 @@
+# format=tagmanager
+@abstractÌ8ÎGLib.UnixSocketAddressÖ0Ïbool
+@getÌ128Í(out uint64 time_read = null)ÎGLib.UnixMountEntryÖ0Ïpublic GLib.List
+DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAMEÌ8ÎGLibÖ0
+DesktopAppInfoÌ1ÎGLibÖ0
+DesktopAppInfoÌ128Í(string desktop_id)ÎGLib.DesktopAppInfoÖ0
+DesktopAppInfo.from_filenameÌ128Í(string filename)ÎGLib.DesktopAppInfoÖ0
+DesktopAppInfo.from_keyfileÌ128Í(GLib.KeyFile key_file)ÎGLib.DesktopAppInfoÖ0
+DesktopAppInfoLookupÌ32ÎGLibÖ0
+DesktopAppLaunchCallbackÌ128Í(GLib.DesktopAppInfo appinfo, GLib.Pid pid)ÎGLibÖ0Ïpublic delegate void
+FileDescriptorBasedÌ32ÎGLibÖ0
+GLibÌ256Ö0
+UnixConnectionÌ1ÎGLibÖ0
+UnixConnectionÌ128Í()ÎGLib.UnixConnectionÖ0
+UnixFDMessageÌ1ÎGLibÖ0
+UnixFDMessageÌ128Í()ÎGLib.UnixFDMessageÖ0
+UnixFDMessage.with_fd_listÌ128Í(GLib.UnixFDList fd_list)ÎGLib.UnixFDMessageÖ0
+UnixInputStreamÌ1ÎGLibÖ0
+UnixInputStreamÌ128Í(int fd, bool close_fd)ÎGLib.UnixInputStreamÖ0
+UnixMountEntryÌ1ÎGLibÖ0
+UnixMountEntryÌ128Í(string mount_path, uint64 time_read)ÎGLib.UnixMountEntryÖ0
+UnixMountMonitorÌ1ÎGLibÖ0
+UnixMountMonitorÌ128Í()ÎGLib.UnixMountMonitorÖ0
+UnixMountMonitorClassÌ1ÎGLibÖ0
+UnixMountPointÌ1ÎGLibÖ0
+UnixOutputStreamÌ1ÎGLibÖ0
+UnixOutputStreamÌ128Í(int fd, bool close_fd)ÎGLib.UnixOutputStreamÖ0
+UnixSocketAddressÌ1ÎGLibÖ0
+UnixSocketAddressÌ128Í(string path)ÎGLib.UnixSocketAddressÖ0
+UnixSocketAddress.as_abstractÌ128Í(string path, int path_len)ÎGLib.UnixSocketAddressÖ0
+UnixSocketAddress.with_typeÌ128Í(string path, int path_len, GLib.UnixSocketAddressType type)ÎGLib.UnixSocketAddressÖ0
+abstract_names_supportedÌ128Í()ÎGLib.UnixSocketAddressÖ0Ïpublic bool
+address_typeÌ8ÎGLib.UnixSocketAddressÖ0ÏGLib.UnixSocketAddressType
+append_fdÌ128Í(int fd)ÎGLib.UnixFDMessageÖ0Ïpublic bool
+close_fdÌ8ÎGLib.UnixInputStreamÖ0Ïbool
+close_fdÌ8ÎGLib.UnixOutputStreamÖ0Ïbool
+compareÌ128Í(GLib.UnixMountEntry mount)ÎGLib.UnixMountEntryÖ0Ïpublic int
+compareÌ128Í(GLib.UnixMountPoint mount2)ÎGLib.UnixMountPointÖ0Ïpublic int
+fdÌ8ÎGLib.UnixInputStreamÖ0Ïint
+fdÌ8ÎGLib.UnixOutputStreamÖ0Ïint
+fd_listÌ8ÎGLib.UnixFDMessageÖ0ÏGLib.UnixFDList
+get_address_typeÌ128Í()ÎGLib.UnixSocketAddressÖ0Ïpublic GLib.UnixSocketAddressType
+get_close_fdÌ128Í()ÎGLib.UnixInputStreamÖ0Ïpublic bool
+get_close_fdÌ128Í()ÎGLib.UnixOutputStreamÖ0Ïpublic bool
+get_default_for_uri_schemeÌ128Í(string uri_scheme)ÎGLib.DesktopAppInfoLookupÖ0Ïpublic abstract unowned
+get_device_pathÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic unowned string
+get_device_pathÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic unowned string
+get_fdÌ128Í()ÎGLib.FileDescriptorBasedÖ0Ïpublic abstract int
+get_fdÌ128Í()ÎGLib.UnixInputStreamÖ0Ïpublic int
+get_fdÌ128Í()ÎGLib.UnixOutputStreamÖ0Ïpublic int
+get_fd_listÌ128Í()ÎGLib.UnixFDMessageÖ0Ïpublic unowned
+get_filenameÌ128Í()ÎGLib.DesktopAppInfoÖ0Ïpublic unowned string
+get_fs_typeÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic unowned string
+get_fs_typeÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic unowned string
+get_is_abstractÌ128Í()ÎGLib.UnixSocketAddressÖ0Ïpublic bool
+get_is_hiddenÌ128Í()ÎGLib.DesktopAppInfoÖ0Ïpublic bool
+get_mount_pathÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic unowned string
+get_mount_pathÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic unowned string
+get_pathÌ128Í()ÎGLib.UnixSocketAddressÖ0Ïpublic unowned string
+get_path_lenÌ128Í()ÎGLib.UnixSocketAddressÖ0Ïpublic size_t
+guess_can_ejectÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic bool
+guess_can_ejectÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic bool
+guess_iconÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic unowned
+guess_iconÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic unowned
+guess_nameÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic unowned string
+guess_nameÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic unowned string
+guess_should_displayÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic bool
+is_loopbackÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic bool
+is_mount_path_system_internalÌ128Í(string mount_path)ÎGLibÖ0Ïpublic bool
+is_readonlyÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic bool
+is_readonlyÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic bool
+is_system_internalÌ128Í()ÎGLib.UnixMountEntryÖ0Ïpublic bool
+is_user_mountableÌ128Í()ÎGLib.UnixMountPointÖ0Ïpublic bool
+launch_uris_as_managerÌ128Í(GLib.List uris, GLib.AppLaunchContext launch_context, GLib.SpawnFlags spawn_flags, GLib.SpawnChildSetupFunc user_setup, void* user_setup_data, GLib.DesktopAppLaunchCallback pid_callback, void* pid_callback_data)ÎGLib.DesktopAppInfoÖ0Ïpublic bool
+mount_points_changed_sinceÌ128Í(uint64 time)ÎGLibÖ0Ïpublic bool
+mountpoints_changedÌ128Í()ÎGLib.UnixMountMonitorÖ0Ïpublic virtual signal void
+mounts_changedÌ128Í()ÎGLib.UnixMountMonitorÖ0Ïpublic virtual signal void
+mounts_changed_sinceÌ128Í(uint64 time)ÎGLibÖ0Ïpublic bool
+pathÌ8ÎGLib.UnixSocketAddressÖ0
+path_as_arrayÌ8ÎGLib.UnixSocketAddressÖ0ÏGLib.ByteArray
+receive_credentialsÌ128Í(GLib.Cancellable cancellable)ÎGLib.UnixConnectionÖ0Ïpublic unowned
+receive_fdÌ128Í(GLib.Cancellable cancellable)ÎGLib.UnixConnectionÖ0Ïpublic int
+send_credentialsÌ128Í(GLib.Cancellable cancellable)ÎGLib.UnixConnectionÖ0Ïpublic bool
+send_fdÌ128Í(int fd, GLib.Cancellable cancellable)ÎGLib.UnixConnectionÖ0Ïpublic bool
+set_close_fdÌ128Í(bool close_fd)ÎGLib.UnixInputStreamÖ0Ïpublic void
+set_close_fdÌ128Í(bool close_fd)ÎGLib.UnixOutputStreamÖ0Ïpublic void
+set_desktop_envÌ128Í(string desktop_env)ÎGLib.DesktopAppInfoÖ0Ïpublic void
+set_rate_limitÌ128Í(int limit_msec)ÎGLib.UnixMountMonitorÖ0Ïpublic void
+steal_fdsÌ128Í(int length)ÎGLib.UnixFDMessageÖ0Ïpublic int

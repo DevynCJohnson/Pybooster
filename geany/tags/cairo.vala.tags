@@ -1,0 +1,403 @@
+# format=tagmanager
+A1Ì4ÎCairo.FormatÖ0
+A8Ì4ÎCairo.FormatÖ0
+ADDÌ4ÎCairo.OperatorÖ0
+ALPHAÌ4ÎCairo.ContentÖ0
+ARGB32Ì4ÎCairo.FormatÖ0
+ATOPÌ4ÎCairo.OperatorÖ0
+ATSUIÌ4ÎCairo.FontTypeÖ0
+AntialiasÌ2ÎCairoÖ0
+BEOSÌ4ÎCairo.SurfaceTypeÖ0
+BESTÌ4ÎCairo.FilterÖ0
+BEVELÌ4ÎCairo.LineJoinÖ0
+BGRÌ4ÎCairo.SubpixelOrderÖ0
+BILINEARÌ4ÎCairo.FilterÖ0
+BOLDÌ4ÎCairo.FontWeightÖ0
+BUTTÌ4ÎCairo.LineCapÖ0
+CLEARÌ4ÎCairo.OperatorÖ0
+CLOSE_PATHÌ4ÎCairo.PathDataTypeÖ0
+COLORÌ4ÎCairo.ContentÖ0
+COLOR_ALPHAÌ4ÎCairo.ContentÖ0
+CURVE_TOÌ4ÎCairo.PathDataTypeÖ0
+CairoÌ256Ö0
+ContentÌ2ÎCairoÖ0
+ContextÌ1ÎCairoÖ0
+ContextÌ128Í(Surface target)ÎCairo.ContextÖ0
+DEFAULTÌ4ÎCairo.AntialiasÖ0
+DEFAULTÌ4ÎCairo.HintMetricsÖ0
+DEFAULTÌ4ÎCairo.HintStyleÖ0
+DEFAULTÌ4ÎCairo.SubpixelOrderÖ0
+DESTÌ4ÎCairo.OperatorÖ0
+DEST_ATOPÌ4ÎCairo.OperatorÖ0
+DEST_INÌ4ÎCairo.OperatorÖ0
+DEST_OUTÌ4ÎCairo.OperatorÖ0
+DEST_OVERÌ4ÎCairo.OperatorÖ0
+DIRECTFBÌ4ÎCairo.SurfaceTypeÖ0
+EVEN_ODDÌ4ÎCairo.FillRuleÖ0
+ExtendÌ2ÎCairoÖ0
+FASTÌ4ÎCairo.FilterÖ0
+FILE_NOT_FOUNDÌ4ÎCairo.StatusÖ0
+FTÌ4ÎCairo.FontTypeÖ0
+FULLÌ4ÎCairo.HintStyleÖ0
+FillRuleÌ2ÎCairoÖ0
+FilterÌ2ÎCairoÖ0
+FontExtentsÌ2048ÎCairoÖ0
+FontFaceÌ1ÎCairoÖ0
+FontOptionsÌ1ÎCairoÖ0
+FontOptionsÌ128Í()ÎCairo.FontOptionsÖ0
+FontSlantÌ2ÎCairoÖ0
+FontTypeÌ2ÎCairoÖ0
+FontWeightÌ2ÎCairoÖ0
+FormatÌ2ÎCairoÖ0
+GAUSSIANÌ4ÎCairo.FilterÖ0
+GLITZÌ4ÎCairo.SurfaceTypeÖ0
+GOODÌ4ÎCairo.FilterÖ0
+GRAYÌ4ÎCairo.AntialiasÖ0
+GlyphÌ1ÎCairoÖ0
+HintMetricsÌ2ÎCairoÖ0
+HintStyleÌ2ÎCairoÖ0
+IMAGEÌ4ÎCairo.SurfaceTypeÖ0
+INÌ4ÎCairo.OperatorÖ0
+INÌ4ÎCairo.RegionOverlapÖ0
+INVALID_CONTENTÌ4ÎCairo.StatusÖ0
+INVALID_DASHÌ4ÎCairo.StatusÖ0
+INVALID_DSC_COMMENTÌ4ÎCairo.StatusÖ0
+INVALID_FORMATÌ4ÎCairo.StatusÖ0
+INVALID_MATRIXÌ4ÎCairo.StatusÖ0
+INVALID_PATH_DATAÌ4ÎCairo.StatusÖ0
+INVALID_POP_GROUPÌ4ÎCairo.StatusÖ0
+INVALID_RESTOREÌ4ÎCairo.StatusÖ0
+INVALID_STATUSÌ4ÎCairo.StatusÖ0
+INVALID_STRINGÌ4ÎCairo.StatusÖ0
+INVALID_VISUALÌ4ÎCairo.StatusÖ0
+ITALICÌ4ÎCairo.FontSlantÖ0
+ImageSurfaceÌ1ÎCairoÖ0
+ImageSurfaceÌ128Í(Format format, int width, int height)ÎCairo.ImageSurfaceÖ0
+ImageSurface.for_dataÌ128Í([CCode (array_length = false)] uchar[] data, Format format, int width, int height, int stride)ÎCairo.ImageSurfaceÖ0
+ImageSurface.from_pngÌ128Í(string filename)ÎCairo.ImageSurfaceÖ0
+ImageSurface.from_png_streamÌ128Í(ReadFunc read_func)ÎCairo.ImageSurfaceÖ0
+LINEARÌ4ÎCairo.PatternTypeÖ0
+LINE_TOÌ4ÎCairo.PathDataTypeÖ0
+LineCapÌ2ÎCairoÖ0
+LineJoinÌ2ÎCairoÖ0
+MEDIUMÌ4ÎCairo.HintStyleÖ0
+MITERÌ4ÎCairo.LineJoinÖ0
+MOVE_TOÌ4ÎCairo.PathDataTypeÖ0
+MatrixÌ2048ÎCairoÖ0
+MatrixÌ128Í(double xx, double yx, double xy, double yy, double x0, double y0)ÎCairo.MatrixÖ0
+Matrix.identityÌ128Í()ÎCairo.MatrixÖ0
+NEARESTÌ4ÎCairo.FilterÖ0
+NONEÌ4ÎCairo.AntialiasÖ0
+NONEÌ4ÎCairo.ExtendÖ0
+NONEÌ4ÎCairo.HintStyleÖ0
+NORMALÌ4ÎCairo.FontSlantÖ0
+NORMALÌ4ÎCairo.FontWeightÖ0
+NO_CURRENT_POINTÌ4ÎCairo.StatusÖ0
+NO_MEMORYÌ4ÎCairo.StatusÖ0
+NULL_POINTERÌ4ÎCairo.StatusÖ0
+OBLIQUEÌ4ÎCairo.FontSlantÖ0
+OFFÌ4ÎCairo.HintMetricsÖ0
+ONÌ4ÎCairo.HintMetricsÖ0
+OUTÌ4ÎCairo.OperatorÖ0
+OUTÌ4ÎCairo.RegionOverlapÖ0
+OVERÌ4ÎCairo.OperatorÖ0
+OperatorÌ2ÎCairoÖ0
+PADÌ4ÎCairo.ExtendÖ0
+PARTÌ4ÎCairo.RegionOverlapÖ0
+PATTERN_TYPE_MISMATCHÌ4ÎCairo.StatusÖ0
+PDFÌ4ÎCairo.SurfaceTypeÖ0
+PSÌ4ÎCairo.SurfaceTypeÖ0
+PathÌ1ÎCairoÖ0
+PathDataÌ2048ÎCairoÖ0
+PathDataHeaderÌ2048ÎCairoÖ0
+PathDataPointÌ2048ÎCairoÖ0
+PathDataTypeÌ2ÎCairoÖ0
+PatternÌ1ÎCairoÖ0
+Pattern.for_surfaceÌ128Í(Surface surface)ÎCairo.PatternÖ0
+Pattern.linearÌ128Í(double x0, double y0, double x1, double y1)ÎCairo.PatternÖ0
+Pattern.radialÌ128Í(double cx0, double cy0, double radius0, double cx1, double cy1, double radius1)ÎCairo.PatternÖ0
+Pattern.rgbÌ128Í(double red, double green, double blue)ÎCairo.PatternÖ0
+Pattern.rgbaÌ128Í(double red, double green, double blue, double alpha)ÎCairo.PatternÖ0
+PatternTypeÌ2ÎCairoÖ0
+PdfSurfaceÌ1ÎCairoÖ0
+PdfSurfaceÌ128Í(string filename, double width_in_points, double height_in_points)ÎCairo.PdfSurfaceÖ0
+PdfSurface.for_streamÌ128Í(WriteFunc write_func, double width_in_points, double height_in_points)ÎCairo.PdfSurfaceÖ0
+PsSurfaceÌ1ÎCairoÖ0
+PsSurfaceÌ128Í(string filename, double width_in_points, double height_in_points)ÎCairo.PsSurfaceÖ0
+PsSurface.for_streamÌ128Í(WriteFunc write_func, double width_in_points, double height_in_points)ÎCairo.PsSurfaceÖ0
+QUARTZÌ4ÎCairo.SurfaceTypeÖ0
+RADIALÌ4ÎCairo.PatternTypeÖ0
+READ_ERRORÌ4ÎCairo.StatusÖ0
+REFLECTÌ4ÎCairo.ExtendÖ0
+REPEATÌ4ÎCairo.ExtendÖ0
+RGBÌ4ÎCairo.SubpixelOrderÖ0
+RGB16_565Ì4ÎCairo.FormatÖ0
+RGB24Ì4ÎCairo.FormatÖ0
+ROUNDÌ4ÎCairo.LineCapÖ0
+ROUNDÌ4ÎCairo.LineJoinÖ0
+ReadFuncÌ128Í(uchar[] data)ÎCairoÖ0Ïpublic delegate Status
+RectangleÌ2048ÎCairoÖ0
+RectangleIntÌ2048ÎCairoÖ0
+RegionÌ1ÎCairoÖ0
+RegionÌ128Í()ÎCairo.RegionÖ0
+Region.rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0
+Region.rectanglesÌ128Í(RectangleInt[] rects)ÎCairo.RegionÖ0
+RegionOverlapÌ2ÎCairoÖ0
+SATURATEÌ4ÎCairo.OperatorÖ0
+SLIGHTÌ4ÎCairo.HintStyleÖ0
+SOLIDÌ4ÎCairo.PatternTypeÖ0
+SOURCEÌ4ÎCairo.OperatorÖ0
+SQUAREÌ4ÎCairo.LineCapÖ0
+SUBPIXELÌ4ÎCairo.AntialiasÖ0
+SUCCESSÌ4ÎCairo.StatusÖ0
+SURFACEÌ4ÎCairo.PatternTypeÖ0
+SURFACE_FINISHEDÌ4ÎCairo.StatusÖ0
+SURFACE_TYPE_MISMATCHÌ4ÎCairo.StatusÖ0
+SVGÌ4ÎCairo.SurfaceTypeÖ0
+ScaledFontÌ1ÎCairoÖ0
+ScaledFontÌ128Í(FontFace font_face, Matrix font_matrix, Matrix ctm, FontOptions options)ÎCairo.ScaledFontÖ0
+StatusÌ2ÎCairoÖ0
+SubpixelOrderÌ2ÎCairoÖ0
+SurfaceÌ1ÎCairoÖ0
+Surface.similarÌ128Í(Surface other, Content content, int width, int height)ÎCairo.SurfaceÖ0
+SurfaceTypeÌ2ÎCairoÖ0
+SvgSurfaceÌ1ÎCairoÖ0
+SvgSurfaceÌ128Í(string filename, double width_in_points, double height_in_points)ÎCairo.SvgSurfaceÖ0
+SvgSurface.for_streamÌ128Í(WriteFunc write_func, double width_in_points, double height_in_points)ÎCairo.SvgSurfaceÖ0
+SvgVersionÌ2ÎCairoÖ0
+TOYÌ4ÎCairo.FontTypeÖ0
+TextExtentsÌ2048ÎCairoÖ0
+VBGRÌ4ÎCairo.SubpixelOrderÖ0
+VERSION_1_1Ì4ÎCairo.SvgVersionÖ0
+VERSION_1_2Ì4ÎCairo.SvgVersionÖ0
+VRGBÌ4ÎCairo.SubpixelOrderÖ0
+WIN32Ì4ÎCairo.FontTypeÖ0
+WIN32Ì4ÎCairo.SurfaceTypeÖ0
+WINDINGÌ4ÎCairo.FillRuleÖ0
+WRITE_ERRORÌ4ÎCairo.StatusÖ0
+WriteFuncÌ128Í(uchar[] data)ÎCairoÖ0Ïpublic delegate Status
+XCBÌ4ÎCairo.SurfaceTypeÖ0
+XLIBÌ4ÎCairo.SurfaceTypeÖ0
+XORÌ4ÎCairo.OperatorÖ0
+XlibSurfaceÌ1ÎCairoÖ0
+XlibSurfaceÌ128Í(void* dpy, int drawable, void* visual, int width, int height)ÎCairo.XlibSurfaceÖ0
+XlibSurface.for_bitmapÌ128Í(void* dpy, int bitmap, void* screen, int width, int height)ÎCairo.XlibSurfaceÖ0
+add_color_stop_rgbÌ128Í(double offset, double red, double green, double blue)ÎCairo.PatternÖ0Ïpublic void
+add_color_stop_rgbaÌ128Í(double offset, double red, double green, double blue, double alpha)ÎCairo.PatternÖ0Ïpublic void
+append_pathÌ128Í(Path path)ÎCairo.ContextÖ0Ïpublic void
+arcÌ128Í(double xc, double yc, double radius, double angle1, double angle2)ÎCairo.ContextÖ0Ïpublic void
+arc_negativeÌ128Í(double xc, double yc, double radius, double angle1, double angle2)ÎCairo.ContextÖ0Ïpublic void
+ascentÌ8ÎCairo.FontExtentsÖ0Ïdouble
+clipÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+clip_extentsÌ128Í(out double x1, out double y1, out double x2, out double y2)ÎCairo.ContextÖ0Ïpublic void
+clip_preserveÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+close_pathÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+contains_pointÌ128Í(int x, int y)ÎCairo.RegionÖ0Ïpublic bool
+contains_rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0Ïpublic RegionOverlap
+copy_pageÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+copy_pathÌ128Í()ÎCairo.ContextÖ0Ïpublic Path
+copy_path_flatÌ128Í()ÎCairo.ContextÖ0Ïpublic Path
+curve_toÌ128Í(double x1, double y1, double x2, double y2, double x3, double y3)ÎCairo.ContextÖ0Ïpublic void
+dataÌ8ÎCairo.PathÖ0ÏPathData
+descentÌ8ÎCairo.FontExtentsÖ0Ïdouble
+device_to_userÌ128Í(ref double x, ref double y)ÎCairo.ContextÖ0Ïpublic void
+device_to_user_distanceÌ128Í(ref double dx, ref double dy)ÎCairo.ContextÖ0Ïpublic void
+dsc_begin_page_setupÌ128Í()ÎCairo.PsSurfaceÖ0Ïpublic void
+dsc_begin_setupÌ128Í()ÎCairo.PsSurfaceÖ0Ïpublic void
+dsc_commentÌ128Í(string comment)ÎCairo.PsSurfaceÖ0Ïpublic void
+equalÌ128Í(FontOptions other)ÎCairo.FontOptionsÖ0Ïpublic bool
+equalÌ128Í(Region other)ÎCairo.RegionÖ0Ïpublic bool
+extentsÌ128Í(out FontExtents extents)ÎCairo.ScaledFontÖ0Ïpublic void
+fillÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+fill_extentsÌ128Í(out double x1, out double y1, out double x2, out double y2)ÎCairo.ContextÖ0Ïpublic void
+fill_preserveÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+finishÌ128Í()ÎCairo.SurfaceÖ0Ïpublic void
+flushÌ128Í()ÎCairo.SurfaceÖ0Ïpublic void
+font_extentsÌ128Í(out FontExtents extents)ÎCairo.ContextÖ0Ïpublic void
+get_antialiasÌ128Í()ÎCairo.ContextÖ0Ïpublic Antialias
+get_antialiasÌ128Í()ÎCairo.FontOptionsÖ0Ïpublic Antialias
+get_contentÌ128Í()ÎCairo.SurfaceÖ0Ïpublic Content
+get_ctmÌ128Í(out Matrix ctm)ÎCairo.ScaledFontÖ0Ïpublic void
+get_current_pointÌ128Í(out double x, out double y)ÎCairo.ContextÖ0Ïpublic void
+get_dataÌ128Í()ÎCairo.ImageSurfaceÖ0Ïpublic unowned
+get_depthÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic int
+get_device_offsetÌ128Í(out double x_offset, out double y_offset)ÎCairo.SurfaceÖ0Ïpublic void
+get_displayÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic void *
+get_drawableÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic int
+get_extendÌ128Í()ÎCairo.PatternÖ0Ïpublic Extend
+get_extentsÌ128Í()ÎCairo.RegionÖ0Ïpublic RectangleInt
+get_fill_ruleÌ128Í()ÎCairo.ContextÖ0Ïpublic FillRule
+get_filterÌ128Í()ÎCairo.PatternÖ0Ïpublic Filter
+get_font_faceÌ128Í()ÎCairo.ContextÖ0Ïpublic unowned
+get_font_faceÌ128Í()ÎCairo.ScaledFontÖ0Ïpublic unowned
+get_font_matrixÌ128Í(out Matrix matrix)ÎCairo.ContextÖ0Ïpublic void
+get_font_matrixÌ128Í(out Matrix font_matrix)ÎCairo.ScaledFontÖ0Ïpublic void
+get_font_optionsÌ128Í(out FontOptions options)ÎCairo.ContextÖ0Ïpublic void
+get_font_optionsÌ128Í(out FontOptions options)ÎCairo.ScaledFontÖ0Ïpublic void
+get_font_optionsÌ128Í(out FontOptions options)ÎCairo.SurfaceÖ0Ïpublic void
+get_formatÌ128Í()ÎCairo.ImageSurfaceÖ0Ïpublic Format
+get_group_targetÌ128Í()ÎCairo.ContextÖ0Ïpublic unowned
+get_heightÌ128Í()ÎCairo.ImageSurfaceÖ0Ïpublic int
+get_heightÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic int
+get_hint_metricsÌ128Í()ÎCairo.FontOptionsÖ0Ïpublic HintMetrics
+get_hint_styleÌ128Í()ÎCairo.FontOptionsÖ0Ïpublic HintStyle
+get_line_capÌ128Í()ÎCairo.ContextÖ0Ïpublic LineCap
+get_line_joinÌ128Í()ÎCairo.ContextÖ0Ïpublic LineJoin
+get_line_widthÌ128Í()ÎCairo.ContextÖ0Ïpublic double
+get_matrixÌ128Í(out Matrix matrix)ÎCairo.ContextÖ0Ïpublic void
+get_matrixÌ128Í(out Matrix matrix)ÎCairo.PatternÖ0Ïpublic void
+get_miter_limitÌ128Í()ÎCairo.ContextÖ0Ïpublic double
+get_operatorÌ128Í()ÎCairo.ContextÖ0Ïpublic Operator
+get_rectangleÌ128Í(int nth)ÎCairo.RegionÖ0Ïpublic RectangleInt
+get_screenÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic void *
+get_sourceÌ128Í()ÎCairo.ContextÖ0Ïpublic unowned
+get_strideÌ128Í()ÎCairo.ImageSurfaceÖ0Ïpublic int
+get_subpixel_orderÌ128Í()ÎCairo.FontOptionsÖ0Ïpublic SubpixelOrder
+get_targetÌ128Í()ÎCairo.ContextÖ0Ïpublic unowned
+get_toleranceÌ128Í()ÎCairo.ContextÖ0Ïpublic double
+get_typeÌ128Í()ÎCairo.FontFaceÖ0Ïpublic FontType
+get_typeÌ128Í()ÎCairo.PatternÖ0Ïpublic PatternType
+get_typeÌ128Í()ÎCairo.ScaledFontÖ0Ïpublic FontType
+get_typeÌ128Í()ÎCairo.SurfaceÖ0Ïpublic SurfaceType
+get_versionsÌ128Í(out SvgVersion[] versions)ÎCairo.SvgSurfaceÖ0Ïpublic void
+get_visualÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic void *
+get_widthÌ128Í()ÎCairo.ImageSurfaceÖ0Ïpublic int
+get_widthÌ128Í()ÎCairo.XlibSurfaceÖ0Ïpublic int
+glyph_extentsÌ128Í(Glyph[] glyphs, out TextExtents extents)ÎCairo.ContextÖ0Ïpublic void
+glyph_extentsÌ128Í(Glyph[] glyphs, out TextExtents extents)ÎCairo.ScaledFontÖ0Ïpublic void
+glyph_pathÌ128Í(Glyph[] glyphs)ÎCairo.ContextÖ0Ïpublic void
+hashÌ128Í()ÎCairo.FontOptionsÖ0
+headerÌ8ÎCairo.PathDataÖ0ÏPathDataHeader
+heightÌ8ÎCairo.FontExtentsÖ0Ïdouble
+heightÌ8ÎCairo.RectangleÖ0Ïdouble
+heightÌ8ÎCairo.RectangleIntÖ0Ïint
+heightÌ8ÎCairo.TextExtentsÖ0Ïdouble
+identity_matrixÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+in_fillÌ128Í(double x, double y)ÎCairo.ContextÖ0Ïpublic bool
+in_strokeÌ128Í(double x, double y)ÎCairo.ContextÖ0Ïpublic bool
+intersectÌ128Í(Region other)ÎCairo.RegionÖ0Ïpublic Status
+intersect_rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0Ïpublic Status
+invertÌ128Í()ÎCairo.MatrixÖ0Ïpublic Status
+is_emptyÌ128Í()ÎCairo.RegionÖ0Ïpublic bool
+lengthÌ8ÎCairo.PathDataHeaderÖ0Ïint
+line_toÌ128Í(double x, double y)ÎCairo.ContextÖ0Ïpublic void
+mark_dirtyÌ128Í()ÎCairo.SurfaceÖ0Ïpublic void
+mark_dirty_rectangleÌ128Í(int x, int y, int width, int height)ÎCairo.SurfaceÖ0Ïpublic void
+maskÌ128Í(Pattern pattern)ÎCairo.ContextÖ0Ïpublic void
+mask_surfaceÌ128Í(Surface surface, double surface_x, double surface_y)ÎCairo.ContextÖ0Ïpublic void
+max_x_advanceÌ8ÎCairo.FontExtentsÖ0Ïdouble
+max_y_advanceÌ8ÎCairo.FontExtentsÖ0Ïdouble
+mergeÌ128Í(FontOptions other)ÎCairo.FontOptionsÖ0Ïpublic void
+move_toÌ128Í(double x, double y)ÎCairo.ContextÖ0Ïpublic void
+multiplyÌ128Í(Matrix a, Matrix b)ÎCairo.MatrixÖ0Ïpublic void
+new_pathÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+new_sub_pathÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+num_dataÌ8ÎCairo.PathÖ0Ïint
+num_rectanglesÌ128Í()ÎCairo.RegionÖ0Ïpublic int
+paintÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+paint_with_alphaÌ128Í(double alpha)ÎCairo.ContextÖ0Ïpublic void
+pointÌ8ÎCairo.PathDataÖ0ÏPathDataPoint
+pop_groupÌ128Í()ÎCairo.ContextÖ0Ïpublic Pattern
+pop_group_to_sourceÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+push_groupÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+push_group_with_contentÌ128Í(Content content)ÎCairo.ContextÖ0Ïpublic void
+rectangleÌ128Í(double x, double y, double width, double height)ÎCairo.ContextÖ0Ïpublic void
+rel_curve_toÌ128Í(double dx1, double dy1, double dx2, double dy2, double dx3, double dy3)ÎCairo.ContextÖ0Ïpublic void
+rel_line_toÌ128Í(double dx, double dy)ÎCairo.ContextÖ0Ïpublic void
+rel_move_toÌ128Í(double dx, double dy)ÎCairo.ContextÖ0Ïpublic void
+reset_clipÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+restoreÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+restrict_to_versionÌ128Í(SvgVersion version)ÎCairo.SvgSurfaceÖ0Ïpublic void
+rotateÌ128Í(double angle)ÎCairo.ContextÖ0Ïpublic void
+rotateÌ128Í(double radians)ÎCairo.MatrixÖ0Ïpublic void
+saveÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+scaleÌ128Í(double sx, double sy)ÎCairo.ContextÖ0Ïpublic void
+scaleÌ128Í(double sx, double sy)ÎCairo.MatrixÖ0Ïpublic void
+select_font_faceÌ128Í(string family, FontSlant slant, FontWeight weight)ÎCairo.ContextÖ0Ïpublic void
+set_antialiasÌ128Í(Antialias antialias)ÎCairo.ContextÖ0Ïpublic void
+set_antialiasÌ128Í(Antialias antialias)ÎCairo.FontOptionsÖ0Ïpublic void
+set_dashÌ128Í(double[]? dashes, double offset)ÎCairo.ContextÖ0Ïpublic void
+set_device_offsetÌ128Í(double x_offset, double y_offset)ÎCairo.SurfaceÖ0Ïpublic void
+set_drawableÌ128Í(int drawable, int width, int height)ÎCairo.XlibSurfaceÖ0Ïpublic void
+set_extendÌ128Í(Extend extend)ÎCairo.PatternÖ0Ïpublic void
+set_fallback_resolutionÌ128Í(double x_pixels_per_inch, double y_pixels_per_inch)ÎCairo.SurfaceÖ0Ïpublic void
+set_fill_ruleÌ128Í(FillRule fill_rule)ÎCairo.ContextÖ0Ïpublic void
+set_filterÌ128Í(Filter filter)ÎCairo.PatternÖ0Ïpublic void
+set_font_faceÌ128Í(FontFace font_face)ÎCairo.ContextÖ0Ïpublic void
+set_font_matrixÌ128Í(Matrix matrix)ÎCairo.ContextÖ0Ïpublic void
+set_font_optionsÌ128Í(FontOptions options)ÎCairo.ContextÖ0Ïpublic void
+set_font_sizeÌ128Í(double size)ÎCairo.ContextÖ0Ïpublic void
+set_hint_metricsÌ128Í(HintMetrics hint_metrics)ÎCairo.FontOptionsÖ0Ïpublic void
+set_hint_styleÌ128Í(HintStyle hint_style)ÎCairo.FontOptionsÖ0Ïpublic void
+set_line_capÌ128Í(LineCap line_cap)ÎCairo.ContextÖ0Ïpublic void
+set_line_joinÌ128Í(LineJoin line_join)ÎCairo.ContextÖ0Ïpublic void
+set_line_widthÌ128Í(double width)ÎCairo.ContextÖ0Ïpublic void
+set_matrixÌ128Í(Matrix matrix)ÎCairo.ContextÖ0Ïpublic void
+set_matrixÌ128Í(Matrix matrix)ÎCairo.PatternÖ0Ïpublic void
+set_miter_limitÌ128Í(double limit)ÎCairo.ContextÖ0Ïpublic void
+set_operatorÌ128Í(Operator op)ÎCairo.ContextÖ0Ïpublic void
+set_scaled_fontÌ128Í(ScaledFont font)ÎCairo.ContextÖ0Ïpublic void
+set_sizeÌ128Í(double width_in_points, double height_in_points)ÎCairo.PdfSurfaceÖ0Ïpublic void
+set_sizeÌ128Í(double width_in_points, double height_in_points)ÎCairo.PsSurfaceÖ0Ïpublic void
+set_sizeÌ128Í(int width, int height)ÎCairo.XlibSurfaceÖ0Ïpublic void
+set_sourceÌ128Í(Pattern source)ÎCairo.ContextÖ0Ïpublic void
+set_source_rgbÌ128Í(double red, double green, double blue)ÎCairo.ContextÖ0Ïpublic void
+set_source_rgbaÌ128Í(double red, double green, double blue, double alpha)ÎCairo.ContextÖ0Ïpublic void
+set_source_surfaceÌ128Í(Surface surface, double x, double y)ÎCairo.ContextÖ0Ïpublic void
+set_subpixel_orderÌ128Í(SubpixelOrder subpixel_order)ÎCairo.FontOptionsÖ0Ïpublic void
+set_toleranceÌ128Í(double tolerance)ÎCairo.ContextÖ0Ïpublic void
+show_glyphsÌ128Í(Glyph[] glyphs)ÎCairo.ContextÖ0Ïpublic void
+show_pageÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+show_textÌ128Í(string utf8)ÎCairo.ContextÖ0Ïpublic void
+statusÌ128Í()ÎCairo.ContextÖ0Ïpublic Status
+statusÌ128Í()ÎCairo.FontFaceÖ0Ïpublic Status
+statusÌ128Í()ÎCairo.FontOptionsÖ0Ïpublic Status
+statusÌ8ÎCairo.PathÖ0ÏStatus
+statusÌ128Í()ÎCairo.PatternÖ0Ïpublic Status
+statusÌ128Í()ÎCairo.RegionÖ0Ïpublic Status
+statusÌ128Í()ÎCairo.ScaledFontÖ0Ïpublic Status
+statusÌ128Í()ÎCairo.SurfaceÖ0Ïpublic Status
+strokeÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+stroke_extentsÌ128Í(out double x1, out double y1, out double x2, out double y2)ÎCairo.ContextÖ0Ïpublic void
+stroke_preserveÌ128Í()ÎCairo.ContextÖ0Ïpublic void
+subtractÌ128Í(Region other)ÎCairo.RegionÖ0Ïpublic Status
+subtract_rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0Ïpublic Status
+text_extentsÌ128Í(string utf8, out TextExtents extents)ÎCairo.ContextÖ0Ïpublic void
+text_extentsÌ128Í(string utf8, out TextExtents extents)ÎCairo.ScaledFontÖ0Ïpublic void
+text_pathÌ128Í(string utf8)ÎCairo.ContextÖ0Ïpublic void
+transformÌ128Í(Matrix matrix)ÎCairo.ContextÖ0Ïpublic void
+transform_distanceÌ128Í(ref double dx, ref double dy)ÎCairo.MatrixÖ0Ïpublic void
+transform_pointÌ128Í(ref double x, ref double y)ÎCairo.MatrixÖ0Ïpublic void
+translateÌ128Í(double tx, double ty)ÎCairo.ContextÖ0Ïpublic void
+translateÌ128Í(double tx, double ty)ÎCairo.MatrixÖ0Ïpublic void
+translateÌ128Í(int dx, int dy)ÎCairo.RegionÖ0Ïpublic void
+typeÌ8ÎCairo.PathDataHeaderÖ0ÏPathDataType
+unionÌ128Í(Region other)ÎCairo.RegionÖ0Ïpublic Status
+union_rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0Ïpublic Status
+user_to_deviceÌ128Í(ref double x, ref double y)ÎCairo.ContextÖ0Ïpublic void
+user_to_device_distanceÌ128Í(ref double dx, ref double dy)ÎCairo.ContextÖ0Ïpublic void
+versionÌ128Í()ÎCairoÖ0Ïpublic int
+version_stringÌ128Í()ÎCairoÖ0Ïpublic unowned string
+widthÌ8ÎCairo.RectangleÖ0Ïdouble
+widthÌ8ÎCairo.RectangleIntÖ0Ïint
+widthÌ8ÎCairo.TextExtentsÖ0Ïdouble
+write_to_pngÌ128Í(string filename)ÎCairo.SurfaceÖ0Ïpublic Status
+write_to_png_streamÌ128Í(WriteFunc write_func)ÎCairo.SurfaceÖ0Ïpublic Status
+xÌ8ÎCairo.PathDataPointÖ0Ïdouble
+xÌ8ÎCairo.RectangleÖ0Ïdouble
+xÌ8ÎCairo.RectangleIntÖ0Ïint
+x0Ì8ÎCairo.MatrixÖ0Ïdouble
+x_advanceÌ8ÎCairo.TextExtentsÖ0Ïdouble
+x_bearingÌ8ÎCairo.TextExtentsÖ0Ïdouble
+xorÌ128Í(Region other)ÎCairo.RegionÖ0Ïpublic Status
+xor_rectangleÌ128Í(RectangleInt rectangle)ÎCairo.RegionÖ0Ïpublic Status
+xxÌ8ÎCairo.MatrixÖ0Ïdouble
+xyÌ8ÎCairo.MatrixÖ0Ïdouble
+yÌ8ÎCairo.PathDataPointÖ0Ïdouble
+yÌ8ÎCairo.RectangleÖ0Ïdouble
+yÌ8ÎCairo.RectangleIntÖ0Ïint
+y0Ì8ÎCairo.MatrixÖ0Ïdouble
+y_advanceÌ8ÎCairo.TextExtentsÖ0Ïdouble
+y_bearingÌ8ÎCairo.TextExtentsÖ0Ïdouble
+yxÌ8ÎCairo.MatrixÖ0Ïdouble
+yyÌ8ÎCairo.MatrixÖ0Ïdouble

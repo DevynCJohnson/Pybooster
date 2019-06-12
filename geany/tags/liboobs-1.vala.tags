@@ -1,0 +1,419 @@
+# format=tagmanager
+@deleteÌ128Í()ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+@getÌ128Í()ÎOobs.GroupsConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.IfacesConfigÖ0Ïpublic unowned
+@getÌ128Í(Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.NFSConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.NTPConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.SelfConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.ServicesConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.SessionÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.TimeConfigÖ0Ïpublic unowned
+@getÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned
+@setÌ128Í(Oobs.ListIter iter, void* data)ÎOobs.ListÖ0Ïpublic void
+ACCESS_DENIEDÌ4ÎOobs.ResultÖ0
+BROWSABLEÌ4ÎOobs.ShareSMBFlagsÖ0
+CANCELLEDÌ4ÎOobs.ErrorÖ0
+CHOWN_HOMEÌ4ÎOobs.UserHomeFlagsÖ0
+DialTypeÌ2ÎOobsÖ0
+ENABLEDÌ4ÎOobs.ShareSMBFlagsÖ0
+ERRORÌ4ÎOobs.ResultÖ0
+ETHERNETÌ4ÎOobs.IfaceTypeÖ0
+ErrorÌ2ÎOobsÖ0
+FAILEDÌ4ÎOobs.ErrorÖ0
+GroupÌ1ÎOobsÖ0
+GroupÌ128Í(string name)ÎOobs.GroupÖ0
+GroupsConfigÌ1ÎOobsÖ0
+GroupsConfigÌ128Í()ÎOobs.GroupsConfigÖ0
+HALTÌ4ÎOobs.RunlevelRoleÖ0
+HostsConfigÌ1ÎOobsÖ0
+HostsConfigÌ128Í()ÎOobs.HostsConfigÖ0
+IGNOREÌ4ÎOobs.ServiceStatusÖ0
+IRLANÌ4ÎOobs.IfaceTypeÖ0
+IfaceÌ1ÎOobsÖ0
+IfaceÌ128Í()ÎOobs.IfaceÖ0
+IfaceEthernetÌ1ÎOobsÖ0
+IfaceEthernetÌ128Í()ÎOobs.IfaceEthernetÖ0
+IfaceIRLanÌ1ÎOobsÖ0
+IfaceIRLanÌ128Í()ÎOobs.IfaceIRLanÖ0
+IfacePPPÌ1ÎOobsÖ0
+IfacePPPÌ128Í()ÎOobs.IfacePPPÖ0
+IfacePlipÌ1ÎOobsÖ0
+IfacePlipÌ128Í()ÎOobs.IfacePlipÖ0
+IfaceTypeÌ2ÎOobsÖ0
+IfaceWirelessÌ1ÎOobsÖ0
+IfaceWirelessÌ128Í()ÎOobs.IfaceWirelessÖ0
+IfacesConfigÌ1ÎOobsÖ0
+IfacesConfigÌ128Í()ÎOobs.IfacesConfigÖ0
+LOUDÌ4ÎOobs.ModemVolumeÖ0
+LOWÌ4ÎOobs.ModemVolumeÖ0
+ListÌ1ÎOobsÖ0
+ListÌ128Í()ÎOobs.ListÖ0
+ListIterÌ1ÎOobsÖ0
+MALFORMED_DATAÌ4ÎOobs.ResultÖ0
+MEDIUMÌ4ÎOobs.ModemVolumeÖ0
+MONOUSERÌ4ÎOobs.RunlevelRoleÖ0
+MULTIUSERÌ4ÎOobs.RunlevelRoleÖ0
+ModemVolumeÌ2ÎOobsÖ0
+NFSConfigÌ1ÎOobsÖ0
+NFSConfigÌ128Í()ÎOobs.NFSConfigÖ0
+NO_PLATFORMÌ4ÎOobs.ResultÖ0
+NTPConfigÌ1ÎOobsÖ0
+NTPConfigÌ128Í()ÎOobs.NTPConfigÖ0
+NTPServerÌ1ÎOobsÖ0
+NTPServerÌ128Í(string hostname)ÎOobs.NTPServerÖ0
+OKÌ4ÎOobs.ResultÖ0
+ObjectÌ1ÎOobsÖ0
+ObjectÌ128Í()ÎOobs.ObjectÖ0
+ObjectAsyncFuncÌ128Í(Oobs.Object object, Oobs.Result result)ÎOobsÖ0Ïpublic delegate void
+OobsÌ256Ö0
+PLIPÌ4ÎOobs.IfaceTypeÖ0
+PPPÌ4ÎOobs.IfaceTypeÖ0
+PUBLICÌ4ÎOobs.ShareSMBFlagsÖ0
+PULSESÌ4ÎOobs.DialTypeÖ0
+PlatformÌ1ÎOobsÖ0
+REBOOTÌ4ÎOobs.RunlevelRoleÖ0
+REMOVE_HOMEÌ4ÎOobs.UserHomeFlagsÖ0
+ResultÌ2ÎOobsÖ0
+RunlevelRoleÌ2ÎOobsÖ0
+SILENTÌ4ÎOobs.ModemVolumeÖ0
+SMBConfigÌ1ÎOobsÖ0
+SMBConfigÌ128Í()ÎOobs.SMBConfigÖ0
+STARTÌ4ÎOobs.ServiceStatusÖ0
+STOPÌ4ÎOobs.ServiceStatusÖ0
+SelfConfigÌ1ÎOobsÖ0
+SelfConfigÌ128Í()ÎOobs.SelfConfigÖ0
+ServiceÌ1ÎOobsÖ0
+ServiceÌ128Í()ÎOobs.ServiceÖ0
+ServiceStatusÌ2ÎOobsÖ0
+ServicesConfigÌ1ÎOobsÖ0
+ServicesConfigÌ128Í()ÎOobs.ServicesConfigÖ0
+ServicesRunlevelÌ1ÎOobsÖ0
+SessionÌ1ÎOobsÖ0
+SessionÌ128Í()ÎOobs.SessionÖ0
+ShareÌ1ÎOobsÖ0
+ShareÌ128Í()ÎOobs.ShareÖ0
+ShareAclElementÌ1ÎOobsÖ0
+ShareNFSÌ1ÎOobsÖ0
+ShareNFSÌ128Í(string path)ÎOobs.ShareNFSÖ0
+ShareSMBÌ1ÎOobsÖ0
+ShareSMBÌ128Í(string path, string name, string comment, Oobs.ShareSMBFlags flags)ÎOobs.ShareSMBÖ0
+ShareSMBFlagsÌ2ÎOobsÖ0
+StaticHostÌ1ÎOobsÖ0
+StaticHostÌ128Í(string ip_address, GLib.List aliases)ÎOobs.StaticHostÖ0
+TONESÌ4ÎOobs.DialTypeÖ0
+TimeConfigÌ1ÎOobsÖ0
+TimeConfigÌ128Í()ÎOobs.TimeConfigÖ0
+UserÌ1ÎOobsÖ0
+UserÌ128Í(string name)ÎOobs.UserÖ0
+UserHomeFlagsÌ2ÎOobsÖ0
+UsersConfigÌ1ÎOobsÖ0
+UsersConfigÌ128Í()ÎOobs.UsersConfigÖ0
+WIRELESSÌ4ÎOobs.IfaceTypeÖ0
+WRITABLEÌ4ÎOobs.ShareSMBFlagsÖ0
+activeÌ8ÎOobs.IfaceÖ0Ïbool
+activeÌ8ÎOobs.UserÖ0Ïbool
+addÌ128Í()ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+add_acl_elementÌ128Í(string element, bool read_only)ÎOobs.ShareNFSÖ0Ïpublic void
+add_asyncÌ128Í(Oobs.ObjectAsyncFunc func, void* data)ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+add_groupÌ128Í(Oobs.Group group)ÎOobs.GroupsConfigÖ0Ïpublic Oobs.Result
+add_userÌ128Í(Oobs.User user)ÎOobs.GroupÖ0Ïpublic void
+add_userÌ128Í(Oobs.User user)ÎOobs.UsersConfigÖ0Ïpublic Oobs.Result
+addressÌ8ÎOobs.IfacePlipÖ0
+apnÌ8ÎOobs.IfacePPPÖ0
+appendÌ128Í(Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic void
+authenticateÌ128Í()ÎOobs.ObjectÖ0Ïpublic bool
+autoÌ8ÎOobs.IfaceÖ0Ïbool
+broadcast_addressÌ8ÎOobs.IfaceEthernetÖ0
+changedÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual signal void
+clearÌ128Í()ÎOobs.ListÖ0Ïpublic void
+clear_usersÌ128Í()ÎOobs.GroupÖ0Ïpublic void
+codenameÌ8ÎOobs.PlatformÖ0
+commentÌ8ÎOobs.ShareSMBÖ0
+commitÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual void
+commitÌ128Í()ÎOobs.SessionÖ0Ïpublic Oobs.Result
+commit_asyncÌ128Í(Oobs.ObjectAsyncFunc func, void* data)ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+committedÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual signal void
+config_methodÌ8ÎOobs.IfaceEthernetÖ0
+configuredÌ8ÎOobs.IfaceÖ0Ïbool
+connection_typeÌ8ÎOobs.IfacePPPÖ0
+contained_typeÌ8ÎOobs.ListÖ0Ïvoid
+copyÌ128Í()ÎOobs.ListIterÖ0Ïpublic Oobs.ListIter
+dataÌ8ÎOobs.ListIterÖ0Ïvoid
+default_gatewayÌ8ÎOobs.IfacePPPÖ0Ïbool
+default_groupÌ8ÎOobs.UsersConfigÖ0ÏOobs.Group
+default_homeÌ8ÎOobs.UsersConfigÖ0
+default_shellÌ8ÎOobs.UsersConfigÖ0
+delete_asyncÌ128Í(Oobs.ObjectAsyncFunc func, void* data)ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+delete_groupÌ128Í(Oobs.Group group)ÎOobs.GroupsConfigÖ0Ïpublic Oobs.Result
+delete_userÌ128Í(Oobs.User user)ÎOobs.UsersConfigÖ0Ïpublic Oobs.Result
+delete_user_passwordÌ128Í(Oobs.User user)ÎOobs.SMBConfigÖ0Ïpublic void
+descriptionÌ8ÎOobs.SMBConfigÖ0
+deviceÌ8ÎOobs.IfaceÖ0
+dial_typeÌ8ÎOobs.IfacePPPÖ0ÏOobs.DialType
+elementÌ8ÎOobs.ShareAclElementÖ0
+encrypted_homeÌ8ÎOobs.UserÖ0Ïbool
+encrypted_homeÌ8ÎOobs.UsersConfigÖ0Ïbool
+ensure_updateÌ128Í()ÎOobs.ObjectÖ0Ïpublic void
+error_quarkÌ128Í()ÎOobsÖ0Ïpublic GLib.Quark
+essidÌ8ÎOobs.IfaceWirelessÖ0
+ethernetÌ8ÎOobs.IfacePPPÖ0ÏOobs.IfaceEthernet
+find_free_gidÌ128Í(long gid_min, long gid_max)ÎOobs.GroupsConfigÖ0Ïpublic long
+find_free_uidÌ128Í(long uid_min, long uid_max)ÎOobs.UsersConfigÖ0Ïpublic long
+flagsÌ8ÎOobs.ShareSMBÖ0ÏOobs.ShareSMBFlags
+full_nameÌ8ÎOobs.UserÖ0
+gateway_addressÌ8ÎOobs.IfaceEthernetÖ0
+get_aclÌ128Í()ÎOobs.ShareNFSÖ0Ïpublic unowned
+get_activeÌ128Í()ÎOobs.IfaceÖ0Ïpublic bool
+get_activeÌ128Í()ÎOobs.UserÖ0Ïpublic bool
+get_addressÌ128Í()ÎOobs.IfacePlipÖ0Ïpublic unowned string
+get_aliasesÌ128Í()ÎOobs.StaticHostÖ0Ïpublic unowned
+get_apnÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_authentication_actionÌ128Í()ÎOobs.SessionÖ0Ïpublic unowned string
+get_autoÌ128Í()ÎOobs.IfaceÖ0Ïpublic bool
+get_available_configuration_methodsÌ128Í()ÎOobs.IfacesConfigÖ0Ïpublic unowned
+get_available_key_typesÌ128Í()ÎOobs.IfacesConfigÖ0Ïpublic unowned
+get_available_localesÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_available_ppp_typesÌ128Í()ÎOobs.IfacesConfigÖ0Ïpublic unowned
+get_available_shellsÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_broadcast_addressÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_commentÌ128Í()ÎOobs.ShareSMBÖ0Ïpublic unowned string
+get_configuration_methodÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_configuredÌ128Í()ÎOobs.IfaceÖ0Ïpublic bool
+get_connectedÌ128Í()ÎOobs.SessionÖ0Ïpublic bool
+get_connection_typeÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_default_gatewayÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic bool
+get_default_groupÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_default_home_dirÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned string
+get_default_runlevelÌ128Í()ÎOobs.ServicesConfigÖ0Ïpublic unowned
+get_default_shellÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned string
+get_descriptionÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic unowned string
+get_device_nameÌ128Í()ÎOobs.IfaceÖ0Ïpublic unowned string
+get_dial_typeÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic Oobs.DialType
+get_dns_serversÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned
+get_domainnameÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned string
+get_encrypted_homeÌ128Í()ÎOobs.UserÖ0Ïpublic bool
+get_encrypted_home_supportÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic bool
+get_essidÌ128Í()ÎOobs.IfaceWirelessÖ0Ïpublic unowned string
+get_ethernetÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned
+get_flagsÌ128Í()ÎOobs.ShareSMBÖ0Ïpublic Oobs.ShareSMBFlags
+get_from_gidÌ128Í(long gid)ÎOobs.GroupsConfigÖ0Ïpublic unowned
+get_from_loginÌ128Í(string login)ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_from_nameÌ128Í(string name)ÎOobs.GroupsConfigÖ0Ïpublic unowned
+get_from_uidÌ128Í(long uid)ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_full_nameÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_gateway_addressÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_gidÌ128Í()ÎOobs.GroupÖ0Ïpublic long
+get_groupsÌ128Í()ÎOobs.GroupsConfigÖ0Ïpublic unowned
+get_home_directoryÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_home_phone_numberÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_hostnameÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned string
+get_hostnameÌ128Í()ÎOobs.NTPServerÖ0Ïpublic unowned string
+get_ifacesÌ128Í(Oobs.IfaceType type)ÎOobs.IfacesConfigÖ0Ïpublic unowned
+get_ip_addressÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_ip_addressÌ128Í()ÎOobs.StaticHostÖ0Ïpublic unowned string
+get_is_wins_serverÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic bool
+get_iter_firstÌ128Í(Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic bool
+get_keyÌ128Í()ÎOobs.IfaceWirelessÖ0Ïpublic unowned string
+get_key_typeÌ128Í()ÎOobs.IfaceWirelessÖ0Ïpublic unowned string
+get_localeÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_loginÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_login_nameÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_main_groupÌ128Í()ÎOobs.UserÖ0Ïpublic unowned
+get_maximum_users_uidÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic long
+get_minimum_users_uidÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic long
+get_n_itemsÌ128Í()ÎOobs.ListÖ0Ïpublic int
+get_nameÌ128Í()ÎOobs.GroupÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎOobs.ServiceÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎOobs.ShareSMBÖ0Ïpublic unowned string
+get_network_addressÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_network_maskÌ128Í()ÎOobs.IfaceEthernetÖ0Ïpublic unowned string
+get_other_dataÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_password_disabledÌ128Í()ÎOobs.UserÖ0Ïpublic bool
+get_password_emptyÌ128Í()ÎOobs.UserÖ0Ïpublic bool
+get_pathÌ128Í()ÎOobs.ShareÖ0Ïpublic unowned string
+get_peer_noauthÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic bool
+get_persistentÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic bool
+get_phone_numberÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_phone_prefixÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_platformÌ128Í(string platform)ÎOobs.SessionÖ0Ïpublic Oobs.Result
+get_remote_addressÌ128Í()ÎOobs.IfacePlipÖ0Ïpublic unowned string
+get_room_numberÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_runlevel_configurationÌ128Í(Oobs.ServicesRunlevel runlevel, Oobs.ServiceStatus status, int priority)ÎOobs.ServiceÖ0Ïpublic void
+get_runlevelsÌ128Í()ÎOobs.ServicesConfigÖ0Ïpublic unowned
+get_search_domainsÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned
+get_serial_portÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic unowned string
+get_serversÌ128Í()ÎOobs.NTPConfigÖ0Ïpublic unowned
+get_servicesÌ128Í()ÎOobs.ServicesConfigÖ0Ïpublic unowned
+get_sharesÌ128Í()ÎOobs.NFSConfigÖ0Ïpublic unowned
+get_sharesÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic unowned
+get_shellÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_static_hostsÌ128Í()ÎOobs.HostsConfigÖ0Ïpublic unowned
+get_supported_platformsÌ128Í(GLib.List platforms)ÎOobs.SessionÖ0Ïpublic Oobs.Result
+get_timeÌ128Í(int year, int month, int day, int hour, int minute, int second)ÎOobs.TimeConfigÖ0Ïpublic void
+get_timezoneÌ128Í()ÎOobs.TimeConfigÖ0Ïpublic unowned string
+get_uidÌ128Í()ÎOobs.UserÖ0Ïpublic long
+get_unix_timeÌ128Í()ÎOobs.TimeConfigÖ0Ïpublic long
+get_update_messageÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual void
+get_use_peer_dnsÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic bool
+get_userÌ128Í()ÎOobs.SelfConfigÖ0Ïpublic unowned
+get_usersÌ128Í()ÎOobs.GroupÖ0Ïpublic unowned
+get_usersÌ128Í()ÎOobs.UsersConfigÖ0Ïpublic unowned
+get_utc_timeÌ128Í(int year, int month, int day, int hour, int minute, int second)ÎOobs.TimeConfigÖ0Ïpublic void
+get_volumeÌ128Í()ÎOobs.IfacePPPÖ0Ïpublic Oobs.ModemVolume
+get_wins_serverÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic unowned string
+get_work_phone_numberÌ128Í()ÎOobs.UserÖ0Ïpublic unowned string
+get_workgroupÌ128Í()ÎOobs.SMBConfigÖ0Ïpublic unowned string
+gidÌ8ÎOobs.GroupÖ0
+has_gatewayÌ128Í()ÎOobs.IfaceÖ0Ïpublic virtual bool
+has_updatedÌ128Í()ÎOobs.ObjectÖ0Ïpublic bool
+home_directoryÌ8ÎOobs.UserÖ0
+home_flagsÌ8ÎOobs.UserÖ0ÏOobs.UserHomeFlags
+home_phoneÌ8ÎOobs.UserÖ0
+hostnameÌ8ÎOobs.NTPServerÖ0
+idÌ8ÎOobs.PlatformÖ0
+iface_sectionÌ8ÎOobs.IfacePPPÖ0
+insert_afterÌ128Í(Oobs.ListIter anchor, Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic void
+insert_beforeÌ128Í(Oobs.ListIter anchor, Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic void
+ip_addressÌ8ÎOobs.IfaceEthernetÖ0
+ip_addressÌ8ÎOobs.StaticHostÖ0
+ip_maskÌ8ÎOobs.IfaceEthernetÖ0
+is_configuredÌ128Í()ÎOobs.IfaceÖ0Ïpublic virtual bool
+is_gid_usedÌ128Í(long gid)ÎOobs.GroupsConfigÖ0Ïpublic bool
+is_in_groupÌ128Í(Oobs.Group group)ÎOobs.UserÖ0Ïpublic bool
+is_login_usedÌ128Í(string login)ÎOobs.UsersConfigÖ0Ïpublic bool
+is_name_usedÌ128Í(string name)ÎOobs.GroupsConfigÖ0Ïpublic bool
+is_rootÌ128Í()ÎOobs.GroupÖ0Ïpublic bool
+is_rootÌ128Í()ÎOobs.UserÖ0Ïpublic bool
+is_uid_usedÌ128Í(long uid)ÎOobs.UsersConfigÖ0Ïpublic bool
+is_user_selfÌ128Í(Oobs.User user)ÎOobs.SelfConfigÖ0Ïpublic bool
+is_wins_serverÌ8ÎOobs.SMBConfigÖ0Ïbool
+keyÌ8ÎOobs.IfaceWirelessÖ0
+key_typeÌ8ÎOobs.IfaceWirelessÖ0
+localeÌ8ÎOobs.UserÖ0
+loginÌ8ÎOobs.IfacePPPÖ0
+maximum_gidÌ8ÎOobs.GroupsConfigÖ0Ïint
+maximum_uidÌ8ÎOobs.UsersConfigÖ0
+minimum_gidÌ8ÎOobs.GroupsConfigÖ0Ïint
+minimum_uidÌ8ÎOobs.UsersConfigÖ0
+nameÌ8ÎOobs.GroupÖ0
+nameÌ8ÎOobs.PlatformÖ0
+nameÌ8ÎOobs.ServiceÖ0
+nameÌ8ÎOobs.ServicesRunlevelÖ0
+nameÌ8ÎOobs.ShareSMBÖ0
+nameÌ8ÎOobs.UserÖ0
+network_addressÌ8ÎOobs.IfaceEthernetÖ0
+nextÌ128Í(Oobs.List list, Oobs.ListIter iter)ÎOobs.ListIterÖ0Ïpublic bool
+other_dataÌ8ÎOobs.UserÖ0
+passwordÌ8ÎOobs.GroupÖ0
+passwordÌ8ÎOobs.IfacePPPÖ0
+passwordÌ8ÎOobs.UserÖ0
+password_disabledÌ8ÎOobs.UserÖ0Ïbool
+password_emptyÌ8ÎOobs.UserÖ0Ïbool
+pathÌ8ÎOobs.ShareÖ0
+peer_noauthÌ8ÎOobs.IfacePPPÖ0Ïbool
+persistentÌ8ÎOobs.IfacePPPÖ0Ïbool
+phone_numberÌ8ÎOobs.IfacePPPÖ0
+phone_prefixÌ8ÎOobs.IfacePPPÖ0
+platformÌ8ÎOobs.SessionÖ0
+prependÌ128Í(Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic void
+process_requestsÌ128Í()ÎOobs.ObjectÖ0Ïpublic void
+process_requestsÌ128Í()ÎOobs.SessionÖ0Ïpublic void
+read_onlyÌ8ÎOobs.ShareAclElementÖ0Ïbool
+remote_addressÌ8ÎOobs.IfacePlipÖ0
+remote_objectÌ8ÎOobs.ObjectÖ0
+removeÌ128Í(Oobs.ListIter iter)ÎOobs.ListÖ0Ïpublic bool
+remove_userÌ128Í(Oobs.User user)ÎOobs.GroupÖ0Ïpublic void
+roleÌ8ÎOobs.ServicesRunlevelÖ0
+room_numberÌ8ÎOobs.UserÖ0
+serial_portÌ8ÎOobs.IfacePPPÖ0
+set_aclÌ128Í(GLib.SList acl)ÎOobs.ShareNFSÖ0Ïpublic void
+set_activeÌ128Í(bool is_active)ÎOobs.IfaceÖ0Ïpublic void
+set_addressÌ128Í(string address)ÎOobs.IfacePlipÖ0Ïpublic void
+set_aliasesÌ128Í(GLib.List aliases)ÎOobs.StaticHostÖ0Ïpublic void
+set_apnÌ128Í(string apn)ÎOobs.IfacePPPÖ0Ïpublic void
+set_autoÌ128Í(bool is_auto)ÎOobs.IfaceÖ0Ïpublic void
+set_broadcast_addressÌ128Í(string address)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_commentÌ128Í(string comment)ÎOobs.ShareSMBÖ0Ïpublic void
+set_configuration_methodÌ128Í(string method)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_configuredÌ128Í(bool is_configured)ÎOobs.IfaceÖ0Ïpublic void
+set_connection_typeÌ128Í(string type)ÎOobs.IfacePPPÖ0Ïpublic void
+set_default_gatewayÌ128Í(bool default_gw)ÎOobs.IfacePPPÖ0Ïpublic void
+set_default_home_dirÌ128Í(string home_dir)ÎOobs.UsersConfigÖ0Ïpublic void
+set_default_shellÌ128Í(string shell)ÎOobs.UsersConfigÖ0Ïpublic void
+set_descriptionÌ128Í(string description)ÎOobs.SMBConfigÖ0Ïpublic void
+set_dial_typeÌ128Í(Oobs.DialType dial_type)ÎOobs.IfacePPPÖ0Ïpublic void
+set_dns_serversÌ128Í(GLib.List dns_list)ÎOobs.HostsConfigÖ0Ïpublic void
+set_domainnameÌ128Í(string domainname)ÎOobs.HostsConfigÖ0Ïpublic void
+set_encrypted_homeÌ128Í(bool encrypted_home)ÎOobs.UserÖ0Ïpublic void
+set_essidÌ128Í(string essid)ÎOobs.IfaceWirelessÖ0Ïpublic void
+set_ethernetÌ128Í(Oobs.IfaceEthernet ethernet)ÎOobs.IfacePPPÖ0Ïpublic void
+set_flagsÌ128Í(Oobs.ShareSMBFlags flags)ÎOobs.ShareSMBÖ0Ïpublic void
+set_full_nameÌ128Í(string full_name)ÎOobs.UserÖ0Ïpublic void
+set_gateway_addressÌ128Í(string address)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_gidÌ128Í(long gid)ÎOobs.GroupÖ0Ïpublic void
+set_home_directoryÌ128Í(string home_directory)ÎOobs.UserÖ0Ïpublic void
+set_home_flagsÌ128Í(Oobs.UserHomeFlags home_flags)ÎOobs.UserÖ0Ïpublic void
+set_home_phone_numberÌ128Í(string phone_number)ÎOobs.UserÖ0Ïpublic void
+set_hostnameÌ128Í(string hostname)ÎOobs.HostsConfigÖ0Ïpublic void
+set_hostnameÌ128Í(string hostname)ÎOobs.NTPServerÖ0Ïpublic void
+set_ip_addressÌ128Í(string address)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_ip_addressÌ128Í(string ip_address)ÎOobs.StaticHostÖ0Ïpublic void
+set_is_wins_serverÌ128Í(bool is_wins_server)ÎOobs.SMBConfigÖ0Ïpublic void
+set_keyÌ128Í(string key)ÎOobs.IfaceWirelessÖ0Ïpublic void
+set_key_typeÌ128Í(string key_type)ÎOobs.IfaceWirelessÖ0Ïpublic void
+set_localeÌ128Í(string locale)ÎOobs.UserÖ0Ïpublic void
+set_loginÌ128Í(string login)ÎOobs.IfacePPPÖ0Ïpublic void
+set_main_groupÌ128Í(Oobs.Group main_group)ÎOobs.UserÖ0Ïpublic void
+set_maximum_users_uidÌ128Í(long uid)ÎOobs.UsersConfigÖ0Ïpublic void
+set_minimum_users_uidÌ128Í(long uid)ÎOobs.UsersConfigÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎOobs.ShareSMBÖ0Ïpublic void
+set_network_addressÌ128Í(string address)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_network_maskÌ128Í(string mask)ÎOobs.IfaceEthernetÖ0Ïpublic void
+set_other_dataÌ128Í(string data)ÎOobs.UserÖ0Ïpublic void
+set_passwordÌ128Í(string password)ÎOobs.GroupÖ0Ïpublic void
+set_passwordÌ128Í(string password)ÎOobs.IfacePPPÖ0Ïpublic void
+set_passwordÌ128Í(string password)ÎOobs.UserÖ0Ïpublic void
+set_password_disabledÌ128Í(bool disabled)ÎOobs.UserÖ0Ïpublic void
+set_password_emptyÌ128Í(bool empty)ÎOobs.UserÖ0Ïpublic void
+set_pathÌ128Í(string path)ÎOobs.ShareÖ0Ïpublic void
+set_peer_noauthÌ128Í(bool use_peer_dns)ÎOobs.IfacePPPÖ0Ïpublic void
+set_persistentÌ128Í(bool persistent)ÎOobs.IfacePPPÖ0Ïpublic void
+set_phone_numberÌ128Í(string phone_number)ÎOobs.IfacePPPÖ0Ïpublic void
+set_phone_prefixÌ128Í(string phone_prefix)ÎOobs.IfacePPPÖ0Ïpublic void
+set_platformÌ128Í(string platform)ÎOobs.SessionÖ0Ïpublic Oobs.Result
+set_remote_addressÌ128Í(string address)ÎOobs.IfacePlipÖ0Ïpublic void
+set_room_numberÌ128Í(string room_number)ÎOobs.UserÖ0Ïpublic void
+set_runlevel_configurationÌ128Í(Oobs.ServicesRunlevel runlevel, Oobs.ServiceStatus status, int priority)ÎOobs.ServiceÖ0Ïpublic void
+set_search_domainsÌ128Í(GLib.List search_domains_list)ÎOobs.HostsConfigÖ0Ïpublic void
+set_serial_portÌ128Í(string serial_port)ÎOobs.IfacePPPÖ0Ïpublic void
+set_shellÌ128Í(string shell)ÎOobs.UserÖ0Ïpublic void
+set_timeÌ128Í(int year, int month, int day, int hour, int minute, int second)ÎOobs.TimeConfigÖ0Ïpublic void
+set_timezoneÌ128Í(string timezone)ÎOobs.TimeConfigÖ0Ïpublic void
+set_uidÌ128Í(long uid)ÎOobs.UserÖ0Ïpublic void
+set_unix_timeÌ128Í(long unix_time)ÎOobs.TimeConfigÖ0Ïpublic void
+set_use_peer_dnsÌ128Í(bool use_peer_dns)ÎOobs.IfacePPPÖ0Ïpublic void
+set_user_passwordÌ128Í(Oobs.User user, string password)ÎOobs.SMBConfigÖ0Ïpublic void
+set_utc_timeÌ128Í(int year, int month, int day, int hour, int minute, int second)ÎOobs.TimeConfigÖ0Ïpublic void
+set_volumeÌ128Í(Oobs.ModemVolume volume)ÎOobs.IfacePPPÖ0Ïpublic void
+set_wins_serverÌ128Í(string wins_server)ÎOobs.SMBConfigÖ0Ïpublic void
+set_work_phone_numberÌ128Í(string phone_number)ÎOobs.UserÖ0Ïpublic void
+set_workgroupÌ128Í(string workgroup)ÎOobs.SMBConfigÖ0Ïpublic void
+shellÌ8ÎOobs.UserÖ0
+stampÌ8ÎOobs.ListIterÖ0
+state_changedÌ128Í()ÎOobs.IfaceÖ0Ïpublic virtual signal void
+timezoneÌ8ÎOobs.TimeConfigÖ0
+uidÌ8ÎOobs.UserÖ0
+unix_timeÌ8ÎOobs.TimeConfigÖ0Ïlong
+updateÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual void
+update_asyncÌ128Í(Oobs.ObjectAsyncFunc func, void* data)ÎOobs.ObjectÖ0Ïpublic Oobs.Result
+updatedÌ128Í()ÎOobs.ObjectÖ0Ïpublic virtual signal void
+use_peer_dnsÌ8ÎOobs.IfacePPPÖ0Ïbool
+user_has_passwordÌ128Í(Oobs.User user)ÎOobs.SMBConfigÖ0Ïpublic bool
+versionÌ8ÎOobs.PlatformÖ0
+volumeÌ8ÎOobs.IfacePPPÖ0ÏOobs.ModemVolume
+wins_serverÌ8ÎOobs.SMBConfigÖ0
+work_phoneÌ8ÎOobs.UserÖ0
+workgroupÌ8ÎOobs.SMBConfigÖ0

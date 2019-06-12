@@ -1,0 +1,34 @@
+# format=tagmanager
+CHECKÃ4ŒLibMagic.Flags÷0
+COMPRESSÃ4ŒLibMagic.Flags÷0
+CONTINUEÃ4ŒLibMagic.Flags÷0
+DEBUGÃ4ŒLibMagic.Flags÷0
+DEVICESÃ4ŒLibMagic.Flags÷0
+ERRORÃ4ŒLibMagic.Flags÷0
+FlagsÃ2ŒLibMagic÷0
+LibMagicÃ256÷0
+MIME_ENCODINGÃ4ŒLibMagic.Flags÷0
+MIME_TYPEÃ4ŒLibMagic.Flags÷0
+MagicÃ1ŒLibMagic÷0
+MagicÃ128Õ(Flags flags = Flags.NONE)ŒLibMagic.Magic÷0
+NONEÃ4ŒLibMagic.Flags÷0
+NO_CHECK_ASCIIÃ4ŒLibMagic.Flags÷0
+NO_CHECK_ATYPEÃ4ŒLibMagic.Flags÷0
+NO_CHECK_COMPRESSÃ4ŒLibMagic.Flags÷0
+NO_CHECK_ELFÃ4ŒLibMagic.Flags÷0
+NO_CHECK_FORTRANÃ4ŒLibMagic.Flags÷0
+NO_CHECK_SOFTÃ4ŒLibMagic.Flags÷0
+NO_CHECK_TARÃ4ŒLibMagic.Flags÷0
+NO_CHECK_TOKENSÃ4ŒLibMagic.Flags÷0
+NO_CHECK_TROFFÃ4ŒLibMagic.Flags÷0
+PRESERVE_ATIMEÃ4ŒLibMagic.Flags÷0
+RAWÃ4ŒLibMagic.Flags÷0
+SYMLINKÃ4ŒLibMagic.Flags÷0
+bufferÃ128Õ(void *buffer, size_t length)ŒLibMagic.Magic÷0œpublic unowned
+checkÃ128Õ(string? filename = null)ŒLibMagic.Magic÷0œpublic int
+compileÃ128Õ(string? filename = null)ŒLibMagic.Magic÷0œpublic int
+errnoÃ128Õ()ŒLibMagic.Magic÷0œpublic int
+errorÃ128Õ()ŒLibMagic.Magic÷0œpublic unowned
+fileÃ128Õ(string filename)ŒLibMagic.Magic÷0œpublic unowned
+loadÃ128Õ(string? filename = null)ŒLibMagic.Magic÷0œpublic int
+setflagsÃ128Õ(int flags)ŒLibMagic.Magic÷0œpublic int

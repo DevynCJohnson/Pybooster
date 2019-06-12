@@ -1,0 +1,173 @@
+# format=tagmanager
+@abstractÃ8ŒAlsa.MixerRegistrationOptions÷0œMixerAbstractionLevel
+ASYNCÃ4ŒAlsa.CardOpenType÷0
+AesIec958Ã2048ŒAlsa÷0
+AlsaÃ256÷0
+BASICÃ4ŒAlsa.MixerAbstractionLevel÷0
+BOOLEANÃ4ŒAlsa.ElemType÷0
+BYTESÃ4ŒAlsa.ElemType÷0
+CARDÃ4ŒAlsa.ElemInterface÷0
+CardÃ1ŒAlsa÷0
+CardInfoÃ1ŒAlsa÷0
+CardOpenTypeÃ2ŒAlsa÷0
+ENUMERATEDÃ4ŒAlsa.ElemType÷0
+ElemIdÃ1ŒAlsa÷0
+ElemInfoÃ1ŒAlsa÷0
+ElemInterfaceÃ2ŒAlsa÷0
+ElemListÃ1ŒAlsa÷0
+ElemTypeÃ2ŒAlsa÷0
+ElemValueÃ1ŒAlsa÷0
+FRONT_CENTERÃ4ŒAlsa.SimpleChannelId÷0
+FRONT_LEFTÃ4ŒAlsa.SimpleChannelId÷0
+FRONT_RIGHTÃ4ŒAlsa.SimpleChannelId÷0
+HWDEPÃ4ŒAlsa.ElemInterface÷0
+IEC958Ã4ŒAlsa.ElemType÷0
+INTEGERÃ4ŒAlsa.ElemType÷0
+INTEGER64Ã4ŒAlsa.ElemType÷0
+LASTÃ4ŒAlsa.SimpleChannelId÷0
+MIXERÃ4ŒAlsa.ElemInterface÷0
+MONOÃ4ŒAlsa.SimpleChannelId÷0
+MixerÃ1ŒAlsa÷0
+MixerAbstractionLevelÃ2ŒAlsa÷0
+MixerClassÃ1ŒAlsa÷0
+MixerElementÃ1ŒAlsa÷0
+MixerRegistrationOptionsÃ2048ŒAlsa÷0
+NONBLOCKÃ4ŒAlsa.CardOpenType÷0
+NONEÃ4ŒAlsa.ElemType÷0
+NONEÃ4ŒAlsa.MixerAbstractionLevel÷0
+PCMÃ4ŒAlsa.ElemInterface÷0
+PcmDeviceÃ1ŒAlsa÷0
+RAWMIDIÃ4ŒAlsa.ElemInterface÷0
+READONLYÃ4ŒAlsa.CardOpenType÷0
+REAR_CENTERÃ4ŒAlsa.SimpleChannelId÷0
+REAR_LEFTÃ4ŒAlsa.SimpleChannelId÷0
+REAR_RIGHTÃ4ŒAlsa.SimpleChannelId÷0
+SEQUENCERÃ4ŒAlsa.ElemInterface÷0
+SIDE_LEFTÃ4ŒAlsa.SimpleChannelId÷0
+SIDE_RIGHTÃ4ŒAlsa.SimpleChannelId÷0
+SimpleChannelIdÃ2ŒAlsa÷0
+SimpleElementIdÃ1ŒAlsa÷0
+TIMERÃ4ŒAlsa.ElemInterface÷0
+UNKNOWNÃ4ŒAlsa.SimpleChannelId÷0
+WOOFERÃ4ŒAlsa.SimpleChannelId÷0
+allocÃ128Õ(out CardInfo info)ŒAlsa.CardInfo÷0œpublic int
+allocÃ128Õ(out ElemId eid)ŒAlsa.ElemId÷0œpublic int
+allocÃ128Õ(out ElemInfo t)ŒAlsa.ElemInfo÷0œpublic int
+allocÃ128Õ(out ElemList list)ŒAlsa.ElemList÷0œpublic int
+allocÃ128Õ(out ElemValue t)ŒAlsa.ElemValue÷0œpublic int
+allocÃ128Õ(out SimpleElementId eid)ŒAlsa.SimpleElementId÷0œpublic int
+alloc_spaceÃ128Õ(uint entries)ŒAlsa.ElemList÷0œpublic int
+ask_capture_dB_volÃ128Õ(long dBval, int dir, out long val)ŒAlsa.MixerElement÷0œpublic int
+ask_capture_vol_dBÃ128Õ(long val, out long dBval)ŒAlsa.MixerElement÷0œpublic int
+ask_playback_dB_volÃ128Õ(long dBval, int dir, out long val)ŒAlsa.MixerElement÷0œpublic int
+ask_playback_vol_dBÃ128Õ(long val, out long dBval)ŒAlsa.MixerElement÷0œpublic int
+attachÃ128Õ(string card = )ŒAlsa.Mixer÷0œpublic int
+capture_pcmÃ8ŒAlsa.MixerRegistrationOptions÷0œPcmDevice
+card_infoÃ128Õ(CardInfo info)ŒAlsa.Card÷0œpublic int
+convert_from_dBÃ128Õ(ElemId eid, long gain, out long value, int xdir)ŒAlsa.Card÷0œpublic int
+convert_to_dBÃ128Õ(ElemId eid, long volume, out long gain)ŒAlsa.Card÷0œpublic int
+detachÃ128Õ(string card = )ŒAlsa.Mixer÷0œpublic int
+deviceÃ8ŒAlsa.MixerRegistrationOptions÷0
+dig_subframeÃ8ŒAlsa.AesIec958÷0œuchar
+elem_infoÃ128Õ(ElemInfo info)ŒAlsa.Card÷0œpublic int
+elem_listÃ128Õ(ElemList list)ŒAlsa.Card÷0œpublic int
+elem_readÃ128Õ(ElemValue value)ŒAlsa.Card÷0œpublic int
+elem_writeÃ128Õ(ElemValue value)ŒAlsa.Card÷0œpublic int
+first_elemÃ128Õ()ŒAlsa.Mixer÷0œpublic MixerElement
+free_spaceÃ128Õ()ŒAlsa.ElemList÷0œpublic void
+get_booleanÃ128Õ(uint idx)ŒAlsa.ElemValue÷0œpublic bool
+get_byteÃ128Õ(uint idx)ŒAlsa.ElemValue÷0œpublic uchar
+get_capture_dBÃ128Õ(SimpleChannelId channel, out long val)ŒAlsa.MixerElement÷0œpublic int
+get_capture_dB_rangeÃ128Õ(out long min, out long max)ŒAlsa.MixerElement÷0œpublic int
+get_capture_groupÃ128Õ()ŒAlsa.MixerElement÷0œpublic int
+get_capture_switchÃ128Õ(SimpleChannelId channel, out int val)ŒAlsa.MixerElement÷0œpublic int
+get_capture_volumeÃ128Õ(SimpleChannelId channel, out long val)ŒAlsa.MixerElement÷0œpublic int
+get_capture_volume_rangeÃ128Õ(out long min, out long max)ŒAlsa.MixerElement÷0œpublic int
+get_componentsÃ128Õ()ŒAlsa.CardInfo÷0œpublic unowned string
+get_countÃ128Õ()ŒAlsa.ElemInfo÷0
+get_countÃ128Õ()ŒAlsa.ElemList÷0
+get_countÃ128Õ()ŒAlsa.Mixer÷0
+get_dB_rangeÃ128Õ(ElemId eid, out long min, out long max)ŒAlsa.Card÷0œpublic int
+get_deviceÃ128Õ()ŒAlsa.ElemId÷0
+get_enum_itemÃ128Õ(SimpleChannelId channel, out uint idxp)ŒAlsa.MixerElement÷0œpublic int
+get_enum_item_nameÃ128Õ(uint idx, size_t maxlen, out string str)ŒAlsa.MixerElement÷0œpublic int
+get_enum_itemsÃ128Õ()ŒAlsa.MixerElement÷0œpublic int
+get_enumeratedÃ128Õ(uint idx)ŒAlsa.ElemValue÷0
+get_idÃ128Õ()ŒAlsa.CardInfo÷0œpublic unowned string
+get_idÃ128Õ(uint n, ElemId eid)ŒAlsa.ElemList÷0œpublic void
+get_idÃ128Õ(SimpleElementId eid)ŒAlsa.MixerElement÷0œpublic void
+get_iec958Ã128Õ(AesIec958 val)ŒAlsa.ElemValue÷0œpublic void
+get_indexÃ128Õ()ŒAlsa.ElemId÷0
+get_indexÃ128Õ()ŒAlsa.SimpleElementId÷0
+get_integerÃ128Õ(uint idx)ŒAlsa.ElemValue÷0œpublic long
+get_integer64Ã128Õ(uint idx)ŒAlsa.ElemValue÷0œpublic int64
+get_longnameÃ128Õ()ŒAlsa.CardInfo÷0œpublic unowned string
+get_mixernameÃ128Õ()ŒAlsa.CardInfo÷0œpublic unowned string
+get_nameÃ128Õ()ŒAlsa.ElemId÷0œpublic unowned string
+get_nameÃ128Õ()ŒAlsa.SimpleElementId÷0œpublic unowned string
+get_numidÃ128Õ()ŒAlsa.ElemId÷0
+get_playback_dBÃ128Õ(SimpleChannelId channel, out long val)ŒAlsa.MixerElement÷0œpublic int
+get_playback_dB_rangeÃ128Õ(out long min, out long max)ŒAlsa.MixerElement÷0œpublic int
+get_playback_switchÃ128Õ(SimpleChannelId channel, out int val)ŒAlsa.MixerElement÷0œpublic int
+get_playback_volumeÃ128Õ(SimpleChannelId channel, out long val)ŒAlsa.MixerElement÷0œpublic int
+get_playback_volume_rangeÃ128Õ(out long min, out long max)ŒAlsa.MixerElement÷0œpublic int
+get_subdeviceÃ128Õ()ŒAlsa.ElemId÷0
+get_typeÃ128Õ()ŒAlsa.ElemInfo÷0œpublic ElemType
+get_usedÃ128Õ()ŒAlsa.ElemList÷0
+has_capture_channelÃ128Õ(SimpleChannelId channel)ŒAlsa.MixerElement÷0œpublic bool
+has_capture_switchÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_capture_switch_exclusiveÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_capture_switch_joinedÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_capture_volumeÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_capture_volume_joinedÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_common_switchÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_common_volumeÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_playback_channelÃ128Õ(SimpleChannelId channel)ŒAlsa.MixerElement÷0œpublic bool
+has_playback_switchÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_playback_switch_joinedÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_playback_volumeÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+has_playback_volume_joinedÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+is_activeÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+is_capture_monoÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+is_enum_captureÃ128Õ()ŒAlsa.MixerElement÷0œpublic int
+is_enum_playbackÃ128Õ()ŒAlsa.MixerElement÷0œpublic int
+is_enumeratedÃ128Õ()ŒAlsa.MixerElement÷0œpublic int
+is_playback_monoÃ128Õ()ŒAlsa.MixerElement÷0œpublic bool
+last_elemÃ128Õ()ŒAlsa.Mixer÷0œpublic MixerElement
+loadÃ128Õ()ŒAlsa.Mixer÷0œpublic int
+nextÃ128Õ()ŒAlsa.MixerElement÷0œpublic MixerElement
+openÃ128Õ(out Card card, string name = , CardOpenType t = 0)ŒAlsa.Card÷0œpublic int
+openÃ128Õ(out Mixer mixer, int t = 0 )ŒAlsa.Mixer÷0œpublic int
+padÃ8ŒAlsa.AesIec958÷0œuchar
+playback_pcmÃ8ŒAlsa.MixerRegistrationOptions÷0œPcmDevice
+prevÃ128Õ()ŒAlsa.MixerElement÷0œpublic MixerElement
+registerÃ128Õ(MixerRegistrationOptions? options = 0, out MixerClass classp = null )ŒAlsa.Mixer÷0œpublic int
+set_booleanÃ128Õ(uint idx, bool b)ŒAlsa.ElemValue÷0œpublic void
+set_byteÃ128Õ(uint idx, uchar val)ŒAlsa.ElemValue÷0œpublic void
+set_capture_dBÃ128Õ(SimpleChannelId channel, long val, int dir)ŒAlsa.MixerElement÷0œpublic int
+set_capture_dB_allÃ128Õ(long val, int dir)ŒAlsa.MixerElement÷0œpublic int
+set_capture_switchÃ128Õ(SimpleChannelId channel, int val)ŒAlsa.MixerElement÷0œpublic int
+set_capture_switch_allÃ128Õ(int val)ŒAlsa.MixerElement÷0œpublic int
+set_capture_volumeÃ128Õ(SimpleChannelId channel, long val)ŒAlsa.MixerElement÷0œpublic int
+set_capture_volume_allÃ128Õ(long val)ŒAlsa.MixerElement÷0œpublic int
+set_capture_volume_rangeÃ128Õ(long min, long max)ŒAlsa.MixerElement÷0œpublic int
+set_enum_itemÃ128Õ(SimpleChannelId channel, uint idx)ŒAlsa.MixerElement÷0œpublic int
+set_enumeratedÃ128Õ(uint idx, uint val)ŒAlsa.ElemValue÷0œpublic void
+set_idÃ128Õ(ElemId eid)ŒAlsa.ElemInfo÷0œpublic void
+set_idÃ128Õ(ElemId eid)ŒAlsa.ElemValue÷0œpublic void
+set_iec958Ã128Õ(AesIec958 val)ŒAlsa.ElemValue÷0œpublic void
+set_integerÃ128Õ(uint idx, long l)ŒAlsa.ElemValue÷0œpublic void
+set_integer64Ã128Õ(uint idx, int64 i)ŒAlsa.ElemValue÷0œpublic void
+set_numidÃ128Õ(uint n)ŒAlsa.ElemInfo÷0œpublic void
+set_offsetÃ128Õ(uint offset)ŒAlsa.ElemList÷0œpublic void
+set_playback_dBÃ128Õ(SimpleChannelId channel, long val, int dir)ŒAlsa.MixerElement÷0œpublic int
+set_playback_dB_allÃ128Õ(long val, int dir)ŒAlsa.MixerElement÷0œpublic int
+set_playback_switchÃ128Õ(SimpleChannelId channel, int val)ŒAlsa.MixerElement÷0œpublic int
+set_playback_switch_allÃ128Õ(int val)ŒAlsa.MixerElement÷0œpublic int
+set_playback_volumeÃ128Õ(SimpleChannelId channel, long val)ŒAlsa.MixerElement÷0œpublic int
+set_playback_volume_allÃ128Õ(long val)ŒAlsa.MixerElement÷0œpublic int
+set_playback_volume_rangeÃ128Õ(long min, long max)ŒAlsa.MixerElement÷0œpublic int
+statusÃ8ŒAlsa.AesIec958÷0œuchar
+strerrorÃ128Õ(int error)ŒAlsa÷0œpublic unowned string
+subcodeÃ8ŒAlsa.AesIec958÷0œuchar
+verÃ8ŒAlsa.MixerRegistrationOptions÷0œint

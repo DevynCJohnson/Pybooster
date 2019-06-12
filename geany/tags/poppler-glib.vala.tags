@@ -1,0 +1,462 @@
+# format=tagmanager
+@3DÃ4ŒPoppler.AnnotExternalDataType÷0
+@3DÃ4ŒPoppler.AnnotType÷0
+@paramsÃ8ŒPoppler.ActionLaunch÷0
+ACCEPTEDÃ4ŒPoppler.AnnotTextState÷0
+ActionÃ1ŒPoppler÷0
+ActionAnyÃ2048ŒPoppler÷0
+ActionGotoDestÃ2048ŒPoppler÷0
+ActionGotoRemoteÃ2048ŒPoppler÷0
+ActionLaunchÃ2048ŒPoppler÷0
+ActionMovieÃ2048ŒPoppler÷0
+ActionNamedÃ2048ŒPoppler÷0
+ActionTypeÃ2ŒPoppler÷0
+ActionUriÃ2048ŒPoppler÷0
+AnnotÃ1ŒPoppler÷0
+AnnotÃ128Õ()ŒPoppler.Annot÷0
+AnnotCalloutLineÃ1ŒPoppler÷0
+AnnotCalloutLineÃ128Õ()ŒPoppler.AnnotCalloutLine÷0
+AnnotExternalDataTypeÃ2ŒPoppler÷0
+AnnotFlagÃ2ŒPoppler÷0
+AnnotFreeTextÃ1ŒPoppler÷0
+AnnotFreeTextÃ128Õ()ŒPoppler.AnnotFreeText÷0
+AnnotFreeTextQuaddingÃ2ŒPoppler÷0
+AnnotMappingÃ1ŒPoppler÷0
+AnnotMappingÃ128Õ()ŒPoppler.AnnotMapping÷0
+AnnotMarkupÃ1ŒPoppler÷0
+AnnotMarkupÃ128Õ()ŒPoppler.AnnotMarkup÷0
+AnnotMarkupReplyTypeÃ2ŒPoppler÷0
+AnnotTextÃ1ŒPoppler÷0
+AnnotTextÃ128Õ()ŒPoppler.AnnotText÷0
+AnnotTextStateÃ2ŒPoppler÷0
+AnnotTypeÃ2ŒPoppler÷0
+AttachmentÃ1ŒPoppler÷0
+AttachmentÃ128Õ()ŒPoppler.Attachment÷0
+AttachmentSaveFuncÃ128Õ(string buf, size_t count, void* data, GLib.Error error)ŒPoppler÷0œpublic delegate bool
+BAD_CATALOGÃ4ŒPoppler.Error÷0
+BLINDSÃ4ŒPoppler.PageTransitionType÷0
+BOXÃ4ŒPoppler.PageTransitionType÷0
+BUTTONÃ4ŒPoppler.FormFieldType÷0
+BackendÃ2ŒPoppler÷0
+CAIROÃ4ŒPoppler.Backend÷0
+CANCELLEDÃ4ŒPoppler.AnnotTextState÷0
+CARETÃ4ŒPoppler.AnnotType÷0
+CENTEREDÃ4ŒPoppler.AnnotFreeTextQuadding÷0
+CENTER_WINDOWÃ4ŒPoppler.ViewerPreferences÷0
+CHECKÃ4ŒPoppler.FormButtonType÷0
+CHOICEÃ4ŒPoppler.FormFieldType÷0
+CID_TYPE0Ã4ŒPoppler.FontType÷0
+CID_TYPE0CÃ4ŒPoppler.FontType÷0
+CID_TYPE0COTÃ4ŒPoppler.FontType÷0
+CID_TYPE2Ã4ŒPoppler.FontType÷0
+CID_TYPE2OTÃ4ŒPoppler.FontType÷0
+CIRCLEÃ4ŒPoppler.AnnotType÷0
+COMBOÃ4ŒPoppler.FormChoiceType÷0
+COMPLETEDÃ4ŒPoppler.AnnotTextState÷0
+COVERÃ4ŒPoppler.PageTransitionType÷0
+ColorÃ1ŒPoppler÷0
+ColorÃ128Õ()ŒPoppler.Color÷0
+DAMAGEDÃ4ŒPoppler.Error÷0
+DIRECTION_RTLÃ4ŒPoppler.ViewerPreferences÷0
+DISPLAY_DOC_TITLEÃ4ŒPoppler.ViewerPreferences÷0
+DISSOLVEÃ4ŒPoppler.PageTransitionType÷0
+DestÃ1ŒPoppler÷0
+DestTypeÃ2ŒPoppler÷0
+DocumentÃ1ŒPoppler÷0
+DocumentÃ128Õ()ŒPoppler.Document÷0
+Document.from_dataÃ128Õ(string data, int length, string password)ŒPoppler.Document÷0
+Document.from_fileÃ128Õ(string uri, string? password)ŒPoppler.Document÷0
+ENCRYPTEDÃ4ŒPoppler.Error÷0
+ErrorÃ2ŒPoppler÷0
+FADEÃ4ŒPoppler.PageTransitionType÷0
+FILE_ATTACHMENTÃ4ŒPoppler.AnnotType÷0
+FILE_SELECTÃ4ŒPoppler.FormTextType÷0
+FITÃ4ŒPoppler.DestType÷0
+FITBÃ4ŒPoppler.DestType÷0
+FITBHÃ4ŒPoppler.DestType÷0
+FITBVÃ4ŒPoppler.DestType÷0
+FITHÃ4ŒPoppler.DestType÷0
+FITRÃ4ŒPoppler.DestType÷0
+FITVÃ4ŒPoppler.DestType÷0
+FIT_WINDOWÃ4ŒPoppler.ViewerPreferences÷0
+FLYÃ4ŒPoppler.PageTransitionType÷0
+FREE_TEXTÃ4ŒPoppler.AnnotType÷0
+FULLÃ4ŒPoppler.Permissions÷0
+FULL_SCREENÃ4ŒPoppler.PageMode÷0
+FontInfoÃ1ŒPoppler÷0
+FontInfoÃ128Õ(Poppler.Document document)ŒPoppler.FontInfo÷0
+FontTypeÃ2ŒPoppler÷0
+FontsIterÃ1ŒPoppler÷0
+FormButtonTypeÃ2ŒPoppler÷0
+FormChoiceTypeÃ2ŒPoppler÷0
+FormFieldÃ1ŒPoppler÷0
+FormFieldÃ128Õ()ŒPoppler.FormField÷0
+FormFieldMappingÃ1ŒPoppler÷0
+FormFieldMappingÃ128Õ()ŒPoppler.FormFieldMapping÷0
+FormFieldTypeÃ2ŒPoppler÷0
+FormTextTypeÃ2ŒPoppler÷0
+GLITTERÃ4ŒPoppler.PageTransitionType÷0
+GLYPHÃ4ŒPoppler.SelectionStyle÷0
+GOTO_DESTÃ4ŒPoppler.ActionType÷0
+GOTO_REMOTEÃ4ŒPoppler.ActionType÷0
+GROUPÃ4ŒPoppler.AnnotMarkupReplyType÷0
+HAS_CAIROÃ8ŒPoppler÷0œint
+HIDDENÃ4ŒPoppler.AnnotFlag÷0
+HIDE_MENUBARÃ4ŒPoppler.ViewerPreferences÷0
+HIDE_TOOLBARÃ4ŒPoppler.ViewerPreferences÷0
+HIDE_WINDOWUIÃ4ŒPoppler.ViewerPreferences÷0
+HIGHLIGHTÃ4ŒPoppler.AnnotType÷0
+HORIZONTALÃ4ŒPoppler.PageTransitionAlignment÷0
+INKÃ4ŒPoppler.AnnotType÷0
+INVALIDÃ4ŒPoppler.Error÷0
+INVISIBLEÃ4ŒPoppler.AnnotFlag÷0
+INWARDÃ4ŒPoppler.PageTransitionDirection÷0
+ImageMappingÃ1ŒPoppler÷0
+ImageMappingÃ128Õ()ŒPoppler.ImageMapping÷0
+IndexIterÃ1ŒPoppler÷0
+IndexIterÃ128Õ(Poppler.Document document)ŒPoppler.IndexIter÷0
+LANDSCAPEÃ4ŒPoppler.Orientation÷0
+LAUNCHÃ4ŒPoppler.ActionType÷0
+LEFT_JUSTIFIEDÃ4ŒPoppler.AnnotFreeTextQuadding÷0
+LINEÃ4ŒPoppler.AnnotType÷0
+LINEÃ4ŒPoppler.SelectionStyle÷0
+LINKÃ4ŒPoppler.AnnotType÷0
+LISTÃ4ŒPoppler.FormChoiceType÷0
+LOCKEDÃ4ŒPoppler.AnnotFlag÷0
+LOCKED_CONTENTSÃ4ŒPoppler.AnnotFlag÷0
+LayerÃ1ŒPoppler÷0
+LayerÃ128Õ()ŒPoppler.Layer÷0
+LayersIterÃ1ŒPoppler÷0
+LayersIterÃ128Õ(Poppler.Document document)ŒPoppler.LayersIter÷0
+LinkMappingÃ1ŒPoppler÷0
+LinkMappingÃ128Õ()ŒPoppler.LinkMapping÷0
+MAJOR_VERSIONÃ8ŒPoppler÷0œint
+MARKEDÃ4ŒPoppler.AnnotTextState÷0
+MICRO_VERSIONÃ8ŒPoppler÷0œint
+MINOR_VERSIONÃ8ŒPoppler÷0œint
+MOVIEÃ4ŒPoppler.ActionType÷0
+MOVIEÃ4ŒPoppler.AnnotType÷0
+MULTILINEÃ4ŒPoppler.FormTextType÷0
+NAMEDÃ4ŒPoppler.ActionType÷0
+NAMEDÃ4ŒPoppler.DestType÷0
+NONEÃ4ŒPoppler.ActionType÷0
+NONEÃ4ŒPoppler.AnnotTextState÷0
+NONEÃ4ŒPoppler.PageMode÷0
+NORMALÃ4ŒPoppler.FormTextType÷0
+NO_ROTATEÃ4ŒPoppler.AnnotFlag÷0
+NO_VIEWÃ4ŒPoppler.AnnotFlag÷0
+NO_ZOOMÃ4ŒPoppler.AnnotFlag÷0
+OK_TO_ADD_NOTESÃ4ŒPoppler.Permissions÷0
+OK_TO_COPYÃ4ŒPoppler.Permissions÷0
+OK_TO_FILL_FORMÃ4ŒPoppler.Permissions÷0
+OK_TO_MODIFYÃ4ŒPoppler.Permissions÷0
+OK_TO_PRINTÃ4ŒPoppler.Permissions÷0
+ONE_COLUMNÃ4ŒPoppler.PageLayout÷0
+OPEN_FILEÃ4ŒPoppler.Error÷0
+OUTWARDÃ4ŒPoppler.PageTransitionDirection÷0
+OrientationÃ2ŒPoppler÷0
+POLYGONÃ4ŒPoppler.AnnotType÷0
+POLY_LINEÃ4ŒPoppler.AnnotType÷0
+POPUPÃ4ŒPoppler.AnnotType÷0
+PORTRAITÃ4ŒPoppler.Orientation÷0
+PRINTÃ4ŒPoppler.AnnotFlag÷0
+PRINTER_MARKÃ4ŒPoppler.AnnotType÷0
+PSFileÃ1ŒPoppler÷0
+PSFileÃ128Õ(Poppler.Document document, string filename, int first_page, int n_pages)ŒPoppler.PSFile÷0
+PUSHÃ4ŒPoppler.FormButtonType÷0
+PUSHÃ4ŒPoppler.PageTransitionType÷0
+PageÃ1ŒPoppler÷0
+PageÃ128Õ()ŒPoppler.Page÷0
+PageLayoutÃ2ŒPoppler÷0
+PageModeÃ2ŒPoppler÷0
+PageTransitionÃ1ŒPoppler÷0
+PageTransitionÃ128Õ()ŒPoppler.PageTransition÷0
+PageTransitionAlignmentÃ2ŒPoppler÷0
+PageTransitionDirectionÃ2ŒPoppler÷0
+PageTransitionTypeÃ2ŒPoppler÷0
+PermissionsÃ2ŒPoppler÷0
+PopplerÃ256÷0
+RÃ4ŒPoppler.AnnotMarkupReplyType÷0
+RADIOÃ4ŒPoppler.FormButtonType÷0
+READ_ONLYÃ4ŒPoppler.AnnotFlag÷0
+REJECTEDÃ4ŒPoppler.AnnotTextState÷0
+REPLACEÃ4ŒPoppler.PageTransitionType÷0
+RIGHT_JUSTIFIEDÃ4ŒPoppler.AnnotFreeTextQuadding÷0
+RectangleÃ2048ŒPoppler÷0
+SCREENÃ4ŒPoppler.AnnotType÷0
+SEASCAPEÃ4ŒPoppler.Orientation÷0
+SIGNATUREÃ4ŒPoppler.FormFieldType÷0
+SINGLE_PAGEÃ4ŒPoppler.PageLayout÷0
+SOUNDÃ4ŒPoppler.AnnotType÷0
+SPLASHÃ4ŒPoppler.Backend÷0
+SPLITÃ4ŒPoppler.PageTransitionType÷0
+SQUAREÃ4ŒPoppler.AnnotType÷0
+SQUIGGLYÃ4ŒPoppler.AnnotType÷0
+STAMPÃ4ŒPoppler.AnnotType÷0
+STRIKE_OUTÃ4ŒPoppler.AnnotType÷0
+SelectionStyleÃ2ŒPoppler÷0
+TEXTÃ4ŒPoppler.AnnotType÷0
+TEXTÃ4ŒPoppler.FormFieldType÷0
+TOGGLE_NO_VIEWÃ4ŒPoppler.AnnotFlag÷0
+TRAP_NETÃ4ŒPoppler.AnnotType÷0
+TRUETYPEÃ4ŒPoppler.FontType÷0
+TRUETYPEOTÃ4ŒPoppler.FontType÷0
+TWO_COLUMN_LEFTÃ4ŒPoppler.PageLayout÷0
+TWO_COLUMN_RIGHTÃ4ŒPoppler.PageLayout÷0
+TWO_PAGE_LEFTÃ4ŒPoppler.PageLayout÷0
+TWO_PAGE_RIGHTÃ4ŒPoppler.PageLayout÷0
+TYPE1Ã4ŒPoppler.FontType÷0
+TYPE1CÃ4ŒPoppler.FontType÷0
+TYPE1COTÃ4ŒPoppler.FontType÷0
+TYPE3Ã4ŒPoppler.FontType÷0
+UNCOVERÃ4ŒPoppler.PageTransitionType÷0
+UNDERLINEÃ4ŒPoppler.AnnotType÷0
+UNKNOWNÃ4ŒPoppler.ActionType÷0
+UNKNOWNÃ4ŒPoppler.AnnotExternalDataType÷0
+UNKNOWNÃ4ŒPoppler.AnnotFlag÷0
+UNKNOWNÃ4ŒPoppler.AnnotTextState÷0
+UNKNOWNÃ4ŒPoppler.AnnotType÷0
+UNKNOWNÃ4ŒPoppler.Backend÷0
+UNKNOWNÃ4ŒPoppler.DestType÷0
+UNKNOWNÃ4ŒPoppler.FontType÷0
+UNKNOWNÃ4ŒPoppler.FormFieldType÷0
+UNMARKEDÃ4ŒPoppler.AnnotTextState÷0
+UNSETÃ4ŒPoppler.PageLayout÷0
+UNSETÃ4ŒPoppler.PageMode÷0
+UNSETÃ4ŒPoppler.ViewerPreferences÷0
+UPSIDEDOWNÃ4ŒPoppler.Orientation÷0
+URIÃ4ŒPoppler.ActionType÷0
+USE_ATTACHMENTSÃ4ŒPoppler.PageMode÷0
+USE_OCÃ4ŒPoppler.PageMode÷0
+USE_OUTLINESÃ4ŒPoppler.PageMode÷0
+USE_THUMBSÃ4ŒPoppler.PageMode÷0
+VERTICALÃ4ŒPoppler.PageTransitionAlignment÷0
+ViewerPreferencesÃ2ŒPoppler÷0
+WATERMARKÃ4ŒPoppler.AnnotType÷0
+WIDGETÃ4ŒPoppler.AnnotType÷0
+WIPEÃ4ŒPoppler.PageTransitionType÷0
+WITH_GDKÃ8ŒPoppler÷0œint
+WORDÃ4ŒPoppler.SelectionStyle÷0
+XYZÃ4ŒPoppler.DestType÷0
+actionÃ8ŒPoppler.LinkMapping÷0œPoppler.Action
+alignmentÃ8ŒPoppler.PageTransition÷0œPoppler.PageTransitionAlignment
+angleÃ8ŒPoppler.PageTransition÷0œint
+annotÃ8ŒPoppler.AnnotMapping÷0œPoppler.Annot
+anyÃ8ŒPoppler.Action÷0œPoppler.ActionAny
+areaÃ8ŒPoppler.AnnotMapping÷0œPoppler.Rectangle
+areaÃ8ŒPoppler.FormFieldMapping÷0œPoppler.Rectangle
+areaÃ8ŒPoppler.ImageMapping÷0œPoppler.Rectangle
+areaÃ8ŒPoppler.LinkMapping÷0œPoppler.Rectangle
+authorÃ8ŒPoppler.Document÷0
+blueÃ8ŒPoppler.Color÷0œuint16
+bottomÃ8ŒPoppler.Dest÷0œdouble
+button_get_button_typeÃ128Õ()ŒPoppler.FormField÷0œpublic Poppler.FormButtonType
+button_get_stateÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+button_set_stateÃ128Õ(bool state)ŒPoppler.FormField÷0œpublic void
+change_leftÃ8ŒPoppler.Dest÷0
+change_topÃ8ŒPoppler.Dest÷0
+change_zoomÃ8ŒPoppler.Dest÷0
+checksumÃ8ŒPoppler.Attachment÷0œGLib.StringBuilder
+choice_can_select_multipleÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+choice_commit_on_changeÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+choice_do_spell_checkÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+choice_get_choice_typeÃ128Õ()ŒPoppler.FormField÷0œpublic Poppler.FormChoiceType
+choice_get_itemÃ128Õ(int index)ŒPoppler.FormField÷0œpublic unowned string
+choice_get_n_itemsÃ128Õ()ŒPoppler.FormField÷0œpublic int
+choice_get_textÃ128Õ()ŒPoppler.FormField÷0œpublic unowned string
+choice_is_editableÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+choice_is_item_selectedÃ128Õ(int index)ŒPoppler.FormField÷0œpublic bool
+choice_select_itemÃ128Õ(int index)ŒPoppler.FormField÷0œpublic void
+choice_set_textÃ128Õ(string text)ŒPoppler.FormField÷0œpublic void
+choice_toggle_itemÃ128Õ(int index)ŒPoppler.FormField÷0œpublic void
+choice_unselect_allÃ128Õ()ŒPoppler.FormField÷0œpublic void
+copyÃ128Õ()ŒPoppler.Action÷0œpublic Poppler.Action
+copyÃ128Õ()ŒPoppler.AnnotCalloutLine÷0œpublic unowned
+copyÃ128Õ()ŒPoppler.AnnotMapping÷0œpublic unowned
+copyÃ128Õ()ŒPoppler.Color÷0œpublic unowned
+copyÃ128Õ()ŒPoppler.Dest÷0œpublic Poppler.Dest
+copyÃ128Õ()ŒPoppler.FontsIter÷0œpublic Poppler.FontsIter
+copyÃ128Õ()ŒPoppler.FormFieldMapping÷0œpublic Poppler.FormFieldMapping
+copyÃ128Õ()ŒPoppler.ImageMapping÷0œpublic Poppler.ImageMapping
+copyÃ128Õ()ŒPoppler.IndexIter÷0œpublic Poppler.IndexIter
+copyÃ128Õ()ŒPoppler.LayersIter÷0œpublic unowned
+copyÃ128Õ()ŒPoppler.LinkMapping÷0œpublic Poppler.LinkMapping
+copyÃ128Õ()ŒPoppler.PageTransition÷0œpublic Poppler.PageTransition
+creation_dateÃ8ŒPoppler.Document÷0œint
+creatorÃ8ŒPoppler.Document÷0
+ctimeÃ8ŒPoppler.Attachment÷0œGLib.Time
+date_parseÃ128Õ(string date, ulong timet)ŒPoppler÷0œpublic bool
+descriptionÃ8ŒPoppler.Attachment÷0
+destÃ8ŒPoppler.ActionGotoDest÷0œPoppler.Dest
+destÃ8ŒPoppler.ActionGotoRemote÷0œPoppler.Dest
+directionÃ8ŒPoppler.PageTransition÷0œPoppler.PageTransitionDirection
+durationÃ8ŒPoppler.PageTransition÷0œint
+error_quarkÃ128Õ()ŒPoppler÷0œpublic GLib.Quark
+fieldÃ8ŒPoppler.FormFieldMapping÷0œPoppler.FormField
+file_nameÃ8ŒPoppler.ActionGotoRemote÷0
+file_nameÃ8ŒPoppler.ActionLaunch÷0
+find_destÃ128Õ(string link_name)ŒPoppler.Document÷0œpublic unowned
+find_textÃ128Õ(string text)ŒPoppler.Page÷0œpublic unowned
+formatÃ8ŒPoppler.Document÷0
+format_majorÃ8ŒPoppler.Document÷0
+format_minorÃ8ŒPoppler.Document÷0
+freeÃ128Õ()ŒPoppler.FontInfo÷0œpublic void
+freeÃ128Õ()ŒPoppler.PSFile÷0œpublic void
+free_annot_mappingÃ128Õ(GLib.List list)ŒPoppler.Page÷0œpublic void
+free_form_field_mappingÃ128Õ(GLib.List list)ŒPoppler.Page÷0œpublic void
+free_image_mappingÃ128Õ(GLib.List list)ŒPoppler.Page÷0œpublic void
+free_link_mappingÃ128Õ(GLib.List list)ŒPoppler.Page÷0œpublic void
+get_actionÃ128Õ()ŒPoppler.IndexIter÷0œpublic unowned
+get_annot_mappingÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_annot_typeÃ128Õ()ŒPoppler.Annot÷0œpublic Poppler.AnnotType
+get_attachmentsÃ128Õ()ŒPoppler.Document÷0œpublic unowned
+get_backendÃ128Õ()ŒPoppler÷0œpublic Poppler.Backend
+get_callout_lineÃ128Õ()ŒPoppler.AnnotFreeText÷0œpublic unowned
+get_childÃ128Õ()ŒPoppler.IndexIter÷0œpublic unowned
+get_childÃ128Õ()ŒPoppler.LayersIter÷0œpublic unowned
+get_colorÃ128Õ()ŒPoppler.Annot÷0œpublic unowned
+get_contentsÃ128Õ()ŒPoppler.Annot÷0œpublic unowned string
+get_crop_boxÃ128Õ(out Poppler.Rectangle rect)ŒPoppler.Page÷0œpublic void
+get_dateÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic GLib.Date
+get_durationÃ128Õ()ŒPoppler.Page÷0œpublic double
+get_external_dataÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic Poppler.AnnotExternalDataType
+get_field_typeÃ128Õ()ŒPoppler.FormField÷0œpublic Poppler.FormFieldType
+get_file_nameÃ128Õ()ŒPoppler.FontsIter÷0œpublic unowned string
+get_flagsÃ128Õ()ŒPoppler.Annot÷0œpublic Poppler.AnnotFlag
+get_font_sizeÃ128Õ()ŒPoppler.FormField÷0œpublic double
+get_font_typeÃ128Õ()ŒPoppler.FontsIter÷0œpublic Poppler.FontType
+get_form_fieldÃ128Õ(int id)ŒPoppler.Document÷0œpublic unowned
+get_form_field_mappingÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_full_nameÃ128Õ()ŒPoppler.FontsIter÷0œpublic unowned string
+get_iconÃ128Õ()ŒPoppler.AnnotText÷0œpublic unowned string
+get_idÃ128Õ()ŒPoppler.FormField÷0œpublic int
+get_imageÃ128Õ(int image_id)ŒPoppler.Page÷0œpublic unowned
+get_image_mappingÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_indexÃ128Õ()ŒPoppler.Page÷0œpublic int
+get_is_openÃ128Õ()ŒPoppler.AnnotText÷0œpublic bool
+get_labelÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic unowned string
+get_layerÃ128Õ()ŒPoppler.LayersIter÷0œpublic unowned
+get_link_mappingÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_modifiedÃ128Õ()ŒPoppler.Annot÷0œpublic unowned string
+get_n_pagesÃ128Õ()ŒPoppler.Document÷0œpublic int
+get_nameÃ128Õ()ŒPoppler.Annot÷0œpublic unowned string
+get_nameÃ128Õ()ŒPoppler.FontsIter÷0œpublic unowned string
+get_opacityÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic double
+get_pageÃ128Õ(int index)ŒPoppler.Document÷0œpublic unowned
+get_page_by_labelÃ128Õ(string label)ŒPoppler.Document÷0œpublic unowned
+get_popup_is_openÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic bool
+get_popup_rectangleÃ128Õ(Poppler.Rectangle poppler_rect)ŒPoppler.AnnotMarkup÷0œpublic bool
+get_quaddingÃ128Õ()ŒPoppler.AnnotFreeText÷0œpublic Poppler.AnnotFreeTextQuadding
+get_radio_button_group_idÃ128Õ()ŒPoppler.Layer÷0œpublic int
+get_reply_toÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic Poppler.AnnotMarkupReplyType
+get_selection_regionÃ128Õ(double scale, Poppler.SelectionStyle style, Poppler.Rectangle selection)ŒPoppler.Page÷0œpublic unowned
+get_sizeÃ128Õ(out double width, out double height)ŒPoppler.Page÷0œpublic void
+get_stateÃ128Õ()ŒPoppler.AnnotText÷0œpublic Poppler.AnnotTextState
+get_subjectÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic unowned string
+get_textÃ128Õ(Poppler.SelectionStyle style, Poppler.Rectangle rect)ŒPoppler.Page÷0œpublic unowned string
+get_thumbnailÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_thumbnail_pixbufÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_thumbnail_sizeÃ128Õ(int width, int height)ŒPoppler.Page÷0œpublic bool
+get_titleÃ128Õ()ŒPoppler.Layer÷0œpublic unowned string
+get_titleÃ128Õ()ŒPoppler.LayersIter÷0œpublic unowned string
+get_transitionÃ128Õ()ŒPoppler.Page÷0œpublic unowned
+get_versionÃ128Õ()ŒPoppler÷0œpublic unowned string
+goto_destÃ8ŒPoppler.Action÷0œPoppler.ActionGotoDest
+goto_remoteÃ8ŒPoppler.Action÷0œPoppler.ActionGotoRemote
+greenÃ8ŒPoppler.Color÷0œuint16
+has_attachmentsÃ128Õ()ŒPoppler.Document÷0œpublic bool
+has_popupÃ128Õ()ŒPoppler.AnnotMarkup÷0œpublic bool
+hideÃ128Õ()ŒPoppler.Layer÷0œpublic void
+image_idÃ8ŒPoppler.ImageMapping÷0œint
+is_embeddedÃ128Õ()ŒPoppler.FontsIter÷0œpublic bool
+is_openÃ128Õ()ŒPoppler.IndexIter÷0œpublic bool
+is_parentÃ128Õ()ŒPoppler.Layer÷0œpublic bool
+is_read_onlyÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+is_subsetÃ128Õ()ŒPoppler.FontsIter÷0œpublic bool
+is_visibleÃ128Õ()ŒPoppler.Layer÷0œpublic bool
+keywordsÃ8ŒPoppler.Document÷0
+labelÃ8ŒPoppler.Page÷0
+launchÃ8ŒPoppler.Action÷0œPoppler.ActionLaunch
+leftÃ8ŒPoppler.Dest÷0œdouble
+linearizedÃ8ŒPoppler.Document÷0
+metadataÃ8ŒPoppler.Document÷0
+mod_dateÃ8ŒPoppler.Document÷0œint
+movieÃ8ŒPoppler.Action÷0œPoppler.ActionMovie
+mtimeÃ8ŒPoppler.Attachment÷0œGLib.Time
+multilineÃ8ŒPoppler.AnnotCalloutLine÷0œbool
+nameÃ8ŒPoppler.Attachment÷0
+namedÃ8ŒPoppler.Action÷0œPoppler.ActionNamed
+named_destÃ8ŒPoppler.ActionNamed÷0
+named_destÃ8ŒPoppler.Dest÷0
+nextÃ128Õ()ŒPoppler.FontsIter÷0œpublic bool
+nextÃ128Õ()ŒPoppler.IndexIter÷0œpublic bool
+nextÃ128Õ()ŒPoppler.LayersIter÷0œpublic bool
+page_layoutÃ8ŒPoppler.Document÷0œPoppler.PageLayout
+page_modeÃ8ŒPoppler.Document÷0œPoppler.PageMode
+page_numÃ8ŒPoppler.Dest÷0œint
+permissionsÃ8ŒPoppler.Document÷0œPoppler.Permissions
+producerÃ8ŒPoppler.Document÷0
+rectangularÃ8ŒPoppler.PageTransition÷0œbool
+redÃ8ŒPoppler.Color÷0œuint16
+renderÃ128Õ(Cairo.Context cairo)ŒPoppler.Page÷0œpublic void
+render_for_printingÃ128Õ(Cairo.Context cairo)ŒPoppler.Page÷0œpublic void
+render_selectionÃ128Õ(Cairo.Context cairo, Poppler.Rectangle selection, Poppler.Rectangle old_selection, Poppler.SelectionStyle style, Poppler.Color glyph_color, Poppler.Color background_color)ŒPoppler.Page÷0œpublic void
+render_selection_to_pixbufÃ128Õ(double scale, int rotation, Gdk.Pixbuf pixbuf, Poppler.Rectangle selection, Poppler.Rectangle old_selection, Poppler.SelectionStyle style, Gdk.Color glyph_color, Gdk.Color background_color)ŒPoppler.Page÷0œpublic void
+render_to_pixbufÃ128Õ(int src_x, int src_y, int src_width, int src_height, double scale, int rotation, Gdk.Pixbuf pixbuf)ŒPoppler.Page÷0œpublic void
+render_to_pixbuf_for_printingÃ128Õ(int src_x, int src_y, int src_width, int src_height, double scale, int rotation, Gdk.Pixbuf pixbuf)ŒPoppler.Page÷0œpublic void
+render_to_psÃ128Õ(Poppler.PSFile ps_file)ŒPoppler.Page÷0œpublic void
+rightÃ8ŒPoppler.Dest÷0œdouble
+saveÃ128Õ(string filename)ŒPoppler.Attachment÷0œpublic bool
+saveÃ128Õ(string uri)ŒPoppler.Document÷0œpublic bool
+save_a_copyÃ128Õ(string uri)ŒPoppler.Document÷0œpublic bool
+save_to_callbackÃ128Õ(Poppler.AttachmentSaveFunc save_func)ŒPoppler.Attachment÷0œpublic bool
+scaleÃ8ŒPoppler.PageTransition÷0œdouble
+scanÃ128Õ(int n_pages, out unowned Poppler.FontsIter iter)ŒPoppler.FontInfo÷0œpublic bool
+selection_region_freeÃ128Õ(GLib.List region)ŒPoppler.Page÷0œpublic void
+set_contentsÃ128Õ(string contents)ŒPoppler.Annot÷0œpublic void
+set_duplexÃ128Õ(bool duplex)ŒPoppler.PSFile÷0œpublic void
+set_paper_sizeÃ128Õ(double width, double height)ŒPoppler.PSFile÷0œpublic void
+showÃ128Õ()ŒPoppler.Layer÷0œpublic void
+sizeÃ8ŒPoppler.Attachment÷0œsize_t
+subjectÃ8ŒPoppler.Document÷0
+text_do_scrollÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+text_do_spell_checkÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+text_get_max_lenÃ128Õ()ŒPoppler.FormField÷0œpublic int
+text_get_textÃ128Õ()ŒPoppler.FormField÷0œpublic unowned string
+text_get_text_typeÃ128Õ()ŒPoppler.FormField÷0œpublic Poppler.FormTextType
+text_is_passwordÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+text_is_rich_textÃ128Õ()ŒPoppler.FormField÷0œpublic bool
+text_set_textÃ128Õ(string text)ŒPoppler.FormField÷0œpublic void
+titleÃ8ŒPoppler.ActionAny÷0
+titleÃ8ŒPoppler.ActionGotoDest÷0
+titleÃ8ŒPoppler.ActionGotoRemote÷0
+titleÃ8ŒPoppler.ActionLaunch÷0
+titleÃ8ŒPoppler.ActionMovie÷0
+titleÃ8ŒPoppler.ActionNamed÷0
+titleÃ8ŒPoppler.ActionUri÷0
+titleÃ8ŒPoppler.Document÷0
+topÃ8ŒPoppler.Dest÷0œdouble
+typeÃ8ŒPoppler.Action÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionAny÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionGotoDest÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionGotoRemote÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionLaunch÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionMovie÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionNamed÷0œPoppler.ActionType
+typeÃ8ŒPoppler.ActionUri÷0œPoppler.ActionType
+typeÃ8ŒPoppler.Dest÷0œPoppler.DestType
+typeÃ8ŒPoppler.PageTransition÷0œPoppler.PageTransitionType
+uriÃ8ŒPoppler.Action÷0œPoppler.ActionUri
+uriÃ8ŒPoppler.ActionUri÷0
+viewer_preferencesÃ8ŒPoppler.Document÷0œPoppler.ViewerPreferences
+x1Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+x1Ã8ŒPoppler.Rectangle÷0œdouble
+x2Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+x2Ã8ŒPoppler.Rectangle÷0œdouble
+x3Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+y1Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+y1Ã8ŒPoppler.Rectangle÷0œdouble
+y2Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+y2Ã8ŒPoppler.Rectangle÷0œdouble
+y3Ã8ŒPoppler.AnnotCalloutLine÷0œdouble
+zoomÃ8ŒPoppler.Dest÷0œdouble

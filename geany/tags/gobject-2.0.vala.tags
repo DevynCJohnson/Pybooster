@@ -1,0 +1,396 @@
+# format=tagmanager
+@newÃ128Õ(Type type, ...)ŒGLib.Object÷0œpublic Object
+@refÃ128Õ()ŒGLib.Object÷0œpublic unowned
+ACTIONÃ4ŒGLib.SignalFlags÷0
+AFTERÃ4ŒGLib.ConnectFlags÷0
+BIDIRECTIONALÃ4ŒGLib.BindingFlags÷0
+BOXEDÃ8ŒGLib.Type÷0œType
+BindingÃ1ŒGLib÷0
+BindingFlagsÃ2ŒGLib÷0
+BindingTransformFuncÃ128Õ(GLib.Binding binding, GLib.Value source_value, GLib.Value target_value)ŒGLib÷0œpublic delegate bool
+CLOSUREÃ4ŒGLib.SignalMatchType÷0
+CONSTRUCTÃ4ŒGLib.ParamFlags÷0
+CONSTRUCT_ONLYÃ4ŒGLib.ParamFlags÷0
+CallbackÃ128Õ()ŒGLib÷0œpublic delegate void
+ClosureÃ1ŒGLib÷0
+ClosureÃ128Õ(ulong sizeof_closure, Object object)ŒGLib.Closure÷0
+ClosureMarshalÃ128Õ(Closure closure, out Value return_value, [CCode (array_length_pos = 2.9)] Value[] param_values, void *invocation_hint, void *marshal_data)ŒGLib÷0œpublic delegate void
+ClosureNotifyÃ128Õ(void* data, Closure closure)ŒGLib÷0œpublic delegate void
+ConnectFlagsÃ2ŒGLib÷0
+DATAÃ4ŒGLib.SignalMatchType÷0
+DEFAULTÃ4ŒGLib.BindingFlags÷0
+DETAILÃ4ŒGLib.SignalMatchType÷0
+DETAILEDÃ4ŒGLib.SignalFlags÷0
+ENUMÃ8ŒGLib.Type÷0œType
+EnumClassÃ1ŒGLib÷0
+EnumValueÃ2048ŒGLib÷0
+FLAGSÃ8ŒGLib.Type÷0œType
+FUNCÃ4ŒGLib.SignalMatchType÷0
+FlagsClassÃ1ŒGLib÷0
+FlagsValueÃ1ŒGLib÷0
+GLibÃ256÷0
+IDÃ4ŒGLib.SignalMatchType÷0
+INTERFACEÃ8ŒGLib.Type÷0œType
+INVALIDÃ8ŒGLib.Type÷0œType
+INVERT_BOOLEANÃ4ŒGLib.BindingFlags÷0
+InitiallyUnownedÃ1ŒGLib÷0
+InitiallyUnownedÃ128Õ()ŒGLib.InitiallyUnowned÷0
+LAX_VALIDATIONÃ4ŒGLib.ParamFlags÷0
+MASKÃ4ŒGLib.TypeDebugFlags÷0
+NONEÃ4ŒGLib.TypeDebugFlags÷0
+NO_HOOKSÃ4ŒGLib.SignalFlags÷0
+OBJECTSÃ4ŒGLib.TypeDebugFlags÷0
+ObjectÃ1ŒGLib÷0
+ObjectÃ128Õ(...)ŒGLib.Object÷0
+ObjectClassÃ1ŒGLib÷0
+ObjectConstructParamÃ2048ŒGLib÷0
+ObjectGetPropertyFuncÃ128Õ(Object object, uint property_id, Value value, ParamSpec pspec)ŒGLib÷0œpublic delegate void
+ObjectSetPropertyFuncÃ128Õ(Object object, uint property_id, Value value, ParamSpec pspec)ŒGLib÷0œpublic delegate void
+ParamFlagsÃ2ŒGLib÷0
+ParamSpecÃ1ŒGLib÷0
+ParamSpec.internalÃ128Õ(string name, string nick, string blurb)ŒGLib.ParamSpec÷0
+ParamSpecBooleanÃ1ŒGLib÷0
+ParamSpecBooleanÃ128Õ(string name, string nick, string blurb, bool defaultvalue, ParamFlags flags)ŒGLib.ParamSpecBoolean÷0
+ParamSpecCharÃ1ŒGLib÷0
+ParamSpecCharÃ128Õ(string name, string nick, string blurb, int8 minimum, int8 maximum, int8 default_value, ParamFlags flags)ŒGLib.ParamSpecChar÷0
+ParamSpecDoubleÃ1ŒGLib÷0
+ParamSpecDoubleÃ128Õ(string name, string nick, string blurb, double minimum, double maximum, double default_value, ParamFlags flags)ŒGLib.ParamSpecDouble÷0
+ParamSpecEnumÃ1ŒGLib÷0
+ParamSpecEnumÃ128Õ(string name, string nick, string blurb, Type enum_type, int default_value, ParamFlags flags)ŒGLib.ParamSpecEnum÷0
+ParamSpecFlagsÃ1ŒGLib÷0
+ParamSpecFlagsÃ128Õ(string name, string nick, string blurb, Type flags_type, uint default_value, ParamFlags flags)ŒGLib.ParamSpecFlags÷0
+ParamSpecFloatÃ1ŒGLib÷0
+ParamSpecFloatÃ128Õ(string name, string nick, string blurb, float minimum, float maximum, float default_value, ParamFlags flags)ŒGLib.ParamSpecFloat÷0
+ParamSpecIntÃ1ŒGLib÷0
+ParamSpecIntÃ128Õ(string name, string nick, string blurb, int minimum, int maximum, int default_value, ParamFlags flags)ŒGLib.ParamSpecInt÷0
+ParamSpecInt64Ã1ŒGLib÷0
+ParamSpecInt64Ã128Õ(string name, string nick, string blurb, int64 minimum, int64 maximum, int64 default_value, ParamFlags flags)ŒGLib.ParamSpecInt64÷0
+ParamSpecLongÃ1ŒGLib÷0
+ParamSpecLongÃ128Õ(string name, string nick, string blurb, long minimum, long maximum, long default_value, ParamFlags flags)ŒGLib.ParamSpecLong÷0
+ParamSpecParamÃ1ŒGLib÷0
+ParamSpecParamÃ128Õ(string name, string nick, string blurb, Type param_type, ParamFlags flags)ŒGLib.ParamSpecParam÷0
+ParamSpecStringÃ1ŒGLib÷0
+ParamSpecStringÃ128Õ(string name, string nick, string blurb, string default_value, ParamFlags flags)ŒGLib.ParamSpecString÷0
+ParamSpecUCharÃ1ŒGLib÷0
+ParamSpecUCharÃ128Õ(string name, string nick, string blurb, uint8 minimum, uint8 maximum, uint8 default_value, ParamFlags flags)ŒGLib.ParamSpecUChar÷0
+ParamSpecUIntÃ1ŒGLib÷0
+ParamSpecUIntÃ128Õ(string name, string nick, string blurb, uint minimum, uint maximum, uint default_value, ParamFlags flags)ŒGLib.ParamSpecUInt÷0
+ParamSpecUInt64Ã1ŒGLib÷0
+ParamSpecUInt64Ã128Õ(string name, string nick, string blurb, uint64 minimum, uint64 maximum, uint64 default_value, ParamFlags flags)ŒGLib.ParamSpecUInt64÷0
+ParamSpecULongÃ1ŒGLib÷0
+ParamSpecULongÃ128Õ(string name, string nick, string blurb, ulong minimum, ulong maximum, ulong default_value, ParamFlags flags)ŒGLib.ParamSpecULong÷0
+ParameterÃ2048ŒGLib÷0
+READABLEÃ4ŒGLib.ParamFlags÷0
+READWRITEÃ4ŒGLib.ParamFlags÷0
+RUN_CLEANUPÃ4ŒGLib.SignalFlags÷0
+RUN_FIRSTÃ4ŒGLib.SignalFlags÷0
+RUN_LASTÃ4ŒGLib.SignalFlags÷0
+SIGNALSÃ4ŒGLib.TypeDebugFlags÷0
+STATIC_BLURBÃ4ŒGLib.ParamFlags÷0
+STATIC_NAMEÃ4ŒGLib.ParamFlags÷0
+STATIC_NICKÃ4ŒGLib.ParamFlags÷0
+STATIC_STRINGSÃ4ŒGLib.ParamFlags÷0
+SWAPPEDÃ4ŒGLib.ConnectFlags÷0
+SYNC_CREATEÃ4ŒGLib.BindingFlags÷0
+SignalÃ256÷0
+SignalEmissionHookÃ128Õ(SignalInvocationHint ihint, [CCode (array_length_pos = 1.9)] Value[] param_values)ŒGLib÷0œpublic delegate bool
+SignalFlagsÃ2ŒGLib÷0
+SignalHandlerÃ256÷0
+SignalInvocationHintÃ2048ŒGLib÷0
+SignalMatchTypeÃ2ŒGLib÷0
+SignalQueryÃ2048ŒGLib÷0
+ToggleNotifyÃ128Õ(GLib.Object object, bool is_last_ref)ŒGLib÷0œpublic delegate void
+TypeÃ2048ŒGLib÷0
+TypeClassÃ1ŒGLib÷0
+TypeDebugFlagsÃ2ŒGLib÷0
+TypeModuleÃ1ŒGLib÷0
+TypeModuleÃ128Õ()ŒGLib.TypeModule÷0
+TypePluginÃ32ŒGLib÷0
+TypeQueryÃ2048ŒGLib÷0
+UNBLOCKEDÃ4ŒGLib.SignalMatchType÷0
+ValueÃ2048ŒGLib÷0
+ValueÃ128Õ(Type g_type)ŒGLib.Value÷0
+ValueArrayÃ1ŒGLib÷0
+ValueArrayÃ128Õ(uint n_prealloced)ŒGLib.ValueArray÷0
+ValueTransformÃ128Õ(Value src_value, out Value dest_value)ŒGLib÷0œpublic delegate void
+WRITABLEÃ4ŒGLib.ParamFlags÷0
+WeakNotifyÃ128Õ(Object object)ŒGLib÷0œpublic delegate void
+add_emission_hookÃ128Õ(uint signal_id, Quark detail, SignalEmissionHook hook_func, DestroyNotify? data_destroy)ŒGLib.Signal÷0
+add_finalize_notifierÃ128Õ(void *notify_data, ClosureNotify notify_func)ŒGLib.Closure÷0œpublic void
+add_invalidate_notifierÃ128Õ(void *notify_data, ClosureNotify notify_func)ŒGLib.Closure÷0œpublic void
+add_marshal_guardsÃ128Õ(void *pre_marshal_data, ClosureNotify pre_marshal_notify, void *post_marshal_data, ClosureNotify post_marshal_notify)ŒGLib.Closure÷0œpublic void
+add_toggle_refÃ128Õ(ToggleNotify notify)ŒGLib.Object÷0œpublic void
+add_weak_pointerÃ128Õ(void **data)ŒGLib.Object÷0œpublic void
+appendÃ128Õ(Value value)ŒGLib.ValueArray÷0œpublic void
+bind_propertyÃ128Õ(string source_property, GLib.Object target, string target_property, GLib.BindingFlags flags, [CCode (type = )] owned GLib.BindingTransformFunc? transform_to = null, [CCode (type = )] owned GLib.BindingTransformFunc? transform_from = null)ŒGLib.Object÷0œpublic unowned
+blockÃ128Õ(void* instance, ulong handler_id)ŒGLib.SignalHandler÷0œpublic void
+block_by_funcÃ128Õ(void* instance, void* func, void* data)ŒGLib.SignalHandler÷0
+block_matchedÃ128Õ(void* instance, SignalMatchType mask, uint signal_id, Quark detail, Closure? closure, void* func, void* data)ŒGLib.SignalHandler÷0
+chain_from_overriddenÃ128Õ([CCode (array_length = false)] Value[] instance_and_params, out Value return_value)ŒGLib.Signal÷0œpublic void
+childrenÃ128Õ()ŒGLib.Type÷0œpublic Type
+class_peekÃ128Õ()ŒGLib.Type÷0œpublic unowned
+class_refÃ128Õ()ŒGLib.Type÷0œpublic TypeClass
+class_sizeÃ8ŒGLib.TypeQuery÷0
+connectÃ128Õ(string signal_spec, ...)ŒGLib.Object÷0œpublic unowned
+connectÃ128Õ(void* instance, string detailed_signal, Callback handler, void* data)ŒGLib.Signal÷0
+connect_afterÃ128Õ(void* instance, string detailed_signal, Callback handler, void* data)ŒGLib.Signal÷0
+connect_closureÃ128Õ(void* instance, string detailed_signal, Closure closure, bool after)ŒGLib.Signal÷0
+connect_closure_by_idÃ128Õ(void* instance, uint signal_id, Quark detail, Closure closure, bool after)ŒGLib.Signal÷0
+connect_dataÃ128Õ(void* instance, string detailed_signal, Callback handler, void* data, ClosureNotify destroy_data, ConnectFlags flags)ŒGLib.Signal÷0
+connect_objectÃ128Õ(void* instance, string detailed_signal, Callback handler, Object gobject, ConnectFlags flags)ŒGLib.Signal÷0
+connect_swappedÃ128Õ(void* instance, string detailed_signal, Callback handler, void* data)ŒGLib.Signal÷0
+constructedÃ128Õ()ŒGLib.Object÷0œpublic virtual void
+copyÃ128Õ(ref Value dest_value)ŒGLib.Value÷0œpublic void
+copyÃ128Õ()ŒGLib.ValueArray÷0œpublic ValueArray
+cset_firstÃ8ŒGLib.ParamSpecString÷0
+cset_nthÃ8ŒGLib.ParamSpecString÷0
+default_valueÃ8ŒGLib.ParamSpecBoolean÷0œbool
+default_valueÃ8ŒGLib.ParamSpecChar÷0œint8
+default_valueÃ8ŒGLib.ParamSpecDouble÷0œdouble
+default_valueÃ8ŒGLib.ParamSpecEnum÷0œint
+default_valueÃ8ŒGLib.ParamSpecFlags÷0
+default_valueÃ8ŒGLib.ParamSpecFloat÷0œfloat
+default_valueÃ8ŒGLib.ParamSpecInt÷0œint
+default_valueÃ8ŒGLib.ParamSpecInt64÷0œint64
+default_valueÃ8ŒGLib.ParamSpecLong÷0œlong
+default_valueÃ8ŒGLib.ParamSpecString÷0
+default_valueÃ8ŒGLib.ParamSpecUChar÷0œuint8
+default_valueÃ8ŒGLib.ParamSpecUInt÷0
+default_valueÃ8ŒGLib.ParamSpecUInt64÷0œuint64
+default_valueÃ8ŒGLib.ParamSpecULong÷0
+depthÃ128Õ()ŒGLib.Type÷0
+detailÃ8ŒGLib.SignalInvocationHint÷0œQuark
+disconnectÃ128Õ(ulong handler_id)ŒGLib.Object÷0œpublic void
+disconnectÃ128Õ(void* instance, ulong handler_id)ŒGLib.SignalHandler÷0œpublic void
+disconnect_by_funcÃ128Õ(void* instance, void* func, void* data)ŒGLib.SignalHandler÷0
+disconnect_matchedÃ128Õ(void* instance, SignalMatchType mask, uint signal_id, Quark detail, Closure? closure, void* func, void* data)ŒGLib.SignalHandler÷0
+disposeÃ128Õ()ŒGLib.Object÷0œpublic virtual void
+dup_boxedÃ128Õ()ŒGLib.Value÷0œpublic void *
+dup_objectÃ128Õ()ŒGLib.Value÷0œpublic Object
+dup_stringÃ128Õ()ŒGLib.Value÷0
+emitÃ128Õ(void* instance, uint signal_id, Quark detail, ...)ŒGLib.Signal÷0œpublic void
+emit_by_nameÃ128Õ(void* instance, string detailed_signal, ...)ŒGLib.Signal÷0œpublic void
+ensure_non_nullÃ8ŒGLib.ParamSpecString÷0
+enum_classÃ8ŒGLib.ParamSpecEnum÷0œunowned
+findÃ128Õ(void* instance, SignalMatchType mask, uint signal_id, Quark detail, Closure? closure, void* func, void* data)ŒGLib.SignalHandler÷0
+find_propertyÃ128Õ(string property_name)ŒGLib.ObjectClass÷0œpublic unowned
+fits_pointerÃ128Õ()ŒGLib.Value÷0œpublic bool
+flagsÃ8ŒGLib.Binding÷0œGLib.BindingFlags
+flagsÃ8ŒGLib.ParamSpec÷0œParamFlags
+flags_classÃ8ŒGLib.ParamSpecFlags÷0œunowned
+freeze_notifyÃ128Õ()ŒGLib.Object÷0œpublic void
+from_instanceÃ128Õ(void* instance)ŒGLib.Type÷0œpublic Type
+from_nameÃ128Õ(string name)ŒGLib.Type÷0œpublic Type
+get_blurbÃ128Õ()ŒGLib.ParamSpec÷0œpublic unowned string
+get_booleanÃ128Õ()ŒGLib.Value÷0œpublic bool
+get_boxedÃ128Õ()ŒGLib.Value÷0œpublic void *
+get_charÃ128Õ()ŒGLib.Value÷0œpublic char
+get_classÃ128Õ()ŒGLib.Object÷0œpublic unowned
+get_dataÃ128Õ(string key)ŒGLib.Object÷0œpublic unowned
+get_doubleÃ128Õ()ŒGLib.Value÷0œpublic double
+get_enumÃ128Õ()ŒGLib.Value÷0œpublic int
+get_first_valueÃ128Õ(uint value)ŒGLib.FlagsClass÷0œpublic unowned
+get_flagsÃ128Õ()ŒGLib.Value÷0
+get_floatÃ128Õ()ŒGLib.Value÷0œpublic float
+get_gtypeÃ128Õ()ŒGLib.Value÷0œpublic Type
+get_intÃ128Õ()ŒGLib.Value÷0œpublic int
+get_int64Ã128Õ()ŒGLib.Value÷0œpublic int64
+get_invocation_hintÃ128Õ(void* instance)ŒGLib.Signal÷0œpublic unowned
+get_longÃ128Õ()ŒGLib.Value÷0œpublic long
+get_nameÃ128Õ()ŒGLib.ParamSpec÷0œpublic unowned string
+get_nickÃ128Õ()ŒGLib.ParamSpec÷0œpublic unowned string
+get_nthÃ128Õ(uint index_)ŒGLib.ValueArray÷0œpublic unowned
+get_objectÃ128Õ()ŒGLib.Value÷0œpublic unowned
+get_paramÃ128Õ()ŒGLib.Value÷0œpublic ParamSpec
+get_pointerÃ128Õ()ŒGLib.Value÷0œpublic void *
+get_propertyÃ128Õ(string property_name, ref Value value)ŒGLib.Object÷0œpublic void
+get_qdataÃ128Õ(Quark quark)ŒGLib.Object÷0œpublic unowned
+get_qdataÃ128Õ(Quark quark)ŒGLib.ParamSpec÷0œpublic void *
+get_redirect_targetÃ128Õ()ŒGLib.ParamSpec÷0œpublic ParamSpec
+get_stringÃ128Õ()ŒGLib.Value÷0œpublic unowned string
+get_typeÃ128Õ()ŒGLib.Object÷0œpublic Type
+get_typeÃ128Õ()ŒGLib.TypeClass÷0œpublic Type
+get_ucharÃ128Õ()ŒGLib.Value÷0œpublic uchar
+get_uintÃ128Õ()ŒGLib.Value÷0
+get_uint64Ã128Õ()ŒGLib.Value÷0œpublic uint64
+get_ulongÃ128Õ()ŒGLib.Value÷0
+get_valueÃ128Õ(int value)ŒGLib.EnumClass÷0œpublic unowned
+get_value_by_nameÃ128Õ(string name)ŒGLib.EnumClass÷0œpublic unowned
+get_value_by_nameÃ128Õ(string name)ŒGLib.FlagsClass÷0œpublic unowned
+get_value_by_nickÃ128Õ(string name)ŒGLib.EnumClass÷0œpublic unowned
+get_value_by_nickÃ128Õ(string name)ŒGLib.FlagsClass÷0œpublic unowned
+has_handler_pendingÃ128Õ(void* instance, uint signal_id, Quark detail, bool may_be_blocked)ŒGLib.Signal÷0œpublic bool
+holdsÃ128Õ(Type type)ŒGLib.Value÷0œpublic bool
+initÃ128Õ(Type g_type)ŒGLib.Value÷0œpublic void
+insertÃ128Õ(uint index_, Value value)ŒGLib.ValueArray÷0œpublic void
+install_propertyÃ128Õ(uint property_id, ParamSpec pspec)ŒGLib.ObjectClass÷0œpublic void
+instance_sizeÃ8ŒGLib.TypeQuery÷0
+interfacesÃ128Õ()ŒGLib.Type÷0œpublic Type
+invalidateÃ128Õ()ŒGLib.Closure÷0œpublic void
+invokeÃ128Õ(out Value? return_value, [CCode (array_length_pos = 1.9)] Value[] param_values, void *invocation_hint)ŒGLib.Closure÷0œpublic void
+is_aÃ128Õ(Type is_a_type)ŒGLib.Type÷0œpublic bool
+is_abstractÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_classedÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_connectedÃ128Õ(void* instance, ulong handler_id)ŒGLib.SignalHandler÷0œpublic bool
+is_deep_derivableÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_derivableÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_derivedÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_enumÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_flagsÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_fundamentalÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_instantiatableÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_interfaceÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_objectÃ128Õ()ŒGLib.Type÷0œpublic bool
+is_value_typeÃ128Õ()ŒGLib.Type÷0œpublic bool
+itypeÃ8ŒGLib.SignalQuery÷0œType
+list_idsÃ128Õ(Type itype)ŒGLib.Signal÷0
+list_propertiesÃ128Õ()ŒGLib.ObjectClass÷0œpublic unowned
+loadÃ128Õ()ŒGLib.TypeModule÷0œpublic virtual bool
+lookupÃ128Õ(string name, Type itype)ŒGLib.Signal÷0
+maskÃ8ŒGLib.FlagsClass÷0
+maximumÃ8ŒGLib.EnumClass÷0œint
+maximumÃ8ŒGLib.ParamSpecChar÷0œint8
+maximumÃ8ŒGLib.ParamSpecDouble÷0œdouble
+maximumÃ8ŒGLib.ParamSpecFloat÷0œfloat
+maximumÃ8ŒGLib.ParamSpecInt÷0œint
+maximumÃ8ŒGLib.ParamSpecInt64÷0œint64
+maximumÃ8ŒGLib.ParamSpecLong÷0œlong
+maximumÃ8ŒGLib.ParamSpecUChar÷0œuint8
+maximumÃ8ŒGLib.ParamSpecUInt÷0
+maximumÃ8ŒGLib.ParamSpecUInt64÷0œuint64
+maximumÃ8ŒGLib.ParamSpecULong÷0
+minimumÃ8ŒGLib.EnumClass÷0œint
+minimumÃ8ŒGLib.ParamSpecChar÷0œint8
+minimumÃ8ŒGLib.ParamSpecDouble÷0œdouble
+minimumÃ8ŒGLib.ParamSpecFloat÷0œfloat
+minimumÃ8ŒGLib.ParamSpecInt÷0œint
+minimumÃ8ŒGLib.ParamSpecInt64÷0œint64
+minimumÃ8ŒGLib.ParamSpecLong÷0œlong
+minimumÃ8ŒGLib.ParamSpecUChar÷0œuint8
+minimumÃ8ŒGLib.ParamSpecUInt÷0
+minimumÃ8ŒGLib.ParamSpecUInt64÷0œuint64
+minimumÃ8ŒGLib.ParamSpecULong÷0
+n_paramsÃ8ŒGLib.SignalQuery÷0
+n_valuesÃ8ŒGLib.EnumClass÷0
+n_valuesÃ8ŒGLib.FlagsClass÷0
+n_valuesÃ8ŒGLib.ValueArray÷0
+nameÃ8ŒGLib.ParamSpec÷0
+nameÃ8ŒGLib.Parameter÷0œunowned
+nameÃ128Õ(uint signal_id)ŒGLib.Signal÷0œpublic unowned string
+nameÃ128Õ()ŒGLib.Type÷0œpublic unowned string
+newvÃ128Õ(Type type, [CCode (array_length_pos = 1.9)] Parameter[] parameters)ŒGLib.Object÷0œpublic Object
+notifyÃ128Õ(ParamSpec pspec)ŒGLib.Object÷0œpublic signal void
+notify_propertyÃ128Õ(string property_name)ŒGLib.Object÷0œpublic void
+null_fold_if_emptyÃ8ŒGLib.ParamSpecString÷0
+override_class_closureÃ128Õ(uint signal_id, Type instance_type, Closure class_closure)ŒGLib.Signal÷0œpublic void
+owner_typeÃ8ŒGLib.ParamSpec÷0œType
+param_take_ownershipÃ128Õ(out ParamSpec param)ŒGLib.Value÷0œpublic void
+param_typesÃ8ŒGLib.SignalQuery÷0œunowned
+parentÃ128Õ()ŒGLib.Type÷0œpublic Type
+parse_nameÃ128Õ(string detailed_signal, Type itype, out uint signal_id, out Quark detail, bool force_detail_quark)ŒGLib.Signal÷0œpublic bool
+peek_pointerÃ128Õ()ŒGLib.Value÷0œpublic void *
+prependÃ128Õ(Value value)ŒGLib.ValueArray÷0œpublic void
+qnameÃ128Õ()ŒGLib.Type÷0œpublic Quark
+queryÃ128Õ(uint signal_id, out SignalQuery query)ŒGLib.Signal÷0œpublic void
+queryÃ128Õ(out TypeQuery query)ŒGLib.Type÷0œpublic void
+ref_countÃ8ŒGLib.Object÷0
+ref_sinkÃ128Õ()ŒGLib.Object÷0œpublic Object
+ref_sinkÃ128Õ()ŒGLib.ParamSpec÷0œpublic ParamSpec
+register_transform_funcÃ128Õ(Type src_type, Type dest_type, ValueTransform transform)ŒGLib.Value÷0œpublic void
+removeÃ128Õ(uint index_)ŒGLib.ValueArray÷0œpublic void
+remove_emission_hookÃ128Õ(uint signal_id, ulong hook_id)ŒGLib.Signal÷0œpublic void
+remove_finalize_notifierÃ128Õ(void *notify_data, ClosureNotify notify_func)ŒGLib.Closure÷0œpublic void
+remove_invalidate_notifierÃ128Õ(void *notify_data, ClosureNotify notify_func)ŒGLib.Closure÷0œpublic void
+remove_toggle_refÃ128Õ(ToggleNotify notify)ŒGLib.Object÷0œpublic void
+remove_weak_pointerÃ128Õ(void **data)ŒGLib.Object÷0œpublic void
+resetÃ128Õ()ŒGLib.Value÷0œpublic unowned
+return_typeÃ8ŒGLib.SignalQuery÷0œType
+run_typeÃ8ŒGLib.SignalInvocationHint÷0œSignalFlags
+set_booleanÃ128Õ(bool v_boolean)ŒGLib.Value÷0œpublic void
+set_boxedÃ128Õ(void* v_boxed)ŒGLib.Value÷0œpublic void
+set_charÃ128Õ(char v_char)ŒGLib.Value÷0œpublic void
+set_dataÃ128Õ(string key, owned T data)ŒGLib.Object÷0œpublic void
+set_data_fullÃ128Õ(string key, void* data, DestroyNotify? destroy)ŒGLib.Object÷0œpublic void
+set_doubleÃ128Õ(double v_double)ŒGLib.Value÷0œpublic void
+set_enumÃ128Õ(int v_enum)ŒGLib.Value÷0œpublic void
+set_flagsÃ128Õ(uint v_flags)ŒGLib.Value÷0œpublic void
+set_floatÃ128Õ(float v_float)ŒGLib.Value÷0œpublic void
+set_gtypeÃ128Õ(Type v_gtype)ŒGLib.Value÷0œpublic void
+set_instanceÃ128Õ(void* instance)ŒGLib.Value÷0œpublic void
+set_intÃ128Õ(int v_int)ŒGLib.Value÷0œpublic void
+set_int64Ã128Õ(int64 v_int64)ŒGLib.Value÷0œpublic void
+set_longÃ128Õ(long v_long)ŒGLib.Value÷0œpublic void
+set_marshalÃ128Õ(ClosureMarshal marshal)ŒGLib.Closure÷0œpublic void
+set_meta_marshalÃ128Õ(void *marshal_data, ClosureMarshal meta_marshal)ŒGLib.Closure÷0œpublic void
+set_nameÃ128Õ(string name)ŒGLib.TypeModule÷0œpublic void
+set_objectÃ128Õ(Object v_object)ŒGLib.Value÷0œpublic void
+set_paramÃ128Õ(ParamSpec param)ŒGLib.Value÷0œpublic void
+set_pointerÃ128Õ(void* v_pointer)ŒGLib.Value÷0œpublic void
+set_propertyÃ128Õ(string property_name, Value value)ŒGLib.Object÷0œpublic void
+set_qdataÃ128Õ(Quark quark, owned T data)ŒGLib.Object÷0œpublic void
+set_qdataÃ128Õ(Quark quark, void* data)ŒGLib.ParamSpec÷0œpublic void
+set_qdata_fullÃ128Õ(Quark quark, void* data, DestroyNotify? destroy)ŒGLib.Object÷0œpublic void
+set_qdata_fullÃ128Õ(Quark quark, void* data, DestroyNotify destroy)ŒGLib.ParamSpec÷0œpublic void
+set_static_stringÃ128Õ(string v_string)ŒGLib.Value÷0œpublic void
+set_stringÃ128Õ(string v_string)ŒGLib.Value÷0œpublic void
+set_ucharÃ128Õ(uchar v_uchar)ŒGLib.Value÷0œpublic void
+set_uintÃ128Õ(uint v_uint)ŒGLib.Value÷0œpublic void
+set_uint64Ã128Õ(uint64 v_uint64)ŒGLib.Value÷0œpublic void
+set_ulongÃ128Õ(ulong v_ulong)ŒGLib.Value÷0œpublic void
+set_value_defaultÃ128Õ(Value value)ŒGLib.ParamSpec÷0œpublic void
+signal_flagsÃ8ŒGLib.SignalQuery÷0œSignalFlags
+signal_idÃ8ŒGLib.SignalInvocationHint÷0
+signal_idÃ8ŒGLib.SignalQuery÷0
+signal_nameÃ8ŒGLib.SignalQuery÷0œunowned
+sinkÃ128Õ()ŒGLib.Closure÷0œpublic void
+sinkÃ128Õ()ŒGLib.ParamSpec÷0œpublic void
+sortÃ128Õ(CompareFunc compare_func)ŒGLib.ValueArray÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc compare_func)ŒGLib.ValueArray÷0œpublic void
+sourceÃ8ŒGLib.Binding÷0œGLib.Object
+source_propertyÃ8ŒGLib.Binding÷0
+steal_dataÃ128Õ(string key)ŒGLib.Object÷0œpublic T
+steal_qdataÃ128Õ(Quark quark)ŒGLib.Object÷0œpublic T
+steal_qdataÃ128Õ(Quark quark)ŒGLib.ParamSpec÷0œpublic void *
+stop_emissionÃ128Õ(void* instance, uint signal_id, Quark detail)ŒGLib.Signal÷0œpublic void
+stop_emission_by_nameÃ128Õ(void* instance, string detailed_signal)ŒGLib.Signal÷0œpublic void
+strdup_contentsÃ128Õ()ŒGLib.Value÷0
+substitutorÃ8ŒGLib.ParamSpecString÷0œchar
+take_objectÃ128Õ(owned Object v_object)ŒGLib.Value÷0œpublic void
+take_paramÃ128Õ(out ParamSpec param)ŒGLib.Value÷0œpublic void
+take_stringÃ128Õ(owned string v_string)ŒGLib.Value÷0œpublic void
+targetÃ8ŒGLib.Binding÷0œGLib.Object
+target_propertyÃ8ŒGLib.Binding÷0
+thaw_notifyÃ128Õ()ŒGLib.Object÷0œpublic void
+transformÃ128Õ(ref Value dest_value)ŒGLib.Value÷0œpublic bool
+typeÃ8ŒGLib.TypeQuery÷0œType
+typeÃ128Õ()ŒGLib.Value÷0œpublic Type
+type_compatibleÃ128Õ(Type src_type, Type dest_type)ŒGLib.Value÷0œpublic bool
+type_nameÃ8ŒGLib.TypeQuery÷0œunowned
+type_nameÃ128Õ()ŒGLib.Value÷0œpublic unowned string
+type_transformableÃ128Õ(Type src_type, Type dest_type)ŒGLib.Value÷0œpublic bool
+unblockÃ128Õ(void* instance, ulong handler_id)ŒGLib.SignalHandler÷0œpublic void
+unblock_by_funcÃ128Õ(void* instance, void* func, void* data)ŒGLib.SignalHandler÷0
+unblock_matchedÃ128Õ(void* instance, SignalMatchType mask, uint signal_id, Quark detail, Closure? closure, void* func, void* data)ŒGLib.SignalHandler÷0
+unloadÃ128Õ()ŒGLib.TypeModule÷0œpublic virtual void
+unrefÃ128Õ()ŒGLib.Object÷0œpublic void
+unrefÃ128Õ()ŒGLib.ParamSpec÷0œpublic void
+unsetÃ128Õ()ŒGLib.Value÷0œpublic void
+unuseÃ128Õ()ŒGLib.TypeModule÷0œpublic void
+useÃ128Õ()ŒGLib.TypeModule÷0œpublic bool
+valueÃ8ŒGLib.EnumValue÷0œint
+valueÃ8ŒGLib.FlagsValue÷0œint
+valueÃ8ŒGLib.Parameter÷0œValue
+value_convertÃ128Õ(Value src_value, Value dest_value, bool strict_validation)ŒGLib.ParamSpec÷0œpublic bool
+value_defaultsÃ128Õ(Value value)ŒGLib.ParamSpec÷0œpublic bool
+value_nameÃ8ŒGLib.EnumValue÷0œunowned
+value_nameÃ8ŒGLib.FlagsValue÷0œunowned
+value_nickÃ8ŒGLib.EnumValue÷0œunowned
+value_nickÃ8ŒGLib.FlagsValue÷0œunowned
+value_typeÃ8ŒGLib.ParamSpec÷0œType
+value_validateÃ128Õ(Value value)ŒGLib.ParamSpec÷0œpublic bool
+valuesÃ8ŒGLib.EnumClass÷0œunowned
+valuesÃ8ŒGLib.FlagsClass÷0œFlagsValue
+valuesÃ8ŒGLib.ValueArray÷0œValue
+values_cmpÃ128Õ(Value value1, Value value2)ŒGLib.ParamSpec÷0œpublic int
+weak_refÃ128Õ(WeakNotify notify)ŒGLib.Object÷0œpublic void
+weak_unrefÃ128Õ(WeakNotify notify)ŒGLib.Object÷0œpublic void

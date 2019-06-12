@@ -1,0 +1,247 @@
+# format=tagmanager
+@callbackÃ8ŒLibUSB.Transfer÷0œtransfer_cb_fn
+@interfaceÃ8ŒLibUSB.ConfigDescriptor÷0œInterface
+ACCESSÃ4ŒLibUSB.Error÷0
+ADAPTIVEÃ4ŒLibUSB.IsoSyncType÷0
+ADDRESSÃ8ŒLibUSB.EndpointMask÷0œint
+ASYNCÃ4ŒLibUSB.IsoSyncType÷0
+AUDIOÃ4ŒLibUSB.ClassCode÷0
+BULKÃ4ŒLibUSB.TransferType÷0
+BUSYÃ4ŒLibUSB.Error÷0
+CANCELLEDÃ4ŒLibUSB.TransferStatus÷0
+CLASSÃ4ŒLibUSB.RequestType÷0
+CLEAR_FEATUREÃ4ŒLibUSB.StandardRequest÷0
+COMMÃ4ŒLibUSB.ClassCode÷0
+COMPLETEDÃ4ŒLibUSB.TransferStatus÷0
+CONFIGÃ4ŒLibUSB.DescriptorType÷0
+CONFIG_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+CONTROLÃ4ŒLibUSB.TransferType÷0
+ClassCodeÃ2ŒLibUSB÷0
+ConfigDescriptorÃ1ŒLibUSB÷0
+ContextÃ1ŒLibUSB÷0
+ControlSetupÃ1ŒLibUSB÷0
+DATAÃ4ŒLibUSB.ClassCode÷0
+DATAÃ4ŒLibUSB.IsoUsageType÷0
+DEVICEÃ4ŒLibUSB.DescriptorType÷0
+DEVICEÃ4ŒLibUSB.RequestRecipient÷0
+DEVICE_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+DIRÃ8ŒLibUSB.EndpointMask÷0œint
+DIRECTIONÃ8ŒLibUSB.EndpointMask÷0œint
+DescriptorTypeÃ2ŒLibUSB÷0
+DescriptorTypeSizeÃ256÷0
+DeviceÃ1ŒLibUSB÷0
+DeviceDescriptorÃ2048ŒLibUSB÷0
+DeviceDescriptorÃ128Õ(Device device)ŒLibUSB.DeviceDescriptor÷0
+DeviceHandleÃ1ŒLibUSB÷0
+DeviceHandleÃ128Õ(Device device)ŒLibUSB.DeviceHandle÷0
+DeviceHandle.from_vid_pidÃ128Õ(Context? context, uint16 vendor_id, uint16 product_id)ŒLibUSB.DeviceHandle÷0
+ENDPOINTÃ4ŒLibUSB.DescriptorType÷0
+ENDPOINTÃ4ŒLibUSB.RequestRecipient÷0
+ENDPOINT_AUDIO_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+ENDPOINT_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+ERRORÃ4ŒLibUSB.TransferStatus÷0
+EndpointDescriptorÃ2048ŒLibUSB÷0
+EndpointDirectionÃ2ŒLibUSB÷0
+EndpointMaskÃ256÷0
+ErrorÃ2ŒLibUSB÷0
+FEEDBACKÃ4ŒLibUSB.IsoUsageType÷0
+FREE_BUFFERÃ4ŒLibUSB.TransferFlags÷0
+FREE_TRANSFERÃ4ŒLibUSB.TransferFlags÷0
+GET_CONFIGURATIONÃ4ŒLibUSB.StandardRequest÷0
+GET_DESCRIPTORÃ4ŒLibUSB.StandardRequest÷0
+GET_INTERFACEÃ4ŒLibUSB.StandardRequest÷0
+GET_STATUSÃ4ŒLibUSB.StandardRequest÷0
+HIDÃ4ŒLibUSB.ClassCode÷0
+HIDÃ4ŒLibUSB.DescriptorType÷0
+HUBÃ4ŒLibUSB.ClassCode÷0
+HUBÃ4ŒLibUSB.DescriptorType÷0
+HUB_NONVAR_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+IMPLICITÃ4ŒLibUSB.IsoUsageType÷0
+INÃ4ŒLibUSB.EndpointDirection÷0
+INTERFACEÃ4ŒLibUSB.DescriptorType÷0
+INTERFACEÃ4ŒLibUSB.RequestRecipient÷0
+INTERFACE_SIZEÃ8ŒLibUSB.DescriptorTypeSize÷0œint
+INTERRUPTÃ4ŒLibUSB.TransferType÷0
+INTERRUPTEDÃ4ŒLibUSB.Error÷0
+INVALID_PARAMÃ4ŒLibUSB.Error÷0
+IOÃ4ŒLibUSB.Error÷0
+ISOCHRONOUSÃ4ŒLibUSB.TransferType÷0
+InterfaceÃ2048ŒLibUSB÷0
+InterfaceDescriptorÃ2048ŒLibUSB÷0
+IsoPacketDescriptorÃ2048ŒLibUSB÷0
+IsoSyncTypeÃ2ŒLibUSB÷0
+IsoUsageTypeÃ2ŒLibUSB÷0
+LibUSBÃ256÷0
+MASKÃ4ŒLibUSB.EndpointDirection÷0
+MASKÃ4ŒLibUSB.IsoSyncType÷0
+MASKÃ4ŒLibUSB.IsoUsageType÷0
+MASS_STORAGEÃ4ŒLibUSB.ClassCode÷0
+MaxPowerÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+NONEÃ4ŒLibUSB.IsoSyncType÷0
+NOT_FOUNDÃ4ŒLibUSB.Error÷0
+NOT_SUPPORTEDÃ4ŒLibUSB.Error÷0
+NO_DEVICEÃ4ŒLibUSB.Error÷0
+NO_DEVICEÃ4ŒLibUSB.TransferStatus÷0
+NO_MEMÃ4ŒLibUSB.Error÷0
+OTHERÃ4ŒLibUSB.Error÷0
+OTHERÃ4ŒLibUSB.RequestRecipient÷0
+OUTÃ4ŒLibUSB.EndpointDirection÷0
+OVERFLOWÃ4ŒLibUSB.Error÷0
+OVERFLOWÃ4ŒLibUSB.TransferStatus÷0
+PER_INTERFACEÃ4ŒLibUSB.ClassCode÷0
+PHYSICALÃ4ŒLibUSB.DescriptorType÷0
+PIPEÃ4ŒLibUSB.Error÷0
+PRINTERÃ4ŒLibUSB.ClassCode÷0
+PTPÃ4ŒLibUSB.ClassCode÷0
+PollFDÃ1ŒLibUSB÷0
+REPORTÃ4ŒLibUSB.DescriptorType÷0
+RESERVEDÃ4ŒLibUSB.RequestType÷0
+RequestRecipientÃ2ŒLibUSB÷0
+RequestTypeÃ2ŒLibUSB÷0
+SET_ADDRESSÃ4ŒLibUSB.StandardRequest÷0
+SET_DESCRIPTORÃ4ŒLibUSB.StandardRequest÷0
+SET_FEATUREÃ4ŒLibUSB.StandardRequest÷0
+SET_INTERFACEÃ4ŒLibUSB.StandardRequest÷0
+SHORT_NOT_OKÃ4ŒLibUSB.TransferFlags÷0
+STALLÃ4ŒLibUSB.TransferStatus÷0
+STANDARDÃ4ŒLibUSB.RequestType÷0
+STRINGÃ4ŒLibUSB.DescriptorType÷0
+SUCCESSÃ4ŒLibUSB.Error÷0
+SYNCÃ4ŒLibUSB.IsoSyncType÷0
+SYNCH_FRAMEÃ4ŒLibUSB.StandardRequest÷0
+StandardRequestÃ2ŒLibUSB÷0
+TIMED_OUTÃ4ŒLibUSB.TransferStatus÷0
+TIMEOUTÃ4ŒLibUSB.Error÷0
+TransferÃ1ŒLibUSB÷0
+TransferÃ128Õ(int iso_packets = 0)ŒLibUSB.Transfer÷0
+TransferFlagsÃ2ŒLibUSB÷0
+TransferStatusÃ2ŒLibUSB÷0
+TransferTypeÃ2ŒLibUSB÷0
+VENDORÃ4ŒLibUSB.RequestType÷0
+VENDOR_SPECÃ4ŒLibUSB.ClassCode÷0
+actual_lengthÃ8ŒLibUSB.IsoPacketDescriptor÷0
+actual_lengthÃ8ŒLibUSB.Transfer÷0œint
+altsettingÃ8ŒLibUSB.Interface÷0œInterfaceDescriptor
+attach_kernel_driverÃ128Õ(int @interface)ŒLibUSB.DeviceHandle÷0œpublic int
+bAlternateSettingÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bConfigurationValueÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+bDescriptorTypeÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+bDescriptorTypeÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bDescriptorTypeÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bDescriptorTypeÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bDeviceClassÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bDeviceProtocolÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bDeviceSubClassÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bEndpointAddressÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bInterfaceClassÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bInterfaceNumberÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bInterfaceProtocolÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bInterfaceSubClassÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bIntervalÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bLengthÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+bLengthÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bLengthÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bLengthÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bMaxPacketSize0Ã8ŒLibUSB.DeviceDescriptor÷0œuint8
+bNumConfigurationsÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+bNumEndpointsÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+bNumInterfacesÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+bRefreshÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bRequestÃ8ŒLibUSB.ControlSetup÷0œint8
+bSynchAddressÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bcdDeviceÃ8ŒLibUSB.DeviceDescriptor÷0œuint16
+bcdUSBÃ8ŒLibUSB.DeviceDescriptor÷0œuint16
+bmAttributesÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+bmAttributesÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+bmRequestTypeÃ8ŒLibUSB.ControlSetup÷0œuint8
+bufferÃ8ŒLibUSB.Transfer÷0œuint8
+bulk_transferÃ128Õ(uint8 endpoint, uint8[] data, out int transferred, uint timeout)ŒLibUSB.DeviceHandle÷0œpublic int
+cancelÃ128Õ()ŒLibUSB.Transfer÷0œpublic int
+claim_interfaceÃ128Õ(int interface_number)ŒLibUSB.DeviceHandle÷0œpublic int
+clear_haltÃ128Õ(uchar endpoint)ŒLibUSB.DeviceHandle÷0œpublic int
+control_get_dataÃ128Õ()ŒLibUSB.Transfer÷0œpublic unowned char
+control_get_setupÃ128Õ()ŒLibUSB.Transfer÷0œpublic unowned
+control_transferÃ128Õ(uint8 bmRequestType, uint8 bRequest, uint16 wValue, uint16 wIndex, [CCode (array_length = false)] uint8[] data, uint16 wLength, uint timeout)ŒLibUSB.DeviceHandle÷0œpublic int
+cpu_to_le16Ã128Õ(uint16 n)ŒLibUSB÷0œpublic uint16
+detach_kernel_driverÃ128Õ(int @interface)ŒLibUSB.DeviceHandle÷0œpublic int
+dev_handleÃ8ŒLibUSB.Transfer÷0œDeviceHandle
+endpointÃ8ŒLibUSB.InterfaceDescriptor÷0œEndpointDescriptor
+endpointÃ8ŒLibUSB.Transfer÷0œuint8
+event_handler_activeÃ128Õ()ŒLibUSB.Context÷0œpublic int
+event_handling_okÃ128Õ()ŒLibUSB.Context÷0œpublic int
+eventsÃ8ŒLibUSB.PollFD÷0œshort
+extraÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+extraÃ8ŒLibUSB.EndpointDescriptor÷0œuint8
+extraÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+fdÃ8ŒLibUSB.PollFD÷0œint
+fill_bulk_transferÃ128Õ(DeviceHandle dev_handle, uint8 endpoint, uint8[] buffer, transfer_cb_fn @callback, void* user_data, uint timeout)ŒLibUSB.Transfer÷0œpublic void
+fill_control_setupÃ128Õ([CCode (array_length = false)] uint8[] buffer, uint8 bmRequestType, uint8 bRequest, uint16 wValue, uint16 wIndex, uint16 wLength)ŒLibUSB.Transfer÷0œpublic void
+fill_control_transferÃ128Õ(DeviceHandle dev_handle, [CCode (array_length = false)] uint8[] buffer, transfer_cb_fn @callback, void* user_data, uint timeout)ŒLibUSB.Transfer÷0œpublic void
+fill_interrupt_transferÃ128Õ(DeviceHandle dev_handle, uint8 endpoint, uint8[] buffer, transfer_cb_fn @callback, void* user_data, uint timeout)ŒLibUSB.Transfer÷0œpublic void
+fill_iso_transferÃ128Õ(DeviceHandle dev_handle, uint8 endpoint, uint8[] buffer, int num_iso_packets, transfer_cb_fn @callback, void* user_data, uint timeout)ŒLibUSB.Transfer÷0œpublic void
+flagsÃ8ŒLibUSB.Transfer÷0œuint8
+get_active_config_descriptorÃ128Õ(out ConfigDescriptor config)ŒLibUSB.Device÷0œpublic int
+get_bus_numberÃ128Õ()ŒLibUSB.Device÷0œpublic uint8
+get_config_descriptorÃ128Õ(uint8 config_index, out ConfigDescriptor config)ŒLibUSB.Device÷0œpublic int
+get_config_descriptor_by_valueÃ128Õ(uint8 ConfigurationValue, out ConfigDescriptor config)ŒLibUSB.Device÷0œpublic int
+get_configurationÃ128Õ(out int config)ŒLibUSB.DeviceHandle÷0œpublic int
+get_descriptorÃ128Õ(uint8 desc_type, uint8 desc_index, uint8[] data)ŒLibUSB.DeviceHandle÷0œpublic int
+get_deviceÃ128Õ()ŒLibUSB.DeviceHandle÷0œpublic unowned
+get_device_addressÃ128Õ()ŒLibUSB.Device÷0œpublic uint8
+get_device_descriptorÃ128Õ(out DeviceDescriptor desc)ŒLibUSB.Device÷0œpublic int
+get_device_listÃ128Õ([CCode (array_length = false)] out Device[] list)ŒLibUSB.Context÷0œpublic ssize_t
+get_iso_packet_bufferÃ128Õ(uint packet)ŒLibUSB.Transfer÷0œpublic unowned
+get_iso_packet_buffer_simpleÃ128Õ(int packet)ŒLibUSB.Transfer÷0œpublic unowned
+get_max_packet_sizeÃ128Õ(uint8 endpoint)ŒLibUSB.Device÷0œpublic int
+get_next_timeoutÃ128Õ(out Posix.timeval tv)ŒLibUSB.Context÷0œpublic int
+get_pollfdsÃ128Õ()ŒLibUSB.Context÷0œpublic unowned
+get_string_descriptorÃ128Õ(uint desc_index, uint16 langid, uint8[] data)ŒLibUSB.DeviceHandle÷0œpublic int
+get_string_descriptor_asciiÃ128Õ(uint8 desc_index, uint8[] data)ŒLibUSB.DeviceHandle÷0œpublic int
+handle_eventsÃ128Õ()ŒLibUSB.Context÷0œpublic int
+handle_events_lockedÃ128Õ(Posix.timeval tv)ŒLibUSB.Context÷0œpublic int
+handle_events_timeoutÃ128Õ(Posix.timeval tv)ŒLibUSB.Context÷0œpublic int
+iConfigurationÃ8ŒLibUSB.ConfigDescriptor÷0œuint8
+iInterfaceÃ8ŒLibUSB.InterfaceDescriptor÷0œuint8
+iManufacturerÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+iProductÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+iSerialNumberÃ8ŒLibUSB.DeviceDescriptor÷0œuint8
+idProductÃ8ŒLibUSB.DeviceDescriptor÷0œuint16
+idVendorÃ8ŒLibUSB.DeviceDescriptor÷0œuint16
+initÃ128Õ(out Context context)ŒLibUSB.Context÷0œpublic int
+interrupt_transferÃ128Õ(uint8 endpoint, uint8[] data, out int transferred, uint timeout)ŒLibUSB.DeviceHandle÷0œpublic int
+iso_packet_descÃ8ŒLibUSB.Transfer÷0œIsoPacketDescriptor
+kernel_driver_activeÃ128Õ(int @interface)ŒLibUSB.DeviceHandle÷0œpublic int
+le16_to_cpuÃ128Õ(uint16 n)ŒLibUSB÷0œpublic uint16
+lengthÃ8ŒLibUSB.IsoPacketDescriptor÷0
+lengthÃ8ŒLibUSB.Transfer÷0œint
+lock_event_waitersÃ128Õ()ŒLibUSB.Context÷0œpublic void
+lock_eventsÃ128Õ()ŒLibUSB.Context÷0œpublic void
+mallocÃ128Õ(ulong n_bytes)ŒLibUSB÷0œprivate void *
+num_iso_packetsÃ8ŒLibUSB.Transfer÷0œint
+openÃ128Õ(out DeviceHandle handle)ŒLibUSB.Device÷0œpublic int
+open_device_with_vid_pidÃ128Õ(uint16 vendor_id, uint16 product_id)ŒLibUSB.Context÷0œpublic DeviceHandle
+pollfd_added_cbÃ128Õ(int fd, short events, void* user_data)ŒLibUSB÷0œpublic delegate void
+pollfd_removed_cbÃ128Õ(int fd, void* user_data)ŒLibUSB÷0œpublic delegate void
+release_interfaceÃ128Õ(int interface_number)ŒLibUSB.DeviceHandle÷0œpublic int
+resetÃ128Õ()ŒLibUSB.DeviceHandle÷0œpublic int
+set_configurationÃ128Õ(int configuration)ŒLibUSB.DeviceHandle÷0œpublic int
+set_debugÃ128Õ(int level)ŒLibUSB.Context÷0œpublic void
+set_interface_alt_settingÃ128Õ(int interface_number, int alternate_setting)ŒLibUSB.DeviceHandle÷0œpublic int
+set_packet_lengthsÃ128Õ(uint length)ŒLibUSB.Transfer÷0œpublic void
+set_pollfd_notifiersÃ128Õ(pollfd_added_cb added_cb, pollfd_removed_cb removed_cb, void* user_data)ŒLibUSB.Context÷0œpublic void
+statusÃ8ŒLibUSB.IsoPacketDescriptor÷0œTransferStatus
+statusÃ8ŒLibUSB.Transfer÷0œTransferStatus
+submitÃ128Õ()ŒLibUSB.Transfer÷0œpublic int
+timeoutÃ8ŒLibUSB.Transfer÷0
+transfer_cb_fnÃ128Õ(Transfer transfer)ŒLibUSB÷0œpublic delegate void
+try_lock_eventsÃ128Õ()ŒLibUSB.Context÷0œpublic int
+typeÃ8ŒLibUSB.Transfer÷0œuint8
+unlock_event_waitersÃ128Õ()ŒLibUSB.Context÷0œpublic void
+unlock_eventsÃ128Õ()ŒLibUSB.Context÷0œpublic void
+user_dataÃ8ŒLibUSB.Transfer÷0œvoid
+wIndexÃ8ŒLibUSB.ControlSetup÷0œuint16
+wLengthÃ8ŒLibUSB.ControlSetup÷0œuint16
+wMaxPacketSizeÃ8ŒLibUSB.EndpointDescriptor÷0œuint16
+wTotalLengthÃ8ŒLibUSB.ConfigDescriptor÷0œuint16
+wValueÃ8ŒLibUSB.ControlSetup÷0œuint16
+wait_for_eventÃ128Õ(Posix.timeval tv)ŒLibUSB.Context÷0œpublic int

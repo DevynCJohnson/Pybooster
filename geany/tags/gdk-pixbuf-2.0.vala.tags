@@ -1,0 +1,166 @@
+# format=tagmanager
+BAD_OPTIONÃ4ŒGdk.PixbufError÷0
+BILEVELÃ4ŒGdk.PixbufAlphaMode÷0
+BILINEARÃ4ŒGdk.InterpType÷0
+CLOCKWISEÃ4ŒGdk.PixbufRotation÷0
+COLOR_TYPE_MASKÃ4ŒGdk.PixdataType÷0
+COLOR_TYPE_RGBÃ4ŒGdk.PixdataType÷0
+COLOR_TYPE_RGBAÃ4ŒGdk.PixdataType÷0
+CONSTÃ4ŒGdk.PixdataDumpType÷0
+CORRUPT_IMAGEÃ4ŒGdk.PixbufError÷0
+COUNTERCLOCKWISEÃ4ŒGdk.PixbufRotation÷0
+CTYPESÃ4ŒGdk.PixdataDumpType÷0
+ColorspaceÃ2ŒGdk÷0
+ENCODING_MASKÃ4ŒGdk.PixdataType÷0
+ENCODING_RAWÃ4ŒGdk.PixdataType÷0
+ENCODING_RLEÃ4ŒGdk.PixdataType÷0
+FAILEDÃ4ŒGdk.PixbufError÷0
+FULLÃ4ŒGdk.PixbufAlphaMode÷0
+GTYPESÃ4ŒGdk.PixdataDumpType÷0
+GdkÃ256÷0
+HYPERÃ4ŒGdk.InterpType÷0
+INSUFFICIENT_MEMORYÃ4ŒGdk.PixbufError÷0
+InterpTypeÃ2ŒGdk÷0
+MACROSÃ4ŒGdk.PixdataDumpType÷0
+NEARESTÃ4ŒGdk.InterpType÷0
+NONEÃ4ŒGdk.PixbufRotation÷0
+PIXBUF_FEATURES_HÃ8ŒGdk÷0œint
+PIXBUF_MAGIC_NUMBERÃ8ŒGdk÷0œint
+PIXBUF_MAJORÃ8ŒGdk÷0œint
+PIXBUF_MICROÃ8ŒGdk÷0œint
+PIXBUF_MINORÃ8ŒGdk÷0œint
+PIXBUF_VERSIONÃ8ŒGdk÷0
+PIXDATA_HEADER_LENGTHÃ8ŒGdk÷0œint
+PIXDATA_STREAMÃ4ŒGdk.PixdataDumpType÷0
+PIXDATA_STRUCTÃ4ŒGdk.PixdataDumpType÷0
+PixbufÃ1ŒGdk÷0
+PixbufÃ128Õ(Gdk.Colorspace colorspace, bool has_alpha, int bits_per_sample, int width, int height)ŒGdk.Pixbuf÷0
+Pixbuf.from_dataÃ128Õ([CCode (array_length = false)] uint8[] data, Gdk.Colorspace colorspace, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, Gdk.PixbufDestroyNotify? destroy_fn)ŒGdk.Pixbuf÷0
+Pixbuf.from_fileÃ128Õ(string filename)ŒGdk.Pixbuf÷0
+Pixbuf.from_file_at_scaleÃ128Õ(string filename, int width, int height, bool preserve_aspect_ratio)ŒGdk.Pixbuf÷0
+Pixbuf.from_file_at_sizeÃ128Õ(string filename, int width, int height)ŒGdk.Pixbuf÷0
+Pixbuf.from_inlineÃ128Õ(int data_length, [CCode (array_length = false)] uint8[] data, bool copy_pixels = true)ŒGdk.Pixbuf÷0
+Pixbuf.from_streamÃ128Õ(GLib.InputStream stream, GLib.Cancellable? cancellable)ŒGdk.Pixbuf÷0
+Pixbuf.from_stream_asyncÃ128Õ(GLib.InputStream stream, GLib.Cancellable cancellable)ŒGdk.Pixbuf÷0œpublic async
+Pixbuf.from_stream_at_scaleÃ128Õ(GLib.InputStream stream, int width, int height, bool preserve_aspect_ratio, GLib.Cancellable? cancellable)ŒGdk.Pixbuf÷0
+Pixbuf.from_stream_at_scale_asyncÃ128Õ(GLib.InputStream stream, int width, int height, bool preserve_aspect_ratio, GLib.Cancellable cancellable)ŒGdk.Pixbuf÷0œpublic async
+Pixbuf.from_xpm_dataÃ128Õ([CCode (array_length = false)] string[] data)ŒGdk.Pixbuf÷0
+Pixbuf.subpixbufÃ128Õ(Gdk.Pixbuf src_pixbuf, int src_x, int src_y, int width, int height)ŒGdk.Pixbuf÷0
+PixbufAlphaModeÃ2ŒGdk÷0
+PixbufAnimationÃ1ŒGdk÷0
+PixbufAnimationÃ128Õ()ŒGdk.PixbufAnimation÷0
+PixbufAnimation.from_fileÃ128Õ(string filename)ŒGdk.PixbufAnimation÷0
+PixbufAnimationIterÃ1ŒGdk÷0
+PixbufAnimationIterÃ128Õ()ŒGdk.PixbufAnimationIter÷0
+PixbufDestroyNotifyÃ128Õ([CCode (array_length = false)] uint8[] pixels)ŒGdk÷0œpublic delegate void
+PixbufErrorÃ2ŒGdk÷0
+PixbufFormatÃ1ŒGdk÷0
+PixbufLoaderÃ1ŒGdk÷0
+PixbufLoaderÃ128Õ()ŒGdk.PixbufLoader÷0
+PixbufLoader.with_mime_typeÃ128Õ(string mime_type)ŒGdk.PixbufLoader÷0
+PixbufLoader.with_typeÃ128Õ(string image_type)ŒGdk.PixbufLoader÷0
+PixbufRotationÃ2ŒGdk÷0
+PixbufSaveFuncÃ128Õ(string buf, size_t count, GLib.Error error)ŒGdk÷0œpublic delegate bool
+PixbufSimpleAnimÃ1ŒGdk÷0
+PixbufSimpleAnimÃ128Õ(int width, int height, float rate)ŒGdk.PixbufSimpleAnim÷0
+PixbufSimpleAnimClassÃ1ŒGdk÷0
+PixbufSimpleAnimIterÃ1ŒGdk÷0
+PixbufSimpleAnimIterÃ128Õ()ŒGdk.PixbufSimpleAnimIter÷0
+PixdataÃ2048ŒGdk÷0
+PixdataDumpTypeÃ2ŒGdk÷0
+PixdataTypeÃ2ŒGdk÷0
+RGBÃ4ŒGdk.Colorspace÷0
+RLE_DECODERÃ4ŒGdk.PixdataDumpType÷0
+SAMPLE_WIDTH_8Ã4ŒGdk.PixdataType÷0
+SAMPLE_WIDTH_MASKÃ4ŒGdk.PixdataType÷0
+STATICÃ4ŒGdk.PixdataDumpType÷0
+TILESÃ4ŒGdk.InterpType÷0
+UNKNOWN_TYPEÃ4ŒGdk.PixbufError÷0
+UNSUPPORTED_OPERATIONÃ4ŒGdk.PixbufError÷0
+UPSIDEDOWNÃ4ŒGdk.PixbufRotation÷0
+add_alphaÃ128Õ(bool substitute_color, uchar r, uchar g, uchar b)ŒGdk.Pixbuf÷0œpublic unowned
+add_frameÃ128Õ(Gdk.Pixbuf pixbuf)ŒGdk.PixbufSimpleAnim÷0œpublic void
+advanceÃ128Õ(GLib.TimeVal current_time)ŒGdk.PixbufAnimationIter÷0œpublic bool
+apply_embedded_orientationÃ128Õ()ŒGdk.Pixbuf÷0œpublic unowned
+area_preparedÃ128Õ()ŒGdk.PixbufLoader÷0œpublic virtual signal void
+area_updatedÃ128Õ(int x, int y, int width, int height)ŒGdk.PixbufLoader÷0œpublic virtual signal void
+bits_per_sampleÃ8ŒGdk.Pixbuf÷0œint
+closeÃ128Õ()ŒGdk.PixbufLoader÷0œpublic bool
+closedÃ128Õ()ŒGdk.PixbufLoader÷0œpublic virtual signal void
+colorspaceÃ8ŒGdk.Pixbuf÷0œGdk.Colorspace
+compositeÃ128Õ(Gdk.Pixbuf dest, int dest_x, int dest_y, int dest_width, int dest_height, double offset_x, double offset_y, double scale_x, double scale_y, Gdk.InterpType interp_type, int overall_alpha)ŒGdk.Pixbuf÷0œpublic void
+composite_colorÃ128Õ(Gdk.Pixbuf dest, int dest_x, int dest_y, int dest_width, int dest_height, double offset_x, double offset_y, double scale_x, double scale_y, Gdk.InterpType interp_type, int overall_alpha, int check_x, int check_y, int check_size, uint32 color1, uint32 color2)ŒGdk.Pixbuf÷0œpublic void
+composite_color_simpleÃ128Õ(int dest_width, int dest_height, Gdk.InterpType interp_type, int overall_alpha, int check_size, uint32 color1, uint32 color2)ŒGdk.Pixbuf÷0œpublic unowned
+copyÃ128Õ()ŒGdk.Pixbuf÷0œpublic Gdk.Pixbuf
+copyÃ128Õ()ŒGdk.PixbufFormat÷0œpublic unowned
+copy_areaÃ128Õ(int src_x, int src_y, int width, int height, Gdk.Pixbuf dest_pixbuf, int dest_x, int dest_y)ŒGdk.Pixbuf÷0œpublic void
+deserializeÃ128Õ([CCode (array_length_pos = 0.9)] uint8[] stream)ŒGdk.Pixdata÷0œpublic bool
+error_quarkÃ128Õ()ŒGdk.Pixbuf÷0œpublic GLib.Quark
+fillÃ128Õ(uint32 pixel)ŒGdk.Pixbuf÷0œpublic void
+flipÃ128Õ(bool horizontal)ŒGdk.Pixbuf÷0œpublic Gdk.Pixbuf?
+from_pixbufÃ128Õ(Gdk.Pixbuf pixbuf, bool use_rle)ŒGdk.Pixdata÷0œpublic void *
+from_pixdataÃ128Õ(Gdk.Pixdata pixdata, bool copy_pixels)ŒGdk.Pixbuf÷0œpublic unowned
+get_animationÃ128Õ()ŒGdk.PixbufLoader÷0œpublic unowned
+get_bits_per_sampleÃ128Õ()ŒGdk.Pixbuf÷0œpublic int
+get_colorspaceÃ128Õ()ŒGdk.Pixbuf÷0œpublic Gdk.Colorspace
+get_delay_timeÃ128Õ()ŒGdk.PixbufAnimationIter÷0œpublic int
+get_descriptionÃ128Õ()ŒGdk.PixbufFormat÷0œpublic unowned string
+get_extensionsÃ128Õ()ŒGdk.PixbufFormat÷0
+get_file_infoÃ128Õ(string filename, out int width, out int height)ŒGdk.Pixbuf÷0œpublic unowned
+get_formatÃ128Õ()ŒGdk.PixbufLoader÷0œpublic unowned
+get_formatsÃ128Õ()ŒGdk.Pixbuf÷0œpublic GLib.SList
+get_has_alphaÃ128Õ()ŒGdk.Pixbuf÷0œpublic bool
+get_heightÃ128Õ()ŒGdk.Pixbuf÷0œpublic int
+get_heightÃ128Õ()ŒGdk.PixbufAnimation÷0œpublic int
+get_iterÃ128Õ(GLib.TimeVal start_time)ŒGdk.PixbufAnimation÷0œpublic unowned
+get_licenseÃ128Õ()ŒGdk.PixbufFormat÷0œpublic unowned string
+get_loopÃ128Õ()ŒGdk.PixbufSimpleAnim÷0œpublic bool
+get_mime_typesÃ128Õ()ŒGdk.PixbufFormat÷0
+get_n_channelsÃ128Õ()ŒGdk.Pixbuf÷0œpublic int
+get_nameÃ128Õ()ŒGdk.PixbufFormat÷0œpublic unowned string
+get_optionÃ128Õ(string key)ŒGdk.Pixbuf÷0œpublic unowned string
+get_pixbufÃ128Õ()ŒGdk.PixbufAnimationIter÷0œpublic unowned
+get_pixbufÃ128Õ()ŒGdk.PixbufLoader÷0œpublic unowned
+get_pixelsÃ128Õ()ŒGdk.Pixbuf÷0œpublic unowned
+get_rowstrideÃ128Õ()ŒGdk.Pixbuf÷0œpublic int
+get_static_imageÃ128Õ()ŒGdk.PixbufAnimation÷0œpublic unowned
+get_widthÃ128Õ()ŒGdk.Pixbuf÷0œpublic int
+get_widthÃ128Õ()ŒGdk.PixbufAnimation÷0œpublic int
+has_alphaÃ8ŒGdk.Pixbuf÷0œbool
+heightÃ8ŒGdk.Pixbuf÷0œint
+heightÃ8ŒGdk.Pixdata÷0œuint32
+is_disabledÃ128Õ()ŒGdk.PixbufFormat÷0œpublic bool
+is_scalableÃ128Õ()ŒGdk.PixbufFormat÷0œpublic bool
+is_static_imageÃ128Õ()ŒGdk.PixbufAnimation÷0œpublic bool
+is_writableÃ128Õ()ŒGdk.PixbufFormat÷0œpublic bool
+lengthÃ8ŒGdk.Pixdata÷0œint32
+loopÃ8ŒGdk.PixbufSimpleAnim÷0œbool
+magicÃ8ŒGdk.Pixdata÷0œuint32
+n_channelsÃ8ŒGdk.Pixbuf÷0œint
+on_currently_loading_frameÃ128Õ()ŒGdk.PixbufAnimationIter÷0œpublic bool
+pixdata_typeÃ8ŒGdk.Pixdata÷0œuint32
+pixel_dataÃ8ŒGdk.Pixdata÷0œuint8
+pixelsÃ8ŒGdk.Pixbuf÷0œvoid
+rotate_simpleÃ128Õ(Gdk.PixbufRotation angle)ŒGdk.Pixbuf÷0œpublic Gdk.Pixbuf
+rowstrideÃ8ŒGdk.Pixbuf÷0œint
+rowstrideÃ8ŒGdk.Pixdata÷0œuint32
+saturate_and_pixelateÃ128Õ(Gdk.Pixbuf dest, float saturation, bool pixelate)ŒGdk.Pixbuf÷0œpublic void
+saveÃ128Õ(string filename, string type, ...)ŒGdk.Pixbuf÷0œpublic bool
+save_to_bufferÃ128Õ([CCode (type = , array_length_type = )] out uint8[] buffer, string type, ...)ŒGdk.Pixbuf÷0œpublic bool
+save_to_buffervÃ128Õ([CCode (type = , array_length_type = )] out uint8[] buffer, string type, string[] option_keys, string[] option_values)ŒGdk.Pixbuf÷0œpublic bool
+save_to_callbackÃ128Õ(Gdk.PixbufSaveFunc save_func, string type, ...)ŒGdk.Pixbuf÷0œpublic bool
+save_to_callbackvÃ128Õ(Gdk.PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values)ŒGdk.Pixbuf÷0œpublic bool
+save_to_streamÃ128Õ(GLib.OutputStream stream, string type, GLib.Cancellable cancellable)ŒGdk.Pixbuf÷0œpublic bool
+save_to_stream_asyncÃ128Õ(GLib.OutputStream stream, string type, GLib.Cancellable cancellable)ŒGdk.Pixbuf÷0œpublic async
+savevÃ128Õ(string filename, string type, out unowned string option_keys, out unowned string option_values)ŒGdk.Pixbuf÷0œpublic bool
+scaleÃ128Õ(Gdk.Pixbuf dest, int dest_x, int dest_y, int dest_width, int dest_height, double offset_x, double offset_y, double scale_x, double scale_y, Gdk.InterpType interp_type)ŒGdk.Pixbuf÷0œpublic void
+scale_simpleÃ128Õ(int dest_width, int dest_height, Gdk.InterpType interp_type)ŒGdk.Pixbuf÷0œpublic Gdk.Pixbuf
+serializeÃ128Õ()ŒGdk.Pixdata÷0œpublic unowned
+set_disabledÃ128Õ(bool disabled)ŒGdk.PixbufFormat÷0œpublic void
+set_loopÃ128Õ(bool loop)ŒGdk.PixbufSimpleAnim÷0œpublic void
+set_sizeÃ128Õ(int width, int height)ŒGdk.PixbufLoader÷0œpublic void
+size_preparedÃ128Õ(int width, int height)ŒGdk.PixbufLoader÷0œpublic virtual signal void
+to_csourceÃ128Õ(string name, Gdk.PixdataDumpType dump_type)ŒGdk.Pixdata÷0œpublic unowned
+widthÃ8ŒGdk.Pixbuf÷0œint
+widthÃ8ŒGdk.Pixdata÷0œuint32
+writeÃ128Õ([CCode (array_length_type = )] uint8[] buf)ŒGdk.PixbufLoader÷0œpublic bool

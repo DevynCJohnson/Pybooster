@@ -1,0 +1,64 @@
+# format=tagmanager
+ALIASÌ4ÎGMenu.TreeItemTypeÖ0
+DIRECTORYÌ4ÎGMenu.TreeItemTypeÖ0
+DISPLAY_NAMEÌ4ÎGMenu.TreeSortKeyÖ0
+ENTRYÌ4ÎGMenu.TreeItemTypeÖ0
+GMenuÌ256Ö0
+HEADERÌ4ÎGMenu.TreeItemTypeÖ0
+INCLUDE_EXCLUDEDÌ4ÎGMenu.TreeFlagsÖ0
+INCLUDE_NODISPLAYÌ4ÎGMenu.TreeFlagsÖ0
+INVALIDÌ4ÎGMenu.TreeItemTypeÖ0
+MASKÌ4ÎGMenu.TreeFlagsÖ0
+NAMEÌ4ÎGMenu.TreeSortKeyÖ0
+NONEÌ4ÎGMenu.TreeFlagsÖ0
+SEPARATORÌ4ÎGMenu.TreeItemTypeÖ0
+SHOW_ALL_SEPARATORSÌ4ÎGMenu.TreeFlagsÖ0
+SHOW_EMPTYÌ4ÎGMenu.TreeFlagsÖ0
+TreeÌ1ÎGMenuÖ0
+TreeAliasÌ1ÎGMenuÖ0
+TreeChangedFuncÌ128Í(GMenu.Tree tree)ÎGMenuÖ0Ïpublic delegate void
+TreeDirectoryÌ1ÎGMenuÖ0
+TreeEntryÌ1ÎGMenuÖ0
+TreeFlagsÌ2ÎGMenuÖ0
+TreeHeaderÌ1ÎGMenuÖ0
+TreeItemÌ1ÎGMenuÖ0
+TreeItemTypeÌ2ÎGMenuÖ0
+TreeSeparatorÌ1ÎGMenuÖ0
+TreeSortKeyÌ2ÎGMenuÖ0
+add_monitorÌ128Í(GMenu.TreeChangedFunc callback)ÎGMenu.TreeÖ0Ïpublic void
+get_commentÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+get_commentÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_contentsÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned
+get_desktop_file_idÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_desktop_file_pathÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+get_desktop_file_pathÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_directoryÌ128Í()ÎGMenu.TreeAliasÖ0Ïpublic unowned
+get_directoryÌ128Í()ÎGMenu.TreeHeaderÖ0Ïpublic unowned
+get_directory_from_pathÌ128Í(string path)ÎGMenu.TreeÖ0Ïpublic unowned
+get_display_nameÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_execÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_generic_nameÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_iconÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+get_iconÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_is_excludedÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic bool
+get_is_nodisplayÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic bool
+get_is_nodisplayÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic bool
+get_itemÌ128Í()ÎGMenu.TreeAliasÖ0Ïpublic unowned
+get_launch_in_terminalÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic bool
+get_menu_fileÌ128Í()ÎGMenu.TreeÖ0Ïpublic unowned string
+get_menu_idÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGMenu.TreeEntryÖ0Ïpublic unowned string
+get_parentÌ128Í()ÎGMenu.TreeItemÖ0Ïpublic unowned
+get_root_directoryÌ128Í()ÎGMenu.TreeÖ0Ïpublic unowned
+get_sort_keyÌ128Í()ÎGMenu.TreeÖ0Ïpublic GMenu.TreeSortKey
+get_treeÌ128Í()ÎGMenu.TreeDirectoryÖ0Ïpublic unowned
+get_typeÌ128Í()ÎGMenu.TreeItemÖ0Ïpublic GMenu.TreeItemType
+get_user_dataÌ128Í()ÎGMenu.TreeÖ0Ïpublic void *
+get_user_dataÌ128Í()ÎGMenu.TreeItemÖ0Ïpublic void *
+lookupÌ128Í(string menu_file, GMenu.TreeFlags flags)ÎGMenu.TreeÖ0Ïpublic unowned
+make_pathÌ128Í(GMenu.TreeEntry entry)ÎGMenu.TreeDirectoryÖ0Ïpublic unowned string
+remove_monitorÌ128Í(GMenu.TreeChangedFunc callback)ÎGMenu.TreeÖ0Ïpublic void
+set_sort_keyÌ128Í(GMenu.TreeSortKey sort_key)ÎGMenu.TreeÖ0Ïpublic void
+set_user_dataÌ128Í(void* user_data, GLib.DestroyNotify dnotify)ÎGMenu.TreeÖ0Ïpublic void
+set_user_dataÌ128Í(void* user_data, GLib.DestroyNotify dnotify)ÎGMenu.TreeItemÖ0Ïpublic void

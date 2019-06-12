@@ -1,0 +1,63 @@
+# format=tagmanager
+@getÌ128Í(size_t length)ÎUnique.MessageDataÖ0Ïpublic unowned
+ACTIVATEÌ4ÎUnique.CommandÖ0
+API_VERSION_SÌ8ÎUniqueÖ0
+AppÌ1ÎUniqueÖ0
+AppÌ128Í(string name, string? startup_id)ÎUnique.AppÖ0
+App.with_commandsÌ128Í(string name, string? startup_id, ...)ÎUnique.AppÖ0
+BackendÌ1ÎUniqueÖ0
+BackendÌ128Í()ÎUnique.BackendÖ0
+CANCELÌ4ÎUnique.ResponseÖ0
+CLOSEÌ4ÎUnique.CommandÖ0
+CommandÌ2ÎUniqueÖ0
+DEFAULT_BACKEND_SÌ8ÎUniqueÖ0
+FAILÌ4ÎUnique.ResponseÖ0
+INVALIDÌ4ÎUnique.CommandÖ0
+INVALIDÌ4ÎUnique.ResponseÖ0
+MAJOR_VERSIONÌ8ÎUniqueÖ0Ïint
+MICRO_VERSIONÌ8ÎUniqueÖ0Ïint
+MINOR_VERSIONÌ8ÎUniqueÖ0Ïint
+MessageDataÌ1ÎUniqueÖ0
+MessageDataÌ128Í()ÎUnique.MessageDataÖ0
+NEWÌ4ÎUnique.CommandÖ0
+OKÌ4ÎUnique.ResponseÖ0
+OPENÌ4ÎUnique.CommandÖ0
+PASSTHROUGHÌ4ÎUnique.ResponseÖ0
+PROTOCOL_VERSION_SÌ8ÎUniqueÖ0
+ResponseÌ2ÎUniqueÖ0
+UniqueÌ256Ö0
+VERSION_HEXÌ8ÎUniqueÖ0Ïint
+VERSION_SÌ8ÎUniqueÖ0
+add_commandÌ128Í(string command_name, int command_id)ÎUnique.AppÖ0Ïpublic void
+copyÌ128Í()ÎUnique.MessageDataÖ0Ïpublic Unique.MessageData
+createÌ128Í()ÎUnique.BackendÖ0Ïpublic unowned
+get_filenameÌ128Í()ÎUnique.MessageDataÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎUnique.BackendÖ0Ïpublic unowned string
+get_screenÌ128Í()ÎUnique.BackendÖ0Ïpublic unowned
+get_screenÌ128Í()ÎUnique.MessageDataÖ0Ïpublic unowned
+get_startup_idÌ128Í()ÎUnique.BackendÖ0Ïpublic unowned string
+get_startup_idÌ128Í()ÎUnique.MessageDataÖ0Ïpublic unowned string
+get_textÌ128Í()ÎUnique.MessageDataÖ0
+get_urisÌ128Í()ÎUnique.MessageDataÖ0
+get_workspaceÌ128Í()ÎUnique.BackendÖ0
+get_workspaceÌ128Í()ÎUnique.MessageDataÖ0
+is_runningÌ8ÎUnique.AppÖ0Ïbool
+message_receivedÌ128Í(int command, Unique.MessageData message_data, uint time_)ÎUnique.AppÖ0Ïpublic virtual signal Unique.Response
+nameÌ8ÎUnique.AppÖ0
+nameÌ8ÎUnique.BackendÖ0
+parentÌ8ÎUnique.BackendÖ0ÏUnique.App
+request_nameÌ128Í()ÎUnique.BackendÖ0Ïpublic virtual bool
+screenÌ8ÎUnique.AppÖ0ÏGdk.Screen
+screenÌ8ÎUnique.BackendÖ0ÏGdk.Screen
+send_messageÌ128Í(int command_id, Unique.MessageData? message_data)ÎUnique.AppÖ0Ïpublic Unique.Response
+send_messageÌ128Í(int command_id, Unique.MessageData message_data, uint time_)ÎUnique.BackendÖ0Ïpublic virtual Unique.Response
+set_filenameÌ128Í(string filename)ÎUnique.MessageDataÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎUnique.BackendÖ0Ïpublic void
+set_screenÌ128Í(Gdk.Screen screen)ÎUnique.BackendÖ0Ïpublic void
+set_startup_idÌ128Í(string startup_id)ÎUnique.BackendÖ0Ïpublic void
+set_textÌ128Í(string str, ssize_t length)ÎUnique.MessageDataÖ0Ïpublic bool
+set_urisÌ128Í([CCode (array_length = false)] string[] uris)ÎUnique.MessageDataÖ0Ïpublic bool
+startup_idÌ8ÎUnique.AppÖ0
+startup_idÌ8ÎUnique.BackendÖ0
+watch_windowÌ128Í(Gtk.Window window)ÎUnique.AppÖ0Ïpublic void
+workspaceÌ8ÎUnique.BackendÖ0

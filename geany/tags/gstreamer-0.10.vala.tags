@@ -1,0 +1,1998 @@
+# format=tagmanager
+@doÌ128Í(Gst.BufferListDoFunction do_func)ÎGst.BufferListIteratorÖ0Ïpublic unowned
+@foreachÌ128Í(Gst.BufferListFunc func)ÎGst.BufferListÖ0Ïpublic void
+@foreachÌ128Í(GLib.Func func)ÎGst.IteratorÖ0Ïpublic Gst.IteratorResult
+@foreachÌ128Í(Gst.StructureForeachFunc func)ÎGst.StructureÖ0Ïpublic bool
+@foreachÌ128Í(Gst.TagForeachFunc func)ÎGst.TagListÖ0Ïpublic void
+@getÌ128Í(string name)ÎGst.AllocTraceÖ0Ïpublic unowned
+@getÌ128Í(uint group, uint idx)ÎGst.BufferListÖ0Ïpublic unowned
+@getÌ128Í(string first_property_name, ...)ÎGst.ChildProxyÖ0Ïpublic void
+@getÌ128Í(string name)ÎGst.DebugCategoryÖ0Ïpublic unowned
+@getÌ128Í()ÎGst.DebugMessageÖ0Ïpublic unowned string
+@getÌ128Í()ÎGst.StaticCapsÖ0Ïpublic Gst.Caps
+@getÌ128Í()ÎGst.StaticPadTemplateÖ0Ïpublic Gst.PadTemplate
+@getÌ128Í(...)ÎGst.StructureÖ0Ïpublic bool
+@lockÌ8ÎGst.IteratorÖ0ÏGLib.Mutex
+@lockÌ8ÎGst.ObjectÖ0ÏGLib.Mutex
+@lockÌ8ÎGst.TaskÖ0Ïvoid
+@refÌ128Í()ÎGst.BufferÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.BufferListÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.CapsÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.EventÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.MessageÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.MiniObjectÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.ObjectÖ0Ïpublic unowned
+@refÌ128Í()ÎGst.QueryÖ0Ïpublic unowned
+@setÌ128Í(string first_property_name, ...)ÎGst.ChildProxyÖ0Ïpublic void
+@setÌ128Í(string fieldname, ...)ÎGst.StructureÖ0Ïpublic void
+ACCURATEÌ4ÎGst.SeekFlagsÖ0
+AFTERÌ4ÎGst.IndexLookupMethodÖ0
+AFTERÌ4ÎGst.SearchModeÖ0
+ALLÌ4ÎGst.DebugGraphDetailsÖ0
+ALWAYSÌ4ÎGst.PadPresenceÖ0
+ANYÌ4ÎGst.CapsFlagsÖ0
+ANYÌ4ÎGst.MessageTypeÖ0
+APPENDÌ4ÎGst.TagMergeModeÖ0
+APPLICATIONÌ4ÎGst.MessageTypeÖ0
+ASSOCIATIONÌ4ÎGst.IndexEntryTypeÖ0
+ASYNCÌ4ÎGst.BusSyncReplyÖ0
+ASYNCÌ4ÎGst.StateChangeReturnÖ0
+ASYNC_DONEÌ4ÎGst.MessageTypeÖ0
+ASYNC_STARTÌ4ÎGst.MessageTypeÖ0
+ActivateModeÌ2ÎGstÖ0
+AllocTraceÌ1ÎGstÖ0
+AllocTraceFlagsÌ2ÎGstÖ0
+ArrayÌ2048ÎGstÖ0
+AssocFlagsÌ2ÎGstÖ0
+BADTIMEÌ4ÎGst.ClockReturnÖ0
+BEFOREÌ4ÎGst.IndexLookupMethodÖ0
+BEFOREÌ4ÎGst.SearchModeÖ0
+BG_BLACKÌ4ÎGst.DebugColorFlagsÖ0
+BG_BLUEÌ4ÎGst.DebugColorFlagsÖ0
+BG_CYANÌ4ÎGst.DebugColorFlagsÖ0
+BG_GREENÌ4ÎGst.DebugColorFlagsÖ0
+BG_MAGENTAÌ4ÎGst.DebugColorFlagsÖ0
+BG_REDÌ4ÎGst.DebugColorFlagsÖ0
+BG_WHITEÌ4ÎGst.DebugColorFlagsÖ0
+BG_YELLOWÌ4ÎGst.DebugColorFlagsÖ0
+BLACKLISTEDÌ4ÎGst.PluginFlagsÖ0
+BLOCKEDÌ4ÎGst.PadFlagsÖ0
+BLOCKINGÌ4ÎGst.PadFlagsÖ0
+BOLDÌ4ÎGst.DebugColorFlagsÖ0
+BUFFERINGÌ4ÎGst.MessageTypeÖ0
+BUFFERINGÌ4ÎGst.QueryTypeÖ0
+BUFFERSÌ4ÎGst.FormatÖ0
+BUFFERSIZEÌ4ÎGst.EventTypeÖ0
+BUFFER_COPY_ALLÌ8ÎGstÖ0Ïint
+BUFFER_OFFSET_NONEÌ8ÎGstÖ0Ïint
+BUFFER_TRACE_NAMEÌ8ÎGstÖ0
+BUSYÌ4ÎGst.ClockReturnÖ0
+BUSYÌ4ÎGst.ResourceErrorÖ0
+BYTESÌ4ÎGst.FormatÖ0
+BinÌ1ÎGstÖ0
+BinÌ128Í(string? name)ÎGst.BinÖ0
+BinFlagsÌ2ÎGstÖ0
+BufferÌ1ÎGstÖ0
+BufferÌ128Í()ÎGst.BufferÖ0
+Buffer.and_allocÌ128Í(uint size)ÎGst.BufferÖ0
+BufferCopyFlagsÌ2ÎGstÖ0
+BufferFlagÌ2ÎGstÖ0
+BufferListÌ1ÎGstÖ0
+BufferListÌ128Í()ÎGst.BufferListÖ0
+BufferListDoFunctionÌ128Í(Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate unowned
+BufferListFuncÌ128Í(out unowned Gst.Buffer buffer, uint group, uint idx)ÎGstÖ0Ïpublic delegate Gst.BufferListItem
+BufferListItemÌ2ÎGstÖ0
+BufferListIteratorÌ1ÎGstÖ0
+BufferProbeCallbackÌ128Í(Gst.Pad pad, Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate bool
+BufferingModeÌ2ÎGstÖ0
+BusÌ1ÎGstÖ0
+BusÌ128Í()ÎGst.BusÖ0
+BusFlagsÌ2ÎGstÖ0
+BusFuncÌ128Í(Gst.Bus bus, Gst.Message message)ÎGstÖ0Ïpublic delegate bool
+BusSyncHandlerÌ128Í(Gst.Bus bus, Gst.Message message)ÎGstÖ0Ïpublic delegate Gst.BusSyncReply
+BusSyncReplyÌ2ÎGstÖ0
+CACHEDÌ4ÎGst.PluginFlagsÖ0
+CAN_DO_PERIODIC_ASYNCÌ4ÎGst.ClockFlagsÖ0
+CAN_DO_PERIODIC_SYNCÌ4ÎGst.ClockFlagsÖ0
+CAN_DO_SINGLE_ASYNCÌ4ÎGst.ClockFlagsÖ0
+CAN_DO_SINGLE_SYNCÌ4ÎGst.ClockFlagsÖ0
+CAN_SET_MASTERÌ4ÎGst.ClockFlagsÖ0
+CAN_SET_RESOLUTIONÌ4ÎGst.ClockFlagsÖ0
+CAPSÌ4ÎGst.BufferCopyFlagsÖ0
+CAPSÌ4ÎGst.CoreErrorÖ0
+CAPSÌ4ÎGst.PadLinkCheckÖ0
+CAPS_DETAILSÌ4ÎGst.DebugGraphDetailsÖ0
+CERTAINÌ4ÎGst.IndexCertaintyÖ0
+CLOCKÌ4ÎGst.CoreErrorÖ0
+CLOCK_ENTRY_TRACE_NAMEÌ8ÎGstÖ0
+CLOCK_LOSTÌ4ÎGst.MessageTypeÖ0
+CLOCK_PROVIDEÌ4ÎGst.MessageTypeÖ0
+CLOCK_TIME_NONEÌ8ÎGstÖ0Ïint
+CLOSEÌ4ÎGst.ResourceErrorÖ0
+CODEC_NOT_FOUNDÌ4ÎGst.StreamErrorÖ0
+CONTINUEÌ4ÎGst.BufferListItemÖ0
+CONVERTÌ4ÎGst.QueryTypeÖ0
+COULD_NOT_SET_PROPERTYÌ4ÎGst.ParseErrorÖ0
+COUNTÌ4ÎGst.DebugLevelÖ0
+COUNTÌ4ÎGst.TagFlagÖ0
+COUNTÌ4ÎGst.TagMergeModeÖ0
+CREATEÌ4ÎGst.StreamStatusTypeÖ0
+CURÌ4ÎGst.SeekTypeÖ0
+CUSTOMÌ4ÎGst.IndexResolverMethodÖ0
+CUSTOMÌ4ÎGst.QueryTypeÖ0
+CUSTOM_BOTHÌ4ÎGst.EventTypeÖ0
+CUSTOM_BOTH_OOBÌ4ÎGst.EventTypeÖ0
+CUSTOM_DOWNSTREAMÌ4ÎGst.EventTypeÖ0
+CUSTOM_DOWNSTREAM_OOBÌ4ÎGst.EventTypeÖ0
+CUSTOM_ERRORÌ4ÎGst.FlowReturnÖ0
+CUSTOM_ERROR_1Ì4ÎGst.FlowReturnÖ0
+CUSTOM_ERROR_2Ì4ÎGst.FlowReturnÖ0
+CUSTOM_SUCCESSÌ4ÎGst.FlowReturnÖ0
+CUSTOM_SUCCESS_1Ì4ÎGst.FlowReturnÖ0
+CUSTOM_SUCCESS_2Ì4ÎGst.FlowReturnÖ0
+CUSTOM_UPSTREAMÌ4ÎGst.EventTypeÖ0
+CapsÌ1ÎGstÖ0
+Caps.anyÌ128Í()ÎGst.CapsÖ0
+Caps.emptyÌ128Í()ÎGst.CapsÖ0
+Caps.fullÌ128Í(Gst.Structure struct1, ...)ÎGst.CapsÖ0
+Caps.full_valistÌ128Í(Gst.Structure structure, void* var_args)ÎGst.CapsÖ0
+Caps.simpleÌ128Í(string media_type, string fieldname, ...)ÎGst.CapsÖ0
+CapsFlagsÌ2ÎGstÖ0
+ChildProxyÌ32ÎGstÖ0
+ClockÌ1ÎGstÖ0
+ClockÌ128Í()ÎGst.ClockÖ0
+ClockCallbackÌ128Í(Gst.Clock clock, Gst.ClockTime time, Gst.ClockID id)ÎGstÖ0Ïpublic delegate bool
+ClockEntryÌ1ÎGstÖ0
+ClockEntryTypeÌ2ÎGstÖ0
+ClockFlagsÌ2ÎGstÖ0
+ClockIDÌ1ÎGstÖ0
+ClockID.periodicÌ128Í(Gst.Clock clock, Gst.ClockTime start_time, Gst.ClockTime interval)ÎGst.ClockIDÖ0
+ClockID.single_shotÌ128Í(Gst.Clock clock, Gst.ClockTime time)ÎGst.ClockIDÖ0
+ClockReturnÌ2ÎGstÖ0
+ClockTimeÌ2048ÎGstÖ0
+ClockTimeDiffÌ2048ÎGstÖ0
+ClockTypeÌ2ÎGstÖ0
+CopyFunctionÌ128Í(void* object)ÎGstÖ0Ïpublic delegate void *
+CoreErrorÌ2ÎGstÖ0
+DEBUGÌ4ÎGst.DebugLevelÖ0
+DEBUG_BG_MASKÌ8ÎGstÖ0Ïint
+DEBUG_FG_MASKÌ8ÎGstÖ0Ïint
+DEBUG_FORMAT_MASKÌ8ÎGstÖ0Ïint
+DECODEÌ4ÎGst.StreamErrorÖ0
+DECODEDÌ4ÎGst.TagFlagÖ0
+DECRYPTÌ4ÎGst.StreamErrorÖ0
+DECRYPT_NOKEYÌ4ÎGst.StreamErrorÖ0
+DEFAULTÌ4ÎGst.FormatÖ0
+DELTA_UNITÌ4ÎGst.AssocFlagsÖ0
+DELTA_UNITÌ4ÎGst.BufferFlagÖ0
+DEMUXÌ4ÎGst.StreamErrorÖ0
+DEPENDENCIESÌ4ÎGst.PluginErrorÖ0
+DESTROYÌ4ÎGst.StreamStatusTypeÖ0
+DISABLEDÌ4ÎGst.CoreErrorÖ0
+DISCONTÌ4ÎGst.BufferFlagÖ0
+DISPOSINGÌ4ÎGst.ObjectFlagsÖ0
+DONEÌ4ÎGst.IteratorResultÖ0
+DOWNLOADÌ4ÎGst.BufferingModeÖ0
+DOWNSTREAMÌ4ÎGst.EventTypeFlagsÖ0
+DROPÌ4ÎGst.BusSyncReplyÖ0
+DURATIONÌ4ÎGst.MessageTypeÖ0
+DURATIONÌ4ÎGst.QueryTypeÖ0
+DataProbeCallbackÌ128Í(Gst.Pad pad, Gst.MiniObject data)ÎGstÖ0Ïpublic delegate bool
+DateÌ1ÎGstÖ0
+DebugCategoryÌ1ÎGstÖ0
+DebugColorFlagsÌ2ÎGstÖ0
+DebugFuncPtrÌ128Í()ÎGstÖ0Ïpublic delegate void
+DebugGraphDetailsÌ2ÎGstÖ0
+DebugLevelÌ2ÎGstÖ0
+DebugMessageÌ1ÎGstÖ0
+DoubleRangeÌ2048ÎGstÖ0
+EARLYÌ4ÎGst.ClockReturnÖ0
+ELEMENTÌ4ÎGst.MessageTypeÖ0
+EMPTYÌ4ÎGst.ParseErrorÖ0
+EMPTY_BINÌ4ÎGst.ParseErrorÖ0
+ENCODEÌ4ÎGst.LibraryErrorÖ0
+ENCODEÌ4ÎGst.StreamErrorÖ0
+ENCODEDÌ4ÎGst.TagFlagÖ0
+ENDÌ4ÎGst.BufferListItemÖ0
+ENDÌ4ÎGst.IteratorItemÖ0
+ENDÌ4ÎGst.SeekTypeÖ0
+ENTERÌ4ÎGst.StreamStatusTypeÖ0
+EOSÌ4ÎGst.EventTypeÖ0
+EOSÌ4ÎGst.MessageTypeÖ0
+ERRORÌ4ÎGst.ClockReturnÖ0
+ERRORÌ4ÎGst.DebugLevelÖ0
+ERRORÌ4ÎGst.FlowReturnÖ0
+ERRORÌ4ÎGst.IteratorResultÖ0
+ERRORÌ4ÎGst.MessageTypeÖ0
+EVENTÌ4ÎGst.CoreErrorÖ0
+EVENT_TRACE_NAMEÌ8ÎGstÖ0
+EVENT_TYPE_BOTHÌ8ÎGstÖ0Ïint
+EVENT_TYPE_SHIFTÌ8ÎGstÖ0Ïint
+EXACTÌ4ÎGst.IndexLookupMethodÖ0
+EXACTÌ4ÎGst.SearchModeÖ0
+ElementÌ1ÎGstÖ0
+ElementÌ128Í()ÎGst.ElementÖ0
+ElementDetailsÌ2048ÎGstÖ0
+ElementFactoryÌ1ÎGstÖ0
+ElementFactoryÌ128Í()ÎGst.ElementFactoryÖ0
+ElementFlagsÌ2ÎGstÖ0
+EventÌ1ÎGstÖ0
+Event.buffer_sizeÌ128Í(Gst.Format format, int64 minsize, int64 maxsize, bool @async)ÎGst.EventÖ0
+Event.customÌ128Í(Gst.EventType type, owned Gst.Structure structure)ÎGst.EventÖ0
+Event.eosÌ128Í()ÎGst.EventÖ0
+Event.flush_startÌ128Í()ÎGst.EventÖ0
+Event.flush_stopÌ128Í()ÎGst.EventÖ0
+Event.latencyÌ128Í(Gst.ClockTime latency)ÎGst.EventÖ0
+Event.navigationÌ128Í(owned Gst.Structure structure)ÎGst.EventÖ0
+Event.new_segmentÌ128Í(bool update, double rate, Gst.Format format, int64 start, int64 stop, int64 position)ÎGst.EventÖ0
+Event.new_segment_fullÌ128Í(bool update, double rate, double applied_rate, Gst.Format format, int64 start, int64 stop, int64 position)ÎGst.EventÖ0
+Event.qosÌ128Í(double proportion, Gst.ClockTimeDiff diff, Gst.ClockTime timestamp)ÎGst.EventÖ0
+Event.seekÌ128Í(double rate, Gst.Format format, Gst.SeekFlags flags, Gst.SeekType start_type, int64 start, Gst.SeekType stop_type, int64 stop)ÎGst.EventÖ0
+Event.sink_messageÌ128Í(owned Gst.Message msg)ÎGst.EventÖ0
+Event.stepÌ128Í(Gst.Format format, uint64 amount, double rate, bool flush, bool intermediate)ÎGst.EventÖ0
+Event.tagÌ128Í(owned Gst.TagList taglist)ÎGst.EventÖ0
+EventProbeCallbackÌ128Í(Gst.Pad pad, Gst.Event event)ÎGstÖ0Ïpublic delegate bool
+EventTypeÌ2ÎGstÖ0
+EventTypeFlagsÌ2ÎGstÖ0
+FAILEDÌ4ÎGst.CoreErrorÖ0
+FAILEDÌ4ÎGst.LibraryErrorÖ0
+FAILEDÌ4ÎGst.ResourceErrorÖ0
+FAILEDÌ4ÎGst.StreamErrorÖ0
+FAILUREÌ4ÎGst.StateChangeReturnÖ0
+FATAL_ERRORSÌ4ÎGst.ParseFlagsÖ0
+FG_BLACKÌ4ÎGst.DebugColorFlagsÖ0
+FG_BLUEÌ4ÎGst.DebugColorFlagsÖ0
+FG_CYANÌ4ÎGst.DebugColorFlagsÖ0
+FG_GREENÌ4ÎGst.DebugColorFlagsÖ0
+FG_MAGENTAÌ4ÎGst.DebugColorFlagsÖ0
+FG_REDÌ4ÎGst.DebugColorFlagsÖ0
+FG_WHITEÌ4ÎGst.DebugColorFlagsÖ0
+FG_YELLOWÌ4ÎGst.DebugColorFlagsÖ0
+FILE_NAME_IS_SUFFIXÌ4ÎGst.PluginDependencyFlagsÖ0
+FIXEDÌ4ÎGst.PadTemplateFlagsÖ0
+FIXED_CLOCKÌ4ÎGst.PipelineFlagsÖ0
+FIXMEÌ4ÎGst.DebugLevelÖ0
+FLAGSÌ4ÎGst.BufferCopyFlagsÖ0
+FLAG_LASTÌ4ÎGst.BusFlagsÖ0
+FLAG_LASTÌ4ÎGst.ElementFlagsÖ0
+FLAG_LASTÌ4ÎGst.IndexFlagsÖ0
+FLAG_LASTÌ4ÎGst.ObjectFlagsÖ0
+FLAG_LASTÌ4ÎGst.PadFlagsÖ0
+FLAG_LASTÌ4ÎGst.PadTemplateFlagsÖ0
+FLOATINGÌ4ÎGst.ObjectFlagsÖ0
+FLUSHÌ4ÎGst.SeekFlagsÖ0
+FLUSHINGÌ4ÎGst.BusFlagsÖ0
+FLUSHINGÌ4ÎGst.PadFlagsÖ0
+FLUSH_STARTÌ4ÎGst.EventTypeÖ0
+FLUSH_STOPÌ4ÎGst.EventTypeÖ0
+FORMATÌ4ÎGst.IndexEntryTypeÖ0
+FORMATÌ4ÎGst.StreamErrorÖ0
+FORMATSÌ4ÎGst.QueryTypeÖ0
+FOURCC_FORMATÌ8ÎGstÖ0
+FUZZYÌ4ÎGst.IndexCertaintyÖ0
+FilterFuncÌ128Í(void* obj)ÎGstÖ0Ïpublic delegate bool
+FlowReturnÌ2ÎGstÖ0
+FormatÌ2ÎGstÖ0
+FormatDefinitionÌ2048ÎGstÖ0
+FractionÌ2048ÎGstÖ0
+FractionRangeÌ2048ÎGstÖ0
+GAPÌ4ÎGst.BufferFlagÖ0
+GErrorÌ1ÎGstÖ0
+GLib.QuarkÌ4ÎGst.EventTypeÖ0
+GLib.QuarkÌ4ÎGst.FormatÖ0
+GLib.QuarkÌ4ÎGst.MessageTypeÖ0
+GLib.QuarkÌ4ÎGst.QueryTypeÖ0
+GTYPEÌ4ÎGst.IndexResolverMethodÖ0
+GhostPadÌ1ÎGstÖ0
+GhostPadÌ128Í(string? name, Gst.Pad target)ÎGst.GhostPadÖ0
+GhostPad.from_templateÌ128Í(string? name, Gst.Pad target, Gst.PadTemplate templ)ÎGst.GhostPadÖ0
+GhostPad.no_targetÌ128Í(string? name, Gst.PadDirection dir)ÎGst.GhostPadÖ0
+GhostPad.no_target_from_templateÌ128Í(string? name, Gst.PadTemplate templ)ÎGst.GhostPadÖ0
+GstÌ256Ö0
+Gst.EventTypeFlagsÌ4ÎGst.EventTypeÖ0
+Gst.FormatDefinitionÌ4ÎGst.FormatÖ0
+Gst.IteratorÌ4ÎGst.QueryTypeÖ0
+Gst.QueryTypeÌ4ÎGst.QueryTypeÖ0
+Gst.QueryTypeDefinitionÌ4ÎGst.QueryTypeÖ0
+Gst.StateÌ4ÎGst.StateÖ0
+Gst.StateÌ4ÎGst.StateChangeÖ0
+Gst.StateChangeÌ4ÎGst.StateChangeÖ0
+HIERARCHYÌ4ÎGst.PadLinkCheckÖ0
+IDÌ4ÎGst.IndexEntryTypeÖ0
+INFOÌ4ÎGst.DebugLevelÖ0
+INFOÌ4ÎGst.MessageTypeÖ0
+INITÌ4ÎGst.LibraryErrorÖ0
+IN_CAPSÌ4ÎGst.BufferFlagÖ0
+IN_GETCAPSÌ4ÎGst.PadFlagsÖ0
+IN_SETCAPSÌ4ÎGst.PadFlagsÖ0
+IS_SINKÌ4ÎGst.ElementFlagsÖ0
+ImplementsInterfaceÌ32ÎGstÖ0
+IndexÌ1ÎGstÖ0
+IndexÌ128Í()ÎGst.IndexÖ0
+IndexAssociationÌ2048ÎGstÖ0
+IndexCertaintyÌ2ÎGstÖ0
+IndexEntryÌ1ÎGstÖ0
+IndexEntryTypeÌ2ÎGstÖ0
+IndexFactoryÌ1ÎGstÖ0
+IndexFactoryÌ128Í(string name, string longdesc, GLib.Type type)ÎGst.IndexFactoryÖ0
+IndexFilterÌ128Í(Gst.Index index, Gst.IndexEntry entry)ÎGstÖ0Ïpublic delegate bool
+IndexFlagsÌ2ÎGstÖ0
+IndexLookupMethodÌ2ÎGstÖ0
+IndexResolverÌ128Í(Gst.Index index, Gst.Object writer, string writer_string)ÎGstÖ0Ïpublic delegate bool
+IndexResolverMethodÌ2ÎGstÖ0
+IntRangeÌ2048ÎGstÖ0
+IteratorÌ1ÎGstÖ0
+IteratorÌ128Í(uint size, GLib.Type type, GLib.Mutex @lock, ref uint32 master_cookie, Gst.IteratorNextFunction<T> next, Gst.IteratorItemFunction<T> item, Gst.IteratorResyncFunction resync, Gst.IteratorFreeFunction free)ÎGst.IteratorÖ0
+Iterator.listÌ128Í(GLib.Type type, GLib.Mutex @lock, ref uint32 master_cookie, GLib.List<T> list, void* owner, Gst.IteratorItemFunction<T> item, Gst.IteratorDisposeFunction free)ÎGst.IteratorÖ0
+Iterator.singleÌ128Í(GLib.Type type, T object, Gst.CopyFunction copy, GLib.FreeFunc free)ÎGst.IteratorÖ0
+IteratorDisposeFunctionÌ128Í(void* owner)ÎGstÖ0Ïpublic delegate void
+IteratorFoldFunctionÌ128Í(T item, ref Gst.Value ret)ÎGstÖ0Ïpublic delegate bool
+IteratorFreeFunctionÌ128Í(Gst.Iterator it)ÎGstÖ0Ïpublic delegate void
+IteratorItemÌ2ÎGstÖ0
+IteratorItemFunctionÌ128Í(Gst.Iterator it, out T item)ÎGstÖ0Ïpublic delegate Gst.IteratorItem
+IteratorNextFunctionÌ128Í(Gst.Iterator it, out T result)ÎGstÖ0Ïpublic delegate Gst.IteratorResult
+IteratorResultÌ2ÎGstÖ0
+IteratorResyncFunctionÌ128Í(Gst.Iterator it)ÎGstÖ0Ïpublic delegate void
+JITTERÌ4ÎGst.QueryTypeÖ0
+KEEPÌ4ÎGst.TagMergeModeÖ0
+KEEP_ALLÌ4ÎGst.TagMergeModeÖ0
+KEY_UNITÌ4ÎGst.AssocFlagsÖ0
+KEY_UNITÌ4ÎGst.SeekFlagsÖ0
+LASTÌ4ÎGst.AssocFlagsÖ0
+LASTÌ4ÎGst.BinFlagsÖ0
+LASTÌ4ÎGst.BufferFlagÖ0
+LASTÌ4ÎGst.ClockFlagsÖ0
+LASTÌ4ÎGst.MiniObjectFlagsÖ0
+LASTÌ4ÎGst.PipelineFlagsÖ0
+LATENCYÌ4ÎGst.EventTypeÖ0
+LATENCYÌ4ÎGst.MessageTypeÖ0
+LATENCYÌ4ÎGst.QueryTypeÖ0
+LEAVEÌ4ÎGst.StreamStatusTypeÖ0
+LICENSE_UNKNOWNÌ8ÎGstÖ0
+LIKELYÌ4ÎGst.TypeFindProbabilityÖ0
+LINKÌ4ÎGst.ParseErrorÖ0
+LINKÌ4ÎGst.StructureChangeTypeÖ0
+LIVEÌ4ÎGst.AllocTraceFlagsÖ0
+LIVEÌ4ÎGst.BufferingModeÖ0
+LOCKED_STATEÌ4ÎGst.ElementFlagsÖ0
+LOGÌ4ÎGst.DebugLevelÖ0
+LibraryErrorÌ2ÎGstÖ0
+ListÌ2048ÎGstÖ0
+LogFunctionÌ128Í(Gst.DebugCategory category, Gst.DebugLevel level, string file, string function, int line, GLib.Object object, Gst.DebugMessage message)ÎGstÖ0Ïpublic delegate void
+MARGINALÌ4ÎGst.RankÖ0
+MAXIMUMÌ4ÎGst.TypeFindProbabilityÖ0
+MEDIA1Ì4ÎGst.BufferFlagÖ0
+MEDIA2Ì4ÎGst.BufferFlagÖ0
+MEDIA3Ì4ÎGst.BufferFlagÖ0
+MEDIA_TYPEÌ4ÎGst.DebugGraphDetailsÖ0
+MEMDUMPÌ4ÎGst.DebugLevelÖ0
+MEM_LIVEÌ4ÎGst.AllocTraceFlagsÖ0
+MESSAGE_TRACE_NAMEÌ8ÎGstÖ0
+METAÌ4ÎGst.TagFlagÖ0
+MINIMUMÌ4ÎGst.TypeFindProbabilityÖ0
+MISSING_PLUGINÌ4ÎGst.CoreErrorÖ0
+MODULEÌ4ÎGst.PluginErrorÖ0
+MONOTONICÌ4ÎGst.ClockTypeÖ0
+MSECONDÌ8ÎGstÖ0Ïint
+MUXÌ4ÎGst.StreamErrorÖ0
+MessageÌ1ÎGstÖ0
+Message.applicationÌ128Í(Gst.Object src, owned Gst.Structure? structure)ÎGst.MessageÖ0
+Message.async_doneÌ128Í(Gst.Object src)ÎGst.MessageÖ0
+Message.async_startÌ128Í(Gst.Object src, bool new_base_time)ÎGst.MessageÖ0
+Message.bufferingÌ128Í(Gst.Object src, int percent)ÎGst.MessageÖ0
+Message.clock_lostÌ128Í(Gst.Object src, Gst.Clock clock)ÎGst.MessageÖ0
+Message.clock_provideÌ128Í(Gst.Object src, Gst.Clock clock, bool ready)ÎGst.MessageÖ0
+Message.customÌ128Í(Gst.MessageType type, Gst.Object src, owned Gst.Structure? structure)ÎGst.MessageÖ0
+Message.durationÌ128Í(Gst.Object src, Gst.Format format, int64 duration)ÎGst.MessageÖ0
+Message.elementÌ128Í(Gst.Object src, owned Gst.Structure? structure)ÎGst.MessageÖ0
+Message.eosÌ128Í(Gst.Object src)ÎGst.MessageÖ0
+Message.errorÌ128Í(Gst.Object src, GLib.Error error, string? debug)ÎGst.MessageÖ0
+Message.infoÌ128Í(Gst.Object src, GLib.Error error, string? debug)ÎGst.MessageÖ0
+Message.latencyÌ128Í(Gst.Object src)ÎGst.MessageÖ0
+Message.new_clockÌ128Í(Gst.Object src, Gst.Clock clock)ÎGst.MessageÖ0
+Message.qosÌ128Í(Gst.Object src, bool live, uint64 running_time, uint64 stream_time, uint64 timestamp, uint64 duration)ÎGst.MessageÖ0
+Message.request_stateÌ128Í(Gst.Object src, Gst.State state)ÎGst.MessageÖ0
+Message.segment_doneÌ128Í(Gst.Object src, Gst.Format format, int64 position)ÎGst.MessageÖ0
+Message.segment_startÌ128Í(Gst.Object src, Gst.Format format, int64 position)ÎGst.MessageÖ0
+Message.state_changedÌ128Í(Gst.Object src, Gst.State oldstate, Gst.State newstate, Gst.State pending)ÎGst.MessageÖ0
+Message.state_dirtyÌ128Í(Gst.Object src)ÎGst.MessageÖ0
+Message.step_doneÌ128Í(Gst.Object src, Gst.Format format, uint64 amount, double rate, bool flush, bool intermediate, uint64 duration, bool eos)ÎGst.MessageÖ0
+Message.step_startÌ128Í(Gst.Object src, bool active, Gst.Format format, uint64 amount, double rate, bool flush, bool intermediate)ÎGst.MessageÖ0
+Message.stream_statusÌ128Í(Gst.Object src, Gst.StreamStatusType type, Gst.Element owner)ÎGst.MessageÖ0
+Message.structure_changeÌ128Í(Gst.Object src, Gst.StructureChangeType type, Gst.Element owner, bool busy)ÎGst.MessageÖ0
+Message.tagÌ128Í(Gst.Object src, Gst.TagList tag_list)ÎGst.MessageÖ0
+Message.tag_fullÌ128Í(Gst.Object src, Gst.Pad pad, Gst.TagList tag_list)ÎGst.MessageÖ0
+Message.warningÌ128Í(Gst.Object src, GLib.Error error, string? debug)ÎGst.MessageÖ0
+MessageTypeÌ2ÎGstÖ0
+MiniObjectÌ1ÎGstÖ0
+MiniObjectÌ128Í(GLib.Type type)ÎGst.MiniObjectÖ0
+MiniObjectCopyFunctionÌ128Í(Gst.MiniObject obj)ÎGstÖ0Ïpublic delegate unowned
+MiniObjectFinalizeFunctionÌ128Í(Gst.MiniObject obj)ÎGstÖ0Ïpublic delegate void
+MiniObjectFlagsÌ2ÎGstÖ0
+NAME_MISMATCHÌ4ÎGst.PluginErrorÖ0
+NAVIGATIONÌ4ÎGst.EventTypeÖ0
+NEARLY_CERTAINÌ4ÎGst.TypeFindProbabilityÖ0
+NEGOTIATIONÌ4ÎGst.CoreErrorÖ0
+NEWSEGMENTÌ4ÎGst.EventTypeÖ0
+NEW_CLOCKÌ4ÎGst.MessageTypeÖ0
+NOFORMATÌ4ÎGst.PadLinkReturnÖ0
+NONEÌ4ÎGst.ActivateModeÖ0
+NONEÌ4ÎGst.AssocFlagsÖ0
+NONEÌ4ÎGst.DebugLevelÖ0
+NONEÌ4ÎGst.ParseFlagsÖ0
+NONEÌ4ÎGst.PluginDependencyFlagsÖ0
+NONEÌ4ÎGst.QueryTypeÖ0
+NONEÌ4ÎGst.RankÖ0
+NONEÌ4ÎGst.SeekFlagsÖ0
+NONEÌ4ÎGst.SeekTypeÖ0
+NON_DEFAULT_PARAMSÌ4ÎGst.DebugGraphDetailsÖ0
+NOSCHEDÌ4ÎGst.PadLinkReturnÖ0
+NOTHINGÌ4ÎGst.PadLinkCheckÖ0
+NOT_FOUNDÌ4ÎGst.ResourceErrorÖ0
+NOT_IMPLEMENTEDÌ4ÎGst.CoreErrorÖ0
+NOT_IMPLEMENTEDÌ4ÎGst.StreamErrorÖ0
+NOT_LINKEDÌ4ÎGst.FlowReturnÖ0
+NOT_NEGOTIATEDÌ4ÎGst.FlowReturnÖ0
+NOT_SUPPORTEDÌ4ÎGst.FlowReturnÖ0
+NO_PREROLLÌ4ÎGst.StateChangeReturnÖ0
+NO_SPACE_LEFTÌ4ÎGst.ResourceErrorÖ0
+NO_SUCH_ELEMENTÌ4ÎGst.ParseErrorÖ0
+NO_SUCH_PROPERTYÌ4ÎGst.ParseErrorÖ0
+NSECONDÌ8ÎGstÖ0Ïint
+NULLÌ4ÎGst.StateÖ0
+NULL_TO_READYÌ4ÎGst.StateChangeÖ0
+NUM_ERRORSÌ4ÎGst.CoreErrorÖ0
+NUM_ERRORSÌ4ÎGst.LibraryErrorÖ0
+NUM_ERRORSÌ4ÎGst.ResourceErrorÖ0
+NUM_ERRORSÌ4ÎGst.StreamErrorÖ0
+OBJECTÌ4ÎGst.IndexEntryTypeÖ0
+OKÌ4ÎGst.ClockReturnÖ0
+OKÌ4ÎGst.FlowReturnÖ0
+OKÌ4ÎGst.IteratorResultÖ0
+OKÌ4ÎGst.PadLinkReturnÖ0
+OPEN_READÌ4ÎGst.ResourceErrorÖ0
+OPEN_READ_WRITEÌ4ÎGst.ResourceErrorÖ0
+OPEN_WRITEÌ4ÎGst.ResourceErrorÖ0
+ObjectÌ1ÎGstÖ0
+ObjectÌ128Í()ÎGst.ObjectÖ0
+ObjectFlagsÌ2ÎGstÖ0
+PADÌ4ÎGst.CoreErrorÖ0
+PAD_LINK_CHECK_DEFAULTÌ8ÎGstÖ0Ïint
+PARAM_CONTROLLABLEÌ8ÎGstÖ0Ïint
+PARAM_MUTABLE_PAUSEDÌ8ÎGstÖ0Ïint
+PARAM_MUTABLE_PLAYINGÌ8ÎGstÖ0Ïint
+PARAM_MUTABLE_READYÌ8ÎGstÖ0Ïint
+PARAM_USER_SHIFTÌ8ÎGstÖ0Ïint
+PASSÌ4ÎGst.BusSyncReplyÖ0
+PASSÌ4ÎGst.IteratorItemÖ0
+PATHÌ4ÎGst.IndexResolverMethodÖ0
+PATHS_ARE_DEFAULT_ONLYÌ4ÎGst.PluginDependencyFlagsÖ0
+PAUSEÌ4ÎGst.StreamStatusTypeÖ0
+PAUSEDÌ4ÎGst.StateÖ0
+PAUSEDÌ4ÎGst.TaskStateÖ0
+PAUSED_TO_PLAYINGÌ4ÎGst.StateChangeÖ0
+PAUSED_TO_READYÌ4ÎGst.StateChangeÖ0
+PERCENTÌ4ÎGst.FormatÖ0
+PERCENT_MAXÌ4ÎGst.FormatÖ0
+PERCENT_SCALEÌ4ÎGst.FormatÖ0
+PERIODICÌ4ÎGst.ClockEntryTypeÖ0
+PLAYINGÌ4ÎGst.StateÖ0
+PLAYING_TO_PAUSEDÌ4ÎGst.StateChangeÖ0
+POSITIONÌ4ÎGst.QueryTypeÖ0
+POSSIBLEÌ4ÎGst.TypeFindProbabilityÖ0
+PREPENDÌ4ÎGst.TagMergeModeÖ0
+PREROLLÌ4ÎGst.BufferFlagÖ0
+PRIMARYÌ4ÎGst.RankÖ0
+PULLÌ4ÎGst.ActivateModeÖ0
+PUSHÌ4ÎGst.ActivateModeÖ0
+PadÌ1ÎGstÖ0
+PadÌ128Í(string name, Gst.PadDirection direction)ÎGst.PadÖ0
+Pad.from_static_templateÌ128Í(Gst.StaticPadTemplate templ, string name)ÎGst.PadÖ0
+Pad.from_templateÌ128Í(Gst.PadTemplate templ, string name)ÎGst.PadÖ0
+PadAcceptCapsFunctionÌ128Í(Gst.Pad pad, Gst.Caps caps)ÎGstÖ0Ïpublic delegate bool
+PadActivateFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate bool
+PadActivateModeFunctionÌ128Í(Gst.Pad pad, bool active)ÎGstÖ0Ïpublic delegate bool
+PadBlockCallbackÌ128Í(Gst.Pad pad, bool blocked)ÎGstÖ0Ïpublic delegate void
+PadBufferAllocFunctionÌ128Í(Gst.Pad pad, uint64 offset, uint size, Gst.Caps caps, out Gst.Buffer buf)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+PadChainFunctionÌ128Í(Gst.Pad pad, owned Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+PadChainListFunctionÌ128Í(Gst.Pad pad, owned Gst.BufferList list)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+PadCheckGetRangeFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate bool
+PadDirectionÌ2ÎGstÖ0
+PadDispatcherFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate bool
+PadEventFunctionÌ128Í(Gst.Pad pad, owned Gst.Event event)ÎGstÖ0Ïpublic delegate bool
+PadFixateCapsFunctionÌ128Í(Gst.Pad pad, Gst.Caps caps)ÎGstÖ0Ïpublic delegate void
+PadFlagsÌ2ÎGstÖ0
+PadGetCapsFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate Gst.Caps
+PadGetRangeFunctionÌ128Í(Gst.Pad pad, uint64 offset, uint length, out Gst.Buffer buffer)ÎGstÖ0Ïpublic delegate Gst.FlowReturn
+PadIntLinkFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate GLib.List
+PadIterIntLinkFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate Gst.Iterator
+PadLinkCheckÌ2ÎGstÖ0
+PadLinkFunctionÌ128Í(Gst.Pad pad, Gst.Pad peer)ÎGstÖ0Ïpublic delegate Gst.PadLinkReturn
+PadLinkReturnÌ2ÎGstÖ0
+PadPresenceÌ2ÎGstÖ0
+PadQueryFunctionÌ128Í(Gst.Pad pad, Gst.Query query)ÎGstÖ0Ïpublic delegate bool
+PadQueryTypeFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate Gst.QueryType
+PadSetCapsFunctionÌ128Í(Gst.Pad pad, Gst.Caps caps)ÎGstÖ0Ïpublic delegate bool
+PadTemplateÌ1ÎGstÖ0
+PadTemplateÌ128Í(string name_template, Gst.PadDirection direction, Gst.PadPresence presence, owned Gst.Caps caps)ÎGst.PadTemplateÖ0
+PadTemplateFlagsÌ2ÎGstÖ0
+PadUnlinkFunctionÌ128Í(Gst.Pad pad)ÎGstÖ0Ïpublic delegate void
+ParamSpecFractionÌ1ÎGstÖ0
+ParamSpecMiniObjectÌ1ÎGstÖ0
+ParseContextÌ1ÎGstÖ0
+ParseContextÌ128Í()ÎGst.ParseContextÖ0
+ParseErrorÌ2ÎGstÖ0
+ParseFlagsÌ2ÎGstÖ0
+PipelineÌ1ÎGstÖ0
+PipelineÌ128Í(string? name)ÎGst.PipelineÖ0
+PipelineFlagsÌ2ÎGstÖ0
+PluginÌ1ÎGstÖ0
+PluginÌ128Í()ÎGst.PluginÖ0
+PluginDependencyFlagsÌ2ÎGstÖ0
+PluginDescÌ2048ÎGstÖ0
+PluginErrorÌ2ÎGstÖ0
+PluginFeatureÌ1ÎGstÖ0
+PluginFeatureÌ128Í()ÎGst.PluginFeatureÖ0
+PluginFeatureFilterÌ128Í(Gst.PluginFeature feature)ÎGstÖ0Ïpublic delegate bool
+PluginFilterÌ128Í(Gst.Plugin plugin)ÎGstÖ0Ïpublic delegate bool
+PluginFlagsÌ2ÎGstÖ0
+PluginInitFullFuncÌ128Í(Gst.Plugin plugin)ÎGstÖ0Ïpublic delegate bool
+PluginInitFuncÌ128Í(Gst.Plugin plugin)ÎGstÖ0Ïpublic delegate bool
+PollÌ1ÎGstÖ0
+PollÌ128Í(bool controllable)ÎGst.PollÖ0
+Poll.timerÌ128Í()ÎGst.PollÖ0
+PollFDÌ2048ÎGstÖ0
+PresetÌ32ÎGstÖ0
+ProxyPadÌ1ÎGstÖ0
+ProxyPadÌ128Í()ÎGst.ProxyPadÖ0
+QOSÌ4ÎGst.EventTypeÖ0
+QOSÌ4ÎGst.MessageTypeÖ0
+QueryÌ1ÎGstÖ0
+Query.applicationÌ128Í(Gst.QueryType type, owned Gst.Structure structure)ÎGst.QueryÖ0
+Query.bufferingÌ128Í(Gst.Format format)ÎGst.QueryÖ0
+Query.convertÌ128Í(Gst.Format src_format, int64 value, Gst.Format dest_format)ÎGst.QueryÖ0
+Query.durationÌ128Í(Gst.Format format)ÎGst.QueryÖ0
+Query.formatsÌ128Í()ÎGst.QueryÖ0
+Query.latencyÌ128Í()ÎGst.QueryÖ0
+Query.positionÌ128Í(Gst.Format format)ÎGst.QueryÖ0
+Query.seekingÌ128Í(Gst.Format format)ÎGst.QueryÖ0
+Query.segmentÌ128Í(Gst.Format format)ÎGst.QueryÖ0
+Query.uriÌ128Í()ÎGst.QueryÖ0
+QueryTypeÌ2ÎGstÖ0
+QueryTypeDefinitionÌ2048ÎGstÖ0
+RATEÌ4ÎGst.QueryTypeÖ0
+READÌ4ÎGst.ResourceErrorÖ0
+READABLEÌ4ÎGst.IndexFlagsÖ0
+READONLYÌ4ÎGst.BufferFlagÖ0
+READONLYÌ4ÎGst.MiniObjectFlagsÖ0
+READYÌ4ÎGst.StateÖ0
+READY_TO_NULLÌ4ÎGst.StateChangeÖ0
+READY_TO_PAUSEDÌ4ÎGst.StateChangeÖ0
+REALTIMEÌ4ÎGst.ClockTypeÖ0
+RECURSEÌ4ÎGst.PluginDependencyFlagsÖ0
+REFUSEDÌ4ÎGst.PadLinkReturnÖ0
+REPLACEÌ4ÎGst.TagMergeModeÖ0
+REPLACE_ALLÌ4ÎGst.TagMergeModeÖ0
+REQUESTÌ4ÎGst.PadPresenceÖ0
+REQUEST_STATEÌ4ÎGst.MessageTypeÖ0
+RESENDÌ4ÎGst.FlowReturnÖ0
+RESYNCÌ4ÎGst.IteratorResultÖ0
+RankÌ2ÎGstÖ0
+RegistryÌ1ÎGstÖ0
+RegistryÌ128Í()ÎGst.RegistryÖ0
+ResourceErrorÌ2ÎGstÖ0
+SECONDÌ8ÎGstÖ0Ïint
+SECONDARYÌ4ÎGst.RankÖ0
+SEEKÌ4ÎGst.CoreErrorÖ0
+SEEKÌ4ÎGst.EventTypeÖ0
+SEEKÌ4ÎGst.ResourceErrorÖ0
+SEEKINGÌ4ÎGst.QueryTypeÖ0
+SEGMENTÌ4ÎGst.QueryTypeÖ0
+SEGMENTÌ4ÎGst.SeekFlagsÖ0
+SEGMENT_DONEÌ4ÎGst.MessageTypeÖ0
+SEGMENT_STARTÌ4ÎGst.MessageTypeÖ0
+SERIALIZEDÌ4ÎGst.EventTypeFlagsÖ0
+SETÌ4ÎGst.SeekTypeÖ0
+SETTINGSÌ4ÎGst.LibraryErrorÖ0
+SETTINGSÌ4ÎGst.ResourceErrorÖ0
+SHUTDOWNÌ4ÎGst.LibraryErrorÖ0
+SINGLEÌ4ÎGst.ClockEntryTypeÖ0
+SINKÌ4ÎGst.PadDirectionÖ0
+SINKÌ4ÎGst.URITypeÖ0
+SINK_MESSAGEÌ4ÎGst.EventTypeÖ0
+SKIPÌ4ÎGst.IteratorItemÖ0
+SKIPÌ4ÎGst.SeekFlagsÖ0
+SKIP_GROUPÌ4ÎGst.BufferListItemÖ0
+SOMETIMESÌ4ÎGst.PadPresenceÖ0
+SRCÌ4ÎGst.PadDirectionÖ0
+SRCÌ4ÎGst.URITypeÖ0
+STARTÌ4ÎGst.StreamStatusTypeÖ0
+STARTEDÌ4ÎGst.TaskStateÖ0
+STATESÌ4ÎGst.DebugGraphDetailsÖ0
+STATE_CHANGEÌ4ÎGst.CoreErrorÖ0
+STATE_CHANGEDÌ4ÎGst.MessageTypeÖ0
+STATE_DIRTYÌ4ÎGst.MessageTypeÖ0
+STEPÌ4ÎGst.EventTypeÖ0
+STEP_DONEÌ4ÎGst.MessageTypeÖ0
+STEP_STARTÌ4ÎGst.MessageTypeÖ0
+STOPÌ4ÎGst.StreamStatusTypeÖ0
+STOPPEDÌ4ÎGst.TaskStateÖ0
+STREAMÌ4ÎGst.BufferingModeÖ0
+STREAM_STATUSÌ4ÎGst.MessageTypeÖ0
+STRUCTURE_CHANGEÌ4ÎGst.MessageTypeÖ0
+SUCCESSÌ4ÎGst.StateChangeReturnÖ0
+SYNCÌ4ÎGst.ResourceErrorÖ0
+SYNTAXÌ4ÎGst.ParseErrorÖ0
+SearchModeÌ2ÎGstÖ0
+SeekFlagsÌ2ÎGstÖ0
+SeekTypeÌ2ÎGstÖ0
+SegmentÌ1ÎGstÖ0
+SegmentÌ128Í()ÎGst.SegmentÖ0
+StateÌ2ÎGstÖ0
+StateChangeÌ2ÎGstÖ0
+StateChangeReturnÌ2ÎGstÖ0
+StaticCapsÌ2048ÎGstÖ0
+StaticPadTemplateÌ2048ÎGstÖ0
+StreamErrorÌ2ÎGstÖ0
+StreamStatusTypeÌ2ÎGstÖ0
+StructureÌ1ÎGstÖ0
+StructureÌ128Í(string name, string firstfield, ...)ÎGst.StructureÖ0
+Structure.emptyÌ128Í(string name)ÎGst.StructureÖ0
+Structure.idÌ128Í(GLib.Quark quark, GLib.Quark field_quark, ...)ÎGst.StructureÖ0
+Structure.id_emptyÌ128Í(GLib.Quark quark)ÎGst.StructureÖ0
+Structure.valistÌ128Í(string name, string firstfield, va_list varargs)ÎGst.StructureÖ0
+StructureChangeTypeÌ2ÎGstÖ0
+StructureForeachFuncÌ128Í(GLib.Quark field_id, Gst.Value value)ÎGstÖ0Ïpublic delegate bool
+StructureMapFuncÌ128Í(GLib.Quark field_id, ref Gst.Value value)ÎGstÖ0Ïpublic delegate bool
+SystemClockÌ1ÎGstÖ0
+SystemClockÌ128Í()ÎGst.SystemClockÖ0
+TAGÌ4ÎGst.CoreErrorÖ0
+TAGÌ4ÎGst.EventTypeÖ0
+TAGÌ4ÎGst.MessageTypeÖ0
+TAG_ALBUMÌ8ÎGstÖ0
+TAG_ALBUM_ARTISTÌ8ÎGstÖ0
+TAG_ALBUM_ARTIST_SORTNAMEÌ8ÎGstÖ0
+TAG_ALBUM_GAINÌ8ÎGstÖ0
+TAG_ALBUM_PEAKÌ8ÎGstÖ0
+TAG_ALBUM_SORTNAMEÌ8ÎGstÖ0
+TAG_ALBUM_VOLUME_COUNTÌ8ÎGstÖ0
+TAG_ALBUM_VOLUME_NUMBERÌ8ÎGstÖ0
+TAG_ARTISTÌ8ÎGstÖ0
+TAG_ARTIST_SORTNAMEÌ8ÎGstÖ0
+TAG_ATTACHMENTÌ8ÎGstÖ0
+TAG_AUDIO_CODECÌ8ÎGstÖ0
+TAG_BEATS_PER_MINUTEÌ8ÎGstÖ0
+TAG_BITRATEÌ8ÎGstÖ0
+TAG_CODECÌ8ÎGstÖ0
+TAG_COMMENTÌ8ÎGstÖ0
+TAG_COMPOSERÌ8ÎGstÖ0
+TAG_COMPOSER_SORTNAMEÌ8ÎGstÖ0
+TAG_CONTACTÌ8ÎGstÖ0
+TAG_CONTAINER_FORMATÌ8ÎGstÖ0
+TAG_COPYRIGHTÌ8ÎGstÖ0
+TAG_COPYRIGHT_URIÌ8ÎGstÖ0
+TAG_DATEÌ8ÎGstÖ0
+TAG_DESCRIPTIONÌ8ÎGstÖ0
+TAG_DEVICE_MANUFACTURERÌ8ÎGstÖ0
+TAG_DEVICE_MODELÌ8ÎGstÖ0
+TAG_DURATIONÌ8ÎGstÖ0
+TAG_ENCODERÌ8ÎGstÖ0
+TAG_ENCODER_VERSIONÌ8ÎGstÖ0
+TAG_EXTENDED_COMMENTÌ8ÎGstÖ0
+TAG_GENREÌ8ÎGstÖ0
+TAG_GEO_LOCATION_CAPTURE_DIRECTIONÌ8ÎGstÖ0
+TAG_GEO_LOCATION_CITYÌ8ÎGstÖ0
+TAG_GEO_LOCATION_COUNTRYÌ8ÎGstÖ0
+TAG_GEO_LOCATION_ELEVATIONÌ8ÎGstÖ0
+TAG_GEO_LOCATION_LATITUDEÌ8ÎGstÖ0
+TAG_GEO_LOCATION_LONGITUDEÌ8ÎGstÖ0
+TAG_GEO_LOCATION_MOVEMENT_DIRECTIONÌ8ÎGstÖ0
+TAG_GEO_LOCATION_MOVEMENT_SPEEDÌ8ÎGstÖ0
+TAG_GEO_LOCATION_NAMEÌ8ÎGstÖ0
+TAG_GEO_LOCATION_SUBLOCATIONÌ8ÎGstÖ0
+TAG_GROUPINGÌ8ÎGstÖ0
+TAG_HOMEPAGEÌ8ÎGstÖ0
+TAG_IMAGEÌ8ÎGstÖ0
+TAG_IMAGE_ORIENTATIONÌ8ÎGstÖ0
+TAG_ISRCÌ8ÎGstÖ0
+TAG_KEYWORDSÌ8ÎGstÖ0
+TAG_LANGUAGE_CODEÌ8ÎGstÖ0
+TAG_LICENSEÌ8ÎGstÖ0
+TAG_LICENSE_URIÌ8ÎGstÖ0
+TAG_LOCATIONÌ8ÎGstÖ0
+TAG_LYRICSÌ8ÎGstÖ0
+TAG_MAXIMUM_BITRATEÌ8ÎGstÖ0
+TAG_MINIMUM_BITRATEÌ8ÎGstÖ0
+TAG_NOMINAL_BITRATEÌ8ÎGstÖ0
+TAG_ORGANIZATIONÌ8ÎGstÖ0
+TAG_PERFORMERÌ8ÎGstÖ0
+TAG_PREVIEW_IMAGEÌ8ÎGstÖ0
+TAG_REFERENCE_LEVELÌ8ÎGstÖ0
+TAG_SERIALÌ8ÎGstÖ0
+TAG_SHOW_EPISODE_NUMBERÌ8ÎGstÖ0
+TAG_SHOW_NAMEÌ8ÎGstÖ0
+TAG_SHOW_SEASON_NUMBERÌ8ÎGstÖ0
+TAG_SHOW_SORTNAMEÌ8ÎGstÖ0
+TAG_SUBTITLE_CODECÌ8ÎGstÖ0
+TAG_TITLEÌ8ÎGstÖ0
+TAG_TITLE_SORTNAMEÌ8ÎGstÖ0
+TAG_TRACK_COUNTÌ8ÎGstÖ0
+TAG_TRACK_GAINÌ8ÎGstÖ0
+TAG_TRACK_NUMBERÌ8ÎGstÖ0
+TAG_TRACK_PEAKÌ8ÎGstÖ0
+TAG_USER_RATINGÌ8ÎGstÖ0
+TAG_VERSIONÌ8ÎGstÖ0
+TAG_VIDEO_CODECÌ8ÎGstÖ0
+TEMPLATE_CAPSÌ4ÎGst.PadLinkCheckÖ0
+THREADÌ4ÎGst.CoreErrorÖ0
+TIMEÌ4ÎGst.FormatÖ0
+TIMESHIFTÌ4ÎGst.BufferingModeÖ0
+TIMESTAMPSÌ4ÎGst.BufferCopyFlagsÖ0
+TIME_FORMATÌ8ÎGstÖ0
+TOO_LAZYÌ4ÎGst.CoreErrorÖ0
+TOO_LAZYÌ4ÎGst.LibraryErrorÖ0
+TOO_LAZYÌ4ÎGst.ResourceErrorÖ0
+TOO_LAZYÌ4ÎGst.StreamErrorÖ0
+TRACEÌ4ÎGst.DebugLevelÖ0
+TYPE_NOT_FOUNDÌ4ÎGst.StreamErrorÖ0
+TagFlagÌ2ÎGstÖ0
+TagForeachFuncÌ128Í(Gst.TagList list, string tag)ÎGstÖ0Ïpublic delegate void
+TagListÌ1ÎGstÖ0
+TagListÌ128Í()ÎGst.TagListÖ0
+TagList.fullÌ128Í(string tag)ÎGst.TagListÖ0
+TagList.full_valistÌ128Í(void* var_args)ÎGst.TagListÖ0
+TagMergeFuncÌ128Í(Gst.Value dest, Gst.Value src)ÎGstÖ0Ïpublic delegate void
+TagMergeModeÌ2ÎGstÖ0
+TagSetterÌ32ÎGstÖ0
+TaskÌ1ÎGstÖ0
+TaskÌ128Í()ÎGst.TaskÖ0
+TaskFunctionÌ128Í()ÎGstÖ0Ïpublic delegate void
+TaskPoolÌ1ÎGstÖ0
+TaskPoolÌ128Í()ÎGst.TaskPoolÖ0
+TaskPoolFunctionÌ128Í()ÎGstÖ0Ïpublic delegate void
+TaskStateÌ2ÎGstÖ0
+TaskThreadCallbacksÌ1ÎGstÖ0
+TraceÌ1ÎGstÖ0
+TraceÌ128Í(string filename, int size)ÎGst.TraceÖ0
+TraceEntryÌ1ÎGstÖ0
+TypeFindÌ1ÎGstÖ0
+TypeFindFactoryÌ1ÎGstÖ0
+TypeFindFactoryÌ128Í()ÎGst.TypeFindFactoryÖ0
+TypeFindFunctionÌ128Í(Gst.TypeFind find)ÎGstÖ0Ïpublic delegate void
+TypeFindProbabilityÌ2ÎGstÖ0
+TypeNameDataÌ1ÎGstÖ0
+UNDEFINEDÌ4ÎGst.FormatÖ0
+UNDEFINEDÌ4ÎGst.TagFlagÖ0
+UNDEFINEDÌ4ÎGst.TagMergeModeÖ0
+UNDERLINEÌ4ÎGst.DebugColorFlagsÖ0
+UNEXPECTEDÌ4ÎGst.FlowReturnÖ0
+UNKNOWNÌ4ÎGst.EventTypeÖ0
+UNKNOWNÌ4ÎGst.IndexCertaintyÖ0
+UNKNOWNÌ4ÎGst.MessageTypeÖ0
+UNKNOWNÌ4ÎGst.PadDirectionÖ0
+UNKNOWNÌ4ÎGst.URITypeÖ0
+UNLINKÌ4ÎGst.StructureChangeTypeÖ0
+UNPARENTINGÌ4ÎGst.ElementFlagsÖ0
+UNSCHEDULEDÌ4ÎGst.ClockReturnÖ0
+UNSUPPORTEDÌ4ÎGst.ClockReturnÖ0
+UPSTREAMÌ4ÎGst.EventTypeFlagsÖ0
+URIÌ4ÎGst.QueryTypeÖ0
+URIHandlerÌ32ÎGstÖ0
+URITypeÌ2ÎGstÖ0
+USECONDÌ8ÎGstÖ0Ïint
+VALUE_EQUALÌ8ÎGstÖ0Ïint
+VALUE_GREATER_THANÌ8ÎGstÖ0Ïint
+VALUE_LESS_THANÌ8ÎGstÖ0Ïint
+VALUE_UNORDEREDÌ8ÎGstÖ0Ïint
+VERSION_MAJORÌ8ÎGstÖ0Ïint
+VERSION_MICROÌ8ÎGstÖ0Ïint
+VERSION_MINORÌ8ÎGstÖ0Ïint
+VERSION_NANOÌ8ÎGstÖ0Ïint
+VOID_PENDINGÌ4ÎGst.StateÖ0
+ValueÌ2048ÎGstÖ0
+ValueCompareFuncÌ128Í(Gst.Value value1, Gst.Value value2)ÎGstÖ0Ïpublic delegate int
+ValueDeserializeFuncÌ128Í(Gst.Value dest, string s)ÎGstÖ0Ïpublic delegate bool
+ValueIntersectFuncÌ128Í(Gst.Value dest, Gst.Value value1, Gst.Value value2)ÎGstÖ0Ïpublic delegate bool
+ValueSerializeFuncÌ128Í(Gst.Value value1)ÎGstÖ0Ïpublic delegate unowned string
+ValueSubtractFuncÌ128Í(Gst.Value dest, Gst.Value minuend, Gst.Value subtrahend)ÎGstÖ0Ïpublic delegate bool
+ValueTableÌ1ÎGstÖ0
+ValueUnionFuncÌ128Í(Gst.Value dest, Gst.Value value1, Gst.Value value2)ÎGstÖ0Ïpublic delegate bool
+WARNINGÌ4ÎGst.DebugLevelÖ0
+WARNINGÌ4ÎGst.MessageTypeÖ0
+WAS_LINKEDÌ4ÎGst.PadLinkReturnÖ0
+WRITABLEÌ4ÎGst.IndexFlagsÖ0
+WRITEÌ4ÎGst.ResourceErrorÖ0
+WRONG_DIRECTIONÌ4ÎGst.PadLinkReturnÖ0
+WRONG_HIERARCHYÌ4ÎGst.PadLinkReturnÖ0
+WRONG_STATEÌ4ÎGst.FlowReturnÖ0
+WRONG_TYPEÌ4ÎGst.StreamErrorÖ0
+XMLÌ1ÎGstÖ0
+XMLÌ128Í()ÎGst.XMLÖ0
+_gst_reservedÌ8ÎGst.PluginDescÖ0Ïvoid
+abidataÌ8ÎGst.TaskÖ0Ïvoid
+abort_stateÌ128Í()ÎGst.ElementÖ0Ïpublic void
+abs_rateÌ8ÎGst.SegmentÖ0Ïdouble
+accept_capsÌ128Í(Gst.Caps caps)ÎGst.PadÖ0Ïpublic bool
+acceptcapsfuncÌ8ÎGst.PadÖ0ÏGst.PadAcceptCapsFunction
+accumÌ8ÎGst.SegmentÖ0Ïint64
+activate_pullÌ128Í(bool active)ÎGst.PadÖ0Ïpublic bool
+activate_pushÌ128Í(bool active)ÎGst.PadÖ0Ïpublic bool
+activatefuncÌ8ÎGst.PadÖ0ÏGst.PadActivateFunction
+activatepullfuncÌ8ÎGst.PadÖ0ÏGst.PadActivateModeFunction
+activatepushfuncÌ8ÎGst.PadÖ0ÏGst.PadActivateModeFunction
+addÌ128Í(owned Gst.Element element)ÎGst.BinÖ0Ïpublic bool
+addÌ128Í(owned Gst.Buffer buffer)ÎGst.BufferListIteratorÖ0Ïpublic void
+addÌ128Í(Gst.TagMergeMode mode, string tag, ...)ÎGst.TagListÖ0Ïpublic void
+add_associationÌ128Í(int id, Gst.AssocFlags flags, Gst.Format format, int64 value, ...)ÎGst.IndexÖ0Ïpublic unowned
+add_associationvÌ128Í(int id, Gst.AssocFlags flags, [CCode (array_length_pos = 2.9)] Gst.IndexAssociation[] list)ÎGst.IndexÖ0Ïpublic unowned
+add_buffer_probeÌ128Í([CCode (type = )] owned Gst.BufferProbeCallback handler)ÎGst.PadÖ0
+add_data_probeÌ128Í([CCode (type = )] owned Gst.DataProbeCallback handler)ÎGst.PadÖ0
+add_dependencyÌ128Í([CCode (array_length = false)] string?[] env_vars, [CCode (array_length = false)] string?[] paths, [CCode (array_length = false)] string?[] names, Gst.PluginDependencyFlags flags)ÎGst.PluginÖ0Ïpublic void
+add_dependency_simpleÌ128Í(string? env_vars, string? paths, string? names, Gst.PluginDependencyFlags flags)ÎGst.PluginÖ0Ïpublic void
+add_elementÌ128Í(Gst.Element element)ÎGst.BinÖ0Ïpublic virtual bool
+add_entryÌ128Í(Gst.IndexEntry entry)ÎGst.IndexÖ0Ïpublic virtual void
+add_event_probeÌ128Í([CCode (type = )] owned Gst.EventProbeCallback handler)ÎGst.PadÖ0
+add_fdÌ128Í(Gst.PollFD fd)ÎGst.PollÖ0Ïpublic bool
+add_featureÌ128Í(owned Gst.PluginFeature feature)ÎGst.RegistryÖ0Ïpublic bool
+add_formatÌ128Í(int id, Gst.Format format)ÎGst.IndexÖ0Ïpublic unowned
+add_groupÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic void
+add_idÌ128Í(int id, string description)ÎGst.IndexÖ0Ïpublic unowned
+add_manyÌ128Í(params owned Gst.Element[] elements)ÎGst.BinÖ0Ïpublic void
+add_objectÌ128Í(int id, string key, GLib.Type type, void* object)ÎGst.IndexÖ0Ïpublic unowned
+add_observationÌ128Í(Gst.ClockTime slave, Gst.ClockTime master, out double r_squared)ÎGst.ClockÖ0Ïpublic bool
+add_padÌ128Í(owned Gst.Pad pad)ÎGst.ElementÖ0Ïpublic bool
+add_pad_templateÌ128Í(Gst.PadTemplate templ)ÎGst.ElementÖ0Ïpublic class void
+add_pathÌ128Í(string path)ÎGst.RegistryÖ0Ïpublic void
+add_pluginÌ128Í(owned Gst.Plugin plugin)ÎGst.RegistryÖ0Ïpublic bool
+add_signal_watchÌ128Í()ÎGst.BusÖ0Ïpublic void
+add_signal_watch_fullÌ128Í(int priority)ÎGst.BusÖ0Ïpublic void
+add_tag_valistÌ128Í(Gst.TagMergeMode mode, string tag, void* var_args)ÎGst.TagSetterÖ0Ïpublic void
+add_tag_valist_valuesÌ128Í(Gst.TagMergeMode mode, string tag, void* var_args)ÎGst.TagSetterÖ0Ïpublic void
+add_tag_valueÌ128Í(Gst.TagMergeMode mode, string tag, Gst.Value value)ÎGst.TagSetterÖ0Ïpublic void
+add_tag_valuesÌ128Í(Gst.TagMergeMode mode, string tag, ...)ÎGst.TagSetterÖ0Ïpublic void
+add_tagsÌ128Í(Gst.TagMergeMode mode, string tag, ...)ÎGst.TagSetterÖ0Ïpublic void
+add_valistÌ128Í(Gst.TagMergeMode mode, string tag, void* var_args)ÎGst.TagListÖ0Ïpublic void
+add_valist_valuesÌ128Í(Gst.TagMergeMode mode, string tag, void* var_args)ÎGst.TagListÖ0Ïpublic void
+add_valueÌ128Í(Gst.TagMergeMode mode, string tag, Gst.Value value)ÎGst.TagListÖ0Ïpublic void
+add_valuesÌ128Í(Gst.TagMergeMode mode, string tag, ...)ÎGst.TagListÖ0Ïpublic void
+add_watchÌ128Í(owned Gst.BusFunc func, [CCode (pos = 0.1)] int priority = GLib.Priority.DEFAULT)ÎGst.BusÖ0
+add_watch_fullÌ128Í(int priority, owned Gst.BusFunc func)ÎGst.BusÖ0
+adjust_unlockedÌ128Í(Gst.ClockTime @internal)ÎGst.ClockÖ0Ïpublic Gst.ClockTime
+alloc_bufferÌ128Í(uint64 offset, int size, Gst.Caps caps, out Gst.Buffer buf)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+alloc_buffer_and_set_capsÌ128Í(uint64 offset, int size, Gst.Caps caps, out Gst.Buffer buf)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+appendÌ128Í(owned Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic void
+append_structureÌ128Í(owned Gst.Structure structure)ÎGst.CapsÖ0Ïpublic void
+applied_rateÌ8ÎGst.SegmentÖ0Ïdouble
+argsÌ128Í()ÎGst.ClockTimeÖ0Ïpublic unowned string
+array_append_valueÌ128Í(Gst.Value append_value)ÎGst.ValueÖ0Ïpublic void
+array_get_sizeÌ128Í()ÎGst.ValueÖ0
+array_get_typeÌ128Í()ÎGst.ValueÖ0Ïpublic GLib.Type
+array_get_valueÌ128Í(uint index)ÎGst.ValueÖ0Ïpublic unowned
+array_prepend_valueÌ128Í(Gst.Value prepend_value)ÎGst.ValueÖ0Ïpublic void
+assoc_flagsÌ128Í()ÎGst.IndexEntryÖ0Ïpublic Gst.AssocFlags
+assoc_formatÌ128Í(int i)ÎGst.IndexEntryÖ0Ïpublic Gst.Format
+assoc_mapÌ128Í(Gst.Format format, out int64 value)ÎGst.IndexEntryÖ0Ïpublic bool
+assoc_valueÌ128Í(int i)ÎGst.IndexEntryÖ0Ïpublic Gst.IndexAssociation
+async_handlingÌ8ÎGst.BinÖ0Ïbool
+async_signal_funcÌ128Í(Gst.Bus bus, Gst.Message message)ÎGst.BusÖ0Ïpublic bool
+atomic_int_setÌ128Í(int atomic_int, int value)ÎGstÖ0Ïpublic void
+authorÌ8ÎGst.ElementDetailsÖ0
+auto_clockÌ128Í()ÎGst.PipelineÖ0Ïpublic void
+auto_flush_busÌ8ÎGst.PipelineÖ0Ïbool
+availableÌ128Í()ÎGst.AllocTraceÖ0Ïpublic bool
+base_timeÌ8ÎGst.ElementÖ0ÏGst.ClockTimeDiff
+boolÌ4ÎGst.FlowReturnÖ0
+boolÌ4ÎGst.PadLinkReturnÖ0
+bufÌ8ÎGst.TraceÖ0ÏGst.TraceEntry
+bufferallocfuncÌ8ÎGst.PadÖ0ÏGst.PadBufferAllocFunction
+bufoffsetÌ8ÎGst.TraceÖ0Ïint
+bufsizeÌ8ÎGst.TraceÖ0Ïint
+busÌ8ÎGst.ElementÖ0ÏGst.Bus
+call_functionÌ128Í(Gst.TypeFind find)ÎGst.TypeFindFactoryÖ0Ïpublic void
+can_compareÌ128Í(Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic bool
+can_intersectÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic bool
+can_intersectÌ128Í(Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic bool
+can_linkÌ128Í(Gst.Pad sinkpad)ÎGst.PadÖ0Ïpublic bool
+can_readÌ128Í(Gst.Poll @set, Gst.PollFD fd)ÎGst.PollFDÖ0Ïpublic bool
+can_sink_capsÌ128Í(Gst.Caps caps)ÎGst.ElementFactoryÖ0Ïpublic bool
+can_src_capsÌ128Í(Gst.Caps caps)ÎGst.ElementFactoryÖ0Ïpublic bool
+can_subtractÌ128Í(Gst.Value minuend, Gst.Value subtrahend)ÎGst.ValueÖ0Ïpublic bool
+can_unionÌ128Í(Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic bool
+can_writeÌ128Í(Gst.Poll @set, Gst.PollFD fd)ÎGst.PollFDÖ0Ïpublic bool
+capsÌ8ÎGst.BufferÖ0ÏGst.Caps
+capsÌ8ÎGst.PadÖ0ÏGst.Caps
+capsÌ8ÎGst.PadTemplateÖ0ÏGst.Caps
+capsÌ8ÎGst.TypeFindFactoryÖ0ÏGst.Caps
+castÌ128Í(GLib.Type type)ÎGst.ImplementsInterfaceÖ0Ïpublic unowned
+chainÌ128Í(owned Gst.Buffer buffer)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+chain_listÌ128Í(owned Gst.BufferList list)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+chainfuncÌ8ÎGst.PadÖ0ÏGst.PadChainFunction
+change_resolutionÌ128Í(Gst.ClockTime old_resolution, Gst.ClockTime new_resolution)ÎGst.ClockÖ0Ïpublic virtual Gst.ClockTime
+change_stateÌ128Í(Gst.StateChange transition)ÎGst.ElementÖ0Ïpublic virtual Gst.StateChangeReturn
+checkÌ128Í(GLib.Type type)ÎGst.ImplementsInterfaceÖ0Ïpublic bool
+check_pull_rangeÌ128Í()ÎGst.PadÖ0Ïpublic bool
+check_uniquenessÌ128Í(GLib.List<Gst.Object> list, string name)ÎGst.ObjectÖ0Ïpublic bool
+check_versionÌ128Í(uint min_major, uint min_minor, uint min_micro)ÎGst.PluginFeatureÖ0Ïpublic bool
+checkgetrangefuncÌ8ÎGst.PadÖ0ÏGst.PadCheckGetRangeFunction
+child_addedÌ128Í(GLib.Object child)ÎGst.ChildProxyÖ0Ïpublic signal void
+child_busÌ8ÎGst.BinÖ0ÏGst.Bus
+child_removedÌ128Í(GLib.Object child)ÎGst.ChildProxyÖ0Ïpublic signal void
+childrenÌ8ÎGst.BinÖ0ÏGLib.List
+children_cookieÌ8ÎGst.BinÖ0Ïuint32
+cleanupÌ128Í()ÎGst.TaskPoolÖ0Ïpublic virtual void
+cleanup_allÌ128Í()ÎGst.TaskÖ0Ïpublic void
+clipÌ128Í(Gst.Format format, int64 start, int64 stop, out int64 clip_start, out int64 clip_stop)ÎGst.SegmentÖ0Ïpublic bool
+clockÌ8ÎGst.ClockEntryÖ0ÏGst.Clock
+clockÌ8ÎGst.ElementÖ0ÏGst.Clock
+clock_dirtyÌ8ÎGst.BinÖ0Ïbool
+clock_providerÌ8ÎGst.BinÖ0ÏGst.Element
+clock_typeÌ8ÎGst.SystemClockÖ0ÏGst.ClockType
+clockidÌ8ÎGst.ClockÖ0ÏGst.ClockID
+commitÌ128Í(int id)ÎGst.IndexÖ0Ïpublic virtual void
+compareÌ128Í(Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic int
+compareÌ8ÎGst.ValueTableÖ0ÏGst.ValueCompareFunc
+compare_funcÌ128Í(void* id1, void* id2)ÎGst.ClockIDÖ0Ïpublic int
+condÌ8ÎGst.TaskÖ0ÏGLib.Cond
+continue_stateÌ128Í(Gst.StateChangeReturn ret)ÎGst.ElementÖ0Ïpublic Gst.StateChangeReturn
+cookieÌ8ÎGst.IteratorÖ0Ïuint32
+copyÌ128Í()ÎGst.BufferÖ0Ïpublic Gst.Buffer
+copyÌ128Í()ÎGst.BufferListÖ0Ïpublic Gst.BufferList
+copyÌ128Í()ÎGst.CapsÖ0Ïpublic Gst.Caps
+copyÌ128Í()ÎGst.EventÖ0Ïpublic Gst.Event
+copyÌ128Í()ÎGst.IndexEntryÖ0Ïpublic Gst.IndexEntry
+copyÌ128Í()ÎGst.MessageÖ0Ïpublic Gst.Message
+copyÌ128Í()ÎGst.MiniObjectÖ0Ïpublic virtual Gst.MiniObject
+copyÌ128Í()ÎGst.QueryÖ0Ïpublic Gst.Query
+copyÌ128Í()ÎGst.SegmentÖ0Ïpublic Gst.Segment
+copyÌ128Í()ÎGst.StructureÖ0Ïpublic Gst.Structure
+copyÌ128Í()ÎGst.TagListÖ0Ïpublic Gst.TagList
+copy_metadataÌ128Í(Gst.Buffer src, Gst.BufferCopyFlags flags)ÎGst.BufferÖ0Ïpublic void
+copy_nthÌ128Í(uint nth)ÎGst.CapsÖ0Ïpublic Gst.Caps
+copy_valueÌ128Í(out Gst.Value dest, Gst.TagList list, string tag)ÎGst.TagListÖ0Ïpublic bool
+core_error_quarkÌ128Í()ÎGstÖ0Ïpublic GLib.Quark
+createÌ128Í(string? name)ÎGst.ElementFactoryÖ0Ïpublic Gst.Element?
+createÌ128Í()ÎGst.IndexFactoryÖ0Ïpublic Gst.Index
+createÌ128Í(Gst.TaskFunction func, void* data)ÎGst.TaskÖ0Ïpublic unowned
+create_all_padsÌ128Í()ÎGst.ElementÖ0Ïpublic void
+create_subÌ128Í(uint offset, uint size)ÎGst.BufferÖ0Ïpublic Gst.Buffer
+create_watchÌ128Í()ÎGst.BusÖ0Ïpublic GLib.TimeoutSource
+ctl_readÌ128Í(Gst.Poll @set, Gst.PollFD fd, bool active)ÎGst.PollFDÖ0Ïpublic bool
+ctl_writeÌ128Í(Gst.Poll @set, Gst.PollFD fd, bool active)ÎGst.PollFDÖ0Ïpublic bool
+current_stateÌ8ÎGst.ElementÖ0ÏGst.State
+dataÌ8ÎGst.BufferÖ0Ïuint8
+dataÌ8ÎGst.TaskÖ0Ïvoid
+dataÌ8ÎGst.TraceEntryÖ0Ïuint32
+dataÌ8ÎGst.TypeFindÖ0Ïvoid
+debugÌ128Í(string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+debug_add_log_functionÌ128Í(Gst.LogFunction func, void* data)ÎGstÖ0Ïpublic void
+debug_bin_to_dot_fileÌ128Í(Gst.Bin bin, Gst.DebugGraphDetails details, string prefix)ÎGstÖ0Ïpublic void
+debug_bin_to_dot_file_with_tsÌ128Í(Gst.Bin bin, Gst.DebugGraphDetails details, string prefix)ÎGstÖ0Ïpublic void
+debug_construct_term_colorÌ128Í(uint colorinfo)ÎGstÖ0Ïpublic unowned string
+debug_construct_win_colorÌ128Í(uint colorinfo)ÎGstÖ0Ïpublic int
+debug_get_all_categoriesÌ128Í()ÎGstÖ0Ïpublic GLib.SList
+debug_get_default_thresholdÌ128Í()ÎGstÖ0Ïpublic Gst.DebugLevel
+debug_is_activeÌ128Í()ÎGstÖ0Ïpublic bool
+debug_is_coloredÌ128Í()ÎGstÖ0Ïpublic bool
+debug_logÌ128Í(Gst.DebugCategory category, Gst.DebugLevel level, string file, string function, int line, GLib.Object object, string format)ÎGstÖ0Ïpublic void
+debug_log_defaultÌ128Í(Gst.DebugCategory category, Gst.DebugLevel level, string file, string function, int line, GLib.Object object, Gst.DebugMessage message, void* unused)ÎGstÖ0Ïpublic void
+debug_log_valistÌ128Í(Gst.DebugCategory category, Gst.DebugLevel level, string file, string function, int line, GLib.Object object, string format, void* args)ÎGstÖ0Ïpublic void
+debug_objectÌ128Í(GLib.Object obj, string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+debug_print_stack_traceÌ128Í()ÎGstÖ0Ïpublic void
+debug_remove_log_functionÌ128Í(Gst.LogFunction func)ÎGstÖ0
+debug_remove_log_function_by_dataÌ128Í(void* data)ÎGstÖ0
+debug_set_activeÌ128Í(bool active)ÎGstÖ0Ïpublic void
+debug_set_coloredÌ128Í(bool colored)ÎGstÖ0Ïpublic void
+debug_set_default_thresholdÌ128Í(Gst.DebugLevel level)ÎGstÖ0Ïpublic void
+debug_set_threshold_for_nameÌ128Í(string name, Gst.DebugLevel level)ÎGstÖ0Ïpublic void
+debug_unset_threshold_for_nameÌ128Í(string name)ÎGstÖ0Ïpublic void
+deep_notifyÌ128Í(Gst.Object orig, GLib.ParamSpec pspec)ÎGst.ObjectÖ0Ïpublic virtual signal void
+def_denÌ8ÎGst.ParamSpecFractionÖ0Ïint
+def_numÌ8ÎGst.ParamSpecFractionÖ0Ïint
+default_deep_notifyÌ128Í(GLib.Object object, Gst.Object orig, GLib.ParamSpec pspec, string? excluded_props)ÎGst.ObjectÖ0Ïpublic void
+default_errorÌ128Í(GLib.Error error, string? debug)ÎGst.ObjectÖ0Ïpublic void
+default_registry_check_feature_versionÌ128Í(string feature_name, uint min_major, uint min_minor, uint min_micro)ÎGstÖ0Ïpublic bool
+deinitÌ128Í()ÎGstÖ0Ïpublic void
+delayÌ8ÎGst.PipelineÖ0Ïuint64
+delete_presetÌ128Í(string name)ÎGst.PresetÖ0Ïpublic abstract bool
+descriptionÌ8ÎGst.ElementDetailsÖ0
+descriptionÌ8ÎGst.FormatDefinitionÖ0
+descriptionÌ8ÎGst.PluginDescÖ0
+descriptionÌ8ÎGst.QueryTypeDefinitionÖ0
+deserializeÌ128Í(string src)ÎGst.ValueÖ0Ïpublic bool
+deserializeÌ8ÎGst.ValueTableÖ0ÏGst.ValueDeserializeFunc
+destroyÌ128Í()ÎGst.IndexFactoryÖ0Ïpublic void
+destroy_dataÌ8ÎGst.ClockEntryÖ0ÏGLib.DestroyNotify
+directionÌ8ÎGst.PadÖ0ÏGst.PadDirection
+directionÌ8ÎGst.PadTemplateÖ0ÏGst.PadDirection
+directionÌ8ÎGst.StaticPadTemplateÖ0ÏGst.PadDirection
+disable_sync_message_emissionÌ128Í()ÎGst.BusÖ0Ïpublic void
+dispatcherÌ128Í(Gst.PadDispatcherFunction dispatch)ÎGst.PadÖ0Ïpublic bool
+do_latencyÌ128Í()ÎGst.BinÖ0Ïpublic virtual signal bool
+do_simplifyÌ128Í()ÎGst.CapsÖ0Ïpublic bool
+double_range_get_typeÌ128Í()ÎGstÖ0Ïpublic GLib.Type
+durationÌ8ÎGst.BufferÖ0ÏGst.ClockTime
+durationÌ8ÎGst.SegmentÖ0Ïint64
+duration_is_validÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+element_addedÌ128Í(Gst.Element child)ÎGst.BinÖ0Ïpublic virtual signal void
+element_privateÌ8ÎGst.PadÖ0Ïvoid
+element_removedÌ128Í(Gst.Element child)ÎGst.BinÖ0Ïpublic virtual signal void
+enable_sync_message_emissionÌ128Í()ÎGst.BusÖ0Ïpublic void
+enter_threadÌ8ÎGst.TaskThreadCallbacksÖ0ÏGLib.Callback
+entriesÌ8ÎGst.ClockÖ0ÏGLib.List
+entries_changedÌ8ÎGst.ClockÖ0ÏGLib.Cond
+entry_addedÌ128Í(Gst.IndexEntry entry)ÎGst.IndexÖ0Ïpublic virtual signal void
+errorÌ128Í(string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+error_get_messageÌ128Í(GLib.Quark domain, int code)ÎGstÖ0
+error_objectÌ128Í(GLib.Object obj, string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+error_quarkÌ128Í()ÎGst.PluginÖ0Ïpublic GLib.Quark
+event_defaultÌ128Í(owned Gst.Event event)ÎGst.PadÖ0Ïpublic bool
+eventfuncÌ8ÎGst.PadÖ0ÏGst.PadEventFunction
+extensionsÌ8ÎGst.TypeFindFactoryÖ0
+external_calibrationÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+failedÌ4ÎGst.PadLinkReturnÖ0
+fdÌ8ÎGst.PollFDÖ0Ïint
+fdÌ8ÎGst.TraceÖ0Ïint
+feature_addedÌ128Í(void* feature)ÎGst.RegistryÖ0Ïpublic virtual signal void
+feature_filterÌ128Í([CCode (delegate_target_pos = 2.1)] Gst.PluginFeatureFilter filter, bool first)ÎGst.RegistryÖ0Ïpublic GLib.List
+filenameÌ8ÎGst.TraceÖ0
+fillingÌ8ÎGst.ClockÖ0Ïbool
+filter_runÌ128Í(GLib.List list, Gst.FilterFunc func, bool first)ÎGstÖ0Ïpublic GLib.List
+finalizeÌ128Í()ÎGst.MiniObjectÖ0Ïpublic virtual void
+findÌ128Í(string name)ÎGst.ElementFactoryÖ0Ïpublic Gst.ElementFactory?
+findÌ128Í(string name)ÎGst.IndexFactoryÖ0Ïpublic Gst.IndexFactory?
+find_customÌ128Í(GLib.CompareFunc func, T user_data)ÎGst.IteratorÖ0Ïpublic T
+find_featureÌ128Í(string name, GLib.Type type)ÎGst.RegistryÖ0Ïpublic Gst.PluginFeature?
+find_pluginÌ128Í(string name)ÎGst.RegistryÖ0Ïpublic Gst.Plugin?
+find_unconnected_padÌ128Í(Gst.PadDirection direction)ÎGst.BinÖ0Ïpublic Gst.Pad?
+find_unlinked_padÌ128Í(Gst.PadDirection direction)ÎGst.BinÖ0Ïpublic Gst.Pad?
+fixate_capsÌ128Í(Gst.Caps caps)ÎGst.PadÖ0Ïpublic void
+fixate_field_booleanÌ128Í(string field_name, bool target)ÎGst.StructureÖ0Ïpublic bool
+fixate_field_nearest_doubleÌ128Í(string field_name, double target)ÎGst.StructureÖ0Ïpublic bool
+fixate_field_nearest_fractionÌ128Í(string field_name, int target_numerator, int target_denominator)ÎGst.StructureÖ0Ïpublic bool
+fixate_field_nearest_intÌ128Í(string field_name, int target)ÎGst.StructureÖ0Ïpublic bool
+fixate_field_stringÌ128Í(string field_name, string target)ÎGst.StructureÖ0Ïpublic bool
+fixatecapsfuncÌ8ÎGst.PadÖ0ÏGst.PadFixateCapsFunction
+flag_is_setÌ128Í(Gst.BufferFlag flag)ÎGst.BufferÖ0Ïpublic bool
+flag_is_setÌ128Í(Gst.MiniObjectFlags flag)ÎGst.MiniObjectÖ0Ïpublic bool
+flag_is_setÌ128Í(Gst.ObjectFlags flag)ÎGst.ObjectÖ0Ïpublic bool
+flag_setÌ128Í(Gst.BufferFlag flag)ÎGst.BufferÖ0Ïpublic void
+flag_setÌ128Í(Gst.MiniObjectFlags flag)ÎGst.MiniObjectÖ0Ïpublic void
+flag_setÌ128Í(Gst.ObjectFlags flag)ÎGst.ObjectÖ0Ïpublic void
+flag_unsetÌ128Í(Gst.BufferFlag flag)ÎGst.BufferÖ0Ïpublic void
+flag_unsetÌ128Í(Gst.MiniObjectFlags flag)ÎGst.MiniObjectÖ0Ïpublic void
+flag_unsetÌ128Í(Gst.ObjectFlags flag)ÎGst.ObjectÖ0Ïpublic void
+flagsÌ8ÎGst.AllocTraceÖ0Ïint
+flagsÌ8ÎGst.CapsÖ0ÏGst.CapsFlags
+flagsÌ8ÎGst.MiniObjectÖ0ÏGst.MiniObjectFlags
+flagsÌ8ÎGst.ObjectÖ0ÏGst.ObjectFlags
+flagsÌ8ÎGst.SegmentÖ0ÏGst.SeekFlags
+flow_to_quarkÌ128Í(Gst.FlowReturn ret)ÎGstÖ0Ïpublic GLib.Quark
+flushÌ128Í()ÎGst.TraceÖ0Ïpublic void
+foldÌ128Í([CCode (delegate_target_pos = 2.1)] Gst.IteratorFoldFunction<T> func, out Gst.Value ret)ÎGst.IteratorÖ0Ïpublic Gst.IteratorResult
+fork_is_enabledÌ128Í()ÎGst.RegistryÖ0Ïpublic bool
+fork_set_enabledÌ128Í(bool enabled)ÎGst.RegistryÖ0Ïpublic void
+formatÌ8ÎGst.IndexAssociationÖ0ÏGst.Format
+formatÌ8ÎGst.SegmentÖ0ÏGst.Format
+format_formatÌ128Í()ÎGst.IndexEntryÖ0Ïpublic Gst.Format
+format_get_by_nickÌ128Í(string nick)ÎGstÖ0Ïpublic Gst.Format
+format_get_detailsÌ128Í(Gst.Format format)ÎGstÖ0Ïpublic Gst.FormatDefinition
+format_iterate_definitionsÌ128Í()ÎGstÖ0Ïpublic Gst.Iterator
+format_keyÌ128Í()ÎGst.IndexEntryÖ0Ïpublic unowned string
+format_registerÌ128Í(string nick, string description)ÎGstÖ0Ïpublic Gst.Format
+format_to_quarkÌ128Í(Gst.Format format)ÎGstÖ0Ïpublic GLib.Quark
+formats_containsÌ128Í(Gst.Format formats, Gst.Format format)ÎGstÖ0Ïpublic bool
+found_tagsÌ128Í(owned Gst.TagList list)ÎGst.ElementÖ0Ïpublic void
+found_tags_for_padÌ128Í(Gst.Pad pad, owned Gst.TagList list)ÎGst.ElementÖ0Ïpublic void
+fourcc_get_typeÌ128Í()ÎGstÖ0Ïpublic GLib.Type
+fraction_get_typeÌ128Í()ÎGstÖ0Ïpublic GLib.Type
+fraction_multiplyÌ128Í(GLib.Value product, GLib.Value factor1, GLib.Value factor2)ÎGst.ValueÖ0Ïpublic bool
+fraction_range_get_typeÌ128Í()ÎGstÖ0Ïpublic GLib.Type
+fraction_subtractÌ128Í(GLib.Value dest, GLib.Value minuend, GLib.Value subtrahend)ÎGst.ValueÖ0Ïpublic bool
+free_funcÌ8ÎGst.BufferÖ0ÏGLib.FreeFunc
+from_stringÌ128Í(string str)ÎGst.CapsÖ0Ïpublic Gst.Caps
+from_stringÌ128Í(string str, out unowned string end)ÎGst.StructureÖ0Ïpublic Gst.Structure?
+funcÌ8ÎGst.ClockEntryÖ0ÏGst.ClockCallback
+funcÌ8ÎGst.TaskÖ0ÏGst.TaskFunction
+functionÌ8ÎGst.TypeFindFactoryÖ0ÏGst.TypeFindFunction
+get_allowed_capsÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+get_assoc_entryÌ128Í(int id, Gst.IndexLookupMethod method, Gst.AssocFlags flags, Gst.Format format, int64 value)ÎGst.IndexÖ0Ïpublic virtual unowned
+get_assoc_entry_fullÌ128Í(int id, Gst.IndexLookupMethod method, Gst.AssocFlags flags, Gst.Format format, int64 value, GLib.CompareDataFunc func)ÎGst.IndexÖ0Ïpublic unowned
+get_authorÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic unowned string
+get_auto_flush_busÌ128Í()ÎGst.PipelineÖ0Ïpublic bool
+get_base_timeÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.ClockTime
+get_booleanÌ128Í(string fieldname, out bool value)ÎGst.StructureÖ0Ïpublic bool
+get_booleanÌ128Í(string tag, out bool value)ÎGst.TagListÖ0Ïpublic bool
+get_boolean_indexÌ128Í(string tag, uint index, out bool value)ÎGst.TagListÖ0Ïpublic bool
+get_bufferÌ128Í(string tag, out unowned Gst.Buffer value)ÎGst.TagListÖ0Ïpublic bool
+get_bufferÌ128Í()ÎGst.ValueÖ0Ïpublic unowned
+get_buffer_indexÌ128Í(string tag, uint index, out unowned Gst.Buffer value)ÎGst.TagListÖ0Ïpublic bool
+get_busÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.Bus?
+get_busÌ128Í()ÎGst.PipelineÖ0Ïpublic Gst.Bus
+get_by_interfaceÌ128Í(GLib.Type iface)ÎGst.BinÖ0Ïpublic Gst.Element?
+get_by_nameÌ128Í(string name)ÎGst.BinÖ0Ïpublic Gst.Element?
+get_by_name_recurse_upÌ128Í(string name)ÎGst.BinÖ0Ïpublic Gst.Element?
+get_by_nickÌ4ÎGst.QueryTypeÖ0
+get_cache_dataÌ128Í()ÎGst.PluginÖ0Ïpublic unowned
+get_calibrationÌ128Í(out Gst.ClockTime @internal, out Gst.ClockTime external, out Gst.ClockTime rate_num, out Gst.ClockTime rate_denom)ÎGst.ClockÖ0Ïpublic void
+get_capsÌ128Í()ÎGst.BufferÖ0Ïpublic Gst.Caps
+get_capsÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+get_capsÌ128Í()ÎGst.PadTemplateÖ0Ïpublic unowned
+get_capsÌ128Í()ÎGst.StaticPadTemplateÖ0Ïpublic Gst.Caps
+get_capsÌ128Í()ÎGst.TypeFindFactoryÖ0Ïpublic unowned
+get_capsÌ128Í()ÎGst.ValueÖ0Ïpublic Gst.Caps
+get_caps_reffedÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+get_certaintyÌ128Í()ÎGst.IndexÖ0Ïpublic Gst.IndexCertainty
+get_charÌ128Í(string tag, out char value)ÎGst.TagListÖ0Ïpublic bool
+get_char_indexÌ128Í(string tag, uint index, out char value)ÎGst.TagListÖ0Ïpublic bool
+get_child_by_indexÌ128Í(uint index)ÎGst.ChildProxyÖ0Ïpublic abstract Gst.Object?
+get_child_by_nameÌ128Í(string name)ÎGst.ChildProxyÖ0Ïpublic Gst.Object?
+get_children_countÌ128Í()ÎGst.ChildProxyÖ0
+get_clockÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.Clock?
+get_clockÌ128Í()ÎGst.PipelineÖ0Ïpublic Gst.Clock?
+get_clock_timeÌ128Í(string fieldname, out Gst.ClockTime value)ÎGst.StructureÖ0Ïpublic bool
+get_colorÌ128Í()ÎGst.DebugCategoryÖ0
+get_compatible_padÌ128Í(Gst.Pad pad, Gst.Caps? caps)ÎGst.ElementÖ0Ïpublic Gst.Pad?
+get_compatible_pad_templateÌ128Í(Gst.PadTemplate compattempl)ÎGst.ElementÖ0Ïpublic unowned
+get_dateÌ128Í(string fieldname, out GLib.Date value)ÎGst.StructureÖ0Ïpublic bool
+get_dateÌ128Í(string tag, out GLib.Date? value)ÎGst.TagListÖ0Ïpublic bool
+get_dateÌ128Í()ÎGst.ValueÖ0Ïpublic GLib.Date
+get_date_indexÌ128Í(string tag, uint index, out GLib.Date? value)ÎGst.TagListÖ0Ïpublic bool
+get_defaultÌ128Í()ÎGst.RegistryÖ0Ïpublic unowned
+get_delayÌ128Í()ÎGst.PipelineÖ0Ïpublic Gst.ClockTime
+get_descriptionÌ128Í()ÎGst.DebugCategoryÖ0Ïpublic unowned string
+get_descriptionÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic unowned string
+get_descriptionÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_detailsÌ4ÎGst.FormatÖ0
+get_detailsÌ4ÎGst.QueryTypeÖ0
+get_directionÌ128Í()ÎGst.PadÖ0Ïpublic Gst.PadDirection
+get_doubleÌ128Í(string fieldname, out double value)ÎGst.StructureÖ0Ïpublic bool
+get_doubleÌ128Í(string tag, out double value)ÎGst.TagListÖ0Ïpublic bool
+get_double_indexÌ128Í(string tag, uint index, out double value)ÎGst.TagListÖ0Ïpublic bool
+get_double_range_maxÌ128Í()ÎGst.ValueÖ0Ïpublic double
+get_double_range_minÌ128Í()ÎGst.ValueÖ0Ïpublic double
+get_elementÌ128Í(string name)ÎGst.XMLÖ0Ïpublic unowned
+get_element_privateÌ128Í()ÎGst.PadÖ0Ïpublic void *
+get_element_typeÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic GLib.Type
+get_enumÌ128Í(string fieldname, GLib.Type enumtype, out int value)ÎGst.StructureÖ0Ïpublic bool
+get_extensionsÌ128Í()ÎGst.TypeFindFactoryÖ0Ïpublic unowned string
+get_factoryÌ128Í()ÎGst.ElementÖ0Ïpublic unowned
+get_feature_listÌ128Í(GLib.Type type)ÎGst.RegistryÖ0Ïpublic GLib.List
+get_feature_list_by_pluginÌ128Í(string name)ÎGst.RegistryÖ0Ïpublic GLib.List
+get_feature_list_cookieÌ128Í()ÎGst.RegistryÖ0Ïpublic uint32
+get_field_typeÌ128Í(string fieldname)ÎGst.StructureÖ0Ïpublic GLib.Type
+get_filenameÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_fixed_caps_funcÌ128Í(Gst.Pad pad)ÎGst.PadÖ0Ïpublic Gst.Caps
+get_flagsÌ4ÎGst.EventTypeÖ0
+get_floatÌ128Í(string tag, out float value)ÎGst.TagListÖ0Ïpublic bool
+get_float_indexÌ128Í(string tag, uint index, out float value)ÎGst.TagListÖ0Ïpublic bool
+get_fourccÌ128Í(string fieldname, out uint32 value)ÎGst.StructureÖ0Ïpublic bool
+get_fourccÌ128Í()ÎGst.ValueÖ0
+get_fractionÌ128Í(string fieldname, out int value_numerator, out int value_denominator)ÎGst.StructureÖ0Ïpublic bool
+get_fraction_denominatorÌ128Í()ÎGst.ValueÖ0Ïpublic int
+get_fraction_numeratorÌ128Í()ÎGst.ValueÖ0Ïpublic int
+get_fraction_range_maxÌ128Í()ÎGst.ValueÖ0Ïpublic unowned
+get_fraction_range_minÌ128Í()ÎGst.ValueÖ0Ïpublic unowned
+get_groupÌ128Í()ÎGst.IndexÖ0Ïpublic int
+get_indexÌ128Í()ÎGst.ElementÖ0Ïpublic virtual Gst.Index?
+get_intÌ128Í(string fieldname, out int value)ÎGst.StructureÖ0Ïpublic bool
+get_intÌ128Í(string tag, out int value)ÎGst.TagListÖ0Ïpublic bool
+get_int64Ì128Í(string tag, out int64 value)ÎGst.TagListÖ0Ïpublic bool
+get_int64_indexÌ128Í(string tag, uint index, out int64 value)ÎGst.TagListÖ0Ïpublic bool
+get_int_indexÌ128Í(string tag, uint index, out int value)ÎGst.TagListÖ0Ïpublic bool
+get_int_range_maxÌ128Í()ÎGst.ValueÖ0Ïpublic int
+get_int_range_minÌ128Í()ÎGst.ValueÖ0Ïpublic int
+get_internal_linksÌ128Í()ÎGst.PadÖ0Ïpublic GLib.List
+get_internal_links_defaultÌ128Í()ÎGst.PadÖ0Ïpublic GLib.List
+get_internal_timeÌ128Í()ÎGst.ClockÖ0Ïpublic virtual Gst.ClockTime
+get_klassÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic unowned string
+get_last_stream_timeÌ128Í()ÎGst.PipelineÖ0Ïpublic Gst.ClockTime
+get_lengthÌ128Í()ÎGst.TypeFindÖ0Ïpublic uint64
+get_licenseÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_listÌ128Í()ÎGst.TypeFindFactoryÖ0Ïpublic GLib.List
+get_longÌ128Í(string tag, out long value)ÎGst.TagListÖ0Ïpublic bool
+get_long_indexÌ128Í(string tag, uint index, out long value)ÎGst.TagListÖ0Ïpublic bool
+get_longnameÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic unowned string
+get_masterÌ128Í()ÎGst.ClockÖ0Ïpublic Gst.Clock?
+get_metaÌ128Í(string name, string tag, out string value)ÎGst.PresetÖ0Ïpublic abstract bool
+get_missing_elementsÌ128Í()ÎGst.ParseContextÖ0
+get_moduleÌ128Í()ÎGst.PluginÖ0Ïpublic unowned
+get_nameÌ128Í()ÎGst.DebugCategoryÖ0Ïpublic unowned string
+get_nameÌ4ÎGst.EventTypeÖ0
+get_nameÌ4ÎGst.FormatÖ0
+get_nameÌ4ÎGst.MessageTypeÖ0
+get_nameÌ128Í()ÎGst.ObjectÖ0
+get_nameÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎGst.PluginFeatureÖ0Ïpublic unowned string
+get_nameÌ4ÎGst.QueryTypeÖ0
+get_nameÌ128Í()ÎGst.StructureÖ0Ïpublic unowned string
+get_name_idÌ128Í()ÎGst.StructureÖ0Ïpublic GLib.Quark
+get_name_prefixÌ128Í()ÎGst.ObjectÖ0
+get_negotiated_capsÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+get_nextÌ4ÎGst.StateÖ0
+get_num_pad_templatesÌ128Í()ÎGst.ElementFactoryÖ0
+get_originÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_packageÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_padÌ128Í(string name)ÎGst.ElementÖ0Ïpublic Gst.Pad?
+get_pad_templateÌ128Í(string name)ÎGst.ElementÖ0Ïpublic class unowned
+get_pad_templateÌ128Í()ÎGst.PadÖ0Ïpublic unowned
+get_pad_template_capsÌ128Í()ÎGst.PadÖ0Ïpublic unowned
+get_pad_template_listÌ128Í()ÎGst.ElementÖ0Ïpublic class unowned
+get_parentÌ128Í()ÎGst.ObjectÖ0Ïpublic Gst.Object
+get_parent_elementÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Element?
+get_path_listÌ128Í()ÎGst.RegistryÖ0Ïpublic GLib.List
+get_path_stringÌ128Í()ÎGst.ObjectÖ0
+get_peerÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Pad
+get_plugin_listÌ128Í()ÎGst.RegistryÖ0Ïpublic GLib.List
+get_pointerÌ128Í(string tag, out void* value)ÎGst.TagListÖ0Ïpublic bool
+get_pointer_indexÌ128Í(string tag, uint index, out void* value)ÎGst.TagListÖ0Ïpublic bool
+get_poolÌ128Í()ÎGst.TaskÖ0Ïpublic unowned
+get_preset_namesÌ128Í()ÎGst.PresetÖ0
+get_propertyÌ128Í(string name, ref Gst.Value value)ÎGst.ChildProxyÖ0Ïpublic void
+get_property_namesÌ128Í()ÎGst.PresetÖ0
+get_protocolsÌ128Í()ÎGst.URIHandlerÖ0Ïpublic abstract unowned string
+get_protocols_fullÌ128Í(GLib.Type type)ÎGst.URIHandlerÖ0Ïpublic abstract unowned string
+get_query_typesÌ128Í()ÎGst.ElementÖ0Ïpublic virtual unowned
+get_query_typesÌ128Í()ÎGst.PadÖ0Ïpublic unowned
+get_query_types_defaultÌ128Í()ÎGst.PadÖ0Ïpublic unowned
+get_rangeÌ128Í(uint64 offset, uint size, out Gst.Buffer buffer)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+get_rankÌ128Í()ÎGst.PluginFeatureÖ0
+get_request_padÌ128Í(string name)ÎGst.ElementÖ0Ïpublic Gst.Pad?
+get_resolutionÌ128Í()ÎGst.ClockÖ0Ïpublic virtual Gst.ClockTime
+get_seqnumÌ128Í()ÎGst.EventÖ0Ïpublic uint32
+get_seqnumÌ128Í()ÎGst.MessageÖ0Ïpublic uint32
+get_sizeÌ128Í()ÎGst.CapsÖ0
+get_sourceÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_start_timeÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.ClockTime
+get_stateÌ128Í(out Gst.State state, out Gst.State pending, Gst.ClockTime timeout)ÎGst.ElementÖ0Ïpublic virtual Gst.StateChangeReturn
+get_stateÌ128Í()ÎGst.TaskÖ0Ïpublic Gst.TaskState
+get_static_padÌ128Í(string name)ÎGst.ElementÖ0Ïpublic Gst.Pad?
+get_static_pad_templatesÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic unowned
+get_stream_status_objectÌ128Í()ÎGst.MessageÖ0Ïpublic unowned
+get_stringÌ128Í(string fieldname)ÎGst.StructureÖ0Ïpublic unowned
+get_stringÌ128Í(string tag, out string value)ÎGst.TagListÖ0Ïpublic bool
+get_string_indexÌ128Í(string tag, uint index, out string value)ÎGst.TagListÖ0Ïpublic bool
+get_structureÌ128Í(uint index)ÎGst.CapsÖ0Ïpublic unowned
+get_structureÌ128Í()ÎGst.EventÖ0Ïpublic unowned
+get_structureÌ128Í()ÎGst.MessageÖ0Ïpublic unowned
+get_structureÌ128Í()ÎGst.QueryÖ0Ïpublic unowned
+get_structureÌ128Í()ÎGst.ValueÖ0Ïpublic unowned
+get_tag_listÌ128Í()ÎGst.TagSetterÖ0Ïpublic unowned
+get_tag_merge_modeÌ128Í()ÎGst.TagSetterÖ0Ïpublic Gst.TagMergeMode
+get_tag_sizeÌ128Í(string tag)ÎGst.TagListÖ0
+get_targetÌ128Í()ÎGst.GhostPadÖ0Ïpublic Gst.Pad?
+get_thresholdÌ128Í()ÎGst.DebugCategoryÖ0Ïpublic Gst.DebugLevel
+get_timeÌ128Í()ÎGst.ClockÖ0Ïpublic Gst.ClockTime
+get_timeÌ128Í()ÎGst.ClockIDÖ0Ïpublic Gst.ClockTime
+get_topelementsÌ128Í()ÎGst.XMLÖ0Ïpublic unowned
+get_typeÌ128Í()ÎGst.URIHandlerÖ0Ïpublic abstract Gst.URIType
+get_type_fullÌ128Í(GLib.Type type)ÎGst.URIHandlerÖ0Ïpublic abstract Gst.URIType
+get_ucharÌ128Í(string tag, out uchar value)ÎGst.TagListÖ0Ïpublic bool
+get_uchar_indexÌ128Í(string tag, uint index, out uchar value)ÎGst.TagListÖ0Ïpublic bool
+get_uintÌ128Í(string fieldname, out uint value)ÎGst.StructureÖ0Ïpublic bool
+get_uintÌ128Í(string tag, out uint value)ÎGst.TagListÖ0Ïpublic bool
+get_uint64Ì128Í(string tag, out uint64 value)ÎGst.TagListÖ0Ïpublic bool
+get_uint64_indexÌ128Í(string tag, uint index, out uint64 value)ÎGst.TagListÖ0Ïpublic bool
+get_uint_indexÌ128Í(string tag, uint index, out uint value)ÎGst.TagListÖ0Ïpublic bool
+get_ulongÌ128Í(string tag, out ulong value)ÎGst.TagListÖ0Ïpublic bool
+get_ulong_indexÌ128Í(string tag, uint index, out ulong value)ÎGst.TagListÖ0Ïpublic bool
+get_uriÌ128Í()ÎGst.URIHandlerÖ0Ïpublic abstract unowned string
+get_uri_protocolsÌ128Í()ÎGst.ElementFactoryÖ0
+get_uri_typeÌ128Í()ÎGst.ElementFactoryÖ0Ïpublic int
+get_uri_typeÌ128Í()ÎGst.URIHandlerÖ0
+get_valistÌ128Í(string first_property_name, void* var_args)ÎGst.ChildProxyÖ0Ïpublic void
+get_valistÌ128Í(string first_fieldname, va_list args)ÎGst.StructureÖ0Ïpublic bool
+get_valueÌ128Í(string fieldname)ÎGst.StructureÖ0Ïpublic unowned
+get_value_indexÌ128Í(string tag, uint index)ÎGst.TagListÖ0Ïpublic unowned
+get_versionÌ128Í()ÎGst.PluginÖ0Ïpublic unowned string
+get_writer_idÌ128Í(Gst.Object writer, out int id)ÎGst.IndexÖ0Ïpublic virtual bool
+getcapsfuncÌ8ÎGst.PadÖ0ÏGst.PadGetCapsFunction
+getrangefuncÌ8ÎGst.PadÖ0ÏGst.PadGetRangeFunction
+handle_messageÌ128Í(Gst.Message message)ÎGst.BinÖ0Ïpublic virtual void
+has_ancestorÌ128Í(Gst.Object ancestor)ÎGst.ObjectÖ0Ïpublic bool
+has_closedÌ128Í(Gst.Poll @set, Gst.PollFD fd)ÎGst.PollFDÖ0Ïpublic bool
+has_errorÌ128Í(Gst.Poll @set, Gst.PollFD fd)ÎGst.PollFDÖ0Ïpublic bool
+has_fieldÌ128Í(string fieldname)ÎGst.StructureÖ0Ïpublic bool
+has_field_typedÌ128Í(string fieldname, GLib.Type type)ÎGst.StructureÖ0Ïpublic bool
+has_interfaceÌ128Í(string interfacename)ÎGst.ElementFactoryÖ0Ïpublic bool
+has_nameÌ128Í(string name)ÎGst.EventÖ0Ïpublic bool
+has_nameÌ128Í(string name)ÎGst.StructureÖ0Ïpublic bool
+have_dataÌ128Í(Gst.MiniObject data)ÎGst.PadÖ0Ïpublic virtual signal bool
+have_pendingÌ128Í()ÎGst.BusÖ0Ïpublic bool
+id_descriptionÌ128Í()ÎGst.IndexEntryÖ0Ïpublic unowned string
+id_getÌ128Í(...)ÎGst.StructureÖ0Ïpublic bool
+id_get_valistÌ128Í(GLib.Quark first_field_id, va_list args)ÎGst.StructureÖ0Ïpublic bool
+id_get_valueÌ128Í(GLib.Quark field)ÎGst.StructureÖ0Ïpublic unowned
+id_has_fieldÌ128Í(GLib.Quark field)ÎGst.StructureÖ0Ïpublic bool
+id_has_field_typedÌ128Í(GLib.Quark field, GLib.Type type)ÎGst.StructureÖ0Ïpublic bool
+id_setÌ128Í(GLib.Quark fieldname, ...)ÎGst.StructureÖ0Ïpublic void
+id_set_valistÌ128Í(GLib.Quark fieldname, va_list varargs)ÎGst.StructureÖ0Ïpublic void
+id_set_valueÌ128Í(GLib.Quark field, Gst.Value value)ÎGst.StructureÖ0Ïpublic void
+idxÌ8ÎGst.PollFDÖ0Ïint
+ignoredÌ128Í(Gst.Poll @set, Gst.PollFD fd)ÎGst.PollFDÖ0Ïpublic void
+implements_interfaceÌ128Í(GLib.Type iface_type)ÎGst.ElementÖ0Ïpublic bool
+infoÌ128Í(string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+info_objectÌ128Í(GLib.Object obj, string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+initÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ÎGstÖ0Ïpublic void
+initÌ128Í(string name, uint color, string description)ÎGst.DebugCategoryÖ0Ïpublic void
+initÌ128Í()ÎGst.PollFDÖ0Ïpublic void
+initÌ128Í(Gst.Format format)ÎGst.SegmentÖ0Ïpublic void
+init_and_copyÌ128Í(Gst.Value src)ÎGst.ValueÖ0Ïpublic void
+init_checkÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ÎGstÖ0Ïpublic bool
+init_get_option_groupÌ128Í()ÎGstÖ0Ïpublic GLib.OptionGroup
+insertÌ128Í(Gst.TagList from, Gst.TagMergeMode mode)ÎGst.TagListÖ0Ïpublic void
+install_std_propsÌ128Í(...)ÎGst.ElementÖ0Ïpublic class void
+int64Ì4ÎGst.FormatÖ0
+int_range_get_typeÌ128Í()ÎGstÖ0Ïpublic GLib.Type
+internal_calibrationÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+intersectÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic Gst.Caps
+intersectÌ128Í(Gst.Value dest, Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic bool
+intervalÌ8ÎGst.ClockEntryÖ0ÏGst.ClockTime
+intlinkfuncÌ8ÎGst.PadÖ0ÏGst.PadIntLinkFunction
+is_activeÌ128Í()ÎGst.PadÖ0Ïpublic bool
+is_always_compatibleÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic bool
+is_anyÌ128Í()ÎGst.CapsÖ0Ïpublic bool
+is_blockedÌ128Í()ÎGst.PadÖ0Ïpublic bool
+is_blockingÌ128Í()ÎGst.PadÖ0Ïpublic bool
+is_discontÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+is_disposingÌ128Í()ÎGst.ObjectÖ0Ïpublic bool
+is_downstreamÌ128Í()ÎGst.EventÖ0Ïpublic bool
+is_emptyÌ128Í()ÎGst.CapsÖ0Ïpublic bool
+is_emptyÌ128Í()ÎGst.TagListÖ0Ïpublic bool
+is_equalÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic bool
+is_equal_fixedÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic bool
+is_fatalÌ4ÎGst.FlowReturnÖ0
+is_fixedÌ128Í()ÎGst.CapsÖ0Ïpublic bool
+is_fixedÌ128Í()ÎGst.ValueÖ0Ïpublic bool
+is_floatingÌ128Í()ÎGst.ObjectÖ0Ïpublic bool
+is_indexableÌ128Í()ÎGst.ElementÖ0Ïpublic bool
+is_linkedÌ128Í()ÎGst.PadÖ0Ïpublic bool
+is_loadedÌ128Í()ÎGst.PluginÖ0Ïpublic bool
+is_locked_stateÌ128Í()ÎGst.ElementÖ0Ïpublic bool
+is_metadata_writableÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+is_readableÌ128Í()ÎGst.IndexÖ0Ïpublic bool
+is_serializedÌ128Í()ÎGst.EventÖ0Ïpublic bool
+is_simpleÌ128Í()ÎGst.CapsÖ0Ïpublic bool
+is_span_fastÌ128Í(Gst.Buffer buf2)ÎGst.BufferÖ0Ïpublic bool
+is_subsetÌ128Í(Gst.Caps superset)ÎGst.CapsÖ0Ïpublic bool
+is_successÌ4ÎGst.FlowReturnÖ0
+is_tag_listÌ128Í(void* p)ÎGstÖ0Ïpublic bool
+is_upstreamÌ128Í()ÎGst.EventÖ0Ïpublic bool
+is_validÌ128Í()ÎGst.ClockTimeÖ0Ïpublic bool
+is_writableÌ128Í()ÎGst.IndexÖ0Ïpublic bool
+is_writableÌ128Í()ÎGst.MiniObjectÖ0Ïpublic bool
+iterateÌ128Í()ÎGst.BufferListÖ0Ïpublic Gst.BufferListIterator
+iterate_all_by_interfaceÌ128Í(GLib.Type iface)ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_definitionsÌ4ÎGst.QueryTypeÖ0
+iterate_elementsÌ128Í()ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_internal_linksÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Iterator
+iterate_internal_links_defaultÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Iterator
+iterate_padsÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.Iterator
+iterate_recurseÌ128Í()ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_sink_padsÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.Iterator
+iterate_sinksÌ128Í()ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_sortedÌ128Í()ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_sourcesÌ128Í()ÎGst.BinÖ0Ïpublic Gst.Iterator
+iterate_src_padsÌ128Í()ÎGst.ElementÖ0Ïpublic Gst.Iterator
+iterintlinkfuncÌ8ÎGst.PadÖ0ÏGst.PadIterIntLinkFunction
+joinÌ128Í(owned Gst.Buffer buf2)ÎGst.BufferÖ0Ïpublic void
+joinÌ128Í()ÎGst.TaskÖ0Ïpublic bool
+joinÌ128Í(void* id)ÎGst.TaskPoolÖ0Ïpublic virtual void
+klassÌ8ÎGst.ElementDetailsÖ0
+last_returnÌ8ÎGst.ElementÖ0ÏGst.StateChangeReturn
+last_stopÌ8ÎGst.SegmentÖ0Ïint64
+last_timeÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+leave_threadÌ8ÎGst.TaskThreadCallbacksÖ0ÏGLib.Callback
+library_error_quarkÌ128Í()ÎGstÖ0Ïpublic GLib.Quark
+licenseÌ8ÎGst.PluginDescÖ0
+linkÌ128Í(Gst.Element dest)ÎGst.ElementÖ0Ïpublic bool
+linkÌ128Í(Gst.Pad sinkpad)ÎGst.PadÖ0Ïpublic Gst.PadLinkReturn
+link_filteredÌ128Í(Gst.Element dest, Gst.Caps filter)ÎGst.ElementÖ0Ïpublic bool
+link_fullÌ128Í(Gst.Pad sinkpad, Gst.PadLinkCheck flags)ÎGst.PadÖ0Ïpublic Gst.PadLinkReturn
+link_manyÌ128Í(Gst.Element element_2, ...)ÎGst.ElementÖ0Ïpublic bool
+link_padsÌ128Í(string srcpadname, Gst.Element dest, string destpadname)ÎGst.ElementÖ0Ïpublic bool
+link_pads_filteredÌ128Í(string srcpadname, Gst.Element dest, string destpadname, Gst.Caps filter)ÎGst.ElementÖ0Ïpublic bool
+link_pads_fullÌ128Í(string srcpadname, Gst.Element dest, string destpadname, Gst.PadLinkCheck flags)ÎGst.ElementÖ0Ïpublic bool
+linkedÌ128Í(Gst.Pad peer)ÎGst.PadÖ0Ïpublic virtual signal void
+linkfuncÌ8ÎGst.PadÖ0ÏGst.PadLinkFunction
+listÌ128Í()ÎGst.AllocTraceÖ0Ïpublic unowned
+list_append_valueÌ128Í(Gst.Value append_value)ÎGst.ValueÖ0Ïpublic void
+list_concatÌ128Í(Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic void
+list_get_sizeÌ128Í()ÎGst.ValueÖ0
+list_get_typeÌ128Í()ÎGst.ValueÖ0Ïpublic GLib.Type
+list_get_valueÌ128Í(uint index)ÎGst.ValueÖ0Ïpublic unowned
+list_prepend_valueÌ128Í(Gst.Value prepend_value)ÎGst.ValueÖ0Ïpublic void
+liveÌ8ÎGst.AllocTraceÖ0Ïint
+live_allÌ128Í()ÎGst.AllocTraceÖ0Ïpublic int
+loadÌ128Í()ÎGst.PluginÖ0Ïpublic Gst.Plugin?
+loadÌ128Í()ÎGst.PluginFeatureÖ0Ïpublic Gst.PluginFeature?
+load_and_linkÌ128Í(Gst.Object parent)ÎGst.PadÖ0Ïpublic void
+load_by_nameÌ128Í(string name)ÎGst.PluginÖ0Ïpublic Gst.Plugin?
+load_fileÌ128Í(string filename)ÎGst.PluginÖ0Ïpublic Gst.Plugin?
+load_presetÌ128Í(string name)ÎGst.PresetÖ0Ïpublic abstract bool
+load_thyselfÌ128Í(void* parent)ÎGst.CapsÖ0Ïpublic Gst.Caps
+logÌ128Í(string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+log_objectÌ128Í(GLib.Object obj, string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+longdescÌ8ÎGst.IndexFactoryÖ0
+longnameÌ8ÎGst.ElementDetailsÖ0
+lookupÌ128Í(string name, out Gst.Object? target, out unowned GLib.ParamSpec? pspec)ÎGst.ChildProxyÖ0Ïpublic bool
+lookupÌ128Í(string filename)ÎGst.RegistryÖ0Ïpublic Gst.Plugin?
+lookup_featureÌ128Í(string name)ÎGst.RegistryÖ0Ïpublic Gst.PluginFeature?
+lost_stateÌ128Í()ÎGst.ElementÖ0Ïpublic void
+lost_state_fullÌ128Í(bool new_base_time)ÎGst.ElementÖ0Ïpublic void
+major_versionÌ8ÎGst.PluginDescÖ0Ïint
+makeÌ128Í(string factoryname, string? name)ÎGst.ElementFactoryÖ0Ïpublic Gst.Element?
+makeÌ128Í(string name)ÎGst.IndexFactoryÖ0Ïpublic Gst.Index?
+make_elementÌ128Í(void* cur, Gst.Object parent)ÎGst.XMLÖ0Ïpublic unowned
+make_fourccÌ128Í(char a, char b, char c, char d)ÎGst.ValueÖ0
+make_from_uriÌ128Í(Gst.URIType type, string uri, string? elementname)ÎGst.ElementÖ0Ïpublic Gst.Element?
+make_metadata_writableÌ128Í()ÎGst.BufferÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.BufferÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.BufferListÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.CapsÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.MessageÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.MiniObjectÖ0Ïpublic void
+make_writableÌ128Í()ÎGst.QueryÖ0Ïpublic void
+malloc_dataÌ8ÎGst.BufferÖ0Ïvoid
+map_in_placeÌ128Í(Gst.StructureMapFunc func)ÎGst.StructureÖ0Ïpublic bool
+marshal_BOOLEAN__POINTERÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_BOOLEAN__VOIDÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_BOXED__BOXEDÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_POINTER__POINTERÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__BOXED_OBJECTÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__INT64Ì128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__INT_INTÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_BOXEDÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_BOXED_STRINGÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_OBJECTÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_OBJECT_STRINGÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_PARAMÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_POINTERÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__OBJECT_STRINGÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__POINTER_OBJECTÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+marshal_VOID__UINT_BOXEDÌ128Í(GLib.Closure closure, Gst.Value return_value, uint n_param_values, Gst.Value param_values, void* invocation_hint, void* marshal_data)ÎGstÖ0Ïpublic void
+masterÌ8ÎGst.ClockÖ0ÏGst.Clock
+master_cookieÌ8ÎGst.IteratorÖ0Ïvoid
+max_denÌ8ÎGst.ParamSpecFractionÖ0Ïint
+max_numÌ8ÎGst.ParamSpecFractionÖ0Ïint
+mem_liveÌ8ÎGst.AllocTraceÖ0ÏGLib.SList
+mergeÌ128Í(Gst.Buffer buf2)ÎGst.BufferÖ0Ïpublic Gst.Buffer
+mergeÌ128Í(owned Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic void
+mergeÌ128Í(Gst.TagList list2, Gst.TagMergeMode mode)ÎGst.TagListÖ0Ïpublic Gst.TagList
+merge_groupÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic Gst.Buffer?
+merge_structureÌ128Í(owned Gst.Structure structure)ÎGst.CapsÖ0Ïpublic void
+merge_tagsÌ128Í(Gst.TagList list, Gst.TagMergeMode mode)ÎGst.TagSetterÖ0Ïpublic void
+messageÌ128Í(Gst.Message message)ÎGst.BusÖ0Ïpublic virtual signal void
+messageÌ8ÎGst.TraceEntryÖ0Ïchar
+message_fullÌ128Í(Gst.MessageType type, GLib.Quark domain, int code, owned string? text, owned string? debug, string file, string function, int line)ÎGst.ElementÖ0Ïpublic void
+messagesÌ8ÎGst.BinÖ0ÏGLib.List
+min_denÌ8ÎGst.ParamSpecFractionÖ0Ïint
+min_numÌ8ÎGst.ParamSpecFractionÖ0Ïint
+minor_versionÌ8ÎGst.PluginDescÖ0Ïint
+modeÌ8ÎGst.PadÖ0ÏGst.ActivateMode
+n_assocsÌ128Í()ÎGst.IndexEntryÖ0Ïpublic int
+n_buffersÌ128Í()ÎGst.BufferListIteratorÖ0
+n_fieldsÌ128Í()ÎGst.StructureÖ0Ïpublic int
+n_groupsÌ128Í()ÎGst.BufferListÖ0
+nameÌ8ÎGst.AllocTraceÖ0
+nameÌ8ÎGst.ObjectÖ0
+nameÌ8ÎGst.PluginDescÖ0
+nameÌ8ÎGst.TypeNameDataÖ0
+name_filterÌ128Í(Gst.Plugin plugin, string name)ÎGst.PluginÖ0Ïpublic bool
+name_prefixÌ8ÎGst.ObjectÖ0
+name_templateÌ8ÎGst.PadTemplateÖ0
+name_templateÌ8ÎGst.StaticPadTemplateÖ0
+new_groupÌ128Í()ÎGst.IndexÖ0Ïpublic int
+new_uriÌ128Í(string uri)ÎGst.URIHandlerÖ0Ïpublic signal void
+nextÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic unowned
+nextÌ128Í(out T elem)ÎGst.IteratorÖ0Ïpublic Gst.IteratorResult
+next_groupÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic bool
+next_stateÌ8ÎGst.ElementÖ0ÏGst.State
+nickÌ8ÎGst.FormatDefinitionÖ0
+nickÌ8ÎGst.QueryTypeDefinitionÖ0
+no_more_padsÌ128Í()ÎGst.ElementÖ0Ïpublic virtual signal void
+normalizeÌ128Í()ÎGst.CapsÖ0Ïpublic Gst.Caps
+nsÌ8ÎGst.XMLÖ0Ïvoid
+nth_field_nameÌ128Í(uint index)ÎGst.StructureÖ0Ïpublic unowned string
+numchildrenÌ8ÎGst.BinÖ0Ïint
+numpadsÌ8ÎGst.ElementÖ0Ïuint16
+numsinkpadsÌ8ÎGst.ElementÖ0Ïuint16
+numsrcpadsÌ8ÎGst.ElementÖ0Ïuint16
+object_loadedÌ128Í(Gst.Object object, void* self)ÎGst.XMLÖ0Ïpublic virtual signal void
+object_savedÌ128Í(void* parent)ÎGst.ObjectÖ0Ïpublic virtual signal void
+object_savedÌ128Í(Gst.Object object, void* self)ÎGst.XMLÖ0Ïpublic virtual void
+obtainÌ128Í()ÎGst.SystemClockÖ0Ïpublic Gst.Clock
+offsetÌ8ÎGst.BufferÖ0Ïuint64
+offset_endÌ8ÎGst.BufferÖ0Ïuint64
+offset_end_is_validÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+offset_is_validÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+originÌ8ÎGst.PluginDescÖ0
+packageÌ8ÎGst.PluginDescÖ0
+pad_addedÌ128Í(Gst.Pad pad)ÎGst.ElementÖ0Ïpublic virtual signal void
+pad_createdÌ128Í(Gst.Pad pad)ÎGst.PadTemplateÖ0Ïpublic virtual signal void
+pad_removedÌ128Í(Gst.Pad pad)ÎGst.ElementÖ0Ïpublic virtual signal void
+padsÌ8ÎGst.ElementÖ0ÏGLib.List
+pads_cookieÌ8ÎGst.ElementÖ0Ïuint32
+param_spec_fractionÌ128Í(string name, string nick, string blurb, int min_num, int min_denom, int max_num, int max_denom, int default_num, int default_denom, GLib.ParamFlags flags)ÎGstÖ0Ïpublic unowned
+param_spec_mini_objectÌ128Í(string name, string nick, string blurb, GLib.Type object_type, GLib.ParamFlags flags)ÎGstÖ0Ïpublic unowned
+parentÌ8ÎGst.BufferÖ0ÏGst.Buffer
+parentÌ8ÎGst.ObjectÖ0ÏGst.Object
+parent_setÌ128Í(Gst.Object parent)ÎGst.ObjectÖ0Ïpublic virtual signal void
+parent_unsetÌ128Í(Gst.Object parent)ÎGst.ObjectÖ0Ïpublic virtual signal void
+parse_async_startÌ128Í(out bool new_base_time)ÎGst.MessageÖ0Ïpublic void
+parse_bin_from_descriptionÌ128Í(string bin_description, bool ghost_unlinked_pads)ÎGstÖ0Ïpublic Gst.Element?
+parse_bin_from_description_fullÌ128Í(string bin_description, bool ghost_unlinked_pads, Gst.ParseContext? context, Gst.ParseFlags flags)ÎGstÖ0Ïpublic Gst.Element?
+parse_buffer_sizeÌ128Í(out Gst.Format format, out int64 minsize, out int64 maxsize, out bool @async)ÎGst.EventÖ0Ïpublic void
+parse_bufferingÌ128Í(out int percent)ÎGst.MessageÖ0Ïpublic void
+parse_buffering_percentÌ128Í(out bool busy, out int percent)ÎGst.QueryÖ0Ïpublic void
+parse_buffering_rangeÌ128Í(out Gst.Format format, out int64 start, out int64 stop, out int64 estimated_total)ÎGst.QueryÖ0Ïpublic void
+parse_buffering_statsÌ128Í(out Gst.BufferingMode mode, out int avg_in, out int avg_out, out int64 buffering_left)ÎGst.MessageÖ0Ïpublic void
+parse_buffering_statsÌ128Í(out Gst.BufferingMode mode, out int avg_in, out int avg_out, out int64 buffering_left)ÎGst.QueryÖ0Ïpublic void
+parse_clock_lostÌ128Í(out unowned Gst.Clock clock)ÎGst.MessageÖ0Ïpublic void
+parse_clock_provideÌ128Í(out unowned Gst.Clock clock, out bool ready)ÎGst.MessageÖ0Ïpublic void
+parse_convertÌ128Í(out Gst.Format src_format, out int64 src_value, out Gst.Format dest_format, out int64 dest_value)ÎGst.QueryÖ0Ïpublic void
+parse_docÌ128Í(void* doc, string root)ÎGst.XMLÖ0Ïpublic bool
+parse_durationÌ128Í(out Gst.Format format, out int64 duration)ÎGst.MessageÖ0Ïpublic void
+parse_durationÌ128Í(out Gst.Format format, out int64 duration)ÎGst.QueryÖ0Ïpublic void
+parse_errorÌ128Í(out GLib.Error gerror, out string? debug)ÎGst.MessageÖ0Ïpublic void
+parse_error_quarkÌ128Í()ÎGstÖ0Ïpublic GLib.Quark
+parse_fileÌ128Í(string fname, string root)ÎGst.XMLÖ0Ïpublic bool
+parse_formats_lengthÌ128Í(out uint n_formats)ÎGst.QueryÖ0Ïpublic void
+parse_formats_nthÌ128Í(uint nth, out Gst.Format format)ÎGst.QueryÖ0Ïpublic void
+parse_infoÌ128Í(out GLib.Error gerror, out string? debug)ÎGst.MessageÖ0Ïpublic void
+parse_latencyÌ128Í(out Gst.ClockTime latency)ÎGst.EventÖ0Ïpublic void
+parse_latencyÌ128Í(out bool live, out Gst.ClockTime min_latency, out Gst.ClockTime max_latency)ÎGst.QueryÖ0Ïpublic void
+parse_launchÌ128Í(string pipeline_description)ÎGstÖ0Ïpublic Gst.Element?
+parse_launch_fullÌ128Í(string pipeline_description, Gst.ParseContext? context, Gst.ParseFlags flags)ÎGstÖ0Ïpublic Gst.Element?
+parse_launchvÌ128Í([CCode (array_length = false)] string[] argv)ÎGstÖ0Ïpublic Gst.Element?
+parse_launchv_fullÌ128Í([CCode (array_length = false)] string[] argv, Gst.ParseContext? context, Gst.ParseFlags flags)ÎGstÖ0Ïpublic Gst.Element?
+parse_memoryÌ128Í(uchar[] buffer, uint size, string root)ÎGst.XMLÖ0Ïpublic bool
+parse_new_clockÌ128Í(out unowned Gst.Clock clock)ÎGst.MessageÖ0Ïpublic void
+parse_new_segmentÌ128Í(out bool update, out double rate, out Gst.Format format, out int64 start, out int64 stop, out int64 position)ÎGst.EventÖ0Ïpublic void
+parse_new_segment_fullÌ128Í(out bool update, out double rate, out double applied_rate, out Gst.Format format, out int64 start, out int64 stop, out int64 position)ÎGst.EventÖ0Ïpublic void
+parse_positionÌ128Í(out Gst.Format format, out int64 cur)ÎGst.QueryÖ0Ïpublic void
+parse_qosÌ128Í(out double proportion, out Gst.ClockTimeDiff diff, out Gst.ClockTime timestamp)ÎGst.EventÖ0Ïpublic void
+parse_qosÌ128Í(bool live, uint64 running_time, uint64 stream_time, uint64 timestamp, uint64 duration)ÎGst.MessageÖ0Ïpublic void
+parse_qos_statsÌ128Í(Gst.Format format, uint64 processed, uint64 dropped)ÎGst.MessageÖ0Ïpublic void
+parse_qos_valuesÌ128Í(int64 jitter, double proportion, int quality)ÎGst.MessageÖ0Ïpublic void
+parse_request_stateÌ128Í(out Gst.State state)ÎGst.MessageÖ0Ïpublic void
+parse_seekÌ128Í(out double rate, out Gst.Format format, out Gst.SeekFlags flags, out Gst.SeekType start_type, out int64 start, out Gst.SeekType stop_type, out int64 stop)ÎGst.EventÖ0Ïpublic void
+parse_seekingÌ128Í(out Gst.Format format, out bool seekable, out int64 segment_start, out int64 segment_end)ÎGst.QueryÖ0Ïpublic void
+parse_segmentÌ128Í(out double rate, out Gst.Format format, out int64 start_value, out int64 stop_value)ÎGst.QueryÖ0Ïpublic void
+parse_segment_doneÌ128Í(out Gst.Format format, out int64 position)ÎGst.MessageÖ0Ïpublic void
+parse_segment_startÌ128Í(out Gst.Format format, out int64 position)ÎGst.MessageÖ0Ïpublic void
+parse_sink_messageÌ128Í(out unowned Gst.Message msg)ÎGst.EventÖ0Ïpublic void
+parse_state_changedÌ128Í(out Gst.State oldstate, out Gst.State newstate, out Gst.State pending)ÎGst.MessageÖ0Ïpublic void
+parse_stepÌ128Í(out Gst.Format format, out uint64 amount, out double rate, out bool flush, out bool intermediate)ÎGst.EventÖ0Ïpublic void
+parse_step_doneÌ128Í(out Gst.Format format, out uint64 amount, out double rate, out bool flush, out bool intermediate, out uint64 duration, out bool eos)ÎGst.MessageÖ0Ïpublic void
+parse_step_startÌ128Í(out bool active, out Gst.Format format, out uint64 amount, out double rate, out bool flush, out bool intermediate)ÎGst.MessageÖ0Ïpublic void
+parse_stream_statusÌ128Í(out Gst.StreamStatusType type, out unowned Gst.Element owner)ÎGst.MessageÖ0Ïpublic void
+parse_structure_changeÌ128Í(out Gst.StructureChangeType type, out unowned Gst.Element owner, out bool busy)ÎGst.MessageÖ0Ïpublic void
+parse_tagÌ128Í(out unowned Gst.TagList taglist)ÎGst.EventÖ0Ïpublic void
+parse_tagÌ128Í(out Gst.TagList tag_list)ÎGst.MessageÖ0Ïpublic void
+parse_tag_fullÌ128Í(out unowned Gst.Pad pad, out unowned Gst.TagList tag_list)ÎGst.MessageÖ0Ïpublic void
+parse_uriÌ128Í(out string uri)ÎGst.QueryÖ0Ïpublic void
+parse_warningÌ128Í(out GLib.Error gerror, out string? debug)ÎGst.MessageÖ0Ïpublic void
+pauseÌ128Í()ÎGst.TaskÖ0Ïpublic bool
+pause_taskÌ128Í()ÎGst.PadÖ0Ïpublic bool
+peekÌ128Í()ÎGst.BusÖ0Ïpublic Gst.Message?
+peekÌ128Í(int64 offset, uint size)ÎGst.TypeFindÖ0Ïpublic uchar
+peek_string_indexÌ128Í(string tag, uint index, string value)ÎGst.TagListÖ0Ïpublic bool
+peer_accept_capsÌ128Í(Gst.Caps caps)ÎGst.PadÖ0Ïpublic bool
+peer_get_capsÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+peer_get_caps_reffedÌ128Í()ÎGst.PadÖ0Ïpublic Gst.Caps
+peer_queryÌ128Í(Gst.Query query)ÎGst.PadÖ0Ïpublic bool
+pending_stateÌ8ÎGst.ElementÖ0ÏGst.State
+plugin_addedÌ128Í(void* plugin)ÎGst.RegistryÖ0Ïpublic virtual signal void
+plugin_filterÌ128Í(Gst.PluginFilter filter, bool first)ÎGst.RegistryÖ0Ïpublic GLib.List
+plugin_initÌ8ÎGst.PluginDescÖ0ÏGst.PluginInitFunc
+pollÌ128Í(Gst.MessageType events, Gst.ClockTimeDiff timeout)ÎGst.BusÖ0Ïpublic Gst.Message?
+pollingÌ8ÎGst.BinÖ0Ïbool
+poolÌ8ÎGst.TaskPoolÖ0ÏGLib.ThreadPool
+popÌ128Í()ÎGst.BusÖ0Ïpublic Gst.Message?
+pop_filteredÌ128Í(Gst.MessageType types)ÎGst.BusÖ0Ïpublic Gst.Message?
+postÌ128Í(owned Gst.Message message)ÎGst.BusÖ0Ïpublic bool
+post_messageÌ128Í(owned Gst.Message message)ÎGst.ElementÖ0Ïpublic bool
+prepareÌ128Í()ÎGst.TaskPoolÖ0Ïpublic virtual void
+presenceÌ8ÎGst.PadTemplateÖ0ÏGst.PadPresence
+presenceÌ8ÎGst.StaticPadTemplateÖ0ÏGst.PadPresence
+printÌ128Í()ÎGst.AllocTraceÖ0Ïpublic void
+print_allÌ128Í()ÎGst.AllocTraceÖ0Ïpublic void
+print_element_argsÌ128Í(GLib.StringBuilder buf, int indent, Gst.Element element)ÎGstÖ0Ïpublic void
+print_liveÌ128Í()ÎGst.AllocTraceÖ0Ïpublic void
+print_pad_capsÌ128Í(GLib.StringBuilder buf, int indent, Gst.Pad pad)ÎGstÖ0Ïpublic void
+provide_clockÌ128Í()ÎGst.ElementÖ0Ïpublic virtual Gst.Clock?
+provided_clockÌ8ÎGst.BinÖ0ÏGst.Clock
+provides_clockÌ128Í()ÎGst.ElementÖ0Ïpublic bool
+proxy_getcapsÌ128Í(Gst.Pad pad)ÎGst.PadÖ0Ïpublic Gst.Caps
+proxy_setcapsÌ128Í(Gst.Caps caps)ÎGst.PadÖ0Ïpublic bool
+pull_rangeÌ128Í(uint64 offset, uint size, out Gst.Buffer buffer)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+pushÌ128Í(Gst.Iterator other)ÎGst.IteratorÖ0Ïpublic void
+pushÌ128Í(owned Gst.Buffer buffer)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+pushÌ128Í(Gst.TaskPoolFunction func)ÎGst.TaskPoolÖ0Ïpublic virtual void *
+push_eventÌ128Í(owned Gst.Event event)ÎGst.PadÖ0Ïpublic bool
+push_listÌ128Í(owned Gst.BufferList list)ÎGst.PadÖ0Ïpublic Gst.FlowReturn
+pushedÌ8ÎGst.IteratorÖ0ÏGst.Iterator
+quarkÌ8ÎGst.FormatDefinitionÖ0ÏGLib.Quark
+quarkÌ8ÎGst.QueryTypeDefinitionÖ0ÏGLib.Quark
+queryÌ128Í(Gst.Query query)ÎGst.ElementÖ0Ïpublic virtual bool
+queryÌ128Í(Gst.Query query)ÎGst.PadÖ0Ïpublic bool
+query_convertÌ128Í(Gst.Format src_format, int64 src_val, ref Gst.Format dest_format, out int64 dest_val)ÎGst.ElementÖ0Ïpublic bool
+query_convertÌ128Í(Gst.Format src_format, int64 src_val, ref Gst.Format dest_format, out int64 dest_val)ÎGst.PadÖ0Ïpublic bool
+query_defaultÌ128Í(Gst.Query query)ÎGst.PadÖ0Ïpublic bool
+query_durationÌ128Í(ref Gst.Format format, out int64 duration)ÎGst.ElementÖ0Ïpublic bool
+query_durationÌ128Í(ref Gst.Format format, out int64 duration)ÎGst.PadÖ0Ïpublic bool
+query_peer_convertÌ128Í(Gst.Format src_format, int64 src_val, ref Gst.Format dest_format, out int64 dest_val)ÎGst.PadÖ0Ïpublic bool
+query_peer_durationÌ128Í(ref Gst.Format format, out int64 duration)ÎGst.PadÖ0Ïpublic bool
+query_peer_positionÌ128Í(ref Gst.Format format, out int64 cur)ÎGst.PadÖ0Ïpublic bool
+query_positionÌ128Í(ref Gst.Format format, out int64 cur)ÎGst.ElementÖ0Ïpublic bool
+query_positionÌ128Í(ref Gst.Format format, out int64 cur)ÎGst.PadÖ0Ïpublic bool
+queryfuncÌ8ÎGst.PadÖ0ÏGst.PadQueryFunction
+querytypefuncÌ8ÎGst.PadÖ0ÏGst.PadQueryTypeFunction
+rateÌ8ÎGst.SegmentÖ0Ïdouble
+rate_denominatorÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+rate_numeratorÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+read_controlÌ128Í()ÎGst.PollÖ0Ïpublic bool
+read_tscÌ128Í(int64 dst)ÎGst.TraceÖ0Ïpublic void
+recalculate_latencyÌ128Í()ÎGst.BinÖ0Ïpublic bool
+ref_sinkÌ128Í()ÎGst.ObjectÖ0Ïpublic void
+refcountÌ8ÎGst.ClockEntryÖ0Ïint
+registerÌ128Í(Gst.Plugin? plugin, string name, uint rank, GLib.Type type)ÎGst.ElementÖ0Ïpublic bool
+registerÌ4ÎGst.QueryTypeÖ0
+registerÌ128Í(Gst.Plugin plugin, string name, uint rank, Gst.TypeFindFunction func, string extensions, Gst.Caps possible_caps, void* data, GLib.DestroyNotify data_notify)ÎGst.TypeFindÖ0Ïpublic bool
+registerÌ128Í(Gst.ValueTable table)ÎGst.ValueÖ0Ïpublic void
+register_intersect_funcÌ128Í(GLib.Type type1, GLib.Type type2, Gst.ValueIntersectFunc func)ÎGst.ValueÖ0Ïpublic void
+register_staticÌ128Í(int major_version, int minor_version, string name, string description, Gst.PluginInitFunc init_func, string version, string license, string source, string package, string origin)ÎGst.PluginÖ0Ïpublic bool
+register_static_fullÌ128Í(int major_version, int minor_version, string name, string description, Gst.PluginInitFullFunc init_full_func, string version, string license, string source, string package, string origin)ÎGst.PluginÖ0Ïpublic bool
+register_subtract_funcÌ128Í(GLib.Type minuend_type, GLib.Type subtrahend_type, Gst.ValueSubtractFunc func)ÎGst.ValueÖ0Ïpublic void
+register_union_funcÌ128Í(GLib.Type type1, GLib.Type type2, Gst.ValueUnionFunc func)ÎGst.ValueÖ0Ïpublic void
+release_padÌ128Í(Gst.Pad pad)ÎGst.ElementÖ0Ïpublic virtual void
+release_request_padÌ128Í(Gst.Pad pad)ÎGst.ElementÖ0Ïpublic void
+removeÌ128Í(Gst.Element element)ÎGst.BinÖ0Ïpublic bool
+removeÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic void
+remove_all_fieldsÌ128Í()ÎGst.StructureÖ0Ïpublic void
+remove_buffer_probeÌ128Í(uint handler_id)ÎGst.PadÖ0Ïpublic void
+remove_data_probeÌ128Í(uint handler_id)ÎGst.PadÖ0Ïpublic void
+remove_elementÌ128Í(Gst.Element element)ÎGst.BinÖ0Ïpublic virtual bool
+remove_event_probeÌ128Í(uint handler_id)ÎGst.PadÖ0Ïpublic void
+remove_fdÌ128Í(Gst.PollFD fd)ÎGst.PollÖ0Ïpublic bool
+remove_featureÌ128Í(Gst.PluginFeature feature)ÎGst.RegistryÖ0Ïpublic void
+remove_fieldÌ128Í(string fieldname)ÎGst.StructureÖ0Ïpublic void
+remove_fieldsÌ128Í(string fieldname, ...)ÎGst.StructureÖ0Ïpublic void
+remove_fields_valistÌ128Í(string fieldname, va_list varargs)ÎGst.StructureÖ0Ïpublic void
+remove_manyÌ128Í(params Gst.Element[] elements)ÎGst.BinÖ0Ïpublic void
+remove_padÌ128Í(Gst.Pad pad)ÎGst.ElementÖ0Ïpublic bool
+remove_pluginÌ128Í(Gst.Plugin plugin)ÎGst.RegistryÖ0Ïpublic void
+remove_signal_watchÌ128Í()ÎGst.BusÖ0Ïpublic void
+remove_structureÌ128Í(uint idx)ÎGst.CapsÖ0Ïpublic void
+remove_tagÌ128Í(string tag)ÎGst.TagListÖ0Ïpublic void
+rename_presetÌ128Í(string old_name, string new_name)ÎGst.PresetÖ0Ïpublic abstract bool
+replaceÌ128Í(ref Gst.Buffer? oldobj, Gst.Buffer? newobj)ÎGst.BufferÖ0Ïpublic void
+replaceÌ128Í(ref Gst.Caps? oldobj, Gst.Caps? newobj)ÎGst.CapsÖ0Ïpublic void
+replaceÌ128Í(ref Gst.Event? oldobj, Gst.Event? newobj)ÎGst.EventÖ0Ïpublic void
+replaceÌ128Í(ref Gst.MiniObject? oldobj, Gst.MiniObject? newobj)ÎGst.MiniObjectÖ0Ïpublic void
+replaceÌ128Í(ref Gst.Object? oldobj, Gst.Object? newobj)ÎGst.ObjectÖ0Ïpublic void
+request_linkÌ128Í()ÎGst.PadÖ0Ïpublic virtual signal void
+request_new_padÌ128Í(Gst.PadTemplate templ, string? name)ÎGst.ElementÖ0Ïpublic virtual unowned
+requires_clockÌ128Í()ÎGst.ElementÖ0Ïpublic bool
+reset_tagsÌ128Í()ÎGst.TagSetterÖ0Ïpublic void
+reset_thresholdÌ128Í()ÎGst.DebugCategoryÖ0Ïpublic void
+resolutionÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+resolverÌ8ÎGst.IndexÖ0ÏGst.IndexResolver
+resource_error_quarkÌ128Í()ÎGstÖ0Ïpublic GLib.Quark
+restartÌ128Í()ÎGst.PollÖ0Ïpublic void
+restore_thyselfÌ128Í(void* self)ÎGst.ObjectÖ0Ïpublic virtual void
+resyncÌ128Í()ÎGst.IteratorÖ0Ïpublic void
+runningÌ8ÎGst.TaskÖ0Ïbool
+save_presetÌ128Í(string name)ÎGst.PresetÖ0Ïpublic abstract bool
+save_thyselfÌ128Í(void* parent)ÎGst.CapsÖ0Ïpublic void *
+save_thyselfÌ128Í(void* parent)ÎGst.ObjectÖ0Ïpublic virtual void *
+scan_pathÌ128Í(string path)ÎGst.RegistryÖ0Ïpublic bool
+seekÌ128Í(double rate, Gst.Format format, Gst.SeekFlags flags, Gst.SeekType cur_type, int64 cur, Gst.SeekType stop_type, int64 stop)ÎGst.ElementÖ0Ïpublic bool
+seek_simpleÌ128Í(Gst.Format format, Gst.SeekFlags seek_flags, int64 seek_pos)ÎGst.ElementÖ0Ïpublic bool
+segtrap_is_enabledÌ128Í()ÎGstÖ0Ïpublic bool
+segtrap_set_enabledÌ128Í(bool enabled)ÎGstÖ0Ïpublic void
+send_eventÌ128Í(owned Gst.Event event)ÎGst.ElementÖ0Ïpublic virtual bool
+send_eventÌ128Í(owned Gst.Event event)ÎGst.PadÖ0Ïpublic bool
+sequenceÌ8ÎGst.TraceEntryÖ0Ïuint32
+serializeÌ128Í()ÎGst.ValueÖ0
+serializeÌ8ÎGst.ValueTableÖ0ÏGst.ValueSerializeFunc
+set_acceptcaps_functionÌ128Í(Gst.PadAcceptCapsFunction acceptcaps)ÎGst.PadÖ0Ïpublic void
+set_activate_functionÌ128Í(Gst.PadActivateFunction activate)ÎGst.PadÖ0Ïpublic void
+set_activatepull_functionÌ128Í(Gst.PadActivateModeFunction activatepull)ÎGst.PadÖ0Ïpublic void
+set_activatepush_functionÌ128Í(Gst.PadActivateModeFunction activatepush)ÎGst.PadÖ0Ïpublic void
+set_activeÌ128Í(bool active)ÎGst.PadÖ0Ïpublic bool
+set_auto_flush_busÌ128Í(bool auto_flush)ÎGst.PipelineÖ0Ïpublic void
+set_base_timeÌ128Í(Gst.ClockTime time)ÎGst.ElementÖ0Ïpublic void
+set_blockedÌ128Í(bool blocked)ÎGst.PadÖ0Ïpublic bool
+set_blocked_asyncÌ128Í(bool blocked, owned Gst.PadBlockCallback callback)ÎGst.PadÖ0Ïpublic bool
+set_bufferÌ128Í(Gst.Buffer b)ÎGst.ValueÖ0Ïpublic void
+set_bufferalloc_functionÌ128Í(Gst.PadBufferAllocFunction bufalloc)ÎGst.PadÖ0Ïpublic void
+set_buffering_percentÌ128Í(bool busy, int percent)ÎGst.QueryÖ0Ïpublic void
+set_buffering_rangeÌ128Í(Gst.Format format, int64 start, int64 stop, int64 estimated_total)ÎGst.QueryÖ0Ïpublic void
+set_buffering_statsÌ128Í(Gst.BufferingMode mode, int avg_in, int avg_out, int64 buffering_left)ÎGst.MessageÖ0Ïpublic void
+set_buffering_statsÌ128Í(Gst.BufferingMode mode, int avg_in, int avg_out, int64 buffering_left)ÎGst.QueryÖ0Ïpublic void
+set_busÌ128Í(Gst.Bus? bus)ÎGst.ElementÖ0Ïpublic virtual void
+set_cache_dataÌ128Í(owned Gst.Structure cache_data)ÎGst.PluginÖ0Ïpublic void
+set_calibrationÌ128Í(Gst.ClockTime @internal, Gst.ClockTime external, Gst.ClockTime rate_num, Gst.ClockTime rate_denom)ÎGst.ClockÖ0Ïpublic void
+set_capsÌ128Í(Gst.Caps caps)ÎGst.BufferÖ0Ïpublic void
+set_capsÌ128Í(Gst.Caps? caps)ÎGst.PadÖ0Ïpublic bool
+set_capsÌ128Í(Gst.Caps caps)ÎGst.ValueÖ0Ïpublic void
+set_certaintyÌ128Í(Gst.IndexCertainty certainty)ÎGst.IndexÖ0Ïpublic void
+set_chain_functionÌ128Í(Gst.PadChainFunction chain)ÎGst.PadÖ0Ïpublic void
+set_chain_list_functionÌ128Í(Gst.PadChainListFunction chainlist)ÎGst.PadÖ0Ïpublic void
+set_checkgetrange_functionÌ128Í(Gst.PadCheckGetRangeFunction check)ÎGst.PadÖ0Ïpublic void
+set_clockÌ128Í(Gst.Clock? clock)ÎGst.ElementÖ0Ïpublic virtual bool
+set_clockÌ128Í(Gst.Clock? clock)ÎGst.PipelineÖ0Ïpublic bool
+set_controllableÌ128Í(bool controllable)ÎGst.PollÖ0Ïpublic bool
+set_convertÌ128Í(Gst.Format src_format, int64 src_value, Gst.Format dest_format, int64 dest_value)ÎGst.QueryÖ0Ïpublic void
+set_dateÌ128Í(GLib.Date date)ÎGst.ValueÖ0Ïpublic void
+set_defaultÌ128Í()ÎGst.TraceÖ0Ïpublic void
+set_delayÌ128Í(Gst.ClockTime delay)ÎGst.PipelineÖ0Ïpublic void
+set_detailsÌ128Í(Gst.ElementDetails details)ÎGst.ElementÖ0Ïpublic class void
+set_details_simpleÌ128Í(string longname, string classification, string description, string author)ÎGst.ElementÖ0Ïpublic class void
+set_double_rangeÌ128Í(double start, double end)ÎGst.ValueÖ0Ïpublic void
+set_durationÌ128Í(Gst.Format format, int64 duration)ÎGst.QueryÖ0Ïpublic void
+set_durationÌ128Í(Gst.Format format, int64 duration)ÎGst.SegmentÖ0Ïpublic void
+set_element_privateÌ128Í(void* priv)ÎGst.PadÖ0Ïpublic void
+set_event_functionÌ128Í(Gst.PadEventFunction event)ÎGst.PadÖ0Ïpublic void
+set_filterÌ128Í(owned Gst.IndexFilter filter)ÎGst.IndexÖ0Ïpublic void
+set_fixatecaps_functionÌ128Í(Gst.PadFixateCapsFunction fixatecaps)ÎGst.PadÖ0Ïpublic void
+set_flagsÌ128Í(Gst.AllocTraceFlags flags)ÎGst.AllocTraceÖ0Ïpublic void
+set_flags_allÌ128Í(Gst.AllocTraceFlags flags)ÎGst.AllocTraceÖ0Ïpublic void
+set_flushingÌ128Í(bool flushing)ÎGst.BusÖ0Ïpublic void
+set_flushingÌ128Í(bool flushing)ÎGst.PollÖ0Ïpublic void
+set_formatsÌ128Í(int n_formats, ...)ÎGst.QueryÖ0Ïpublic void
+set_formatsvÌ128Í([CCode (array_length_pos = 0.9)] Gst.Format[] formats)ÎGst.QueryÖ0Ïpublic void
+set_fourccÌ128Í(uint fourcc)ÎGst.ValueÖ0Ïpublic void
+set_fractionÌ128Í(int numerator, int denominator)ÎGst.ValueÖ0Ïpublic void
+set_fraction_rangeÌ128Í(Gst.Value start, Gst.Value end)ÎGst.ValueÖ0Ïpublic void
+set_fraction_range_fullÌ128Í(int numerator_start, int denominator_start, int numerator_end, int denominator_end)ÎGst.ValueÖ0Ïpublic void
+set_getcaps_functionÌ128Í(Gst.PadGetCapsFunction getcaps)ÎGst.PadÖ0Ïpublic void
+set_getrange_functionÌ128Í(Gst.PadGetRangeFunction @get)ÎGst.PadÖ0Ïpublic void
+set_groupÌ128Í(int groupnum)ÎGst.IndexÖ0Ïpublic bool
+set_indexÌ128Í(Gst.Index? index)ÎGst.ElementÖ0Ïpublic virtual void
+set_int_rangeÌ128Í(int start, int end)ÎGst.ValueÖ0Ïpublic void
+set_internal_link_functionÌ128Í(Gst.PadIntLinkFunction intlink)ÎGst.PadÖ0Ïpublic void
+set_iterate_internal_links_functionÌ128Í(Gst.PadIterIntLinkFunction iterintlink)ÎGst.PadÖ0Ïpublic void
+set_last_stopÌ128Í(Gst.Format format, int64 position)ÎGst.SegmentÖ0Ïpublic void
+set_latencyÌ128Í(bool live, Gst.ClockTime min_latency, Gst.ClockTime max_latency)ÎGst.QueryÖ0Ïpublic void
+set_link_functionÌ128Í(Gst.PadLinkFunction link)ÎGst.PadÖ0Ïpublic void
+set_lockÌ128Í(void* mutex)ÎGst.TaskÖ0Ïpublic void
+set_locked_stateÌ128Í(bool locked_state)ÎGst.ElementÖ0Ïpublic bool
+set_masterÌ128Í(Gst.Clock? master)ÎGst.ClockÖ0Ïpublic bool
+set_metaÌ128Í(string name, string tag, string value)ÎGst.PresetÖ0Ïpublic abstract bool
+set_nameÌ128Í(string name)ÎGst.ObjectÖ0Ïpublic bool
+set_nameÌ128Í(string name)ÎGst.PluginFeatureÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎGst.StructureÖ0Ïpublic void
+set_name_prefixÌ128Í(string name_prefix)ÎGst.ObjectÖ0Ïpublic void
+set_new_stream_timeÌ128Í(Gst.ClockTime time)ÎGst.PipelineÖ0Ïpublic void
+set_newsegmentÌ128Í(bool update, double rate, Gst.Format format, int64 start, int64 stop, int64 time)ÎGst.SegmentÖ0Ïpublic void
+set_newsegment_fullÌ128Í(bool update, double rate, double applied_rate, Gst.Format format, int64 start, int64 stop, int64 time)ÎGst.SegmentÖ0Ïpublic void
+set_parentÌ128Í(Gst.Object parent)ÎGst.ObjectÖ0Ïpublic bool
+set_parent_refcountÌ128Í(ref int refcount)ÎGst.StructureÖ0Ïpublic void
+set_poolÌ128Í(Gst.TaskPool pool)ÎGst.TaskÖ0Ïpublic void
+set_positionÌ128Í(Gst.Format format, int64 cur)ÎGst.QueryÖ0Ïpublic void
+set_priorityÌ128Í(GLib.ThreadPriority priority)ÎGst.TaskÖ0Ïpublic void
+set_propertyÌ128Í(string name, Gst.Value value)ÎGst.ChildProxyÖ0Ïpublic void
+set_qos_statsÌ128Í(Gst.Format format, uint64 processed, uint64 dropped)ÎGst.MessageÖ0Ïpublic void
+set_qos_valuesÌ128Í(int64 jitter, double proportion, int quality)ÎGst.MessageÖ0Ïpublic void
+set_query_functionÌ128Í(Gst.PadQueryFunction query)ÎGst.PadÖ0Ïpublic void
+set_rankÌ128Í(uint rank)ÎGst.PluginFeatureÖ0Ïpublic void
+set_resolutionÌ128Í(Gst.ClockTime resolution)ÎGst.ClockÖ0Ïpublic Gst.ClockTime
+set_resolverÌ128Í(owned Gst.IndexResolver resolver)ÎGst.IndexÖ0Ïpublic void
+set_running_timeÌ128Í(Gst.Format format, int64 running_time)ÎGst.SegmentÖ0Ïpublic bool
+set_seekÌ128Í(double rate, Gst.Format format, Gst.SeekFlags flags, Gst.SeekType start_type, int64 start, Gst.SeekType stop_type, int64 stop, bool update)ÎGst.SegmentÖ0Ïpublic void
+set_seekingÌ128Í(Gst.Format format, bool seekable, int64 segment_start, int64 segment_end)ÎGst.QueryÖ0Ïpublic void
+set_segmentÌ128Í(double rate, Gst.Format format, int64 start_value, int64 stop_value)ÎGst.QueryÖ0Ïpublic void
+set_seqnumÌ128Í(uint32 seqnum)ÎGst.EventÖ0Ïpublic void
+set_seqnumÌ128Í(uint32 seqnum)ÎGst.MessageÖ0Ïpublic void
+set_setcaps_functionÌ128Í(Gst.PadSetCapsFunction setcaps)ÎGst.PadÖ0Ïpublic void
+set_simpleÌ128Í(string field, ...)ÎGst.CapsÖ0Ïpublic void
+set_simple_valistÌ128Í(string field, void* varargs)ÎGst.CapsÖ0Ïpublic void
+set_start_timeÌ128Í(Gst.ClockTime time)ÎGst.ElementÖ0Ïpublic void
+set_stateÌ128Í(Gst.State state)ÎGst.ElementÖ0Ïpublic virtual Gst.StateChangeReturn
+set_stateÌ128Í(Gst.TaskState state)ÎGst.TaskÖ0Ïpublic bool
+set_stream_status_objectÌ128Í(ref unowned Gst.Value? object)ÎGst.MessageÖ0Ïpublic void
+set_structureÌ128Í(Gst.Structure structure)ÎGst.ValueÖ0Ïpublic void
+set_sync_handlerÌ128Í(Gst.BusSyncHandler? func)ÎGst.BusÖ0Ïpublic void
+set_tag_merge_modeÌ128Í(Gst.TagMergeMode mode)ÎGst.TagSetterÖ0Ïpublic void
+set_targetÌ128Í(Gst.Pad? newtarget)ÎGst.GhostPadÖ0Ïpublic bool
+set_thread_callbacksÌ128Í(Gst.TaskThreadCallbacks callbacks, GLib.DestroyNotify notify)ÎGst.TaskÖ0Ïpublic void
+set_thresholdÌ128Í(Gst.DebugLevel level)ÎGst.DebugCategoryÖ0Ïpublic void
+set_unlink_functionÌ128Í(Gst.PadUnlinkFunction unlink)ÎGst.PadÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGst.QueryÖ0Ïpublic void
+set_uriÌ128Í(string uri)ÎGst.URIHandlerÖ0Ïpublic abstract bool
+set_valistÌ128Í(string first_property_name, void* var_args)ÎGst.ChildProxyÖ0Ïpublic void
+set_valistÌ128Í(string fieldname, va_list varargs)ÎGst.StructureÖ0Ïpublic void
+set_valueÌ128Í(string field, Gst.Value value)ÎGst.CapsÖ0Ïpublic void
+set_valueÌ128Í(string fieldname, Gst.Value value)ÎGst.StructureÖ0Ïpublic void
+setcapsfuncÌ8ÎGst.PadÖ0ÏGst.PadSetCapsFunction
+sinkÌ128Í()ÎGst.ObjectÖ0Ïpublic void
+sinkpadsÌ8ÎGst.ElementÖ0ÏGLib.List
+sizeÌ8ÎGst.BufferÖ0
+slave_lockÌ8ÎGst.ClockÖ0ÏGLib.Mutex
+sourceÌ8ÎGst.PluginDescÖ0
+spanÌ128Í(uint32 offset, Gst.Buffer buf2, uint32 len)ÎGst.BufferÖ0Ïpublic Gst.Buffer
+srcÌ8ÎGst.EventÖ0ÏGst.Object
+srcÌ8ÎGst.MessageÖ0ÏGst.Object
+srcpadsÌ8ÎGst.ElementÖ0ÏGLib.List
+stampÌ128Í(Gst.Buffer src)ÎGst.BufferÖ0Ïpublic void
+startÌ8ÎGst.SegmentÖ0Ïint64
+startÌ128Í()ÎGst.TaskÖ0Ïpublic bool
+start_taskÌ128Í(Gst.TaskFunction func)ÎGst.PadÖ0Ïpublic bool
+stateÌ8ÎGst.TaskÖ0ÏGst.TaskState
+state_condÌ8ÎGst.ElementÖ0ÏGLib.Cond
+state_cookieÌ8ÎGst.ElementÖ0Ïuint32
+state_dirtyÌ8ÎGst.BinÖ0Ïbool
+state_lockÌ8ÎGst.ElementÖ0Ïvoid
+static_capsÌ8ÎGst.StaticPadTemplateÖ0ÏGst.StaticCaps
+statsÌ8ÎGst.ClockÖ0Ïbool
+statusÌ8ÎGst.ClockEntryÖ0ÏGst.ClockReturn
+stealÌ128Í()ÎGst.BufferListIteratorÖ0Ïpublic unowned
+steal_structureÌ128Í(uint index)ÎGst.CapsÖ0Ïpublic unowned
+stopÌ8ÎGst.SegmentÖ0Ïint64
+stopÌ128Í()ÎGst.TaskÖ0Ïpublic bool
+stop_taskÌ128Í()ÎGst.PadÖ0Ïpublic bool
+strÌ8ÎGst.StaticCapsÖ0
+str_fourccÌ128Í(string str)ÎGst.ValueÖ0
+stream_error_quarkÌ128Í()ÎGstÖ0Ïpublic GLib.Quark
+stream_lockÌ128Í()ÎGst.PadÖ0Ïpublic void
+stream_unlockÌ128Í()ÎGst.PadÖ0Ïpublic void
+structureÌ8ÎGst.QueryÖ0ÏGst.Structure
+subtractÌ128Í(Gst.Caps subtrahend)ÎGst.CapsÖ0Ïpublic Gst.Caps
+subtractÌ128Í(Gst.Value dest, Gst.Value minuend, Gst.Value subtrahend)ÎGst.ValueÖ0Ïpublic bool
+successfulÌ4ÎGst.PadLinkReturnÖ0
+suggestÌ128Í(uint probability, Gst.Caps caps)ÎGst.TypeFindÖ0Ïpublic void
+suggest_simpleÌ128Í(uint probability, string media_type, string fieldname)ÎGst.TypeFindÖ0Ïpublic void
+supportedÌ128Í(GLib.Type iface_type)ÎGst.ImplementsInterfaceÖ0Ïpublic abstract bool
+sync_messageÌ128Í(Gst.Message message)ÎGst.BusÖ0Ïpublic virtual signal void
+sync_signal_handlerÌ128Í(Gst.Bus bus, Gst.Message message)ÎGst.BusÖ0Ïpublic Gst.BusSyncReply
+sync_state_with_parentÌ128Í()ÎGst.ElementÖ0Ïpublic bool
+tag_existsÌ128Í(string tag)ÎGstÖ0Ïpublic bool
+tag_get_descriptionÌ128Í(string tag)ÎGstÖ0Ïpublic unowned string
+tag_get_flagÌ128Í(string tag)ÎGstÖ0Ïpublic Gst.TagFlag
+tag_get_nickÌ128Í(string tag)ÎGstÖ0Ïpublic unowned string
+tag_get_typeÌ128Í(string tag)ÎGstÖ0Ïpublic GLib.Type
+tag_is_fixedÌ128Í(string tag)ÎGstÖ0Ïpublic bool
+tag_merge_strings_with_commaÌ128Í(Gst.Value dest, Gst.Value src)ÎGstÖ0Ïpublic void
+tag_merge_use_firstÌ128Í(Gst.Value dest, Gst.Value src)ÎGstÖ0Ïpublic void
+tag_registerÌ128Í(string name, Gst.TagFlag flag, GLib.Type type, string nick, string blurb, Gst.TagMergeFunc func)ÎGstÖ0Ïpublic void
+takeÌ128Í(owned Gst.Buffer buffer)ÎGst.BufferListIteratorÖ0Ïpublic void
+take_bufferÌ128Í(Gst.Buffer b)ÎGst.ValueÖ0Ïpublic void
+target_stateÌ8ÎGst.ElementÖ0ÏGst.State
+templateÌ8ÎGst.PadÖ0ÏGst.PadTemplate
+text_flushÌ128Í()ÎGst.TraceÖ0Ïpublic void
+timeÌ8ÎGst.ClockEntryÖ0ÏGst.ClockTime
+timeÌ8ÎGst.SegmentÖ0Ïint64
+time_indexÌ8ÎGst.ClockÖ0Ïint
+timed_popÌ128Í(Gst.ClockTime timeout)ÎGst.BusÖ0Ïpublic Gst.Message?
+timed_pop_filteredÌ128Í(Gst.ClockTime timeout, Gst.MessageType types)ÎGst.BusÖ0Ïpublic Gst.Message?
+timeoutÌ8ÎGst.ClockÖ0Ïuint64
+timesÌ8ÎGst.ClockÖ0ÏGst.ClockTime
+timestampÌ8ÎGst.BufferÖ0ÏGst.ClockTime
+timestampÌ8ÎGst.EventÖ0Ïuint64
+timestampÌ8ÎGst.MessageÖ0Ïuint64
+timestampÌ8ÎGst.TraceEntryÖ0Ïint64
+timestamp_is_validÌ128Í()ÎGst.BufferÖ0Ïpublic bool
+to_positionÌ128Í(Gst.Format format, int64 running_time)ÎGst.SegmentÖ0Ïpublic int64
+to_quarkÌ4ÎGst.EventTypeÖ0
+to_quarkÌ4ÎGst.FormatÖ0
+to_quarkÌ4ÎGst.MessageTypeÖ0
+to_quarkÌ4ÎGst.QueryTypeÖ0
+to_running_timeÌ128Í(Gst.Format format, int64 position)ÎGst.SegmentÖ0Ïpublic int64
+to_stream_timeÌ128Í(Gst.Format format, int64 position)ÎGst.SegmentÖ0Ïpublic int64
+to_stringÌ128Í()ÎGst.CapsÖ0
+to_stringÌ4ÎGst.DebugLevelÖ0
+to_stringÌ4ÎGst.EventTypeÖ0
+to_stringÌ4ÎGst.FlowReturnÖ0
+to_stringÌ4ÎGst.FormatÖ0
+to_stringÌ4ÎGst.MessageTypeÖ0
+to_stringÌ4ÎGst.QueryTypeÖ0
+to_stringÌ4ÎGst.StateÖ0
+to_stringÌ4ÎGst.StateChangeReturnÖ0
+to_stringÌ128Í()ÎGst.StructureÖ0
+topelementsÌ8ÎGst.XMLÖ0ÏGLib.List
+transitionÌ4ÎGst.StateChangeÖ0
+transition_currentÌ4ÎGst.StateChangeÖ0
+transition_nextÌ4ÎGst.StateChangeÖ0
+truncateÌ128Í()ÎGst.CapsÖ0Ïpublic void
+try_new_and_allocÌ128Í(uint size)ÎGst.BufferÖ0Ïpublic Gst.Buffer?
+typeÌ8ÎGst.ClockEntryÖ0ÏGst.ClockEntryType
+typeÌ8ÎGst.EventÖ0ÏGst.EventType
+typeÌ8ÎGst.IndexEntryÖ0ÏGst.IndexEntryType
+typeÌ8ÎGst.IndexFactoryÖ0ÏGLib.Type
+typeÌ8ÎGst.IteratorÖ0ÏGLib.Type
+typeÌ8ÎGst.MessageÖ0ÏGst.MessageType
+typeÌ8ÎGst.QueryÖ0ÏGst.QueryType
+typeÌ8ÎGst.TypeNameDataÖ0ÏGLib.Type
+typeÌ8ÎGst.ValueTableÖ0ÏGLib.Type
+type_get_flagsÌ128Í(Gst.EventType type)ÎGst.EventÖ0Ïpublic Gst.EventTypeFlags
+type_get_nameÌ128Í(Gst.EventType type)ÎGst.EventÖ0Ïpublic unowned string
+type_name_filterÌ128Í(Gst.PluginFeature feature, Gst.TypeNameData data)ÎGst.PluginFeatureÖ0Ïpublic bool
+type_to_quarkÌ128Í(Gst.EventType type)ÎGst.EventÖ0Ïpublic GLib.Quark
+type_to_quarkÌ128Í(Gst.MessageType type)ÎGst.MessageÖ0Ïpublic GLib.Quark
+types_containsÌ128Í(Gst.QueryType types, Gst.QueryType type)ÎGst.QueryÖ0Ïpublic bool
+unadjust_unlockedÌ128Í(Gst.ClockTime external)ÎGst.ClockÖ0Ïpublic Gst.ClockTime
+unionÌ128Í(Gst.Caps caps2)ÎGst.CapsÖ0Ïpublic Gst.Caps
+unionÌ128Í(Gst.Value dest, Gst.Value value1, Gst.Value value2)ÎGst.ValueÖ0Ïpublic bool
+unlinkÌ128Í(Gst.Element dest)ÎGst.ElementÖ0Ïpublic void
+unlinkÌ128Í(Gst.Pad sinkpad)ÎGst.PadÖ0Ïpublic bool
+unlink_manyÌ128Í(Gst.Element element_2, ...)ÎGst.ElementÖ0Ïpublic void
+unlink_padsÌ128Í(string srcpadname, Gst.Element dest, string destpadname)ÎGst.ElementÖ0Ïpublic void
+unlinkedÌ128Í(Gst.Pad peer)ÎGst.PadÖ0Ïpublic virtual signal void
+unlinkfuncÌ8ÎGst.PadÖ0ÏGst.PadUnlinkFunction
+unownedÌ4ÎGst.DebugLevelÖ0
+unownedÌ4ÎGst.EventTypeÖ0
+unownedÌ4ÎGst.FlowReturnÖ0
+unownedÌ4ÎGst.FormatÖ0
+unownedÌ4ÎGst.MessageTypeÖ0
+unownedÌ4ÎGst.QueryTypeÖ0
+unownedÌ4ÎGst.StateÖ0
+unownedÌ4ÎGst.StateChangeReturnÖ0
+unparentÌ128Í()ÎGst.ObjectÖ0Ïpublic void
+unrefÌ128Í()ÎGst.BufferÖ0Ïpublic void
+unrefÌ128Í()ÎGst.BufferListÖ0Ïpublic void
+unrefÌ128Í()ÎGst.CapsÖ0Ïpublic void
+unrefÌ128Í()ÎGst.EventÖ0Ïpublic void
+unrefÌ128Í()ÎGst.MessageÖ0Ïpublic void
+unrefÌ128Í()ÎGst.MiniObjectÖ0Ïpublic void
+unrefÌ128Í()ÎGst.ObjectÖ0Ïpublic void
+unrefÌ128Í()ÎGst.QueryÖ0Ïpublic void
+unscheduleÌ128Í(Gst.ClockEntry entry)ÎGst.ClockÖ0Ïpublic virtual void
+unscheduleÌ128Í()ÎGst.ClockIDÖ0Ïpublic void
+update_registryÌ128Í()ÎGstÖ0Ïpublic bool
+uri_constructÌ128Í(string protocol, string location)ÎGstÖ0Ïpublic unowned string
+uri_get_locationÌ128Í(string uri)ÎGstÖ0Ïpublic unowned string
+uri_get_protocolÌ128Í(string uri)ÎGstÖ0Ïpublic unowned string
+uri_has_protocolÌ128Í(string uri, string protocol)ÎGstÖ0Ïpublic bool
+uri_is_validÌ128Í(string uri)ÎGstÖ0Ïpublic bool
+uri_protocol_is_supportedÌ128Í(Gst.URIType type, string protocol)ÎGstÖ0Ïpublic bool
+uri_protocol_is_validÌ128Í(string protocol)ÎGstÖ0Ïpublic bool
+use_clockÌ128Í(Gst.Clock? clock)ÎGst.PipelineÖ0Ïpublic void
+use_fixed_capsÌ128Í()ÎGst.PadÖ0Ïpublic void
+user_dataÌ8ÎGst.ClockEntryÖ0Ïvoid
+user_dataÌ8ÎGst.TypeFindFactoryÖ0Ïvoid
+user_data_notifyÌ8ÎGst.TypeFindFactoryÖ0ÏGLib.DestroyNotify
+util_array_binary_searchÌ128Í(void* array, uint num_elements, size_t element_size, GLib.CompareDataFunc search_func, Gst.SearchMode mode, void* search_data)ÎGstÖ0Ïpublic void *
+util_double_to_fractionÌ128Í(double src, int dest_n, int dest_d)ÎGstÖ0Ïpublic void
+util_dump_memÌ128Í(uchar[] mem, uint size)ÎGstÖ0Ïpublic void
+util_fraction_addÌ128Í(int a_n, int a_d, int b_n, int b_d, int res_n, int res_d)ÎGstÖ0Ïpublic bool
+util_fraction_multiplyÌ128Í(int a_n, int a_d, int b_n, int b_d, int res_n, int res_d)ÎGstÖ0Ïpublic bool
+util_fraction_to_doubleÌ128Í(int src_n, int src_d, double dest)ÎGstÖ0Ïpublic void
+util_gdouble_to_guint64Ì128Í(double value)ÎGstÖ0Ïpublic uint64
+util_get_timestampÌ128Í()ÎGstÖ0Ïpublic Gst.ClockTime
+util_greatest_common_divisorÌ128Í(int a, int b)ÎGstÖ0Ïpublic int
+util_guint64_to_gdoubleÌ128Í(uint64 value)ÎGstÖ0Ïpublic double
+util_seqnum_compareÌ128Í(uint32 s1, uint32 s2)ÎGstÖ0Ïpublic int32
+util_seqnum_nextÌ128Í()ÎGstÖ0Ïpublic uint32
+util_set_object_argÌ128Í(GLib.Object object, string name, string value)ÎGstÖ0Ïpublic void
+util_set_value_from_stringÌ128Í(Gst.Value value, string value_str)ÎGstÖ0Ïpublic void
+util_uint64_scaleÌ128Í(uint64 val, uint64 num, uint64 denom)ÎGstÖ0Ïpublic uint64
+util_uint64_scale_ceilÌ128Í(uint64 val, uint64 num, uint64 denom)ÎGstÖ0Ïpublic uint64
+util_uint64_scale_intÌ128Í(uint64 val, int num, int denom)ÎGstÖ0Ïpublic uint64
+util_uint64_scale_int_ceilÌ128Í(uint64 val, int num, int denom)ÎGstÖ0Ïpublic uint64
+util_uint64_scale_int_roundÌ128Í(uint64 val, int num, int denom)ÎGstÖ0Ïpublic uint64
+util_uint64_scale_roundÌ128Í(uint64 val, uint64 num, uint64 denom)ÎGstÖ0Ïpublic uint64
+valueÌ8ÎGst.FormatDefinitionÖ0ÏGst.Format
+valueÌ8ÎGst.IndexAssociationÖ0Ïint64
+valueÌ8ÎGst.QueryTypeDefinitionÖ0ÏGst.QueryType
+value_dup_mini_objectÌ128Í(Gst.Value value)ÎGstÖ0Ïpublic unowned
+versionÌ128Í(out uint major, out uint minor, out uint micro, out uint nano)ÎGstÖ0Ïpublic void
+versionÌ8ÎGst.PluginDescÖ0
+version_stringÌ128Í()ÎGstÖ0
+waitÌ128Í(Gst.ClockEntry entry)ÎGst.ClockÖ0Ïpublic virtual Gst.ClockReturn
+waitÌ128Í(Gst.ClockTimeDiff jitter)ÎGst.ClockIDÖ0Ïpublic Gst.ClockReturn
+waitÌ128Í(Gst.ClockTime timeout)ÎGst.PollÖ0Ïpublic int
+wait_asyncÌ128Í(Gst.ClockEntry entry)ÎGst.ClockÖ0Ïpublic virtual Gst.ClockReturn
+wait_asyncÌ128Í(Gst.ClockCallback func)ÎGst.ClockIDÖ0Ïpublic Gst.ClockReturn
+wait_async_fullÌ128Í(Gst.ClockCallback func, GLib.DestroyNotify destroy_data)ÎGst.ClockIDÖ0Ïpublic Gst.ClockReturn
+wait_jitterÌ128Í(Gst.ClockEntry entry, out Gst.ClockTimeDiff jitter)ÎGst.ClockÖ0Ïpublic virtual Gst.ClockReturn
+warningÌ128Í(string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+warning_objectÌ128Í(GLib.Object obj, string format, ...)ÎGst.DebugCategoryÖ0Ïpublic void
+window_sizeÌ8ÎGst.ClockÖ0Ïint
+window_thresholdÌ8ÎGst.ClockÖ0Ïint
+writeÌ128Í(Gst.Element element)ÎGst.XMLÖ0Ïpublic void *
+write_controlÌ128Í()ÎGst.PollÖ0Ïpublic bool
+write_fileÌ128Í(Gst.Element element, GLib.FileStream @out)ÎGst.XMLÖ0Ïpublic int
+xml_read_cacheÌ128Í(string location)ÎGst.RegistryÖ0Ïpublic bool
+xml_write_cacheÌ128Í(string location)ÎGst.RegistryÖ0Ïpublic bool

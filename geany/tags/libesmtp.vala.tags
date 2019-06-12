@@ -1,0 +1,166 @@
+# format=tagmanager
+@7BITÃ4ŒSmtp.E8BitMimeBody÷0
+@8BITMIMEÃ4ŒSmtp.E8BitMimeBody÷0
+@8bitmime_set_bodyÃ128Õ(E8BitMimeBody body)ŒSmtp.Message÷0œpublic int
+AUTH_PASSÃ8ŒSmtp÷0
+AUTH_PLUGIN_ANONYMOUSÃ8ŒSmtp÷0
+AUTH_PLUGIN_EXTERNALÃ8ŒSmtp÷0
+AUTH_PLUGIN_PLAINÃ8ŒSmtp÷0
+AUTH_REALMÃ8ŒSmtp÷0
+AUTH_USERÃ8ŒSmtp÷0
+AuthClientRequestÃ2048ŒSmtp÷0
+AuthContextÃ2048ŒSmtp÷0
+AuthInteractÃ128Õ(AuthClientRequest request, out string result, int fields)ŒSmtp÷0œpublic delegate int
+AuthRecodeÃ128Õ(void *ctx, out string dstbuf, out int dstlen, string srcbuf, int srclen)ŒSmtp÷0œpublic delegate int
+AuthResponseÃ128Õ(void *ctx, string challenge, int len, AuthInteract interact)ŒSmtp÷0
+BINARYMIMEÃ4ŒSmtp.E8BitMimeBody÷0
+ByModeÃ2ŒSmtp÷0
+CB_HEADERSÃ8ŒSmtp÷0
+CB_READINGÃ8ŒSmtp÷0
+CB_WRITINGÃ8ŒSmtp÷0
+DELAYÃ4ŒSmtp.NotifyFlags÷0
+DISABLEDÃ4ŒSmtp.StartTlsOption÷0
+E8BitMimeBodyÃ2ŒSmtp÷0
+ENABLEDÃ4ŒSmtp.StartTlsOption÷0
+ERR_CLIENT_ERRORÃ8ŒSmtp÷0
+ERR_DROPPED_CONNECTIONÃ8ŒSmtp÷0
+ERR_EAI_ADDRFAMILYÃ8ŒSmtp÷0
+ERR_EAI_AGAINÃ8ŒSmtp÷0
+ERR_EAI_BADFLAGSÃ8ŒSmtp÷0
+ERR_EAI_FAILÃ8ŒSmtp÷0
+ERR_EAI_FAMILYÃ8ŒSmtp÷0
+ERR_EAI_MEMORYÃ8ŒSmtp÷0
+ERR_EAI_NODATAÃ8ŒSmtp÷0
+ERR_EAI_NONAMEÃ8ŒSmtp÷0
+ERR_EAI_SERVICEÃ8ŒSmtp÷0
+ERR_EAI_SOCKTYPEÃ8ŒSmtp÷0
+ERR_EXTENSION_NOT_AVAILABLEÃ8ŒSmtp÷0
+ERR_HOST_NOT_FOUNDÃ8ŒSmtp÷0
+ERR_INVALÃ8ŒSmtp÷0
+ERR_INVALID_RESPONSE_STATUSÃ8ŒSmtp÷0
+ERR_INVALID_RESPONSE_SYNTAXÃ8ŒSmtp÷0
+ERR_NOTHING_TO_DOÃ8ŒSmtp÷0
+ERR_NO_ADDRESSÃ8ŒSmtp÷0
+ERR_NO_RECOVERYÃ8ŒSmtp÷0
+ERR_STATUS_MISMATCHÃ8ŒSmtp÷0
+ERR_TRY_AGAINÃ8ŒSmtp÷0
+ERR_UNTERMINATED_RESPONSEÃ8ŒSmtp÷0
+EV_CONNECTÃ8ŒSmtp÷0
+EV_DELIVERBY_EXPIREDÃ8ŒSmtp÷0
+EV_DISCONNECTÃ8ŒSmtp÷0
+EV_ETRNSTATUSÃ8ŒSmtp÷0
+EV_EXTNA_8BITMIMEÃ8ŒSmtp÷0
+EV_EXTNA_BINARYMIMEÃ8ŒSmtp÷0
+EV_EXTNA_CHUNKINGÃ8ŒSmtp÷0
+EV_EXTNA_DSNÃ8ŒSmtp÷0
+EV_EXTNA_ETRNÃ8ŒSmtp÷0
+EV_EXTNA_STARTTLSÃ8ŒSmtp÷0
+EV_INVALID_PEER_CERTIFICATEÃ8ŒSmtp÷0
+EV_MAILSTATUSÃ8ŒSmtp÷0
+EV_MESSAGEDATAÃ8ŒSmtp÷0
+EV_MESSAGESENTÃ8ŒSmtp÷0
+EV_NO_CLIENT_CERTIFICATEÃ8ŒSmtp÷0
+EV_NO_PEER_CERTIFICATEÃ8ŒSmtp÷0
+EV_RCPTSTATUSÃ8ŒSmtp÷0
+EV_STARTTLS_OKÃ8ŒSmtp÷0
+EV_UNUSABLE_CA_LISTÃ8ŒSmtp÷0
+EV_UNUSABLE_CLIENT_CERTIFICATEÃ8ŒSmtp÷0
+EV_WEAK_CIPHERÃ8ŒSmtp÷0
+EV_WRONG_PEER_CERTIFICATEÃ8ŒSmtp÷0
+EnumerateMessageCbÃ128Õ(Smtp.Message message)ŒSmtp÷0œpublic delegate void
+EnumerateRecipientCbÃ128Õ(Smtp.Recipient recipient, string mailbox)ŒSmtp÷0œpublic delegate void
+EtrnEnumerateNodeCbÃ128Õ(Smtp.EtrnNode node, int option, string domain)ŒSmtp÷0œpublic delegate void
+EtrnNodeÃ2048ŒSmtp÷0
+EventCbÃ128Õ(Smtp.Session session, int event_no, ...)ŒSmtp÷0œpublic delegate void
+FAILUREÃ4ŒSmtp.NotifyFlags÷0
+FULLÃ4ŒSmtp.RetFlags÷0
+HDRSÃ4ŒSmtp.RetFlags÷0
+HeaderOptionÃ2ŒSmtp÷0
+MessageÃ2048ŒSmtp÷0
+MessageCbÃ128Õ(out string buf, out int len)ŒSmtp÷0œpublic delegate unowned string
+MonitorCbÃ128Õ(string buf, int buflen, int writing)ŒSmtp÷0œpublic delegate void
+NEVERÃ4ŒSmtp.NotifyFlags÷0
+NOTIFYÃ4ŒSmtp.ByMode÷0
+NOTSETÃ4ŒSmtp.ByMode÷0
+NOTSETÃ4ŒSmtp.E8BitMimeBody÷0
+NOTSETÃ4ŒSmtp.NotifyFlags÷0
+NOTSETÃ4ŒSmtp.RetFlags÷0
+NotifyFlagsÃ2ŒSmtp÷0
+OVERRIDEÃ4ŒSmtp.HeaderOption÷0
+PROHIBITÃ4ŒSmtp.HeaderOption÷0
+REQUIREDÃ4ŒSmtp.StartTlsOption÷0
+RETURNÃ4ŒSmtp.ByMode÷0
+RecipientÃ2048ŒSmtp÷0
+RetFlagsÃ2ŒSmtp÷0
+SUCCESSÃ4ŒSmtp.NotifyFlags÷0
+SessionÃ2048ŒSmtp÷0
+SessionÃ128Õ()ŒSmtp.Session÷0
+SmtpÃ256÷0
+StartTlsOptionÃ2ŒSmtp÷0
+StartTlsPasswordCbÃ128Õ(string buf, int buflen, int rwflag)ŒSmtp÷0œpublic delegate int
+StatusÃ2048ŒSmtp÷0
+TIMEOUT_OVERRIDE_RFC2822_MINIMUMÃ8ŒSmtp÷0œlong
+add_messageÃ128Õ()ŒSmtp.Session÷0œpublic Smtp.Message
+add_recipientÃ128Õ(string mailbox)ŒSmtp.Message÷0œpublic Smtp.Recipient
+auth_client_exitÃ128Õ()ŒSmtp÷0œpublic void
+auth_client_initÃ128Õ()ŒSmtp÷0œpublic void
+auth_create_contextÃ128Õ()ŒSmtp÷0œpublic AuthContext
+auth_decodeÃ128Õ(out string dstbuf, out int dstlen, string srcbuf, int srclen, void *arg)ŒSmtp÷0œpublic void
+auth_encodeÃ128Õ(out string dstbuf, out int dstlen, string srcbuf, int srclen, void *arg)ŒSmtp÷0œpublic void
+auth_set_contextÃ128Õ(Smtp.AuthContext context)ŒSmtp.Session÷0œpublic int
+check_completeÃ128Õ()ŒSmtp.Recipient÷0œpublic int
+client_enabledÃ128Õ()ŒSmtp.AuthContext÷0œpublic int
+codeÃ8ŒSmtp.Status÷0œint
+deliverby_set_modeÃ128Õ(long time, ByMode mode, int trace)ŒSmtp.Message÷0œpublic int
+dsn_set_envidÃ128Õ(string envid)ŒSmtp.Message÷0œpublic int
+dsn_set_notifyÃ128Õ(NotifyFlags flags)ŒSmtp.Message÷0œpublic int
+dsn_set_orcptÃ128Õ(string address_type, string address)ŒSmtp.Message÷0œpublic int
+dsn_set_retÃ128Õ(Smtp.RetFlags flags)ŒSmtp.Message÷0œpublic int
+enh_detailÃ8ŒSmtp.Status÷0œint
+enh_structÃ8ŒSmtp.Status÷0œint
+enh_subjectÃ8ŒSmtp.Status÷0œint
+enumerate_messageÃ128Õ(EnumerateMessageCb cb)ŒSmtp.Session÷0œpublic int
+enumerate_recipientsÃ128Õ(EnumerateRecipientCb cb)ŒSmtp.Message÷0œpublic int
+errnoÃ128Õ()ŒSmtp÷0œpublic int
+etrn_add_nodeÃ128Õ(int option, string node)ŒSmtp.Session÷0œpublic EtrnNode
+etrn_enumerate_nodesÃ128Õ(EtrnEnumerateNodeCb cb)ŒSmtp.Session÷0œpublic int
+flagsÃ8ŒSmtp.AuthClientRequest÷0
+get_application_dataÃ128Õ()ŒSmtp.EtrnNode÷0œpublic void *
+get_application_dataÃ128Õ()ŒSmtp.Recipient÷0œpublic void
+get_application_dataÃ128Õ()ŒSmtp.Session÷0œpublic void *
+get_ssfÃ128Õ()ŒSmtp.AuthContext÷0œpublic int
+mechanism_nameÃ128Õ()ŒSmtp.AuthContext÷0
+nameÃ8ŒSmtp.AuthClientRequest÷0
+node_statusÃ128Õ()ŒSmtp.EtrnNode÷0œpublic Smtp.Status
+option_require_all_recipientsÃ128Õ(int state)ŒSmtp.Session÷0œpublic int
+promptÃ8ŒSmtp.AuthClientRequest÷0
+reset_statusÃ128Õ(Smtp.Recipient recipient)ŒSmtp.Message÷0œpublic int
+reset_statusÃ128Õ()ŒSmtp.Recipient÷0œpublic int
+responseÃ128Õ(string challenge, int len)ŒSmtp.AuthContext÷0
+reverse_path_statusÃ128Õ()ŒSmtp.Message÷0œpublic Smtp.Status
+set_application_dataÃ128Õ(void *data)ŒSmtp.EtrnNode÷0œpublic void *
+set_application_dataÃ128Õ(void *data)ŒSmtp.Recipient÷0œpublic void
+set_application_dataÃ128Õ(void *data)ŒSmtp.Session÷0œpublic void *
+set_eventcbÃ128Õ(EventCb cb)ŒSmtp.Session÷0œpublic int
+set_external_idÃ128Õ(string identity)ŒSmtp.AuthContext÷0œpublic int
+set_headerÃ128Õ(string header, ...)ŒSmtp.Message÷0œpublic int
+set_header_optionÃ128Õ(string header, Smtp.HeaderOption option, ...)ŒSmtp.Message÷0œpublic int
+set_hostnameÃ128Õ(string hostname)ŒSmtp.Session÷0œpublic int
+set_interact_cbÃ128Õ(AuthInteract interact)ŒSmtp.AuthContext÷0œpublic int
+set_mechanismÃ128Õ(string name)ŒSmtp.AuthContext÷0œpublic int
+set_mechanism_flagsÃ128Õ(uint @set, uint clear)ŒSmtp.AuthContext÷0œpublic int
+set_mechanism_ssfÃ128Õ(int min_ssf)ŒSmtp.AuthContext÷0œpublic int
+set_messagecbÃ128Õ(MessageCb cb)ŒSmtp.Message÷0œpublic int
+set_monitorcbÃ128Õ(MonitorCb cb, int headers)ŒSmtp.Session÷0œpublic int
+set_resent_headersÃ128Õ(int onoff)ŒSmtp.Message÷0œpublic int
+set_reverse_pathÃ128Õ(string mailbox)ŒSmtp.Message÷0œpublic int
+set_serverÃ128Õ(string hostport)ŒSmtp.Session÷0œpublic int
+set_timeoutÃ128Õ(int which, long value)ŒSmtp.Session÷0œpublic long
+sizeÃ8ŒSmtp.AuthClientRequest÷0
+smtp_size_set_estimateÃ128Õ(ulong size)ŒSmtp.Message÷0œpublic int
+start_sessionÃ128Õ()ŒSmtp.Session÷0œpublic int
+starttls_enableÃ128Õ(StartTlsOption how)ŒSmtp.Message÷0œpublic int
+strerrorÃ128Õ(int error, string buf, string buflen)ŒSmtp÷0
+textÃ8ŒSmtp.Status÷0
+transfer_statusÃ128Õ()ŒSmtp.Message÷0œpublic Smtp.Status
+versionÃ128Õ(string buf, string buf_len, int what)ŒSmtp÷0œpublic int

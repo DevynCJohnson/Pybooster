@@ -1,0 +1,42 @@
+# format=tagmanager
+InitFlagsÃ2ŒSDLImage÷0
+JPGÃ4ŒSDLImage.InitFlags÷0
+PNGÃ4ŒSDLImage.InitFlags÷0
+SDLImageÃ256÷0
+TIFÃ4ŒSDLImage.InitFlags÷0
+get_errorÃ128Õ()ŒSDLImage÷0œpublic unowned string
+initÃ128Õ(int flags)ŒSDLImage÷0œpublic int
+is_bmpÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_curÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_gifÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_icoÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_jpgÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_lbmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_pcxÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_pngÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_pnmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_tifÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_xcfÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_xpmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+is_xvÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic bool
+linkedÃ128Õ()ŒSDLImage÷0œpublic unowned
+loadÃ128Õ(string file)ŒSDLImage÷0œpublic SDL.Surface?
+load_bmpÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_curÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_gifÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_icoÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_jpgÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_lbmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_pcxÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_pngÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_pnmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_rwÃ128Õ(SDL.RWops src, bool freesrc = false)ŒSDLImage÷0œpublic SDL.Surface?
+load_rw_typedÃ128Õ(SDL.RWops src, bool freesrc = false, string type)ŒSDLImage÷0œpublic SDL.Surface?
+load_tgaÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_tifÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_xcfÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_xpmÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+load_xvÃ128Õ(SDL.RWops src)ŒSDLImage÷0œpublic SDL.Surface?
+quitÃ128Õ()ŒSDLImage÷0œpublic void
+read_xpmÃ128Õ(char** xpmdata)ŒSDLImage÷0œpublic SDL.Surface?
+set_errorÃ128Õ(string format, ...)ŒSDLImage÷0œpublic void
