@@ -242,17 +242,17 @@ finddir() {
     fi
 }
 
-#' Find a directory with the given name (with regex); searches from / if no directory is specified
+#' Find a directory with the given name (with regex); searches from CWD if no directory is specified
 finddirx() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
-        printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n' >&2
+        printf 'Find a directory with the given name (with regex); searches from CWD if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
-        printf 'Find a directory with the given name (with regex); searches from / if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n'
+        printf 'Find a directory with the given name (with regex); searches from CWD if no directory is specified\nUsage: finddirx DIR_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
         find "$2" -type d -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type d -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find . -type d -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
@@ -270,17 +270,17 @@ findfile() {
     fi
 }
 
-#' Find a file with the given name (with regex); searches from / if no directory is specified
+#' Find a file with the given name (with regex); searches from CWD if no directory is specified
 findfilex() {
     if [ -z "${1:-}" ]; then
         printf 'ERROR: A parameter is required!\n' >&2
-        printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n' >&2
+        printf 'Find a file with the given name (with regex); searches from CWD if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n' >&2
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "-?" ]; then
-        printf 'Find a file with the given name (with regex); searches from / if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n'
+        printf 'Find a file with the given name (with regex); searches from CWD if no directory is specified\nUsage: findfilex FILE_NAME [LOOK_IN_DIR]\n'
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
         find "$2" -type f -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     else
-        find / -type f -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
+        find . -type f -regextype awk -regex ".*/${1}|${1}" -exec printf '%s\n' '{}' + 2> /dev/null
     fi
 }
 
