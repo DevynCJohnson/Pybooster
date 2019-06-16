@@ -1,7 +1,7 @@
 # Dockerfile
 # -*- coding: utf-8-unix; indent-tabs-mode: t; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 fileformat=unix tabstop=4 expandtab :
-# kate: encoding utf-8; bom off; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+# kate: encoding utf-8; bom off; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
 
 
 FROM IMAGENAME:IMAGETAG

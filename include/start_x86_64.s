@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix; Mode: Asm; indent-tabs-mode: nil; tab-width: 4 -*- */
 /* vim: set fileencoding=utf-8 filetype=asm syntax=asm asmsyntax=gas fileformat=unix tabstop=4 : */
-/* kate: encoding utf-8; bom off; syntax gas; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on; */
+/* kate: encoding utf-8; bom off; syntax gas; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on; */
 
 .globl _start
 

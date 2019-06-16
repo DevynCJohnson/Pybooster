@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # -*- coding: utf-8-unix; Mode: R; indent-tabs-mode: nil; tab-width: 2 -*-
 # vim: set fileencoding=utf-8 filetype=r syn=r.doxygen fileformat=unix tabstop=2 expandtab :
-# kate: encoding utf-8; bom off; syntax r; indent-mode normal; eol unix; replace-tabs on; indent-width 2; tab-width 2; remove-trailing-space on; line-numbers on;
+# kate: encoding utf-8; bom off; syntax r; indent-mode normal; eol unix; replace-tabs on; indent-width 2; tab-width 2; remove-trailing-space on;
 #' @brief Wrapper for the R-Compiler
 #' @file RCompiler.R
 #' @version 2019.03.28

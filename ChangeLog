@@ -1,3 +1,11 @@
+2019-06-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* .gitignore:  Added `.geanywb`
+	* filetypes.c:  Added the `ScintillaObject` datatype
+	* Geany:  Improved the CSS appearance
+	* keybindings.conf:  Improved the keybinding configuration file
+	* PyBooster:  Removed ` line-numbers on;` from the magic-comment for Kate in all files
+
 2019-06-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* .gitignore:  Added `.isort.cfg`
