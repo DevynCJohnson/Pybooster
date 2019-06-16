@@ -24,7 +24,7 @@
 
 /* Search Entries */
 
-entry:focus,GtkEntry:focus{border-color:#77C;border-width:2px}
+entry:focus,GtkEntry:focus{border-color:#77C;border-width:2px;padding:0px 3px}
 #GeanyDialogSearch entry,#GeanyDialogSearch GtkEntry,#GeanyToolbar entry,#GeanyToolbar GtkEntry,#GotoEntry entry,#GotoEntry GtkEntry,#SearchEntry entry,#SearchEntry GtkEntry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:0px 4px}
 #GeanyDialogSearch entry,#GeanyDialogSearch GtkEntry,#SearchEntry entry,#SearchEntry GtkEntry{min-width:320px}
 #GotoEntry entry,#GotoEntry GtkEntry{min-width:64px}
@@ -42,6 +42,7 @@ GtkNotebook header tabs,notebook header tabs{background-image:linear-gradient(rg
 
 /* Miscellaneous Widgets */
 
-GtkMenuBar>GtkMenuItem>GtkLabel,menubar>menuitem>label{border-color:#EEE;border-style:solid;border-width:0px 2px}
-treeview>header>button,GtkTreeView>GtkHeader>GtkButton{border-color:#777;border-width:0px 2px;min-width:256px}
+#GeanyMenubar,#GeanyToolbar{background-image:linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%);}
+GtkMenuBar>GtkMenuItem>GtkLabel,menubar>menuitem>label{border-color:#777;border-style:solid;border-width:0px 2px}
+treeview>header>button,GtkTreeView>GtkHeader>GtkButton{border-color:#777;border-width:0px 2px;min-width:144px}
 MenuSeparator,separator{background-color:#111}
