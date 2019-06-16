@@ -69,6 +69,7 @@ var/
 .coverage.*
 .coveragerc
 *.geany
+*.geanywb
 .style.yapf
 
 # Revision Control Directories
