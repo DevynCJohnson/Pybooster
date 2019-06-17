@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Remove cache, logs, and other unneeded files
 #' @file cleansystem
-#' @version 2019.03.28
+#' @version 2019.06.17
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -242,7 +242,26 @@ fi
 
 # Fix Home Directory
 
-chown -R "$(whoami):$(whoami)" ~
+current_user="$(whoami)"
+if [ -n "${current_user:-}" ]; then
+    if [ "${current_user}" != 'root' ] && [ -d "/home/${current_user}" ]; then
+        chown -R "${current_user}:${current_user}" "/home/${current_user}"
+        chmod -R o-rwx "/home/${current_user}"
+        if [ -d "/home/${current_user}/Public" ]; then
+            chmod o+rwx "/home/${current_user}/Public"
+            find "/home/${current_user}/Public" -type d -exec chmod -R o+rwx "/home/${current_user}/Public"
+            find "/home/${current_user}/Public" -type f -exec chmod -R o+rw "/home/${current_user}/Public"
+        fi
+    elif [ "${current_user}" == 'root' ] && [ -d /root ]; then
+        chown -R root:root /root
+        chmod -R o-rwx /root
+        if [ -d /root/Public ]; then
+            chmod o+rwx /root/Public
+            find /root/Public -type d -exec chmod -R o+rwx /root/Public
+            find /root/Public -type f -exec chmod -R o+rw /root/Public
+        fi
+    fi
+fi
 
 
 # SYSTEM FILES #
@@ -348,8 +367,8 @@ if [ "$(id -u)" -eq 0 ]; then
     fi
     # System Fixes
     if [ "$apply_fixes" -eq 1 ]; then
-        [ -e /dev/rtc0 ] && chmod +r /dev/rtc0
-        [ -e /dev/uinput ] && chmod +r /dev/uinput
+        [ -e /dev/rtc0 ] && chmod a+r /dev/rtc0
+        [ -e /dev/uinput ] && chmod a+r /dev/uinput
     fi
     # Final Cleanup
     [ -x "$(command -v dmesg)" ] && dmesg -C
