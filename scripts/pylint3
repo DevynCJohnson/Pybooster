@@ -6,7 +6,7 @@
 """@brief Wrapper for Pylint3
 
 @file pylint3
-@version 2019.06.02
+@version 2019.06.20
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """
@@ -22,5 +22,5 @@ if __name__ == '__main__':
     argv[0] = sub(r'(-script\.pyw?|\.exe)?$', r'', argv[0])
     try:
         raise SystemExit(run_pylint())
-    except RecursionError:
+    except RuntimeError:
         raise SystemExit(1)
