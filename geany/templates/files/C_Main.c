@@ -6,7 +6,7 @@
 @file {filename}
 @version {date}
 @author {developer} <{mail}>
-@copyright GPLv3
+@copyright LGPLv3
 
 @section LICENSE
 GNU Lesser General Public License v3
