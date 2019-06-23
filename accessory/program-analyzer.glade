@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 
+<!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
 
@@ -12,7 +12,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Program-Analyzer is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -32,8 +32,6 @@ Author: Devyn Collier Johnson
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
   <object class="GtkTextBuffer" id="buf_dis_att"/>
-  <object class="GtkTextBuffer" id="buf_dis_bin"/>
-  <object class="GtkTextBuffer" id="buf_dis_hex"/>
   <object class="GtkTextBuffer" id="buf_dis_intel"/>
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
@@ -80,7 +78,7 @@ Author: Devyn Collier Johnson
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_File</property>
+                <property name="label" translatable="no">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="file_menu">
@@ -95,7 +93,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Open a binary file</property>
+                        <property name="tooltip_text" translatable="no">Open a binary file</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -109,7 +107,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Save</property>
+                        <property name="tooltip_text" translatable="no">Save</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -123,7 +121,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Select where to save the data</property>
+                        <property name="tooltip_text" translatable="no">Select where to save the data</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -143,13 +141,13 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Close the application</property>
+                        <property name="tooltip_text" translatable="no">Close the application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -176,7 +174,7 @@ Author: Devyn Collier Johnson
             <property name="enable_popup">True</property>
             <signal name="switch-page" handler="show_hide_save" swapped="no"/>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_prop">
+              <object class="GtkScrolledWindow" id="scrwin_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -202,15 +200,15 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">File properties &amp; information</property>
-                <property name="label" translatable="yes">File Properties</property>
+                <property name="tooltip_text" translatable="no">File properties &amp; information</property>
+                <property name="label" translatable="no">File Properties</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_sym_tbl">
+              <object class="GtkScrolledWindow" id="scrwin_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -237,9 +235,9 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the static symbol table
-objdump --special-syms --syms</property>
-                <property name="label" translatable="yes">Symbol Table</property>
+                <property name="tooltip_text" translatable="no">Display the static symbol table
+objdump --line-numbers --special-syms --syms</property>
+                <property name="label" translatable="no">Symbol Table</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -249,7 +247,7 @@ objdump --special-syms --syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_sym">
+              <object class="GtkScrolledWindow" id="scrwin_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -276,9 +274,9 @@ objdump --special-syms --syms</property>
               <object class="GtkLabel" id="tab_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the dynamic symbol table entries
-objdump --special-syms --dynamic-syms</property>
-                <property name="label" translatable="yes">Dynamic Symbols</property>
+                <property name="tooltip_text" translatable="no">Display the dynamic symbol table entries
+objdump --line-numbers --dynamic-syms --special-syms</property>
+                <property name="label" translatable="no">Dynamic Symbols</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -288,7 +286,7 @@ objdump --special-syms --dynamic-syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_nm_sym">
+              <object class="GtkScrolledWindow" id="scrwin_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -315,9 +313,9 @@ objdump --special-syms --dynamic-syms</property>
               <object class="GtkLabel" id="tab_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display symbols found by nm
-nm --dynamic --no-sort --special-syms --debug-syms</property>
-                <property name="label" translatable="yes">nm (Symbol List)</property>
+                <property name="tooltip_text" translatable="no">Display symbols found by nm
+nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic</property>
+                <property name="label" translatable="no">nm (Symbol List)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -327,7 +325,7 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_reloc">
+              <object class="GtkScrolledWindow" id="scrwin_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -354,9 +352,9 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
               <object class="GtkLabel" id="tab_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the dynamic relocation entries
-objdump --dynamic-reloc</property>
-                <property name="label" translatable="yes">Dynamic Relocation</property>
+                <property name="tooltip_text" translatable="no">Display the dynamic relocation entries
+objdump --dynamic-reloc --line-numbers</property>
+                <property name="label" translatable="no">Dynamic Relocation</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -366,7 +364,7 @@ objdump --dynamic-reloc</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis">
+              <object class="GtkScrolledWindow" id="scrwin_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -392,9 +390,9 @@ objdump --dynamic-reloc</property>
               <object class="GtkLabel" id="tab_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code
+                <property name="tooltip_text" translatable="no">Display the disassembled code
 ndisasm</property>
-                <property name="label" translatable="yes">Disassembly</property>
+                <property name="label" translatable="no">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -404,7 +402,7 @@ ndisasm</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_intel">
+              <object class="GtkScrolledWindow" id="scrwin_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -430,9 +428,9 @@ ndisasm</property>
               <object class="GtkLabel" id="tab_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code using Intel syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
-                <property name="label" translatable="yes">Disassembly (Intel)</property>
+                <property name="tooltip_text" translatable="no">Display the disassembled code using Intel syntax
+objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</property>
+                <property name="label" translatable="no">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -442,7 +440,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_att">
+              <object class="GtkScrolledWindow" id="scrwin_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -468,9 +466,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
               <object class="GtkLabel" id="tab_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
-                <property name="label" translatable="yes">Disassembly (AT&amp;T)</property>
+                <property name="tooltip_text" translatable="no">Display the disassembled code using AT&amp;T syntax
+objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</property>
+                <property name="label" translatable="no">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -480,96 +478,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_bin">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="double_buffered">False</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_bin">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="double_buffered">False</property>
-                    <property name="wrap_mode">char</property>
-                    <property name="justification">fill</property>
-                    <property name="left_margin">5</property>
-                    <property name="right_margin">5</property>
-                    <property name="buffer">buf_dis_bin</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="input_purpose">digits</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Binary)</property>
-                <property name="position">8</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_bin">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code as binary</property>
-                <property name="label" translatable="yes">Disassembly (Binary)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Binary)</property>
-                <property name="position">8</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_hex">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="double_buffered">False</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_hex">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="double_buffered">False</property>
-                    <property name="wrap_mode">word</property>
-                    <property name="justification">fill</property>
-                    <property name="left_margin">5</property>
-                    <property name="right_margin">5</property>
-                    <property name="buffer">buf_dis_hex</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Hexadecimal)</property>
-                <property name="position">9</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_hex">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code as hexadecimal</property>
-                <property name="label" translatable="yes">Disassembly (Hex)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Hexadecimal)</property>
-                <property name="position">9</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_readelf">
+              <object class="GtkScrolledWindow" id="scrwin_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -596,11 +505,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
               <object class="GtkLabel" id="tab_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display information returned by readelf
-file --preserve-date
-file --mime --preserve-date
-readelf --all --section-groups --unwind --arch-specific --histogram --wide</property>
-                <property name="label" translatable="yes">ReadElf</property>
+                <property name="tooltip_text" translatable="no">Display information returned by readelf
+readelf --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide</property>
+                <property name="label" translatable="no">ReadElf</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -610,7 +517,7 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_all_headers">
+              <object class="GtkScrolledWindow" id="scrwin_all_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -637,9 +544,9 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
               <object class="GtkLabel" id="tab_all_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display all file headers
-objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --wide</property>
-                <property name="label" translatable="yes">All Headers</property>
+                <property name="tooltip_text" translatable="no">Display all file headers
+objdump --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide</property>
+                <property name="label" translatable="no">All Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -649,7 +556,7 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_header">
+              <object class="GtkScrolledWindow" id="scrwin_header">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -676,9 +583,9 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
               <object class="GtkLabel" id="tab_header">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the file header
-objdump --file-headers</property>
-                <property name="label" translatable="yes">File Header</property>
+                <property name="tooltip_text" translatable="no">Display the file header
+objdump --file-headers --file-offsets</property>
+                <property name="label" translatable="no">File Header</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -688,7 +595,7 @@ objdump --file-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_priv_headers">
+              <object class="GtkScrolledWindow" id="scrwin_priv_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -715,9 +622,9 @@ objdump --file-headers</property>
               <object class="GtkLabel" id="tab_priv_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the private headers
-objdump --private-headers</property>
-                <property name="label" translatable="yes">Private Headers</property>
+                <property name="tooltip_text" translatable="no">Display the private headers
+objdump --file-offsets --private-headers</property>
+                <property name="label" translatable="no">Private Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -727,7 +634,7 @@ objdump --private-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_sec_headers">
+              <object class="GtkScrolledWindow" id="scrwin_sec_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -754,9 +661,9 @@ objdump --private-headers</property>
               <object class="GtkLabel" id="tab_sec_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the section headers
-objdump --section-headers</property>
-                <property name="label" translatable="yes">Section Headers</property>
+                <property name="tooltip_text" translatable="no">Display the section headers
+objdump --file-offsets --section-headers</property>
+                <property name="label" translatable="no">Section Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -766,7 +673,7 @@ objdump --section-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_size">
+              <object class="GtkScrolledWindow" id="scrwin_size">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -793,10 +700,10 @@ objdump --section-headers</property>
               <object class="GtkLabel" id="tab_size">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the results of size
+                <property name="tooltip_text" translatable="no">Display the results of size
 size --format=Berkeley
 size --format=SysV</property>
-                <property name="label" translatable="yes">Size</property>
+                <property name="label" translatable="no">Size</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -806,7 +713,7 @@ size --format=SysV</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_str">
+              <object class="GtkScrolledWindow" id="scrwin_str">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -833,9 +740,9 @@ size --format=SysV</property>
               <object class="GtkLabel" id="tab_str">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the contained strings
+                <property name="tooltip_text" translatable="no">Display the contained strings
 strings --all</property>
-                <property name="label" translatable="yes">Strings</property>
+                <property name="label" translatable="no">Strings</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -845,7 +752,7 @@ strings --all</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_func">
+              <object class="GtkScrolledWindow" id="scrwin_func">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -872,8 +779,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_func">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">List all of the found functions</property>
-                <property name="label" translatable="yes">Functions</property>
+                <property name="tooltip_text" translatable="no">List all of the found functions</property>
+                <property name="label" translatable="no">Functions</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -883,7 +790,7 @@ strings --all</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_const">
+              <object class="GtkScrolledWindow" id="scrwin_const">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -910,8 +817,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_const">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">List all of the found constants</property>
-                <property name="label" translatable="yes">Constants</property>
+                <property name="tooltip_text" translatable="no">List all of the found constants</property>
+                <property name="label" translatable="no">Constants</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -941,8 +848,8 @@ strings --all</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Program-Analyzer
-Version: 2019.03.28
+                        <property name="label" translatable="no">Program-Analyzer
+Version: 2019.06.23
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -959,7 +866,7 @@ Author: Devyn Collier Johnson
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
-                        <property name="label" translatable="yes">For more programs,
+                        <property name="label" translatable="no">For more programs,
 - Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
                         <property name="use_markup">True</property>
@@ -1014,8 +921,8 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Information about Program-Analyzer and GNU-binutils</property>
-                <property name="label" translatable="yes">About</property>
+                <property name="tooltip_text" translatable="no">Information about Program-Analyzer and GNU-binutils</property>
+                <property name="label" translatable="no">About</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -1045,13 +952,13 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="l_file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">File location (pathname)</property>
+                <property name="tooltip_text" translatable="no">File location (pathname)</property>
                 <property name="halign">start</property>
                 <property name="margin_left">5</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
-                <property name="label" translatable="yes">PathName</property>
+                <property name="label" translatable="no">PathName</property>
                 <property name="selectable">True</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
@@ -1067,7 +974,7 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Save the currently displayed data</property>
+                <property name="tooltip_text" translatable="no">Save the currently displayed data</property>
                 <property name="halign">center</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
@@ -1086,7 +993,7 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Exit Application</property>
+                <property name="tooltip_text" translatable="no">Exit Application</property>
                 <property name="halign">end</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>

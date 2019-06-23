@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable
 
 @file program-analyzer
-@version 2019.05.04
+@version 2019.06.20
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,6 @@ along with this software.
 # pylint: disable=C0103,R0912,R0915
 
 
-from binascii import hexlify
 from datetime import datetime
 from multiprocessing import cpu_count, Pool
 from os import R_OK, access as fileaccess, stat
@@ -43,9 +42,9 @@ from os.path import (
     split as pathsplit
 )
 from signal import SIGINT, SIG_DFL, signal
-from subprocess import getoutput  # nosec
+from subprocess import getoutput, getstatusoutput  # nosec
 from sys import argv, stderr
-from typing import Any, List, Tuple, Union
+from typing import Any, Callable, List, Tuple, Union
 
 from pybooster.filemagic import MIME_ENCODING, NONE_MAGIC
 from pybooster.fs import convumask
@@ -70,7 +69,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Program-Analyzer is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -90,8 +89,6 @@ Author: Devyn Collier Johnson
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
   <object class="GtkTextBuffer" id="buf_dis_att"/>
-  <object class="GtkTextBuffer" id="buf_dis_bin"/>
-  <object class="GtkTextBuffer" id="buf_dis_hex"/>
   <object class="GtkTextBuffer" id="buf_dis_intel"/>
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
@@ -138,7 +135,7 @@ Author: Devyn Collier Johnson
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_File</property>
+                <property name="label" translatable="no">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="file_menu">
@@ -153,7 +150,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Open a binary file</property>
+                        <property name="tooltip_text" translatable="no">Open a binary file</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -167,7 +164,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Save</property>
+                        <property name="tooltip_text" translatable="no">Save</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -181,7 +178,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Select where to save the data</property>
+                        <property name="tooltip_text" translatable="no">Select where to save the data</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -201,13 +198,13 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Close the application</property>
+                        <property name="tooltip_text" translatable="no">Close the application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -234,7 +231,7 @@ Author: Devyn Collier Johnson
             <property name="enable_popup">True</property>
             <signal name="switch-page" handler="show_hide_save" swapped="no"/>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_prop">
+              <object class="GtkScrolledWindow" id="scrwin_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -260,15 +257,15 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">File properties &amp; information</property>
-                <property name="label" translatable="yes">File Properties</property>
+                <property name="tooltip_text" translatable="no">File properties &amp; information</property>
+                <property name="label" translatable="no">File Properties</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_sym_tbl">
+              <object class="GtkScrolledWindow" id="scrwin_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -295,9 +292,9 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the static symbol table
-objdump --special-syms --syms</property>
-                <property name="label" translatable="yes">Symbol Table</property>
+                <property name="tooltip_text" translatable="no">Display the static symbol table
+objdump --line-numbers --special-syms --syms</property>
+                <property name="label" translatable="no">Symbol Table</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -307,7 +304,7 @@ objdump --special-syms --syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_sym">
+              <object class="GtkScrolledWindow" id="scrwin_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -334,9 +331,9 @@ objdump --special-syms --syms</property>
               <object class="GtkLabel" id="tab_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the dynamic symbol table entries
-objdump --special-syms --dynamic-syms</property>
-                <property name="label" translatable="yes">Dynamic Symbols</property>
+                <property name="tooltip_text" translatable="no">Display the dynamic symbol table entries
+objdump --line-numbers --dynamic-syms --special-syms</property>
+                <property name="label" translatable="no">Dynamic Symbols</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -346,7 +343,7 @@ objdump --special-syms --dynamic-syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_nm_sym">
+              <object class="GtkScrolledWindow" id="scrwin_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -373,9 +370,9 @@ objdump --special-syms --dynamic-syms</property>
               <object class="GtkLabel" id="tab_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display symbols found by nm
-nm --dynamic --no-sort --special-syms --debug-syms</property>
-                <property name="label" translatable="yes">nm (Symbol List)</property>
+                <property name="tooltip_text" translatable="no">Display symbols found by nm
+nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic</property>
+                <property name="label" translatable="no">nm (Symbol List)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -385,7 +382,7 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dyn_reloc">
+              <object class="GtkScrolledWindow" id="scrwin_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -412,9 +409,9 @@ nm --dynamic --no-sort --special-syms --debug-syms</property>
               <object class="GtkLabel" id="tab_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the dynamic relocation entries
-objdump --dynamic-reloc</property>
-                <property name="label" translatable="yes">Dynamic Relocation</property>
+                <property name="tooltip_text" translatable="no">Display the dynamic relocation entries
+objdump --dynamic-reloc --line-numbers</property>
+                <property name="label" translatable="no">Dynamic Relocation</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -424,7 +421,7 @@ objdump --dynamic-reloc</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis">
+              <object class="GtkScrolledWindow" id="scrwin_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -450,9 +447,9 @@ objdump --dynamic-reloc</property>
               <object class="GtkLabel" id="tab_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code
+                <property name="tooltip_text" translatable="no">Display the disassembled code
 ndisasm</property>
-                <property name="label" translatable="yes">Disassembly</property>
+                <property name="label" translatable="no">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -462,7 +459,7 @@ ndisasm</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_intel">
+              <object class="GtkScrolledWindow" id="scrwin_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -488,9 +485,9 @@ ndisasm</property>
               <object class="GtkLabel" id="tab_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code using Intel syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
-                <property name="label" translatable="yes">Disassembly (Intel)</property>
+                <property name="tooltip_text" translatable="no">Display the disassembled code using Intel syntax
+objdump --disassemble --show-raw-insn --disassembler-options=intel --source</property>
+                <property name="label" translatable="no">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -500,7 +497,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_att">
+              <object class="GtkScrolledWindow" id="scrwin_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -526,9 +523,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel</property>
               <object class="GtkLabel" id="tab_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
-                <property name="label" translatable="yes">Disassembly (AT&amp;T)</property>
+                <property name="tooltip_text" translatable="no">Display the disassembled code using AT&amp;T syntax
+objdump --disassemble --show-raw-insn --disassembler-options=att --source</property>
+                <property name="label" translatable="no">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -538,96 +535,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_bin">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="double_buffered">False</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_bin">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="double_buffered">False</property>
-                    <property name="wrap_mode">char</property>
-                    <property name="justification">fill</property>
-                    <property name="left_margin">5</property>
-                    <property name="right_margin">5</property>
-                    <property name="buffer">buf_dis_bin</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="input_purpose">digits</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Binary)</property>
-                <property name="position">8</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_bin">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code as binary</property>
-                <property name="label" translatable="yes">Disassembly (Binary)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Binary)</property>
-                <property name="position">8</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_dis_hex">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="double_buffered">False</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_hex">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="double_buffered">False</property>
-                    <property name="wrap_mode">word</property>
-                    <property name="justification">fill</property>
-                    <property name="left_margin">5</property>
-                    <property name="right_margin">5</property>
-                    <property name="buffer">buf_dis_hex</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Hexadecimal)</property>
-                <property name="position">9</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_hex">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the disassembled code as hexadecimal</property>
-                <property name="label" translatable="yes">Disassembly (Hex)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Hexadecimal)</property>
-                <property name="position">9</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_readelf">
+              <object class="GtkScrolledWindow" id="scrwin_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -654,11 +562,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att</property>
               <object class="GtkLabel" id="tab_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display information returned by readelf
-file --preserve-date
-file --mime --preserve-date
-readelf --all --section-groups --unwind --arch-specific --histogram --wide</property>
-                <property name="label" translatable="yes">ReadElf</property>
+                <property name="tooltip_text" translatable="no">Display information returned by readelf
+readelf --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide</property>
+                <property name="label" translatable="no">ReadElf</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -668,7 +574,7 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_all_headers">
+              <object class="GtkScrolledWindow" id="scrwin_all_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -695,9 +601,9 @@ readelf --all --section-groups --unwind --arch-specific --histogram --wide</prop
               <object class="GtkLabel" id="tab_all_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display all file headers
-objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --wide</property>
-                <property name="label" translatable="yes">All Headers</property>
+                <property name="tooltip_text" translatable="no">Display all file headers
+objdump --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide</property>
+                <property name="label" translatable="no">All Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -707,7 +613,7 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_header">
+              <object class="GtkScrolledWindow" id="scrwin_header">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -734,9 +640,9 @@ objdump --all-headers --full-contents --archive-header --stabs --dwarf-check --w
               <object class="GtkLabel" id="tab_header">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the file header
-objdump --file-headers</property>
-                <property name="label" translatable="yes">File Header</property>
+                <property name="tooltip_text" translatable="no">Display the file header
+objdump --file-headers --file-offsets</property>
+                <property name="label" translatable="no">File Header</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -746,7 +652,7 @@ objdump --file-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_priv_headers">
+              <object class="GtkScrolledWindow" id="scrwin_priv_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -773,9 +679,9 @@ objdump --file-headers</property>
               <object class="GtkLabel" id="tab_priv_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the private headers
-objdump --private-headers</property>
-                <property name="label" translatable="yes">Private Headers</property>
+                <property name="tooltip_text" translatable="no">Display the private headers
+objdump --file-offsets --private-headers</property>
+                <property name="label" translatable="no">Private Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -785,7 +691,7 @@ objdump --private-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_sec_headers">
+              <object class="GtkScrolledWindow" id="scrwin_sec_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -812,9 +718,9 @@ objdump --private-headers</property>
               <object class="GtkLabel" id="tab_sec_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the section headers
-objdump --section-headers</property>
-                <property name="label" translatable="yes">Section Headers</property>
+                <property name="tooltip_text" translatable="no">Display the section headers
+objdump --file-offsets --section-headers</property>
+                <property name="label" translatable="no">Section Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -824,7 +730,7 @@ objdump --section-headers</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_size">
+              <object class="GtkScrolledWindow" id="scrwin_size">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -851,10 +757,10 @@ objdump --section-headers</property>
               <object class="GtkLabel" id="tab_size">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the results of size
+                <property name="tooltip_text" translatable="no">Display the results of size
 size --format=Berkeley
 size --format=SysV</property>
-                <property name="label" translatable="yes">Size</property>
+                <property name="label" translatable="no">Size</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -864,7 +770,7 @@ size --format=SysV</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_str">
+              <object class="GtkScrolledWindow" id="scrwin_str">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -891,9 +797,9 @@ size --format=SysV</property>
               <object class="GtkLabel" id="tab_str">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Display the contained strings
+                <property name="tooltip_text" translatable="no">Display the contained strings
 strings --all</property>
-                <property name="label" translatable="yes">Strings</property>
+                <property name="label" translatable="no">Strings</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -903,7 +809,7 @@ strings --all</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_func">
+              <object class="GtkScrolledWindow" id="scrwin_func">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -930,8 +836,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_func">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">List all of the found functions</property>
-                <property name="label" translatable="yes">Functions</property>
+                <property name="tooltip_text" translatable="no">List all of the found functions</property>
+                <property name="label" translatable="no">Functions</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -941,7 +847,7 @@ strings --all</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_const">
+              <object class="GtkScrolledWindow" id="scrwin_const">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
@@ -968,8 +874,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_const">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">List all of the found constants</property>
-                <property name="label" translatable="yes">Constants</property>
+                <property name="tooltip_text" translatable="no">List all of the found constants</property>
+                <property name="label" translatable="no">Constants</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -999,8 +905,8 @@ strings --all</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Program-Analyzer
-Version: 2018.12.28
+                        <property name="label" translatable="no">Program-Analyzer
+Version: 2019.06.23
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1017,7 +923,7 @@ Author: Devyn Collier Johnson
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
-                        <property name="label" translatable="yes">For more programs,
+                        <property name="label" translatable="no">For more programs,
 - Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
                         <property name="use_markup">True</property>
@@ -1072,8 +978,8 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Information about Program-Analyzer and GNU-binutils</property>
-                <property name="label" translatable="yes">About</property>
+                <property name="tooltip_text" translatable="no">Information about Program-Analyzer and GNU-binutils</property>
+                <property name="label" translatable="no">About</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -1103,13 +1009,13 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="l_file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">File location (pathname)</property>
+                <property name="tooltip_text" translatable="no">File location (pathname)</property>
                 <property name="halign">start</property>
                 <property name="margin_left">5</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
-                <property name="label" translatable="yes">PathName</property>
+                <property name="label" translatable="no">PathName</property>
                 <property name="selectable">True</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
@@ -1125,7 +1031,7 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Save the currently displayed data</property>
+                <property name="tooltip_text" translatable="no">Save the currently displayed data</property>
                 <property name="halign">center</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
@@ -1144,7 +1050,7 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Exit Application</property>
+                <property name="tooltip_text" translatable="no">Exit Application</property>
                 <property name="halign">end</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
@@ -1199,7 +1105,6 @@ Author: Devyn Collier Johnson
     </child>
   </object>
 </interface>"""
-
 
 _FILEGUI: str = """<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
@@ -1363,6 +1268,7 @@ Empty - Hidden files not seen</property>
   </object>
 </interface>"""
 
+
 signal(SIGINT, SIG_DFL)
 
 
@@ -1382,7 +1288,9 @@ STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 
 
 class DataTable:  # pylint: disable=R0903
-    """Global readonly table for all threads to get data concerning the available tools"""
+    """Global table for all threads to get and set data concerning the available tools"""
+
+    # Available Tools
     is_insn_count_available: bool = is_program_aval(r'insn_count')
     is_ndisasm_available: bool = is_program_aval(r'ndisasm')
     is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
@@ -1395,15 +1303,23 @@ class DataTable:  # pylint: disable=R0903
     is_linux_x86_64_available: bool = is_program_aval(r'x86_64-linux-gnu-objdump')
     is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
     is_win_x86_64_available: bool = is_program_aval(r'x86_64-w64-mingw32-objdump')
-
-
-class TempTable:  # pylint: disable=R0903
-    """Global table for all threads to set and get data"""
-    bin_data: str = r''
+    is_sha256sum_available: bool = is_program_aval(r'sha256sum')
+    is_sha512sum_available: bool = is_program_aval(r'sha512sum')
+    # Commands
+    nm_cmd: str = r''
+    objdump_cmd: str = r''
+    readelf_cmd: str = r''
+    size_cmd: str = r''
+    strings_cmd: str = r''
+    sha256sum_cmd: str = r'sha256sum --tag '
+    sha512sum_cmd: str = r'sha512sum --tag '
+    use_ndisasm: Union[bool, int] = False
+    # Gathered Data
+    bin_file: str = r''
     binsize: str = r''
     constants: str = r''
+    file_info: str = r''
     functions: str = r''
-    hex_data: str = r''
     lastused: str = r''
     nm_defined: str = r''
     nm_symbols: str = r''
@@ -1418,7 +1334,322 @@ class TempTable:  # pylint: disable=R0903
     objdump_section_headers: str = r''
     objdump_symbols: str = r''
     readelf_all: str = r''
+    sha512: str = r''
     strings: str = r''
+
+
+class MainWindow:  # pylint: disable=R0902
+    """Main GTK-window"""
+
+    def __init__(self, getfiledata: bool, filedata: Tuple[int, str]) -> None:
+        """Create the GTK-window and all needed objects"""
+        # Build GUI
+        self.ui = Gtk.Builder()
+        self.ui.add_from_string(buffer=_GUI)
+        # Get GTK Objects
+        self.ui_get_object = self.ui.get_object
+        self._window = self.ui_get_object(name=r'ezwin')
+        self.statusbar = self.ui_get_object(name=r'statusbar')
+        self.context_id = self.statusbar.get_context_id(r'NULL')
+        self.statusbar.push(self.context_id, r'')
+        self.tabs = self.ui_get_object(name=r'tabs')
+        self.tabs.set_current_page(0)
+        self.about_box = self.ui_get_object(name=r'about_box')
+        self.binutils_info = self.ui_get_object(name=r'binutils_info')
+        self.btn_save = self.ui_get_object(name=r'btn_save')
+        self.menuitem_save = self.ui_get_object(name=r'menuitem_save')
+        self.menuitem_saveas = self.ui_get_object(name=r'menuitem_saveas')
+        self.l_file = self.ui_get_object(name=r'l_file')
+        self.scrwin_all_headers = self.ui_get_object(name=r'scrwin_all_headers')
+        self.scrwin_const = self.ui_get_object(name=r'scrwin_const')
+        self.scrwin_dis = self.ui_get_object(name=r'scrwin_dis')
+        self.scrwin_dis_att = self.ui_get_object(name=r'scrwin_dis_att')
+        self.scrwin_dis_intel = self.ui_get_object(name=r'scrwin_dis_intel')
+        self.scrwin_dyn_reloc = self.ui_get_object(name=r'scrwin_dyn_reloc')
+        self.scrwin_dyn_sym = self.ui_get_object(name=r'scrwin_dyn_sym')
+        self.scrwin_func = self.ui_get_object(name=r'scrwin_func')
+        self.scrwin_header = self.ui_get_object(name=r'scrwin_header')
+        self.scrwin_nm_sym = self.ui_get_object(name=r'scrwin_nm_sym')
+        self.scrwin_priv_headers = self.ui_get_object(name=r'scrwin_priv_headers')
+        self.scrwin_prop = self.ui_get_object(name=r'scrwin_prop')
+        self.scrwin_readelf = self.ui_get_object(name=r'scrwin_readelf')
+        self.scrwin_sec_headers = self.ui_get_object(name=r'scrwin_sec_headers')
+        self.scrwin_size = self.ui_get_object(name=r'scrwin_size')
+        self.scrwin_str = self.ui_get_object(name=r'scrwin_str')
+        self.scrwin_sym_tbl = self.ui_get_object(name=r'scrwin_sym_tbl')
+        self.textview_all_headers = self.ui_get_object(name=r'textview_all_headers')
+        self.textview_const = self.ui_get_object(name=r'textview_const')
+        self.textview_dis = self.ui_get_object(name=r'textview_dis')
+        self.textview_dis_att = self.ui_get_object(name=r'textview_dis_att')
+        self.textview_dis_intel = self.ui_get_object(name=r'textview_dis_intel')
+        self.textview_dyn_reloc = self.ui_get_object(name=r'textview_dyn_reloc')
+        self.textview_dyn_sym = self.ui_get_object(name=r'textview_dyn_sym')
+        self.textview_func = self.ui_get_object(name=r'textview_func')
+        self.textview_header = self.ui_get_object(name=r'textview_header')
+        self.textview_nm_sym = self.ui_get_object(name=r'textview_nm_sym')
+        self.textview_priv_headers = self.ui_get_object(name=r'textview_priv_headers')
+        self.textview_prop = self.ui_get_object(name=r'textview_prop')
+        self.textview_readelf = self.ui_get_object(name=r'textview_readelf')
+        self.textview_sec_headers = self.ui_get_object(name=r'textview_sec_headers')
+        self.textview_size = self.ui_get_object(name=r'textview_size')
+        self.textview_str = self.ui_get_object(name=r'textview_str')
+        self.textview_sym_tbl = self.ui_get_object(name=r'textview_sym_tbl')
+        # Window Title
+        self.l_file.set_text(r'Program-Analyzer')
+        # Set GNU-Binutls Info in About-tab
+        self.binutils_info.set_text(getoutput(r'objdump --version'))
+        # Signal Handlers
+        self.ui.connect_signals({
+            r'gtk_open': self.gtk_open,
+            r'gtk_save': self.gtk_save,
+            r'gtk_saveas': self.gtk_saveas,
+            r'show_hide_save': self.show_hide_save,
+            r'_winexit': Gtk.main_quit
+        })
+        # Process the Input
+        if getfiledata:
+            filedata = self.getdis(DataTable.bin_file)  # Get data from the chosen file
+        del getfiledata
+        self.status(self.context_id, filedata[1])
+        if filedata[0] >= 2:
+            self.refreshdata(DataTable.bin_file, filedata)
+        else:
+            self.gtk_open()
+
+    def show_hide_save(self, _notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWindow], page_num: int) -> None:  # pylint: disable=W0613
+        """Show or hide the save buttons"""
+        if page_num == _notebook.page_num(self.about_box):
+            self.btn_save.set_visible(False)
+            self.menuitem_save.set_visible(False)
+            self.menuitem_saveas.set_visible(False)
+        elif page.is_visible():
+            self.btn_save.set_visible(True)
+            self.menuitem_save.set_visible(True)
+            self.menuitem_saveas.set_visible(True)
+
+    def status(self, context_id: int, _msg: str) -> None:
+        """Place a message in the statusbar"""
+        self.statusbar.push(context_id, _msg)
+
+    def retreive_data_buffer(self, active_tab: int, tabs_page_num: Callable) -> Gtk.TextBuffer:  # noqa: C901,R701  # pylint: disable=R0911
+        """Get the data in the currently active data buffer"""
+        if active_tab == tabs_page_num(self.scrwin_prop):  # tab_prop
+            return self.textview_prop.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_sym_tbl):  # tab_sym_tbl
+            return self.textview_sym_tbl.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_dyn_sym):  # tab_dyn_sym
+            return self.textview_dyn_sym.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_nm_sym):  # tab_nm_sym
+            return self.textview_nm_sym.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_dyn_reloc):  # tab_dyn_reloc
+            return self.textview_dyn_reloc.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_dis):  # tab_dis
+            return self.textview_dis.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_dis_intel):  # tab_dis_intel
+            return self.textview_dis_intel.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_dis_att):  # tab_dis_att
+            return self.textview_dis_att.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_readelf):  # tab_readelf
+            return self.textview_readelf.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_all_headers):  # tab_all_headers
+            return self.textview_all_headers.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_header):  # tab_header
+            return self.textview_header.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_priv_headers):  # tab_priv_headers
+            return self.textview_priv_headers.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_sec_headers):  # tab_sec_headers
+            return self.textview_sec_headers.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_size):  # tab_size_size
+            return self.textview_size.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_str):  # tab_str
+            return self.textview_str.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_func):  # tab_func
+            return self.textview_str.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_const):  # tab_const
+            return self.textview_const.get_buffer()
+        return r''
+
+    # OPEN & SAVE #
+
+    def gtk_open(self, _menuitem: Gtk.ImageMenuItem = None) -> None:
+        """Select a file to open"""
+        self.status(self.context_id, STATUS_OPENING_FILE[1])
+        try:
+            _filewin = FileChooserWin()
+            _binfile = _filewin.ezfilech(_init_path=r'/', _return_uri=False, _return_dtype=r'str')
+            del _filewin
+        except TypeError:
+            self.status(self.context_id, r'Error occurred while opening file')
+            stderr.write('Error occurred while opening file\n')
+            return
+        if not isinstance(_binfile, str) or _binfile in {r'[]', r'cancel'} or _binfile == r'' or _binfile is None:
+            self.status(self.context_id, r'File opening cancelled by user')
+            return
+        if not pathexists(_binfile) or not isfile(_binfile):
+            self.status(self.context_id, r'FileNotFoundError')
+            return
+        if isdir(_binfile):
+            self.status(self.context_id, r'IsADirectoryError')
+            return
+        if not fileaccess(_binfile, R_OK):
+            self.status(self.context_id, r'PermissionError')
+            return
+        self.refreshdata(_binfile, self.getdis(_binfile))
+
+    def gtk_save(self, _button: Gtk.Button) -> None:
+        """Save the data"""
+        if not isinstance(DataTable.lastused, str) or DataTable.lastused in {r'', r'cancel'}:
+            self.gtk_saveas(_button)
+            return
+        self.save_data(self.tabs.get_current_page(), DataTable.lastused)
+
+    def gtk_saveas(self, _button: Gtk.Button) -> None:
+        """Choose where to save the data"""
+        # Select File
+        try:
+            _filewin = FileChooserWin()
+            savefilepath = _filewin.ezfilech(_select_dir=False, _savefile=True, _init_path=r'/', _return_uri=False, _return_dtype=r'str')
+            del _filewin
+        except (IndexError, SyntaxError, TypeError):
+            self.status(self.context_id, r'Error occurred while saving file')
+            stderr.write('Error occurred while saving file\n')
+            return
+        if not isinstance(savefilepath, str) or savefilepath == r'[]':
+            self.status(self.context_id, r'File saving cancelled by user')
+            return
+        if savefilepath == r'cancel' or savefilepath == r'' or savefilepath is None:
+            self.status(self.context_id, r'File saving cancelled by user')
+            return
+        # Sava Data
+        self.save_data(self.tabs.get_current_page(), savefilepath)
+
+    def save_data(self, active_tab: int, savefilepath: str) -> None:  # noqa: C901
+        """Perform the actual data-save"""
+        DataTable.lastused = savefilepath
+        save_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer(active_tab, self.tabs.page_num)
+        try:
+            self.write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
+            del save_buffer_data
+        except OSError:
+            DataTable.lastused = r''
+            self.status(self.context_id, r'OSError when writing file')
+            stderr.write('OSError when writing file\n')
+        except BaseException as _err:  # pylint: disable=W0703
+            DataTable.lastused = r''
+            self.status(self.context_id, r'Exception thrown when writing file')
+            stderr.write(str(_err) + '\n')
+        self.status(self.context_id, r'File saved')
+
+    def write2file(self, _filename: str, _write: str) -> None:
+        """Send data to new file or overwrite file"""
+        self.status(self.context_id, STATUS_WRITING[1])
+        with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
+            _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
+
+    # ANALYSIS
+
+    def getdis(self, _file: str) -> Tuple[int, str]:  # noqa: C901  # pylint: disable=R0914
+        """Get data from the file and disassemble"""
+        self.status(self.context_id, STATUS_ANALYZING[1])
+        # Gather filetype information
+        _charset = MIME_ENCODING.file(_file)
+        _magic = NONE_MAGIC.file(_file).lower()
+        # Is 32 or 64 bits?
+        if any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'pe32 ', r'x86-32'}):
+            _bits = r'32'
+        elif any(_pattern in _magic for _pattern in {r'64-bit', r'pe32+', r'x86-64'}):
+            _bits = r'64'
+        else:
+            _bits = r'NA'
+        # Setup tools
+        setup_tools(_bits, _charset, _magic)
+        # Get the data using parallel processing
+        run_threaded_analysis(_file, _bits)
+        # Make the scrollable boxes within each tab visible
+        self.scrwin_sym_tbl.set_visible(True)
+        self.scrwin_dyn_sym.set_visible(True)
+        self.scrwin_nm_sym.set_visible(True)
+        self.scrwin_dyn_reloc.set_visible(True)
+        self.scrwin_dis.set_visible(True)
+        self.scrwin_dis_intel.set_visible(True)
+        self.scrwin_dis_att.set_visible(True)
+        self.scrwin_readelf.set_visible(True)
+        self.scrwin_all_headers.set_visible(True)
+        self.scrwin_header.set_visible(True)
+        self.scrwin_priv_headers.set_visible(True)
+        self.scrwin_sec_headers.set_visible(True)
+        self.scrwin_size.set_visible(True)
+        self.scrwin_str.set_visible(True)
+        self.scrwin_func.set_visible(True)
+        self.scrwin_const.set_visible(True)
+        # Return
+        return STATUS_FINISHED
+
+    def refreshdata(self, _file: str, _datatuple: tuple) -> None:  # noqa: C901,R701
+        """Place the data in the text-buffers of the window"""
+        self.tabs.set_current_page(0)
+        self.status(self.context_id, STATUS_ANALYZING[1])
+        if _datatuple[0] == -1:
+            self.status(self.context_id, STATUS_UNSUPPORTED_FILETYPE[1])
+            return
+        # Set and display data
+        _tmp_file_name = pathsplit(_file)[1]
+        self._window.set_title(r'Program-Analyzer: ' + _tmp_file_name)
+        self.l_file.set_text(_tmp_file_name)
+        del _tmp_file_name
+        if self.scrwin_dis.is_visible:
+            self.textview_dis.get_buffer().set_text(DataTable.objdump_disassemble, len(DataTable.objdump_disassemble))
+        DataTable.objdump_disassemble = r''
+        if self.scrwin_dis_intel.is_visible:
+            self.textview_dis_intel.get_buffer().set_text(DataTable.objdump_disassemble_intel, len(DataTable.objdump_disassemble_intel))
+        DataTable.objdump_disassemble_intel = r''
+        if self.scrwin_dis_att.is_visible:
+            self.textview_dis_att.get_buffer().set_text(DataTable.objdump_disassemble_att, len(DataTable.objdump_disassemble_att))
+        DataTable.objdump_disassemble_att = r''
+        if self.scrwin_sym_tbl.is_visible:
+            self.textview_sym_tbl.get_buffer().set_text(DataTable.objdump_symbols, len(DataTable.objdump_symbols))
+        DataTable.objdump_symbols = r''
+        if self.scrwin_dyn_sym.is_visible:
+            self.textview_dyn_sym.get_buffer().set_text(DataTable.objdump_dynamic_symbols, len(DataTable.objdump_dynamic_symbols))
+        DataTable.objdump_dynamic_symbols = r''
+        if self.scrwin_nm_sym.is_visible:
+            self.textview_nm_sym.get_buffer().set_text(DataTable.nm_symbols, len(DataTable.nm_symbols))
+        DataTable.nm_symbols = r''
+        if self.scrwin_dyn_reloc.is_visible:
+            self.textview_dyn_reloc.get_buffer().set_text(DataTable.objdump_dynamic_relocation, len(DataTable.objdump_dynamic_relocation))
+        DataTable.objdump_dynamic_relocation = r''
+        if self.scrwin_header.is_visible:
+            self.textview_header.get_buffer().set_text(DataTable.objdump_file_header, len(DataTable.objdump_file_header))
+        DataTable.objdump_file_header = r''
+        if self.scrwin_readelf.is_visible:
+            self.textview_readelf.get_buffer().set_text(DataTable.readelf_all, len(DataTable.readelf_all))
+        DataTable.readelf_all = r''
+        if self.scrwin_all_headers.is_visible:
+            self.textview_all_headers.get_buffer().set_text(DataTable.objdump_all_headers, len(DataTable.objdump_all_headers))
+        DataTable.objdump_all_headers = r''
+        if self.scrwin_priv_headers.is_visible:
+            self.textview_priv_headers.get_buffer().set_text(DataTable.objdump_private_headers, len(DataTable.objdump_private_headers))
+        DataTable.objdump_private_headers = r''
+        if self.scrwin_sec_headers.is_visible:
+            self.textview_sec_headers.get_buffer().set_text(DataTable.objdump_section_headers, len(DataTable.objdump_section_headers))
+        DataTable.objdump_section_headers = r''
+        if self.scrwin_size.is_visible:
+            self.textview_size.get_buffer().set_text(DataTable.binsize, len(DataTable.binsize))
+        DataTable.binsize = r''
+        if self.scrwin_str.is_visible:
+            self.textview_str.get_buffer().set_text(DataTable.strings, len(DataTable.strings))
+        DataTable.strings = r''
+        if self.scrwin_func.is_visible:
+            self.textview_func.get_buffer().set_text(DataTable.functions, len(DataTable.functions))
+        DataTable.functions = r''
+        if self.scrwin_const.is_visible:
+            self.textview_const.get_buffer().set_text(DataTable.constants, len(DataTable.constants))
+        DataTable.constants = r''
+        # Place file properties in the text-buffer
+        properties_str_buf = DataTable.file_info + file_properties(_file)
+        self.textview_prop.get_buffer().set_text(properties_str_buf, len(properties_str_buf))
+        self.status(self.context_id, STATUS_FINISHED[1])
+        self._window.queue_draw()
 
 
 class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
@@ -1436,7 +1667,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         })
         self._out: Union[list, str] = []
 
-    def ezfilech(
+    def ezfilech(  # noqa: C901,R701
             self,
             _select_file: bool = True,
             _select_dir: bool = False,
@@ -1518,7 +1749,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         Gtk.main()
         while Gtk.events_pending():
             Gtk.main_iteration_do(True)
-        _window.queue_draw()
+        self.filechooserwin.queue_draw()
         return self._out
 
     def _winexit(self, *_x: Union[None, Tuple[Gtk.ApplicationWindow, None]]) -> None:  # pylint: disable=R0201
@@ -1532,7 +1763,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
-    def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
+    def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # noqa: C901,R701  # pylint: disable=R0201
         """Submit selection for processing using the select-button"""
         if self._select_dir and not self._multiple and self._chkbtn_dir.get_active():
             if self._return_uri and self._return_dtype == r'str':
@@ -1563,173 +1794,14 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         self._filew.set_show_hidden(self._viewhidden)
 
 
-# OPEN & SAVE #
-
-
-def gtk_open(_menuitem: Gtk.ImageMenuItem = None) -> None:
-    """Select a file to open"""
-    statusbar.push(context_id, STATUS_OPENING_FILE[1])
-    try:
-        _filewin = FileChooserWin()
-        _binfile = _filewin.ezfilech(_init_path=r'/', _return_uri=False, _return_dtype=r'str')
-        del _filewin
-    except TypeError:
-        statusbar.push(context_id, r'Error occurred while opening file')
-        stderr.write('Error occurred while opening file\n')
-        return
-    if not isinstance(_binfile, str) or _binfile == r'[]':
-        statusbar.push(context_id, r'File opening cancelled by user')
-        return
-    if _binfile == r'cancel' or _binfile == r'' or _binfile is None:
-        statusbar.push(context_id, r'File opening cancelled by user')
-        return
-    if not pathexists(_binfile) or not isfile(_binfile):
-        statusbar.push(context_id, r'FileNotFoundError')
-        return
-    if isdir(_binfile):
-        statusbar.push(context_id, r'IsADirectoryError')
-        return
-    if not fileaccess(_binfile, R_OK):
-        statusbar.push(context_id, r'PermissionError')
-        return
-    refreshdata(_binfile, getdis(_binfile))
-
-
-def gtk_save(_button: Gtk.Button) -> None:
-    """Save the data"""
-    if not isinstance(TempTable.lastused, str) or TempTable.lastused in {r'', r'cancel'}:
-        gtk_saveas(_button)
-        return
-    save_data(tabs.get_current_page(), TempTable.lastused)
-
-
-def gtk_saveas(_button: Gtk.Button) -> None:
-    """Choose where to save the data"""
-    # Select File
-    try:
-        _filewin = FileChooserWin()
-        savefilepath = _filewin.ezfilech(_select_dir=False, _savefile=True, _init_path=r'/', _return_uri=False, _return_dtype=r'str')
-        del _filewin
-    except (IndexError, SyntaxError, TypeError):
-        statusbar.push(context_id, r'Error occurred while saving file')
-        stderr.write('Error occurred while saving file\n')
-        return
-    if not isinstance(savefilepath, str) or savefilepath == r'[]':
-        statusbar.push(context_id, r'File saving cancelled by user')
-        return
-    if savefilepath == r'cancel' or savefilepath == r'' or savefilepath is None:
-        statusbar.push(context_id, r'File saving cancelled by user')
-        return
-    # Sava Data
-    save_data(tabs.get_current_page(), savefilepath)
-
-
-def save_data(active_tab: int, savefilepath: str) -> None:  # noqa: C901
-    """Perform the actual data-save"""
-    TempTable.lastused = savefilepath
-    tabs_page_num = tabs.page_num
-    if active_tab == tabs_page_num(scrolledwindow_prop):  # tab_prop
-        save_buffer_data = textview_prop.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_sym_tbl):  # tab_sym_tbl
-        save_buffer_data = textview_sym_tbl.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dyn_sym):  # tab_dyn_sym
-        save_buffer_data = textview_dyn_sym.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_nm_sym):  # tab_nm_sym
-        save_buffer_data = textview_nm_sym.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dyn_reloc):  # tab_dyn_reloc
-        save_buffer_data = textview_dyn_reloc.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dis):  # tab_dis
-        save_buffer_data = textview_dis.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dis_intel):  # tab_dis_intel
-        save_buffer_data = textview_dis_intel.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dis_att):  # tab_dis_att
-        save_buffer_data = textview_dis_att.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dis_bin):  # tab_dis_bin
-        save_buffer_data = textview_dis_bin.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_dis_hex):  # tab_dis_hex
-        save_buffer_data = textview_dis_hex.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_readelf):  # tab_readelf
-        save_buffer_data = textview_readelf.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_all_headers):  # tab_all_headers
-        save_buffer_data = textview_all_headers.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_header):  # tab_header
-        save_buffer_data = textview_header.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_priv_headers):  # tab_priv_headers
-        save_buffer_data = textview_priv_headers.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_sec_headers):  # tab_sec_headers
-        save_buffer_data = textview_sec_headers.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_size):  # tab_size_size
-        save_buffer_data = textview_size.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_str):  # tab_str
-        save_buffer_data = textview_str.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_func):  # tab_func
-        save_buffer_data = textview_str.get_buffer()
-    elif active_tab == tabs_page_num(scrolledwindow_const):  # tab_const
-        save_buffer_data = textview_const.get_buffer()
-    try:
-        write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
-        del save_buffer_data
-    except OSError:
-        TempTable.lastused = r''
-        statusbar.push(context_id, r'OSError when writing file')
-        stderr.write('OSError when writing file\n')
-    except BaseException as _err:  # pylint: disable=W0703
-        TempTable.lastused = r''
-        statusbar.push(context_id, r'Exception thrown when writing file')
-        stderr.write(str(_err) + '\n')
-    statusbar.push(context_id, r'File saved')
-
-
-def write2file(_filename: str, _write: str) -> None:
-    """Send data to new file or overwrite file"""
-    statusbar.push(context_id, STATUS_WRITING[1])
-    with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
-
-
-# SHOW/HIDE SAVE-BUTTONS #
-
-
-def show_hide_save(_notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWindow], page_num: int) -> None:  # pylint: disable=W0613
-    """Show or hide the save buttons"""
-    if page_num == _notebook.page_num(about_box):
-        btn_save.set_visible(False)
-        menuitem_save.set_visible(False)
-        menuitem_saveas.set_visible(False)
-    elif page.is_visible():
-        btn_save.set_visible(True)
-        menuitem_save.set_visible(True)
-        menuitem_saveas.set_visible(True)
-
-
 # PROCESS & SHOW DATA #
 
 
-def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[str, str], Tuple[str, str, str]]:  # noqa: C901  # pylint: disable=R0911
-    """Thread helper for `getdis()`"""
+def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[str, str], Tuple[str, str, str]]:  # noqa: C901,R701  # pylint: disable=R0911
+    """Thread helper for `run_threaded_analysis()`"""
     if _var.startswith(r'OBJDUMP_'):
-        if _var == r'OBJDUMP_ALL_HEADERS':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_FILE_HEADER':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_PRIVATE_HEADERS':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_SECTION_HEADERS':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_SYMBOLS':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_DYNAMIC_SYMBOLS':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_DYNAMIC_RELOCATION':
-            return getoutput(cmd)
         if _var == r'OBJDUMP_DISASSEMBLE':
             return getoutput(cmd) if DataTable.is_ndisasm_available and _flag else r'ndisasm is unavailable'
-        if _var == r'OBJDUMP_DISASSEMBLE_INTEL':
-            return getoutput(cmd)
-        if _var == r'OBJDUMP_DISASSEMBLE_ATT':
-            return getoutput(cmd)
-        return r''
-    if _var == r'BINSIZE':
         return getoutput(cmd)
     if _var == r'NM_DEFINED':
         _nm_defined = getoutput(cmd)
@@ -1744,197 +1816,182 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
         if not _constants:
             _constants = r'No global constants found!'
         return (_nm_defined, _functions, _constants)
-    if _var == r'NM_SYMBOLS':
-        return getoutput(cmd)
-    if _var == r'READELF_ALL':
-        return getoutput(cmd)
-    if _var == r'STRINGS':
-        return getoutput(cmd)
-    if _var == r'RAW':
-        if stat(cmd).st_size < 1000000:
-            hexified_data: bytes = b''
-            with open(cmd, mode=r'rb') as _fileobj:
-                hexified_data = hexlify(_fileobj.read())
-                del _fileobj
-                _bin_data = bin(int(hexified_data, 16))[2:].zfill(8)
-                _hex_data = str(hexified_data, encoding=r'utf-8')
-            del hexified_data
-            _hex_data = r' '.join(_x + _y for _x, _y in zip(_hex_data[::2], _hex_data[1::2]))
-            scrolledwindow_dis_bin.set_visible(True)
-            scrolledwindow_dis_hex.set_visible(True)
-            return (_bin_data, _hex_data)
-        return (r'', r'')
-    return r''
+    if _var == r'FILE_DATA1':
+        _tmp: tuple = getstatusoutput(cmd)
+        if _tmp[0] == 0 and _tmp[1]:
+            return '\n\n'.join(_tmp[1].split(r': ')).strip().replace(r', ', '\n')
+        return _tmp[1]
+    if _var in r'FILE_DATA2':
+        _tmp = getstatusoutput(cmd)
+        if _tmp[0] == 0 and _tmp[1]:
+            return _tmp[1].split(r': ')[1].strip()
+        return _tmp[1]
+    return getoutput(cmd)
 
 
-def getdis(_file: str) -> Tuple[int, str]:  # noqa: C901  # pylint: disable=R0914
-    """Get data from the file and disassemble"""
-    statusbar.push(context_id, STATUS_ANALYZING[1])
-    # Gather filetype information
-    _charset = MIME_ENCODING.file(_file)
-    _magic = NONE_MAGIC.file(_file)
-    # Is 32 or 64 bits?
-    if any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'PE32 ', r'x86-32'}):
-        _bits = r'32'
-    elif any(_pattern in _magic for _pattern in {r'64-bit', r'PE32+', r'x86-64'}):
-        _bits = r'64'
+def set_architecture_type(file_magic: str, _bits: str) -> Tuple[int, str]:  # noqa: C901,R701
+    """Return variables indicating the architecture to use and the dissembler"""
+    filemagic: str = file_magic
+    if r'elf' not in filemagic:
+        return STATUS_UNSUPPORTED_FILETYPE
+    if r'arm' in filemagic and _bits == r'32':
+        if DataTable.is_linux_arm_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r'arm'
+    elif r'alpha' in filemagic:
+        if DataTable.is_linux_alpha_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r'alpha'
+    elif r'pa-risc' in filemagic and _bits == r'32':
+        if DataTable.is_linux_hppa_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r'hppa'
+    elif r'pa-risc' in filemagic and _bits == r'64':
+        if DataTable.is_linux_hppa64_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r'hppa64'
+    elif r's390x' in filemagic:
+        if DataTable.is_linux_s390x_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r's390x'
+    elif r'sparc' in filemagic:
+        if DataTable.is_linux_sparc64_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 0
+        _prefix = r'sparc64'
+    elif r'x86-64' in filemagic:
+        if DataTable.is_linux_x86_64_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 1
+        _prefix = r'x86_64'
+    elif r'x86-32' in filemagic or r'i686' in filemagic:
+        if DataTable.is_linux_x86_available is False:
+            return STATUS_UNSUPPORTED_FILETYPE
+        _use_ndisasm = 1
+        _prefix = r'i686'
     else:
-        _bits = r'NA'
-    # Setup tools
-    _filecmd: str = r'file'
+        return STATUS_UNSUPPORTED_FILETYPE
+    return (_use_ndisasm, _prefix)
+
+
+def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # noqa: C901,R701
+    """Set the appropriate tools to use for the given data"""
     if _charset != r'binary':
         return STATUS_UNSUPPORTED_FILETYPE
-    if r'ELF' in _magic:
-        if r'ARM' in _magic and _bits == r'32':
-            if DataTable.is_linux_arm_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r'arm'
-        elif r'Alpha' in _magic:
-            if DataTable.is_linux_alpha_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r'alpha'
-        elif r'PA-RISC' in _magic and _bits == r'32':
-            if DataTable.is_linux_hppa_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r'hppa'
-        elif r'PA-RISC' in _magic and _bits == r'64':
-            if DataTable.is_linux_hppa64_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r'hppa64'
-        elif r's390x' in _magic:
-            if DataTable.is_linux_s390x_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r's390x'
-        elif r'SPARC' in _magic:
-            if DataTable.is_linux_sparc64_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = False
-            _prefix = r'sparc64'
-        elif r'x86-64' in _magic:
-            if DataTable.is_linux_x86_64_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = True
-            _prefix = r'x86_64'
-        elif r'x86-32' in _magic or r'i686' in _magic:
-            if DataTable.is_linux_x86_available is False:
-                return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = True
-            _prefix = r'i686'
-        else:
-            return STATUS_UNSUPPORTED_FILETYPE
-        if _prefix == r'arm':
-            _nm = _prefix + r'-linux-gnueabi-nm'
-            _objdump = _prefix + r'-linux-gnueabi-objdump'
-            _readelf = _prefix + r'-linux-gnueabi-readelf'
-            _size = _prefix + r'-linux-gnueabi-size'
-            _strings = _prefix + r'-linux-gnueabi-strings'
-        else:
-            _nm = _prefix + r'-linux-gnu-nm'
-            _objdump = _prefix + r'-linux-gnu-objdump'
-            _readelf = _prefix + r'-linux-gnu-readelf'
-            _size = _prefix + r'-linux-gnu-size'
-            _strings = _prefix + r'-linux-gnu-strings'
-    elif r'PE32' in _magic or r'Windows' in _magic or r'application/x-dosexec' in _magic:
+    DataTable.use_ndisasm, _prefix = set_architecture_type(_magic, _bits)
+    if DataTable.use_ndisasm == -1:
+        return STATUS_UNSUPPORTED_FILETYPE
+    if _prefix == r'arm':
+        DataTable.nm_cmd = _prefix + r'-linux-gnueabi-nm'
+        DataTable.objdump_cmd = _prefix + r'-linux-gnueabi-objdump'
+        DataTable.readelf_cmd = _prefix + r'-linux-gnueabi-readelf'
+        DataTable.size_cmd = _prefix + r'-linux-gnueabi-size'
+        DataTable.strings_cmd = _prefix + r'-linux-gnueabi-strings'
+        return (37, r'')
+    if r'pe32' in _magic or r'windows' in _magic or r'application/x-dosexec' in _magic:
         if _bits == r'64':
             if DataTable.is_win_x86_64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = True
-            _nm = r'x86_64-w64-mingw32-nm'
-            _objdump = r'x86_64-w64-mingw32-objdump'
-            _readelf = r'x86_64-w64-mingw32-readelf'
-            _size = r'x86_64-w64-mingw32-size'
-            _strings = r'x86_64-w64-mingw32-strings'
-        elif _bits == r'32':
+            DataTable.use_ndisasm = True
+            DataTable.nm_cmd = r'x86_64-w64-mingw32-nm'
+            DataTable.objdump_cmd = r'x86_64-w64-mingw32-objdump'
+            DataTable.readelf_cmd = r'x86_64-w64-mingw32-readelf'
+            DataTable.size_cmd = r'x86_64-w64-mingw32-size'
+            DataTable.strings_cmd = r'x86_64-w64-mingw32-strings'
+            return (37, r'')
+        if _bits == r'32':
             if DataTable.is_win_x86_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
-            _use_ndisasm = True
-            _nm = r'i686-w64-mingw32-nm'
-            _objdump = r'i686-w64-mingw32-objdump'
-            _readelf = r'i686-w64-mingw32-readelf'
-            _size = r'i686-w64-mingw32-size'
-            _strings = r'i686-w64-mingw32-strings'
-        else:
-            return STATUS_UNSUPPORTED_FILETYPE
-    else:
+            DataTable.use_ndisasm = True
+            DataTable.nm_cmd = r'i686-w64-mingw32-nm'
+            DataTable.objdump_cmd = r'i686-w64-mingw32-objdump'
+            DataTable.readelf_cmd = r'i686-w64-mingw32-readelf'
+            DataTable.size_cmd = r'i686-w64-mingw32-size'
+            DataTable.strings_cmd = r'i686-w64-mingw32-strings'
+            return (37, r'')
         return STATUS_UNSUPPORTED_FILETYPE
-    # Get the data using parallel processing
+    DataTable.nm_cmd = _prefix + r'-linux-gnu-nm'
+    DataTable.objdump_cmd = _prefix + r'-linux-gnu-objdump'
+    DataTable.readelf_cmd = _prefix + r'-linux-gnu-readelf'
+    DataTable.size_cmd = _prefix + r'-linux-gnu-size'
+    DataTable.strings_cmd = _prefix + r'-linux-gnu-strings'
+    return (37, r'')
+
+
+def run_threaded_analysis(_file: str, _bits: str) -> None:
+    """Run the different tools on the executable/binary"""
+    _filecmd: str = r'file'
     poolsize: int = cpu_count()
     poolsize = 16 if poolsize > 16 else poolsize
     outbuf: List[Any] = [(r'', r'')]
     with Pool(poolsize) as threadpool:
         try:
             outbuf = threadpool.starmap(analyze_binary, [
-                (_file, r'RAW'),
-                (_objdump + r' --special-syms --dynamic-syms ' + _file, r'OBJDUMP_DYNAMIC_SYMBOLS'),
-                (_nm + r' --dynamic --no-sort --special-syms --debug-syms ' + _file, r'NM_SYMBOLS'),
-                (_objdump + r' --dynamic-reloc ' + _file, r'OBJDUMP_DYNAMIC_RELOCATION'),
-                (r'ndisasm -b ' + _bits + r' ' + _file, r'OBJDUMP_DISASSEMBLE', _use_ndisasm),
-                (_objdump + r' --disassemble --disassembler-options=intel --no-show-raw-insn ' + _file, r'OBJDUMP_DISASSEMBLE_INTEL'),  # --disassemble-all --source --disassemble-zeroes
-                (_objdump + r' --disassemble --disassembler-options=att --no-show-raw-insn ' + _file, r'OBJDUMP_DISASSEMBLE_ATT'),
-                (_filecmd + r' --preserve-date ' + _file + r'; ' + _filecmd + r' --mime --preserve-date ' + _file + r'; ' + _readelf + r' --all --section-groups --unwind --arch-specific --histogram --wide ' + _file, r'READELF_ALL'),
-                (_objdump + r' --all-headers --full-contents --archive-header --stabs --dwarf-check --wide ' + _file, r'OBJDUMP_ALL_HEADERS'),
-                (_objdump + r' --file-headers ' + _file, r'OBJDUMP_FILE_HEADER'),
-                (_objdump + r' --private-headers ' + _file, r'OBJDUMP_PRIVATE_HEADERS'),
-                (_objdump + r' --section-headers ' + _file, r'OBJDUMP_SECTION_HEADERS'),
-                (_size + r' --format=Berkeley ' + _file + r'; ' + _size + r' --format=SysV ' + _file, r'BINSIZE'),
-                (_strings + r' --all ' + _file, r'STRINGS'),
-                (_nm + r' --dynamic --defined-only --special-syms --debug-syms "' + _file + r'"', r'NM_DEFINED', TempTable),
-                (_objdump + r' --special-syms --syms ' + _file, r'OBJDUMP_SYMBOLS')
+                (DataTable.objdump_cmd + r' --line-numbers --special-syms --syms ' + _file, r'OBJDUMP_SYMBOLS'),
+                (DataTable.objdump_cmd + r' --line-numbers --dynamic-syms --special-syms ' + _file, r'OBJDUMP_DYNAMIC_SYMBOLS'),
+                (DataTable.nm_cmd + r' --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic ' + _file, r'NM_SYMBOLS'),
+                (DataTable.objdump_cmd + r' --dynamic-reloc --line-numbers ' + _file, r'OBJDUMP_DYNAMIC_RELOCATION'),
+                (r'ndisasm -b ' + _bits + r' ' + _file, r'OBJDUMP_DISASSEMBLE', DataTable.use_ndisasm),
+                (DataTable.objdump_cmd + r' --disassemble --disassembler-options=intel --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_INTEL'),
+                (DataTable.objdump_cmd + r' --disassemble --disassembler-options=att --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_ATT'),
+                (DataTable.readelf_cmd + r' --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide ' + _file, r'READELF'),
+                (DataTable.objdump_cmd + r' --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide ' + _file, r'OBJDUMP_ALL_HEADERS'),
+                (DataTable.objdump_cmd + r' --file-headers --file-offsets ' + _file, r'OBJDUMP_FILE_HEADER'),
+                (DataTable.objdump_cmd + r' --file-offsets --private-headers ' + _file, r'OBJDUMP_PRIVATE_HEADERS'),
+                (DataTable.objdump_cmd + r' --file-offsets --section-headers ' + _file, r'OBJDUMP_SECTION_HEADERS'),
+                (DataTable.strings_cmd + r' --all ' + _file, r'STRINGS'),
+                (DataTable.nm_cmd + r' --debug-syms --defined-only --dynamic --special-syms "' + _file + r'"', r'NM_DEFINED', DataTable),
+                (DataTable.size_cmd + r' --format=Berkeley ' + _file, r'BINSIZE1'),
+                (DataTable.size_cmd + r' --format=SysV ' + _file, r'BINSIZE2'),
+                (_filecmd + r' --preserve-date ' + _file, r'FILE_DATA1'),
+                (_filecmd + r' --mime --preserve-date ' + _file, r'FILE_DATA2'),
             ])
-            TempTable.bin_data = outbuf[0][0]
-            TempTable.hex_data = outbuf[0][1]
-            TempTable.objdump_dynamic_symbols = outbuf[1]
-            TempTable.nm_symbols = outbuf[2]
-            TempTable.objdump_dynamic_relocation = outbuf[3]
-            TempTable.objdump_disassemble = outbuf[4]
-            TempTable.objdump_disassemble_intel = outbuf[5]
-            TempTable.objdump_disassemble_att = outbuf[6]
-            TempTable.readelf_all = outbuf[7]
-            TempTable.objdump_all_headers = outbuf[8]
-            TempTable.objdump_file_header = outbuf[9]
-            TempTable.objdump_private_headers = outbuf[10]
-            TempTable.objdump_section_headers = outbuf[11]
-            TempTable.binsize = outbuf[12]
-            TempTable.strings = outbuf[13]
-            TempTable.nm_defined = outbuf[14][0]
-            TempTable.functions = outbuf[14][1]
-            TempTable.constants = outbuf[14][2]
-            TempTable.objdump_symbols = outbuf[15]
+            DataTable.objdump_symbols = outbuf[0]
+            DataTable.objdump_dynamic_symbols = outbuf[1]
+            DataTable.nm_symbols = outbuf[2] + '\n'
+            DataTable.objdump_dynamic_relocation = outbuf[3]
+            DataTable.objdump_disassemble = outbuf[4] + '\n'
+            DataTable.objdump_disassemble_intel = outbuf[5] + '\n'
+            DataTable.objdump_disassemble_att = outbuf[6] + '\n'
+            DataTable.readelf_all = outbuf[7] + '\n'
+            DataTable.objdump_all_headers = outbuf[8]
+            DataTable.objdump_file_header = outbuf[9]
+            DataTable.objdump_private_headers = outbuf[10]
+            DataTable.objdump_section_headers = outbuf[11] + '\n'
+            if outbuf[12]:
+                _tmp: list = outbuf[12].split('\n')
+                _tmp.sort()
+                DataTable.strings = '\n'.join(_tmp) + '\n'
+            else:
+                DataTable.strings = r''
+            DataTable.nm_defined = outbuf[13][0] + '\n'
+            if outbuf[13][1]:
+                _tmp = outbuf[13][1].split('\n')
+                _tmp.sort()
+                DataTable.constants = '\n'.join(_tmp) + '\n'
+            else:
+                DataTable.constants = r''
+            if outbuf[13][2]:
+                _tmp = outbuf[13][2].split('\n')
+                _tmp.sort()
+                DataTable.functions = '\n'.join(_tmp) + '\n'
+            else:
+                DataTable.functions = r''
+            DataTable.binsize = outbuf[14] + '\n\n' + outbuf[15]
+            DataTable.file_info = outbuf[16] + '\n\n' + outbuf[17] + '\n\n'
         except (KeyboardInterrupt, MemoryError):
             threadpool.close()
             threadpool.terminate()
             raise SystemExit(1)
         del outbuf
-    # Make the scrollable boxes within each tab visible
-    scrolledwindow_sym_tbl.set_visible(True)
-    scrolledwindow_dyn_sym.set_visible(True)
-    scrolledwindow_nm_sym.set_visible(True)
-    scrolledwindow_dyn_reloc.set_visible(True)
-    scrolledwindow_dis.set_visible(True)
-    scrolledwindow_dis_intel.set_visible(True)
-    scrolledwindow_dis_att.set_visible(True)
-    scrolledwindow_readelf.set_visible(True)
-    scrolledwindow_all_headers.set_visible(True)
-    scrolledwindow_header.set_visible(True)
-    scrolledwindow_priv_headers.set_visible(True)
-    scrolledwindow_sec_headers.set_visible(True)
-    scrolledwindow_size.set_visible(True)
-    scrolledwindow_str.set_visible(True)
-    scrolledwindow_func.set_visible(True)
-    scrolledwindow_const.set_visible(True)
-    if not TempTable.bin_data:
-        scrolledwindow_dis_bin.set_visible(False)
-        scrolledwindow_dis_hex.set_visible(False)
-    # Return
-    return STATUS_FINISHED
 
 
-def file_properties(_file: str) -> None:
+def file_properties(_file: str) -> str:
     """Gather and display file properties in `File Properties` tab"""
     _stat = stat(_file, follow_symlinks=False)
     _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
@@ -1943,80 +2000,22 @@ def file_properties(_file: str) -> None:
     properties_str_buf: str = r'Mimetype: ' + NONE_MAGIC.file(_file) + '\nCharacter Set: ' + MIME_ENCODING.file(_file) + '\nIs link?: ' + str(islink(_file)) + '\nFile size (bytes): ' + str(_stat.st_size) + '\nInode Number: ' + str(_stat.st_ino) + '\nLast accessed: ' + str(_atime) + '\nLast modified: ' + str(_mtime) + '\nOwner UID: ' + str(_stat.st_uid) + '\nOwner GID: ' + str(_stat.st_gid) + '\nPermissions: ' + _perm + '\numask (symbolic): ' + convumask(list(_perm))
     # Count Assembly Instructions
     if DataTable.is_insn_count_available:
-        properties_str_buf += '\n\n\n* INSTRUCTION COUNT *\n\n' + getoutput(r'insn_count -c ' + _file) + '\n\n\n' + getoutput(r'insn_count -m ' + _file)
-    # Place properties in the text-buffer
-    textview_prop.get_buffer().set_text(properties_str_buf, len(properties_str_buf))
-
-
-def refreshdata(_file: str, _datatuple: tuple) -> None:  # noqa: C901
-    """Place the data in the text-buffers of the window"""
-    tabs.set_current_page(0)
-    statusbar.push(context_id, STATUS_ANALYZING[1])
-    if _datatuple[0] == -1:
-        statusbar.push(context_id, STATUS_UNSUPPORTED_FILETYPE[1])
-        return
-    # Set and display data
-    _tmp_file_name = pathsplit(_file)[1]
-    _window.set_title(r'Program-Analyzer: ' + _tmp_file_name)
-    l_file.set_text(_tmp_file_name)
-    del _tmp_file_name
-    if scrolledwindow_dis_bin.is_visible:
-        textview_dis_bin.get_buffer().set_text(TempTable.bin_data, len(TempTable.bin_data))
-    TempTable.bin_data = r''
-    if scrolledwindow_dis_hex.is_visible:
-        textview_dis_hex.get_buffer().set_text(TempTable.hex_data, len(TempTable.hex_data))
-    TempTable.hex_data = r''
-    if scrolledwindow_dis.is_visible:
-        textview_dis.get_buffer().set_text(TempTable.objdump_disassemble, len(TempTable.objdump_disassemble))
-    TempTable.objdump_disassemble = r''
-    if scrolledwindow_dis_intel.is_visible:
-        textview_dis_intel.get_buffer().set_text(TempTable.objdump_disassemble_intel, len(TempTable.objdump_disassemble_intel))
-    TempTable.objdump_disassemble_intel = r''
-    if scrolledwindow_dis_att.is_visible:
-        textview_dis_att.get_buffer().set_text(TempTable.objdump_disassemble_att, len(TempTable.objdump_disassemble_att))
-    TempTable.objdump_disassemble_att = r''
-    if scrolledwindow_sym_tbl.is_visible:
-        textview_sym_tbl.get_buffer().set_text(TempTable.objdump_symbols, len(TempTable.objdump_symbols))
-    TempTable.objdump_symbols = r''
-    if scrolledwindow_dyn_sym.is_visible:
-        textview_dyn_sym.get_buffer().set_text(TempTable.objdump_dynamic_symbols, len(TempTable.objdump_dynamic_symbols))
-    TempTable.objdump_dynamic_symbols = r''
-    if scrolledwindow_nm_sym.is_visible:
-        textview_nm_sym.get_buffer().set_text(TempTable.nm_symbols, len(TempTable.nm_symbols))
-    TempTable.nm_symbols = r''
-    if scrolledwindow_dyn_reloc.is_visible:
-        textview_dyn_reloc.get_buffer().set_text(TempTable.objdump_dynamic_relocation, len(TempTable.objdump_dynamic_relocation))
-    TempTable.objdump_dynamic_relocation = r''
-    if scrolledwindow_header.is_visible:
-        textview_header.get_buffer().set_text(TempTable.objdump_file_header, len(TempTable.objdump_file_header))
-    TempTable.objdump_file_header = r''
-    if scrolledwindow_readelf.is_visible:
-        textview_readelf.get_buffer().set_text(TempTable.readelf_all, len(TempTable.readelf_all))
-    TempTable.readelf_all = r''
-    if scrolledwindow_all_headers.is_visible:
-        textview_all_headers.get_buffer().set_text(TempTable.objdump_all_headers, len(TempTable.objdump_all_headers))
-    TempTable.objdump_all_headers = r''
-    if scrolledwindow_priv_headers.is_visible:
-        textview_priv_headers.get_buffer().set_text(TempTable.objdump_private_headers, len(TempTable.objdump_private_headers))
-    TempTable.objdump_private_headers = r''
-    if scrolledwindow_sec_headers.is_visible:
-        textview_sec_headers.get_buffer().set_text(TempTable.objdump_section_headers, len(TempTable.objdump_section_headers))
-    TempTable.objdump_section_headers = r''
-    if scrolledwindow_size.is_visible:
-        textview_size.get_buffer().set_text(TempTable.binsize, len(TempTable.binsize))
-    TempTable.binsize = r''
-    if scrolledwindow_str.is_visible:
-        textview_str.get_buffer().set_text(TempTable.strings, len(TempTable.strings))
-    TempTable.strings = r''
-    if scrolledwindow_func.is_visible:
-        textview_func.get_buffer().set_text(TempTable.functions, len(TempTable.functions))
-    TempTable.functions = r''
-    if scrolledwindow_const.is_visible:
-        textview_const.get_buffer().set_text(TempTable.constants, len(TempTable.constants))
-    TempTable.constants = r''
-    file_properties(_file)
-    statusbar.push(context_id, STATUS_FINISHED[1])
-    _window.queue_draw()
+        properties_str_buf += '\n\n\n* INSTRUCTION COUNT *\n\n'
+        properties_str_buf += getoutput(r'insn_count -c ' + _file) + '\n\n\n'
+        properties_str_buf += getoutput(r'insn_count -m ' + _file) + '\n'
+    # Get Checksums
+    properties_str_buf += '\n\n\n* CHECKSUMS *\n\n'
+    if DataTable.is_sha256sum_available:
+        _tmp: str = getoutput(DataTable.sha256sum_cmd + _file).split(r' = ')[1]
+        properties_str_buf += r'SHA256: ' + _tmp.strip() + '\n'
+    else:
+        properties_str_buf += r'Install the command `sha256sum` to support this feature'
+    if DataTable.is_sha512sum_available:
+        _tmp = getoutput(DataTable.sha512sum_cmd + _file).split(r' = ')[1]
+        properties_str_buf += r'SHA512: ' + _tmp.strip() + '\n'
+    else:
+        properties_str_buf += r'Install the command `sha512sum` to support this feature'
+    return properties_str_buf + '\n'
 
 
 # MAIN #
@@ -2028,96 +2027,22 @@ if __name__ == '__main__':
     if len(argv) == 1:
         FILEDATA: Tuple[int, str] = STATUS_SELECT_FILE
     elif len(argv) == 2:
-        BINFILE = argv[1]
-        if BINFILE == r'' or BINFILE is None:
+        DataTable.bin_file = argv[1]
+        if DataTable.bin_file == r'' or DataTable.bin_file is None:
             raise Exception(r'NULL PATHNAME GIVEN!')
-        if not pathexists(BINFILE) or not isfile(BINFILE):
+        if not pathexists(DataTable.bin_file) or not isfile(DataTable.bin_file):
             raise FileNotFoundError
-        if isdir(BINFILE):
+        if isdir(DataTable.bin_file):
             raise IsADirectoryError
-        if not fileaccess(BINFILE, R_OK):
+        if not fileaccess(DataTable.bin_file, R_OK):
             raise PermissionError
         GETFILEDATA = True
         FILEDATA = STATUS_SELECT_FILE
     else:
         raise Exception(r'Invalid number of arguments!')
     # Build GUI
-    ui = Gtk.Builder()
-    ui.add_from_string(buffer=_GUI)
+    GTKWINDOW = MainWindow(GETFILEDATA, FILEDATA)
     del _GUI
-    # Get GTK Objects
-    ui_get_object = ui.get_object
-    _window = ui_get_object(name=r'ezwin')
-    statusbar = ui_get_object(name=r'statusbar')
-    context_id = statusbar.get_context_id(r'NULL')
-    statusbar.push(context_id, r'')
-    tabs = ui_get_object(name=r'tabs')
-    tabs.set_current_page(0)
-    about_box = ui_get_object(name=r'about_box')
-    binutils_info = ui_get_object(name=r'binutils_info')
-    btn_save = ui_get_object(name=r'btn_save')
-    menuitem_save = ui_get_object(name=r'menuitem_save')
-    menuitem_saveas = ui_get_object(name=r'menuitem_saveas')
-    l_file = ui_get_object(name=r'l_file')
-    scrolledwindow_all_headers = ui_get_object(name=r'scrolledwindow_all_headers')
-    scrolledwindow_const = ui_get_object(name=r'scrolledwindow_const')
-    scrolledwindow_dis = ui_get_object(name=r'scrolledwindow_dis')
-    scrolledwindow_dis_att = ui_get_object(name=r'scrolledwindow_dis_att')
-    scrolledwindow_dis_bin = ui_get_object(name=r'scrolledwindow_dis_bin')
-    scrolledwindow_dis_hex = ui_get_object(name=r'scrolledwindow_dis_hex')
-    scrolledwindow_dis_intel = ui_get_object(name=r'scrolledwindow_dis_intel')
-    scrolledwindow_dyn_reloc = ui_get_object(name=r'scrolledwindow_dyn_reloc')
-    scrolledwindow_dyn_sym = ui_get_object(name=r'scrolledwindow_dyn_sym')
-    scrolledwindow_func = ui_get_object(name=r'scrolledwindow_func')
-    scrolledwindow_header = ui_get_object(name=r'scrolledwindow_header')
-    scrolledwindow_nm_sym = ui_get_object(name=r'scrolledwindow_nm_sym')
-    scrolledwindow_priv_headers = ui_get_object(name=r'scrolledwindow_priv_headers')
-    scrolledwindow_prop = ui_get_object(name=r'scrolledwindow_prop')
-    scrolledwindow_readelf = ui_get_object(name=r'scrolledwindow_readelf')
-    scrolledwindow_sec_headers = ui_get_object(name=r'scrolledwindow_sec_headers')
-    scrolledwindow_size = ui_get_object(name=r'scrolledwindow_size')
-    scrolledwindow_str = ui_get_object(name=r'scrolledwindow_str')
-    scrolledwindow_sym_tbl = ui_get_object(name=r'scrolledwindow_sym_tbl')
-    textview_all_headers = ui_get_object(name=r'textview_all_headers')
-    textview_const = ui_get_object(name=r'textview_const')
-    textview_dis = ui_get_object(name=r'textview_dis')
-    textview_dis_att = ui_get_object(name=r'textview_dis_att')
-    textview_dis_bin = ui_get_object(name=r'textview_dis_bin')
-    textview_dis_hex = ui_get_object(name=r'textview_dis_hex')
-    textview_dis_intel = ui_get_object(name=r'textview_dis_intel')
-    textview_dyn_reloc = ui_get_object(name=r'textview_dyn_reloc')
-    textview_dyn_sym = ui_get_object(name=r'textview_dyn_sym')
-    textview_func = ui_get_object(name=r'textview_func')
-    textview_header = ui_get_object(name=r'textview_header')
-    textview_nm_sym = ui_get_object(name=r'textview_nm_sym')
-    textview_priv_headers = ui_get_object(name=r'textview_priv_headers')
-    textview_prop = ui_get_object(name=r'textview_prop')
-    textview_readelf = ui_get_object(name=r'textview_readelf')
-    textview_sec_headers = ui_get_object(name=r'textview_sec_headers')
-    textview_size = ui_get_object(name=r'textview_size')
-    textview_str = ui_get_object(name=r'textview_str')
-    textview_sym_tbl = ui_get_object(name=r'textview_sym_tbl')
-    # Window Title
-    l_file.set_text(r'Program-Analyzer')
-    # Set GNU-Binutls Info in About-tab
-    binutils_info.set_text(getoutput(r'objdump --version'))
-    # Signal Handlers
-    ui.connect_signals({
-        r'gtk_open': gtk_open,
-        r'gtk_save': gtk_save,
-        r'gtk_saveas': gtk_saveas,
-        r'show_hide_save': show_hide_save,
-        r'_winexit': Gtk.main_quit
-    })
-    # Begin Program
-    if GETFILEDATA:
-        FILEDATA = getdis(BINFILE)  # Get data from the chosen file
-    del GETFILEDATA
-    statusbar.push(context_id, FILEDATA[1])
-    if FILEDATA[0] >= 2:
-        refreshdata(BINFILE, FILEDATA)
-    else:
-        gtk_open()
     # Show Window
     Gtk.main()
     raise SystemExit(0)
