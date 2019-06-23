@@ -704,6 +704,7 @@ install_mimetype_booster :
 	([ -f $(SYSMIMEDIR)/packages/libreoffice.xml ] && $(RM) $(SYSMIMEDIR)/packages/libreoffice.xml) || true
 	([ -f $(SYSMIMEDIR)/packages/meld.xml ] && $(RM) $(SYSMIMEDIR)/packages/meld.xml) || true
 	([ -f $(SYSMIMEDIR)/packages/mysql-workbench.xml ] && $(RM) $(SYSMIMEDIR)/packages/mysql-workbench.xml) || true
+	([ -f $(SYSMIMEDIR)/packages/ngraph.xml ] && $(RM) $(SYSMIMEDIR)/packages/ngraph.xml) || true
 	([ -f $(SYSMIMEDIR)/packages/remmina-mime.xml ] && $(RM) $(SYSMIMEDIR)/packages/remmina-mime.xml) || true
 	([ -f $(SYSMIMEDIR)/packages/scilab.xml ] && $(RM) $(SYSMIMEDIR)/packages/scilab.xml) || true
 	([ -f $(SYSMIMEDIR)/packages/view3dscene.xml ] && $(RM) $(SYSMIMEDIR)/packages/view3dscene.xml) || true
@@ -713,7 +714,7 @@ install_mimetype_booster :
 	$(RM) /home/*/.local/share/applications/mimeinfo.cache
 	$(RMDIR) /home/*/.thumbnails/ /home/*/.cache/thumbnails/
 	$(UPDATEDESKTOP) $(SYSAPPDIR)
-	$(UPDATEMIME) $(SYSMIMEDIR)
+	$(UPDATEMIME) -V $(SYSMIMEDIR)
 
 uninstall_mimetype_booster :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Mimetypes ==='
