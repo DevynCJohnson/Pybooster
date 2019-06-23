@@ -2047,8 +2047,8 @@
     <sub-class-of type="text/xml"/>
   </mime-type>
   <mime-type type="application/x-awk">
-    <alias type="text/x-awk"/>
     <comment>Awk Script</comment>
+    <alias type="text/x-awk"/>
     <icon name="application-x-awk"/>
     <glob pattern="*.awk" weight="95"/>
     <glob pattern="*.bwk" weight="95"/>
@@ -2681,8 +2681,8 @@
     <glob pattern="*.smd"/>
   </mime-type>
   <mime-type type="application/x-geo">
-    <sub-class-of type="text/plain"/>
     <comment>Videoscape GEO Model</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.geo"/>
   </mime-type>
   <mime-type type="application/x-gettext-translation">
@@ -2827,8 +2827,8 @@
     </magic>
   </mime-type>
   <mime-type type="application/x-inventor">
-    <sub-class-of type="text/plain"/>
     <comment>Inventor Model</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.iv"/>
   </mime-type>
   <mime-type type="application/x-ipod-firmware">
@@ -3381,8 +3381,8 @@
     <glob pattern="*.mps"/>
   </mime-type>
   <mime-type type="application/x-ms-shortcut">
-    <glob pattern="*.lnk"/>
     <comment>Shortcut</comment>
+    <glob pattern="*.lnk"/>
   </mime-type>
   <mime-type type="application/x-ms-dos-executable">
     <comment>DOS/Windows Executable</comment>
@@ -3393,8 +3393,8 @@
     <glob pattern="*.exe"/>
   </mime-type>
   <mime-type type="application/x-msdownload">
-    <glob pattern="*.dll"/>
     <comment>Dynamic Loadable Library</comment>
+    <glob pattern="*.dll"/>
   </mime-type>
   <mime-type type="application/x-msi">
     <comment>Windows Installer Package</comment>
@@ -3443,6 +3443,21 @@
       <match offset="0" type="big32" value="0x37804012"/>
       <match offset="0" type="big32" value="0x40123780"/>
     </magic>
+  </mime-type>
+  <mime-type type="application/x-ngraph">
+    <comment>Ngraph</comment>
+    <glob pattern="*.ngp"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="application/x-ngraph-graphic">
+    <comment>Ngraph Graphic File</comment>
+    <glob pattern="*.gra"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+  <mime-type type="application/x-ngraph-script">
+    <comment>Ngraph Script File</comment>
+    <glob pattern="*.nsc"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-nautilus-link">
     <comment>Nautilus Link</comment>
@@ -3607,8 +3622,9 @@
   <mime-type type="application/x-pem-file">
     <comment>Openssl PEM Format</comment>
     <acronym>PEM</acronym>
-    <sub-class-of type="text/plain"/>
+    <expanded-acronym>Privacy-enhanced Electronic Mail</expanded-acronym>
     <glob pattern="*.pem"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="application/x-pem-key">
     <comment>Private Key (PEM Format)</comment>
@@ -3856,58 +3872,58 @@
     </magic>
   </mime-type>
   <mime-type type="application/x-scilab-bin">
-    <sub-class-of type="application/octet-stream"/>
     <comment>Scilab Binary</comment>
+    <sub-class-of type="application/octet-stream"/>
     <glob pattern="*.bin"/>
   </mime-type>
   <mime-type type="application/x-scilab-cos">
-    <sub-class-of type="application/x-scilab-bin"/>
     <comment>Scicos Binary Schema</comment>
+    <sub-class-of type="application/x-scilab-bin"/>
     <glob pattern="*.cos"/>
   </mime-type>
   <mime-type type="application/x-scilab-cosf">
-    <sub-class-of type="application/x-scilab-sce"/>
     <comment>Scicos Schema</comment>
+    <sub-class-of type="application/x-scilab-sce"/>
     <glob pattern="*.cosf"/>
   </mime-type>
   <mime-type type="application/x-scilab-dem">
-    <sub-class-of type="application/sce"/>
     <comment>Scilab Demo</comment>
+    <sub-class-of type="application/sce"/>
     <glob pattern="*.dem"/>
   </mime-type>
   <mime-type type="application/x-scilab-sce">
-    <sub-class-of type="text/plain"/>
     <comment>Scilab Script</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.sce"/>
   </mime-type>
   <mime-type type="application/x-scilab-sci">
-    <sub-class-of type="text/plain"/>
     <comment>Scilab Macro</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.sci"/>
   </mime-type>
   <mime-type type="application/x-scilab-sod">
-    <sub-class-of type="application/x-hdf5"/>
     <comment>Scilab Open Data Format (HDF5 Based)</comment>
+    <sub-class-of type="application/x-hdf5"/>
     <glob pattern="*.sod"/>
   </mime-type>
   <mime-type type="application/x-scilab-tst">
+    <comment>Scilab Test</comment>
     <sub-class-of type="application/sce"/>
-    <comment>Scilab test</comment>
     <glob pattern="*.tst"/>
   </mime-type>
   <mime-type type="application/x-scilab-xcos">
-    <sub-class-of type="text/xml"/>
     <comment>Scilab/Xcos Schema</comment>
+    <sub-class-of type="text/xml"/>
     <glob pattern="*.xcos"/>
   </mime-type>
   <mime-type type="application/x-scilab-zcos">
-    <sub-class-of type="application/zip"/>
     <comment>Scilab/Xcos Compressed Schema</comment>
+    <sub-class-of type="application/zip"/>
     <glob pattern="*.zcos"/>
   </mime-type>
   <mime-type type="application/x-sed">
-    <alias type="text/x-sed"/>
     <comment>Sed Script</comment>
+    <alias type="text/x-sed"/>
     <icon name="application-x-sed"/>
     <glob pattern="*.sed" weight="95"/>
     <magic priority="100">
@@ -3985,8 +4001,8 @@
     </magic>
   </mime-type>
   <mime-type type="application/x-shellscript">
-    <alias type="text/x-sh"/>
     <comment>Shell Script</comment>
+    <alias type="text/x-sh"/>
     <icon name="application-x-shellscript"/>
     <glob pattern="*.ash" weight="95"/>
     <glob pattern="*.bash" weight="95"/>
@@ -4286,8 +4302,8 @@
     <icon name="virtualbox-vmdk"/>
   </mime-type>
   <mime-type type="application/x-vnc">
-    <sub-class-of type="text/plain"/>
     <comment>Remote Desktop (VNC) file</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.vnc"/>
   </mime-type>
   <mime-type type="application/x-wais-source">
@@ -4297,15 +4313,15 @@
     <glob pattern="*.src"/>
   </mime-type>
   <mime-type type="application/x-wavefront-obj">
-    <sub-class-of type="text/plain"/>
     <comment>Wavefront OBJ Model</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.obj"/>
   </mime-type>
   <mime-type type="application/x-wii-rom">
+    <comment>Wii Disc Image</comment>
     <alias type="application/x-wbfs"/>
     <alias type="application/x-wia"/>
     <alias type="application/x-wii-iso-image"/>
-    <comment>Wii Disc Image</comment>
     <icon name="application-x-wii-wad"/>
     <glob pattern="*.iso"/>
     <magic priority="70">
@@ -4331,16 +4347,16 @@
     <sub-class-of type="application/vnd.ms-cab-compressed"/>
   </mime-type>
   <mime-type type="application/x-wine-extension-cpl">
-    <glob pattern="*.cpl"/>
     <comment>Control Panel Item</comment>
+    <glob pattern="*.cpl"/>
   </mime-type>
   <mime-type type="application/x-wine-extension-inf">
-    <glob pattern="*.inf"/>
     <comment>Setup Information</comment>
+    <glob pattern="*.inf"/>
   </mime-type>
   <mime-type type="application/x-wine-extension-its">
-    <glob pattern="*.its"/>
     <comment>Internet Document Set</comment>
+    <glob pattern="*.its"/>
   </mime-type>
   <mime-type type="application/x-wonderswan-rom">
     <comment>Bandai WonderSwan ROM</comment>
@@ -4426,8 +4442,8 @@
     <glob pattern="*.pdf.xz"/>
   </mime-type>
   <mime-type type="application/x-yaml">
-    <acronym>YAML</acronym>
     <comment>YAML Document</comment>
+    <acronym>YAML</acronym>
     <expanded-acronym>YAML Ain&#x27;t Markup Language</expanded-acronym>
     <icon name="text-yaml"/>
     <glob pattern="*.yaml"/>
@@ -5045,7 +5061,7 @@
   </mime-type>
   <mime-type type="chemical/x-csml">
     <comment>Chemical Style Markup Language</comment>
-    <generic-icon name="chemical-x-generic"/>
+    <icon name="chemical-x-generic"/>
     <glob pattern="*.csml"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -6081,8 +6097,8 @@
     <icon name="chardevice"/>
   </mime-type>
   <mime-type type="inode/directory">
-    <alias type="x-directory/normal"/>
     <comment>Folder</comment>
+    <alias type="x-directory/normal"/>
     <icon name="folder"/>
   </mime-type>
   <mime-type type="inode/fifo">
@@ -6204,15 +6220,15 @@
     <glob pattern="*.x3db.gz"/>
   </mime-type>
   <mime-type type="model/x3d+vrml">
-    <sub-class-of type="text/plain"/>
     <comment>X3D Model (Classic VRML Encoding)</comment>
+    <sub-class-of type="text/plain"/>
     <glob pattern="*.x3dv"/>
     <glob pattern="*.x3dv.gz"/>
     <glob pattern="*.x3dvz"/>
   </mime-type>
   <mime-type type="model/x3d+xml">
-    <sub-class-of type="text/xml"/>
     <comment>X3D Model (XML Encoding)</comment>
+    <sub-class-of type="text/xml"/>
     <glob pattern="*.x3d"/>
     <glob pattern="*.x3d.gz"/>
     <glob pattern="*.x3dz"/>
@@ -6221,8 +6237,8 @@
   <!-- MODEL/vnd.* -->
 
   <mime-type type="model/vnd.collada+xml">
-    <sub-class-of type="text/xml"/>
     <comment>COLLADA Model</comment>
+    <sub-class-of type="text/xml"/>
     <glob pattern="*.dae"/>
   </mime-type>
 
@@ -6289,8 +6305,8 @@
     <glob pattern="*.vcs"/>
   </mime-type>
   <mime-type type="text/css">
-    <acronym>CSS</acronym>
     <comment>CSS stylesheet</comment>
+    <acronym>CSS</acronym>
     <expanded-acronym>Cascading Style Sheets</expanded-acronym>
     <alias type="text/x-css"/>
     <icon name="text-x-css"/>
@@ -6298,8 +6314,8 @@
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/csv">
-    <acronym>CSV</acronym>
     <comment>CSV Document</comment>
+    <acronym>CSV</acronym>
     <expanded-acronym>Comma Separated Values</expanded-acronym>
     <icon name="text-x-csv"/>
     <glob pattern="*.csv"/>
@@ -6308,8 +6324,8 @@
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/csv-schema">
-    <acronym>CSV</acronym>
     <comment>CSV Schema Document</comment>
+    <acronym>CSV</acronym>
     <expanded-acronym>Comma Separated Values</expanded-acronym>
     <icon name="text-x-csvs"/>
     <glob pattern="*.csvs"/>
@@ -6659,8 +6675,8 @@
     <glob pattern="HISTORY.txt"/>
   </mime-type>
   <mime-type type="text/x-csrc">
-    <alias type="text/x-c"/>
     <comment>C Source Code</comment>
+    <alias type="text/x-c"/>
     <icon name="text-x-csrc"/>
     <glob case-sensitive="true" pattern="*.c"/>
     <sub-class-of type="text/plain"/>
@@ -6692,6 +6708,7 @@
     <glob pattern="*.cob"/>
   </mime-type>
   <mime-type type="text/x-component">
+    <comment>HTML Component</comment>
     <glob pattern="*.htc"/>
   </mime-type>
   <mime-type type="text/x-copying">
@@ -8089,8 +8106,8 @@
   <!-- X-EPOC/* -->
 
   <mime-type type="x-epoc/x-sisx-app">
-    <acronym>SISX</acronym>
     <comment>SISX Package</comment>
+    <acronym>SISX</acronym>
     <expanded-acronym>Symbian Series 3 Installation File</expanded-acronym>
     <icon name="sisx"/>
     <glob pattern="*.sisx"/>
@@ -8118,8 +8135,8 @@
     <glob pattern="*.svr"/>
   </mime-type>
   <mime-type type="x-world/x-vrt">
-    <acronym>GDAL</acronym>
     <comment>Geospatial Data Abstraction Library File</comment>
+    <acronym>GDAL</acronym>
     <expanded-acronym>Geospatial Data Abstraction Library</expanded-acronym>
     <icon name="media-image"/>
     <glob pattern="*.vrt"/>
