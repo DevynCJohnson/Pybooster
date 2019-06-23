@@ -1,3 +1,15 @@
+2019-06-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Fixed a file template
+	* makefile:  Minor changes to `install_mimetype_booster`
+	* mimetype_booster.xml:  Fixed some major bugs
+	* Program-Analyzer:  Fixed some bugs, refactored all of the code, & removed the dumps
+
+2019-06-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* pylint2:  Fixed a bug
+	* pylint3:  Fixed a bug
+
 2019-06-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Fixed some bugs
