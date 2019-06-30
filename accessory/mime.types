@@ -362,7 +362,7 @@ application/simplesymbolcontainer
 application/sla	stl
 application/slate
 application/smil
-application/smil+xml	smi smil
+application/smil+xml	smil
 application/smpte336m
 application/soap+fastinfoset
 application/soap+xml
@@ -1767,7 +1767,7 @@ chemical/x-crossfire	bsd
 chemical/x-csml	csml csm
 chemical/x-ctx	ctx
 chemical/x-cxf	cxf cef
-#chemical/x-daylight-smiles	smi
+chemical/x-daylight-smiles	smi
 chemical/x-embl-dl-nucleotide	emb embl
 chemical/x-galactic-spc	spc
 chemical/x-gamess-input	inp gam gamin
@@ -1788,7 +1788,7 @@ chemical/x-mdl-rdfile	rd
 chemical/x-mdl-rxnfile	rxn
 chemical/x-mdl-sdfile	sd sdf
 chemical/x-mdl-tgf	tgf
-#chemical/x-mif	mif
+chemical/x-mif	mif
 chemical/x-mmcif	mcif
 chemical/x-mol2	mol2
 chemical/x-molconn-Z	b
@@ -2153,20 +2153,20 @@ text/x-perl	pl pm
 text/x-prolog	pro prl prolog P
 text/x-python	py py3 py2 pygtk pyqt pyside
 text/x-scala	scala scl
-#text/x-script	hlb
-#text/x-script.csh	csh
-#text/x-script.elisp	el
-#text/x-script.guile	scm
-#text/x-script.ksh	ksh
-#text/x-script.lisp	lsp
-#text/x-script.perl	pl
-#text/x-script.perl-module	pm
-#text/x-script.python	py py3 py2 pygtk pyqt pyside
-#text/x-script.rexx	rexx
-#text/x-script.scheme	scm
-#text/x-script.sh	sh
-#text/x-script.tcl	tcl
-#text/x-script.tcsh	tcsh
+text/x-script	hlb
+text/x-script.csh	csh
+text/x-script.elisp	el
+text/x-script.guile	scm
+text/x-script.ksh	ksh
+text/x-script.lisp	lsp
+text/x-script.perl	pl
+text/x-script.perl-module	pm
+text/x-script.python	py py3 py2 pygtk pyqt pyside
+text/x-script.rexx	rexx
+text/x-script.scheme	scm
+text/x-script.sh	sh
+text/x-script.tcl	tcl
+text/x-script.tcsh	tcsh
 text/x-server-parsed-html	ssi
 text/x-setext	etx
 text/x-sfv	sfv
@@ -2307,7 +2307,7 @@ www/mime	mime
 
 x-conference/x-cooltalk	ice
 x-epoc/x-sisx-app	sisx
-#x-music/x-midi	mid midi
+x-music/x-midi	mid midi
 
 # X-WORLD/* #
 
