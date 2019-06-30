@@ -6,7 +6,7 @@
 
 @file science_data.py
 @package pybooster.science_data
-@version 2019.03.28
+@version 2019.06.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -257,12 +257,15 @@ ATOM_MOLAR_MASS: dict = {  # NOTE: All molar masses are in grams per mole
     r'darmstadtium': r'281',
     r'roentgenium': r'281',
     r'copernicium': r'285',
-    r'ununtrium': r'286',
+    r'nihonium': r'286',
     r'flerovium': r'289',
-    r'ununpentium': r'288',
+    r'moscovium': r'290',
     r'livermorium': r'293',
-    r'ununseptium': r'294',
-    r'ununoctium': r'294'
+    r'tennessine': r'294',
+    r'oganesson': r'294',
+    r'ununennium': r'315',
+    r'unbinilium': r'299',
+    r'unbiunium': r'121',
 }
 
 
