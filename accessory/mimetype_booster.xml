@@ -410,8 +410,8 @@
     <comment>PKCS#10 Certificate Request (PEM Format)</comment>
     <sub-class-of type="application/x-pem-file"/>
     <magic priority="75">
-      <match type="string" value="-----BEGIN CERTIFICATE REQUEST-----" offset="0"/>
-      <match type="string" value="-----BEGIN NEW CERTIFICATE REQUEST-----" offset="0"/>
+      <match offset="0" type="string" value="-----BEGIN CERTIFICATE REQUEST-----"/>
+      <match offset="0" type="string" value="-----BEGIN NEW CERTIFICATE REQUEST-----"/>
     </magic>
   </mime-type>
   <mime-type type="application/pkcs12+pem">
@@ -2194,9 +2194,9 @@
     <glob pattern="*.iso" weight="80"/>
     <glob pattern="*.iso9660"/>
     <magic priority="80">
-      <match offset="0x8001" type="string" value="CD001"/>
-      <match offset="0x8801" type="string" value="CD001"/>
-      <match offset="0x9001" type="string" value="CD001"/>
+      <match offset="32769" type="string" value="CD001"/>
+      <match offset="34817" type="string" value="CD001"/>
+      <match offset="36865" type="string" value="CD001"/>
     </magic>
     <alias type="application/x-iso9660-image"/>
     <sub-class-of type="application/x-raw-disk-image"/>
@@ -8141,7 +8141,7 @@
     <icon name="media-image"/>
     <glob pattern="*.vrt"/>
     <magic priority="95">
-      <match offset="0" type="little32" value="&lt;VRTDataset rasterXSize&lt;&quot;"/>
+      <match offset="0" type="string" value="&lt;VRTDataset rasterXSize&lt;&quot;"/>
     </magic>
   </mime-type>
 
