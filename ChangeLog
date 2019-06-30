@@ -1,3 +1,10 @@
+2019-06-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added `prepend_line_number.sh` to Geany's Miniscript directory
+	* mime.types:  Fixed additional bugs
+	* mimetype_booster.xml:  Fixed additional bugs
+	* science_data.py:  Added more elements to the atomic elements table & updated some molar masses
+
 2019-06-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Fixed a file template
