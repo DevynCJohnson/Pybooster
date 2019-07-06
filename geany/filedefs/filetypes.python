@@ -39,7 +39,7 @@ FT_00_LB=_Flake8
 FT_00_CM=flake8 --jobs=1 --max-complexity=10 --exclude='.bzr,CVS,.git,.hg,.svn,.tox,__init__.py,__init__,__pycache__' --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "%d/%f"
 FT_00_WD=
 FT_01_LB=_PyAnalysis
-FT_01_CM=pyanalysis "%d/%f"
+FT_01_CM=export PYTHONPATH="${PYTHONPATH}:%p:%d/../../..:%d/../..:%d/.."; pyanalysis "%d/%f"
 FT_01_WD=
 FT_02_LB=PyLint
 FT_02_CM=pylint3 --disable='C0301,I0011' --good-names='i,j,k,v,ex,key,Run,val,_' --notes='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX' --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "%d/%f"
