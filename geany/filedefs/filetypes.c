@@ -59,8 +59,8 @@ FT_00_WD=
 FT_01_LB=C_analysis
 FT_01_CM=canalysis "%d/%f"
 FT_01_WD=
-FT_02_LB=_Splint (strict)
-FT_02_CM=splint -I. -hints -checks -strict "%d/%f"
+FT_02_LB=
+FT_02_CM=
 FT_02_WD=
 FT_03_LB=cppcheck
 FT_03_CM=cppcheck -I. -v --language=c --std=c11 --std=posix --enable=style --enable=warning --template=gcc --force --inconclusive "%d/%f"
@@ -69,7 +69,7 @@ FT_04_LB=_KWStyle
 FT_04_CM=KWStyle -v -gcc "%d/%f"
 FT_04_WD=
 FT_05_LB=ltrace
-FT_05_CM=ltrace -c -S -tt -T %d/%e
+FT_05_CM=ltrace -c -S -tt -T "%d/%e"
 FT_05_WD=
 FT_06_LB=program-analyzer
 FT_06_CM=program-analyzer "%d/%e"
@@ -78,7 +78,7 @@ FT_07_LB=_Compile
 FT_07_CM=gcc -Wall -Wextra -Wpedantic -I. -L. -std=c11 -c "%d/%f"
 FT_07_WD=
 FT_08_LB=Build (_Math)
-FT_08_CM=gcc -Wall -Wextra -Wpedantic -I. -L. -std=c11 -funsafe-math-optimizations -ffast-math -fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -momit-leaf-frame-pointer -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -pthread -ffunction-sections -fdata-sections -o "%d/%e" "%d/%f"  && strip --strip-debug --strip-unneeded --discard-locals --remove-section=.bss --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.gnu.hash --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr "%d/%e"
+FT_08_CM=gcc -Wall -Wextra -Wpedantic -I. -L. -std=c11 -funsafe-math-optimizations -ffast-math -fno-signed-zeros -fno-math-errno -fno-signaling-nans -ftree-vectorize -ffinite-math-only -mlong-double-128 -momit-leaf-frame-pointer -mcrc32 -msahf -mcx16 -mvzeroupper -mcld -O3 -Wl,-O3 -g0 -ggdb0 -s -fwhole-program -funroll-loops -pthread -ffunction-sections -fdata-sections -o "%d/%e" "%d/%f" && strip --strip-debug --strip-unneeded --discard-locals --remove-section=.bss --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.gnu.hash --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr "%d/%e"
 FT_08_WD=
 EX_00_LB=_Execute
 EX_00_CM="%d/%e"
@@ -87,9 +87,9 @@ EX_01_LB=Strip
 EX_01_CM=strip --strip-debug --strip-unneeded --discard-locals --remove-section=.bss --remove-section=.note --remove-section=.note.ABI-tag --remove-section=.note.gnu.build-id --remove-section=.comment --remove-section=.eh_frame --remove-section=.eh_frame_hdr --remove-section=.gnu.version --remove-section=.jcr --remove-section=.line --remove-section=.stab --remove-section=.stabstr "%d/%e"
 EX_01_WD=
 EX_02_LB=binwalk
-EX_02_CM=binwalk -BEACS %d/%e
+EX_02_CM=binwalk -BEACS "%d/%e"
 EX_02_WD=
-EX_03_LB=
-EX_03_CM=
+EX_03_LB=Valgrind
+EX_03_CM=valgrind --leak-check=full "%d/%e"
 EX_03_WD=
 error_regex=

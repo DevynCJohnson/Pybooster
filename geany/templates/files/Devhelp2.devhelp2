@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/TITLE/" language="LANGUAGE" link="index.html" name="TITLE" title="TITLE Documentation" version="2">
+  <chapters>
+    <sub name="NAME" link="FILE.html" />
+    <sub name="NAME" link="FILE.html" />
+    <sub name="NAME" link="FILE.html">
+      <sub name="NAME" link="FILE.html" />
+    </sub>
+  </chapters>
+</book>

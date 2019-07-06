@@ -83,9 +83,11 @@ var/
 
 # Miscellaneous
 
-*.[Cc]ache
+*.[Cc][Aa][Cc][Hh][Ee]
 *.[Tt][Mm][Pp]
 *.todo.txt
+*~
+.*.swp
 .DS_Store
 .lock-wscript
 .sh-session
@@ -125,7 +127,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *.ii
 *.ptx
 
-# Debugging  & Profiling Files
+# Debugging & Profiling Files
 
 *.[Dd][Ss][Yy][Mm]/
 *.gcda
@@ -204,7 +206,7 @@ target/
 
 # Unit Test & Coverage Reports
 
-*,cover
+*.cover
 *.pytb
 .hypothesis/
 .tox/

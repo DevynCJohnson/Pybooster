@@ -5,23 +5,46 @@
 
 *.[Ll][Oo][Gg]
 *.[Ll][Oo][Gg][Ss]
-.cache
-[Bb]in/
-[Dd]ebug/
+.[Cc][Aa][Cc][Hh][Ee]
+[Bb][Ii][Nn]/
+[Dd][Ee][Bb][Uu][Gg]/
 [Ll][Oo][Gg][Ss]/
 [Tt]esting/
+.compiled/
+bower_components/
 build/
+compiled/
 downloads/
 htmlcov/
 metrics/
 python/
 var/
 
+# Archive & Compression Files
+
+*.bz2
+*.gz
+*.lzma
+*.tar
+*.tar.bz2
+*.tar.gz
+*.tar.lzma
+*.tar.xz
+*.xz
+*.Z
+*.zip
+
+# Package Files
+
+*.deb
+*.rpm
+
 # Project Configuration Files
 
 #.astyle.ini
 #.bandit
 #.bandit.ini
+#.csslintrc
 #.csslint.rc
 #.editorconfig
 #.eslintrc
@@ -31,6 +54,7 @@ var/
 #.eslintrc.yml
 #.flake8
 #.gitlint
+#.isort.cfg
 #.mypy.ini
 #.npmrc
 #.pycodestyle
@@ -44,6 +68,8 @@ var/
 .coverage
 .coverage.*
 .coveragerc
+*.geany
+*.geanywb
 .style.yapf
 
 # Revision Control Directories
@@ -53,17 +79,21 @@ var/
 .git/
 .hg/
 .svn/
+.svk/
 
 # Miscellaneous
 
-*.[Cc]ache
-*.tmp
+*.[Cc][Aa][Cc][Hh][Ee]
+*.[Tt][Mm][Pp]
 *.todo.txt
+*~
+.*.swp
+.DS_Store
 .lock-wscript
-.wafpickle-*
 .sh-session
+.wafpickle-*
 icon-theme.cache
-yarn.lock
+yarn.[Ll][Oo][Cc][Kk]
 
 
 ## TRANSLATIONS ##
@@ -78,9 +108,9 @@ yarn.lock
 
 # Executables
 
-*.app
-*.exe
-*.hex
+*.[Aa][Pp][Pp]
+*.[Ee][Xx][Ee]
+*.[Hh][Ee][Xx]
 *.i386
 *.i486
 *.i586
@@ -92,14 +122,14 @@ yarn.lock
 
 *.cubin
 *.fatbin
-*.gpu
+*.[Gg][Pp][Uu]
 *.i
 *.ii
 *.ptx
 
-# Debugging  & Profiling Files
+# Debugging & Profiling Files
 
-*.dSYM/
+*.[Dd][Ss][Yy][Mm]/
 *.gcda
 *.idb
 *.pdb
@@ -126,7 +156,7 @@ yarn.lock
 
 # Object Files
 
-*.dll
+*.[Dd][Ll][Ll]
 *.dylib
 *.elf
 *.ko
@@ -152,7 +182,7 @@ yarn.lock
 *__pycache__
 __pycache__/
 
-# Distribution
+# Distribution & Virtual Environments
 
 *.egg
 *.egg-info/
@@ -176,7 +206,7 @@ target/
 
 # Unit Test & Coverage Reports
 
-*,cover
+*.cover
 *.pytb
 .hypothesis/
 .tox/
@@ -186,10 +216,3 @@ nosetests.xml
 # IPython Notebook
 
 .ipynb_checkpoints
-
-# dotenv, virtualenv, & pyenv
-
-.env
-.python-version
-ENV/
-venv/
