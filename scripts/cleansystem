@@ -249,16 +249,12 @@ if [ -n "${current_user:-}" ]; then
         chmod -R o-rwx "/home/${current_user}"
         if [ -d "/home/${current_user}/Public" ]; then
             chmod o+rwx "/home/${current_user}/Public"
-            find "/home/${current_user}/Public" -type d -exec chmod -R o+rwx "/home/${current_user}/Public"
-            find "/home/${current_user}/Public" -type f -exec chmod -R o+rw "/home/${current_user}/Public"
         fi
-    elif [ "${current_user}" == 'root' ] && [ -d /root ]; then
+    elif [ "${current_user}" = 'root' ] && [ -d /root ]; then
         chown -R root:root /root
         chmod -R o-rwx /root
         if [ -d /root/Public ]; then
             chmod o+rwx /root/Public
-            find /root/Public -type d -exec chmod -R o+rwx /root/Public
-            find /root/Public -type f -exec chmod -R o+rw /root/Public
         fi
     fi
 fi
