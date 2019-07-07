@@ -437,7 +437,7 @@ presubmit : cleanall fixperm pkgzip changelogmd news genchecksums valchecksums
 submitall : presubmit
 	@git checkout dev
 	git push --progress --verify origin dev
-	git checkout master && git merge --commit dev && git push --progress --verify origin master
+	git checkout master && git merge --commit --signoff dev && git push --progress --verify origin master
 	git checkout dev
 	git tag -s -a 'v$(__VERSION__)' -m 'Stable Release (v$(__VERSION__))'
 	git push origin --tags
@@ -454,7 +454,7 @@ submitrel : presubmit xtag pushtags
 	git push --progress --verify origin dev
 	printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Syncing Master Branch ==='
 	git checkout master
-	git merge --commit dev
+	git merge --commit --signoff dev
 	git push --progress --verify origin master
 	git checkout dev
 
