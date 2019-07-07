@@ -1,6 +1,7 @@
 2019-07-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Applied minor tweaks & added some templates to Geany
+	* makefile:  Added `--signoff` to the `git merge` command under `submitall` & `submitrel`
 
 2019-07-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

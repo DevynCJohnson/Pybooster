@@ -1,3 +1,21 @@
+2019-07-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Applied minor tweaks & added some templates to Geany
+	* makefile:  Added `--signoff` to the `git merge` command under `submitall` & `submitrel`
+
+2019-07-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Added code to remove execute permissions from SystemD service files
+	* Geany:  Applied minor tweaks to Geany's file-definition files
+	* PyBooster:  Added `pygraphimports`, `pygraphimports3`, `pygraphclasses`, & `pygraphclasses3`
+
+2019-06-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added `prepend_line_number.sh` to Geany's Miniscript directory
+	* mime.types:  Fixed additional bugs
+	* mimetype_booster.xml:  Fixed additional bugs
+	* science_data.py:  Added more elements to the atomic elements table & updated some molar masses
+
 2019-06-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Fixed a file template
