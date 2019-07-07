@@ -1,5 +1,6 @@
 2019-07-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* cleansystem:  Fixed a bug associated with repairing file-permissions
 	* Geany:  Applied minor tweaks & added some templates to Geany
 	* makefile:  Added `--signoff` to the `git merge` command under `submitall` & `submitrel`
 
