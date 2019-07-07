@@ -1,7 +1,4 @@
 # format=tagmanager
-# created with:
-# CFLAGS=`pkg-config --cflags gtk+-2.0` geany -g gtk-2.18.c.tags /usr/include/gtk-2.0/gtk/gtk.h
-# on Sun Dec 06 15:40:10 2009 UTC on Debian Testing using GTK 2.18.4
 ABSÌ65536Ö0
 ABSÌ131072Í(a)Ö0
 AIO_PRIO_DELTA_MAXÌ65536Ö0

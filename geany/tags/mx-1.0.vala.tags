@@ -1,0 +1,678 @@
+# format=tagmanager
+@foreachÌ128Í(Clutter.Callback callback)ÎMx.ButtonGroupÖ0Ïpublic void
+@getÌ128Í(...)ÎMx.StylableÖ0Ïpublic void
+@getÌ128Í(Mx.Stylable stylable, ...)ÎMx.StyleÖ0Ïpublic void
+ACTIONÌ4ÎMx.LongPressActionÖ0
+ActionÌ1ÎMxÖ0
+ActionÌ128Í()ÎMx.ActionÖ0
+Action.fullÌ128Í(string name, string display_name, GLib.Callback activated_cb)ÎMx.ActionÖ0
+AdjustmentÌ1ÎMxÖ0
+AdjustmentÌ128Í()ÎMx.AdjustmentÖ0
+Adjustment.with_valuesÌ128Í(double value, double lower, double upper, double step_increment, double page_increment, double page_size)ÎMx.AdjustmentÖ0
+AlignÌ2ÎMxÖ0
+ApplicationÌ1ÎMxÖ0
+ApplicationÌ128Í([CCode (array_length_pos = 0.9)] ref unowned string[] argv, string name, Mx.ApplicationFlags flags)ÎMx.ApplicationÖ0
+ApplicationFlagsÌ2ÎMxÖ0
+BOLDÌ4ÎMx.FontWeightÖ0
+BOLDERÌ4ÎMx.FontWeightÖ0
+BOTHÌ4ÎMx.ScrollPolicyÖ0
+BinÌ1ÎMxÖ0
+BinÌ128Í()ÎMx.BinÖ0
+BorderImageÌ1ÎMxÖ0
+BoxLayoutÌ1ÎMxÖ0
+BoxLayoutÌ128Í()ÎMx.BoxLayoutÖ0
+BoxLayoutChildÌ1ÎMxÖ0
+BoxLayoutChildÌ128Í()ÎMx.BoxLayoutChildÖ0
+ButtonÌ1ÎMxÖ0
+ButtonÌ128Í()ÎMx.ButtonÖ0
+Button.with_labelÌ128Í(string text)ÎMx.ButtonÖ0
+ButtonGroupÌ1ÎMxÖ0
+ButtonGroupÌ128Í()ÎMx.ButtonGroupÖ0
+CANCELÌ4ÎMx.LongPressActionÖ0
+ClipboardÌ1ÎMxÖ0
+ClipboardÌ128Í()ÎMx.ClipboardÖ0
+ClipboardCallbackFuncÌ128Í(Mx.Clipboard clipboard, string text)ÎMxÖ0Ïpublic delegate void
+ComboBoxÌ1ÎMxÖ0
+ComboBoxÌ128Í()ÎMx.ComboBoxÖ0
+DOWNÌ4ÎMx.FocusDirectionÖ0
+DeformBowTieÌ1ÎMxÖ0
+DeformBowTieÌ128Í()ÎMx.DeformBowTieÖ0
+DeformPageTurnÌ1ÎMxÖ0
+DeformPageTurnÌ128Í()ÎMx.DeformPageTurnÖ0
+DeformTextureÌ1ÎMxÖ0
+DeformTextureÌ128Í()ÎMx.DeformTextureÖ0
+DeformWavesÌ1ÎMxÖ0
+DeformWavesÌ128Í()ÎMx.DeformWavesÖ0
+DragAxisÌ2ÎMxÖ0
+DraggableÌ32ÎMxÖ0
+DroppableÌ32ÎMxÖ0
+ENDÌ4ÎMx.AlignÖ0
+EntryÌ1ÎMxÖ0
+EntryÌ128Í()ÎMx.EntryÖ0
+Entry.with_textÌ128Í(string text)ÎMx.EntryÖ0
+ExpanderÌ1ÎMxÖ0
+ExpanderÌ128Í()ÎMx.ExpanderÖ0
+FILEÌ4ÎMx.StyleErrorÖ0
+FIRSTÌ4ÎMx.FocusHintÖ0
+FORCEÌ4ÎMx.StyleChangedFlagsÖ0
+FloatingWidgetÌ1ÎMxÖ0
+FloatingWidgetÌ128Í()ÎMx.FloatingWidgetÖ0
+FocusDirectionÌ2ÎMxÖ0
+FocusHintÌ2ÎMxÖ0
+FocusManagerÌ1ÎMxÖ0
+FocusManagerÌ128Í()ÎMx.FocusManagerÖ0
+FocusableÌ32ÎMxÖ0
+FontWeightÌ2ÎMxÖ0
+FrameÌ1ÎMxÖ0
+FrameÌ128Í()ÎMx.FrameÖ0
+GridÌ1ÎMxÖ0
+GridÌ128Í()ÎMx.GridÖ0
+HORIZONTALÌ4ÎMx.OrientationÖ0
+HORIZONTALÌ4ÎMx.ScrollPolicyÖ0
+IconÌ1ÎMxÖ0
+IconÌ128Í()ÎMx.IconÖ0
+IconThemeÌ1ÎMxÖ0
+IconThemeÌ128Í()ÎMx.IconThemeÖ0
+ItemFactoryÌ32ÎMxÖ0
+ItemViewÌ1ÎMxÖ0
+ItemViewÌ128Í()ÎMx.ItemViewÖ0
+KEEP_ALIVEÌ4ÎMx.ApplicationFlagsÖ0
+LASTÌ4ÎMx.FocusHintÖ0
+LEFTÌ4ÎMx.FocusDirectionÖ0
+LIGHTERÌ4ÎMx.FontWeightÖ0
+LabelÌ1ÎMxÖ0
+LabelÌ128Í()ÎMx.LabelÖ0
+Label.with_textÌ128Í(string text)ÎMx.LabelÖ0
+ListViewÌ1ÎMxÖ0
+ListViewÌ128Í()ÎMx.ListViewÖ0
+LongPressActionÌ2ÎMxÖ0
+MAJOR_VERSIONÌ8ÎMxÖ0Ïint
+MICRO_VERSIONÌ8ÎMxÖ0Ïint
+MIDDLEÌ4ÎMx.AlignÖ0
+MINOR_VERSIONÌ8ÎMxÖ0Ïint
+MenuÌ1ÎMxÖ0
+MenuÌ128Í()ÎMx.MenuÖ0
+MxÌ256Ö0
+NEXTÌ4ÎMx.FocusDirectionÖ0
+NONEÌ4ÎMx.DragAxisÖ0
+NONEÌ4ÎMx.ScrollPolicyÖ0
+NONEÌ4ÎMx.StyleChangedFlagsÖ0
+NORMALÌ4ÎMx.FontWeightÖ0
+NotebookÌ1ÎMxÖ0
+NotebookÌ128Í()ÎMx.NotebookÖ0
+OUTÌ4ÎMx.FocusDirectionÖ0
+OffscreenÌ1ÎMxÖ0
+OffscreenÌ128Í()ÎMx.OffscreenÖ0
+OrientationÌ2ÎMxÖ0
+PREVIOUSÌ4ÎMx.FocusDirectionÖ0
+PRIORÌ4ÎMx.FocusHintÖ0
+PaddingÌ2048ÎMxÖ0
+PathBarÌ1ÎMxÖ0
+PathBarÌ128Í()ÎMx.PathBarÖ0
+ProgressBarÌ1ÎMxÖ0
+ProgressBarÌ128Í()ÎMx.ProgressBarÖ0
+QUERYÌ4ÎMx.LongPressActionÖ0
+RIGHTÌ4ÎMx.FocusDirectionÖ0
+SINGLE_INSTANCEÌ4ÎMx.ApplicationFlagsÖ0
+STARTÌ4ÎMx.AlignÖ0
+ScrollBarÌ1ÎMxÖ0
+ScrollBarÌ128Í()ÎMx.ScrollBarÖ0
+ScrollBar.with_adjustmentÌ128Í(Mx.Adjustment adjustment)ÎMx.ScrollBarÖ0
+ScrollPolicyÌ2ÎMxÖ0
+ScrollViewÌ1ÎMxÖ0
+ScrollViewÌ128Í()ÎMx.ScrollViewÖ0
+ScrollableÌ32ÎMxÖ0
+SliderÌ1ÎMxÖ0
+SliderÌ128Í()ÎMx.SliderÖ0
+StylableÌ32ÎMxÖ0
+StyleÌ1ÎMxÖ0
+StyleÌ128Í()ÎMx.StyleÖ0
+StyleChangedFlagsÌ2ÎMxÖ0
+StyleErrorÌ2ÎMxÖ0
+TableÌ1ÎMxÖ0
+TableÌ128Í()ÎMx.TableÖ0
+TableChildÌ1ÎMxÖ0
+TableChildÌ128Í()ÎMx.TableChildÖ0
+TextureCacheÌ1ÎMxÖ0
+TextureCacheÌ128Í()ÎMx.TextureCacheÖ0
+TextureFrameÌ1ÎMxÖ0
+TextureFrameÌ128Í(Clutter.Texture texture, float top, float right, float bottom, float left)ÎMx.TextureFrameÖ0
+ToggleÌ1ÎMxÖ0
+ToggleÌ128Í()ÎMx.ToggleÖ0
+ToolbarÌ1ÎMxÖ0
+ToolbarÌ128Í()ÎMx.ToolbarÖ0
+TooltipÌ1ÎMxÖ0
+TooltipÌ128Í()ÎMx.TooltipÖ0
+UPÌ4ÎMx.FocusDirectionÖ0
+VERSION_HEXÌ8ÎMxÖ0Ïint
+VERSION_SÌ8ÎMxÖ0
+VERTICALÌ4ÎMx.OrientationÖ0
+VERTICALÌ4ÎMx.ScrollPolicyÖ0
+ViewportÌ1ÎMxÖ0
+ViewportÌ128Í()ÎMx.ViewportÖ0
+WidgetÌ1ÎMxÖ0
+WidgetÌ128Í()ÎMx.WidgetÖ0
+WindowÌ1ÎMxÖ0
+WindowÌ128Í()ÎMx.WindowÖ0
+Window.with_clutter_stageÌ128Í(Clutter.Stage stage)ÎMx.WindowÖ0
+XÌ4ÎMx.DragAxisÖ0
+YÌ4ÎMx.DragAxisÖ0
+accept_dropÌ128Í(Mx.Draggable draggable)ÎMx.DroppableÖ0Ïpublic bool
+accept_focusÌ128Í(Mx.FocusHint hint)ÎMx.FocusableÖ0Ïpublic abstract unowned
+action_activatedÌ128Í(Mx.Action action)ÎMx.MenuÖ0Ïpublic virtual signal void
+actions_changedÌ128Í()ÎMx.ApplicationÖ0Ïpublic virtual signal void
+activatedÌ128Í()ÎMx.ActionÖ0Ïpublic virtual signal void
+activeÌ8ÎMx.ActionÖ0Ïbool
+activeÌ8ÎMx.ToggleÖ0Ïbool
+active_buttonÌ8ÎMx.ButtonGroupÖ0ÏMx.Button
+active_icon_nameÌ8ÎMx.ComboBoxÖ0
+active_textÌ8ÎMx.ComboBoxÖ0
+actor_box_clamp_to_pixelsÌ128Í(Clutter.ActorBox box)ÎMxÖ0Ïpublic void
+addÌ128Í(Mx.Button button)ÎMx.ButtonGroupÖ0Ïpublic void
+add_actionÌ128Í(Mx.Action action)ÎMx.ApplicationÖ0Ïpublic void
+add_actionÌ128Í(Mx.Action action)ÎMx.MenuÖ0Ïpublic void
+add_actor_with_propertiesÌ128Í(Clutter.Actor actor, int position, ...)ÎMx.BoxLayoutÖ0Ïpublic void
+add_actor_with_propertiesÌ128Í(Clutter.Actor actor, int row, int column, ...)ÎMx.TableÖ0Ïpublic void
+add_attributeÌ128Í(string attribute, int column)ÎMx.ItemViewÖ0Ïpublic void
+add_attributeÌ128Í(string attribute, int column)ÎMx.ListViewÖ0Ïpublic void
+add_windowÌ128Í(Mx.Window window)ÎMx.ApplicationÖ0Ïpublic void
+adjustmentÌ8ÎMx.ScrollBarÖ0ÏMx.Adjustment
+allocate_align_fillÌ128Í(Clutter.Actor child, Clutter.ActorBox childbox, Mx.Align x_alignment, Mx.Align y_alignment, bool x_fill, bool y_fill)ÎMxÖ0Ïpublic void
+allocate_childÌ128Í(Clutter.ActorBox box, Clutter.AllocationFlags flags)ÎMx.BinÖ0Ïpublic void
+allow_no_activeÌ8ÎMx.ButtonGroupÖ0Ïbool
+amplitudeÌ8ÎMx.DeformWavesÖ0Ïdouble
+angleÌ8ÎMx.DeformPageTurnÖ0Ïdouble
+angleÌ8ÎMx.DeformWavesÖ0Ïdouble
+append_textÌ128Í(string text)ÎMx.ComboBoxÖ0Ïpublic void
+application_nameÌ8ÎMx.ApplicationÖ0
+apply_clutter_text_attributesÌ128Í(Clutter.Text text)ÎMx.StylableÖ0Ïpublic void
+auto_updateÌ8ÎMx.OffscreenÖ0Ïbool
+axisÌ8ÎMx.DraggableÖ0ÏMx.DragAxis
+backÌ8ÎMx.DeformTextureÖ0ÏClutter.Texture
+bottomÌ8ÎMx.BorderImageÖ0Ïint
+bottomÌ8ÎMx.PaddingÖ0Ïfloat
+bottomÌ8ÎMx.TextureFrameÖ0Ïfloat
+changedÌ128Í()ÎMx.AdjustmentÖ0Ïpublic virtual signal void
+changedÌ128Í()ÎMx.StyleÖ0Ïpublic virtual signal void
+childÌ8ÎMx.BinÖ0ÏClutter.Actor
+childÌ8ÎMx.OffscreenÖ0ÏClutter.Actor
+childÌ8ÎMx.WindowÖ0ÏClutter.Actor
+child_x_alignÌ8ÎMx.GridÖ0ÏMx.Align
+child_y_alignÌ8ÎMx.GridÖ0ÏMx.Align
+clearÌ128Í()ÎMx.PathBarÖ0Ïpublic void
+clear_on_changeÌ8ÎMx.PathBarÖ0Ïbool
+clickedÌ128Í()ÎMx.ButtonÖ0Ïpublic virtual signal void
+close_button_clickedÌ128Í()ÎMx.ToolbarÖ0Ïpublic virtual signal bool
+clutter_stageÌ8ÎMx.WindowÖ0ÏClutter.Stage
+clutter_textÌ8ÎMx.EntryÖ0ÏClutter.Text
+clutter_textÌ8ÎMx.LabelÖ0ÏClutter.Text
+columnÌ8ÎMx.TableChildÖ0Ïint
+column_countÌ8ÎMx.TableÖ0Ïint
+column_spacingÌ8ÎMx.GridÖ0Ïfloat
+column_spacingÌ8ÎMx.TableÖ0Ïint
+column_spanÌ8ÎMx.TableChildÖ0Ïint
+connect_change_notifiersÌ128Í()ÎMx.StylableÖ0Ïpublic void
+createÌ128Í()ÎMx.ItemFactoryÖ0Ïpublic abstract unowned
+create_windowÌ128Í()ÎMx.ApplicationÖ0Ïpublic virtual unowned
+current_pageÌ8ÎMx.NotebookÖ0ÏClutter.Actor
+deformÌ128Í(Cogl.TextureVertex vertex, float width, float height)ÎMx.DeformTextureÖ0Ïpublic virtual void
+destroyÌ128Í()ÎMx.WindowÖ0Ïpublic virtual signal void
+disableÌ128Í()ÎMx.DraggableÖ0Ïpublic void
+disableÌ128Í()ÎMx.DroppableÖ0Ïpublic void
+disabledÌ8ÎMx.WidgetÖ0Ïbool
+display_nameÌ8ÎMx.ActionÖ0
+drag_actorÌ8ÎMx.DraggableÖ0ÏClutter.Actor
+drag_beginÌ128Í(float event_x, float event_y, int event_button, Clutter.ModifierType modifiers)ÎMx.DraggableÖ0Ïpublic signal void
+drag_enabledÌ8ÎMx.DraggableÖ0Ïbool
+drag_endÌ128Í(float event_x, float event_y)ÎMx.DraggableÖ0Ïpublic signal void
+drag_motionÌ128Í(float delta_x, float delta_y)ÎMx.DraggableÖ0Ïpublic signal void
+drag_thresholdÌ8ÎMx.DraggableÖ0
+dropÌ128Í(Clutter.Actor draggable, float event_x, float event_y, int button, Clutter.ModifierType modifiers)ÎMx.DroppableÖ0Ïpublic signal void
+drop_enabledÌ8ÎMx.DroppableÖ0Ïbool
+editableÌ8ÎMx.PathBarÖ0Ïbool
+elasticÌ8ÎMx.AdjustmentÖ0Ïbool
+enableÌ128Í()ÎMx.DraggableÖ0Ïpublic void
+enableÌ128Í()ÎMx.DroppableÖ0Ïpublic void
+enable_animationsÌ8ÎMx.BoxLayoutÖ0Ïbool
+enable_gesturesÌ8ÎMx.NotebookÖ0Ïbool
+enable_gesturesÌ8ÎMx.ScrollViewÖ0Ïbool
+enable_mouse_scrollingÌ8ÎMx.ScrollViewÖ0Ïbool
+ensure_visibleÌ128Í(Clutter.Geometry geometry)ÎMx.ScrollViewÖ0Ïpublic void
+entryÌ8ÎMx.PathBarÖ0ÏMx.Entry
+error_loadingÌ128Í(GLib.Error error)ÎMx.TextureCacheÖ0Ïpublic virtual void
+expandÌ8ÎMx.BoxLayoutChildÖ0Ïbool
+expand_completeÌ128Í()ÎMx.ExpanderÖ0Ïpublic virtual signal void
+expandedÌ8ÎMx.ExpanderÖ0Ïbool
+factoryÌ8ÎMx.ItemViewÖ0ÏGLib.Object
+factoryÌ8ÎMx.ListViewÖ0ÏGLib.Object
+find_propertyÌ128Í(string property_name)ÎMx.StylableÖ0Ïpublic unowned
+flagsÌ8ÎMx.ApplicationÖ0
+flip_backÌ8ÎMx.DeformBowTieÖ0Ïbool
+floating_paintÌ128Í(Clutter.Actor actor)ÎMx.FloatingWidgetÖ0Ïpublic virtual void
+floating_pickÌ128Í(Clutter.Actor actor, Clutter.Color color)ÎMx.FloatingWidgetÖ0Ïpublic virtual void
+focusedÌ8ÎMx.FocusManagerÖ0ÏClutter.Actor
+font_weight_set_from_stringÌ128Í(GLib.Value value, string str)ÎMxÖ0Ïpublic void
+freezeÌ128Í()ÎMx.ItemViewÖ0Ïpublic void
+freezeÌ128Í()ÎMx.ListViewÖ0Ïpublic void
+frontÌ8ÎMx.DeformTextureÖ0ÏClutter.Texture
+get_actionsÌ128Í()ÎMx.ApplicationÖ0Ïpublic unowned
+get_activeÌ128Í()ÎMx.ActionÖ0Ïpublic bool
+get_activeÌ128Í()ÎMx.ToggleÖ0Ïpublic bool
+get_active_buttonÌ128Í()ÎMx.ButtonGroupÖ0Ïpublic unowned
+get_active_icon_nameÌ128Í()ÎMx.ComboBoxÖ0Ïpublic unowned string
+get_active_textÌ128Í()ÎMx.ComboBoxÖ0Ïpublic unowned string
+get_actorÌ128Í(string path)ÎMx.TextureCacheÖ0Ïpublic unowned
+get_adjustmentÌ128Í()ÎMx.ScrollBarÖ0Ïpublic unowned
+get_adjustmentsÌ128Í(out unowned Mx.Adjustment hadjustment, out unowned Mx.Adjustment vadjustment)ÎMx.ScrollableÖ0Ïpublic abstract void
+get_alignmentÌ128Í(Mx.Align x_align, Mx.Align y_align)ÎMx.BinÖ0Ïpublic void
+get_allow_no_activeÌ128Í()ÎMx.ButtonGroupÖ0Ïpublic bool
+get_amplitudeÌ128Í()ÎMx.DeformWavesÖ0Ïpublic double
+get_angleÌ128Í()ÎMx.DeformPageTurnÖ0Ïpublic double
+get_angleÌ128Í()ÎMx.DeformWavesÖ0Ïpublic double
+get_auto_updateÌ128Í()ÎMx.OffscreenÖ0Ïpublic bool
+get_available_areaÌ128Í(Clutter.ActorBox allocation, Clutter.ActorBox area)ÎMx.WidgetÖ0Ïpublic void
+get_axisÌ128Í()ÎMx.DraggableÖ0Ïpublic Mx.DragAxis
+get_background_imageÌ128Í()ÎMx.WidgetÖ0Ïpublic unowned
+get_border_imageÌ128Í()ÎMx.WidgetÖ0Ïpublic unowned
+get_border_valuesÌ128Í(float top, float right, float bottom, float left)ÎMx.TextureFrameÖ0Ïpublic void
+get_buttonsÌ128Í()ÎMx.ButtonGroupÖ0Ïpublic unowned
+get_childÌ128Í()ÎMx.BinÖ0Ïpublic unowned
+get_childÌ128Í()ÎMx.OffscreenÖ0Ïpublic unowned
+get_childÌ128Í()ÎMx.WindowÖ0Ïpublic unowned
+get_child_x_alignÌ128Í()ÎMx.GridÖ0Ïpublic Mx.Align
+get_child_y_alignÌ128Í()ÎMx.GridÖ0Ïpublic Mx.Align
+get_clear_on_changeÌ128Í()ÎMx.PathBarÖ0Ïpublic bool
+get_clutter_stageÌ128Í()ÎMx.WindowÖ0Ïpublic unowned
+get_clutter_textÌ128Í()ÎMx.EntryÖ0Ïpublic unowned
+get_clutter_textÌ128Í()ÎMx.LabelÖ0Ïpublic unowned
+get_cogl_textureÌ128Í(string path)ÎMx.TextureCacheÖ0Ïpublic unowned
+get_columnÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic int
+get_column_countÌ128Í()ÎMx.TableÖ0Ïpublic int
+get_column_spacingÌ128Í()ÎMx.GridÖ0Ïpublic float
+get_column_spacingÌ128Í()ÎMx.TableÖ0Ïpublic int
+get_column_spanÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic int
+get_current_pageÌ128Í()ÎMx.NotebookÖ0Ïpublic unowned
+get_defaultÌ128Í()ÎMx.ClipboardÖ0Ïpublic unowned
+get_defaultÌ128Í()ÎMx.IconThemeÖ0Ïpublic unowned
+get_defaultÌ128Í()ÎMx.StyleÖ0Ïpublic unowned
+get_defaultÌ128Í()ÎMx.TextureCacheÖ0Ïpublic unowned
+get_default_valueÌ128Í(string property_name, GLib.Value value_out)ÎMx.StylableÖ0Ïpublic bool
+get_disabledÌ128Í()ÎMx.WidgetÖ0Ïpublic bool
+get_display_nameÌ128Í()ÎMx.ActionÖ0Ïpublic unowned string
+get_drag_actorÌ128Í()ÎMx.DraggableÖ0Ïpublic unowned
+get_drag_thresholdÌ128Í()ÎMx.DraggableÖ0
+get_editableÌ128Í()ÎMx.PathBarÖ0Ïpublic bool
+get_elasticÌ128Í()ÎMx.AdjustmentÖ0Ïpublic bool
+get_enable_animationsÌ128Í()ÎMx.BoxLayoutÖ0Ïpublic bool
+get_enable_gesturesÌ128Í()ÎMx.NotebookÖ0Ïpublic bool
+get_enable_gesturesÌ128Í()ÎMx.ScrollViewÖ0Ïpublic bool
+get_enable_mouse_scrollingÌ128Í()ÎMx.ScrollViewÖ0Ïpublic bool
+get_entryÌ128Í()ÎMx.PathBarÖ0Ïpublic unowned
+get_expandÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child)ÎMx.BoxLayoutChildÖ0Ïpublic bool
+get_expandedÌ128Í()ÎMx.ExpanderÖ0Ïpublic bool
+get_factoryÌ128Í()ÎMx.ItemViewÖ0Ïpublic unowned
+get_factoryÌ128Í()ÎMx.ListViewÖ0Ïpublic unowned
+get_fillÌ128Í(bool x_fill, bool y_fill)ÎMx.BinÖ0Ïpublic void
+get_flagsÌ128Í()ÎMx.ApplicationÖ0Ïpublic Mx.ApplicationFlags
+get_flip_backÌ128Í()ÎMx.DeformBowTieÖ0Ïpublic bool
+get_focusedÌ128Í()ÎMx.FocusManagerÖ0Ïpublic unowned
+get_for_stageÌ128Í(Clutter.Stage stage)ÎMx.FocusManagerÖ0Ïpublic unowned
+get_for_stageÌ128Í(Clutter.Stage stage)ÎMx.WindowÖ0Ïpublic unowned
+get_has_close_buttonÌ128Í()ÎMx.ToolbarÖ0Ïpublic bool
+get_has_toolbarÌ128Í()ÎMx.WindowÖ0Ïpublic bool
+get_hint_textÌ128Í()ÎMx.EntryÖ0Ïpublic unowned string
+get_homogenous_columnsÌ128Í()ÎMx.GridÖ0Ïpublic bool
+get_homogenous_rowsÌ128Í()ÎMx.GridÖ0Ïpublic bool
+get_iconÌ128Í()ÎMx.ActionÖ0Ïpublic unowned string
+get_icon_nameÌ128Í()ÎMx.IconÖ0Ïpublic unowned string
+get_icon_nameÌ128Í()ÎMx.WindowÖ0Ïpublic unowned string
+get_icon_sizeÌ128Í()ÎMx.IconÖ0Ïpublic int
+get_indexÌ128Í()ÎMx.ComboBoxÖ0Ïpublic int
+get_is_toggleÌ128Í()ÎMx.ButtonÖ0Ïpublic bool
+get_item_typeÌ128Í()ÎMx.ItemViewÖ0Ïpublic GLib.Type
+get_item_typeÌ128Í()ÎMx.ListViewÖ0Ïpublic GLib.Type
+get_labelÌ128Í()ÎMx.ButtonÖ0Ïpublic unowned string
+get_labelÌ128Í(int level)ÎMx.PathBarÖ0Ïpublic unowned string
+get_levelÌ128Í()ÎMx.PathBarÖ0Ïpublic int
+get_line_alignmentÌ128Í()ÎMx.GridÖ0Ïpublic bool
+get_lowerÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_max_strideÌ128Í()ÎMx.GridÖ0Ïpublic int
+get_menuÌ128Í()ÎMx.WidgetÖ0Ïpublic unowned
+get_modelÌ128Í()ÎMx.ItemViewÖ0Ïpublic unowned
+get_modelÌ128Í()ÎMx.ListViewÖ0Ïpublic unowned
+get_nameÌ128Í()ÎMx.ActionÖ0Ïpublic unowned string
+get_orientationÌ128Í()ÎMx.BoxLayoutÖ0Ïpublic Mx.Orientation
+get_orientationÌ128Í()ÎMx.GridÖ0Ïpublic Mx.Orientation
+get_orientationÌ128Í()ÎMx.ScrollBarÖ0Ïpublic Mx.Orientation
+get_originÌ128Í(float x, float y, float z)ÎMx.ViewportÖ0Ïpublic void
+get_paddingÌ128Í(Mx.Padding padding)ÎMx.WidgetÖ0Ïpublic void
+get_page_incrementÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_page_sizeÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_parent_textureÌ128Í()ÎMx.TextureFrameÖ0Ïpublic unowned
+get_password_charÌ128Í()ÎMx.EntryÖ0Ïpublic unichar
+get_periodÌ128Í()ÎMx.DeformBowTieÖ0Ïpublic double
+get_periodÌ128Í()ÎMx.DeformPageTurnÖ0Ïpublic double
+get_periodÌ128Í()ÎMx.DeformWavesÖ0Ïpublic double
+get_pick_childÌ128Í()ÎMx.OffscreenÖ0Ïpublic bool
+get_progressÌ128Í()ÎMx.ProgressBarÖ0Ïpublic double
+get_propertyÌ128Í(string property_name, GLib.Value value)ÎMx.StylableÖ0Ïpublic void
+get_propertyÌ128Í(Mx.Stylable stylable, Clutter.ParamSpecColor pspec, GLib.Value value)ÎMx.StyleÖ0Ïpublic void
+get_radiusÌ128Í()ÎMx.DeformPageTurnÖ0Ïpublic double
+get_radiusÌ128Í()ÎMx.DeformWavesÖ0Ïpublic double
+get_resolutionÌ128Í(int tiles_x, int tiles_y)ÎMx.DeformTextureÖ0Ïpublic void
+get_rowÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic int
+get_row_countÌ128Í()ÎMx.TableÖ0Ïpublic int
+get_row_spacingÌ128Í()ÎMx.GridÖ0Ïpublic float
+get_row_spacingÌ128Í()ÎMx.TableÖ0Ïpublic int
+get_row_spanÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic int
+get_scroll_policyÌ128Í()ÎMx.ScrollViewÖ0Ïpublic Mx.ScrollPolicy
+get_search_pathsÌ128Í()ÎMx.IconThemeÖ0Ïpublic unowned
+get_sizeÌ128Í()ÎMx.TextureCacheÖ0Ïpublic int
+get_small_screenÌ128Í()ÎMx.WindowÖ0Ïpublic bool
+get_spacingÌ128Í()ÎMx.BoxLayoutÖ0
+get_stageÌ128Í()ÎMx.FocusManagerÖ0Ïpublic unowned
+get_step_incrementÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_styleÌ128Í()ÎMx.StylableÖ0Ïpublic abstract unowned
+get_style_classÌ128Í()ÎMx.StylableÖ0Ïpublic abstract unowned string
+get_style_pseudo_classÌ128Í()ÎMx.StylableÖ0Ïpublic abstract unowned string
+get_sync_adjustmentsÌ128Í()ÎMx.ViewportÖ0Ïpublic bool
+get_textÌ128Í(Mx.ClipboardCallbackFunc callback)ÎMx.ClipboardÖ0Ïpublic void
+get_textÌ128Í()ÎMx.EntryÖ0Ïpublic unowned string
+get_textÌ128Í()ÎMx.LabelÖ0Ïpublic unowned string
+get_textÌ128Í()ÎMx.PathBarÖ0Ïpublic unowned string
+get_textÌ128Í()ÎMx.TooltipÖ0Ïpublic unowned string
+get_textureÌ128Í(string path)ÎMx.TextureCacheÖ0Ïpublic unowned
+get_texturesÌ128Í(out unowned Clutter.Texture front, out unowned Clutter.Texture back)ÎMx.DeformTextureÖ0Ïpublic void
+get_theme_nameÌ128Í()ÎMx.IconThemeÖ0Ïpublic unowned string
+get_tip_areaÌ128Í()ÎMx.TooltipÖ0Ïpublic Clutter.Geometry
+get_toggledÌ128Í()ÎMx.ButtonÖ0Ïpublic bool
+get_toolbarÌ128Í()ÎMx.WindowÖ0Ïpublic unowned
+get_tooltip_textÌ128Í()ÎMx.WidgetÖ0Ïpublic unowned string
+get_upperÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_valistÌ128Í(Mx.Stylable stylable, string first_property_name, void* va_args)ÎMx.StyleÖ0Ïpublic void
+get_valueÌ128Í()ÎMx.AdjustmentÖ0Ïpublic double
+get_valueÌ128Í()ÎMx.SliderÖ0Ïpublic double
+get_valuesÌ128Í(double value, double lower, double upper, double step_increment, double page_increment, double page_size)ÎMx.AdjustmentÖ0Ïpublic void
+get_window_positionÌ128Í(int x, int y)ÎMx.WindowÖ0Ïpublic void
+get_windowsÌ128Í()ÎMx.ApplicationÖ0Ïpublic unowned
+get_x_alignÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child)ÎMx.BoxLayoutChildÖ0Ïpublic Mx.Align
+get_x_alignÌ128Í()ÎMx.LabelÖ0Ïpublic Mx.Align
+get_x_alignÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic Mx.Align
+get_x_expandÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic bool
+get_x_fillÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child)ÎMx.BoxLayoutChildÖ0Ïpublic bool
+get_x_fillÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic bool
+get_y_alignÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child)ÎMx.BoxLayoutChildÖ0Ïpublic Mx.Align
+get_y_alignÌ128Í()ÎMx.LabelÖ0Ïpublic Mx.Align
+get_y_alignÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic Mx.Align
+get_y_expandÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic bool
+get_y_fillÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child)ÎMx.BoxLayoutChildÖ0Ïpublic bool
+get_y_fillÌ128Í(Mx.Table table, Clutter.Actor child)ÎMx.TableChildÖ0Ïpublic bool
+has_close_buttonÌ8ÎMx.ToolbarÖ0Ïbool
+has_iconÌ128Í(string icon_name)ÎMx.IconThemeÖ0Ïpublic bool
+has_toolbarÌ8ÎMx.WindowÖ0Ïbool
+hideÌ128Í()ÎMx.TooltipÖ0Ïpublic void
+hide_tooltipÌ128Í()ÎMx.WidgetÖ0Ïpublic void
+hint_textÌ8ÎMx.EntryÖ0
+homogenous_columnsÌ8ÎMx.GridÖ0Ïbool
+homogenous_rowsÌ8ÎMx.GridÖ0Ïbool
+iconÌ8ÎMx.ActionÖ0
+icon_cogl_textureÌ8ÎMx.WindowÖ0
+icon_nameÌ8ÎMx.IconÖ0
+icon_nameÌ8ÎMx.WindowÖ0
+icon_sizeÌ8ÎMx.IconÖ0Ïint
+indexÌ8ÎMx.ComboBoxÖ0Ïint
+insert_textÌ128Í(int position, string text)ÎMx.ComboBoxÖ0Ïpublic void
+insert_text_with_iconÌ128Í(int position, string text, string icon)ÎMx.ComboBoxÖ0Ïpublic void
+interpolateÌ128Í(double value, uint duration, ulong mode)ÎMx.AdjustmentÖ0Ïpublic void
+interpolate_relativeÌ128Í(double offset, uint duration, ulong mode)ÎMx.AdjustmentÖ0Ïpublic void
+invalidateÌ128Í()ÎMx.DeformTextureÖ0Ïpublic void
+invoke_actionÌ128Í(string name)ÎMx.ApplicationÖ0Ïpublic void
+is_enabledÌ128Í()ÎMx.DraggableÖ0Ïpublic bool
+is_enabledÌ128Í()ÎMx.DroppableÖ0Ïpublic bool
+is_runningÌ128Í()ÎMx.ApplicationÖ0Ïpublic bool
+is_toggleÌ8ÎMx.ButtonÖ0Ïbool
+item_typeÌ8ÎMx.ItemViewÖ0ÏGLib.Type
+item_typeÌ8ÎMx.ListViewÖ0ÏGLib.Type
+labelÌ8ÎMx.ButtonÖ0
+labelÌ8ÎMx.ExpanderÖ0
+leftÌ8ÎMx.BorderImageÖ0Ïint
+leftÌ8ÎMx.PaddingÖ0Ïfloat
+leftÌ8ÎMx.TextureFrameÖ0Ïfloat
+levelÌ8ÎMx.PathBarÖ0Ïint
+line_alignmentÌ8ÎMx.GridÖ0ÏMx.Align
+list_propertiesÌ128Í(uint n_props)ÎMx.StylableÖ0Ïpublic unowned
+load_cacheÌ128Í(string filename)ÎMx.TextureCacheÖ0Ïpublic void
+load_from_fileÌ128Í(string filename)ÎMx.StyleÖ0Ïpublic bool
+loadedÌ128Í(string path, Clutter.Texture texture)ÎMx.TextureCacheÖ0Ïpublic virtual void
+long_pressÌ128Í(float action, float x, Mx.LongPressAction y)ÎMx.WidgetÖ0Ïpublic virtual signal bool
+long_press_cancelÌ128Í()ÎMx.WidgetÖ0Ïpublic void
+long_press_queryÌ128Í(Clutter.ButtonEvent event)ÎMx.WidgetÖ0Ïpublic void
+lookupÌ128Í(string icon_name, int size)ÎMx.IconThemeÖ0Ïpublic unowned
+lookup_textureÌ128Í(string icon_name, int size)ÎMx.IconThemeÖ0Ïpublic unowned
+lowerÌ8ÎMx.AdjustmentÖ0Ïdouble
+max_strideÌ8ÎMx.GridÖ0Ïint
+menuÌ8ÎMx.WidgetÖ0ÏMx.Menu
+modelÌ8ÎMx.ItemViewÖ0ÏClutter.Model
+modelÌ8ÎMx.ListViewÖ0ÏClutter.Model
+move_focusÌ128Í(Mx.FocusDirection direction)ÎMx.FocusManagerÖ0Ïpublic void
+move_focusÌ128Í(Mx.FocusDirection direction, Mx.Focusable from)ÎMx.FocusableÖ0Ïpublic abstract unowned
+nameÌ8ÎMx.ActionÖ0
+orientationÌ8ÎMx.BoxLayoutÖ0ÏMx.Orientation
+orientationÌ8ÎMx.GridÖ0ÏMx.Orientation
+orientationÌ8ÎMx.ScrollBarÖ0ÏMx.Orientation
+over_inÌ128Í(Clutter.Actor draggable)ÎMx.DroppableÖ0Ïpublic signal void
+over_outÌ128Í(Clutter.Actor draggable)ÎMx.DroppableÖ0Ïpublic signal void
+page_incrementÌ8ÎMx.AdjustmentÖ0Ïdouble
+page_sizeÌ8ÎMx.AdjustmentÖ0Ïdouble
+paint_backgroundÌ128Í()ÎMx.WidgetÖ0Ïpublic virtual void
+paint_childÌ128Í()ÎMx.OffscreenÖ0Ïpublic virtual void
+parent_textureÌ8ÎMx.TextureFrameÖ0ÏClutter.Texture
+password_charÌ8ÎMx.EntryÖ0
+periodÌ8ÎMx.DeformBowTieÖ0Ïdouble
+periodÌ8ÎMx.DeformPageTurnÖ0Ïdouble
+periodÌ8ÎMx.DeformWavesÖ0Ïdouble
+pick_childÌ8ÎMx.OffscreenÖ0Ïbool
+popÌ128Í()ÎMx.PathBarÖ0Ïpublic int
+prepend_textÌ128Í(string text)ÎMx.ComboBoxÖ0Ïpublic void
+primary_icon_clickedÌ128Í()ÎMx.EntryÖ0Ïpublic virtual signal void
+progressÌ8ÎMx.ProgressBarÖ0Ïdouble
+pushÌ128Í(string name)ÎMx.PathBarÖ0Ïpublic int
+push_focusÌ128Í(Mx.Focusable focusable)ÎMx.FocusManagerÖ0Ïpublic void
+quitÌ128Í()ÎMx.ApplicationÖ0Ïpublic void
+radiusÌ8ÎMx.DeformPageTurnÖ0Ïdouble
+radiusÌ8ÎMx.DeformWavesÖ0Ïdouble
+raiseÌ128Í()ÎMx.ApplicationÖ0Ïpublic virtual void
+removeÌ128Í(Mx.Button button)ÎMx.ButtonGroupÖ0Ïpublic void
+remove_actionÌ128Í(string name)ÎMx.ApplicationÖ0Ïpublic void
+remove_actionÌ128Í(Mx.Action action)ÎMx.MenuÖ0Ïpublic void
+remove_allÌ128Í()ÎMx.MenuÖ0Ïpublic void
+remove_textÌ128Í(int position)ÎMx.ComboBoxÖ0Ïpublic void
+remove_windowÌ128Í(Mx.Window window)ÎMx.ApplicationÖ0Ïpublic void
+rightÌ8ÎMx.BorderImageÖ0Ïint
+rightÌ8ÎMx.PaddingÖ0Ïfloat
+rightÌ8ÎMx.TextureFrameÖ0Ïfloat
+rowÌ8ÎMx.TableChildÖ0Ïint
+row_countÌ8ÎMx.TableÖ0Ïint
+row_spacingÌ8ÎMx.GridÖ0Ïfloat
+row_spacingÌ8ÎMx.TableÖ0Ïint
+row_spanÌ8ÎMx.TableChildÖ0Ïint
+runÌ128Í()ÎMx.ApplicationÖ0Ïpublic void
+scroll_policyÌ8ÎMx.ScrollViewÖ0ÏMx.ScrollPolicy
+scroll_startÌ128Í()ÎMx.ScrollBarÖ0Ïpublic virtual signal void
+scroll_stopÌ128Í()ÎMx.ScrollBarÖ0Ïpublic virtual signal void
+secondary_icon_clickedÌ128Í()ÎMx.EntryÖ0Ïpublic virtual signal void
+set_activeÌ128Í(bool active)ÎMx.ActionÖ0Ïpublic void
+set_activeÌ128Í(bool active)ÎMx.ToggleÖ0Ïpublic void
+set_active_buttonÌ128Í(Mx.Button? button)ÎMx.ButtonGroupÖ0Ïpublic void
+set_active_icon_nameÌ128Í(string icon_name)ÎMx.ComboBoxÖ0Ïpublic void
+set_active_textÌ128Í(string text)ÎMx.ComboBoxÖ0Ïpublic void
+set_adjustmentÌ128Í(Mx.Adjustment adjustment)ÎMx.ScrollBarÖ0Ïpublic void
+set_adjustmentsÌ128Í(Mx.Adjustment hadjustment, Mx.Adjustment vadjustment)ÎMx.ScrollableÖ0Ïpublic abstract void
+set_alignmentÌ128Í(Mx.Align x_align, Mx.Align y_align)ÎMx.BinÖ0Ïpublic void
+set_allow_no_activeÌ128Í(bool allow_no_active)ÎMx.ButtonGroupÖ0Ïpublic void
+set_amplitudeÌ128Í(double amplitude)ÎMx.DeformWavesÖ0Ïpublic void
+set_angleÌ128Í(double angle)ÎMx.DeformPageTurnÖ0Ïpublic void
+set_angleÌ128Í(double angle)ÎMx.DeformWavesÖ0Ïpublic void
+set_auto_updateÌ128Í(bool auto_update)ÎMx.OffscreenÖ0Ïpublic void
+set_axisÌ128Í(Mx.DragAxis axis)ÎMx.DraggableÖ0Ïpublic void
+set_border_valuesÌ128Í(float top, float right, float bottom, float left)ÎMx.TextureFrameÖ0Ïpublic void
+set_childÌ128Í(Clutter.Actor child)ÎMx.BinÖ0Ïpublic void
+set_childÌ128Í(Clutter.Actor actor)ÎMx.OffscreenÖ0Ïpublic void
+set_childÌ128Í(Clutter.Actor actor)ÎMx.WindowÖ0Ïpublic void
+set_child_x_alignÌ128Í(Mx.Align value)ÎMx.GridÖ0Ïpublic void
+set_child_y_alignÌ128Í(Mx.Align value)ÎMx.GridÖ0Ïpublic void
+set_clear_on_changeÌ128Í(bool clear_on_change)ÎMx.PathBarÖ0Ïpublic void
+set_columnÌ128Í(Mx.Table table, Clutter.Actor child, int col)ÎMx.TableChildÖ0Ïpublic void
+set_column_spacingÌ128Í(float value)ÎMx.GridÖ0Ïpublic void
+set_column_spacingÌ128Í(int spacing)ÎMx.TableÖ0Ïpublic void
+set_column_spanÌ128Í(Mx.Table table, Clutter.Actor child, int span)ÎMx.TableChildÖ0Ïpublic void
+set_current_pageÌ128Í(Clutter.Actor page)ÎMx.NotebookÖ0Ïpublic void
+set_disabledÌ128Í(bool disabled)ÎMx.WidgetÖ0Ïpublic void
+set_display_nameÌ128Í(string name)ÎMx.ActionÖ0Ïpublic void
+set_drag_actorÌ128Í(Clutter.Actor actor)ÎMx.DraggableÖ0Ïpublic void
+set_drag_thresholdÌ128Í(uint threshold)ÎMx.DraggableÖ0Ïpublic void
+set_editableÌ128Í(bool editable)ÎMx.PathBarÖ0Ïpublic void
+set_elasticÌ128Í(bool elastic)ÎMx.AdjustmentÖ0Ïpublic void
+set_enable_animationsÌ128Í(bool enable_animations)ÎMx.BoxLayoutÖ0Ïpublic void
+set_enable_gesturesÌ128Í(bool enabled)ÎMx.NotebookÖ0Ïpublic void
+set_enable_gesturesÌ128Í(bool enabled)ÎMx.ScrollViewÖ0Ïpublic void
+set_enable_mouse_scrollingÌ128Í(bool enabled)ÎMx.ScrollViewÖ0Ïpublic void
+set_expandÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child, bool expand)ÎMx.BoxLayoutChildÖ0Ïpublic void
+set_expandedÌ128Í(bool expanded)ÎMx.ExpanderÖ0Ïpublic void
+set_factoryÌ128Í(Mx.ItemFactory factory)ÎMx.ItemViewÖ0Ïpublic void
+set_factoryÌ128Í(Mx.ItemFactory factory)ÎMx.ListViewÖ0Ïpublic void
+set_fillÌ128Í(bool x_fill, bool y_fill)ÎMx.BinÖ0Ïpublic void
+set_flip_backÌ128Í(bool flip_back)ÎMx.DeformBowTieÖ0Ïpublic void
+set_from_stringÌ128Í(GLib.Value value, string str, string filename)ÎMx.BorderImageÖ0Ïpublic void
+set_has_close_buttonÌ128Í(bool has_close_button)ÎMx.ToolbarÖ0Ïpublic void
+set_has_toolbarÌ128Í(bool toolbar)ÎMx.WindowÖ0Ïpublic void
+set_hint_textÌ128Í(string text)ÎMx.EntryÖ0Ïpublic void
+set_homogenous_columnsÌ128Í(bool value)ÎMx.GridÖ0Ïpublic void
+set_homogenous_rowsÌ128Í(bool value)ÎMx.GridÖ0Ïpublic void
+set_iconÌ128Í(string name)ÎMx.ActionÖ0Ïpublic void
+set_icon_from_cogl_textureÌ128Í(Cogl.Bitmap texture)ÎMx.WindowÖ0Ïpublic void
+set_icon_nameÌ128Í(string icon_name)ÎMx.IconÖ0Ïpublic void
+set_icon_nameÌ128Í(string icon_name)ÎMx.WindowÖ0Ïpublic void
+set_icon_sizeÌ128Í(int size)ÎMx.IconÖ0Ïpublic void
+set_indexÌ128Í(int index)ÎMx.ComboBoxÖ0Ïpublic void
+set_is_toggleÌ128Í(bool toggle)ÎMx.ButtonÖ0Ïpublic void
+set_item_typeÌ128Í(GLib.Type item_type)ÎMx.ItemViewÖ0Ïpublic void
+set_item_typeÌ128Í(GLib.Type item_type)ÎMx.ListViewÖ0Ïpublic void
+set_labelÌ128Í(string text)ÎMx.ButtonÖ0Ïpublic void
+set_labelÌ128Í(string label)ÎMx.ExpanderÖ0Ïpublic void
+set_labelÌ128Í(int level, string label)ÎMx.PathBarÖ0Ïpublic void
+set_line_alignmentÌ128Í(Mx.Align value)ÎMx.GridÖ0Ïpublic void
+set_localeÌ128Í()ÎMxÖ0Ïpublic void
+set_lowerÌ128Í(double lower)ÎMx.AdjustmentÖ0Ïpublic void
+set_max_strideÌ128Í(int value)ÎMx.GridÖ0Ïpublic void
+set_menuÌ128Í(Mx.Menu menu)ÎMx.WidgetÖ0Ïpublic void
+set_modelÌ128Í(Clutter.Model model)ÎMx.ItemViewÖ0Ïpublic void
+set_modelÌ128Í(Clutter.Model model)ÎMx.ListViewÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎMx.ActionÖ0Ïpublic void
+set_orientationÌ128Í(Mx.Orientation orientation)ÎMx.BoxLayoutÖ0Ïpublic void
+set_orientationÌ128Í(Mx.Orientation orientation)ÎMx.GridÖ0Ïpublic void
+set_orientationÌ128Í(Mx.Orientation orientation)ÎMx.ScrollBarÖ0Ïpublic void
+set_originÌ128Í(float x, float y, float z)ÎMx.ViewportÖ0Ïpublic void
+set_page_incrementÌ128Í(double increment)ÎMx.AdjustmentÖ0Ïpublic void
+set_page_sizeÌ128Í(double page_size)ÎMx.AdjustmentÖ0Ïpublic void
+set_parent_textureÌ128Í(Clutter.Texture texture)ÎMx.TextureFrameÖ0Ïpublic void
+set_password_charÌ128Í(unichar password_char)ÎMx.EntryÖ0Ïpublic void
+set_periodÌ128Í(double period)ÎMx.DeformBowTieÖ0Ïpublic void
+set_periodÌ128Í(double period)ÎMx.DeformPageTurnÖ0Ïpublic void
+set_periodÌ128Í(double period)ÎMx.DeformWavesÖ0Ïpublic void
+set_pick_childÌ128Í(bool pick)ÎMx.OffscreenÖ0Ïpublic void
+set_primary_icon_from_fileÌ128Í(string filename)ÎMx.EntryÖ0Ïpublic void
+set_progressÌ128Í(double progress)ÎMx.ProgressBarÖ0Ïpublic void
+set_radiusÌ128Í(double radius)ÎMx.DeformPageTurnÖ0Ïpublic void
+set_radiusÌ128Í(double radius)ÎMx.DeformWavesÖ0Ïpublic void
+set_resolutionÌ128Í(int tiles_x, int tiles_y)ÎMx.DeformTextureÖ0Ïpublic void
+set_rowÌ128Í(Mx.Table table, Clutter.Actor child, int row)ÎMx.TableChildÖ0Ïpublic void
+set_row_spacingÌ128Í(float value)ÎMx.GridÖ0Ïpublic void
+set_row_spacingÌ128Í(int spacing)ÎMx.TableÖ0Ïpublic void
+set_row_spanÌ128Í(Mx.Table table, Clutter.Actor child, int span)ÎMx.TableChildÖ0Ïpublic void
+set_scroll_policyÌ128Í(Mx.ScrollPolicy policy)ÎMx.ScrollViewÖ0Ïpublic void
+set_search_pathsÌ128Í(GLib.List paths)ÎMx.IconThemeÖ0Ïpublic void
+set_secondary_icon_from_fileÌ128Í(string filename)ÎMx.EntryÖ0Ïpublic void
+set_small_screenÌ128Í(bool small_screen)ÎMx.WindowÖ0Ïpublic void
+set_spacingÌ128Í(uint spacing)ÎMx.BoxLayoutÖ0Ïpublic void
+set_step_incrementÌ128Í(double increment)ÎMx.AdjustmentÖ0Ïpublic void
+set_styleÌ128Í(Mx.Style style)ÎMx.StylableÖ0Ïpublic abstract void
+set_style_classÌ128Í(string style_class)ÎMx.StylableÖ0Ïpublic abstract void
+set_style_pseudo_classÌ128Í(string pseudo_class)ÎMx.StylableÖ0Ïpublic abstract void
+set_sync_adjustmentsÌ128Í(bool sync)ÎMx.ViewportÖ0Ïpublic void
+set_textÌ128Í(string text)ÎMx.ClipboardÖ0Ïpublic void
+set_textÌ128Í(string text)ÎMx.EntryÖ0Ïpublic void
+set_textÌ128Í(string text)ÎMx.LabelÖ0Ïpublic void
+set_textÌ128Í(string text)ÎMx.PathBarÖ0Ïpublic void
+set_textÌ128Í(string text)ÎMx.TooltipÖ0Ïpublic void
+set_texturesÌ128Í(Clutter.Texture front, Clutter.Texture back)ÎMx.DeformTextureÖ0Ïpublic void
+set_theme_nameÌ128Í(string theme_name)ÎMx.IconThemeÖ0Ïpublic void
+set_tip_areaÌ128Í(Clutter.Geometry area)ÎMx.TooltipÖ0Ïpublic void
+set_toggledÌ128Í(bool toggled)ÎMx.ButtonÖ0Ïpublic void
+set_tooltip_textÌ128Í(string text)ÎMx.WidgetÖ0Ïpublic void
+set_upperÌ128Í(double upper)ÎMx.AdjustmentÖ0Ïpublic void
+set_valueÌ128Í(double value)ÎMx.AdjustmentÖ0Ïpublic void
+set_valueÌ128Í(double value)ÎMx.SliderÖ0Ïpublic void
+set_valuesÌ128Í(double value, double lower, double upper, double step_increment, double page_increment, double page_size)ÎMx.AdjustmentÖ0Ïpublic void
+set_window_positionÌ128Í(int x, int y)ÎMx.WindowÖ0Ïpublic void
+set_x_alignÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child, Mx.Align x_align)ÎMx.BoxLayoutChildÖ0Ïpublic void
+set_x_alignÌ128Í(Mx.Align align)ÎMx.LabelÖ0Ïpublic void
+set_x_alignÌ128Í(Mx.Table table, Clutter.Actor child, Mx.Align align)ÎMx.TableChildÖ0Ïpublic void
+set_x_expandÌ128Í(Mx.Table table, Clutter.Actor child, bool expand)ÎMx.TableChildÖ0Ïpublic void
+set_x_fillÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child, bool x_fill)ÎMx.BoxLayoutChildÖ0Ïpublic void
+set_x_fillÌ128Í(Mx.Table table, Clutter.Actor child, bool fill)ÎMx.TableChildÖ0Ïpublic void
+set_y_alignÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child, Mx.Align y_align)ÎMx.BoxLayoutChildÖ0Ïpublic void
+set_y_alignÌ128Í(Mx.Align align)ÎMx.LabelÖ0Ïpublic void
+set_y_alignÌ128Í(Mx.Table table, Clutter.Actor child, Mx.Align align)ÎMx.TableChildÖ0Ïpublic void
+set_y_expandÌ128Í(Mx.Table table, Clutter.Actor child, bool expand)ÎMx.TableChildÖ0Ïpublic void
+set_y_fillÌ128Í(Mx.BoxLayout box_layout, Clutter.Actor child, bool y_fill)ÎMx.BoxLayoutChildÖ0Ïpublic void
+set_y_fillÌ128Í(Mx.Table table, Clutter.Actor child, bool fill)ÎMx.TableChildÖ0Ïpublic void
+showÌ128Í()ÎMx.TooltipÖ0Ïpublic void
+show_tooltipÌ128Í()ÎMx.WidgetÖ0Ïpublic void
+show_with_positionÌ128Í(float x, float y)ÎMx.MenuÖ0Ïpublic void
+small_screenÌ8ÎMx.WindowÖ0Ïbool
+spacingÌ8ÎMx.BoxLayoutÖ0
+stageÌ8ÎMx.FocusManagerÖ0ÏClutter.Stage
+step_incrementÌ8ÎMx.AdjustmentÖ0Ïdouble
+style_changedÌ128Í(Mx.StyleChangedFlags flags)ÎMx.StylableÖ0Ïpublic signal void
+sync_adjustmentsÌ8ÎMx.ViewportÖ0Ïbool
+textÌ8ÎMx.EntryÖ0
+textÌ8ÎMx.LabelÖ0
+textÌ8ÎMx.TooltipÖ0
+thawÌ128Í()ÎMx.ItemViewÖ0Ïpublic void
+thawÌ128Í()ÎMx.ListViewÖ0Ïpublic void
+theme_nameÌ8ÎMx.IconThemeÖ0
+tiles_xÌ8ÎMx.DeformTextureÖ0Ïint
+tiles_yÌ8ÎMx.DeformTextureÖ0Ïint
+tip_areaÌ8ÎMx.TooltipÖ0ÏClutter.Geometry
+toggledÌ8ÎMx.ButtonÖ0Ïbool
+toolbarÌ8ÎMx.WindowÖ0ÏMx.Toolbar
+tooltip_textÌ8ÎMx.WidgetÖ0
+topÌ8ÎMx.BorderImageÖ0Ïint
+topÌ8ÎMx.PaddingÖ0Ïfloat
+topÌ8ÎMx.TextureFrameÖ0Ïfloat
+updateÌ128Í()ÎMx.OffscreenÖ0Ïpublic void
+upperÌ8ÎMx.AdjustmentÖ0Ïdouble
+uriÌ8ÎMx.BorderImageÖ0
+utils_format_timeÌ128Í(GLib.TimeVal time_)ÎMxÖ0Ïpublic unowned string
+valueÌ8ÎMx.AdjustmentÖ0Ïdouble
+valueÌ8ÎMx.SliderÖ0Ïdouble
+x_alignÌ8ÎMx.BinÖ0ÏMx.Align
+x_alignÌ8ÎMx.BoxLayoutChildÖ0ÏMx.Align
+x_alignÌ8ÎMx.LabelÖ0ÏMx.Align
+x_alignÌ8ÎMx.TableChildÖ0ÏMx.Align
+x_expandÌ8ÎMx.TableChildÖ0Ïbool
+x_fillÌ8ÎMx.BinÖ0Ïbool
+x_fillÌ8ÎMx.BoxLayoutChildÖ0Ïbool
+x_fillÌ8ÎMx.TableChildÖ0Ïbool
+x_originÌ8ÎMx.ViewportÖ0Ïfloat
+y_alignÌ8ÎMx.BinÖ0ÏMx.Align
+y_alignÌ8ÎMx.BoxLayoutChildÖ0ÏMx.Align
+y_alignÌ8ÎMx.LabelÖ0ÏMx.Align
+y_alignÌ8ÎMx.TableChildÖ0ÏMx.Align
+y_expandÌ8ÎMx.TableChildÖ0Ïbool
+y_fillÌ8ÎMx.BinÖ0Ïbool
+y_fillÌ8ÎMx.BoxLayoutChildÖ0Ïbool
+y_fillÌ8ÎMx.TableChildÖ0Ïbool
+y_originÌ8ÎMx.ViewportÖ0Ïfloat
+z_originÌ8ÎMx.ViewportÖ0Ïfloat

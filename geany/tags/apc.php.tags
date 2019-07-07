@@ -1,0 +1,22 @@
+# format=pipe
+apc_add|array|(array values [, mixed unused [, int ttl = 0 ]])|
+apc_add|bool|(string key [, mixed var [, int ttl = 0 ]])|
+apc_bin_dumpfile|int|(array files , array user_vars , string filename [, int flags = 0 [, resource context ]])|
+apc_bin_dump|string|([ array files [, array user_vars ]])|
+apc_bin_loadfile|bool|(string filename [, resource context [, int flags ]])|
+apc_bin_load|bool|(string data [, int flags = 0 ])|
+apc_cache_info|array|([ string cache_type [, bool limited = false ]])|
+apc_cas|bool|(string key , int old , int new )|
+apc_clear_cache|bool|([ string cache_type ])|
+apc_compile_file|mixed|(string filename [, bool atomic = true ])|
+apc_dec|int|(string key [, int step = 1 [, bool &success ]])|
+apc_define_constants|bool|(string key , array constants [, bool case_sensitive = true ])|
+apc_delete_file|mixed|(mixed keys )|
+apc_delete|mixed|(string key )|
+apc_exists|mixed|(mixed keys )|
+apc_fetch|mixed|(mixed key [, bool &success ])|
+apc_inc|int|(string key [, int step = 1 [, bool &success ]])|
+apc_load_constants|bool|(string key [, bool case_sensitive = true ])|
+apc_sma_info|array|([ bool limited = false ])|
+apc_store|array|(array values [, mixed unused [, int ttl = 0 ]])|
+apc_store|bool|(string key , mixed var [, int ttl = 0 ])|

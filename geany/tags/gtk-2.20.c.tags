@@ -1,8 +1,4 @@
 # format=tagmanager
-# created with:
-# CFLAGS=`pkg-config --cflags gtk+-2.0` geany -g gtk2.20.c.tags /usr/include/gtk-2.0/gtk/gtk.h && \
-# sed -i '/^_.*/d' gtk220.c.tags
-# on Sun Jun 13 08:45:24 2010 UTC on Debian Testing using GLib 20.24.1 / GTK 2.20.1
 ABSÌ65536Ö0
 ABSÌ131072Í(a)Ö0
 AIO_PRIO_DELTA_MAXÌ65536Ö0

@@ -1,0 +1,785 @@
+# format=tagmanager
+ASCIIÌ4ÎXml.CharEncodingÖ0
+ATTRIBUTEÌ4ÎXml.ReaderTypeÖ0
+ATTRIBUTE_DECLÌ4ÎXml.ElementTypeÖ0
+ATTRIBUTE_NODEÌ4ÎXml.ElementTypeÖ0
+AttrÌ1ÎXmlÖ0
+AttributeÌ1ÎXmlÖ0
+AttributeDefaultÌ2ÎXmlÖ0
+AttributeTypeÌ2ÎXmlÖ0
+BOOLEANÌ4ÎXml.XPath.ObjectTypeÖ0
+CDATAÌ4ÎXml.AttributeTypeÖ0
+CDATAÌ4ÎXml.ReaderTypeÖ0
+CDATA_SECTION_NODEÌ4ÎXml.ElementTypeÖ0
+CLOSEDÌ4ÎXml.TextReaderModeÖ0
+COMMENTÌ4ÎXml.ReaderTypeÖ0
+COMMENT_NODEÌ4ÎXml.ElementTypeÖ0
+COMPACTÌ4ÎHtml.ParserOptionÖ0
+COMPACTÌ4ÎXml.ParserOptionÖ0
+CharEncodingÌ2ÎXmlÖ0
+ContextÌ1ÎXml.XPathÖ0
+ContextÌ128Í(Doc* doc)ÎXml.XPath.ContextÖ0
+DEFAULTATTRSÌ4ÎXml.ParserPropertiesÖ0
+DEPRECATEDÌ4ÎHtml.StatusÖ0
+DOCB_DOCUMENT_NODEÌ4ÎXml.ElementTypeÖ0
+DOCUMENTÌ4ÎXml.ReaderTypeÖ0
+DOCUMENT_FRAGMENTÌ4ÎXml.ReaderTypeÖ0
+DOCUMENT_FRAG_NODEÌ4ÎXml.ElementTypeÖ0
+DOCUMENT_NODEÌ4ÎXml.ElementTypeÖ0
+DOCUMENT_TYPEÌ4ÎXml.ReaderTypeÖ0
+DOCUMENT_TYPE_NODEÌ4ÎXml.ElementTypeÖ0
+DTDATTRÌ4ÎXml.ParserOptionÖ0
+DTDLOADÌ4ÎXml.ParserOptionÖ0
+DTDVALIDÌ4ÎXml.ParserOptionÖ0
+DTD_NODEÌ4ÎXml.ElementTypeÖ0
+DocÌ1ÎHtmlÖ0
+DocÌ128Í(string? uri = null, string? external_id = null)ÎHtml.DocÖ0
+DocÌ1ÎXmlÖ0
+DocÌ128Í(string? version = null)ÎXml.DocÖ0
+Doc.new_no_dtdÌ128Í(string? uri = null, string? external_id = null)ÎHtml.DocÖ0
+DtdÌ1ÎXmlÖ0
+DtdÌ128Í(Doc* doc, string name, string external_id, string system_id)ÎXml.DtdÖ0
+EBCDICÌ4ÎXml.CharEncodingÖ0
+ELEMENTÌ4ÎXml.ElementContentTypeÖ0
+ELEMENTÌ4ÎXml.ReaderTypeÖ0
+ELEMENT_DECLÌ4ÎXml.ElementTypeÖ0
+ELEMENT_NODEÌ4ÎXml.ElementTypeÖ0
+ENCODING_ERRORÌ4ÎXml.XPath.ErrorÖ0
+END_ELEMENTÌ4ÎXml.ReaderTypeÖ0
+END_ENTITYÌ4ÎXml.ReaderTypeÖ0
+ENTITIESÌ4ÎXml.AttributeTypeÖ0
+ENTITYÌ4ÎXml.AttributeTypeÖ0
+ENTITYÌ4ÎXml.ReaderTypeÖ0
+ENTITY_DECLÌ4ÎXml.ElementTypeÖ0
+ENTITY_NODEÌ4ÎXml.ElementTypeÖ0
+ENTITY_REFERENCEÌ4ÎXml.ReaderTypeÖ0
+ENTITY_REF_NODEÌ4ÎXml.ElementTypeÖ0
+ENUMERATIONÌ4ÎXml.AttributeTypeÖ0
+EOFÌ4ÎXml.TextReaderModeÖ0
+ERRORÌ4ÎXml.CharEncodingÖ0
+ERRORÌ4ÎXml.ErrorLevelÖ0
+ERRORÌ4ÎXml.ParserSeveritiesÖ0
+ERRORÌ4ÎXml.TextReaderModeÖ0
+EUC_JPÌ4ÎXml.CharEncodingÖ0
+EXPRESSION_OKÌ4ÎXml.XPath.ErrorÖ0
+EXPR_ERRORÌ4ÎXml.XPath.ErrorÖ0
+EXTERNAL_GENERAL_PARSED_ENTITYÌ4ÎXml.EntityTypeÖ0
+EXTERNAL_GENERAL_UNPARSED_ENTITYÌ4ÎXml.EntityTypeÖ0
+EXTERNAL_PARAMETER_ENTITYÌ4ÎXml.EntityTypeÖ0
+ElemDescÌ1ÎHtmlÖ0
+ElementÌ1ÎXmlÖ0
+ElementContentÌ1ÎXmlÖ0
+ElementContentÌ128Í(string name, ElementContentType type)ÎXml.ElementContentÖ0
+ElementContentOccurÌ2ÎXmlÖ0
+ElementContentTypeÌ2ÎXmlÖ0
+ElementTypeÌ2ÎXmlÖ0
+EntityÌ2048ÎXmlÖ0
+EntityDescÌ1ÎHtmlÖ0
+EntityTypeÌ2ÎXmlÖ0
+EnumerationÌ2048ÎXmlÖ0
+ErrorÌ2048ÎXmlÖ0
+ErrorÌ2ÎXml.XPathÖ0
+ErrorLevelÌ2ÎXmlÖ0
+FATALÌ4ÎXml.ErrorLevelÖ0
+FIXEDÌ4ÎXml.AttributeDefaultÖ0
+FtpDataCallbackÌ128Í(void* userData, [CCode (array_length = false)] char[] data, int len)ÎXmlÖ0Ïpublic delegate void
+FtpListCallbackÌ128Í(void* userData, string filename, string attrib, string owner, string group, ulong size, int links, int year, string month, int day, int hour, int minute)ÎXmlÖ0Ïpublic delegate void
+HTML_DOCUMENT_NODEÌ4ÎXml.ElementTypeÖ0
+HtmlÌ256Ö0
+IDÌ4ÎXml.AttributeTypeÖ0
+IDREFÌ4ÎXml.AttributeTypeÖ0
+IDREFSÌ4ÎXml.AttributeTypeÖ0
+IMPLIEDÌ4ÎXml.AttributeDefaultÖ0
+INITIALÌ4ÎXml.TextReaderModeÖ0
+INTERACTIVEÌ4ÎXml.TextReaderModeÖ0
+INTERNAL_GENERAL_ENTITYÌ4ÎXml.EntityTypeÖ0
+INTERNAL_PARAMETER_ENTITYÌ4ÎXml.EntityTypeÖ0
+INTERNAL_PREDEFINED_ENTITYÌ4ÎXml.EntityTypeÖ0
+INVALIDÌ4ÎHtml.StatusÖ0
+INVALID_ARITYÌ4ÎXml.XPath.ErrorÖ0
+INVALID_CHAR_ERRORÌ4ÎXml.XPath.ErrorÖ0
+INVALID_CTXTÌ4ÎXml.XPath.ErrorÖ0
+INVALID_CTXT_POSITIONÌ4ÎXml.XPath.ErrorÖ0
+INVALID_CTXT_SIZEÌ4ÎXml.XPath.ErrorÖ0
+INVALID_OPERANDÌ4ÎXml.XPath.ErrorÖ0
+INVALID_PREDICATE_ERRORÌ4ÎXml.XPath.ErrorÖ0
+INVALID_TYPEÌ4ÎXml.XPath.ErrorÖ0
+ISO_2022_JPÌ4ÎXml.CharEncodingÖ0
+ISO_8859_1Ì4ÎXml.CharEncodingÖ0
+ISO_8859_2Ì4ÎXml.CharEncodingÖ0
+ISO_8859_3Ì4ÎXml.CharEncodingÖ0
+ISO_8859_4Ì4ÎXml.CharEncodingÖ0
+ISO_8859_5Ì4ÎXml.CharEncodingÖ0
+ISO_8859_6Ì4ÎXml.CharEncodingÖ0
+ISO_8859_7Ì4ÎXml.CharEncodingÖ0
+ISO_8859_8Ì4ÎXml.CharEncodingÖ0
+ISO_8859_9Ì4ÎXml.CharEncodingÖ0
+InputCloseCallbackÌ128Í(void* context)ÎXmlÖ0Ïpublic delegate int
+InputMatchCallbackÌ128Í(string filename)ÎXmlÖ0Ïpublic delegate int
+InputOpenCallbackÌ128Í(string filename)ÎXmlÖ0Ïpublic delegate void *
+InputReadCallbackÌ128Í(void* context, [CCode (array_length = false)] char[] buffer, int len)ÎXmlÖ0Ïpublic delegate int
+LOADDTDÌ4ÎXml.ParserPropertiesÖ0
+LOCATIONSETÌ4ÎXml.XPath.ObjectTypeÖ0
+MEMORY_ERRORÌ4ÎXml.XPath.ErrorÖ0
+MULTÌ4ÎXml.ElementContentOccurÖ0
+NAÌ4ÎHtml.StatusÖ0
+NAMESPACE_DECLÌ4ÎXml.ElementTypeÖ0
+NMTOKENÌ4ÎXml.AttributeTypeÖ0
+NMTOKENSÌ4ÎXml.AttributeTypeÖ0
+NOBLANKSÌ4ÎHtml.ParserOptionÖ0
+NOBLANKSÌ4ÎXml.ParserOptionÖ0
+NOCDATAÌ4ÎXml.ParserOptionÖ0
+NODESETÌ4ÎXml.XPath.ObjectTypeÖ0
+NODICTÌ4ÎXml.ParserOptionÖ0
+NOENTÌ4ÎXml.ParserOptionÖ0
+NOERRORÌ4ÎHtml.ParserOptionÖ0
+NOERRORÌ4ÎXml.ParserOptionÖ0
+NONEÌ4ÎXml.AttributeDefaultÖ0
+NONEÌ4ÎXml.CharEncodingÖ0
+NONEÌ4ÎXml.ErrorLevelÖ0
+NONEÌ4ÎXml.ReaderTypeÖ0
+NONETÌ4ÎHtml.ParserOptionÖ0
+NONETÌ4ÎXml.ParserOptionÖ0
+NOTATIONÌ4ÎXml.AttributeTypeÖ0
+NOTATIONÌ4ÎXml.ReaderTypeÖ0
+NOTATION_NODEÌ4ÎXml.ElementTypeÖ0
+NOWARNINGÌ4ÎHtml.ParserOptionÖ0
+NOWARNINGÌ4ÎXml.ParserOptionÖ0
+NOXINCNODEÌ4ÎXml.ParserOptionÖ0
+NSCLEANÌ4ÎXml.ParserOptionÖ0
+NUMBERÌ4ÎXml.XPath.ObjectTypeÖ0
+NUMBER_ERRORÌ4ÎXml.XPath.ErrorÖ0
+NanoFTPÌ1ÎXmlÖ0
+NanoFTPÌ128Í(string url)ÎXml.NanoFTPÖ0
+NanoHTTPÌ1ÎXmlÖ0
+NodeÌ1ÎHtmlÖ0
+NodeÌ1ÎXmlÖ0
+NodeÌ128Í(Ns* ns, string name)ÎXml.NodeÖ0
+Node.commentÌ128Í(string content)ÎXml.NodeÖ0
+Node.eat_nameÌ128Í(Ns* ns, owned string name)ÎXml.NodeÖ0
+Node.piÌ128Í(string name, string content)ÎXml.NodeÖ0
+Node.textÌ128Í(string content)ÎXml.NodeÖ0
+Node.text_lenÌ128Í(string content, int len)ÎXml.NodeÖ0
+NodeSetÌ1ÎXml.XPathÖ0
+NsÌ1ÎXmlÖ0
+NsÌ128Í(Xml.Node* node, string href, string prefix)ÎXml.NsÖ0
+ONCEÌ4ÎXml.ElementContentOccurÖ0
+OPTÌ4ÎXml.ElementContentOccurÖ0
+ORÌ4ÎXml.ElementContentTypeÖ0
+ObjectÌ1ÎXml.XPathÖ0
+ObjectTypeÌ2ÎXml.XPathÖ0
+OutputCloseCallbackÌ128Í(void * context)ÎXmlÖ0Ïpublic delegate int
+OutputMatchCallbackÌ128Í(string filename)ÎXmlÖ0Ïpublic delegate int
+OutputOpenCallbackÌ128Í(string filename)ÎXmlÖ0Ïpublic delegate void *
+OutputWriteCallbackÌ128Í([CCode (array_length = false)] char[] buffer, int len)ÎXmlÖ0Ïpublic delegate int
+PCDATAÌ4ÎXml.ElementContentTypeÖ0
+PEDANTICÌ4ÎHtml.ParserOptionÖ0
+PEDANTICÌ4ÎXml.ParserOptionÖ0
+PI_NODEÌ4ÎXml.ElementTypeÖ0
+PLUSÌ4ÎXml.ElementContentOccurÖ0
+POINTÌ4ÎXml.XPath.ObjectTypeÖ0
+PROCESSING_INSTRUCTIONÌ4ÎXml.ReaderTypeÖ0
+ParserÌ256Ö0
+ParserCtxtÌ1ÎHtmlÖ0
+ParserCtxtÌ128Í()ÎHtml.ParserCtxtÖ0
+ParserCtxtÌ1ÎXmlÖ0
+ParserCtxt.create_memoryÌ128Í([CCode (array_length = false)] char[] buffer, int size)ÎHtml.ParserCtxtÖ0
+ParserCtxt.create_pushÌ128Í(Xml.SAXHandler* sax, void* user_data, [CCode (array_length = false)] char[] data, int len, string? filename = null, Xml.CharEncoding enc = Xml.CharEncoding.NONE)ÎHtml.ParserCtxtÖ0
+ParserOptionÌ2ÎHtmlÖ0
+ParserOptionÌ2ÎXmlÖ0
+ParserPropertiesÌ2ÎXmlÖ0
+ParserSeveritiesÌ2ÎXmlÖ0
+RANGEÌ4ÎXml.XPath.ObjectTypeÖ0
+READINGÌ4ÎXml.TextReaderModeÖ0
+RECOVERÌ4ÎHtml.ParserOptionÖ0
+RECOVERÌ4ÎXml.ParserOptionÖ0
+REQUIREDÌ4ÎHtml.StatusÖ0
+REQUIREDÌ4ÎXml.AttributeDefaultÖ0
+ReaderTypeÌ2ÎXmlÖ0
+SAX1Ì4ÎXml.ParserOptionÖ0
+SAXHandlerÌ2048ÎXmlÖ0
+SEQÌ4ÎXml.ElementContentTypeÖ0
+SHIFT_JISÌ4ÎXml.CharEncodingÖ0
+SIGNIFICANT_WHITESPACEÌ4ÎXml.ReaderTypeÖ0
+START_LITERAL_ERRORÌ4ÎXml.XPath.ErrorÖ0
+STRINGÌ4ÎXml.XPath.ObjectTypeÖ0
+SUBST_ENTITIESÌ4ÎXml.ParserPropertiesÖ0
+SchemaValidCtxtÌ1ÎXmlÖ0
+StatusÌ2ÎHtmlÖ0
+TEXTÌ4ÎXml.ReaderTypeÖ0
+TEXT_NODEÌ4ÎXml.ElementTypeÖ0
+TextReaderÌ1ÎXmlÖ0
+TextReader.filenameÌ128Í(string uri)ÎXml.TextReaderÖ0
+TextReader.for_docÌ128Í(string cur, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0
+TextReader.for_fdÌ128Í(int fd, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0
+TextReader.for_fileÌ128Í(string filename, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0
+TextReader.for_ioÌ128Í(InputReadCallback ioread, InputCloseCallback ioclose, void* ioctx, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0
+TextReader.for_memoryÌ128Í([CCode (array_length = false)] char[] buffer, int size, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0
+TextReader.walkerÌ128Í(Doc* doc)ÎXml.TextReaderÖ0
+TextReaderErrorFuncÌ128Í(void* arg, string msg, ParserSeverities severity, TextReaderLocator* locator)ÎXmlÖ0Ïpublic delegate void
+TextReaderLocatorÌ1ÎXmlÖ0
+TextReaderModeÌ2ÎXmlÖ0
+TextWriterÌ1ÎXmlÖ0
+TextWriter.filenameÌ128Í(string uri, bool compression = false)ÎXml.TextWriterÖ0
+TreeÌ256Ö0
+UCS2Ì4ÎXml.CharEncodingÖ0
+UCS4BEÌ4ÎXml.CharEncodingÖ0
+UCS4LEÌ4ÎXml.CharEncodingÖ0
+UCS4_2143Ì4ÎXml.CharEncodingÖ0
+UCS4_3412Ì4ÎXml.CharEncodingÖ0
+UNCLOSED_ERRORÌ4ÎXml.XPath.ErrorÖ0
+UNDEFINEDÌ4ÎXml.XPath.ObjectTypeÖ0
+UNDEF_PREFIX_ERRORÌ4ÎXml.XPath.ErrorÖ0
+UNDEF_VARIABLE_ERRORÌ4ÎXml.XPath.ErrorÖ0
+UNFINISHED_LITERAL_ERRORÌ4ÎXml.XPath.ErrorÖ0
+UNKNOWN_FUNC_ERRORÌ4ÎXml.XPath.ErrorÖ0
+URIÌ1ÎXmlÖ0
+URIÌ128Í()ÎXml.URIÖ0
+USERSÌ4ÎXml.XPath.ObjectTypeÖ0
+UTF16BEÌ4ÎXml.CharEncodingÖ0
+UTF16LEÌ4ÎXml.CharEncodingÖ0
+UTF8Ì4ÎXml.CharEncodingÖ0
+VALIDÌ4ÎHtml.StatusÖ0
+VALIDATEÌ4ÎXml.ParserPropertiesÖ0
+VALIDITY_ERRORÌ4ÎXml.ParserSeveritiesÖ0
+VALIDITY_WARNINGÌ4ÎXml.ParserSeveritiesÖ0
+VARIABLE_REF_ERRORÌ4ÎXml.XPath.ErrorÖ0
+WARNINGÌ4ÎXml.ErrorLevelÖ0
+WARNINGÌ4ÎXml.ParserSeveritiesÖ0
+WHITESPACEÌ4ÎXml.ReaderTypeÖ0
+XINCLUDEÌ4ÎXml.ParserOptionÖ0
+XINCLUDE_ENDÌ4ÎXml.ElementTypeÖ0
+XINCLUDE_STARTÌ4ÎXml.ElementTypeÖ0
+XML_DECLARATIONÌ4ÎXml.ReaderTypeÖ0
+XPTR_RESOURCE_ERRORÌ4ÎXml.XPath.ErrorÖ0
+XPTR_SUB_RESOURCE_ERRORÌ4ÎXml.XPath.ErrorÖ0
+XPTR_SYNTAX_ERRORÌ4ÎXml.XPath.ErrorÖ0
+XPathÌ256Ö0
+XSLT_TREEÌ4ÎXml.XPath.ObjectTypeÖ0
+XmlÌ256Ö0
+add_childÌ128Í(Node* cur)ÎXml.NodeÖ0Ïpublic Node *
+add_child_listÌ128Í(Node* cur)ÎXml.NodeÖ0Ïpublic Node *
+add_contentÌ128Í(string content)ÎXml.NodeÖ0Ïpublic void
+add_content_lenÌ128Í(string content, int len)ÎXml.NodeÖ0Ïpublic void
+add_next_siblingÌ128Í(Node* elem)ÎXml.NodeÖ0Ïpublic Node *
+add_prev_siblingÌ128Í(Node* elem)ÎXml.NodeÖ0Ïpublic Node *
+add_siblingÌ128Í(Node* elem)ÎXml.NodeÖ0Ïpublic Node *
+allowed_hereÌ128Í(string elt)ÎHtml.ElemDescÖ0Ïpublic bool
+allowed_here_descÌ128Í(ElemDesc* child)ÎHtml.ElemDescÖ0Ïpublic bool
+attr_allowedÌ128Í(string attr, bool legacy)ÎHtml.ElemDescÖ0Ïpublic Status
+attributeDeclÌ8ÎXml.SAXHandlerÖ0ÏattributeDeclSAXFunc
+attributeDeclSAXFuncÌ128Í(void* ctx, string elem, string fullname, int type, int def, string defaultValue, Enumeration* tree)ÎXmlÖ0Ïpublic delegate void
+attributeSAXFuncÌ128Í(void* ctx, string name, string value)ÎXmlÖ0Ïpublic delegate void
+attribute_countÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+attributesÌ8ÎXml.ElementÖ0ÏAttribute
+attrs_deprÌ8ÎHtml.ElemDescÖ0
+attrs_optÌ8ÎHtml.ElemDescÖ0
+attrs_reqÌ8ÎHtml.ElemDescÖ0
+atypeÌ8ÎXml.AttrÖ0ÏAttributeType
+atypeÌ8ÎXml.AttributeÖ0ÏAttributeType
+auth_headerÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic unowned string
+authorityÌ8ÎXml.URIÖ0
+auto_close_tagÌ128Í(string name, Node* elem)ÎHtml.DocÖ0Ïpublic bool
+base_uriÌ128Í()ÎXml.TextReaderÖ0
+boolvalÌ8ÎXml.XPath.ObjectÖ0Ïint
+buildÌ128Í(string URI, string @base)ÎXml.URIÖ0
+build_relativeÌ128Í(string uri, string @base)ÎXml.URIÖ0
+byte_consumedÌ128Í()ÎXml.TextReaderÖ0Ïpublic long
+c1Ì8ÎXml.ElementContentÖ0ÏElementContent
+c2Ì8ÎXml.ElementContentÖ0ÏElementContent
+canonic_pathÌ128Í(string path)ÎXml.URIÖ0
+cdataBlockÌ8ÎXml.SAXHandlerÖ0ÏcdataBlockSAXFunc
+cdataBlockSAXFuncÌ128Í(void* ctx, string value, int len)ÎXmlÖ0Ïpublic delegate void
+charactersÌ8ÎXml.SAXHandlerÖ0ÏcharactersSAXFunc
+charactersSAXFuncÌ128Í(void* ctx, string ch, int len)ÎXmlÖ0Ïpublic delegate void
+charsetÌ8ÎXml.DocÖ0Ïint
+check_responseÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+checkedÌ8ÎXml.EntityÖ0Ïint
+child_element_countÌ128Í()ÎXml.NodeÖ0
+childrenÌ8ÎXml.AttrÖ0ÏNode
+childrenÌ8ÎXml.AttributeÖ0ÏNode
+childrenÌ8ÎXml.DocÖ0ÏNode
+childrenÌ8ÎXml.DtdÖ0ÏNode
+childrenÌ8ÎXml.ElementÖ0ÏNode
+childrenÌ8ÎXml.EntityÖ0ÏNode
+childrenÌ8ÎXml.NodeÖ0ÏNode
+cleanupÌ128Í()ÎXml.NanoFTPÖ0Ïpublic void
+cleanupÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic void
+cleanupÌ128Í()ÎXml.ParserÖ0Ïpublic void
+cleanupÌ8ÎXml.URIÖ0Ïint
+closeÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+closeÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic int
+closeÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+close_connectionÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+codeÌ8ÎXml.ErrorÖ0Ïint
+commentÌ8ÎXml.SAXHandlerÖ0ÏcommentSAXFunc
+commentSAXFuncÌ128Í(void* ctx, string value)ÎXmlÖ0Ïpublic delegate void
+compressionÌ8ÎXml.DocÖ0Ïint
+connectÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+connect_toÌ128Í(string server, int port)ÎXml.NanoFTPÖ0Ïpublic NanoFTP *
+const_base_uriÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_encodingÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_local_nameÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_nameÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_namespace_uriÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_prefixÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_stringÌ128Í(string str)ÎXml.TextReaderÖ0Ïpublic unowned string
+const_valueÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_xml_langÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+const_xml_versionÌ128Í()ÎXml.TextReaderÖ0Ïpublic unowned string
+contentÌ8ÎXml.EntityÖ0
+contentÌ8ÎXml.NodeÖ0
+content_lengthÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic int
+contextÌ8ÎXml.NsÖ0ÏDoc
+copyÌ128Í(int recursive)ÎXml.DocÖ0Ïpublic Doc *
+copyÌ128Í()ÎXml.DtdÖ0Ïpublic Dtd *
+copyÌ128Í(int extended)ÎXml.NodeÖ0Ïpublic Node *
+copy_listÌ128Í()ÎXml.NodeÖ0Ïpublic Node
+create_int_subsetÌ128Í(string name, string external_id, string system_id)ÎXml.DocÖ0Ïpublic Dtd *
+ctxÌ8ÎXml.ErrorÖ0Ïvoid
+current_docÌ128Í()ÎXml.TextReaderÖ0Ïpublic Doc *
+current_nodeÌ128Í()ÎXml.TextReaderÖ0Ïpublic Node *
+cwdÌ128Í(string directory)ÎXml.NanoFTPÖ0Ïpublic int
+defÌ8ÎXml.AttributeÖ0ÏAttributeDefault
+default_subelementÌ128Í()ÎHtml.ElemDescÖ0Ïpublic unowned string
+default_valueÌ8ÎXml.AttributeÖ0
+defaultsubeltÌ8ÎHtml.ElemDescÖ0
+deleÌ128Í(string file)ÎXml.NanoFTPÖ0Ïpublic int
+deprÌ8ÎHtml.ElemDescÖ0Ïbool
+depthÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+descÌ8ÎHtml.ElemDescÖ0
+descÌ8ÎHtml.EntityDescÖ0
+docÌ8ÎXml.AttrÖ0ÏDoc
+docÌ8ÎXml.AttributeÖ0ÏDoc
+docÌ8ÎXml.DocÖ0ÏDoc
+docÌ8ÎXml.DtdÖ0ÏDoc
+docÌ8ÎXml.ElementÖ0ÏDoc
+docÌ8ÎXml.EntityÖ0ÏDoc
+docÌ8ÎXml.NodeÖ0ÏDoc
+docÌ8ÎXml.XPath.ContextÖ0ÏDoc
+doc_copyÌ128Í(Doc* doc, int extended)ÎXml.NodeÖ0Ïpublic Node *
+doc_copy_listÌ128Í(Doc* doc)ÎXml.NodeÖ0Ïpublic Node *
+domainÌ8ÎXml.ErrorÖ0Ïint
+dtdÌ8ÎHtml.ElemDescÖ0Ïchar
+dumpÌ128Í(Posix.FILE f)ÎHtml.DocÖ0Ïpublic int
+dumpÌ128Í(GLib.FileStream f)ÎHtml.DocÖ0Ïpublic int
+dumpÌ128Í(Posix.FILE f)ÎXml.DocÖ0Ïpublic int
+dumpÌ128Í(GLib.FileStream f)ÎXml.DocÖ0Ïpublic int
+dump_formatÌ128Í(Posix.FILE f, bool format = true)ÎXml.DocÖ0Ïpublic int
+dump_formatÌ128Í(GLib.FileStream f, bool format = true)ÎXml.DocÖ0Ïpublic int
+dump_memoryÌ128Í(out string mem, out int len = null)ÎHtml.DocÖ0Ïpublic void
+dump_memoryÌ128Í(out string mem, out int len = null)ÎXml.DocÖ0Ïpublic void
+dump_memory_encÌ128Í(out string mem, out int len = null, string enc = )ÎXml.DocÖ0Ïpublic void
+dump_memory_enc_formatÌ128Í(out string mem, out int len = null, string enc = , bool format = true)ÎXml.DocÖ0Ïpublic void
+dump_memory_formatÌ128Í(out string mem, out int len = null, bool format = true)ÎHtml.DocÖ0Ïpublic void
+dump_memory_formatÌ128Í(out string mem, out int len = null, bool format = true)ÎXml.DocÖ0Ïpublic void
+elemÌ8ÎXml.AttributeÖ0
+elem_dumpÌ128Í(Posix.FILE f, Node* cur)ÎXml.DocÖ0Ïpublic void
+elem_dumpÌ128Í(GLib.FileStream f, Node* cur)ÎXml.DocÖ0Ïpublic void
+elementDeclÌ8ÎXml.SAXHandlerÖ0ÏelementDeclSAXFunc
+elementDeclSAXFuncÌ128Í(void* ctx, string name, int type, ElementContent content)ÎXmlÖ0Ïpublic delegate void
+emptyÌ8ÎHtml.ElemDescÖ0Ïbool
+encode_entitiesÌ128Í([CCode (array_length = false)] char[] outdata, out int outlen, [CCode (array_length = false)] char[] indata, out int inlen, char quote_char = )ÎHtmlÖ0Ïpublic int
+encodingÌ8ÎXml.DocÖ0
+endDocumentÌ8ÎXml.SAXHandlerÖ0ÏendDocumentSAXFunc
+endDocumentSAXFuncÌ128Í(void* ctx)ÎXmlÖ0Ïpublic delegate void
+endElementÌ8ÎXml.SAXHandlerÖ0ÏendElementSAXFunc
+endElementNsÌ8ÎXml.SAXHandlerÖ0ÏendElementNsSAX2Func
+endElementNsSAX2FuncÌ128Í(void* ctx, string localname, string prefix, string URI)ÎXmlÖ0Ïpublic delegate void
+endElementSAXFuncÌ128Í(void* ctx, string name)ÎXmlÖ0Ïpublic delegate void
+end_attributeÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+end_cdataÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+end_commentÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+end_documentÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+end_elementÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+end_tagÌ8ÎHtml.ElemDescÖ0Ïbool
+entityDeclÌ8ÎXml.SAXHandlerÖ0ÏentityDeclSAXFunc
+entityDeclSAXFuncÌ128Í(void* ctx, string name, int type, string publicId, string systemId, string content)ÎXmlÖ0Ïpublic delegate void
+errorÌ8ÎXml.SAXHandlerÖ0ÏerrorSAXFunc
+errorSAXFuncÌ128Í(void* ctx, string msg, ...)ÎXmlÖ0Ïpublic delegate void
+escapeÌ128Í(string str)ÎXml.URIÖ0
+escape_strÌ128Í(string str, string list)ÎXml.URIÖ0
+etypeÌ8ÎXml.EntityÖ0ÏEntityType
+evalÌ128Í(string str)ÎXml.XPath.ContextÖ0Ïpublic Object *
+eval_expressionÌ128Í(string str)ÎXml.XPath.ContextÖ0Ïpublic Object *
+expandÌ128Í()ÎXml.TextReaderÖ0Ïpublic Node *
+ext_subsetÌ8ÎXml.DocÖ0ÏDtd
+externalSubsetÌ8ÎXml.SAXHandlerÖ0ÏexternalSubsetSAXFunc
+externalSubsetSAXFuncÌ128Í(void* ctx, string name, string ExternalID, string SystemID)ÎXmlÖ0Ïpublic delegate void
+external_idÌ8ÎXml.DtdÖ0
+external_idÌ8ÎXml.EntityÖ0
+extraÌ8ÎXml.NodeÖ0
+fatalErrorÌ8ÎXml.SAXHandlerÖ0ÏfatalErrorSAXFunc
+fatalErrorSAXFuncÌ128Í(void* ctx, string msg, ...)ÎXmlÖ0Ïpublic delegate void
+fetchÌ128Í(string url, string filename, out string content_type)ÎXml.NanoHTTPÖ0Ïpublic int
+fileÌ8ÎXml.ErrorÖ0
+first_element_childÌ128Í()ÎXml.NodeÖ0Ïpublic Node *
+floatvalÌ8ÎXml.XPath.ObjectÖ0Ïdouble
+flushÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+format_attributeÌ128Í(string name, string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_attribute_nsÌ128Í(string prefix, string name, string namespaceURI, string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_cdataÌ128Í(string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_commentÌ128Í(string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_elementÌ128Í(string name, string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_element_nsÌ128Í(string prefix, string name, string namespaceURI, string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+format_stringÌ128Í(string format, ...)ÎXml.TextWriterÖ0Ïpublic int
+fragmentÌ8ÎXml.URIÖ0
+free_listÌ128Í()ÎXml.NodeÖ0Ïpublic void
+getEntityÌ8ÎXml.SAXHandlerÖ0ÏgetEntitySAXFunc
+getEntitySAXFuncÌ128Í(void* ctx, string name)ÎXmlÖ0Ïpublic delegate Entity *
+getParameterEntityÌ8ÎXml.SAXHandlerÖ0ÏgetParameterEntitySAXFunc
+getParameterEntitySAXFuncÌ128Í(void* ctx, string name)ÎXmlÖ0Ïpublic delegate Entity *
+get_attributeÌ128Í(string name)ÎXml.TextReaderÖ0
+get_attribute_noÌ128Í(int no)ÎXml.TextReaderÖ0
+get_attribute_nsÌ128Í(string local_name, string namespace_uri)ÎXml.TextReaderÖ0
+get_compress_modeÌ128Í()ÎXml.DocÖ0Ïpublic int
+get_compress_modeÌ128Í()ÎXml.TreeÖ0Ïpublic int
+get_connectionÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+get_contentÌ128Í()ÎXml.NodeÖ0
+get_error_handlerÌ128Í(out TextReaderErrorFunc f, void** arg)ÎXml.TextReaderÖ0Ïpublic void
+get_langÌ128Í()ÎXml.NodeÖ0
+get_last_childÌ128Í()ÎXml.NodeÖ0Ïpublic Node *
+get_line_noÌ128Í()ÎXml.NodeÖ0Ïpublic long
+get_meta_encodingÌ128Í()ÎHtml.DocÖ0
+get_no_ns_propÌ128Í(string name)ÎXml.NodeÖ0Ïpublic string?
+get_ns_propÌ128Í(string name, string ns)ÎXml.NodeÖ0Ïpublic string?
+get_parser_column_numberÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+get_parser_line_numberÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+get_parser_propÌ128Í(int prop)ÎXml.TextReaderÖ0Ïpublic int
+get_pathÌ128Í()ÎXml.NodeÖ0
+get_propÌ128Í(string name)ÎXml.NodeÖ0Ïpublic string?
+get_responseÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+get_root_elementÌ128Í()ÎXml.DocÖ0Ïpublic Node *
+get_socketÌ128Í(string filename)ÎXml.NanoFTPÖ0Ïpublic int
+get_space_preserveÌ128Í()ÎXml.NodeÖ0Ïpublic int
+handle_omitted_elemÌ128Í(bool val)ÎHtmlÖ0Ïpublic bool
+hasExternalSubsetÌ8ÎXml.SAXHandlerÖ0ÏhasExternalSubsetSAXFunc
+hasExternalSubsetSAXFuncÌ128Í(void* ctx)ÎXmlÖ0Ïpublic delegate int
+hasInternalSubsetÌ8ÎXml.SAXHandlerÖ0ÏhasInternalSubsetSAXFunc
+hasInternalSubsetSAXFuncÌ128Í(void* ctx)ÎXmlÖ0Ïpublic delegate int
+has_attributesÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+has_ns_propÌ128Í(string name, string name_space)ÎXml.NodeÖ0Ïpublic Attr *
+has_propÌ128Í(string name)ÎXml.NodeÖ0Ïpublic Attr *
+has_valueÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+hrefÌ8ÎXml.NsÖ0
+http_encodingÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic unowned string
+ignorableWhitespaceÌ8ÎXml.SAXHandlerÖ0ÏignorableWhitespaceSAXFunc
+ignorableWhitespaceSAXFuncÌ128Í(void* ctx, string ch, int len)ÎXmlÖ0Ïpublic delegate void
+indexÌ8ÎXml.XPath.ObjectÖ0Ïint
+index2Ì8ÎXml.XPath.ObjectÖ0Ïint
+initÌ128Í()ÎXml.NanoFTPÖ0Ïpublic void
+initÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic void
+initÌ128Í()ÎXml.ParserÖ0Ïpublic void
+initializedÌ8ÎXml.SAXHandlerÖ0
+int1Ì8ÎXml.ErrorÖ0Ïint
+int2Ì8ÎXml.ErrorÖ0Ïint
+int_subsetÌ8ÎXml.DocÖ0ÏDtd
+internalSubsetÌ8ÎXml.SAXHandlerÖ0ÏinternalSubsetSAXFunc
+internalSubsetSAXFuncÌ128Í(void* ctx, string name, string ExternalID, string SystemID)ÎXmlÖ0Ïpublic delegate void
+isStandaloneSAXFuncÌ128Í(void* ctx)ÎXmlÖ0Ïpublic delegate int
+is_auto_closedÌ128Í(Node* elem)ÎHtml.DocÖ0Ïpublic bool
+is_blankÌ128Í()ÎXml.NodeÖ0Ïpublic int
+is_boolean_attrÌ128Í(string name)ÎHtmlÖ0Ïpublic int
+is_defaultÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+is_emptyÌ128Í()ÎXml.XPath.NodeSetÖ0Ïpublic bool
+is_empty_elementÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+is_namespace_declÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+is_script_attributeÌ128Í(string name)ÎHtmlÖ0Ïpublic bool
+is_standaloneÌ8ÎXml.SAXHandlerÖ0ÏisStandaloneSAXFunc
+is_textÌ128Í()ÎXml.NodeÖ0Ïpublic int
+is_validÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+is_xhtmlÌ128Í(string system_id, string public_id)ÎXml.TreeÖ0Ïpublic int
+isinlineÌ8ÎHtml.ElemDescÖ0Ïbool
+itemÌ128Í(int index)ÎXml.XPath.NodeSetÖ0Ïpublic Node *
+lastÌ8ÎXml.AttrÖ0ÏNode
+lastÌ8ÎXml.AttributeÖ0ÏNode
+lastÌ8ÎXml.DocÖ0ÏNode
+lastÌ8ÎXml.DtdÖ0ÏNode
+lastÌ8ÎXml.ElementÖ0ÏNode
+lastÌ8ÎXml.EntityÖ0ÏNode
+lastÌ8ÎXml.NodeÖ0ÏNode
+lengthÌ8ÎXml.EntityÖ0Ïint
+lengthÌ128Í()ÎXml.XPath.NodeSetÖ0Ïpublic int
+levelÌ8ÎXml.ErrorÖ0ÏErrorLevel
+lineÌ8ÎXml.ErrorÖ0Ïint
+lineÌ8ÎXml.NodeÖ0
+listÌ128Í(FtpListCallback cb, void* user_data, string filename)ÎXml.NanoFTPÖ0Ïpublic int
+local_nameÌ128Í()ÎXml.TextReaderÖ0
+lookupÌ128Í(string name)ÎHtml.EntityDescÖ0Ïpublic EntityDesc *
+lookup_namespaceÌ128Í(string prefix)ÎXml.TextReaderÖ0
+messageÌ8ÎXml.ErrorÖ0
+methodÌ128Í(string url, string method, string input, out string content_type, string headers, int ilen)ÎXml.NanoHTTPÖ0Ïpublic NanoHTTP *
+method_redirÌ128Í(string url, string method, string input, out string content_type, out string redir, string headers, int ilen)ÎXml.NanoHTTPÖ0Ïpublic NanoHTTP *
+mime_typeÌ128Í()ÎXml.NanoHTTPÖ0
+move_to_attributeÌ128Í(string name)ÎXml.TextReaderÖ0Ïpublic int
+move_to_attribute_noÌ128Í(int no)ÎXml.TextReaderÖ0Ïpublic int
+move_to_attribute_nsÌ128Í(string local_name, string namespace_uri)ÎXml.TextReaderÖ0Ïpublic int
+move_to_elementÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+move_to_first_attributeÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+move_to_next_attributeÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+nameÌ8ÎHtml.ElemDescÖ0
+nameÌ8ÎHtml.EntityDescÖ0
+nameÌ8ÎXml.AttrÖ0
+nameÌ8ÎXml.AttributeÖ0
+nameÌ8ÎXml.DocÖ0
+nameÌ8ÎXml.DtdÖ0
+nameÌ8ÎXml.ElementÖ0
+nameÌ8ÎXml.ElementContentÖ0
+nameÌ8ÎXml.EntityÖ0
+nameÌ8ÎXml.EnumerationÖ0
+nameÌ8ÎXml.NodeÖ0
+nameÌ128Í()ÎXml.TextReaderÖ0
+namespace_uriÌ128Í()ÎXml.TextReaderÖ0
+new_cdata_blockÌ128Í(string content, int len)ÎXml.DocÖ0Ïpublic Node *
+new_char_refÌ128Í(string name)ÎXml.DocÖ0Ïpublic Node *
+new_childÌ128Í(Ns* ns, string name, string? content = null)ÎXml.NodeÖ0Ïpublic Node *
+new_commentÌ128Í(string content)ÎXml.DocÖ0Ïpublic Node *
+new_docÌ128Í(string cur, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0Ïpublic int
+new_fdÌ128Í(int fd, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0Ïpublic int
+new_fileÌ128Í(string filename, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0Ïpublic int
+new_fragmentÌ128Í()ÎXml.DocÖ0Ïpublic Node *
+new_ioÌ128Í(InputReadCallback ioread, InputCloseCallback ioclose, void* ioctx, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0Ïpublic int
+new_memoryÌ128Í([CCode (array_length = false)] char[] buffer, int size, string url, string? encoding = null, int options = 0)ÎXml.TextReaderÖ0Ïpublic int
+new_nodeÌ128Í(Ns* ns, string name, string? content = null)ÎXml.DocÖ0Ïpublic Node *
+new_node_eat_nameÌ128Í(Ns* ns, owned string name, string? content = null)ÎXml.DocÖ0Ïpublic Node *
+new_nsÌ128Í(string href, string prefix)ÎXml.NodeÖ0Ïpublic Ns *
+new_ns_propÌ128Í(Ns* ns, string name, string value)ÎXml.NodeÖ0Ïpublic Attr *
+new_piÌ128Í(string name, string content)ÎXml.DocÖ0Ïpublic Node *
+new_propÌ128Í(string name, string value)ÎXml.DocÖ0Ïpublic Attr *
+new_propÌ128Í(string name, string value)ÎXml.NodeÖ0Ïpublic Attr *
+new_raw_nodeÌ128Í(Ns* ns, string name, string? content = null)ÎXml.DocÖ0Ïpublic Node *
+new_referenceÌ128Í(string name)ÎXml.DocÖ0Ïpublic Node *
+new_textÌ128Í(string content)ÎXml.DocÖ0Ïpublic Node *
+new_text_childÌ128Í(Ns* ns, string name, string content)ÎXml.NodeÖ0Ïpublic Node *
+new_text_lenÌ128Í(string content, int len)ÎXml.DocÖ0Ïpublic Node *
+new_walkerÌ128Í(Doc* doc)ÎXml.TextReaderÖ0Ïpublic int
+nextÌ8ÎXml.AttrÖ0ÏAttr
+nextÌ8ÎXml.AttributeÖ0ÏNode
+nextÌ8ÎXml.DocÖ0ÏNode
+nextÌ8ÎXml.DtdÖ0ÏNode
+nextÌ8ÎXml.ElementÖ0ÏNode
+nextÌ8ÎXml.EntityÖ0ÏNode
+nextÌ8ÎXml.EnumerationÖ0ÏEnumeration
+nextÌ8ÎXml.NodeÖ0ÏNode
+nextÌ8ÎXml.NsÖ0ÏNs
+nextÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+next_element_siblingÌ128Í()ÎXml.NodeÖ0Ïpublic Node *
+next_siblingÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+nexteÌ8ÎXml.EntityÖ0ÏEntity
+nexthÌ8ÎXml.AttributeÖ0ÏAttribute
+nodeÌ8ÎXml.ErrorÖ0Ïvoid
+nodeÌ8ÎXml.XPath.ContextÖ0ÏNode
+node_dump_fileÌ128Í(Posix.FILE file, Xml.Node* node)ÎHtml.DocÖ0Ïpublic int
+node_dump_fileÌ128Í(GLib.FileStream file, Xml.Node* node)ÎHtml.DocÖ0Ïpublic int
+node_dump_file_formatÌ128Í(Posix.FILE file, string enc = , bool format = true)ÎHtml.DocÖ0Ïpublic int
+node_dump_file_formatÌ128Í(GLib.FileStream file, string enc = , bool format = true)ÎHtml.DocÖ0Ïpublic int
+node_list_get_raw_stringÌ128Í(Node* list, bool in_line)ÎXml.DocÖ0
+node_list_get_stringÌ128Í(Node* list, bool in_line)ÎXml.DocÖ0
+node_typeÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+nodesetvalÌ8ÎXml.XPath.ObjectÖ0ÏNodeSet
+normalizationÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+normalize_uri_pathÌ128Í(string path)ÎXml.URIÖ0Ïpublic int
+notationDeclÌ8ÎXml.SAXHandlerÖ0ÏnotationDeclSAXFunc
+notationDeclSAXFuncÌ128Í(void* ctx, string name, string publicId, string systemId)ÎXmlÖ0Ïpublic delegate void
+nsÌ8ÎXml.AttrÖ0ÏNs
+nsÌ8ÎXml.NodeÖ0ÏNs
+ns_defÌ8ÎXml.NodeÖ0ÏNs
+ocurÌ8ÎXml.ElementContentÖ0ÏElementContentOccur
+old_nsÌ8ÎXml.DocÖ0ÏNs
+opaqueÌ8ÎXml.URIÖ0
+openÌ128Í(string url)ÎXml.NanoFTPÖ0Ïpublic NanoFTP *
+openÌ128Í(string url, out string content_type)ÎXml.NanoHTTPÖ0Ïpublic NanoHTTP *
+open_redirÌ128Í(string url, out string content_type, out string redir)ÎXml.NanoHTTPÖ0Ïpublic NanoHTTP *
+order_doc_elementsÌ128Í(Doc* doc)ÎXml.XPathÖ0Ïpublic long
+origÌ8ÎXml.EntityÖ0
+ownerÌ8ÎXml.EntityÖ0Ïint
+parentÌ8ÎXml.AttrÖ0ÏNode
+parentÌ8ÎXml.AttributeÖ0ÏDtd
+parentÌ8ÎXml.DocÖ0ÏNode
+parentÌ8ÎXml.DtdÖ0ÏNode
+parentÌ8ÎXml.ElementÖ0ÏDtd
+parentÌ8ÎXml.ElementContentÖ0ÏElementContent
+parentÌ8ÎXml.EntityÖ0ÏDtd
+parentÌ8ÎXml.NodeÖ0ÏNode
+parseÌ128Í(string str)ÎXml.URIÖ0Ïpublic URI
+parse_char_refÌ128Í()ÎHtml.ParserCtxtÖ0Ïpublic int
+parse_chunkÌ128Í([CCode (array_length = false)] char[] data, int size, bool terminate)ÎHtml.ParserCtxtÖ0Ïpublic int
+parse_docÌ128Í(string cur)ÎXml.ParserÖ0Ïpublic Doc *
+parse_documentÌ128Í()ÎHtml.ParserCtxtÖ0Ïpublic int
+parse_documentÌ128Í()ÎXml.ParserCtxtÖ0Ïpublic int
+parse_elementÌ128Í()ÎHtml.ParserCtxtÖ0Ïpublic void
+parse_entity_refÌ128Í(out string entity_name)ÎHtml.ParserCtxtÖ0Ïpublic EntityDesc *
+parse_fileÌ128Í(string filename, string? encoding)ÎHtml.DocÖ0Ïpublic Doc *
+parse_fileÌ128Í(string filename)ÎXml.ParserÖ0Ïpublic Doc *
+parse_memoryÌ128Í(string buffer, int size)ÎXml.ParserÖ0Ïpublic Doc *
+parse_rawÌ128Í(string str, bool raw)ÎXml.URIÖ0Ïpublic URI
+parse_referenceÌ128Í(string str)ÎXml.URIÖ0Ïpublic int
+pathÌ8ÎXml.URIÖ0
+path_to_uriÌ128Í(string path)ÎXml.URIÖ0
+portÌ8ÎXml.URIÖ0Ïint
+prefixÌ8ÎXml.AttributeÖ0
+prefixÌ8ÎXml.ElementÖ0
+prefixÌ8ÎXml.ElementContentÖ0
+prefixÌ8ÎXml.NsÖ0
+prefixÌ128Í()ÎXml.TextReaderÖ0
+preserveÌ128Í()ÎXml.TextReaderÖ0Ïpublic Node *
+preserve_patternÌ128Í(string pattern, [CCode (array_length = false)] string[] namespaces)ÎXml.TextReaderÖ0Ïpublic int
+prevÌ8ÎXml.AttrÖ0ÏAttr
+prevÌ8ÎXml.AttributeÖ0ÏNode
+prevÌ8ÎXml.DocÖ0ÏNode
+prevÌ8ÎXml.DtdÖ0ÏNode
+prevÌ8ÎXml.ElementÖ0ÏNode
+prevÌ8ÎXml.EntityÖ0ÏNode
+prevÌ8ÎXml.NodeÖ0ÏNode
+printÌ128Í(Posix.FILE stream)ÎXml.URIÖ0Ïpublic void
+printÌ128Í(GLib.FileStream stream)ÎXml.URIÖ0Ïpublic void
+processingInstructionÌ8ÎXml.SAXHandlerÖ0ÏprocessingInstructionSAXFunc
+processingInstructionSAXFuncÌ128Í(void* ctx, string target, string data)ÎXmlÖ0Ïpublic delegate void
+propertiesÌ8ÎXml.NodeÖ0ÏAttr
+proxyÌ128Í(string host, int port, string user, string passwd, int type)ÎXml.NanoFTPÖ0Ïpublic void
+queryÌ8ÎXml.URIÖ0
+query_rawÌ8ÎXml.URIÖ0
+quitÌ128Í()ÎXml.NanoFTPÖ0Ïpublic int
+quote_charÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+readÌ128Í(void* dest, int len)ÎXml.NanoFTPÖ0Ïpublic int
+readÌ128Í(void* dest, int len)ÎXml.NanoHTTPÖ0Ïpublic int
+readÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+read_attribute_valueÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+read_docÌ128Í(string cur, string url, string? encoding = null, int options = 0)ÎHtml.DocÖ0Ïpublic Doc *
+read_docÌ128Í(string cur, string url, string? encoding = null, int options = 0)ÎHtml.ParserCtxtÖ0Ïpublic Doc *
+read_docÌ128Í(string cur, string? url = null, string? encoding = null, int options = 0)ÎXml.ParserÖ0Ïpublic Doc *
+read_fdÌ128Í(int fd, string url, string? encoding = null, int options = 0)ÎHtml.DocÖ0Ïpublic Doc *
+read_fdÌ128Í(int fd, string url, string? encoding = null, int options = 0)ÎHtml.ParserCtxtÖ0Ïpublic Doc *
+read_fdÌ128Í(int fd, string? base_url = null, string? encoding = null, int options = 0)ÎXml.ParserÖ0Ïpublic Doc *
+read_fileÌ128Í(string filename, string? encoding = null, int options = 0)ÎHtml.ParserCtxtÖ0Ïpublic Doc *
+read_fileÌ128Í(string filename, string? encoding = null, int options = 0)ÎXml.ParserÖ0Ïpublic Doc *
+read_inner_xmlÌ128Í()ÎXml.TextReaderÖ0
+read_ioÌ128Í(Xml.InputReadCallback ioread, Xml.InputCloseCallback ioclose, void* ioctx, string url, string? encoding = null, int options = 0)ÎHtml.DocÖ0Ïpublic Doc *
+read_ioÌ128Í(Xml.InputReadCallback ioread, Xml.InputCloseCallback ioclose, void* ioctx, string url, string? encoding = null, int options = 0)ÎHtml.ParserCtxtÖ0Ïpublic Doc *
+read_memoryÌ128Í([CCode (array_length = false)] char[] buffer, int size, string url, string? encoding = null, int options = 0)ÎHtml.DocÖ0Ïpublic Doc *
+read_memoryÌ128Í([CCode (array_length = false)] char[] buffer, int size, string url, string? encoding = null, int options = 0)ÎHtml.ParserCtxtÖ0Ïpublic Doc *
+read_memoryÌ128Í(string text, int len, string? url = null, string? encoding = null, int options = 0)ÎXml.ParserÖ0Ïpublic Doc *
+read_outer_xmlÌ128Í()ÎXml.TextReaderÖ0
+read_stateÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+read_stringÌ128Í()ÎXml.TextReaderÖ0
+redirÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic unowned string
+referenceÌ8ÎXml.SAXHandlerÖ0ÏreferenceSAXFunc
+referenceSAXFuncÌ128Í(void* ctx, string name)ÎXmlÖ0Ïpublic delegate void
+registerInputCallbacksÌ128Í(InputMatchCallback matchFunc, InputOpenCallback openFunc, InputReadCallback readFunc, InputCloseCallback closeFunc)ÎXmlÖ0Ïpublic int
+registerOutputCallbacksÌ128Í(OutputMatchCallback matchFunc, OutputOpenCallback openFunc, OutputWriteCallback writeFunc, OutputCloseCallback closeFunc)ÎXmlÖ0Ïpublic int
+register_nsÌ128Í(string prefix, string ns_uri)ÎXml.XPath.ContextÖ0Ïpublic int
+removeÌ128Í()ÎXml.AttrÖ0Ïpublic int
+replaceÌ128Í(Node* cur)ÎXml.NodeÖ0Ïpublic Node *
+required_attrsÌ128Í()ÎHtml.ElemDescÖ0Ïpublic unowned string
+resetÌ128Í()ÎHtml.ParserCtxtÖ0Ïpublic void
+return_codeÌ128Í()ÎXml.NanoHTTPÖ0Ïpublic int
+saveÌ128Í(string filename)ÎXml.NanoHTTPÖ0Ïpublic int
+saveÌ128Í()ÎXml.URIÖ0
+save_end_tagÌ8ÎHtml.ElemDescÖ0Ïbool
+save_fileÌ128Í(string filename)ÎHtml.DocÖ0Ïpublic int
+save_fileÌ128Í(string filename)ÎXml.DocÖ0Ïpublic int
+save_file_encÌ128Í(string filename, string enc = )ÎHtml.DocÖ0Ïpublic int
+save_file_encÌ128Í(string filename, string enc = )ÎXml.DocÖ0Ïpublic void
+save_file_formatÌ128Í(string filename, string enc = , bool format = true)ÎHtml.DocÖ0Ïpublic int
+save_format_fileÌ128Í(string filename, int format)ÎXml.DocÖ0Ïpublic int
+save_format_file_encÌ128Í(string filename, string enc = , bool format = true)ÎXml.DocÖ0Ïpublic void
+saxÌ8ÎXml.ParserCtxtÖ0ÏSAXHandler
+sax_parse_docÌ128Í(string cur, string? encoding, Xml.SAXHandler* sax, void* user_data = null)ÎHtml.DocÖ0Ïpublic Doc *
+sax_parse_fileÌ128Í(string filename, string? encoding, Xml.SAXHandler* sax, void* user_data = null)ÎHtml.DocÖ0Ïpublic Doc *
+scan_proxyÌ128Í(string url)ÎXml.NanoFTPÖ0Ïpublic void
+scan_proxyÌ128Í(string URL)ÎXml.NanoHTTPÖ0Ïpublic void
+schema_validateÌ128Í(string xsd)ÎXml.TextReaderÖ0Ïpublic int
+schema_validate_ctxtÌ128Í(SchemaValidCtxt* ctxt, int options)ÎXml.TextReaderÖ0Ïpublic int
+schemeÌ8ÎXml.URIÖ0
+serrorÌ8ÎXml.SAXHandlerÖ0ÏxmlStructuredErrorFunc
+serverÌ8ÎXml.URIÖ0
+set_cacheÌ128Í(int active, int value, int options)ÎXml.XPath.ContextÖ0Ïpublic int
+set_compress_modeÌ128Í(int mode)ÎXml.DocÖ0Ïpublic void
+set_compress_modeÌ128Í(int mode)ÎXml.TreeÖ0Ïpublic void
+set_contentÌ128Í(string content)ÎXml.NodeÖ0Ïpublic void
+set_content_lenÌ128Í(string content, int len)ÎXml.NodeÖ0Ïpublic void
+set_error_handlerÌ128Í(TextReaderErrorFunc f, void* arg)ÎXml.TextReaderÖ0Ïpublic void
+set_indentÌ128Í(bool indent)ÎXml.TextWriterÖ0Ïpublic int
+set_indent_stringÌ128Í(string str)ÎXml.TextWriterÖ0Ïpublic int
+set_langÌ128Í(string val)ÎXml.NodeÖ0Ïpublic void
+set_list_docÌ128Í(Doc* doc)ÎXml.NodeÖ0Ïpublic void
+set_meta_encodingÌ128Í(string encoding)ÎHtml.DocÖ0Ïpublic int
+set_nameÌ128Í(string name)ÎXml.NodeÖ0Ïpublic void
+set_ns_propÌ128Í(Ns* ns, string name, string value)ÎXml.NodeÖ0Ïpublic Attr *
+set_parser_propÌ128Í(SchemaValidCtxt* ctxt, int options)ÎXml.TextReaderÖ0Ïpublic int
+set_propÌ128Í(string name, string value)ÎXml.NodeÖ0Ïpublic Attr *
+set_root_elementÌ128Í(Node* root)ÎXml.DocÖ0Ïpublic Node *
+set_space_preserveÌ128Í(int val)ÎXml.NodeÖ0Ïpublic void
+set_tree_docÌ128Í(Doc* doc)ÎXml.NodeÖ0Ïpublic void
+standaloneÌ8ÎXml.DocÖ0Ïint
+standaloneÌ128Í()ÎXml.TextReaderÖ0Ïpublic int
+startDocumentÌ8ÎXml.SAXHandlerÖ0ÏstartDocumentSAXFunc
+startDocumentSAXFuncÌ128Í(void* ctx)ÎXmlÖ0Ïpublic delegate void
+startElementÌ8ÎXml.SAXHandlerÖ0ÏstartElementSAXFunc
+startElementNsÌ8ÎXml.SAXHandlerÖ0ÏstartElementNsSAX2Func
+startElementNsSAX2FuncÌ128Í(void* ctx, string localname, string prefix, string URI, int nb_namespaces, [CCode (array_length = false, array_null_terminated = true)] string[] namespaces, int nb_attributes, int nb_defaulted, [CCode (array_length = false)] string[] attributes)ÎXmlÖ0Ïpublic delegate void
+startElementSAXFuncÌ128Í(void* ctx, string name, [CCode (array_length = false, array_null_terminated = true)] string[] atts)ÎXmlÖ0Ïpublic delegate void
+start_attributeÌ128Í(string name)ÎXml.TextWriterÖ0Ïpublic int
+start_attribute_nsÌ128Í(string prefix, string name, string namespaceURI)ÎXml.TextWriterÖ0Ïpublic int
+start_cdataÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+start_commentÌ128Í()ÎXml.TextWriterÖ0Ïpublic int
+start_documentÌ128Í(string? version = null, string? encoding = null, string? standalone = null)ÎXml.TextWriterÖ0Ïpublic int
+start_elementÌ128Í(string name)ÎXml.TextWriterÖ0Ïpublic int
+start_element_nsÌ128Í(string prefix, string name, string namespaceURI)ÎXml.TextWriterÖ0Ïpublic int
+start_tagÌ8ÎHtml.ElemDescÖ0Ïbool
+statusÌ128Í(bool legacy)ÎHtml.NodeÖ0Ïpublic Status
+status_hereÌ128Í(ElemDesc* child)ÎHtml.ElemDescÖ0Ïpublic Status
+str1Ì8ÎXml.ErrorÖ0
+str2Ì8ÎXml.ErrorÖ0
+str3Ì8ÎXml.ErrorÖ0
+string_get_node_listÌ128Í(string str)ÎXml.DocÖ0Ïpublic Node *
+string_len_get_node_listÌ128Í(string str, int len)ÎXml.DocÖ0Ïpublic Node *
+stringvalÌ8ÎXml.XPath.ObjectÖ0
+subeltsÌ8ÎHtml.ElemDescÖ0
+system_idÌ8ÎXml.DtdÖ0
+system_idÌ8ÎXml.EntityÖ0
+tag_lookupÌ128Í(string tag)ÎHtml.ElemDescÖ0Ïpublic ElemDesc *
+text_concatÌ128Í(string content, int len)ÎXml.NodeÖ0Ïpublic int
+text_mergeÌ128Í(Node* second)ÎXml.NodeÖ0Ïpublic Node *
+typeÌ8ÎXml.AttrÖ0ÏElementType
+typeÌ8ÎXml.AttributeÖ0ÏElementType
+typeÌ8ÎXml.DocÖ0ÏElementType
+typeÌ8ÎXml.DtdÖ0ÏElementType
+typeÌ8ÎXml.ElementÖ0ÏElementType
+typeÌ8ÎXml.ElementContentÖ0ÏElementContentType
+typeÌ8ÎXml.EntityÖ0ÏElementType
+typeÌ8ÎXml.NodeÖ0ÏElementType
+typeÌ8ÎXml.NsÖ0ÏElementType
+typeÌ8ÎXml.XPath.ObjectÖ0ÏObjectType
+unescape_stringÌ128Í(string str, int len, string? target)ÎXml.URIÖ0
+unlinkÌ128Í()ÎXml.NodeÖ0Ïpublic void
+unparsedEntityDeclÌ8ÎXml.SAXHandlerÖ0ÏunparsedEntityDeclSAXFunc
+unparsedEntityDeclSAXFuncÌ128Í(void* ctx, string name, string publicId, string systemId, string notationName)ÎXmlÖ0Ïpublic delegate void
+unset_ns_propÌ128Í(Ns* ns, string name)ÎXml.NodeÖ0Ïpublic int
+unset_propÌ128Í(string name)ÎXml.NodeÖ0Ïpublic int
+update_urlÌ128Í(string url)ÎXml.NanoFTPÖ0Ïpublic int
+uriÌ8ÎXml.EntityÖ0
+urlÌ8ÎXml.DocÖ0
+use_optionsÌ128Í(int options)ÎHtml.ParserCtxtÖ0Ïpublic int
+userÌ8ÎXml.URIÖ0
+userÌ8ÎXml.XPath.ObjectÖ0Ïvoid
+user2Ì8ÎXml.XPath.ObjectÖ0Ïvoid
+user_dataÌ8ÎXml.ParserCtxtÖ0Ïvoid
+user_parse_fileÌ128Í(void* user_data, string filename)ÎXml.SAXHandlerÖ0Ïpublic int
+user_parse_memoryÌ128Í(void* user_data, string buffer, int size)ÎXml.SAXHandlerÖ0Ïpublic int
+utf8_to_htmlÌ128Í([CCode (array_length = false)] char[] outdata, out int outlen, [CCode (array_length = false)] char[] indata, out int inlen)ÎHtmlÖ0Ïpublic int
+valueÌ8ÎHtml.EntityDescÖ0
+valueÌ128Í()ÎXml.TextReaderÖ0
+value_lookupÌ128Í(uint value)ÎHtml.EntityDescÖ0Ïpublic EntityDesc *
+versionÌ8ÎXml.DocÖ0
+warningÌ8ÎXml.SAXHandlerÖ0ÏwarningSAXFunc
+warningSAXFuncÌ128Í(void* ctx, string msg, ...)ÎXmlÖ0Ïpublic delegate void
+write_attributeÌ128Í(string name, string content)ÎXml.TextWriterÖ0Ïpublic int
+write_attribute_nsÌ128Í(string prefix, string name, string namespaceURI, string content)ÎXml.TextWriterÖ0Ïpublic int
+write_base64Ì128Í(void* data, int start, int length)ÎXml.TextWriterÖ0Ïpublic int
+write_commentÌ128Í(string content)ÎXml.TextWriterÖ0Ïpublic int
+write_elementÌ128Í(string name, string content)ÎXml.TextWriterÖ0Ïpublic int
+write_element_nsÌ128Í(string prefix, string name, string namespaceURI, string content)ÎXml.TextWriterÖ0Ïpublic int
+write_stringÌ128Í(string content)ÎXml.TextWriterÖ0Ïpublic int
+xmlStructuredErrorFuncÌ128Í(void* ctx, Error* error)ÎXmlÖ0Ïpublic delegate void
+xml_langÌ128Í()ÎXml.TextReaderÖ0

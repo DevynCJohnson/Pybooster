@@ -1,0 +1,945 @@
+# format=tagmanager
+@getÃ128Õ()ŒGnomeVFS.MIMEMonitor÷0œpublic unowned
+@refÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned
+@refÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned
+@refÃ128Õ()ŒGnomeVFS.VolumeMonitor÷0œpublic unowned
+@setÃ128Õ(GnomeVFS.ACE ace)ŒGnomeVFS.ACL÷0œpublic void
+ABORTÃ4ŒGnomeVFS.XferErrorAction÷0
+ABORTÃ4ŒGnomeVFS.XferErrorMode÷0
+ABORTÃ4ŒGnomeVFS.XferOverwriteAction÷0
+ABORTÃ4ŒGnomeVFS.XferOverwriteMode÷0
+ACCESSÃ4ŒGnomeVFS.FileInfoFields÷0
+ACCESS_EXECUTABLEÃ4ŒGnomeVFS.FilePermissions÷0
+ACCESS_READABLEÃ4ŒGnomeVFS.FilePermissions÷0
+ACCESS_WRITABLEÃ4ŒGnomeVFS.FilePermissions÷0
+ACEÃ1ŒGnomeVFS÷0
+ACEÃ128Õ(GnomeVFS.ACLKind kind, string id, GnomeVFS.ACLPerm perms)ŒGnomeVFS.ACE÷0
+ACLÃ1ŒGnomeVFS÷0
+ACLÃ128Õ()ŒGnomeVFS.ACL÷0
+ACLÃ4ŒGnomeVFS.FileInfoFields÷0
+ACLÃ4ŒGnomeVFS.SetFileInfoMask÷0
+ACLKindÃ1ŒGnomeVFS÷0
+ACLPermÃ1ŒGnomeVFS÷0
+ADDEDÃ4ŒGnomeVFS.DNSSDServiceStatus÷0
+ANON_SUPPORTEDÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+APPLEÃ4ŒGnomeVFS.DeviceType÷0
+APPLICATIONÃ4ŒGnomeVFS.MimeActionType÷0
+APPLICATION_REGISTRY_CAN_OPEN_MULTIPLE_FILESÃ8ŒGnomeVFS÷0
+APPLICATION_REGISTRY_COMMANDÃ8ŒGnomeVFS÷0
+APPLICATION_REGISTRY_NAMEÃ8ŒGnomeVFS÷0
+APPLICATION_REGISTRY_REQUIRES_TERMINALÃ8ŒGnomeVFS÷0
+APPLICATION_REGISTRY_STARTUP_NOTIFYÃ8ŒGnomeVFS÷0
+APPLICATION_REGISTRY_USES_GNOMEVFSÃ8ŒGnomeVFS÷0
+ATIMEÃ4ŒGnomeVFS.FileInfoFields÷0
+AUDIO_CDÃ4ŒGnomeVFS.DeviceType÷0
+AUTOFSÃ4ŒGnomeVFS.DeviceType÷0
+AddressÃ1ŒGnomeVFS÷0
+Address.from_ipv4Ã128Õ(uint32 ipv4_address)ŒGnomeVFS.Address÷0
+Address.from_stringÃ128Õ(string address)ŒGnomeVFS.Address÷0
+AsyncCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncCloseCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncCreateAsChannelCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GLib.IOChannel channel, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncCreateCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncDirectoryLoadCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, GLib.List list, uint entries_read, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncFileControlCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* operation_data, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncFindDirectoryCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GLib.List results)ŒGnomeVFS÷0œpublic delegate void
+AsyncGetFileInfoCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GLib.List results, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncHandleÃ1ŒGnomeVFS÷0
+AsyncModuleCallbackÃ128Õ(void* @in, size_t in_size, void* @out, size_t out_size, void* callback_data, GnomeVFS.ModuleCallbackResponse response, void* response_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncOpenAsChannelCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GLib.IOChannel channel, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncOpenCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncReadCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* buffer, GnomeVFS.FileSize bytes_requested, GnomeVFS.FileSize bytes_read, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncSeekCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncSetFileInfoCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, GnomeVFS.FileInfo file_info, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncWriteCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.Result result, void* buffer, GnomeVFS.FileSize bytes_requested, GnomeVFS.FileSize bytes_written, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+AsyncXferProgressCallbackÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.XferProgressInfo info)ŒGnomeVFS÷0œpublic delegate int
+AuthTypeBasicÃ4ŒGnomeVFS.ModuleCallbackAuthenticationAuthType÷0
+AuthTypeDigestÃ4ŒGnomeVFS.ModuleCallbackAuthenticationAuthType÷0
+BLOCK_COUNTÃ4ŒGnomeVFS.FileInfoFields÷0
+BLOCK_DEVICEÃ4ŒGnomeVFS.FileType÷0
+CAMERAÃ4ŒGnomeVFS.DeviceType÷0
+CDROMÃ4ŒGnomeVFS.DeviceType÷0
+CHANGEDÃ4ŒGnomeVFS.MonitorEventType÷0
+CHARACTER_DEVICEÃ4ŒGnomeVFS.FileType÷0
+CHECKING_DESTINATIONÃ4ŒGnomeVFS.XferPhase÷0
+COMPONENTÃ4ŒGnomeVFS.MimeActionType÷0
+CONNECTED_SERVERÃ4ŒGnomeVFS.VolumeType÷0
+CREATEDÃ4ŒGnomeVFS.MonitorEventType÷0
+CTIMEÃ4ŒGnomeVFS.FileInfoFields÷0
+CURRENTÃ4ŒGnomeVFS.MakeURIDirs÷0
+CURRENTÃ4ŒGnomeVFS.SeekPosition÷0
+CancellationÃ1ŒGnomeVFS÷0
+CancellationÃ128Õ()ŒGnomeVFS.Cancellation÷0
+ContextÃ1ŒGnomeVFS÷0
+ContextÃ128Õ()ŒGnomeVFS.Context÷0
+DEFAULTÃ4ŒGnomeVFS.DirectoryVisitOptions÷0
+DEFAULTÃ4ŒGnomeVFS.FileInfoOptions÷0
+DEFAULTÃ4ŒGnomeVFS.XferOptions÷0
+DELETEDÃ4ŒGnomeVFS.MonitorEventType÷0
+DELETE_ITEMSÃ4ŒGnomeVFS.XferOptions÷0
+DESKTOPÃ4ŒGnomeVFS.FindDirectoryKind÷0
+DESKTOP_ENTRY_GROUPÃ8ŒGnomeVFS÷0
+DEVICEÃ4ŒGnomeVFS.FileInfoFields÷0
+DIRECTORYÃ4ŒGnomeVFS.FileType÷0
+DIRECTORYÃ4ŒGnomeVFS.MonitorType÷0
+DNSSDBrowseCallbackÃ128Õ(GnomeVFS.DNSSDBrowseHandle handle, GnomeVFS.DNSSDServiceStatus status, GnomeVFS.DNSSDService service, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+DNSSDBrowseHandleÃ1ŒGnomeVFS÷0
+DNSSDResolveCallbackÃ128Õ(GnomeVFS.DNSSDResolveHandle handle, GnomeVFS.Result result, GnomeVFS.DNSSDService service, string host, int port, GLib.HashTable text, int text_raw_len, string text_raw, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+DNSSDResolveHandleÃ1ŒGnomeVFS÷0
+DNSSDServiceÃ1ŒGnomeVFS÷0
+DNSSDServiceStatusÃ2ŒGnomeVFS÷0
+DUPLICATEÃ4ŒGnomeVFS.XferProgressStatus÷0
+DeviceTypeÃ2ŒGnomeVFS÷0
+DirectoryHandleÃ1ŒGnomeVFS÷0
+DirectoryVisitFuncÃ128Õ(string rel_path, GnomeVFS.FileInfo info, bool recursing_will_loop, void* user_data, bool recurse)ŒGnomeVFS÷0œpublic delegate bool
+DirectoryVisitOptionsÃ2ŒGnomeVFS÷0
+DriveÃ1ŒGnomeVFS÷0
+DriveÃ128Õ()ŒGnomeVFS.Drive÷0
+EMPTY_DIRECTORIESÃ4ŒGnomeVFS.XferOptions÷0
+ENDÃ4ŒGnomeVFS.SeekPosition÷0
+ERROR_ACCESS_DENIEDÃ4ŒGnomeVFS.Result÷0
+ERROR_BAD_FILEÃ4ŒGnomeVFS.Result÷0
+ERROR_BAD_PARAMETERSÃ4ŒGnomeVFS.Result÷0
+ERROR_CANCELLEDÃ4ŒGnomeVFS.Result÷0
+ERROR_CORRUPTED_DATAÃ4ŒGnomeVFS.Result÷0
+ERROR_DEPRECATED_FUNCTIONÃ4ŒGnomeVFS.Result÷0
+ERROR_DIRECTORY_BUSYÃ4ŒGnomeVFS.Result÷0
+ERROR_DIRECTORY_NOT_EMPTYÃ4ŒGnomeVFS.Result÷0
+ERROR_EOFÃ4ŒGnomeVFS.Result÷0
+ERROR_FILE_EXISTSÃ4ŒGnomeVFS.Result÷0
+ERROR_GENERICÃ4ŒGnomeVFS.Result÷0
+ERROR_HOST_HAS_NO_ADDRESSÃ4ŒGnomeVFS.Result÷0
+ERROR_HOST_NOT_FOUNDÃ4ŒGnomeVFS.Result÷0
+ERROR_INTERNALÃ4ŒGnomeVFS.Result÷0
+ERROR_INTERRUPTEDÃ4ŒGnomeVFS.Result÷0
+ERROR_INVALID_FILENAMEÃ4ŒGnomeVFS.Result÷0
+ERROR_INVALID_HOST_NAMEÃ4ŒGnomeVFS.Result÷0
+ERROR_INVALID_OPEN_MODEÃ4ŒGnomeVFS.Result÷0
+ERROR_INVALID_URIÃ4ŒGnomeVFS.Result÷0
+ERROR_IN_PROGRESSÃ4ŒGnomeVFS.Result÷0
+ERROR_IOÃ4ŒGnomeVFS.Result÷0
+ERROR_IS_DIRECTORYÃ4ŒGnomeVFS.Result÷0
+ERROR_LAUNCHÃ4ŒGnomeVFS.Result÷0
+ERROR_LOCKEDÃ4ŒGnomeVFS.Result÷0
+ERROR_LOGIN_FAILEDÃ4ŒGnomeVFS.Result÷0
+ERROR_LOOPÃ4ŒGnomeVFS.Result÷0
+ERROR_NAMESERVERÃ4ŒGnomeVFS.Result÷0
+ERROR_NAME_TOO_LONGÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_A_DIRECTORYÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_A_SYMBOLIC_LINKÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_FOUNDÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_OPENÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_PERMITTEDÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_SAME_FILE_SYSTEMÃ4ŒGnomeVFS.Result÷0
+ERROR_NOT_SUPPORTEDÃ4ŒGnomeVFS.Result÷0
+ERROR_NO_DEFAULTÃ4ŒGnomeVFS.Result÷0
+ERROR_NO_HANDLERÃ4ŒGnomeVFS.Result÷0
+ERROR_NO_MASTER_BROWSERÃ4ŒGnomeVFS.Result÷0
+ERROR_NO_MEMORYÃ4ŒGnomeVFS.Result÷0
+ERROR_NO_SPACEÃ4ŒGnomeVFS.Result÷0
+ERROR_PARSEÃ4ŒGnomeVFS.Result÷0
+ERROR_PROTOCOL_ERRORÃ4ŒGnomeVFS.Result÷0
+ERROR_READ_ONLYÃ4ŒGnomeVFS.Result÷0
+ERROR_READ_ONLY_FILE_SYSTEMÃ4ŒGnomeVFS.Result÷0
+ERROR_SERVICE_NOT_AVAILABLEÃ4ŒGnomeVFS.Result÷0
+ERROR_SERVICE_OBSOLETEÃ4ŒGnomeVFS.Result÷0
+ERROR_TIMEOUTÃ4ŒGnomeVFS.Result÷0
+ERROR_TOO_BIGÃ4ŒGnomeVFS.Result÷0
+ERROR_TOO_MANY_LINKSÃ4ŒGnomeVFS.Result÷0
+ERROR_TOO_MANY_OPEN_FILESÃ4ŒGnomeVFS.Result÷0
+ERROR_WRONG_FORMATÃ4ŒGnomeVFS.Result÷0
+FIFOÃ4ŒGnomeVFS.FileType÷0
+FILEÃ4ŒGnomeVFS.MonitorType÷0
+FLAGSÃ4ŒGnomeVFS.FileInfoFields÷0
+FLOPPYÃ4ŒGnomeVFS.DeviceType÷0
+FOLLOW_LINKSÃ4ŒGnomeVFS.FileInfoOptions÷0
+FOLLOW_LINKSÃ4ŒGnomeVFS.XferOptions÷0
+FOLLOW_LINKS_RECURSIVEÃ4ŒGnomeVFS.XferOptions÷0
+FORCE_FAST_MIME_TYPEÃ4ŒGnomeVFS.FileInfoOptions÷0
+FORCE_SLOW_MIME_TYPEÃ4ŒGnomeVFS.FileInfoOptions÷0
+FRAGMENT_IDENTIFIERÃ4ŒGnomeVFS.URIHideOptions÷0
+FileFlagsÃ2ŒGnomeVFS÷0
+FileInfoÃ1ŒGnomeVFS÷0
+FileInfoÃ128Õ()ŒGnomeVFS.FileInfo÷0
+FileInfoFieldsÃ2ŒGnomeVFS÷0
+FileInfoOptionsÃ2ŒGnomeVFS÷0
+FileOffsetÃ1ŒGnomeVFS÷0
+FilePermissionsÃ2ŒGnomeVFS÷0
+FileSizeÃ2048ŒGnomeVFS÷0
+FileTypeÃ2ŒGnomeVFS÷0
+FindDirectoryKindÃ2ŒGnomeVFS÷0
+FindDirectoryResultÃ1ŒGnomeVFS÷0
+GET_ACCESS_RIGHTSÃ4ŒGnomeVFS.FileInfoOptions÷0
+GET_ACLÃ4ŒGnomeVFS.FileInfoOptions÷0
+GET_MIME_TYPEÃ4ŒGnomeVFS.FileInfoOptions÷0
+GET_SELINUX_CONTEXTÃ4ŒGnomeVFS.FileInfoOptions÷0
+GROUP_ALLÃ4ŒGnomeVFS.FilePermissions÷0
+GROUP_EXECÃ4ŒGnomeVFS.FilePermissions÷0
+GROUP_READÃ4ŒGnomeVFS.FilePermissions÷0
+GROUP_WRITEÃ4ŒGnomeVFS.FilePermissions÷0
+GetFileInfoResultÃ1ŒGnomeVFS÷0
+GnomeVFSÃ256÷0
+GnomeVfsFindDirectoryResultÃ1ŒGnomeVFS÷0
+GnomeVfsGetFileInfoResultÃ1ŒGnomeVFS÷0
+HARDDRIVEÃ4ŒGnomeVFS.DeviceType÷0
+HOMEDIRÃ4ŒGnomeVFS.MakeURIDirs÷0
+HOST_NAMEÃ4ŒGnomeVFS.URIHideOptions÷0
+HOST_PORTÃ4ŒGnomeVFS.URIHideOptions÷0
+HandleÃ1ŒGnomeVFS÷0
+IDENTICALÃ4ŒGnomeVFS.MimeEquivalence÷0
+IDSÃ4ŒGnomeVFS.FileInfoFields÷0
+IGNORE_RECURSE_ERRORÃ4ŒGnomeVFS.DirectoryVisitOptions÷0
+INODEÃ4ŒGnomeVFS.FileInfoFields÷0
+IO_BLOCK_SIZEÃ4ŒGnomeVFS.FileInfoFields÷0
+InodeNumberÃ1ŒGnomeVFS÷0
+JAZÃ4ŒGnomeVFS.DeviceType÷0
+LINK_COUNTÃ4ŒGnomeVFS.FileInfoFields÷0
+LINK_ITEMSÃ4ŒGnomeVFS.XferOptions÷0
+LOCALÃ4ŒGnomeVFS.FileFlags÷0
+LOOPBACKÃ4ŒGnomeVFS.DeviceType÷0
+LOOPCHECKÃ4ŒGnomeVFS.DirectoryVisitOptions÷0
+MAJOR_VERSIONÃ8ŒGnomeVFS÷0œint
+MEMORY_STICKÃ4ŒGnomeVFS.DeviceType÷0
+METADATA_CHANGEDÃ4ŒGnomeVFS.MonitorEventType÷0
+MICRO_VERSIONÃ8ŒGnomeVFS÷0œint
+MIMEMonitorÃ1ŒGnomeVFS÷0
+MIMEMonitorÃ128Õ()ŒGnomeVFS.MIMEMonitor÷0
+MIME_TYPEÃ4ŒGnomeVFS.FileInfoFields÷0
+MIME_TYPE_UNKNOWNÃ8ŒGnomeVFS÷0
+MINOR_VERSIONÃ8ŒGnomeVFS÷0œint
+MODULE_CALLBACK_AUTHENTICATIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_FILL_AUTHENTICATIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_FULL_AUTHENTICATIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_HTTP_PROXY_AUTHENTICATIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_HTTP_RECEIVED_HEADERSÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_HTTP_SEND_ADDITIONAL_HEADERSÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_QUESTIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_SAVE_AUTHENTICATIONÃ8ŒGnomeVFS÷0
+MODULE_CALLBACK_STATUS_MESSAGEÃ8ŒGnomeVFS÷0
+MOUNTPOINTÃ4ŒGnomeVFS.VolumeType÷0
+MTIMEÃ4ŒGnomeVFS.FileInfoFields÷0
+MUSIC_PLAYERÃ4ŒGnomeVFS.DeviceType÷0
+MakeURIDirsÃ2ŒGnomeVFS÷0
+MethodHandleÃ1ŒGnomeVFS÷0
+MimeActionÃ1ŒGnomeVFS÷0
+MimeActionTypeÃ2ŒGnomeVFS÷0
+MimeApplicationÃ1ŒGnomeVFS÷0
+MimeApplication.from_desktop_idÃ128Õ(string id)ŒGnomeVFS.MimeApplication÷0
+MimeApplication.from_idÃ128Õ(string id)ŒGnomeVFS.MimeApplication÷0
+MimeApplicationArgumentTypeÃ2ŒGnomeVFS÷0
+MimeEquivalenceÃ2ŒGnomeVFS÷0
+ModuleCallbackÃ128Õ(void* @in, size_t in_size, void* @out, size_t out_size, void* callback_data)ŒGnomeVFS÷0œpublic delegate void
+ModuleCallbackAdditionalHeadersInÃ1ŒGnomeVFS÷0
+ModuleCallbackAdditionalHeadersOutÃ1ŒGnomeVFS÷0
+ModuleCallbackAuthenticationAuthTypeÃ2ŒGnomeVFS÷0
+ModuleCallbackAuthenticationInÃ1ŒGnomeVFS÷0
+ModuleCallbackAuthenticationOutÃ1ŒGnomeVFS÷0
+ModuleCallbackFillAuthenticationInÃ1ŒGnomeVFS÷0
+ModuleCallbackFillAuthenticationOutÃ1ŒGnomeVFS÷0
+ModuleCallbackFullAuthenticationFlagsÃ2ŒGnomeVFS÷0
+ModuleCallbackFullAuthenticationInÃ1ŒGnomeVFS÷0
+ModuleCallbackFullAuthenticationOutÃ1ŒGnomeVFS÷0
+ModuleCallbackFullAuthenticationOutFlagsÃ2ŒGnomeVFS÷0
+ModuleCallbackQuestionInÃ1ŒGnomeVFS÷0
+ModuleCallbackQuestionOutÃ1ŒGnomeVFS÷0
+ModuleCallbackReceivedHeadersInÃ1ŒGnomeVFS÷0
+ModuleCallbackReceivedHeadersOutÃ1ŒGnomeVFS÷0
+ModuleCallbackResponseÃ128Õ(void* response_data)ŒGnomeVFS÷0œpublic delegate void
+ModuleCallbackSaveAuthenticationInÃ1ŒGnomeVFS÷0
+ModuleCallbackSaveAuthenticationOutÃ1ŒGnomeVFS÷0
+ModuleCallbackStatusMessageInÃ1ŒGnomeVFS÷0
+ModuleCallbackStatusMessageOutÃ1ŒGnomeVFS÷0
+MonitorCallbackÃ128Õ(GnomeVFS.MonitorHandle handle, string monitor_uri, string info_uri, GnomeVFS.MonitorEventType event_type)ŒGnomeVFS÷0œpublic delegate void
+MonitorEventTypeÃ2ŒGnomeVFS÷0
+MonitorHandleÃ1ŒGnomeVFS÷0
+MonitorTypeÃ2ŒGnomeVFS÷0
+NAMEÃ4ŒGnomeVFS.SetFileInfoMask÷0
+NAME_ONLYÃ4ŒGnomeVFS.FileInfoOptions÷0
+NEED_DOMAINÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+NEED_PASSWORDÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+NEED_USERNAMEÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+NETWORKÃ4ŒGnomeVFS.DeviceType÷0
+NEW_UNIQUE_DIRECTORYÃ4ŒGnomeVFS.XferOptions÷0
+NFSÃ4ŒGnomeVFS.DeviceType÷0
+NONEÃ4ŒGnomeVFS.FileFlags÷0
+NONEÃ4ŒGnomeVFS.FileInfoFields÷0
+NONEÃ4ŒGnomeVFS.MakeURIDirs÷0
+NONEÃ4ŒGnomeVFS.MimeActionType÷0
+NONEÃ4ŒGnomeVFS.OpenMode÷0
+NONEÃ4ŒGnomeVFS.SetFileInfoMask÷0
+NONEÃ4ŒGnomeVFS.URIHideOptions÷0
+NUM_ERRORSÃ4ŒGnomeVFS.Result÷0
+NUM_PHASESÃ4ŒGnomeVFS.XferPhase÷0
+OKÃ4ŒGnomeVFS.Result÷0
+OKÃ4ŒGnomeVFS.XferProgressStatus÷0
+OTHER_ALLÃ4ŒGnomeVFS.FilePermissions÷0
+OTHER_EXECÃ4ŒGnomeVFS.FilePermissions÷0
+OTHER_READÃ4ŒGnomeVFS.FilePermissions÷0
+OTHER_WRITEÃ4ŒGnomeVFS.FilePermissions÷0
+OVERWRITEÃ4ŒGnomeVFS.XferProgressStatus÷0
+OWNERÃ4ŒGnomeVFS.SetFileInfoMask÷0
+OpenModeÃ2ŒGnomeVFS÷0
+PARENTÃ4ŒGnomeVFS.MimeEquivalence÷0
+PASSWORDÃ4ŒGnomeVFS.URIHideOptions÷0
+PATHSÃ4ŒGnomeVFS.MimeApplicationArgumentType÷0
+PERMISSIONSÃ4ŒGnomeVFS.FileInfoFields÷0
+PERMISSIONSÃ4ŒGnomeVFS.SetFileInfoMask÷0
+PHASE_CLEANUPÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_CLOSESOURCEÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_CLOSETARGETÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_COLLECTINGÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_COMPLETEDÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_COPYINGÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_DELETESOURCEÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_FILECOMPLETEDÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_INITIALÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_MOVINGÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_OPENSOURCEÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_OPENTARGETÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_READSOURCEÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_READYTOGOÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_SETATTRIBUTESÃ4ŒGnomeVFS.XferPhase÷0
+PHASE_WRITETARGETÃ4ŒGnomeVFS.XferPhase÷0
+PREVIOUS_ATTEMPT_FAILEDÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+PRIORITY_DEFAULTÃ8ŒGnomeVFS÷0œint
+PRIORITY_MAXÃ8ŒGnomeVFS÷0œint
+PRIORITY_MINÃ8ŒGnomeVFS÷0œint
+ProgressCallbackStateÃ1ŒGnomeVFS÷0
+QUERYÃ4ŒGnomeVFS.XferErrorMode÷0
+QUERYÃ4ŒGnomeVFS.XferOverwriteMode÷0
+RANDOMÃ4ŒGnomeVFS.OpenMode÷0
+READÃ4ŒGnomeVFS.OpenMode÷0
+RECURSIVEÃ4ŒGnomeVFS.XferOptions÷0
+REGULARÃ4ŒGnomeVFS.FileType÷0
+REMOVEDÃ4ŒGnomeVFS.DNSSDServiceStatus÷0
+REMOVESOURCEÃ4ŒGnomeVFS.XferOptions÷0
+REPLACEÃ4ŒGnomeVFS.XferOverwriteAction÷0
+REPLACEÃ4ŒGnomeVFS.XferOverwriteMode÷0
+REPLACE_ALLÃ4ŒGnomeVFS.XferOverwriteAction÷0
+RETRYÃ4ŒGnomeVFS.XferErrorAction÷0
+ResolveHandleÃ1ŒGnomeVFS÷0
+ResultÃ2ŒGnomeVFS÷0
+SAMEFSÃ4ŒGnomeVFS.DirectoryVisitOptions÷0
+SAMEFSÃ4ŒGnomeVFS.XferOptions÷0
+SAVING_SUPPORTEDÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationFlags÷0
+SELECTEDÃ4ŒGnomeVFS.ModuleCallbackFullAuthenticationOutFlags÷0
+SELINUX_CONTEXTÃ4ŒGnomeVFS.FileInfoFields÷0
+SELINUX_CONTEXTÃ4ŒGnomeVFS.SetFileInfoMask÷0
+SGIDÃ4ŒGnomeVFS.FilePermissions÷0
+SIZEÃ4ŒGnomeVFS.FileInfoFields÷0
+SKIPÃ4ŒGnomeVFS.XferErrorAction÷0
+SKIPÃ4ŒGnomeVFS.XferOverwriteAction÷0
+SKIPÃ4ŒGnomeVFS.XferOverwriteMode÷0
+SKIP_ALLÃ4ŒGnomeVFS.XferOverwriteAction÷0
+SMBÃ4ŒGnomeVFS.DeviceType÷0
+SOCKETÃ4ŒGnomeVFS.FileType÷0
+STARTÃ4ŒGnomeVFS.SeekPosition÷0
+STARTEXECUTINGÃ4ŒGnomeVFS.MonitorEventType÷0
+STICKYÃ4ŒGnomeVFS.FilePermissions÷0
+STOPEXECUTINGÃ4ŒGnomeVFS.MonitorEventType÷0
+SUIDÃ4ŒGnomeVFS.FilePermissions÷0
+SYMBOLIC_LINKÃ4ŒGnomeVFS.FileType÷0
+SYMLINKÃ4ŒGnomeVFS.FileFlags÷0
+SYMLINK_NAMEÃ4ŒGnomeVFS.FileInfoFields÷0
+SYMLINK_NAMEÃ4ŒGnomeVFS.SetFileInfoMask÷0
+S_IRGRPÃ8ŒGnomeVFS÷0œint
+S_IROTHÃ8ŒGnomeVFS÷0œint
+S_ISGIDÃ8ŒGnomeVFS÷0œint
+S_ISUIDÃ8ŒGnomeVFS÷0œint
+S_IWGRPÃ8ŒGnomeVFS÷0œint
+S_IWOTHÃ8ŒGnomeVFS÷0œint
+S_IXGRPÃ8ŒGnomeVFS÷0œint
+S_IXOTHÃ8ŒGnomeVFS÷0œint
+SeekPositionÃ2ŒGnomeVFS÷0
+SetFileInfoMaskÃ2ŒGnomeVFS÷0
+TARGET_DEFAULT_PERMSÃ4ŒGnomeVFS.XferOptions÷0
+TIMEÃ4ŒGnomeVFS.SetFileInfoMask÷0
+TOPLEVEL_METHODÃ4ŒGnomeVFS.URIHideOptions÷0
+TRASHÃ4ŒGnomeVFS.FindDirectoryKind÷0
+TRUNCATEÃ4ŒGnomeVFS.OpenMode÷0
+TYPEÃ4ŒGnomeVFS.FileInfoFields÷0
+ToplevelURIÃ1ŒGnomeVFS÷0
+UNKNOWNÃ4ŒGnomeVFS.DeviceType÷0
+UNKNOWNÃ4ŒGnomeVFS.FileType÷0
+UNRELATEDÃ4ŒGnomeVFS.MimeEquivalence÷0
+UNUSED_1Ã4ŒGnomeVFS.XferOptions÷0
+UNUSED_2Ã4ŒGnomeVFS.XferOptions÷0
+URIÃ1ŒGnomeVFS÷0
+URIÃ128Õ(string text_uri)ŒGnomeVFS.URI÷0
+URIHideOptionsÃ2ŒGnomeVFS÷0
+URISÃ4ŒGnomeVFS.MimeApplicationArgumentType÷0
+URIS_FOR_NON_FILESÃ4ŒGnomeVFS.MimeApplicationArgumentType÷0
+URI_MAGIC_STRÃ8ŒGnomeVFS÷0
+URI_PATH_STRÃ8ŒGnomeVFS÷0
+USER_ALLÃ4ŒGnomeVFS.FilePermissions÷0
+USER_EXECÃ4ŒGnomeVFS.FilePermissions÷0
+USER_NAMEÃ4ŒGnomeVFS.URIHideOptions÷0
+USER_READÃ4ŒGnomeVFS.FilePermissions÷0
+USER_WRITEÃ4ŒGnomeVFS.FilePermissions÷0
+USE_UNIQUE_NAMESÃ4ŒGnomeVFS.XferOptions÷0
+VFSERRORÃ4ŒGnomeVFS.XferProgressStatus÷0
+VFS_MOUNTÃ4ŒGnomeVFS.VolumeType÷0
+VIDEO_DVDÃ4ŒGnomeVFS.DeviceType÷0
+VolumeÃ1ŒGnomeVFS÷0
+VolumeÃ128Õ()ŒGnomeVFS.Volume÷0
+VolumeMonitorÃ1ŒGnomeVFS÷0
+VolumeMonitorÃ128Õ()ŒGnomeVFS.VolumeMonitor÷0
+VolumeOpCallbackÃ128Õ(bool succeeded, string error, string detailed_error)ŒGnomeVFS÷0œpublic delegate void
+VolumeTypeÃ2ŒGnomeVFS÷0
+WINDOWSÃ4ŒGnomeVFS.DeviceType÷0
+WRITEÃ4ŒGnomeVFS.OpenMode÷0
+XferErrorActionÃ2ŒGnomeVFS÷0
+XferErrorModeÃ2ŒGnomeVFS÷0
+XferOptionsÃ2ŒGnomeVFS÷0
+XferOverwriteActionÃ2ŒGnomeVFS÷0
+XferOverwriteModeÃ2ŒGnomeVFS÷0
+XferPhaseÃ2ŒGnomeVFS÷0
+XferProgressCallbackÃ128Õ(GnomeVFS.XferProgressInfo info)ŒGnomeVFS÷0œpublic delegate int
+XferProgressInfoÃ1ŒGnomeVFS÷0
+XferProgressStatusÃ2ŒGnomeVFS÷0
+ZIPÃ4ŒGnomeVFS.DeviceType÷0
+abort_authÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0œbool
+ackÃ128Õ()ŒGnomeVFS.Cancellation÷0œpublic void
+aclÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.ACL
+actionÃ8ŒGnomeVFS.MimeAction÷0œvoid
+action_typeÃ8ŒGnomeVFS.MimeAction÷0œGnomeVFS.MimeActionType
+add_permÃ128Õ(GnomeVFS.ACLPerm perm)ŒGnomeVFS.ACE÷0œpublic void
+answerÃ8ŒGnomeVFS.ModuleCallbackQuestionOut÷0œint
+append_file_nameÃ128Õ(string filename)ŒGnomeVFS.URI÷0œpublic unowned
+append_pathÃ128Õ(string path)ŒGnomeVFS.URI÷0œpublic unowned
+append_stringÃ128Õ(string uri_fragment)ŒGnomeVFS.URI÷0œpublic unowned
+application_is_user_owned_applicationÃ128Õ(GnomeVFS.MimeApplication application)ŒGnomeVFS÷0œpublic bool
+application_registry_add_mime_typeÃ128Õ(string app_id, string mime_type)ŒGnomeVFS÷0œpublic void
+application_registry_clear_mime_typesÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic void
+application_registry_existsÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic bool
+application_registry_get_applicationsÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+application_registry_get_bool_valueÃ128Õ(string app_id, string key, bool got_key)ŒGnomeVFS÷0œpublic bool
+application_registry_get_keysÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic unowned
+application_registry_get_mime_applicationÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic unowned
+application_registry_get_mime_typesÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic unowned
+application_registry_peek_valueÃ128Õ(string app_id, string key)ŒGnomeVFS÷0œpublic unowned string
+application_registry_reloadÃ128Õ()ŒGnomeVFS÷0œpublic void
+application_registry_remove_applicationÃ128Õ(string app_id)ŒGnomeVFS÷0œpublic void
+application_registry_remove_mime_typeÃ128Õ(string app_id, string mime_type)ŒGnomeVFS÷0œpublic void
+application_registry_save_mime_applicationÃ128Õ(GnomeVFS.MimeApplication application)ŒGnomeVFS÷0œpublic void
+application_registry_set_bool_valueÃ128Õ(string app_id, string key, bool value)ŒGnomeVFS÷0œpublic void
+application_registry_set_valueÃ128Õ(string app_id, string key, string value)ŒGnomeVFS÷0œpublic void
+application_registry_shutdownÃ128Õ()ŒGnomeVFS÷0œpublic void
+application_registry_supports_mime_typeÃ128Õ(string app_id, string mime_type)ŒGnomeVFS÷0œpublic bool
+application_registry_supports_uri_schemeÃ128Õ(string app_id, string uri_scheme)ŒGnomeVFS÷0œpublic bool
+application_registry_syncÃ128Õ()ŒGnomeVFS÷0œpublic GnomeVFS.Result
+application_registry_unset_keyÃ128Õ(string app_id, string key)ŒGnomeVFS÷0œpublic void
+async_cancelÃ128Õ(GnomeVFS.AsyncHandle handle)ŒGnomeVFS÷0œpublic void
+async_closeÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.AsyncCloseCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_createÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, string text_uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm, int priority, GnomeVFS.AsyncOpenCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_create_as_channelÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, string text_uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm, int priority, GnomeVFS.AsyncCreateAsChannelCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_create_symbolic_linkÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, string uri_reference, int priority, GnomeVFS.AsyncOpenCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_create_uriÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm, int priority, GnomeVFS.AsyncOpenCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_create_uri_as_channelÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm, int priority, GnomeVFS.AsyncCreateAsChannelCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_file_controlÃ128Õ(GnomeVFS.AsyncHandle handle, string operation, void* operation_data, GLib.DestroyNotify operation_data_destroy_func, GnomeVFS.AsyncFileControlCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_find_directoryÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GLib.List near_uri_list, GnomeVFS.FindDirectoryKind kind, bool create_if_needed, bool find_if_needed, uint permissions, int priority, GnomeVFS.AsyncFindDirectoryCallback callback)ŒGnomeVFS÷0œpublic void
+async_get_file_infoÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GLib.List uri_list, GnomeVFS.FileInfoOptions options, int priority, GnomeVFS.AsyncGetFileInfoCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_get_job_limitÃ128Õ()ŒGnomeVFS÷0œpublic int
+async_job_dataÃ8ŒGnomeVFS.ProgressCallbackState÷0œvoid
+async_load_directoryÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, string text_uri, GnomeVFS.FileInfoOptions options, uint items_per_notification, int priority, GnomeVFS.AsyncDirectoryLoadCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_load_directory_uriÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.FileInfoOptions options, uint items_per_notification, int priority, GnomeVFS.AsyncDirectoryLoadCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_module_callback_popÃ128Õ(string callback_name)ŒGnomeVFS÷0œpublic void
+async_module_callback_pushÃ128Õ(string callback_name, GnomeVFS.AsyncModuleCallback callback, void* callback_data, GLib.DestroyNotify destroy_notify)ŒGnomeVFS÷0œpublic void
+async_module_callback_set_defaultÃ128Õ(string callback_name, GnomeVFS.AsyncModuleCallback callback, void* callback_data, GLib.DestroyNotify destroy_notify)ŒGnomeVFS÷0œpublic void
+async_openÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, string text_uri, GnomeVFS.OpenMode open_mode, int priority, GnomeVFS.AsyncOpenCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_open_as_channelÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, string text_uri, GnomeVFS.OpenMode open_mode, uint advised_block_size, int priority, GnomeVFS.AsyncOpenAsChannelCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_open_uriÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode, int priority, GnomeVFS.AsyncOpenCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_open_uri_as_channelÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode, uint advised_block_size, int priority, GnomeVFS.AsyncOpenAsChannelCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_readÃ128Õ(GnomeVFS.AsyncHandle handle, void* buffer, uint bytes, GnomeVFS.AsyncReadCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_seekÃ128Õ(GnomeVFS.AsyncHandle handle, GnomeVFS.SeekPosition whence, GnomeVFS.FileOffset offset, GnomeVFS.AsyncSeekCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_set_file_infoÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GnomeVFS.URI uri, GnomeVFS.FileInfo info, GnomeVFS.SetFileInfoMask mask, GnomeVFS.FileInfoOptions options, int priority, GnomeVFS.AsyncSetFileInfoCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_set_job_limitÃ128Õ(int limit)ŒGnomeVFS÷0œpublic void
+async_writeÃ128Õ(GnomeVFS.AsyncHandle handle, void* buffer, uint bytes, GnomeVFS.AsyncWriteCallback callback, void* callback_data)ŒGnomeVFS÷0œpublic void
+async_xferÃ128Õ(out unowned GnomeVFS.AsyncHandle handle_return, GLib.List source_uri_list, GLib.List target_uri_list, GnomeVFS.XferOptions xfer_options, GnomeVFS.XferErrorMode error_mode, GnomeVFS.XferOverwriteMode overwrite_mode, int priority, GnomeVFS.AsyncXferProgressCallback progress_update_callback, GnomeVFS.XferProgressCallback? progress_sync_callback)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+atimeÃ8ŒGnomeVFS.FileInfo÷0
+auth_typeÃ8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0œGnomeVFS.ModuleCallbackAuthenticationAuthType
+authtypeÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+authtypeÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+authtypeÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+block_countÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FileSize
+bytes_copiedÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.FileSize
+bytes_totalÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.FileSize
+can_open_multiple_filesÃ8ŒGnomeVFS.MimeApplication÷0œbool
+cancelÃ128Õ()ŒGnomeVFS.Cancellation÷0œpublic void
+checkÃ128Õ()ŒGnomeVFS.Cancellation÷0œpublic bool
+check_cancellation_currentÃ128Õ()ŒGnomeVFS.Context÷0œpublic bool
+check_permÃ128Õ(GnomeVFS.ACLPerm perm)ŒGnomeVFS.ACE÷0œpublic bool
+check_same_fsÃ128Õ(string source, string target, bool same_fs_return)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+check_same_fs_urisÃ128Õ(GnomeVFS.URI source_uri, GnomeVFS.URI target_uri, bool same_fs_return)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+choicesÃ8ŒGnomeVFS.ModuleCallbackQuestionIn÷0
+clearÃ128Õ()ŒGnomeVFS.ACL÷0œpublic void
+clearÃ128Õ()ŒGnomeVFS.FileInfo÷0œpublic void
+closeÃ128Õ(GnomeVFS.Handle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+commandÃ8ŒGnomeVFS.MimeApplication÷0
+compareÃ128Õ(GnomeVFS.Drive b)ŒGnomeVFS.Drive÷0œpublic int
+compareÃ128Õ(GnomeVFS.Volume b)ŒGnomeVFS.Volume÷0œpublic int
+connect_to_serverÃ128Õ(string uri, string display_name, string icon)ŒGnomeVFS÷0œpublic void
+copyÃ128Õ(GnomeVFS.FileInfo src)ŒGnomeVFS.FileInfo÷0œpublic void
+copyÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic GnomeVFS.MimeApplication
+copy_permsÃ128Õ(GnomeVFS.ACE dest)ŒGnomeVFS.ACE÷0œpublic void
+createÃ128Õ(out unowned GnomeVFS.Handle handle, string text_uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+create_symbolic_linkÃ128Õ(GnomeVFS.URI uri, string target_reference)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+create_uriÃ128Õ(out unowned GnomeVFS.Handle handle, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode, bool exclusive, uint perm)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+ctimeÃ8ŒGnomeVFS.FileInfo÷0
+data_changedÃ128Õ()ŒGnomeVFS.MIMEMonitor÷0œpublic virtual signal void
+default_domainÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+default_userÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+del_permÃ128Õ(GnomeVFS.ACLPerm perm)ŒGnomeVFS.ACE÷0œpublic void
+directory_closeÃ128Õ(GnomeVFS.DirectoryHandle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_list_loadÃ128Õ(GLib.List list, string text_uri, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_openÃ128Õ(out unowned GnomeVFS.DirectoryHandle handle, string text_uri, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_open_from_uriÃ128Õ(out unowned GnomeVFS.DirectoryHandle handle, GnomeVFS.URI uri, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_read_nextÃ128Õ(GnomeVFS.DirectoryHandle handle, GnomeVFS.FileInfo file_info)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_visitÃ128Õ(string text_uri, GnomeVFS.FileInfoOptions info_options, GnomeVFS.DirectoryVisitOptions visit_options, GnomeVFS.DirectoryVisitFunc callback, void* data)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_visit_filesÃ128Õ(string text_uri, GLib.List file_list, GnomeVFS.FileInfoOptions info_options, GnomeVFS.DirectoryVisitOptions visit_options, GnomeVFS.DirectoryVisitFunc callback, void* data)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_visit_files_at_uriÃ128Õ(GnomeVFS.URI uri, GLib.List file_list, GnomeVFS.FileInfoOptions info_options, GnomeVFS.DirectoryVisitOptions visit_options, GnomeVFS.DirectoryVisitFunc callback, void* data)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+directory_visit_uriÃ128Õ(GnomeVFS.URI uri, GnomeVFS.FileInfoOptions info_options, GnomeVFS.DirectoryVisitOptions visit_options, GnomeVFS.DirectoryVisitFunc callback, void* data)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_browseÃ128Õ(out unowned GnomeVFS.DNSSDBrowseHandle handle, string domain, string type, GnomeVFS.DNSSDBrowseCallback callback, void* callback_data, GLib.DestroyNotify callback_data_destroy_func)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_browse_syncÃ128Õ(string domain, string type, int timeout_msec, int n_services, out unowned GnomeVFS.DNSSDService services)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_cancel_resolveÃ128Õ(GnomeVFS.DNSSDResolveHandle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_list_browse_domains_syncÃ128Õ(string domain, int timeout_msec, GLib.List domains)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_resolveÃ128Õ(out unowned GnomeVFS.DNSSDResolveHandle handle, string name, string type, string domain, int timeout, GnomeVFS.DNSSDResolveCallback callback, void* callback_data, GLib.DestroyNotify callback_data_destroy_func)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_resolve_syncÃ128Õ(string name, string type, string domain, int timeout_msec, out unowned string host, int port, GLib.HashTable text, int text_raw_len_out, out unowned string text_raw_out)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+dns_sd_stop_browseÃ128Õ(GnomeVFS.DNSSDBrowseHandle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+domainÃ8ŒGnomeVFS.DNSSDService÷0
+domainÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+domainÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0
+domainÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+domainÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0
+domainÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+drive_connectedÃ128Õ(GnomeVFS.Drive drive)ŒGnomeVFS.VolumeMonitor÷0œpublic virtual signal void
+drive_disconnectedÃ128Õ(GnomeVFS.Drive drive)ŒGnomeVFS.VolumeMonitor÷0œpublic virtual signal void
+dummyÃ8ŒGnomeVFS.ModuleCallbackReceivedHeadersOut÷0œint
+dummyÃ8ŒGnomeVFS.ModuleCallbackStatusMessageOut÷0œint
+dupÃ128Õ()ŒGnomeVFS.Address÷0œpublic unowned
+dupÃ128Õ()ŒGnomeVFS.FileInfo÷0œpublic unowned
+dupÃ128Õ()ŒGnomeVFS.FindDirectoryResult÷0œpublic unowned
+dupÃ128Õ()ŒGnomeVFS.GetFileInfoResult÷0œpublic unowned
+dupÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned
+duplicate_countÃ8ŒGnomeVFS.XferProgressInfo÷0œint
+duplicate_nameÃ8ŒGnomeVFS.XferProgressInfo÷0
+ejectÃ128Õ(GnomeVFS.VolumeOpCallback callback)ŒGnomeVFS.Drive÷0œpublic void
+ejectÃ128Õ(GnomeVFS.VolumeOpCallback callback)ŒGnomeVFS.Volume÷0œpublic void
+equalÃ128Õ(GnomeVFS.ACE entry_b)ŒGnomeVFS.ACE÷0œpublic bool
+equalÃ128Õ(GnomeVFS.Address b)ŒGnomeVFS.Address÷0œpublic bool
+equalÃ128Õ(GnomeVFS.MimeApplication app_b)ŒGnomeVFS.MimeApplication÷0œpublic bool
+equalÃ128Õ(GnomeVFS.URI b)ŒGnomeVFS.URI÷0œpublic bool
+escape_host_and_path_stringÃ128Õ(string path)ŒGnomeVFS÷0œpublic unowned string
+escape_path_stringÃ128Õ(string path)ŒGnomeVFS÷0œpublic unowned string
+escape_setÃ128Õ(string str, string match_set)ŒGnomeVFS÷0œpublic unowned string
+escape_slashesÃ128Õ(string str)ŒGnomeVFS÷0œpublic unowned string
+escape_stringÃ128Õ(string str)ŒGnomeVFS÷0œpublic unowned string
+existsÃ128Õ()ŒGnomeVFS.URI÷0œpublic bool
+expand_initial_tildeÃ128Õ(string path)ŒGnomeVFS÷0œpublic unowned string
+expects_urisÃ8ŒGnomeVFS.MimeApplication÷0œGnomeVFS.MimeApplicationArgumentType
+extract_dirnameÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+extract_short_nameÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+extract_short_path_nameÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+file_controlÃ128Õ(GnomeVFS.Handle handle, string operation, void* operation_data)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+file_indexÃ8ŒGnomeVFS.XferProgressInfo÷0
+file_infoÃ8ŒGnomeVFS.GetFileInfoResult÷0œGnomeVFS.FileInfo
+file_sizeÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.FileSize
+files_totalÃ8ŒGnomeVFS.XferProgressInfo÷0
+find_directoryÃ128Õ(GnomeVFS.URI near_uri, GnomeVFS.FindDirectoryKind kind, out unowned GnomeVFS.URI _result, bool create_if_needed, bool find_if_needed, uint permissions)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+flagsÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FileFlags
+flagsÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0œGnomeVFS.ModuleCallbackFullAuthenticationFlags
+forget_cacheÃ128Õ(GnomeVFS.Handle handle, GnomeVFS.FileOffset offset, GnomeVFS.FileSize size)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+format_file_size_for_displayÃ128Õ(GnomeVFS.FileSize size)ŒGnomeVFS÷0œpublic unowned string
+format_uri_for_displayÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+fragment_idÃ8ŒGnomeVFS.URI÷0
+free_ace_listÃ128Õ(GLib.List ace_list)ŒGnomeVFS.ACL÷0œpublic void
+get_ace_listÃ128Õ()ŒGnomeVFS.ACL÷0œpublic unowned
+get_activation_uriÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned string
+get_activation_uriÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_binary_nameÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_cancellationÃ128Õ()ŒGnomeVFS.Context÷0œpublic unowned
+get_connected_drivesÃ128Õ()ŒGnomeVFS.VolumeMonitor÷0œpublic GLib.List
+get_default_browse_domainsÃ128Õ()ŒGnomeVFS÷0œpublic unowned
+get_desktop_file_pathÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_desktop_idÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_device_pathÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned string
+get_device_pathÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_device_typeÃ128Õ()ŒGnomeVFS.Drive÷0œpublic GnomeVFS.DeviceType
+get_device_typeÃ128Õ()ŒGnomeVFS.Volume÷0œpublic GnomeVFS.DeviceType
+get_display_nameÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned string
+get_display_nameÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_driveÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned
+get_drive_by_idÃ128Õ(ulong id)ŒGnomeVFS.VolumeMonitor÷0œpublic unowned
+get_execÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_family_typeÃ128Õ()ŒGnomeVFS.Address÷0œpublic int
+get_fdÃ128Õ()ŒGnomeVFS.Cancellation÷0œpublic int
+get_file_infoÃ128Õ(string text_uri, GnomeVFS.FileInfo info, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+get_file_info_from_handleÃ128Õ(GnomeVFS.Handle handle, GnomeVFS.FileInfo info, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+get_file_info_uriÃ128Õ(GnomeVFS.URI uri, GnomeVFS.FileInfo info, GnomeVFS.FileInfoOptions options)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+get_file_mime_typeÃ128Õ(string path, void* optional_stat_info, bool suffix_only)ŒGnomeVFS÷0œpublic unowned string
+get_file_mime_type_fastÃ128Õ(string path, void* optional_stat_info)ŒGnomeVFS÷0œpublic unowned string
+get_filesystem_typeÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_fragment_identifierÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_generic_nameÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_hal_udiÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned string
+get_hal_udiÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_host_nameÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_host_portÃ128Õ()ŒGnomeVFS.URI÷0
+get_iconÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned string
+get_iconÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_iconÃ128Õ()ŒGnomeVFS.Volume÷0œpublic unowned string
+get_idÃ128Õ()ŒGnomeVFS.ACE÷0œpublic unowned string
+get_idÃ128Õ()ŒGnomeVFS.Drive÷0
+get_idÃ128Õ()ŒGnomeVFS.Volume÷0
+get_inheritÃ128Õ()ŒGnomeVFS.ACE÷0œpublic bool
+get_ipv4Ã128Õ()ŒGnomeVFS.Address÷0œpublic uint32
+get_kindÃ128Õ()ŒGnomeVFS.ACE÷0œpublic unowned
+get_local_path_from_uriÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+get_mime_typeÃ128Õ(string text_uri)ŒGnomeVFS÷0œpublic unowned string
+get_mime_typeÃ128Õ()ŒGnomeVFS.FileInfo÷0œpublic unowned string
+get_mime_type_commonÃ128Õ(GnomeVFS.URI uri)ŒGnomeVFS÷0œpublic unowned string
+get_mime_type_for_dataÃ128Õ(void* data, int data_size)ŒGnomeVFS÷0œpublic unowned string
+get_mime_type_for_nameÃ128Õ(string filename)ŒGnomeVFS÷0œpublic unowned string
+get_mime_type_for_name_and_dataÃ128Õ(string filename, void* data, ssize_t data_size)ŒGnomeVFS÷0œpublic unowned string
+get_mime_type_from_file_dataÃ128Õ(GnomeVFS.URI uri)ŒGnomeVFS÷0œpublic unowned string
+get_mime_type_from_uriÃ128Õ(GnomeVFS.URI uri)ŒGnomeVFS÷0œpublic unowned string
+get_mounted_volumeÃ128Õ()ŒGnomeVFS.Drive÷0œpublic unowned
+get_mounted_volumesÃ128Õ()ŒGnomeVFS.Drive÷0œpublic GLib.List
+get_mounted_volumesÃ128Õ()ŒGnomeVFS.VolumeMonitor÷0œpublic unowned
+get_nameÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_negativeÃ128Õ()ŒGnomeVFS.ACE÷0œpublic bool
+get_parentÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned
+get_passwordÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_pathÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_permsÃ128Õ()ŒGnomeVFS.ACE÷0œpublic unowned
+get_schemeÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_slow_mime_typeÃ128Õ(string text_uri)ŒGnomeVFS÷0œpublic unowned string
+get_sockaddrÃ128Õ(uint16 port, int len)ŒGnomeVFS.Address÷0œpublic void *
+get_startup_wm_classÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic unowned string
+get_supertype_from_mime_typeÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned string
+get_toplevelÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned
+get_uri_from_local_pathÃ128Õ(string local_full_path)ŒGnomeVFS÷0œpublic unowned string
+get_uri_schemeÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+get_user_nameÃ128Õ()ŒGnomeVFS.URI÷0œpublic unowned string
+get_volume_by_idÃ128Õ(ulong id)ŒGnomeVFS.VolumeMonitor÷0œpublic GnomeVFS.Volume
+get_volume_for_pathÃ128Õ(string path)ŒGnomeVFS.VolumeMonitor÷0œpublic unowned
+get_volume_free_spaceÃ128Õ(GnomeVFS.URI vfs_uri, GnomeVFS.FileSize size)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+get_volume_monitorÃ128Õ()ŒGnomeVFS÷0œpublic unowned
+get_volume_typeÃ128Õ()ŒGnomeVFS.Volume÷0œpublic GnomeVFS.VolumeType
+gidÃ8ŒGnomeVFS.FileInfo÷0
+handles_trashÃ128Õ()ŒGnomeVFS.Volume÷0œpublic bool
+has_parentÃ128Õ()ŒGnomeVFS.URI÷0œpublic bool
+hashÃ128Õ(void* p)ŒGnomeVFS.URI÷0
+headersÃ8ŒGnomeVFS.ModuleCallbackAdditionalHeadersOut÷0œGLib.List
+headersÃ8ŒGnomeVFS.ModuleCallbackReceivedHeadersIn÷0œGLib.List
+hequalÃ128Õ(void* a, void* b)ŒGnomeVFS.URI÷0œpublic int
+host_nameÃ8ŒGnomeVFS.ToplevelURI÷0
+host_portÃ8ŒGnomeVFS.ToplevelURI÷0
+icon_path_from_filenameÃ128Õ(string filename)ŒGnomeVFS÷0œpublic unowned string
+idÃ8ŒGnomeVFS.ACE÷0
+idÃ8ŒGnomeVFS.MimeApplication÷0
+inheritÃ8ŒGnomeVFS.ACE÷0œbool
+initÃ128Õ()ŒGnomeVFS÷0œpublic bool
+initializedÃ128Õ()ŒGnomeVFS÷0œpublic bool
+inodeÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.InodeNumber
+io_block_sizeÃ8ŒGnomeVFS.FileInfo÷0
+is_connectedÃ128Õ()ŒGnomeVFS.Drive÷0œpublic bool
+is_executable_command_stringÃ128Õ(string command_string)ŒGnomeVFS÷0œpublic bool
+is_localÃ128Õ()ŒGnomeVFS.URI÷0œpublic bool
+is_mountedÃ128Õ()ŒGnomeVFS.Drive÷0œpublic bool
+is_mountedÃ128Õ()ŒGnomeVFS.Volume÷0œpublic bool
+is_parentÃ128Õ(GnomeVFS.URI possible_child, bool recursive)ŒGnomeVFS.URI÷0œpublic bool
+is_primary_threadÃ128Õ()ŒGnomeVFS÷0œpublic bool
+is_read_onlyÃ128Õ()ŒGnomeVFS.Volume÷0œpublic bool
+is_user_visibleÃ128Õ()ŒGnomeVFS.Drive÷0œpublic bool
+is_user_visibleÃ128Õ()ŒGnomeVFS.Volume÷0œpublic bool
+keyringÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0
+keyringÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+kindÃ8ŒGnomeVFS.ACE÷0
+launchÃ128Õ(GLib.List uris)ŒGnomeVFS.MimeAction÷0œpublic GnomeVFS.Result
+launchÃ128Õ(GLib.List uris)ŒGnomeVFS.MimeApplication÷0œpublic GnomeVFS.Result
+launch_with_envÃ128Õ(GLib.List uris, out unowned string envp)ŒGnomeVFS.MimeAction÷0œpublic GnomeVFS.Result
+launch_with_envÃ128Õ(GLib.List uris, out unowned string envp)ŒGnomeVFS.MimeApplication÷0œpublic GnomeVFS.Result
+link_countÃ8ŒGnomeVFS.FileInfo÷0
+list_copyÃ128Õ(GLib.List list)ŒGnomeVFS.FileInfo÷0œpublic unowned
+list_copyÃ128Õ(GLib.List list)ŒGnomeVFS.URI÷0œpublic unowned
+list_deep_freeÃ128Õ(GLib.List list)ŒGnomeVFS÷0œpublic void
+list_freeÃ128Õ(int n_services)ŒGnomeVFS.DNSSDService÷0œpublic void
+list_freeÃ128Õ(GLib.List list)ŒGnomeVFS.FileInfo÷0œpublic void
+list_freeÃ128Õ(GLib.List list)ŒGnomeVFS.MimeApplication÷0œpublic void
+list_freeÃ128Õ(GLib.List list)ŒGnomeVFS.URI÷0œpublic void
+list_parseÃ128Õ(string uri_list)ŒGnomeVFS.URI÷0œpublic unowned
+list_refÃ128Õ(GLib.List list)ŒGnomeVFS.FileInfo÷0œpublic unowned
+list_refÃ128Õ(GLib.List list)ŒGnomeVFS.URI÷0œpublic unowned
+list_unrefÃ128Õ(GLib.List list)ŒGnomeVFS.FileInfo÷0œpublic unowned
+list_unrefÃ128Õ(GLib.List list)ŒGnomeVFS.URI÷0œpublic unowned
+loadinitÃ128Õ(void* app, void* modinfo)ŒGnomeVFS÷0œpublic void
+make_directoryÃ128Õ(string text_uri, uint perm)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+make_directory_for_uriÃ128Õ(GnomeVFS.URI uri, uint perm)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+make_full_from_relativeÃ128Õ(string base_uri, string relative_uri)ŒGnomeVFS.URI÷0œpublic unowned string
+make_path_name_canonicalÃ128Õ(string path)ŒGnomeVFS÷0œpublic unowned string
+make_uri_canonicalÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+make_uri_canonical_strip_fragmentÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+make_uri_from_inputÃ128Õ(string location)ŒGnomeVFS÷0œpublic unowned string
+make_uri_from_input_with_dirsÃ128Õ(string location, GnomeVFS.MakeURIDirs dirs)ŒGnomeVFS÷0œpublic unowned string
+make_uri_from_input_with_trailing_wsÃ128Õ(string location)ŒGnomeVFS÷0œpublic unowned string
+make_uri_from_shell_argÃ128Õ(string uri)ŒGnomeVFS÷0œpublic unowned string
+make_uri_full_from_relativeÃ128Õ(string base_uri, string relative_uri)ŒGnomeVFS÷0œpublic unowned string
+matchÃ128Õ(GnomeVFS.Address b, uint prefix)ŒGnomeVFS.Address÷0œpublic bool
+matchesÃ128Õ(GnomeVFS.FileInfo b)ŒGnomeVFS.FileInfo÷0œpublic bool
+messageÃ8ŒGnomeVFS.ModuleCallbackStatusMessageIn÷0
+methodÃ8ŒGnomeVFS.URI÷0œvoid
+method_stringÃ8ŒGnomeVFS.URI÷0
+mime_add_application_to_short_listÃ128Õ(string mime_type, string application_id)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_add_component_to_short_listÃ128Õ(string mime_type, string iid)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_add_extensionÃ128Õ(string mime_type, string extension)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_can_be_executableÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic bool
+mime_component_list_freeÃ128Õ(GLib.List list)ŒGnomeVFS÷0œpublic void
+mime_extend_all_applicationsÃ128Õ(string mime_type, GLib.List application_ids)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_get_all_applicationsÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_all_applications_for_uriÃ128Õ(string uri, string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_all_componentsÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_all_desktop_entriesÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_default_actionÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_default_action_typeÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic GnomeVFS.MimeActionType
+mime_get_default_applicationÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_default_application_for_uriÃ128Õ(string uri, string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_default_componentÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic void *
+mime_get_default_desktop_entryÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned string
+mime_get_descriptionÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned string
+mime_get_iconÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned string
+mime_get_short_list_applicationsÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_get_short_list_componentsÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic unowned
+mime_id_in_application_listÃ128Õ(string id, GLib.List applications)ŒGnomeVFS÷0œpublic bool
+mime_id_in_component_listÃ128Õ(string iid, GLib.List components)ŒGnomeVFS÷0œpublic bool
+mime_id_list_from_application_listÃ128Õ(GLib.List applications)ŒGnomeVFS÷0œpublic unowned
+mime_id_list_from_component_listÃ128Õ(GLib.List components)ŒGnomeVFS÷0œpublic unowned
+mime_info_cache_reloadÃ128Õ(string dir)ŒGnomeVFS÷0œpublic void
+mime_reloadÃ128Õ()ŒGnomeVFS÷0œpublic void
+mime_remove_application_from_listÃ128Õ(GLib.List applications, string application_id, bool did_remove)ŒGnomeVFS÷0œpublic unowned
+mime_remove_application_from_short_listÃ128Õ(string mime_type, string application_id)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_remove_component_from_listÃ128Õ(GLib.List components, string iid, bool did_remove)ŒGnomeVFS÷0œpublic unowned
+mime_remove_component_from_short_listÃ128Õ(string mime_type, string iid)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_remove_extensionÃ128Õ(string mime_type, string extension)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_remove_from_all_applicationsÃ128Õ(string mime_type, GLib.List application_ids)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_can_be_executableÃ128Õ(string mime_type, bool new_value)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_default_action_typeÃ128Õ(string mime_type, GnomeVFS.MimeActionType action_type)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_default_applicationÃ128Õ(string mime_type, string application_id)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_default_componentÃ128Õ(string mime_type, string component_iid)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_descriptionÃ128Õ(string mime_type, string description)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_iconÃ128Õ(string mime_type, string filename)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_short_list_applicationsÃ128Õ(string mime_type, GLib.List application_ids)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_set_short_list_componentsÃ128Õ(string mime_type, GLib.List component_iids)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mime_shutdownÃ128Õ()ŒGnomeVFS÷0œpublic void
+mime_typeÃ8ŒGnomeVFS.FileInfo÷0
+mime_type_from_nameÃ128Õ(string filename)ŒGnomeVFS÷0œpublic unowned string
+mime_type_from_name_or_defaultÃ128Õ(string filename, string defaultv)ŒGnomeVFS÷0œpublic unowned string
+mime_type_get_equivalenceÃ128Õ(string mime_type, string base_mime_type)ŒGnomeVFS÷0œpublic GnomeVFS.MimeEquivalence
+mime_type_is_equalÃ128Õ(string a, string b)ŒGnomeVFS÷0œpublic bool
+mime_type_is_supertypeÃ128Õ(string mime_type)ŒGnomeVFS÷0œpublic bool
+module_callback_popÃ128Õ(string callback_name)ŒGnomeVFS÷0œpublic void
+module_callback_pushÃ128Õ(string callback_name, GnomeVFS.ModuleCallback callback, void* callback_data, GLib.DestroyNotify destroy_notify)ŒGnomeVFS÷0œpublic void
+module_callback_set_defaultÃ128Õ(string callback_name, GnomeVFS.ModuleCallback callback, void* callback_data, GLib.DestroyNotify destroy_notify)ŒGnomeVFS÷0œpublic void
+monitor_addÃ128Õ(out unowned GnomeVFS.MonitorHandle handle, string text_uri, GnomeVFS.MonitorType monitor_type, GnomeVFS.MonitorCallback callback)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+monitor_cancelÃ128Õ(GnomeVFS.MonitorHandle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mountÃ128Õ(GnomeVFS.VolumeOpCallback callback)ŒGnomeVFS.Drive÷0œpublic void
+moveÃ128Õ(string old_text_uri, string new_text_uri, bool force_replace)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+move_uriÃ128Õ(GnomeVFS.URI old_uri, GnomeVFS.URI new_uri, bool force_replace)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+mtimeÃ8ŒGnomeVFS.FileInfo÷0
+nameÃ8ŒGnomeVFS.DNSSDService÷0
+nameÃ8ŒGnomeVFS.FileInfo÷0
+nameÃ8ŒGnomeVFS.MimeApplication÷0
+needs_ejectÃ128Õ()ŒGnomeVFS.Drive÷0œpublic bool
+negativeÃ8ŒGnomeVFS.ACE÷0œbool
+next_text_update_callback_timeÃ8ŒGnomeVFS.ProgressCallbackState÷0œint64
+next_update_callback_timeÃ8ŒGnomeVFS.ProgressCallbackState÷0œint64
+objectÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+objectÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+objectÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+openÃ128Õ(out unowned GnomeVFS.Handle handle, string text_uri, GnomeVFS.OpenMode open_mode)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+open_fdÃ128Õ(out unowned GnomeVFS.Handle handle, int filedes)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+open_uriÃ128Õ(out unowned GnomeVFS.Handle handle, GnomeVFS.URI uri, GnomeVFS.OpenMode open_mode)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+out_flagsÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0œsize_t
+parentÃ8ŒGnomeVFS.URI÷0œvoid
+passwordÃ8ŒGnomeVFS.ModuleCallbackAuthenticationOut÷0
+passwordÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0
+passwordÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0
+passwordÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+passwordÃ8ŒGnomeVFS.ToplevelURI÷0
+peek_currentÃ128Õ()ŒGnomeVFS.Context÷0œpublic unowned
+percentageÃ8ŒGnomeVFS.ModuleCallbackStatusMessageIn÷0œint
+permissionsÃ8ŒGnomeVFS.ACE÷0œvoid
+permissionsÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FilePermissions
+phaseÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.XferPhase
+portÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0œint
+portÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0œint
+portÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0œint
+postinitÃ128Õ(void* app, void* modinfo)ŒGnomeVFS÷0œpublic void
+preinitÃ128Õ(void* app, void* modinfo)ŒGnomeVFS÷0œpublic void
+previous_attempt_failedÃ8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0œbool
+primary_messageÃ8ŒGnomeVFS.ModuleCallbackQuestionIn÷0
+progress_infoÃ8ŒGnomeVFS.ProgressCallbackState÷0œGnomeVFS.XferProgressInfo
+protocolÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+protocolÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+protocolÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+readÃ128Õ(GnomeVFS.Handle handle, void* buffer, GnomeVFS.FileSize bytes, out GnomeVFS.FileSize bytes_read)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+read_entire_fileÃ128Õ(string uri, int file_size, out unowned string file_contents)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+realmÃ8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0
+ref_countÃ8ŒGnomeVFS.URI÷0
+refcountÃ8ŒGnomeVFS.FileInfo÷0
+remove_directoryÃ128Õ(string text_uri)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+remove_directory_from_uriÃ128Õ(GnomeVFS.URI uri)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+requires_terminalÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic bool
+reserved1Ã128Õ()ŒGnomeVFS.ACE÷0œpublic virtual void
+reserved1Ã8ŒGnomeVFS.FileInfo÷0œvoid
+reserved1Ã8ŒGnomeVFS.FindDirectoryResult÷0œvoid
+reserved1Ã8ŒGnomeVFS.MimeAction÷0œvoid
+reserved1Ã8ŒGnomeVFS.MimeApplication÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackAdditionalHeadersIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackAdditionalHeadersOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackAuthenticationOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackQuestionIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackQuestionOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackReceivedHeadersIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackReceivedHeadersOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackSaveAuthenticationOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackStatusMessageIn÷0œvoid
+reserved1Ã8ŒGnomeVFS.ModuleCallbackStatusMessageOut÷0œvoid
+reserved1Ã8ŒGnomeVFS.ProgressCallbackState÷0œvoid
+reserved1Ã8ŒGnomeVFS.ToplevelURI÷0œvoid
+reserved1Ã8ŒGnomeVFS.URI÷0œvoid
+reserved1Ã8ŒGnomeVFS.XferProgressInfo÷0œvoid
+reserved2Ã128Õ()ŒGnomeVFS.ACE÷0œpublic virtual void
+reserved2Ã8ŒGnomeVFS.FileInfo÷0œvoid
+reserved2Ã8ŒGnomeVFS.FindDirectoryResult÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackAdditionalHeadersIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackAdditionalHeadersOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackAuthenticationOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackQuestionIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackQuestionOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackReceivedHeadersIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackReceivedHeadersOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackSaveAuthenticationOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackStatusMessageIn÷0œvoid
+reserved2Ã8ŒGnomeVFS.ModuleCallbackStatusMessageOut÷0œvoid
+reserved2Ã8ŒGnomeVFS.ProgressCallbackState÷0œvoid
+reserved2Ã8ŒGnomeVFS.ToplevelURI÷0œvoid
+reserved2Ã8ŒGnomeVFS.URI÷0œvoid
+reserved2Ã8ŒGnomeVFS.XferProgressInfo÷0œvoid
+reserved3Ã128Õ()ŒGnomeVFS.ACE÷0œpublic virtual void
+reserved3Ã8ŒGnomeVFS.FileInfo÷0œvoid
+reserved4Ã128Õ()ŒGnomeVFS.ACE÷0œpublic virtual void
+resolveÃ128Õ(string hostname, out unowned GnomeVFS.ResolveHandle handle)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+resolve_freeÃ128Õ(GnomeVFS.ResolveHandle handle)ŒGnomeVFS÷0œpublic void
+resolve_next_addressÃ128Õ(GnomeVFS.ResolveHandle handle, out unowned GnomeVFS.Address address)ŒGnomeVFS÷0œpublic bool
+resolve_relativeÃ128Õ(string relative_reference)ŒGnomeVFS.URI÷0œpublic unowned
+resolve_reset_to_beginningÃ128Õ(GnomeVFS.ResolveHandle handle)ŒGnomeVFS÷0œpublic void
+resolve_symbolic_linkÃ128Õ(string relative_reference)ŒGnomeVFS.URI÷0œpublic unowned
+resultÃ8ŒGnomeVFS.FindDirectoryResult÷0œGnomeVFS.Result
+resultÃ8ŒGnomeVFS.GetFileInfoResult÷0œGnomeVFS.Result
+result_from_errnoÃ128Õ()ŒGnomeVFS÷0œpublic GnomeVFS.Result
+result_from_errno_codeÃ128Õ(int errno_code)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+result_from_h_errnoÃ128Õ()ŒGnomeVFS÷0œpublic GnomeVFS.Result
+result_from_h_errno_valÃ128Õ(int h_errno_code)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+result_to_stringÃ128Õ(GnomeVFS.Result _result)ŒGnomeVFS÷0œpublic unowned string
+save_passwordÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0œbool
+secondary_messageÃ8ŒGnomeVFS.ModuleCallbackQuestionIn÷0
+seekÃ128Õ(GnomeVFS.Handle handle, GnomeVFS.SeekPosition whence, GnomeVFS.FileOffset offset)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+selinux_contextÃ8ŒGnomeVFS.FileInfo÷0
+serverÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+serverÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+serverÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+set_file_infoÃ128Õ(string text_uri, GnomeVFS.FileInfo info, GnomeVFS.SetFileInfoMask mask)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+set_file_info_uriÃ128Õ(GnomeVFS.URI uri, GnomeVFS.FileInfo info, GnomeVFS.SetFileInfoMask mask)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+set_host_nameÃ128Õ(string host_name)ŒGnomeVFS.URI÷0œpublic void
+set_host_portÃ128Õ(uint host_port)ŒGnomeVFS.URI÷0œpublic void
+set_idÃ128Õ(string id)ŒGnomeVFS.ACE÷0œpublic void
+set_inheritÃ128Õ(bool inherit)ŒGnomeVFS.ACE÷0œpublic void
+set_kindÃ128Õ(GnomeVFS.ACLKind kind)ŒGnomeVFS.ACE÷0œpublic void
+set_negativeÃ128Õ(bool negative)ŒGnomeVFS.ACE÷0œpublic void
+set_passwordÃ128Õ(string password)ŒGnomeVFS.URI÷0œpublic void
+set_permsÃ128Õ(GnomeVFS.ACLPerm perms)ŒGnomeVFS.ACE÷0œpublic void
+set_user_nameÃ128Õ(string user_name)ŒGnomeVFS.URI÷0œpublic void
+shutdownÃ128Õ()ŒGnomeVFS÷0œpublic void
+sizeÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FileSize
+source_nameÃ8ŒGnomeVFS.XferProgressInfo÷0
+statusÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.XferProgressStatus
+supported_uri_schemesÃ8ŒGnomeVFS.MimeApplication÷0œGLib.List
+supports_startup_notificationÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic bool
+supports_urisÃ128Õ()ŒGnomeVFS.MimeApplication÷0œpublic bool
+symlink_nameÃ8ŒGnomeVFS.FileInfo÷0
+sync_callbackÃ8ŒGnomeVFS.ProgressCallbackState÷0œGnomeVFS.XferProgressCallback
+target_nameÃ8ŒGnomeVFS.XferProgressInfo÷0
+tellÃ128Õ(GnomeVFS.Handle handle, GnomeVFS.FileSize offset_return)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+textÃ8ŒGnomeVFS.URI÷0
+to_stringÃ128Õ()ŒGnomeVFS.ACLKind÷0œpublic unowned string
+to_stringÃ128Õ()ŒGnomeVFS.ACLPerm÷0œpublic unowned string
+to_stringÃ128Õ()ŒGnomeVFS.Address÷0œpublic unowned string
+to_stringÃ128Õ(GnomeVFS.URIHideOptions hide_options)ŒGnomeVFS.URI÷0œpublic unowned string
+top_level_itemÃ8ŒGnomeVFS.XferProgressInfo÷0œbool
+total_bytes_copiedÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.FileSize
+truncateÃ128Õ(string text_uri, GnomeVFS.FileSize length)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+truncate_handleÃ128Õ(GnomeVFS.Handle handle, GnomeVFS.FileSize length)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+truncate_uriÃ128Õ(GnomeVFS.URI uri, GnomeVFS.FileSize length)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+typeÃ8ŒGnomeVFS.DNSSDService÷0
+typeÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FileType
+uidÃ8ŒGnomeVFS.FileInfo÷0
+unescape_stringÃ128Õ(string escaped_string, string illegal_characters)ŒGnomeVFS÷0œpublic unowned string
+unescape_string_for_displayÃ128Õ(string escaped)ŒGnomeVFS÷0œpublic unowned string
+unlinkÃ128Õ(string text_uri)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+unlink_from_uriÃ128Õ(GnomeVFS.URI uri)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+unmountÃ128Õ(GnomeVFS.VolumeOpCallback callback)ŒGnomeVFS.Drive÷0œpublic void
+unmountÃ128Õ(GnomeVFS.VolumeOpCallback callback)ŒGnomeVFS.Volume÷0œpublic void
+unrefÃ128Õ()ŒGnomeVFS.Drive÷0œpublic void
+unrefÃ128Õ()ŒGnomeVFS.Volume÷0œpublic void
+unrefÃ128Õ()ŒGnomeVFS.VolumeMonitor÷0œpublic void
+unsetÃ128Õ(GnomeVFS.ACE ace)ŒGnomeVFS.ACL÷0œpublic void
+update_callbackÃ8ŒGnomeVFS.ProgressCallbackState÷0œGnomeVFS.XferProgressCallback
+update_callback_periodÃ8ŒGnomeVFS.ProgressCallbackState÷0œint64
+uriÃ8ŒGnomeVFS.FindDirectoryResult÷0œGnomeVFS.URI
+uriÃ8ŒGnomeVFS.GetFileInfoResult÷0œGnomeVFS.URI
+uriÃ8ŒGnomeVFS.ModuleCallbackAdditionalHeadersIn÷0œGnomeVFS.URI
+uriÃ8ŒGnomeVFS.ModuleCallbackAuthenticationIn÷0
+uriÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+uriÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+uriÃ8ŒGnomeVFS.ModuleCallbackReceivedHeadersIn÷0œGnomeVFS.URI
+uriÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+uriÃ8ŒGnomeVFS.ModuleCallbackStatusMessageIn÷0
+uriÃ8ŒGnomeVFS.ToplevelURI÷0œGnomeVFS.URI
+uris_matchÃ128Õ(string uri_1, string uri_2)ŒGnomeVFS÷0œpublic bool
+url_showÃ128Õ(string url)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+url_show_with_envÃ128Õ(string url, out unowned string envp)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+urnÃ8ŒGnomeVFS.ToplevelURI÷0
+user_dataÃ8ŒGnomeVFS.ProgressCallbackState÷0œvoid
+user_nameÃ8ŒGnomeVFS.ToplevelURI÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackAuthenticationOut÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationIn÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationIn÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackFullAuthenticationOut÷0
+usernameÃ8ŒGnomeVFS.ModuleCallbackSaveAuthenticationIn÷0
+validÃ8ŒGnomeVFS.ModuleCallbackFillAuthenticationOut÷0œbool
+valid_fieldsÃ8ŒGnomeVFS.FileInfo÷0œGnomeVFS.FileInfoFields
+vfs_statusÃ8ŒGnomeVFS.XferProgressInfo÷0œGnomeVFS.Result
+volume_list_freeÃ128Õ(GLib.List volumes)ŒGnomeVFS.Drive÷0œpublic void
+volume_mountedÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.Drive÷0œpublic virtual signal void
+volume_mountedÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.VolumeMonitor÷0œpublic virtual signal void
+volume_pre_unmountÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.Drive÷0œpublic virtual signal void
+volume_pre_unmountÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.VolumeMonitor÷0œpublic virtual signal void
+volume_unmountedÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.Drive÷0œpublic virtual signal void
+volume_unmountedÃ128Õ(GnomeVFS.Volume volume)ŒGnomeVFS.VolumeMonitor÷0œpublic virtual signal void
+writeÃ128Õ(GnomeVFS.Handle handle, void* buffer, GnomeVFS.FileSize bytes, out GnomeVFS.FileSize bytes_written)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+xfer_delete_listÃ128Õ(GLib.List source_uri_list, GnomeVFS.XferErrorMode error_mode, GnomeVFS.XferOptions xfer_options, GnomeVFS.XferProgressCallback? progress_callback)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+xfer_uriÃ128Õ(GnomeVFS.URI source_uri, GnomeVFS.URI target_uri, GnomeVFS.XferOptions xfer_options, GnomeVFS.XferErrorMode error_mode, GnomeVFS.XferOverwriteMode overwrite_mode, GnomeVFS.XferProgressCallback? progress_callback)ŒGnomeVFS÷0œpublic GnomeVFS.Result
+xfer_uri_listÃ128Õ(GLib.List source_uri_list, GLib.List target_uri_list, GnomeVFS.XferOptions xfer_options, GnomeVFS.XferErrorMode error_mode, GnomeVFS.XferOverwriteMode overwrite_mode, GnomeVFS.XferProgressCallback? progress_callback)ŒGnomeVFS÷0œpublic GnomeVFS.Result

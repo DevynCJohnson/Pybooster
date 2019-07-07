@@ -1,0 +1,335 @@
+# format=tagmanager
+@foreachÌ128Í(Tracker.MetadataForeach func)ÎTracker.MetadataÖ0Ïpublic void
+BLOBÌ4ÎTracker.FieldTypeÖ0
+CACHEÌ4ÎTracker.DBTypeÖ0
+COMMONÌ4ÎTracker.DBTypeÖ0
+CONTENTÌ4ÎTracker.DBTypeÖ0
+ConfigÌ1ÎTrackerÖ0
+ConfigÌ128Í()ÎTracker.ConfigÖ0
+DATAÌ4ÎTracker.DBTypeÖ0
+DATEÌ4ÎTracker.FieldTypeÖ0
+DBTypeÌ2ÎTrackerÖ0
+DOUBLEÌ4ÎTracker.FieldTypeÖ0
+EMAILÌ4ÎTracker.DBTypeÖ0
+FILESÌ4ÎTracker.DBTypeÖ0
+FULLTEXTÌ4ÎTracker.FieldTypeÖ0
+FieldÌ1ÎTrackerÖ0
+FieldÌ128Í()ÎTracker.FieldÖ0
+FieldTypeÌ2ÎTrackerÖ0
+FileÌ1ÎTrackerÖ0
+FileFreeDataFuncÌ128Í()ÎTracker.ModuleÖ0Ïpublic delegate void
+FileGetDataFuncÌ128Í(string path)ÎTracker.ModuleÖ0Ïpublic delegate void *
+FileGetMetadataFuncÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic delegate unowned
+FileGetServiceTypeFuncÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic delegate unowned string
+FileGetTextÌ128Í(Tracker.File path)ÎTracker.ModuleÖ0Ïpublic delegate unowned string
+FileGetUriFuncÌ128Í(Tracker.File file, string dirname, string basename)ÎTracker.ModuleÖ0Ïpublic delegate void
+FileIterContentsÌ128Í(Tracker.File path)ÎTracker.ModuleÖ0Ïpublic delegate bool
+GetDirectoriesFuncÌ128Í()ÎTracker.ModuleÖ0Ïpublic delegate unowned string
+GetNameFuncÌ128Í()ÎTracker.ModuleÖ0Ïpublic delegate unowned string
+INDEXÌ4ÎTracker.DBTypeÖ0
+INDEXÌ4ÎTracker.FieldTypeÖ0
+INTEGERÌ4ÎTracker.FieldTypeÖ0
+InitÌ128Í()ÎTracker.ModuleÖ0Ïpublic delegate void
+KEYWORDÌ4ÎTracker.FieldTypeÖ0
+LINKÌ4ÎTracker.FieldTypeÖ0
+LanguageÌ1ÎTrackerÖ0
+LanguageÌ128Í(Tracker.Config language)ÎTracker.LanguageÖ0
+MetadataÌ1ÎTrackerÖ0
+MetadataÌ128Í()ÎTracker.MetadataÖ0
+MetadataForeachÌ128Í(Tracker.Field field, void* value)ÎTrackerÖ0Ïpublic delegate void
+ModuleÌ256Ö0
+ModuleConfigÌ256Ö0
+OntologyÌ256Ö0
+ParserÌ1ÎTrackerÖ0
+ParserÌ128Í(Tracker.Language language, int max_word_length, int min_word_length)ÎTracker.ParserÖ0
+STRINGÌ4ÎTracker.FieldTypeÖ0
+STRUCTÌ4ÎTracker.FieldTypeÖ0
+ServiceÌ1ÎTrackerÖ0
+ServiceÌ128Í()ÎTracker.ServiceÖ0
+ShutdownÌ128Í()ÎTracker.ModuleÖ0Ïpublic delegate void
+TrackerÌ256Ö0
+UNKNOWNÌ4ÎTracker.DBTypeÖ0
+USERÌ4ÎTracker.DBTypeÖ0
+XESAMÌ4ÎTracker.DBTypeÖ0
+add_crawl_directory_rootsÌ128Í(string roots)ÎTracker.ConfigÖ0Ïpublic void
+add_disabled_modulesÌ128Í(string modules)ÎTracker.ConfigÖ0Ïpublic void
+add_no_watch_directory_rootsÌ128Í(string roots)ÎTracker.ConfigÖ0Ïpublic void
+add_watch_directory_rootsÌ128Í(string roots)ÎTracker.ConfigÖ0Ïpublic void
+append_child_idÌ128Í(string id)ÎTracker.FieldÖ0Ïpublic void
+check_existsÌ128Í(string language_code)ÎTracker.LanguageÖ0Ïpublic bool
+child_idsÌ8ÎTracker.FieldÖ0Ïvoid
+closeÌ128Í(int fd, bool no_longer_needed)ÎTracker.FileÖ0Ïpublic void
+configÌ8ÎTracker.LanguageÖ0ÏTracker.Config
+content_metadataÌ8ÎTracker.ServiceÖ0
+crawl_directory_rootsÌ8ÎTracker.ConfigÖ0Ïvoid
+dataÌ8ÎTracker.FileÖ0Ïvoid
+data_typeÌ8ÎTracker.FieldÖ0ÏTracker.FieldType
+date_formatÌ128Í(string time_string)ÎTrackerÖ0Ïpublic unowned string
+date_to_stringÌ128Í(ulong date_time)ÎTrackerÖ0Ïpublic unowned string
+date_to_time_stringÌ128Í(string date_string)ÎTrackerÖ0Ïpublic unowned string
+db_typeÌ8ÎTracker.ServiceÖ0ÏTracker.DBType
+delimitedÌ8ÎTracker.FieldÖ0Ïbool
+disable_indexing_on_batteryÌ8ÎTracker.ConfigÖ0Ïbool
+disable_indexing_on_battery_initÌ8ÎTracker.ConfigÖ0Ïbool
+disabled_modulesÌ8ÎTracker.ConfigÖ0Ïvoid
+embeddedÌ8ÎTracker.FieldÖ0Ïbool
+embeddedÌ8ÎTracker.ServiceÖ0Ïbool
+enable_content_indexingÌ8ÎTracker.ConfigÖ0Ïbool
+enable_indexingÌ8ÎTracker.ConfigÖ0Ïbool
+enable_stemmerÌ8ÎTracker.ConfigÖ0Ïbool
+enable_thumbnailsÌ8ÎTracker.ConfigÖ0Ïbool
+enable_watchesÌ8ÎTracker.ConfigÖ0Ïbool
+enable_xesamÌ8ÎTracker.ConfigÖ0Ïbool
+enabledÌ8ÎTracker.ServiceÖ0Ïbool
+env_check_xdg_dirsÌ128Í()ÎTrackerÖ0Ïpublic bool
+escape_stringÌ128Í(string @in)ÎTrackerÖ0Ïpublic unowned string
+fast_mergesÌ8ÎTracker.ConfigÖ0Ïbool
+field_addÌ128Í(Tracker.Field field)ÎTracker.OntologyÖ0Ïpublic void
+field_get_display_nameÌ128Í(Tracker.Field field)ÎTracker.OntologyÖ0Ïpublic unowned string
+field_get_idÌ128Í(string name)ÎTracker.OntologyÖ0Ïpublic unowned string
+field_is_child_ofÌ128Í(string child, string parent)ÎTracker.OntologyÖ0Ïpublic bool
+field_nameÌ8ÎTracker.FieldÖ0
+file_free_dataÌ128Í(void* file_data)ÎTracker.ModuleÖ0Ïpublic void
+file_get_dataÌ128Í(string path)ÎTracker.ModuleÖ0Ïpublic void *
+file_get_metadataÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic unowned
+file_get_service_typeÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic unowned string
+file_get_textÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic unowned string
+file_get_uriÌ128Í(Tracker.File file, string dirname, string basename)ÎTracker.ModuleÖ0Ïpublic void
+file_iter_contentsÌ128Í(Tracker.File file)ÎTracker.ModuleÖ0Ïpublic bool
+filteredÌ8ÎTracker.FieldÖ0Ïbool
+get_child_idsÌ128Í()ÎTracker.FieldÖ0Ïpublic unowned
+get_configÌ128Í()ÎTracker.LanguageÖ0Ïpublic unowned
+get_content_metadataÌ128Í()ÎTracker.ServiceÖ0Ïpublic unowned string
+get_crawl_directory_rootsÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned
+get_data_typeÌ128Í()ÎTracker.FieldÖ0Ïpublic Tracker.FieldType
+get_db_typeÌ128Í()ÎTracker.ServiceÖ0Ïpublic Tracker.DBType
+get_default_codeÌ128Í()ÎTracker.LanguageÖ0Ïpublic unowned string
+get_delimitedÌ128Í()ÎTracker.FieldÖ0Ïpublic bool
+get_descriptionÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned string
+get_disable_indexing_on_batteryÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_disable_indexing_on_battery_initÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_disabled_modulesÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned
+get_embeddedÌ128Í()ÎTracker.FieldÖ0Ïpublic bool
+get_embeddedÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_enable_content_indexingÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enable_indexingÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enable_stemmerÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enable_thumbnailsÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enable_watchesÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enable_xesamÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_enabledÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic bool
+get_enabledÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_fast_mergesÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_field_by_idÌ128Í(int id)ÎTracker.OntologyÖ0Ïpublic unowned
+get_field_by_nameÌ128Í(string name)ÎTracker.OntologyÖ0Ïpublic unowned
+get_field_nameÌ128Í()ÎTracker.FieldÖ0Ïpublic unowned string
+get_field_name_by_service_nameÌ128Í(Tracker.Field field, string service_str)ÎTracker.OntologyÖ0Ïpublic unowned string
+get_field_names_registeredÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic unowned
+get_filteredÌ128Í()ÎTracker.FieldÖ0Ïpublic bool
+get_has_full_textÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_has_metadataÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_has_thumbsÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_idÌ128Í()ÎTracker.FieldÖ0Ïpublic unowned string
+get_idÌ128Í()ÎTracker.ServiceÖ0Ïpublic int
+get_ignored_directoriesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_ignored_directory_patternsÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_ignored_file_patternsÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_ignored_filesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_index_file_patternsÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_index_filesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_index_mime_typesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_index_mounted_directoriesÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_index_removable_devicesÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_index_serviceÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned string
+get_initial_sleepÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_key_metadataÌ128Í()ÎTracker.ServiceÖ0Ïpublic unowned
+get_languageÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned string
+get_low_disk_space_limitÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_low_memory_modeÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_max_bucket_countÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_max_text_to_indexÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_max_word_lengthÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_max_words_to_indexÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_mime_typeÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic unowned string
+get_min_bucket_countÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_min_word_lengthÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_modulesÌ128Í()ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_monitor_directoriesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_monitor_recurse_directoriesÌ128Í(string name)ÎTracker.ModuleConfigÖ0Ïpublic unowned
+get_mtimeÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic int32
+get_multiple_valuesÌ128Í()ÎTracker.FieldÖ0Ïpublic bool
+get_nameÌ128Í()ÎTracker.FieldÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎTracker.ModuleÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎTracker.ServiceÖ0Ïpublic unowned string
+get_nfs_lockingÌ128Í()ÎTracker.ConfigÖ0Ïpublic bool
+get_no_index_file_typesÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned
+get_no_watch_directory_rootsÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned
+get_parentÌ128Í()ÎTracker.ServiceÖ0Ïpublic unowned string
+get_path_and_nameÌ128Í(string uri, string path, string name)ÎTracker.FileÖ0Ïpublic void
+get_property_prefixÌ128Í()ÎTracker.ServiceÖ0Ïpublic unowned string
+get_service_by_idÌ128Í(int id)ÎTracker.OntologyÖ0Ïpublic unowned string
+get_service_by_mimeÌ128Í(string mime)ÎTracker.OntologyÖ0Ïpublic unowned string
+get_service_by_nameÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic unowned
+get_service_db_by_nameÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic Tracker.DBType
+get_service_id_by_nameÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic int
+get_service_names_registeredÌ128Í()ÎTracker.OntologyÖ0Ïpublic unowned
+get_service_parentÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic unowned string
+get_service_parent_by_idÌ128Í(int id)ÎTracker.OntologyÖ0Ïpublic unowned string
+get_service_parent_id_by_idÌ128Í(int id)ÎTracker.OntologyÖ0Ïpublic int
+get_show_service_directoriesÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_show_service_filesÌ128Í()ÎTracker.ServiceÖ0Ïpublic bool
+get_sizeÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic uint32
+get_stop_wordsÌ128Í()ÎTracker.LanguageÖ0Ïpublic unowned
+get_store_metadataÌ128Í()ÎTracker.FieldÖ0Ïpublic bool
+get_throttleÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_verbosityÌ128Í()ÎTracker.ConfigÖ0Ïpublic int
+get_watch_directory_rootsÌ128Í()ÎTracker.ConfigÖ0Ïpublic unowned
+get_weightÌ128Í()ÎTracker.FieldÖ0Ïpublic int
+gint32_to_stringÌ128Í(int32 i)ÎTrackerÖ0Ïpublic unowned string
+gint_to_stringÌ128Í(int i)ÎTrackerÖ0Ïpublic unowned string
+glong_to_stringÌ128Í(long i)ÎTrackerÖ0Ïpublic unowned string
+gslist_copy_with_string_dataÌ128Í(GLib.SList list)ÎTrackerÖ0Ïpublic unowned
+gslist_to_string_listÌ128Í(GLib.SList list)ÎTrackerÖ0Ïpublic unowned string
+guint32_to_stringÌ128Í(uint32 i)ÎTrackerÖ0Ïpublic unowned string
+guint_to_stringÌ128Í(uint i)ÎTrackerÖ0Ïpublic unowned string
+has_full_textÌ8ÎTracker.ServiceÖ0Ïbool
+has_metadataÌ8ÎTracker.ServiceÖ0Ïbool
+has_thumbsÌ8ÎTracker.ServiceÖ0Ïbool
+idÌ8ÎTracker.FieldÖ0
+idÌ8ÎTracker.ServiceÖ0Ïint
+index_mounted_directoriesÌ8ÎTracker.ConfigÖ0Ïbool
+index_removable_devicesÌ8ÎTracker.ConfigÖ0Ïbool
+initÌ128Í()ÎTracker.ModuleÖ0Ïpublic void
+initÌ128Í()ÎTracker.ModuleConfigÖ0Ïpublic bool
+initÌ128Í()ÎTracker.OntologyÖ0Ïpublic void
+initial_sleepÌ8ÎTracker.ConfigÖ0Ïint
+insertÌ128Í(string field_name, string value)ÎTracker.MetadataÖ0Ïpublic void
+insert_multiple_valuesÌ128Í(string field_name, GLib.List list)ÎTracker.MetadataÖ0Ïpublic void
+is_directoryÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic bool
+is_empty_stringÌ128Í(string str)ÎTrackerÖ0Ïpublic bool
+is_indexableÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic bool
+is_stop_wordÌ128Í(string word)ÎTracker.ParserÖ0Ïpublic bool
+is_validÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic bool
+key_metadataÌ8ÎTracker.ServiceÖ0Ïvoid
+languageÌ8ÎTracker.ConfigÖ0
+lookupÌ128Í(string field_name)ÎTracker.MetadataÖ0Ïpublic unowned string
+lookup_multiple_valuesÌ128Í(string field_name)ÎTracker.MetadataÖ0Ïpublic unowned
+low_disk_space_limitÌ8ÎTracker.ConfigÖ0Ïint
+low_memory_modeÌ8ÎTracker.ConfigÖ0Ïbool
+max_bucket_countÌ8ÎTracker.ConfigÖ0Ïint
+max_text_to_indexÌ8ÎTracker.ConfigÖ0Ïint
+max_word_lengthÌ8ÎTracker.ConfigÖ0Ïint
+max_words_to_indexÌ8ÎTracker.ConfigÖ0Ïint
+min_bucket_countÌ8ÎTracker.ConfigÖ0Ïint
+min_word_lengthÌ8ÎTracker.ConfigÖ0Ïint
+multiple_valuesÌ8ÎTracker.FieldÖ0Ïbool
+nameÌ8ÎTracker.FieldÖ0
+nameÌ8ÎTracker.ServiceÖ0
+nextÌ128Í(int position, int byte_offset_start, int byte_offset_end, bool new_paragraph, bool stop_word, int word_length)ÎTracker.ParserÖ0Ïpublic unowned string
+nfs_lockingÌ8ÎTracker.ConfigÖ0Ïbool
+no_index_file_typesÌ8ÎTracker.ConfigÖ0Ïvoid
+no_watch_directory_rootsÌ8ÎTracker.ConfigÖ0Ïvoid
+openÌ128Í(string uri, bool readahead)ÎTracker.FileÖ0Ïpublic int
+parentÌ8ÎTracker.ServiceÖ0
+pathÌ8ÎTracker.FileÖ0
+path_evaluate_nameÌ128Í(string uri)ÎTrackerÖ0Ïpublic unowned string
+path_hash_table_filter_duplicatesÌ128Í(GLib.HashTable roots)ÎTrackerÖ0Ïpublic void
+path_is_in_pathÌ128Í(string path, string in_path)ÎTrackerÖ0Ïpublic bool
+path_list_filter_duplicatesÌ128Í(GLib.SList roots)ÎTrackerÖ0Ïpublic unowned
+path_removeÌ128Í(string uri)ÎTrackerÖ0Ïpublic void
+process_wordÌ128Í(string word, int length, bool do_strip)ÎTracker.ParserÖ0Ïpublic unowned string
+property_prefixÌ8ÎTracker.ServiceÖ0
+remove_disabled_modulesÌ128Í(string module)ÎTracker.ConfigÖ0Ïpublic void
+resetÌ128Í(string txt, int txt_size, bool delimit_words, bool enable_stemmer, bool enable_stop_words, bool parse_reserved_words)ÎTracker.ParserÖ0Ïpublic void
+seconds_estimate_to_stringÌ128Í(double seconds_elapsed, bool short_string, uint items_done, uint items_remaining)ÎTrackerÖ0Ïpublic unowned string
+seconds_to_stringÌ128Í(double seconds_elapsed, bool short_string)ÎTrackerÖ0Ïpublic unowned string
+service_addÌ128Í(Tracker.Service service, GLib.SList mimes, GLib.SList mime_prefixes)ÎTracker.OntologyÖ0Ïpublic void
+service_get_key_metadataÌ128Í(string service_str, string meta_name)ÎTracker.OntologyÖ0Ïpublic int
+service_get_show_directoriesÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_get_show_filesÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_has_embeddedÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_has_metadataÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_has_textÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_has_thumbnailsÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+service_is_validÌ128Í(string service_str)ÎTracker.OntologyÖ0Ïpublic bool
+set_child_idsÌ128Í(GLib.SList value)ÎTracker.FieldÖ0Ïpublic void
+set_configÌ128Í(Tracker.Config config)ÎTracker.LanguageÖ0Ïpublic void
+set_content_metadataÌ128Í(string value)ÎTracker.ServiceÖ0Ïpublic void
+set_data_typeÌ128Í(Tracker.FieldType value)ÎTracker.FieldÖ0Ïpublic void
+set_db_typeÌ128Í(Tracker.DBType value)ÎTracker.ServiceÖ0Ïpublic void
+set_delimitedÌ128Í(bool value)ÎTracker.FieldÖ0Ïpublic void
+set_disable_indexing_on_batteryÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_disable_indexing_on_battery_initÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_embeddedÌ128Í(bool value)ÎTracker.FieldÖ0Ïpublic void
+set_embeddedÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_enable_content_indexingÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enable_indexingÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enable_stemmerÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enable_thumbnailsÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enable_watchesÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enable_xesamÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_enabledÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_fast_mergesÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_field_nameÌ128Í(string value)ÎTracker.FieldÖ0Ïpublic void
+set_filteredÌ128Í(bool value)ÎTracker.FieldÖ0Ïpublic void
+set_has_full_textÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_has_metadataÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_has_thumbsÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_idÌ128Í(string value)ÎTracker.FieldÖ0Ïpublic void
+set_idÌ128Í(int value)ÎTracker.ServiceÖ0Ïpublic void
+set_index_mounted_directoriesÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_index_removable_devicesÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_initial_sleepÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_key_metadataÌ128Í(GLib.SList value)ÎTracker.ServiceÖ0Ïpublic void
+set_languageÌ128Í(string value)ÎTracker.ConfigÖ0Ïpublic void
+set_low_disk_space_limitÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_low_memory_modeÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_max_bucket_countÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_max_text_to_indexÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_max_word_lengthÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_max_words_to_indexÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_min_bucket_countÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_min_word_lengthÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_multiple_valuesÌ128Í(bool value)ÎTracker.FieldÖ0Ïpublic void
+set_nameÌ128Í(string value)ÎTracker.FieldÖ0Ïpublic void
+set_nameÌ128Í(string value)ÎTracker.ServiceÖ0Ïpublic void
+set_nfs_lockingÌ128Í(bool value)ÎTracker.ConfigÖ0Ïpublic void
+set_parentÌ128Í(string value)ÎTracker.ServiceÖ0Ïpublic void
+set_posititonÌ128Í(int position)ÎTracker.ParserÖ0Ïpublic void
+set_property_prefixÌ128Í(string value)ÎTracker.ServiceÖ0Ïpublic void
+set_show_service_directoriesÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_show_service_filesÌ128Í(bool value)ÎTracker.ServiceÖ0Ïpublic void
+set_store_metadataÌ128Í(bool value)ÎTracker.FieldÖ0Ïpublic void
+set_throttleÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_verbosityÌ128Í(int value)ÎTracker.ConfigÖ0Ïpublic void
+set_weightÌ128Í(int value)ÎTracker.FieldÖ0Ïpublic void
+show_service_directoriesÌ8ÎTracker.ServiceÖ0Ïbool
+show_service_filesÌ8ÎTracker.ServiceÖ0Ïbool
+shutdownÌ128Í()ÎTracker.ModuleÖ0Ïpublic void
+shutdownÌ128Í()ÎTracker.ModuleConfigÖ0Ïpublic void
+shutdownÌ128Í()ÎTracker.OntologyÖ0Ïpublic void
+stem_wordÌ128Í(string word, int word_length)ÎTracker.LanguageÖ0Ïpublic unowned string
+stop_wordsÌ8ÎTracker.LanguageÖ0ÏGLib.HashTable
+store_metadataÌ8ÎTracker.FieldÖ0Ïbool
+string_boolean_to_string_gintÌ128Í(string value)ÎTrackerÖ0Ïpublic unowned string
+string_in_string_listÌ128Í(string str, string strv)ÎTrackerÖ0Ïpublic int
+string_list_to_gslistÌ128Í(string strv, size_t length)ÎTrackerÖ0Ïpublic unowned
+string_list_to_stringÌ128Í(string strv, size_t length, char sep)ÎTrackerÖ0Ïpublic unowned string
+string_removeÌ128Í(string haystack, string needle)ÎTrackerÖ0Ïpublic unowned string
+string_replaceÌ128Í(string haystack, string needle, string replacement)ÎTrackerÖ0Ïpublic unowned string
+string_to_dateÌ128Í(string time_string)ÎTrackerÖ0
+string_to_string_listÌ128Í(string str)ÎTrackerÖ0Ïpublic unowned string
+string_to_uintÌ128Í(string s, uint ret)ÎTrackerÖ0Ïpublic bool
+textÌ128Í(GLib.HashTable word_table, string txt, int weight, Tracker.Language language, int max_words_to_index, int max_word_length, int min_word_length, bool filter_words, bool delimit_words)ÎTracker.ParserÖ0Ïpublic unowned
+text_fastÌ128Í(GLib.HashTable word_table, string txt, int weight)ÎTracker.ParserÖ0Ïpublic unowned
+text_into_arrayÌ128Í(string text, Tracker.Language language, int max_word_length, int min_word_length)ÎTracker.ParserÖ0Ïpublic unowned string
+text_to_stringÌ128Í(string txt, Tracker.Language language, int max_word_length, int min_word_length, bool filter_words, bool filter_numbers, bool delimit)ÎTracker.ParserÖ0Ïpublic unowned string
+throttleÌ128Í(Tracker.Config config, int multiplier)ÎTrackerÖ0Ïpublic void
+throttleÌ8ÎTracker.ConfigÖ0Ïint
+type_to_stringÌ128Í(Tracker.FieldType fieldtype)ÎTracker.FieldÖ0Ïpublic unowned string
+unlinkÌ128Í(string uri)ÎTracker.FileÖ0Ïpublic bool
+utils_get_dataÌ128Í(string path)ÎTracker.MetadataÖ0Ïpublic unowned
+utils_get_textÌ128Í(string path)ÎTracker.MetadataÖ0Ïpublic unowned string
+verbosityÌ8ÎTracker.ConfigÖ0Ïint
+watch_directory_rootsÌ8ÎTracker.ConfigÖ0Ïvoid
+weightÌ8ÎTracker.FieldÖ0Ïint

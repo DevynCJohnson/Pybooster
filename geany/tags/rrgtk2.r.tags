@@ -1,5 +1,4 @@
 # format=pipe
-# R-base tags, created by F. Rebaudo <francois[point]rebaudo[at]ird[point]fr>
 !.flag||(x)|
 $.<invalid>||(obj,name)|
 $.GObject||(x,member)|

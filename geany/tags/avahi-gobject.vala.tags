@@ -1,0 +1,241 @@
+# format=tagmanager
+ACCESS_DENIEDÃ4ŒAvahi.Error÷0
+ALLOW_MULTIPLEÃ4ŒAvahi.PublishFlags÷0
+AddressÃ2048ŒAvahi÷0
+Address.parseÃ128Õ(string s, Protocol proto=Protocol.UNSPEC)ŒAvahi.Address÷0
+AlternativeÃ256÷0
+AvahiÃ256÷0
+BAD_STATEÃ4ŒAvahi.Error÷0
+CACHEDÃ4ŒAvahi.LookupResultFlags÷0
+COLLISIONÃ4ŒAvahi.EntryGroupState÷0
+COLLISIONÃ4ŒAvahi.Error÷0
+CONNECTINGÃ4ŒAvahi.ClientState÷0
+ClientÃ1ŒAvahi÷0
+ClientÃ128Õ(ClientFlags flags=ClientFlags.NO_FLAGS)ŒAvahi.Client÷0
+ClientFlagsÃ2ŒAvahi÷0
+ClientStateÃ2ŒAvahi÷0
+DBUS_ERRORÃ4ŒAvahi.Error÷0
+DISCONNECTEDÃ4ŒAvahi.Error÷0
+DNS_FORMERRÃ4ŒAvahi.Error÷0
+DNS_NOTAUTHÃ4ŒAvahi.Error÷0
+DNS_NOTIMPÃ4ŒAvahi.Error÷0
+DNS_NOTZONEÃ4ŒAvahi.Error÷0
+DNS_NXDOMAINÃ4ŒAvahi.Error÷0
+DNS_NXRRSETÃ4ŒAvahi.Error÷0
+DNS_REFUSEDÃ4ŒAvahi.Error÷0
+DNS_SERVFAILÃ4ŒAvahi.Error÷0
+DNS_YXDOMAINÃ4ŒAvahi.Error÷0
+DNS_YXRRSETÃ4ŒAvahi.Error÷0
+DOMAIN_NAME_MAXÃ8ŒAvahi.Domain÷0œsize_t
+DomainÃ256÷0
+ESTABLISHEDÃ4ŒAvahi.EntryGroupState÷0
+EntryGroupÃ1ŒAvahi÷0
+EntryGroupÃ128Õ()ŒAvahi.EntryGroup÷0
+EntryGroupServiceÃ1ŒAvahi÷0
+EntryGroupStateÃ2ŒAvahi÷0
+ErrorÃ2ŒAvahi÷0
+FAILUREÃ4ŒAvahi.ClientState÷0
+FAILUREÃ4ŒAvahi.EntryGroupState÷0
+FAILUREÃ4ŒAvahi.Error÷0
+IGNORE_USER_CONFIGÃ4ŒAvahi.ClientFlags÷0
+INETÃ4ŒAvahi.Protocol÷0
+INET6Ã4ŒAvahi.Protocol÷0
+INVALID_ADDRESSÃ4ŒAvahi.Error÷0
+INVALID_ARGUMENTÃ4ŒAvahi.Error÷0
+INVALID_CONFIGÃ4ŒAvahi.Error÷0
+INVALID_DNS_CLASSÃ4ŒAvahi.Error÷0
+INVALID_DNS_ERRORÃ4ŒAvahi.Error÷0
+INVALID_DNS_TYPEÃ4ŒAvahi.Error÷0
+INVALID_DOMAIN_NAMEÃ4ŒAvahi.Error÷0
+INVALID_FLAGSÃ4ŒAvahi.Error÷0
+INVALID_HOST_NAMEÃ4ŒAvahi.Error÷0
+INVALID_INTERFACEÃ4ŒAvahi.Error÷0
+INVALID_KEYÃ4ŒAvahi.Error÷0
+INVALID_OBJECTÃ4ŒAvahi.Error÷0
+INVALID_OPERATIONÃ4ŒAvahi.Error÷0
+INVALID_PACKETÃ4ŒAvahi.Error÷0
+INVALID_PORTÃ4ŒAvahi.Error÷0
+INVALID_PROTOCOLÃ4ŒAvahi.Error÷0
+INVALID_RDATAÃ4ŒAvahi.Error÷0
+INVALID_RECORDÃ4ŒAvahi.Error÷0
+INVALID_SERVICE_NAMEÃ4ŒAvahi.Error÷0
+INVALID_SERVICE_SUBTYPEÃ4ŒAvahi.Error÷0
+INVALID_SERVICE_TYPEÃ4ŒAvahi.Error÷0
+INVALID_TTLÃ4ŒAvahi.Error÷0
+IS_EMPTYÃ4ŒAvahi.Error÷0
+IS_PATTERNÃ4ŒAvahi.Error÷0
+InterfaceÃ2048ŒAvahi÷0
+LABEL_MAXÃ8ŒAvahi.Domain÷0œsize_t
+LOCALÃ4ŒAvahi.LookupResultFlags÷0
+LookupFlagsÃ2ŒAvahi÷0
+LookupResultFlagsÃ2ŒAvahi÷0
+MULTICASTÃ4ŒAvahi.LookupResultFlags÷0
+NOT_FOUNDÃ4ŒAvahi.Error÷0
+NOT_PERMITTEDÃ4ŒAvahi.Error÷0
+NOT_STARTEDÃ4ŒAvahi.ClientState÷0
+NOT_SUPPORTEDÃ4ŒAvahi.Error÷0
+NO_ADDRESSÃ4ŒAvahi.LookupFlags÷0
+NO_ANNOUNCEÃ4ŒAvahi.PublishFlags÷0
+NO_CHANGEÃ4ŒAvahi.Error÷0
+NO_COOKIEÃ4ŒAvahi.PublishFlags÷0
+NO_DAEMONÃ4ŒAvahi.Error÷0
+NO_FAILÃ4ŒAvahi.ClientFlags÷0
+NO_FLAGSÃ4ŒAvahi.ClientFlags÷0
+NO_FLAGSÃ4ŒAvahi.LookupFlags÷0
+NO_MEMORYÃ4ŒAvahi.Error÷0
+NO_NETWORKÃ4ŒAvahi.Error÷0
+NO_PROBEÃ4ŒAvahi.PublishFlags÷0
+NO_REVERSEÃ4ŒAvahi.PublishFlags÷0
+NO_TXTÃ4ŒAvahi.LookupFlags÷0
+OSÃ4ŒAvahi.Error÷0
+OUR_OWNÃ4ŒAvahi.LookupResultFlags÷0
+ProtocolÃ2ŒAvahi÷0
+ProtocolÃ4ŒAvahi.Protocol÷0
+PublishFlagsÃ2ŒAvahi÷0
+REGISTERINGÃ4ŒAvahi.EntryGroupState÷0
+RecordBrowserÃ1ŒAvahi÷0
+RecordBrowserÃ128Õ(string name, uint16 type)ŒAvahi.RecordBrowser÷0
+RecordBrowser.fullÃ128Õ(Interface interface, Protocol protocol, string name, uint16 class, uint16 type, LookupFlags flags=LookupFlags.NO_FLAGS)ŒAvahi.RecordBrowser÷0
+SERVICE_COOKIE_INVALIDÃ8ŒAvahi÷0œuint32
+STATICÃ4ŒAvahi.LookupResultFlags÷0
+STR_MAXÃ8ŒAvahi.Address÷0œsize_t
+S_COLLISIONÃ4ŒAvahi.ClientState÷0
+S_REGISTERINGÃ4ŒAvahi.ClientState÷0
+S_RUNNINGÃ4ŒAvahi.ClientState÷0
+ServiceBrowserÃ1ŒAvahi÷0
+ServiceBrowserÃ128Õ(string type)ŒAvahi.ServiceBrowser÷0
+ServiceBrowser.fullÃ128Õ(Interface interface, Protocol protocol, string type, string? domain=null, LookupFlags flags=LookupFlags.NO_FLAGS)ŒAvahi.ServiceBrowser÷0
+ServiceResolverÃ1ŒAvahi÷0
+ServiceResolverÃ128Õ(Interface interface, Protocol protocol, string name, string type, string domain, Protocol address_protocol, LookupFlags flags=LookupFlags.NO_FLAGS)ŒAvahi.ServiceResolver÷0
+StringListÃ1ŒAvahi÷0
+StringListÃ128Õ(string? txt=null, ...)ŒAvahi.StringList÷0
+StringList.from_arrayÃ128Õ(string[] array)ŒAvahi.StringList÷0
+TIMEOUTÃ4ŒAvahi.Error÷0
+TOO_MANY_CLIENTSÃ4ŒAvahi.Error÷0
+TOO_MANY_ENTRIESÃ4ŒAvahi.Error÷0
+TOO_MANY_OBJECTSÃ4ŒAvahi.Error÷0
+UNCOMMITEDÃ4ŒAvahi.EntryGroupState÷0
+UNIQUEÃ4ŒAvahi.PublishFlags÷0
+UNSPECÃ8ŒAvahi.Interface÷0œInterface
+UNSPECÃ4ŒAvahi.Protocol÷0
+UPDATEÃ4ŒAvahi.PublishFlags÷0
+USE_MULTICASTÃ4ŒAvahi.LookupFlags÷0
+USE_MULTICASTÃ4ŒAvahi.PublishFlags÷0
+USE_WIDE_AREAÃ4ŒAvahi.LookupFlags÷0
+USE_WIDE_AREAÃ4ŒAvahi.PublishFlags÷0
+VERSION_MISMATCHÃ4ŒAvahi.Error÷0
+WIDE_AREAÃ4ŒAvahi.LookupResultFlags÷0
+_escape_labelÃ128Õ(char* src, size_t src_len, ref char* dest, ref size_t dest_len)ŒAvahi.Domain÷0œprivate string?
+_parseÃ128Õ(char[] data, out StringList dest)ŒAvahi.StringList÷0œprivate int
+_serializeÃ128Õ(char[] dest)ŒAvahi.StringList÷0œprivate size_t
+_service_name_joinÃ128Õ(char* dest, size_t dest_len, string name, string type, string domain)ŒAvahi.Domain÷0œprivate int
+_service_name_splitÃ128Õ(string src, char* name, size_t name_len, char* type, size_t type_len, char* domain, size_t domain_len)ŒAvahi.Domain÷0œprivate int
+addÃ128Õ(string text)ŒAvahi.StringList÷0œpublic void
+add_anonymousÃ128Õ(size_t size)ŒAvahi.StringList÷0œpublic void
+add_arbitraryÃ128Õ(char[] text)ŒAvahi.StringList÷0œpublic void
+add_manyÃ128Õ(...)ŒAvahi.StringList÷0œpublic void
+add_pairÃ128Õ(string key, string? value)ŒAvahi.StringList÷0œpublic void
+add_pair_arbitraryÃ128Õ(string key, char[] value)ŒAvahi.StringList÷0œpublic void
+add_printfÃ128Õ(string format, ...)ŒAvahi.StringList÷0œpublic void
+add_recordÃ128Õ(PublishFlags flags, string name, uint16 type, uint32 ttl, char[] data)ŒAvahi.EntryGroup÷0œpublic void
+add_record_fullÃ128Õ(Interface interface, Protocol protocol, PublishFlags flags, string name, uint16 class, uint16 type, uint32 ttl, char[] data)ŒAvahi.EntryGroup÷0œpublic void
+add_serviceÃ128Õ(string name, string type, ...)ŒAvahi.EntryGroup÷0œpublic EntryGroupService
+add_service_fullÃ128Õ(Interface interface, Protocol protocol, PublishFlags flags, string name, string type, string domain, string host, uint16 port, ...)ŒAvahi.EntryGroup÷0œpublic EntryGroupService
+add_service_full_strlistÃ128Õ(Interface interface, Protocol protocol, PublishFlags flags, string name, string type, string domain, string host, uint16 port, ...)ŒAvahi.EntryGroup÷0œpublic EntryGroupService
+add_service_strlistÃ128Õ(string name, string type, uint16 port, ...)ŒAvahi.EntryGroup÷0œpublic EntryGroupService
+all_for_nowÃ128Õ()ŒAvahi.RecordBrowser÷0œpublic signal void
+all_for_nowÃ128Õ()ŒAvahi.ServiceBrowser÷0œpublic signal void
+anon_class_1Ã1ŒAvahi.RecordBrowser÷0
+anon_interface_0Ã32ŒAvahi.RecordBrowser÷0
+anon_interface_2Ã32ŒAvahi.ServiceBrowser÷0
+anon_interface_3Ã32ŒAvahi.ServiceResolver÷0
+aprotocolÃ8ŒAvahi.ServiceBrowser÷0œProtocol
+aprotocolÃ8ŒAvahi.ServiceResolver÷0œProtocol
+attachÃ128Õ(Client client)ŒAvahi.EntryGroup÷0œpublic void
+attachÃ128Õ(Client client)ŒAvahi.RecordBrowser÷0œpublic void
+attachÃ128Õ(Client client)ŒAvahi.ServiceBrowser÷0œpublic void
+attachÃ128Õ(Client client)ŒAvahi.ServiceResolver÷0œpublic void
+boolÃ4ŒAvahi.Protocol÷0
+cache_exhaustedÃ128Õ()ŒAvahi.RecordBrowser÷0œpublic signal void
+cache_exhaustedÃ128Õ()ŒAvahi.ServiceBrowser÷0œpublic signal void
+cmpÃ128Õ(Address other)ŒAvahi.Address÷0œpublic int
+commitÃ128Õ()ŒAvahi.EntryGroup÷0œpublic void
+copyÃ128Õ()ŒAvahi.StringList÷0œpublic StringList
+domainÃ8ŒAvahi.EntryGroupService÷0
+domainÃ8ŒAvahi.ServiceBrowser÷0œstring?
+domainÃ8ŒAvahi.ServiceResolver÷0
+equalÃ128Õ(string a, string b)ŒAvahi.Domain÷0œpublic bool
+equalÃ128Õ(StringList other)ŒAvahi.StringList÷0œpublic int
+escape_labelÃ128Õ(string s)ŒAvahi.Domain÷0œpublic string?
+failureÃ128Õ(GLib.Error error)ŒAvahi.RecordBrowser÷0œpublic signal void
+failureÃ128Õ(GLib.Error error)ŒAvahi.ServiceBrowser÷0œpublic signal void
+failureÃ128Õ(GLib.Error error)ŒAvahi.ServiceResolver÷0œpublic signal void
+findÃ128Õ(string key)ŒAvahi.StringList÷0œpublic unowned
+flagsÃ8ŒAvahi.Client÷0œClientFlags
+flagsÃ8ŒAvahi.EntryGroupService÷0œPublishFlags
+flagsÃ8ŒAvahi.RecordBrowser÷0œLookupFlags
+flagsÃ8ŒAvahi.ServiceBrowser÷0œLookupFlags
+flagsÃ8ŒAvahi.ServiceResolver÷0œLookupFlags
+foundÃ128Õ(Interface interface, Protocol protocol, string name, string type, string domain, string hostname, Address? address, uint16 port, StringList? txt, LookupResultFlags flags)ŒAvahi.ServiceResolver÷0œpublic signal void
+freezeÃ128Õ()ŒAvahi.EntryGroupService÷0œpublic void
+from_afÃ4ŒAvahi.Protocol÷0
+get_addressÃ128Õ(out Address address, out uint16 port)ŒAvahi.ServiceResolver÷0œpublic bool
+get_pairÃ128Õ(out string key, out char[] value)ŒAvahi.StringList÷0œpublic bool
+get_service_cookieÃ128Õ()ŒAvahi.StringList÷0œpublic uint32
+get_type_from_subtypeÃ128Õ(string s)ŒAvahi.Domain÷0œpublic unowned
+hashÃ128Õ(string name)ŒAvahi.Domain÷0
+hostÃ8ŒAvahi.EntryGroupService÷0
+host_nameÃ128Õ(string s)ŒAvahi.Alternative÷0
+is_validÃ128Õ()ŒAvahi.Interface÷0œpublic bool
+is_validÃ4ŒAvahi.Protocol÷0
+is_valid_domain_nameÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_fqdnÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_host_nameÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_service_nameÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_service_subtypeÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_service_type_genericÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+is_valid_service_type_strictÃ128Õ(string s)ŒAvahi.Domain÷0œpublic bool
+lengthÃ128Õ()ŒAvahi.StringList÷0
+nameÃ8ŒAvahi.EntryGroupService÷0
+nameÃ8ŒAvahi.RecordBrowser÷0
+nameÃ8ŒAvahi.ServiceResolver÷0
+new_recordÃ128Õ(Interface interface, Protocol protocol, string name, uint16 class, uint16 type, char[] data, LookupResultFlags flags)ŒAvahi.RecordBrowser÷0œpublic signal void
+new_serviceÃ128Õ(Interface interface, Protocol protocol, string name, string type, string domain, LookupResultFlags flags)ŒAvahi.ServiceBrowser÷0œpublic signal void
+nextÃ8ŒAvahi.StringList÷0œStringList
+normalize_nameÃ128Õ(string s)ŒAvahi.Domain÷0
+parseÃ128Õ(char[] data)ŒAvahi.StringList÷0œpublic StringList
+portÃ8ŒAvahi.EntryGroupService÷0œuint16
+protoÃ8ŒAvahi.Address÷0œProtocol
+protocolÃ8ŒAvahi.EntryGroupService÷0œProtocol
+protocolÃ8ŒAvahi.RecordBrowser÷0œProtocol
+protocolÃ8ŒAvahi.ServiceBrowser÷0œProtocol
+protocolÃ8ŒAvahi.ServiceResolver÷0œProtocol
+remove_keyÃ128Õ(string key)ŒAvahi.EntryGroupService÷0œpublic void
+removed_recordÃ128Õ(Interface interface, Protocol protocol, string name, uint16 class, uint16 type, char[] data, LookupResultFlags flags)ŒAvahi.RecordBrowser÷0œpublic signal void
+removed_serviceÃ128Õ(Interface interface, Protocol protocol, string name, string type, string domain, LookupResultFlags flags)ŒAvahi.ServiceBrowser÷0œpublic signal void
+resetÃ128Õ()ŒAvahi.EntryGroup÷0œpublic void
+reverseÃ128Õ()ŒAvahi.StringList÷0œpublic void
+reverse_lookup_nameÃ128Õ(Address addr, char[] dest=new char[DOMAIN_NAME_MAX])ŒAvahi.Domain÷0œpublic unowned string
+serializeÃ128Õ()ŒAvahi.StringList÷0œpublic char
+service_nameÃ128Õ(string s)ŒAvahi.Alternative÷0
+service_name_joinÃ128Õ(string name, string type, string domain)ŒAvahi.Domain÷0
+service_name_splitÃ128Õ(string src, out string name, out string type, out string domain)ŒAvahi.Domain÷0œpublic void
+set_arbitraryÃ128Õ(string key, char[] value)ŒAvahi.EntryGroupService÷0œpublic void
+startÃ128Õ()ŒAvahi.Client÷0œpublic void
+stateÃ8ŒAvahi.Client÷0œClientState
+stateÃ8ŒAvahi.EntryGroup÷0œEntryGroupState
+state_changedÃ128Õ(ClientState state)ŒAvahi.Client÷0œpublic signal void
+state_changedÃ128Õ(EntryGroupState state)ŒAvahi.EntryGroup÷0œpublic signal void
+strerrorÃ128Õ(int errno)ŒAvahi÷0œpublic unowned string
+textÃ8ŒAvahi.StringList÷0œchar
+thawÃ128Õ()ŒAvahi.EntryGroupService÷0œpublic void
+to_afÃ4ŒAvahi.Protocol÷0
+to_stringÃ128Õ(char[] dest=new char[STR_MAX])ŒAvahi.Address÷0œpublic unowned string
+to_stringÃ4ŒAvahi.Protocol÷0
+to_stringÃ128Õ()ŒAvahi.StringList÷0
+typeÃ8ŒAvahi.EntryGroupService÷0
+typeÃ8ŒAvahi.RecordBrowser÷0œuint16
+typeÃ8ŒAvahi.ServiceBrowser÷0
+typeÃ8ŒAvahi.ServiceResolver÷0
+unescape_labelÃ128Õ(ref unowned string name, char[] dest=new char[LABEL_MAX])ŒAvahi.Domain÷0œpublic unowned
+unownedÃ4ŒAvahi.Protocol÷0

@@ -1,0 +1,24 @@
+# format=tagmanager
+BrokerÌ1ÎEnchantÖ0
+BrokerÌ128Í()ÎEnchant.BrokerÖ0
+BrokerDescribeFnÌ128Í(string provider_name, string provider_desc, string provider_dll_file)ÎEnchantÖ0Ïpublic delegate void
+DictÌ1ÎEnchantÖ0
+DictDescribeFnÌ128Í(string lang_tag, string provider_name, string provider_desc, string provider_file)ÎEnchantÖ0Ïpublic delegate void
+EnchantÌ256Ö0
+add_to_pwlÌ128Í( string word, long len = -1)ÎEnchant.DictÖ0Ïpublic void
+add_to_sessionÌ128Í(string word, long len = -1)ÎEnchant.DictÖ0Ïpublic void
+checkÌ128Í(string word, long len = -1)ÎEnchant.DictÖ0Ïpublic int
+describeÌ128Í(BrokerDescribeFn fn)ÎEnchant.BrokerÖ0Ïpublic void
+describeÌ128Í(DictDescribeFn fn)ÎEnchant.DictÖ0Ïpublic void
+dict_existsÌ128Í(string tag)ÎEnchant.BrokerÖ0Ïpublic int
+free_dictÌ128Í(Dict dict)ÎEnchant.BrokerÖ0Ïpublic void
+free_string_listÌ128Í([CCode (array_length = false)] string[] string_list)ÎEnchant.DictÖ0Ïpublic void
+get_errorÌ128Í()ÎEnchant.BrokerÖ0Ïpublic unowned string
+get_errorÌ128Í()ÎEnchant.DictÖ0Ïpublic unowned string
+is_in_sessionÌ128Í(string word, long len = -1)ÎEnchant.DictÖ0Ïpublic int
+list_dictsÌ128Í(DictDescribeFn fn)ÎEnchant.BrokerÖ0Ïpublic void
+request_dictÌ128Í(string tag)ÎEnchant.BrokerÖ0Ïpublic unowned
+request_pwl_dictÌ128Í(string pwl)ÎEnchant.BrokerÖ0Ïpublic unowned
+set_orderingÌ128Í(string tag, string ordering)ÎEnchant.BrokerÖ0Ïpublic void
+store_replacementÌ128Í( string mis, long mis_len, string cor, long cor_len)ÎEnchant.DictÖ0Ïpublic void
+suggestÌ128Í(string word, long len = -1)ÎEnchant.DictÖ0Ïpublic unowned string

@@ -1,0 +1,173 @@
+# format=tagmanager
+AUTHORSÃ8ŒLua÷0
+AllocFuncÃ128Õ(void* ptr, size_t osize, size_t nsize)ŒLua÷0œpublic delegate void *
+BOOLEANÃ4ŒLua.Type÷0
+CALLÃ4ŒLua.EventHook÷0
+CALLÃ4ŒLua.EventMask÷0
+COLLECTÃ4ŒLua.GarbageCollection÷0
+COPYRIGHTÃ8ŒLua÷0
+COUNTÃ4ŒLua.EventHook÷0
+COUNTÃ4ŒLua.EventMask÷0
+COUNTÃ4ŒLua.GarbageCollection÷0
+COUNTBÃ4ŒLua.GarbageCollection÷0
+CallbackFuncÃ128Õ(LuaVM vm)ŒLua÷0œpublic delegate int
+DebugÃ2048ŒLua÷0
+ENVIRONMENTÃ8ŒLua.PseudoIndex÷0œint
+ERRERRÃ4ŒLua.ThreadStatus÷0
+ERRMEMÃ4ŒLua.ThreadStatus÷0
+ERRRUNÃ4ŒLua.ThreadStatus÷0
+ERRSYNTAXÃ4ŒLua.ThreadStatus÷0
+EventHookÃ2ŒLua÷0
+EventMaskÃ2ŒLua÷0
+FUNCTIONÃ4ŒLua.Type÷0
+GLOBALSÃ8ŒLua.PseudoIndex÷0œint
+GarbageCollectionÃ2ŒLua÷0
+HookFuncÃ128Õ(LuaVM vm, ref Debug ar)ŒLua÷0œpublic delegate void
+LIGHTUSERDATAÃ4ŒLua.Type÷0
+LINEÃ4ŒLua.EventHook÷0
+LINEÃ4ŒLua.EventMask÷0
+LuaÃ256÷0
+LuaVMÃ1ŒLua÷0
+LuaVMÃ128Õ()ŒLua.LuaVM÷0
+LuaVM.with_alloc_funcÃ128Õ(AllocFunc f)ŒLua.LuaVM÷0
+MINSTACKÃ8ŒLua÷0œint
+MULTRETÃ8ŒLua÷0œint
+NILÃ4ŒLua.Reference÷0
+NILÃ4ŒLua.Type÷0
+NONEÃ4ŒLua.Reference÷0
+NONEÃ4ŒLua.Type÷0
+NUMBERÃ4ŒLua.Type÷0
+PseudoIndexÃ256÷0
+REGISTRYÃ8ŒLua.PseudoIndex÷0œint
+RELEASEÃ8ŒLua÷0
+RESTARTÃ4ŒLua.GarbageCollection÷0
+RETÃ4ŒLua.EventHook÷0
+RETÃ4ŒLua.EventMask÷0
+ReaderFuncÃ128Õ(LuaVM vm)ŒLua÷0œpublic delegate char
+ReferenceÃ2ŒLua÷0
+SET_PAUSEÃ4ŒLua.GarbageCollection÷0
+SET_STEP_MULÃ4ŒLua.GarbageCollection÷0
+SIGNATUREÃ8ŒLua÷0
+STEPÃ4ŒLua.GarbageCollection÷0
+STOPÃ4ŒLua.GarbageCollection÷0
+STRINGÃ4ŒLua.Type÷0
+TABLEÃ4ŒLua.Type÷0
+TAILRETÃ4ŒLua.EventHook÷0
+THREADÃ4ŒLua.Type÷0
+ThreadStatusÃ2ŒLua÷0
+TypeÃ2ŒLua÷0
+USERDATAÃ4ŒLua.Type÷0
+VERSIONÃ8ŒLua÷0
+VERSION_NUMÃ8ŒLua÷0œint
+WriterFuncÃ128Õ(LuaVM vm, char[] p)ŒLua÷0œpublic delegate int
+YIELDÃ4ŒLua.ThreadStatus÷0
+at_panicÃ128Õ(CallbackFunc f)ŒLua.LuaVM÷0œpublic CallbackFunc
+callÃ128Õ(int nargs = 0, int nresults = 0)ŒLua.LuaVM÷0œpublic void
+check_stackÃ128Õ(int size)ŒLua.LuaVM÷0œpublic bool
+concatÃ128Õ(int n)ŒLua.LuaVM÷0œpublic void
+cpcallÃ128Õ(CallbackFunc fun, void* ud = null)ŒLua.LuaVM÷0œpublic int
+create_tableÃ128Õ(int narr, int nrec)ŒLua.LuaVM÷0œpublic void
+current_lineÃ8ŒLua.Debug÷0œint
+do_fileÃ128Õ(string filename)ŒLua.LuaVM÷0œpublic bool
+do_stringÃ128Õ(string str)ŒLua.LuaVM÷0œpublic bool
+dumpÃ128Õ(WriterFunc writer)ŒLua.LuaVM÷0œpublic int
+equalÃ128Õ(int index1, int index2)ŒLua.LuaVM÷0œpublic bool
+errorÃ128Õ()ŒLua.LuaVM÷0œpublic int
+eventÃ8ŒLua.Debug÷0œEventHook
+for_upvalueÃ128Õ(int i)ŒLua.PseudoIndex÷0œpublic int
+gcÃ128Õ(GarbageCollection what, int data)ŒLua.LuaVM÷0œpublic int
+get_alloc_funcÃ128Õ()ŒLua.LuaVM÷0œpublic AllocFunc
+get_fenvÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+get_fieldÃ128Õ(int index, string k)ŒLua.LuaVM÷0œpublic void
+get_globalÃ128Õ(string name)ŒLua.LuaVM÷0œpublic void
+get_hookÃ128Õ()ŒLua.LuaVM÷0œpublic HookFunc
+get_hook_countÃ128Õ()ŒLua.LuaVM÷0œpublic int
+get_hook_maskÃ128Õ()ŒLua.LuaVM÷0œpublic EventMask
+get_infoÃ128Õ(string what, ref Debug ar)ŒLua.LuaVM÷0œpublic bool
+get_localÃ128Õ(ref Debug ar, int n)ŒLua.LuaVM÷0œpublic unowned
+get_metatableÃ128Õ(int objindex)ŒLua.LuaVM÷0œpublic int
+get_stackÃ128Õ(int level, ref Debug ar)ŒLua.LuaVM÷0œpublic bool
+get_tableÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+get_topÃ128Õ()ŒLua.LuaVM÷0œpublic int
+get_upvalueÃ128Õ(int funcindex, int n)ŒLua.LuaVM÷0œpublic unowned
+insertÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+is_booleanÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_cfunctionÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+is_functionÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_lightuserdataÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_nilÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_noneÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_none_or_nilÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_numberÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+is_stringÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+is_tableÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_threadÃ128Õ(int n)ŒLua.LuaVM÷0œpublic bool
+is_userdataÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+last_line_definedÃ8ŒLua.Debug÷0œint
+less_thanÃ128Õ(int index1, int index2)ŒLua.LuaVM÷0œpublic bool
+line_definedÃ8ŒLua.Debug÷0œint
+loadÃ128Õ(ReaderFunc reader, string chunkname)ŒLua.LuaVM÷0œpublic int
+load_bufferÃ128Õ(char[] buffer, string? name = null)ŒLua.LuaVM÷0œpublic int
+load_fileÃ128Õ(string filename)ŒLua.LuaVM÷0œpublic int
+load_stringÃ128Õ(string s)ŒLua.LuaVM÷0œpublic int
+nameÃ8ŒLua.Debug÷0œunowned
+name_whatÃ8ŒLua.Debug÷0œunowned
+new_tableÃ128Õ()ŒLua.LuaVM÷0œpublic void
+new_threadÃ128Õ()ŒLua.LuaVM÷0œpublic unowned
+new_userdataÃ128Õ(size_t sz)ŒLua.LuaVM÷0œpublic void *
+nextÃ128Õ(int index)ŒLua.LuaVM÷0œpublic int
+nupsÃ8ŒLua.Debug÷0œint
+open_libsÃ128Õ()ŒLua.LuaVM÷0œpublic void
+pcallÃ128Õ(int nargs = 0, int nresults = 0, int errfunc = 0)ŒLua.LuaVM÷0œpublic int
+popÃ128Õ(int n)ŒLua.LuaVM÷0œpublic void
+push_booleanÃ128Õ(int b)ŒLua.LuaVM÷0œpublic void
+push_cclosureÃ128Õ(CallbackFunc f, int n)ŒLua.LuaVM÷0œpublic void
+push_cfunctionÃ128Õ(CallbackFunc f)ŒLua.LuaVM÷0œpublic void
+push_fstringÃ128Õ(string fmt, ...)ŒLua.LuaVM÷0œpublic unowned string
+push_integerÃ128Õ(int n)ŒLua.LuaVM÷0œpublic void
+push_lightuserdataÃ128Õ(void* p)ŒLua.LuaVM÷0œpublic void
+push_literalÃ128Õ(string s)ŒLua.LuaVM÷0œpublic void
+push_lstringÃ128Õ(string s, size_t size)ŒLua.LuaVM÷0œpublic void
+push_nilÃ128Õ()ŒLua.LuaVM÷0œpublic void
+push_numberÃ128Õ(double n)ŒLua.LuaVM÷0œpublic void
+push_stringÃ128Õ(string s)ŒLua.LuaVM÷0œpublic void
+push_threadÃ128Õ()ŒLua.LuaVM÷0œpublic bool
+push_valueÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+raw_equalÃ128Õ(int index1, int index2)ŒLua.LuaVM÷0œpublic bool
+raw_getÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+raw_getiÃ128Õ(int index, int n)ŒLua.LuaVM÷0œpublic void
+raw_setÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+raw_setiÃ128Õ(int index, int n)ŒLua.LuaVM÷0œpublic void
+referenceÃ128Õ(int t)ŒLua.LuaVM÷0œpublic int
+registerÃ128Õ(string name, CallbackFunc f)ŒLua.LuaVM÷0œpublic void
+removeÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+replaceÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+resumeÃ128Õ(int narg)ŒLua.LuaVM÷0œpublic int
+set_alloc_funcÃ128Õ(AllocFunc f)ŒLua.LuaVM÷0œpublic void
+set_fenvÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+set_fieldÃ128Õ(int index, string k)ŒLua.LuaVM÷0œpublic void
+set_globalÃ128Õ(string name)ŒLua.LuaVM÷0œpublic void
+set_hookÃ128Õ(HookFunc func, EventMask mask, int count)ŒLua.LuaVM÷0œpublic bool
+set_localÃ128Õ(ref Debug ar, int n)ŒLua.LuaVM÷0œpublic unowned
+set_metatableÃ128Õ(int objindex)ŒLua.LuaVM÷0œpublic int
+set_tableÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+set_topÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void
+set_upvalueÃ128Õ(int funcindex, int n)ŒLua.LuaVM÷0œpublic unowned
+sourceÃ8ŒLua.Debug÷0œunowned
+statusÃ128Õ()ŒLua.LuaVM÷0œpublic int
+strlenÃ128Õ(int index)ŒLua.LuaVM÷0œpublic size_t
+to_booleanÃ128Õ(int index)ŒLua.LuaVM÷0œpublic bool
+to_cfunctionÃ128Õ(int index)ŒLua.LuaVM÷0œpublic CallbackFunc
+to_integerÃ128Õ(int index)ŒLua.LuaVM÷0œpublic int
+to_lstringÃ128Õ(int index, out size_t size)ŒLua.LuaVM÷0œpublic unowned string
+to_numberÃ128Õ(int index)ŒLua.LuaVM÷0œpublic double
+to_pointerÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void *
+to_stringÃ128Õ(int index)ŒLua.LuaVM÷0œpublic unowned string
+to_threadÃ128Õ(int index)ŒLua.LuaVM÷0œpublic unowned
+to_userdataÃ128Õ(int index)ŒLua.LuaVM÷0œpublic void *
+typeÃ128Õ(int index)ŒLua.LuaVM÷0œpublic Lua.Type
+type_nameÃ128Õ(Lua.Type type)ŒLua.LuaVM÷0œpublic unowned string
+unreferenceÃ128Õ(int t)ŒLua.LuaVM÷0œpublic void
+whatÃ8ŒLua.Debug÷0œunowned
+xmoveÃ128Õ(LuaVM from, LuaVM to, int n)ŒLua.LuaVM÷0œpublic void
+yieldÃ128Õ(int nresults)ŒLua.LuaVM÷0œpublic int

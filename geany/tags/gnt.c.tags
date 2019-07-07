@@ -1,0 +1,1136 @@
+# format=tagmanager
+ENTRY_CHARÃ65536÷0
+GDupFuncÃ4096÷0œG_END_DECLS typedef
+GNTDEBUGÃ65536÷0
+GNTWM_HÃ65536÷0
+GNTWS_HÃ65536÷0
+GNT_ALIGN_BOTTOMÃ4Œanon_enum_6÷0
+GNT_ALIGN_LEFTÃ4Œanon_enum_6÷0
+GNT_ALIGN_MIDÃ4Œanon_enum_6÷0
+GNT_ALIGN_RIGHTÃ4Œanon_enum_6÷0
+GNT_ALIGN_TOPÃ4Œanon_enum_6÷0
+GNT_BINDABLEÃ131072Õ(obj)÷0
+GNT_BINDABLE_CLASSÃ131072Õ(klass)÷0
+GNT_BINDABLE_GET_CLASSÃ131072Õ(obj)÷0
+GNT_BINDABLE_HÃ65536÷0
+GNT_BOXÃ131072Õ(obj)÷0
+GNT_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_BOX_GET_CLASSÃ131072Õ(obj)÷0
+GNT_BOX_HÃ65536÷0
+GNT_BUTTONÃ131072Õ(obj)÷0
+GNT_BUTTON_CLASSÃ131072Õ(klass)÷0
+GNT_BUTTON_GET_CLASSÃ131072Õ(obj)÷0
+GNT_BUTTON_HÃ65536÷0
+GNT_CHECK_BOXÃ131072Õ(obj)÷0
+GNT_CHECK_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_CHECK_BOX_FLAGSÃ131072Õ(obj)÷0
+GNT_CHECK_BOX_GET_CLASSÃ131072Õ(obj)÷0
+GNT_CHECK_BOX_HÃ65536÷0
+GNT_CHECK_BOX_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_CHECK_BOX_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_CLIPBOARDÃ131072Õ(obj)÷0
+GNT_CLIPBOARD_CLASSÃ131072Õ(klass)÷0
+GNT_CLIPBOARD_GET_CLASSÃ131072Õ(obj)÷0
+GNT_CLIPBOARD_HÃ65536÷0
+GNT_COLORSÃ4Œanon_enum_7÷0
+GNT_COLORS_HÃ65536÷0
+GNT_COLOR_BLACKÃ4Œanon_enum_8÷0
+GNT_COLOR_BLUEÃ4Œanon_enum_8÷0
+GNT_COLOR_DARK_GRAYÃ4Œanon_enum_8÷0
+GNT_COLOR_DISABLEDÃ4Œanon_enum_7÷0
+GNT_COLOR_GRAYÃ4Œanon_enum_8÷0
+GNT_COLOR_GREENÃ4Œanon_enum_8÷0
+GNT_COLOR_HIGHLIGHTÃ4Œanon_enum_7÷0
+GNT_COLOR_HIGHLIGHT_DÃ4Œanon_enum_7÷0
+GNT_COLOR_MNEMONICÃ4Œanon_enum_7÷0
+GNT_COLOR_MNEMONIC_DÃ4Œanon_enum_7÷0
+GNT_COLOR_NORMALÃ4Œanon_enum_7÷0
+GNT_COLOR_REDÃ4Œanon_enum_8÷0
+GNT_COLOR_SHADOWÃ4Œanon_enum_7÷0
+GNT_COLOR_TEXT_INACTIVEÃ4Œanon_enum_7÷0
+GNT_COLOR_TEXT_NORMALÃ4Œanon_enum_7÷0
+GNT_COLOR_TITLEÃ4Œanon_enum_7÷0
+GNT_COLOR_TITLE_DÃ4Œanon_enum_7÷0
+GNT_COLOR_URGENTÃ4Œanon_enum_7÷0
+GNT_COLOR_WHITEÃ4Œanon_enum_8÷0
+GNT_COMBO_BOXÃ131072Õ(obj)÷0
+GNT_COMBO_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_COMBO_BOX_FLAGSÃ131072Õ(obj)÷0
+GNT_COMBO_BOX_GET_CLASSÃ131072Õ(obj)÷0
+GNT_COMBO_BOX_HÃ65536÷0
+GNT_COMBO_BOX_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_COMBO_BOX_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_ENTRYÃ131072Õ(obj)÷0
+GNT_ENTRY_CLASSÃ131072Õ(klass)÷0
+GNT_ENTRY_FLAGSÃ131072Õ(obj)÷0
+GNT_ENTRY_FLAG_ALLÃ65536÷0
+GNT_ENTRY_FLAG_ALPHAÃ4Œanon_enum_9÷0
+GNT_ENTRY_FLAG_INTÃ4Œanon_enum_9÷0
+GNT_ENTRY_FLAG_MASKÃ4Œanon_enum_9÷0
+GNT_ENTRY_FLAG_NO_PUNCTÃ4Œanon_enum_9÷0
+GNT_ENTRY_FLAG_NO_SPACEÃ4Œanon_enum_9÷0
+GNT_ENTRY_GET_CLASSÃ131072Õ(obj)÷0
+GNT_ENTRY_HÃ65536÷0
+GNT_ENTRY_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_ENTRY_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_FILE_DIRÃ4Œ_GntFileType÷0
+GNT_FILE_REGULARÃ4Œ_GntFileType÷0
+GNT_FILE_SELÃ131072Õ(obj)÷0
+GNT_FILE_SEL_CLASSÃ131072Õ(klass)÷0
+GNT_FILE_SEL_FLAGSÃ131072Õ(obj)÷0
+GNT_FILE_SEL_GET_CLASSÃ131072Õ(obj)÷0
+GNT_FILE_SEL_HÃ65536÷0
+GNT_FILE_SEL_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_FILE_SEL_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_HÃ65536÷0
+GNT_IS_BINDABLEÃ131072Õ(obj)÷0
+GNT_IS_BINDABLE_CLASSÃ131072Õ(klass)÷0
+GNT_IS_BOXÃ131072Õ(obj)÷0
+GNT_IS_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_IS_BUTTONÃ131072Õ(obj)÷0
+GNT_IS_BUTTON_CLASSÃ131072Õ(klass)÷0
+GNT_IS_CHECK_BOXÃ131072Õ(obj)÷0
+GNT_IS_CHECK_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_IS_CLIPBOARDÃ131072Õ(obj)÷0
+GNT_IS_CLIPBOARD_CLASSÃ131072Õ(klass)÷0
+GNT_IS_COMBO_BOXÃ131072Õ(obj)÷0
+GNT_IS_COMBO_BOX_CLASSÃ131072Õ(klass)÷0
+GNT_IS_ENTRYÃ131072Õ(obj)÷0
+GNT_IS_ENTRY_CLASSÃ131072Õ(klass)÷0
+GNT_IS_FILE_SELÃ131072Õ(obj)÷0
+GNT_IS_FILE_SEL_CLASSÃ131072Õ(klass)÷0
+GNT_IS_LABELÃ131072Õ(obj)÷0
+GNT_IS_LABEL_CLASSÃ131072Õ(klass)÷0
+GNT_IS_LINEÃ131072Õ(obj)÷0
+GNT_IS_LINE_CLASSÃ131072Õ(klass)÷0
+GNT_IS_MENUÃ131072Õ(obj)÷0
+GNT_IS_MENU_CLASSÃ131072Õ(klass)÷0
+GNT_IS_MENU_ITEMÃ131072Õ(obj)÷0
+GNT_IS_MENU_ITEM_CHECKÃ131072Õ(obj)÷0
+GNT_IS_MENU_ITEM_CHECK_CLASSÃ131072Õ(klass)÷0
+GNT_IS_MENU_ITEM_CLASSÃ131072Õ(klass)÷0
+GNT_IS_PROGRESS_BARÃ131072Õ(o)÷0
+GNT_IS_PROGRESS_BAR_CLASSÃ131072Õ(k)÷0
+GNT_IS_SLIDERÃ131072Õ(obj)÷0
+GNT_IS_SLIDER_CLASSÃ131072Õ(klass)÷0
+GNT_IS_TEXT_VIEWÃ131072Õ(obj)÷0
+GNT_IS_TEXT_VIEW_CLASSÃ131072Õ(klass)÷0
+GNT_IS_TREEÃ131072Õ(obj)÷0
+GNT_IS_TREE_CLASSÃ131072Õ(klass)÷0
+GNT_IS_WIDGETÃ131072Õ(obj)÷0
+GNT_IS_WIDGET_CLASSÃ131072Õ(klass)÷0
+GNT_IS_WINDOWÃ131072Õ(obj)÷0
+GNT_IS_WINDOW_CLASSÃ131072Õ(klass)÷0
+GNT_IS_WMÃ131072Õ(obj)÷0
+GNT_IS_WM_CLASSÃ131072Õ(klass)÷0
+GNT_IS_WSÃ131072Õ(obj)÷0
+GNT_IS_WS_CLASSÃ131072Õ(klass)÷0
+GNT_KEYS_HÃ65536÷0
+GNT_KEY_BACKSPACEÃ65536÷0
+GNT_KEY_BACK_TABÃ65536÷0
+GNT_KEY_CTRL_AÃ65536÷0
+GNT_KEY_CTRL_BÃ65536÷0
+GNT_KEY_CTRL_DÃ65536÷0
+GNT_KEY_CTRL_DOWNÃ65536÷0
+GNT_KEY_CTRL_EÃ65536÷0
+GNT_KEY_CTRL_FÃ65536÷0
+GNT_KEY_CTRL_GÃ65536÷0
+GNT_KEY_CTRL_HÃ65536÷0
+GNT_KEY_CTRL_IÃ65536÷0
+GNT_KEY_CTRL_JÃ65536÷0
+GNT_KEY_CTRL_KÃ65536÷0
+GNT_KEY_CTRL_LÃ65536÷0
+GNT_KEY_CTRL_LEFTÃ65536÷0
+GNT_KEY_CTRL_MÃ65536÷0
+GNT_KEY_CTRL_NÃ65536÷0
+GNT_KEY_CTRL_OÃ65536÷0
+GNT_KEY_CTRL_PÃ65536÷0
+GNT_KEY_CTRL_RÃ65536÷0
+GNT_KEY_CTRL_RIGHTÃ65536÷0
+GNT_KEY_CTRL_TÃ65536÷0
+GNT_KEY_CTRL_UÃ65536÷0
+GNT_KEY_CTRL_UPÃ65536÷0
+GNT_KEY_CTRL_VÃ65536÷0
+GNT_KEY_CTRL_WÃ65536÷0
+GNT_KEY_CTRL_XÃ65536÷0
+GNT_KEY_CTRL_YÃ65536÷0
+GNT_KEY_DELÃ65536÷0
+GNT_KEY_DOWNÃ65536÷0
+GNT_KEY_ENDÃ65536÷0
+GNT_KEY_ENTERÃ65536÷0
+GNT_KEY_F1Ã65536÷0
+GNT_KEY_F10Ã65536÷0
+GNT_KEY_F11Ã65536÷0
+GNT_KEY_F12Ã65536÷0
+GNT_KEY_F2Ã65536÷0
+GNT_KEY_F3Ã65536÷0
+GNT_KEY_F4Ã65536÷0
+GNT_KEY_F5Ã65536÷0
+GNT_KEY_F6Ã65536÷0
+GNT_KEY_F7Ã65536÷0
+GNT_KEY_F8Ã65536÷0
+GNT_KEY_F9Ã65536÷0
+GNT_KEY_HOMEÃ65536÷0
+GNT_KEY_INSÃ65536÷0
+GNT_KEY_LEFTÃ65536÷0
+GNT_KEY_PGDOWNÃ65536÷0
+GNT_KEY_PGUPÃ65536÷0
+GNT_KEY_POPUPÃ65536÷0
+GNT_KEY_RIGHTÃ65536÷0
+GNT_KEY_UPÃ65536÷0
+GNT_KP_MODE_MOVEÃ4Œ_GntKeyPressMode÷0
+GNT_KP_MODE_NORMALÃ4Œ_GntKeyPressMode÷0
+GNT_KP_MODE_RESIZEÃ4Œ_GntKeyPressMode÷0
+GNT_KP_MODE_WAIT_ON_CHILDÃ4Œ_GntKeyPressMode÷0
+GNT_LABELÃ131072Õ(obj)÷0
+GNT_LABEL_CLASSÃ131072Õ(klass)÷0
+GNT_LABEL_GET_CLASSÃ131072Õ(obj)÷0
+GNT_LABEL_HÃ65536÷0
+GNT_LEFT_MOUSE_DOWNÃ4Œ_GntMouseEvent÷0
+GNT_LINEÃ131072Õ(obj)÷0
+GNT_LINE_CLASSÃ131072Õ(klass)÷0
+GNT_LINE_FLAGSÃ131072Õ(obj)÷0
+GNT_LINE_GET_CLASSÃ131072Õ(obj)÷0
+GNT_LINE_HÃ65536÷0
+GNT_LINE_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_LINE_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENUÃ131072Õ(obj)÷0
+GNT_MENUITEM_HÃ65536÷0
+GNT_MENU_CLASSÃ131072Õ(klass)÷0
+GNT_MENU_FLAGSÃ131072Õ(obj)÷0
+GNT_MENU_GET_CLASSÃ131072Õ(obj)÷0
+GNT_MENU_HÃ65536÷0
+GNT_MENU_ITEMÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_CHECKÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_CHECK_CLASSÃ131072Õ(klass)÷0
+GNT_MENU_ITEM_CHECK_FLAGSÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_CHECK_GET_CLASSÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_CHECK_HÃ65536÷0
+GNT_MENU_ITEM_CHECK_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENU_ITEM_CHECK_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENU_ITEM_CLASSÃ131072Õ(klass)÷0
+GNT_MENU_ITEM_FLAGSÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_GET_CLASSÃ131072Õ(obj)÷0
+GNT_MENU_ITEM_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENU_ITEM_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENU_POPUPÃ4Œanon_enum_10÷0
+GNT_MENU_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MENU_TOPLEVELÃ4Œanon_enum_10÷0
+GNT_MENU_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_MIDDLE_MOUSE_DOWNÃ4Œ_GntMouseEvent÷0
+GNT_MOUSE_SCROLL_DOWNÃ4Œ_GntMouseEvent÷0
+GNT_MOUSE_SCROLL_UPÃ4Œ_GntMouseEvent÷0
+GNT_MOUSE_UPÃ4Œ_GntMouseEvent÷0
+GNT_PARAM_SERIALIZABLEÃ4Œ_GntParamFlags÷0
+GNT_PROGRESS_BARÃ131072Õ(o)÷0
+GNT_PROGRESS_BAR_CLASSÃ131072Õ(k)÷0
+GNT_PROGRESS_BAR_GET_CLASSÃ131072Õ(o)÷0
+GNT_PROGRESS_BAR_HÃ65536÷0
+GNT_PROGRESS_BOTTOM_TO_TOPÃ4Œ_GntProgressBarOrientation÷0
+GNT_PROGRESS_LEFT_TO_RIGHTÃ4Œ_GntProgressBarOrientation÷0
+GNT_PROGRESS_RIGHT_TO_LEFTÃ4Œ_GntProgressBarOrientation÷0
+GNT_PROGRESS_TOP_TO_BOTTOMÃ4Œ_GntProgressBarOrientation÷0
+GNT_RIGHT_MOUSE_DOWNÃ4Œ_GntMouseEvent÷0
+GNT_SLIDERÃ131072Õ(obj)÷0
+GNT_SLIDER_CLASSÃ131072Õ(klass)÷0
+GNT_SLIDER_FLAGSÃ131072Õ(obj)÷0
+GNT_SLIDER_GET_CLASSÃ131072Õ(obj)÷0
+GNT_SLIDER_HÃ65536÷0
+GNT_SLIDER_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_SLIDER_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_STYLESÃ4Œanon_enum_0÷0
+GNT_STYLE_COLORÃ4Œanon_enum_0÷0
+GNT_STYLE_MOUSEÃ4Œanon_enum_0÷0
+GNT_STYLE_REMPOSÃ4Œanon_enum_0÷0
+GNT_STYLE_SHADOWÃ4Œanon_enum_0÷0
+GNT_STYLE_WMÃ4Œanon_enum_0÷0
+GNT_TEXT_FLAG_BLINKÃ4Œanon_enum_2÷0
+GNT_TEXT_FLAG_BOLDÃ4Œanon_enum_2÷0
+GNT_TEXT_FLAG_DIMÃ4Œanon_enum_2÷0
+GNT_TEXT_FLAG_HIGHLIGHTÃ4Œanon_enum_2÷0
+GNT_TEXT_FLAG_NORMALÃ4Œanon_enum_2÷0
+GNT_TEXT_FLAG_UNDERLINEÃ4Œanon_enum_2÷0
+GNT_TEXT_VIEWÃ131072Õ(obj)÷0
+GNT_TEXT_VIEW_CLASSÃ131072Õ(klass)÷0
+GNT_TEXT_VIEW_FLAGSÃ131072Õ(obj)÷0
+GNT_TEXT_VIEW_GET_CLASSÃ131072Õ(obj)÷0
+GNT_TEXT_VIEW_HÃ65536÷0
+GNT_TEXT_VIEW_NO_SCROLLÃ4Œanon_enum_1÷0
+GNT_TEXT_VIEW_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_TEXT_VIEW_TOP_ALIGNÃ4Œanon_enum_1÷0
+GNT_TEXT_VIEW_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_TEXT_VIEW_WRAP_CHARÃ4Œanon_enum_1÷0
+GNT_TOTAL_COLORSÃ4Œanon_enum_8÷0
+GNT_TREEÃ131072Õ(obj)÷0
+GNT_TREE_CLASSÃ131072Õ(klass)÷0
+GNT_TREE_COLUMN_BINARY_DATAÃ4Œ_GntTreeColumnFlag÷0
+GNT_TREE_COLUMN_FIXED_SIZEÃ4Œ_GntTreeColumnFlag÷0
+GNT_TREE_COLUMN_INVISIBLEÃ4Œ_GntTreeColumnFlag÷0
+GNT_TREE_COLUMN_RIGHT_ALIGNEDÃ4Œ_GntTreeColumnFlag÷0
+GNT_TREE_GET_CLASSÃ131072Õ(obj)÷0
+GNT_TREE_HÃ65536÷0
+GNT_TYPE_BINDABLEÃ65536÷0
+GNT_TYPE_BOXÃ65536÷0
+GNT_TYPE_BUTTONÃ65536÷0
+GNT_TYPE_CHECK_BOXÃ65536÷0
+GNT_TYPE_CLIPBOARDÃ65536÷0
+GNT_TYPE_COMBO_BOXÃ65536÷0
+GNT_TYPE_ENTRYÃ65536÷0
+GNT_TYPE_FILE_SELÃ65536÷0
+GNT_TYPE_LABELÃ65536÷0
+GNT_TYPE_LINEÃ65536÷0
+GNT_TYPE_MENUÃ65536÷0
+GNT_TYPE_MENU_ITEMÃ65536÷0
+GNT_TYPE_MENU_ITEM_CHECKÃ65536÷0
+GNT_TYPE_PROGRESS_BARÃ65536÷0
+GNT_TYPE_SLIDERÃ65536÷0
+GNT_TYPE_TEXT_VIEWÃ65536÷0
+GNT_TYPE_TREEÃ65536÷0
+GNT_TYPE_WIDGETÃ65536÷0
+GNT_TYPE_WINDOWÃ65536÷0
+GNT_TYPE_WMÃ65536÷0
+GNT_TYPE_WSÃ65536÷0
+GNT_WIDGETÃ131072Õ(obj)÷0
+GNT_WIDGET_CAN_TAKE_FOCUSÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_CLASSÃ131072Õ(klass)÷0
+GNT_WIDGET_DESTROYINGÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_DISABLE_ACTIONSÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_DRAWINGÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_FLAGSÃ131072Õ(obj)÷0
+GNT_WIDGET_GET_CLASSÃ131072Õ(obj)÷0
+GNT_WIDGET_GROW_XÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_GROW_YÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_HÃ65536÷0
+GNT_WIDGET_HAS_FOCUSÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_INVISIBLEÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_IS_FLAG_SETÃ131072Õ(obj, flags)÷0
+GNT_WIDGET_MAPPEDÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_NO_BORDERÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_NO_SHADOWÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_WIDGET_TRANSIENTÃ4Œ_GntWidgetFlags÷0
+GNT_WIDGET_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_WIDGET_URGENTÃ4Œ_GntWidgetFlags÷0
+GNT_WINDOWÃ131072Õ(obj)÷0
+GNT_WINDOW_CLASSÃ131072Õ(klass)÷0
+GNT_WINDOW_FLAGSÃ131072Õ(obj)÷0
+GNT_WINDOW_GET_CLASSÃ131072Õ(obj)÷0
+GNT_WINDOW_HÃ65536÷0
+GNT_WINDOW_MAXIMIZE_XÃ4Œanon_enum_3÷0
+GNT_WINDOW_MAXIMIZE_YÃ4Œanon_enum_3÷0
+GNT_WINDOW_SET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_WINDOW_UNSET_FLAGSÃ131072Õ(obj, flags)÷0
+GNT_WMÃ131072Õ(obj)÷0
+GNT_WM_CLASSÃ131072Õ(klass)÷0
+GNT_WM_GET_CLASSÃ131072Õ(obj)÷0
+GNT_WSÃ131072Õ(obj)÷0
+GNT_WS_GET_CLASSÃ131072Õ(obj)÷0
+G_PARAM_STATIC_BLURBÃ65536÷0
+G_PARAM_STATIC_NAMEÃ65536÷0
+G_PARAM_STATIC_NICKÃ65536÷0
+GntActionÃ4096÷0œ_GntAction
+GntAlignmentÃ4096÷0œanon_enum_6
+GntBindableÃ4096÷0œG_END_DECLS
+GntBindableActionÃ4096÷0œ_GntBindableAction
+GntBindableActionCallbackÃ4096÷0œtypedef gboolean
+GntBindableActionCallbackNoParamÃ4096÷0œtypedef gboolean
+GntBindableActionParamÃ4096÷0œ_GntBindableActionParam
+GntBindableClassÃ4096÷0œ_GntBindableClass
+GntBoxÃ4096÷0œG_END_DECLS
+GntBoxClassÃ4096÷0œ_GntBoxClass
+GntButtonÃ4096÷0œG_END_DECLS
+GntButtonClassÃ4096÷0œ_GntButtonClass
+GntButtonPrivÃ4096÷0œ_GntButtonPriv
+GntCheckBoxÃ4096÷0œG_END_DECLS
+GntCheckBoxClassÃ4096÷0œ_GntCheckBoxClass
+GntCheckBoxPrivÃ4096÷0œ_GntCheckBoxPriv
+GntClipboardÃ4096÷0œG_END_DECLS
+GntClipboardClassÃ4096÷0œ_GntClipboardClass
+GntColorTypeÃ4096÷0œanon_enum_7
+GntComboBoxÃ4096÷0œ_GntComboBox
+GntComboBoxClassÃ4096÷0œ_GntComboBoxClass
+GntComboBoxPrivÃ4096÷0œ_GntComboBoxPriv
+GntEntryÃ4096÷0œG_END_DECLS
+GntEntryClassÃ4096÷0œ_GntEntryClass
+GntEntryFlagÃ4096÷0œanon_enum_9
+GntEntryKillRingÃ4096÷0œ_GntEntryKillRing
+GntEntryPrivÃ4096÷0œ_GntEntryPriv
+GntEntrySearchÃ4096÷0œ_GntEntrySearch
+GntFileÃ4096÷0œ_GntFile
+GntFileSelÃ4096÷0œG_END_DECLS
+GntFileSelClassÃ4096÷0œ_GntFileSelClass
+GntFileSelPrivÃ4096÷0œ_GntFileSelPriv
+GntFileTypeÃ4096÷0œ_GntFileType
+GntKeyPressModeÃ4096÷0œG_END_DECLS
+GntLabelÃ4096÷0œ_GntLabel
+GntLabelClassÃ4096÷0œ_GntLabelClass
+GntLineÃ4096÷0œG_END_DECLS
+GntLineClassÃ4096÷0œ_GntLineClass
+GntLinePrivÃ4096÷0œ_GntLinePriv
+GntMenuÃ4096÷0œG_END_DECLS
+GntMenuClassÃ4096÷0œ_GntMenuClass
+GntMenuItemÃ4096÷0œG_END_DECLS
+GntMenuItemCallbackÃ4096÷0œtypedef void
+GntMenuItemCheckÃ4096÷0œG_END_DECLS
+GntMenuItemCheckClassÃ4096÷0œ_GntMenuItemCheckClass
+GntMenuItemCheckPrivÃ4096÷0œ_GntMenuItemCheckPriv
+GntMenuItemClassÃ4096÷0œ_GntMenuItemClass
+GntMenuItemPrivÃ4096÷0œ_GntMenuItemPriv
+GntMenuPrivÃ4096÷0œ_GntMenuPriv
+GntMenuTypeÃ4096÷0œanon_enum_10
+GntMouseEventÃ4096÷0œ_GntMouseEvent
+GntNodeÃ4096÷0œ_GntNode
+GntParamFlagsÃ4096÷0œ_GntParamFlags
+GntPositionÃ4096÷0œ_GntPosition
+GntProgressBarÃ4096÷0œ_GntProgressBar
+GntProgressBarClassÃ4096÷0œ_GntProgressBarClass
+GntProgressBarOrientationÃ4096÷0œ_GntProgressBarOrientation
+GntSliderÃ4096÷0œG_END_DECLS
+GntSliderClassÃ4096÷0œ_GntSliderClass
+GntSliderPrivÃ4096÷0œ_GntSliderPriv
+GntStyleÃ4096÷0œanon_enum_0
+GntTextFormatFlagsÃ4096÷0œanon_enum_2
+GntTextViewÃ4096÷0œ_GntTextView
+GntTextViewClassÃ4096÷0œ_GntTextViewClass
+GntTextViewFlagÃ4096÷0œanon_enum_1
+GntTextViewPrivÃ4096÷0œ_GntTextViewPriv
+GntTreeÃ4096÷0œG_END_DECLS
+GntTreeClassÃ4096÷0œ_GntTreeClass
+GntTreeColÃ4096÷0œ_GntTreeCol
+GntTreeColumnFlagÃ4096÷0œ_GntTreeColumnFlag
+GntTreePrivÃ4096÷0œ_GntTreePriv
+GntTreeRowÃ4096÷0œ_GntTreeRow
+GntWMÃ4096÷0œ_GntWM
+GntWMClassÃ4096÷0œ_GntWMClass
+GntWSÃ4096÷0œG_END_DECLS
+GntWSClassÃ4096÷0œ_GntWSClass
+GntWidgetÃ4096÷0œ_GntWidget
+GntWidgetClassÃ4096÷0œ_GntWidgetClass
+GntWidgetFlagsÃ4096÷0œ_GntWidgetFlags
+GntWidgetPrivÃ4096÷0œ_GntWidgetPriv
+GntWindowÃ4096÷0œ_GntWindow
+GntWindowClassÃ4096÷0œ_GntWindowClass
+GntWindowFlagsÃ4096÷0œanon_enum_3
+GntWindowPrivÃ4096÷0œ_GntWindowPriv
+SAFEÃ131072Õ(x)÷0
+_GntActionÃ2048÷0
+_GntBindableÃ2048÷0
+_GntBindableActionÃ2048÷0
+_GntBindableActionParamÃ2048÷0
+_GntBindableClassÃ2048÷0
+_GntBoxÃ2048÷0
+_GntBoxClassÃ2048÷0
+_GntButtonÃ2048÷0
+_GntButtonClassÃ2048÷0
+_GntButtonPrivÃ2048÷0
+_GntCheckBoxÃ2048÷0
+_GntCheckBoxClassÃ2048÷0
+_GntClipboardÃ2048÷0
+_GntClipboardClassÃ2048÷0
+_GntComboBoxÃ2048÷0
+_GntComboBoxClassÃ2048÷0
+_GntEntryÃ2048÷0
+_GntEntryClassÃ2048÷0
+_GntFileÃ2048÷0
+_GntFileSelÃ2048÷0
+_GntFileSelClassÃ2048÷0
+_GntFileTypeÃ2÷0
+_GntKeyPressModeÃ2÷0
+_GntLabelÃ2048÷0
+_GntLabelClassÃ2048÷0
+_GntLineÃ2048÷0
+_GntLineClassÃ2048÷0
+_GntMenuÃ2048÷0
+_GntMenuClassÃ2048÷0
+_GntMenuItemÃ2048÷0
+_GntMenuItemCheckÃ2048÷0
+_GntMenuItemCheckClassÃ2048÷0
+_GntMenuItemClassÃ2048÷0
+_GntMenuItemPrivÃ2048÷0
+_GntMouseEventÃ2÷0
+_GntNodeÃ2048÷0
+_GntParamFlagsÃ2÷0
+_GntPositionÃ2048÷0
+_GntProgressBarClassÃ2048÷0
+_GntProgressBarOrientationÃ2÷0
+_GntSliderÃ2048÷0
+_GntSliderClassÃ2048÷0
+_GntTextViewÃ2048÷0
+_GntTextViewClassÃ2048÷0
+_GntTreeÃ2048÷0
+_GntTreeClassÃ2048÷0
+_GntTreeColInfoÃ2048Œ_GntTree÷0
+_GntTreeColumnFlagÃ2÷0
+_GntWMÃ2048÷0
+_GntWMClassÃ2048÷0
+_GntWSÃ2048÷0
+_GntWSClassÃ2048÷0
+_GntWidgetÃ2048÷0
+_GntWidgetClassÃ2048÷0
+_GntWidgetFlagsÃ2÷0
+_GntWidgetPrivÃ2048÷0
+_GntWindowÃ2048÷0
+_GntWindowClassÃ2048÷0
+__gnt_closure_marshal_MARSHAL_H__Ã65536÷0
+_listÃ64Œ_GntWM÷0œanon_struct_4
+actionÃ1024Õ(GntBindable *bindable, GList *params)Œ_GntBindableAction::anon_union_5÷0œgboolean
+actionÃ64Œ_GntBindableActionParam÷0œGntBindableAction
+action_noparamÃ1024Õ(GntBindable *bindable)Œ_GntBindableAction::anon_union_5÷0œgboolean
+actionsÃ64Œ_GntBindableClass÷0œGHashTable
+actionsÃ64Œ_GntWM÷0œanon_struct_4
+activateÃ1024Õ(GntWidget *widget)Œ_GntWidgetClass÷0œvoid
+activeÃ64Œ_GntBox÷0œGntWidget
+actsÃ64Œ_GntWM÷0œGList
+alignmentÃ64Œ_GntBox÷0œGntAlignment
+alwaysÃ64Œ_GntEntry÷0œgboolean
+anon_enum_0Ã2÷0
+anon_enum_1Ã2÷0
+anon_enum_10Ã2÷0
+anon_enum_2Ã2÷0
+anon_enum_3Ã2÷0
+anon_enum_6Ã2÷0
+anon_enum_7Ã2÷0
+anon_enum_8Ã2÷0
+anon_enum_9Ã2÷0
+anon_struct_4Ã2048Œ_GntWM÷0
+anon_union_5Ã8192Œ_GntBindableAction÷0
+basenameÃ64Œ_GntFile÷0œchar
+bindingsÃ64Œ_GntBindableClass÷0œGHashTable
+bottomÃ64Œ_GntTree÷0œGntTreeRow
+bufferÃ64Œ_GntEntry÷0œsize_t
+buttonsÃ65536÷0
+callbackÃ1024Õ(void)Œ_GntAction÷0œvoid
+callbackÃ64Œ_GntMenuItem÷0œGntMenuItemCallback
+callbackdataÃ64Œ_GntMenuItem÷0œgpointer
+cancelÃ64Œ_GntFileSel÷0œGntWidget
+changedÃ1024Õ(GntSlider *slider, int)Œ_GntSliderClass÷0œvoid
+checkedÃ64Œ_GntCheckBox÷0œgboolean
+checkedÃ64Œ_GntMenuItemCheck÷0œgboolean
+clickedÃ1024Õ(GntWidget *widget, GntMouseEvent event, int x, int y)Œ_GntWidgetClass÷0œgboolean
+close_windowÃ1024Õ(GntWM *wm, GntWidget *win)Œ_GntWMClass÷0œgboolean
+columnsÃ65536÷0
+columnsÃ64Œ_GntTree÷0œ_GntTreeColInfo
+confirm_sizeÃ1024Õ(GntWidget *widget, int x, int y)Œ_GntWidgetClass÷0œgboolean
+currentÃ64Œ_GntFileSel÷0œchar
+currentÃ64Œ_GntSlider÷0œint
+currentÃ64Œ_GntTree÷0œGntTreeRow
+cursorÃ64Œ_GntEntry÷0œchar
+cwsÃ64Œ_GntWM÷0œGntWS
+ddownÃ64Œ_GntEntry÷0œGntWidget
+decorate_windowÃ1024Õ(GntWM *wm, GntWidget *win)Œ_GntWMClass÷0œvoid
+destroyÃ1024Õ(GntWidget *obj)Œ_GntWidgetClass÷0œvoid
+dirsÃ64Œ_GntFileSel÷0œGntWidget
+dirsonlyÃ64Œ_GntFileSel÷0œgboolean
+drawÃ1024Õ(GntWidget *obj)Œ_GntWidgetClass÷0œvoid
+draw_taskbarÃ1024Õ(GntWS *ws, gboolean )Œ_GntWSClass÷0œvoid
+dropdownÃ64Œ_GntComboBox÷0œGntWidget
+endÃ64Œ_GntEntry÷0œchar
+event_stackÃ64Œ_GntWM÷0œgboolean
+exposeÃ1024Õ(GntWidget *widget, int x, int y, int width, int height)Œ_GntWidgetClass÷0œvoid
+file_selectedÃ1024Õ(GntFileSel *sel, const char *path, const char *filename)Œ_GntFileSelClass÷0œvoid
+filesÃ64Œ_GntFileSel÷0œGntWidget
+fillÃ64Œ_GntBox÷0œgboolean
+flagÃ64Œ_GntEntry÷0œGntEntryFlag
+flagsÃ64Œ_GntLabel÷0œGntTextFormatFlags
+flagsÃ64Œ_GntTextView÷0œGntTextViewFlag
+flagsÃ64Œ_GntTree::_GntTreeColInfo÷0œGntTreeColumnFlag
+flagsÃ64Œ_GntWidgetPriv÷0œGntWidgetFlags
+focusÃ64Œ_GntBox÷0œGList
+fullpathÃ64Œ_GntFile÷0œchar
+g_hash_table_duplicateÃ1024Õ(GHashTable *src, GHashFunc hash, GEqualFunc equal, GDestroyNotify key_d, GDestroyNotify value_d, GDupFunc key_dup, GDupFunc value_dup)÷0œGHashTable *
+g_timeout_add_secondsÃ131072Õ(time, callback, data)÷0
+gained_focusÃ1024Õ(GntWidget *widget)Œ_GntWidgetClass÷0œvoid
+give_focusÃ1024Õ(GntWM *wm, GntWidget *widget)Œ_GntWMClass÷0œvoid
+gnt_ascii_onlyÃ1024Õ(void)÷0œgboolean
+gnt_bindable_action_freeÃ1024Õ(GntBindableAction *action)÷0œvoid
+gnt_bindable_action_param_freeÃ1024Õ(GntBindableActionParam *param)÷0œvoid
+gnt_bindable_bindings_viewÃ1024Õ(GntBindable *bind)÷0œGntBindable *
+gnt_bindable_build_help_windowÃ1024Õ(GntBindable *bindable)÷0œgboolean
+gnt_bindable_check_keyÃ1024Õ(GntBindable *bindable, const char *keys)÷0œgboolean
+gnt_bindable_class_register_actionÃ1024Õ(GntBindableClass *klass, const char *name, GntBindableActionCallback callback, const char *trigger, ...)÷0œvoid
+gnt_bindable_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_bindable_perform_action_keyÃ1024Õ(GntBindable *bindable, const char *keys)÷0œgboolean
+gnt_bindable_register_bindingÃ1024Õ(GntBindableClass *klass, const char *name, const char *trigger, ...)÷0œvoid
+gnt_bindable_remap_keysÃ1024Õ(GntBindable *bindable, const char *text)÷0œconst char *
+gnt_boolean_handled_accumulatorÃ1024Õ(GSignalInvocationHint *ihint, GValue *return_accu, const GValue *handler_return, gpointer dummy)÷0œgboolean
+gnt_box_add_widgetÃ1024Õ(GntBox *box, GntWidget *widget)÷0œvoid
+gnt_box_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_box_give_focus_to_childÃ1024Õ(GntBox *box, GntWidget *widget)÷0œvoid
+gnt_box_move_focusÃ1024Õ(GntBox *box, int dir)÷0œvoid
+gnt_box_newÃ1024Õ(gboolean homo, gboolean vert)÷0œGntWidget *
+gnt_box_readjustÃ1024Õ(GntBox *box)÷0œvoid
+gnt_box_removeÃ1024Õ(GntBox *box, GntWidget *widget)÷0œvoid
+gnt_box_remove_allÃ1024Õ(GntBox *box)÷0œvoid
+gnt_box_set_alignmentÃ1024Õ(GntBox *box, GntAlignment alignment)÷0œvoid
+gnt_box_set_fillÃ1024Õ(GntBox *box, gboolean fill)÷0œvoid
+gnt_box_set_padÃ1024Õ(GntBox *box, int pad)÷0œvoid
+gnt_box_set_titleÃ1024Õ(GntBox *box, const char *title)÷0œvoid
+gnt_box_set_toplevelÃ1024Õ(GntBox *box, gboolean set)÷0œvoid
+gnt_box_sync_childrenÃ1024Õ(GntBox *box)÷0œvoid
+gnt_button_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_button_newÃ1024Õ(const char *text)÷0œGntWidget *
+gnt_check_box_get_checkedÃ1024Õ(GntCheckBox *box)÷0œgboolean
+gnt_check_box_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_check_box_newÃ1024Õ(const char *text)÷0œGntWidget *
+gnt_check_box_set_checkedÃ1024Õ(GntCheckBox *box, gboolean set)÷0œvoid
+gnt_clipboard_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_clipboard_get_stringÃ1024Õ(GntClipboard *clip)÷0œgchar *
+gnt_clipboard_set_stringÃ1024Õ(GntClipboard *clip, const gchar *string)÷0œvoid
+gnt_closure_marshal_BOOLEAN__INT_INTÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_BOOLEAN__INT_INT_INTÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_BOOLEAN__INT_INT_INT_POINTERÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_BOOLEAN__POINTER_POINTER_POINTERÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_BOOLEAN__STRINGÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_BOOLEAN__VOIDÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œG_END_DECLS void
+gnt_closure_marshal_VOID__INT_INTÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_VOID__INT_INT_INT_INTÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_VOID__POINTER_BOOLEANÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_VOID__POINTER_POINTERÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_closure_marshal_VOID__STRING_STRINGÃ1024Õ(GClosure *closure, GValue *return_value, guint n_param_values, const GValue *param_values, gpointer invocation_hint, gpointer marshal_data)÷0œvoid
+gnt_color_add_pairÃ1024Õ(int fg, int bg)÷0œint
+gnt_color_pairÃ1024Õ(int color)÷0œint
+gnt_color_pairs_parseÃ1024Õ(GKeyFile *kfile)÷0œvoid
+gnt_colors_get_colorÃ1024Õ(char *key)÷0œint
+gnt_colors_parseÃ1024Õ(GKeyFile *kfile)÷0œvoid
+gnt_combo_box_add_dataÃ1024Õ(GntComboBox *box, gpointer key, const char *text)÷0œvoid
+gnt_combo_box_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_combo_box_get_selected_dataÃ1024Õ(GntComboBox *box)÷0œgpointer
+gnt_combo_box_newÃ1024Õ(void)÷0œGntWidget *
+gnt_combo_box_removeÃ1024Õ(GntComboBox *box, gpointer key)÷0œvoid
+gnt_combo_box_remove_allÃ1024Õ(GntComboBox *box)÷0œvoid
+gnt_combo_box_set_selectedÃ1024Õ(GntComboBox *box, gpointer key)÷0œvoid
+gnt_entry_add_suggestÃ1024Õ(GntEntry *entry, const char *text)÷0œvoid
+gnt_entry_add_to_historyÃ1024Õ(GntEntry *entry, const char *text)÷0œvoid
+gnt_entry_clearÃ1024Õ(GntEntry *entry)÷0œvoid
+gnt_entry_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_entry_get_textÃ1024Õ(GntEntry *entry)÷0œconst char *
+gnt_entry_newÃ1024Õ(const char *text)÷0œGntWidget *
+gnt_entry_remove_suggestÃ1024Õ(GntEntry *entry, const char *text)÷0œvoid
+gnt_entry_set_always_suggestÃ1024Õ(GntEntry *entry, gboolean always)÷0œvoid
+gnt_entry_set_flagÃ1024Õ(GntEntry *entry, GntEntryFlag flag)÷0œvoid
+gnt_entry_set_history_lengthÃ1024Õ(GntEntry *entry, int num)÷0œvoid
+gnt_entry_set_maskedÃ1024Õ(GntEntry *entry, gboolean set)÷0œvoid
+gnt_entry_set_maxÃ1024Õ(GntEntry *entry, int max)÷0œvoid
+gnt_entry_set_textÃ1024Õ(GntEntry *entry, const char *text)÷0œvoid
+gnt_entry_set_word_suggestÃ1024Õ(GntEntry *entry, gboolean word)÷0œvoid
+gnt_file_newÃ1024Õ(const char *name, unsigned long size)÷0œGntFile *
+gnt_file_new_dirÃ1024Õ(const char *name)÷0œGntFile *
+gnt_file_sel_get_dirs_onlyÃ1024Õ(GntFileSel *sel)÷0œgboolean
+gnt_file_sel_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_file_sel_get_must_existÃ1024Õ(GntFileSel *sel)÷0œgboolean
+gnt_file_sel_get_selected_fileÃ1024Õ(GntFileSel *sel)÷0œchar *
+gnt_file_sel_get_selected_multi_filesÃ1024Õ(GntFileSel *sel)÷0œGList *
+gnt_file_sel_newÃ1024Õ(void)÷0œGntWidget *
+gnt_file_sel_set_current_locationÃ1024Õ(GntFileSel *sel, const char *path)÷0œgboolean
+gnt_file_sel_set_dirs_onlyÃ1024Õ(GntFileSel *sel, gboolean dirs)÷0œvoid
+gnt_file_sel_set_multi_selectÃ1024Õ(GntFileSel *sel, gboolean set)÷0œvoid
+gnt_file_sel_set_must_existÃ1024Õ(GntFileSel *sel, gboolean must)÷0œvoid
+gnt_file_sel_set_read_fnÃ1024Õ(GntFileSel *sel, gboolean (*read_fn)(const char *path, GList **files, GError **error))÷0œvoid
+gnt_file_sel_set_suggested_filenameÃ1024Õ(GntFileSel *sel, const char *suggest)÷0œvoid
+gnt_get_clipboardÃ1024Õ(void)÷0œGntClipboard *
+gnt_get_clipboard_stringÃ1024Õ(void)÷0œgchar *
+gnt_giveup_consoleÃ1024Õ(const char *wd, char **argv, char **envp, gint *stin, gint *stout, gint *sterr, void (*callback)(int status, gpointer data), gpointer data)÷0œgboolean
+gnt_hbox_newÃ131072Õ(homo)÷0
+gnt_hline_newÃ131072Õ()÷0
+gnt_hslider_newÃ131072Õ(max, min)÷0
+gnt_hwindow_newÃ131072Õ(homo)÷0
+gnt_initÃ1024Õ(void)÷0œvoid
+gnt_init_colorsÃ1024Õ(void)÷0œvoid
+gnt_init_keysÃ1024Õ(void)÷0œvoid
+gnt_init_stylesÃ1024Õ(void)÷0œvoid
+gnt_is_refugeeÃ1024Õ(void)÷0œgboolean
+gnt_key_cdownÃ32768÷0œchar
+gnt_key_cleftÃ32768÷0œchar
+gnt_key_crightÃ32768÷0œchar
+gnt_key_cupÃ32768÷0œG_END_DECLS
+gnt_key_lookupÃ1024Õ(const char *key)÷0œconst char *
+gnt_key_translateÃ1024Õ(const char *name)÷0œconst char *
+gnt_keys_add_combinationÃ1024Õ(const char *key)÷0œvoid
+gnt_keys_del_combinationÃ1024Õ(const char *key)÷0œvoid
+gnt_keys_find_combinationÃ1024Õ(const char *key)÷0œint
+gnt_keys_refineÃ1024Õ(char *text)÷0œvoid
+gnt_label_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_label_newÃ1024Õ(const char *text)÷0œGntWidget *
+gnt_label_new_with_formatÃ1024Õ(const char *text, GntTextFormatFlags flags)÷0œGntWidget *
+gnt_label_set_textÃ1024Õ(GntLabel *label, const char *text)÷0œvoid
+gnt_line_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_line_newÃ1024Õ(gboolean vertical)÷0œGntWidget *
+gnt_mainÃ1024Õ(void)÷0œvoid
+gnt_menu_add_itemÃ1024Õ(GntMenu *menu, GntMenuItem *item)÷0œvoid
+gnt_menu_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_menu_get_itemÃ1024Õ(GntMenu *menu, const char *id)÷0œGntMenuItem *
+gnt_menu_newÃ1024Õ(GntMenuType type)÷0œGntWidget *
+gnt_menuitem_activateÃ1024Õ(GntMenuItem *item)÷0œgboolean
+gnt_menuitem_check_get_checkedÃ1024Õ(GntMenuItemCheck *item)÷0œgboolean
+gnt_menuitem_check_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_menuitem_check_newÃ1024Õ(const char *text)÷0œGntMenuItem *
+gnt_menuitem_check_set_checkedÃ1024Õ(GntMenuItemCheck *item, gboolean set)÷0œvoid
+gnt_menuitem_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_menuitem_get_idÃ1024Õ(GntMenuItem *item)÷0œconst char *
+gnt_menuitem_get_submenuÃ1024Õ(GntMenuItem *item)÷0œGntMenu *
+gnt_menuitem_get_triggerÃ1024Õ(GntMenuItem *item)÷0œchar
+gnt_menuitem_newÃ1024Õ(const char *text)÷0œGntMenuItem *
+gnt_menuitem_set_callbackÃ1024Õ(GntMenuItem *item, GntMenuItemCallback callback, gpointer data)÷0œvoid
+gnt_menuitem_set_idÃ1024Õ(GntMenuItem *item, const char *id)÷0œvoid
+gnt_menuitem_set_submenuÃ1024Õ(GntMenuItem *item, GntMenu *menu)÷0œvoid
+gnt_menuitem_set_triggerÃ1024Õ(GntMenuItem *item, char trigger)÷0œvoid
+gnt_progress_bar_get_fractionÃ1024Õ(GntProgressBar *pbar)÷0œgdouble
+gnt_progress_bar_get_orientationÃ1024Õ(GntProgressBar *pbar)÷0œGntProgressBarOrientation
+gnt_progress_bar_get_show_progressÃ1024Õ(GntProgressBar *pbar)÷0œgboolean
+gnt_progress_bar_get_typeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_progress_bar_newÃ1024Õ(void)÷0œGntWidget *
+gnt_progress_bar_set_fractionÃ1024Õ(GntProgressBar *pbar, gdouble fraction)÷0œvoid
+gnt_progress_bar_set_orientationÃ1024Õ(GntProgressBar *pbar, GntProgressBarOrientation orientation)÷0œvoid
+gnt_progress_bar_set_show_progressÃ1024Õ(GntProgressBar *pbar, gboolean show)÷0œvoid
+gnt_quitÃ1024Õ(void)÷0œvoid
+gnt_register_actionÃ1024Õ(const char *label, void (*callback)(void))÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntBox÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntBoxClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntButton÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntButtonClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntCheckBoxClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntClipboardClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntComboBoxClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntEntryClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntFileSelClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntLabel÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntLabelClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntLineClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntMenuClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntMenuItemCheckClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntMenuItemClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntProgressBarClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntSliderClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntTextViewClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntTreeClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntWidget÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntWidgetClass÷0œvoid
+gnt_reserved1Ã1024Õ(void)Œ_GntWindowClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntBindableClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntBox÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntBoxClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntButton÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntButtonClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntCheckBoxClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntClipboardClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntComboBoxClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntEntryClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntFileSelClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntLabel÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntLabelClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntLineClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntMenuClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntMenuItemCheckClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntMenuItemClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntProgressBarClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntSliderClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntTextViewClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntTreeClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntWidget÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntWidgetClass÷0œvoid
+gnt_reserved2Ã1024Õ(void)Œ_GntWindowClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntBindableClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntBox÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntBoxClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntButton÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntButtonClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntCheckBoxClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntClipboardClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntComboBoxClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntEntryClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntFileSelClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntLabel÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntLabelClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntLineClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntMenuClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntMenuItemCheckClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntMenuItemClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntProgressBarClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntSliderClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntTextViewClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntTreeClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntWidget÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntWidgetClass÷0œvoid
+gnt_reserved3Ã1024Õ(void)Œ_GntWindowClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntBindableClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntBox÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntBoxClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntButton÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntButtonClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntCheckBoxClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntClipboardClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntComboBoxClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntEntryClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntFileSelClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntLabel÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntLabelClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntLineClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntMenuClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntMenuItemCheckClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntMenuItemClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntProgressBarClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntSliderClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntTextViewClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntTreeClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntWidget÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntWidgetClass÷0œvoid
+gnt_reserved4Ã1024Õ(void)Œ_GntWindowClass÷0œvoid
+gnt_screen_menu_showÃ1024Õ(gpointer menu)÷0œgboolean
+gnt_screen_move_widgetÃ1024Õ(GntWidget *widget, int x, int y)÷0œvoid
+gnt_screen_occupyÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_screen_releaseÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_screen_rename_widgetÃ1024Õ(GntWidget *widget, const char *text)÷0œvoid
+gnt_screen_resize_widgetÃ1024Õ(GntWidget *widget, int width, int height)÷0œvoid
+gnt_screen_updateÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_set_clipboard_stringÃ1024Õ(const gchar *string)÷0œvoid
+gnt_slider_advance_stepÃ1024Õ(GntSlider *slider, int steps)÷0œint
+gnt_slider_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_slider_get_valueÃ1024Õ(GntSlider *slider)÷0œint
+gnt_slider_newÃ1024Õ(gboolean orient, int max, int min)÷0œGntWidget *
+gnt_slider_reflect_labelÃ1024Õ(GntSlider *slider, GntLabel *label)÷0œvoid
+gnt_slider_set_large_stepÃ1024Õ(GntSlider *slider, int step)÷0œvoid
+gnt_slider_set_rangeÃ1024Õ(GntSlider *slider, int max, int min)÷0œvoid
+gnt_slider_set_small_stepÃ1024Õ(GntSlider *slider, int step)÷0œvoid
+gnt_slider_set_stepÃ1024Õ(GntSlider *slider, int step)÷0œvoid
+gnt_slider_set_valueÃ1024Õ(GntSlider *slider, int value)÷0œvoid
+gnt_style_getÃ1024Õ(GntStyle style)÷0œconst char *
+gnt_style_get_boolÃ1024Õ(GntStyle style, gboolean def)÷0œgboolean
+gnt_style_get_colorÃ1024Õ(char *group, char *key)÷0œint
+gnt_style_get_from_nameÃ1024Õ(const char *group, const char *key)÷0œchar *
+gnt_style_get_string_listÃ1024Õ(const char *group, const char *key, gsize *length)÷0œchar * *
+gnt_style_parse_boolÃ1024Õ(const char *value)÷0œgboolean
+gnt_style_read_actionsÃ1024Õ(GType type, GntBindableClass *klass)÷0œvoid
+gnt_style_read_configure_fileÃ1024Õ(const char *filename)÷0œvoid
+gnt_style_read_menu_accelsÃ1024Õ(const char *name, GHashTable *table)÷0œgboolean
+gnt_style_read_workspacesÃ1024Õ(GntWM *wm)÷0œvoid
+gnt_styles_get_keyremapsÃ1024Õ(GType type, GHashTable *hash)÷0œvoid
+gnt_text_format_flag_to_chtypeÃ1024Õ(GntTextFormatFlags flags)÷0œchtype
+gnt_text_view_append_text_with_flagsÃ1024Õ(GntTextView *view, const char *text, GntTextFormatFlags flags)÷0œvoid
+gnt_text_view_append_text_with_tagÃ1024Õ(GntTextView *view, const char *text, GntTextFormatFlags flags, const char *tag)÷0œvoid
+gnt_text_view_attach_editor_widgetÃ1024Õ(GntTextView *view, GntWidget *widget)÷0œvoid
+gnt_text_view_attach_pager_widgetÃ1024Õ(GntTextView *view, GntWidget *pager)÷0œvoid
+gnt_text_view_attach_scroll_widgetÃ1024Õ(GntTextView *view, GntWidget *widget)÷0œvoid
+gnt_text_view_clearÃ1024Õ(GntTextView *view)÷0œvoid
+gnt_text_view_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_text_view_get_lines_aboveÃ1024Õ(GntTextView *view)÷0œint
+gnt_text_view_get_lines_belowÃ1024Õ(GntTextView *view)÷0œint
+gnt_text_view_newÃ1024Õ(void)÷0œGntWidget *
+gnt_text_view_next_lineÃ1024Õ(GntTextView *view)÷0œvoid
+gnt_text_view_scrollÃ1024Õ(GntTextView *view, int scroll)÷0œvoid
+gnt_text_view_set_flagÃ1024Õ(GntTextView *view, GntTextViewFlag flag)÷0œvoid
+gnt_text_view_tag_changeÃ1024Õ(GntTextView *view, const char *name, const char *text, gboolean all)÷0œint
+gnt_tree_add_choiceÃ1024Õ(GntTree *tree, void *key, GntTreeRow *row, void *parent, void *bigbro)÷0œGntTreeRow *
+gnt_tree_add_row_afterÃ1024Õ(GntTree *tree, void *key, GntTreeRow *row, void *parent, void *bigbro)÷0œGntTreeRow *
+gnt_tree_add_row_lastÃ1024Õ(GntTree *tree, void *key, GntTreeRow *row, void *parent)÷0œGntTreeRow *
+gnt_tree_adjust_columnsÃ1024Õ(GntTree *tree)÷0œvoid
+gnt_tree_change_textÃ1024Õ(GntTree *tree, gpointer key, int colno, const char *text)÷0œvoid
+gnt_tree_create_rowÃ1024Õ(GntTree *tree, ...)÷0œGntTreeRow *
+gnt_tree_create_row_from_listÃ1024Õ(GntTree *tree, GList *list)÷0œGntTreeRow *
+gnt_tree_get_choiceÃ1024Õ(GntTree *tree, void *key)÷0œgboolean
+gnt_tree_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_tree_get_parent_keyÃ1024Õ(GntTree *tree, gpointer key)÷0œgpointer
+gnt_tree_get_row_text_listÃ1024Õ(GntTree *tree, gpointer key)÷0œGList *
+gnt_tree_get_rowsÃ1024Õ(GntTree *tree)÷0œGList *
+gnt_tree_get_selection_dataÃ1024Õ(GntTree *tree)÷0œgpointer
+gnt_tree_get_selection_textÃ1024Õ(GntTree *tree)÷0œchar *
+gnt_tree_get_selection_text_listÃ1024Õ(GntTree *tree)÷0œGList *
+gnt_tree_get_selection_visible_lineÃ1024Õ(GntTree *tree)÷0œint
+gnt_tree_get_visible_rowsÃ1024Õ(GntTree *tree)÷0œint
+gnt_tree_is_searchingÃ1024Õ(GntTree *tree)÷0œgboolean
+gnt_tree_newÃ1024Õ(void)÷0œGntWidget *
+gnt_tree_new_with_columnsÃ1024Õ(int columns)÷0œGntWidget *
+gnt_tree_removeÃ1024Õ(GntTree *tree, gpointer key)÷0œvoid
+gnt_tree_remove_allÃ1024Õ(GntTree *tree)÷0œvoid
+gnt_tree_row_get_childÃ1024Õ(GntTree *tree, GntTreeRow *row)÷0œGntTreeRow *
+gnt_tree_row_get_keyÃ1024Õ(GntTree *tree, GntTreeRow *row)÷0œgpointer
+gnt_tree_row_get_nextÃ1024Õ(GntTree *tree, GntTreeRow *row)÷0œGntTreeRow *
+gnt_tree_row_get_parentÃ1024Õ(GntTree *tree, GntTreeRow *row)÷0œGntTreeRow *
+gnt_tree_row_get_prevÃ1024Õ(GntTree *tree, GntTreeRow *row)÷0œGntTreeRow *
+gnt_tree_scrollÃ1024Õ(GntTree *tree, int count)÷0œvoid
+gnt_tree_set_choiceÃ1024Õ(GntTree *tree, void *key, gboolean set)÷0œvoid
+gnt_tree_set_col_widthÃ1024Õ(GntTree *tree, int col, int width)÷0œvoid
+gnt_tree_set_column_is_binaryÃ1024Õ(GntTree *tree, int col, gboolean bin)÷0œvoid
+gnt_tree_set_column_is_right_alignedÃ1024Õ(GntTree *tree, int col, gboolean right)÷0œvoid
+gnt_tree_set_column_resizableÃ1024Õ(GntTree *tree, int col, gboolean res)÷0œvoid
+gnt_tree_set_column_titleÃ1024Õ(GntTree *tree, int index, const char *title)÷0œvoid
+gnt_tree_set_column_titlesÃ1024Õ(GntTree *tree, ...)÷0œvoid
+gnt_tree_set_column_visibleÃ1024Õ(GntTree *tree, int col, gboolean vis)÷0œvoid
+gnt_tree_set_column_width_ratioÃ1024Õ(GntTree *tree, int cols[])÷0œvoid
+gnt_tree_set_compare_funcÃ1024Õ(GntTree *tree, GCompareFunc func)÷0œvoid
+gnt_tree_set_expandedÃ1024Õ(GntTree *tree, void *key, gboolean expanded)÷0œvoid
+gnt_tree_set_hash_fnsÃ1024Õ(GntTree *tree, gpointer hash, gpointer eq, gpointer kd)÷0œvoid
+gnt_tree_set_row_colorÃ1024Õ(GntTree *tree, void *key, int color)÷0œvoid
+gnt_tree_set_row_flagsÃ1024Õ(GntTree *tree, void *key, GntTextFormatFlags flags)÷0œvoid
+gnt_tree_set_search_columnÃ1024Õ(GntTree *tree, int col)÷0œvoid
+gnt_tree_set_search_functionÃ1024Õ(GntTree *tree, gboolean (*func)(GntTree *tree, gpointer key, const char *search, const char *current))÷0œvoid
+gnt_tree_set_selectedÃ1024Õ(GntTree *tree , void *key)÷0œvoid
+gnt_tree_set_show_separatorÃ1024Õ(GntTree *tree, gboolean set)÷0œvoid
+gnt_tree_set_show_titleÃ1024Õ(GntTree *tree, gboolean set)÷0œvoid
+gnt_tree_set_visible_rowsÃ1024Õ(GntTree *tree, int rows)÷0œvoid
+gnt_tree_sort_rowÃ1024Õ(GntTree *tree, void *row)÷0œvoid
+gnt_uninit_colorsÃ1024Õ(void)÷0œvoid
+gnt_uninit_stylesÃ1024Õ(void)÷0œvoid
+gnt_util_get_text_boundÃ1024Õ(const char *text, int *width, int *height)÷0œvoid
+gnt_util_onscreen_fit_stringÃ1024Õ(const char *string, int maxw)÷0œchar *
+gnt_util_onscreen_widthÃ1024Õ(const char *start, const char *end)÷0œint
+gnt_util_onscreen_width_to_pointerÃ1024Õ(const char *str, int len, int *w)÷0œconst char *
+gnt_util_parse_widgetsÃ1024Õ(const char *string, int num, ...)÷0œvoid
+gnt_util_parse_xhtml_to_textviewÃ1024Õ(const char *string, GntTextView *tv)÷0œgboolean
+gnt_util_set_trigger_widgetÃ1024Õ(GntWidget *widget, const char *key, GntWidget *button)÷0œvoid
+gnt_vbox_newÃ131072Õ(homo)÷0
+gnt_vline_newÃ131072Õ()÷0
+gnt_vslider_newÃ131072Õ(max, min)÷0
+gnt_vwindow_newÃ131072Õ(homo)÷0
+gnt_widget_activateÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_bindings_viewÃ1024Õ(GntWidget *widget)÷0œGntWidget *
+gnt_widget_clickedÃ1024Õ(GntWidget *widget, GntMouseEvent event, int x, int y)÷0œgboolean
+gnt_widget_confirm_sizeÃ1024Õ(GntWidget *widget, int width, int height)÷0œgboolean
+gnt_widget_destroyÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_drawÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_exposeÃ1024Õ(GntWidget *widget, int x, int y, int width, int height)÷0œvoid
+gnt_widget_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_widget_get_nameÃ1024Õ(GntWidget *widget)÷0œconst char *
+gnt_widget_get_positionÃ1024Õ(GntWidget *widget, int *x, int *y)÷0œvoid
+gnt_widget_get_sizeÃ1024Õ(GntWidget *widget, int *width, int *height)÷0œvoid
+gnt_widget_has_focusÃ1024Õ(GntWidget *widget)÷0œgboolean
+gnt_widget_has_shadowÃ1024Õ(GntWidget *widget)÷0œgboolean
+gnt_widget_hideÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_key_pressedÃ1024Õ(GntWidget *widget, const char *keys)÷0œgboolean
+gnt_widget_queue_updateÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_set_focusÃ1024Õ(GntWidget *widget, gboolean set)÷0œgboolean
+gnt_widget_set_nameÃ1024Õ(GntWidget *widget, const char *name)÷0œvoid
+gnt_widget_set_positionÃ1024Õ(GntWidget *widget, int x, int y)÷0œvoid
+gnt_widget_set_sizeÃ1024Õ(GntWidget *widget, int width, int height)÷0œgboolean
+gnt_widget_set_take_focusÃ1024Õ(GntWidget *widget, gboolean set)÷0œvoid
+gnt_widget_set_urgentÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_set_visibleÃ1024Õ(GntWidget *widget, gboolean set)÷0œvoid
+gnt_widget_showÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_widget_size_requestÃ1024Õ(GntWidget *widget)÷0œvoid
+gnt_window_box_newÃ1024Õ(gboolean homo, gboolean vert)÷0œGntWidget *
+gnt_window_get_accel_itemÃ1024Õ(GntWindow *window, const char *key)÷0œconst char *
+gnt_window_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_window_get_maximizeÃ1024Õ(GntWindow *window)÷0œGntWindowFlags
+gnt_window_newÃ1024Õ(void)÷0œGntWidget *
+gnt_window_presentÃ1024Õ(GntWidget *window)÷0œvoid
+gnt_window_set_maximizeÃ1024Õ(GntWindow *window, GntWindowFlags maximize)÷0œvoid
+gnt_window_set_menuÃ1024Õ(GntWindow *window, GntMenu *menu)÷0œvoid
+gnt_window_workspace_hidingÃ1024Õ(GntWindow *)÷0œvoid
+gnt_window_workspace_showingÃ1024Õ(GntWindow *)÷0œvoid
+gnt_wm_add_workspaceÃ1024Õ(GntWM *wm, GntWS *ws)÷0œvoid
+gnt_wm_copy_winÃ1024Õ(GntWidget *widget, GntNode *node)÷0œvoid
+gnt_wm_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_wm_get_idle_timeÃ1024Õ(void)÷0œtime_t
+gnt_wm_move_windowÃ1024Õ(GntWM *wm, GntWidget *widget, int x, int y)÷0œvoid
+gnt_wm_new_windowÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œvoid
+gnt_wm_process_clickÃ1024Õ(GntWM *wm, GntMouseEvent event, int x, int y, GntWidget *widget)÷0œgboolean
+gnt_wm_process_inputÃ1024Õ(GntWM *wm, const char *string)÷0œgboolean
+gnt_wm_raise_windowÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œvoid
+gnt_wm_resize_windowÃ1024Õ(GntWM *wm, GntWidget *widget, int width, int height)÷0œvoid
+gnt_wm_set_event_stackÃ1024Õ(GntWM *wm, gboolean set)÷0œvoid
+gnt_wm_set_workspacesÃ1024Õ(GntWM *wm, GList *workspaces)÷0œvoid
+gnt_wm_switch_workspaceÃ1024Õ(GntWM *wm, gint n)÷0œgboolean
+gnt_wm_switch_workspace_nextÃ1024Õ(GntWM *wm)÷0œgboolean
+gnt_wm_switch_workspace_prevÃ1024Õ(GntWM *wm)÷0œgboolean
+gnt_wm_update_windowÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œvoid
+gnt_wm_widget_find_workspaceÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œGntWS *
+gnt_wm_widget_move_workspaceÃ1024Õ(GntWM *wm, GntWS *neww, GntWidget *widget)÷0œvoid
+gnt_wm_window_closeÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œvoid
+gnt_wm_window_decorateÃ1024Õ(GntWM *wm, GntWidget *widget)÷0œvoid
+gnt_ws_add_widgetÃ1024Õ(GntWS *ws, GntWidget *widget)÷0œvoid
+gnt_ws_draw_taskbarÃ1024Õ(GntWS *ws, gboolean reposition)÷0œvoid
+gnt_ws_get_gtypeÃ1024Õ(void)÷0œG_BEGIN_DECLS
+gnt_ws_get_nameÃ1024Õ(GntWS *ws)÷0œconst char *
+gnt_ws_hideÃ1024Õ(GntWS *ws, GHashTable *table)÷0œvoid
+gnt_ws_newÃ1024Õ(const char *name)÷0œGntWS *
+gnt_ws_remove_widgetÃ1024Õ(GntWS *ws, GntWidget *widget)÷0œvoid
+gnt_ws_set_nameÃ1024Õ(GntWS *ws, const gchar *name)÷0œvoid
+gnt_ws_showÃ1024Õ(GntWS *ws, GHashTable *table)÷0œvoid
+gnt_ws_widget_hideÃ1024Õ(GntWidget *widget, GHashTable *nodes)÷0œvoid
+gnt_ws_widget_showÃ1024Õ(GntWidget *widget, GHashTable *nodes)÷0œvoid
+hashÃ64Œ_GntTree÷0œGHashTable
+hash_eq_funcÃ1024Õ(gconstpointer, gconstpointer)Œ_GntTree÷0œgboolean
+hash_funcÃ1024Õ(gconstpointer)Œ_GntTree÷0œguint
+heightÃ64Œ_GntWidgetPriv÷0œint
+help_windowÃ64Œ_GntBindableClass÷0œGntBindable
+hideÃ1024Õ(GntWidget *obj)Œ_GntWidgetClass÷0œvoid
+histlengthÃ64Œ_GntEntry÷0œint
+historyÃ64Œ_GntEntry÷0œGList
+homogeneousÃ64Œ_GntBox÷0œgboolean
+idÃ64Œ_GntMenuItemPriv÷0œchar
+inheritÃ64Œ_GntBindable÷0œGObject
+inheritÃ64Œ_GntClipboard÷0œGObject
+inheritÃ64Œ_GntWM÷0œGntBindable
+inheritÃ64Œ_GntWS÷0œGntBindable
+inheritÃ64Œ_GntWidget÷0œGntBindable
+key_destroyÃ64Œ_GntTree÷0œGDestroyNotify
+key_pressedÃ1024Õ(GntWM *wm, const char *key)Œ_GntWMClass÷0œgboolean
+key_pressedÃ1024Õ(GntWidget *widget, const char *key)Œ_GntWidgetClass÷0œgboolean
+killringÃ64Œ_GntEntry÷0œGntEntryKillRing
+labelÃ64Œ_GntAction÷0œchar
+largestepÃ64Œ_GntSlider÷0œint
+linesÃ65536÷0
+listÃ64Œ_GntBindableActionParam÷0œGList
+listÃ64Œ_GntBox÷0œGList
+listÃ64Œ_GntMenu÷0œGList
+listÃ64Œ_GntTextView÷0œGList
+listÃ64Œ_GntTree÷0œGList
+listÃ64Œ_GntWS÷0œGList
+locationÃ64Œ_GntFileSel÷0œGntWidget
+loopÃ64Œ_GntWM÷0œGMainLoop
+lost_focusÃ1024Õ(GntWidget *widget)Œ_GntWidgetClass÷0œvoid
+mapÃ1024Õ(GntWidget *obj)Œ_GntWidgetClass÷0œvoid
+maskedÃ64Œ_GntEntry÷0œgboolean
+maxÃ64Œ_GntEntry÷0œint
+maxÃ64Œ_GntSlider÷0œint
+meÃ64Œ_GntNode÷0œGntWidget
+menuÃ64Œ_GntWM÷0œGntMenu
+menuÃ64Œ_GntWindow÷0œGntMenu
+minÃ64Œ_GntSlider÷0œint
+minhÃ64Œ_GntWidgetPriv÷0œint
+minwÃ64Œ_GntWidgetPriv÷0œint
+modeÃ64Œ_GntWM÷0œGntKeyPressMode
+mouse_clickedÃ1024Õ(GntWM *wm, GntMouseEvent event, int x, int y, GntWidget *widget)Œ_GntWMClass÷0œgboolean
+multiselectÃ64Œ_GntFileSel÷0œgboolean
+must_existÃ64Œ_GntFileSel÷0œgboolean
+nameÃ64Œ_GntBindableAction÷0œchar
+nameÃ64Œ_GntWS÷0œchar
+nameÃ64Œ_GntWidgetPriv÷0œchar
+name_placesÃ64Œ_GntWM÷0œGHashTable
+ncolÃ64Œ_GntTree÷0œint
+new_windowÃ1024Õ(GntWM *wm, GntWidget *win)Œ_GntWMClass÷0œvoid
+newlineÃ65536÷0
+nodesÃ64Œ_GntWM÷0œGHashTable
+orderedÃ64Œ_GntWS÷0œGList
+padÃ64Œ_GntBox÷0œint
+panelÃ64Œ_GntNode÷0œPANEL
+parentÃ64Œ_GntBindableClass÷0œGObjectClass
+parentÃ64Œ_GntBox÷0œGntWidget
+parentÃ64Œ_GntBoxClass÷0œGntWidgetClass
+parentÃ64Œ_GntButton÷0œGntWidget
+parentÃ64Œ_GntButtonClass÷0œGntWidgetClass
+parentÃ64Œ_GntCheckBox÷0œGntButton
+parentÃ64Œ_GntCheckBoxClass÷0œGntButtonClass
+parentÃ64Œ_GntClipboardClass÷0œGObjectClass
+parentÃ64Œ_GntComboBox÷0œGntWidget
+parentÃ64Œ_GntComboBoxClass÷0œGntWidgetClass
+parentÃ64Œ_GntEntry÷0œGntWidget
+parentÃ64Œ_GntEntryClass÷0œGntWidgetClass
+parentÃ64Œ_GntFileSel÷0œGntWindow
+parentÃ64Œ_GntFileSelClass÷0œGntWindowClass
+parentÃ64Œ_GntLabel÷0œGntWidget
+parentÃ64Œ_GntLabelClass÷0œGntWidgetClass
+parentÃ64Œ_GntLine÷0œGntWidget
+parentÃ64Œ_GntLineClass÷0œGntWidgetClass
+parentÃ64Œ_GntMenu÷0œGntTree
+parentÃ64Œ_GntMenuClass÷0œGntTreeClass
+parentÃ64Œ_GntMenuItem÷0œGObject
+parentÃ64Œ_GntMenuItemCheck÷0œGntMenuItem
+parentÃ64Œ_GntMenuItemCheckClass÷0œGntMenuItemClass
+parentÃ64Œ_GntMenuItemClass÷0œGObjectClass
+parentÃ64Œ_GntProgressBarClass÷0œGntWidgetClass
+parentÃ64Œ_GntSlider÷0œGntWidget
+parentÃ64Œ_GntSliderClass÷0œGntWidgetClass
+parentÃ64Œ_GntTextView÷0œGntWidget
+parentÃ64Œ_GntTextViewClass÷0œGntWidgetClass
+parentÃ64Œ_GntTree÷0œGntWidget
+parentÃ64Œ_GntTreeClass÷0œGntWidgetClass
+parentÃ64Œ_GntWMClass÷0œGntBindableClass
+parentÃ64Œ_GntWSClass÷0œGntBindableClass
+parentÃ64Œ_GntWidget÷0œGntWidget
+parentÃ64Œ_GntWidgetClass÷0œGntBindableClass
+parentÃ64Œ_GntWindow÷0œGntBox
+parentÃ64Œ_GntWindowClass÷0œGntBoxClass
+parentmenuÃ64Œ_GntMenu÷0œGntMenu
+positionsÃ64Œ_GntWM÷0œGHashTable
+privÃ64Œ_GntButton÷0œGntButtonPriv
+privÃ64Œ_GntMenuItem÷0œGntMenuItemPriv
+privÃ64Œ_GntTree÷0œGntTreePriv
+privÃ64Œ_GntWidget÷0œGntWidgetPriv
+privÃ64Œ_GntWindow÷0œGntWindowPriv
+read_fnÃ1024Õ(const char *path, GList **files, GError **error)Œ_GntFileSel÷0œgboolean
+remapsÃ64Œ_GntBindableClass÷0œGHashTable
+res1Ã64Œ_GntWM÷0œvoid
+res1Ã1024Õ(void)Œ_GntWMClass÷0œvoid
+res1Ã64Œ_GntWS÷0œvoid
+res1Ã1024Õ(void)Œ_GntWSClass÷0œvoid
+res2Ã64Œ_GntWM÷0œvoid
+res2Ã1024Õ(void)Œ_GntWMClass÷0œvoid
+res2Ã64Œ_GntWS÷0œvoid
+res2Ã1024Õ(void)Œ_GntWSClass÷0œvoid
+res3Ã64Œ_GntWM÷0œvoid
+res3Ã1024Õ(void)Œ_GntWMClass÷0œvoid
+res3Ã64Œ_GntWS÷0œvoid
+res3Ã1024Õ(void)Œ_GntWSClass÷0œvoid
+res4Ã64Œ_GntWM÷0œvoid
+res4Ã64Œ_GntWS÷0œvoid
+res4Ã1024Õ(void)Œ_GntWSClass÷0œvoid
+rootÃ64Œ_GntTree÷0œGntTreeRow
+scrollÃ64Œ_GntEntry÷0œchar
+scrollÃ64Œ_GntNode÷0œint
+searchÃ64Œ_GntEntry÷0œGntEntrySearch
+selectÃ64Œ_GntFileSel÷0œGntWidget
+selectedÃ64Œ_GntComboBox÷0œvoid
+selectedÃ64Œ_GntMenu÷0œint
+selection_changedÃ1024Õ(GntTreeRow *old, GntTreeRow * current)Œ_GntTreeClass÷0œvoid
+set_clockÃ65536÷0
+set_positionÃ1024Õ(GntWidget *widget, int x, int y)Œ_GntWidgetClass÷0œvoid
+showÃ1024Õ(GntWidget *obj)Œ_GntWidgetClass÷0œvoid
+show_separatorÃ64Œ_GntTree÷0œgboolean
+show_titleÃ64Œ_GntTree÷0œgboolean
+sizeÃ64Œ_GntFile÷0œlong
+size_changedÃ1024Õ(GntWidget *widget, int w, int h)Œ_GntWidgetClass÷0œvoid
+size_requestÃ1024Õ(GntWidget *widget)Œ_GntWidgetClass÷0œvoid
+smallstepÃ64Œ_GntSlider÷0œint
+startÃ64Œ_GntEntry÷0œchar
+stepÃ64Œ_GntSlider÷0œint
+stringÃ64Œ_GntClipboard÷0œgchar
+stringÃ64Œ_GntTextView÷0œGString
+submenuÃ64Œ_GntMenu÷0œGntMenu
+submenuÃ64Œ_GntMenuItem÷0œGntMenu
+suggestÃ64Œ_GntFileSel÷0œchar
+suggestsÃ64Œ_GntEntry÷0œGList
+taggedÃ64Œ_GntWM÷0œGList
+tagsÃ64Œ_GntFileSel÷0œGList
+tagsÃ64Œ_GntTextView÷0œGList
+terminal_refreshÃ1024Õ(GntWM *wm)Œ_GntWMClass÷0œvoid
+textÃ64Œ_GntButtonPriv÷0œchar
+textÃ64Œ_GntLabel÷0œchar
+textÃ64Œ_GntMenuItem÷0œchar
+text_changedÃ1024Õ(GntEntry *entry)Œ_GntEntryClass÷0œvoid
+titleÃ64Œ_GntBox÷0œchar
+titleÃ64Œ_GntTree::_GntTreeColInfo÷0œchar
+title_placesÃ64Œ_GntWM÷0œGHashTable
+toggledÃ1024Õ(void)Œ_GntCheckBoxClass÷0œvoid
+toggledÃ1024Õ(GntTree *tree, gpointer key)Œ_GntTreeClass÷0œvoid
+topÃ64Œ_GntTree÷0œGntTreeRow
+treeÃ64Œ_GntWM::anon_struct_4÷0œGntWidget
+triggerÃ64Œ_GntMenuItemPriv÷0œchar
+typeÃ64Œ_GntFile÷0œGntFileType
+typeÃ64Œ_GntMenu÷0œGntMenuType
+uÃ64Œ_GntBindableAction÷0œanon_union_5
+ui_dataÃ64Œ_GntWS÷0œgpointer
+value_destroyÃ64Œ_GntTree÷0œGDestroyNotify
+verticalÃ64Œ_GntBox÷0œgboolean
+verticalÃ64Œ_GntLine÷0œgboolean
+verticalÃ64Œ_GntSlider÷0œgboolean
+widthÃ64Œ_GntTree::_GntTreeColInfo÷0œint
+widthÃ64Œ_GntWidgetPriv÷0œint
+width_ratioÃ64Œ_GntTree::_GntTreeColInfo÷0œint
+windowÃ64Œ_GntNode÷0œWINDOW
+windowÃ64Œ_GntWM::anon_struct_4÷0œGntWidget
+windowÃ64Œ_GntWidget÷0œWINDOW
+window_move_confirmÃ1024Õ(GntWM *wm, GntWidget *win, int *x, int *y)Œ_GntWMClass÷0œgboolean
+window_movedÃ1024Õ(GntWM *wm, GntNode *node)Œ_GntWMClass÷0œvoid
+window_resize_confirmÃ1024Õ(GntWM *wm, GntWidget *win, int *w, int *h)Œ_GntWMClass÷0œgboolean
+window_resizedÃ1024Õ(GntWM *wm, GntNode *node)Œ_GntWMClass÷0œvoid
+window_updateÃ1024Õ(GntWM *wm, GntNode *node)Œ_GntWMClass÷0œvoid
+windowsÃ64Œ_GntWM÷0œanon_struct_4
+wordÃ64Œ_GntEntry÷0œgboolean
+workspacesÃ64Œ_GntWM÷0œGList
+wsÃ64Œ_GntNode÷0œGntWS
+xÃ64Œ_GntMenuItemPriv÷0œint
+xÃ64Œ_GntPosition÷0œint
+xÃ64Œ_GntWidgetPriv÷0œint
+yÃ64Œ_GntMenuItemPriv÷0œint
+yÃ64Œ_GntPosition÷0œint
+yÃ64Œ_GntWidgetPriv÷0œint

@@ -1,0 +1,72 @@
+# format=tagmanager
+APP_INDICATORÃ131072Õ(obj)÷0
+APP_INDICATOR_CATEGORY_APPLICATION_STATUSÃ4Œanon_enum_0÷0
+APP_INDICATOR_CATEGORY_COMMUNICATIONSÃ4Œanon_enum_0÷0
+APP_INDICATOR_CATEGORY_HARDWAREÃ4Œanon_enum_0÷0
+APP_INDICATOR_CATEGORY_OTHERÃ4Œanon_enum_0÷0
+APP_INDICATOR_CATEGORY_SYSTEM_SERVICESÃ4Œanon_enum_0÷0
+APP_INDICATOR_CLASSÃ131072Õ(klass)÷0
+APP_INDICATOR_GET_CLASSÃ131072Õ(obj)÷0
+APP_INDICATOR_SIGNAL_CONNECTION_CHANGEDÃ65536÷0
+APP_INDICATOR_SIGNAL_NEW_ATTENTION_ICONÃ65536÷0
+APP_INDICATOR_SIGNAL_NEW_ICONÃ65536÷0
+APP_INDICATOR_SIGNAL_NEW_ICON_THEME_PATHÃ65536÷0
+APP_INDICATOR_SIGNAL_NEW_LABELÃ65536÷0
+APP_INDICATOR_SIGNAL_NEW_STATUSÃ65536÷0
+APP_INDICATOR_STATUS_ACTIVEÃ4Œanon_enum_1÷0
+APP_INDICATOR_STATUS_ATTENTIONÃ4Œanon_enum_1÷0
+APP_INDICATOR_STATUS_PASSIVEÃ4Œanon_enum_1÷0
+APP_INDICATOR_TYPEÃ65536÷0
+APP_INDICATOR_TYPE_INDICATOR_CATEGORYÃ65536÷0
+APP_INDICATOR_TYPE_INDICATOR_STATUSÃ65536÷0
+AppIndicatorÃ4096÷0œ_AppIndicator
+AppIndicatorCategoryÃ4096÷0œanon_enum_0
+AppIndicatorClassÃ4096÷0œ_AppIndicatorClass
+AppIndicatorPrivateÃ4096÷0œ_AppIndicatorPrivate
+AppIndicatorStatusÃ4096÷0œanon_enum_1
+IS_APP_INDICATORÃ131072Õ(obj)÷0
+IS_APP_INDICATOR_CLASSÃ131072Õ(klass)÷0
+_AppIndicatorÃ2048÷0
+_AppIndicatorClassÃ2048÷0
+__APP_INDICATOR_ENUM_TYPES_H__Ã65536÷0
+__APP_INDICATOR_H__Ã65536÷0
+anon_enum_0Ã2÷0
+anon_enum_1Ã2÷0
+app_indicator_get_attention_iconÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_categoryÃ1024Õ(AppIndicator *self)÷0œAppIndicatorCategory
+app_indicator_get_iconÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_icon_theme_pathÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_idÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_labelÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_label_guideÃ1024Õ(AppIndicator *self)÷0œconst gchar *
+app_indicator_get_menuÃ1024Õ(AppIndicator *self)÷0œGtkMenu *
+app_indicator_get_ordering_indexÃ1024Õ(AppIndicator *self)÷0œguint32
+app_indicator_get_statusÃ1024Õ(AppIndicator *self)÷0œAppIndicatorStatus
+app_indicator_newÃ1024Õ(const gchar *id, const gchar *icon_name, AppIndicatorCategory category)÷0œAppIndicator *
+app_indicator_new_with_pathÃ1024Õ(const gchar *id, const gchar *icon_name, AppIndicatorCategory category, const gchar *icon_theme_path)÷0œAppIndicator *
+app_indicator_reserved_1Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_2Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_3Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_4Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_5Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_6Ã1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_atsÃ1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_reserved_swÃ1024Õ(void)Œ_AppIndicatorClass÷0œvoid
+app_indicator_set_attention_iconÃ1024Õ(AppIndicator *self, const gchar *icon_name)÷0œvoid
+app_indicator_set_iconÃ1024Õ(AppIndicator *self, const gchar *icon_name)÷0œvoid
+app_indicator_set_icon_theme_pathÃ1024Õ(AppIndicator *self, const gchar *icon_theme_path)÷0œvoid
+app_indicator_set_labelÃ1024Õ(AppIndicator *self, const gchar *label, const gchar *guide)÷0œvoid
+app_indicator_set_menuÃ1024Õ(AppIndicator *self, GtkMenu *menu)÷0œvoid
+app_indicator_set_ordering_indexÃ1024Õ(AppIndicator *self, guint32 ordering_index)÷0œvoid
+app_indicator_set_statusÃ1024Õ(AppIndicator *self, AppIndicatorStatus status)÷0œvoid
+connection_changedÃ1024Õ(AppIndicator * indicator, gboolean connected, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+fallbackÃ1024Õ(AppIndicator * indicator)Œ_AppIndicatorClass÷0œGtkStatusIcon *
+new_attention_iconÃ1024Õ(AppIndicator *indicator, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+new_iconÃ1024Õ(AppIndicator *indicator, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+new_icon_theme_pathÃ1024Õ(AppIndicator *indicator, const gchar *icon_theme_path, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+new_labelÃ1024Õ(AppIndicator *indicator, const gchar *label, const gchar *guide, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+new_statusÃ1024Õ(AppIndicator *indicator, const gchar *status, gpointer user_data)Œ_AppIndicatorClass÷0œvoid
+parentÃ64Œ_AppIndicator÷0œGObject
+parent_classÃ64Œ_AppIndicatorClass÷0œGObjectClass
+privÃ64Œ_AppIndicator÷0œAppIndicatorPrivate
+unfallbackÃ1024Õ(AppIndicator * indicator, GtkStatusIcon * status_icon)Œ_AppIndicatorClass÷0œvoid

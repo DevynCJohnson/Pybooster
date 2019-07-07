@@ -1,0 +1,15 @@
+# format=tagmanager
+BIND_LAZYÃ4ŒGLib.ModuleFlags÷0
+BIND_LOCALÃ4ŒGLib.ModuleFlags÷0
+BIND_MASKÃ4ŒGLib.ModuleFlags÷0
+GLibÃ256÷0
+ModuleÃ1ŒGLib÷0
+ModuleFlagsÃ2ŒGLib÷0
+SUFFIXÃ8ŒGLib.Module÷0
+build_pathÃ128Õ(string? directory, string module_name)ŒGLib.Module÷0
+errorÃ128Õ()ŒGLib.Module÷0œpublic unowned string
+make_residentÃ128Õ()ŒGLib.Module÷0œpublic void
+nameÃ128Õ()ŒGLib.Module÷0œpublic unowned string
+openÃ128Õ(string? file_name, ModuleFlags flags)ŒGLib.Module÷0œpublic Module?
+supportedÃ128Õ()ŒGLib.Module÷0œpublic bool
+symbolÃ128Õ(string symbol_name, out void* symbol)ŒGLib.Module÷0œpublic bool

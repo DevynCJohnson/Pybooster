@@ -1,0 +1,642 @@
+# format=tagmanager
+ASCIIÃ4ŒTiff.DataType÷0
+AccessTagMethodsÃ128Õ()ŒTiff.TIFF÷0œpublic TagMethods
+BIGENDIANÃ8ŒTiff÷0œttag_t
+BIGTIFF_VERSIONÃ8ŒTiff÷0œttag_t
+BWmapÃ8ŒTiff.RGBAImage÷0œuint32
+BYTEÃ4ŒTiff.DataType÷0
+CIELABTORGB_TABLE_RANGEÃ8ŒTiff÷0œttag_t
+CIELabToRGBÃ2048ŒTiff÷0
+CIELabToRGBInitÃ128Õ(CIELabToRGB p1, Display p2, float[] p3)ŒTiff.TIFFUtils÷0œpublic int
+CIELabToXYZÃ128Õ(CIELabToRGB p1, uint p2, int p3, int p4, out float p5, out float p6, out float p7)ŒTiff.TIFFUtils÷0œpublic void
+CLEANFAXDATA_CLEANÃ8ŒTiff÷0œttag_t
+CLEANFAXDATA_REGENERATEDÃ8ŒTiff÷0œttag_t
+CLEANFAXDATA_UNCLEANÃ8ŒTiff÷0œttag_t
+COLORRESPONSEUNIT_100000SÃ8ŒTiff÷0œttag_t
+COLORRESPONSEUNIT_10000SÃ8ŒTiff÷0œttag_t
+COLORRESPONSEUNIT_1000SÃ8ŒTiff÷0œttag_t
+COLORRESPONSEUNIT_100SÃ8ŒTiff÷0œttag_t
+COLORRESPONSEUNIT_10SÃ8ŒTiff÷0œttag_t
+COMPRESSION_ADOBE_DEFLATEÃ8ŒTiff÷0œttag_t
+COMPRESSION_CCITTFAX3Ã8ŒTiff÷0œttag_t
+COMPRESSION_CCITTFAX4Ã8ŒTiff÷0œttag_t
+COMPRESSION_CCITTRLEÃ8ŒTiff÷0œttag_t
+COMPRESSION_CCITTRLEWÃ8ŒTiff÷0œttag_t
+COMPRESSION_CCITT_T4Ã8ŒTiff÷0œttag_t
+COMPRESSION_CCITT_T6Ã8ŒTiff÷0œttag_t
+COMPRESSION_DEFLATEÃ8ŒTiff÷0œttag_t
+COMPRESSION_IT8BLÃ8ŒTiff÷0œttag_t
+COMPRESSION_IT8CTPADÃ8ŒTiff÷0œttag_t
+COMPRESSION_IT8LWÃ8ŒTiff÷0œttag_t
+COMPRESSION_IT8MPÃ8ŒTiff÷0œttag_t
+COMPRESSION_JBIGÃ8ŒTiff÷0œttag_t
+COMPRESSION_JP2000Ã8ŒTiff÷0œttag_t
+COMPRESSION_JPEGÃ8ŒTiff÷0œttag_t
+COMPRESSION_LZWÃ8ŒTiff÷0œttag_t
+COMPRESSION_NEXTÃ8ŒTiff÷0œttag_t
+COMPRESSION_NONEÃ8ŒTiff÷0œttag_t
+COMPRESSION_OJPEGÃ8ŒTiff÷0œttag_t
+COMPRESSION_PACKBITSÃ8ŒTiff÷0œttag_t
+COMPRESSION_PIXARFILMÃ8ŒTiff÷0œttag_t
+COMPRESSION_PIXARLOGÃ8ŒTiff÷0œttag_t
+COMPRESSION_SGILOGÃ8ŒTiff÷0œttag_t
+COMPRESSION_SGILOG24Ã8ŒTiff÷0œttag_t
+COMPRESSION_THUNDERSCANÃ8ŒTiff÷0œttag_t
+Cb_b_tabÃ8ŒTiff.YCbCrToRGB÷0œint
+Cb_g_tabÃ8ŒTiff.YCbCrToRGB÷0œint32
+CheckTileÃ128Õ(uint32 p1, uint32 p2, uint32 p3, tsample_t p4)ŒTiff.TIFF÷0œpublic bool
+CheckpointDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+CleanupÃ128Õ()ŒTiff.TIFF÷0œpublic void
+ClientOpenÃ128Õ(string p1, string p2, thandle_t p3, ReadWriteProc p4, ReadWriteProc p5, SeekProc p6, CloseProc p7, SizeProc p8, MapFileProc p9, UnmapFileProc p10)ŒTiff.TIFFUtils÷0œpublic TIFF
+ClientdataÃ128Õ()ŒTiff.TIFF÷0œpublic thandle_t
+CloseProcÃ128Õ(thandle_t p1)ŒTiff÷0œpublic delegate int
+CodecÃ2048ŒTiff÷0
+ComputeStripÃ128Õ(uint p1, tsample_t p2)ŒTiff.TIFF÷0œpublic tstrip_t
+ComputeTileÃ128Õ(uint32 p1, uint32 p2, uint32 p3, tsample_t p4)ŒTiff.TIFF÷0œpublic ttile_t
+Cr_g_tabÃ8ŒTiff.YCbCrToRGB÷0œint32
+Cr_r_tabÃ8ŒTiff.YCbCrToRGB÷0œint
+CreateDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic int
+CurrentDirOffsetÃ128Õ()ŒTiff.TIFF÷0œpublic uint32
+CurrentDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic tdir_t
+CurrentRowÃ128Õ()ŒTiff.TIFF÷0œpublic uint32
+CurrentStripÃ128Õ()ŒTiff.TIFF÷0œpublic tstrip_t
+CurrentTileÃ128Õ()ŒTiff.TIFF÷0œpublic ttile_t
+DCSIMAGERFILTER_CFAÃ8ŒTiff÷0œttag_t
+DCSIMAGERFILTER_IRÃ8ŒTiff÷0œttag_t
+DCSIMAGERFILTER_MONOÃ8ŒTiff÷0œttag_t
+DCSIMAGERFILTER_OTHERÃ8ŒTiff÷0œttag_t
+DCSIMAGERMODEL_M3Ã8ŒTiff÷0œttag_t
+DCSIMAGERMODEL_M5Ã8ŒTiff÷0œttag_t
+DCSIMAGERMODEL_M6Ã8ŒTiff÷0œttag_t
+DCSINTERPMODE_NORMALÃ8ŒTiff÷0œttag_t
+DCSINTERPMODE_PREVIEWÃ8ŒTiff÷0œttag_t
+DIROFFSET_SIZEÃ8ŒTiff÷0œttag_t
+DOUBLEÃ4ŒTiff.DataType÷0
+DataTypeÃ2ŒTiff÷0
+DataWidthÃ128Õ(DataType p1)ŒTiff.TIFFUtils÷0œpublic int
+DefaultStripSizeÃ128Õ(uint32 p1)ŒTiff.TIFF÷0œpublic uint32
+DefaultTileSizeÃ128Õ(out uint32 p1, out uint32 p2)ŒTiff.TIFF÷0œpublic void
+DirEntryÃ2048ŒTiff÷0
+DisplayÃ2048ŒTiff÷0
+EMPTYÃ4ŒTiff.IgnoreSense÷0
+EXIFTAG_APERTUREVALUEÃ8ŒTiff÷0œttag_t
+EXIFTAG_BRIGHTNESSVALUEÃ8ŒTiff÷0œttag_t
+EXIFTAG_CFAPATTERNÃ8ŒTiff÷0œttag_t
+EXIFTAG_COLORSPACEÃ8ŒTiff÷0œttag_t
+EXIFTAG_COMPRESSEDBITSPERPIXELÃ8ŒTiff÷0œttag_t
+EXIFTAG_CONTRASTÃ8ŒTiff÷0œttag_t
+EXIFTAG_CUSTOMRENDEREDÃ8ŒTiff÷0œttag_t
+EXIFTAG_DATETIMEORIGINALÃ8ŒTiff÷0œttag_t
+EXIFTAG_DEVICESETTINGDESCRIPTIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_DIGITALZOOMRATIOÃ8ŒTiff÷0œttag_t
+EXIFTAG_EXPOSUREBIASVALUEÃ8ŒTiff÷0œttag_t
+EXIFTAG_EXPOSUREINDEXÃ8ŒTiff÷0œttag_t
+EXIFTAG_EXPOSUREMODEÃ8ŒTiff÷0œttag_t
+EXIFTAG_EXPOSUREPROGRAMÃ8ŒTiff÷0œttag_t
+EXIFTAG_EXPOSURETIMEÃ8ŒTiff÷0œttag_t
+EXIFTAG_FILESOURCEÃ8ŒTiff÷0œttag_t
+EXIFTAG_FLASHÃ8ŒTiff÷0œttag_t
+EXIFTAG_FLASHENERGYÃ8ŒTiff÷0œttag_t
+EXIFTAG_FLASHPIXVERSIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_FNUMBERÃ8ŒTiff÷0œttag_t
+EXIFTAG_FOCALLENGTHÃ8ŒTiff÷0œttag_t
+EXIFTAG_FOCALLENGTHIN35MMFILMÃ8ŒTiff÷0œttag_t
+EXIFTAG_FOCALPLANERESOLUTIONUNITÃ8ŒTiff÷0œttag_t
+EXIFTAG_FOCALPLANEXRESOLUTIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_FOCALPLANEYRESOLUTIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_GAINCONTROLÃ8ŒTiff÷0œttag_t
+EXIFTAG_IMAGEUNIQUEIDÃ8ŒTiff÷0œttag_t
+EXIFTAG_ISOSPEEDRATINGSÃ8ŒTiff÷0œttag_t
+EXIFTAG_LIGHTSOURCEÃ8ŒTiff÷0œttag_t
+EXIFTAG_MAKERNOTEÃ8ŒTiff÷0œttag_t
+EXIFTAG_MAXAPERTUREVALUEÃ8ŒTiff÷0œttag_t
+EXIFTAG_METERINGMODEÃ8ŒTiff÷0œttag_t
+EXIFTAG_OECFÃ8ŒTiff÷0œttag_t
+EXIFTAG_PIXELXDIMENSIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_PIXELYDIMENSIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_RELATEDSOUNDFILEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SATURATIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_SCENECAPTURETYPEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SCENETYPEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SENSINGMETHODÃ8ŒTiff÷0œttag_t
+EXIFTAG_SHARPNESSÃ8ŒTiff÷0œttag_t
+EXIFTAG_SHUTTERSPEEDVALUEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SPATIALFREQUENCYRESPONSEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SPECTRALSENSITIVITYÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBJECTAREAÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBJECTDISTANCEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBJECTDISTANCERANGEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBJECTLOCATIONÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBSECTIMEÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBSECTIMEDIGITIZEDÃ8ŒTiff÷0œttag_t
+EXIFTAG_SUBSECTIMEORIGINALÃ8ŒTiff÷0œttag_t
+EXIFTAG_USERCOMMENTÃ8ŒTiff÷0œttag_t
+EXIFTAG_WHITEBALANCEÃ8ŒTiff÷0œttag_t
+EXTRACTÃ4ŒTiff.IgnoreSense÷0
+EXTRASAMPLE_ASSOCALPHAÃ8ŒTiff÷0œttag_t
+EXTRASAMPLE_UNASSALPHAÃ8ŒTiff÷0œttag_t
+EXTRASAMPLE_UNSPECIFIEDÃ8ŒTiff÷0œttag_t
+ErrorÃ128Õ(string p1, string p2, ...)ŒTiff.TIFFUtils÷0œpublic void
+ErrorExtÃ128Õ(thandle_t p1, string p2, string p3, ...)ŒTiff.TIFFUtils÷0œpublic void
+ExtendProcÃ128Õ(TIFF p1)ŒTiff÷0œpublic delegate void
+FAXMODE_BYTEALIGNÃ8ŒTiff÷0œttag_t
+FAXMODE_CLASSICÃ8ŒTiff÷0œttag_t
+FAXMODE_NOEOLÃ8ŒTiff÷0œttag_t
+FAXMODE_NORTCÃ8ŒTiff÷0œttag_t
+FAXMODE_WORDALIGNÃ8ŒTiff÷0œttag_t
+FIELD_CUSTOMÃ8ŒTiff÷0œttag_t
+FILETYPE_MASKÃ8ŒTiff÷0œttag_t
+FILETYPE_PAGEÃ8ŒTiff÷0œttag_t
+FILETYPE_REDUCEDIMAGEÃ8ŒTiff÷0œttag_t
+FILLORDER_LSB2MSBÃ8ŒTiff÷0œttag_t
+FILLORDER_MSB2LSBÃ8ŒTiff÷0œttag_t
+FLOATÃ4ŒTiff.DataType÷0
+FdOpenÃ128Õ(int p1, string p2, string p3)ŒTiff.TIFFUtils÷0œpublic TIFF
+FieldInfoÃ2048ŒTiff÷0
+FieldWithNameÃ128Õ(string p1)ŒTiff.TIFF÷0œpublic unowned
+FieldWithTagÃ128Õ(ttag_t p1)ŒTiff.TIFF÷0œpublic unowned
+FileNameÃ128Õ()ŒTiff.TIFF÷0œpublic unowned string
+FilenoÃ128Õ()ŒTiff.TIFF÷0œpublic int
+FindCODECÃ128Õ(ushort p1)ŒTiff.TIFFUtils÷0œpublic unowned
+FindFieldInfoÃ128Õ(ttag_t p1, DataType p2)ŒTiff.TIFF÷0œpublic unowned
+FindFieldInfoByNameÃ128Õ(string p1, DataType p2)ŒTiff.TIFF÷0œpublic unowned
+FlushÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+FlushDataÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+FreeDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic void
+GRAYRESPONSEUNIT_100000SÃ8ŒTiff÷0œttag_t
+GRAYRESPONSEUNIT_10000SÃ8ŒTiff÷0œttag_t
+GRAYRESPONSEUNIT_1000SÃ8ŒTiff÷0œttag_t
+GRAYRESPONSEUNIT_100SÃ8ŒTiff÷0œttag_t
+GRAYRESPONSEUNIT_10SÃ8ŒTiff÷0œttag_t
+GROUP3OPT_2DENCODINGÃ8ŒTiff÷0œttag_t
+GROUP3OPT_FILLBITSÃ8ŒTiff÷0œttag_t
+GROUP3OPT_UNCOMPRESSEDÃ8ŒTiff÷0œttag_t
+GROUP4OPT_UNCOMPRESSEDÃ8ŒTiff÷0œttag_t
+GetAlphaÃ128Õ(int32 abgr)ŒTiff.TIFFUtils÷0œpublic uint8
+GetBitRevTableÃ128Õ(int p1)ŒTiff.TIFFUtils÷0œpublic unowned string
+GetBlueÃ128Õ(uint32 abgr)ŒTiff.TIFFUtils÷0œpublic uint8
+GetClientInfoÃ128Õ(string p1)ŒTiff.TIFF÷0œpublic void *
+GetCloseProcÃ128Õ()ŒTiff.TIFF÷0œpublic CloseProc
+GetConfiguredCODECsÃ128Õ()ŒTiff.TIFFUtils÷0œpublic Codec
+GetFieldÃ128Õ(ttag_t p1, ...)ŒTiff.TIFF÷0œpublic int
+GetFieldDefaultedÃ128Õ(ttag_t p1, ...)ŒTiff.TIFF÷0œpublic int
+GetGreenÃ128Õ(uint32 abgr)ŒTiff.TIFFUtils÷0œpublic int8
+GetMapFileProcÃ128Õ()ŒTiff.TIFF÷0œpublic MapFileProc
+GetModeÃ128Õ()ŒTiff.TIFF÷0œpublic int
+GetReadProcÃ128Õ()ŒTiff.TIFF÷0œpublic ReadWriteProc
+GetRedÃ128Õ(uint32 abgr)ŒTiff.TIFFUtils÷0œpublic uint8
+GetSeekProcÃ128Õ()ŒTiff.TIFF÷0œpublic SeekProc
+GetSizeProcÃ128Õ()ŒTiff.TIFF÷0œpublic SizeProc
+GetTagListCountÃ128Õ()ŒTiff.TIFF÷0œpublic int
+GetTagListEntryÃ128Õ(int tag_index)ŒTiff.TIFF÷0œpublic ttag_t
+GetUnmapFileProcÃ128Õ()ŒTiff.TIFF÷0œpublic UnmapFileProc
+GetVersionÃ128Õ()ŒTiff.TIFFUtils÷0œpublic unowned string
+GetWriteProcÃ128Õ()ŒTiff.TIFF÷0œpublic ReadWriteProc
+HeaderÃ2048ŒTiff÷0
+IFDÃ4ŒTiff.DataType÷0
+INKSET_CMYKÃ8ŒTiff÷0œttag_t
+INKSET_MULTIINKÃ8ŒTiff÷0œttag_t
+IgnoreSenseÃ2ŒTiff÷0
+InitMethodÃ128Õ(TIFF p1, int p2)ŒTiff÷0œpublic delegate int
+IsBigEndianÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+IsByteSwappedÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+IsCODECConfiguredÃ128Õ(ushort p1)ŒTiff.TIFFUtils÷0œpublic int
+IsMSB2LSBÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+IsTiledÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+IsUpSampledÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+JPEGCOLORMODE_RAWÃ8ŒTiff÷0œttag_t
+JPEGCOLORMODE_RGBÃ8ŒTiff÷0œttag_t
+JPEGPROC_BASELINEÃ8ŒTiff÷0œttag_t
+JPEGPROC_LOSSLESSÃ8ŒTiff÷0œttag_t
+JPEGTABLESMODE_HUFFÃ8ŒTiff÷0œttag_t
+JPEGTABLESMODE_QUANTÃ8ŒTiff÷0œttag_t
+LITTLEENDIANÃ8ŒTiff÷0œttag_t
+LOGLUV_PUBLICÃ8ŒTiff÷0œttag_t
+LONGÃ4ŒTiff.DataType÷0
+LastDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+LogL10fromYÃ128Õ(double p1, int p2)ŒTiff.TIFFUtils÷0œpublic int
+LogL10toYÃ128Õ(int p1)ŒTiff.TIFFUtils÷0œpublic double
+LogL16fromYÃ128Õ(double p1, int p2)ŒTiff.TIFFUtils÷0œpublic int
+LogL16toYÃ128Õ(int p1)ŒTiff.TIFFUtils÷0œpublic double
+LogLuv24fromXYZÃ128Õ(float p1, int p2)ŒTiff.TIFFUtils÷0
+LogLuv24toXYZÃ128Õ(uint32 p1, float p2)ŒTiff.TIFFUtils÷0œpublic void
+LogLuv32fromXYZÃ128Õ(float p1, int p2)ŒTiff.TIFFUtils÷0
+LogLuv32toXYZÃ128Õ(uint32 p1, float p2)ŒTiff.TIFFUtils÷0œpublic void
+MAGIC_SIZEÃ8ŒTiff÷0œttag_t
+MDI_BIGENDIANÃ8ŒTiff÷0œttag_t
+MDI_LITTLEENDIANÃ8ŒTiff÷0œttag_t
+MapÃ8ŒTiff.RGBAImage÷0œRGBValue
+MapFileProcÃ128Õ(thandle_t p1, ref tdata_t p2, ref toff_t p3)ŒTiff÷0œpublic delegate int
+MergeFieldInfoÃ128Õ(FieldInfo[] p1, int p2)ŒTiff.TIFF÷0œpublic void
+NOTYPEÃ4ŒTiff.DataType÷0
+NumberOfDirectoriesÃ128Õ()ŒTiff.TIFF÷0œpublic tdir_t
+NumberOfStripsÃ128Õ()ŒTiff.TIFF÷0œpublic tstrip_t
+NumberOfTilesÃ128Õ()ŒTiff.TIFF÷0œpublic ttile_t
+OFILETYPE_IMAGEÃ8ŒTiff÷0œttag_t
+OFILETYPE_PAGEÃ8ŒTiff÷0œttag_t
+OFILETYPE_REDUCEDIMAGEÃ8ŒTiff÷0œttag_t
+ORIENTATION_BOTLEFTÃ8ŒTiff÷0œttag_t
+ORIENTATION_BOTRIGHTÃ8ŒTiff÷0œttag_t
+ORIENTATION_LEFTBOTÃ8ŒTiff÷0œttag_t
+ORIENTATION_LEFTTOPÃ8ŒTiff÷0œttag_t
+ORIENTATION_RIGHTBOTÃ8ŒTiff÷0œttag_t
+ORIENTATION_RIGHTTOPÃ8ŒTiff÷0œttag_t
+ORIENTATION_TOPLEFTÃ8ŒTiff÷0œttag_t
+ORIENTATION_TOPRIGHTÃ8ŒTiff÷0œttag_t
+PALmapÃ8ŒTiff.RGBAImage÷0œuint32
+PHOTOMETRIC_CIELABÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_ICCLABÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_ITULABÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_LOGLÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_LOGLUVÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_MASKÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_MINISBLACKÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_MINISWHITEÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_PALETTEÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_RGBÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_SEPARATEDÃ8ŒTiff÷0œttag_t
+PHOTOMETRIC_YCBCRÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_11BITLOGÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_12BITPICIOÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_16BITÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_8BITÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_8BITABGRÃ8ŒTiff÷0œttag_t
+PIXARLOGDATAFMT_FLOATÃ8ŒTiff÷0œttag_t
+PLANARCONFIG_CONTIGÃ8ŒTiff÷0œttag_t
+PLANARCONFIG_SEPARATEÃ8ŒTiff÷0œttag_t
+PREDICTOR_FLOATINGPOINTÃ8ŒTiff÷0œttag_t
+PREDICTOR_HORIZONTALÃ8ŒTiff÷0œttag_t
+PREDICTOR_NONEÃ8ŒTiff÷0œttag_t
+PrintDirectoryÃ128Õ(GLib.FileStream p1, long p2)ŒTiff.TIFF÷0œpublic void
+PrintMethodÃ128Õ(TIFF p1, GLib.FileStream p2, long p3)ŒTiff÷0œpublic delegate void
+PutUnionÃ1ŒTiff÷0
+RATIONALÃ4ŒTiff.DataType÷0
+RESUNIT_CENTIMETERÃ8ŒTiff÷0œttag_t
+RESUNIT_INCHÃ8ŒTiff÷0œttag_t
+RESUNIT_NONEÃ8ŒTiff÷0œttag_t
+RGBAImageÃ2048ŒTiff÷0
+RGBAImageBeginÃ128Õ(RGBAImage p1, TIFF p2, int p3, string[] p4)ŒTiff.TIFFUtils÷0œpublic int
+RGBAImageEndÃ128Õ(RGBAImage p1)ŒTiff.TIFFUtils÷0œpublic void
+RGBAImageGetÃ128Õ(RGBAImage p1, [CCode (array_length = false)] uint32[] p2, uint32 p3, uint32 p4)ŒTiff.TIFFUtils÷0œpublic int
+RGBAImageOKÃ128Õ(string p1)ŒTiff.TIFF÷0œpublic bool
+RGBValueÃ2048ŒTiff÷0
+RasterScanlineSizeÃ128Õ()ŒTiff.TIFF÷0œpublic tsize_t
+RawStripSizeÃ128Õ(tstrip_t p1)ŒTiff.TIFF÷0œpublic tsize_t
+ReadBufferSetupÃ128Õ(tdata_t p1, tsize_t p2)ŒTiff.TIFF÷0œpublic bool
+ReadCustomDirectoryÃ128Õ(toff_t p1, FieldInfo[] p2, size_t p3)ŒTiff.TIFF÷0œpublic bool
+ReadDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+ReadEXIFDirectoryÃ128Õ(toff_t p1)ŒTiff.TIFF÷0œpublic bool
+ReadEncodedStripÃ128Õ(tstrip_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+ReadEncodedTileÃ128Õ(ttile_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+ReadRGBAImageÃ128Õ(uint32 p1, uint32 p2, [CCode (array_length = false)] uint32[] p3, int p4)ŒTiff.TIFF÷0œpublic bool
+ReadRGBAImageOrientedÃ128Õ(uint32 p1, uint32 p2, [CCode (array_length = false)] uint32[] p3, int p4, int p5)ŒTiff.TIFF÷0œpublic bool
+ReadRGBAStripÃ128Õ(tstrip_t p1, [CCode (array_length = false)] uint32[] p2)ŒTiff.TIFF÷0œpublic bool
+ReadRGBATileÃ128Õ(uint32 p1, uint32 p2, [CCode (array_length = false)] uint32[] p3)ŒTiff.TIFF÷0œpublic bool
+ReadRawStripÃ128Õ(tstrip_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+ReadRawTileÃ128Õ(ttile_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+ReadScanlineÃ128Õ(tdata_t p1, uint32 p2, tsample_t p3)ŒTiff.TIFF÷0œpublic int
+ReadTileÃ128Õ(tdata_t p1, uint32 p2, uint32 p3, uint32 p4, tsample_t p5)ŒTiff.TIFF÷0œpublic tsize_t
+ReadWriteProcÃ128Õ(thandle_t p1, tdata_t p2, tsize_t p3)ŒTiff÷0œpublic delegate tsize_t
+ReassignTagToIgnoreÃ128Õ(IgnoreSense p1, int p2)ŒTiff.TIFFUtils÷0œpublic int
+RegisterCODECÃ128Õ(uint16 p1, string p2, InitMethod p3)ŒTiff.TIFFUtils÷0œpublic Codec
+ReverseBitsÃ128Õ(uchar[] p1, ulong p2)ŒTiff.TIFFUtils÷0œpublic void
+RewriteDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic int
+SAMPLEFORMAT_COMPLEXIEEEFPÃ8ŒTiff÷0œttag_t
+SAMPLEFORMAT_COMPLEXINTÃ8ŒTiff÷0œttag_t
+SAMPLEFORMAT_IEEEFPÃ8ŒTiff÷0œttag_t
+SAMPLEFORMAT_INTÃ8ŒTiff÷0œttag_t
+SAMPLEFORMAT_UINTÃ8ŒTiff÷0œttag_t
+SAMPLEFORMAT_VOIDÃ8ŒTiff÷0œttag_t
+SBYTEÃ4ŒTiff.DataType÷0
+SGILOGDATAFMT_16BITÃ8ŒTiff÷0œttag_t
+SGILOGDATAFMT_8BITÃ8ŒTiff÷0œttag_t
+SGILOGDATAFMT_FLOATÃ8ŒTiff÷0œttag_t
+SGILOGDATAFMT_RAWÃ8ŒTiff÷0œttag_t
+SGILOGENCODE_NODITHERÃ8ŒTiff÷0œttag_t
+SGILOGENCODE_RANDITHERÃ8ŒTiff÷0œttag_t
+SHORTÃ4ŒTiff.DataType÷0
+SLONGÃ4ŒTiff.DataType÷0
+SPPÃ8ŒTiff÷0œttag_t
+SRATIONALÃ4ŒTiff.DataType÷0
+SSHORTÃ4ŒTiff.DataType÷0
+STOREÃ4ŒTiff.IgnoreSense÷0
+ScanlineSizeÃ128Õ()ŒTiff.TIFF÷0œpublic tsize_t
+SeekProcÃ128Õ(thandle_t p1, toff_t p2, int p3)ŒTiff÷0œpublic delegate toff_t
+SetClientInfoÃ128Õ(void* p1, string p2)ŒTiff.TIFF÷0œpublic void
+SetClientdataÃ128Õ(thandle_t p1)ŒTiff.TIFF÷0œpublic thandle_t
+SetDirectoryÃ128Õ(tdir_t p1)ŒTiff.TIFF÷0œpublic int
+SetFieldÃ128Õ(ttag_t p1, ...)ŒTiff.TIFF÷0œpublic bool
+SetFileNameÃ128Õ(string p1)ŒTiff.TIFF÷0œpublic unowned string
+SetFilenoÃ128Õ(int p1)ŒTiff.TIFF÷0œpublic int
+SetModeÃ128Õ(int p1)ŒTiff.TIFF÷0œpublic int
+SetSubDirectoryÃ128Õ(uint32 p1)ŒTiff.TIFF÷0œpublic int
+SetTagExtenderÃ128Õ(ExtendProc p1)ŒTiff.TIFFUtils÷0œpublic ExtendProc
+SetWriteOffsetÃ128Õ(toff_t p1)ŒTiff.TIFF÷0œpublic void
+SetupStripsÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+SizeProcÃ128Õ(thandle_t p1)ŒTiff÷0œpublic delegate toff_t
+StripSizeÃ128Õ()ŒTiff.TIFF÷0œpublic tsize_t
+SwabArrayOfDoubleÃ128Õ(double[] p1, ulong p2)ŒTiff.TIFFUtils÷0œpublic void
+SwabArrayOfLongÃ128Õ(uint32[] p1, ulong p2)ŒTiff.TIFFUtils÷0œpublic void
+SwabArrayOfShortÃ128Õ(uint16[] p1, ulong p2)ŒTiff.TIFFUtils÷0œpublic void
+SwabArrayOfTriplesÃ128Õ(uint8[] p1, ulong p2)ŒTiff.TIFFUtils÷0œpublic void
+SwabDoubleÃ128Õ(double[] p1)ŒTiff.TIFFUtils÷0œpublic void
+SwabLongÃ128Õ(uint32[] p1)ŒTiff.TIFFUtils÷0œpublic void
+SwabShortÃ128Õ(uint16[] p1)ŒTiff.TIFFUtils÷0œpublic void
+THRESHHOLD_BILEVELÃ8ŒTiff÷0œttag_t
+THRESHHOLD_ERRORDIFFUSEÃ8ŒTiff÷0œttag_t
+THRESHHOLD_HALFTONEÃ8ŒTiff÷0œttag_t
+TIFFÃ1ŒTiff÷0
+TIFFÃ128Õ(string path, string mode)ŒTiff.TIFF÷0
+TIFFPRINT_COLORMAPÃ8ŒTiff÷0œttag_t
+TIFFPRINT_CURVESÃ8ŒTiff÷0œttag_t
+TIFFPRINT_JPEGACTABLESÃ8ŒTiff÷0œttag_t
+TIFFPRINT_JPEGDCTABLESÃ8ŒTiff÷0œttag_t
+TIFFPRINT_JPEGQTABLESÃ8ŒTiff÷0œttag_t
+TIFFPRINT_NONEÃ8ŒTiff÷0œttag_t
+TIFFPRINT_STRIPSÃ8ŒTiff÷0œttag_t
+TIFFTAG_ANTIALIASSTRENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_ARTISTÃ8ŒTiff÷0œttag_t
+TIFFTAG_ASSHOTPREPROFILEMATRIXÃ8ŒTiff÷0œttag_t
+TIFFTAG_BADFAXLINESÃ8ŒTiff÷0œttag_t
+TIFFTAG_BASELINESHARPNESSÃ8ŒTiff÷0œttag_t
+TIFFTAG_BESTQUALITYSCALEÃ8ŒTiff÷0œttag_t
+TIFFTAG_BITSPERSAMPLEÃ8ŒTiff÷0œttag_t
+TIFFTAG_BLACKLEVELDELTAHÃ8ŒTiff÷0œttag_t
+TIFFTAG_BLACKLEVELREPEATDIMÃ8ŒTiff÷0œttag_t
+TIFFTAG_CALIBRATIONILLUMINANT2Ã8ŒTiff÷0œttag_t
+TIFFTAG_CAMERACALIBRATION2Ã8ŒTiff÷0œttag_t
+TIFFTAG_CAMERASERIALNUMBERÃ8ŒTiff÷0œttag_t
+TIFFTAG_CELLLENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_CELLWIDTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_CHROMABLURRADIUSÃ8ŒTiff÷0œttag_t
+TIFFTAG_CLEANFAXDATAÃ8ŒTiff÷0œttag_t
+TIFFTAG_CLIPPATHÃ8ŒTiff÷0œttag_t
+TIFFTAG_COLORMAPÃ8ŒTiff÷0œttag_t
+TIFFTAG_COLORRESPONSEUNITÃ8ŒTiff÷0œttag_t
+TIFFTAG_COMPRESSIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_CONSECUTIVEBADFAXLINESÃ8ŒTiff÷0œttag_t
+TIFFTAG_COPYRIGHTÃ8ŒTiff÷0œttag_t
+TIFFTAG_CURRENTPREPROFILEMATRIXÃ8ŒTiff÷0œttag_t
+TIFFTAG_DATATYPEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DATETIMEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSBALANCEARRAYÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSCALIBRATIONFDÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSCLIPRECTANGLEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSCORRECTMATRIXÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSGAMMAÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSHUESHIFTVALUESÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSIMAGERTYPEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSINTERPMODEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DCSTOESHOULDERPTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_DEFAULTCROPORIGINÃ8ŒTiff÷0œttag_t
+TIFFTAG_DNGBACKWARDVERSIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_DNGPRIVATEDATAÃ8ŒTiff÷0œttag_t
+TIFFTAG_DNGVERSIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_DOCUMENTNAMEÃ8ŒTiff÷0œttag_t
+TIFFTAG_DOTRANGEÃ8ŒTiff÷0œttag_t
+TIFFTAG_EXIFIFDÃ8ŒTiff÷0œttag_t
+TIFFTAG_EXTRASAMPLESÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXDCSÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXFILLFUNCÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXMODEÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXRECVPARAMSÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXRECVTIMEÃ8ŒTiff÷0œttag_t
+TIFFTAG_FAXSUBADDRESSÃ8ŒTiff÷0œttag_t
+TIFFTAG_FEDEX_EDRÃ8ŒTiff÷0œttag_t
+TIFFTAG_FILLORDERÃ8ŒTiff÷0œttag_t
+TIFFTAG_FRAMECOUNTÃ8ŒTiff÷0œttag_t
+TIFFTAG_FREEBYTECOUNTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_FREEOFFSETSÃ8ŒTiff÷0œttag_t
+TIFFTAG_GPSIFDÃ8ŒTiff÷0œttag_t
+TIFFTAG_GRAYRESPONSECURVEÃ8ŒTiff÷0œttag_t
+TIFFTAG_GRAYRESPONSEUNITÃ8ŒTiff÷0œttag_t
+TIFFTAG_GROUP3OPTIONSÃ8ŒTiff÷0œttag_t
+TIFFTAG_GROUP4OPTIONSÃ8ŒTiff÷0œttag_t
+TIFFTAG_HALFTONEHINTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_HOSTCOMPUTERÃ8ŒTiff÷0œttag_t
+TIFFTAG_ICCPROFILEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IMAGEDEPTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_IMAGEDESCRIPTIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_IMAGELENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_IMAGEWIDTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_INKNAMESÃ8ŒTiff÷0œttag_t
+TIFFTAG_INKSETÃ8ŒTiff÷0œttag_t
+TIFFTAG_INTEROPERABILITYIFDÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8BITSPEREXTENDEDRUNLENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8BITSPERRUNLENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8BKGCOLORINDICATORÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8BKGCOLORVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8COLORCHARACTERIZATIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8COLORSEQUENCEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8COLORTABLEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8HCUSAGEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8HEADERÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8IMAGECOLORINDICATORÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8IMAGECOLORVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8PIXELINTENSITYRANGEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8RASTERPADDINGÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8SITEÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8TRANSPARENCYINDICATORÃ8ŒTiff÷0œttag_t
+TIFFTAG_IT8TRAPINDICATORÃ8ŒTiff÷0œttag_t
+TIFFTAG_JBIGOPTIONSÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGACTABLESÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGCOLORMODEÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGDCTABLESÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGIFBYTECOUNTÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGIFOFFSETÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGLOSSLESSPREDICTORSÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGPOINTTRANSFORMÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGPROCÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGQTABLESÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGQUALITYÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGRESTARTINTERVALÃ8ŒTiff÷0œttag_t
+TIFFTAG_JPEGTABLESMODEÃ8ŒTiff÷0œttag_t
+TIFFTAG_LENSINFOÃ8ŒTiff÷0œttag_t
+TIFFTAG_LINEARIZATIONTABLEÃ8ŒTiff÷0œttag_t
+TIFFTAG_LOCALIZEDCAMERAMODELÃ8ŒTiff÷0œttag_t
+TIFFTAG_MAKEÃ8ŒTiff÷0œttag_t
+TIFFTAG_MAKERNOTESAFETYÃ8ŒTiff÷0œttag_t
+TIFFTAG_MATTEINGÃ8ŒTiff÷0œttag_t
+TIFFTAG_MAXSAMPLEVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_MINSAMPLEVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_MODELÃ8ŒTiff÷0œttag_t
+TIFFTAG_NUMBEROFINKSÃ8ŒTiff÷0œttag_t
+TIFFTAG_OPIPROXYÃ8ŒTiff÷0œttag_t
+TIFFTAG_ORIENTATIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_OSUBFILETYPEÃ8ŒTiff÷0œttag_t
+TIFFTAG_PAGENAMEÃ8ŒTiff÷0œttag_t
+TIFFTAG_PAGENUMBERÃ8ŒTiff÷0œttag_t
+TIFFTAG_PHOTOMETRICÃ8ŒTiff÷0œttag_t
+TIFFTAG_PHOTOSHOPÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXARLOGDATAFMTÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXARLOGQUALITYÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_FOVCOTÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_IMAGEFULLLENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_IMAGEFULLWIDTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_MATRIX_WORLDTOCAMERAÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_MATRIX_WORLDTOSCREENÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_TEXTUREFORMATÃ8ŒTiff÷0œttag_t
+TIFFTAG_PIXAR_WRAPMODESÃ8ŒTiff÷0œttag_t
+TIFFTAG_PLANARCONFIGÃ8ŒTiff÷0œttag_t
+TIFFTAG_PREDICTORÃ8ŒTiff÷0œttag_t
+TIFFTAG_PRIMARYCHROMATICITIESÃ8ŒTiff÷0œttag_t
+TIFFTAG_RAWDATAUNIQUEIDÃ8ŒTiff÷0œttag_t
+TIFFTAG_REDUCTIONMATRIX1Ã8ŒTiff÷0œttag_t
+TIFFTAG_REFERENCEBLACKWHITEÃ8ŒTiff÷0œttag_t
+TIFFTAG_REGIONAFFINEÃ8ŒTiff÷0œttag_t
+TIFFTAG_REGIONTACKPOINTÃ8ŒTiff÷0œttag_t
+TIFFTAG_REGIONWARPCORNERSÃ8ŒTiff÷0œttag_t
+TIFFTAG_RESOLUTIONUNITÃ8ŒTiff÷0œttag_t
+TIFFTAG_RICHTIFFIPTCÃ8ŒTiff÷0œttag_t
+TIFFTAG_ROWSPERSTRIPÃ8ŒTiff÷0œttag_t
+TIFFTAG_SAMPLEFORMATÃ8ŒTiff÷0œttag_t
+TIFFTAG_SAMPLESPERPIXELÃ8ŒTiff÷0œttag_t
+TIFFTAG_SGILOGDATAFMTÃ8ŒTiff÷0œttag_t
+TIFFTAG_SGILOGENCODEÃ8ŒTiff÷0œttag_t
+TIFFTAG_SMAXSAMPLEVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_SMINSAMPLEVALUEÃ8ŒTiff÷0œttag_t
+TIFFTAG_SOFTWAREÃ8ŒTiff÷0œttag_t
+TIFFTAG_STONITSÃ8ŒTiff÷0œttag_t
+TIFFTAG_STRIPBYTECOUNTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_STRIPOFFSETSÃ8ŒTiff÷0œttag_t
+TIFFTAG_SUBFILETYPEÃ8ŒTiff÷0œttag_t
+TIFFTAG_SUBIFDÃ8ŒTiff÷0œttag_t
+TIFFTAG_T4OPTIONSÃ8ŒTiff÷0œttag_t
+TIFFTAG_T6OPTIONSÃ8ŒTiff÷0œttag_t
+TIFFTAG_TARGETPRINTERÃ8ŒTiff÷0œttag_t
+TIFFTAG_THRESHHOLDINGÃ8ŒTiff÷0œttag_t
+TIFFTAG_TILEBYTECOUNTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_TILEDEPTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_TILELENGTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_TILEOFFSETSÃ8ŒTiff÷0œttag_t
+TIFFTAG_TILEWIDTHÃ8ŒTiff÷0œttag_t
+TIFFTAG_TRANSFERFUNCTIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_UNIQUECAMERAMODELÃ8ŒTiff÷0œttag_t
+TIFFTAG_WHITEPOINTÃ8ŒTiff÷0œttag_t
+TIFFTAG_WRITERSERIALNUMBERÃ8ŒTiff÷0œttag_t
+TIFFTAG_XMLPACKETÃ8ŒTiff÷0œttag_t
+TIFFTAG_XPOSITIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_XRESOLUTIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_YCBCRCOEFFICIENTSÃ8ŒTiff÷0œttag_t
+TIFFTAG_YCBCRPOSITIONINGÃ8ŒTiff÷0œttag_t
+TIFFTAG_YCBCRSUBSAMPLINGÃ8ŒTiff÷0œttag_t
+TIFFTAG_YPOSITIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_YRESOLUTIONÃ8ŒTiff÷0œttag_t
+TIFFTAG_ZIPQUALITYÃ8ŒTiff÷0œttag_t
+TIFFUtilsÃ256÷0
+TagMethodsÃ2048ŒTiff÷0
+TagValueÃ2048ŒTiff÷0
+TiffÃ256÷0
+TileContigRoutineÃ128Õ(RGBAImage p1, uint32[] p2, uint32 p3, uint32 p4, uint32 p5, uint32 p6, int32 p7, int32 p8, uchar *p9)ŒTiff÷0œpublic delegate void
+TileRowSizeÃ128Õ()ŒTiff.TIFF÷0œpublic tsize_t
+TileSeparateRoutineÃ128Õ(RGBAImage p1, uint32[] p2, uint32 p3, uint32 p4, uint32 p5, uint32 p6, int32 p7, int32 p8, uchar p9, uchar p10, uchar* p11, uchar* p12)ŒTiff÷0œpublic delegate void
+TileSizeÃ128Õ()ŒTiff.TIFF÷0œpublic tsize_t
+UNDEFINEDÃ4ŒTiff.DataType÷0
+UnRegisterCODECÃ128Õ(Codec p1)ŒTiff.TIFFUtils÷0œpublic void
+UnlinkDirectoryÃ128Õ(tdir_t p1)ŒTiff.TIFF÷0œpublic bool
+UnmapFileProcÃ128Õ(thandle_t p1, tdata_t p2, toff_t p3)ŒTiff÷0œpublic delegate void
+VARIABLEÃ8ŒTiff÷0œttag_t
+VARIABLE2Ã8ŒTiff÷0œttag_t
+VERSIONÃ8ŒTiff÷0œttag_t
+VERSION_SIZEÃ8ŒTiff÷0œttag_t
+VStripSizeÃ128Õ(uint32 p1)ŒTiff.TIFF÷0œpublic tsize_t
+VTileSizeÃ128Õ(uint32 p1)ŒTiff.TIFF÷0œpublic tsize_t
+WarningÃ128Õ(string p1, string p2)ŒTiff.TIFFUtils÷0œpublic void
+WarningExtÃ128Õ(thandle_t p1, string p2, string p3)ŒTiff.TIFFUtils÷0œpublic void
+WriteBufferSetupÃ128Õ(tdata_t p1, tsize_t p2)ŒTiff.TIFF÷0œpublic bool
+WriteCheckÃ128Õ(int p1, string p2)ŒTiff.TIFF÷0œpublic bool
+WriteDirectoryÃ128Õ()ŒTiff.TIFF÷0œpublic bool
+WriteEncodedStripÃ128Õ(tstrip_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+WriteEncodedTileÃ128Õ(ttile_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+WriteRawStripÃ128Õ(tstrip_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+WriteRawTileÃ128Õ(ttile_t p1, tdata_t p2, tsize_t p3)ŒTiff.TIFF÷0œpublic tsize_t
+WriteScanlineÃ128Õ(tdata_t p1, uint32 p2, tsample_t p3)ŒTiff.TIFF÷0œpublic int
+WriteTileÃ128Õ(tdata_t p1, uint32 p2, uint32 p3, uint32 p4, tsample_t p5)ŒTiff.TIFF÷0œpublic tsize_t
+X0Ã8ŒTiff.CIELabToRGB÷0œfloat
+XYZToRGBÃ128Õ(CIELabToRGB p1, float p2, float p3, float p4, out uint32 p5, out uint32 p6, out uint32 p7)ŒTiff.TIFFUtils÷0œpublic void
+XYZtoRGB24Ã128Õ(float p1, uint8 p2)ŒTiff.TIFFUtils÷0œpublic void
+Y0Ã8ŒTiff.CIELabToRGB÷0œfloat
+YCBCRPOSITION_CENTEREDÃ8ŒTiff÷0œttag_t
+YCBCRPOSITION_COSITEDÃ8ŒTiff÷0œttag_t
+YCbCrToRGBÃ2048ŒTiff÷0
+YCbCrToRGBInitÃ128Õ(YCbCrToRGB p1, float[] p2, float[] p3)ŒTiff.TIFFUtils÷0œpublic int
+YCbCrtoRGBÃ128Õ(YCbCrToRGB p1, uint32 p2, int32 p3, int32 p4, out uint32 p5, out uint32 p6, out uint32 p7)ŒTiff.TIFFUtils÷0œpublic void
+Y_tabÃ8ŒTiff.YCbCrToRGB÷0œint32
+Yb2bÃ8ŒTiff.CIELabToRGB÷0œfloat
+Yg2gÃ8ŒTiff.CIELabToRGB÷0œfloat
+Yr2rÃ8ŒTiff.CIELabToRGB÷0œfloat
+Z0Ã8ŒTiff.CIELabToRGB÷0œfloat
+alphaÃ8ŒTiff.RGBAImage÷0œint
+anyÃ128Õ(RGBAImage p1)ŒTiff.PutUnion÷0œpublic delegate void
+bitspersampleÃ8ŒTiff.RGBAImage÷0œuint16
+bluecmapÃ8ŒTiff.RGBAImage÷0œuint16
+bstepÃ8ŒTiff.CIELabToRGB÷0œfloat
+cielabÃ8ŒTiff.RGBAImage÷0œCIELabToRGB
+clamptabÃ8ŒTiff.YCbCrToRGB÷0œRGBValue
+col_offsetÃ8ŒTiff.RGBAImage÷0œint
+contigÃ8ŒTiff.PutUnion÷0œTileContigRoutine
+countÃ8ŒTiff.TagValue÷0œint
+d_VrwbÃ8ŒTiff.Display÷0œuint32
+d_VrwgÃ8ŒTiff.Display÷0œuint32
+d_VrwrÃ8ŒTiff.Display÷0œuint32
+d_Y0BÃ8ŒTiff.Display÷0œfloat
+d_Y0GÃ8ŒTiff.Display÷0œfloat
+d_Y0RÃ8ŒTiff.Display÷0œfloat
+d_YCBÃ8ŒTiff.Display÷0œfloat
+d_YCGÃ8ŒTiff.Display÷0œfloat
+d_YCRÃ8ŒTiff.Display÷0œfloat
+d_gammaBÃ8ŒTiff.Display÷0œfloat
+d_gammaGÃ8ŒTiff.Display÷0œfloat
+d_gammaRÃ8ŒTiff.Display÷0œfloat
+d_matÃ8ŒTiff.Display÷0œfloat
+displayÃ8ŒTiff.CIELabToRGB÷0œDisplay
+field_bitÃ8ŒTiff.FieldInfo÷0
+field_nameÃ8ŒTiff.FieldInfo÷0
+field_oktochangeÃ8ŒTiff.FieldInfo÷0œuchar
+field_passcountÃ8ŒTiff.FieldInfo÷0œuchar
+field_readcountÃ8ŒTiff.FieldInfo÷0œshort
+field_tagÃ8ŒTiff.FieldInfo÷0œttag_t
+field_typeÃ8ŒTiff.FieldInfo÷0œDataType
+field_writecountÃ8ŒTiff.FieldInfo÷0œshort
+greencmapÃ8ŒTiff.RGBAImage÷0œuint16
+gstepÃ8ŒTiff.CIELabToRGB÷0œfloat
+heightÃ8ŒTiff.RGBAImage÷0œuint32
+infoÃ8ŒTiff.TagValue÷0œFieldInfo
+initÃ8ŒTiff.Codec÷0œInitMethod
+isContigÃ8ŒTiff.RGBAImage÷0œint
+nameÃ8ŒTiff.Codec÷0
+orientationÃ8ŒTiff.RGBAImage÷0œuint16
+photometricÃ8ŒTiff.RGBAImage÷0œuint16
+printdirÃ8ŒTiff.TagMethods÷0œPrintMethod
+putÃ8ŒTiff.RGBAImage÷0œPutUnion
+rangeÃ8ŒTiff.CIELabToRGB÷0œint
+redcmapÃ8ŒTiff.RGBAImage÷0œuint16
+req_orientationÃ8ŒTiff.RGBAImage÷0œuint16
+row_offsetÃ8ŒTiff.RGBAImage÷0œint
+rstepÃ8ŒTiff.CIELabToRGB÷0œfloat
+samplesperpixelÃ8ŒTiff.RGBAImage÷0œuint16
+schemeÃ8ŒTiff.Codec÷0œuint16
+separateÃ8ŒTiff.PutUnion÷0œTileSeparateRoutine
+stoponerrÃ8ŒTiff.RGBAImage÷0œint
+tdata_tÃ1ŒTiff÷0
+tdir_countÃ8ŒTiff.DirEntry÷0œuint32
+tdir_offsetÃ8ŒTiff.DirEntry÷0œuint32
+tdir_tÃ2048ŒTiff÷0
+tdir_tagÃ8ŒTiff.DirEntry÷0œuint16
+tdir_typeÃ8ŒTiff.DirEntry÷0œuint16
+thandle_tÃ1ŒTiff÷0
+tifÃ8ŒTiff.RGBAImage÷0œTIFF
+tiff_diroffÃ8ŒTiff.Header÷0œuint32
+tiff_magicÃ8ŒTiff.Header÷0œuint16
+tiff_versionÃ8ŒTiff.Header÷0œuint16
+toff_tÃ2048ŒTiff÷0
+tsample_tÃ2048ŒTiff÷0
+tsize_tÃ2048ŒTiff÷0
+tstrip_tÃ2048ŒTiff÷0
+ttag_tÃ2048ŒTiff÷0
+ttile_tÃ2048ŒTiff÷0
+uv_decodeÃ128Õ(double p1, double p2, int p3)ŒTiff.TIFFUtils÷0œpublic int
+uv_encodeÃ128Õ(double p1, double p2, int p3)ŒTiff.TIFFUtils÷0œpublic int
+valueÃ8ŒTiff.TagValue÷0œvoid
+widthÃ8ŒTiff.RGBAImage÷0œuint32
+ycbcrÃ8ŒTiff.RGBAImage÷0œYCbCrToRGB

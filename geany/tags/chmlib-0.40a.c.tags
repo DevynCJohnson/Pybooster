@@ -1,0 +1,36 @@
+# format=tagmanager
+CHM_COMPRESSEDÃ65536÷0
+CHM_ENUMERATE_ALLÃ65536÷0
+CHM_ENUMERATE_DIRSÃ65536÷0
+CHM_ENUMERATE_FILESÃ65536÷0
+CHM_ENUMERATE_METAÃ65536÷0
+CHM_ENUMERATE_NORMALÃ65536÷0
+CHM_ENUMERATE_SPECIALÃ65536÷0
+CHM_ENUMERATORÃ4096÷0œtypedef int
+CHM_ENUMERATOR_CONTINUEÃ65536÷0
+CHM_ENUMERATOR_FAILUREÃ65536÷0
+CHM_ENUMERATOR_SUCCESSÃ65536÷0
+CHM_MAX_PATHLENÃ65536÷0
+CHM_PARAM_MAX_BLOCKS_CACHEDÃ65536÷0
+CHM_RESOLVE_FAILUREÃ65536÷0
+CHM_RESOLVE_SUCCESSÃ65536÷0
+CHM_UNCOMPRESSEDÃ65536÷0
+INCLUDED_CHMLIB_HÃ65536÷0
+LONGINT64Ã4096÷0œ__int64
+LONGUINT64Ã4096÷0œ__int64
+__int64Ã65536÷0
+chmFileÃ32768÷0
+chmUnitInfoÃ2048÷0
+chm_closeÃ1024Õ(struct chmFile *h)÷0œvoid
+chm_enumerateÃ1024Õ(struct chmFile *h, int what, CHM_ENUMERATOR e, void *context)÷0œint
+chm_enumerate_dirÃ1024Õ(struct chmFile *h, const char *prefix, int what, CHM_ENUMERATOR e, void *context)÷0œint
+chm_openÃ1024Õ(BSTR filename)÷0œstruct chmFile *
+chm_openÃ1024Õ(const char *filename)÷0œstruct chmFile *
+chm_resolve_objectÃ1024Õ(struct chmFile *h, const char *objPath, struct chmUnitInfo *ui)÷0œint
+chm_retrieve_objectÃ1024Õ(struct chmFile *h, struct chmUnitInfo *ui, unsigned char *buf, LONGUINT64 addr, LONGINT64 len)÷0œLONGINT64
+chm_set_paramÃ1024Õ(struct chmFile *h, int paramType, int paramVal)÷0œvoid
+flagsÃ64ŒchmUnitInfo÷0œint
+lengthÃ64ŒchmUnitInfo÷0œLONGUINT64
+pathÃ64ŒchmUnitInfo÷0œchar
+spaceÃ64ŒchmUnitInfo÷0œint
+startÃ64ŒchmUnitInfo÷0œLONGUINT64

@@ -1,0 +1,434 @@
+# format=tagmanager
+ADBÌ1ÎTokyoCabinetÖ0
+ADBÌ128Í()ÎTokyoCabinet.ADBÖ0
+AFTERÌ4ÎTokyoCabinet.BDB.Cursor.PutModeÖ0
+BDBÌ1ÎTokyoCabinetÖ0
+BDBÌ128Í()ÎTokyoCabinet.BDBÖ0
+BEFOREÌ4ÎTokyoCabinet.BDB.Cursor.PutModeÖ0
+BZIPÌ4ÎTokyoCabinet.BDB.TuningOptionÖ0
+BZIPÌ4ÎTokyoCabinet.HDB.TuningOptionÖ0
+CLOSEÌ4ÎTokyoCabinet.ErrorCodeÖ0
+CREATÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+CREATÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+CURRENTÌ4ÎTokyoCabinet.BDB.Cursor.PutModeÖ0
+CodecFuncÌ128Í(uint8[] data)ÎTokyoCabinetÖ0Ïpublic delegate uint8
+CompareÌ128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.BDBÖ0Ïpublic delegate int
+CompareÌ128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.TreeÖ0Ïpublic delegate int
+CompareDatumFuncÌ128Í(TokyoCabinet.List.Datum a, TokyoCabinet.List.Datum b)ÎTokyoCabinet.ListÖ0Ïpublic delegate int
+CompareFuncÌ128Í(uint8[] a, uint8[] b)ÎTokyoCabinetÖ0Ïpublic delegate int
+CursorÌ1ÎTokyoCabinet.BDBÖ0
+CursorÌ128Í(TokyoCabinet.BDB bdb)ÎTokyoCabinet.BDB.CursorÖ0
+DEFLATEÌ4ÎTokyoCabinet.BDB.TuningOptionÖ0
+DEFLATEÌ4ÎTokyoCabinet.HDB.TuningOptionÖ0
+DatumÌ2048ÎTokyoCabinet.ListÖ0
+EXCODECÌ4ÎTokyoCabinet.BDB.TuningOptionÖ0
+EXCODECÌ4ÎTokyoCabinet.HDB.TuningOptionÖ0
+ErrorCodeÌ2ÎTokyoCabinetÖ0
+FDBÌ1ÎTokyoCabinetÖ0
+FDBÌ128Í()ÎTokyoCabinet.FDBÖ0
+FatalFuncÌ128Í(string msg)ÎTokyoCabinetÖ0Ïpublic delegate void
+HDBÌ1ÎTokyoCabinetÖ0
+HDBÌ128Í()ÎTokyoCabinet.HDBÖ0
+IDMAXÌ8ÎTokyoCabinet.FDBÖ0Ïint
+IDMINÌ8ÎTokyoCabinet.FDBÖ0Ïint
+IDNEXTÌ8ÎTokyoCabinet.FDBÖ0Ïint
+IDPREVÌ8ÎTokyoCabinet.FDBÖ0Ïint
+INVALIDÌ4ÎTokyoCabinet.ErrorCodeÖ0
+IteratorFuncÌ128Í(uint8[] key, uint8[] data)ÎTokyoCabinetÖ0Ïpublic delegate bool
+KEEPÌ4ÎTokyoCabinet.ErrorCodeÖ0
+LARGEÌ4ÎTokyoCabinet.BDB.TuningOptionÖ0
+LARGEÌ4ÎTokyoCabinet.HDB.TuningOptionÖ0
+LCKNBÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+LCKNBÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+LOCKÌ4ÎTokyoCabinet.ErrorCodeÖ0
+ListÌ1ÎTokyoCabinetÖ0
+ListÌ128Í()ÎTokyoCabinet.ListÖ0
+List.from_stringsÌ128Í(string s1, ...)ÎTokyoCabinet.ListÖ0
+List.loadÌ128Í(uint8[] ptr)ÎTokyoCabinet.ListÖ0
+List.sizedÌ128Í(int anum)ÎTokyoCabinet.ListÖ0
+MDBÌ1ÎTokyoCabinetÖ0
+MDBÌ128Í()ÎTokyoCabinet.MDBÖ0
+MDB.with_num_bucketsÌ128Í(uint32 bnum)ÎTokyoCabinet.MDBÖ0
+METAÌ4ÎTokyoCabinet.ErrorCodeÖ0
+MISCÌ4ÎTokyoCabinet.ErrorCodeÖ0
+MKDIRÌ4ÎTokyoCabinet.ErrorCodeÖ0
+MMAPÌ4ÎTokyoCabinet.ErrorCodeÖ0
+MapÌ1ÎTokyoCabinetÖ0
+MapÌ128Í()ÎTokyoCabinet.MapÖ0
+Map.from_stringsÌ128Í(string key1, string val1, ...)ÎTokyoCabinet.MapÖ0
+Map.loadÌ128Í(uint8[] ptr)ÎTokyoCabinet.MapÖ0
+Map.sizedÌ128Í(uint32 bnum)ÎTokyoCabinet.MapÖ0
+MapRecordÌ1ÎTokyoCabinetÖ0
+MemoryÌ256Ö0
+NDBÌ1ÎTokyoCabinetÖ0
+NDBÌ128Í(TokyoCabinet.BDB.Compare cmp = TokyoCabinet.Tree.compare_lexical, void * cmpop = null)ÎTokyoCabinet.NDBÖ0
+NOFILEÌ4ÎTokyoCabinet.ErrorCodeÖ0
+NOLCKÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+NOLCKÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+NOPERMÌ4ÎTokyoCabinet.ErrorCodeÖ0
+NORECÌ4ÎTokyoCabinet.ErrorCodeÖ0
+OPENÌ4ÎTokyoCabinet.ErrorCodeÖ0
+OpenModeÌ2ÎTokyoCabinet.BDBÖ0
+OpenModeÌ2ÎTokyoCabinet.HDBÖ0
+ProcessDuplicateFuncÌ128Í(uint8[] value)ÎTokyoCabinetÖ0Ïpublic delegate uint8
+PutModeÌ2ÎTokyoCabinet.BDB.CursorÖ0
+READÌ4ÎTokyoCabinet.ErrorCodeÖ0
+READERÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+READERÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+RENAMEÌ4ÎTokyoCabinet.ErrorCodeÖ0
+RHEADÌ4ÎTokyoCabinet.ErrorCodeÖ0
+RMDIRÌ4ÎTokyoCabinet.ErrorCodeÖ0
+RecordÌ1ÎTokyoCabinet.TreeÖ0
+SEEKÌ4ÎTokyoCabinet.ErrorCodeÖ0
+STATÌ4ÎTokyoCabinet.ErrorCodeÖ0
+SUCCESSÌ4ÎTokyoCabinet.ErrorCodeÖ0
+SYNCÌ4ÎTokyoCabinet.ErrorCodeÖ0
+TCBSÌ4ÎTokyoCabinet.BDB.TuningOptionÖ0
+TCBSÌ4ÎTokyoCabinet.HDB.TuningOptionÖ0
+THREADÌ4ÎTokyoCabinet.ErrorCodeÖ0
+TRUNCÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+TRUNCÌ4ÎTokyoCabinet.ErrorCodeÖ0
+TRUNCÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+TSYNCÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+TokyoCabinetÌ256Ö0
+TreeÌ1ÎTokyoCabinetÖ0
+TreeÌ128Í(TokyoCabinet.Tree.Compare cmp = TokyoCabinet.Tree.compare_lexical)ÎTokyoCabinet.TreeÖ0
+Tree.loadÌ128Í(uint8[] data, TokyoCabinet.Tree.Compare cmp = TokyoCabinet.Tree.compare_lexical)ÎTokyoCabinet.TreeÖ0
+TuningOptionÌ2ÎTokyoCabinet.BDBÖ0
+TuningOptionÌ2ÎTokyoCabinet.HDBÖ0
+UNLINKÌ4ÎTokyoCabinet.ErrorCodeÖ0
+WRITEÌ4ÎTokyoCabinet.ErrorCodeÖ0
+WRITERÌ4ÎTokyoCabinet.BDB.OpenModeÖ0
+WRITERÌ4ÎTokyoCabinet.HDB.OpenModeÖ0
+XStringÌ1ÎTokyoCabinetÖ0
+XStringÌ128Í()ÎTokyoCabinet.XStringÖ0
+XString.from_stringÌ128Í(string str)ÎTokyoCabinet.XStringÖ0
+XString.sizedÌ128Í(int asiz)ÎTokyoCabinet.XStringÖ0
+_dumpÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic unowned
+_dumpÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic unowned
+_dumpÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+_getÌ128Í(uint8[] key)ÎTokyoCabinet.ADBÖ0Ïpublic unowned
+_getÌ128Í(uint8[] key)ÎTokyoCabinet.BDBÖ0Ïprivate unowned
+_getÌ128Í(int64 id, uint8[] value)ÎTokyoCabinet.FDBÖ0Ïpublic int
+_getÌ128Í(uint8[] kbuf, uint8[] vbuf)ÎTokyoCabinet.HDBÖ0Ïpublic int
+_getÌ128Í(uint8[] key)ÎTokyoCabinet.NDBÖ0Ïprivate unowned
+_get_stringÌ128Í(string key)ÎTokyoCabinet.ADBÖ0Ïpublic unowned
+_iterator_nextÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic unowned
+_iterator_nextÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic unowned
+_iterator_next_stringÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic unowned
+_iterator_next_stringÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic unowned
+_popÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic unowned
+_pop_stringÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic unowned string
+_removeÌ128Í(int index)ÎTokyoCabinet.ListÖ0Ïpublic unowned
+_remove_stringÌ128Í(int index)ÎTokyoCabinet.ListÖ0Ïpublic unowned string
+_shiftÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic unowned
+_shift_stringÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic unowned string
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.ADBÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.BDBÖ0Ïpublic double
+add_doubleÌ128Í(int64 id, double num)ÎTokyoCabinet.FDBÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.HDBÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.MDBÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.MapÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.NDBÖ0Ïpublic double
+add_doubleÌ128Í(uint8[] key, double num)ÎTokyoCabinet.TreeÖ0Ïpublic double
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.ADBÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.BDBÖ0Ïpublic int
+add_intÌ128Í(int64 id, int num)ÎTokyoCabinet.FDBÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.HDBÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.MDBÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.MapÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.NDBÖ0Ïpublic int
+add_intÌ128Í(uint8[] key, int num)ÎTokyoCabinet.TreeÖ0Ïpublic int
+allocatedÌ8ÎTokyoCabinet.XStringÖ0Ïint
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+appendÌ128Í(int64 id, uint8[] value)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MDBÖ0Ïpublic void
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MapÖ0Ïpublic void
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+appendÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.TreeÖ0Ïpublic void
+appendÌ128Í(uint8[] data)ÎTokyoCabinet.XStringÖ0Ïpublic void
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.MDBÖ0Ïpublic void
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.MapÖ0Ïpublic void
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+append_stringÌ128Í(string key, string value)ÎTokyoCabinet.TreeÖ0Ïpublic void
+append_stringÌ128Í(string str)ÎTokyoCabinet.XStringÖ0Ïpublic void
+arrayÌ8ÎTokyoCabinet.ListÖ0ÏTokyoCabinet.List.Datum
+binary_searchÌ128Í(uint8[] ptr)ÎTokyoCabinet.ListÖ0Ïpublic int
+bucketsÌ8ÎTokyoCabinet.MapÖ0ÏTokyoCabinet.MapRecord
+callocÌ128Í(size_t nmemb, size_t size)ÎTokyoCabinet.MemoryÖ0Ïpublic void *
+clearÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic bool
+clearÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+clearÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic bool
+clearÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic bool
+clearÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic void
+clearÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic void
+clearÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic void
+clearÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic void
+clearÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic void
+clearÌ128Í()ÎTokyoCabinet.XStringÖ0Ïpublic void
+closeÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic bool
+closeÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+closeÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic bool
+closeÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic bool
+cmpÌ8ÎTokyoCabinet.TreeÖ0ÏTokyoCabinet.Tree.Compare
+compare_decimalÌ128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.TreeÖ0Ïpublic int
+compare_int32Ì128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.TreeÖ0Ïpublic int
+compare_int64Ì128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.TreeÖ0Ïpublic int
+compare_lexicalÌ128Í(uint8[] a, uint8[] b)ÎTokyoCabinet.TreeÖ0Ïpublic int
+copyÌ128Í(string path)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+copyÌ128Í(string path)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+copyÌ128Í(string path)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+copyÌ128Í(string path)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+copyÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic List
+copyÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic Map
+copyÌ128Í(void *ptr, size_t size)ÎTokyoCabinet.MemoryÖ0Ïpublic void *
+copyÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic Tree
+copyÌ128Í()ÎTokyoCabinet.XStringÖ0Ïpublic XString
+copy_and_free_stringÌ128Í(string? str)ÎTokyoCabinet.MemoryÖ0Ïpublic string?
+curÌ8ÎTokyoCabinet.MapÖ0ÏTokyoCabinet.MapRecord
+curÌ8ÎTokyoCabinet.TreeÖ0ÏTokyoCabinet.Tree.Record
+cut_fringeÌ128Í(int num)ÎTokyoCabinet.NDBÖ0Ïpublic void
+cut_frontÌ128Í(int num)ÎTokyoCabinet.MDBÖ0Ïpublic void
+cut_frontÌ128Í(int num)ÎTokyoCabinet.MapÖ0Ïpublic void
+dataÌ8ÎTokyoCabinet.List.DatumÖ0Ïuint8
+dataÌ8ÎTokyoCabinet.XStringÖ0Ïuint8
+dumpÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic uint8
+dumpÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic uint8
+dumpÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic uint8
+firstÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+firstÌ8ÎTokyoCabinet.MapÖ0ÏTokyoCabinet.MapRecord
+forward_matching_keysÌ128Í(uint8[] pbuf, int max)ÎTokyoCabinet.ADBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keysÌ128Í(uint8[] pbuf, int max)ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keysÌ128Í(uint8[] pbuf, int max)ÎTokyoCabinet.HDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keysÌ128Í(uint8[] pbuf, int max)ÎTokyoCabinet.MDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keysÌ128Í(uint8[] pbuf, int max)ÎTokyoCabinet.NDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keys_stringÌ128Í(string pstr, int max)ÎTokyoCabinet.ADBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keys_stringÌ128Í(string pstr, int max)ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keys_stringÌ128Í(string pstr, int max)ÎTokyoCabinet.HDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keys_stringÌ128Í(string pstr, int max)ÎTokyoCabinet.MDBÖ0Ïpublic TokyoCabinet.List
+forward_matching_keys_stringÌ128Í(string pstr, int max)ÎTokyoCabinet.NDBÖ0Ïpublic TokyoCabinet.List
+freeÌ128Í([CCode (type = )] void* ptr)ÎTokyoCabinet.MemoryÖ0Ïpublic void
+get_error_codeÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.ErrorCode
+get_error_codeÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic TokyoCabinet.ErrorCode
+get_error_codeÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic TokyoCabinet.ErrorCode
+get_error_messageÌ128Í(TokyoCabinet.ErrorCode ecode)ÎTokyoCabinet.BDBÖ0Ïpublic unowned string
+get_error_messageÌ128Í(TokyoCabinet.ErrorCode ecode)ÎTokyoCabinet.FDBÖ0Ïpublic unowned string
+get_error_messageÌ128Í(TokyoCabinet.ErrorCode ecode)ÎTokyoCabinet.HDBÖ0Ïpublic unowned string
+get_keysÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic TokyoCabinet.List
+get_lengthÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic uint64
+get_lengthÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic uint64
+get_lengthÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic uint64
+get_lengthÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic uint64
+get_lengthÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic uint64
+get_lengthÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic uint64
+get_listÌ128Í(uint8[] key)ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.List
+get_sizeÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic uint64
+get_sizeÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic uint64
+get_stringÌ128Í(string key)ÎTokyoCabinet.ADBÖ0Ïpublic string?
+get_stringÌ128Í(string key)ÎTokyoCabinet.BDBÖ0Ïpublic string?
+get_stringÌ128Í(string key)ÎTokyoCabinet.HDBÖ0Ïpublic string?
+get_stringÌ128Í(string key)ÎTokyoCabinet.MDBÖ0Ïpublic unowned
+get_stringÌ128Í(string key)ÎTokyoCabinet.MapÖ0Ïpublic unowned
+get_stringÌ128Í(string key)ÎTokyoCabinet.NDBÖ0Ïpublic string?
+get_stringÌ128Í(string key)ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+get_value_sizeÌ128Í(int64 id)ÎTokyoCabinet.FDBÖ0Ïpublic int
+get_valuesÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic TokyoCabinet.List
+indexÌ128Í(int index)ÎTokyoCabinet.ListÖ0Ïpublic unowned
+index_stringÌ128Í(int index)ÎTokyoCabinet.ListÖ0Ïpublic unowned
+insertÌ128Í(int index, uint8[] data)ÎTokyoCabinet.ListÖ0Ïpublic void
+insert_stringÌ128Í(int index, string str)ÎTokyoCabinet.ListÖ0Ïpublic void
+iteratorÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic BDB.Cursor
+iterator_initÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic bool
+iterator_initÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic bool
+iterator_initÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic void
+iterator_initÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic void
+iterator_initÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic void
+iterator_initÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic void
+iterator_init_beforeÌ128Í(uint8[] key)ÎTokyoCabinet.NDBÖ0Ïpublic void
+iterator_init_before_stringÌ128Í(string key)ÎTokyoCabinet.NDBÖ0Ïpublic void
+iterator_nextÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic uint8
+iterator_nextÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic uint64
+iterator_nextÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic uint8
+iterator_nextÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic unowned
+iterator_nextÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic uint8
+iterator_nextÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+iterator_next_stringÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic string?
+iterator_next_stringÌ128Í()ÎTokyoCabinet.MDBÖ0Ïpublic unowned
+iterator_next_stringÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic unowned
+iterator_next_stringÌ128Í()ÎTokyoCabinet.NDBÖ0Ïpublic string?
+iterator_next_stringÌ128Í()ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+iterator_valueÌ128Í(uint8[] key)ÎTokyoCabinet.MapÖ0Ïpublic unowned
+iterator_valueÌ128Í(uint8[] key)ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+iterator_value_stringÌ128Í(string key)ÎTokyoCabinet.MapÖ0Ïpublic unowned
+iterator_value_stringÌ128Í(string key)ÎTokyoCabinet.TreeÖ0Ïpublic unowned
+jumpÌ128Í(uint8[] key)ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+jump_stringÌ128Í(string key)ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+keyÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic unowned
+key_sizeÌ8ÎTokyoCabinet.MapRecordÖ0Ïint32
+key_sizeÌ8ÎTokyoCabinet.Tree.RecordÖ0Ïint32
+key_stringÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic unowned
+keysÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic TokyoCabinet.List
+lastÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+lastÌ8ÎTokyoCabinet.MapÖ0ÏTokyoCabinet.MapRecord
+leftÌ8ÎTokyoCabinet.MapRecordÖ0ÏTokyoCabinet.MapRecord
+leftÌ8ÎTokyoCabinet.Tree.RecordÖ0ÏTokyoCabinet.Tree.Record
+lengthÌ8ÎTokyoCabinet.ADBÖ0Ïuint64
+lengthÌ8ÎTokyoCabinet.BDBÖ0Ïuint64
+lengthÌ8ÎTokyoCabinet.FDBÖ0Ïuint64
+lengthÌ8ÎTokyoCabinet.HDBÖ0Ïuint64
+lengthÌ8ÎTokyoCabinet.MDBÖ0Ïuint64
+lengthÌ8ÎTokyoCabinet.NDBÖ0Ïuint64
+linear_searchÌ128Í(uint8[] ptr)ÎTokyoCabinet.ListÖ0Ïpublic int
+mallocÌ128Í(size_t size)ÎTokyoCabinet.MemoryÖ0Ïpublic void *
+moveÌ128Í(uint8[] key, bool head = true)ÎTokyoCabinet.MapÖ0Ïpublic bool
+move_stringÌ128Í(string key, bool head = true)ÎTokyoCabinet.MapÖ0Ïpublic bool
+msizÌ8ÎTokyoCabinet.TreeÖ0Ïuint64
+nextÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+nextÌ8ÎTokyoCabinet.MapRecordÖ0ÏTokyoCabinet.MapRecord
+num_recordsÌ8ÎTokyoCabinet.MapÖ0Ïuint64
+num_usedÌ8ÎTokyoCabinet.ListÖ0Ïint
+openÌ128Í(string name)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+openÌ128Í(string path, TokyoCabinet.BDB.OpenMode mode = TokyoCabinet.BDB.OpenMode.READER | TokyoCabinet.BDB.OpenMode.WRITER | TokyoCabinet.BDB.OpenMode.CREAT)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+openÌ128Í(string path, TokyoCabinet.HDB.OpenMode omode)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+optimizeÌ128Í(int32 lmemb, int32 nmemb, int64 bnum, int8 apow, int8 fpow, TuningOption opts)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+optimizeÌ128Í(int32 width = 0, int64 limsiz = 0)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+optimizeÌ128Í(int64 bnum, int8 apow, int8 fpow, TuningOption opts)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+pathÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic unowned string
+pathÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic unowned string
+pathÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic unowned string
+popÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic uint8
+pop_stringÌ128Í()ÎTokyoCabinet.ListÖ0
+prevÌ8ÎTokyoCabinet.MapRecordÖ0ÏTokyoCabinet.MapRecord
+previousÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+printfÌ128Í(string format, ...)ÎTokyoCabinet.XStringÖ0Ïpublic void
+pushÌ128Í(uint8[] data)ÎTokyoCabinet.ListÖ0Ïpublic void
+push_printfÌ128Í(string fmt, ...)ÎTokyoCabinet.ListÖ0Ïpublic void
+push_stringÌ128Í(string str)ÎTokyoCabinet.ListÖ0Ïpublic void
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+putÌ128Í(uint8[] value, TokyoCabinet.BDB.Cursor.PutMode cpmode)ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+putÌ128Í(int64 id, uint8[] value)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MDBÖ0Ïpublic bool
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MapÖ0Ïpublic void
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+putÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.TreeÖ0Ïpublic bool
+put_duplicateÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+put_duplicate_stringÌ128Í(string key, string value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+put_stringÌ128Í(string value, TokyoCabinet.BDB.Cursor.PutMode cpmode)ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.MDBÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.MapÖ0Ïpublic void
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+put_stringÌ128Í(string key, string value)ÎTokyoCabinet.TreeÖ0Ïpublic bool
+rangeÌ128Í(uint8[] bkey, bool binc, uint8[] ekey, bool einc, int max)ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.List
+range_stringÌ128Í(string bkey, bool binc, string ekey, bool einc, int max)ÎTokyoCabinet.BDBÖ0Ïpublic TokyoCabinet.List
+reallocÌ128Í(void *ptr, size_t size)ÎTokyoCabinet.MemoryÖ0Ïpublic void *
+recordÌ128Í(TokyoCabinet.XString kxstr, TokyoCabinet.XString vxstr)ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+removeÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic bool
+removeÌ128Í(int64 id)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+removeÌ128Í(int index)ÎTokyoCabinet.ListÖ0Ïpublic uint8
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.MDBÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.MapÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+removeÌ128Í(uint8[] key)ÎTokyoCabinet.TreeÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+remove_stringÌ128Í(int index)ÎTokyoCabinet.ListÖ0
+remove_stringÌ128Í(string key)ÎTokyoCabinet.MDBÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.MapÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.NDBÖ0Ïpublic bool
+remove_stringÌ128Í(string key)ÎTokyoCabinet.TreeÖ0Ïpublic bool
+replaceÌ128Í(uint8[] key, uint8[] vsiz)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+replaceÌ128Í(int64 id, uint8[] value)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+replaceÌ128Í(int index, uint8[] data)ÎTokyoCabinet.ListÖ0Ïpublic void
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MDBÖ0Ïpublic void
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.MapÖ0Ïpublic bool
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.NDBÖ0Ïpublic void
+replaceÌ128Í(uint8[] key, uint8[] value)ÎTokyoCabinet.TreeÖ0Ïpublic void
+replace_asyncÌ128Í(uint8[] key, uint8[] ksiz)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+replace_async_stringÌ128Í(string key, string value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.ADBÖ0Ïpublic bool
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+replace_stringÌ128Í(int index, string str)ÎTokyoCabinet.ListÖ0Ïpublic void
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.MDBÖ0Ïpublic void
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.MapÖ0Ïpublic bool
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.NDBÖ0Ïpublic void
+replace_stringÌ128Í(string key, string value)ÎTokyoCabinet.TreeÖ0Ïpublic void
+reverseÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic void
+rightÌ8ÎTokyoCabinet.MapRecordÖ0ÏTokyoCabinet.MapRecord
+rightÌ8ÎTokyoCabinet.Tree.RecordÖ0ÏTokyoCabinet.Tree.Record
+rnumÌ8ÎTokyoCabinet.TreeÖ0Ïuint64
+rootÌ8ÎTokyoCabinet.TreeÖ0ÏTokyoCabinet.Tree.Record
+set_cacheÌ128Í(int32 rcnum)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+set_compare_funcÌ128Í(TokyoCabinet.BDB.Compare cmp)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+set_defragment_unitÌ128Í(int32 dfunit)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+set_extra_mapped_sizeÌ128Í(int64 xmsiz)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+set_mutexÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+set_mutexÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic bool
+set_mutexÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic bool
+setxmsizÌ128Í(int64 xmsiz)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+shiftÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic uint8
+shift_stringÌ128Í()ÎTokyoCabinet.ListÖ0
+sizeÌ8ÎTokyoCabinet.ADBÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.BDBÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.FDBÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.HDBÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.MDBÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.MapÖ0Ïuint64
+sizeÌ8ÎTokyoCabinet.NDBÖ0Ïuint64
+sortÌ128Í(TokyoCabinet.List.CompareDatumFunc func)ÎTokyoCabinet.ListÖ0Ïpublic void
+sort_insensitiveÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic void
+sort_sensitiveÌ128Í()ÎTokyoCabinet.ListÖ0Ïpublic void
+startÌ8ÎTokyoCabinet.ListÖ0Ïint
+strÌ8ÎTokyoCabinet.List.DatumÖ0
+strÌ8ÎTokyoCabinet.XStringÖ0
+strdupÌ128Í(string str)ÎTokyoCabinet.MemoryÖ0
+syncÌ128Í()ÎTokyoCabinet.ADBÖ0Ïpublic bool
+syncÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+syncÌ128Í()ÎTokyoCabinet.FDBÖ0Ïpublic bool
+syncÌ128Í()ÎTokyoCabinet.HDBÖ0Ïpublic bool
+transaction_abortÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+transaction_beginÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+transaction_commitÌ128Í()ÎTokyoCabinet.BDBÖ0Ïpublic bool
+tuneÌ128Í(int32 lmemb, int32 nmemb, int64 bnum, int8 apow, int8 fpow, TokyoCabinet.BDB.TuningOption opts)ÎTokyoCabinet.BDBÖ0Ïpublic bool
+tuneÌ128Í(int32 width = 0, int64 limsiz = 0)ÎTokyoCabinet.FDBÖ0Ïpublic bool
+tuneÌ128Í(int64 bnum, int8 apow, int8 fpow, TokyoCabinet.HDB.TuningOption opts)ÎTokyoCabinet.HDBÖ0Ïpublic bool
+unshiftÌ128Í(uint8[] data)ÎTokyoCabinet.ListÖ0Ïpublic void
+unshift_stringÌ128Í(string str)ÎTokyoCabinet.ListÖ0Ïpublic void
+valueÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic unowned
+value_countÌ128Í(uint8[] key)ÎTokyoCabinet.BDBÖ0Ïpublic int
+value_count_stringÌ128Í(string key)ÎTokyoCabinet.BDBÖ0Ïpublic int
+value_sizeÌ128Í(uint8[] key)ÎTokyoCabinet.ADBÖ0Ïpublic int
+value_sizeÌ128Í(uint8[] key)ÎTokyoCabinet.BDBÖ0Ïpublic int
+value_sizeÌ128Í(uint8[] key)ÎTokyoCabinet.HDBÖ0Ïpublic int
+value_sizeÌ128Í(uint8[] key)ÎTokyoCabinet.MDBÖ0Ïpublic int
+value_sizeÌ8ÎTokyoCabinet.MapRecordÖ0Ïint32
+value_sizeÌ128Í(uint8[] key)ÎTokyoCabinet.NDBÖ0Ïpublic int
+value_sizeÌ8ÎTokyoCabinet.Tree.RecordÖ0Ïint32
+value_size_stringÌ128Í(string key)ÎTokyoCabinet.ADBÖ0Ïpublic int
+value_size_stringÌ128Í(string key)ÎTokyoCabinet.BDBÖ0Ïpublic int
+value_size_stringÌ128Í(string key)ÎTokyoCabinet.HDBÖ0Ïpublic int
+value_size_stringÌ128Í(string key)ÎTokyoCabinet.MDBÖ0Ïpublic int
+value_size_stringÌ128Í(string key)ÎTokyoCabinet.NDBÖ0Ïpublic int
+value_stringÌ128Í()ÎTokyoCabinet.BDB.CursorÖ0Ïpublic unowned
+valuesÌ128Í()ÎTokyoCabinet.MapÖ0Ïpublic TokyoCabinet.List
+versionÌ8ÎTokyoCabinetÖ0

@@ -1,0 +1,182 @@
+# format=tagmanager
+ACCESS_DENIEDÃ4ŒDBus.Error÷0
+ADDRESS_IN_USEÃ4ŒDBus.Error÷0
+ALLOW_REPLACEMENTÃ4ŒDBus.NameFlag÷0
+ALREADY_OWNERÃ4ŒDBus.RequestNameReply÷0
+ARRAYÃ4ŒDBus.RawType÷0
+AUTH_FAILEDÃ4ŒDBus.Error÷0
+BAD_ADDRESSÃ4ŒDBus.Error÷0
+BOOLEANÃ4ŒDBus.RawType÷0
+BYTEÃ4ŒDBus.RawType÷0
+BusÃ2048ŒDBus÷0
+BusNameÃ1ŒDBus÷0
+BusNameÃ128Õ(string bus_name)ŒDBus.BusName÷0
+BusTypeÃ2ŒDBus÷0
+ConnectionÃ1ŒDBus÷0
+DBusÃ256÷0
+DICT_ENTRYÃ4ŒDBus.RawType÷0
+DISCONNECTEDÃ4ŒDBus.Error÷0
+DOUBLEÃ4ŒDBus.RawType÷0
+DO_NOT_QUEUEÃ4ŒDBus.NameFlag÷0
+ERRORÃ4ŒDBus.RawMessageType÷0
+EXISTSÃ4ŒDBus.RequestNameReply÷0
+ErrorÃ2ŒDBus÷0
+FAILEDÃ4ŒDBus.Error÷0
+FILE_EXISTSÃ4ŒDBus.Error÷0
+FILE_NOT_FOUNDÃ4ŒDBus.Error÷0
+HANDLEDÃ4ŒDBus.RawHandlerResult÷0
+INT16Ã4ŒDBus.RawType÷0
+INT32Ã4ŒDBus.RawType÷0
+INT64Ã4ŒDBus.RawType÷0
+INTERFACE_DBUSÃ8ŒDBus÷0
+INTERFACE_INTROSPECTABLEÃ8ŒDBus÷0
+INTERFACE_PEERÃ8ŒDBus÷0
+INTERFACE_PROPERTIESÃ8ŒDBus÷0
+INVALIDÃ4ŒDBus.RawMessageType÷0
+INVALIDÃ4ŒDBus.RawType÷0
+INVALID_ARGSÃ4ŒDBus.Error÷0
+INVALID_FILE_CONTENTÃ4ŒDBus.Error÷0
+INVALID_SIGNATUREÃ4ŒDBus.Error÷0
+IN_QUEUEÃ4ŒDBus.RequestNameReply÷0
+IO_ERRORÃ4ŒDBus.Error÷0
+LIMITS_EXCEEDEDÃ4ŒDBus.Error÷0
+MATCH_RULE_INVALIDÃ4ŒDBus.Error÷0
+MATCH_RULE_NOT_FOUNDÃ4ŒDBus.Error÷0
+METHOD_CALLÃ4ŒDBus.RawMessageType÷0
+METHOD_RETURNÃ4ŒDBus.RawMessageType÷0
+MethodInvocationÃ1ŒDBus÷0
+NAME_HAS_NO_OWNERÃ4ŒDBus.Error÷0
+NEED_MEMORYÃ4ŒDBus.RawHandlerResult÷0
+NOT_SUPPORTEDÃ4ŒDBus.Error÷0
+NOT_YET_HANDLEDÃ4ŒDBus.RawHandlerResult÷0
+NO_MEMORYÃ4ŒDBus.Error÷0
+NO_NETWORKÃ4ŒDBus.Error÷0
+NO_REPLYÃ4ŒDBus.Error÷0
+NO_SERVERÃ4ŒDBus.Error÷0
+NameFlagÃ2ŒDBus÷0
+OBJECT_PATHÃ4ŒDBus.RawType÷0
+ObjectÃ1ŒDBus÷0
+ObjectPathÃ1ŒDBus÷0
+ObjectPathÃ128Õ(string path)ŒDBus.ObjectPath÷0
+PATH_DBUSÃ8ŒDBus÷0
+PRIMARY_OWNERÃ4ŒDBus.RequestNameReply÷0
+ProxyCallÃ1ŒDBus÷0
+ProxyCallNotifyÃ128Õ(Object obj, ProxyCall call_id)ŒDBus÷0œpublic delegate void
+REMOTE_EXCEPTIONÃ4ŒDBus.Error÷0
+REPLACE_EXISTINGÃ4ŒDBus.NameFlag÷0
+RawBusÃ256÷0
+RawConnectionÃ1ŒDBus÷0
+RawErrorÃ2048ŒDBus÷0
+RawErrorÃ128Õ()ŒDBus.RawError÷0
+RawFreeFunctionÃ128Õ(void* memory)ŒDBus÷0œpublic delegate void *
+RawHandleMessageFunctionÃ128Õ(RawConnection connection, RawMessage message)ŒDBus÷0œpublic delegate RawHandlerResult
+RawHandlerResultÃ2ŒDBus÷0
+RawMessageÃ1ŒDBus÷0
+RawMessage.callÃ128Õ(string bus_name, string path, string interface, string method)ŒDBus.RawMessage÷0
+RawMessageIterÃ2048ŒDBus÷0
+RawMessageTypeÃ2ŒDBus÷0
+RawTypeÃ2ŒDBus÷0
+RequestNameReplyÃ2ŒDBus÷0
+SELINUX_SECURITY_CONTEXT_UNKNOWNÃ4ŒDBus.Error÷0
+SERVICE_DBUSÃ8ŒDBus÷0
+SERVICE_UNKNOWNÃ4ŒDBus.Error÷0
+SESSIONÃ4ŒDBus.BusType÷0
+SIGNALÃ4ŒDBus.RawMessageType÷0
+SIGNATUREÃ4ŒDBus.RawType÷0
+SPAWN_CHILD_EXITEDÃ4ŒDBus.Error÷0
+SPAWN_CHILD_SIGNALEDÃ4ŒDBus.Error÷0
+SPAWN_EXEC_FAILEDÃ4ŒDBus.Error÷0
+SPAWN_FAILEDÃ4ŒDBus.Error÷0
+SPAWN_FORK_FAILEDÃ4ŒDBus.Error÷0
+STARTERÃ4ŒDBus.BusType÷0
+STRINGÃ4ŒDBus.RawType÷0
+STRUCTÃ4ŒDBus.RawType÷0
+SYSTEMÃ4ŒDBus.BusType÷0
+TIMED_OUTÃ4ŒDBus.Error÷0
+TIMEOUTÃ4ŒDBus.Error÷0
+UINT16Ã4ŒDBus.RawType÷0
+UINT32Ã4ŒDBus.RawType÷0
+UINT64Ã4ŒDBus.RawType÷0
+UNIX_PROCESS_ID_UNKNOWNÃ4ŒDBus.Error÷0
+UNKNOWN_METHODÃ4ŒDBus.Error÷0
+VARIANTÃ4ŒDBus.RawType÷0
+add_filterÃ128Õ(RawHandleMessageFunction function, RawFreeFunction? free_data_function = null)ŒDBus.RawConnection÷0œpublic bool
+add_matchÃ128Õ(string rule, ref RawError error)ŒDBus.RawConnection÷0œpublic void
+append_argsÃ128Õ(RawType first_arg_type, ...)ŒDBus.RawMessage÷0œpublic bool
+append_basicÃ128Õ(RawType arg_type, void* value)ŒDBus.RawMessageIter÷0œpublic bool
+begin_callÃ128Õ(string method, ProxyCallNotify notify, GLib.DestroyNotify destroy, GLib.Type first_arg_type, ...)ŒDBus.Object÷0œpublic unowned
+callÃ128Õ(string method, out GLib.Error error, GLib.Type first_arg_type, ...)ŒDBus.Object÷0œpublic bool
+cancel_callÃ128Õ(ProxyCall call)ŒDBus.Object÷0œpublic void
+close_containerÃ128Õ(RawMessageIter sub)ŒDBus.RawMessageIter÷0œpublic bool
+destroyÃ128Õ()ŒDBus.Object÷0œpublic signal void
+end_callÃ128Õ(ProxyCall call, out GLib.Error error, GLib.Type first_arg_type, ...)ŒDBus.Object÷0œpublic bool
+get_allÃ128Õ(string interface_name)ŒDBus.Object÷0œpublic GLib.HashTable
+get_arg_typeÃ128Õ()ŒDBus.RawMessageIter÷0œpublic int
+get_auto_startÃ128Õ()ŒDBus.RawMessage÷0œpublic bool
+get_basicÃ128Õ(void* value)ŒDBus.RawMessageIter÷0œpublic void
+get_bus_nameÃ128Õ()ŒDBus.Object÷0œpublic unowned string
+get_connectionÃ128Õ()ŒDBus.Connection÷0œpublic unowned
+get_destinationÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_element_typeÃ128Õ()ŒDBus.RawMessageIter÷0œpublic int
+get_error_nameÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_g_connectionÃ128Õ()ŒDBus.RawConnection÷0œpublic unowned
+get_interfaceÃ128Õ()ŒDBus.Object÷0œpublic unowned string
+get_interfaceÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_memberÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_no_replyÃ128Õ()ŒDBus.RawMessage÷0œpublic bool
+get_objectÃ128Õ(string name, string path, string? interface_ = null)ŒDBus.Connection÷0œpublic Object
+get_object_for_name_ownerÃ128Õ(string name, string path, string? interface_ = null)ŒDBus.Connection÷0œpublic Object
+get_object_from_typeÃ128Õ(string name, string path, string interface_, GLib.Type type)ŒDBus.Connection÷0œpublic GLib.Object
+get_pathÃ128Õ()ŒDBus.Object÷0œpublic unowned string
+get_pathÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_path_decomposedÃ128Õ(out char[] path )ŒDBus.RawMessage÷0œpublic bool
+get_reply_serialÃ128Õ()ŒDBus.RawMessage÷0œpublic uint32
+get_senderÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_serialÃ128Õ()ŒDBus.RawMessage÷0œpublic uint32
+get_signatureÃ128Õ()ŒDBus.RawMessage÷0œpublic unowned string
+get_signatureÃ128Õ()ŒDBus.RawMessageIter÷0
+get_typeÃ128Õ()ŒDBus.RawMessage÷0œpublic RawMessageType
+get_unique_nameÃ128Õ()ŒDBus.RawConnection÷0œpublic unowned string
+has_destinationÃ128Õ(string bus_name)ŒDBus.RawMessage÷0œpublic bool
+has_interfaceÃ128Õ(string iface)ŒDBus.RawMessage÷0œpublic bool
+has_memberÃ128Õ(string member)ŒDBus.RawMessage÷0œpublic bool
+has_nameÃ128Õ(string name)ŒDBus.RawError÷0œpublic bool
+has_nextÃ128Õ()ŒDBus.RawMessageIter÷0œpublic bool
+has_pathÃ128Õ(string object_path)ŒDBus.RawMessage÷0œpublic bool
+has_senderÃ128Õ(string unique_bus_name)ŒDBus.RawMessage÷0œpublic bool
+has_signatureÃ128Õ(string signature)ŒDBus.RawMessage÷0œpublic bool
+is_errorÃ128Õ(string error_name)ŒDBus.RawMessage÷0œpublic bool
+is_method_callÃ128Õ(string iface, string method)ŒDBus.RawMessage÷0œpublic bool
+is_setÃ128Õ()ŒDBus.RawError÷0œpublic bool
+is_signalÃ128Õ(string iface, string signal_name)ŒDBus.RawMessage÷0œpublic bool
+iter_initÃ128Õ(RawMessageIter iter)ŒDBus.RawMessage÷0œpublic bool
+iter_init_appendÃ128Õ(RawMessageIter iter)ŒDBus.RawMessage÷0œpublic bool
+lookup_objectÃ128Õ(string at_path)ŒDBus.Connection÷0œpublic unowned
+messageÃ8ŒDBus.RawError÷0
+nameÃ8ŒDBus.RawError÷0
+nextÃ128Õ()ŒDBus.RawMessageIter÷0œpublic bool
+open_containerÃ128Õ(RawType arg_type, string? signature, RawMessageIter sub)ŒDBus.RawMessageIter÷0œpublic bool
+recurseÃ128Õ(RawMessageIter sub)ŒDBus.RawMessageIter÷0œpublic void
+register_objectÃ128Õ(string at_path, GLib.Object object)ŒDBus.Connection÷0œpublic void
+register_objectÃ128Õ(string at_path, GLib.Object object)ŒDBus.RawConnection÷0œpublic void
+release_nameÃ128Õ(string name, ref RawError error)ŒDBus.RawConnection÷0œpublic int
+remove_filterÃ128Õ(RawHandleMessageFunction function)ŒDBus.RawConnection÷0œpublic void
+remove_matchÃ128Õ(string rule, ref RawError error)ŒDBus.RawConnection÷0œpublic void
+request_nameÃ128Õ(string name, uint flags, ref RawError error)ŒDBus.RawConnection÷0œpublic int
+sendÃ128Õ(RawMessage message, uint32? client_serial)ŒDBus.RawConnection÷0œpublic bool
+send_with_reply_and_blockÃ128Õ(RawMessage message, int timeout_milliseconds, ref RawError error)ŒDBus.RawConnection÷0œpublic RawMessage
+set_auto_startÃ128Õ(bool auto_start)ŒDBus.RawMessage÷0œpublic void
+set_destinationÃ128Õ(string destination)ŒDBus.RawMessage÷0œpublic bool
+set_error_nameÃ128Õ(string name)ŒDBus.RawMessage÷0œpublic bool
+set_interfaceÃ128Õ(string iface)ŒDBus.RawMessage÷0œpublic bool
+set_memberÃ128Õ(string member)ŒDBus.RawMessage÷0œpublic bool
+set_no_replyÃ128Õ(bool no_reply)ŒDBus.RawMessage÷0œpublic void
+set_pathÃ128Õ(string object_path)ŒDBus.RawMessage÷0œpublic bool
+set_reply_serialÃ128Õ(uint32 reply_serial)ŒDBus.RawMessage÷0œpublic bool
+set_senderÃ128Õ(string sender)ŒDBus.RawMessage÷0œpublic bool
+set_serialÃ128Õ(uint32 serial)ŒDBus.RawMessage÷0œpublic void
+setup_with_mainÃ128Õ(GLib.MainContext? context = null)ŒDBus.RawConnection÷0œpublic void
+thread_initÃ128Õ()ŒDBus÷0œpublic void
+type_from_stringÃ128Õ(string type)ŒDBus.RawMessageIter÷0œpublic int
+type_to_stringÃ128Õ(int type)ŒDBus.RawMessageIter÷0
+unregister_objectÃ128Õ(GLib.Object object)ŒDBus.Connection÷0œpublic void

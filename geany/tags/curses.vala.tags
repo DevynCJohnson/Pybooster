@@ -1,0 +1,490 @@
+# format=tagmanager
+A1Ì4ÎCurses.KeyÖ0
+A3Ì4ÎCurses.KeyÖ0
+ALL_MOUSE_EVENTSÌ4ÎCurses.MouseMaskÖ0
+ALTÌ4ÎCurses.ButtonÖ0
+ALTCHARSETÌ4ÎCurses.AttributeÖ0
+ATTRIBUTESÌ4ÎCurses.AttributeÖ0
+AcsÌ2ÎCursesÖ0
+AttributeÌ2ÎCursesÖ0
+B2Ì4ÎCurses.KeyÖ0
+BACKSPACEÌ4ÎCurses.KeyÖ0
+BBSSÌ4ÎCurses.AcsÖ0
+BEGÌ4ÎCurses.KeyÖ0
+BLACKÌ4ÎCurses.ColorÖ0
+BLINKÌ4ÎCurses.AttributeÖ0
+BLOCKÌ4ÎCurses.AcsÖ0
+BLUEÌ4ÎCurses.ColorÖ0
+BOARDÌ4ÎCurses.AcsÖ0
+BOLDÌ4ÎCurses.AttributeÖ0
+BREAKÌ4ÎCurses.KeyÖ0
+BSBSÌ4ÎCurses.AcsÖ0
+BSSBÌ4ÎCurses.AcsÖ0
+BSSSÌ4ÎCurses.AcsÖ0
+BTABÌ4ÎCurses.KeyÖ0
+BTEEÌ4ÎCurses.AcsÖ0
+BULLETÌ4ÎCurses.AcsÖ0
+ButtonÌ2ÎCursesÖ0
+Button1Ì2ÎCursesÖ0
+Button2Ì2ÎCursesÖ0
+Button3Ì2ÎCursesÖ0
+Button4Ì2ÎCursesÖ0
+Button5Ì2ÎCursesÖ0
+C1Ì4ÎCurses.KeyÖ0
+C3Ì4ÎCurses.KeyÖ0
+CANCELÌ4ÎCurses.KeyÖ0
+CATABÌ4ÎCurses.KeyÖ0
+CHARTEXTÌ4ÎCurses.AttributeÖ0
+CKBOARDÌ4ÎCurses.AcsÖ0
+CLEARÌ4ÎCurses.KeyÖ0
+CLICKEDÌ4ÎCurses.Button1Ö0
+CLICKEDÌ4ÎCurses.Button2Ö0
+CLICKEDÌ4ÎCurses.Button3Ö0
+CLICKEDÌ4ÎCurses.Button4Ö0
+CLICKEDÌ4ÎCurses.Button5Ö0
+CLOSEÌ4ÎCurses.KeyÖ0
+CODE_YESÌ4ÎCurses.KeyÖ0
+COLORÌ4ÎCurses.AttributeÖ0
+COLORSÌ8ÎCursesÖ0Ïint
+COLOR_PAIRÌ128Í(int n)ÎCursesÖ0Ïpublic int
+COLOR_PAIRSÌ8ÎCursesÖ0Ïint
+COLSÌ8ÎCursesÖ0Ïint
+COMMANDÌ4ÎCurses.KeyÖ0
+COPYÌ4ÎCurses.KeyÖ0
+CREATEÌ4ÎCurses.KeyÖ0
+CTABÌ4ÎCurses.KeyÖ0
+CTRLÌ4ÎCurses.ButtonÖ0
+CYANÌ4ÎCurses.ColorÖ0
+ColorÌ2ÎCursesÖ0
+CursesÌ256Ö0
+DARROWÌ4ÎCurses.AcsÖ0
+DCÌ4ÎCurses.KeyÖ0
+DEGREEÌ4ÎCurses.AcsÖ0
+DIAMONDÌ4ÎCurses.AcsÖ0
+DIMÌ4ÎCurses.AttributeÖ0
+DLÌ4ÎCurses.KeyÖ0
+DOUBLE_CLICKEDÌ4ÎCurses.Button1Ö0
+DOUBLE_CLICKEDÌ4ÎCurses.Button2Ö0
+DOUBLE_CLICKEDÌ4ÎCurses.Button3Ö0
+DOUBLE_CLICKEDÌ4ÎCurses.Button4Ö0
+DOUBLE_CLICKEDÌ4ÎCurses.Button5Ö0
+DOWNÌ4ÎCurses.KeyÖ0
+EICÌ4ÎCurses.KeyÖ0
+ENDÌ4ÎCurses.KeyÖ0
+ENTERÌ4ÎCurses.KeyÖ0
+EOLÌ4ÎCurses.KeyÖ0
+EOSÌ4ÎCurses.KeyÖ0
+ESCDELAYÌ8ÎCursesÖ0Ïint
+EVENTÌ4ÎCurses.KeyÖ0
+EXITÌ4ÎCurses.KeyÖ0
+F0Ì4ÎCurses.KeyÖ0
+FINDÌ4ÎCurses.KeyÖ0
+GEQUALÌ4ÎCurses.AcsÖ0
+GREENÌ4ÎCurses.ColorÖ0
+HELPÌ4ÎCurses.KeyÖ0
+HLINEÌ4ÎCurses.AcsÖ0
+HOMEÌ4ÎCurses.KeyÖ0
+HORIZONTALÌ4ÎCurses.AttributeÖ0
+ICÌ4ÎCurses.KeyÖ0
+ILÌ4ÎCurses.KeyÖ0
+INVISÌ4ÎCurses.AttributeÖ0
+KeyÌ2ÎCursesÖ0
+LANTERNÌ4ÎCurses.AcsÖ0
+LARROWÌ4ÎCurses.AcsÖ0
+LEFTÌ4ÎCurses.AttributeÖ0
+LEFTÌ4ÎCurses.KeyÖ0
+LEQUALÌ4ÎCurses.AcsÖ0
+LINESÌ8ÎCursesÖ0Ïint
+LLÌ4ÎCurses.KeyÖ0
+LLCORNERÌ4ÎCurses.AcsÖ0
+LOWÌ4ÎCurses.AttributeÖ0
+LRCORNERÌ4ÎCurses.AcsÖ0
+LTEEÌ4ÎCurses.AcsÖ0
+MAGENTAÌ4ÎCurses.ColorÖ0
+MARKÌ4ÎCurses.KeyÖ0
+MAXÌ4ÎCurses.KeyÖ0
+MESSAGEÌ4ÎCurses.KeyÖ0
+MINÌ4ÎCurses.KeyÖ0
+MOUSEÌ4ÎCurses.KeyÖ0
+MOVEÌ4ÎCurses.KeyÖ0
+MouseEventÌ2048ÎCursesÖ0
+MouseMaskÌ2ÎCursesÖ0
+NEQUALÌ4ÎCurses.AcsÖ0
+NEXTÌ4ÎCurses.KeyÖ0
+NORMALÌ4ÎCurses.AttributeÖ0
+NPAGEÌ4ÎCurses.KeyÖ0
+OPENÌ4ÎCurses.KeyÖ0
+OPTIONSÌ4ÎCurses.KeyÖ0
+PAIR_NUMBERÌ128Í(int attrs)ÎCursesÖ0Ïpublic int
+PIÌ4ÎCurses.AcsÖ0
+PLMINUSÌ4ÎCurses.AcsÖ0
+PLUSÌ4ÎCurses.AcsÖ0
+PPAGEÌ4ÎCurses.KeyÖ0
+PRESSEDÌ4ÎCurses.Button1Ö0
+PRESSEDÌ4ÎCurses.Button2Ö0
+PRESSEDÌ4ÎCurses.Button3Ö0
+PRESSEDÌ4ÎCurses.Button4Ö0
+PRESSEDÌ4ÎCurses.Button5Ö0
+PREVIOUSÌ4ÎCurses.KeyÖ0
+PRINTÌ4ÎCurses.KeyÖ0
+PROTECTÌ4ÎCurses.AttributeÖ0
+PadÌ1ÎCursesÖ0
+PadÌ128Í(int nlines, int ncols)ÎCurses.PadÖ0
+RARROWÌ4ÎCurses.AcsÖ0
+REDÌ4ÎCurses.ColorÖ0
+REDOÌ4ÎCurses.KeyÖ0
+REFERENCEÌ4ÎCurses.KeyÖ0
+REFRESHÌ4ÎCurses.KeyÖ0
+RELEASEDÌ4ÎCurses.Button1Ö0
+RELEASEDÌ4ÎCurses.Button2Ö0
+RELEASEDÌ4ÎCurses.Button3Ö0
+RELEASEDÌ4ÎCurses.Button4Ö0
+RELEASEDÌ4ÎCurses.Button5Ö0
+REPLACEÌ4ÎCurses.KeyÖ0
+REPORT_MOUSE_POSITIONÌ4ÎCurses.MouseMaskÖ0
+RESETÌ4ÎCurses.KeyÖ0
+RESIZEÌ4ÎCurses.KeyÖ0
+RESTARTÌ4ÎCurses.KeyÖ0
+RESUMEÌ4ÎCurses.KeyÖ0
+REVERSEÌ4ÎCurses.AttributeÖ0
+RIGHTÌ4ÎCurses.AttributeÖ0
+RIGHTÌ4ÎCurses.KeyÖ0
+RTEEÌ4ÎCurses.AcsÖ0
+RipofflineInitFuncÌ128Í(Window win, int n)ÎCursesÖ0Ïpublic delegate int
+S1Ì4ÎCurses.AcsÖ0
+S3Ì4ÎCurses.AcsÖ0
+S7Ì4ÎCurses.AcsÖ0
+S9Ì4ÎCurses.AcsÖ0
+SAVEÌ4ÎCurses.KeyÖ0
+SBBSÌ4ÎCurses.AcsÖ0
+SBEGÌ4ÎCurses.KeyÖ0
+SBSBÌ4ÎCurses.AcsÖ0
+SBSSÌ4ÎCurses.AcsÖ0
+SCANCELÌ4ÎCurses.KeyÖ0
+SCOMMANDÌ4ÎCurses.KeyÖ0
+SCOPYÌ4ÎCurses.KeyÖ0
+SCREATEÌ4ÎCurses.KeyÖ0
+SDCÌ4ÎCurses.KeyÖ0
+SDLÌ4ÎCurses.KeyÖ0
+SELECTÌ4ÎCurses.KeyÖ0
+SENDÌ4ÎCurses.KeyÖ0
+SEOLÌ4ÎCurses.KeyÖ0
+SEXITÌ4ÎCurses.KeyÖ0
+SFÌ4ÎCurses.KeyÖ0
+SFINDÌ4ÎCurses.KeyÖ0
+SHELPÌ4ÎCurses.KeyÖ0
+SHIFTÌ4ÎCurses.ButtonÖ0
+SHOMEÌ4ÎCurses.KeyÖ0
+SICÌ4ÎCurses.KeyÖ0
+SLEFTÌ4ÎCurses.KeyÖ0
+SMESSAGEÌ4ÎCurses.KeyÖ0
+SMOVEÌ4ÎCurses.KeyÖ0
+SNEXTÌ4ÎCurses.KeyÖ0
+SOPTIONSÌ4ÎCurses.KeyÖ0
+SPREVIOUSÌ4ÎCurses.KeyÖ0
+SPRINTÌ4ÎCurses.KeyÖ0
+SRÌ4ÎCurses.KeyÖ0
+SREDOÌ4ÎCurses.KeyÖ0
+SREPLACEÌ4ÎCurses.KeyÖ0
+SRESETÌ4ÎCurses.KeyÖ0
+SRIGHTÌ4ÎCurses.KeyÖ0
+SRSUMEÌ4ÎCurses.KeyÖ0
+SSAVEÌ4ÎCurses.KeyÖ0
+SSBBÌ4ÎCurses.AcsÖ0
+SSBSÌ4ÎCurses.AcsÖ0
+SSSBÌ4ÎCurses.AcsÖ0
+SSSSÌ4ÎCurses.AcsÖ0
+SSUSPENDÌ4ÎCurses.KeyÖ0
+STABÌ4ÎCurses.KeyÖ0
+STANDOUTÌ4ÎCurses.AttributeÖ0
+STERLINGÌ4ÎCurses.AcsÖ0
+SUNDOÌ4ÎCurses.KeyÖ0
+SUSPENDÌ4ÎCurses.KeyÖ0
+ScreenÌ1ÎCursesÖ0
+ScreenÌ128Í(string str, GLib.FileStream outfd, GLib.FileStream infd)ÎCurses.ScreenÖ0
+TABSIZEÌ8ÎCursesÖ0Ïint
+TOPÌ4ÎCurses.AttributeÖ0
+TRIPLE_CLICKEDÌ4ÎCurses.Button1Ö0
+TRIPLE_CLICKEDÌ4ÎCurses.Button2Ö0
+TRIPLE_CLICKEDÌ4ÎCurses.Button3Ö0
+TRIPLE_CLICKEDÌ4ÎCurses.Button4Ö0
+TRIPLE_CLICKEDÌ4ÎCurses.Button5Ö0
+TTEEÌ4ÎCurses.AcsÖ0
+UARROWÌ4ÎCurses.AcsÖ0
+ULCORNERÌ4ÎCurses.AcsÖ0
+UNDERLINEÌ4ÎCurses.AttributeÖ0
+UNDOÌ4ÎCurses.KeyÖ0
+UPÌ4ÎCurses.KeyÖ0
+URCORNERÌ4ÎCurses.AcsÖ0
+VERTICALÌ4ÎCurses.AttributeÖ0
+VLINEÌ4ÎCurses.AcsÖ0
+VidputsPutcFuncÌ128Í(char ch)ÎCursesÖ0Ïpublic delegate int
+WHITEÌ4ÎCurses.ColorÖ0
+WindowÌ1ÎCursesÖ0
+WindowÌ128Í(int nlines, int ncols, int begin_y, int begin_x)ÎCurses.WindowÖ0
+YELLOWÌ4ÎCurses.ColorÖ0
+addchÌ128Í(ulong ch)ÎCursesÖ0Ïpublic int
+addchÌ128Í(ulong ch)ÎCurses.WindowÖ0Ïpublic int
+addchnstrÌ128Í([CCode (array_length = false)] ulong[] chstr, int n)ÎCursesÖ0Ïpublic int
+addchstrÌ128Í([CCode (array_length = false)] ulong[] chstr)ÎCursesÖ0Ïpublic int
+addnstrÌ128Í(string str, int n)ÎCursesÖ0Ïpublic int
+addstrÌ128Í(string str)ÎCursesÖ0Ïpublic int
+addstrÌ128Í(string str)ÎCurses.WindowÖ0Ïpublic int
+attr_getÌ128Í(ref ulong attrs, ref short pair)ÎCursesÖ0Ïpublic int
+attr_getÌ128Í(ref ulong attrs, ref ulong pair)ÎCurses.WindowÖ0Ïpublic int
+attr_offÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+attr_offÌ128Í(ulong attrs)ÎCurses.WindowÖ0Ïpublic int
+attr_onÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+attr_onÌ128Í(ulong attrs)ÎCurses.WindowÖ0Ïpublic int
+attr_setÌ128Í(ulong attrs, short pair)ÎCursesÖ0Ïpublic int
+attr_setÌ128Í(ulong attrs, short pair)ÎCurses.WindowÖ0Ïpublic int
+attroffÌ128Í(ulong attr)ÎCursesÖ0Ïpublic int
+attroffÌ128Í(ulong attrs)ÎCurses.WindowÖ0Ïpublic int
+attronÌ128Í(ulong attr)ÎCursesÖ0Ïpublic int
+attronÌ128Í(ulong attrs)ÎCurses.WindowÖ0Ïpublic int
+attrsetÌ128Í(ulong attr)ÎCursesÖ0Ïpublic int
+attrsetÌ128Í(ulong attrs)ÎCurses.WindowÖ0Ïpublic int
+baudrateÌ128Í()ÎCursesÖ0Ïpublic int
+beepÌ128Í()ÎCursesÖ0Ïpublic int
+bkgdÌ128Í(ulong ch)ÎCursesÖ0Ïpublic int
+bkgdÌ128Í(ulong ch)ÎCurses.WindowÖ0Ïpublic int
+bkgdsetÌ128Í(ulong ch)ÎCursesÖ0Ïpublic void
+bkgdsetÌ128Í(ulong ch)ÎCurses.WindowÖ0Ïpublic void
+borderÌ128Í(ulong ls, ulong rs, ulong ts, ulong bs, ulong tl, ulong tr, ulong bl, ulong br)ÎCursesÖ0Ïpublic int
+borderÌ128Í(ulong ls, ulong rs, ulong ts, ulong bs, ulong tl, ulong tr, ulong bl, ulong br)ÎCurses.WindowÖ0Ïpublic int
+boxÌ128Í(ulong verch, ulong horch)ÎCurses.WindowÖ0Ïpublic int
+bstateÌ8ÎCurses.MouseEventÖ0Ïlong
+can_change_colorÌ128Í()ÎCursesÖ0Ïpublic bool
+cbreakÌ128Í()ÎCursesÖ0Ïpublic int
+chgatÌ128Í(int n, ulong attr, short color)ÎCursesÖ0Ïpublic int
+chgatÌ128Í(int n, ulong attr, short color)ÎCurses.WindowÖ0Ïpublic int
+clearÌ128Í()ÎCursesÖ0Ïpublic int
+clearÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+clearokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+clrtobotÌ128Í()ÎCursesÖ0Ïpublic int
+clrtobotÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+clrtoeolÌ128Í()ÎCursesÖ0Ïpublic int
+clrtoeolÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+color_contentÌ128Í(short color, ref short r, ref short g, ref short b)ÎCursesÖ0Ïpublic int
+color_setÌ128Í(short color_pair_number)ÎCursesÖ0Ïpublic int
+color_setÌ128Í(short color_pair_number)ÎCurses.WindowÖ0Ïpublic int
+copyÌ128Í()ÎCurses.WindowÖ0Ïpublic Window
+copywinÌ128Í(Window dstwin, int sminrow, int smincol, int dminrow, int dmincol, int dmaxrow, int dmaxcol, int overlay)ÎCurses.WindowÖ0Ïpublic int
+curs_setÌ128Í(int visibility)ÎCursesÖ0Ïpublic int
+curscrÌ8ÎCursesÖ0ÏWindow
+cursyncupÌ128Í()ÎCurses.WindowÖ0Ïpublic void
+def_prog_modeÌ128Í()ÎCursesÖ0Ïpublic int
+def_shell_modeÌ128Í()ÎCursesÖ0Ïpublic int
+delay_outputÌ128Í(int ms)ÎCursesÖ0Ïpublic int
+delchÌ128Í()ÎCursesÖ0Ïpublic int
+delchÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+deletelnÌ128Í()ÎCursesÖ0Ïpublic int
+deletelnÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+derwinÌ128Í(int nlines, int ncols, int begin_y, int begin_x)ÎCurses.WindowÖ0Ïpublic Window
+doupdateÌ128Í()ÎCursesÖ0Ïpublic int
+echoÌ128Í()ÎCursesÖ0Ïpublic int
+echocharÌ128Í(ulong ch)ÎCursesÖ0Ïpublic int
+echocharÌ128Í(ulong ch)ÎCurses.PadÖ0Ïpublic int
+echocharÌ128Í(ulong ch)ÎCurses.WindowÖ0Ïpublic int
+endwinÌ128Í()ÎCursesÖ0Ïpublic int
+eraseÌ128Í()ÎCursesÖ0Ïpublic int
+eraseÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+erasecharÌ128Í()ÎCursesÖ0Ïpublic char
+filterÌ128Í()ÎCursesÖ0Ïpublic void
+flashÌ128Í()ÎCursesÖ0Ïpublic int
+flushinpÌ128Í()ÎCursesÖ0Ïpublic int
+getbkgdÌ128Í()ÎCurses.WindowÖ0
+getchÌ128Í()ÎCursesÖ0Ïpublic int
+getchÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+getmouseÌ128Í(out MouseEvent me)ÎCursesÖ0Ïpublic bool
+getnstrÌ128Í(string str, int n)ÎCursesÖ0Ïpublic int
+getnstrÌ128Í(string str, int n)ÎCurses.WindowÖ0Ïpublic int
+getstrÌ128Í(string str)ÎCursesÖ0Ïpublic int
+getstrÌ128Í(string str)ÎCurses.WindowÖ0Ïpublic int
+getwinÌ128Í(GLib.FileStream filep)ÎCurses.WindowÖ0Ïpublic Window
+halfdelayÌ128Í(int tenths)ÎCursesÖ0Ïpublic int
+has_colorsÌ128Í()ÎCursesÖ0Ïpublic bool
+has_icÌ128Í()ÎCursesÖ0Ïpublic bool
+has_ilÌ128Í()ÎCursesÖ0Ïpublic bool
+hlineÌ128Í(ulong ch, int n)ÎCursesÖ0Ïpublic int
+hlineÌ128Í(ulong ch, int n)ÎCurses.WindowÖ0Ïpublic int
+idÌ8ÎCurses.MouseEventÖ0Ïshort
+idcokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic void
+idlokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+immedokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic void
+inchÌ128Í()ÎCursesÖ0
+inchÌ128Í()ÎCurses.WindowÖ0
+inchnstrÌ128Í([CCode (array_length = false)] ulong[] chstr, int n)ÎCursesÖ0Ïpublic int
+inchnstrÌ128Í([CCode (array_length = false)] ulong[] chstr, int n)ÎCurses.WindowÖ0Ïpublic int
+inchstrÌ128Í([CCode (array_length = false)] ulong[] chstr)ÎCursesÖ0Ïpublic int
+inchstrÌ128Í([CCode (array_length = false)] ulong[] chstr)ÎCurses.WindowÖ0Ïpublic int
+init_colorÌ128Í(short color, short r, short g, short b)ÎCursesÖ0Ïpublic int
+init_pairÌ128Í(short pair, Color f, Color b)ÎCursesÖ0Ïpublic int
+initscrÌ128Í()ÎCursesÖ0Ïpublic unowned
+innstrÌ128Í(string str, int n)ÎCursesÖ0Ïpublic int
+innstrÌ128Í(string str, int n)ÎCurses.WindowÖ0Ïpublic int
+inschÌ128Í(ulong ch)ÎCursesÖ0Ïpublic int
+inschÌ128Í(ulong ch)ÎCurses.WindowÖ0Ïpublic int
+insdellnÌ128Í(int n)ÎCursesÖ0Ïpublic int
+insdellnÌ128Í(int n)ÎCurses.WindowÖ0Ïpublic int
+insertlnÌ128Í()ÎCursesÖ0Ïpublic int
+insertlnÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+insnstrÌ128Í(string str, int n)ÎCursesÖ0Ïpublic int
+insnstrÌ128Í(string str, int n)ÎCurses.WindowÖ0Ïpublic int
+insstrÌ128Í(string str)ÎCursesÖ0Ïpublic int
+insstrÌ128Í(string str)ÎCurses.WindowÖ0Ïpublic int
+instrÌ128Í(string str)ÎCursesÖ0Ïpublic int
+instrÌ128Í(string str)ÎCurses.WindowÖ0Ïpublic int
+intrflushÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+is_linetouchedÌ128Í(int line)ÎCurses.WindowÖ0Ïpublic bool
+is_wintouchedÌ128Í()ÎCurses.WindowÖ0Ïpublic bool
+isendwinÌ128Í()ÎCursesÖ0Ïpublic bool
+keynameÌ128Í(int c)ÎCursesÖ0
+keypadÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+killcharÌ128Í()ÎCursesÖ0Ïpublic char
+leaveokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+metaÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+mouseintervalÌ128Í(int erval)ÎCursesÖ0Ïpublic int
+mousemaskÌ128Í(MouseMask @new, out MouseMask old)ÎCursesÖ0Ïpublic int
+moveÌ128Í(int y, int x)ÎCursesÖ0Ïpublic int
+moveÌ128Í(int y, int x)ÎCurses.WindowÖ0Ïpublic int
+mvaddchÌ128Í(int y, int x, ulong ch)ÎCursesÖ0Ïpublic int
+mvaddchÌ128Í(int y, int x, ulong ch)ÎCurses.WindowÖ0Ïpublic int
+mvaddchnstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr, int n)ÎCursesÖ0Ïpublic int
+mvaddchnstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr, int n)ÎCurses.WindowÖ0Ïpublic int
+mvaddchstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr)ÎCursesÖ0Ïpublic int
+mvaddchstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr)ÎCurses.WindowÖ0Ïpublic int
+mvaddnstrÌ128Í(int y, int x, string str, int n)ÎCursesÖ0Ïpublic int
+mvaddnstrÌ128Í(int y, int x, string str, int n)ÎCurses.WindowÖ0Ïpublic int
+mvaddstrÌ128Í(int y, int x, string str)ÎCursesÖ0Ïpublic int
+mvaddstrÌ128Í(int y, int x, string str)ÎCurses.WindowÖ0Ïpublic int
+mvchgatÌ128Í(int y, int x, int n, ulong attr, short color)ÎCursesÖ0Ïpublic int
+mvchgatÌ128Í(int y, int x, int n, ulong attr, short color)ÎCurses.WindowÖ0Ïpublic int
+mvcurÌ128Í(int oldrow, int oldcol, int newrow, int newcol)ÎCursesÖ0Ïpublic int
+mvdelchÌ128Í(int y, int x)ÎCursesÖ0Ïpublic int
+mvdelchÌ128Í(int y, int x)ÎCurses.WindowÖ0Ïpublic int
+mvderwinÌ128Í(int par_y, int par_x)ÎCurses.WindowÖ0Ïpublic int
+mvgetchÌ128Í(int y, int x)ÎCursesÖ0Ïpublic int
+mvgetchÌ128Í(int y, int x)ÎCurses.WindowÖ0Ïpublic int
+mvgetnstrÌ128Í(int y, int x, string str, int n)ÎCursesÖ0Ïpublic int
+mvgetnstrÌ128Í(int y, int x, string str, int n)ÎCurses.WindowÖ0Ïpublic int
+mvgetstrÌ128Í(int y, int x, string str)ÎCursesÖ0Ïpublic int
+mvgetstrÌ128Í(int y, int x, string str)ÎCurses.WindowÖ0Ïpublic int
+mvhlineÌ128Í(int y, int x, ulong ch, int n)ÎCursesÖ0Ïpublic int
+mvhlineÌ128Í(int y, int x, ulong ch, int n)ÎCurses.WindowÖ0Ïpublic int
+mvinchÌ128Í(int y, int x)ÎCursesÖ0
+mvinchÌ128Í(int y, int x)ÎCurses.WindowÖ0
+mvinchnstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr, int n)ÎCursesÖ0Ïpublic int
+mvinchnstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr, int n)ÎCurses.WindowÖ0Ïpublic int
+mvinchstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr)ÎCursesÖ0Ïpublic int
+mvinchstrÌ128Í(int y, int x, [CCode (array_length = false)] ulong[] chstr)ÎCurses.WindowÖ0Ïpublic int
+mvinnstrÌ128Í(int y, int x, string str, int n)ÎCursesÖ0Ïpublic int
+mvinnstrÌ128Í(int y, int x, string str, int n)ÎCurses.WindowÖ0Ïpublic int
+mvinschÌ128Í(int y, int x, ulong ch)ÎCursesÖ0Ïpublic int
+mvinschÌ128Í(int y, int x, ulong ch)ÎCurses.WindowÖ0Ïpublic int
+mvinsnstrÌ128Í(int y, int x, string str, int n)ÎCursesÖ0Ïpublic int
+mvinsnstrÌ128Í(int y, int x, string str, int n)ÎCurses.WindowÖ0Ïpublic int
+mvinsstrÌ128Í(int y, int x, string str)ÎCursesÖ0Ïpublic int
+mvinsstrÌ128Í(int y, int x, string str)ÎCurses.WindowÖ0Ïpublic int
+mvinstrÌ128Í(int y, int x, string str)ÎCursesÖ0Ïpublic int
+mvinstrÌ128Í(int y, int x, string str)ÎCurses.WindowÖ0Ïpublic int
+mvprintwÌ128Í(int y, int x, string str, ...)ÎCursesÖ0Ïpublic int
+mvprintwÌ128Í(int y, int x, string str, ...)ÎCurses.WindowÖ0Ïpublic int
+mvscanwÌ128Í(int y, int x, string str, ...)ÎCursesÖ0Ïpublic int
+mvscanwÌ128Í(int y, int x, string str, ...)ÎCurses.WindowÖ0Ïpublic int
+mvvlineÌ128Í(int y, int x, ulong ch, int n)ÎCursesÖ0Ïpublic int
+mvvlineÌ128Í(int y, int x, ulong ch, int n)ÎCurses.WindowÖ0Ïpublic int
+mvwinÌ128Í(int y, int x)ÎCurses.WindowÖ0Ïpublic int
+napmsÌ128Í(int ms)ÎCursesÖ0Ïpublic int
+newscrÌ8ÎCursesÖ0ÏWindow
+nlÌ128Í()ÎCursesÖ0Ïpublic int
+nocbreakÌ128Í()ÎCursesÖ0Ïpublic int
+nodelayÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+noechoÌ128Í()ÎCursesÖ0Ïpublic int
+nonlÌ128Í()ÎCursesÖ0Ïpublic int
+noqiflushÌ128Í()ÎCursesÖ0Ïpublic void
+norawÌ128Í()ÎCursesÖ0Ïpublic int
+notimeoutÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+noutrefreshÌ128Í(int pminrow, int pmincol, int sminrow, int smincol, int smaxrow, int smaxcol)ÎCurses.PadÖ0Ïpublic int
+noutrefreshÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+overlayÌ128Í(Window win)ÎCurses.WindowÖ0Ïpublic int
+overwriteÌ128Í(Window win)ÎCurses.WindowÖ0Ïpublic int
+pair_contentÌ128Í(short pair, ref Color f, ref Color b)ÎCursesÖ0Ïpublic int
+printwÌ128Í(string str, ...)ÎCursesÖ0Ïpublic int
+printwÌ128Í(string str, ...)ÎCurses.WindowÖ0Ïpublic int
+putwinÌ128Í(GLib.FileStream filep)ÎCurses.WindowÖ0Ïpublic int
+qiflushÌ128Í()ÎCursesÖ0Ïpublic void
+rawÌ128Í()ÎCursesÖ0Ïpublic int
+redrawlnÌ128Í(int beg_line, int num_lines)ÎCurses.WindowÖ0Ïpublic int
+redrawwinÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+refreshÌ128Í()ÎCursesÖ0Ïpublic int
+refreshÌ128Í(int pminrow, int pmincol, int sminrow, int smincol, int smaxrow, int smaxcol)ÎCurses.PadÖ0Ïpublic int
+refreshÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+reset_prog_modeÌ128Í()ÎCursesÖ0Ïpublic int
+reset_shell_modeÌ128Í()ÎCursesÖ0Ïpublic int
+resettyÌ128Í()ÎCursesÖ0Ïpublic int
+resizeÌ128Í(int h, int w)ÎCurses.WindowÖ0Ïpublic int
+ripofflineÌ128Í(int line, RipofflineInitFunc init)ÎCursesÖ0Ïpublic int
+savettyÌ128Í()ÎCursesÖ0Ïpublic int
+scanwÌ128Í(string str, ...)ÎCursesÖ0Ïpublic int
+scanwÌ128Í(string str, ...)ÎCurses.WindowÖ0Ïpublic int
+scr_dumpÌ128Í(string str)ÎCursesÖ0Ïpublic int
+scr_initÌ128Í(string str)ÎCursesÖ0Ïpublic int
+scr_restoreÌ128Í(string str)ÎCursesÖ0Ïpublic int
+scr_setÌ128Í(string str)ÎCursesÖ0Ïpublic int
+scrlÌ128Í(int n)ÎCursesÖ0Ïpublic int
+scrlÌ128Í(int n)ÎCurses.WindowÖ0Ïpublic int
+scrollÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+scrollokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+set_termÌ128Í()ÎCurses.ScreenÖ0Ïpublic unowned
+setscrregÌ128Í(int top, int bot)ÎCursesÖ0Ïpublic int
+setscrregÌ128Í(int top, int bot)ÎCurses.WindowÖ0Ïpublic int
+slk_attrÌ128Í()ÎCursesÖ0
+slk_attr_offÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+slk_attr_onÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+slk_attr_setÌ128Í(ulong attrs, short pair)ÎCursesÖ0Ïpublic int
+slk_attroffÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+slk_attronÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+slk_attrsetÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+slk_clearÌ128Í()ÎCursesÖ0Ïpublic int
+slk_colorÌ128Í(short color_pair_number)ÎCursesÖ0Ïpublic int
+slk_initÌ128Í(int fmt)ÎCursesÖ0Ïpublic int
+slk_labelÌ128Í(int labnum)ÎCursesÖ0
+slk_noutrefreshÌ128Í()ÎCursesÖ0Ïpublic int
+slk_refreshÌ128Í()ÎCursesÖ0Ïpublic int
+slk_restoreÌ128Í()ÎCursesÖ0Ïpublic int
+slk_setÌ128Í(int labnum, string label, int fmt)ÎCursesÖ0Ïpublic int
+slk_touchÌ128Í()ÎCursesÖ0Ïpublic int
+standendÌ128Í()ÎCursesÖ0Ïpublic int
+standendÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+standoutÌ128Í()ÎCursesÖ0Ïpublic int
+standoutÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+start_colorÌ128Í()ÎCursesÖ0Ïpublic int
+stdscrÌ8ÎCursesÖ0ÏWindow
+subpadÌ128Í(int nlines, int ncols, int begin_y, int begin_x)ÎCurses.WindowÖ0Ïpublic Window
+subwinÌ128Í(int nlines, int ncols, int begin_y, int begin_x)ÎCurses.WindowÖ0Ïpublic Window
+syncdownÌ128Í()ÎCurses.WindowÖ0Ïpublic void
+syncokÌ128Í(bool bf)ÎCurses.WindowÖ0Ïpublic int
+syncupÌ128Í()ÎCurses.WindowÖ0Ïpublic void
+termattrsÌ128Í()ÎCursesÖ0
+termnameÌ128Í()ÎCursesÖ0
+timeoutÌ128Í(int delay)ÎCursesÖ0Ïpublic void
+timeoutÌ128Í(int delay)ÎCurses.WindowÖ0Ïpublic void
+touchlineÌ128Í(int start, int count)ÎCurses.WindowÖ0Ïpublic int
+touchlnÌ128Í(int y, int n, int changed)ÎCurses.WindowÖ0Ïpublic int
+touchwinÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+typeaheadÌ128Í(int fd)ÎCursesÖ0Ïpublic int
+ulongnameÌ128Í()ÎCursesÖ0
+ungetchÌ128Í(int ch)ÎCursesÖ0Ïpublic int
+untouchwinÌ128Í()ÎCurses.WindowÖ0Ïpublic int
+use_envÌ128Í(bool bf)ÎCursesÖ0Ïpublic void
+vidattrÌ128Í(ulong attrs)ÎCursesÖ0Ïpublic int
+vidputsÌ128Í(ulong attrs, VidputsPutcFunc putc)ÎCursesÖ0Ïpublic int
+vlineÌ128Í(ulong ch, int n)ÎCursesÖ0Ïpublic int
+vlineÌ128Í(ulong ch, int n)ÎCurses.WindowÖ0Ïpublic int
+waddchnstrÌ128Í([CCode (array_length = false)] ulong[] chstr, int n)ÎCurses.WindowÖ0Ïpublic int
+waddchstrÌ128Í([CCode (array_length = false)] ulong[] chstr)ÎCurses.WindowÖ0Ïpublic int
+waddnstrÌ128Í(string str, int n)ÎCurses.WindowÖ0Ïpublic int
+xÌ8ÎCurses.MouseEventÖ0Ïint
+yÌ8ÎCurses.MouseEventÖ0Ïint
+zÌ8ÎCurses.MouseEventÖ0Ïint

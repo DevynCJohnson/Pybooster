@@ -1,0 +1,186 @@
+# format=tagmanager
+@deleteÃ128Õ(string keyring, GnomeKeyring.OperationDoneCallback callback, void* data, GLib.DestroyNotify destroy_data)ŒGnomeKeyring÷0œpublic void *
+@lockÃ128Õ(string keyring, GnomeKeyring.OperationDoneCallback callback, void* data, GLib.DestroyNotify destroy_data)ŒGnomeKeyring÷0œpublic void *
+ALLÃ4ŒGnomeKeyring.ItemInfoFlags÷0
+ALLOWÃ4ŒGnomeKeyring.AccessRestriction÷0
+ALREADY_UNLOCKEDÃ4ŒGnomeKeyring.Result÷0
+APPLICATION_SECRETÃ4ŒGnomeKeyring.ItemType÷0
+ASKÃ4ŒGnomeKeyring.AccessRestriction÷0
+AccessControlÃ1ŒGnomeKeyring÷0
+AccessControlÃ128Õ(GnomeKeyring.ApplicationRef application, GnomeKeyring.AccessType types_allowed)ŒGnomeKeyring.AccessControl÷0
+AccessRestrictionÃ2ŒGnomeKeyring÷0
+AccessTypeÃ2ŒGnomeKeyring÷0
+ApplicationRefÃ1ŒGnomeKeyring÷0
+ApplicationRefÃ128Õ()ŒGnomeKeyring.ApplicationRef÷0
+AttributeÃ2048ŒGnomeKeyring÷0
+AttributeListÃ1ŒGnomeKeyring÷0
+AttributeListÃ128Õ()ŒGnomeKeyring.AttributeList÷0
+AttributeTypeÃ2ŒGnomeKeyring÷0
+BAD_ARGUMENTSÃ4ŒGnomeKeyring.Result÷0
+BASICSÃ4ŒGnomeKeyring.ItemInfoFlags÷0
+CANCELLEDÃ4ŒGnomeKeyring.Result÷0
+CHAINED_KEYRING_PASSWORDÃ4ŒGnomeKeyring.ItemType÷0
+DEFAULTÃ8ŒGnomeKeyring÷0
+DENIEDÃ4ŒGnomeKeyring.Result÷0
+DENYÃ4ŒGnomeKeyring.AccessRestriction÷0
+ENCRYPTION_KEY_PASSWORDÃ4ŒGnomeKeyring.ItemType÷0
+FoundÃ1ŒGnomeKeyring÷0
+GENERIC_SECRETÃ4ŒGnomeKeyring.ItemType÷0
+GnomeKeyringÃ256÷0
+IO_ERRORÃ4ŒGnomeKeyring.Result÷0
+ITEM_TYPE_MASKÃ4ŒGnomeKeyring.ItemType÷0
+InfoÃ1ŒGnomeKeyring÷0
+ItemInfoÃ1ŒGnomeKeyring÷0
+ItemInfoÃ128Õ()ŒGnomeKeyring.ItemInfo÷0
+ItemInfoFlagsÃ2ŒGnomeKeyring÷0
+ItemTypeÃ2ŒGnomeKeyring÷0
+KEYRING_ALREADY_EXISTSÃ4ŒGnomeKeyring.Result÷0
+LAST_TYPEÃ4ŒGnomeKeyring.ItemType÷0
+NETWORK_PASSWORDÃ8ŒGnomeKeyring÷0œGnomeKeyring.PasswordSchema
+NETWORK_PASSWORDÃ4ŒGnomeKeyring.ItemType÷0
+NOTEÃ4ŒGnomeKeyring.ItemType÷0
+NO_KEYRING_DAEMONÃ4ŒGnomeKeyring.Result÷0
+NO_MATCHÃ4ŒGnomeKeyring.Result÷0
+NO_SUCH_KEYRINGÃ4ŒGnomeKeyring.Result÷0
+NetworkPasswordDataÃ1ŒGnomeKeyring÷0
+OKÃ4ŒGnomeKeyring.Result÷0
+OperationDoneCallbackÃ128Õ(GnomeKeyring.Result result)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetAttributesCallbackÃ128Õ(GnomeKeyring.Result result, GnomeKeyring.AttributeList attributes)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetIntCallbackÃ128Õ(GnomeKeyring.Result result, uint32 val)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetItemInfoCallbackÃ128Õ(GnomeKeyring.Result result, GnomeKeyring.ItemInfo info)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetKeyringInfoCallbackÃ128Õ(GnomeKeyring.Result result, GnomeKeyring.Info info)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetListCallbackÃ128Õ(GnomeKeyring.Result result, GLib.List<GnomeKeyring.NetworkPasswordData> list)ŒGnomeKeyring÷0œpublic delegate void
+OperationGetStringCallbackÃ128Õ(GnomeKeyring.Result result, string? str)ŒGnomeKeyring÷0œpublic delegate void
+PK_STORAGEÃ4ŒGnomeKeyring.ItemType÷0
+PasswordSchemaÃ1ŒGnomeKeyring÷0
+READÃ4ŒGnomeKeyring.AccessType÷0
+REMOVEÃ4ŒGnomeKeyring.AccessType÷0
+ResultÃ2ŒGnomeKeyring÷0
+SECRETÃ4ŒGnomeKeyring.ItemInfoFlags÷0
+SESSIONÃ8ŒGnomeKeyring÷0
+STRINGÃ4ŒGnomeKeyring.AttributeType÷0
+UINT32Ã4ŒGnomeKeyring.AttributeType÷0
+WRITEÃ4ŒGnomeKeyring.AccessType÷0
+acl_copyÃ128Õ(GLib.List<GnomeKeyring.AccessControl> list)ŒGnomeKeyring÷0œpublic GLib.List
+append_stringÃ128Õ(string name, string value)ŒGnomeKeyring.AttributeList÷0œpublic void
+append_uint32Ã128Õ(string name, uint32 value)ŒGnomeKeyring.AttributeList÷0œpublic void
+attributesÃ8ŒGnomeKeyring.Found÷0œGnomeKeyring.AttributeList
+attributesÃ8ŒGnomeKeyring.PasswordSchema÷0œvoid
+authtypeÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+cancel_requestÃ128Õ(void* request)ŒGnomeKeyring÷0œpublic void
+change_passwordÃ128Õ(string keyring, string? original, string? password, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+change_password_syncÃ128Õ(string keyring, string? original, string? password)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+copyÃ128Õ()ŒGnomeKeyring.AccessControl÷0œpublic GnomeKeyring.AccessControl
+copyÃ128Õ()ŒGnomeKeyring.ApplicationRef÷0œpublic GnomeKeyring.ApplicationRef
+copyÃ128Õ()ŒGnomeKeyring.AttributeList÷0œpublic GnomeKeyring.AttributeList
+copyÃ128Õ()ŒGnomeKeyring.Info÷0œpublic GnomeKeyring.Info
+copyÃ128Õ()ŒGnomeKeyring.ItemInfo÷0œpublic GnomeKeyring.ItemInfo
+createÃ128Õ(string keyring_name, string? password, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+create_syncÃ128Õ(string keyring_name, string? password)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+daemon_prepare_environment_syncÃ128Õ()ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+daemon_set_display_syncÃ128Õ(string display)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+dataÃ8ŒGnomeKeyring.AttributeList÷0œGnomeKeyring.Attribute
+delete_passwordÃ128Õ(GnomeKeyring.PasswordSchema schema, owned GnomeKeyring.OperationDoneCallback callback, ...)ŒGnomeKeyring÷0œpublic void *
+delete_password_syncÃ128Õ(GnomeKeyring.PasswordSchema schema, ...)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+delete_syncÃ128Õ(string keyring)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+domainÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+find_itemsÃ128Õ(GnomeKeyring.ItemType type, GnomeKeyring.AttributeList attributes, owned GnomeKeyring.OperationGetListCallback callback)ŒGnomeKeyring÷0œpublic void *
+find_items_syncÃ128Õ(GnomeKeyring.ItemType type, GnomeKeyring.AttributeList attributes, out GLib.List<GnomeKeyring.Found> found)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+find_itemsvÃ128Õ(GnomeKeyring.ItemType type, owned GnomeKeyring.OperationGetListCallback callback, ...)ŒGnomeKeyring÷0œpublic void *
+find_itemsv_syncÃ128Õ(GnomeKeyring.ItemType type, out GLib.List<GnomeKeyring.Found> found, ...)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+find_network_passwordÃ128Õ(string? user, string? domain, string? server, string? object, string? protocol, string? authtype, uint32 port, owned GnomeKeyring.OperationGetListCallback callback)ŒGnomeKeyring÷0œpublic void *
+find_network_password_syncÃ128Õ(string? user, string? domain, string? server, string? object, string? protocol, string? authtype, uint32 port, out GLib.List<GnomeKeyring.NetworkPasswordData> results)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+find_passwordÃ128Õ(GnomeKeyring.PasswordSchema schema, owned GnomeKeyring.OperationGetStringCallback callback, ...)ŒGnomeKeyring÷0œpublic void *
+find_password_syncÃ128Õ(GnomeKeyring.PasswordSchema schema, out unowned string password, ...)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+free_passwordÃ128Õ(string password)ŒGnomeKeyring÷0œpublic void
+get_ctimeÃ128Õ()ŒGnomeKeyring.Info÷0
+get_ctimeÃ128Õ()ŒGnomeKeyring.ItemInfo÷0
+get_default_keyringÃ128Õ(owned GnomeKeyring.OperationGetStringCallback callback)ŒGnomeKeyring÷0œpublic void *
+get_default_keyring_syncÃ128Õ(out unowned string keyring)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+get_display_nameÃ128Õ()ŒGnomeKeyring.ItemInfo÷0œpublic unowned string
+get_infoÃ128Õ(string? keyring, owned GnomeKeyring.OperationGetKeyringInfoCallback callback)ŒGnomeKeyring÷0œpublic void *
+get_info_syncÃ128Õ(string? keyring, out unowned GnomeKeyring.Info info)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+get_is_lockedÃ128Õ()ŒGnomeKeyring.Info÷0œpublic bool
+get_lock_on_idleÃ128Õ()ŒGnomeKeyring.Info÷0œpublic bool
+get_lock_timeoutÃ128Õ()ŒGnomeKeyring.Info÷0œpublic uint32
+get_mtimeÃ128Õ()ŒGnomeKeyring.Info÷0
+get_mtimeÃ128Õ()ŒGnomeKeyring.ItemInfo÷0
+get_secretÃ128Õ()ŒGnomeKeyring.ItemInfo÷0œpublic unowned string
+indexÃ128Õ(int i)ŒGnomeKeyring.AttributeList÷0œpublic GnomeKeyring.Attribute
+is_availableÃ128Õ()ŒGnomeKeyring÷0œpublic bool
+item_ac_get_access_typeÃ128Õ(GnomeKeyring.AccessControl ac)ŒGnomeKeyring÷0œpublic GnomeKeyring.AccessType
+item_ac_get_display_nameÃ128Õ(GnomeKeyring.AccessControl ac)ŒGnomeKeyring÷0œpublic unowned string
+item_ac_get_path_nameÃ128Õ(GnomeKeyring.AccessControl ac)ŒGnomeKeyring÷0œpublic unowned string
+item_ac_set_access_typeÃ128Õ(GnomeKeyring.AccessControl ac, GnomeKeyring.AccessType value)ŒGnomeKeyring÷0œpublic void
+item_ac_set_display_nameÃ128Õ(GnomeKeyring.AccessControl ac, string value)ŒGnomeKeyring÷0œpublic void
+item_ac_set_path_nameÃ128Õ(GnomeKeyring.AccessControl ac, string value)ŒGnomeKeyring÷0œpublic void
+item_createÃ128Õ(string? keyring, GnomeKeyring.ItemType type, string display_name, GnomeKeyring.AttributeList attributes, string secret, bool update_if_exists, owned GnomeKeyring.OperationGetIntCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_create_syncÃ128Õ(string? keyring, GnomeKeyring.ItemType type, string display_name, GnomeKeyring.AttributeList attributes, string secret, bool update_if_exists, out uint32 item_id)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_deleteÃ128Õ(string? keyring, uint32 id, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_delete_syncÃ128Õ(string? keyring, uint32 id)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_get_aclÃ128Õ(string? keyring, uint32 id, owned GnomeKeyring.OperationGetListCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_get_acl_syncÃ128Õ(string? keyring, uint32 id, out GLib.List<GnomeKeyring.AccessControl> acl)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_get_attributesÃ128Õ(string? keyring, uint32 id, owned GnomeKeyring.OperationGetAttributesCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_get_attributes_syncÃ128Õ(string? keyring, uint32 id, out unowned GnomeKeyring.AttributeList attributes)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_get_infoÃ128Õ(string? keyring, uint32 id, owned GnomeKeyring.OperationGetItemInfoCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_get_info_fullÃ128Õ(string? keyring, uint32 id, uint32 flags, owned GnomeKeyring.OperationGetItemInfoCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_get_info_full_syncÃ128Õ(string? keyring, uint32 id, uint32 flags, out unowned GnomeKeyring.ItemInfo info)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_get_info_syncÃ128Õ(string keyring, uint32 id, out unowned GnomeKeyring.ItemInfo info)ŒGnomeKeyring÷0œpublic unowned
+item_grant_access_rightsÃ128Õ(string? keyring, string display_name, string full_path, uint32 id, GnomeKeyring.AccessType rights, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_grant_access_rights_syncÃ128Õ(string? keyring, string display_name, string full_path, uint32 id, GnomeKeyring.AccessType rights)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_idÃ8ŒGnomeKeyring.Found÷0
+item_idÃ8ŒGnomeKeyring.NetworkPasswordData÷0œuint32
+item_set_aclÃ128Õ(string? keyring, uint32 id, GLib.List<GnomeKeyring.AccessControl> acl, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_set_acl_syncÃ128Õ(string? keyring, uint32 id, GLib.List<GnomeKeyring.AccessControl> acl)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_set_attributesÃ128Õ(string? keyring, uint32 id, GnomeKeyring.AttributeList attributes, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_set_attributes_syncÃ128Õ(string? keyring, uint32 id, GnomeKeyring.AttributeList attributes)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_set_infoÃ128Õ(string? keyring, uint32 id, GnomeKeyring.ItemInfo info, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+item_set_info_syncÃ128Õ(string? keyring, uint32 id, GnomeKeyring.ItemInfo info)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+item_typeÃ8ŒGnomeKeyring.PasswordSchema÷0œGnomeKeyring.ItemType
+keyringÃ8ŒGnomeKeyring.Found÷0
+keyringÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+lenÃ8ŒGnomeKeyring.AttributeList÷0
+list_item_idsÃ128Õ(string? keyring, owned GnomeKeyring.OperationGetListCallback callback)ŒGnomeKeyring÷0œpublic void *
+list_item_ids_syncÃ128Õ(string? keyring, out GLib.List<uint> ids)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+list_keyring_namesÃ128Õ(owned GnomeKeyring.OperationGetListCallback callback)ŒGnomeKeyring÷0œpublic void *
+list_keyring_names_syncÃ128Õ(out GLib.List<string> keyrings)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+lock_allÃ128Õ(owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+lock_all_syncÃ128Õ()ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+lock_syncÃ128Õ(string? keyring)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+memory_allocÃ128Õ(ulong sz)ŒGnomeKeyring÷0œpublic void *
+memory_freeÃ128Õ(void* p)ŒGnomeKeyring÷0œpublic void
+memory_is_secureÃ128Õ(void* p)ŒGnomeKeyring÷0œpublic bool
+memory_reallocÃ128Õ(void* p, ulong sz)ŒGnomeKeyring÷0œpublic void *
+memory_strdupÃ128Õ(string str)ŒGnomeKeyring÷0œpublic unowned string
+memory_try_allocÃ128Õ(ulong sz)ŒGnomeKeyring÷0œpublic void *
+memory_try_reallocÃ128Õ(void* p, ulong sz)ŒGnomeKeyring÷0œpublic void *
+nameÃ8ŒGnomeKeyring.Attribute÷0
+network_password_freeÃ128Õ(GnomeKeyring.NetworkPasswordData data)ŒGnomeKeyring÷0œpublic void
+objectÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+passwordÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+portÃ8ŒGnomeKeyring.NetworkPasswordData÷0œuint32
+protocolÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+reserved1Ã8ŒGnomeKeyring.PasswordSchema÷0œvoid
+reserved2Ã8ŒGnomeKeyring.PasswordSchema÷0œvoid
+reserved3Ã8ŒGnomeKeyring.PasswordSchema÷0œvoid
+result_to_messageÃ128Õ(GnomeKeyring.Result res)ŒGnomeKeyring÷0œpublic unowned string
+secretÃ8ŒGnomeKeyring.Found÷0
+serverÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+set_default_keyringÃ128Õ(string keyring, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+set_default_keyring_syncÃ128Õ(string keyring)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+set_display_nameÃ128Õ(string value)ŒGnomeKeyring.ItemInfo÷0œpublic void
+set_infoÃ128Õ(string? keyring, GnomeKeyring.Info info, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+set_info_syncÃ128Õ(string? keyring, GnomeKeyring.Info info)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+set_lock_on_idleÃ128Õ(bool value)ŒGnomeKeyring.Info÷0œpublic void
+set_lock_timeoutÃ128Õ(uint32 value)ŒGnomeKeyring.Info÷0œpublic void
+set_network_passwordÃ128Õ(string? keyring, string? user, string? domain, string? server, string? object, string? protocol, string? authtype, uint32 port, string? password, owned GnomeKeyring.OperationGetIntCallback callback)ŒGnomeKeyring÷0œpublic void *
+set_network_password_syncÃ128Õ(string? keyring, string? user, string? domain, string? server, string? object, string? protocol, string? authtype, uint32 port, string? password, out uint32 item_id)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+set_secretÃ128Õ(string value)ŒGnomeKeyring.ItemInfo÷0œpublic void
+set_typeÃ128Õ(GnomeKeyring.ItemType type)ŒGnomeKeyring.ItemInfo÷0œpublic void
+store_passwordÃ128Õ(GnomeKeyring.PasswordSchema schema, string? keyring, string display_name, string password, owned GnomeKeyring.OperationDoneCallback callback, ...)ŒGnomeKeyring÷0œpublic void *
+store_password_syncÃ128Õ(GnomeKeyring.PasswordSchema schema, string? keyring, string display_name, string password, ...)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+typeÃ8ŒGnomeKeyring.Attribute÷0œGnomeKeyring.AttributeType
+unlockÃ128Õ(string? keyring, string? password, owned GnomeKeyring.OperationDoneCallback callback)ŒGnomeKeyring÷0œpublic void *
+unlock_syncÃ128Õ(string? keyring, string? password)ŒGnomeKeyring÷0œpublic GnomeKeyring.Result
+userÃ8ŒGnomeKeyring.NetworkPasswordData÷0
+valueÃ8ŒGnomeKeyring.Attribute÷0œvoid

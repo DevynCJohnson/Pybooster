@@ -1,0 +1,2423 @@
+# format=tagmanager
+@continueÃ128Õ()ŒGLib.Timer÷0œpublic void
+@defaultÃ128Õ()ŒGLib.MainContext÷0œpublic unowned
+@foreachÃ128Õ(DataForeachFunc func)ŒGLib.Datalist÷0œpublic void
+@foreachÃ128Õ(HFunc<K,V> func)ŒGLib.HashTable÷0œpublic void
+@foreachÃ128Õ(Func<G> func)ŒGLib.List÷0œpublic void
+@foreachÃ128Õ(Func<G> func)ŒGLib.SList÷0œpublic void
+@foreachÃ128Õ(Func<G> func)ŒGLib.Sequence÷0œpublic void
+@foreachÃ128Õ(Func<T> thread_func)ŒGLib.Thread÷0œpublic void
+@getÃ8ŒGLib.SourceCallbackFuncs÷0œSourceCallbackGetFunc
+@lockÃ128Õ()ŒGLib.AsyncQueue÷0œpublic void
+@lockÃ128Õ()ŒGLib.Mutex÷0œpublic void
+@refÃ8ŒGLib.SourceCallbackFuncs÷0œSourceCallbackRefFunc
+@signalÃ128Õ()ŒGLib.Cond÷0œpublic void
+@signalÃ128Õ(ProcessSignal signum, SignalHandlerFunc handler)ŒGLib.Process÷0œpublic SignalHandlerFunc
+ABRTÃ4ŒGLib.ProcessSignal÷0
+ACCESÃ4ŒGLib.FileError÷0
+ACCESÃ4ŒGLib.SpawnError÷0
+AFTERÃ4ŒUnicodeBreakType÷0
+AGAINÃ4ŒGLib.FileError÷0
+AGAINÃ4ŒGLib.IOStatus÷0
+AGAINÃ4ŒGLib.ThreadError÷0
+ALLÃ4ŒGLib.LocaleCategory÷0
+ALLÃ4ŒGLib.TraverseFlags÷0
+ALLÃ4ŒNormalizeMode÷0
+ALL_COMPOSEÃ4ŒNormalizeMode÷0
+ALPHABETICÃ4ŒUnicodeBreakType÷0
+ALRMÃ4ŒGLib.ProcessSignal÷0
+AMBIGUOUSÃ4ŒUnicodeBreakType÷0
+ANCHOREDÃ4ŒGLib.RegexCompileFlags÷0
+ANCHOREDÃ4ŒGLib.RegexMatchFlags÷0
+ANYÃ8ŒGLib.VariantType÷0œVariantType
+APPENDÃ4ŒGLib.IOFlags÷0
+APP_NOT_REGISTEREDÃ4ŒGLib.BookmarkFileError÷0
+APRILÃ4ŒGLib.DateMonth÷0
+ARABICÃ4ŒUnicodeScript÷0
+ARMENIANÃ4ŒUnicodeScript÷0
+ARRAYÃ4ŒGLib.Variant.Class÷0
+ARRAYÃ8ŒGLib.VariantType÷0œVariantType
+AUGUSTÃ4ŒGLib.DateMonth÷0
+A_2_ZÃ8ŒGLib.CharacterSet÷0
+ArrayÃ1ŒGLib÷0
+ArrayÃ128Õ(bool zero_terminated, bool clear, ulong element_size)ŒGLib.Array÷0
+Array.sizedÃ128Õ(bool zero_terminated, bool clear, ulong element_size, uint reserved_size)ŒGLib.Array÷0
+AsyncQueueÃ1ŒGLib÷0
+AsyncQueueÃ128Õ()ŒGLib.AsyncQueue÷0
+AtomicIntÃ256÷0
+AtomicPointerÃ256÷0
+BADFÃ4ŒGLib.FileError÷0
+BAD_DAYÃ8ŒGLib.DateDay÷0œDateDay
+BAD_MONTHÃ4ŒGLib.DateMonth÷0
+BAD_QUOTINGÃ4ŒGLib.ShellError÷0
+BAD_URIÃ4ŒGLib.ConvertError÷0
+BAD_UTF8Ã4ŒGLib.MarkupError÷0
+BAD_VALUEÃ4ŒGLib.OptionError÷0
+BAD_WEEKDAYÃ4ŒGLib.DateWeekday÷0
+BAD_YEARÃ8ŒGLib.DateYear÷0œDateDay
+BALINESEÃ4ŒUnicodeScript÷0
+BASICÃ8ŒGLib.VariantType÷0œVariantType
+BEFOREÃ4ŒUnicodeBreakType÷0
+BEFORE_AND_AFTERÃ4ŒUnicodeBreakType÷0
+BENGALIÃ4ŒUnicodeScript÷0
+BIG_ENDIANÃ4ŒGLib.ByteOrder÷0
+BINARYÃ4ŒGLib.TokenType÷0
+BOOLEANÃ4ŒGLib.Markup.CollectType÷0
+BOOLEANÃ4ŒGLib.Variant.Class÷0
+BOOLEANÃ8ŒGLib.VariantType÷0œVariantType
+BOPOMOFOÃ4ŒUnicodeScript÷0
+BRAILLEÃ4ŒUnicodeScript÷0
+BUGINESEÃ4ŒUnicodeScript÷0
+BUHIDÃ4ŒUnicodeScript÷0
+BUSÃ4ŒGLib.ProcessSignal÷0
+BYTEÃ4ŒGLib.Variant.Class÷0
+BYTEÃ8ŒGLib.VariantType÷0œVariantType
+BYTE_ORDERÃ8ŒGLib÷0œByteOrder
+Base64Ã256÷0
+BitÃ256÷0
+BookmarkFileÃ1ŒGLib÷0
+BookmarkFileÃ128Õ()ŒGLib.BookmarkFile÷0
+BookmarkFileErrorÃ2ŒGLib÷0
+BusNameÃ1ŒGLib÷0
+BusNameÃ128Õ(string bus_name)ŒGLib.BusName÷0
+ByteArrayÃ1ŒGLib÷0
+ByteArrayÃ128Õ()ŒGLib.ByteArray÷0
+ByteArray.sizedÃ128Õ(uint reserved_size)ŒGLib.ByteArray÷0
+ByteOrderÃ2ŒGLib÷0
+CALLBACKÃ4ŒGLib.OptionArg÷0
+CANADIAN_ABORIGINALÃ4ŒUnicodeScript÷0
+CARIANÃ4ŒUnicodeScript÷0
+CARRIAGE_RETURNÃ4ŒUnicodeBreakType÷0
+CASELESSÃ4ŒGLib.RegexCompileFlags÷0
+CHAMÃ4ŒUnicodeScript÷0
+CHARÃ4ŒGLib.TokenType÷0
+CHDIRÃ4ŒGLib.SpawnError÷0
+CHEROKEEÃ4ŒUnicodeScript÷0
+CHILD_INHERITS_STDINÃ4ŒGLib.SpawnFlags÷0
+CHLDÃ4ŒGLib.ProcessSignal÷0
+CLOSE_PUNCTUATIONÃ4ŒUnicodeBreakType÷0
+CLOSE_PUNCTUATIONÃ4ŒUnicodeType÷0
+COLLATEÃ4ŒGLib.LocaleCategory÷0
+COMBINING_MARKÃ4ŒUnicodeBreakType÷0
+COMBINING_MARKÃ4ŒUnicodeType÷0
+COMMAÃ4ŒGLib.TokenType÷0
+COMMENT_MULTIÃ4ŒGLib.TokenType÷0
+COMMENT_SINGLEÃ4ŒGLib.TokenType÷0
+COMMONÃ4ŒUnicodeScript÷0
+COMPILEÃ4ŒGLib.RegexError÷0
+COMPLEX_CONTEXTÃ4ŒUnicodeBreakType÷0
+CONNECT_PUNCTUATIONÃ4ŒUnicodeType÷0
+CONTÃ4ŒGLib.ProcessSignal÷0
+CONTINGENTÃ4ŒUnicodeBreakType÷0
+CONTROLÃ4ŒUnicodeType÷0
+COPTICÃ4ŒUnicodeScript÷0
+CTYPEÃ4ŒGLib.LocaleCategory÷0
+CUNEIFORMÃ4ŒUnicodeScript÷0
+CURÃ4ŒGLib.FileSeek÷0
+CURÃ4ŒGLib.SeekType÷0
+CURRENCY_SYMBOLÃ4ŒUnicodeType÷0
+CYPRIOTÃ4ŒUnicodeScript÷0
+CYRILLICÃ4ŒUnicodeScript÷0
+CharacterSetÃ256÷0
+ChecksumÃ1ŒGLib÷0
+ChecksumÃ128Õ(ChecksumType checksum_type)ŒGLib.Checksum÷0
+ChecksumTypeÃ2ŒGLib÷0
+ChildWatchÃ256÷0
+ChildWatchFuncÃ128Õ(Pid pid, int status)ŒGLib÷0œpublic delegate void
+ChildWatchSourceÃ1ŒGLib÷0
+ChildWatchSourceÃ128Õ(Pid pid, int status, void* data)ŒGLib.ChildWatchSource÷0
+ClassÃ2ŒGLib.Variant÷0
+CollectTypeÃ2ŒGLib.Markup÷0
+CompareDataFuncÃ128Õ(G a, G b)ŒGLib÷0œpublic delegate int
+CompareFuncÃ128Õ(G a, G b)ŒGLib÷0œpublic delegate int
+CompletionÃ1ŒGLib÷0
+CompletionÃ128Õ(CompletionFunc? func = null)ŒGLib.Completion÷0
+CompletionFuncÃ128Õ(void* item)ŒGLib÷0
+CompletionStrncmpFuncÃ128Õ(string s1, string s2, size_t n)ŒGLib÷0œpublic delegate int
+CondÃ1ŒGLib÷0
+CondÃ128Õ()ŒGLib.Cond÷0
+ConvertErrorÃ2ŒGLib÷0
+DASH_PUNCTUATIONÃ4ŒUnicodeType÷0
+DAYÃ4ŒGLib.DateDMY÷0
+DAYÃ8ŒGLib.TimeSpan÷0œTimeSpan
+DAYLIGHTÃ4ŒGLib.TimeType÷0
+DECEMBERÃ4ŒGLib.DateMonth÷0
+DECIMAL_NUMBERÃ4ŒUnicodeType÷0
+DEFAULTÃ8ŒGLib.Priority÷0œint
+DEFAULTÃ4ŒNormalizeMode÷0
+DEFAULT_COMPOSEÃ4ŒNormalizeMode÷0
+DEFAULT_IDLEÃ8ŒGLib.Priority÷0œint
+DESERETÃ4ŒUnicodeScript÷0
+DESKTOPÃ4ŒGLib.UserDirectory÷0
+DEVANAGARIÃ4ŒUnicodeScript÷0
+DICTIONARYÃ8ŒGLib.VariantType÷0œVariantType
+DICT_ENTRYÃ4ŒGLib.Variant.Class÷0
+DICT_ENTRYÃ8ŒGLib.VariantType÷0œVariantType
+DIGITSÃ8ŒGLib.CharacterSet÷0
+DIGIT_RADIXÃ4ŒGLib.ErrorType÷0
+DIR_SEPARATORÃ8ŒGLib.Path÷0œchar
+DIR_SEPARATOR_SÃ8ŒGLib.Path÷0
+DOCUMENTSÃ4ŒGLib.UserDirectory÷0
+DOLLAR_ENDONLYÃ4ŒGLib.RegexCompileFlags÷0
+DOTALLÃ4ŒGLib.RegexCompileFlags÷0
+DOUBLEÃ4ŒGLib.OptionArg÷0
+DOUBLEÃ4ŒGLib.Variant.Class÷0
+DOUBLEÃ8ŒGLib.VariantType÷0œVariantType
+DOWNLOADÃ4ŒGLib.UserDirectory÷0
+DO_NOT_REAP_CHILDÃ4ŒGLib.SpawnFlags÷0
+DUPNAMESÃ4ŒGLib.RegexCompileFlags÷0
+DataForeachFuncÃ128Õ(Quark key_id, G data)ŒGLib÷0œpublic delegate void
+DataTestFuncÃ128Õ()ŒGLib÷0œpublic delegate void
+DatalistÃ2048ŒGLib÷0
+DatalistÃ128Õ()ŒGLib.Datalist÷0
+DateÃ2048ŒGLib÷0
+DateDMYÃ2ŒGLib÷0
+DateDayÃ2048ŒGLib÷0
+DateMonthÃ2ŒGLib÷0
+DateTimeÃ1ŒGLib÷0
+DateTimeÃ128Õ(TimeZone tz, int year, int month, int day, int hour, int minute, double seconds)ŒGLib.DateTime÷0
+DateTime.from_timeval_localÃ128Õ(TimeVal tv)ŒGLib.DateTime÷0
+DateTime.from_timeval_utcÃ128Õ(TimeVal tv)ŒGLib.DateTime÷0
+DateTime.from_unix_localÃ128Õ(int64 t)ŒGLib.DateTime÷0
+DateTime.from_unix_utcÃ128Õ(int64 t)ŒGLib.DateTime÷0
+DateTime.localÃ128Õ(int year, int month, int day, int hour, int minute, double seconds)ŒGLib.DateTime÷0
+DateTime.nowÃ128Õ(TimeZone tz)ŒGLib.DateTime÷0
+DateTime.now_localÃ128Õ()ŒGLib.DateTime÷0
+DateTime.now_utcÃ128Õ()ŒGLib.DateTime÷0
+DateTime.utcÃ128Õ(int year, int month, int day, int hour, int minute, double seconds)ŒGLib.DateTime÷0
+DateWeekdayÃ2ŒGLib÷0
+DateYearÃ2048ŒGLib÷0
+DebugKeyÃ2048ŒGLib÷0
+DestroyNotifyÃ128Õ(void* data)ŒGLib÷0œpublic delegate void
+DirÃ1ŒGLib÷0
+DirUtilsÃ256÷0
+EÃ8ŒGLib.Math÷0œdouble
+EMPTYÃ4ŒGLib.MarkupError÷0
+EMPTY_STRINGÃ4ŒGLib.ShellError÷0
+ENCLOSING_MARKÃ4ŒUnicodeType÷0
+ENDÃ4ŒGLib.FileSeek÷0
+ENDÃ4ŒGLib.SeekType÷0
+EOFÃ8ŒGLib.FileStream÷0œint
+EOFÃ4ŒGLib.IOStatus÷0
+EOFÃ4ŒGLib.TokenType÷0
+EQUAL_SIGNÃ4ŒGLib.TokenType÷0
+ERRÃ4ŒGLib.IOCondition÷0
+ERRORÃ4ŒGLib.IOStatus÷0
+ERRORÃ4ŒGLib.TokenType÷0
+ETHIOPICÃ4ŒUnicodeScript÷0
+EXCLAMATIONÃ4ŒUnicodeBreakType÷0
+EXISTÃ4ŒGLib.FileError÷0
+EXISTSÃ4ŒGLib.FileTest÷0
+EXTENDEDÃ4ŒGLib.RegexCompileFlags÷0
+EnvironmentÃ256÷0
+EqualFuncÃ128Õ(G a, G b)ŒGLib÷0œpublic delegate bool
+ErrorÃ1ŒGLib÷0
+ErrorÃ128Õ(Quark domain, int code, string format, ...)ŒGLib.Error÷0
+ErrorTypeÃ2ŒGLib÷0
+FAILEDÃ4ŒGLib.ConvertError÷0
+FAILEDÃ4ŒGLib.FileError÷0
+FAILEDÃ4ŒGLib.IOChannelError÷0
+FAILEDÃ4ŒGLib.OptionError÷0
+FAILEDÃ4ŒGLib.ShellError÷0
+FAILEDÃ4ŒGLib.SpawnError÷0
+FAILEDÃ4ŒGLib.VariantParseError÷0
+FAULTÃ4ŒGLib.FileError÷0
+FBIGÃ4ŒGLib.IOChannelError÷0
+FEBRUARYÃ4ŒGLib.DateMonth÷0
+FILEÃ8ŒGLib.Log÷0
+FILENAMEÃ4ŒGLib.OptionArg÷0
+FILENAMEÃ4ŒGLib.OptionFlags÷0
+FILENAME_ARRAYÃ4ŒGLib.OptionArg÷0
+FILE_AND_ARGV_ZEROÃ4ŒGLib.SpawnFlags÷0
+FILE_NOT_FOUNDÃ4ŒGLib.BookmarkFileError÷0
+FINAL_PUNCTUATIONÃ4ŒUnicodeType÷0
+FLAG_FATALÃ4ŒGLib.LogLevelFlags÷0
+FLAG_RECURSIONÃ4ŒGLib.LogLevelFlags÷0
+FLOATÃ4ŒGLib.TokenType÷0
+FLOAT_MALFORMEDÃ4ŒGLib.ErrorType÷0
+FLOAT_RADIXÃ4ŒGLib.ErrorType÷0
+FORKÃ4ŒGLib.SpawnError÷0
+FORMATÃ4ŒUnicodeType÷0
+FORMATÃ8Œint16÷0
+FORMATÃ8Œint32÷0
+FORMATÃ8Œint64÷0
+FORMATÃ8Œssize_t÷0
+FORMATÃ8Œuint16÷0
+FORMATÃ8Œuint32÷0
+FORMATÃ8Œuint64÷0
+FORMAT_MODIFIERÃ8Œint16÷0
+FORMAT_MODIFIERÃ8Œint32÷0
+FORMAT_MODIFIERÃ8Œint64÷0
+FORMAT_MODIFIERÃ8Œssize_t÷0
+FORMAT_MODIFIERÃ8Œuint16÷0
+FORMAT_MODIFIERÃ8Œuint32÷0
+FORMAT_MODIFIERÃ8Œuint64÷0
+FPEÃ4ŒGLib.ProcessSignal÷0
+FRIDAYÃ4ŒGLib.DateWeekday÷0
+FileErrorÃ2ŒGLib÷0
+FileSeekÃ2ŒGLib÷0
+FileStreamÃ1ŒGLib÷0
+FileTestÃ2ŒGLib÷0
+FileUtilsÃ256÷0
+FilenameÃ256÷0
+FreeFuncÃ128Õ(void* data)ŒGLib÷0œpublic delegate void
+FuncÃ128Õ(G data)ŒGLib÷0œpublic delegate void
+GEORGIANÃ4ŒUnicodeScript÷0
+GET_MASKÃ4ŒGLib.IOFlags÷0
+GLAGOLITICÃ4ŒUnicodeScript÷0
+GLibÃ256÷0
+GOTHICÃ4ŒUnicodeScript÷0
+GREEKÃ4ŒUnicodeScript÷0
+GROUPÃ8ŒGLib.KeyFileDesktop÷0
+GROUP_NOT_FOUNDÃ4ŒGLib.KeyFileError÷0
+GUJARATIÃ4ŒUnicodeScript÷0
+GURMUKHIÃ4ŒUnicodeScript÷0
+GenericArrayÃ1ŒGLib÷0
+GenericArrayÃ128Õ()ŒGLib.GenericArray÷0
+HANÃ4ŒUnicodeScript÷0
+HANDLEÃ4ŒGLib.Variant.Class÷0
+HANGULÃ4ŒUnicodeScript÷0
+HANGUL_LVT_SYLLABLEÃ4ŒUnicodeBreakType÷0
+HANGUL_LV_SYLLABLEÃ4ŒUnicodeBreakType÷0
+HANGUL_L_JAMOÃ4ŒUnicodeBreakType÷0
+HANGUL_T_JAMOÃ4ŒUnicodeBreakType÷0
+HANGUL_V_JAMOÃ4ŒUnicodeBreakType÷0
+HANUNOOÃ4ŒUnicodeScript÷0
+HEBREWÃ4ŒUnicodeScript÷0
+HEXÃ4ŒGLib.TokenType÷0
+HFuncÃ128Õ(K key, V value)ŒGLib÷0œpublic delegate void
+HIDDENÃ4ŒGLib.OptionFlags÷0
+HIGHÃ8ŒGLib.Priority÷0œint
+HIGHÃ4ŒGLib.ThreadPriority÷0
+HIGH_IDLEÃ8ŒGLib.Priority÷0œint
+HIRAGANAÃ4ŒUnicodeScript÷0
+HOSTÃ4ŒGLib.ByteOrder÷0
+HOURÃ8ŒGLib.TimeSpan÷0œTimeSpan
+HRFuncÃ128Õ(K key, V value)ŒGLib÷0œpublic delegate bool
+HUPÃ4ŒGLib.IOCondition÷0
+HUPÃ4ŒGLib.ProcessSignal÷0
+HYPHENÃ4ŒUnicodeBreakType÷0
+HashFuncÃ128Õ(K key)ŒGLib÷0
+HashTableÃ1ŒGLib÷0
+HashTableIterÃ2048ŒGLib÷0
+HashTableIterÃ128Õ(GLib.HashTable<K,V> table)ŒGLib.HashTableIter÷0
+IConvÃ2048ŒGLib÷0
+IDENTIFIERÃ4ŒGLib.TokenType÷0
+IDENTIFIER_NULLÃ4ŒGLib.TokenType÷0
+IDEOGRAPHICÃ4ŒUnicodeBreakType÷0
+ILLÃ4ŒGLib.ProcessSignal÷0
+ILLEGAL_SEQUENCEÃ4ŒGLib.ConvertError÷0
+INÃ4ŒGLib.IOCondition÷0
+INFIX_SEPARATORÃ4ŒUnicodeBreakType÷0
+INHERITEDÃ4ŒUnicodeScript÷0
+INHERIT_STDINÃ4ŒGLib.TestTrapFlags÷0
+INITIAL_PUNCTUATIONÃ4ŒUnicodeType÷0
+INSEPARABLEÃ4ŒUnicodeBreakType÷0
+INTÃ4ŒGLib.OptionArg÷0
+INTÃ4ŒGLib.ProcessSignal÷0
+INTÃ4ŒGLib.TokenType÷0
+INT16Ã4ŒGLib.Variant.Class÷0
+INT16Ã8ŒGLib.VariantType÷0œVariantType
+INT32Ã4ŒGLib.Variant.Class÷0
+INT32Ã8ŒGLib.VariantType÷0œVariantType
+INT64Ã4ŒGLib.OptionArg÷0
+INT64Ã4ŒGLib.Variant.Class÷0
+INT64Ã8ŒGLib.VariantType÷0œVariantType
+INTRÃ4ŒGLib.FileError÷0
+INVALÃ4ŒGLib.FileError÷0
+INVALÃ4ŒGLib.IOChannelError÷0
+INVALÃ4ŒGLib.SpawnError÷0
+INVALIDÃ4ŒGLib.Markup.CollectType÷0
+INVALID_CODEÃ4ŒUnicodeScript÷0
+INVALID_CONTENTÃ4ŒGLib.MarkupError÷0
+INVALID_URIÃ4ŒGLib.BookmarkFileError÷0
+INVALID_VALUEÃ4ŒGLib.BookmarkFileError÷0
+INVALID_VALUEÃ4ŒGLib.KeyFileError÷0
+IN_MAINÃ4ŒGLib.OptionFlags÷0
+IN_ORDERÃ4ŒGLib.TraverseType÷0
+IOÃ4ŒGLib.FileError÷0
+IOÃ4ŒGLib.IOChannelError÷0
+IOÃ4ŒGLib.SpawnError÷0
+IOChannelÃ1ŒGLib÷0
+IOChannel.fileÃ128Õ(string filename, string mode)ŒGLib.IOChannel÷0
+IOChannel.unix_newÃ128Õ(int fd)ŒGLib.IOChannel÷0
+IOChannel.win32_messagesÃ128Õ(size_t hwnd)ŒGLib.IOChannel÷0
+IOChannel.win32_new_fdÃ128Õ(int fd)ŒGLib.IOChannel÷0
+IOChannel.win32_socketÃ128Õ(int socket)ŒGLib.IOChannel÷0
+IOChannelErrorÃ2ŒGLib÷0
+IOConditionÃ2ŒGLib÷0
+IOFlagsÃ2ŒGLib÷0
+IOFuncÃ128Õ(IOChannel source, IOCondition condition)ŒGLib÷0œpublic delegate bool
+IOStatusÃ2ŒGLib÷0
+ISDIRÃ4ŒGLib.FileError÷0
+ISDIRÃ4ŒGLib.IOChannelError÷0
+ISDIRÃ4ŒGLib.SpawnError÷0
+IS_DIRÃ4ŒGLib.FileTest÷0
+IS_EXECUTABLEÃ4ŒGLib.FileTest÷0
+IS_READABLEÃ4ŒGLib.IOFlags÷0
+IS_REGULARÃ4ŒGLib.FileTest÷0
+IS_SEEKABLEÃ4ŒGLib.IOFlags÷0
+IS_SYMLINKÃ4ŒGLib.FileTest÷0
+IS_WRITEABLEÃ4ŒGLib.IOFlags÷0
+IdleÃ256÷0
+IdleSourceÃ1ŒGLib÷0
+IdleSourceÃ128Õ()ŒGLib.IdleSource÷0
+IntlÃ256÷0
+JANUARYÃ4ŒGLib.DateMonth÷0
+JULYÃ4ŒGLib.DateMonth÷0
+JUNEÃ4ŒGLib.DateMonth÷0
+KANNADAÃ4ŒUnicodeScript÷0
+KATAKANAÃ4ŒUnicodeScript÷0
+KAYAH_LIÃ4ŒUnicodeScript÷0
+KEEP_COMMENTSÃ4ŒGLib.KeyFileFlags÷0
+KEEP_TRANSLATIONSÃ4ŒGLib.KeyFileFlags÷0
+KEY_CATEGORIESÃ8ŒGLib.KeyFileDesktop÷0
+KEY_COMMENTÃ8ŒGLib.KeyFileDesktop÷0
+KEY_EXECÃ8ŒGLib.KeyFileDesktop÷0
+KEY_GENERIC_NAMEÃ8ŒGLib.KeyFileDesktop÷0
+KEY_HIDDENÃ8ŒGLib.KeyFileDesktop÷0
+KEY_ICONÃ8ŒGLib.KeyFileDesktop÷0
+KEY_MIME_TYPEÃ8ŒGLib.KeyFileDesktop÷0
+KEY_NAMEÃ8ŒGLib.KeyFileDesktop÷0
+KEY_NOT_FOUNDÃ4ŒGLib.KeyFileError÷0
+KEY_NOT_SHOW_INÃ8ŒGLib.KeyFileDesktop÷0
+KEY_NO_DISPLAYÃ8ŒGLib.KeyFileDesktop÷0
+KEY_ONLY_SHOW_INÃ8ŒGLib.KeyFileDesktop÷0
+KEY_PATHÃ8ŒGLib.KeyFileDesktop÷0
+KEY_STARTUP_NOTIFYÃ8ŒGLib.KeyFileDesktop÷0
+KEY_STARTUP_WM_CLASSÃ8ŒGLib.KeyFileDesktop÷0
+KEY_TERMINALÃ8ŒGLib.KeyFileDesktop÷0
+KEY_TRY_EXECÃ8ŒGLib.KeyFileDesktop÷0
+KEY_TYPEÃ8ŒGLib.KeyFileDesktop÷0
+KEY_URLÃ8ŒGLib.KeyFileDesktop÷0
+KEY_VERSIONÃ8ŒGLib.KeyFileDesktop÷0
+KHAROSHTHIÃ4ŒUnicodeScript÷0
+KHMERÃ4ŒUnicodeScript÷0
+KILLÃ4ŒGLib.ProcessSignal÷0
+KeyFileÃ1ŒGLib÷0
+KeyFileÃ128Õ()ŒGLib.KeyFile÷0
+KeyFileDesktopÃ256÷0
+KeyFileErrorÃ2ŒGLib÷0
+KeyFileFlagsÃ2ŒGLib÷0
+LAOÃ4ŒUnicodeScript÷0
+LASTÃ4ŒGLib.TokenType÷0
+LATINÃ4ŒUnicodeScript÷0
+LATINCÃ8ŒGLib.CharacterSet÷0
+LATINSÃ8ŒGLib.CharacterSet÷0
+LEAVESÃ4ŒGLib.TraverseFlags÷0
+LEAVE_DESCRIPTORS_OPENÃ4ŒGLib.SpawnFlags÷0
+LEFT_BRACEÃ4ŒGLib.TokenType÷0
+LEFT_CURLYÃ4ŒGLib.TokenType÷0
+LEFT_PARENÃ4ŒGLib.TokenType÷0
+LEPCHAÃ4ŒUnicodeScript÷0
+LETTER_NUMBERÃ4ŒUnicodeType÷0
+LEVEL_CRITICALÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_DEBUGÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_ERRORÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_INFOÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_MASKÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_MESSAGEÃ4ŒGLib.LogLevelFlags÷0
+LEVEL_ORDERÃ4ŒGLib.TraverseType÷0
+LEVEL_WARNINGÃ4ŒGLib.LogLevelFlags÷0
+LIBBADÃ4ŒGLib.SpawnError÷0
+LIMBUÃ4ŒUnicodeScript÷0
+LINEÃ8ŒGLib.Log÷0œint
+LINEAR_BÃ4ŒUnicodeScript÷0
+LINE_FEEDÃ4ŒUnicodeBreakType÷0
+LINE_SEPARATORÃ4ŒUnicodeType÷0
+LITTLE_ENDIANÃ4ŒGLib.ByteOrder÷0
+LN10Ã8ŒGLib.Math÷0œdouble
+LN2Ã8ŒGLib.Math÷0œdouble
+LOOPÃ4ŒGLib.FileError÷0
+LOOPÃ4ŒGLib.SpawnError÷0
+LOWÃ8ŒGLib.Priority÷0œint
+LOWÃ4ŒGLib.ThreadPriority÷0
+LOWERCASE_LETTERÃ4ŒUnicodeType÷0
+LYCIANÃ4ŒUnicodeScript÷0
+LYDIANÃ4ŒUnicodeScript÷0
+ListÃ1ŒGLib÷0
+ListÃ128Õ()ŒGLib.List÷0
+LocaleCategoryÃ2ŒGLib÷0
+LogÃ256÷0
+LogFatalFuncÃ128Õ(string? log_domain, LogLevelFlags log_levels, string message)ŒGLib÷0œpublic delegate bool
+LogFuncÃ128Õ(string? log_domain, LogLevelFlags log_levels, string message)ŒGLib÷0œpublic delegate void
+LogLevelFlagsÃ2ŒGLib÷0
+MALAYALAMÃ4ŒUnicodeScript÷0
+MANDATORYÃ4ŒUnicodeBreakType÷0
+MARCHÃ4ŒGLib.DateMonth÷0
+MASKÃ4ŒGLib.IOFlags÷0
+MATCHÃ4ŒGLib.RegexError÷0
+MATH_SYMBOLÃ4ŒUnicodeType÷0
+MAXÃ8÷0
+MAXÃ8Œint16÷0œint16
+MAXÃ8Œint32÷0œint32
+MAXÃ8Œint64÷0œint64
+MAXÃ8Œint8÷0œint8
+MAXÃ8Œssize_t÷0œlong
+MAXÃ8Œuint16÷0œuint16
+MAXÃ8Œuint32÷0œuint32
+MAXÃ8Œuint64÷0œuint64
+MAXÃ8Œuint8÷0œuint8
+MAYÃ4ŒGLib.DateMonth÷0
+MAYBEÃ4ŒGLib.Variant.Class÷0
+MAYBEÃ8ŒGLib.VariantType÷0œVariantType
+MD5Ã4ŒGLib.ChecksumType÷0
+MESSAGESÃ4ŒGLib.LocaleCategory÷0
+METHODÃ8ŒGLib.Log÷0
+MFILEÃ4ŒGLib.FileError÷0
+MFILEÃ4ŒGLib.SpawnError÷0
+MILLISECONDÃ8ŒGLib.TimeSpan÷0œTimeSpan
+MINÃ8÷0
+MINÃ8Œint16÷0œint16
+MINÃ8Œint32÷0œint32
+MINÃ8Œint64÷0œint64
+MINÃ8Œint8÷0œint8
+MINÃ8Œssize_t÷0œlong
+MINÃ8Œuint16÷0œuint16
+MINÃ8Œuint32÷0œuint32
+MINÃ8Œuint64÷0œuint64
+MINÃ8Œuint8÷0œuint8
+MINUTEÃ8ŒGLib.TimeSpan÷0œTimeSpan
+MISSING_ATTRIBUTEÃ4ŒGLib.MarkupError÷0
+MODIFIER_LETTERÃ4ŒUnicodeType÷0
+MODIFIER_SYMBOLÃ4ŒUnicodeType÷0
+MONDAYÃ4ŒGLib.DateWeekday÷0
+MONETARYÃ4ŒGLib.LocaleCategory÷0
+MONGOLIANÃ4ŒUnicodeScript÷0
+MONTHÃ4ŒGLib.DateDMY÷0
+MULTILINEÃ4ŒGLib.RegexCompileFlags÷0
+MUSICÃ4ŒGLib.UserDirectory÷0
+MYANMARÃ4ŒUnicodeScript÷0
+MainContextÃ1ŒGLib÷0
+MainContextÃ128Õ()ŒGLib.MainContext÷0
+MainLoopÃ1ŒGLib÷0
+MainLoopÃ128Õ(MainContext? context = null, bool is_running = false)ŒGLib.MainLoop÷0
+MappedFileÃ1ŒGLib÷0
+MappedFileÃ128Õ(string filename, bool writable)ŒGLib.MappedFile÷0
+MarkupÃ256÷0
+MarkupErrorÃ2ŒGLib÷0
+MarkupParseContextÃ1ŒGLib÷0
+MarkupParseContextÃ128Õ(MarkupParser parser, MarkupParseFlags _flags, void* user_data, DestroyNotify? user_data_dnotify)ŒGLib.MarkupParseContext÷0
+MarkupParseFlagsÃ2ŒGLib÷0
+MarkupParserÃ2048ŒGLib÷0
+MarkupParserEndElementFuncÃ128Õ(MarkupParseContext context, string element_name)ŒGLib÷0œpublic delegate void
+MarkupParserErrorFuncÃ128Õ(MarkupParseContext context, Error error)ŒGLib÷0œpublic delegate void
+MarkupParserPassthroughFuncÃ128Õ(MarkupParseContext context, string passthrough_text, size_t text_len)ŒGLib÷0œpublic delegate void
+MarkupParserStartElementFuncÃ128Õ(MarkupParseContext context, string element_name, [CCode (array_length = false, array_null_terminated = true)] string[] attribute_names, [CCode (array_length = false, array_null_terminated = true)] string[] attribute_values)ŒGLib÷0œpublic delegate void
+MarkupParserTextFuncÃ128Õ(MarkupParseContext context, string text, size_t text_len)ŒGLib÷0œpublic delegate void
+MatchInfoÃ1ŒGLib÷0
+MathÃ256÷0
+MemVTableÃ1ŒGLib÷0
+MemoryÃ256÷0
+MutexÃ1ŒGLib÷0
+MutexÃ128Õ()ŒGLib.Mutex÷0
+NAMETOOLONGÃ4ŒGLib.FileError÷0
+NAMETOOLONGÃ4ŒGLib.SpawnError÷0
+NEWLINE_ANYÃ4ŒGLib.RegexMatchFlags÷0
+NEWLINE_CRÃ4ŒGLib.RegexCompileFlags÷0
+NEWLINE_CRÃ4ŒGLib.RegexMatchFlags÷0
+NEWLINE_CRLFÃ4ŒGLib.RegexCompileFlags÷0
+NEWLINE_CRLFÃ4ŒGLib.RegexMatchFlags÷0
+NEWLINE_LFÃ4ŒGLib.RegexCompileFlags÷0
+NEWLINE_LFÃ4ŒGLib.RegexMatchFlags÷0
+NEW_TAI_LUEÃ4ŒUnicodeScript÷0
+NEXT_LINEÃ4ŒUnicodeBreakType÷0
+NFCÃ4ŒNormalizeMode÷0
+NFDÃ4ŒNormalizeMode÷0
+NFILEÃ4ŒGLib.FileError÷0
+NFILEÃ4ŒGLib.SpawnError÷0
+NFKCÃ4ŒNormalizeMode÷0
+NFKDÃ4ŒNormalizeMode÷0
+NKOÃ4ŒUnicodeScript÷0
+NOALIASÃ4ŒGLib.OptionFlags÷0
+NODEVÃ4ŒGLib.FileError÷0
+NOENTÃ4ŒGLib.FileError÷0
+NOENTÃ4ŒGLib.SpawnError÷0
+NOEXECÃ4ŒGLib.SpawnError÷0
+NOMEMÃ4ŒGLib.FileError÷0
+NOMEMÃ4ŒGLib.SpawnError÷0
+NONBLOCKÃ4ŒGLib.IOFlags÷0
+NONEÃ4ŒGLib.KeyFileFlags÷0
+NONEÃ4ŒGLib.OptionArg÷0
+NONEÃ4ŒGLib.TokenType÷0
+NON_BREAKING_GLUEÃ4ŒUnicodeBreakType÷0
+NON_DIGIT_IN_CONSTÃ4ŒGLib.ErrorType÷0
+NON_LEAVESÃ4ŒGLib.TraverseFlags÷0
+NON_SPACING_MARKÃ4ŒUnicodeType÷0
+NON_STARTERÃ4ŒUnicodeBreakType÷0
+NORMALÃ4ŒGLib.IOStatus÷0
+NORMALÃ4ŒGLib.ThreadPriority÷0
+NOSPCÃ4ŒGLib.FileError÷0
+NOSPCÃ4ŒGLib.IOChannelError÷0
+NOSYSÃ4ŒGLib.FileError÷0
+NOTBOLÃ4ŒGLib.RegexMatchFlags÷0
+NOTDIRÃ4ŒGLib.FileError÷0
+NOTDIRÃ4ŒGLib.SpawnError÷0
+NOTEMPTYÃ4ŒGLib.RegexMatchFlags÷0
+NOTEOLÃ4ŒGLib.RegexMatchFlags÷0
+NOT_ABSOLUTE_PATHÃ4ŒGLib.ConvertError÷0
+NOT_FOUNDÃ4ŒGLib.KeyFileError÷0
+NOVEMBERÃ4ŒGLib.DateMonth÷0
+NO_ARGÃ4ŒGLib.OptionFlags÷0
+NO_AUTO_CAPTUREÃ4ŒGLib.RegexCompileFlags÷0
+NO_CONVERSIONÃ4ŒGLib.ConvertError÷0
+NUMERICÃ4ŒGLib.LocaleCategory÷0
+NUMERICÃ4ŒUnicodeBreakType÷0
+NVALÃ4ŒGLib.IOCondition÷0
+NXIOÃ4ŒGLib.FileError÷0
+NXIOÃ4ŒGLib.IOChannelError÷0
+N_Ã128Õ(string str)ŒGLib÷0œpublic unowned string
+N_DIRECTORIESÃ4ŒGLib.UserDirectory÷0
+NodeÃ1ŒGLib÷0
+NodeÃ128Õ(owned G? data = null)ŒGLib.Node÷0
+NodeForeachFuncÃ128Õ(Node node)ŒGLib÷0œpublic delegate void
+NodeTraverseFuncÃ128Õ(Node node)ŒGLib÷0œpublic delegate bool
+NormalizeModeÃ2÷0
+OBJECT_PATHÃ4ŒGLib.Variant.Class÷0
+OBJECT_PATHÃ8ŒGLib.VariantType÷0œVariantType
+OCTALÃ4ŒGLib.TokenType÷0
+OCTOBERÃ4ŒGLib.DateMonth÷0
+OGHAMÃ4ŒUnicodeScript÷0
+OLD_ITALICÃ4ŒUnicodeScript÷0
+OLD_PERSIANÃ4ŒUnicodeScript÷0
+OL_CHIKIÃ4ŒUnicodeScript÷0
+OPEN_PUNCTUATIONÃ4ŒUnicodeBreakType÷0
+OPEN_PUNCTUATIONÃ4ŒUnicodeType÷0
+OPTIMIZEÃ4ŒGLib.RegexCompileFlags÷0
+OPTIMIZEÃ4ŒGLib.RegexError÷0
+OPTIONALÃ4ŒGLib.Markup.CollectType÷0
+OPTIONAL_ARGÃ4ŒGLib.OptionFlags÷0
+ORIYAÃ4ŒUnicodeScript÷0
+OSMANYAÃ4ŒUnicodeScript÷0
+OTHER_LETTERÃ4ŒUnicodeType÷0
+OTHER_NUMBERÃ4ŒUnicodeType÷0
+OTHER_PUNCTUATIONÃ4ŒUnicodeType÷0
+OTHER_SYMBOLÃ4ŒUnicodeType÷0
+OUTÃ4ŒGLib.IOCondition÷0
+OVERFLOWÃ4ŒGLib.IOChannelError÷0
+ObjectPathÃ1ŒGLib÷0
+ObjectPathÃ128Õ(string path)ŒGLib.ObjectPath÷0
+OptionArgÃ2ŒGLib÷0
+OptionContextÃ1ŒGLib÷0
+OptionContextÃ128Õ(string parameter_string)ŒGLib.OptionContext÷0
+OptionEntryÃ2048ŒGLib÷0
+OptionErrorÃ2ŒGLib÷0
+OptionErrorFuncÃ128Õ(OptionContext context, OptionGroup group, void* data, ref Error error)ŒGLib÷0œpublic delegate void
+OptionFlagsÃ2ŒGLib÷0
+OptionGroupÃ1ŒGLib÷0
+OptionGroupÃ128Õ(string name, string description, string help_description, void* user_data = null, DestroyNotify? destroy = null)ŒGLib.OptionGroup÷0
+OptionParseFuncÃ128Õ(OptionContext context, OptionGroup group, void* data)ŒGLib÷0œpublic delegate bool
+PARAGRAPH_SEPARATORÃ4ŒUnicodeType÷0
+PARSEÃ4ŒGLib.KeyFileError÷0
+PARSEÃ4ŒGLib.MarkupError÷0
+PARTIALÃ4ŒGLib.RegexMatchFlags÷0
+PARTIAL_INPUTÃ4ŒGLib.ConvertError÷0
+PDP_ENDIANÃ4ŒGLib.ByteOrder÷0
+PERMÃ4ŒGLib.FileError÷0
+PERMÃ4ŒGLib.SpawnError÷0
+PHAGS_PAÃ4ŒUnicodeScript÷0
+PHOENICIANÃ4ŒUnicodeScript÷0
+PIÃ8ŒGLib.Math÷0œdouble
+PICTURESÃ4ŒGLib.UserDirectory÷0
+PIPEÃ4ŒGLib.FileError÷0
+PIPEÃ4ŒGLib.IOChannelError÷0
+PIPEÃ4ŒGLib.ProcessSignal÷0
+PI_2Ã8ŒGLib.Math÷0œdouble
+PI_4Ã8ŒGLib.Math÷0œdouble
+POSTFIXÃ4ŒUnicodeBreakType÷0
+POST_ORDERÃ4ŒGLib.TraverseType÷0
+PREFIXÃ4ŒUnicodeBreakType÷0
+PRE_ORDERÃ4ŒGLib.TraverseType÷0
+PRIÃ4ŒGLib.IOCondition÷0
+PRIVATE_USEÃ4ŒUnicodeType÷0
+PUBLIC_SHAREÃ4ŒGLib.UserDirectory÷0
+PathÃ256÷0
+PatternSpecÃ1ŒGLib÷0
+PatternSpecÃ128Õ(string pattern)ŒGLib.PatternSpec÷0
+PidÃ2048ŒGLib÷0
+PollFDÃ2048ŒGLib÷0
+PollFuncÃ128Õ(PollFD[] ufds, int timeout_)ŒGLib÷0œpublic delegate int
+PrintFuncÃ128Õ(string text)ŒGLib÷0œpublic delegate void
+PriorityÃ256÷0
+PrivateÃ1ŒGLib÷0
+PrivateÃ128Õ(DestroyNotify destroy_func)ŒGLib.Private÷0
+ProcessÃ256÷0
+ProcessSignalÃ2ŒGLib÷0
+PtrArrayÃ1ŒGLib÷0
+PtrArrayÃ128Õ()ŒGLib.PtrArray÷0
+PtrArray.sizedÃ128Õ(uint reserved_size)ŒGLib.PtrArray÷0
+PtrArray.with_free_funcÃ128Õ(GLib.DestroyNotify? element_free_func)ŒGLib.PtrArray÷0
+QUITÃ4ŒGLib.ProcessSignal÷0
+QUOTATIONÃ4ŒUnicodeBreakType÷0
+Q_Ã128Õ(string str)ŒGLib÷0œpublic unowned string
+QuarkÃ2048ŒGLib÷0
+QueueÃ1ŒGLib÷0
+QueueÃ128Õ()ŒGLib.Queue÷0
+RAWÃ4ŒGLib.RegexCompileFlags÷0
+READÃ4ŒGLib.BookmarkFileError÷0
+READÃ4ŒGLib.SpawnError÷0
+REJANGÃ4ŒUnicodeScript÷0
+REPLACEÃ4ŒGLib.RegexError÷0
+RESERVED_CHARS_ALLOWED_IN_PATHÃ8ŒGLib.Uri÷0
+RESERVED_CHARS_ALLOWED_IN_PATH_ELEMENTÃ8ŒGLib.Uri÷0
+RESERVED_CHARS_ALLOWED_IN_USERINFOÃ8ŒGLib.Uri÷0
+RESERVED_CHARS_GENERIC_DELIMITERSÃ8ŒGLib.Uri÷0
+RESERVED_CHARS_SUBCOMPONENT_DELIMITERSÃ8ŒGLib.Uri÷0
+REVERSEÃ4ŒGLib.OptionFlags÷0
+RIGHT_BRACEÃ4ŒGLib.TokenType÷0
+RIGHT_CURLYÃ4ŒGLib.TokenType÷0
+RIGHT_PARENÃ4ŒGLib.TokenType÷0
+ROFSÃ4ŒGLib.FileError÷0
+RUNICÃ4ŒUnicodeScript÷0
+RandÃ1ŒGLib÷0
+RandÃ128Õ()ŒGLib.Rand÷0
+Rand.with_seedÃ128Õ(uint32 seed)ŒGLib.Rand÷0
+Rand.with_seed_arrayÃ128Õ([CCode (array_length = false)] uint32[] seed, uint seed_length)ŒGLib.Rand÷0
+RandomÃ256÷0
+RegexÃ1ŒGLib÷0
+RegexÃ128Õ(string pattern, RegexCompileFlags compile_options = 0, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0
+RegexCompileFlagsÃ2ŒGLib÷0
+RegexErrorÃ2ŒGLib÷0
+RegexEvalCallbackÃ128Õ(MatchInfo match_info, StringBuilder result)ŒGLib÷0œpublic delegate bool
+RegexMatchFlagsÃ2ŒGLib÷0
+SATURDAYÃ4ŒGLib.DateWeekday÷0
+SAURASHTRAÃ4ŒUnicodeScript÷0
+SEARCHPATH_SEPARATORÃ8ŒGLib.Path÷0œchar
+SEARCHPATH_SEPARATOR_SÃ8ŒGLib.Path÷0
+SEARCH_PATHÃ4ŒGLib.SpawnFlags÷0
+SECONDÃ8ŒGLib.TimeSpan÷0œTimeSpan
+SEGVÃ4ŒGLib.ProcessSignal÷0
+SEPTEMBERÃ4ŒGLib.DateMonth÷0
+SETÃ4ŒGLib.FileSeek÷0
+SETÃ4ŒGLib.SeekType÷0
+SET_MASKÃ4ŒGLib.IOFlags÷0
+SHA1Ã4ŒGLib.ChecksumType÷0
+SHA256Ã4ŒGLib.ChecksumType÷0
+SHAVIANÃ4ŒUnicodeScript÷0
+SIGNATUREÃ4ŒGLib.Variant.Class÷0
+SIGNATUREÃ8ŒGLib.VariantType÷0œVariantType
+SILENCE_STDERRÃ4ŒGLib.TestTrapFlags÷0
+SILENCE_STDOUTÃ4ŒGLib.TestTrapFlags÷0
+SINHALAÃ4ŒUnicodeScript÷0
+SListÃ1ŒGLib÷0
+SListÃ128Õ()ŒGLib.SList÷0
+SPACEÃ4ŒUnicodeBreakType÷0
+SPACE_SEPARATORÃ4ŒUnicodeType÷0
+SQRT2Ã8ŒGLib.Math÷0œdouble
+STANDARDÃ4ŒGLib.TimeType÷0
+STDERR_TO_DEV_NULLÃ4ŒGLib.SpawnFlags÷0
+STDOUT_TO_DEV_NULLÃ4ŒGLib.SpawnFlags÷0
+STOPÃ4ŒGLib.ProcessSignal÷0
+STRDUPÃ4ŒGLib.Markup.CollectType÷0
+STRINGÃ4ŒGLib.Markup.CollectType÷0
+STRINGÃ4ŒGLib.OptionArg÷0
+STRINGÃ4ŒGLib.TokenType÷0
+STRINGÃ4ŒGLib.Variant.Class÷0
+STRINGÃ8ŒGLib.VariantType÷0œVariantType
+STRING_ARRAYÃ4ŒGLib.OptionArg÷0
+SUNDANESEÃ4ŒUnicodeScript÷0
+SUNDAYÃ4ŒGLib.DateWeekday÷0
+SURROGATEÃ4ŒUnicodeBreakType÷0
+SURROGATEÃ4ŒUnicodeType÷0
+SYLOTI_NAGRIÃ4ŒUnicodeScript÷0
+SYMBOLÃ4ŒGLib.TokenType÷0
+SYMBOLÃ4ŒUnicodeBreakType÷0
+SYRIACÃ4ŒUnicodeScript÷0
+ScannerÃ1ŒGLib÷0
+ScannerÃ128Õ(ScannerConfig? config_templ)ŒGLib.Scanner÷0
+ScannerConfigÃ2048ŒGLib÷0
+ScannerMsgFuncÃ128Õ(Scanner scanner, string message, bool error)ŒGLib÷0œpublic delegate void
+SeekTypeÃ2ŒGLib÷0
+SequenceÃ1ŒGLib÷0
+SequenceÃ128Õ(DestroyNotify? data_destroy)ŒGLib.Sequence÷0
+SequenceIterÃ1ŒGLib÷0
+SequenceIterCompareFuncÃ128Õ(SequenceIter<G> a, SequenceIter<G> b)ŒGLib÷0œpublic delegate int
+ShellÃ256÷0
+ShellErrorÃ2ŒGLib÷0
+SignalHandlerFuncÃ128Õ(int signum)ŒGLib÷0œpublic delegate void
+SliceÃ256÷0
+SourceÃ1ŒGLib÷0
+SourceÃ128Õ(SourceFuncs source_funcs, uint struct_size )ŒGLib.Source÷0
+SourceCallbackFuncsÃ1ŒGLib÷0
+SourceCallbackGetFuncÃ128Õ(void* cb_data, Source source, SourceFunc func)ŒGLib÷0œpublic delegate void
+SourceCallbackRefFuncÃ128Õ(void* cb_data)ŒGLib÷0œpublic delegate void
+SourceCallbackUnrefFuncÃ128Õ(void* cb_data)ŒGLib÷0œpublic delegate void
+SourceCheckFuncÃ128Õ(Source source)ŒGLib÷0œpublic delegate bool
+SourceDispatchFuncÃ128Õ(Source source, SourceFunc _callback)ŒGLib÷0œpublic delegate bool
+SourceDummyMarshalÃ128Õ()ŒGLib÷0œpublic delegate void
+SourceFinalizeFuncÃ128Õ(Source source)ŒGLib÷0œpublic delegate void
+SourceFuncÃ128Õ()ŒGLib÷0œpublic delegate bool
+SourceFuncsÃ1ŒGLib÷0
+SourcePrepareFuncÃ128Õ(Source source, out int timeout_)ŒGLib÷0œpublic delegate bool
+SpacedPrimesÃ256÷0
+SpawnChildSetupFuncÃ128Õ()ŒGLib÷0œpublic delegate void
+SpawnErrorÃ2ŒGLib÷0
+SpawnFlagsÃ2ŒGLib÷0
+StatÃ2048ŒGLib÷0
+StatÃ128Õ(string filename)ŒGLib.Stat÷0
+Stat.lÃ128Õ(string filename)ŒGLib.Stat÷0
+StaticMutexÃ2048ŒGLib÷0
+StaticMutexÃ128Õ()ŒGLib.StaticMutex÷0
+StaticPrivateÃ2048ŒGLib÷0
+StaticPrivateÃ128Õ()ŒGLib.StaticPrivate÷0
+StaticRWLockÃ2048ŒGLib÷0
+StaticRWLockÃ128Õ()ŒGLib.StaticRWLock÷0
+StaticRecMutexÃ2048ŒGLib÷0
+StaticRecMutexÃ128Õ()ŒGLib.StaticRecMutex÷0
+StringBuilderÃ1ŒGLib÷0
+StringBuilderÃ128Õ(string init = )ŒGLib.StringBuilder÷0
+StringBuilder.sizedÃ128Õ(size_t dfl_size)ŒGLib.StringBuilder÷0
+StringChunkÃ1ŒGLib÷0
+StringChunkÃ128Õ(size_t size)ŒGLib.StringChunk÷0
+TAGALOGÃ4ŒUnicodeScript÷0
+TAGBANWAÃ4ŒUnicodeScript÷0
+TAI_LEÃ4ŒUnicodeScript÷0
+TAMILÃ4ŒUnicodeScript÷0
+TELUGUÃ4ŒUnicodeScript÷0
+TEMPLATESÃ4ŒGLib.UserDirectory÷0
+TERMÃ4ŒGLib.ProcessSignal÷0
+THAANAÃ4ŒUnicodeScript÷0
+THAIÃ4ŒUnicodeScript÷0
+THURSDAYÃ4ŒGLib.DateWeekday÷0
+TIBETANÃ4ŒUnicodeScript÷0
+TIFINAGHÃ4ŒUnicodeScript÷0
+TIMEÃ4ŒGLib.LocaleCategory÷0
+TITLECASE_LETTERÃ4ŒUnicodeType÷0
+TOOBIGÃ4ŒGLib.SpawnError÷0
+TRAPÃ4ŒGLib.ProcessSignal÷0
+TREAT_CDATA_AS_TEXTÃ4ŒGLib.MarkupParseFlags÷0
+TRISTATEÃ4ŒGLib.Markup.CollectType÷0
+TSTPÃ4ŒGLib.ProcessSignal÷0
+TTINÃ4ŒGLib.ProcessSignal÷0
+TTOUÃ4ŒGLib.ProcessSignal÷0
+TUESDAYÃ4ŒGLib.DateWeekday÷0
+TUPLEÃ4ŒGLib.Variant.Class÷0
+TUPLEÃ8ŒGLib.VariantType÷0œVariantType
+TXTBSYÃ4ŒGLib.FileError÷0
+TXTBUSYÃ4ŒGLib.SpawnError÷0
+TYPE_APPLICATIONÃ8ŒGLib.KeyFileDesktop÷0
+TYPE_DIRECTORYÃ8ŒGLib.KeyFileDesktop÷0
+TYPE_LINKÃ8ŒGLib.KeyFileDesktop÷0
+TestÃ256÷0
+TestCaseÃ1ŒGLib÷0
+TestCaseÃ128Õ(string test_name, [CCode (delegate_target_pos = 1.9, type = )] TestFunc data_setup, [CCode (delegate_target_pos = 1.9, type = )] TestFunc data_func, [CCode (delegate_target_pos = 1.9, type = )] TestFunc data_teardown, [CCode (pos = 1.8)] size_t data_size = 0)ŒGLib.TestCase÷0
+TestFuncÃ128Õ(void* fixture)ŒGLib÷0œpublic delegate void
+TestSuiteÃ1ŒGLib÷0
+TestSuiteÃ128Õ(string name)ŒGLib.TestSuite÷0
+TestTrapFlagsÃ2ŒGLib÷0
+ThreadÃ1ŒGLib÷0
+ThreadErrorÃ2ŒGLib÷0
+ThreadFuncÃ128Õ()ŒGLib÷0œpublic delegate G
+ThreadPoolÃ1ŒGLib÷0
+ThreadPoolÃ128Õ(Func<T> func, int max_threads, bool exclusive)ŒGLib.ThreadPool÷0
+ThreadPriorityÃ2ŒGLib÷0
+TimeÃ2048ŒGLib÷0
+TimeSpanÃ2048ŒGLib÷0
+TimeTypeÃ2ŒGLib÷0
+TimeValÃ2048ŒGLib÷0
+TimeValÃ128Õ()ŒGLib.TimeVal÷0
+TimeZoneÃ1ŒGLib÷0
+TimeZoneÃ128Õ(string identifier)ŒGLib.TimeZone÷0
+TimeZone.localÃ128Õ()ŒGLib.TimeZone÷0
+TimeZone.utcÃ128Õ()ŒGLib.TimeZone÷0
+TimeoutÃ256÷0
+TimeoutSourceÃ1ŒGLib÷0
+TimeoutSourceÃ128Õ(uint interval)ŒGLib.TimeoutSource÷0
+TimeoutSource.secondsÃ128Õ(uint interval)ŒGLib.TimeoutSource÷0
+TimerÃ1ŒGLib÷0
+TimerÃ128Õ()ŒGLib.Timer÷0
+TokenTypeÃ2ŒGLib÷0
+TokenValueÃ2048ŒGLib÷0
+TranslateFuncÃ128Õ(string str)ŒGLib÷0œpublic delegate unowned string
+TraverseFlagsÃ2ŒGLib÷0
+TraverseFuncÃ128Õ(void* key, void* value)ŒGLib÷0œpublic delegate int
+TraverseTypeÃ2ŒGLib÷0
+TreeÃ1ŒGLib÷0
+TreeÃ128Õ(CompareFunc<K> key_compare_func)ŒGLib.Tree÷0
+Tree.fullÃ128Õ(CompareDataFunc<K> key_compare_func, DestroyNotify? key_destroy_func, DestroyNotify? value_destroy_func)ŒGLib.Tree÷0
+Tree.with_dataÃ128Õ(CompareDataFunc<K> key_compare_func)ŒGLib.Tree÷0
+TreeSearchFuncÃ128Õ(K key)ŒGLib÷0œpublic delegate int
+UGARITICÃ4ŒUnicodeScript÷0
+UINT16Ã4ŒGLib.Variant.Class÷0
+UINT16Ã8ŒGLib.VariantType÷0œVariantType
+UINT32Ã4ŒGLib.Variant.Class÷0
+UINT32Ã8ŒGLib.VariantType÷0œVariantType
+UINT64Ã4ŒGLib.Variant.Class÷0
+UINT64Ã8ŒGLib.VariantType÷0œVariantType
+UNASSIGNEDÃ4ŒUnicodeType÷0
+UNEXP_EOFÃ4ŒGLib.ErrorType÷0
+UNEXP_EOF_IN_COMMENTÃ4ŒGLib.ErrorType÷0
+UNEXP_EOF_IN_STRINGÃ4ŒGLib.ErrorType÷0
+UNGREEDYÃ4ŒGLib.RegexCompileFlags÷0
+UNITÃ8ŒGLib.VariantType÷0œVariantType
+UNIVERSALÃ4ŒGLib.TimeType÷0
+UNKNOWNÃ4ŒGLib.ErrorType÷0
+UNKNOWNÃ4ŒUnicodeBreakType÷0
+UNKNOWNÃ4ŒUnicodeScript÷0
+UNKNOWN_ATTRIBUTEÃ4ŒGLib.MarkupError÷0
+UNKNOWN_ELEMENTÃ4ŒGLib.MarkupError÷0
+UNKNOWN_ENCODINGÃ4ŒGLib.BookmarkFileError÷0
+UNKNOWN_ENCODINGÃ4ŒGLib.KeyFileError÷0
+UNKNOWN_OPTIONÃ4ŒGLib.OptionError÷0
+UPPERCASE_LETTERÃ4ŒUnicodeType÷0
+URGENTÃ4ŒGLib.ThreadPriority÷0
+URI_NOT_FOUNDÃ4ŒGLib.BookmarkFileError÷0
+USR1Ã4ŒGLib.ProcessSignal÷0
+USR2Ã4ŒGLib.ProcessSignal÷0
+UnicodeBreakTypeÃ2÷0
+UnicodeScriptÃ2÷0
+UnicodeTypeÃ2÷0
+UriÃ256÷0
+UserDirectoryÃ2ŒGLib÷0
+VAIÃ4ŒUnicodeScript÷0
+VARIANTÃ4ŒGLib.Variant.Class÷0
+VARIANTÃ8ŒGLib.VariantType÷0œVariantType
+VIDEOSÃ4ŒGLib.UserDirectory÷0
+VariantÃ1ŒGLib÷0
+VariantÃ128Õ(string format, ...)ŒGLib.Variant÷0
+Variant.arrayÃ128Õ(VariantType? child_type, Variant[] children)ŒGLib.Variant÷0
+Variant.booleanÃ128Õ(bool value)ŒGLib.Variant÷0
+Variant.byteÃ128Õ(uchar value)ŒGLib.Variant÷0
+Variant.bytestringÃ128Õ(string value)ŒGLib.Variant÷0
+Variant.bytestring_arrayÃ128Õ(string[] value)ŒGLib.Variant÷0
+Variant.dict_entryÃ128Õ(Variant key, Variant value)ŒGLib.Variant÷0
+Variant.doubleÃ128Õ(double value)ŒGLib.Variant÷0
+Variant.handleÃ128Õ(int32 value)ŒGLib.Variant÷0
+Variant.int16Ã128Õ(int16 value)ŒGLib.Variant÷0
+Variant.int32Ã128Õ(int32 value)ŒGLib.Variant÷0
+Variant.int64Ã128Õ(int64 value)ŒGLib.Variant÷0
+Variant.maybeÃ128Õ(VariantType? child_type, Variant? child)ŒGLib.Variant÷0
+Variant.object_pathÃ128Õ(string object_path)ŒGLib.Variant÷0
+Variant.parsedÃ128Õ(string format_string, ...)ŒGLib.Variant÷0
+Variant.signatureÃ128Õ(string signature)ŒGLib.Variant÷0
+Variant.stringÃ128Õ(string value)ŒGLib.Variant÷0
+Variant.strvÃ128Õ(string[] value)ŒGLib.Variant÷0
+Variant.tupleÃ128Õ(Variant[] children)ŒGLib.Variant÷0
+Variant.uint16Ã128Õ(uint16 value)ŒGLib.Variant÷0
+Variant.uint32Ã128Õ(uint32 value)ŒGLib.Variant÷0
+Variant.uint64Ã128Õ(uint64 value)ŒGLib.Variant÷0
+Variant.vaÃ128Õ(string format, char **end_ptr, va_list *app)ŒGLib.Variant÷0
+Variant.variantÃ128Õ(Variant value)ŒGLib.Variant÷0
+VariantBuilderÃ1ŒGLib÷0
+VariantBuilderÃ128Õ(VariantType type)ŒGLib.VariantBuilder÷0
+VariantIterÃ1ŒGLib÷0
+VariantIterÃ128Õ(Variant value)ŒGLib.VariantIter÷0
+VariantParseErrorÃ2ŒGLib÷0
+VariantTypeÃ1ŒGLib÷0
+VariantTypeÃ128Õ(string type_string)ŒGLib.VariantType÷0
+VariantType.arrayÃ128Õ(VariantType element)ŒGLib.VariantType÷0
+VariantType.dict_entryÃ128Õ(VariantType key, VariantType value)ŒGLib.VariantType÷0
+VariantType.maybeÃ128Õ(VariantType element)ŒGLib.VariantType÷0
+VariantType.tupleÃ128Õ(VariantType[] items)ŒGLib.VariantType÷0
+VoidFuncÃ128Õ()ŒGLib÷0œpublic delegate void
+WEDNESDAYÃ4ŒGLib.DateWeekday÷0
+WORD_JOINERÃ4ŒUnicodeBreakType÷0
+WRITEÃ4ŒGLib.BookmarkFileError÷0
+Win32Ã256÷0
+YEARÃ4ŒGLib.DateDMY÷0
+YIÃ4ŒUnicodeScript÷0
+ZERO_WIDTH_SPACEÃ4ŒUnicodeBreakType÷0
+_Ã128Õ(string str)ŒGLib÷0œpublic unowned string
+_chompÃ128Õ()÷0œpublic unowned string
+_chugÃ128Õ()÷0œpublic unowned string
+_delimitÃ128Õ(string delimiters, char new_delimiter)÷0œpublic unowned string
+_stripÃ128Õ()÷0œpublic unowned string
+_unlinkÃ128Õ()ŒGLib.Node÷0œpublic void
+a_2_zÃ8ŒGLib.CharacterSet÷0
+abortÃ128Õ()ŒGLib.Process÷0œpublic void
+absÃ128Õ()Œint64÷0œpublic int64
+acosÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+acosfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+acoshÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+acoshfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+acquireÃ128Õ()ŒGLib.MainContext÷0œpublic bool
+addÃ128Õ(ref int atomic, int val)ŒGLib.AtomicInt÷0œpublic void
+addÃ128Õ(Pid pid, owned ChildWatchFunc function, [CCode (pos = 0.1)] int priority = Priority.DEFAULT_IDLE)ŒGLib.ChildWatch÷0
+addÃ128Õ(TimeSpan timespan)ŒGLib.DateTime÷0œpublic DateTime
+addÃ128Õ(owned G data)ŒGLib.GenericArray÷0œpublic void
+addÃ128Õ(owned SourceFunc function, [CCode (pos = 0.1)] int priority = Priority.DEFAULT_IDLE)ŒGLib.Idle÷0
+addÃ128Õ(void* data)ŒGLib.PtrArray÷0œpublic void
+addÃ128Õ(TestCase test_case)ŒGLib.TestSuite÷0œpublic void
+addÃ128Õ(long microseconds)ŒGLib.TimeVal÷0œpublic void
+addÃ128Õ(uint interval, owned SourceFunc function, [CCode (pos = 0.1)] int priority = Priority.DEFAULT)ŒGLib.Timeout÷0
+addÃ128Õ(string format_string, ...)ŒGLib.VariantBuilder÷0œpublic void
+add_applicationÃ128Õ(string uri, string name, string exec)ŒGLib.BookmarkFile÷0œpublic void
+add_data_funcÃ128Õ(string testpath, [CCode (delegate_target_pos = 1.9)] DataTestFunc test_funcvoid)ŒGLib.Test÷0œpublic void
+add_daysÃ128Õ(uint n_days)ŒGLib.Date÷0œpublic void
+add_daysÃ128Õ(int days)ŒGLib.DateTime÷0œpublic DateTime
+add_entriesÃ128Õ([CCode (array_length = false)] OptionEntry[] entries)ŒGLib.OptionGroup÷0œpublic void
+add_fullÃ128Õ(int priority, Pid pid, owned ChildWatchFunc function)ŒGLib.ChildWatch÷0
+add_fullÃ128Õ(int years, int months, int days, int hours = 0, int minutes = 0, double seconds = 0)ŒGLib.DateTime÷0œpublic DateTime
+add_fullÃ128Õ(int priority, owned SourceFunc function)ŒGLib.Idle÷0
+add_fullÃ128Õ(int priority, uint interval, owned SourceFunc function)ŒGLib.Timeout÷0
+add_funcÃ128Õ(string testpath, Callback test_funcvoid)ŒGLib.Test÷0œpublic void
+add_groupÃ128Õ(string uri, string group)ŒGLib.BookmarkFile÷0œpublic void
+add_groupÃ128Õ(owned OptionGroup group)ŒGLib.OptionContext÷0œpublic void
+add_hoursÃ128Õ(int hours)ŒGLib.DateTime÷0œpublic DateTime
+add_itemsÃ128Õ(List<void*> items)ŒGLib.Completion÷0œpublic void
+add_main_entriesÃ128Õ([CCode (array_length = false)] OptionEntry[] entries, string? translation_domain)ŒGLib.OptionContext÷0œpublic void
+add_millisecondsÃ128Õ(int milliseconds)ŒGLib.DateTime÷0œpublic DateTime
+add_minutesÃ128Õ(int minutes)ŒGLib.DateTime÷0œpublic DateTime
+add_monthsÃ128Õ(uint n_months)ŒGLib.Date÷0œpublic void
+add_monthsÃ128Õ(int months)ŒGLib.DateTime÷0œpublic DateTime
+add_pollÃ128Õ(ref PollFD fd, int priority)ŒGLib.MainContext÷0œpublic void
+add_pollÃ128Õ(ref PollFD fd)ŒGLib.Source÷0œpublic void
+add_secondsÃ128Õ(double seconds)ŒGLib.DateTime÷0œpublic DateTime
+add_secondsÃ128Õ(uint interval, owned SourceFunc function, [CCode (pos = 0.1)] int priority = Priority.DEFAULT)ŒGLib.Timeout÷0
+add_seconds_fullÃ128Õ(int priority, uint interval, owned SourceFunc function)ŒGLib.Timeout÷0
+add_suiteÃ128Õ(TestSuite test_suite)ŒGLib.TestSuite÷0œpublic void
+add_valueÃ128Õ(Variant value)ŒGLib.VariantBuilder÷0œpublic void
+add_watchÃ128Õ(IOCondition condition, IOFunc func)ŒGLib.IOChannel÷0
+add_watch_fullÃ128Õ(int priority, IOCondition condition, owned IOFunc func)ŒGLib.IOChannel÷0
+add_weeksÃ128Õ(int weeks)ŒGLib.DateTime÷0œpublic DateTime
+add_yearsÃ128Õ(uint n_years)ŒGLib.Date÷0œpublic void
+add_yearsÃ128Õ(int years)ŒGLib.DateTime÷0œpublic DateTime
+adjust_timeÃ128Õ(TimeType type, ref int64 time)ŒGLib.TimeZone÷0œpublic int
+allocÃ128Õ(size_t block_size)ŒGLib.Slice÷0œpublic void *
+alloc0Ã128Õ(size_t block_size)ŒGLib.Slice÷0œpublic void *
+allocated_lenÃ8ŒGLib.StringBuilder÷0œssize_t
+appendÃ128Õ(uint8[] data)ŒGLib.ByteArray÷0œpublic void
+appendÃ128Õ(owned G data)ŒGLib.List÷0œpublic void
+appendÃ128Õ(owned Node<G> node)ŒGLib.Node÷0œpublic unowned
+appendÃ128Õ(owned G data)ŒGLib.SList÷0œpublic void
+appendÃ128Õ(owned G data)ŒGLib.Sequence÷0œpublic SequenceIter
+appendÃ128Õ(string val)ŒGLib.StringBuilder÷0œpublic unowned
+append_cÃ128Õ(char c)ŒGLib.StringBuilder÷0œpublic unowned
+append_dataÃ128Õ(owned G data)ŒGLib.Node÷0œpublic unowned
+append_lenÃ128Õ(string val, ssize_t len)ŒGLib.StringBuilder÷0œpublic unowned
+append_printfÃ128Õ(string format, ...)ŒGLib.StringBuilder÷0œpublic void
+append_unicharÃ128Õ(unichar wc)ŒGLib.StringBuilder÷0œpublic unowned
+append_valÃ128Õ(owned G value)ŒGLib.Array÷0œpublic void
+append_valsÃ128Õ(void* data, uint len)ŒGLib.Array÷0œpublic void
+append_vprintfÃ128Õ(string format, va_list args)ŒGLib.StringBuilder÷0œpublic void
+argÃ8ŒGLib.OptionEntry÷0œOptionArg
+argÃ128Õ()Œva_list÷0œpublic unowned
+arg_dataÃ8ŒGLib.OptionEntry÷0œvoid
+arg_descriptionÃ8ŒGLib.OptionEntry÷0œunowned
+ascii_casecmpÃ128Õ(string s2)÷0œpublic int
+ascii_ncasecmpÃ128Õ(string s2, size_t n)÷0œpublic int
+ascii_strtollÃ128Õ(string nptr, out char* endptr, uint _base)Œint64÷0œint64
+ascii_strtoullÃ128Õ(string nptr, out char* endptr, uint _base)Œuint64÷0œuint64
+asinÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+asinfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+asinhÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+asinhfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+assertÃ128Õ(bool expr)ŒGLib÷0œpublic void
+assert_not_reachedÃ128Õ()ŒGLib÷0œpublic void
+assignÃ128Õ(string rval)ŒGLib.StringBuilder÷0œpublic unowned
+atanÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+atan2Ã128Õ(double y, double x)ŒGLib.Math÷0œpublic double
+atan2fÃ128Õ(float y, float x)ŒGLib.Math÷0œpublic float
+atanfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+atanhÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+atanhfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+atexitÃ128Õ(VoidFunc func)ŒGLib.Environment÷0œpublic void
+attachÃ128Õ(MainContext? context)ŒGLib.Source÷0
+binaryÃ8ŒGLib.TokenValue÷0
+bind_textdomain_codesetÃ128Õ(string domainname, string? codeset)ŒGLib.Intl÷0œpublic unowned
+bindtextdomainÃ128Õ(string domainname, string? dirname)ŒGLib.Intl÷0œpublic unowned
+boolÃ2048÷0
+boolÃ4ŒGLib.DateMonth÷0
+boolÃ4ŒGLib.DateWeekday÷0
+booleanÃ128Õ()ŒGLib.Rand÷0œpublic bool
+booleanÃ128Õ()ŒGLib.Random÷0œpublic bool
+break_typeÃ128Õ()Œunichar÷0œpublic UnicodeBreakType
+breakpointÃ128Õ()ŒGLib÷0œpublic void
+broadcastÃ128Õ()ŒGLib.Cond÷0œpublic void
+bugÃ128Õ(string bug_uri_snippet)ŒGLib.Test÷0œpublic void
+bug_baseÃ128Õ(string uri_pattern)ŒGLib.Test÷0œpublic void
+build_filenameÃ128Õ(string first_element, ...)ŒGLib.Path÷0
+build_pathÃ128Õ(string separator, string first_element, ...)ŒGLib.Path÷0
+byteswapÃ128Õ()ŒGLib.Variant÷0œpublic Variant
+cacheÃ8ŒGLib.Completion÷0œList
+canonÃ128Õ(string valid_chars, char substitutor)÷0œpublic void
+case_sensitiveÃ8ŒGLib.ScannerConfig÷0œbool
+casefoldÃ128Õ(ssize_t len = -1)÷0
+cbrtÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+cbrtfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+ceilÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+ceilfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+char_2_tokenÃ8ŒGLib.ScannerConfig÷0œbool
+char_countÃ128Õ(ssize_t max = -1)÷0œpublic int
+checkÃ128Õ(int max_priority, PollFD[] fds, int n_fds)ŒGLib.MainContext÷0œpublic int
+checkÃ8ŒGLib.SourceFuncs÷0œSourceCheckFunc
+check_replacementÃ128Õ(out bool has_references = null)ŒGLib.Regex÷0œpublic bool
+child_indexÃ128Õ(G data)ŒGLib.Node÷0œpublic int
+child_positionÃ128Õ(Node<G> child)ŒGLib.Node÷0œpublic int
+childrenÃ8ŒGLib.Node÷0œNode
+children_foreachÃ128Õ(TraverseFlags flags, NodeForeachFunc func)ŒGLib.Node÷0œpublic void
+chmodÃ128Õ(string filename, int mode)ŒGLib.FileUtils÷0œpublic int
+chompÃ128Õ()÷0
+chrÃ128Õ(ssize_t len, unichar c)÷0œpublic unowned string
+chugÃ128Õ()÷0
+clampÃ128Õ(uint low, uint high)÷0
+clampÃ128Õ(ushort low, ushort high)÷0
+clampÃ128Õ(ulong low, ulong high)÷0
+clampÃ128Õ(Date min_date, Date max_date)ŒGLib.Date÷0œpublic void
+clampÃ128Õ(int16 low, int16 high)Œint16÷0œpublic int16
+clampÃ128Õ(int32 low, int32 high)Œint32÷0œpublic int32
+clampÃ128Õ(int64 low, int64 high)Œint64÷0œpublic int64
+clampÃ128Õ(int8 low, int8 high)Œint8÷0œpublic int8
+clampÃ128Õ(ssize_t low, ssize_t high)Œssize_t÷0œpublic ssize_t
+clampÃ128Õ(uchar low, uchar high)Œuchar÷0œpublic uchar
+clampÃ128Õ(uint16 low, uint16 high)Œuint16÷0œpublic uint16
+clampÃ128Õ(uint32 low, uint32 high)Œuint32÷0œpublic uint32
+clampÃ128Õ(uint64 low, uint64 high)Œuint64÷0œpublic uint64
+clampÃ128Õ(uint8 low, uint8 high)Œuint8÷0œpublic uint8
+clampÃ128Õ(unichar low, unichar high)Œunichar÷0œpublic unichar
+classifyÃ128Õ()ŒGLib.Variant÷0œpublic Class
+clearÃ128Õ()ŒGLib.Datalist÷0œpublic void
+clearÃ128Õ(uint n_dates = 1)ŒGLib.Date÷0œpublic void
+clearÃ128Õ()ŒGLib.Queue÷0œpublic void
+clearÃ128Õ()ŒGLib.StringChunk÷0œpublic void
+clear_itemsÃ128Õ()ŒGLib.Completion÷0œpublic void
+clearerrÃ128Õ()ŒGLib.FileStream÷0œpublic void
+closeÃ128Õ(int fd)ŒGLib.FileUtils÷0œpublic int
+closeÃ128Õ()ŒGLib.IConv÷0œpublic int
+closeÃ128Õ()ŒGLib.VariantBuilder÷0œpublic void
+close_pidÃ128Õ(Pid pid)ŒGLib.Process÷0œpublic void
+closestÃ128Õ(uint num)ŒGLib.SpacedPrimes÷0
+cmpÃ128Õ(void* s1, void* s2, size_t n)ŒGLib.Memory÷0œpublic int
+codeÃ8ŒGLib.Error÷0œint
+collateÃ128Õ(string str2)÷0œpublic int
+collate_keyÃ128Õ(ssize_t len = -1)÷0
+collate_key_for_filenameÃ128Õ(ssize_t len = -1)÷0
+collect_attributesÃ128Õ(string element_name, string[] attribute_names, string[] attribute_values, ...)ŒGLib.Markup÷0œpublic bool
+commentÃ8ŒGLib.TokenValue÷0œunowned
+compareÃ128Õ(Date rhs)ŒGLib.Date÷0œpublic int
+compareÃ128Õ(DateTime dt)ŒGLib.DateTime÷0œpublic int
+compareÃ128Õ(SequenceIter<G> other)ŒGLib.SequenceIter÷0œpublic int
+compareÃ128Õ(Variant other)ŒGLib.Variant÷0œpublic int
+compare_and_exchangeÃ128Õ(ref int atomic, int oldval, int newval)ŒGLib.AtomicInt÷0œpublic bool
+compare_and_exchangeÃ128Õ(void** atomic, void* oldval, void* newval)ŒGLib.AtomicPointer÷0œpublic bool
+completeÃ128Õ(string prefix, out string? new_prefix = null)ŒGLib.Completion÷0œpublic unowned
+complete_utf8Ã128Õ(string prefix, out string? new_prefix = null)ŒGLib.Completion÷0œpublic unowned
+compressÃ128Õ()÷0
+compute_for_dataÃ128Õ(ChecksumType checksum_type, uchar[] data)ŒGLib.Checksum÷0
+compute_for_stringÃ128Õ(ChecksumType checksum_type, string str, size_t length = -1)ŒGLib.Checksum÷0
+concatÃ128Õ(string string2, ...)÷0
+concatÃ128Õ(owned List<G> list2)ŒGLib.List÷0œpublic void
+concatÃ128Õ(owned SList<G> list2)ŒGLib.SList÷0œpublic void
+configÃ8ŒGLib.Scanner÷0œScannerConfig?
+containsÃ128Õ(string needle)÷0œpublic bool
+convertÃ128Õ(string str, ssize_t len, string to_codeset, string from_codeset, out size_t bytes_read = null, out size_t bytes_written = null)ŒGLib÷0
+copyÃ128Õ()ŒGLib.Checksum÷0œpublic Checksum
+copyÃ128Õ()ŒGLib.Error÷0œpublic Error
+copyÃ128Õ()ŒGLib.List÷0œpublic List
+copyÃ128Õ(void* dest, void* src, size_t n)ŒGLib.Memory÷0œpublic void *
+copyÃ128Õ()ŒGLib.Node÷0œpublic Node
+copyÃ128Õ()ŒGLib.Queue÷0œpublic Queue
+copyÃ128Õ()ŒGLib.SList÷0œpublic SList
+copyÃ128Õ(size_t block_size, void* mem_block)ŒGLib.Slice÷0œpublic void *
+copysignÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+copysignfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+core_dumpÃ128Õ(int status)ŒGLib.Process÷0œpublic bool
+cosÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+cosfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+coshÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+coshfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+cpair_comment_singleÃ8ŒGLib.ScannerConfig÷0
+createÃ128Õ(string pathname, int mode)ŒGLib.DirUtils÷0œpublic int
+createÃ128Õ(ThreadFunc<T> func, bool joinable)ŒGLib.Thread÷0œpublic unowned
+create_fullÃ128Õ(ThreadFunc<T> func, ulong stack_size, bool joinable, bool bound, ThreadPriority priority)ŒGLib.Thread÷0œpublic unowned
+create_watchÃ128Õ(IOCondition condition)ŒGLib.IOChannel÷0œpublic GLib.Source
+create_with_parentsÃ128Õ(string pathname, int mode)ŒGLib.DirUtils÷0œpublic int
+criticalÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+cset_identifier_firstÃ8ŒGLib.ScannerConfig÷0
+cset_identifier_nthÃ8ŒGLib.ScannerConfig÷0
+cset_skip_charactersÃ8ŒGLib.ScannerConfig÷0
+cur_lineÃ128Õ()ŒGLib.Scanner÷0œpublic int
+cur_positionÃ128Õ()ŒGLib.Scanner÷0œpublic int
+cur_tokenÃ128Õ()ŒGLib.Scanner÷0œpublic TokenType
+cur_valueÃ128Õ()ŒGLib.Scanner÷0œpublic TokenValue
+current_sourceÃ128Õ()ŒGLib.MainContext÷0œpublic unowned
+dataÃ8÷0œuint8
+dataÃ8ŒGLib.ByteArray÷0œuint8
+dataÃ8ŒGLib.List÷0œG
+dataÃ8ŒGLib.Node÷0œG
+dataÃ8ŒGLib.SList÷0œG
+dayÃ8ŒGLib.Time÷0œint
+day_of_yearÃ8ŒGLib.Time÷0œint
+days_betweenÃ128Õ(Date date2)ŒGLib.Date÷0œpublic int
+dcgettextÃ128Õ(string? domain, string msgid, int category)ŒGLib÷0œpublic unowned string
+debugÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+dec_and_testÃ128Õ(ref int atomic)ŒGLib.AtomicInt÷0œpublic bool
+decodeÃ128Õ(string text)ŒGLib.Base64÷0œpublic uchar
+decode_stepÃ128Õ(char[] _in, uchar* _out, ref int state, ref uint save)ŒGLib.Base64÷0œpublic size_t
+default_handlerÃ8ŒGLib.Log÷0œGLib.LogFunc
+delete_linkÃ128Õ(List<G> link_)ŒGLib.List÷0œpublic void
+delete_linkÃ128Õ(List<G> link)ŒGLib.Queue÷0œpublic void
+delete_linkÃ128Õ(SList<G> link_)ŒGLib.SList÷0œpublic void
+delimitÃ128Õ(string delimiters, char new_delimiter)÷0
+depthÃ128Õ()ŒGLib.MainContext÷0œpublic int
+depthÃ128Õ()ŒGLib.Node÷0
+descriptionÃ8ŒGLib.OptionEntry÷0œunowned
+destroyÃ128Õ()ŒGLib.Source÷0œpublic void
+dgettextÃ128Õ(string? domain, string msgid)ŒGLib÷0œpublic unowned string
+differenceÃ128Õ(DateTime begin)ŒGLib.DateTime÷0œpublic TimeSpan
+digit_valueÃ128Õ()Œunichar÷0œpublic int
+direct_equalÃ8ŒGLib÷0œGLib.EqualFunc
+direct_hashÃ8ŒGLib÷0œGLib.HashFunc
+dispatchÃ128Õ()ŒGLib.MainContext÷0œpublic void
+dispatchÃ8ŒGLib.SourceFuncs÷0œSourceDispatchFunc
+display_basenameÃ128Õ(string filename)ŒGLib.Filename÷0
+display_nameÃ128Õ(string filename)ŒGLib.Filename÷0
+dngettextÃ128Õ(string? domain, string msgid, string msgid_plural, ulong n)ŒGLib÷0œpublic unowned string
+domainÃ8ŒGLib.Error÷0œQuark
+double_rangeÃ128Õ(double begin, double end)ŒGLib.Rand÷0œpublic double
+double_rangeÃ128Õ(double begin, double end)ŒGLib.Random÷0œpublic double
+downÃ128Õ(ssize_t len = -1)÷0
+dpgettextÃ128Õ(string? domain, string msgctxid, size_t msgidoffset)ŒGLib÷0œpublic unowned string
+dpgettext2Ã128Õ(string? domain, string context, string msgid)ŒGLib÷0œpublic unowned string
+dremÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+dremfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+dupÃ128Õ()÷0
+dupÃ128Õ(void* mem, uint n)ŒGLib.Memory÷0œpublic void *
+dup_bytestringÃ128Õ(out size_t length)ŒGLib.Variant÷0
+dup_bytestring_arrayÃ128Õ()ŒGLib.Variant÷0
+dup_stringÃ128Õ(out size_t length = null)ŒGLib.Variant÷0
+dup_stringÃ128Õ()ŒGLib.VariantType÷0
+dup_strvÃ128Õ()ŒGLib.Variant÷0
+elapsedÃ128Õ(out ulong microseconds = null)ŒGLib.Timer÷0œpublic double
+elementÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+encodeÃ128Õ(uchar[] data)ŒGLib.Base64÷0
+encode_closeÃ128Õ(bool break_lines, char* _out, ref int state, ref int save)ŒGLib.Base64÷0œpublic size_t
+encode_stepÃ128Õ(uchar[] _in, bool break_lines, char* _out, ref int state, ref int save)ŒGLib.Base64÷0œpublic size_t
+endÃ128Õ()ŒGLib.VariantBuilder÷0œpublic Variant
+end_elementÃ8ŒGLib.MarkupParser÷0œunowned
+end_parseÃ128Õ()ŒGLib.MarkupParseContext÷0œpublic bool
+eofÃ128Õ()ŒGLib.FileStream÷0œpublic bool
+eofÃ128Õ()ŒGLib.Scanner÷0œpublic bool
+equalÃ128Õ(DateTime dt)ŒGLib.DateTime÷0œpublic bool
+equalÃ128Õ(PatternSpec pspec)ŒGLib.PatternSpec÷0œpublic bool
+equalÃ128Õ(Variant other)ŒGLib.Variant÷0œpublic bool
+equalÃ128Õ(VariantType other)ŒGLib.VariantType÷0œpublic bool
+eraseÃ128Õ(ssize_t pos = 0, ssize_t len = -1)ŒGLib.StringBuilder÷0œpublic unowned
+erfÃ128Õ(double x0)ŒGLib.Math÷0œpublic double
+erfcÃ128Õ(double x0)ŒGLib.Math÷0œpublic double
+erfcfÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+erffÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+errnoÃ8ŒGLib÷0œint
+errorÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+errorÃ128Õ()ŒGLib.FileStream÷0œpublic int
+errorÃ8ŒGLib.MarkupParser÷0œunowned
+errorÃ128Õ(string format, ...)ŒGLib.Scanner÷0œpublic void
+errorÃ8ŒGLib.TokenValue÷0
+error_from_errnoÃ128Õ(int err_no)ŒGLib.FileUtils÷0œpublic int
+error_messageÃ128Õ(int error)ŒGLib.Win32÷0
+escapeÃ128Õ(string exceptions)÷0
+escape_stringÃ128Õ(string str, int length = -1)ŒGLib.Regex÷0
+escape_stringÃ128Õ(string unescaped, string reserved_chars_allowed, bool allow_utf8)ŒGLib.Uri÷0
+escape_textÃ128Õ(string text, ssize_t length = -1)ŒGLib.Markup÷0
+eventsÃ8ŒGLib.PollFD÷0œIOCondition
+exchange_and_addÃ128Õ(ref int atomic, int val)ŒGLib.AtomicInt÷0œpublic int
+exitÃ128Õ(int status)ŒGLib.Process÷0œpublic void
+exitÃ128Õ(T retval)ŒGLib.Thread÷0œpublic void
+exit_statusÃ128Õ(int status)ŒGLib.Process÷0œpublic int
+expÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+exp10Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+exp10fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+exp2Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+exp2fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+expand_referencesÃ128Õ(string string_to_expand)ŒGLib.MatchInfo÷0
+expfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+expm1Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+expm1fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+fabsÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+fabsfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+fdÃ8ŒGLib.PollFD÷0œint
+fdimÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+fdimfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+fdopenÃ128Õ(int fildes, string mode)ŒGLib.FileStream÷0œpublic FileStream?
+fetchÃ128Õ(int match_num)ŒGLib.MatchInfo÷0œpublic string?
+fetch_allÃ128Õ()ŒGLib.MatchInfo÷0
+fetch_namedÃ128Õ(string name)ŒGLib.MatchInfo÷0œpublic string?
+fetch_named_posÃ128Õ(string name, out int start_pos, out int end_pos)ŒGLib.MatchInfo÷0œpublic bool
+fetch_posÃ128Õ(int match_num, out int start_pos, out int end_pos)ŒGLib.MatchInfo÷0œpublic bool
+filenoÃ128Õ()ŒGLib.FileStream÷0œpublic int
+finalizeÃ8ŒGLib.SourceFuncs÷0œSourceFinalizeFunc
+findÃ128Õ(HRFunc<K,V> predicate)ŒGLib.HashTable÷0œpublic unowned
+findÃ128Õ(G data)ŒGLib.List÷0œpublic unowned
+findÃ128Õ(TraverseType order, TraverseFlags flags, G data)ŒGLib.Node÷0œpublic unowned
+findÃ128Õ(G data)ŒGLib.Queue÷0œpublic unowned
+findÃ128Õ(G data)ŒGLib.SList÷0œpublic unowned
+find_childÃ128Õ(TraverseFlags flags, G data)ŒGLib.Node÷0œpublic unowned
+find_customÃ128Õ(G data, CompareFunc<G> func)ŒGLib.List÷0œpublic unowned
+find_customÃ128Õ(G data, CompareFunc<G> func)ŒGLib.Queue÷0œpublic unowned
+find_customÃ128Õ(G data, CompareFunc<G> func)ŒGLib.SList÷0œpublic unowned
+find_intervalÃ128Õ(TimeType type, int64 time)ŒGLib.TimeZone÷0œpublic int
+find_program_in_pathÃ128Õ(string program)ŒGLib.Environment÷0œpublic string?
+find_source_by_funcs_user_dataÃ128Õ(SourceFuncs funcs, void* user_data)ŒGLib.MainContext÷0œpublic unowned
+find_source_by_idÃ128Õ(uint source_id)ŒGLib.MainContext÷0œpublic unowned
+find_source_by_user_dataÃ128Õ(void* user_data)ŒGLib.MainContext÷0œpublic unowned
+finiteÃ128Õ(double value)ŒGLib.Math÷0œpublic int
+finitefÃ128Õ(float value)ŒGLib.Math÷0œpublic int
+firstÃ128Õ()ŒGLib.List÷0œpublic unowned
+firstÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+first_childÃ128Õ()ŒGLib.Node÷0œpublic unowned
+first_siblingÃ128Õ()ŒGLib.Node÷0œpublic unowned
+flagsÃ8ŒGLib.OptionEntry÷0œint
+floorÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+floorfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+flushÃ128Õ()ŒGLib.FileStream÷0œpublic int
+flushÃ128Õ()ŒGLib.IOChannel÷0œpublic IOStatus
+fmaÃ128Õ(double x, double y, double z)ŒGLib.Math÷0œpublic double
+fmafÃ128Õ(float x, float y, float z)ŒGLib.Math÷0œpublic float
+fmaxÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+fmaxfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+fminÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+fminfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+fmodÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+fmodfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+for_eachÃ128Õ(HFunc<K,V> func)ŒGLib.HashTable÷0œpublic void
+foreachÃ128Õ(GLib.Func<G> func)ŒGLib.GenericArray÷0œpublic void
+foreachÃ128Õ(GLib.Func<void*> func)ŒGLib.PtrArray÷0œpublic void
+foreachÃ128Õ(TraverseFunc traverse_func)ŒGLib.Tree÷0œpublic void
+foreach_rangeÃ128Õ(SequenceIter<G> begin, SequenceIter<G> end, Func<G> func)ŒGLib.Sequence÷0œpublic void
+formatÃ128Õ(string format)ŒGLib.DateTime÷0
+formatÃ128Õ(string format)ŒGLib.Time÷0
+format_size_for_displayÃ128Õ(int64 size)ŒGLib÷0
+freeÃ128Õ(void* mem)ŒGLib÷0œpublic void
+freeÃ128Õ(size_t block_size, void* mem_block)ŒGLib.Slice÷0œpublic void
+free_chain_with_offsetÃ128Õ(size_t block_size, void *mem_chain, size_t next_offset)ŒGLib.Slice÷0œpublic void
+frexpÃ128Õ(double x, out int exponent)ŒGLib.Math÷0œpublic double
+frexpfÃ128Õ(float x, out int exponent)ŒGLib.Math÷0œpublic float
+from_big_endianÃ128Õ(uint val)÷0
+from_big_endianÃ128Õ(ulong val)÷0
+from_big_endianÃ128Õ(int16 val)Œint16÷0œpublic int16
+from_big_endianÃ128Õ(int32 val)Œint32÷0œpublic int32
+from_big_endianÃ128Õ(int64 val)Œint64÷0œpublic int64
+from_big_endianÃ128Õ(uint16 val)Œuint16÷0œpublic uint16
+from_big_endianÃ128Õ(uint32 val)Œuint32÷0œpublic uint32
+from_big_endianÃ128Õ(uint64 val)Œuint64÷0œpublic uint64
+from_iso8601Ã128Õ(string iso_date)ŒGLib.TimeVal÷0œpublic bool
+from_little_endianÃ128Õ(uint val)÷0
+from_little_endianÃ128Õ(ulong val)÷0
+from_little_endianÃ128Õ(int16 val)Œint16÷0œpublic int16
+from_little_endianÃ128Õ(int32 val)Œint32÷0œpublic int32
+from_little_endianÃ128Õ(int64 val)Œint64÷0œpublic int64
+from_little_endianÃ128Õ(uint16 val)Œuint16÷0œpublic uint16
+from_little_endianÃ128Õ(uint32 val)Œuint32÷0œpublic uint32
+from_little_endianÃ128Õ(uint64 val)Œuint64÷0œpublic uint64
+from_stringÃ128Õ(string str)ŒGLib.Quark÷0œpublic Quark
+from_uriÃ128Õ(string uri, out string hostname = null)ŒGLib.Filename÷0
+from_utf8Ã128Õ(string utf8string, ssize_t len, out size_t bytes_read, out size_t bytes_written)ŒGLib.Filename÷0
+funcÃ8ŒGLib.Completion÷0œCompletionFunc
+g_freeÃ8ŒGLib÷0œGLib.DestroyNotify
+g_list_freeÃ8ŒGLib÷0œGLib.DestroyNotify
+g_object_unrefÃ8ŒGLib÷0œGLib.DestroyNotify
+g_variant_unrefÃ8ŒGLib÷0œGLib.DestroyNotify
+gammaÃ128Õ(double x0)ŒGLib.Math÷0œpublic double
+gammafÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+get_abbreviationÃ128Õ(int interval)ŒGLib.TimeZone÷0œpublic unowned string
+get_addedÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic time_t
+get_app_infoÃ128Õ(string uri, string name, out string exec, out uint count, out time_t stamp)ŒGLib.BookmarkFile÷0œpublic bool
+get_application_nameÃ128Õ()ŒGLib.Environment÷0œpublic unowned
+get_applicationsÃ128Õ(string uri)ŒGLib.BookmarkFile÷0
+get_basenameÃ128Õ(string file_name)ŒGLib.Path÷0
+get_begin_iterÃ128Õ()ŒGLib.Sequence÷0œpublic SequenceIter
+get_booleanÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic bool
+get_booleanÃ128Õ()ŒGLib.Variant÷0œpublic bool
+get_boolean_listÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic bool
+get_buffer_conditionÃ128Õ()ŒGLib.IOChannel÷0œpublic IOCondition
+get_buffer_sizeÃ128Õ()ŒGLib.IOChannel÷0œpublic size_t
+get_bufferedÃ128Õ()ŒGLib.IOChannel÷0œpublic bool
+get_byteÃ128Õ()ŒGLib.Variant÷0œpublic uint8
+get_bytestringÃ128Õ()ŒGLib.Variant÷0œpublic unowned string
+get_bytestring_arrayÃ128Õ()ŒGLib.Variant÷0
+get_can_recurseÃ128Õ()ŒGLib.Source÷0œpublic bool
+get_capture_countÃ128Õ()ŒGLib.Regex÷0œpublic int
+get_charÃ128Õ(long index = 0)÷0œpublic unichar
+get_char_validatedÃ128Õ(ssize_t max_len = -1)÷0œpublic unichar
+get_charsetÃ128Õ(out unowned string charset)ŒGLib÷0œpublic bool
+get_child_valueÃ128Õ(size_t index)ŒGLib.Variant÷0œpublic Variant
+get_close_on_unrefÃ128Õ()ŒGLib.IOChannel÷0œpublic bool
+get_commentÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0
+get_compile_flagsÃ128Õ()ŒGLib.Regex÷0œpublic RegexCompileFlags
+get_contentsÃ128Õ(string filename, out string contents, out size_t length = null)ŒGLib.FileUtils÷0œpublic bool
+get_contentsÃ128Õ()ŒGLib.MappedFile÷0œpublic unowned char *
+get_contextÃ128Õ()ŒGLib.MainLoop÷0œpublic unowned
+get_contextÃ128Õ()ŒGLib.Source÷0œpublic unowned
+get_current_dirÃ128Õ()ŒGLib.Environment÷0
+get_current_timeÃ128Õ(out TimeVal timeval)ŒGLib.Source÷0œpublic void
+get_current_timeÃ128Õ()ŒGLib.TimeVal÷0œpublic void
+get_dataÃ128Õ(string key)ŒGLib.Datalist÷0œpublic unowned
+get_dataÃ128Õ(string filename, [CCode (type = , array_length_type = )] out uint8[] contents)ŒGLib.FileUtils÷0œpublic bool
+get_dataÃ128Õ()ŒGLib.Variant÷0œpublic void *
+get_dayÃ128Õ()ŒGLib.Date÷0œpublic DateDay
+get_day_of_monthÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_day_of_weekÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_day_of_yearÃ128Õ()ŒGLib.Date÷0
+get_day_of_yearÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_days_in_monthÃ128Õ(DateMonth month, DateYear year)ŒGLib.Date÷0œpublic uchar
+get_days_in_monthÃ4ŒGLib.DateMonth÷0
+get_descriptionÃ128Õ(string uri)ŒGLib.BookmarkFile÷0
+get_descriptionÃ128Õ()ŒGLib.OptionContext÷0œpublic void
+get_digestÃ128Õ([CCode (array_length = false)] uint8[] buffer, ref size_t digest_len)ŒGLib.Checksum÷0œpublic void
+get_dirnameÃ128Õ(string file_name)ŒGLib.Path÷0
+get_doubleÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic double
+get_doubleÃ128Õ()ŒGLib.Variant÷0œpublic double
+get_double_listÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic double
+get_elementÃ128Õ()ŒGLib.MarkupParseContext÷0œpublic unowned string
+get_element_stackÃ128Õ()ŒGLib.MarkupParseContext÷0œpublic unowned
+get_encodingÃ128Õ()ŒGLib.IOChannel÷0œpublic unowned string
+get_end_iterÃ128Õ()ŒGLib.Sequence÷0œpublic SequenceIter
+get_flagsÃ128Õ()ŒGLib.IOChannel÷0œpublic IOFlags
+get_groupsÃ128Õ(string uri)ŒGLib.BookmarkFile÷0
+get_groupsÃ128Õ()ŒGLib.KeyFile÷0
+get_handleÃ128Õ()ŒGLib.Variant÷0œpublic int32
+get_hash_tableÃ128Õ()ŒGLib.HashTableIter÷0œpublic unowned
+get_helpÃ128Õ(bool main_help, OptionGroup? group)ŒGLib.OptionContext÷0
+get_help_enabledÃ128Õ()ŒGLib.OptionContext÷0œpublic bool
+get_home_dirÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_host_nameÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_hourÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_iconÃ128Õ(string uri, out string href, out string mime_type)ŒGLib.BookmarkFile÷0œpublic bool
+get_idÃ128Õ()ŒGLib.Source÷0
+get_ignore_unknown_optionsÃ128Õ()ŒGLib.OptionContext÷0œpublic bool
+get_int16Ã128Õ()ŒGLib.Variant÷0œpublic int16
+get_int32Ã128Õ()ŒGLib.Variant÷0œpublic int32
+get_int64Ã128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic int64
+get_int64Ã128Õ()ŒGLib.Variant÷0œpublic int64
+get_integerÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic int
+get_integer_listÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic int
+get_is_privateÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic bool
+get_iso8601_week_of_yearÃ128Õ()ŒGLib.Date÷0
+get_iter_at_posÃ128Õ(int pos)ŒGLib.Sequence÷0œpublic SequenceIter
+get_julianÃ128Õ()ŒGLib.Date÷0
+get_keysÃ128Õ()ŒGLib.HashTable÷0œpublic List
+get_keysÃ128Õ(string group_name)ŒGLib.KeyFile÷0
+get_language_namesÃ128Õ()ŒGLib.Intl÷0œpublic unowned string
+get_lengthÃ4ŒGLib.ChecksumType÷0
+get_lengthÃ128Õ()ŒGLib.MappedFile÷0œpublic size_t
+get_lengthÃ128Õ()ŒGLib.Queue÷0
+get_lengthÃ128Õ()ŒGLib.Sequence÷0œpublic int
+get_line_termÃ128Õ(out int length)ŒGLib.IOChannel÷0œpublic unowned string
+get_locale_stringÃ128Õ(string group_name, string key, string? locale = null)ŒGLib.KeyFile÷0
+get_locale_string_listÃ128Õ(string group_name, string key, string? locale = null)ŒGLib.KeyFile÷0
+get_main_groupÃ128Õ()ŒGLib.OptionContext÷0œpublic unowned
+get_match_countÃ128Õ()ŒGLib.MatchInfo÷0œpublic int
+get_match_flagsÃ128Õ()ŒGLib.Regex÷0œpublic RegexMatchFlags
+get_max_backrefÃ128Õ()ŒGLib.Regex÷0œpublic int
+get_max_idle_timeÃ128Õ()ŒGLib.ThreadPool÷0
+get_max_threadsÃ128Õ()ŒGLib.ThreadPool÷0œpublic int
+get_max_unused_threadsÃ128Õ()ŒGLib.ThreadPool÷0œpublic int
+get_maybeÃ128Õ()ŒGLib.Variant÷0œpublic Variant?
+get_microsecondÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_mime_typeÃ128Õ(string uri)ŒGLib.BookmarkFile÷0
+get_minuteÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_modifiedÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic time_t
+get_monday_week_of_yearÃ128Õ()ŒGLib.Date÷0
+get_monday_weeks_in_yearÃ128Õ()ŒGLib.DateYear÷0œpublic uchar
+get_monthÃ128Õ()ŒGLib.Date÷0œpublic DateMonth
+get_monthÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_nameÃ128Õ()ŒGLib.MainContext÷0œpublic unowned
+get_next_tokenÃ128Õ()ŒGLib.Scanner÷0œpublic TokenType
+get_normal_formÃ128Õ()ŒGLib.Variant÷0œpublic Variant
+get_num_threadsÃ128Õ()ŒGLib.ThreadPool÷0
+get_num_unused_threadsÃ128Õ()ŒGLib.ThreadPool÷0
+get_offsetÃ128Õ(int interval)ŒGLib.TimeZone÷0œpublic int32
+get_package_installation_directory_of_moduleÃ128Õ(void* hmodule)ŒGLib.Win32÷0
+get_patternÃ128Õ()ŒGLib.Regex÷0œpublic unowned string
+get_poll_funcÃ128Õ()ŒGLib.MainContext÷0œpublic PollFunc
+get_positionÃ128Õ(out int line_number, out int char_number)ŒGLib.MarkupParseContext÷0œpublic void
+get_positionÃ128Õ()ŒGLib.SequenceIter÷0œpublic int
+get_prgnameÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_priorityÃ128Õ()ŒGLib.Source÷0œpublic int
+get_real_nameÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_regexÃ128Õ()ŒGLib.MatchInfo÷0œpublic unowned
+get_rootÃ128Õ()ŒGLib.Node÷0œpublic unowned
+get_rootÃ128Õ()ŒGLib.TestSuite÷0œpublic TestSuite
+get_scriptÃ128Õ()Œunichar÷0œpublic UnicodeScript
+get_secondÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_secondsÃ128Õ()ŒGLib.DateTime÷0œpublic double
+get_sequenceÃ128Õ()ŒGLib.SequenceIter÷0œpublic Sequence
+get_sizeÃ128Õ()ŒGLib.BookmarkFile÷0œpublic int
+get_sizeÃ128Õ()ŒGLib.Variant÷0œpublic size_t
+get_start_groupÃ128Õ()ŒGLib.KeyFile÷0
+get_stringÃ128Õ()ŒGLib.Checksum÷0œpublic unowned string
+get_stringÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0
+get_stringÃ128Õ()ŒGLib.MatchInfo÷0œpublic unowned string
+get_stringÃ128Õ(out size_t length = null)ŒGLib.Variant÷0œpublic unowned string
+get_string_lengthÃ128Õ()ŒGLib.VariantType÷0œpublic size_t
+get_string_listÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0
+get_string_numberÃ128Õ(string name)ŒGLib.Regex÷0œpublic int
+get_strvÃ128Õ()ŒGLib.Variant÷0
+get_summaryÃ128Õ()ŒGLib.OptionContext÷0œpublic unowned string
+get_sunday_week_of_yearÃ128Õ()ŒGLib.Date÷0
+get_sunday_weeks_in_yearÃ128Õ()ŒGLib.DateYear÷0œpublic uchar
+get_system_config_dirsÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_system_data_dirsÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_thread_defaultÃ128Õ()ŒGLib.MainContext÷0œpublic unowned
+get_timezone_abbreviationÃ128Õ()ŒGLib.DateTime÷0œpublic unowned string
+get_titleÃ128Õ(string uri)ŒGLib.BookmarkFile÷0
+get_tmp_dirÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_typeÃ128Õ()ŒGLib.Variant÷0œpublic unowned
+get_type_stringÃ128Õ()ŒGLib.Variant÷0œpublic unowned string
+get_uint16Ã128Õ()ŒGLib.Variant÷0œpublic uint16
+get_uint32Ã128Õ()ŒGLib.Variant÷0œpublic uint32
+get_uint64Ã128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic uint64
+get_uint64Ã128Õ()ŒGLib.Variant÷0œpublic uint64
+get_urisÃ128Õ()ŒGLib.BookmarkFile÷0
+get_user_cache_dirÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_user_config_dirÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_user_data_dirÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_user_nameÃ128Õ()ŒGLib.Environment÷0œpublic unowned string
+get_user_special_dirÃ128Õ(UserDirectory directory)ŒGLib.Environment÷0œpublic unowned string
+get_utc_offsetÃ128Õ()ŒGLib.DateTime÷0œpublic TimeSpan
+get_vaÃ128Õ(string format, char **end_ptr, va_list *app)ŒGLib.Variant÷0œpublic void
+get_valueÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0
+get_valuesÃ128Õ()ŒGLib.HashTable÷0œpublic List
+get_variableÃ128Õ(string variable)ŒGLib.Environment÷0œpublic unowned
+get_variantÃ128Õ()ŒGLib.Variant÷0œpublic Variant
+get_visitedÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic time_t
+get_week_numbering_yearÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_week_of_yearÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_weekdayÃ128Õ()ŒGLib.Date÷0œpublic DateWeekday
+get_windows_versionÃ128Õ()ŒGLib.Win32÷0
+get_yearÃ128Õ()ŒGLib.Date÷0œpublic DateYear
+get_yearÃ128Õ()ŒGLib.DateTime÷0œpublic int
+get_ymdÃ128Õ(out int year, out int month, out int day)ŒGLib.DateTime÷0œpublic void
+getcÃ128Õ()ŒGLib.FileStream÷0œpublic int
+getlocaleÃ128Õ()ŒGLib.Win32÷0
+getsÃ128Õ(char[] s)ŒGLib.FileStream÷0œpublic unowned string
+gmÃ128Õ(time_t time)ŒGLib.Time÷0œpublic Time
+gmtime_rÃ128Õ(ref time_t time, out Time result)ŒGLib.Time÷0œvoid
+has_applicationÃ128Õ(string uri, string name)ŒGLib.BookmarkFile÷0œpublic bool
+has_groupÃ128Õ(string uri, string group)ŒGLib.BookmarkFile÷0œpublic bool
+has_groupÃ128Õ(string group_name)ŒGLib.KeyFile÷0œpublic bool
+has_itemÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic bool
+has_keyÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic bool
+has_prefixÃ128Õ(string prefix)÷0œpublic bool
+has_suffixÃ128Õ(string suffix)÷0œpublic bool
+hashÃ128Õ()÷0
+hashÃ128Õ()ŒGLib.DateTime÷0
+hashÃ128Õ()ŒGLib.Variant÷0
+hashÃ128Õ()ŒGLib.VariantType÷0
+have_widechar_apiÃ128Õ()ŒGLib.Win32÷0œpublic bool
+headÃ8ŒGLib.Queue÷0œunowned
+heightÃ128Õ()ŒGLib.Tree÷0œpublic int
+hexÃ8ŒGLib.TokenValue÷0
+hourÃ8ŒGLib.Time÷0œint
+hypotÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+hypotfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+iconvÃ128Õ(out string inbuf, out uint inbytes_left, out string outbuf, out uint outbytes_left)ŒGLib.IConv÷0
+id_get_dataÃ128Õ(Quark key_id)ŒGLib.Datalist÷0œpublic unowned
+id_remove_dataÃ128Õ(Quark key_id)ŒGLib.Datalist÷0œpublic void
+id_remove_no_notifyÃ128Õ(Quark key_id)ŒGLib.Datalist÷0œpublic G
+id_set_dataÃ128Õ(Quark key_id, owned G data)ŒGLib.Datalist÷0œpublic void
+id_set_data_fullÃ128Õ(Quark key_id, owned G data, DestroyNotify? destroy_func)ŒGLib.Datalist÷0œpublic void
+identifierÃ8ŒGLib.TokenValue÷0œunowned
+identifier_2_stringÃ8ŒGLib.ScannerConfig÷0œbool
+if_continuedÃ128Õ(int status)ŒGLib.Process÷0œpublic bool
+if_exitedÃ128Õ(int status)ŒGLib.Process÷0œpublic bool
+if_signaledÃ128Õ(int status)ŒGLib.Process÷0œpublic bool
+if_stoppedÃ128Õ(int status)ŒGLib.Process÷0œpublic bool
+ilogbÃ128Õ(double x)ŒGLib.Math÷0œpublic int
+ilogbfÃ128Õ(float x)ŒGLib.Math÷0œpublic int
+incÃ128Õ(ref int atomic)ŒGLib.AtomicInt÷0œpublic void
+indexÃ128Õ(uint index)ŒGLib.Array÷0œpublic unowned
+indexÃ128Õ(G data)ŒGLib.List÷0œpublic int
+indexÃ128Õ(uint index)ŒGLib.PtrArray÷0œpublic void *
+indexÃ128Õ(G data)ŒGLib.Queue÷0œpublic int
+indexÃ128Õ(G data)ŒGLib.SList÷0œpublic int
+index_ofÃ128Õ(string needle, int start_index = 0)÷0œpublic int
+index_of_charÃ128Õ(unichar c, int start_index = 0)÷0œpublic int
+index_of_nth_charÃ128Õ(long c)÷0œpublic int
+initÃ128Õ()ŒGLib.IOChannel÷0œpublic void
+initÃ128Õ([CCode (array_length_pos = 0.9)] ref unowned string[] args, ...)ŒGLib.Test÷0œpublic void
+input_fileÃ128Õ(int input_fd)ŒGLib.Scanner÷0œpublic void
+input_nameÃ8ŒGLib.Scanner÷0œunowned
+input_textÃ128Õ(string text, uint text_len)ŒGLib.Scanner÷0œpublic void
+insertÃ128Õ(owned K key, owned V value)ŒGLib.HashTable÷0œpublic void
+insertÃ128Õ(owned G data, int position)ŒGLib.List÷0œpublic void
+insertÃ128Õ(int position, owned Node<G> node)ŒGLib.Node÷0œpublic unowned
+insertÃ128Õ(owned G data, int position)ŒGLib.SList÷0œpublic void
+insertÃ128Õ(ssize_t pos, string val)ŒGLib.StringBuilder÷0œpublic unowned
+insertÃ128Õ(string str)ŒGLib.StringChunk÷0œpublic unowned string
+insertÃ128Õ(owned K key, owned V value)ŒGLib.Tree÷0œpublic void
+insert_afterÃ128Õ(Node<G> sibling, owned Node<G> node)ŒGLib.Node÷0œpublic unowned
+insert_afterÃ128Õ(List<G> sibling, owned G data)ŒGLib.Queue÷0œpublic void
+insert_beforeÃ128Õ(List<G> sibling, owned G data)ŒGLib.List÷0œpublic void
+insert_beforeÃ128Õ(Node<G> sibling, owned Node<G> node)ŒGLib.Node÷0œpublic unowned
+insert_beforeÃ128Õ(List<G> sibling, owned G data)ŒGLib.Queue÷0œpublic void
+insert_beforeÃ128Õ(SList<G> sibling, owned G data)ŒGLib.SList÷0œpublic void
+insert_beforeÃ128Õ(SequenceIter<G> iter, owned G data)ŒGLib.Sequence÷0œpublic SequenceIter
+insert_constÃ128Õ(string str)ŒGLib.StringChunk÷0œpublic unowned string
+insert_dataÃ128Õ(int position, owned G data)ŒGLib.Node÷0œpublic unowned
+insert_data_beforeÃ128Õ(Node<G> sibling, owned G data)ŒGLib.Node÷0œpublic unowned
+insert_lenÃ128Õ(string str, ssize_t len)ŒGLib.StringChunk÷0œpublic unowned string
+insert_sortedÃ128Õ(owned G data, CompareFunc<G> compare_func)ŒGLib.List÷0œpublic void
+insert_sortedÃ128Õ(owned G data, CompareDataFunc<G> func)ŒGLib.Queue÷0œpublic void
+insert_sortedÃ128Õ(owned G data, CompareFunc<G> compare_func)ŒGLib.SList÷0œpublic void
+insert_sortedÃ128Õ(owned G data, CompareDataFunc<G> cmp_func)ŒGLib.Sequence÷0œpublic SequenceIter
+insert_sorted_iterÃ128Õ(owned G data, SequenceIterCompareFunc<G> iter_cmp)ŒGLib.Sequence÷0œpublic SequenceIter
+insert_sorted_with_dataÃ128Õ(owned G data, CompareDataFunc<G> compare_func)ŒGLib.List÷0œpublic void
+insert_sorted_with_dataÃ128Õ(owned G data, CompareDataFunc<G> compare_func)ŒGLib.SList÷0œpublic void
+insert_valÃ128Õ(uint index, owned G value)ŒGLib.Array÷0œpublic void
+insert_valsÃ128Õ(uint index, void* data, uint len)ŒGLib.Array÷0œpublic void
+int16Ã2048÷0
+int32Ã2048÷0
+int64Ã2048÷0
+int64Ã8ŒGLib.TokenValue÷0
+int64_equalÃ8ŒGLib÷0œGLib.EqualFunc
+int64_hashÃ8ŒGLib÷0œGLib.HashFunc
+int8Ã2048÷0
+int_2_floatÃ8ŒGLib.ScannerConfig÷0œbool
+int_equalÃ8ŒGLib÷0œGLib.EqualFunc
+int_hashÃ8ŒGLib÷0œGLib.HashFunc
+int_rangeÃ128Õ(int32 begin, int32 end)ŒGLib.Rand÷0œpublic int32
+int_rangeÃ128Õ(int32 begin, int32 end)ŒGLib.Random÷0œpublic int32
+invokeÃ128Õ(owned SourceFunc function, [CCode (pos = 0.1)] int priority = Priority.DEFAULT)ŒGLib.MainContext÷0œpublic void
+invoke_fullÃ128Õ(int priority, owned SourceFunc function)ŒGLib.MainContext÷0œpublic void
+is_absoluteÃ128Õ(string file_name)ŒGLib.Path÷0œpublic bool
+is_ancestorÃ128Õ(Node<G> descendant)ŒGLib.Node÷0œpublic bool
+is_arrayÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_basicÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_beginÃ128Õ()ŒGLib.SequenceIter÷0œpublic bool
+is_containerÃ128Õ()ŒGLib.Variant÷0œpublic bool
+is_containerÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_daylight_savingsÃ128Õ()ŒGLib.DateTime÷0œpublic bool
+is_definiteÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_destroyedÃ128Õ()ŒGLib.Source÷0œpublic bool
+is_dict_entryÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_dir_separatorÃ128Õ(unichar c)ŒGLib.Path÷0œpublic bool
+is_dstÃ128Õ(int interval)ŒGLib.TimeZone÷0œpublic bool
+is_emptyÃ128Õ()ŒGLib.Queue÷0œpublic bool
+is_endÃ128Õ()ŒGLib.SequenceIter÷0œpublic bool
+is_first_of_monthÃ128Õ()ŒGLib.Date÷0œpublic bool
+is_floatingÃ128Õ()ŒGLib.Variant÷0œpublic bool
+is_last_of_monthÃ128Õ()ŒGLib.Date÷0œpublic bool
+is_leafÃ128Õ()ŒGLib.Node÷0œpublic bool
+is_leap_yearÃ128Õ()ŒGLib.DateYear÷0œpublic bool
+is_maybeÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_normal_formÃ128Õ()ŒGLib.Variant÷0œpublic bool
+is_nt_basedÃ128Õ()ŒGLib.Win32÷0œpublic bool
+is_object_pathÃ128Õ(string object_path)ŒGLib.Variant÷0œpublic bool
+is_of_typeÃ128Õ(VariantType type)ŒGLib.Variant÷0œpublic bool
+is_ownerÃ128Õ()ŒGLib.MainContext÷0œpublic bool
+is_partial_matchÃ128Õ()ŒGLib.MatchInfo÷0œpublic bool
+is_rootÃ128Õ()ŒGLib.Node÷0œpublic bool
+is_runningÃ128Õ()ŒGLib.MainLoop÷0œpublic bool
+is_signatureÃ128Õ(string signature)ŒGLib.Variant÷0œpublic bool
+is_subtype_ofÃ128Õ(VariantType supertype)ŒGLib.VariantType÷0œpublic bool
+is_tupleÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+is_variantÃ128Õ()ŒGLib.VariantType÷0œpublic bool
+isalnumÃ128Õ()Œunichar÷0œpublic bool
+isalphaÃ128Õ()Œunichar÷0œpublic bool
+iscntrlÃ128Õ()Œunichar÷0œpublic bool
+isdefinedÃ128Õ()Œunichar÷0œpublic bool
+isdigitÃ128Õ()Œunichar÷0œpublic bool
+isdstÃ8ŒGLib.Time÷0œint
+isgraphÃ128Õ()Œunichar÷0œpublic bool
+isinfÃ128Õ(double value)ŒGLib.Math÷0œpublic int
+isinffÃ128Õ(float value)ŒGLib.Math÷0œpublic int
+islowerÃ128Õ()Œunichar÷0œpublic bool
+isnanÃ128Õ(double value)ŒGLib.Math÷0œpublic int
+isnanfÃ128Õ(float value)ŒGLib.Math÷0œpublic int
+isprintÃ128Õ()Œunichar÷0œpublic bool
+ispunctÃ128Õ()Œunichar÷0œpublic bool
+isspaceÃ128Õ()Œunichar÷0œpublic bool
+istitleÃ128Õ()Œunichar÷0œpublic bool
+isupperÃ128Õ()Œunichar÷0œpublic bool
+iswideÃ128Õ()Œunichar÷0œpublic bool
+iswide_cjkÃ128Õ()Œunichar÷0œpublic bool
+isxdigitÃ128Õ()Œunichar÷0œpublic bool
+iszerowidthÃ128Õ()Œunichar÷0œpublic bool
+itemsÃ8ŒGLib.Completion÷0œList
+iterationÃ128Õ(bool may_block)ŒGLib.MainContext÷0œpublic bool
+iteratorÃ128Õ()ŒGLib.Variant÷0œpublic VariantIter
+j0Ã128Õ(double x0)ŒGLib.Math÷0œpublic double
+j0fÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+j1Ã128Õ(double x0)ŒGLib.Math÷0œpublic double
+j1fÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+jnÃ128Õ(int x0, double x1)ŒGLib.Math÷0œpublic double
+jnfÃ128Õ(int x0, float x1)ŒGLib.Math÷0œpublic float
+joinÃ128Õ(string separator, ...)÷0
+joinÃ128Õ()ŒGLib.Thread÷0œpublic T
+joinvÃ128Õ(string separator, [CCode (array_length = false, array_null_terminated = true)] string[] str_array)÷0
+keyÃ8ŒGLib.DebugKey÷0œunowned
+keyÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+lastÃ128Õ()ŒGLib.List÷0œpublic unowned
+lastÃ128Õ()ŒGLib.SList÷0œpublic unowned
+last_childÃ128Õ()ŒGLib.Node÷0œpublic unowned
+last_index_ofÃ128Õ(string needle, int start_index = 0)÷0œpublic int
+last_index_of_charÃ128Õ(unichar c, int start_index = 0)÷0œpublic int
+last_siblingÃ128Õ()ŒGLib.Node÷0œpublic unowned
+ldexpÃ128Õ(double x, int exponent)ŒGLib.Math÷0œpublic double
+ldexpfÃ128Õ(float x, int exponent)ŒGLib.Math÷0œpublic float
+lenÃ128Õ()÷0œpublic long
+lenÃ8ŒGLib.ByteArray÷0
+lenÃ8ŒGLib.GenericArray÷0
+lenÃ8ŒGLib.PtrArray÷0
+lenÃ8ŒGLib.StringBuilder÷0œssize_t
+lengthÃ8÷0œint
+lengthÃ8ŒGLib.Array÷0
+lengthÃ128Õ()ŒGLib.AsyncQueue÷0œpublic int
+lengthÃ8ŒGLib.GenericArray÷0œint
+lengthÃ128Õ()ŒGLib.List÷0
+lengthÃ8ŒGLib.Queue÷0
+lengthÃ128Õ()ŒGLib.SList÷0
+length_unlockedÃ128Õ()ŒGLib.AsyncQueue÷0œpublic int
+lgammaÃ128Õ(double x0)ŒGLib.Math÷0œpublic double
+lgamma_rÃ128Õ(double x0, out int signgamp)ŒGLib.Math÷0œpublic double
+lgamma_rfÃ128Õ(float x0, out int signgamp)ŒGLib.Math÷0œpublic float
+lgammafÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+likelyÃ128Õ(bool expression)ŒGLib÷0œpublic bool
+lineÃ8ŒGLib.Scanner÷0
+list_extract_urisÃ128Õ(string uri_list)ŒGLib.Uri÷0
+list_variablesÃ128Õ()ŒGLib.Environment÷0
+llrintÃ128Õ(double x)ŒGLib.Math÷0œpublic int64
+llrintfÃ128Õ(float x)ŒGLib.Math÷0œpublic int64
+llroundÃ128Õ(double x)ŒGLib.Math÷0œpublic int64
+llroundfÃ128Õ(float x)ŒGLib.Math÷0œpublic int64
+load_from_dataÃ128Õ(string data, size_t length)ŒGLib.BookmarkFile÷0œpublic bool
+load_from_dataÃ128Õ(string data, size_t length, KeyFileFlags @flags)ŒGLib.KeyFile÷0œpublic bool
+load_from_data_dirsÃ128Õ(string file, out string full_path)ŒGLib.BookmarkFile÷0œpublic bool
+load_from_data_dirsÃ128Õ(string file, out string full_path, KeyFileFlags @flags)ŒGLib.KeyFile÷0œpublic bool
+load_from_dirsÃ128Õ(string file, [CCode (array_length = false, array_null_terminated = true)] string[] search_dirs, out string full_path, KeyFileFlags @flags)ŒGLib.KeyFile÷0œpublic bool
+load_from_fileÃ128Õ(string file)ŒGLib.BookmarkFile÷0œpublic bool
+load_from_fileÃ128Õ(string file, KeyFileFlags @flags)ŒGLib.KeyFile÷0œpublic bool
+localÃ128Õ(time_t time)ŒGLib.Time÷0œpublic Time
+locale_filename_from_utf8Ã128Õ(string utf8filename)ŒGLib.Win32÷0
+locale_to_utf8Ã128Õ(ssize_t len, out size_t bytes_read, out size_t bytes_written, out GLib.Error error = null)÷0
+localtime_rÃ128Õ(ref time_t time, out Time result)ŒGLib.Time÷0œvoid
+lockÃ128Õ()ŒGLib.StaticMutex÷0œpublic void
+lockÃ128Õ()ŒGLib.StaticRecMutex÷0œpublic void
+lock_fullÃ128Õ()ŒGLib.StaticMutex÷0œpublic void
+lock_fullÃ128Õ()ŒGLib.StaticRecMutex÷0œpublic void
+logÃ128Õ(string? log_domain, LogLevelFlags log_level, string format, ...)ŒGLib÷0œpublic void
+logÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+log10Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+log10fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+log1pÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+log1pfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+log2Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+log2fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+log_set_fatal_handlerÃ128Õ(LogFatalFunc log_func)ŒGLib.Test÷0œpublic void
+logbÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+logbfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+logfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+logvÃ128Õ(string? log_domain, LogLevelFlags log_level, string format, va_list args)ŒGLib÷0œpublic void
+long_nameÃ8ŒGLib.OptionEntry÷0œunowned
+lookupÃ128Õ(K key)ŒGLib.HashTable÷0œpublic unowned
+lookupÃ128Õ(K key)ŒGLib.Tree÷0œpublic unowned
+lookupÃ128Õ(string key, string format_string, ...)ŒGLib.Variant÷0œpublic bool
+lookup_extendedÃ128Õ(K lookup_key, out unowned K orig_key, out unowned V value)ŒGLib.HashTable÷0œpublic bool
+lookup_extendedÃ128Õ(K lookup_key, K orig_key, V value)ŒGLib.Tree÷0œpublic bool
+lookup_symbolÃ128Õ(string symbol)ŒGLib.Scanner÷0œpublic void *
+lookup_valueÃ128Õ(string key, VariantType? expected_type)ŒGLib.Variant÷0œpublic Variant?
+lrintÃ128Õ(double x)ŒGLib.Math÷0œpublic long
+lrintfÃ128Õ(float x)ŒGLib.Math÷0œpublic long
+lroundÃ128Õ(double x)ŒGLib.Math÷0œpublic long
+lroundfÃ128Õ(float x)ŒGLib.Math÷0œpublic long
+mallocÃ128Õ(size_t n_bytes)ŒGLib÷0œpublic void *
+malloc0Ã128Õ(size_t n_bytes)ŒGLib÷0œpublic void *
+matchÃ128Õ(uint string_length, string str, string? str_reversed)ŒGLib.PatternSpec÷0œpublic bool
+matchÃ128Õ(string str, RegexMatchFlags match_options = 0, out MatchInfo match_info = null)ŒGLib.Regex÷0œpublic bool
+match_allÃ128Õ(string str, RegexMatchFlags match_options = 0, out MatchInfo match_info = null)ŒGLib.Regex÷0œpublic bool
+match_all_fullÃ128Õ(string str, ssize_t string_len = -1, int start_position = 0, RegexMatchFlags match_options = 0, out MatchInfo match_info = null)ŒGLib.Regex÷0œpublic bool
+match_fullÃ128Õ(string str, ssize_t string_len = -1, int start_position = 0, RegexMatchFlags match_options = 0, out MatchInfo match_info = null)ŒGLib.Regex÷0œpublic bool
+match_simpleÃ128Õ(string pattern, string str)ŒGLib.PatternSpec÷0œpublic bool
+match_simpleÃ128Õ(string pattern, string str, RegexCompileFlags compile_options = 0, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0œpublic bool
+match_stringÃ128Õ(string str)ŒGLib.PatternSpec÷0œpublic bool
+matchesÃ128Õ(Quark domain, int code)ŒGLib.Error÷0œpublic bool
+matchesÃ128Õ()ŒGLib.MatchInfo÷0œpublic bool
+maxÃ128Õ(uint a, uint b)÷0
+maxÃ128Õ(ushort a, ushort b)÷0
+maxÃ128Õ(ulong a, ulong b)÷0
+maxÃ128Õ(int16 a, int16 b)Œint16÷0œpublic int16
+maxÃ128Õ(int32 a, int32 b)Œint32÷0œpublic int32
+maxÃ128Õ(int64 a, int64 b)Œint64÷0œpublic int64
+maxÃ128Õ(int8 a, int8 b)Œint8÷0œpublic int8
+maxÃ128Õ(ssize_t a, ssize_t b)Œssize_t÷0œpublic ssize_t
+maxÃ128Õ(uchar a, uchar b)Œuchar÷0œpublic uchar
+maxÃ128Õ(uint16 a, uint16 b)Œuint16÷0œpublic uint16
+maxÃ128Õ(uint32 a, uint32 b)Œuint32÷0œpublic uint32
+maxÃ128Õ(uint64 a, uint64 b)Œuint64÷0œpublic uint64
+maxÃ128Õ(uint8 a, uint8 b)Œuint8÷0œpublic uint8
+maxÃ128Õ(unichar a, unichar b)Œunichar÷0œpublic unichar
+max_heightÃ128Õ()ŒGLib.Node÷0
+maximized_resultÃ128Õ(double maximized_quantity, string format, ...)ŒGLib.Test÷0œpublic void
+mem_profileÃ128Õ()ŒGLib÷0œpublic void
+mem_profiler_tableÃ8ŒGLib÷0œMemVTable
+mem_set_vtableÃ128Õ(MemVTable vtable)ŒGLib÷0œpublic void
+messageÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+messageÃ8ŒGLib.Error÷0
+messageÃ128Õ(string format, ...)ŒGLib.Test÷0œpublic void
+minÃ128Õ(uint a, uint b)÷0
+minÃ128Õ(ushort a, ushort b)÷0
+minÃ128Õ(ulong a, ulong b)÷0
+minÃ128Õ(int16 a, int16 b)Œint16÷0œpublic int16
+minÃ128Õ(int32 a, int32 b)Œint32÷0œpublic int32
+minÃ128Õ(int64 a, int64 b)Œint64÷0œpublic int64
+minÃ128Õ(int8 a, int8 b)Œint8÷0œpublic int8
+minÃ128Õ(ssize_t a, ssize_t b)Œssize_t÷0œpublic ssize_t
+minÃ128Õ(uchar a, uchar b)Œuchar÷0œpublic uchar
+minÃ128Õ(uint16 a, uint16 b)Œuint16÷0œpublic uint16
+minÃ128Õ(uint32 a, uint32 b)Œuint32÷0œpublic uint32
+minÃ128Õ(uint64 a, uint64 b)Œuint64÷0œpublic uint64
+minÃ128Õ(uint8 a, uint8 b)Œuint8÷0œpublic uint8
+minÃ128Õ(unichar a, unichar b)Œunichar÷0œpublic unichar
+minimized_resultÃ128Õ(double minimized_quantity, string format, ...)ŒGLib.Test÷0œpublic void
+minuteÃ8ŒGLib.Time÷0œint
+mkdtempÃ128Õ(string template)ŒGLib.DirUtils÷0œpublic unowned string
+mkstempÃ128Õ(string tmpl)ŒGLib.FileUtils÷0œpublic int
+mktimeÃ128Õ()ŒGLib.Time÷0œpublic time_t
+modfÃ128Õ(double x, out double iptr)ŒGLib.Math÷0œpublic double
+modffÃ128Õ(float x, out float iptr)ŒGLib.Math÷0œpublic float
+monthÃ8ŒGLib.Time÷0œint
+moveÃ128Õ(void* dest, void* src, size_t n)ŒGLib.Memory÷0œpublic void *
+moveÃ128Õ(SequenceIter<G> src, SequenceIter<G> dest)ŒGLib.Sequence÷0œpublic void
+moveÃ128Õ(int delta)ŒGLib.SequenceIter÷0œpublic SequenceIter
+move_itemÃ128Õ(string old_uri, string new_uri)ŒGLib.BookmarkFile÷0œpublic bool
+move_rangeÃ128Õ(SequenceIter<G> dest, SequenceIter<G> begin, SequenceIter<G> end)ŒGLib.Sequence÷0œpublic void
+msg_handlerÃ8ŒGLib.Scanner÷0œScannerMsgFunc
+n_childrenÃ128Õ()ŒGLib.Variant÷0œpublic size_t
+n_childrenÃ128Õ()ŒGLib.VariantIter÷0œpublic size_t
+n_itemsÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+n_nodesÃ128Õ(TraverseFlags flags)ŒGLib.Node÷0
+nanÃ128Õ(string tagb)ŒGLib.Math÷0œpublic double
+nanfÃ128Õ(string tagb)ŒGLib.Math÷0œpublic float
+ndupÃ128Õ(size_t n)÷0
+nearbyintÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+nearbyintfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+new_from_dataÃ128Õ(VariantType type, uchar[] data, bool trusted, [CCode (destroy_notify_pos = 3.9)] owned T? owner = null)ŒGLib.Variant÷0œpublic Variant
+nextÃ128Õ(out unowned K key, out unowned V value)ŒGLib.HashTableIter÷0œpublic bool
+nextÃ8ŒGLib.List÷0œList
+nextÃ128Õ()ŒGLib.MatchInfo÷0œpublic bool
+nextÃ8ŒGLib.Node÷0œNode
+nextÃ8ŒGLib.SList÷0œSList
+nextÃ128Õ()ŒGLib.SequenceIter÷0œpublic SequenceIter
+nextÃ128Õ(string format_string, ...)ŒGLib.VariantIter÷0œpublic bool
+nextÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+next_charÃ128Õ()÷0œpublic unowned string
+next_doubleÃ128Õ()ŒGLib.Rand÷0œpublic double
+next_doubleÃ128Õ()ŒGLib.Random÷0œpublic double
+next_intÃ128Õ()ŒGLib.Rand÷0œpublic uint32
+next_intÃ128Õ()ŒGLib.Random÷0œpublic uint32
+next_lineÃ8ŒGLib.Scanner÷0
+next_positionÃ8ŒGLib.Scanner÷0
+next_siblingÃ128Õ()ŒGLib.Node÷0œpublic unowned
+next_tokenÃ8ŒGLib.Scanner÷0œTokenType
+next_valueÃ8ŒGLib.Scanner÷0œTokenValue
+next_valueÃ128Õ()ŒGLib.VariantIter÷0œpublic Variant?
+nextafterÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+nextafterfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+nexttowardÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+nexttowardfÃ128Õ(float x, double y)ŒGLib.Math÷0œpublic float
+nfillÃ128Õ(size_t length, char fill_char)÷0
+ngettextÃ128Õ(string msgid, string msgid_plural, ulong n)ŒGLib÷0œpublic unowned string
+nnodesÃ128Õ()ŒGLib.Tree÷0œpublic int
+normalizeÃ128Õ(ssize_t len = -1, NormalizeMode mode = NormalizeMode.DEFAULT)÷0
+nthÃ128Õ(uint n)ŒGLib.List÷0œpublic unowned
+nthÃ128Õ(uint n)ŒGLib.SList÷0œpublic unowned
+nth_childÃ128Õ()ŒGLib.Node÷0œpublic unowned
+nth_dataÃ128Õ(uint n)ŒGLib.List÷0œpublic unowned
+nth_dataÃ128Õ(uint n)ŒGLib.SList÷0œpublic unowned
+nth_lsfÃ128Õ(ulong mask, int nth_bit)ŒGLib.Bit÷0œpublic int
+nth_msfÃ128Õ(ulong mask, int nth_bit)ŒGLib.Bit÷0œpublic int
+nth_prevÃ128Õ(uint n)ŒGLib.List÷0œpublic unowned
+numbers_2_intÃ8ŒGLib.ScannerConfig÷0œbool
+octalÃ8ŒGLib.TokenValue÷0
+offsetÃ128Õ(long offset)÷0œpublic unowned string
+on_error_queryÃ128Õ(string? prg_name = null)ŒGLib÷0œpublic void
+on_error_stack_traceÃ128Õ(string? prg_name = null)ŒGLib÷0œpublic void
+openÃ128Õ(string filename, uint _flags = 0)ŒGLib.Dir÷0œpublic Dir
+openÃ128Õ(string path, string mode)ŒGLib.FileStream÷0œpublic FileStream?
+openÃ128Õ(string to_codeset, string from_codeset)ŒGLib.IConv÷0œpublic IConv
+openÃ128Õ(VariantType type)ŒGLib.VariantBuilder÷0œpublic void
+open_tmpÃ128Õ(string tmpl, out string name_used)ŒGLib.FileUtils÷0œpublic int
+orderÃ128Õ(Date date2)ŒGLib.Date÷0œpublic void
+parentÃ8ŒGLib.Node÷0œNode
+parseÃ128Õ(string text, ssize_t text_len)ŒGLib.MarkupParseContext÷0œpublic bool
+parseÃ128Õ([CCode (array_length_pos = 0.9)] ref unowned string[] argv)ŒGLib.OptionContext÷0œpublic bool
+parseÃ128Õ(VariantType? type, string text, char *limit = null, char **endptr = null)ŒGLib.Variant÷0œpublic Variant
+parseÃ128Õ(string str)Œbool÷0œpublic bool
+parseÃ128Õ(string str)Œint64÷0œpublic int64
+parseÃ128Õ(string str)Œuint64÷0œpublic uint64
+parse_argvÃ128Õ(string command_line, [CCode (array_length_pos = 1.9)] out string[] argvp)ŒGLib.Shell÷0œpublic bool
+parse_debug_stringÃ128Õ(string? debug_string, DebugKey[] keys)ŒGLib÷0
+parse_schemeÃ128Õ(string uri)ŒGLib.Uri÷0
+passthroughÃ8ŒGLib.MarkupParser÷0œunowned
+pdataÃ8ŒGLib.PtrArray÷0œvoid
+peek_headÃ128Õ()ŒGLib.Queue÷0œpublic unowned
+peek_next_tokenÃ128Õ()ŒGLib.Scanner÷0œpublic TokenType
+peek_nthÃ128Õ(uint n)ŒGLib.Queue÷0œpublic unowned
+peek_stringÃ128Õ()ŒGLib.VariantType÷0œpublic char *
+peek_tailÃ128Õ()ŒGLib.Queue÷0œpublic unowned
+pendingÃ128Õ()ŒGLib.MainContext÷0œpublic bool
+perfÃ128Õ()ŒGLib.Test÷0œpublic bool
+pointer_to_offsetÃ128Õ(string pos)÷0œpublic long
+popÃ128Õ()ŒGLib.AsyncQueue÷0œpublic G
+popÃ128Õ()ŒGLib.MarkupParseContext÷0œpublic void *
+pop_headÃ128Õ()ŒGLib.Queue÷0œpublic G
+pop_nthÃ128Õ(uint n)ŒGLib.Queue÷0œpublic G
+pop_tailÃ128Õ()ŒGLib.Queue÷0œpublic G
+pop_thread_defaultÃ128Õ()ŒGLib.MainContext÷0œpublic void
+pop_unlockedÃ128Õ()ŒGLib.AsyncQueue÷0œpublic G
+positionÃ128Õ(List<G> llink)ŒGLib.List÷0œpublic int
+positionÃ128Õ(SList<G> llink)ŒGLib.SList÷0œpublic int
+positionÃ8ŒGLib.Scanner÷0
+powÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+pow10Ã128Õ(double x)ŒGLib.Math÷0œpublic double
+pow10fÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+powfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+prefixÃ8ŒGLib.Completion÷0
+prepareÃ128Õ(out int priority)ŒGLib.MainContext÷0œpublic bool
+prepareÃ8ŒGLib.SourceFuncs÷0œSourcePrepareFunc
+prependÃ128Õ(uint8[] data)ŒGLib.ByteArray÷0œpublic void
+prependÃ128Õ(owned G data)ŒGLib.List÷0œpublic void
+prependÃ128Õ(owned Node<G> node)ŒGLib.Node÷0œpublic unowned
+prependÃ128Õ(owned G data)ŒGLib.SList÷0œpublic void
+prependÃ128Õ(owned G data)ŒGLib.Sequence÷0œpublic SequenceIter
+prependÃ128Õ(string val)ŒGLib.StringBuilder÷0œpublic unowned
+prepend_cÃ128Õ(char c)ŒGLib.StringBuilder÷0œpublic unowned
+prepend_dataÃ128Õ(owned G data)ŒGLib.Node÷0œpublic unowned
+prepend_lenÃ128Õ(string val, ssize_t len)ŒGLib.StringBuilder÷0œpublic unowned
+prepend_unicharÃ128Õ(unichar wc)ŒGLib.StringBuilder÷0œpublic unowned
+prepend_valÃ128Õ(owned G value)ŒGLib.Array÷0œpublic void
+prepend_valsÃ128Õ(void* data, uint len)ŒGLib.Array÷0œpublic void
+prevÃ8ŒGLib.List÷0œunowned
+prevÃ8ŒGLib.Node÷0œNode
+prevÃ128Õ()ŒGLib.SequenceIter÷0œpublic SequenceIter
+prev_charÃ128Õ()÷0œpublic unowned string
+prev_siblingÃ128Õ()ŒGLib.Node÷0œpublic unowned
+printÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+printÃ128Õ(bool type_annotate)ŒGLib.Variant÷0
+print_stringÃ128Õ(StringBuilder? builder, bool type_annotate)ŒGLib.Variant÷0œpublic StringBuilder
+printerrÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+printfÃ128Õ(...)÷0
+printfÃ128Õ(string format, ...)ŒGLib.FileStream÷0œpublic void
+printfÃ128Õ(string format, ...)ŒGLib.StringBuilder÷0œpublic void
+printf_escapedÃ128Õ(string format, ...)ŒGLib.Markup÷0
+pushÃ128Õ(owned G data)ŒGLib.AsyncQueue÷0œpublic void
+pushÃ128Õ(MarkupParser parser, void* user_data)ŒGLib.MarkupParseContext÷0œpublic void
+pushÃ128Õ(T data)ŒGLib.ThreadPool÷0œpublic void
+push_headÃ128Õ(owned G data)ŒGLib.Queue÷0œpublic void
+push_nthÃ128Õ(owned G data, int n)ŒGLib.Queue÷0œpublic void
+push_sortedÃ128Õ(owned G data, CompareDataFunc<G> func)ŒGLib.AsyncQueue÷0œpublic void
+push_sorted_unlockedÃ128Õ(owned G data, CompareDataFunc<G> func)ŒGLib.AsyncQueue÷0œpublic void
+push_tailÃ128Õ(owned G data)ŒGLib.Queue÷0œpublic void
+push_thread_defaultÃ128Õ()ŒGLib.MainContext÷0œpublic void
+push_unlockedÃ128Õ(owned G data)ŒGLib.AsyncQueue÷0œpublic void
+putcÃ128Õ(char c)ŒGLib.FileStream÷0œpublic void
+putsÃ128Õ(string s)ŒGLib.FileStream÷0œpublic void
+qsort_with_dataÃ128Õ(T[] elems, size_t size, [CCode (type = )] GLib.CompareDataFunc<T> compare_func)ŒGLib÷0œprivate void
+queryÃ128Õ(int max_priority, out int timeout_, PollFD[] fds)ŒGLib.MainContext÷0œpublic int
+quickÃ128Õ()ŒGLib.Test÷0œpublic bool
+quietÃ128Õ()ŒGLib.Test÷0œpublic bool
+quitÃ128Õ()ŒGLib.MainLoop÷0œpublic void
+quoteÃ128Õ(string unquoted_string)ŒGLib.Shell÷0
+raiseÃ128Õ(ProcessSignal sig)ŒGLib.Process÷0œpublic int
+rand_bitÃ128Õ()ŒGLib.Test÷0œpublic bool
+rand_doubleÃ128Õ()ŒGLib.Test÷0œpublic double
+rand_double_rangeÃ128Õ()ŒGLib.Test÷0œpublic double
+rand_intÃ128Õ()ŒGLib.Test÷0œpublic int32
+rand_int_rangeÃ128Õ(int32 begin, int32 end)ŒGLib.Test÷0œpublic int32
+range_get_midpointÃ128Õ(SequenceIter<G> begin, SequenceIter<G> end)ŒGLib.Sequence÷0œpublic SequenceIter
+rchrÃ128Õ(ssize_t len, unichar c)÷0œpublic unowned string
+readÃ128Õ([CCode (array_length_pos = 2.1)] uint8[] buf, size_t size = 1)ŒGLib.FileStream÷0œpublic size_t
+read_charsÃ128Õ(char[] buf, out size_t bytes_read)ŒGLib.IOChannel÷0œpublic IOStatus
+read_lineÃ128Õ()ŒGLib.FileStream÷0œpublic string?
+read_lineÃ128Õ(out string str_return, out size_t length, out size_t terminator_pos)ŒGLib.IOChannel÷0œpublic IOStatus
+read_line_stringÃ128Õ(StringBuilder buffer, out size_t terminator_pos)ŒGLib.IOChannel÷0œpublic IOStatus
+read_linkÃ128Õ(string filename)ŒGLib.FileUtils÷0
+read_nameÃ128Õ()ŒGLib.Dir÷0œpublic unowned
+read_to_endÃ128Õ(out string str_return, out size_t length)ŒGLib.IOChannel÷0œpublic IOStatus
+read_unicharÃ128Õ(out unichar thechar)ŒGLib.IOChannel÷0œpublic IOStatus
+reader_lockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic void
+reader_trylockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic bool
+reader_unlockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic void
+reallocÃ128Õ(void* mem, size_t n_bytes)ŒGLib÷0œpublic void *
+ref_unlockedÃ128Õ()ŒGLib.AsyncQueue÷0œpublic void
+releaseÃ128Õ()ŒGLib.MainContext÷0œpublic void
+remainderÃ128Õ(double x, double y)ŒGLib.Math÷0œpublic double
+remainderfÃ128Õ(float x, float y)ŒGLib.Math÷0œpublic float
+removeÃ128Õ(string filename)ŒGLib.DirUtils÷0œpublic int
+removeÃ128Õ(string filename)ŒGLib.FileUtils÷0œpublic int
+removeÃ128Õ(G data)ŒGLib.GenericArray÷0œpublic bool
+removeÃ128Õ(K key)ŒGLib.HashTable÷0œpublic bool
+removeÃ128Õ()ŒGLib.HashTableIter÷0œpublic void
+removeÃ128Õ(G data)ŒGLib.List÷0œpublic void
+removeÃ128Õ(void* data)ŒGLib.PtrArray÷0œpublic bool
+removeÃ128Õ(G data)ŒGLib.Queue÷0œpublic void
+removeÃ128Õ(G data)ŒGLib.SList÷0œpublic void
+removeÃ128Õ(SequenceIter<G> iter)ŒGLib.Sequence÷0œpublic void
+removeÃ128Õ(uint id)ŒGLib.Source÷0œpublic bool
+removeÃ128Õ(K key)ŒGLib.Tree÷0œpublic bool
+remove_allÃ128Õ()ŒGLib.HashTable÷0œpublic void
+remove_allÃ128Õ(G data)ŒGLib.List÷0œpublic void
+remove_allÃ128Õ(G data)ŒGLib.Queue÷0œpublic void
+remove_allÃ128Õ(G data)ŒGLib.SList÷0œpublic void
+remove_applicationÃ128Õ(string uri, string name)ŒGLib.BookmarkFile÷0œpublic bool
+remove_by_dataÃ128Õ(void* data)ŒGLib.Idle÷0œpublic bool
+remove_by_funcs_user_dataÃ128Õ(void* user_data)ŒGLib.Source÷0œpublic bool
+remove_by_user_dataÃ128Õ(void* user_data)ŒGLib.Source÷0œpublic bool
+remove_commentÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic void
+remove_dataÃ128Õ(string key)ŒGLib.Datalist÷0œpublic void
+remove_fastÃ128Õ(G data)ŒGLib.GenericArray÷0œpublic bool
+remove_fastÃ128Õ(void *data)ŒGLib.PtrArray÷0œpublic bool
+remove_groupÃ128Õ(string uri, string group)ŒGLib.BookmarkFile÷0œpublic bool
+remove_groupÃ128Õ(string group_name)ŒGLib.KeyFile÷0œpublic void
+remove_indexÃ128Õ(uint index)ŒGLib.Array÷0œpublic void
+remove_indexÃ128Õ(uint index)ŒGLib.ByteArray÷0œpublic void
+remove_indexÃ128Õ(uint index)ŒGLib.GenericArray÷0œpublic void
+remove_indexÃ128Õ(uint index)ŒGLib.PtrArray÷0œpublic void *
+remove_index_fastÃ128Õ(uint index)ŒGLib.Array÷0œpublic void
+remove_index_fastÃ128Õ(uint index)ŒGLib.ByteArray÷0œpublic void
+remove_index_fastÃ128Õ(uint index)ŒGLib.GenericArray÷0œpublic void
+remove_index_fastÃ128Õ(uint index)ŒGLib.PtrArray÷0œpublic void
+remove_itemÃ128Õ(string uri)ŒGLib.BookmarkFile÷0œpublic bool
+remove_itemsÃ128Õ(List<void*> items)ŒGLib.Completion÷0œpublic void
+remove_keyÃ128Õ(string group_name, string key)ŒGLib.KeyFile÷0œpublic void
+remove_linkÃ128Õ(List<G> llink)ŒGLib.List÷0œpublic void
+remove_linkÃ128Õ(SList<G> llink)ŒGLib.SList÷0œpublic void
+remove_no_notifyÃ128Õ(string key)ŒGLib.Datalist÷0œpublic G
+remove_pollÃ128Õ(ref PollFD fd)ŒGLib.MainContext÷0œpublic void
+remove_pollÃ128Õ(ref PollFD fd)ŒGLib.Source÷0œpublic void
+remove_rangeÃ128Õ(uint index, uint length)ŒGLib.Array÷0œpublic void
+remove_rangeÃ128Õ(uint index, uint length)ŒGLib.ByteArray÷0œpublic void
+remove_rangeÃ128Õ(uint index, uint length)ŒGLib.GenericArray÷0œpublic void
+remove_rangeÃ128Õ(uint index, uint length)ŒGLib.PtrArray÷0œpublic void
+remove_rangeÃ128Õ(SequenceIter<G> begin, SequenceIter<G> end)ŒGLib.Sequence÷0œpublic void
+remquoÃ128Õ(double x, double y, out int quo)ŒGLib.Math÷0œpublic double
+remquofÃ128Õ(float x, float y, out int quo)ŒGLib.Math÷0œpublic float
+renameÃ128Õ(string oldfilename, string newfilename)ŒGLib.FileUtils÷0œpublic int
+replaceÃ128Õ(string old, string replacement)÷0
+replaceÃ128Õ(owned K key, owned V value)ŒGLib.HashTable÷0œpublic void
+replaceÃ128Õ(string str, ssize_t string_len, int start_position, string replacement, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0
+replaceÃ128Õ(owned K key, owned V value)ŒGLib.Tree÷0œpublic void
+replace_evalÃ128Õ(string str, ssize_t string_len, int start_position, RegexMatchFlags match_options = 0, RegexEvalCallback eval)ŒGLib.Regex÷0
+replace_literalÃ128Õ(string str, ssize_t string_len, int start_position, string replacement, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0
+resetÃ128Õ()ŒGLib.Timer÷0œpublic void
+return_if_failÃ128Õ(bool expr)ŒGLib÷0œpublic void
+return_if_reachedÃ128Õ()ŒGLib÷0œpublic void
+return_val_if_failÃ128Õ(bool expr, ...)ŒGLib÷0œpublic void
+return_val_if_reachedÃ128Õ(...)ŒGLib÷0œpublic void
+reventsÃ8ŒGLib.PollFD÷0œIOCondition
+reverseÃ128Õ(ssize_t len = -1)÷0
+reverseÃ128Õ()ŒGLib.List÷0œpublic void
+reverseÃ128Õ()ŒGLib.Queue÷0œpublic void
+reverseÃ128Õ()ŒGLib.SList÷0œpublic void
+reverse_childrenÃ128Õ()ŒGLib.Node÷0œpublic void
+rewindÃ128Õ()ŒGLib.Dir÷0œpublic void
+rewindÃ128Õ()ŒGLib.FileStream÷0œpublic void
+rintÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+rintfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+roundÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+roundfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+rstrÃ128Õ(string needle)÷0œpublic unowned
+rstr_lenÃ128Õ(ssize_t haystack_len, string needle)÷0œpublic unowned
+runÃ128Õ()ŒGLib.MainLoop÷0œpublic void
+runÃ128Õ()ŒGLib.Test÷0œpublic int
+scalbÃ128Õ(double x, double n)ŒGLib.Math÷0œpublic double
+scalbfÃ128Õ(float x, float n)ŒGLib.Math÷0œpublic float
+scalblnÃ128Õ(double x, long n)ŒGLib.Math÷0œpublic double
+scalblnfÃ128Õ(float x, long n)ŒGLib.Math÷0œpublic float
+scalbnÃ128Õ(double x, int n)ŒGLib.Math÷0œpublic double
+scalbnfÃ128Õ(float x, int n)ŒGLib.Math÷0œpublic float
+scan_binaryÃ8ŒGLib.ScannerConfig÷0œbool
+scan_comment_multiÃ8ŒGLib.ScannerConfig÷0œbool
+scan_floatÃ8ŒGLib.ScannerConfig÷0œbool
+scan_hexÃ8ŒGLib.ScannerConfig÷0œbool
+scan_hex_dollarÃ8ŒGLib.ScannerConfig÷0œbool
+scan_identifierÃ8ŒGLib.ScannerConfig÷0œbool
+scan_identifier_1charÃ8ŒGLib.ScannerConfig÷0œbool
+scan_identifier_NULLÃ8ŒGLib.ScannerConfig÷0œbool
+scan_octalÃ8ŒGLib.ScannerConfig÷0œbool
+scan_string_dqÃ8ŒGLib.ScannerConfig÷0œbool
+scan_string_sqÃ8ŒGLib.ScannerConfig÷0œbool
+scan_symbolsÃ8ŒGLib.ScannerConfig÷0œbool
+scanfÃ128Õ(...)÷0œpublic int
+scanfÃ128Õ(string format, ...)ŒGLib.FileStream÷0œpublic int
+scope_0_fallbackÃ8ŒGLib.ScannerConfig÷0œbool
+scope_add_symbolÃ128Õ(uint scope_id, string symbol, void* value)ŒGLib.Scanner÷0œpublic void
+scope_foreach_symbolÃ128Õ(uint scope_id, HFunc func)ŒGLib.Scanner÷0œpublic void
+scope_lookup_symbolÃ128Õ(uint scope_id, string symbol)ŒGLib.Scanner÷0œpublic void *
+scope_remove_symbolÃ128Õ(uint scope_id, string symbol)ŒGLib.Scanner÷0œpublic void
+searchÃ128Õ(G data, CompareDataFunc<G> cmp_func)ŒGLib.Sequence÷0œpublic SequenceIter
+searchÃ128Õ(TreeSearchFunc<K> search_func)ŒGLib.Tree÷0œpublic unowned
+search_iterÃ128Õ(G data, SequenceIterCompareFunc<G> iter_cmp)ŒGLib.Sequence÷0œpublic SequenceIter
+search_keyÃ128Õ(CompareFunc<K> search_func, K key)ŒGLib.Tree÷0œpublic unowned
+secondÃ8ŒGLib.Time÷0œint
+seekÃ128Õ(long offset, FileSeek whence)ŒGLib.FileStream÷0œpublic int
+seek_positionÃ128Õ(int64 offset, SeekType type)ŒGLib.IOChannel÷0œpublic IOStatus
+selfÃ128Õ()ŒGLib.Thread÷0œpublic unowned
+set_addedÃ128Õ(string uri, time_t added)ŒGLib.BookmarkFile÷0œpublic void
+set_always_fatalÃ128Õ(LogLevelFlags log_levels)ŒGLib.Log÷0œpublic void
+set_app_infoÃ128Õ(string uri, string name, string exec, int count, time_t stamp)ŒGLib.BookmarkFile÷0œpublic bool
+set_application_nameÃ128Õ(string application_name)ŒGLib.Environment÷0œpublic void
+set_booleanÃ128Õ(string group_name, string key, bool value)ŒGLib.KeyFile÷0œpublic void
+set_boolean_listÃ128Õ(string group_name, string key, bool[] list)ŒGLib.KeyFile÷0œpublic void
+set_buffer_sizeÃ128Õ(size_t size)ŒGLib.IOChannel÷0œpublic void
+set_bufferedÃ128Õ(bool buffered)ŒGLib.IOChannel÷0œpublic void
+set_callbackÃ128Õ(owned SourceFunc func)ŒGLib.Source÷0œpublic void
+set_callback_indirectÃ128Õ(void* callback_data, SourceCallbackFuncs callback_funcs)ŒGLib.Source÷0œpublic void
+set_can_recurseÃ128Õ(bool can_recurse)ŒGLib.Source÷0œpublic void
+set_close_on_unrefÃ128Õ(bool do_close)ŒGLib.IOChannel÷0œpublic void
+set_commentÃ128Õ(string group_name, string key, string comment)ŒGLib.KeyFile÷0œpublic void
+set_contentsÃ128Õ(string filename, string contents, ssize_t length = -1)ŒGLib.FileUtils÷0œpublic bool
+set_current_dirÃ128Õ(string path)ŒGLib.Environment÷0œpublic int
+set_dataÃ128Õ(string key, owned G data)ŒGLib.Datalist÷0œpublic void
+set_dataÃ128Õ(string filename, [CCode (type = , array_length_type = )] uint8[] contents)ŒGLib.FileUtils÷0œpublic bool
+set_data_fullÃ128Õ(string key, owned G data, DestroyNotify? destry_func)ŒGLib.Datalist÷0œpublic void
+set_dayÃ128Õ(DateDay day)ŒGLib.Date÷0œpublic void
+set_default_handlerÃ128Õ(LogFunc log_func)ŒGLib.Log÷0œpublic void
+set_descriptionÃ128Õ(string uri, string description)ŒGLib.BookmarkFile÷0œpublic void
+set_descriptionÃ128Õ(string description)ŒGLib.OptionContext÷0œpublic void
+set_dmyÃ128Õ(DateDay day, int month, DateYear y)ŒGLib.Date÷0œpublic void
+set_doubleÃ128Õ(string group_name, string key, double value)ŒGLib.KeyFile÷0œpublic void
+set_double_listÃ128Õ(string group_name, string key, double[] list)ŒGLib.KeyFile÷0œpublic void
+set_encodingÃ128Õ(string? encoding)ŒGLib.IOChannel÷0œpublic IOStatus
+set_error_hookÃ128Õ(OptionErrorFunc error_func)ŒGLib.OptionGroup÷0œpublic void
+set_fatal_maskÃ128Õ(string log_domain, LogLevelFlags log_levels)ŒGLib.Log÷0œpublic void
+set_flagsÃ128Õ(IOFlags flags)ŒGLib.IOChannel÷0œpublic IOStatus
+set_free_funcÃ128Õ(GLib.DestroyNotify? element_free_function)ŒGLib.PtrArray÷0œpublic void
+set_funcsÃ128Õ(SourceFuncs funcs)ŒGLib.Source÷0œpublic void
+set_groupsÃ128Õ(string uri, string[] groups)ŒGLib.BookmarkFile÷0œpublic void
+set_handlerÃ128Õ(string? log_domain, LogLevelFlags log_levels, LogFunc log_func)ŒGLib.Log÷0
+set_help_enabledÃ128Õ(bool help_enabled)ŒGLib.OptionContext÷0œpublic void
+set_iconÃ128Õ(string uri, string href, string mime_type)ŒGLib.BookmarkFile÷0œpublic void
+set_ignore_unknown_optionsÃ128Õ(bool ignore_unknown)ŒGLib.OptionContext÷0œpublic void
+set_int64Ã128Õ(string group_name, string key, int64 value)ŒGLib.KeyFile÷0œpublic void
+set_integerÃ128Õ(string group_name, string key, int value)ŒGLib.KeyFile÷0œpublic void
+set_integer_listÃ128Õ(string group_name, string key, int[] list)ŒGLib.KeyFile÷0œpublic void
+set_is_privateÃ128Õ(string uri, bool is_private)ŒGLib.BookmarkFile÷0œpublic void
+set_julianÃ128Õ(uint julian_day)ŒGLib.Date÷0œpublic void
+set_line_termÃ128Õ(string line_term, int length)ŒGLib.IOChannel÷0œpublic void
+set_list_separatorÃ128Õ(char separator)ŒGLib.KeyFile÷0œpublic void
+set_locale_stringÃ128Õ(string group_name, string key, string locale, string str)ŒGLib.KeyFile÷0œpublic void
+set_locale_string_listÃ128Õ(string group_name, string key, string locale, string[] list)ŒGLib.KeyFile÷0œpublic void
+set_main_groupÃ128Õ(owned OptionGroup group)ŒGLib.OptionContext÷0œpublic void
+set_max_idle_timeÃ128Õ(uint interval)ŒGLib.ThreadPool÷0œpublic void
+set_max_threadsÃ128Õ(int max_threads)ŒGLib.ThreadPool÷0œpublic void
+set_max_unused_threadsÃ128Õ(int max_threads)ŒGLib.ThreadPool÷0œpublic void
+set_mime_typeÃ128Õ(string uri, string mime_type)ŒGLib.BookmarkFile÷0œpublic void
+set_modifiedÃ128Õ(string uri, time_t modified)ŒGLib.BookmarkFile÷0œpublic void
+set_monthÃ128Õ(DateMonth month)ŒGLib.Date÷0œpublic void
+set_nameÃ128Õ(string? name)ŒGLib.MainContext÷0œpublic void
+set_name_by_idÃ128Õ(uint tag, string? name)ŒGLib.MainContext÷0œpublic void
+set_parseÃ128Õ(string str)ŒGLib.Date÷0œpublic void
+set_parse_hooksÃ128Õ(OptionParseFunc pre_parse_func, OptionParseFunc post_parse_hook)ŒGLib.OptionGroup÷0œpublic void
+set_poll_funcÃ128Õ(PollFunc func)ŒGLib.MainContext÷0œpublic void
+set_prgnameÃ128Õ(string application_name)ŒGLib.Environment÷0œpublic void
+set_print_handlerÃ128Õ(PrintFunc func)ŒGLib÷0œpublic void
+set_printerr_handlerÃ128Õ(PrintFunc func)ŒGLib÷0œpublic void
+set_priorityÃ128Õ(int priority)ŒGLib.Source÷0œpublic void
+set_priorityÃ128Õ(ThreadPriority priority)ŒGLib.Thread÷0œpublic void
+set_scopeÃ128Õ(uint scope_id)ŒGLib.Scanner÷0
+set_seedÃ128Õ(uint32 seed)ŒGLib.Rand÷0œpublic void
+set_seedÃ128Õ(uint32 seed)ŒGLib.Random÷0œpublic void
+set_seed_arrayÃ128Õ([CCode (array_length = false)] uint32[] seed, uint seed_length)ŒGLib.Rand÷0œpublic void
+set_sizeÃ128Õ(uint length)ŒGLib.Array÷0œpublic void
+set_sizeÃ128Õ(uint length)ŒGLib.ByteArray÷0œpublic void
+set_sizeÃ128Õ(int length)ŒGLib.GenericArray÷0œprivate void
+set_sizeÃ128Õ(int length)ŒGLib.PtrArray÷0œpublic void
+set_sort_functionÃ128Õ(CompareDataFunc func)ŒGLib.ThreadPool÷0œpublic void
+set_stringÃ128Õ(string group_name, string key, string str)ŒGLib.KeyFile÷0œpublic void
+set_string_listÃ128Õ(string group_name, string key, [CCode (type = )] string[] list)ŒGLib.KeyFile÷0œpublic void
+set_summaryÃ128Õ(string summary)ŒGLib.OptionContext÷0œpublic void
+set_time_tÃ128Õ(time_t timet)ŒGLib.Date÷0œpublic void
+set_time_valÃ128Õ(TimeVal timeval)ŒGLib.Date÷0œpublic void
+set_titleÃ128Õ(string uri, string title)ŒGLib.BookmarkFile÷0œpublic void
+set_translate_funcÃ128Õ(TranslateFunc func, DestroyNotify? destroy_notify)ŒGLib.OptionContext÷0œpublic void
+set_translate_funcÃ128Õ(TranslateFunc func, DestroyNotify? destroy_notify)ŒGLib.OptionGroup÷0œpublic void
+set_translation_domainÃ128Õ(string domain)ŒGLib.OptionContext÷0œpublic void
+set_translation_domainÃ128Õ(string domain)ŒGLib.OptionGroup÷0œpublic void
+set_uint64Ã128Õ(string group_name, string key, uint64 value)ŒGLib.KeyFile÷0œpublic void
+set_valueÃ128Õ(string group_name, string key, string value)ŒGLib.KeyFile÷0œpublic void
+set_variableÃ128Õ(string variable, string value, bool overwrite)ŒGLib.Environment÷0œpublic bool
+set_visitedÃ128Õ(string uri, time_t visited)ŒGLib.BookmarkFile÷0œpublic void
+set_yearÃ128Õ(DateYear year)ŒGLib.Date÷0œpublic void
+setlocaleÃ128Õ(LocaleCategory category, string? locale)ŒGLib.Intl÷0œpublic unowned
+short_nameÃ8ŒGLib.OptionEntry÷0œchar
+shutdownÃ128Õ(bool flush)ŒGLib.IOChannel÷0œpublic IOStatus
+significandÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+significandfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+sinÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+sincosÃ128Õ(double x, out double sinx, out double cosx)ŒGLib.Math÷0œpublic void
+sincosfÃ128Õ(float x, out float sinx, out float cosx)ŒGLib.Math÷0œpublic void
+sinfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+sinhÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+sinhfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+sizeÃ128Õ()÷0œpublic size_t
+sizeÃ128Õ()ŒGLib.HashTable÷0
+skipÃ8÷0œchar
+skip_comment_multiÃ8ŒGLib.ScannerConfig÷0œbool
+skip_comment_singleÃ8ŒGLib.ScannerConfig÷0œbool
+skip_rootÃ128Õ(string file_name)ŒGLib.Path÷0œpublic unowned string
+sliceÃ128Õ(long start, long end)÷0
+slowÃ128Õ()ŒGLib.Test÷0œpublic bool
+sortÃ128Õ(CompareFunc<G> compare_func)ŒGLib.Array÷0œpublic void
+sortÃ128Õ(CompareDataFunc<G> func)ŒGLib.AsyncQueue÷0œpublic void
+sortÃ128Õ(CompareFunc<int8> compare_func)ŒGLib.ByteArray÷0œpublic void
+sortÃ128Õ(GLib.CompareFunc<G> compare_func)ŒGLib.GenericArray÷0œpublic void
+sortÃ128Õ(CompareFunc<G> compare_func)ŒGLib.List÷0œpublic void
+sortÃ128Õ(CompareFunc compare_func)ŒGLib.PtrArray÷0œpublic void
+sortÃ128Õ(CompareDataFunc<G> compare_func)ŒGLib.Queue÷0œpublic void
+sortÃ128Õ(CompareFunc<G> compare_func)ŒGLib.SList÷0œpublic void
+sortÃ128Õ(CompareDataFunc<G> cmp_func)ŒGLib.Sequence÷0œpublic void
+sort_changedÃ128Õ(SequenceIter<G> iter, CompareDataFunc<G> cmp_func)ŒGLib.Sequence÷0œpublic void
+sort_changed_iterÃ128Õ(SequenceIter<G> iter, SequenceIterCompareFunc<G> iter_cmp)ŒGLib.Sequence÷0œpublic void
+sort_iterÃ128Õ(SequenceIterCompareFunc<G> func)ŒGLib.Sequence÷0œpublic void
+sort_unlockedÃ128Õ(CompareDataFunc<G> func)ŒGLib.AsyncQueue÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc<G> compare_func)ŒGLib.Array÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc<int8> compare_func)ŒGLib.ByteArray÷0œpublic void
+sort_with_dataÃ128Õ(GLib.CompareDataFunc<G> compare_func)ŒGLib.GenericArray÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc<G> compare_func)ŒGLib.List÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc compare_func)ŒGLib.PtrArray÷0œpublic void
+sort_with_dataÃ128Õ(CompareDataFunc<G> compare_func)ŒGLib.SList÷0œpublic void
+spawn_asyncÃ128Õ(string? working_directory, [CCode (array_length = false, array_null_terminated = true)] string[] argv, [CCode (array_length = false, array_null_terminated = true)] string[]? envp, SpawnFlags _flags, SpawnChildSetupFunc? child_setup, out Pid child_pid)ŒGLib.Process÷0œpublic bool
+spawn_async_with_pipesÃ128Õ(string? working_directory, [CCode (array_length = false, array_null_terminated = true)] string[] argv, [CCode (array_length = false, array_null_terminated = true)] string[]? envp, SpawnFlags _flags, SpawnChildSetupFunc? child_setup, out Pid child_pid, out int standard_input = null, out int standard_output = null, out int standard_error = null)ŒGLib.Process÷0œpublic bool
+spawn_command_line_asyncÃ128Õ(string command_line)ŒGLib.Process÷0œpublic bool
+spawn_command_line_syncÃ128Õ(string command_line, out string standard_output = null, out string standard_error = null, out int exit_status = null)ŒGLib.Process÷0œpublic bool
+spawn_syncÃ128Õ(string? working_directory, [CCode (array_length = false, array_null_terminated = true)] string[] argv, [CCode (array_length = false, array_null_terminated = true)] string[]? envp, SpawnFlags _flags, SpawnChildSetupFunc? child_setup, out string standard_output = null, out string standard_error = null, out int exit_status = null)ŒGLib.Process÷0œpublic bool
+spliceÃ128Õ(long start, long end, string? str = null)÷0
+splitÃ128Õ(string delimiter, int max_tokens = 0)÷0
+splitÃ128Õ(string str, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0
+split_fullÃ128Õ(string str, ssize_t string_len = -1, int start_position = 0, RegexMatchFlags match_options = 0, int max_tokens = 0)ŒGLib.Regex÷0
+split_setÃ128Õ(string delimiters, int max_tokens = 0)÷0
+split_simpleÃ128Õ(string pattern, string str, RegexCompileFlags compile_options = 0, RegexMatchFlags match_options = 0)ŒGLib.Regex÷0
+sqrtÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+sqrtfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+ssize_tÃ2048÷0
+ssize_tÃ4ŒGLib.ChecksumType÷0
+startÃ128Õ()ŒGLib.Timer÷0œpublic void
+start_elementÃ8ŒGLib.MarkupParser÷0œunowned
+static_assertÃ128Õ(bool expression)ŒGLib÷0œpublic void
+stderrÃ8ŒGLib÷0œFileStream
+stdinÃ8ŒGLib÷0œFileStream
+stdoutÃ8ŒGLib÷0œFileStream
+stealÃ128Õ(K key)ŒGLib.HashTable÷0œpublic bool
+stealÃ128Õ()ŒGLib.HashTableIter÷0œpublic void
+stealÃ128Õ(K key)ŒGLib.Tree÷0œpublic bool
+steal_allÃ128Õ()ŒGLib.HashTable÷0œpublic void
+stopÃ128Õ()ŒGLib.Timer÷0œpublic void
+stop_sigÃ128Õ(int status)ŒGLib.Process÷0œpublic ProcessSignal
+stop_unused_threadsÃ128Õ()ŒGLib.ThreadPool÷0œpublic void
+storageÃ128Õ(ulong number)ŒGLib.Bit÷0
+storeÃ128Õ(void *data)ŒGLib.Variant÷0œpublic void
+store_int64Ã8ŒGLib.ScannerConfig÷0œbool
+strÃ128Õ(string needle)÷0œpublic unowned
+strÃ8ŒGLib.StringBuilder÷0
+str_equalÃ8ŒGLib÷0œGLib.EqualFunc
+str_hashÃ8ŒGLib÷0œGLib.HashFunc
+strcmpÃ8ŒGLib÷0œGLib.CompareFunc
+strerrorÃ128Õ(int errnum)ŒGLib÷0œpublic unowned string
+strftimeÃ128Õ(char[] s, string format)ŒGLib.Date÷0œpublic size_t
+strftimeÃ128Õ(char[] s, string format)ŒGLib.Time÷0œpublic size_t
+string_is_validÃ128Õ(string type_string)ŒGLib.VariantType÷0œpublic bool
+string_scanÃ128Õ(string type_string, char *limit, out char* endptr)ŒGLib.VariantType÷0œpublic bool
+stripÃ128Õ()÷0
+strip_contextÃ128Õ(string msgid, string msgval)ŒGLib.Intl÷0œpublic unowned string
+strncmp_funcÃ8ŒGLib.Completion÷0œCompletionStrncmpFunc
+strndupÃ128Õ(char* str, size_t n)÷0
+strnlenÃ128Õ(char* str, size_t maxlen)÷0œlong
+strptimeÃ128Õ(string buf, string format)ŒGLib.Time÷0œpublic unowned
+strrstrÃ128Õ(char* haystack, char* needle)÷0œchar *
+strsignalÃ128Õ(int signum)ŒGLib÷0œpublic unowned string
+strstrÃ128Õ(char* haystack, char* needle)÷0œchar *
+strv_lengthÃ128Õ([CCode (array_length = false, array_null_terminated = true)] string[] str_array)ŒGLib÷0
+substringÃ128Õ(long offset, long len = -1)÷0
+subtract_daysÃ128Õ(uint n_days)ŒGLib.Date÷0œpublic void
+subtract_monthsÃ128Õ(uint n_months)ŒGLib.Date÷0œpublic void
+subtract_yearsÃ128Õ(uint n_years)ŒGLib.Date÷0œpublic void
+supportedÃ128Õ()ŒGLib.Thread÷0œpublic bool
+swapÃ128Õ(SequenceIter<G> src, SequenceIter<G> dest)ŒGLib.Sequence÷0œpublic void
+swap_big_endian_pdpÃ128Õ()Œuint16÷0œpublic uint16
+swap_big_endian_pdpÃ128Õ()Œuint32÷0œpublic uint32
+swap_little_endian_big_endianÃ128Õ()Œint64÷0œpublic uint64
+swap_little_endian_big_endianÃ128Õ()Œuint16÷0œpublic uint16
+swap_little_endian_big_endianÃ128Õ()Œuint32÷0œpublic uint32
+swap_little_endian_pdpÃ128Õ()Œuint16÷0œpublic uint16
+swap_little_endian_pdpÃ128Õ()Œuint32÷0œpublic uint32
+symbolÃ8ŒGLib.TokenValue÷0œvoid
+symbol_2_tokenÃ8ŒGLib.ScannerConfig÷0œbool
+symlinkÃ128Õ(string oldpath, string newpath)ŒGLib.FileUtils÷0œpublic int
+sync_file_offsetÃ128Õ()ŒGLib.Scanner÷0œpublic void
+tailÃ8ŒGLib.Queue÷0œunowned
+tanÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+tanfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+tanhÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+tanhfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+tellÃ128Õ()ŒGLib.FileStream÷0œpublic long
+term_sigÃ128Õ(int status)ŒGLib.Process÷0œpublic ProcessSignal
+testÃ128Õ(string filename, FileTest test)ŒGLib.FileUtils÷0œpublic bool
+textÃ8ŒGLib.MarkupParser÷0œunowned
+textdomainÃ128Õ(string? domainname)ŒGLib.Intl÷0œpublic unowned
+tgammaÃ128Õ(double x0)ŒGLib.Math÷0œpublic double
+tgammafÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+thoroughÃ128Õ()ŒGLib.Test÷0œpublic bool
+time_tÃ2048÷0
+time_tÃ128Õ(out time_t result = null)Œtime_t÷0
+timed_popÃ128Õ(ref TimeVal end_time)ŒGLib.AsyncQueue÷0œpublic G
+timed_pop_unlockedÃ128Õ(ref TimeVal end_time)ŒGLib.AsyncQueue÷0œpublic G
+timed_waitÃ128Õ(Mutex mutex, TimeVal abs_time)ŒGLib.Cond÷0œpublic bool
+timer_elapsedÃ128Õ()ŒGLib.Test÷0œpublic double
+timer_lastÃ128Õ()ŒGLib.Test÷0œpublic double
+timer_startÃ128Õ()ŒGLib.Test÷0œpublic void
+to_big_endianÃ128Õ()÷0
+to_big_endianÃ128Õ()Œint16÷0œpublic int16
+to_big_endianÃ128Õ()Œint32÷0œpublic int32
+to_big_endianÃ128Õ()Œint64÷0œpublic int64
+to_big_endianÃ128Õ()Œuint16÷0œpublic uint16
+to_big_endianÃ128Õ()Œuint32÷0œpublic uint32
+to_big_endianÃ128Õ()Œuint64÷0œpublic uint64
+to_boolÃ128Õ()÷0œpublic bool
+to_dataÃ128Õ(out size_t length)ŒGLib.BookmarkFile÷0
+to_dataÃ128Õ(out size_t length = null, out GLib.Error error = null)ŒGLib.KeyFile÷0
+to_doubleÃ128Õ(out unowned string endptr = null)÷0œpublic double
+to_fileÃ128Õ(string filename)ŒGLib.BookmarkFile÷0œpublic bool
+to_intÃ128Õ()÷0œpublic int
+to_int64Ã128Õ(out unowned string endptr = null, int _base = 0)÷0œpublic int64
+to_iso8601Ã128Õ()ŒGLib.TimeVal÷0
+to_little_endianÃ128Õ()÷0
+to_little_endianÃ128Õ()Œint16÷0œpublic int16
+to_little_endianÃ128Õ()Œint32÷0œpublic int32
+to_little_endianÃ128Õ()Œint64÷0œpublic int64
+to_little_endianÃ128Õ()Œuint16÷0œpublic uint16
+to_little_endianÃ128Õ()Œuint32÷0œpublic uint32
+to_little_endianÃ128Õ()Œuint64÷0œpublic uint64
+to_localÃ128Õ()ŒGLib.DateTime÷0œpublic DateTime
+to_longÃ128Õ(out unowned string endptr = null, int _base = 0)÷0œpublic long
+to_pointerÃ128Õ()÷0œpublic void *
+to_stringÃ128Õ(string format = )÷0
+to_stringÃ128Õ()÷0œpublic unowned string
+to_stringÃ128Õ()ŒGLib.DateTime÷0
+to_stringÃ128Õ()ŒGLib.Quark÷0œpublic unowned string
+to_stringÃ128Õ()ŒGLib.Time÷0
+to_stringÃ128Õ()Œbool÷0
+to_stringÃ128Õ(string format = + FORMAT)Œint16÷0
+to_stringÃ128Õ(string format = )Œint32÷0
+to_stringÃ128Õ(string format = + FORMAT)Œint64÷0
+to_stringÃ128Õ(string format = )Œint8÷0
+to_stringÃ128Õ(string format = + FORMAT)Œssize_t÷0
+to_stringÃ128Õ(string format = )Œuchar÷0
+to_stringÃ128Õ(string format = )Œuint16÷0
+to_stringÃ128Õ(string format = )Œuint32÷0
+to_stringÃ128Õ(string format = + FORMAT)Œuint64÷0
+to_stringÃ128Õ(string format = )Œuint8÷0
+to_stringÃ128Õ()Œunichar÷0œpublic string?
+to_timeÃ128Õ(out Time tm)ŒGLib.Date÷0œpublic void
+to_timevalÃ128Õ(out TimeVal tv)ŒGLib.DateTime÷0œpublic bool
+to_timezoneÃ128Õ(TimeZone tz)ŒGLib.DateTime÷0œpublic DateTime
+to_uint64Ã128Õ(out unowned string endptr = null, int _base = 0)÷0œpublic uint64
+to_ulongÃ128Õ(out unowned string endptr = null, int _base = 0)÷0
+to_unixÃ128Õ()ŒGLib.DateTime÷0œpublic int64
+to_uriÃ128Õ(string filename, string? hostname = null)ŒGLib.Filename÷0
+to_utcÃ128Õ()ŒGLib.DateTime÷0œpublic DateTime
+to_utf8Ã128Õ()÷0œpublic char
+to_utf8Ã128Õ(string opsysstring, ssize_t len, out size_t bytes_read, out size_t bytes_written)ŒGLib.Filename÷0
+to_utf8Ã128Õ(string? outbuf)Œunichar÷0œpublic int
+tokenÃ8ŒGLib.Scanner÷0œTokenType
+tolowerÃ128Õ()Œunichar÷0œpublic unichar
+totitleÃ128Õ()Œunichar÷0œpublic unichar
+toupperÃ128Õ()Œunichar÷0œpublic unichar
+trap_assert_failedÃ128Õ()ŒGLib.Test÷0œpublic void
+trap_assert_passedÃ128Õ()ŒGLib.Test÷0œpublic void
+trap_assert_stderrÃ128Õ(string serrpattern)ŒGLib.Test÷0œpublic void
+trap_assert_stderr_unmatchedÃ128Õ(string serrpattern)ŒGLib.Test÷0œpublic void
+trap_assert_stdoutÃ128Õ(string soutpattern)ŒGLib.Test÷0œpublic void
+trap_assert_stdout_unmatchedÃ128Õ(string soutpattern)ŒGLib.Test÷0œpublic void
+trap_forkÃ128Õ(uint64 usec_timeout, TestTrapFlags test_trap_flags)ŒGLib.Test÷0œpublic bool
+trap_has_passedÃ128Õ()ŒGLib.Test÷0œpublic bool
+trap_reached_timeoutÃ128Õ()ŒGLib.Test÷0œpublic bool
+traverseÃ128Õ(TraverseType order, TraverseFlags flags, int max_depth, NodeTraverseFunc func)ŒGLib.Node÷0œpublic void
+truncÃ128Õ(double x)ŒGLib.Math÷0œpublic double
+truncateÃ128Õ(size_t len = 0)ŒGLib.StringBuilder÷0œpublic unowned
+truncfÃ128Õ(float x)ŒGLib.Math÷0œpublic float
+try_mallocÃ128Õ(size_t n_bytes)ŒGLib÷0œpublic void *
+try_malloc0Ã128Õ(size_t n_bytes)ŒGLib÷0œpublic void *
+try_parseÃ128Õ(string str, out bool result = null)Œbool÷0œpublic bool
+try_parseÃ128Õ(string str, out int64 result = null)Œint64÷0œpublic bool
+try_parseÃ128Õ(string str, out uint64 result = null)Œuint64÷0œpublic bool
+try_popÃ128Õ()ŒGLib.AsyncQueue÷0œpublic G
+try_pop_unlockedÃ128Õ()ŒGLib.AsyncQueue÷0œpublic G
+try_reallocÃ128Õ(void* mem, size_t n_bytes)ŒGLib÷0œpublic void *
+try_stringÃ128Õ(string str)ŒGLib.Quark÷0œpublic Quark
+trylockÃ128Õ()ŒGLib.Mutex÷0œpublic bool
+trylockÃ128Õ()ŒGLib.StaticMutex÷0œpublic bool
+trylockÃ128Õ()ŒGLib.StaticRecMutex÷0œpublic bool
+tv_secÃ8ŒGLib.TimeVal÷0œlong
+tv_usecÃ8ŒGLib.TimeVal÷0œlong
+typeÃ128Õ()Œunichar÷0œpublic UnicodeType
+ucharÃ2048÷0
+ucharÃ4ŒGLib.DateMonth÷0
+uint16Ã2048÷0
+uint32Ã2048÷0
+uint64Ã2048÷0
+uint8Ã2048÷0
+unescape_segmentÃ128Õ(string escaped_string, string escaped_string_end, string? illegal_characters = null)ŒGLib.Uri÷0
+unescape_stringÃ128Õ(string escaped_string, string? illegal_characters = null)ŒGLib.Uri÷0
+unexp_tokenÃ128Õ(TokenType expected_token, string? identifier_spec, string? symbol_spec, string? symbol_name, string? message, bool is_error)ŒGLib.Scanner÷0œpublic void
+ungetcÃ128Õ(int c)ŒGLib.FileStream÷0œpublic int
+unicharÃ2048÷0
+unix_get_fdÃ128Õ()ŒGLib.IOChannel÷0œpublic int
+unlikelyÃ128Õ(bool expression)ŒGLib÷0œpublic bool
+unlinkÃ128Õ(string filename)ŒGLib.FileUtils÷0œpublic int
+unlinkÃ128Õ()ŒGLib.Node÷0œpublic Node
+unlinkÃ128Õ(List<G> link)ŒGLib.Queue÷0œpublic void
+unlockÃ128Õ()ŒGLib.AsyncQueue÷0œpublic void
+unlockÃ128Õ()ŒGLib.Mutex÷0œpublic void
+unlockÃ128Õ()ŒGLib.StaticMutex÷0œpublic void
+unlockÃ128Õ()ŒGLib.StaticRecMutex÷0œpublic void
+unprocessedÃ128Õ()ŒGLib.ThreadPool÷0
+unquoteÃ128Õ(string quoted_string)ŒGLib.Shell÷0
+unrefÃ8ŒGLib.SourceCallbackFuncs÷0œSourceCallbackUnrefFunc
+unref_and_unlockÃ128Õ()ŒGLib.AsyncQueue÷0œpublic void
+unset_variableÃ128Õ(string variable)ŒGLib.Environment÷0œpublic void
+upÃ128Õ(ssize_t len = -1)÷0
+updateÃ128Õ([CCode (array_length = false)] uchar[] data, size_t length)ŒGLib.Checksum÷0œpublic void
+usleepÃ128Õ(ulong microseconds)ŒGLib.Thread÷0œpublic void
+utf8_get_charÃ128Õ(char* str)÷0œunichar
+utf8_offsetÃ128Õ(long offset)÷0œpublic unowned string
+utf8_offset_to_pointerÃ128Õ(long offset)÷0œchar *
+utf8_strchrÃ128Õ(char* str, ssize_t len, unichar c)÷0œchar *
+utf8_strrchrÃ128Õ(char* str, ssize_t len, unichar c)÷0œchar *
+va_listÃ2048÷0
+va_listÃ128Õ()Œva_list÷0
+va_list.copyÃ128Õ(va_list src)Œva_list÷0
+validÃ128Õ()ŒGLib.Date÷0œpublic bool
+validÃ128Õ()ŒGLib.DateDay÷0œpublic bool
+validÃ4ŒGLib.DateMonth÷0
+validÃ4ŒGLib.DateWeekday÷0
+validÃ128Õ()ŒGLib.DateYear÷0œpublic bool
+valid_charÃ128Õ(int index)÷0œpublic bool
+valid_dayÃ128Õ(DateDay day)ŒGLib.Date÷0œpublic bool
+valid_dmyÃ128Õ(DateDay day, DateMonth month, DateYear year)ŒGLib.Date÷0œpublic bool
+valid_julianÃ128Õ(uint julian_date)ŒGLib.Date÷0œpublic bool
+valid_weekdayÃ128Õ(DateWeekday weekday)ŒGLib.Date÷0œpublic bool
+validateÃ128Õ(ssize_t max_len = -1, out char* end = null)÷0œpublic bool
+validateÃ128Õ()Œunichar÷0œpublic bool
+valueÃ8ŒGLib.DebugKey÷0
+valueÃ8ŒGLib.Scanner÷0œTokenValue
+valueÃ128Õ()ŒGLib.VariantType÷0œpublic unowned
+verboseÃ128Õ()ŒGLib.Test÷0œpublic bool
+vprintfÃ128Õ(va_list args)÷0
+vprintfÃ128Õ(string format, va_list args)ŒGLib.FileStream÷0œpublic void
+vprintfÃ128Õ(string format, va_list args)ŒGLib.StringBuilder÷0œpublic void
+vprintf_escapedÃ128Õ(string format, va_list args)ŒGLib.Markup÷0
+waitÃ128Õ(Mutex mutex)ŒGLib.Cond÷0œpublic void
+waitÃ128Õ(Cond cond, Mutex mutex)ŒGLib.MainContext÷0œpublic bool
+wakeupÃ128Õ()ŒGLib.MainContext÷0œpublic void
+warnÃ128Õ(string format, ...)ŒGLib.Scanner÷0œpublic void
+warn_if_failÃ128Õ(bool expr)ŒGLib÷0œpublic void
+warn_if_reachedÃ128Õ()ŒGLib÷0œpublic void
+warningÃ128Õ(string format, ...)ŒGLib÷0œpublic void
+weekdayÃ8ŒGLib.Time÷0œint
+writeÃ128Õ([CCode (array_length_pos = 2.1)] uint8[] buf, size_t size = 1)ŒGLib.FileStream÷0œpublic size_t
+write_charsÃ128Õ(char[] buf, out size_t bytes_written)ŒGLib.IOChannel÷0œpublic IOStatus
+write_unicharÃ128Õ(unichar thechar)ŒGLib.IOChannel÷0œpublic IOStatus
+writer_lockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic void
+writer_trylockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic bool
+writer_unlockÃ128Õ()ŒGLib.StaticRWLock÷0œpublic void
+xdigit_valueÃ128Õ()Œunichar÷0œpublic int
+y0Ã128Õ(double x0)ŒGLib.Math÷0œpublic double
+y0fÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+y1Ã128Õ(double x0)ŒGLib.Math÷0œpublic double
+y1fÃ128Õ(float x0)ŒGLib.Math÷0œpublic float
+yearÃ8ŒGLib.Time÷0œint
+yieldÃ128Õ()ŒGLib.Thread÷0œpublic void
+ynÃ128Õ(int x0, double x1)ŒGLib.Math÷0œpublic double
+ynfÃ128Õ(int x0, float x1)ŒGLib.Math÷0œpublic float

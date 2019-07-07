@@ -1,0 +1,155 @@
+# format=tagmanager
+AddressFamilyÌ2ÎEpcÖ0
+AuthContextÌ1ÎEpcÖ0
+AuthFlagsÌ2ÎEpcÖ0
+AuthHandlerÌ128Í(Epc.AuthContext context, string username)ÎEpcÖ0Ïpublic delegate bool
+CHANGE_NAMEÌ4ÎEpc.CollisionHandlingÖ0
+CollisionHandlingÌ2ÎEpcÖ0
+ConsumerÌ1ÎEpcÖ0
+ConsumerÌ128Í(Epc.ServiceInfo service)ÎEpc.ConsumerÖ0
+Consumer.for_nameÌ128Í(string name)ÎEpc.ConsumerÖ0
+Consumer.for_name_fullÌ128Í(string name, string application, string domain)ÎEpc.ConsumerÖ0
+ContentsÌ1ÎEpcÖ0
+ContentsÌ128Í(string type, void* data, ssize_t length, GLib.DestroyNotify destroy_data)ÎEpc.ContentsÖ0
+Contents.dupÌ128Í(string type, void* data, ssize_t length)ÎEpc.ContentsÖ0
+ContentsHandlerÌ128Í(Epc.Publisher publisher, string key)ÎEpcÖ0Ïpublic delegate unowned
+ContentsReadFuncÌ128Í(Epc.Contents contents, void* buffer, size_t length)ÎEpcÖ0Ïpublic delegate bool
+DEFAULTÌ4ÎEpc.AuthFlagsÖ0
+DispatcherÌ1ÎEpcÖ0
+DispatcherÌ128Í(string name)ÎEpc.DispatcherÖ0
+EpcÌ256Ö0
+HTTPÌ4ÎEpc.ProtocolÖ0
+HTTPSÌ4ÎEpc.ProtocolÖ0
+IGNOREÌ4ÎEpc.CollisionHandlingÖ0
+IPV4Ì4ÎEpc.AddressFamilyÖ0
+IPV6Ì4ÎEpc.AddressFamilyÖ0
+PASSWORD_TEXT_NEEDEDÌ4ÎEpc.AuthFlagsÖ0
+ProtocolÌ2ÎEpcÖ0
+PublisherÌ1ÎEpcÖ0
+PublisherÌ128Í(string? name, string application, string? domain)ÎEpc.PublisherÖ0
+SERVICE_TYPE_HTTPÌ8ÎEpcÖ0
+SERVICE_TYPE_HTTPSÌ8ÎEpcÖ0
+ServiceInfoÌ1ÎEpcÖ0
+ServiceMonitorÌ1ÎEpcÖ0
+ServiceMonitorÌ128Í(string? application, string? domain, ...)ÎEpc.ServiceMonitorÖ0
+ServiceMonitor.for_typesÌ128Í(string? domain, ...)ÎEpc.ServiceMonitorÖ0
+ServiceMonitor.for_types_strvÌ128Í(string? domain, string types)ÎEpc.ServiceMonitorÖ0
+UNIQUE_SERVICEÌ4ÎEpc.CollisionHandlingÖ0
+UNKNOWNÌ4ÎEpc.ProtocolÖ0
+UNSPECÌ4ÎEpc.AddressFamilyÖ0
+addÌ128Í(string key, void* data, ssize_t length)ÎEpc.PublisherÖ0Ïpublic void
+add_bookmarkÌ128Í(string key, string label)ÎEpc.PublisherÖ0Ïpublic void
+add_fileÌ128Í(string key, string filename)ÎEpc.PublisherÖ0Ïpublic void
+add_handlerÌ128Í(string key, Epc.ContentsHandler handler, GLib.DestroyNotify destroy_data)ÎEpc.PublisherÖ0Ïpublic void
+add_serviceÌ128Í(Epc.AddressFamily protocol, string type, string domain, string host, uint16 port)ÎEpc.DispatcherÖ0Ïpublic void
+add_service_subtypeÌ128Í(string type, string subtype)ÎEpc.DispatcherÖ0Ïpublic void
+address_family_get_classÌ128Í()ÎEpcÖ0Ïpublic unowned
+applicationÌ8ÎEpc.ConsumerÖ0
+applicationÌ8ÎEpc.PublisherÖ0
+applicationÌ8ÎEpc.ServiceMonitorÖ0
+auth_flagsÌ8ÎEpc.PublisherÖ0ÏEpc.AuthFlags
+auth_flags_get_classÌ128Í()ÎEpcÖ0Ïpublic unowned
+auth_flags_to_stringÌ128Í(Epc.AuthFlags value)ÎEpcÖ0Ïpublic unowned string
+authenticateÌ128Í(string realm)ÎEpc.ConsumerÖ0Ïpublic virtual signal bool
+certificate_fileÌ8ÎEpc.PublisherÖ0
+check_passwordÌ128Í(string password)ÎEpc.AuthContextÖ0Ïpublic bool
+collision_handlingÌ8ÎEpc.DispatcherÖ0ÏEpc.CollisionHandling
+collision_handlingÌ8ÎEpc.PublisherÖ0ÏEpc.CollisionHandling
+collision_handling_get_classÌ128Í()ÎEpcÖ0Ïpublic unowned
+collision_handling_to_stringÌ128Í(Epc.CollisionHandling value)ÎEpcÖ0Ïpublic unowned string
+contents_pathÌ8ÎEpc.PublisherÖ0
+cookieÌ8ÎEpc.DispatcherÖ0
+domainÌ8ÎEpc.ConsumerÖ0
+domainÌ8ÎEpc.ServiceMonitorÖ0
+expand_nameÌ128Í(string name)ÎEpc.PublisherÖ0Ïpublic unowned string
+get_address_familyÌ128Í()ÎEpc.ServiceInfoÖ0Ïpublic Epc.AddressFamily
+get_auth_flagsÌ128Í()ÎEpc.PublisherÖ0Ïpublic Epc.AuthFlags
+get_certificate_fileÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_collision_handlingÌ128Í()ÎEpc.DispatcherÖ0Ïpublic Epc.CollisionHandling
+get_collision_handlingÌ128Í()ÎEpc.PublisherÖ0Ïpublic Epc.CollisionHandling
+get_contents_pathÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_cookieÌ128Í()ÎEpc.DispatcherÖ0Ïpublic unowned string
+get_dataÌ128Í(size_t length)ÎEpc.ContentsÖ0Ïpublic void *
+get_detailÌ128Í(string name)ÎEpc.ServiceInfoÖ0Ïpublic unowned string
+get_hostÌ128Í()ÎEpc.ServiceInfoÖ0Ïpublic unowned string
+get_interfaceÌ128Í()ÎEpc.ServiceInfoÖ0Ïpublic unowned string
+get_keyÌ128Í()ÎEpc.AuthContextÖ0Ïpublic unowned string
+get_mime_typeÌ128Í()ÎEpc.ContentsÖ0Ïpublic unowned string
+get_nameÌ128Í()ÎEpc.DispatcherÖ0Ïpublic unowned string
+get_passwordÌ128Í()ÎEpc.AuthContextÖ0Ïpublic unowned string
+get_passwordÌ128Í()ÎEpc.ConsumerÖ0Ïpublic unowned string
+get_pathÌ128Í(string key)ÎEpc.PublisherÖ0Ïpublic unowned string
+get_portÌ128Í()ÎEpc.ServiceInfoÖ0
+get_private_key_fileÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_protocolÌ128Í()ÎEpc.ConsumerÖ0Ïpublic Epc.Protocol
+get_protocolÌ128Í()ÎEpc.PublisherÖ0Ïpublic Epc.Protocol
+get_publisherÌ128Í()ÎEpc.AuthContextÖ0Ïpublic unowned
+get_service_cookieÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_service_domainÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_service_nameÌ128Í()ÎEpc.PublisherÖ0Ïpublic unowned string
+get_service_typeÌ128Í()ÎEpc.ServiceInfoÖ0Ïpublic unowned string
+get_skip_our_ownÌ128Í()ÎEpc.ServiceMonitorÖ0Ïpublic bool
+get_uriÌ128Í(string key)ÎEpc.PublisherÖ0Ïpublic unowned string
+get_usernameÌ128Í()ÎEpc.ConsumerÖ0Ïpublic unowned string
+has_keyÌ128Í(string key)ÎEpc.PublisherÖ0Ïpublic bool
+hostnameÌ8ÎEpc.ConsumerÖ0
+http_error_quarkÌ128Í()ÎEpcÖ0Ïpublic GLib.Quark
+is_publisher_resolvedÌ128Í()ÎEpc.ConsumerÖ0Ïpublic bool
+is_streamÌ128Í()ÎEpc.ContentsÖ0Ïpublic bool
+listÌ128Í(string pattern)ÎEpc.ConsumerÖ0Ïpublic unowned
+listÌ128Í(string pattern)ÎEpc.PublisherÖ0Ïpublic unowned
+lookupÌ128Í(string key, out unowned size_t? length)ÎEpc.ConsumerÖ0Ïpublic void *
+lookupÌ128Í(string key)ÎEpc.PublisherÖ0Ïpublic void *
+nameÌ8ÎEpc.ConsumerÖ0
+nameÌ8ÎEpc.DispatcherÖ0
+passwordÌ8ÎEpc.ConsumerÖ0
+pathÌ8ÎEpc.ConsumerÖ0
+portÌ8ÎEpc.ConsumerÖ0Ïint
+private_key_fileÌ8ÎEpc.PublisherÖ0
+protocolÌ8ÎEpc.ConsumerÖ0ÏEpc.Protocol
+protocolÌ8ÎEpc.PublisherÖ0ÏEpc.Protocol
+protocol_build_uriÌ128Í(Epc.Protocol protocol, string hostname, uint16 port, string path)ÎEpcÖ0Ïpublic unowned string
+protocol_from_nameÌ128Í(string name, Epc.Protocol fallback)ÎEpcÖ0Ïpublic Epc.Protocol
+protocol_get_classÌ128Í()ÎEpcÖ0Ïpublic unowned
+protocol_get_service_typeÌ128Í(Epc.Protocol protocol)ÎEpcÖ0Ïpublic unowned string
+protocol_get_uri_schemeÌ128Í(Epc.Protocol protocol)ÎEpcÖ0Ïpublic unowned string
+protocol_to_stringÌ128Í(Epc.Protocol value)ÎEpcÖ0Ïpublic unowned string
+publisher_resolvedÌ128Í(Epc.Protocol protocol, string hostname, uint port)ÎEpc.ConsumerÖ0Ïpublic virtual signal void
+quitÌ128Í()ÎEpc.PublisherÖ0Ïpublic bool
+removeÌ128Í(string key)ÎEpc.PublisherÖ0Ïpublic bool
+resetÌ128Í()ÎEpc.DispatcherÖ0Ïpublic void
+resolve_publisherÌ128Í(uint timeout)ÎEpc.ConsumerÖ0Ïpublic bool
+runÌ128Í()ÎEpc.DispatcherÖ0Ïpublic bool
+runÌ128Í()ÎEpc.PublisherÖ0Ïpublic bool
+run_asyncÌ128Í()ÎEpc.PublisherÖ0Ïpublic bool
+scanning_doneÌ128Í(string type)ÎEpc.ServiceMonitorÖ0Ïpublic virtual signal void
+service_cookieÌ8ÎEpc.PublisherÖ0
+service_domainÌ8ÎEpc.PublisherÖ0
+service_foundÌ128Í(string name, Epc.ServiceInfo info)ÎEpc.ServiceMonitorÖ0Ïpublic virtual signal void
+service_nameÌ8ÎEpc.PublisherÖ0
+service_removedÌ128Í(string name, string type)ÎEpc.ServiceMonitorÖ0Ïpublic virtual signal void
+service_type_get_baseÌ128Í(string type)ÎEpcÖ0Ïpublic unowned string
+service_type_get_protocolÌ128Í(string service_type)ÎEpcÖ0Ïpublic Epc.Protocol
+service_type_list_supportedÌ128Í(string application)ÎEpcÖ0Ïpublic unowned string
+service_type_newÌ128Í(Epc.Protocol protocol, string application)ÎEpcÖ0Ïpublic unowned string
+service_typesÌ8ÎEpc.ServiceMonitorÖ0
+set_auth_flagsÌ128Í(Epc.AuthFlags flags)ÎEpc.PublisherÖ0Ïpublic void
+set_auth_handlerÌ128Í(string key, Epc.AuthHandler handler, GLib.DestroyNotify destroy_data)ÎEpc.PublisherÖ0Ïpublic void
+set_collision_handlingÌ128Í(Epc.CollisionHandling method)ÎEpc.DispatcherÖ0Ïpublic void
+set_collision_handlingÌ128Í(Epc.CollisionHandling method)ÎEpc.PublisherÖ0Ïpublic void
+set_contents_pathÌ128Í(string path)ÎEpc.PublisherÖ0Ïpublic void
+set_cookieÌ128Í(string cookie)ÎEpc.DispatcherÖ0Ïpublic void
+set_credentialsÌ128Í(string certfile, string keyfile)ÎEpc.PublisherÖ0Ïpublic void
+set_nameÌ128Í(string name)ÎEpc.DispatcherÖ0Ïpublic void
+set_passwordÌ128Í(string password)ÎEpc.ConsumerÖ0Ïpublic void
+set_protocolÌ128Í(Epc.Protocol protocol)ÎEpc.ConsumerÖ0Ïpublic void
+set_protocolÌ128Í(Epc.Protocol protocol)ÎEpc.PublisherÖ0Ïpublic void
+set_service_cookieÌ128Í(string cookie)ÎEpc.PublisherÖ0Ïpublic void
+set_service_detailsÌ128Í(string type)ÎEpc.DispatcherÖ0Ïpublic void
+set_service_nameÌ128Í(string name)ÎEpc.PublisherÖ0Ïpublic void
+set_skip_our_ownÌ128Í(bool setting)ÎEpc.ServiceMonitorÖ0Ïpublic void
+set_usernameÌ128Í(string username)ÎEpc.ConsumerÖ0Ïpublic void
+skip_our_ownÌ8ÎEpc.ServiceMonitorÖ0Ïbool
+stream_newÌ128Í(string type, Epc.ContentsReadFunc callback, GLib.DestroyNotify destroy_data)ÎEpc.ContentsÖ0Ïpublic unowned
+stream_readÌ128Í(size_t length)ÎEpc.ContentsÖ0Ïpublic void *
+usernameÌ8ÎEpc.ConsumerÖ0

@@ -1,0 +1,126 @@
+# format=tagmanager
+@refÃ128Õ()ŒClutterJson.JsonArray÷0œpublic ClutterJson.JsonArray
+@refÃ128Õ()ŒClutterJson.JsonObject÷0œpublic ClutterJson.JsonObject
+ARRAYÃ4ŒClutterJson.JsonNodeType÷0
+ClutterJsonÃ256÷0
+FALSEÃ4ŒClutterJson.JsonTokenType÷0
+INVALIDÃ4ŒClutterJson.JsonTokenType÷0
+JsonArrayÃ2048ŒClutterJson÷0
+JsonArrayForeachÃ128Õ(ClutterJson.JsonArray array, uint index_, ClutterJson.JsonNode element_node, void* user_data)ŒClutterJson÷0œpublic delegate void
+JsonGeneratorÃ1ŒClutterJson÷0
+JsonGeneratorÃ128Õ()ŒClutterJson.JsonGenerator÷0
+JsonGeneratorPrivateÃ2048ŒClutterJson÷0
+JsonNodeÃ2048ŒClutterJson÷0
+JsonNodeTypeÃ2ŒClutterJson÷0
+JsonObjectÃ2048ŒClutterJson÷0
+JsonObjectForeachÃ128Õ(ClutterJson.JsonObject object, string member_name, ClutterJson.JsonNode member_node, void* user_data)ŒClutterJson÷0œpublic delegate void
+JsonParserÃ1ŒClutterJson÷0
+JsonParserÃ128Õ()ŒClutterJson.JsonParser÷0
+JsonParserErrorÃ2ŒClutterJson÷0
+JsonParserPrivateÃ2048ŒClutterJson÷0
+JsonTokenTypeÃ2ŒClutterJson÷0
+LASTÃ4ŒClutterJson.JsonTokenType÷0
+NULLÃ4ŒClutterJson.JsonNodeType÷0
+NULLÃ4ŒClutterJson.JsonTokenType÷0
+OBJECTÃ4ŒClutterJson.JsonNodeType÷0
+PARSEÃ4ŒClutterJson.JsonParserError÷0
+TRUEÃ4ŒClutterJson.JsonTokenType÷0
+UNKNOWNÃ4ŒClutterJson.JsonParserError÷0
+VALUEÃ4ŒClutterJson.JsonNodeType÷0
+add_array_elementÃ128Õ(ClutterJson.JsonArray value)ŒClutterJson.JsonArray÷0œpublic void
+add_boolean_elementÃ128Õ(bool value)ŒClutterJson.JsonArray÷0œpublic void
+add_double_elementÃ128Õ(double value)ŒClutterJson.JsonArray÷0œpublic void
+add_elementÃ128Õ(ClutterJson.JsonNode node)ŒClutterJson.JsonArray÷0œpublic void
+add_int_elementÃ128Õ(int value)ŒClutterJson.JsonArray÷0œpublic void
+add_memberÃ128Õ(string member_name, ClutterJson.JsonNode node)ŒClutterJson.JsonObject÷0œpublic void
+add_null_elementÃ128Õ()ŒClutterJson.JsonArray÷0œpublic void
+add_object_elementÃ128Õ(ClutterJson.JsonObject value)ŒClutterJson.JsonArray÷0œpublic void
+add_string_elementÃ128Õ(string value)ŒClutterJson.JsonArray÷0œpublic void
+array_elementÃ128Õ(ClutterJson.JsonArray array, int index_)ŒClutterJson.JsonParser÷0œpublic virtual signal void
+array_endÃ128Õ(ClutterJson.JsonArray array)ŒClutterJson.JsonParser÷0œpublic virtual signal void
+array_startÃ128Õ()ŒClutterJson.JsonParser÷0œpublic virtual signal void
+copyÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonNode
+dup_arrayÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonArray
+dup_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic ClutterJson.JsonNode
+dup_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic ClutterJson.JsonNode
+dup_objectÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonObject
+dup_stringÃ128Õ()ŒClutterJson.JsonNode÷0
+errorÃ128Õ(void* error)ŒClutterJson.JsonParser÷0œpublic virtual signal void
+foreach_elementÃ128Õ([CCode (delegate_target_pos = 0)] ClutterJson.JsonArrayForeach func)ŒClutterJson.JsonArray÷0œpublic void
+foreach_memberÃ128Õ([CCode (delegate_target_pos = 0)] ClutterJson.JsonObjectForeach func)ŒClutterJson.JsonObject÷0œpublic void
+freeÃ128Õ()ŒClutterJson.JsonNode÷0œpublic void
+get_arrayÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonArray
+get_array_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic ClutterJson.JsonArray
+get_array_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic ClutterJson.JsonArray
+get_booleanÃ128Õ()ŒClutterJson.JsonNode÷0œpublic bool
+get_boolean_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic bool
+get_boolean_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic bool
+get_current_lineÃ128Õ()ŒClutterJson.JsonParser÷0
+get_current_posÃ128Õ()ŒClutterJson.JsonParser÷0
+get_doubleÃ128Õ()ŒClutterJson.JsonNode÷0œpublic double
+get_double_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic double
+get_double_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic double
+get_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic ClutterJson.JsonNode
+get_elementsÃ128Õ()ŒClutterJson.JsonArray÷0œpublic GLib.List
+get_intÃ128Õ()ŒClutterJson.JsonNode÷0œpublic int
+get_int_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic int
+get_int_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic int
+get_lengthÃ128Õ()ŒClutterJson.JsonArray÷0
+get_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic ClutterJson.JsonNode
+get_membersÃ128Õ()ŒClutterJson.JsonObject÷0œpublic GLib.List
+get_node_typeÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonNodeType
+get_null_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic bool
+get_null_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic bool
+get_objectÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonObject
+get_object_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic ClutterJson.JsonObject
+get_object_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic ClutterJson.JsonObject
+get_parentÃ128Õ()ŒClutterJson.JsonNode÷0œpublic ClutterJson.JsonNode
+get_rootÃ128Õ()ŒClutterJson.JsonParser÷0œpublic ClutterJson.JsonNode
+get_sizeÃ128Õ()ŒClutterJson.JsonObject÷0
+get_stringÃ128Õ()ŒClutterJson.JsonNode÷0œpublic unowned string
+get_string_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic unowned string
+get_string_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic unowned string
+get_valueÃ128Õ(GLib.Value value)ŒClutterJson.JsonNode÷0œpublic void
+get_value_typeÃ128Õ()ŒClutterJson.JsonNode÷0œpublic GLib.Type
+get_valuesÃ128Õ()ŒClutterJson.JsonObject÷0œpublic GLib.List
+has_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic bool
+indentÃ8ŒClutterJson.JsonGenerator÷0
+is_nullÃ128Õ()ŒClutterJson.JsonNode÷0œpublic bool
+json_array_sized_newÃ128Õ(uint n_elements)ŒClutterJson÷0œpublic ClutterJson.JsonArray
+load_from_dataÃ128Õ(string data, ssize_t length)ŒClutterJson.JsonParser÷0œpublic bool
+load_from_fileÃ128Õ(string filename)ŒClutterJson.JsonParser÷0œpublic bool
+object_endÃ128Õ(ClutterJson.JsonObject object)ŒClutterJson.JsonParser÷0œpublic virtual signal void
+object_memberÃ128Õ(ClutterJson.JsonObject object, string member_name)ŒClutterJson.JsonParser÷0œpublic virtual signal void
+object_startÃ128Õ()ŒClutterJson.JsonParser÷0œpublic virtual signal void
+parent_instanceÃ8ŒClutterJson.JsonGenerator÷0œGLib.Object
+parent_instanceÃ8ŒClutterJson.JsonParser÷0œGLib.Object
+parse_endÃ128Õ()ŒClutterJson.JsonParser÷0œpublic virtual signal void
+parse_startÃ128Õ()ŒClutterJson.JsonParser÷0œpublic virtual signal void
+prettyÃ8ŒClutterJson.JsonGenerator÷0œbool
+privÃ8ŒClutterJson.JsonGenerator÷0œClutterJson.JsonGeneratorPrivate
+privÃ8ŒClutterJson.JsonParser÷0œClutterJson.JsonParserPrivate
+remove_elementÃ128Õ(uint index_)ŒClutterJson.JsonArray÷0œpublic void
+remove_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic void
+set_arrayÃ128Õ(ClutterJson.JsonArray array)ŒClutterJson.JsonNode÷0œpublic void
+set_array_memberÃ128Õ(string member_name, ClutterJson.JsonArray value)ŒClutterJson.JsonObject÷0œpublic void
+set_booleanÃ128Õ(bool value)ŒClutterJson.JsonNode÷0œpublic void
+set_boolean_memberÃ128Õ(string member_name, bool value)ŒClutterJson.JsonObject÷0œpublic void
+set_doubleÃ128Õ(double value)ŒClutterJson.JsonNode÷0œpublic void
+set_double_memberÃ128Õ(string member_name, double value)ŒClutterJson.JsonObject÷0œpublic void
+set_intÃ128Õ(int value)ŒClutterJson.JsonNode÷0œpublic void
+set_int_memberÃ128Õ(string member_name, int value)ŒClutterJson.JsonObject÷0œpublic void
+set_memberÃ128Õ(string member_name, ClutterJson.JsonNode node)ŒClutterJson.JsonObject÷0œpublic void
+set_null_memberÃ128Õ(string member_name)ŒClutterJson.JsonObject÷0œpublic void
+set_objectÃ128Õ(ClutterJson.JsonObject object)ŒClutterJson.JsonNode÷0œpublic void
+set_object_memberÃ128Õ(string member_name, ClutterJson.JsonObject value)ŒClutterJson.JsonObject÷0œpublic void
+set_rootÃ128Õ(ClutterJson.JsonNode node)ŒClutterJson.JsonGenerator÷0œpublic void
+set_stringÃ128Õ(string value)ŒClutterJson.JsonNode÷0œpublic void
+set_string_memberÃ128Õ(string member_name, string value)ŒClutterJson.JsonObject÷0œpublic void
+set_valueÃ128Õ(GLib.Value value)ŒClutterJson.JsonNode÷0œpublic void
+take_arrayÃ128Õ(ClutterJson.JsonArray array)ŒClutterJson.JsonNode÷0œpublic void
+take_objectÃ128Õ(ClutterJson.JsonObject object)ŒClutterJson.JsonNode÷0œpublic void
+to_dataÃ128Õ(out size_t length)ŒClutterJson.JsonGenerator÷0
+to_fileÃ128Õ(string filename)ŒClutterJson.JsonGenerator÷0œpublic bool
+type_nameÃ128Õ()ŒClutterJson.JsonNode÷0œpublic unowned string
+unrefÃ128Õ()ŒClutterJson.JsonArray÷0œpublic void
+unrefÃ128Õ()ŒClutterJson.JsonObject÷0œpublic void

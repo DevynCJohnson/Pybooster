@@ -1,0 +1,216 @@
+# format=tagmanager
+DH_ASSISTANTÌ131072Í(o)Ö0
+DH_ASSISTANT_CLASSÌ131072Í(k)Ö0
+DH_ASSISTANT_GET_CLASSÌ131072Í(o)Ö0
+DH_ASSISTANT_VIEWÌ131072Í(i)Ö0
+DH_ASSISTANT_VIEW_CLASSÌ131072Í(c)Ö0
+DH_ASSISTANT_VIEW_GET_CLASSÌ131072Í(i)Ö0
+DH_BASEÌ131072Í(o)Ö0
+DH_BASE_CLASSÌ131072Í(k)Ö0
+DH_BASE_GET_CLASSÌ131072Í(o)Ö0
+DH_BOOKÌ131072Í(o)Ö0
+DH_BOOK_CLASSÌ131072Í(k)Ö0
+DH_BOOK_GET_CLASSÌ131072Í(o)Ö0
+DH_BOOK_MANAGERÌ131072Í(o)Ö0
+DH_BOOK_MANAGER_CLASSÌ131072Í(k)Ö0
+DH_BOOK_MANAGER_GET_CLASSÌ131072Í(o)Ö0
+DH_BOOK_TREEÌ131072Í(obj)Ö0
+DH_BOOK_TREE_CLASSÌ131072Í(klass)Ö0
+DH_ERRORÌ65536Ö0
+DH_ERROR_FILE_NOT_FOUNDÌ4Îanon_enum_0Ö0
+DH_ERROR_INTERNAL_ERRORÌ4Îanon_enum_0Ö0
+DH_ERROR_INVALID_BOOK_TYPEÌ4Îanon_enum_0Ö0
+DH_ERROR_MALFORMED_BOOKÌ4Îanon_enum_0Ö0
+DH_IS_ASSISTANTÌ131072Í(o)Ö0
+DH_IS_ASSISTANT_CLASSÌ131072Í(k)Ö0
+DH_IS_ASSISTANT_VIEWÌ131072Í(i)Ö0
+DH_IS_ASSISTANT_VIEW_CLASSÌ131072Í(c)Ö0
+DH_IS_BASEÌ131072Í(o)Ö0
+DH_IS_BASE_CLASSÌ131072Í(k)Ö0
+DH_IS_BOOKÌ131072Í(o)Ö0
+DH_IS_BOOK_CLASSÌ131072Í(k)Ö0
+DH_IS_BOOK_MANAGERÌ131072Í(o)Ö0
+DH_IS_BOOK_MANAGER_CLASSÌ131072Í(k)Ö0
+DH_IS_BOOK_TREEÌ131072Í(obj)Ö0
+DH_IS_BOOK_TREE_CLASSÌ131072Í(klass)Ö0
+DH_IS_KEYWORD_MODELÌ131072Í(obj)Ö0
+DH_IS_KEYWORD_MODEL_CLASSÌ131072Í(klass)Ö0
+DH_IS_SEARCHÌ131072Í(obj)Ö0
+DH_IS_SEARCH_CLASSÌ131072Í(klass)Ö0
+DH_IS_WINDOWÌ131072Í(o)Ö0
+DH_IS_WINDOW_CLASSÌ131072Í(k)Ö0
+DH_KEYWORD_MODELÌ131072Í(obj)Ö0
+DH_KEYWORD_MODEL_CLASSÌ131072Í(klass)Ö0
+DH_KEYWORD_MODEL_COL_LINKÌ4Îanon_enum_4Ö0
+DH_KEYWORD_MODEL_COL_NAMEÌ4Îanon_enum_4Ö0
+DH_KEYWORD_MODEL_GET_CLASSÌ131072Í(obj)Ö0
+DH_KEYWORD_MODEL_NUM_COLSÌ4Îanon_enum_4Ö0
+DH_LINK_FLAGS_DEPRECATEDÌ4Îanon_enum_2Ö0
+DH_LINK_FLAGS_NONEÌ4Îanon_enum_2Ö0
+DH_LINK_TYPE_BOOKÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_ENUMÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_FUNCTIONÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_KEYWORDÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_MACROÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_PAGEÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_STRUCTÌ4Îanon_enum_1Ö0
+DH_LINK_TYPE_TYPEDEFÌ4Îanon_enum_1Ö0
+DH_OPEN_LINK_NEW_TABÌ4Îanon_enum_3Ö0
+DH_OPEN_LINK_NEW_WINDOWÌ4Îanon_enum_3Ö0
+DH_SEARCHÌ131072Í(obj)Ö0
+DH_SEARCH_CLASSÌ131072Í(klass)Ö0
+DH_TYPE_ASSISTANTÌ65536Ö0
+DH_TYPE_ASSISTANT_VIEWÌ65536Ö0
+DH_TYPE_BASEÌ65536Ö0
+DH_TYPE_BOOKÌ65536Ö0
+DH_TYPE_BOOK_MANAGERÌ65536Ö0
+DH_TYPE_BOOK_TREEÌ65536Ö0
+DH_TYPE_KEYWORD_MODELÌ65536Ö0
+DH_TYPE_LINKÌ65536Ö0
+DH_TYPE_SEARCHÌ65536Ö0
+DH_TYPE_WINDOWÌ65536Ö0
+DH_WINDOWÌ131072Í(o)Ö0
+DH_WINDOW_CLASSÌ131072Í(k)Ö0
+DH_WINDOW_GET_CLASSÌ131072Í(o)Ö0
+DhAssistantÌ4096Ö0ÏG_END_DECLS
+DhAssistantClassÌ4096Ö0Ï_DhAssistantClass
+DhAssistantViewÌ4096Ö0ÏG_END_DECLS
+DhAssistantViewClassÌ4096Ö0Ï_DhAssistantViewClass
+DhBaseÌ4096Ö0ÏG_END_DECLS
+DhBaseClassÌ4096Ö0Ï_DhBaseClass
+DhBookÌ4096Ö0ÏG_BEGIN_DECLS
+DhBookClassÌ4096Ö0Ï_DhBookClass
+DhBookManagerÌ4096Ö0ÏG_END_DECLS
+DhBookManagerClassÌ4096Ö0Ï_DhBookManagerClass
+DhBookTreeÌ4096Ö0ÏG_END_DECLS
+DhBookTreeClassÌ4096Ö0Ï_DhBookTreeClass
+DhErrorÌ4096Ö0Ïanon_enum_0
+DhKeywordModelÌ4096Ö0ÏG_END_DECLS
+DhKeywordModelClassÌ4096Ö0Ï_DhKeywordModelClass
+DhKeywordModelPrivÌ4096Ö0Ï_DhKeywordModelPriv
+DhLinkÌ4096Ö0Ï_DhLink
+DhLinkFlagsÌ4096Ö0Ïanon_enum_2
+DhLinkTypeÌ4096Ö0Ïanon_enum_1
+DhOpenLinkFlagsÌ4096Ö0Ïanon_enum_3
+DhSearchÌ4096Ö0ÏG_END_DECLS
+DhSearchClassÌ4096Ö0Ï_DhSearchClass
+DhWindowÌ4096Ö0ÏG_END_DECLS
+DhWindowClassÌ4096Ö0Ï_DhWindowClass
+DhWindowPrivÌ4096Ö0Ï_DhWindowPriv
+_DH_BOOK_H_Ì65536Ö0
+_DhAssistantÌ2048Ö0
+_DhAssistantClassÌ2048Ö0
+_DhAssistantViewÌ2048Ö0
+_DhAssistantViewClassÌ2048Ö0
+_DhBaseÌ2048Ö0
+_DhBaseClassÌ2048Ö0
+_DhBookÌ2048Ö0
+_DhBookClassÌ2048Ö0
+_DhBookManagerÌ2048Ö0
+_DhBookManagerClassÌ2048Ö0
+_DhBookTreeÌ2048Ö0
+_DhBookTreeClassÌ2048Ö0
+_DhKeywordModelÌ2048Ö0
+_DhKeywordModelClassÌ2048Ö0
+_DhSearchÌ2048Ö0
+_DhSearchClassÌ2048Ö0
+_DhWindowÌ2048Ö0
+_DhWindowClassÌ2048Ö0
+__DH_ASSISTANT_H__Ì65536Ö0
+__DH_ASSISTANT_VIEW_H__Ì65536Ö0
+__DH_BASE_H__Ì65536Ö0
+__DH_BOOK_MANAGER_H__Ì65536Ö0
+__DH_BOOK_TREE_H__Ì65536Ö0
+__DH_ERROR_H__Ì65536Ö0
+__DH_KEYWORD_MODEL_H__Ì65536Ö0
+__DH_LINK_H__Ì65536Ö0
+__DH_SEARCH_H__Ì65536Ö0
+__DH_WINDOW_H__Ì65536Ö0
+_dh_window_display_uriÌ1024Í(DhWindow *window, const gchar *uri)Ö0Ïvoid
+anon_enum_0Ì2Ö0
+anon_enum_1Ì2Ö0
+anon_enum_2Ì2Ö0
+anon_enum_3Ì2Ö0
+anon_enum_4Ì2Ö0
+dh_assistant_newÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_assistant_searchÌ1024Í(DhAssistant *assistant, const gchar *str)Ö0Ïgboolean
+dh_assistant_view_get_baseÌ1024Í(DhAssistantView *view)Ö0ÏDhBase *
+dh_assistant_view_newÌ1024Í(void)Ö0ÏGtkWidget *
+dh_assistant_view_searchÌ1024Í(DhAssistantView *view, const gchar *str)Ö0Ïgboolean
+dh_assistant_view_set_baseÌ1024Í(DhAssistantView *view, DhBase *base)Ö0Ïvoid
+dh_assistant_view_set_linkÌ1024Í(DhAssistantView *view, DhLink *link)Ö0Ïgboolean
+dh_base_getÌ1024Í(void)Ö0ÏDhBase *
+dh_base_get_book_managerÌ1024Í(DhBase *base)Ö0ÏDhBookManager *
+dh_base_get_windowÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_base_get_window_on_current_workspaceÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_base_newÌ1024Í(void)Ö0ÏDhBase *
+dh_base_new_assistantÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_base_new_windowÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_base_quitÌ1024Í(DhBase *base)Ö0Ïvoid
+dh_book_cmp_by_nameÌ1024Í(const DhBook *a, const DhBook *b)Ö0Ïgint
+dh_book_cmp_by_pathÌ1024Í(const DhBook *a, const DhBook *b)Ö0Ïgint
+dh_book_cmp_by_titleÌ1024Í(const DhBook *a, const DhBook *b)Ö0Ïgint
+dh_book_get_enabledÌ1024Í(DhBook *book)Ö0Ïgboolean
+dh_book_get_keywordsÌ1024Í(DhBook *book)Ö0ÏGList *
+dh_book_get_nameÌ1024Í(DhBook *book)Ö0Ïconst gchar *
+dh_book_get_titleÌ1024Í(DhBook *book)Ö0Ïconst gchar *
+dh_book_get_treeÌ1024Í(DhBook *book)Ö0ÏGNode *
+dh_book_manager_get_book_by_nameÌ1024Í(DhBookManager *book_manager, const gchar *name)Ö0ÏDhBook *
+dh_book_manager_get_booksÌ1024Í(DhBookManager *book_manager)Ö0ÏGList *
+dh_book_manager_newÌ1024Í(void)Ö0ÏDhBookManager *
+dh_book_manager_populateÌ1024Í(DhBookManager *book_manager)Ö0Ïvoid
+dh_book_manager_updateÌ1024Í(DhBookManager *book_manager)Ö0Ïvoid
+dh_book_newÌ1024Í(const gchar *book_path)Ö0ÏDhBook *
+dh_book_set_enabledÌ1024Í(DhBook *book, gboolean enabled)Ö0Ïvoid
+dh_book_tree_get_selected_book_titleÌ1024Í(DhBookTree *tree)Ö0Ïconst gchar *
+dh_book_tree_newÌ1024Í(DhBookManager *book_manager)Ö0ÏGtkWidget *
+dh_book_tree_select_uriÌ1024Í(DhBookTree *book_tree, const gchar *uri)Ö0Ïvoid
+dh_keyword_model_filterÌ1024Í(DhKeywordModel *model, const gchar *string, const gchar *book_id)Ö0ÏDhLink *
+dh_keyword_model_get_typeÌ1024Í(void)Ö0ÏGType
+dh_keyword_model_newÌ1024Í(void)Ö0ÏDhKeywordModel *
+dh_keyword_model_set_wordsÌ1024Í(DhKeywordModel *model, DhBookManager *book_manager)Ö0Ïvoid
+dh_link_compareÌ1024Í(gconstpointer a, gconstpointer b)Ö0Ïgint
+dh_link_freeÌ1024Í(DhLink *link)Ö0Ïvoid
+dh_link_get_book_idÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_book_nameÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_file_nameÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_flagsÌ1024Í(DhLink *link)Ö0ÏDhLinkFlags
+dh_link_get_link_typeÌ1024Í(DhLink *link)Ö0ÏDhLinkType
+dh_link_get_nameÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_page_nameÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_typeÌ1024Í(void)Ö0ÏGType
+dh_link_get_type_as_stringÌ1024Í(DhLink *link)Ö0Ïconst gchar *
+dh_link_get_uriÌ1024Í(DhLink *link)Ö0Ïgchar *
+dh_link_newÌ1024Í(DhLinkType type, const gchar *base, const gchar *id, const gchar *name, DhLink *book, DhLink *page, const gchar *filename)Ö0ÏDhLink *
+dh_link_refÌ1024Í(DhLink *link)Ö0ÏDhLink *
+dh_link_set_flagsÌ1024Í(DhLink *link, DhLinkFlags flags)Ö0Ïvoid
+dh_link_unrefÌ1024Í(DhLink *link)Ö0Ïvoid
+dh_search_get_typeÌ1024Í(void)Ö0ÏGType
+dh_search_newÌ1024Í(DhBookManager *book_manager)Ö0ÏGtkWidget *
+dh_search_set_search_stringÌ1024Í(DhSearch *search, const gchar *str, const gchar *book_id)Ö0Ïvoid
+dh_window_focus_searchÌ1024Í(DhWindow *window)Ö0Ïvoid
+dh_window_newÌ1024Í(DhBase *base)Ö0ÏGtkWidget *
+dh_window_searchÌ1024Í(DhWindow *window, const gchar *str, const gchar *book_id)Ö0Ïvoid
+disabled_book_list_updatedÌ1024Í(DhBookManager *book_manager)Î_DhBookManagerClassÖ0Ïvoid
+link_selectedÌ1024Í(DhSearch *search, DhLink *link)Î_DhSearchClassÖ0Ïvoid
+open_linkÌ1024Í(DhWindow *window, const char *location, DhOpenLinkFlags flags)Î_DhWindowClassÖ0Ïvoid
+parent_classÌ64Î_DhAssistantClassÖ0ÏGtkWindowClass
+parent_classÌ64Î_DhAssistantViewClassÖ0ÏWebKitWebViewClass
+parent_classÌ64Î_DhBaseClassÖ0ÏGObjectClass
+parent_classÌ64Î_DhBookClassÖ0ÏGObjectClass
+parent_classÌ64Î_DhBookManagerClassÖ0ÏGObjectClass
+parent_classÌ64Î_DhBookTreeClassÖ0ÏGtkTreeViewClass
+parent_classÌ64Î_DhKeywordModelClassÖ0ÏGObjectClass
+parent_classÌ64Î_DhSearchClassÖ0ÏGtkVBoxClass
+parent_classÌ64Î_DhWindowClassÖ0ÏGtkWindowClass
+parent_instanceÌ64Î_DhAssistantÖ0ÏGtkWindow
+parent_instanceÌ64Î_DhAssistantViewÖ0ÏWebKitWebView
+parent_instanceÌ64Î_DhBaseÖ0ÏGObject
+parent_instanceÌ64Î_DhBookÖ0ÏGObject
+parent_instanceÌ64Î_DhBookManagerÖ0ÏGObject
+parent_instanceÌ64Î_DhBookTreeÖ0ÏGtkTreeView
+parent_instanceÌ64Î_DhKeywordModelÖ0ÏGObject
+parent_instanceÌ64Î_DhSearchÖ0ÏGtkVBox
+parent_instanceÌ64Î_DhWindowÖ0ÏGtkWindow
+privÌ64Î_DhKeywordModelÖ0ÏDhKeywordModelPriv
+privÌ64Î_DhWindowÖ0ÏDhWindowPriv

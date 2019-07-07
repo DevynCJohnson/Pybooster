@@ -1,0 +1,92 @@
+# format=tagmanager
+FISH_SOUND_COMMAND_MAXÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_COMMAND_NOPÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_CONTINUEÃ4Œ_FishSoundStopCtl÷0
+FISH_SOUND_DECODEÃ4Œ_FishSoundMode÷0
+FISH_SOUND_ENCODEÃ4Œ_FishSoundMode÷0
+FISH_SOUND_ERR_BADÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_COMMENT_INVALIDÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_DISABLEDÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_GENERICÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_INVALIDÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_OUT_OF_MEMORYÃ4Œ_FishSoundError÷0
+FISH_SOUND_ERR_SHORT_IDENTIFYÃ4Œ_FishSoundError÷0
+FISH_SOUND_FLACÃ4Œ_FishSoundCodecID÷0
+FISH_SOUND_GET_INFOÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_GET_INTERLEAVEÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_OKÃ4Œ_FishSoundError÷0
+FISH_SOUND_SET_ENCODE_VBRÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_SET_INTERLEAVEÃ4Œ_FishSoundCommand÷0
+FISH_SOUND_SPEEXÃ4Œ_FishSoundCodecID÷0
+FISH_SOUND_STOP_ERRÃ4Œ_FishSoundStopCtl÷0
+FISH_SOUND_STOP_OKÃ4Œ_FishSoundStopCtl÷0
+FISH_SOUND_UNKNOWNÃ4Œ_FishSoundCodecID÷0
+FISH_SOUND_VORBISÃ4Œ_FishSoundCodecID÷0
+FishSoundÃ4096÷0œvoid
+FishSoundCodecIDÃ4096÷0œ_FishSoundCodecID
+FishSoundCommandÃ4096÷0œ_FishSoundCommand
+FishSoundCommentÃ4096÷0œanon_struct_2
+FishSoundDecodedÃ4096÷0œFishSoundDecoded_Float
+FishSoundDecoded_FloatÃ4096÷0œtypedef int
+FishSoundDecoded_FloatIlvÃ4096÷0œtypedef int
+FishSoundEncodedÃ4096÷0œtypedef int
+FishSoundErrorÃ4096÷0œ_FishSoundError
+FishSoundFormatÃ4096÷0œanon_struct_1
+FishSoundInfoÃ4096÷0œanon_struct_0
+FishSoundModeÃ4096÷0œ_FishSoundMode
+FishSoundStopCtlÃ4096÷0œ_FishSoundStopCtl
+_FORTIFY_SOURCEÃ65536÷0
+_FishSoundCodecIDÃ2÷0
+_FishSoundCommandÃ2÷0
+_FishSoundErrorÃ2÷0
+_FishSoundModeÃ2÷0
+_FishSoundStopCtlÃ2÷0
+_GNU_SOURCEÃ65536÷0
+__FISH_SOUND_COMMENT_H__Ã65536÷0
+__FISH_SOUND_CONSTANTS_H__Ã65536÷0
+__FISH_SOUND_DECODE_H__Ã65536÷0
+__FISH_SOUND_DEPRECATED_H__Ã65536÷0
+__FISH_SOUND_ENCODE_H__Ã65536÷0
+__FISH_SOUND_H__Ã65536÷0
+__STDC_HOSTED__Ã65536÷0
+__STDC__Ã65536÷0
+__cplusplusÃ65536÷0
+anon_struct_0Ã2048÷0
+anon_struct_1Ã2048÷0
+anon_struct_2Ã2048÷0
+channelsÃ64Œanon_struct_0÷0œint
+extensionÃ64Œanon_struct_1÷0œchar
+fish_sound_commandÃ1024Õ(FishSound * fsound, int command, void * data, int datasize)÷0œint
+fish_sound_comment_addÃ1024Õ(FishSound * fsound, FishSoundComment * comment)÷0œint
+fish_sound_comment_add_bynameÃ1024Õ(FishSound * fsound, const char * name, const char * value)÷0œint
+fish_sound_comment_firstÃ1024Õ(FishSound * fsound)÷0œconst FishSoundComment *
+fish_sound_comment_first_bynameÃ1024Õ(FishSound * fsound, char * name)÷0œconst FishSoundComment *
+fish_sound_comment_get_vendorÃ1024Õ(FishSound * fsound)÷0œconst char *
+fish_sound_comment_nextÃ1024Õ(FishSound * fsound, const FishSoundComment * comment)÷0œconst FishSoundComment *
+fish_sound_comment_next_bynameÃ1024Õ(FishSound * fsound, const FishSoundComment * comment)÷0œconst FishSoundComment *
+fish_sound_comment_removeÃ1024Õ(FishSound * fsound, FishSoundComment * comment)÷0œint
+fish_sound_comment_remove_bynameÃ1024Õ(FishSound * fsound, char * name)÷0œint
+fish_sound_decodeÃ1024Õ(FishSound * fsound, unsigned char * buf, long bytes)÷0œlong
+fish_sound_deleteÃ1024Õ(FishSound * fsound)÷0œint
+fish_sound_encodeÃ1024Õ(FishSound * fsound, float ** pcm, long frames)÷0œlong
+fish_sound_encode_floatÃ1024Õ(FishSound * fsound, float * pcm[], long frames)÷0œlong
+fish_sound_encode_float_ilvÃ1024Õ(FishSound * fsound, float ** pcm, long frames)÷0œlong
+fish_sound_flushÃ1024Õ(FishSound * fsound)÷0œlong
+fish_sound_get_framenoÃ1024Õ(FishSound * fsound)÷0œlong
+fish_sound_get_interleaveÃ1024Õ(FishSound * fsound)÷0œint
+fish_sound_identifyÃ1024Õ(unsigned char * buf, long bytes)÷0œint
+fish_sound_newÃ1024Õ(int mode, FishSoundInfo * fsinfo)÷0œFishSound *
+fish_sound_prepare_truncationÃ1024Õ(FishSound * fsound, long next_granulepos, int next_eos)÷0œint
+fish_sound_resetÃ1024Õ(FishSound * fsound)÷0œint
+fish_sound_set_decoded_callbackÃ1024Õ(FishSound * fsound, FishSoundDecoded decoded, void * user_data)÷0œint
+fish_sound_set_decoded_floatÃ1024Õ(FishSound * fsound, FishSoundDecoded_Float decoded, void * user_data)÷0œint
+fish_sound_set_decoded_float_ilvÃ1024Õ(FishSound * fsound, FishSoundDecoded_FloatIlv decoded, void * user_data)÷0œint
+fish_sound_set_encoded_callbackÃ1024Õ(FishSound * fsound, FishSoundEncoded encoded, void * user_data)÷0œint
+fish_sound_set_framenoÃ1024Õ(FishSound * fsound, long frameno)÷0œint
+fish_sound_set_interleaveÃ1024Õ(FishSound * fsound, int interleave)÷0œint
+formatÃ64Œanon_struct_0÷0œint
+formatÃ64Œanon_struct_1÷0œint
+nameÃ64Œanon_struct_1÷0œchar
+nameÃ64Œanon_struct_2÷0œchar
+samplerateÃ64Œanon_struct_0÷0œint
+valueÃ64Œanon_struct_2÷0œchar
