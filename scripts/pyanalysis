@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.06.02
+#' @version 2019.07.10
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -151,7 +151,7 @@ for file in "$@"; do
 
     if [ "$FLAKE8_EXISTS" -eq 1 ]; then
         printf '======  *FLAKE8*  ======\n'
-        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --valid-encodings='utf-8,utf-8-unix' --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     elif [ "$FirstLoopPass" -eq 0 ]; then
         printf 'flake8: command not found!\n' >&2
     fi
