@@ -117,7 +117,7 @@ def eny(_iter: Iterable) -> bool:
     >>> eny(('str', 'x', 'y'))
     False
     """
-    return True if True in _iter else False
+    return True in _iter
 
 
 def isiter(_iter: Iterable) -> bool:
@@ -148,6 +148,8 @@ def ishex(_hex: str) -> bool:
     >>> ishex('0x2c')
     True
     >>> ishex('0xfFf')
+    True
+    >>> ishex('0001f9e6')
     True
     >>> ishex('x')
     False
@@ -271,7 +273,7 @@ def iscomplextype(_obj: object) -> bool:
     >>> iscomplextype("37+54j")
     False
     """
-    return True if _obj.__class__ is complex else False
+    return _obj.__class__ is complex
 
 
 def ismodule(_object: object) -> bool:
