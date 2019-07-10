@@ -585,7 +585,7 @@ def splitsentences(_str_of_sentences: str) -> list:
     >>> splitsentences('This is a test. This should be a separate item in the list. Did it work?')
     ['This is a test', 'This should be a separate item in the list', 'Did it work']
     """
-    _array = rgxsplit(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]*', _str_of_sentences)
+    _array = rgxsplit(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]+', _str_of_sentences)
     inputarray: list = []
     for i in _array:
         i = i.strip()
@@ -1073,7 +1073,7 @@ def noescutf8hex(_hex: str) -> str:
     >>> noescutf8hex('\\x40')
     '@'
     """
-    if r'\x' in _hex and (len(_hex) % 4) is 0:
+    if r'\x' in _hex and (len(_hex) % 4) == 0:
         _utf8_strict = '.decode(\'utf8\', \'strict\')'
         if _hex.count('\\') == 3:
             _eval_str = 'b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'' + _utf8_strict
@@ -1087,7 +1087,7 @@ def noescutf8hex(_hex: str) -> str:
         if _hex.count('\\') == 1:
             _hex = hex(int(_hex.replace(r'\x', r''), 16)).replace(r'0x', r'')[:].zfill(2)
             return literal_eval('\'\\x{0}\''.format(_hex))
-    if isinstance(_hex, str) and len(_hex) is 1:
+    if isinstance(_hex, str) and len(_hex) == 1:
         return _hex
     raise ValueError(r'Invalid input passed to noescutf8hex()!')
 
@@ -1296,13 +1296,13 @@ def name2char(_name: str) -> str:
 def num2char(_str: str) -> str:  # noqa: C901
     r"""Replace numerical character representations (as a string) with the respective characters
 
-    >>> num2char('\\U00000026')
+    >>> num2char(r'\U00000026')
     '&'
-    >>> num2char('\\u0026')
+    >>> num2char(r'\u0026')
     '&'
-    >>> num2char('\\x26')
+    >>> num2char(r'\x26')
     '&'
-    >>> num2char(' \\u0040 ')
+    >>> num2char(r' \u0040 ')
     ' @ '
     >>> num2char('This is a test: \\u0040 .')
     'This is a test: @ .'
@@ -1345,7 +1345,7 @@ def num2char(_str: str) -> str:  # noqa: C901
     >>> num2char('N{GREEK CAPITAL LETTER DELTA}')
     'Δ'
     """
-    _pattern = rgxcompile(r'([0-9A-Fa-f]*)(.*)')
+    _pattern = rgxcompile(r'([0-9A-Fa-f]+)(.*)')
     if r'&#x' in _str:
         _str = HEXESCTAG.sub(r'0x\1', _str)
     if r'%' in _str:
@@ -1366,21 +1366,20 @@ def num2char(_str: str) -> str:  # noqa: C901
     _data = rgxsplit(r'\\u|\\U|\\x|0x|U\+|U(?!\+)', _str)
     _out: list = []
     for _char in _data:
-        _append = r''
-        _null = r''
         if not _char:
             continue
+        _append = r''
+        _null = r''
         try:
-            _null, _char, _append = rgxsplit(r'¶ж¶', _pattern.sub(r'¶ж¶\1¶ж¶\2', _char))
+            _tmp = _pattern.sub(r'¶ж¶\1¶ж¶\2', _char)
+            _null, _char, _append = rgxsplit(r'¶ж¶', _tmp)
             del _null
             if ishex(_char):
                 _out.append(chr(int(_char, 16)) + _append)
                 continue
             _out.append(_char + _append)
-            continue
         except ValueError:
             _out.append(_char + _append)
-            continue
     return r''.join(_out)
 
 
