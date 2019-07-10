@@ -66,6 +66,7 @@
 <Multi_key> <period> <equal> : "•" enfilledcircbullet  # BULLET
 <Multi_key> <period> <minus> : "·" periodcentered  # MIDDLE DOT
 <Multi_key> <period> <period> : "…" ellipsis  # HORIZONTAL ELLIPSIS
+<Multi_key> <period> <U02D9> : "•" enfilledcircbullet  # BULLET
 <Multi_key> <plus> <plus> : "#" numbersign  # NUMBER SIGN
 <Multi_key> <question> <exclam> : "⸘" U2E18  # INVERTED INTERROBANG
 <Multi_key> <question> <question> : "¿" questiondown  # INVERTED QUESTION MARK
@@ -3948,14 +3949,15 @@
 <Multi_key> <equal> <greater> : "⇒" U21D2  # RIGHTWARDS DOUBLE ARROW
 <Multi_key> <equal> <less> : "⇐" U21D0  # LEFTWARDS DOUBLE ARROW
 <Multi_key> <equal> <v> : "⇓" U21D3  # DOWNWARDS DOUBLE ARROW
-<Multi_key> <less> <minus> : "←" U2190  # LEFTWARDS ARROW
 <Multi_key> <less> <minus> <greater> : "↔" U2194  # LEFT RIGHT ARROW
+<Multi_key> <less> <minus> <minus> : "←" U2190  # LEFTWARDS ARROW
 <Multi_key> <less> <minus> <o> : "⟲" U27F2  # ANTICLOCKWISE GAPPED CIRCLE ARROW
 <Multi_key> <minus> <2> : "↓" downarrow  # DOWNWARDS ARROW
 <Multi_key> <minus> <4> : "←" leftarrow  # LEFTWARDS ARROW
 <Multi_key> <minus> <6> : "→" rightarrow  # RIGHTWARDS ARROW
 <Multi_key> <minus> <8> : "↑" uparrow  # UPWARDS ARROW
 <Multi_key> <minus> <greater> : "→" U2192  # RIGHTWARDS ARROW
+<Multi_key> <minus> <less>  : "←" U2190  # LEFTWARDS ARROW
 <Multi_key> <slash> <U2194> : "↮" U21AE  # LEFT RIGHT ARROW WITH STROKE
 
 
@@ -4185,7 +4187,6 @@
 
 # Dingbats & Objects
 
-<Multi_key> <1> <1> : "️" UFE0F  # VARIATION SELECTOR-16
 <Multi_key> <1> <greater> : "♳" U2673  # RECYCLING SYMBOL FOR TYPE-1 PLASTICS
 <Multi_key> <2> <greater> : "♴" U2674  # RECYCLING SYMBOL FOR TYPE-2 PLASTICS
 <Multi_key> <3> <greater> : "♵" U2675  # RECYCLING SYMBOL FOR TYPE-3 PLASTICS
@@ -4232,6 +4233,7 @@
 <Multi_key> <f> <p> <r> : "✏" U270F  # PENCIL
 <Multi_key> <f> <p> <u> : "✐" U2710  # UPPER RIGHT PENCIL
 <Multi_key> <f> <r> : "☞" U261E  # WHITE RIGHT POINTING INDEX
+<Multi_key> <f> <u> : "☝" U261D  # WHITE UP POINTING INDEX
 <Multi_key> <f> <U> : "☝" U261D  # WHITE UP POINTING INDEX
 <Multi_key> <F> <U> : "🖕" U1F595  # REVERSED HAND WITH MIDDLE FINGER EXTENDED
 <Multi_key> <f> <v> : "✌" U270C  # VICTORY HAND
@@ -4240,6 +4242,27 @@
 <Multi_key> <L> <L> <A> <P> : "🖖" U1F596  # RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS
 <Multi_key> <p> <o> <o> : "💩" U1F4A9  # PILE OF POO
 <Multi_key> <t> <i> <m> <e> : "⌚" U231A  # WATCH
+
+
+# Variation Selectors
+
+<Multi_key> <v> <s> <0> <1> : "︀" UFE00  # VARIATION SELECTOR-1
+<Multi_key> <v> <s> <0> <2> : "︁" UFE01  # VARIATION SELECTOR-2
+<Multi_key> <v> <s> <0> <3> : "︂" UFE02  # VARIATION SELECTOR-3
+<Multi_key> <v> <s> <0> <4> : "︃" UFE03  # VARIATION SELECTOR-4
+<Multi_key> <v> <s> <0> <5> : "︄" UFE04  # VARIATION SELECTOR-5
+<Multi_key> <v> <s> <0> <6> : "︅" UFE05  # VARIATION SELECTOR-6
+<Multi_key> <v> <s> <0> <7> : "︆" UFE06  # VARIATION SELECTOR-7
+<Multi_key> <v> <s> <0> <8> : "︇" UFE07  # VARIATION SELECTOR-8
+<Multi_key> <v> <s> <0> <9> : "︈" UFE08  # VARIATION SELECTOR-9
+<Multi_key> <v> <s> <1> <0> : "︉" UFE09  # VARIATION SELECTOR-10
+<Multi_key> <v> <s> <1> <1> : "︊" UFE0A  # VARIATION SELECTOR-11
+<Multi_key> <v> <s> <1> <2> : "︋" UFE0B  # VARIATION SELECTOR-12
+<Multi_key> <v> <s> <1> <3> : "︌" UFE0C  # VARIATION SELECTOR-13
+<Multi_key> <v> <s> <1> <4> : "︍" UFE0D  # VARIATION SELECTOR-14
+<Multi_key> <v> <s> <1> <5> : "︎" UFE0E  # VARIATION SELECTOR-15
+<Multi_key> <v> <s> <1> <6> : "️" UFE0F  # VARIATION SELECTOR-16
+<Multi_key> <1> <1> : "️" UFE0F  # VARIATION SELECTOR-16
 
 
 # Miscellaneous Symbols
