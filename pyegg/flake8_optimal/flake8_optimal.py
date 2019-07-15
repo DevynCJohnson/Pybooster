@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Flake8 plugin
+"""@brief Flake8 plugin used to scan for various inconsistencies and issues.
 
 @file flake8_optimal.py
-@version 2019.06.01
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -47,7 +47,7 @@ except ImportError:
 
 
 __docformat__: str = r'restructuredtext en'
-__version__: str = r'2019.06.01'
+__version__: str = r'2019.07.14'
 
 
 # PATTERNS #
@@ -76,7 +76,7 @@ REGEX_SELFSELF = rgxcompile(r'(([\w\( ]+||[ ]+|\t)self\.self(?![\w]+))')
 
 
 def logical_hook(_func: Callable[[str, bool], Generator[Tuple[int, str], None, None]]) -> Callable[[str, bool], Generator[Tuple[int, str], None, None]]:
-    """Decorate flake8 extension functions that read the logical lines"""
+    """Decorate flake8 extension functions that read the logical lines."""
     _func.name = r'flake8_optimal'  # type: ignore
     _func.version = __version__  # type: ignore
     _func.code = _func.__name__.upper()  # type: ignore
@@ -84,7 +84,7 @@ def logical_hook(_func: Callable[[str, bool], Generator[Tuple[int, str], None, N
 
 
 def physical_hook(_func: Callable[[str], Optional[Tuple[int, str]]]) -> Callable[[str], Optional[Tuple[int, str]]]:
-    """Decorate flake8 extension functions that read the physical lines"""
+    """Decorate flake8 extension functions that read the physical lines."""
     _func.name = r'flake8_optimal'  # type: ignore
     _func.version = __version__  # type: ignore
     _func.code = _func.__name__.upper()  # type: ignore
@@ -95,20 +95,20 @@ def physical_hook(_func: Callable[[str], Optional[Tuple[int, str]]]) -> Callable
 
 
 class CopyrightChecker():
-    """Flake8 plugin for ensuring that the copyright notice is present"""
+    """Flake8 plugin for ensuring that the copyright notice is present."""
 
     name: str = r'CopyrightChecker'
     version: str = __version__
     code: str = r'V002'
 
     def __init__(self: object, tree: object, filename: str) -> None:
-        """Initialize flake8 copyright-checker"""
+        """Initialize flake8 copyright-checker."""
         self.tree = tree
         self.filename = filename
 
     @classmethod
     def add_options(cls: object, parser: object) -> None:
-        """Options for the flake8 copyright-checker"""
+        """Options for the flake8 copyright-checker."""
         parser.add_option(  # noqa: T484
             r'--check-copyright',
             action=r'store_true',
@@ -143,14 +143,14 @@ class CopyrightChecker():
 
     @classmethod
     def parse_options(cls: object, options: object) -> None:
-        """Parse options for the flake8 copyright-checker"""
+        """Parse options for the flake8 copyright-checker."""
         cls.check_copyright = options.check_copyright  # noqa: T484
         cls.min_file_size_copyright = options.min_file_size_copyright  # noqa: T484
         cls.author_copyright = options.author_copyright  # noqa: T484
         cls.regexp_copyright = options.regexp_copyright  # noqa: T484
 
     def run(self: object) -> Generator[Tuple[int, int, str, type], None, None]:
-        """Execute the flake8 copyright-checker"""
+        """Execute the flake8 copyright-checker."""
         if not self.check_copyright:  # noqa: T484
             return
         toread = max(1024, self.min_file_size_copyright)  # noqa: T484
@@ -164,20 +164,20 @@ class CopyrightChecker():
 
 
 class MagicCommentChecker():
-    """Flake8 plugin to ensure magic-comments are present and correctly formatted"""
+    """Flake8 plugin to ensure magic-comments are present and correctly formatted."""
 
     name: str = r'MagicComment'
     version: str = __version__
     code: str = r'MG0'
 
     def __init__(self: object, tree: object, filename: str) -> None:
-        """Initialize flake8 magic-comment-checker"""
+        """Initialize flake8 magic-comment-checker."""
         self.filename = filename
         self.tree = tree
 
     @classmethod
     def add_options(cls: object, parser: object) -> None:
-        """Options for the flake8 magic-comment-checker"""
+        """Options for the flake8 magic-comment-checker."""
         parser.add_option(  # noqa: T484
             r'--valid-encodings',
             default=r'utf-8,utf-8-dos,utf-8-mac,utf-8-unix',
@@ -189,11 +189,11 @@ class MagicCommentChecker():
 
     @classmethod
     def parse_options(cls: object, options: object) -> None:
-        """Parse options for the flake8 magic-comment-checker"""
+        """Parse options for the flake8 magic-comment-checker."""
         cls.encodings = [e.strip().lower() for e in options.valid_encodings]  # noqa: T484
 
     def run(self: object) -> Generator[Tuple[int, int, str, object], None, None]:  # noqa: C901,T484  # pylint: disable=R0912
-        """PEP-263 states that a magic comment must be placed into the source files either as first or second line in the file"""
+        """PEP-263 states that a magic comment must be placed into the source files either as first or second line in the file."""
         try:
             with open(self.filename, mode=r'rt') as _file:  # noqa: T484
                 lines = _file.readlines()[:4]
@@ -226,7 +226,7 @@ class MagicCommentChecker():
 
 @logical_hook
 def v001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Vague: Specify the exception type"""
+    """Vague: Specify the exception type."""
     if noqa:
         return None
     _match = logical_line.find(r'except:')
@@ -240,14 +240,14 @@ def v001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def x001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: `__license__` should be `__copyright__`"""
+    """Inconsistency: `__license__` should be `__copyright__`."""
     if not noqa and logical_line.startswith(r'__license__ = '):
         yield 0, r'X001 : `__license__` should be `__copyright__`'
 
 
 @physical_hook
 def x002(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Inconsistency: `__email__` does not appear to contain an email-address"""
+    """Inconsistency: `__email__` does not appear to contain an email-address."""
     if pynoqa(physical_line):
         return None
     _match = REGEX_VALID_EMAIL.search(physical_line)
@@ -258,7 +258,7 @@ def x002(physical_line: str) -> Optional[Tuple[int, str]]:
 
 @physical_hook
 def x003(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Inconsistency: `if __name__ is '__main__':`"""
+    """Inconsistency: `if __name__ is '__main__':`."""
     if pynoqa(physical_line):
         return None
     if physical_line.startswith('if __name__ is \'__main__\':'):
@@ -268,7 +268,7 @@ def x003(physical_line: str) -> Optional[Tuple[int, str]]:
 
 @logical_hook
 def x004(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: Explicitly declare `mode` when using `open()`
+    """Inconsistency: Explicitly declare `mode` when using `open()`.
 
     Use the format `open(FILE, mode=r'rt', encoding=r'utf-8')`
     """
@@ -282,7 +282,7 @@ def x004(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def x005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: Explicitly declare text or binary mode when using `open()`
+    """Inconsistency: Explicitly declare text or binary mode when using `open()`.
 
     Use the format `open(FILE, mode='rt', encoding='utf-8')`
     """
@@ -296,7 +296,7 @@ def x005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def x006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: When declaring a UTF8 encoding in `open()`, use `encoding='utf-8'`"""
+    """Inconsistency: When declaring a UTF8 encoding in `open()`, use `encoding='utf-8'`."""
     if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}):
         return None
     _match = REGEX_OPEN.search(logical_line)
@@ -307,7 +307,7 @@ def x006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def x007(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: `self.self` usually causes bugs and is not intended"""
+    """Inconsistency: `self.self` usually causes bugs and is not intended."""
     if noqa:
         return None
     _match = REGEX_SELFSELF.search(logical_line)
@@ -318,7 +318,7 @@ def x007(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def x008(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Inconsistency: When using `except ExceptionType as VAR:`, name the variable `_err`"""
+    """Inconsistency: When using `except ExceptionType as VAR:`, name the variable `_err`."""
     if noqa:
         return None
     _match = REGEX_EXCEPTAS.search(logical_line)
@@ -329,7 +329,7 @@ def x008(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @physical_hook
 def x009(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Inconsistency: Use `#!/usr/bin/env python3` as the hashpling"""
+    """Inconsistency: Use `#!/usr/bin/env python3` as the hashpling."""
     if pynoqa(physical_line):
         return None
     _match = REGEX_HASHPLING.search(physical_line)
@@ -344,7 +344,7 @@ def x009(physical_line: str) -> Optional[Tuple[int, str]]:
 
 @logical_hook
 def z001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Use `stdout.write()` or `stderr.write()` instead of the print function/statement"""
+    """Optimize: Use `stdout.write()` or `stderr.write()` instead of the print function/statement."""
     if noqa:
         return None
     _match = REGEX_PRINT_STATEMENT.search(logical_line)
@@ -359,7 +359,7 @@ def z001(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z002(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Change `.add_from_string(` to `.add_from_string(buffer=`"""
+    """Optimize: Change `.add_from_string(` to `.add_from_string(buffer=`."""
     if noqa:
         return None
     _match = REGEX_GTK_ADDFROMSTRING.search(logical_line)
@@ -370,7 +370,7 @@ def z002(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z003(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Use `raise SystemExit()` to exit application"""
+    """Optimize: Use `raise SystemExit()` to exit application."""
     if noqa:
         return None
     _match = REGEX_EXIT.search(logical_line)
@@ -383,7 +383,7 @@ def z003(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z004(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: `input()` returns a string, so using `str()` is pointless"""
+    """Optimize: `input()` returns a string, so using `str()` is pointless."""
     if noqa:
         return None
     _match = REGEX_INPUT_STR.search(logical_line)
@@ -394,7 +394,7 @@ def z004(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: `if X:` will be `False` if the object has a zero length"""
+    """Optimize: `if X:` will be `False` if the object has a zero length."""
     if noqa:
         return None
     _match = REGEX_LEN_ZERO.search(logical_line)
@@ -405,7 +405,7 @@ def z005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: `if X:` will be `True` if the object does not have a zero length"""
+    """Optimize: `if X:` will be `True` if the object does not have a zero length."""
     if noqa:
         return None
     _match = REGEX_LEN_IS_ZERO.search(logical_line)
@@ -416,7 +416,7 @@ def z006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z007(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Use `r` before single-quote in `mode` and `encoding` argument values"""
+    """Optimize: Use `r` before single-quote in `mode` and `encoding` argument values."""
     if noqa:
         return None
     _match = REGEX_OPEN_ARGS.search(logical_line)
@@ -427,14 +427,14 @@ def z007(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @logical_hook
 def z008(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Import pycodestyle instead of pep8"""
+    """Optimize: Import pycodestyle instead of pep8."""
     if not noqa and (r'import pep8' in logical_line or r'from pep8' in logical_line):
         yield 0, r'Z008 : Import pycodestyle instead of pep8'
 
 
 @logical_hook
 def z009(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], None, None]:
-    """Optimize: Import pydocstyle instead of pep257"""
+    """Optimize: Import pydocstyle instead of pep257."""
     if not noqa and (r'import pep257' in logical_line or r'from pep257' in logical_line):
         yield 0, r'Z009 : Import pydocstyle instead of pep257'
 
@@ -444,7 +444,7 @@ def z009(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
 
 @physical_hook
 def check_todo_notes(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Note: Do not forget that this `todo` note still needs to be finished"""
+    """Note: Do not forget that this `todo` note still needs to be finished."""
     if pynoqa(physical_line):
         return None
     _match = REGEX_NOTE.search(physical_line)
@@ -459,7 +459,7 @@ def check_todo_notes(physical_line: str) -> Optional[Tuple[int, str]]:
 
 @physical_hook
 def dj01(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Inconsistency: `__version__` should use the format `__version__ = r'YYYY.MM.DD'`"""
+    """Inconsistency: `__version__` should use the format `__version__ = r'YYYY.MM.DD'`."""
     if pynoqa(physical_line):
         return None
     if physical_line.startswith(r'__version__ = ') and not REGEX_DCJ_VERSION.search(physical_line):
@@ -469,7 +469,7 @@ def dj01(physical_line: str) -> Optional[Tuple[int, str]]:
 
 @physical_hook
 def dj02(physical_line: str) -> Optional[Tuple[int, str]]:
-    """Inconsistency: Use all caps for Todo-comments"""
+    """Inconsistency: Use all caps for Todo-comments."""
     if pynoqa(physical_line):
         return None
     _match = REGEX_NOTE.search(physical_line)

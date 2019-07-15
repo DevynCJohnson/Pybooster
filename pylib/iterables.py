@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions that manipulate iterables
+"""@brief Functions that manipulate iterables.
 
 @file iterables.py
 @package pybooster.iterables
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -64,7 +64,7 @@ __all__: list = [
 
 
 def frange(start: float, stop: float, step: float = 0.1) -> Generator[float, None, None]:
-    """Create a generator for a range of floats from start to stop in increments equal to step
+    """Create a generator for a range of floats from start to stop in increments equal to step.
 
     >>> isinstance(frange(0.1, 1.0), Generator)
     True
@@ -88,7 +88,7 @@ def frange(start: float, stop: float, step: float = 0.1) -> Generator[float, Non
 
 
 def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
-    """Increment and Deincrement
+    """Increment and Deincrement.
 
     for i, j in incde(i=3, j=7): print(i, j)
     """
@@ -104,7 +104,7 @@ def incde(i: int, j: int, delta: int = 1) -> Generator[tuple, None, None]:
 
 
 def doeskeymvalue(_dict: dict) -> bool:
-    """Test if any key matches any dict value
+    """Test if any key matches any dict value.
 
     Return True if a key matches a value in the dict
     Only int and str types are supported
@@ -129,7 +129,7 @@ def doeskeymvalue(_dict: dict) -> bool:
 
 
 def finddictkey(_dict: dict, _search_val: str) -> str:
-    """Search a dictionary by string value and stop on first instance
+    """Search a dictionary by string value and stop on first instance.
 
     Return the key containing the value; else, return an empty string
 
@@ -145,7 +145,7 @@ def finddictkey(_dict: dict, _search_val: str) -> str:
 
 
 def finddictkeys(_dict: dict, _search_val: Any) -> list:
-    """Search a dictionary by value and find all instances
+    """Search a dictionary by value and find all instances.
 
     Return a list of keys - ['key1', 'key2']; Else, return an empty list - []
 
@@ -171,7 +171,7 @@ def finddictkeys(_dict: dict, _search_val: Any) -> list:
 
 
 def finddictkeyx(_dict: dict, _search_val: Any) -> str:
-    """Search a dictionary by value and stop on first instance
+    """Search a dictionary by value and stop on first instance.
 
     This searches key values that are tuples, lists, or strings.
     Returns the key (if found); else returns empty string
@@ -197,7 +197,7 @@ def finddictkeyx(_dict: dict, _search_val: Any) -> str:
 
 
 def listkeys(dict1: dict, dict2: dict) -> AbstractSet[Any]:
-    """Make a list (as a 'set') of the keys from two dicts
+    """Make a list (as a 'set') of the keys from two dicts.
 
     listkeys({'KEY': [1, 2, 3], 'key2': [1, 2, 3]}, {'x': 1, 'y': 2})
     {'key2', 'KEY', 'x', 'y'}
@@ -206,7 +206,7 @@ def listkeys(dict1: dict, dict2: dict) -> AbstractSet[Any]:
 
 
 def mergestrdict(dict1: dict, dict2: dict) -> dict:
-    """Merge two string dictionaries
+    """Merge two string dictionaries.
 
     mergestrdict({'KEY': '1, 2, 3'}, {'key2': '1, 2, 3'})
     {'KEY': '1, 2, 3', 'key2': '1, 2, 3'}
@@ -216,7 +216,7 @@ def mergestrdict(dict1: dict, dict2: dict) -> dict:
 
 
 def rmdupkey(_dict: dict) -> dict:
-    """Remove duplicate keys"""
+    """Remove duplicate keys."""
     _out: dict = {}
     for _key, val in _dict.items():
         if _key not in _out.keys():
@@ -225,7 +225,7 @@ def rmdupkey(_dict: dict) -> dict:
 
 
 def rmdupkey_casein(_dict: dict) -> dict:
-    """Values of duplicate keys (besides one instance) are removed case-insensitively
+    """Values of duplicate keys (besides one instance) are removed case-insensitively.
 
     >>> rmdupkey_casein({'KEY': [1, 2, 3], 'key': [1, 2, 3]})
     {'key': [1, 2, 3]}
@@ -240,7 +240,7 @@ def rmdupkey_casein(_dict: dict) -> dict:
 
 
 def rmdupval(_dict: dict) -> dict:
-    """Remove duplicate values from a dict
+    """Remove duplicate values from a dict.
 
     >>> rmdupval({'key': [1, 2, 3], 'key1': [1, 2, 3]})
     {'key': [1, 2, 3]}
@@ -256,7 +256,7 @@ def rmdupval(_dict: dict) -> dict:
 
 
 def create_2d_array(width: int, height: int) -> list:
-    """Create a 2D array with the specified width and height
+    """Create a 2D array with the specified width and height.
 
     >>> create_2d_array(2, 2)
     [[0, 0], [0, 0]]
@@ -267,7 +267,7 @@ def create_2d_array(width: int, height: int) -> list:
 
 
 def func_range(_func: object, _start: Union[float, int] = 0, _stop: Union[float, int] = 360, _step: Union[float, int] = 1) -> list:
-    """Return a list of the outputs for the given range of inputs"""
+    """Return a list of the outputs for the given range of inputs."""
     if isinstance(_start, float) or isinstance(_stop, float) or isinstance(_step, float):
         _num_list: list = list(frange(float(_start), float(_stop), float(_step)))
         return[_func(_val) for _val in _num_list]  # type: ignore
@@ -275,7 +275,7 @@ def func_range(_func: object, _start: Union[float, int] = 0, _stop: Union[float,
 
 
 def mergeoddeven(odd_list: list, even_list: list) -> list:
-    """Merge two lists where one list contains the even fields and the other contains the odd fields"""
+    """Merge two lists where one list contains the even fields and the other contains the odd fields."""
     _out: list = odd_list[:]
     for i, v in enumerate(even_list):
         _out.insert(2 * i + 1, v)
@@ -283,7 +283,7 @@ def mergeoddeven(odd_list: list, even_list: list) -> list:
 
 
 def sortlistlong2short(_list: list) -> None:
-    """Re-order a list (in-place) with longer strings first
+    """Re-order a list (in-place) with longer strings first.
 
     >>> sortlistlong2short(['xz', 'xyz', 'x'])
     """
@@ -291,7 +291,7 @@ def sortlistlong2short(_list: list) -> None:
 
 
 def sortlistshort2long(_list: list) -> None:
-    """Re-order a list (in-place) with shorter strings first
+    """Re-order a list (in-place) with shorter strings first.
 
     >>> sortlistshort2long(['xz', 'xyz', 'x'])
     """
@@ -299,7 +299,7 @@ def sortlistshort2long(_list: list) -> None:
 
 
 def rmduplist(_list: list) -> list:
-    """Remove duplicate items from a list
+    """Remove duplicate items from a list.
 
     rmduplist(['xz', 'xyz', 'xz', 'y'])
     ['xyz', 'xz', 'y']
@@ -308,7 +308,7 @@ def rmduplist(_list: list) -> list:
 
 
 def rmduplist_frozenset(_list: list) -> frozenset:
-    """Remove duplicate items from a list and return a frozenset
+    """Remove duplicate items from a list and return a frozenset.
 
     rmduplist_frozenset(['xz', 'xyz', 'xz', 'y'])
     frozenset({'xz', 'y', 'xyz'})
@@ -317,7 +317,7 @@ def rmduplist_frozenset(_list: list) -> frozenset:
 
 
 def rmduplist_set(_list: list) -> set:
-    """Remove duplicate items from a list and return a set
+    """Remove duplicate items from a list and return a set.
 
     rmduplist_set(['xz', 'xyz', 'xz', 'y'])
     {'xz', 'y', 'xyz'}
@@ -326,7 +326,7 @@ def rmduplist_set(_list: list) -> set:
 
 
 def rmduplist_tuple(_list: list) -> tuple:
-    """Remove duplicate items from a list and return a tuple
+    """Remove duplicate items from a list and return a tuple.
 
     rmduplist_tuple(['xz', 'xyz', 'xz', 'y'])
     ('xz', 'y', 'xyz')
@@ -335,7 +335,7 @@ def rmduplist_tuple(_list: list) -> tuple:
 
 
 def transpose2dls(_list: list) -> list:
-    """Transpose a 2D list
+    """Transpose a 2D list.
 
     transpose2dls([['x1', 'x2', 'x3'], ['y1', 'y2', 'y3']])
     [['x1', 'y1'], ['x2', 'y2', ], ['x3', 'y3']]

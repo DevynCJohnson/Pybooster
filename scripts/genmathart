@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Generate art using math and export as PNG files or math formulas
+"""@brief Generate art using math and export as PNG files or math formulas.
 
 @file genmathart
-@version 2019.05.12
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -66,7 +66,7 @@ try:  # AutoJIT from Numba
     from numba import autojit
 except ImportError:
     def autojit(_func: object):
-        """Provide a dummy decorator for systems lacking Numba"""
+        """Provide a dummy decorator for systems lacking Numba."""
         return _func
 
 
@@ -104,28 +104,28 @@ TAU: float = 2.0 * pi
 
 
 class Xvar:
-    """Class for mathematical X variable"""
+    """Class for mathematical X variable."""
 
     def __str__(self) -> str:
-        """Get string representation of X"""
+        """Get string representation of X."""
         return r'x'
 
-    @staticmethod
-    def eval(x_var: float, y_var: float) -> float:  # pylint: disable=W0613
-        """Evaluate X"""
+    @staticmethod  # noqa: A003
+    def eval(x_var: float, y_var: float) -> float:  # noqa: A003  # pylint: disable=W0613
+        """Evaluate X."""
         return x_var
 
 
 class Yvar:
-    """Class for mathematical Y variable"""
+    """Class for mathematical Y variable."""
 
     def __str__(self) -> str:
-        """Get string representation of Y"""
+        """Get string representation of Y."""
         return r'y'
 
-    @staticmethod
-    def eval(x_var: float, y_var: float) -> float:  # pylint: disable=W0613
-        """Evaluate Y"""
+    @staticmethod  # noqa: A003
+    def eval(x_var: float, y_var: float) -> float:  # noqa: A003  # pylint: disable=W0613
+        """Evaluate Y."""
         return y_var
 
 
@@ -133,19 +133,19 @@ class Yvar:
 
 
 class Multiply:
-    """Class for multiplication expressions in math formulas"""
+    """Class for multiplication expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create multiplication expression"""
+        """Create multiplication expression."""
         self.lhs = buildexpr(rand_object, prob * prob)
         self.rhs = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of the multiplcation formula"""
+        """Get string representation of the multiplcation formula."""
         return str(self.lhs) + r'*' + str(self.rhs)
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate multiplication"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate multiplication."""
         return self.lhs.eval(x_var, y_var) * self.rhs.eval(x_var, y_var)  # type: ignore
 
 
@@ -153,184 +153,184 @@ class Multiply:
 
 
 class Acos:
-    """Class for arccosine expressions in math formulas"""
+    """Class for arccosine expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using arccosine"""
+        """Create mathematical expression using arccosine."""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 1.0)
 
     def __str__(self) -> str:
-        """Get string representation of arccosine"""
+        """Get string representation of arccosine."""
         return r'acos(clamp(' + str(self.num) + r'*' + str(self.arg) + r'))'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate arccosine"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate arccosine."""
         return acos(clamp(self.num * self.arg.eval(x_var, y_var)))  # type: ignore
 
 
 class Atan:
-    """Class for arctangent expressions in math formulas"""
+    """Class for arctangent expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using arctangent"""
+        """Create mathematical expression using arctangent."""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 4.0)
 
     def __str__(self) -> str:
-        """Get string representation of arctangent"""
+        """Get string representation of arctangent."""
         return r'atan(' + str(self.num) + r'*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate arctangent"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate arctangent."""
         return atan(self.num * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Cos:
-    """Class for cosine expressions in math formulas"""
+    """Class for cosine expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using cosine"""
+        """Create mathematical expression using cosine."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of cosine"""
+        """Get string representation of cosine."""
         return r'cos(pi*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate cosine"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate cosine."""
         return cos(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Csc:
-    """Class for cosecant expressions in math formulas"""
+    """Class for cosecant expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using cosecant"""
+        """Create mathematical expression using cosecant."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of cosecant"""
+        """Get string representation of cosecant."""
         return r'csc(pi*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate cosecant"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate cosecant."""
         return csc(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Cvc:
-    """Class for covercosine expressions in math formulas"""
+    """Class for covercosine expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using covercosine"""
+        """Create mathematical expression using covercosine."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of covercosine"""
+        """Get string representation of covercosine."""
         return r'cvc(pi*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate covercosine"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate covercosine."""
         return cvc(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Hvc:
-    """Class for havercosine expressions in math formulas"""
+    """Class for havercosine expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using havercosine"""
+        """Create mathematical expression using havercosine."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of havercosine"""
+        """Get string representation of havercosine."""
         return r'hvc(pi*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate havercosine"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate havercosine."""
         return hvc(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Log1P:
-    """Class for log1p expressions in math formulas"""
+    """Class for log1p expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using log1p"""
+        """Create mathematical expression using log1p."""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(-1.0, 4.0)
         self.num2 = rand_object.uniform(-0.9, 6.0)
 
     def __str__(self) -> str:
-        """Get string representation of log1p"""
+        """Get string representation of log1p."""
         return r'log1p(max(' + str(self.num) + r'*' + str(self.arg) + r', ' + str(self.num2) + r'))'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate log1p"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate log1p."""
         return log1p(max(self.num * self.arg.eval(x_var, y_var), self.num2))  # type: ignore
 
 
 class Phi:
-    """Class for phi expressions in math formulas"""
+    """Class for phi expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using phi"""
+        """Create mathematical expression using phi."""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.uniform(0.01, 4.0)  # rand_object.choice([pi, rand_object.uniform(3.0, 3.2)])
 
     def __str__(self) -> str:
-        """Get string representation of phi"""
+        """Get string representation of phi."""
         return r'phi(' + str(self.num) + r'*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate phi"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate phi."""
         return phi(self.num * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Sec:
-    """Class for secant expressions in math formulas"""
+    """Class for secant expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using secant"""
+        """Create mathematical expression using secant."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of secant"""
+        """Get string representation of secant."""
         return r'sec(tau*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate secant"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate secant."""
         return sec(TAU * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Sin:
-    """Class for sine pi expressions in math formulas"""
+    """Class for sine pi expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using sine"""
+        """Create mathematical expression using sine."""
         self.arg = buildexpr(rand_object, prob * prob)
 
     def __str__(self) -> str:
-        """Get string representation of sine"""
+        """Get string representation of sine."""
         return r'sin(pi*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate sine"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate sine."""
         return sin(pi * self.arg.eval(x_var, y_var))  # type: ignore
 
 
 class Tan:
-    """Class for tangent expressions in math formulas"""
+    """Class for tangent expressions in math formulas."""
 
     def __init__(self, prob: float, rand_object: Random) -> None:
-        """Create mathematical expression using tangent"""
+        """Create mathematical expression using tangent."""
         self.arg = buildexpr(rand_object, prob * prob)
         self.num = rand_object.choice([pi, TAU])
 
     def __str__(self) -> str:
-        """Get string representation of tangent"""
+        """Get string representation of tangent."""
         return r'tan(' + str(self.num) + r'*' + str(self.arg) + r')'
 
-    def eval(self, x_var: float, y_var: float) -> float:
-        """Evaluate tangent"""
+    def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
+        """Evaluate tangent."""
         return tan(self.num * self.arg.eval(x_var, y_var))  # type: ignore
 
 
@@ -338,7 +338,7 @@ class Tan:
 
 
 def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
-    """Randomly select a mathematical expression"""
+    """Randomly select a mathematical expression."""
     reseed(rand_object)
     math_funcs: list = [Multiply, Cos, Csc, Cvc, Hvc, Sin]
     math_vars: tuple = (Xvar, Yvar)
@@ -360,7 +360,7 @@ def buildexpr(rand_object: Random, prob: float = 0.99) -> object:
 
 
 def getexpr_threaded(rand_object: Random, color_queue: Queue, prob: float = 0.99) -> None:
-    """Retrieve a mathematical expression generated by buildexpr"""
+    """Retrieve a mathematical expression generated by buildexpr."""
     color_queue.put(buildexpr(rand_object, prob), block=False, timeout=None)
     color_queue.close()
 
@@ -369,7 +369,7 @@ def getexpr_threaded(rand_object: Random, color_queue: Queue, prob: float = 0.99
 
 
 def format_for_starmap(headings: list, lst_of_lsts: list) -> List[tuple]:
-    """Prepend one item from headings to the list of lists; this will create the needed format for starmap"""
+    """Prepend one item from headings to the list of lists; this will create the needed format for starmap."""
     output: List = []
     i: int = 0
     for lst in lst_of_lsts:
@@ -381,13 +381,13 @@ def format_for_starmap(headings: list, lst_of_lsts: list) -> List[tuple]:
 
 
 def fix_img_format(imgformat: str = r'PNG') -> str:
-    """Ensure that the given image format string is in a format that Pillow will understand"""
+    """Ensure that the given image format string is in a format that Pillow will understand."""
     imgformat = imgformat.replace(r'.', r'').replace(r'*', r'').strip().upper()
     return imgformat.replace(r'BITMAP', r'BMP').replace(r'JPG', r'JPEG').replace(r'TIF', r'TIFF')
 
 
 def imgformatfext(imgformat: str = r'PNG') -> str:
-    """Return the appropriate file extention (as a string) for the given image format"""
+    """Return the appropriate file extention (as a string) for the given image format."""
     if imgformat.upper() == r'PNG':
         return r'.png'
     if imgformat.upper() == r'BMP':
@@ -400,7 +400,7 @@ def imgformatfext(imgformat: str = r'PNG') -> str:
 
 
 def get_suitable_height(width: int) -> int:
-    """Select the most appropriate image height (in pixels) based on the given width"""
+    """Select the most appropriate image height (in pixels) based on the given width."""
     for test in RESOLUTION_PAIRS:
         if width == test[0]:
             return test[1]
@@ -408,7 +408,7 @@ def get_suitable_height(width: int) -> int:
 
 
 def reseed(rand_object: Union[Random, None] = None) -> None:
-    """Seed the random number generator; this function is multithreading and multiprocessing compatible"""
+    """Seed the random number generator; this function is multithreading and multiprocessing compatible."""
     if rand_object is None:
         seed(int.from_bytes(urandom(32), byteorder=choice((r'big', r'little'))) % 4294967295)  # nosec
         return
@@ -419,12 +419,12 @@ def reseed(rand_object: Union[Random, None] = None) -> None:
 
 
 def datadump(_data: object) -> str:
-    """Pickle data and then encode the data in base64"""
+    """Pickle data and then encode the data in base64."""
     return str(b64encode(dumps(_data, fix_imports=False)).decode(r'utf-8'))
 
 
 def loaddata(_data: str) -> bytes:
-    """Load the given pickled base64 data"""
+    """Load the given pickled base64 data."""
     return loads(b64decode(_data), fix_imports=False, encoding=r'ASCII', errors=r'strict')
 
 
@@ -433,7 +433,7 @@ def loaddata(_data: str) -> bytes:
 
 @autojit
 def plot_image(red: object, green: object, blue: object, imgwidth: int = 600) -> object:
-    """Generate an RGB color plot for the given math expressions and evaluate and plot color values within the specified image size"""
+    """Generate an RGB color plot for the given math expressions and evaluate and plot color values within the specified image size."""
     # Image Size
     px_per_unit: int = (imgwidth - 1) // 2
     imgheight: int = get_suitable_height(imgwidth)
@@ -450,7 +450,7 @@ def plot_image(red: object, green: object, blue: object, imgwidth: int = 600) ->
 
 
 def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> str:  # pylint: disable=R0914
-    """Perform calculations for mathematical art"""
+    """Perform calculations for mathematical art."""
     local_rand = Random()
     reseed(local_rand)
     image_name = strftime(r'%m%d%H%M%S') + r'_' + str(Random().random()).replace(r'.', r'')
@@ -508,7 +508,7 @@ def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> 
 
 
 def calc_from_maf(mafsection: str, maffile: configparser.ConfigParser, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR) -> None:
-    """Generate one or more PNG images from *.maf files"""
+    """Generate one or more PNG images from *.maf files."""
     # Load math expressions from *.maf file
     red: bytes = loaddata(maffile[mafsection][r'RedCode'])
     green: bytes = loaddata(maffile[mafsection][r'GreenCode'])
@@ -519,7 +519,7 @@ def calc_from_maf(mafsection: str, maffile: configparser.ConfigParser, imgformat
 
 
 def calc_fractal(fract_type: int = 0, _iters: int = 1024, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR) -> None:
-    """Perform calculations for fractal art"""
+    """Perform calculations for fractal art."""
     local_rand = Random()
     reseed(local_rand)
     image_name = strftime(r'%m%d%H%M%S') + r'_' + str(Random().random()).replace(r'.', r'')
@@ -553,8 +553,8 @@ def calc_fractal(fract_type: int = 0, _iters: int = 1024, imgformat: str = r'PNG
     del image
 
 
-def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR, img_or_math: int = 0) -> None:
-    """Generate one or more random PNG images of psychedelic art"""
+def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR, img_or_math: int = 0) -> None:  # noqa: R701
+    """Generate one or more random PNG images of psychedelic art."""
     # Error Checking
     if not exists(outdir) or not isdir(outdir):
         stderr.write(outdir + ': The specified directory is non-readable or non-existent!\n')
@@ -586,7 +586,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
 
 
 def generate_fractal(fract_type: int = 0, num_imgs: int = 1, _iters: int = 1024, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR) -> None:
-    """Generate one or more random fractal images"""
+    """Generate one or more random fractal images."""
     # Error checking
     if not exists(outdir) or not isdir(outdir):
         stderr.write(outdir + ': The specified directory is non-readable or non-existent!\n')
@@ -608,12 +608,12 @@ def generate_fractal(fract_type: int = 0, num_imgs: int = 1, _iters: int = 1024,
 
 
 def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int = 600, outdir: str = PICDIR) -> None:
-    """Generate one or more PNG images from *.maf files"""
+    """Generate one or more PNG images from *.maf files."""
     # Validate function input
     if not input_file:
         stderr.write(r'The given list is empty!\n')
         raise SystemExit(1)
-    elif not exists(outdir) or not isdir(outdir):
+    if not exists(outdir) or not isdir(outdir):
         stderr.write(outdir + '{}: The specified directory is non-readable or non-existent!\n')
         raise SystemExit(1)
     for inputfile in input_file:
@@ -731,7 +731,7 @@ if __name__ == '__main__':  # noqa: C901
     if OPTIONS.amount < 1:
         stderr.write('Values less than `1` are not acceptable for `--amount`!\n')
         raise SystemExit(1)
-    elif OPTIONS.amount == 1 and not OPTIONS.input:
+    if OPTIONS.amount == 1 and not OPTIONS.input:
         stdout.write('Generating image\n')
     else:
         stdout.write('Generating images\n')

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Mass measurement conversions
+"""@brief Mass measurement conversions.
 
 @file convmass.py
 @package pybooster.convmass
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -42,5 +42,5 @@ __all__: list = [
 
 
 def kilogram2pound(_mass: Union[float, int], _round: int = 3) -> float:
-    """Kilograms -> Pounds"""
+    """Kilograms -> Pounds."""
     return round(_mass * 2.2046, _round)

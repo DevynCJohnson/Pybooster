@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Interface to the magic library (libmagic)
+"""@brief Interface to the magic library (libmagic).
 
 @file filemagic.py
 @package pybooster.filemagic
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -124,7 +124,7 @@ FileMagic = namedtuple(r'FileMagic', (r'mime_type', r'encoding', r'name'))
 
 
 class MagicSet(Structure):  # noqa: N801  # pylint: disable=R0903
-    """Class used to create magic_t"""
+    """Class used to create magic_t."""
 
     _fields_ = []  # type: ignore
 
@@ -184,15 +184,15 @@ _errno.argtypes = [magic_t]
 
 
 class Magic():
-    """Functions in libmagic"""
+    """Functions in libmagic."""
 
     def __init__(self, ms: object) -> None:
-        """Initialize magic"""
+        """Initialize magic."""
         self._magic_t = ms
 
     @staticmethod
     def __tostr(string: object) -> Optional[str]:
-        """Convert an object into a string"""
+        """Convert an object into a string."""
         if string is None:
             return None
         if isinstance(string, str):
@@ -201,55 +201,61 @@ class Magic():
 
     @staticmethod
     def __tobytes(_bytes: object) -> Optional[bytes]:
-        """Convert an object into bytes"""
+        """Convert an object into bytes."""
         if _bytes is None:
             return None
         if isinstance(_bytes, bytes):
             return _bytes
         return bytes(_bytes, encoding=r'utf-8')  # type: ignore
 
-    def compile(self, dbs: Optional[str]) -> int:
-        """Compile entries in the colon separated list of database files passed as argument or the default database file if no argument. The compiled files created are named from the basename(1) of each file argument with ".mgc" appended to it. Returns 0 on success and -1 on failure"""
+    def compile(self, dbs: Optional[str]) -> int:  # noqa: A003
+        """Compile entries in the colon separated list of database files passed as argument or the default database file if no argument.
+
+        The compiled files created are named from the basename(1) of each file argument with ".mgc" appended to it. Returns 0 on success and -1 on failure.
+        """
         return _compile(self._magic_t, Magic.__tobytes(dbs))
 
     def load(self, filename: Optional[str] = None) -> int:
-        """Must be called to load entries in the colon separated list of database files passed as argument or the default database file if no argument before any magic queries can be performed. Returns 0 on success and -1 on failure"""
+        """Must be called to load entries in the colon separated list of database files passed as argument or the default database file if no argument before any magic queries can be performed. Returns 0 on success and -1 on failure."""
         return _load(self._magic_t, Magic.__tobytes(filename))
 
     def setflags(self, flags: int) -> int:
-        """Set flags on the magic object which determine how magic checking behaves; a bitwise OR of the flags described in libmagic(3), but without the MAGIC_ prefix. Returns -1 on systems that do not support utime(2) or utimes(2) when PRESERVE_ATIME is set"""
+        """Set flags on the magic object which determine how magic checking behaves; a bitwise OR of the flags described in libmagic(3), but without the MAGIC_ prefix. Returns -1 on systems that do not support utime(2) or utimes(2) when PRESERVE_ATIME is set."""
         return _setflags(self._magic_t, flags)
 
     def close(self) -> None:
-        """Close the magic database and deallocates any resources used"""
+        """Close the magic database and deallocates any resources used."""
         _close(self._magic_t)
 
     def file(self, filename: Optional[str]) -> Optional[str]:
-        """Return a textual description of the contents of the argument passed as a filename or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code"""
+        """Return a textual description of the contents of the argument passed as a filename or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code."""
         return Magic.__tostr(_file(self._magic_t, Magic.__tobytes(filename)))
 
     def descriptor(self, _fd: object) -> Optional[str]:
-        """Return a textual description of the contents of the argument passed as a file descriptor or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code"""
+        """Return a textual description of the contents of the argument passed as a file descriptor or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code."""
         return Magic.__tostr(_descriptor(self._magic_t, _fd))
 
     def buffer(self, buf: Sized) -> Optional[str]:
-        """Return a textual description of the contents of the argument passed as a buffer or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code"""
+        """Return a textual description of the contents of the argument passed as a buffer or `None` (if an error occurred and the MAGIC_ERROR flag is set). A call to errno() will return the numeric error code."""
         return Magic.__tostr(_buffer(self._magic_t, buf, len(buf)))
 
     def check(self, dbs: Optional[str]) -> int:
-        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure"""
+        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure."""
         return _check(self._magic_t, Magic.__tobytes(dbs))
 
-    def list(self, dbs: Optional[str]) -> int:
-        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure"""
+    def list(self, dbs: Optional[str]) -> int:  # noqa: A003
+        """Check the validity of entries in the colon separated list of database files passed as argument or the default database file if no argument. Returns 0 on success and -1 on failure."""
         return _list(self._magic_t, Magic.__tobytes(dbs))
 
     def error(self) -> Optional[str]:
-        """Return a textual explanation of the last error or None if there was no error"""
+        """Return a textual explanation of the last error or None if there was no error."""
         return Magic.__tostr(_error(self._magic_t))
 
     def errno(self) -> int:
-        """Return a numeric error code. If return value is 0, an internal magic error occurred. If return value is non-zero, the value is an OS error code. Use the errno module or os.strerror() can be used to provide detailed error information"""
+        """Return a numeric error code.
+
+        If return value is 0, an internal magic error occurred. If return value is non-zero, the value is an OS error code. Use the errno module or os.strerror() can be used to provide detailed error information.
+        """
         return _errno(self._magic_t)
 
 

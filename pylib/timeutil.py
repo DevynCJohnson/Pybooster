@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Time Utilities
+"""@brief Time Utilities.
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -76,47 +76,47 @@ YEAR = int(pytime.strftime(r'%Y'))
 
 
 def istoday(_weekday: str) -> bool:
-    """Test if today is a particular weekday"""
+    """Test if today is a particular weekday."""
     return _weekday.lower() == pytime.strftime(r'%A').lower()
 
 
 def istodaysunday() -> bool:
-    """Test if today is Sunday"""
+    """Test if today is Sunday."""
     return pytime.strftime(r'%A') == r'Sunday'
 
 
 def istodaymonday() -> bool:
-    """Test if today is Monday"""
+    """Test if today is Monday."""
     return pytime.strftime(r'%A') == r'Monday'
 
 
 def istodaytuesday() -> bool:
-    """Test if today is Tuesday"""
+    """Test if today is Tuesday."""
     return pytime.strftime(r'%A') == r'Tuesday'
 
 
 def istodaywednesday() -> bool:
-    """Test if today is Wednesday"""
+    """Test if today is Wednesday."""
     return pytime.strftime(r'%A') == r'Wednesday'
 
 
 def istodaythursday() -> bool:
-    """Test if today is Thursday"""
+    """Test if today is Thursday."""
     return pytime.strftime(r'%A') == r'Thursday'
 
 
 def istodayfriday() -> bool:
-    """Test if today is Friday"""
+    """Test if today is Friday."""
     return pytime.strftime(r'%A') == r'Friday'
 
 
 def istodaysaturday() -> bool:
-    """Test if today is Saturday"""
+    """Test if today is Saturday."""
     return pytime.strftime(r'%A') == r'Saturday'
 
 
 def isyear(_year: Union[int, str]) -> bool:
-    """Test if today is a particular year"""
+    """Test if today is a particular year."""
     if isinstance(_year, int):
         _year = str(_year)
     return pytime.strftime(r'%Y') == _year
@@ -126,7 +126,7 @@ def isyear(_year: Union[int, str]) -> bool:
 
 
 def currentseason(_hemisphere: str = 'n') -> str:
-    """Return the current season"""
+    """Return the current season."""
     _day = pytime.localtime().tm_yday
     if _day in range(80, 172):  # Spring
         season = r'spring'
@@ -150,57 +150,57 @@ def currentseason(_hemisphere: str = 'n') -> str:
 
 
 def weekday() -> str:
-    """Return the name of the weekday"""
+    """Return the name of the weekday."""
     return pytime.strftime(r'%A')
 
 
 def month() -> str:
-    """Return the name of the month"""
+    """Return the name of the month."""
     return pytime.strftime(r'%B')
 
 
 def year() -> str:
-    """Return the year"""
+    """Return the year."""
     return pytime.strftime(r'%Y')
 
 
 def date() -> str:
-    """Return the date"""
+    """Return the date."""
     return pytime.strftime(r'%x')
 
 
 def clock() -> str:
-    """Return the time"""
+    """Return the time."""
     return pytime.strftime(r'%X')
 
 
 def date_time() -> str:
-    """Return the date and time"""
+    """Return the date and time."""
     return pytime.strftime(r'%x %X')
 
 
 def dateandtime() -> str:
-    """Return the date and time"""
+    """Return the date and time."""
     return pytime.strftime(r'%x %X')
 
 
 def day() -> str:
-    """Return the day"""
+    """Return the day."""
     return pytime.strftime(r'%d')
 
 
 def hour() -> str:
-    """Return the hour"""
+    """Return the hour."""
     return pytime.strftime(r'%I')
 
 
 def fulltime() -> str:
-    """Return the time, month, year, etc."""
+    """Return the time, month, year, etc.."""
     return pytime.strftime(r'%A %b %d, %Y, %X')
 
 
 def sysuptime() -> str:
-    """Return the system's uptime"""
+    """Return the system's uptime."""
     if platform.startswith(r'win'):
         try:
             import win32api

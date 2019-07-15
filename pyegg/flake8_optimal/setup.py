@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Setup file for Flake8-Optimal plugin
+"""@brief Setup file for Flake8-Optimal plugin.
 
 @file setup.py
-@version 2019.06.01
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,7 +38,7 @@ from setuptools import setup
 
 
 def get_version() -> str:
-    """Get the version number from the script"""
+    """Get the version number from the script."""
     with open(r'flake8_optimal.py', mode=r'rt', encoding=r'utf-8') as _file:
         for _line in _file:
             if _line.startswith(r'__version__ = '):
@@ -48,7 +48,7 @@ def get_version() -> str:
 
 
 def read(fname: str) -> str:
-    """Return the contents of the specified file as a string"""
+    """Return the contents of the specified file as a string."""
     return open(joinpath(dirname(__file__), fname), mode=r'rt', encoding=r'utf-8').read()
 
 

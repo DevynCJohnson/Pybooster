@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Linter and checker for C source code
+"""@brief Linter and checker for C source code.
 
 @file clint
-@version 2019.06.01
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -187,13 +187,13 @@ REGEX_STRCPY = rgxcompile(r'[^\w\.]strcpy\(.+')
 
 
 def getfile_list(_filename: str) -> list:
-    """Get file contents and return as a list"""
+    """Get file contents and return as a list."""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         return _file.readlines()
 
 
 def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str, _mstr: str = r'0', truth: bool = True) -> None:
-    """Display warning/error information on stderr"""
+    """Display warning/error information on stderr."""
     if not truth:
         return
     _writestr: str = r''
@@ -211,13 +211,13 @@ def output_info(_filepath: str, _linenum: int, _line: str, _code: str, _msg: str
 
 
 def strip_strings(_str: str) -> str:
-    """Remove all strings"""
+    """Remove all strings."""
     _str = resub(r'"[^"]*"(,|)', r'', _str.strip())
     return resub(r'\'[^\']*\'(,|)', r'', _str)
 
 
 def strip_comments_and_strings(_str: str) -> str:
-    """Remove all comments and strings to produce logical_line/log_line"""
+    """Remove all comments and strings to produce logical_line/log_line."""
     _str = resub(r'(.*)//.*', r'\1', strip_strings(_str))
     return resub(r'(.*)/\*.*', r'\1', _str)
 
@@ -228,7 +228,7 @@ def strip_comments_and_strings(_str: str) -> str:
 # Comment Warnings & Errors
 
 def c000(filepath: str, line_num: int, line: str) -> None:
-    """C***: Check for formatting issues in comments"""
+    """C***: Check for formatting issues in comments."""
     # C001
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
@@ -240,7 +240,7 @@ def c000(filepath: str, line_num: int, line: str) -> None:
 
 
 def c000_line(filepath: str, line_num: int, line: str) -> None:
-    """C***: Check for formatting issues in comment lines"""
+    """C***: Check for formatting issues in comment lines."""
     # C000
     _match = REGEX_COMMENT_MISSING_SPACE.search(line)
     if _match and r'://' not in line[_match.start():] + line[:_match.end()]:
@@ -250,7 +250,7 @@ def c000_line(filepath: str, line_num: int, line: str) -> None:
 # Macros Warnings & Errors
 
 def m000(filepath: str, line_num: int, line: str) -> None:
-    """M***: Check for issues in macros code (i.e. formatting, inconsistencies, security, etc.)"""
+    """M***: Check for issues in macros code (i.e. formatting, inconsistencies, security, etc.)."""
     # M001
     _match = REGEX_MACROS_LEADINGSPACE.search(line)
     if _match and line.strip() != line:
@@ -286,7 +286,7 @@ def m000(filepath: str, line_num: int, line: str) -> None:
 # Security Issues & Flaws
 
 def s000_checks(filepath: str, line_num: int, line: str, log_line: str) -> None:
-    """S***: Check for potential security flaws and issues"""
+    """S***: Check for potential security flaws and issues."""
     # S001
     _match = REGEX_GETS.search(log_line)
     output_info(filepath, line_num, line, r'S001', r'To strengthen security, use `fgets()` instead of `gets()`', _match, bool(_match))
@@ -314,7 +314,7 @@ def s000_checks(filepath: str, line_num: int, line: str, log_line: str) -> None:
 
 
 def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:
-    """S***: Check for potential security flaws and issues"""
+    """S***: Check for potential security flaws and issues."""
     if log_line.startswith((r'DECL_FUNC', r'LIB_FUNC')):
         return
     if r'(' in log_line and r')' in log_line:
@@ -324,7 +324,7 @@ def s000(filepath: str, line_num: int, line: str, log_line: str) -> None:
 # "Todo" Note
 
 def t000(filepath: str, line_num: int, line: str) -> None:
-    """T***: Look for "todo" notes"""
+    """T***: Look for "todo" notes."""
     # T000
     _match = REGEX_NOTE.search(line)
     output_info(filepath, line_num, line, r'T000', r'Todo note found', _match, bool(_match))
@@ -333,7 +333,7 @@ def t000(filepath: str, line_num: int, line: str) -> None:
 # Inconsistency
 
 def xd00(filepath: str, line_num: int, line: str, no_str_line: str) -> None:  # noqa: C901,R701
-    """Find XD00 inconsistencies and bad formatting associated with datatypes"""
+    """Find XD00 inconsistencies and bad formatting associated with datatypes."""
     # XD01
     _match = REGEX_LONGINT.search(no_str_line)
     output_info(filepath, line_num, line, r'XD01', r'Use `long` instead of `long int` and `long long` instead of `long long int`', _match, bool(_match))
@@ -366,7 +366,7 @@ def xd00(filepath: str, line_num: int, line: str, no_str_line: str) -> None:  # 
 
 
 def xw04(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: C901,R701
-    """Find XW04 inconsistencies and bad formatting (Single white-space only around math-operators)"""
+    """Find XW04 inconsistencies and bad formatting (Single white-space only around math-operators)."""
     if log_line.startswith(r':'):
         return
     if not any([r'+' in log_line, r'-' in log_line, r'/' in log_line, r'*' in log_line]):
@@ -386,7 +386,7 @@ def xw04(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
 
 
 def xw05(filepath: str, line_num: int, line: str, log_line: str) -> None:
-    """Find XW05 inconsistencies and bad formatting (Single white-space only around assignment operators)"""
+    """Find XW05 inconsistencies and bad formatting (Single white-space only around assignment operators)."""
     if r'=' in log_line:
         _match = REGEX_PLUS_EQUALS_SPACE.search(log_line)
         output_info(filepath, line_num, line, r'XW05', r'Single white-space only around `+=`', _match, bool(_match))
@@ -411,7 +411,7 @@ def xw05(filepath: str, line_num: int, line: str, log_line: str) -> None:
 
 
 def xw00(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
-    """XW**: Check for inconsistencies and bad formatting associated with white-space"""
+    """XW**: Check for inconsistencies and bad formatting associated with white-space."""
     asm_match = REGEX_VALID_ASM.search(log_line)
     ptr_match = REGEX_POINTERS.search(log_line)
     # XW01
@@ -502,7 +502,7 @@ def xw00(filepath: str, line_num: int, line: str, log_line: str) -> None:  # noq
 
 
 def x000(filepath: str, line_num: int, line: str, log_line: str, no_str_line: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
-    """X***: Check for inconsistencies and bad formatting"""
+    """X***: Check for inconsistencies and bad formatting."""
     if r'__' in log_line:
         # X001
         _match = REGEX_EMAIL.search(line)
@@ -546,7 +546,7 @@ def x000(filepath: str, line_num: int, line: str, log_line: str, no_str_line: st
 # Optimize
 
 def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:
-    """Z***: Check for code that can be optimized and suggest optimal code"""
+    """Z***: Check for code that can be optimized and suggest optimal code."""
     # Z001
     output_info(filepath, line_num, line, r'Z001', r'Due to the multiplicative properties, `2 * x` is the same as `x + x`, which computers can compute more quickly', truth=bool(REGEX_MUL2.search(log_line)))
     if r'=' not in log_line:
@@ -564,7 +564,7 @@ def z000(filepath: str, line_num: int, line: str, log_line: str) -> None:
 
 
 def run_line_tests(filepath: str, line_num: int, line: str, no_str_line: str, has_valid_headers: bool) -> None:
-    """Perform the actual tests"""
+    """Perform the actual tests."""
     if REGEX_COMMENT_LINE.search(line):  # Physical comment line
         t000(filepath, line_num, line)
         c000_line(filepath, line_num, line)
@@ -583,7 +583,7 @@ def run_line_tests(filepath: str, line_num: int, line: str, no_str_line: str, ha
 
 
 def analyze_src(src_file_list: list, filepath: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
-    """Analyze the C source code against the various tests"""
+    """Analyze the C source code against the various tests."""
     # Set Variables #
     line_num: int = 1
     inside_multiline_comment: bool = False

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Length measurement conversions
+"""@brief Length measurement conversions.
 
 @file convlength.py
 @package pybooster.convlength
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -114,52 +114,52 @@ __all__: list = [
 
 
 def centimeter2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Chains"""
+    """Centimeters -> Chains."""
     return round(_length * 0.00049710, _round)
 
 
 def centimeter2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Decimeters"""
+    """Centimeters -> Decimeters."""
     return round(_length * 0.1, _round)
 
 
 def centimeter2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Feet"""
+    """Centimeters -> Feet."""
     return round(_length * 0.032808, _round)
 
 
 def centimeter2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Inches"""
+    """Centimeters -> Inches."""
     return round(_length * 0.39370, _round)
 
 
 def centimeter2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Kilometers"""
+    """Centimeters -> Kilometers."""
     return round(_length * 0.00001, _round)
 
 
 def centimeter2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Meters"""
+    """Centimeters -> Meters."""
     return round(_length * 0.01, _round)
 
 
 def centimeter2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Microinches"""
+    """Centimeters -> Microinches."""
     return round(_length * 393700.0, _round)
 
 
 def centimeter2micron(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Microns"""
+    """Centimeters -> Microns."""
     return round(_length * 10000.0, _round)
 
 
 def centimeter2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Millimeters"""
+    """Centimeters -> Millimeters."""
     return round(_length * 10.0, _round)
 
 
 def centimeter2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Centimeters -> Yards"""
+    """Centimeters -> Yards."""
     return round(_length * 0.010936, _round)
 
 
@@ -167,57 +167,57 @@ def centimeter2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def foot2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Chains"""
+    """Feet -> Chains."""
     return round(_length * 0.015151, _round)
 
 
 def foot2centimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Centimeters"""
+    """Feet -> Centimeters."""
     return round(_length * 30.480370641306998, _round)
 
 
 def foot2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Decimeters"""
+    """Feet -> Decimeters."""
     return round(_length * 3.0480370641307, _round)
 
 
 def foot2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Furlongs"""
+    """Feet -> Furlongs."""
     return round(_length * 0.0015151, _round)
 
 
 def foot2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Inches"""
+    """Feet -> Inches."""
     return round(_length * 12.0, _round)
 
 
 def foot2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Kilometers"""
+    """Feet -> Kilometers."""
     return round(_length * 0.000304803706413, _round)
 
 
 def foot2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Meters"""
+    """Feet -> Meters."""
     return round(_length * 0.3948, _round)
 
 
 def foot2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Microinches"""
+    """Feet -> Microinches."""
     return round(_length * 12000000.0, _round)
 
 
 def foot2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Miles"""
+    """Feet -> Miles."""
     return round(_length * 0.00018939, _round)
 
 
 def foot2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Millimeters"""
+    """Feet -> Millimeters."""
     return round(_length * 304.803706413069983, _round)
 
 
 def foot2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Yards"""
+    """Feet -> Yards."""
     return round(_length * 0.333333333333333, _round)
 
 
@@ -225,52 +225,52 @@ def foot2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def inch2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Chains"""
+    """Inches -> Chains."""
     return round(_length * 0.0012626, _round)
 
 
 def inch2centimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Centimeters"""
+    """Inches -> Centimeters."""
     return round(_length * 2.54000508001016, _round)
 
 
 def inch2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Decimeters"""
+    """Inches -> Decimeters."""
     return round(_length * 0.254000508001016, _round)
 
 
 def inch2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Feet"""
+    """Inches -> Feet."""
     return round(_length * 0.083333333333333, _round)
 
 
 def inch2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Furlong"""
+    """Inches -> Furlong."""
     return round(_length * 0.00012626, _round)
 
 
 def inch2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Kilometers"""
+    """Inches -> Kilometers."""
     return round(_length * 0.0000254000508, _round)
 
 
 def inch2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Meters"""
+    """Inches -> Meters."""
     return round(_length * 0.0254, _round)
 
 
 def inch2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Microinches"""
+    """Inches -> Microinches."""
     return round(_length * 1000000.0, _round)
 
 
 def inch2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Millimeters"""
+    """Inches -> Millimeters."""
     return round(_length * 25.4000508001016, _round)
 
 
 def inch2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Inches -> Yards"""
+    """Inches -> Yards."""
     return round(_length * 0.027777777777778, _round)
 
 
@@ -278,72 +278,72 @@ def inch2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def kilometer2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Chains"""
+    """Kilometers -> Chains."""
     return round(_length * 49.710, _round)
 
 
 def kilometer2centimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Centimeters"""
+    """Kilometers -> Centimeters."""
     return round(_length * 100000.0, _round)
 
 
 def kilometer2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Decimeters"""
+    """Kilometers -> Decimeters."""
     return round(_length * 10000.0, _round)
 
 
 def kilometer2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Feet"""
+    """Kilometers -> Feet."""
     return round(_length * 3280.8, _round)
 
 
 def kilometer2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Furlongs"""
+    """Kilometers -> Furlongs."""
     return round(_length * 4.9710, _round)
 
 
 def kilometer2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Inches"""
+    """Kilometers -> Inches."""
     return round(_length * 39370.0, _round)
 
 
 def kilometer2lightyear(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Lightyears"""
+    """Kilometers -> Lightyears."""
     return round(_length / 9460730472580.8, _round)
 
 
 def kilometer2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Meters"""
+    """Kilometers -> Meters."""
     return round(_length * 1000.0, _round)
 
 
 def kilometer2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Miles"""
+    """Kilometers -> Miles."""
     return round(_length * 0.621371, _round)
 
 
 def kilometer2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Microinches"""
+    """Kilometers -> Microinches."""
     return round(_length * 39370000000.0, _round)
 
 
 def kilometer2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Millimeters"""
+    """Kilometers -> Millimeters."""
     return round(_length * 1000000.0, _round)
 
 
 def kilometer2nauticalmile(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Nautical Miles"""
+    """Kilometers -> Nautical Miles."""
     return round(_length * 0.53996, _round)
 
 
 def kilometer2parsec(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Parsecs"""
+    """Kilometers -> Parsecs."""
     return round(_length / 30857000000000.0, _round)
 
 
 def kilometer2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Yards"""
+    """Kilometers -> Yards."""
     return round(_length * 1093.6, _round)
 
 
@@ -351,17 +351,17 @@ def kilometer2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def meter2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Meters -> Feet"""
+    """Meters -> Feet."""
     return round(_length / 0.3948, _round)
 
 
 def meter2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Meters -> Inches"""
+    """Meters -> Inches."""
     return round(_length / 0.0254, _round)
 
 
 def meter2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Meters -> Yards"""
+    """Meters -> Yards."""
     return round(_length / 0.9144, _round)
 
 
@@ -369,42 +369,42 @@ def meter2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def mile2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Chains"""
+    """Miles -> Chains."""
     return round(_length * 80.0, _round)
 
 
 def mile2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Feet"""
+    """Miles -> Feet."""
     return round(_length * 5280.0, _round)
 
 
 def mile2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Furlongs"""
+    """Miles -> Furlongs."""
     return round(_length * 8.0, _round)
 
 
 def mile2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Inches"""
+    """Miles -> Inches."""
     return round(_length * 63360.0, _round)
 
 
 def mile2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Kilometers"""
+    """Miles -> Kilometers."""
     return round(_length / 0.62137, _round)
 
 
 def mile2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Meters"""
+    """Miles -> Meters."""
     return round(_length / 0.00062137, _round)
 
 
 def mile2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Microinches"""
+    """Miles -> Microinches."""
     return round(_length * 63360000000.0, _round)
 
 
 def mile2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Yards"""
+    """Miles -> Yards."""
     return round(_length * 1760.0, _round)
 
 
@@ -412,55 +412,55 @@ def mile2yard(_length: Union[float, int], _round: int = 3) -> float:
 
 
 def yard2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Chains"""
+    """Yards -> Chains."""
     return round(_length * 0.045454, _round)
 
 
 def yard2centimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Centimeters"""
+    """Yards -> Centimeters."""
     return round(_length / 0.010936, _round)
 
 
 def yard2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Decimeters"""
+    """Yards -> Decimeters."""
     return round(_length / 0.10936, _round)
 
 
 def yard2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Feet"""
+    """Yards -> Feet."""
     return round(_length * 3.0, _round)
 
 
 def yard2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Furlongs"""
+    """Yards -> Furlongs."""
     return round(_length * 0.0045454, _round)
 
 
 def yard2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Inches"""
+    """Yards -> Inches."""
     return round(_length * 36.0, _round)
 
 
 def yard2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Kilometers"""
+    """Yards -> Kilometers."""
     return round(_length / 1093.6, _round)
 
 
 def yard2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Meters"""
+    """Yards -> Meters."""
     return round(_length * 0.9144, _round)
 
 
 def yard2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Microinches"""
+    """Yards -> Microinches."""
     return round(_length * 36000000.0, _round)
 
 
 def yard2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Miles"""
+    """Yards -> Miles."""
     return round(_length * 0.00056818, _round)
 
 
 def yard2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Yards -> Millimeters"""
+    """Yards -> Millimeters."""
     return round(_length / 0.0010936, _round)

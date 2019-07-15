@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions for various character and string manipulations
+"""@brief Functions for various character and string manipulations.
 
 @file strtools.py
 @package pybooster.strtools
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -188,7 +188,7 @@ __all__: list = [
 
 
 def cap(_str: str) -> str:
-    """Capitalize the beginning of each word
+    """Capitalize the beginning of each word.
 
     >>> cap('this is a test.')
     'This Is A Test.'
@@ -197,7 +197,7 @@ def cap(_str: str) -> str:
 
 
 def formal(_str: str) -> str:
-    """Change the capitalization to the format used in titles
+    """Change the capitalization to the format used in titles.
 
     >>> formal('this is a test.')
     'This Is A Test.'
@@ -206,7 +206,7 @@ def formal(_str: str) -> str:
 
 
 def lowercase(_str: str) -> str:
-    """Turn a string in lowercase
+    """Turn a string in lowercase.
 
     >>> lowercase('THIS IS A TEST.')
     'this is a test.'
@@ -215,7 +215,7 @@ def lowercase(_str: str) -> str:
 
 
 def sentence(_str: str) -> str:
-    """Capitalization the beginning of each sentence
+    """Capitalization the beginning of each sentence.
 
     >>> sentence('this IS A TEST.')
     'This is a test.'
@@ -224,7 +224,7 @@ def sentence(_str: str) -> str:
 
 
 def togglecase(_str: str) -> str:
-    """Convert uppercase to lowercase and vice versa
+    """Convert uppercase to lowercase and vice versa.
 
     >>> togglecase('this IS A TEST.')
     'THIS is a test.'
@@ -233,7 +233,7 @@ def togglecase(_str: str) -> str:
 
 
 def uppercase(_str: str) -> str:
-    """Turn a string in all caps
+    """Turn a string in all caps.
 
     >>> uppercase('this is a test.')
     'THIS IS A TEST.'
@@ -242,7 +242,7 @@ def uppercase(_str: str) -> str:
 
 
 def camelcase2pascalcase(string: str) -> str:
-    """Convert string from camelCase to PascalCase
+    """Convert string from camelCase to PascalCase.
 
     >>> camelcase2pascalcase('testString')
     'TestString'
@@ -255,7 +255,7 @@ def camelcase2pascalcase(string: str) -> str:
 
 
 def camelcase2snakecase(string: str) -> str:
-    """Convert string from camelCase to snake_case
+    """Convert string from camelCase to snake_case.
 
     >>> camelcase2snakecase('testString')
     'test_string'
@@ -273,7 +273,7 @@ def camelcase2snakecase(string: str) -> str:
 
 
 def pascalcase2camelcase(string: str) -> str:
-    """Convert string from PascalCase to camelCase
+    """Convert string from PascalCase to camelCase.
 
     >>> pascalcase2camelcase('TestString')
     'testString'
@@ -286,7 +286,7 @@ def pascalcase2camelcase(string: str) -> str:
 
 
 def pascalcase2snakecase(string: str) -> str:
-    """Convert string from PascalCase to snake_case
+    """Convert string from PascalCase to snake_case.
 
     >>> pascalcase2snakecase('TestString')
     'test_string'
@@ -306,7 +306,7 @@ def pascalcase2snakecase(string: str) -> str:
 
 
 def snakecase2camelcase(string: str) -> str:
-    """Convert string from snake_case to camelCase
+    """Convert string from snake_case to camelCase.
 
     >>> snakecase2camelcase('test_string')
     'testString'
@@ -320,7 +320,7 @@ def snakecase2camelcase(string: str) -> str:
 
 
 def snakecase2pascalcase(string: str) -> str:
-    """Convert string from snake_case to PascalCase
+    """Convert string from snake_case to PascalCase.
 
     >>> snakecase2pascalcase('test_string')
     'TestString'
@@ -341,7 +341,7 @@ def snakecase2pascalcase(string: str) -> str:
 
 
 def endletters(_str: str) -> str:
-    """Keep the first and last letter of a single word
+    """Keep the first and last letter of a single word.
 
     >>> endletters('Test')
     'Tt'
@@ -350,7 +350,7 @@ def endletters(_str: str) -> str:
 
 
 def firstletters(_str: str) -> str:
-    """Remove the last letter of a single word
+    """Remove the last letter of a single word.
 
     >>> firstletters('Test')
     'Tes'
@@ -359,7 +359,7 @@ def firstletters(_str: str) -> str:
 
 
 def lastletters(_str: str) -> str:
-    """Remove the first letter of a single word
+    """Remove the first letter of a single word.
 
     >>> lastletters('Test')
     'est'
@@ -368,7 +368,7 @@ def lastletters(_str: str) -> str:
 
 
 def middleletters(_str: str) -> str:
-    """Remove the first and last letter of a single word
+    """Remove the first and last letter of a single word.
 
     >>> middleletters('Test')
     'es'
@@ -377,7 +377,7 @@ def middleletters(_str: str) -> str:
 
 
 def insstr(_str: str, _char: str, index: int) -> str:
-    """Insert a string at the specified point of another string
+    """Insert a string at the specified point of another string.
 
     >>> insstr('This is a test.', 'random ', 10)
     'This is a random test.'
@@ -386,7 +386,7 @@ def insstr(_str: str, _char: str, index: int) -> str:
 
 
 def num2ordinal(_str: str) -> str:
-    """Convert numbers to ordinals
+    """Convert numbers to ordinals.
 
     >>> num2ordinal('21')
     'twenty-first'
@@ -398,7 +398,7 @@ def num2ordinal(_str: str) -> str:
 
 
 def ordinal2num(_str: str) -> str:
-    """Convert ordinals to numbers
+    """Convert ordinals to numbers.
 
     >>> ordinal2num('twenty-first')
     '21'
@@ -410,7 +410,7 @@ def ordinal2num(_str: str) -> str:
 
 
 def explode(_str: str) -> str:
-    """Insert a space between each character
+    """Insert a space between each character.
 
     >>> explode('this is a test.')
     't h i s   i s   a   t e s t .'
@@ -419,7 +419,7 @@ def explode(_str: str) -> str:
 
 
 def implode(_str: str) -> str:
-    """Remove a space from between each character
+    """Remove a space from between each character.
 
     >>> implode('this is a test.')
     'thisisatest.'
@@ -432,7 +432,7 @@ def implode(_str: str) -> str:
 
 
 def holograph2str(_str: str) -> str:
-    """Convert the holograph characters in the string to their normalized form
+    """Convert the holograph characters in the string to their normalized form.
 
     >>> holograph2str('Τһіѕ іѕ а ｔеѕｔ․')
     'This is a test.'
@@ -447,7 +447,7 @@ def holograph2str(_str: str) -> str:
 
 
 def str2holograph(_str: str) -> str:
-    """Convert the characters in the string to their holograph equivalents
+    """Convert the characters in the string to their holograph equivalents.
 
     >>> str2holograph('This is a test.')
     'Τһіѕ іѕ а ｔеѕｔ․'
@@ -462,7 +462,7 @@ def str2holograph(_str: str) -> str:
 
 
 def replace_odd_chars(_data: str) -> str:
-    r"""Replace odd characters with plain characters (e.g. replace non-breaking space with ASCII space)
+    r"""Replace odd characters with plain characters (e.g. replace non-breaking space with ASCII space).
 
     >>> replace_odd_chars('This\u200Cis a\u180Etest\u16EB')
     'This is a test.'
@@ -498,7 +498,7 @@ def replace_odd_chars(_data: str) -> str:
 
 
 def stripunicode(_str: str) -> str:
-    """Replace unicode characters with a question-mark (?)
+    """Replace unicode characters with a question-mark (?).
 
     >>> stripunicode('Testing (¶ö⁉) for success.')
     'Testing (???) for success.'
@@ -513,7 +513,7 @@ def stripunicode(_str: str) -> str:
 
 
 def rmcurlycommas(_str: str) -> str:
-    """Remove curly commas
+    """Remove curly commas.
 
     >>> rmcurlycommas('This is، a test.')
     'This is a test.'
@@ -522,7 +522,7 @@ def rmcurlycommas(_str: str) -> str:
 
 
 def replacecurlycommas(_str: str) -> str:
-    """Replace curly commas with a regular comma
+    """Replace curly commas with a regular comma.
 
     >>> replacecurlycommas('This is، a test.')
     'This is, a test.'
@@ -531,7 +531,7 @@ def replacecurlycommas(_str: str) -> str:
 
 
 def rmcurlyquotes(_str: str) -> str:
-    """Remove curly quotes
+    """Remove curly quotes.
 
     >>> rmcurlyquotes('This is a “test”.')
     'This is a test.'
@@ -542,7 +542,7 @@ def rmcurlyquotes(_str: str) -> str:
 
 
 def replacecurlyquotes(_str: str) -> str:
-    """Replace curly quotes with straight-quotes
+    """Replace curly quotes with straight-quotes.
 
     >>> replacecurlyquotes('This is a “test”.')
     'This is a "test".'
@@ -551,7 +551,7 @@ def replacecurlyquotes(_str: str) -> str:
 
 
 def rmspecialwhitespace(_str: str) -> str:
-    r"""Remove special white-space characters
+    r"""Remove special white-space characters.
 
     >>> rmspecialwhitespace('This\u202F is a test.')
     'This is a test.'
@@ -560,7 +560,7 @@ def rmspecialwhitespace(_str: str) -> str:
 
 
 def replacespecialwhitespace(_str: str) -> str:
-    r"""Replace special white-space characters
+    r"""Replace special white-space characters.
 
     >>> replacespecialwhitespace('This\u202Fis a test.')
     'This is a test.'
@@ -569,7 +569,7 @@ def replacespecialwhitespace(_str: str) -> str:
 
 
 def rmpunct(_str: str) -> str:
-    """Remove end-of-sentence punctuation
+    """Remove end-of-sentence punctuation.
 
     >>> rmpunct('this is a test.')
     'this is a test'
@@ -580,7 +580,7 @@ def rmpunct(_str: str) -> str:
 
 
 def splitsentences(_str_of_sentences: str) -> list:
-    """Split a string by sentence
+    """Split a string by sentence.
 
     >>> splitsentences('This is a test. This should be a separate item in the list. Did it work?')
     ['This is a test', 'This should be a separate item in the list', 'Did it work']
@@ -595,7 +595,7 @@ def splitsentences(_str_of_sentences: str) -> list:
 
 
 def sqlstr(_obj: str, _strength: int = 0) -> str:
-    """Format a string to protect against SQL-Injection Attacks
+    """Format a string to protect against SQL-Injection Attacks.
 
     _strength indicates what characters should be removed or escaped
     0 = (Default) Remove curly quotes, commas, and brackets; escape quotes, slashes, and dashes
@@ -627,7 +627,7 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
 
 
 def presentlist(_list: list) -> str:
-    """Convert a list to a string without the brackets and quotes
+    """Convert a list to a string without the brackets and quotes.
 
     >>> presentlist([1, 2, 3])
     '1, 2, 3'
@@ -641,7 +641,7 @@ def presentlist(_list: list) -> str:
 
 
 def isascii(_str: str) -> bool:
-    """Test if a string is within the Ascii limit
+    """Test if a string is within the Ascii limit.
 
     >>> isascii('B')
     True
@@ -662,7 +662,7 @@ def isascii(_str: str) -> bool:
 
 
 def isctrlascii(_str: str) -> bool:
-    r"""Test if a string is within the Control Ascii limit
+    r"""Test if a string is within the Control Ascii limit.
 
     >>> isctrlascii('\r')
     True
@@ -687,7 +687,7 @@ def isctrlascii(_str: str) -> bool:
 
 
 def isprntascii(_str: str) -> bool:
-    """Test if a string is within the Printable Ascii limit
+    """Test if a string is within the Printable Ascii limit.
 
     >>> isprntascii('1')
     True
@@ -704,7 +704,7 @@ def isprntascii(_str: str) -> bool:
 
 
 def isextascii(_str: str) -> bool:
-    """Test if a string is within the Extended Ascii limit
+    """Test if a string is within the Extended Ascii limit.
 
     >>> isextascii('á')
     True
@@ -725,7 +725,7 @@ def isextascii(_str: str) -> bool:
 
 
 def isgreek(_str: str) -> bool:
-    """Test if the string is a string of Greek letters
+    """Test if the string is a string of Greek letters.
 
     >>> isgreek('Γ')
     True
@@ -756,7 +756,7 @@ def isgreek(_str: str) -> bool:
 
 
 def hasgreek(_str: str) -> bool:
-    """Test if the string contains Greek letters
+    """Test if the string contains Greek letters.
 
     >>> hasgreek('ἀἁἂαβγδεζ')
     True
@@ -773,7 +773,7 @@ def hasgreek(_str: str) -> bool:
 
 
 def isbraille(_str: str) -> bool:
-    """Test if the string is a string of Braille characters
+    """Test if the string is a string of Braille characters.
 
     >>> isbraille('⠀⠁⠂⠃')
     True
@@ -798,7 +798,7 @@ def isbraille(_str: str) -> bool:
 
 
 def hasbraille(_str: str) -> bool:
-    """Test if the string contains Braille characters
+    """Test if the string contains Braille characters.
 
     >>> hasbraille('ἀἁ⠀⠁⠂⠃δεζ')
     True
@@ -814,8 +814,8 @@ def hasbraille(_str: str) -> bool:
     return any(True for x in _str if x in BRAILLE)
 
 
-def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901
-    r"""Test if a string is within the Unicode limit
+def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901,R701
+    r"""Test if a string is within the Unicode limit.
 
     >>> isunicode('&')
     True
@@ -859,8 +859,8 @@ def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901
     return False
 
 
-def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R0915
-    r"""Test if the string contains a character hex escape
+def hashexescape(_str: str) -> bool:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+    r"""Test if the string contains a character hex escape.
 
     >>> hashexescape('\\U0002ebe0')
     True
@@ -939,7 +939,7 @@ def hashexescape(_str: str) -> bool:  # noqa: C901  # pylint: disable=R0912,R091
 
 
 def testref(_data: str) -> bool:
-    """Test if the string contains a character reference
+    """Test if the string contains a character reference.
 
     >>> testref('&#38;')
     True
@@ -952,7 +952,7 @@ def testref(_data: str) -> bool:
 
 
 def is_palindrome(_str: str) -> bool:
-    """Test if the given string is a palidrome
+    """Test if the given string is a palidrome.
 
     >>> is_palindrome('racecar')
     True
@@ -966,7 +966,7 @@ def is_palindrome(_str: str) -> bool:
 
 
 def _search(_char: str, _num: int, _str: str, _out: list) -> list:
-    """Find hexadecimal characters"""
+    """Find hexadecimal characters."""
     _ct: int = _str.count(_char)
     _start: int = 0
     while _ct != 0:
@@ -988,7 +988,7 @@ def _search(_char: str, _num: int, _str: str, _out: list) -> list:
 
 
 def findescapes(_str: str) -> list:
-    r"""Find character hex escapes in a string
+    r"""Find character hex escapes in a string.
 
     Return a list of the escapes
     Return an empty list if none are found
@@ -1009,7 +1009,7 @@ def findescapes(_str: str) -> list:
 
 
 def shrink_esc_utf16to8(_hex: str) -> str:
-    r"""Shrink a 16-bit hex escape to a 8-bit hex escape (\\uhhhh) => (\\xhh)
+    r"""Shrink a 16-bit hex escape to a 8-bit hex escape `\\uhhhh => \\xhh`.
 
     >>> shrink_esc_utf16to8('\\u002f')
     '\\x2f'
@@ -1022,7 +1022,7 @@ def shrink_esc_utf16to8(_hex: str) -> str:
 
 
 def shrink_esc_utf32to8(_hex: str) -> str:
-    r"""Shrink a 32-bit hex escape to a 8-bit hex escape (\\Uhhhhhhhh) => (\\xhh)
+    r"""Shrink a 32-bit hex escape to a 8-bit hex escape `\\Uhhhhhhhh => \\xhh`.
 
     >>> shrink_esc_utf32to8('\\U0000002f')
     '\\x2f'
@@ -1035,7 +1035,7 @@ def shrink_esc_utf32to8(_hex: str) -> str:
 
 
 def shrink_esc_utf32to16(_hex: str) -> str:
-    r"""Shrink a 32-bit hex escape to a 16-bit hex escape (\\Uhhhhhhhh) => (\\uhhhh)
+    r"""Shrink a 32-bit hex escape to a 16-bit hex escape `\\Uhhhhhhhh => \\uhhhh`.
 
     >>> shrink_esc_utf32to16('\\U0000002f')
     '\\u002f'
@@ -1048,7 +1048,7 @@ def shrink_esc_utf32to16(_hex: str) -> str:
 
 
 def rmbyteshexesc(_str: bytes) -> str:
-    r"""Remove hex escapes from byte strings and return  as a string
+    r"""Remove hex escapes from byte strings and return  as a string.
 
     >>> rmbyteshexesc(b'\x80abc')
     'abc'
@@ -1057,7 +1057,7 @@ def rmbyteshexesc(_str: bytes) -> str:
 
 
 def rplbyteshexesc(_str: bytes) -> str:
-    r"""Replace hex escapes in byte strings and return as a string
+    r"""Replace hex escapes in byte strings and return as a string.
 
     >>> rplbyteshexesc(b'\x26abc')
     '&abc'
@@ -1066,7 +1066,7 @@ def rplbyteshexesc(_str: bytes) -> str:
 
 
 def noescutf8hex(_hex: str) -> str:
-    r"""Remove escapes from UTF-8 hex strings (\\x26)
+    r"""Remove escapes from UTF-8 hex strings (\\x26).
 
     >>> noescutf8hex('\\x26')
     '&'
@@ -1093,7 +1093,7 @@ def noescutf8hex(_hex: str) -> str:
 
 
 def noescape(_hex: str) -> str:
-    r"""Remove escapes from a single-character hexadecimal string
+    r"""Remove escapes from a single-character hexadecimal string.
 
     >>> noescape('\\U00000026')
     '&'
@@ -1118,7 +1118,7 @@ def noescape(_hex: str) -> str:
 
 
 def expandhexescape(_hex: str) -> str:
-    r"""Convert a 16-bit hex escape to a 32-bit hex escape (\\uhhhh) => (\\Uhhhhhhhh)
+    r"""Convert a 16-bit hex escape to a 32-bit hex escape `\\uhhhh => \\Uhhhhhhhh`.
 
     >>> expandhexescape('\\u202f')
     '\\U0000202f'
@@ -1133,7 +1133,7 @@ def expandhexescape(_hex: str) -> str:
 
 
 def char2noeschex(_char: str) -> str:
-    """Convert a character to a hex string lacking delimiters
+    """Convert a character to a hex string lacking delimiters.
 
     >>> char2noeschex('&')
     '26'
@@ -1144,7 +1144,7 @@ def char2noeschex(_char: str) -> str:
 
 
 def str2noeschex(_char: str) -> str:
-    """Convert a string to a hex string lacking delimiters
+    """Convert a string to a hex string lacking delimiters.
 
     >>> str2noeschex('This is a test.')
     '54686973206973206120746573742e'
@@ -1153,7 +1153,7 @@ def str2noeschex(_char: str) -> str:
 
 
 def str2hexcolon(_str: str) -> str:
-    """Convert a string to a hex string divided into pairs by colons
+    """Convert a string to a hex string divided into pairs by colons.
 
     >>> str2hexcolon('This is a test.')
     '54:68:69:73:20:69:73:20:61:20:74:65:73:74:2e'
@@ -1164,8 +1164,8 @@ def str2hexcolon(_str: str) -> str:
 # X 2 CHARACTER
 
 
-def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True) -> str:
-    r"""Convert an integer (as a str or int type) to a character
+def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True) -> str:  # noqa: R701
+    r"""Convert an integer (as a str or int type) to a character.
 
     The integer may be decimal, hex, octal, or binary
     By default, the returned value is escaped unicode (\U0000000)
@@ -1208,7 +1208,7 @@ def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True)
 
 
 def hexstr2char(_hex: str, _escape: bool = True) -> str:
-    r"""Convert a hex number (as a string) to a character
+    r"""Convert a hex number (as a string) to a character.
 
     >>> hexstr2char('0x26')
     '\\U00000026'
@@ -1221,7 +1221,7 @@ def hexstr2char(_hex: str, _escape: bool = True) -> str:
 
 
 def hexint2char(_hex: int, _escape: bool = True) -> str:
-    r"""Convert a hex integer to a character
+    r"""Convert a hex integer to a character.
 
     >>> hexint2char(0x26)
     '\\U00000026'
@@ -1232,7 +1232,7 @@ def hexint2char(_hex: int, _escape: bool = True) -> str:
 
 
 def octstr2char(_oct: str, _escape: bool = True) -> str:
-    r"""Convert an octal number (as a string) to a character
+    r"""Convert an octal number (as a string) to a character.
 
     >>> octstr2char('0o46')
     '\\U00000026'
@@ -1245,7 +1245,7 @@ def octstr2char(_oct: str, _escape: bool = True) -> str:
 
 
 def octint2char(_oct: int, _escape: bool = True) -> str:
-    r"""Convert an octal integer to a character
+    r"""Convert an octal integer to a character.
 
     >>> octint2char(0o46)
     '\\U00000026'
@@ -1256,7 +1256,7 @@ def octint2char(_oct: int, _escape: bool = True) -> str:
 
 
 def binstr2char(_bin: str, _escape: bool = True) -> str:
-    r"""Convert a binary number (as a string) to a character
+    r"""Convert a binary number (as a string) to a character.
 
     >>> binstr2char('0b100110')
     '\\U00000026'
@@ -1269,7 +1269,7 @@ def binstr2char(_bin: str, _escape: bool = True) -> str:
 
 
 def binint2char(_bin: int, _escape: bool = True) -> str:
-    r"""Convert an binary integer to a character
+    r"""Convert an binary integer to a character.
 
     >>> binint2char(0b100110)
     '\\U00000026'
@@ -1280,7 +1280,7 @@ def binint2char(_bin: int, _escape: bool = True) -> str:
 
 
 def name2char(_name: str) -> str:
-    r"""Convert a Unicode name to a character
+    r"""Convert a Unicode name to a character.
 
     If the name is invalid, an empty string is returned
 
@@ -1293,8 +1293,8 @@ def name2char(_name: str) -> str:
         return r''
 
 
-def num2char(_str: str) -> str:  # noqa: C901
-    r"""Replace numerical character representations (as a string) with the respective characters
+def num2char(_str: str) -> str:  # noqa: C901,R701
+    r"""Replace numerical character representations (as a string) with the respective characters.
 
     >>> num2char(r'\U00000026')
     '&'
@@ -1304,8 +1304,6 @@ def num2char(_str: str) -> str:  # noqa: C901
     '&'
     >>> num2char(r' \u0040 ')
     ' @ '
-    >>> num2char('This is a test: \\u0040 .')
-    'This is a test: @ .'
     >>> num2char('\\U0001f9e6')  # UTF-32 Notation
     '🧦'
     >>> num2char('0001f9e6')  # UTF-32 Notation
@@ -1387,7 +1385,7 @@ def num2char(_str: str) -> str:  # noqa: C901
 
 
 def char2int(_char: str) -> int:
-    """Convert a character to an integer
+    """Convert a character to an integer.
 
     >>> char2int('&')
     38
@@ -1400,7 +1398,7 @@ def char2int(_char: str) -> int:
 
 
 def refnum2int(_refnum: str) -> int:
-    """Convert Decimal-NCR/HTML-Entity to an integer
+    """Convert Decimal-NCR/HTML-Entity to an integer.
 
     >>> refnum2int('&#38;')
     38
@@ -1415,7 +1413,7 @@ def refnum2int(_refnum: str) -> int:
 
 
 def str2hexesc(_str: str) -> str:
-    r"""Convert a string to a UTF-8 hex string (\xc3\x9e)
+    r"""Convert a string to a UTF-8 hex string (\xc3\x9e).
 
     >>> str2hexesc('&')
     '\\x26'
@@ -1428,7 +1426,7 @@ def str2hexesc(_str: str) -> str:
 
 
 def str2uri(_str: str) -> str:
-    """Convert a string to an URI escaped hex sequence (%c3%9e)
+    """Convert a string to an URI escaped hex sequence (%c3%9e).
 
     >>> str2uri('&')
     '%26'
@@ -1445,7 +1443,7 @@ def str2uri(_str: str) -> str:
 
 
 def str2intstr(_str: str) -> str:
-    """Convert a string to an integer string (& => 38)
+    """Convert a string to an integer string (& => 38).
 
     >>> str2intstr('&')
     '38'
@@ -1464,7 +1462,7 @@ def str2intstr(_str: str) -> str:
 
 
 def int2utf16(_int: int, _endian: str = r'little') -> str:
-    r"""Convert an integer to a character
+    r"""Convert an integer to a character.
 
     >>> int2utf16(38)
     '&\x00'
@@ -1479,7 +1477,7 @@ def int2utf16(_int: int, _endian: str = r'little') -> str:
 
 
 def int2utf32(_int: int, _endian: str = r'little') -> str:
-    """Convert an integer to a character
+    """Convert an integer to a character.
 
     >>> int2utf32(38)
     '&'
@@ -1490,7 +1488,7 @@ def int2utf32(_int: int, _endian: str = r'little') -> str:
 
 
 def char2num(_char: str, _upcase: bool = False) -> str:
-    r"""Convert characters to unicode escapes of a proper length
+    r"""Convert characters to unicode escapes of a proper length.
 
     >>> char2num('&')
     '\\u0026'
@@ -1530,7 +1528,7 @@ def char2num(_char: str, _upcase: bool = False) -> str:
 
 
 def str2hexstr(_str: str) -> str:
-    """Convert a string to a hexadecimal string (0xc30x9e)
+    """Convert a string to a hexadecimal string (0xc30x9e).
 
     >>> str2hexstr('&')
     '0x26'
@@ -1549,7 +1547,7 @@ def str2hexstr(_str: str) -> str:
 
 
 def hex2unicodehex(_hex: Union[int, str]) -> str:
-    r"""Convert hexadecimal to Unicode+Hex Notation (U+02EBE0)
+    r"""Convert hexadecimal to Unicode+Hex Notation (U+02EBE0).
 
     >>> hex2unicodehex('0x01D4C3')
     'U+01D4C3'
@@ -1577,7 +1575,7 @@ def hex2unicodehex(_hex: Union[int, str]) -> str:
 
 
 def hex2cssnot(_hex: Union[int, str]) -> str:
-    r"""Convert hexadecimal to CSS Notation (\01D4C3)
+    r"""Convert hexadecimal to CSS Notation (\01D4C3).
 
     >>> hex2cssnot('0x01D4C3')
     '\\001D4C3'
@@ -1609,7 +1607,7 @@ def hex2cssnot(_hex: Union[int, str]) -> str:
 
 
 def str2bytes(_str: str, _encoding: str = r'utf8') -> bytes:
-    r"""Convert strings to bytes
+    r"""Convert strings to bytes.
 
     >>> str2bytes('&')
     b'&'
@@ -1622,7 +1620,7 @@ def str2bytes(_str: str, _encoding: str = r'utf8') -> bytes:
 
 
 def bytes2str(_bytes: bytes, _encoding: str = r'utf8') -> str:
-    """Convert bytes to strings
+    """Convert bytes to strings.
 
     >>> bytes2str(b'&')
     '&'
@@ -1633,7 +1631,7 @@ def bytes2str(_bytes: bytes, _encoding: str = r'utf8') -> str:
 
 
 def int2hexbytes(_int: int, _length: int = 2, _endian: str = r'little', _signed: bool = False) -> bytes:
-    r"""Convert int to bytes represented as an escaped hex string
+    r"""Convert int to bytes represented as an escaped hex string.
 
     If `_endian` is "big", then the most significant byte is at the beginning of the byte array.
     If `_endian` is "little", then the most significant byte is at the end of the byte array.
@@ -1653,7 +1651,7 @@ def int2hexbytes(_int: int, _length: int = 2, _endian: str = r'little', _signed:
 
 
 def hexstr2bytearray(_hex: str) -> bytearray:
-    r"""Convert a hex string to a bytearray
+    r"""Convert a hex string to a bytearray.
 
     >>> hexstr2bytearray('2640')
     bytearray(b'&@')
@@ -1670,7 +1668,7 @@ def hexstr2bytearray(_hex: str) -> bytearray:
 
 
 def text2bubble(_str: str) -> str:
-    """Convert a plain-text string to bubble text
+    """Convert a plain-text string to bubble text.
 
     >>> text2bubble('This (str) is a sample test.')
     'Ⓣⓗⓘⓢ (⃝ⓢⓣⓡ)⃝ ⓘⓢ ⓐ ⓢⓐⓜⓟⓛⓔ ⓣⓔⓢⓣ⊙'
@@ -1682,7 +1680,7 @@ def text2bubble(_str: str) -> str:
 
 
 def bubble2text(_str: str) -> str:
-    """Convert bubble text to a plain-text string
+    """Convert bubble text to a plain-text string.
 
     >>> bubble2text('Ⓣⓗⓘⓢ ⓘⓢ ⓐ ⓣⓔⓢⓣ⊙')
     'This is a test.'
@@ -1698,7 +1696,7 @@ def bubble2text(_str: str) -> str:
 
 
 def text2square(_str: str, square_spaces: bool = False) -> str:
-    """Convert a plain-text string to square text
+    """Convert a plain-text string to square text.
 
     >>> text2square('This (str) is a sample test.', True)
     'T⃞h⃞i⃞s⃞ ⃞(⃞s⃞t⃞r⃞)⃞ ⃞i⃞s⃞ ⃞a⃞ ⃞s⃞a⃞m⃞p⃞l⃞e⃞ ⃞t⃞e⃞s⃞t⃞.⃞'
@@ -1712,7 +1710,7 @@ def text2square(_str: str, square_spaces: bool = False) -> str:
 
 
 def square2text(_str: str) -> str:
-    """Convert square text to a plain-text string
+    """Convert square text to a plain-text string.
 
     >>> square2text('T⃞h⃞i⃞s⃞ ⃞(⃞s⃞t⃞r⃞)⃞ ⃞i⃞s⃞ ⃞a⃞ ⃞s⃞a⃞m⃞p⃞l⃞e⃞ ⃞t⃞e⃞s⃞t⃞.⃞')
     'This (str) is a sample test.'

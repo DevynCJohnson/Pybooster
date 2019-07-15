@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Various cryptography functions
+"""@brief Various cryptography functions.
 
 @file cryptography.py
 @package pybooster.cryptography
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -55,7 +55,7 @@ __all__: list = [
 
 
 def encrypt_xor(_data: str) -> bytearray:
-    r"""Return the xor-encrypted data (of the given string) as a bytearray; Decrypt with decrypt_xor()
+    r"""Return the xor-encrypted data (of the given string) as a bytearray; Decrypt with `decrypt_xor()`.
 
     >>> encrypt_xor(r'This is a test.')
     bytearray(b'\xfc\xc0\xc1\xdb\x88\xc1\xdb\x88\xc9\x88\xdc\xcd\xdb\xdc\x86')
@@ -64,7 +64,7 @@ def encrypt_xor(_data: str) -> bytearray:
 
 
 def decrypt_xor(_data: bytearray) -> str:
-    r"""Return the xor-decrypted data (of the given byte-array) as a string; Encrypt with encrypt_xor()
+    r"""Return the xor-decrypted data (of the given byte-array) as a string; Encrypt with `encrypt_xor()`.
 
     >>> decrypt_xor(bytearray(b'\xfc\xc0\xc1\xdb\x88\xc1\xdb\x88\xc9\x88\xdc\xcd\xdb\xdc\x86'))
     'This is a test.'
@@ -73,7 +73,7 @@ def decrypt_xor(_data: bytearray) -> str:
 
 
 def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
-    r"""XOR-Encrypt the bytes using the given key and return the data as a string; Decrypt with decrypt_xor_str_key_bytes()
+    r"""XOR-Encrypt the bytes using the given key and return the data as a string; Decrypt with `decrypt_xor_str_key_bytes()`.
 
     >>> encrypt_xor_bytes_key_str(br'This is a test.', r'Coffee')
     '\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH'
@@ -82,7 +82,7 @@ def encrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
 
 
 def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
-    r"""XOR-Decrypt the string using the given key and return the data as bytes; Encrypt with encrypt_xor_bytes_key_str()
+    r"""XOR-Decrypt the string using the given key and return the data as bytes; Encrypt with `encrypt_xor_bytes_key_str()`.
 
     >>> decrypt_xor_str_key_bytes('\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH', r'Coffee')
     b'This is a test.'
@@ -91,7 +91,7 @@ def decrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
 
 
 def encrypt_xor_str_key_str(_data: str, _key: str) -> str:
-    r"""XOR-Encrypt the string using the given key and return the data as a string; Decrypt with decrypt_xor_str_key_bytes()
+    r"""XOR-Encrypt the string using the given key and return the data as a string; Decrypt with `decrypt_xor_str_key_bytes()`.
 
     >>> encrypt_xor_str_key_str(r'This is a test.', r'Coffee')
     '\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH'
@@ -100,7 +100,7 @@ def encrypt_xor_str_key_str(_data: str, _key: str) -> str:
 
 
 def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
-    r"""XOR-Decrypt the string using the given key and return the data as a string; Encrypt with encrypt_xor_str_key_str()
+    r"""XOR-Decrypt the string using the given key and return the data as a string; Encrypt with `encrypt_xor_str_key_str()`.
 
     >>> decrypt_xor_str_key_str('\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH', r'Coffee')
     'This is a test.'
@@ -109,7 +109,7 @@ def decrypt_xor_str_key_str(_data: str, _key: str) -> str:
 
 
 def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
-    r"""Return the xor-encrypted string data as bytes using the given key; Decrypt with decrypt_xor_bytes_key_bytes() or decrypt_xor_bytes_key_str()
+    r"""Return the xor-encrypted string data as bytes using the given key; Decrypt with `decrypt_xor_bytes_key_bytes()` or `decrypt_xor_bytes_key_str()`.
 
     >>> encrypt_xor_str_key_bytes(r'This is a test.', r'Coffee')
     b'\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH'
@@ -118,7 +118,7 @@ def encrypt_xor_str_key_bytes(_data: str, _key: str) -> bytes:
 
 
 def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
-    r"""XOR-Decrypt the bytes using the given key and return the data as bytes; Encrypt with encrypt_xor_str_key_bytes()
+    r"""XOR-Decrypt the bytes using the given key and return the data as bytes; Encrypt with `encrypt_xor_str_key_bytes()`.
 
     >>> decrypt_xor_bytes_key_bytes(b'\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH', r'Coffee')
     b'This is a test.'
@@ -127,7 +127,7 @@ def decrypt_xor_bytes_key_bytes(_data: bytes, _key: str) -> bytes:
 
 
 def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
-    r"""XOR-Decrypt the bytes using the given key and return the data as a string; Encrypt with encrypt_xor_str_key_bytes()
+    r"""XOR-Decrypt the bytes using the given key and return the data as a string; Encrypt with `encrypt_xor_str_key_bytes()`.
 
     >>> decrypt_xor_bytes_key_str(b'\x17\x07\x0f\x15E\x0c0O\x07F\x11\x000\x1bH', r'Coffee')
     'This is a test.'
@@ -139,7 +139,7 @@ def decrypt_xor_bytes_key_str(_data: bytes, _key: str) -> str:
 
 
 def md5sum(byte_str: bytes) -> str:
-    """Generate the MD5 checksum for the given byte string
+    """Generate the MD5 checksum for the given byte string.
 
     >>> md5sum(bytes(r'This is a test', r'utf8'))
     'ce114e4501d2f4e2dcea3e17b546f339'
@@ -152,7 +152,7 @@ def md5sum(byte_str: bytes) -> str:
 
 
 def get_checksums(_data: object) -> dict:
-    """Generate a dictionary containing various checksum values for the given data
+    """Generate a dictionary containing various checksum values for the given data.
 
     >>> get_checksums(br'This is a test.')
     {'CRC32': 94035228, 'CRC16': 50568}

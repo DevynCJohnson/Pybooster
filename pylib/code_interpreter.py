@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Interpret various computer languages using installed interpreters
+"""@brief Interpret various computer languages using installed interpreters.
 
 @file code_interpreter.py
 @package pybooster.code_interpreter
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -68,7 +68,7 @@ __all__: list = [
 
 
 def execclispfile(_filename: str) -> str:
-    """Execute a CLisp file given as a str and return the output as a str"""
+    """Execute a CLisp file given as a str and return the output as a str."""
     return getoutput(r'clisp ' + _filename)
 
 
@@ -76,7 +76,7 @@ def execclispfile(_filename: str) -> str:
 
 
 def execcoffeescript(_code: str) -> str:
-    """Execute Coffeescript code given as a str and return the output as a str"""
+    """Execute Coffeescript code given as a str and return the output as a str."""
     return getoutput('coffeescript --eval \'' + _code.replace('\'', '\\\'') + '\'')
 
 
@@ -84,12 +84,12 @@ def execcoffeescript(_code: str) -> str:
 
 
 def execjs(_code: str) -> str:
-    """Execute JavaScript code given as a str and return the output as a str"""
+    """Execute JavaScript code given as a str and return the output as a str."""
     return getoutput('jsc -e \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execjsfile(_filename: str) -> str:
-    """Execute a JavaScript file given as a str and return the output as a str"""
+    """Execute a JavaScript file given as a str and return the output as a str."""
     return getoutput(r'jsc -e ' + _filename)
 
 
@@ -97,12 +97,12 @@ def execjsfile(_filename: str) -> str:
 
 
 def execlua(_code: str) -> str:
-    """Execute Lua code given as a str and return the output as a str"""
+    """Execute Lua code given as a str and return the output as a str."""
     return getoutput('lua -e \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execluafile(_filename: str) -> str:
-    """Execute a Lua script given as a str and return the output as a str"""
+    """Execute a Lua script given as a str and return the output as a str."""
     return getoutput(r'lua ' + _filename)
 
 
@@ -110,17 +110,17 @@ def execluafile(_filename: str) -> str:
 
 
 def execperl(_code: str) -> str:
-    """Execute Perl code given as a str and return the output as a str"""
+    """Execute Perl code given as a str and return the output as a str."""
     return getoutput('perl -e \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execperlfile(_filename: str) -> str:
-    """Execute a Perl script given as a str and return the output as a str"""
+    """Execute a Perl script given as a str and return the output as a str."""
     return getoutput(r'perl ' + _filename)
 
 
 def initperl() -> None:
-    """Run a Perl REP-Loop (Read-Evaluate-Print-Loop)"""
+    """Run a Perl REP-Loop (Read-Evaluate-Print-Loop)."""
     _input: str = r''
     while 1:
         _input = input(r'Perl > ').replace('\'', '\\\'')  # nosec
@@ -133,12 +133,12 @@ def initperl() -> None:
 
 
 def execphp(_code: str) -> str:
-    """Execute PHP code given as a str and return the output as a str"""
+    """Execute PHP code given as a str and return the output as a str."""
     return getoutput('php -r \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execphpfile(_filename: str) -> str:
-    """Execute a PHP script given as a str and return the output as a str"""
+    """Execute a PHP script given as a str and return the output as a str."""
     return getoutput(r'php -f ' + _filename)
 
 
@@ -146,12 +146,12 @@ def execphpfile(_filename: str) -> str:
 
 
 def execruby(_code: str) -> str:
-    """Execute Ruby code given as a str and return the output as a str"""
+    """Execute Ruby code given as a str and return the output as a str."""
     return getoutput('ruby -e \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execrubyfile(_filename: str) -> str:
-    """Execute a Ruby script given as a str and return the output as a str"""
+    """Execute a Ruby script given as a str and return the output as a str."""
     return getoutput(r'ruby ' + _filename)
 
 
@@ -159,12 +159,12 @@ def execrubyfile(_filename: str) -> str:
 
 
 def execscala(_code: str) -> str:
-    """Execute Scala code given as a str and return the output as a str"""
+    """Execute Scala code given as a str and return the output as a str."""
     return getoutput('scala -e \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execscalafile(_filename: str) -> str:
-    """Execute a Scala file given as a str and return the output as a str"""
+    """Execute a Scala file given as a str and return the output as a str."""
     return getoutput(r'scala ' + _filename)
 
 
@@ -172,17 +172,17 @@ def execscalafile(_filename: str) -> str:
 
 
 def execsh(_code: str) -> str:
-    """Execute Shell code given as a str and return the output as a str"""
+    """Execute Shell code given as a str and return the output as a str."""
     return getoutput('sh -c \'' + _code.replace('\'', '\\\'') + '\'')
 
 
 def execshfile(_filename: str) -> str:
-    """Execute a Shell script given as a str and return the output as a str"""
+    """Execute a Shell script given as a str and return the output as a str."""
     return getoutput(r'sh ' + _filename)
 
 
 def initsh() -> None:
-    """Run a shell REP-Loop (Read-Evaluate-Print-Loop)"""
+    """Run a shell REP-Loop (Read-Evaluate-Print-Loop)."""
     _input: str = r''
     while 1:
         _input = input(r'Shell: $ ').replace('\'', '\\\'')  # nosec

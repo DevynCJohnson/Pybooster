@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Metric-related functions
+"""@brief Metric-related functions.
 
 @file metric.py
 @package pybooster.metric
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -187,14 +187,14 @@ NON_STANDARD_PREFIX: dict = {
 
 
 def str2tupleunit(_str: str) -> tuple:
-    """Convert measurement units from string to tuple"""
+    """Convert measurement units from string to tuple."""
     _num: str = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\1', _str)
     _unit: str = resub('([0-9.]+)([ _,]*)([A-Za-z/]+)', r'\3', _str)
     return (_num, _unit)
 
 
-def siunits2base(_measurement: tuple) -> tuple:  # noqa: C901  # pylint: disable=R0911,R0912
-    """Convert SI units to base unit"""
+def siunits2base(_measurement: tuple) -> tuple:  # noqa: C901,R701  # pylint: disable=R0911,R0912
+    """Convert SI units to base unit."""
     if _measurement[1] in YOCTO_UNITS:
         return (float(_measurement[0]) * 0.000000000000000000000001, _measurement[1][1:])
     if _measurement[1] in ZEPTO_UNITS:

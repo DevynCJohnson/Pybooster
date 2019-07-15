@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Bitwise operation functions
+"""@brief Bitwise operation functions.
 
 @file bitwise.py
 @package pybooster.bitwise
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -44,7 +44,7 @@ __all__: list = [
 
 
 def bit_and(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
-    """Bitwise ANDing
+    """Bitwise ANDing.
 
     Given the decimal representation of two numbers as a string, return the ANDed number as a string
 
@@ -65,7 +65,7 @@ def bit_and(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
 
 
 def bit_or(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
-    r"""Bitwise ORing
+    r"""Bitwise ORing.
 
     Given the decimal representation of two numbers as a string, return the ORed number as a string
 
@@ -90,7 +90,7 @@ def bit_or(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
 
 
 def bit_xor(_num0: str, _num1: str, _base: int = 10) -> Optional[str]:
-    """Bitwise XORing
+    """Bitwise XORing.
 
     Given the decimal representation of two numbers as a string, return the XORed number as a string
 

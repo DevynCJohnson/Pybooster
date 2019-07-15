@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions and data for manipulating and processing markup languages and CSS
+"""@brief Functions and data for manipulating and processing markup languages and CSS.
 
 @file markup.py
 @package pybooster.markup
-@version 2019.05.12
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -490,7 +490,7 @@ SVG_UNIT_CONVERSIONS: dict = {  # type: ignore
 }
 
 
-SVG_STYLES: set = {
+SVG_STYLES: frozenset = frozenset({
     r'alignment-baseline',
     r'baseline-shift',
     r'clip-path',
@@ -541,10 +541,10 @@ SVG_STYLES: set = {
     r'unicode-bidi',
     r'word-spacing',
     r'writing-mode'
-}
+})
 
 
-SVG_TINY_STYLES: set = {
+SVG_TINY_STYLES: frozenset = frozenset({
     r'audio-level',
     r'buffered-rendering',
     r'display-align',
@@ -555,7 +555,7 @@ SVG_TINY_STYLES: set = {
     r'vector-effect',
     r'viewport-fill',
     r'viewport-fill-opacity'
-}
+})
 
 
 SVG_POSITION_ATTR: dict = {  # type: ignore
@@ -583,7 +583,7 @@ MIMETYPE_CORRECTIONS: tuple = (
 
 
 def assert_is_xml(_doc_type: int, data: str, _filename: str) -> None:
-    """Ensure input data is valid XML data; otherwise, raise an exception"""
+    """Ensure input data is valid XML data; otherwise, raise an exception."""
     if r'<' not in data or r'>' not in data:
         stderr.write(r'Unsupported filetype (' + _filename + ')!\n')
         raise SystemExit(1)
@@ -599,12 +599,12 @@ def assert_is_xml(_doc_type: int, data: str, _filename: str) -> None:
 
 
 def is_in_tagstack(tag: str, _tag_stack: list) -> bool:
-    """Test if the given tag is in the tag-stack"""
+    """Test if the given tag is in the tag-stack."""
     return any((_tag[0] == tag for _tag in _tag_stack))
 
 
 def is_removable_metadata_attr(remove_metadata: int, attr: str) -> bool:
-    """Determine if the given data is a removable metadata attribute"""
+    """Determine if the given data is a removable metadata attribute."""
     if remove_metadata < 2:
         return False
     if r'xmlns:' in attr and attr in JUNK_ATTR:  # XMLNS attribute
@@ -615,7 +615,7 @@ def is_removable_metadata_attr(remove_metadata: int, attr: str) -> bool:
 
 
 def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = False, remove_metadata: int = 2) -> bool:
-    """Determine if the given data is a removable metadata tag"""
+    """Determine if the given data is a removable metadata tag."""
     if tag == r'namedview':
         return True
     if remove_metadata < 1:
@@ -627,8 +627,8 @@ def is_removable_metadata_tag(doc_type: int, tag: str, _in_metadata: bool = Fals
     return False
 
 
-def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:
-    """Test if the given tag is a self-closing tag for the given XML document type"""
+def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:  # noqa: R701
+    """Test if the given tag is a self-closing tag for the given XML document type."""
     if _tag in CC_NO_CLOSE_TAGS or _tag in DC_NO_CLOSE_TAGS:
         return True
     if _doc_type == FILETYPE_SVG or is_in_tagstack(r'svg', _tag_stack):  # SVG
@@ -647,12 +647,12 @@ def is_self_closing_tag(_tag: str, _doc_type: int, _tag_stack: list) -> bool:
 
 
 def is_xml_dtd(xmldata: str) -> bool:
-    """Return true if the given data is DTD"""
+    """Return true if the given data is DTD."""
     return bool(r'<!ELEMENT ' in xmldata and r'<!ATTLIST ' in xmldata)
 
 
 def is_xml_xsd(xmldata: str) -> bool:
-    """Return true if the given data is XSD"""
+    """Return true if the given data is XSD."""
     return bool(r'</xs:schema>' in xmldata and r'<xs:element ' in xmldata)
 
 
@@ -660,7 +660,7 @@ def is_xml_xsd(xmldata: str) -> bool:
 
 
 def escape(_str: str, quote: bool = True) -> str:
-    """Replace special characters '&', '<', and '>' to HTML-safe sequences
+    """Replace special characters `&`, `<`, and `>` to HTML-safe sequences.
 
     If the optional flag quote is true (default), quotation mark
     characters, double-quotes, and single-quotes are also translated.
@@ -681,8 +681,8 @@ def escape(_str: str, quote: bool = True) -> str:
     return _str
 
 
-def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disable=R0912,R0915
-    """Escape the ampersand character
+def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+    """Escape the ampersand character.
 
     >>> escape_ambiguous_ampersand('This is a test &amp; example.')
     'This is a test &amp;amp; example.'
@@ -811,7 +811,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901  # pylint: disabl
 
 
 def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
-    """Escape attribute values"""
+    """Escape attribute values."""
     val = escape_ambiguous_ampersand(val)
     if double_quote:  # pylint: disable=R1705
         return (val.replace(r'"', r'&#34;'), DOUBLE_QUOTE)
@@ -826,8 +826,8 @@ def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
     return (val, NO_QUOTES)
 
 
-def unescape(_str: str) -> str:
-    r"""Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters
+def unescape(_str: str) -> str:  # noqa: R701
+    r"""Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters.
 
     >>> unescape(r'&#x22;')
     '"'
@@ -874,7 +874,7 @@ def unescape(_str: str) -> str:
 
 
 def htmlunescape(_str: str) -> str:
-    """Unescape &, ', ", <, and >
+    """Unescape `&`, `'`, `"`, `<`, and `>`.
 
     >>> htmlunescape('This &#x3c;b&#62;is&lt;/b&gt; a &#34;test&quot; (&amp;).')
     'This <b>is</b> a "test" (&).'
@@ -891,7 +891,7 @@ def htmlunescape(_str: str) -> str:
 
 
 def int2refnum(_int: int) -> str:
-    """Convert an integer to Decimal-NCR/HTML-Entity (&#38;)"""
+    """Convert an integer to Decimal-NCR/HTML-Entity (&#38;)."""
     if 0 <= _int <= 1114111:
         return r'&#{0};'.format(_int)
     raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(1114111))
@@ -900,8 +900,8 @@ def int2refnum(_int: int) -> str:
 # SVG FUNCTIONS #
 
 
-def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
-    """Parse value as SVG length and returns the value in pixels (or a negative scale: -1 = 100%)"""
+def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901,R701
+    """Parse value as SVG length and returns the value in pixels (or a negative scale: -1 = 100%)."""
     if not value:
         return 0.0
     if not isinstance(value, str):
@@ -929,7 +929,7 @@ def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901
 
 
 def svgviewbox2pixels(viewbox: List[Union[float, int, str]]) -> Optional[List[float]]:
-    """Convert the measurements of an SVG viewbox to pixels"""
+    """Convert the measurements of an SVG viewbox to pixels."""
     _viewbox: List[float] = [0.0, 0.0, 0.0, 0.0]
     if len(viewbox) == 4 and isinstance(viewbox[0], str) and isinstance(viewbox[1], str) and isinstance(viewbox[2], str) and isinstance(viewbox[3], str):
         _viewbox[0] = parse_svg_size(viewbox[0])
@@ -948,8 +948,8 @@ def svgviewbox2pixels(viewbox: List[Union[float, int, str]]) -> Optional[List[fl
     return _viewbox
 
 
-def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
-    """Resize an SVG tree based on the specified options"""
+def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0914,R0915
+    """Resize an SVG tree based on the specified options."""
     svg = xmltree.getroot()
     viewbox: Optional[List[float]] = svgviewbox2pixels(SVG_VIEWBOX_SEP.split(svg.get(r'viewBox', r'').strip()))  # type: ignore
     if r'width' not in svg.keys() or r'height' not in svg.keys():
@@ -1034,14 +1034,14 @@ def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901  #
 
 
 def remove_duplicated_svg_ns(xmldata: str) -> str:
-    """Remove duplicated SVG XML-namespace declarations"""
+    """Remove duplicated SVG XML-namespace declarations."""
     if r'xmlns:svg="http://www.w3.org/2000/svg"' in xmldata and r'xmlns="http://www.w3.org/2000/svg"' in xmldata and r'<svg:' not in xmldata:
         xmldata = xmldata.replace(r'xmlns:svg="http://www.w3.org/2000/svg"', r'')
     return xmldata
 
 
 def repair_svg_tag(_tag: str) -> str:
-    """Auto-correct commonly mistyped/illformed SVG tag names"""
+    """Auto-correct commonly mistyped/illformed SVG tag names."""
     if _tag.startswith(r'fe'):
         _tag = _tag.replace(r'feblend', r'feBlend').replace(r'fecolormatrix', r'feColorMatrix').replace(r'fecomponenttransfer', r'feComponentTransfer').replace(r'fecomposite', r'feComposite').replace(r'feconvolvematrix', r'feConvolveMatrix').replace(r'feDiffuseLighting', r'fediffuselighting').replace(r'fedisplacementmap', r'feDisplacementMap')
         _tag = _tag.replace(r'fedistantlight', r'feDistantLight').replace(r'feflood', r'feFlood').replace(r'fefunca', r'feFuncA').replace(r'fefuncb', r'feFuncB').replace(r'fefuncg', r'feFuncG').replace(r'fefuncr', r'feFuncR').replace(r'fegaussianblur', r'feGaussianBlur').replace(r'feimage', r'feImage').replace(r'femerge', r'feMerge')
@@ -1052,8 +1052,8 @@ def repair_svg_tag(_tag: str) -> str:
     return _tag
 
 
-def repair_svg_attr(_tag: str, _attr: str) -> str:
-    """Auto-correct commonly mistyped/illformed SVG attribute names"""
+def repair_svg_attr(_tag: str, _attr: str) -> str:  # noqa: R701
+    """Auto-correct commonly mistyped/illformed SVG attribute names."""
     if _tag == r'svg' and _attr.lower() == r'viewbox':
         _attr = r'viewBox'
     elif _tag == r'feGaussianBlur':
@@ -1076,7 +1076,7 @@ def repair_svg_attr(_tag: str, _attr: str) -> str:
 
 
 def condense_hex_colors(_css: str) -> str:
-    """Shorten colors from #AABBCC to #ABC (where possible)
+    """Shorten colors from `#AABBCC` to `#ABC` (where possible).
 
     >>> condense_hex_colors('#112233')
     '#123'
@@ -1099,8 +1099,8 @@ def condense_hex_colors(_css: str) -> str:
     return _css
 
 
-def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple:  # noqa: C901  # pylint: disable=R0912
-    """Clean-up cetain XML/HTML attributes and values"""
+def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple:  # noqa: C901,R701  # pylint: disable=R0912
+    """Clean-up cetain XML/HTML attributes and values."""
     _attr = _attr.strip()
     _val = rmspecialwhitespace(_val.strip())
     if _attr == r'id':  # Remove spaces from id attribute
@@ -1137,12 +1137,12 @@ def attribute_cleaner(_tag: str, _attr: str, _val: str, _doc_type: int) -> tuple
 
 
 def attr_sort(_attr: tuple) -> str:
-    """Sort attributes alphanumerically (but with `xmlns` first)"""
+    """Sort attributes alphanumerically (but with `xmlns` first)."""
     return str((not _attr[0].startswith(r'xmlns:') and _attr[0].startswith(r'xmlns')) or _attr[0].startswith(r'xmlns:') or _attr[0])
 
 
 def prettify_xml_schema(schema_data: str) -> str:
-    """Prettify DTD and XSD XML schemas"""
+    """Prettify DTD and XSD XML schemas."""
     if not XML_DECLARATION.search(schema_data):
         schema_data = r'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + schema_data
     schema_data = schema_data.replace('\n', r' ').replace('\r', r' ').replace('\t\t', r' ').replace('\t', r' ').replace(r'   ', r' ').replace('\f', r'').replace('\v', r'')
@@ -1154,7 +1154,7 @@ def prettify_xml_schema(schema_data: str) -> str:
 
 
 def fix_xml_declaration(xmldata: str) -> str:
-    """Fix and tweak the XML declaration specifically for the XML type"""
+    """Fix and tweak the XML declaration specifically for the XML type."""
     if XML_DECLARATION.search(xmldata):
         if r'<!DOCTYPE html>' in xmldata:
             xmldata = resub(XML_DECLARATION, r'', xmldata)
@@ -1167,8 +1167,8 @@ def fix_xml_declaration(xmldata: str) -> str:
     return xmldata
 
 
-def insert_missing_xml_namespaces(xmldata: str) -> str:
-    """Insert missing XML namespaces based on present namespaced XML tags"""
+def insert_missing_xml_namespaces(xmldata: str) -> str:  # noqa: R701
+    """Insert missing XML namespaces based on present namespaced XML tags."""
     if not CC_NS.search(xmldata) and r'cc:' in xmldata:
         xmldata = xmldata.replace(r' xmlns="' + XML_NAMESPACES[r'SVG'] + r'"', r' xmlns="' + XML_NAMESPACES[r'SVG'] + r'" xmlns:cc="' + XML_NAMESPACES[r'CC'] + r'"')
     if not DC_NS.search(xmldata) and r'dc:' in xmldata:
@@ -1186,10 +1186,10 @@ def insert_missing_xml_namespaces(xmldata: str) -> str:
 
 
 class ParserBase:  # pylint: disable=R0902
-    """Parser class that provides common support methods used by the SGML/HTML & XHTML parsers"""
+    """Parser class that provides common support methods used by the SGML/HTML & XHTML parsers."""
 
     def __init__(self) -> None:
-        """Initialize basic parser"""
+        """Initialize basic parser."""
         self._data_buffer: list = []
         self._decl_otherchars: str = r''
         self.convrefs: bool = False
@@ -1211,20 +1211,20 @@ class ParserBase:  # pylint: disable=R0902
             raise RuntimeError(r'ParserBase must be subclassed')
 
     def error(self, message: str) -> None:
-        """Raise error in parser (To be overridden)"""
+        """Raise error in parser (To be overridden)."""
         raise NotImplementedError(message)
 
     def reset(self) -> None:
-        """Reset location counters"""
+        """Reset location counters."""
         self.lineno = 1
         self.offset = 0
 
     def getpos(self) -> tuple:
-        """Return current line number and offset"""
+        """Return current line number and offset."""
         return self.lineno, self.offset
 
     def updatepos(self, i: int, j: int) -> int:
-        """Update line number and offset; Should be called for each piece of data once and in order"""
+        """Update line number and offset; Should be called for each piece of data once and in order."""
         if i >= j:
             return j
         rawdata: str = self.rawdata
@@ -1238,16 +1238,16 @@ class ParserBase:  # pylint: disable=R0902
         return j
 
     def handle_comment(self, data: str) -> None:
-        """Process comments"""
+        """Process comments."""
         if not self.remove_comments or (data and (data[0] == r'!' or rgxmatch(r'^\[if\s', data))):
             self._data_buffer.append(r'<!--{}-->'.format(data[1:] if data[0] == r'!' else data))
 
     def handle_decl(self, decl: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle declaration (Overridable)"""
+        """Handle declaration (Overridable)."""
         return
 
-    def parse_declaration(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
-        """Parse declaration tags"""
+    def parse_declaration(self, i: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912
+        """Parse declaration tags."""
         rawdata: str = self.rawdata
         j = i + 2
         if rawdata[i:j] != r'<!':
@@ -1300,7 +1300,7 @@ class ParserBase:  # pylint: disable=R0902
         return -1  # Incomplete
 
     def parse_marked_section(self, i: int, report: int = 1) -> int:
-        """Parse a marked section"""
+        """Parse a marked section."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 3] != r'<![':
             raise Exception(r'Unexpected call to parse_marked_section()')
@@ -1321,7 +1321,7 @@ class ParserBase:  # pylint: disable=R0902
         return _match.end(0)
 
     def parse_comment(self, i: int, report: int = 1) -> int:
-        """Parse comment, return length or -1 (if not terminated)"""
+        """Parse comment, return length or -1 (if not terminated)."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 4] != r'<!--':
             self.error(r'Unexpected call to parse_comment()')
@@ -1333,8 +1333,8 @@ class ParserBase:  # pylint: disable=R0902
             self.handle_comment(rawdata[i + 4: j])
         return match.end(0)
 
-    def _parse_doctype_subset(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
-        """Scan past the internal subset in a <!DOCTYPE declaration, returning the index just past any whitespace following the trailing ']'"""
+    def _parse_doctype_subset(self, i: int, declstartpos: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912
+        """Scan past the internal subset in a <!DOCTYPE declaration, returning the index just past any whitespace following the trailing ']'."""
         rawdata: str = self.rawdata
         length: int = len(rawdata)
         j: int = i
@@ -1392,7 +1392,7 @@ class ParserBase:  # pylint: disable=R0902
         return -1  # End of buffer reached
 
     def _parse_doctype_element(self, i: int, declstartpos: int) -> int:
-        """Scan past <!ELEMENT declarations"""
+        """Scan past <!ELEMENT declarations."""
         name, j = self._scan_name(i, declstartpos)
         if j == -1 or name is None:
             return -1
@@ -1402,8 +1402,8 @@ class ParserBase:  # pylint: disable=R0902
             return rawdata.find(r'>', j) + 1
         return -1
 
-    def _parse_doctype_attlist(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
-        """Scan past <!ATTLIST declarations"""
+    def _parse_doctype_attlist(self, i: int, declstartpos: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912
+        """Scan past <!ATTLIST declarations."""
         rawdata: str = self.rawdata
         name, j = self._scan_name(i, declstartpos)
         char: str = rawdata[j:j + 1]
@@ -1454,7 +1454,7 @@ class ParserBase:  # pylint: disable=R0902
                 return j + 1
 
     def _parse_doctype_notation(self, i: int, declstartpos: int) -> int:
-        """Scan past <!NOTATION declarations"""
+        """Scan past <!NOTATION declarations."""
         name, j = self._scan_name(i, declstartpos)
         if j < 0 or name is None:
             return j
@@ -1475,8 +1475,8 @@ class ParserBase:  # pylint: disable=R0902
                 if j < 0:
                     return j
 
-    def _parse_doctype_entity(self, i: int, declstartpos: int) -> int:  # noqa: C901  # pylint: disable=R0912
-        """Scan past <!ENTITY declarations"""
+    def _parse_doctype_entity(self, i: int, declstartpos: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912
+        """Scan past <!ENTITY declarations."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 1] == r'%':
             j = i + 1
@@ -1511,7 +1511,7 @@ class ParserBase:  # pylint: disable=R0902
                     return j
 
     def _scan_name(self, i: int, declstartpos: int) -> tuple:
-        """Scan a name token, the new position, and the token, or return -1 if the end of the buffer is reached"""
+        """Scan a name token, the new position, and the token, or return -1 if the end of the buffer is reached."""
         rawdata: str = self.rawdata
         length: int = len(rawdata)
         if i == length:
@@ -1528,12 +1528,12 @@ class ParserBase:  # pylint: disable=R0902
         return (None, -2)
 
     def unknown_decl(self, data: str) -> None:
-        """Provide an overridable handler for unknown objects"""
+        """Provide an overridable handler for unknown objects."""
         self.error(r'<![' + data + r']>')
 
 
 class HTMLParser(ParserBase):  # pylint: disable=R0904
-    """Find markup objects and call handler functions
+    """Find markup objects and call handler functions.
 
     Usage:
         p = HTMLParser()
@@ -1543,7 +1543,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     """
 
     def __init__(self, *, convert_charrefs: bool = False) -> None:
-        """Initialize and reset this instance; If convert_charrefs is True, all character references are automatically converted to the corresponding Unicode characters"""
+        """Initialize and reset this instance; If convert_charrefs is True, all character references are automatically converted to the corresponding Unicode characters."""
         self.__starttag_text: str = r''
         self.cdata_elem: str = r''
         self.convert_charrefs: bool = convert_charrefs
@@ -1554,11 +1554,11 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         super(HTMLParser, self).__init__()
 
     def error(self, message: str) -> None:
-        """Raise error in parser"""
+        """Raise error in parser."""
         raise Exception(message)
 
     def reset(self) -> None:
-        """Reset this instance"""
+        """Reset this instance."""
         self.cdata_elem = r''
         self.interesting = INTERESTING_NORMAL
         self.lasttag = r'???'
@@ -1566,30 +1566,30 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         ParserBase.reset(self)
 
     def feed(self, data: str) -> None:
-        """Feed data to the parser"""
+        """Feed data to the parser."""
         self.rawdata = self.rawdata + data
         self.goahead(False)
 
     def close(self) -> None:
-        """Handle any buffered data"""
+        """Handle any buffered data."""
         self.goahead(True)
 
     def get_starttag_text(self) -> str:
-        """Return full source of start tag"""
+        """Return full source of start tag."""
         return self.__starttag_text
 
     def set_cdata_mode(self, elem: str) -> None:
-        """Lowercase HTML element names"""
+        """Lowercase HTML element names."""
         self.cdata_elem = elem.lower()
         self.interesting = rgxcompile(r'</\s*{}\s*>'.format(self.cdata_elem), flags=IGNORECASE)
 
     def clear_cdata_mode(self) -> None:
-        """Clear self.cdata_elem and self.interesting"""
+        """Clear self.cdata_elem and self.interesting."""
         self.interesting = INTERESTING_NORMAL
         self.cdata_elem = r''
 
-    def goahead(self, end: bool) -> None:  # noqa: C901  # pylint: disable=R0912,R0915
-        """Handle data as far as reasonable. May leave state and data to be processed by a subsequent call. If `end` is true, force handling all data as if followed by EOF marker"""
+    def goahead(self, end: bool) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+        """Handle data as far as reasonable. May leave state and data to be processed by a subsequent call. If `end` is true, force handling all data as if followed by EOF marker."""
         rawdata: str = self.rawdata
         i: int = 0
         length: int = len(rawdata)
@@ -1698,7 +1698,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         self.rawdata = rawdata[i:]
 
     def parse_html_declaration(self, i: int) -> int:
-        """Parse HTML declarations; return length or -1 (if not terminated)"""
+        """Parse HTML declarations; return length or -1 (if not terminated)."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'<!':
             raise Exception(r'Unexpected call to parse_html_declaration()')
@@ -1715,7 +1715,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         return self.parse_bogus_comment(i)
 
     def parse_bogus_comment(self, i: int, report: int = 1) -> int:
-        """Parse bogus comment; return length or -1 (if not terminated)"""
+        """Parse bogus comment; return length or -1 (if not terminated)."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 2] not in {r'<!', r'</'}:
             raise Exception(r'Unexpected call to parse_comment()')
@@ -1727,7 +1727,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         return pos + 1
 
     def parse_pi(self, i: int) -> int:
-        """Parse processing instruction; return end or -1 (if not terminated)"""
+        """Parse processing instruction; return end or -1 (if not terminated)."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'<?':
             raise Exception(r'Unexpected call to parse_pi()')
@@ -1739,8 +1739,8 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         j = match.end()
         return j
 
-    def parse_starttag(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912,R0915
-        """Handle starttag; return end or -1 (if not terminated)"""
+    def parse_starttag(self, i: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+        """Handle starttag; return end or -1 (if not terminated)."""
         self.__starttag_text = r''
         endpos = self.check_for_whole_start_tag(i)
         if endpos < 0:
@@ -1802,7 +1802,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         return endpos
 
     def check_for_whole_start_tag(self, i: int) -> int:
-        """Check to see if starttag is complete; return end or -1 (if incomplete)"""
+        """Check to see if starttag is complete; return end or -1 (if incomplete)."""
         rawdata: str = self.rawdata
         _match = LOCATESTARTTAGEND_TOLERANT.match(rawdata, i)
         if _match:
@@ -1827,8 +1827,8 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             return i + 1
         raise AssertionError(r'Fell through if constructs in check_for_whole_start_tag()')
 
-    def parse_endtag(self, i: int) -> int:  # noqa: C901  # pylint: disable=R0912
-        """Parse endtag; return end or -1 (if incomplete)"""
+    def parse_endtag(self, i: int) -> int:  # noqa: C901,R701  # pylint: disable=R0912
+        """Parse endtag; return end or -1 (if incomplete)."""
         rawdata: str = self.rawdata
         if rawdata[i:i + 2] != r'</':
             raise Exception(r'Unexpected call to parse_endtag')
@@ -1870,7 +1870,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         return gtpos
 
     def handle_startendtag(self, tag: str, attrs: list, closing_type: int = -1) -> None:
-        """Finish processing of start+end tag - <tag.../> (Overridable)"""
+        """Finish processing of start+end tag - <tag.../> (Overridable)."""
         if closing_type == 1:
             self.handle_starttag(tag, attrs)
             self.handle_endtag(tag)
@@ -1879,40 +1879,40 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             self.handle_endtag(tag)
 
     def handle_starttag(self, tag: str, attrs: list) -> None:  # pylint: disable=R0201,W0613
-        """Handle start tag (Overridable)"""
+        """Handle start tag (Overridable)."""
         return
 
     def handle_endtag(self, tag: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle end tag (Overridable)"""
+        """Handle end tag (Overridable)."""
         return
 
     def handle_charref(self, name: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle character reference (Overridable)"""
+        """Handle character reference (Overridable)."""
         return
 
     def handle_entityref(self, name: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle entity reference (Overridable)"""
+        """Handle entity reference (Overridable)."""
         return
 
     def handle_data(self, data: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle data (Overridable)"""
+        """Handle data (Overridable)."""
         return
 
     def handle_decl(self, decl: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle declaration (Overridable)"""
+        """Handle declaration (Overridable)."""
         return
 
     def handle_pi(self, data: str) -> None:  # pylint: disable=R0201,W0613
-        """Handle processing instruction (Overridable)"""
+        """Handle processing instruction (Overridable)."""
         return
 
     def unknown_decl(self, data: str) -> None:
-        """Handle unknown declarations (Overridable)"""
+        """Handle unknown declarations (Overridable)."""
         self.error(r'Unknown declaration: <![' + data + r']>')
 
 
 class Minifier():
-    """An object that supports XML/HTML Minification; Options are passed into this class at initialization time and are persisted across each use of the instance"""
+    """An object that supports XML/HTML Minification; Options are passed into this class at initialization time and are persisted across each use of the instance."""
 
     def __init__(  # pylint: disable=R0913
             self,
@@ -1929,7 +1929,7 @@ class Minifier():
             convrefs: bool = False,
             doc_type: int = FILETYPE_XML
     ) -> None:
-        """Initialize the needed minifier"""
+        """Initialize the needed minifier."""
         if doc_type is FILETYPE_HTML:  # HTML
             self._parser = XMLMinParser(
                 remove_metadata=remove_metadata,
@@ -1992,31 +1992,31 @@ class Minifier():
             )
 
     def minify(self, *_input: str) -> str:
-        """Run XML/HTML code through the minifier in one pass"""
+        """Run XML/HTML code through the minifier in one pass."""
         self._parser.reset()
         self.input(*_input)
         return self.finalize()
 
     def finalize(self) -> str:
-        """Flushes any remaining XML/HTML, returns the minified result, and resets the process's internal parser so that new code can be minified"""
+        """Flushes any remaining XML/HTML, returns the minified result, and resets the process's internal parser so that new code can be minified."""
         self._parser.close()
         result = self._parser.result
         self._parser.reset()
         return result
 
-    def input(self, *_input: str) -> None:
-        """Feed more XML/HTML into the input stream"""
+    def input(self, *_input: str) -> None:  # noqa: A003
+        """Feed more XML/HTML into the input stream."""
         for i in _input:
             self._parser.feed(i)
 
     @property
     def output(self) -> str:
-        """Retrieve the minified output generated thus far"""
+        """Retrieve the minified output generated thus far."""
         return self._parser.result
 
 
 class XMLMinParser(HTMLParser):  # pylint: disable=R0902
-    """XML/HTML Parser"""
+    """XML/HTML Parser."""
 
     def __init__(  # pylint: disable=R0913
             self,
@@ -2033,7 +2033,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             convrefs: bool = False,
             doc_type: int = FILETYPE_XML
     ) -> None:
-        """Initialize XML/HTML parser"""
+        """Initialize XML/HTML parser."""
         HTMLParser.__init__(self, convert_charrefs=convrefs)
         self.remove_metadata = remove_metadata
         self.remove_comments = remove_comments
@@ -2059,17 +2059,17 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._upgrade_svg10 = False
 
     def reset(self) -> None:
-        """Flushes any remaining XML/HTML and resets the process's internal parser so that new XML/HTML can be processed"""
+        """Flushes any remaining XML/HTML and resets the process's internal parser so that new XML/HTML can be processed."""
         self._data_buffer = []
         HTMLParser.reset(self)
 
     @property
     def result(self) -> str:
-        """Retrieve the processed output generated thus far"""
+        """Retrieve the processed output generated thus far."""
         return r''.join(self._data_buffer)
 
     def insert_doctype_tag(self, decl: str = r'') -> None:
-        """Insert the DOCTYPE tag"""
+        """Insert the DOCTYPE tag."""
         if self._after_doctype:  # pylint: disable=R1705
             return
         elif self.doc_type == FILETYPE_HTML:
@@ -2085,18 +2085,18 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._after_doctype = True
 
     def _has_pre(self, attrs: list) -> bool:
-        """Test if the tag uses the `pre` attribute"""
+        """Test if the tag uses the `pre` attribute."""
         return any((k[0] == self.pre_attr for k in attrs))
 
     def in_tag(self, *tags: str) -> str:
-        """Test if the given tags are within the tag stack"""
+        """Test if the given tags are within the tag stack."""
         for tag in self._tag_stack:
             if tag[0] in tags:
                 return tag
         return r''
 
-    def should_preserve_ws(self, tag: str, attrs: list) -> bool:
-        """Test if whitespace should be preserved in the tag"""
+    def should_preserve_ws(self, tag: str, attrs: list) -> bool:  # noqa: R701
+        """Test if whitespace should be preserved in the tag."""
         if tag in self.pre_tags or self._has_pre(attrs) or self._in_pre_tag > 0:  # Pre
             return True
         if tag in CDATA_CONTENT_ELEMENTS:  # Cdata
@@ -2110,8 +2110,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 return True
         return False
 
-    def build_tag(self, tag: str, attrs: list, close_tag: bool) -> str:  # noqa: C901  # pylint: disable=R0912,R0915
-        """Create an XML/HTML tag"""
+    def build_tag(self, tag: str, attrs: list, close_tag: bool) -> str:  # noqa: C901,R701  # pylint: disable=R0912,R0915
+        """Create an XML/HTML tag."""
         if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):  # pylint: disable=R1705
             return r''
         if self.doc_type == FILETYPE_SVG and close_tag and tag in {r'comment', r'defs', r'g'}:
@@ -2171,7 +2171,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         return result.getvalue()
 
     def _close_tags_up_to(self, tag: str) -> int:
-        """Close previously opened tags up to the specified tag"""
+        """Close previously opened tags up to the specified tag."""
         num_pres: int = 0
         i: int = 0
         for i, _tag in enumerate(self._tag_stack):
@@ -2186,7 +2186,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         return num_pres
 
     def handle_charref(self, name: str) -> None:
-        """Process decimal and hexadecimal numeric character references of the form `&#NNN;` and `&#xNNN;`"""
+        """Process decimal and hexadecimal numeric character references of the form `&#NNN;` and `&#xNNN;`."""
         if self._in_title:
             if not self._title_newly_opened and self.__title_trailing_whitespace:
                 self._data_buffer.append(r' ')
@@ -2194,8 +2194,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             self._title_newly_opened = False
         self._data_buffer.append(r'&#{};'.format(name))
 
-    def handle_data(self, data: str) -> None:  # noqa: C901  # pylint: disable=R0912
-        """Process arbitrary data (such as <script> and <style>)"""
+    def handle_data(self, data: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912
+        """Process arbitrary data (such as <script> and <style>)."""
         if self._in_metadata and self.remove_metadata > 0:
             return
         if self._in_pre_tag > 0:
@@ -2229,7 +2229,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._data_buffer.append(data)
 
     def handle_decl(self, decl: str) -> None:
-        """Process the XML/HTML doctype declaration"""
+        """Process the XML/HTML doctype declaration."""
         if len(self._data_buffer) == 1 and WHITESPACE.match(self._data_buffer[0]):
             self._data_buffer = []
         if not self._doctype_inserted and decl.strip().startswith(r'DOCTYPE'):
@@ -2238,8 +2238,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             self._data_buffer.append(r'<!' + decl + r'>')
         self._after_doctype = True
 
-    def handle_endtag(self, tag: str) -> None:  # noqa: C901  # pylint: disable=R0912
-        """Process end tags"""
+    def handle_endtag(self, tag: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912
+        """Process end tags."""
         if tag == r'a':  # </a> and <p>
             contains_p: bool = False
             i: int = 0
@@ -2277,7 +2277,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._data_buffer.extend([r'</', escape(tag), r'>'])
 
     def handle_entityref(self, name: str) -> None:
-        """Process a named character reference of the form `&name;`"""
+        """Process a named character reference of the form `&name;`."""
         if self._in_title:
             if not self._title_newly_opened and self.__title_trailing_whitespace:
                 self._data_buffer.append(r' ')
@@ -2286,7 +2286,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._data_buffer.append(r'&{};'.format(name))
 
     def handle_pi(self, data: str) -> None:
-        """Process the processing instruction tag"""
+        """Process the processing instruction tag."""
         if data.strip().startswith(r'xml'):
             if r'standalone="yes"' in data.lower() or 'standalone=\'yes\'' in data.lower():
                 self._data_buffer.append(r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>')
@@ -2296,7 +2296,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             self._data_buffer.append(r'<?' + data + r'>')
 
     def handle_startendtag(self, tag: str, attrs: list, closing_type: int = -1) -> None:
-        """Process XHTML-style empty tags (such as `<br/>`)"""
+        """Process XHTML-style empty tags (such as `<br/>`)."""
         self._after_doctype = False
         if is_removable_metadata_tag(self.doc_type, tag, self._in_metadata, self.remove_metadata):
             return
@@ -2307,8 +2307,8 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         else:  # Miscellaneous XML self-closing tag
             self._data_buffer.append(self.build_tag(tag, attrs, is_self_closing_tag(tag, self.doc_type, self._tag_stack)))
 
-    def handle_starttag(self, tag: str, attrs: list) -> None:  # noqa: C901
-        """Process start tags"""
+    def handle_starttag(self, tag: str, attrs: list) -> None:  # noqa: C901,R701
+        """Process start tags."""
         self._after_doctype = False
         if not self._doctype_inserted:
             self.insert_doctype_tag()  # Insert DOCTYPE tag if it is missing
@@ -2340,5 +2340,5 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
         self._data_buffer.append(self.build_tag(tag, attrs, False))
 
     def unknown_decl(self, data: str) -> None:
-        """Process the unrecognized declaration tag"""
+        """Process the unrecognized declaration tag."""
         self._data_buffer.append(r'<![' + data + r']>')

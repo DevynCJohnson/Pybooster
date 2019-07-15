@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief EZ-Win: Pre-built windows using GTK3 for Python3
+"""@brief EZ-Win: Pre-built windows using GTK3 for Python3.
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2019.05.12
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -62,7 +62,7 @@ __all__: list = [
 
 __author__: str = r'Devyn Collier Johnson'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2019.05.12'
+__version__: str = r'2019.07.14'
 
 
 __about__: str = (
@@ -76,7 +76,7 @@ __about__: str = (
 )
 
 
-__usage_sh__: str = """\n\n=====USAGE (Shell/Terminal)=====\n
+__usage_sh__: str = '''\n\n=====USAGE (Shell/Terminal)=====\n
     ezwin [-h|--help|--api|-v|--version|-d|--doc]
     ezwin -[-FLAG] "Message"  # Message, Question, and Password dialogs
     ezwin --ynq "Message"  # Yes/No/Quit dialog
@@ -124,18 +124,18 @@ __usage_sh__: str = """\n\n=====USAGE (Shell/Terminal)=====\n
             echo $X > $Y; \\
             ezwin -m `cat $Y`
 
-"""
+'''
 
 
-__usage_py__: str = """\n\n=====USAGE (Python)=====
+__usage_py__: str = '''\n\n=====USAGE (Python)=====
 
     import ezwin
     ezwin.ezinfo('This is an example.')
 
-"""
+'''
 
 
-__flags__: str = """\n\n=====FLAGS (Shell/Terminal)=====
+__flags__: str = '''\n\n=====FLAGS (Shell/Terminal)=====
 
     --api
             Display details about the API
@@ -224,10 +224,10 @@ __flags__: str = """\n\n=====FLAGS (Shell/Terminal)=====
     --pc,--pwdc,--passwordcancel
             Password Dialog with 'Cancel'
 
-"""
+'''
 
 
-__examples__: str = """\n\n=====BASIC PYTHON EXAMPLES=====
+__examples__: str = '''\n\n=====BASIC PYTHON EXAMPLES=====
 
     import ezwin
 
@@ -286,16 +286,13 @@ __examples__: str = """\n\n=====BASIC PYTHON EXAMPLES=====
             _return_uri: bool=True, _return_dtype: str='list',
         ) -> list or str:
 
-"""
+'''
 
 
-__help__: str = (
-    '\n=====EZ-Win Documentation=====\n' +
-    __about__ + __usage_sh__ + __usage_py__ + __flags__ + __examples__
-)
+__help__: str = ('\n=====EZ-Win Documentation=====\n' + __about__ + __usage_sh__ + __usage_py__ + __flags__ + __examples__)
 
 
-__api__: str = """\n\n=====EZ-Win API=====
+__api__: str = '''\n\n=====EZ-Win API=====
 
     =====DEFINE FILES (_G* = glade-file)=====
 
@@ -375,7 +372,7 @@ __api__: str = """\n\n=====EZ-Win API=====
                 _return_uri: bool=True, _return_dtype: str='list',
             ) -> list or str:
 
-"""
+'''
 
 
 _EXCEPTION_MSG = (r'INVALID PARAMETERS!' + __usage_sh__)
@@ -424,7 +421,7 @@ signal(SIGINT, SIG_DFL)
 
 
 def ezinfo(_msg: str = r'Information') -> None:
-    """Information Dialog: Display some information"""
+    """Information Dialog: Display some information."""
     ui = Gtk.Builder()
     ui.add_from_file(_GINFO)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -434,7 +431,7 @@ def ezinfo(_msg: str = r'Information') -> None:
 
 
 def ezmsg(_msg: str = r'Message') -> None:
-    """Message Dialog: Display a message"""
+    """Message Dialog: Display a message."""
     ui = Gtk.Builder()
     ui.add_from_file(_GMSG)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -444,7 +441,7 @@ def ezmsg(_msg: str = r'Message') -> None:
 
 
 def ezwarn(_msg: str = r'Warning') -> None:
-    """Warning Dialog: Display a warning message"""
+    """Warning Dialog: Display a warning message."""
     ui = Gtk.Builder()
     ui.add_from_file(_GWARN)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -454,7 +451,7 @@ def ezwarn(_msg: str = r'Warning') -> None:
 
 
 def ezerr(_msg: str = r'Error Message') -> None:
-    """Error Dialog: Display an error message"""
+    """Error Dialog: Display an error message."""
     ui = Gtk.Builder()
     ui.add_from_file(_GERR)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -464,7 +461,7 @@ def ezerr(_msg: str = r'Error Message') -> None:
 
 
 def ezupd(_msg: str = r'Message') -> None:
-    """Update Dialog: Display information on an update"""
+    """Update Dialog: Display information on an update."""
     ui = Gtk.Builder()
     ui.add_from_file(_GUPD)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -474,7 +471,7 @@ def ezupd(_msg: str = r'Message') -> None:
 
 
 def ezsecurity(_msg: str = r'Security Message') -> None:
-    """Security Dialog: Display a security-related message"""
+    """Security Dialog: Display a security-related message."""
     ui = Gtk.Builder()
     ui.add_from_file(_GSECURITY)
     ui.connect_signals({r'_winexit': Gtk.main_quit})
@@ -484,7 +481,7 @@ def ezsecurity(_msg: str = r'Security Message') -> None:
 
 
 def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
-    """Question Dialog: Ask the user a question
+    """Question Dialog: Ask the user a question.
 
     '_type' is a string that may have one of several values and effects.
     Each choice determines the buttons on the window.
@@ -513,31 +510,31 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
     _out: str = r''
 
     def _yes(*_x) -> None:
-        """YES Button"""
+        """Provide the callback for the YES button."""
         nonlocal _out
         _out = r'True'
         Gtk.main_quit()
 
     def _no(*_x) -> None:
-        """NO Button"""
+        """Provide the callback for the NO button."""
         nonlocal _out
         _out = r'False'
         Gtk.main_quit()
 
     def _close(*_x) -> None:
-        """CLOSE Button"""
+        """Provide the callback for the CLOSE button."""
         nonlocal _out
         _out = r'Close'
         Gtk.main_quit()
 
     def _cancel(*_x) -> None:
-        """CANCEL Button"""
+        """Provide the callback for the CANCEL button."""
         nonlocal _out
         _out = r'Cancel'
         Gtk.main_quit()
 
     def _quit(*_x) -> None:
-        """QUIT Button"""
+        """Provide the callback for the QUIT button."""
         nonlocal _out
         _out = r'Quit'
         Gtk.main_quit()
@@ -557,14 +554,14 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
 
 
 def ezcolor(_datatype: str = r'list') -> object:
-    """Color Dialog: Select a color"""
+    """Color Dialog: Select a color."""
     ui = Gtk.Builder()
     ui.add_from_file(_GCOLOR)
     _cc = ui.get_object(r'cc')
     _rgba = None
 
     def _submit_color(*_x) -> None:
-        """SUBMIT Button: Submit color values for processing"""
+        """SUBMIT Button: Submit color values for processing."""
         nonlocal _rgba
         _rgba = _cc.get_rgba()
         Gtk.main_quit()
@@ -591,7 +588,7 @@ def ezcolor(_datatype: str = r'list') -> object:
 
 
 def eztext(_msg: str = r'Message', _type: str = r'') -> str:
-    """Input Text Dialog: Get text from the user"""
+    """Input Text Dialog: Get text from the user."""
     ui = Gtk.Builder()
     _gf = _GTEXTC if r'c' in _type.lower() else _GTEXT
     ui.add_from_file(_gf)
@@ -599,7 +596,7 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
     _out: str = r''
 
     def _submit_text(*_x) -> None:
-        """SUBMIT Button: Submit text for processing"""
+        """SUBMIT Button: Submit text for processing."""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
@@ -616,7 +613,7 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
 
 
 def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
-    """Password Dialog: Get a password from the user"""
+    """Password Dialog: Get a password from the user."""
     ui = Gtk.Builder()
     _gf = _GPSWDC if r'c' in _type.lower() else _GPSWD
     ui.add_from_file(_gf)
@@ -624,7 +621,7 @@ def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     _out: str = r''
 
     def _submit_text(*_x) -> None:
-        """SUBMIT Button: Submit password for processing"""
+        """SUBMIT Button: Submit password for processing."""
         nonlocal _out
         _out = _obj.get_text()
         Gtk.main_quit()
@@ -640,7 +637,7 @@ def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     return _out
 
 
-def ezfilech(  # noqa: C901  # pylint: disable=R0915
+def ezfilech(  # noqa: C901,R701  # pylint: disable=R0915
         _select_file: bool = True,
         _select_dir: bool = False,
         _multiple: bool = False,
@@ -652,7 +649,7 @@ def ezfilech(  # noqa: C901  # pylint: disable=R0915
         _return_uri: bool = True,
         _return_dtype: str = r'list'
 ) -> Union[list, str]:
-    """File Chooser Dialog: Select a file or folder"""
+    """File Chooser Dialog: Select a file or folder."""
     ui = Gtk.Builder()
     ui.add_from_file(_GFILECH)
     _filew = ui.get_object(r'filechooser')
@@ -794,13 +791,13 @@ def ezfilech(  # noqa: C901  # pylint: disable=R0915
     # HANDLER FUNCTIONS #
 
     def _cancel(*_x) -> None:
-        """CANCEL Button"""
+        """Provide the callback for the CANCEL button."""
         nonlocal _out
         _out = r'Cancel'
         Gtk.main_quit()
 
     def _select(*_x) -> None:
-        """SELECT Button: Submit selection for processing"""
+        """SELECT Button: Submit selection for processing."""
         nonlocal _out
         if _select_dir and not _multiple and _chkbtn_dir.get_active():
             if _return_uri and _return_dtype == r'str':
@@ -823,7 +820,7 @@ def ezfilech(  # noqa: C901  # pylint: disable=R0915
         Gtk.main_quit()
 
     def _hidden(_widget, *_x) -> None:
-        """HIDDEN Checkbox: Toggle the visibility of hidden files"""
+        """HIDDEN Checkbox: Toggle the visibility of hidden files."""
         _widget.set_show_hidden(not _widget.get_show_hidden())
 
     ui.connect_signals({
@@ -843,22 +840,22 @@ if __name__ == '__main__':  # noqa: C901
     # Command Help/Info
     if len(argv) == 2 and argv[1].lower() in {r'-h', r'--help'}:
         stdout.write(__help__ + '\n')
-        raise SystemExit()
-    elif len(argv) == 2 and argv[1].lower() == r'--api':
+        raise SystemExit(0)
+    if len(argv) == 2 and argv[1].lower() == r'--api':
         stdout.write(__api__ + '\n')
-        raise SystemExit()
-    elif len(argv) == 2 and argv[1].lower() in {r'-v', r'--version'}:
+        raise SystemExit(0)
+    if len(argv) == 2 and argv[1].lower() in {r'-v', r'--version'}:
         stdout.write(__version__ + '\n')
-        raise SystemExit()
-    elif len(argv) == 2 and argv[1].lower() in {r'-d', r'--doc'}:
+        raise SystemExit(0)
+    if len(argv) == 2 and argv[1].lower() in {r'-d', r'--doc'}:
         stdout.write(__doc__ + '\n')
         stdout.write(__version__ + '\n')
         stdout.write(__copyright__ + '\n')
         stdout.write(__help__ + '\n')
         stdout.write(__api__ + '\n')
-        raise SystemExit()
+        raise SystemExit(0)
     # Windows/GUI
-    elif argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
+    if argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
         # File Chooser
         multiple: bool = False
         viewhidden: bool = False
@@ -909,8 +906,8 @@ if __name__ == '__main__':  # noqa: C901
                 file_exten, init_path, __local,
                 return_uri, return_dtype
             )) + '\n')
-        raise SystemExit()
-    elif argv[1].lower() in {r'--color', r'--colour'}:
+        raise SystemExit(0)
+    if argv[1].lower() in {r'--color', r'--colour'}:
         # Color Selector
         if len(argv) == 3 and argv[2].lower() in {r'list', r'lst'}:
             stdout.write(str(ezcolor(r'list')) + '\n')
@@ -920,8 +917,8 @@ if __name__ == '__main__':  # noqa: C901
             stdout.write(str(ezcolor(r'str')) + '\n')
         else:
             stdout.write(str(ezcolor(r'rgba')) + '\n')
-        raise SystemExit()
-    elif len(argv) >= 3:
+        raise SystemExit(0)
+    if len(argv) >= 3:
         # Text Input/Output Command Agruments
         _wintype = argv[1].lower()
         MESSAGE = r' '.join(
@@ -957,5 +954,5 @@ if __name__ == '__main__':  # noqa: C901
             stdout.write(ezpswd(MESSAGE, 'c') + '\n')
         else:
             raise Exception(_EXCEPTION_MSG)
-        raise SystemExit()
+        raise SystemExit(0)
     raise Exception(_EXCEPTION_MSG)

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Library for multimedia manipulation
+"""@brief Library for multimedia manipulation.
 
 @file multimedia.py
 @package pybooster.multimedia
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -89,14 +89,14 @@ FFMPEG: str = r'ffmpeg -y -hide_banner -loglevel panic -sn -vn'
 
 
 def merge2rawwav(_wav_data: dict) -> bytes:
-    """Merge the split WAV channels back together and convert the data to the original raw WAV format"""
+    """Merge the split WAV channels back together and convert the data to the original raw WAV format."""
     if _wav_data[r'num_channels'] == 2:
         return mergeoddeven(_wav_data[r'left_audio'], _wav_data[r'right_audio']).tobytes()
     return _wav_data[r'data'].tobytes()
 
 
 def openwavfile(_filename: str) -> dict:
-    """Get the contents of the specified WAV file and return the data as a list of integers in a dictionary describing the data"""
+    """Get the contents of the specified WAV file and return the data as a list of integers in a dictionary describing the data."""
     _wav_data: list = []
     with wave.open(_filename, mode=r'rb') as _file:
         _wav_data.append(_file.readframes(_file.getnframes()))
@@ -119,7 +119,7 @@ def openwavfile(_filename: str) -> dict:
 
 
 def openmp3file(_filename: str) -> dict:
-    """Get the contents of the specified MP3 file and return the data as a list of integers in a dictionary describing the data"""
+    """Get the contents of the specified MP3 file and return the data as a list of integers in a dictionary describing the data."""
     _wav_data: list = []
     _tmpfile = NamedTemporaryFile()
     if not to_wav_tmp(_filename, _tmpfile.name):
@@ -145,14 +145,14 @@ def openmp3file(_filename: str) -> dict:
 
 
 def writewavfile(_wav_data: dict, _filename: str) -> None:
-    """Write a WAV file using data in the given WAV data dictionary"""
+    """Write a WAV file using data in the given WAV data dictionary."""
     with wave.open(_filename, mode=r'wb') as _file:
         _file.setparams((_wav_data[r'num_channels'], _wav_data[r'sample_width'], _wav_data[r'frame_rate'], _wav_data[r'num_frames'], r'NONE', r'not compressed'))  # pylint: disable=E1101
         _file.writeframes(merge2rawwav(_wav_data))  # pylint: disable=E1101
 
 
-def playmusic(_filename: str) -> None:
-    """Play an MP3, WAV, or other audio files"""
+def playmusic(_filename: str) -> None:  # noqa: R701
+    """Play an MP3, WAV, or other audio files."""
     if PYGAME_IMPORTED:
         init()
         music.load(_filename)
@@ -177,7 +177,7 @@ def playmusic(_filename: str) -> None:
 
 
 def audioimg2mp4(_audio_filename: str, _img_filename: str, sample_rate: int = 44100) -> bool:
-    """Create an MP4 video given an audio file & an image file; Return True if successful"""
+    """Create an MP4 video given an audio file & an image file; Return True if successful."""
     if doesfileexist(_img_filename) and doesfileexist(_audio_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -197,7 +197,7 @@ def audioimg2mp4(_audio_filename: str, _img_filename: str, sample_rate: int = 44
 
 
 def to_aac(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to an AAC file; Return True if successful"""
+    """Convert an audio file to an AAC file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -212,7 +212,7 @@ def to_aac(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def to_ac3(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to an AC3 file; Return True if successful"""
+    """Convert an audio file to an AC3 file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -227,7 +227,7 @@ def to_ac3(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def to_ac3_fixed(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to an AC3 (Fixed) file; Return True if successful"""
+    """Convert an audio file to an AC3 (Fixed) file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -242,7 +242,7 @@ def to_ac3_fixed(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def to_flac(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to a Flac file; Return True if successful"""
+    """Convert an audio file to a Flac file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -257,7 +257,7 @@ def to_flac(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def to_mp3(_filename: str, bitrate: int = 320000, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to an MP3 file; Return True if successful"""
+    """Convert an audio file to an MP3 file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -272,7 +272,7 @@ def to_mp3(_filename: str, bitrate: int = 320000, sample_rate: int = 44100) -> b
 
 
 def to_ogg(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to an OGG file; Return True if successful"""
+    """Convert an audio file to an OGG file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -287,7 +287,7 @@ def to_ogg(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def to_opus(_filename: str) -> bool:
-    """Convert an audio file to an OPUS file; Return True if successful"""
+    """Convert an audio file to an OPUS file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -302,7 +302,7 @@ def to_opus(_filename: str) -> bool:
 
 
 def to_wav_tmp(_filename: str, _tmpname: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to a WAV file; Return True if successful"""
+    """Convert an audio file to a WAV file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -317,7 +317,7 @@ def to_wav_tmp(_filename: str, _tmpname: str, sample_rate: int = 44100) -> bool:
 
 
 def to_wav(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an audio file to a WAV file; Return True if successful"""
+    """Convert an audio file to a WAV file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -332,7 +332,7 @@ def to_wav(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def mp3_to_wav(_filename: str, sample_rate: int = 44100) -> bool:
-    """Convert an MP3 file to a WAV file; Return True if successful"""
+    """Convert an MP3 file to a WAV file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):
@@ -352,7 +352,7 @@ def mp3_to_wav(_filename: str, sample_rate: int = 44100) -> bool:
 
 
 def wav_to_mp3(_filename: str, bitrate: int = 320000, sample_rate: int = 44100) -> bool:
-    """Convert a WAV file to an MP3 file; Return True if successful"""
+    """Convert a WAV file to an MP3 file; Return True if successful."""
     if doesfileexist(_filename):
         # Conversion
         if is_program_aval(r'ffmpeg'):

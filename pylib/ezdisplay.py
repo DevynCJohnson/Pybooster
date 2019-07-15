@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief EzDisplay: Display the contents of a file or command-output in a GTK window
+"""@brief EzDisplay: Display the contents of a file or command-output in a GTK window.
 
 @file ezdisplay.py
 @package pybooster.ezdisplay
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -37,7 +37,7 @@ require_version(r'Gtk', r'3.0')
 from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
-_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
+_GUI: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -153,11 +153,11 @@ Author: Devyn Collier Johnson
       </object>
     </child>
   </object>
-</interface>"""
+</interface>'''
 
 
 def getinput() -> str:
-    """Read from a file or pipe"""
+    """Read from a file or pipe."""
     try:
         if len(argv) == 1:
             while True:
@@ -178,10 +178,10 @@ def getinput() -> str:
 
 
 class MainWin():  # pylint: disable=R0903
-    """Main Window"""
+    """Main Window."""
 
     def __init__(self):
-        """Initialize the main window"""
+        """Initialize the main window."""
         self.interface = Gtk.Builder()
         self.interface.add_from_string(buffer=_GUI)
         self.interface.connect_signals({r'_winexit': Gtk.main_quit})  # Match signal to function (handler)

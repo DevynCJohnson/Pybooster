@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief View various information about a library or executable
+"""@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2019.06.20
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1288,7 +1288,7 @@ STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 
 
 class DataTable:  # pylint: disable=R0903
-    """Global table for all threads to get and set data concerning the available tools"""
+    """Global table for all threads to get and set data concerning the available tools."""
 
     # Available Tools
     is_insn_count_available: bool = is_program_aval(r'insn_count')
@@ -1339,10 +1339,10 @@ class DataTable:  # pylint: disable=R0903
 
 
 class MainWindow:  # pylint: disable=R0902
-    """Main GTK-window"""
+    """Main GTK-window."""
 
     def __init__(self, getfiledata: bool, filedata: Tuple[int, str]) -> None:
-        """Create the GTK-window and all needed objects"""
+        """Create the GTK-window and all needed objects."""
         # Build GUI
         self.ui = Gtk.Builder()
         self.ui.add_from_string(buffer=_GUI)
@@ -1417,7 +1417,7 @@ class MainWindow:  # pylint: disable=R0902
             self.gtk_open()
 
     def show_hide_save(self, _notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWindow], page_num: int) -> None:  # pylint: disable=W0613
-        """Show or hide the save buttons"""
+        """Show or hide the save buttons."""
         if page_num == _notebook.page_num(self.about_box):
             self.btn_save.set_visible(False)
             self.menuitem_save.set_visible(False)
@@ -1428,11 +1428,11 @@ class MainWindow:  # pylint: disable=R0902
             self.menuitem_saveas.set_visible(True)
 
     def status(self, context_id: int, _msg: str) -> None:
-        """Place a message in the statusbar"""
+        """Place a message in the statusbar."""
         self.statusbar.push(context_id, _msg)
 
     def retreive_data_buffer(self, active_tab: int, tabs_page_num: Callable) -> Gtk.TextBuffer:  # noqa: C901,R701  # pylint: disable=R0911
-        """Get the data in the currently active data buffer"""
+        """Get the data in the currently active data buffer."""
         if active_tab == tabs_page_num(self.scrwin_prop):  # tab_prop
             return self.textview_prop.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_sym_tbl):  # tab_sym_tbl
@@ -1472,7 +1472,7 @@ class MainWindow:  # pylint: disable=R0902
     # OPEN & SAVE #
 
     def gtk_open(self, _menuitem: Gtk.ImageMenuItem = None) -> None:
-        """Select a file to open"""
+        """Select a file to open."""
         self.status(self.context_id, STATUS_OPENING_FILE[1])
         try:
             _filewin = FileChooserWin()
@@ -1497,14 +1497,14 @@ class MainWindow:  # pylint: disable=R0902
         self.refreshdata(_binfile, self.getdis(_binfile))
 
     def gtk_save(self, _button: Gtk.Button) -> None:
-        """Save the data"""
+        """Save the data."""
         if not isinstance(DataTable.lastused, str) or DataTable.lastused in {r'', r'cancel'}:
             self.gtk_saveas(_button)
             return
         self.save_data(self.tabs.get_current_page(), DataTable.lastused)
 
     def gtk_saveas(self, _button: Gtk.Button) -> None:
-        """Choose where to save the data"""
+        """Choose where to save the data."""
         # Select File
         try:
             _filewin = FileChooserWin()
@@ -1524,7 +1524,7 @@ class MainWindow:  # pylint: disable=R0902
         self.save_data(self.tabs.get_current_page(), savefilepath)
 
     def save_data(self, active_tab: int, savefilepath: str) -> None:  # noqa: C901
-        """Perform the actual data-save"""
+        """Perform the actual data-save."""
         DataTable.lastused = savefilepath
         save_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer(active_tab, self.tabs.page_num)
         try:
@@ -1541,7 +1541,7 @@ class MainWindow:  # pylint: disable=R0902
         self.status(self.context_id, r'File saved')
 
     def write2file(self, _filename: str, _write: str) -> None:
-        """Send data to new file or overwrite file"""
+        """Send data to new file or overwrite file."""
         self.status(self.context_id, STATUS_WRITING[1])
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
             _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
@@ -1549,7 +1549,7 @@ class MainWindow:  # pylint: disable=R0902
     # ANALYSIS
 
     def getdis(self, _file: str) -> Tuple[int, str]:  # noqa: C901  # pylint: disable=R0914
-        """Get data from the file and disassemble"""
+        """Get data from the file and disassemble."""
         self.status(self.context_id, STATUS_ANALYZING[1])
         # Gather filetype information
         _charset = MIME_ENCODING.file(_file)
@@ -1586,7 +1586,7 @@ class MainWindow:  # pylint: disable=R0902
         return STATUS_FINISHED
 
     def refreshdata(self, _file: str, _datatuple: tuple) -> None:  # noqa: C901,R701
-        """Place the data in the text-buffers of the window"""
+        """Place the data in the text-buffers of the window."""
         self.tabs.set_current_page(0)
         self.status(self.context_id, STATUS_ANALYZING[1])
         if _datatuple[0] == -1:
@@ -1653,10 +1653,10 @@ class MainWindow:  # pylint: disable=R0902
 
 
 class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
-    """File Selection Window"""
+    """File Selection Window."""
 
     def __init__(self) -> None:
-        """Initialize file selection window"""
+        """Initialize file selection window."""
         self.file_ui = Gtk.Builder()
         self.file_ui.add_from_string(buffer=_FILEGUI)
         self.file_ui.connect_signals({
@@ -1679,7 +1679,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
             _return_uri: bool = True,
             _return_dtype: str = r'list',
     ) -> Union[list, str]:
-        """File Chooser Dialog: Select a file or folder"""
+        """File Chooser Dialog: Select a file or folder."""
         # Parameters
         self._select_file: bool = _select_file
         self._select_dir: bool = _select_dir
@@ -1753,18 +1753,18 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         return self._out
 
     def _winexit(self, *_x: Union[None, Tuple[Gtk.ApplicationWindow, None]]) -> None:  # pylint: disable=R0201
-        """Close Window"""
+        """Close Window."""
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
     def _cancel(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
-        """Cancel-Button functionality"""
+        """Cancel-Button functionality."""
         self._out = r'cancel'
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
     def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # noqa: C901,R701  # pylint: disable=R0201
-        """Submit selection for processing using the select-button"""
+        """Submit selection for processing using the select-button."""
         if self._select_dir and not self._multiple and self._chkbtn_dir.get_active():
             if self._return_uri and self._return_dtype == r'str':
                 self._out = r' '.join(self._filew.get_current_folder_uri())
@@ -1789,7 +1789,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         Gtk.main_quit()
 
     def _hidden(self, _chkbtn: Tuple[Gtk.CheckButton, None]) -> None:
-        """Toggle the visibility of hidden files using the hidden-checkbox"""
+        """Toggle the visibility of hidden files using the hidden-checkbox."""
         self._viewhidden = not self._viewhidden
         self._filew.set_show_hidden(self._viewhidden)
 
@@ -1798,7 +1798,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
 
 
 def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[str, str], Tuple[str, str, str]]:  # noqa: C901,R701  # pylint: disable=R0911
-    """Thread helper for `run_threaded_analysis()`"""
+    """Thread helper for `run_threaded_analysis()`."""
     if _var.startswith(r'OBJDUMP_'):
         if _var == r'OBJDUMP_DISASSEMBLE':
             return getoutput(cmd) if DataTable.is_ndisasm_available and _flag else r'ndisasm is unavailable'
@@ -1830,7 +1830,7 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
 
 
 def set_architecture_type(file_magic: str, _bits: str) -> Tuple[int, str]:  # noqa: C901,R701
-    """Return variables indicating the architecture to use and the dissembler"""
+    """Return variables indicating the architecture to use and the dissembler."""
     filemagic: str = file_magic
     if r'elf' not in filemagic:
         return STATUS_UNSUPPORTED_FILETYPE
@@ -1880,7 +1880,7 @@ def set_architecture_type(file_magic: str, _bits: str) -> Tuple[int, str]:  # no
 
 
 def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # noqa: C901,R701
-    """Set the appropriate tools to use for the given data"""
+    """Set the appropriate tools to use for the given data."""
     if _charset != r'binary':
         return STATUS_UNSUPPORTED_FILETYPE
     DataTable.use_ndisasm, _prefix = set_architecture_type(_magic, _bits)
@@ -1924,7 +1924,7 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
 
 
 def run_threaded_analysis(_file: str, _bits: str) -> None:
-    """Run the different tools on the executable/binary"""
+    """Run the different tools on the executable/binary."""
     _filecmd: str = r'file'
     poolsize: int = cpu_count()
     poolsize = 16 if poolsize > 16 else poolsize
@@ -1992,7 +1992,7 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
 
 
 def file_properties(_file: str) -> str:
-    """Gather and display file properties in `File Properties` tab"""
+    """Gather and display file properties in `File Properties` tab."""
     _stat = stat(_file, follow_symlinks=False)
     _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
     _mtime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_mtime)))

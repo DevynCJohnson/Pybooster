@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Interface for system libraries via ctypes (mostly for Unixoid systems)
+"""@brief Interface for system libraries via ctypes (mostly for Unixoid systems).
 
 @file clibutil.py
 @package pybooster.clibutil
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -60,12 +60,12 @@ __all__: list = [
 
 
 def getlibc() -> Optional[str]:
-    """Return the file name of libc"""
+    """Return the file name of libc."""
     return util.find_library(r'c')
 
 
 def getlibm() -> Optional[str]:
-    """Return the file name of libm"""
+    """Return the file name of libm."""
     return util.find_library(r'm')
 
 
@@ -73,7 +73,7 @@ def getlibm() -> Optional[str]:
 
 
 def list_elf_lib_funcs(libfile_path: str) -> list:
-    """Return a list of functions in a shared ELF library; Requires 'nm'"""
+    """Return a list of functions in a shared ELF library; Requires 'nm'."""
     if isfile(libfile_path):
         libobj: str = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) T (?!_)(.+)', libobj)
@@ -82,7 +82,7 @@ def list_elf_lib_funcs(libfile_path: str) -> list:
 
 
 def list_elf_lib_consts(libfile_path: str) -> list:
-    """Return a list of non-static constants in a shared ELF library; Requires 'nm'"""
+    """Return a list of non-static constants in a shared ELF library; Requires 'nm'."""
     if isfile(libfile_path):
         libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) R (?!_)(.+)', libobj)
@@ -91,7 +91,7 @@ def list_elf_lib_consts(libfile_path: str) -> list:
 
 
 def list_elf_lib_objs(libfile_path: str) -> list:
-    """Return a list of functions and non-static constants in a shared ELF library; Requires 'nm'"""
+    """Return a list of functions and non-static constants in a shared ELF library; Requires 'nm'."""
     if isfile(libfile_path):
         libobj = getoutput(r'nm -D --defined-only ' + libfile_path)
         objs = findall('([a-f0-9]+) ([RT]+) (?!_)(.+)', libobj)
@@ -103,7 +103,7 @@ def list_elf_lib_objs(libfile_path: str) -> list:
 
 
 def loadlib(library: str) -> CDLL:
-    """Load the specified library by name
+    """Load the specified library by name.
 
     Usage: library = loadlib('m')
     """
@@ -113,7 +113,7 @@ def loadlib(library: str) -> CDLL:
 
 
 def loadlibpath(libpath: str) -> CDLL:
-    """Load the specified library by pathname
+    """Load the specified library by pathname.
 
     Usage: library = loadlibpath('/DIR/libFILE.so')
     """
@@ -121,7 +121,7 @@ def loadlibpath(libpath: str) -> CDLL:
 
 
 def loadlibc() -> CDLL:
-    """Load libc
+    """Load libc.
 
     Usage: libc = loadlibc()
     """
@@ -129,7 +129,7 @@ def loadlibc() -> CDLL:
 
 
 def loadlibm() -> CDLL:
-    """Load libm (Math)
+    """Load libm (Math).
 
     Usage: libm = loadlibm()
     """

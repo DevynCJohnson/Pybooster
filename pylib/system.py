@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief System-related functions
+"""@brief System-related functions.
 
 @file system.py
 @package pybooster.system
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -76,7 +76,7 @@ ENVKEY = dict(environ)
 
 
 def home() -> str:
-    """Return user's home directory as a string
+    """Return user's home directory as a string.
 
     >>> home()
     '/home/collier'
@@ -88,7 +88,7 @@ def home() -> str:
 
 
 def envdict() -> dict:
-    """Return the system's environment variables
+    """Return the system's environment variables.
 
     A dictionary is returned in the form { 'VAR': 'VAL'}
     """
@@ -96,12 +96,12 @@ def envdict() -> dict:
 
 
 def envlist() -> list:
-    """Return a list of the system's environment variables"""
+    """Return a list of the system's environment variables."""
     return [k + r'=' + v for k, v in zip(environ.keys(), environ.values())]
 
 
 def printenv() -> None:
-    """Print the system's environment variables"""
+    """Print the system's environment variables."""
     for k, v in zip(environ.keys(), environ.values()):
         stdout.write('{}={}\n'.format(k, v))
 
@@ -110,12 +110,12 @@ def printenv() -> None:
 
 
 def isthread(_thead) -> bool:
-    """Test if object is a thread, or if the thread is alive/present"""
-    return True if hasattr(_thead, r'is_alive') else False
+    """Test if object is a thread, or if the thread is alive/present."""
+    return bool(hasattr(_thead, r'is_alive'))
 
 
 def ckill(_process) -> None:
-    """Cross-platform Kill
+    """Cross-platform Kill.
 
     Kill process specified by process-object or PID
     ckill(PID)
@@ -125,18 +125,18 @@ def ckill(_process) -> None:
         _handle = kernel32.OpenProcess(1, False, _process.pid)
         kernel32.TerminateProcess(_handle, -1)
         kernel32.CloseHandle(_handle)
-    else:
-        try:
-            _kill(_process, SIGKILL)
-        except OSError:
-            _kill(_process.pid, SIGKILL)
+        return
+    try:
+        _kill(_process, SIGKILL)
+    except OSError:
+        _kill(_process.pid, SIGKILL)
 
 
 # MACHINE-RELATED FUNCTIONS #
 
 
 def bitness() -> str:
-    """Return a string indicating the bitness of the system
+    """Return a string indicating the bitness of the system.
 
     >>> bitness()
     '64'
@@ -153,7 +153,7 @@ def bitness() -> str:
 
 
 def cintsize() -> int:
-    """Return the C/C++ size of an int for the current system
+    """Return the C/C++ size of an int for the current system.
 
     The returned value is an integer for the number of bytes
 
@@ -167,7 +167,7 @@ def cintsize() -> int:
 
 
 def idsys() -> None:
-    """Identify system and display specific info"""
+    """Identify system and display specific info."""
     stdout.write(
         'Byteorder:          {}\n'
         'System Name:        {}\n'
@@ -198,7 +198,7 @@ def idsys() -> None:
 
 
 def which(program: str) -> str:
-    """Return the path of the specified application (if it exists)
+    """Return the path of the specified application (if it exists).
 
     An empty string is returned if the program does not exist
     """
@@ -213,7 +213,7 @@ def which(program: str) -> str:
 
 
 def is_program_aval(program: str) -> bool:
-    """Return `True` if the path of the specified application exists, otherwise, return `False`"""
+    """Return `True` if the path of the specified application exists, otherwise, return `False`."""
     if path.split(program)[0] and path.isfile(program) and access(program, X_OK):
         return True
     envpath: list = environ[r'PATH'].split(pathsep)

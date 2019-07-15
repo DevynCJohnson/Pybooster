@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Pronoun-related functions and constants
+"""@brief Pronoun-related functions and constants.
 
 @file pronouns.py
 @package pybooster.pronouns
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -114,7 +114,7 @@ GENDER_SWAP = (
 
 
 def swap_pronouns(_str: str, _pronouns: tuple) -> str:
-    """Swap pronouns
+    """Swap pronouns.
 
     >>> swap_pronouns('I was running a test.', FIRST_THIRD)
     'he or she was running a test.'
@@ -136,7 +136,7 @@ def swap_pronouns(_str: str, _pronouns: tuple) -> str:
 
 
 def pronoun(_str: str) -> str:
-    """Swap first and third person pronouns
+    """Swap first and third person pronouns.
 
     >>> pronoun('I was running a test.')
     'he or she was running a test.'
@@ -145,7 +145,7 @@ def pronoun(_str: str) -> str:
 
 
 def pronoun2(_str: str) -> str:
-    """Swap first and second person pronouns
+    """Swap first and second person pronouns.
 
     >>> pronoun2('This test is mine.')
     'This test is yours.'
@@ -154,7 +154,7 @@ def pronoun2(_str: str) -> str:
 
 
 def pronoun3(_str: str) -> str:
-    """Swap second and third person pronouns
+    """Swap second and third person pronouns.
 
     >>> pronoun3('This test is yours.')
     'This test is theirs.'
@@ -163,7 +163,7 @@ def pronoun3(_str: str) -> str:
 
 
 def pronounf(_str: str) -> str:
-    """Swap first and third person pronouns and replace spaces with %20
+    """Swap first and third person pronouns and replace spaces with `%20`.
 
     >>> pronounf('I was running a test.')
     'he%20or%20she%20was%20running%20a%20test.'
@@ -172,7 +172,7 @@ def pronounf(_str: str) -> str:
 
 
 def pronoun2f(_str: str) -> str:
-    """Swap first and second person pronouns and replace spaces with %20
+    """Swap first and second person pronouns and replace spaces with `%20`.
 
     >>> pronoun2f('This test is mine.')
     'This%20test%20is%20yours.'
@@ -181,7 +181,7 @@ def pronoun2f(_str: str) -> str:
 
 
 def pronoun3f(_str: str) -> str:
-    """Swap second and third person pronouns and replace spaces with %20
+    """Swap second and third person pronouns and replace spaces with `%20`.
 
     >>> pronoun3f('This test is yours.')
     'This%20test%20is%20theirs.'
@@ -190,7 +190,7 @@ def pronoun3f(_str: str) -> str:
 
 
 def swap_genders(_str: str) -> str:
-    """Swap gender pronouns
+    """Swap gender pronouns.
 
     >>> swap_genders('He ran the test.')
     'she ran the test.'

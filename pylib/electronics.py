@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Electrical equations
+"""@brief Electrical equations.
 
 @file electronics.py
 @package pybooster.electronics
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -53,22 +53,22 @@ OHMS: str = '\u03A9'
 
 
 def current(_voltage: float, _resistance: float) -> float:
-    """I=E/R"""
+    """I=E/R."""
     return _voltage / _resistance
 
 
 def resistance(_voltage: float, _current: float) -> float:
-    """R=E/I"""
+    """R=E/I."""
     return _voltage / _current
 
 
 def voltage(_current: float, _resistance: float) -> float:
-    """E=IR"""
+    """E=IR."""
     return _current * _resistance
 
 
 def power(_current: Optional[float] = None, _resistance: Optional[float] = None, _voltage: Optional[float] = None) -> Optional[float]:
-    """Power (Wattage)"""
+    """Power (Wattage)."""
     if _current is None:  # P=(E^2)/R
         return (_voltage ** 2.0) / _resistance  # type: ignore
     if _resistance is None:  # P=IE

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Character and symbol lists and tables
+"""@brief Character and symbol lists and tables.
 
 @file libchar.py
 @package pybooster.libchar
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -374,7 +374,7 @@ REGULAR2FULLWIDTH: dict = str.maketrans(REGWIDTH_TEXT, FULLWIDTH_TEXT)
 # CHARACTER LISTS #
 
 
-ARROWS: tuple = (
+ARROWS: frozenset = frozenset({
     r'←', r'↑', r'→', r'↓', r'↔', r'↕', r'↖', r'↗', r'↘', r'↙', r'↜', r'↝', r'↞', r'↟', r'↠',
     r'↡', r'↢', r'↣', r'↤', r'↥', r'↦', r'↧', r'↨', r'↩', r'↪', r'↫', r'↬', r'↭', r'↯', r'↰',
     r'↱', r'↲', r'↳', r'↴', r'↵', r'↶', r'↷', r'↸', r'↹', r'↺', r'↻', r'↼', r'↽', r'↾', r'↿',
@@ -396,13 +396,13 @@ ARROWS: tuple = (
     r'⥦', r'⥧', r'⥨', r'⥩', r'⥪', r'⥫', r'⥬', r'⥭', r'⥮', r'⥯', r'⥰', r'⥱', r'⥲', r'⥳',
     r'⥴', r'⥵', r'⥶', r'⥷', r'⥸', r'⥹', r'⥺', r'⥻', r'⬀', r'⬁', r'⬂', r'⬃', r'⬄', r'⬅',
     r'⬆', r'⬇', r'⬈', r'⬉', r'⬊', r'⬋', r'⬌', r'⬍', r'⬎', r'⬏', r'⬐', r'⬑'
-)
+})
 
 
-ASTROLOGY: tuple = (r'☉', r'☽', r'☿', r'♀', r'♁', r'♂', r'⚳', r'♃', r'♄', r'♅', r'⛢', r'♆', r'♇')
+ASTROLOGY: frozenset = frozenset({r'☉', r'☽', r'☿', r'♀', r'♁', r'♂', r'⚳', r'♃', r'♄', r'♅', r'⛢', r'♆', r'♇'})
 
 
-BRAILLE: tuple = (
+BRAILLE: frozenset = frozenset({
     r'⠀', r'⠁', r'⠂', r'⠃', r'⠄', r'⠅', r'⠆', r'⠇', r'⠈', r'⠉', r'⠊', r'⠋', r'⠌', r'⠍', r'⠎',
     r'⠏', r'⠐', r'⠑', r'⠒', r'⠓', r'⠔', r'⠕', r'⠖', r'⠗', r'⠘', r'⠙', r'⠚', r'⠛', r'⠜', r'⠝',
     r'⠞', r'⠟', r'⠠', r'⠡', r'⠢', r'⠣', r'⠤', r'⠥', r'⠦', r'⠧', r'⠨', r'⠩', r'⠪', r'⠫', r'⠬',
@@ -421,7 +421,7 @@ BRAILLE: tuple = (
     r'⣡', r'⣢', r'⣣', r'⣤', r'⣥', r'⣦', r'⣧', r'⣨', r'⣩', r'⣪', r'⣫', r'⣬', r'⣭', r'⣮', r'⣯',
     r'⣰', r'⣱', r'⣲', r'⣳', r'⣴', r'⣵', r'⣶', r'⣷', r'⣸', r'⣹', r'⣺', r'⣻', r'⣼', r'⣽', r'⣾',
     r'⣿'
-)
+})
 
 
 CARDS: tuple = (r'♠', r'♡', r'♢', r'♣', r'♤', r'♥', r'♦', r'♧')
@@ -436,11 +436,11 @@ CHESS_BLACK: tuple = (r'♚', r'♛', r'♜', r'♝', r'♞', r'♟')
 CHESS_WHITE: tuple = (r'♔', r'♕', r'♖', r'♗', r'♘', r'♙')
 
 
-CONTROL_SYM: tuple = (
+CONTROL_SYM: frozenset = frozenset({
     r'␀', r'␁', r'␂', r'␃', r'␄', r'␅', r'␆', r'␇', r'␈', r'␉', r'␊', r'␋', r'␌', r'␍', r'␎',
     r'␏', r'␐', r'␑', r'␒', r'␓', r'␔', r'␕', r'␖', r'␗', r'␘', r'␙', r'␚', r'␛', r'␜', r'␝',
     r'␞', r'␟', r'␠', r'␡'
-)
+})
 
 
 CONTROL_SYM_NAME: dict = {  # type: ignore
@@ -481,19 +481,19 @@ CONTROL_SYM_NAME: dict = {  # type: ignore
 }
 
 
-CURRENCY: tuple = (
+CURRENCY: frozenset = frozenset({
     r'¤', r'₳', r'฿', r'₵', r'¢', r'₡', r'₢', r'$', r'₫', r'₯', r'₠', r'€', r'ƒ', r'₣',
     r'₲', r'₴', r'₭', r'₺', r'ℳ', r'₥', r'₦', r'₧', r'₱', r'₰', r'£', r'៛', r'₽', r'₹',
     r'₨', r'₪', r'৳', r'₸', r'₮', r'₩', r'¥'
-)
+})
 
 
-CYRILLIC_ALPHABET: tuple = (
+CYRILLIC_ALPHABET: frozenset = frozenset({
     r'А', r'Б', r'В', r'Г', r'Д', r'Е', r'Ё', r'Ж', r'З', r'И', r'Й', r'К', r'Л', r'М',
     r'Н', r'О', r'П', r'Р', r'С', r'Т', r'У', r'Ф', r'Х', r'Ц', r'Ч',
     r'а', r'б', r'в', r'г', r'д', r'е', r'ё', r'ж', r'з', r'и', r'й', r'к', r'л', r'м',
     r'н', r'о', r'п', r'р', r'с', r'т', r'у', r'ф', r'х', r'ц', r'ч'
-)
+})
 
 
 DICE: tuple = (r'⚀', r'⚁', r'⚂', r'⚃', r'⚄', r'⚅')
@@ -502,7 +502,7 @@ DICE: tuple = (r'⚀', r'⚁', r'⚂', r'⚃', r'⚄', r'⚅')
 END_PUNCT: tuple = (r'…', r'¿', r'¡', r'‽', r'⸮')
 
 
-FACES: tuple = (
+FACES: frozenset = frozenset({
     r'😁', r'😂', r'😃', r'😄', r'😅', r'😆', r'😇', r'😈', r'😉', r'😊', r'😋', r'😌', r'😍',
     r'😎', r'😏', r'😐', r'😒', r'😓', r'😔', r'😖', r'😘', r'😚', r'😜', r'😝', r'😞', r'😠',
     r'😡', r'😢', r'😣', r'😥', r'😨', r'😩', r'😪', r'😫', r'😭', r'😰', r'😱', r'😲', r'😳',
@@ -510,7 +510,7 @@ FACES: tuple = (
     r'🙂', r'🙃', r'🙄', r'🙅', r'🙆', r'🙇', r'🙈', r'🙉', r'🙊', r'🙋', r'🙌', r'🙍', r'🙎',
     r'🙏', r'👦', r'👧', r'👨', r'👩', r'👮', r'👯', r'👰', r'👱', r'👲', r'👳', r'👴', r'👵',
     r'👶', r'👷', r'👸', r'👹', r'👺', r'👼', r'👽', r'👾', r'👿', r'💀', r'💁', r'💂'
-)
+})
 
 
 INTELLECTUAL_PROPERTY: tuple = (r'©', r'℗', r'®', r'℠', r'™')
@@ -519,13 +519,13 @@ INTELLECTUAL_PROPERTY: tuple = (r'©', r'℗', r'®', r'℠', r'™')
 LOGIC: tuple = (r'⇒', r'→', r'⊃', r'⇔', r'≡', r'↔', r'¬', r'∥', r'⊕', r'⊻', r'⊥', r'∃', r'≔', r'≡', r'⊢', r'⊨')
 
 
-MATH: tuple = (
+MATH: frozenset = frozenset({
     r'÷', r'×', r'±', r'∓', r'√', r'∛', r'∜', r'∫', r'∮', r'∯', r'∰', r'∴', r'∵', r'∝', r'∞',
     r'≈', r'≅', r'♎', r'π', r'≪', r'≫', r'≤', r'≥', r'≦', r'≧'
-)
+})
 
 
-MUSIC: tuple = (
+MUSIC: frozenset = frozenset({
     r'𝄀', r'𝄁', r'𝄂', r'𝄃', r'𝄄', r'𝄅', r'𝄆', r'𝄇', r'𝄈', r'𝄉', r'𝄊', r'𝄋', r'𝄌', r'𝄍', r'𝄎', r'𝄏',
     r'𝄐', r'𝄑', r'𝄒', r'𝄓', r'𝄔', r'𝄕', r'𝄖', r'𝄗', r'𝄘', r'𝄙', r'𝄚', r'𝄛', r'𝄜', r'𝄝', r'𝄞',
     r'𝄟', r'𝄠', r'𝄡', r'𝄢', r'𝄣', r'𝄤', r'𝄥', r'𝄦', r'𝄩', r'𝄪', r'𝄫', r'𝄬', r'𝄭', r'𝄮', r'𝄯',
@@ -540,7 +540,7 @@ MUSIC: tuple = (
     r'𝆶', r'𝆷', r'𝆸', r'𝆹', r'𝆺', r'𝆹𝅥', r'𝆺𝅥', r'𝆹𝅥𝅮', r'𝆺𝅥𝅮', r'𝆹𝅥𝅯', r'𝆺𝅥𝅯', r'𝇁', r'𝇂', r'𝇃', r'𝇄', r'𝇅', r'𝇆',
     r'𝇇', r'𝇈', r'𝇉', r'𝇊', r'𝇋', r'𝇌', r'𝇍', r'𝇎', r'𝇏', r'𝇐', r'𝇑', r'𝇒', r'𝇓', r'𝇔', r'𝇕', r'𝇖',
     r'𝇗', r'𝇘', r'𝇙', r'𝇚', r'𝇛', r'𝇜', r'𝇝', r'𝇞', r'𝇟'
-)
+})
 
 
 PARENTHESIS_CHAR: tuple = (
@@ -567,7 +567,7 @@ PLANETS: dict = {  # type: ignore
 }
 
 
-PLAYING_CARDS: tuple = (
+PLAYING_CARDS: frozenset = frozenset({
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -581,10 +581,10 @@ PLAYING_CARDS: tuple = (
     r'🂫', r'🂻', r'🃋', r'🃛',
     r'🂭', r'🂽', r'🃍', r'🃝',
     r'🂮', r'🂾', r'🃎', r'🃞'
-)
+})
 
 
-PLAYING_CARDS_52: tuple = (
+PLAYING_CARDS_52: frozenset = frozenset({
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -599,10 +599,10 @@ PLAYING_CARDS_52: tuple = (
     r'🂭', r'🂽', r'🃍', r'🃝',
     r'🂮', r'🂾', r'🃎', r'🃞',
     r'🃏', r'🃟'
-)
+})
 
 
-PLAYING_CARDS_56: tuple = (
+PLAYING_CARDS_56: frozenset = frozenset({
     r'🂡', r'🂱', r'🃁', r'🃑',
     r'🂢', r'🂲', r'🃂', r'🃒',
     r'🂣', r'🂳', r'🃃', r'🃓',
@@ -618,7 +618,7 @@ PLAYING_CARDS_56: tuple = (
     r'🂮', r'🂾', r'🃎', r'🃞',
     r'🃏', r'🃟',
     r'🂬', r'🂼', r'🃌', r'🃜'  # Chevalier/Knight
-)
+})
 
 
 CARDS: dict = {  # type: ignore
@@ -689,7 +689,7 @@ GREEK_ARCHAIC_UPPER: tuple = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ')
 GREEK_ARCHAIC_LOWER: tuple = (r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
 
 
-GREEK_ACCENT_UPPER: tuple = (
+GREEK_ACCENT_UPPER: frozenset = frozenset({
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -701,10 +701,10 @@ GREEK_ACCENT_UPPER: tuple = (
     r'Ὑ', r'Ὓ', r'Ὕ', r'Ὗ', r'Ῠ', r'Ῡ', r'Ὺ', r'Ύ',
     r'Ὠ', r'Ὡ', r'Ὢ', r'Ὣ', r'Ὤ', r'Ὥ', r'Ὦ', r'Ὧ',
     r'ᾨ', r'ᾩ', r'ᾪ', r'ᾫ', r'ᾬ', r'ᾭ', r'ᾮ', r'ᾯ', r'Ὼ', r'Ώ', r'ῼ',
-)
+})
 
 
-GREEK_ACCENT_LOWER: tuple = (
+GREEK_ACCENT_LOWER: frozenset = frozenset({
     r'ἀ', r'ἁ', r'ἂ', r'ἃ', r'ἄ', r'ἅ', r'ἆ', r'ἇ', r'ὰ', r'ά',
     r'ᾀ', r'ᾁ', r'ᾂ', r'ᾃ', r'ᾄ', r'ᾅ', r'ᾆ', r'ᾇ', r'ᾰ', r'ᾱ', r'ᾲ', r'ᾳ', r'ᾴ', r'ᾶ', r'ᾷ',
     r'ἐ', r'ἑ', r'ἒ', r'ἓ', r'ἔ', r'ἕ', r'ὲ', r'έ',
@@ -718,21 +718,21 @@ GREEK_ACCENT_LOWER: tuple = (
     r'ὺ', r'ύ', r'ῠ', r'ῡ', r'ῢ', r'ΰ', r'ῦ', r'ῧ',
     r'ὠ', r'ὡ', r'ὢ', r'ὣ', r'ὤ', r'ὥ', r'ὦ', r'ὧ', r'ὼ', r'ώ', r'ῶ',
     r'ᾠ', r'ᾡ', r'ᾢ', r'ᾣ', r'ᾤ', r'ᾥ', r'ᾦ', r'ᾧ', r'ῲ', r'ῳ', r'ῴ', r'ῷ'
-)
+})
 
 
-GREEK: tuple = (
+GREEK: frozenset = frozenset({
     r'Α', r'Β', r'Γ', r'Δ', r'Ε', r'Ζ', r'Η', r'Θ', r'Ι', r'Κ', r'Λ', r'Μ', r'Ν',
     r'Ξ', r'Ο', r'Π', r'Ρ', r'Σ', r'Τ', r'Υ', r'Φ', r'Χ', r'Ψ', r'Ω',
     r'α', r'β', r'γ', r'δ', r'ε', r'ζ', r'η', r'θ', r'ι', r'κ', r'λ', r'μ', r'ν',
     r'ξ', r'ο', r'π', r'ρ', r'σ', r'ς', r'τ', r'υ', r'φ', r'χ', r'ψ', r'ω'
-)
+})
 
 
 GREEK_ARCHAIC: tuple = (r'Ϝ', r'Ϛ', r'Ϟ', r'Ϙ', r'Ϡ', r'ϝ', r'ϛ', r'ϟ', r'ϙ', r'ϡ', r'ϳ', r'ϗ', r'϶')
 
 
-GREEK_ACCENT: tuple = (
+GREEK_ACCENT: frozenset = frozenset({
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -757,10 +757,10 @@ GREEK_ACCENT: tuple = (
     r'ὺ', r'ύ', r'ῠ', r'ῡ', r'ῢ', r'ΰ', r'ῦ', r'ῧ',
     r'ὠ', r'ὡ', r'ὢ', r'ὣ', r'ὤ', r'ὥ', r'ὦ', r'ὧ', r'ὼ', r'ώ', r'ῶ',
     r'ᾠ', r'ᾡ', r'ᾢ', r'ᾣ', r'ᾤ', r'ᾥ', r'ᾦ', r'ᾧ', r'ῲ', r'ῳ', r'ῴ', r'ῷ'
-)
+})
 
 
-GREEK_EXTENDED: tuple = (
+GREEK_EXTENDED: frozenset = frozenset({
     r'Ἀ', r'Ἁ', r'Ἂ', r'Ἃ', r'Ἄ', r'Ἅ', r'Ἆ', r'Ἇ',
     r'ᾈ', r'ᾉ', r'ᾊ', r'ᾋ', r'ᾌ', r'ᾍ', r'ᾎ', r'ᾏ', r'Ᾰ', r'Ᾱ', r'Ὰ', r'Ά', r'ᾼ',
     r'Ἐ', r'Ἑ', r'Ἒ', r'Ἓ', r'Ἔ', r'Ἕ', r'Ὲ', r'Έ',
@@ -785,10 +785,10 @@ GREEK_EXTENDED: tuple = (
     r'ὺ', r'ύ', r'ῠ', r'ῡ', r'ῢ', r'ΰ', r'ῦ', r'ῧ',
     r'ὠ', r'ὡ', r'ὢ', r'ὣ', r'ὤ', r'ὥ', r'ὦ', r'ὧ', r'ὼ', r'ώ', r'ῶ',
     r'ᾠ', r'ᾡ', r'ᾢ', r'ᾣ', r'ᾤ', r'ᾥ', r'ᾦ', r'ᾧ', r'ῲ', r'ῳ', r'ῴ', r'ῷ'
-)
+})
 
 
-GREEK_ALL: tuple = (
+GREEK_ALL: frozenset = frozenset({
     r'Α', r'Β', r'Γ', r'Δ', r'Ε', r'Ζ', r'Η', r'Θ', r'Ι', r'Κ', r'Λ', r'Μ', r'Ν',
     r'Ξ', r'Ο', r'Π', r'Ρ', r'Σ', r'Τ', r'Υ', r'Φ', r'Χ', r'Ψ', r'Ω',
     r'α', r'β', r'γ', r'δ', r'ε', r'ζ', r'η', r'θ', r'ι', r'κ', r'λ', r'μ', r'ν',
@@ -818,7 +818,7 @@ GREEK_ALL: tuple = (
     r'ὺ', r'ύ', r'ῠ', r'ῡ', r'ῢ', r'ΰ', r'ῦ', r'ῧ',
     r'ὠ', r'ὡ', r'ὢ', r'ὣ', r'ὤ', r'ὥ', r'ὦ', r'ὧ', r'ὼ', r'ώ', r'ῶ',
     r'ᾠ', r'ᾡ', r'ᾢ', r'ᾣ', r'ᾤ', r'ᾥ', r'ᾦ', r'ᾧ', r'ῲ', r'ῳ', r'ῴ', r'ῷ'
-)
+})
 
 
 # MISCELLANEOUS SYMBOLS #
@@ -1947,7 +1947,7 @@ INVALID_CHARREFS: dict = {  # type: ignore
 }
 
 
-INVALID_CODEPOINTS: tuple = (
+INVALID_CODEPOINTS: frozenset = frozenset({
     # 0x0001 to 0x0008
     0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8,
     # 0x000E to 0x001F
@@ -1968,7 +1968,7 @@ INVALID_CODEPOINTS: tuple = (
     0x8fffe, 0x8ffff, 0x9fffe, 0x9ffff, 0xafffe, 0xaffff, 0xbfffe, 0xbffff,
     0xcfffe, 0xcffff, 0xdfffe, 0xdffff, 0xefffe, 0xeffff, 0xffffe, 0xfffff,
     0x10fffe, 0x10ffff
-)
+})
 
 
 CODEPOINT2NAME: dict = {  # type: ignore

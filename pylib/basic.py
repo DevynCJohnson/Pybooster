@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Miscellaneous functions for most uses
+"""@brief Miscellaneous functions for most uses.
 
 @file basic.py
 @package pybooster.basic
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -42,6 +42,9 @@ except ImportError:
 
 
 __all__: list = [
+    # CLASSES #
+    r'ObjectError',
+    r'SameFileError',
     # MODULES & IMPORTS #
     r'lsmods',
     r'imports',
@@ -67,69 +70,63 @@ __all__: list = [
 # CLASSES #
 
 
-class SameFileError(Exception):  # pylint: disable=W0612
-    """Raised when source and target are the same file"""
-
-    def __init__(self, msg: str = r'The source and target file are the same.') -> None:
-        """Initialize exception"""
-        super(SameFileError, self).__init__(msg)
-        self.msg = msg
-
-    def __str__(self) -> str:
-        """Exception's string message"""
-        return repr(self.msg)
-
-
 class ObjectError(NameError, TypeError, ValueError):  # pylint: disable=W0612
-    """Raised when an object cannot be found, used, or manipulated"""
+    """Raised when an object cannot be found, used, or manipulated."""
 
     def __init__(self, msg: str = r'The object is malformed.') -> None:
-        """Initialize exception"""
+        """Initialize exception."""
         super(ObjectError, self).__init__(msg)
         self.msg = msg
 
     def __str__(self) -> str:
-        """Exception's string message"""
+        """Exception's string message."""
         return repr(self.msg)
 
 
-class NullException(BaseException):
-    """Null Exception"""
+class SameFileError(Exception):  # pylint: disable=W0612
+    """Raised when source and target are the same file."""
 
-    pass
+    def __init__(self, msg: str = r'The source and target file are the same.') -> None:
+        """Initialize exception."""
+        super(SameFileError, self).__init__(msg)
+        self.msg = msg
+
+    def __str__(self) -> str:
+        """Exception's string message."""
+        return repr(self.msg)
 
 
 # MODULES & IMPORTS #
 
 
 def lsmods() -> list:
-    """List loaded modules"""
+    """List loaded modules."""
     return list(modules.keys())
 
 
 def imports() -> list:
-    """List all imports"""
+    """List all imports."""
     return [val.__name__ for name, val in globals().items() if isinstance(val, ModuleType)]
 
 
 def imported() -> list:
-    """List imports that are in 'modules' and 'globals()'"""
+    """List imports that are in 'modules' and 'globals()'."""
     return list(set(modules) & set(globals()))
 
 
 def wheremods() -> list:
-    """List locations of imported modules"""
+    """List locations of imported modules."""
     _loadedmods: set = set(modules) & set(globals())
     return [modules[name] for name in _loadedmods]
 
 
 def wherecurmods() -> list:
-    """List locations of current/present modules"""
+    """List locations of current/present modules."""
     return [modules[name] for name in set(modules)]
 
 
 def modpath(module) -> str:
-    """Output module's file pathname"""
+    """Output module's file pathname."""
     try:
         return dirname(module.__file__)
     except AttributeError:
@@ -137,7 +134,7 @@ def modpath(module) -> str:
 
 
 def modexist(_module: str) -> bool:
-    """Test if module exists on system"""
+    """Test if module exists on system."""
     if not isinstance(_module, str):
         raise Exception('modexist() only accepts strings - modexist(\'_module\')')
     _tmp = None
@@ -153,7 +150,7 @@ def modexist(_module: str) -> bool:
 
 
 def rmmod(_modname: str) -> None:
-    """Remove module from the running instance"""
+    """Remove module from the running instance."""
     if not isinstance(_modname, str):
         raise Exception('rm_mod() only accepts strings - rm_mod(\'_modname\')')
     try:
@@ -172,18 +169,18 @@ def rmmod(_modname: str) -> None:
 
 
 def execfile(_filename: str) -> object:
-    """Execute Python script and get output"""
+    """Execute Python script and get output."""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         return exec(_file.read())  # nosec  # pylint: disable=W0122
 
 
 def clearscr() -> None:
-    """Clear Terminal"""
+    """Clear Terminal."""
     stdout.write('\n' * 70)
 
 
 def ipygrep(_find: str, _text: str) -> bool:
-    """Case-insensitive reverse REGEX search
+    """Case-insensitive reverse REGEX search.
 
     Test if a plain-string matches a regex string
     """
@@ -192,23 +189,25 @@ def ipygrep(_find: str, _text: str) -> bool:
 
 
 def pygrep(_find: str, _text: str) -> bool:
-    """Case-sensitive reverse REGEX search; Test if a plain-string matches a regex string"""
+    """Case-sensitive reverse REGEX search; Test if a plain-string matches a regex string."""
     _match = refullmatch(_find, _text, flags=None)
     return _match if _match is not None else False
 
 
 def getlinenum() -> int:
-    """Return the script's line number where this method executes"""
+    """Return the script's line number where this method executes."""
     return currentframe().f_back.f_lineno  # type: ignore
 
 
 def ezcompile(_code: str) -> object:
-    """Easily compile code that is in the form of a string
+    """Easily compile code that is in the form of a string.
 
     Example:
+    -------
     c2 = 'x = 45 * 37; import math; y = math.cos(37); print(x); print(y)'
     bytecode = ezcompile(c2)
     exec(bytecode) # or eval(bytecode)
+
     """
     try:
         return compile(_code, r'', r'eval')
@@ -217,17 +216,17 @@ def ezcompile(_code: str) -> object:
 
 
 def wlong(_int32: int) -> bytes:
-    """Convert a 32-bit integer to little-endian"""
+    """Convert a 32-bit integer to little-endian."""
     return (int(_int32) & 0xFFFFFFFF).to_bytes(4, r'little')
 
 
 def int2bitlen(_int: int) -> int:
-    """Return the number of bits needed to represent an integer"""
+    """Return the number of bits needed to represent an integer."""
     return _int.bit_length()
 
 
 def char2bitlen(_char: str) -> int:
-    """Return the number of bits needed to represent a character"""
+    """Return the number of bits needed to represent a character."""
     if len(_char) != 1:
         raise Exception(r'A string containing multiple characters was passed to char2bitlen()')
     return ord(_char).bit_length()

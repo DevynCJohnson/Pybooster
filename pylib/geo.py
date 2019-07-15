@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions related to obtaining or processing geographic data
+"""@brief Functions related to obtaining or processing geographic data.
 
 @file geo.py
 @package pybooster.geo
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -71,7 +71,7 @@ ZIPCODE_PRIMARY_STATE: dict = {
 
 
 def zip2states(_zipcode: int) -> set:
-    """Return a set of USA state abbreviations that use zip codes that begin with the same number as the given zip code
+    """Return a set of USA state abbreviations that use zip codes that begin with the same number as the given zip code.
 
     >>> data = list(zip2states(63119)); data.sort(); data
     ['IL', 'KS', 'MO', 'NE']
@@ -82,12 +82,12 @@ def zip2states(_zipcode: int) -> set:
 
 
 def getgeodata() -> dict:
-    """Retrieve the system's current geographical location based on the ISP"""
+    """Retrieve the system's current geographical location based on the ISP."""
     return loads(urlopen(r'http://ip-api.com/json').read().decode(r'utf-8'))  # nosec
 
 
 def getcity(_loc: dict) -> str:
-    """Retrieve the system's current city based on the ISP
+    """Retrieve the system's current city based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -95,7 +95,7 @@ def getcity(_loc: dict) -> str:
 
 
 def getcountry(_loc: dict) -> str:
-    """Retrieve the system's current country based on the ISP
+    """Retrieve the system's current country based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -103,7 +103,7 @@ def getcountry(_loc: dict) -> str:
 
 
 def getisp(_loc: dict) -> str:
-    """Retrieve the system's current ISP
+    """Retrieve the system's current ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -111,7 +111,7 @@ def getisp(_loc: dict) -> str:
 
 
 def getlatitude(_loc: dict) -> float:
-    """Retrieve the system's current latitude based on the ISP
+    """Retrieve the system's current latitude based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -119,7 +119,7 @@ def getlatitude(_loc: dict) -> float:
 
 
 def getlongitude(_loc: dict) -> float:
-    """Retrieve the system's current longitude based on the ISP
+    """Retrieve the system's current longitude based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -127,7 +127,7 @@ def getlongitude(_loc: dict) -> float:
 
 
 def gettimezone(_loc: dict) -> str:
-    """Retrieve the system's current timezone based on the ISP
+    """Retrieve the system's current timezone based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -135,7 +135,7 @@ def gettimezone(_loc: dict) -> str:
 
 
 def getzipcode(_loc: dict) -> str:
-    """Retrieve the system's current zipcode (as a string) based on the ISP
+    """Retrieve the system's current zipcode (as a string) based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """
@@ -143,7 +143,7 @@ def getzipcode(_loc: dict) -> str:
 
 
 def getzipcode_int(_loc: dict) -> int:
-    """Retrieve the system's current zipcode (as an integer) based on the ISP
+    """Retrieve the system's current zipcode (as an integer) based on the ISP.
 
     Prerequisite: Data from getgeodata()
     """

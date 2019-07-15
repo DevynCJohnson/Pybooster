@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief View Python Documentation in a Window
+"""@brief View Python Documentation in a Window.
 
 @file pydocgtk
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,11 +31,11 @@ License along with this software.
 import builtins
 
 from importlib.machinery import EXTENSION_SUFFIXES
-from linecache import cache, checkcache, getlines
+from linecache import checkcache, getlines
 from os.path import abspath, exists, normcase, realpath, splitext
 from signal import SIGINT, SIG_DFL, signal
 from sys import argv, maxsize, modules, exc_info
-from typing import Optional
+from typing import Any, Callable, Optional
 from types import BuiltinFunctionType, CodeType, FrameType, FunctionType, MethodType, ModuleType, TracebackType
 
 from gi import require_version
@@ -87,35 +87,35 @@ FILESBYMODNAME: dict = {}
 
 
 class ErrorDuringImport(Exception):
-    """Errors that occur while trying to import a module"""
+    """Errors that occur while trying to import a module."""
 
     def __init__(self, _filename, _exc_info):
-        """Initialize exception"""
+        """Initialize exception."""
         super(ErrorDuringImport, self).__init__(_filename, _exc_info)
         self.filename = _filename
         self.exc, self.value, self._tb = _exc_info
 
     def __str__(self):
-        """Initialize the exception string"""
+        """Initialize the exception string."""
         return r'Problem in {0} - {1}: {2}'.format(self.filename, repr(self.exc.__name__), self.value)
 
 
 # DATA-RETRIEVING FUNCTIONS #
 
 
-def getobjfile(_object: object) -> str:  # noqa: C901
-    """Find the file that defines an object"""
+def getobjfile(_object: Any) -> str:  # noqa: C901,R701
+    """Find the file that defines an object."""
     if isinstance(_object, ModuleType):
         if hasattr(_object, r'__file__'):
             return _object.__file__
         raise TypeError(r'{!r} is a built-in module'.format(_object))
-    elif isinstance(_object, type):
+    if isinstance(_object, type):
         if hasattr(_object, r'__module__'):
             _object = modules.get(_object.__module__)
             if hasattr(_object, r'__file__'):
                 return _object.__file__
         raise TypeError(r'{!r} is a built-in class'.format(_object))
-    elif isinstance(_object, MethodType):
+    if isinstance(_object, MethodType):
         _object = _object.__func__
     if isinstance(_object, FunctionType):
         _object = _object.__code__
@@ -129,14 +129,14 @@ def getobjfile(_object: object) -> str:  # noqa: C901
 
 
 def getabsfile(_object: object, _filename: Optional[str] = None) -> str:
-    """Return an absolute path to the source or compiled file for an object"""
+    """Return an absolute path to the source or compiled file for an object."""
     if _filename is None:
         _filename = getsourcefile(_object) or getobjfile(_object)
     return normcase(abspath(_filename))
 
 
-def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # noqa: C901  # pylint: disable=R0912
-    """Return the module an object was defined in or `None` if not found"""
+def getmodule(_object: Any, _filename: Optional[str] = None) -> object:  # noqa: C901,R701  # pylint: disable=R0912
+    """Return the module an object was defined in or `None` if not found."""
     if isinstance(_object, ModuleType):
         return _object
     if hasattr(_object, r'__module__'):
@@ -181,7 +181,7 @@ def getmodule(_object: object, _filename: Optional[str] = None) -> object:  # no
 
 
 def getsourcefile(_object: object) -> Optional[str]:
-    """Return the filename that can be used to locate an object's source; Return None if the source cannot be found"""
+    """Return the filename that can be used to locate an object's source; Return None if the source cannot be found."""
     filename: str = getobjfile(_object)
     if filename.endswith(r'.pyc'):
         filename = (splitext(filename)[0] + r'.py')
@@ -190,13 +190,13 @@ def getsourcefile(_object: object) -> Optional[str]:
     if exists(filename):
         return filename
     # Only return a non-existent filename if the module has a PEP 302 loader or is in the linecache
-    if getattr(getmodule(_object, filename), r'__loader__', None) is not None or filename in cache:
+    if getattr(getmodule(_object, filename), r'__loader__', None) is not None:
         return filename
     return None
 
 
-def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
-    """Return the entire source file and starting line number for an object"""
+def findsource(_object: object) -> tuple:  # noqa: C901,R701  # pylint: disable=R0912
+    """Return the entire source file and starting line number for an object."""
     _file = getsourcefile(_object)
     if _file:  # Invalidate cache if needed
         checkcache(_file)
@@ -213,9 +213,9 @@ def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
     del _file
     if not lines:
         raise OSError(r'Could not get source code')
-    elif isinstance(_object, ModuleType):
+    if isinstance(_object, ModuleType):
         return lines, 0
-    elif isinstance(_object, type):
+    if isinstance(_object, type):
         name = _object.__name__
         pat = rgxcompile(r'^(\s*)class\s*' + name + r'\b')
         # Make some effort to find the best matching class definition
@@ -233,7 +233,7 @@ def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
             candidates.sort()
             return lines, candidates[0][1]
         raise OSError(r'Could not find class definition')
-    elif isinstance(_object, MethodType):
+    if isinstance(_object, MethodType):
         _object = _object.__func__
     if isinstance(_object, FunctionType):
         _object = _object.__code__
@@ -257,8 +257,8 @@ def findsource(_object: object) -> tuple:  # noqa: C901  # pylint: disable=R0912
 # DOCUMENTATION FUNCTIONS #
 
 
-def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R0912
-    """Find object documentation"""
+def finddoc(obj: Any) -> Optional[str]:  # noqa: C901,R701  # pylint: disable=R0912
+    """Find object documentation."""
     if isinstance(obj, type):
         for base in obj.__mro__:
             if base is not object:
@@ -272,7 +272,7 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
     if isinstance(obj, MethodType):
         name = obj.__func__.__name__
         _self = obj.__self__
-        cls = _self if isinstance(_self, type) and getattr(getattr(_self, name, None), r'__func__') is obj.__func__ else _self.__class__
+        cls: Optional[str] = _self if isinstance(_self, type) and getattr(getattr(_self, name, None), r'__func__') is obj.__func__ else _self.__class__  # type: ignore
     elif isinstance(obj, FunctionType):
         name = obj.__name__
         cls = findclass(obj)
@@ -281,7 +281,7 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
     elif isinstance(obj, BuiltinFunctionType):
         name = obj.__name__
         _self = obj.__self__
-        cls = _self if isinstance(_self, type) and (_self.__qualname__ + r'.' + name == obj.__qualname__) else _self.__class__
+        cls = _self if isinstance(_self, type) and (_self.__qualname__ + r'.' + name == obj.__qualname__) else _self.__class__  # type: ignore
     elif isinstance(obj, property):
         func = obj.fget
         name = func.__name__
@@ -295,7 +295,7 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
             return None
     else:
         return None
-    for base in cls.__mro__:
+    for base in cls.__mro__:  # type: ignore
         try:
             doc = getattr(base, name).__doc__
         except AttributeError:
@@ -305,8 +305,8 @@ def finddoc(obj: object) -> Optional[str]:  # noqa: C901  # pylint: disable=R091
     return None
 
 
-def cleandoc(doc: str) -> Optional[str]:
-    """Clean up indentation from docstrings"""
+def cleandoc(doc: str) -> Optional[str]:  # noqa: R701
+    """Clean up indentation from docstrings."""
     try:
         lines = doc.expandtabs().split('\n')
     except UnicodeError:
@@ -332,7 +332,7 @@ def cleandoc(doc: str) -> Optional[str]:
 
 
 def getdocclean(_object: object) -> Optional[str]:
-    """Get and clean up the documentation string for an object"""
+    """Get and clean up the documentation string for an object."""
     try:
         doc = _object.__doc__
     except AttributeError:
@@ -346,7 +346,9 @@ def getdocclean(_object: object) -> Optional[str]:
 
 
 def getdoc(_object: object) -> str:
-    """Get the doc string or comments for an object"""
+    """Get the doc string or comments for an object."""
+    if _object is None:
+        return r''
     result = getdocclean(_object) or getcomments(_object)
     return sub('^ *\n', r'', result.rstrip()) if result else r''
 
@@ -355,13 +357,13 @@ def getdoc(_object: object) -> str:
 
 
 def indentsize(_line: str) -> int:
-    """Return the indent size (in spaces) at the start of a line of text"""
+    """Return the indent size (in spaces) at the start of a line of text."""
     expline = _line.expandtabs()
     return len(expline) - len(expline.lstrip())
 
 
-def findclass(_func: object) -> object:
-    """Find class object"""
+def findclass(_func: Callable) -> Optional[str]:
+    """Find class object."""
     cls = modules.get(_func.__module__)
     if cls is None:
         return None
@@ -370,8 +372,8 @@ def findclass(_func: object) -> object:
     return None if not isinstance(cls, type) else cls
 
 
-def getcomments(_object: object) -> str or None:  # noqa: C901  # pylint: disable=R0912
-    """Get lines of comments immediately preceding an object's source code; Returns None when source cannot be found"""
+def getcomments(_object: object) -> str or None:  # noqa: C901,R701  # pylint: disable=R0912
+    """Get lines of comments immediately preceding an object's source code; Returns None when source cannot be found."""
     try:
         lines, lnum = findsource(_object)
     except (OSError, TypeError):
@@ -424,17 +426,16 @@ def safeimport(_path: str) -> Optional[object]:
     try:
         module = __import__(_path)
     except ImportError:  # Did the error occur before or after the module was found?
-        info = exc_info()
+        info: tuple = exc_info()
         exc = info[0]
         value = info[1]
         if _path in modules:  # An error occurred while executing the imported module
             raise ErrorDuringImport(modules[_path].__file__, info)
-        elif exc is SyntaxError:  # A SyntaxError occurred before the module executed
+        if exc is SyntaxError:  # A SyntaxError occurred before the module executed
             raise ErrorDuringImport(value.filename, info)
-        elif exc is ImportError and value.name == _path:  # No such module in the path
+        if exc is ImportError and value.name == _path:  # No such module in the path
             return None
-        else:  # Some other error occurred during the importing process
-            raise ErrorDuringImport(_path, exc_info())
+        raise ErrorDuringImport(_path, exc_info())  # Some other error occurred during the importing process
     for part in _path.split(r'.')[1:]:
         try:
             module = getattr(module, part)
@@ -444,7 +445,7 @@ def safeimport(_path: str) -> Optional[object]:
 
 
 def locate(_path: str) -> Optional[object]:
-    """Locate an object by name or dotted path, importing as necessary"""
+    """Locate an object by name or dotted path, importing as necessary."""
     parts: list = [part for part in _path.split(r'.') if part]
     module = None
     i: int = 0
@@ -464,19 +465,19 @@ def locate(_path: str) -> Optional[object]:
     return _object
 
 
-def resolve(thing: object) -> Optional[tuple]:
-    """Given an object or a path to an object, get the object and its name"""
+def resolve(thing: object) -> tuple:
+    """Given an object or a path to an object, get the object and its name."""
     if isinstance(thing, str):
         _object = locate(thing)
         if _object is None:
             raise ImportError
         return _object, thing
     name = getattr(thing, r'__name__', None)
-    return thing, name if isinstance(name, str) else None
+    return thing, name if isinstance(name, str) else (None,)
 
 
 def show_help(displaytext: str) -> None:
-    """GTK window for PyDocGTK"""
+    """GTK window for PyDocGTK."""
     window = Gtk.Window(
         default_height=400,
         default_width=500,

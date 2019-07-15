@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Convert between color-spaces
+"""@brief Convert between color-spaces.
 
 @file color-kit
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -445,7 +445,7 @@ PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+), ([\-
 
 
 def rgba_array(_rgba: object) -> list:
-    """Create a float array from GDK_RGBA object"""
+    """Create a float array from GDK_RGBA object."""
     _rgba_array: list = []
     _rgba_array.append(round(_rgba.red, 6))  # type: ignore
     _rgba_array.append(round(_rgba.green, 6))  # type: ignore
@@ -455,7 +455,7 @@ def rgba_array(_rgba: object) -> list:
 
 
 def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple) -> None:
-    """Place the values in the entry boxes"""
+    """Place the values in the entry boxes."""
     ENTRY_CMYK.set_text(str(_cmyk))
     ENTRY_HSI.set_text(str(_hsi))
     ENTRY_HSV.set_text(str(_hsv))
@@ -464,7 +464,7 @@ def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple) 
 
 
 def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
-    """Convert selected color to *"""
+    """Convert selected color to *."""
     _rgba = cc_widget.get_rgba()
     _red: int = int(float(_rgba.red) * 255.0)
     _green: int = int(float(_rgba.green) * 255.0)
@@ -480,7 +480,7 @@ def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
 
 
 def conv_rgb(entry_widget: Gtk.Entry) -> None:
-    """Convert RGB to *"""
+    """Convert RGB to *."""
     _rgb_entry = entry_widget.get_text()
     _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
     _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
@@ -496,7 +496,7 @@ def conv_rgb(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_hsi(entry_widget: Gtk.Entry) -> None:
-    """Convert HSL to *"""
+    """Convert HSL to *."""
     _hsi_entry = entry_widget.get_text()
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsi_entry))
     _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsi_entry))
@@ -512,7 +512,7 @@ def conv_hsi(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_hsv(entry_widget: Gtk.Entry) -> None:
-    """Convert HSV to *"""
+    """Convert HSV to *."""
     _hsv_entry = entry_widget.get_text()
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
     _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
@@ -528,7 +528,7 @@ def conv_hsv(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_cmyk(entry_widget: Gtk.Entry) -> None:
-    """Convert CMYK to *"""
+    """Convert CMYK to *."""
     _cmyk_entry = entry_widget.get_text()
     _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
     _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
@@ -545,7 +545,7 @@ def conv_cmyk(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_yiq(entry_widget: Gtk.Entry) -> None:
-    """Convert YIQ to *"""
+    """Convert YIQ to *."""
     _yiq = entry_widget.get_text()
     _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq))
     _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq))

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions related to generating lyrics
+"""@brief Functions related to generating lyrics.
 
 @file sing.py
 @package pybooster.sing
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ __all__: list = [
 
 
 def banana_song(_name: str) -> str:
-    """Return the lyrics of the Banana Song using the given name
+    """Return the lyrics of the Banana Song using the given name.
 
     >>> banana_song('Bridgette')
     'Bridgette, Bridgette, bo-bridgette, Banana-fana fo-fridgette, Fee-Fi-mo-mridgette, Bridgette!'

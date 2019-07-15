@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Create Desktop Entry Files
+"""@brief Create Desktop Entry Files.
 
 @file desktop-entry-maker
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1252,10 +1252,10 @@ signal(SIGINT, SIG_DFL)
 
 
 class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
-    """File Selection Window"""
+    """File Selection Window."""
 
     def __init__(self) -> None:
-        """Initialize file selection window"""
+        """Initialize file selection window."""
         self.file_ui = Gtk.Builder()
         self.file_ui.add_from_string(buffer=_FILECHOOSER)
         self.file_ui.connect_signals({
@@ -1266,7 +1266,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         })
         self._out: Union[list, str] = []
 
-    def ezfilech(  # pylint: disable=R0915
+    def ezfilech(  # noqa: R701  # pylint: disable=R0915
             self,
             _select_file: bool = True,
             _select_dir: bool = False,
@@ -1278,7 +1278,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
             _return_uri: bool = True,
             _return_dtype: str = r'list',
     ) -> Union[list, str]:
-        """File Chooser Dialog: Select a file or folder"""
+        """File Chooser Dialog: Select a file or folder."""
         # Parameters
         self._select_file: bool = _select_file
         self._select_dir: bool = _select_dir
@@ -1348,18 +1348,18 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         return self._out
 
     def _winexit(self, *_x: Union[None, Tuple[Gtk.ApplicationWindow, None]]) -> None:  # pylint: disable=R0201
-        """Close Window"""
+        """Close Window."""
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
     def _cancel(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
-        """Cancel-Button functionality"""
+        """Cancel-Button functionality."""
         self._out = r'cancel'
         self.filechooserwin.destroy()
         Gtk.main_quit()
 
-    def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # pylint: disable=R0201
-        """Submit selection for processing using the select-button"""
+    def _select(self, *_x: Union[None, Tuple[Gtk.Button, None]]) -> None:  # noqa: R701  # pylint: disable=R0201
+        """Submit selection for processing using the select-button."""
         if self._select_dir and not self._multiple and self._chkbtn_dir.get_active():
             if self._return_uri and self._return_dtype == r'str':
                 self._out = r' '.join(self._filew.get_current_folder_uri())
@@ -1384,7 +1384,7 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
         Gtk.main_quit()
 
     def _hidden(self, _chkbtn: Tuple[Gtk.CheckButton, None]) -> None:
-        """Toggle the visibility of hidden files using the hidden-checkbox"""
+        """Toggle the visibility of hidden files using the hidden-checkbox."""
         self._viewhidden = not self._viewhidden
         self._filew.set_show_hidden(self._viewhidden)
 
@@ -1393,16 +1393,16 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
 
 
 def write2file(_filename: str, _write: str) -> None:
-    """Send data to new file or overwrite file"""
+    """Send data to new file or overwrite file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _file.write(_write)
 
 
 class MainWin():
-    """Main Window"""
+    """Main Window."""
 
     def __init__(self):
-        """Main window"""
+        """Main window."""
         self.ui = Gtk.Builder()
         self.ui.add_from_string(buffer=_GUI)
         # Match signal to function (handler)
@@ -1420,18 +1420,18 @@ class MainWin():
         self.combobox_category.set_wrap_width(6)
 
     def add2list(self, _selected: Gtk.ComboBoxText) -> None:
-        """Add category to list"""
+        """Add category to list."""
         _tmp: str = self.entry_category.get_text()
         self.entry_category.set_text(_tmp + _selected.get_active_text())
 
     @staticmethod
     def autocompletion_category(completion: Gtk.EntryCompletion, entrystr: str, _iter: Gtk.TreeIter) -> bool:
-        """Test for auto-completion match"""
+        """Test for auto-completion match."""
         _entrystr: str = entrystr.split(r';')[-1].casefold().strip()
         return completion.get_model()[_iter][0].casefold().startswith(_entrystr)
 
-    def _save_as(self, *_x) -> None:  # noqa: C901  # pylint: disable=R0912,R0914,R0915
-        """Save XDG *.desktop file"""
+    def _save_as(self, *_x) -> None:  # noqa: C901,R701  # pylint: disable=R0912,R0914,R0915
+        """Save XDG *.desktop file."""
         # Get objects
         entry_name = self.ui.get_object(r'entry_name')
         entry_genericname = self.ui.get_object(r'entry_genericname')
@@ -1485,24 +1485,7 @@ class MainWin():
             _entry_type = '\nType=Application'
             _exec = '\nExec=' + _entry_execute
         # Create Data
-        _data: str = str(
-            '#!/usr/bin/env xdg-open\n\n' +
-            r'[Desktop Entry]' +
-            _entry_category +
-            _entry_comment +
-            _exec +
-            _entry_genericname +
-            '\nHidden=' + _hidden +
-            _entry_icon +
-            _entry_keyword +
-            '\nName=' + _entry_name +
-            '\nNoDisplay=' + _nodisplay +
-            _combobox_onlyshowin +
-            '\nTerminal=' + _terminal +
-            _entry_type +
-            _url +
-            '\nVersion=' + _combobox_version
-        )
+        _data: str = str('#!/usr/bin/env xdg-open\n\n' + r'[Desktop Entry]' + _entry_category + _entry_comment + _exec + _entry_genericname + '\nHidden=' + _hidden + _entry_icon + _entry_keyword + '\nName=' + _entry_name + '\nNoDisplay=' + _nodisplay + _combobox_onlyshowin + '\nTerminal=' + _terminal + _entry_type + _url + '\nVersion=' + _combobox_version)
         # Select Location
         _filewin = FileChooserWin()
         _path: str = str(_filewin.ezfilech(_select_file=True, _select_dir=False, _multiple=False, _savefile=True, _return_uri=False, _return_dtype=r'str'))

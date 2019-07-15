@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Color manipulation
+"""@brief Color manipulation.
 
 @file color.py
 @package pybooster.color
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -101,7 +101,7 @@ TWO_THIRD: float = 2.0 / 3.0
 
 
 def hilo(_x: Union[float, int], _y: Union[float, int], _z: Union[float, int]) -> Union[float, int]:
-    """Sum of the min & max of (_x, _y, _z)
+    """Sum of the min & max of `_x`, `_y`, and `_z`.
 
     >>> hilo(1, 2, 3)
     4
@@ -122,7 +122,7 @@ def hilo(_x: Union[float, int], _y: Union[float, int], _z: Union[float, int]) ->
 
 
 def hue2value(_m1: float, _m2: float, _hue: float) -> float:
-    """Get value from hue"""
+    """Get value from hue."""
     _hue %= 1.0
     if _hue < ONE_SIXTH:
         return ((_m2 - _m1) * _hue * 6.0) + _m1
@@ -134,12 +134,12 @@ def hue2value(_m1: float, _m2: float, _hue: float) -> float:
 
 
 def huedegree2huefloat(_hue: int) -> float:
-    """Hue in degrees -> Hue as a float"""
+    """Hue in degrees -> Hue as a float."""
     return float(_hue) / 360.0
 
 
 def huefloat2huedegree(_hue: float) -> int:
-    """Hue as a float -> Hue in degrees"""
+    """Hue as a float -> Hue in degrees."""
     return int(_hue * 360.0)
 
 
@@ -147,7 +147,7 @@ def huefloat2huedegree(_hue: float) -> int:
 
 
 def analogous(_rgb: tuple, _float_notation: bool = True) -> tuple:
-    """Calculate the two analogous colors
+    """Calculate the two analogous colors.
 
     >>> analogous((98, 182, 17), False)
     ((17, 182, 19), (181, 182, 17))
@@ -158,7 +158,7 @@ def analogous(_rgb: tuple, _float_notation: bool = True) -> tuple:
 
 
 def complement(rgba: tuple, _float_notation: bool = True) -> tuple:
-    """Get complementary color (modern color wheel) given a rgb/rgba tuple of integers
+    """Get complementary color (modern color wheel) given a rgb/rgba tuple of integers.
 
     >>> complement((255, 255, 255), False)
     (255, 255, 255)
@@ -185,7 +185,7 @@ def complement(rgba: tuple, _float_notation: bool = True) -> tuple:
 
 
 def opposite(rgba: tuple, _float_notation: bool = True) -> tuple:
-    """Get opposite color (traditional color wheel) given a rgb/rgba tuple of integers
+    """Get opposite color (traditional color wheel) given a rgb/rgba tuple of integers.
 
     >>> opposite((255, 255, 255), False)
     (0, 0, 0)
@@ -214,7 +214,7 @@ def opposite(rgba: tuple, _float_notation: bool = True) -> tuple:
 
 
 def html2hex(_html: str) -> tuple:
-    """HTML notation -> hex notation
+    """HTML notation -> hex notation.
 
     >>> html2hex('#62B611')
     ('62', 'B6', '11')
@@ -223,7 +223,7 @@ def html2hex(_html: str) -> tuple:
 
 
 def html2rgb(_html: str) -> tuple:
-    """HTML notation (#f6a797) -> RGB (byte array - 0-255)
+    """HTML notation (#f6a797) -> RGB (byte array - 0-255).
 
     >>> html2rgb('#62B611')
     (98, 182, 17)
@@ -236,7 +236,7 @@ def html2rgb(_html: str) -> tuple:
 
 
 def shorthand2sixdigit(_shorthand: str) -> str:
-    """Shorthand HTML notation (#789) -> 6-digit HTML notation (#778899)
+    """Shorthand HTML notation (#789) -> 6-digit HTML notation (#778899).
 
     >>> shorthand2sixdigit('#789')
     '#778899'
@@ -258,7 +258,7 @@ def shorthand2sixdigit(_shorthand: str) -> str:
 
 
 def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
-    """CMY -> CMYK
+    """CMY -> CMYK.
 
     >>> cmy2cmyk(0.537, 0.314, 0.273)
     (0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
@@ -270,7 +270,7 @@ def cmy2cmyk(_cyan: float, _magenta: float, _yellow: float) -> tuple:
 
 
 def cmy2rgb(_cyan: float, _magenta: float, _yellow: float, _rgb_float_notation: bool = True) -> tuple:
-    """CMY -> RGB
+    """CMY -> RGB.
 
     >>> cmy2rgb(0.537, 0.314, 0.273)
     (0.46299999999999997, 0.6859999999999999, 0.727)
@@ -284,7 +284,7 @@ def cmy2rgb(_cyan: float, _magenta: float, _yellow: float, _rgb_float_notation: 
 
 
 def cmyk2cmy(_cyan: float, _magenta: float, _yellow: float, _black: float) -> tuple:
-    """CMYK -> CMY
+    """CMYK -> CMY.
 
     >>> cmyk2cmy(0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
     (0.537, 0.314, 0.273)
@@ -293,7 +293,7 @@ def cmyk2cmy(_cyan: float, _magenta: float, _yellow: float, _black: float) -> tu
 
 
 def cmyk2rgb(_cyan: float, _magenta: float, _yellow: float, _black: float, _rgb_float_notation: bool = True) -> tuple:
-    """CMYK -> RGB
+    """CMYK -> RGB.
 
     >>> cmyk2rgb(0.3631361760660248, 0.05639614855570837, 0.0, 0.273)
     (0.46299999999999997, 0.6859999999999999, 0.727)
@@ -306,8 +306,8 @@ def cmyk2rgb(_cyan: float, _magenta: float, _yellow: float, _black: float, _rgb_
 # HSI #
 
 
-def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bool = True) -> tuple:  # noqa: C901
-    """HSI -> RGB
+def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bool = True) -> tuple:  # noqa: C901,R701
+    """HSI -> RGB.
 
     >>> hsi2rgb(0.3334, 0.5777, 0.3311)
     (0.002783669573166151, 0.0005632969758534564, 0.0005483275686274509)
@@ -357,7 +357,7 @@ def hsi2rgb(_hue: float, _sat: float, _intensity: float, _rgb_float_notation: bo
 
 
 def hls2hsv(_hue: float, _light: float, _sat: float) -> tuple:
-    """HLS -> HSV
+    """HLS -> HSV.
 
     >>> hls2hsv(0.1375, 0.497, 0.893)
     (0.1375, 0.9434759640781828, 0.940821)
@@ -368,7 +368,7 @@ def hls2hsv(_hue: float, _light: float, _sat: float) -> tuple:
 
 
 def hls2rgb(_hue: float, _light: float, _sat: float, _rgb_float_notation: bool = True) -> tuple:
-    """HLS -> RGB"""
+    """HLS -> RGB."""
     if _sat == 0.0 and not _rgb_float_notation:
         return int(round(_light * 255.0)), int(round(_light * 255.0)), int(round(_light * 255.0))
     if _sat == 0.0 and _rgb_float_notation:
@@ -384,13 +384,13 @@ def hls2rgb(_hue: float, _light: float, _sat: float, _rgb_float_notation: bool =
 
 
 def hsv2hls(_hue: float, _sat: float, _value: float) -> tuple:
-    """HSV -> HLS"""
+    """HSV -> HLS."""
     _sat2: float = _sat * _value / ((2.0 - _sat) * _value) if (2.0 - _sat) * _value < 1.0 else _sat * _value / (2.0 - (2.0 - _sat) * _value)
     return _hue, (2.0 - _sat) * _value * 0.5, _sat2
 
 
 def hsv2rgb(_hue: float, _sat: float, _value: float, _rgb_float_notation: bool = True) -> tuple:
-    """HSV -> RGB
+    """HSV -> RGB.
 
     >>> hsv2rgb(0.5, 0.5, 0.5, False)
     (64, 128, 128)
@@ -422,7 +422,7 @@ def hsv2rgb(_hue: float, _sat: float, _value: float, _rgb_float_notation: bool =
 
 
 def hunterlab2xyz(_hl: float, _ha: float, _hb: float) -> tuple:
-    """Hunter Lab -> XYZ"""
+    """Hunter Lab -> XYZ."""
     _y: float = _hl * 0.1
     _x: float = _ha / 17.5 * _y
     _z: float = _hb / 7.0 * _y
@@ -436,14 +436,14 @@ def hunterlab2xyz(_hl: float, _ha: float, _hb: float) -> tuple:
 
 
 def rgb2cmy(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> CMY"""
+    """RGB -> CMY."""
     if _float_notation:
         return 1.0 - _red, 1.0 - _green, 1.0 - _blue
     return 1.0 - (_red / 255.0), 1.0 - (_green / 255.0), 1.0 - (_blue / 255.0)
 
 
 def rgb2cmyk(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> CMYK"""
+    """RGB -> CMYK."""
     if not _float_notation:
         _red /= 255.0
         _green /= 255.0
@@ -456,7 +456,7 @@ def rgb2cmyk(_red: Union[float, int], _green: Union[float, int], _blue: Union[fl
 
 
 def rgb2hex(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> hex-notation
+    """RGB -> hex-notation.
 
     >>> rgb2hex(0, 255, 255, False)
     ('0x0', 'ff', 'ff')
@@ -474,7 +474,7 @@ def rgb2hex(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2hls(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> HLS"""
+    """RGB -> HLS."""
     if not _float_notation:
         _red /= 255.0
         _green /= 255.0
@@ -495,8 +495,8 @@ def rgb2hls(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
     return (_hue / 6.0) % 1.0, _light, _sat
 
 
-def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> HSI
+def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:  # noqa: R701
+    """RGB -> HSI.
 
     >>> rgb2hsi(255, 0, 255, False)
     (300.0, 1.0, 170.0)
@@ -525,7 +525,7 @@ def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> HSV
+    """RGB -> HSV.
 
     >>> rgb2hsv(255, 0, 255, False)
     (0.833333333, 1.0, 1.0)
@@ -547,7 +547,7 @@ def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2html(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True, _uppercase: bool = False) -> str:
-    """RGB -> HTML-notation
+    """RGB -> HTML-notation.
 
     >>> rgb2html(1.0, 1.0, 1.0)
     '#ffffff'
@@ -565,7 +565,7 @@ def rgb2html(_red: Union[float, int], _green: Union[float, int], _blue: Union[fl
 
 
 def rgb2xyz(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> XYZ"""
+    """RGB -> XYZ."""
     if not _float_notation:
         _red = _red / 255.0
         _green = _green / 255.0
@@ -583,7 +583,7 @@ def rgb2xyz(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2yiq(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True) -> tuple:
-    """RGB -> YIQ"""
+    """RGB -> YIQ."""
     if not _float_notation:
         _red = _red / 255.0
         _green = _green / 255.0
@@ -598,12 +598,12 @@ def rgb2yiq(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 
 
 def rgb2rgba(rgb: tuple, _float_notation: bool = True) -> tuple:
-    """RGB (byte-notation/float-notation) -> RGBA"""
+    """RGB (byte-notation/float-notation) -> RGBA."""
     return (float(rgb[0]), float(rgb[1]), float(rgb[2]), 1.0000) if _float_notation else (int(rgb[0]), int(rgb[1]), int(rgb[2]), 255)
 
 
 def rgba2rgb(rgba: tuple) -> tuple:
-    """RGBA -> RGB"""
+    """RGBA -> RGB."""
     return rgba[0], rgba[1], rgba[2]
 
 
@@ -611,17 +611,17 @@ def rgba2rgb(rgba: tuple) -> tuple:
 
 
 def rgb2rgbf(_red: int, _green: int, _blue: int) -> tuple:
-    """RGB byte-notation -> RGB float-notation"""
+    """RGB byte-notation -> RGB float-notation."""
     return _red / 255, _green / 255, _blue / 255
 
 
 def rgbf2rgb(_red: float, _green: float, _blue: float) -> tuple:
-    """RGB float-notation -> RGB byte-notation"""
+    """RGB float-notation -> RGB byte-notation."""
     return int(_red * 255.0), int(_green * 255.0), int(_blue * 255.0)
 
 
 def roundrgb(_red: float, _green: float, _blue: float) -> tuple:
-    """Round RGB byte-notation float-points (like 254.649915) to byte-notation integers (255)"""
+    """Round RGB byte-notation float-points (like 254.649915) to byte-notation integers (255)."""
     return int(_red), int(_green), int(_blue)
 
 
@@ -629,7 +629,7 @@ def roundrgb(_red: float, _green: float, _blue: float) -> tuple:
 
 
 def ryb2rgb(_red: float, _yellow: float, _blue: float, _float_notation: bool = True) -> tuple:
-    """Convert RYB -> RGB (both will use the same notation)
+    """Convert RYB -> RGB (both will use the same notation).
 
     >>> ryb2rgb(255, 128, 0, False)
     (255, 64, 0)
@@ -671,7 +671,7 @@ def ryb2rgb(_red: float, _yellow: float, _blue: float, _float_notation: bool = T
 
 
 def xyz2hunterlab(_x: float, _y: float, _z: float) -> tuple:
-    """XYZ -> Hunter Lab"""
+    """XYZ -> Hunter Lab."""
     sqrt_y: float = sqrt(_y)
     _hla: float = 17.5 * (((1.02 * _x) - _y) / sqrt_y)
     _hlb: float = 7.0 * ((_y - (0.847 * _z)) / sqrt_y)
@@ -679,7 +679,7 @@ def xyz2hunterlab(_x: float, _y: float, _z: float) -> tuple:
 
 
 def xyz2rgb(_x: float, _y: float, _z: float, _rgb_float_notation: bool = True) -> tuple:
-    """XYZ -> RGB"""
+    """XYZ -> RGB."""
     _x *= 0.01
     _y *= 0.01
     _z *= 0.01
@@ -698,7 +698,7 @@ def xyz2rgb(_x: float, _y: float, _z: float, _rgb_float_notation: bool = True) -
 
 
 def yiq2rgb(_yellow: float, _in_phase: float, _quadrature: float, _rgb_float_notation: bool = True) -> tuple:
-    """YIQ -> RGB"""
+    """YIQ -> RGB."""
     _red: float = _yellow + 0.9468822170900693 * _in_phase + 0.6235565819861433 * _quadrature
     _green: float = _yellow - 0.27478764629897834 * _in_phase - 0.6356910791873801 * _quadrature
     _blue: float = _yellow - 1.1085450346420322 * _in_phase + 1.7090069284064666 * _quadrature

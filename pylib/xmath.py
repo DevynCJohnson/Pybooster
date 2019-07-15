@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Extra Math Functions
+"""@brief Extra Math Functions.
 
 @file xmath.py
 @package pybooster.xmath
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -208,7 +208,7 @@ ONE_THIRTEENTH: float = 0.076923077
 
 
 def cot(_num: Union[float, int]) -> float:
-    """Cotangent (Tangent Complement)
+    """Cotangent (Tangent Complement).
 
     >>> cot(90.0)
     -0.5012027833801532
@@ -217,7 +217,7 @@ def cot(_num: Union[float, int]) -> float:
 
 
 def csc(_num: Union[float, int]) -> float:
-    """Cosecant (Secant Complement)
+    """Cosecant (Secant Complement).
 
     >>> csc(90.0)
     1.1185724071637084
@@ -226,7 +226,7 @@ def csc(_num: Union[float, int]) -> float:
 
 
 def cvc(_num: Union[float, int]) -> float:
-    """Versed Cosine Complement (covercos)
+    """Versed Cosine Complement (covercos).
 
     >>> cvc(90.0)
     1.8939966636005579
@@ -235,7 +235,7 @@ def cvc(_num: Union[float, int]) -> float:
 
 
 def cvs(_num: Union[float, int]) -> float:
-    """Versed Sine Complement (coversin, cosiv)
+    """Versed Sine Complement (coversin, cosiv).
 
     >>> cvs(90.0)
     0.10600333639944215
@@ -244,7 +244,7 @@ def cvs(_num: Union[float, int]) -> float:
 
 
 def hcc(_num: Union[float, int]) -> float:
-    """Half-Versed Cosine Complement (hacovercos)
+    """Half-Versed Cosine Complement (hacovercos).
 
     >>> hcc(90.0)
     0.9469983318002789
@@ -253,7 +253,7 @@ def hcc(_num: Union[float, int]) -> float:
 
 
 def hcv(_num: Union[float, int]) -> float:
-    """Half-Versed Sine Complement (hacoversin)
+    """Half-Versed Sine Complement (hacoversin).
 
     >>> hcv(90.0)
     0.053001668199721075
@@ -262,7 +262,7 @@ def hcv(_num: Union[float, int]) -> float:
 
 
 def hvc(_num: Union[float, int]) -> float:
-    """Half-Versed Cosine (hac, havercos)
+    """Half-Versed Cosine (hac, havercos).
 
     >>> hvc(90.0)
     0.27596319193541496
@@ -271,7 +271,7 @@ def hvc(_num: Union[float, int]) -> float:
 
 
 def hvs(_num: Union[float, int]) -> float:
-    """Half-Versed Sine (haversin, hv)
+    """Half-Versed Sine (haversin, hv).
 
     >>> hvs(90.0)
     0.724036808064585
@@ -280,7 +280,7 @@ def hvs(_num: Union[float, int]) -> float:
 
 
 def sec(_num: Union[float, int]) -> float:
-    """Secant (Reciprocal of cos)
+    """Secant (Reciprocal of cos).
 
     >>> sec(90.0)
     -2.2317761278577963
@@ -289,7 +289,7 @@ def sec(_num: Union[float, int]) -> float:
 
 
 def siv(_num: Union[float, int]) -> float:
-    """Versed Sine (versin, siv)
+    """Versed Sine (versin, siv).
 
     >>> siv(90.0)
     1.44807361612917
@@ -298,7 +298,7 @@ def siv(_num: Union[float, int]) -> float:
 
 
 def vcs(_num: Union[float, int]) -> float:
-    """Versed Cosine (vercos)
+    """Versed Cosine (vercos).
 
     >>> vcs(90.0)
     0.5519263838708299
@@ -310,7 +310,7 @@ def vcs(_num: Union[float, int]) -> float:
 
 
 def acot(_num: Union[float, int]) -> float:
-    """Arccotangent
+    """Arccotangent.
 
     >>> acot(90)
     0.011110653897607473
@@ -319,7 +319,7 @@ def acot(_num: Union[float, int]) -> float:
 
 
 def acsc(_num: Union[float, int]) -> float:
-    """Arccosecant
+    """Arccosecant.
 
     >>> acsc(90)
     0.011111339747498774
@@ -328,7 +328,7 @@ def acsc(_num: Union[float, int]) -> float:
 
 
 def acvc(_num: Union[float, int]) -> float:
-    """Versed Arccosine Complement (acovercos)
+    """Versed Arccosine Complement (acovercos).
 
     >>> acvc(-0.2)
     0.9272952180016123
@@ -337,7 +337,7 @@ def acvc(_num: Union[float, int]) -> float:
 
 
 def acvs(_num: Union[float, int]) -> float:
-    """Versed Arcsine Complement (acoversin, acosiv)
+    """Versed Arcsine Complement (acoversin, acosiv).
 
     >>> acvs(0.5)
     0.5235987755982989
@@ -346,7 +346,7 @@ def acvs(_num: Union[float, int]) -> float:
 
 
 def ahvc(_num: Union[float, int]) -> float:
-    """Half-Versed Arccosine (ahac, ahavercos)
+    """Half-Versed Arccosine (ahac, ahavercos).
 
     >>> ahvc(0.1)
     2.498091544796509
@@ -355,7 +355,7 @@ def ahvc(_num: Union[float, int]) -> float:
 
 
 def ahvs(_num: Union[float, int]) -> float:
-    """Half-Versed Arcsine (ahaversin, ahv)
+    """Half-Versed Arcsine (ahaversin, ahv).
 
     >>> ahvs(0.1)
     0.6435011087932844
@@ -364,7 +364,7 @@ def ahvs(_num: Union[float, int]) -> float:
 
 
 def asec(_num: Union[float, int]) -> float:
-    """Arcsecant
+    """Arcsecant.
 
     >>> asec(90)
     1.5596849870473979
@@ -373,7 +373,7 @@ def asec(_num: Union[float, int]) -> float:
 
 
 def asiv(_num: Union[float, int]) -> float:
-    """Versed Arcsine (aver, aversin)
+    """Versed Arcsine (aver, aversin).
 
     >>> asiv(0.5)
     1.0471975511965979
@@ -382,7 +382,7 @@ def asiv(_num: Union[float, int]) -> float:
 
 
 def avcs(_num: Union[float, int]) -> float:
-    """Versed Arccosine (avercos)
+    """Versed Arccosine (avercos).
 
     >>> avcs(90)
     -0.9943674609282015
@@ -394,7 +394,7 @@ def avcs(_num: Union[float, int]) -> float:
 
 
 def excsc(_num: Union[float, int]) -> float:
-    """External Cosecant
+    """External Cosecant.
 
     >>> excsc(90)
     0.11857240716370843
@@ -403,7 +403,7 @@ def excsc(_num: Union[float, int]) -> float:
 
 
 def exsec(_num: Union[float, int]) -> float:
-    """External Secant
+    """External Secant.
 
     >>> exsec(0.5)
     0.13949392732454902
@@ -415,7 +415,7 @@ def exsec(_num: Union[float, int]) -> float:
 
 
 def crd(_num: Union[float, int]) -> float:
-    """Chord of a circle
+    """Chord of a circle.
 
     >>> crd(90)
     1.7018070490682369
@@ -427,7 +427,7 @@ def crd(_num: Union[float, int]) -> float:
 
 
 def ln(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)
+    """Natural/Napierian Logarithm (Base = Euler's Number).
 
     >>> ln(37)
     3.6109179126442243
@@ -436,7 +436,7 @@ def ln(_num: Union[float, int]) -> float:
 
 
 def napierianlog(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)
+    """Natural/Napierian Logarithm (Base = Euler's Number).
 
     >>> napierianlog(37)
     3.6109179126442243
@@ -445,7 +445,7 @@ def napierianlog(_num: Union[float, int]) -> float:
 
 
 def naturallog(_num: Union[float, int]) -> float:
-    """Natural/Napierian Logarithm (Base = Euler's Number)
+    """Natural/Napierian Logarithm (Base = Euler's Number).
 
     >>> naturallog(37)
     3.6109179126442243
@@ -457,7 +457,7 @@ def naturallog(_num: Union[float, int]) -> float:
 
 
 def curt(_num: Union[float, int]) -> float:
-    """Cubed Root
+    """Cubed Root.
 
     >>> curt(37)
     3.332221851641943
@@ -466,7 +466,7 @@ def curt(_num: Union[float, int]) -> float:
 
 
 def root4(_num: Union[float, int]) -> float:
-    """Hypercubed Root
+    """Hypercubed Root.
 
     >>> root4(37)
     2.4663257145596607
@@ -475,7 +475,7 @@ def root4(_num: Union[float, int]) -> float:
 
 
 def root5(_num: Union[float, int]) -> float:
-    """5th Root
+    """5th Root.
 
     >>> root5(37)
     2.058924136478517
@@ -484,7 +484,7 @@ def root5(_num: Union[float, int]) -> float:
 
 
 def root6(_num: Union[float, int]) -> float:
-    """6th Root
+    """6th Root.
 
     >>> root6(37)
     1.8254374411756633
@@ -493,7 +493,7 @@ def root6(_num: Union[float, int]) -> float:
 
 
 def root7(_num: Union[float, int]) -> float:
-    """7th Root
+    """7th Root.
 
     >>> root7(37)
     1.6750540209862346
@@ -502,7 +502,7 @@ def root7(_num: Union[float, int]) -> float:
 
 
 def root8(_num: Union[float, int]) -> float:
-    """8th Root
+    """8th Root.
 
     >>> root8(37)
     1.57045398358553
@@ -511,7 +511,7 @@ def root8(_num: Union[float, int]) -> float:
 
 
 def root9(_num: Union[float, int]) -> float:
-    """9th Root
+    """9th Root.
 
     >>> root9(37)
     1.4936355304176858
@@ -520,7 +520,7 @@ def root9(_num: Union[float, int]) -> float:
 
 
 def root10(_num: Union[float, int]) -> float:
-    """10th Root
+    """10th Root.
 
     >>> root10(37)
     1.4348951656753595
@@ -529,7 +529,7 @@ def root10(_num: Union[float, int]) -> float:
 
 
 def root11(_num: Union[float, int]) -> float:
-    """11th Root
+    """11th Root.
 
     >>> root11(37)
     1.3885572587844555
@@ -538,7 +538,7 @@ def root11(_num: Union[float, int]) -> float:
 
 
 def root12(_num: Union[float, int]) -> float:
-    """12th Root
+    """12th Root.
 
     >>> root12(37)
     1.3510875029901763
@@ -547,7 +547,7 @@ def root12(_num: Union[float, int]) -> float:
 
 
 def root13(_num: Union[float, int]) -> float:
-    """13th Root
+    """13th Root.
 
     >>> root13(37)
     1.3201731686397005
@@ -556,7 +556,7 @@ def root13(_num: Union[float, int]) -> float:
 
 
 def root14(_num: Union[float, int]) -> float:
-    """14th Root
+    """14th Root.
 
     >>> root14(37)
     1.2942387805139492
@@ -565,7 +565,7 @@ def root14(_num: Union[float, int]) -> float:
 
 
 def root15(_num: Union[float, int]) -> float:
-    """15th Root
+    """15th Root.
 
     >>> root15(37)
     1.2721747796233518
@@ -577,7 +577,7 @@ def root15(_num: Union[float, int]) -> float:
 
 
 def factors(_num: int) -> set:
-    """Find prime factors
+    """Find prime factors.
 
     >>> factors(64)
     {64, 1, 2, 32, 4, 8, 16}
@@ -588,14 +588,14 @@ def factors(_num: int) -> set:
 
 
 def phi(_num: float) -> float:
-    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`
+    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`.
 
     >>> phi(128)
     1.0
     >>> phi(64)
     1.0
     >>> phi(phi(128))
-    0.841344746068543
+    0.8413447460685429
     """
     return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
 
@@ -604,7 +604,7 @@ def phi(_num: float) -> float:
 
 
 def avgoffset(results_list: Iterable[Union[float, int]], target_list: Iterable[Union[float, int]]) -> float:
-    """Compute the average offset of the list of results versus the target list
+    """Compute the average offset of the list of results versus the target list.
 
     >>> avgoffset([3.04606776, 6.04589842, 8.0331831, 9.03312666, 12.03295732, 12.99509362, 14.02024201, 15.99492428], [3.0, 6.0, 8.0, 9.0, 12.0, 13.0, 14.0, 16.0])
     0.02768217125000022
@@ -618,7 +618,7 @@ def avgoffset(results_list: Iterable[Union[float, int]], target_list: Iterable[U
 
 
 def is_improvement(new_list: Iterable[Union[float, int]], best_list: Iterable[Union[float, int]], target_list: Iterable[Union[float, int]]) -> bool:
-    """Return true if the new results are closer to the target than the previous results
+    """Return true if the new results are closer to the target than the previous results.
 
     >>> is_improvement([3.04606776, 6.04589842, 8.0331831, 9.03312666, 12.03295732, 12.99509362, 14.02024201, 15.99492428], [3.41, 6.03, 7.89, 8.36, 10.03, 12.22, 13.15, 13.3], [3.0, 6.0, 8.0, 9.0, 12.0, 13.0, 14.0, 16.0])
     True
@@ -631,11 +631,11 @@ def is_improvement(new_list: Iterable[Union[float, int]], best_list: Iterable[Un
     for x, y in zip(best_list, target_list):
         _bestlist_mean_offset += abs(x - y)  # type: ignore
     _bestlist_mean_offset /= len(best_list)  # type: ignore
-    return True if _bestlist_mean_offset > _newlist_mean_offset else False
+    return bool(_bestlist_mean_offset > _newlist_mean_offset)
 
 
 def is_improvement_meta(new_list: Iterable, best_list: Iterable, target_list: Iterable) -> Tuple[bool, float, float]:
-    """Return true as the first item in the tuple if the new results are closer to the target than the previous results; Returns a tuple containing the boolean value of the comparison, the lowest offset, and the largest offset
+    """Return true as the first item in the tuple if the new results are closer to the target than the previous results; Returns a tuple containing the boolean value of the comparison, the lowest offset, and the largest offset.
 
     >>> is_improvement_meta([3.04606776, 6.04589842, 8.0331831, 9.03312666, 12.03295732, 12.99509362, 14.02024201, 15.99492428], [3.41, 6.03, 7.89, 8.36, 10.03, 12.22, 13.15, 13.3], [3.0, 6.0, 8.0, 9.0, 12.0, 13.0, 14.0, 16.0])
     (True, 0.02768217125000022, 0.93625)
@@ -646,7 +646,7 @@ def is_improvement_meta(new_list: Iterable, best_list: Iterable, target_list: It
 
 
 def showpercent(_portion: Union[float, int], _total: Union[float, int] = 100.0) -> str:
-    """Convert a portion and total to a percentage
+    """Convert a portion and total to a percentage.
 
     Input int and/or float types and get a string
 
@@ -664,22 +664,22 @@ def showpercent(_portion: Union[float, int], _total: Union[float, int] = 100.0) 
 
 
 def dice() -> int:
-    """Roll a die and return a random integer (1-6)"""
+    """Roll a die and return a random integer (1-6)."""
     return choice((1, 2, 3, 4, 5, 6))  # nosec
 
 
 def dice8() -> int:
-    """Roll an 8-sided die and return a random integer (1-8)"""
+    """Roll an 8-sided die and return a random integer (1-8)."""
     return choice((1, 2, 3, 4, 5, 6, 7, 8))  # nosec
 
 
 def coinflip() -> str:
-    """Flip a coin and return a string of heads or tails"""
+    """Flip a coin and return a string of heads or tails."""
     return choice((r'heads', r'tails'))  # nosec
 
 
 def flipcoin() -> str:
-    """Flip a coin and return a string of heads or tails"""
+    """Flip a coin and return a string of heads or tails."""
     return choice((r'heads', r'tails'))  # nosec
 
 
@@ -687,35 +687,35 @@ def flipcoin() -> str:
 
 
 def getdifference(_iter1: Iterable, _iter2: Iterable) -> set:
-    """Return the difference set of two iterables"""
+    """Return the difference set of two iterables."""
     _set1: set = set(_iter1)
     _set2: set = set(_iter2)
     return _set1.difference(_set2)
 
 
 def getintersection(_iter1: Iterable, _iter2: Iterable) -> set:
-    """Return the intersection set of two iterables"""
+    """Return the intersection set of two iterables."""
     _set1: set = set(_iter1)
     _set2: set = set(_iter2)
     return _set1.intersection(_set2)
 
 
 def getsymdiff(_iter1: Iterable, _iter2: Iterable) -> set:
-    """Return the symmetric difference set of two iterables"""
+    """Return the symmetric difference set of two iterables."""
     _set1: set = set(_iter1)
     _set2: set = set(_iter2)
     return _set1.symmetric_difference(_set2)
 
 
 def getunion(_iter1: Iterable, _iter2: Iterable) -> set:
-    """Return the union set of two iterables"""
+    """Return the union set of two iterables."""
     _set1: set = set(_iter1)
     _set2: set = set(_iter2)
     return _set1.union(_set2)
 
 
 def issubset(_iter1: Iterable, _iter2: Iterable) -> bool:
-    """Return True if _iter1 is a subset of _iter2"""
+    """Return True if _iter1 is a subset of _iter2."""
     _set1: set = set(_iter1)
     _set2: set = set(_iter2)
     return _set1.issubset(_set2)
@@ -725,7 +725,7 @@ def issubset(_iter1: Iterable, _iter2: Iterable) -> bool:
 
 
 def clamp(_num: float, smallest: float = -1.0, largest: float = 1.0) -> float:
-    """Clamp a value within the specified range
+    """Clamp a value within the specified range.
 
     >>> clamp(37.0, 17.0, 73.0)
     37.0
@@ -742,7 +742,7 @@ def clamp(_num: float, smallest: float = -1.0, largest: float = 1.0) -> float:
 
 
 def int2many(_int: int) -> str:
-    """Convert a decimal number to mulitple number base types
+    """Convert a decimal number to mulitple number base types.
 
     The returned value is a table in the form of a string
 
@@ -753,7 +753,7 @@ def int2many(_int: int) -> str:
 
 
 def degrees2radians(_degrees: float) -> float:
-    """Convert Degrees to Radians {(PI / 180) * Degrees}
+    """Convert Degrees to Radians `(PI / 180) * Degrees`.
 
     >>> degrees2radians(90.0)
     1.5707963267948701
@@ -762,7 +762,7 @@ def degrees2radians(_degrees: float) -> float:
 
 
 def radians2degrees(_radians: float) -> float:
-    """Convert Radians to Degrees {(180 / PI) * Radians}
+    """Convert Radians to Degrees `(180 / PI) * Radians`.
 
     >>> radians2degrees(30.0)
     1718.8733853924696

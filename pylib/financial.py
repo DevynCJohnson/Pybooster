@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions related to finances, banking, economics, accounting, etc.
+"""@brief Functions related to finances, banking, economics, & accounting.
 
 @file financial.py
 @package pybooster.financial
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,20 +38,20 @@ __all__: list = [
 
 
 def compounded_interest(principal: float, interest: float, compound_frequency: float) -> float:
-    """Return the compounded interest earned given the principal, interest, and compound frequency"""
+    """Return the compounded interest earned given the principal, interest, and compound frequency."""
     return principal * (((1.0 + compound_frequency) ** interest) - 1.0)
 
 
 def compounded_ending_balance(principal: float, interest: float, compound_frequency: float) -> float:
-    """Return the ending balance of compounded interest earned given the principal, interest, and compound frequency"""
+    """Return the ending balance of compounded interest earned given the principal, interest, and compound frequency."""
     return principal * (((1.0 + compound_frequency) ** interest))
 
 
 def simple_interest(principal: float, interest: float, time: float) -> float:
-    """Return the simple interest earned given the principal, interest, and time"""
+    """Return the simple interest earned given the principal, interest, and time."""
     return principal * time * interest
 
 
 def simple_ending_balance(principal: float, interest: float, time: float) -> float:
-    """Return the ending balance of simple interest given the principal, interest, and time"""
+    """Return the ending balance of simple interest given the principal, interest, and time."""
     return principal * (1.0 + (time * interest))

@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Minify XML documents (including HTML, MathML, SVG, etc.)
+"""@brief Minify XML documents (including HTML, MathML, SVG, etc.).
 
 @file minifyxml
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -53,10 +53,10 @@ from pybooster.markup import (
 
 
 def display_minify_results(filename: str, orig_size: int, new_size: int) -> None:
-    """Write a message to stdout indicating the data's size change in bytes"""
+    """Write a message to stdout indicating the data's size change in bytes."""
     if filename:
         saved_size = orig_size - new_size
-        saved_msg = r' bytes in ' if saved_size != 1 and saved_size != -1 else r' byte in '
+        saved_msg = r' bytes in ' if saved_size not in {-1, 1} else r' byte in '
         gain_msg = r'Saved ' if saved_size >= 0 else r'Lost '
         stdout.write(gain_msg + str(abs(saved_size)) + saved_msg + filename + '\n')
 
@@ -255,7 +255,7 @@ if __name__ == '__main__':  # noqa: C901
     if ARGS.output_file:
         ORIG_SIZE = len(XMLDATA)
     XMLDATA = insert_missing_xml_namespaces(XMLDATA)
-    if _DOC_TYPE == FILETYPE_DTD or _DOC_TYPE == FILETYPE_XSD:
+    if _DOC_TYPE in frozenset({FILETYPE_DTD, FILETYPE_XSD}):
         XMLDATA = prettify_xml_schema(XMLDATA)
     else:  # Not DTD nor XSD
         try:
@@ -289,7 +289,7 @@ if __name__ == '__main__':  # noqa: C901
     if _DOC_TYPE != FILETYPE_DTD and not MINIFIER.output:
         stderr.write('No data to output!\n')
         raise SystemExit(1)
-    elif _DOC_TYPE == FILETYPE_DTD:
+    if _DOC_TYPE == FILETYPE_DTD:
         writedata(ARGS.output_file, XMLDATA, ARGS.encoding)
         if ARGS.output_file:
             display_minify_results(ARGS.output_file, ORIG_SIZE, len(XMLDATA))

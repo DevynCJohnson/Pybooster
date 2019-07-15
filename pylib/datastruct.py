@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Functions used to manipulate data structure files such as Config/INI, CSV, JSON, & others
+"""@brief Functions used to manipulate data structure files such as Config/INI, CSV, JSON, & others.
 
 @file datastruct.py
 @package pybooster.datastruct
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -109,7 +109,7 @@ TRUE_VALUES: set = {r'1', r'on', r'true', r'yes'}
 
 
 def openinifile(_file: Union[object, str]) -> object:
-    """Open an INI file given a pathname or ConfigParser object and return the object"""
+    """Open an INI file given a pathname or ConfigParser object and return the object."""
     if isinstance(_file, ConfigParser):
         return _file
     if isinstance(_file, StringIO):
@@ -124,13 +124,13 @@ def openinifile(_file: Union[object, str]) -> object:
 
 
 def write2ini(_filename: str, _config: object) -> None:
-    """Send data to a new INI file or overwrite an existing INI file"""
+    """Send data to a new INI file or overwrite an existing INI file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _config.write(_file)  # type: ignore
 
 
 def ini2str(_file: object) -> str:
-    """Get the string from the ConfigParser"""
+    """Get the string from the ConfigParser."""
     _buf: StringIO = StringIO(r'', '\n')
     _file.write(_buf)  # type: ignore
     _out: str = _buf.getvalue()
@@ -139,7 +139,7 @@ def ini2str(_file: object) -> str:
 
 
 def get_ini_value(_file: Union[object, str], _section: str, _opt: str) -> Union[None, str]:
-    """Retrieve the value (as a string) from the specified section and option"""
+    """Retrieve the value (as a string) from the specified section and option."""
     try:
         return openinifile(_file)[_section][_opt]  # type: ignore
     except KeyError:
@@ -147,7 +147,7 @@ def get_ini_value(_file: Union[object, str], _section: str, _opt: str) -> Union[
 
 
 def get_ini_sections(_file: Union[object, str]) -> list:
-    """Retrieve a list of the INI file's sections from the specified file"""
+    """Retrieve a list of the INI file's sections from the specified file."""
     try:
         return openinifile(_file).sections()  # type: ignore
     except KeyError:
@@ -155,7 +155,7 @@ def get_ini_sections(_file: Union[object, str]) -> list:
 
 
 def get_ini_options(_file: Union[object, str], _section: str) -> list:
-    """Retrieve a list of the options in a particular section of an INI file from the specified file"""
+    """Retrieve a list of the options in a particular section of an INI file from the specified file."""
     try:
         return openinifile(_file).options(_section)  # type: ignore
     except KeyError:
@@ -163,7 +163,7 @@ def get_ini_options(_file: Union[object, str], _section: str) -> list:
 
 
 def set_ini_value(_file: Union[object, str], _section: str, _opt: str, _val: str) -> Tuple[bool, object]:
-    """Set the value for the specified section and option and return a tuple containing a success flag and ConfigParser"""
+    """Set the value for the specified section and option and return a tuple containing a success flag and ConfigParser."""
     configfile = openinifile(_file)
     try:
         configfile[_section][_opt] = _val  # type: ignore
@@ -173,12 +173,12 @@ def set_ini_value(_file: Union[object, str], _section: str, _opt: str, _val: str
 
 
 def is_section_in_ini(_file: str, _section: str) -> bool:
-    """Return a boolean value indicating the presence of the specified section"""
+    """Return a boolean value indicating the presence of the specified section."""
     return bool(_section in openinifile(_file))  # type: ignore
 
 
 def convertinibool(_file: str, _destfile: str) -> None:
-    """Convert INI file booleans to 'True'/'False' and write the modified INI data to a file"""
+    """Convert INI file booleans to 'True'/'False' and write the modified INI data to a file."""
     configfile = openinifile(_file)
     for _section in configfile.sections():  # type: ignore
         for _option in configfile.options(_section):  # type: ignore
@@ -194,7 +194,7 @@ def convertinibool(_file: str, _destfile: str) -> None:
 
 
 def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _delimiter: str = r',', _quotechar: str = r'"') -> list:
-    """Convert the specified CSV file to a list of ordered Python dictionaries or a plain list"""
+    """Convert the specified CSV file to a list of ordered Python dictionaries or a plain list."""
     ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
@@ -203,7 +203,7 @@ def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequ
 
 
 def loadcsvstr(_csv: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _delimiter: str = r',', _quotechar: str = r'"') -> list:
-    r"""Convert the specified CSV string to a list of ordered Python dictionaries or a plain list
+    r"""Convert the specified CSV string to a list of ordered Python dictionaries or a plain list.
 
     >>> loadcsvstr('Val1,Val2,Val3,Val4\n1,2,3,4\n5,6,7,8\n9,10,11,12\n13,14,15,16\n17,18,19,20\n3.14,6.28,2.73,1.57')
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
@@ -214,7 +214,7 @@ def loadcsvstr(_csv: str, _retodict: bool = False, _fieldnames: Union[Sequence[s
 
 
 def write2csv(_filename: str, _list: list, _dialect: str = r'unix', _delimiter=r',', _quotechar=r'"') -> None:
-    """Send data (as a list) to a new CSV file or overwrite an existing CSV file"""
+    """Send data (as a list) to a new CSV file or overwrite an existing CSV file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         csvwriter = cwriter(_file, dialect=_dialect, delimiter=_delimiter, quotechar=_quotechar, quoting=QUOTE_MINIMAL)
         for _row in _list:
@@ -222,7 +222,7 @@ def write2csv(_filename: str, _list: list, _dialect: str = r'unix', _delimiter=r
 
 
 def writedict2csv(_filename: str, _list: list, _fieldnames: Sequence[str], _dialect: str = r'unix', _delimiter: str = r',', _quotechar: str = r'"') -> None:
-    """Send data (as a list of OrderedDicts) to a new CSV file or overwrite an existing CSV file"""
+    """Send data (as a list of OrderedDicts) to a new CSV file or overwrite an existing CSV file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         csvwriter = DictWriter(_file, fieldnames=_fieldnames, dialect=_dialect, delimiter=_delimiter, quotechar=_quotechar, quoting=QUOTE_MINIMAL)
         csvwriter.writeheader()
@@ -234,7 +234,7 @@ def writedict2csv(_filename: str, _list: list, _fieldnames: Sequence[str], _dial
 
 
 def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = True) -> Union[dict, str]:
-    """Open an JSON file given a pathname and return the object as a dict or str (if `_jsondata` is set to `False`)"""
+    """Open an JSON file given a pathname and return the object as a dict or str (if `_jsondata` is set to `False`)."""
     try:
         _out: str = r''
         ensurefileexists(_filename)
@@ -250,13 +250,13 @@ def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = Tr
 
 
 def write2json(_filename: str, _dict: dict, _indent: int = 2, _sort_keys: bool = True) -> None:
-    """Send data to a new JSON file or overwrite an existing JSON file"""
+    """Send data to a new JSON file or overwrite an existing JSON file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _file.write(jdump(_dict, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys))
 
 
 def writeyaml2json(_filename: str, _yamlfile: str, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> None:
-    """Convert YAML to JSON and write the JSON file (overwrites exist JSON files)"""
+    """Convert YAML to JSON and write the JSON file (overwrites exist JSON files)."""
     ensurefileexists(_yamlfile)
     _tmpyaml: dict = yamlload(_yamlfile)  # nosec
     _out: str = jdump(_tmpyaml, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_tmpyaml, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys)
@@ -265,7 +265,7 @@ def writeyaml2json(_filename: str, _yamlfile: str, _indent: int = 2, _sort_keys:
 
 
 def write2minijson(_filename: str, _dict: dict, _sort_keys: bool = True) -> None:
-    """Send minified JSON data to a new JSON file or overwrite an existing JSON file"""
+    """Send minified JSON data to a new JSON file or overwrite an existing JSON file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         _file.write(jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r''))
 
@@ -274,7 +274,7 @@ def write2minijson(_filename: str, _dict: dict, _sort_keys: bool = True) -> None
 
 
 def opentsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _quotechar: str = r'"') -> list:
-    """Convert the specified TSV file to a list of ordered Python dictionaries or a plain list"""
+    """Convert the specified TSV file to a list of ordered Python dictionaries or a plain list."""
     ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
@@ -284,7 +284,7 @@ def opentsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequ
 
 
 def write2tsv(_filename: str, _list: list, _dialect: str = r'unix', _quotechar=r'"') -> None:
-    """Send data (as a list) to a new TSV file or overwrite an existing TSV file"""
+    """Send data (as a list) to a new TSV file or overwrite an existing TSV file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         csvwriter = cwriter(_file, dialect=_dialect, delimiter='\t', quotechar=_quotechar, quoting=QUOTE_MINIMAL)
         for _row in _list:
@@ -292,7 +292,7 @@ def write2tsv(_filename: str, _list: list, _dialect: str = r'unix', _quotechar=r
 
 
 def writedict2tsv(_filename: str, _list: list, _fieldnames: list, _dialect: str = r'unix', _quotechar: str = r'"') -> None:
-    """Send data (as a list of OrderedDicts) to a new TSV file or overwrite an existing TSV file"""
+    """Send data (as a list of OrderedDicts) to a new TSV file or overwrite an existing TSV file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         csvwriter = DictWriter(_file, fieldnames=_fieldnames, dialect=_dialect, delimiter='\t', quotechar=_quotechar, quoting=QUOTE_MINIMAL)
         csvwriter.writeheader()
@@ -304,7 +304,7 @@ def writedict2tsv(_filename: str, _list: list, _fieldnames: list, _dialect: str 
 
 
 def openyamlfile(_filename: str, _encoding: str = r'utf-8') -> dict:
-    """Open an YAML file given a pathname and return the object as a dict"""
+    """Open an YAML file given a pathname and return the object as a dict."""
     try:
         ensurefileexists(_filename)
         with codec_opener(_filename, mode=r'rb', encoding=_encoding, buffering=1) as _file:
@@ -321,7 +321,7 @@ def openyamlfile(_filename: str, _encoding: str = r'utf-8') -> dict:
 
 
 def base64url2str(_bytes: bytes) -> str:
-    r"""Convert a Base64URL (RFC 4648) byte-string to a string
+    r"""Convert a Base64URL (RFC 4648) byte-string to a string.
 
     >>> base64url2str(b'eyIwIjpbIlZhbDEiLCJWYWwyIiwiVmFsMyIsIlZhbDQiXSwiMSI6WyIxIiwiMiIsIjMiLCI0Il0sIjIiOlsiNSIsIjYiLCI3IiwiOCJdLCIzIjpbIjkiLCIxMCIsIjExIiwiMTIiXSwiNCI6WyIxMyIsIjE0IiwiMTUiLCIxNiJdLCI1IjpbIjE3IiwiMTgiLCIxOSIsIjIwIl0sIjYiOlsiMy4xNCIsIjYuMjgiLCIyLjczIiwiMS41NyJdfQ==')
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
@@ -330,7 +330,7 @@ def base64url2str(_bytes: bytes) -> str:
 
 
 def csv2dict(_list: list) -> dict:
-    """Convert the specified CSV (as a list) to a Python dictionary
+    """Convert the specified CSV (as a list) to a Python dictionary.
 
     >>> csv2dict([['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']])
     {0: ['Val1', 'Val2', 'Val3', 'Val4'], 1: ['1', '2', '3', '4'], 2: ['5', '6', '7', '8'], 3: ['9', '10', '11', '12'], 4: ['13', '14', '15', '16'], 5: ['17', '18', '19', '20'], 6: ['3.14', '6.28', '2.73', '1.57']}
@@ -339,7 +339,7 @@ def csv2dict(_list: list) -> dict:
 
 
 def csv2json(_list: list, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
-    """Convert the specified CSV (as a list) to a JSON string
+    """Convert the specified CSV (as a list) to a JSON string.
 
     >>> csv2json([['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']], _sort_keys=True, _minify=True)
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
@@ -349,7 +349,7 @@ def csv2json(_list: list, _indent: int = 2, _sort_keys: bool = True, _minify: bo
 
 
 def dict2csv(_dict: dict) -> list:
-    """Convert a Python dictionary to a CSV (as list)
+    """Convert a Python dictionary to a CSV (as list).
 
     >>> dict2csv({'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']})
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
@@ -358,7 +358,7 @@ def dict2csv(_dict: dict) -> list:
 
 
 def dict2ini(_dict: dict, _nested: bool = False, _delimiters: tuple = (r'=', r':'), _comment_prefixes: tuple = (r'#', r';')) -> str:
-    r"""Convert a Python dictionary to an INI (as a string)
+    r"""Convert a Python dictionary to an INI (as a string).
 
     >>> dict2ini({'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']})
     "[Default]\n0 = ['Val1', 'Val2', 'Val3', 'Val4']\n1 = ['1', '2', '3', '4']\n2 = ['5', '6', '7', '8']\n3 = ['9', '10', '11', '12']\n4 = ['13', '14', '15', '16']\n5 = ['17', '18', '19', '20']\n6 = ['3.14', '6.28', '2.73', '1.57']\n"
@@ -378,7 +378,7 @@ def dict2ini(_dict: dict, _nested: bool = False, _delimiters: tuple = (r'=', r':
 
 
 def dict2json(_dict: dict, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
-    """Convert a Python dictionary to a JSON string
+    """Convert a Python dictionary to a JSON string.
 
     >>> dict2json({'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}, _sort_keys=True, _minify=True)
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
@@ -387,7 +387,7 @@ def dict2json(_dict: dict, _indent: int = 2, _sort_keys: bool = True, _minify: b
 
 
 def ini2dict(_file: Union[object, str], _rawinistr: bool = False) -> dict:
-    r"""Convert an INI to a Python dictionary
+    r"""Convert an INI to a Python dictionary.
 
     >>> BUF = StringIO(r'')
     >>> BUF.write("[Default]\n0 = ['Val1', 'Val2', 'Val3', 'Val4']\n1 = ['1', '2', '3', '4']\n2 = ['5', '6', '7', '8']\n3 = ['9', '10', '11', '12']\n4 = ['13', '14', '15', '16']\n5 = ['17', '18', '19', '20']\n6 = ['3.14', '6.28', '2.73', '1.57']\n")
@@ -407,7 +407,7 @@ def ini2dict(_file: Union[object, str], _rawinistr: bool = False) -> dict:
 
 
 def ini2json(_file: Union[object, str], _rawinistr: bool = False, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
-    r"""Convert an INI to JSON (as a string)
+    r"""Convert an INI to JSON (as a string).
 
     >>> BUF = StringIO(r'')
     >>> BUF.write("[Default]\n0 = ['Val1', 'Val2', 'Val3', 'Val4']\n1 = ['1', '2', '3', '4']\n2 = ['5', '6', '7', '8']\n3 = ['9', '10', '11', '12']\n4 = ['13', '14', '15', '16']\n5 = ['17', '18', '19', '20']\n6 = ['3.14', '6.28', '2.73', '1.57']\n")
@@ -421,7 +421,7 @@ def ini2json(_file: Union[object, str], _rawinistr: bool = False, _indent: int =
 
 
 def json2csv(_str: str) -> list:
-    """Convert a JSON string to CSV (as a list)
+    """Convert a JSON string to CSV (as a list).
 
     >>> json2csv('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
@@ -431,7 +431,7 @@ def json2csv(_str: str) -> list:
 
 
 def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quotechar: str = r'"') -> str:
-    r"""Convert a JSON string to CSV (as a string)
+    r"""Convert a JSON string to CSV (as a string).
 
     >>> json2csvstr('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
     '0,1,2,3,4,5,6\nVal1,Val2,Val3,Val4\n1,2,3,4\n5,6,7,8\n9,10,11,12\n13,14,15,16\n17,18,19,20\n3.14,6.28,2.73,1.57\n'
@@ -453,7 +453,7 @@ def json2csvstr(_str: str, _dialect: str = r'unix', _delimiter: str = r',', _quo
 
 
 def json2dict(_str: str) -> Union[dict, list]:
-    """Convert a JSON string to a Python dictionary or list (depending on the data input)
+    """Convert a JSON string to a Python dictionary or list (depending on the data input).
 
     >>> json2dict('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
@@ -462,7 +462,7 @@ def json2dict(_str: str) -> Union[dict, list]:
 
 
 def json2yaml(_str: str) -> str:
-    r"""Convert a JSON string to a YAML string
+    r"""Convert a JSON string to a YAML string.
 
     >>> json2yaml('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
     "'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n"
@@ -471,7 +471,7 @@ def json2yaml(_str: str) -> str:
 
 
 def list2csv(_list: list) -> str:
-    r"""Convert a list to a CSV string
+    r"""Convert a list to a CSV string.
 
     >>> list2csv([["Val1","Val2","Val3","Val4"], ["1","2","3","4"], ["5","6","7","8"]])
     'Val1,Val2,Val3,Val4\n1,2,3,4\n5,6,7,8\n'
@@ -484,7 +484,7 @@ def list2csv(_list: list) -> str:
 
 
 def str2base64url(_str: str) -> bytes:
-    r"""Convert a string to a Base64URL (RFC 4648) byte-string
+    r"""Convert a string to a Base64URL (RFC-4648) byte-string.
 
     >>> str2base64url('{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}')
     b'eyIwIjpbIlZhbDEiLCJWYWwyIiwiVmFsMyIsIlZhbDQiXSwiMSI6WyIxIiwiMiIsIjMiLCI0Il0sIjIiOlsiNSIsIjYiLCI3IiwiOCJdLCIzIjpbIjkiLCIxMCIsIjExIiwiMTIiXSwiNCI6WyIxMyIsIjE0IiwiMTUiLCIxNiJdLCI1IjpbIjE3IiwiMTgiLCIxOSIsIjIwIl0sIjYiOlsiMy4xNCIsIjYuMjgiLCIyLjczIiwiMS41NyJdfQ=='
@@ -493,7 +493,7 @@ def str2base64url(_str: str) -> bytes:
 
 
 def yaml2dict(_yaml: str) -> dict:
-    r"""Convert a YAML string to a Python dictionary
+    r"""Convert a YAML string to a Python dictionary.
 
     >>> yaml2dict("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n")
     {'0': ['Val1', 'Val2', 'Val3', 'Val4'], '1': ['1', '2', '3', '4'], '2': ['5', '6', '7', '8'], '3': ['9', '10', '11', '12'], '4': ['13', '14', '15', '16'], '5': ['17', '18', '19', '20'], '6': ['3.14', '6.28', '2.73', '1.57']}
@@ -505,7 +505,7 @@ def yaml2dict(_yaml: str) -> dict:
 
 
 def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
-    r"""Convert a YAML string to a JSON string
+    r"""Convert a YAML string to a JSON string.
 
     >>> yaml2json("'0':\n- Val1\n- Val2\n- Val3\n- Val4\n'1':\n- '1'\n- '2'\n- '3'\n- '4'\n'2':\n- '5'\n- '6'\n- '7'\n- '8'\n'3':\n- '9'\n- '10'\n- '11'\n- '12'\n'4':\n- '13'\n- '14'\n- '15'\n- '16'\n'5':\n- '17'\n- '18'\n- '19'\n- '20'\n'6':\n- '3.14'\n- '6.28'\n- '2.73'\n- '1.57'\n", _sort_keys=True, _minify=True)
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
@@ -523,11 +523,11 @@ def yaml2json(_yaml: str, _indent: int = 2, _sort_keys: bool = True, _minify: bo
 
 
 def data2pklfile(_data: object, _filename: str) -> None:
-    """Pickle, compress (using Zlib), and encode the data in base64url (RFC 4648), then write it to a file"""
+    """Pickle, compress (using Zlib), and encode the data in base64url (RFC 4648), then write it to a file."""
     write2file(_filename, str(b64encode(zcompress(dumps(_data), level=9), altchars=br'-_'), encoding=r'utf-8'))
 
 
 def pklfile2data(_filename: str) -> object:
-    """Open the specified file and load the contained compressed+pickled base64url (RFC 4648) data"""
+    """Open the specified file and load the contained compressed+pickled base64url (RFC 4648) data."""
     ensurefileexists(_filename)
     return loads(zdecompress(b64decode(bytes(getfile(_filename), encoding=r'utf-8'), altchars=br'-_', validate=True)))

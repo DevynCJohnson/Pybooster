@@ -32,11 +32,15 @@ When both ``flake8`` and ``flake8_optimal`` are installed, the plugin is
 available in ``flake8``::
 
     $ flake8 --version
-    3.5.0 (CopyrightChecker: 2018.08.31, MagicComment: 2018.08.31, aaa: 0.4.0, flake8-comprehensions: 1.4.1, flake8-mypy: 17.8.0, flake8-pyi: 18.3.1, flake8_deprecated: 1.2, flake8_optimal: 2018.10.07, mccabe: 0.6.1, pycodestyle: 2.3.1, pyflakes: 1.6.0, warn-symbols: 1.1.1) CPython 3.6.6 on Linux
+    3.7.7 (CopyrightChecker: 2019.07.14, MagicComment: 2019.07.14, aaa: 0.6.2, flake8-comprehensions: 2.1.0, flake8-eradicate: 0.2.0, flake8-mypy: 17.8.0, flake8-pyi: 19.3.0, flake8_builtins: 1.4.1, flake8_coding: 1.3.2, flake8_deprecated: 1.2, flake8_optimal: 2019.07.14, logging-format: 0.6.0, mccabe: 0.6.1, pycodestyle: 2.5.0, pyflakes: 2.1.1, radon: 3.0.3, warn-symbols: 1.1.1) CPython 3.7.3 on Linux
 
 
 Changes
 -------
+
+2019.07.14 - 2019-07-14
+```````````````````````
+* Mild tweaks & adjustments
 
 2018.10.07 - 2018-10-07
 ```````````````````````
@@ -51,22 +55,22 @@ Changes
 ```````````````````````
 * Added "#!/usr/bin/env python2" as a valid hashpling (X009)
 
-2018.03.09 - 2018-03-09
+2018.09.03 - 2018-09-03
 ```````````````````````
 * Added the "TESTING" todo note for the scanner to find (T000)
 
-2018.11.05 - 2018-11-05
+2018.05.11 - 2018-05-11
 ```````````````````````
 * Added additional todo notes for the scanner to find (T000)
 * Added additional forms of exit for the scanner to find (Z003)
 * Reworded message for Z001
 
-2018.27.04 - 2018-27-04
+2018.04.27 - 2018-04-27
 ```````````````````````
 * Fixed unicode decoding issues
 * Optimized the magic-comment checker
 
-2018.25.04 - 2018-25-04
+2018.04.25 - 2018-04-25
 ```````````````````````
 * Added Z009 and applied some optimizations
 

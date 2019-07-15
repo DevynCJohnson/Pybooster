@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Network-related functions
+"""@brief Network-related functions.
 
 @file net.py
 @package pybooster.net
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -53,7 +53,7 @@ __all__: list = [
 
 
 def ints2ipv6(*args: int) -> str:
-    """When given eight separate integers, a hex IPv6 address is returned"""
+    """When given eight separate integers, a hex IPv6 address is returned."""
     if len(args) == 8:
         for i in args:
             if i >= 65535:
@@ -63,7 +63,7 @@ def ints2ipv6(*args: int) -> str:
 
 
 def lst2ipv6(_list: list) -> str:
-    """When given eight separate integers, a hex IPv6 address is returned"""
+    """When given eight separate integers, a hex IPv6 address is returned."""
     if len(_list) == 8:
         for i in _list:
             if i >= 65535:
@@ -76,12 +76,12 @@ def lst2ipv6(_list: list) -> str:
 
 
 def name2ip(_address: str = r'localhost') -> str:
-    """Convert a domain name to an IPv4 address"""
+    """Convert a domain name to an IPv4 address."""
     return gethostbyname(_address)
 
 
 def isdomain(_address: str) -> bool:
-    """Test if a Domain Name resolves to an IP address"""
+    """Test if a Domain Name resolves to an IP address."""
     try:
         gethostbyname(_address)
     except gaierror:
@@ -90,17 +90,17 @@ def isdomain(_address: str) -> bool:
 
 
 def ping(_address: str = r'localhost') -> bool:
-    """Specify an IP address or a domain name"""
+    """Specify an IP address or a domain name."""
     try:
         child = Popen([r'ping', r'-c 1', _address], stdout=PIPE, stderr=PIPE, shell=False)  # nosec
         _results = child.communicate(timeout=3)[0]  # Wait for results and get return code
     except TimeoutExpired:
         return False
-    return True if _results and child.returncode == 0 else False
+    return bool(_results and child.returncode == 0)
 
 
 def findgw() -> str:
-    """Get the Gateway IP address"""
+    """Get the Gateway IP address."""
     with open(r'/proc/net/route', mode=r'rt', encoding=r'utf-8') as _file:
         for _line in _file:
             _field = _line.strip().split()
@@ -111,7 +111,7 @@ def findgw() -> str:
 
 
 def hasnet() -> bool:
-    """Return True if the Internet is available
+    """Return True if the Internet is available.
 
     >>> hasnet()
     True
@@ -126,7 +126,7 @@ def hasnet() -> bool:
 
 
 def getwebpage(_address: str) -> bytes:
-    """Return a webpage's HTML code as a string"""
+    """Return a webpage's HTML code as a string."""
     if r'://' not in _address:
         _address = r'https://' + _address
     if not _address.endswith(r'/'):

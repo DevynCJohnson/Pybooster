@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Boolean test functions (test a condition and return true or false)
+"""@brief Boolean test functions (test a condition and return true or false).
 
 @file boolean.py
 @package pybooster.boolean
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -98,17 +98,17 @@ CO_ITERABLE_COROUTINE: int = 256
 
 
 def rmfalse(_iter: Iterable) -> list:
-    """Remove False values from iterable and return evaluated list"""
+    """Remove False values from iterable and return evaluated list."""
     return [x for x in _iter if x]
 
 
 def evaliter(_iter: Iterable) -> list:
-    """Evaluate values in iterable and return evaluated list of booleans"""
+    """Evaluate values in iterable and return evaluated list of booleans."""
     return [x for x in _iter]
 
 
 def eny(_iter: Iterable) -> bool:
-    """Enhanced any()
+    """Enhanced `any()`.
 
     >>> eny([1, 0, 2, 'str'])
     True
@@ -121,7 +121,7 @@ def eny(_iter: Iterable) -> bool:
 
 
 def isiter(_iter: Iterable) -> bool:
-    """Test if the object is iterable
+    """Test if the object is iterable.
 
     >>> isiter('str')
     True
@@ -141,7 +141,7 @@ def isiter(_iter: Iterable) -> bool:
 
 
 def ishex(_hex: str) -> bool:
-    """Is the string hexadecimal
+    """Is the string hexadecimal.
 
     >>> ishex('2c')
     True
@@ -168,7 +168,7 @@ def ishex(_hex: str) -> bool:
 
 
 def isoct(_oct: str) -> bool:
-    """Is the string octal
+    """Is the string octal.
 
     >>> isoct('45')
     True
@@ -195,7 +195,7 @@ def isoct(_oct: str) -> bool:
 
 
 def isbin(_bin: str) -> bool:
-    """Is the string binary
+    """Is the string binary.
 
     >>> isbin('01010101')
     True
@@ -222,7 +222,7 @@ def isbin(_bin: str) -> bool:
 
 
 def iscomplex(_obj: Union[complex, int, str]) -> bool:
-    """Is the object a complex number (37+54j)
+    """Is the object a complex number (37+54j).
 
     >>> iscomplex(37+54j)
     True
@@ -258,7 +258,7 @@ def iscomplex(_obj: Union[complex, int, str]) -> bool:
 
 
 def iscomplextype(_obj: object) -> bool:
-    """Is the object a complex type
+    """Is the object a complex type.
 
     >>> iscomplextype(37+54j)
     True
@@ -277,22 +277,22 @@ def iscomplextype(_obj: object) -> bool:
 
 
 def ismodule(_object: object) -> bool:
-    """Return true if the object is a module"""
+    """Return true if the object is a module."""
     return isinstance(_object, ModuleType)
 
 
 def isclass(_object: object) -> bool:
-    """Return true if the object is a class"""
+    """Return true if the object is a class."""
     return isinstance(_object, type)
 
 
 def ismethod(_object: object) -> bool:
-    """Return true if the object is an instance method"""
+    """Return true if the object is an instance method."""
     return isinstance(_object, MethodType)
 
 
 def ismethoddescriptor(_object: object) -> bool:
-    """Return true if the object is a method descriptor"""
+    """Return true if the object is a method descriptor."""
     if isinstance(_object, (FunctionType, MethodType, type)):
         return False
     objtype = type(_object)
@@ -300,7 +300,7 @@ def ismethoddescriptor(_object: object) -> bool:
 
 
 def isdatadescriptor(_object: object) -> bool:
-    """Return true if the object is a data descriptor"""
+    """Return true if the object is a data descriptor."""
     if isinstance(_object, (FunctionType, MethodType, type)):
         return False
     objtype = type(_object)
@@ -308,79 +308,79 @@ def isdatadescriptor(_object: object) -> bool:
 
 
 def ismemberdescriptor(_object: object) -> bool:
-    """Return true if the object is a member descriptor"""
+    """Return true if the object is a member descriptor."""
     return isinstance(_object, MemberDescriptorType)
 
 
 def isgetsetdescriptor(_object: object) -> bool:
-    """Return true if the object is a getset descriptor"""
+    """Return true if the object is a getset descriptor."""
     return isinstance(_object, GetSetDescriptorType)
 
 
 def isfunction(_object: object) -> bool:
-    """Return true if the object is a user-defined function"""
+    """Return true if the object is a user-defined function."""
     return isinstance(_object, FunctionType)
 
 
 def isgeneratorfunction(_object: object) -> bool:
-    """Return true if the object is a user-defined generator function"""
+    """Return true if the object is a user-defined generator function."""
     return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_GENERATOR)  # type: ignore
 
 
 def iscoroutinefunction(_object: object) -> bool:
-    """Return true if the object is a coroutine function"""
+    """Return true if the object is a coroutine function."""
     return bool(isinstance(_object, (FunctionType, MethodType)) and _object.__code__.co_flags & CO_COROUTINE)  # type: ignore
 
 
 def isgenerator(_object: object) -> bool:
-    """Return true if the object is a generator"""
+    """Return true if the object is a generator."""
     return isinstance(_object, GeneratorType)
 
 
 def iscoroutine(_object: object) -> bool:
-    """Return true if the object is a coroutine"""
+    """Return true if the object is a coroutine."""
     return isinstance(_object, CoroutineType)
 
 
 def isawaitable(_object: object) -> bool:
-    """Return true if object can be passed to an `await` expression"""
+    """Return true if object can be passed to an `await` expression."""
     return (
         isinstance(_object, (Awaitable, CoroutineType)) or isinstance(_object, GeneratorType) and bool(_object.gi_code.co_flags & CO_ITERABLE_COROUTINE)
     )
 
 
 def istraceback(_object: object) -> bool:
-    """Return true if the object is a traceback"""
+    """Return true if the object is a traceback."""
     return isinstance(_object, TracebackType)
 
 
 def isframe(_object: object) -> bool:
-    """Return true if the object is a frame object"""
+    """Return true if the object is a frame object."""
     return isinstance(_object, FrameType)
 
 
 def iscode(_object: object) -> bool:
-    """Return true if the object is a code object"""
+    """Return true if the object is a code object."""
     return isinstance(_object, CodeType)
 
 
 def isbuiltin(_object: object) -> bool:
-    """Return true if the object is a built-in function or method"""
+    """Return true if the object is a built-in function or method."""
     return isinstance(_object, BuiltinFunctionType)
 
 
 def isroutine(_object: object) -> bool:
-    """Return true if the object is any kind of function or method"""
+    """Return true if the object is any kind of function or method."""
     return isinstance(_object, (BuiltinFunctionType, FunctionType, MethodType)) or ismethoddescriptor(_object)
 
 
 def isabstract(_object: object) -> bool:
-    """Return true if the object is an abstract base class (ABC)"""
+    """Return true if the object is an abstract base class (ABC)."""
     return bool(isinstance(_object, type) and _object.__flags__ & 1048576)  # type: ignore
 
 
 def isbetween(_lo: Union[float, int], _hi: Union[float, int], _num: Union[float, int]) -> bool:
-    """Test if a float/integer is between two other floats/integers
+    """Test if a float/integer is between two other floats/integers.
 
     >>> isbetween(2, 7, 5)
     True
@@ -401,21 +401,21 @@ def isbetween(_lo: Union[float, int], _hi: Union[float, int], _num: Union[float,
 
 
 def isdefined(_var_name: str) -> bool:
-    """Test if the named variable is defined in current scope"""
+    """Test if the named variable is defined in current scope."""
     if not isinstance(_var_name, str):
         raise Exception('isdefined() only accepts strings - isdefined(\'_var_name\')')
     return _var_name in globals() or _var_name in vars()
 
 
 def ismodloaded(_module: str) -> bool:
-    """Test if the named module is imported"""
+    """Test if the named module is imported."""
     if not isinstance(_module, str):
         raise Exception('ismodloaded() only accepts strings - ismodloaded(\'_module\')')
     return _module in modules.keys()
 
 
 def isfrozen() -> bool:
-    """Test if the modules are built into the interpreter (As seen in py2exe)"""
+    """Test if the modules are built into the interpreter (As seen in py2exe)."""
     _tmp: object = None
     try:
         _tmp = __import__(r'sys')
@@ -427,7 +427,7 @@ def isfrozen() -> bool:
 
 
 def ismodfrozen(module_name: str) -> bool:
-    """Test if the specified module is frozen (built into the interpreter)"""
+    """Test if the specified module is frozen (built into the interpreter)."""
     _tmp: object = None
     try:
         _tmp = __import__(module_name)
@@ -439,7 +439,7 @@ def ismodfrozen(module_name: str) -> bool:
 
 
 def words_in_str(_text: str, _wordlist: list) -> bool:
-    """Test if any of the listed words are in the given string
+    """Test if any of the listed words are in the given string.
 
     >>> words_in_str('This is a test.', ['test'])
     True
@@ -452,7 +452,7 @@ def words_in_str(_text: str, _wordlist: list) -> bool:
 
 
 def words_not_in_str(_text: str, _wordlist: list) -> bool:
-    """Test if any of the listed words are not in the given string
+    """Test if any of the listed words are not in the given string.
 
     >>> words_not_in_str('This is a test.', ['exam', 'test'])
     True
@@ -465,7 +465,7 @@ def words_not_in_str(_text: str, _wordlist: list) -> bool:
 
 
 def isexe(fpath: str) -> bool:
-    """Test if the specified file is executable
+    """Test if the specified file is executable.
 
     >>> isexe('/bin/sh')
     True
@@ -480,7 +480,7 @@ def isexe(fpath: str) -> bool:
 
 
 def isinpath(program: str) -> bool:
-    """Test if the specified application is in the system PATH
+    """Test if the specified application is in the system `PATH`.
 
     >>> isinpath('sh')
     True
@@ -511,7 +511,7 @@ def isinpath(program: str) -> bool:
 
 
 def isvalidcode(_code: str) -> bool:
-    """Test if the given string is valid Python code
+    """Test if the given string is valid Python code.
 
     >>> isvalidcode('print("True")')
     True
@@ -526,7 +526,7 @@ def isvalidcode(_code: str) -> bool:
 
 
 def isintuplelist(_tuple_list: list, _val: str) -> bool:
-    """Test if the given value is the first value in the list of tuples
+    """Test if the given value is the first value in the list of tuples.
 
     >>> isintuplelist([('test', 'value'), (1, 2), ('found', 'string')], 'found')
     True

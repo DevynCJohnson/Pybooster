@@ -3,10 +3,10 @@
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
 # EASY-INSTALL-ENTRY-SCRIPT: "pylint>=2.1.0","console_scripts","pylint"
-"""@brief Wrapper for Pylint2
+"""@brief Wrapper for Pylint2.
 
 @file pylint2
-@version 2019.06.20
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 """

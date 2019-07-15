@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Lightweight pure-Python neural network library
+"""@brief Lightweight pure-Python neural network library.
 
 @file neuralnet.py
 @package pybooster.neuralnet
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -75,7 +75,7 @@ __all__: list = [
 
 
 def flatten(_lst: list) -> Generator[list, None, None]:
-    """Flatten list of lists"""
+    """Flatten list of lists."""
     for _sublist in _lst:
         if isinstance(_sublist, list):
             for _sublist in flatten(_sublist):
@@ -85,7 +85,7 @@ def flatten(_lst: list) -> Generator[list, None, None]:
 
 
 def _indent(txt: str, chars: int) -> str:
-    """Indent the given code"""
+    """Indent the given code."""
     result: str = r''
     d: str = r' ' * chars
     for line in txt.split('\n'):
@@ -94,10 +94,10 @@ def _indent(txt: str, chars: int) -> str:
 
 
 class NeuroCode:  # pylint: disable=C0200,R0902
-    """Neurocode class"""
+    """Neurocode class."""
 
     def __init__(self, data: list, layers: list, iterations: int = 40000, rate: float = 0.2) -> None:
-        """Initialize Neurocode-learning
+        """Initialize Neurocode-learning.
 
         @param[in] data A list of lists of the input data
         @param[in] layers Specify the number of hidden layers in the network and the size of each layer. For example, `layers = [3, 4]` makes two hidden layers, the first with 3 nodes and the second with 4 nodes. By default, one hidden layer is used with a size proportionate to the size of the input array
@@ -137,7 +137,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                     self.changes[layer][node] = [0] * _prev_size
 
     def train(self) -> Tuple[float, int]:  # noqa: C901
-        """Neurocode training (core function)"""
+        """Neurocode training (core function)."""
         error: float = 1.0
         used_iterations: int = 0
         for i in range(self.iterations):
@@ -166,7 +166,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         return (error, used_iterations)
 
     def run(self, _input: List[Any]) -> list:
-        """Forward Propagation; Execute neuralnet"""
+        """Forward Propagation; Execute neuralnet."""
         output = self.outputs[0] = _input  # Set output state of input layer
         for _layer in range(1, self.outputlayer + 1):
             for _node in range(self.sizes[_layer]):
@@ -180,7 +180,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         return output
 
     def _calculate_deltas(self, target: list) -> None:
-        """Backward Propagation"""
+        """Backward Propagation."""
         layer: int = self.outputlayer
         while layer >= 0:
             for node in range(self.sizes[layer]):
@@ -197,7 +197,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
             layer -= 1
 
     def bestof(self, generations: int = 16) -> bytes:
-        """Return the best neuralnet from the given amount produced as a byte string"""
+        """Return the best neuralnet from the given amount produced as a byte string."""
         rounds: int = generations
         best_result: float = 1.0  # Store the best error-rate
         best_neuralnet: bytes = b''
@@ -210,36 +210,36 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         return best_neuralnet
 
     def dump(self) -> bytes:
-        """Pickle neural-network and compress it using Zlib"""
+        """Pickle neural-network and compress it using Zlib."""
         return b64encode(compress(dumps(self), 9))
 
     def writedump(self, _filename: str) -> None:
-        """Pickle neural-network, compress it using Zlib, and then write it to a file"""
+        """Pickle neural-network, compress it using Zlib, and then write it to a file."""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
             _file.write(str(b64encode(compress(dumps(self), 9), altchars=br'-_'), encoding=r'utf-8'))
 
     def neurocode2pythonfile(self, _filename: str, _neuroname: str) -> None:
-        """Write the Neurocode to a file as Python code"""
+        """Write the Neurocode to a file as Python code."""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_python_function(_neuroname))
 
     def neurocode2cfile(self, _filename: str, _neuroname: str) -> None:
-        """Write the Neurocode to a file as C code"""
+        """Write the Neurocode to a file as C code."""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_c_function(_neuroname))
 
     def neurocode2javafile(self, _filename: str, _neuroname: str) -> None:
-        """Write the Neurocode to a file as Java code"""
+        """Write the Neurocode to a file as Java code."""
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _code:
             _code.write(self.to_java_method(_neuroname))
 
     @staticmethod
     def load(_str: str) -> object:
-        """Load the given compressed+pickled neural-network"""
+        """Load the given compressed+pickled neural-network."""
         return loads(decompress(b64decode(bytes(_str, encoding=r'utf-8'), altchars=br'-_')))
 
     def to_python_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:
-        """Convert the neural-network to Python code"""
+        """Convert the neural-network to Python code."""
         fn: str = r'def {fnname}(i):\n'.format(fnname=fnname)
         for _layer in range(1, self.outputlayer + 1):
             fn += '    o = [\n' if _layer < self.outputlayer else '    return [\n'
@@ -257,7 +257,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         return _indent(fn, indent)
 
     def to_java_method(self, fnname: str = r'nn_run', static: bool = False, scope: str = r'protected', indent: int = 4) -> str:
-        """Convert the neural-network to Java code"""
+        """Convert the neural-network to Java code."""
         fn: str = scope + (r' static ' if static else r' ') + r'double[] {fnname}(double[] i)'.format(fnname=fnname) + '{\n'
         fn += '    double[] o;\n'
         for _layer in range(1, self.outputlayer + 1):
@@ -277,7 +277,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         return _indent(fn, indent)
 
     def to_c_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:  # pylint: disable=R0914
-        """Convert the neural-network to C code"""
+        """Convert the neural-network to C code."""
         terms: Dict[str, str] = {}
         lterms: List[str] = []
         for k in range(self.sizes[0]):

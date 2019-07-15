@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Fractal Functions
+"""@brief Fractal Functions.
 
 @file fractals.py
 @package pybooster.fractals
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,7 +33,7 @@ try:  # AutoJIT from Numba
     from numba import autojit
 except ImportError:
     def autojit(_func: object):
-        """Provide a dummy decorator for systems lacking Numba"""
+        """Provide a dummy decorator for systems lacking Numba."""
         return _func
 
 
@@ -52,7 +52,7 @@ __all__: list = [
 
 @autojit
 def mandelbrot_max_iters(_real: float, _imag: float, max_iters: int = 1024) -> int:
-    """Given the real and imaginary parts of a complex number, determine if it is a candidate for membership in the Mandelbrot set given a fixed number of iterations"""
+    """Given the real and imaginary parts of a complex number, determine if it is a candidate for membership in the Mandelbrot set given a fixed number of iterations."""
     _comp: complex = complex(_real, _imag)
     _z: complex = 0.0j
     for i in range(0, max_iters, 1):
@@ -64,7 +64,7 @@ def mandelbrot_max_iters(_real: float, _imag: float, max_iters: int = 1024) -> i
 
 @autojit
 def multibrot_max_iters(_real: float, _imag: float, _expo: float = 2, max_iters: int = 1024) -> int:
-    """Given the real and imaginary parts of a complex number, determine if it is a candidate for membership in the Multibrot set given a fixed number of iterations"""
+    """Given the real and imaginary parts of a complex number, determine if it is a candidate for membership in the Multibrot set given a fixed number of iterations."""
     _comp: complex = complex(_real, _imag)
     _z: complex = 0.0j
     for i in range(max_iters):
@@ -79,7 +79,7 @@ def multibrot_max_iters(_real: float, _imag: float, _expo: float = 2, max_iters:
 
 @autojit
 def create_mandelbrot_fractal(image: object, min_x: float = -2.0, max_x: float = 1.0, min_y: float = -1.0, max_y: float = 1.0, iters: int = 1024) -> None:  # pylint: disable=R0913
-    """Create a Mandelbrot fractal using the specified parameters and Numpy array"""
+    """Create a Mandelbrot fractal using the specified parameters and Numpy array."""
     height: int = image.shape[0]  # type: ignore
     width: int = image.shape[1]  # type: ignore
     pixel_size_x: float = (max_x - min_x) / width
@@ -93,7 +93,7 @@ def create_mandelbrot_fractal(image: object, min_x: float = -2.0, max_x: float =
 
 @autojit
 def create_multibrot_fractal(image: object, min_x: float = -2.0, max_x: float = 1.0, min_y: float = -1.0, max_y: float = 1.0, _expo: float = 2, iters: int = 1024) -> None:  # pylint: disable=R0913
-    """Create a Multibrot fractal using the specified parameters and Numpy array"""
+    """Create a Multibrot fractal using the specified parameters and Numpy array."""
     height: int = image.shape[0]  # type: ignore
     width: int = image.shape[1]  # type: ignore
     pixel_size_x: float = (max_x - min_x) / width

@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Compression algorithms and interfaces
+"""@brief Compression algorithms and interfaces.
 
 @file compress.py
 @package pybooster.compress
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -78,36 +78,36 @@ __all__: list = [
 
 
 def getgzip(_filename: str) -> str:
-    """Open and get the contents of a gzip file"""
+    """Open and get the contents of a gzip file."""
     with gzip.open(_filename, mode=r'rb') as _file:
         return bytes.decode(_file.read())
 
 
 def write2gzip(_filename: str, _write: str) -> None:
-    """Compress data using gzip and write it to a file"""
+    """Compress data using gzip and write it to a file."""
     with gzip.open(_filename, mode=r'wb') as _file:
         _file.write(str(_write).encode(r'utf-8'))
 
 
 def creategzipfile(_filename: str) -> None:
-    """Gzip an existing file"""
+    """Gzip an existing file."""
     with gzip.open(_filename, mode=r'rb') as _filein:
         with gzip.open(_filename + r'.gz', mode=r'wb') as _fileout:
             _fileout.writelines(_filein)
 
 
 def gzipvar(data: str, _encoding: str = r'utf-8') -> bytes:
-    """Gzip the contents of a variable"""
+    """Gzip the contents of a variable."""
     return gzip.compress(str(data).encode(_encoding))
 
 
 def getgzipvar(data: bytes) -> str:
-    """Get the contents of a Gzipped variable"""
+    """Get the contents of a Gzipped variable."""
     return bytes.decode(gzip.decompress(data))
 
 
 def getgzip_threaded(_filename: str, _queue_depth: int, _queue: Queue) -> None:
-    """Open and get the contents of a gzip file (thread-compatible)"""
+    """Open and get the contents of a gzip file (thread-compatible)."""
     with gzip.open(_filename, mode=r'rb') as _file:
         while True:
             _data = bytes.decode(_file.readline()).strip()
@@ -122,31 +122,31 @@ def getgzip_threaded(_filename: str, _queue_depth: int, _queue: Queue) -> None:
 
 
 def getbzip(_filename: str) -> str:
-    """Open and get the contents of a bzip2 file"""
+    """Open and get the contents of a bzip2 file."""
     with bz2.open(_filename, mode=r'rb') as _file:
         return bytes.decode(_file.read())
 
 
 def write2bzip(_filename: str, _write: str) -> None:
-    """Compress data using bzip2 and write it to a file"""
+    """Compress data using bzip2 and write it to a file."""
     with bz2.open(_filename, mode=r'wb', compresslevel=9) as _file:
         _file.write(str(_write).encode(r'utf-8'))
 
 
 def createbzipfile(_filename: str) -> None:
-    """Bzip an existing file"""
+    """Bzip an existing file."""
     with bz2.open(_filename, mode=r'rb') as _filein:
         with bz2.open(_filename + r'.bz', mode=r'wb', compresslevel=9) as _fileout:
             _fileout.writelines(_filein)
 
 
 def bzipvar(data: str, _encoding: str = r'utf-8') -> bytes:
-    """Bzip the contents of a variable"""
+    """Bzip the contents of a variable."""
     return bz2.compress(str(data).encode(_encoding), compresslevel=9)
 
 
 def getbzipvar(data: bytes) -> str:
-    """Get the contents of a Bzipped variable"""
+    """Get the contents of a Bzipped variable."""
     return bytes.decode(bz2.decompress(data))
 
 
@@ -154,31 +154,31 @@ def getbzipvar(data: bytes) -> str:
 
 
 def getlzma(_filename: str) -> str:
-    """Open and get the contents of a LZMA file"""
+    """Open and get the contents of a LZMA file."""
     with lzma.open(_filename, mode=r'rb') as _file:
         return bytes.decode(_file.read())
 
 
 def write2lzma(_filename: str, _write: str) -> None:
-    """Compress data using LZMA and write it to a file"""
+    """Compress data using LZMA and write it to a file."""
     with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
 
 
 def createlzmafile(_filename: str) -> None:
-    """LZMA an existing file"""
+    """LZMA an existing file."""
     with lzma.open(_filename, mode=r'rb') as _filein:
         with lzma.open(_filename + r'.lzma', mode=r'wb', format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}]) as _fileout:
             _fileout.writelines(_filein)
 
 
 def lzmavar(data: str, _encoding: str = r'utf-8') -> bytes:
-    """LZMA the contents of a variable"""
+    """LZMA the contents of a variable."""
     return lzma.compress(str(data).encode(_encoding), format=lzma.FORMAT_ALONE, filters=[{r'id': lzma.FILTER_LZMA1}])
 
 
 def getlzmavar(data: bytes) -> str:
-    """Get the contents of a LZMA variable"""
+    """Get the contents of a LZMA variable."""
     return bytes.decode(lzma.decompress(data))
 
 
@@ -186,31 +186,31 @@ def getlzmavar(data: bytes) -> str:
 
 
 def getxz(_filename: str) -> str:
-    """Open and get the contents of a XZ file"""
+    """Open and get the contents of a XZ file."""
     with lzma.open(_filename, mode=r'rb') as _file:
         return bytes.decode(_file.read())
 
 
 def write2xz(_filename: str, _write: str) -> None:
-    """Compress data using XZ and write it to a file"""
+    """Compress data using XZ and write it to a file."""
     with lzma.open(_filename, mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _file:
         _file.write(str(_write).encode(r'utf-8'))
 
 
 def createxzfile(_filename: str) -> None:
-    """XZ an existing file"""
+    """XZ an existing file."""
     with lzma.open(_filename, mode=r'rb') as _filein:
         with lzma.open(_filename + r'.xz', mode=r'wb', format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}]) as _fileout:
             _fileout.writelines(_filein)
 
 
 def xzvar(data: str, _encoding: str = r'utf-8') -> bytes:
-    """XZ the contents of a variable"""
+    """XZ the contents of a variable."""
     return lzma.compress(str(data).encode(_encoding), format=lzma.FORMAT_XZ, filters=[{r'id': lzma.FILTER_LZMA2}])
 
 
 def getxzvar(data: bytes) -> str:
-    """Get the contents of a XZ variable"""
+    """Get the contents of a XZ variable."""
     return bytes.decode(lzma.decompress(data))
 
 
@@ -218,13 +218,13 @@ def getxzvar(data: bytes) -> str:
 
 
 def extracttar(_filename: str) -> None:
-    """Extract files from a Tar file in the directory"""
+    """Extract files from a Tar file in the directory."""
     with tarfile.open(_filename, mode=r'r') as _file:
         _file.extractall()
 
 
 def createtarfile(_filenames: list, _tarfile: str) -> None:
-    """Tar existing files into the specified Tar-file"""
+    """Tar existing files into the specified Tar-file."""
     with tarfile.open(_tarfile, mode=r'w') as _file:
         for _files in _filenames:
             _file.add(_files)
@@ -234,10 +234,10 @@ def createtarfile(_filenames: list, _tarfile: str) -> None:
 
 
 def data2str(_data: object) -> str:
-    """Pickle and compress (using Zlib) data and then encode the data in base64"""
+    """Pickle and compress (using Zlib) data and then encode the data in base64."""
     return str(b64encode(zlib.compress(dumps(_data), level=9), altchars=br'-_'), encoding=r'utf-8')
 
 
 def str2data(_data: str) -> bytes:
-    """Load the given compressed+pickled base64 data"""
+    """Load the given compressed+pickled base64 data."""
     return loads(zlib.decompress(b64decode(bytes(_data, encoding=r'utf-8'), altchars=br'-_')))

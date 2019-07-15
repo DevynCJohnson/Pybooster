@@ -2,11 +2,11 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief PIP Extras
+"""@brief PIP Extras.
 
 @file pipx.py
 @package pybooster.pipx
-@version 2019.03.28
+@version 2019.07.14
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,7 @@ along with this softwa
 
 from subprocess import getoutput  # nosec
 
-from pip import main as pipmain
+from pip._internal import main as pipmain
 
 try:  # Regular Expression module
     from regex import MULTILINE, sub
@@ -52,45 +52,45 @@ __all__: list = [
 
 
 def install(package: str) -> int:
-    """Install PIP package"""
+    """Install PIP package."""
     return pipmain([r'install', package])
 
 
 def uninstall(package: str) -> int:
-    """Uninstall a PIP package"""
+    """Uninstall a PIP package."""
     return pipmain([r'uninstall', package])
 
 
 def listinstalled() -> str:
-    """List installed PIP packages"""
+    """List installed PIP packages."""
     return getoutput(r'pip list')
 
 
 def listoutdated() -> str:
-    """List outdated PIP packages"""
+    """List outdated PIP packages."""
     results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -o'), flags=MULTILINE)
     results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=MULTILINE)
     return results
 
 
 def listcurrent() -> str:
-    """List up-to-dated PIP packages"""
+    """List up-to-dated PIP packages."""
     results = sub(r'Could not(.+)\n', r'', getoutput(r'pip list -u'), flags=MULTILINE)
     results = sub(r'Some externally hosted files(.+)\n', r'', results, flags=MULTILINE)
     return results
 
 
 def numpkg() -> int:
-    """Return the number of installed PIP packages"""
+    """Return the number of installed PIP packages."""
     results = getoutput(r'pip list')
     return len(results.split('\n'))
 
 
 def pkginfo(package: str) -> str:
-    """Display package info"""
+    """Display package info."""
     return getoutput(r'pip show ' + package)
 
 
 def pkgsearch(keyword: str) -> str:
-    """Search the database by keyword"""
+    """Search the database by keyword."""
     return getoutput(r'pip search ' + keyword)
