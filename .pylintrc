@@ -1,47 +1,3 @@
-[MASTER]
-extension-pkg-whitelist=
-ignore-patterns=
-ignore=.bzr,.cvs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,CVS
-jobs=1
-load-plugins=
-persistent=no
-suggestion-mode=yes
-unsafe-load-any-extension=no
-
-[MESSAGES CONTROL]
-; Show warnings with the listed confidence levels
-; Leave empty to show all
-; Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
-confidence=
-disable=C0301,I0011
-enable=c-extension-no-member
-
-[REPORTS]
-evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
-msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
-output-format=text
-reports=yes
-score=yes
-
-[LOGGING]
-logging-modules=logging
-
-[SIMILARITIES]
-ignore-comments=yes
-ignore-docstrings=yes
-ignore-imports=no
-min-similarity-lines=4
-
-[SPELLING]
-max-spelling-suggestions=0
-spelling-dict=
-spelling-ignore-words=
-spelling-private-dict-file=
-spelling-store-unknown-words=no
-
-[MISCELLANEOUS]
-notes=DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX
-
 [BASIC]
 argument-naming-style=snake_case
 attr-naming-style=snake_case
@@ -61,6 +17,12 @@ no-docstring-rgx=^_
 property-classes=abc.abstractproperty
 variable-naming-style=snake_case
 
+[CLASSES]
+defining-attr-methods=__init__,__new__,setUp
+exclude-protected=_asdict,_fields,_replace,_source,_make
+valid-classmethod-first-arg=cls
+valid-metaclass-classmethod-first-arg=mcs
+
 [DESIGN]
 max-args=5
 max-attributes=7
@@ -73,6 +35,9 @@ max-returns=16
 max-statements=50
 min-public-methods=2
 
+[EXCEPTIONS]
+overgeneral-exceptions=Exception
+
 [FORMAT]
 expected-line-ending-format=LF
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
@@ -84,9 +49,63 @@ no-space-check=dict-separator,trailing-comma
 single-line-class-stmt=no
 single-line-if-stmt=no
 
+[IMPORTS]
+allow-wildcard-with-all=no
+analyse-fallback-blocks=no
+deprecated-modules=optparse,tkinter.tix
+ext-import-graph=
+import-graph=
+int-import-graph=
+known-standard-library=
+known-third-party=enchant
+
+[LOGGING]
+logging-modules=logging
+
+[MASTER]
+extension-pkg-whitelist=
+ignore-patterns=
+ignore=.bzr,.cvs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,CVS
+jobs=1
+load-plugins=
+persistent=no
+suggestion-mode=yes
+unsafe-load-any-extension=no
+
+[MESSAGES CONTROL]
+; Show warnings with the listed confidence levels
+; Leave empty to show all
+; Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
+confidence=
+disable=C0301,I0011
+enable=c-extension-no-member
+
+[MISCELLANEOUS]
+notes=DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX
+
 [REFACTORING]
 max-nested-blocks=5
 never-returning-functions=optparse.Values,sys.exit,sysexit
+
+[REPORTS]
+evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+output-format=text
+reports=yes
+score=yes
+
+[SIMILARITIES]
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=no
+min-similarity-lines=4
+
+[SPELLING]
+max-spelling-suggestions=0
+spelling-dict=
+spelling-ignore-words=
+spelling-private-dict-file=
+spelling-store-unknown-words=no
 
 [TYPECHECK]
 contextmanager-decorators=contextlib.contextmanager
@@ -98,25 +117,6 @@ ignored-modules=
 missing-member-hint-distance=1
 missing-member-hint=yes
 missing-member-max-choices=3
-
-[CLASSES]
-defining-attr-methods=__init__,__new__,setUp
-exclude-protected=_asdict,_fields,_replace,_source,_make
-valid-classmethod-first-arg=cls
-valid-metaclass-classmethod-first-arg=mcs
-
-[EXCEPTIONS]
-overgeneral-exceptions=Exception
-
-[IMPORTS]
-allow-wildcard-with-all=no
-analyse-fallback-blocks=no
-deprecated-modules=optparse,tkinter.tix
-ext-import-graph=
-import-graph=
-int-import-graph=
-known-standard-library=
-known-third-party=enchant
 
 [VARIABLES]
 additional-builtins=

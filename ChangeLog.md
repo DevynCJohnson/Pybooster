@@ -1,3 +1,24 @@
+# 2019-07-14  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **alphabetize_lines:**  Optimized `alphabetize_string` & improved docstring convention
+- **Geany:**  Fixed some of the colorschemes & tags for Geany
+- **PyBooster:**  Verified & improved standards-compliance in all Python files against many Flake8 & PEP tests
+- **shanalysis:**  Improved the hashpling testing
+
+# 2019-07-10  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **boolean.py:**  Fixed some bugs
+- **makefile:**  Added `uncalled` to `LIST_PIP_DEPS`
+- **pyanalysis:**  Remove the no longer valid Flake8 parameter `--valid-encodings`
+- **strtools.py:**  Fixed some bugs
+- **XCompose:**  Applied some tweaks & added characters
+
+# 2019-07-07  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Added keybindings & more tags for Geany
+- **profile:**  Fixed some bugs
+- **snippets.conf:**  Added more snippets
+
 # 2019-07-06  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **cleansystem:**  Fixed a bug associated with repairing file-permissions
