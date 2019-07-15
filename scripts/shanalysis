@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a shell script with various syntax checkers
 #' @file shanalysis
-#' @version 2019.05.04
+#' @version 2019.07.14
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -46,8 +46,8 @@ for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
     FILE_TYPE='UNKNOWN'
     echo "$file" | grep -E -e '.*(bashrc|profile|*shrc)' > /dev/null && FILE_TYPE='SHELL'
-    head -1 "$file" | grep -E -e '#!/bin/(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && FILE_TYPE='SHELL'
-    head -1 "$file" | grep -E -e '#!/usr/bin/(awk|bwk|gawk|jawk|mawk|nawk).*' > /dev/null && FILE_TYPE='AWK'
+    head -1 "$file" | grep -E -e '#!/(bin/|bin/env |usr/bin/env )(ash|bash|busybox|csh|dash|ksh|lksh|mksh|rbash|rzsh|sash|sh|tcsh|zsh).*' > /dev/null && FILE_TYPE='SHELL'
+    head -1 "$file" | grep -E -e '#!/(bin/|bin/env |usr/bin/env )(awk|bwk|gawk|jawk|mawk|nawk).*' > /dev/null && FILE_TYPE='AWK'
 
     if [ "$FILE_TYPE" = 'SHELL' ]; then  # Check shell scripts
 
