@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning source code and providing statistics and listing some syntax issues or bugs
 #' @file code-analysis
-#' @version 2019.03.28
+#' @version 2019.07.21
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -26,7 +26,6 @@ export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
 export PYTHONIOENCODING='utf8'
-[ -z "${FirstLoopPass:-}" ] && FirstLoopPass=0
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -41,83 +40,218 @@ else
 fi
 
 
+LICENSECHECK_EXISTS=0
+if [ -x "$(command -v licensecheck)" ]; then
+    LICENSECHECK_EXISTS=1
+else
+    printf 'licensecheck: command not found!\n' >&2
+fi
+
+CLOC_EXISTS=0
+if [ -x "$(command -v cloc)" ]; then
+    CLOC_EXISTS=1
+else
+    printf 'cloc: command not found!\n' >&2
+fi
+
+WC_EXISTS=0
+if [ -n "$(command -v wc)" ]; then
+    WC_EXISTS=1
+else
+    printf 'wc: command not found!\n' >&2
+fi
+
+FILE_EXISTS=0
+if [ -n "$(command -v file)" ]; then
+    FILE_EXISTS=1
+else
+    printf 'file: command not found!\n' >&2
+fi
+
+CHARDET3_EXISTS=0
+if [ -x "$(command -v chardet3)" ]; then
+    CHARDET3_EXISTS=1
+else
+    printf 'chardet3: command not found!\n' >&2
+fi
+
+CHARDETECT_EXISTS=0
+if [ -x "$(command -v chardetect)" ]; then
+    CHARDETECT_EXISTS=1
+else
+    printf 'chardetect: command not found!\n' >&2
+fi
+
+UCHARDET_EXISTS=0
+if [ -x "$(command -v uchardet)" ]; then
+    UCHARDET_EXISTS=1
+else
+    printf 'uchardet: command not found!\n' >&2
+fi
+
+ENCGUESS_EXISTS=0
+if [ -x "$(command -v encguess)" ]; then
+    ENCGUESS_EXISTS=1
+else
+    printf 'encguess: command not found!\n' >&2
+fi
+
+ISUTF8_EXISTS=0
+if [ -x "$(command -v isutf8)" ]; then
+    ISUTF8_EXISTS=1
+else
+    printf 'isutf8: command not found!\n' >&2
+fi
+
+PATHCHK_EXISTS=0
+if [ -x "$(command -v pathchk)" ]; then
+    PATHCHK_EXISTS=1
+else
+    printf 'pathchk: command not found!\n' >&2
+fi
+
+DOSCHK_EXISTS=0
+if [ -x "$(command -v doschk)" ]; then
+    DOSCHK_EXISTS=1
+else
+    printf 'doschk: command not found!\n' >&2
+fi
+
+NAMECHECK_EXISTS=0
+if [ -x "$(command -v namecheck)" ]; then
+    NAMECHECK_EXISTS=1
+else
+    printf 'namecheck: command not found!\n' >&2
+fi
+
+
+# FUNCTIONS #
+
+
+#' Determine the file's encoding
+file_encoding_func() {
+    if [ "$FILE_EXISTS" -eq 1 ]; then
+        file -b -i "${1}"
+        file -b "${1}" | awk_cmd '{ gsub(/^a /, ""); gsub(/^an /, ""); if (NF > 0) { print; } }'
+    elif [ "$CHARDET3_EXISTS" -eq 1 ]; then
+        chardet3 "${1}"
+    elif [ "$CHARDETECT_EXISTS" -eq 1 ]; then
+        chardetect "${1}"
+    elif [ "$UCHARDET_EXISTS" -eq 1 ]; then
+        uchardet "${1}"
+    elif [ "$ENCGUESS_EXISTS" -eq 1 ]; then
+        encguess "${1}"
+    fi
+}
+
+
+#' Check if the file contains a license header
+licensecheck_func() {
+    if [ "$LICENSECHECK_EXISTS" -eq 1 ]; then
+        printf '======  *LICENSE CHECK*  ======\n'
+        licensecheck --copyright --deb-fmt --lines 30 --machine --tail 0 "${1}" | noblanks
+    fi
+}
+
+
+#' Count the file's lines of code
+cloc_func() {
+    if [ "$CLOC_EXISTS" -eq 1 ]; then
+        cloc --by-file --by-percent cmb --skip-uniqueness --quiet "${1}" | awk_cmd 'NR > 2 && NF'
+    fi
+}
+
+
+#' Count the file's lines of code
+wc_func() {
+    if [ "$WC_EXISTS" -eq 1 ]; then
+        printf 'Lines\tWords\tChars\tBytes\tMax-Line-Len\tFilename\n' && wc --bytes --chars --lines --max-line-length --words "${1}" | awk_cmd '{ gsub(/  /, " "); gsub(/  /, " "); gsub(/ /, "\t"); gsub(/\t\.\//, "\t\t\x2e\x2f"); gsub(/\t\//, "\t\t\x2f"); gsub(/^\t/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Determine if the file is UTF8-encoded
+isutf8_func() {
+    if [ "$ISUTF8_EXISTS" -eq 1 ]; then
+        printf '======  *ISUTF8*  ======\n'
+        isutf8 -l "${1}"
+    fi
+}
+
+
+#' Determine if the file's path is valid and portable
+pathchk_func() {
+    if [ "$PATHCHK_EXISTS" -eq 1 ]; then
+        printf '======  *PATHCHK*  ======\n'
+        pathchk --portability "${1}"
+    fi
+}
+
+
+#' Determine if the file's path is SYSV and DOS compatible
+doschk_func() {
+    if [ "$DOSCHK_EXISTS" -eq 1 ]; then
+        printf '======  *DOSCHK*  ======\n'
+        echo "${1}" | doschk
+    fi
+}
+
+
+#' Determine if the project's name is already in use
+namecheck_func() {
+    if [ "$NAMECHECK_EXISTS" -eq 1 ] && [ -n "${NAMECHECK:-}" ]; then
+        printf '======  *NAMECHECK*  ======\n'
+        namecheck "${1}"
+    fi
+}
+
+
 # MAIN #
+
+
+trap 'rm -f /tmp/*.codeanalysis.tmp || true' INT
 
 
 for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
-    if [ -x "$(command -v licensecheck)" ]; then
-        printf '======  *LICENSE CHECK*  ======\n'
-        licensecheck --copyright --deb-fmt --lines 30 --machine --tail 0 "$file" | noblanks
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'licensecheck: command not found!\n' >&2
-    fi
+    LICENSECHECK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    LS_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    ENCODING_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    CLOC_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    WC_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    ISUTF8_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PATHCHK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    DOSCHK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    NAMECHECK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+
+    licensecheck_func "$file" > "${LICENSECHECK_BUFFER}" &
+    ls -a -b -F -h -l "$file" > "${LS_BUFFER}" &
+    file_encoding_func "$file" > "${ENCODING_BUFFER}" &
+    cloc_func "$file" > "${CLOC_BUFFER}" &
+    wc_func "$file" > "${WC_BUFFER}" &
+    isutf8_func "$file" > "${ISUTF8_BUFFER}" &
+    pathchk_func "$file" > "${PATHCHK_BUFFER}" &
+    doschk_func "$file" > "${DOSCHK_BUFFER}" &
+    namecheck_func "$file" > "${NAMECHECK_BUFFER}" &
+
+    wait
 
     printf '======  *STATISTICS & FILE INFO*  ======\n'
-    if [ "$FirstLoopPass" -eq 0 ]; then
-        [ ! -x "$(command -v cloc)" ] && printf 'cloc: command not found!\n' >&2
-        [ -z "$(command -v wc)" ] && printf 'wc: command not found!\n' >&2
-        if [ -z "$(command -v file)" ] && [ ! -x "$(command -v chardet3)" ] && [ ! -x "$(command -v chardetect)" ] && [ ! -x "$(command -v uchardet)" ] && [ ! -x "$(command -v encguess)" ]; then
-            if [ -z "$(command -v file)" ]; then
-                printf 'file: command not found!\n' >&2
-            elif [ ! -x "$(command -v chardet3)" ]; then
-                printf 'chardet3: command not found!\n' >&2
-            elif [ ! -x "$(command -v chardet3)" ] && [ ! -x "$(command -v chardetect)" ]; then
-                printf 'chardetect: command not found!\n' >&2
-            elif [ ! -x "$(command -v uchardet)" ]; then
-                printf 'uchardet: command not found!\n' >&2
-            elif [ ! -x "$(command -v encguess)" ]; then
-                printf 'encguess: command not found!\n' >&2
-            fi
-        fi
-    fi
-    ls -a -b -F -h -l "$file"
-    if [ -n "$(command -v file)" ]; then
-        file -b -i "$file"
-        file -b "$file" | awk_cmd '{ gsub(/^a /, ""); gsub(/^an /, ""); if (NF > 0) { print; } }'
-    elif [ -x "$(command -v chardet3)" ]; then
-        chardet3 "$file"
-    elif [ -x "$(command -v chardetect)" ]; then
-        chardetect "$file"
-    elif [ -x "$(command -v uchardet)" ]; then
-        uchardet "$file"
-    elif [ -x "$(command -v encguess)" ]; then
-        encguess "$file"
-    fi
-    [ -x "$(command -v cloc)" ] && cloc --by-file --by-percent cmb --skip-uniqueness --quiet "$file" | awk_cmd 'NR > 2 && NF'
-    [ -n "$(command -v wc)" ] && printf 'Lines\tWords\tChars\tBytes\tMax-Line-Len\tFilename\n' && wc --bytes --chars --lines --max-line-length --words "$file" | awk_cmd '{ gsub(/  /, " "); gsub(/  /, " "); gsub(/ /, "\t"); gsub(/\t\.\//, "\t\t\x2e\x2f"); gsub(/\t\//, "\t\t\x2f"); gsub(/^\t/, ""); if (NF > 0) { print; } }'
-
-    if [ -x "$(command -v isutf8)" ]; then
-        printf '======  *ISUTF8*  ======\n'
-        isutf8 -l "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'isutf8: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v pathchk)" ]; then
-        printf '======  *PATHCHK*  ======\n'
-        pathchk --portability "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pathchk: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v doschk)" ]; then
-        printf '======  *DOSCHK*  ======\n'
-        echo "$file" | doschk
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'doschk: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v namecheck)" ]; then
-        if [ -n "${NAMECHECK:-}" ]; then
-            printf '======  *NAMECHECK*  ======\n'
-            namecheck "$file"
-        fi
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'namecheck: command not found!\n' >&2
-    fi
-
-    FirstLoopPass=1
+    printf "%s\\n" "$(cat < "${LICENSECHECK_BUFFER}")"
+    printf "%s\\n" "$(cat < "${LS_BUFFER}")"
+    printf "%s\\n" "$(cat < "${ENCODING_BUFFER}")"
+    printf "%s\\n" "$(cat < "${CLOC_BUFFER}")"
+    printf "%s\\n" "$(cat < "${WC_BUFFER}")"
+    printf "%s\\n" "$(cat < "${ISUTF8_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PATHCHK_BUFFER}")"
+    printf "%s\\n" "$(cat < "${DOSCHK_BUFFER}")"
+    printf "%s\\n" "$(cat < "${NAMECHECK_BUFFER}")"
 
 done
+
+
+# CLEANUP #
+
+
+rm -f /tmp/*.codeanalysis.tmp || true
