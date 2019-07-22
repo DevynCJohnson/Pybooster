@@ -6744,12 +6744,19 @@
   <mime-type type="text/x-dockerfile">
     <comment>Dockerfile Build File</comment>
     <icon name="text-x-dockerfile"/>
+    <glob pattern="*.Dockerfile" weight="90"/>
+    <glob pattern="*.dockerfile" weight="90"/>
     <glob pattern="Dockerfile" weight="90"/>
+    <glob pattern="dockerfile" weight="90"/>
+    <glob pattern="Dockerfile*" weight="90"/>
+    <glob pattern="dockerfile*" weight="90"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
   <mime-type type="text/x-doxyfile">
     <comment>Doxygen File</comment>
     <icon name="applications-versioncontrol"/>
+    <glob pattern="*.doxyfile"/>
+    <glob pattern="*.Doxyfile"/>
     <glob pattern="Doxyfile"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
