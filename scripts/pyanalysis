@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.07.10
+#' @version 2019.07.21
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -34,7 +34,6 @@ export RADONFILESENCODING='UTF-8'
 # export LC_ALL='en_US.UTF-8'
 # export LC_CTYPE='en_US.UTF-8'
 
-export FirstLoopPass=0
 export RADON_MAX_CC=10
 EXTRA_FLAKE8_FLAGS=''
 
@@ -67,11 +66,15 @@ if [ -x "$(command -v bandit)" ]; then
     if [ -n "${bandit_file:-}" ]; then
         EXTRA_BANDIT_FLAGS="--configfile=${bandit_file}"
     fi
+else
+    printf 'bandit: command not found!\n' >&2
 fi
 
 FLAKE8_EXISTS=0
 if [ -x "$(command -v flake8)" ]; then
     FLAKE8_EXISTS=1
+else
+    printf 'flake8: command not found!\n' >&2
 fi
 
 PYFLAKES2_EXISTS=0
@@ -84,6 +87,20 @@ if [ -x "$(command -v pyflakes3)" ]; then
     PYFLAKES3_EXISTS=1
 fi
 
+if [ $PYFLAKES2_EXISTS -eq 0 ] && [ $PYFLAKES3_EXISTS -eq 0 ]; then
+    printf 'pyflakes: command not found!\n' >&2
+fi
+
+PYCODESTYLE_EXISTS=0
+PEP8_EXISTS=0
+if [ -x "$(command -v pycodestyle)" ]; then
+    PYCODESTYLE_EXISTS=1
+elif [ -x "$(command -v pep8)" ]; then
+    PEP8_EXISTS=1
+else
+    printf 'pycodestyle (formerly pep8): command not found!\n' >&2
+fi
+
 PYLINT2_EXISTS=0
 if [ -x "$(command -v pylint2)" ]; then
     PYLINT2_EXISTS=1
@@ -94,7 +111,7 @@ if [ -x "$(command -v pylint3)" ]; then
     PYLINT3_EXISTS=1
 fi
 
-if [ "$PYLINT2_EXISTS" -eq 1 ] | [ "$PYLINT3_EXISTS" -eq 1 ]; then
+if [ "$PYLINT2_EXISTS" -eq 1 ] || [ "$PYLINT3_EXISTS" -eq 1 ]; then
     # Find the PyLint configuration file
     if [ -r ./.pylintrc ]; then
         pylintrc_file=./.pylintrc
@@ -111,17 +128,54 @@ if [ "$PYLINT2_EXISTS" -eq 1 ] | [ "$PYLINT3_EXISTS" -eq 1 ]; then
     else
         pylintrc_file=''
     fi
+else
+    printf 'pylint: command not found!\n' >&2
+fi
+
+DIRECTIVE_CHECKER_EXISTS=0
+if [ -x "$(command -v py_directive_checker)" ]; then
+    DIRECTIVE_CHECKER_EXISTS=1
+else
+    printf 'py_directive_checker: command not found!\n' >&2
+fi
+
+PYDOCSTYLE_EXISTS=0
+PEP257_EXISTS=0
+if [ -x "$(command -v pydocstyle)" ]; then
+    PYCODESTYLE_EXISTS=1
+elif [ -x "$(command -v pep257)" ]; then
+    PEP8_EXISTS=1
+else
+    printf 'pydocstyle (formerly pep257): command not found!\n' >&2
 fi
 
 RADON_EXISTS=0
 if [ -x "$(command -v radon)" ]; then
     RADON_EXISTS=1
     EXTRA_FLAKE8_FLAGS="--radon-max-cc=${RADON_MAX_CC}"
+else
+    printf 'radon: command not found!\n' >&2
 fi
 
 VULTURE_EXISTS=0
 if [ -x "$(command -v vulture)" ]; then
     VULTURE_EXISTS=1
+else
+    printf 'vulture: command not found!\n' >&2
+fi
+
+UNCALLED_EXISTS=0
+if [ -x "$(command -v uncalled)" ]; then
+    UNCALLED_EXISTS=1
+else
+    printf 'uncalled: command not found!\n' >&2
+fi
+
+CODE_ANALYSIS_EXISTS=0
+if [ -x "$(command -v code-analysis)" ]; then
+    CODE_ANALYSIS_EXISTS=1
+else
+    printf 'code-analysis: command not found!\n' >&2
 fi
 
 
@@ -138,7 +192,157 @@ else
 fi
 
 
+# FUNCTIONS #
+
+
+#' Run Flake8
+flake8_func() {
+    if [ "$FLAKE8_EXISTS" -eq 1 ]; then
+        printf '======  *FLAKE8*  ======\n'
+        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run PyFlakes
+pyflakes_func() {
+    if [ "${1:-0}" -eq 1 ]; then
+        if [ "$PYFLAKES2_EXISTS" -eq 1 ]; then
+            printf '======  *PYFLAKES2*  ======\n'
+            pyflakes2 "$file" | noblanks
+        fi
+    else
+        if [ "$PYFLAKES3_EXISTS" -eq 1 ]; then
+            printf '======  *PYFLAKES*  ======\n'
+            pyflakes3 "$file" | noblanks
+        fi
+    fi
+}
+
+
+#' Run PyCodeStyle
+pycodestyle_func() {
+    if [ "$PYCODESTYLE_EXISTS" -eq 1 ]; then
+        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
+        pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk_cmd '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); if (NF > 0) { print; } }'
+    elif [ "$PEP8_EXISTS" -eq 1 ]; then
+        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
+        pep8 --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk_cmd '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run PyLint
+pylint_func() {
+    if [ "${1:-0}" -eq 1 ]; then
+        if [ "$PYLINT2_EXISTS" -eq 1 ]; then
+            printf '======  *PYLINT2*  ======\n'
+            if [ -n "${pylintrc_file:-}" ]; then
+                pylint2 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            else
+                pylint2 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^\*\*\*\*\*\*\*\*\*\*\*\*\* Module .*$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            fi
+        fi
+    else
+        if [ "$PYLINT3_EXISTS" -eq 1 ]; then
+            printf '======  *PYLINT*  ======\n'
+            if [ -n "${pylintrc_file:-}" ]; then
+                pylint3 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            else
+                pylint3 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^\*\*\*\*\*\*\*\*\*\*\*\*\* Module .*$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+            fi
+        fi
+    fi
+}
+
+
+#' Run Directive Checker
+directive_checker_func() {
+    if [ "$DIRECTIVE_CHECKER_EXISTS" -eq 1 ]; then
+        printf '======  *DIRECTIVE CHECKER*  ======\n'
+        py_directive_checker "$file" | noblanks
+    fi
+}
+
+
+#' Run Vulture
+vulture_func() {
+    if [ "$VULTURE_EXISTS" -eq 1 ]; then
+        printf '======  *VULTURE (DEAD CODE CHECKER)*  ======\n'
+        vulture --min-confidence=65 "$file" | noblanks
+    fi
+}
+
+
+#' Run Uncalled
+uncalled_func() {
+    if [ "$UNCALLED_EXISTS" -eq 1 ] && grep -F --no-messages --quiet '__main__' "${1}"; then
+        printf '======  *UNCALLED*  ======\n'
+        uncalled --how both "${1}"
+    fi
+}
+
+
+#' Run Bandit
+bandit_func() {
+    if [ "$BANDIT_EXISTS" -eq 1 ]; then
+        printf '======  *BANDIT (SECURITY ANALYZER)*  ======\n'
+        # shellcheck disable=SC2016
+        bandit --aggregate vuln "${EXTRA_BANDIT_FLAGS}" "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
+    fi
+}
+
+
+#' Run PyDocStyle
+pydocstyle_func() {
+    if [ "$PYDOCSTYLE_EXISTS" -eq 1 ]; then
+        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
+        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk_cmd '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    elif [ "$PEP257_EXISTS" -eq 1 ]; then
+        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
+        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk_cmd '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run PyDocTest
+pydoctest_func() {
+    if [ "${1:-0}" -eq 1 ]; then
+        printf '======  *PYTHON DOCTEST*  ======\n'
+        python2 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+    else
+        printf '======  *PYTHON DOCTEST*  ======\n'
+        python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run Radon
+radon_func() {
+    if [ "$RADON_EXISTS" -eq 1 ]; then
+        printf '======  *RADON REPORT*  ======\n'
+        radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average
+        radon mi "${1}" --max C --min A --multi --show
+        radon raw "${1}" --summary
+        radon hal "${1}"
+        # Show complexity data for each individual function
+        # radon hal "${1}" --functions
+    fi
+}
+
+
+#' Run Code-Analysis
+code_analysis_func() {
+    if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
+        code-analysis "$file"
+    fi
+}
+
+
 # MAIN #
+
+
+trap 'rm -f /tmp/*.pyanalysis.tmp || true' INT
 
 
 for file in "$@"; do
@@ -149,123 +353,51 @@ for file in "$@"; do
     ispy2=0
     echo "$hashpling" | grep -q -E -e '#!/.+python2.*' && ispy2=1
 
-    if [ "$FLAKE8_EXISTS" -eq 1 ]; then
-        printf '======  *FLAKE8*  ======\n'
-        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'flake8: command not found!\n' >&2
-    fi
+    FLAKE8_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PYFLAKES_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PYCODESTYLE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PYLINT_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    DIRECTIVE_CHECKER_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    VULTURE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    UNCALLED_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    BANDIT_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PYDOCSTYLE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    PYDOCTEST_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    RADON_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    CODE_ANALYSIS_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
 
-    if [ "$ispy2" -eq 1 ]; then
-        if [ "$PYFLAKES2_EXISTS" -eq 1 ]; then
-            printf '======  *PYFLAKES2*  ======\n'
-            pyflakes2 "$file" | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'pyflakes2: command not found!\n' >&2
-        fi
-    else
-        if [ "$PYFLAKES3_EXISTS" -eq 1 ]; then
-            printf '======  *PYFLAKES*  ======\n'
-            pyflakes3 "$file" | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'pyflakes3: command not found!\n' >&2
-        fi
-    fi
+    flake8_func > "${FLAKE8_BUFFER}" &
+    pyflakes_func "$ispy2" > "${PYFLAKES_BUFFER}" &
+    pycodestyle_func > "${PYCODESTYLE_BUFFER}" &
+    pylint_func "$ispy2" > "${PYLINT_BUFFER}" &
+    directive_checker_func > "${DIRECTIVE_CHECKER_BUFFER}" &
+    vulture_func > "${VULTURE_BUFFER}" &
+    uncalled_func "${1}" > "${UNCALLED_BUFFER}" &
+    bandit_func > "${BANDIT_BUFFER}" &
+    pydocstyle_func > "${PYDOCSTYLE_BUFFER}" &
+    pydoctest_func "$ispy2" > "${PYDOCTEST_BUFFER}" &
+    radon_func "${1}" > "${RADON_BUFFER}" &
+    code_analysis_func > "${CODE_ANALYSIS_BUFFER}" &
 
-    if [ -x "$(command -v pycodestyle)" ]; then
-        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
-        pycodestyle --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk_cmd '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); if (NF > 0) { print; } }'
-    elif [ -x "$(command -v pycodestyle)" ]; then
-        printf '======  *PYCODESTYLE (PEP8)*  ======\n'
-        pep8 --verbose --ignore='E501' --show-pep8 --show-source --statistics "$file" | awk_cmd '{ OFS=""; gsub(/^checking .+$/, ""); gsub(/^local configuration: in .+$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pycodestyle (formerly pep8): command not found!\n' >&2
-    fi
+    wait
 
-    if [ "$ispy2" -eq 1 ]; then
-        if [ "$PYLINT2_EXISTS" -eq 1 ]; then
-            printf '======  *PYLINT2*  ======\n'
-            if [ -n "${pylintrc_file:-}" ]; then
-                pylint2 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-            else
-                pylint2 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-            fi
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'pylint2: command not found!\n' >&2
-        fi
-    else
-        if [ "$PYLINT3_EXISTS" -eq 1 ]; then
-            printf '======  *PYLINT*  ======\n'
-            if [ -n "${pylintrc_file:-}" ]; then
-                pylint3 --rcfile=${pylintrc_file} "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-            else
-                pylint3 --disable='C0301,I0011' --good-names="${IGNORE_VAR_NAMES}" --notes="${TODO_COMMENTS}" --msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --max-module-lines=4096 --max-returns=16 --persistent=n --reports=y "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^Using config file .+$/, ""); gsub(/^Report$/, ""); gsub(/^======$/, ""); gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-            fi
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'pylint3: command not found!\n' >&2
-        fi
-    fi
-
-    if [ -x "$(command -v py_directive_checker)" ]; then
-        printf '======  *DIRECTIVE CHECKER*  ======\n'
-        py_directive_checker "$file" | noblanks
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'py_directive_checker: command not found!\n' >&2
-    fi
-
-    if [ "$VULTURE_EXISTS" -eq 1 ]; then
-        printf '======  *VULTURE (DEAD CODE CHECKER)*  ======\n'
-        vulture --min-confidence=65 "$file" | noblanks
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'vulture: command not found!\n' >&2
-    fi
-
-    printf '======  *UNCALLED*  ======\n'
-    if [ -x "$(command -v uncalled)" ] && grep -F --no-messages --quiet '__main__' "${1}"; then
-        uncalled --how both "${1}"
-    fi
-
-    if [ "$BANDIT_EXISTS" -eq 1 ]; then
-        printf '======  *BANDIT (SECURITY ANALYZER)*  ======\n'
-        # shellcheck disable=SC2016
-        bandit --aggregate vuln "${EXTRA_BANDIT_FLAGS}" "$file" 2>&1 | awk_cmd '{ OFS=""; if (match($0, /^   Location: .+$/)) { gsub(/^   Location: /, ""); print $0, ": Security Issue"; } else { gsub(/^.?main.?\tINFO.+$/, ""); gsub(/^[0-9]+[\t ]+.+$/, ""); gsub(/^Test results.+$/, ""); gsub(/^Run started.+$/, ""); gsub(/^Files skipped.+$/, ""); if (NF > 0) { print; } } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'bandit: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v pydocstyle)" ]; then
-        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
-        pydocstyle --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk_cmd '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ -x "$(command -v pep257)" ]; then
-        printf '======  *PYDOCSTYLE (PEP257)*  ======\n'
-        pep257 --count --explain --source --verbose --ignore=D203,D213,D400 "$file" | sed -E 's|^(.+):([0-9]+) in (.+):$|\1:\2: \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;' | awk_cmd '{ OFS=""; gsub(/^Checking file.+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pydocstyle (formerly pep257): command not found!\n' >&2
-    fi
-
-    printf '======  *PYTHON DOCTEST*  ======\n'
-    if [ "$ispy2" -eq 1 ]; then
-        python2 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-    else
-        python3 -m doctest --option=NORMALIZE_WHITESPACE "$file" 2>&1 | awk_cmd '{ gsub(/^Unable to init server.*/, ""); if (NF > 0) { print; } }'
-    fi
-
-    printf '======  *RADON REPORT*  ======\n'
-    if [ "$RADON_EXISTS" -eq 1 ]; then
-        radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average
-        radon mi "${1}" --max C --min A --multi --show
-        radon raw "${1}" --summary
-        radon hal "${1}"
-        # Show complexity data for each individual function
-        # radon hal "${1}" --functions
-    fi
-
-    if [ -x "$(command -v code-analysis)" ]; then
-        code-analysis "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'code-analysis: command not found!\n' >&2
-    fi
-
-    FirstLoopPass=1
+    printf "%s\\n" "$(cat < "${FLAKE8_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PYFLAKES_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PYCODESTYLE_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PYLINT_BUFFER}")"
+    printf "%s\\n" "$(cat < "${DIRECTIVE_CHECKER_BUFFER}")"
+    printf "%s\\n" "$(cat < "${VULTURE_BUFFER}")"
+    printf "%s\\n" "$(cat < "${UNCALLED_BUFFER}")"
+    printf "%s\\n" "$(cat < "${BANDIT_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PYDOCSTYLE_BUFFER}")"
+    printf "%s\\n" "$(cat < "${PYDOCTEST_BUFFER}")"
+    printf "%s\\n" "$(cat < "${RADON_BUFFER}")"
+    printf "%s\\n" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
 
 done
+
+
+# CLEANUP #
+
+
+rm -f /tmp/*.pyanalysis.tmp || true
