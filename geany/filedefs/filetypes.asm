@@ -1,5 +1,22 @@
+[styling]
+character=character
+comment=comment
+commentblock=commentblock
+commentdirective=commentdirective
+cpuinstruction=cpuinstruction
+directive=directive
+directiveoperand=directiveoperand
+extinstruction=extinstruction
+identifier=identifier
+mathinstruction=mathinstruction
+number=number
+operator=operator
+register=register
+string=string
+stringeol=stringeol
+
 [keywords]
-directives=%1 %10 %2 %3 %4 %5 %6 %7 %8 %9 %endmacro %macro .bss .byte .cseg .data .db .def .device .dseg .dw .endmacro .equ .eseg .exit .include .list .listmac .macro .nolist .org .set .text _start byte db equ equivalent extern global globl list movsb nolist org page resb section stosb text word
+directives=%1 %10 %2 %3 %4 %5 %6 %7 %8 %9 %endmacro %macro .bss .byte .cseg .data .db .def .device .dseg .dw .endmacro .equ .eseg .exit .include .list .listmac .macro .nolist .org .set .text _start byte db equ equivalent extern global globl list nolist org page resb section text word
 instructions=aaa aad aam aas adc add addst adiw and andi asr bclr bld brbc brbs brcc brcs breq brge brhc brhs brid brie brlo brlt brmi brne brpl brsh brtc brts brvc brvs bset bst bt call cbi cbr clc cld clh cli cln clr cls clt clv clz cmp com cp cpc cpi cpse dec dek div divst eor hlt icall ijmp imul in inc ink int iret ja jae jb jbe jc jcxz je jecxz jez jg jge jgz jl jle jlz jmp jna jnae jnb jnbe jnc jne jng jnge jnl jnle jno jnp jns jnz jo jp jpe jpo js jsr jz lad ld ldd ldi lds ldx lea leaq lia loop loope loopne loopnz loopz lpm lsa lsl lsr mov movl movq movs movsb movsd movsw movsx movw mul mulst neg nop not or ori out pop popa popac popad popfd popq push pusha pushac pushad pushf pushfd rcall rep ret reti rjmp rol ror sbb sbc sbci sbi sbic sbis sbiw sbr sbrc sbrs sec seh sei sen ser ses set sev sez shl shr sleep spi st stc std stos stosb stosd stosw sts sub subi subst swap test tst wdr xchg xlat xor xorl
 registers=ah al ax bh bl bp bx ch cl cx dh di dl dx eax ebp ebx ecx edi edx esi esp r0 r1 r10 r11 r12 r13 r14 r15 r16 r17 r18 r19 r2 r20 r21 r22 r23 r24 r25 r26 r27 r28 r29 r3 r30 r31 r4 r5 r6 r7 r8 r9 si sp
 

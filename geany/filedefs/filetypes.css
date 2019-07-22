@@ -1,3 +1,28 @@
+[styling]
+attribute=attribute
+class=class
+comment=comment
+directive=directive
+doublestring=doublestring
+extended_identifier=extended_identifier
+extended_pseudoclass=extended_pseudoclass
+extended_pseudoelement=extended_pseudoelement
+id=id
+identifier2=identifier2
+identifier3=identifier3
+identifier=identifier
+important=important
+media=media
+operator=operator
+pseudoclass=pseudoclass
+pseudoelement=pseudoelement
+singlestring=singlestring
+tag=tag
+unknown_identifier=unknown_identifier
+unknown_pseudoclass=unknown_pseudoclass
+value=value
+variable=variable
+
 [keywords]
 primary=background background-attachment background-color background-image background-position background-repeat border border-bottom border-bottom-width border-color border-left border-left-width border-right border-right-width border-style border-top border-top-width border-width clear color display float font font-family font-size font-style font-variant font-weight height letter-spacing line-height list-style list-style-image list-style-position list-style-type margin margin-bottom margin-left margin-right margin-top padding padding-bottom padding-left padding-right padding-top text-align text-decoration text-indent text-transform vertical-align white-space width word-spacing
 secondary=azimuth border-bottom-color border-bottom-style border-collapse border-left-color border-left-style border-right-color border-right-style border-spacing border-top-color border-top-style bottom caption-side clip content counter-increment counter-reset cue cue-after cue-before cursor direction elevation empty-cells font-size-adjust font-stretch left max-height max-width min-height min-width orphans outline outline-color outline-style outline-width overflow page-break-after page-break-before page-break-inside pause pause-after pause-before pitch pitch-range play-during position quotes richness right speak speak-header speak-numeral speak-punctuation speech-rate stress table-layout top unicode-bidi visibility voice-family volume widows z-index

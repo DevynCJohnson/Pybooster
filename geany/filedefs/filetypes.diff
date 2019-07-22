@@ -1,3 +1,17 @@
+[styling]
+added=line_added
+changed=line_changed
+deleted=line_removed
+header=header
+line_added=line_added
+line_changed=line_changed
+line_removed=line_removed
+patch_add=patch_add
+patch_delete=patch_delete
+position=position
+removed_patch_add=removed_patch_add
+removed_patch_delete=removed_patch_delete
+
 [settings]
 extension=diff
 mime_type=text/x-patch

@@ -4,6 +4,7 @@ keywords=a abort abs absent absolute access according action ada add admin after
 [lexer_properties]
 fold.sql.at.else=1
 lexer.sql.allow.dotted.word=1
+lexer.sql.backticks.identifier=1
 lexer.sql.numbersign.comment=0
 sql.backslash.escapes=1
 
