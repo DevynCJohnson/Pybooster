@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for prettifiers, minifiers, and auto-formatters
 #' @file code-formatter
-#' @version 2019.03.28
+#' @version 2019.07.16
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -157,7 +157,7 @@ while true; do
                 exit 1
             fi
             if [ -x "$(command -v cleancss)" ]; then
-                cleancss --remove-empty "$_file" > "$TMP_NAME"
+                cleancss -O2 "$_file" > "$TMP_NAME"
                 mv -f "$TMP_NAME" "$_file"
             elif [ -x "$(command -v cssmin)" ]; then
                 cssmin < "$_file" > "$TMP_NAME"
