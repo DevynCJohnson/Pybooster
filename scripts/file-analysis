@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning files and providing checksums
 #' @file file-analysis
-#' @version 2019.03.28
+#' @version 2019.07.21
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -24,87 +24,230 @@ fi
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
-[ -z "${FirstLoopPass:-}" ] && FirstLoopPass=0
+
+
+BASE32_EXISTS=0
+if [ -n "$(command -v base32)" ]; then
+    BASE32_EXISTS=1
+else
+    printf 'base32: command not found!\n' >&2
+fi
+
+
+BASE64_EXISTS=0
+if [ -n "$(command -v base64)" ]; then
+    BASE64_EXISTS=1
+else
+    printf 'base64: command not found!\n' >&2
+fi
+
+
+B2SUM_EXISTS=0
+if [ -n "$(command -v b2sum)" ]; then
+    B2SUM_EXISTS=1
+else
+    printf 'b2sum: command not found!\n' >&2
+fi
+
+
+CKSUM_EXISTS=0
+if [ -n "$(command -v cksum)" ]; then
+    CKSUM_EXISTS=1
+else
+    printf 'cksum: command not found!\n' >&2
+fi
+
+
+MD5SUM_EXISTS=0
+if [ -n "$(command -v md5sum)" ]; then
+    MD5SUM_EXISTS=1
+else
+    printf 'md5sum: command not found!\n' >&2
+fi
+
+
+SHA1SUM_EXISTS=0
+if [ -n "$(command -v sha1sum)" ]; then
+    SHA1SUM_EXISTS=1
+else
+    printf 'sha1sum: command not found!\n' >&2
+fi
+
+
+SHA224SUM_EXISTS=0
+if [ -n "$(command -v sha224sum)" ]; then
+    SHA224SUM_EXISTS=1
+else
+    printf 'sha224sum: command not found!\n' >&2
+fi
+
+
+SHA256SUM_EXISTS=0
+if [ -n "$(command -v sha256sum)" ]; then
+    SHA256SUM_EXISTS=1
+else
+    printf 'sha256sum: command not found!\n' >&2
+fi
+
+
+SHA384SUM_EXISTS=0
+if [ -n "$(command -v sha384sum)" ]; then
+    SHA384SUM_EXISTS=1
+else
+    printf 'sha384sum: command not found!\n' >&2
+fi
+
+
+SHA512SUM_EXISTS=0
+if [ -n "$(command -v sha512sum)" ]; then
+    SHA512SUM_EXISTS=1
+else
+    printf 'sha512sum: command not found!\n' >&2
+fi
+
+
+# FUNCTIONS #
+
+
+#' Encode the file in Base32
+base32_func() {
+    if [ "$BASE32_EXISTS" -eq 1 ]; then
+        printf '*** base32 ***\n'
+        base32 "${1}"
+    fi
+}
+
+
+#' Encode the file in Base64
+base64_func() {
+    if [ "$BASE64_EXISTS" -eq 1 ]; then
+        printf '*** base64 ***\n'
+        base64 "${1}"
+    fi
+}
+
+
+#' Get the Blakeb2 checksum of the file
+b2sum_func() {
+    if [ "$B2SUM_EXISTS" -eq 1 ]; then
+        printf '*** b2sum ***\n'
+        b2sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the CRC checksum of the file
+cksum_func() {
+    if [ "$CKSUM_EXISTS" -eq 1 ]; then
+        printf '*** cksum ***\n'
+        cksum "$file"
+    fi
+}
+
+
+#' Get the MD5 checksum of the file
+md5sum_func() {
+    if [ "$MD5SUM_EXISTS" -eq 1 ]; then
+        printf '*** md5sum ***\n'
+        md5sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the SHA1 checksum of the file
+sha1sum_func() {
+    if [ "$SHA1SUM_EXISTS" -eq 1 ]; then
+        printf '*** sha1sum ***\n'
+        sha1sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the SHA224 checksum of the file
+sha224sum_func() {
+    if [ "$SHA224SUM_EXISTS" -eq 1 ]; then
+        printf '*** sha224sum ***\n'
+        sha224sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the SHA256 checksum of the file
+sha256sum_func() {
+    if [ "$SHA256SUM_EXISTS" -eq 1 ]; then
+        printf '*** sha256sum ***\n'
+        sha256sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the SHA384 checksum of the file
+sha384sum_func() {
+    if [ "$SHA384SUM_EXISTS" -eq 1 ]; then
+        printf '*** sha384sum ***\n'
+        sha384sum --binary --tag "$file"
+    fi
+}
+
+
+#' Get the SHA512 checksum of the file
+sha512sum_func() {
+    if [ "$SHA512SUM_EXISTS" -eq 1 ]; then
+        printf '*** sha512sum ***\n'
+        sha512sum --binary --tag "$file"
+    fi
+}
 
 
 # MAIN #
 
 
+trap 'rm -f /tmp/*.fileanalysis.tmp || true' INT
+
+
 for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
+    BASE32_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    BASE64_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    B2SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    CKSUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    MD5SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    SHA1SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    SHA224SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    SHA256SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    SHA384SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+    SHA512SUM_BUFFER="/tmp/$(uuid).fileanalysis.tmp"
+
+    base32_func "$file" > "${BASE32_BUFFER}" &
+    base64_func "$file" > "${BASE64_BUFFER}" &
+    b2sum_func "$file" > "${B2SUM_BUFFER}" &
+    cksum_func "$file" > "${CKSUM_BUFFER}" &
+    md5sum_func "$file" > "${MD5SUM_BUFFER}" &
+    sha1sum_func "$file" > "${SHA1SUM_BUFFER}" &
+    sha224sum_func "$file" > "${SHA224SUM_BUFFER}" &
+    sha256sum_func "$file" > "${SHA256SUM_BUFFER}" &
+    sha384sum_func "$file" > "${SHA384SUM_BUFFER}" &
+    sha512sum_func "$file" > "${SHA512SUM_BUFFER}" &
+
+    wait
+
     printf '======  *FILE CHECKSUMS*  ======\n'
-
-    if [ -n "$(command -v base32)" ]; then
-        printf '*** base32 ***\n'
-        base32 "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'base32: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v base64)" ]; then
-        printf '*** base64 ***\n'
-        base64 "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'base64: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v b2sum)" ]; then
-        printf '*** b2sum ***\n'
-        b2sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'b2sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v cksum)" ]; then
-        printf '*** cksum ***\n'
-        cksum "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'cksum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v md5sum)" ]; then
-        printf '*** md5sum ***\n'
-        md5sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'md5sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v sha1sum)" ]; then
-        printf '*** sha1sum ***\n'
-        sha1sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sha1sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v sha224sum)" ]; then
-        printf '*** sha224sum ***\n'
-        sha224sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sha224sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v sha256sum)" ]; then
-        printf '*** sha256sum ***\n'
-        sha256sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sha256sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v sha384sum)" ]; then
-        printf '*** sha384sum ***\n'
-        sha384sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sha384sum: command not found!\n' >&2
-    fi
-
-    if [ -n "$(command -v sha512sum)" ]; then
-        printf '*** sha512sum ***\n'
-        sha512sum --binary --tag "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'sha512sum: command not found!\n' >&2
-    fi
-
-    FirstLoopPass=1
+    printf "%s\\n" "$(cat < "${BASE32_BUFFER}")"
+    printf "%s\\n" "$(cat < "${BASE64_BUFFER}")"
+    printf "%s\\n" "$(cat < "${B2SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${CKSUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${MD5SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${SHA1SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${SHA224SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${SHA256SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${SHA384SUM_BUFFER}")"
+    printf "%s\\n" "$(cat < "${SHA512SUM_BUFFER}")"
 
 done
+
+
+# CLEANUP #
+
+
+rm -f /tmp/*.fileanalysis.tmp || true
