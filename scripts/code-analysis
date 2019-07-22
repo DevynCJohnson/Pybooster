@@ -71,28 +71,28 @@ fi
 CHARDET3_EXISTS=0
 if [ -x "$(command -v chardet3)" ]; then
     CHARDET3_EXISTS=1
-else
+elif [ "$FILE_EXISTS" -ne 1 ]; then
     printf 'chardet3: command not found!\n' >&2
 fi
 
 CHARDETECT_EXISTS=0
 if [ -x "$(command -v chardetect)" ]; then
     CHARDETECT_EXISTS=1
-else
+elif [ "$FILE_EXISTS" -ne 1 ] && [ "$CHARDET3_EXISTS" -ne 1 ]; then
     printf 'chardetect: command not found!\n' >&2
 fi
 
 UCHARDET_EXISTS=0
 if [ -x "$(command -v uchardet)" ]; then
     UCHARDET_EXISTS=1
-else
+elif [ "$FILE_EXISTS" -ne 1 ] && [ "$CHARDETECT_EXISTS" -ne 1 ] && [ "$CHARDET3_EXISTS" -ne 1 ]; then
     printf 'uchardet: command not found!\n' >&2
 fi
 
 ENCGUESS_EXISTS=0
 if [ -x "$(command -v encguess)" ]; then
     ENCGUESS_EXISTS=1
-else
+elif [ "$FILE_EXISTS" -ne 1 ] && [ "$CHARDETECT_EXISTS" -ne 1 ] && [ "$CHARDET3_EXISTS" -ne 1 ] && [ "$UCHARDET_EXISTS" -ne 1 ]; then
     printf 'encguess: command not found!\n' >&2
 fi
 
