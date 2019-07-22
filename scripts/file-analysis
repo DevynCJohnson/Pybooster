@@ -131,7 +131,7 @@ base64_func() {
 b2sum_func() {
     if [ "$B2SUM_EXISTS" -eq 1 ]; then
         printf '*** b2sum ***\n'
-        b2sum --binary --tag "$file"
+        b2sum --binary --tag "${1}"
     fi
 }
 
@@ -140,7 +140,7 @@ b2sum_func() {
 cksum_func() {
     if [ "$CKSUM_EXISTS" -eq 1 ]; then
         printf '*** cksum ***\n'
-        cksum "$file"
+        cksum "${1}"
     fi
 }
 
@@ -149,7 +149,7 @@ cksum_func() {
 md5sum_func() {
     if [ "$MD5SUM_EXISTS" -eq 1 ]; then
         printf '*** md5sum ***\n'
-        md5sum --binary --tag "$file"
+        md5sum --binary --tag "${1}"
     fi
 }
 
@@ -158,7 +158,7 @@ md5sum_func() {
 sha1sum_func() {
     if [ "$SHA1SUM_EXISTS" -eq 1 ]; then
         printf '*** sha1sum ***\n'
-        sha1sum --binary --tag "$file"
+        sha1sum --binary --tag "${1}"
     fi
 }
 
@@ -167,7 +167,7 @@ sha1sum_func() {
 sha224sum_func() {
     if [ "$SHA224SUM_EXISTS" -eq 1 ]; then
         printf '*** sha224sum ***\n'
-        sha224sum --binary --tag "$file"
+        sha224sum --binary --tag "${1}"
     fi
 }
 
@@ -176,7 +176,7 @@ sha224sum_func() {
 sha256sum_func() {
     if [ "$SHA256SUM_EXISTS" -eq 1 ]; then
         printf '*** sha256sum ***\n'
-        sha256sum --binary --tag "$file"
+        sha256sum --binary --tag "${1}"
     fi
 }
 
@@ -185,7 +185,7 @@ sha256sum_func() {
 sha384sum_func() {
     if [ "$SHA384SUM_EXISTS" -eq 1 ]; then
         printf '*** sha384sum ***\n'
-        sha384sum --binary --tag "$file"
+        sha384sum --binary --tag "${1}"
     fi
 }
 
@@ -194,7 +194,7 @@ sha384sum_func() {
 sha512sum_func() {
     if [ "$SHA512SUM_EXISTS" -eq 1 ]; then
         printf '*** sha512sum ***\n'
-        sha512sum --binary --tag "$file"
+        sha512sum --binary --tag "${1}"
     fi
 }
 
