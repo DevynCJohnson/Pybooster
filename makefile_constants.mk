@@ -462,7 +462,7 @@ ifdef DEBUG
         override DEBUG::=-DDEBUG
         override DCJ_DEBUG::=
     else ifeq ($(DEBUG),2)
-        override DEBUG::=-DDEBUG -g -ggdb
+        override DEBUG::=-DDEBUG -g3 -ggdb3
         override DCJ_DEBUG::=
     else
         override DEBUG::=$(DCJ_DEBUG)
@@ -550,7 +550,7 @@ ifdef dcj
         override ARCH::=-march=skylake
         override BITS::=64
         override PLATFORM::=x86-64
-        override STD::=-std=c17
+        override STD::=-std=c11
         override OS::=POSIX
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
@@ -579,7 +579,7 @@ ifdef dcj
         override ARCH::=-march=broadwell
         override BITS::=64
         override PLATFORM::=x86-64
-        override STD::=-std=c17
+        override STD::=-std=c11
         override OS::=POSIX
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
@@ -608,7 +608,7 @@ ifdef dcj
         override ARCH::=-march=haswell
         override BITS::=64
         override PLATFORM::=x86-64
-        override STD::=-std=c17
+        override STD::=-std=c11
         override OS::=POSIX
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
@@ -637,7 +637,7 @@ ifdef dcj
         override ARCH::=-march=cannonlake
         override BITS::=64
         override PLATFORM::=x86-64
-        override STD::=-std=c17
+        override STD::=-std=c11
         override OS::=POSIX
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
@@ -670,7 +670,7 @@ ifdef dcj
             override BITS::=64
             override PLATFORM::=x86-64
         endif
-        override STD::=-std=c17
+        override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
                 override CBUILD::=musl-gcc
@@ -694,7 +694,7 @@ ifdef dcj
         override ARCH::=-mtune=generic
         override BITS::=32
         override PLATFORM::=x86
-        override STD::=-std=c17
+        override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
                 override CBUILD::=musl-gcc
@@ -717,7 +717,7 @@ ifdef dcj
         override ARCH::=-mtune=generic
         override BITS::=64
         override PLATFORM::=x86-64
-        override STD::=-std=c17
+        override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
                 override CBUILD::=musl-gcc
@@ -743,7 +743,7 @@ ifdef dcj
         override ARCH::=-march=armv6zk -mtune=arm1176jzf-s $(ENDIAN) $(FLOATABI) -mfpu=vfp -marm -mtp=auto
         override BITS::=32
         override PLATFORM::=x86
-        override STD::=-std=c17
+        override STD::=-std=c11
         override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
         override LIBS::=$(armgnueabihf_lib) $(LIBS)
         override WARN::=-Wall -Wextra -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Winline -Wuninitialized -Wstrict-prototypes -Wbad-function-cast -Wdouble-promotion -Wredundant-decls -Wnested-externs -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Winvalid-pch -Wunsafe-loop-optimizations -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wformat -Wformat-security -Wformat-signedness -Wformat-y2k
@@ -771,7 +771,7 @@ ifdef dcj
     # General x86-64 Linux
     else ifeq ($(dcj),x86_64)
         override GCC_PREFIX::=x86_64-linux-gnu
-        override STD::=-std=c17
+        override STD::=-std=c11
         override BITS::=64
         override PLATFORM::=x86-64
         override DEBUG::=$(DCJ_DEBUG)
@@ -853,17 +853,17 @@ override STRIP::=$(STRIP) $(STRIP_PARAMS)
 # C-Standard
 ifdef STD
     # GNU
-    ifneq ($(STD),-std=c17)
+    ifneq ($(STD),-std=c11)
         # GNU
-        ifeq ($(STD),gnu17)
-            override STD::=-std=gnu17
+        ifeq ($(STD),gnu11)
+            override STD::=-std=gnu11
         # C
         else
-            override STD::=-std=c17
+            override STD::=-std=c11
         endif
     endif
 else
-    STD::=-std=c17
+    STD::=-std=c11
 endif
 
 # Alternate Standard C Library
@@ -913,11 +913,11 @@ ifdef ARCH
     else ifeq ($(ARCH),silvermont)
         override ARCH::=-march=$(ARCH) -mavx -mcld -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper
     else ifeq ($(ARCH),coffeelake)
-        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+        override ARCH::=-march=$(ARCH) -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mclflushopt -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mmmx -mmovbe -mpclmul -mpopcnt -mrdrnd -mrdseed -mrecip -msahf -msgx -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -mxsave -mxsavec -mxsaves
     else ifeq ($(ARCH),skylake)
-        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+        override ARCH::=-march=$(ARCH) -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mclflushopt -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mmmx -mmovbe -mpclmul -mpopcnt -mrdrnd -mrdseed -mrecip -msahf -msgx -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -mxsave -mxsavec -mxsaves
     else ifeq ($(ARCH),cannonlake)
-        override ARCH::=-march=$(ARCH) -mavx -mcld -mclflushopt -mcrc32 -mcx16 -mmovbe -msahf -mvzeroupper -mxsavec -mxsaves
+        override ARCH::=-march=$(ARCH) -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mclflushopt -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mmmx -mmovbe -mpclmul -mpopcnt -mrdrnd -mrdseed -mrecip -msahf -msgx -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -mxsave -mxsavec -mxsaves
     # AMD
     else ifeq ($(ARCH),k6)
         override ARCH::=-march=$(ARCH)
