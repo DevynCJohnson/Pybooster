@@ -1,6 +1,5 @@
 syntax "go" "\.go$"
 comment "//"
-formatter gofmt -w
 
 # TYPES #
 
