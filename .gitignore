@@ -65,6 +65,11 @@ var/
 #pylintrc
 #pytest.ini
 #tox.ini
+GPATH
+GRTAGS
+GTAGS
+GTAGSROOT
+ID
 .coverage
 .coverage.*
 .coveragerc
