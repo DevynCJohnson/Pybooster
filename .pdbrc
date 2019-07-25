@@ -1,0 +1,52 @@
+# PDBRC
+#' pip install pdbpp beeprint
+
+
+from os import system
+import pdb
+import readline
+import rlcompleter
+
+from beeprint import pp as bpp
+
+readline.parse_and_bind(r'tab: complete')
+pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
+
+system(r'stty sane')
+
+
+#' Load imports; Use this when stepping deep into the code
+alias loadtools from beeprint import pp as bpp;; import pdb;; import rlcompleter;; pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
+
+#' Show the global variables
+alias gbl pp globals()
+
+#' Show the current local variables
+alias lcl pp locals()
+
+#' Show the current local variables
+alias vrs pp vars()
+
+#' Dump the properties, contents, and values of the given object
+alias dump bpp(%1)
+
+#' Dump the contents of `__dict__` from the given object
+alias dumpv bpp(vars(%1))
+
+#' Next List
+alias nl n;;l
+
+#' Next LongList
+alias nll n;;ll
+
+#' Step List
+alias sl s;;l
+
+#' Step LongList
+alias sll s;;ll
+
+#' Print a dictionary
+alias pd for k in sorted(%1.keys()): print('- %-32s= %-80.80s' % (k, repr(%1[k])))
+
+#' Print member variables of an object
+alias pv pd %1.__dict__ %1.
