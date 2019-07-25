@@ -1,3 +1,31 @@
+2019-07-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS.h:  Tweaked some of the documentation for some macros
+	* makefile:  Added more packages that can be installed
+	* PyBooster:  Added `pygraphmemusage`
+	* PyBooster:  Fixed minor bugs & improved the code in some of the analysis & graphing scripts
+
+2019-07-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added error-regex patterns to many of the file-definitions
+	* Geany:  Added the `Message_Sequence_Chart.msc` template for `mscgen`
+	* PyBooster:  Added `pygraphcalls` & `pygraphcalls3`
+	* PyBooster:  Added `.pdbrc`
+	* PyBooster:  Fixed minor bugs & improved the code in some of the analysis & graphing scripts
+
+2019-07-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* .gitignore:  Added GTag database filenames
+	* code-analysis:  Added support for multiprocessing
+	* code-formatter:  Changed a parameter used by `cleancss`
+	* file-analysis:  Added support for multiprocessing
+	* Geany:  Fixed some colorschemes, fixed some snippets, & added support for Lex
+	* makefile:  Minor tweaks
+	* makefile_constants.mk:  Minor tweaks
+	* mimetype_booster.xml:  Fixed additional bugs
+	* NanoRC:  Fixed the go.nanorc file
+	* pyanalysis:  Added support for multiprocessing
+
 2019-07-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Optimized `alphabetize_string` & improved docstring convention
