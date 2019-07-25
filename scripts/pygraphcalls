@@ -1,0 +1,49 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
+#' @brief Graph the calls of a Python2 project
+#' @file pygraphcalls
+#' @version 2019.07.25
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ ! -x "$(command -v pyan2)" ]; then
+    printf 'pyan2: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v dot)" ]; then
+    printf 'dot: command not found!\n' >&2
+    exit 1
+elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
+    printf 'pygraphcalls DIRECTORY PROJECT_NAME\n'
+fi
+
+
+if [ -z "${1:-}" ]; then
+    printf 'The directory name of the project must be specified!\n' >&2
+    exit 1
+elif [ -z "${2:-}" ]; then
+    printf 'The name of the project must be specified!\n' >&2
+    exit 1
+fi
+
+
+save_path="${PWD}"
+
+cd "${1}" || exit 1
+
+FILES="$(find "${1}" -type f -name "*.py" -not \( -path "*/.bzr/*" -o -path "*/.cvs/*" -o -path "*/.git/*" -o -path "*/.hg/*" -o -path "*/.svn/*" -o -path "*/bin/*" -o -path "*/build/*" -o -path "*/debugging/*" -o -path "*/doc/*" -o -path "*/log/*" -o -path "*/logging/*" -o -path "*/logs/*" -o -path "*/temp/*" -o -path "*/testing/*" -o -path "*/tmp/*" \) -exec printf '%s ' '{}' +)"
+pyan2 "${FILES}" --dot --colored --no-defines --grouped --nested-groups > "${HOME}/${2}.dot"
+
+if [ -f "${HOME}/${2}.dot" ]; then
+    dot -Granksep=1.5 -Tsvg -o "${HOME}/${2}.svg" "${HOME}/${2}.dot"
+    mv "${HOME}/classes.dot" "${HOME}/${2}_Classes.dot"
+fi
+
+cd "${save_path}" || exit 1
+
+
+[ ! -f "${HOME}/${2}.svg" ] && exit 1
+
+exit 0
