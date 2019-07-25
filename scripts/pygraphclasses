@@ -32,12 +32,19 @@ fi
 save_path="${PWD}"
 
 cd "${1}" || exit 1
-pyreverse --all-ancestors --all-associated ./* && mv "./classes.dot" "./packages.dot" "${HOME}" && dot -Tsvg -o "${HOME}/${2}_Classes.svg" "${HOME}/classes.dot" && dot -Tsvg -o "${HOME}/${2}_Packages.svg" "${HOME}/packages.dot"
+
+pyreverse --all-ancestors --all-associated ./* --ignore='.bzr,.cvs,.git,.hg,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp' && mv "./classes.dot" "./packages.dot" "${HOME}"
+if [ -f "${HOME}/classes.dot" ]; then
+    dot -Tsvg -o "${HOME}/${2}_Classes.svg" "${HOME}/classes.dot"
+    mv "${HOME}/classes.dot" "${HOME}/${2}_Classes.dot"
+fi
+if [ -f "${HOME}/packages.dot" ]; then
+    dot -Tsvg -o "${HOME}/${2}_Packages.svg" "${HOME}/${2}_Packages.dot"
+fi
+
 cd "${save_path}" || exit 1
 
 
-if [ ! -f "${HOME}/${2}_Packages.svg" ]; then
-    exit 1
-fi
+([ ! -f "${HOME}/${2}_Classes.svg" ] || [ ! -f "${HOME}/${2}_Packages.svg" ]) && exit 1
 
 exit 0

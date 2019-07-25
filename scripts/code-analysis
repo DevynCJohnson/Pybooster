@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning source code and providing statistics and listing some syntax issues or bugs
 #' @file code-analysis
-#' @version 2019.07.21
+#' @version 2019.07.24
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -134,13 +134,13 @@ file_encoding_func() {
         file -b -i "${1}"
         file -b "${1}" | awk_cmd '{ gsub(/^a /, ""); gsub(/^an /, ""); if (NF > 0) { print; } }'
     elif [ "$CHARDET3_EXISTS" -eq 1 ]; then
-        chardet3 "${1}"
+        chardet3 "${1}" 2>&1
     elif [ "$CHARDETECT_EXISTS" -eq 1 ]; then
-        chardetect "${1}"
+        chardetect "${1}" 2>&1
     elif [ "$UCHARDET_EXISTS" -eq 1 ]; then
-        uchardet "${1}"
+        uchardet "${1}" 2>&1
     elif [ "$ENCGUESS_EXISTS" -eq 1 ]; then
-        encguess "${1}"
+        encguess "${1}" 2>&1
     fi
 }
 
@@ -149,7 +149,7 @@ file_encoding_func() {
 licensecheck_func() {
     if [ "$LICENSECHECK_EXISTS" -eq 1 ]; then
         printf '======  *LICENSE CHECK*  ======\n'
-        licensecheck --copyright --deb-fmt --lines 30 --machine --tail 0 "${1}" | noblanks
+        licensecheck --copyright --deb-fmt --lines 30 --machine --tail 0 "${1}" 2>&1 | noblanks
     fi
 }
 
@@ -157,7 +157,7 @@ licensecheck_func() {
 #' Count the file's lines of code
 cloc_func() {
     if [ "$CLOC_EXISTS" -eq 1 ]; then
-        cloc --by-file --by-percent cmb --skip-uniqueness --quiet "${1}" | awk_cmd 'NR > 2 && NF'
+        cloc --by-file --by-percent cmb --skip-uniqueness --quiet "${1}" 2>&1 | awk_cmd 'NR > 2 && NF'
     fi
 }
 
@@ -174,7 +174,7 @@ wc_func() {
 isutf8_func() {
     if [ "$ISUTF8_EXISTS" -eq 1 ]; then
         printf '======  *ISUTF8*  ======\n'
-        isutf8 -l "${1}"
+        isutf8 -l "${1}" 2>&1
     fi
 }
 
@@ -183,7 +183,7 @@ isutf8_func() {
 pathchk_func() {
     if [ "$PATHCHK_EXISTS" -eq 1 ]; then
         printf '======  *PATHCHK*  ======\n'
-        pathchk --portability "${1}"
+        pathchk --portability "${1}" 2>&1
     fi
 }
 
@@ -192,7 +192,7 @@ pathchk_func() {
 doschk_func() {
     if [ "$DOSCHK_EXISTS" -eq 1 ]; then
         printf '======  *DOSCHK*  ======\n'
-        echo "${1}" | doschk
+        echo "${1}" | doschk 2>&1
     fi
 }
 
@@ -201,7 +201,7 @@ doschk_func() {
 namecheck_func() {
     if [ "$NAMECHECK_EXISTS" -eq 1 ] && [ -n "${NAMECHECK:-}" ]; then
         printf '======  *NAMECHECK*  ======\n'
-        namecheck "${1}"
+        namecheck "${1}" 2>&1
     fi
 }
 

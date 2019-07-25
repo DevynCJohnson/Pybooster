@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Graph the imports of a Python2 project
 #' @file pygraphimports
-#' @version 2019.07.05
+#' @version 2019.07.24
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,7 +13,7 @@ if [ ! -x "$(command -v python2.7)" ]; then
     printf 'python2.7: command not found!\n' >&2
     exit 1
 elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
-    printf 'pygraphimports DIRECTORY MAIN_FILE PROJECT_NAME\n'
+    printf 'pygraphimports DIRECTORY MAIN_FILE PROJECT_NAME\npygraphimports ./project ./project/main.py My_Project\n'
 fi
 
 
@@ -29,11 +29,14 @@ elif [ -z "${3:-}" ]; then
 fi
 
 
-python2.7 -m modulegraph -g -x _abcoll -x _collections -x _ctypes -x _dummy_thread -x _functools -x _hashlib -x _io -x _ssl -x _subprocess -x _thread -x _warnings -x _weakref -x _weakrefset -x abc -x arrow -x asn1crypto -x bable -x backports -x base64 -x binascii -x boto3 -x botocore -x calendar -x CoffeeScript -x collections -x configparser -x copy_ref -x cPickle -x cpuinfo -x Crypto -x cryptography -x cssmin -x cStringIO -x ctypes -x datetime -x decimal -x doctest -x dummy_threading -x email -x enum -x errno -x fasteners -x flask -x flask_babel -x flask_login -x flask_mail -x flask_restplus -x flask_sqlalchemy -x flask_wtf -x functools -x getopt -x gettext -x hashlib -x heapq -x hmac -x httplib -x inspect -x io -x jinja2 -x json -x jsonpickle -x linecache -x locale -x logging -x M2Crypto -x MarkupSafe -x markupsafe -x math -x mimetools -x multiprocessing -x netaddr -x optparse -x ordereddict -x org -x os -x passlib -x pbr -x pdfkit -x pickle -x pkgutil -x posixpath -x pprint -x psutil -x psycopg2 -x pymongo -x pyOpenSSL -x pytz -x quopri -x random -x re -x redis -x repr -x requests -x s3transfer -x sets -x slimit -x smtplib -x socket -x sqlalchemy -x SQLAlchemy -x SQLAlchemy-Utils -x sqlalchemy_utils -x sqlalchemy_utils.functions.orm -x ssl -x string -x StringIO -x subprocess -x textwrap -x threading -x time -x traceback -x types -x unittest -x urllib -x UserDict -x uu -x uuid -x uWSGI -x warnings -x werkzeug -x wtforms -x WTForms -x xml -x zipimport -p "${1}" "${2}" > "${HOME}/${3}_Dependencies.dot" && sed -i 's|MissingModule|ExcludedModule|g' "${HOME}/${3}_Dependencies.dot" && dot -Gnodesep=1.4 -Gpenwidth=0.2 -Granksep=2 -Tsvg -o "${HOME}/${3}_Dependencies.svg" "${HOME}/${3}_Dependencies.dot"
+python2.7 -m modulegraph -g -x _abcoll -x _collections -x _ctypes -x _dummy_thread -x _functools -x _hashlib -x _io -x _ssl -x _subprocess -x _thread -x _warnings -x _weakref -x _weakrefset -x abc -x arrow -x asn1crypto -x bable -x backports -x base64 -x binascii -x boto3 -x botocore -x calendar -x CoffeeScript -x collections -x configparser -x copy_ref -x cPickle -x cpuinfo -x Crypto -x cryptography -x cssmin -x cStringIO -x ctypes -x datetime -x decimal -x doctest -x dummy_threading -x email -x enum -x errno -x fasteners -x flask -x flask_babel -x flask_login -x flask_mail -x flask_restplus -x flask_sqlalchemy -x flask_wtf -x functools -x getopt -x gettext -x hashlib -x heapq -x hmac -x httplib -x inspect -x io -x jinja2 -x json -x jsonpickle -x linecache -x locale -x logging -x M2Crypto -x MarkupSafe -x markupsafe -x math -x mimetools -x multiprocessing -x netaddr -x optparse -x ordereddict -x org -x os -x passlib -x pbr -x pdfkit -x pickle -x pkgutil -x posixpath -x pprint -x psutil -x psycopg2 -x pymongo -x pyOpenSSL -x pytz -x quopri -x random -x re -x redis -x repr -x requests -x s3transfer -x sets -x slimit -x smtplib -x socket -x sqlalchemy -x SQLAlchemy -x SQLAlchemy-Utils -x sqlalchemy_utils -x sqlalchemy_utils.functions.orm -x ssl -x string -x StringIO -x subprocess -x textwrap -x threading -x time -x traceback -x types -x unittest -x urllib -x UserDict -x uu -x uuid -x uWSGI -x warnings -x werkzeug -x wtforms -x WTForms -x xml -x zipimport -p "${1}" "${2}" > "${HOME}/${3}_Dependencies.dot"
 
-
-if [ ! -f "${HOME}/${3}_Dependencies.svg" ]; then
-    exit 1
+if [ -f "${HOME}/${3}_Dependencies.dot" ]; then
+    sed -i 's|MissingModule|ExcludedModule|g' "${HOME}/${3}_Dependencies.dot"
+    dot -Gnodesep=1.4 -Gpenwidth=0.2 -Granksep=2 -Tsvg -o "${HOME}/${3}_Dependencies.svg" "${HOME}/${3}_Dependencies.dot"
 fi
+
+
+[ ! -f "${HOME}/${3}_Dependencies.svg" ] && exit 1
 
 exit 0
