@@ -7291,15 +7291,15 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 @{ */  // (FB){
 
 #undef __UNCONST
-/** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
+/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
 #define __UNCONST(x)   ((void*)(uintptr_t)(x))
-/** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
+/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
 #define UNCONST(x)   ((void*)(uintptr_t)(x))
 #undef __UNVOLATILE
-/** The following macro is used to remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
+/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
 #define __UNVOLATILE(x)   ((void*)(uintptr_t)(x))
 #ifndef UNVOLATILE
-/** The following macro is used to remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
+/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
 #   define UNVOLATILE(x)   ((void*)(uintptr_t)(x))
 #endif
 #ifndef __DECONST
