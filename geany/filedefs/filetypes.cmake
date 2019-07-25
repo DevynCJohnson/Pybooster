@@ -16,3 +16,6 @@ context_action_cmd=
 [indentation]
 type=1
 width=4
+
+[build-menu]
+error_regex=^([^:]+):([0-9]+):([0-9:]+)?.*$

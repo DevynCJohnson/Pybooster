@@ -13,3 +13,4 @@ width=4
 FT_00_LB=Check
 FT_00_CM=make --dry-run --just-print --warn-undefined-variables "%d/%f"
 FT_00_WD=
+error_regex=^([^:]+):([0-9]+):([0-9:]+)?.*$

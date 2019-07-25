@@ -26,4 +26,4 @@ FT_00_WD=
 FT_01_LB=_JS Analysis
 FT_01_CM=jsanalysis "%d/%f"
 FT_01_WD=
-error_regex=^([^:]+): line ([0-9]+), col ([0-9]+)$
+error_regex=^([^:]+):( line |)([0-9]+)[,:]( col |)([0-9]+)?.*$
