@@ -1,7 +1,7 @@
 2019-07-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Added more packages that can be installed
-	* PyBooster:  Added `pygraphprofile`
+	* PyBooster:  Added `pygraphprofile`, `pyprofile2`, & `pyprofile3`
 	* PyBooster:  Fixed bugs & improved the code in the analysis & graphing scripts
 
 2019-07-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

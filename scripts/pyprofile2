@@ -1,0 +1,68 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
+#' @brief Profile and graph the resource usage of each function in a Python script
+#' @file pyprofile2
+#' @version 2019.07.26
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+if [ ! -x "$(command -v gprof2dot)" ]; then
+    printf 'gprof2dot: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v dot)" ]; then
+    printf 'dot: command not found!\n' >&2
+    exit 1
+elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
+    printf 'pyprofile2 SCRIPT_PATHNAME TEST_NAME [COMMAND_ARGS] [CProfile]\n'
+    exit 0
+fi
+
+
+if [ -z "${1:-}" ] || [ ! -f "${1:-}" ]; then
+    printf 'The pathname to the script must be specified and must be a real file!\n' >&2
+    exit 1
+elif [ -z "${2:-}" ]; then
+    printf 'The name of the profiling test must be specified!\n' >&2
+    exit 1
+fi
+
+
+cmd_args=''
+if [ -n "${3:-}" ]; then
+    cmd_args="$3"
+fi
+
+
+if [ -n "${4:-}" ]; then
+    cprofile='TRUE'
+elif [ -n "${3:-}" ] && ([ "${3}" = 'c' ] || [ "${3}" = 'C' ]); then
+    cprofile='TRUE'
+fi
+
+
+[ ! -d "${HOME}/Diagrams" ] && mkdir "${HOME}/Diagrams"
+if [ ! -d "${HOME}/Diagrams" ]; then
+    printf 'Failed to create the "Diagrams" directory!\n' >&2
+    exit 1
+fi
+
+if [ -n "${cprofile:-}" ]; then
+    python2 -m cProfile -o "cprofile_${2}.pstats" $1 $cmd_args
+    gprof2dot -f pstats "cprofile_${2}.pstats" | dot -Tsvg -x -o "${2}_CProfile.svg"
+else
+    python2 -m profile -o "profile_${2}.pstats" $1 $cmd_args
+    gprof2dot -f pstats "profile_${2}.pstats" | dot -Tsvg -x -o "${2}_Profile.svg"
+fi
+
+if [ -x "$(command -v minifyxml)" ]; then
+    [ -f "${HOME}/Diagrams/${2}_Profile.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Profile.svg"
+    [ -f "${HOME}/Diagrams/${2}_CProfile.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_CProfile.svg"
+fi
+
+
+([ ! -f "${HOME}/Diagrams/${2}_Profile.svg" ] || [ ! -f "${HOME}/Diagrams/${2}_CProfile.svg" ]) && exit 1
+
+exit 0
