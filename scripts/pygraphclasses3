@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Graph the classes of a Python3 project
 #' @file pygraphclasses3
-#' @version 2019.07.25
+#' @version 2019.07.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -17,6 +17,7 @@ elif [ ! -x "$(command -v dot)" ]; then
     exit 1
 elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
     printf 'pygraphclasses3 DIRECTORY PROJECT_NAME\n'
+    exit 0
 fi
 
 
@@ -33,18 +34,29 @@ save_path="${PWD}"
 
 cd "${1}" || exit 1
 
-pyreverse3 --all-ancestors --all-associated ./* --ignore='.bzr,.cvs,.git,.hg,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp' && mv "./classes.dot" "./packages.dot" "${HOME}"
-if [ -f "${HOME}/classes.dot" ]; then
-    dot -Tsvg -o "${HOME}/${2}_Classes.svg" "${HOME}/classes.dot"
-    mv "${HOME}/classes.dot" "${HOME}/${2}_Classes.dot"
+pyreverse3 --all-ancestors --all-associated ./* --ignore='.bzr,.cvs,.git,.hg,.svk,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp' -p "${2}"
+
+[ -f "./classes_${2}.dot" ] && mv "./classes_${2}.dot" "${HOME}/Diagrams/${2}_Classes.dot"
+[ -f "./packages_${2}.dot" ] && mv "./packages_${2}.dot" "${HOME}/Diagrams/${2}_Packages.dot"
+
+if [ -f "${HOME}/Diagrams/${2}_Classes.dot" ]; then
+    dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Classes.svg" "${HOME}/Diagrams/${2}_Classes.dot" &
 fi
-if [ -f "${HOME}/packages.dot" ]; then
-    dot -Tsvg -o "${HOME}/${2}_Packages.svg" "${HOME}/${2}_Packages.dot"
+if [ -f "${HOME}/Diagrams/${2}_Packages.dot" ]; then
+    dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Packages.svg" "${HOME}/Diagrams/${2}_Packages.dot" &
 fi
+if [ -x "$(command -v minifyxml)" ]; then
+    [ -f "${HOME}/Diagrams/${2}_Classes.dot" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Classes.dot"
+    [ -f "${HOME}/Diagrams/${2}_Packages.dot" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Packages.dot"
+fi
+
+wait
+
+([ -f "${HOME}/Diagrams/${2}_Classes.dot" ] || [ -f "${HOME}/Diagrams/${2}_Packages.dot" ]) && fixsvg
 
 cd "${save_path}" || exit 1
 
 
-([ ! -f "${HOME}/${2}_Classes.svg" ] || [ ! -f "${HOME}/${2}_Packages.svg" ]) && exit 1
+([ ! -f "${HOME}/Diagrams/${2}_Classes.svg" ] || [ ! -f "${HOME}/Diagrams/${2}_Packages.svg" ]) && exit 1
 
 exit 0

@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Graph the memory usage of a Python3 program
 #' @file pygraphmemusage
-#' @version 2019.07.25
+#' @version 2019.07.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,7 +13,8 @@ if [ ! -x "$(command -v psrecord)" ]; then
     printf 'psrecord: command not found!\n' >&2
     exit 1
 elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
-    printf 'pygraphmemusage PROCESS_NAME CHART_NAME [DURATION_SEC] [COMMAND]\nWhen specifying a command, set duration to "0" if the memory usage should be recorded the entire time\n'
+    printf 'pygraphmemusage PROCESS_NAME CHART_NAME [COMMAND]\nWhen specifying a command, set duration to "0" if the memory usage should be recorded the entire time\n'
+    exit 0
 fi
 
 
@@ -25,24 +26,32 @@ elif [ -z "${2:-}" ]; then
     exit 1
 fi
 
-if [ -n "${3:-}" ] && [ "${3}" != '0' ]; then
-    DURATION="--duration ${3}"
-else
-    DURATION=''
+EXECMD=0
+if [ -n "${3:-}" ]; then
+    tmp_ifs="$IFS"
+    IFS=' '
+    read -ra command_string <<< "$3"
+    [ -n "${command_string:-}" ] && command_name="${command_string[0]}"
+    [ -x "$(command -v "$command_name")" ] && EXECMD=1
+    IFS="$tmp_ifs"
 fi
 
-EXECMD=0
-[ -n "${4:-}" ] && EXECMD=1
+
+[ ! -d "${HOME}/Diagrams" ] && mkdir "${HOME}/Diagrams"
+if [ ! -d "${HOME}/Diagrams" ]; then
+    printf 'Failed to create the "Diagrams" directory!\n' >&2
+    exit 1
+fi
 
 
 if [ "$EXECMD" -eq 1 ]; then
-    psrecord --include-children --interval 1 "${DURATION}" --plot "${HOME}/${2}.png" "${4}"
+    psrecord "${3}" --include-children --interval 0.1 --plot "${HOME}/Diagrams/${2}.png"
 else
     PROCESS_PID="$(pgrep "$1")"
-    [ -n "${PROCESS_PID:-}" ] && psrecord --include-children --interval 1 "${DURATION}" --plot "${HOME}/${2}.png" "$PROCESS_PID"
+    [ -n "${PROCESS_PID:-}" ] && psrecord "$PROCESS_PID" --include-children --interval 0.1 --plot "${HOME}/Diagrams/${2}.png"
 fi
 
 
-[ ! -f "${HOME}/${2}.png" ] && exit 1
+[ ! -f "${HOME}/Diagrams/${2}.png" ] && exit 1
 
 exit 0
