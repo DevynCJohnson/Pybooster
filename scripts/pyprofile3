@@ -57,11 +57,6 @@ else
     gprof2dot -f pstats "profile_${2}.pstats" | dot -Tsvg -x -o "${2}_Profile.svg"
 fi
 
-if [ -x "$(command -v minifyxml)" ]; then
-    [ -f "${HOME}/Diagrams/${2}_Profile.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Profile.svg"
-    [ -f "${HOME}/Diagrams/${2}_CProfile.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_CProfile.svg"
-fi
-
 
 ([ ! -f "${HOME}/Diagrams/${2}_Profile.svg" ] || [ ! -f "${HOME}/Diagrams/${2}_CProfile.svg" ]) && exit 1
 
