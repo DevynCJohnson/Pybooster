@@ -88,11 +88,11 @@ FT_00_WD=
 FT_01_LB=C_analysis
 FT_01_CM=canalysis "%d/%f"
 FT_01_WD=
-FT_02_LB=
-FT_02_CM=
+FT_02_LB=cppcheck
+FT_02_CM=cppcheck -I. -v --language=c --std=c11 --std=posix --enable=style --enable=warning --template=gcc --force --inconclusive "%d/%f"
 FT_02_WD=
-FT_03_LB=cppcheck
-FT_03_CM=cppcheck -I. -v --language=c --std=c11 --std=posix --enable=style --enable=warning --template=gcc --force --inconclusive "%d/%f"
+FT_03_LB=
+FT_03_CM=
 FT_03_WD=
 FT_04_LB=_KWStyle
 FT_04_CM=KWStyle -v -gcc "%d/%f"
@@ -118,7 +118,16 @@ EX_01_WD=
 EX_02_LB=binwalk
 EX_02_CM=binwalk -BEACS "%d/%e"
 EX_02_WD=
-EX_03_LB=Valgrind
+EX_03_LB=Leak-Check (Valgrind)
 EX_03_CM=valgrind --leak-check=full "%d/%e"
 EX_03_WD=
+EX_04_LB=Stack & Global Array Overrun Detector (Valgrind)
+EX_04_CM=valgrind --tool=exp-sgcheck "%d/%e"
+EX_04_WD=
+EX_05_LB=Heap Profiling (Valgrind)
+EX_05_CM=valgrind --tool=massif --massif-out-file='massif.out' --pages-as-heap=yes --read-inline-info=yes --xtree-memory=full --xtree-memory-file=xtmemory.kcg "%d/%e" && ms_print massif.out
+EX_05_WD=
+EX_06_LB=Cache & Branch-Prediction Profiler (Valgrind)
+EX_06_CM=valgrind --tool=cachegrind --cachegrind-out-file='cachegrind.out' --branch-sim=yes "%d/%e" && gprof2dot --format=callgrind ./cachegrind.out | dot -Tsvg -x -o Cachegrind.svg
+EX_06_WD=
 error_regex=

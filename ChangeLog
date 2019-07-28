@@ -1,5 +1,6 @@
 2019-07-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Geany:  Added Valgrind commands to the C file-definition
 	* PyBooster:  Fixed bugs & improved the code in the analysis & graphing scripts
 
 2019-07-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
