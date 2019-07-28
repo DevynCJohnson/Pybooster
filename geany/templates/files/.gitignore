@@ -65,11 +65,19 @@ var/
 #pylintrc
 #pytest.ini
 #tox.ini
+GPATH
+GRTAGS
+GTAGS
+GTAGSROOT
+ID
 .coverage
 .coverage.*
 .coveragerc
 *.geany
 *.geanywb
+.*.geany
+.*.geanywb
+.*.tags
 .style.yapf
 
 # Revision Control Directories
@@ -133,6 +141,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *.gcda
 *.idb
 *.pdb
+*.pstats
 *.su
 
 # Libraries

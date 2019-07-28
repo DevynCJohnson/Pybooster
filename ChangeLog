@@ -1,6 +1,7 @@
 2019-07-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* .gitignore:  Added the `*.pstats` file extension
+	* Geany:  Updated the Git file templates
 	* PyBooster:  Added various ∗.desktop files to `./accessory/menu_files/`
 	* PyBooster:  Fixed bugs & improved the code in the analysis & graphing scripts
 

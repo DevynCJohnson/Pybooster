@@ -1,3 +1,14 @@
+[core]
+bare=false
+bigFileThreshold=256M
+fileMode=true
+hideDotFiles=dotGitOnly
+logAllRefUpdates=true
+repositoryFormatVersion=0
+untrackedCache=false
+warnAmbiguousRefs=true
+whitespace=blank-at-eol,space-before-tab
+
 [apply]
 ignoreWhitespace=false
 
