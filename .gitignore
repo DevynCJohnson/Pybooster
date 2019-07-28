@@ -141,6 +141,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *.gcda
 *.idb
 *.pdb
+*.pstats
 *.su
 
 # Libraries
