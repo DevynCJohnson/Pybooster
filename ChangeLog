@@ -1,3 +1,7 @@
+2019-07-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Fixed bugs & improved the code in the analysis & graphing scripts
+
 2019-07-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Added more packages that can be installed
