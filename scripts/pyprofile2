@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Profile and graph the resource usage of each function in a Python script
 #' @file pyprofile2
-#' @version 2019.07.27
+#' @version 2019.07.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -51,10 +51,10 @@ fi
 
 if [ -n "${cprofile:-}" ]; then
     python2 -m cProfile -o "${HOME}/Diagrams/cprofile_${2}.pstats" $1 $cmd_args
-    gprof2dot --format=pstats --skew=0.7 "${HOME}/Diagrams/cprofile_${2}.pstats" | dot -Tsvg -x -o "${HOME}/Diagrams/${2}_CProfile.svg"
+    [ -f "${HOME}/Diagrams/cprofile_${2}.pstats" ] && gprof2dot --format=pstats --skew=0.7 "${HOME}/Diagrams/cprofile_${2}.pstats" | dot -Tsvg -x -o "${HOME}/Diagrams/${2}_CProfile.svg"
 else
     python2 -m profile -o "${HOME}/Diagrams/profile_${2}.pstats" $1 $cmd_args
-    gprof2dot --format=pstats --skew=0.7 "${HOME}/Diagrams/profile_${2}.pstats" | dot -Tsvg -x -o "${HOME}/Diagrams/${2}_Profile.svg"
+    [ -f "${HOME}/Diagrams/profile_${2}.pstats" ] && gprof2dot --format=pstats --skew=0.7 "${HOME}/Diagrams/profile_${2}.pstats" | dot -Tsvg -x -o "${HOME}/Diagrams/${2}_Profile.svg"
 fi
 
 
