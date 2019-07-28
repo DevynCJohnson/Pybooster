@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Debugger;Development;Graphics;
+Comment=NSight Compute
+Exec=nv-nsight-cu
+GenericName=Nvidia Compute Profiler & Debugger
+Hidden=false
+Icon=/usr/lib/nsight-compute/host/linux-desktop-glibc_2_11_3-x64/nv-nsight-cu.png
+Keywords=cuda;nvidia;profiler;debugger;
+Name=NSight Compute
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1

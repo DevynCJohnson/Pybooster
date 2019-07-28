@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Development;Documentation;
+Comment=Configure and create Doxygen manuals
+Exec=doxywizard
+GenericName=Documentation Generator
+Hidden=false
+Keywords=doxygen;documentation;manual;
+Name=Doxygen
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1

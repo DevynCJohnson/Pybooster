@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Development;
+Comment=C/C++ Static Code Analyzer
+Exec=cppcheck-gui
+GenericName=C/C++ Checker
+Hidden=false
+Keywords=linter;checker;analysis;
+Name=CPP-Check
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1

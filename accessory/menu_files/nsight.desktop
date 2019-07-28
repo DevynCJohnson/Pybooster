@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Debugger;Development;Graphics;
+Comment=Nvidia Profiler & Debugger
+Exec=nsight-sys
+GenericName=Nvidia Profiler
+Hidden=false
+Icon=/usr/lib/nsight-systems/Host-x86_64/nsight-sys.png
+Keywords=gpu;nvidia;programming;
+Name=NSight
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1

@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Debugger;Development;Graphics;
+Comment=Nvidia Visual Profiler
+Exec=computeprof
+GenericName=Nvidia Profiler
+Hidden=false
+Icon=/usr/share/nvidia-visual-profiler/icon.xpm
+Keywords=gpu;nvidia;profiler;
+Name=Nvidia Visual Profiler
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1
