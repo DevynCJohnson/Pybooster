@@ -2,6 +2,7 @@
 
 	* .gitignore:  Added the `*.pstats` file extension
 	* Geany:  Updated the Git file templates
+	* PyBooster:  Added `setfiletimes`
 	* PyBooster:  Added various ∗.desktop files to `./accessory/menu_files/`
 	* PyBooster:  Fixed bugs & improved the code in the analysis & graphing scripts
 
