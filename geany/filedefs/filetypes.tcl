@@ -26,4 +26,4 @@ FT_01_WD=
 EX_00_LB=_Execute
 EX_00_CM=tclsh "%d/%e"
 EX_00_WD=
-error_regex=
+error_regex=^([^:]+):([0-9]+):([0-9:]+)?.*$
