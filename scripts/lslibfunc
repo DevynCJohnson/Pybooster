@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief List library functions and constants in a shared ELF library
 #' @file lslibfunc
-#' @version 2019.03.28
+#' @version 2019.07.29
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -12,7 +12,7 @@
 { [ "${1:-}" = '--help' ] || [ "${1:-}" = 'help' ] || [ "${1:-}" = '-h' ]; } && printf '%s\n' 'Specify ELF binary to scan for global functions and constants and print list to stdout.' && exit 0
 printf '%s\n\n' '* FUNCTIONS *'
 [ -x "$(command -v nm)" ] && nm -D --defined-only "$*" | grep -F ' T ' | awk '{ for (i=3; i<=NF; ++i) { if (NF > 0) { print $i; } } }' | grep -v -E -e "^_"
-printf '%s\n\n' '* CONSTANTS *'
+printf '\n%s\n\n' '* CONSTANTS *'
 [ -x "$(command -v nm)" ] && nm -D --defined-only "$*" | grep -F ' R ' | awk '{ for (i=3; i<=NF; ++i) { if (NF > 0) { print $i; } } }' | grep -v -E -e "^_"
 printf '\n'
 
