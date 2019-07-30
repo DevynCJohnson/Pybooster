@@ -30,11 +30,6 @@ elif [ -z "${2:-}" ]; then
 fi
 
 
-fixsvg() {
-    [ -x "$(command -v minifyxml)" ] && find "${HOME}/Diagrams" -type f -name "*.svg" -exec minifyxml --svg --inplace --remove-all-metadata {} \;
-}
-
-
 [ ! -d "${HOME}/Diagrams" ] && mkdir "${HOME}/Diagrams"
 if [ ! -d "${HOME}/Diagrams" ]; then
     printf 'Failed to create the "Diagrams" directory!\n' >&2
@@ -46,19 +41,37 @@ FILES="$(find "${1}" -type f -name "*.py" -not \( -path "*/.bzr/*" -o -path "*/.
 # shellcheck disable=SC2086
 pyan2 $FILES --dot --colored --grouped --nested-groups > "${HOME}/Diagrams/${2}.dot"
 
-if [ -f "${HOME}/Diagrams/${2}.dot" ]; then
-    dot -q -Gconcentrate=true -Gnewrank=true -Gnodesep=2 -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}.svg" "${HOME}/Diagrams/${2}.dot" &
-    dot -q -Gnewrank=true -Gnodesep=1 -Goverlap=false -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_2.svg" "${HOME}/Diagrams/${2}.dot" &
-    dot -q -Gnewrank=true -Gnodesep=1 -Goverlap=scale -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_3.svg" "${HOME}/Diagrams/${2}.dot" &
-    neato -q -Gnewrank=true -Goverlap=false -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Spring.svg" "${HOME}/Diagrams/${2}.dot" &
-    neato -q -Gnewrank=true -Goverlap=scale -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Spring_2.svg" "${HOME}/Diagrams/${2}.dot" &
-    sfdp -q -Gnewrank=true -Gnodesep=3 -Goverlap=false -Granksep=4 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Undirected.svg" "${HOME}/Diagrams/${2}.dot" &
-    sfdp -q -Gnewrank=true -Gnodesep=1 -Goverlap=scale -Granksep=2 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Undirected_2.svg" "${HOME}/Diagrams/${2}.dot" &
-    twopi -q -Gnewrank=true -Granksep=4 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial.svg" "${HOME}/Diagrams/${2}.dot" &
-    twopi -q -Gnewrank=true -Goverlap=false -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial_2.svg" "${HOME}/Diagrams/${2}.dot" &
-    twopi -q -Gnewrank=true -Goverlap=scale -Granksep=1 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial_3.svg" "${HOME}/Diagrams/${2}.dot" &
+[ ! -f "${HOME}/Diagrams/${2}.dot" ] && exit 1
+
+
+dot -q -Gconcentrate=true -Gnewrank=true -Gnodesep=2 -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}.svg" "${HOME}/Diagrams/${2}.dot" &
+dot -q -Gnewrank=true -Gnodesep=1 -Goverlap=false -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_2.svg" "${HOME}/Diagrams/${2}.dot" &
+dot -q -Gnewrank=true -Gnodesep=1 -Goverlap=scale -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_3.svg" "${HOME}/Diagrams/${2}.dot" &
+neato -q -Gnewrank=true -Goverlap=false -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Spring.svg" "${HOME}/Diagrams/${2}.dot" &
+neato -q -Gnewrank=true -Goverlap=scale -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Spring_2.svg" "${HOME}/Diagrams/${2}.dot" &
+sfdp -q -Gnewrank=true -Gnodesep=3 -Goverlap=false -Granksep=4 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Undirected.svg" "${HOME}/Diagrams/${2}.dot" &
+sfdp -q -Gnewrank=true -Gnodesep=1 -Goverlap=scale -Granksep=2 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Undirected_2.svg" "${HOME}/Diagrams/${2}.dot" &
+twopi -q -Gnewrank=true -Granksep=4 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial.svg" "${HOME}/Diagrams/${2}.dot" &
+twopi -q -Gnewrank=true -Goverlap=false -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial_2.svg" "${HOME}/Diagrams/${2}.dot" &
+twopi -q -Gnewrank=true -Goverlap=scale -Granksep=1 -Tsvg -x -o "${HOME}/Diagrams/${2}_Radial_3.svg" "${HOME}/Diagrams/${2}.dot" &
+sleep 180
+remaining_jobs="$(jobs -p)"
+for jobid in ${remaining_jobs}; do
+    kill -15 "$jobid"
+done
+wait
+if [ -x "$(command -v minifyxml)" ]; then
+    [ -f "${HOME}/Diagrams/${2}.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}.svg" &
+    [ -f "${HOME}/Diagrams/${2}_2.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_2.svg" &
+    [ -f "${HOME}/Diagrams/${2}_3.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_3.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Radial.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Radial.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Radial_2.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Radial_2.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Radial_3.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Radial_3.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Spring.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Spring.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Spring_2.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Spring_2.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Undirected.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Undirected.svg" &
+    [ -f "${HOME}/Diagrams/${2}_Undirected_2.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Undirected_2.svg" &
     wait
-    fixsvg
 fi
 
 
