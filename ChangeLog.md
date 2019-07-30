@@ -1,3 +1,9 @@
+# 2019-07-30  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Tweaked some of the file-definitions
+- **lslibfunc:**  Tweaked the formatting of the output
+- **PyBooster:**  Fixed bugs & improved the code in the analysis & graphing scripts
+
 # 2019-07-29  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **Geany:**  Fixed some colorschemes, fixed some snippets, & added more error-regex patterns
