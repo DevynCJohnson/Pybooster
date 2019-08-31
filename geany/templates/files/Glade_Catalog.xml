@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glade-catalog version="3.20" targetable="3.18,3.16,3.14,3.12,3.10,3.8,3.6,3.4,3.2,3.0" name="gtk+" library="gtkextra-x11" icon-prefix="gtk" domain="glade" book="GtkExtra">
+
+  <glade-widget-classes>
+
+    <glade-widget-class toplevel="False" title="2D scientific plots" name="GtkPlot" generic-name="2D plot"/>
+    <glade-widget-class toplevel="False" title="Color combo widget" name="GtkColorCombo" generic-name="color combo"/>
+    <glade-widget-class toplevel="False" title="PostScript Fonts handling" name="GtkPSFont" generic-name="font handling"/>
+    <glade-widget-class toplevel="False" title="Spreadsheet widget" name="GtkSheet" generic-name="spreadsheet"/>
+
+  </glade-widget-classes>
+
+  <glade-widget-group title="GTK Extra Widgets" name="gtkextra">
+    <glade-widget-class-ref name="GtkColorCombo"/>
+    <glade-widget-class-ref name="GtkPlot"/>
+    <glade-widget-class-ref name="GtkPSFont"/>
+    <glade-widget-class-ref name="GtkSheet"/>
+  </glade-widget-group>
+
+</glade-catalog>
