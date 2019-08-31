@@ -481,10 +481,10 @@ Author: Devyn Collier Johnson
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">5</property>
-        <property name="margin_right">5</property>
-        <property name="margin_top">5</property>
-        <property name="margin_bottom">5</property>
+        <property name="margin_left">4</property>
+        <property name="margin_right">4</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
@@ -1013,7 +1013,7 @@ Utility</property>
           <object class="GtkLabel" id="label_about">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Version: 2019.03.28
+            <property name="label">Version: 2019.08.31
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
             <property name="use_markup">True</property>
