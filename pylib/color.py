@@ -394,9 +394,11 @@ def hsv2rgb(_hue: float, _sat: float, _value: float, _rgb_float_notation: bool =
 
     >>> hsv2rgb(0.5, 0.5, 0.5, False)
     (64, 128, 128)
+    >>> hsv2rgb(0.0, 0.0, 0.0, False)
+    (0, 0, 0)
     """
     if _sat == 0.0:
-        return _value, _value, _value
+        return (_value, _value, _value) if _rgb_float_notation else (int(_value), int(_value), int(_value))
     _i: int = int(_hue * 6.0)
     _f: float = (_hue * 6.0) - _i
     _p: float = _value * (1.0 - _sat)
