@@ -63,7 +63,7 @@ known-third-party=enchant
 logging-modules=logging
 
 [MASTER]
-extension-pkg-whitelist=
+extension-pkg-whitelist=numpy,pyodbc
 ignore-patterns=
 ignore=.bzr,.cvs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,CVS
 jobs=1
@@ -109,11 +109,12 @@ spelling-store-unknown-words=no
 
 [TYPECHECK]
 contextmanager-decorators=contextlib.contextmanager
-generated-members=
+generated-members=cupy.*,numpy.*
 ignore-mixin-members=yes
 ignore-on-opaque-inference=yes
 ignored-classes=optparse.Values,thread._local,_thread._local
 ignored-modules=
+ignored-patterns=
 missing-member-hint-distance=1
 missing-member-hint=yes
 missing-member-max-choices=3
