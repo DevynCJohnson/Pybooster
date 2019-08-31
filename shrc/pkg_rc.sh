@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shell RC script providing universal aliases for various package management commands
 #' @file pkg_rc.sh
-#' @version 2019.04.06
+#' @version 2019.08.31
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -311,34 +311,32 @@ fi
 
 if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
     # Autocomplete package names for the system's package installation, uninstallation, and reinstallation commands
-    if [ -n "$(command -v pkglsall)" ] && [ -n "$(command -v pkginstall)" ]; then
-        _pkginstall_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; pkglsall "$2" > "$tmpfile"; IFS= read -r COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
-        if [ -n "$(command -v _pkginstall_autocomplete)" ]; then
-            # shellcheck disable=SC2039
-            complete -F _pkginstall_autocomplete -o nospace pkginstall
-            # shellcheck disable=SC2039
-            complete -F _pkginstall_autocomplete -o nospace pkguninstall
-            # shellcheck disable=SC2039
-            complete -F _pkginstall_autocomplete -o nospace pkgreinstall
-            # shellcheck disable=SC2039
-            readonly -f _pkginstall_autocomplete
-        fi
+    if [ -n "$(command -v pkglsall)" ] && [ -n "$(command -v pkginstall)" ] && [ -z "$(command -v _pkginstall_autocomplete)" ]; then
+        # shellcheck disable=SC2039
+        _pkginstall_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; pkglsall "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        # shellcheck disable=SC2039
+        complete -F _pkginstall_autocomplete -o nospace pkginstall
+        # shellcheck disable=SC2039
+        complete -F _pkginstall_autocomplete -o nospace pkguninstall
+        # shellcheck disable=SC2039
+        complete -F _pkginstall_autocomplete -o nospace pkgreinstall
+        # shellcheck disable=SC2039
+        readonly -f _pkginstall_autocomplete
     fi
     # Autocomplete Python package names for pip3
-    if [ -n "$(command -v pip3)" ]; then
+    if [ -n "$(command -v pip3)" ] && [ -z "$(command -v _pip3_autocomplete)" ]; then
         _pip_tmp() { pip3 list --format=columns | awk '{ if (NR > 2) { print } }' | cut -d ' ' -f 1 | awk "/^${1}/"; }
-        _pip3_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; _pip_tmp "$2" > "$tmpfile"; IFS= read -r COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
-        if [ -n "$(command -v _pip3_autocomplete)" ]; then
-            # shellcheck disable=SC2039
-            complete -F _pip3_autocomplete -o nospace pyinstall
-            # shellcheck disable=SC2039
-            complete -F _pip3_autocomplete -o nospace pyreinstall
-            # shellcheck disable=SC2039
-            complete -F _pip3_autocomplete -o nospace pyuninstall
-            # shellcheck disable=SC2039
-            complete -F _pip3_autocomplete -o nospace pyupdate
-            # shellcheck disable=SC2039
-            readonly -f _pip3_autocomplete
-        fi
+        # shellcheck disable=SC2039
+        _pip3_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; _pip_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        # shellcheck disable=SC2039
+        complete -F _pip3_autocomplete -o nospace pyinstall
+        # shellcheck disable=SC2039
+        complete -F _pip3_autocomplete -o nospace pyreinstall
+        # shellcheck disable=SC2039
+        complete -F _pip3_autocomplete -o nospace pyuninstall
+        # shellcheck disable=SC2039
+        complete -F _pip3_autocomplete -o nospace pyupdate
+        # shellcheck disable=SC2039
+        readonly -f _pip3_autocomplete
     fi
 fi

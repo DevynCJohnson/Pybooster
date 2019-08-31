@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shell RC script providing aliases for various AWS commands
 #' @file aws_rc.sh
-#' @version 2019.03.28
+#' @version 2019.08.31
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section INSTALL_AWSCLI
@@ -618,7 +618,7 @@ aws_refresh() {
 if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "$(command -v mapfile)" ] && [ -n "$(command -v complete)" ]; then
     # Autocomplete AWS Job Queues
     if [ -n "$(command -v bat_lsjobq)" ]; then
-        _jobq_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_JOB_QUEUES}" | awk "/^${2}/" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        _jobq_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; echo "${AWS_JOB_QUEUES}" | awk "/^${2}/" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _jobq_autocomplete)" ]; then
             complete -F _jobq_autocomplete -o nospace bat_lsjobs
             complete -F _jobq_autocomplete -o nospace bat_lsjobs_failed
@@ -633,7 +633,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
     fi
     # Autocomplete AWS ECR Repositories
     if [ -n "$(command -v ecr_lsrepos)" ]; then
-        _ecr_repo_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_ECR_REPOS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        _ecr_repo_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; echo "${AWS_ECR_REPOS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _ecr_repo_autocomplete)" ]; then
             [ -x "$(command -v docker)" ] && complete -F _ecr_repo_autocomplete -o nospace dock_buildpush
             complete -F _ecr_repo_autocomplete -o nospace ecr_addtag
@@ -647,7 +647,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
     fi
     # Autocomplete AWS Lambda Functions
     if [ -n "$(command -v ecr_lsrepos)" ]; then
-        _lambda_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; echo "${AWS_LAMBDAS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        _lambda_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; echo "${AWS_LAMBDAS}" | awk "/^${2}/" > "$tmpfile" && mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _lambda_autocomplete)" ]; then
             complete -F _lambda_autocomplete -o nospace lamda_rm
         fi

@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Universal setup script for Posix-compatible shells
 #' @file profile
-#' @version 2019.07.07
+#' @version 2019.08.31
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #'
@@ -806,7 +806,7 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
     # Autocomplete make targets
     if [ -n "$(command -v make)" ]; then
         _make_target_tmp() { make -p -q -s | sed '/^.+:=.*$/d; /^#.*$/d; /^\-.*$/d;' | grep -o -E '^[a-zA-Z0-9_\-]+:.*$' | cut -d ':' -f 1 | awk "/^${1}/"; }
-        _make_target_autocomplete() { tmpfile="/tmp/$(rndfname).tmp"; _make_target_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
+        _make_target_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; _make_target_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _make_autocomplete)" ]; then
             complete -F _make_target_autocomplete -o nospace make
             readonly -f _make_target_autocomplete
