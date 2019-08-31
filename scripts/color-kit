@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2019.07.14
+@version 2019.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -41,8 +41,9 @@ except ImportError:
 from pybooster.color import cmyk2rgb, hsi2rgb, hsv2rgb, rgb2cmyk, rgb2hsi, rgb2hsv, rgb2yiq, yiq2rgb
 
 from gi import require_version
+require_version(r'Gdk', r'3.0')
 require_version(r'Gtk', r'3.0')
-from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
+from gi.repository import Gdk, Gtk  # noqa: E402  # pylint: disable=C0413
 
 
 # GLOBALS #
@@ -62,7 +63,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Color-Kit is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -102,12 +103,17 @@ Author: Devyn Collier Johnson
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkColorChooserWidget" id="cc">
+            <property name="height_request">400</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="margin_top">8</property>
+            <property name="margin_bottom">8</property>
             <property name="rgba">rgb(255,255,255)</property>
             <property name="show_editor">True</property>
+            <signal name="event" handler="correct_editor_switch" object="switch_editor" swapped="no"/>
+            <signal name="focus" handler="correct_editor_switch" object="switch_editor" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -121,13 +127,14 @@ Author: Devyn Collier Johnson
             <property name="can_focus">False</property>
             <property name="margin_left">5</property>
             <property name="margin_right">5</property>
-            <property name="column_homogeneous">True</property>
+            <property name="column_spacing">4</property>
             <child>
               <object class="GtkLabel" id="About">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">4</property>
-                <property name="label" translatable="yes">Version: 2019.03.26
+                <property name="margin_left">8</property>
+                <property name="margin_right">16</property>
+                <property name="label" translatable="yes">Version: 2019.08.31
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -148,7 +155,23 @@ Created by Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">Convert selected color</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_left">16</property>
+                <property name="margin_right">8</property>
                 <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="switch_editor">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">Toggle between the color-chooser (default) and the color-editor</property>
+                <property name="margin_left">16</property>
+                <property name="margin_right">16</property>
+                <signal name="state-set" handler="toggle_editor" object="cc" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -179,8 +202,8 @@ Created by Devyn Collier Johnson
           <object class="GtkGrid" id="convgrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_right">10</property>
+            <property name="margin_left">16</property>
+            <property name="margin_right">16</property>
             <property name="column_spacing">20</property>
             <child>
               <object class="GtkLabel" id="l_rgb">
@@ -415,8 +438,8 @@ NTSC color model
             <property name="tooltip_text" translatable="yes">Close Dialog</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_top">8</property>
+            <property name="margin_bottom">8</property>
             <property name="use_stock">True</property>
             <signal name="clicked" handler="_winexit" swapped="no"/>
           </object>
@@ -454,21 +477,40 @@ def rgba_array(_rgba: object) -> list:
     return _rgba_array
 
 
-def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple) -> None:
+def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple, update_cc: bool = True) -> None:
     """Place the values in the entry boxes."""
     ENTRY_CMYK.set_text(str(_cmyk))
     ENTRY_HSI.set_text(str(_hsi))
     ENTRY_HSV.set_text(str(_hsv))
     ENTRY_RGB.set_text(str(_rgb))
     ENTRY_YIQ.set_text(str(_yiq))
+    if update_cc:
+        _alpha: float = COLOR_CHOOSER.get_rgba().alpha
+        _red: float = float(_rgb[0]) / 255.0
+        _green: float = float(_rgb[1]) / 255.0
+        _blue: float = float(_rgb[2]) / 255.0
+        COLOR_CHOOSER.set_rgba(Gdk.RGBA(_red, _green, _blue, _alpha))
+
+
+def toggle_editor(cc_widget: Gtk.ColorChooserWidget, toggle_state: bool) -> None:
+    """Toggle between the color-chooser and the color-editor"""
+    _rgba: Gdk.RGBA = cc_widget.get_rgba()
+    cc_widget.set_property(r'show-editor', bool(not toggle_state))
+    cc_widget.set_rgba(_rgba)
+
+
+def correct_editor_switch(switch_editor: Gtk.Switch, gtk_signal: Gdk.Event) -> None:
+    """Ensure that the switch for the color-chooser is displaying the correct value"""
+    if COLOR_CHOOSER.get_property(r'show-editor') == switch_editor.get_state() and gtk_signal.type in {Gdk.EventType.FOCUS_CHANGE, Gdk.EventType.MOTION_NOTIFY}:
+        switch_editor.set_state(bool(not COLOR_CHOOSER.get_property(r'show-editor')))
 
 
 def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
-    """Convert selected color to *."""
-    _rgba = cc_widget.get_rgba()
-    _red: int = int(float(_rgba.red) * 255.0)
-    _green: int = int(float(_rgba.green) * 255.0)
-    _blue: int = int(float(_rgba.blue) * 255.0)
+    """Convert selected color to one of many formats."""
+    _rgba: Gdk.RGBA = cc_widget.get_rgba()
+    _red: int = int(round(float(_rgba.red) * 255.0))
+    _green: int = int(round(float(_rgba.green) * 255.0))
+    _blue: int = int(round(float(_rgba.blue) * 255.0))
     # Conversions
     _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
     _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
@@ -476,12 +518,12 @@ def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
     _rgb: tuple = (_red, _green, _blue)
     _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
     # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq, False)
 
 
 def conv_rgb(entry_widget: Gtk.Entry) -> None:
-    """Convert RGB to *."""
-    _rgb_entry = entry_widget.get_text()
+    """Convert RGB to one of many formats."""
+    _rgb_entry: str = entry_widget.get_text()
     _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
     _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
     _blue: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\3', _rgb_entry))
@@ -496,8 +538,8 @@ def conv_rgb(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_hsi(entry_widget: Gtk.Entry) -> None:
-    """Convert HSL to *."""
-    _hsi_entry = entry_widget.get_text()
+    """Convert HSL to one of many formats."""
+    _hsi_entry: str = entry_widget.get_text()
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsi_entry))
     _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsi_entry))
     _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsi_entry))
@@ -512,8 +554,8 @@ def conv_hsi(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_hsv(entry_widget: Gtk.Entry) -> None:
-    """Convert HSV to *."""
-    _hsv_entry = entry_widget.get_text()
+    """Convert HSV to one of many formats."""
+    _hsv_entry: str = entry_widget.get_text()
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
     _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
     _value: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsv_entry))
@@ -528,8 +570,8 @@ def conv_hsv(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_cmyk(entry_widget: Gtk.Entry) -> None:
-    """Convert CMYK to *."""
-    _cmyk_entry = entry_widget.get_text()
+    """Convert CMYK to one of many formats."""
+    _cmyk_entry: str = entry_widget.get_text()
     _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
     _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
     _yellow: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\3', _cmyk_entry))
@@ -545,8 +587,8 @@ def conv_cmyk(entry_widget: Gtk.Entry) -> None:
 
 
 def conv_yiq(entry_widget: Gtk.Entry) -> None:
-    """Convert YIQ to *."""
-    _yiq = entry_widget.get_text()
+    """Convert YIQ to one of many formats."""
+    _yiq: str = entry_widget.get_text()
     _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq))
     _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq))
     _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq))
@@ -564,11 +606,12 @@ def conv_yiq(entry_widget: Gtk.Entry) -> None:
 
 if __name__ == '__main__':
     # Build GUI
-    USER_INTERFACE = Gtk.Builder()
+    USER_INTERFACE: Gtk.Builder = Gtk.Builder()
     USER_INTERFACE.add_from_string(buffer=_GCOLOR)
     del _GCOLOR
     # Get GTK Objects
     UI_GET_OBJECT = USER_INTERFACE.get_object
+    COLOR_CHOOSER = UI_GET_OBJECT(r'cc')
     ENTRY_CMYK = UI_GET_OBJECT(r'entry_cmyk')
     ENTRY_HSI = UI_GET_OBJECT(r'entry_hsi')
     ENTRY_HSV = UI_GET_OBJECT(r'entry_hsv')
@@ -582,7 +625,9 @@ if __name__ == '__main__':
         r'conv_hsi': conv_hsi,
         r'conv_hsv': conv_hsv,
         r'conv_rgb': conv_rgb,
-        r'conv_yiq': conv_yiq
+        r'conv_yiq': conv_yiq,
+        r'correct_editor_switch': correct_editor_switch,
+        r'toggle_editor': toggle_editor
     })
     # Show Window
     Gtk.main()
