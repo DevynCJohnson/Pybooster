@@ -6,7 +6,7 @@
 
 @file color.py
 @package pybooster.color
-@version 2019.07.14
+@version 2019.08.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -449,9 +449,9 @@ def rgb2cmyk(_red: Union[float, int], _green: Union[float, int], _blue: Union[fl
         _green /= 255.0
         _blue /= 255.0
     _black: float = 1.0 - max(_red, _green, _blue)
-    _cyan: float = (1.0 - _red - _black) / (1.0 - _black)
-    _magenta: float = (1.0 - _green - _black) / (1.0 - _black)
-    _yellow: float = (1.0 - _blue - _black) / (1.0 - _black)
+    _cyan: float = 0.0 if _black >= 1.0 else (1.0 - _red - _black) / (1.0 - _black)
+    _magenta: float = 0.0 if _black >= 1.0 else (1.0 - _green - _black) / (1.0 - _black)
+    _yellow: float = 0.0 if _black >= 1.0 else (1.0 - _blue - _black) / (1.0 - _black)
     return _cyan, _magenta, _yellow, _black
 
 
@@ -513,11 +513,14 @@ def rgb2hsi(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
         _green = 0.0
     if isinstance(_blue, str) or _green < 0.0:
         _blue = 0.0
-    _intensity: float = (_red + _green + _blue) / 3.0
+    _rgb_added: float = _red + _green + _blue
+    _intensity: float = _rgb_added / 3.0
     _rgbmin: float = min(_red, _green, _blue)
-    _sat = 1.0 - _rgbmin * (3.0 / (_red + _green + _blue))
-    _x0 = 0.0 if _red == _green and _green == _blue else sqrt(((_red - _green) * (_red - _green)) + ((_red - _blue) * (_green - _blue)))
-    if _green >= _blue:
+    _sat: float = 0.0 if _rgb_added <= 0.0 else 1.0 - _rgbmin * (3.0 / _rgb_added)
+    _x0: float = 0.0 if _red == _green and _green == _blue else sqrt(((_red - _green) * (_red - _green)) + ((_red - _blue) * (_green - _blue)))
+    if _x0 == 0 or _rgb_added == 0.0:
+        _hue: float = 0.0
+    elif _green >= _blue:
         _hue = acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
     else:
         _hue = 6.283185307179586 - acos((0.5 * ((_red - _green) + (_red - _blue)) / _x0))
