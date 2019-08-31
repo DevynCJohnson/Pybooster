@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -78,7 +78,7 @@ Author: Devyn Collier Johnson
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="no">_File</property>
+                <property name="label">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="file_menu">
@@ -93,7 +93,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Open a binary file</property>
+                        <property name="tooltip_text">Open a binary file</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -107,7 +107,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Save</property>
+                        <property name="tooltip_text">Save</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -121,7 +121,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Select where to save the data</property>
+                        <property name="tooltip_text">Select where to save the data</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -141,7 +141,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Close the application</property>
+                        <property name="tooltip_text">Close the application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -166,10 +166,10 @@ Author: Devyn Collier Johnson
           <object class="GtkNotebook" id="tabs">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
             <property name="scrollable">True</property>
             <property name="enable_popup">True</property>
             <signal name="switch-page" handler="show_hide_save" swapped="no"/>
@@ -200,8 +200,8 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">File properties &amp; information</property>
-                <property name="label" translatable="no">File Properties</property>
+                <property name="tooltip_text">File properties &amp; information</property>
+                <property name="label">File Properties</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
@@ -235,9 +235,9 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the static symbol table
+                <property name="tooltip_text">Display the static symbol table
 objdump --line-numbers --special-syms --syms</property>
-                <property name="label" translatable="no">Symbol Table</property>
+                <property name="label">Symbol Table</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -274,9 +274,9 @@ objdump --line-numbers --special-syms --syms</property>
               <object class="GtkLabel" id="tab_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the dynamic symbol table entries
+                <property name="tooltip_text">Display the dynamic symbol table entries
 objdump --line-numbers --dynamic-syms --special-syms</property>
-                <property name="label" translatable="no">Dynamic Symbols</property>
+                <property name="label">Dynamic Symbols</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -313,9 +313,9 @@ objdump --line-numbers --dynamic-syms --special-syms</property>
               <object class="GtkLabel" id="tab_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display symbols found by nm
+                <property name="tooltip_text">Display symbols found by nm
 nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic</property>
-                <property name="label" translatable="no">nm (Symbol List)</property>
+                <property name="label">nm (Symbol List)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -352,9 +352,9 @@ nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-si
               <object class="GtkLabel" id="tab_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the dynamic relocation entries
+                <property name="tooltip_text">Display the dynamic relocation entries
 objdump --dynamic-reloc --line-numbers</property>
-                <property name="label" translatable="no">Dynamic Relocation</property>
+                <property name="label">Dynamic Relocation</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -390,9 +390,9 @@ objdump --dynamic-reloc --line-numbers</property>
               <object class="GtkLabel" id="tab_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code
+                <property name="tooltip_text">Display the disassembled code
 ndisasm</property>
-                <property name="label" translatable="no">Disassembly</property>
+                <property name="label">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -428,9 +428,9 @@ ndisasm</property>
               <object class="GtkLabel" id="tab_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code using Intel syntax
+                <property name="tooltip_text">Display the disassembled code using Intel syntax
 objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</property>
-                <property name="label" translatable="no">Disassembly (Intel)</property>
+                <property name="label">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -466,9 +466,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</
               <object class="GtkLabel" id="tab_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code using AT&amp;T syntax
+                <property name="tooltip_text">Display the disassembled code using AT&amp;T syntax
 objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</property>
-                <property name="label" translatable="no">Disassembly (AT&amp;T)</property>
+                <property name="label">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -505,9 +505,9 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
               <object class="GtkLabel" id="tab_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display information returned by readelf
+                <property name="tooltip_text">Display information returned by readelf
 readelf --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide</property>
-                <property name="label" translatable="no">ReadElf</property>
+                <property name="label">ReadElf</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -544,9 +544,9 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               <object class="GtkLabel" id="tab_all_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display all file headers
+                <property name="tooltip_text">Display all file headers
 objdump --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide</property>
-                <property name="label" translatable="no">All Headers</property>
+                <property name="label">All Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -583,9 +583,9 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
               <object class="GtkLabel" id="tab_header">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the file header
+                <property name="tooltip_text">Display the file header
 objdump --file-headers --file-offsets</property>
-                <property name="label" translatable="no">File Header</property>
+                <property name="label">File Header</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -622,9 +622,9 @@ objdump --file-headers --file-offsets</property>
               <object class="GtkLabel" id="tab_priv_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the private headers
+                <property name="tooltip_text">Display the private headers
 objdump --file-offsets --private-headers</property>
-                <property name="label" translatable="no">Private Headers</property>
+                <property name="label">Private Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -661,9 +661,9 @@ objdump --file-offsets --private-headers</property>
               <object class="GtkLabel" id="tab_sec_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the section headers
+                <property name="tooltip_text">Display the section headers
 objdump --file-offsets --section-headers</property>
-                <property name="label" translatable="no">Section Headers</property>
+                <property name="label">Section Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -700,10 +700,10 @@ objdump --file-offsets --section-headers</property>
               <object class="GtkLabel" id="tab_size">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the results of size
+                <property name="tooltip_text">Display the results of size
 size --format=Berkeley
 size --format=SysV</property>
-                <property name="label" translatable="no">Size</property>
+                <property name="label">Size</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -740,9 +740,9 @@ size --format=SysV</property>
               <object class="GtkLabel" id="tab_str">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the contained strings
+                <property name="tooltip_text">Display the contained strings
 strings --all</property>
-                <property name="label" translatable="no">Strings</property>
+                <property name="label">Strings</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -779,8 +779,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_func">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">List all of the found functions</property>
-                <property name="label" translatable="no">Functions</property>
+                <property name="tooltip_text">List all of the found functions</property>
+                <property name="label">Functions</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -817,8 +817,8 @@ strings --all</property>
               <object class="GtkLabel" id="tab_const">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">List all of the found constants</property>
-                <property name="label" translatable="no">Constants</property>
+                <property name="tooltip_text">List all of the found constants</property>
+                <property name="label">Constants</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -848,8 +848,8 @@ strings --all</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="no">Program-Analyzer
-Version: 2019.06.23
+                        <property name="label">Program-Analyzer
+Version: 2019.08.31
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -866,7 +866,7 @@ Author: Devyn Collier Johnson
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
-                        <property name="label" translatable="no">For more programs,
+                        <property name="label">For more programs,
 - Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
                         <property name="use_markup">True</property>
@@ -921,8 +921,8 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Information about Program-Analyzer and GNU-binutils</property>
-                <property name="label" translatable="no">About</property>
+                <property name="tooltip_text">Information about Program-Analyzer and GNU-binutils</property>
+                <property name="label">About</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -943,22 +943,22 @@ Author: Devyn Collier Johnson
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_bottom">4</property>
             <property name="row_homogeneous">True</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkLabel" id="l_file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">File location (pathname)</property>
+                <property name="tooltip_text">File location (pathname)</property>
                 <property name="halign">start</property>
-                <property name="margin_left">5</property>
-                <property name="margin_right">5</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
-                <property name="label" translatable="no">PathName</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
+                <property name="label">PathName</property>
                 <property name="selectable">True</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
@@ -974,10 +974,10 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="no">Save the currently displayed data</property>
+                <property name="tooltip_text">Save the currently displayed data</property>
                 <property name="halign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="gtk_saveas" swapped="no"/>
@@ -993,10 +993,10 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="no">Exit Application</property>
+                <property name="tooltip_text">Exit Application</property>
                 <property name="halign">end</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_winexit" object="ezwin" swapped="no"/>
@@ -1030,12 +1030,12 @@ Author: Devyn Collier Johnson
             <property name="height_request">25</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="margin_start">10</property>
             <property name="margin_end">10</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
           </object>
           <packing>
             <property name="expand">False</property>
