@@ -53,8 +53,8 @@ Author: Devyn Collier Johnson
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">Question (Yes/No/Quit)</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
             <property name="icon_name">dialog-question</property>
             <property name="use_fallback">True</property>
             <property name="icon_size">6</property>
@@ -71,10 +71,10 @@ Author: Devyn Collier Johnson
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">Question (Y/N/Quit)</property>
             <property name="halign">center</property>
-            <property name="margin_left">10</property>
-            <property name="margin_right">10</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
+            <property name="margin_left">8</property>
+            <property name="margin_right">8</property>
+            <property name="margin_top">8</property>
+            <property name="margin_bottom">8</property>
             <property name="label" translatable="yes">Question (Y/N/Quit)</property>
             <property name="wrap">True</property>
             <property name="track_visited_links">False</property>
@@ -91,8 +91,8 @@ Author: Devyn Collier Johnson
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">Select an answer</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkButton" id="btn1">
@@ -103,8 +103,8 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">Yes</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_yes" swapped="no"/>
               </object>
@@ -122,8 +122,8 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">No</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_no" swapped="no"/>
               </object>
@@ -141,8 +141,8 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">Quit</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_quit" swapped="no"/>
               </object>

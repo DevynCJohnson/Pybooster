@@ -53,8 +53,8 @@ Author: Devyn Collier Johnson
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">Enter Password (Cancel)</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
             <property name="icon_name">dialog-password</property>
             <property name="use_fallback">True</property>
             <property name="icon_size">6</property>
@@ -71,10 +71,10 @@ Author: Devyn Collier Johnson
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">Enter Password (Cancel)</property>
             <property name="halign">center</property>
-            <property name="margin_left">10</property>
-            <property name="margin_right">10</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
+            <property name="margin_left">8</property>
+            <property name="margin_right">8</property>
+            <property name="margin_top">8</property>
+            <property name="margin_bottom">8</property>
             <property name="label" translatable="yes">Enter Password (Cancel)</property>
             <property name="use_markup">True</property>
             <property name="wrap">True</property>
@@ -91,9 +91,9 @@ Author: Devyn Collier Johnson
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_top">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_top">4</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkButton" id="btn2">
@@ -104,8 +104,8 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">Cancel</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_winexit" object="ezwin" swapped="no"/>
               </object>
@@ -123,8 +123,8 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text" translatable="yes">Submit</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <signal name="clicked" handler="_submit_text" object="entry1" swapped="no"/>
               </object>
               <packing>
@@ -159,10 +159,10 @@ Author: Devyn Collier Johnson
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="tooltip_text" translatable="yes">Enter Password</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
             <property name="visibility">False</property>
             <property name="invisible_char">•</property>
             <property name="primary_icon_name">security-medium</property>

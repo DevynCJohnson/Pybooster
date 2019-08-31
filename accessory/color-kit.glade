@@ -74,8 +74,8 @@ Author: Devyn Collier Johnson
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="column_spacing">4</property>
             <child>
               <object class="GtkLabel" id="About">
@@ -153,7 +153,7 @@ Created by Devyn Collier Johnson
             <property name="can_focus">False</property>
             <property name="margin_left">16</property>
             <property name="margin_right">16</property>
-            <property name="column_spacing">20</property>
+            <property name="column_spacing">16</property>
             <child>
               <object class="GtkLabel" id="l_rgb">
                 <property name="visible">True</property>
