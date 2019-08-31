@@ -1,3 +1,15 @@
+# 2019-08-31  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **exewalk:**  Tweaked the command parameters
+- **extras_rc.sh:**  Tweaked `findr` & `findrx`
+- **Geany:**  Added more tags to std.css.tags in Geany
+- **Geany:**  Created a fully compliant GTK3 version of the interface for Geany
+- **Geany:**  Tweaked some of the file-definitions
+- **Geany:**  Tweaked the `.gitconfig` template in Geany
+- **pylintrc:**  Added cupy & numpy to the extension whitelist
+- **shrc:**  Fixed the autocompletion features in the shrc scripts
+- **snippets.conf:**  Added more snippets & tweaked existing code in snippets.conf for Geany
+
 # 2019-07-30  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **Geany:**  Tweaked some of the file-definitions
