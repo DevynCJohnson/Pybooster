@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2019.07.14
+@version 2019.09.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -85,7 +85,6 @@ Author: Devyn Collier Johnson
   <!-- interface-description Display the symbols and tables of a compiled program or library -->
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
-  <object class="GtkTextBuffer" id="buf_all_headers"/>
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
   <object class="GtkTextBuffer" id="buf_dis_att"/>
@@ -93,12 +92,12 @@ Author: Devyn Collier Johnson
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
   <object class="GtkTextBuffer" id="buf_func"/>
-  <object class="GtkTextBuffer" id="buf_header"/>
+  <object class="GtkTextBuffer" id="buf_headers"/>
+  <object class="GtkTextBuffer" id="buf_ldconfig"/>
+  <object class="GtkTextBuffer" id="buf_ldd"/>
   <object class="GtkTextBuffer" id="buf_nm_sym"/>
-  <object class="GtkTextBuffer" id="buf_priv_headers"/>
   <object class="GtkTextBuffer" id="buf_prop"/>
   <object class="GtkTextBuffer" id="buf_readelf"/>
-  <object class="GtkTextBuffer" id="buf_sec_headers"/>
   <object class="GtkTextBuffer" id="buf_size"/>
   <object class="GtkTextBuffer" id="buf_str"/>
   <object class="GtkTextBuffer" id="buf_sym"/>
@@ -135,7 +134,7 @@ Author: Devyn Collier Johnson
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="no">_File</property>
+                <property name="label">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="file_menu">
@@ -150,7 +149,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Open a binary file</property>
+                        <property name="tooltip_text">Open a binary file</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -164,7 +163,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Save</property>
+                        <property name="tooltip_text">Save</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -178,7 +177,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Select where to save the data</property>
+                        <property name="tooltip_text">Select where to save the data</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -198,7 +197,7 @@ Author: Devyn Collier Johnson
                         <property name="height_request">25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="no">Close the application</property>
+                        <property name="tooltip_text">Close the application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
@@ -223,10 +222,10 @@ Author: Devyn Collier Johnson
           <object class="GtkNotebook" id="tabs">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
             <property name="scrollable">True</property>
             <property name="enable_popup">True</property>
             <signal name="switch-page" handler="show_hide_save" swapped="no"/>
@@ -257,8 +256,8 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_prop">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">File properties &amp; information</property>
-                <property name="label" translatable="no">File Properties</property>
+                <property name="tooltip_text">File properties &amp; information</property>
+                <property name="label">File Properties</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
@@ -292,9 +291,9 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_sym_tbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the static symbol table
+                <property name="tooltip_text">Display the static symbol table
 objdump --line-numbers --special-syms --syms</property>
-                <property name="label" translatable="no">Symbol Table</property>
+                <property name="label">Symbol Table</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -331,9 +330,9 @@ objdump --line-numbers --special-syms --syms</property>
               <object class="GtkLabel" id="tab_dyn_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the dynamic symbol table entries
+                <property name="tooltip_text">Display the dynamic symbol table entries
 objdump --line-numbers --dynamic-syms --special-syms</property>
-                <property name="label" translatable="no">Dynamic Symbols</property>
+                <property name="label">Dynamic Symbols</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -370,9 +369,9 @@ objdump --line-numbers --dynamic-syms --special-syms</property>
               <object class="GtkLabel" id="tab_nm_sym">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display symbols found by nm
+                <property name="tooltip_text">Display symbols found by nm
 nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic</property>
-                <property name="label" translatable="no">nm (Symbol List)</property>
+                <property name="label">nm (Symbol List)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
@@ -409,14 +408,54 @@ nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-si
               <object class="GtkLabel" id="tab_dyn_reloc">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the dynamic relocation entries
+                <property name="tooltip_text">Display the dynamic relocation entries
 objdump --dynamic-reloc --line-numbers</property>
-                <property name="label" translatable="no">Dynamic Relocation</property>
+                <property name="label">Dynamic Relocation</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Dynamic Relocation</property>
                 <property name="position">4</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrwin_ldd">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
+                <child>
+                  <object class="GtkTextView" id="textview_ldd">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="buffer">buf_ldd</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Dependencies</property>
+                <property name="position">5</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_ldd">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Display Object Dependencies
+ldd --verbose
+ldd --unused --verbose</property>
+                <property name="label">Dependencies</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Dependencies</property>
+                <property name="position">5</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -439,7 +478,7 @@ objdump --dynamic-reloc --line-numbers</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -447,14 +486,14 @@ objdump --dynamic-reloc --line-numbers</property>
               <object class="GtkLabel" id="tab_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code
+                <property name="tooltip_text">Display the disassembled code
 ndisasm</property>
-                <property name="label" translatable="no">Disassembly</property>
+                <property name="label">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -477,7 +516,7 @@ ndisasm</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">6</property>
+                <property name="position">7</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -485,14 +524,14 @@ ndisasm</property>
               <object class="GtkLabel" id="tab_dis_intel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code using Intel syntax
-objdump --disassemble --show-raw-insn --disassembler-options=intel --source</property>
-                <property name="label" translatable="no">Disassembly (Intel)</property>
+                <property name="tooltip_text">Display the disassembled code using Intel syntax
+objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</property>
+                <property name="label">Disassembly (Intel)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">6</property>
+                <property name="position">7</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -515,7 +554,7 @@ objdump --disassemble --show-raw-insn --disassembler-options=intel --source</pro
               </object>
               <packing>
                 <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -523,14 +562,14 @@ objdump --disassemble --show-raw-insn --disassembler-options=intel --source</pro
               <object class="GtkLabel" id="tab_dis_att">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble --show-raw-insn --disassembler-options=att --source</property>
-                <property name="label" translatable="no">Disassembly (AT&amp;T)</property>
+                <property name="tooltip_text">Display the disassembled code using AT&amp;T syntax
+objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</property>
+                <property name="label">Disassembly (AT&amp;T)</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -554,7 +593,7 @@ objdump --disassemble --show-raw-insn --disassembler-options=att --source</prope
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">10</property>
+                <property name="position">9</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -562,170 +601,53 @@ objdump --disassemble --show-raw-insn --disassembler-options=att --source</prope
               <object class="GtkLabel" id="tab_readelf">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display information returned by readelf
+                <property name="tooltip_text">Display information returned by readelf
 readelf --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide</property>
-                <property name="label" translatable="no">ReadElf</property>
+                <property name="label">ReadElf</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
+                <property name="position">9</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrwin_headers">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
+                <child>
+                  <object class="GtkTextView" id="textview_headers">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="buffer">buf_headers</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">File Headers</property>
                 <property name="position">10</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_all_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_all_headers">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_all_headers</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">All Headers</property>
-                <property name="position">11</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="tab_all_headers">
+              <object class="GtkLabel" id="tab_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display all file headers
+                <property name="tooltip_text">Display all file headers
 objdump --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide</property>
-                <property name="label" translatable="no">All Headers</property>
+                <property name="label">File Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
-                <property name="menu_label">All Headers</property>
-                <property name="position">11</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_header">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_header">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_header</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">File Header</property>
-                <property name="position">12</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_header">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the file header
-objdump --file-headers --file-offsets</property>
-                <property name="label" translatable="no">File Header</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">File Header</property>
-                <property name="position">12</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_priv_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_priv_headers">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_priv_headers</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Private Headers</property>
-                <property name="position">13</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_priv_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the private headers
-objdump --file-offsets --private-headers</property>
-                <property name="label" translatable="no">Private Headers</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Private Headers</property>
-                <property name="position">13</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_sec_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_sec_headers">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_sec_headers</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Section Headers</property>
-                <property name="position">14</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_sec_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the section headers
-objdump --file-offsets --section-headers</property>
-                <property name="label" translatable="no">Section Headers</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Section Headers</property>
-                <property name="position">14</property>
+                <property name="menu_label">File Headers</property>
+                <property name="position">10</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -749,7 +671,7 @@ objdump --file-offsets --section-headers</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">15</property>
+                <property name="position">11</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -757,15 +679,15 @@ objdump --file-offsets --section-headers</property>
               <object class="GtkLabel" id="tab_size">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the results of size
+                <property name="tooltip_text">Display the results of size
 size --format=Berkeley
 size --format=SysV</property>
-                <property name="label" translatable="no">Size</property>
+                <property name="label">Size</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">15</property>
+                <property name="position">11</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -789,7 +711,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">16</property>
+                <property name="position">12</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -797,14 +719,14 @@ size --format=SysV</property>
               <object class="GtkLabel" id="tab_str">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Display the contained strings
+                <property name="tooltip_text">Display the contained strings
 strings --all</property>
-                <property name="label" translatable="no">Strings</property>
+                <property name="label">Strings</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">16</property>
+                <property name="position">12</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -828,7 +750,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">17</property>
+                <property name="position">13</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -836,13 +758,13 @@ strings --all</property>
               <object class="GtkLabel" id="tab_func">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">List all of the found functions</property>
-                <property name="label" translatable="no">Functions</property>
+                <property name="tooltip_text">List all of the found functions</property>
+                <property name="label">Functions</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">17</property>
+                <property name="position">13</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -866,7 +788,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">18</property>
+                <property name="position">14</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -874,13 +796,51 @@ strings --all</property>
               <object class="GtkLabel" id="tab_const">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">List all of the found constants</property>
-                <property name="label" translatable="no">Constants</property>
+                <property name="tooltip_text">List all of the found constants</property>
+                <property name="label">Constants</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">18</property>
+                <property name="position">14</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrwin_ldconfig">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
+                <child>
+                  <object class="GtkTextView" id="textview_ldconfig">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="buffer">buf_ldconfig</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Libraries</property>
+                <property name="position">15</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_ldconfig">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">List all of the system's libraries</property>
+                <property name="label">Libraries</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Libraries</property>
+                <property name="position">15</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -888,10 +848,10 @@ strings --all</property>
               <object class="GtkBox" id="about_box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">5</property>
-                <property name="margin_right">5</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkGrid" id="grid_about">
@@ -905,8 +865,8 @@ strings --all</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="no">Program-Analyzer
-Version: 2019.06.23
+                        <property name="label">Program-Analyzer
+Version: 2019.09.01
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -923,7 +883,7 @@ Author: Devyn Collier Johnson
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
-                        <property name="label" translatable="no">For more programs,
+                        <property name="label">For more programs,
 - Visit &lt;a href="http://DCJTech.info/"&gt;DCJTech.info&lt;/a&gt;
 - Please donate to DCJTech</property>
                         <property name="use_markup">True</property>
@@ -945,13 +905,13 @@ Author: Devyn Collier Johnson
                   <object class="GtkSeparator" id="separator_about">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_top">5</property>
-                    <property name="margin_bottom">5</property>
+                    <property name="margin_top">4</property>
+                    <property name="margin_bottom">4</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="padding">5</property>
+                    <property name="padding">4</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -970,7 +930,7 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">19</property>
+                <property name="position">16</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -978,13 +938,13 @@ Author: Devyn Collier Johnson
               <object class="GtkLabel" id="tab_about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">Information about Program-Analyzer and GNU-binutils</property>
-                <property name="label" translatable="no">About</property>
+                <property name="tooltip_text">Information about Program-Analyzer and GNU-binutils</property>
+                <property name="label">About</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">19</property>
+                <property name="position">16</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -1000,22 +960,22 @@ Author: Devyn Collier Johnson
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_bottom">4</property>
             <property name="row_homogeneous">True</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkLabel" id="l_file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="no">File location (pathname)</property>
+                <property name="tooltip_text">File location (pathname)</property>
                 <property name="halign">start</property>
-                <property name="margin_left">5</property>
-                <property name="margin_right">5</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
-                <property name="label" translatable="no">PathName</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
+                <property name="label">PathName</property>
                 <property name="selectable">True</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
@@ -1031,10 +991,10 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="no">Save the currently displayed data</property>
+                <property name="tooltip_text">Save the currently displayed data</property>
                 <property name="halign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="gtk_saveas" swapped="no"/>
@@ -1050,10 +1010,10 @@ Author: Devyn Collier Johnson
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="no">Exit Application</property>
+                <property name="tooltip_text">Exit Application</property>
                 <property name="halign">end</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_winexit" object="ezwin" swapped="no"/>
@@ -1087,12 +1047,12 @@ Author: Devyn Collier Johnson
             <property name="height_request">25</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
-            <property name="margin_start">10</property>
-            <property name="margin_end">10</property>
-            <property name="margin_top">5</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_start">8</property>
+            <property name="margin_end">8</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1155,13 +1115,13 @@ Author: Devyn Collier Johnson
       <object class="GtkBox" id="box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_right">5</property>
+        <property name="margin_right">4</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkFileChooserWidget" id="filechooser">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_bottom">4</property>
             <property name="create_folders">False</property>
             <property name="do_overwrite_confirmation">True</property>
           </object>
@@ -1194,8 +1154,8 @@ Empty - The selected folder is returned</property>
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkButton" id="btn1">
@@ -1206,8 +1166,8 @@ Empty - The selected folder is returned</property>
                 <property name="tooltip_text">Submit selection to the program that opened this dialog.</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_select" object="filechooser" swapped="no"/>
@@ -1244,8 +1204,8 @@ Empty - Hidden files not seen</property>
                 <property name="tooltip_text">Cancel</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_cancel" object="ezwin" swapped="no"/>
@@ -1306,6 +1266,9 @@ class DataTable:  # pylint: disable=R0903
     is_sha256sum_available: bool = is_program_aval(r'sha256sum')
     is_sha512sum_available: bool = is_program_aval(r'sha512sum')
     # Commands
+    ldconfig_cmd: str = r'ldconfig -p'
+    ldd_cmd: str = r'ldd --verbose '
+    ldd_unused_cmd: str = r'ldd --unused '
     nm_cmd: str = r''
     objdump_cmd: str = r''
     readelf_cmd: str = r''
@@ -1321,18 +1284,18 @@ class DataTable:  # pylint: disable=R0903
     file_info: str = r''
     functions: str = r''
     lastused: str = r''
+    ldconfig_libraries: str = r''
     nm_defined: str = r''
     nm_symbols: str = r''
-    objdump_all_headers: str = r''
     objdump_disassemble: str = r''
     objdump_disassemble_att: str = r''
     objdump_disassemble_intel: str = r''
     objdump_dynamic_relocation: str = r''
     objdump_dynamic_symbols: str = r''
-    objdump_file_header: str = r''
-    objdump_private_headers: str = r''
-    objdump_section_headers: str = r''
+    objdump_headers: str = r''
     objdump_symbols: str = r''
+    object_dependencies: str = r''
+    unused_dependencies: str = r''
     readelf_all: str = r''
     sha512: str = r''
     strings: str = r''
@@ -1360,7 +1323,6 @@ class MainWindow:  # pylint: disable=R0902
         self.menuitem_save = self.ui_get_object(name=r'menuitem_save')
         self.menuitem_saveas = self.ui_get_object(name=r'menuitem_saveas')
         self.l_file = self.ui_get_object(name=r'l_file')
-        self.scrwin_all_headers = self.ui_get_object(name=r'scrwin_all_headers')
         self.scrwin_const = self.ui_get_object(name=r'scrwin_const')
         self.scrwin_dis = self.ui_get_object(name=r'scrwin_dis')
         self.scrwin_dis_att = self.ui_get_object(name=r'scrwin_dis_att')
@@ -1368,16 +1330,15 @@ class MainWindow:  # pylint: disable=R0902
         self.scrwin_dyn_reloc = self.ui_get_object(name=r'scrwin_dyn_reloc')
         self.scrwin_dyn_sym = self.ui_get_object(name=r'scrwin_dyn_sym')
         self.scrwin_func = self.ui_get_object(name=r'scrwin_func')
-        self.scrwin_header = self.ui_get_object(name=r'scrwin_header')
+        self.scrwin_headers = self.ui_get_object(name=r'scrwin_headers')
+        self.scrwin_ldconfig = self.ui_get_object(name=r'scrwin_ldconfig')
+        self.scrwin_ldd = self.ui_get_object(name=r'scrwin_ldd')
         self.scrwin_nm_sym = self.ui_get_object(name=r'scrwin_nm_sym')
-        self.scrwin_priv_headers = self.ui_get_object(name=r'scrwin_priv_headers')
         self.scrwin_prop = self.ui_get_object(name=r'scrwin_prop')
         self.scrwin_readelf = self.ui_get_object(name=r'scrwin_readelf')
-        self.scrwin_sec_headers = self.ui_get_object(name=r'scrwin_sec_headers')
         self.scrwin_size = self.ui_get_object(name=r'scrwin_size')
         self.scrwin_str = self.ui_get_object(name=r'scrwin_str')
         self.scrwin_sym_tbl = self.ui_get_object(name=r'scrwin_sym_tbl')
-        self.textview_all_headers = self.ui_get_object(name=r'textview_all_headers')
         self.textview_const = self.ui_get_object(name=r'textview_const')
         self.textview_dis = self.ui_get_object(name=r'textview_dis')
         self.textview_dis_att = self.ui_get_object(name=r'textview_dis_att')
@@ -1385,12 +1346,12 @@ class MainWindow:  # pylint: disable=R0902
         self.textview_dyn_reloc = self.ui_get_object(name=r'textview_dyn_reloc')
         self.textview_dyn_sym = self.ui_get_object(name=r'textview_dyn_sym')
         self.textview_func = self.ui_get_object(name=r'textview_func')
-        self.textview_header = self.ui_get_object(name=r'textview_header')
+        self.textview_headers = self.ui_get_object(name=r'textview_headers')
+        self.textview_ldconfig = self.ui_get_object(name=r'textview_ldconfig')
+        self.textview_ldd = self.ui_get_object(name=r'textview_ldd')
         self.textview_nm_sym = self.ui_get_object(name=r'textview_nm_sym')
-        self.textview_priv_headers = self.ui_get_object(name=r'textview_priv_headers')
         self.textview_prop = self.ui_get_object(name=r'textview_prop')
         self.textview_readelf = self.ui_get_object(name=r'textview_readelf')
-        self.textview_sec_headers = self.ui_get_object(name=r'textview_sec_headers')
         self.textview_size = self.ui_get_object(name=r'textview_size')
         self.textview_str = self.ui_get_object(name=r'textview_str')
         self.textview_sym_tbl = self.ui_get_object(name=r'textview_sym_tbl')
@@ -1451,14 +1412,12 @@ class MainWindow:  # pylint: disable=R0902
             return self.textview_dis_att.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_readelf):  # tab_readelf
             return self.textview_readelf.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_all_headers):  # tab_all_headers
-            return self.textview_all_headers.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_header):  # tab_header
-            return self.textview_header.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_priv_headers):  # tab_priv_headers
-            return self.textview_priv_headers.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_sec_headers):  # tab_sec_headers
-            return self.textview_sec_headers.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_headers):  # tab_headers
+            return self.textview_headers.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_ldconfig):  # tab_ldconfig
+            return self.textview_ldconfig.get_buffer()
+        if active_tab == tabs_page_num(self.scrwin_ldd):  # tab_ldd
+            return self.textview_ldd.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_size):  # tab_size_size
             return self.textview_size.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_str):  # tab_str
@@ -1530,10 +1489,10 @@ class MainWindow:  # pylint: disable=R0902
         try:
             self.write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
             del save_buffer_data
-        except OSError:
+        except OSError as _err:
             DataTable.lastused = r''
             self.status(self.context_id, r'OSError when writing file')
-            stderr.write('OSError when writing file\n')
+            stderr.write('OSError when writing file\n' + str(_err))
         except BaseException as _err:  # pylint: disable=W0703
             DataTable.lastused = r''
             self.status(self.context_id, r'Exception thrown when writing file')
@@ -1566,22 +1525,21 @@ class MainWindow:  # pylint: disable=R0902
         # Get the data using parallel processing
         run_threaded_analysis(_file, _bits)
         # Make the scrollable boxes within each tab visible
-        self.scrwin_sym_tbl.set_visible(True)
-        self.scrwin_dyn_sym.set_visible(True)
-        self.scrwin_nm_sym.set_visible(True)
-        self.scrwin_dyn_reloc.set_visible(True)
+        self.scrwin_const.set_visible(True)
         self.scrwin_dis.set_visible(True)
-        self.scrwin_dis_intel.set_visible(True)
         self.scrwin_dis_att.set_visible(True)
+        self.scrwin_dis_intel.set_visible(True)
+        self.scrwin_dyn_reloc.set_visible(True)
+        self.scrwin_dyn_sym.set_visible(True)
+        self.scrwin_func.set_visible(True)
+        self.scrwin_headers.set_visible(True)
+        self.scrwin_ldconfig.set_visible(True)
+        self.scrwin_ldd.set_visible(True)
+        self.scrwin_nm_sym.set_visible(True)
         self.scrwin_readelf.set_visible(True)
-        self.scrwin_all_headers.set_visible(True)
-        self.scrwin_header.set_visible(True)
-        self.scrwin_priv_headers.set_visible(True)
-        self.scrwin_sec_headers.set_visible(True)
         self.scrwin_size.set_visible(True)
         self.scrwin_str.set_visible(True)
-        self.scrwin_func.set_visible(True)
-        self.scrwin_const.set_visible(True)
+        self.scrwin_sym_tbl.set_visible(True)
         # Return
         return STATUS_FINISHED
 
@@ -1618,21 +1576,18 @@ class MainWindow:  # pylint: disable=R0902
         if self.scrwin_dyn_reloc.is_visible:
             self.textview_dyn_reloc.get_buffer().set_text(DataTable.objdump_dynamic_relocation, len(DataTable.objdump_dynamic_relocation))
         DataTable.objdump_dynamic_relocation = r''
-        if self.scrwin_header.is_visible:
-            self.textview_header.get_buffer().set_text(DataTable.objdump_file_header, len(DataTable.objdump_file_header))
-        DataTable.objdump_file_header = r''
+        if self.scrwin_ldconfig.is_visible:
+            self.textview_ldconfig.get_buffer().set_text(DataTable.ldconfig_libraries, len(DataTable.ldconfig_libraries))
+        DataTable.ldconfig_libraries = r''
+        if self.scrwin_ldd.is_visible:
+            self.textview_ldd.get_buffer().set_text(DataTable.object_dependencies, len(DataTable.object_dependencies))
+        DataTable.object_dependencies = r''
         if self.scrwin_readelf.is_visible:
             self.textview_readelf.get_buffer().set_text(DataTable.readelf_all, len(DataTable.readelf_all))
         DataTable.readelf_all = r''
-        if self.scrwin_all_headers.is_visible:
-            self.textview_all_headers.get_buffer().set_text(DataTable.objdump_all_headers, len(DataTable.objdump_all_headers))
-        DataTable.objdump_all_headers = r''
-        if self.scrwin_priv_headers.is_visible:
-            self.textview_priv_headers.get_buffer().set_text(DataTable.objdump_private_headers, len(DataTable.objdump_private_headers))
-        DataTable.objdump_private_headers = r''
-        if self.scrwin_sec_headers.is_visible:
-            self.textview_sec_headers.get_buffer().set_text(DataTable.objdump_section_headers, len(DataTable.objdump_section_headers))
-        DataTable.objdump_section_headers = r''
+        if self.scrwin_headers.is_visible:
+            self.textview_headers.get_buffer().set_text(DataTable.objdump_headers, len(DataTable.objdump_headers))
+        DataTable.objdump_headers = r''
         if self.scrwin_size.is_visible:
             self.textview_size.get_buffer().set_text(DataTable.binsize, len(DataTable.binsize))
         DataTable.binsize = r''
@@ -1806,16 +1761,16 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
     if _var == r'NM_DEFINED':
         _nm_defined = getoutput(cmd)
         try:
-            _functions = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
-            _constants = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+            _functions: str = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+            _constants: str = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
         except OSError:
             _functions = _nm_defined
             _constants = r'See function list'
-        if not _functions:
-            _functions = r'No global functions found!'
         if not _constants:
             _constants = r'No global constants found!'
-        return (_nm_defined, _functions, _constants)
+        if not _functions:
+            _functions = r'No global functions found!'
+        return (_nm_defined, _constants, _functions)
     if _var == r'FILE_DATA1':
         _tmp: tuple = getstatusoutput(cmd)
         if _tmp[0] == 0 and _tmp[1]:
@@ -1826,6 +1781,13 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
         if _tmp[0] == 0 and _tmp[1]:
             return _tmp[1].split(r': ')[1].strip()
         return _tmp[1]
+    if _var == r'LDCONFIG':
+        _tmp_out: list = getoutput(cmd).split('\n')
+        _output: list = []
+        for line in _tmp_out:
+            _output.append(line.strip())
+        _output.sort()
+        return '\n'.join(_output) + '\n'
     return getoutput(cmd)
 
 
@@ -1940,16 +1902,16 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
                 (DataTable.objdump_cmd + r' --disassemble --disassembler-options=intel --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_INTEL'),
                 (DataTable.objdump_cmd + r' --disassemble --disassembler-options=att --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_ATT'),
                 (DataTable.readelf_cmd + r' --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide ' + _file, r'READELF'),
-                (DataTable.objdump_cmd + r' --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide ' + _file, r'OBJDUMP_ALL_HEADERS'),
-                (DataTable.objdump_cmd + r' --file-headers --file-offsets ' + _file, r'OBJDUMP_FILE_HEADER'),
-                (DataTable.objdump_cmd + r' --file-offsets --private-headers ' + _file, r'OBJDUMP_PRIVATE_HEADERS'),
-                (DataTable.objdump_cmd + r' --file-offsets --section-headers ' + _file, r'OBJDUMP_SECTION_HEADERS'),
+                (DataTable.objdump_cmd + r' --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide ' + _file, r'OBJDUMP_HEADERS'),
+                (DataTable.ldd_cmd + _file, r'OBJECT_DEPENDENCIES'),
+                (DataTable.ldd_unused_cmd + _file, r'UNUSED_DEPENDENCIES'),
                 (DataTable.strings_cmd + r' --all ' + _file, r'STRINGS'),
                 (DataTable.nm_cmd + r' --debug-syms --defined-only --dynamic --special-syms "' + _file + r'"', r'NM_DEFINED', DataTable),
                 (DataTable.size_cmd + r' --format=Berkeley ' + _file, r'BINSIZE1'),
                 (DataTable.size_cmd + r' --format=SysV ' + _file, r'BINSIZE2'),
                 (_filecmd + r' --preserve-date ' + _file, r'FILE_DATA1'),
                 (_filecmd + r' --mime --preserve-date ' + _file, r'FILE_DATA2'),
+                (DataTable.ldconfig_cmd, r'LDCONFIG')
             ])
             DataTable.objdump_symbols = outbuf[0]
             DataTable.objdump_dynamic_symbols = outbuf[1]
@@ -1959,31 +1921,30 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
             DataTable.objdump_disassemble_intel = outbuf[5] + '\n'
             DataTable.objdump_disassemble_att = outbuf[6] + '\n'
             DataTable.readelf_all = outbuf[7] + '\n'
-            DataTable.objdump_all_headers = outbuf[8]
-            DataTable.objdump_file_header = outbuf[9]
-            DataTable.objdump_private_headers = outbuf[10]
-            DataTable.objdump_section_headers = outbuf[11] + '\n'
-            if outbuf[12]:
-                _tmp: list = outbuf[12].split('\n')
+            DataTable.objdump_headers = outbuf[8]
+            DataTable.object_dependencies = outbuf[9] + '\n\n** Unused Dependencies **\n' + outbuf[10]
+            if outbuf[11]:
+                _tmp: list = outbuf[11].split('\n')
                 _tmp.sort()
                 DataTable.strings = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.strings = r''
-            DataTable.nm_defined = outbuf[13][0] + '\n'
-            if outbuf[13][1]:
-                _tmp = outbuf[13][1].split('\n')
+            DataTable.nm_defined = outbuf[12][0] + '\n'
+            if outbuf[12][1]:
+                _tmp = outbuf[12][1].split('\n')
                 _tmp.sort()
                 DataTable.constants = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.constants = r''
-            if outbuf[13][2]:
-                _tmp = outbuf[13][2].split('\n')
+            if outbuf[12][2]:
+                _tmp = outbuf[12][2].split('\n')
                 _tmp.sort()
                 DataTable.functions = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.functions = r''
-            DataTable.binsize = outbuf[14] + '\n\n' + outbuf[15]
-            DataTable.file_info = outbuf[16] + '\n\n' + outbuf[17] + '\n\n'
+            DataTable.binsize = outbuf[13] + '\n\n' + outbuf[14]
+            DataTable.file_info = outbuf[15] + '\n\n' + outbuf[16] + '\n\n'
+            DataTable.ldconfig_libraries = outbuf[17]
         except (KeyboardInterrupt, MemoryError):
             threadpool.close()
             threadpool.terminate()

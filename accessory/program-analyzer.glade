@@ -28,7 +28,6 @@ Author: Devyn Collier Johnson
   <!-- interface-description Display the symbols and tables of a compiled program or library -->
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
-  <object class="GtkTextBuffer" id="buf_all_headers"/>
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
   <object class="GtkTextBuffer" id="buf_dis_att"/>
@@ -36,12 +35,12 @@ Author: Devyn Collier Johnson
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
   <object class="GtkTextBuffer" id="buf_func"/>
-  <object class="GtkTextBuffer" id="buf_header"/>
+  <object class="GtkTextBuffer" id="buf_headers"/>
+  <object class="GtkTextBuffer" id="buf_ldconfig"/>
+  <object class="GtkTextBuffer" id="buf_ldd"/>
   <object class="GtkTextBuffer" id="buf_nm_sym"/>
-  <object class="GtkTextBuffer" id="buf_priv_headers"/>
   <object class="GtkTextBuffer" id="buf_prop"/>
   <object class="GtkTextBuffer" id="buf_readelf"/>
-  <object class="GtkTextBuffer" id="buf_sec_headers"/>
   <object class="GtkTextBuffer" id="buf_size"/>
   <object class="GtkTextBuffer" id="buf_str"/>
   <object class="GtkTextBuffer" id="buf_sym"/>
@@ -364,6 +363,46 @@ objdump --dynamic-reloc --line-numbers</property>
               </packing>
             </child>
             <child>
+              <object class="GtkScrolledWindow" id="scrwin_ldd">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
+                <child>
+                  <object class="GtkTextView" id="textview_ldd">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="buffer">buf_ldd</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Dependencies</property>
+                <property name="position">5</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_ldd">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">Display Object Dependencies
+ldd --verbose
+ldd --unused --verbose</property>
+                <property name="label">Dependencies</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Dependencies</property>
+                <property name="position">5</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkScrolledWindow" id="scrwin_dis">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -382,7 +421,7 @@ objdump --dynamic-reloc --line-numbers</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -397,7 +436,7 @@ ndisasm</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -420,7 +459,7 @@ ndisasm</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">6</property>
+                <property name="position">7</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -435,7 +474,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</
               </object>
               <packing>
                 <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">6</property>
+                <property name="position">7</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -458,7 +497,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</
               </object>
               <packing>
                 <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -473,7 +512,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
               </object>
               <packing>
                 <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -497,7 +536,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">10</property>
+                <property name="position">9</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -512,163 +551,46 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">10</property>
+                <property name="position">9</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrwin_all_headers">
+              <object class="GtkScrolledWindow" id="scrwin_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-in</property>
                 <property name="min_content_width">1400</property>
                 <property name="min_content_height">800</property>
                 <child>
-                  <object class="GtkTextView" id="textview_all_headers">
+                  <object class="GtkTextView" id="textview_headers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                    <property name="buffer">buf_all_headers</property>
+                    <property name="buffer">buf_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                   </object>
                 </child>
               </object>
               <packing>
-                <property name="menu_label">All Headers</property>
-                <property name="position">11</property>
+                <property name="menu_label">File Headers</property>
+                <property name="position">10</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="tab_all_headers">
+              <object class="GtkLabel" id="tab_headers">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text">Display all file headers
 objdump --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide</property>
-                <property name="label">All Headers</property>
+                <property name="label">File Headers</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
-                <property name="menu_label">All Headers</property>
-                <property name="position">11</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_header">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_header">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_header</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">File Header</property>
-                <property name="position">12</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_header">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the file header
-objdump --file-headers --file-offsets</property>
-                <property name="label">File Header</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">File Header</property>
-                <property name="position">12</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_priv_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_priv_headers">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_priv_headers</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Private Headers</property>
-                <property name="position">13</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_priv_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the private headers
-objdump --file-offsets --private-headers</property>
-                <property name="label">Private Headers</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Private Headers</property>
-                <property name="position">13</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_sec_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_sec_headers">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="buffer">buf_sec_headers</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Section Headers</property>
-                <property name="position">14</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_sec_headers">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the section headers
-objdump --file-offsets --section-headers</property>
-                <property name="label">Section Headers</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Section Headers</property>
-                <property name="position">14</property>
+                <property name="menu_label">File Headers</property>
+                <property name="position">10</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -692,7 +614,7 @@ objdump --file-offsets --section-headers</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">15</property>
+                <property name="position">11</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -708,7 +630,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">15</property>
+                <property name="position">11</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -732,7 +654,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">16</property>
+                <property name="position">12</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -747,7 +669,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">16</property>
+                <property name="position">12</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -771,7 +693,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">17</property>
+                <property name="position">13</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -785,7 +707,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">17</property>
+                <property name="position">13</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -809,7 +731,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">18</property>
+                <property name="position">14</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -823,7 +745,45 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">18</property>
+                <property name="position">14</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrwin_ldconfig">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">etched-in</property>
+                <property name="min_content_width">1400</property>
+                <property name="min_content_height">800</property>
+                <child>
+                  <object class="GtkTextView" id="textview_ldconfig">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="buffer">buf_ldconfig</property>
+                    <property name="accepts_tab">False</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="menu_label">Libraries</property>
+                <property name="position">15</property>
+                <property name="reorderable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="tab_ldconfig">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text">List all of the system's libraries</property>
+                <property name="label">Libraries</property>
+                <property name="track_visited_links">False</property>
+              </object>
+              <packing>
+                <property name="menu_label">Libraries</property>
+                <property name="position">15</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -849,7 +809,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2019.08.31
+Version: 2019.09.01
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -894,7 +854,7 @@ Author: Devyn Collier Johnson
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="padding">5</property>
+                    <property name="padding">4</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -913,7 +873,7 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">19</property>
+                <property name="position">16</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -927,7 +887,7 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">19</property>
+                <property name="position">16</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
