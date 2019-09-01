@@ -1,11 +1,23 @@
+2019-09-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Updated the keybindings in Geany
+	* Program-Analyzer:  Fixed some bugs, merged some of the functionality, & added `ldd`
+
 2019-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* color-kit.glade:  Increased the version number
+	* color-kit:  Fixed some bugs
+	* color.py:  Fixed the division-by-zero bugs & output issues
 	* exewalk:  Tweaked the command parameters
 	* extras_rc.sh:  Tweaked `findr` & `findrx`
 	* Geany:  Added more tags to std.css.tags in Geany
+	* Geany:  Added the Glade Catalog to the Geany Templates
 	* Geany:  Created a fully compliant GTK3 version of the interface for Geany
+	* Geany:  Improved the CSS stylesheets used by Geany
+	* Geany:  Improved the Glade file used by Geany
 	* Geany:  Tweaked some of the file-definitions
 	* Geany:  Tweaked the `.gitconfig` template in Geany
+	* Glade Files:  Tweaked the margin sizes
 	* pylintrc:  Added cupy & numpy to the extension whitelist
 	* shrc:  Fixed the autocompletion features in the shrc scripts
 	* snippets.conf:  Added more snippets & tweaked existing code in snippets.conf for Geany
