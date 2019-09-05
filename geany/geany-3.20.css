@@ -25,17 +25,17 @@
 /* Search Entries */
 
 #GeanyDialogSearch entry:focus,#GeanyDialogSearch entry:hover,#GeanyToolbar entry:focus,#GeanyToolbar entry:hover,#GotoEntry entry:focus,#GotoEntry entry:hover,#SearchEntry entry:focus,#SearchEntry entry:hover,entry:focus,entry:hover{border-color:#77C;border-width:2px;padding:0px 3px}
-#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:0px 4px}
+#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 4px}
 #GeanyDialogSearch entry,#SearchEntry entry{min-width:320px}
 #GotoEntry entry{min-width:64px}
 #GeanyDialogSearch entry image,#GeanyToolbar entry image,#GotoEntry entry image,#SearchEntry entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
 #GeanyDialogSearch entry image:hover,#GeanyToolbar entry image:hover,#GotoEntry entry image:hover,#SearchEntry entry image:hover{background-color:#777}
-#geany-search-entry-no-match{color:#FFF;background:#F66}
-#geany-search-entry-no-match:selected, #geany-search-entry-no-match selection{background-color:#711}
+#geany-search-entry-no-match{background-color:#F66;color:#FFF}
+#geany-search-entry-no-match:selected,#geany-search-entry-no-match selection{background-color:#711}
 
 /* Tabs */
 
-notebook>header>tabs>tab{background-image:linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%);border-color:#222;border-radius:8px;border-style:solid;border-width:1px;text-shadow:0 1px #FFF}
+notebook>header>tabs>tab{background-image:linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%);border-color:#222;border-radius:8px;border-style:solid;border-width:1px;margin:2px;text-shadow:0 1px #FFF}
 notebook>header>tabs>tab:focus,notebook header tabs tab:hover{background-image:linear-gradient(rgb(200,150,150), rgb(250,240,240));border-color:#000;border-radius:0px;box-shadow:0px 4px 4px 0px #333}
 notebook>header>tabs>tab:checked{background-image:linear-gradient(#7BB 0%, #D0D0D0 25%, #EEE 50%, #D9D9D9 75%, #7BB 100%);border-radius:16px;border-width:2px}
 notebook>header>tabs{background-image:linear-gradient(rgb(183,181,169) 0%, rgb(197,193,179) 37%, rgb(197,193,179) 43%, rgb(190,186,170) 74%, rgb(219,217,209) 100%);border-color:#333;border-radius:0px;border-style:solid;border-width:1px}
