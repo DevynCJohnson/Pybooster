@@ -50,10 +50,9 @@ if [ -n "${ASH_VERSION:-}" ]; then
     PROFILE_SHELL='ash'
 elif [ -n "${BASH_VERSION:-}" ]; then
     PROFILE_SHELL='bash'
-    readonly bashver="${BASH_VERSION%.*}"
-    readonly bashmajorver="${bashver%.*}"
-    readonly bashminorver="${bashver#*.}"
-    export bashver bashmajorver bashminorver
+    export bashver="${BASH_VERSION%.*}"
+    export bashmajorver="${bashver%.*}"
+    export bashminorver="${bashver#*.}"
 elif [ -n "${FISH_VERSION:-}" ]; then
     PROFILE_SHELL='fish'
 elif [ -n "${FCEDIT:-}" ] || [ -n "${KSH_VERSION:-}" ]; then
@@ -65,7 +64,6 @@ elif [ -n "${PS3:-}" ]; then
 else
     PROFILE_SHELL='sh'
 fi
-readonly PROFILE_SHELL
 export PROFILE_SHELL
 
 
@@ -119,7 +117,6 @@ os_table() {
     esac
     echo "$platform"
 }
-readonly -f os_table
 
 # Set various variables indicating the operating system type
 PLATFORM='unknown'
@@ -140,7 +137,6 @@ if [ -n "${OSTYPE:-}" ] && [ "$PLATFORM" == 'unknown' ]; then
 elif [ "$PLATFORM" = 'unknown' ] && [ "$unamestr" != 'unknown' ]; then
     PLATFORM="$(os_table "$unamestr")"
 fi
-readonly PLATFORM
 export PLATFORM
 unset unamestr
 
@@ -157,44 +153,45 @@ case "$PLATFORM" in
     'windows') OSFAMILY='windows';;
     *) OSFAMILY='unknown';;
 esac
-readonly OSFAMILY
 export OSFAMILY
 
 
 # DISTRO DETECTION #
 
 
-DISTRO='unknown'
-[ -r /etc/lsb-release ] && . /etc/lsb-release
-[ -n "${DISTRIB_ID:-}" ] && DISTRO="$(printf "%s" "${DISTRIB_ID}" | tr '[:upper:]' '[:lower:]')"
-readonly DISTRO
-export DISTRO
+if [ -z "${DISTRO}" ]; then
+    DISTRO='unknown'
+    [ -r /etc/lsb-release ] && . /etc/lsb-release
+    [ -n "${DISTRIB_ID:-}" ] && DISTRO="$(printf "%s" "${DISTRIB_ID}" | tr '[:upper:]' '[:lower:]')"
+    export DISTRO
+fi
 
 
 # CPU DETECTION #
 
 
 # Determine the CPU type of the currently running system
-if [ -n "$(command -v uname)" ]; then
-    CPU_ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
-else
-    CPU_ARCH='unknown'
+if [ -z "${CPU_ARCH}" ]; then
+    if [ -n "$(command -v uname)" ]; then
+        CPU_ARCH="$(uname -m | tr '[:upper:]' '[:lower:]')"
+    else
+        CPU_ARCH='unknown'
+    fi
+    case "$CPU_ARCH" in
+        'amd'*|'i686-64'|'x86-64'|'x86_64') CPU_ARCH='x86_64';;
+        'i386'*|'i486'*|'i586'*|'i686'*|'i86pc'*|'x86'|'x86pc'*) CPU_ARCH='x86_32';;
+        'alpha'*) CPU_ARCH='alpha';;
+        'arm'*) CPU_ARCH='arm';;
+        'ia64'*|'ia_64'*|'itanium'*) CPU_ARCH='itanium';;
+        'ip2'*|'ip3'*|'mips'*) CPU_ARCH='mips';;
+        'm68k'*) CPU_ARCH='m68k';;
+        'power'*|'ppc'*) CPU_ARCH='powerpc';;
+        'sparc'*|'sun4u'*) CPU_ARCH='sparc';;
+        'vax'*) CPU_ARCH='vax';;
+        *) CPU_ARCH='unknown';;
+    esac
+    export CPU_ARCH
 fi
-case "$CPU_ARCH" in
-    'amd'*|'i686-64'|'x86-64'|'x86_64') CPU_ARCH='x86_64';;
-    'i386'*|'i486'*|'i586'*|'i686'*|'i86pc'*|'x86'|'x86pc'*) CPU_ARCH='x86_32';;
-    'alpha'*) CPU_ARCH='alpha';;
-    'arm'*) CPU_ARCH='arm';;
-    'ia64'*|'ia_64'*|'itanium'*) CPU_ARCH='itanium';;
-    'ip2'*|'ip3'*|'mips'*) CPU_ARCH='mips';;
-    'm68k'*) CPU_ARCH='m68k';;
-    'power'*|'ppc'*) CPU_ARCH='powerpc';;
-    'sparc'*|'sun4u'*) CPU_ARCH='sparc';;
-    'vax'*) CPU_ARCH='vax';;
-    *) CPU_ARCH='unknown';;
-esac
-readonly CPU_ARCH
-export CPU_ARCH
 
 
 # DEKTOP ENVIRONMENT DETECTION #
@@ -239,9 +236,9 @@ if [ -z "${DESKENV:-}" ]; then
     else
         DESKTYPE='none'
     fi
+    export DESKENV
+    export DESKTYPE
 fi
-export DESKENV
-export DESKTYPE
 
 
 # COMMON GLOBALS #
@@ -334,8 +331,8 @@ if [ -d /etc/profile.d ]; then
     done
     unset i
 fi
-[ -z "${TERM_PROGRAM:-}" ] && [ -n "${TERM:-}" ] && TERM_PROGRAM="$TERM" && readonly TERM_PROGRAM
-[ -z "${TERM:-}" ] && [ -n "${TERM_PROGRAM:-}" ] && TERM="$TERM_PROGRAM" && readonly TERM
+[ -z "${TERM_PROGRAM:-}" ] && [ -n "${TERM:-}" ] && TERM_PROGRAM="$TERM"
+[ -z "${TERM:-}" ] && [ -n "${TERM_PROGRAM:-}" ] && TERM="$TERM_PROGRAM"
 [ -z "${TERM:-}" ] && [ -z "${TERM_PROGRAM:-}" ] && TERM='dumb' && TERM_PROGRAM='dumb'
 [ -n "${TERM_PROGRAM:-}" ] && [ -n "${BASH:-}" ] && [ -r "/etc/bashrc_${TERM_PROGRAM}" ] && . "/etc/bashrc_${TERM_PROGRAM}"
 
@@ -351,7 +348,7 @@ fi
 # Possible values include: bogl corba dialog gtk ncurses newt noninteractive readline slang text
 [ -d /etc/apt ] && [ -f /etc/debian_version ] && { [ -x "$(command -v apt-get)" ] || [ -x "$(command -v apt)" ]; } && export DEBIAN_FRONTEND='dialog'
 # Set an environment variable containing the kernel's release information (version)
-[ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -n "$(command -v uname)" ] && KRELEASE="$(uname -r)" && readonly KRELEASE && export KRELEASE
+[ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -n "$(command -v uname)" ] && KRELEASE="$(uname -r)" && export KRELEASE
 # Ensure that Python scripts are always compiled to bytecode
 export PYTHONOPTIMIZE=True
 
@@ -555,19 +552,19 @@ fi
 # INTERACTIVE SHELL #
 
 
+if [ -z "${SHELL_IS_INTERACTIVE}" ]; then
 # If not running interactively, then do not do anything
-if [ -z "${PS1}" ]; then
-    export isinteractive='false'
-    return
-else
-    case "$-" in
-        *'i'*) export isinteractive='true';;
-        *) export isinteractive='false'; return;;
-    esac
+    if [ -z "${PS1}" ]; then
+        export isinteractive='false'
+        return
+    else
+        case "$-" in
+            *'i'*) export isinteractive='true';;
+            *) export isinteractive='false'; return;;
+        esac
+    fi
+    export SHELL_IS_INTERACTIVE=1
 fi
-SHELL_IS_INTERACTIVE=1
-readonly SHELL_IS_INTERACTIVE
-export SHELL_IS_INTERACTIVE
 
 
 # SHELL SETTINGS #
@@ -809,7 +806,6 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         _make_target_autocomplete() { tmpfile="$(mktemp /tmp/autocomplete_XXXXXXXX.tmp)"; _make_target_tmp "$2" > "$tmpfile"; mapfile -t COMPREPLY < "$tmpfile"; rm "$tmpfile"; }
         if [ -n "$(command -v _make_autocomplete)" ]; then
             complete -F _make_target_autocomplete -o nospace make
-            readonly -f _make_target_autocomplete
         fi
     fi
 fi
@@ -833,7 +829,7 @@ fi
 
 # Load user shell extension modules
 if [ -d "${HOME}/.local/shell_ext_modules" ]; then
-    for file in "${HOME}/.shell_ext_modules/"*; do
+    for file in "${HOME}/.local/shell_ext_modules/"*; do
         [ -r "${file}" ] && . "${file}"
     done
 fi

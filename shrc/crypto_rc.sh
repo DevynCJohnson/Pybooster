@@ -15,11 +15,11 @@
 # Use the RDRAND OpenSSL engine if available
 OPENSSL_ENGINE=''
 if [ -x "$(command -v openssl)" ] && (openssl engine | grep -q rdrand); then
-    readonly RDRAND_ENGINE=1
-    readonly OPENSSL_ENGINE='-engine rdrand'
+    RDRAND_ENGINE=1
+    OPENSSL_ENGINE='-engine rdrand'
 else
-    readonly RDRAND_ENGINE=0
-    readonly OPENSSL_ENGINE=''
+    RDRAND_ENGINE=0
+    OPENSSL_ENGINE=''
 fi
 
 

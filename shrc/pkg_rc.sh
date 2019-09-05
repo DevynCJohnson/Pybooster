@@ -320,8 +320,6 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         complete -F _pkginstall_autocomplete -o nospace pkguninstall
         # shellcheck disable=SC2039
         complete -F _pkginstall_autocomplete -o nospace pkgreinstall
-        # shellcheck disable=SC2039
-        readonly -f _pkginstall_autocomplete
     fi
     # Autocomplete Python package names for pip3
     if [ -n "$(command -v pip3)" ] && [ -z "$(command -v _pip3_autocomplete)" ]; then
@@ -336,7 +334,5 @@ if [ "$PROFILE_SHELL" = 'bash' ] && [ -n "${SHELL_IS_INTERACTIVE:-}" ] && [ -n "
         complete -F _pip3_autocomplete -o nospace pyuninstall
         # shellcheck disable=SC2039
         complete -F _pip3_autocomplete -o nospace pyupdate
-        # shellcheck disable=SC2039
-        readonly -f _pip3_autocomplete
     fi
 fi
