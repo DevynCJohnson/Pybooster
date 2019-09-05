@@ -1,0 +1,49 @@
+/* CUSTOM GTK3 CSS FOR GEANY */
+
+
+/* Compiler Message Colors */
+
+#geany-compiler-context{color:#A66}
+#geany-compiler-error{color:#F66}
+#geany-compiler-message{color:#68F}
+
+/* Document Status Colors */
+
+#geany-document-status-changed{color:#F66}
+#geany-document-status-disk-changed{color:#FA0}
+#geany-document-status-readonly{color:#68F}
+
+/* Red "Terminal" Label for Dirty Terminal */
+
+#geany-terminal-dirty{color:#F66;font-style:italic}
+
+/* Close Button on the Editor Tabs */
+
+#geany-close-tab-button{outline-offset:0;outline-width:1px;padding:4px}
+#geany-close-tab-button GtkImage,#geany-close-tab-button image{padding:4px}
+
+/* Search Entries */
+
+#GeanyDialogSearch entry:focus,#GeanyDialogSearch entry:hover,#GeanyToolbar entry:focus,#GeanyToolbar entry:hover,#GotoEntry entry:focus,#GotoEntry entry:hover,#SearchEntry entry:focus,#SearchEntry entry:hover,entry:focus,entry:hover{border-color:#88F;border-width:2px;box-shadow:0px 4px 4px 0px #CCC;padding:0px 3px}
+#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 4px}
+#GeanyDialogSearch entry,#SearchEntry entry{min-width:320px}
+#GotoEntry entry{min-width:64px}
+#GeanyDialogSearch entry image,#GeanyToolbar entry image,#GotoEntry entry image,#SearchEntry entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
+#GeanyDialogSearch entry image:hover,#GeanyToolbar entry image:hover,#GotoEntry entry image:hover,#SearchEntry entry image:hover{background-color:#777}
+#geany-search-entry-no-match{background-color:#F66;color:#FFF}
+#geany-search-entry-no-match:selected,#geany-search-entry-no-match selection{background-color:#711}
+entry{background-color:#EEE;color:#000}
+
+/* Tabs */
+
+notebook>header>tabs>tab{background-image:linear-gradient(#434343 0%, #1F1F1F 25%, #101010 50%, #161616 75%, #434343 100%);border-color:#CCC;border-radius:8px;border-style:solid;border-width:1px;margin:2px;text-shadow:0 1px #CCC}
+notebook>header>tabs>tab:focus,notebook header tabs tab:hover{background-image:linear-gradient(rgb(200,150,150), rgb(250,240,240));border-color:#FFF;border-radius:0px;box-shadow:0px 4px 4px 0px #CCC}
+notebook>header>tabs>tab:checked{background-image:linear-gradient(#944 0%, #2F2F2F 25%, #111 50%, #161616 75%, #944 100%);border-radius:16px;border-width:2px}
+notebook>header>tabs{background-image:linear-gradient(rgb(72,74,86) 0%, rgb(58,62,76) 37%, rgb(58,62,76) 43%, rgb(65,69,85) 74%, rgb(36,38,46) 100%);border-color:#CCC;border-radius:0px;border-style:solid;border-width:1px}
+
+/* Miscellaneous Widgets */
+
+#GeanyMenubar,#GeanyToolbar{background-image:linear-gradient(#454545 0%, #1F1F1F 25%, #101010 50%, #161616 75%, #454545 100%)}
+menubar>menuitem>label{border-color:#777;border-style:solid;border-width:0px 2px}
+treeview>header>button{border-color:#777;border-width:0px 2px;min-width:144px}
+separator{background-color:#DDD}
