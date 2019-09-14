@@ -25,8 +25,8 @@
 /* Search Entries */
 
 entry{caret-color:#000}
-#GeanyDialogSearch entry:focus,#GeanyDialogSearch entry:hover,#GeanyToolbar entry:focus,#GeanyToolbar entry:hover,#GotoEntry entry:focus,#GotoEntry entry:hover,#SearchEntry entry:focus,#SearchEntry entry:hover,entry:focus,entry:hover{border-color:#88F;border-width:2px;box-shadow:0px 4px 4px 0px #CCC;padding:0px 4px}
-#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 4px}
+#GeanyDialogSearch entry:focus,#GeanyDialogSearch entry:hover,#GeanyToolbar entry:focus,#GeanyToolbar entry:hover,#GotoEntry entry:focus,#GotoEntry entry:hover,#SearchEntry entry:focus,#SearchEntry entry:hover,entry:focus,entry:hover{border-color:#88F;border-width:2px;box-shadow:0px 4px 4px 0px #CCC;margin:0px 3px;padding:0px}
+#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
 #GeanyDialogSearch entry,#SearchEntry entry{min-width:320px}
 #GotoEntry entry{min-width:64px}
 #GeanyDialogSearch entry image,#GeanyToolbar entry image,#GotoEntry entry image,#SearchEntry entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
