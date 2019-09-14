@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.03.28
+#' @version 2019.09.14
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -81,9 +81,13 @@ override LIST_PYTHON_SCRIPTS::=cx_freeze3 cxfreeze3 easy_install3 pip3 pip3-upgr
 override LIST_DEV_SCRIPTS::=canalysis clint cmccabe code-analysis code-formatter coffeeanalysis cssanalysis exewalk file-analysis flake8 goanalysis insn_count jsanalysis jsonanalysis luaanalysis pep257 pep8 phpanalysis pngshrink progstrip py_directive_checker pyanalysis pydocgtk pyflakes2 pyflakes3 pygraphcalls pygraphcalls3 pygraphclasses pygraphclasses3 pygraphimports pygraphimports3 pygraphmemusage pygraphprofile pyinspect pylint2 pylint3 pyprofile2 pyprofile3 pytest3 RCompiler.R RTidy.R run-in-git-proj shanalysis systracer timeit todo-scanner transpile xmlanalysis yamlanalysis
 override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh multimedia_rc.sh net_rc.sh no_debugging_rc.sh pkg_rc.sh
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc man2devhelp minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars save_file_times set_access_time setfiletimes str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc webget win2unixlines
-override LIST_PIP_DEPS::=autopep8 bandit bashate crimp cx-Freeze docformatter flake8 flake8-aaa flake8-alfred flake8-builtins flake8-coding flake8-comprehensions flake8-deprecated flake8-logging-format flake8-mypy flake8-pyi gprof2dot mccabe modulegraph modulegraph2 mypy mypy_extensions Pillow psrecord pyaml pycallgraph2 pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django radon uncalled vulture yamllint
-override LIST_DEV_DEPS::=astyle binwalk bsdiff bsdiff cccc cgdb complexity cppcheck doxygen doxygen-gui flawfinder gdb git-cola git-extras git-flow git-gui gitlint gitstats glade golint intltool jsonlint kwstyle ltrace mscgen optipng patchutils pmccabe pngcrush pscan python3-demjson qgit shc shellcheck splint strace uchardet undertaker universalindentgui vbindiff wamerican-insane xxdiff yajl-tools yamllint
-override LIST_MAIN_DEPS::=clang cloc colormake coreutils devscripts doschk dot exuberant-ctags gcc global id-utils libxml2-utils licensecheck llvm make moreutils ncc python3-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 python3-setuptools sloccount uuid xdg-utils
+override LIST_PIP_DEPS::=autopep8 bandit bashate beeprint crimp cx-Freeze docformatter flake8 flake8-aaa flake8-alfred flake8-builtins flake8-coding flake8-comprehensions flake8-deprecated flake8-logging-format flake8-mypy flake8-pyi gprof2dot mccabe modulegraph modulegraph2 mypy mypy_extensions pdbpp Pillow psrecord pyaml pycallgraph2 pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django radon uncalled vulture yamllint numpy cupy
+# Dependencies needed for development of the software in this repository
+override LIST_DEV_DEPS::=astyle binwalk bsdiff cccc cgdb complexity cppcheck cscope doxygen doxygen-gui faketime flawfinder gdb giggle giggle-personal-details-plugin giggle-terminal-view-plugin gir1.2-dbusmenu-gtk3-0.4 gir1.2-gspell-1 gir1.2-gtk-3.0 gir1.2-gtksource-3.0 gir1.2-keybinder-3.0 gir1.2-webkit2-4.0 git-cola git-extras git-flow git-gui git2cl gitg gitinspector gitlint gitstats glade golint iamerican-insane intltool jsonlint kwstyle libamtk-5-0 libamtk-5-dev libaspell-dev libenchant-dev libgit2-27 libgit2-dev libgladeui-2-6 libgladeui-dev libgspell-1-1 libgspell-1-dev libgtk-3-dev libgtkextra-3.0 libgtkextra-dev libgtkhex-3-0 libgtkhex-3-dev libgtkhotkey-dev libgtkhotkey1 libgtkimageview-dev libgtkimageview0 libgtkmathview-bin libgtkmathview-dev libgtkmathview0c2a libgtksourceview-3.0-1 libgtksourceview-3.0-common libgtksourceview-3.0-dev libgtksourceview-4-0 libgtksourceview-4-common libgtksourceview-4-dev libgtkspell3-3-0 libgtkspell3-3-dev libvte-2.91-0 libvte-2.91-dev libwebkit2gtk-4.0-37 libwebkit2gtk-4.0-dev libxfce4ui-glade ltrace meld mscgen optipng patch patchutils pmccabe pngcrush pscan python3-demjson python3-dev qgit shc shellcheck splint strace uchardet undertaker universalindentgui vbindiff wamerican-insane xxdiff yajl-tools yamllint
+# Packages providing documentation that may be needed for development of the software in this repository
+override LIST_DEV_DOCS::=apache2-doc bash-doc bison-doc caffe-doc coffeescript-doc cython-doc doxygen-doc editorconfig-doc gdb-doc git-doc gle-doc graphviz-doc gstreamer1.0-doc libbash-doc libclutter-gtk-1.0-doc libgirepository1.0-doc libgladeui-doc libgtk-3-doc libgtkdatabox-doc libgtkextra-3.0-doc libgtkglext1-doc libgtksourceview-3.0-doc libgtksourceview-4-doc libpango1.0-doc libvte-2.91-doc libwebkit2gtk-4.0-doc make-doc nginx-doc octave-doc opencv-doc python-flask-doc python-flask-restful-doc python-flaskext.wtf-doc python-numpy-doc python-pycuda-doc python-setuptools-doc python-sklearn-doc python-werkzeug-doc python-wtforms-doc sqlite3-doc swig-doc swig3.0-doc theano-doc
+# Dependencies needed to use most of the software in this repository
+override LIST_MAIN_DEPS::=apcalc aspell bsdmainutils bsdutils clang cloc colormake coreutils curl debianutils devscripts doschk dot enchant exuberant-ctags gcc global hunspell id-utils ispell libxml2-utils licensecheck llvm make moreutils ncc python3-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 python3-setuptools python3-wheel sloccount spell spellutils uuid wcalc wget xdg-utils xz-utils
 # retext
 # geany geany-plugin-addons geany-plugin-automark geany-plugin-codenav geany-plugin-commander geany-plugin-ctags geany-plugin-defineformat geany-plugin-doc geany-plugin-extrasel geany-plugin-gendoc geany-plugin-insertnum geany-plugin-keyrecord geany-plugin-latex geany-plugin-lineoperations geany-plugin-lua geany-plugin-macro geany-plugin-miniscript geany-plugin-numberedbookmarks geany-plugin-overview geany-plugin-pairtaghighlighter geany-plugin-pg geany-plugin-pohelper geany-plugin-prettyprinter geany-plugin-prj geany-plugin-projectorganizer geany-plugin-shiftcolumn geany-plugin-spellcheck geany-plugin-tableconvert geany-plugin-treebrowser geany-plugin-vc geany-plugin-workbench geany-plugin-xmlsnippets
 
@@ -212,7 +216,7 @@ default :
 # Documentation
 .PHONY : cleandoc doc docc docpy doxy manpages
 # General Project Utilities
-.PHONY : getdeps_deb getdeps_deb_all getdeps_pip update_doccmt_keywords update_reminders upver
+.PHONY : getdeps getdeps_all getdeps_pip getdocs update_doccmt_keywords update_reminders upver
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
@@ -343,13 +347,20 @@ pkgzip : rmtmp
 # GENERAL PROJECT UTILITIES #
 
 
-getdeps_deb : getdeps_pip
+getdeps : getdeps_pip
 	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_MAIN_DEPS) && printf 'If desired, execute `\x1b[4;33msudo add-apt-repository ppa:geany-dev/ppa\x1b[0m`\n' || true)) || \
 	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_MAIN_DEPS) || true)) || \
 	([ -d /etc/portage ] && [ -x "$(command -v emerge)" ] && (emerge -a $(LIST_MAIN_DEPS) || true)) || true
 
-getdeps_deb_all : getdeps_deb
-	@apt-get install $(LIST_DEV_DEPS)
+getdocs :
+	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_DEV_DOCS) || true)) || \
+	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_DEV_DOCS) || true)) || \
+	([ -d /etc/portage ] && [ -x "$(command -v emerge)" ] && (emerge -a $(LIST_DEV_DOCS) || true)) || true
+
+getdeps_all : getdeps getdocs
+	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_DEV_DEPS) || true)) || \
+	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_DEV_DEPS) || true)) || \
+	([ -d /etc/portage ] && [ -x "$(command -v emerge)" ] && (emerge -a $(LIST_DEV_DEPS) || true)) || true
 
 getdeps_pip :
 	@(command -v pip3 >&2 > /dev/null && pip3 install $(LIST_PIP_DEPS)) || (command -v pip >&2 > /dev/null && pip install $(LIST_PIP_DEPS)) || true
