@@ -271,6 +271,7 @@ if [ -z "${PAGER:-}" ]; then
 fi
 export MANPAGER="$PAGER"
 export SYSTEMD_PAGER="$PAGER"
+[ -z "${XDG_RUNTIME_DIR:-}" ] && [ -n "${UID:-}" ] && export XDG_RUNTIME_DIR="/run/user/${UID}"
 
 
 # EDITOR VARIABLES #
