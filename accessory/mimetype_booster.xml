@@ -6746,6 +6746,8 @@
     <icon name="text-x-dockerfile"/>
     <glob pattern="*.Dockerfile" weight="90"/>
     <glob pattern="*.dockerfile" weight="90"/>
+    <glob pattern="*Dockerfile" weight="90"/>
+    <glob pattern="*dockerfile" weight="90"/>
     <glob pattern="Dockerfile" weight="90"/>
     <glob pattern="dockerfile" weight="90"/>
     <glob pattern="Dockerfile*" weight="90"/>
