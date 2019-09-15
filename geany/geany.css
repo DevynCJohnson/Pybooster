@@ -22,6 +22,12 @@
 #geany-close-tab-button{outline-offset:0;outline-width:1px;padding:4px}
 #geany-close-tab-button GtkImage,#geany-close-tab-button image{padding:4px}
 
+/* Toolbar */
+
+#GeanyToolbar{margin:0px}
+#GeanyToolbar toolbutton>button{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
+#GeanyToolbar toolbutton>entry{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
+
 /* Search Entries */
 
 entry{caret-color:#000}
