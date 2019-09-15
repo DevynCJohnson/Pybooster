@@ -1,3 +1,19 @@
+2019-09-14  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added more CSS3 keywords to filetypes.css
+	* Geany:  Improved the dark CSS theme for Geany
+	* Geany:  Improved the light/default CSS theme for Geany
+	* makefile:  Added additional dependencies & created an entry for installing documentation packages
+	* mimetype_booster.xml:  Added additional patterns to the `text/x-dockerfile` mimetype
+	* profile:  Tweaked the value of `XDG_RUNTIME_DIR` in profile
+
+2019-09-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added a dark CSS theme for Geany
+	* Geany:  Updated the CSS & Glade files in Geany
+	* makefile:  Added some additional dependencies that were missing
+	* shrc:  Fixed some bugs
+
 2019-09-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Updated the keybindings in Geany
