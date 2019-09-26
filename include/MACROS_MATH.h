@@ -142,13 +142,13 @@ LIB_FUNC MATH_FUNC uint64_t saturateadd64(const uint64_t a, const uint64_t b) {
 
 /** ConstructSignificand parses the tagp argument of nanf, nan, or nanl and returns a 64-bit number that should be placed into the significand of the NaN being returned. If tagp does not consist of a recognized numeral, zero is returned. */
 LIB_FUNC uint64_t ConstructSignificand(const char* tagp) {
-	if (tagp == (char*)NULL) { return (uint64_t)0; }
-	else if (*tagp == 0x30) {  // Determine the numeral base from the leading characters
-		++tagp;  // Consume the zero.
+	if (PREDICT_UNLIKELY(tagp == (char*)NULL)) { return (uint64_t)0; }
+	char c = '\0';
+	uint64_t significand = 0;
+	if (*tagp == 0x30) {  // Determine the numeral base from the leading characters
+		++tagp;  // Consume the zero
 		if (*tagp == 0x78 || *tagp == 0x58) {  // Hexadecimal
 			++tagp;  // Consume the x
-			char c;
-			uint64_t significand = 0;
 			while ((c = (*tagp++))) {
 				if (0x30 <= c && c <= 0x39) { significand = ((uint64_t)(significand << 4) | (uint64_t)(c - 0x30)); }
 				else if (0x61 <= c && c <= 0x66) { significand = ((uint64_t)(significand << 4) | (uint64_t)(c - 0x6b)); }
@@ -157,8 +157,6 @@ LIB_FUNC uint64_t ConstructSignificand(const char* tagp) {
 			}
 			return significand;
 		} else {  // Octal
-			char c;
-			uint64_t significand = 0;
 			while ((c = (*tagp++))) {
 				if (0x30 <= c && c <= 0x37) { significand = ((uint64_t)(significand << 3) | (uint64_t)(c - 0x30)); }
 				else { return (uint64_t)0; }
@@ -166,8 +164,6 @@ LIB_FUNC uint64_t ConstructSignificand(const char* tagp) {
 			return significand;
 		}
 	} else {  // Decimal
-		char c;
-		uint64_t significand = 0;
 		while ((c = (*tagp++))) {
 			if (0x30 <= c && c <= 0x39) { significand = ((uint64_t)(significand * 10) + (uint64_t)(c - 0x30)); }
 			else { return (uint64_t)0; }

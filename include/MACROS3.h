@@ -33176,10 +33176,10 @@ LIB_FUNC unsigned long strtoul_l(const char* restrict nptr, const char** restric
 /** Convert a string to a unsigned long long */
 LIB_FUNC unsigned long long strtoull(const char* restrict nptr, const char** restrict endptr, int base) {
 	const char* p = nptr;
-	register unsigned long long n = 0, nn, m;
+	register unsigned long long n = 0;
 	register int c, ovfl = 0, v, neg = 0, ndig = 0;
 	while (isspace(*p)) { ++p; }
-	if (*p == '+' || *p == '-') { if (*p == '-') { neg = 1; } ++p; }  // Sign
+	if (*p == '+') { ++p; }  // Sign
 	if (base == 0) {  // Base
 		base = 10;
 		if (*p == '0') {
@@ -33195,13 +33195,14 @@ LIB_FUNC unsigned long long strtoull(const char* restrict nptr, const char** res
 		} else if (base < 0 || 36 < base) {
 			if (ndig == 0) { p = nptr; }
 			if (endptr) { *endptr = p; }
-			if (ovfl) { return UVLONG_MAX; }
+			if (ovfl) { return ULLONG_MAX; }
 			else if (neg) { return -n; }
 			return n;
 		}
 	}
 	// Non-empty sequence of digits
-	m = UVLONG_MAX / (unsigned long long)base;
+	register unsigned long long m = ULLONG_MAX / (unsigned long long)base;
+	register unsigned long long nn = 0;
 	for (;; p++, ndig++) {
 		c = *p;
 		v = base;
@@ -33216,8 +33217,7 @@ LIB_FUNC unsigned long long strtoull(const char* restrict nptr, const char** res
 	}
 	if (ndig == 0) { p = nptr; }
 	if (endptr) { *endptr = p; }
-	if (ovfl) { return UVLONG_MAX; }
-	else if (neg) { return -n; }
+	if (ovfl) { return ULLONG_MAX; }
 	return n;
 }
 
