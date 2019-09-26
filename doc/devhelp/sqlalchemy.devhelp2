@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/python-sqlalchemy-doc/html" language="Python" link="index.html" name="SQL-Alchemy" title="SQL-Alchemy Documentation" version="2">
+  <chapters>
+    <sub name="ORM" link="orm/index.html" />
+    <sub name="Index" link="genindex.html" />
+    <sub name="Glossary" link="glossary.html" />
+    <sub name="Search" link="search.html" />
+  </chapters>
+</book>

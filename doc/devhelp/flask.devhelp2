@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/python3-flask/html" language="Python" link="index.html" name="Flask" title="Flask Documentation" version="2">
+  <chapters>
+    <sub name="API" link="api.html" />
+    <sub name="CLI" link="cli.html" />
+    <sub name="Views" link="views.html" />
+    <sub name="Search" link="search.html" />
+  </chapters>
+</book>

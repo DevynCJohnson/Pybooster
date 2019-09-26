@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/python3-xapian/html" language="Python" link="index.html" name="Xapian" title="Xapian Documentation" version="2">
+  <chapters>
+    <sub name="Xapian" link="xapian.html" />
+    <sub name="Objects" link="objects.html" />
+    <sub name="Index" link="genindex.html" />
+    <sub name="Search" link="search.html" />
+  </chapters>
+</book>

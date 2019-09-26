@@ -654,6 +654,14 @@ install_devhelp : | fixperm
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-8-base ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-7-base ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-6-base ] && $(LNDIR) /usr/share/doc/gcc-6-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
+	# Flask
+	([ ! -d /usr/share/devhelp/books/flask ] && [ -d /usr/share/doc/python-flask-doc/html ] && $(LNDIR) /usr/share/doc/python-flask-doc/html /usr/share/devhelp/books/flask && $(COPY) $(DEVHELPDIR)/flask.devhelp2 /usr/share/devhelp/books/flask/) || true
+	# SQLAlchemy
+	([ ! -d /usr/share/devhelp/books/sqlalchemy ] && [ -d /usr/share/doc/python-sqlalchemy-doc/html ] && $(LNDIR) /usr/share/doc/python-sqlalchemy-doc/html /usr/share/devhelp/books/sqlalchemy && $(COPY) $(DEVHELPDIR)/sqlalchemy.devhelp2 /usr/share/devhelp/books/sqlalchemy/) || true
+	# Werkzeug
+	([ ! -d /usr/share/devhelp/books/werkzeug ] && [ -d /usr/share/doc/python-werkzeug-doc/html ] && $(LNDIR) /usr/share/doc/python-werkzeug-doc/html /usr/share/devhelp/books/werkzeug && $(COPY) $(DEVHELPDIR)/werkzeug.devhelp2 /usr/share/devhelp/books/werkzeug/) || true
+	# Xapian
+	([ ! -d /usr/share/devhelp/books/xapian ] && [ -d /usr/share/doc/python3-xapian/html ] && $(LNDIR) /usr/share/doc/python3-xapian/html /usr/share/devhelp/books/xapian && $(COPY) $(DEVHELPDIR)/xapian.devhelp2 /usr/share/devhelp/books/xapian/) || true
 	# REPAIR DEVHELP DOCUMENTS
 	# gtkglext
 	([ -f /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp.gz ] && gunzip /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp.gz && sed -i -e 's| link="index.html" author="" name="gtkglext">| link="index.html" author="" name="gtkglext" language="C" version="2">|;s|<function |<keyword type="function" |;' /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp && mv /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp2 && gzip /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp2) || true

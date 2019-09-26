@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/python3-werkzeug/html" language="Python" link="index.html" name="Werkzeug" title="Werkzeug Documentation" version="2">
+  <chapters>
+    <sub name="Data Structures" link="datastructures.html" />
+    <sub name="URLs" link="urls.html" />
+    <sub name="Index" link="genindex.html" />
+    <sub name="Search" link="search.html" />
+  </chapters>
+</book>
