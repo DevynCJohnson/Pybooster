@@ -694,7 +694,6 @@ else  # No color support
         PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     fi
 fi
-unset color_prompt
 
 # Enable color support for `ls`
 if [ -x "$(command -v dircolors)" ]; then
