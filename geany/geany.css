@@ -28,18 +28,21 @@
 #GeanyToolbar toolbutton>button{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
 #GeanyToolbar toolbutton>entry{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
 
-/* Search Entries */
+/* Text Entries */
 
-entry{caret-color:#000}
-#GeanyDialogSearch entry:focus,#GeanyDialogSearch entry:hover,#GeanyToolbar entry:focus,#GeanyToolbar entry:hover,#GotoEntry entry:focus,#GotoEntry entry:hover,#SearchEntry entry:focus,#SearchEntry entry:hover,entry:focus,entry:hover{border-color:#77C;border-width:2px;margin:0px 3px;padding:0px}
-#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
+entry{background-color:#FFF;caret-color:#000;color:#000;font-family:mononoki,monospace}
+entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
+entry image:focus{background-color:#CCF}
+entry image:active,entry image:active:focus{background-color:#2890FF}
+entry image:hover,entry image:hover:focus{background-color:#A4A600}
+entry:focus,entry:hover{border-color:#77C;border-width:2px;margin:0px 3px;padding:0px}
+#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
 #GeanyDialogSearch entry,#SearchEntry entry{min-width:320px}
 #GotoEntry entry{min-width:64px}
-#GeanyDialogSearch entry image,#GeanyToolbar entry image,#GotoEntry entry image,#SearchEntry entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
-#GeanyDialogSearch entry image:hover,#GeanyToolbar entry image:hover,#GotoEntry entry image:hover,#SearchEntry entry image:hover{background-color:#777}
 #geany-search-entry-no-match{background-color:#F66;color:#FFF}
 #geany-search-entry-no-match:selected,#geany-search-entry-no-match selection{background-color:#711}
-entry{background-color:#FFF;color:#000}
+#Math_Analytics entry:focus,#Math_Analytics entry:hover{margin:0px 3px;padding:0px}
+#Math_Analytics entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
 
 /* Tabs */
 
@@ -55,5 +58,4 @@ notebook>header>tabs{background-image:linear-gradient(#B7B5A9 0%, #C5C1B3 37%, #
 #GeanyMenubar,#GeanyToolbar{background-image:linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%)}
 menubar>menuitem>label{border-color:#777;border-style:solid;border-width:0px 2px}
 treeview>header>button{border-color:#777;border-style:solid;border-width:1px;min-width:144px}
-treeview>header>label{color:#000}
 separator{background-color:#111}
