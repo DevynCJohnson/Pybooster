@@ -35,14 +35,15 @@ entry image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
 entry image:focus{background-color:#CCF}
 entry image:active,entry image:active:focus{background-color:#2890FF}
 entry image:hover,entry image:hover:focus{background-color:#A4A600}
+entry{margin:0px 4px;padding:1px 0px}
+#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-size:30px;min-height:32px}
 entry:focus,entry:hover{border-color:#77C;border-width:2px;margin:0px 3px;padding:0px}
-#GeanyDialogSearch entry,#GeanyToolbar entry,#GotoEntry entry,#SearchEntry entry{font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
 #GeanyDialogSearch entry,#SearchEntry entry{min-width:320px}
 #GotoEntry entry{min-width:64px}
 #geany-search-entry-no-match{background-color:#F66;color:#FFF}
 #geany-search-entry-no-match:selected,#geany-search-entry-no-match selection{background-color:#711}
-#Math_Analytics entry:focus,#Math_Analytics entry:hover{margin:0px 3px;padding:0px}
 #Math_Analytics entry{font-family:mononoki,monospace;font-size:30px;margin:0px 4px;min-height:32px;padding:1px 0px}
+#Math_Analytics entry:focus,#Math_Analytics entry:hover{margin:0px 3px;padding:0px}
 
 /* Tabs */
 
