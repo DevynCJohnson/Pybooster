@@ -374,6 +374,7 @@ notinpath() { (echo ":${PATH}:" | grep -F -q -v "$1" && return 0) || return 1; }
 [ -d /opt/bin ] && notinpath ':/opt/bin' && PATH="${PATH}:/opt/bin"
 [ -d /snap/bin ] && notinpath ':/snap/bin' && PATH="${PATH}:/snap/bin"
 [ -d "${HOME}/bin" ] && notinpath "${HOME}/bin" && notinpath ':\~/bin' && PATH="${HOME}/bin:${PATH}"
+[ -d "${HOME}/.cargo/bin" ] && notinpath "${HOME}/.cargo/bin" && notinpath ':\~/.cargo/bin' && PATH="${HOME}/.cargo/bin:${PATH}"
 [ -d "${HOME}/.local/bin" ] && notinpath "${HOME}/.local/bin" && notinpath ':\~/.local/bin' && PATH="${HOME}/.local/bin:${PATH}"
 [ -d /wine/bin ] && notinpath ':/wine/bin' && PATH="${PATH}:/wine/bin"
 [ -d /usr/X11/opt ] && notinpath ':/usr/X11/opt' && PATH="${PATH}:/opt/X11/bin"
