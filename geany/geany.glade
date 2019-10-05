@@ -2679,7 +2679,6 @@
                       </object>
                       <packing>
                         <property name="tab_fill">False</property>
-                        <property name="reorderable">True</property>
                       </packing>
                     </child>
                     <child>
@@ -2720,7 +2719,6 @@
                       <packing>
                         <property name="position">1</property>
                         <property name="tab_fill">False</property>
-                        <property name="reorderable">True</property>
                       </packing>
                     </child>
                   </object>
@@ -2791,7 +2789,6 @@
                   </object>
                   <packing>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
                 <child>
@@ -2832,7 +2829,6 @@
                   <packing>
                     <property name="position">1</property>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
                 <child>
@@ -2873,7 +2869,6 @@
                   <packing>
                     <property name="position">2</property>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
                 <child>
@@ -2891,7 +2886,7 @@
                         <property name="can_focus">True</property>
                         <property name="wrap_mode">word-char</property>
                         <property name="buffer">textbuffer1</property>
-                        <property name="input_hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                        <property name="input_hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_EMOJI</property>
                         <property name="monospace">True</property>
                         <signal name="motion-notify-event" handler="on_motion_event" swapped="no"/>
                       </object>
@@ -2914,7 +2909,6 @@
                   <packing>
                     <property name="position">3</property>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
               </object>
