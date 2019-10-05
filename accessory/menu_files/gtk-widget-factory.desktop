@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Development;GTK;GUIDesigner;
+Comment=Test GTK themes and view all of the possible widgets
+Exec=gtk3-widget-factory
+GenericName=Widget Factory
+Hidden=false
+Icon=gtk
+Keywords=gtk;testing;theme;widget;
+Name=GTK Widget Factory
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1

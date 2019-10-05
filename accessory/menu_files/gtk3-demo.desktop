@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Development;GTK;GUIDesigner;
+Comment=Provides examples, demos, and code for various GTK3 widgets
+Exec=gtk3-demo
+Hidden=false
+Icon=gtk
+Keywords=code;example;gtk3;widgets;
+Name=GTK3 Examples
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.1
