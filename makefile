@@ -88,14 +88,14 @@ override LIST_DEV_DEPS::=astyle binwalk bsdiff cccc cgdb complexity cppcheck csc
 override LIST_DEV_DOCS::=apache2-doc bash-doc bison-doc caffe-doc coffeescript-doc cython-doc doxygen-doc editorconfig-doc gdb-doc git-doc gle-doc graphviz-doc gstreamer1.0-doc libbash-doc libclutter-gtk-1.0-doc libgirepository1.0-doc libgladeui-doc libgtk-3-doc libgtkdatabox-doc libgtkextra-3.0-doc libgtkglext1-doc libgtksourceview-3.0-doc libgtksourceview-4-doc libpango1.0-doc libvte-2.91-doc libwebkit2gtk-4.0-doc make-doc nginx-doc octave-doc opencv-doc python-flask-doc python-flask-restful-doc python-flaskext.wtf-doc python-numpy-doc python-pycuda-doc python-setuptools-doc python-sklearn-doc python-werkzeug-doc python-wtforms-doc sqlite3-doc swig-doc swig3.0-doc theano-doc
 # Dependencies needed to use most of the software in this repository
 override LIST_MAIN_DEPS::=apcalc aspell bsdmainutils bsdutils clang cloc colormake coreutils curl debianutils devscripts doschk dot enchant exuberant-ctags gcc global hunspell id-utils ispell libxml2-utils licensecheck llvm make moreutils ncc python3-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 python3-setuptools python3-wheel rename sloccount spell spellutils uuid wcalc wget xdg-utils xz-utils
-# retext
-# geany geany-plugin-addons geany-plugin-automark geany-plugin-codenav geany-plugin-commander geany-plugin-ctags geany-plugin-defineformat geany-plugin-doc geany-plugin-extrasel geany-plugin-gendoc geany-plugin-insertnum geany-plugin-keyrecord geany-plugin-latex geany-plugin-lineoperations geany-plugin-lua geany-plugin-macro geany-plugin-miniscript geany-plugin-numberedbookmarks geany-plugin-overview geany-plugin-pairtaghighlighter geany-plugin-pg geany-plugin-pohelper geany-plugin-prettyprinter geany-plugin-prj geany-plugin-projectorganizer geany-plugin-shiftcolumn geany-plugin-spellcheck geany-plugin-tableconvert geany-plugin-treebrowser geany-plugin-vc geany-plugin-workbench geany-plugin-xmlsnippets
+
+# retext geany geany-plugin-addons geany-plugin-automark geany-plugin-codenav geany-plugin-commander geany-plugin-ctags geany-plugin-defineformat geany-plugin-doc geany-plugin-extrasel geany-plugin-gendoc geany-plugin-insertnum geany-plugin-keyrecord geany-plugin-latex geany-plugin-lineoperations geany-plugin-lua geany-plugin-macro geany-plugin-miniscript geany-plugin-numberedbookmarks geany-plugin-overview geany-plugin-pairtaghighlighter geany-plugin-pg geany-plugin-pohelper geany-plugin-prettyprinter geany-plugin-prj geany-plugin-projectorganizer geany-plugin-shiftcolumn geany-plugin-spellcheck geany-plugin-tableconvert geany-plugin-treebrowser geany-plugin-vc geany-plugin-workbench geany-plugin-xmlsnippets
 
 # Search Parameters Used in Find
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
-override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
-override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" \)
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.cursor *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors-White/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors/*" \)
 
 
 # HELP #
@@ -120,6 +120,7 @@ help :
 	printf '%s\n\t%s\n' 'Linux Driver Module for Clevo Keyboard Backlights:' 'sudo make install_dkms_clevo_kbd_backlight'
 	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
 	printf '%s\n\t%s\n' 'Opticons:' 'sudo make install_opticons'
+	printf '%s\n\t%s\n' 'Optimal Cursors:' 'sudo make install_optimal_cursors'
 	printf '%s\n\t%s\n' 'Python Eggs:' 'sudo make install_pyeggs'
 	printf '%s\n\t%s\n' 'Python Libraries:' 'sudo make install_pylib'
 	printf '%s\n\t%s\n' 'Scripts:' 'sudo make install_scripts'
@@ -226,9 +227,9 @@ default :
 # Uninstall DKMS Driver Modules
 .PHONY : uninstall_dkms_clevo_kbd_backlight
 # Install
-.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_devhelp install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_devhelp install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_optimal_cursors install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_devhelp uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_devhelp uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_optimal_cursors uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify replace_repos secure uninstall_geofiles unmacify update_geofiles
 
@@ -422,7 +423,7 @@ fixperm :
 	find $(ACCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	([ -d $(DOCDIR)/ ] && find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +) || true
 	find $(PYEGGDIR) -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
-	$(CHMOD) 644 $(DBDIR)/* $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py
+	$(CHMOD) 644 $(DBDIR)/* $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py "$(THEMEDIR)/Optimal-Cursors/src/cursorList"
 	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py || true
 
 rmcache :
@@ -790,6 +791,16 @@ uninstall_opticons :
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/ && $(UPDATEMIME) $(SYSMIMEDIR)) || true
 	[ -x "$(command -v update-alternatives)" ] && update-alternatives --set start-here.svg /etc/alternatives/start-here.svg
+
+install_optimal_cursors :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Optimal-Cursors ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'all' && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'install') || true
+
+uninstall_optimal_cursors :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Optimal-Cursors ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	([ -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'uninstall') || true
 
 install_pyeggs : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Eggs ==='
