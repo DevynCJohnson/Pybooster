@@ -1,3 +1,22 @@
+# 2019-10-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Added more keywords for Jinja templates
+- **Geany:**  Improved the CSS themes for Geany
+- **Geany:**  Improved the Glade interface for Geany
+- **makefile:**  Added "seed-webkit2" to the list of developer dependencies
+- **Opticons:**  Added some icons for various Glade widgets
+- **PyBooster:**  Added two more ∗.desktop files to `./accessory/menu_files/`
+- **PyBooster:**  Added Optimal-Cursors
+
+# 2019-10-04  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Opticons:**  Added an icon for general GTK applications
+- **profile:**  Added the Cargo binary directory to `$PATH`
+
+# 2019-09-29  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Improved the CSS themes for Geany
+
 # 2019-09-25  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **Devhelp:**  Added DevHelp files for Flask, SQLAlchemy, Werkzeug, & Xapian
