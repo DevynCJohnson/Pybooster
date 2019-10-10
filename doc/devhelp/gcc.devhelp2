@@ -2,13 +2,28 @@
 <book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/gcc/" language="Compiler" link="gcc.html" name="GNU-GCC" title="GNU-GCC Documentation" version="2">
   <chapters>
     <sub name="Compiler" link="gcc.html">
-      <sub name="Internals" link="gccint.html" />
       <sub name="Command-line" link="gcc.html#Invoking-GCC" />
-      <sub name="C-Implementation" link="gcc.html#C-Implementation" />
-      <sub name="C++-Implementation" link="gcc.html#C_002b_002b-Implementation" />
       <sub name="C Extensions" link="gcc.html#C-Extensions" />
       <sub name="C++ Extensions" link="gcc.html#C_002b_002b-Extensions" />
+      <sub name="C-Implementation" link="gcc.html#C-Implementation" />
+      <sub name="C++-Implementation" link="gcc.html#C_002b_002b-Implementation" />
+      <sub name="Internals" link="gccint.html" />
       <sub name="Supported Languages" link="gcc.html#Standards" />
+    </sub>
+    <sub name="Assembly" link="gcc.html#Using-Assembly-Language-with-C">
+      <sub name="Basic Assembly" link="gcc.html#Basic-Asm" />
+      <sub name="Extended Assembly" link="gcc.html#Extended-Asm" />
+      <sub name="Assembly Operand Constraints" link="gcc.html#Constraints" />
+      <sub name="Register Variables" link="gcc.html#Explicit-Register-Variables" />
+    </sub>
+    <sub name="Attributes" link="gcc.html#Function-Attributes">
+      <sub name="Attribute Syntx" link="gcc.html#Attribute-Syntax" />
+      <sub name="Enumerator Attributes" link="gcc.html#Enumerator-Attributes" />
+      <sub name="Function Attributes" link="gcc.html#Function-Attributes" />
+      <sub name="Label Attributes" link="gcc.html#Label-Attributes" />
+      <sub name="Statement Attributes" link="gcc.html#Statement-Attributes" />
+      <sub name="Type Attributes" link="gcc.html#Type-Attributes" />
+      <sub name="Variable Attributes" link="gcc.html#Variable-Attributes" />
     </sub>
     <sub name="Preprocessor" link="cpp.html">
       <sub name="Diagnostics" link="cpp.html#Diagnostics" />
@@ -16,6 +31,7 @@
       <sub name="Internals" link="cppint.html" />
       <sub name="Macros" link="cpp.html#Macros" />
       <sub name="Pragmas" link="cpp.html#Pragmas" />
+      <sub name="Variadic Macros" link="gcc.html#Variadic-Macros" />
     </sub>
     <sub name="libgomp" link="libgomp.html" />
     <sub name="libitm" link="libitm.html" />
