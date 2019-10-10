@@ -5,13 +5,13 @@
 """@brief Sort lines (or list) in data stream alphabetically.
 
 @file alphabetize_lines
-@version 2019.07.14
+@version 2019.10.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
 @section DESCRIPTION
 This script can be integrated into Geany to sort selected lines or some single lines.
-A single data line (without '\n') can be sorted if it is delimited by '|', ' ', ',', ';', ':', or ', '.
+A single data line (without '\n') can be sorted if it is delimited by '|', ' ', ',', ';', ':', ' / ', or ', '.
 Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
 
 @section LICENSE
@@ -77,11 +77,11 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
     if not _data or not _data.strip():
         stderr.write('No input provided!\n')
         raise Exception(r'No input provided!')
-    # Delimiters (except newline)
-    patterns: tuple = ('\u001F', '\u000B', '\u0009', r'|', '\r', r', ', r',', r' ', r';', r':', '\f')
     if '\n' in _data:
         # Newline as delimiter
         return sort_func(_data, '\n')
+    # Delimiters (except newline)
+    patterns: tuple = ('\u001F', '\u000B', '\u0009', r'|', '\r', r', ', r',', r' / ', r' ', r';', r':', '\f')
     for pattern in patterns:
         if pattern in _data:
             return sort_func(_data, pattern)
@@ -95,7 +95,7 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
 
 if __name__ == '__main__':  # noqa: C901
     HELP: str = 'Usage\n\talphabetize_lines [-r] "string"\n\tcommand | alphabetize_lines [-r]\n' + \
-        '\nSupported Delimters\n\tTab (U+0009)\n\tNewline (U+000A)\n\tVertical Tab (U+000B)\n\tForm-feed (U+000C)\n\tCarriage return (U+000D)\n\tUnit-separator (U+001F)\n\tSpace (U+0020)\n\tComma (U+002C)\n\t`:` (U+003A)\n\t`;` (U+003B)\n\tcomma+space\n\t`|` (U+007C)\n' + \
+        '\nSupported Delimters\n\tTab (U+0009)\n\tNewline (U+000A)\n\tVertical Tab (U+000B)\n\tForm-feed (U+000C)\n\tCarriage return (U+000D)\n\tUnit-separator (U+001F)\n\tSpace (U+0020)\n\tComma (U+002C)\n\t`:` (U+003A)\n\t`;` (U+003B)\n\tcomma+space\n\tspace+forward-slash+space\n\t`|` (U+007C)\n' + \
         '\nOptional Parameters\n' + \
         '\t-c, --char: Sort individual characters\n' + \
         '\t-n, --no-trailing-nl: Do not add a trailing newline at the end of the output\n' + \
