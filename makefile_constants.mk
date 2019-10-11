@@ -144,6 +144,12 @@ LFLAGS::=
 YACC::=yacc
 YFLAGS::=
 
+override USECCACHE::=$(shell command -v ccache)
+COMPILER_CLANG::=$(USECCACHE) clang
+COMPILER_GCC::=$(USECCACHE) gcc
+COMPILER_MUSL_GCC::=$(USECCACHE) musl-gcc
+COMPILER_CCACHE::=$(USECCACHE)
+
 # Flag used to indicate that Clang should be used
 ifdef dcj
     ifeq ($(dcj),1c)
@@ -317,7 +323,7 @@ ifdef CROSS_COMPILE
         # Windows (i686)
         ifeq ($(CROSS_COMPILE),win32)
             override GCC_PREFIX::=i686-w64-mingw32
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(mingw32_include) $(INCLUDE)
@@ -328,7 +334,7 @@ ifdef CROSS_COMPILE
         # Windows (x86-64)
         else ifeq ($(CROSS_COMPILE),win64)
             override GCC_PREFIX::=x86_64-w64-mingw32
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(INCLUDE) $(mingw64_include)
@@ -343,7 +349,7 @@ ifdef CROSS_COMPILE
     # Android (ARM)
     else ifeq ($(CROSS_COMPILE),android)
         override GCC_PREFIX::=arm-linux-androideabi
-        override CBUILD::=$(GCC_PREFIX)-gcc
+        override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
         override CHOST::=$(CBUILD)
         override CROSS_COMPILE::=$(GCC_PREFIX)-
         override INCLUDE::=$(INCLUDE) $(armandroideabi_include)
@@ -358,14 +364,14 @@ ifdef CROSS_COMPILE
         # x86 and x86-64
         ifeq ($(CROSS_COMPILE),x86)
             override GCC_PREFIX::=x86-linux-gnu
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override CC::=$(CBUILD)
             override BITS::=32
         else ifeq ($(CROSS_COMPILE),x86-64)
             override GCC_PREFIX::=x86_64-linux-gnu
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override CC::=$(CBUILD)
@@ -373,7 +379,7 @@ ifdef CROSS_COMPILE
         # ARM
         else ifeq ($(CROSS_COMPILE),armhf)
             override GCC_PREFIX::=arm-linux-gnueabihf
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
@@ -383,7 +389,7 @@ ifdef CROSS_COMPILE
             override BITS::=32
         else ifeq ($(CROSS_COMPILE),arm)
             override GCC_PREFIX::=arm-linux-gnueabihf
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(armgnueabihf_include) $(INCLUDE)
@@ -393,7 +399,7 @@ ifdef CROSS_COMPILE
             override BITS::=32
         else ifeq ($(CROSS_COMPILE),armel)
             override GCC_PREFIX::=arm-linux-gnueabi
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(armgnueabi_include) $(INCLUDE)
@@ -403,7 +409,7 @@ ifdef CROSS_COMPILE
             override BITS::=32
         else ifeq ($(CROSS_COMPILE),armsf)
             override GCC_PREFIX::=arm-linux-gnueabi
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             override INCLUDE::=$(armgnueabi_include) $(INCLUDE)
@@ -555,7 +561,7 @@ ifdef dcj
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
         ifndef USECLANG
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             ifdef MUSL
@@ -566,7 +572,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -584,7 +590,7 @@ ifdef dcj
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
         ifndef USECLANG
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             ifdef MUSL
@@ -595,7 +601,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -613,7 +619,7 @@ ifdef dcj
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
         ifndef USECLANG
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             ifdef MUSL
@@ -624,7 +630,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse $(ASZ)
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -642,7 +648,7 @@ ifdef dcj
         override DEBUG::=$(DCJ_DEBUG)
         override PIC::=-fpic
         ifndef USECLANG
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             ifdef MUSL
@@ -653,7 +659,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -673,16 +679,16 @@ ifdef dcj
         override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
-                override CBUILD::=musl-gcc
+                override CBUILD::=$(COMPILER_CCACHE) musl-gcc
                 override CC::=musl-gcc -D__MUSL__
             else
-                override CBUILD::=gcc
+                override CBUILD::=$(COMPILER_CCACHE) gcc
                 override CC::=$(CBUILD)
             endif
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -697,16 +703,16 @@ ifdef dcj
         override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
-                override CBUILD::=musl-gcc
+                override CBUILD::=$(COMPILER_CCACHE) musl-gcc
                 override CC::=musl-gcc -D__MUSL__
             else
-                override CBUILD::=gcc
+                override CBUILD::=$(COMPILER_CCACHE) gcc
                 override CC::=$(CBUILD)
             endif
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -720,16 +726,16 @@ ifdef dcj
         override STD::=-std=c11
         ifndef USECLANG
             ifdef MUSL
-                override CBUILD::=musl-gcc
+                override CBUILD::=$(COMPILER_CCACHE) musl-gcc
                 override CC::=musl-gcc -D__MUSL__
             else
-                override CBUILD::=gcc
+                override CBUILD::=$(COMPILER_CCACHE) gcc
                 override CC::=$(CBUILD)
             endif
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -749,7 +755,7 @@ ifdef dcj
         override WARN::=-Wall -Wextra -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Winline -Wuninitialized -Wstrict-prototypes -Wbad-function-cast -Wdouble-promotion -Wredundant-decls -Wnested-externs -Wmissing-include-dirs -Wswitch-enum -Wswitch-bool -Wsync-nand -Winit-self -Wsuggest-final-types -Wsuggest-final-methods -Wundef -Wdate-time -Wjump-misses-init -Wlogical-op -Wopenmp-simd -Winvalid-pch -Wunsafe-loop-optimizations -Wdisabled-optimization -Wstack-protector -Wswitch-default -Wformat -Wformat-security -Wformat-signedness -Wformat-y2k
         override XOPTMZ::=-O3 -funroll-loops -fomit-frame-pointer
         ifndef USECLANG
-            override CBUILD::=$(GCC_PREFIX)-gcc
+            override CBUILD::=$(COMPILER_CCACHE) $(GCC_PREFIX)-gcc
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=$(GCC_PREFIX)-
             ifdef MUSL
@@ -758,7 +764,7 @@ ifdef dcj
                 override CC::=$(CBUILD)
             endif
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -786,7 +792,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -mlong-double-128 -momit-leaf-frame-pointer
         else
-            override CBUILD::=$(CLANG)
+            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -1178,7 +1184,7 @@ else
     endif
 endif
 ifdef USECLANG
-    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs  -nostartfiles -ffreestanding $(STARTUP)
+    override MINCODE::=-Wl,-U,main -DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding $(STARTUP)
 else
     override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -fno-hosted -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
 endif
