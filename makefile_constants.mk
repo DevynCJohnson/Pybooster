@@ -2,9 +2,9 @@
 # -*- coding: utf-8-unix; Mode: Makefile; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=makefile syntax=makefile.doxygen fileformat=unix tabstop=4 :
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
-# @brief Makefile constants header (contains common code)
+#' @brief Makefile constants header (contains common code)
 #' @file makefile
-#' @version 2019.03.28
+#' @version 2019.10.11
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
