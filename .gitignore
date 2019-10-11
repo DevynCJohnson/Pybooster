@@ -133,6 +133,8 @@ yarn.[Ll][Oo][Cc][Kk]
 *.[Gg][Pp][Uu]
 *.i
 *.ii
+*.mi
+*.mii
 *.ptx
 
 # Debugging & Profiling Files
