@@ -83,7 +83,7 @@ override LIST_RC_MODULES::=aws_rc.sh crypto_rc.sh docker_rc.sh extras_rc.sh mult
 override LIST_SCRIPT_PROGRAMS::=alphabetize_lines ampupcpu bin2hex bin2num bin2oct CamelCase char2num cleansystem genmathart getsysinfo hex2num holograph2str lslibfunc man2devhelp minifyxml num2bin num2char num2hex num2oct oct2num PascalCase pipebuf prettifyxml refreshgrub replaceoddchars save_file_times set_access_time setfiletimes str2holograph svgresizer termtest thumbnail-cleaner togglequotes unicalc webget win2unixlines
 override LIST_PIP_DEPS::=autopep8 bandit bashate beeprint crimp cx-Freeze docformatter flake8 flake8-aaa flake8-alfred flake8-builtins flake8-coding flake8-comprehensions flake8-deprecated flake8-logging-format flake8-mypy flake8-pyi gprof2dot mccabe modulegraph modulegraph2 mypy mypy_extensions pdbpp Pillow psrecord pyaml pycallgraph2 pycodestyle pydocstyle pyflakes pyinstaller pylint pylint-django radon uncalled vulture yamllint numpy cupy
 # Dependencies needed for development of the software in this repository
-override LIST_DEV_DEPS::=astyle binwalk bsdiff cccc cgdb complexity cppcheck cscope doxygen doxygen-gui faketime flawfinder gdb giggle giggle-personal-details-plugin giggle-terminal-view-plugin gir1.2-dbusmenu-gtk3-0.4 gir1.2-gspell-1 gir1.2-gtk-3.0 gir1.2-gtksource-3.0 gir1.2-keybinder-3.0 gir1.2-webkit2-4.0 git-cola git-extras git-flow git-gui git2cl gitg gitinspector gitlint gitstats glade golint gtk-3-examples iamerican-insane intltool jsonlint kwstyle libamtk-5-0 libamtk-5-dev libaspell-dev libenchant-dev libgit2-27 libgit2-dev libgladeui-2-6 libgladeui-dev libgspell-1-1 libgspell-1-dev libgtk-3-dev libgtkextra-3.0 libgtkextra-dev libgtkhex-3-0 libgtkhex-3-dev libgtkhotkey-dev libgtkhotkey1 libgtkimageview-dev libgtkimageview0 libgtkmathview-bin libgtkmathview-dev libgtkmathview0c2a libgtksourceview-3.0-1 libgtksourceview-3.0-common libgtksourceview-3.0-dev libgtksourceview-4-0 libgtksourceview-4-common libgtksourceview-4-dev libgtkspell3-3-0 libgtkspell3-3-dev libvte-2.91-0 libvte-2.91-dev libwebkit2gtk-4.0-37 libwebkit2gtk-4.0-dev libxfce4ui-glade ltrace meld mscgen optipng patch patchutils pmccabe pngcrush pscan python3-demjson python3-dev qgit seed-webkit2 shc shellcheck splint strace uchardet undertaker universalindentgui vbindiff wamerican-insane xxdiff yajl-tools yamllint
+override LIST_DEV_DEPS::=astyle binwalk bsdiff cccc cgdb complexity cppcheck cscope doxygen doxygen-gui faketime flawfinder gdb giggle giggle-personal-details-plugin giggle-terminal-view-plugin gir1.2-dbusmenu-gtk3-0.4 gir1.2-gspell-1 gir1.2-gtk-3.0 gir1.2-gtksource-3.0 gir1.2-keybinder-3.0 gir1.2-webkit2-4.0 git-cola git-extras git-flow git-gui git2cl gitg gitinspector gitlint gitstats glade golint graphviz gtk-3-examples iamerican-insane intltool jsonlint kwstyle libamtk-5-0 libamtk-5-dev libaspell-dev libenchant-dev libgit2-27 libgit2-dev libgladeui-2-6 libgladeui-dev libgspell-1-1 libgspell-1-dev libgtk-3-dev libgtkextra-3.0 libgtkextra-dev libgtkhex-3-0 libgtkhex-3-dev libgtkhotkey-dev libgtkhotkey1 libgtkimageview-dev libgtkimageview0 libgtkmathview-bin libgtkmathview-dev libgtkmathview0c2a libgtksourceview-3.0-1 libgtksourceview-3.0-common libgtksourceview-3.0-dev libgtksourceview-4-0 libgtksourceview-4-common libgtksourceview-4-dev libgtkspell3-3-0 libgtkspell3-3-dev libvte-2.91-0 libvte-2.91-dev libwebkit2gtk-4.0-37 libwebkit2gtk-4.0-dev libxfce4ui-glade ltrace meld mscgen optipng patch patchutils pmccabe pngcrush pscan python3-demjson python3-dev qgit seed-webkit2 shc shellcheck splint strace uchardet undertaker universalindentgui vbindiff wamerican-insane xxdiff yajl-tools yamllint
 # Packages providing documentation that may be needed for development of the software in this repository
 override LIST_DEV_DOCS::=apache2-doc bash-doc bison-doc caffe-doc coffeescript-doc cython-doc doxygen-doc editorconfig-doc gdb-doc git-doc gle-doc graphviz-doc gstreamer1.0-doc libbash-doc libclutter-gtk-1.0-doc libgirepository1.0-doc libgladeui-doc libgtk-3-doc libgtkdatabox-doc libgtkextra-3.0-doc libgtkglext1-doc libgtksourceview-3.0-doc libgtksourceview-4-doc libpango1.0-doc libvte-2.91-doc libwebkit2gtk-4.0-doc make-doc nginx-doc octave-doc opencv-doc python-flask-doc python-flask-restful-doc python-flaskext.wtf-doc python-numpy-doc python-pycuda-doc python-setuptools-doc python-sklearn-doc python-werkzeug-doc python-wtforms-doc sqlite3-doc swig-doc swig3.0-doc theano-doc
 # Dependencies needed to use most of the software in this repository
@@ -94,7 +94,7 @@ override LIST_MAIN_DEPS::=apcalc aspell bsdmainutils bsdutils clang cloc colorma
 # Search Parameters Used in Find
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
-override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.cursor *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.build *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.cursor *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
 override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors-White/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors/*" \)
 
 
@@ -151,13 +151,6 @@ help :
 	printf '%s\n\t%s\n' 'Remove Cache Files:' 'make rmcache'
 	printf '%s\n\t%s\n' 'Remove Temp and Object Files:' 'make rmtmp'
 	printf '%s\n\t%s\n' 'Remove Temp, Object, and Cache Files:' 'make clean'
-	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'GIT'
-	printf '%s\n\t%s\n' 'Add Files to Git:' 'make addgit'
-	printf '%s\n\t%s\n' 'Commit Changes to Git:' 'make commit'
-	printf '%s\n\t%s\n' 'Push Changes to Git:' 'make push'
-	printf '%s\n\t%s\n' 'Get Git Project Status:' 'make stat'
-	printf '%s\n\t%s\n' 'Clean Git Project:' 'make cleangit'
-	printf '%s\n\t%s\n' 'Dry-run Clean Git Project:' 'make previewcleangit'
 	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'MISCELLANEOUS'
 	printf '%s\n\t%s\n' 'Fix various Nvidia issues:' 'sudo make fix_nvidia'
 	printf '%s\n\t%s\n' 'Enable geolocation features in `profile`:' 'sudo make enable_geofiles'
@@ -430,7 +423,7 @@ rmcache :
 	-@find . -mount -type d -name "__pycache__" -print0 | xargs -0 $(RMDIR)
 
 rmtmp :
-	-@find . -mount -type f \( -name "*.ast" -o -name "*.bc" -o -name "*.dll" -o -name "*.dump" -o -name "*.exp" -o -name "*.gch" -o -name "*.i" -o -name "*.ii" -o -name "*.lib" -o -name "*.ll" -o -name "*.o" -o -name "*.obj" -o -name "*.original" -o -name "*.pch" -o -name "*.xkm" \) -delete
+	-@find . -mount -type f \( -name "*.ast" -o -name "*.bc" -o -name "*.dll" -o -name "*.dump" -o -name "*.exp" -o -name "*.gch" -o -name "*.i" -o -name "*.ii" -o -name "*.lib" -o -name "*.ll" -o -name "*.mi" -o -name "*.mii" -o -name "*.o" -o -name "*.obj" -o -name "*.original" -o -name "*.pch" -o -name "*.xkm" \) -delete
 	find . -mount -type d \( -name "metrics" \) -exec $(RMDIR) '{}' + 2> /dev/null
 	$(RM) $(BIN)/test_dev
 	$(RMDIR) $(TESTINGDIR)/*
@@ -630,6 +623,7 @@ install_devhelp : | fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Devhelp Files ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	# BASH
+	# TODO: Place all of this code in its own script
 	([ -d /usr/share/doc/bash/ ] && [ ! -d /usr/share/devhelp/books/bash ] && $(LNDIR) /usr/share/doc/bash /usr/share/devhelp/books/bash && $(COPY) $(DEVHELPDIR)/bash.devhelp2 /usr/share/devhelp/books/bash/) || true
 	# Debian
 	([ -d /usr/share/debian-reference/ ] && [ ! -d /usr/share/devhelp/books/debian ] && $(LNDIR) /usr/share/debian-reference /usr/share/devhelp/books/debian && $(COPY) $(DEVHELPDIR)/debian.devhelp2 /usr/share/devhelp/books/debian/) || true
@@ -651,6 +645,7 @@ install_devhelp : | fixperm
 	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-7-doc/html ] && $(LNDIR) /usr/share/doc/llvm-7-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
 	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-6-doc/html ] && $(LNDIR) /usr/share/doc/llvm-6-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
 	# GCC
+	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-10-base ] && $(LNDIR) /usr/share/doc/gcc-10-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-9-base ] && $(LNDIR) /usr/share/doc/gcc-9-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-8-base ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
 	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-7-base ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
