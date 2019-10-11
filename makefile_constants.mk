@@ -1184,9 +1184,9 @@ else
     endif
 endif
 ifdef USECLANG
-    override MINCODE::=-Wl,-U,main -DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding $(STARTUP)
+    override MINCODE::=-Wl,-U,main,--entry="_start" -DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -ffreestanding $(STARTUP)
 else
-    override MINCODE::=-DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -fno-hosted -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
+    override MINCODE::=-Wl,--entry="_start" -DUSE_BAREBONES -DNEEDS_STARTUP -nostdlib -nodefaultlibs -nostartfiles -fno-hosted -ffreestanding -fno-tree-loop-distribute-patterns $(STARTUP)
 endif
 
 
