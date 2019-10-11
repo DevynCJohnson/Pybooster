@@ -1,0 +1,255 @@
+# format=pipe
+$$|Window.prototype|(selector)|
+addClass|Element.|(className)|
+addEvents|[Element, Window, Document]|(events)|
+addEvents|Events.|(events)|
+addEvent|[Element, Window, Document]|(type, fn)|
+addEvent|Events.|(type, fn, internal)|
+addListener|[Element, Window, Document].|(type, fn)|
+adopt|Element.|()|
+alias|Type.|(name, existing)|
+appendText|Element.|(text, where)|
+append|Array.|(array)|
+append|Array.|(original)|
+append|Elements.|(collection)|
+associate|Array.|(keys)|
+attempt|Function.|(args, bind)|
+attempt|Number.|()|
+Back|[static] Fx.Transitions.||
+bind|Function.|(that)|
+Bounce|[static] Fx.Transitions.||
+bound|Function.|()|
+callChain|Chain.|()|
+camelCase|String.|()|
+cancel|Fx.|()|
+cancel|Request.|()|
+capitalize|String.|()|
+chain|Chain.|()|
+check|Fx.|()|
+Circ|[static] Fx.Transitions.||
+Class|(Mootools 1.4)|(defObj)|
+clean|Array.|()|
+clean|String.|()|
+clearChain|Chain.|()|
+cloneEvents|[Element, Window, Document]|(from, type)|
+clone|Array.|(object)|
+clone|Element.|(contents, keepid)|
+combine|Array.|(array)|
+computePosition|Element.|(obj)|
+compute|[static] Fx.|(from, to, delta)|
+compute|Fx.Morph.|(from, to, delta)|
+compute|Fx.|(from, to, delta)|
+concat|Elements.|()|
+condition|[Element, Window, Document]|(event)|
+contains|[Document, Element].|(element)|
+contains|[static] Slick.|(container, node)|
+contains|Array.|(item, from)|
+contains|Function.|(object, value)|
+contains|String.|(string, separator)|
+Cubic|[static] Fx.Transitions.||
+decode|[static] JSON.|(string, secure)|
+defineKey|[static] DOMEvent.|(code, key)|
+definePseudo|[static] Slick.|(name, fn)|
+delay|Function.|(delay, bind, args)|
+delete|Request.|(options)|
+DELETE|Request.|(options)|
+destroy|Element.|()|
+dispose|[static] Cookie.|(key, options)|
+dispose|Cookie.|()|
+dispose|Element.|()|
+each|Array.|(fn, bind)|
+easeInOut|[static] Fx.Transition.||
+easeIn|[static] Fx.Transition.||
+easeOut|[static] Fx.Transition.||
+Elastic|[static] Fx.Transitions.||
+Elements|(Mootools 1.4)|(nodes)|
+Element|(Mootools 1.4)|(tag, props)|
+eliminate|[Element, Window, Document].|(property)|
+empty|Array.|()|
+empty|Element.|()|
+empty|Elements.|()|
+erase|Array.|(item)|
+erase|Element.|(prop)|
+escapeRegExp|String.|()|
+every|Array.|(fn, bind)|
+every|Function.|(object, fn, bind)|
+Expo|[static] Fx.Transitions.||
+Extends|Class.|(parent)|
+extend|Function.|(key, value)|
+extend|Type.|(name, method)|
+fade|Element.|(how)|
+filter|Array.|(fn, bind)|
+filter|Elements.|(filter, bind)|
+filter|Function.|(object, fn, bind)|
+find|[static] Slick.|(context, expression)|
+fireEvent|[Element, Window, Document]|(type, args, delay)|
+fireEvent|Events.|(type, args, delay)|
+flatten|Array.|()|
+forEach|Array.|(fn, bind)|
+from|[static] Array.|(item): Array|
+from|[static] Function.|(item): Function|
+from|[static] Number.|(item): number|
+from|[static] String.|(item): string|
+getAttribute|[static] Slick.|(node, name)|
+getComputedStyle|Element.|(property)|
+getCoordinates|[Document, Window].|()|
+getCoordinates|Element.|(element)|
+getDocument|Document.|()|
+getDocument|Element.|()|
+getDocument|Window.|()|
+getElementById|Element.|(id)|
+getElements|[Document, Element].|(expression)|
+getElement|[Document, Element].|(expression)|
+getFirst|Element.|(expression)|
+getHeader|Request.|(name)|
+getHeight|[Window, Document, Element].|()|
+getLast|Array.|()|
+getLast|Element.|(expression)|
+getLeft|[Window, Document, Element].|()|
+getLength|Function.|(object)|
+getOffsets|Element.|()|
+getPosition|[Document, Window].|()|
+getPosition|Element.|(relative)|
+getProperties|Element.|()|
+getProperty|Element.|(name)|
+getRandom|Array.|()|
+getScrollHeight|[Window, Document, Element].|()|
+getScrollLeft|[Window, Document, Element].|()|
+getScrollSize|[Document, Window].|()|
+getScrollSize|Element.|()|
+getScrolls|Element.|()|
+getScrollTop|[Window, Document, Element].|()|
+getScrollWidth|[Window, Document, Element].|()|
+getScroll|[Document, Window].|()|
+getScroll|Element.|()|
+getSelected|Element.|()|
+getSize|[Document, Window].|()|
+getSize|Element.|()|
+getStyles|Element.|()|
+getStyle|Element.|(property)|
+getTop|[Window, Document, Element].|()|
+getTransition|Fx.|()|
+getWidth|[Window, Document, Element].|()|
+getWindow|Document.|()|
+getWindow|Element.|()|
+getWindow|Window.|()|
+get|Element.|(prop)|
+get|Request.|(options)|
+GET|Request.|(options)|
+grab|Element.|(el, where)|
+hasAttribute|[static] Slick.|(node, name)|
+hasClass|Element.|(className)|
+hexToRgb|Array.|(array)|
+hexToRgb|String.|(array)|
+hide|Function.|()|
+highlight|Element.|(start, end)|
+hyphenate|String.|()|
+id|Document.|()|
+Implements|Class.|(items)|
+implement|Function.|(key, value)|
+implement|Type.|(name, method)|
+include|Array.|(item)|
+indexOf|Array.|(item, from)|
+inject|Element.|(el, where)|
+instanceOf|(Mootools 1.4)|(item, object)|
+invoke|Array.|(methodName)|
+isEnumerable|[static] Type.|(item)|
+isRunning|Fx.|()|
+isRunning|Request.|()|
+keyOf|Function.|(object, value)|
+keys|Function.|(object)|
+limit|Number.|(min, max)|
+linear|[static] Fx.Transitions.||
+link|Array.|(object)|
+load|Element.|()|
+lookupPseudo|[static] Slick.|(name)|
+map|Array.|(fn, bind)|
+map|Function.|(object, fn, bind)|
+match|[static] Slick.|(node, selector)|
+match|Element.|(expression)|
+merge|Array.|(source, k, v)|
+mirror|Type.|(hook)|
+morph|Element.|(props)|
+newElement|Document.|(tag, props)|
+newTextNode|Document.|(text)|
+override|[static] Slick.|(regexp, fn)|
+parse|[static] Slick.|(expression)|
+pass|Function.|(args, bind)|
+pause|Fx.|()|
+periodical|Function.|(periodical, bind, args)|
+pick|Array.|()|
+post|Request.|(options)|
+POST|Request.|(options)|
+Pow|[static] Fx.Transitions.||
+preventDefault|DOMEvent.|()|
+protect|Function.|()|
+push|Elements.|()|
+put|Request.|(options)|
+PUT|Request.|(options)|
+Quad|[static] Fx.Transitions.||
+Quart|[static] Fx.Transitions.||
+Quint|[static] Fx.Transitions.||
+read|[static] Cookie.|(key)|
+read|Cookie.|()|
+remote|[static] Swiff.|(obj, fn)|
+removeClass|Element.|(className)|
+removeEvents|[Element, Window, Document]|(events)|
+removeEvents|Events.|(events)|
+removeEvent|[Element, Window, Document]|(type, fn)|
+removeEvent|Events.|(type, fn)|
+removeListener|[Element, Window, Document].|(type, fn)|
+removeProperties|Element.|()|
+removeProperty|Element.|(name)|
+replaces|Element.|(el)|
+resume|Fx.|()|
+retrieve|[Element, Window, Document].|(property, dflt)|
+rgbToHex|Array.|(array)|
+rgbToHex|String.|(array)|
+round|Number.|(precision)|
+scrollTo|Element.|(x, y)|
+search|[static] Slick.|(context, expression, append)|
+send|Element.|(url)|
+send|Request.|(options)|
+setHeader|Request.|(name, value)|
+setOptions|Options.|()|
+setPosition|Element.|(obj)|
+setProperties|Element.|(attributes)|
+setProperty|Element.|(name, value)|
+setStyles|Element.|(styles)|
+setStyle|Element.|(property, value)|
+set|Element.|(prop, value)|
+set|Fx.Morph.|(now)|
+set|Fx.Tween.|(property, now)|
+set|Fx.|(now)|
+Sine|[static] Fx.Transitions.||
+some|Array.|(fn, bind)|
+some|Function.|(object, fn, bind)|
+start|Fx.Morph.|(properties)|
+start|Fx.Tween.|(property, from, to)|
+start|Fx.|(from, to)|
+step|Fx.|(now)|
+stopPropagation|DOMEvent.|()|
+stop|DOMEvent.|()|
+stop|Fx.|()|
+store|[Element, Window, Document].|(property, value)|
+subset|Function.|(object, keys)|
+substitute|String.|(object, regexp)|
+test|String.|(regex, params)|
+times|Number.|(fn, bind)|
+toFloat|Number.|()|
+toFloat|String.|()|
+toggleClass|Element.|(className, force)|
+toInt|Number.|(base)|
+toInt|String.|(base)|
+toQueryString|Element.|()|
+toQueryString|Function.|(object, base)|
+trim|String.|()|
+tween|Element.|(property, from, to)|
+typeOf|(Mootools 1.4)|(item)|
+Type|(Mootools 1.4)|(name, object)|
+unshift|Elements.|()|
+validate|[static] JSON.|(string)|
+values|Function.|(object)|
+wraps|Element.|(el, where)|
+write|[static] Cookie.|(key, value, options)|
+write|Cookie.|(value)|

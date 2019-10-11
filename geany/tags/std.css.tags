@@ -6,1347 +6,1464 @@
 # Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/WebKit_Extensions
 
 
--apple-dashboard-region|||
--epub-fullsize-kana|||
--epub-fullwidth|||
--epub-hyphens|||
--epub-line-break|||
--epub-ruby-position|||
--epub-text-align-last|||
--epub-text-combine-horizontal|||
--epub-text-combine|||
--epub-text-decoration|||
--epub-text-emphasis-color|||
--epub-text-emphasis-position|||
--epub-text-emphasis-style|||
--epub-text-emphasis|||
--epub-text-orientation|||
--epub-text-underline-position|||
--epub-word-break|||
--epub-writing-mode|||
--khtml-transform|||
--moz-activehyperlinktext|||
--moz-all|||
--moz-alt-content|||
--moz-anchor-decoration|||
--moz-animation-delay|||
--moz-animation-direction|||
--moz-animation-duration|||
--moz-animation-fill-mode|||
--moz-animation-iteration-count|||
--moz-animation-name|||
--moz-animation-play-state|||
--moz-animation-timing-function|||
--moz-animation|||
--moz-appearance|||
--moz-arabic-indic|||
--moz-available|||
--moz-backface-visibility|||
--moz-background-clip|||
--moz-background-inline-policy|||
--moz-background-origin|||
--moz-background-size|||
--moz-bengali|||
--moz-bg-insetObsolete|||
--moz-bg-outsetObsolete|||
--moz-bg-solid|||
--moz-binding|||
--moz-border-bottom-colors|||
--moz-border-end-color|||
--moz-border-end-style|||
--moz-border-end-width|||
--moz-border-end|||
--moz-border-image|||
--moz-border-left-colors|||
--moz-border-right-colors|||
--moz-border-start-color|||
--moz-border-start-style|||
--moz-border-start-width|||
--moz-border-start|||
--moz-border-top-colors|||
--moz-box |||
--moz-box-align|||
--moz-box-direction|||
--moz-box-flex|||
--moz-box-ordinal-group|||
--moz-box-orient|||
--moz-box-pack|||
--moz-box-sizing|||
--moz-buttondefault|||
--moz-buttonhoverface|||
--moz-buttonhovertext|||
--moz-button|||
--moz-calc|||
--moz-cellhighlighttext|||
--moz-cellhighlight|||
--moz-center|||
--moz-cjk-earthly-branch|||
--moz-cjk-heavenly-stem|||
--moz-column-count|||
--moz-column-fill|||
--moz-column-gap|||
--moz-column-rule-color|||
--moz-column-rule-style|||
--moz-column-rule-width|||
--moz-column-rule|||
--moz-column-width|||
--moz-context-properties|||
--moz-crisp-edges|||
--moz-deck|||
--moz-default-background-color|||
--moz-default-color|||
--moz-desktop|||
--moz-devanagari|||
--moz-device-pixel-ratio|||
--moz-dialogtext|||
--moz-dialog|||
--moz-document|||
--moz-dragtargetzone|||
--moz-element|||
--moz-ethiopic-halehame-am|||
--moz-ethiopic-halehame-ti-er|||
--moz-ethiopic-halehame-ti-et|||
--moz-ethiopic-halehame|||
--moz-ethiopic-numeric|||
--moz-fieldtext|||
--moz-field|||
--moz-fit-content|||
--moz-fixed|||
--moz-float-edge|||
--moz-font-feature-settings|||
--moz-font-language-override|||
--moz-force-broken-image-icon|||
--moz-grid-group|||
--moz-grid-line|||
--moz-grid|||
--moz-groupbox|||
--moz-gujarati|||
--moz-gurmukhi|||
--moz-hangul-consonant|||
--moz-hangul|||
--moz-hidden-unscrollable|||
--moz-hyperlinktext|||
--moz-hyphens|||
--moz-image-rect()|||
--moz-image-region|||
--moz-info|||
--moz-initial|||
--moz-inline-block |||
--moz-inline-box |||
--moz-inline-grid|||
--moz-inline-stack|||
--moz-inline-table |||
--moz-japanese-formal|||
--moz-japanese-informal|||
--moz-kannada|||
--moz-khmer|||
--moz-lao|||
--moz-left|||
--moz-linear-gradient |||
--moz-list|||
--moz-mac-accentdarkestshadow|||
--moz-mac-accentdarkshadow|||
--moz-mac-accentface|||
--moz-mac-accentlightesthighlight|||
--moz-mac-accentlightshadow|||
--moz-mac-accentregularhighlight|||
--moz-mac-accentregularshadow|||
--moz-mac-chrome-active|||
--moz-mac-chrome-inactive|||
--moz-mac-focusring|||
--moz-mac-graphite-theme|||
--moz-mac-menuselect|||
--moz-mac-menushadow|||
--moz-mac-menutextselect|||
--moz-mac-unified-toolbar|||
--moz-maemo-classic|||
--moz-malayalam|||
--moz-margin-end|||
--moz-margin-start|||
--moz-marker|||
--moz-max-content|||
--moz-menuhovertext|||
--moz-menuhover|||
--moz-min-content|||
--moz-myanmar|||
--moz-nativehyperlinktext|||
--moz-none|||
--moz-opacity|||
--moz-orient|||
--moz-oriya|||
--moz-os-version|||
--moz-osx-font-smoothing|||
--moz-outline-color|||
--moz-outline-offset|||
--moz-outline-radius-bottomleft|||
--moz-outline-radius-bottomright|||
--moz-outline-radius-topleft|||
--moz-outline-radius-topright|||
--moz-outline-radius|||
--moz-outline-style|||
--moz-outline-width|||
--moz-outline|||
--moz-padding-end|||
--moz-padding-start|||
--moz-persian|||
--moz-perspective-origin|||
--moz-perspective|||
--moz-popup|||
--moz-pull-down-menu|||
--moz-radial-gradient |||
--moz-right|||
--moz-scrollbar-end-backward|||
--moz-scrollbar-end-forward|||
--moz-scrollbar-start-backward|||
--moz-scrollbar-start-forward|||
--moz-scrollbar-thumb-proportional|||
--moz-scrollbars-horizontal |||
--moz-scrollbars-none |||
--moz-scrollbars-vertical |||
--moz-show-background|||
--moz-simp-chinese-formal|||
--moz-simp-chinese-informal|||
--moz-stack-sizing|||
--moz-stack|||
--moz-tab-size|||
--moz-tamil|||
--moz-telugu|||
--moz-text-align-last|||
--moz-text-decoration-color|||
--moz-text-decoration-line|||
--moz-text-decoration-style|||
--moz-text-size-adjust|||
--moz-thai|||
--moz-touch-enabled|||
--moz-trad-chinese-formal|||
--moz-trad-chinese-informal|||
--moz-transform-origin|||
--moz-transform-style|||
--moz-transform|||
--moz-transition-delay|||
--moz-transition-duration|||
--moz-transition-property|||
--moz-transition-timing-function|||
--moz-transition|||
--moz-urdu|||
--moz-use-text-color|||
--moz-user-focus|||
--moz-user-input|||
--moz-user-modify|||
--moz-user-select|||
--moz-visitedhyperlinktext|||
--moz-win-borderless-glass|||
--moz-win-browsertabbar-toolbox|||
--moz-win-communications-toolbox|||
--moz-win-communicationstext|||
--moz-win-glass|||
--moz-win-media-toolbox|||
--moz-win-mediatext|||
--moz-window-button-box-maximized|||
--moz-window-button-box|||
--moz-window-button-close|||
--moz-window-button-maximize|||
--moz-window-button-minimize|||
--moz-window-button-restore|||
--moz-window-dragging|||
--moz-window-shadow|||
--moz-window-titlebar-maximized|||
--moz-window-titlebar|||
--moz-windows-accent-color-in-titlebar|||
--moz-windows-classic|||
--moz-windows-compositor|||
--moz-windows-default-theme|||
--moz-windows-glass|||
--moz-windows-theme|||
--moz-window|||
--moz-workspace|||
--ms-accelerator|||
--ms-behavior|||
--ms-block-progression|||
--ms-content-zoom-chaining|||
--ms-content-zoom-limit-max|||
--ms-content-zoom-limit-min|||
--ms-content-zoom-limit|||
--ms-content-zoom-snap-points|||
--ms-content-zoom-snap-type|||
--ms-content-zoom-snap|||
--ms-content-zooming|||
--ms-filter|||
--ms-flow-from|||
--ms-flow-into|||
--ms-grid-column-align|||
--ms-grid-column-span|||
--ms-grid-columns|||
--ms-grid-column|||
--ms-grid-layer|||
--ms-grid-row-align|||
--ms-grid-row-span|||
--ms-grid-rows|||
--ms-grid-row|||
--ms-high-contrast-adjust|||
--ms-high-contrast|||
--ms-hyphenate-limit-chars|||
--ms-hyphenate-limit-lines|||
--ms-hyphenate-limit-zone|||
--ms-hyphens|||
--ms-ime-align|||
--ms-ime-mode|||
--ms-interpolation-mode|||
--ms-layout-grid-char|||
--ms-layout-grid-line|||
--ms-layout-grid-mode|||
--ms-layout-grid-type|||
--ms-layout-grid|||
--ms-line-break|||
--ms-overflow-style|||
--ms-perspective-origin-x|||
--ms-perspective-origin-y|||
--ms-perspective-origin|||
--ms-perspective|||
--ms-progress-appearance|||
--ms-scroll-chaining|||
--ms-scroll-limit-x-max|||
--ms-scroll-limit-x-min|||
--ms-scroll-limit-y-max|||
--ms-scroll-limit-y-min|||
--ms-scroll-limit|||
--ms-scroll-rails|||
--ms-scroll-snap-points-x|||
--ms-scroll-snap-points-y|||
--ms-scroll-snap-type|||
--ms-scroll-snap-x|||
--ms-scroll-snap-y|||
--ms-scroll-translation|||
--ms-scrollbar-3dlight-color|||
--ms-scrollbar-arrow-color|||
--ms-scrollbar-base-color|||
--ms-scrollbar-darkshadow-color|||
--ms-scrollbar-face-color|||
--ms-scrollbar-highlight-color|||
--ms-scrollbar-shadow-color|||
--ms-scrollbar-track-color|||
--ms-text-align-last|||
--ms-text-autospace|||
--ms-text-justify|||
--ms-text-kashida-space|||
--ms-text-overflow|||
--ms-text-size-adjust|||
--ms-text-underline-position|||
--ms-touch-action|||
--ms-touch-select|||
--ms-transform-origin-x|||
--ms-transform-origin-y|||
--ms-transform-origin-z|||
--ms-transform-origin|||
--ms-transform|||
--ms-user-select|||
--ms-word-break|||
--ms-word-wrap|||
--ms-wrap-flow|||
--ms-wrap-margin|||
--ms-wrap-through|||
--ms-writing-mode|||
--ms-zoom-animation|||
--ms-zoom|||
--o-replace|||
--o-set-link-source|||
--o-use-link-source|||
--webkit-align-content|||
--webkit-align-items|||
--webkit-align-self|||
--webkit-alt*|||
--webkit-animation-delay|||
--webkit-animation-direction|||
--webkit-animation-duration|||
--webkit-animation-fill-mode|||
--webkit-animation-iteration-count|||
--webkit-animation-name|||
--webkit-animation-play-state|||
--webkit-animation-timing-function|||
--webkit-animation-trigger|||
--webkit-animation|||
--webkit-app-region|||
--webkit-appearance|||
--webkit-aspect-ratio|||
--webkit-backdrop-filter|||
--webkit-backface-visibility|||
--webkit-background-clip|||
--webkit-background-composite|||
--webkit-background-origin|||
--webkit-background-size|||
--webkit-border-after-color|||
--webkit-border-after-style|||
--webkit-border-after-width|||
--webkit-border-after|||
--webkit-border-before-color|||
--webkit-border-before-style|||
--webkit-border-before-width|||
--webkit-border-before|||
--webkit-border-bottom-left-radius|||
--webkit-border-bottom-right-radius|||
--webkit-border-end-color|||
--webkit-border-end-style|||
--webkit-border-end-width|||
--webkit-border-end|||
--webkit-border-fit|||
--webkit-border-horizontal-spacing|||
--webkit-border-image|||
--webkit-border-radius|||
--webkit-border-start-color|||
--webkit-border-start-style|||
--webkit-border-start-width|||
--webkit-border-start|||
--webkit-border-top-left-radius|||
--webkit-border-top-right-radius|||
--webkit-border-vertical-spacing|||
--webkit-box-align|||
--webkit-box-decoration-break|||
--webkit-box-direction|||
--webkit-box-flex-group|||
--webkit-box-flex|||
--webkit-box-lines|||
--webkit-box-ordinal-group|||
--webkit-box-orient|||
--webkit-box-pack|||
--webkit-box-reflect|||
--webkit-box-shadow|||
--webkit-box-sizing|||
--webkit-clip-path|||
--webkit-color-correction|||
--webkit-column-axis|||
--webkit-column-break-after|||
--webkit-column-break-before|||
--webkit-column-break-inside|||
--webkit-column-count|||
--webkit-column-fill|||
--webkit-column-gap|||
--webkit-column-progression|||
--webkit-column-rule-color|||
--webkit-column-rule-style|||
--webkit-column-rule-width|||
--webkit-column-rule|||
--webkit-column-span|||
--webkit-column-width|||
--webkit-columns|||
--webkit-cursor-visibility|||
--webkit-dashboard-region|||
--webkit-device-pixel-ratio|||
--webkit-filter|||
--webkit-flex-basis|||
--webkit-flex-direction|||
--webkit-flex-flow|||
--webkit-flex-grow|||
--webkit-flex-shrink|||
--webkit-flex-wrap|||
--webkit-flex|||
--webkit-flow-from|||
--webkit-flow-into|||
--webkit-font-feature-settings|||
--webkit-font-kerning|||
--webkit-font-size-delta|||
--webkit-font-smoothing|||
--webkit-font-variant-ligatures|||
--webkit-grid-area|||
--webkit-grid-auto-columns|||
--webkit-grid-auto-flow|||
--webkit-grid-auto-rows|||
--webkit-grid-column-end|||
--webkit-grid-column-gap|||
--webkit-grid-column-start|||
--webkit-grid-columns |||
--webkit-grid-column|||
--webkit-grid-gap|||
--webkit-grid-row-end|||
--webkit-grid-row-gap|||
--webkit-grid-row-start|||
--webkit-grid-rows |||
--webkit-grid-row|||
--webkit-grid-template-areas|||
--webkit-grid-template-columns|||
--webkit-grid-template-rows|||
--webkit-grid-template|||
--webkit-grid|||
--webkit-highlight|||
--webkit-hyphenate-character|||
--webkit-hyphenate-charset|||
--webkit-hyphenate-limit-after|||
--webkit-hyphenate-limit-before|||
--webkit-hyphenate-limit-lines|||
--webkit-hyphens|||
--webkit-image-set|||
--webkit-initial-letter|||
--webkit-justify-content|||
--webkit-justify-items|||
--webkit-justify-self|||
--webkit-line-align|||
--webkit-line-box-contain|||
--webkit-line-break|||
--webkit-line-clamp|||
--webkit-line-grid|||
--webkit-line-snap|||
--webkit-locale|||
--webkit-logical-height|||
--webkit-logical-width|||
--webkit-margin-after-collapse|||
--webkit-margin-after|||
--webkit-margin-before-collapse|||
--webkit-margin-before|||
--webkit-margin-bottom-collapse|||
--webkit-margin-collapse|||
--webkit-margin-end|||
--webkit-margin-start|||
--webkit-margin-top-collapse|||
--webkit-marquee-direction|||
--webkit-marquee-increment|||
--webkit-marquee-repetition|||
--webkit-marquee-speed|||
--webkit-marquee-style|||
--webkit-marquee|||
--webkit-mask-attachment|||
--webkit-mask-box-image-outset|||
--webkit-mask-box-image-repeat|||
--webkit-mask-box-image-slice|||
--webkit-mask-box-image-source|||
--webkit-mask-box-image-width|||
--webkit-mask-box-image|||
--webkit-mask-clip|||
--webkit-mask-composite|||
--webkit-mask-image|||
--webkit-mask-origin|||
--webkit-mask-position-x|||
--webkit-mask-position-y|||
--webkit-mask-position|||
--webkit-mask-repeat-x|||
--webkit-mask-repeat-y|||
--webkit-mask-repeat|||
--webkit-mask-size|||
--webkit-mask-source-type|||
--webkit-mask|||
--webkit-match-nearest-mail-blockquote-color|||
--webkit-max-logical-height|||
--webkit-max-logical-width|||
--webkit-min-logical-height|||
--webkit-min-logical-width|||
--webkit-nbsp-mode|||
--webkit-opacity|||
--webkit-order|||
--webkit-overflow-scrolling|||
--webkit-padding-after|||
--webkit-padding-before|||
--webkit-padding-end|||
--webkit-padding-start|||
--webkit-perspective-origin-x|||
--webkit-perspective-origin-y|||
--webkit-perspective-origin|||
--webkit-perspective|||
--webkit-print-color-adjust|||
--webkit-region-break-after|||
--webkit-region-break-before|||
--webkit-region-break-inside|||
--webkit-region-fragment|||
--webkit-rtl-ordering|||
--webkit-ruby-position|||
--webkit-scroll-snap-type|||
--webkit-shape-image-threshold|||
--webkit-shape-inside|||
--webkit-shape-margin|||
--webkit-shape-outside|||
--webkit-svg-shadow|||
--webkit-tap-highlight-color|||
--webkit-text-color-decoration|||
--webkit-text-combine|||
--webkit-text-decoration-line|||
--webkit-text-decoration-skip|||
--webkit-text-decoration-style|||
--webkit-text-decorations-in-effect|||
--webkit-text-emphasis-color|||
--webkit-text-emphasis-position|||
--webkit-text-emphasis-style|||
--webkit-text-emphasis|||
--webkit-text-fill-color|||
--webkit-text-justify|||
--webkit-text-orientation|||
--webkit-text-security|||
--webkit-text-size-adjust|||
--webkit-text-stroke-color|||
--webkit-text-stroke-width|||
--webkit-text-stroke|||
--webkit-text-underline-position|||
--webkit-text-zoom|||
--webkit-touch-callout|||
--webkit-transform-2d|||
--webkit-transform-3d|||
--webkit-transform-origin-x|||
--webkit-transform-origin-y|||
--webkit-transform-origin-z|||
--webkit-transform-origin|||
--webkit-transform-style|||
--webkit-transform|||
--webkit-transition-delay|||
--webkit-transition-duration|||
--webkit-transition-property|||
--webkit-transition-timing-function|||
--webkit-transition|||
--webkit-user-drag|||
--webkit-user-modify|||
--webkit-user-select|||
-:-moz-any-link|||
-:-moz-any|||
-:-moz-broken|||
-:-moz-drag-over|||
-:-moz-first-node|||
-:-moz-focusring|||
-:-moz-full-screen-ancestor|||
-:-moz-full-screen|||
-:-moz-handler-blocked|||
-:-moz-handler-crashed|||
-:-moz-handler-disabled|||
-:-moz-last-node|||
-:-moz-list-bullet|||
-:-moz-list-number|||
-:-moz-loading|||
-:-moz-locale-dir(ltr)|||
-:-moz-locale-dir(rtl)|||
-:-moz-lwtheme-brighttext|||
-:-moz-lwtheme-darktext|||
-:-moz-lwtheme|||
-:-moz-native-anonymous|||
-:-moz-only-whitespace|||
-:-moz-placeholder|||
-:-moz-read-only|||
-:-moz-read-write|||
-:-moz-submit-invalid|||
-:-moz-suppressed|||
-:-moz-system-metric(images-in-menus)|||
-:-moz-system-metric(mac-graphite-theme)|||
-:-moz-system-metric(scrollbar-end-backward)|||
-:-moz-system-metric(scrollbar-end-forward)|||
-:-moz-system-metric(scrollbar-start-backward)|||
-:-moz-system-metric(scrollbar-start-forward)|||
-:-moz-system-metric(scrollbar-thumb-proportional)|||
-:-moz-system-metric(touch-enabled)|||
-:-moz-system-metric(windows-default-theme)|||
-:-moz-tree-cell-text(hover)|||
-:-moz-tree-cell-text|||
-:-moz-tree-cell|||
-:-moz-tree-checkbox|||
-:-moz-tree-column|||
-:-moz-tree-drop-feedback|||
-:-moz-tree-image|||
-:-moz-tree-indentation|||
-:-moz-tree-line|||
-:-moz-tree-progressmeter|||
-:-moz-tree-row(hover)|||
-:-moz-tree-row|||
-:-moz-tree-separator|||
-:-moz-tree-twisty|||
-:-moz-ui-invalid|||
-:-moz-ui-valid|||
-:-moz-user-disabled|||
-:-moz-window-inactive|||
-:-webkit-animating-full-screen-transition|||
-:-webkit-any()|||
-:-webkit-any-link|||
-:-webkit-autofill-strong-password|||
-:-webkit-autofill|||
-:-webkit-drag|||
-:-webkit-full-page-media|||
-:-webkit-full-screen-ancestor|||
-:-webkit-full-screen-controls-hidden|||
-:-webkit-full-screen-document|||
-:-webkit-full-screen|||
-::-moz-anonymous-block|||
-::-moz-anonymous-positioned-block|||
-::-moz-canvas|||
-::-moz-cell-content|||
-::-moz-color-swatch|||
-::-moz-focus-inner|||
-::-moz-focus-outer|||
-::-moz-inline-table|||
-::-moz-page-sequence|||
-::-moz-pagebreak|||
-::-moz-pagecontent|||
-::-moz-page|||
-::-moz-placeholder|||
-::-moz-progress-bar|||
-::-moz-range-progress|||
-::-moz-range-thumb|||
-::-moz-range-track|||
-::-moz-scrolled-canvas|||
-::-moz-scrolled-content|||
-::-moz-scrolled-page-sequence|||
-::-moz-selection|||
-::-moz-svg-foreign-content|||
-::-moz-table-cell|||
-::-moz-table-column-group|||
-::-moz-table-column|||
-::-moz-table-outer|||
-::-moz-table-row-group|||
-::-moz-table-row|||
-::-moz-table|||
-::-moz-tree-cell-text(hover)|||
-::-moz-tree-cell-text|||
-::-moz-tree-cell|||
-::-moz-tree-column|||
-::-moz-tree-drop-feedback|||
-::-moz-tree-image|||
-::-moz-tree-indentation|||
-::-moz-tree-line|||
-::-moz-tree-progressmeter|||
-::-moz-tree-row(hover)|||
-::-moz-tree-row|||
-::-moz-tree-separator|||
-::-moz-tree-twisty|||
-::-moz-viewport-scroll|||
-::-moz-viewport|||
-::-moz-xul-anonymous-block|||
-::-ms-browse|||
-::-ms-check|||
-::-ms-clear|||
-::-ms-expand|||
-::-ms-fill-lower|||
-::-ms-fill-upper|||
-::-ms-fill|||
-::-ms-reveal|||
-::-ms-thumb|||
-::-ms-ticks-after|||
-::-ms-ticks-before|||
-::-ms-tooltip|||
-::-ms-track|||
-::-ms-value|||
-::-webkit-file-upload-button|||
-::-webkit-inner-spin-button|||
-::-webkit-input-placeholder|||
-::-webkit-meter-bar|||
-::-webkit-meter-even-less-good-value|||
-::-webkit-meter-inner-element|||
-::-webkit-meter-optimum-value|||
-::-webkit-meter-suboptimum-value|||
-::-webkit-outer-spin-button|||
-::-webkit-progress-bar|||
-::-webkit-progress-inner-element|||
-::-webkit-progress-value|||
-::-webkit-search-cancel-button|||
-::-webkit-search-results-button|||
-::-webkit-slider-runnable-track|||
-::-webkit-slider-thumb|||
-::after|||
-::backdrop|||
-::before|||
-::choices|||
-::cue|||
-::first-letter|||
-::first-line|||
-::grammar-error|||
-::line-marker|||
-::marker|||
-::outside|||
-::part|||
-::placeholder|||
-::repeat-index|||
-::repeat-item|||
-::selection|||
-::slotted|||
-::slot|||
-::spelling-error|||
-::value|||
-:active|||
-:any-link|||
-:blank|||
-:checked|||
-:current|||
-:default|||
-:defined|||
-:dir|||
-:disabled|||
-:drop|||
-:empty|||
-:enabled|||
-:first-child|||
-:first-of-type|||
-:first|||
-:focus-visible|||
-:focus-within|||
-:focus|||
-:fullscreen|||
-:future|||
-:has|||
-:host-context|||
-:host|||
-:hover|||
-:in-range|||
-:indeterminate|||
-:invalid|||
-:is|||
-:lang|||
-:last-child|||
-:last-of-type|||
-:left|||
-:link|||
-:local-link|||
-:matches|||
-:not|||
-:nth-child|||
-:nth-col|||
-:nth-last-child|||
-:nth-last-col|||
-:nth-last-of-type|||
-:nth-of-type|||
-:only-child|||
-:only-of-type|||
-:optional|||
-:out-of-range|||
-:past|||
-:placeholder-shown|||
-:read-only|||
-:read-write|||
-:required|||
-:right|||
-:root{--PROP:XXX}|||
-:root|||
-:scope|||
-:something|||
-:target-within|||
-:target|||
-:user-invalid|||
-:valid|||
-:visited|||
-:where|||
-@-moz-document|||
-@-webkit-keyframes|||
-@annotation|||
-@character-variant|||
-@charset|||
-@counter-style|||
-@document|||
-@font-face|||
-@font-feature-values|||
-@font-palette-values|||
-@import|||
-@keyframes|||
-@media|||
-@namespace|||
-@ornaments|||
-@page|||
-@styleset|||
-@stylistic|||
-@supports|||
-@swash|||
-@viewport|||
-absolute|||
-active|||
-after|||
-align-content|||
-align-items|||
-align-self|||
-alignment-adjust|||
-alignment-baseline|||
-all|||
-animation-delay|||
-animation-direction|||
-animation-duration|||
-animation-fill-mode|||
-animation-iteration-count|||
-animation-name|||
-animation-play-state|||
-animation-timing-function|||
-animation|||
-appearance|||
-armenian|||
-ascent|||
-auto|||
-azimuth|||
-backface-visibility|||
-background-attachment|||
-background-blend-mode|||
-background-break|||
-background-clip|||
-background-color|||
-background-image|||
-background-origin-x|||
+-apple-dashboard-region||: |
+-epub-caption-side||: |
+-epub-fullsize-kana||: |
+-epub-fullwidth||: |
+-epub-hyphens||: |
+-epub-line-break||: |
+-epub-ruby-position||: |
+-epub-text-align-last||: |
+-epub-text-combine-horizontal||: |
+-epub-text-combine||: |
+-epub-text-decoration||: |
+-epub-text-emphasis-color||: |
+-epub-text-emphasis-position||: |
+-epub-text-emphasis-style||: |
+-epub-text-emphasis||: |
+-epub-text-orientation||: |
+-epub-text-transform||: |
+-epub-text-underline-position||: |
+-epub-word-break||: |
+-epub-writing-mode||: |
+-khtml-transform||: |
+-moz-activehyperlinktext||: |
+-moz-all||: |
+-moz-alt-content||: |
+-moz-anchor-decoration||: |
+-moz-animation-delay||: |
+-moz-animation-direction||: |
+-moz-animation-duration||: |
+-moz-animation-fill-mode||: |
+-moz-animation-iteration-count||: |
+-moz-animation-name||: |
+-moz-animation-play-state||: |
+-moz-animation-timing-function||: |
+-moz-animation||: |
+-moz-appearance||: |
+-moz-arabic-indic||: |
+-moz-available||: |
+-moz-backface-visibility||: |
+-moz-background-clip||: |
+-moz-background-inline-policy||: |
+-moz-background-origin||: |
+-moz-background-size||: |
+-moz-bengali||: |
+-moz-bg-insetObsolete||: |
+-moz-bg-outsetObsolete||: |
+-moz-bg-solid||: |
+-moz-binding||: |
+-moz-border-bottom-colors||: |
+-moz-border-end-color||: |
+-moz-border-end-style||: |
+-moz-border-end-width||: |
+-moz-border-end||: |
+-moz-border-image-outset||: |
+-moz-border-image-repeat||: |
+-moz-border-image-slice||: |
+-moz-border-image-source||: |
+-moz-border-image-width||: |
+-moz-border-image||: |
+-moz-border-left-colors||: |
+-moz-border-right-colors||: |
+-moz-border-start-color||: |
+-moz-border-start-style||: |
+-moz-border-start-width||: |
+-moz-border-start||: |
+-moz-border-top-colors||: |
+-moz-box ||: |
+-moz-box-align||: |
+-moz-box-direction||: |
+-moz-box-flex||: |
+-moz-box-ordinal-group||: |
+-moz-box-orient||: |
+-moz-box-pack||: |
+-moz-box-sizing||: |
+-moz-buttondefault||: |
+-moz-buttonhoverface||: |
+-moz-buttonhovertext||: |
+-moz-button||: |
+-moz-calc||: |
+-moz-cellhighlighttext||: |
+-moz-cellhighlight||: |
+-moz-center||: |
+-moz-cjk-earthly-branch||: |
+-moz-cjk-heavenly-stem||: |
+-moz-column-count||: |
+-moz-column-fill||: |
+-moz-column-gap||: |
+-moz-column-rule-color||: |
+-moz-column-rule-style||: |
+-moz-column-rule-width||: |
+-moz-column-rule||: |
+-moz-column-width||: |
+-moz-columns||: |
+-moz-context-properties||: |
+-moz-crisp-edges||: |
+-moz-deck||: |
+-moz-default-background-color||: |
+-moz-default-color||: |
+-moz-desktop||: |
+-moz-devanagari||: |
+-moz-device-pixel-ratio||: |
+-moz-dialogtext||: |
+-moz-dialog||: |
+-moz-document||: |
+-moz-dragtargetzone||: |
+-moz-element||: |
+-moz-ethiopic-halehame-am||: |
+-moz-ethiopic-halehame-ti-er||: |
+-moz-ethiopic-halehame-ti-et||: |
+-moz-ethiopic-halehame||: |
+-moz-ethiopic-numeric||: |
+-moz-fieldtext||: |
+-moz-field||: |
+-moz-fit-content||: |
+-moz-fixed||: |
+-moz-float-edge||: |
+-moz-float-ge||: |
+-moz-font-feature-settings||: |
+-moz-font-language-override||: |
+-moz-force-broken-image-icon||: |
+-moz-grid-group||: |
+-moz-grid-line||: |
+-moz-grid||: |
+-moz-groupbox||: |
+-moz-gujarati||: |
+-moz-gurmukhi||: |
+-moz-hangul-consonant||: |
+-moz-hangul||: |
+-moz-hidden-unscrollable||: |
+-moz-hyperlinktext||: |
+-moz-hyphens||: |
+-moz-image-rect()||: |
+-moz-image-region||: |
+-moz-info||: |
+-moz-initial||: |
+-moz-inline-block ||: |
+-moz-inline-box ||: |
+-moz-inline-grid||: |
+-moz-inline-stack||: |
+-moz-inline-table ||: |
+-moz-japanese-formal||: |
+-moz-japanese-informal||: |
+-moz-kannada||: |
+-moz-khmer||: |
+-moz-lao||: |
+-moz-left||: |
+-moz-linear-gradient ||: |
+-moz-list||: |
+-moz-mac-accentdarkestshadow||: |
+-moz-mac-accentdarkshadow||: |
+-moz-mac-accentface||: |
+-moz-mac-accentlightesthighlight||: |
+-moz-mac-accentlightshadow||: |
+-moz-mac-accentregularhighlight||: |
+-moz-mac-accentregularshadow||: |
+-moz-mac-chrome-active||: |
+-moz-mac-chrome-inactive||: |
+-moz-mac-focusring||: |
+-moz-mac-graphite-theme||: |
+-moz-mac-menuselect||: |
+-moz-mac-menushadow||: |
+-moz-mac-menutextselect||: |
+-moz-mac-unified-toolbar||: |
+-moz-maemo-classic||: |
+-moz-malayalam||: |
+-moz-margin-end||: |
+-moz-margin-start||: |
+-moz-marker||: |
+-moz-max-content||: |
+-moz-menuhovertext||: |
+-moz-menuhover||: |
+-moz-min-content||: |
+-moz-myanmar||: |
+-moz-nativehyperlinktext||: |
+-moz-none||: |
+-moz-opacity||: |
+-moz-orient||: |
+-moz-oriya||: |
+-moz-os-version||: |
+-moz-osx-font-smoothing||: |
+-moz-outline-color||: |
+-moz-outline-offset||: |
+-moz-outline-radius-bottomleft||: |
+-moz-outline-radius-bottomright||: |
+-moz-outline-radius-topleft||: |
+-moz-outline-radius-topright||: |
+-moz-outline-radius||: |
+-moz-outline-style||: |
+-moz-outline-width||: |
+-moz-outline||: |
+-moz-padding-end||: |
+-moz-padding-start||: |
+-moz-persian||: |
+-moz-perspective-origin||: |
+-moz-perspective||: |
+-moz-popup||: |
+-moz-pull-down-menu||: |
+-moz-radial-gradient ||: |
+-moz-right||: |
+-moz-scrollbar-end-backward||: |
+-moz-scrollbar-end-forward||: |
+-moz-scrollbar-start-backward||: |
+-moz-scrollbar-start-forward||: |
+-moz-scrollbar-thumb-proportional||: |
+-moz-scrollbars-horizontal ||: |
+-moz-scrollbars-none ||: |
+-moz-scrollbars-vertical ||: |
+-moz-show-background||: |
+-moz-simp-chinese-formal||: |
+-moz-simp-chinese-informal||: |
+-moz-sipt-level||: |
+-moz-sipt-min-size||: |
+-moz-sipt-size-multiplier||: |
+-moz-stack-sizing||: |
+-moz-stack||: |
+-moz-tab-size||: |
+-moz-tamil||: |
+-moz-telugu||: |
+-moz-text-align-last||: |
+-moz-text-blink||: |
+-moz-text-decoration-color||: |
+-moz-text-decoration-line||: |
+-moz-text-decoration-style||: |
+-moz-text-size-adjust||: |
+-moz-thai||: |
+-moz-touch-enabled||: |
+-moz-trad-chinese-formal||: |
+-moz-trad-chinese-informal||: |
+-moz-transform-origin||: |
+-moz-transform-style||: |
+-moz-transform||: |
+-moz-transition-delay||: |
+-moz-transition-duration||: |
+-moz-transition-property||: |
+-moz-transition-timing-function||: |
+-moz-transition||: |
+-moz-urdu||: |
+-moz-use-text-color||: |
+-moz-user-focus||: |
+-moz-user-input||: |
+-moz-user-modify||: |
+-moz-user-select||: |
+-moz-visitedhyperlinktext||: |
+-moz-win-borderless-glass||: |
+-moz-win-browsertabbar-toolbox||: |
+-moz-win-communications-toolbox||: |
+-moz-win-communicationstext||: |
+-moz-win-glass||: |
+-moz-win-media-toolbox||: |
+-moz-win-mediatext||: |
+-moz-window-button-box-maximized||: |
+-moz-window-button-box||: |
+-moz-window-button-close||: |
+-moz-window-button-maximize||: |
+-moz-window-button-minimize||: |
+-moz-window-button-restore||: |
+-moz-window-dragging||: |
+-moz-window-shadow||: |
+-moz-window-titlebar-maximized||: |
+-moz-window-titlebar||: |
+-moz-windows-accent-color-in-titlebar||: |
+-moz-windows-classic||: |
+-moz-windows-compositor||: |
+-moz-windows-default-theme||: |
+-moz-windows-glass||: |
+-moz-windows-theme||: |
+-moz-window||: |
+-moz-workspace||: |
+-ms-accelerator||: |
+-ms-animation-delay||: |
+-ms-animation-direction||: |
+-ms-animation-duration||: |
+-ms-animation-fill-mode||: |
+-ms-animation-iteration-count||: |
+-ms-animation-name||: |
+-ms-animation-play-state||: |
+-ms-animation-timing-function||: |
+-ms-animation||: |
+-ms-backface-visibility||: |
+-ms-background-position-x||: |
+-ms-background-position-y||: |
+-ms-behavior||: |
+-ms-block-progression||: |
+-ms-box-align||: |
+-ms-box-direction||: |
+-ms-box-flex||: |
+-ms-box-line-progression||: |
+-ms-box-lines||: |
+-ms-box-ordinal-group||: |
+-ms-box-orient||: |
+-ms-box-pack||: |
+-ms-content-zoom-boundary-max||: |
+-ms-content-zoom-boundary-min||: |
+-ms-content-zoom-boundary||: |
+-ms-content-zoom-chaining||: |
+-ms-content-zoom-limit-max||: |
+-ms-content-zoom-limit-min||: |
+-ms-content-zoom-limit||: |
+-ms-content-zoom-snap-points||: |
+-ms-content-zoom-snap-type||: |
+-ms-content-zoom-snap||: |
+-ms-content-zooming||: |
+-ms-filter||: |
+-ms-flow-from||: |
+-ms-flow-into||: |
+-ms-font-feature-settings||: |
+-ms-grid-column-align||: |
+-ms-grid-column-span||: |
+-ms-grid-columns||: |
+-ms-grid-column||: |
+-ms-grid-layer||: |
+-ms-grid-row-align||: |
+-ms-grid-row-span||: |
+-ms-grid-rows||: |
+-ms-grid-row||: |
+-ms-high-contrast-adjust||: |
+-ms-high-contrast||: |
+-ms-hyphenate-limit-chars||: |
+-ms-hyphenate-limit-lines||: |
+-ms-hyphenate-limit-zone||: |
+-ms-hyphens||: |
+-ms-ime-align||: |
+-ms-ime-mode||: |
+-ms-interpolation-mode||: |
+-ms-layout-flow||: |
+-ms-layout-grid-char||: |
+-ms-layout-grid-line||: |
+-ms-layout-grid-mode||: |
+-ms-layout-grid-type||: |
+-ms-layout-grid||: |
+-ms-line-break||: |
+-ms-overflow-style||: |
+-ms-overflow-x||: |
+-ms-overflow-y||: |
+-ms-perspective-origin-x||: |
+-ms-perspective-origin-y||: |
+-ms-perspective-origin||: |
+-ms-perspective||: |
+-ms-progress-appearance||: |
+-ms-scroll-chaining||: |
+-ms-scroll-limit-x-max||: |
+-ms-scroll-limit-x-min||: |
+-ms-scroll-limit-y-max||: |
+-ms-scroll-limit-y-min||: |
+-ms-scroll-limit||: |
+-ms-scroll-rails||: |
+-ms-scroll-snap-points-x||: |
+-ms-scroll-snap-points-y||: |
+-ms-scroll-snap-type||: |
+-ms-scroll-snap-x||: |
+-ms-scroll-snap-y||: |
+-ms-scroll-translation||: |
+-ms-scrollbar-3dlight-color||: |
+-ms-scrollbar-arrow-color||: |
+-ms-scrollbar-base-color||: |
+-ms-scrollbar-darkshadow-color||: |
+-ms-scrollbar-face-color||: |
+-ms-scrollbar-highlight-color||: |
+-ms-scrollbar-shadow-color||: |
+-ms-scrollbar-track-color||: |
+-ms-soll-boundary-bottom||: |
+-ms-soll-boundary-left||: |
+-ms-soll-boundary-right||: |
+-ms-soll-boundary-top||: |
+-ms-soll-boundary||: |
+-ms-soll-chaining||: |
+-ms-soll-rails||: |
+-ms-soll-snap-points-x||: |
+-ms-soll-snap-points-y||: |
+-ms-soll-snap-type||: |
+-ms-soll-snap-x||: |
+-ms-soll-snap-y||: |
+-ms-sollbar-arrow-color||: |
+-ms-sollbar-base-color||: |
+-ms-sollbar-darkshadow-color||: |
+-ms-sollbar-face-color||: |
+-ms-sollbar-highlight-color||: |
+-ms-sollbar-shadow-color||: |
+-ms-sollbar-track-color||: |
+-ms-text-align-last||: |
+-ms-text-autospace||: |
+-ms-text-justify||: |
+-ms-text-kashida-space||: |
+-ms-text-overflow||: |
+-ms-text-size-adjust||: |
+-ms-text-underline-position||: |
+-ms-touch-action||: |
+-ms-touch-select||: |
+-ms-transform-origin-x||: |
+-ms-transform-origin-y||: |
+-ms-transform-origin-z||: |
+-ms-transform-origin||: |
+-ms-transform-style||: |
+-ms-transform||: |
+-ms-transition-delay||: |
+-ms-transition-duration||: |
+-ms-transition-property||: |
+-ms-transition-timing-function||: |
+-ms-transition||: |
+-ms-user-select||: |
+-ms-word-break||: |
+-ms-word-wrap||: |
+-ms-wrap-flow||: |
+-ms-wrap-margin||: |
+-ms-wrap-through||: |
+-ms-writing-mode||: |
+-ms-zoom-animation||: |
+-ms-zoom||: |
+-o-border-image||: |
+-o-device-pixel-ratio||: |
+-o-focus-opacity||: |
+-o-link-source||: |
+-o-link||: |
+-o-mini-fold||: |
+-o-object-fit||: |
+-o-object-position||: |
+-o-replace||: |
+-o-set-link-source||: |
+-o-tab-size||: |
+-o-table-baseline||: |
+-o-transform-origin||: |
+-o-transform||: |
+-o-transition-delay||: |
+-o-transition-duration||: |
+-o-transition-property||: |
+-o-transition-timing-function||: |
+-o-transition||: |
+-o-use-link-source||: |
+-webkit-align-content||: |
+-webkit-align-items||: |
+-webkit-align-self||: |
+-webkit-alt*||: |
+-webkit-animation-delay||: |
+-webkit-animation-direction||: |
+-webkit-animation-duration||: |
+-webkit-animation-fill-mode||: |
+-webkit-animation-iteration-count||: |
+-webkit-animation-name||: |
+-webkit-animation-play-state||: |
+-webkit-animation-timing-function||: |
+-webkit-animation-trigger||: |
+-webkit-animation||: |
+-webkit-app-region||: |
+-webkit-appearance||: |
+-webkit-aspect-ratio||: |
+-webkit-backdrop-filter||: |
+-webkit-backface-visibility||: |
+-webkit-background-clip||: |
+-webkit-background-composite||: |
+-webkit-background-origin||: |
+-webkit-background-size||: |
+-webkit-border-after-color||: |
+-webkit-border-after-style||: |
+-webkit-border-after-width||: |
+-webkit-border-after||: |
+-webkit-border-before-color||: |
+-webkit-border-before-style||: |
+-webkit-border-before-width||: |
+-webkit-border-before||: |
+-webkit-border-bottom-left-radius||: |
+-webkit-border-bottom-right-radius||: |
+-webkit-border-end-color||: |
+-webkit-border-end-style||: |
+-webkit-border-end-width||: |
+-webkit-border-end||: |
+-webkit-border-fit||: |
+-webkit-border-horizontal-spacing||: |
+-webkit-border-image||: |
+-webkit-border-radius||: |
+-webkit-border-start-color||: |
+-webkit-border-start-style||: |
+-webkit-border-start-width||: |
+-webkit-border-start||: |
+-webkit-border-top-left-radius||: |
+-webkit-border-top-right-radius||: |
+-webkit-border-vertical-spacing||: |
+-webkit-box-align||: |
+-webkit-box-decoration-break||: |
+-webkit-box-direction||: |
+-webkit-box-flex-group||: |
+-webkit-box-flex||: |
+-webkit-box-lines||: |
+-webkit-box-ordinal-group||: |
+-webkit-box-orient||: |
+-webkit-box-pack||: |
+-webkit-box-reflect||: |
+-webkit-box-shadow||: |
+-webkit-box-sizing||: |
+-webkit-clip-path||: |
+-webkit-color-correction||: |
+-webkit-column-axis||: |
+-webkit-column-break-after||: |
+-webkit-column-break-before||: |
+-webkit-column-break-inside||: |
+-webkit-column-count||: |
+-webkit-column-fill||: |
+-webkit-column-gap||: |
+-webkit-column-progression||: |
+-webkit-column-rule-color||: |
+-webkit-column-rule-style||: |
+-webkit-column-rule-width||: |
+-webkit-column-rule||: |
+-webkit-column-span||: |
+-webkit-column-width||: |
+-webkit-columns||: |
+-webkit-cursor-visibility||: |
+-webkit-dashboard-region||: |
+-webkit-device-pixel-ratio||: |
+-webkit-filter||: |
+-webkit-flex-align||: |
+-webkit-flex-basis||: |
+-webkit-flex-direction||: |
+-webkit-flex-flow||: |
+-webkit-flex-grow||: |
+-webkit-flex-item-align||: |
+-webkit-flex-line-pack||: |
+-webkit-flex-order||: |
+-webkit-flex-pack||: |
+-webkit-flex-shrink||: |
+-webkit-flex-wrap||: |
+-webkit-flex||: |
+-webkit-flow-from||: |
+-webkit-flow-into||: |
+-webkit-font-feature-settings||: |
+-webkit-font-kerning||: |
+-webkit-font-size-delta||: |
+-webkit-font-smoothing||: |
+-webkit-font-variant-ligatures||: |
+-webkit-grid-area||: |
+-webkit-grid-auto-columns||: |
+-webkit-grid-auto-flow||: |
+-webkit-grid-auto-rows||: |
+-webkit-grid-column-end||: |
+-webkit-grid-column-gap||: |
+-webkit-grid-column-start||: |
+-webkit-grid-columns ||: |
+-webkit-grid-columns||: |
+-webkit-grid-column||: |
+-webkit-grid-gap||: |
+-webkit-grid-row-end||: |
+-webkit-grid-row-gap||: |
+-webkit-grid-row-start||: |
+-webkit-grid-rows ||: |
+-webkit-grid-rows||: |
+-webkit-grid-row||: |
+-webkit-grid-template-areas||: |
+-webkit-grid-template-columns||: |
+-webkit-grid-template-rows||: |
+-webkit-grid-template||: |
+-webkit-grid||: |
+-webkit-highlight||: |
+-webkit-hyphenate-character||: |
+-webkit-hyphenate-charset||: |
+-webkit-hyphenate-limit-after||: |
+-webkit-hyphenate-limit-before||: |
+-webkit-hyphenate-limit-lines||: |
+-webkit-hyphens||: |
+-webkit-image-set||: |
+-webkit-initial-letter||: |
+-webkit-justify-content||: |
+-webkit-justify-items||: |
+-webkit-justify-self||: |
+-webkit-line-align||: |
+-webkit-line-box-contain||: |
+-webkit-line-break||: |
+-webkit-line-clamp||: |
+-webkit-line-grid||: |
+-webkit-line-snap||: |
+-webkit-locale||: |
+-webkit-logical-height||: |
+-webkit-logical-width||: |
+-webkit-margin-after-collapse||: |
+-webkit-margin-after||: |
+-webkit-margin-before-collapse||: |
+-webkit-margin-before||: |
+-webkit-margin-bottom-collapse||: |
+-webkit-margin-collapse||: |
+-webkit-margin-end||: |
+-webkit-margin-start||: |
+-webkit-margin-top-collapse||: |
+-webkit-marquee-direction||: |
+-webkit-marquee-increment||: |
+-webkit-marquee-inement||: |
+-webkit-marquee-repetition||: |
+-webkit-marquee-speed||: |
+-webkit-marquee-spe||: |
+-webkit-marquee-style||: |
+-webkit-marquee||: |
+-webkit-mask-attachment||: |
+-webkit-mask-box-image-outset||: |
+-webkit-mask-box-image-repeat||: |
+-webkit-mask-box-image-slice||: |
+-webkit-mask-box-image-source||: |
+-webkit-mask-box-image-width||: |
+-webkit-mask-box-image||: |
+-webkit-mask-clip||: |
+-webkit-mask-composite||: |
+-webkit-mask-image||: |
+-webkit-mask-origin||: |
+-webkit-mask-position-x||: |
+-webkit-mask-position-y||: |
+-webkit-mask-position||: |
+-webkit-mask-repeat-x||: |
+-webkit-mask-repeat-y||: |
+-webkit-mask-repeat||: |
+-webkit-mask-size||: |
+-webkit-mask-source-type||: |
+-webkit-mask||: |
+-webkit-match-nearest-mail-blockquote-color||: |
+-webkit-max-logical-height||: |
+-webkit-max-logical-width||: |
+-webkit-min-logical-height||: |
+-webkit-min-logical-width||: |
+-webkit-nbsp-mode||: |
+-webkit-opacity||: |
+-webkit-order||: |
+-webkit-overflow-scrolling||: |
+-webkit-overflow-solling||: |
+-webkit-padding-after||: |
+-webkit-padding-before||: |
+-webkit-padding-end||: |
+-webkit-padding-start||: |
+-webkit-perspective-origin-x||: |
+-webkit-perspective-origin-y||: |
+-webkit-perspective-origin||: |
+-webkit-perspective||: |
+-webkit-print-color-adjust||: |
+-webkit-region-break-after||: |
+-webkit-region-break-before||: |
+-webkit-region-break-inside||: |
+-webkit-region-fragment||: |
+-webkit-region-overflow||: |
+-webkit-rtl-ordering||: |
+-webkit-ruby-position||: |
+-webkit-scroll-snap-type||: |
+-webkit-shape-image-threshold||: |
+-webkit-shape-inside||: |
+-webkit-shape-margin||: |
+-webkit-shape-outside||: |
+-webkit-svg-shadow||: |
+-webkit-tap-highlight-color||: |
+-webkit-text-color-decoration||: |
+-webkit-text-combine||: |
+-webkit-text-decoration-line||: |
+-webkit-text-decoration-skip||: |
+-webkit-text-decoration-style||: |
+-webkit-text-decorations-in-effect||: |
+-webkit-text-emphasis-color||: |
+-webkit-text-emphasis-position||: |
+-webkit-text-emphasis-style||: |
+-webkit-text-emphasis||: |
+-webkit-text-fill-color||: |
+-webkit-text-justify||: |
+-webkit-text-orientation||: |
+-webkit-text-security||: |
+-webkit-text-size-adjust||: |
+-webkit-text-stroke-color||: |
+-webkit-text-stroke-width||: |
+-webkit-text-stroke||: |
+-webkit-text-underline-position||: |
+-webkit-text-zoom||: |
+-webkit-touch-callout||: |
+-webkit-transform-2d||: |
+-webkit-transform-3d||: |
+-webkit-transform-origin-x||: |
+-webkit-transform-origin-y||: |
+-webkit-transform-origin-z||: |
+-webkit-transform-origin||: |
+-webkit-transform-style||: |
+-webkit-transform||: |
+-webkit-transition-delay||: |
+-webkit-transition-duration||: |
+-webkit-transition-property||: |
+-webkit-transition-timing-function||: |
+-webkit-transition||: |
+-webkit-user-drag||: |
+-webkit-user-modify||: |
+-webkit-user-select||: |
+-webkit-wrap-flow||: |
+-webkit-wrap-margin||: |
+-webkit-wrap-padding||: |
+-webkit-wrap-shape-inside||: |
+-webkit-wrap-shape-outside||: |
+-webkit-wrap-through||: |
+-webkit-wrap||: |
+-xv-interpret-as||: |
+-xv-phonemes||: |
+-xv-voice-balance||: |
+-xv-voice-duration||: |
+-xv-voice-pitch-range||: |
+-xv-voice-pitch||: |
+-xv-voice-rate||: |
+-xv-voice-stress||: |
+-xv-voice-volume||: |
+:-moz-any-link||: |
+:-moz-any||: |
+:-moz-broken||: |
+:-moz-drag-over||: |
+:-moz-first-node||: |
+:-moz-focusring||: |
+:-moz-full-screen-ancestor||: |
+:-moz-full-screen||: |
+:-moz-handler-blocked||: |
+:-moz-handler-crashed||: |
+:-moz-handler-disabled||: |
+:-moz-last-node||: |
+:-moz-list-bullet||: |
+:-moz-list-number||: |
+:-moz-loading||: |
+:-moz-locale-dir(ltr)||: |
+:-moz-locale-dir(rtl)||: |
+:-moz-lwtheme-brighttext||: |
+:-moz-lwtheme-darktext||: |
+:-moz-lwtheme||: |
+:-moz-native-anonymous||: |
+:-moz-only-whitespace||: |
+:-moz-placeholder||: |
+:-moz-read-only||: |
+:-moz-read-write||: |
+:-moz-submit-invalid||: |
+:-moz-suppressed||: |
+:-moz-system-metric(images-in-menus)||: |
+:-moz-system-metric(mac-graphite-theme)||: |
+:-moz-system-metric(scrollbar-end-backward)||: |
+:-moz-system-metric(scrollbar-end-forward)||: |
+:-moz-system-metric(scrollbar-start-backward)||: |
+:-moz-system-metric(scrollbar-start-forward)||: |
+:-moz-system-metric(scrollbar-thumb-proportional)||: |
+:-moz-system-metric(touch-enabled)||: |
+:-moz-system-metric(windows-default-theme)||: |
+:-moz-tree-cell-text(hover)||: |
+:-moz-tree-cell-text||: |
+:-moz-tree-cell||: |
+:-moz-tree-checkbox||: |
+:-moz-tree-column||: |
+:-moz-tree-drop-feedback||: |
+:-moz-tree-image||: |
+:-moz-tree-indentation||: |
+:-moz-tree-line||: |
+:-moz-tree-progressmeter||: |
+:-moz-tree-row(hover)||: |
+:-moz-tree-row||: |
+:-moz-tree-separator||: |
+:-moz-tree-twisty||: |
+:-moz-ui-invalid||: |
+:-moz-ui-valid||: |
+:-moz-user-disabled||: |
+:-moz-window-inactive||: |
+:-webkit-animating-full-screen-transition||: |
+:-webkit-any()||: |
+:-webkit-any-link||: |
+:-webkit-autofill-strong-password||: |
+:-webkit-autofill||: |
+:-webkit-drag||: |
+:-webkit-full-page-media||: |
+:-webkit-full-screen-ancestor||: |
+:-webkit-full-screen-controls-hidden||: |
+:-webkit-full-screen-document||: |
+:-webkit-full-screen||: |
+::-moz-anonymous-block||: |
+::-moz-anonymous-positioned-block||: |
+::-moz-canvas||: |
+::-moz-cell-content||: |
+::-moz-color-swatch||: |
+::-moz-focus-inner||: |
+::-moz-focus-outer||: |
+::-moz-inline-table||: |
+::-moz-page-sequence||: |
+::-moz-pagebreak||: |
+::-moz-pagecontent||: |
+::-moz-page||: |
+::-moz-placeholder||: |
+::-moz-progress-bar||: |
+::-moz-range-progress||: |
+::-moz-range-thumb||: |
+::-moz-range-track||: |
+::-moz-scrolled-canvas||: |
+::-moz-scrolled-content||: |
+::-moz-scrolled-page-sequence||: |
+::-moz-selection||: |
+::-moz-svg-foreign-content||: |
+::-moz-table-cell||: |
+::-moz-table-column-group||: |
+::-moz-table-column||: |
+::-moz-table-outer||: |
+::-moz-table-row-group||: |
+::-moz-table-row||: |
+::-moz-table||: |
+::-moz-tree-cell-text(hover)||: |
+::-moz-tree-cell-text||: |
+::-moz-tree-cell||: |
+::-moz-tree-column||: |
+::-moz-tree-drop-feedback||: |
+::-moz-tree-image||: |
+::-moz-tree-indentation||: |
+::-moz-tree-line||: |
+::-moz-tree-progressmeter||: |
+::-moz-tree-row(hover)||: |
+::-moz-tree-row||: |
+::-moz-tree-separator||: |
+::-moz-tree-twisty||: |
+::-moz-viewport-scroll||: |
+::-moz-viewport||: |
+::-moz-xul-anonymous-block||: |
+::-ms-browse||: |
+::-ms-check||: |
+::-ms-clear||: |
+::-ms-expand||: |
+::-ms-fill-lower||: |
+::-ms-fill-upper||: |
+::-ms-fill||: |
+::-ms-reveal||: |
+::-ms-thumb||: |
+::-ms-ticks-after||: |
+::-ms-ticks-before||: |
+::-ms-tooltip||: |
+::-ms-track||: |
+::-ms-value||: |
+::-webkit-file-upload-button||: |
+::-webkit-inner-spin-button||: |
+::-webkit-input-placeholder||: |
+::-webkit-meter-bar||: |
+::-webkit-meter-even-less-good-value||: |
+::-webkit-meter-inner-element||: |
+::-webkit-meter-optimum-value||: |
+::-webkit-meter-suboptimum-value||: |
+::-webkit-outer-spin-button||: |
+::-webkit-progress-bar||: |
+::-webkit-progress-inner-element||: |
+::-webkit-progress-value||: |
+::-webkit-search-cancel-button||: |
+::-webkit-search-results-button||: |
+::-webkit-slider-runnable-track||: |
+::-webkit-slider-thumb||: |
+::after||: |
+::backdrop||: |
+::before||: |
+::choices||: |
+::cue||: |
+::first-letter||: |
+::first-line||: |
+::grammar-error||: |
+::line-marker||: |
+::marker||: |
+::outside||: |
+::part||: |
+::placeholder||: |
+::repeat-index||: |
+::repeat-item||: |
+::selection||: |
+::slotted||: |
+::slot||: |
+::spelling-error||: |
+::value||: |
+:active||: |
+:any-link||: |
+:blank||: |
+:checked||: |
+:current||: |
+:default||: |
+:defined||: |
+:dir||: |
+:disabled||: |
+:drop||: |
+:empty||: |
+:enabled||: |
+:first-child||: |
+:first-of-type||: |
+:first||: |
+:focus-visible||: |
+:focus-within||: |
+:focus||: |
+:fullscreen||: |
+:future||: |
+:has||: |
+:host-context||: |
+:host||: |
+:hover||: |
+:in-range||: |
+:indeterminate||: |
+:invalid||: |
+:is||: |
+:lang||: |
+:last-child||: |
+:last-of-type||: |
+:left||: |
+:link||: |
+:local-link||: |
+:matches||: |
+:not||: |
+:nth-child||: |
+:nth-col||: |
+:nth-last-child||: |
+:nth-last-col||: |
+:nth-last-of-type||: |
+:nth-of-type||: |
+:only-child||: |
+:only-of-type||: |
+:optional||: |
+:out-of-range||: |
+:past||: |
+:placeholder-shown||: |
+:read-only||: |
+:read-write||: |
+:required||: |
+:right||: |
+:root{--PROP:XXX}||: |
+:root||: |
+:scope||: |
+:something||: |
+:target-within||: |
+:target||: |
+:user-invalid||: |
+:valid||: |
+:visited||: |
+:where||: |
+@-moz-document||: |
+@-webkit-keyframes||: |
+@annotation||: |
+@character-variant||: |
+@charset||: |
+@counter-style||: |
+@document||: |
+@font-face||: |
+@font-feature-values||: |
+@font-palette-values||: |
+@import||: |
+@keyframes||: |
+@media||: |
+@namespace||: |
+@ornaments||: |
+@page||: |
+@styleset||: |
+@stylistic||: |
+@supports||: |
+@swash||: |
+@viewport||: |
+absolute||: |
+active||: |
+after||: |
+align-content||: |
+align-items||: |
+align-self||: |
+alignment-adjust||: |
+alignment-baseline||: |
+all||: |
+animation-delay||: |
+animation-direction||: |
+animation-duration||: |
+animation-fill-mode||: |
+animation-iteration-count||: |
+animation-name||: |
+animation-play-state||: |
+animation-timing-function||: |
+animation||: |
+appearance||: |
+apple-dashboard-region||: |
+armenian||: |
+ascent||: |
+auto||: |
+azimuth||: |
+backface-visibility||: |
+background-attachment||: |
+background-blend-mode||: |
+background-break||: |
+background-clip||: |
+background-color||: |
+background-image||: |
+background-origin-x||: |
 background-origin-y
-background-origin|||
-background-position|||
-background-repeat|||
-background-size|||
-background|||
-base-palette|||
-baseline-shift|||
-baseline|||
-bbox|||
-before|||
-binding|||
-bleed|||
-block-size|||
-block|||
-bolder|||
-bold|||
-bookmark-label|||
-bookmark-level|||
-bookmark-state|||
-bookmark-target|||
-border-bottom-color|||
-border-bottom-left-radius|||
-border-bottom-right-radius|||
-border-bottom-style|||
-border-bottom-width|||
-border-bottom|||
-border-break|||
-border-collapse|||
-border-color|||
-border-image-outset|||
-border-image-repeat|||
-border-image-slice|||
-border-image-source|||
-border-image-width|||
-border-image|||
-border-inline-start-width|||
-border-left-color|||
-border-left-style|||
-border-left-width|||
-border-left|||
-border-length|||
-border-radius|||
-border-right-color|||
-border-right-style|||
-border-right-width|||
-border-right|||
-border-spacing|||
-border-style|||
-border-top-color|||
-border-top-left-radius|||
-border-top-right-radius|||
-border-top-style|||
-border-top-width|||
-border-top|||
-border-width|||
-border|||
-bottom|||
-box-align|||
-box-decoration-break|||
-box-direction|||
-box-flex-group|||
-box-flex|||
-box-lines|||
-box-orient|||
-box-pack|||
-box-shadow|||
-box-sizing|||
-break-after|||
-break-before|||
-break-inside|||
-cap-height|||
-capitalize|||
-caption-side|||
-centerline|||
-checked|||
-choices|||
-circle|||
-clear|||
-clip-path|||
-clip|||
-color-profile|||
-color|||
-column-break-after|||
-column-break-before|||
-column-count|||
-column-fill|||
-column-gap|||
-column-rule-color|||
-column-rule-style|||
-column-rule-width|||
-column-rule|||
-column-span|||
-column-width|||
-columns|||
-content|||
-counter-increment|||
-counter-reset|||
-counters||counters(NAME, STRING, STYLE)|
-crop|||
-crosshair|||
-cue-after|||
-cue-before|||
-cue|||
+background-origin||: |
+background-position||: |
+background-repeat||: |
+background-size||: |
+background||: |
+base-palette||: |
+baseline-shift||: |
+baseline||: |
+bbox||: |
+before||: |
+binding||: |
+bleed||: |
+block-size||: |
+block||: |
+bolder||: |
+bold||: |
+bookmark-label||: |
+bookmark-level||: |
+bookmark-state||: |
+bookmark-target||: |
+border-bottom-color||: |
+border-bottom-left-radius||: |
+border-bottom-right-radius||: |
+border-bottom-style||: none / hidden / dotted / dashed / solid / double / groove / ridge / inset / outset|
+border-bottom-width||: |
+border-bottom||: |
+border-break||: |
+border-collapse||: |
+border-color||: |
+border-image-outset||: |
+border-image-repeat||: |
+border-image-slice||: |
+border-image-source||: |
+border-image-width||: |
+border-image||: |
+border-inline-start-width||: |
+border-left-color||: |
+border-left-style||: none / hidden / dotted / dashed / solid / double / groove / ridge / inset / outset|
+border-left-width||: |
+border-left||: |
+border-length||: |
+border-radius||: |
+border-right-color||: |
+border-right-style||: none / hidden / dotted / dashed / solid / double / groove / ridge / inset / outset|
+border-right-width||: |
+border-right||: |
+border-spacing||: |
+border-style||: {1,4} none / hidden / dotted / dashed / solid / double / groove / ridge / inset / outset|
+border-top-color||: |
+border-top-left-radius||: |
+border-top-right-radius||: |
+border-top-style||: none / hidden / dotted / dashed / solid / double / groove / ridge / inset / outset|
+border-top-width||: |
+border-top||: |
+border-width||: |
+border||: |
+bottom||: |
+box-align||: |
+box-decoration-break||: |
+box-direction||: |
+box-flex-group||: |
+box-flex||: |
+box-lines||: |
+box-orient||: |
+box-pack||: |
+box-shadow||: |
+box-sizing||: |
+break-after||: |
+break-before||: |
+break-inside||: |
+cap-height||: |
+capitalize||: |
+caption-side||: |
+centerline||: |
+checked||: |
+choices||: |
+circle||: |
+clear||: |
+clip-path||: |
+clip||: |
+color-profile||: |
+color||: |
+column-break-after||: |
+column-break-before||: |
+column-count||: |
+column-fill||: |
+column-gap||: |
+column-rule-color||: |
+column-rule-style||: |
+column-rule-width||: |
+column-rule||: |
+column-span||: |
+column-width||: |
+columns||: |
+content||: |
+counter-increment||: |
+counter-reset||: |
+counters||(NAME, STRING, STYLE)|
+crop||: |
+crosshair||: |
+cue-after||: |
+cue-before||: |
+cue||: |
 currentcolor
-current|||
-cursor|||
-dashed|||
-decimal-leading-zero|||
-decimal|||
-default|||
-definition-src|||
-descent|||
-direction|||
-disabled|||
-disc|||
-display|||
-dominant-baseline|||
-dotted|||
-double|||
-drop-initial-after-adjust|||
-drop-initial-after-align|||
-drop-initial-before-adjust|||
-drop-initial-before-align|||
-drop-initial-size|||
-drop-initial-value|||
-e-resize|||
-elevation|||
-empty-cells|||
-empty|||
-enabled|||
-env||env(VARIABLE, FALLBACK)|
-filter|||
-first-child|||
-first-letter|||
-first-line|||
-first-of-type|||
-fit-position|||
-fit|||
-fixed|||
-flat|||
-flex-align|||
-flex-basis|||
-flex-direction|||
-flex-flow|||
-flex-grow|||
-flex-line-pack|||
-flex-order|||
-flex-pack|||
-flex-shrink|||
-flex-wrap|||
-flex|||
-float-offset|||
-float|||
-focus|||
-font-display|||
-font-effect|||
-font-emphasize-position|||
-font-emphasize-style|||
-font-emphasize|||
-font-family|||
-font-feature-settings|||
-font-kerning|||
-font-language-override|||
-font-max-size|||
-font-min-size|||
-font-optical-sizing|||
-font-palette|||
-font-size-adjust|||
-font-size|||
-font-smooth|||
-font-stretch|||
-font-style|||
-font-synthesis-small-caps|||
-font-synthesis-style|||
-font-synthesis-weight|||
-font-synthesis|||
-font-variant-alternates|||
-font-variant-caps|||
-font-variant-east-asian|||
-font-variant-emoji|||
-font-variant-ligatures|||
-font-variant-numeric|||
-font-variant-position|||
-font-variant|||
-font-variation-settings|||
-font-weight|||
-font|||
-full-size-kana|||
-full-width|||
-georgian|||
-grid-auto-columns|||
-grid-auto-flow|||
-grid-auto-rows|||
-grid-column-gap|||
-grid-columns|||
-grid-row-gap|||
-grid-rows|||
-grid-template-areas|||
-grid-template-columns|||
-grid-template-rows|||
-grid|||
-groove|||
-hand|||
-hanging-punctuation|||
-height|||
-help|||
-hidden|||
-hover|||
-hyphenate-after|||
-hyphenate-before|||
-hyphenate-character|||
-hyphenate-lines|||
-hyphenate-resource|||
-hyphens|||
-icon|||
-image-orientation|||
-image-rendering|||
-image-resolution|||
-ime-mode|||
-inherit|||
-inline-block|||
-inline-box-align|||
-inline-flex|||
-inline-grid|||
-inline-size|||
-inline-table|||
-inline|||
-inset|||
-italic|||
-justify-content|||
-justify-items|||
-lang|||
-last-of-type|||
-left|||
-letter-spacing|||
-lighter|||
-line-break|||
-line-height|||
-line-marker|||
-line-stacking-ruby|||
-line-stacking-shift|||
-line-stacking-strategy|||
-line-stacking|||
-link|||
-list-item|||
-list-style-image|||
-list-style-position|||
-list-style-type|||
-list-style|||
-lower-alpha|||
-lower-greek|||
-lower-latin|||
-lower-roman|||
-lowercase|||
-margin-block-end|||
-margin-block-start|||
-margin-bottom|||
-margin-inline-end|||
-margin-inline-start|||
-margin-left|||
-margin-right|||
-margin-top|||
-margin|||
-mark-after|||
-mark-before|||
-marker-offset|||
-marker|||
-marks|||
-mark|||
-marquee-direction|||
-marquee-loop|||
-marquee-play-count|||
-marquee-speed|||
-marquee-style|||
-mask-type|||
-mask|||
-mathline|||
-max-height|||
-max-width|||
-min-block-size|||
-min-height|||
-min-inline-size|||
-min-width|||
-move-to|||
-move|||
-n-resize|||
-nav-down|||
-nav-index|||
-nav-left|||
-nav-right|||
-nav-up|||
-ne-resize|||
-none|||
-normal|||
-not|||
-nth-child|||
-nth-last-child|||
-nth-last-of-type|||
-nth-of-type|||
-nw-resize|||
-object-fit|||
-object-position|||
-oblique|||
-only-child|||
-only-of-type|||
-opacity|||
-order|||
-orphans|||
-outline-color|||
-outline-offset|||
-outline-style|||
-outline-width|||
-outline|||
-outset|||
-outside|||
-overflow-clip-box-block|||
-overflow-clip-box-inline|||
-overflow-clip-box|||
-overflow-style|||
-overflow-wrap|||
-overflow-x|||
-overflow-y|||
-overflow|||
-override-color|||
-overscroll-behavior|||
-padding-block-end|||
-padding-block-start|||
-padding-bottom|||
-padding-inline-end|||
-padding-inline-start|||
-padding-left|||
-padding-right|||
-padding-top|||
-padding|||
-page-break-after|||
-page-break-before|||
-page-break-inside|||
-page-policy|||
-page|||
-panose-1|||
-pause-after|||
-pause-before|||
-pause|||
-perspective-origin|||
-perspective|||
-phonemes|||
-pitch-range|||
-pitch|||
-play-during|||
-pointer-events|||
-position|||
-presentation-level|||
-preserve-3d|||
-punctuation-trim|||
-quotes|||
-relative|||
-rendering-intent|||
-repeat-index|||
-repeat-item|||
-resize|||
-rest-after|||
-rest-before|||
-rest|||
-richness|||
-ridge|||
-right|||
-root|||
-rotation-point|||
-rotation|||
-ruby-align|||
-ruby-overhang|||
-ruby-position|||
-ruby-span|||
-run-in|||
-s-resize|||
-scroll-behavior|||
-scrollbar-width|||
-scroll|||
-se-resize|||
-selection|||
-size|||
-slope|||
-slot|||
-small-caps|||
-solid|||
-speak-header|||
-speak-numeral|||
-speak-punctuation|||
-speak|||
-speech-rate|||
-square|||
-src|||
-static|||
-stemh|||
-stemv|||
-stress|||
-string-set|||
-sw-resize|||
-tab-side|||
-tab-size|||
-table-caption|||
-table-cell|||
-table-colgroup|||
-table-column|||
-table-footer-group|||
-table-header-group|||
-table-layout|||
-table-row-group|||
-table-row|||
-table|||
-target-name|||
-target-new|||
-target-position|||
-target|||
-text-align-last|||
-text-align|||
-text-combine-upright|||
-text-decoration-color|||
-text-decoration-line|||
-text-decoration-skip|||
-text-decoration-style|||
-text-decoration|||
-text-emphasis-color|||
-text-emphasis-position|||
-text-emphasis-style|||
-text-emphasis|||
-text-height|||
-text-indent|||
-text-justify|||
-text-orientation|||
-text-outline|||
-text-overflow|||
-text-replace|||
-text-shadow|||
-text-space-collapse|||
-text-transform|||
-text-underline-position|||
-text-wrap|||
-text|||
-topline|||
-top|||
-transform-origin|||
-transform-style|||
-transform|||
-transition-delay|||
-transition-duration|||
-transition-property|||
-transition-timing-function|||
-transition|||
-unicode-bidi|||
-unicode-range|||
-units-per-em|||
-upper-alpha|||
-upper-latin|||
-upper-roman|||
-uppercase|||
-user-select|||
-value|||
-var||var(--PROP, FALLBACK)|
-vertical-align|||
-visibility|||
-visible|||
-visited|||
-voice-balance|||
-voice-duration|||
-voice-family|||
-voice-pitch-range|||
-voice-pitch|||
-voice-rate|||
-voice-stress|||
-voice-volume|||
-volume|||
-w-resize|||
-wait|||
-white-space-collapse|||
-white-space|||
-widows|||
-widths|||
-width|||
-word-break|||
-word-spacing|||
-word-wrap|||
-writing-mode|||
-x-height|||
-z-index|||
+current||: |
+cursor||: auto / crosshair / default / hand / move / e-resize / ne-resize / nw-resize / n-resize / se-resize / sw-resize / s-resize / w-resize / text / wait / help|
+dashed||: |
+decimal-leading-zero||: |
+decimal||: |
+default||: |
+definition-src||: |
+descent||: |
+direction||: |
+disabled||: |
+disc||: |
+display||: block / inline / run-in / flow / flow-root / table / flex / grid / ruby / block flow / inline table / flex run-in / list-item / list-item block / list-item inline / list-item flow / list-item flow-root / list-item block flow / list-item block flow-root / flow list-item block / table-row-group / table-header-group / table-footer-group / table-row / table-cell / table-column-group / table-column / table-caption / ruby-base / ruby-text / ruby-base-container / ruby-text-container / contents / none / inline-block / inline-table / inline-flex / inline-grid / inherit / initial / unset|
+dominant-baseline||: |
+dotted||: |
+double||: |
+drop-initial-after-adjust||: |
+drop-initial-after-align||: |
+drop-initial-before-adjust||: |
+drop-initial-before-align||: |
+drop-initial-size||: |
+drop-initial-value||: |
+e-resize||: |
+elevation||: |
+empty-cells||: |
+empty||: |
+enabled||: |
+env||(VARIABLE, FALLBACK)|
+filter||: |
+first-child||: |
+first-letter||: |
+first-line||: |
+first-of-type||: |
+fit-position||: |
+fit||: |
+fixed||: |
+flat||: |
+flex-align||: |
+flex-basis||: |
+flex-direction||: |
+flex-flow||: |
+flex-grow||: |
+flex-line-pack||: |
+flex-order||: |
+flex-pack||: |
+flex-shrink||: |
+flex-wrap||: |
+flex||: |
+float-offset||: |
+float||: |
+focus||: |
+font-display||: |
+font-effect||: |
+font-emphasize-position||: |
+font-emphasize-style||: |
+font-emphasize||: |
+font-family||: |
+font-feature-settings||: |
+font-kerning||: |
+font-language-override||: |
+font-max-size||: |
+font-min-size||: |
+font-optical-sizing||: |
+font-palette||: |
+font-size-adjust||: |
+font-size||: |
+font-smooth||: |
+font-stretch||: |
+font-style||: inherit / italic / normal / oblique / oblique ANGLE|
+font-synthesis-small-caps||: |
+font-synthesis-style||: |
+font-synthesis-weight||: |
+font-synthesis||: none / [ weight / style ]|
+font-variant-alternates||: |
+font-variant-caps||: |
+font-variant-east-asian||: |
+font-variant-emoji||: |
+font-variant-ligatures||: |
+font-variant-numeric||: |
+font-variant-position||: |
+font-variant||: inherit / normal / small-caps|
+font-variation-settings||: |
+font-weight||: normal / bold / bolder / lighter / 100 / 200 / 300 / 400 / 500 / 600 / 700 / 800 / 900 / inherit|
+font||: |
+full-size-kana||: |
+full-width||: |
+georgian||: |
+grid-auto-columns||: |
+grid-auto-flow||: |
+grid-auto-rows||: |
+grid-column-gap||: |
+grid-columns||: |
+grid-row-gap||: |
+grid-rows||: |
+grid-template-areas||: |
+grid-template-columns||: |
+grid-template-rows||: |
+grid||: |
+groove||: |
+hand||: |
+hanging-punctuation||: |
+height||: |
+help||: |
+hidden||: |
+hover||: |
+hyphenate-after||: |
+hyphenate-before||: |
+hyphenate-character||: |
+hyphenate-lines||: |
+hyphenate-resource||: |
+hyphens||: |
+icon||: |
+image-orientation||: |
+image-rendering||: |
+image-resolution||: |
+ime-mode||: |
+inherit||: |
+inline-block||: |
+inline-box-align||: |
+inline-flex||: |
+inline-grid||: |
+inline-size||: |
+inline-table||: |
+inline||: |
+inset||: |
+italic||: |
+justify-content||: |
+justify-items||: |
+lang||: |
+last-of-type||: |
+left||: |
+letter-spacing||: |
+lighter||: |
+line-break||: |
+line-height||: |
+line-marker||: |
+line-stacking-ruby||: |
+line-stacking-shift||: |
+line-stacking-strategy||: |
+line-stacking||: |
+link||: |
+list-item||: |
+list-style-image||: |
+list-style-position||: |
+list-style-type||: armenian / circle / decimal / decimal-leading-zero / disc / georgian / lower-alpha / lower-greek / lower-roman / none / square / upper-alpha / upper-roman|
+list-style||: |
+lower-alpha||: |
+lower-greek||: |
+lower-latin||: |
+lower-roman||: |
+lowercase||: |
+margin-block-end||: |
+margin-block-start||: |
+margin-bottom||: |
+margin-inline-end||: |
+margin-inline-start||: |
+margin-left||: |
+margin-right||: |
+margin-top||: |
+margin||: |
+mark-after||: |
+mark-before||: |
+marker-offset||: |
+marker||: |
+marks||: |
+mark||: |
+marquee-direction||: |
+marquee-loop||: |
+marquee-play-count||: |
+marquee-speed||: |
+marquee-style||: |
+mask-type||: |
+mask||: |
+mathline||: |
+max-height||: |
+max-width||: |
+min-block-size||: |
+min-height||: |
+min-inline-size||: |
+min-width||: |
+move-to||: |
+move||: |
+n-resize||: |
+nav-down||: |
+nav-index||: |
+nav-left||: |
+nav-right||: |
+nav-up||: |
+ne-resize||: |
+none||: |
+normal||: |
+not||: |
+nth-child||: |
+nth-last-child||: |
+nth-last-of-type||: |
+nth-of-type||: |
+nw-resize||: |
+object-fit||: |
+object-position||: |
+oblique||: |
+only-child||: |
+only-of-type||: |
+opacity||: |
+order||: |
+orphans||: |
+outline-color||: |
+outline-offset||: |
+outline-style||: dashed / dotted / double / groove / hidden / inherit / initial / inset / none / outset / ridge / solid|
+outline-width||: |
+outline||: |
+outset||: |
+outside||: |
+overflow-clip-box-block||: |
+overflow-clip-box-inline||: |
+overflow-clip-box||: |
+overflow-style||: |
+overflow-wrap||: |
+overflow-x||: |
+overflow-y||: |
+overflow||: auto / clip / hidden / scroll / unset / visible|
+override-color||: |
+overscroll-behavior||: |
+padding-block-end||: |
+padding-block-start||: |
+padding-bottom||: |
+padding-inline-end||: |
+padding-inline-start||: |
+padding-left||: |
+padding-right||: |
+padding-top||: |
+padding||: |
+page-break-after||: |
+page-break-before||: |
+page-break-inside||: |
+page-policy||: |
+page||: |
+panose-1||: |
+pause-after||: |
+pause-before||: |
+pause||: |
+perspective-origin||: |
+perspective||: |
+phonemes||: |
+pitch-range||: |
+pitch||: |
+play-during||: |
+pointer-events||: |
+position||: absolute / fixed / inherit / relative / static|
+presentation-level||: |
+preserve-3d||: |
+punctuation-trim||: |
+quotes||: |
+relative||: |
+rendering-intent||: |
+repeat-index||: |
+repeat-item||: |
+resize||: |
+rest-after||: |
+rest-before||: |
+rest||: |
+richness||: |
+ridge||: |
+right||: |
+root||: |
+rotation-point||: |
+rotation||: |
+ruby-align||: |
+ruby-overhang||: |
+ruby-position||: |
+ruby-span||: |
+run-in||: |
+s-resize||: |
+scroll-behavior||: |
+scrollbar-width||: |
+scroll||: |
+se-resize||: |
+selection||: |
+size||: |
+slope||: |
+slot||: |
+small-caps||: |
+solid||: |
+speak-header||: |
+speak-numeral||: |
+speak-punctuation||: |
+speak||: |
+speech-rate||: |
+square||: |
+src||: |
+static||: |
+stemh||: |
+stemv||: |
+stress||: |
+string-set||: |
+sw-resize||: |
+tab-side||: |
+tab-size||: |
+table-caption||: |
+table-cell||: |
+table-colgroup||: |
+table-column||: |
+table-footer-group||: |
+table-header-group||: |
+table-layout||: |
+table-row-group||: |
+table-row||: |
+table||: |
+target-name||: |
+target-new||: |
+target-position||: |
+target||: |
+text-align-last||: |
+text-align||: center / end / justify / justify-all / left / match-parent / right / start|
+text-combine-upright||: |
+text-decoration-color||: |
+text-decoration-line||: |
+text-decoration-skip||: |
+text-decoration-style||: |
+text-decoration||: |
+text-emphasis-color||: |
+text-emphasis-position||: |
+text-emphasis-style||: |
+text-emphasis||: |
+text-height||: |
+text-indent||: |
+text-justify||: |
+text-orientation||: |
+text-outline||: |
+text-overflow||: |
+text-replace||: |
+text-shadow||: |
+text-space-collapse||: |
+text-transform||: none / [ [capitalize / lowercase / uppercase ] // full-width // full-size-kana ]|
+text-underline-position||: |
+text-wrap||: |
+text||: |
+topline||: |
+top||: |
+transform-origin||: |
+transform-style||: flat / preserve-3d|
+transform||: |
+transition-delay||: |
+transition-duration||: |
+transition-property||: |
+transition-timing-function||: |
+transition||: |
+unicode-bidi||: |
+unicode-range||: |
+units-per-em||: |
+upper-alpha||: |
+upper-latin||: |
+upper-roman||: |
+uppercase||: |
+user-select||: all / auto / contain / none / text|
+value||: |
+var||(--PROP, FALLBACK)|
+vertical-align||: |
+visibility||: |
+visible||: |
+visited||: |
+voice-balance||: |
+voice-duration||: |
+voice-family||: |
+voice-pitch-range||: |
+voice-pitch||: |
+voice-rate||: |
+voice-stress||: |
+voice-volume||: |
+volume||: |
+w-resize||: |
+wait||: |
+wap-accesskey||: |
+wap-input-format||: |
+wap-input-requir||: |
+wap-marquee-dir||: |
+wap-marquee-loop||: |
+wap-marquee-spe||: |
+wap-marquee-style||: |
+white-space-collapse||: |
+white-space||: |
+widows||: |
+widths||: |
+width||: |
+word-break||: break-all / keep-all / normal|
+word-spacing||: |
+word-wrap||: |
+writing-mode||: |
+x-height||: |
+z-index||: |

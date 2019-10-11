@@ -1,0 +1,494 @@
+# format=pipe
+addBack|jQuery.|(selector: Selector): jQuery|
+addClass|jQuery.|(className: String): jQuery|
+addClass|jQuery.|(function: Function): jQuery|
+add|callbacks.|(callbacks: *): Callbacks|
+add|jQuery.|(elements: Elements): jQuery|
+add|jQuery.|(html: htmlString): jQuery|
+add|jQuery.|(selection: jQuery): jQuery|
+add|jQuery.|(selector: Selector): jQuery|
+add|jQuery.|(selector: Selector, context: Element): jQuery|
+after|jQuery.|(content: *, content: *): jQuery|
+after|jQuery.|(function: Function): jQuery|
+ajaxComplete|jQuery.|(handler: Function): jQuery|
+ajaxError|jQuery.|(handler: Function): jQuery|
+ajaxPrefilter|[static] jQuery.|(dataTypes: String, handler: Function): void|
+ajaxSend|jQuery.|(handler: Function): jQuery|
+ajaxSetup|[static] jQuery.|(options: PlainObject): void|
+ajaxStart|jQuery.|(handler: Function): jQuery|
+ajaxStop|jQuery.|(handler: Function): jQuery|
+ajaxSuccess|jQuery.|(handler: Function): jQuery|
+ajaxTransport|[static] jQuery.|(dataType: String, handler: Function): void|
+ajax|[static] jQuery.|(settings: PlainObject): jqXHR|
+ajax|[static] jQuery.|(url: String, settings: PlainObject): jqXHR|
+all|jQuery.|
+always|deferred.|(alwaysCallbacks: Function, alwaysCallbacks: Function): Deferred|
+andSelf|jQuery.|(): jQuery|
+animated|jQuery.|
+animate|jQuery.|(properties: PlainObject, duration: *, easing: String, complete: Function): jQuery|
+animate|jQuery.|(properties: PlainObject, options: PlainObject): jQuery|
+appendTo|jQuery.|(target: *): jQuery|
+append|jQuery.|(content: *, content: *): jQuery|
+append|jQuery.|(function: Function): jQuery|
+attributeContainsPrefix|jQuery.|
+attributeContainsWord|jQuery.|
+attributeContains|jQuery.|
+attributeEndsWith|jQuery.|
+attributeEquals|jQuery.|
+attributeHas|jQuery.|
+attributeMultiple|jQuery.|
+attributeNotEqual|jQuery.|
+attributeStartsWith|jQuery.|
+attr|jQuery.|(attributeName: String): String|
+attr|jQuery.|(attributeName: String, function: Function): jQuery|
+attr|jQuery.|(attributeName: String, value: *): jQuery|
+attr|jQuery.|(attributes: PlainObject): jQuery|
+before|jQuery.|(content: *, content: *): jQuery|
+before|jQuery.|(function: Function): jQuery|
+bind|jQuery.|(events: Object): jQuery|
+bind|jQuery.|(eventType: String, eventData: Anything, handler: Function): jQuery|
+bind|jQuery.|(eventType: String, eventData: Anything, preventBubble: Boolean): jQuery|
+blur|jQuery.|(): jQuery|
+blur|jQuery.|(eventData: Anything, handler: Function): jQuery|
+blur|jQuery.|(handler: Function): jQuery|
+boxModel|[static] jQuery.||Type: Boolean
+browser|[static] jQuery.||Type: PlainObject
+button|jQuery.|
+Callbacks|[static] jQuery.|(flags: String): Callbacks|
+change|jQuery.|(): jQuery|
+change|jQuery.|(eventData: Anything, handler: Function): jQuery|
+change|jQuery.|(handler: Function): jQuery|
+checkbox|jQuery.|
+checked|jQuery.|
+children|jQuery.|(selector: Selector): jQuery|
+child|jQuery.|
+class|jQuery.|
+clearQueue|jQuery.|(queueName: String): jQuery|
+click|jQuery.|(): jQuery|
+click|jQuery.|(eventData: Anything, handler: Function): jQuery|
+click|jQuery.|(handler: Function): jQuery|
+clone|jQuery.|(withDataAndEvents: Boolean): jQuery|
+clone|jQuery.|(withDataAndEvents: Boolean, deepWithDataAndEvents: Boolean): jQuery|
+closest|jQuery.|(element: Element): jQuery|
+closest|jQuery.|(selection: jQuery): jQuery|
+closest|jQuery.|(selector: Selector): jQuery|
+closest|jQuery.|(selector: Selector, context: Element): jQuery|
+closest|jQuery.|(selectors: Array, context: Element): Array|
+contains|[static] jQuery.|(container: Element, contained: Element): Boolean|
+contains|jQuery.|
+contents|jQuery.|(): jQuery|
+context|jQuery.||Type: Element
+cssHooks|[static] jQuery.||Type: Object
+css|jQuery.|(properties: PlainObject): jQuery|
+css|jQuery.|(propertyName: String): String|
+css|jQuery.|(propertyName: String, function: Function): jQuery|
+css|jQuery.|(propertyName: String, value: *): jQuery|
+css|jQuery.|(propertyNames: Array): String|
+currentTarget|event.||Type: Element
+data|[static] jQuery.|(element: Element): Object|
+data|[static] jQuery.|(element: Element, key: String): Object|
+data|[static] jQuery.|(element: Element, key: String, value: Anything): Object|
+data|event.||Type: Object
+data|jQuery.|(): Object|
+data|jQuery.|(key: String): Object|
+data|jQuery.|(key: String, value: Anything): jQuery|
+data|jQuery.|(obj: Object): jQuery|
+dblclick|jQuery.|(): jQuery|
+dblclick|jQuery.|(eventData: Anything, handler: Function): jQuery|
+dblclick|jQuery.|(handler: Function): jQuery|
+Deferred|[static] jQuery.|(beforeStart: Function): Deferred|
+delay|jQuery.|(duration: Integer, queueName: String): jQuery|
+delegateTarget|event.||Type: Element
+delegate|jQuery.|(selector: String, events: PlainObject): jQuery|
+delegate|jQuery.|(selector: String, eventType: String, eventData: Anything, handler: Function): jQuery|
+delegate|jQuery.|(selector: String, eventType: String, handler: Function): jQuery|
+dequeue|[static] jQuery.|(element: Element, queueName: String): void|
+dequeue|jQuery.|(queueName: String): jQuery|
+descendant|jQuery.|
+detach|jQuery.|(selector: Selector): jQuery|
+die|jQuery.|(): jQuery|
+die|jQuery.|(events: PlainObject): jQuery|
+die|jQuery.|(eventType: String, handler: String): jQuery|
+disabled|callbacks.|(): Boolean|
+disabled|jQuery.|
+disable|callbacks.|(): Callbacks|
+done|deferred.|(doneCallbacks: Function, doneCallbacks: Function): Deferred|
+each|[static] jQuery.|(array: Array, callback: Function): Object|
+each|[static] jQuery.|(object: Object, callback: Function): Object|
+each|jQuery.|(function: Function): jQuery|
+element|jQuery.|
+empty|callbacks.|(): Callbacks|
+empty|jQuery.|
+empty|jQuery.|(): jQuery|
+enabled|jQuery.|
+end|jQuery.|(): jQuery|
+eq|jQuery.|
+eq|jQuery.|(index: Integer): jQuery|
+eq|jQuery.|(indexFromEnd: Integer): jQuery|
+error|[static] jQuery.|(message: String): void|
+error|jQuery.|(eventData: Anything, handler: Function): jQuery|
+error|jQuery.|(handler: Function): jQuery|
+even|jQuery.|
+extend|[static] fn.|(object: Object): Object|
+extend|[static] jQuery.|(deep: Boolean, target: Object, object1: Object, objectN: Object): Object|
+extend|[static] jQuery.|(target: Object, object1: Object, objectN: Object): Object|
+fadeIn|jQuery.|(duration: *, complete: Function): jQuery|
+fadeIn|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+fadeIn|jQuery.|(options: PlainObject): jQuery|
+fadeOut|jQuery.|(duration: *, complete: Function): jQuery|
+fadeOut|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+fadeOut|jQuery.|(options: PlainObject): jQuery|
+fadeToggle|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+fadeToggle|jQuery.|(options: PlainObject): jQuery|
+fadeTo|jQuery.|(duration: *, opacity: Number, complete: Function): jQuery|
+fadeTo|jQuery.|(duration: *, opacity: Number, easing: String, complete: Function): jQuery|
+fail|deferred.|(failCallbacks: Function, failCallbacks: Function): Deferred|
+file|jQuery.|
+filter|jQuery.|(elements: Element): jQuery|
+filter|jQuery.|(function: Function): jQuery|
+filter|jQuery.|(selection: jQuery): jQuery|
+filter|jQuery.|(selector: Selector): jQuery|
+find|jQuery.|(element: *): jQuery|
+find|jQuery.|(selector: Selector): jQuery|
+finish|jQuery.|(queue: String): jQuery|
+fired|callbacks.|(): Boolean|
+fireWith|callbacks.|(context: *, args: *): Callbacks|
+fire|callbacks.|(arguments: Anything): Callbacks|
+first-child|jQuery.|
+first-of-type|jQuery.|
+first|jQuery.|
+first|jQuery.|(): jQuery|
+focusin|jQuery.|(eventData: Anything, handler: Function): jQuery|
+focusin|jQuery.|(handler: Function): jQuery|
+focusout|jQuery.|(eventData: Anything, handler: Function): jQuery|
+focusout|jQuery.|(handler: Function): jQuery|
+focus|jQuery.|
+focus|jQuery.|(): jQuery|
+focus|jQuery.|(eventData: Anything, handler: Function): jQuery|
+focus|jQuery.|(handler: Function): jQuery|
+getJSON|[static] jQuery.|(url: String, data: PlainObject, success: Function): jqXHR|
+getScript|[static] jQuery.|(url: String, success: Function): jqXHR|
+get|[static] jQuery.|(url: String, data: *, success: Function, dataType: String): jqXHR|
+get|jQuery.|(): Array|
+get|jQuery.|(index: Integer): Element|
+globalEval|[static] jQuery.|(code: String): void|
+grep|[static] jQuery.|(array: Array, function: Function, invert: Boolean): Array|
+gt|jQuery.|
+hasClass|jQuery.|(className: String): Boolean|
+hasData|[static] jQuery.|(element: Element): Boolean|
+has|callbacks.|(callback: Function): Boolean|
+has|jQuery.|
+has|jQuery.|(contained: Element): jQuery|
+has|jQuery.|(selector: String): jQuery|
+header|jQuery.|
+height|jQuery.|(): Number|
+height|jQuery.|(function: Function): jQuery|
+height|jQuery.|(value: *): jQuery|
+hidden|jQuery.|
+hide|jQuery.|(): jQuery|
+hide|jQuery.|(duration: *, complete: Function): jQuery|
+hide|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+hide|jQuery.|(options: PlainObject): jQuery|
+holdReady|[static] jQuery.|(hold: Boolean): void|
+hover|jQuery.|(handlerIn: Function, handlerOut: Function): jQuery|
+hover|jQuery.|(handlerInOut: Function): jQuery|
+html|jQuery.|(): String|
+html|jQuery.|(function: Function): jQuery|
+html|jQuery.|(htmlString: htmlString): jQuery|
+id|jQuery.|
+image|jQuery.|
+inArray|[static] jQuery.|(value: Anything, array: Array, fromIndex: Number): Number|
+index|jQuery.|(): Number|
+index|jQuery.|(element: *): Number|
+index|jQuery.|(selector: Selector): Number|
+innerHeight|jQuery.|(): Number|
+innerHeight|jQuery.|(function: Function): jQuery|
+innerHeight|jQuery.|(value: *): jQuery|
+innerWidth|jQuery.|(): Integer|
+innerWidth|jQuery.|(function: Function): jQuery|
+innerWidth|jQuery.|(value: *): jQuery|
+input|jQuery.|
+insertAfter|jQuery.|(target: *): jQuery|
+insertBefore|jQuery.|(target: *): jQuery|
+interval|[static] fx.||Type: Number
+isArray|[static] jQuery.|(obj: Object): boolean|
+isDefaultPrevented|event.|(): Boolean|
+isEmptyObject|[static] jQuery.|(object: Object): Boolean|
+isFunction|[static] jQuery.|(obj: PlainObject): boolean|
+isImmediatePropagationStopped|event.|(): Boolean|
+isNumeric|[static] jQuery.|(value: PlainObject): Boolean|
+isPlainObject|[static] jQuery.|(object: PlainObject): Boolean|
+isPropagationStopped|event.|(): Boolean|
+isRejected|deferred.|(): Boolean|
+isResolved|deferred.|(): Boolean|
+isWindow|[static] jQuery.|(obj: PlainObject): boolean|
+isXMLDoc|[static] jQuery.|(node: Element): Boolean|
+is|jQuery.|(elements: Element): Boolean|
+is|jQuery.|(function: Function): Boolean|
+is|jQuery.|(selection: jQuery): Boolean|
+is|jQuery.|(selector: Selector): Boolean|
+jQuery|jQuery.|(): jQuery|
+jQuery|jQuery.|(callback: Function): jQuery|
+jQuery|jQuery.|(element: Element): jQuery|
+jQuery|jQuery.|(elementArray: Array): jQuery|
+jQuery|jQuery.|(html: htmlString, attributes: PlainObject): jQuery|
+jQuery|jQuery.|(html: htmlString, ownerDocument: document): jQuery|
+jQuery|jQuery.|(object: PlainObject): jQuery|
+jQuery|jQuery.|(selection: jQuery): jQuery|
+jQuery|jQuery.|(selector: Selector, context: *): jQuery|
+jquery|jQuery.||Type: String
+keydown|jQuery.|(): jQuery|
+keydown|jQuery.|(eventData: Anything, handler: Function): jQuery|
+keydown|jQuery.|(handler: Function): jQuery|
+keypress|jQuery.|(): jQuery|
+keypress|jQuery.|(eventData: Anything, handler: Function): jQuery|
+keypress|jQuery.|(handler: Function): jQuery|
+keyup|jQuery.|(): jQuery|
+keyup|jQuery.|(eventData: Anything, handler: Function): jQuery|
+keyup|jQuery.|(handler: Function): jQuery|
+lang|jQuery.|
+last-child|jQuery.|
+last-of-type|jQuery.|
+last|jQuery.|
+last|jQuery.|(): jQuery|
+length|jQuery.||Type: Integer
+live|jQuery.|(events: PlainObject): jQuery|
+live|jQuery.|(events: String, data: PlainObject, handler: Function): jQuery|
+live|jQuery.|(events: String, handler: Function): jQuery|
+load|jQuery.|(eventData: Anything, handler: Function): jQuery|
+load|jQuery.|(handler: Function): jQuery|
+load|jQuery.|(url: String, data: *, complete: Function): jQuery|
+locked|callbacks.|(): Boolean|
+lock|callbacks.|(): Callbacks|
+lt|jQuery.|
+makeArray|[static] jQuery.|(obj: PlainObject): Array|
+map|[static] jQuery.|(array: Array, callback: Function): Array|
+map|[static] jQuery.|(object: Object, callback: Function): Array|
+map|jQuery.|(callback: Function): jQuery|
+merge|[static] jQuery.|(first: Array, second: Array): Array|
+metaKey|event.||Type: Boolean
+mousedown|jQuery.|(): jQuery|
+mousedown|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mousedown|jQuery.|(handler: Function): jQuery|
+mouseenter|jQuery.|(): jQuery|
+mouseenter|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mouseenter|jQuery.|(handler: Function): jQuery|
+mouseleave|jQuery.|(): jQuery|
+mouseleave|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mouseleave|jQuery.|(handler: Function): jQuery|
+mousemove|jQuery.|(): jQuery|
+mousemove|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mousemove|jQuery.|(handler: Function): jQuery|
+mouseout|jQuery.|(): jQuery|
+mouseout|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mouseout|jQuery.|(handler: Function): jQuery|
+mouseover|jQuery.|(): jQuery|
+mouseover|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mouseover|jQuery.|(handler: Function): jQuery|
+mouseup|jQuery.|(): jQuery|
+mouseup|jQuery.|(eventData: Anything, handler: Function): jQuery|
+mouseup|jQuery.|(handler: Function): jQuery|
+multiple|jQuery.|
+namespace|event.||Type: String
+next adjacent|jQuery.|
+next siblings|jQuery.|
+nextAll|jQuery.|(selector: String): jQuery|
+nextUntil|jQuery.|(element: *, filter: Selector): jQuery|
+nextUntil|jQuery.|(selector: Selector, filter: Selector): jQuery|
+next|jQuery.|(selector: Selector): jQuery|
+noConflict|[static] jQuery.|(removeAll: Boolean): Object|
+noop|[static] jQuery.|(): void|
+notifyWith|deferred.|(context: Object, args: Array): Deferred|
+notify|deferred.|(args: Object): Deferred|
+not|jQuery.|
+not|jQuery.|(function: Function): jQuery|
+not|jQuery.|(selection: jQuery): jQuery|
+not|jQuery.|(selector: *): jQuery|
+now|[static] jQuery.|(): Number|
+nth-child|jQuery.|
+nth-last-child|jQuery.|
+nth-last-of-type|jQuery.|
+nth-of-type|jQuery.|
+odd|jQuery.|
+offsetParent|jQuery.|(): jQuery|
+offset|jQuery.|(): Object|
+offset|jQuery.|(coordinates: PlainObject): jQuery|
+offset|jQuery.|(function: Function): jQuery|
+off|[static] fx.||Type: Boolean
+off|jQuery.|(): jQuery|
+off|jQuery.|(events: PlainObject, selector: String): jQuery|
+off|jQuery.|(events: String, selector: String, handler: Function): jQuery|
+one|jQuery.|(events: PlainObject, selector: String, data: Anything): jQuery|
+one|jQuery.|(events: String, data: PlainObject, handler: Function): jQuery|
+one|jQuery.|(events: String, selector: String, data: Anything, handler: Function): jQuery|
+only-child|jQuery.|
+only-of-type|jQuery.|
+on|jQuery.|(events: PlainObject, selector: String, data: Anything): jQuery|
+on|jQuery.|(events: String, selector: String, data: Anything, handler: Function): jQuery|
+outerHeight|jQuery.|(includeMargin: Boolean): Number|
+outerWidth|jQuery.|(includeMargin: Boolean): Number|
+pageX|event.||Type: Number
+pageY|event.||Type: Number
+param|[static] jQuery.|(obj: *): String|
+param|[static] jQuery.|(obj: *, traditional: Boolean): String|
+parentsUntil|jQuery.|(element: *, filter: Selector): jQuery|
+parentsUntil|jQuery.|(selector: Selector, filter: Selector): jQuery|
+parents|jQuery.|(selector: Selector): jQuery|
+parent|jQuery.|
+parent|jQuery.|(selector: Selector): jQuery|
+parseHTML|[static] jQuery.|(data: String, context: Element, keepScripts: Boolean): Array|
+parseJSON|[static] jQuery.|(json: String): Object|
+parseXML|[static] jQuery.|(data: String): XMLDocument|
+password|jQuery.|
+pipe|deferred.|(doneFilter: Function, failFilter: Function): Promise|
+pipe|deferred.|(doneFilter: Function, failFilter: Function, progressFilter: Function): Promise|
+position|jQuery.|(): Object|
+post|[static] jQuery.|(url: String, data: *, success: Function, dataType: String): jqXHR|
+prependTo|jQuery.|(target: *): jQuery|
+prepend|jQuery.|(content: *, content: *): jQuery|
+prepend|jQuery.|(function: Function): jQuery|
+prevAll|jQuery.|(selector: Selector): jQuery|
+preventDefault|event.|(): void|
+prevUntil|jQuery.|(element: *, filter: Selector): jQuery|
+prevUntil|jQuery.|(selector: Selector, filter: Selector): jQuery|
+prev|jQuery.|(selector: Selector): jQuery|
+progress|deferred.|(progressCallbacks: *): Deferred|
+promise|deferred.|(target: Object): Promise|
+promise|jQuery.|(type: String, target: PlainObject): Promise|
+prop|jQuery.|(properties: PlainObject): jQuery|
+prop|jQuery.|(propertyName: String): void|
+prop|jQuery.|(propertyName: String, function: Function): jQuery|
+prop|jQuery.|(propertyName: String, value: Anything): jQuery|
+proxy|[static] jQuery.|(context: PlainObject, name: String): Function|
+proxy|[static] jQuery.|(context: PlainObject, name: String, additionalArguments: Anything): Function|
+proxy|[static] jQuery.|(function: Function, context: PlainObject): Function|
+proxy|[static] jQuery.|(function: Function, context: PlainObject, additionalArguments: Anything): Function|
+pushStack|jQuery.|(elements: Array): jQuery|
+pushStack|jQuery.|(elements: Array, name: String, arguments: Array): jQuery|
+queue|[static] jQuery.|(element: Element, queueName: String): Array|
+queue|[static] jQuery.|(element: Element, queueName: String, callback: Function): jQuery|
+queue|[static] jQuery.|(element: Element, queueName: String, newQueue: Array): jQuery|
+queue|jQuery.|(queueName: String): Array|
+queue|jQuery.|(queueName: String, callback: Function): jQuery|
+queue|jQuery.|(queueName: String, newQueue: Array): jQuery|
+radio|jQuery.|
+ready|jQuery.|(handler: Function): jQuery|
+rejectWith|deferred.|(context: Object, args: Array): Deferred|
+reject|deferred.|(args: Anything): Deferred|
+relatedTarget|event.||Type: Element
+removeAttr|jQuery.|(attributeName: String): jQuery|
+removeClass|jQuery.|(className: String): jQuery|
+removeClass|jQuery.|(function: Function): jQuery|
+removeData|[static] jQuery.|(element: Element, name: String): jQuery|
+removeData|jQuery.|(list: *): jQuery|
+removeData|jQuery.|(name: String): jQuery|
+removeProp|jQuery.|(propertyName: String): jQuery|
+remove|callbacks.|(callbacks: *): Callbacks|
+remove|jQuery.|(selector: String): jQuery|
+replaceAll|jQuery.|(target: *): jQuery|
+replaceWith|jQuery.|(function: Function): jQuery|
+replaceWith|jQuery.|(newContent: *): jQuery|
+reset|jQuery.|
+resize|jQuery.|(): jQuery|
+resize|jQuery.|(eventData: Anything, handler: Function): jQuery|
+resize|jQuery.|(handler: Function): jQuery|
+resolveWith|deferred.|(context: Object, args: Array): Deferred|
+resolve|deferred.|(args: Anything): Deferred|
+result|event.||Type: Object
+root|jQuery.|
+scrollLeft|jQuery.|(): Integer|
+scrollLeft|jQuery.|(value: Number): jQuery|
+scrollTop|jQuery.|(): Integer|
+scrollTop|jQuery.|(value: Number): jQuery|
+scroll|jQuery.|(): jQuery|
+scroll|jQuery.|(eventData: Anything, handler: Function): jQuery|
+scroll|jQuery.|(handler: Function): jQuery|
+selected|jQuery.|
+selector|jQuery.||Type: String
+select|jQuery.|(): jQuery|
+select|jQuery.|(eventData: Anything, handler: Function): jQuery|
+select|jQuery.|(handler: Function): jQuery|
+serializeArray|jQuery.|(): Array|
+serialize|jQuery.|(): String|
+show|jQuery.|(): jQuery|
+show|jQuery.|(duration: *, complete: Function): jQuery|
+show|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+show|jQuery.|(options: PlainObject): jQuery|
+siblings|jQuery.|(selector: Selector): jQuery|
+size|jQuery.|(): Integer|
+slice|jQuery.|(start: Integer, end: Integer): jQuery|
+slideDown|jQuery.|(duration: *, complete: Function): jQuery|
+slideDown|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+slideDown|jQuery.|(options: PlainObject): jQuery|
+slideToggle|jQuery.|(duration: *, complete: Function): jQuery|
+slideToggle|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+slideToggle|jQuery.|(options: PlainObject): jQuery|
+slideUp|jQuery.|(duration: *, complete: Function): jQuery|
+slideUp|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+slideUp|jQuery.|(options: PlainObject): jQuery|
+state|deferred.|(): String|
+stopImmediatePropagation|event.|(): void|
+stopPropagation|event.|(): void|
+stop|jQuery.|(clearQueue: Boolean, jumpToEnd: Boolean): jQuery|
+stop|jQuery.|(queue: String, clearQueue: Boolean, jumpToEnd: Boolean): jQuery|
+submit|jQuery.|
+submit|jQuery.|(): jQuery|
+submit|jQuery.|(eventData: Anything, handler: Function): jQuery|
+submit|jQuery.|(handler: Function): jQuery|
+sub|[static] jQuery.|(): jQuery|
+support|[static] jQuery.||Type: Object
+target|event.||Type: Element
+target|jQuery.|
+text|jQuery.|
+text|jQuery.|(): String|
+text|jQuery.|(function: Function): jQuery|
+text|jQuery.|(text: *): jQuery|
+then|deferred.|(doneCallbacks: Function, failCallbacks: Function): Promise|
+then|deferred.|(doneCallbacks: Function, failCallbacks: Function, progressCallbacks: Function): Promise|
+then|deferred.|(doneFilter: Function, failFilter: Function, progressFilter: Function): Promise|
+timeStamp|event.||Type: Number
+toArray|jQuery.|(): Array|
+toggleClass|jQuery.|(className: String): jQuery|
+toggleClass|jQuery.|(className: String, switch: Boolean): jQuery|
+toggleClass|jQuery.|(function: Function, switch: Boolean): jQuery|
+toggleClass|jQuery.|(switch: Boolean): jQuery|
+toggle|jQuery.|(duration: *, complete: Function): jQuery|
+toggle|jQuery.|(duration: *, easing: String, complete: Function): jQuery|
+toggle|jQuery.|(handler: Function, handler: Function, handler: Function): jQuery|
+toggle|jQuery.|(options: PlainObject): jQuery|
+toggle|jQuery.|(showOrHide: Boolean): jQuery|
+triggerHandler|jQuery.|(eventType: String, extraParameters: Array): Object|
+trigger|jQuery.|(event: Event, extraParameters: *): jQuery|
+trigger|jQuery.|(eventType: String, extraParameters: *): jQuery|
+trim|[static] jQuery.|(str: String): String|
+type|[static] jQuery.|(obj: Anything): String|
+type|event.||Type: String
+unbind|jQuery.|(): jQuery|
+unbind|jQuery.|(event: Object): jQuery|
+unbind|jQuery.|(eventType: String, false: Boolean): jQuery|
+unbind|jQuery.|(eventType: String, handler: Function): jQuery|
+undelegate|jQuery.|(): jQuery|
+undelegate|jQuery.|(namespace: String): jQuery|
+undelegate|jQuery.|(selector: String, events: PlainObject): jQuery|
+undelegate|jQuery.|(selector: String, eventType: String): jQuery|
+undelegate|jQuery.|(selector: String, eventType: String, handler: Function): jQuery|
+unique|[static] jQuery.|(array: Array): Array|
+unload|jQuery.|(eventData: Anything, handler: Function): jQuery|
+unload|jQuery.|(handler: Function): jQuery|
+unwrap|jQuery.|(): jQuery|
+val|jQuery.|(): void|
+val|jQuery.|(function: Function): jQuery|
+val|jQuery.|(value: *): jQuery|
+version|[static] browser.||Type: String
+visible|jQuery.|
+when|[static] jQuery.|(deferreds: Deferred): Promise|
+which|event.||Type: Number
+width|jQuery.|(): Number|
+width|jQuery.|(function: Function): jQuery|
+width|jQuery.|(value: *): jQuery|
+wrapAll|jQuery.|(function: Function): jQuery|
+wrapAll|jQuery.|(wrappingElement: *): jQuery|
+wrapInner|jQuery.|(function: Function): jQuery|
+wrapInner|jQuery.|(wrappingElement: *): jQuery|
+wrap|jQuery.|(function: Function): jQuery|
+wrap|jQuery.|(wrappingElement: *): jQuery|

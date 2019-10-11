@@ -1,0 +1,212 @@
+# format=pipe
+# Lua 5.1
+_G||||||
+_VERSION||||||
+abs|math|(x)|
+acos|math|(x)|
+activate||( tab_id )|
+appinfo||()|
+asin|math|(x)|
+assert||(v [, message])|
+atan2|math|(y, x)|
+atan|math|(x)|
+banner||||||
+basename||( pathstr )|
+batch||( start )|
+byte|string|(s [, i [, j]])|
+byte||( [position] )|
+caller||||||
+caret||( [position] )|
+ceil|math|(x)|
+char|string|(···)|
+checkbox|dialog|( dlg, key, default, caption )|
+choose||( prompt, items )|
+clock|os|||||
+close|io|([file_descriptor])|
+close||( [filename]|[index] )|
+collectgarbage||(opt [, arg])|
+color|dialog|( dlg, key, default, caption )|
+comment|keyfile|( kf, group, key [, comment] )|
+concat|table|(table [, separador [, i [, j]]])|
+confirm||( title, question, default )|
+copy||( [content]|[start,stop] )|
+coroutine|Manejo de co-routines||
+cosh|math|(x)|
+cos|math|(x)|
+count||()|
+cpath|package||
+create|coroutine|(f)|
+cut||()|
+data|keyfile|( kf [, text] )|
+date|os|([format [, time]])|
+debug|debug|
+deg|math|(x)|
+difftime|os|(t2, t1)|
+dirlist||( path )|
+dirname||( pathstr )|
+dirsep||||||
+documents||( [doc_id] )|
+dofile||(filename)|
+dump|string|(function)|
+error||(message [, level])|
+execute|os|([command])|
+exit|os|([code])|
+exp|math|(x)|
+fileinfo||()|
+filename||()|
+file|dialog|( dlg, key, default, caption )|
+find|string|(s, patron [, inicio [, basica]])|
+find||( phrase, start, stop, options )|
+floor|math|(x)|
+flush|io||||
+fmod|math|(x, y)|
+font|dialog|( dlg, key, default, caption )|
+format|string|(format, ···)|
+frexp|math|(x)|
+fullpath||( filename )|
+getenv|os|(variable)|
+getfenv|debug|(o)|
+getfenv||([f])|
+gethook|debug|([process])|
+getinfo|debug|([process,] func [, que])|
+getlocal|debug|([process,] level, local)|
+getmetatable|debug|(object)|
+getmetatable||(object)|
+getregistry|debug|||||
+getupvalue|debug|(func, up)|
+gmath|string|(s, patron)|
+groups|keyfile|( kf )|
+group|dialog|( dlg, key, default, caption )|
+gsub|string|(s, patron, replacement [, n])|
+has|keyfile|( kf, group [, key] )|
+heading|dialog|( dlg, text )|
+height||()|
+hr|dialog|( dlg )|
+huge|math|||||
+input|io|([file_descriptor, file_name])|
+input||( [prompt] [,default] )|
+insert|table|(table, [posicion,] value)|
+ipairs||(t)|
+keycmd||( command )|
+keygrab||( [prompt] )|
+keys|keyfile|( kf, group )|
+label|dialog|( dlg, text )|
+launch||( program [, arg1 [, arg2, ...]] )|
+ldexp|math|(m, e)|
+length||()|
+len|string|(s)|
+lines|io|([file_name])|
+lines||( [index] )|
+loaded|package|||||
+loaders|package||
+loadfile||([file_name])|
+loadlib|package|(nombre_de_biblioteca, nombre_de_func)|
+loadstring||(string [, nombre_de_chunk])|
+load||(func [, nombre_de_chunk])|
+log10|math|(x)|
+log|math|(x)|
+lower|string|(s)|
+match|string|(s, patron [, start])|
+match||( [position] )|
+maxn|table|(table)|
+max|math|(x, ···)|
+message||( [title,] message )|
+min|math|(x, ···)|
+modf|math|(x)|
+module||(nombre [, ···])|
+navigate||( mode, count [,extend [,rect]] )|
+newfile||( [filename] )|
+new|dialog|( title, buttons )|
+new|keyfile|()|
+next||(t [, indice)|
+open|io|(file_name [, mode])|
+open||( [filename]|[index] )|
+optimize||()|
+option|dialog|( dlg, key, value, label )|
+output|io|([file_descriptor, file_name])|
+package|Modulo||
+pairs||(t)|
+password|dialog|( dlg, key, default, prompt )|
+paste||()|
+path|package||
+pcall||(f, arg1, ···)|
+pickfile||( [mode [,path [,filter]]] )|
+pi|math|||||
+popen|io|(prog [, mode])|
+pow|math|(x, y)|
+preload|package||
+print||(···)|
+project||||||
+radio|dialog|( dlg, key, value, label )|
+rad|math|(x)|
+randomseed|math|(x)|
+random|math|([m [, n]])|
+rawequal||(v1, v2)|
+rawget||(table, indice)|
+rawset||(table, indice, value)|
+read|io|(···)|
+rectsel||||||
+remove|keyfile|( kf, group [, key] )|
+remove|os|(file_name)|
+remove|table|(table [, posicion])|
+rename|os|(old_name, new_name)|
+rep|string|(s, n)|
+require||(filename)|
+rescan||()|
+resume|coroutine|(co [, val1, ···])|
+reverse|string|(s)|
+rowcol||( [position]|[line,column] )|
+running|coroutine||
+run|dialog|( dlg )|
+save||( [filename]|[index] )|
+scintilla|geany( msg_id [, wparam [, lparam]] )|
+script||||||
+seeall|package|(modulo)|
+seek|file|([whence] [, movement])|
+selection||( [content] )|
+select|dialog|( dlg, key, default, caption )|
+select||( [[start,] stop]] )|
+select||(indice, ···)|
+setfenv|debug|(object, table)|
+setfenv||(f, table)|
+sethook|debug|([process,] func_hook, mask[, counter])|
+setlocale|os|(local [, category])|
+setlocal|debug|([process,] level, local, value)|
+setmetatable|debug|(object, table)|
+setmetatable||(table, metatable)|
+setupvalue|debug|(func, up, value)|
+setvbuf|file|(mode [, size])|
+signal||( widget, signal )|
+sinh|math|(x)|
+sin|math|(x)|
+sort|table|(table [, comparador])|
+sqrt|math|(x)|
+status|coroutine|(co)|
+status||( message )|
+stat||( filename [, lstat] )|
+sub|string|(s, i [, j])|
+tanh|math|(x)|
+tan|math|(x)|
+textarea|dialog|( dlg, key, default, caption )|
+text|dialog|( dlg, key, default, prompt )|
+text||( [content] )|
+timeout||( seconds )|
+time|os|([table])|
+tmpfile|io|||||
+tmpname|os|||||
+tonumber||(e [, base])|
+tostring||(e)|
+traceback|debug|([process,] [message] [, level])|
+type|io|(object)|
+type||(v)|
+unpack||(lista [, i [, j]])|
+upper|string|(s)|
+value|keyfile|( kf, group, key [, value] )|
+wkdir||( [folder] )|
+wordchars||||||
+word||( [position] )|
+wrap|coroutine|(f)|
+write|io|(···)|
+xpcall||(f, err)|
+xsel||( [text] )|
+yield|coroutine|(···)|

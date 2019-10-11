@@ -1,0 +1,202 @@
+# format=pipe
+abs|[static] Math.|(x: number): number|
+acos|[static] Math.|(x: number): number|
+apply|Function.|(thisArg[, argsArray]): void|
+arguments.callee|||
+arguments.caller|||
+arguments.length|||
+arguments|function(){|: Object}|
+ArrayBuffer|||
+Array|||
+asin|[static] Math.|(x: number): number|
+atan2|[static] Math.|(y: number, x: number): number|
+atan|[static] Math.|(x: number): number|
+bind|Function.|(thisArg[, arg1[, arg2[, ...]]]): Function|
+Boolean|||
+call|Function.|(thisArg[, arg1[, arg2[, ...]]]): void|
+ceil|[static] Math.|(x: number): number|
+charAt|String.|(index: number): String|
+charCodeAt|String.|(index: number): Number|
+concat|Array.|(value1: Object, value2: Object, ..., valueN: Object): Array|
+concat|String.|(v1: Object,..., vN: Object): String|
+constructor|Object.||
+cos|[static] Math.|(x: number): number|
+create|[static] Object.|(proto [, propertiesObject ]): Object|
+Date|||
+decodeURIComponent||(encodedURI): string|
+decodeURI||(encodedURI): string|
+defineProperties|[static] Object.|(obj, props): Object|
+defineProperty|[static] Object.|(obj, prop, descriptor): Object|
+encodeURIComponent||(str): string|
+encodeURI||(URI): string|
+Error|||
+EvalError|||
+eval||(string): void|
+every|Array.|(callback: Function[, thisObject: Object]): Boolean|
+exec|RegExp.|(str: string): Array|
+exp|[static] Math.|(x: number): number|
+E|[static] Math.||
+filter|Array.|(callback: Function[, thisObject: Object]): Array|
+Float32Array|||
+Float64Array|||
+floor|[static] Math.|(x: number): number|
+forEach|Array.|(callback: Function[, thisObject: Object]): Array|
+freeze|[static] Object.|()|
+fromCharCode|[static] String.|(num1, ..., numN): string|
+Function|||
+getDate|Date.|(): number|
+getDay|Date.|(): number|
+getFullYear|Date.|(): number|
+getHours|Date.|(): number|
+getMilliseconds|Date.|(): number|
+getMinutes|Date.|(): number|
+getMonth|Date.|(): number|
+getOwnPropertyDescriptor|[static] Object.|(obj, prop): Object|
+getOwnPropertyNames|[static] Object.|(obj: Object): Array|
+getPrototypeOf|[static] Object.|(obj): Object|
+getSeconds|Date.|(): number|
+getTimezoneOffset|Date.|(): number|
+getTime|Date.|(): number|
+getUTCDate|Date.|(): number|
+getUTCDay|Date.|(): number|
+getUTCFullYear|Date.|(): number|
+getUTCHours|Date.|(): number|
+getUTCMilliseconds|Date.|(): number|
+getUTCMinutes|Date.|(): number|
+getUTCMonth|Date.|(): number|
+getUTCSeconds|Date.|(): number|
+getYear|Date.|(): number|
+global|[static] RegExp.||
+hasOwnProperty|Object.|(prop: string): boolean|
+ignoreCase|[static] RegExp.||
+indexOf|Array.|(element: Object): Number|
+indexOf|String.|(substr: string, [start: number]): Number|
+Infinity|||
+Int16Array|||
+Int32Array|||
+Int8Array|||
+isArray|[static] Array.|(obj: Object): Boolean|
+isExtensible|[static] Object.|(): boolean|
+isFinite||(number): boolean|
+isFrozen|[static] Object.|(): boolean|
+isGenerator|Function.|(): boolean)|
+isNaN||(object): boolean|
+isPrototypeOf|Object.|(obj: Object): boolean|
+isSealed|[static] Object.|(): boolean|
+Iterator|||
+join|Array.|(separator: string): Array|
+JSON|||
+keys|[static] Object.|(obj): Array|
+lastIndexOf|Array.|(element: Object): Number|
+lastIndexOf|String.|(substr: string, [start: number]): Number|
+lastIndex|[static] RegExp.||
+length|Array.||
+length|Function.||
+LN10|[static] Math.||
+LN2|[static] Math.||
+localeCompare|String.|(compareString: string): number|
+LOG10E|[static] Math.||
+LOG2E|[static] Math.||
+log|[static] Math.|(x: number): number|
+map|Array.|(callback: Function[, thisObject: Object]): Array|
+match|String.|(RegExp regexp): Array|
+Math|||
+MAX_VALUE|[static] Number.||
+max|[static] Math.|(a: number, b: number): number|
+MIN_VALUE|[static] Number.||
+min|[static] Math.|(a: number, b: number): number|
+multiline|[static] RegExp.||
+NaN|||
+NEGATIVE_INFINITY|[static] Number.||
+now|[static] Date.|(): void|
+Number|||
+Object|||
+parseFloat||(string): number|
+parseInt||(string[, radix]): number|
+parse|[static] Date.|(): number|
+PI|[static] Math.||
+pop|Array.|(): Array|
+POSITIVE_INFINITY|[static] Number.||
+pow|[static] Math.|(x: number, y: number): number|
+preventExtensions|[static] Object.|(obj): Object|
+propertyIsEnumerable|Object.|(prop: string): boolean|
+push|Array.|(element1: Object, ..., elementN: Object): Number|
+random|[static] Math.|(): number|
+RangeError|||
+reduceRight|Array.|(callback: Function[, initialValue: Object]): Object|
+reduce|Array.|(callback: Function[, initialValue: Object]): Object|
+ReferenceError|||
+RegExp|||
+replace|String.|(RegExp regexp, replacement: string): String|
+reverse|Array.|(): Array|
+round|[static] Math.|(x: number): number|
+seal|[static] Object.|(obj): Object|
+search|String.|(RegExp regexp): Number|
+setDate|Date.|(day_of_month): void|
+setFullYear|Date.|(year, [month], [day]): void|
+setHours|Date.|(hours, [minutes], [seconds], [millisec]): void|
+setMilliseconds|Date.|(milli): void|
+setMinutes|Date.|(minutes, [seconds], [millisec]): void|
+setMonth|Date.|(month, [day]): void|
+setSeconds|Date.|(seconds, [millisec]): void|
+setTime|Date.|(milli): void|
+setUTCDate|Date.|(day_of_month): void|
+setUTCFullYear|Date.|(year, [month], [day]): void|
+setUTCHours|Date.|(hours, [minutes], [seconds], [millisec]): void|
+setUTCMilliseconds|Date.|(milli): void|
+setUTCMinutes|Date.|(minutes, [seconds], [millisec]): void|
+setUTCMonth|Date.|(month, [day]): void|
+setUTCSeconds|Date.|(seconds, [millisec]): void|
+setYear|Date.|(year): void|
+shift|Array.|(): Object|
+sin|[static] Math.|(x: number): number|
+slice|Array.|(begin: number[, end: number]): Array|
+slice|String.|(start: number, end: number): String|
+some|Array.|(callback: Function[, thisObject: Object]): Boolean|
+sort|Array.|([compareFunction]): Array|
+splice|Array.|(index: number[, howMany: number[, element1: Object[, ...[, elementN: Object]]]]): Array|
+split|String.|(delimiter: string, [limit: number]): Array|
+SQRT1_2|[static] Math.||
+SQRT2|[static] Math.||
+sqrt|[static] Math.|(x: number): number|
+StopIteration|||
+String|||
+substring|String.|(from: number[, to: number]): String|
+substr|String.|(start: number[, length: number]): String|
+SyntaxError|||
+tan|[static] Math.|(x: number): number|
+test|RegExp.|(str: string): boolean|
+toDateString|Date.|(): string|
+toExponential|Number.|(x: number): string|
+toFixed|Number.|(trail: number): string|
+toGMTString|Date.|(): string|
+toISOString|Date.|(): string|
+toLocaleDateString|Date.|(): string|
+toLocaleFormat|Date.|(): string|
+toLocaleLowerCase|String.|(): String|
+toLocaleString|Date.|(): string|
+toLocaleString|Object.|(): string|
+toLocaleTimeString|Date.|(): string|
+toLocaleUpperCase|String.|(): String|
+toLowerCase|String.|(): String|
+toPrecision|Number.|(length: number): string|
+toSource|Date.|(): string|
+toString|Date.|(): string|
+toString|Object.|(): string|
+toTimeString|Date.|(): string|
+toUpperCase|String.|(): String|
+toUTCString|Date.|(): string|
+trimLeft|String.|(): String|
+trimRight|String.|(): String|
+trim|String.|(): String|
+TypeError|||
+Uint16Array|||
+Uint32Array|||
+Uint8Array|||
+Uint8ClampedArray|||
+undefined|||
+uneval|||
+unshift|Array.|(element1: Object, ..., elementN: Object): Number|
+URIError|||
+UTC|[static] Date.|(): number|
+valueOf|Object.|(): Object|

@@ -45,6 +45,7 @@ mime_type=text/css
 comment_open=/*
 comment_close=*/
 comment_use_indent=true
+tag_parser=CSS
 context_action_cmd=
 
 [indentation]
