@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkListStore" id="eol_list">
@@ -306,37 +307,6 @@
     <property name="stock">gtk-find</property>
     <property name="icon_size">1</property>
   </object>
-  <object class="GtkMenu" id="toolbar_popup_menu1">
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkImageMenuItem" id="customize_toolbar1">
-        <property name="label" translatable="yes">_Toolbar Preferences</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="use_underline">True</property>
-        <property name="image">image3192</property>
-        <property name="use_stock">False</property>
-        <signal name="activate" handler="on_customize_toolbar1_activate" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkSeparatorMenuItem" id="separator53">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="hide_toolbar1">
-        <property name="label" translatable="yes">_Hide Toolbar</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="use_underline">True</property>
-        <property name="image">image3193</property>
-        <property name="use_stock">False</property>
-        <signal name="activate" handler="on_hide_toolbar1_activate" swapped="no"/>
-      </object>
-    </child>
-  </object>
   <object class="GtkMenu" id="edit_menu1">
     <property name="can_focus">False</property>
     <child>
@@ -588,6 +558,16 @@
                 <signal name="activate" handler="on_insert_alternative_white_space1_activate" swapped="no"/>
               </object>
             </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="insert1_menu-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child internal-child="accessible">
+          <object class="AtkObject" id="insert1-atkobject">
+            <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
           </object>
         </child>
       </object>
@@ -659,6 +639,47 @@
         <signal name="activate" handler="on_context_action1_activate" swapped="no"/>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="edit_menu1-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="toolbar_popup_menu1">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkImageMenuItem" id="customize_toolbar1">
+        <property name="label" translatable="yes">_Toolbar Preferences</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_underline">True</property>
+        <property name="image">image3192</property>
+        <property name="use_stock">False</property>
+        <signal name="activate" handler="on_customize_toolbar1_activate" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="separator53">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="hide_toolbar1">
+        <property name="label" translatable="yes">_Hide Toolbar</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_underline">True</property>
+        <property name="image">image3193</property>
+        <property name="use_stock">False</property>
+        <signal name="activate" handler="on_hide_toolbar1_activate" swapped="no"/>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="toolbar_popup_menu1-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+      </object>
+    </child>
   </object>
   <object class="GtkDialog" id="prefs_dialog">
     <property name="can_focus">False</property>
@@ -688,6 +709,11 @@
             <property name="position">0</property>
           </packing>
         </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="prefs_dialog-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
       </object>
     </child>
   </object>
@@ -720,6 +746,11 @@
         </child>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="project_dialog-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
+      </object>
+    </child>
   </object>
   <object class="GtkDialog" id="properties_dialog">
     <property name="can_focus">False</property>
@@ -750,6 +781,11 @@
             <property name="position">0</property>
           </packing>
         </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="properties_dialog-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
       </object>
     </child>
   </object>
@@ -1007,6 +1043,16 @@
                             <signal name="activate" handler="on_quit1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="file1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="file1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -1515,6 +1561,16 @@
                             <signal name="activate" handler="on_plugin_preferences1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="edit1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="edit1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -1749,6 +1805,16 @@
                             </child>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="search1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="search1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -1927,6 +1993,16 @@
                             <signal name="activate" handler="on_normal_size1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menu_view1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_view1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -2340,6 +2416,11 @@
                         </child>
                       </object>
                     </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_document1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
@@ -2425,6 +2506,16 @@
                             <signal name="activate" handler="on_project_properties1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menu_project1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_project1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -2435,6 +2526,11 @@
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Build</property>
                     <property name="use_underline">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_build1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
@@ -2502,6 +2598,16 @@
                             <signal name="activate" handler="on_load_tags1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="tools1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="tools1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                       </object>
                     </child>
                   </object>
@@ -2602,8 +2708,23 @@
                             <signal name="activate" handler="on_info1_activate" swapped="no"/>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menu_help1_menu-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_help1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="menubar1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">menu-bar</property>
                   </object>
                 </child>
               </object>
@@ -2721,6 +2842,11 @@
                         <property name="tab_fill">False</property>
                       </packing>
                     </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="notebook3-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">page-tab-list</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="resize">False</property>
@@ -2735,11 +2861,21 @@
                     <property name="tab_pos">bottom</property>
                     <property name="scrollable">True</property>
                     <signal name="switch-page" handler="on_notebook1_switch_page_after" after="yes" swapped="no"/>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="notebook1-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">page-tab-list</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="resize">True</property>
                     <property name="shrink">True</property>
                   </packing>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="hpaned1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">panel</property>
+                  </object>
                 </child>
               </object>
               <packing>
@@ -2886,7 +3022,7 @@
                         <property name="can_focus">True</property>
                         <property name="wrap_mode">word-char</property>
                         <property name="buffer">textbuffer1</property>
-                        <property name="input_hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_EMOJI</property>
+                        <property name="input_hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
                         <property name="monospace">True</property>
                         <signal name="motion-notify-event" handler="on_motion_event" swapped="no"/>
                       </object>
@@ -2911,11 +3047,21 @@
                     <property name="tab_fill">False</property>
                   </packing>
                 </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="notebook_info-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">page-tab-list</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="resize">False</property>
                 <property name="shrink">True</property>
               </packing>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="vpaned1-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">panel</property>
+              </object>
             </child>
           </object>
           <packing>
@@ -2940,6 +3086,11 @@
                 <property name="position">0</property>
               </packing>
             </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="hbox1-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">statusbar</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -2947,6 +3098,11 @@
             <property name="position">2</property>
           </packing>
         </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="window1-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
       </object>
     </child>
   </object>
