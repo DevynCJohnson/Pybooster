@@ -655,7 +655,7 @@ typedef uintptr_t   va_list;
 
 #if IS_GNUC
 #   define __builtin_stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
-#else
+#elif (!defined(__builtin_va_start))
 #   define __builtin_va_start(v, argnum)   __builtin_stdarg_start((v), (argnum))
 #endif
 /** Initialize a variable argument list */

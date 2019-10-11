@@ -796,19 +796,18 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #else
 #   define SUPPORTS_QFTYPE   0
 #   define HAVE_QF   0
+#   undef SUPPORTS_FLOAT8
 #endif
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && IS_NOT_LINTER)
+#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && IS_NOT_LINTER && ((defined(COMPILER_CLANG) && defined(ARCHARM)) || defined(COMPILER_GNU_GCC)))
 #   define SUPPORTS_HFTYPE   1
-#   ifdef COMPILER_CLANG
-/** 16-bit half-precision float-point datatype */
-typedef _Float16   HFtype;
-#   else
 /** 16-bit half-precision float-point datatype */
 typedef float __attribute__((__mode__(__HF__)))   HFtype;
-#   endif
 #   define HF   HFtype
 #   ifndef fp16
 #      define fp16   HFtype
+#   endif
+#   ifndef __fp16
+#      define __fp16   HFtype
 #   endif
 #   ifndef __float16
 #      define __float16   fp16
@@ -821,6 +820,7 @@ typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #else
 #   define SUPPORTS_HFTYPE   0
 #   define HAVE_HF   0
+#   undef SUPPORTS_FLOAT16
 #endif
 #if ((defined(ARCHAVR) || SUPPORTS_FLOAT24) && IS_NOT_LINTER)
 #   define SUPPORTS_TQFTYPE   1
@@ -833,6 +833,7 @@ typedef float __attribute__((__mode__(__TQF__)))   TQFtype;
 #else
 #   define SUPPORTS_TQFTYPE   0
 #   define HAVE_TQF   0
+#   undef SUPPORTS_FLOAT24
 #endif
 #define SUPPORTS_SFTYPE   1
 /** Single-precision float-point */
@@ -8655,10 +8656,11 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 #elif ((!defined(getprogname)) && (!defined(PROGRAM_NAME)))
 #   define getprogname()   "UNAMED_PROGRAM\0"
 #endif
-#define progname   getprogname()
-#define program_name   getprogname()
-#define __progname_full   getprogname()
-#define __progname   getprogname()
+/*@-readonlytrans@*/
+static const char* __progname = NULL;
+static const UNUSED char* progname = __progname;
+static const UNUSED char* program_name = __progname;
+static const UNUSED char* __progname_full = __progname;
 /*@-readonlytrans@*/
 static const UNUSED char* program_invocation_name = getprogname();
 /*@=readonlytrans@*/
@@ -8987,7 +8989,7 @@ DECL_FUNC int not_null_ptr(const void* restrict ptr);
 LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
 	/*@-usedef@*/
 	const void* restrict q;
-	vasm(";" : "=r,m"(q) : "0"(ptr));
+	vasm(";" : "=rm"(q) : "0"(ptr));
 	return (int)(q != 0);
 	/*@=usedef@*/
 }

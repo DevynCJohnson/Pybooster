@@ -3350,9 +3350,9 @@ LIB_FUNC int inet_aton(const char* s0, struct in_addr* dest) {
 	const char* s = s0;
 	unsigned char* d = (unsigned char*)dest;
 	unsigned long a[4] = { 0 };
-	const char** restrict z;
-	int i;
-	for (i = 0; i < 4; i++) {
+	const char** restrict z = NULL;
+	int i = 0;
+	for (; i < 4; i++) {
 		a[i] = strtoul(s, z, 0);
 		if (*z == s || (**z && **z != '.') || (!isdigit(*s))) { return 0; }
 		else if (!*z) { break; }

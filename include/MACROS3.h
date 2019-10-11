@@ -186,7 +186,7 @@ Breaks a dependency chain for memory_order_consume */
 /** A barrier to stop the optimizer from moving code or assuming live register values */
 #define compiler_barrier()   vasm(";" : : : "memory")
 /** A barrier to stop the optimizer from moving code or assuming live register values */
-#define barrier_data(ptr)   vasm(";" : : "r,i,n"(ptr) : "memory")
+#define barrier_data(ptr)   vasm(";" : : "X"(ptr) : "memory")
 
 /** @def math_opt_barrier
 @brief Safely load x, even if it was manipulated by non-float-point operations. This macro returns the value of x. This ensures compiler does not abuse its knowledge about x value and not optimize future operations.
@@ -208,9 +208,9 @@ Force expression `x` to be evaluated; This macro returns no value */
 
 #elif defined(ARCHX86_64)
 
-#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { vasm(";" : "=v,x,y"(__x) : "0"(__x)); } else { vasm(";" : "=t"(__x) : "0"(__x)); } __x; })
-#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) >= SIZEOF_DOUBLE) { vasm(";" : : "v,x,y"(__x)); } else { vasm(";" : : "f"(__x)); } })
-#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) > SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else if (sizeof(__x) == SIZEOF_DOUBLE) { vasm(";" : : "v,x,y"(__x)); } else { vasm(";" : : "f"(__x)); } })
+#   define math_opt_barrier(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) <= SIZEOF_DOUBLE) { vasm(";" : "=X"(__x) : "0"(__x)); } else { vasm(";" : "=t"(__x) : "0"(__x)); } __x; })
+#   define math_force_eval(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) >= SIZEOF_DOUBLE) { vasm(";" : : "X"(__x)); } else { vasm(";" : : "f"(__x)); } })
+#   define raise_flag(x)   __extension__ ({ auto_type __x = (x); if (sizeof(__x) > SIZEOF_DOUBLE) { vasm(";" : : "m"(__x)); } else if (sizeof(__x) == SIZEOF_DOUBLE) { vasm(";" : : "X"(__x)); } else { vasm(";" : : "f"(__x)); } })
 
 #elif defined(ARCHAARCH64)
 
@@ -247,7 +247,7 @@ Memory Barrier */
 #elif defined(ARM_7_SERIES)
 #   define do_sync()   vasm("dmb sy;" : : : "memory")
 #elif defined(ARM_6_SERIES)
-#   define do_sync()   vasm("mcr p15, 0, %0, c7, c10, 5;" : : "rin"(0) : "memory")
+#   define do_sync()   vasm("mcr p15, 0, %0, c7, c10, 5;" : : "X"(0) : "memory")
 #elif defined(ARCHARM)
 #   define do_sync()   vasm("dmb;" : : : "memory")
 #elif defined(ARCHPOWERPC64)
@@ -703,7 +703,7 @@ LIB_FUNC NONNULL void a_zerol(volatile long* restrict ptr) {
 LIB_FUNC NONNULL bool cmpxchg_bool(volatile int* restrict ptr, const int oldval, const int newval) {
 #   ifdef ARCHX86
 	register int ret;
-	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -719,7 +719,7 @@ LIB_FUNC NONNULL bool cmpxchg_bool(volatile int* restrict ptr, const int oldval,
 LIB_FUNC NONNULL bool cmpxchg8_bool(volatile uint8_t* restrict ptr, const uint8_t oldval, const uint8_t newval) {
 #   ifdef ARCHX86
 	register uint8_t ret;
-	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -733,7 +733,7 @@ LIB_FUNC NONNULL bool cmpxchg8_bool(volatile uint8_t* restrict ptr, const uint8_
 LIB_FUNC NONNULL bool cmpxchg16_bool(volatile uint16_t* restrict ptr, const uint16_t oldval, const uint16_t newval) {
 #   ifdef ARCHX86
 	register uint16_t ret;
-	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -747,7 +747,7 @@ LIB_FUNC NONNULL bool cmpxchg16_bool(volatile uint16_t* restrict ptr, const uint
 LIB_FUNC NONNULL bool cmpxchg32_bool(volatile uint32_t* restrict ptr, const uint32_t oldval, const uint32_t newval) {
 #   ifdef ARCHX86
 	register uint32_t ret;
-	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -761,7 +761,7 @@ LIB_FUNC NONNULL bool cmpxchg32_bool(volatile uint32_t* restrict ptr, const uint
 LIB_FUNC NONNULL bool cmpxchg64_bool(volatile uint64_t* restrict ptr, const uint64_t oldval, const uint64_t newval) {
 #   ifdef ARCHX86
 	register uint64_t ret;
-	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	if (ret == oldval) { return TRUE; }
 	return FALSE;
 #   else
@@ -776,7 +776,7 @@ LIB_FUNC NONNULL bool cmpxchg64_bool(volatile uint64_t* restrict ptr, const uint
 LIB_FUNC NONNULL int cmpxchg(volatile int* restrict ptr, const int oldval, const int newval) {
 #   ifdef ARCHX86
 	register int ret;
-	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -825,7 +825,7 @@ LIB_FUNC NONNULL int cmpxchg(volatile int* restrict ptr, const int oldval, const
 LIB_FUNC NONNULL uint8_t cmpxchg8(volatile uint8_t* restrict ptr, const uint8_t oldval, const uint8_t newval) {
 #   ifdef ARCHX86
 	register uint8_t ret;
-	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgb %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -838,7 +838,7 @@ LIB_FUNC NONNULL uint8_t cmpxchg8(volatile uint8_t* restrict ptr, const uint8_t 
 LIB_FUNC NONNULL uint16_t cmpxchg16(volatile uint16_t* restrict ptr, const uint16_t oldval, const uint16_t newval) {
 #   ifdef ARCHX86
 	register uint16_t ret;
-	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgw %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -851,7 +851,7 @@ LIB_FUNC NONNULL uint16_t cmpxchg16(volatile uint16_t* restrict ptr, const uint1
 LIB_FUNC NONNULL uint32_t cmpxchg32(volatile uint32_t* restrict ptr, const uint32_t oldval, const uint32_t newval) {
 #   ifdef ARCHX86
 	register uint32_t ret;
-	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgl %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	__generic_cmpxchg(ptr, oldval);
@@ -864,7 +864,7 @@ LIB_FUNC NONNULL uint32_t cmpxchg32(volatile uint32_t* restrict ptr, const uint3
 LIB_FUNC NONNULL uint64_t cmpxchg64(volatile uint64_t* restrict ptr, const uint64_t oldval, const uint64_t newval) {
 #   ifdef ARCHX86
 	register uint64_t ret;
-	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr)  : "r,i,n"(newval), "0"(oldval) : "memory");
+	vasm("lock cmpxchgq %2, %1;" : "=a"(ret), "+m"(*ptr) : "r"(newval), "0"(oldval) : "memory");
 	return ret;
 #   else
 	do_sync();
@@ -889,7 +889,7 @@ LIB_FUNC NONNULL size_t __CAS(volatile size_t* restrict ptr, const size_t oldval
 
 LIB_FUNC NONNULL void* a_cas_p(volatile void* ptr, void* oldval, void* restrict newval) {
 #   ifdef ARCHX86
-	vasm("lock cmpxchgl %2, %1;" : "=a"(oldval), "+m"(ptr) : "r,i,n"(newval), "0"(oldval) : "memory");
+	asm("lock cmpxchgq %2, %1;" : "+a"(oldval), "+m"(ptr) : "r"(newval) : "memory");
 	return oldval;
 #   else
 	do_sync();
@@ -1068,7 +1068,7 @@ LIB_FUNC NONNULL int atomic_add_return(const int i, atomic_t* restrict val) {
 /** Atomic Addition */
 LIB_FUNC NONNULL void a_add(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	vasm("lock addl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock addl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1093,7 +1093,7 @@ LIB_FUNC NONNULL int a_fetch_sub(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
 	const int old = *p;
-	vasm("lock subl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return old;
 #   else
 	do_sync();
@@ -1114,7 +1114,7 @@ LIB_FUNC NONNULL size_t __atomic_sub(volatile size_t* restrict p, const size_t v
 #      ifdef ARCHX86
 	do_sync();
 	const size_t old = *p;
-	vasm("lock subl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return old;
 #      else
 	do_sync();
@@ -1128,7 +1128,7 @@ LIB_FUNC NONNULL size_t __atomic_sub(volatile size_t* restrict p, const size_t v
 #      ifdef ARCHX86
 	do_sync();
 	const size_t old = *p;
-	vasm("lock subq %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock subq %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return old;
 #      else
 	do_sync();
@@ -1157,7 +1157,7 @@ LIB_FUNC NONNULL int atomic_sub_return(const int i, atomic_t* restrict val) {
 /** Atomic Subtraction */
 LIB_FUNC NONNULL void a_sub(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	vasm("lock subl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock subl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1201,7 +1201,7 @@ LIB_FUNC NONNULL int atomic_mod_return(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_and(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	vasm("lock andl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock andl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1221,7 +1221,7 @@ LIB_FUNC NONNULL int a_fetch_and(volatile int* restrict p, const int val) {
 /** Atomic AND */
 LIB_FUNC NONNULL void a_and(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	vasm("lock andl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock andl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1234,7 +1234,7 @@ LIB_FUNC NONNULL void a_and(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_and_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	vasm("lock andq %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock andq %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -1258,7 +1258,7 @@ LIB_FUNC NONNULL void atomic_andop(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_or(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	vasm("lock orl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock orl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1278,7 +1278,7 @@ LIB_FUNC NONNULL int a_fetch_or(volatile int* restrict p, const int val) {
 /** Atomic OR */
 LIB_FUNC NONNULL void a_or(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	vasm("lock orl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock orl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1291,7 +1291,7 @@ LIB_FUNC NONNULL void a_or(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_or_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	vasm("lock orq %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock orq %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -1324,7 +1324,7 @@ LIB_FUNC NONNULL void atomic_orop(const int i, atomic_t* restrict val) {
 LIB_FUNC NONNULL int a_fetch_xor(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
 	do_sync();
-	vasm("lock xorl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock xorl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 	return *p;
 #   else
 	do_sync();
@@ -1344,7 +1344,7 @@ LIB_FUNC NONNULL int a_fetch_xor(volatile int* restrict p, const int val) {
 /** Atomic XOR */
 LIB_FUNC NONNULL void a_xor(volatile int* restrict p, const int val) {
 #   ifdef ARCHX86
-	vasm("lock xorl %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock xorl %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const int old = *p;
@@ -1357,7 +1357,7 @@ LIB_FUNC NONNULL void a_xor(volatile int* restrict p, const int val) {
 
 LIB_FUNC NONNULL void a_xor_64(volatile uint64_t* restrict p, const uint64_t val) {
 #   ifdef ARCHX86
-	vasm("lock xorq %1, %0;" : "+m"(*p) : "r,i,n"(val) : "memory");
+	vasm("lock xorq %1, %0;" : "+m"(*p) : "X"(val) : "memory");
 #   else
 	do_sync();
 	const uint64_t old = *p;
@@ -3701,7 +3701,7 @@ LIB_FUNC ATTR_PRINTF(2, 0) void log_vwrite(const int pri, const char* restrict m
 			fflush(fp);
 			break;
 		case LOG_TYPE_FILE:
-			if ((fputc('\n', fp) == -1) || (vfprintf(fp, msg, ap) == -1)) { _Exit(1); }
+			if ((fputc('\n', fp) == -1) || (vfprintf(fp, msg, ap) == -1)) { _Exit(1); }  attr_fallthrough
 		default:
 			fflush(fp);
 			break;
@@ -8505,14 +8505,14 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 
 
 LIB_FUNC long syscall0(const long n) {
-	vasm("swi %1;" : "=r"(a1) : "rin"(n) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "X"(n) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
 
 LIB_FUNC long syscall1(const long n, const long a) {
 	register long a1 asm ("a1") = a;
-	vasm("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "X"(n), "0"(a1) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
@@ -8520,7 +8520,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register long a1 asm ("a1") = a;
 	register const long a2 asm ("a2") = b;
-	vasm("swi %1;" : "=r"(a1) : "rin"(n), "0"(a1), "r"(a2) : SYSCALL_CLOBBERS);
+	vasm("swi %1;" : "=r"(a1) : "X"(n), "0"(a1), "r"(a2) : SYSCALL_CLOBBERS);
 	syscall_errno(a1);
 }
 
@@ -8531,7 +8531,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register const long a3 asm ("a3") = c;
 	vasm("swi %1;"
 		: "=r"(a1)
-		: "rin"(n), "0"(a1), "r"(a2), "r"(a3)
+		: "X"(n), "0"(a1), "r"(a2), "r"(a3)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(a1);
@@ -8545,7 +8545,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register const long a4 asm ("a4") = d;
 	vasm("swi %1;"
 		: "=r"(a1)
-		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4)
+		: "X"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(a1);
@@ -8560,7 +8560,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register const long v1 asm ("v1") = e;
 	vasm("swi %1;"
 		: "=r"(a1)
-		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1)
+		: "X"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(a1);
@@ -8576,7 +8576,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register const long v2 asm ("v2") = f;
 	vasm("swi %1;"
 		: "=r"(a1)
-		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2)
+		: "X"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(a1);
@@ -8593,7 +8593,7 @@ LIB_FUNC long syscall7(const long n, const long a, const long b, const long c, c
 	register const long v3 asm ("v3") = g;
 	vasm("swi %1;"
 		: "=r"(a1)
-		: "rin"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2), "r"(v3)
+		: "X"(n), "0"(a1), "r"(a2), "r"(a3), "r"(a4), "r"(v1), "r"(v2), "r"(v3)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(a1);
@@ -9476,7 +9476,7 @@ LIB_FUNC long syscall0(const long n) {
 	register unsigned long ret asm ("r28");
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n)
+		: "X"(n)
 		: SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9488,7 +9488,7 @@ LIB_FUNC long syscall1(const long n, const long a) {
 	register unsigned long r26 asm ("r26") = (unsigned long)a;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26)
+		: "X"(n), "r"(r26)
 		: "%r26", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9501,7 +9501,7 @@ LIB_FUNC long syscall2(const long n, const long a, const long b) {
 	register unsigned long r25 asm ("r25") = (unsigned long)b;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26), "r"(r25)
+		: "X"(n), "r"(r26), "r"(r25)
 		: "%r26", "%r25", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9515,7 +9515,7 @@ LIB_FUNC long syscall3(const long n, const long a, const long b, const long c) {
 	register unsigned long r24 asm ("r24") = (unsigned long)c;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26), "r"(r25), "r"(r24)
+		: "X"(n), "r"(r26), "r"(r25), "r"(r24)
 		: "%r26", "%r25", "%r24", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9530,7 +9530,7 @@ LIB_FUNC long syscall4(const long n, const long a, const long b, const long c, c
 	register unsigned long r23 asm ("r23") = (unsigned long)d;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23)
+		: "X"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23)
 		: "%r26", "%r25", "%r24", "%r23", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9546,7 +9546,7 @@ LIB_FUNC long syscall5(const long n, const long a, const long b, const long c, c
 	register unsigned long r22 asm ("r22") = (unsigned long)e;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22)
+		: "X"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22)
 		: "%r26", "%r25", "%r24", "%r23", "%r22", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -9563,7 +9563,7 @@ LIB_FUNC long syscall6(const long n, const long a, const long b, const long c, c
 	register unsigned long r21 asm ("r21") = (unsigned long)f;
 	vasm(K_STW_ASM_PIC "copy %1, %%r20;" "ble 0x100(%%sr2, %%r0);" K_LDW_ASM_PIC
 		: "=r"(ret)
-		: "rin"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22), "r"(r21)
+		: "X"(n), "r"(r26), "r"(r25), "r"(r24), "r"(r23), "r"(r22), "r"(r21)
 		: "%r26", "%r25", "%r24", "%r23", "%r22", "%r21", SYSCALL_CLOBBERS
 	);
 	syscall_errno(ret);
@@ -12019,7 +12019,7 @@ LIB_FUNC unsigned long long asm_xor_ull(unsigned long long num1, unsigned long l
 		"xor %2,%%rax;"
 		"mov %%rax,%0;"
 		: "=r"(xor_num)
-		: "r,i,n"(num1), "r,i,n"(num2)
+		: "X"(num1), "X"(num2)
 		:
 	);
 	return xor_num;
@@ -12045,18 +12045,28 @@ LIB_FUNC unsigned long long asm_xor_ull(unsigned long long num1, unsigned long l
 #define _MM_SHUFFLE(z, y, x, w)   (((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
 
 
+#ifndef COMPILER_CLANG
 /** Return the contents of the MXCSR control and status register */
 LIB_FUNC unsigned int _mm_getcsr(void) {
 	unsigned int retval = 0U;
 	vasm("stmxcsr %0;" : "=m"(retval));
 	return retval;
 }
+#   define mm_getcsr()   _mm_getcsr()
+#else
+#   define mm_getcsr()   __extension__ ({ unsigned int retval = 0U; vasm("stmxcsr %0;" : "=m"(retval)); (unsigned int)retval; })
+#endif
 
 
+#ifndef COMPILER_CLANG
 /** Set the contents of the MXCSR control and status register */
 LIB_FUNC void _mm_setcsr(unsigned int val) {
 	vasm("ldmxcsr %0;" : : "m"(val));
 }
+#   define mm_setcsr(val)   _mm_setcsr((val))
+#else
+#   define mm_setcsr(val)   vasm("ldmxcsr %0;" : : "m"(val))
+#endif
 
 
 LIB_FUNC __m128 BUILD_SSE _mm_add_ss(__m128 __a, __m128 __b) {
@@ -12156,12 +12166,12 @@ LIB_FUNC __m128 BUILD_SSE _mm_max_ps(__m128 __a, __m128 __b) {
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_and_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_and_ps(__m128 __a, __m128 __b) {
 	return (__m128)((__v4si)__a & (__v4si)__b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_andnot_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_andnot_ps(__m128 __a, __m128 __b) {
 	return (__m128)(~(__v4si)__a & (__v4si)__b);
 }
 
@@ -13442,14 +13452,14 @@ LIB_FUNC void _OSWriteInt64(volatile void* base, const uintptr_t byteOffset, con
 
 
 /** Given an unsigned 64-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t rotl64(const uint64_t x, const int n) {
+LIB_FUNC ATTR_CF uint64_t rotl64(const uint64_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
-	uint64_t res;
-	asm ("prolq %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register uint64_t res = 0;
+	asm ("prolq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
 	return res;
 #   elif defined(ARCHX86)
-	uint64_t res = x;
-	asm ("rolq %1, %0;" : "+X"(res) : "X"(n));
+	register uint64_t res = x;
+	asm ("rolq %1, %0;" : "+g"(res) : "cJ"(n));
 	return res;
 #else
 	return (uint64_t)(((x << n) | (x >> (64 - n))) & (uint64_t)UINT64_MAX);
@@ -13458,18 +13468,18 @@ LIB_FUNC ATTR_CF uint64_t rotl64(const uint64_t x, const int n) {
 
 
 /** Given an unsigned 64-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t rotr64(const uint64_t x, const int n) {
+LIB_FUNC ATTR_CF uint64_t rotr64(const uint64_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_BMI2)
-	uint64_t res;
-	asm ("rorx %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register uint64_t res = 0;
+	asm ("rorx %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
 	return res;
 #   elif (defined(ARCHX86) && CPU_AVX512F)
-	uint64_t res;
-	asm ("prorq %1, %2, %0;" : "=X"(res) : "x"(n), "X"(x));
+	register uint64_t res = 0;
+	asm ("prorq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
 	return res;
 #   elif defined(ARCHX86)
-	uint64_t res = x;
-	asm ("rorq %1, %0;" : "+X"(res) : "X"(n));
+	register uint64_t res = x;
+	asm ("rorq %1, %0;" : "+g"(res) : "cJ"(n));
 	return res;
 #else
 	return (uint64_t)(((x >> n) | (x << (64 - n))) & (uint64_t)UINT64_MAX);
@@ -13478,14 +13488,14 @@ LIB_FUNC ATTR_CF uint64_t rotr64(const uint64_t x, const int n) {
 
 
 /** Given an unsigned 32-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t rotl32(const uint32_t x, const int n) {
+LIB_FUNC ATTR_CF uint32_t rotl32(const uint32_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
-	uint32_t res;
-	asm ("prold %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register res = 0;
+	asm ("prold %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
 	return res;
 #   elif defined(ARCHX86)
-	uint32_t res = x;
-	asm ("rold %1, %0;" : "+X"(res) : "X"(n));
+	register uint32_t res = x;
+	asm ("roll %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint32_t)(((x << n) | (x >> (32 - n))) & UINT32_MAX);
@@ -13494,14 +13504,14 @@ LIB_FUNC ATTR_CF uint32_t rotl32(const uint32_t x, const int n) {
 
 
 /** Given an unsigned 32-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t rotr32(const uint32_t x, const int n) {
+LIB_FUNC ATTR_CF uint32_t rotr32(const uint32_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
-	uint32_t res;
-	asm ("prord %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register uint32_t res = 0;
+	asm ("prorl %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
 	return res;
 #   elif defined(ARCHX86)
-	uint32_t res = x;
-	asm ("rord %1, %0;" : "+X"(res) : "X"(n));
+	register uint32_t res = x;
+	asm ("rorl %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint32_t)(((x >> n) | (x << (32 - n))) & UINT32_MAX);
@@ -13510,10 +13520,10 @@ LIB_FUNC ATTR_CF uint32_t rotr32(const uint32_t x, const int n) {
 
 
 /** Given an unsigned 16-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t rotl16(const uint16_t x, const int n) {
+LIB_FUNC ATTR_CF uint16_t rotl16(const uint16_t x, const uint8_t n) {
 #if defined(ARCHX86)
-	uint16_t res = x;
-	asm ("rol %1, %0;" : "+X"(res) : "X"(n));
+	register uint16_t res = x;
+	asm ("rol %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint16_t)(((uint16_t)(x << n) | (uint16_t)(x >> (16 - n))) & (uint16_t)UINT16_MAX);
@@ -13522,10 +13532,10 @@ LIB_FUNC ATTR_CF uint16_t rotl16(const uint16_t x, const int n) {
 
 
 /** Given an unsigned 16-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be in 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t rotr16(const uint16_t x, const int n) {
+LIB_FUNC ATTR_CF uint16_t rotr16(const uint16_t x, const uint8_t n) {
 #if defined(ARCHX86)
-	uint16_t res = x;
-	asm ("ror %1, %0;" : "+X"(res) : "X"(n));
+	register uint16_t res = x;
+	asm ("ror %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint16_t)(((uint16_t)(x >> n) | (uint16_t)(x << (16 - n))) & (uint16_t)UINT16_MAX);
@@ -13534,10 +13544,10 @@ LIB_FUNC ATTR_CF uint16_t rotr16(const uint16_t x, const int n) {
 
 
 /** Given an unsigned 8-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t rotl8(const uint8_t x, const int n) {
+LIB_FUNC ATTR_CF uint8_t rotl8(const uint8_t x, const uint8_t n) {
 #if defined(ARCHX86)
-	uint8_t res = x;
-	asm ("rolb %1, %0;" : "+X"(res) : "X"(n));
+	register uint8_t res = x;
+	asm ("rolb %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint8_t)(((uint8_t)(x << n) | (uint8_t)(x >> (8 - n))) & 0xffU);
@@ -13546,10 +13556,10 @@ LIB_FUNC ATTR_CF uint8_t rotl8(const uint8_t x, const int n) {
 
 
 /** Given an unsigned 8-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be in 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t rotr8(const uint8_t x, const int n) {
+LIB_FUNC ATTR_CF uint8_t rotr8(const uint8_t x, const uint8_t n) {
 #if defined(ARCHX86)
-	uint8_t res = x;
-	asm ("rorb %1, %0;" : "+X"(res) : "X"(n));
+	register uint8_t res = x;
+	asm ("rorb %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (uint8_t)(((uint8_t)(x >> n) | (uint8_t)(x << (8 - n))) & 0xffU);
@@ -13558,22 +13568,22 @@ LIB_FUNC ATTR_CF uint8_t rotr8(const uint8_t x, const int n) {
 
 
 /** Given a size_t argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and `(CHAR_BIT * sizeof(size_t) - 1)` inclusive */
-LIB_FUNC ATTR_CF size_t rotl_sz(const size_t x, const int n) {
+LIB_FUNC ATTR_CF size_t rotl_sz(const size_t x, const uint8_t n) {
 #   if ((SIZEOF_SIZE_T == 8) && defined(ARCHX86) && CPU_AVX512F)
-	size_t res;
-	asm ("prolq %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register size_t res = 0;
+	asm ("prolq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 8) && defined(ARCHX86))
-	size_t res = x;
-	asm ("rolq %1, %0;" : "+X"(res) : "X"(n));
+	register size_t res = x;
+	asm ("rolq %1, %0;" : "+g"(res) : "cJ"(n));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 4) && defined(ARCHX86) && CPU_AVX512F)
-	size_t res;
-	asm ("prolq %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register size_t res = 0;
+	asm ("prolq %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 4) && defined(ARCHX86))
-	size_t res = x;
-	asm ("rolq %1, %0;" : "+X"(res) : "X"(n));
+	register size_t res = x;
+	asm ("rolq %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (size_t)(((size_t)(x << n) | (size_t)(x >> (BITS_PER_SIZE_T - n))) & SIZE_MAX);
@@ -13582,123 +13592,28 @@ LIB_FUNC ATTR_CF size_t rotl_sz(const size_t x, const int n) {
 
 
 /** Given a size_t argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to `(CHAR_BIT * sizeof(size_t) - 1)` inclusive */
-LIB_FUNC ATTR_CF size_t rotr_sz(const size_t x, const int n) {
+LIB_FUNC ATTR_CF size_t rotr_sz(const size_t x, const uint8_t n) {
 #   if ((SIZEOF_SIZE_T == 8) && defined(ARCHX86) && CPU_AVX512F)
-	size_t res;
-	asm ("prorq %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register size_t res = 0;
+	asm ("prorq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 8) && defined(ARCHX86))
-	size_t res = x;
-	asm ("rorq %1, %0;" : "+X"(res) : "X"(n));
+	register size_t res = x;
+	asm ("rorq %1, %0;" : "+g"(res) : "cJ"(n));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 4) && defined(ARCHX86) && CPU_AVX512F)
-	size_t res;
-	asm ("prorq %1, %2, %0;" : "=X"(res) : "X"(n), "X"(x));
+	register size_t res = 0;
+	asm ("prorq %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
 	return res;
 #   elif ((SIZEOF_SIZE_T == 4) && defined(ARCHX86))
-	size_t res = x;
-	asm ("rorq %1, %0;" : "+X"(res) : "X"(n));
+	register size_t res = x;
+	asm ("rorq %1, %0;" : "+g"(res) : "cI"(n));
 	return res;
 #else
 	return (size_t)(((size_t)(x >> n) | (size_t)(x << (BITS_PER_SIZE_T - n))) & SIZE_MAX);
 #endif
 }
 
-
-/** Given an unsigned 64-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the left; `n` must be between 1 and 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t a_rotl64(const atomic_uint64_t x, const atomic_int n) {
-#   if defined(ARCHX86)
-	atomic_uint64_t res = x;
-	vasm("lock rolq %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint64_t)(((x << n) | (x >> (64 - n))) & UINT64_MAX);
-#endif
-}
-
-
-/** Given an unsigned 64-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the right; `n` must be between 1 to 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t a_rotr64(const atomic_uint64_t x, const atomic_int n) {
-#   if defined(ARCHX86)
-	atomic_uint64_t res = x;
-	asm ("lock rorq %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint64_t)(((x >> n) | (x << (64 - n))) & UINT64_MAX);
-#endif
-}
-
-
-/** Given an unsigned 32-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the left; `n` must be between 1 and 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t a_rotl32(const atomic_uint32_t x, const atomic_int n) {
-#   if defined(ARCHX86)
-	atomic_uint32_t res = x;
-	asm ("lock rold %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint32_t)(((x << n) | (x >> (32 - n))) & UINT32_MAX);
-#endif
-}
-
-
-/** Given an unsigned 32-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the right; `n` must be between 1 to 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t a_rotr32(const atomic_uint32_t x, const atomic_int n) {
-#   if defined(ARCHX86)
-	atomic_uint32_t res = x;
-	asm ("lock rord %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint32_t)(((x >> n) | (x << (32 - n))) & UINT32_MAX);
-#endif
-}
-
-
-/** Given an unsigned 16-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the left; `n` must be between 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t a_rotl16(const atomic_uint16_t x, const atomic_int n) {
-#if defined(ARCHX86)
-	atomic_uint16_t res = x;
-	asm ("lock rol %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint16_t)(((atomic_uint16_t)(x << n) | (atomic_uint16_t)(x >> (16 - n))) & (atomic_uint16_t)UINT16_MAX);
-#endif
-}
-
-
-/** Given an unsigned 16-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the right; `n` must be in 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t a_rotr16(const atomic_uint16_t x, const atomic_int n) {
-#if defined(ARCHX86)
-	atomic_uint16_t res = x;
-	asm ("lock ror %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint16_t)(((atomic_uint16_t)(x >> n) | (atomic_uint16_t)(x << (16 - n))) & (atomic_uint16_t)UINT16_MAX);
-#endif
-}
-
-
-/** Given an unsigned 8-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the left; `n` must be between 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t a_rotl8(const atomic_uint8_t x, const atomic_int n) {
-#if defined(ARCHX86)
-	atomic_uint8_t res = x;
-	asm ("lock rolb %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint8_t)(((atomic_uint8_t)(x << n) | (atomic_uint8_t)(x >> (8 - n))) & 0xffU);
-#endif
-}
-
-
-/** Given an unsigned 8-bit argument `x`, return the value corresponding to atomically-rotating the bits `n` steps to the right; `n` must be in 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t a_rotr8(const atomic_uint8_t x, const atomic_int n) {
-#if defined(ARCHX86)
-	atomic_uint8_t res = x;
-	asm ("lock rorb %1, %0;" : "+X"(res) : "X"(n));
-	return res;
-#else
-	return (uint8_t)(((atomic_uint8_t)(x >> n) | (atomic_uint8_t)(x << (8 - n))) & 0xffU);
-#endif
-}
 
 /** @} */  // }
 
@@ -13836,8 +13751,8 @@ LIB_FUNC ATTR_CF int ffs(const int mask) {
 /** Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero */
 LIB_FUNC ATTR_CF unsigned long ffs_long(const unsigned long word) {
 	if (word == 0) { return 0; }
-	unsigned long res;
-	asm ("rep;" "bsf %1, %0;" : "=r"(res) : "r"(word));
+	register unsigned long res = 0;
+	asm ("rep;" "bsf %1, %0;" : "=g"(res) : "g"(word));
 	return res + 1;
 }
 
@@ -13940,8 +13855,8 @@ LIB_FUNC ATTR_CF int ffz(const int word) {
 /** Find first zero in word; Undefined if no zero exists, so code should check against ~0UL first */
 LIB_FUNC ATTR_CF int ffzl(const unsigned long word) {
 	if (word == 0) { return -1; }
-	unsigned long _word = (unsigned long)(~word);
-	asm ("rep;" "bsf %1, %0;" : "=r"(_word) : "r"(_word));
+	register unsigned long _word = (unsigned long)(~word);
+	asm ("rep;" "bsf %1, %0;" : "=g"(_word) : "cI"(_word));
 	return (int)(_word + 1);
 }
 /** Find first zero in word; Undefined if no zero exists, so code should check against ~0UL first */
@@ -13961,10 +13876,10 @@ LIB_FUNC ATTR_CF int ffzll(const unsigned long long i) {
 LIB_FUNC unsigned long find_next_zero_bit(const void* restrict addr, const unsigned long size, const unsigned long offset) {
 	if (offset >= size) { return size; }
 	const unsigned long* p = (((const unsigned long*)addr) + (offset >> 5));
-	unsigned long result = offset & (~31UL);
-	unsigned long tmp = 0;
-	unsigned long bitsize = size - result;
-	unsigned long bitoffset = offset & 31UL;
+	register unsigned long result = offset & (~31UL);
+	register unsigned long tmp = 0;
+	register unsigned long bitsize = size - result;
+	const unsigned long bitoffset = offset & 31UL;
 	if (bitoffset) {
 			tmp = *(p++);
 			tmp |= ((~0UL) >> (32 - bitoffset));
@@ -14001,7 +13916,7 @@ LIB_FUNC long find_next_bit(const unsigned long* addr, const long size, const lo
 	register unsigned long set = 0, res = 0;
 	register unsigned long bit = (unsigned long)((unsigned long)offset & 63);
 	if (bit) {
-		vasm("bsfq %1, %0;" "cmoveq %2, %0;" : "=r"(set) : "r,i,n"((*p >> bit)), "r,i,n,J"(64L));
+		vasm("bsfq %1, %0;" "cmoveq 64, %0;" : "=r"(set) : "g"((*p >> bit)));
 		if (set < (64 - bit)) { return ((long)set + offset); }
 		set = 64 - bit;
 		p++;
@@ -14015,7 +13930,7 @@ LIB_FUNC int find_next_bit(const unsigned long* addr, const int size, const int 
 	register int set = 0, res = 0;
 	register int bit = offset & 31;
 	if (bit) {
-		vasm("bsfl %1, %0;" "jne 1f;" "movl $32, %0;" "1:" : "=r"(set) : "r,i,n"(*p >> bit));
+		vasm("bsfl %1, %0;" "jne 1f;" "movl $32, %0;" "1:" : "=r"(set) : "g"(*p >> bit));
 		if (set < (32 - bit)) { return set + offset; }
 		set = 32 - bit;
 		p++;
@@ -14419,8 +14334,8 @@ LIB_FUNC int constant_test_bit(const int nr, const volatile void* restrict addr)
 
 #ifdef ARCHX86
 LIB_FUNC int variable_test_bit(const int nr, volatile void* restrict addr) {
-	int oldbit;
-	vasm("btl %2,%1;" "sbbl %0, %0;" : "=r,m"(oldbit) : "m,r"((*(volatile long*)addr)), "dI,dr,r,i,n,J,I"(nr));
+	register int oldbit = 0;
+	vasm("btl %2, %1;" "sbbl %0, %0;" : "=g"(oldbit) : "m"((*(volatile long*)addr)), "g"(nr));
 	return oldbit;
 }
 #endif
@@ -14488,7 +14403,7 @@ LIB_FUNC ATTR_CF unsigned long long clearlsb(const unsigned long long num) {
 @param[in,out] addr The address to start counting from
 */
 LIB_FUNC void set_bit(const int nr, volatile void* restrict addr) {
-	vasm("btsl %1, %0;" : "=m"((*(volatile long*)addr)) : "dI,dr,r,i,n,I,J"(nr) : "memory");
+	vasm("btsl %1, %0;" : "=m"((*(volatile long*)addr)) : "g"(nr) : "memory");
 }
 
 
@@ -14498,7 +14413,7 @@ LIB_FUNC void set_bit(const int nr, volatile void* restrict addr) {
 @param[in,out] addr Address to start counting from
 */
 LIB_FUNC void clear_bit(const int nr, volatile void* restrict addr) {
-	vasm("btrl %1, %0;" : "=m"((*(volatile long*)addr)) : "dI,dr,r,i,n,I,J"(nr) : "memory");
+	vasm("btrl %1, %0;" : "=m"((*(volatile long*)addr)) : "g"(nr) : "memory");
 }
 
 
@@ -14511,7 +14426,7 @@ LIB_FUNC void change_bit(const long nr, volatile unsigned long* restrict addr) {
 	if ((__builtin_constant_p(nr))) {
 		asm volatile(";" "xorb %1, %0;" : "+m"(*(volatile long*)((volatile long*)(addr) + ((nr) >> 3))) : "iq"((uint8_t)(1 << ((nr) & 7))) : "memory");
 	} else {
-		asm volatile(";" "btc %1, %0;" : "+m"(*(volatile long*)(addr)) : "I,r,i"(nr) : "memory");
+		asm volatile(";" "btc %1, %0;" : "+m"(*(volatile long*)(addr)) : "Iri"(nr) : "memory");
 	}
 }
 #   define __change_bit(nr, addr)   change_bit((nr), (addr))
@@ -14572,7 +14487,7 @@ LIB_FUNC int test_and_set_bit_lock(const long nr, volatile unsigned long* restri
 */
 LIB_FUNC int __test_and_set_bit(const long nr, volatile unsigned long* restrict addr) {
 	int oldbit;
-	asm ("bts %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long*)(addr)) : "Ir"(nr));
+	asm ("bts %2, %1;" "sbb %0, %0;" : "=g"(oldbit), "+m"(*(volatile long*)(addr)) : "Ir"(nr));
 	return oldbit;
 }
 
@@ -14584,14 +14499,14 @@ LIB_FUNC int __test_and_set_bit(const long nr, volatile unsigned long* restrict 
 */
 LIB_FUNC int __test_and_clear_bit(const long nr, volatile unsigned long* restrict addr) {
 	int oldbit;
-	vasm("btr %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long*)(addr)) : "I,J,r,i,n"(nr));
+	vasm("btr %2, %1;" "sbb %0, %0;" : "=g"(oldbit), "+m"(*(volatile long*)(addr)) : "X"(nr));
 	return oldbit;
 }
 
 
 LIB_FUNC int __test_and_change_bit(const long nr, volatile unsigned long* restrict addr) {
 	int oldbit;
-	vasm("btc %2, %1;" "sbb %0, %0;" : "=r"(oldbit), "+m"(*(volatile long*)(addr)) : "I,J,r,i,n"(nr) : "memory");
+	vasm("btc %2, %1;" "sbb %0, %0;" : "=g"(oldbit), "+m"(*(volatile long*)(addr)) : "X"(nr) : "memory");
 	return oldbit;
 }
 
@@ -14947,7 +14862,7 @@ LIB_FUNC MATH_FUNC bool ne64(const uint32_t a0, const uint32_t a1, const uint32_
 
 /** Shifts `a` right by the number of bits given in `count`; If any nonzero bits are shifted off, they are jammed into the least significant bit of the result by setting the least significant bit to 1; The value of `count` can be arbitrarily large; in particular, if `count` is greater than 32, the result will be either 0 or 1, depending on whether `a` is zero or nonzero; The result is stored in the location pointed to by `zPtr` */
 LIB_FUNC void shift32RightJamming(const uint32_t a, const int16_t count, uint32_t* restrict zPtr) {
-	uint32_t z;
+	uint32_t z = 0;
 	if (count == 0) { z = a; }
 	else if (count < 32 ) { z = (a >> count) | ((a << ((-count) & 31)) != 0); }
 	else { z = (a != 0); }
@@ -14957,7 +14872,7 @@ LIB_FUNC void shift32RightJamming(const uint32_t a, const int16_t count, uint32_
 
 /** Shifts the 64-bit value formed by concatenating `a0` and `a1` right by the number of bits given in `count`; Any bits shifted off are lost; The value of `count` can be arbitrarily large; in particular, if `count` is greater than 64, the result will be 0; The result is broken into two 32-bit pieces which are stored at the locations pointed to by `z0Ptr` and `z1Ptr` */
 LIB_FUNC void shift64Right(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr ) {
-	uint32_t z0, z1;
+	uint32_t z0 = 0, z1 = 0;
 	const int8_t negCount = (-count) & 31;
 	if (count == 0) {
 		z1 = a1;
@@ -14976,7 +14891,7 @@ LIB_FUNC void shift64Right(const uint32_t a0, const uint32_t a1, const int16_t c
 
 /** Shifts the 64-bit value formed by concatenating `a0` and `a1` right by the number of bits given in `count`; If any nonzero bits are shifted off, they are jammed into the least significant bit of the result by setting the least significant bit to 1; The value of `count` can be arbitrarily large; in particular, if `count` is greater than 64, the result will be either 0 or 1, depending on whether the concatenation of `a0` and `a1` is zero or nonzero; The result is broken into two 32-bit pieces which are stored at the locations pointed to by `z0Ptr` and `z1Ptr` */
 LIB_FUNC void shift64RightJamming(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr) {
-	uint32_t z0, z1;
+	uint32_t z0 = 0, z1 = 0;
 	const int8_t negCount = (-count) & 31;
 	if (count == 0) {
 		z1 = a1;
@@ -15001,7 +14916,7 @@ LIB_FUNC void shift64RightJamming(const uint32_t a0, const uint32_t a1, const in
 
 /** Shifts the 96-bit value formed by concatenating `a0`, `a1`, and `a2` right by 32 _plus_ the number of bits given in `count` */
 LIB_FUNC void shift64ExtraRightJamming(const uint32_t a0, const uint32_t a1, uint32_t a2, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr) {
-	uint32_t z0, z1, z2;
+	uint32_t z0 = 0, z1 = 0, z2 = 0;
 	const int8_t negCount = (int8_t)((-count) & 31);
 	if (count == 0) {
 		z2 = a2;
@@ -15136,7 +15051,7 @@ LIB_FUNC void mul32To64(const uint32_t a, const uint32_t b, uint32_t* z0Ptr, uin
 
 /** Multiplies the 64-bit value formed by concatenating `a0` and `a1` by `b` to obtain a 96-bit product; The product is broken into three 32-bit pieces which are stored at the locations pointed to by `z0Ptr`, `z1Ptr`, and `z2Ptr` */
 LIB_FUNC void mul64By32To96(const uint32_t a0, const uint32_t a1, const uint32_t b, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr ) {
-	uint32_t z0, z1, z2, more1;
+	uint32_t z0 = 0, z1 = 0, z2 = 0, more1 = 0;
 	mul32To64(a1, b, &z1, &z2);
 	mul32To64(a0, b, &z0, &more1);
 	add64(z0, more1, 0, z1, &z0, &z1);
@@ -15148,11 +15063,11 @@ LIB_FUNC void mul64By32To96(const uint32_t a0, const uint32_t a1, const uint32_t
 
 /** Multiplies the 64-bit value formed by concatenating `a0` and `a1` to the 64-bit value formed by concatenating `b0` and `b1` to obtain a 128-bit product; The product is broken into four 32-bit pieces which are stored at the locations pointed to by `z0Ptr`, `z1Ptr`, `z2Ptr`, and `z3Ptr` */
 LIB_FUNC void mul64To128(const uint32_t a0, const uint32_t a1, const uint32_t b0, const uint32_t b1, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr, uint32_t* z3Ptr) {
-	uint32_t z1, z2, z3, more2;
+	uint32_t z1 = 0, z2 = 0, z3 = 0, more2 = 0;
 	mul32To64(a1, b1, &z2, &z3);
 	mul32To64(a1, b0, &z1, &more2);
 	add64(z1, more2, 0, z2, &z1, &z2);
-	uint32_t more1, z0;
+	uint32_t more1 = 0, z0 = 0;
 	mul32To64(a0, b0, &z0, &more1);
 	add64(z0, more1, 0, z1, &z0, &z1);
 	mul32To64(a0, b1, &more1, &more2);
@@ -15555,8 +15470,8 @@ typedef struct attr_packed rm_ctx {
 
 
 LIB_FUNC void libc_feholdexcept_aarch64(fenv_t* fenvp) {
-	fpu_control_t fpcr, new_fpcr;
-	fpu_fpsr_t fpsr, new_fpsr;
+	fpu_control_t fpcr = 0, new_fpcr = 0;
+	fpu_fpsr_t fpsr = 0, new_fpsr = 0;
 	_FPU_GETCW(fpcr);
 	_FPU_GETFPSR(fpsr);
 	fenvp->__fpcr = fpcr;
@@ -15573,7 +15488,7 @@ LIB_FUNC void libc_feholdexcept_aarch64(fenv_t* fenvp) {
 
 
 LIB_FUNC void libc_fesetround_aarch64(int round) {
-	fpu_control_t fpcr;
+	fpu_control_t fpcr = 0;
 	_FPU_GETCW(fpcr);
 	// Check whether rounding modes are different
 	round = (fpcr ^ round) & _FPU_FPCR_RM_MASK;
@@ -15585,9 +15500,9 @@ LIB_FUNC void libc_fesetround_aarch64(int round) {
 #      define libc_fesetroundl   libc_fesetround_aarch64
 
 
-LIB_FUNC void libc_feholdexcept_setround_aarch64(fenv_t* fenvp, int round) {
-	fpu_control_t fpcr, new_fpcr;
-	fpu_fpsr_t fpsr, new_fpsr;
+LIB_FUNC void libc_feholdexcept_setround_aarch64(fenv_t* fenvp, const int round) {
+	fpu_control_t fpcr = 0, new_fpcr = 0;
+	fpu_fpsr_t fpsr = 0, new_fpsr = 0;
 	_FPU_GETCW(fpcr);
 	_FPU_GETFPSR (fpsr);
 	fenvp->__fpcr = fpcr;
@@ -15604,8 +15519,8 @@ LIB_FUNC void libc_feholdexcept_setround_aarch64(fenv_t* fenvp, int round) {
 #      define libc_feholdexcept_setroundl   libc_feholdexcept_setround_aarch64
 
 
-LIB_FUNC int libc_fetestexcept_aarch64(int ex) {
-	fpu_fpsr_t fpsr;
+LIB_FUNC int libc_fetestexcept_aarch64(const int ex) {
+	fpu_fpsr_t fpsr = 0;
 	_FPU_GETFPSR(fpsr);
 	return ((fpsr & ex) & FE_ALL_EXCEPT);
 }
@@ -15615,7 +15530,7 @@ LIB_FUNC int libc_fetestexcept_aarch64(int ex) {
 
 
 LIB_FUNC void libc_fesetenv_aarch64(const fenv_t* fenvp) {
-	fpu_control_t fpcr, new_fpcr;
+	fpu_control_t fpcr = 0, new_fpcr = 0;
 	_FPU_GETCW(fpcr);
 	new_fpcr = fenvp->__fpcr;
 	if (PREDICT_UNLIKELY(fpcr != new_fpcr)) { _FPU_SETCW(new_fpcr); }
@@ -15629,10 +15544,10 @@ LIB_FUNC void libc_fesetenv_aarch64(const fenv_t* fenvp) {
 #      define libc_feresetround_noexl   libc_fesetenv_aarch64
 
 
-LIB_FUNC int libc_feupdateenv_test_aarch64(const fenv_t* fenvp, int ex) {
-	fpu_control_t fpcr, new_fpcr;
-	fpu_fpsr_t fpsr, new_fpsr;
-	int excepts;
+LIB_FUNC int libc_feupdateenv_test_aarch64(const fenv_t* fenvp, const int ex) {
+	fpu_control_t fpcr = 0, new_fpcr = 0;
+	fpu_fpsr_t fpsr = 0, new_fpsr = 0;
+	int excepts = 0;
 	_FPU_GETCW(fpcr);
 	_FPU_GETFPSR (fpsr);
 	// Merge current exception flags with the saved fenv
@@ -15659,8 +15574,8 @@ LIB_FUNC void libc_feupdateenv_aarch64(const fenv_t* fenvp) {
 
 
 LIB_FUNC void libc_feholdsetround_aarch64(fenv_t* fenvp, int round) {
-	fpu_control_t fpcr;
-	fpu_fpsr_t fpsr;
+	fpu_control_t fpcr = 0;
+	fpu_fpsr_t fpsr = 0;
 	_FPU_GETCW(fpcr);
 	_FPU_GETFPSR(fpsr);
 	fenvp->__fpcr = fpcr;
@@ -15676,8 +15591,8 @@ LIB_FUNC void libc_feholdsetround_aarch64(fenv_t* fenvp, int round) {
 
 
 LIB_FUNC void libc_feresetround_aarch64(fenv_t* fenvp) {
-	fpu_control_t fpcr;
-	int round;
+	fpu_control_t fpcr = 0;
+	int round = 0;
 	_FPU_GETCW(fpcr);
 	// Check whether rounding modes are different
 	round = (fenvp->__fpcr ^ fpcr) & _FPU_FPCR_RM_MASK;
@@ -15708,7 +15623,7 @@ LIB_FUNC void libc_feresetround_aarch64(fenv_t* fenvp) {
 #      define FP_HANDLE_EXCEPTIONS   do { const float fp_max = __FLT_MAX__; const float fp_min = __FLT_MIN__, const float fp_1e32 = 1.0E+32F, fp_zero = 0.0F, fp_one = 1.0F; unsigned fpsr; if (_fex & FP_EX_INVALID) { vasm("fdivts0, %s0, %s0;" : : "w"(fp_zero) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_DIVZERO) { vasm("fdivts0, %s0, %s1;" : : "w"(fp_one), "w"(fp_zero) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_OVERFLOW) { vasm("faddts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_1e32) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_UNDERFLOW) { vasm("fmults0, %s0, %s0;" : : "w"(fp_min) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } if (_fex & FP_EX_INEXACT) { vasm("fsubts0, %s0, %s1;" : : "w"(fp_max), "w"(fp_one) : "s0"); vasm("mrst%0, fpsr;" : "=r"(fpsr)); } } while (0x0)
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
-	fpu_control_t fpcr;
+	fpu_control_t fpcr = 0;
 	_FPU_GETCW(fpcr);
 	return (int)(fpcr & _FPU_FPCR_RM_MASK);
 }
@@ -15907,7 +15822,7 @@ LIB_FUNC int feupdateenv(const fenv_t* fenvp) {
 #      endif
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
-	fpu_control_t _fpscr;
+	fpu_control_t _fpscr = 0;
 	if (!ARM_HAVE_VFP) { return FE_TONEAREST; }
 	_FPU_GETCW(_fpscr);
 	return (int)(_fpscr & _FPU_MASK_RM);
@@ -15915,7 +15830,7 @@ LIB_FUNC int get_rounding_mode(void) {
 #      define GET_ROUNDING_MODE_DEFINED   (1)
 #   endif
 LIB_FUNC void libc_feholdexcept_vfp(fenv_t* fenvp) {
-	fpu_control_t _fpscr;
+	fpu_control_t _fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	fenvp->__cw = _fpscr;
 	// Clear exception flags and set all exceptions to non-stop
@@ -15924,16 +15839,16 @@ LIB_FUNC void libc_feholdexcept_vfp(fenv_t* fenvp) {
 }
 
 
-LIB_FUNC void libc_fesetround_vfp(int round) {
-	fpu_control_t _fpscr;
+LIB_FUNC void libc_fesetround_vfp(const int round) {
+	fpu_control_t _fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	// Set new rounding mode if different
 	if (PREDICT_UNLIKELY((_fpscr & _FPU_MASK_RM) != round)) { _FPU_SETCW((_fpscr & (~_FPU_MASK_RM)) | round); }
 }
 
 
-LIB_FUNC void libc_feholdexcept_setround_vfp(fenv_t* fenvp, int round) {
-	fpu_control_t _fpscr;
+LIB_FUNC void libc_feholdexcept_setround_vfp(fenv_t* fenvp, const int round) {
+	fpu_control_t _fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	fenvp->__cw = _fpscr;
 	// Clear exception flags, set all exceptions to non-stop, and set new rounding mode
@@ -15942,8 +15857,8 @@ LIB_FUNC void libc_feholdexcept_setround_vfp(fenv_t* fenvp, int round) {
 }
 
 
-LIB_FUNC void libc_feholdsetround_vfp (fenv_t* fenvp, int round) {
-	fpu_control_t _fpscr;
+LIB_FUNC void libc_feholdsetround_vfp (fenv_t* fenvp, const int round) {
+	fpu_control_t _fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	fenvp->__cw = _fpscr;
 	// Set new rounding mode if different
@@ -15954,7 +15869,7 @@ LIB_FUNC void libc_feholdsetround_vfp (fenv_t* fenvp, int round) {
 
 
 LIB_FUNC void libc_feresetround_vfp(fenv_t* fenvp) {
-	fpu_control_t _fpscr, round;
+	fpu_control_t _fpscr = 0, round = 0;
 	_FPU_GETCW(_fpscr);
 	// Check whether rounding modes are different
 	round = (fenvp->__cw ^ _fpscr) & _FPU_MASK_RM;
@@ -15963,15 +15878,15 @@ LIB_FUNC void libc_feresetround_vfp(fenv_t* fenvp) {
 }
 
 
-LIB_FUNC int libc_fetestexcept_vfp(int ex) {
-	fpu_control_t _fpscr;
+LIB_FUNC int libc_fetestexcept_vfp(const int ex) {
+	fpu_control_t _fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	return ((_fpscr & ex) & FE_ALL_EXCEPT);
 }
 
 
 LIB_FUNC void libc_fesetenv_vfp(const fenv_t* fenvp) {
-	fpu_control_t _fpscr, new_fpscr;
+	fpu_control_t _fpscr = 0, new_fpscr = 0;
 	_FPU_GETCW(_fpscr);
 	new_fpscr = fenvp->__cw;
 	// Write new FPSCR if different (ignoring NZCV flags)
@@ -15980,9 +15895,9 @@ LIB_FUNC void libc_fesetenv_vfp(const fenv_t* fenvp) {
 }
 
 
-LIB_FUNC int libc_feupdateenv_test_vfp(const fenv_t* fenvp, int ex) {
-	fpu_control_t _fpscr, new_fpscr;
-	int excepts;
+LIB_FUNC int libc_feupdateenv_test_vfp(const fenv_t* fenvp, const int ex) {
+	fpu_control_t _fpscr = 0, new_fpscr = 0;
+	int excepts = 0;
 	_FPU_GETCW(_fpscr);
 	// Merge current exception flags with the saved fenv
 	excepts = _fpscr & FE_ALL_EXCEPT;
@@ -16166,7 +16081,7 @@ LIB_FUNC int get_rounding_mode(void) {
 
 
 LIB_FUNC void libc_feholdexcept_mips(fenv_t* fenvp) {
-	fpu_control_t cw;
+	fpu_control_t cw = 0;
 	_FPU_GETCW(cw);  // Save the current state
 	fenvp->__fp_control_register = cw;
 	cw &= (~(_FPU_MASK_ALL));  // Clear all exception enable bits and flags
@@ -16177,8 +16092,8 @@ LIB_FUNC void libc_feholdexcept_mips(fenv_t* fenvp) {
 #   define libc_feholdexceptl   libc_feholdexcept_mips
 
 
-LIB_FUNC void libc_fesetround_mips(int round) {
-	fpu_control_t cw;
+LIB_FUNC void libc_fesetround_mips(consy int round) {
+	fpu_control_t cw = 0;
 	_FPU_GETCW(cw);  // Get current state
 	cw &= (~_FPU_RC_MASK);  // Set rounding bits
 	cw |= round;
@@ -16190,7 +16105,7 @@ LIB_FUNC void libc_fesetround_mips(int round) {
 
 
 LIB_FUNC void libc_feholdexcept_setround_mips(fenv_t* fenvp, const int round) {
-	fpu_control_t cw;
+	fpu_control_t cw = 0;
 	_FPU_GETCW(cw);  // Save the current state
 	fenvp->__fp_control_register = cw;
 	cw &= (~(_FPU_MASK_ALL));  // Clear all exception enable bits and flags
@@ -16207,7 +16122,7 @@ LIB_FUNC void libc_feholdexcept_setround_mips(fenv_t* fenvp, const int round) {
 
 
 LIB_FUNC void libc_fesetenv_mips(fenv_t* fenvp) {
-	UNUSED fpu_control_t cw;
+	UNUSED fpu_control_t cw = 0;
 	_FPU_GETCW(cw);  // Read current state to flush fpu pipeline
 	_FPU_SETCW(fenvp->__fp_control_register);
 }
@@ -16217,7 +16132,7 @@ LIB_FUNC void libc_fesetenv_mips(fenv_t* fenvp) {
 
 
 LIB_FUNC int libc_feupdateenv_test_mips(fenv_t* fenvp, const int excepts) {
-	int cw, temp;
+	int cw = 0, temp = 0;
 	_FPU_GETCW(cw);  // Get current control word
 	temp = cw & FE_ALL_EXCEPT;
 	temp |= (fenvp->__fp_control_register | (temp << CAUSE_SHIFT));
@@ -16241,7 +16156,7 @@ LIB_FUNC void libc_feupdateenv_mips(fenv_t* fenvp) {
 
 
 LIB_FUNC int libc_fetestexcept_mips(const int excepts) {
-	int cw;
+	int cw = 0;
 	_FPU_GETCW(cw);  // Get current control word
 	return ((cw & excepts) & FE_ALL_EXCEPT);
 }
@@ -16382,7 +16297,7 @@ LIB_FUNC int libc_fetestexcept_mips(const int excepts) {
 #   endif
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
-	fpu_control_t fc;
+	fpu_control_t fc = 0;
 	_FPU_GETCW(fc);
 	return (int)(fc & _FPU_HPPA_MASK_RM);
 }
@@ -16675,7 +16590,7 @@ typedef struct attr_packed rm_ctx {
 #   endif
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
-	fpu_control_t fc;
+	fpu_control_t fc = 0;
 	_FPU_GETCW(fc);
 	return (int)(fc & FPC_RM_MASK);
 }
@@ -17056,7 +16971,7 @@ LIB_FUNC int _fesetexceptflag(const fexcept_t* flagp, const int excepts) {
 	register unsigned int exceptMask = (excepts & FE_ALL_EXCEPT);
 	register unsigned int andMask = (~exceptMask);  // Clear just the bits indicated
 	register unsigned int orMask = (*flagp & exceptMask);  // Latch the specified bits
-	unsigned int mxcsr = (unsigned int)_mm_getcsr();  // Read the MXCSR state
+	unsigned int mxcsr = (unsigned int)mm_getcsr();  // Read the MXCSR state
 	vasm("fnstenv %0;" : "=m"(currfpu));  // Read x87 state
 	mxcsr = ((mxcsr & andMask) | orMask);  // Fix the MXCSR state
 	register int fpstate = (int)((currfpu.__status & andMask) | orMask);  // Fix the x87 state
@@ -17070,7 +16985,7 @@ LIB_FUNC int _fegetexceptflag(fexcept_t* flagp, const int excepts) {
 	unsigned short tmp = 0;
 	vasm("fnstsw %0;" : "=m"(tmp) : : "memory");
 	fexcept_t fsw = tmp;  // Get the x87 status word
-	register unsigned int mxcsr = (unsigned int)_mm_getcsr();  // Get the mxcsr
+	register unsigned int mxcsr = (unsigned int)mm_getcsr();  // Get the mxcsr
 	fexcept_t result = (unsigned short)(mxcsr | fsw);
 	*flagp = (result & (excepts & FE_ALL_EXCEPT));
 	return 0;
@@ -17091,7 +17006,7 @@ LIB_FUNC int fetestexcept(const int excepts) {
 	unsigned short tmp = 0;
 	vasm("fnstsw %0;" : "=m"(tmp) : : "memory");
 	fexcept_t fsw = tmp;  // Get the x87 status word
-	register unsigned int mxcsr = _mm_getcsr();  // Get the mxcsr
+	register unsigned int mxcsr = mm_getcsr();  // Get the mxcsr
 	return (int)((mxcsr | fsw) & (excepts & FE_ALL_EXCEPT));
 }
 
@@ -17108,10 +17023,10 @@ LIB_FUNC int fesetround(const int round) {
 	unsigned short tmp = 0;
 	vasm("fnstcw %0;" : "=m"(tmp) : : "memory");
 	register unsigned short fcw = tmp;
-	register unsigned int mxcsr = _mm_getcsr();
+	register unsigned int mxcsr = mm_getcsr();
 	fcw = (short unsigned int)((fcw & (short unsigned int)(~FE_ALL_RND)) | round);
 	mxcsr = (unsigned int)((unsigned int)(mxcsr & (unsigned int)(~(FE_ALL_RND << 3))) | (unsigned int)(round << 3));
-	_mm_setcsr(mxcsr);
+	mm_setcsr(mxcsr);
 	tmp = fcw;
 	vasm("fldcw %0;" : : "m"(tmp));
 	return 0;
@@ -17120,7 +17035,7 @@ LIB_FUNC int fesetround(const int round) {
 
 LIB_FUNC int fegetenv(fenv_t* fenvp) {
 	__fpustate_t currfpu = { 0 };
-	register unsigned int mxcsr = _mm_getcsr();
+	register unsigned int mxcsr = mm_getcsr();
 	vasm("fnstenv %0;" : "=m"(currfpu) : : "memory");
 	fenvp->__control = currfpu.__control;
 	fenvp->__status = currfpu.__status;
@@ -17134,7 +17049,7 @@ LIB_FUNC int fegetenv(fenv_t* fenvp) {
 
 LIB_FUNC int feholdexcept(fenv_t* fenvp) {
 	__fpustate_t currfpu = { 0 };
-	unsigned int mxcsr = _mm_getcsr();
+	unsigned int mxcsr = mm_getcsr();
 	vasm("fnstenv %0;" : "=m"(*&currfpu) : : "memory");
 	fenvp->__control = currfpu.__control;
 	fenvp->__status = currfpu.__status;
@@ -17953,7 +17868,7 @@ LIB_FUNC int feupdateenv(fenv_t* restrict fenvp) {
 /** Return the floating-point rounding mode */
 LIB_FUNC int get_rounding_mode(void) {
 #if (defined(_FPU_RC_DOWN) || defined(_FPU_RC_NEAREST) || defined(_FPU_RC_ZERO) || defined(_FPU_RC_UP))
-	fpu_control_t fc;
+	fpu_control_t fc = 0;
 #   ifdef _FPU_RC_DOWN
 	const fpu_control_t mask = (0 | _FPU_RC_DOWN);
 #   elif defined(_FPU_RC_NEAREST)
@@ -18308,28 +18223,28 @@ LIB_FUNC void mi_vector_hash(const void* restrict key, size_t len, const uint32_
 		c += orig_len;
 		if (len > 8) {
 			switch (len) {
-				case 11: c += (uint32_t)k[10] << 24;
-				case 10: c += (uint32_t)k[9] << 16;
-				case 9: c += (uint32_t)k[8] << 8;
+				case 11: c += (uint32_t)k[10] << 24;  attr_fallthrough
+				case 10: c += (uint32_t)k[9] << 16;  attr_fallthrough
+				case 9: c += (uint32_t)k[8] << 8;  attr_fallthrough
 				default: break;
 			}
 			b += le32dec(k + 4);
 			a += le32dec(k);
 		} else if (len > 4) {
 			switch (len) {
-				case 8: b += (uint32_t)k[7] << 24;
-				case 7: b += (uint32_t)k[6] << 16;
-				case 6: b += (uint32_t)k[5] << 8;
-				case 5: b += k[4];
+				case 8: b += (uint32_t)k[7] << 24;  attr_fallthrough
+				case 7: b += (uint32_t)k[6] << 16;  attr_fallthrough
+				case 6: b += (uint32_t)k[5] << 8;  attr_fallthrough
+				case 5: b += k[4];  attr_fallthrough
 				default: break;
 			}
 			a += le32dec(k);
 		} else if (len) {
 			switch (len) {
-				case 4: a += (uint32_t)k[3] << 24;
-				case 3: a += (uint32_t)k[2] << 16;
-				case 2: a += (uint32_t)k[1] << 8;
-				case 1: a += k[0];
+				case 4: a += (uint32_t)k[3] << 24;  attr_fallthrough
+				case 3: a += (uint32_t)k[2] << 16;  attr_fallthrough
+				case 2: a += (uint32_t)k[1] << 8;  attr_fallthrough
+				case 1: a += k[0];  attr_fallthrough
 				default: break;
 			}
 		}
@@ -19199,10 +19114,10 @@ LIB_FUNC NOLIBCALL NONNULL void* memset(void* restrict dst, const int c, const s
 	register size_t n = len;
 #   ifdef ARCHX86_64
 	size_t nl = (len >> 3);
-	vasm("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "r,i,n"((uint32_t)(n & 7)));
+	vasm("cld;" "rep;" "stosq;" "movl %3, %%ecx;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x101010101010101U), "ri"((uint32_t)(n & 7)));
 #   elif defined(ARCHX86_32)
 	size_t nl = (len >> 2);
-	vasm("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "r,i,n"(n & 3));
+	vasm("cld;" "rep;" "stosl;" "movl %3, %0;" "rep;" "stosb;" : "+c"(nl), "+D"(q) : "a"((unsigned char)c * 0x1010101U), "ri"(n & 3));
 #   else
 	while (n--) { *q++ = c; }
 #   endif
@@ -20804,7 +20719,7 @@ LIB_FUNC int lockf(const int fd, const int op, const off_t size) {
 			set_errno(EACCES);
 			return -1;
 		case F_ULOCK:
-			_lock.l_type = F_UNLCK;
+			_lock.l_type = F_UNLCK;  attr_fallthrough
 		case F_TLOCK:
 			return fcntl(fd, F_SETLK, &_lock);
 		case F_LOCK:
@@ -25214,8 +25129,8 @@ LIB_FUNC ATTR_PF NONNULL int __overflow(FILE* restrict fp, const int _c) {
 
 /** Get a single character and convert it to a literal integer */
 LIB_FUNC ATTR_PF int getint(const char** restrict s) {
-	register int i;
-	for (i = 0; isdigit(**s); (*s)++) { i = (10 * i + (**s - '0')); }
+	register int i = 0;
+	for (; isdigit(**s); (*s)++) { i = (10 * i + (**s - '0')); }
 	return i;
 }
 
@@ -25251,10 +25166,10 @@ LIB_FUNC ATTR_NONNULL(1) size_t sn_write(FILE* restrict fp, const unsigned char*
 
 
 LIB_FUNC ATTR_NONNULL(1) size_t sw_write(FILE* fp, const unsigned char* restrict s, const size_t len) {
-	register size_t l1 = len, i = 0;
 	if ((s != fp->wbase) && (sw_write(fp, fp->wbase, (size_t)(fp->wpos - fp->wbase)) == (size_t)-1)) {
 		return (size_t)-1;
 	}
+	register size_t l1 = len, i = 0;
 	while (fp->wbuf_size && l1 && (i = (size_t)(mbtowc(fp->wbuf, (const void*)s, l1) >= 0))) {
 		s += i;
 		l1 -= i;
@@ -26884,7 +26799,7 @@ LIB_FUNC int setvbuf_unlocked(FILE* restrict stream, char* restrict buf, const i
 		if (!(stream->flags & __SNBF)) { free(stream->buf); }
 		stream->buf = (unsigned char*)buf;
 	} else {
-		unsigned char* tmp;
+		unsigned char* tmp = NULL;
 		if (!size) { return set_flags(stream, flags); }
 		else if (!(tmp = malloc(size))) { return -1; }
 		else if (!(stream->flags & __SNBF)) { free(stream->buf); }
@@ -26943,9 +26858,9 @@ LIB_FUNC void store_int(void* dest, const int size, const unsigned long long i) 
 
 
 LIB_FUNC void* arg_n(va_list ap, const unsigned int n) {
-	register unsigned int i;
 	va_list ap2;
 	va_copy(ap2, ap);
+	register unsigned int i = 0;
 	for (i = n; i > 1; i--) { va_arg(ap2, void*); }
 	void* p = va_arg(ap2, void*);
 	va_end(ap2);
@@ -26992,20 +26907,20 @@ LIB_FUNC size_t string_read(FILE* fp, unsigned char* buf, const size_t len) {
  - NO_SCAN_FLOATS: The `f` and `g` (float-points) symbols are disabled
 */
 LIB_FUNC int vfscanf(FILE* restrict f, const char* restrict fmt, va_list ap) {
-	int width, size, alloc, base, c, t, invert, matches = 0;
+	int width = 0, size = 0, alloc = 0, base = 0, c = 0, t = 0, invert = 0, matches = 0;
 	const unsigned char* p;
 	char* s = 0;
 	wchar_t* wcs = 0;
 	mbstate_t st;
 	void* dest = NULL;
-	unsigned long long x;
+	unsigned long long x = 0;
 #   ifndef NO_SCAN_FLOATS
 	long double y;
 #   endif
 	register off_t pos = 0;
 	unsigned char scanset[257] = { 0 };
-	size_t i, k;
-	wchar_t wc;
+	size_t i = 0, k = 0;
+	wchar_t wc = 0;
 	FLOCK(f);
 	for (p = (const unsigned char*)fmt; *p; p++) {
 		alloc = 0;
@@ -29471,7 +29386,7 @@ LIB_FUNC struct pthread* __pthread_self(void) {
 #elif defined(ARCHX86)
 LIB_FUNC struct pthread* __pthread_self(void) {
 	struct pthread* self = NULL;
-	vasm("mov %%fs:0, %0;" : "=r,m"(self));
+	vasm("mov %%fs:0, %0;" : "=rm"(self));
 	return self;
 }
 #   define TP_ADJ(p)   (p)
@@ -30025,13 +29940,13 @@ LIB_FUNC void __thread_exit__key(const UNUSED _pthread_descr td) {
 /** Machine depending thread register */
 LIB_FUNC _pthread_descr __thread_set_register(void* arg) {
 #ifdef ARCHALPHA
-	vasm("call_pal 159;" : : "r,i,n"(arg) );
+	vasm("call_pal 159;" : : "X"(arg) );
 #elif defined(ARCHSPARC)
-	vasm("mov %0, %%g6;" : : "r,i,n"(arg) );
+	vasm("mov %0, %%g6;" : : "X"(arg) );
 #elif defined(ARCHS390)
 	vasm("sar %%a0, %0;" : : "d"(arg) );
 #elif defined(ARCHITANIUM)
-	vasm("mov r13 = %0;" : : "r,i,n"(arg) );
+	vasm("mov r13 = %0;" : : "X"(arg) );
 #endif
 	return (_pthread_descr)arg;
 }
@@ -30603,22 +30518,38 @@ LIB_FUNC int at_quick_exit(void (*func)(void)) {
 #define rargc_t   const int
 #define rargv_t   const char* restrict
 #define renvp_t   const char* restrict
-extern UNUSED int __libc_multiple_libcs;
-UNUSED attr_hidden int __libc_argc;
-UNUSED attr_hidden char* restrict * __libc_argv;
+extern UNUSED void* __libc_multiple_libcs;
+extern UNUSED int __CTOR_END__;
+UNUSED attr_hidden int __libc_argc = 0;
+UNUSED attr_hidden char* restrict * __libc_argv = NULL;
 extern UNUSED attr_hidden void (*__preinit_array_start[])(rargc_t, rargv_t*, renvp_t*);
 extern UNUSED attr_hidden void (*__preinit_array_end[])(rargc_t, rargv_t*, renvp_t*);
 extern UNUSED attr_hidden void (*__init_array_start[])(rargc_t, rargv_t*, renvp_t*);
 extern UNUSED attr_hidden void (*__init_array_end[])(rargc_t, rargv_t*, renvp_t*);
 extern UNUSED void (*__fini_array_start[])(void) attr_hidden;
 extern UNUSED void (*__fini_array_end[])(void) attr_hidden;
-extern noreturn void _start(void);
-//extern noreturn void weak_function main(void);
-//extern int weak_function main(void);
-//extern int weak_function main(int argc, char* argv[]);
-//extern int weak_function main(int argc, char* argv[], char* env[]);
-//extern int weak_function main(int argc, char* argv[], char* env[]);
-//extern int weak_function main(int argc, char* argv[], char* env[], char* apple[]);
+/* `_start()` Function */
+#ifdef COMPILER_CLANG
+extern noreturn void weak_function _start(void);
+extern noreturn void weak_function _start(int argc, char* argv[]);
+extern noreturn void weak_function _start(int argc, char* argv[], char* env[]);
+extern noreturn void weak_function _start(int argc, char* argv[], char* env[], char* apple[]);
+extern int weak_function _start(void);
+extern int weak_function _start(int argc, char* argv[]);
+extern int weak_function _start(int argc, char* argv[], char* env[]);
+extern int weak_function _start(int argc, char* argv[], char* env[], char* apple[]);
+#endif
+/* `main()` Function */
+#ifdef COMPILER_CLANG
+extern noreturn void weak_function main(void);
+extern noreturn void weak_function main(int argc, char* argv[]);
+extern noreturn void weak_function main(int argc, char* argv[], char* env[]);
+extern noreturn void weak_function main(int argc, char* argv[], char* env[], char* apple[]);
+extern int weak_function main(void);
+extern int weak_function main(int argc, char* argv[]);
+extern int weak_function main(int argc, char* argv[], char* env[]);
+extern int weak_function main(int argc, char* argv[], char* env[], char* apple[]);
+#endif
 #ifndef NO_INITFINI
 extern __attribute__((__constructor__)) void _init(void);
 extern __attribute__((__destructor__)) void _fini(void);
@@ -30680,8 +30611,17 @@ void __libc_csu_fini(void) {
 extern UNUSED noreturn void __libc_start_main(int (*main)(rargc_t, rargv_t*, renvp_t*), rargc_t argc, rargv_t* argv);
 UNUSED noreturn void __libc_start_main(int (*main)(rargc_t, rargv_t*, renvp_t*), rargc_t argc, rargv_t* argv) {
 	renvp_t* envp = argc + argv + 1;
-	// __init_libc(envp, argv[0]);
-	// libc_start_init();
+	// Set `__progname`
+	const char* s = NULL;
+	if (argc > 0 && argv[0] != NULL) {
+		__progname = argv[0];
+		for (s = __progname; *s != '\0'; s++) {
+			if (*s == '/') {
+				__progname = s + 1;
+			}
+		}
+	}
+	// Begin `main()` & exit
 	_Exit(main(argc, argv, envp));
 }
 #ifndef LIBC_START_MAIN
@@ -34977,9 +34917,9 @@ enum __ptrace_eventcodes {
 
 
 /** Perform process tracing functions. `request` is one of the values above, and determines the action to be taken; For all requests except `PTRACE_TRACEME`, `pid` specifies the process to be traced */
-LIB_FUNC long ptrace(const enum __ptrace_request request, ...) {
+LIB_FUNC long ptrace(const int request, ...) {
 	va_list ap;
-	va_start(ap, request);
+	va_start(ap, (int)request);
 	register pid_t pid = va_arg(ap, pid_t);
 	void* addr = va_arg(ap, void*);
 	void* data = va_arg(ap, void*);
@@ -35901,18 +35841,18 @@ IGNORE_WFORMAT_NONLITERAL
 
 /** Reads data from the stream and stores them according to the C wide string format into the locations pointed by the elements in the variable argument list */
 LIB_FUNC int vfwscanf(FILE* restrict fp, const wchar_t* restrict fmt, va_list ap) {
-	const wchar_t* p;
-	char* s = 0;
-	wchar_t* wcs = 0;
+	const wchar_t* p = NULL;
+	char* s = NULL;
+	wchar_t* wcs = NULL;
 	void* dest = NULL;
-	off_t pos = 0, cnt;
+	off_t pos = 0, cnt = 0;
 	const char size_pfx[8][4] = { "hh", "h", "", "l", "L", "ll" };
 	char tmp[106] = { 0 };
 	const wchar_t* set;
-	size_t i, k;
+	size_t i = 0, k = 0;
 	FLOCK(fp);
 	fwide(fp, _O_WIDE);
-	int alloc, width, size, c, t, invert, matches = 0;
+	int alloc = 0, width = 0, size = 0, c = 0, t = 0, invert = 0, matches = 0;
 	for (p = fmt; *p; p++) {
 		alloc = 0;
 		if (iswspace(*p)) {
@@ -36183,11 +36123,9 @@ LIB_FUNC int sfvwrite(FILE* fp, struct __suio* uio) {
 		set_errno(EBADF);
 		return EOF;
 	}
-	int s, nlknown, nldist;
-	size_t w;
-	char* nl;
-	struct __siov* iov;
-	iov = uio->uio_iov;
+	int s = 0;
+	size_t w = 0;
+	struct __siov* iov = uio->uio_iov;
 	char* p = iov->iov_base;
 	size_t len = iov->iov_len;
 	++iov;
@@ -36246,8 +36184,9 @@ LIB_FUNC int sfvwrite(FILE* fp, struct __suio* uio) {
 			len -= w;
 		} while ((uio->uio_resid -= (int)w) != 0);
 	} else {  // Line buffered: like fully buffered, but check for newlines
-		nlknown = 0;
-		nldist = 0;
+		int nlknown = 0;
+		int nldist = 0;
+		char* nl = NULL;
 		do {
 			while (len == 0) {
 				nlknown = 0;
@@ -36294,28 +36233,64 @@ goto_sfvwrite_err:
 LIB_FUNC void pop_arg(union printf_arg* arg, const int type, va_list* ap) {
 	if ((unsigned)type > PRINTF_MAXSTATE) { return; }
 	switch (type) {
-		case PRINTF_PTR: arg->p = va_arg(*ap, void*); break;
-		case PRINTF_INT: arg->i = (uintmax_t)va_arg(*ap, int); break;
-		case PRINTF_UINT: arg->i = (uintmax_t)va_arg(*ap, unsigned int); break;
+		case PRINTF_PTR:
+			arg->p = va_arg(*ap, void*);
+			break;
+		case PRINTF_INT:
+			arg->i = (uintmax_t)va_arg(*ap, int);
+			break;
+		case PRINTF_UINT:
+			arg->i = (uintmax_t)va_arg(*ap, unsigned int);
+			break;
 #   if LONG_GT_INT
-		case PRINTF_LONG: arg->i = (uintmax_t)va_arg(*ap, long);
-		case PRINTF_ULONG: arg->i = (uintmax_t)va_arg(*ap, unsigned long); break;
+		case PRINTF_LONG:
+			arg->i = (uintmax_t)va_arg(*ap, long);
+			break;
+		case PRINTF_ULONG:
+			arg->i = (uintmax_t)va_arg(*ap, unsigned long);
+			break;
 #   endif
-		case PRINTF_ULLONG: arg->i = (uintmax_t)va_arg(*ap, unsigned long long); break;
-		case PRINTF_SHORT: arg->i = (unsigned short)va_arg(*ap, int); break;
-		case PRINTF_USHORT: arg->i = (unsigned short)va_arg(*ap, int); break;
-		case PRINTF_CHAR: arg->i = (unsigned char)va_arg(*ap, int); break;
-		case PRINTF_UCHAR: arg->i = (unsigned char)va_arg(*ap, int); break;
+		case PRINTF_ULLONG:
+			arg->i = (uintmax_t)va_arg(*ap, unsigned long long);
+			break;
+		case PRINTF_SHORT:
+			arg->i = (unsigned short)va_arg(*ap, int);
+			break;
+		case PRINTF_USHORT:
+			arg->i = (unsigned short)va_arg(*ap, int);
+			break;
+		case PRINTF_CHAR:
+			arg->i = (unsigned char)va_arg(*ap, int);
+			break;
+		case PRINTF_UCHAR:
+			arg->i = (unsigned char)va_arg(*ap, int);
+			break;
 #   ifdef ODD_TYPES
-		case PRINTF_LLONG: arg->i = (uintmax_t)va_arg(*ap, long long); break;
-		case PRINTF_SIZET: arg->i = (uintmax_t)va_arg(*ap, size_t); break;
-		case PRINTF_IMAX: arg->i = (uintmax_t)va_arg(*ap, intmax_t); break;
-		case PRINTF_UMAX: arg->i = (uintmax_t)va_arg(*ap, uintmax_t); break;
-		case PRINTF_PDIFF: arg->i = (uintmax_t)va_arg(*ap, ptrdiff_t); break;
-		case PRINTF_UIPTR: arg->i = (uintptr_t)va_arg(*ap, void*); break;
+		case PRINTF_LLONG:
+			arg->i = (uintmax_t)va_arg(*ap, long long);
+			break;
+		case PRINTF_SIZET:
+			arg->i = (uintmax_t)va_arg(*ap, size_t);
+			break;
+		case PRINTF_IMAX:
+			arg->i = (uintmax_t)va_arg(*ap, intmax_t);
+			break;
+		case PRINTF_UMAX:
+			arg->i = (uintmax_t)va_arg(*ap, uintmax_t);
+			break;
+		case PRINTF_PDIFF:
+			arg->i = (uintmax_t)va_arg(*ap, ptrdiff_t);
+			break;
+		case PRINTF_UIPTR:
+			arg->i = (uintptr_t)va_arg(*ap, void*);
+			break;
 #   endif
-		case PRINTF_DBL: arg->f = va_arg(*ap, double); break;
-		case PRINTF_LDBL: arg->f = va_arg(*ap, long double); break;
+		case PRINTF_DBL:
+			arg->f = va_arg(*ap, double);
+			break;
+		case PRINTF_LDBL:
+			arg->f = va_arg(*ap, long double);
+			break;
 		default: break;
 	}
 }
@@ -36326,13 +36301,13 @@ IGNORE_WFORMAT_NONLITERAL
 
 
 LIB_FUNC int wprintf_core(FILE* f, const wchar_t* fmt, va_list* ap, union printf_arg* nl_arg, int* nl_type) {
-	const wchar_t *a, *z, *s = (const wchar_t*)fmt;
-	unsigned int l10n = 0, litpct, _fl, st, ps;
+	const wchar_t *a = NULL, *z = NULL, *s = (const wchar_t*)fmt;
+	unsigned int l10n = 0, litpct = 0, _fl = 0, st = 0, ps = 0;
 	union printf_arg arg;
-	int argpos, cnt = 0, l = 0, i, t, w, p;
-	char* bs;
+	int argpos, cnt = 0, l = 0, i = 0, t = 0, w = 0, p = 0;
+	char* bs = NULL;
 	char charfmt[16] = { 0 };
-	wchar_t wc;
+	wchar_t wc = 0;
 	loop_forever {
 		if (cnt >= 0) {
 			if (l > INT_MAX - cnt) {
@@ -36436,7 +36411,7 @@ LIB_FUNC int wprintf_core(FILE* f, const wchar_t* fmt, va_list* ap, union printf
 				l = w;
 				continue;
 			case 'm':
-				arg.p = strerror(get_errno());
+				arg.p = strerror(get_errno());  attr_fallthrough
 			case 's':
 				if (!arg.p) { arg.p = wprintf_core_null; }
 				bs = arg.p;
@@ -36457,7 +36432,7 @@ LIB_FUNC int wprintf_core(FILE* f, const wchar_t* fmt, va_list* ap, union printf
 				continue;
 			default: break;
 		}
-		snprintf(charfmt, sizeof(charfmt), "%%%s%s%s%s%s*.*%c%c", "#" + !(_fl & ALT_FORM), "+" + !(_fl & MARK_POS), "-" + !(_fl & LEFT_ADJ), " " + !(_fl & PAD_POS), "0" + !(_fl & ZERO_PAD), sizeprefix[(t | 32) - 'a'], t);
+		snprintf(charfmt, sizeof(charfmt), "%%%c%c%c%c%c*.*%c%c", '#' + (char)!(_fl & ALT_FORM), '+' + (char)!(_fl & MARK_POS), '-' + (char)!(_fl & LEFT_ADJ), ' ' + (char)!(_fl & PAD_POS), '0' + (char)!(_fl & ZERO_PAD), sizeprefix[(t | 32) - 'a'], t);
 		switch (t | 32) {
 			case 'a':
 			case 'e':

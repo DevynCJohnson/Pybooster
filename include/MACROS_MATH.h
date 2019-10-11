@@ -1220,7 +1220,7 @@ LIB_FUNC MATH_FUNC double floor(const double num) {
 	return z;
 #   else
 	double x = num;
-	const double_shape_t xw_u = { .value = x };
+	double_shape_t xw_u = { .value = x };
 	register int32_t i0 = (int32_t)xw_u.parts.msw;
 	register int32_t i1 = (int32_t)xw_u.parts.lsw;
 	register int32_t j0 = (int32_t)(((i0 >> 20) & 0x7ff) - 0x3ff);
@@ -1418,7 +1418,7 @@ LIB_FUNC MATH_FUNC int rint(const double x) {
 	register int32_t j0 = (int32_t)((((int32_t)i0 >> 20) & 0x7ff) - 0x3ff);
 	if (PREDICT_LIKELY(j0 < 52)) {
 		if (j0 < 0) {
-			double_shape_type th_u;
+			double_shape_t th_u;
 			th_u.value = (double)((TWO52[sx] + x) - TWO52[sx]);
 			i0 = th_u.parts.msw;
 			th_u.parts.msw = (uint32_t)((i0 & (uint32_t)0x7fffffff) | (uint32_t)(sx << 31));
@@ -3690,6 +3690,7 @@ LIB_FUNC MATH_FUNC long double scalblnl(const long double x, const long n) {
 LIB_FUNC MATH_FUNC long double scalblnl(const long double x, const long n) {
 	if (n > INT_MAX) { return scalbnl(x, (int)INT_MAX); }
 	else if (n < INT_MIN) { return scalbnl(x, (int)INT_MIN); }
+	return scalbnl(x, (int)n);
 }
 #   define __scalblnl(x, n)   scalblnl((x), (n))
 #endif
@@ -6161,7 +6162,7 @@ LIB_FUNC MATH_FUNC int __ilogbl(const long double x) {
 /** Integer log2 of a float */
 LIB_FUNC MATH_FUNC int ilog2f(const float x) {
 #   ifdef ARCHX86
-	register int32_t retval;
+	register int32_t retval = 0;
 	vasm("bsr %0, %1;" : "+r"(retval) : "r"(x));
 	return retval;
 #   else
@@ -13823,10 +13824,11 @@ LIB_FUNC MATH_FUNC complex_long_double cprojl(const complex_long_double z) {
 #if SUPPORTS_COMPLEX_LDBL
 
 
+DIAG_PUSH
+DIAG_IGNORE("-Wbuiltin-declaration-mismatch")
 LIB_FUNC MATH_FUNC complex_long_double __multc3(const long double xc1, const long double yc1, const long double xc2, const long double yc2) {
 	long double a = xc1, b = yc1, c = xc2, d = yc2;
-	const long double ac = a * c, bd = b * d;
-	const long double ad = a * d, bc = b * c;
+	const long double ac = a * c, bd = b * d, ad = a * d, bc = b * c;
 	long double x = ac - bd, y = ad + bc;
 	if (isnanl(x) && isnanl(y)) {
 		register bool recalc = 0;
@@ -13856,8 +13858,11 @@ LIB_FUNC MATH_FUNC complex_long_double __multc3(const long double xc1, const lon
 	}
 	return x + I_LONG_DOUBLE * y;
 }
+DIAG_POP
 
 
+DIAG_PUSH
+DIAG_IGNORE("-Wbuiltin-declaration-mismatch")
 LIB_FUNC MATH_FUNC complex_long_double __divtc3(const long double xc1, const long double yc1, const long double xc2, const long double yc2) {
 	long double denom, ratio, x, y, a = xc1, b = yc1, c = xc2, d = yc2;
 	if (fabsl(c) < fabsl(d)) {
@@ -13889,6 +13894,7 @@ LIB_FUNC MATH_FUNC complex_long_double __divtc3(const long double xc1, const lon
 	}
 	return x + I_LONG_DOUBLE * y;
 }
+DIAG_POP
 
 
 #endif

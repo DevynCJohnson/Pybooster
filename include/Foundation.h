@@ -1397,6 +1397,15 @@ Test if the Microsoft compiler matches the specified version number */
 #define MSC_PREREQ(major, minor)   __MSC_VER_PREREQ((major), (minor))
 #ifdef __GNUC__
 #   define AT_LEAST_GCC7   (__GNUC_PREREQ(7, 0))
+#   define AT_LEAST_GCC71   (__GNUC_PREREQ(7, 1))
+#   define AT_LEAST_GCC72   (__GNUC_PREREQ(7, 2))
+#   define AT_LEAST_GCC73   (__GNUC_PREREQ(7, 3))
+#   define AT_LEAST_GCC74   (__GNUC_PREREQ(7, 4))
+#   define AT_LEAST_GCC75   (__GNUC_PREREQ(7, 5))
+#   define AT_LEAST_GCC76   (__GNUC_PREREQ(7, 6))
+#   define AT_LEAST_GCC77   (__GNUC_PREREQ(7, 7))
+#   define AT_LEAST_GCC78   (__GNUC_PREREQ(7, 8))
+#   define AT_LEAST_GCC79   (__GNUC_PREREQ(7, 9))
 #   define AT_LEAST_GCC8   (__GNUC_PREREQ(8, 0))
 #   define AT_LEAST_GCC81   (__GNUC_PREREQ(8, 1))
 #   define AT_LEAST_GCC82   (__GNUC_PREREQ(8, 2))
@@ -1420,6 +1429,15 @@ Test if the Microsoft compiler matches the specified version number */
 #   define AT_LEAST_GCC10   (__GNUC_PREREQ(10, 0))
 #else
 #   define AT_LEAST_GCC7   0
+#   define AT_LEAST_GCC71   0
+#   define AT_LEAST_GCC72   0
+#   define AT_LEAST_GCC73   0
+#   define AT_LEAST_GCC74   0
+#   define AT_LEAST_GCC75   0
+#   define AT_LEAST_GCC76   0
+#   define AT_LEAST_GCC77   0
+#   define AT_LEAST_GCC78   0
+#   define AT_LEAST_GCC79   0
 #   define AT_LEAST_GCC8   0
 #   define AT_LEAST_GCC81   0
 #   define AT_LEAST_GCC82   0
@@ -1442,10 +1460,11 @@ Test if the Microsoft compiler matches the specified version number */
 #   define AT_LEAST_GCC99   0
 #   define AT_LEAST_GCC10   0
 #endif
+#define AT_LEAST_GCC70   AT_LEAST_GCC7
 #define AT_LEAST_GCC80   AT_LEAST_GCC8
 #define AT_LEAST_GCC90   AT_LEAST_GCC9
-#if (defined(COMPILER_GNU_GCC) && (!AT_LEAST_GCC8))
-#   error   "GNU-GCC 8.0 or newer (or a Clang equivalent) is required!"
+#if (defined(COMPILER_GNU_GCC) && (!AT_LEAST_GCC7))
+#   error   "GNU-GCC 7.0 or newer (or a Clang equivalent) is required!"
 #elif (defined(COMPILER_CLANG) && (!__CLANG_PREREQ(7, 0)))
 #   error   "Clang 7 or newer is required!"
 #elif (defined(COMPILER_MICROSOFT) && (!AT_LEAST_MSC19))
