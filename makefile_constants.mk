@@ -137,63 +137,48 @@ endif
 
 
 ARFLAGS::=
+DLLTOOL::=
 FC::=fort77
 FFLAGS::=-O 1
 LEX::=lex
 LFLAGS::=
+WINDRES::=
 YACC::=yacc
 YFLAGS::=
 
-override USECCACHE::=$(shell command -v ccache)
-COMPILER_CLANG::=$(USECCACHE) clang
-COMPILER_GCC::=$(USECCACHE) gcc
-COMPILER_MUSL_GCC::=$(USECCACHE) musl-gcc
-COMPILER_CCACHE::=$(USECCACHE)
+override COMPILER_CCACHE::=$(shell command -v ccache)
+
 
 # Flag used to indicate that Clang should be used
 ifdef dcj
     ifeq ($(dcj),1c)
         override dcj::=1
-        override USECLANG::=7
+        override USECLANG::=8
     endif
 endif
 ifdef USECLANG
     ifeq ($(USECLANG),)
-        override CLANG::=7
+        override CLANG::=clang-8
+    else ifeq ($(USECLANG),11)
+        override CLANG::=clang-11
+    else ifeq ($(USECLANG),10)
+        override CLANG::=clang-10
     else ifeq ($(USECLANG),9)
-        override CLANG::=9
-    else ifeq ($(USECLANG),9.0)
-        override CLANG::=9.0
+        override CLANG::=clang-9
     else ifeq ($(USECLANG),8)
-        override CLANG::=8
-    else ifeq ($(USECLANG),8.0)
-        override CLANG::=8.0
+        override CLANG::=clang-8
     else ifeq ($(USECLANG),7)
-        override CLANG::=7
-    else ifeq ($(USECLANG),7.0)
-        override CLANG::=7.0
+        override CLANG::=clang-7
     else ifeq ($(USECLANG),6)
-        override CLANG::=6
-    else ifeq ($(USECLANG),6.0)
-        override CLANG::=6.0
-    else ifeq ($(USECLANG),5)
-        override CLANG::=5
-    else ifeq ($(USECLANG),5.5)
-        override CLANG::=5.5
-    else ifeq ($(USECLANG),5.0)
-        override CLANG::=5.0
+        override CLANG::=clang-6
     else
-        override CLANG::=USECLANG
+        override CLANG::=clang-8
     endif
 endif
 
 # Command used to access Clang
 ifdef CLANG
-    ifeq ($(CLANG),)
-        override CLANG::=clang -Qunused-arguments
-    else
-        override CLANG::=clang-$(CLANG) -Qunused-arguments
-    endif
+    override CLANG::=$(COMPILER_CCACHE) $(CLANG) -Qunused-arguments
 else
     CLANG::=clang -Qunused-arguments
 endif
@@ -542,8 +527,8 @@ endif
 ifdef dcj
     override ASZ::=-Wa,-R,--fatal-warnings,--strip-local-absolute
     override SECURITY::=0
-    override PYVERSION::=3.6
-    override CPYTHON::=36
+    override PYVERSION::=3.7
+    override CPYTHON::=37
     override LC_ALL::=en_US.UTF-8
     override LANG::=en_US.UTF-8
     override LANGUSA::=en
@@ -572,7 +557,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -601,7 +586,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -630,7 +615,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse $(ASZ)
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -659,7 +644,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) $(GCC_OPT_X86) -mfpmath=sse
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -688,7 +673,7 @@ ifdef dcj
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -712,7 +697,7 @@ ifdef dcj
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -735,7 +720,7 @@ ifdef dcj
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(GCC_WARN)
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CC::=$(CBUILD)
             override XOPTMZ::=$(LLVM_OPT) -minline-all-stringops -momit-leaf-frame-pointer
             override WARN::=$(LLVM_WARN)
@@ -764,7 +749,7 @@ ifdef dcj
                 override CC::=$(CBUILD)
             endif
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -792,7 +777,7 @@ ifdef dcj
             override WARN::=$(GCC_WARN)
             override XOPTMZ::=$(GCC_OPT) -maccumulate-outgoing-args -minline-all-stringops -mlong-double-128 -momit-leaf-frame-pointer
         else
-            override CBUILD::=$(COMPILER_CCACHE) $(CLANG)
+            override CBUILD::=$(CLANG)
             override CHOST::=$(CBUILD)
             override CROSS_COMPILE::=llvm-
             override CC::=$(CBUILD)
@@ -846,10 +831,6 @@ else
         STRIP::=strip
     endif
 endif
-ifndef WIN
-    override DLLTOOL::=
-    override WINDRES::=
-endif
 override STRIP::=$(STRIP) $(STRIP_PARAMS)
 
 
@@ -882,7 +863,7 @@ ifdef STDLIB
             override STDLIB::=-mglibc
         else ifdef MUSL
             ifndef CROSS_COMPILE
-                override CC::=musl-gcc -D__MUSL__
+                override CC::=$(COMPILER_CCACHE) musl-gcc -D__MUSL__
             endif
         else ifdef UCLIBC
             override STDLIB::=-muclibc
@@ -1056,8 +1037,8 @@ endif
 override PYCFLAGS::=-DHAVE_GCC_UINT128_T -DHAVE_GCC_INT128_T -DHAVE_SSIZE_T -DPY_FORMAT_SIZE_T="z" -DPY_FORMAT_SSIZE_T="zi" -DPY_FORMAT_LONG_LONG="ll"
 
 ifndef PYVERSION
-    PYVERSION::=3.6
-    CPYTHON::=36
+    PYVERSION::=3.7
+    CPYTHON::=37
 endif
 
 ifdef PYVERSION
@@ -1074,12 +1055,12 @@ ifdef PYVERSION
     else ifeq ($(PYVERSION),3.9)
         override CPYTHON::=39
     else
-        override PYVERSION::=3.6
-        override CPYTHON::=36
+        override PYVERSION::=3.7
+        override CPYTHON::=37
     endif
 else
-    PYVERSION::=3.6
-    CPYTHON::=36
+    PYVERSION::=3.7
+    CPYTHON::=37
 endif
 
 ifndef PYINCLUDE
