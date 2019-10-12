@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2019.03.28
+@version 2019.10.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -780,7 +780,7 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 
 // FLOAT-POINT MODES
 
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT8) && IS_NOT_LINTER)
+#if (SUPPORTS_FLOAT8 && IS_NOT_LINTER)
 #   define SUPPORTS_QFTYPE   1
 /** 8-bit quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__QF__)))   QFtype;
@@ -797,8 +797,9 @@ typedef float __attribute__((__mode__(__QF__)))   QFtype;
 #   define SUPPORTS_QFTYPE   0
 #   define HAVE_QF   0
 #   undef SUPPORTS_FLOAT8
+#   define SUPPORTS_FLOAT8   0
 #endif
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT16) && IS_NOT_LINTER && ((defined(COMPILER_CLANG) && defined(ARCHARM)) || defined(COMPILER_GNU_GCC)))
+#if (SUPPORTS_FLOAT16 && IS_NOT_LINTER && ((defined(COMPILER_CLANG) && defined(ARCHARM)) || defined(COMPILER_GNU_GCC)))
 #   define SUPPORTS_HFTYPE   1
 /** 16-bit half-precision float-point datatype */
 typedef float __attribute__((__mode__(__HF__)))   HFtype;
@@ -821,8 +822,9 @@ typedef float __attribute__((__mode__(__HF__)))   HFtype;
 #   define SUPPORTS_HFTYPE   0
 #   define HAVE_HF   0
 #   undef SUPPORTS_FLOAT16
+#   define SUPPORTS_FLOAT16   0
 #endif
-#if ((defined(ARCHAVR) || SUPPORTS_FLOAT24) && IS_NOT_LINTER)
+#if (SUPPORTS_FLOAT24 && IS_NOT_LINTER)
 #   define SUPPORTS_TQFTYPE   1
 /** 24-bit three-quarter-precision float-point datatype */
 typedef float __attribute__((__mode__(__TQF__)))   TQFtype;
@@ -834,6 +836,7 @@ typedef float __attribute__((__mode__(__TQF__)))   TQFtype;
 #   define SUPPORTS_TQFTYPE   0
 #   define HAVE_TQF   0
 #   undef SUPPORTS_FLOAT24
+#   define SUPPORTS_FLOAT24   0
 #endif
 #define SUPPORTS_SFTYPE   1
 /** Single-precision float-point */
@@ -857,6 +860,8 @@ typedef float __attribute__((__mode__(__SF__)))   SFtype;
 #define SUPPORTS_DFTYPE   1
 #ifdef ARCHAM29K
 #   define _FLOAT_RET   double
+#else
+#   define _FLOAT_RET   float
 #endif
 /** Double-precision float-point */
 typedef float __attribute__((__mode__(__DF__)))   DFtype;
@@ -8658,9 +8663,9 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 #endif
 /*@-readonlytrans@*/
 static const char* __progname = NULL;
-static const UNUSED char* progname = __progname;
-static const UNUSED char* program_name = __progname;
-static const UNUSED char* __progname_full = __progname;
+static const UNUSED char* progname = NULL;
+static const UNUSED char* program_name = NULL;
+static const UNUSED char* __progname_full = NULL;
 /*@-readonlytrans@*/
 static const UNUSED char* program_invocation_name = getprogname();
 /*@=readonlytrans@*/
@@ -13782,7 +13787,7 @@ typedef union ieee754_float {
 } Float;
 
 
-/** A union that permits conversions between a double and various datatypes */
+/** A union that permits conversions between a double and various datatypes as well as access various parts of a double */
 typedef union double_shape {
 	double value;
 	uint8_t bytes[8];
@@ -13799,12 +13804,6 @@ typedef union double_shape {
 #   if SUPPORTS_DECIMAL64
 	decimal64 dec64word;
 #   endif
-} double_shape_t;
-
-
-/** IEEE 754 double-precision format; This is used to access various parts of a double */
-typedef union ieee754_double {
-	double d;
 	struct s754_bits {
 #   if IS_BIG_ENDIAN
 		unsigned int sign:1;
@@ -13859,7 +13858,7 @@ typedef union ieee754_double {
 		unsigned int negative:1;
 #   endif
 	} ieee_nan;
-} Double;
+} double_shape_t;
 
 
 /** 80 bit MacOS float: 1 sign bit, 15 exponent bits, 1 integer bit, 63 fraction bits */
@@ -14054,7 +14053,7 @@ typedef union float128_shape {
 /** IBM extended format for long double; This is used to access various parts of a long double */
 typedef union ibm_extended_long_double {
 	long double e;
-	union ieee754_double d[2];
+	union double_shape value[2];
 	struct IEEEl_bits {
 #   if IS_LITTLE_ENDIAN
 		uint64_t manl:64;
@@ -14465,14 +14464,14 @@ typedef union complex_long_double_shape {
 // 64-bit float
 #define DBL_ADJ   (DBL_MAX_EXP - 2 + ((DBL_MANT_DIG - 1) % 4))
 /** Return `1` if the double is signed (otherwise, `0`) */
-#define SIGND(fp)   __extension__ ({ const union ieee754_double __union_double = { .d = (double)fp }; __union_double.ieee.negative; })
+#define SIGND(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; __union_double.ieee.negative; })
 /** Return the exponent of a double */
-#define EXPD(fp)   __extension__ ({ const union ieee754_double __union_double = { .d = (double)fp }; __union_double.ieee.exponent; })
+#define EXPD(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; __union_double.ieee.exponent; })
 /** Return the mantissa of a double */
-#define MANTD(fp)   __extension__ ({ const union ieee754_double __union_double = { .d = (double)fp }; (((((__union_double.ieee.mantissa0) & 0xfffff) | HIDDEND) << 10) | (__union_double.ieee.mantissa1 >> 22)); })
+#define MANTD(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; (((((__union_double.ieee.mantissa0) & 0xfffff) | HIDDEND) << 10) | (__union_double.ieee.mantissa1 >> 22)); })
 /** Create a double manually using unsigned integers */
-#define PACKD(s, e, m0, m1)   __extension__ ({ const union ieee754_double __union_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1 }; __union_double.f; })
-#define SET_MANTISSA_DOUBLE(flt, mant)   do { union ieee754_double u = { .d = (double)(flt) }; u.ieee_nan.mantissa0 = ((mant) >> 32); u.ieee_nan.mantissa1 = (mant); if ((u.ieee.mantissa0 | u.ieee.mantissa1) != 0) { flt = u.d; } } while (0x0)
+#define PACKD(s, e, m0, m1)   __extension__ ({ const double_shape_t __union_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1 }; __union_double.f; })
+#define SET_MANTISSA_DOUBLE(flt, mant)   do { double_shape_t u = { .value = (double)(flt) }; u.ieee_nan.mantissa0 = ((mant) >> 32); u.ieee_nan.mantissa1 = (mant); if ((u.ieee.mantissa0 | u.ieee.mantissa1) != 0) { flt = u.d; } } while (0x0)
 /** Get two 32-bit ints from a double */
 #define EXTRACT_WORDS(ix0, ix1, d)   do { const double_shape_t ew_u = { .value = (double)(d) }; ix0 = ew_u.parts.msw; ix1 = ew_u.parts.lsw; } while (0x0)
 /** Get two 32-bit ints from a double */

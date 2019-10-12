@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Math Related-Code
 @file MACROS_MATH.h
-@version 2019.03.28
+@version 2019.10.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -3500,8 +3500,7 @@ LIB_FUNC void ldbl_unpack_ppc(const long double l, double* restrict a, double* r
 
 /** Pack/Unpack/Cononicalize and find the nearbyint of long double implemented as double double */
 LIB_FUNC MATH_FUNC long double default_ldbl_pack(const double a, const double aa) {
-	const union ibm_extended_long_double u = { .d[0].d = a, .d[1].d = aa };
-	// u.d[1].d = aa;
+	const union ibm_extended_long_double u = { .value[0].value = a, .value[1].value = aa };
 	return u.e;
 }
 #      define ldbl_pack(a, aa)   default_ldbl_pack((a), (aa))
@@ -3509,8 +3508,8 @@ LIB_FUNC MATH_FUNC long double default_ldbl_pack(const double a, const double aa
 
 LIB_FUNC void default_ldbl_unpack(const long double l, double* restrict a, double* restrict aa) {
 	const union ibm_extended_long_double u = { .e = l };
-	*a = u.d[0].d;
-	*aa = u.d[1].d;
+	*a = u.value[0].value;
+	*aa = u.value[1].value;
 }
 #      define ldbl_unpack(l, a, aa)   default_ldbl_unpack((l), (a), (aa))
 
@@ -4306,11 +4305,11 @@ LIB_FUNC MATH_FUNC float __ieee754_expf(const float x) {
 		const double t = (dx + 13194139533312.0) - 13194139533312.0;
 		dx -= t;
 		const int tval = (int)(t * 512.0);
-		union ieee754_double ex2_u = { .d = __exp_atable[tval + 177] };
+		double_shape_t ex2_u = { .value = __exp_atable[tval + 177] };
 		const uint11_t tmpval = { .val16 = (unsigned short)(ex2_u.ieee.exponent + (unsigned short)n) };
 		ex2_u.ieee.exponent = tmpval.val11.uval11;
-		if (t >= 0) { return (float)(((0.5000000496709180453 * dx + 1.0000001192102037084) * dx + (double)-(__exp_deltatable[tval])) * ex2_u.d + ex2_u.d); }
-		else { return (float)(((0.5000000496709180453 * dx + 1.0000001192102037084) * dx + (double)__exp_deltatable[-tval]) * ex2_u.d + ex2_u.d); }
+		if (t >= 0) { return (float)(((0.5000000496709180453 * dx + 1.0000001192102037084) * dx + (double)-(__exp_deltatable[tval])) * ex2_u.value + ex2_u.value); }
+		else { return (float)(((0.5000000496709180453 * dx + 1.0000001192102037084) * dx + (double)__exp_deltatable[-tval]) * ex2_u.value + ex2_u.value); }
 	} else if (PREDICT_UNLIKELY(isinff(x))) {
 		return 0;
 	} else if (__islessf(x, 88.72283935546875F)) {
@@ -4425,9 +4424,8 @@ LIB_FUNC MATH_FUNC long double __ieee754_exp10l(const long double arg) {
 
 LIB_FUNC MATH_FUNC float expf(const float num) {
 	float x = num;
-	uint32_t hx;
+	uint32_t hx = 0;
 	GET_FLOAT_UWORD(hx, x);
-	register int k;
 	const int sign = (int)(hx >> 31);
 	hx &= 0x7fffffff;
 	if (hx >= 0x42aeac50) {
@@ -4439,7 +4437,8 @@ LIB_FUNC MATH_FUNC float expf(const float num) {
 			if (hx >= 0x42cff1b5) { return 0; }
 		}
 	}
-	register float hi, lo;
+	register int k = 0;
+	register float hi = 0.0, lo = 0.0;
 	if (hx > 0x3eb17218) {
 		if (hx > 0x3f851592) { k = (int)(M_LOG2EF * x + expf_half[sign]); }
 		else { k = (1 - sign) - sign; }
@@ -4464,9 +4463,8 @@ LIB_FUNC MATH_FUNC float expf(const float num) {
 
 LIB_FUNC MATH_FUNC double exp(const double num) {
 	double x = num, c, y;
-	uint32_t hx;
+	uint32_t hx = 0;
 	GET_HIGH_WORD(hx, x);
-	register int k;
 	const int sign = (int)(hx >> 31);
 	hx &= 0x7fffffff;
 	if (hx >= 0x4086232b) {
@@ -4479,7 +4477,8 @@ LIB_FUNC MATH_FUNC double exp(const double num) {
 			if (x < -745.13321910194110842) { return 0; }
 		}
 	}
-	register double hi, lo;
+	register int k = 0;
+	register double hi = 0.0, lo = 0.0;
 	if (hx > 0x3fd62e42) {
 		if (hx >= 0x3ff0a2b2) { k = (int)(M_LOG2E * x + exp_half[sign]); }
 		else { k = 1 - sign - sign; }

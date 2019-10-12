@@ -4,7 +4,7 @@
 /**
 @brief Test code used in MACROS*.h
 @file test_dev.c
-@version 2019.06.05
+@version 2019.10.12
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -196,21 +196,21 @@ static void test_code(const long long input_num) {
 	puts_no_output(num_buf);
 	putsnl();
 	// Test atof("NaN")
-	puts_no_output("* Test atof(\"NaN\"); Expect - `nan` *");
+	puts_no_output("* Test atof(\"NaN\"); Expect - `NAN` *");
 	const char* nan_str = "NaN";
 	bzero(num_buf, SIZEOF_TEST_NUM_BUF);
 	(void)dtostr(atof(nan_str), num_buf, 0, 5, 0);
 	puts_no_output(num_buf);
 	putsnl();
 	// Test atof("inf")
-	puts_no_output("* Test atof(\"inf\"); Expect - `inf` *");
+	puts_no_output("* Test atof(\"inf\"); Expect - `INF` *");
 	const char* inf_str = "inf";
 	bzero(num_buf, SIZEOF_TEST_NUM_BUF);
 	(void)dtostr(atof(inf_str), num_buf, 0, 5, 0);
 	puts_no_output(num_buf);
 	putsnl();
 	// Test atof("-inf")
-	puts_no_output("* Test atof(\"-inf\"); Expect - `-inf` *");
+	puts_no_output("* Test atof(\"-inf\"); Expect - `-INF` *");
 	const char* ninf_str = "-inf";
 	bzero(num_buf, SIZEOF_TEST_NUM_BUF);
 	(void)dtostr(atof(ninf_str), num_buf, 0, 5, 0);

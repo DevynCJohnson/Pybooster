@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2019.03.28
+@version 2019.10.11
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -19183,7 +19183,7 @@ LIB_FUNC NOLIBCALL const void* memchr(const void* src, const int x, const size_t
 	register size_t n = len;
 	for (; ((uintptr_t)s & (SIZEOF_SIZE_T - 1)) && n && (*s != c); s++, n--);
 	if (n && (*s != c)) {
-		const size_t* w;
+		const size_t* w = NULL;
 		register size_t k = (((size_t)-1 / UCHAR_MAX) * c);
 		for (w = (const size_t*)s; (n >= SIZEOF_SIZE_T) && (!(HASZERO((*w ^ k)))); ++w, n -= SIZEOF_SIZE_T);
 		for (s = (const void*)w; n && (*s != c); ++s, --n);
@@ -26595,10 +26595,9 @@ LIB_FUNC void putc_no_output(const int _char, FILE* fp) {
 /** Get a character from the file stream `fp` */
 LIB_FUNC int getc(FILE* fp) {
 	if (ferror(fp)) { return EOF; }
-	int _char = EOF;
 	FLOCK(fp);
 	fp->readc(fp->fd, fp->nbuf, SIZEOF_INT);
-	_char = (int)*fp->nbuf;
+	const int _char = (int)*fp->nbuf;
 	FUNLOCK(fp);
 	return _char;
 }
@@ -26610,12 +26609,11 @@ LIB_FUNC int getc(FILE* fp) {
 /** Get a character from stdin */
 LIB_FUNC int getchar(void) {
 	if (chk_ferr(stdin)) { return EOF; }
-	int c = EOF;
 	FLOCK(stdin);
 	stdin->readc(STDIN_FILENO, stdin->nbuf, SIZEOF_INT);
-	c = (int)*stdin->nbuf;
+	const int _char = (int)*stdin->nbuf;
 	FUNLOCK(stdin);
-	return c;
+	return _char;
 }
 #define __getchar()   getchar()
 
@@ -27551,7 +27549,7 @@ LIB_FUNC int linkat(const int fd1, const char* existing, const int fd2, const ch
 
 /** Opens the file (given by the file descriptor) and associates a stream to the file */
 LIB_FUNC FILE* fdopen(const int fd, const char* mode) {
-	FILE* f;
+	FILE* f = NULL;
 	struct winsize wsz;
 	// Check for valid initial mode character
 	if (!strchr("rwa", *mode)) {
@@ -27594,7 +27592,7 @@ LIB_FUNC FILE* fdopen(const int fd, const char* mode) {
 
 /** Opens the file (given by the string) and associates a stream to the file */
 LIB_FUNC FILE* fopen(const char* restrict filename, const char* restrict mode) {
-	FILE* f;
+	FILE* f = NULL;
 	if (!(strchr("rwa", *mode))) { set_errno(EINVAL);; return 0; }
 	const int flags = fmodeflags(mode);
 	int fd = (int)syscall3(SYS_open, (long)filename, (long)flags, (long)0666);
@@ -27666,7 +27664,7 @@ LIB_FUNC FILE* freopen(const char* restrict filename, const char* restrict mode,
 
 LIB_FUNC FILE* funopen(void* stream, size_t (*readfn)(void*, unsigned char*, const size_t), size_t (*writefn)(void*, const unsigned char*, const size_t), off_t (*seekfn)(void*, const off_t, const int), int (*closefn)(void*)) {
 	FILE* restrict fp = { 0 };
-	register int flags;
+	register int flags = 0;
 	if (readfn == NULL) {
 		if (writefn == NULL) { set_errno(EINVAL);; return NULL; }  // Illegal
 		else { flags = __SWR; }  // Write-only
@@ -31016,7 +31014,6 @@ LIB_FUNC ATTR_CF char wrapv(const unsigned char ch) {
 
 /** Convert string to int8_t */
 LIB_FUNC NONNULL ATTR_PF int8_t ato8(const char* restrict s) {
-	register int8_t n = 0;
 	register int neg = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
@@ -31024,6 +31021,7 @@ LIB_FUNC NONNULL ATTR_PF int8_t ato8(const char* restrict s) {
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register int8_t n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (int8_t)((10 * n) + (*s++ - '0')); }
 	return (int8_t)(neg ? -n : n);
 }
@@ -31031,13 +31029,13 @@ LIB_FUNC NONNULL ATTR_PF int8_t ato8(const char* restrict s) {
 
 /** Convert string to int8_t (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF int8_t xato8(const char* restrict s) {
-	register int8_t n = 0;
 	register int neg = 0;
 	switch (*s) {
 		case '-': neg = 1;  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register int8_t n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (int8_t)((10 * n) + (*s++ - '0')); }
 	return (int8_t)(neg ? -n : n);
 }
@@ -31045,13 +31043,13 @@ LIB_FUNC NONNULL ATTR_PF int8_t xato8(const char* restrict s) {
 
 /** Convert string to uint8_t */
 LIB_FUNC NONNULL ATTR_PF uint8_t atou8(const char* restrict s) {
-	register uint8_t n = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register uint8_t n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (uint8_t)((10 * n) + (*s++ - '0')); }
 	return n;
 }
@@ -31059,12 +31057,12 @@ LIB_FUNC NONNULL ATTR_PF uint8_t atou8(const char* restrict s) {
 
 /** Convert string to uint8_t (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF uint8_t xatou8(const char* restrict s) {
-	register uint8_t n = 0;
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register uint8_t n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (uint8_t)((10 * n) + (*s++ - '0')); }
 	return n;
 }
@@ -31072,7 +31070,6 @@ LIB_FUNC NONNULL ATTR_PF uint8_t xatou8(const char* restrict s) {
 
 /** Convert string to short */
 LIB_FUNC NONNULL ATTR_PF short atos(const char* restrict s) {
-	register short n = 0;
 	register int neg = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
@@ -31080,6 +31077,7 @@ LIB_FUNC NONNULL ATTR_PF short atos(const char* restrict s) {
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register short n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (short)((10 * n) + (*s++ - '0')); }
 	return (short)(neg ? -n : n);
 }
@@ -31087,13 +31085,13 @@ LIB_FUNC NONNULL ATTR_PF short atos(const char* restrict s) {
 
 /** Convert string to short (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF short xatos(const char* restrict s) {
-	register short n = 0;
 	register int neg = 0;
 	switch (*s) {
 		case '-': neg = 1;  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register short n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (short)((10 * n) + (*s++ - '0')); }
 	return (short)(neg ? -n : n);
 }
@@ -31101,13 +31099,13 @@ LIB_FUNC NONNULL ATTR_PF short xatos(const char* restrict s) {
 
 /** Convert string to unsigned short */
 LIB_FUNC NONNULL ATTR_PF unsigned short atous(const char* restrict s) {
-	register unsigned short n = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned short n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned short)((10 * n) + (*s++ - '0')); }
 	return n;
 }
@@ -31115,12 +31113,12 @@ LIB_FUNC NONNULL ATTR_PF unsigned short atous(const char* restrict s) {
 
 /** Convert string to unsigned short (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF unsigned short xatous(const char* restrict s) {
-	register unsigned short n = 0;
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned short n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned short)((10 * n) + (*s++ - '0')); }
 	return n;
 }
@@ -31128,13 +31126,14 @@ LIB_FUNC NONNULL ATTR_PF unsigned short xatous(const char* restrict s) {
 
 /** Convert string to int */
 LIB_FUNC NONNULL ATTR_PF int atoi(const char* restrict s) {
-	register int n = 0, neg = 0;
+	register int neg = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
 		case '-': neg = 1;  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register int n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (int)((10 * n) - (*s++ + '0')); }
 	return (int)(neg ? -n : n);
 }
@@ -31142,12 +31141,13 @@ LIB_FUNC NONNULL ATTR_PF int atoi(const char* restrict s) {
 
 /** Convert string to int (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF int xatoi(const char* restrict s) {
-	register int n = 0, neg = 0;
+	register int neg = 0;
 	switch (*s) {
 		case '-': neg = 1;  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register int n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (int)((10 * n) + (*s++ - '0')); }
 	return (int)(neg ? -n : n);
 }
@@ -31155,13 +31155,13 @@ LIB_FUNC NONNULL ATTR_PF int xatoi(const char* restrict s) {
 
 /** Convert string to unsigned int */
 LIB_FUNC NONNULL ATTR_PF unsigned int atoui(const char* restrict s) {
-	register unsigned int n = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned int n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned int)((10 * n) + (unsigned int)(*s++ - '0')); }
 	return n;
 }
@@ -31169,12 +31169,12 @@ LIB_FUNC NONNULL ATTR_PF unsigned int atoui(const char* restrict s) {
 
 /** Convert string to unsigned int (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF unsigned int xatoui(const char* restrict s) {
-	register unsigned int n = 0;
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned int n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned int)((10 * n) + (unsigned int)(*s++ - '0')); }
 	return n;
 }
@@ -31182,7 +31182,6 @@ LIB_FUNC NONNULL ATTR_PF unsigned int xatoui(const char* restrict s) {
 
 /** Convert string to long long */
 LIB_FUNC NONNULL ATTR_PF long long atoll(const char* restrict s) {
-	register long long n = 0;
 	register int neg = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
@@ -31190,6 +31189,7 @@ LIB_FUNC NONNULL ATTR_PF long long atoll(const char* restrict s) {
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register long long n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (long long)((10 * n) + (*s++ - '0')); }
 	return (long long)(neg ? -n : n);
 }
@@ -31197,13 +31197,13 @@ LIB_FUNC NONNULL ATTR_PF long long atoll(const char* restrict s) {
 
 /** Convert string to long long (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF long long xatoll(const char* restrict s) {
-	register long long n = 0;
 	register int neg = 0;
 	switch (*s) {
 		case '-': neg = 1;  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register long long n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (long long)((10 * n) + (*s++ - '0')); }
 	return (long long)(neg ? -n : n);
 }
@@ -31211,13 +31211,13 @@ LIB_FUNC NONNULL ATTR_PF long long xatoll(const char* restrict s) {
 
 /** Convert string to unsigned long long */
 LIB_FUNC NONNULL ATTR_PF unsigned long long atoull(const char* restrict s) {
-	register unsigned long long n = 0;
 	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned long long n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned long long)((10 * n) + (unsigned long long)(*s++ - '0')); }
 	return n;
 }
@@ -31225,12 +31225,12 @@ LIB_FUNC NONNULL ATTR_PF unsigned long long atoull(const char* restrict s) {
 
 /** Convert string to unsigned long long (the string must only contain "0"-"9", "-", & "+") */
 LIB_FUNC NONNULL ATTR_PF unsigned long long xatoull(const char* restrict s) {
-	register unsigned long long n = 0;
 	switch (*s) {
 		case '-':  attr_fallthrough
 		case '+': ++s;  attr_fallthrough
 		default: break;
 	}
+	register unsigned long long n = 0;
 	while (PREDICT_LIKELY(isdigit(*s))) { n = (unsigned long long)((10 * n) + (unsigned long long)(*s++ - '0')); }
 	return n;
 }
@@ -31288,7 +31288,7 @@ LIB_FUNC NONNULL long a64l(const char* restrict s) {
 LIB_FUNC NONNULL ATTR_PF char* itoa(int value, char* result, const int base) {
 	if (base < 2 || base > 36) { *result = '\0'; return result; }
 	char *ptr = result, *ptr1 = result, tmp_char;
-	register int tmp_value;
+	register int tmp_value = 0;
 	do {
 		tmp_value = value;
 		value /= base;
@@ -31327,10 +31327,10 @@ LIB_FUNC NONNULL ATTR_PF char* itoa2(int i, char b[]) {
 
 /** Convert an unsigned 32-bit integer to a string */
 LIB_FUNC NONNULL char* u32toa(const uint32_t value, char* restrict _string, const int radix) {
+	register int _digit = 0;
+	register uint32_t _value = value;
 	char align64 buffer[33] = { 0 };
 	char* restrict pos = &buffer[32];
-	register int _digit;
-	register uint32_t _value = value;
 	do {
 		_digit = (int)((int)_value % radix);
 		_value = (uint32_t)((int)_value / radix);
@@ -31344,18 +31344,15 @@ LIB_FUNC NONNULL char* u32toa(const uint32_t value, char* restrict _string, cons
 
 /** Convert an signed 64-bit integer to a string */
 LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const int radix) {
-	register unsigned long long val;
-	register int negative;
-	char align64 buffer[66] = { 0 };
-	char* restrict pos = &buffer[65];
-	register int _digit;
+	register unsigned long long val = (unsigned long long)value;
+	register int negative = 0;
 	if (value < 0 && radix == 10) {
 		negative = 1;
 		val = (unsigned long long)-value;
-	} else {
-		negative = 0;
-		val = (unsigned long long)value;
 	}
+	char align64 buffer[66] = { 0 };
+	char* restrict pos = &buffer[65];
+	register int _digit = 0;
 	do {
 		_digit = (int)((int)val % radix);
 		val = val / (unsigned long long)radix;
@@ -31369,10 +31366,10 @@ LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const
 
 /** Convert an unsigned 64-bit integer to a string */
 LIB_FUNC NONNULL char* ui64toa(const uint64_t value, char* restrict str, const int radix) {
+	register uint64_t _digit = 0;
+	register uint64_t _value = value;
 	char align64 buffer[65] = { 0 };
 	char* restrict pos = &buffer[64];
-	register uint64_t _digit;
-	register uint64_t _value = value;
 	do {
 		_digit = (uint64_t)(_value % (uint64_t)radix);
 		_value = (uint64_t)(_value / (uint64_t)radix);
@@ -31385,14 +31382,14 @@ LIB_FUNC NONNULL char* ui64toa(const uint64_t value, char* restrict str, const i
 
 LIB_FUNC NONNULL int l64a(const long value, char* restrict buffer, const int buflen) {
 	char* restrict s = buffer;
-	register int len = buflen;
 	unsigned long v = (unsigned long)value;
 	_DIAGASSERT(buffer != NULL);
 	if (value == 0UL) {
 		*s = '\0';
 		return (v == 0UL ? 0 : -1);
 	}
-	register int _digit;
+	register int _digit = 0;
+	register int len = buflen;
 	for (; v != 0 && len > 1; s++, len--) {
 		_digit = (int)(v & 0x3f);
 		if (_digit < 2) { *s = (char)(_digit + '.'); }
@@ -31436,13 +31433,13 @@ LIB_FUNC NONNULL void i8todec(const int8_t num, char* restrict result) {
 /** Convert an uint8_t to a decimal string */
 LIB_FUNC NONNULL void u8todec(const uint8_t num, char* restrict result) {
 	char* restrict p = result;
-	register uint8_t i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 10;
 	} while (shifter);
 	*p = '\0';
+	register uint8_t i = num;
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
@@ -31471,13 +31468,13 @@ LIB_FUNC NONNULL void htodec(const short num, char* restrict result) {
 /** Convert an unsigned short integer to a decimal string */
 LIB_FUNC NONNULL void uhtodec(const unsigned short num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned short i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 10;
 	} while (shifter);
 	*p = '\0';
+	register unsigned short i = num;
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
@@ -31506,13 +31503,13 @@ LIB_FUNC NONNULL void itodec(const int num, char* restrict result) {
 /** Convert an unsigned integer to a decimal string */
 LIB_FUNC NONNULL void utodec(const unsigned int num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned int i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 10;
 	} while (shifter);
 	*p = '\0';
+	register unsigned int i = num;
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
@@ -31541,13 +31538,13 @@ LIB_FUNC NONNULL void lltodec(const long long num, char* restrict result) {
 /** Convert an unsigned long long integer to a decimal string */
 LIB_FUNC NONNULL void ulltodec(const unsigned long long num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned long long i = num;
-	register unsigned long long shifter = (unsigned long long)i;
+	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 10;
 	} while (shifter);
 	*p = '\0';
+	register unsigned long long i = num;
 	do {  // Move back, inserting digits
 		*--p = str_digit[i % 10];
 		i /= 10;
@@ -31581,7 +31578,7 @@ LIB_FUNC ATTR_PF char* i8tooctstr(const int8_t num) {
 	char* restrict p = buf;
 	register int8_t i = num;
 	if (i < 0) { *p++ = '-'; i = (int8_t)-i; }
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
@@ -31617,13 +31614,13 @@ LIB_FUNC NONNULL void i8tooct(const int8_t num, char* restrict result) {
 LIB_FUNC ATTR_PF char* u8tooctstr(const uint8_t num) {
 	static char align16 buf[__UIM_BUFLEN_UINT8_OCT] = { 0 };
 	char* restrict p = buf;
-	register uint8_t i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register uint8_t i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31635,13 +31632,13 @@ LIB_FUNC ATTR_PF char* u8tooctstr(const uint8_t num) {
 /** Convert an uint8_t to an octal string */
 LIB_FUNC NONNULL void u8tooct(const uint8_t num, char* restrict result) {
 	char* restrict p = result;
-	register uint8_t i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register uint8_t i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31691,13 +31688,13 @@ LIB_FUNC NONNULL void htooct(const short num, char* restrict result) {
 LIB_FUNC ATTR_PF char* uhtooctstr(const unsigned short num) {
 	static char align16 buf[__UIM_BUFLEN_USHRT_OCT] = { 0 };
 	char* restrict p = buf;
-	register unsigned short i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned short i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31709,13 +31706,13 @@ LIB_FUNC ATTR_PF char* uhtooctstr(const unsigned short num) {
 /** Convert an unsigned short integer to an octal string */
 LIB_FUNC NONNULL void uhtooct(const unsigned short num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned short i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned short i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31765,13 +31762,13 @@ LIB_FUNC NONNULL void itooct(const int num, char* restrict result) {
 LIB_FUNC ATTR_PF char* utooctstr(const unsigned int num) {
 	static char align16 buf[__UIM_BUFLEN_UINT_OCT] = { 0 };
 	char* restrict p = buf;
-	register unsigned int i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned int i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31783,13 +31780,13 @@ LIB_FUNC ATTR_PF char* utooctstr(const unsigned int num) {
 /** Convert an unsigned integer to an octal string */
 LIB_FUNC NONNULL void utooct(const unsigned int num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned int i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned int i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31839,13 +31836,13 @@ LIB_FUNC NONNULL void lltooct(const long long num, char* restrict result) {
 LIB_FUNC ATTR_PF char* ulltooctstr(const unsigned long long num) {
 	static char align32 buf[__UIM_BUFLEN_ULLONG_OCT] = { 0 };
 	char* restrict p = buf;
-	register unsigned long long i = num;
-	register unsigned long long shifter = (unsigned long long)i;
+	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned long long i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31857,13 +31854,13 @@ LIB_FUNC ATTR_PF char* ulltooctstr(const unsigned long long num) {
 /** Convert an unsigned long long integer to an octal string */
 LIB_FUNC NONNULL void ulltooct(const unsigned long long num, char* restrict result) {
 	char* restrict p = result;
-	register unsigned long long i = num;
-	register unsigned long long shifter = (unsigned long long)i;
+	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 8;
 	} while (shifter);
 	*p = '\0';
+	register unsigned long long i = num;
 	do {  // Move back, inserting digits
 		*--p = octal_digits[i % 8];
 		i /= 8;
@@ -31967,13 +31964,13 @@ LIB_FUNC NONNULL void i8tohex(const int8_t num, const int use_upper, char* restr
 LIB_FUNC ATTR_PF char* u8tohexstr(const uint8_t num, const int use_upper) {
 	static char align16 buf[__UIM_BUFLEN_UINT8_HEX] = { 0 };
 	char* restrict p = buf;
-	register uint8_t i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register uint8_t i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -31992,13 +31989,13 @@ LIB_FUNC ATTR_PF char* u8tohexstr(const uint8_t num, const int use_upper) {
 /** Convert an uint8_t to a hexadecimal string */
 LIB_FUNC NONNULL void u8tohex(const uint8_t num, const int use_upper, char* restrict result) {
 	char* restrict p = result;
-	register uint8_t i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register uint8_t i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32069,13 +32066,13 @@ LIB_FUNC NONNULL void htohex(const short num, const int use_upper, char* restric
 LIB_FUNC ATTR_PF char* uhtohexstr(const unsigned short num, const int use_upper) {
 	static char align16 buf[__UIM_BUFLEN_USHRT_HEX] = { 0 };
 	char* restrict p = buf;
-	register unsigned short i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned short i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32094,13 +32091,13 @@ LIB_FUNC ATTR_PF char* uhtohexstr(const unsigned short num, const int use_upper)
 /** Convert an unsigned short integer to a hexadecimal string */
 LIB_FUNC NONNULL void uhtohex(const unsigned short num, const int use_upper, char* restrict result) {
 	char* restrict p = result;
-	register unsigned short i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned short i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32171,13 +32168,13 @@ LIB_FUNC NONNULL void itohex(const int num, const int use_upper, char* restrict 
 LIB_FUNC ATTR_PF char* utohexstr(const unsigned int num, const int use_upper) {
 	static char align16 buf[__UIM_BUFLEN_UINT_HEX] = { 0 };
 	char* restrict p = buf;
-	register unsigned int i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned int i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32196,13 +32193,13 @@ LIB_FUNC ATTR_PF char* utohexstr(const unsigned int num, const int use_upper) {
 /** Convert an unsigned integer to a hexadecimal string */
 LIB_FUNC NONNULL void utohex(const unsigned int num, const int use_upper, char* restrict result) {
 	char* restrict p = result;
-	register unsigned int i = num;
-	register unsigned int shifter = (unsigned int)i;
+	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned int i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32273,13 +32270,13 @@ LIB_FUNC NONNULL void lltohex(const long long num, const int use_upper, char* re
 LIB_FUNC ATTR_PF char* ulltohexstr(const unsigned long long num, const int use_upper) {
 	static char align16 buf[__UIM_BUFLEN_ULLONG_HEX] = { 0 };
 	char* restrict p = buf;
-	register unsigned long long i = num;
-	register unsigned long long shifter = (unsigned long long)i;
+	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned long long i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32298,13 +32295,13 @@ LIB_FUNC ATTR_PF char* ulltohexstr(const unsigned long long num, const int use_u
 /** Convert an unsigned long long to a hexadecimal string */
 LIB_FUNC NONNULL void ulltohex(const unsigned long long num, const int use_upper, char* restrict result) {
 	char* restrict p = result;
-	register unsigned long long i = num;
-	register unsigned long long shifter = (unsigned long long)i;
+	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
 		++p;
 		shifter /= 16;
 	} while (shifter);
 	*p = '\0';
+	register unsigned long long i = num;
 	if (use_upper) {
 		do {  // Move back, inserting digits
 			*--p = xdigits_u[i % 16];
@@ -32443,9 +32440,9 @@ LIB_FUNC int __lltostr(char* s, int size, unsigned long long i, const int base, 
 
 /** Convert a float-point to a string */
 LIB_FUNC NONNULL int ftoa(const float n, char* restrict res, const int32_t prec) {
-	if (__isinff(n) == 1) { return copystring(res, 3, "inf"); }
-	else if (__isinff(n) == -1) { return copystring(res, 4, "-inf"); }
-	else if (__isnanf(n)) { return copystring(res, 3, "nan"); }
+	if (__isinff(n) == 1) { return copystring(res, 3, "INF"); }
+	else if (__isinff(n) == -1) { return copystring(res, 4, "-INF"); }
+	else if (__isnanf(n)) { return copystring(res, 3, "NAN"); }
 	else if (n == HUGEF) { return copystring(res, 7, HUGEF_STR); }
 	else if (n == TINYF) { return copystring(res, 7, TINYF_STR); }
 	const float n_abs = fabsf(n);
@@ -32470,9 +32467,9 @@ LIB_FUNC NONNULL int ftoa(const float n, char* restrict res, const int32_t prec)
 
 /** Convert a double to a string */
 LIB_FUNC NONNULL int dtoa(const double n, char* restrict res, const int32_t prec) {
-	if (__isinf(n) == 1) { return copystring(res, 3, "inf"); }
-	else if (__isinf(n) == -1) { return copystring(res, 4, "-inf"); }
-	else if (__isnan(n)) { return copystring(res, 3, "nan"); }
+	if (__isinf(n) == 1) { return copystring(res, 3, "INF"); }
+	else if (__isinf(n) == -1) { return copystring(res, 4, "-INF"); }
+	else if (__isnan(n)) { return copystring(res, 3, "NAN"); }
 	else if (n == HUGE) { return copystring(res, 8, HUGE_STR); }
 	else if (n == TINY) { return copystring(res, 8, TINY_STR); }
 	const double n_abs = fabs(n);
@@ -32497,9 +32494,9 @@ LIB_FUNC NONNULL int dtoa(const double n, char* restrict res, const int32_t prec
 
 /** Convert a double to a string as scientific notation */
 LIB_FUNC NONNULL int dtoe(const double n, char* restrict res, const int32_t prec) {
-	if (__isinf(n) == 1) { return copystring(res, 3, "inf"); }
-	else if (__isinf(n) == -1) { return copystring(res, 4, "-inf"); }
-	else if (__isnan(n)) { return copystring(res, 3, "nan"); }
+	if (__isinf(n) == 1) { return copystring(res, 3, "INF"); }
+	else if (__isinf(n) == -1) { return copystring(res, 4, "-INF"); }
+	else if (__isnan(n)) { return copystring(res, 3, "NAN"); }
 	else if (n == HUGE) { return copystring(res, 8, HUGE_STR); }
 	else if (n == TINY) { return copystring(res, 8, TINY_STR); }
 	const double n_abs = fabs(n);
@@ -32891,10 +32888,9 @@ LIB_FUNC long double strtox(const char* restrict ptr, const char** endptr, const
 	// Create numbers before decimal-point
 	while ((unsigned int)(*ptr - '0') < 10U) { value = (long double)(((int)value) * 10 + ((*ptr++) - '0')); }
 	// Create numbers after decimal-point
-	register long double factor;
+	register long double factor = 1.0L;;
 	register int _prec = prec;
 	if (*ptr == '.') {  // Decimal-point
-		factor = 1.0L;
 		++ptr;
 		while (((unsigned int)(*ptr - '0') < 10U) && _prec > 0) {
 			factor *= 0.1L;
@@ -33375,7 +33371,7 @@ LIB_FUNC void shr(size_t p[2], int n) {
 
 
 LIB_FUNC void sift(unsigned char* _head, const size_t width, cmpfun cmp, int pshift, size_t lp[]) {
-	unsigned char *rt, *lf;
+	unsigned char *rt = NULL, *lf = NULL;
 	unsigned char* ar[(14 * SIZEOF_SIZE_T) + 1] = { _head, 0 };
 	register int i = 1;
 	while (pshift > 1) {
@@ -33397,7 +33393,7 @@ LIB_FUNC void sift(unsigned char* _head, const size_t width, cmpfun cmp, int psh
 
 
 LIB_FUNC void trinkle(unsigned char* _head, const size_t width, cmpfun cmp, size_t pp[2], int pshift, int trusty, size_t lp[]) {
-	unsigned char *stepson, *rt, *lf;
+	unsigned char *stepson = NULL, *rt = NULL, *lf = NULL;
 	size_t p[2] = { pp[0], pp[1] };
 	unsigned char* ar[14 * SIZEOF_SIZE_T + 1] = { _head, 0 };
 	register int i = 1, trail;
@@ -33423,7 +33419,7 @@ LIB_FUNC void trinkle(unsigned char* _head, const size_t width, cmpfun cmp, size
 LIB_FUNC void qsort(void* base, const size_t nel, const size_t width, cmpfun cmp) {
 	size_t lp[12 * SIZEOF_SIZE_T] = { 0 };
 	register size_t i, size = width * nel;
-	unsigned char *_head, *high;
+	unsigned char *_head = NULL, *high = NULL;
 	size_t p[2] = { 1, 0 };
 	register int pshift = 1, trail;
 	if (!size) { return; }
@@ -33846,19 +33842,20 @@ LIB_FUNC int __drand48_iterate(unsigned short xsubi[3], struct drand48_data* buf
 /** Returns a non-negative double uniformly distributed over the interval [0.0, 1.0) */
 LIB_FUNC int erand48_r(unsigned short xsubi[3], struct drand48_data* buffer, double* result) {
 	if (__drand48_iterate(xsubi, buffer) < 0) { return -1; }
-	union ieee754_double temp;
-	temp.ieee.negative = 0;
-	temp.ieee.exponent = IEEE754_DOUBLE_BIAS;
-	temp.ieee.mantissa0 = ((unsigned short)(xsubi[2] << 4) | (unsigned short)(xsubi[1] >> 12));
-	temp.ieee.mantissa1 = ((unsigned int)(((xsubi[1] & 0xfff) << 20) | (xsubi[0] << 4)));
-	*result = temp.d - 1.0;
+	const double_shape_t temp = {
+		.ieee.negative = 0,
+		.ieee.exponent = IEEE754_DOUBLE_BIAS,
+		.ieee.mantissa0 = ((unsigned short)(xsubi[2] << 4) | (unsigned short)(xsubi[1] >> 12)),
+		.ieee.mantissa1 = ((unsigned int)(((xsubi[1] & 0xfff) << 20) | (xsubi[0] << 4)))
+	};
+	*result = temp.value - 1.0;
 	return 0;
 }
 
 
 /** Returns a non-negative double uniformly distributed over the interval [0.0, 1.0) */
 LIB_FUNC double erand48(unsigned short xsubi[3]) {
-	double result;
+	double result = 0.0;
 	(void)erand48_r(xsubi, &__libc_drand48_data, &result);
 	return result;
 }
@@ -33866,7 +33863,7 @@ LIB_FUNC double erand48(unsigned short xsubi[3]) {
 
 /** Returns a non-negative double uniformly distributed over the interval [0.0, 1.0) */
 LIB_FUNC double drand48(void) {
-	double result;
+	double result = 0.0;
 	(void)erand48_r(__libc_drand48_data.__x, &__libc_drand48_data, &result);
 	return result;
 }
@@ -33888,7 +33885,7 @@ LIB_FUNC int jrand48_r(unsigned short xsubi[3], struct drand48_data* buffer, lon
 
 /** Returns a signed long integer uniformly distributed over the interval [-2^31 , 2^31] */
 LIB_FUNC long jrand48(unsigned short xsubi[3]) {
-	long result;
+	long result = 0;
 	(void)jrand48_r(xsubi, &__libc_drand48_data, &result);
 	return result;
 }
@@ -33899,19 +33896,18 @@ LIB_FUNC long jrand48(unsigned short xsubi[3]) {
 
 
 LIB_FUNC void arc4_init(struct arc4_stream* as) {
-	register int n;
-	for (n = 0; n < 256; n++) { as->s[n] = (uint8_t)n; }
+	register int n = 0;
+	for (; n < 256; n++) { as->s[n] = (uint8_t)n; }
 	as->i = 0;
 	as->j = 0;
 }
 
 
 LIB_FUNC uint8_t arc4_getbyte(struct arc4_stream* as) {
-	uint8_t si, sj;
 	as->i = (uint8_t)(as->i + 1);
-	si = as->s[as->i];
+	const uint8_t si = as->s[as->i];
 	as->j = (uint8_t)(as->j + si);
-	sj = as->s[as->j];
+	const uint8_t sj = as->s[as->j];
 	as->s[as->i] = sj;
 	as->s[as->j] = si;
 	return (uint8_t)(as->s[(si + sj) & 0xff]);
@@ -33919,10 +33915,9 @@ LIB_FUNC uint8_t arc4_getbyte(struct arc4_stream* as) {
 
 
 LIB_FUNC void arc4_addrandom(struct arc4_stream* as, uchar* dat, const int datlen) {
-	register int n;
-	register uint8_t si;
+	register uint8_t si = 0;
 	as->i--;
-	for (n = 0; n < 256; n++) {
+	for (register int n = 0; n < 256; n++) {
 		as->i = (uint8_t)(as->i + 1);
 		si = as->s[as->i];
 		as->j = (uint8_t)(as->j + si + dat[n % datlen]);
@@ -33934,9 +33929,9 @@ LIB_FUNC void arc4_addrandom(struct arc4_stream* as, uchar* dat, const int datle
 
 
 LIB_FUNC void arc4_stir(struct arc4_stream* as) {
-	int n;
 	unsigned char rnd[128] = { 0 };
-	struct timeval tv;
+	struct timeval tv = { 0 };
+	register int n = 1;
 #   ifndef __ARC4RANDOM_USES_NODEV__
 	const int fd = open("/dev/urandom", O_RDONLY);
 	if (fd != -1) { read(fd, rnd, sizeof(rnd)); close(fd); }
@@ -33944,12 +33939,12 @@ LIB_FUNC void arc4_stir(struct arc4_stream* as) {
 #   endif
 	if (gettimeofday(&tv, NULL) != -1) {
 		rnd[0] = (unsigned char)((tv.tv_sec % 10000) * 3 + tv.tv_usec * 7 + (getpid() % 1000) * 13);
-		for (n = 1; n < 127 ; n++) {
+		for (; n < 127 ; n++) {
 			if (rnd[n] == 0) { rnd[n] = (unsigned char)((rnd[n - 1] + n) ^ ((getpid() % 1000) * 17)); }
 		}
 	} else {
 		rnd[0] = (unsigned char)((getpid() % 1000) * 19);
-		for (n = 1; n < 127 ; n++) {
+		for (; n < 127 ; n++) {
 			if (rnd[n] == 0) { rnd[n] = (unsigned char)((rnd[n - 1] + n) ^ ((getpid() % 1000) * 23)); }
 		}
 	}
@@ -33974,7 +33969,7 @@ LIB_FUNC uint8_t __arc4_getbyte(void) {
 
 
 LIB_FUNC uint32_t arc4_getword(struct arc4_stream* as) {
-	uint32_t val = (uint32_t)(arc4_getbyte(as) << 24);
+	register uint32_t val = (uint32_t)(arc4_getbyte(as) << 24);
 	val |= (uint32_t)(arc4_getbyte(as) << 16);
 	val |= (uint32_t)(arc4_getbyte(as) << 8);
 	val |= (uint32_t)arc4_getbyte(as);
@@ -33998,11 +33993,10 @@ LIB_FUNC uint32_t arc4random(void) {
 
 
 LIB_FUNC char* randname(char* template) {
-	register int i;
 	struct timespec ts = { 0 };
 	clock_gettime(CLOCK_REALTIME, &ts);
 	register unsigned long r = (unsigned long)(((unsigned long)(ts.tv_nsec * 65537) ^ (unsigned long)((unsigned long)&ts >> 4)) + (unsigned long)template);
-	for (i = 0; i < 6; i++, r >>= 5) { template[i] = (char)('A' + (r & 15) + (r & 16) * 2); }
+	for (register int i = 0; i < 6; i++, r >>= 5) { template[i] = (char)('A' + (r & 15) + (r & 16) * 2); }
 	return template;
 }
 #define __randname(template)   randname((template))
