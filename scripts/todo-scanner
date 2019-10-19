@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Scan a whole directory structure recursively and list all reminder notes (e.g. "Todo" comments)
 #' @file todo-scanner
-#' @version 2019.03.28
+#' @version 2019.10.19
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -12,9 +12,9 @@
 # GLOBAL VALUES #
 
 
-readonly COMMENT_PATTERNS="###!|##|#|#\'|\/\/\/|\/\/!|\/\/\'|\/\/|\/\*\*|\/\*!|\/\*|<!\-\-|;"
+readonly COMMENT_PATTERNS="###\\!|##|#|#\\'|\\/\\/\\/|\\/\\/\\!|\\/\\/\\'|\\/\\/|\\/\\*\\*|\\/\\*\\!|\\/\\*|<\\!\\-\\-|;"
 readonly REMINDER_PATTERN="DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX"
-readonly FILTER="[^A-Z0-9_=\\\"\'\.\?!@]*"
+readonly FILTER="[^A-Z0-9_=\\\"\\'\\.\\?\\!@]*"
 
 
 # VALIDATE PARAMETERS #
@@ -35,5 +35,5 @@ fi
 # MAIN #
 
 
-grep -E -H -i -n -o -r "^.*${FILTER}(${COMMENT_PATTERNS})[ \t]*(${REMINDER_PATTERN})[ \t]*:[ \t]*.+$" "$1" | sed -E -e "/^[^:]+\.(cfg|conf|config|ini):[0-9]+:.+=.*[^A-Z0-9]+.+$/Id; s/^([^:]+):([0-9]+):.+[^A-Z0-9_]+[ \t]*(${REMINDER_PATTERN})[ \t]*:[ \t]*(.+)$/\1:\2:\3: \4/i;"
+grep -E -H -i -n -o -r "^.*${FILTER}(${COMMENT_PATTERNS})[ \\t]*(${REMINDER_PATTERN})[ \\t]*:[ \\t]*.+$" "$1" | sed -E -e "/^[^:]+\\.(cfg|conf|config|ini):[0-9]+:.+=.*[^A-Z0-9]+.+$/Id; s/^([^:]+):([0-9]+):.+[^A-Z0-9_]+[ \\t]*(${REMINDER_PATTERN})[ \\t]*:[ \\t]*(.+)$/\\1:\\2:\\3: \\4/i;"
 exit 0
