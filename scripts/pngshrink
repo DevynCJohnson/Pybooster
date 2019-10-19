@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shrink the Size of PNG Image Files
 #' @file pngshrink
-#' @version 2019.03.28
+#' @version 2019.10.19
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -29,13 +29,29 @@ export LC_ALL='C'
 export LC_CTYPE='C'
 
 
+# FUNCTIONS #
+
+
+#' Display a graphical error message
+errMsg() {
+    if [ -z "${DESKTOP_SESSION:-}" ] || [ -z "${XDG_CURRENT_DESKTOP:-}" ]; then
+        return
+    fi
+    [ -x "$(command -v zenity)" ] && zenity --error --height=200 --text="${1}:\\nThe specified file is non-readable or non-existent\\!\\n" --title='Error: pngshrink' --width=800 2> /dev/null
+    printf '%s: The specified file is non-readable or non-existent!\n' "$1" >&2
+}
+
+
 # MAIN #
 
 
 for file in "$@"; do
     if [ ! -r "$file" ] || [ -d "$file" ]; then
-        { [ -n "${DESKTOP_SESSION:-}" ] || [ -n "${XDG_CURRENT_DESKTOP:-}" ]; } && [ -x "$(command -v zenity)" ] && zenity --error --height=200 --text="${file}:\nThe specified file is non-readable or non-existent!\n" --title='Error: pngshrink' --width=800 2> /dev/null
-        printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
+        errMsg "${file}"
     fi
-    pngcrush -brute -l 9 -rem alla -rem text -rem time -rem gAMA -rem cHRM -rem iCCP -rem sRGB "${file}" "${file%.*}_reduced.png"
+    pngcrush -brute -l 9 -rem alla -rem text -rem time -rem gAMA -rem cHRM -rem iCCP -rem sRGB "${file}" "${file%.*}_reduced.png" &
 done
+
+wait
+
+exit 0
