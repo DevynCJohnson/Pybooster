@@ -132,7 +132,7 @@ elif [ -f /proc/sys/kernel/ostype ] && [ -x "$(command -v sysctl)" ]; then
 else
     unamestr='unknown'
 fi
-if [ -n "${OSTYPE:-}" ] && [ "$PLATFORM" == 'unknown' ]; then
+if [ -n "${OSTYPE:-}" ] && [ "$PLATFORM" = 'unknown' ]; then
     PLATFORM="$(os_table "$OSTYPE")"
 elif [ "$PLATFORM" = 'unknown' ] && [ "$unamestr" != 'unknown' ]; then
     PLATFORM="$(os_table "$unamestr")"
@@ -271,7 +271,7 @@ if [ -z "${PAGER:-}" ]; then
 fi
 export MANPAGER="$PAGER"
 export SYSTEMD_PAGER="$PAGER"
-[ -z "${XDG_RUNTIME_DIR:-}" ] && [ -n "${UID:-}" ] && export XDG_RUNTIME_DIR="/run/user/${UID}"
+[ -z "${XDG_RUNTIME_DIR:-}" ] && [ -n "$(id -r -u)" ] && XDG_RUNTIME_DIR="/run/user/$(id -r -u)" && export XDG_RUNTIME_DIR
 
 
 # EDITOR VARIABLES #
