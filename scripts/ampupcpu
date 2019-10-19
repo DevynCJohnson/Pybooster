@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Set the CPU to performance mode
 #' @file ampupcpu
-#' @version 2019.03.28
+#' @version 2019.10.19
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -15,6 +15,6 @@ if [ "$(id -u)" != '0' ]; then
 elif [ -r /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
     for FILE in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
         [ ! -w "$FILE" ] && break
-        [ -w "$FILE" ] && echo -n performance > "$FILE"
+        [ -w "$FILE" ] && printf 'performance' > "$FILE"
     done
 fi
