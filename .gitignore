@@ -142,6 +142,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *.[Dd][Ss][Yy][Mm]/
 *.gcda
 *.idb
+*.opt-record.json.gz
 *.pdb
 *.pstats
 *.su
