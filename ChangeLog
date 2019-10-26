@@ -2,6 +2,11 @@
 
 	* .gitattributes:  Added more file extensions
 	* Geany:  Improved the dark CSS theme for Geany
+	* makefile:  Added more documentation packages to `LIST_DEV_DOCS`
+	* makefile:  Fixed some minor bugs
+	* makefile_constants.mk:  Fixed some minor bugs
+	* OptiCons:  Tweaked some of the OptiCons SVG files
+	* OptiView:  Fixed some bugs
 	* PyBooster:  Added OptiView
 
 2019-10-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
