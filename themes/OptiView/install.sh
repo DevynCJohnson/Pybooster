@@ -15,9 +15,9 @@ TOPDIR="$(pwd)"
 sh ./clean.sh
 
 sh -c 'cd ./gtk/src/OptiView/gtk-2.0 && sh ./render-assets.sh' &
-sh -c 'cd ./unity && sh ./render-assets.sh' &
 cd ./gtk/src/OptiView/gtk-3.0 && sh ./render-assets.sh
 cd "$TOPDIR" || exit 1
+sh -c 'cd ./unity && sh ./render-assets.sh' &
 cd ./xfwm4/src/OptiView && sh ./render-assets.sh
 cd "$TOPDIR" || exit 1
 sh -c 'cd ./gtk/src/OptiView-Dark/gtk-2.0 && sh ./render-assets.sh' &
