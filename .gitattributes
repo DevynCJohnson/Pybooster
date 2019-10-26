@@ -98,6 +98,8 @@ static/* linguist-vendored
 
 # Image Files
 
+*.bmp binary diff=exif linguist-vendored=false
+*.gif binary diff=exif linguist-vendored=false
 *.jpg binary diff=exif linguist-vendored=false
 *.png binary diff=exif linguist-vendored=false
 *.xcf binary diff=exif linguist-vendored
@@ -166,6 +168,7 @@ static/* linguist-vendored
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Ii][Nn][Ii] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.theme.in text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Jj][Ss][Oo][Nn] text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
 *.less text eol=lf linguist-language=Less linguist-vendored=false
 *.limbo text eol=lf linguist-language=Limbo linguist-vendored=false
@@ -227,6 +230,8 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.[Ss][Vv][Gg] text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
+*.cursor text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
+cursorList text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 *.tags text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
