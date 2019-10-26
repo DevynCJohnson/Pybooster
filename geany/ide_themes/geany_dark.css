@@ -27,6 +27,7 @@
 #GeanyToolbar{margin:0px}
 #GeanyToolbar toolbutton>button{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
 #GeanyToolbar toolbutton>entry{margin-bottom:0px;margin-top:0px;padding-bottom:0px;padding-top:0px}
+button.flat{background-color:unset}
 
 /* Text Entries */
 
