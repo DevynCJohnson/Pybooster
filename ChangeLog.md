@@ -1,3 +1,46 @@
+# 2019-10-26  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **.gitattributes:**  Added more file extensions
+- **Geany:**  Improved the dark CSS theme for Geany
+- **makefile:**  Added more documentation packages to `LIST_DEV_DOCS`
+- **makefile:**  Fixed some minor bugs
+- **makefile_constants.mk:**  Fixed some minor bugs
+- **OptiCons:**  Tweaked some of the OptiCons SVG files
+- **OptiView:**  Fixed some bugs
+- **PyBooster:**  Added OptiView
+
+# 2019-10-23  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **.gitignore:**  Added the `*.opt-record.json.gz` file extension
+- **ampupcpu:**  Fixed Posix-compliance issues
+- **cleansystem:**  Added more file-patterns
+- **makefile:**  Added additional packages to `LIST_DEV_DEPS`
+- **makefile_constants.mk:**  Removed an obsolete parameter from `GCC_PARAMS`
+- **pngshrink:**  Applied some minor tweaks
+- **profile:**  Fixed some minor bugs
+- **todo-scanner:**  Fixed Posix-compliance issues
+
+# 2019-10-12  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS*.h:**  Applied improvements & additional optimizations
+
+# 2019-10-11  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **.gitignore:**  Added pre-compiled Objective-C headers
+- **Geany:**  Added accessibility information to some of the widgets
+- **MACROS*.h:**  Applied fixes, minor micro-optimizations, & removed useless functions
+- **makefile:**  Applied minor tweaks
+- **makefile_constants.mk:**  Added compiler arguments for linking the `_start()` function
+- **makefile_constants.mk:**  Improved the logic for setting-up Clang
+- **makefile_constants.mk:**  Integrated support for ccache
+- **start_x86_64.s:**  Improved the declaration of `_start`
+
+# 2019-10-10  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **alphabetize_lines:**  Added another delimiter pattern
+- **Geany:**  Added more tags, fixed some tags, add support for Kotlin, & tweaked support for other languages in Geany
+- **gcc.devhelp2:**  Added more links to the GCC Devhelp file
+
 # 2019-10-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **Geany:**  Added more keywords for Jinja templates
