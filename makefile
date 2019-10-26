@@ -951,7 +951,7 @@ uninstall_themes : uninstall_loginopticons uninstall_opticons
 install_uca :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Thunar Custom Actions ==='
 	if [ "$(UID)" == '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
-	([ -n $(shell command -p -v thunar) ] && $(COPY) $(ACCDIR)/uca.xml ~/.config/Thunar/uca.xml) || true
+	([ -n $(shell bash -c 'command -p -v thunar') ] && $(COPY) $(ACCDIR)/uca.xml ~/.config/Thunar/uca.xml) || true
 
 uninstall_uca :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Thunar Custom Actions ==='

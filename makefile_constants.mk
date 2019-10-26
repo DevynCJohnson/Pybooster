@@ -107,14 +107,14 @@ override MKDIRS::=mkdir -m 755 -p
 override MOVE::=mv -f
 override PYDOC::=python3 -m pydoc
 override RMDIR::=rm -f -r
-override is_UPDATEICONCACHE_present::=$(shell command -p -v gtk-update-icon-cache)
+override is_UPDATEICONCACHE_present::=$(shell bash -c 'command -p -v gtk-update-icon-cache')
 ifneq ($(is_UPDATEICONCACHE_present),'')
     override UPDATEICONCACHE::=gtk-update-icon-cache --force --include-image-data --quiet
 else
     override UPDATEICONCACHE::=printf '\x1b[31mgtk-update-icon-cache: command not found!\x1b[0m\n' #
 endif
-override is_UPDATEDESKTOP_present::=$(shell command -p -v update-desktop-database)
-override is_UPDATEMIME_present::=$(shell command -p -v update-mime-database)
+override is_UPDATEDESKTOP_present::=$(shell bash -c 'command -p -v update-desktop-database')
+override is_UPDATEMIME_present::=$(shell bash -c 'command -p -v update-mime-database')
 ifneq ($(is_UPDATEDESKTOP_present),'')
     override UPDATEDESKTOP::=update-desktop-database
 else
@@ -125,7 +125,7 @@ ifneq ($(is_UPDATEMIME_present),'')
 else
     override UPDATEMIME::=printf '\x1b[31mupdate-mime-database: command not found!\x1b[0m\n' #
 endif
-override is_XDGMIME_present::=$(shell command -p -v xdg-mime)
+override is_XDGMIME_present::=$(shell bash -c 'command -p -v xdg-mime')
 ifneq ($(is_XDGMIME_present),'')
     override XDGMIME::=xdg-mime
 else
@@ -146,7 +146,7 @@ WINDRES::=
 YACC::=yacc
 YFLAGS::=
 
-override COMPILER_CCACHE::=$(shell command -v ccache)
+override COMPILER_CCACHE::=$(shell bash -c 'command -v ccache')
 
 
 # Flag used to indicate that Clang should be used
