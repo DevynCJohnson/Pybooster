@@ -1,0 +1,93 @@
+// GTK NAMED COLORS //
+
+// Widget text/foreground color
+@define-color theme_fg_color #{"" + $fg_color};
+
+// Text color for entries, views, and content in general
+@define-color theme_text_color #{"" + $text_color};
+
+// Widget base background color
+@define-color theme_bg_color #{"" + $bg_color};
+
+// Text widgets and the like base background color
+@define-color theme_base_color #{"" + $base_color};
+
+// Base background color of selections
+@define-color theme_selected_bg_color #{"" + $selected_bg_color};
+
+// Text/foreground color of selections
+@define-color theme_selected_fg_color #{"" + $selected_fg_color};
+
+// Base background color of insensitive widgets
+@define-color insensitive_bg_color #{"" + $insensitive_bg_color};
+
+// Text foreground color of insensitive widgets
+@define-color insensitive_fg_color #{"" + $insensitive_fg_color};
+
+// Insensitive text widgets and the like base background color
+@define-color insensitive_base_color #{"" + $base_color};
+
+// Widget text/foreground color on backdrop windows
+@define-color theme_unfocused_fg_color #{"" + $backdrop_fg_color};
+
+// Text color for entries, views, and content in general on backdrop windows
+@define-color theme_unfocused_text_color #{"" + $text_color};
+
+// Widget base background color on backdrop windows
+@define-color theme_unfocused_bg_color #{"" + $backdrop_bg_color};
+
+// Text widgets and the like base background color on backdrop windows
+@define-color theme_unfocused_base_color #{"" + $backdrop_base_color};
+
+// Base background color of selections on backdrop windows
+@define-color theme_unfocused_selected_bg_color #{"" + $selected_bg_color};
+
+// Text/foreground color of selections on backdrop windows
+@define-color theme_unfocused_selected_fg_color #{"" + $selected_fg_color};
+
+// Wwidgets main borders color
+@define-color borders #{"" + $borders_color};
+
+// Widgets main borders color on backdrop windows
+@define-color unfocused_borders #{"" + $backdrop_borders_color};
+
+@define-color warning_color #{"" + $warning_color};
+
+@define-color error_color #{"" + $error_color};
+
+@define-color success_color #{"" + $success_color};
+
+@define-color destructive_color #{"" + $destructive_color}
+
+
+// Window-Manager
+
+@define-color _wm_highlight #{"" + $_wm_highlight};
+
+@define-color wm_title shade(#{$fg_color}, 1.8);
+
+@define-color wm_unfocused_title #{$backdrop_fg_color};
+
+@define-color wm_highlight #{"" + $_wm_highlight};
+
+@define-color wm_borders_edge #{"" + $borders_edge};
+
+@define-color wm_bg_a shade(#{$bg_color}, 1.2);
+
+@define-color wm_bg_b #{$bg_color};
+
+@define-color wm_shadow alpha(black, 0.35);
+
+@define-color wm_border alpha(black, 0.18);
+
+@define-color wm_button_hover_color_a shade(#{$bg_color}, 1.3);
+
+@define-color wm_button_hover_color_b #{$bg_color};
+
+@define-color wm_button_active_color_a shade(#{$bg_color}, 0.85);
+
+@define-color wm_button_active_color_b shade(#{$bg_color}, 0.89);
+
+@define-color wm_button_active_color_c shade(#{$bg_color}, 0.9);
+
+@define-color content_view_bg #{"" + $base_color};

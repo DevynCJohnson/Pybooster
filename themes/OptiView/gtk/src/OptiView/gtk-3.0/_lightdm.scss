@@ -1,0 +1,144 @@
+// Lightdm Styling
+
+
+// Panel widget at the top
+#panel_window {
+  background-color: $dark_bg_color;
+  color: $dark_fg_color;
+  box-shadow: none;
+  border-style: none;
+
+  // Menubars/Menus of the panel (i.e. indicators)
+  menubar,
+  menubar > menuitem {
+    color: $dark_fg_color;
+    box-shadow: none;
+    border-style: none;
+
+    &:active, &:checked, &:hover {
+      border-style: none;
+      background-color: transparentize(white, 0.8);
+    }
+  }
+
+  menubar menuitem:disabled {
+    color: transparentize($dark_fg_color, 0.5);
+
+    label {
+      color: inherit;
+    }
+  }
+
+  menubar menu > menuitem {
+    font-style: normal;
+  }
+}
+
+// Login window
+#login_window,
+#shutdown_dialog,
+#restart_dialog {
+  font-style: normal;
+  border-style: none;
+  background-color: $bg_color;
+  color: $fg_color;
+}
+
+// Top half of the login-window (i.e. the content)
+#content_frame {
+  padding-bottom: 16px;
+  background-color: $bg_color;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: solid transparentize(black, 0.9);
+  border-width: 1px 1px 0px 1px;
+}
+
+#content_frame button {
+  @include button(normal);
+
+  &:hover {
+    @include button(hover);
+  }
+
+  &:active, &:checked {
+    @include button(active);
+  }
+
+  &:disabled {
+    @include button(insensitive);
+  }
+}
+
+// Lower half of the login-window (i.e. the buttonbox or action area)
+#buttonbox_frame {
+  padding-top: 16px;
+  padding-bottom: 0px;
+  border-style: none;
+  background-color: darken($bg_color, 5%);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: solid transparentize(black, 0.9);
+  border-width: 1px;
+}
+
+#buttonbox_frame button {
+  @include button(normal);
+
+  &:hover {
+    @include button(hover);
+  }
+
+  &:active, &:checked {
+    @include button(active);
+  }
+
+  &:disabled {
+    @include button(insensitive);
+  }
+}
+
+#login_window #user_combobox {
+  color: $fg_color;
+
+  menu {
+    font-style: normal;
+  }
+}
+
+// User's avatar box
+#user_image {
+  padding: 4px;
+  border-radius: 2px;
+}
+
+// Shutdown button
+#shutdown_button.button {
+  @include button(normal, $destructive_color);
+
+  &:hover {
+    @include button(hover, lighten($destructive_color, 10%));
+  }
+
+  &:active, &:checked {
+    @include button(active, darken($destructive_color, 10%));
+  }
+}
+
+// Restart button
+#restart_button.button {
+  @include button(normal, $selected_bg_color);
+
+  &:hover {
+    @include button(hover, lighten($selected_bg_color, 10%));
+  }
+
+  &:active, &:checked {
+    @include button(active, darken($selected_bg_color, 10%));
+  }
+}
+
+// Warning for invalid passwords or PAM issues
+#greeter_infobar {
+  border-bottom-width: 0px;
+}

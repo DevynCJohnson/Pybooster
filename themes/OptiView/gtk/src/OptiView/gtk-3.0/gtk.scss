@@ -1,0 +1,12 @@
+// To obtain the inverse of a color use the `@if` directive to match for dark `$variant`
+
+$variant: "light";
+$dark_header: "false";
+
+@import "colors";
+@import "variables";
+@import "drawing";
+@import "common";
+@import "colors-public";
+@import "apps";
+@import "lightdm";

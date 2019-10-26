@@ -1,0 +1,45 @@
+// Titlebutton Sizes
+$titlebutton-width: 64px;
+$titlebutton-height: 64px;
+$titlebutton-padding: 8px;
+
+// Scrollbars
+$_slider_min_length: 40px;
+$_scrollbar_size: 16px;
+$_overlay_size: 8px;
+
+// Radius
+$button-radius: 1px;
+$window-radius: 4px;
+$circular_radius: 128px;
+$scale_radius: 16px;
+
+// Duration
+$shortest_duration: 100ms;
+$shorter_duration: 150ms;
+$longer_duration: 250ms;
+
+// Timing Function
+$deceleration_curve: cubic-bezier(0, 0, 0.2, 1);
+
+// Button Shadows
+$standard-box-shadow: 0px 0px 4px 0px $box_shadow_color;
+$shadow-color: transparentize(black, 0.92);
+$shadow-color-hover: transparentize(black, 0.86);
+$inset-color: if($variant == "light", transparentize(white, 0.6), transparentize(white, 0.94));
+
+$shadow_normal: 1px 0px $shadow-color, 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+
+$shadow_hover: 1px 0px $shadow-color-hover, 0px 1px $shadow-color-hover, -1px 0px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+
+$shadow_active: inset 1px 0px $shadow-color, inset 0px 1px $shadow-color, inset -1px 0px $shadow-color, inset 0px -1px $shadow-color;
+
+$shadow_focus: $shadow_normal;
+
+// Linked Button Shadows
+$btn-shadow-middle: 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-middle-hover: 0px 1px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-left: 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-left-hover: 0px 1px $shadow-color-hover, -1px 0px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-right: 1px 0px $shadow-color, 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-right-hover: 1px 0px $shadow-color-hover, 0px 1px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;

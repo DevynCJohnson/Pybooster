@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.10.11
+#' @version 2019.10.25
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -94,8 +94,8 @@ override LIST_MAIN_DEPS::=apcalc aspell bsdmainutils bsdutils clang cloc colorma
 # Search Parameters Used in Find
 
 override CHMOD644_NO_SEARCH::=$(ACCDIR) $(BIN) $(DOCDIR) $(GEANYDIR) $(INCDIR) $(SCRIPTSRCDIR) $(SHRCDIR) $(SRCDIR) $(TESTINGDIR) $(THEMEDIR)
-override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.build *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.csv *.cu *.cuda *.cursor *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.f03 *.F03 *.f08 *.F08 *.f77 *.F77 *.f90 *.F90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
-override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors-White/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors/*" \)
+override LIST_CHMOD644_EXT::=*.auk *.awk *.b *.bat *.bf *.bison *.btm *.build *.c *.cfg *.cmd *.cml *.coffee *.conf *.config *.cpp *.css *.csv *.cu *.cuda *.cursor *.d *.desktop *.devhelp *.devhelp2 *.dgml *.di *.dtd *.f *.F *.F03 *.f03 *.f08 *.F08 *.F77 *.f77 *.F90 *.f90 *.f95 *.F95 *.for *.fortan *.fpp *.ftn *.glade *.go *.golang *.h *.htm *.html *.hx *.icon *.js *.json *.lang *.less *.limbo *.lua *.m4 *.mathml *.matlab *.md *.mk *.ml *.mlab *.mli *.mll *.mly *.mml *.nt *.numpy *.octave *.php *.php4 *.php5 *.php6 *.php7 *.rb *.reg *.rng *.rst *.sass *.scss *.svg *.swg *.tcl *.theme *.theme.in *.types *.wasm *.xht *.xlst *.xml *.xsd *.xsl *.y *.yaml *.yml *.yy *.yy *AUTHORS .editorconfig .eslintrc .gitattributes .gitignore .gitlint .gitmodules .pylintrc CHANGELOG ChangeLog Doxyfile icon-theme.cache LICENSE PKG-INFO README THANKS TODO
+override EXCLUDE_FROM_FIND::=-not \( -path "$(DBDIR)/*" -o -path "$(DOCDIR)/*" -o -path "$(GEANYDIR)/*" -o -path "$(SCHEMASDIR)/*" -o -path "./screenshots/*" -o -path "$(THEMEDIR)/LoginOpticons/*" -o -path "$(THEMEDIR)/Opticons/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors-White/*" -o -path "$(THEMEDIR)/Optimal-Cursors/Optimal-Cursors/*" -o -path "$(THEMEDIR)/OptiView/*" \)
 
 
 # HELP #
@@ -120,6 +120,7 @@ help :
 	printf '%s\n\t%s\n' 'Linux Driver Module for Clevo Keyboard Backlights:' 'sudo make install_dkms_clevo_kbd_backlight'
 	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
 	printf '%s\n\t%s\n' 'Opticons:' 'sudo make install_opticons'
+	printf '%s\n\t%s\n' 'OptiView:' 'sudo make install_optiview'
 	printf '%s\n\t%s\n' 'Optimal Cursors:' 'sudo make install_optimal_cursors'
 	printf '%s\n\t%s\n' 'Python Eggs:' 'sudo make install_pyeggs'
 	printf '%s\n\t%s\n' 'Python Libraries:' 'sudo make install_pylib'
@@ -210,7 +211,7 @@ default :
 # Documentation
 .PHONY : cleandoc doc docc docpy doxy manpages
 # General Project Utilities
-.PHONY : getdeps getdeps_all getdeps_pip getdocs update_doccmt_keywords update_reminders upver
+.PHONY : getdeps getdeps_all getdeps_pip getdocs setup_dev_gtk update_doccmt_keywords update_reminders upver
 # Clean-up
 .PHONY : clean cleanall cleanfull fixperm refresh rmcache rmtmp
 # Git
@@ -220,9 +221,9 @@ default :
 # Uninstall DKMS Driver Modules
 .PHONY : uninstall_dkms_clevo_kbd_backlight
 # Install
-.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_devhelp install_dev install_geany_conf install_loginopticons install_mimetype_booster install_langspecs install_nanorc install_opticons install_optimal_cursors install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_devhelp install_geany_conf install_langspecs install_loginopticons install_mimetype_booster install_nanorc install_opticons install_optimal_cursors install_optiview install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_devhelp uninstall_dev uninstall_loginopticons uninstall_mimetype_booster uninstall_langspecs uninstall_opticons uninstall_optimal_cursors uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_devhelp uninstall_langspecs uninstall_loginopticons uninstall_mimetype_booster uninstall_opticons uninstall_optimal_cursors uninstall_optiview uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify replace_repos secure uninstall_geofiles unmacify update_geofiles
 
@@ -341,6 +342,10 @@ pkgzip : rmtmp
 # GENERAL PROJECT UTILITIES #
 
 
+setup_dev_gtk :
+	@gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+
+
 getdeps : getdeps_pip
 	@([ -d /etc/apt ] && [ -x "$(command -v apt-get)" ] && (apt-get install $(LIST_MAIN_DEPS) && printf 'If desired, execute `\x1b[4;33msudo add-apt-repository ppa:geany-dev/ppa\x1b[0m`\n' || true)) || \
 	([ -d /etc/dnf ] && [ -x "$(command -v dnf)" ] && (dnf install $(LIST_MAIN_DEPS) || true)) || \
@@ -416,6 +421,8 @@ fixperm :
 	find $(ACCDIR) $(GEANYDIR) $(THEMEDIR) -mount -type f -exec $(CHMOD) 644 '{}' +
 	([ -d $(DOCDIR)/ ] && find $(DOCDIR) -mount -type f -exec $(CHMOD) 644 '{}' +) || true
 	find $(PYEGGDIR) -mount -type f -name "*.py" -exec $(CHMOD) 755 '{}' +
+	find $(THEMEDIR)/OptiView -mount -type f \( -name "*.build" -o -name "*.scss" -o -name "*.svg" -o -name "*.theme" -o -name "*.theme.in" \) -exec $(CHMOD) 644 '{}' +
+	find $(THEMEDIR)/OptiView -mount -type f -name "*.sh" -exec $(CHMOD) 755 '{}' +
 	$(CHMOD) 644 $(DBDIR)/* $(INCDIR)/* $(SHRCDIR)/* $(SRCDIR)/* $(PYSRC)/*.py $(EZWINSRC)/*.py "$(THEMEDIR)/Optimal-Cursors/src/cursorList"
 	$(CHMOD) 755 $(BIN)/* $(SCRIPTSRCDIR)/* $(TOOLSDIR)/*.sh $(PYSRC)/ezdisplay.py $(EZWINSRC)/ezwin.py || true
 
@@ -786,6 +793,16 @@ uninstall_opticons :
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	([ -d $(SYSTHEMEDIR)/Opticons/ ] && $(RMDIR) $(SYSTHEMEDIR)/Opticons/ && $(UPDATEMIME) $(SYSMIMEDIR)) || true
 	[ -x "$(command -v update-alternatives)" ] && update-alternatives --set start-here.svg /etc/alternatives/start-here.svg
+
+install_optiview :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing OptiView ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	(cd "$(THEMEDIR)/OptiView" && sh ./install.sh) || true
+
+uninstall_optiview :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling OptiView ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RMDIR) /usr/share/themes/OptiView /usr/share/themes/OptiView-Dark /usr/share/themes/OptiView-shell || true
 
 install_optimal_cursors :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Optimal-Cursors ==='

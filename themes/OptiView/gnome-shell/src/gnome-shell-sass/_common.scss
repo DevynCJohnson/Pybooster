@@ -1,0 +1,2708 @@
+$panel-corner-radius: 0px;
+$small_radius: 2px;
+$medium_radius: 4px;
+$large_radius: 16px;
+
+// GLOBALS
+$font-size: 10;
+$font-family: Roboto, Ubuntu, Sans-Serif;
+$_bubble_bg_color: opacify($osd_bg_color, 0.25);
+$_bubble_fg_color: $osd_fg_color;
+$_bubble_borders_color: transparentize($osd_fg_color, 0.8);
+$button_bg: transparentize(white, 0.86);
+
+// Overview button/normal entry color
+$button_hover: transparentize(white, 0.8);
+$button_border: transparentize(white, 0.68);
+$button_top_hilight: inset 0 1px rgba(255, 255, 255, 0.06);
+
+// Overview button/normal entry top hilight color
+$short-duration: 100ms;
+$long-duration: 200ms;
+
+stage {
+  font-family: $font-family;
+
+  @include fontsize($font-size);
+
+  color: $fg_color;
+}
+
+// WIDGETS
+
+// Buttons
+.button {
+  border-radius: $small_radius;
+  border-width: 1px;
+  padding: 4px 32px;
+
+  @include button(normal);
+
+  &:hover {
+    @include button(hover);
+  }
+
+  &:focus {
+    @include button(focus);
+  }
+
+  &:focus:hover {
+    @include button(focushover);
+  }
+
+  &:insensitive {
+    @include button(insensitive);
+  }
+
+  &:active {
+    @include button(active);
+  }
+}
+
+.modal-dialog-linked-button {
+  border-width: 0px;
+  box-shadow: none !important;
+
+  @include button(normal);
+
+  &:hover {
+    @include button(hover);
+  }
+
+  &:insensitive {
+    @include button(insensitive);
+  }
+
+  &:active {
+    @include button(active);
+  }
+
+  &:focus {
+    @include button(focus);
+  }
+
+  &:focus:hover {
+    @include button(focushover);
+  }
+
+  padding: 12px;
+
+  &:first-child {
+    border-radius: 0 0 0 $medium_radius;
+  }
+
+  &:last-child {
+    border-right-width: 0px;
+    border-radius: 0 0 $medium_radius 0;
+  }
+
+  &:first-child:last-child {
+    border-right-width: 0px;
+    border-radius: 0 0 $medium_radius $medium_radius;
+  }
+}
+
+// Entries
+StEntry {
+  border-radius: $small_radius;
+  padding: 4px;
+  border-width: 0px;
+  color: $_bubble_fg_color;
+
+  @include entry(normal);
+
+  &:hover {
+    @include entry(hover);
+  }
+
+  &:focus {
+    @include entry(focus, $fc: transparentize($fg_color, 0.5));
+  }
+
+  &:insensitive {
+    @include entry(insensitive);
+  }
+
+  selection-background-color: $selected_bg_color;
+  selected-color: $selected_fg_color;
+
+  StIcon.capslock-warning {
+    icon-size: 16px;
+    warning-color: $warning_color;
+    padding: 0px 4px;
+  }
+}
+
+// Scrollbars
+
+StScrollView {
+  &.vfade {
+    -st-vfade-offset: 64px;
+  }
+
+  &.hfade {
+    -st-hfade-offset: 64px;
+  }
+}
+
+StScrollBar {
+  padding: 0px;
+
+  StScrollView & {
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  StBin#trough {
+    border-radius: $large_radius;
+    background-color: transparent;
+  }
+
+  StButton#vhandle, StButton#hhandle {
+    border-radius: $large_radius;
+    background-color: mix($fg_color, $bg_color, 60%);
+    margin: 2px;
+
+    &:hover {
+      background-color: mix($fg_color, $bg_color, 80%);
+    }
+
+    &:active {
+      background-color: $selected_bg_color;
+    }
+  }
+}
+
+// Slider
+.slider {
+  height: 1em;
+  -barlevel-height: 0.3em;
+  -barlevel-background-color: lighten($insensitive_bg_color, 5%);
+  -barlevel-border-color: transparent;
+  -barlevel-active-background-color: darken($selected_bg_color, 15%);
+  -barlevel-active-border-color: transparent;
+  -barlevel-overdrive-color: $destructive_color;
+  -barlevel-overdrive-border-color: darken($destructive_color, 10%);
+  -barlevel-overdrive-separator-width: 0.2em;
+  -barlevel-border-width: 0px;
+  -slider-handle-radius: 8px;
+  -slider-height: 0.3em;
+  -slider-background-color: lighten($insensitive_bg_color, 5%);
+  -slider-border-color: transparent;
+  -slider-active-background-color: darken($selected_bg_color, 15%);
+  -slider-active-border-color: transparent;
+  -slider-border-width: 0;
+}
+
+// Check Boxes
+.check-box {
+  StBoxLayout {
+    spacing: .8em;
+  }
+
+  StBin {
+    width: 24px;
+    height: 22px;
+    background-image: url("checkbox-off.svg");
+  }
+
+  &:focus StBin {
+    background-image: url("checkbox-off.svg");
+  }
+
+  &:checked StBin {
+    background-image: url("checkbox.svg");
+  }
+
+  &:focus:checked StBin {
+    background-image: url("checkbox.svg");
+  }
+}
+
+// Switches
+.toggle-switch {
+  width: 52px;
+  height: 24px;
+  background-size: contain;
+  background-image: url("switch-off.svg");
+
+  &:checked {
+    background-image: url("switch-on.svg");
+  }
+}
+
+// Links
+.shell-link {
+  color: $link_color;
+
+  &:hover {
+    color: lighten($link_color, 10%);
+  }
+}
+
+// Modal Dialogs
+
+.headline {
+  font-size: 110%;
+}
+
+.lightbox {
+  background-color: black;
+}
+
+.flashspot {
+  background-color: white;
+}
+
+%modal {
+  border-radius: $medium_radius;
+  color: $osd_fg_color;
+  background-color: $bg_color;
+  border: none;
+}
+
+.modal-dialog {
+  @extend %modal;
+
+  .modal-dialog-content-box {
+    padding: 24px;
+  }
+
+  .run-dialog-entry {
+    width: 20em;
+    margin-bottom: 6px;
+  }
+
+  .run-dialog-error-box {
+    padding-top: 16px;
+    spacing: 4px;
+  }
+
+  .run-dialog-button-box {
+    padding-top: 1em;
+  }
+
+  .run-dialog-label {
+    @include fontsize($font-size + 1.1);
+
+    font-weight: bold;
+    color: darken($osd_fg_color, 10%);
+    padding-bottom: .4em;
+  }
+}
+
+.mount-dialog-subject,
+.end-session-dialog-subject {
+  @include fontsize($font-size * 1.3);
+}
+
+// Message Dialog
+.message-dialog-main-layout {
+  padding: 8px 16px 0px;
+  spacing: 8px;
+}
+
+.message-dialog-content {
+  max-width: 28em;
+  spacing: 16px;
+}
+
+.message-dialog-icon {
+  min-width: 48px;
+  icon-size: 48px;
+}
+
+.message-dialog-title {
+  font-weight: bold;
+}
+
+.message-dialog-subtitle {
+  color: darken($fg_color, 40%);
+  font-weight: bold;
+}
+
+// End Session Dialog
+
+.end-session-dialog {
+  spacing: 42px;
+}
+
+.end-session-dialog-list {
+  padding-top: 20px;
+}
+
+.end-session-dialog-layout {
+  padding-left: 16px;
+
+  &:rtl {
+    padding-right: 16px;
+  }
+}
+
+.end-session-dialog-description {
+  width: 28em;
+  padding-bottom: 8px;
+
+  &:rtl {
+    text-align: right;
+  }
+}
+
+.end-session-dialog-warning {
+  width: 28em;
+  color: $warning_color;
+  padding-top: 8px;
+
+  &:rtl {
+    text-align: right;
+  }
+}
+
+.end-session-dialog-logout-icon {
+  border-radius: 99px;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+}
+
+.end-session-dialog-shutdown-icon {
+  color: $fg_color;
+  width: 48px;
+  height: 48px;
+}
+
+.end-session-dialog-inhibitor-layout {
+  spacing: 16px;
+  max-height: 200px;
+  padding-right: 64px;
+  padding-left: 64px;
+}
+
+.end-session-dialog-session-list,
+.end-session-dialog-app-list {
+  spacing: 1em;
+}
+
+.end-session-dialog-list-header {
+  font-weight: bold;
+
+  &:rtl {
+    text-align: right;
+  }
+}
+
+.end-session-dialog-app-list-item,
+.end-session-dialog-session-list-item {
+  spacing: 1em;
+}
+
+.end-session-dialog-app-list-item-name,
+.end-session-dialog-session-list-item-name {
+  font-weight: bold;
+}
+
+.end-session-dialog-app-list-item-description {
+  color: darken($fg_color, 5%);
+  font-size: 10pt;
+}
+
+// ShellMountOperation Dialogs
+
+.shell-mount-operation-icon {
+  icon-size: 48px;
+}
+
+.mount-dialog {
+  spacing: 24px;
+
+  .message-dialog-title {
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-bottom: 8px;
+    max-width: 34em;
+  }
+
+  .message-dialog-title:rtl {
+    padding-left: 0px;
+    padding-right: 16px;
+  }
+
+  .message-dialog-body {
+    padding-left: 16px;
+    width: 28em;
+  }
+
+  .message-dialog-body:rtl {
+    padding-left: 0px;
+    padding-right: 16px;
+  }
+}
+
+.mount-dialog-app-list {
+  max-height: 200px;
+  padding-top: 16px;
+  padding-left: 49px;
+  padding-right: 32px;
+}
+
+.mount-dialog-app-list:rtl {
+  padding-right: 49px;
+  padding-left: 32px;
+}
+
+.mount-dialog-app-list-item {
+  color: darken($fg_color, 10%);
+
+  &:hover {
+    color: $fg_color;
+  }
+
+  &:ltr {
+    padding-right: 1em;
+  }
+
+  &:rtl {
+    padding-left: 1em;
+  }
+}
+
+.mount-dialog-app-list-item-icon {
+  &:ltr {
+    padding-right: 16px;
+  }
+
+  &:rtl {
+    padding-left: 16px;
+  }
+}
+
+.mount-dialog-app-list-item-name {
+  font-size: 10pt;
+}
+
+// Password or Authentication Dialog
+
+.prompt-dialog {
+  width: 34em;
+  border: 3px solid $_bubble_borders_color;
+
+  .message-dialog-main-layout {
+    spacing: 16px;
+    padding: 8px;
+  }
+
+  .message-dialog-content {
+    spacing: 16px;
+  }
+
+  .message-dialog-title {
+    color: darken($osd_fg_color, 25%);
+  }
+}
+
+.prompt-dialog-description:rtl {
+  text-align: right;
+}
+
+.prompt-dialog-password-box {
+  spacing: 1em;
+  padding-bottom: 1em;
+}
+
+.prompt-dialog-error-label {
+  font-size: 10pt;
+  color: $warning_color;
+  padding-bottom: 8px;
+}
+
+.prompt-dialog-info-label {
+  font-size: 10pt;
+  padding-bottom: 8px;
+}
+
+.hidden {
+  color: rgba(0, 0, 0, 0);
+}
+
+.prompt-dialog-null-label {
+  font-size: 10pt;
+  padding-bottom: 8px;
+}
+
+.prompt-dialog-null-label {
+  font-size: 10pt;
+  padding-bottom: 8px;
+}
+
+.prompt-dialog-pim-box {
+  spacing: 1em;
+}
+
+.prompt-dialog-grid {
+  spacing-rows: 16px;
+  spacing-columns: 1em;
+}
+
+.prompt-dialog-keyfiles-box {
+  spacing: 1em;
+}
+
+.prompt-dialog-button.button {
+  padding: 8px;
+}
+
+// Polkit Dialog
+
+.polkit-dialog-user-layout {
+  padding-left: 8px;
+  spacing: 8px;
+
+  &:rtl {
+    padding-left: 0px;
+    padding-right: 8px;
+  }
+}
+
+.polkit-dialog-user-root-label {
+  color: $warning_color;
+}
+
+.polkit-dialog-user-icon {
+  border-radius: 99px;
+  background-size: contain;
+  width: 48px;
+  height: 48px;
+}
+
+// Audio selection dialog
+.audio-device-selection-dialog {
+  spacing: 32px;
+}
+
+.audio-selection-content {
+  spacing: 16px;
+  padding: 16px;
+}
+
+.audio-selection-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.audio-selection-box {
+  spacing: 16px;
+}
+
+.audio-selection-device {
+  border: 1px solid $_bubble_borders_color;
+  border-radius: $large_radius;
+
+  &:active, &:hover, &:focus {
+    background-color: $selected_bg_color;
+  }
+}
+
+.audio-selection-device-box {
+  padding: 16px;
+  spacing: 16px;
+}
+
+.audio-selection-device-icon {
+  icon-size: 64px;
+}
+
+// Access Dialog
+.access-dialog {
+  spacing: 32px;
+}
+
+// Geolocation Dialog
+.geolocation-dialog {
+  spacing: 32px;
+}
+
+// Extension Dialog
+.extension-dialog {
+  .message-dialog-main-layout {
+    spacing: 16px;
+    padding: 8px;
+  }
+
+  .message-dialog-title {
+    color: darken($osd_fg_color, 25%);
+  }
+}
+
+// Inhibit-Shortcuts Dialog
+.inhibit-shortcuts-dialog {
+  spacing: 32px;
+}
+
+// Network Agent Dialog
+
+.network-dialog-secret-table {
+  spacing-rows: 16px;
+  spacing-columns: 1em;
+}
+
+.keyring-dialog-control-table {
+  spacing-rows: 16px;
+  spacing-columns: 1em;
+}
+
+// Popovers/Menus
+
+.popup-menu {
+  min-width: 16em;
+
+  .popup-menu-arrow {}
+
+  .popup-sub-menu {
+    padding-bottom: 1px;
+    background-color: lighten($borders_color, 4%);
+    box-shadow: inset 0px -1px 0px lighten($borders_color, 5%);
+  }
+
+  .popup-menu-content {
+    padding: 1em 0em;
+  }
+
+  .popup-menu-item {
+    spacing: 4px;
+
+    &:ltr {
+      padding: .4em 1.75em .4em 0em;
+    }
+
+    &:rtl {
+      padding: .4em 0em .4em 1.75em;
+    }
+
+    &:checked {
+      background-color: lighten($borders_color, 4%);
+      box-shadow: inset 0 1px 0px lighten($borders_color, 5%);
+      font-weight: bold;
+    }
+
+    &.selected {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    &:active {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    &:insensitive {
+      color: transparentize($fg_color, 0.5);
+    }
+  }
+
+  .popup-inactive-menu-item {
+    color: $fg_color;
+
+    &:insensitive {
+      color: transparentize($fg_color, 0.5);
+    }
+  }
+
+  &.panel-menu {
+    -boxpointer-gap: 0px;
+    margin-bottom: 1.75em;
+  }
+}
+
+.popup-menu-ornament {
+  text-align: right;
+  width: 1.2em;
+}
+
+.popup-menu-boxpointer,
+.candidate-popup-boxpointer {
+  -arrow-border-radius: $small_radius;
+  -arrow-background-color: $bg_color;
+  -arrow-border-width: 1px;
+  -arrow-border-color: lighten($borders_color, 6%);
+  -arrow-base: 0;
+  -arrow-rise: 0;
+}
+
+.popup-separator-menu-item {
+  height: 1px;
+  margin: 4px 0px;
+  background-color: transparent;
+  border-color: transparentize($borders_color, 0.8);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+// Background Menu
+.background-menu {
+  -boxpointer-gap: 4px;
+  -arrow-rise: 0px;
+}
+
+// App Icons
+
+.lowres-icon {
+  icon-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.icon-dropshadow {
+  icon-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+// OSD
+.osd-window {
+  text-align: center;
+  font-weight: bold;
+  spacing: 1em;
+  margin: 32px;
+  min-width: 64px;
+  min-height: 64px;
+
+  .osd-monitor-label {
+    font-size: 3em;
+  }
+
+  .level {
+    height: 0.6em;
+    -barlevel-height: 0.6em;
+    -barlevel-background-color: transparentize(darken($osd_bg_color, 15%), 0.5);
+    -barlevel-active-background-color: $osd_fg_color;
+    -barlevel-overdrive-color: $destructive_color;
+    -barlevel-overdrive-separator-width: 0.2em;
+  }
+
+  // START: VERSION SPECIFIC CODE (< 3.29.90)
+  .level-bar {
+    background-color: $osd_fg_color;
+    border-radius: 0.3em;
+  }
+
+  // END: VERSION SPECIFIC CODE (< 3.29.90)
+}
+
+// Pad OSD
+.pad-osd-window {
+  padding: 32px;
+  background-color: transparentize(black, 0.2);
+
+  .pad-osd-title-box {
+    spacing: 12px;
+  }
+
+  .pad-osd-title-menu-box {
+    spacing: 6px;
+  }
+}
+
+.combo-box-label {
+  width: 15em;
+}
+
+// App Switcher
+
+.switcher-popup {
+  padding: 8px;
+  spacing: 16px;
+}
+
+.osd-window,
+.resize-popup,
+.switcher-list {
+  @extend %osd-panel;
+}
+
+.switcher-list-item-container {
+  spacing: 8px;
+}
+
+.switcher-list .item-box {
+  padding: 8px;
+  border-radius: $medium_radius;
+}
+
+.switcher-list .item-box:outlined {
+  padding: 8px;
+  border: 2px solid darken($borders_color, 10%);
+}
+
+.switcher-list .item-box:selected {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+}
+
+.switcher-list .thumbnail-box {
+  padding: 2px;
+  spacing: 4px;
+}
+
+.switcher-list .thumbnail {
+  width: 256px;
+}
+
+.switcher-list .separator {
+  width: 1px;
+  background: $borders_color;
+}
+
+.switcher-arrow {
+  border-color: rgba(0, 0, 0, 0);
+  color: transparentize($fg_color, 0.2);
+
+  &:highlighted {
+    color: $fg_color;
+  }
+}
+
+.input-source-switcher-symbol {
+  font-size: 32pt;
+  width: 96px;
+  height: 96px;
+}
+
+// Window Cycler
+.cycler-highlight {
+  border: 5px solid $selected_bg_color;
+}
+
+// Workspace Switcher
+.workspace-switcher-group {
+  padding: 12px;
+}
+
+.workspace-switcher-container {
+  @extend %osd-panel;
+}
+
+.workspace-switcher {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  spacing: 8px;
+}
+
+.ws-switcher-active-up, .ws-switcher-active-down,
+.ws-switcher-active-left, .ws-switcher-active-right {
+  height: 50px;
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+  background-size: 32px;
+  border-radius: $medium_radius;
+}
+
+.ws-switcher-box {
+  height: 50px;
+  border: 1px solid transparentize($osd_fg_color, 0.9);
+  background: transparent;
+  border-radius: $medium_radius;
+}
+
+%osd-panel {
+  color: $_bubble_fg_color;
+  background-color: $_bubble_bg_color;
+  border: 1px solid $_bubble_borders_color;
+  border-radius: 0;
+  padding: 8px;
+}
+
+// Tiled Window Previews
+.tile-preview {
+  background-color: transparentize($selected_bg_color, 0.5);
+  border: 1px solid $selected_bg_color;
+}
+
+.tile-preview-left.on-primary {
+  border-radius: $panel-corner-radius 0 0 0;
+}
+
+.tile-preview-right.on-primary {
+  border-radius: 0 $panel-corner-radius 0 0;
+}
+
+.tile-preview-left.tile-preview-right.on-primary {
+  border-radius: $panel-corner-radius $panel-corner-radius 0 0;
+}
+
+// TOP BAR
+
+#panel {
+  background-color: transparentize(black, 0.4);
+  box-shadow: 0px 1px transparentize(white, 0.92);
+  font-weight: bold;
+  height: 1.86em;
+  border-width: 0px;
+  font-feature-settings: "tnum";
+
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: transparent;
+  }
+
+  .panel-button .popup-menu-arrow {
+    color: transparent;
+    width: 0px;
+  }
+
+  #panelLeft, #panelCenter {
+    spacing: 0px;
+  }
+
+  .panel-corner {
+    -panel-corner-radius: $panel-corner-radius;
+    -panel-corner-background-color: black;
+    -panel-corner-border-width: 0px;
+    -panel-corner-border-color: transparent;
+
+    &.lock-screen, &.login-screen, &.unlock-screen {
+      -panel-corner-radius: 0px;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+  }
+
+  .panel-button {
+    -natural-hpadding: 8px;
+    -minimum-hpadding: 8px;
+    font-weight: bold;
+    color: $fg_color;
+    transition-duration: $short-duration;
+
+    .app-menu-icon {
+      -st-icon-style: symbolic;
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+
+    &:hover {
+      color: $fg_color;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active, &:overview, &:focus, &:checked {
+      background-color: $selected_bg_color;
+      box-shadow: none;
+      color: $selected_fg_color;
+
+      & > .system-status-icon {
+        icon-shadow: black 0 2px 2px;
+      }
+    }
+
+    .system-status-icon {
+      icon-size: 1.09em;
+      padding: 0px 4px;
+    }
+
+    .unlock-screen &,
+    .login-screen &,
+    .lock-screen & {
+      color: lighten($fg_color, 10%);
+
+      &:focus, &:hover, &:active {
+        color: lighten($fg_color, 10%);
+      }
+    }
+  }
+
+  .panel-status-indicators-box,
+  .panel-status-menu-box {
+    spacing: 2px;
+  }
+
+  .power-status.panel-status-indicators-box {
+    spacing: 0px;
+  }
+
+  .screencast-indicator {
+    color: $warning_color;
+  }
+
+  .remote-access-indicator {
+    color: $warning_color;
+  }
+
+  &.solid {
+    background-color: transparentize(black, 0.1);
+    transition-duration: 0ms;
+  }
+}
+
+// Calendar Popover
+#calendarArea {
+  padding: 0.75em 1.0em;
+}
+
+.calendar {
+  margin-bottom: 1em;
+}
+
+.calendar,
+.datemenu-today-button,
+.datemenu-displays-box,
+.message-list-sections {
+  margin: 0 1.5em;
+}
+
+.datemenu-calendar-column {
+  spacing: 0.5em;
+}
+
+.datemenu-displays-section {
+  padding-bottom: 3em;
+}
+
+.datemenu-displays-box {
+  spacing: 1em;
+}
+
+.datemenu-calendar-column {
+  border: 0 solid transparentize($borders_color, 0.8);
+
+  &:ltr {
+    border-left-width: 1px;
+  }
+
+  &:rtl {
+    border-right-width: 1px;
+  }
+}
+
+.datemenu-today-button,
+.world-clocks-button,
+.weather-button,
+.message-list-section-title,
+.events-section-title {
+  border-radius: $small_radius;
+  padding: .4em;
+}
+
+.message-list-section-list:ltr {
+  padding-left: .4em;
+}
+
+.message-list-section-list:rtl {
+  padding-right: .4em;
+}
+
+.datemenu-today-button,
+.world-clocks-button,
+.weather-button,
+.message-list-section-title,
+.events-section-title {
+  &:hover, &:focus {
+    background-color: lighten($bg_color, 5%);
+  }
+
+  &:active {
+    color: lighten($selected_fg_color, 5%);
+    background-color: $selected_bg_color;
+  }
+}
+
+.datemenu-today-button .day-label {}
+
+.datemenu-today-button .date-label {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.world-clocks-header,
+.weather-header,
+.events-section-title {
+  color: darken($fg_color, 40%);
+  font-weight: bold;
+}
+
+.weather-header.location {
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
+.world-clocks-grid,
+.weather-grid {
+  spacing-rows: 0.4em;
+  spacing-columns: 0.8em;
+}
+
+.weather-box {
+  spacing: 0.4em;
+}
+
+.world-clocks-city {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.world-clocks-time {
+  color: darken($fg_color, 20%);
+  font-feature-settings: "tnum";
+  font-size: 1.2em;
+}
+
+.world-clocks-timezone {
+  color: darken($fg_color, 40%);
+  font-feature-settings: "tnum";
+  font-size: 0.9em;
+}
+
+.weather-forecast-icon {
+  icon-size: 2.18em;
+}
+
+.weather-forecast-time {
+  color: darken($fg_color, 40%);
+  font-size: 0.8em;
+}
+
+.calendar-month-label {
+  color: darken($fg_color, 5%);
+  font-weight: bold;
+  padding: 8px 0;
+
+  &:focus {}
+}
+
+.pager-button {
+  background-color: transparent;
+  width: 32px;
+  border-radius: $small_radius;
+
+  &:hover, &:focus {
+    background-color: transparentize($fg_color, 0.95);
+  }
+
+  &:active {
+    background-color: transparentize($bg_color, 0.95);
+  }
+}
+
+.calendar-change-month-back StIcon, .calendar-change-month-forward StIcon {
+  icon-size: 1.09em;
+}
+
+.calendar-day-base {
+  font-size: 80%;
+  text-align: center;
+  width: 2.4em;
+  height: 2.4em;
+  padding: 0.1em;
+  margin: 2px;
+  border-radius: $small_radius;
+  font-feature-settings: "tnum";
+
+  &:hover, &:focus {
+    background-color: lighten($bg_color, 5%);
+  }
+
+  &:active, &:selected {
+    color: lighten($selected_fg_color, 5%);
+    background-color: $selected_bg_color;
+    border-color: transparent;
+  }
+
+  &.calendar-day-heading {
+    //day of week heading
+    color: darken($fg_color, 40%);
+    margin-top: 1em;
+    font-size: 70%;
+  }
+}
+
+.calendar-day {
+  //border collapse hack - see calendar.js
+  border-width: 0;
+}
+
+.calendar-day-top {
+  border-top-width: 1px;
+}
+
+.calendar-day-left {
+  border-left-width: 1px;
+}
+
+.calendar-work-day {}
+
+.calendar-nonwork-day {
+  color: $insensitive_fg_color;
+}
+
+.calendar-today {
+  font-weight: bold;
+  border: 1px solid transparentize($borders_color, 0.5);
+}
+
+.calendar-day-with-events {
+  color: lighten($fg_color, 10%);
+  font-weight: bold;
+  background-image: url("calendar-today.svg");
+}
+
+.calendar-other-month-day {
+  color: transparentize($fg_color, 0.85);
+  opacity: 0.5;
+}
+
+// Message List
+.message-list {
+  width: 31.5em;
+}
+
+.message-list-clear-button.button {
+  background-color: transparent;
+
+  &:hover, &:focus {
+    background-color: lighten($bg_color, 5%);
+  }
+
+  margin: 1.5em 1.5em 0;
+}
+
+.message-list-sections {
+  spacing: 1em;
+}
+
+.message-list-section,
+.message-list-section-list {
+  spacing: 0.4em;
+}
+
+.message {
+  &:hover, &:focus {
+    background-color: lighten($bg_color, 5%);
+  }
+
+  border-radius: $small_radius;
+}
+
+.message-icon-bin {
+  padding: 0.68em 0.2em 0.68em 0.68em;
+
+  &:rtl {
+    padding: 0.68em 0.68em 0.68em 0.2em;
+  }
+}
+
+.message-icon-bin > StIcon {
+  color: darken($fg_color, 20%);
+  icon-size: 1.09em;
+  -st-icon-style: symbolic;
+}
+
+.message-icon-bin > .fallback-window-icon {
+  width: 1.09em;
+  height: 1.09em;
+}
+
+.message-secondary-bin {
+  padding: 0 0.82em;
+}
+
+.message-secondary-bin > .event-time {
+  color: darken($fg_color, 40%);
+  font-size: 0.7em;
+  padding-bottom: 0.13em;
+}
+
+.message-secondary-bin > StIcon {
+  icon-size: 1em;
+}
+
+.message-title {
+  color: darken($fg_color, 5%);
+}
+
+.message-content {
+  padding: 10px;
+  color: darken($fg_color, 20%);
+}
+
+.message-media-control {
+  padding: 12px;
+  color: darken($fg_color, 20%);
+
+  &:last-child:ltr {
+    padding-right: 16px;
+  }
+
+  &:last-child:rtl {
+    padding-left: 16px;
+  }
+
+  &:hover {
+    color: $fg_color;
+  }
+
+  &:insensitive {
+    color: darken($fg_color, 40%);
+  }
+}
+
+.media-message-cover-icon {
+  icon-size: 48px !important;
+
+  &.fallback {
+    color: lighten($bg_color, 10%);
+    background-color: $bg_color;
+    border: 2px solid $bg_color;
+    border-radius: $small_radius;
+    icon-size: 32px !important;
+    padding: 4px;
+  }
+}
+
+// Activities Button
+#panel #panelActivities.panel-button {
+  > * {
+    background-image: url("activities.svg");
+    background-position: center center;
+    width: 39px;
+    height: 24px;
+    background-color: transparent !important;
+    background-gradient-direction: none !important;
+    border: 0 solid transparent !important;
+    text-shadow: 0 0 transparent !important;
+    transition-duration: $short-duration !important;
+    box-shadow: none !important;
+    color: transparent;
+  }
+
+  &:active, &:overview, &:focus, &:checked {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom-width: 1px;
+    border-color: transparent;
+
+    > * {
+      background-image: url("activities-active.svg");
+    }
+  }
+}
+
+#appMenu {
+  spinner-image: url("process-working.svg");
+  spacing: 4px;
+
+  .label-shadow {
+    color: transparent;
+  }
+}
+
+.app-menu,
+.app-well-menu {
+  max-width: 26em;
+}
+
+.aggregate-menu {
+  min-width: 20em;
+
+  .popup-menu-icon {
+    padding: 0 4px;
+  }
+
+  .popup-sub-menu .popup-menu-item > :first-child {
+    &:ltr {
+      padding-left: 8px;
+      margin-left: 1em;
+    }
+
+    &:rtl {
+      padding-right: 8px;
+      margin-right: 1em;
+    }
+  }
+}
+
+.system-menu-action {
+  -st-icon-style: symbolic;
+  color: $fg_color;
+  border-radius: 32px;
+  padding: 16px;
+  border: 1px solid transparent;
+  background-color: $base_color;
+
+  &:hover, &:focus {
+    background-color: $selected_bg_color;
+    color: $fg_color;
+    border: none;
+    padding: 16px;
+  }
+
+  &:active {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  & > StIcon {
+    icon-size: 16px;
+  }
+}
+
+// Activities Ripples
+.ripple-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 0 0 52px 0;
+  background-color: lighten(transparentize($selected_bg_color, 0.7), 40%);
+  box-shadow: 0 0 2px 2px lighten($selected_bg_color, 20%);
+}
+
+.ripple-box:rtl {
+  border-radius: 0 0 0 52px;
+}
+
+// Rubberband for select-area screenshots
+.select-area-rubberband {
+  background-color: transparentize($selected_bg_color, 0.7);
+  border: 1px solid $selected_bg_color;
+}
+
+// Pointer Location
+.ripple-pointer-location {
+  width: 50px;
+  height: 50px;
+  border-radius: 24px;
+
+  background-color: lighten(transparentize($selected_bg_color, 0.7), 30%);
+  box-shadow: 0 0 2px 2px lighten($selected_bg_color, 20%);
+}
+
+.popup-menu-arrow {
+  icon-size: 1em;
+}
+
+.popup-menu-icon {
+  icon-size: 1em;
+}
+
+//close buttons
+
+.window-close {
+  background-image: url("close-window.svg");
+  background-size: 24px;
+  background-color: $close_button;
+  border-radius: $small_radius;
+  box-shadow: none;
+  border: 0;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  -shell-close-overlap: 8px;
+
+  &:hover {
+    background-color: $close_button_hover;
+  }
+
+  &:active {
+    background-color: darken($close_button, 5%);
+  }
+}
+
+// Pointer Accessibility Notifications
+.pie-timer {
+  width: 60px;
+  height: 60px;
+  -pie-border-width: 4px;
+  -pie-border-color: $selected_bg_color;
+  -pie-background-color: lighten(transparentize($selected_bg_color, 0.7), 40%);
+}
+
+// NETWORK DIALOGS
+
+.nm-dialog {
+  max-height: 34em;
+  min-height: 31em;
+  min-width: 32em;
+}
+
+.nm-dialog-content {
+  spacing: 20px;
+  padding: 24px;
+}
+
+.nm-dialog-header-hbox {
+  spacing: 8px;
+}
+
+.nm-dialog-airplane-box {
+  spacing: 8px;
+}
+
+.nm-dialog-airplane-headline {
+  font-weight: bold;
+  text-align: center;
+}
+
+.nm-dialog-airplane-text {
+  color: $fg_color;
+}
+
+.nm-dialog-header-icon {
+  icon-size: 32px;
+}
+
+.nm-dialog-scroll-view {
+  border: 2px solid $borders_color;
+}
+
+.nm-dialog-header {
+  font-weight: bold;
+}
+
+.nm-dialog-item {
+  font-size: 110%;
+  border-bottom: 1px solid $borders_color;
+  padding: 8px;
+  spacing: 16px;
+}
+
+.nm-dialog-item:selected {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+}
+
+.nm-dialog-icons {
+  spacing: .5em;
+}
+
+.nm-dialog-icon {
+  icon-size: 16px;
+}
+
+.no-networks-label {
+  color: #999999;
+}
+
+.no-networks-box {
+  spacing: 12px;
+}
+
+// OVERVIEW
+
+#overview {
+  spacing: 24px;
+}
+
+.overview-controls {
+  padding-bottom: 32px;
+}
+
+.window-picker {
+  //container around window thumbnails
+  -horizontal-spacing: 16px;
+  -vertical-spacing: 16px;
+  padding: 0 16px 16px;
+
+  &.external-monitor {
+    padding: 16px;
+  }
+}
+
+.window-clone-border {
+  border: 4px solid $selected_bg_color;
+  border-radius: $medium_radius;
+  box-shadow: inset 0px 0px 0px 1px $selected_bg_color;
+}
+
+.window-caption {
+  spacing: 24px;
+  color: $selected_fg_color;
+  background-color: $selected_bg_color;
+  border-radius: $small_radius;
+  padding: 4px 12px;
+}
+
+// Search Entry
+.search-entry {
+  width: 320px;
+  padding: 8px;
+  border-radius: $small_radius;
+  border-color: transparent;
+  color: $_bubble_fg_color;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+  transition-duration: $short-duration;
+
+  @include entry(normal);
+
+  &:hover {
+    @include entry(hover);
+  }
+
+  &:focus {
+    @include entry(focus);
+  }
+
+  .search-entry-icon {
+    icon-size: 1em;
+    padding: 0 4px;
+    color: $_bubble_fg_color;
+  }
+
+  &:hover, &:focus {
+    .search-entry-icon {
+      color: $_bubble_fg_color;
+    }
+  }
+}
+
+// Search Results
+
+#searchResultsContent {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  spacing: 16px;
+}
+
+.search-section {
+  spacing: 16px;
+}
+
+.search-section-content {
+  spacing: 32px;
+}
+
+.search-statustext {
+  @extend %status_text;
+}
+
+.list-search-results {
+  spacing: 4px;
+}
+
+.search-section-separator {
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-section:last-child .search-section-separator {
+  background-color: transparent;
+}
+
+.list-search-result-content {
+  spacing: 32px;
+}
+
+.list-search-result-title {
+  color: darken($osd_fg_color, 5%);
+  spacing: 8px;
+}
+
+.list-search-result-description {
+  color: transparentize(darken($osd_fg_color, 15%), 0.5);
+}
+
+.list-search-provider-details {
+  width: 150px;
+  color: darken($osd_fg_color, 5%);
+  margin-top: 0.24em;
+}
+
+.list-search-provider-content {
+  spacing: 20px;
+}
+
+.search-provider-icon {
+  padding: 16px;
+}
+
+// DASHBOARD
+
+#dash {
+  font-size: 9pt;
+  color: $_bubble_fg_color;
+  background-color: transparent;
+  padding: 4px 0;
+  border: 0px solid transparent;
+  border-left: 0;
+  border-radius: 0 $medium_radius $medium_radius 0;
+
+  &:rtl {
+    border-radius: $medium_radius 0 0 $medium_radius;
+  }
+
+  .placeholder {
+    background-image: url("dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
+  }
+
+  .empty-dash-drop-target {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.dash-item-container > StWidget {
+  padding: 4px 8px;
+}
+
+.dash-label {
+  border-radius: $small_radius;
+  padding: 4px 8px;
+  color: $osd_fg_color;
+  background-color: transparentize(black, 0.3);
+  text-align: center;
+  -x-offset: 8px;
+}
+
+// App Vault/Grid
+.icon-grid {
+  spacing: 30px;
+  -shell-grid-horizontal-item-size: 136px;
+  -shell-grid-vertical-item-size: 136px;
+
+  .overview-icon {
+    icon-size: 96px;
+  }
+}
+
+.system-action-icon {
+  background-color: black;
+  color: white;
+  border-radius: 128px;
+  icon-size: 48px;
+}
+
+.app-view-controls {
+  padding-bottom: 32px;
+}
+
+.app-view-control {
+  padding: 4px 32px;
+  box-shadow: inset 0 0 0 1px transparentize(white, 0.9);
+  background-color: $button_bg;
+  transition-duration: $short-duration;
+  border: none;
+
+  &:hover {
+    background-color: $button_hover;
+  }
+
+  &:checked {
+    background-color: transparentize(black, 0.6);
+    box-shadow: inset 0 0 2px 1px transparentize(black, 0.7);
+  }
+
+  &:first-child {
+    border-right-width: 1px;
+    border-radius: $small_radius 0 0 $small_radius;
+  }
+
+  &:last-child {
+    border-radius: 0 $small_radius $small_radius 0;
+
+    &:checked {
+      border-left-width: 0;
+    }
+  }
+}
+
+// Icon Tile
+.search-provider-icon,
+.list-search-result {
+  @extend %icon_tile;
+
+  &:focus, &:selected, &:hover {
+    background-color: transparentize($osd_fg_color, 0.9);
+    transition-duration: $long-duration;
+  }
+
+  &:active, &:checked {
+    background-color: transparentize(darken($osd_bg_color, 10%), 0.1);
+  }
+}
+
+.app-well-app,
+.app-well-app.app-folder,
+.show-apps,
+.grid-search-result {
+  & .overview-icon {
+    @extend %icon_tile;
+  }
+
+  &:active .overview-icon,
+  &:checked .overview-icon {
+    background-color: transparentize(darken($osd_bg_color, 10%), 0.1);
+    box-shadow: inset 0 1px 2px $osd_borders_color;
+  }
+
+  &:hover .overview-icon,
+  &:focus .overview-icon,
+  &:selected .overview-icon {
+    background-color: transparentize($osd_fg_color, 0.9);
+    transition-duration: 0ms;
+    border-image: none;
+    background-image: none;
+  }
+
+  &:drop .overview-icon {
+    background-color: transparentize($selected_bg_color, 0.15);
+  }
+}
+
+.app-well-app-running-dot {
+  width: 8px;
+  height: 4px;
+  background-color: white;
+  margin-bottom: 2px;
+}
+
+%icon_tile {
+  color: $osd_fg_color;
+  border-radius: $small_radius;
+  padding: 4px;
+  border: 1px solid transparent;
+  transition-duration: $short-duration;
+  text-align: center;
+}
+
+.app-well-app.app-folder > .overview-icon {
+  background-color: transparentize($osd_bg_color, 0.6);
+}
+
+.show-apps:checked .show-apps-icon,
+.show-apps:focus .show-apps-icon {
+  color: white;
+  transition-duration: $short-duration;
+}
+
+// Collections
+.app-folder-popup {
+  -arrow-border-radius: $medium_radius;
+  -arrow-background-color: transparentize($osd_bg_color, 0.7);
+  -arrow-base: 24px;
+  -arrow-rise: 11px;
+}
+
+.app-folder-popup-bin {
+  padding: 4px;
+}
+
+.app-folder-icon {
+  padding: 4px;
+  spacing-rows: 4px;
+  spacing-columns: 4px;
+}
+
+.page-indicator {
+  padding: 16px;
+
+  .page-indicator-icon {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: $large_radius;
+  }
+
+  &:hover .page-indicator-icon {
+    border-color: white;
+  }
+
+  &:active .page-indicator-icon {
+    border: none;
+    margin: 2px;
+    background-color: white;
+  }
+
+  &:checked .page-indicator-icon,
+  &:checked:active .page-indicator-icon {
+    background-color: white;
+  }
+}
+
+.no-frequent-applications-label {
+  @extend %status_text;
+}
+
+.app-well-app > .overview-icon.overview-icon-with-label,
+.grid-search-result .overview-icon.overview-icon-with-label {
+  padding: 8px 8px 4px 8px;
+  spacing: 4px;
+}
+
+// Workspace pager
+.workspace-thumbnails {
+  @extend %overview-panel;
+  visible-width: 32px;
+  spacing: 8px;
+  padding: 8px;
+  border-radius: $medium_radius 0 0 $medium_radius;
+
+  .placeholder {
+    background-image: url("dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
+  }
+}
+
+.workspace-thumbnail-indicator {
+  border: 2px solid $selected_bg_color;
+  padding: 1px;
+}
+
+.all-apps,
+.frequent-apps > StBoxLayout {
+  padding: 0px 80px 8px 80px;
+}
+
+%overview-panel {
+  color: $_bubble_fg_color;
+  background-color: $button_bg;
+  border: 1px solid $button_border;
+}
+
+%status_text {
+  font-size: 2em;
+  font-weight: bold;
+  color: $fg_color;
+}
+
+// NOTIFICATIONS & MESSAGE TRAY
+
+.url-highlighter {
+  link-color: lighten($selected_bg_color, 10%);
+}
+
+// Banners
+.notification-banner {
+  font-size: 11pt;
+  width: 34em;
+  margin: 4px;
+  border-radius: $medium_radius;
+  color: $_bubble_fg_color;
+  background-color: $_bubble_bg_color;
+  border: 1px solid $borders_color;
+
+  &:hover {
+    background-color: $_bubble_bg_color;
+  }
+
+  &:focus {
+    background-color: $_bubble_bg_color;
+  }
+
+  .notification-icon {
+    padding: 4px;
+  }
+
+  .notification-content {
+    padding: 4px;
+    spacing: 4px;
+  }
+
+  .secondary-icon {
+    icon-size: 1em;
+  }
+
+  .notification-actions {
+    background-color: $borders_color;
+    padding-top: 2px;
+    spacing: 1px;
+  }
+
+  .notification-button {
+    padding: 4px;
+    background-color: darken($_bubble_bg_color, 5%);
+
+    &:first-child {
+      border-radius: 0 0 0 $medium_radius;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $medium_radius 0;
+    }
+
+    &:hover, &focus {
+      background-color: darken($_bubble_bg_color, 2%);
+    }
+  }
+}
+
+.summary-source-counter {
+  font-size: 10pt;
+  font-weight: bold;
+  height: 1.6em;
+  width: 1.6em;
+  -shell-counter-overlap-x: 4px;
+  -shell-counter-overlap-y: 4px;
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+  border: 2px solid $osd_fg_color;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 1em;
+}
+
+.secondary-icon {
+  icon-size: 1em;
+}
+
+.chat-body {
+  spacing: 4px;
+}
+
+.chat-response {
+  margin: 4px;
+}
+
+.chat-log-message {
+  color: darken($fg_color, 10%);
+}
+
+.chat-new-group {
+  padding-top: 1em;
+}
+
+.chat-received {
+  padding-left: 4px;
+
+  &:rtl {
+    padding-left: 0px;
+    padding-right: 4px;
+  }
+}
+
+.chat-sent {
+  padding-left: 18pt;
+  color: darken($fg_color, 15%);
+
+  &:rtl {
+    padding-left: 0;
+    padding-right: 18pt;
+  }
+}
+
+.chat-meta-message {
+  padding-left: 4px;
+  font-size: 9pt;
+  font-weight: bold;
+  color: darken($fg_color, 20%);
+
+  &:rtl {
+    padding-left: 0px;
+    padding-right: 4px;
+  }
+}
+
+//hotplug
+.hotplug-transient-box {
+  spacing: 8px;
+  padding: 2px 72px 2px 8px;
+}
+
+.hotplug-notification-item {
+  padding: 2px 8px;
+
+  &:focus {
+    padding: 1px 72px 1px 12px;
+  }
+}
+
+.hotplug-notification-item-icon {
+  icon-size: 24px;
+  padding: 2px 4px;
+}
+
+.hotplug-resident-box {
+  spacing: 8px;
+}
+
+.hotplug-resident-mount {
+  spacing: 8px;
+  border-radius: $small_radius;
+
+  &:hover {
+    background-color: transparentize($bg_color, 0.7);
+  }
+}
+
+.hotplug-resident-mount-label {
+  color: inherit;
+  padding-left: 4px;
+}
+
+.hotplug-resident-mount-icon {
+  icon-size: 24px;
+  padding-left: 4px;
+}
+
+.hotplug-resident-eject-icon {
+  icon-size: 16px;
+}
+
+.hotplug-resident-eject-button {
+  padding: 8px;
+  border-radius: $small_radius;
+  color: pink;
+}
+
+.magnifier-zoom-region {
+  border: 2px solid $selected_bg_color;
+
+  &.full-screen {
+    border-width: 0;
+  }
+}
+
+// Keyboard
+
+.word-suggestions {
+  font-size: 14pt;
+  spacing: 12px;
+  min-height: 20pt;
+}
+
+#keyboard {
+  background-color: transparentize($osd_bg_color, 0.3);
+
+  .page-indicator {
+    padding: 4px;
+
+    .page-indicator-icon {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+.keyboard-layout, .key-container {
+  spacing: 8px;
+  padding: 8px;
+}
+
+.keyboard-row {
+  spacing: 16px;
+}
+
+.keyboard-key {
+  @include button(normal);
+
+  min-height: 1.2em;
+  min-width: 1.2em;
+  font-size: 14pt;
+  font-weight: bold;
+  border-radius: $small_radius;
+  border: 1px solid $borders-color;
+  color: white;
+
+  &:focus {
+    @include button(focus);
+  }
+
+  &:hover, &:checked {
+    @include button(hover);
+  }
+
+  &:active {
+    @include button(active);
+  }
+
+  &:grayed {
+    background-color: $osd_bg_color;
+    color: $osd_fg_color;
+    border-color: $osd_borders_color;
+  }
+
+  &.default-key {
+    border-color: lighten($selected_bg_color, 10%);
+  }
+
+  &.enter-key {
+    border-color: lighten($borders-color, 10%);
+    background-image: url("resource:///org/gnome/shell/theme/key-enter.svg");
+  }
+
+  &.shift-key-lowercase {
+    background-image: url("resource:///org/gnome/shell/theme/key-shift.svg");
+  }
+
+  &.shift-key-uppercase {
+    background-image: url("resource:///org/gnome/shell/theme/key-shift-uppercase.svg");
+  }
+
+  &.shift-key-uppercase:latched {
+    background-image: url("resource:///org/gnome/shell/theme/key-shift-latched-uppercase.svg");
+  }
+
+  &.hide-key {
+    background-image: url("resource:///org/gnome/shell/theme/key-hide.svg");
+  }
+
+  &.layout-key {
+    background-image: url("resource:///org/gnome/shell/theme/key-layout.svg");
+  }
+}
+
+.keyboard-subkeys {
+  color: white;
+  padding: 4px;
+  -arrow-border-radius: $medium_radius;
+  -arrow-background-color: transparentize($osd_bg_color, 0.3);
+  -arrow-border-width: 1px;
+  -arrow-border-color: $_bubble_borders_color;
+  -arrow-base: 0px;
+  -arrow-rise: 0px;
+  -boxpointer-gap: 1px;
+}
+
+.emoji-page {
+  .keyboard-key {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: #005684;
+    background-color: #006098;
+  }
+}
+
+// IBus Candidate Popup
+
+.candidate-popup-content {
+  padding: 0.5em;
+  spacing: 0.3em;
+}
+
+.candidate-index {
+  padding: 0 0.5em 0 0;
+  color: darken($fg_color, 10%);
+}
+
+.candidate-box {
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  border-radius: $small_radius;
+
+  &:selected, &:hover {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
+
+.candidate-page-button-box {
+  height: 2em;
+
+  .vertical & {
+    padding-top: 0.5em;
+  }
+
+  .horizontal & {
+    padding-left: 0.5em;
+  }
+}
+
+.candidate-page-button {
+  padding: 4px;
+}
+
+.candidate-page-button-previous {
+  border-radius: $small_radius 0px 0px $small_radius;
+  border-right-width: 0;
+}
+
+.candidate-page-button-next {
+  border-radius: 0px $small_radius $small_radius 0px;
+}
+
+.candidate-page-button-icon {
+  icon-size: 1em;
+}
+
+// Auth Dialogs & Screen Shield
+
+.user-icon {
+  background-size: contain;
+  color: $osd_fg_color;
+  border-radius: 99px;
+
+  &:hover {
+    color: lighten($osd_fg_color, 30%);
+  }
+}
+
+// LOGIN DIALOG
+
+.login-dialog-banner-view {
+  padding-top: 24px;
+  max-width: 22em;
+}
+
+.login-dialog {
+  border: none;
+  background-color: transparent;
+
+  .modal-dialog-button-box {
+    spacing: 4px;
+  }
+
+  .modal-dialog-button {
+    padding: 4px 16px;
+
+    &:default {
+      @include button(normal, $c: $selected_bg_color);
+
+      &:hover, &:focus {
+        @include button(hover, $c: $selected_bg_color);
+      }
+
+      &:active {
+        @include button(active, $c: $selected_bg_color);
+      }
+
+      &:insensitive {
+        @include button(insensitive);
+      }
+    }
+  }
+}
+
+.login-dialog-logo-bin {
+  padding: 24px 0px;
+}
+
+.login-dialog-banner {
+  color: darken($osd_fg_color, 10%);
+}
+
+.login-dialog-button-box {
+  spacing: 4px;
+}
+
+.login-dialog-message-warning {
+  color: $warning_color;
+}
+
+.login-dialog-message-hint {
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+
+.login-dialog-user-selection-box {
+  padding: 100px 0px;
+}
+
+.login-dialog-not-listed-label {
+  padding-left: 2px;
+
+  .login-dialog-not-listed-button:focus &,
+  .login-dialog-not-listed-button:hover & {
+    color: $osd_fg_color;
+  }
+}
+
+.login-dialog-not-listed-label {
+  font-size: 90%;
+  font-weight: bold;
+  color: darken($osd_fg_color, 30%);
+  padding-top: 1em;
+}
+
+.login-dialog-user-list-view {
+  -st-vfade-offset: 1em;
+}
+
+.login-dialog-user-list {
+  spacing: 12px;
+  width: 22em;
+
+  &:expanded .login-dialog-user-list-item:selected {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  &:expanded .login-dialog-user-list-item:logged-in {
+    border-right: 2px solid $selected_bg_color;
+  }
+}
+
+.login-dialog-user-list-item {
+  border-radius: $medium_radius;
+  padding: 4px;
+  color: darken($osd_fg_color, 30%);
+
+  &:ltr .user-widget {
+    padding-right: 1em;
+  }
+
+  &:rtl .user-widget {
+    padding-left: 1em;
+  }
+
+  &:hover {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  .login-dialog-timed-login-indicator {
+    height: 2px;
+    margin-top: 4px;
+    background-color: $osd_fg_color;
+  }
+
+  &:focus .login-dialog-timed-login-indicator {
+    background-color: $selected_fg_color;
+  }
+}
+
+.login-dialog-username,
+.user-widget-label {
+  color: $osd_fg_color;
+  font-size: 120%;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.user-widget-label {
+  &:ltr {
+    padding-left: 14px;
+  }
+
+  &:rtl {
+    padding-right: 14px;
+  }
+}
+
+.login-dialog-prompt-layout {
+  padding-top: 24px;
+  padding-bottom: 12px;
+  spacing: 8px;
+  width: 22em;
+}
+
+.login-dialog-prompt-label {
+  color: darken($osd_fg_color, 20%);
+  font-size: 110%;
+  padding-top: 1em;
+}
+
+.login-dialog-session-list-button StIcon {
+  icon-size: 1.25em;
+}
+
+.login-dialog-session-list-button {
+  color: darken($osd_fg_color, 30%);
+
+  &:hover, &:focus {
+    color: $osd_fg_color;
+  }
+
+  &:active {
+    color: darken($osd_fg_color, 50%);
+  }
+}
+
+// SCREEN SHIELD
+
+.screen-shield-arrows {
+  padding-bottom: 2px;
+}
+
+.screen-shield-arrows Gjs_Arrow {
+  color: white;
+  width: 80px;
+  height: 48px;
+  -arrow-thickness: 12px;
+  -arrow-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.screen-shield-clock {
+  color: white;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+.screen-shield-clock-time {
+  font-size: 72pt;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  font-feature-settings: "tnum";
+}
+
+.screen-shield-clock-date {
+  font-size: 28pt;
+}
+
+.screen-shield-notifications-container {
+  spacing: 8px;
+  width: 30em;
+  background-color: transparent;
+  max-height: 500px;
+
+  .summary-notification-stack-scrollview {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .notification,
+  .screen-shield-notification-source {
+    padding: 8px;
+    border: 1px solid $_bubble_borders_color;
+    background-color: transparentize($osd_bg_color, 0.5);
+    color: $_bubble_fg_color;
+    border-radius: $small_radius;
+  }
+
+  .notification {
+    margin-right: 16px;
+  }
+}
+
+.screen-shield-notification-label {
+  font-weight: bold;
+  padding: 0px 0px 0px 8px;
+}
+
+.screen-shield-notification-count-text {
+  padding: 0px 0px 0px 8px;
+}
+
+#panel.lock-screen {
+  background-color: transparentize($_bubble_bg_color, 0.5);
+}
+
+.screen-shield-background {
+  background: black;
+  box-shadow: 0px 2px 4px transparentize(black, 0.6);
+}
+
+#lockDialogGroup {
+  background: #2e3436 url(noise-texture.png);
+  background-repeat: repeat;
+}
+
+#screenShieldNotifications {
+  StButton#vhandle, StButton#hhandle {
+    background-color: transparentize($bg_color, 0.7);
+
+    &:hover, &:focus {
+      background-color: transparentize($bg_color, 0.5);
+    }
+
+    &:active {
+      background-color: transparentize($selected_bg_color, 0.5);
+    }
+  }
+}
+
+// Looking Glass
+#LookingGlassDialog {
+  background-color: rgba(0, 0, 0, 0.8);
+  spacing: 4px;
+  padding: 4px;
+  border: 1px solid grey;
+  border-radius: 0;
+
+  & > #Toolbar {
+    border: 1px solid grey;
+    border-radius: 0;
+  }
+
+  .labels {
+    spacing: 4px;
+  }
+
+  .notebook-tab {
+    -natural-hpadding: 8px;
+    -minimum-hpadding: 8px;
+    font-weight: bold;
+    color: #ccc;
+    transition-duration: $short-duration;
+    padding-left: .3em;
+    padding-right: .3em;
+
+    &:hover {
+      color: white;
+      text-shadow: black 0px 2px 2px;
+    }
+
+    &:selected {
+      border-bottom-width: 2px;
+      border-color: lighten($selected_bg_color, 5%);
+      color: white;
+      text-shadow: black 0px 2px 2px;
+    }
+  }
+
+  StBoxLayout#EvalBox {
+    padding: 4px;
+    spacing: 4px;
+  }
+
+  StBoxLayout#ResultsArea {
+    spacing: 4px;
+  }
+}
+
+.lg-dialog {
+  StEntry {
+    selection-background-color: #BBB;
+    selected-color: #333;
+  }
+
+  .shell-link {
+    color: #999;
+
+    &:hover {
+      color: #DDD;
+    }
+  }
+}
+
+.lg-completions-text {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.lg-obj-inspector-title {
+  spacing: 4px;
+}
+
+.lg-obj-inspector-button {
+  border: 1px solid gray;
+  padding: 4px;
+  border-radius: 0;
+
+  &:hover {
+    border: 1px solid #FFF;
+  }
+}
+
+#lookingGlassExtensions {
+  padding: 4px;
+}
+
+.lg-extensions-list {
+  padding: 4px;
+  spacing: 8px;
+}
+
+.lg-extension {
+  border: 1px solid #6f6f6f;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.lg-extension-name {
+  font-weight: bold;
+}
+
+.lg-extension-meta {
+  spacing: 4px;
+}
+
+#LookingGlassPropertyInspector {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid grey;
+  border-radius: 0;
+  padding: 4px;
+}
