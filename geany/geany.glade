@@ -2,12 +2,6 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkListStore" id="eol_list">
-    <columns>
-      <!-- column-name gchararray -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="GtkListStore" id="indent_mode_list">
     <columns>
       <!-- column-name gchararray -->
@@ -47,6 +41,12 @@
         <col id="0" translatable="yes">Bottom</col>
       </row>
     </data>
+  </object>
+  <object class="GtkListStore" id="eol_list">
+    <columns>
+      <!-- column-name gchararray -->
+      <column type="gchararray"/>
+    </columns>
   </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkImage" id="image2">
