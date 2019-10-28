@@ -61,6 +61,11 @@ Author: Devyn Collier Johnson
             <property name="rgba">rgb(255,255,255)</property>
             <property name="show_editor">True</property>
             <signal name="color-activated" handler="_submit_color" swapped="no"/>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="cc-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">color-chooser</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -90,6 +95,11 @@ Author: Devyn Collier Johnson
             <property name="position">3</property>
           </packing>
         </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
       </object>
     </child>
   </object>

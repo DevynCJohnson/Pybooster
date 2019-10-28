@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -12,7 +12,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 EzDisplay is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -32,8 +32,10 @@ Author: Devyn Collier Johnson
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">EzDisplay</property>
+    <property name="window_position">center</property>
     <property name="default_width">1200</property>
-    <property name="default_height">600</property>
+    <property name="default_height">800</property>
+    <property name="has_resize_grip">True</property>
     <signal name="damage-event" handler="_winexit" swapped="no"/>
     <signal name="delete-event" handler="_winexit" swapped="no"/>
     <signal name="destroy" handler="_winexit" swapped="no"/>
@@ -42,55 +44,41 @@ Author: Devyn Collier Johnson
       <placeholder/>
     </child>
     <child>
-      <object class="GtkBox" id="box2">
+      <object class="GtkBox" id="box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">4</property>
         <property name="margin_bottom">4</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkViewport" id="viewport1">
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
+            <property name="width_request">1200</property>
+            <property name="height_request">800</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">4</property>
-            <property name="margin_right">4</property>
-            <property name="margin_top">4</property>
-            <property name="margin_bottom">4</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
-                <property name="width_request">1200</property>
-                <property name="height_request">600</property>
+              <object class="GtkTextView" id="textview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="shadow_type">in</property>
-                <child>
-                  <object class="GtkTextView" id="textview">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="monospace">True</property>
+                <property name="input_hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                <property name="monospace">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="textview-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">text</property>
                   </object>
                 </child>
               </object>
             </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="viewing_label">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="justify">center</property>
-            <property name="selectable">True</property>
-            <property name="track_visited_links">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="scrolledwindow1-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">5</property>
             <property name="position">1</property>
           </packing>
         </child>
@@ -111,6 +99,31 @@ Author: Devyn Collier Johnson
             <property name="position">2</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkLabel" id="viewing_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="justify">center</property>
+            <property name="selectable">True</property>
+            <property name="track_visited_links">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="viewing_label-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">comment</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">5</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezdisplay-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
       </object>
     </child>
   </object>

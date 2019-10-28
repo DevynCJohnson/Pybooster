@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -33,8 +33,8 @@ Author: Devyn Collier Johnson
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Update</property>
     <property name="window_position">center</property>
-    <property name="default_width">320</property>
-    <property name="default_height">220</property>
+    <property name="default_width">500</property>
+    <property name="default_height">300</property>
     <property name="icon_name">software-update-available</property>
     <property name="type_hint">dialog</property>
     <property name="show_menubar">False</property>
@@ -58,6 +58,11 @@ Author: Devyn Collier Johnson
             <property name="icon_name">software-update-available</property>
             <property name="use_fallback">True</property>
             <property name="icon_size">6</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="icon_img-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">image</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -77,6 +82,11 @@ Author: Devyn Collier Johnson
             <property name="label" translatable="yes">Update Available</property>
             <property name="wrap">True</property>
             <property name="track_visited_links">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="l_msg-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -113,6 +123,11 @@ Author: Devyn Collier Johnson
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="separator-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">separator</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -122,6 +137,11 @@ Author: Devyn Collier Johnson
             <property name="position">3</property>
           </packing>
         </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
       </object>
     </child>
   </object>

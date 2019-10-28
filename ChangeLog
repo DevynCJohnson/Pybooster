@@ -1,3 +1,13 @@
+2019-10-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* color-kit:  Improved the GTK interface
+	* desktop-entry-maker:  Improved the GTK interface
+	* extras_rc.sh:  Tweaked ``findmethod`
+	* ezdisplay.py:  Improved the GTK interface
+	* Geany:  Tweaked the Glade interface for Geany
+	* Glade Files:  Tweaked & improved all of the Glade files
+	* Program-Analyzer:  Improved the GTK interface
+
 2019-10-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* .gitattributes:  Added more file extensions

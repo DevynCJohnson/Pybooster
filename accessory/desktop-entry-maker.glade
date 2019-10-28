@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 
+<!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
 
@@ -12,7 +12,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Desktop-Entry-Maker is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -511,6 +511,11 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text">The application's name as seen in menus (Required)</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">*Required*</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_name-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -546,6 +551,11 @@ Arguments
 %U - URL List</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">*Required*</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_execute-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -573,6 +583,11 @@ Example: LibreOffice = Office Suite</property>
 Example: LibreOffice = Office Suite</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Office Suite</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_genericname-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -598,6 +613,11 @@ Example: LibreOffice = Office Suite</property>
                 <property name="tooltip_text">Description shown in menu (optional)</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Use a descriptive comment</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_comment-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -627,6 +647,11 @@ Separate words with a semicolon</property>
 Separate words with a semicolon</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">editor;cpu;programming;</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_keyword-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -664,6 +689,11 @@ $XDG_DATA_DIRS/icons/
 /usr/share/pixmaps/</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Name or Path (/usr/share/icons/)</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_icon-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -721,6 +751,11 @@ Utility</property>
                     <property name="placeholder_text">System;Development;</property>
                     <property name="completion">category_completion</property>
                     <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="entry_category-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -736,6 +771,11 @@ Utility</property>
                     <property name="hexpand">True</property>
                     <property name="popup_fixed_width">False</property>
                     <signal name="changed" handler="_add2list" swapped="no"/>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="combobox_category-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -784,6 +824,11 @@ Utility</property>
                   <item>Link</item>
                   <item>Directory</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_type-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -823,6 +868,11 @@ Utility</property>
                 <property name="tooltip_text">Run in a terminal?</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_terminal-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -838,6 +888,11 @@ Utility</property>
                 <property name="tooltip_text">Do not add application to "open with" and desktop/application menus</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_nodisplay-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -865,6 +920,11 @@ Utility</property>
                 <property name="tooltip_text">Hide the entry from the menu</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_hidden-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -894,6 +954,11 @@ Utility</property>
                   <item>1.1</item>
                   <item>1.0</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_version-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -936,6 +1001,11 @@ Utility</property>
                   <item translatable="yes">Unity</item>
                   <item translatable="yes">XFCE</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_onlyshowin-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -1013,13 +1083,18 @@ Utility</property>
           <object class="GtkLabel" id="label_about">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Version: 2019.08.31
+            <property name="label">Version: 2019.10.27
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
             <property name="use_markup">True</property>
             <property name="justify">center</property>
             <property name="selectable">True</property>
             <property name="track_visited_links">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="label_about-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1027,6 +1102,16 @@ Author: Devyn Collier Johnson
             <property name="position">3</property>
           </packing>
         </child>
+        <child internal-child="accessible">
+          <object class="AtkObject" id="box1-atkobject">
+            <property name="AtkObject::accessible-role" translatable="yes">form</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="desktop_entry_window-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
       </object>
     </child>
   </object>
