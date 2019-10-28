@@ -5,7 +5,7 @@
 """@brief Create Desktop Entry Files.
 
 @file desktop-entry-maker
-@version 2019.07.14
+@version 2019.10.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -50,7 +50,7 @@ from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 # GLOBALS #
 
 
-_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
+_GUI: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -64,7 +64,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 Desktop-Entry-Maker is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
@@ -533,10 +533,10 @@ Author: Devyn Collier Johnson
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">5</property>
-        <property name="margin_right">5</property>
-        <property name="margin_top">5</property>
-        <property name="margin_bottom">5</property>
+        <property name="margin_left">4</property>
+        <property name="margin_right">4</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
@@ -563,6 +563,11 @@ Author: Devyn Collier Johnson
                 <property name="tooltip_text">The application's name as seen in menus (Required)</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">*Required*</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_name-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -598,6 +603,11 @@ Arguments
 %U - URL List</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">*Required*</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_execute-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -625,6 +635,11 @@ Example: LibreOffice = Office Suite</property>
 Example: LibreOffice = Office Suite</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Office Suite</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_genericname-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -650,6 +665,11 @@ Example: LibreOffice = Office Suite</property>
                 <property name="tooltip_text">Description shown in menu (optional)</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Use a descriptive comment</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_comment-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -679,6 +699,11 @@ Separate words with a semicolon</property>
 Separate words with a semicolon</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">editor;cpu;programming;</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_keyword-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -716,6 +741,11 @@ $XDG_DATA_DIRS/icons/
 /usr/share/pixmaps/</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder_text">Name or Path (/usr/share/icons/)</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_icon-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -773,6 +803,11 @@ Utility</property>
                     <property name="placeholder_text">System;Development;</property>
                     <property name="completion">category_completion</property>
                     <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="entry_category-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -788,6 +823,11 @@ Utility</property>
                     <property name="hexpand">True</property>
                     <property name="popup_fixed_width">False</property>
                     <signal name="changed" handler="_add2list" swapped="no"/>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="combobox_category-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -836,6 +876,11 @@ Utility</property>
                   <item>Link</item>
                   <item>Directory</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_type-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -875,6 +920,11 @@ Utility</property>
                 <property name="tooltip_text">Run in a terminal?</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_terminal-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -890,6 +940,11 @@ Utility</property>
                 <property name="tooltip_text">Do not add application to "open with" and desktop/application menus</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_nodisplay-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -917,6 +972,11 @@ Utility</property>
                 <property name="tooltip_text">Hide the entry from the menu</property>
                 <property name="halign">center</property>
                 <property name="draw_indicator">True</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="check_hidden-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -946,6 +1006,11 @@ Utility</property>
                   <item>1.1</item>
                   <item>1.0</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_version-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -988,6 +1053,11 @@ Utility</property>
                   <item translatable="yes">Unity</item>
                   <item translatable="yes">XFCE</item>
                 </items>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="combobox_onlyshowin-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">combo-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -1065,13 +1135,18 @@ Utility</property>
           <object class="GtkLabel" id="label_about">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Version: 2019.03.28
+            <property name="label">Version: 2019.10.27
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
             <property name="use_markup">True</property>
             <property name="justify">center</property>
             <property name="selectable">True</property>
             <property name="track_visited_links">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="label_about-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1079,13 +1154,23 @@ Author: Devyn Collier Johnson
             <property name="position">3</property>
           </packing>
         </child>
+        <child internal-child="accessible">
+          <object class="AtkObject" id="box1-atkobject">
+            <property name="AtkObject::accessible-role" translatable="yes">form</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="desktop_entry_window-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
       </object>
     </child>
   </object>
-</interface>"""
+</interface>'''
 
 
-_FILECHOOSER: str = """<?xml version="1.0" encoding="UTF-8"?>
+_FILECHOOSER: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -1116,8 +1201,8 @@ Author: Devyn Collier Johnson
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">750</property>
-    <property name="height_request">600</property>
+    <property name="width_request">1400</property>
+    <property name="height_request">800</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Choose a File</property>
@@ -1134,14 +1219,19 @@ Author: Devyn Collier Johnson
       <object class="GtkBox" id="box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_right">5</property>
+        <property name="margin_right">4</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkFileChooserWidget" id="filechooser">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_bottom">5</property>
+            <property name="margin_bottom">4</property>
             <property name="create_folders">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="filechooser-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">file-chooser</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -1161,6 +1251,11 @@ Empty - The selected folder is returned</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="draw_indicator">True</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="chkbtn2-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1172,8 +1267,8 @@ Empty - The selected folder is returned</property>
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">5</property>
-            <property name="margin_right">5</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkButton" id="btn1">
@@ -1184,8 +1279,8 @@ Empty - The selected folder is returned</property>
                 <property name="tooltip_text" translatable="yes">Submit selection to the program that opened this dialog.</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_select" object="filechooser" swapped="no"/>
               </object>
@@ -1206,6 +1301,11 @@ Empty - Hidden files not seen</property>
                 <property name="valign">center</property>
                 <property name="draw_indicator">True</property>
                 <signal name="toggled" handler="_hidden" object="filechooser" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="chkbtn1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -1221,8 +1321,8 @@ Empty - Hidden files not seen</property>
                 <property name="tooltip_text" translatable="yes">Cancel</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
+                <property name="margin_top">4</property>
+                <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="_cancel" object="ezwin" swapped="no"/>
               </object>
@@ -1241,8 +1341,13 @@ Empty - Hidden files not seen</property>
         </child>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
+      </object>
+    </child>
   </object>
-</interface>"""
+</interface>'''
 
 
 signal(SIGINT, SIG_DFL)
