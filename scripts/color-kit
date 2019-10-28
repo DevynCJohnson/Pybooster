@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2019.08.31
+@version 2019.10.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -49,7 +49,7 @@ from gi.repository import Gdk, Gtk  # noqa: E402  # pylint: disable=C0413
 # GLOBALS #
 
 
-_GCOLOR: str = """<?xml version="1.0" encoding="UTF-8"?>
+_GCOLOR: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -114,6 +114,11 @@ Author: Devyn Collier Johnson
             <property name="show_editor">True</property>
             <signal name="event" handler="correct_editor_switch" object="switch_editor" swapped="no"/>
             <signal name="focus" handler="correct_editor_switch" object="switch_editor" swapped="no"/>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="cc-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">color-chooser</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -134,12 +139,17 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2019.08.31
+                <property name="label" translatable="yes">Version: 2019.10.27
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="About-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -172,6 +182,11 @@ Created by Devyn Collier Johnson
                 <property name="margin_left">16</property>
                 <property name="margin_right">16</property>
                 <signal name="state-set" handler="toggle_editor" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="switch_editor-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">toggle-button</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -299,6 +314,11 @@ NTSC color model
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_rgb-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -312,6 +332,11 @@ NTSC color model
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_hsi-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -325,6 +350,11 @@ NTSC color model
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_hsv-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -338,6 +368,11 @@ NTSC color model
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_cmyk-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -351,6 +386,11 @@ NTSC color model
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="caps_lock_warning">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="entry_yiq-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">entry</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -422,6 +462,11 @@ NTSC color model
                 <property name="top_attach">4</property>
               </packing>
             </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="convgrid-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">form</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -453,8 +498,13 @@ NTSC color model
         </child>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
+      </object>
+    </child>
   </object>
-</interface>"""
+</interface>'''
 
 
 signal(SIGINT, SIG_DFL)
