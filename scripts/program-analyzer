@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2019.09.01
+@version 2019.10.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -55,7 +55,7 @@ require_version(r'Gtk', r'3.0')
 from gi.repository import Gtk  # noqa: E402  # pylint: disable=C0413
 
 
-_GUI: str = """<?xml version="1.0" encoding="UTF-8"?>
+_GUI: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -154,6 +154,11 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="gtk_open" swapped="no"/>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menuitem_open-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                          </object>
+                        </child>
                         <accelerator key="o" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
@@ -168,6 +173,11 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="gtk_save" swapped="no"/>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menuitem_save-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                          </object>
+                        </child>
                         <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
@@ -182,6 +192,11 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="gtk_saveas" swapped="no"/>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menuitem_saveas-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                          </object>
+                        </child>
                         <accelerator key="s" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
@@ -202,13 +217,33 @@ Author: Devyn Collier Johnson
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="_winexit" swapped="no"/>
-                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="menuitem_quit-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
+                          </object>
+                        </child>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="file_menu-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">menu</property>
                       </object>
                     </child>
                   </object>
                 </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="menu_item1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">menu</property>
+                  </object>
+                </child>
                 <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK | GDK_MOD1_MASK"/>
+              </object>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="menubar-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">menu-bar</property>
               </object>
             </child>
           </object>
@@ -244,6 +279,16 @@ Author: Devyn Collier Johnson
                     <property name="buffer">buf_prop</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_prop-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_prop-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -278,6 +323,16 @@ Author: Devyn Collier Johnson
                     <property name="buffer">buf_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_sym_tbl-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_sym_tbl-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -317,6 +372,16 @@ objdump --line-numbers --special-syms --syms</property>
                     <property name="buffer">buf_dyn_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_dyn_sym-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_dyn_sym-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -356,6 +421,16 @@ objdump --line-numbers --dynamic-syms --special-syms</property>
                     <property name="buffer">buf_nm_sym</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_nm_sym-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_nm_sym-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -395,6 +470,16 @@ nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-si
                     <property name="buffer">buf_dyn_reloc</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_dyn_reloc-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_dyn_reloc-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -434,6 +519,16 @@ objdump --dynamic-reloc --line-numbers</property>
                     <property name="buffer">buf_ldd</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_ldd-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_ldd-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -473,6 +568,16 @@ ldd --unused --verbose</property>
                     <property name="buffer">buf_dis</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_dis-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_dis-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -511,6 +616,16 @@ ndisasm</property>
                     <property name="buffer">buf_dis_intel</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_dis_intel-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_dis_intel-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -549,6 +664,16 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</
                     <property name="buffer">buf_dis_att</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_dis_att-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_dis_att-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -588,6 +713,16 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
                     <property name="buffer">buf_readelf</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_readelf-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_readelf-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -627,6 +762,16 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
                     <property name="buffer">buf_headers</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_headers-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_headers-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -666,6 +811,16 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
                     <property name="buffer">buf_size</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_size-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_size-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -706,6 +861,16 @@ size --format=SysV</property>
                     <property name="buffer">buf_str</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_str-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_str-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -745,6 +910,16 @@ strings --all</property>
                     <property name="buffer">buf_func</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_func-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_func-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -783,6 +958,16 @@ strings --all</property>
                     <property name="buffer">buf_const</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_const-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_const-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -821,6 +1006,16 @@ strings --all</property>
                     <property name="buffer">buf_ldconfig</property>
                     <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="textview_ldconfig-atkobject">
+                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="scrwin_ldconfig-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
                   </object>
                 </child>
               </object>
@@ -866,12 +1061,17 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2019.09.01
+Version: 2019.10.27
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
                         <property name="justify">center</property>
                         <property name="track_visited_links">False</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="lbl_about-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -888,6 +1088,11 @@ Author: Devyn Collier Johnson
 - Please donate to DCJTech</property>
                         <property name="use_markup">True</property>
                         <property name="track_visited_links">False</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="lbl_donate-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">paragraph</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -948,6 +1153,11 @@ Author: Devyn Collier Johnson
                 <property name="tab_fill">False</property>
               </packing>
             </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="tabs-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">page-tab-list</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -979,6 +1189,11 @@ Author: Devyn Collier Johnson
                 <property name="selectable">True</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_file-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">comment</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -1035,6 +1250,11 @@ Author: Devyn Collier Johnson
           <object class="GtkSeparator" id="separator_main">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="separator_main-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">separator</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1053,6 +1273,11 @@ Author: Devyn Collier Johnson
             <property name="margin_end">8</property>
             <property name="margin_top">4</property>
             <property name="margin_bottom">4</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="statusbar-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">statusbar</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1063,10 +1288,15 @@ Author: Devyn Collier Johnson
         </child>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">application</property>
+      </object>
+    </child>
   </object>
-</interface>"""
+</interface>'''
 
-_FILEGUI: str = """<?xml version="1.0" encoding="UTF-8"?>
+_FILEGUI: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -1097,11 +1327,11 @@ Author: Devyn Collier Johnson
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">1200</property>
+    <property name="width_request">1400</property>
     <property name="height_request">800</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="title">Choose a File</property>
+    <property name="title" translatable="yes">Choose a File</property>
     <property name="window_position">center</property>
     <property name="icon_name">system-file-manager</property>
     <property name="type_hint">dialog</property>
@@ -1123,7 +1353,11 @@ Author: Devyn Collier Johnson
             <property name="can_focus">True</property>
             <property name="margin_bottom">4</property>
             <property name="create_folders">False</property>
-            <property name="do_overwrite_confirmation">True</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="filechooser-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">file-chooser</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -1133,16 +1367,21 @@ Author: Devyn Collier Johnson
         </child>
         <child>
           <object class="GtkCheckButton" id="chkbtn2">
-            <property name="label">Select current location</property>
+            <property name="label" translatable="yes">Select current location</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text">Marked - The current location/folder is returned
+            <property name="tooltip_text" translatable="yes">Marked - The current location/folder is returned
 
 Empty - The selected folder is returned</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="draw_indicator">True</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="chkbtn2-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1163,13 +1402,12 @@ Empty - The selected folder is returned</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text">Submit selection to the program that opened this dialog.</property>
+                <property name="tooltip_text" translatable="yes">Submit selection to the program that opened this dialog.</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
-                <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_select" object="filechooser" swapped="no"/>
               </object>
               <packing>
@@ -1179,16 +1417,21 @@ Empty - The selected folder is returned</property>
             </child>
             <child>
               <object class="GtkCheckButton" id="chkbtn1">
-                <property name="label">View hidden files</property>
+                <property name="label" translatable="yes">View hidden files</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text">Marked - Show hidden files
+                <property name="tooltip_text" translatable="yes">Marked - Show hidden files
 Empty - Hidden files not seen</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="draw_indicator">True</property>
                 <signal name="toggled" handler="_hidden" object="filechooser" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="chkbtn1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">check-box</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -1201,13 +1444,12 @@ Empty - Hidden files not seen</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text">Cancel</property>
+                <property name="tooltip_text" translatable="yes">Cancel</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="use_stock">True</property>
-                <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_cancel" object="ezwin" swapped="no"/>
               </object>
               <packing>
@@ -1225,8 +1467,13 @@ Empty - Hidden files not seen</property>
         </child>
       </object>
     </child>
+    <child internal-child="accessible">
+      <object class="AtkObject" id="ezwin-atkobject">
+        <property name="AtkObject::accessible-role" translatable="yes">dialog</property>
+      </object>
+    </child>
   </object>
-</interface>"""
+</interface>'''
 
 
 signal(SIGINT, SIG_DFL)
