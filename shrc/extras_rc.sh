@@ -814,7 +814,7 @@ timediff() {
 }
 
 # shellcheck disable=SC2039
-findmethod() { alias | cut -d ' ' -f 2 | cut -d '=' -f 1 | grep -i -F "$1"; [ -x "$(command -v declare)" ] && declare -F | cut -d ' ' -f 3 | grep -i -F "$1"; }
+findmethod() { alias | cut -d ' ' -f 2 | cut -d '=' -f 1 | grep -i -F "$1"; [ -n "$(command -v declare)" ] && declare -F | cut -d ' ' -f 3 | grep -i -F "$1"; }
 
 [ "$PLATFORM" = 'linux' ] && findmod() { find "/lib/modules/${KRELEASE}" | grep -F -i "$1"; }
 
