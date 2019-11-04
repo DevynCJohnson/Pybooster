@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Disassemble compiled code and count the number of each assembly instruction
 #' @file insn_count
-#' @version 2019.03.28
+#' @version 2019.11.03
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -127,7 +127,7 @@ fi
 # MAIN PROCESSING
 
 
-disassembled_code="$(objdump --disassemble --disassembler-options=att --no-show-raw-insn "${filename}" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|; s|rep ([A-Za-z0-9]+) .+|rep\1|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n)"
+disassembled_code="$(objdump --disassemble --disassembler-options=att --no-show-raw-insn "${filename}" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|; s|rep ([A-Za-z0-9]+) .+|rep\1|; s|bnd jmpq (.+)|bnd jmpq|; s|notrack jmpq (.+)|notrack jmpq|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n)"
 
 basic_format="$(echo "${disassembled_code}" | sed 's|| |g;' | awk '{ $1=$1; };1')"
 
