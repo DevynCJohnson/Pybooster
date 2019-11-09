@@ -1,3 +1,11 @@
+2019-11-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added flipchars & fixed file permissions
+
+2019-11-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* insn_count:  Added the instructions `bnd jmpq` & `notrack jmpq` to the filter
+
 2019-10-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* color-kit:  Improved the GTK interface
