@@ -1,0 +1,259 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Flip strings upside-down and (optionally) mirror the characters.
+
+@file flipchars
+@version 2019.11.09
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section DESCRIPTION
+This script can be integrated into Geany.
+Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this software.
+"""
+
+
+import argparse
+from sys import stdin, stdout
+from unicodedata import normalize
+
+
+# DATA TABLES #
+
+
+TABLE_CHEROKEE: dict = {
+    r'A': u'\N{CHEROKEE LETTER GO}',
+    r'B': u'\N{CHEROKEE LETTER YV}',
+    r'C': u'\N{CHEROKEE LETTER TLI}',
+    r'D': u'\N{CHEROKEE LETTER A}',
+    r'E': u'\N{CHEROKEE LETTER GV}',
+    r'G': u'\N{CHEROKEE LETTER NAH}',
+    r'H': u'\N{CHEROKEE LETTER MI}',
+    r'J': u'\N{CHEROKEE LETTER GU}',
+    r'K': u'\N{CHEROKEE LETTER TSO}',
+    r'L': u'\N{CHEROKEE LETTER TLE}',
+    r'M': u'\N{CHEROKEE LETTER LU}',
+    r'P': u'\N{CHEROKEE LETTER TLV}',
+    r'R': u'\N{CHEROKEE LETTER SV}',
+    r'S': u'\N{CHEROKEE LETTER DU}',
+    r'T': u'\N{CHEROKEE LETTER I}',
+    r'V': u'\N{CHEROKEE LETTER DO}',
+    r'W': u'\N{CHEROKEE LETTER LA}',
+    r'Y': u'\N{CHEROKEE LETTER GI}',
+    r'Z': u'\N{CHEROKEE LETTER NO}'
+}
+
+
+TABLE_CYRILLIC: dict = {
+    r'A': u'\N{CYRILLIC CAPITAL LETTER A}',
+    r'a': u'\N{CYRILLIC SMALL LETTER A}',
+    r'B': u'\N{CYRILLIC CAPITAL LETTER VE}',
+    r'C': u'\N{CYRILLIC CAPITAL LETTER ES}',
+    r'c': u'\N{CYRILLIC SMALL LETTER ES}',
+    r'E': u'\N{CYRILLIC CAPITAL LETTER IE}',
+    r'e': u'\N{CYRILLIC SMALL LETTER IE}',
+    r'H': u'\N{CYRILLIC CAPITAL LETTER EN}',
+    r'I': u'\N{CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I}',
+    r'i': u'\N{CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I}',
+    r'J': u'\N{CYRILLIC CAPITAL LETTER JE}',
+    r'j': u'\N{CYRILLIC SMALL LETTER JE}',
+    r'K': u'\N{CYRILLIC CAPITAL LETTER KA}',
+    r'M': u'\N{CYRILLIC CAPITAL LETTER EM}',
+    r'O': u'\N{CYRILLIC CAPITAL LETTER O}',
+    r'o': u'\N{CYRILLIC SMALL LETTER O}',
+    r'P': u'\N{CYRILLIC CAPITAL LETTER ER}',
+    r'p': u'\N{CYRILLIC SMALL LETTER ER}',
+    r'S': u'\N{CYRILLIC CAPITAL LETTER DZE}',
+    r's': u'\N{CYRILLIC SMALL LETTER DZE}',
+    r'T': u'\N{CYRILLIC CAPITAL LETTER TE}',
+    r'X': u'\N{CYRILLIC CAPITAL LETTER HA}',
+    r'x': u'\N{CYRILLIC SMALL LETTER HA}',
+    r'Y': u'\N{CYRILLIC CAPITAL LETTER U}',
+    r'y': u'\N{CYRILLIC SMALL LETTER U}'
+}
+
+
+TABLE_CYRILLIC_PLUS: dict = {
+    r'h': u'\N{CYRILLIC SMALL LETTER SHHA}',
+    r'Y': u'\N{CYRILLIC CAPITAL LETTER STRAIGHT U}'
+}
+
+
+TABLE_GREEK: dict = {
+    r'A': u'\N{GREEK CAPITAL LETTER ALPHA}',
+    r'B': u'\N{GREEK CAPITAL LETTER BETA}',
+    r'E': u'\N{GREEK CAPITAL LETTER EPSILON}',
+    r'H': u'\N{GREEK CAPITAL LETTER ETA}',
+    r'I': u'\N{GREEK CAPITAL LETTER IOTA}',
+    r'K': u'\N{GREEK CAPITAL LETTER KAPPA}',
+    r'M': u'\N{GREEK CAPITAL LETTER MU}',
+    r'N': u'\N{GREEK CAPITAL LETTER NU}',
+    r'O': u'\N{GREEK CAPITAL LETTER OMICRON}',
+    r'o': u'\N{GREEK SMALL LETTER OMICRON}',
+    r'P': u'\N{GREEK CAPITAL LETTER RHO}',
+    r'T': u'\N{GREEK CAPITAL LETTER TAU}',
+    r'X': u'\N{GREEK CAPITAL LETTER CHI}',
+    r'Y': u'\N{GREEK CAPITAL LETTER UPSILON}',
+    r'Z': u'\N{GREEK CAPITAL LETTER ZETA}'
+}
+
+
+TABLE_MIRROR: dict = {
+    '\'': r',',
+    r'!': u'\N{INVERTED EXCLAMATION MARK}',
+    r',': '\'',
+    r'.': u'\N{DOT ABOVE}',
+    r'0': r'0',
+    r'1': r'I',
+    r'2': u'\N{INVERTED QUESTION MARK}\N{COMBINING MACRON}',
+    r'3': u'\N{LATIN CAPITAL LETTER OPEN E}',
+    r'4': u'\N{LATIN SMALL LETTER LZ DIGRAPH}',
+    r'6': r'9',
+    r'7': u'\N{LATIN CAPITAL LETTER L WITH STROKE}',
+    r'8': r'8',
+    r'9': r'6',
+    r'?': u'\N{INVERTED QUESTION MARK}',
+    r'A': u'\N{FOR ALL}',
+    r'a': u'\N{LATIN SMALL LETTER TURNED A}',
+    r'B': u'\N{CANADIAN SYLLABICS CARRIER KHA}',
+    r'b': r'q',
+    r'C': u'\N{LATIN CAPITAL LETTER OPEN O}',
+    r'c': u'\N{LATIN SMALL LETTER OPEN O}',
+    r'D': u'\N{CANADIAN SYLLABICS CARRIER PA}',
+    r'd': r'p',
+    r'E': u'\N{LATIN CAPITAL LETTER REVERSED E}',
+    r'e': u'\N{LATIN SMALL LETTER SCHWA}',
+    r'f': u'\N{LATIN SMALL LETTER DOTLESS J WITH STROKE}',
+    r'F': u'\N{TURNED CAPITAL F}',
+    r'g': u'\N{LATIN SMALL LETTER B WITH HOOK}',
+    r'G': u'\N{TURNED SANS-SERIF CAPITAL G}',
+    r'h': u'\N{LATIN SMALL LETTER TURNED H}',
+    r'H': r'H',
+    r'i': u'\N{LATIN SMALL LETTER DOTLESS I}' + u'\N{COMBINING DOT BELOW}',
+    r'I': r'I',
+    r'j': u'\N{LATIN SMALL LETTER LONG S}' + u'\N{COMBINING DOT BELOW}',
+    r'J': u'\N{LATIN SMALL LETTER LONG S}',
+    r'K': u'\N{LATIN CAPITAL LETTER TURNED K}',
+    r'k': u'\N{LATIN SMALL LETTER TURNED K}',
+    r'L': u'\N{LATIN CAPITAL LETTER TURNED L}',
+    r'l': r'l',
+    r'm': u'\N{LATIN SMALL LETTER TURNED M}',
+    r'M': r'W',
+    r'N': r'N',
+    r'n': r'u',
+    r'O': r'O',
+    r'o': r'o',
+    r'P': u'\N{CYRILLIC CAPITAL LETTER KOMI DE}',
+    r'p': r'd',
+    r'q': r'b',
+    r'R': u'\N{CANADIAN SYLLABICS TLHO}',
+    r'r': u'\N{LATIN SMALL LETTER TURNED R}',
+    r's': r's',
+    r'S': r'S',
+    r'T': u'\N{LATIN CAPITAL LETTER TURNED T}',
+    r't': u'\N{LATIN SMALL LETTER TURNED T}',
+    r'U': u'\N{ARMENIAN CAPITAL LETTER VO}',
+    r'u': r'n',
+    r'v': u'\N{LATIN SMALL LETTER TURNED V}',
+    r'V': u'\N{N-ARY LOGICAL AND}',
+    r'w': u'\N{LATIN SMALL LETTER TURNED W}',
+    r'W': r'M',
+    r'X': r'X',
+    r'x': r'x',
+    r'y': u'\N{LATIN SMALL LETTER TURNED Y}',
+    r'Y': u'\N{TURNED SANS-SERIF CAPITAL Y}',
+    r'z': r'z',
+    r'Z': r'Z',
+    r'δ': u'\N{LATIN SMALL LETTER TURNED DELTA}'
+}
+
+
+TABLE_OTHER: dict = {
+    r'!': u'\N{LATIN LETTER RETROFLEX CLICK}',
+    r'n': u'\N{ARMENIAN SMALL LETTER VO}',
+    r'O': u'\N{ARMENIAN CAPITAL LETTER OH}',
+    r'o': u'\N{ARMENIAN SMALL LETTER OH}',
+    r'S': u'\N{ARMENIAN CAPITAL LETTER TIWN}'
+}
+
+
+TABLE_DEFAULT: dict = {**TABLE_CYRILLIC, **TABLE_GREEK}
+
+
+TABLES_NAMES: list = [r'cherokee', r'cyrillic', r'cyrillic_plus', r'greek', r'other']
+
+
+# FUNCTIONS #
+
+
+def do_convert(_str: str, table: dict, reverse: bool = True) -> str:
+    """Perform the conversion on the given string using the specified table"""
+    if reverse:
+        _str = _str[::-1]
+    norm_list: str = normalize(r'NFKD', _str)
+    out: list = []
+    for _char in norm_list:
+        out.append(table.get(_char, _char))
+    return normalize(r'NFKC', r''.join(out))
+
+
+def main(args) -> None:
+    """Perform the conversion using the provided arguments"""
+    table: dict = {}
+    for table_name in [globals()[r'TABLE_' + x.upper()] for x in args.tables.split(r'+')]:
+        table.update(table_name)
+    if args:
+        stdout.write(do_convert(args.input_text, table, args.reverse) + '\n')
+        return None
+    lines = stdin.readlines()[::-1] if args.reverse else stdin
+    for line in lines:
+        stdout.write(do_convert(line, args.reverse))
+    return None
+
+
+if __name__ == '__main__':
+    PARSER = argparse.ArgumentParser(
+        prog=r'flipchars',
+        description=r'Flip strings upside-down and (optionally) mirror the characters',
+        epilog=None,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    PARSER.add_argument(
+        r'-t',
+        r'--tables',
+        action=r'store',
+        default=r'default',
+        metavar=r'tables',
+        help='List of tables to use, separated by a plus sign.\nPossible tables include ' + r'+'.join(TABLES_NAMES) + ' and a special name "all" to specify all these tables joined together.\nThere is another table ("mirror") that is not selected in "all".'
+    )
+    PARSER.add_argument(
+        r'-r',
+        r'--reverse',
+        action=r'store_true',
+        help=r'Reverse the text after conversion. Best used with the "mirror" table.'
+    )
+    PARSER.add_argument(
+        r'input_text',
+        nargs=r'?',
+        help=r'Text to manipulate (Default: stdin)'
+    )
+    main(PARSER.parse_args())
