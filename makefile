@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.10.26
+#' @version 2019.11.09
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -34,7 +34,11 @@
 override SHELL::=/bin/bash
 .SHELLFLAGS::=-c
 
-include makefile_constants.mk
+
+include ./mk/constants.mk
+include ./mk/variables.mk
+include ./mk/compiling.mk
+include ./mk/project.mk
 
 
 # VARIABLES #
@@ -88,8 +92,6 @@ override LIST_DEV_DEPS::=astyle bindechexascii binwalk bsdiff cccc cgdb complexi
 override LIST_DEV_DOCS::=apache2-doc bash-doc bison-doc caffe-doc coffeescript-doc cython-doc doxygen-doc editorconfig-doc gdb-doc git-doc gle-doc graphviz-doc gstreamer1.0-doc libbash-doc libclutter-1.0-doc libclutter-gst-3.0-doc libclutter-gtk-1.0-doc libgirepository1.0-doc libgladeui-doc libgtk-3-doc libgtkdatabox-doc libgtkextra-3.0-doc libgtkglext1-doc libgtksourceview-3.0-doc libgtksourceview-4-doc libnotify-doc libpango1.0-doc librsvg2-doc libvte-2.91-doc libwebkit2gtk-4.0-doc make-doc nginx-doc octave-doc opencv-doc python-flask-doc python-flask-restful-doc python-flaskext.wtf-doc python-numpy-doc python-pycuda-doc python-setuptools-doc python-sklearn-doc python-werkzeug-doc python-wtforms-doc sqlite3-doc swig-doc swig3.0-doc theano-doc
 # Dependencies needed to use most of the software in this repository
 override LIST_MAIN_DEPS::=apcalc aspell bsdmainutils bsdutils clang cloc colormake coreutils curl debianutils devscripts doschk dot enchant exuberant-ctags gcc global hunspell id-utils ispell libxml2-utils licensecheck llvm make moreutils ncc python3-chardet python3-gi python3-logilab-common python3-pip python3-pytest python3-pytest-pep8 python3-setuptools python3-wheel rename sloccount spell spellutils uuid wcalc wget xdg-utils xz-utils
-
-# retext geany geany-plugin-addons geany-plugin-automark geany-plugin-codenav geany-plugin-commander geany-plugin-ctags geany-plugin-defineformat geany-plugin-doc geany-plugin-extrasel geany-plugin-gendoc geany-plugin-insertnum geany-plugin-keyrecord geany-plugin-latex geany-plugin-lineoperations geany-plugin-lua geany-plugin-macro geany-plugin-miniscript geany-plugin-numberedbookmarks geany-plugin-overview geany-plugin-pairtaghighlighter geany-plugin-pg geany-plugin-pohelper geany-plugin-prettyprinter geany-plugin-prj geany-plugin-projectorganizer geany-plugin-shiftcolumn geany-plugin-spellcheck geany-plugin-tableconvert geany-plugin-treebrowser geany-plugin-vc geany-plugin-workbench geany-plugin-xmlsnippets
 
 # Search Parameters Used in Find
 
@@ -690,7 +692,7 @@ install_geany_conf :
 	if [ "$(UID)" == '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are NOT required!\n\n' >&2; exit 1; fi
 	$(RMDIR) ~/.config/geany/filedefs/ ~/.config/geany/templates/files/
 	$(CPDIR) $(GEANYDIR)/* ~/.config/geany/
-	$(CURUSEROWNS) ~/.config/geany/
+	$(CHOWNR) $(USERNAME):$(USERNAME) ~/.config/geany/
 	find ~/.config/geany/ -mount -type d -exec $(CHMODR) 750 '{}' +
 	find ~/.config/geany/ -mount -type f -exec $(CHMODR) 640 '{}' +
 	# [ -d /usr/share/geany/templates/files ] && sudo rm /usr/share/geany/templates/files/*

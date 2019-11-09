@@ -1,6 +1,7 @@
 2019-11-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added flipchars & fixed file permissions
+	* PyBooster:  Redesigned the makefiles
 
 2019-11-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
