@@ -316,6 +316,14 @@ Memory Barrier */
 /** Memory Barrier */
 #define __c11_atomic_thread_fence(order)   do_sync()
 
+#if defined(ARCHX86)
+#   define lfence()   vasm("lfence;" : : : "memory")
+#   define sfence()   vasm("sfence;" : : : "memory")
+#else
+#   define lfence()   vasm(";" : : : "memory")
+#   define sfence()   vasm(";" : : : "memory")
+#endif
+
 /** @def insn_barrier
 Instruction Barrier */
 #ifdef ARCHARM
@@ -1506,9 +1514,10 @@ LIB_FUNC void spin_unlock(volatile int* restrict ptr) {
 
 
 /** Struct for table of error messages */
-typedef struct attr_packed errname {
+typedef struct errname {
 	short errcode;  //!< Error number
 	short action;  //!< Operation which encountered the error
+	int32_t pad0;  //!< Padding
 	const char* msg;  //!< Text describing the error
 } errname_t;
 
@@ -2997,85 +3006,86 @@ POSIX 1003.1 bad file format errno */
 
 /** Table of error messages */
 static const UNUSED struct errname errormsg[] = {
-	{ EINTR, (E_OPEN | E_CREAT | E_EXEC), "Interrupted" },
-	{ EACCES, (E_OPEN | E_CREAT | E_EXEC), "Permission denied" },
-	{ EIO, (E_OPEN | E_CREAT | E_EXEC), "I/O error" },
-	{ EEXIST, (E_OPEN | E_CREAT | E_EXEC), "File exists" },
-	{ ENOENT, E_OPEN, "No such file" },
-	{ ENOENT, E_CREAT,"Directory nonexistent" },
-	{ ENOENT, E_EXEC, "Not found" },
-	{ ENOTDIR, E_OPEN, "No such file" },
-	{ ENOTDIR, E_CREAT,"Directory nonexistent" },
-	{ ENOTDIR, E_EXEC, "Not found" },
-	{ EISDIR, (E_OPEN | E_CREAT | E_EXEC), "is a directory" },
+	{ EINTR, (E_OPEN | E_CREAT | E_EXEC), 0, "Interrupted" },
+	{ EACCES, (E_OPEN | E_CREAT | E_EXEC), 0, "Permission denied" },
+	{ EIO, (E_OPEN | E_CREAT | E_EXEC), 0, "I/O error" },
+	{ EEXIST, (E_OPEN | E_CREAT | E_EXEC), 0, "File exists" },
+	{ ENOENT, E_OPEN, 0, "No such file" },
+	{ ENOENT, E_CREAT, 0, "Directory nonexistent" },
+	{ ENOENT, E_EXEC, 0, "Not found" },
+	{ ENOTDIR, E_OPEN, 0, "No such file" },
+	{ ENOTDIR, E_CREAT, 0, "Directory nonexistent" },
+	{ ENOTDIR, E_EXEC, 0, "Not found" },
+	{ EISDIR, (E_OPEN | E_CREAT | E_EXEC), 0, "is a directory" },
 #   ifdef EMFILE
-	{ EMFILE, (E_OPEN | E_CREAT | E_EXEC), "Too many open files" },
+	{ EMFILE, (E_OPEN | E_CREAT | E_EXEC), 0, "Too many open files" },
 #   endif
-	{ ENFILE, (E_OPEN | E_CREAT | E_EXEC), "File table overflow" },
-	{ ENOSPC, (E_OPEN | E_CREAT | E_EXEC), "File system full" },
+	{ ENFILE, (E_OPEN | E_CREAT | E_EXEC), 0, "File table overflow" },
+	{ ENOSPC, (E_OPEN | E_CREAT | E_EXEC), 0, "File system full" },
 #   ifdef EDQUOT
-	{ EDQUOT, (E_OPEN | E_CREAT | E_EXEC), "Disk quota exceeded" },
+	{ EDQUOT, (E_OPEN | E_CREAT | E_EXEC), 0, "Disk quota exceeded" },
 #   endif
 #   ifdef ENOSR
-	{ ENOSR, (E_OPEN | E_CREAT | E_EXEC), "No streams resources" },
+	{ ENOSR, (E_OPEN | E_CREAT | E_EXEC), 0, "No streams resources" },
 #   endif
-	{ ENXIO, (E_OPEN | E_CREAT | E_EXEC), "No such device or address" },
-	{ EROFS, (E_OPEN | E_CREAT | E_EXEC), "Read-only file system" },
-	{ ETXTBSY, (E_OPEN | E_CREAT | E_EXEC), "Text busy" },
+	{ ENXIO, (E_OPEN | E_CREAT | E_EXEC), 0, "No such device or address" },
+	{ EROFS, (E_OPEN | E_CREAT | E_EXEC), 0, "Read-only file system" },
+	{ ETXTBSY, (E_OPEN | E_CREAT | E_EXEC), 0, "Text busy" },
 #   ifdef EAGAIN
 	{ EAGAIN, E_EXEC, "Not enough memory" },
 #   endif
-	{ ENOMEM, (E_OPEN | E_CREAT | E_EXEC), "Not enough memory" },
+	{ ENOMEM, (E_OPEN | E_CREAT | E_EXEC), 0, "Not enough memory" },
 #   ifdef ENOLINK
-	{ ENOLINK, (E_OPEN | E_CREAT | E_EXEC), "Remote access failed" },
+	{ ENOLINK, (E_OPEN | E_CREAT | E_EXEC), 0, "Remote access failed" },
 #   endif
 #   ifdef EMULTIHOP
-	{ EMULTIHOP, (E_OPEN | E_CREAT | E_EXEC), "Remote access failed" },
+	{ EMULTIHOP, (E_OPEN | E_CREAT | E_EXEC), 0, "Remote access failed" },
 #   endif
 #   ifdef ECOMM
-	{ ECOMM, (E_OPEN | E_CREAT | E_EXEC), "Remote access failed" },
+	{ ECOMM, (E_OPEN | E_CREAT | E_EXEC), 0, "Remote access failed" },
 #   endif
 #   ifdef ESTALE
-	{ ESTALE, (E_OPEN | E_CREAT | E_EXEC), "Remote access failed" },
+	{ ESTALE, (E_OPEN | E_CREAT | E_EXEC), 0, "Remote access failed" },
 #   endif
 #   ifdef ETIMEDOUT
-	{ ETIMEDOUT, (E_OPEN | E_CREAT | E_EXEC), "Remote access failed" },
+	{ ETIMEDOUT, (E_OPEN | E_CREAT | E_EXEC), 0, "Remote access failed" },
 #   endif
 #   ifdef ELOOP
-	{ ELOOP, (E_OPEN | E_CREAT | E_EXEC), "Symbolic link loop" },
+	{ ELOOP, (E_OPEN | E_CREAT | E_EXEC), 0, "Symbolic link loop" },
 #   endif
 #   ifdef ENAMETOOLONG
-	{ ENAMETOOLONG, 7, "File name too long" },
+	{ ENAMETOOLONG, 7, 0, "File name too long" },
 #   endif
-	{ E2BIG, E_EXEC, "Argument list too long" },
+	{ E2BIG, E_EXEC, 0, "Argument list too long" },
 #   ifdef ELIBACC
-	{ ELIBACC, E_EXEC, "Shared library missing" },
+	{ ELIBACC, E_EXEC, 0, "Shared library missing" },
 #   endif
-	{ 0, 0, NULL },
+	{ 0, 0, 0, NULL },
 };
 
-static const UNUSED struct attr_packed mi {
+static const UNUSED struct mi {
 	int errno;
+	int pad0;  //!< Padding
 	const char* const msg;
 } errlist[18] = {
-	{ EADAPT, "Bad adaptor number" },
-	{ ECTLR, "Bad controller number" },
-	{ EUNIT, "Bad drive number" },
-	{ EPART, "Bad partition" },
-	{ ERDLAB, "Cannot read disk label" },
-	{ EUNLAB, "Unlabeled" },
-	{ ENXIO, "Device not configured" },
-	{ EPERM, "Operation not permitted" },
-	{ ENOENT, "No such file or directory" },
-	{ ESTALE, "Stale NFS file handle" },
-	{ EFTYPE, "Inappropriate file type or format" },
-	{ ENOEXEC, "Exec format error" },
-	{ EIO, "Input/output error" },
-	{ EINVAL, "Invalid argument" },
-	{ ENOTDIR, "Not a directory" },
-	{ EOFFSET, "Invalid file offset" },
-	{ EACCES, "Permission denied" },
-	{ 0, 0 }
+	{ EADAPT, 0, "Bad adaptor number" },
+	{ ECTLR, 0, "Bad controller number" },
+	{ EUNIT, 0, "Bad drive number" },
+	{ EPART, 0, "Bad partition" },
+	{ ERDLAB, 0, "Cannot read disk label" },
+	{ EUNLAB, 0, "Unlabeled" },
+	{ ENXIO, 0, "Device not configured" },
+	{ EPERM, 0, "Operation not permitted" },
+	{ ENOENT, 0, "No such file or directory" },
+	{ ESTALE, 0, "Stale NFS file handle" },
+	{ EFTYPE, 0, "Inappropriate file type or format" },
+	{ ENOEXEC, 0, "Exec format error" },
+	{ EIO, 0, "Input/output error" },
+	{ EINVAL, 0, "Invalid argument" },
+	{ ENOTDIR, 0, "Not a directory" },
+	{ EOFFSET, 0, "Invalid file offset" },
+	{ EACCES, 0, "Permission denied" },
+	{ 0, 0, 0 }
 };
 
 #ifndef __error_t_defined
@@ -3533,17 +3543,27 @@ static volatile UNUSED int log_level = LOG_DEBUG;
 static volatile UNUSED int log_level = LOG_NONE;
 #endif
 
-typedef struct attr_packed _err_code { char* c_name; int c_val; }   ERR_CODE;
+typedef struct _err_code {
+	char* c_name;
+	int c_val;
+	int pad0;  //!< Padding
+} ERR_CODE;
 
-typedef struct attr_packed syslog_data {
-	int log_version, log_file, log_connected, log_opened, log_stat;
-	const char* log_tag;
+
+typedef struct syslog_data {
 	char log_hostname[256];
-	int log_fac, log_mask;
+	const char* log_tag;
+	int log_version;
+	int log_file;
+	int log_connected;
+	int log_opened;
+	int log_stat;
+	int log_fac;
+	int log_mask;
+	int pad0;  //!< Padding
 } syslog_data_t;
 
-
-#define SYSLOG_DATA_INIT   { -1, 0, 0, 0, 0, (const char*)0, "\0", LOG_USER, 0xff }
+#define SYSLOG_DATA_INIT   { "\0", (const char*)0, -1, 0, 0, 0, 0, LOG_USER, 0xff, 0 }
 static volatile UNUSED struct syslog_data sdata = SYSLOG_DATA_INIT;
 
 
@@ -15431,7 +15451,7 @@ LIB_FUNC int get_rounding_mode(void) {
 typedef struct fenv_struct {
 	union __union_fenv_struct {
 		struct whole_fpscr { unsigned int __fpscr, __reserved0, __reserved1, __reserved2; };
-		struct attr_packed fpscr {
+		struct fpscr {
 			unsigned int __fpscr_cmp_n:1;
 			unsigned int __fpscr_cmp_z:1;
 			unsigned int __fpscr_cmp_c:1;
@@ -15457,15 +15477,17 @@ typedef struct fenv_struct {
 			unsigned int __fpscr_fp_state_flag_overflow:1;
 			unsigned int __fpscr_fp_state_flag_div_by_zero:1;
 			unsigned int __fpscr_fp_state_flag_invalid:1;
+			unsigned int __reserved0, __reserved1, __reserved2;
 		};
 	};
 } fenv_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -15638,7 +15660,7 @@ typedef unsigned short   fexcept_t;
 typedef struct fenv_struct {
 	union __union_fenv_struct {
 		struct whole_fpscr { unsigned int __fpscr, __reserved0, __reserved1, __reserved2; };
-		struct attr_packed fpscr {
+		struct fpscr {
 			unsigned int __fpscr_cmp_n:1;
 			unsigned int __fpscr_cmp_z:1;
 			unsigned int __fpscr_cmp_c:1;
@@ -15670,9 +15692,10 @@ typedef struct fenv_struct {
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -16015,9 +16038,10 @@ typedef unsigned long   fenv_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -16320,9 +16344,10 @@ typedef unsigned int   fexcept_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -16554,9 +16579,10 @@ typedef struct fenv_struct {
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -16609,9 +16635,10 @@ typedef unsigned long   fenv_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -16910,9 +16937,10 @@ typedef unsigned short   fexcept_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0[7];  //!< Padding
 } rm_ctx_t;
 
 
@@ -17562,9 +17590,10 @@ typedef struct { fexcept_t __excepts; }   fenv_t;
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -17686,9 +17715,10 @@ typedef struct fenv {
 
 
 /** Rounding mode context; This allows functions to set/restore rounding mode only when the desired rounding mode is different from the current rounding mode */
-typedef struct attr_packed rm_ctx {
+typedef struct rm_ctx {
 	fenv_t env;
 	bool updated_status;
+	bool pad0;  //!< Padding
 } rm_ctx_t;
 
 
@@ -19200,7 +19230,7 @@ LIB_FUNC NOLIBCALL void* memchr_nonconst(void* src, const int x, const size_t le
 	register size_t n = len;
 	for (; ((uintptr_t)s & (SIZEOF_SIZE_T - 1)) && n && (*s != c); s++, n--);
 	if (n && (*s != c)) {
-		size_t* w;
+		size_t* w = NULL;
 		register size_t k = (((size_t)-1 / UCHAR_MAX) * c);
 		for (w = (size_t*)s; (n >= SIZEOF_SIZE_T) && (!(HASZERO((*w ^ k)))); ++w, n -= SIZEOF_SIZE_T);
 		for (s = (void*)w; n && (*s != c); ++s, --n);
@@ -20058,8 +20088,9 @@ typedef union epoll_data {
 } epoll_data_t;
 
 
-typedef struct attr_packed epoll_event {
+typedef struct epoll_event {
 	uint32_t events;  //!< Epoll events
+	uint32_t pad0;  //!< Padding
 	epoll_data_t data;  //!< User data variable
 } epoll_event_t;
 
@@ -20175,15 +20206,12 @@ typedef struct pollfd {
 } pollfd_t;
 
 
-LIB_FUNC int poll(struct pollfd* p, const nfds_t nfds, const int timeout) {
-	fd_set rd, wr, except;
-	struct timeval tv = { 0 };
-	FD_ZERO(&rd);
-	FD_ZERO(&wr);
-	FD_ZERO(&except);
-	register nfds_t i = 0;
+LIB_FUNC int poll(struct pollfd* restrict p, const nfds_t nfds, const int timeout) {
+	fd_set rd = { 0 };
+	fd_set wr = { 0 };
+	fd_set except = { 0 };
 	register int highfd = -1;
-	for (; i < nfds; i++) {
+	for (register nfds_t i = 0; i < nfds; i++) {
 		if (p[i].fd < 0) { continue; }
 		else if (p[i].fd >= BITS_PER_FD_SET) { set_errno(EINVAL); return -1; }
 		else if (p[i].fd > highfd) { highfd = p[i].fd; }
@@ -20191,12 +20219,13 @@ LIB_FUNC int poll(struct pollfd* p, const nfds_t nfds, const int timeout) {
 		if (p[i].events & (POLLOUT | POLLWRNORM | POLLWRBAND)) { FD_SET(p[i].fd, &wr); }
 		FD_SET(p[i].fd, &except);
 	}
+	struct timeval tv = { 0 };
 	tv.tv_sec = timeout / 1000;
 	tv.tv_usec = (timeout % 1000) * 1000;
 	int rval = select((highfd + 1), &rd, &wr, &except, (timeout == -1 ? NULL : &tv));
 	if (rval <= 0) { return rval; }
 	rval = 0;
-	for (i = 0; i < nfds; i++) {
+	for (register nfds_t i = 0; i < nfds; i++) {
 		p[i].revents = 0;
 		if (FD_ISSET(p[i].fd, &rd)) { p[i].revents |= (POLLIN | POLLRDNORM | POLLRDBAND | POLLPRI); }
 		if (FD_ISSET(p[i].fd, &wr)) { p[i].revents |= (POLLOUT | POLLWRNORM | POLLWRBAND); }
@@ -20222,7 +20251,7 @@ LIB_FUNC int ppoll(struct pollfd* fds, const nfds_t nfds, const struct timespec*
 }
 
 
-LIB_FUNC int __poll_chk(struct pollfd* fds, const nfds_t nfds, const int timeout, const size_t fdslen) {
+LIB_FUNC int __poll_chk(struct pollfd* restrict fds, const nfds_t nfds, const int timeout, const size_t fdslen) {
 	if (fdslen / sizeof(*fds) < nfds) { __chk_fail("poll() failed in __poll_chk()!"); }
 	return poll(fds, nfds, timeout);
 }
@@ -20596,9 +20625,9 @@ LIB_FUNC void __wait(atomic volatile int* restrict addr, atomic volatile int* re
 	const long _priv = (long)(FUTEX_WAIT | (priv ? FUTEX_PRIVATE : priv));
 	const int sverrno = get_errno();
 	while (*addr == val) {
-		syscall4(SYS_futex, (long)addr, _priv, val, 0);
+		syscall4void(SYS_futex, (long)addr, _priv, val, 0);
 		if (get_errno() != ENOSYS) {
-			syscall4(SYS_futex, (long)addr, FUTEX_WAIT, val, 0);
+			syscall4void(SYS_futex, (long)addr, FUTEX_WAIT, val, 0);
 		}
 	}
 	set_errno(sverrno);
@@ -20611,9 +20640,9 @@ LIB_FUNC void wake(atomic volatile int* restrict addr, const int cnt, const int 
 	const long _priv = (long)(FUTEX_WAKE | (priv ? 128 : priv));
 	const int _cnt = ((cnt < 0) ? INT_MAX : cnt);
 	const int sverrno = get_errno();
-	syscall3(SYS_futex, (long)addr, _priv, _cnt);
+	syscall3void(SYS_futex, (long)addr, _priv, _cnt);
 	if (get_errno() != ENOSYS) {
-		syscall3(SYS_futex, (long)addr, FUTEX_WAKE, _cnt);
+		syscall3void(SYS_futex, (long)addr, FUTEX_WAKE, _cnt);
 	}
 	set_errno(sverrno);
 }
@@ -20629,9 +20658,9 @@ LIB_FUNC void wait_lock(atomic volatile int* restrict addr, atomic volatile int*
 	if (waiters) { ++waiters; }
 	const int sverrno = get_errno();
 	while (*addr == val) {
-		syscall4(SYS_futex, (long)addr, (long)(FUTEX_PRIVATE | FUTEX_WAIT), val, 0);
+		syscall4void(SYS_futex, (long)addr, (long)(FUTEX_PRIVATE | FUTEX_WAIT), val, 0);
 		if (get_errno() != ENOSYS) {
-			syscall4(SYS_futex, (long)addr, FUTEX_WAIT, val, 0);
+			syscall4void(SYS_futex, (long)addr, FUTEX_WAIT, val, 0);
 		}
 	}
 	set_errno(sverrno);
@@ -20643,9 +20672,9 @@ LIB_FUNC void wait_lock(atomic volatile int* restrict addr, atomic volatile int*
 LIB_FUNC void wake_lock(atomic volatile int* restrict addr, const int cnt) {
 	const int _cnt = ((cnt < 0) ? INT_MAX : cnt);
 	const int sverrno = get_errno();
-	syscall3(SYS_futex, (long)addr, (long)(FUTEX_WAKE | 128), _cnt);
+	syscall3void(SYS_futex, (long)addr, (long)(FUTEX_WAKE | 128), _cnt);
 	if (get_errno() != ENOSYS) {
-		syscall3(SYS_futex, (long)addr, FUTEX_WAKE, _cnt);
+		syscall3void(SYS_futex, (long)addr, FUTEX_WAKE, _cnt);
 	}
 	set_errno(sverrno);
 }
@@ -20700,9 +20729,9 @@ LIB_FUNC void unlock_requeue(atomic volatile int* restrict l, atomic volatile in
 	l[0] = 0;
 	if (w) { wake(l, 1, 1); }
 	const int sverrno = get_errno();
-	syscall5(SYS_futex, (long)l, (FUTEX_REQUEUE | 128), 0, 1, (long)r);
+	syscall5void(SYS_futex, (long)l, (FUTEX_REQUEUE | 128), 0, 1, (long)r);
 	if (get_errno() != ENOSYS) {
-		syscall5(SYS_futex, (long)l, FUTEX_REQUEUE, 0, 1, (long)r);
+		syscall5void(SYS_futex, (long)l, FUTEX_REQUEUE, 0, 1, (long)r);
 	}
 	set_errno(sverrno);
 }
@@ -20733,7 +20762,7 @@ LIB_FUNC int lockf(const int fd, const int op, const off_t size) {
 #define lockf64(fd, op, size)   lockf((fd), (op), (size))
 
 
-LIB_FUNC int ftrylockfile(FILE* fp) {
+LIB_FUNC int ftrylockfile(FILE* restrict fp) {
 	struct pthread* self = __pthread_self();
 	const pid_t tid = (pid_t)self->tid;
 	if (fp->lock == tid) {
@@ -20781,7 +20810,7 @@ LIB_FUNC void UNLOCKFILE(FILE* restrict fp) {
 
 
 LIB_FUNC void do_orphaned_stdio_locks(void) {
-	FILE* fp = { 0 };
+	FILE* restrict fp = { 0 };
 	for (fp = __pthread_self()->stdio_locks; fp; fp = fp->next_locked) {
 		fp->lock = 0x40000000;
 	}
@@ -20935,12 +20964,13 @@ LIB_FUNC int swapoff(const char* restrict path) {
 
 
 /** PM passes the address of a structure of this type to the Minix kernel when sys_sigsend() is invoked as part of the signal catching mechanism; The structure contain all the information that the Minix kernel needs to build the signal stack */
-typedef struct attr_packed sigmsg {
-	int sm_signo;  //!< Signal number being caught
+typedef struct sigmsg {
 	sigset_t sm_mask;  //!< Mask to restore when handler returns
 	vir_bytes sm_sighandler;  //!< Address of handler
 	vir_bytes sm_sigreturn;  //!< Address of `_sigreturn` in C library
 	vir_bytes sm_stkptr;  //!< User stack pointer
+	int sm_signo;  //!< Signal number being caught
+	int pad0;  //!< Padding
 } sigmsg_t;
 
 
@@ -21789,9 +21819,11 @@ LIB_FUNC noreturn void __siglongjmp(struct jmp_buf_tag _env[1], int __savemask) 
 
 
 /** Structure used for the I_FLUSHBAND ioctl on streams */
-typedef struct attr_packed bandinfo {
-	unsigned char bi_pri;
+typedef struct bandinfo {
 	int bi_flag;
+	unsigned char bi_pri;
+	unsigned char pad0;  //!< Padding
+	unsigned short pad1;  //!< Padding
 } bandinfo_t;
 
 
@@ -21815,8 +21847,9 @@ typedef struct strfdinsert {
 } strfdinsert_t;
 
 
-typedef struct attr_packed strioctl {
+typedef struct strioctl {
 	int ic_cmd, ic_timout, ic_len;
+	int pad0;  //!< Padding
 	char* ic_dp;
 } strioctl_t;
 
@@ -22553,12 +22586,13 @@ enum QUEUE_SELECTOR {
 
 /** Number of Control Characters */
 #define NCC   8
-struct attr_packed termio {
+struct termio {
 	uint16_t c_iflag;  //!< Input mode flags
 	uint16_t c_oflag;  //!< Output mode flags
 	uint16_t c_cflag;  //!< Control mode flags
 	uint16_t c_lflag;  //!< Local mode flags
 	unsigned char c_line;  //!< Line discipline
+	unsigned char pad0;  //!< Padding
 	unsigned char c_cc[NCC];  //!< Control characters
 };
 
@@ -23991,8 +24025,17 @@ LIB_FUNC int isatty(const int fd) {
 
 
 typedef struct f_owner_ex { int type; pid_t pid; }   f_owner_ex_t;
-typedef struct attr_packed Radvisory { int64_t Offset; int32_t Count; }   Radvisory_t;
-typedef struct attr_packed Log2phys { uint32_t Flags; int64_t Contigbytes, Devoffset; }   Log2phys_t;
+typedef struct Radvisory {
+	int64_t Offset;
+	int32_t Count;
+	int32_t pad0;  //!< Padding
+} Radvisory_t;
+typedef struct Log2phys {
+	int64_t Contigbytes;
+	int64_t Devoffset;
+	uint32_t Flags;
+	uint32_t pad0;  //!< Padding
+} Log2phys_t;
 
 typedef struct Fstore {
 	uint32_t Flags;
@@ -24134,7 +24177,7 @@ LIB_FUNC int open(const char* restrict filename, const int flags, ...) {
 	}
 	register const int fd = (int)syscall3(SYS_open, (long)filename, (long)flags, (long)mode);
 	if (fd >= 0 && (flags & O_CLOEXEC)) {
-		syscall3(SYS_fcntl, fd, F_SETFD, FD_CLOEXEC);
+		syscall3void(SYS_fcntl, fd, F_SETFD, FD_CLOEXEC);
 		return fd;
 	} else { return -1; }
 }
@@ -24256,34 +24299,36 @@ LIB_FUNC int posix_fadvise(const int fd, const off_t base, const off_t len, cons
 
 /** Structure to access `era` information from LC_TIME */
 typedef struct attr_packed era_entry {
-	uint32_t direction;  //!< Contains '+' or '-'
-	int32_t offset;
-	int32_t start_date[3];
-	int32_t stop_date[3];
 	const char* era_name;
 	const char* era_format;
 	const wchar_t* era_wname;
 	const wchar_t* era_wformat;
+	uint32_t direction;  //!< Contains '+' or '-'
+	int32_t offset;
+	int32_t start_date[3];
+	int32_t stop_date[3];
 	int absolute_direction;  //!< `+1` indicates that year number is higher in the future (like A.D.); `-1` indicates that year number is higher in the past (like B.C.)
 } era_entry_t;
 
 
 /** Structure caching computed data about information from LC_TIME; The `private.time` member of `struct __locale_data` points to this */
-typedef struct attr_packed lc_time_data {
+typedef struct lc_time_data {
+	const char** alt_digits;
+	const wchar_t** walt_digits;
 	struct era_entry* eras;
 	size_t num_eras;
 	int era_initialized;
-	const char** alt_digits;
-	const wchar_t** walt_digits;
-	int alt_digits_initialized, walt_digits_initialized;
+	int alt_digits_initialized;
+	int walt_digits_initialized;
+	int pad0;  //!< Padding
 } lc_time_data_t;
 
 
 struct __locale_map {
 	const void* map;
+	const struct __locale_map* next;
 	size_t map_size;
 	char name[LOCALE_NAME_MAX + 1];
-	const struct __locale_map* next;
 };
 
 
@@ -24700,7 +24745,7 @@ typedef struct lc_monetary_T {
 
 
 /** The real definition of the struct for the LC_MONETARY locale */
-typedef struct attr_packed locale_monetary_t {
+typedef struct locale_monetary_t {
 	const char* int_curr_symbol;
 	const char* currency_symbol;
 	const char* mon_decimal_point;
@@ -24717,6 +24762,7 @@ typedef struct attr_packed locale_monetary_t {
 	signed char int_p_cs_precedes, int_p_sep_by_space;
 	signed char int_n_cs_precedes, int_n_sep_by_space;
 	signed char int_p_sign_posn, int_n_sign_posn;
+	uint16_t pad0;  //!< Padding
 	const char* duo_int_curr_symbol;
 	const char* duo_currency_symbol;
 	signed char duo_int_frac_digits, duo_frac_digits;
@@ -24726,6 +24772,7 @@ typedef struct attr_packed locale_monetary_t {
 	signed char duo_int_p_cs_precedes, duo_int_p_sep_by_space;
 	signed char duo_int_n_cs_precedes, duo_int_n_sep_by_space;
 	signed char duo_int_p_sign_posn, duo_int_n_sign_posn;
+	uint16_t pad1;  //!< Padding
 	uint32_t uno_valid_from, uno_valid_to, duo_valid_from, duo_valid_to;
 	uint32_t conversion_rate[2];
 	char* crncystr;
@@ -24767,6 +24814,7 @@ static const UNUSED struct lc_monetary_T _C_monetary_locale = {
 	empty,  //!< int_n_sep_by_space
 	empty,  //!< int_p_sign_posn
 	empty,  //!< int_n_sign_posn
+	empty,  //!< pad0
 	empty,  //!< codeset
 	wempty,  //!< wint_curr_symbol
 	wempty,  //!< wcurrency_symbol
@@ -25137,16 +25185,16 @@ LIB_FUNC ATTR_PF int getint(const char** restrict s) {
 
 /** Get a single character and convert it to a literal integer */
 LIB_FUNC ATTR_PF int getint_nonconst(char** restrict s) {
-	register int i;
-	for (i = 0; isdigit(**s); (*s)++) { i = (10 * i + (**s - '0')); }
+	register int i = 0;
+	for (; isdigit(**s); (*s)++) { i = (10 * i + (**s - '0')); }
 	return i;
 }
 
 
 /** Get a single wide character and convert it to a literal integer */
-LIB_FUNC ATTR_PF int getintw(wchar_t** s) {
-	register int i;
-	for (i = 0; iswdigit(**s); (*s)++) { i = 10 * i + (**s - '0'); }
+LIB_FUNC ATTR_PF int getintw(wchar_t** restrict s) {
+	register int i = 0;
+	for (; iswdigit(**s); (*s)++) { i = 10 * i + (**s - '0'); }
 	return i;
 }
 
@@ -25188,7 +25236,8 @@ LIB_FUNC ATTR_NONNULL(1) size_t sw_write_helper(void* fp, const unsigned char* r
 
 /** Writes to file, but requires that the string end in '\n' (not counting the NULL terminator) */
 LIB_FUNC NONNULL size_t fwritex(const unsigned char* restrict s, const size_t len, FILE* restrict fp) {
-	register size_t l = len, i = 0;
+	register size_t l = len;
+	register size_t i = 0;
 	if (!fp->wend && __towrite(fp)) { return 0; }
 	else if (l > (size_t)(fp->wend - fp->wpos)) { return fp->write(fp, s, l); }
 	else if (fp->lbf >= 0) {
@@ -25231,9 +25280,9 @@ LIB_FUNC ATTR_NONNULL(3) int __fwrite_helper(const void* restrict ptr, const siz
 
 /** Version of write which resumes after a signal is caught */
 LIB_FUNC NONNULL int xwrite(const int fd, const char* restrict buf, const int nbytes) {
-	register int ntry = 0, i, n = nbytes;
+	register int ntry = 0, n = nbytes;
 	loop_forever {
-		i = (int)write(fd, buf, (size_t)n);
+		register int i = (int)write(fd, buf, (size_t)n);
 		if (i > 0) {
 			if ((n -= i) <= 0) { return nbytes; }
 			buf += i;
@@ -25247,13 +25296,13 @@ LIB_FUNC NONNULL int xwrite(const int fd, const char* restrict buf, const int nb
 
 /** Output a string of characters of the specified length to the file pointer if no errors have occurred with that file pointer */
 LIB_FUNC NONNULL void out_char(FILE* restrict fp, const char* restrict s, const size_t len) {
-	if (no_ferr(fp)) { __stdio_write(fp, (const unsigned char*)s, len); }
+	if (no_ferr(fp)) { (void)__stdio_write(fp, (const unsigned char*)s, len); }
 }
 
 
 /** Output a string of wide characters of the specified length to the file pointer if no errors have occurred with that file pointer */
 LIB_FUNC NONNULL void out_wchar(FILE* restrict fp, const wchar_t* restrict s, size_t l) {
-	while (l-- && no_ferr(fp)) { fputwc(*s++, fp); }
+	while (l-- && no_ferr(fp)) { (void)fputwc(*s++, fp); }
 }
 
 
@@ -25283,8 +25332,8 @@ LIB_FUNC ATTR_PF char* fmtstrflush(Fmt* restrict f) {
 }
 
 
-LIB_FUNC int runeFmtStrFlush(Fmt* f) {
-	Rune* s;
+LIB_FUNC int runeFmtStrFlush(Fmt* restrict f) {
+	Rune* s = NULL;
 	register size_t n = (size_t)f->farg;
 	n += 256;
 	f->farg = (void*)n;
@@ -25300,7 +25349,7 @@ LIB_FUNC int runeFmtStrFlush(Fmt* f) {
 }
 
 
-LIB_FUNC int fmtStrFlush(Fmt* f) {
+LIB_FUNC int fmtStrFlush(Fmt* restrict f) {
 	register size_t n = (size_t)f->farg;
 	n += 256;
 	f->farg = (void*)n;
@@ -25316,7 +25365,7 @@ LIB_FUNC int fmtStrFlush(Fmt* f) {
 }
 
 
-LIB_FUNC int runefmtstrinit(Fmt* f) {
+LIB_FUNC int runefmtstrinit(Fmt* restrict f) {
 	f->runes = 1;
 	const size_t n = 32;
 	f->start = malloc((size_t)(SIZEOF_RUNE * n));
@@ -25330,7 +25379,7 @@ LIB_FUNC int runefmtstrinit(Fmt* f) {
 }
 
 
-LIB_FUNC int fmtstrinit(Fmt* f) {
+LIB_FUNC int fmtstrinit(Fmt* restrict f) {
 	f->runes = 0;
 	const size_t n = 32;
 	f->start = malloc(n);
@@ -25817,7 +25866,7 @@ goto_char_printf:
 #   ifndef NO_PRINT_STRINGS  // Prepare string output
 goto_string_printf:
 				{
-					union __union_v_printf_buf { char* str; const char* cstr; } u_str;
+					union __union_v_printf_buf { char* str; const char* cstr; } align_ptr u_str;
 					switch (flag_sign) {
 #      ifndef NO_PRINT_M
 						case 'm':  // Write an error message
@@ -26410,7 +26459,7 @@ LIB_FUNC NONNULL void shlim(FILE* restrict fp, const off_t lim) {
 
 /** Get a character from the shared area */
 LIB_FUNC int shgetc(FILE* restrict fp) {
-	register int c;
+	register int c = 0;
 	if ((fp->shlim && (fp->shcnt >= fp->shlim)) || (c = __uflow(fp)) < 0) {
 		fp->shend = 0;
 		return EOF;
@@ -26423,7 +26472,7 @@ LIB_FUNC int shgetc(FILE* restrict fp) {
 }
 
 
-LIB_FUNC int sflush(FILE* fp) {
+LIB_FUNC int sflush(FILE* restrict fp) {
 	if (cantwrite(fp)) { return 0; }
 	unsigned char* p = fp->buf;
 	register int n = (int)(fp->rpos - p);
@@ -26441,20 +26490,21 @@ LIB_FUNC int sflush(FILE* fp) {
 }
 
 
-LIB_FUNC int sflush_locked(FILE* fp) {
+LIB_FUNC int sflush_locked(FILE* restrict fp) {
+	if (null_fp(fp)) { return EOF; }
 	FLOCK(fp);
-	const int r = sflush(fp);
+	const int retval = sflush(fp);
 	FUNLOCK(fp);
-	return r;
+	return retval;
 }
 
 
 LIB_FUNC int _fwalk(int (*function)(FILE*)) {
-	FILE* fp;
-	register int n;
-	struct glue* g;
+	FILE* fp = NULL;
+	struct glue* g = NULL;
 	register int ret = 0;
 	for (g = &__sglue; g != NULL; g = g->next) {
+		register int n = 0;
 		for (fp = g->iobs, n = g->niobs; --n >= 0; fp++) {
 			if ((fp->flags != 0) && ((fp->flags & (unsigned int)__SIGN) == 0)) {
 				ret |= (*function)(fp);
@@ -26465,12 +26515,13 @@ LIB_FUNC int _fwalk(int (*function)(FILE*)) {
 }
 
 
-LIB_FUNC int fflush_unlocked(FILE* fp) {
-	if (fp->wpos > fp->wbase) {
-		fp->write(fp, 0, 0);
+LIB_FUNC int fflush_unlocked(FILE* restrict fp) {
+	if (null_fp(fp)) { return __SERR; }
+	else if (fp->wpos > fp->wbase) {
+		(void)fp->write(fp, 0, 0);
 		if (!fp->wpos) { return EOF; }
 	}
-	if (fp->rpos < fp->rend) { fp->seek(fp, fp->rpos - fp->rend, SEEK_CUR); }
+	if (fp->rpos < fp->rend) { (void)fp->seek(fp, fp->rpos - fp->rend, SEEK_CUR); }
 	fp->wpos = fp->wbase = fp->wend = 0;
 	fp->rpos = fp->rend = 0;
 	return 0;
@@ -26478,23 +26529,32 @@ LIB_FUNC int fflush_unlocked(FILE* fp) {
 
 
 /** Flush a single file, or (if `fp` is NULL) all files */
-LIB_FUNC int fflush(FILE* fp) {
+LIB_FUNC int fflush(FILE* restrict fp) {
 	if (fp) {
 		FLOCK(fp);
-		const int r = fflush_unlocked(fp);
+		const int ret_code = fflush_unlocked(fp);
 		FUNLOCK(fp);
-		return r;
+		return ret_code;
 	}
-	register int r = (int)(STDOUT ? fflush(STDOUT) : 0);
-	for (fp = *ofl_lock(); fp; fp = fp->next_locked) {
-		FLOCK(fp);
-		if (fp->wpos > fp->wbase) { r |= fflush_unlocked(fp); }
-		FUNLOCK(fp);
+	register int ret_code = (int)(STDOUT ? fflush(STDOUT) : 0);
+	for (FILE* file_ptr = *ofl_lock(); file_ptr; file_ptr = file_ptr->next_locked) {
+		FLOCK(file_ptr);
+		if (file_ptr->wpos > file_ptr->wbase) { ret_code |= fflush_unlocked(file_ptr); }
+		FUNLOCK(file_ptr);
 	}
 	UNLOCK(memlock);
-	return r;
+	return ret_code;
 }
 #define _IO_fflush(fp)   fflush((fp))
+
+
+/** Flush stdout */
+LIB_FUNC int flush_stdout(void) {
+	FLOCK(stdout);
+	const int ret_code = fflush_unlocked(stdout);
+	FUNLOCK(stdout);
+	return ret_code;
+}
 
 
 LIB_FUNC int lflush(FILE* restrict fp) {
@@ -26726,7 +26786,7 @@ LIB_FUNC char* fgets(char* restrict str, const int num, FILE* restrict fp) {
 #define __fgets_unlocked(buffer, bufsiz, stream)   fgets((buffer), (bufsiz), (stream))
 
 
-LIB_FUNC char* __fgets_chk(char* buf, int len, const size_t slen, FILE* fp) {
+LIB_FUNC char* __fgets_chk(char* restrict buf, int len, const size_t slen, FILE* restrict fp) {
 	if (slen >= (size_t)INT_MAX) { return fgets(buf, len, fp); }
 	if (len >= 0 && (size_t)len > slen) { __chk_fail("*** fgets() terminated ***"); }
 	return fgets(buf, len, fp);
@@ -26754,7 +26814,7 @@ LIB_FUNC int fileno(FILE* restrict fp) {
 
 
 /** Clear the file's error and EOF indicators */
-LIB_FUNC void clearerr(FILE* fp) {
+LIB_FUNC NONNULL void clearerr(FILE* fp) {
 	FLOCK(fp);
 	fp->flags &= (unsigned int)(~(__SEOF | __SERR));
 	FUNLOCK(fp);
@@ -26775,7 +26835,7 @@ LIB_FUNC int ferror(FILE* restrict fp) {
 #define __FERROR(fp)   ferror((fp))
 
 
-LIB_FUNC int set_flags(FILE* restrict stream, const int flags) {
+LIB_FUNC NONNULL int set_flags(FILE* restrict stream, const int flags) {
 	switch (flags) {
 		case _IONBF:
 			stream->flags = (unsigned int)(stream->flags & (unsigned int)(~(__SLBF))) | __SNBF;
@@ -26858,8 +26918,7 @@ LIB_FUNC void store_int(void* dest, const int size, const unsigned long long i) 
 LIB_FUNC void* arg_n(va_list ap, const unsigned int n) {
 	va_list ap2;
 	va_copy(ap2, ap);
-	register unsigned int i = 0;
-	for (i = n; i > 1; i--) { va_arg(ap2, void*); }
+	for (register unsigned int i = n; i > 1; i--) { va_arg(ap2, void*); }
 	void* p = va_arg(ap2, void*);
 	va_end(ap2);
 	return p;
@@ -26869,8 +26928,8 @@ LIB_FUNC void* arg_n(va_list ap, const unsigned int n) {
 LIB_FUNC ATTR_NONNULL(1) size_t do_read(FILE* restrict fp, unsigned char* buf, const size_t len) {
 	const UNUSED wchar_t wcstr[2] = L"@";
 	if ((!(fp->wbuf[0]))) { fp->wbuf = UNCONST(wcstr); }
-	register size_t i;
-	for (i = 0; i < fp->wbuf_size && fp->wbuf[i]; i++) { fp->buf[i] = (unsigned char)(fp->wbuf[i] < 128 ? fp->wbuf[i] : '@'); }
+	register size_t i = 0;
+	for (; i < fp->wbuf_size && fp->wbuf[i]; i++) { fp->buf[i] = (unsigned char)(fp->wbuf[i] < 128 ? fp->wbuf[i] : '@'); }
 	fp->rpos = fp->buf;
 	fp->rend = fp->buf + i;
 	fp->wbuf = (wchar_t*)(fp->wbuf + i);
@@ -26884,7 +26943,7 @@ LIB_FUNC ATTR_NONNULL(1) size_t do_read_helper(void* restrict fp, unsigned char*
 }
 
 
-LIB_FUNC size_t string_read(FILE* fp, unsigned char* buf, const size_t len) {
+LIB_FUNC NONNULL size_t string_read(FILE* restrict fp, unsigned char* restrict buf, const size_t len) {
 	register size_t k = len + 256;
 	fp->buf_size = len;
 	char* end = memchr_nonconst(fp->buf, 0, k);
@@ -26906,10 +26965,9 @@ LIB_FUNC size_t string_read(FILE* fp, unsigned char* buf, const size_t len) {
 */
 LIB_FUNC int vfscanf(FILE* restrict f, const char* restrict fmt, va_list ap) {
 	int width = 0, size = 0, alloc = 0, base = 0, c = 0, t = 0, invert = 0, matches = 0;
-	const unsigned char* p;
-	char* s = 0;
-	wchar_t* wcs = 0;
-	mbstate_t st;
+	char* s = NULL;
+	wchar_t* wcs = NULL;
+	mbstate_t st = { 0 };
 	void* dest = NULL;
 	unsigned long long x = 0;
 #   ifndef NO_SCAN_FLOATS
@@ -26917,10 +26975,11 @@ LIB_FUNC int vfscanf(FILE* restrict f, const char* restrict fmt, va_list ap) {
 #   endif
 	register off_t pos = 0;
 	unsigned char scanset[257] = { 0 };
-	size_t i = 0, k = 0;
+	size_t i = 0;
+	size_t k = 0;
 	wchar_t wc = 0;
 	FLOCK(f);
-	for (p = (const unsigned char*)fmt; *p; p++) {
+	for (const unsigned char* p = (const unsigned char*)fmt; *p; p++) {
 		alloc = 0;
 		if (isspace(*p)) {
 			while (isspace(p[1])) { p++; }
@@ -27228,7 +27287,7 @@ LIB_FUNC int sscanf(char* restrict s, const char* restrict fmt, ...) {
 
 
 LIB_FUNC int ungetc(const int c, FILE* fp) {
-	if (c == EOF) { return c; }
+	if (c == EOF || null_fp(fp)) { return EOF; }
 	FLOCK(fp);
 	if (!fp->rpos) { __toread(fp); }
 	if (!fp->rpos || fp->rpos <= (fp->buf - UNGET)) {
@@ -27267,7 +27326,7 @@ LIB_FUNC NONNULL int fputs_unlocked(register const char* restrict s, FILE* restr
 
 /** Write string to stdout */
 LIB_FUNC int puts(const char* restrict src) {
-	if (ferror(stdout)) { return EOF; }
+	if (ferror(stdout) || src == NULL) { return EOF; }
 	register const size_t nmemb = strlen(src);
 	FLOCK(stdout);
 	register const size_t size_written = (size_t)__write_stdout(src, nmemb);
@@ -27279,19 +27338,19 @@ LIB_FUNC int puts(const char* restrict src) {
 
 /** Write string to stdout without a newline */
 LIB_FUNC int puts2(const char* restrict src) {
-	if (ferror(stdout)) { return EOF; }
+	if (ferror(stdout) || src == NULL) { return EOF; }
 	register const size_t nmemb = strlen(src);
 	FLOCK(stdout);
 	register const size_t size_written = (size_t)__write_stdout(src, nmemb);
-	const int r = -(((size_written == nmemb ? nmemb : size_written) == nmemb) - 1);
+	const int ret_code = -(((size_written == nmemb ? nmemb : size_written) == nmemb) - 1);
 	FUNLOCK(stdout);
-	return r;
+	return ret_code;
 }
 
 
 /** Write string to stdout and do not return any value */
 LIB_FUNC void puts_no_output(const char* restrict src) {
-	if (ferror(stdout)) { return; }
+	if (ferror(stdout) || src == NULL) { return; }
 	FLOCK(stdout);
 	(void)__write_stdout(src, strlen(src));
 	(void)__write_stdout((const char*)&stdout->lbf, 1);
@@ -27301,19 +27360,19 @@ LIB_FUNC void puts_no_output(const char* restrict src) {
 
 /** Write string to stderr */
 LIB_FUNC int puts_err(const char* src) {
-	if (ferror(stderr)) { return EOF; }
+	if (ferror(stderr) || src == NULL) { return EOF; }
 	register const size_t nmemb = strlen(src);
 	FLOCK(stderr);
 	register const size_t size_written = (size_t)__write_stderr(src, nmemb);
-	const int r = -((((size_written == nmemb ? nmemb : size_written) == nmemb) - 1) || (putc_unlocked(stderr->lbf, stderr) < 0));
+	const int ret_code = -((((size_written == nmemb ? nmemb : size_written) == nmemb) - 1) || (putc_unlocked(stderr->lbf, stderr) < 0));
 	FUNLOCK(stderr);
-	return r;
+	return ret_code;
 }
 
 
 /** Write string to stderr and do not return any value */
 LIB_FUNC void puts_err_no_output(const char* src) {
-	if (ferror(stderr)) { return; }
+	if (ferror(stderr) || src == NULL) { return; }
 	FLOCK(stderr);
 	(void)__write_stderr(src, strlen(src));
 	(void)__write_stderr((const char*)&stderr->lbf, 1);
@@ -27610,8 +27669,8 @@ LIB_FUNC FILE* fopen(const char* restrict filename, const char* restrict mode) {
 
 
 /** Close a stream */
-LIB_FUNC int fclose(FILE* fp) {
-	int r, perm;
+LIB_FUNC int fclose(FILE* restrict fp) {
+	int perm = 0;
 	FLOCK(fp);
 	unlist_locked_file(fp);
 	if (!(perm = (int)(fp->flags & (unsigned int)__SLBF))) {
@@ -27621,7 +27680,7 @@ LIB_FUNC int fclose(FILE* fp) {
 		if (*head == fp) { *head = fp->next_locked; }
 		UNLOCK(memlock);
 	}
-	r = fflush(fp);
+	int r = fflush(fp);
 	r |= fp->close(fp);
 	if (fp->lb_base) { free(fp->lb_base); }
 	if (!perm) { free(fp); }
@@ -27641,7 +27700,7 @@ LIB_FUNC FILE* freopen(const char* restrict filename, const char* restrict mode,
 	FLOCK(fp);
 	fflush(fp);
 	if (!filename) {
-		if (_fl & O_CLOEXEC) { syscall3(SYS_fcntl, fp->fd, F_SETFD, FD_CLOEXEC); }
+		if (_fl & O_CLOEXEC) { syscall3void(SYS_fcntl, fp->fd, F_SETFD, FD_CLOEXEC); }
 		_fl &= (int)(~(O_CREAT | O_EXCL | O_CLOEXEC));
 		if (syscall3(SYS_fcntl, fp->fd, F_SETFL, _fl) < 0) { fclose(fp); return NULL; }
 	} else {
@@ -27759,9 +27818,8 @@ LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* fp, const unsigned char* buf
 	struct iovec* iov = iovs;
 	register size_t rem = iov[0].iov_len + iov[1].iov_len;
 	register int iovcnt = 2;
-	register ssize_t cnt;
 	loop_forever {
-		cnt = (ssize_t)syscall3(SYS_writev, fp->fd, (long)iov, (long)iovcnt);
+		register ssize_t cnt = (ssize_t)syscall3(SYS_writev, fp->fd, (long)iov, (long)iovcnt);
 		if ((size_t)cnt == rem) {
 			fp->wend = (fp->buf + fp->buf_size);
 			fp->wpos = fp->wbase = fp->buf;
@@ -27796,16 +27854,16 @@ LIB_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* fp, const unsigned ch
 
 
 /** Sets the position indicator associated with stream to the beginning of the file */
-LIB_FUNC void rewind(FILE* f) {
-	FLOCK(f);
-	fseeko_unlocked(f, 0, SEEK_SET);
-	f->flags &= (unsigned int)(~__SERR);
-	FUNLOCK(f);
+LIB_FUNC void rewind(FILE* restrict fp) {
+	FLOCK(fp);
+	fseeko_unlocked(fp, 0, SEEK_SET);
+	fp->flags &= (unsigned int)(~__SERR);
+	FUNLOCK(fp);
 }
 
 
 LIB_FUNC NOLIBCALL ATTR_PF int fmodeflags(const char* restrict mode) {
-	register int flags;
+	register int flags = 0;
 	if (strchr(mode, '+')) { flags = O_RDWR; }
 	else if (*mode == 'r') { flags = O_RDONLY; }
 	else { flags = O_WRONLY; }
@@ -27819,80 +27877,80 @@ LIB_FUNC NOLIBCALL ATTR_PF int fmodeflags(const char* restrict mode) {
 #define __fmodeflags(mode)   fmodeflags((mode))
 
 
-LIB_FUNC int fseeko_unlocked(FILE* f, off_t off, const int whence) {
-	if (whence == SEEK_CUR) { off -= f->rend - f->rpos; }
-	if (f->wpos > f->wbase) {  // Flush write buffer, and report error on failure
-		f->write(f, 0, 0);
-		if (!f->wpos) { return -1; }
+LIB_FUNC int fseeko_unlocked(FILE* restrict fp, off_t off, const int whence) {
+	if (whence == SEEK_CUR) { off -= fp->rend - fp->rpos; }
+	if (fp->wpos > fp->wbase) {  // Flush write buffer, and report error on failure
+		fp->write(fp, 0, 0);
+		if (!fp->wpos) { return -1; }
 	}
-	f->wpos = f->wbase = f->wend = 0;  // Leave writing mode
-	if (f->seek(f, off, whence) < 0) { return -1; }  // Perform the underlying seek
-	f->rpos = f->rend = 0;  // If seek succeeded, file is seekable and we discard read buffer
-	f->flags &= (unsigned int)(~__SEOF);
+	fp->wpos = fp->wbase = fp->wend = 0;  // Leave writing mode
+	if (fp->seek(fp, off, whence) < 0) { return -1; }  // Perform the underlying seek
+	fp->rpos = fp->rend = 0;  // If seek succeeded, file is seekable and we discard read buffer
+	fp->flags &= (unsigned int)(~__SEOF);
 	return 0;
 }
 #define __fseeko_unlocked(f, off, whence)   fseeko_unlocked((f), (off), (whence))
 
 
-LIB_FUNC int fseeko(FILE* f, off_t off, const int whence) {
-	FLOCK(f);
-	const int result = fseeko_unlocked(f, off, whence);
-	FUNLOCK(f);
+LIB_FUNC int fseeko(FILE* fp, off_t off, const int whence) {
+	FLOCK(fp);
+	const int result = fseeko_unlocked(fp, off, whence);
+	FUNLOCK(fp);
 	return result;
 }
-#define __fseeko(f, off, whence)   fseeko((f), (off), (whence))
-#define __fseeko64(f, off, whence)   fseeko((f), (off), (whence))
-#define fseeko64(f, off, whence)   fseeko((f), (off), (whence))
+#define __fseeko(fp, off, whence)   fseeko((fp), (off), (whence))
+#define __fseeko64(fp, off, whence)   fseeko((fp), (off), (whence))
+#define fseeko64(fp, off, whence)   fseeko((fp), (off), (whence))
 
 
 /** Sets the file position indicator to the desired point */
-LIB_FUNC int fseek(FILE* f, long off, const int whence) {
-	return fseeko(f, off, whence);
+LIB_FUNC int fseek(FILE* restrict fp, long off, const int whence) {
+	return fseeko(fp, off, whence);
 }
-#define __fseek(f, off, whence)   fseek((f), (off), (whence))
-#define __fseek64(f, off, whence)   fseek((f), (off), (whence))
-#define fseek64(f, off, whence)   fseek((f), (off), (whence))
+#define __fseek(fp, off, whence)   fseek((fp), (off), (whence))
+#define __fseek64(fp, off, whence)   fseek((fp), (off), (whence))
+#define fseek64(fp, off, whence)   fseek((fp), (off), (whence))
 
 
 /** Get the current file position */
-LIB_FUNC int fgetpos(FILE* restrict f, fpos_t* restrict pos) {
-	const off_t off = ftello(f);
+LIB_FUNC int fgetpos(FILE* restrict fp, fpos_t* restrict pos) {
+	const off_t off = ftello(fp);
 	if (off < 0) { return -1; }
 	*(off_t*)pos = off;
 	return 0;
 }
-#define fgetpos64(f, pos)   fgetpos((f), (pos))
+#define fgetpos64(fp, pos)   fgetpos((fp), (pos))
 
 
 /** Set the current file position */
-LIB_FUNC int fsetpos(FILE* f, const fpos_t* pos) {
-	return __fseeko(f, *(const off_t*)pos, SEEK_SET);
+LIB_FUNC int fsetpos(FILE* restrict fp, const fpos_t* pos) {
+	return fseeko(fp, *(const off_t*)pos, SEEK_SET);
 }
-#define fsetpos64(f, pos)   fsetpos((f), (pos))
+#define fsetpos64(fp, pos)   fsetpos((fp), (pos))
 
 
-LIB_FUNC off_t __ftello_unlocked(FILE* f) {
-	const off_t pos = f->seek(f, 0, ((f->flags & __SAPP) && f->wpos > f->wbase ? SEEK_END : SEEK_CUR));
+LIB_FUNC off_t __ftello_unlocked(FILE* restrict fp) {
+	const off_t pos = fp->seek(fp, 0, ((fp->flags & __SAPP) && fp->wpos > fp->wbase ? SEEK_END : SEEK_CUR));
 	if (pos < 0) { return pos; }
-	return (off_t)(pos - (f->rend - f->rpos) + (f->wpos - f->wbase));
+	return (off_t)(pos - (fp->rend - fp->rpos) + (fp->wpos - fp->wbase));
 }
 
 
 /** Returns the current value of the file position indicator */
-LIB_FUNC off_t ftello(FILE* f) {
-	FLOCK(f);
-	const off_t pos = __ftello_unlocked(f);
-	FUNLOCK(f);
+LIB_FUNC off_t ftello(FILE* restrict fp) {
+	FLOCK(fp);
+	const off_t pos = __ftello_unlocked(fp);
+	FUNLOCK(fp);
 	return pos;
 }
-#define __ftello(f)   ftello((f))
-#define __ftello64(f)   ftello((f))
-#define ftello64(f)   ftello((f))
+#define __ftello(fp)   ftello((fp))
+#define __ftello64(fp)   ftello((fp))
+#define ftello64(fp)   ftello((fp))
 
 
 /** Returns the current value of the file position indicator */
-LIB_FUNC long ftell(FILE* f) {
-	const off_t pos = ftello(f);
+LIB_FUNC long ftell(FILE* restrict fp) {
+	const off_t pos = ftello(fp);
 	if (pos > LONG_MAX) {
 		set_errno(EOVERFLOW);
 		return -1;
@@ -27902,7 +27960,7 @@ LIB_FUNC long ftell(FILE* f) {
 
 
 /** Set and determine the orientation of a FILE stream */
-LIB_FUNC int fwide(FILE* fp, const int mode) {
+LIB_FUNC int fwide(FILE* restrict fp, const int mode) {
 	register int _mode = mode;
 	FLOCK(fp);
 	if (_mode == _O_BINARY) { fp->mode = _O_BYTE; }
@@ -27968,20 +28026,18 @@ LIB_FUNC const char* trailsl(const char *f) {
 
 LIB_FUNC FILE* tmpfile(void) {
 	char align32 s[32] = "/tmp/tmpfile_XXXXXX\0";
-	int fd;
-	FILE* f;
-	register int try;
-	for (try = 0; try < TMPFILE_MAXTRIES; try++) {
-		randname(s + 13);
-		fd = (int)syscall3(SYS_open, (long)&s, (long)(O_RDWR | O_CREAT | O_EXCL), (long)0600);
+	FILE* f = NULL;
+	for (register int try = 0; try < TMPFILE_MAXTRIES; try++) {
+		(void)randname(s + 13);
+		int fd = (int)syscall3(SYS_open, (long)&s, (long)(O_RDWR | O_CREAT | O_EXCL), (long)0600);
 		if (fd >= 0) {
 #   ifdef SYS_unlink
-			syscall1(SYS_unlink, (long)&s);
+			syscall1void(SYS_unlink, (long)&s);
 #   else
-			syscall3(SYS_unlinkat, AT_FDCWD, s, 0);
+			syscall3void(SYS_unlinkat, AT_FDCWD, s, 0);
 #   endif
 			f = fdopen(fd, "w+");
-			if (!f) { syscall1(SYS_close, fd); }
+			if (!f) { syscall1void(SYS_close, fd); }
 			return f;
 		}
 	}
@@ -27990,15 +28046,14 @@ LIB_FUNC FILE* tmpfile(void) {
 #define tmpfile64()   tmpfile()
 
 
-LIB_FUNC char* tmpnam(char* buf) {
+LIB_FUNC char* tmpnam(char* restrict buf) {
 	char align32 s[32] = "/tmp/tmpnam_XXXXXX\0";
-	int try, r;
-	for (try = 0; try < TMPFILE_MAXTRIES; try++) {
-		randname(s + 12);
+	for (register int try = 0; try < TMPFILE_MAXTRIES; try++) {
+		(void)randname(s + 12);
 #   ifdef SYS_lstat
-		r = (int)syscall2(SYS_lstat, (long)&s, (long)&(struct stat){0});
+		int r = (int)syscall2(SYS_lstat, (long)&s, (long)&(struct stat){0});
 #   else
-		r = (int)syscall4(SYS_fstatat, AT_FDCWD, s, (long)&(struct stat){0}, AT_SYMLINK_NOFOLLOW);
+		int r = (int)syscall4(SYS_fstatat, AT_FDCWD, s, (long)&(struct stat){0}, AT_SYMLINK_NOFOLLOW);
 #   endif
 		if (r == -ENOENT) { return strcpy(buf, s); }
 	}
@@ -28007,13 +28062,12 @@ LIB_FUNC char* tmpnam(char* buf) {
 
 
 LIB_FUNC char* tempnam(const char* dir, const char* pfx) {
-	char s[PATH_MAX];
-	int try, r;
+	char s[PATH_MAX] = { 0 };
 	if (!dir) { dir = P_tmpdir; }
 	if (!pfx) { pfx = "temp"; }
 	const size_t dl = strlen(dir);
 	const size_t pl = strlen(pfx);
-	size_t l = dl + pl + 8;
+	const size_t l = dl + pl + 8;
 	if (l >= PATH_MAX) {
 		set_errno(ENAMETOOLONG);
 		return 0;
@@ -28023,12 +28077,12 @@ LIB_FUNC char* tempnam(const char* dir, const char* pfx) {
 	memcpy_no_output(s + dl + 1, pfx, pl);
 	s[dl + 1 + pl] = '_';
 	s[l] = 0;
-	for (try = 0; try < 100; try++) {
-		randname(s + l - 6);
+	for (register int try = 0; try < 100; try++) {
+		(void)randname(s + l - 6);
 #   ifdef SYS_lstat
-		r = (int)syscall2(SYS_lstat, (long)s, (long)&(struct stat){0});
+		int r = (int)syscall2(SYS_lstat, (long)s, (long)&(struct stat){0});
 #   else
-		r = (int)syscall4(SYS_fstatat, AT_FDCWD, (long)s, (long)&(struct stat){0}, AT_SYMLINK_NOFOLLOW);
+		int r = (int)syscall4(SYS_fstatat, AT_FDCWD, (long)s, (long)&(struct stat){0}, AT_SYMLINK_NOFOLLOW);
 #   endif
 		if (r == -ENOENT) { return strdup(s); }
 	}
@@ -28037,7 +28091,7 @@ LIB_FUNC char* tempnam(const char* dir, const char* pfx) {
 
 
 /** Return the name of the controlling terminal. If S is not NULL, the name is copied into it (it should be at least L_ctermid bytes long), otherwise we return a pointer to a non-const but read-only string literal, that POSIX states the caller must not modify */
-LIB_FUNC char* ctermid(char* s) {
+LIB_FUNC char* ctermid(char* restrict s) {
 	static char def[16] = _PATH_TTY;
 	if (s) {
 		strncpy_no_output(s, def, (size_t)L_ctermid);
@@ -28048,8 +28102,8 @@ LIB_FUNC char* ctermid(char* s) {
 
 
 /** Test if the given string is found in the specified file; `0` and `1` are used to indicate `false` and `true`, respectively, while `-1` indicates failure */
-LIB_FUNC int file_contains_string(const char* file_path, const char* char_string) {
-	FILE* file_ptr = fopen(file_path, "r");
+LIB_FUNC int file_contains_string(const char* restrict file_path, const char* restrict char_string) {
+	FILE* restrict file_ptr = fopen(file_path, "r");
 	if (!file_ptr) { return -1; }
 	char buffer[8192] = { 0 };
 	while (fgets(buffer, 8192, file_ptr) != NULL) {
@@ -28477,7 +28531,7 @@ LIB_FUNC int sched_getcpu(void) {
 #define fix__rlimit(x)   do { if ((x) >= SYSCALL_RLIM_INFINITY) { (x) = RLIM_INFINITY; } } while (0x0)
 
 
-typedef struct rlimit { rlim_t rlim_cur, rlim_max; }   rlimit_t;
+typedef align16 struct rlimit { rlim_t rlim_cur, rlim_max; }   rlimit_t;
 typedef struct ctx { int _id, eid, sid, nr, err; }   ctx_t;
 
 typedef struct ctx_rlimit {
@@ -29157,9 +29211,10 @@ LIB_FUNC int shmget(const key_t key, const size_t __size, const int flag) {
 #define PTHREAD_RWLOCK_INITIALIZER   {{ 0 }}
 #define PTHREAD_COND_INITIALIZER   {{ 0 }}
 #define PTHREAD_MUTEX_INITIALIZER   { {PTHREAD_SPIN_UNLOCKED}, 0, PTHREAD_MUTEX_FAST_NP, 0 }
-#define PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP   {{ 0, 0, (void*)0, 0, PTHREAD_MUTEX_RECURSIVE_NP, 0, { 0 } }}
-#define PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP   {{ 0, 0, (void*)0, 0, PTHREAD_MUTEX_ERRORCHECK_NP, 0, { 0 } }}
-#define PTHREAD_ADAPTIVE_MUTEX_INITIALIZER_NP   {{ 0, 0, (void*)0, 0, PTHREAD_MUTEX_ADAPTIVE_NP, 0, { 0 } }}
+#define PTHREAD_LIST_INITIALIZER   { NULL, NULL }
+#define PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP   {{PTHREAD_LIST_INITIALIZER, NULL, 0, 0, 0, PTHREAD_MUTEX_RECURSIVE_NP, 0, 0}}
+#define PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP   {{ 0, 0, NULL, 0, PTHREAD_MUTEX_ERRORCHECK_NP, 0, { 0 } }}
+#define PTHREAD_ADAPTIVE_MUTEX_INITIALIZER_NP   {{ 0, 0, NULL, 0, PTHREAD_MUTEX_ADAPTIVE_NP, 0, { 0 } }}
 #define PTHREAD_ONCE_INIT   0
 #define PTHREAD_CANCEL_ENABLE   0
 #define PTHREAD_CANCEL_DISABLE   1
@@ -29222,10 +29277,10 @@ enum LIO_OPS {
 enum AIO_REQUEST { aio_no, aio_queued, aio_yes, aio_allocated, aio_done };
 
 
-typedef struct attr_packed __timer { int timerid; pthread_t thread; }   pthread_timer_t;
+typedef struct __timer { pthread_t thread; int64_t timerid; }   pthread_timer_t;
 
 
-typedef struct sem_struct { volatile unsigned int count; }   sem_t;
+typedef struct sem_struct { pthread_mutex_t lock; pthread_cond_t cond; volatile uint64_t count; }   sem_t;
 #define SEM_FAILED   ((sem_t*)-1)
 /* FIXME: typedef struct {
 	pthread_mutex_t lock;
@@ -29236,57 +29291,61 @@ typedef struct sem_struct { volatile unsigned int count; }   sem_t;
 
 
 /** Asynchronous I/O control block */
-struct attr_packed aiocb {
-	int aio_fildes, aio_lio_opcode, aio_reqprio;
-	volatile void* aio_buf;
-	size_t aio_nbytes;
+struct aiocb {
 	struct sigevent aio_sigevent;
+	volatile void* aio_buf;
 	struct aiocb* __next_prio;
-	int __abs_prio, __policy, __error_code;
+	size_t aio_nbytes;
 	ssize_t __return_value;
 #ifndef USE_FILE_OFFSET64
 	off_t aio_offset;
+	int pad0;  //!< Padding
 #else
 	off64_t aio_offset;
 #endif
+	int aio_fildes, aio_lio_opcode, aio_reqprio;
+	int __abs_prio, __policy, __error_code;
 };
 
 
-struct attr_packed aiocb64 {
-	int aio_fildes, aio_lio_opcode, aio_reqprio;
-	volatile void* aio_buf;
-	size_t aio_nbytes;
+struct aiocb64 {
 	struct sigevent aio_sigevent;
+	volatile void* aio_buf;
 	struct aiocb* __next_prio;
-	int __abs_prio, __policy, __error_code;
+	size_t aio_nbytes;
 	ssize_t __return_value;
 	off64_t aio_offset;
+	int aio_fildes, aio_lio_opcode, aio_reqprio;
+	int __abs_prio, __policy, __error_code;
 };
 
 
-struct attr_packed aio_args {
+struct aio_args {
 	struct aiocb* cb;
-	int op, err;
 	sem_t sem;
+	int op, err;
 };
 
 
-struct attr_packed aio_thread {
-	pthread_t td;
+struct aio_thread {
 	struct aiocb* cb;
 	struct aio_thread *next, *prev;
 	struct aio_queue* q;
-	volatile int running;
-	int err, op;
+	pthread_t td;
 	ssize_t ret;
+	volatile int running;
+	int err;
+	int op;
+	int pad0;  //!< Padding
 };
 
 
 struct aio_queue {
-	int fd, seekable, append, ref, init;
+	struct aio_thread* head;
 	pthread_mutex_t lock;
 	pthread_cond_t cond;
-	struct aio_thread* head;
+	int fd, seekable, append, ref, init;
+	int pad0;  //!< Padding
 };
 
 
@@ -29299,37 +29358,36 @@ typedef union __aiocb_union {
 
 struct waitlist {
 	struct waitlist* next;
-#   ifndef DONT_NEED_AIO_MISC_COND
-	pthread_cond_t* cond;
-#   endif
 	int* result;
 	volatile unsigned int* counterp;
 	struct sigevent* sigevp;
-#   ifdef BROKEN_THREAD_SIGNALS
-	pid_t caller_pid;
+#   ifndef DONT_NEED_AIO_MISC_COND
+	pthread_cond_t* cond;
+	int64_t pad0;  //!< Padding
 #   endif
+	pid_t caller_pid;
+	int pad1;
 };
 
 
-struct attr_packed requestlist {
-	int running;
+struct requestlist {
 	struct requestlist *last_fd, *next_fd, *next_prio, *next_run;
 	aiocb_union* aiocbp;
-#   ifdef BROKEN_THREAD_SIGNALS
-	pid_t caller_pid;
-#   endif
 	struct waitlist* waiting;
+	pid_t caller_pid;
+	int running;
 };
 
 
-typedef struct attr_packed lio_state {
+typedef struct lio_state {
+	struct aiocb* cbs[64];
 	struct sigevent* sev;
 	int cnt;
-	struct aiocb* cbs[];
+	int pad0;  //!< Padding
 } lio_state_t;
 
 
-struct attr_packed clparam {
+struct clparam {
 	struct aiocb* __list;
 	struct waitlist* __waitlist;
 	struct requestlist** __requestlist;
@@ -29337,10 +29395,15 @@ struct attr_packed clparam {
 	pthread_cond_t* cond;
 #   endif
 	int nent;
+	int pad0;
 };
 
 
-struct attr_packed _thread_key { int used; void (*destructor)(void*); };
+struct _thread_key {
+	void (*destructor)(void*);
+	int used;
+	int pad0;  //!< Padding
+};
 
 
 struct posix_spawn_args {
@@ -30113,7 +30176,7 @@ LIB_FUNC void __aio_free_request(struct requestlist* elem) {
 
 
 /** Suspend until termination of a requests */
-LIB_FUNC int aio_suspend(struct aiocb* list[], int nent, const struct timespec* timeout) {
+LIB_FUNC int aio_suspend(struct aiocb* list[], const int nent, const struct timespec* timeout) {
 	if (PREDICT_UNLIKELY(nent < 0)) {
 		set_errno(EINVAL);
 		return -1;
@@ -30124,10 +30187,10 @@ LIB_FUNC int aio_suspend(struct aiocb* list[], int nent, const struct timespec* 
 	pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 #   endif
 	bool any = false;
-	int result = 0, cnt;
+	int result = 0, cnt = 0;
 	unsigned int cntr = 1;
 	pthread_mutex_lock(&__aio_requests_mutex);
-	for (cnt = 0; cnt < nent; ++cnt) {
+	for (; cnt < nent; ++cnt) {
 		if (list[cnt] != NULL) {
 			if (list[cnt]->__error_code == EINPROGRESS) {
 				_requestlist[cnt] = __aio_find_req((aiocb_union*)list[cnt]);
@@ -30181,7 +30244,7 @@ LIB_FUNC int aio_suspend(struct aiocb* list[], int nent, const struct timespec* 
 	}
 	while (cnt-- > 0) {
 		if (list[cnt] != NULL && list[cnt]->__error_code == EINPROGRESS) {
-			struct waitlist** listp;
+			struct waitlist** listp = NULL;
 			assert(_requestlist[cnt] != NULL);
 			listp = &_requestlist[cnt]->waiting;
 			while (*listp != NULL && *listp != &_waitlist[cnt]) { listp = &(*listp)->next; }
@@ -30206,13 +30269,14 @@ LIB_FUNC int aio_suspend(struct aiocb* list[], int nent, const struct timespec* 
 
 
 LIB_FUNC int lio_wait(struct lio_state* st) {
-	int i, err, got_err = 0;
 	int cnt = st->cnt;
 	struct aiocb** cbs = st->cbs;
 	loop_forever {
-		for (i = 0; i < cnt; i++) {
+		int got_err = 0;
+		int i = 0;
+		for (; i < cnt; i++) {
 			if (!cbs[i]) continue;
-			err = aio_error(cbs[i]);
+			const int err = aio_error(cbs[i]);
 			if (err == EINPROGRESS) { break; }
 			else if (err) { got_err = 1; }
 			cbs[i] = 0;
@@ -30220,7 +30284,8 @@ LIB_FUNC int lio_wait(struct lio_state* st) {
 		if (i == cnt) {
 			if (got_err) { set_errno(EIO); return -1; }
 			return 0;
-		} else if (aio_suspend((void*)cbs, cnt, 0)) return -1; }
+		} else if (aio_suspend((void*)cbs, cnt, 0)) { return -1; }
+	}
 }
 
 
@@ -35021,11 +35086,12 @@ LIB_FUNC long ptrace(const int request, ...) {
 
 
 /** Datatype for the dtv */
-typedef union attr_packed dtv {
+typedef union dtv {
 	size_t counter;
-	struct attr_packed _dtv_pointer_s {
+	struct _dtv_pointer_s {
 		void* val;
 		bool is_static;
+		bool pad0[7];  //!< Padding
 	} pointer;
 } dtv_t;
 
@@ -35759,7 +35825,7 @@ LIB_FUNC wchar_t* fgetws(wchar_t* wcstr, const int num, FILE* fp) {
 
 
 /** Write wide character to stream */
-LIB_FUNC wint_t fputwc(const wchar_t wc, FILE* fp) {
+LIB_FUNC wint_t fputwc(const wchar_t wc, FILE* restrict fp) {
 	FLOCK(fp);
 	register const wint_t ret = (wint_t)fp->write(fp, (const unsigned char*)&wc, SIZEOF_WCHAR_T);
 	FUNLOCK(fp);
@@ -38679,17 +38745,18 @@ typedef struct strftime_locale {
 #endif
 
 
-typedef struct attr_packed timex {
-	unsigned modes;
+typedef struct timex {
+	struct timeval time;
 	long offset, freq, maxerror, esterror;
+	unsigned int modes;
 	int status;
 	long constant, precision, tolerance;
-	struct timeval time;
 	long tick, ppsfreq, jitter;
+	long stabil, jitcnt;
+	long calcnt, errcnt, stbcnt;
+	long pad0;
 	int shift;
-	long stabil, jitcnt, calcnt, errcnt, stbcnt;
 	int tai;
-	int __padding[11];
 } timex_t;
 
 
@@ -38702,18 +38769,24 @@ struct bintime {
 // TIME-RELATED VARIABLES
 
 static UNUSED char* __tzname[2] = { 0 };
-static UNUSED int __daylight = 0, getdate_err = 0;
-static UNUSED long __timezone = 0, dst_off = 0;
-static UNUSED int r0[5] = { 0 }, r1[5] = { 0 };
+static UNUSED int __daylight = 0;
+static UNUSED int getdate_err = 0;
+static UNUSED long __timezone = 0;
+static UNUSED long dst_off = 0;
 static UNUSED char std_name[TZNAME_MAX + 1];
 static UNUSED char dst_name[TZNAME_MAX + 1];
 static UNUSED char __gmt[4] = "GMT";
 static UNUSED char old_tz_buf[32] = { 0 };
 static UNUSED size_t old_tz_size = sizeof(old_tz_buf), map_size;
 static UNUSED char* old_tz = old_tz_buf;
-static UNUSED int rule0[5] = { 0 }, rule1[5] = { 0 };
-static UNUSED unsigned char *time_index, *abbrevs, *abbrevs_end, *types;
-static const UNUSED unsigned char *zi, *trans;
+static UNUSED int rule0[5] = { 0 };
+static UNUSED int rule1[5] = { 0 };
+static UNUSED unsigned char* time_index = NULL;
+static UNUSED unsigned char* abbrevs = NULL;
+static UNUSED unsigned char* abbrevs_end = NULL;
+static UNUSED unsigned char* types = NULL;
+static const UNUSED unsigned char* zi = NULL;
+static const UNUSED unsigned char* trans = NULL;
 
 
 #ifndef _OS_OSBASE_H
@@ -39024,7 +39097,7 @@ LIB_FUNC void getrule(const char** p, int rule[5]) {
 }
 
 
-LIB_FUNC void getname(char* d, const char** p) {
+LIB_FUNC ATTR_NONNULL(1) void getname(char* restrict d, const char** p) {
 	register int i = 0;
 	if (**p == '<') {
 		++*p;
@@ -39034,11 +39107,11 @@ LIB_FUNC void getname(char* d, const char** p) {
 		for (i = 0; ((unsigned int)(((*p)[i] | 32) - 'a') < 26U) && i < TZNAME_MAX; i++) { d[i] = (*p)[i]; }
 	}
 	*p += i;
-	d[i] = 0;
+	d[i] = '\0';
 }
 
 
-LIB_FUNC int adjtimex(struct timex* tx) {
+LIB_FUNC ATTR_NONNULL(1) int adjtimex(struct timex* tx) {
 	return (int)syscall1(SYS_adjtimex, (long)tx);
 }
 
@@ -39100,7 +39173,7 @@ LIB_FUNC int timer_getoverrun(const timer_t t) {
 LIB_FUNC int ntp_gettime(struct ntptimeval* ntv) {
 	struct timex tntx = { 0 };
 	tntx.modes = 0;
-	const int result = adjtimex(&tntx);
+	register const int result = adjtimex(&tntx);
 	ntv->time = tntx.time;
 	ntv->maxerror = tntx.maxerror;
 	ntv->esterror = tntx.esterror;
@@ -39108,17 +39181,17 @@ LIB_FUNC int ntp_gettime(struct ntptimeval* ntv) {
 }
 
 
-LIB_FUNC int clock_gettime(const clockid_t clk, struct timespec* restrict ts) {
-	register const int r = (int)syscall2(SYS_clock_gettime, (long)clk, (long)ts);
-	if (r == -ENOSYS) {
+LIB_FUNC ATTR_NONNULL(2) int clock_gettime(const clockid_t clk, struct timespec* restrict ts) {
+	register const int ret_code = (int)syscall2(SYS_clock_gettime, (long)clk, (long)ts);
+	if (ret_code == -ENOSYS) {
 		if (clk == CLOCK_REALTIME) {
-			syscall2(SYS_gettimeofday, (long)ts, 0);
+			syscall2void(SYS_gettimeofday, (long)ts, 0);
 			ts->tv_nsec = (int)ts->tv_nsec * 1000;
 			return 0;
 		}
 		return -EINVAL;
 	}
-	return r;
+	return ret_code;
 }
 #define __clock_gettime(clock_id, tp)   clock_gettime((clock_id), (tp))
 
@@ -39278,7 +39351,7 @@ LIB_FUNC float clockf(void) {
 
 /** Wait for the specified number of seconds (as an integer) */
 LIB_FUNC void wait_sec(const int sec) {
-	register const clock_t endwait = clock() + sec * CLOCKS_PER_SEC;
+	register const clock_t endwait = clock() + (sec * CLOCKS_PER_SEC);
 	while (clock() < endwait);
 }
 
@@ -39295,47 +39368,52 @@ LIB_FUNC void delay(const double sec) {
 
 /** Display a progress indicator that is based on a specified time in seconds to wait */
 LIB_FUNC void wait_progress_indicator(const int sec) {
-	if (chk_ferr(stdout)) { return; }
-	register int progress = 0;
-	register size_t len = 0;
-	char progress_str[ANSI_SGR_CUR_START_LEN + 5] = ANSI_SGR_CUR_START "000%\0";
+	if (chk_ferr(stdout) || sec < 1) { return; }
+	(void)flush_stdout();
+	char align64 indicator_str[ANSI_SGR_CUR_START_LEN + 5] = ANSI_SGR_CUR_START "000%\0";
 	(void)__stdio_write(stdout, (const unsigned char*)ANSI_SGR_CUR_START "0%\0", 3 + ANSI_SGR_CUR_START_LEN);
-	register const clock_t endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
+	register const clock_t align32 endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
+	atomic_int prev_progress = 0;
 	while (clock() < endwait) {
-		progress = (int)((float)(clockf() / ((float)endwait)) * 100.0F);
-		ltodec(progress, &progress_str[ANSI_SGR_CUR_START_LEN]);
-		len = strlen(&progress_str[ANSI_SGR_CUR_START_LEN]) + ANSI_SGR_CUR_START_LEN;
-		progress_str[++len] = '%';
-		progress_str[++len] = '\0';
-		(void)__stdio_write(stdout, (const unsigned char*)progress_str, len);
+		register volatile atomic_int progress = (int)((float)(clockf() / ((float)endwait)) * 100.0F);
+		if (progress < 1 || prev_progress == progress) { continue; }
+		else if (progress > 100) { break; }
+		itodec(progress, &indicator_str[ANSI_SGR_CUR_START_LEN]);
+		prev_progress = progress;
+		register size_t len = strlen(&indicator_str[ANSI_SGR_CUR_START_LEN]) + ANSI_SGR_CUR_START_LEN;
+		indicator_str[++len] = '%';
+		indicator_str[++len] = '\0';
+		(void)__stdio_write(stdout, (const unsigned char*)indicator_str, len);
 	}
 	puts_no_output(ANSI_SGR_CUR_START "100%");
+	(void)flush_stdout();
 }
 
 
 /** Display a progress bar that is based on a specified time in seconds to wait */
 LIB_FUNC void wait_progress_bar(const int sec) {
-	if (chk_ferr(stdout)) { return; }
-	register int progress = 0, hashes = 0;
-	register size_t len = 0;
-	char progress_str[ANSI_SGR_CUR_START_LEN + 32] = ANSI_SGR_CUR_START "[                         ]000%\0";
+	if (chk_ferr(stdout) || sec < 1) { return; }
+	(void)flush_stdout();
+	char align64 progress_str[ANSI_SGR_CUR_START_LEN + 32] = ANSI_SGR_CUR_START "[                         ]000%\0";
 	(void)__stdio_write(stdout, (const unsigned char*)ANSI_SGR_CUR_START "[                         ]0%\0", 30 + ANSI_SGR_CUR_START_LEN);
-	do_sync();
-	register const clock_t endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
-	while (clock() < endwait) {
-		progress = (int)((float)(clockf() / ((float)endwait)) * 100.0F);
-		if (progress < 1) { continue; }
+	register const clock_t align32 endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
+	atomic_int prev_progress = 0;
+	while (clock() < endwait && prev_progress < 100) {
+		register volatile atomic_int progress = (int)((float)(clockf() / ((float)endwait)) * 100.0F);
+		if (progress < 1 || prev_progress == progress) { continue; }
 		else if (progress > 100) { break; }
-		for (hashes = (int)(progress / 4); (hashes >= 0) && (progress < 100); --hashes) {
+		for (register atomic_int hashes = (int)(progress / (int)4); (hashes >= 0) && (progress < 100); --hashes) {
 			progress_str[ANSI_SGR_CUR_START_LEN + 1 + hashes] = '#';
 		}
 		itodec(progress, &progress_str[ANSI_SGR_CUR_START_LEN + 27]);
-		len = strlen(&progress_str[ANSI_SGR_CUR_START_LEN + 27]) + ANSI_SGR_CUR_START_LEN + 27;
+		prev_progress = progress;
+		register size_t len = strlen(&progress_str[ANSI_SGR_CUR_START_LEN + 27]) + ANSI_SGR_CUR_START_LEN + 27;
 		progress_str[++len] = '%';
 		progress_str[++len] = '\0';
 		(void)__stdio_write(stdout, (const unsigned char*)progress_str, len);
 	}
 	puts_no_output(ANSI_SGR_CUR_START "[#########################]100%");
+	(void)flush_stdout();
 }
 
 
@@ -39400,8 +39478,8 @@ LIB_FUNC void secs_to_zone(long long t, int local, int* isdst, long* offset, lon
 	long long y = (long long)(t / 31556952 + 70);
 	while (year_to_secs(y, 0) > t) { --y; }
 	while (year_to_secs((y + 1), 0) < t) { ++y; }
-	long long t0 = rule_to_secs(r0, (int)y);
-	long long t1 = rule_to_secs(r1, (int)y);
+	long long t0 = rule_to_secs(rule0, (int)y);
+	long long t1 = rule_to_secs(rule1, (int)y);
 	if (t0 < t1) {
 		if (!local) {
 			t0 += __timezone;
@@ -40660,7 +40738,7 @@ LIB_FUNC char* hasmntopt(const struct mntent* mnt, const char* opt) {
 #endif
 
 /** Structure and datatype used as a statvfs/fstatvfs function parameter */
-typedef struct statvfs {
+typedef align32 struct statvfs {
 	unsigned long f_bsize;  //!< File system block size
 	unsigned long f_frsize;  //!< Fundamental file system block size
 #   ifndef USE_FILE_OFFSET64
@@ -40684,7 +40762,7 @@ typedef struct statvfs {
 } statvfs_t;
 
 #if SUPPORTS_LARGEFILE64
-typedef struct statvfs64 {
+typedef align32 struct statvfs64 {
 	unsigned long f_bsize, f_frsize;
 	fsblkcnt64_t f_blocks, f_bfree, f_bavail;
 	fsfilcnt64_t f_files, f_ffree, f_favail;
@@ -40931,26 +41009,30 @@ LIB_FUNC NONNULL int statvfs(const char* restrict file, struct statvfs* restrict
 #define _DIRENT_HAVE_D_OFF
 #define _DIRENT_HAVE_D_TYPE
 
-typedef struct attr_packed dirent {
+typedef struct dirent {
+	char d_name[256];
 #   ifndef USE_FILE_OFFSET64
-	ino_t d_ino;
 	off_t d_off;
+	ino_t d_ino;
 #   else
-	ino64_t d_ino;
 	off64_t d_off;
+	ino64_t d_ino;
 #   endif
 	unsigned short d_reclen;
+	unsigned short pad0;
 	unsigned char d_type;
-	char d_name[256];
+	unsigned char pad1[3];
 } dirent_t;
 
 #if SUPPORTS_LARGEFILE64
 typedef struct dirent64 {
+	char d_name[256];
 	ino64_t d_ino;
 	off64_t d_off;
 	unsigned short d_reclen;
+	unsigned short pad0;
 	unsigned char d_type;
-	char d_name[256];
+	unsigned char pad1[3];
 } dirent64_t;
 #endif
 /** Backwards compatibility */
@@ -41302,7 +41384,7 @@ LIB_FUNC void* mquery(void* addr, const size_t len, const int prot, const int fl
 #endif
 
 
-LIB_FUNC NOLIBCALL void* mmap(void* restrict start, const size_t len, const int prot, const int flags, const int fd, const off_t off) {
+LIB_FUNC NOLIBCALL align_ptr void* mmap(void* restrict start, const size_t len, const int prot, const int flags, const int fd, const off_t off) {
 	if (off & (off_t)(((-0x2000UL) << (BITS_PER_LONG - 1)) | (SYSCALL_MMAP2_UNIT - 1))) {
 		set_errno(EINVAL);
 		return MAP_FAILED;
@@ -41311,12 +41393,12 @@ LIB_FUNC NOLIBCALL void* mmap(void* restrict start, const size_t len, const int 
 		return MAP_FAILED;
 	} else if (PREDICT_UNLIKELY(flags & MAP_FIXED)) { LOCK(memlock); }
 #   ifdef SYS_mmap2
-	const long mmap_ptr = (long)syscall6(SYS_mmap2, (long)start, (long)len, prot, flags, fd, (off_t)(off / SYSCALL_MMAP2_UNIT));
+	const align_ptr long mmap_ptr = (long)syscall6(SYS_mmap2, (long)start, (long)len, prot, flags, fd, (off_t)(off / SYSCALL_MMAP2_UNIT));
 #   else
-	const long mmap_ptr = (long)syscall6(SYS_mmap, (long)start, (long)len, prot, flags, fd, off);
+	const align_ptr long mmap_ptr = (long)syscall6(SYS_mmap, (long)start, (long)len, prot, flags, fd, off);
 #   endif
 	UNLOCK(memlock);
-	return (void*)mmap_ptr;
+	return (align_ptr void*)mmap_ptr;
 }
 #define mmap64(start, len, prot, flags, fd, off)   mmap((start), (len), (prot), (flags), (fd), (off))
 #define __mmap(start, len, prot, flags, fd, off)   mmap((start), (len), (prot), (flags), (fd), (off))
@@ -41325,14 +41407,14 @@ LIB_FUNC NOLIBCALL void* mmap(void* restrict start, const size_t len, const int 
 
 
 /** Expand the heap in-place if brk can be used, or otherwise via mmap, using an exponential lower bound on growth by mmap to make fragmentation asymptotically irrelevant */
-LIB_FUNC NOLIBCALL void* expand_heap(size_t* restrict pn) {
-	size_t n = *pn;
+LIB_FUNC NOLIBCALL align_ptr void* expand_heap(size_t* restrict pn) {
+	align_ptr size_t n = *pn;
 	if (n > ((SIZE_MAX >> 1) - PAGE_SIZE)) {
 		set_errno(ENOMEM);
 		return 0;
 	}
-	static uintptr_t brk = 0;
-	static unsigned int mmap_step = 0;
+	static align_ptr uintptr_t brk = 0;
+	static align_ptr unsigned int mmap_step = 0;
 	n += (-n & (PAGE_SIZE - 1));
 	if (!brk) {
 		brk = (uintptr_t)syscall1(SYS_brk, 0);
@@ -41343,9 +41425,9 @@ LIB_FUNC NOLIBCALL void* expand_heap(size_t* restrict pn) {
 		brk += (uintptr_t)n;
 		return (void*)(brk - n);
 	}
-	const size_t min = (size_t)(PAGE_SIZE << (mmap_step >> 1));
+	const align_ptr size_t min = (size_t)(PAGE_SIZE << (mmap_step >> 1));
 	if (n < min) { n = min; }
-	void* area = mmap(0, n, (PROT_READ | PROT_WRITE), (MAP_PRIVATE | MAP_ANONYMOUS), -1, 0);
+	align_ptr void* area = mmap(0, n, (PROT_READ | PROT_WRITE), (MAP_PRIVATE | MAP_ANONYMOUS), -1, 0);
 	if (area == MAP_FAILED) { return 0; }
 	*pn = n;
 	++mmap_step;
@@ -41396,7 +41478,7 @@ LIB_FUNC int munlockall(void) {
 
 LIB_FUNC void* mremap(void* old_addr, const size_t old_len, const size_t new_len, const int flags, ...) {
 	va_list ap;
-	void* new_addr = 0;
+	void* new_addr = NULL;
 	if (new_len >= PTRDIFF_MAX) {
 		set_errno(ENOMEM);
 		return MAP_FAILED;
@@ -41432,7 +41514,7 @@ LIB_FUNC size_t malloc_usable_size(const void* p) {
 
 
 LIB_FUNC char* shm_mapname(const char* restrict name, char* restrict buf) {
-	const char* p;
+	const align_ptr char* p = NULL;
 	while (*name == '/') { name++; }
 	if (*(p = strchrnul(name, '/')) || p == name || (p - name <= 2 && name[0] == '.' && p[-1] == '.')) {
 		set_errno(EINVAL);
@@ -41451,7 +41533,7 @@ LIB_FUNC char* shm_mapname(const char* restrict name, char* restrict buf) {
 LIB_FUNC int shm_open(const char* restrict name, const int flag, const mode_t mode) {
 	char align64 buf[NAME_MAX + 10] = { 0 };
 	if (!(name = shm_mapname(name, buf))) { return -1; }
-	int cs;
+	int cs = 0;
 	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
 	register int fd = open(name, (flag | O_NOFOLLOW | O_CLOEXEC | O_NONBLOCK), mode);
 	pthread_setcancelstate(cs, 0);
@@ -41460,14 +41542,14 @@ LIB_FUNC int shm_open(const char* restrict name, const int flag, const mode_t mo
 
 
 LIB_FUNC int shm_unlink(const char* restrict name) {
-	char buf[NAME_MAX + 10] = { 0 };
+	align_ptr char buf[NAME_MAX + 10] = { 0 };
 	if (!(name = shm_mapname(name, buf))) { return -1; }
 	return unlink(name);
 }
 
 
-LIB_FUNC void* memalign(const size_t align, const size_t sz) {
-	unsigned char* mem = NULL;
+LIB_FUNC align_ptr void* memalign(const size_t align, const size_t sz) {
+	align_ptr unsigned char* mem = NULL;
 	if ((align & -align) != align) {
 		set_errno(EINVAL);
 		return NULL;
@@ -41478,7 +41560,7 @@ LIB_FUNC void* memalign(const size_t align, const size_t sz) {
 		if (!(mem = malloc(sz))) { return NULL; }
 		return mem;
 	} else if (!(mem = malloc(sz + align - 1))) { return NULL; }
-	unsigned char* new = (void*)(((size_t)mem + align - 1) & (size_t)(-align));
+	align_ptr unsigned char* new = (void*)(((size_t)mem + align - 1) & (size_t)(-align));
 	if (new == mem) { return mem; }
 	register const size_t _header = ((size_t*)mem)[-1];
 	if (!(_header & 7)) {
@@ -41486,7 +41568,7 @@ LIB_FUNC void* memalign(const size_t align, const size_t sz) {
 		((size_t*)new)[-1] = ((size_t*)mem)[-1] - (unsigned long)(new - mem);
 		return new;
 	}
-	unsigned char* end = mem + (_header & (size_t)(-8));
+	align_ptr unsigned char* end = mem + (_header & (size_t)(-8));
 	register const size_t footer = ((size_t*)end)[-2];
 	((size_t*)mem)[-1] = ((_header & 7) | (unsigned long)(new - mem));
 	((size_t*)new)[-2] = ((footer & 7) | (unsigned long)(new - mem));
@@ -41503,7 +41585,7 @@ LIB_FUNC void* memalign(const size_t align, const size_t sz) {
 
 LIB_FUNC int posix_memalign(void** res, const size_t align, const size_t len) {
 	if (align < SIZEOF_VOID_PTR) { return EINVAL; }
-	void* mem = (void*)memalign(align, len);
+	align_ptr void* mem = (void*)memalign(align, len);
 	if (PREDICT_UNLIKELY(!mem)) { return EAGAIN; }
 	*res = mem;
 	return 0;
@@ -41511,28 +41593,29 @@ LIB_FUNC int posix_memalign(void** res, const size_t align, const size_t len) {
 #define HAVE_POSIX_MEMALIGN   (1)
 
 
-LIB_FUNC void* aligned_alloc(const size_t align, const size_t data_size) {
+LIB_FUNC align_ptr void* aligned_alloc(const size_t align, const size_t data_size) {
 	return memalign(align, data_size);
 }
 
 
-LIB_FUNC void* pvalloc(const size_t data_size) {
+LIB_FUNC align_ptr void* pvalloc(const size_t data_size) {
 	return memalign(128, (data_size - ((size_t)(data_size) & 127)));
 }
 #define _palloc(data_size)   palloc((data_size))
 #define HAVE_PVALLOC   (1)
 
 
-LIB_FUNC void* valloc(const size_t data_size) {
+LIB_FUNC align_ptr void* valloc(const size_t data_size) {
 	return (void*)memalign(128, data_size);
 }
 #define _valloc(data_size)   valloc((data_size))
 #define HAVE_VALLOC   (1)
 
 
-LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
+LIB_FUNC NOLIBCALL align_ptr void* malloc(const size_t len) {
 	register size_t n = len;
-	static char *cur = NULL, *end = NULL;
+	static align_ptr char* cur = NULL;
+	static align_ptr char* end = NULL;
 	register size_t align = 1;
 	if (!n) { ++n; }
 	while (align < n && align < 16) { align += align; }
@@ -41540,8 +41623,8 @@ LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
 	register size_t pad = -(uintptr_t)cur & (align - 1);
 	if (n <= ((SIZE_MAX >> 1) + align)) { n += pad; }
 	if (n > (size_t)(end - cur)) {
-		size_t m = n;
-		char* new = expand_heap(&m);
+		align_ptr size_t m = n;
+		align_ptr char* new = expand_heap(&m);
 		if (!new) {
 			UNLOCK(memlock);
 			return 0;
@@ -41552,7 +41635,7 @@ LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
 		}
 		end = new + m;
 	}
-	void* p = cur + pad;
+	align_ptr void* p = cur + pad;
 	cur += n;
 	UNLOCK(memlock);
 	return p;
@@ -41563,16 +41646,16 @@ LIB_FUNC NOLIBCALL void* malloc(const size_t len) {
 #define __malloc(n)   malloc((n))
 
 
-LIB_FUNC void* zalloc(const size_t size) {
-	void* ptr = malloc(size);
+LIB_FUNC align_ptr void* zalloc(const size_t size) {
+	align_ptr void* ptr = malloc(size);
 	if (ptr) { memset_no_output(ptr, 0, size); }
 	return ptr;
 }
 
 
 /** Like malloc, but returns an error when out of space */
-LIB_FUNC void* ckmalloc(const size_t nbytes) {
-	void* p = malloc(nbytes);
+LIB_FUNC align_ptr void* ckmalloc(const size_t nbytes) {
+	align_ptr void* p = malloc(nbytes);
 	if (p == NULL) { exit_on_error("Out of space"); }
 	return p;
 }
@@ -41584,11 +41667,12 @@ struct stack_block {
 };
 
 
-struct attr_packed stackmark {
+struct stackmark {
 	struct stack_block* stackp;
 	char* stacknxt;
-	int stacknleft;
 	struct stackmark* marknext;
+	int stacknleft;
+	int pad0;  //!< Padding
 };
 
 
@@ -41775,8 +41859,7 @@ LIB_FUNC ATTR_MALLOC ATTR_ALLOC_SIZE(2) uint32_t* u32_cpy_alloc(const uint32_t* 
 // REALLOC
 
 LIB_FUNC void* realloc(void* ptr, const size_t len) {
-	void* newmem = NULL;
-	newmem = malloc(len);
+	void* newmem = malloc(len);
 	if (newmem) { memcpy_no_output(newmem, ptr, len); }
 	free(ptr);
 	ptr = NULL;
@@ -41927,9 +42010,12 @@ typedef struct allocator {
 #define __MAX_ALLOCA_CUTOFF   65536
 #define MAX_ALLOCA_CUTOFF   __MAX_ALLOCA_CUTOFF
 static UNUSED void* mmalloca_results[HASH_TABLE_SIZE];
-/** This is how the header info would look like without any alignment considerations */
-struct attr_packed preliminary_header { void* next; int magic; };
-#define SIZEOF_PRELIMINARY_HEADER   (SIZEOF_INT + SIZEOF_POINTER)
+struct preliminary_header {
+	void* next;
+	int magic;
+	int pad0;  //!< Padding
+};
+#define SIZEOF_PRELIMINARY_HEADER   (SIZEOF_INT + SIZEOF_INT + SIZEOF_POINTER)
 /** The header's size must be a multiple of sa_alignment_max */
 #define HEADER_SIZE   (((SIZEOF_PRELIMINARY_HEADER + sa_alignment_max - 1) / sa_alignment_max) * sa_alignment_max)
 union header {
@@ -42382,10 +42468,10 @@ LIB_FUNC char* sl_find(StringList* sl, char* restrict name) {
 #define EMSG   (char*)NULL
 
 
-typedef struct attr_packed option {
+typedef struct option {
 	const char* name;  //!< Name of long option
-	int has_arg;
 	int* flag;  //!< If not `NULL`, set `*flag` to `val` when option found
+	int has_arg;
 	int val;  //!< If flag not `NULL`, new value for `*flag`; else return value
 } option_t;
 

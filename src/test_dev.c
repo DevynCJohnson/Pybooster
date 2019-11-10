@@ -782,52 +782,69 @@ static void test_float_points(void) {
 static void list_data_sizes(void) {
 	puts_no_output(OPEN_TEST_HEADER "LIST DATATYPE SIZES" CLOSE_TEST_HEADER);
 	puts_no_output(OPEN_SUB_TEST_HEADER "* Basic Datatypes *\n" CLOSE_SUB_TEST_HEADER);
-	printf("_Bool: %zu\n", sizeof(_Bool));
-	printf("Char: %zu\n", sizeof(char));
-	printf("Short Int: %zu\n", sizeof(short));
-	printf("Int: %zu\n", sizeof(int));
-	printf("Long Int: %zu\n", sizeof(long));
-	printf("Long Long Int: %zu\n", sizeof(long long));
-	printf("Float: %zu\n", sizeof(float));
-	printf("Double: %zu\n", sizeof(double));
+	(void)fprintf(stdout, "_Bool: %zu\n", sizeof(_Bool));
+	(void)fprintf(stdout, "Char: %zu\n", sizeof(char));
+	(void)fprintf(stdout, "Short Int: %zu\n", sizeof(short));
+	(void)fprintf(stdout, "Int: %zu\n", sizeof(int));
+	(void)fprintf(stdout, "Long Int: %zu\n", sizeof(long));
+	(void)fprintf(stdout, "Long Long Int: %zu\n", sizeof(long long));
+	(void)fprintf(stdout, "Float: %zu\n", sizeof(float));
+	(void)fprintf(stdout, "Double: %zu\n", sizeof(double));
 #   if SUPPORTS_LONG_DOUBLE
-	printf("Long Double: %zu\n", sizeof(long double));
+	(void)fprintf(stdout, "Long Double: %zu\n", sizeof(long double));
 #   endif
 #   if SUPPORTS_COMPLEX
 	puts_no_output("\n" OPEN_SUB_TEST_HEADER "* Complex Datatypes *" CLOSE_SUB_TEST_HEADER "\n");
-	printf("Complex Float: %zu\n", sizeof(complex_float));
-	printf("Complex Double: %zu\n", sizeof(complex_double));
+	(void)fprintf(stdout, "Complex Float: %zu\n", sizeof(complex_float));
+	(void)fprintf(stdout, "Complex Double: %zu\n", sizeof(complex_double));
 #      if SUPPORTS_COMPLEX_LDBL
-	printf("Complex Long Double: %zu\n", sizeof(complex_long_double));
+	(void)fprintf(stdout, "Complex Long Double: %zu\n", sizeof(complex_long_double));
 #      endif
 #   endif
 	puts_no_output("\n" OPEN_SUB_TEST_HEADER "* Special Datatypes *" CLOSE_SUB_TEST_HEADER "\n");
 	const size_t ptrsize = sizeof(char*);
-	printf("size_t: %zu\n", sizeof(size_t));
-	printf("ssize_t: %zu\n", sizeof(ssize_t));
-	printf("Char*: %zu\n", ptrsize);
-	printf("&Address: %zu\n", sizeof(&ptrsize));
-	printf("FILE: %zu\n", sizeof(FILE));
+	(void)fprintf(stdout, "size_t: %zu\n", sizeof(size_t));
+	(void)fprintf(stdout, "ssize_t: %zu\n", sizeof(ssize_t));
+	(void)fprintf(stdout, "Char*: %zu\n", ptrsize);
+	(void)fprintf(stdout, "&Address: %zu\n", sizeof(&ptrsize));
+	(void)fprintf(stdout, "FILE: %zu\n", sizeof(FILE));
 	puts_no_output("\n" OPEN_SUB_TEST_HEADER "* Machine Datatypes *" CLOSE_SUB_TEST_HEADER "\n");
-	printf("PTRtype: %zu\n", sizeof(PTRtype));
-	printf("HWtype: %zu\n", sizeof(HWtype));
-	printf("Wtype: %zu\n", sizeof(Wtype));
-	printf("DWtype: %zu\n", sizeof(DWtype));
-	printf("Unwind: %zu\n", sizeof(_Unwind_Word));
-	printf("QItype: %zu\n", sizeof(QItype));
-	printf("HItype: %zu\n", sizeof(HItype));
-	printf("SItype: %zu\n", sizeof(SItype));
-	printf("DItype: %zu\n", sizeof(DItype));
+	(void)fprintf(stdout, "PTRtype: %zu\n", sizeof(PTRtype));
+	(void)fprintf(stdout, "HWtype: %zu\n", sizeof(HWtype));
+	(void)fprintf(stdout, "Wtype: %zu\n", sizeof(Wtype));
+	(void)fprintf(stdout, "DWtype: %zu\n", sizeof(DWtype));
+	(void)fprintf(stdout, "Unwind: %zu\n", sizeof(_Unwind_Word));
+	(void)fprintf(stdout, "QItype: %zu\n", sizeof(QItype));
+	(void)fprintf(stdout, "HItype: %zu\n", sizeof(HItype));
+	(void)fprintf(stdout, "SItype: %zu\n", sizeof(SItype));
+	(void)fprintf(stdout, "DItype: %zu\n", sizeof(DItype));
 #   if SUPPORTS_TITYPE
-	printf("TItype: %zu\n", sizeof(TItype));
+	(void)fprintf(stdout, "TItype: %zu\n", sizeof(TItype));
 #   endif
-	printf("SFtype: %zu\n", sizeof(SFtype));
-	printf("DFtype: %zu\n", sizeof(DFtype));
+	(void)fprintf(stdout, "SFtype: %zu\n", sizeof(SFtype));
+	(void)fprintf(stdout, "DFtype: %zu\n", sizeof(DFtype));
 #   if SUPPORTS_XFTYPE
-	printf("XFtype: %zu\n", sizeof(XFtype));
+	(void)fprintf(stdout, "XFtype: %zu\n", sizeof(XFtype));
 #   endif
 #   if SUPPORTS_TFTYPE
-	printf("TFtype: %zu\n", sizeof(TFtype));
+	(void)fprintf(stdout, "TFtype: %zu\n", sizeof(TFtype));
+#   endif
+#   ifdef VECTOR4
+	puts_no_output("\n" OPEN_SUB_TEST_HEADER "* Vector Datatypes *" CLOSE_SUB_TEST_HEADER "\n");
+	(void)fprintf(stdout, "V4QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4QItype), (ulint)alignof(V4QItype));
+	(void)fprintf(stdout, "V8QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8QItype), (ulint)alignof(V8QItype));
+	(void)fprintf(stdout, "V16QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V16QItype), (ulint)alignof(V16QItype));
+	(void)fprintf(stdout, "V2HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2HItype), (ulint)alignof(V2HItype));
+	(void)fprintf(stdout, "V4HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4HItype), (ulint)alignof(V4HItype));
+	(void)fprintf(stdout, "V8HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8HItype), (ulint)alignof(V8HItype));
+	(void)fprintf(stdout, "V2SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2SItype), (ulint)alignof(V2SItype));
+	(void)fprintf(stdout, "V4SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4SItype), (ulint)alignof(V4SItype));
+	(void)fprintf(stdout, "V4DItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4DItype), (ulint)alignof(V4DItype));
+	(void)fprintf(stdout, "V2SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2SFtype), (ulint)alignof(V2SFtype));
+	(void)fprintf(stdout, "V4SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4SFtype), (ulint)alignof(V4SFtype));
+	(void)fprintf(stdout, "V8SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8SFtype), (ulint)alignof(V8SFtype));
+	(void)fprintf(stdout, "V2DFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2DFtype), (ulint)alignof(V2DFtype));
+	(void)fprintf(stdout, "V4DFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4DFtype), (ulint)alignof(V4DFtype));
 #   endif
 	return;
 }
@@ -837,25 +854,25 @@ static void list_data_sizes(void) {
 static void list_data_ranges(void) {
 	puts_no_output(OPEN_TEST_HEADER "LIST DATATYPE RANGES" CLOSE_TEST_HEADER);
 	// char
-	printf("SCHAR_MIN: %hhi\n", SCHAR_MIN);
-	printf("SCHAR_MAX: %hhi\n", SCHAR_MAX);
-	printf("UCHAR_MAX: %hhu\n", UCHAR_MAX);
+	(void)fprintf(stdout, "SCHAR_MIN: %hhi\n", SCHAR_MIN);
+	(void)fprintf(stdout, "SCHAR_MAX: %hhi\n", SCHAR_MAX);
+	(void)fprintf(stdout, "UCHAR_MAX: %hhu\n", UCHAR_MAX);
 	// short
-	printf("SHRT_MIN: %hi\n", SHRT_MIN);
-	printf("SHRT_MAX: %hi\n", SHRT_MAX);
-	printf("USHRT_MAX: %hu\n", USHRT_MAX);
+	(void)fprintf(stdout, "SHRT_MIN: %hi\n", SHRT_MIN);
+	(void)fprintf(stdout, "SHRT_MAX: %hi\n", SHRT_MAX);
+	(void)fprintf(stdout, "USHRT_MAX: %hu\n", USHRT_MAX);
 	// int
-	printf("INT_MIN: %i\n", INT_MIN);
-	printf("INT_MAX: %i\n", INT_MAX);
-	printf("UINT_MAX: %u\n", UINT_MAX);
+	(void)fprintf(stdout, "INT_MIN: %i\n", INT_MIN);
+	(void)fprintf(stdout, "INT_MAX: %i\n", INT_MAX);
+	(void)fprintf(stdout, "UINT_MAX: %u\n", UINT_MAX);
 	// long
-	printf("LONG_MIN: %li\n", LONG_MIN);
-	printf("LONG_MAX: %li\n", LONG_MAX);
-	printf("ULONG_MAX: %lu\n", ULONG_MAX);
+	(void)fprintf(stdout, "LONG_MIN: %li\n", LONG_MIN);
+	(void)fprintf(stdout, "LONG_MAX: %li\n", LONG_MAX);
+	(void)fprintf(stdout, "ULONG_MAX: %lu\n", ULONG_MAX);
 	// long long
-	printf("LLONG_MIN: %lli\n", LLONG_MIN);
-	printf("LLONG_MAX: %lli\n", LLONG_MAX);
-	printf("ULLONG_MAX: %llu\n", ULLONG_MAX);
+	(void)fprintf(stdout, "LLONG_MIN: %lli\n", LLONG_MIN);
+	(void)fprintf(stdout, "LLONG_MAX: %lli\n", LLONG_MAX);
+	(void)fprintf(stdout, "ULLONG_MAX: %llu\n", ULLONG_MAX);
 	return;
 }
 

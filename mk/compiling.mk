@@ -15,10 +15,10 @@
 override CLANG_OPT::=-O3 -fforce-emit-vtables -fmerge-all-constants -fno-dollars-in-identifiers -fomit-frame-pointer -fstrict-enums -fstrict-float-cast-overflow -ftree-vectorize -funroll-loops -fvectorize -fwrapv -strip-dead-debug-info -Xanalyzer -Xclang
 override CLANG_OPT_X86::=
 
-override CLANG_WARN_GENERAL::=-Werror -Wall -Wextra -Wpedantic -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wshadow
+override CLANG_WARN_GENERAL::=-Werror -Wall -Wextra -Wpedantic -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wshadow
 override CLANG_WARN::=$(CLANG_WARN_GENERAL) -Wbad-function-cast -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization -Wformat -Wformat-non-iso -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wnull-pointer-arithmetic -Wpacked -Wpointer-arith -Wpragma-pack -Wredundant-decls -Wstack-protector -Wstrict-overflow=5 -Wstrict-prototypes -Wswitch-bool -Wswitch-enum -Wtautological-constant-compare -Wundef -Wuninitialized -Wunreachable-code -Wwrite-strings
-override CLANG_WARN7::=-Wextra-semi -Wself-assign -Wself-assign-field -Wsuspicious-bzero -Wsuspicious-memaccess
-override CLANG_WARN8::=-Wextra-semi-stmt -Wimplicit-float-conversion -Wimplicit-int-conversion $(CLANG_WARN7)
+override CLANG_WARN7::=-Wself-assign -Wself-assign-field -Wsuspicious-bzero -Wsuspicious-memaccess
+override CLANG_WARN8::=-Wimplicit-float-conversion -Wimplicit-int-conversion $(CLANG_WARN7)
 override CLANG_WARN9::=$(CLANG_WARN8)
 override CLANG_WARN10::=-Wbitwise-conditional-parentheses -Wtautological-bitwise-compare -Wtautological-compare -Wtautological-overlap-compare $(CLANG_WARN9)
 
@@ -73,9 +73,10 @@ else
     endif
 endif
 
-override GCC_WARN_GENERAL::=-Werror -Wall -Wextra -Wpedantic -Wmisleading-indentation -Wmissing-declarations -Wmissing-include-dirs -Wshadow
-override GCC_WARN::=$(GCC_WARN_GENERAL) -Waggregate-return -Walloc-zero -Warray-bounds -Wattribute-alias=2 -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-overflow=2 -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wmissing-prototypes -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings
-override GCC_WARN8::=-Wcast-align=strict -Wextra-semi -Wmultistatement-macros -Wpacked-not-aligned -Wsizeof-pointer-div -Wstringop-truncation -Wsuggest-attribute=cold -Wsuggest-attribute=malloc
+override GCC_WARN_GENERAL::=-Werror -Wall -Wextra -Wpedantic -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wshadow
+override GCC_WARN::=$(GCC_WARN_GENERAL) -Waggregate-return -Walloc-zero -Warray-bounds -Wattribute-alias=2 -Wbad-function-cast -Wcast-align -Wcast-qual -Wconversion -Wdangling-else -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wformat -Wformat-nonliteral -Wformat-overflow=2 -Wformat-security -Wformat-signedness -Wformat-truncation=2 -Wformat-y2k -Winit-self -Winline -Winvalid-pch -Wjump-misses-init -Wlogical-op -Wnested-externs -Wopenmp-simd -Woverlength-strings -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wrestrict -Wshift-negative-value -Wstack-protector -Wstrict-aliasing=3 -Wstrict-prototypes -Wsuggest-attribute=const -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wsuggest-final-methods -Wsuggest-final-types -Wswitch-bool -Wswitch-default -Wswitch-enum -Wswitch-unreachable -Wsync-nand -Wtrampolines -Wundef -Wuninitialized -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-parameter -Wunused-result -Wvector-operation-performance -Wwrite-strings
+override GCC_WARN8::=-Wmultistatement-macros -Wpacked-not-aligned -Wsizeof-pointer-div -Wstringop-truncation -Wsuggest-attribute=cold -Wsuggest-attribute=malloc
+# -Wcast-align=strict
 override GCC_WARN9::=-Wabsolute-value -Waddress-of-packed-member $(GCC_WARN8)
 
 ifeq ($(GCC_MAJOR),7)
@@ -475,7 +476,7 @@ endif
 ifdef OUTPUT
     override STARTUP::=
 else
-    ifeq ($(CPU_TYPE),x86-64)
+    ifeq ($(CPU_TYPE),x86_64)
         override STARTUP::=$(INCDIR)/start_x86_64.s
     else
         override STARTUP::=
@@ -497,8 +498,8 @@ else
     override SPOPT::=-fwhole-program
 endif
 
-override EXE_PARAMS::=$(INCLUDE) $(SPOPT) $(COMMON_ARGUMENTS)
-override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS)
+override EXE_PARAMS::=$(INCLUDE) $(SPOPT) $(COMMON_ARGUMENTS) $(ASZ)
+override STATIC_PARAMS::=$(INCLUDE) $(COMMON_ARGUMENTS) $(ASZ)
 
 ifeq ($(OS),WINDOWS)
     override EXE_PARAMS::=$(EXE_PARAMS) $(WINLIB) $(LDZ)

@@ -1,3 +1,7 @@
+2019-11-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h:  Applied improvements & additional optimizations
+
 2019-11-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added flipchars & fixed file permissions

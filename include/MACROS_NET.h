@@ -262,17 +262,21 @@ typedef struct ucred {
 typedef struct linger { int l_onoff, l_linger; }   linger_t;
 
 
-typedef struct attr_packed sockaddr {
-	uint8_t sa_len;
-	sa_family_t sa_family;
+typedef struct sockaddr {
 	char sa_data[14];
+	sa_family_t sa_family;
+	uint8_t sa_len;
+	uint8_t pad0;  //!< Padding
 } sockaddr_t;
 
 
-typedef struct attr_packed sockaddr_storage {
-	sa_family_t ss_family;
+typedef struct sockaddr_storage {
+	char __ss_padding[128 * SIZEOF_LONG];
 	unsigned long __ss_align;
-	char __ss_padding[126 * SIZEOF_LONG];
+	unsigned long pad0;  //!< Padding
+	sa_family_t ss_family;
+	sa_family_t pad1;  //!< Padding
+	int pad2;  //!< Padding
 } sockaddr_storage_t;
 
 
@@ -315,20 +319,22 @@ typedef struct cmsghdr {
 #elif defined(ARCHX86)
 
 
-typedef struct attr_packed msghdr {
+typedef struct msghdr {
 	void* msg_name;
-	socklen_t msg_namelen;
 	struct iovec* msg_iov;
-	int msg_iovlen, __pad1;
 	void* msg_control;
-	socklen_t msg_controllen, __pad2;
+	void* __pad1;  //!< Padding
+	socklen_t msg_namelen;
+	socklen_t msg_controllen;
+	int msg_iovlen;
 	int msg_flags;
 } msghdr_t;
 
 
 typedef struct cmsghdr {
 	socklen_t cmsg_len;
-	int __pad1, cmsg_level, cmsg_type;
+	int __pad1;  //!< Padding
+	int cmsg_level, cmsg_type;
 } cmsghdr_t;
 
 
@@ -459,6 +465,7 @@ typedef struct cmsghdr {
 typedef struct mmsghdr {
 	struct msghdr msg_hdr;
 	unsigned int msg_len;
+	int pad0;  //!< Padding
 } mmsghdr_t;
 
 
@@ -485,7 +492,6 @@ LIB_FUNC ssize_t sendmsg(const int fd, const struct msghdr* msg, const int flags
 	if (msg) {
 		h = *msg;
 		h.__pad1 = 0;
-		h.__pad2 = 0;
 		msg = &h;
 		if (h.msg_controllen) {
 			if (h.msg_controllen > 1024) {
@@ -522,10 +528,8 @@ LIB_FUNC int sendmmsg(const int fd, struct mmsghdr* msgvec, unsigned int vlen, u
 LIB_FUNC int recvmmsg(const int fd, struct mmsghdr* msgvec, const unsigned int vlen, const unsigned int flags, struct timespec* timeout) {
 #   if (LONG_MAX > INT_MAX)
 	struct mmsghdr* mh = msgvec;
-	register unsigned int i;
-	for (i = vlen; i; i--, mh++) {
+	for (register unsigned int i = vlen; i; i--, mh++) {
 		mh->msg_hdr.__pad1 = 0;
-		mh->msg_hdr.__pad2 = 0;
 	}
 #   endif
 	return (int)syscall5(SYS_recvmmsg, fd, (long)msgvec, vlen, flags, (long)timeout);
@@ -538,7 +542,6 @@ LIB_FUNC ssize_t recvmsg(const int fd, struct msghdr* msg, const int flags) {
 	if (msg) {
 		h = *msg;
 		h.__pad1 = 0;
-		h.__pad2 = 0;
 		msg = &h;
 	}
 #   endif
@@ -735,8 +738,10 @@ LIB_FUNC int sockatmark(const int s) {
 
 typedef struct nlmsghdr {
 	uint32_t nlmsg_len;
-	uint16_t nlmsg_type, nlmsg_flags;
-	uint32_t nlmsg_seq, nlmsg_pid;
+	uint32_t nlmsg_seq;
+	uint32_t nlmsg_pid;
+	uint16_t nlmsg_type;
+	uint16_t nlmsg_flags;
 } nlmsghdr_t;
 
 
@@ -758,30 +763,38 @@ typedef struct ifaddrmsg {
 } ifaddrmsg_t;
 
 
-typedef struct attr_packed ifnamemap {
+typedef struct ifnamemap {
+	char name[IFNAMSIZ];
 	unsigned int hash_next, index;
 	unsigned char namelen;
-	char name[IFNAMSIZ];
+	unsigned char pad0[7];  //!< Padding
 } ifnamemap_t;
 
 
-typedef struct attr_packed ifnameindexctx {
-	unsigned int num, allocated, str_bytes;
-	struct ifnamemap* list;
+typedef struct ifnameindexctx {
 	unsigned int hash[IFADDRS_HASH_SIZE];
+	struct ifnamemap* list;
+	unsigned int num, allocated, str_bytes;
+	unsigned int pad0;  //!< Padding
 } ifnameindexctx_t;
 
 
-typedef struct attr_packed if_nameindex {
-	unsigned int if_index;
+typedef struct if_nameindex {
 	char* if_name;
+	unsigned int if_index;
+	unsigned int pad0;  //!< Padding
 } if_nameindex_t;
 
 
-typedef struct attr_packed ifmap {
-	unsigned long mem_start, mem_end;
+typedef struct ifmap {
+	unsigned long mem_start;
+	unsigned long mem_end;
 	unsigned short base_addr;
-	unsigned char irq, dma, port;
+	unsigned short pad1;  //!< Padding
+	unsigned char irq;
+	unsigned char dma;
+	unsigned char port;
+	unsigned char pad0;  //!< Padding
 } ifmap_t;
 
 
@@ -817,12 +830,13 @@ typedef struct ifreq {
 #define _IOT_ifreq_int   _IOT(_IOTS(char), IFNAMSIZ, _IOTS(int), 1, 0, 0)
 
 
-typedef struct attr_packed ifconf {
-	int ifc_len;
+typedef struct ifconf {
 	union __union_ifconf {
 		void* ifcu_buf;
 		struct ifreq* ifcu_req;
 	} ifc_ifcu;
+	int ifc_len;
+	int pad0;  //!< Padding
 } ifconf_t;
 #define ifc_buf   ifc_ifcu.ifcu_buf
 #define ifc_req   ifc_ifcu.ifcu_req
@@ -1016,14 +1030,15 @@ LIB_FUNC struct if_nameindex* if_nameindex(void) {
 #define _IFADDRS_H_   (1)
 
 
-typedef struct attr_packed ifaddrs {
+typedef struct ifaddrs {
 	struct ifaddrs* ifa_next;  //!< Next item in list
 	const char* ifa_name;  //!< Name of interface
-	unsigned int ifa_flags;  //!< Flags from SIOCGIFFLAGS
 	struct sockaddr* ifa_addr;  //!< Address of interface
 	struct sockaddr* ifa_netmask;  //!< Netmask of interface
 	struct sockaddr* ifa_dstaddr;
 	void* ifa_data;  //!< Address-specific data
+	unsigned int ifa_flags;  //!< Flags from SIOCGIFFLAGS
+	unsigned int pad0;  //!< Padding
 } ifaddrs_t;
 #define ifa_broadaddr   ifa_dstaddr
 
@@ -1038,63 +1053,66 @@ struct rtstat {
 struct rt_metrics {
 	unsigned long rmx_locks, rmx_mtu, rmx_hopcount, rmx_expire;
 	unsigned long rmx_recvpipe, rmx_sendpipe, rmx_ssthresh, rmx_rtt;
-	unsigned long rmx_rttvar, rmx_pksent;
 	unsigned long rmx_filler[4];
+	unsigned long rmx_rttvar, rmx_pksent;
 };
 
 
 /** Structures for routing messages */
 struct rt_msghdr {
+	struct rt_metrics rtm_rmx;
 	unsigned short rtm_hdrlen, rtm_msglen;
-	unsigned char rtm_version, rtm_type;
 	unsigned short rtm_index;
+	unsigned char rtm_version, rtm_type;
+	int rtm_seq, rtm_errno, rtm_use;
 	int rtm_flags, rtm_addrs;
 	pid_t rtm_pid;
-	int rtm_seq, rtm_errno, rtm_use;
 	unsigned long rtm_inits;
-	struct rt_metrics rtm_rmx;
 };
 
 
 /** Structure describing information about an interface which may be of interest to management entities */
-struct attr_packed if_data {
-	unsigned char ifi_type, ifi_physical, ifi_addrlen;
-	unsigned char ifi_hdrlen, ifi_recvquota, ifi_xmitquota;
+struct if_data {
+	struct timeval ifi_lastchange;
 	unsigned long ifi_mtu, ifi_metric, ifi_baudrate;
 	unsigned long ifi_ipackets, ifi_ierrors, ifi_opackets;
 	unsigned long ifi_oerrors, ifi_collisions, ifi_ibytes;
 	unsigned long ifi_obytes, ifi_imcasts, ifi_omcasts;
 	unsigned long ifi_iqdrops, ifi_noproto, ifi_hwassist, ifi_unused;
-	struct timeval ifi_lastchange;
+	unsigned char ifi_type, ifi_physical, ifi_addrlen;
+	unsigned char ifi_hdrlen, ifi_recvquota, ifi_xmitquota;
+	short pad0;  //!< Padding
 };
 
 
 /** Message format for use in obtaining information about interfaces from getkerninfo and the routing socket */
 struct if_msghdr {
-	unsigned short ifm_msglen;
-	unsigned char ifm_version, ifm_type;
-	int ifm_addrs, ifm_flags;
-	unsigned short ifm_index;
 	struct if_data ifm_data;
+	int ifm_addrs, ifm_flags;
+	unsigned short ifm_msglen;
+	unsigned short ifm_index;
+	unsigned char ifm_version, ifm_type;
+	unsigned short pad0;  //!< Padding
 };
 
 
 /** Message format for use in obtaining information about interface addresses from getkerninfo and the routing socket */
-struct attr_packed ifa_msghdr {
-	unsigned short ifam_msglen;
-	unsigned char ifam_version, ifam_type;
+struct ifa_msghdr {
 	int ifam_addrs, ifam_flags;
-	unsigned short ifam_index;
 	int ifam_metric;
+	unsigned short ifam_msglen;
+	unsigned short ifam_index;
+	unsigned char ifam_version, ifam_type;
+	unsigned short pad0;  //!< Padding
 };
 
 
 /** Structure of a Link-Level sockaddr */
 struct sockaddr_dl {
-	unsigned char sdl_len, sdl_family;
-	unsigned short sdl_index;
-	unsigned char sdl_type, sdl_nlen, sdl_alen, sdl_slen;
 	char sdl_data[46];
+	unsigned short sdl_index;
+	unsigned char sdl_len, sdl_family;
+	unsigned char sdl_type, sdl_nlen, sdl_alen, sdl_slen;
 };
 
 
@@ -1237,14 +1255,19 @@ struct sockaddr_dl {
 
 
 LIB_FUNC int getifaddrs(struct ifaddrs** pif) {
-	size_t needed = 0;
-	char *buf = NULL, *bufp = NULL, *next = NULL, *p = NULL, *p0 = NULL, *names = NULL;
-	struct ifaddrs* cif = NULL;
-	struct rt_msghdr* rtm = NULL;
-	struct if_msghdr* ifm = NULL;
-	struct ifa_msghdr* ifam = NULL;
-	struct sockaddr_dl* dl = NULL;
-	struct sockaddr* sa = NULL;
+	size_t align64 needed = 0;
+	align_ptr char* buf = NULL;
+	align_ptr char* bufp = NULL;
+	char* align_ptr next = NULL;
+	char* align_ptr p = NULL;
+	char* align_ptr p0 = NULL;
+	char* align_ptr names = NULL;
+	struct ifaddrs* align_ptr cif = NULL;
+	struct rt_msghdr* align_ptr rtm = NULL;
+	struct if_msghdr* align_ptr ifm = NULL;
+	struct ifa_msghdr* align_ptr ifam = NULL;
+	struct sockaddr_dl* align_ptr dl = NULL;
+	struct sockaddr* align_ptr sa = NULL;
 	register unsigned short index = 0;
 	struct ifaddrs *ifa = NULL, *ift = NULL;
 	int align64 mib[6] = { CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST, 0 };
@@ -1319,7 +1342,7 @@ LIB_FUNC int getifaddrs(struct ifaddrs** pif) {
 		free(buf);
 		return 0;
 	}
-	char* data = (char*)malloc((size_t)((sizeof(struct ifaddrs) * (size_t)icnt) + (size_t)dcnt + (size_t)ncnt));
+	char* align_ptr data = (char*)malloc((size_t)((sizeof(struct ifaddrs) * (size_t)icnt) + (size_t)dcnt + (size_t)ncnt));
 	if (data == NULL) {
 		free(buf);
 		return -1;
@@ -2329,16 +2352,20 @@ typedef struct attr_packed group_req {
 
 
 typedef struct group_source_req {
+	struct sockaddr_storage gsr_group;
+	struct sockaddr_storage gsr_source;
 	uint32_t gsr_interface;
-	struct sockaddr_storage gsr_group, gsr_source;
+	uint32_t pad0;  //!< Padding
 } group_source_req_t;
 
 
-typedef struct attr_packed group_filter {
-	uint32_t gf_interface;
+typedef struct group_filter {
 	struct sockaddr_storage gf_group;
-	uint32_t gf_fmode, gf_numsrc;
 	struct sockaddr_storage gf_slist[1];
+	uint32_t gf_interface;
+	uint32_t gf_fmode;
+	uint32_t gf_numsrc;
+	uint32_t pad0;  //!< Padding
 } group_filter_t;
 #define GROUP_FILTER_SIZE(numsrc)   (sizeof(struct group_filter) - sizeof(struct sockaddr_storage) + (numsrc) * sizeof(struct sockaddr_storage))
 
@@ -4418,11 +4445,12 @@ typedef struct attr_packed tcp_info {
 } tcp_info_t;
 
 
-typedef struct attr_packed tcp_md5sig {
+typedef struct tcp_md5sig {
 	struct sockaddr_storage tcpm_addr;
-	uint16_t __tcpm_pad1, tcpm_keylen;
-	uint32_t __tcpm_pad2;
 	uint8_t tcpm_key[TCP_MD5SIG_MAXKEYLEN];
+	uint32_t __tcpm_pad1;  //!< Padding
+	uint16_t __tcpm_pad2;  //!< Padding
+	uint16_t tcpm_keylen;
 } tcp_md5sig_t;
 
 

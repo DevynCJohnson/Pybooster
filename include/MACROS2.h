@@ -475,7 +475,6 @@ IGNORE_WPADDED
 
 /** Control current object in current chunk */
 typedef struct obstack {
-	long chunk_size;  //!< Preferred size to allocate chunks
 	struct _obstack_chunk* chunk;  //!< Address of current struct obstack_chunk
 	char* object_base;  //!< Address of the object being built
 	char* next_free;  //!< Where to add next char to current object
@@ -484,10 +483,11 @@ typedef struct obstack {
 		PTR_INT_TYPE tempint;
 		void* tempptr;
 	} temp;  //!< Temporary object for some macros
-	int alignment_mask;  //!< Mask of alignment for each object
 	struct _obstack_chunk* (*chunkfun)(void*, long);
 	void (*freefun)(void*, struct _obstack_chunk*);
 	void* extra_arg;  //!< First arg for chunk alloc/dealloc funcs
+	long chunk_size;  //!< Preferred size to allocate chunks
+	int alignment_mask;  //!< Mask of alignment for each object
 	unsigned use_extra_arg:1;  //!< Chunk alloc/dealloc funcs take extra arg
 	unsigned maybe_empty_object:1;  //!< There is a possibility that the current chunk contains a zero-length object; This prevents freeing the chunk if a larger chunk is allocated to replace it
 	unsigned alloc_failed:1;  //!< No longer used, but retained for binary compatibility
@@ -2051,23 +2051,24 @@ typedef enum wctype {
 #   define TCHAR_DEFINED   (1)
 #   define __TCHAR_DEFINED   (1)
 #   ifdef _UNICODE
-typedef wchar_t   TCHAR;
-typedef wchar_t   TSCHAR;
-typedef wchar_t   TUCHAR;
-typedef wchar_t   TXCHAR;
-typedef wint_t   TINT;
-typedef wchar_t*   PTCHAR;
-typedef wchar_t   TBYTE, *PTBYTE;
+#      define TCHAR   wchar_t
+#      define TSCHAR   wchar_t
+#      define TUCHAR   wchar_t
+#      define TXCHAR   wchar_t
+#      define PTCHAR   wchar_t*
+#      define TBYTE   wchar_t
+#      define PTBYTE   wchar_t*
 #      define TEOF   WEOF
 #      define _TEOF   WEOF
 #   else
-typedef char   TCHAR;
-typedef char   TSCHAR;
-typedef char   TUCHAR;
-typedef char   TXCHAR;
-typedef int32_t   TINT;
-typedef char*   PTCHAR;
-typedef char   TBYTE, *PTBYTE;
+#      define TCHAR   char
+#      define TSCHAR   char
+#      define TUCHAR   char
+#      define TXCHAR   char
+#      define TINT   int32_t
+#      define PTCHAR   char*
+#      define TBYTE   char
+#      define PTBYTE   char*
 #      define TEOF   EOF
 #      define _TEOF   EOF
 #   endif
@@ -2484,12 +2485,12 @@ typedef struct div128_struct {
 } div128_t;
 #endif
 #if IS_WORDSIZE_64
-typedef struct imaxdiv {
+typedef align16 struct imaxdiv {
 	long quot;  //!< Quotient
 	long rem;  //!< Remainder
 } imaxdiv_t;
 #else
-typedef struct imaxdiv {
+typedef align16 struct imaxdiv {
 	long long quot;  //!< Quotient
 	long long rem;  //!< Remainder
 } imaxdiv_t;
@@ -2899,7 +2900,7 @@ typedef struct statfs64 {
 DIAG_POP
 
 /** The <sys/uio.h> header uses the iovec structure for scatter/gather I/O */
-typedef struct iovec {
+typedef align16 struct iovec {
 	const void* iov_base;  //!< Base address of a memory region for input or output
 	size_t iov_len;  //!< The size of the memory pointed to by iov_base
 } iovec_t;
@@ -2953,14 +2954,14 @@ typedef __USECONDS_T_TYPE   useconds_t;
 #   define __DEFINED_useconds_t   (1)
 #endif
 #if (!(defined(__DEFINED_struct_timespec) || defined(__timespec_defined)))
-typedef struct timespec { time_t tv_sec; long tv_nsec; }   timespec_t;
+typedef align16 struct timespec { time_t tv_sec; long tv_nsec; }   timespec_t;
 #   define __timespec   timespec
 #   define __timespec_t   timespec_t
 #   define __DEFINED_struct_timespec   (1)
 #   define __timespec_defined   (1)
 #endif
 #ifndef __DEFINED_struct_timeval
-typedef struct timeval { time_t tv_sec; suseconds_t tv_usec; }   timeval_t;
+typedef align16 struct timeval { time_t tv_sec; suseconds_t tv_usec; }   timeval_t;
 #   define __DEFINED_struct_timeval   (1)
 #endif
 /** 32-bit time structure with seconds and microseconds */
@@ -3598,8 +3599,8 @@ typedef atomic sigset_t   atomic_sigset_t;
 typedef char*   malloc_ptr_t;
 #define __malloc_ptr_t   malloc_ptr_t
 typedef struct chunk {
-	size_t psize, csize;
 	struct chunk *next, *prev;
+	size_t psize, csize;
 } chunk_t;
 /** memalign entry datatype */
 typedef struct memalign_ea {
@@ -3889,11 +3890,11 @@ typedef char*   UNDKey;
 typedef char*   UNDPath;
 /** Sent as out-of-line data in a message) */
 typedef const char*   xmlData_t;
-typedef unsigned   mach_msg_type_name_t;
-typedef unsigned   mach_port_rights_t;
-typedef unsigned   mach_port_msgcount_t;
-typedef unsigned   mach_port_mscount_t;
-typedef unsigned   sample_array_t[SAMPLE_MAX];
+typedef uint32_t   mach_msg_type_name_t;
+typedef uint32_t   mach_port_rights_t;
+typedef uint32_t   mach_port_msgcount_t;
+typedef uint32_t   mach_port_mscount_t;
+typedef uint32_t   sample_array_t[SAMPLE_MAX];
 typedef int64_t   ledger_amount_t;
 typedef natural_t   ledger_item_t;
 typedef natural_t   mach_port_right_t;
@@ -3978,8 +3979,8 @@ typedef lock_set_t   lock_set_port_t;
 typedef alarm_t   alarm_port_t;
 typedef clock_serv_t   clock_serv_port_t;
 typedef clock_ctrl_t   clock_ctrl_port_t;
-typedef unsigned int   lck_type_t;
-typedef unsigned int   lck_sleep_action_t;
+typedef uint32_t   lck_type_t;
+typedef uint32_t   lck_sleep_action_t;
 typedef struct lck_grp_spin_stat {
 	uint64_t lck_grp_spin_util_cnt, lck_grp_spin_held_cnt;
 	uint64_t lck_grp_spin_miss_cnt, lck_grp_spin_held_max, lck_grp_spin_held_cum;
@@ -4157,7 +4158,7 @@ typedef uint32_t    bank_action_t;
 // MINIX DATATYPES
 
 /** Virtual addresses/lengths in bytes */
-typedef long unsigned int   vir_bytes;
+typedef unsigned long int   vir_bytes;
 #ifdef OSMINIX
 /** Asynchronous API */
 typedef int   bdev_id_t;
@@ -4519,7 +4520,7 @@ typedef unsigned long   ByteOffset;
 typedef short   filter_t;
 typedef int32_t   io_buf_len_t;
 typedef uint32_t   recnum_t;
-typedef int   dev_status_t[1024];
+typedef int32_t   dev_status_t[1024];
 typedef char   dev_name_t[128];
 typedef char   io_buf_ptr_inband_t[128];
 typedef char*   io_buf_ptr_t;
@@ -5185,33 +5186,33 @@ typedef void*   iconv_t;
 typedef uint16_t   gidx_t;
 typedef struct _utf8_state { wchar_t ch; int want; wchar_t lbound; }   utf8_state_t;
 
-typedef struct attr_packed _RuneLocale {
-	char magic[8];  //!< Magic indicating the version present
-	char encoding[32];  //!< ASCII name of this encoding
-	rune_t (*sgetrune)(const char*, size_t, char const**);
-	int (*sputrune)(rune_t, char*, size_t, char**);
-	rune_t invalid_rune;
-	unsigned long runetype[_CACHED_RUNES];
+typedef struct _RuneLocale {
 	rune_t maplower[_CACHED_RUNES];
 	rune_t mapupper[_CACHED_RUNES];
+	unsigned long runetype[_CACHED_RUNES];
+	rune_t (*sgetrune)(const char*, size_t, char const**);
+	int (*sputrune)(rune_t, char*, size_t, char**);
+	void* variable;  //!< Data which depends on the encoding
+	char encoding[32];  //!< ASCII name of this encoding
+	char magic[8];  //!< Magic indicating the version present
+	rune_t invalid_rune;
+	int variable_len;  //!< Data length
 	_RuneRange runetype_ext;
 	_RuneRange maplower_ext;  //!< Lowercase mapping
 	_RuneRange mapupper_ext;  //!< Uppercase mapping
-	void* variable;  //!< Data which depends on the encoding
-	int variable_len;  //!< Data length
 } _RuneLocale;
 
 typedef struct _FileRuneLocale {
-	char frl_magic[8];  //!< Magic indicating the version present
 	char frl_encoding[32];  //!< ASCII name of this encoding
+	char frl_magic[8];  //!< Magic indicating the version present
+	int32_t frl_variable_len;  //!< Data length
 	int32_t frl_invalid_rune;
-	_RuneType frl_runetype[_CACHED_RUNES];
 	int32_t frl_maplower[_CACHED_RUNES];
 	int32_t frl_mapupper[_CACHED_RUNES];
+	_RuneType frl_runetype[_CACHED_RUNES];
 	_FileRuneRange frl_runetype_ext;
 	_FileRuneRange frl_maplower_ext;  //!< Lowercase mapping
 	_FileRuneRange frl_mapupper_ext;  //!< Uppercase mapping
-	int32_t frl_variable_len;  //!< Data length
 } _FileRuneLocale;
 
 
@@ -6336,7 +6337,7 @@ struct sigaction {
 #else
 
 /** Structure describing the action to be taken when a signal arrives */
-struct sigaction {
+struct align32 sigaction {
 	__sighandler_t sa_handler;
 	unsigned long sa_flags;
 	void (*sa_restorer)(void);
@@ -6562,14 +6563,14 @@ typedef volatile int32_t   pthread_spinlock_t;
 typedef volatile int32_t   OSSpinLock;
 #define __DEFINED_pthread_barrier_t   (1)
 /** POSIX barrier datatype */
-typedef union pthread_barrier {
+typedef align32 union pthread_barrier {
 	char __size[SIZEOF_PTHREAD_BARRIER_T];
 	char pad0[64 - SIZEOF_PTHREAD_BARRIER_T];  //!< Padding
 	long __align;
 } pthread_barrier_t;
 #define __DEFINED_pthread_barrierattr_t   (1)
 /** POSIX barrier attribute datatype */
-typedef union pthread_barrierattr {
+typedef align32 union pthread_barrierattr {
 	char __size[SIZEOF_PTHREAD_BARRIERATTR_T];
 	char pad0[64 - SIZEOF_PTHREAD_BARRIERATTR_T];  //!< Padding
 	int __align;
@@ -6591,7 +6592,7 @@ struct __spawn_action {
 	} action;
 };
 /** Data structure to contain attributes for thread creation */
-typedef struct posix_spawnattr {
+typedef align32 struct posix_spawnattr {
 	sigset_t __sd, __ss;
 	pid_t __pgrp;
 	struct sched_param __sp;
@@ -6619,7 +6620,7 @@ typedef struct _pthread_fastlock { int __spinlock; }   pthread_fastlock_t;
 #   define PTHREAD_SPIN_UNLOCKED   0
 #endif
 /** POSIX Thread Descriptor */
-typedef struct _pthread_descr_struct {
+typedef align32 struct _pthread_descr_struct {
 	struct _pthread_descr_struct* next;
 	struct _pthread_descr_struct** prev;
 	void* stack_begin;  //!< Beginning of stack; lowest address
@@ -6939,18 +6940,20 @@ typedef union pthread_mutex {
 } pthread_mutex_t;
 #elif (defined(ARCHX86) && (!defined(ARCHI386)))
 /** Data structures for mutex handling */
-typedef union attr_packed pthread_mutex {
-	struct attr_packed __pthread_mutex_s {
-		int __lock;
-		unsigned int __count;
+typedef union pthread_mutex {
+	struct __pthread_mutex_s {
+		__pthread_list_t __list;
 		_pthread_descr __owner;
+		unsigned int __count;
 		unsigned int __nusers;
+		int __lock;
 		int __kind;
 		int __spins;
-		__pthread_list_t __list;
+		int pad0;  //!< Padding
 #   define __PTHREAD_MUTEX_HAVE_PREV   (1)
 	} __data;
 	char __size[SIZEOF_PTHREAD_MUTEX_T];
+	char pad1[64 - SIZEOF_PTHREAD_MUTEX_T];  //!< Padding
 	long __align;
 } pthread_mutex_t;
 #elif defined(ARCHI386)
@@ -7393,7 +7396,7 @@ typedef struct __ptcb {
 	void* __x;
 	struct __ptcb* __next;
 } ptcb_t;
-typedef struct pthread {
+typedef align64 struct pthread {
 	struct pthread* self;
 	void** dtv;
 	void* unused1;
@@ -7444,7 +7447,11 @@ typedef struct pthread {
 
 // I/O & FILE DATATYPES
 
-typedef struct attr_packed __sbuf { unsigned char* _base; int _size; }   sbuf_t;
+typedef struct __sbuf {
+	unsigned char* _base;
+	int _size;
+	int pad0;  //!< Padding
+} sbuf_t;
 /** I/O descriptor for `sfvwrite()` */
 typedef struct __siov { void* iov_base; size_t iov_len; }   siov_t;
 /** I/O descriptor for `sfvwrite()` */
@@ -7488,7 +7495,7 @@ typedef struct wms_cookie {
 
 
 /** File datatype */
-typedef struct __sFILE {
+typedef align32 struct __sFILE {
 	// Position Pointers
 	unsigned char* rpos;  //!< Current read position in buffer
 	unsigned char* rend;  //!< End of read area
@@ -7523,7 +7530,6 @@ typedef struct __sFILE {
 	pthread_t lockowner;  //!< The thread currently holding the lock
 	pthread_cond_t lockcond;  //!< Condition variable for signalling lock releases
 	pthread_mutex_t mutex;  //!< Used for MT-safety
-	int pad2;  //!< Padding
 	struct __sFILE* prev_locked;  //!< Points to the previously locked file
 	struct __sFILE* next_locked;  //!< Points to the next locked file
 	// Operations
@@ -7655,18 +7661,19 @@ enum QID_TYPE_BITS {
 };
 
 /** System-modified data & file data */
-typedef struct attr_packed Dir {
-	unsigned short type;  // Server type
-	unsigned int dev;  // Server subtype
+typedef struct Dir {
 	Qid qid;  // Unique id from server
-	unsigned long mode;  // Permissions
-	unsigned long atime;  // Last read time
-	unsigned long mtime;  // Last write time
 	vlong_t length;  // File length
 	char* name;  // Last element of path
 	char* uid;  // Owner name
 	char* gid;  // Group name
 	char* muid;  // Last modifier name
+	unsigned long mode;  // Permissions
+	unsigned long atime;  // Last read time
+	unsigned long mtime;  // Last write time
+	unsigned int dev;  // Server subtype
+	unsigned short type;  // Server type
+	unsigned short pad0;  //!< Padding
 } Dir;
 // Dir.mode Bits
 /** Mode bit for execute permission */
@@ -7762,7 +7769,7 @@ DECL_FUNC NONNULL void bit64tostr(const uint64_t bits, char* restrict outstr);
 DECL_FUNC NONNULL void bitlongtostr(const unsigned long bits, char* restrict outstr);
 DECL_FUNC void* calloc(const size_t num_members, const size_t elem_size);
 DECL_FUNC clock_t clock(void);
-DECL_FUNC int clock_gettime(const clockid_t clk, struct timespec* ts);
+DECL_FUNC ATTR_NONNULL(2) int clock_gettime(const clockid_t clk, struct timespec* restrict ts);
 DECL_FUNC NONNULL int cmpxchg(volatile int* restrict ptr, const int oldval, const int newval);
 DECL_FUNC NOLIBCALL NONNULL int copystring(char* restrict buf, const unsigned int maxlen, const char* restrict s);
 DECL_FUNC MATH_FUNC double cos(const double x);
@@ -7776,23 +7783,24 @@ DECL_FUNC MATH_FUNC double exp(const double num);
 DECL_FUNC MATH_FUNC float expf(const float num);
 DECL_FUNC MATH_FUNC double fabs(const double x);
 DECL_FUNC MATH_FUNC float fabsf(const float x);
-DECL_FUNC int fclose(FILE* fp);
+DECL_FUNC int fclose(FILE* restrict fp);
 DECL_FUNC int fcntl(const int fd, const int cmd, ...);
 DECL_FUNC long __fdelt_chk(const long d);
-DECL_FUNC int ferror(FILE* fp);
-DECL_FUNC int fflush(FILE* fp);
-DECL_FUNC char* fgets(char* as, int n, FILE* fp);
+DECL_FUNC int ferror(FILE* restrict fp);
+DECL_FUNC int fflush(FILE* restrict fp);
+DECL_FUNC int flush_stdout(void);
+DECL_FUNC char* fgets(char* restrict str, const int num, FILE* restrict fp);
 DECL_FUNC ATTR_NONNULL(1) ATTR_PRINTF(2, 3) int fprintf(FILE* restrict fp, const char* restrict fmt, ...);
 DECL_FUNC NONNULL void floatbittostr(const float fbits, char* restrict outstr);
 DECL_FUNC NOLIBCALL ATTR_PF int fmodeflags(const char* restrict mode);
 DECL_FUNC FILE* fopen(const char* restrict filename, const char* restrict mode);
-DECL_FUNC wint_t fputwc(const wchar_t wc, FILE* stream);
-DECL_FUNC int fputws(const wchar_t* str, FILE* stream);
+DECL_FUNC wint_t fputwc(const wchar_t wc, FILE* restrict stream);
+DECL_FUNC int fputws(const wchar_t* restrict str, FILE* restrict stream);
 DECL_FUNC void free(void* ptr);
-DECL_FUNC MATH_FUNC double frexp(const double num, int* e);
-DECL_FUNC MATH_FUNC float frexpf(const float num, int* e);
-DECL_FUNC int fseeko_unlocked(FILE* f, off_t off, const int whence);
-DECL_FUNC off_t ftello(FILE* f);
+DECL_FUNC MATH_FUNC double frexp(const double num, int* restrict e);
+DECL_FUNC MATH_FUNC float frexpf(const float num, int* restrict e);
+DECL_FUNC int fseeko_unlocked(FILE* restrict f, off_t off, const int whence);
+DECL_FUNC off_t ftello(FILE* restrict fp);
 DECL_FUNC int _fwalk(int (*function)(FILE*));
 DECL_FUNC MATH_FUNC int64_t get_dbl_expo(const double x);
 DECL_FUNC const char* getenv(const char* restrict name);
@@ -7821,7 +7829,7 @@ DECL_FUNC void LOCK(atomic volatile int* restrict l);
 DECL_FUNC int LOCKFILE(FILE* restrict fp);
 DECL_FUNC MATH_FUNC long lrintf(const float x);
 DECL_FUNC int mbtowc(wchar_t* restrict pwc, const char* s, const size_t n);
-DECL_FUNC NOLIBCALL void* malloc(const size_t len);
+DECL_FUNC NOLIBCALL align_ptr void* malloc(const size_t len);
 DECL_FUNC size_t mbrtowc(wchar_t* restrict pwc, const char* s, const size_t len, const UNUSED mbstate_t* ps);
 DECL_FUNC int mbsinit(const mbstate_t* restrict st);
 DECL_FUNC NOLIBCALL const void* memchr(const void* src, const int x, const size_t len);
@@ -7862,8 +7870,8 @@ DECL_FUNC void* realloc(void* ptr, const size_t len);
 DECL_FUNC void* reallocarray(void* optr, const size_t nmemb, const size_t size);
 DECL_FUNC size_t scan_trans(long long t, int local, size_t* alt);
 DECL_FUNC int select(const int n, fd_set* restrict rfds, fd_set* restrict wfds, fd_set* restrict efds, struct timeval* restrict tv);
-DECL_FUNC void setlinebuf(FILE* fp);
-DECL_FUNC int sflush(FILE* fp);
+DECL_FUNC NONNULL void setlinebuf(FILE* restrict fp);
+DECL_FUNC int sflush(FILE* restrict fp);
 DECL_FUNC int sfvwrite(FILE* fp, struct __suio* uio);
 DECL_FUNC int __sigaction(int sig, const struct sigaction* act, struct sigaction* oact);
 DECL_FUNC MATH_FUNC int signbit(const double x);
@@ -8000,7 +8008,6 @@ static FILE __stdin = {
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
-	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8080,7 +8087,6 @@ static FILE __stdout = {
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
-	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8160,7 +8166,6 @@ static FILE __stderr = {
 	.lockowner = (pthread_t)0,
 	.lockcond = { .__size = { 0 } },
 	.mutex = { .__align = 0L },
-	.pad2 = 0,
 	.prev_locked = NULL,
 	.next_locked = NULL,
 	// Operations
@@ -8440,7 +8445,7 @@ typedef struct xt_addrtype_info {
 
 
 /** Locale object for global C locale */
-static UNUSED locale_t __global_locale = NULL;
+static UNUSED align64 locale_t __global_locale = NULL;
 /** Locale object for global C locale */
 #define _NL_CURRENT_LOCALE   __global_locale
 #define CURRENT_LOCALE   __global_locale
@@ -8455,8 +8460,8 @@ UNUSED _RuneLocale* _CurrentRuneLocale;
 #define NORMALIZE_LOCALE(x)   if ((x) == NULL) { (x) = __global_locale; } else if ((x) == LC_GLOBAL_LOCALE) { (x) = __global_locale; }
 #if SINGLE_THREAD_P
 /** We need to have the error status variable of the resolver accessible in the libc */
-volatile UNUSED locale_t locale_tls;
-volatile UNUSED tss_t locale_tss;
+volatile UNUSED align64 locale_t locale_tls;
+volatile UNUSED align64 tss_t locale_tss;
 #else
 /** We need to have the error status variable of the resolver accessible in the libc */
 thread_local volatile UNUSED locale_t locale_tls;
@@ -8467,7 +8472,7 @@ thread_local volatile UNUSED tss_t locale_tss;
 
 
 /*@-immediatetrans@*/
-static UNUSED struct lconv C_LOCALE_INITIALIZER = {
+static UNUSED align64 struct lconv C_LOCALE_INITIALIZER = {
 	(const char*)&period, NULL, NULL, NULL, NULL, NULL,  // Decimal_point - mon_decimal_point
 	NULL, NULL, NULL, NULL, 127, 127,  // mon_thousands_sep - frac_digits
 	127, 127, 127, 127, 127, 127,  // p_cs_precedes - n_sign_posn
@@ -8488,9 +8493,9 @@ typedef struct libc_struct {
 } libc_t;
 /*@-immediatetrans@*/
 #if SINGLE_THREAD_P
-static UNUSED libc_t libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED align_ptr libc_t libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #   else
-static UNUSED libc_t libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED align_ptr libc_t libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #endif
 /*@=immediatetrans@*/
 #define _libc   libc
@@ -11647,13 +11652,14 @@ typedef struct __mcontext {
 	unsigned long oldmask, cr2;
 } mcontext_t;
 /** Userlevel context */
-typedef struct attr_packed ucontext {
-	unsigned long uc_flags;
+typedef struct ucontext {
 	struct ucontext* uc_link;
+	struct _libc_fpstate __fpregs_mem;
 	stack_t uc_stack;
 	mcontext_t uc_mcontext;
 	sigset_t uc_sigmask;
-	struct _libc_fpstate __fpregs_mem;
+	unsigned long uc_flags;
+	unsigned long pad0;  //!< Padding
 } ucontext_t;
 struct sigcontext {
 	unsigned short gs, __gsh, fs, __fsh;

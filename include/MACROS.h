@@ -1059,29 +1059,6 @@ typedef float __attribute__((__mode__(__TD__)))   TDtype;
 #   ifndef Imaginary
 #      define Imaginary   _Imaginary
 #   endif
-#   define _Mfloat_   float
-#   define _Mfloat_complex_   _Complex _Mfloat_
-#   define complex_float   _Complex float
-#   define cfloat_t   _Complex float
-#   define _Mdouble_   double
-#   define _Mdouble_complex_   _Complex _Mdouble_
-#   define complex_double   _Complex double
-#   define cdouble_t   _Complex double
-#   if SUPPORTS_LONG_DOUBLE
-#      define _LONG_DOUBLE   long double
-#      define LDOUBLE   long double
-#      define _Mlong_double_   long double
-#      define _Mlong_double_complex_   _Complex _Mlong_double_
-#      define complex_long_double   _Complex long double
-#      define clong_double_t   _Complex long double
-#      define cldouble_t   _Complex long double
-#   endif
-#   if SUPPORTS_FLOAT128
-#      define _Mfloat128_   float128
-#      define _Mfloat128_complex_   _Complex _Mfloat128_
-#      define complex_float128   _Complex float128
-#      define cfloat128_t   _Complex float128
-#   endif
 /** @def _Complex_I
 Imaginary unit */
 #   ifndef _Complex_I
@@ -1146,13 +1123,66 @@ Most narrow imaginary unit */
 /** Expand into expression of specified complex type */
 #      define __CMPLXL(x, y)   CMPLXL((x), (y))
 #   endif
+#   define SUPPORTS_SCTYPE   1
+typedef _Complex float __attribute__((__mode__(__SC__)))   SCtype;
+#   define SC   SCtype
+#   define HAVE_SC   1
+#   define _Mfloat_   float
+#   define _Mfloat_complex_   SCtype
+#   define complex_float   SCtype
+#   define cfloat_t   SCtype
+#   define SUPPORTS_DCTYPE   1
+typedef _Complex float __attribute__((__mode__(__DC__)))   DCtype;
+#   define DC   DCtype
+#   define HAVE_DC   1
+#   define _Mdouble_   double
+#   define _Mdouble_complex_   DCtype
+#   define complex_double   DCtype
+#   define cdouble_t   DCtype
+#   if (SUPPORTS_LONG_DOUBLE && SUPPORTS_COMPLEX_LDBL)
+#      define SUPPORTS_XCTYPE   1
+#      if SUPPORTS_COMPLEX_X87
+typedef _Complex long double __attribute__((__mode__(__XC__)))   XCtype;
+#         define SUPPORTS_COMPLEX_X87   1
+#      else
+typedef _Complex long double   XCtype;
+#         define SUPPORTS_COMPLEX_X87   0
+#      endif
+#      define XC   XCtype
+#      define HAVE_XC   1
+#      define _LONG_DOUBLE   long double
+#      define LDOUBLE   long double
+#      define _Mlong_double_   long double
+#      define _Mlong_double_complex_   XCtype
+#      define complex_long_double   XCtype
+#      define clong_double_t   XCtype
+#      define cldouble_t   XCtype
+#   else
+#      define SUPPORTS_XCTYPE   0
+#      define SUPPORTS_COMPLEX_LDBL   0
+#      define SUPPORTS_COMPLEX_X87   0
+#      define HAVE_XC   0
+#   endif
+#   if (SUPPORTS_FLOAT128 && SUPPORTS_COMPLEX_FLOAT128)
+#      define SUPPORTS_TCTYPE   1
+typedef _Complex float __attribute__((__mode__(__TC__)))   TCtype;
+#      define TC   TCtype
+#      define HAVE_TC   1
+#      define _Mfloat128_   float128
+#      define _Mfloat128_complex_   TCtype
+#      define complex_float128   TCtype
+#      define cfloat128_t   TCtype
+#   else
+#      define SUPPORTS_TCTYPE   0
+#      define HAVE_TC   0
+#   endif
 #   ifdef ARCHAVR
 #      define SUPPORTS_QCTYPE   1
-typedef complex_float __attribute__((__mode__(__QC__)))   QCtype;
+typedef _Complex float __attribute__((__mode__(__QC__)))   QCtype;
 #      define QC   QCtype
 #      define HAVE_QC   1
 #      define SUPPORTS_HCTYPE   1
-typedef complex_float __attribute__((__mode__(__HC__)))   HCtype;
+typedef _Complex float __attribute__((__mode__(__HC__)))   HCtype;
 #      define HC   HCtype
 #      define HAVE_HC   1
 #   else
@@ -1160,32 +1190,6 @@ typedef complex_float __attribute__((__mode__(__HC__)))   HCtype;
 #      define SUPPORTS_HCTYPE   0
 #      define HAVE_QC   0
 #      define HAVE_HC   0
-#   endif
-#   define SUPPORTS_SCTYPE   1
-typedef complex_float __attribute__((__mode__(__SC__)))   SCtype;
-#   define SC   SCtype
-#   define HAVE_SC   1
-#   define SUPPORTS_DCTYPE   1
-typedef complex_float __attribute__((__mode__(__DC__)))   DCtype;
-#   define DC   DCtype
-#   define HAVE_DC   1
-#   if SUPPORTS_COMPLEX_X87
-#      define SUPPORTS_XCTYPE   1
-typedef complex_float __attribute__((__mode__(__XC__)))   XCtype;
-#      define XC   XCtype
-#      define HAVE_XC   1
-#   else
-#      define SUPPORTS_XCTYPE   0
-#      define HAVE_XC   0
-#   endif
-#   if SUPPORTS_COMPLEX_FLOAT128
-#      define SUPPORTS_TCTYPE   1
-typedef complex_float __attribute__((__mode__(__TC__)))   TCtype;
-#      define TC   TCtype
-#      define HAVE_TC   1
-#   else
-#      define SUPPORTS_TCTYPE   0
-#      define HAVE_TC   0
 #   endif
 #else
 #   define SUPPORTS_QCTYPE   0
@@ -1559,6 +1563,11 @@ typedef SItype VECTOR16   V4SItype;
 #define V4SI   V4SItype
 #define __V4SI   V4SItype
 #define __v4si   V4SItype
+/** Vector datatype of four int32_t values */
+typedef DItype VECTOR32   V4DItype;
+#define V4DI   V4DItype
+#define __V4DI   V4DItype
+#define __v4di   V4DItype
 
 
 // FLOAT-POINT VECTOR MODES
@@ -2643,34 +2652,35 @@ typedef __UINT_PTR_TYPE   LPARAM;
 typedef __UINT_PTR_TYPE   LRESULT;
 typedef char*   char_ptr_t;
 typedef short*   short_ptr_t;
-typedef short*   PSHORT;
+#define PSHORT   short_ptr_t
 typedef int*   int_ptr_t;
-typedef int   _Mbstatet;
-typedef int*   PINT;
-typedef int*   LPINT;
-typedef int*   PLONG32;
-typedef int*   PINT32;
+#define _Mbstatet   int_ptr_t
+#define PINT   int_ptr_t
+#define LPINT   int_ptr_t
+#define PLONG32   int_ptr_t
+#define PINT32   int_ptr_t
 typedef long*   long_ptr_t;
-typedef long*   LPLONG;
-typedef long*   PLARGE_INTEGER;
+#define LPLONG   long_ptr_t
+#define PLARGE_INTEGER   long_ptr_t
 typedef unsigned char*   uchar_ptr_t;
 typedef unsigned short*   ushort_ptr_t;
-typedef unsigned short*   PUSHORT;
+#define PUSHORT   ushort_ptr_t
+#define PUSHORT   ushort_ptr_t
 typedef unsigned int*   uint_ptr_t;
-typedef unsigned int*   PUINT;
-typedef unsigned int*   LPUINT;
-typedef unsigned int*   PULONG32;
-typedef unsigned int*   PDWORD32;
-typedef unsigned int*   PUINT32;
+#define PUINT   uint_ptr_t
+#define LPUINT   uint_ptr_t
+#define PULONG32   uint_ptr_t
+#define PDWORD32   uint_ptr_t
+#define PUINT32   uint_ptr_t
 typedef unsigned long*   ulong_ptr_t;
-typedef unsigned long*   PULONG;
+#define PULONG   ulong_ptr_t
 typedef quad_t*   quad_ptr_t;
-typedef int8_t*   PINT8;
-typedef int8_t*   s8_ptr_t;
 typedef int8_t*   i8_ptr_t;
-typedef int16_t*   PINT16;
-typedef int16_t*   s16_ptr_t;
+#define s8_ptr_t   i8_ptr_t
+#define PINT8   i8_ptr_t
 typedef int16_t*   i16_ptr_t;
+#define s16_ptr_t   i16_ptr_t
+#define PINT16   i16_ptr_t
 typedef int32_t*   s32_ptr_t;
 typedef int32_t*   i32_ptr_t;
 typedef int64_t*   PLONG64;
@@ -2692,9 +2702,9 @@ typedef size_t*   PSIZE_T;
 /** Windows pointer datatype */
 typedef ssize_t*   PSSIZE_T;
 typedef float*   float_ptr_t;
-typedef float*   PFLOAT;
+#define PFLOAT   float_ptr_t
 typedef double*   double_ptr_t;
-typedef double*   PDOUBLE;
+#define PDOUBLE   double_ptr_t
 #define MAXUINT_PTR   (~((UINT_PTR)0))
 #define MAXINT_PTR   ((INT_PTR)(MAXUINT_PTR >> 1))
 #define MININT_PTR   (~(MAXINT_PTR))
@@ -6534,133 +6544,6 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #endif
 
 
-// PRAGMAS
-
-#if (defined(COMPILER_CLANG) && IS_NOT_LINTER)
-/** Push diagnostic state */
-#   define DIAG_PUSH   _Pragma("clang diagnostic push")
-/** Pop diagnostic state */
-#   define DIAG_POP   _Pragma("clang diagnostic pop")
-/** Ignore the specified diagnostic option */
-#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(clang diagnostic ignored _option))
-#   define IGNORE_WCAST_ALIGN   _Pragma("clang diagnostic ignored \"-Wcast-align\"")
-#   define IGNORE_WFORMAT_NONLITERAL   _Pragma("clang diagnostic ignored \"-Wformat-nonliteral\"")
-#   define IGNORE_WMISSING_PROTOTYPES   _Pragma("clang diagnostic ignored \"-Wmissing-prototypes\"")
-#   define IGNORE_WPADDED   _Pragma("clang diagnostic ignored \"-Wpadded\"")
-#   define IGNORE_WOVERLENGTH_STRINGS   _Pragma("clang diagnostic ignored \"-Woverlength-strings\"")
-/** Ignore shadowed functions */
-#   define IGNORE_WSHADOW   _Pragma("clang diagnostic ignored \"-Wshadow\"")
-#   define IGNORE_WSTACK_PROTECTOR   _Pragma("clang diagnostic ignored \"-Wstack-protector\"")
-/** Enable warning flags for missing prototypes, shadowed functions, and unused functions */
-#   define DIAG_FUNCTIONS   _Pragma("clang diagnostic error \"-Wmissing-prototypes\"") \
-	_Pragma("clang diagnostic error \"-Wshadow\"") \
-	_Pragma("clang diagnostic error \"-Wunused-function\"")
-#elif (defined(COMPILER_GNU_GCC) && IS_NOT_LINTER)
-/** Push diagnostic state */
-#   define DIAG_PUSH   _Pragma("GCC diagnostic push")
-/** Pop diagnostic state */
-#   define DIAG_POP   _Pragma("GCC diagnostic pop")
-/** Ignore the specified diagnostic option */
-#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(GCC diagnostic ignored _option))
-#   define IGNORE_WCAST_ALIGN   _Pragma("GCC diagnostic ignored \"-Wcast-align\"")
-#   define IGNORE_WFORMAT_NONLITERAL   _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
-#   define IGNORE_WMISSING_PROTOTYPES   _Pragma("GCC diagnostic ignored \"-Wmissing-prototypes\"")
-#   define IGNORE_WPADDED   _Pragma("GCC diagnostic ignored \"-Wpadded\"")
-#   define IGNORE_WOVERLENGTH_STRINGS   _Pragma("GCC diagnostic ignored \"-Woverlength-strings\"")
-/** Ignore shadowed functions */
-#   define IGNORE_WSHADOW   _Pragma("GCC diagnostic ignored \"-Wshadow\"")
-#   define IGNORE_WSTACK_PROTECTOR   _Pragma("GCC diagnostic ignored \"-Wstack-protector\"")
-/** Enable warning flags for missing prototypes, shadowed functions, and unused functions */
-#   define DIAG_FUNCTIONS   _Pragma("GCC diagnostic error \"-Wmissing-prototypes\"") \
-	_Pragma("GCC diagnostic error \"-Wshadow\"") \
-	_Pragma("GCC diagnostic error \"-Wunused-function\"")
-#else
-#   define DIAG_FUNCTIONS   /*@i@*/
-#   define DIAG_IGNORE(_option)   /*@i@*/
-#   define DIAG_POP   /*@i@*/
-#   define DIAG_PUSH   /*@i@*/
-#   define IGNORE_WCAST_ALIGN   /*@i@*/
-#   define IGNORE_WFORMAT_NONLITERAL   /*@i@*/
-#   define IGNORE_WMISSING_PROTOTYPES   /*@i@*/
-#   define IGNORE_WOVERLENGTH_STRINGS   /*@i@*/
-#   define IGNORE_WPADDED   /*@i@*/
-#   define IGNORE_WSHADOW   /*@i@*/
-#   define IGNORE_WSTACK_PROTECTOR   /*@i@*/
-#endif
-
-
-// STRING MANIPULATION MACROS
-
-/** @defgroup String_Manipulation_Macros Macros used to manipulate macros strings
-@{ */  // (FB){
-
-#define PASTE_NAME(a, b)   PASTE_NAME1(a, b)
-#define PASTE_NAME1(a, b)   a ## b
-/** Used to test macros values */
-#define DO_EXPAND(val)   val
-/** Used to test macros values */
-#define EXPAND_MACROS(val)   DO_EXPAND(val)
-#define CAT(x, y)   x ## y
-/** Concatenate macros values */
-#define CONCAT_X(x, y)   x ## y
-#define CONCAT(x, y)   CONCAT_X(x, y)
-#define CONCAT3_X(x, y, z)   x ## y ## z
-#define CONCAT3(x, y, z)   CONCAT3_X(x, y, z)
-#define CONCAT4_X(w, x, y, z)   w ## x ## y ## z
-#define CONCAT4(w, x, y, z)   CONCAT4_X(w, x, y, z)
-#define CONCAT5_X(v, w, x, y, z)   v ## w ## x ## y ## z
-#define CONCAT5(v, w, x, y, z)   CONCAT5_X(v, w, x, y, z)
-#define CONCAT6_X(u, v, w, x, y, z)   u ## v ## w ## x ## y ## z
-#define CONCAT6(u, v, w, x, y, z)   CONCAT6_X(u, v, w, x, y, z)
-#define CONCAT7_X(t, u, v, w, x, y, z)   t ## u ## v ## w ## x ## y ## z
-#define CONCAT7(t, u, v, w, x, y, z)   CONCAT7_X(t, u, v, w, x, y, z)
-/** Count the args in __VA_ARGS__ */
-#define NARGS_X(a, b, c, d, e, f, g, h, n, ...)   n
-/** Count the args in __VA_ARGS__ */
-#define NARGS(...)   NARGS_X(__VA_ARGS__, 7, 6, 5, 4, 3, 2, 1, 0, )
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define __stringify_1(x)    #x
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define __stringify(x)      __stringify_1(x)
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define S2(x)   #x
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define S(x)   S2(x)
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define ISTRINGIFY1(x)   #x
-/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
-#define ISTRINGIFY(x)   ISTRINGIFY1(x)
-#define __STRING(x)   #x
-#define __STRINGIFY(x)   #x
-#define STRINGIFY(x)   #x
-#define __MINGW64_STRINGIFY(x)   __STRINGIFY(x)
-#define MINGW64_STRINGIFY(x)   __STRINGIFY(x)
-#define __STR2WSTR(x)   L ## x
-#define _STR2WSTR(x)   __STR2WSTR(x)
-#ifdef _UNICODE
-#   define TEXT(x)   L ## x
-#else
-#   define TEXT(x)   x
-#endif
-#define __FILEW__   L ## __FILE__
-#define __FUNCTIONW__   L ## __FUNCTION__
-#ifndef _
-#   if (defined(HAVE_GETTEXT) && HAVE_GETTEXT)
-#      define _(str)   gettext(str)
-#   else
-#      define _(str)   str
-#   endif
-#endif
-#define EVAL0(...)   __VA_ARGS__
-#define EVAL1(...)   EVAL0(EVAL0(EVAL0(__VA_ARGS__)))
-#define EVAL2(...)   EVAL1(EVAL1(EVAL1(__VA_ARGS__)))
-#define EVAL3(...)   EVAL2(EVAL2(EVAL2(__VA_ARGS__)))
-#define EVAL4(...)   EVAL3(EVAL3(EVAL3(__VA_ARGS__)))
-#define EVAL(...)    EVAL4(EVAL4(EVAL4(__VA_ARGS__)))
-
-/** @} */  // }
-
-
 // C++ MACROS
 
 #undef __P
@@ -9026,7 +8909,7 @@ static const UNUSED int align64 positive_tens[8] = { 10, 100, 1000, 10000, 10000
 static const UNUSED char align64 fcvt_zeros[16] = "000000000000000";
 static const UNUSED char align16 blanks[PADSIZE] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 static const UNUSED char align16 zeroes[PADSIZE] = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
-static const UNUSED char period[2] = ".";
+static const UNUSED char align4 period[2] = ".";
 #define _ALPHABET   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define _alphabet   "abcdefghijklmnopqrstuvwxyz"
 #define _numbers   "0123456789"
@@ -9049,10 +8932,10 @@ static const UNUSED char align64 a64l_digits[65] = "./0123456789ABCDEFGHIJKLMNOP
 static const UNUSED char align64 _itoa_upper_digits[64] = _numbers _ALPHABET;
 /** Lower-case digits */
 static const UNUSED char align64 _itoa_lower_digits[64] = _numbers _alphabet;
-static const UNUSED char not_available[4] = "\377";
-static const UNUSED char empty[2] = "";
-static const UNUSED char null_char[2] = "\0";
-static const UNUSED char NEWLINE[4] = { '\n', '\n', '\0', '\0' };
+static const UNUSED char align8 not_available[4] = "\377";
+static const UNUSED char align4 empty[2] = "";
+static const UNUSED char align4 null_char[2] = "\0";
+static const UNUSED char align8 NEWLINE[4] = { '\n', '\n', '\0', '\0' };
 /** The set of "direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr */
 static const UNUSED unsigned char align16 direct_tab[16] = {
 	0U, 0x26U, 0U, 0U, 0x81U, 0xf3U, 0xffU, 0x87U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U

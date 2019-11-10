@@ -7875,6 +7875,151 @@ Compile-time assertion */
 #endif  // KEYWORDS_H
 
 
+/* STRING MANIPULATION MACROS */
+
+
+#if (!(defined(STRING_MANIPULATION_MACROS_H) || defined(_STRING_MANIPULATION_MACROS_H_)))
+#define STRING_MANIPULATION_MACROS_H   (1)
+#define _STRING_MANIPULATION_MACROS_H_   (1)
+
+
+/** @defgroup String_Manipulation_Macros Macros used to manipulate macros strings
+@{ */  // (FB){
+
+#define PASTE_NAME1(a, b)   a ## b
+#define PASTE_NAME(a, b)   PASTE_NAME1(a, b)
+/** Used to test macros values */
+#define DO_EXPAND(val)   val
+/** Used to test macros values */
+#define EXPAND_MACROS(val)   DO_EXPAND(val)
+#define CAT(x, y)   x ## y
+/** Concatenate macros values */
+#define CONCAT_X(x, y)   x ## y
+#define CONCAT(x, y)   CONCAT_X(x, y)
+#define CONCAT3_X(x, y, z)   x ## y ## z
+#define CONCAT3(x, y, z)   CONCAT3_X(x, y, z)
+#define CONCAT4_X(w, x, y, z)   w ## x ## y ## z
+#define CONCAT4(w, x, y, z)   CONCAT4_X(w, x, y, z)
+#define CONCAT5_X(v, w, x, y, z)   v ## w ## x ## y ## z
+#define CONCAT5(v, w, x, y, z)   CONCAT5_X(v, w, x, y, z)
+#define CONCAT6_X(u, v, w, x, y, z)   u ## v ## w ## x ## y ## z
+#define CONCAT6(u, v, w, x, y, z)   CONCAT6_X(u, v, w, x, y, z)
+#define CONCAT7_X(t, u, v, w, x, y, z)   t ## u ## v ## w ## x ## y ## z
+#define CONCAT7(t, u, v, w, x, y, z)   CONCAT7_X(t, u, v, w, x, y, z)
+/** Count the args in __VA_ARGS__ */
+#define NARGS_X(a, b, c, d, e, f, g, h, n, ...)   n
+/** Count the args in __VA_ARGS__ */
+#define NARGS(...)   NARGS_X(__VA_ARGS__, 7, 6, 5, 4, 3, 2, 1, 0, )
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define __stringify_1(x)    #x
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define __stringify(x)      __stringify_1(x)
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define S2(x)   #x
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define S(x)   S2(x)
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define ISTRINGIFY1(x)   #x
+/** Indirect stringification; Doing two levels allows the parameter to be a macro itself */
+#define ISTRINGIFY(x)   ISTRINGIFY1(x)
+#define __STRING(x)   #x
+#define __STRINGIFY(x)   #x
+#define STRINGIFY(x)   #x
+#define __MINGW64_STRINGIFY(x)   __STRINGIFY(x)
+#define MINGW64_STRINGIFY(x)   __STRINGIFY(x)
+#define __STR2WSTR(x)   L ## x
+#define _STR2WSTR(x)   __STR2WSTR(x)
+#ifdef _UNICODE
+#   define TEXT(x)   L ## x
+#else
+#   define TEXT(x)   x
+#endif
+#define __FILEW__   L ## __FILE__
+#define __FUNCTIONW__   L ## __FUNCTION__
+#ifndef _
+#   if (defined(HAVE_GETTEXT) && HAVE_GETTEXT)
+#      define _(str)   gettext(str)
+#   else
+#      define _(str)   str
+#   endif
+#endif
+#define EVAL0(...)   __VA_ARGS__
+#define EVAL1(...)   EVAL0(EVAL0(EVAL0(__VA_ARGS__)))
+#define EVAL2(...)   EVAL1(EVAL1(EVAL1(__VA_ARGS__)))
+#define EVAL3(...)   EVAL2(EVAL2(EVAL2(__VA_ARGS__)))
+#define EVAL4(...)   EVAL3(EVAL3(EVAL3(__VA_ARGS__)))
+#define EVAL(...)    EVAL4(EVAL4(EVAL4(__VA_ARGS__)))
+
+/** @} */  // }
+
+
+#endif  // STRING_MANIPULATION_MACROS_H
+
+
+/* PRAGMAS */
+
+
+#if (!(defined(PRAGMAS_H) || defined(_PRAGMAS_H_)))
+#define PRAGMAS_H   (1)
+#define _PRAGMAS_H_   (1)
+
+
+#if (defined(COMPILER_CLANG) && IS_NOT_LINTER)
+/** Push diagnostic state */
+#   define DIAG_PUSH   _Pragma("clang diagnostic push")
+/** Pop diagnostic state */
+#   define DIAG_POP   _Pragma("clang diagnostic pop")
+/** Ignore the specified diagnostic option */
+#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(clang diagnostic ignored _option))
+#   define IGNORE_WCAST_ALIGN   _Pragma("clang diagnostic ignored \"-Wcast-align\"")
+#   define IGNORE_WFORMAT_NONLITERAL   _Pragma("clang diagnostic ignored \"-Wformat-nonliteral\"")
+#   define IGNORE_WMISSING_PROTOTYPES   _Pragma("clang diagnostic ignored \"-Wmissing-prototypes\"")
+#   define IGNORE_WPADDED   _Pragma("clang diagnostic ignored \"-Wpadded\"")
+#   define IGNORE_WOVERLENGTH_STRINGS   _Pragma("clang diagnostic ignored \"-Woverlength-strings\"")
+/** Ignore shadowed functions */
+#   define IGNORE_WSHADOW   _Pragma("clang diagnostic ignored \"-Wshadow\"")
+#   define IGNORE_WSTACK_PROTECTOR   _Pragma("clang diagnostic ignored \"-Wstack-protector\"")
+/** Enable warning flags for missing prototypes, shadowed functions, and unused functions */
+#   define DIAG_FUNCTIONS   _Pragma("clang diagnostic error \"-Wmissing-prototypes\"") \
+	_Pragma("clang diagnostic error \"-Wshadow\"") \
+	_Pragma("clang diagnostic error \"-Wunused-function\"")
+#elif (defined(COMPILER_GNU_GCC) && IS_NOT_LINTER)
+/** Push diagnostic state */
+#   define DIAG_PUSH   _Pragma("GCC diagnostic push")
+/** Pop diagnostic state */
+#   define DIAG_POP   _Pragma("GCC diagnostic pop")
+/** Ignore the specified diagnostic option */
+#   define DIAG_IGNORE(_option)   _Pragma(ISTRINGIFY(GCC diagnostic ignored _option))
+#   define IGNORE_WCAST_ALIGN   _Pragma("GCC diagnostic ignored \"-Wcast-align\"")
+#   define IGNORE_WFORMAT_NONLITERAL   _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
+#   define IGNORE_WMISSING_PROTOTYPES   _Pragma("GCC diagnostic ignored \"-Wmissing-prototypes\"")
+#   define IGNORE_WPADDED   _Pragma("GCC diagnostic ignored \"-Wpadded\"")
+#   define IGNORE_WOVERLENGTH_STRINGS   _Pragma("GCC diagnostic ignored \"-Woverlength-strings\"")
+/** Ignore shadowed functions */
+#   define IGNORE_WSHADOW   _Pragma("GCC diagnostic ignored \"-Wshadow\"")
+#   define IGNORE_WSTACK_PROTECTOR   _Pragma("GCC diagnostic ignored \"-Wstack-protector\"")
+/** Enable warning flags for missing prototypes, shadowed functions, and unused functions */
+#   define DIAG_FUNCTIONS   _Pragma("GCC diagnostic error \"-Wmissing-prototypes\"") \
+	_Pragma("GCC diagnostic error \"-Wshadow\"") \
+	_Pragma("GCC diagnostic error \"-Wunused-function\"")
+#else
+#   define DIAG_FUNCTIONS   /*@i@*/
+#   define DIAG_IGNORE(_option)   /*@i@*/
+#   define DIAG_POP   /*@i@*/
+#   define DIAG_PUSH   /*@i@*/
+#   define IGNORE_WCAST_ALIGN   /*@i@*/
+#   define IGNORE_WFORMAT_NONLITERAL   /*@i@*/
+#   define IGNORE_WMISSING_PROTOTYPES   /*@i@*/
+#   define IGNORE_WOVERLENGTH_STRINGS   /*@i@*/
+#   define IGNORE_WPADDED   /*@i@*/
+#   define IGNORE_WSHADOW   /*@i@*/
+#   define IGNORE_WSTACK_PROTECTOR   /*@i@*/
+#endif
+
+
+#endif  // PRAGMAS_H
+
+
 /* DATATYPE DIAGNOSTICS */
 
 
