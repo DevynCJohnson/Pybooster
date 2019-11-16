@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Install the Theme
 #' @file install.sh
-#' @version 2019.10.26
+#' @version 2019.11.16
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,6 +13,15 @@ TOPDIR="$(pwd)"
 
 
 sh ./clean.sh
+
+
+[ ! -x "$(command -v meson)" ] && { printf 'ERROR: `meson` not found!\n' >&2; exit 1; }
+[ ! -x "$(command -v ninja)" ] && { printf 'ERROR: `ninja` not found!\n' >&2; exit 1; }
+[ ! -x "$(command -v inkscape)" ] && { printf 'ERROR: `inkscape` not found!\n' >&2; exit 1; }
+[ ! -x "$(command -v sassc)" ] && { printf 'ERROR: `sassc` not found!\n' >&2; exit 1; }
+[ ! -x "$(command -v pngcrush)" ] && { printf 'WARNING: `pngcrush` is strongly recommended, but not required!\n' >&2; }
+[ ! -x "$(command -v rename)" ] && { printf 'WARNING: `rename` is strongly recommended, but not required!\n' >&2; }
+
 
 sh -c 'cd ./gtk/src/OptiView/gtk-2.0 && sh ./render-assets.sh' &
 cd ./gtk/src/OptiView/gtk-3.0 && sh ./render-assets.sh
