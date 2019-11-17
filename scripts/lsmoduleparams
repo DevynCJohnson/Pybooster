@@ -1,0 +1,21 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
+#' @brief List the available Linux kernel parameters for all of the modules
+#' @file lsmoduleparams
+#' @version 2019.11.16
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+cut -d ' ' -f 1 < /proc/modules | sort | while read -r module; do
+    if [ -d "/sys/module/${module}/parameters" ]; then
+        printf 'Module: %s\n' "${module}";
+        find "/sys/module/${module}/parameters/" -type f | cut -d '/' -f 6 | sort | while read -r parameter; do
+            printf '\t%s' "${parameter} --> "
+            cat "/sys/module/${module}/parameters/${parameter}"
+        done
+        printf '\n'
+    fi
+done
