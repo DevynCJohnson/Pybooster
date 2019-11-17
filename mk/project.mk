@@ -33,7 +33,7 @@ valchecksums :
 # GIT COMMANDS #
 
 
-.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitlsuncommitted gitstats gitundoadd lscontrib lstags newchanges news previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
+.PHONY : cleangit commit commithash commithashes gitattr gitchanges gitignore gitlastchanges gitlinechanges gitlscommits gitlsconfigs gitlsfiles gitlsuncommitted gitstats gitundoadd lscontrib lstags newchanges news numcommits previewcleangit pushtags setkey signoff status tag treehashes uncommit xcommit xtag
 
 
 commit :
@@ -99,6 +99,9 @@ lstags :
 
 newchanges :
 	@git diff HEAD~1
+
+numcommits :
+	@git log | grep ^commit | wc -l
 
 previewcleangit : cleanall fixperm
 	-@git reflog expire --dry-run --all --expire=now --stale-fix
