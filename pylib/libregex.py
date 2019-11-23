@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2019.07.14
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -724,7 +724,7 @@ CHAR_REF2 = rgxcompile(
 # C SOURCE CODE PATTERNS #
 
 
-DATATYPES: str = r'((((signed|unsigned|)( |)(short|long|long long|)( |)int)|(_BOOL|_Decimal128|_Decimal32|_Decimal64|bool|char|decimal128|decimal32|decimal64|double|enum|FILE|float|float128|float128_t|float64_t|int|int128_t|int16_t|int32_t|int64_t|int8_t|long double|PyObject|string|struct|uint128_t|uint16_t|uint32_t|uint64_t|uint8_t|union|wchar|)|(slint|sllint|ulint|ullint))(\*| \*|\* | \* |))'
+DATATYPES: str = r'((((signed|unsigned|)( |)(short|long|long long|)( |)int)|(_BOOL|_Decimal128|_Decimal32|_Decimal64|bool|char|decimal128|decimal32|decimal64|double|enum|FILE|float|float128|float128_t|float64_t|int|int128_t|int16_t|int32_t|int64_t|int8_t|long double|PyObject|string|struct|uint128_t|uint16_t|uint32_t|uint64_t|uint8_t|union|wchar|))(\*| \*|\* | \* |))'
 
 
 DEVELOPER_NOTE = rgxcompile(r'(//|/\*|/\*\*)( |)(DEBUG|DEPRECATED|DISABLED|FINISH|FIX|FIXME|REPAIR|TESTING|TODEBUG|TODO|TOMV|TORM|XXX)(:| |$)')
