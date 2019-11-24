@@ -67,7 +67,7 @@ override SHRCDIR::=./shrc
 override SRCDIR::=./src
 override XKBDIR::=$(THEMEDIR)/XKB
 override PYCACHE::=$(PYEGGDIR)/__pycache__/ $(SCRIPTSRCDIR)/__pycache__/
-override MACROSPATH::=$(INCDIR)/Foundation.h $(INCDIR)/MACROS.h $(INCDIR)/MACROS2.h $(INCDIR)/MACROS3.h
+override MACROSPATH::=$(INCDIR)/Foundation.h $(INCDIR)/MACROS.h $(INCDIR)/MACROS2.h $(INCDIR)/MACROS3.h $(INCDIR)/MACROS_MATH.h $(INCDIR)/MACROS_MISC.h $(INCDIR)/MACROS_NET.h $(INCDIR)/math_tables.h $(INCDIR)/file_signatures.h $(INCDIR)/fs_constants.h $(INCDIR)/fspaths.h
 
 # Install Paths
 override INSTALLBINDIR::=$(BINDIR)
