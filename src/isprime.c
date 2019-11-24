@@ -4,7 +4,7 @@
 /**
 @brief Check if the given number is prime
 @file isprime.c
-@version 2019.06.05
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,6 +35,10 @@ along with this software.
 
 noreturn int main(rargc, rargv) {
 	TWO_ARGS_REQUIRED_F;
-	puti(islonglongprime((long long)atoll(argv[1])));
+	long long input_num = atoll(argv[1]);
+	if (input_num < 0) {
+		input_num *= -1LL;
+	}
+	puti(isprime((uint64_t)input_num));
 	fast_exit(EXIT_SUCCESS);
 }
