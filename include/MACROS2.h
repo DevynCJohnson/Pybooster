@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS2.h
-@version 2019.10.11
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,1296 +33,6 @@ along with this software.
 DIAG_PUSH
 IGNORE_WMISSING_PROTOTYPES
 IGNORE_WSHADOW
-
-
-/* TIME CONSTANTS MACROS */
-
-
-#ifndef TIME_CONSTANTS_MACROS
-#define TIME_CONSTANTS_MACROS   (1)
-
-
-// SECONDS
-
-/** Nanoseconds per microsecond */
-#define NSEC_PER_USEC   1000ULL
-/** Nanoseconds per millisecond */
-#define NSEC_PER_MSEC   1000000ULL
-/** Nanoseconds per second */
-#define NSEC_PER_SEC   1000000000ULL
-/** Microseconds per second */
-#define USEC_PER_SEC   1000000ULL
-/** Number of seconds in a anomalistic month */
-#define SECONDS_IN_ANOMALISTIC_MONTH   2380713.12
-/** Number of seconds in a draconic month */
-#define SECONDS_IN_DRACONIC_MONTH   2351135.808
-/** Number of seconds in a Gregorian month */
-#define SECONDS_IN_GREGORIAN_MONTH   2629746
-/** Number of seconds in a Julian month */
-#define SECONDS_IN_JULIAN_MONTH   2629800
-/** Number of seconds in a sidereal month */
-#define SECONDS_IN_SIDEREAL_MONTH   2360591.6
-/** Number of seconds in a synodic month */
-#define SECONDS_IN_SYNODIC_MONTH   2551442.8
-/** Number of seconds in a tropical month */
-#define SECONDS_IN_TROPICAL_MONTH   2360584.512
-/** Number of seconds in an anomalistic year */
-#define SECONDS_IN_ANOMALISTIC_YEAR   31558432.5504
-/** Number of seconds in a draconic year */
-#define SECONDS_IN_DRACONIC_YEAR   29947974.5563
-/** Number of seconds in a Gregorian year */
-#define SECONDS_IN_GREGORIAN_YEAR   31556952
-/** Number of seconds in a Julian year */
-#define SECONDS_IN_JULIAN_YEAR   31557600
-/** Number of seconds in a lunar year */
-#define SECONDS_IN_LUNAR_YEAR   30617568
-/** Number of seconds in a sidereal year */
-#define SECONDS_IN_SIDEREAL_YEAR   31558149.504
-/** Number of seconds in a tropical year */
-#define SECONDS_IN_TROPICAL_YEAR   31556925.445
-#ifndef AVGSECSPERYEAR
-/** The Gregorian year averages 365.2425 days, which is 31556952 seconds */
-#   define AVGSECSPERYEAR   31556952L
-#endif
-
-
-// DAYS
-
-/** Number of days in a full month */
-#define DAYS_IN_FULL_MONTH   30
-/** Number of days in a hollow month */
-#define DAYS_IN_HOLLOW_MONTH   29
-/** Number of days in a anomalistic month */
-#define DAYS_IN_ANOMALISTIC_MONTH   27.55455
-/** Number of days in a draconic month */
-#define DAYS_IN_DRACONIC_MONTH   27.21222
-/** Number of days in a sidereal month */
-#define DAYS_IN_SIDEREAL_MONTH   27.32166
-/** Number of days in a synodic month */
-#define DAYS_IN_SYNODIC_MONTH   29.53059
-/** Number of days in a tropical month */
-#define DAYS_IN_TROPICAL_MONTH   27.32158
-/** Number of days in 4 years */
-#define DAYS_PER_4Y   1461
-/** Number of days in 100 years */
-#define DAYS_PER_100Y   36524
-/** Number of days in 400 years */
-#define DAYS_PER_400Y   146097
-
-
-// YEARS
-
-#ifndef YEARSPERREPEAT
-/** Years before a Gregorian repeat */
-#   define YEARSPERREPEAT   400
-#endif
-
-
-// MISCELLANEOUS TIME CONSTANTS
-
-#define LEAPOCH   (951868800LL)
-#define CLOCKS_PER_SEC   (1000000L)
-#define CLK_TCK   CLOCKS_PER_SEC
-
-static const UNUSED int days_per_month[16] = { 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 0, 0, 0 };
-static const UNUSED int secs_through_month[16] = { 0, 2678400, 5097600, 7776000, 10368000, 13046400, 15638400, 18316800, 20995200, 23587200, 26265600, 28857600, 0, 0, 0, 0 };
-
-
-#endif  // TIME_CONSTANTS_MACROS
-
-
-/* ALIGNMENT (<stdalign.h>) */
-
-
-#if (!(defined(STDALIGN_H) || defined(__STDALIGN_H) || defined(__STDALIGN_H_) || defined(_ALIGNOF_H)))  // https://www.gnu.org/software/gnulib/manual/html_node/stdalign_002eh.html & https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxbd00/stdalign.htm
-#define STDALIGN_H   (1)
-#define _STDALIGN_H   (1)
-#define __STDALIGN_H   (1)
-#define __STDALIGN_H_   (1)
-#define _ALIGNOF_H   (1)
-
-
-#ifdef __BIGGEST_ALIGNMENT__
-#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
-#elif (!LDBL_EQ_DBL)
-#   define __BIGGEST_ALIGNMENT__   (16)
-#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
-#else
-#   define __BIGGEST_ALIGNMENT__   (16)
-#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
-#endif
-#ifndef LARGEST_ALIGNMENT
-#   define LARGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
-#endif
-#ifndef TCB_ALIGNMENT
-#   define TCB_ALIGNMENT   SIZEOF_DOUBLE
-#endif
-#ifndef IS_BIGGEST_ALIGNMENT_8
-#   define IS_BIGGEST_ALIGNMENT_8   (__BIGGEST_ALIGNMENT__ == 8)
-#endif
-#ifndef IS_BIGGEST_ALIGNMENT_16
-#   define IS_BIGGEST_ALIGNMENT_16   (__BIGGEST_ALIGNMENT__ == 16)
-#endif
-#ifndef IS_BIGGEST_ALIGNMENT_32
-#   define IS_BIGGEST_ALIGNMENT_32   (__BIGGEST_ALIGNMENT__ == 32)
-#endif
-#ifndef IS_BIGGEST_ALIGNMENT_64
-#   define IS_BIGGEST_ALIGNMENT_64   (__BIGGEST_ALIGNMENT__ == 64)
-#endif
-
-#define alignto(n, d)   ((((n) + (d) - 1) / (d)) * (d))
-
-
-// OFFSETOF
-
-#undef offsetof
-#ifndef offsetof
-/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
-#   define offsetof(type, member)   ((size_t)(&((type*)0)->member))  // (__builtin_offsetof(type, member))
-#endif
-#ifndef ioffsetof
-/** Evaluates to the offset (in bytes as int) of a given member within a struct or union */
-#   define ioffsetof(type, member)   ((int)(ssize_t)(&((type*)0)->member))  // (__builtin_offsetof(type, member))
-#endif
-/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
-#define __offsetof(type, member)   offsetof((type), (member))
-/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
-#define OFFSETOF(type, member)   offsetof((type), (member))
-/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
-#define _offsetof(type, member)   offsetof((type), (member))
-/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
-#define __offsetof__(type, member)   offsetof((type), (member))
-
-
-// CONTAINER_OF
-
-#if IS_GNUC
-/** Used to retrieve an enclosing structure from a pointer to a nested element */
-#   define container_of(ptr, type, member)   __extension__ ({ do { const typeof(((type*)0)->member) *__mptr = (ptr); (type*)((char*)__mptr - offsetof(type, member)); } while (0x0) })
-#else
-/** Used to retrieve an enclosing structure from a pointer to a nested element */
-#   define container_of(ptr, type, member)   ((type*)((char*)(1 ? (ptr) : &((type*)0)->member) - offsetof(type, member)))
-#endif  // container_of
-#ifndef SIZEOF
-/** Get the size of any member of a typedef without having to actually declare a variable of that datatype */
-#   define SIZEOF(obj, member)   ((size_t)sizeof(((obj*)0)->member))
-#endif
-
-
-// ALIGNOF
-
-#if (IS_STDC11 && IS_NOT_CPLUSPLUS && IS_NOT_GNUC)
-/** Return the natural alignment (in bytes) for the given type */
-#   define __alignof(_type)   _Alignof(_type)
-#elif IS_GNUC
-/** Return the natural alignment (in bytes) for the given type */
-#   define __alignof(_type)   __alignof__(_type)
-#elif (defined(OSHPUX) || defined(OSAIX))
-/** Work around a HP-UX 10.20 cc bug and AIX 3.2.5 xlc bug with enums constants defined as offsetof values */
-#   define __alignof(_type)   ((sizeof(_type) <= 4) ? 4 : 8)
-#else
-/** Return the natural alignment (in bytes) for the given type */
-#   define __alignof(_type)   (sizeof(struct { char __x; _type __y; }) - sizeof(_type))
-#endif
-#if IS_NOT_CPLUSPLUS
-#   if (IS_STDC_BELOW_C11 && IS_GNUC)
-/** Return the natural alignment (in bytes) for the given type */
-#      define _Alignof(_type)    __alignof(_type)
-#   endif
-#   ifndef alignof
-/** Return the natural alignment (in bytes) for the given type */
-#      define alignof(_type)   __alignof(_type)
-#   endif
-#endif
-/** Return the natural alignment (in bytes) for the given type */
-#define sa_alignof(_type)   _Alignof(_type)
-/** Return the natural alignment (in bytes) for the given type */
-#define alignof_type(_type)   _Alignof(_type)
-#undef __IBM__ALIGNOF__
-/** Return the natural alignment (in bytes) for the given type */
-#define __IBM__ALIGNOF__(_type)   _Alignof(_type)
-/** Return the natural alignment (in bytes) for the given type */
-#define IBM__ALIGNOF(_type)   _Alignof(_type)
-#if IS_NOT_CPLUSPLUS
-/** Return the natural alignment (in bytes) for the given type */
-#   define alignment_of(_type)   _Alignof(_type)
-#endif
-#define __alignof_is_defined   (1)
-
-
-// ALIGNAS
-
-#if IS_NOT_CPLUSPLUS
-#   if IS_STDC_BELOW_C11
-/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
-#      define _Alignas(_type)    aligned(_type)
-#   endif
-#   if (!(defined(alignas) || defined(__alignas_is_defined)))
-/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
-#      define alignas(_type)   _Alignas(_type)
-#   endif
-#endif
-/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
-#define sa_alignas(_type)   alignoas(_type)
-#define __alignas_is_defined   (1)
-
-
-// ALIGNOF_SLOT
-
-#if IS_CPLUSPLUS
-	template <class type> struct alignof_helper { char __slot1; type __slot2; };
-/** Determine the alignment of a structure slot (field) of a given type at compile time */
-#   define alignof_slot(type)   offsetof(alignof_helper<type>, __slot2)
-#else
-/** Determine the alignment of a structure slot (field) of a given type at compile time */
-#   define alignof_slot(type)   offsetof(struct { char __slot1; type __slot2; }, __slot2)
-#endif  // alignof_slot
-#define __alignof_slot_is_defined   1
-
-
-// STRIDEOF
-
-#define strideof(obj)   sizeof(obj)
-
-
-// BASEOF
-
-#define BASEOF(ptr, str_type, field)   ((struct str_type*)((char*)ptr - offsetof(str_type, field)))
-
-
-// UNALIGNED
-
-#define UNALIGNED(x, y)   (((unsigned long)x & (SIZEOF_LONG - 1)) ^ ((unsigned long)y & (SIZEOF_LONG - 1)))
-
-
-/** The increment that guarantees room for a magic word must be >= BYTES_PER_INT and a multiple of sa_alignment_max */
-#define sa_increment   (((BYTES_PER_INT + sa_alignment_max - 1) / sa_alignment_max) * sa_alignment_max)
-#ifndef _ALIGNBYTES
-#   ifdef __ALIGNBYTES
-#      define _ALIGNBYTES   __ALIGNBYTES
-#   else
-#      define _ALIGNBYTES   7
-#   endif
-#endif
-#ifndef ALIGNBYTES
-#   define ALIGNBYTES   _ALIGNBYTES
-#endif
-#ifndef _ALIGN
-#   define _ALIGN(p)   (((unsigned long long)(p) + (unsigned long long)(_ALIGNBYTES)) & (unsigned long long)(~(_ALIGNBYTES)))
-#endif
-#ifndef ALIGN
-#   define ALIGN(p)   _ALIGN((p))
-#endif
-#define ALIGNBYTES32   31
-#define ALIGN32(p)   ((size_t)((char*)(size_t)(p) + 31) & 0xffffffe0)
-#define ALIGNBYTES64   63
-#define ALIGN64(p)   ((size_t)((char*)(size_t)(p) + 63) & 0xffffffc0)
-/** Align a value by rounding down to closest size; Using size of 4096, we get this behavior: {4095, 4096, 4097} = {0, 4096, 4096} */
-#define ALIGN_DOWN(base, size)   ((base) & (-((typeof(base))(size))))
-/** Align a value by rounding up to closest size; Using size of 4096, we get this behavior: {4095, 4096, 4097} = {4096, 4096, 8192} */
-#define ALIGN_UP(base, size)   ALIGN_DOWN((base) + (size) - 1, (size))
-/** Same as ALIGN_DOWN(), but automatically casts when base is a pointer */
-#define PTR_ALIGN_DOWN(base, size)   ((typeof(base)) ALIGN_DOWN((uintptr_t)(base), (size)))
-/** Same as ALIGN_UP(), but automatically casts when base is a pointer */
-#define PTR_ALIGN_UP(base, size)   ((typeof(base)) ALIGN_UP((uintptr_t)(base), (size)))
-#ifndef IS_P2ALIGNED
-#   define IS_P2ALIGNED(v, a)   ((((uintptr_t)(v)) & ((uintptr_t)(a) - 1)) == 0)
-#endif
-#ifndef P2ROUNDUP
-#   define P2ROUNDUP(x, align)   (-(-((uintptr_t)(x)) & (-((uintptr_t)align))))
-#endif
-#ifndef P2ROUNDDOWN
-#   define P2ROUNDDOWN(x, align)   (((uintptr_t)(x)) & (~((uintptr_t)(align) - 1)))
-#endif
-
-
-// CLUSTERING OF HARDWARE PAGES
-
-#define RHSDIM   1
-#define BALANCETH   2
-#define RBDIM   8
-#define RBSIZE   64
-#define SLACKNESS   8
-#define BREAKEVEN   4
-#define MINNNZTOPAR   128
-#define BREAKNRB   1
-#define MINNRBTOPAR   32
-#define CLSIZE   64
-#define CLBYTES   (CLSIZE * NBPG)
-/** PGOFSET for clusters */
-#define CLOFSET   (CLSIZE * NBPG - 1)
-#define claligned(x)   ((((int)(x)) & CLOFSET) == 0)
-#define CLOFF   CLOFSET
-#define CLSHIFT   (PGSHIFT + CLSIZELOG2)
-#if (CLSIZE == 1)
-#   define clbase(i)   (i)
-#   define clrnd(i)   (i)
-#else
-/** Give the base virtual address (first of CLSIZE) */
-#   define clbase(i)   ((i) & (~(CLSIZE - 1)))
-/** Round a number of clicks up to a whole cluster */
-#   define clrnd(i)   (((i) + (CLSIZE - 1)) & (~(CLSIZE - 1)))
-#endif
-/** Clist block size; must be a power of 2 */
-#define CBLOCK   64
-/** bytes/cblock */
-#define CBQSIZE   (CBLOCK / NBBY)
-/** Clist rounding */
-#define CROUND   (CBLOCK - 1)
-/** Units of memory less or equal to MAXALLOCSAVE will permanently allocate physical memory; requests for these size pieces of memory are quite fast; Allocations greater than MAXALLOCSAVE must always allocate and free physical memory; requests for these size allocations should be done infrequently as they will be slow */
-#define MAXALLOCSAVE   (2 * CLBYTES)
-
-
-#if (!(defined(_ALIGN_64_BIT_H) || defined(_ALIGN_64_BIT_H_)))  // GET 64-BIT STRUCT ALIGNMENT
-#define ALIGN_64_BIT_H   (1)
-#define _ALIGN_64_BIT_H   (1)
-#define _ALIGN_64_BIT_H_   (1)
-
-
-typedef struct __longlong_aligned { long long x; }   longlong_aligned_t;
-/** Simple macro for getting the 64-bit struct arch alignment */
-#define __ARCH_64BIT_ALIGNMENT__   ATTR_ALIGN_TO(struct __longlong_aligned)
-/** Simple macro for getting the 64-bit struct arch alignment */
-#define ARCH_64BIT_ALIGNMENT   __ARCH_64BIT_ALIGNMENT__
-/** Simple macro for getting the 64-bit struct arch alignment */
-#define _64BIT_ALIGNMENT   __ARCH_64BIT_ALIGNMENT__
-
-
-#endif  // ALIGN_64_BIT_H
-
-
-// MAX_ALIGN_T
-
-#ifndef _GCC_MAX_ALIGN_T
-#   define _GCC_MAX_ALIGN_T   (1)
-#   define __CLANG_MAX_ALIGN_T_DEFINED   (1)
-#   ifdef MICROSOFT_VISUAL  // max_align_t
-/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
-typedef double   max_align_t;
-#   elif (SUPPORTS_LONG_DOUBLE && (defined(__APPLE__) || IS_GNUC))
-/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
-typedef long double   max_align_t;
-#   elif (defined(__BIGGEST_ALIGNMENT__) && (__BIGGEST_ALIGNMENT__ == 8))
-/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
-typedef double   max_align_t;
-#   elif (SUPPORTS_LONG_DOUBLE && defined(__BIGGEST_ALIGNMENT__) && (__BIGGEST_ALIGNMENT__ == BYTES_PER_LONG_DOUBLE))
-/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
-typedef long double   max_align_t;
-#   else
-/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
-typedef struct max_align {
-	align_ldbl long long __clang_max_align_nonce1;
-	align_ldbl long double __clang_max_align_nonce2;
-} max_align_t;
-#   endif  // max_align_t
-#endif  // MAX_ALIGN_T
-
-
-/** The macro SAFE_CAST_PTR() casts one type of pointer to another type, making sure the data the pointer is referencing is the same size; If it is not, it will cause a division by zero compiler warning */
-#define __SAFE_CAST_PTR(type, var)   (((type)(var)) + (0 / (sizeof(*var) == sizeof(*type 0) ? 1 : 0)))
-/** The macro SAFE_CAST_PTR() casts one type of pointer to another type, making sure the data the pointer is referencing is the same size; If it is not, it will cause a division by zero compiler warning */
-#define SAFE_CAST_PTR(type, var)   __SAFE_CAST_PTR((type), (var))
-#define __CAST_PTR(type, var)   ((type)(var))
-#define CAST_PTR(type, var)   ((type)(var))
-
-
-#if (!(defined(STRUCT_H) || defined(_STRUCT_H) || defined(_STRUCT_H_)))
-#define STRUCT_H   (1)
-#define _STRUCT_H   (1)
-#define _STRUCT_H_   (1)
-
-
-/** Offset of the field in the structure */
-#define fldoff(name, field)   ((int)&(((struct name*)0)->field))
-/** Size of the field in the structure */
-#define fldsiz(name, field)   (sizeof(((struct name*)0)->field))
-/** Address of the structure from a field */
-#define strbase(name, addr, field)   ((struct name*)((char*)addr - fldoff(name, field)))
-
-
-#endif  // STRUCT_H
-
-
-#endif  // STDALIGN_H
-
-
-/* OBJECT STACK MACROS (<obstack.h>) */
-
-
-#if (!(defined(OBSTACK_H) || defined(_OBSTACK_H) || defined(_OBSTACK_H_)))  // https://en.wikipedia.org/wiki/Obstack
-#define OBSTACK_H   (1)
-#define _OBSTACK_H   (1)
-#define _OBSTACK_H_   (1)
-
-
-typedef char*   PTR_CHAR_TYPE;
-typedef int*   PTR_INT_TYPE;
-typedef long*   PTR_LONG_TYPE;
-/** If B is the base of an object addressed by P, return the result of aligning P to the next multiple of A + 1; B and P must be of type char *; A + 1 must be a power of 2 */
-#define __BPTR_ALIGN(B, P, A)   ((B) + (((P) - (B) + (A)) & (~(A))))
-/** Similar to _BPTR_ALIGN (B, P, A), except optimize the common case where pointers can be converted to integers, aligned as integers, and converted back again; If PTR_INT_TYPE is narrower than a pointer (e.g., the AS/400), play it safe and compute the alignment relative to B; Otherwise, use the faster strategy of computing the alignment relative to 0 */
-#define __PTR_ALIGN(B, P, A)   __BPTR_ALIGN((((sizeof(PTR_INT_TYPE)) < BYTES_PER_POINTER) ? (B) : (char*)0), P, A)
-
-typedef struct _obstack_chunk {
-	struct _obstack_chunk* prev;  //!< Address of prior chunk or `NULL`
-	char* limit;  //!< 1 past end of this chunk
-	char contents[4];  //!< Objects begin here
-	int pad0;  //!< Padding
-} obstack_chunk_t;
-
-DIAG_PUSH
-IGNORE_WPADDED
-
-/** Control current object in current chunk */
-typedef struct obstack {
-	struct _obstack_chunk* chunk;  //!< Address of current struct obstack_chunk
-	char* object_base;  //!< Address of the object being built
-	char* next_free;  //!< Where to add next char to current object
-	char* chunk_limit;  //!< Address of char after current chunk
-	union obstack_temp_union {
-		PTR_INT_TYPE tempint;
-		void* tempptr;
-	} temp;  //!< Temporary object for some macros
-	struct _obstack_chunk* (*chunkfun)(void*, long);
-	void (*freefun)(void*, struct _obstack_chunk*);
-	void* extra_arg;  //!< First arg for chunk alloc/dealloc funcs
-	long chunk_size;  //!< Preferred size to allocate chunks
-	int alignment_mask;  //!< Mask of alignment for each object
-	unsigned use_extra_arg:1;  //!< Chunk alloc/dealloc funcs take extra arg
-	unsigned maybe_empty_object:1;  //!< There is a possibility that the current chunk contains a zero-length object; This prevents freeing the chunk if a larger chunk is allocated to replace it
-	unsigned alloc_failed:1;  //!< No longer used, but retained for binary compatibility
-} obstack_t;
-
-DIAG_POP
-
-#ifndef __obstack_free
-#   define __obstack_free   obstack_free
-#endif
-
-/** Pointer to beginning of object being allocated or to be allocated next; Note that this might not be the final address of the object because a new chunk might be needed to hold the final size */
-#define obstack_base(h)   ((void*)(h)->object_base)
-/** Size for allocating ordinary chunks */
-#define obstack_chunk_size(h)   ((h)->chunk_size)
-/** Pointer to next byte not yet allocated in current chunk */
-#define obstack_next_free(h)   ((h)->next_free)
-/** Mask specifying low bits that should be clear in address of an object */
-#define obstack_alignment_mask(h)   ((h)->alignment_mask)
-/** To prevent prototype warnings provide complete argument list */
-#define obstack_init(h)   _obstack_begin((h), 0, 0, (void*(*)(long))obstack_chunk_alloc, (void (*)(void*))obstack_chunk_free)
-#define obstack_begin(h, size)   _obstack_begin ((h), (size), 0, (void*(*)(long))obstack_chunk_alloc, (void (*)(void*))obstack_chunk_free)
-#define obstack_specify_allocation(h, size, alignment, chunkfun, freefun)   _obstack_begin ((h), (size), (alignment), (void*(*)(long))(chunkfun), (void (*)(void*))(freefun))
-#define obstack_specify_allocation_with_arg(h, size, alignment, chunkfun, freefun, arg)   _obstack_begin_1((h), (size), (alignment), (void*(*)(void*, long))(chunkfun), (void (*)(void*, void*))(freefun), (arg))
-#define obstack_chunkfun(h, newchunkfun)   ((h)->chunkfun = (struct _obstack_chunk* (*)(void*, long))(newchunkfun))
-#define obstack_freefun(h, newfreefun)   ((h)->freefun = (void(*)(void*, struct _obstack_chunk*))(newfreefun))
-#define obstack_1grow_fast(h, achar)   (*((h)->next_free)++ = (achar))
-#define obstack_blank_fast(h, n)   ((h)->next_free += (n))
-#define obstack_memory_used(h)   _obstack_memory_used((h))
-
-#if IS_GNUC
-
-#   define obstack_object_size(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (unsigned)(__o->next_free - __o->object_base); } while (0x0)
-#   define obstack_room(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (unsigned)(__o->chunk_limit - __o->next_free); } while (0x0)
-#   define obstack_make_room(OBSTACK, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->chunk_limit - __o->next_free < __len) { _obstack_newchunk(__o, __len); } (void)0; } while (0x0)
-#   define obstack_empty_p(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (__o->chunk->prev == 0 && __o->next_free == __PTR_ALIGN((char*) __o->chunk, __o->chunk->contents,  __o->alignment_mask)); } while (0x0)
-#   define obstack_grow(OBSTACK, where, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->next_free + __len > __o->chunk_limit) { _obstack_newchunk(__o, __len); } memcpy_no_output(__o->next_free, where, __len); __o->next_free += __len; (void)0; } while (0x0)
-#   define obstack_grow0(OBSTACK, where, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->next_free + __len + 1 > __o->chunk_limit) { _obstack_newchunk(__o, __len + 1); } memcpy (__o->next_free, where, __len); __o->next_free += __len; *(__o->next_free)++ = 0; (void)0; } while (0x0)
-#   define obstack_1grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + 1 > __o->chunk_limit) { _obstack_newchunk(__o, 1); } obstack_1grow_fast(__o, datum); (void)0; } while (0x0)
-#   define obstack_ptr_grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + SIZEOF_VOID_PTR > __o->chunk_limit) { _obstack_newchunk(__o, SIZEOF_VOID_PTR); } obstack_ptr_grow_fast(__o, datum); } while (0x0)
-#   define obstack_int_grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + BYTES_PER_INT > __o->chunk_limit) { _obstack_newchunk(__o, BYTES_PER_INT); } obstack_int_grow_fast(__o, datum); } while (0x0)
-#   define obstack_ptr_grow_fast(OBSTACK, aptr)   do { struct obstack* __o1 = (OBSTACK); void* __p1 = __o1->next_free; *(const void **) __p1 = (aptr); __o1->next_free += SIZEOF_VOID_PTR; (void)0; } while (0x0)
-#   define obstack_int_grow_fast(OBSTACK, aint)   do { struct obstack* __o1 = (OBSTACK); void* __p1 = __o1->next_free; *(int*) __p1 = (aint); __o1->next_free += BYTES_PER_INT; (void)0; } while (0x0)
-#   define obstack_blank(OBSTACK, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->chunk_limit - __o->next_free < __len) { _obstack_newchunk(__o, __len); } obstack_blank_fast (__o, __len); (void)0; } while (0x0)
-#   define obstack_alloc(OBSTACK, length)   do { struct obstack* __h = (OBSTACK); obstack_blank(__h, (length)); obstack_finish (__h); } while (0x0)
-#   define obstack_copy(OBSTACK, where, length)   do { struct obstack* __h = (OBSTACK); obstack_grow(__h, (where), (length)); obstack_finish(__h); } while (0x0)
-#   define obstack_copy0(OBSTACK, where, length)   do { struct obstack* __h = (OBSTACK); obstack_grow0(__h, (where), (length)); obstack_finish(__h); } while (0x0)
-/** The local variable is named __o1 to avoid a name conflict when obstack_blank is called */
-#   define obstack_finish(OBSTACK)   do { struct obstack* __o1 = (OBSTACK); void* __value = (void*) __o1->object_base; if (__o1->next_free == __value) { __o1->maybe_empty_object = 1; } __o1->next_free = __PTR_ALIGN(__o1->object_base, __o1->next_free, __o1->alignment_mask); if (__o1->next_free - (char*) __o1->chunk > __o1->chunk_limit - (char*) __o1->chunk) { __o1->next_free = __o1->chunk_limit; } __o1->object_base = __o1->next_free; __value; } while (0x0)
-#   define obstack_free(OBSTACK, OBJ)   do { struct obstack* __o = (OBSTACK); void* __obj = (OBJ); if (__obj > (void*) __o->chunk && __obj < (void*) __o->chunk_limit)  __o->next_free = __o->object_base = (char*) __obj; else __obstack_free(__o, __obj); } while (0x0)
-
-#else  // Compiler is neither Clang nor GNU-GCC
-
-#   define obstack_object_size(h)   ((unsigned)((h)->next_free - (h)->object_base))
-#   define obstack_room(h)   ((unsigned)((h)->chunk_limit - (h)->next_free))
-#   define obstack_empty_p(h)   ((h)->chunk->prev == 0 && (h)->next_free == __PTR_ALIGN((char*)(h)->chunk, (h)->chunk->contents, (h)->alignment_mask))
-#   define obstack_make_room(h, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0))
-#   define obstack_grow(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint)
-#   define obstack_grow0(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint + 1), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint, *((h)->next_free)++ = 0)
-#   define obstack_1grow(h, datum)  ((((h)->next_free + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), 1), 0) : 0), obstack_1grow_fast(h, datum))
-#   define obstack_ptr_grow(h, datum)   ((((h)->next_free + SIZEOF_POINTER > (h)->chunk_limit) ? (_obstack_newchunk((h), SIZEOF_POINTER), 0) : 0), obstack_ptr_grow_fast (h, datum))
-#   define obstack_int_grow(h, datum)   ((((h)->next_free + BYTES_PER_INT > (h)->chunk_limit) ? (_obstack_newchunk((h), BYTES_PER_INT), 0) : 0), obstack_int_grow_fast (h, datum))
-#   define obstack_ptr_grow_fast(h, aptr)   (((const void**)((h)->next_free += SIZEOF_POINTER))[-1] = (aptr))
-#   define obstack_int_grow_fast(h, aint)   (((int*)((h)->next_free += BYTES_PER_INT))[-1] = (aint))
-#   define obstack_blank(h, length)   ((h)->temp.tempint = (length), (((h)->chunk_limit - (h)->next_free < (h)->temp.tempint) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), obstack_blank_fast (h, (h)->temp.tempint))
-#   define obstack_alloc(h, length)   (obstack_blank((h), (length)), obstack_finish((h)))
-#   define obstack_copy(h, where, length)   (obstack_grow((h), (where), (length)), obstack_finish((h)))
-#   define obstack_copy0(h, where, length)   (obstack_grow0((h), (where), (length)), obstack_finish((h)))
-#   define obstack_finish(h)   (((h)->next_free == (h)->object_base ? (((h)->maybe_empty_object = 1), 0) : 0), (h)->temp.tempptr = (h)->object_base, (h)->next_free = __PTR_ALIGN((h)->object_base, (h)->next_free, (h)->alignment_mask), (((h)->next_free - (char*)(h)->chunk > (h)->chunk_limit - (char*)(h)->chunk) ? ((h)->next_free = (h)->chunk_limit) : 0), (h)->object_base = (h)->next_free, (h)->temp.tempptr)
-#   define obstack_free(h, obj)   ((h)->temp.tempint = (char*)(obj) - (char*)(h)->chunk, ((((h)->temp.tempint > 0 && (h)->temp.tempint < (h)->chunk_limit - (char*)(h)->chunk)) ? (void)((h)->next_free = (h)->object_base = (h)->temp.tempint + (char*)(h)->chunk) : __obstack_free(h, (h)->temp.tempint + (char*)(h)->chunk)))
-
-#endif  // GNUC
-
-
-#endif  // OBSTACK_H
-
-
-/* STDARG (<stdarg.h>, <varargs.h>, & <vadefs.h>) */
-
-
-#if (!(defined(STDARG_H) || defined(_STDARG_H) || defined(_STDARG_H_) || defined(_VARARGS_H) || defined(__VARARGS_H) || defined(__clang_vadefs_h) || defined(_VADEFS_H) || defined(_INC_STDARG) || defined(_INC_VADEFS)))  // http://www.cplusplus.com/reference/cstdarg/ & http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdarg.h.html
-#define STDARG_H   (1)
-#define _STDARG_H   (1)
-#define _STDARG_H_   (1)
-#define __STDARG_H_   (1)
-#define SYS_STDARG_H   (1)
-#define _SYS_STDARG_H   (1)
-#define _SYS_STDARG_H_   (1)
-#define VARARGS_H   (1)
-#define _VARARGS_H   (1)
-#define _VARARGS_H_   (1)
-#define __VARARGS_H   (1)
-#define _VADEFS_H   (1)
-#define __clang_vadefs_h   (1)
-#define _INC_STDARG   (1)
-#define _INC_VADEFS   (1)
-#define _UCLIBC_VA_COPY_H   (1)
-
-
-#ifndef MAXARGS
-/** Maximum number of function arguments */
-#   define MAXARGS   (31)
-#endif
-#ifndef MAX_ARGS
-/** Maximum number of function arguments */
-#   define MAX_ARGS   MAXARGS
-#endif
-/** Flag used in struct __args -> flags */
-#define A_ALLOCATED   (1)
-
-
-// VA_LIST
-
-#if (IS_GNUC && (!defined(__GNUC_VA_LIST)))
-/** Type to hold information about variable arguments */
-typedef __builtin_va_list   va_list;
-#elif defined(__VMS__)
-/** Type to hold information about variable arguments */
-typedef char*   va_list;
-#else
-#   ifdef ARCHX86_64
-typedef struct va_struct {
-   uint32_t gp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available general purpose argument register is saved. If all the argument registers are exhausted, then it is set to the value `48`.
-   uint32_t fp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available ﬂoating point argument register is saved. If all the argument registers are exhausted, then it is set to the value `304`.
-   void* overflow_arg_area;  //!< Pointer used to fetch arguments passed on the stack. It is initialized with the address of the ﬁrst argument passed on the stack (if any). It is always updated to point to the start of the next argument on the stack.
-   void* reg_save_area;  //!< Pointer to the start of the register save area
-} va_list[1];
-#   else
-typedef uintptr_t   va_list;
-#   endif
-#endif
-#define __GNUC_VA_LIST   1
-#undef __need___va_list
-#define __DEFINED___isoc_va_list   (1)
-#define __DEFINED_va_list   (1)
-/** Type to hold information about variable arguments */
-#define __gnuc_va_list   va_list
-/** Type to hold information about variable arguments */
-#define p9va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define _G_va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define _IO_va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define gnuc_va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define __VALIST   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define __va_list   va_list
-/** Type to hold information about variable arguments */
-#define isoc_va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define __isoc_va_list   __gnuc_va_list
-/** Type to hold information about variable arguments */
-#define __va_ptr_t   __gnuc_va_list
-#define VEC(...)   (const unsigned char[]){ __VA_ARGS__ }
-/** Show list of items in __VA_ARGS__ */
-#define showlist(...)   puts(#__VA_ARGS__)
-
-
-// VA_START, VA_END, & VA_ARG
-
-/** Retrieve next argument */
-#define va_arg(v, datatype)   __builtin_va_arg(v, datatype)
-
-#if IS_GNUC
-#   define __builtin_stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
-#elif (!defined(__builtin_va_start))
-#   define __builtin_va_start(v, argnum)   __builtin_stdarg_start((v), (argnum))
-#endif
-/** Initialize a variable argument list */
-#define va_start(v, argnum)   __builtin_va_start((v), (argnum))
-/** Initialize a variable argument list */
-#define stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
-/** Initialize a variable argument list */
-#define _stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
-/** Initialize a variable argument list */
-#define _va_start(v, argnum)   __builtin_va_start((v), (argnum))
-/** Initialize a variable argument list */
-#define __va_start(v, argnum)   __builtin_va_start((v), (argnum))
-/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
-#define va_end(v)   __builtin_va_end((v))
-/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
-#define _va_end(v)   __builtin_va_end((v))
-/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
-#define __va_end(v)   __builtin_va_end((v))
-
-
-// VA_COPY
-
-/** Copy variable argument list */
-#define va_copy(dest, src)   (*(dest) = *(src))  // __builtin_va_copy((dest), (src))
-/** Copy variable argument list */
-#define __builtin_va_copy(dest, src)   (*(dest) = *(src))
-/** Copy variable argument list */
-#define _va_copy(dest, src)   (*(dest) = *(src))
-/** Copy variable argument list */
-#define __va_copy(dest, src)   (*(dest) = *(src))
-/** Copy variable argument list */
-#define gl_va_copy(dest, src)   (*(dest) = *(src))
-
-
-// MSVC COMPATIBILITY
-
-#ifndef __ms_va_list
-#   if (defined(ARCHX86_64) && IS_GNUC)
-#      define __ms_va_list   __builtin_ms_va_list
-#      define __ms_va_start(list, arg)   __builtin_ms_va_start((list), (arg))
-#      define __ms_va_end(list)   __builtin_ms_va_end((list))
-#      define __ms_va_copy(dest, src)   __builtin_ms_va_copy((dest), (src))
-#   else
-#      define __ms_va_list   va_list
-#      define __ms_va_start(list, arg)   va_start((list), (arg))
-#      define __ms_va_end(list)   va_end((list))
-#      define __ms_va_copy(dest, src)   (*(dest) = *(src))
-#   endif
-#endif
-
-
-// APPLY_ARGS & GET_ARG_POINTER
-
-#if IS_GNUC
-/** Returns a pointer to data describing how to perform a call with the same arguments as are passed to the current function */
-#   define apply_args()   (void*)__builtin_apply_args()
-/** Returns a pointer to data describing how to perform a call with the same arguments as are passed to the current function */
-#   define get_arg_pointer()   (void*)__builtin_apply_args()
-#endif
-
-
-extern UNUSED char* argv0;
-
-
-#define ARGBEGIN   for ((void)(argv0 || (argv0 = *argv)), argv++, argc--; argv[0] && (argv[0][0] == '-') && argv[0][1]; argc--, argv++) { char *_args, *_argt; Rune _argc; _args = &argv[0][1]; if ((_args[0] == '-') && (_args[1] == 0)) { argc--; argv++; break; } _argc = 0; while (*_args && (_args += chartorune(&_argc, _args))) { switch (_argc) }
-#define ARGEND   _argt = 0; }
-#define ARGF()   (_argt = _args, _args = "", (*_argt ? _argt : argv[1] ? (argc--, *++argv) : 0))
-#define EARGF(x)   (_argt = _args, _args = "", (*_argt ? _argt : argv[1] ? (argc--, *++argv) : ((x), abort(), (char*)0)))
-
-
-#endif  // STDARG_H
-
-
-/* KERNEL DATATYPES */
-
-
-#if (!(defined(BITS_KERNEL_TYPES_H) || defined(_BITS_KERNEL_TYPES_H) || defined(_BITS_KERNEL_TYPES_H_)))
-#define BITS_KERNEL_TYPES_H   (1)
-#define _BITS_KERNEL_TYPES_H   (1)
-#define _BITS_KERNEL_TYPES_H_   (1)
-
-
-#if (defined(ARCHALPHA) && (!(defined(ALPHA_POSIX_TYPES_H) || defined(_ALPHA_POSIX_TYPES_H) || defined(_ALPHA_POSIX_TYPES_H_))))
-#define ALPHA_POSIX_TYPES_H   (1)
-#define _ALPHA_POSIX_TYPES_H   (1)
-#define _ALPHA_POSIX_TYPES_H_   (1)
-
-
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned int   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned int   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef long   __kernel_loff_t;
-typedef int   __kernel_pid_t;
-typedef int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned long   __kernel_sigset_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef __kernel_uid_t   __kernel_uid32_t;
-typedef __kernel_gid_t   __kernel_gid32_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHARM) && (!(defined(_ARCH_ARM_POSIX_TYPES_H) || defined(_ARCH_ARM_POSIX_TYPES_H_) || defined(__ARCH_ARM_POSIX_TYPES_H))))
-#define _ARCH_ARM_POSIX_TYPES_H   (1)
-#define _ARCH_ARM_POSIX_TYPES_H_   (1)
-#define __ARCH_ARM_POSIX_TYPES_H   (1)
-
-
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid_t;
-typedef unsigned short   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef long long   __kernel_loff_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHBLACKFIN) && (!(defined(__ARCH_BFIN_POSIX_TYPES_H) || defined(_ARCH_BFIN_POSIX_TYPES_H) || defined(_ARCH_BFIN_POSIX_TYPES_H_))))
-#define __ARCH_BFIN_POSIX_TYPES_H   (1)
-#define _ARCH_BFIN_POSIX_TYPES_H   (1)
-#define _ARCH_BFIN_POSIX_TYPES_H_   (1)
-
-
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef long long   __kernel_loff_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHPARISC) && (!(defined(_ARCH_PARISC_POSIX_TYPES_H) || defined(_ARCH_PARISC_POSIX_TYPES_H_) || defined(__ARCH_PARISC_POSIX_TYPES_H))))
-#define _ARCH_PARISC_POSIX_TYPES_H   (1)
-#define _ARCH_PARISC_POSIX_TYPES_H_   (1)
-#define __ARCH_PARISC_POSIX_TYPES_H   (1)
-
-
-typedef unsigned long   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef int   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_timer_t;
-typedef int   __kernel_clockid_t;
-typedef int   __kernel_daddr_t;
-#   ifdef DATAMODEL_LP64
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-#   else
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-#   endif
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef long long   __kernel_loff_t;
-typedef long long   __kernel_off64_t;
-typedef unsigned long long   __kernel_ino64_t;
-typedef unsigned int   __kernel_old_dev_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHPOWERPC) && (!(defined(_PPC_POSIX_TYPES_H) || defined(_PPC64_POSIX_TYPES_H) || defined(_ASM_POWERPC_POSIX_TYPES_H) || defined(__ASM_POWERPC_POSIX_TYPES_H))))
-#define _PPC_POSIX_TYPES_H   (1)
-#define _PPC64_POSIX_TYPES_H   (1)
-#define _ASM_POWERPC_POSIX_TYPES_H   (1)
-#define __ASM_POWERPC_POSIX_TYPES_H   (1)
-
-
-#   if IS_WORDSIZE_64
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned int   __kernel_ino_t;
-typedef unsigned int   __kernel_nlink_t;
-typedef unsigned int   __kernel_mode_t;
-typedef long   __kernel_off_t;
-typedef long long   __kernel_loff_t;
-typedef int   __kernel_pid_t;
-typedef int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned int   __kernel_old_uid_t;
-typedef unsigned int   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-#   else
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned int   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned int   __kernel_old_uid_t;
-typedef unsigned int   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-#   endif
-typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHITANIUM) && (!(defined(_ASM_IA64_POSIX_TYPES_H) || defined(_ASM_IA64_POSIX_TYPES_H_))))
-#define _ASM_IA64_POSIX_TYPES_H   (1)
-#define _ASM_IA64_POSIX_TYPES_H_   (1)
-
-
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned int   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef long long   __kernel_loff_t;
-typedef int   __kernel_pid_t;
-typedef int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_timer_t;
-typedef int   __kernel_clockid_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned long   __kernel_sigset_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef __kernel_uid_t   __kernel_uid32_t;
-typedef __kernel_gid_t   __kernel_gid32_t;
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned int   __kernel_old_dev_t;
-typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHM68K) && (!(defined(_ARCH_M68K_POSIX_TYPES_H) || defined(_ARCH_M68K_POSIX_TYPES_H_) || defined(__ARCH_M68K_POSIX_TYPES_H))))
-#define _ARCH_M68K_POSIX_TYPES_H   (1)
-#define _ARCH_M68K_POSIX_TYPES_H_   (1)
-#define __ARCH_M68K_POSIX_TYPES_H   (1)
-
-
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid_t;
-typedef unsigned short   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef long long   __kernel_loff_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef struct __kernel_fsid {
-#   ifdef __USE_ALL
-	int val[2];
-#   else
-	int __val[2];
-#   endif
-} __kernel_fsid_t;
-
-
-#elif (defined(ARCHMICROBLAZE) && (!(defined(_ASM_MICROBLAZE_POSIX_TYPES_H) || defined(_ASM_MICROBLAZE_POSIX_TYPES_H) || defined(__ASM_MICROBLAZE_POSIX_TYPES_H))))
-#define _ASM_MICROBLAZE_POSIX_TYPES_H   (1)
-#define _ASM_MICROBLAZE_POSIX_TYPES_H_   (1)
-#define __ASM_MICROBLAZE_POSIX_TYPES_H   (1)
-
-
-typedef unsigned long   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned long   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_timer_t;
-typedef int   __kernel_clockid_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned int   __kernel_old_uid_t;
-typedef unsigned int   __kernel_old_gid_t;
-typedef unsigned int   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
-
-
-#elif (defined(ARCHSPARC) && (!(defined(__ARCH_SPARC_POSIX_TYPES_H) || defined(__ARCH_SPARC64_POSIX_TYPES_H) || defined(__SPARC_POSIX_TYPES_H))))
-#define __ARCH_SPARC_POSIX_TYPES_H   (1)
-#define _ARCH_SPARC_POSIX_TYPES_H   (1)
-#define __ARCH_SPARC64_POSIX_TYPES_H   (1)
-#define _ARCH_SPARC64_POSIX_TYPES_H   (1)
-#define __SPARC_POSIX_TYPES_H   (1)
-#define _SPARC_POSIX_TYPES_H   (1)
-
-
-#   if IS_WORDSIZE_64
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_pid_t;
-typedef int   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned short   __kernel_umode_t;
-typedef unsigned int   __kernel_nlink_t;
-typedef int   __kernel_daddr_t;
-typedef long   __kernel_off_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef __kernel_uid_t   __kernel_uid32_t;
-typedef __kernel_gid_t   __kernel_gid32_t;
-typedef int   __kernel_suseconds_t;
-typedef long long   __kernel_loff_t;
-#   else
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid_t;
-typedef unsigned short   __kernel_gid_t;
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_umode_t;
-typedef short   __kernel_nlink_t;
-typedef long   __kernel_daddr_t;
-typedef long   __kernel_off_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-#   endif
-typedef struct __kernel_fsid {
-#   ifdef __USE_ALL
-	int val[2];
-#   else
-	int __val[2];
-#   endif
-} __kernel_fsid_t;
-
-
-#elif (defined(ARCHSUPERH64) && (!(defined(_ASM_SH64_POSIX_TYPES_H) || defined(_ASM_SH64_POSIX_TYPES_H_) || defined(__ASM_SH64_POSIX_TYPES_H))))
-#define _ASM_SH64_POSIX_TYPES_H   (1)
-#define _ASM_SH64_POSIX_TYPES_H_   (1)
-#define __ASM_SH64_POSIX_TYPES_H   (1)
-
-
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid_t;
-typedef unsigned short   __kernel_gid_t;
-typedef long unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-typedef struct __kernel_fsid {
-#   ifdef __USE_ALL
-	int val[2];
-#   else
-	int __val[2];
-#   endif
-} __kernel_fsid_t;
-
-
-#elif (defined(ARCHSUPERH) && (!(defined(__ASM_SH_POSIX_TYPES_H) || defined(__ASM_SH_POSIX_TYPES_32_H))))
-#define __ASM_SH_POSIX_TYPES_H   (1)
-#define _ASM_SH_POSIX_TYPES_H   (1)
-#define __ASM_SH_POSIX_TYPES_32_H   (1)
-#define _ASM_SH_POSIX_TYPES_32_H   (1)
-
-
-typedef unsigned short   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned short   __kernel_mode_t;
-typedef unsigned short   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned short   __kernel_uid_t;
-typedef unsigned short   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-typedef struct __kernel_fsid {
-#   ifdef __USE_ALL
-	int val[2];
-#   else
-	int __val[2];
-#   endif
-} __kernel_fsid_t;
-
-
-#elif (defined(ARCHXTENSA) && (!(defined(_XTENSA_POSIX_TYPES_H) || defined(_XTENSA_POSIX_TYPES_H_) || defined(__XTENSA_POSIX_TYPES_H))))
-#define _XTENSA_POSIX_TYPES_H   (1)
-#define _XTENSA_POSIX_TYPES_H_   (1)
-#define __XTENSA_POSIX_TYPES_H   (1)
-
-
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned long   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef unsigned short   __kernel_ipc_pid_t;
-typedef unsigned int   __kernel_uid_t;
-typedef unsigned int   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef int   __kernel_timer_t;
-typedef int   __kernel_clockid_t;
-typedef int   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef unsigned int   __kernel_uid32_t;
-typedef unsigned int   __kernel_gid32_t;
-typedef unsigned short   __kernel_old_uid_t;
-typedef unsigned short   __kernel_old_gid_t;
-typedef unsigned short   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-typedef unsigned int   __kernel_dev_t;
-typedef struct __kernel_fsid { int val[2]; }   __kernel_fsid_t;
-
-
-#else
-
-
-#if (!(defined(_ASM_POSIX_TYPES_H) || defined(_ASM_POSIX_TYPES_H_) || defined(__ASM_POSIX_TYPES_H)))
-#define _ASM_POSIX_TYPES_H   (1)
-#define _ASM_POSIX_TYPES_H_   (1)
-#define __ASM_POSIX_TYPES_H   (1)
-
-
-#   if IS_WORDSIZE_64
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned int   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef long   __kernel_ipc_pid_t;
-typedef int   __kernel_uid_t;
-typedef int   __kernel_gid_t;
-typedef unsigned long   __kernel_size_t;
-typedef long   __kernel_ssize_t;
-typedef long   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef long   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef int   __kernel_uid32_t;
-typedef int   __kernel_gid32_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-#   else
-typedef unsigned int   __kernel_dev_t;
-typedef unsigned long   __kernel_ino_t;
-typedef unsigned int   __kernel_mode_t;
-typedef unsigned long   __kernel_nlink_t;
-typedef long   __kernel_off_t;
-typedef int   __kernel_pid_t;
-typedef long   __kernel_ipc_pid_t;
-typedef int   __kernel_uid_t;
-typedef int   __kernel_gid_t;
-typedef unsigned int   __kernel_size_t;
-typedef int   __kernel_ssize_t;
-typedef int   __kernel_ptrdiff_t;
-typedef long   __kernel_time_t;
-typedef long   __kernel_suseconds_t;
-typedef long   __kernel_clock_t;
-typedef long   __kernel_daddr_t;
-typedef char*   __kernel_caddr_t;
-typedef unsigned short   __kernel_uid16_t;
-typedef unsigned short   __kernel_gid16_t;
-typedef int   __kernel_uid32_t;
-typedef int   __kernel_gid32_t;
-typedef __kernel_uid_t   __kernel_old_uid_t;
-typedef __kernel_gid_t   __kernel_old_gid_t;
-typedef __kernel_dev_t   __kernel_old_dev_t;
-typedef long long   __kernel_loff_t;
-#   endif
-typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
-
-
-#endif  // ASM_POSIX_TYPES_H
-
-
-#endif
-
-
-#endif  // BITS_KERNEL_TYPES_H
 
 
 /* DATATYPES (<sys/types.h>, <stdint.h>, <stddef.h>, & MORE) */
@@ -1443,31 +153,6 @@ typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
 #define WCIO_H   (1)
 #define _WCIO_H   (1)
 #define _WCIO_H_   (1)
-
-
-// VOID DATATYPES
-
-/** Void Datatype */
-#define Void_t   void
-/** Void Datatype */
-#define void_t   void
-/** Void Datatype */
-#define VOID   void
-/** Void Pointer Datatype */
-typedef void*   void_ptr_t;
-/** Void Pointer Volatile Datatype */
-typedef volatile void_ptr_t   vvoid_ptr_t;
-/** Void Pointer Datatype */
-typedef void*   ptr_t;
-/** Void Pointer Datatype */
-#define __ptr_t   ptr_t
-typedef void   DB_ENV;
-
-
-// END-OF-FILE DATATYPES
-
-/** End-Of-File */
-#define EOF   (-1)
 
 
 // EXACT-WIDTH FRACTIONAL DATATYPES
@@ -1763,491 +448,6 @@ typedef union uint15 { struct uint15_struct { unsigned short uval15:15; } val15;
 DIAG_POP
 
 
-// SIGNED & UNSIGNED CHAR
-
-#define CHAR_T   char
-#define __CHAR_T   char
-#define CHAR   char
-/** ANSI character */
-#define ANSICHAR   char
-#define schar   signed char
-typedef signed char   schar8_t;
-#ifndef __s_char_defined
-#   define __s_char_defined   (1)
-#   define __s_char   signed char
-#   define s_char   signed char
-#endif
-#define uchar   unsigned char
-#define uchar_t   unsigned char
-#define UCHAR   uchar
-#define p9uchar   uchar
-#define _utfuchar   uchar
-#define utfuchar   uchar
-/** ANSI character */
-#define ANSIUCHAR   unsigned char
-typedef unsigned char   uchar8_t;
-#ifndef __u_char_defined
-#   define __u_char_defined   (1)
-#   define __u_char   unsigned char
-#   define u_char   unsigned char
-#endif
-
-
-// CHAR8_T
-
-#ifdef __CHAR8_TYPE__
-typedef __CHAR8_TYPE__   char8_t;
-#else
-typedef char   char8_t;
-#   define __CHAR8_TYPE__   char8_t
-#endif
-#ifndef CHAR8_TYPE
-#   define CHAR8_TYPE   __CHAR8_TYPE__
-#endif
-#ifndef __char8_t
-#   define __char8_t   __CHAR8_TYPE__
-#endif
-/** An 8-bit code value in UTF-8 format; UnicodeScalarValues 0-0x7f are expressed in UTF-8 format using one UTF8Char with the same value; UnicodeScalarValues above 0x7f are expressed in UTF-8 format using 2-4 UTF8Chars, all with values in the range 0x80-0xf4 (UnicodeScalarValues 0x100-0xffff use two or three UTF8Chars, UnicodeScalarValues 0x10000-0x10ffff use four UTF8Chars) */
-typedef uchar8_t   UTF8Char;
-
-
-// CHAR16_T
-
-#ifdef __CHAR16_TYPE__
-typedef __CHAR16_TYPE__   char16_t;
-#else
-typedef unsigned short   char16_t;
-#   define __CHAR16_TYPE__   char16_t
-#endif
-#ifndef CHAR16_TYPE
-#   define CHAR16_TYPE   char16_t
-#endif
-#ifndef __char16_t
-#   define __char16_t   char16_t
-#endif
-typedef signed short   schar16_t;
-typedef unsigned short   uchar16_t;
-#ifndef __schar16_t
-#   define __schar16_t   schar16_t
-#endif
-#ifndef __s_char16_t
-#   define _s_schar16_t   schar16_t
-#endif
-#ifndef __uchar16_t
-#   define __uchar16_t   uchar16_t
-#endif
-#ifndef _u_char16_t
-#   define _u_char16_t   uchar16_t
-#endif
-/** Alias for "uchar16_t" */
-#define utf16   uchar16_t
-#define utf16_t   uchar16_t
-/** Wide character (as UCS-2) according to ISO/IEC 10646 */
-#define ucs2_t   uchar16_t
-/** A 16-bit Unicode code value in the default UTF-16 format; UnicodeScalarValues 0x10000-0x10ffff are expressed in UTF-16 format using a pair of UTF16Chars - one in the high surrogate range (0xd800-0xdbff) followed by one in the low surrogate range (0xdc00-0xdfff); All of the characters defined in Unicode versions through 3.0 are in the range 0-0xffff and can be expressed using a single UTF16Char */
-typedef uchar16_t   UTF16Char;
-#define UniChar   uchar16_t
-
-
-// CHAR32_T
-
-#ifdef __CHAR32_TYPE__
-typedef __CHAR32_TYPE__   char32_t;
-#else
-typedef unsigned int   char32_t;
-#   define __CHAR32_TYPE__   char32_t
-#endif
-#ifndef CHAR32_TYPE
-#   define CHAR32_TYPE   char32_t
-#endif
-#ifndef __char32_t
-#   define __char32_t   char32_t
-#endif
-typedef signed int   schar32_t;
-#define uchar32_t   char32_t
-#ifndef __schar32_t
-#   define __schar32_t   schar32_t
-#endif
-#ifndef __s_char32_t
-#   define _s_schar32_t   schar32_t
-#endif
-#ifndef __uchar32_t
-#   define __uchar32_t   uchar32_t
-#endif
-#ifndef _u_char32_t
-#   define _u_char32_t   uchar32_t
-#endif
-/** Alias for "uchar32_t" */
-#define utf32   uchar32_t
-/** Alias for "uchar32_t" */
-#define utf32_t   uchar32_t
-/** Wide character (as UCS-4) according to ISO-10646-1 */
-#define ucs4_t   char32_t
-/** Datatype used to manipulate UTF-8 and UTF-32/UCS-4 characters */
-typedef union utf8bytes {
-#   if IS_LITTLE_ENDIAN
-	struct utf8parts { uint8_t byte1, byte2, byte3, byte4; } bytes;
-	struct utf8chars { char byte1, byte2, byte3, byte4; } chars;
-#   else
-	struct utf8parts { uint8_t byte4, byte3, byte2, byte1; } bytes;
-	struct utf8chars { char byte4, byte3, byte2, byte1; } chars;
-#   endif
-	uint32_t whole;
-}   utf8_t;
-typedef uint32_t   TextEncoding;
-/** A complete Unicode character in UTF-32 format, with values from 0 through 0x10ffff (excluding the surrogate range 0xd800-0xdfff and certain disallowed values) */
-typedef uchar32_t   UnicodeScalarValue;
-#define UTF32Char   uchar32_t
-
-
-// CHAR64_T
-
-#ifdef __CHAR64_TYPE__
-typedef __CHAR64_TYPE__   char64_t;
-#else
-typedef uint64_t   char64_t;
-#   define __CHAR64_TYPE__   char64_t
-#endif
-#ifndef CHAR64_TYPE
-#   define CHAR64_TYPE   __CHAR64_TYPE__
-#endif
-#ifndef __char64_t
-#   define __char64_t   __CHAR64_TYPE__
-#endif
-typedef int64_t   schar64_t;
-typedef uint64_t   uchar64_t;
-#ifndef __schar64_t
-#   define __schar64_t   schar64_t
-#endif
-#ifndef __s_char64_t
-#   define _s_schar64_t   schar64_t
-#endif
-#ifndef __uchar64_t
-#   define __uchar64_t   uchar64_t
-#endif
-#ifndef _u_char64_t
-#   define _u_char64_t   uchar64_t
-#endif
-/** Alias for "uchar64_t" */
-#define utf64   uchar64_t
-
-
-// CHAR128_T
-
-#if SUPPORTS_INT128
-
-#ifdef __CHAR128_TYPE__
-typedef __CHAR128_TYPE__   char128_t;
-#else
-typedef uint128_t   char128_t;
-#   define __CHAR128_TYPE__   char128_t
-#endif
-#ifndef CHAR128_TYPE
-#   define CHAR128_TYPE   __CHAR128_TYPE__
-#endif
-#ifndef __char128_t
-#   define __char128_t   __CHAR128_TYPE__
-#endif
-typedef int128_t   schar128_t;
-typedef uint128_t   uchar128_t;
-#ifndef __schar128_t
-#   define __schar128_t   schar128_t
-#endif
-#ifndef __s_char128_t
-#   define _s_schar128_t   schar128_t
-#endif
-#ifndef __uchar128_t
-#   define __uchar128_t   uchar128_t
-#endif
-#ifndef _u_char128_t
-#   define _u_char128_t   uchar128_t
-#endif
-/** Alias for "uchar128_t" */
-#define utf128   uchar128_t
-
-#endif  // SUPPORTS_INT128
-
-
-// WIDE-CHARACTER DATATYPES
-
-#if (!(defined(__DEFINED_mbstate_t) || defined(_MBSTATE_T)))  // mbstate_t
-/** Type that holds the information necessary to maintain the state when converting between sequences of multibyte characters and wide characters */
-typedef struct __mbstate_t { unsigned int __opaque1, __opaque2; }   mbstate_t;
-#   define _mbstate_t   mbstate_t
-#   define _MBSTATE_T   mbstate_t
-#   define __DEFINED_mbstate_t
-#endif  // mbstate_t
-#if (IS_NOT_CPLUSPLUS && (!defined(__DEFINED_wchar_t)))
-#   ifdef __WCHAR_TYPE__
-typedef __WCHAR_TYPE__   wchar_t;
-typedef __WCHAR_TYPE__   gwchar_t;
-#   else
-typedef int   wchar_t;
-typedef int   gwchar_t;
-#      define __WCHAR_TYPE__   wchar_t
-#   endif  // __WCHAR_TYPE__
-#   define __DEFINED_wchar_t   (1)
-#   define ____gwchar_t_defined   (1)
-#endif  // wchar_t
-#if IS_NOT_LINTER
-_Static_assert(((SIZEOF_WCHAR_T == sizeof(wchar_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wchar_t` datatype!");
-#endif
-#define WCHAR   wchar_t
-/** Unicode character */
-#define UNICHAR   wchar_t
-#define __gwchar_t   gwchar_t
-/** State used by a conversion; 0 denotes the initial state */
-typedef unsigned int   state_t;
-#ifndef __DEFINED_wint_t  // wint_t
-#   ifdef __WINT_TYPE__
-typedef __WINT_TYPE__   wint_t;
-#   else
-typedef unsigned int   wint_t;
-#      define __WINT_TYPE__   wint_t
-#   endif
-#   define __DEFINED_wint_t   (1)
-#endif  // wint_t
-#if IS_NOT_LINTER
-_Static_assert(((SIZEOF_WINT_T == sizeof(wint_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wint_t` datatype!");
-#endif
-#define WINT   wint_t
-#ifndef WEOF
-/** Constant expression of type `wint_t` whose value does not correspond to any member of the extended character set; End-Of-File */
-#   define WEOF   ((wint_t)UINT32_MAX)
-#endif
-#define weof   WEOF
-#define WIDE_EOF   WEOF
-#ifndef _WCTRANS_T  // wctype
-/** Scalar type that can hold values which represent locale-specific character mappings */
-typedef const int32_t*   wctrans_t;
-#   define _WCTRANS_T   wctrans_t
-#endif
-#if ((!defined(__DEFINED_wctype_t)) && (!defined(_WCTYPE_T)))  // wctype
-/** Scalar type that can hold values which represent locale-specific character classifications */
-typedef enum wctype {
-	WC_TYPE_INVALID = 0,
-	WC_TYPE_ALNUM,
-	WC_TYPE_ALPHA,
-	WC_TYPE_BLANK,
-	WC_TYPE_CNTRL,
-	WC_TYPE_DIGIT,
-	WC_TYPE_GRAPH,
-	WC_TYPE_LOWER,
-	WC_TYPE_PRINT,
-	WC_TYPE_PUNCT,
-	WC_TYPE_SPACE,
-	WC_TYPE_UPPER,
-	WC_TYPE_XDIGIT,
-	WC_TYPE_MAX
-} wctype_t;
-#   define _WCTYPE_T   wctype_t
-#   define __DEFINED_wctype_t   (1)
-#endif
-
-
-// T-CHARACTER DATATYPES (<tchar.h>)
-
-#if (!(defined(TCHAR_DEFINED) || defined(__TCHAR_DEFINED)))
-#   define TCHAR_DEFINED   (1)
-#   define __TCHAR_DEFINED   (1)
-#   ifdef _UNICODE
-#      define TCHAR   wchar_t
-#      define TSCHAR   wchar_t
-#      define TUCHAR   wchar_t
-#      define TXCHAR   wchar_t
-#      define PTCHAR   wchar_t*
-#      define TBYTE   wchar_t
-#      define PTBYTE   wchar_t*
-#      define TEOF   WEOF
-#      define _TEOF   WEOF
-#   else
-#      define TCHAR   char
-#      define TSCHAR   char
-#      define TUCHAR   char
-#      define TXCHAR   char
-#      define TINT   int32_t
-#      define PTCHAR   char*
-#      define TBYTE   char
-#      define PTBYTE   char*
-#      define TEOF   EOF
-#      define _TEOF   EOF
-#   endif
-#   define _TCHAR   TCHAR
-#   define _TSCHAR   TSCHAR
-#   define _TUCHAR   TUCHAR
-#   define _TXCHAR   TXCHAR
-#   define _TINT   TINT
-#endif
-#ifndef NUX_UNICODE
-#   ifndef NUX_MBCS
-#      define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (ansi)
-#   else
-#      define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (mbcs)
-#   endif
-#else
-#   define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (unicode)
-#endif
-#define NUX_UNIX_SYS_HOST_ROOT   TEXT("/")
-#define NUX_UNIX_SYS_HOME   TEXT("/home")
-
-
-// RUNE DATATYPES
-
-#define _RUNE_T_DECLARED   (1)
-typedef uint32_t   RuneType;
-#define _RuneType   RuneType
-#define _RuneType_t   RuneType
-#define RuneType_t   RuneType
-typedef uint64_t   runepad_t;
-#define __runepad_t   runepad_t
-#define _runepad_t   runepad_t
-typedef uint32_t   nbrune_t;
-#define __nbrune_t   nbrune_t
-typedef int   rune_t;
-#define __rune_t   rune_t
-#define _BSD_RUNE_T_   rune_t
-#define RUNE   rune_t
-#define Rune   rune_t
-/** Cannot represent part of a UTF sequence (<) */
-#define Runesync   0x80
-/** Rune and UTF sequences are the same (<) */
-#define Runeself   0x80
-/** Decoding error in UTF */
-#define Runeerror   0xfffd
-#define xRuneerror   Runeerror
-/** 16-bit rune */
-#define Runemax   0xffff
-/** 21-bit rune */
-#define Rune21max   0x10ffff
-/** Bits used by runes */
-#define Runemask   0x1fffff
-/** Alpha */
-#define _RUNETYPE_A   0x100U
-/** Control */
-#define _RUNETYPE_C   0x200U
-/** Digit */
-#define _RUNETYPE_D   0x400U
-/** Graph */
-#define _RUNETYPE_G   0x800U
-/** Lower */
-#define _RUNETYPE_L   0x1000U
-/** Punct */
-#define _RUNETYPE_P   0x2000U
-/** Space */
-#define _RUNETYPE_S   0x4000U
-/** Upper */
-#define _RUNETYPE_U   0x8000U
-/** X digit */
-#define _RUNETYPE_X   0x10000U
-/** Blank */
-#define _RUNETYPE_B   0x20000U
-/** Print */
-#define _RUNETYPE_R   0x40000U
-/** Ideogram */
-#define _RUNETYPE_I   0x80000U
-/** Special */
-#define _RUNETYPE_T   0x100000U
-/** Phonogram */
-#define _RUNETYPE_Q   0x200000U
-/** Mask to get screen width data */
-#define _RUNETYPE_SWM   0xe0000000U
-/** Bits to shift to get width */
-#define _RUNETYPE_SWS   30
-/** 0 width character */
-#define _RUNETYPE_SW0   0x20000000U
-/** 1 width character */
-#define _RUNETYPE_SW1   0x40000000U
-/** 2 width character */
-#define _RUNETYPE_SW2   0x80000000U
-/** 3 width character */
-#define _RUNETYPE_SW3   0xc0000000U
-#define CACHED_RUNES   0x100
-#define _CACHED_RUNES   0x100
-#define CRMASK   0xffffff00
-#define _CRMASK   0xffffff00
-#define _RUNE_ISCACHED(c)   ((c) >= 0 && ((c) < _CACHED_RUNES))
-#define RUNE_ISCACHED(c)   _RUNE_ISCACHED((c))
-#define _DEFAULT_INVALID_RUNE   ((rune_t)-3)
-#define USE_FPdbleword   1
-#define SurrogateMin   0xd800
-#define SurrogateMax   0xdfff
-#define Bad   Runeerror
-#define RuneX(i)   ((1 << ((7 - (i)) + ((i) - 1) * 6)) - 1)
-/** Indicates version 0 of RuneLocale */
-#define _RUNE_MAGIC_1   "RuneMagi"
-/** Indicates version A of RuneLocale */
-#define _RUNE_MAGIC_A   "RuneMagA"
-/** Rune codeset tag */
-#define _RUNE_CODESET   "CODESET="
-/** Magic string for dynamic link module; Type should be like "LC_CTYPE" */
-#define _RUNE_MODULE_1(type)   "RuneModule10." type
-#define _WCTRANS_INDEX_LOWER   0
-#define _WCTRANS_INDEX_UPPER   1
-#define _WCTRANS_NINDEXES   2
-#define _WCTYPE_INDEX_ALNUM   0
-#define _WCTYPE_INDEX_ALPHA   1
-#define _WCTYPE_INDEX_BLANK   2
-#define _WCTYPE_INDEX_CNTRL   3
-#define _WCTYPE_INDEX_DIGIT   4
-#define _WCTYPE_INDEX_GRAPH   5
-#define _WCTYPE_INDEX_LOWER   6
-#define _WCTYPE_INDEX_PRINT   7
-#define _WCTYPE_INDEX_PUNCT   8
-#define _WCTYPE_INDEX_SPACE   9
-#define _WCTYPE_INDEX_UPPER   10
-#define _WCTYPE_INDEX_XDIGIT   11
-#define _WCTYPE_NINDEXES   12
-/** Rune file format (Network endian) */
-typedef struct _FileRuneEntry {
-	int32_t fre_min;  //!< First rune of the range
-	int32_t fre_max;  //!< Last rune (inclusive) of the range
-	int32_t fre_map;  //!< What first maps to in maps
-} _FileRuneEntry;
-/** Number of ranges stored */
-typedef struct _FileRuneRange { uint32_t frr_nranges; }   _FileRuneRange;
-/** The lower 8 bits of runetype[] contain the digit value of the rune */
-typedef struct _RuneEntry {
-	unsigned long* types;  //!< Array of types in range
-	rune_t min;  //!< First rune of the range
-	rune_t max;  //!< Last rune (inclusive) of the range
-	rune_t map;  //!< First maps in mapping
-	rune_t pad0;  //!< Padding
-} _RuneEntry;
-#define __RuneEntry   _RuneEntry
-typedef struct _RuneRange {
-	_RuneEntry* ranges;  //!< Pointer to the ranges
-	int nranges;  //!< Number of ranges stored
-	int pad0;  //!< Padding
-} _RuneRange;
-#define __RuneRange   _RuneRange
-typedef struct _RuneCharClass {
-	char __name[14];  //!< CHARCLASS_NAME_MAX = 14
-	short pad0;  //!< Padding
-	uint32_t __mask;  //!< charclass mask
-} _RuneCharClass;
-typedef struct _WCTransEntry {
-	char* te_name;
-	rune_t* te_cached;
-	_RuneRange* te_extmap;
-} _WCTransEntry;
-typedef struct _WCTypeEntry {
-	char* te_name;
-	RuneType te_mask;
-	rune_t pad0;  //!< Padding
-} _WCTypeEntry;
-struct old_tabs {
-	short tolower_tab[257];
-	short toupper_tab[257];
-	char ctype_tab[257];
-	char pad0[3];  //!< Padding
-};
-typedef struct Fconv {
-	char* out;  //!< Pointer to next output
-	char* eout;  //!< Pointer to end
-	int f1, f2, f3, chr;
-} Fconv;
-
-
 // RUNE TABLES
 
 #include "rune_tables.h"
@@ -2346,8 +546,6 @@ typedef long   HRESULT;
 #define _ULonglong   unsigned long long
 /** Datatype used in Sun-derived XDR routines */
 #define u_longlong_t   unsigned long long
-typedef uint64_t   DWORD64;
-#define DWORDLONG   DWORD64
 /** Signed 8-bit quantity */
 #define bit8_t   int8_t
 /** Signed 8-bit quantity */
@@ -2424,14 +622,6 @@ typedef __ULONGWORD_TYPE   t_uscalar_t;
 typedef uint32_t   fixpt_t;
 /** Fixed point number datatype */
 #define __fixpt_t   fixpt_t
-typedef int   rlimit_resource_t;
-#define __rlimit_resource_t   rlimit_resource_t
-typedef uint32_t   pgno_t;
-/** Segment size */
-typedef int32_t   segsz_t;
-typedef uint16_t   indx_t;
-typedef uint32_t   recno_t;
-typedef uint32_t   db_recno_t;
 #ifndef __DEFINED_cnd_t
 /** Used for condition variables */
 typedef struct { union { int __i[12]; volatile int __vi[12]; void *__p[6]; } __u; }   cnd_t;
@@ -2450,51 +640,53 @@ typedef struct short_div_struct {
 	short quot;  //!< Quotient
 	short rem;  //!< Remainder
 } short_div_t;
+
 typedef struct div_struct {
 	int quot;  //!< Quotient
 	int rem;  //!< Remainder
 } div_t;
+
 typedef struct ldiv_struct {
 	long quot;  //!< Quotient
 	long rem;  //!< Remainder
 } ldiv_t;
+
 typedef struct lldiv_struct {
 	long long quot;  //!< Quotient
 	long long rem;  //!< Remainder
 } lldiv_t;
+
 typedef struct div8_struct {
 	int8_t quot;  //!< Quotient
 	int8_t rem;  //!< Remainder
 } div8_t;
+
 typedef struct div16_struct {
 	int16_t quot;  //!< Quotient
 	int16_t rem;  //!< Remainder
 } div16_t;
+
 typedef struct div32_struct {
 	int32_t quot;  //!< Quotient
 	int32_t rem;  //!< Remainder
 } div32_t;
+
 typedef struct div64_struct {
 	int64_t quot;  //!< Quotient
 	int64_t rem;  //!< Remainder
 } div64_t;
+
 #if SUPPORTS_INT128
 typedef struct div128_struct {
 	int128_t quot;  //!< Quotient
 	int128_t rem;  //!< Remainder
 } div128_t;
 #endif
-#if IS_WORDSIZE_64
-typedef align16 struct imaxdiv {
-	long quot;  //!< Quotient
-	long rem;  //!< Remainder
-} imaxdiv_t;
-#else
-typedef align16 struct imaxdiv {
-	long long quot;  //!< Quotient
-	long long rem;  //!< Remainder
-} imaxdiv_t;
-#endif
+
+typedef struct imaxdiv {
+	intmax_t quot;  //!< Quotient
+	intmax_t rem;  //!< Remainder
+} align16   imaxdiv_t;
 
 
 // SOCKET DATATYPES
@@ -2503,17 +695,27 @@ typedef align16 struct imaxdiv {
 typedef unsigned short   sa_family_t;
 #   define __DEFINED_sa_family_t   (1)
 #endif
+
 #ifndef __DEFINED_socklen_t
 typedef __U32_TYPE   socklen_t;  //!< Duplicate from `<sys/socket.h>`
 #   define __socklen_t   socklen_t
 #   define __DEFINED_socklen_t   (1)
 #endif
+
 #define ISC_SOCKLEN_T   socklen_t
 #define _Socklen   socklen_t
 
 
 // DEVICE DATATYPES
 
+typedef int   rlimit_resource_t;
+#define __rlimit_resource_t   rlimit_resource_t
+typedef uint32_t   pgno_t;
+/** Segment size */
+typedef int32_t   segsz_t;
+typedef uint16_t   indx_t;
+typedef uint32_t   recno_t;
+typedef uint32_t   db_recno_t;
 /** PCI register datatype */
 typedef uint32_t   pcireg_t;
 /** Type for array elements in `cpu_set_t` */
@@ -2900,10 +1102,10 @@ typedef struct statfs64 {
 DIAG_POP
 
 /** The <sys/uio.h> header uses the iovec structure for scatter/gather I/O */
-typedef align16 struct iovec {
+typedef struct iovec {
 	const void* iov_base;  //!< Base address of a memory region for input or output
 	size_t iov_len;  //!< The size of the memory pointed to by iov_base
-} iovec_t;
+} align16   iovec_t;
 #define __DEFINED_struct_iovec   (1)
 #define HAVE_IOVEC   (1)
 
@@ -2954,14 +1156,14 @@ typedef __USECONDS_T_TYPE   useconds_t;
 #   define __DEFINED_useconds_t   (1)
 #endif
 #if (!(defined(__DEFINED_struct_timespec) || defined(__timespec_defined)))
-typedef align16 struct timespec { time_t tv_sec; long tv_nsec; }   timespec_t;
+typedef struct timespec { time_t tv_sec; long tv_nsec; }   timespec_t;
 #   define __timespec   timespec
 #   define __timespec_t   timespec_t
 #   define __DEFINED_struct_timespec   (1)
 #   define __timespec_defined   (1)
 #endif
 #ifndef __DEFINED_struct_timeval
-typedef align16 struct timeval { time_t tv_sec; suseconds_t tv_usec; }   timeval_t;
+typedef struct timeval { time_t tv_sec; suseconds_t tv_usec; }   timeval_t;
 #   define __DEFINED_struct_timeval   (1)
 #endif
 /** 32-bit time structure with seconds and microseconds */
@@ -3080,7 +1282,7 @@ typedef struct netbuf { unsigned int maxlen, len; void* buf; }   netbuf_t;
 /** The format of the address and options arguments of the XTI t_bind call; Only provided for compatibility, it should not be used */
 typedef struct t_bind { struct netbuf addr; unsigned int qlen; int32_t pad0[3]; }   t_bind_t;
 /** Used with rpcbind */
-typedef struct rpc_sockinfo { int si_af, si_proto, si_socktype, si_alen; }   rpc_sockinfo_t;
+typedef struct rpc_sockinfo { int si_af, si_proto, si_socktype, si_alen; } align16   rpc_sockinfo_t;
 
 
 // VOLATILE DATATYPES
@@ -3205,27 +1407,27 @@ typedef uint16_t   umode_t;
 // ALIGNED DATATYPES
 
 // Aligned Basic Datatypes
-typedef char align8   aln_char_t;
-typedef unsigned char align8   aln_uchar_t;
-typedef short align16   aln_short_t;
-typedef unsigned short align16   aln_ushort_t;
-typedef int align32   aln_int_t;
-typedef unsigned int align32   aln_uint_t;
+typedef char align1   aln_char_t;
+typedef unsigned char align1   aln_uchar_t;
+typedef short align_short   aln_short_t;
+typedef unsigned short align_short   aln_ushort_t;
+typedef int align_int   aln_int_t;
+typedef unsigned int align_int   aln_uint_t;
 typedef long align_long   aln_long_t;
 typedef unsigned long align_long   aln_ulong_t;
-typedef long long align64   aln_llong_t;
-typedef unsigned long long align64   aln_ullong_t;
+typedef long long align_int64   aln_llong_t;
+typedef unsigned long long align_int64   aln_ullong_t;
 typedef float alignSF   aln_float_t;
 typedef double alignDF   aln_double_t;
 // Aligned Exact-width Integrals
-typedef int8_t align8   aln_int8_t;
-typedef uint8_t align8   aln_uint8_t;
-typedef int16_t align16   aln_int16_t;
-typedef uint16_t align16   aln_uint16_t;
-typedef int32_t align32   aln_int32_t;
-typedef uint32_t align32   aln_uint32_t;
-typedef int64_t align64   aln_int64_t;
-typedef uint64_t align64   aln_uint64_t;
+typedef int8_t align1   aln_int8_t;
+typedef uint8_t align1   aln_uint8_t;
+typedef int16_t align_short   aln_int16_t;
+typedef uint16_t align_short   aln_uint16_t;
+typedef int32_t align_int   aln_int32_t;
+typedef uint32_t align_int   aln_uint32_t;
+typedef int64_t align_int64   aln_int64_t;
+typedef uint64_t align_int64   aln_uint64_t;
 #define __aligned_u64   aln_uint64_t
 #define __aligned_le64   aln_uint64_t
 #define aligned_u64   aln_uint64_t
@@ -6337,12 +4539,12 @@ struct sigaction {
 #else
 
 /** Structure describing the action to be taken when a signal arrives */
-struct align32 sigaction {
+struct sigaction {
 	__sighandler_t sa_handler;
 	unsigned long sa_flags;
 	void (*sa_restorer)(void);
 	sigset_t sa_mask;
-};
+} align32;
 // Bits in `sa_flags`
 /** Do not send SIGCHLD when children stop */
 #   define SA_NOCLDSTOP   1
@@ -6404,7 +4606,7 @@ typedef long   __jmp_buf[17];
 typedef int   __jmp_buf[16];
 #elif defined(ARCHARM)
 #   ifdef __ARM_EABI__
-typedef int align8   __jmp_buf[64];
+typedef int align8   __jmp_buf[64] align256;
 #   elif (defined(__MAVERICK__) || defined(__IWMMXT__))
 typedef int   __jmp_buf[34];
 #   else
@@ -6574,6 +4776,7 @@ typedef align32 union pthread_barrierattr {
 	char __size[SIZEOF_PTHREAD_BARRIERATTR_T];
 	char pad0[64 - SIZEOF_PTHREAD_BARRIERATTR_T];  //!< Padding
 	int __align;
+	// int pad0;  //!< Padding
 } pthread_barrierattr_t;
 /** Data structure to contain the action information */
 struct __spawn_action {
@@ -6592,14 +4795,14 @@ struct __spawn_action {
 	} action;
 };
 /** Data structure to contain attributes for thread creation */
-typedef align32 struct posix_spawnattr {
+typedef struct posix_spawnattr {
 	sigset_t __sd, __ss;
 	pid_t __pgrp;
 	struct sched_param __sp;
 	int __policy;
 	short __flags;
 	short pad0;  //!< Padding
-} posix_spawnattr_t;
+}   posix_spawnattr_t;
 /** Data structure to contain information about the actions to be performed in the new process with respect to file descriptors */
 typedef struct posix_spawn_file_actions {
 	int _allocated, _used;
@@ -6620,7 +4823,7 @@ typedef struct _pthread_fastlock { int __spinlock; }   pthread_fastlock_t;
 #   define PTHREAD_SPIN_UNLOCKED   0
 #endif
 /** POSIX Thread Descriptor */
-typedef align32 struct _pthread_descr_struct {
+typedef struct _pthread_descr_struct {
 	struct _pthread_descr_struct* next;
 	struct _pthread_descr_struct** prev;
 	void* stack_begin;  //!< Beginning of stack; lowest address
@@ -7396,7 +5599,7 @@ typedef struct __ptcb {
 	void* __x;
 	struct __ptcb* __next;
 } ptcb_t;
-typedef align64 struct pthread {
+typedef struct pthread {
 	struct pthread* self;
 	void** dtv;
 	void* unused1;
@@ -7495,7 +5698,7 @@ typedef struct wms_cookie {
 
 
 /** File datatype */
-typedef align32 struct __sFILE {
+typedef struct __sFILE {
 	// Position Pointers
 	unsigned char* rpos;  //!< Current read position in buffer
 	unsigned char* rend;  //!< End of read area
@@ -8445,7 +6648,7 @@ typedef struct xt_addrtype_info {
 
 
 /** Locale object for global C locale */
-static UNUSED align64 locale_t __global_locale = NULL;
+static UNUSED locale_t __global_locale align64 = NULL;
 /** Locale object for global C locale */
 #define _NL_CURRENT_LOCALE   __global_locale
 #define CURRENT_LOCALE   __global_locale
@@ -8460,8 +6663,8 @@ UNUSED _RuneLocale* _CurrentRuneLocale;
 #define NORMALIZE_LOCALE(x)   if ((x) == NULL) { (x) = __global_locale; } else if ((x) == LC_GLOBAL_LOCALE) { (x) = __global_locale; }
 #if SINGLE_THREAD_P
 /** We need to have the error status variable of the resolver accessible in the libc */
-volatile UNUSED align64 locale_t locale_tls;
-volatile UNUSED align64 tss_t locale_tss;
+volatile UNUSED locale_t locale_tls align64;
+volatile UNUSED tss_t locale_tss align64;
 #else
 /** We need to have the error status variable of the resolver accessible in the libc */
 thread_local volatile UNUSED locale_t locale_tls;
@@ -8472,7 +6675,7 @@ thread_local volatile UNUSED tss_t locale_tss;
 
 
 /*@-immediatetrans@*/
-static UNUSED align64 struct lconv C_LOCALE_INITIALIZER = {
+static UNUSED struct lconv C_LOCALE_INITIALIZER align64 = {
 	(const char*)&period, NULL, NULL, NULL, NULL, NULL,  // Decimal_point - mon_decimal_point
 	NULL, NULL, NULL, NULL, 127, 127,  // mon_thousands_sep - frac_digits
 	127, 127, 127, 127, 127, 127,  // p_cs_precedes - n_sign_posn
@@ -8493,9 +6696,9 @@ typedef struct libc_struct {
 } libc_t;
 /*@-immediatetrans@*/
 #if SINGLE_THREAD_P
-static UNUSED align_ptr libc_t libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED libc_t libc align_ptr = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #   else
-static UNUSED align_ptr libc_t libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED libc_t libc align_ptr = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #endif
 /*@=immediatetrans@*/
 #define _libc   libc
@@ -9917,6 +8120,535 @@ fxvalue _Fixed_from_ldouble(fxmaskg mask, long double x);
 #endif  // STDFIX_H
 
 
+/* BSD MACHINE DEPENDENT CONSTANTS (<param.h>) */
+
+
+#if ((!(defined(_BSD_MACHINE_PARAM_H_) || defined(_BSD_MACHINE_VMPARAM_H_) || defined(_PARAM_H_))) && (defined(ARCHX86) && (!(defined(_I386_PARAM_H_) || defined(_BSD_I386_VMPARAM_H_)))))
+#define BSD_MACHINE_PARAM_H_   (1)
+#define _BSD_MACHINE_PARAM_H_   (1)
+#define BSD_MACHINE_VMPARAM_H_   (1)
+#define _BSD_MACHINE_VMPARAM_H_   (1)
+#define PARAM_H   (1)
+#define PARAM_H_   (1)
+#define _PARAM_H_   (1)
+#define _I386_PARAM_H_   (1)
+#define I386_PARAM_H_   (1)
+#define _BSD_I386_VMPARAM_H_   (1)
+#define BSD_I386_VMPARAM_H_   (1)
+
+
+/** Byte offset into page */
+#define PGOFSET   4095
+/** LOG2(NBPG) */
+#define PGSHIFT   12
+/** log2(DEV_BSIZE) */
+#define DEV_BSHIFT   9
+#define BLKDEV_IOSIZE   2048
+/** Max raw I/O transfer size */
+#define MAXPHYS   131072
+#define CLSIZELOG2   0
+#define RLIM_INFINITY   (~0ULL)
+#define RLIM64_INFINITY   (~0ULL)
+// Virtual memory related constants (in bytes)
+#ifndef DFLDSIZ
+/** Initial data size limit */
+#   define DFLDSIZ   (RLIM_INFINITY)
+#endif
+#ifndef MAXDSIZ
+/** Max data size */
+#   define MAXDSIZ   (RLIM_INFINITY)
+#endif
+#ifndef DFLSSIZ
+/** Initial stack size limit */
+#   define DFLSSIZ   (8388608)
+#endif
+#ifndef MAXSSIZ
+/** Max stack size */
+#   define MAXSSIZ   (67108864)
+#endif
+#ifndef DFLCSIZ
+/** Initial core size limit */
+#   define DFLCSIZ   (0)
+#endif
+#ifndef MAXCSIZ
+/** Max core size */
+#   define MAXCSIZ   (RLIM_INFINITY)
+#endif
+
+
+// Constants related to I/O buffer management
+#define MSIZESHIFT   8
+#define MSIZE   256
+#define MBSHIFT   20
+#define MBSIZE   1048576
+#define MAX_MBUF_POOL   536870912
+#define MCLSHIFT   11
+/** Size of an mbuf cluster */
+#define MCLBYTES   2048
+#define MBIGCLSHIFT   12
+/** Size of a big cluster */
+#define MBIGCLBYTES   4096
+#define M16KCLSHIFT   14
+/** Size of a jumbo cluster */
+#define M16KCLBYTES   16384
+#define MCLOFSET   (MCLBYTES - 1)
+#ifndef NMBCLUSTERS
+/** cl map size: 1MB */
+#   define NMBCLUSTERS   (1048576 / MCLBYTES)
+#endif
+#define AGP_PAGE_SHIFT   12
+#define PAGE_CACHE_SHIFT   PAGE_SHIFT
+#define IOREMAP_MAX_ORDER   (7 + PAGE_SHIFT)
+#define NMBPGSHIFT   (PAGE_SHIFT - MSIZESHIFT)
+#define NCLPGSHIFT   (PAGE_SHIFT - MCLSHIFT)
+#define NBCLPGSHIFT   (PAGE_SHIFT - MBIGCLSHIFT)
+#define NSLABSPMB   (1048576 >> PAGE_SHIFT)
+#define NSLABSP16KB   (M16KCLBYTES >> PAGE_SHIFT)
+
+
+/** Core clicks (NeXT_page_size bytes) to segments */
+#define ctos(x)   (x)
+/** Segments to Core clicks (NeXT_page_size bytes) */
+#define stoc(x)   (x)
+/** Core clicks (4096 bytes) to disk blocks */
+#define ctod(x)   ((x) << (PGSHIFT - DEV_BSHIFT))
+/** Disk blocks to Core clicks (4096 bytes) */
+#define dtoc(x)   ((x) >> (PGSHIFT - DEV_BSHIFT))
+/** Disk blocks to Core clicks (4096 bytes) */
+#define dtob(x)   ((x) << DEV_BSHIFT)
+/** Clicks to bytes */
+#define ctob(x)   ((x) << PGSHIFT)
+/** Bytes to clicks */
+#define btoc(x)   (((unsigned)(x) + (NBPG - 1)) >> PGSHIFT)
+#ifdef __APPLE__
+#   define btodb(bytes, devBlockSize)   ((unsigned)(bytes) / (devBlockSize))
+#   define dbtob(db, devBlockSize)   ((unsigned)(db) * (devBlockSize))
+#else
+#   define btodb(bytes)   ((unsigned)(bytes) >> DEV_BSHIFT)
+#   define dbtob(db)   ((unsigned)(db) << DEV_BSHIFT)
+#endif
+/** Map a `block device block` to a file system block */
+#define bdbtofsb(bn)   ((bn) / (BLKDEV_IOSIZE / DEV_BSIZE))
+
+/** Macros to decode (and encode) processor status word */
+#define STATUS_WORD(rpl, ipl)   (((ipl) << 8) | (rpl))
+#define USERMODE(x)   (((x) & 3) == 3)
+#define BASEPRI(x)   (((x) & 0xff00) == 0)
+#define DELAY(n)   volatile int DELAY_N = (n); while (--DELAY_N > 0)
+
+
+#endif  // PARAM_H
+
+
+/* BEOS BUILD (<BeBuild.h>) */
+
+
+#if ((!(defined(BE_BUILD_H) || defined(_BE_BUILD_H) || defined(_BE_BUILD_H_))) && defined(ALLOW_HEADER_BE_BUILD_H) && (defined(OSBEOS) || defined(OSHAIKU)))
+#define BE_BUILD_H   (1)
+#define _BE_BUILD_H   (1)
+#define _BE_BUILD_H_   (1)
+
+
+// BEOS/HAIKU PLATFORM
+
+#if IS_64
+/** Defined if the system is 64-bit */
+#   define __HAIKU_ARCH_64_BIT   1
+/** Defined if the system is 64-bit */
+#   define HAIKU_ARCH_64_BIT   1
+/** Defined if the system is 64-bit */
+#   define HAIKU_HOST_PLATFORM_64_BIT   1
+#   define B_HAIKU_64_BIT   1
+#else
+/** Defined if the system is 32-bit */
+#   define __HAIKU_ARCH_32_BIT   1
+/** Defined if the system is 32-bit */
+#   define HAIKU_ARCH_32_BIT   1
+/** Defined if the system is 32-bit */
+#   define HAIKU_HOST_PLATFORM_32_BIT   1
+#   define B_HAIKU_32_BIT   1
+#endif
+#if (defined(HAIKU_ARCH_64_BIT) && (!defined(HAIKU_ARCH_BITS)))
+#   define HAIKU_ARCH_BITS   64
+#elif (defined(HAIKU_ARCH_32_BIT) && (!defined(HAIKU_ARCH_BITS)))
+#   define HAIKU_ARCH_BITS   32
+#endif
+#ifndef __HAIKU_ARCH_BITS
+#   define __HAIKU_ARCH_BITS   HAIKU_ARCH_BITS
+#endif
+#ifndef HAIKU_ARCH_PHYSICAL_BITS
+#   define HAIKU_ARCH_PHYSICAL_BITS   HAIKU_ARCH_BITS
+#endif
+#ifndef __HAIKU_ARCH_PHYSICAL_BITS
+#   define __HAIKU_ARCH_PHYSICAL_BITS   HAIKU_ARCH_BITS
+#endif
+#if (HAIKU_ARCH_PHYSICAL_BITS == 32)
+#   define HAIKU_ARCH_PHYSICAL_32_BIT   1
+#   define __HAIKU_ARCH_PHYSICAL_32_BIT   1
+#   define B_HAIKU_PHYSICAL_32_BIT   1
+#   define B_HAIKU_PHYSICAL_BITS   32
+#elif (HAIKU_ARCH_PHYSICAL_BITS == 64)
+#   define HAIKU_ARCH_PHYSICAL_64_BIT   1
+#   define __HAIKU_ARCH_PHYSICAL_64_BIT   1
+#   define B_HAIKU_PHYSICAL_64_BIT   1
+#   define B_HAIKU_PHYSICAL_BITS   64
+#else
+#   error   "Unsupported physical bitness (32-bit or 64-bit only)!"
+#endif
+#if ((!defined(__HAIKU_BIG_ENDIAN)) && (!defined(__HAIKU_LITTLE_ENDIAN)))
+#   if IS_LITTLE_ENDIAN
+#      define HAIKU_LITTLE_ENDIAN   1
+#      define __HAIKU_LITTLE_ENDIAN   1
+#   elif IS_BIG_ENDIAN
+#      define HAIKU_BIG_ENDIAN   1
+#      define __HAIKU_BIG_ENDIAN   1
+#   endif
+#endif
+#ifdef ARCHX86_64
+#   define __HAIKU_ARCH   "x86_64"
+#   define __HAIKU_ARCH_ABI   "x86_64"
+#   define __HAIKU_ARCH_X86_64   1
+#   ifndef HAIKU_ARCH_BITS
+#      define HAIKU_ARCH_BITS   64
+#   endif
+#   ifndef __HAIKU_ARCH_BITS
+#      define __HAIKU_ARCH_BITS   64
+#   endif
+#elif defined(ARCHX86_32)
+#   define __HAIKU_ARCH   "x86"
+#   define __HAIKU_ARCH_ABI   "x86"
+#   define __HAIKU_ARCH_X86   1
+#   define __HAIKU_ARCH_PHYSICAL_BITS   64
+#elif defined(ARCHPOWERPC)
+#   define __HAIKU_ARCH   "ppc"
+#   define __HAIKU_ARCH_ABI   "ppc"
+#   define __HAIKU_ARCH_PPC   1
+#   define __HAIKU_ARCH_PHYSICAL_BITS   64
+#   define __HAIKU_BIG_ENDIAN   1
+#elif defined(ARCHM68K)
+#   define __HAIKU_ARCH   "m68k"
+#   define __HAIKU_ARCH_ABI   "m68k"
+#   define __HAIKU_ARCH_M68K   1
+#   define __HAIKU_BIG_ENDIAN   1
+#elif defined(ARCHMIPS)
+#   define __HAIKU_ARCH   "mipsel"
+#   define __HAIKU_ARCH_ABI   "mipsel"
+#   define __HAIKU_ARCH_MIPSEL   1
+#elif defined(ARCHARM)
+#   define __HAIKU_ARCH   "arm"
+#   define __HAIKU_ARCH_ABI   "arm"
+#   define __HAIKU_ARCH_ARM   1
+#elif defined(__ARMEB__)
+#   define __HAIKU_ARCH   "armeb"
+#   define __HAIKU_ARCH_ABI   "armeb"
+#   define __HAIKU_ARCH_ARM   1
+#   define __HAIKU_BIG_ENDIAN   1
+#else
+#   error   "Unsupported Haiku architecture!"
+#endif
+/** BeOS R5 binary compatibility */
+#define HAIKU_BEOS_COMPATIBLE   0
+/** BeOS R5 binary compatibility */
+#define __HAIKU_BEOS_COMPATIBLE   0
+#ifndef HAIKU_ARCH_64_BIT
+/** BeOS R5 compatible types */
+#   define HAIKU_BEOS_COMPATIBLE_TYPES   1
+/** BeOS R5 compatible types */
+#   define __HAIKU_BEOS_COMPATIBLE_TYPES   1
+#endif
+
+
+// HAIKU & BEOS DATATYPES
+
+#define haiku_std_int8   signed char
+#define haiku_std_uint8   unsigned char
+#define haiku_std_int16   signed short
+#define haiku_std_uint16   unsigned short
+#define __haiku_std_int8   haiku_std_int8
+#define __haiku_std_uint8   haiku_std_uint8
+#define __haiku_std_int16   haiku_std_int16
+#define __haiku_std_uint16   haiku_std_uint16
+#define __haiku_int8   haiku_std_int8
+#define __haiku_uint8   haiku_std_uint8
+#define __haiku_int16   haiku_std_int16
+#define __haiku_uint16   haiku_std_uint16
+#define haiku_int8   haiku_std_int8
+#define haiku_uint8   haiku_std_uint8
+#define haiku_int16   haiku_std_int16
+#define haiku_uint16   haiku_std_uint16
+#define haiku_std_int32   signed int
+#define haiku_std_uint32   unsigned int
+#ifndef __int64_t_defined
+#   define __int64_t_defined   1
+#   define __uint64_t_defined   1
+#   if IS_WORDSIZE_64
+#      define haiku_std_int64   signed long
+#      define haiku_std_uint64   unsigned long
+#   elif IS_WORDSIZE_32
+#      define haiku_std_int64   signed long long
+#      define haiku_std_uint64   unsigned long long
+#   else
+#      error   "WORDSIZE is not `64` or `32`!"
+#   endif
+#endif
+#define __haiku_std_int32   haiku_std_int32
+#define __haiku_std_uint32   haiku_std_uint32
+#define __haiku_std_int64   haiku_std_int64
+#define __haiku_std_uint64   haiku_std_uint64
+#define __haiku_int32   haiku_std_int32
+#define __haiku_uint32   haiku_std_uint32
+#define __haiku_int64   haiku_std_int64
+#define __haiku_uint64   haiku_std_uint64
+#define haiku_int32   haiku_std_int32
+#define haiku_uint32   haiku_std_uint32
+#define haiku_int64   haiku_std_int64
+#define haiku_uint64   haiku_std_uint64
+// Address Datatypes
+typedef signed long   haiku_saddr_t;
+#define __haiku_saddr_t   haiku_saddr_t
+typedef unsigned long   haiku_addr_t;
+#define __haiku_addr_t   haiku_addr_t
+#if IS_64
+typedef haiku_std_int64   haiku_phys_saddr_t;
+typedef haiku_std_uint64   haiku_phys_addr_t;
+#else
+typedef haiku_std_int32   haiku_phys_saddr_t;
+typedef haiku_std_uint32   haiku_phys_addr_t;
+#endif
+#define __haiku_phys_saddr_t   haiku_phys_saddr_t
+#define __haiku_phys_addr_t   haiku_phys_addr_t
+
+
+// HAIKU DATATYPE LIMITS
+
+#if IS_64
+#   define HAIKU_SADDR_MAX   (9223372036854775807LL)
+#   define HAIKU_ADDR_MAX   (18446744073709551615ULL)
+#   define HAIKU_PHYS_SADDR_MAX   (9223372036854775807LL)
+#   define HAIKU_PHYS_ADDR_MAX   (18446744073709551615ULL)
+#else
+#   define HAIKU_SADDR_MAX   (2147483647)
+#   define HAIKU_ADDR_MAX   (4294967295U)
+#   define HAIKU_PHYS_SADDR_MAX   (2147483647)
+#   define HAIKU_PHYS_ADDR_MAX   (4294967295U)
+#endif
+#define __HAIKU_SADDR_MAX   HAIKU_SADDR_MAX
+#define __HAIKU_ADDR_MAX   HAIKU_ADDR_MAX
+#define __HAIKU_PHYS_SADDR_MAX   HAIKU_PHYS_SADDR_MAX
+#define __HAIKU_PHYS_ADDR_MAX   HAIKU_PHYS_ADDR_MAX
+#define HAIKU_SADDR_MIN   ((-HAIKU_SADDR_MAX) - 1)
+#define __HAIKU_SADDR_MIN   HAIKU_SADDR_MIN
+#define HAIKU_PHYS_SADDR_MIN   ((-HAIKU_SADDR_MAX) - 1)
+#define __HAIKU_PHYS_SADDR_MIN   HAIKU_PHYS_SADDR_MIN
+#if (defined(HAIKU_ARCH_BITS) && defined(__HAIKU_ARCH_PHYSICAL_BITS) && (HAIKU_ARCH_BITS >= __HAIKU_ARCH_PHYSICAL_BITS))
+typedef haiku_addr_t   haiku_generic_addr_t;
+#   define HAIKU_GENERIC_ADDR_MAX   __HAIKU_ADDR_MAX
+#   define HAIKU_PRI_PREFIX_GENERIC_ADDR   __HAIKU_PRI_PREFIX_ADDR
+#else
+typedef haiku_phys_addr_t   haiku_generic_addr_t;
+#   define HAIKU_GENERIC_ADDR_MAX   __HAIKU_PHYS_ADDR_MAX
+#   define HAIKU_PRI_PREFIX_GENERIC_ADDR   __HAIKU_PRI_PREFIX_PHYS_ADDR
+#endif
+#define __haiku_generic_addr_t   haiku_generic_addr_t
+#define generic_addr_t   haiku_generic_addr_t
+#define __generic_addr_t   haiku_generic_addr_t
+#define __HAIKU_GENERIC_ADDR_MAX   HAIKU_GENERIC_ADDR_MAX
+#define __HAIKU_PRI_PREFIX_GENERIC_ADDR   HAIKU_PRI_PREFIX_GENERIC_ADDR
+
+
+// HAIKU PRINTF & SCANF MACROS
+
+#define HAIKU_STD_PRI_PREFIX_32   ""
+#define __HAIKU_STD_PRI_PREFIX_32   ""
+#if IS_64
+#   define HAIKU_STD_PRI_PREFIX_64   "l"
+#   define __HAIKU_STD_PRI_PREFIX_64   "l"
+#else
+#   define HAIKU_STD_PRI_PREFIX_64   "ll"
+#   define __HAIKU_STD_PRI_PREFIX_64   "ll"
+#endif
+#ifdef __HAIKU_BEOS_COMPATIBLE_TYPES
+#   define HAIKU_PRI_PREFIX_32   "l"
+#   define __HAIKU_PRI_PREFIX_32   "l"
+#else
+#   define HAIKU_PRI_PREFIX_32   HAIKU_STD_PRI_PREFIX_32
+#   define __HAIKU_PRI_PREFIX_32   __HAIKU_STD_PRI_PREFIX_32
+#endif
+#define HAIKU_PRI_PREFIX_64   __HAIKU_STD_PRI_PREFIX_64
+#define __HAIKU_PRI_PREFIX_64   __HAIKU_STD_PRI_PREFIX_64
+#define HAIKU_PRI_PREFIX_ADDR   "l"
+#define __HAIKU_PRI_PREFIX_ADDR   "l"
+#if IS_64
+#   define HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_64
+#   define __HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_64
+#else
+#   define HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_32
+#   define __HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_32
+#endif
+
+
+// MISCELLANEOUS HAIKU MACROS
+
+#define HAIKU_ARCH_HEADER(header)   <arch/__HAIKU_ARCH/header>
+#define __HAIKU_ARCH_HEADER(header)   HAIKU_ARCH_HEADER((header))
+#define __HAIKU_ARCH_HEADER(header)   HAIKU_ARCH_HEADER((header))
+#define HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   <subdir/arch/__HAIKU_ARCH/header>
+#define __HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   HAIKU_SUBDIR_ARCH_HEADER((subdir), (header))
+#define B_BEOS_VERSION_4   0x400
+#define B_BEOS_VERSION_4_5   0x450
+#define B_BEOS_VERSION_5   0x500
+#define B_BEOS_VERSION   B_BEOS_VERSION_5
+#define B_BEOS_VERSION_MAUI   B_BEOS_VERSION_5
+#define B_HAIKU_VERSION_BEOS   1
+#define B_HAIKU_VERSION_BONE   2
+#define B_HAIKU_VERSION_DANO   3
+#define B_HAIKU_VERSION_1_ALPHA_1   0x100
+#define B_HAIKU_VERSION_1_PRE_ALPHA_2   0x101
+#define B_HAIKU_VERSION_1_ALPHA_2   0x200
+#define B_HAIKU_VERSION_1_PRE_ALPHA_3   0x201
+#define B_HAIKU_VERSION_1_ALPHA_3   0x300
+#define B_HAIKU_VERSION_1_PRE_ALPHA_4   0x301
+#define B_HAIKU_VERSION_1_ALPHA_4   0x400
+#define B_HAIKU_VERSION_1_PRE_BETA_1   0x401
+#define B_HAIKU_VERSION_1   0x10000
+#define B_HAIKU_VERSION   B_HAIKU_VERSION_1_PRE_ALPHA_4
+#define B_HAIKU_ABI_MAJOR   0xffff0000
+#define B_HAIKU_ABI_GCC_2   0x20000
+#define B_HAIKU_ABI_GCC_4   0x40000
+#define B_HAIKU_ABI_GCC_2_ANCIENT   0x20000
+#define B_HAIKU_ABI_GCC_2_BEOS   0x20001
+#define B_HAIKU_ABI_GCC_2_HAIKU   0x20002
+#define B_HAIKU_ABI_NAME   __HAIKU_ARCH_ABI
+#if AT_LEAST_GCC10
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_10
+#elif AT_LEAST_GCC9
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_9
+#elif AT_LEAST_GCC8
+#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_8
+#endif
+#ifndef B_HAIKU_BITS
+#   define B_HAIKU_BITS   HAIKU_ARCH_BITS
+#endif
+#ifndef B_HAIKU_PHYSICAL_BITS
+#   define B_HAIKU_PHYSICAL_BITS   __HAIKU_ARCH_PHYSICAL_BITS
+#endif
+#ifdef __HAIKU_BEOS_COMPATIBLE
+#   define B_HAIKU_BEOS_COMPATIBLE   1
+#endif
+
+
+// HAIKU ENUMS
+
+/** Conversion Flavors */
+typedef enum BEOS_CONVERSION_FLAVORS {
+	B_ISO1_CONVERSION,  //!< ISO 8859-x
+	B_ISO2_CONVERSION,
+	B_ISO3_CONVERSION,
+	B_ISO4_CONVERSION,
+	B_ISO5_CONVERSION,
+	B_ISO6_CONVERSION,
+	B_ISO7_CONVERSION,
+	B_ISO8_CONVERSION,
+	B_ISO9_CONVERSION,
+	B_ISO10_CONVERSION,
+	B_MAC_ROMAN_CONVERSION,  //!< Macintosh Roman
+	B_SJIS_CONVERSION,  //!< Shift-JIS
+	B_EUC_CONVERSION,  //!< EUC Packed Japanese
+	B_JIS_CONVERSION,  //!< JIS X 0208-1990
+	B_MS_WINDOWS_CONVERSION,  //!< Windows Latin-1 Codepage 1252
+	B_UNICODE_CONVERSION,  //!< Unicode 2.0, UCS-2
+	B_KOI8R_CONVERSION,  //!< KOI8-R
+	B_MS_WINDOWS_1251_CONVERSION,  //!< Windows Cyrillic Codepage 1251
+	B_MS_DOS_866_CONVERSION,  //!< MS-DOS Codepage 866
+	B_MS_DOS_CONVERSION,  //!< MS-DOS Codepage 437
+	B_EUC_KR_CONVERSION,  //!< EUC Korean
+	B_ISO13_CONVERSION,
+	B_ISO14_CONVERSION,
+	B_ISO15_CONVERSION,
+	B_BIG5_CONVERSION,  //!< Chinese Big5
+	B_GBK_CONVERSION,  //!< Chinese GB18030
+	B_UTF16_CONVERSION,  //!< Unicode UTF-16
+	B_MS_WINDOWS_1250_CONVERSION  //!< Windows Central European Codepage
+} beos_conversion_flavors_t;
+
+
+typedef enum BEOS_TYPE_CONSTANTS {
+	B_AFFINE_TRANSFORM_TYPE = 0x414d5458,  //!< "AMTX"
+	B_ALIGNMENT_TYPE = 0x414c474e,  //!< "ALGN"
+	B_ANY_TYPE = 0x414e5954,  //!< "ANYT"
+	B_ATOM_TYPE = 0x41544f4d,  //!< "ATOM"
+	B_ATOMREF_TYPE = 0x41544d52,  //!< "ATMR"
+	B_BOOL_TYPE = 0x424f4f4c,  //!< "BOOL"
+	B_CHAR_TYPE = 0x43484152,  //!< "CHAR"
+	B_COLOR_8_BIT_TYPE = 0x434c5242,  //!< "CLRB"
+	B_DOUBLE_TYPE = 0x44424c45,  //!< "DBLE"
+	B_FLOAT_TYPE = 0x464c4f54,  //!< "FLOT"
+	B_GRAYSCALE_8_BIT_TYPE = 0x47525942,  //!< "GRYB"
+	B_INT16_TYPE = 0x53485254,  //!< "SHRT"
+	B_INT32_TYPE = 0x4c4f4e47,  //!< "LONG"
+	B_INT64_TYPE = 0x4c4c4e47,  //!< "LLNG"
+	B_INT8_TYPE = 0x42595445,  //!< "BYTE"
+	B_LARGE_ICON_TYPE = 0x49434f4e,  //!< "ICON"
+	B_MEDIA_PARAMETER_GROUP_TYPE = 0x424d4347,  //!< "BMCG"
+	B_MEDIA_PARAMETER_TYPE = 0x424d4354,  //!< "BMCT"
+	B_MEDIA_PARAMETER_WEB_TYPE = 0x424d4357,  //!< "BMCW"
+	B_MESSAGE_TYPE = 0x4d534747,  //!< "MSGG"
+	B_MESSENGER_TYPE = 0x4d534e47,  //!< "MSNG"
+	B_MIME_TYPE = 0x4d494d45,  //!< "MIME"
+	B_MINI_ICON_TYPE = 0x4d49434e,  //!< "MICN"
+	B_MONOCHROME_1_BIT_TYPE = 0x4d4e4f42,  //!< "MNOB"
+	B_OBJECT_TYPE = 0x4f505452,  //!< "OPTR"
+	B_OFF_T_TYPE = 0x4f464654,  //!< "OFFT"
+	B_PATTERN_TYPE = 0x5041544e,  //!< "PATN"
+	B_POINTER_TYPE = 0x504e5452,  //!< "PNTR"
+	B_POINT_TYPE = 0x42504e54,  //!< "BPNT"
+	B_PROPERTY_INFO_TYPE = 0x53435444,  //!< "SCTD"
+	B_RAW_TYPE = 0x52415754,  //!< "RAWT"
+	B_RECT_TYPE = 0x52454354,  //!< "RECT"
+	B_REF_TYPE = 0x52524546,  //!< "RREF"
+	B_RGB_32_BIT_TYPE = 0x52474242,  //!< "RGBB"
+	B_RGB_COLOR_TYPE = 0x52474243,  //!< "RGBC"
+	B_SIZE_TYPE = 0x53495a45,  //!< "SIZE"
+	B_SIZE_T_TYPE = 0x53495a54,  //!< "SIZT"
+	B_SSIZE_T_TYPE = 0x53535a54,  //!< "SSZT"
+	B_STRING_TYPE = 0x43535452,  //!< "CSTR"
+	B_STRING_LIST_TYPE = 0x5354524c,  //!< "STRL"
+	B_TIME_TYPE = 0x54494d45,  //!< "TIME"
+	B_UINT16_TYPE = 0x55534854,  //!< "USHT"
+	B_UINT32_TYPE = 0x554c4e47,  //!< "ULNG"
+	B_UINT64_TYPE = 0x554c4c47,  //!< "ULLG"
+	B_UINT8_TYPE = 0x55425954,  //!< "UBYT"
+	B_VECTOR_ICON_TYPE = 0x5649434e,  //!< "VICN"
+	B_XATTR_TYPE = 0x58415452,  //!< "XATR"
+	B_NETWORK_ADDRESS_TYPE = 0x4e574144,  //!< "NWAD"
+	B_MIME_STRING_TYPE = 0x4d494d53,  //!< "MIMS"
+	B_ASCII_TYPE = 0x54455854  //!< "TEXT"
+} beos_type_constants_t;
+
+
+#endif  // BE_BUILD_H
+
+
+/* SPECIAL GNU/HURD PROCESSES */
+
+
+#if (!(defined(HURD_PROCESSES_H) || defined(_HURD_PROCESSES_H) || defined(_HURD_PROCESSES_H_)))
+#define HURD_PROCESSES_H   (1)
+#define _HURD_PROCESSES_H   (1)
+#define _HURD_PROCESSES_H_   (1)
+
+
+enum HURD_PID {
+	HURD_PID_INIT = 1,
+	HURD_PID_STARTUP = 2,
+	HURD_PID_KERNEL = 3,
+	HURD_PID_PROC = 4
+};
+
+
+#endif  // HURD_PROCESSES_H
+
+
 /* GNU/HURD DATATYPES (<hurd_types.h>) */
 
 
@@ -10757,10 +9489,10 @@ enum VMX_REGISTERS {
 #define ASM_VMX_INVEPT   ".byte 0x66, 0x0f, 0x38, 0x80, 0x08"
 #define ASM_VMX_INVVPID   ".byte 0x66, 0x0f, 0x38, 0x81, 0x08"
 
-typedef struct align16 vmx_msr_entry {
+typedef struct vmx_msr_entry {
 	uint32_t index, reserved;
 	uint64_t value;
-} vmx_msr_entry_t;
+} align16   vmx_msr_entry_t;
 
 
 /** EXIT QUALIFICATIONS FOR ENTRY FAILURE DURING OR AFTER LOADING GUEST STATE */
@@ -11499,6 +10231,125 @@ LIB_FUNC size_t xsum4(const size_t size1, const size_t size2, const size_t size3
 
 
 #endif  // XSIZE_H
+
+
+/* OBJECT STACK MACROS (<obstack.h>) */
+
+
+#if (!(defined(OBSTACK_H) || defined(_OBSTACK_H) || defined(_OBSTACK_H_)))  // https://en.wikipedia.org/wiki/Obstack
+#define OBSTACK_H   (1)
+#define _OBSTACK_H   (1)
+#define _OBSTACK_H_   (1)
+
+
+typedef char*   PTR_CHAR_TYPE;
+typedef int*   PTR_INT_TYPE;
+typedef long*   PTR_LONG_TYPE;
+/** If B is the base of an object addressed by P, return the result of aligning P to the next multiple of A + 1; B and P must be of type char *; A + 1 must be a power of 2 */
+#define __BPTR_ALIGN(B, P, A)   ((B) + (((P) - (B) + (A)) & (~(A))))
+/** Similar to _BPTR_ALIGN (B, P, A), except optimize the common case where pointers can be converted to integers, aligned as integers, and converted back again; If PTR_INT_TYPE is narrower than a pointer (e.g., the AS/400), play it safe and compute the alignment relative to B; Otherwise, use the faster strategy of computing the alignment relative to 0 */
+#define __PTR_ALIGN(B, P, A)   __BPTR_ALIGN((((sizeof(PTR_INT_TYPE)) < BYTES_PER_POINTER) ? (B) : (char*)0), P, A)
+
+typedef struct _obstack_chunk {
+	struct _obstack_chunk* prev;  //!< Address of prior chunk or `NULL`
+	char* limit;  //!< 1 past end of this chunk
+	char contents[4];  //!< Objects begin here
+	int pad0;  //!< Padding
+} obstack_chunk_t;
+
+DIAG_PUSH
+IGNORE_WPADDED
+
+/** Control current object in current chunk */
+typedef struct obstack {
+	struct _obstack_chunk* chunk;  //!< Address of current struct obstack_chunk
+	char* object_base;  //!< Address of the object being built
+	char* next_free;  //!< Where to add next char to current object
+	char* chunk_limit;  //!< Address of char after current chunk
+	union obstack_temp_union {
+		PTR_INT_TYPE tempint;
+		void* tempptr;
+	} temp;  //!< Temporary object for some macros
+	struct _obstack_chunk* (*chunkfun)(void*, long);
+	void (*freefun)(void*, struct _obstack_chunk*);
+	void* extra_arg;  //!< First arg for chunk alloc/dealloc funcs
+	long chunk_size;  //!< Preferred size to allocate chunks
+	int alignment_mask;  //!< Mask of alignment for each object
+	unsigned use_extra_arg:1;  //!< Chunk alloc/dealloc funcs take extra arg
+	unsigned maybe_empty_object:1;  //!< There is a possibility that the current chunk contains a zero-length object; This prevents freeing the chunk if a larger chunk is allocated to replace it
+	unsigned alloc_failed:1;  //!< No longer used, but retained for binary compatibility
+} obstack_t;
+
+DIAG_POP
+
+#ifndef __obstack_free
+#   define __obstack_free   obstack_free
+#endif
+
+/** Pointer to beginning of object being allocated or to be allocated next; Note that this might not be the final address of the object because a new chunk might be needed to hold the final size */
+#define obstack_base(h)   ((void*)(h)->object_base)
+/** Size for allocating ordinary chunks */
+#define obstack_chunk_size(h)   ((h)->chunk_size)
+/** Pointer to next byte not yet allocated in current chunk */
+#define obstack_next_free(h)   ((h)->next_free)
+/** Mask specifying low bits that should be clear in address of an object */
+#define obstack_alignment_mask(h)   ((h)->alignment_mask)
+/** To prevent prototype warnings provide complete argument list */
+#define obstack_init(h)   _obstack_begin((h), 0, 0, (void*(*)(long))obstack_chunk_alloc, (void (*)(void*))obstack_chunk_free)
+#define obstack_begin(h, size)   _obstack_begin ((h), (size), 0, (void*(*)(long))obstack_chunk_alloc, (void (*)(void*))obstack_chunk_free)
+#define obstack_specify_allocation(h, size, alignment, chunkfun, freefun)   _obstack_begin ((h), (size), (alignment), (void*(*)(long))(chunkfun), (void (*)(void*))(freefun))
+#define obstack_specify_allocation_with_arg(h, size, alignment, chunkfun, freefun, arg)   _obstack_begin_1((h), (size), (alignment), (void*(*)(void*, long))(chunkfun), (void (*)(void*, void*))(freefun), (arg))
+#define obstack_chunkfun(h, newchunkfun)   ((h)->chunkfun = (struct _obstack_chunk* (*)(void*, long))(newchunkfun))
+#define obstack_freefun(h, newfreefun)   ((h)->freefun = (void(*)(void*, struct _obstack_chunk*))(newfreefun))
+#define obstack_1grow_fast(h, achar)   (*((h)->next_free)++ = (achar))
+#define obstack_blank_fast(h, n)   ((h)->next_free += (n))
+#define obstack_memory_used(h)   _obstack_memory_used((h))
+
+#if IS_GNUC
+
+#   define obstack_object_size(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (unsigned)(__o->next_free - __o->object_base); } while (0x0)
+#   define obstack_room(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (unsigned)(__o->chunk_limit - __o->next_free); } while (0x0)
+#   define obstack_make_room(OBSTACK, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->chunk_limit - __o->next_free < __len) { _obstack_newchunk(__o, __len); } (void)0; } while (0x0)
+#   define obstack_empty_p(OBSTACK)   do { struct obstack const *__o = (OBSTACK); (__o->chunk->prev == 0 && __o->next_free == __PTR_ALIGN((char*) __o->chunk, __o->chunk->contents,  __o->alignment_mask)); } while (0x0)
+#   define obstack_grow(OBSTACK, where, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->next_free + __len > __o->chunk_limit) { _obstack_newchunk(__o, __len); } memcpy_no_output(__o->next_free, where, __len); __o->next_free += __len; (void)0; } while (0x0)
+#   define obstack_grow0(OBSTACK, where, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->next_free + __len + 1 > __o->chunk_limit) { _obstack_newchunk(__o, __len + 1); } memcpy (__o->next_free, where, __len); __o->next_free += __len; *(__o->next_free)++ = 0; (void)0; } while (0x0)
+#   define obstack_1grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + 1 > __o->chunk_limit) { _obstack_newchunk(__o, 1); } obstack_1grow_fast(__o, datum); (void)0; } while (0x0)
+#   define obstack_ptr_grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + SIZEOF_VOID_PTR > __o->chunk_limit) { _obstack_newchunk(__o, SIZEOF_VOID_PTR); } obstack_ptr_grow_fast(__o, datum); } while (0x0)
+#   define obstack_int_grow(OBSTACK, datum)   do { struct obstack* __o = (OBSTACK); if (__o->next_free + BYTES_PER_INT > __o->chunk_limit) { _obstack_newchunk(__o, BYTES_PER_INT); } obstack_int_grow_fast(__o, datum); } while (0x0)
+#   define obstack_ptr_grow_fast(OBSTACK, aptr)   do { struct obstack* __o1 = (OBSTACK); void* __p1 = __o1->next_free; *(const void **) __p1 = (aptr); __o1->next_free += SIZEOF_VOID_PTR; (void)0; } while (0x0)
+#   define obstack_int_grow_fast(OBSTACK, aint)   do { struct obstack* __o1 = (OBSTACK); void* __p1 = __o1->next_free; *(int*) __p1 = (aint); __o1->next_free += BYTES_PER_INT; (void)0; } while (0x0)
+#   define obstack_blank(OBSTACK, length)   do { struct obstack* __o = (OBSTACK); int __len = (length); if (__o->chunk_limit - __o->next_free < __len) { _obstack_newchunk(__o, __len); } obstack_blank_fast (__o, __len); (void)0; } while (0x0)
+#   define obstack_alloc(OBSTACK, length)   do { struct obstack* __h = (OBSTACK); obstack_blank(__h, (length)); obstack_finish (__h); } while (0x0)
+#   define obstack_copy(OBSTACK, where, length)   do { struct obstack* __h = (OBSTACK); obstack_grow(__h, (where), (length)); obstack_finish(__h); } while (0x0)
+#   define obstack_copy0(OBSTACK, where, length)   do { struct obstack* __h = (OBSTACK); obstack_grow0(__h, (where), (length)); obstack_finish(__h); } while (0x0)
+/** The local variable is named __o1 to avoid a name conflict when obstack_blank is called */
+#   define obstack_finish(OBSTACK)   do { struct obstack* __o1 = (OBSTACK); void* __value = (void*) __o1->object_base; if (__o1->next_free == __value) { __o1->maybe_empty_object = 1; } __o1->next_free = __PTR_ALIGN(__o1->object_base, __o1->next_free, __o1->alignment_mask); if (__o1->next_free - (char*) __o1->chunk > __o1->chunk_limit - (char*) __o1->chunk) { __o1->next_free = __o1->chunk_limit; } __o1->object_base = __o1->next_free; __value; } while (0x0)
+#   define obstack_free(OBSTACK, OBJ)   do { struct obstack* __o = (OBSTACK); void* __obj = (OBJ); if (__obj > (void*) __o->chunk && __obj < (void*) __o->chunk_limit)  __o->next_free = __o->object_base = (char*) __obj; else __obstack_free(__o, __obj); } while (0x0)
+
+#else  // Compiler is neither Clang nor GNU-GCC
+
+#   define obstack_object_size(h)   ((unsigned)((h)->next_free - (h)->object_base))
+#   define obstack_room(h)   ((unsigned)((h)->chunk_limit - (h)->next_free))
+#   define obstack_empty_p(h)   ((h)->chunk->prev == 0 && (h)->next_free == __PTR_ALIGN((char*)(h)->chunk, (h)->chunk->contents, (h)->alignment_mask))
+#   define obstack_make_room(h, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0))
+#   define obstack_grow(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint)
+#   define obstack_grow0(h, where, length)   ((h)->temp.tempint = (length), (((h)->next_free + (h)->temp.tempint + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), (h)->temp.tempint + 1), 0) : 0), memcpy((h)->next_free, where, (h)->temp.tempint), (h)->next_free += (h)->temp.tempint, *((h)->next_free)++ = 0)
+#   define obstack_1grow(h, datum)  ((((h)->next_free + 1 > (h)->chunk_limit) ? (_obstack_newchunk((h), 1), 0) : 0), obstack_1grow_fast(h, datum))
+#   define obstack_ptr_grow(h, datum)   ((((h)->next_free + SIZEOF_POINTER > (h)->chunk_limit) ? (_obstack_newchunk((h), SIZEOF_POINTER), 0) : 0), obstack_ptr_grow_fast (h, datum))
+#   define obstack_int_grow(h, datum)   ((((h)->next_free + BYTES_PER_INT > (h)->chunk_limit) ? (_obstack_newchunk((h), BYTES_PER_INT), 0) : 0), obstack_int_grow_fast (h, datum))
+#   define obstack_ptr_grow_fast(h, aptr)   (((const void**)((h)->next_free += SIZEOF_POINTER))[-1] = (aptr))
+#   define obstack_int_grow_fast(h, aint)   (((int*)((h)->next_free += BYTES_PER_INT))[-1] = (aint))
+#   define obstack_blank(h, length)   ((h)->temp.tempint = (length), (((h)->chunk_limit - (h)->next_free < (h)->temp.tempint) ? (_obstack_newchunk((h), (h)->temp.tempint), 0) : 0), obstack_blank_fast (h, (h)->temp.tempint))
+#   define obstack_alloc(h, length)   (obstack_blank((h), (length)), obstack_finish((h)))
+#   define obstack_copy(h, where, length)   (obstack_grow((h), (where), (length)), obstack_finish((h)))
+#   define obstack_copy0(h, where, length)   (obstack_grow0((h), (where), (length)), obstack_finish((h)))
+#   define obstack_finish(h)   (((h)->next_free == (h)->object_base ? (((h)->maybe_empty_object = 1), 0) : 0), (h)->temp.tempptr = (h)->object_base, (h)->next_free = __PTR_ALIGN((h)->object_base, (h)->next_free, (h)->alignment_mask), (((h)->next_free - (char*)(h)->chunk > (h)->chunk_limit - (char*)(h)->chunk) ? ((h)->next_free = (h)->chunk_limit) : 0), (h)->object_base = (h)->next_free, (h)->temp.tempptr)
+#   define obstack_free(h, obj)   ((h)->temp.tempint = (char*)(obj) - (char*)(h)->chunk, ((((h)->temp.tempint > 0 && (h)->temp.tempint < (h)->chunk_limit - (char*)(h)->chunk)) ? (void)((h)->next_free = (h)->object_base = (h)->temp.tempint + (char*)(h)->chunk) : __obstack_free(h, (h)->temp.tempint + (char*)(h)->chunk)))
+
+#endif  // GNUC
+
+
+#endif  // OBSTACK_H
 
 
 /* SIGNAL STACK (<bits/sigstack.h>) */
@@ -14080,7 +12931,7 @@ typedef enum CHAR_CLASSIFICATION {
 #define cc_S   ((unsigned short)(cc_nv | cc_sp | cc_bl | cc_pr))
 
 #if (HOST_CHARSET == HOST_CHARSET_ASCII)  // Is this ASCII?
-static const UNUSED unsigned short align64 cc_istable[256] = {
+static const UNUSED unsigned short cc_istable[256] align512 = {
 	cc_Z, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C,  // NUL SOH STX ETX  EOT ENQ ACK BEL
 	cc_C, cc_T, cc_V, cc_M, cc_M, cc_V, cc_C, cc_C,  // BS  HT  LF  VT FF  CR  SO  SI
 	cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C,  // DLE DC1 DC2 DC3  DC4 NAK SYN ETB
@@ -14103,7 +12954,7 @@ static const UNUSED unsigned short align64 cc_istable[256] = {
 	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
 };
-static const UNUSED unsigned char align64 cc_tolower[256] = {
+static const UNUSED unsigned char cc_tolower[256] align256 = {
 	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
 	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
 	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
@@ -14123,7 +12974,7 @@ static const UNUSED unsigned char align64 cc_tolower[256] = {
 	224U, 225U, 226U, 227U, 228U, 229U, 230U, 231U, 232U, 233U, 234U, 235U, 236U, 237U, 238U, 239U,
 	240U, 241U, 242U, 243U, 244U, 245U, 246U, 247U, 248U, 249U, 250U, 251U, 252U, 253U, 254U, 255U
 };
-static const UNUSED unsigned char align64 cc_toupper[256] = {
+static const UNUSED unsigned char cc_toupper[256] align256 = {
 	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
 	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
 	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
@@ -14517,23 +13368,23 @@ static const UNUSED struct wcasemaps wchar_casemaps[] = {
 	{ 0U, 0, 0U }
 };
 
-static const UNUSED wchar_t wempty[2] = L"";
+static const UNUSED wchar_t wempty[2] align8 = L"";
 
 #include "wctype_table.h"
 
-static const UNUSED unsigned char align64 alpha_table[] = {
+static const UNUSED unsigned char alpha_table[] = {
 #   include "alpha.def"
 };
 
-static const UNUSED unsigned char align64 nonspacing_table[] = {
+static const UNUSED unsigned char nonspacing_table[] = {
 #   include "nonspacing.def"
 };
 
-static const UNUSED unsigned char align64 punct_table[] = {
+static const UNUSED unsigned char punct_table[] = {
 #   include "punct.def"
 };
 
-static const UNUSED unsigned char align64 wide_table[] = {
+static const UNUSED unsigned char wide_table[] = {
 #   include "wide.def"
 };
 
@@ -14543,12 +13394,12 @@ static const UNUSED char* const wchar_properties[WC_TYPE_MAX] = {
 };
 /*@=readonlytrans@*/
 
-static const UNUSED char wchar_class_names[128] = "alnum\0" "alpha\0" "blank\0" "cntrl\0" "digit\0" "graph\0" "lower\0" "print\0" "punct\0" "space\0" "upper\0" "xdigit";
+static const UNUSED char wchar_class_names[128] align128 = "alnum\0" "alpha\0" "blank\0" "cntrl\0" "digit\0" "graph\0" "lower\0" "print\0" "punct\0" "space\0" "upper\0" "xdigit";
 
 /** This definition of whitespace is the Unicode White_Space property, minus non-breaking spaces (U+00A0, U+2007, and U+202F) and script-specific characters with non-blank glyphs (U+1680 and U+180E) */
 static const UNUSED wchar_t wchar_spaces[32] = { ' ', '\t', '\n', '\r', 11, 12, 0x85, 0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2008, 0x2009, 0x200a, 0x2028, 0x2029, 0x205f, 0x3000, 0x0 };
 
-static const UNUSED unsigned short align64 wchar_pairs[128][2] = {
+static const UNUSED unsigned short wchar_pairs[128][2] = {
 	{ 'I',  0x131 }, { 'S', 0x17f }, { 0x130, 'i' }, { 0x178, 0xff },
 	{ 0x181, 0x253 }, { 0x182, 0x183 }, { 0x184, 0x185 }, { 0x186, 0x254 },
 	{ 0x187, 0x188 }, { 0x189, 0x256 }, { 0x18a, 0x257 }, { 0x18b, 0x18c },

@@ -1,3 +1,20 @@
+2019-11-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* fib.c:  Applied minor tweaks
+	* Geany:  Added more keywords for C & JavaScript
+	* isprime.c:  Applied minor tweaks
+	* libregex.py:  Removed unneeded datatypes from `DATATYPES`
+	* MACROS*.h:  Applied improvements & additional optimizations
+	* makefile:  Added additional packages to `LIST_DEV_DEPS` & `LIST_DEV_DOCS` and applied minor tweaks
+	* test_dev.c:  Added math tests
+
+2019-11-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Added `flipchars` & added more dependencies
+	* OptiView:  Added warning and error messages for needed executables
+	* project.mk:  Added `numcommits`
+	* PyBooster:  Added lsmoduleparams
+
 2019-11-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* MACROS*.h:  Applied improvements & additional optimizations

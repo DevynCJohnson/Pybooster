@@ -4,7 +4,7 @@
 /**
 @brief Header for simple yet essential macros
 @file Foundation.h
-@version 2019.10.11
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -7380,104 +7380,7 @@ Maximum value representable as type sig_atomic_t */
 #endif  // ISO646_H
 
 
-/* ATTRIBUTE KEYWORDS */
-
-
-#if (!(defined(ATTRIBUTES_H) || defined(_ATTRIBUTES_H) || defined(_ATTRIBUTES_H_)))
-#define ATTRIBUTES_H   (1)
-#define _ATTRIBUTES_H   (1)
-#define _ATTRIBUTES_H_   (1)
-
-
-// DATATYPE ATTRIBUTES
-
-/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
-#define VECTOR4   __attribute__((__vector_size__(4)))
-/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
-#define VECTOR8   __attribute__((__vector_size__(8)))
-/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
-#define VECTOR16   __attribute__((__vector_size__(16)))
-/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
-#define VECTOR32   __attribute__((__vector_size__(32)))
-/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
-#define VECTOR64   __attribute__((__vector_size__(64)))
-#if (defined(ARCHPOWERPC) && IS_GNUC)
-#   define attr_pixel   unsigned short __attribute__((__altivec__(__pixel__)))
-#   define attr_vector   __attribute__((__altivec__(__vector__)))
-#else
-#   define attr_pixel
-#   define attr_vector
-#endif
-
-
-// TARGET ATTRIBUTES & MACROS
-
-/** @defgroup Build_Target Macros for specifying that a function be built for a particular target
-@{ */  // (FB){
-
-#if IS_GNUC
-// PowerPC
-/** Build specifically for PowerPC7 */
-#   define BUILD_POWER7   __attribute__((__target__("arch=power7")))
-/** Build specifically for PowerPC8 */
-#   define BUILD_POWER8   __attribute__((__target__("arch=power8")))
-/** Build specifically for PowerPC9 */
-#   define BUILD_POWER9   __attribute__((__target__("arch=power9")))
-// x86
-#   define BUILD_CORE2   __attribute__((__target__("arch=core2")))
-#   define BUILD_PENTIUM4   __attribute__((__target__("arch=pentium4")))
-#   define BUILD_SANDYBRIDGE   __attribute__((__target__("arch=sandybridge")))
-#   define BUILD_IVYBRIDGE   __attribute__((__target__("arch=ivybridge")))
-#   define BUILD_HASWELL   __attribute__((__target__("arch=haswell")))
-#   define BUILD_BROADWELL   __attribute__((__target__("arch=broadwell")))
-/** Build specifically for Intel's Skylake processors */
-#   define BUILD_SKYLAKE   __attribute__((__target__("arch=skylake")))
-#   define BUILD_BONNELL   __attribute__((__target__("arch=bonnell")))
-#   define BUILD_SILVERMONT   __attribute__((__target__("arch=silvermont")))
-#   define BUILD_KNL   __attribute__((__target__("arch=knl")))
-/** Build specifically for MMX-supporting processors */
-#   define BUILD_MMX   __attribute__((__target__("mmx")))
-/** Build specifically for SSE-supporting processors */
-#   define BUILD_SSE   __attribute__((__target__("sse")))
-/** Build specifically for SSE3-supporting processors */
-#   define BUILD_SSE3   __attribute__((__target__("sse3")))
-/** Build specifically for SSE4-supporting processors */
-#   define BUILD_SSE4   __attribute__((__target__("sse4")))
-/** Build specifically for AVX-supporting processors */
-#   define BUILD_AVX   __attribute__((__target__("avx")))
-/** Build specifically for AVX2-supporting processors */
-#   define BUILD_AVX2   __attribute__((__target__("avx2")))
-#else
-// PowerPC
-#   define BUILD_POWER7
-#   define BUILD_POWER8
-#   define BUILD_POWER9
-// x86
-#   define BUILD_CORE2
-#   define BUILD_PENTIUM4
-#   define BUILD_SANDYBRIDGE
-#   define BUILD_IVYBRIDGE
-#   define BUILD_HASWELL
-#   define BUILD_BROADWELL
-#   define BUILD_SKYLAKE
-#   define BUILD_BONNELL
-#   define BUILD_SILVERMONT
-#   define BUILD_KNL
-#   define BUILD_MMX
-#   define BUILD_SSE
-#   define BUILD_SSE3
-#   define BUILD_SSE4
-#   define BUILD_AVX
-#   define BUILD_AVX2
-#endif
-
-/** @} */  // }
-
-
-#endif  // ATTRIBUTES_H
-
-
-/* DEFINE KEYWORDS */
+/* KEYWORDS */
 
 
 #if (!(defined(KEYWORDS_H) || defined(_KEYWORDS_H_)))
@@ -7485,11 +7388,6 @@ Maximum value representable as type sig_atomic_t */
 #define _KEYWORDS_H_   (1)
 
 
-#if ((!defined(SUPPORTS_ALIGN_SPECIFIER)) && (defined(__IBM__ALIGN) || IS_GNUC || defined(COMPILER_ILEC)))
-#   define SUPPORTS_ALIGN_SPECIFIER   1
-#elif (!defined(SUPPORTS_ALIGN_SPECIFIER))
-#   define SUPPORTS_ALIGN_SPECIFIER   0
-#endif
 #if ((!defined(SUPPORTS_ATTRIBUTES)) && (defined(__IBM_ATTRIBUTES) || IS_GNUC || defined(COMPILER_ILEC)))
 #   define SUPPORTS_ATTRIBUTES   1
 #elif (!defined(SUPPORTS_ATTRIBUTES))
@@ -7563,6 +7461,9 @@ Maximum value representable as type sig_atomic_t */
 
 // HAS_BUILTIN, HAS_INCLUDE, HAS_INCLUDE_NEXT, HAS_FEATURE, ETC.
 
+/** @defgroup Has_Macros Macros pertaining to the many has_* macros functions
+@{ */  // (FB){
+
 #if (IS_NOT_GNUC && (!defined(__has_attribute)))
 #   define __has_attribute(x)   0
 #endif
@@ -7618,8 +7519,13 @@ Maximum value representable as type sig_atomic_t */
 #   define has_builtin(x)   __has_builtin(x)
 #endif
 
+/** @} */  // }
+
 
 // NULL
+
+/** @defgroup NULL_Keyword The `NULL` keyword
+@{ */  // (FB){
 
 /** @def NULL
 Void pointer */
@@ -7662,8 +7568,13 @@ Void pointer */
 /** Alias for NULL; Void pointer; This is what egcs uses for its global data pointer */
 #define __eh_global_dataptr   NULL
 
+/** @} */  // }
+
 
 // NULL POINTERS
+
+/** @defgroup Null_Pointers Macros for various `NULL` pointers
+@{ */  // (FB){
 
 #if IS_CPLUSPLUS_2011
 #   ifndef _GXX_NULLPTR_T
@@ -7746,6 +7657,8 @@ typedef decltype(nullptr)   nullptr_t;
 #   define NULL_SIZET   ((size_t*)0)
 #endif  // IS_NOT_CPLUSPLUS
 
+/** @} */  // }
+
 
 // NULL, NIL, & VOID MACROS STATEMENTS
 
@@ -7775,6 +7688,9 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 
 // ATTRIBUTE & DECLSPEC KEYWORDS
 
+/** @defgroup Attribute_Keyword Macros pertaining to the `attribute` & `declspec` keywords
+@{ */  // (FB){
+
 #ifdef COMPILER_MICROSOFT
 #   define __attribute__(x)   __declspec((x))
 #   define declspec(x)   __declspec((x))
@@ -7787,8 +7703,13 @@ STMT_END is used to wrap blocks inside macros so that the macro can be used as i
 #   define declspec(x)
 #endif
 
+/** @} */  // }
+
 
 // STATIC_ASSERT KEYWORD
+
+/** @defgroup Static_Assert_Keyword Macros pertaining to the `static_assert` keyword
+@{ */  // (FB){
 
 /** @def static_assert
 Compile-time assertion */
@@ -7800,8 +7721,13 @@ Compile-time assertion */
 #   define _FP_STATIC_ASSERT(expr, msg)
 #endif
 
+/** @} */  // }
+
 
 // THREAD_LOCAL STORAGE KEYWORD
+
+/** @defgroup Thread_Local_Keyword Macros pertaining to the `thread_local` keyword
+@{ */  // (FB){
 
 #if IS_CPLUSPLUS
 #   define __thread   thread_local
@@ -7813,8 +7739,13 @@ Compile-time assertion */
 #define Thread_local   thread_local
 #define _TLS_QUAL   thread_local
 
+/** @} */  // }
+
 
 // AUTO_TYPE KEYWORD
+
+/** @defgroup Auto_Type_Keyword Macros pertaining to the `auto_type` keyword
+@{ */  // (FB){
 
 #if IS_GNUC
 #   define auto_type   __auto_type
@@ -7826,8 +7757,13 @@ Compile-time assertion */
 #define auto_t   auto_type
 #define __auto_type__   auto_type
 
+/** @} */  // }
+
 
 // ATOMIC TYPE QUALIFIER KEYWORD
+
+/** @defgroup Atomic_Keyword Macros pertaining to the `atomic` keyword
+@{ */  // (FB){
 
 #if IS_LINTER
 #   define _Atomic
@@ -7844,8 +7780,13 @@ Compile-time assertion */
 #   define _atomic
 #endif
 
+/** @} */  // }
+
 
 // RESTRICT TYPE QUALIFIER KEYWORD
+
+/** @defgroup Restrict_Keyword Macros pertaining to the `restrict` keyword
+@{ */  // (FB){
 
 #if IS_GNUC
 #   define restrict   __restrict__
@@ -7863,12 +7804,835 @@ Compile-time assertion */
 #endif
 #define _Restrict   restrict
 
+/** @} */  // }
+
 
 // VOLATILE TYPE QUALIFIER KEYWORD
 
 #if IS_ANSI
 #   define __volatile    __volatile__
 #   define volatile    __volatile__
+#endif
+
+
+// ASM KEYWORD
+
+/** @defgroup Asm_Keyword Macros pertaining to the `asm` keyword
+@{ */  // (FB){
+
+#if IS_LINTER
+#   define asm    /*@i@*/  //
+#   define __asm__    /*@i@*/  //
+#elif IS_NOT_GNUC
+#   define __asm__    asm
+#elif IS_GNUC
+#   define asm    __asm__
+#endif
+#define __asm    asm
+#if IS_LINTER
+#   define vasm(...)    /*@i@*/  //
+#else
+#   define vasm(...)   asm volatile (__VA_ARGS__)
+#endif
+#ifndef __USER_LABEL_PREFIX__
+#   define __USER_LABEL_PREFIX__   _
+#endif
+#ifndef USER_LABEL_PREFIX
+#   define USER_LABEL_PREFIX   __USER_LABEL_PREFIX__
+#endif
+#ifdef __REGISTER_PREFIX__
+#   define __REG_PREFIX__   __REGISTER_PREFIX__
+#else
+/** Assembly register prefix */
+#   define __REG_PREFIX__   %%
+/** Assembly register prefix */
+#   define __REGISTER_PREFIX__   %%
+#endif
+#ifndef __SYMBOL_PREFIX
+#   define __SYMBOL_PREFIX
+#endif
+#ifndef C_SYMBOL_NAME
+#   define C_SYMBOL_NAME(name)   name
+#endif
+#ifdef HAVE_SECTION_QUOTES
+#   define __sec_comment   "\"\n\t#\""
+#else
+#   define __sec_comment   "\n\t#"
+#endif
+#ifndef MODULE_NAME
+#   define MODULE_NAME   "libc"
+#endif
+/** The symbol used to separate assembly commands */
+#define ASM_LINE_SEP   ;
+#define __CLOBBER_CC   : "cc"
+#define CLOBBER_CC   : "cc"
+#define __AND_CLOBBER_CC   , "cc"
+#define AND_CLOBBER_CC   , "cc"
+#define ASM_GLOBAL_DIRECTIVE   .global
+/** Use the correct prefix for global labels */
+#define SYM(sym)   CONCAT(__USER_LABEL_PREFIX__, sym)
+/** Use the correct prefix for registers */
+#define REG(sym)   CONCAT(__REG_PREFIX__, sym)
+#define __ASMNAME2(prefix, sym)   __STRING(prefix) sym
+#define __ASMNAME(sym)   __ASMNAME2(__USER_LABEL_PREFIX__, sym)
+#define __REDIRECT(sym, proto, aliasname)   sym proto asm (__ASMNAME(#aliasname))
+#if IS_CPLUSPLUS
+#   define __REDIRECT_NTH(sym, proto, aliasname)   sym proto __THROW asm (__ASMNAME(#aliasname))
+#   define __REDIRECT_NTHNL(sym, proto, aliasname)   sym proto __THROWNL asm (__ASMNAME(#aliasname))
+#else
+#   define __REDIRECT_NTH(sym, proto, aliasname)   sym proto asm (__ASMNAME(#aliasname)) __THROW
+#   define __REDIRECT_NTHNL(sym, proto, aliasname)    sym proto asm (__ASMNAME(#aliasname)) __THROWNL
+#endif
+
+/** @} */  // }
+
+
+// SIZEOF KEYWORD & MACROS
+
+/** @defgroup Sizeof_Keyword Macros pertaining to the `sizeof` keyword
+@{ */  // (FB){
+
+/** The type of sizeof may be (unsigned) long on some systems; Use the following macro for getting datatype sizes when expecting sizeof to return an int */
+#define usizeof(datatype)   ((unsigned)sizeof(datatype))
+#define __sizeof__(OBJECT)   sizeof((OBJECT))
+#define __sizeof(OBJECT)   sizeof((OBJECT))
+#define _sizeof(OBJECT)   sizeof((OBJECT))
+/** Return the number of bits used by the given datatype */
+#define _TYPEBITS(datatype)   (sizeof(datatype) * NBBY)
+/** Return the number of bits used by the given datatype */
+#define TYPEBITS(datatype)   _TYPEBITS(datatype)
+/** Return the number of bits used by the given datatype */
+#define TYPE_BIT(datatype)   _TYPEBITS(datatype)
+/** Calculate the minimum signed integer value that can be represented with the given data */
+#define __type_min_s(t)   ((t)((t)1 << ((sizeof(t) * NBBY) - 1)))
+/** Calculate the minimum signed integer value that can be represented with the given data */
+#define type_min_s(t)   __type_min_s(t)
+/** Calculate the maximum signed integer value that can be represented with the given data */
+#define __type_max_s(t)   ((((t)1 << (sizeof(t) * NBBY - 2)) - 1) * 2 + 1)
+/** Calculate the maximum signed integer value that can be represented with the given data */
+#define type_max_s(t)   __type_max_s(t)
+/** Calculate the minimum unsigned integer value that can be represented with the given data */
+#define __type_min_u(t)   (0)
+/** Calculate the minimum unsigned integer value that can be represented with the given data */
+#define type_min_u(t)   (0)
+/** Calculate the maximum unsigned integer value that can be represented with the given data */
+#define __type_max_u(t)   ((t)~(t)0)
+/** Calculate the maximum unsigned integer value that can be represented with the given data */
+#define type_max_u(t)   __type_max_u(t)
+/** Test if the given data is signed */
+#define issigned(t)   (((t) <= 0 && (t) != 0) || ((t) == 0 && ((~(t)) < 8)) || ((-(t)) < ((t) * 0)))
+/** Test if the given datatype is signed */
+#define __type_is_signed(t)   (((t)(-1)) < ((t)4))
+/** Test if the given datatype is signed */
+#define type_is_signed(t)   __type_is_signed(t)
+/** Return true if the datatype is signed */
+#define TYPE_SIGNED(t)   __type_is_signed(t)
+/** Calculate the minimum integer value that can be represented with the given datatype */
+#define __type_min(t)   (__type_is_signed(t) ? __type_min_s(t) : (t)0)
+/** Calculate the minimum integer value that can be represented with the given datatype */
+#define type_min(t)   __type_min(t)
+/** Calculate the maximum integer value that can be represented with the given datatype */
+#define __type_max(t)   (__type_is_signed(t) ? __type_max_s(t) : ((t)~((t)0)))
+/** Calculate the maximum integer value that can be represented with the given datatype */
+#define type_max(t)   __type_max(t)
+/** Test if the given datatype is a native datatype (by size) */
+#define __native_word(t)   (sizeof(t) == SIZEOF_CHAR || sizeof(t) == SIZEOF_SHORT || sizeof(t) == SIZEOF_INT || sizeof(t) == SIZEOF_LONG || sizeof(t) == SIZEOF_LONG_LONG)
+/** Test if the given datatype is a native datatype (by size) */
+#define is_native_word(x)   __native_word(x)
+#define __type_mask(t)   ((sizeof(t) < SIZEOF_INTMAX_T) ? (~((1ULL << (sizeof(t) * NBBY)) - 1)) : 0ULL)
+#define type_mask(t)   __type_mask(t)
+/** Return the length of a constant string */
+#define constant_strlen(x)   (sizeof(x) - sizeof(""))
+/** Return the length of a constant string */
+#define CONSTANT_STRLEN(x)   (sizeof(x) - sizeof(""))
+/** Return the length of a constant wide-string */
+#define constant_wstrlen(x)   (sizeof(x) - sizeof(L""))
+/** Return the length of a constant wide-string */
+#define CONSTANT_WSTRLEN(x)   (sizeof(x) - sizeof(L""))
+/** Return the length of a constant unicode string */
+#define constant_ustrlen(x)   (sizeof(x) - sizeof(U""))
+/** Return the length of a constant unicode string */
+#define CONSTANT_USTRLEN(x)   (sizeof(x) - sizeof(U""))
+
+// ARRAY SIZES
+
+#define ARRAYLEN(arrayname)   ((sizeof(arrayname) / sizeof(*arrayname)))
+#define ARRAYITEMSIZE(arrayname)   sizeof(*arrayname)
+/** Return the size of a statically-allocated array */
+#define GETARRAYSIZE(arrayname)   sizeof(arrayname)
+/** Return the number of items in a statically-allocated array */
+#define __arraycount(arrayname)   (sizeof(arrayname) / sizeof(arrayname[0]))
+#ifndef nitems
+/** Return the number of items in a statically-allocated array */
+#   define nitems(arrayname)   __arraycount(arrayname)
+#endif
+/** Return the number of items in a statically-allocated array */
+#define nelem(x)   __arraycount(arrayname)
+
+/** @} */  // }
+
+
+// TYPEOF KEYWORD
+
+/** @defgroup Typeof_Keyword Macros pertaining to the `typeof` keyword
+@{ */  // (FB){
+
+#if SUPPORTS_TYPEOF
+#   define typeof(OBJECT)   __typeof__(OBJECT)
+#   define __typeof(OBJECT)   __typeof__(OBJECT)
+#elif IS_NOT_GNUC
+#   define __typeof__(OBJECT)   typeof(OBJECT)
+#   define __typeof(OBJECT)   typeof(OBJECT)
+#else
+#   define __typeof__(OBJECT)
+#   define __typeof(OBJECT)
+#   define typeof(OBJECT)
+#endif
+#define _typeof(OBJECT)   __typeof(OBJECT)
+/** Alias for "typeof" */
+#define GetType(OBJECT)   typeof(OBJECT)
+/** `1` if 'type' is a pointer type, `0` otherwise */
+#define __pointer_type(type)   (__builtin_classify_type((type)0) == 5)
+/** `1` if 'type' is a pointer type, `0` otherwise */
+#define pointer_type(type)   __pointer_type(type)
+/** `1` if 'data' is a pointer type, `0` otherwise */
+#define is_pointer(data)   (__builtin_classify_type(data) == 5)
+/** `1` if 'data' is an array, `0` otherwise */
+#define is_array(data)   (__builtin_classify_type(data) == array_type_class)
+/** `1` if 'data' is an union, `0` otherwise */
+#define is_union(data)   (__builtin_classify_type(data) == union_type_class)
+/** Test if the value is negative */
+#define __negative_p(x)   ((x) < 0)
+/** Test if the value is negative */
+#define is_negative(x)   ((x) < 0)
+/** Test if the value is positive */
+#define is_positive(x)   ((x) >= 0)
+/** Return true if value 'a' fits in the unsigned type 't' */
+#define __type_fit_u(t, a)   (is_positive(a) && (__UINTMAX_TYPE__)((unsigned long long)(a) + __zeroull()) <= (__UINTMAX_TYPE__)__type_max_u(t))
+/** Return true if value 'a' fits in the signed type 't' */
+#define __type_fit_s(t, a)   (is_negative(a) ? ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)__type_min_s(t)) : ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)0 && (__INTMAX_TYPE__)((a) + __zeroll()) <= (__INTMAX_TYPE__)__type_max_s(t)))
+/** Return true if value 'a' fits in type 't' */
+#define __type_fit(t, a)   (__type_is_signed(t) ? __type_fit_s(t, a) : __type_fit_u(t, a))
+
+/** @} */  // }
+
+
+// INLINE, FORCEINLINE, EXTERN_INLINE, & RELATED INLINE ATTRIBUTES
+
+/** @defgroup Inline_Attributes Attributes controlling the inlining of code
+@{ */  // (FB){
+
+#if (defined(OSWINDOWS) && defined(COMPILER_MICROSOFT))  // inline & forceinline
+// As of MSVC 2013, inline and restrict are supported with non-standard keywords
+#   ifndef inline
+#      define inline   __inline
+#   endif
+/** Alias for "inline" on systems that lack "__forceinline" */
+#   define __forceinline    inline
+#else
+#   ifndef __inline
+/** Alias for "inline" on systems that lack "__inline" */
+#      define __inline    inline
+#   endif
+#   ifndef __forceinline
+#      if IS_GNUC
+/** Alias for "inline" on systems that lack "__forceinline" */
+#         define __forceinline    inline __attribute__((__always_inline__))
+#      else
+/** Alias for "inline" on systems that lack "__forceinline" */
+#         define __forceinline    inline
+#      endif  // IS_GNUC
+#   endif  // __forceinline
+#endif  // inline & forceinline
+#ifndef INLINE
+/** Alias for "inline" on systems that lack "INLINE" */
+#   define INLINE   inline
+#endif
+#ifndef __inline__
+/** Alias for "inline" on systems that lack "__inline__" */
+#   define __inline__    inline
+#endif
+#ifndef forceinline
+/** Alias for "__forceinline" on systems that lack "forceinline" */
+#   define forceinline   __forceinline
+#endif
+#ifndef __always_inline
+/** Alias for "__forceinline" on systems that lack "__always_inline" */
+#   define __always_inline   __forceinline
+#endif
+#ifndef __header_always_inline
+/** Alias for "__forceinline" on systems that lack "__header_always_inline" */
+#   define __header_always_inline   __forceinline
+#endif
+#ifndef header_always_inline
+/** Alias for "__forceinline" on systems that lack "header_always_inline" */
+#   define header_always_inline   __forceinline
+#endif
+#ifndef __header_inline
+#   define __header_inline   inline
+#endif
+#if IS_GNUC  // noinline
+/** Do not inline function */
+#   define __noinline   __attribute__((__noinline__))
+#else
+#   define __noinline
+#endif
+#define DECLSPEC_NOINLINE   __noinline
+#define _NOINLINE   __noinline
+#ifndef noinline
+/** Do not inline function */
+#   define noinline   __noinline
+#endif
+/** Do not inline static function */
+#define NOINLINE_STATIC   noinline static
+#if (IS_GNUC && ((defined(__GNUC_STDC_INLINE__) && (__GNUC_STDC_INLINE__ > 0)) || (defined(__GNUC_GNU_INLINE__) && (__GNUC_GNU_INLINE__ > 0))))  // __c99inline
+/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
+#   define __c99inline   extern __attribute__((__gnu_inline__)) inline
+#elif IS_GNUC
+/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
+#   define __c99inline   extern inline
+#elif defined(__STDC_VERSION__)
+/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
+#   define __c99inline   inline
+#else
+/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
+#   define __c99inline
+#endif  // __c99inline
+#if IS_GNUC
+#   define __gnu_inline   __attribute__((__gnu_inline__))
+#else
+#   define __gnu_inline
+#endif
+#define __BIONIC_FORTIFY_INLINE   __c99inline
+#ifndef __ATOMIC_INLINE__
+#   define __ATOMIC_INLINE__   static forceinline
+#endif
+/** Alias for "extern inline" */
+#define extern_inline   __c99inline
+/** Similar to "extern inline", but always inline */
+#define extern_always_inline   extern __always_inline
+#ifndef _EXTERN_INLINE
+/** Alias for "extern inline" */
+#   define _EXTERN_INLINE   extern_inline
+#endif
+#define __static_inline   static inline __gnu_inline
+#ifndef static_inline
+#   define static_inline   __static_inline
+#endif
+#if IS_GNUC  // __must_inline
+#   define __must_inline   extern inline __attribute__((__always_inline__))
+#else
+#   define __must_inline   inline
+#endif
+#define must_inline   __must_inline
+#if (IS_GNUC && ((!defined(__GNUC_STDC_INLINE__)) || (__GNUC_STDC_INLINE__ == 0)))  // ELIDABLE_INLINE
+#   define ELIDABLE_INLINE   extern inline __attribute__((__always_inline__))
+#else
+#   define ELIDABLE_INLINE   static inline
+#endif  // ELIDABLE_INLINE
+#if IS_CPLUSPLUS
+#   define __MATH_INLINE   inline
+#else
+#   define __MATH_INLINE   extern inline
+#endif
+
+/** @} */  // }
+
+
+// C++ MACROS
+
+/** @defgroup CPP_Macros Macros for various C++ keywords
+@{ */  // (FB){
+
+#undef __P
+#if (defined(__STDC__) || IS_CPLUSPLUS)
+/** Handle function prototypes (ANSI C or K&R C) */
+#   define __P(protos)   protos  // ANSI C prototypes
+#else
+/** Handle function prototypes (ANSI C or K&R C) */
+#   define __P(protos)   ()  // K&R C preprocessor
+#endif
+#ifdef __v810__
+#   define const
+#endif
+// Support ANSI and non-ANSI environments (<_ansi.h>)
+#if _HAVE_STDC
+#   define _PTR   void*
+#   define _AND    ,
+#   define _NOARGS   void
+#   define _CONST   const
+#   define _VOLATILE   volatile
+#   define _SIGNED   signed
+#   define _DOTS   , ...
+#   define _VOID   void
+#   define __const   const
+#   define __signed   signed
+#   ifndef __volatile
+#      define __volatile   volatile
+#   endif
+#   if ((IS_CPLUSPLUS || defined(COMPILER_PCC)) && (!defined(__inline)))
+#      define __inline   inline
+#   elif (IS_NOT_GNUC && (!defined(__inline)))
+#      define __inline
+#   endif
+#   define _DEFUN(name, arglist, args)   name(args)
+#   define _DEFUN_VOID(name)   name(_NOARGS)
+#   define _CAST_VOID   (void)
+#   ifndef _PARAMS
+#      define _PARAMS(paramlist)    paramlist
+#   endif
+#else  // Not _HAVE_STDC
+#   if IS_NOT_GNUC
+#      ifndef __const
+#         define __const
+#      endif
+#      ifndef __inline
+#         define __inline
+#      endif
+#      ifndef __signed
+#         define __signed
+#      endif
+#      ifndef __volatile
+#         define __volatile
+#      endif
+#   elif (!defined(NO_ANSI_KEYWORDS))
+#      define const   __const
+#      define inline   __inline
+#      define signed   __signed
+#      define volatile   __volatile
+#   endif
+#   define _PTR   char*
+#   define _AND   ;
+#   define _NOARGS
+#   define _CONST
+#   define _VOLATILE
+#   define _SIGNED
+#   define _DOTS
+#   define _VOID   void
+#   define _EXFUN(name, proto)   name()
+#   define _EXFUN_NOTHROW(name, proto)   name()
+#   define _DEFUN(name, arglist, args)   name arglist args;
+#   define _DEFUN_VOID(name)   name()
+#   define _CAST_VOID
+#   ifndef _PARAMS
+#      define _PARAMS(paramlist)
+#   endif
+#endif  // ANSI
+#ifndef CONSTANT
+#   define CONSTANT   const
+#endif
+#ifndef CONST
+#   define CONST   const
+#endif
+#ifndef __writeonly
+#   define __writeonly   const
+#endif
+#ifndef __gmp_const
+#   define __gmp_const   const
+#endif
+#define tSCC   static const char
+#define tCC   const char
+#define tSC   static char
+#ifdef LINTER_AUDIT
+/** Used for internal auditing of the NetBSD source tree */
+#   define __aconst   const
+#else
+/** Used for internal auditing of the NetBSD source tree */
+#   define __aconst
+#endif
+#ifndef aconst
+/** Used for internal auditing of the NetBSD source tree */
+#   define aconst   __aconst
+#endif
+#if IS_NOT_CPLUSPLUS
+#   define __static_cast(x, y)   (x)y
+#   define __CAST(__dt, __st)   ((__dt)(__st))
+/** Perform the declaration with C linkage */
+#   define _GL_EXTERN_C
+#   ifndef __BEGIN_DECLS
+#      define __BEGIN_DECLS
+#   endif
+#   ifndef __END_DECLS
+#      define __END_DECLS
+#   endif
+#   ifndef __BEGIN_EXTERN_C
+#      define __BEGIN_EXTERN_C
+#   endif
+#   ifndef __END_EXTERN_C
+#      define __END_EXTERN_C
+#   endif
+#   define __BEGIN_NAMESPACE_STD
+#   define __END_NAMESPACE_STD
+#   define __USING_NAMESPACE_STD(name)
+#   define __BEGIN_NAMESPACE_C99
+#   define __END_NAMESPACE_C99
+#   define __USING_NAMESPACE_C99(name)
+#else  // C++ needs to know that types and declarations are C, not C++
+#   define __static_cast(x, y)   static_cast<x>(y)
+#   define __CAST(__dt, __st)   static_cast<__dt>(__st)
+/** Perform the declaration with C linkage */
+#   define _GL_EXTERN_C   extern "C"
+#   ifndef __BEGIN_DECLS
+#      define __BEGIN_DECLS   extern "C" {
+#   endif
+#   ifndef __END_DECLS
+#      define __END_DECLS   }
+#   endif
+#   ifndef __BEGIN_EXTERN_C
+#      define __BEGIN_EXTERN_C   extern "C" {
+#   endif
+#   ifndef __END_EXTERN_C
+#      define __END_EXTERN_C   }
+#   endif
+#   ifndef __BEGIN_NAMESPACE_STD
+/** C++ standard namespace */
+#      define __BEGIN_NAMESPACE_STD   namespace std {
+/** End of C++ standard namespace */
+#      define __END_NAMESPACE_STD   }
+#      define __USING_NAMESPACE_STD(name)   using std::name;
+#      define __BEGIN_NAMESPACE_C99   namespace __c99 {
+#      define __END_NAMESPACE_C99   }
+#      define __USING_NAMESPACE_C99(name)   using __c99::name;
+#   endif  // __BEGIN_NAMESPACE_STD
+#endif  // IS_NOT_CPLUSPLUS
+#define _EXTERN_C   __BEGIN_DECLS
+#define _END_EXTERN_C   __END_DECLS
+#if (IS_CPLUSPLUS && (!defined(EXPORTED_CONST)))
+#   define EXPORTED_CONST   extern const
+#elif (!defined(EXPORTED_CONST))
+#   define EXPORTED_CONST   const
+#endif
+#ifdef COMPILER_GNU_GCC  // __BEGIN_PUBLIC_DECLS
+#   define __BEGIN_PUBLIC_DECLS   _Pragma("GCC visibility push(default)") __BEGIN_EXTERN_C
+#   define __END_PUBLIC_DECLS   __END_EXTERN_C _Pragma("GCC visibility pop")
+#   define __BEGIN_HIDDEN_DECLS   _Pragma("GCC visibility push(hidden)") __BEGIN_EXTERN_C
+#   define __END_HIDDEN_DECLS   __END_EXTERN_C _Pragma("GCC visibility pop")
+#elif defined(COMPILER_CLANG)
+#   define __BEGIN_PUBLIC_DECLS   _Pragma("clang visibility push(default)") __BEGIN_EXTERN_C
+#   define __END_PUBLIC_DECLS   __END_EXTERN_C _Pragma("clang visibility pop")
+#   define __BEGIN_HIDDEN_DECLS   _Pragma("clang visibility push(hidden)") __BEGIN_EXTERN_C
+#   define __END_HIDDEN_DECLS   __END_EXTERN_C _Pragma("clang visibility pop")
+#else
+#   define __BEGIN_PUBLIC_DECLS   __BEGIN_EXTERN_C
+#   define __END_PUBLIC_DECLS   __END_EXTERN_C
+#   define __BEGIN_HIDDEN_DECLS   __BEGIN_EXTERN_C
+#   define __END_HIDDEN_DECLS   __END_EXTERN_C
+#endif
+#ifndef __CASTV
+#   define __CASTV(__dt, __st)   __CAST(__dt, __CAST(void*, __st))
+#endif
+#ifndef CASTV
+#   define CASTV(__dt, __st)   __CAST(__dt, __CAST(void*, __st))
+#endif
+#ifndef __CASTCV
+#   define __CASTCV(__dt, __st)   __CAST(__dt, __CAST(const void*, __st))
+#endif
+#ifndef CASTCV
+#   define CASTCV(__dt, __st)   __CAST(__dt, __CAST(const void*, __st))
+#endif
+#ifndef __cast__
+#   define __cast__(_to)
+#endif
+#ifndef __CAST_AWAY_QUALIFIER
+/** This macro casts away the qualifier from the variable; Note: Use at your own risk, removing qualifiers can result in catastrophic run-time failures */
+#   define __CAST_AWAY_QUALIFIER(variable, qualifier, type)   type (long)variable
+#endif
+#ifndef CAST_AWAY_QUALIFIER
+/** This macro casts away the qualifier from the variable; Note: Use at your own risk, removing qualifiers can result in catastrophic run-time failures */
+#   define CAST_AWAY_QUALIFIER(variable, qualifier, type)   type (long)variable
+#endif
+#if IS_CPLUSPLUS
+#   define __THROW   throw()
+#   define __THROWNL   throw()
+#   define __NTH(fct)   fct throw()
+#else  // C
+#   define __THROW
+#   define __THROWNL
+#   define __NTH(fct)   fct
+#endif
+#if (IS_CPLUSPLUS && IS_GNUC)  // _NOTHROW
+#   define _NOTHROW   __attribute__((__nothrow__))
+#else
+#   define _NOTHROW
+#endif
+
+/** @} */  // }
+
+
+// GENERIC KEYWORD
+
+/** @defgroup Generic_Keyword Macros pertaining to the `Generic` keyword
+@{ */  // (FB){
+
+#ifndef Generic
+/** Alias for "_Generic" on systems that lack "Generic" */
+#   define Generic    _Generic
+#endif
+#define IS_CHAR(x)   Generic ((x), signed char: 1, unsigned char: 1, default: 0)
+#define IS_STRING(x)   Generic ((x), const char*: 1, const signed char*: 1, const unsigned char*: 1, char* const: 1, signed char* const: 1, unsigned char* const: 1, const char* const: 1, const signed char* const: 1, const unsigned char* const: 1, char*: 1, signed char*: 1, unsigned char*: 1, default: 0)
+#define IS_SHORT(x)   Generic ((x), short: 1, unsigned short: 1, default: 0)
+#define IS_INT(x)   Generic ((x), int: 1, unsigned int: 1, default: 0)
+#define IS_LONG(x)   Generic ((x), long: 1, unsigned long: 1, default: 0)
+#define IS_LONG_LONG(x)   Generic ((x), long long: 1, unsigned long long: 1, default: 0)
+#if SUPPORTS_FLOAT16
+#   define IS_FLT16(x)   Generic ((x), float16: 1, default: 0)
+#   define _IS_SCALAR_FLOAT16_   float16: 1,
+#   define _TYPENAME_FLOAT16_   float16: "float16",
+#else
+#   define IS_FLT16(x)   0
+#   define _IS_SCALAR_FLOAT16_
+#   define _TYPENAME_FLOAT16_
+#endif
+#define IS_FLT(x)   Generic ((x), float: 1, default: 0)
+#define IS_DBL(x)   Generic ((x), double: 1, default: 0)
+#if SUPPORTS_LONG_DOUBLE
+#   define IS_LDBL(x)   Generic ((x), long double: 1, default: 0)
+#   define _IS_SCALAR_LONG_DOUBLE_   long double: 1,
+#   define _TYPENAME_LONG_DOUBLE_   long double: "long double",
+#else
+#   define IS_LDBL(x)   0
+#   define _IS_SCALAR_LONG_DOUBLE_
+#   define _TYPENAME_LONG_DOUBLE_
+#endif
+#if (SUPPORTS_FLOAT128 && (!LDBL_EQ_FLOAT128))
+#   define IS_FLT128(x)   Generic ((x), float128: 1, default: 0)
+#   define _IS_SCALAR_FLOAT128_   float128: 1,
+#   define _TYPENAME_FLOAT128_   float128: "float128",
+#elif LDBL_EQ_FLOAT128
+#   define IS_FLT128(x)   IS_LDBL(x)
+#   define _IS_SCALAR_FLOAT128_
+#   define _TYPENAME_FLOAT128_
+#else
+#   define IS_FLT128(x)   0
+#   define _IS_SCALAR_FLOAT128_
+#   define _TYPENAME_FLOAT128_
+#endif
+#define IS_BINFLT(x)   (IS_FLT(x) || IS_DBL(x) || IS_LDBL(x) || IS_FLT16(x) || IS_FLT128(x))
+#if SUPPORTS_DECIMAL_FLOATS
+#   define IS_DEC32(x)   Generic ((x), decimal32: 1, default: 0)
+#   define IS_DEC64(x)   Generic ((x), decimal64: 1, default: 0)
+#   define _IS_SCALAR_DECIMAL_FLOAT_   decimal32: 1, decimal64: 1,
+#   define _TYPENAME_DECIMAL_FLOAT_   decimal32: "decimal32", decimal64: "decimal64",
+#else
+#   define _IS_SCALAR_DECIMAL_FLOAT_
+#   define _TYPENAME_DECIMAL_FLOAT_
+#endif
+#if SUPPORTS_DECIMAL128
+#   define IS_DEC128(x)   Generic ((x), decimal128: 1, default: 0)
+#   define IS_DEC(x)   (IS_DEC32(x) || IS_DEC64(x) || IS_DEC128(x))
+#   define IS_REAL(x)   (IS_BINFLT(x) || IS_DEC(x))
+#   define _IS_SCALAR_DECIMAL128_   decimal128: 1,
+#   define _TYPENAME_DECIMAL128_   decimal128: "decimal128",
+#elif SUPPORTS_DECIMAL_FLOATS
+#   define IS_DEC(x)   (IS_DEC32(x) || IS_DEC64(x))
+#   define IS_REAL(x)   (IS_BINFLT(x) || IS_DEC(x))
+#   define _IS_SCALAR_DECIMAL128_
+#   define _TYPENAME_DECIMAL128_
+#else
+#   define IS_REAL(x)   IS_BINFLT(x)
+#   define _IS_SCALAR_DECIMAL128_
+#   define _TYPENAME_DECIMAL128_
+#endif
+#if SUPPORTS_COMPLEX
+#   define IS_CXFLT(x)   Generic ((x), complex_float: 1, default: 0)
+#   define IS_CXDBL(x)   Generic ((x), complex_double: 1, default: 0)
+#   define _IS_SCALAR_COMPLEX_   complex_float: 1, complex_double: 1,
+#   define _TYPENAME_COMPLEX_   complex_float: "complex_float", complex_double: "complex_double",
+#else
+#   define _IS_SCALAR_COMPLEX_
+#   define _TYPENAME_COMPLEX_
+#endif
+#if SUPPORTS_COMPLEX_LDBL
+#   define IS_CXLDBL(x)   Generic ((x), complex_long_double: 1, default: 0)
+#   define IS_CX(x)   (IS_CXFLT(x) || IS_CXDBL(x) || IS_CXLDBL(x))
+#   define IS_CMPLX(x)   IS_CX(x)
+#   define IS_FP(x)   (IS_REAL(x) || IS_CMPLX(x))
+#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_   complex_long_double: 1,
+#   define _TYPENAME_COMPLEX_LONG_DOUBLE_   complex_long_double: "complex_long_double",
+#elif SUPPORTS_COMPLEX
+#   define IS_CX(x)   (IS_CXFLT(x) || IS_CXDBL(x))
+#   define IS_CMPLX(x)   IS_CX(x)
+#   define IS_FP(x)   (IS_REAL(x) || IS_CMPLX(x))
+#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_
+#   define _TYPENAME_COMPLEX_LONG_DOUBLE_
+#else
+#   define IS_FP(x)   IS_REAL(x)
+#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_
+#   define _TYPENAME_COMPLEX_LONG_DOUBLE_
+#endif
+#if SUPPORTS_STDFIX
+#   define IS_ACCUM(x)   Generic ((x), _Accum: 1, _Sat _Accum: 1, default: 0)
+#   define IS_FRACT(x)   Generic ((x), _Fract: 1, _Sat _Fract: 1, default: 0)
+#   define IS_SAT(x)   Generic ((x), _Sat _Accum: 1, _Sat _Fract: 1, default: 0)
+#   define _IS_ACCUM_   _Accum: 1,
+#   define _IS_FRACT_   _Fract: 1,
+#   define _IS_SAT_   _Sat _Accum: 1, _Sat _Fract: 1,
+#   define _IS_STDFIX_   _IS_ACCUM_ _IS_FRACT_ _IS_SAT_
+#   define _TYPENAME_ACCUM_   _Accum: "_Accum",
+#   define _TYPENAME_FRACT_   _Fract: "_Fract",
+#   define _TYPENAME_SAT_   _Sat _Accum: "_Sat _Accum", _Sat _Fract: "_Sat _Fract",
+#   define _TYPENAME_STDFIX_   _Accum: "_Accum", _Sat _Accum: "_Sat _Accum", _Fract: "_Fract", _Sat _Fract: "_Sat _Fract",
+#else
+#   define IS_ACCUM(x)
+#   define IS_FRACT(x)
+#   define IS_SAT(x)
+#   define _IS_ACCUM_
+#   define _IS_FRACT_
+#   define _IS_SAT_
+#   define _IS_STDFIX_
+#   define _TYPENAME_ACCUM_
+#   define _TYPENAME_FRACT_
+#   define _TYPENAME_SAT_
+#   define _TYPENAME_STDFIX_
+#endif
+#define is_scalar(type)   Generic ((type), \
+	signed char: 1, \
+	unsigned char: 1, \
+	short: 1, \
+	unsigned short: 1, \
+	int: 1, \
+	unsigned int: 1, \
+	long: 1, \
+	unsigned long: 1, \
+	long long: 1, \
+	unsigned long long: 1, \
+	_IS_SCALAR_FLOAT16_ \
+	float: 1, \
+	double: 1, \
+	_IS_SCALAR_LONG_DOUBLE_ \
+	_IS_SCALAR_FLOAT128_ \
+	_IS_SCALAR_DECIMAL_FLOAT_ \
+	_IS_SCALAR_DECIMAL128_ \
+	_IS_SCALAR_COMPLEX_ \
+	_IS_SCALAR_COMPLEX_LONG_DOUBLE_ \
+	_IS_STDFIX_ \
+	default: 0 \
+)
+/** Return the datatype of the given variable */
+#define typename(type)   Generic ((type), \
+	signed char: "signed char", \
+	unsigned char: "unsigned char", \
+	short: "short", \
+	unsigned short: "unsigned short", \
+	int: "int", \
+	unsigned int: "unsigned int", \
+	long: "long", \
+	unsigned long: "unsigned long", \
+	long long: "long long", \
+	unsigned long long: "unsigned long long", \
+	_TYPENAME_FLOAT16_ \
+	float: "float", \
+	double: "double", \
+	_TYPENAME_LONG_DOUBLE_ \
+	_TYPENAME_FLOAT128_ \
+	_TYPENAME_DECIMAL_FLOAT_ \
+	_TYPENAME_DECIMAL128_ \
+	_TYPENAME_COMPLEX_ \
+	_TYPENAME_COMPLEX_LONG_DOUBLE_ \
+	_TYPENAME_STDFIX_ \
+	char*: "pointer to char", \
+	signed char*: "pointer to signed char", \
+	unsigned char*: "pointer to unsigned char", \
+	const char*: "pointer to char const", \
+	const signed char*: "pointer to signed char const", \
+	const unsigned char*: "pointer to unsigned char const", \
+	char* const: "const pointer to char", \
+	signed char* const: "const pointer to signed char", \
+	unsigned char* const: "const pointer to unsigned char", \
+	const char* const: "const pointer to char const", \
+	const signed char* const: "const pointer to signed char const", \
+	const unsigned char* const: "const pointer to unsigned char const", \
+	int*: "pointer to int", \
+	unsigned int*: "pointer to unsigned int", \
+	const int*: "pointer to int const", \
+	const unsigned int*: "pointer to unsigned int const", \
+	int* const: "const pointer to int", \
+	unsigned int* const: "const pointer to unsigned int", \
+	const int* const: "const pointer to int const", \
+	const unsigned int* const: "const pointer to unsigned int const", \
+	void*: "pointer to void", \
+	default: "other" \
+)
+/** Return the datatype of the given variable */
+#define get_type(type)   typename(type)
+
+/** @} */  // }
+
+
+// FRAME MACROS
+
+/** @defgroup Frame_Macros Macro functions pertaining to the stack frame
+@{ */  // (FB){
+
+#if (IS_GNUC && (!defined(FIRST_FRAME_POINTER)))
+/** Returns the address of the stack frame (return address) of the current function or its caller */
+#   define FIRST_FRAME_POINTER   __builtin_frame_address(0)
+#endif
+#ifndef CURRENT_STACK_FRAME
+/** Get some notion of the current stack */
+#   define CURRENT_STACK_FRAME   __extension__ ({ do { char __csf = '\0'; &__csf; } while (0x0) })
+#endif
+
+/** @} */  // }
+
+
+// LANGUAGE CONSTRUCTS
+
+/** @defgroup Language_Constructs Macros providing various language constructs
+@{ */  // (FB){
+
+/** Create a temporary variable for use in macros */
+#define tmpmvar   CONCAT(tmp_macros_var_, __LINE__)
+/** Create a temporary variable for use in macros */
+#define tmp1var   CONCAT(tmp_macros_var1_, __LINE__)
+/** Create a temporary variable for use in macros */
+#define tmp2var   CONCAT(tmp_macros_var2_, __LINE__)
+/** Create a temporary variable for use in macros */
+#define tmp3var   CONCAT(tmp_macros_var3_, __LINE__)
+/** A forever-running while-loop until `break` */
+#define until_break   while (1)
+/** A forever-running for-loop */
+#define loop_forever   for (;;)
+/** Run the for-loop on every value inclusively in the specified range */
+#define for_each(var, array_name, len)   register size_t tmpmvar; for (tmpmvar = 0, var = array_name[0]; ((len > 0) && (tmpmvar < len) && (var = array_name[tmpmvar])); tmpmvar++)
+/** Run the for-loop on every value inclusively in the specified range */
+#define for_range(var, low, high)   for (var = low; ((high > low) && (var <= high)); var++)
+/** Run the for-loop on every value exclusively in the specified range */
+#define for_between(var, low, high)   for (var = (low + 1); ((high > low) && (var < high)); var++)
+/** Run the for-loop on every value inclusively in the specified range counting down from `start` and ending at `stop` */
+#define for_countdown(var, start, stop)   for (var = start; ((start > stop) && (var >= stop)); var--)
+/** Test if `test_val` is inclusively within the specified values */
+#define inrange(test_val, low, high)   ((high > low) && (test_val >= low) && (test_val <= high))
+/** Outputs `typedef struct NAME_s NAME_t;` which will create a datatype based on the named struct */
+#define DECLARE_STRUCT_TYPE(name)   typedef struct name name ## _t
+
+/** @} */  // }
+
+
+// DEBUG MACROS
+
+/** @def DEBUG
+Enable/Disable Debugging */
+#if (defined(LINTER_LINT) || defined(NODEBUG) || defined(NDEBUG) || (defined(DEBUG) && (!(DEBUG > 0))))
+#   undef DEBUG
+#   undef NODEBUG
+#   undef NDEBUG
+#   define DEBUG   0
+#   define NODEBUG   1
+#   define NDEBUG   1
+#else
+#   undef DEBUG
+#   undef NODEBUG
+#   undef NDEBUG
+#   define DEBUG   1
+#   define NODEBUG   0
+#   define NDEBUG   0
+#endif
+#ifndef DIAGNOSTIC
+#   define DIAGNOSTIC   DEBUG
+#endif
+#ifndef ATOMIC_DEBUG
+#   define ATOMIC_DEBUG   DEBUG
 #endif
 
 
@@ -7956,6 +8720,1311 @@ Compile-time assertion */
 #endif  // STRING_MANIPULATION_MACROS_H
 
 
+/* ATTRIBUTES, BUILTINS, & SPECIFIER MACROS */
+
+
+#if (!(defined(ATTRIBUTES_H) || defined(_ATTRIBUTES_H) || defined(_ATTRIBUTES_H_)))
+#define ATTRIBUTES_H   (1)
+#define _ATTRIBUTES_H   (1)
+#define _ATTRIBUTES_H_   (1)
+
+
+// ATTRIBUTE MACROS
+
+#if IS_GNUC
+#   ifdef COMPILER_CLANG
+/** Do not convert code to calls to a library */
+#      define NOLIBCALL
+#   else
+/** Do not convert code to calls to a library */
+#      define NOLIBCALL   __attribute__((__optimize__("-fno-tree-loop-distribute-patterns")))
+#   endif
+#   define ATTR_CAF   __attribute__((__always_inline__, __const__, __flatten__))
+#   define ATTR_CIF   __attribute__((__const__, __inline__, __flatten__))
+#   define ATTR_CAFN   __attribute__((__always_inline__, __const__, __flatten__, __nonnull__))
+#   define ATTR_MALLOC   __attribute__((__malloc__))
+/** Tell the compiler which arguments to an allocation function indicate the size of the allocation */
+#   define ATTR_ALLOC_SIZE(...)   __attribute__((__alloc_size__(__VA_ARGS__)))
+#   define ATTR_FLATTEN   __attribute__((__flatten__))
+#   define ATTR_CF   __attribute__((__const__, __flatten__))
+#   define ATTR_PF   __attribute__((__pure__, __flatten__))
+/** The function does not have side-effects, only examines its arguments, does not have pointer arguments, and does not call a non-const function */
+#   define ATTR_CONST   __attribute__((__const__))
+/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
+#   define ATTR_PURE   __attribute__((__pure__))
+/** All functions, except those with callbacks or those that synchronize memory, are leaf functions */
+#   define ATTR_LEAF   __attribute__((__leaf__))
+/** Definition to shut the compiler up about unused arguments */
+#   define UNUSED   __attribute__((__unused__))
+/** Warn the developer that the function is deprecated */
+#   define deprecated   __attribute__((__deprecated__))
+/** If using fortification mode, warn about unused results of certain function calls which can lead to problems */
+#   define WUR   __attribute__((__warn_unused_result__))
+/** Fortify support */
+#   define __bos(_ptr)   __builtin_object_size(_ptr, (__USE_FORTIFY_LEVEL > 1))
+/** Fortify support */
+#   define __bos0(_ptr)   __builtin_object_size(_ptr, 0)
+/** Determine the return address */
+#   define RETURN_ADDRESS(nr)   __builtin_extract_return_addr(__builtin_return_address((nr)))
+/** @def attr_fallthrough
+The -Wimplicit-fallthrough warning will not be triggered when a statement that falls through to another case label */
+#   ifdef COMPILER_CLANG
+#      define attr_fallthrough
+#   else
+#      define attr_fallthrough   __attribute__((__fallthrough__));
+#   endif
+/** Specifies that an object or member declaration with type array of char or pointer to char is intended to store character arrays that do not necessarily contain a terminating NUL character */
+#   define attr_nonstring   __attribute__((__nonstring__))
+#   define patchable   __attribute__((__patchable_function_entry__))
+#else
+#   define NOLIBCALL
+#   define ATTR_CAF
+#   define ATTR_CIF
+#   define ATTR_CAFN
+#   define ATTR_FLATTEN
+#   define ATTR_CF
+#   define ATTR_PF
+#   define ATTR_MALLOC
+#   define ATTR_ALLOC_SIZE(...)
+#   define ATTR_CONST
+/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
+#   define ATTR_PURE
+#   define ATTR_LEAF
+#   ifdef LINTER_SPLINT
+#      define UNUSED   /*@unused@*/
+#   else
+#      define UNUSED   /*ARGSUSED*/
+#   endif
+#   define deprecated   /*@warn@*/
+/** If using fortification mode, warn about unused results of certain function calls which can lead to problems */
+#   define WUR   /*@alwaysreturn@*/
+/** Fortify support */
+#   define __bos(_ptr)
+/** Fortify support */
+#   define __bos0(_ptr)
+#   define RETURN_ADDRESS(nr)
+#   define attr_fallthrough   /*FALLTHROUGH*/
+#   define attr_nonstring
+#   define patchable
+#endif
+/** Add the compiler optimization to inhibit loop transformation to library calls; This is used to avoid recursive calls in memset and memmove default implementations */
+#define inhibit_loop_to_libcall   NOLIBCALL
+/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
+#define __pure   ATTR_PURE
+/** Attribute alias for deprecated */
+#define __dontuse__   deprecated
+/** Attribute alias for deprecated */
+#define __AVAILABILITY_INTERNAL_DEPRECATED   deprecated
+/** Attribute alias for deprecated */
+#define AVAILABILITY_INTERNAL_DEPRECATED   deprecated
+/** Definition to shut the compiler up about unused arguments */
+#define unusedfunc   UNUSED
+#if DEBUG
+/** Used in diagnostic code, but may be unused in non-diagnostic code */
+#   define __diagused
+/** Used in diagnostic code, but may be unused in non-diagnostic code */
+#   define __debugused
+#else
+/** Used in diagnostic code, but may be unused in non-diagnostic code */
+#   define __diagused   UNUSED
+/** Used in diagnostic code, but may be unused in non-diagnostic code */
+#   define __debugused   UNUSED
+#endif
+
+
+// OVERLOAD ATTRIBUTE
+
+#if ((!defined(OVERLOAD)) && defined(COMPILER_CLANG))
+#   define OVERLOAD   __attribute__((__overloadable__))
+#   define _TG_ATTRSp   __attribute__((__overloadable__))
+#   define _TG_ATTRS   __attribute__((__always_inline__, __overloadable__))
+#elif (!defined(OVERLOAD))
+#   define OVERLOAD
+#   define _TG_ATTRSp
+#   define _TG_ATTRS   forceinline
+#endif
+
+
+// SPARSE ATTRIBUTES
+
+#if defined(LINTER_SPARSE)
+#   define __iomem   __attribute__((__address_space__(2), __noderef__))
+#   define __percpu   __attribute__((__address_space__(3), __noderef__))
+#   define __pmem   __attribute__((__address_space__(5), __noderef__))
+#   define __user   __attribute__((__address_space__(1), __noderef__))
+#   define __kernel   __attribute__((__address_space__(0)))
+#   define __safe   __attribute__((__safe__))
+/** Modifies an arithmetic type so that the only arithmetic options permitted are the ones that are strictly bitwise */
+#   define __bitwise   __attribute__((__bitwise__))
+/** Do not dereference */
+#   define __noderef   __attribute__((__noderef__))
+/** Warn if pointers tagged with different address spaces are mixed and if a pointer tagged with "noderef" is dereferenced */
+#   define __address_space(x)  __attribute__((__address_space__(x)))
+/** Issue a warning if a type is implicitly converted unless it is exactly the same type (changes in constness is permitted, presumably changes in volatility should be permitted as well) */
+#   define __nocast   __attribute__((__nocast__))
+#   define __must_hold(x)   __attribute__((__context__(x, 1, 1)))
+#   define __acquires(x)   __attribute__((__context__(x, 0, 1)))
+#   define __releases(x)   __attribute__((__context__(x, 1, 0)))
+#   define __acquire(x)   __attribute__((__context__(x, 1)))
+#   define __release(x)   __attribute__((__context__(x, -1)))
+/** Supports conditional lock (trylock) functions, without requiring special support for them in the compiler */
+#   define __cond_lock(x, c)   ((c) ? ({ __acquire(x); 1; }) : 0)
+#else
+#   define __iomem
+#   define __percpu
+#   define __pmem
+#   define __user
+#   define __kernel
+#   define __safe
+/** Modifies an arithmetic type so that the only arithmetic options permitted are the ones that are strictly bitwise */
+#   define __bitwise
+/** Do not dereference */
+#   define __noderef
+/** Warn if pointers tagged with different address spaces are mixed and if a pointer tagged with "noderef" is dereferenced */
+#   define __address_space(x)
+/** Issue a warning if a type is implicitly converted unless it is exactly the same type (changes in constness is permitted, presumably changes in volatility should be permitted as well) */
+#   define __nocast
+#   define __must_hold(x)
+#   define __acquires(x)
+#   define __releases(x)
+#   define __acquire(x)
+#   define __release(x)
+/** Supports conditional lock (trylock) functions, without requiring special support for them in the compiler */
+#   define __cond_lock(x, c)
+#endif  // Sparse attributes
+
+
+// RETURNS_TWICE
+
+#if IS_GNUC
+/** Informs the compiler that the function returns two or more times (such as setjmp and vfork) */
+#   define returns_twice   __attribute__((__returns_twice__))
+#else
+/** Informs the compiler that the function returns two or more times (such as setjmp and vfork) */
+#   define returns_twice
+#endif
+
+
+// HOT & COLD FUNCTION ATTRIBUTES
+
+#if IS_GNUC
+#   define COLD   __attribute__((__cold__))
+#   define HOT   __attribute__((__hot__))
+#else
+#   define COLD
+#   define HOT
+#endif
+
+
+// PREDICT_LIKELY & PREDICT_UNLIKELY
+
+/** @defgroup Predict_Macros Macros for the `__builtin_expect` compiler-keyword
+@{ */  // (FB){
+
+#if IS_GNUC
+/** Evaluates to `expression` and hints that the value of `expression` will probably be true; In other words, "if (PREDICT_LIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
+#   define PREDICT_LIKELY(expression)   __builtin_expect((!!(expression)), 1)
+/** Evaluates to `expression` and hints that the value of `expression` will probably be false; In other words, "if (PREDICT_UNLIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
+#   define PREDICT_UNLIKELY(expression)   __builtin_expect((!!(expression)), 0)
+/** Evaluates to `expression` and hints that the value of `expression` will probably be false; In other words, "if (PREDICT_UNLIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
+#   define UNLIKELY(expression)   __builtin_expect((!!(expression)), 0)
+/** Evaluates to `expression` and hints that the value of `expression` will probably equal `_val` This tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
+#   define LIKELY(expression, _val)   __builtin_expect((expression), (_val))
+/** Evaluates to `expression` and hints that the value of `expression` will probably be false; this tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
+#   define LIKELY_FALSE(expression)   __builtin_expect((expression), 0)
+/** Evaluates to `expression` and hints that the value of `expression` will probably equal `_val` This tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
+#   define LIKELY_TRUE(expression)   __builtin_expect((expression), 1)
+#   define builtin_expect(x, y)   __builtin_expect((x), (y))
+#else
+#   define PREDICT_LIKELY(expression)   ((expression))
+#   define PREDICT_UNLIKELY(expression)   ((expression))
+#   define UNLIKELY(expression)   ((expression))
+#   define LIKELY(expression, _val)   ((expression))
+#   define LIKELY_FALSE(expression)
+#   define LIKELY_TRUE(expression)
+#   define builtin_expect(x, y)
+#endif
+
+/** @} */  // }
+
+
+// UNREACHABLE
+
+/** @defgroup Unreachable Attribute macros indicating that the code region should be unreachable
+@{ */  // (FB){
+
+#if IS_LINTER
+/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
+#   define _FP_UNREACHABLE   /*NOTREACHED*/
+/** Indicates unreachable code */
+#   define UNREACHABLE   /*NOTREACHED*/
+#elif IS_GNUC
+/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
+#   define _FP_UNREACHABLE   __builtin_unreachable()
+/** Indicates unreachable code */
+#   define UNREACHABLE   __builtin_unreachable();
+#else
+/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
+#   define _FP_UNREACHABLE   abort()
+/** Indicates unreachable code */
+#   define UNREACHABLE   abort();
+#endif
+#ifndef FP_UNREACHABLE
+#   define FP_UNREACHABLE   _FP_UNREACHABLE
+#endif
+
+/** @} */  // }
+
+
+// ERRORATTR & WARNATTR
+
+#if IS_GNUC
+#   ifndef __warnattr
+#      define __warnattr(msg)   __attribute__((__warning__(msg)))
+#   endif
+#   ifndef __errorattr
+#      define __errorattr(name, msg)   __attribute__((__error__(msg)))
+#   endif
+#else
+#   ifndef __warnattr
+#      define __warnattr(msg)
+#   endif
+#   ifndef __errorattr
+#      define __errorattr(name, msg)
+#   endif
+#endif
+
+
+// DEPRECATED_MSG
+
+#if IS_GNUC  // deprecated_msg
+#   define __AVAILABILITY_INTERNAL_DEPRECATED_MSG(_msg)   __attribute__((__deprecated__(_msg)))
+#   define DEPRECATED_ATTRIBUTE(_msg)   __attribute__((__deprecated__(_msg)))
+#   define DEPRECATED_MSG_ATTRIBUTE(_msg)   __attribute__((__deprecated__(_msg)))
+#   define deprecated_msg(_msg)   __attribute__((__deprecated__(_msg)))
+#   define deprecated_enum_msg(_msg)   deprecated_msg(_msg)
+#else
+#   define __AVAILABILITY_INTERNAL_DEPRECATED_MSG(_msg)   deprecated
+#   define DEPRECATED_ATTRIBUTE   deprecated
+#   define DEPRECATED_MSG_ATTRIBUTE(_msg)   deprecated
+#   define deprecated_msg(_msg)   deprecated
+#   define deprecated_enum_msg(_msg)
+#endif
+
+
+// VECTOR DATATYPE ATTRIBUTES
+
+/** @defgroup Vector_Datatype_Attributes Macros for various vector attributes
+@{ */  // (FB){
+
+/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
+#define VECTOR4   __attribute__((__vector_size__(4)))
+/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
+#define VECTOR8   __attribute__((__vector_size__(8)))
+/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
+#define VECTOR16   __attribute__((__vector_size__(16)))
+/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
+#define VECTOR32   __attribute__((__vector_size__(32)))
+/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
+#define VECTOR64   __attribute__((__vector_size__(64)))
+#if (defined(ARCHPOWERPC) && IS_GNUC)
+#   define attr_pixel   unsigned short __attribute__((__altivec__(__pixel__)))
+#   define attr_vector   __attribute__((__altivec__(__vector__)))
+#else
+#   define attr_pixel
+#   define attr_vector
+#endif
+
+/** @} */  // }
+
+
+// ARCHITECTURE SPECIFIC ATTRIBUTES & MACROS
+
+#ifdef ARCHMICROBLAZE
+#   ifdef __XMK__  // Xilinx XMK uses Unix98 mutex
+#      define _UNIX98_THREAD_MUTEX_ATTRIBUTES   (1)
+#   endif
+#   ifndef save_volatiles
+/** Indicate that the function is an interrupt handler; All volatile registers (in addition to non-volatile registers) are saved in the function prologue; If the function is a leaf function, only volatiles used by the function are saved; A normal function return is generated instead of a return from interrupt */
+#      define save_volatiles   __attribute__((__save_volatiles__))
+#   endif
+#else
+#   ifndef save_volatiles
+/** Indicate that the function is an interrupt handler; All volatile registers (in addition to non-volatile registers) are saved in the function prologue; If the function is a leaf function, only volatiles used by the function are saved; A normal function return is generated instead of a return from interrupt */
+#      define save_volatiles
+#   endif
+#endif
+#if ((defined(ARCHMIPS) && (!SUPPORTS_RTEMS)) || defined(__frv__) || (defined(ARCHPOWERPC) && defined(_CALL_SYSV)))
+#   define impure_ptr   __attribute__((__section__(".sdata")))
+#elif defined(__v850)
+#   define impure_ptr   __attribute__((__sda__))
+#endif
+
+
+// X86 CALLING CONVENTIONS
+
+/** @defgroup x86_Calling_Conventions Macros pertaining to the x86 calling conventions
+@{ */  // (FB){
+
+#if (defined(ARCHX86) && IS_GNUC)
+/** The specified function is an interrupt handler or an exception handler */
+#   define attr_interrupt   __attribute__((__interrupt__))
+#else
+#   define attr_interrupt
+#endif
+#if (defined(ARCHX86_32) && (!defined(ARCHX86_64)) && IS_GNUC)  // https://en.wikipedia.org/wiki/X86_calling_conventions
+#   ifndef __cdecl
+/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */
+#      define __cdecl   __attribute__((__cdecl__, __regparm__(0)))
+#   endif
+#   ifndef __fastcall
+/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
+#      define __fastcall   __attribute__((__fastcall__))
+#   endif
+#   ifndef __stdcall
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#      define __stdcall   __attribute__((__stdcall__))
+#   endif
+#   ifndef __thiscall
+/** Pass the first argument (if an integral) to the ECX register; The following arguments and arguments of other datatypes are passed to the stack; The called function pops the arguments off the stack; If the number of arguments is variable all arguments are pushed on the stack */
+#      define __thiscall   __attribute__((__thiscall__))
+#   endif
+/** Optional marker for size-optimised MD calling convention */
+#   define compactcall   __attribute__((__regparm__(3)))
+/** On some platforms, internal function calls are a bit faster by using a different calling convention */
+#   define internal_function   __attribute__((__regparm__(3), __stdcall__))
+#   define REGPARM(x)   __attribute__((__regparm__(x)))
+/** (x86-32 targets with SSE support only) Pass up to 3 floating-point arguments in SSE registers instead of on the stack; Functions that take a variable number of arguments continue to pass all of their floating-point arguments on the stack (x86-32 targets with SSE support only) */
+#   define sseregparm   __attribute__((__sseregparm__))
+#else  // Meaningless on non-i386
+#   ifndef __cdecl
+/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */#      define __cdecl
+#   endif
+#   ifndef __fastcall
+#      define __fastcall
+#   endif
+#   ifndef __stdcall
+#      define __stdcall
+#   endif
+#   ifndef __thiscall
+#      define __thiscall
+#   endif
+#   define compactcall
+#   define internal_function
+#   define REGPARM(x)
+#   define sseregparm
+#endif
+#ifndef cdecl
+#   define cdecl   __cdecl
+#endif
+#ifndef crtdecl
+#   define crtdecl   cdecl
+#endif
+#ifndef WINAPIV
+/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */#   define WINAPIV   cdecl
+#endif
+#ifndef fastcall
+/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
+#   define fastcall   __fastcall
+#endif
+#ifndef msfastcall
+/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
+#   define msfastcall   fastcall
+#endif
+#ifndef stdcall
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#   define stdcall   __stdcall
+#endif
+#ifndef pascal
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#   define pascal   stdcall
+#endif
+#ifndef CALLBACK
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#   define CALLBACK   stdcall
+#endif
+#ifndef WINAPI
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#   define WINAPI   stdcall
+#endif
+#ifndef APIENTRY
+/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
+#   define APIENTRY   stdcall
+#endif
+#ifndef thiscall
+/** Pass the first argument (if an integral) to the ECX register; The following arguments and arguments of other datatypes are passed to the stack; The called function pops the arguments off the stack; If the number of arguments is variable all arguments are pushed on the stack */
+#   define thiscall   __thiscall
+#endif
+#if (IS_GNUC && (defined(OSWINDOWS) || defined(OSSYMBIAN)))
+/** Reference a function or variable via a global pointer to a pointer that is set up by the DLL exporting the symbol; The attribute implies extern; On Microsoft Windows targets, the pointer name is formed by combining _imp__ and the function or variable name */
+#   define dllimport   __attribute__((dllimport))
+/** Provide a global pointer to a pointer in a DLL, so that it can be referenced with the dllimport attribute; On Microsoft Windows targets, the pointer name is formed by combining _imp__ and the function or variable name */
+#   define dllexport   __attribute__((dllexport))
+#elif defined(COMPILER_MICROSOFT)
+#   define dllimport   __declspec(dllimport)
+#   define dllexport   __declspec(dllexport)
+#else
+#   define dllimport
+#   define dllexport
+#endif
+#if (defined(COMPILER_MICROSOFT) && defined(_DLL))
+/** On Windows, variables that may be in a DLL must be marked specially */
+#   define DLL_VARIABLE   dllimport
+#else
+/** On Windows, variables that may be in a DLL must be marked specially */
+#   define DLL_VARIABLE
+#endif
+#if IS_CPLUSPLUS
+#   ifdef OSCYGWIN
+#      define _EXFUN_NOTHROW(name, proto)   cdecl name proto _NOTHROW
+#      define _EXFUN(name, proto)   cdecl name proto
+#      define _EXPARM(name, proto)   (* cdecl name) proto
+#      define _EXFNPTR(name, proto)   (cdecl * name) proto
+#   else  // Not Cygwin
+#      define _EXFUN_NOTHROW(name, proto) name proto _NOTHROW
+#      define _EXFUN(name, proto)   name proto
+#      define _EXPARM(name, proto)   (* name) proto
+#      define _EXFNPTR(name, proto)   (* name) proto
+#   endif  // Cygwin
+#endif  // IS_CPLUSPLUS
+#if IS_GNUC  // EXTERN_API & CALLBACK_API
+#   define EXTERN_API(_type)   dllimport _type cdecl
+#   define EXTERN_API_C(_type)   dllimport _type cdecl
+#   define EXTERN_API_STDCALL(_type)   dllimport _type stdcall
+#   define EXTERN_API_C_STDCALL(_type)   dllimport _type stdcall
+#   define DEFINE_API(_type)   dllexport _type cdecl
+#   define DEFINE_API_C(_type)   dllexport _type cdecl
+#   define DEFINE_API_STDCALL(_type)   dllexport _type stdcall
+#   define DEFINE_API_C_STDCALL(_type)   dllexport _type stdcall
+#   define CALLBACK_API(_type, _name)   _type (cdecl * _name)
+#   define CALLBACK_API_C(_type, _name)   _type (cdecl * _name)
+#   define CALLBACK_API_STDCALL(_type, _name)   _type (stdcall * _name)
+#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (stdcall * _name)
+#elif defined(COMPILER_MICROSOFT)
+#   define EXTERN_API(_type)   __declspec(dllimport) _type cdecl
+#   define EXTERN_API_C(_type)   __declspec(dllimport) _type cdecl
+#   define EXTERN_API_STDCALL(_type)   __declspec(dllimport) _type stdcall
+#   define EXTERN_API_C_STDCALL(_type)   __declspec(dllimport) _type stdcall
+#   define DEFINE_API(_type)   __declspec(dllexport) _type cdecl
+#   define DEFINE_API_C(_type)   __declspec(dllexport) _type cdecl
+#   define DEFINE_API_STDCALL(_type)   __declspec(dllexport) _type stdcall
+#   define DEFINE_API_C_STDCALL(_type)   __declspec(dllexport) _type stdcall
+#   define CALLBACK_API(_type, _name)   _type (cdecl * _name)
+#   define CALLBACK_API_C(_type, _name)   _type (cdecl * _name)
+#   define CALLBACK_API_STDCALL(_type, _name)   _type (stdcall * _name)
+#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (stdcall * _name)
+#else
+#   define EXTERN_API(_type)   extern _type
+#   define EXTERN_API_C(_type)   extern _type
+#   define EXTERN_API_STDCALL(_type)   extern _type
+#   define EXTERN_API_C_STDCALL(_type)   extern _type
+#   define DEFINE_API(_type)   _type
+#   define DEFINE_API_C(_type)   _type
+#   define DEFINE_API_STDCALL(_type)   _type
+#   define DEFINE_API_C_STDCALL(_type)   _type
+#   define CALLBACK_API(_type, _name)   _type (* _name)
+#   define CALLBACK_API_C(_type, _name)   _type (* _name)
+#   define CALLBACK_API_STDCALL(_type, _name)   _type (* _name)
+#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (* _name)
+#endif  // EXTERN_API & CALLBACK_API
+
+/** @} */  // }
+
+
+// TARGET ATTRIBUTES & MACROS
+
+/** @defgroup Build_Target Macros for specifying that a function be built for a particular target
+@{ */  // (FB){
+
+#if IS_GNUC
+// PowerPC
+/** Build specifically for PowerPC7 */
+#   define BUILD_POWER7   __attribute__((__target__("arch=power7")))
+/** Build specifically for PowerPC8 */
+#   define BUILD_POWER8   __attribute__((__target__("arch=power8")))
+/** Build specifically for PowerPC9 */
+#   define BUILD_POWER9   __attribute__((__target__("arch=power9")))
+// x86
+#   define BUILD_CORE2   __attribute__((__target__("arch=core2")))
+#   define BUILD_PENTIUM4   __attribute__((__target__("arch=pentium4")))
+#   define BUILD_SANDYBRIDGE   __attribute__((__target__("arch=sandybridge")))
+#   define BUILD_IVYBRIDGE   __attribute__((__target__("arch=ivybridge")))
+#   define BUILD_HASWELL   __attribute__((__target__("arch=haswell")))
+#   define BUILD_BROADWELL   __attribute__((__target__("arch=broadwell")))
+/** Build specifically for Intel's Skylake processors */
+#   define BUILD_SKYLAKE   __attribute__((__target__("arch=skylake")))
+#   define BUILD_BONNELL   __attribute__((__target__("arch=bonnell")))
+#   define BUILD_SILVERMONT   __attribute__((__target__("arch=silvermont")))
+#   define BUILD_KNL   __attribute__((__target__("arch=knl")))
+/** Build specifically for MMX-supporting processors */
+#   define BUILD_MMX   __attribute__((__target__("mmx")))
+/** Build specifically for SSE-supporting processors */
+#   define BUILD_SSE   __attribute__((__target__("sse")))
+/** Build specifically for SSE3-supporting processors */
+#   define BUILD_SSE3   __attribute__((__target__("sse3")))
+/** Build specifically for SSE4-supporting processors */
+#   define BUILD_SSE4   __attribute__((__target__("sse4")))
+/** Build specifically for AVX-supporting processors */
+#   define BUILD_AVX   __attribute__((__target__("avx")))
+/** Build specifically for AVX2-supporting processors */
+#   define BUILD_AVX2   __attribute__((__target__("avx2")))
+#else
+// PowerPC
+#   define BUILD_POWER7
+#   define BUILD_POWER8
+#   define BUILD_POWER9
+// x86
+#   define BUILD_CORE2
+#   define BUILD_PENTIUM4
+#   define BUILD_SANDYBRIDGE
+#   define BUILD_IVYBRIDGE
+#   define BUILD_HASWELL
+#   define BUILD_BROADWELL
+#   define BUILD_SKYLAKE
+#   define BUILD_BONNELL
+#   define BUILD_SILVERMONT
+#   define BUILD_KNL
+#   define BUILD_MMX
+#   define BUILD_SSE
+#   define BUILD_SSE3
+#   define BUILD_SSE4
+#   define BUILD_AVX
+#   define BUILD_AVX2
+#endif
+
+/** @} */  // }
+
+
+// STORAGE ATTRIBUTES
+
+#if IS_GNUC
+/** Do place the variable in common storage */
+#   define attr_common   __attribute__((__common__))
+/** Do not place the variable in common storage; instead, allocate space for it directly */
+#   define attr_nocommon   __attribute__((__nocommon__))
+#   define global_tls   __attribute__((__tls_model__("global-dynamic")))
+#   define initial_tls   __attribute__((__tls_model__("initial-exec")))
+#   define local_dynamic_tls   __attribute__((__tls_model__("local-dynamic")))
+#   define local_exec_tls   __attribute__((__tls_model__("local-exec")))
+#else
+/** Do place the variable in common storage */
+#   define attr_common
+/** Do not place the variable in common storage; instead, allocate space for it directly */
+#   define attr_nocommon
+#   define global_tls
+#   define initial_tls
+#   define local_dynamic_tls
+#   define local_exec_tls
+#endif
+
+
+// STRONG & WEAK ALIASES
+
+/** @defgroup Aliases Macros pertaining to strong and weak aliases
+@{ */  // (FB){
+
+#if (IS_NOT_ASSEMBLER && IS_GNUC)
+// GCC understands weak symbols and aliases; use this interface where possible, instead of embedded assembly language
+/** Define `aliasname` as a strong alias for `sym` */
+#   define strong_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym)));
+/** Define `aliasname` as a weak alias for `sym`. If weak aliases are not available, this defines a strong alias */
+#   define weak_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym), __weak__));
+/** Declare a function weak; Place between the return type and function name */
+#   define weak_const_function   __attribute__((__const__, __weak__))
+/** Declare `sym` as weak undefined symbol (resolved to 0 if not defined) */
+#   define weak_extern(sym)   _Pragma(#sym)
+/** Declare a function weak; Place between the return type and function name */
+#   define weak_function   __attribute__((__weak__))
+/** Same as `weak_alias`, but mark symbol as hidden */
+#   define weak_hidden_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym), __visibility__("hidden"), __weak__));
+#elif (IS_ASSEMBLER && IS_GNUC)  // IS_ASSEMBLER
+#   ifdef HAVE_ASM_SET_DIRECTIVE
+#      define strong_alias(sym, aliasname)   .globl C_SYMBOL_NAME(aliasname) ASM_LINE_SEP .set C_SYMBOL_NAME(aliasname), C_SYMBOL_NAME(sym)
+#   else
+#      define strong_alias(sym, aliasname)   .globl C_SYMBOL_NAME(aliasname) ASM_LINE_SEP C_SYMBOL_NAME(aliasname) = C_SYMBOL_NAME(sym)
+#   endif
+#   ifdef HAVE_ASM_WEAKEXT_DIRECTIVE
+#      define weak_alias(sym, aliasname)   .weakext C_SYMBOL_NAME(aliasname), C_SYMBOL_NAME(sym)
+#      define weak_extern(sym)   .weakext C_SYMBOL_NAME(sym)
+#   else
+#      define weak_alias(sym, aliasname)   .weak C_SYMBOL_NAME(aliasname) ASM_LINE_SEP C_SYMBOL_NAME(aliasname) = C_SYMBOL_NAME(sym)
+#      define weak_extern(sym)   .weak C_SYMBOL_NAME(sym)
+#   endif
+#   define weak_const_function
+#   define weak_function
+#   define weak_hidden_alias(sym, aliasname)
+#else
+#   define strong_alias(sym, aliasname)
+#   define weak_alias(sym, aliasname)
+#   define weak_const_function
+#   define weak_extern(sym)
+#   define weak_function
+#   define weak_hidden_alias(sym, aliasname)
+#endif  // Aliases
+#if IS_GNUC  // strict_weak_alias
+#   define strict_weak_alias(sym, aliasname)   static UNUSED typeof(aliasname)* weak_alias_ ## aliasname = &sym; weak_alias(sym, aliasname)
+#else
+#   define strict_weak_alias(sym, aliasname)   weak_alias(sym, aliasname)
+#endif
+#define __alias(x)   __attribute__((__alias__(x), __weak__))
+#define _strong_alias(sym, aliasname)   strong_alias(sym, aliasname)
+#define __strong_alias(sym, aliasname)   strong_alias(sym, aliasname)
+#define __strong_alias__(sym, aliasname)   strong_alias(sym, aliasname)
+#define strong_data_alias(sym, aliasname)   strong_alias(sym, aliasname)
+#define strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
+#define _strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
+#define __strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
+/** Symbols reserved to or specified by ISO C; Defines `sym` as a strong alias for _libc_sym */
+#define DEF_STRONG(sym)   strong_alias(sym, HIDDEN(sym))
+/** Defines _thread_sys_sym as a strong alias for _libc_sym; This should only be needed for syscalls that have C instead of ASM stubs */
+#define DEF_SYS(sym)   strong_alias(_thread_sys_ ## sym, HIDDEN(sym))
+#define _weak_alias(sym, aliasname)   weak_alias(sym, aliasname)
+#define _weak_extern(sym)   weak_extern(sym)
+#define _weak_hidden_alias(sym, aliasname)   weak_hidden_alias(sym, aliasname)
+#define weak_reference(sym)   __attribute__((__weakref__(sym)))
+#define _weak_reference(sym)   __attribute__((__weakref__(sym)))
+#define __weak_reference(sym)   __attribute__((__weakref__(sym)))
+#define _strict_weak_alias(sym, aliasname)   strict_weak_alias(sym, aliasname)
+#define __strict_weak_alias(sym, aliasname)   strict_weak_alias(sym, aliasname)
+/** Symbols that have a cancellation wrapper; Defines `sym` as a weak alias for _libc_sym_cancel */
+#define DEF_CANCEL(sym)   weak_alias(sym, CANCEL(sym))
+/** Symbols used internally and not in ISO C; Defines `sym` as a weak alias for _libc_sym */
+#define DEF_WEAK(sym)   weak_alias(sym, HIDDEN(sym))
+/** Defines `sym` as a weak alias for _libc_sym_wrap */
+#define DEF_WRAP(sym)   weak_alias(sym, WRAP(sym))
+/** Compiler macros to make an alias symbol */
+#define __ALIAS(__t, __f, __p, __a)   __t __f __p __attribute__((__weak__, __alias__(#__a)));
+#define LFS64_2(sym, aliasname)   weak_alias(sym, aliasname)
+#define LFS64(sym)   LFS64_2(sym, sym ## 64)
+/** Export the symbol for both static and dynamic linking */
+#define libc_sunrpc_symbol(name, aliasname, version)   strong_alias(name, aliasname)
+/** No versions to worry about, just make this the global definition */
+#define versioned_symbol(lib, aliasname, sym, version)   weak_alias(sym, aliasname)
+/** No old versions to worry about */
+#define SHLIB_COMPAT(lib, introduced, obsoleted)   0
+
+/** @} */  // }
+
+
+// VISIBILITY ATTRIBUTES
+
+/** @defgroup Visibility_Attributes Attribute macros for symbol visibility
+@{ */  // (FB){
+
+#if (IS_PIC || IS_GNUC)
+/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
+#   define attr_hidden   __attribute__((__visibility__("hidden")))
+#   define __hidden_proto_hiddenattr(...)   __attribute__((__visibility__("hidden"), __VA_ARGS__))
+#   define __dso_hidden   __attribute__((__visibility__("hidden")))
+#   define __dso_protected   __attribute__((__visibility__("protected")))
+#   define __dso_public   __attribute__((__visibility__("default")))
+#else
+#   define attr_hidden
+#   define __hidden_proto_hiddenattr(...)
+#   define __dso_hidden
+#   define __dso_protected
+#   define __dso_public
+#endif
+/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
+#define ATTR_LIBC_VISIBILITY   attr_hidden
+#ifndef __XNU_PRIVATE_EXTERN
+/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
+#   define __XNU_PRIVATE_EXTERN   attr_hidden
+#endif
+
+/** @} */  // }
+
+
+// WEAK_IMPORT & UNAVAILABLE ATTRIBUTES
+
+#if (IS_GNUC || ((defined(__MWERKS__) && (__MWERKS__ >= 0x3205)) && (defined(MAC_OS_X_VERSION_MIN_REQUIRED) && (MAC_OS_X_VERSION_MIN_REQUIRED >= 1020)) && (!(defined(ARCHX86) || defined(ARCHX86_64)))))
+#   define WEAK_IMPORT_ATTRIBUTE   __attribute__((__weak_import__))
+#   define __AVAILABILITY_INTERNAL_WEAK_IMPORT   __attribute__((__weak_import__))
+#   define __AVAILABILITY_INTERNAL_UNAVAILABLE   __attribute__((__unavailable__))
+#   define __unavailable   __attribute__((__unavailable__))
+#   define UNAVAILABLE_ATTRIBUTE   __attribute__((__unavailable__))
+#else
+#   define WEAK_IMPORT_ATTRIBUTE
+#   define __AVAILABILITY_INTERNAL_WEAK_IMPORT
+#   define __AVAILABILITY_INTERNAL_UNAVAILABLE
+#   define __unavailable
+#   define UNAVAILABLE_ATTRIBUTE
+#endif
+
+
+// LONG DOUBLE COMPATABILITY
+
+#if (defined(__LONG_DOUBLE_MATH_OPTIONAL) && defined(__NO_LONG_DOUBLE_MATH) && (!(defined(__LDBL_COMPAT) || defined(__LDBL_REDIR1))))
+#   define __LDBL_COMPAT   1
+#   define __LDBL_REDIR1(sym, proto, aliasname)   __REDIRECT(sym, proto, aliasname)
+#   define __LDBL_REDIR(sym, proto)   __LDBL_REDIR1(sym, proto, __nldbl_ ## sym)
+#   define __LDBL_REDIR1_NTH(sym, proto, aliasname)   __REDIRECT_NTH(sym, proto, aliasname)
+#   define __LDBL_REDIR_NTH(sym, proto)   __LDBL_REDIR1_NTH(sym, proto, __nldbl_ ## sym)
+#   define __LDBL_REDIR1_DECL(sym, aliasname)   extern typeof(sym) sym asm (__ASMNAME(#aliasname));
+#   define __LDBL_REDIR_DECL(sym)   extern typeof(sym) sym asm (__ASMNAME("__nldbl_" #sym));
+#   define __REDIRECT_LDBL(sym, proto, aliasname)   __LDBL_REDIR1(sym, proto, __nldbl_ ## aliasname)
+#   define __REDIRECT_NTH_LDBL(sym, proto, aliasname)   __LDBL_REDIR1_NTH(sym, proto, __nldbl_ ## aliasname)
+#elif (!(defined(__LDBL_COMPAT) || defined(__LDBL_REDIR1)))
+#   define __LDBL_REDIR1(sym, proto, aliasname)   sym proto
+#   define __LDBL_REDIR(sym, proto)   sym proto
+#   define __LDBL_REDIR1_NTH(sym, proto, aliasname)   sym proto __THROW
+#   define __LDBL_REDIR_NTH(sym, proto)   sym proto __THROW
+#   define __LDBL_REDIR_DECL(sym)
+#   define __REDIRECT_LDBL(sym, proto, aliasname)   __REDIRECT(sym, proto, aliasname)
+#   define __REDIRECT_NTH_LDBL(sym, proto, aliasname)   __REDIRECT_NTH(sym, proto, aliasname)
+#endif
+
+
+// FORMAT ATTRIBUTES
+
+/** @defgroup Format_Attributes Attribute macros for printf-formats
+@{ */  // (FB){
+
+#if IS_GNUC
+#   define formatfunc(t, f, a)   __attribute__((__format__(t, f, a)))
+#   define __attribute_format_strfmon__(a, b)   __attribute__((__format__(__strfmon__, (a), (b))))
+#   define __attribute_format_arg__(x)   __attribute__((__format_arg__(x)))
+#   define __scanflike(fmtarg, firstvararg)   __attribute__((__format__(__scanf__, fmtarg, firstvararg)))
+#   define format_arg(fmtarg)    __attribute__((__format_arg__(fmtarg)))
+/** Attribute to make GCC check printf-like arguments */
+#   define ATTR_PRINTF(m, n)   __attribute__((__format__(__printf__, m, n))) ATTR_NONNULL(m)
+#   define NULL_PRINTF(m, n)   __attribute__((__format__(__printf__, m, n)))
+#   define NULL_PRINTF_1   NULL_PRINTF(1, 2)
+#   define NULL_PRINTF_2   NULL_PRINTF(2, 3)
+#   define NULL_PRINTF_3   NULL_PRINTF(3, 4)
+#   define NULL_PRINTF_4   NULL_PRINTF(4, 5)
+#   define NULL_PRINTF_5   NULL_PRINTF(5, 6)
+#else
+#   define formatfunc(t, f, a)
+#   define __attribute_format_strfmon__(a, b)
+#   define __attribute_format_arg__(x)
+#   define __scanflike(fmtarg, firstvararg)   /*@scanflike@*/
+#   define format_arg(fmtarg)
+#   define ATTR_PRINTF(m, n)   /*PRINTFLIKE*/
+#   define NULL_PRINTF(m, n)   /*PRINTFLIKE*/
+#   define NULL_PRINTF_1   /*PRINTFLIKE*/
+#   define NULL_PRINTF_2   /*PRINTFLIKE*/
+#   define NULL_PRINTF_3   /*PRINTFLIKE*/
+#   define NULL_PRINTF_4   /*PRINTFLIKE*/
+#   define NULL_PRINTF_5   /*PRINTFLIKE*/
+#endif  // formatfunc
+
+/** @} */  // }
+
+
+// NULL_UNSPECIFIED ATTRIBUTE
+
+#ifdef COMPILER_CLANG
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define Null_unspecified   _Null_unspecified
+#else
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define Null_unspecified
+/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
+#   define _Null_unspecified
+#endif
+
+
+// NULLABLE ATTRIBUTE
+
+#ifdef COMPILER_CLANG
+/** The input pointer parameter of the function may be NULL */
+#   define Nullable   _Nullable
+#else
+/** The input pointer parameter of the function may be NULL */
+#   define Nullable
+/** The input pointer parameter of the function may be NULL */
+#   define _Nullable
+#endif
+
+
+// NONNULL ATTRIBUTES
+
+#if IS_GNUC
+/** The functions input parameters are never NULL */
+#   define NONNULL   __attribute__((__nonnull__))
+/** ATTR_NONNULL(n, ..., m) tells the compiler and static analyzer tools that the values passed as the specified arguments must be non-NULL pointers; n = 1 stands for the first argument, n = 2 for the second argument, and so on */
+#   define ATTR_NONNULL(params)   __attribute__((__nonnull__(params)))
+/** The function never returns NULL */
+#   define RETURNS_NONNULL   __attribute__((__returns_nonnull__))
+/** The function does not accept nor return NULL */
+#   define NONNULL_IO   __attribute__((__returns_nonnull__, __nonnull__))
+/** Ensures that a parameter in a function call is an explicit NULL (only valid on variadic functions) */
+#   define ATTR_SENTINEL   __attribute__((__sentinel__))
+#else
+/** The functions input parameters are never NULL */
+#   define NONNULL   /*@notnull@*/
+#   define ATTR_NONNULL(params)   /*@notnull@*/
+/** The function never returns NULL */
+#   define RETURNS_NONNULL   /*@notnull@*/
+/** The function does not accept nor return NULL */
+#   define NONNULL_IO
+#   define ATTR_SENTINEL
+#endif
+
+
+// ARTIFICIAL ATTRIBUTE
+
+#if IS_GNUC
+/** Useful for small inline wrappers that should appear during debugging as a unit (if possible) */
+#   define attr_artificial   __attribute__((__artificial__))
+#else
+#   define attr_artificial
+#endif
+#ifndef __fortify_function
+#   define __fortify_function   extern_always_inline attr_artificial
+#endif
+
+
+// BOUNDS-CHECKER, PROFILING, & SANITIZER ATTRIBUTES
+
+#if IS_GNUC
+/** Inform the Pointer-Bounds-Checker that the size of the field should not be computed using static type information */
+#   define bnd_variable_size   __attribute__((__bnd_variable_size__))
+/** Do not add profiling function calls to the function nor instrument the function */
+#   define __noprofile   __attribute__((__bnd_legacy__, __no_instrument_function__, __no_profile_instrument_function__, __no_sanitize__))
+/** Inform the compiler that it should not instrument memory accesses in the function when compiling with the `-fsanitize=address` option */
+#   define NO_SANITIZE_ADDRESS   __attribute__((__no_sanitize_address__))
+/** Inform the compiler that it should not instrument memory accesses in the function when compiling with the `-fsanitize=thread` option */
+#   define NO_SANITIZE_THREAD   __attribute__((__no_sanitize_thread__))
+/** Inform the compiler that it should not check for undefined behavior in the function when compiling with the `-fsanitize=undefined` option */
+#   define NO_SANITIZE_UNDEFINED   __attribute__((__no_sanitize_undefined__))
+#   define stack_protect   __attribute__((__stack_protect__))
+#else
+#   define bnd_variable_size
+#   define __noprofile
+#   define NO_SANITIZE_ADDRESS
+#   define NO_SANITIZE_THREAD
+#   define NO_SANITIZE_UNDEFINED
+#   define stack_protect
+#endif
+
+
+// ENABLE OPTIMIZATIONS
+
+#if IS_GNUC
+#   define attr_optimize(x)   __attribute__((optimize(x)))
+#else
+#   define attr_optimize(x)
+#endif
+
+
+// DISABLE OPTIMIZATIONS
+
+#if IS_GNUC
+/** Prevents a function from being considered for cloning */
+#   define noclone   __attribute__((__noclone__))
+/** Prevents a function from being merged with another semantically equivalent function */
+#   define no_icf   __attribute__((__no_icf__))
+/** Prevents a function orvariable from being reordered */
+#   define no_reorder   __attribute__((__no_reorder__))
+#else
+#   define noclone
+#   define no_icf
+#   define no_reorder
+#endif
+
+
+// MISCELLANEOUS GNU-GCC & CLANG MACROS
+
+#if IS_GNUC
+#   define os_constant(x)   __builtin_constant_p((x))
+#else
+#   define os_constant(x)   ((long)0)
+#endif
+#if (IS_GNUC || IS_STDC99)  // __flexarr
+/** Flexible array members */
+#   define __flexarr   []
+#else
+/** Flexible array members */
+#   define __flexarr   [1]
+#endif
+
+
+// MISCELLANEOUS MICROSOFT MACROS
+
+/** @defgroup Microsoft_Macros Macros specific to Microsoft-product development
+@{ */  // (FB){
+
+#ifdef COMPILER_MICROSOFT  // DECLSPEC_INTRIN_TYPE
+#   define DECLSPEC_INTRIN_TYPE   __declspec(intrin_type)
+#else
+#   define DECLSPEC_INTRIN_TYPE
+#endif
+#if IS_GNUC  // DECLSPEC_HOTPATCH
+/** Define to a function attribute for Microsoft hotpatch assembly prefix */
+#   define DECLSPEC_HOTPATCH   __attribute__((__ms_hook_prologue__))
+#elif defined(COMPILER_MICROSOFT)
+/** Define to a function attribute for Microsoft hotpatch assembly prefix */
+#   define DECLSPEC_HOTPATCH   __declspec(ms_hook_prologue)
+#else
+/** Define to a function attribute for Microsoft hotpatch assembly prefix */
+#   define DECLSPEC_HOTPATCH
+#endif
+
+/** @} */  // }
+
+
+// LINK SET MACROS
+
+/** @defgroup Link_Set_Macros Macros controlling the linking process
+@{ */  // (FB){
+
+#define __link_set_start(set)   __start_link_set_ ## set
+#define __link_set_end(set)   __stop_link_set_ ## set
+#define __link_set_count(set)   (__link_set_end(set) - __link_set_start(set))
+#define __link_set_make_entry(set, sym)   static void const* const __link_set_ ## set ## _sym_ ## sym __section("link_set_" #set) UNUSED = &sym
+#define __link_set_make_entry2(set, sym, n)   static void const* const __link_set_ ## set ## _sym_ ## sym ## _ ## n __section("link_set_" #set) UNUSED = &sym[n]
+#define __link_set_add_text(set, sym)   __link_set_make_entry(set, sym)
+#define __link_set_add_rodata(set, sym)   __link_set_make_entry(set, sym)
+#define __link_set_add_data(set, sym)   __link_set_make_entry(set, sym)
+#define __link_set_add_bss(set, sym)   __link_set_make_entry(set, sym)
+#define __link_set_add_text2(set, sym, n)   __link_set_make_entry2(set, sym, n)
+#define __link_set_add_rodata2(set, sym, n)   __link_set_make_entry2(set, sym, n)
+#define __link_set_add_data2(set, sym, n)   __link_set_make_entry2(set, sym, n)
+#define __link_set_add_bss2(set, sym, n)   __link_set_make_entry2(set, sym, n)
+#define __link_set_decl(set, ptype)   extern ptype* const __start_link_set_ ## set[]; extern ptype* const __stop_link_set_ ## set[]
+/** Iterate over the link set `set`; Because a link set is an array of pointers, pvar must be declared as `type** pvar`, and the actual entry accessed as `*pvar` */
+#define __link_set_foreach(pvar, set)   for (pvar = __link_set_start(set); pvar < __link_set_end(set); pvar++)
+/** Access the link set entry at index `idx` from set `set` */
+#define __link_set_entry(set, idx)   (__link_set_begin(set)[idx])
+
+/** @} */  // }
+
+
+// ASSEMBLY MACROS
+
+/** @defgroup Assembly_Macros Macros pertaining to assembly
+@{ */  // (FB){
+
+#define RELOC_HIDE(ptr, off)   do { unsigned long __ptr; vasm(";" : "=r"(__ptr) : "0"(ptr)); (typeof(ptr))(__ptr + (off)); } while (0x0)
+#define OPTIMIZER_HIDE_VAR(var)   asm (";" : "=r"(var) : "0"(var))
+#define asm_volatile_goto(x)   do { asm goto(x); asm (";"); } while (0x0)
+#if IS_GNUC
+#   if IS_NOT_ASSEMBLER  // Move compatibility symbols into a special section
+#      define compat_text_section   __attribute__((__section__(".text.compat")))
+#      define compat_data_section   __attribute__((__section__(".data.compat")))
+#   else
+#      define compat_text_section   .section ".text.compat", "ax";
+#      define compat_data_section   .section ".data.compat", "aw";
+#   endif
+#   ifdef SHARED
+/** When building a shared library, make the set section writable, because it will need to be relocated at run time anyway */
+#      define _elf_set_element(set, symbol)   static const void* __elf_set_ ## set ## _element_ ## symbol ## __ __attribute__((__section__(#set), __used__)) = &(symbol)
+#   else
+/** When building a shared library, make the set section writable, because it will need to be relocated at run time anyway */
+#      define _elf_set_element(set, symbol)   static const void* const __elf_set_ ## set ## _element_ ## symbol ## __ __attribute__((__section__(#set), __used__)) = &(symbol)
+#   endif
+/** Marker used for indirection function symbols */
+#   define libc_ifunc(name, expr)   extern void* name ## _ifunc (void) asm (#name); void* name ## _ifunc (void) { INIT_ARCH (); typeof(name)* res = expr; return res; } asm (".type " #name ", %gnu_indirect_function");
+/** The body of the function is supposed to use __get_cpu_features which will, if necessary, initialize the data first */
+#   define libm_ifunc(name, expr)   extern void* name ## _ifunc (void) asm (#name); void* name ## _ifunc (void) { typeof(name)* res = expr; return res; } asm (".type " #name ", %gnu_indirect_function");
+#   define tls_model_ie   __attribute__((__tls_model__("initial-exec")))
+#   define attr_relro   __attribute__((__section__(".data.rel.ro")))
+/** Make `symbol`, which is in the text segment, an element of `set` */
+#   define text_set_element(set, symbol)   _elf_set_element(set, symbol)
+/** Make `symbol`, which is in the data segment, an element of `set` */
+#   define data_set_element(set, symbol)   _elf_set_element(set, symbol)
+/** Make `symbol`, which is in the bss segment, an element of `set` */
+#   define bss_set_element(set, symbol)   _elf_set_element(set, symbol)
+#else  // Not GNU-GCC
+#   define compat_text_section
+#   define compat_data_section
+#   define _elf_set_element(set, symbol)
+#   define libc_ifunc(name, expr)
+#   define libm_ifunc(name, expr)
+#   define tls_model_ie
+#   define attr_relro
+#   define text_set_element(set, symbol)
+#   define data_set_element(set, symbol)
+#   define bss_set_element(set, symbol)
+#endif
+#if IS_NOT_ASSEMBLER
+#   define link_warning(sym, msg)   asm (".section .gnu.warning." sym "\n\t.string \"" msg "\"\n\t.previous");
+#else
+#   define link_warning(sym, msg)   .section .gnu.warning. ## sym ; .string msg ; .previous
+#endif
+#if (defined(__MINGW_USE_UNDERSCORE_PREFIX) && (__MINGW_USE_UNDERSCORE_PREFIX == 1))
+#   define __MINGW_IMP_SYMBOL(sym)   _imp__ ## sym
+#   define __MINGW_USYMBOL(sym)   _ ## sym
+#   define __MINGW_LSYMBOL(sym)   sym
+#else
+#   define __MINGW_IMP_SYMBOL(sym)   __imp_ ## sym
+#   define __MINGW_USYMBOL(sym)   sym
+#   define __MINGW_LSYMBOL(sym)   _ ## sym
+#endif
+#define HIDDEN(x)   _libc_ ## x
+/** Expands to the internal, hidden name of a cancellation wrapper */
+#define CANCEL(x)   _libc_ ## x ## _cancel
+/** Expands to the internal, hidden name of a non-cancellation wrapper */
+#define WRAP(x)   _libc_ ## x ## _wrap
+#define HIDDEN_STRING(x)   "_libc_" __STRING(x)
+#define WRAP_STRING(x)   "_libc_" __STRING(x) "_wrap"
+/** Symbols used both internally and externally; This makes the compiler convert use of x to use _libc_x instead */
+#define PROTO_NORMAL(x)   __dso_hidden typeof(x) x asm (HIDDEN_STRING(x))
+/** Marks the symbol as deprecated */
+#define PROTO_STD_DEPRECATED(x)   deprecated typeof(x) x
+/** Marks the symbol as both weak and deprecated */
+#define PROTO_DEPRECATED(x)   deprecated weak_function typeof(x) x
+/** Functions that have cancellation wrappers */
+#define PROTO_CANCEL(x)   PROTO_NORMAL(x), CANCEL(x)
+/** Functions that have wrappers */
+#define PROTO_WRAP(x)   PROTO_NORMAL(x), WRAP(x)
+/** Symbols that are exact clones of other symbols */
+#define MAKE_CLONE(dst, src)   __dso_hidden __attribute__((__alias__(HIDDEN_STRING((src))))) typeof(dst) HIDDEN(dst)
+/** Define or declare a datum with TYPE for KEY; CLASS can be `static` for keys used in only one source file, empty for global definitions, or `extern` for global declarations */
+#define __libc_tsd_define(CLASS, TYPE, KEY)   CLASS thread_local TYPE __libc_tsd_ ## KEY tls_model_ie;
+/** Return the `TYPE *` pointing to the current thread's datum for KEY */
+#define __libc_tsd_address(TYPE, KEY)   (&__libc_tsd_ ## KEY)
+/** Return the `TYPE` datum for KEY */
+#define __libc_tsd_get(TYPE, KEY)   (__libc_tsd_ ## KEY)
+/** Set the datum for KEY to VALUE */
+#define __libc_tsd_set(TYPE, KEY, VALUE)   __libc_tsd_ ## KEY = (VALUE)
+#define __libc_once_define(CLASS, NAME)   CLASS int NAME = 0
+#define __libc_once(ONCE_CONTROL, INIT_FUNCTION)   do { if ((ONCE_CONTROL) == 0) { INIT_FUNCTION(); (ONCE_CONTROL) = 1; } } while (0x0)
+#define __libc_once_get(ONCE_CONTROL)   ((ONCE_CONTROL) == 1)
+#if (defined(SHARED) && (!defined(NO_HIDDEN)) && IS_STDC_ABOVE_C99)  // hidden
+#   if IS_NOT_ASSEMBLER
+#      define hidden_proto(name, ...)   __hidden_proto(name, , __GI_ ## name, __VA_ARGS__)
+#      define hidden_tls_proto(name, ...)   __hidden_proto(name, thread_local, __GI_ ## name, __VA_ARGS__)
+#      define __hidden_proto(name, thread, internal, ...)   extern thread typeof(name) name asm (__hidden_asmname(#internal)) __hidden_proto_hiddenattr(attrs);
+#      define __hidden_asmname2(prefix, name)   #prefix name
+#      define __hidden_asmname1(prefix, name)   __hidden_asmname2(prefix, name)
+#      define __hidden_asmname(name)   __hidden_asmname1(__USER_LABEL_PREFIX__, name)
+#      define __hidden_ver1(local, internal, name)   extern typeof(name) __EI_ ## name asm (__hidden_asmname(#internal)); extern typeof(name) __EI_ ## name __attribute__((__alias__(__hidden_asmname(#local))))
+#      define hidden_ver(local, name)   __hidden_ver1(local, __GI_ ## name, name);
+#      define hidden_data_ver(local, name)   hidden_ver(local, name)
+#      define hidden_def(name)   __hidden_ver1(__GI_ ## name, name, name);
+#      define hidden_data_def(name)   hidden_def(name)
+#      define hidden_weak(name)   __hidden_ver1(__GI_ ## name, name, name) weak_function;
+#      define hidden_data_weak(name)   hidden_weak(name)
+#      define __hidden_nolink3(local, internal, vername)   asm (".symver " #internal ", " vername);
+#      define __hidden_nolink2(local, internal, name, version)   extern typeof(name) internal __attribute__((__alias__(#local)));  __hidden_nolink3(local, internal, #name "@" #version)
+#      define __hidden_nolink1(local, internal, name, version)   __hidden_nolink2(local, internal, name, version)
+#      define hidden_nolink(name, lib, version)   __hidden_nolink1(__GI_ ## name, __EI_ ## name, name, VERSION_ ## lib ## _ ## version)
+#      define HIDDEN_JUMPTARGET(name)   __GI_ ## name
+#   else  // IS_ASSEMBLER
+#      define hidden_def(name)   strong_alias(name, __GI_ ## name)
+#      define hidden_weak(name)   hidden_def(name)
+#      define hidden_ver(local, name)   strong_alias(local, __GI_ ## name)
+#      define hidden_data_def(name)   strong_data_alias(name, __GI_ ## name)
+#      define hidden_data_weak(name)   hidden_data_def(name)
+#      define hidden_data_ver(local, name)   strong_data_alias(local, __GI_ ## name)
+#      define HIDDEN_JUMPTARGET(name)   __GI_ ## name
+#   endif
+#else  // (defined(SHARED) && (!defined(NO_HIDDEN)))
+#   if (IS_NOT_ASSEMBLER && IS_STDC_ABOVE_C99)
+#      define hidden_proto(name, ...)
+#      define hidden_tls_proto(name, ...)
+#   else
+#      define HIDDEN_JUMPTARGET(name)   JUMPTARGET(name)
+#   endif
+#   define hidden_weak(name)
+#   define hidden_def(name)
+#   define hidden_ver(local, name)
+#   define hidden_data_weak(name)
+#   define hidden_data_def(name)
+#   define hidden_data_ver(local, name)
+#   define hidden_nolink(name, lib, version)
+#endif  // hidden
+#if IS_ASSEMBLER
+#   define HIDDEN_BUILTIN_JUMPTARGET(name)   HIDDEN_JUMPTARGET(name)
+#else
+#   define HIDDEN_BUILTIN_JUMPTARGET(name)
+#endif
+#ifdef HAVE_ASM_SET_DIRECTIVE
+#   define libc_ifunc_hidden_def1(local, name)   asm (".globl " #local "\n\t" ".hidden " #local "\n\t" ".set " #local ", " #name);
+#else
+#   define libc_ifunc_hidden_def1(local, name)   asm (".globl " #local "\n\t" ".hidden " #local "\n\t" #local " = " #name);
+#endif
+#define libc_ifunc_hidden_def(name)   libc_ifunc_hidden_def1(__GI_ ## name, name)
+#ifdef HAVE_ASM_PREVIOUS_DIRECTIVE
+#   define __make_section_unallocated(section_string)   asm (".section " section_string "\n\t.previous");
+#elif defined(HAVE_ASM_POPSECTION_DIRECTIVE)
+#   define __make_section_unallocated(section_string)   asm (".pushsection " section_string "\n\t.popsection");
+#else
+#   define __make_section_unallocated(section_string)
+#endif
+#if (ARCHX86 && (CPU_AVX || CPU_SSE2AVX))
+#   define MOVD   "vmovd"
+#   define MOVQ   "vmovq"
+#   define STMXCSR   "vstmxcsr"
+#   define LDMXCSR   "vldmxcsr"
+#else
+#   define MOVD   "movd"
+#   define MOVQ   "movq"
+#   define STMXCSR   "stmxcsr"
+#   define LDMXCSR   "ldmxcsr"
+#endif
+#if (defined(ARCHX86) && IS_WORDSIZE_64)
+#   define STOS   "stosq"
+#   define FD_ZERO_STOS   "stosq"
+#elif (defined(ARCHX86) && IS_WORDSIZE_32)
+#   define STOS   "stosl"
+#   define FD_ZERO_STOS   "stosl"
+#endif
+#if (defined(ARCHI386) && defined(_I386MACH_DISABLE_HW_INTERRUPTS))
+#   define __CLI   cli
+#   define __STI   sti
+#else
+#   define __CLI
+#   define __STI
+#endif
+
+/** @} */  // }
+
+
+#endif  // ATTRIBUTES_H
+
+
+/* ALIGNMENT ATTRIBUTES */
+
+
+#if (!(defined(ALIGNMENT_ATTRIBUTES_H) || defined(_ALIGNMENT_ATTRIBUTES_H) || defined(_ALIGNMENT_ATTRIBUTES_H_)))
+#define ALIGNMENT_ATTRIBUTES_H   (1)
+#define _ALIGNMENT_ATTRIBUTES_H   (1)
+#define _ALIGNMENT_ATTRIBUTES_H_   (1)
+
+
+#if ((!defined(SUPPORTS_ALIGN_SPECIFIER)) && (defined(__IBM__ALIGN) || IS_GNUC || defined(COMPILER_ILEC)))
+#   define SUPPORTS_ALIGN_SPECIFIER   1
+#elif (!defined(SUPPORTS_ALIGN_SPECIFIER))
+#   define SUPPORTS_ALIGN_SPECIFIER   0
+#endif
+
+
+/** @defgroup Alignment_Attributes Macros for specifying alignment of data-structures
+@{ */  // (FB){
+
+/** @def attr_packed
+Pack the data-structure instead of aligning */
+/** @def aligned
+Align the data to the specified number of bytes */
+/** @def align1
+Align the data to one byte */
+/** @def align2
+Align the data to two bytes (short int) */
+/** @def align128
+Align the data to 128 bytes */
+/** @def align512
+Align the data to 512 bytes */
+#if (defined(COMPILER_MICROSOFT) && IS_NOT_GNUC)
+#   define attr_packed
+#   define attr_mspacked
+#   define attr_gccpacked
+#   define aligned(x)   __declspec(align((x)))
+#   define auto_align
+#   define align1   __declspec(align(1))
+#   define align2   __declspec(align(2))
+#   define align4   __declspec(align(4))
+#   define align8   __declspec(align(8))
+#   define align16   __declspec(align(16))
+#   define align32   __declspec(align(32))
+#   define align64   __declspec(align(64))
+#   define align128   __declspec(align(128))
+#   define align256   __declspec(align(256))
+#   define align512   __declspec(align(512))
+#   define align1024   __declspec(align(1024))
+#   define __section(x)
+#elif defined(LINTER_LINT)
+#   define attr_packed
+#   define attr_mspacked
+#   define attr_gccpacked
+#   define aligned(x)
+#   define auto_align
+#   define align1
+#   define align2
+#   define align4
+#   define align8
+#   define align16
+#   define align32
+#   define align64
+#   define align128
+#   define align256
+#   define align512
+#   define align1024
+#   define __section(x)
+#elif (IS_GNUC || defined(COMPILER_PCC))
+#   define attr_packed   __attribute__((__packed__))
+#   define attr_mspacked   __attribute__((__packed__, __ms_struct__))
+#   define attr_gccpacked   __attribute__((__packed__, __gcc_struct__))
+#   ifndef aligned
+#      define aligned(x)   __attribute__((__aligned__((x))))
+#   endif
+#   define auto_align   __attribute__((__aligned__))
+#   define align1   __attribute__((__aligned__(1)))
+#   define align2   __attribute__((__aligned__(2)))
+#   define align4   __attribute__((__aligned__(4)))
+#   define align8   __attribute__((__aligned__(8)))
+#   define align16   __attribute__((__aligned__(16)))
+#   define align32   __attribute__((__aligned__(32)))
+#   define align64   __attribute__((__aligned__(64)))
+#   define align128   __attribute__((__aligned__(128)))
+#   define align256   __attribute__((__aligned__(256)))
+#   define align512   __attribute__((__aligned__(512)))
+#   define align1024   __attribute__((__aligned__(1024)))
+#   define __section(x)   __attribute__((__section__((x))))
+#else
+#   define attr_packed
+#   define attr_mspacked
+#   define attr_gccpacked
+#   define aligned(x)
+#   define auto_align
+#   define align1
+#   define align2
+#   define align4
+#   define align8
+#   define align16
+#   define align32
+#   define align64
+#   define __section(x)
+#endif
+
+
+// ALIGNMENT BY DATATYPE
+
+#define align_short   aligned(ALIGN_OF_SHORT)
+#define align_int   aligned(ALIGN_OF_INT)
+#define align_int64   aligned(ALIGN_OF_INT64)
+#define align_long   aligned(ALIGN_OF_LONG)
+#define alignSF   aligned(ALIGN_OF_FLOAT)
+#define align_flt   aligned(ALIGN_OF_FLOAT)
+#define alignDF   aligned(ALIGN_OF_DOUBLE)
+#define align_dbl   aligned(ALIGN_OF_DOUBLE)
+#define alignXF   alignDF
+#define alignTF   aligned(ALIGN_OF_DOUBLE * 2)
+#if SUPPORTS_LONG_DOUBLE
+#   define align_ldbl   ATTR_ALIGN_TO(long double)
+#else
+#   define align_ldbl
+#endif
+#define align_ptr   aligned(ALIGN_OF_PTR)
+
+
+// ALIGNMENT ALIASES
+
+#ifndef _MM_ALIGN4
+#   define _MM_ALIGN4   align4
+#endif
+#ifndef _MM_ALIGN8
+#   define _MM_ALIGN8   align8
+#endif
+#ifndef _MM_ALIGN16
+#   define _MM_ALIGN16   align16
+#endif
+#ifndef _MM_ALIGN32
+#   define _MM_ALIGN32   align32
+#endif
+#ifndef _MM_ALIGN64
+#   define _MM_ALIGN64   align64
+#endif
+
+/** @} */  // }
+
+
+#endif  // ALIGNMENT_ATTRIBUTES_H
+
+
 /* PRAGMAS */
 
 
@@ -8018,6 +10087,400 @@ Compile-time assertion */
 
 
 #endif  // PRAGMAS_H
+
+
+/* BOOLEAN DATATYPE (<stdbool.h>) */
+
+
+#if (!(defined(__bool_true_false_are_defined) || defined(STDBOOL_H) || defined(__STDBOOL_H) || defined(_BOOL_H) || defined(_DEF_WINBOOL_) || defined(_BOOLEAN_H)))  // http://www.cplusplus.com/reference/cstdbool/ & http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdbool.h.html
+#define __bool_true_false_are_defined   (1)
+#define STDBOOL_H   (1)
+#define __STDBOOL_H   (1)
+#define __STDBOOL_H_   (1)
+#define _BOOL_H   (1)
+#define _BOOLEAN_H   (1)
+#define _DEF_WINBOOL_   (1)
+
+
+/** @def bool
+Boolean Datatype */
+#if IS_LINTER
+#   define _Bool   int
+#   define bool   int
+#elif IS_STDC_BELOW_C99
+#   define _Bool   int
+#   define bool   int
+#elif IS_NOT_CPLUSPLUS
+#   define bool   _Bool
+#endif
+#if (!(defined(BOOL) || IS_OBJ_C))
+/** Support Objective-C-Style "BOOL" datatype */
+#   define BOOL   bool
+/** Objective-C false boolean constant */
+#   define __objc_no   ((bool)0)
+/** Objective-C true boolean constant */
+#   define __objc_yes   ((bool)1)
+#endif
+/** MacOS historic boolean datatype */
+typedef unsigned char   Boolean;
+/** Mach-style boolean datatype */
+#define boolean_t   bool
+#define MACH_MSG_TYPE_BOOLEAN   bool
+/** Windows boolean datatype */
+typedef int   WINBOOL;
+#define PRBool   WINBOOL
+/** Windows boolean pointer datatype */
+typedef WINBOOL*   PBOOL;
+/** Windows boolean pointer datatype */
+typedef WINBOOL*   LPBOOL;
+/** Use PRPackedBool within structs where bitfields are not desirable but minimum and consistant overhead matters */
+typedef unsigned char   PRPackedBool;
+/** Status code used by some routines that have a single point of failure or special status return */
+typedef enum PRStatus_enum { PR_FAILURE = -1, PR_SUCCESS = 0 }   PRStatus;
+typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
+typedef enum truth_enum { Unknown = -1, False = 0, True = 1, Sometimes = 2, Depends = 3 }   truth;
+
+
+#define no   ((bool)0)
+#define NO   no
+#define NOPE   no
+#define yes   ((bool)1)
+#define YES   yes
+#ifndef NOT
+#   define NOT(expr)   (!(expr))
+#endif
+#ifndef false
+#   define false   ((bool)0)
+#endif
+#ifndef FALSE
+#   define FALSE   ((bool)0)
+#endif
+#ifndef _FALSE
+#   define _FALSE   ((bool)0)
+#endif
+#ifndef true
+#   define true   ((bool)1)
+#endif
+#ifndef TRUE
+#   define TRUE   ((bool)1)
+#endif
+#ifndef _TRUE
+#   define _TRUE   ((bool)1)
+#endif
+#ifndef objc_yes
+#   define objc_yes   __objc_yes
+#endif
+#ifndef objc_no
+#   define objc_no   __objc_no
+#endif
+
+
+#endif  // STDBOOL_H
+
+
+/* NORETURN (<stdnoreturn.h>) */
+
+
+#if (!(defined(STDNORETURN_H) || defined(__STDNORETURN_H) || defined(__STDNORETURN_H_) || defined(__noreturn_is_defined)))
+#define STDNORETURN_H   (1)
+#define _STDNORETURN_H   (1)
+#define __STDNORETURN_H   (1)
+#define __STDNORETURN_H_   (1)
+#define __noreturn_is_defined   (1)
+
+
+/** @defgroup NoReturn Function declaration indicating that the function does not return by executing the return statement or by reaching the end of the function body
+@{ */  // (FB){
+
+#if (IS_STDC_BELOW_C11 && IS_GNUC)
+#   define noreturn   __attribute__((__noreturn__))
+#   define _Noreturn   __attribute__((__noreturn__))
+#elif (defined(COMPILER_MICROSOFT) && (defined(_MSC_VER) && (_MSC_VER >= 1200)))
+#   define _Noreturn   __declspec(noreturn)
+#elif (defined(LINTER_CLANG) && __has_extension(attribute_analyzer_noreturn))
+#   define noreturn   __attribute__((analyzer_noreturn))
+#   define _Noreturn   __attribute__((analyzer_noreturn))
+#elif IS_LINTER
+#   define _Noreturn   /*@noreturn@*/
+#   define noreturn   /*@noreturn@*/
+#else
+#   define noreturn   _Noreturn
+#endif  // noreturn
+#define Noreturn   _Noreturn
+#define __noreturn   _Noreturn
+#define DECLSPEC_NORETURN   _Noreturn
+#define PR_PRETEND_NORETURN   _Noreturn
+
+/** @} */  // }
+
+
+#endif  // STDNORETURN_H
+
+
+/* STRING MACROS */
+
+
+#ifndef STRING_MACROS_H
+#define STRING_MACROS_H   (1)
+
+
+// PROGRAM NAME MACROS
+
+#if ((!defined(getprogname)) && defined(PROGRAM_NAME))
+#   define getprogname()   PROGRAM_NAME
+#elif ((!defined(getprogname)) && (!defined(PROGRAM_NAME)))
+#   define getprogname()   "UNAMED_PROGRAM\0"
+#endif
+/*@-readonlytrans@*/
+static const char* __progname = NULL;
+static const UNUSED char* progname = NULL;
+static const UNUSED char* program_name = NULL;
+static const UNUSED char* __progname_full = NULL;
+/*@-readonlytrans@*/
+static const UNUSED char* program_invocation_name = getprogname();
+/*@=readonlytrans@*/
+#define program_invocation_short_name   program_invocation_name
+#define __IDSTRING(name, str)   static const UNUSED char name[] = str
+#ifndef __COPYRIGHT
+#   define __COPYRIGHT(str)   __IDSTRING(copyright, str)
+#endif
+#ifndef __PROJECT_VERSION
+#   define __PROJECT_VERSION(str)   __IDSTRING(__MODULE_VERSION__, str)
+#endif
+#ifndef __FBSDID
+#   define __FBSDID(str)   __IDSTRING(fbsdid, str)
+#endif
+#undef __KERNEL_RCSID
+#if (defined(_KERNEL) && defined(NO_KERNEL_RCSIDS))
+#   define __KERNEL_RCSID(name, str)
+#else
+#   define __KERNEL_RCSID(name, str)   __IDSTRING(name, str)
+#endif
+#ifndef __RCSID
+#   define __RCSID(str)   __IDSTRING(rcsid, str)
+#endif
+#ifndef __SCCSID
+#   define __SCCSID(str)   __IDSTRING(sccsid, str)
+#endif
+
+
+// LOCATION MACROS
+
+#ifndef __func__
+#   if (IS_CPLUSPLUS && IS_GNUC)
+#      define __func__   __PRETTY_FUNCTION__
+#   else
+#      if IS_STDC99
+#         define __func__   __FUNCTION__
+#      elif (IS_GNUC || defined(COMPILER_MICROSOFT))
+#         define __func__   __FUNCTION__
+#      else
+#         define __func__   ((const char*)0)
+#      endif
+#   endif
+#endif
+#if IS_GNUC
+/** String identifier for the current code position */
+#   define CODE_POS   __FILE__ ":" S(__LINE__) ":" __PRETTY_FUNCTION__ "()"
+#   define GNUC_FUNCTION   __FUNCTION__
+#   define GNUC_PRETTY_FUNCTION   __PRETTY_FUNCTION__
+/** Current function identifier */
+#   define FUNC_NAME   ((const char*)(__PRETTY_FUNCTION__))
+#elif IS_STDC11
+/** String identifier for the current code position */
+#   define CODE_POS   __FILE__ ":" S(__LINE__)
+#   define GNUC_FUNCTION   ""
+#   define GNUC_PRETTY_FUNCTION   ""
+/** Current function identifier */
+#   define FUNC_NAME   ((const char*)(__func__))
+#else
+#   error   "This library requires Standard C version 2011 or newer!"
+#endif
+#define WHERESTR   "[file %s, line %d]: "
+#if (defined(__FILE__) && defined(__LINE__))
+#   define WHEREARG   __FILE__, __LINE__
+#   define CODE_LOCATION   __BASE_FILE__ ":" __FILE__ ":" S(__LINE__)
+#endif
+/** Compile Time Assertion */
+#define __CTASSERT1(x, y, z)   typedef char y ## z[(x) ? 1 : (-1)] UNUSED
+/** Compile Time Assertion */
+#define __CTASSERT0(x, y, z)   __CTASSERT1(x, y, z)
+#ifdef __COUNTER__
+/** Compile Time Assertion */
+#   define __CTASSERT(x)   __CTASSERT0(x, __ctassert, __COUNTER__)
+#else
+/** Compile Time Assertion */
+#   define __CTASSERT99(x, y, z)   __CTASSERT0(x, CONCAT_X(__ctassert, y), CONCAT_X(_, z))
+/** Compile Time Assertion */
+#   define __CTASSERT(x)   __CTASSERT99(x, __INCLUDE_LEVEL__, __LINE__)
+#endif
+
+
+#endif  // STRING_MACROS_H
+
+
+/* STDARG (<stdarg.h>, <varargs.h>, & <vadefs.h>) */
+
+
+#if (!(defined(STDARG_H) || defined(_STDARG_H) || defined(_STDARG_H_) || defined(_VARARGS_H) || defined(__VARARGS_H) || defined(__clang_vadefs_h) || defined(_VADEFS_H) || defined(_INC_STDARG) || defined(_INC_VADEFS)))  // http://www.cplusplus.com/reference/cstdarg/ & http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdarg.h.html
+#define STDARG_H   (1)
+#define _STDARG_H   (1)
+#define _STDARG_H_   (1)
+#define __STDARG_H_   (1)
+#define SYS_STDARG_H   (1)
+#define _SYS_STDARG_H   (1)
+#define _SYS_STDARG_H_   (1)
+#define VARARGS_H   (1)
+#define _VARARGS_H   (1)
+#define _VARARGS_H_   (1)
+#define __VARARGS_H   (1)
+#define _VADEFS_H   (1)
+#define __clang_vadefs_h   (1)
+#define _INC_STDARG   (1)
+#define _INC_VADEFS   (1)
+#define _UCLIBC_VA_COPY_H   (1)
+
+
+#ifndef MAXARGS
+/** Maximum number of function arguments */
+#   define MAXARGS   (31)
+#endif
+#ifndef MAX_ARGS
+/** Maximum number of function arguments */
+#   define MAX_ARGS   MAXARGS
+#endif
+/** Flag used in struct __args -> flags */
+#define A_ALLOCATED   (1)
+
+
+// VA_LIST
+
+#if (IS_GNUC && (!defined(__GNUC_VA_LIST)))
+/** Type to hold information about variable arguments */
+typedef __builtin_va_list   va_list;
+#elif defined(__VMS__)
+/** Type to hold information about variable arguments */
+typedef char*   va_list;
+#else
+#   ifdef ARCHX86_64
+typedef struct va_struct {
+   uint32_t gp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available general purpose argument register is saved. If all the argument registers are exhausted, then it is set to the value `48`.
+   uint32_t fp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available ﬂoating point argument register is saved. If all the argument registers are exhausted, then it is set to the value `304`.
+   void* overflow_arg_area;  //!< Pointer used to fetch arguments passed on the stack. It is initialized with the address of the ﬁrst argument passed on the stack (if any). It is always updated to point to the start of the next argument on the stack.
+   void* reg_save_area;  //!< Pointer to the start of the register save area
+} va_list[1];
+#   else
+typedef uintptr_t   va_list;
+#   endif
+#endif
+#define __GNUC_VA_LIST   1
+#undef __need___va_list
+#define __DEFINED___isoc_va_list   (1)
+#define __DEFINED_va_list   (1)
+/** Type to hold information about variable arguments */
+#define __gnuc_va_list   va_list
+/** Type to hold information about variable arguments */
+#define p9va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define _G_va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define _IO_va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define gnuc_va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define __VALIST   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define __va_list   va_list
+/** Type to hold information about variable arguments */
+#define isoc_va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define __isoc_va_list   __gnuc_va_list
+/** Type to hold information about variable arguments */
+#define __va_ptr_t   __gnuc_va_list
+#define VEC(...)   (const unsigned char[]){ __VA_ARGS__ }
+/** Show list of items in __VA_ARGS__ */
+#define showlist(...)   puts(#__VA_ARGS__)
+
+
+// VA_START, VA_END, & VA_ARG
+
+/** Retrieve next argument */
+#define va_arg(v, datatype)   __builtin_va_arg(v, datatype)
+
+#if IS_GNUC
+#   define __builtin_stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
+#elif (!defined(__builtin_va_start))
+#   define __builtin_va_start(v, argnum)   __builtin_stdarg_start((v), (argnum))
+#endif
+/** Initialize a variable argument list */
+#define va_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define _stdarg_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define _va_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Initialize a variable argument list */
+#define __va_start(v, argnum)   __builtin_va_start((v), (argnum))
+/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
+#define va_end(v)   __builtin_va_end((v))
+/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
+#define _va_end(v)   __builtin_va_end((v))
+/** Performs the appropriate actions to facilitate a normal return by a function that has used the va_list object to retrieve its additional arguments */
+#define __va_end(v)   __builtin_va_end((v))
+
+
+// VA_COPY
+
+/** Copy variable argument list */
+#define va_copy(dest, src)   (*(dest) = *(src))  // __builtin_va_copy((dest), (src))
+/** Copy variable argument list */
+#define __builtin_va_copy(dest, src)   (*(dest) = *(src))
+/** Copy variable argument list */
+#define _va_copy(dest, src)   (*(dest) = *(src))
+/** Copy variable argument list */
+#define __va_copy(dest, src)   (*(dest) = *(src))
+/** Copy variable argument list */
+#define gl_va_copy(dest, src)   (*(dest) = *(src))
+
+
+// MSVC COMPATIBILITY
+
+#ifndef __ms_va_list
+#   if (defined(ARCHX86_64) && IS_GNUC)
+#      define __ms_va_list   __builtin_ms_va_list
+#      define __ms_va_start(list, arg)   __builtin_ms_va_start((list), (arg))
+#      define __ms_va_end(list)   __builtin_ms_va_end((list))
+#      define __ms_va_copy(dest, src)   __builtin_ms_va_copy((dest), (src))
+#   else
+#      define __ms_va_list   va_list
+#      define __ms_va_start(list, arg)   va_start((list), (arg))
+#      define __ms_va_end(list)   va_end((list))
+#      define __ms_va_copy(dest, src)   (*(dest) = *(src))
+#   endif
+#endif
+
+
+// APPLY_ARGS & GET_ARG_POINTER
+
+#if IS_GNUC
+/** Returns a pointer to data describing how to perform a call with the same arguments as are passed to the current function */
+#   define apply_args()   (void*)__builtin_apply_args()
+/** Returns a pointer to data describing how to perform a call with the same arguments as are passed to the current function */
+#   define get_arg_pointer()   (void*)__builtin_apply_args()
+#endif
+
+
+extern UNUSED char* argv0;
+
+
+#define ARGBEGIN   for ((void)(argv0 || (argv0 = *argv)), argv++, argc--; argv[0] && (argv[0][0] == '-') && argv[0][1]; argc--, argv++) { char *_args, *_argt; Rune _argc; _args = &argv[0][1]; if ((_args[0] == '-') && (_args[1] == 0)) { argc--; argv++; break; } _argc = 0; while (*_args && (_args += chartorune(&_argc, _args))) { switch (_argc) }
+#define ARGEND   _argt = 0; }
+#define ARGF()   (_argt = _args, _args = "", (*_argt ? _argt : argv[1] ? (argc--, *++argv) : 0))
+#define EARGF(x)   (_argt = _args, _args = "", (*_argt ? _argt : argv[1] ? (argc--, *++argv) : ((x), abort(), (char*)0)))
+
+
+#endif  // STDARG_H
 
 
 /* DATATYPE DIAGNOSTICS */
@@ -8087,4 +10550,16 @@ _Static_assert((\
 	"Invalid accum and fract datatype ranges (minimums, maximums, and epsilons)!" \
 );
 #   endif
+#endif
+
+
+#ifdef COMPILER_GNU_GCC  // Hard-code some optimizations
+#   pragma GCC optimize (3)
+#   pragma GCC optimize ("unroll-loops")
+/** ivdep: Vectorize loops */
+#   define __IVDEP__
+#elif defined(COMPILER_CLANG)
+#   pragma clang optimize on
+#elif defined(COMPILER_INTEL)
+#   pragma intel optimization_level 3
 #endif

@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2019.10.11
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,316 +35,10 @@ along with this software.
 
 
 #include "Foundation.h"
-
-
-/* FILESYSTEM CONSTANTS (<fsinfo.h>) */
-
-
-#if (!(defined(FSINFO_H) || defined(LINUX_FSINFO_H) || defined(_LINUX_FSINFO_H) || defined(_LINUX_FSINFO_H_)))
-#define FSINFO_H   (1)
-#define LINUX_FSINFO_H   (1)
-#define _LINUX_FSINFO_H   (1)
-#define _LINUX_FSINFO_H_   (1)
-
-
-/** Constant that identifies the `adfs` filesystem */
-#define ADFS_SUPER_MAGIC   0xadf5
-/** Constant that identifies the `affs` filesystem */
-#define AFFS_SUPER_MAGIC   0xadff
-/** Constant that identifies the `afs` filesystem */
-#define AFS_SUPER_MAGIC   0x5346414f
-/** Constant that identifies the `anon_inodefs` filesystem */
-#define ANON_INODE_FS_MAGIC   0x9041934
-/** Constant that identifies the `autofs` filesystem */
-#define AUTOFS_SUPER_MAGIC   0x187
-/** Constant that identifies the `bdev` filesystem */
-#define BDEVFS_MAGIC   0x62646576
-/** Constant that identifies the `bfs` filesystem */
-#define BFS_MAGIC   0x1badface
-/** Constant that identifies the `binfmt_misc` filesystem */
-#define BINFMTFS_MAGIC   0x42494e4d
-/** Constant that identifies the `btrfs` filesystem */
-#define BTRFS_SUPER_MAGIC   0x9123683e
-/** Constant that identifies the `btrfs_test_fs` filesystem */
-#define BTRFS_TEST_MAGIC   0x73727279
-/** Constant that identifies the `cgroup` filesystem */
-#define CGROUP_SUPER_MAGIC   0x27e0eb
-/** Constant that identifies the `coda` filesystem */
-#define CODA_SUPER_MAGIC   0x73757245
-/** Constant that identifies the `coherent` filesystem */
-#define COH_SUPER_MAGIC   0x012ff7b7
-/** Constant that identifies the `cramfs` filesystem */
-#define CRAMFS_MAGIC   0x28cd3d45
-/** Constant that identifies the `cramfs` filesystem w/opposite endianness */
-#define CRAMFS_MAGIC_WEND   0x453dcd28
-/** Constant that identifies the `debugfs` filesystem */
-#define DEBUGFS_MAGIC   0x64626720
-/** Constant that identifies the `devfs` filesystem */
-#define DEVFS_SUPER_MAGIC   0x1373
-/** Constant that identifies the `devpts` filesystem */
-#define DEVPTS_SUPER_MAGIC   0x1cd1
-/** Constants that identifies the `ecryptfs` filesystem */
-#define ECRYPTFS_SUPER_MAGIC   0xf15f
-/** Constants that identifies the `efs` filesystem */
-#define EFS_SUPER_MAGIC   0x414a53
-#define EFS_MAGIC   0x072959
-/** Constants that identifies the `evivar` filesystem */
-#define EFIVARFS_MAGIC   0xde5e81e4
-/** Constant that identifies the `ext2` filesystem */
-#define EXT2_SUPER_MAGIC   0xef53
-/** Constant that identifies the `ext3` filesystem */
-#define EXT3_SUPER_MAGIC   0xef53
-/** Constant that identifies the `ext3` filesystem */
-#define EXT4_SUPER_MAGIC   0xef53
-/** Constant that identifies the `f2fs` filesystem */
-#define F2FS_SUPER_MAGIC   0xf2f52010
-/** Constant that identifies the `futexfs` filesystem */
-#define FUTEXFS_SUPER_MAGIC   0xbad1dea
-/** Constant that identifies the `hostfs` filesystem */
-#define HOSTFS_SUPER_MAGIC   0xc0ffee
-/** Constant that identifies the `hpfs` filesystem */
-#define HPFS_SUPER_MAGIC   0xf995e849
-/** Constant that identifies the `hugetlbfs` filesystem */
-#define HUGETLBFS_MAGIC    0x958458f6
-/** Constant that identifies the `iso9660` filesystem */
-#define ISOFS_SUPER_MAGIC   0x9660
-/** Constant that identifies the `jffs` filesystem */
-#define JFFS_SUPER_MAGIC   0x7c0
-/** Constant that identifies the `jffs2` filesystem */
-#define JFFS2_SUPER_MAGIC   0x72b6
-/** Constant that identifies the `jfs` filesystem */
-#define JFS_SUPER_MAGIC   0x3153464a
-/** Constant that identifies the `logfs` filesystem */
-#define LOGFS_MAGIC_U32   0xc97e8168U
-/** Constant that identifies the `Lustre` filesystem */
-#define LUSTRE_SUPER_MAGIC   0xbd00bd0
-/** Constants that identify the `Minix2` filesystem */
-#define MINIX2_SUPER_MAGIC   0x2468
-#define MINIX2_SUPER_MAGIC2   0x2478
-/** Constants that identify the `Minix3` filesystem */
-#define MINIX3_SUPER_MAGIC   0x4d5a
-/** Constants that identify the `Minix` filesystem */
-#define MINIX_SUPER_MAGIC   0x137f
-#define MINIX_SUPER_MAGIC2   0x138f
-/** Constant that identifies the `msdos` filesystem */
-#define MSDOS_SUPER_MAGIC   0x4d44
-/** Constant that identifies the `mtd_inodefs` filesystem */
-#define MTD_INODE_FS_MAGIC   0x11307854
-/** Constant that identifies the `ncp` filesystem */
-#define NCP_SUPER_MAGIC   0x564c
-/** Constant that identifies the `nilfs` filesystem */
-#define NILFS_SUPER_MAGIC   0x3434
-/** Constant that identifies the `NFS` filesystem */
-#define NFS_SUPER_MAGIC   0x6969
-/** Constant that identifies the `NTFS` filesystem */
-#define NTFS_SUPER_MAGIC   0x5346544e
-/** Constant that identifies the `openpromfs` filesystem */
-#define OPENPROM_SUPER_MAGIC   0x9fa1
-/** Constant that identifies the `pipefs` filesystem */
-#define PIPEFS_MAGIC   0x50495045
-/** Constant that identifies the `proc` filesystem */
-#define PROC_SUPER_MAGIC   0x9fa0
-/** Constant that identifies the `pstorefs` filesystem */
-#define PSTOREFS_MAGIC   0x6165676c
-/** Constant that identifies the `qnx4` filesystem */
-#define QNX4_SUPER_MAGIC   0x2f
-/** Constant that identifies the `qnx6` filesystem */
-#define QNX6_SUPER_MAGIC   0x68191122
-/** Constant that identifies the `ramfs` filesystem */
-#define RAMFS_MAGIC   0x858458f6
-/** Constant that identifies the `Reiser` filesystem */
-#define REISERFS_SUPER_MAGIC   0x52654973
-#define REISERFS_SUPER_MAGIC_STRING   "ReIsErFs"
-#define REISER2FS_SUPER_MAGIC_STRING   "ReIsEr2Fs"
-#define REISER2FS_JR_SUPER_MAGIC_STRING   "ReIsEr3Fs"
-/** Constant that identifies the `romfs` filesystem */
-#define ROMFS_SUPER_MAGIC   0x7275
-/** Constant that identifies the `securityfs` filesystem */
-#define SECURITYFS_MAGIC   0x73636673
-/** Constant that identifies the `selinuxfs` filesystem */
-#define SELINUX_MAGIC   0xf97cff8c
-/** Constant that identifies the `smackfs` filesystem */
-#define SMACK_MAGIC   0x43415d53
-/** Constant that identifies the `shm` filesystem */
-#define SHMFS_SUPER_MAGIC   0x1021994
-/** Constant that identifies the `smb` filesystem */
-#define SMB_SUPER_MAGIC   0x517b
-/** Constant that identifies the `sockfs` filesystem */
-#define SOCKFS_MAGIC   0x534f434b
-/** Constant that identifies the `squashfs` filesystem */
-#define SQUASHFS_MAGIC   0x73717368
-/** Constant that identifies the end of stacks allocated by the kernel */
-#define STACK_END_MAGIC   0x57ac6e9d
-/** Constant that identifies the `sysfs` filesystem */
-#define SYSFS_MAGIC   0x62656572
-/** Constants that identify the `sysV` filesystem */
-#define SYSV2_SUPER_MAGIC   0x12ff7b6
-#define SYSV4_SUPER_MAGIC   0x12ff7b5
-/** Constant that identifies the `tmpfs` filesystem */
-#define TMPFS_MAGIC   0x1021994
-/** Constant that identifies the `UDF` filesystem */
-#define UDF_SUPER_MAGIC   0x15013346
-/** Constant that identify the `UFS` filesystem */
-#define UFS_MAGIC   0x11954
-/** Byteswapped MAGIC */
-#define UFS_CIGAM   0x54190100
-/** Constant that identifies the `usbdevfs` filesystem */
-#define USBDEVFS_SUPER_MAGIC   0x9fa2
-#define USBDEVICE_SUPER_MAGIC   0x9fa2
-/** Constant that identifies the `9p` filesystem */
-#define V9FS_MAGIC   0x01021997
-/** Constant that identifies the `VXFS` filesystem */
-#define VXFS_SUPER_MAGIC   0xa501fcf5
-/** Constant that identifies the `xenfs` filesystem */
-#define XENFS_SUPER_MAGIC   0xabba1974
-/** Constant that identifies the `Xenix` filesystem */
-#define XENIX_SUPER_MAGIC   0x12ff7b4
-/** Constant that identifies the `XFS` filesystem */
-#define XFS_SUPER_MAGIC   0x58465342
-/** Maximum link counts */
-#define COH_LINK_MAX   10000
-/** Maximum link counts for the `ext2` filesystem */
-#define EXT2_LINK_MAX   32000
-/** Maximum link counts for the `ext4` filesystem */
-#define EXT4_LINK_MAX   65000
-/** Maximum link counts for the `F2FS` filesystem */
-#define F2FS_LINK_MAX   32000
-/** Maximum link counts for the `Lustre` filesystem */
-#define LUSTRE_LINK_MAX   EXT4_LINK_MAX
-/** Maximum link counts for the `MINIX2` filesystem */
-#define MINIX2_LINK_MAX   65530
-/** Maximum link counts for the `MINIX` filesystem */
-#define MINIX_LINK_MAX   250
-/** Maximum link counts for the `Reiser` filesystem */
-#define REISERFS_LINK_MAX   64535
-/** Maximum link counts for the `sysV` filesystem */
-#define SYSV_LINK_MAX   126
-/** Maximum link counts for the `UFS` filesystem */
-#define UFS_LINK_MAX   EXT2_LINK_MAX
-/** Maximum link counts for the `Xenix` filesystem */
-#define XENIX_LINK_MAX   126
-/** Maximum link counts for the `XFS` filesystem */
-#define XFS_LINK_MAX   2147483647
-#define LINUX_LINK_MAX   127
-
-
-#endif  // FSINFO_H
-
-
-/* PATHS (<paths.h>) */
-
-
-#if (!(defined(PATHS_H) || defined(_PATHS_H_) || defined(SYS_PATHS_H) || defined(_SYS_PATHS_H_)))  // https://docs.oracle.com/cd/E36784_01/html/E36873/paths.h-3head.html
-#define PATHS_H   (1)
-#define _PATHS_H   (1)
-#define _PATHS_H_   (1)
-#define SYS_PATHS_H   (1)
-#define _SYS_PATHS_H   (1)
-#define _SYS_PATHS_H_   (1)
-
-
-/** The default search path for locating catalogs */
-#define DEF_NLSPATH   "/usr/share/catalogs"
-#define ETHER_FILE_NAME   "/etc/ethers"
-#define FREEBSD_DYNAMIC_LINKER32   "/libexec/ld-elf32.so.1"
-#define FREEBSD_DYNAMIC_LINKER64   "/libexec/ld-elf.so.1"
-#define _PATH_BSHELL   "/bin/sh"
-#define PATH_BSHELL   _PATH_BSHELL
-#define _PATH_CONSOLE   "/dev/console"
-#define _PATH_CSHELL   "/bin/csh"
-#define PATH_CSHELL   _PATH_CSHELL
-#define _PATH_DATANAME   "data"
-#define _PATH_DEFPATH   "/usr/local/bin:/bin:/usr/bin"
-#define _PATH_DEV   "/dev/"
-#define _PATH_DEVDB   "/var/run/dev.db"
-/** Path to dev-null */
-#define _PATH_DEVNULL   "/dev/null"
-/** Path to dev-null */
-#define PATH_DEVNULL   _PATH_DEVNULL
-#define _PATH_DRUM   "/dev/drum"
-#define _PATH_ELF_HINTS   "/var/run/ld-elf.so.hints"
-#define _PATH_ETHERS   ETHER_FILE_NAME
-/** Provides support for system wide forks */
-#define _PATH_FORKSPECIFIER    "/..namedfork/"
-#define _PATH_KLOG   "/proc/kmsg"
-#define _PATH_KMEM   "/dev/kmem"
-#define _PATH_LASTLOG   "/var/log/lastlog"
-#define _PATH_MAILDIR   "/var/mail"
-#define _PATH_MAN   "/usr/share/man"
-#define _PATH_MEM   "/dev/mem"
-#define _PATH_MNTTAB    "/etc/fstab"
-#define _PATH_MOUNTED   "/etc/mtab"
-#define _PATH_NOLOGIN   "/etc/nologin"
-#define _PATH_NS_CONF   "/etc/nsswitch.conf"
-#define _PATH_PRESERVE   "/var/lib"
-#define _PATH_PTMDEV   "/dev/ptm"
-/** Prefix for master pseudo terminal nodes */
-#define _PATH_PTY   "/dev/pty"
-#define _PATH_RSRCNAME   "rsrc"
-#define _PATH_RSRCFORKSPEC   "/..namedfork/rsrc"
-#define _PATH_RWHODIR   "/var/spool/rwho"
-#define _PATH_SENDMAIL  "/usr/sbin/sendmail"
-#define _PATH_SHADOW   "/etc/shadow"
-#define _PATH_SHELL   "/bin/sh"
-#define _PATH_SHELLS   "/etc/shells"
-#define _PATH_STDPATH   "/bin:/usr/bin:/sbin:/usr/sbin"
-#define _PATH_TTY   "/dev/tty"
-#define _PATH_UNIX   "/boot/vmlinux"
-#define _PATH_UTMP   "/dev/null/utmp"
-#define _PATH_VI   "/usr/bin/vi"
-#define _PATH_WTMP   "/dev/null/wtmp"
-#define _PATH_TMP   "/tmp/"
-#define _PATH_VARDB   "/var/lib/misc/"
-#define _PATH_VARRUN   "/var/run/"
-#define _PATH_VARTMP   "/var/tmp/"
-#define P_tmpdir   _PATH_TMP
-
-
-// PATH SEPARATORS
-
-#ifdef OSWINDOWS
-#   define CHAR_PATH_SEPARATOR   '\\'
-#   define WCHAR_PATH_SEPARATOR   L'\\'
-#   define STRING_PATH_SEPARATOR   "\\"
-#   define WSTRING_PATH_SEPARATOR   L"\\"
-#else
-#   define CHAR_PATH_SEPARATOR   '/'
-#   define WCHAR_PATH_SEPARATOR   L'/'
-#   define STRING_PATH_SEPARATOR   "/"
-#   define WSTRING_PATH_SEPARATOR   L"/"
-#endif
-
-
-#endif  // PATHS_H
-
-
-/* FILE SIGNATURES */
-
-
-#ifndef FILE_SIGNATURES_H
-/** This section defines constants for various file signatures. Each hex-pair makes one byte. Most of these signature values came from https://en.wikipedia.org/wiki/List_of_file_signatures */
-#define FILE_SIGNATURES_H   (1)
-
-
-#define __7Z   ({0x37, 0x7a, 0xbc, 0xaf, 0x27, 0x1c})
-#define __BMP   ({0x42, 0x4d})
-#define __DALVIK_EXECUTABLE   ({0x64, 0x65, 0x78, 0xa, 0x30, 0x33, 0x35, 0})
-#define __DMG   ({0x78, 0x1, 0x73, 0x0d, 0x62, 0x62, 0x60})
-#define __GZIP   ({0x1f, 0x8b})
-#define __FREE_LOSSLESS_AUDIO_CODEC   ({0x66, 0x4c, 0x61, 0x43})
-#define __FREE_LOSSLESS_IMAGE_FORMAT   ({0x46, 0x4c, 0x49, 0x46})
-#define __MATROSKA_MEDIA_CONTAINER   ({0x1a, 0x45, 0xdf, 0xa3})
-#define __MICROSOFT_CABINET_FILE   ({0x4d, 0x53, 0x43, 0x46})
-#define __MICROSOFT_OFFICE_DOCUMENTS   ({0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1})
-#define __NES_ROM   ({0x4e, 0x45, 0x53, 0x1a})
-#define __OGG   ({0x4f, 0x67, 0x67, 0x53})
-#define __PDF   ({0x25, 0x50, 0x44, 0x46})
-#define __POSTSCRIPT   ({0x25, 0x21, 0x50, 0x53})
-#define __VMDK   ({0x4b, 0x44, 0x4d})
-#define __XAR   ({0x78, 0x61, 0x72, 0x21})
-
-
-#endif  // FILE_SIGNATURES_H
+#include "fs_constants.h"
+#include "fspaths.h"
+#include "file_signatures.h"
+#include "ansi_sgr_codes.h"
 
 
 /* MACHINE/BASIC DATATYPE MODES */
@@ -361,6 +55,9 @@ along with this software.
 
 
 // MACHINE-WORD MODES
+
+/** @defgroup Machine_Word_Modes Datatypes revolving around the machine word-size
+@{ */  // (FB){
 
 #define SUPPORTS_BYTE   1
 typedef unsigned int __attribute__((__mode__(__byte__)))   UBYTEtype;
@@ -430,8 +127,13 @@ typedef UWtype __attribute__((__mode__(__pointer__)))   PTRtype;
 typedef Wtype __attribute__((__mode__(__pointer__)))   SPTRtype;
 #define HAVE_SPTRTYPE   1
 
+/** @} */  // }
+
 
 // INTEGER MODES
+
+/** @defgroup Integer_Modes Datatypes pertaining to integers
+@{ */  // (FB){
 
 #define SUPPORTS_QITYPE   1
 #define SUPPORTS_UQITYPE   1
@@ -777,8 +479,13 @@ typedef unsigned int __attribute__((__mode__(__XI__)))   UXItype;
 #   define HAVE_UXI   0
 #endif
 
+/** @} */  // }
+
 
 // FLOAT-POINT MODES
+
+/** @defgroup Float_Point_Modes Datatypes pertaining to float-points
+@{ */  // (FB){
 
 #if (SUPPORTS_FLOAT8 && IS_NOT_LINTER)
 #   define SUPPORTS_QFTYPE   1
@@ -923,7 +630,7 @@ typedef float __attribute__((__mode__(__TF__)))   TFtype;
 #   endif
 #elif IS_NOT_LINTER
 #   define SUPPORTS_TFTYPE   0
-typedef struct __float128 { uint8_t align16 x[16]; }   TFtype;
+typedef struct __float128 { uint8_t x[16] align16; } align16   TFtype;
 #   define __float128   TFtype
 #   ifndef __float128_t
 #      define __float128_t   TFtype
@@ -946,9 +653,13 @@ typedef struct __float128 { uint8_t align16 x[16]; }   TFtype;
 #   define HAVE_TF   0
 #endif
 
+/** @} */  // }
+
 
 // DECIMAL FLOAT-POINT MODES
 
+/** @defgroup Decimal_Float_Point_Modes Datatypes pertaining to decimal float-points
+@{ */  // (FB){
 
 #if (SUPPORTS_DECIMAL_FLOATS && IS_NOT_LINTER)
 #   define SUPPORTS_SDTYPE   1
@@ -1037,8 +748,13 @@ typedef float __attribute__((__mode__(__TD__)))   TDtype;
 #   define HAVE_TD   0
 #endif
 
+/** @} */  // }
+
 
 // COMPLEX MODES
+
+/** @defgroup Complex_Float_Point_Modes Datatypes pertaining to complex float-points
+@{ */  // (FB){
 
 #if (SUPPORTS_COMPLEX && IS_NOT_LINTER)  // Complex floats
 #   if IS_NOT_GNUC
@@ -1255,8 +971,13 @@ typedef complex_float __attribute__((__mode__(__COI__)))   COItype;
 #   define HAVE_COI   0
 #endif  // SUPPORTS_COMPLEX_INT
 
+/** @} */  // }
+
 
 // FIXED-POINT ARITHMETIC MODES
+
+/** @defgroup Fixed_Point_Modes Datatypes pertaining to fixed-point datatypes
+@{ */  // (FB){
 
 #if SUPPORTS_STDFIX
 #   define accum   _Accum
@@ -1520,8 +1241,13 @@ typedef unsigned _Accum __attribute__((__mode__(__UTA__)))   UTAtype;
 #   define HAVE_UTA   0
 #endif  // SUPPORTS_STDFIX
 
+/** @} */  // }
+
 
 // INTEGER VECTOR MODES
+
+/** @defgroup Integer_Vector_Modes Datatypes pertaining to integer-vectors
+@{ */  // (FB){
 
 /** Vector datatype of four single-byte (8-bit) integers */
 typedef QItype VECTOR4   V4QItype;
@@ -1569,8 +1295,13 @@ typedef DItype VECTOR32   V4DItype;
 #define __V4DI   V4DItype
 #define __v4di   V4DItype
 
+/** @} */  // }
+
 
 // FLOAT-POINT VECTOR MODES
+
+/** @defgroup Float_Point_Vector_Modes Datatypes pertaining to float-point vectors
+@{ */  // (FB){
 
 /** Vector datatype of two float32 values */
 typedef SFtype VECTOR8   V2SFtype;
@@ -1600,6 +1331,8 @@ typedef DFtype VECTOR32   V4DFtype;
 // Intrinsic Float-point Datatypes
 #define __m64   V2SFtype
 #define __m128   V4SFtype
+
+/** @} */  // }
 
 
 // MISCELLANEOUS MODES
@@ -1764,6 +1497,9 @@ typedef int __attribute__((__mode__(__BND32__)))   BND32type;
 
 // EXACT-WIDTH SIGNED INTEGRAL DATATYPES
 
+/** @defgroup Exact_Width_Signed_Datatypes Signed datatypes with exact widths
+@{ */  // (FB){
+
 // 8-bit
 #ifndef __int8_t_defined
 #   define __int8_t_defined   1
@@ -1863,8 +1599,13 @@ typedef signed long long   int64_t;
 #define INT64   int64_t
 #define i64_t   int64_t
 
+/** @} */  // }
+
 
 // EXACT-WIDTH UNSIGNED INTEGRAL DATATYPES
+
+/** @defgroup Exact_Width_Unsigned_Datatypes Unsigned datatypes with exact widths
+@{ */  // (FB){
 
 // 8-bit
 #ifndef __uint8_t_defined
@@ -1971,6 +1712,76 @@ typedef unsigned long long   uint64_t;
 #define u64_t   uint64_t
 #define __le64   uint64_t
 #define __be64   uint64_t
+typedef uint64_t   DWORD64;
+#define DWORDLONG   DWORD64
+
+/** @} */  // }
+
+
+// 128-BIT INTEGERS
+
+#if SUPPORTS_INT128
+/** Integer type with a minimum of 128 bits */
+typedef int128_t   int_least128_t;
+#   define __int_least128_t   int_least128_t
+#   define __int_least128   int_least128_t
+/** Unsigned integer type with a minimum of 128 bits */
+typedef uint128_t   uint_least128_t;
+#   define __uint_least128_t   uint_least128_t
+#   define __uint_least128   uint_least128_t
+/** Fastest signed integer with a width of at least 128 bits */
+typedef int128_t   int_fast128_t;
+#   define __int_fast128_t   int_fast128_t
+#   define __int_fast128   int_fast128_t
+/** Fastest unsigned integer with a width of at least 128 bits */
+typedef uint128_t   uint_fast128_t;
+#   define __uint_fast128_t   uint_fast128_t
+#   define __uint_fast128   uint_fast128_t
+#endif
+
+
+// 256-BIT INTEGERS
+
+#if SUPPORTS_INT256
+/** Integer type with a minimum of 256 bits */
+typedef int256_t   int_least256_t;
+#   define __int_least256_t   int_least256_t
+#   define __int_least256   int_least256_t
+/** Unsigned integer type with a minimum of 256 bits */
+typedef uint256_t   uint_least256_t;
+#   define __uint_least256_t   uint_least256_t
+#   define __uint_least256   uint_least256_t
+/** Fastest signed integer with a width of at least 256 bits */
+typedef int256_t   int_fast256_t;
+#   define __int_fast256_t   int_fast256_t
+#   define __int_fast256   int_fast256_t
+/** Fastest unsigned integer with a width of at least 256 bits */
+typedef uint256_t   uint_fast256_t;
+#   define __uint_fast256_t   uint_fast256_t
+#   define __uint_fast256   uint_fast256_t
+#endif
+
+
+// 512-BIT INTEGERS
+
+#if SUPPORTS_INT512
+/** Integer type with a minimum of 512 bits */
+typedef int512_t   int_least512_t;
+#   define __int_least512_t   int_least512_t
+#   define __int_least512   int_least512_t
+/** Unsigned integer type with a minimum of 512 bits */
+typedef uint512_t   uint_least512_t;
+#   define __uint_least512_t   uint_least512_t
+#   define __uint_least512   uint_least512_t
+/** Fastest signed integer with a width of at least 512 bits */
+typedef int512_t   int_fast512_t;
+#   define __int_fast512_t   int_fast512_t
+#   define __int_fast512   int_fast512_t
+/** Fastest unsigned integer with a width of at least 512 bits */
+typedef uint512_t   uint_fast512_t;
+#   define __uint_fast512_t   uint_fast512_t
+#   define __uint_fast512   uint_fast512_t
+#endif
 
 
 // SMALLEST FIXED-WIDTH SIGNED INTEGRAL DATATYPES
@@ -2276,6 +2087,9 @@ typedef unsigned long long   uintmax_t;
 
 // ADDITIONAL EXACT-WIDTH INTEGRAL DATATYPES
 
+/** @defgroup Additional_Exact_Width_Datatypes Extra datatypes with exact widths
+@{ */  // (FB){
+
 #define smallint_type   int
 #define smallint   signed int
 #define smalluint   unsigned int
@@ -2438,6 +2252,8 @@ typedef __SLONGWORD_TYPE   syscall_arg_t;
 #   define _POINTER_INT   short
 #endif
 
+/** @} */  // }
+
 
 // QUAD
 
@@ -2454,73 +2270,549 @@ typedef __SLONGWORD_TYPE   syscall_arg_t;
 #define __UQUAD_TYPE   uint64_t
 
 
-// 128-BIT INTEGERS
+// CHARACTER DATATYPES
+
+/** @defgroup Character_Datatypes Datatypes for characters
+@{ */  // (FB){
+
+// SIGNED & UNSIGNED CHAR
+
+#define CHAR_T   char
+#define __CHAR_T   char
+#define CHAR   char
+/** ANSI character */
+#define ANSICHAR   char
+#define schar   signed char
+typedef signed char   schar8_t;
+#ifndef __s_char_defined
+#   define __s_char_defined   (1)
+#   define __s_char   signed char
+#   define s_char   signed char
+#endif
+#define uchar   unsigned char
+#define uchar_t   unsigned char
+#define UCHAR   uchar
+#define p9uchar   uchar
+#define _utfuchar   uchar
+#define utfuchar   uchar
+/** ANSI character */
+#define ANSIUCHAR   unsigned char
+typedef unsigned char   uchar8_t;
+#ifndef __u_char_defined
+#   define __u_char_defined   (1)
+#   define __u_char   unsigned char
+#   define u_char   unsigned char
+#endif
+
+
+// CHAR8_T
+
+#ifdef __CHAR8_TYPE__
+typedef __CHAR8_TYPE__   char8_t;
+#else
+typedef char   char8_t;
+#   define __CHAR8_TYPE__   char8_t
+#endif
+#ifndef CHAR8_TYPE
+#   define CHAR8_TYPE   __CHAR8_TYPE__
+#endif
+#ifndef __char8_t
+#   define __char8_t   __CHAR8_TYPE__
+#endif
+/** An 8-bit code value in UTF-8 format; UnicodeScalarValues 0-0x7f are expressed in UTF-8 format using one UTF8Char with the same value; UnicodeScalarValues above 0x7f are expressed in UTF-8 format using 2-4 UTF8Chars, all with values in the range 0x80-0xf4 (UnicodeScalarValues 0x100-0xffff use two or three UTF8Chars, UnicodeScalarValues 0x10000-0x10ffff use four UTF8Chars) */
+typedef uchar8_t   UTF8Char;
+
+
+// CHAR16_T
+
+#ifdef __CHAR16_TYPE__
+typedef __CHAR16_TYPE__   char16_t;
+#else
+typedef unsigned short   char16_t;
+#   define __CHAR16_TYPE__   char16_t
+#endif
+#ifndef CHAR16_TYPE
+#   define CHAR16_TYPE   char16_t
+#endif
+#ifndef __char16_t
+#   define __char16_t   char16_t
+#endif
+typedef signed short   schar16_t;
+typedef unsigned short   uchar16_t;
+#ifndef __schar16_t
+#   define __schar16_t   schar16_t
+#endif
+#ifndef __s_char16_t
+#   define _s_schar16_t   schar16_t
+#endif
+#ifndef __uchar16_t
+#   define __uchar16_t   uchar16_t
+#endif
+#ifndef _u_char16_t
+#   define _u_char16_t   uchar16_t
+#endif
+/** Alias for "uchar16_t" */
+#define utf16   uchar16_t
+#define utf16_t   uchar16_t
+/** Wide character (as UCS-2) according to ISO/IEC 10646 */
+#define ucs2_t   uchar16_t
+/** A 16-bit Unicode code value in the default UTF-16 format; UnicodeScalarValues 0x10000-0x10ffff are expressed in UTF-16 format using a pair of UTF16Chars - one in the high surrogate range (0xd800-0xdbff) followed by one in the low surrogate range (0xdc00-0xdfff); All of the characters defined in Unicode versions through 3.0 are in the range 0-0xffff and can be expressed using a single UTF16Char */
+typedef uchar16_t   UTF16Char;
+#define UniChar   uchar16_t
+
+
+// CHAR32_T
+
+#ifdef __CHAR32_TYPE__
+typedef __CHAR32_TYPE__   char32_t;
+#else
+typedef unsigned int   char32_t;
+#   define __CHAR32_TYPE__   char32_t
+#endif
+#ifndef CHAR32_TYPE
+#   define CHAR32_TYPE   char32_t
+#endif
+#ifndef __char32_t
+#   define __char32_t   char32_t
+#endif
+typedef signed int   schar32_t;
+#define uchar32_t   char32_t
+#ifndef __schar32_t
+#   define __schar32_t   schar32_t
+#endif
+#ifndef __s_char32_t
+#   define _s_schar32_t   schar32_t
+#endif
+#ifndef __uchar32_t
+#   define __uchar32_t   uchar32_t
+#endif
+#ifndef _u_char32_t
+#   define _u_char32_t   uchar32_t
+#endif
+/** Alias for "uchar32_t" */
+#define utf32   uchar32_t
+/** Alias for "uchar32_t" */
+#define utf32_t   uchar32_t
+/** Wide character (as UCS-4) according to ISO-10646-1 */
+#define ucs4_t   char32_t
+/** Datatype used to manipulate UTF-8 and UTF-32/UCS-4 characters */
+typedef union utf8bytes {
+#   if IS_LITTLE_ENDIAN
+	struct utf8parts { uint8_t byte1, byte2, byte3, byte4; } bytes;
+	struct utf8chars { char byte1, byte2, byte3, byte4; } chars;
+#   else
+	struct utf8parts { uint8_t byte4, byte3, byte2, byte1; } bytes;
+	struct utf8chars { char byte4, byte3, byte2, byte1; } chars;
+#   endif
+	uint32_t whole;
+}   utf8_t;
+typedef uint32_t   TextEncoding;
+/** A complete Unicode character in UTF-32 format, with values from 0 through 0x10ffff (excluding the surrogate range 0xd800-0xdfff and certain disallowed values) */
+typedef uchar32_t   UnicodeScalarValue;
+#define UTF32Char   uchar32_t
+
+
+// CHAR64_T
+
+#ifdef __CHAR64_TYPE__
+typedef __CHAR64_TYPE__   char64_t;
+#else
+typedef uint64_t   char64_t;
+#   define __CHAR64_TYPE__   char64_t
+#endif
+#ifndef CHAR64_TYPE
+#   define CHAR64_TYPE   __CHAR64_TYPE__
+#endif
+#ifndef __char64_t
+#   define __char64_t   __CHAR64_TYPE__
+#endif
+typedef int64_t   schar64_t;
+typedef uint64_t   uchar64_t;
+#ifndef __schar64_t
+#   define __schar64_t   schar64_t
+#endif
+#ifndef __s_char64_t
+#   define _s_schar64_t   schar64_t
+#endif
+#ifndef __uchar64_t
+#   define __uchar64_t   uchar64_t
+#endif
+#ifndef _u_char64_t
+#   define _u_char64_t   uchar64_t
+#endif
+/** Alias for "uchar64_t" */
+#define utf64   uchar64_t
+
+
+// CHAR128_T
 
 #if SUPPORTS_INT128
-/** Integer type with a minimum of 128 bits */
-typedef int128_t   int_least128_t;
-#   define __int_least128_t   int_least128_t
-#   define __int_least128   int_least128_t
-/** Unsigned integer type with a minimum of 128 bits */
-typedef uint128_t   uint_least128_t;
-#   define __uint_least128_t   uint_least128_t
-#   define __uint_least128   uint_least128_t
-/** Fastest signed integer with a width of at least 128 bits */
-typedef int128_t   int_fast128_t;
-#   define __int_fast128_t   int_fast128_t
-#   define __int_fast128   int_fast128_t
-/** Fastest unsigned integer with a width of at least 128 bits */
-typedef uint128_t   uint_fast128_t;
-#   define __uint_fast128_t   uint_fast128_t
-#   define __uint_fast128   uint_fast128_t
+
+#ifdef __CHAR128_TYPE__
+typedef __CHAR128_TYPE__   char128_t;
+#else
+typedef uint128_t   char128_t;
+#   define __CHAR128_TYPE__   char128_t
+#endif
+#ifndef CHAR128_TYPE
+#   define CHAR128_TYPE   __CHAR128_TYPE__
+#endif
+#ifndef __char128_t
+#   define __char128_t   __CHAR128_TYPE__
+#endif
+typedef int128_t   schar128_t;
+typedef uint128_t   uchar128_t;
+#ifndef __schar128_t
+#   define __schar128_t   schar128_t
+#endif
+#ifndef __s_char128_t
+#   define _s_schar128_t   schar128_t
+#endif
+#ifndef __uchar128_t
+#   define __uchar128_t   uchar128_t
+#endif
+#ifndef _u_char128_t
+#   define _u_char128_t   uchar128_t
+#endif
+/** Alias for "uchar128_t" */
+#define utf128   uchar128_t
+
+#endif  // SUPPORTS_INT128
+
+/** @} */  // }
+
+
+// WIDE-CHARACTER DATATYPES
+
+/** @defgroup Wide_Character_Datatypes Datatypes for wide characters
+@{ */  // (FB){
+
+
+#if (!(defined(__DEFINED_mbstate_t) || defined(_MBSTATE_T)))  // mbstate_t
+/** Type that holds the information necessary to maintain the state when converting between sequences of multibyte characters and wide characters */
+typedef struct __mbstate_t { unsigned int __opaque1, __opaque2; }   mbstate_t;
+#   define _mbstate_t   mbstate_t
+#   define _MBSTATE_T   mbstate_t
+#   define __DEFINED_mbstate_t
+#endif  // mbstate_t
+#if (IS_NOT_CPLUSPLUS && (!defined(__DEFINED_wchar_t)))
+#   ifdef __WCHAR_TYPE__
+typedef __WCHAR_TYPE__   wchar_t;
+typedef __WCHAR_TYPE__   gwchar_t;
+#   else
+typedef int   wchar_t;
+typedef int   gwchar_t;
+#      define __WCHAR_TYPE__   wchar_t
+#   endif  // __WCHAR_TYPE__
+#   define __DEFINED_wchar_t   (1)
+#   define ____gwchar_t_defined   (1)
+#endif  // wchar_t
+#if IS_NOT_LINTER
+_Static_assert(((SIZEOF_WCHAR_T == sizeof(wchar_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wchar_t` datatype!");
+#endif
+#define WCHAR   wchar_t
+/** Unicode character */
+#define UNICHAR   wchar_t
+#define __gwchar_t   gwchar_t
+/** State used by a conversion; 0 denotes the initial state */
+typedef unsigned int   state_t;
+#ifndef __DEFINED_wint_t  // wint_t
+#   ifdef __WINT_TYPE__
+typedef __WINT_TYPE__   wint_t;
+#   else
+typedef unsigned int   wint_t;
+#      define __WINT_TYPE__   wint_t
+#   endif
+#   define __DEFINED_wint_t   (1)
+#endif  // wint_t
+#if IS_NOT_LINTER
+_Static_assert(((SIZEOF_WINT_T == sizeof(wint_t)) && (SIZEOF_WINT_T == SIZEOF_INT)), "Improperly set `wint_t` datatype!");
+#endif
+#define WINT   wint_t
+#ifndef WEOF
+/** Constant expression of type `wint_t` whose value does not correspond to any member of the extended character set; End-Of-File */
+#   define WEOF   ((wint_t)UINT32_MAX)
+#endif
+#define weof   WEOF
+#define WIDE_EOF   WEOF
+#ifndef _WCTRANS_T  // wctype
+/** Scalar type that can hold values which represent locale-specific character mappings */
+typedef const int32_t*   wctrans_t;
+#   define _WCTRANS_T   wctrans_t
+#endif
+#if ((!defined(__DEFINED_wctype_t)) && (!defined(_WCTYPE_T)))  // wctype
+/** Scalar type that can hold values which represent locale-specific character classifications */
+typedef enum wctype {
+	WC_TYPE_INVALID = 0,
+	WC_TYPE_ALNUM,
+	WC_TYPE_ALPHA,
+	WC_TYPE_BLANK,
+	WC_TYPE_CNTRL,
+	WC_TYPE_DIGIT,
+	WC_TYPE_GRAPH,
+	WC_TYPE_LOWER,
+	WC_TYPE_PRINT,
+	WC_TYPE_PUNCT,
+	WC_TYPE_SPACE,
+	WC_TYPE_UPPER,
+	WC_TYPE_XDIGIT,
+	WC_TYPE_MAX
+} wctype_t;
+#   define _WCTYPE_T   wctype_t
+#   define __DEFINED_wctype_t   (1)
 #endif
 
 
-// 256-BIT INTEGERS
+// T-CHARACTER DATATYPES (<tchar.h>)
 
-#if SUPPORTS_INT256
-/** Integer type with a minimum of 256 bits */
-typedef int256_t   int_least256_t;
-#   define __int_least256_t   int_least256_t
-#   define __int_least256   int_least256_t
-/** Unsigned integer type with a minimum of 256 bits */
-typedef uint256_t   uint_least256_t;
-#   define __uint_least256_t   uint_least256_t
-#   define __uint_least256   uint_least256_t
-/** Fastest signed integer with a width of at least 256 bits */
-typedef int256_t   int_fast256_t;
-#   define __int_fast256_t   int_fast256_t
-#   define __int_fast256   int_fast256_t
-/** Fastest unsigned integer with a width of at least 256 bits */
-typedef uint256_t   uint_fast256_t;
-#   define __uint_fast256_t   uint_fast256_t
-#   define __uint_fast256   uint_fast256_t
+#if (!(defined(TCHAR_DEFINED) || defined(__TCHAR_DEFINED)))
+#   define TCHAR_DEFINED   (1)
+#   define __TCHAR_DEFINED   (1)
+#   ifdef _UNICODE
+#      define TCHAR   wchar_t
+#      define TSCHAR   wchar_t
+#      define TUCHAR   wchar_t
+#      define TXCHAR   wchar_t
+#      define PTCHAR   wchar_t*
+#      define TBYTE   wchar_t
+#      define PTBYTE   wchar_t*
+#      define TEOF   WEOF
+#      define _TEOF   WEOF
+#   else
+#      define TCHAR   char
+#      define TSCHAR   char
+#      define TUCHAR   char
+#      define TXCHAR   char
+#      define TINT   int32_t
+#      define PTCHAR   char*
+#      define TBYTE   char
+#      define PTBYTE   char*
+#      define TEOF   EOF
+#      define _TEOF   EOF
+#   endif
+#   define _TCHAR   TCHAR
+#   define _TSCHAR   TSCHAR
+#   define _TUCHAR   TUCHAR
+#   define _TXCHAR   TXCHAR
+#   define _TINT   TINT
 #endif
-
-
-// 512-BIT INTEGERS
-
-#if SUPPORTS_INT512
-/** Integer type with a minimum of 512 bits */
-typedef int512_t   int_least512_t;
-#   define __int_least512_t   int_least512_t
-#   define __int_least512   int_least512_t
-/** Unsigned integer type with a minimum of 512 bits */
-typedef uint512_t   uint_least512_t;
-#   define __uint_least512_t   uint_least512_t
-#   define __uint_least512   uint_least512_t
-/** Fastest signed integer with a width of at least 512 bits */
-typedef int512_t   int_fast512_t;
-#   define __int_fast512_t   int_fast512_t
-#   define __int_fast512   int_fast512_t
-/** Fastest unsigned integer with a width of at least 512 bits */
-typedef uint512_t   uint_fast512_t;
-#   define __uint_fast512_t   uint_fast512_t
-#   define __uint_fast512   uint_fast512_t
+#ifndef NUX_UNICODE
+#   ifndef NUX_MBCS
+#      define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (ansi)
+#   else
+#      define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (mbcs)
+#   endif
+#else
+#   define NUX_TCHAR_ROUTINE(ansi, mbcs, unicode)   (unicode)
 #endif
+#define NUX_UNIX_SYS_HOST_ROOT   TEXT("/")
+#define NUX_UNIX_SYS_HOME   TEXT("/home")
+
+/** @} */  // }
+
+
+// RUNE DATATYPES
+
+/** @defgroup Rune_Datatypes Datatypes for various characters
+@{ */  // (FB){
+
+#define _RUNE_T_DECLARED   (1)
+typedef uint32_t   RuneType;
+#define _RuneType   RuneType
+#define _RuneType_t   RuneType
+#define RuneType_t   RuneType
+typedef uint64_t   runepad_t;
+#define __runepad_t   runepad_t
+#define _runepad_t   runepad_t
+typedef uint32_t   nbrune_t;
+#define __nbrune_t   nbrune_t
+typedef int   rune_t;
+#define __rune_t   rune_t
+#define _BSD_RUNE_T_   rune_t
+#define RUNE   rune_t
+#define Rune   rune_t
+/** Cannot represent part of a UTF sequence (<) */
+#define Runesync   0x80
+/** Rune and UTF sequences are the same (<) */
+#define Runeself   0x80
+/** Decoding error in UTF */
+#define Runeerror   0xfffd
+#define xRuneerror   Runeerror
+/** 16-bit rune */
+#define Runemax   0xffff
+/** 21-bit rune */
+#define Rune21max   0x10ffff
+/** Bits used by runes */
+#define Runemask   0x1fffff
+/** Alpha */
+#define _RUNETYPE_A   0x100U
+/** Control */
+#define _RUNETYPE_C   0x200U
+/** Digit */
+#define _RUNETYPE_D   0x400U
+/** Graph */
+#define _RUNETYPE_G   0x800U
+/** Lower */
+#define _RUNETYPE_L   0x1000U
+/** Punct */
+#define _RUNETYPE_P   0x2000U
+/** Space */
+#define _RUNETYPE_S   0x4000U
+/** Upper */
+#define _RUNETYPE_U   0x8000U
+/** X digit */
+#define _RUNETYPE_X   0x10000U
+/** Blank */
+#define _RUNETYPE_B   0x20000U
+/** Print */
+#define _RUNETYPE_R   0x40000U
+/** Ideogram */
+#define _RUNETYPE_I   0x80000U
+/** Special */
+#define _RUNETYPE_T   0x100000U
+/** Phonogram */
+#define _RUNETYPE_Q   0x200000U
+/** Mask to get screen width data */
+#define _RUNETYPE_SWM   0xe0000000U
+/** Bits to shift to get width */
+#define _RUNETYPE_SWS   30
+/** 0 width character */
+#define _RUNETYPE_SW0   0x20000000U
+/** 1 width character */
+#define _RUNETYPE_SW1   0x40000000U
+/** 2 width character */
+#define _RUNETYPE_SW2   0x80000000U
+/** 3 width character */
+#define _RUNETYPE_SW3   0xc0000000U
+#define CACHED_RUNES   0x100
+#define _CACHED_RUNES   0x100
+#define CRMASK   0xffffff00
+#define _CRMASK   0xffffff00
+#define _RUNE_ISCACHED(c)   ((c) >= 0 && ((c) < _CACHED_RUNES))
+#define RUNE_ISCACHED(c)   _RUNE_ISCACHED((c))
+#define _DEFAULT_INVALID_RUNE   ((rune_t)-3)
+#define USE_FPdbleword   1
+#define SurrogateMin   0xd800
+#define SurrogateMax   0xdfff
+#define Bad   Runeerror
+#define RuneX(i)   ((1 << ((7 - (i)) + ((i) - 1) * 6)) - 1)
+/** Indicates version 0 of RuneLocale */
+#define _RUNE_MAGIC_1   "RuneMagi"
+/** Indicates version A of RuneLocale */
+#define _RUNE_MAGIC_A   "RuneMagA"
+/** Rune codeset tag */
+#define _RUNE_CODESET   "CODESET="
+/** Magic string for dynamic link module; Type should be like "LC_CTYPE" */
+#define _RUNE_MODULE_1(type)   "RuneModule10." type
+#define _WCTRANS_INDEX_LOWER   0
+#define _WCTRANS_INDEX_UPPER   1
+#define _WCTRANS_NINDEXES   2
+#define _WCTYPE_INDEX_ALNUM   0
+#define _WCTYPE_INDEX_ALPHA   1
+#define _WCTYPE_INDEX_BLANK   2
+#define _WCTYPE_INDEX_CNTRL   3
+#define _WCTYPE_INDEX_DIGIT   4
+#define _WCTYPE_INDEX_GRAPH   5
+#define _WCTYPE_INDEX_LOWER   6
+#define _WCTYPE_INDEX_PRINT   7
+#define _WCTYPE_INDEX_PUNCT   8
+#define _WCTYPE_INDEX_SPACE   9
+#define _WCTYPE_INDEX_UPPER   10
+#define _WCTYPE_INDEX_XDIGIT   11
+#define _WCTYPE_NINDEXES   12
+
+/** Rune file format (Network endian) */
+typedef struct _FileRuneEntry {
+	int32_t fre_min;  //!< First rune of the range
+	int32_t fre_max;  //!< Last rune (inclusive) of the range
+	int32_t fre_map;  //!< What first maps to in maps
+} _FileRuneEntry;
+
+/** Number of ranges stored */
+typedef struct _FileRuneRange { uint32_t frr_nranges; }   _FileRuneRange;
+
+/** The lower 8 bits of runetype[] contain the digit value of the rune */
+typedef struct _RuneEntry {
+	unsigned long* types;  //!< Array of types in range
+	rune_t min;  //!< First rune of the range
+	rune_t max;  //!< Last rune (inclusive) of the range
+	rune_t map;  //!< First maps in mapping
+	rune_t pad0;  //!< Padding
+} _RuneEntry;
+
+#define __RuneEntry   _RuneEntry
+
+typedef struct _RuneRange {
+	_RuneEntry* ranges;  //!< Pointer to the ranges
+	int nranges;  //!< Number of ranges stored
+	int pad0;  //!< Padding
+} _RuneRange;
+
+#define __RuneRange   _RuneRange
+
+typedef struct _RuneCharClass {
+	char __name[14];  //!< CHARCLASS_NAME_MAX = 14
+	short pad0;  //!< Padding
+	uint32_t __mask;  //!< charclass mask
+} _RuneCharClass;
+
+typedef struct _WCTransEntry {
+	char* te_name;
+	rune_t* te_cached;
+	_RuneRange* te_extmap;
+} _WCTransEntry;
+
+typedef struct _WCTypeEntry {
+	char* te_name;
+	RuneType te_mask;
+	rune_t pad0;  //!< Padding
+} _WCTypeEntry;
+
+struct old_tabs {
+	short tolower_tab[257];
+	short toupper_tab[257];
+	char ctype_tab[257];
+	char pad0[3];  //!< Padding
+};
+
+typedef struct Fconv {
+	char* out;  //!< Pointer to next output
+	char* eout;  //!< Pointer to end
+	int f1, f2, f3, chr;
+} Fconv;
+
+/** @} */  // }
+
+
+// VOID DATATYPES
+
+/** Void Datatype */
+#define Void_t   void
+/** Void Datatype */
+#define void_t   void
+/** Void Datatype */
+#define VOID   void
+/** Void Pointer Datatype */
+typedef void*   void_ptr_t;
+/** Void Pointer Volatile Datatype */
+typedef volatile void_ptr_t   vvoid_ptr_t;
+/** Void Pointer Datatype */
+typedef void*   ptr_t;
+/** Void Pointer Datatype */
+#define __ptr_t   ptr_t
+typedef void   DB_ENV;
+
+
+// END-OF-FILE DATATYPES
+
+/** End-Of-File */
+#define EOF   (-1)
 
 
 // POINTER-RELATED DATATYPES
+
+/** @defgroup Pointer_Datatypes Datatypes for pointers
+@{ */  // (FB){
 
 #if (BITS_PER_POINTER == 64)
 #   define __sptr   int64_t
@@ -2624,12 +2916,12 @@ typedef uint32_t   HANDLE_PTR;
 #define PLONG   PLONG_PTR
 /** Character pointer */
 typedef char*   PCHAR;
+#define PSZ   PCHAR
 /** Unsigned character pointer */
 typedef unsigned char*   PUCHAR;
-typedef char*   PSZ;
 #define BYTE   unsigned char
 typedef BYTE*   PBYTE;
-typedef BYTE*   LPBYTE;
+#define LPBYTE   PBYTE
 /** Windows signed pointer datatype */
 typedef __INT_PTR_TYPE   INT_PTR;
 /** Windows unsigned pointer datatype */
@@ -2682,22 +2974,22 @@ typedef int16_t*   i16_ptr_t;
 #define s16_ptr_t   i16_ptr_t
 #define PINT16   i16_ptr_t
 typedef int32_t*   s32_ptr_t;
-typedef int32_t*   i32_ptr_t;
-typedef int64_t*   PLONG64;
+#define i32_ptr_t   s32_ptr_t
 typedef int64_t*   PINT64;
-typedef int64_t*   s64_ptr_t;
-typedef int64_t*   i64_ptr_t;
+#define PLONG64   PINT64
+#define s64_ptr_t   PINT64
+#define i64_ptr_t   PINT64
 typedef uint8_t*   PUINT8;
-typedef uint8_t*   u8_ptr_t;
-typedef uint8_t*   ptr8_t;
+#define u8_ptr_t   PUINT8
+#define ptr8_t   PUINT8
 typedef uint16_t*   PUINT16;
-typedef uint16_t*   u16_ptr_t;
-typedef uint16_t*   ptr16_t;
+#define u16_ptr_t   PUINT16
+#define ptr16_t   PUINT16
 typedef uint32_t*   u32_ptr_t;
-typedef uint64_t*   PULONG64;
-typedef uint64_t*   PDWORD64;
-typedef uint64_t*   PUINT64;
 typedef uint64_t*   u64_ptr_t;
+#define PDWORD64   u64_ptr_t
+#define PUINT64   u64_ptr_t
+#define PULONG64   u64_ptr_t
 typedef size_t*   PSIZE_T;
 /** Windows pointer datatype */
 typedef ssize_t*   PSSIZE_T;
@@ -2716,6 +3008,8 @@ typedef double*   double_ptr_t;
 #define MINHALF_PTR   (~MAXHALF_PTR)
 #define MAXUINT   ((UINT)~((UINT)0))
 #define MAXULONGLONG   ((ULONGLONG)~((ULONGLONG)0))
+
+/** @} */  // }
 
 
 // DATATYPE DIAGNOSTICS
@@ -2738,6 +3032,602 @@ _Static_assert(((SIZEOF_DECIMAL64 == sizeof(decimal64)) && (SIZEOF_DECIMAL64 == 
 
 
 #endif  // BASIC_DATATYPES_H
+
+
+/* KERNEL DATATYPES */
+
+
+#if (!(defined(BITS_KERNEL_TYPES_H) || defined(_BITS_KERNEL_TYPES_H) || defined(_BITS_KERNEL_TYPES_H_)))
+#define BITS_KERNEL_TYPES_H   (1)
+#define _BITS_KERNEL_TYPES_H   (1)
+#define _BITS_KERNEL_TYPES_H_   (1)
+
+
+#if (defined(ARCHALPHA) && (!(defined(ALPHA_POSIX_TYPES_H) || defined(_ALPHA_POSIX_TYPES_H) || defined(_ALPHA_POSIX_TYPES_H_))))
+#define ALPHA_POSIX_TYPES_H   (1)
+#define _ALPHA_POSIX_TYPES_H   (1)
+#define _ALPHA_POSIX_TYPES_H_   (1)
+
+
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned int   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned int   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef long   __kernel_loff_t;
+typedef int   __kernel_pid_t;
+typedef int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned long   __kernel_sigset_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef __kernel_uid_t   __kernel_uid32_t;
+typedef __kernel_gid_t   __kernel_gid32_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHARM) && (!(defined(_ARCH_ARM_POSIX_TYPES_H) || defined(_ARCH_ARM_POSIX_TYPES_H_) || defined(__ARCH_ARM_POSIX_TYPES_H))))
+#define _ARCH_ARM_POSIX_TYPES_H   (1)
+#define _ARCH_ARM_POSIX_TYPES_H_   (1)
+#define __ARCH_ARM_POSIX_TYPES_H   (1)
+
+
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid_t;
+typedef unsigned short   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef long long   __kernel_loff_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHBLACKFIN) && (!(defined(__ARCH_BFIN_POSIX_TYPES_H) || defined(_ARCH_BFIN_POSIX_TYPES_H) || defined(_ARCH_BFIN_POSIX_TYPES_H_))))
+#define __ARCH_BFIN_POSIX_TYPES_H   (1)
+#define _ARCH_BFIN_POSIX_TYPES_H   (1)
+#define _ARCH_BFIN_POSIX_TYPES_H_   (1)
+
+
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef long long   __kernel_loff_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHPARISC) && (!(defined(_ARCH_PARISC_POSIX_TYPES_H) || defined(_ARCH_PARISC_POSIX_TYPES_H_) || defined(__ARCH_PARISC_POSIX_TYPES_H))))
+#define _ARCH_PARISC_POSIX_TYPES_H   (1)
+#define _ARCH_PARISC_POSIX_TYPES_H_   (1)
+#define __ARCH_PARISC_POSIX_TYPES_H   (1)
+
+
+typedef unsigned long   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef int   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_timer_t;
+typedef int   __kernel_clockid_t;
+typedef int   __kernel_daddr_t;
+#   ifdef DATAMODEL_LP64
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+#   else
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+#   endif
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef long long   __kernel_loff_t;
+typedef long long   __kernel_off64_t;
+typedef unsigned long long   __kernel_ino64_t;
+typedef unsigned int   __kernel_old_dev_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHPOWERPC) && (!(defined(_PPC_POSIX_TYPES_H) || defined(_PPC64_POSIX_TYPES_H) || defined(_ASM_POWERPC_POSIX_TYPES_H) || defined(__ASM_POWERPC_POSIX_TYPES_H))))
+#define _PPC_POSIX_TYPES_H   (1)
+#define _PPC64_POSIX_TYPES_H   (1)
+#define _ASM_POWERPC_POSIX_TYPES_H   (1)
+#define __ASM_POWERPC_POSIX_TYPES_H   (1)
+
+
+#   if IS_WORDSIZE_64
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned int   __kernel_ino_t;
+typedef unsigned int   __kernel_nlink_t;
+typedef unsigned int   __kernel_mode_t;
+typedef long   __kernel_off_t;
+typedef long long   __kernel_loff_t;
+typedef int   __kernel_pid_t;
+typedef int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned int   __kernel_old_uid_t;
+typedef unsigned int   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+#   else
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned int   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned int   __kernel_old_uid_t;
+typedef unsigned int   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+#   endif
+typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHITANIUM) && (!(defined(_ASM_IA64_POSIX_TYPES_H) || defined(_ASM_IA64_POSIX_TYPES_H_))))
+#define _ASM_IA64_POSIX_TYPES_H   (1)
+#define _ASM_IA64_POSIX_TYPES_H_   (1)
+
+
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned int   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef long long   __kernel_loff_t;
+typedef int   __kernel_pid_t;
+typedef int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_timer_t;
+typedef int   __kernel_clockid_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned long   __kernel_sigset_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef __kernel_uid_t   __kernel_uid32_t;
+typedef __kernel_gid_t   __kernel_gid32_t;
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned int   __kernel_old_dev_t;
+typedef struct kernel_fsid { int val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHM68K) && (!(defined(_ARCH_M68K_POSIX_TYPES_H) || defined(_ARCH_M68K_POSIX_TYPES_H_) || defined(__ARCH_M68K_POSIX_TYPES_H))))
+#define _ARCH_M68K_POSIX_TYPES_H   (1)
+#define _ARCH_M68K_POSIX_TYPES_H_   (1)
+#define __ARCH_M68K_POSIX_TYPES_H   (1)
+
+
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid_t;
+typedef unsigned short   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef long long   __kernel_loff_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef struct __kernel_fsid {
+#   ifdef __USE_ALL
+	int val[2];
+#   else
+	int __val[2];
+#   endif
+} __kernel_fsid_t;
+
+
+#elif (defined(ARCHMICROBLAZE) && (!(defined(_ASM_MICROBLAZE_POSIX_TYPES_H) || defined(_ASM_MICROBLAZE_POSIX_TYPES_H) || defined(__ASM_MICROBLAZE_POSIX_TYPES_H))))
+#define _ASM_MICROBLAZE_POSIX_TYPES_H   (1)
+#define _ASM_MICROBLAZE_POSIX_TYPES_H_   (1)
+#define __ASM_MICROBLAZE_POSIX_TYPES_H   (1)
+
+
+typedef unsigned long   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned long   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_timer_t;
+typedef int   __kernel_clockid_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned int   __kernel_old_uid_t;
+typedef unsigned int   __kernel_old_gid_t;
+typedef unsigned int   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+typedef struct kernel_fsid { int __val[2]; }   __kernel_fsid_t;
+
+
+#elif (defined(ARCHSPARC) && (!(defined(__ARCH_SPARC_POSIX_TYPES_H) || defined(__ARCH_SPARC64_POSIX_TYPES_H) || defined(__SPARC_POSIX_TYPES_H))))
+#define __ARCH_SPARC_POSIX_TYPES_H   (1)
+#define _ARCH_SPARC_POSIX_TYPES_H   (1)
+#define __ARCH_SPARC64_POSIX_TYPES_H   (1)
+#define _ARCH_SPARC64_POSIX_TYPES_H   (1)
+#define __SPARC_POSIX_TYPES_H   (1)
+#define _SPARC_POSIX_TYPES_H   (1)
+
+
+#   if IS_WORDSIZE_64
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_pid_t;
+typedef int   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned short   __kernel_umode_t;
+typedef unsigned int   __kernel_nlink_t;
+typedef int   __kernel_daddr_t;
+typedef long   __kernel_off_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef __kernel_uid_t   __kernel_uid32_t;
+typedef __kernel_gid_t   __kernel_gid32_t;
+typedef int   __kernel_suseconds_t;
+typedef long long   __kernel_loff_t;
+#   else
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid_t;
+typedef unsigned short   __kernel_gid_t;
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_umode_t;
+typedef short   __kernel_nlink_t;
+typedef long   __kernel_daddr_t;
+typedef long   __kernel_off_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+#   endif
+typedef struct __kernel_fsid {
+#   ifdef __USE_ALL
+	int val[2];
+#   else
+	int __val[2];
+#   endif
+} __kernel_fsid_t;
+
+
+#elif (defined(ARCHSUPERH64) && (!(defined(_ASM_SH64_POSIX_TYPES_H) || defined(_ASM_SH64_POSIX_TYPES_H_) || defined(__ASM_SH64_POSIX_TYPES_H))))
+#define _ASM_SH64_POSIX_TYPES_H   (1)
+#define _ASM_SH64_POSIX_TYPES_H_   (1)
+#define __ASM_SH64_POSIX_TYPES_H   (1)
+
+
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid_t;
+typedef unsigned short   __kernel_gid_t;
+typedef long unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+typedef struct __kernel_fsid {
+#   ifdef __USE_ALL
+	int val[2];
+#   else
+	int __val[2];
+#   endif
+} __kernel_fsid_t;
+
+
+#elif (defined(ARCHSUPERH) && (!(defined(__ASM_SH_POSIX_TYPES_H) || defined(__ASM_SH_POSIX_TYPES_32_H))))
+#define __ASM_SH_POSIX_TYPES_H   (1)
+#define _ASM_SH_POSIX_TYPES_H   (1)
+#define __ASM_SH_POSIX_TYPES_32_H   (1)
+#define _ASM_SH_POSIX_TYPES_32_H   (1)
+
+
+typedef unsigned short   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned short   __kernel_mode_t;
+typedef unsigned short   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned short   __kernel_uid_t;
+typedef unsigned short   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+typedef struct __kernel_fsid {
+#   ifdef __USE_ALL
+	int val[2];
+#   else
+	int __val[2];
+#   endif
+} __kernel_fsid_t;
+
+
+#elif (defined(ARCHXTENSA) && (!(defined(_XTENSA_POSIX_TYPES_H) || defined(_XTENSA_POSIX_TYPES_H_) || defined(__XTENSA_POSIX_TYPES_H))))
+#define _XTENSA_POSIX_TYPES_H   (1)
+#define _XTENSA_POSIX_TYPES_H_   (1)
+#define __XTENSA_POSIX_TYPES_H   (1)
+
+
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned long   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef unsigned short   __kernel_ipc_pid_t;
+typedef unsigned int   __kernel_uid_t;
+typedef unsigned int   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef int   __kernel_timer_t;
+typedef int   __kernel_clockid_t;
+typedef int   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef unsigned int   __kernel_uid32_t;
+typedef unsigned int   __kernel_gid32_t;
+typedef unsigned short   __kernel_old_uid_t;
+typedef unsigned short   __kernel_old_gid_t;
+typedef unsigned short   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+typedef unsigned int   __kernel_dev_t;
+typedef struct __kernel_fsid { int val[2]; }   __kernel_fsid_t;
+
+
+#else
+
+
+#if (!(defined(_ASM_POSIX_TYPES_H) || defined(_ASM_POSIX_TYPES_H_) || defined(__ASM_POSIX_TYPES_H)))
+#define _ASM_POSIX_TYPES_H   (1)
+#define _ASM_POSIX_TYPES_H_   (1)
+#define __ASM_POSIX_TYPES_H   (1)
+
+
+#   if IS_WORDSIZE_64
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned int   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef long   __kernel_ipc_pid_t;
+typedef int   __kernel_uid_t;
+typedef int   __kernel_gid_t;
+typedef unsigned long   __kernel_size_t;
+typedef long   __kernel_ssize_t;
+typedef long   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef long   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef int   __kernel_uid32_t;
+typedef int   __kernel_gid32_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+#   else
+typedef unsigned int   __kernel_dev_t;
+typedef unsigned long   __kernel_ino_t;
+typedef unsigned int   __kernel_mode_t;
+typedef unsigned long   __kernel_nlink_t;
+typedef long   __kernel_off_t;
+typedef int   __kernel_pid_t;
+typedef long   __kernel_ipc_pid_t;
+typedef int   __kernel_uid_t;
+typedef int   __kernel_gid_t;
+typedef unsigned int   __kernel_size_t;
+typedef int   __kernel_ssize_t;
+typedef int   __kernel_ptrdiff_t;
+typedef long   __kernel_time_t;
+typedef long   __kernel_suseconds_t;
+typedef long   __kernel_clock_t;
+typedef long   __kernel_daddr_t;
+typedef char*   __kernel_caddr_t;
+typedef unsigned short   __kernel_uid16_t;
+typedef unsigned short   __kernel_gid16_t;
+typedef int   __kernel_uid32_t;
+typedef int   __kernel_gid32_t;
+typedef __kernel_uid_t   __kernel_old_uid_t;
+typedef __kernel_gid_t   __kernel_old_gid_t;
+typedef __kernel_dev_t   __kernel_old_dev_t;
+typedef long long   __kernel_loff_t;
+#   endif
+typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
+
+
+#endif  // ASM_POSIX_TYPES_H
+
+
+#endif
+
+
+#endif  // BITS_KERNEL_TYPES_H
 
 
 /* PRINTING & SCANNING FORMAT SPECIFIERS */
@@ -4088,29 +4978,6 @@ Indicates support for a 64-bit I/O interface, which allows large files and large
 #endif
 #if (defined(_ATFILE_SOURCE) && (!defined(__USE_ATFILE)))
 #   define __USE_ATFILE   1
-#endif
-/** @def DEBUG
-Enable/Disable Debugging */
-#if (defined(LINTER_LINT) || defined(NODEBUG) || defined(NDEBUG) || (defined(DEBUG) && (!(DEBUG > 0))))
-#   undef DEBUG
-#   undef NODEBUG
-#   undef NDEBUG
-#   define DEBUG   0
-#   define NODEBUG   1
-#   define NDEBUG   1
-#else
-#   undef DEBUG
-#   undef NODEBUG
-#   undef NDEBUG
-#   define DEBUG   1
-#   define NODEBUG   0
-#   define NDEBUG   0
-#endif
-#ifndef DIAGNOSTIC
-#   define DIAGNOSTIC   DEBUG
-#endif
-#ifndef ATOMIC_DEBUG
-#   define ATOMIC_DEBUG   DEBUG
 #endif
 /** @def _FORTIFY_SOURCE
 Adds lightweight checks (if value above 0) that detect some buffer overflow errors */
@@ -5688,6 +6555,900 @@ enum SPLICE_FLAGS {
 #endif  // SPECIFICATIONS, FEATURES, & ARCHITECTURE MACROS
 
 
+/* POINTER CASTS */
+
+
+#ifndef POINTER_CASTS_H
+#define POINTER_CASTS_H   (1)
+
+
+/** @defgroup Pointer_Casts Macros used to cast pointers between different pointer attribute type
+@{ */  // (FB){
+
+#undef __UNCONST
+/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
+#define __UNCONST(x)   ((void*)(uintptr_t)(x))
+/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
+#define UNCONST(x)   ((void*)(uintptr_t)(x))
+#undef __UNVOLATILE
+/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
+#define __UNVOLATILE(x)   ((void*)(uintptr_t)(x))
+#ifndef UNVOLATILE
+/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
+#   define UNVOLATILE(x)   ((void*)(uintptr_t)(x))
+#endif
+#ifndef __DECONST
+#   define __DECONST(type, var)   ((type)(uintptr_t)(var))
+#endif
+#ifndef DECONST
+#   define DECONST(type, var)   ((type)(uintptr_t)(var))
+#endif
+#ifndef __DEVOLATILE
+#   define __DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
+#endif
+#ifndef DEVOLATILE
+#   define DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
+#endif
+#ifndef __DEQUALIFY
+#   define __DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
+#endif
+#ifndef DEQUALIFY
+#   define DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
+#endif
+/** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
+#define rk_UNCONST(x)   ((void*)(uintptr_t)(x))
+/** Convert a pointer to an integer */
+#define PTR_TO_INT(PTR)   ((size_t)((char*)(PTR) - NULL_CHAR))
+#define HandleToLong(x)   ((long)(intptr_t)((void*)(x)))
+#define HandleToULong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define HandleToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define IntToPtr(x)   ((void*)(intptr_t)((int)(x)))
+#define LongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define LongToPtr(x)   ((void*)(intptr_t)((long)(x)))
+#define PtrToInt(x)   ((int)(intptr_t)((void*)(x)))
+#define PtrToLong(x)   ((long)(intptr_t)((void*)(x)))
+#define PtrToShort(x)   ((short)(intptr_t)((void*)(x)))
+#define PtrToUint(x)   ((unsigned int)(uintptr_t)((void*)(x)))
+#define PtrToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
+#define PtrToUshort(x)   ((unsigned short)(uintptr_t)((void*)(x)))
+#define UIntToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
+#define UintToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
+#define UlongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define ULongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
+#define UlongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
+#define ULongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
+/** intptr_t if P is true, or T if P is false */
+#define integer_if_pointer_type_sub(T, P)   typeof(*(0 ? (typeof(0 ? (T*)0 : (void*)(P)))0 : (typeof(0 ? (intptr_t*)0 : (void*)(!(P))))0))
+/** intptr_t if P is true, or T if P is false */
+#define __integer_if_pointer_type_sub(T, P)   integer_if_pointer_type_sub((T), (P))
+/** intptr_t if EXPR has a pointer type, or the type of EXPR otherwise */
+#define integer_if_pointer_type(expr)   __integer_if_pointer_type_sub(typeof((typeof(expr))0), __pointer_type(typeof(expr)))
+/** intptr_t if EXPR has a pointer type, or the type of EXPR otherwise */
+#define __integer_if_pointer_type(expr)   integer_if_pointer_type((expr))
+/** Cast an integer or a pointer VAL to integer with proper type */
+#define cast_to_integer(val)   ((__integer_if_pointer_type(val))(val))
+#define __USE(x)   ((void)(x))
+/** Get the address of the object */
+#define ADDRESS_FUNCTION(x)   &(x)
+/** Get the address of the object */
+#define GET_ADDRESS(x)   &(x)
+/** Get the address of a variable and pass it on as a `void*` */
+#define vp_pack(var)   ((void*)&var)
+/** Get a void pointer and dereferences it to the specified datatype */
+#define vp_unpack(var, type)   (*((type*)var))
+/** Ignore the value of an expression when a cast to void does not suffice (in particular, for a call to a function declared with attribute warn_unused_result) */
+#define ignore_value(x)   __extension__ ({ typeof(x) tmpmvar = (x); (void)tmpmvar; })
+/** Return a pointer (void *const*) to the first element of SET */
+#define symbol_set_first_element(set)   ((void* const*)(&__start_ ## set))
+/** Return true if PTR (a void *const*) has been incremented past the last element in SET */
+#define symbol_set_end_p(set, ptr)   ((ptr) >= (void* const*) &__stop_ ## set)
+
+/** @} */  // }
+
+
+#endif  // POINTER_CASTS_H
+
+
+/* BIT & LOGIC MACROS */
+
+
+#ifndef BIT_MACROS_H
+#define BIT_MACROS_H   (1)
+
+
+/** @defgroup Bit_and_Logic_Macros Macros used to manipulate bits & bytes and perform some logical operations
+@{ */  // (FB){
+
+
+// BYTE & BIT OPERATION MACROS
+
+/** Mask for the specified bit within a byte */
+#define byte_mask(bit)   (1 << ((bit) & 7))
+/** Find least significant bit that is set; For example, a return value of "8" indicates that the LSB is in the bit position that represents a decimal value of eight */
+#define FIND_LOWEST_SET_BIT(data)   ((data) & (-(data)))
+/** Find least significant bit that is not set; For example, a return value of "8" indicates that the LSB unset is in the bit position that represents a decimal value of eight */
+#define FIND_LOWEST_UNSET_BIT(data)   ((~(data)) & ((data) + 1))
+/** Extract the bitfield selected by `__mask` from `x` and right-shift the bits so that the rightmost selected bit is at bit 0 */
+#define SHIFTOUT(x, __mask)   (((x) & (__mask)) / FIND_LOWEST_SET_BIT(__mask))
+/** Left-shift bits `x` into the bitfield defined by `__mask` */
+#define SHIFTIN(x, __mask)   ((x) * FIND_LOWEST_SET_BIT(__mask))
+/** Shift the mask towards the LSB until the specified bit (using the original mask) is the LSB */
+#define SHIFTOUT_MASK(__mask)   ((__mask) / FIND_LOWEST_SET_BIT(__mask))
+/** Find least significant bit that is set; For example, a return value of "4" indicates that the fourth bit (bit position representing a decimal value of eight) is the LSB */
+#define find_lowest_set_bit(data)   __extension__ ({ register uint64_t tmp1var = (uint64_t)FIND_LOWEST_SET_BIT(data), tmp2var = (tmp1var == 0 ? 0 : 1); while (tmp1var >>= 1) { ++tmp2var; } tmp2var; })
+/** Create a number with the specified bit set to 1 (set1bit(0) == 1) */
+#define set1bit(data)   (1 << (data))
+/** Set the specified bit position to one (setbit(x, 0) == x|1) */
+#define setbit(x, bit)   ((x) | set1bit(bit))
+/** Set the specified bits to one based on mask */
+#define SETBITS(x, __mask)   ((x) | (__mask))
+/** Create an uintmax_t with the value of the specified bit set */
+#define __BIT(__n)   (((__UINTMAX_TYPE__)(__n) >= BITS_PER_UINTMAX_T) ? 0 : ((__UINTMAX_TYPE__)1 << (__UINTMAX_TYPE__)((__n) & (BITS_PER_UINTMAX_T - 1))))
+/** Create an uintmax_t with the value of the specified bit range set */
+#define __BITS(__m, __n)   ((__BIT(MAX((__m), (__n)) + 1) - 1) ^ (__BIT(MIN((__m), (__n))) - 1))
+/** Bits x through y are set to "1"; Required: x < y */
+#define setbitfield(x, y)   ((set1bit(MAX((x), (y)) + 1) - 1) ^ (set1bit(MIN((x), (y))) - 1))
+/** Unset the specified bit */
+#define unsetbit(x, bit)   ((x) & ~(set1bit(bit)))
+/** Unset the specified bits based on mask */
+#define UNSETBIT(x, __mask)   ((x) & ~(__mask))
+/** Toggle the specified bit */
+#define togglebit(x, bit)   ((x) ^ (set1bit(bit)))
+/** Toggle the specified bits based on mask */
+#define TOGGLEBIT(x, __mask)   ((x) ^ (__mask))
+/** Clear the lowest set bit */
+#define clr_lowest_set_bit(data)   ((data) & ((data) - 1))
+/** Clear the specified bit */
+#define clrbit(x, bit)   ((x) & (~(set1bit(bit))))
+/** Clear the specified bits based on mask */
+#define CLRBIT(x, __mask)   ((x) & ~(__mask))
+/** Test if the specified bit is set */
+#define isset(x, bit)   (!!((x) & (set1bit(bit))))
+/** Test if the specified bits are set based on mask */
+#define ISSET(x, __mask)   (!!((x) & (__mask)))
+/** Test if the specified bit is not set */
+#define isclr(x, bit)   (!!((x) & ~(set1bit(bit))))
+/** Test if the specified bits are not set based on mask */
+#define ISCLR(x, __mask)   (!!((x) & ~(__mask)))
+/** Turn off LSB (set the right-most 1 bit to 0) */
+#define turnofflsb(x)   ((x) & ((x) - 1))
+/** Isolate LSB (right-most 1 bit) */
+#define isolatelsb(x)   ((x) & (-(x)))
+/** Right propagate the rightmost set-bit */
+#define propagatelsb(x)   ((x) | ((x) - 1))
+/** Isolate the rightmost 0-bit */
+#define isolatelsb0bit(x)   ((~(x)) & ((x) + 1))
+/** Set the rightmost 0-bit */
+#define setlsb0bit(x)   ((x) | ((x) + 1))
+/** Preceded byte by `i` 1's (8-bit values only); set_leading_ones_8bit(2) is 11000000 */
+#define set_leading_ones_8bit(i)   (((1 << ((7 - (i)) + 1)) - 1) ^ 255)
+/** Sign EXtend */
+#define sex(x)   (x >> ((NBBY * sizeof(typeof(x))) - 1))
+/** Get the contrast number */
+#define get_contrast_num(x)   ((~x) + 1)
+/** Return the twos complement of the given data */
+#define COMP2(x)   ((~(x)) + 1)
+/** Return the twos complement of the given data */
+#define TWOS_COMPLEMENT(x)   COMP2(x)
+/** Swap odd and even bits */
+#define swap_odd_and_even_bits(x)   ((((x) >> 1) & 0x55555555) | (((x) & 0x55555555) << 1))
+/** Swap consecutive pairs */
+#define swap_consecutive_pairs(x)   ((((x) >> 2) & 0x33333333) | (((x) & 0x33333333) << 2))
+/** Swap nibbles */
+#define swap_nibbles(x)   ((((x) >> 4) & 0x0f0f0f0f) | (((x) & 0x0f0f0f0f) << 4))
+/** Swap bytes */
+#define swap_bytes(x)   ((((x) >> 8) & 0x00ff00ff) | (((x) & 0x00ff00ff) << 8))
+/** Swap 2-byte-long pairs */
+#define swap_2byte_long_pairs(x)   (((x) >> 16) | ((x) << 16))
+/** Reverse the bits in a byte */
+#define reversebyte(x)   ((((x) * 0x0202020202ULL) & 0x010884422010ULL) % 1023)
+/** Return true if the data contains a NULL byte */
+#define has_nullbyte(x)   (((unsigned long)((x) - 0x01010101UL) & (unsigned long)(~(x)) & 0x80808080UL) != 0)
+/** Return true if the data contains a NULL byte */
+#define hasNulByte(x)   has_nullbyte(x)
+/** Return true if the data contains a NULL byte */
+#define hasZeroByte(x)   has_nullbyte(x)
+/** Return true if the data contains a NULL byte */
+#define haszero(x)   has_nullbyte(x)
+/** Return true if the data contains the specified byte */
+#define hasvalue(x, byte)   (haszero((x) ^ ((~0UL) / 255 * (byte))))
+#define __BITMAP_MASK(__t)   (_TYPEBITS(__t) - 1)
+#define __BITMAP_BIT(__n, __v)    (1 << ((__n) & __BITMAP_MASK(*(__v)->_b)))
+#define __BITMAP_SIZE(__t, __n)    (((__n) + (_TYPEBITS(__t) - 1)) / _TYPEBITS(__t))
+#define __BITMAP_TYPE(__s, __t, __n)   struct __s { __t _b[__BITMAP_SIZE(__t, __n)]; }
+#define __BITMAP_SHIFT(__t)   (ilog2(_TYPEBITS(__t)))
+#define __BITMAP_WORD(__n, __v)   ((__n) >> __BITMAP_SHIFT(*(__v)->_b))
+#define __BITMAP_SET(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] |= __BITMAP_BIT(__n, __v))
+#define __BITMAP_CLR(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] &= ~__BITMAP_BIT(__n, __v))
+#define __BITMAP_ISSET(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] & __BITMAP_BIT(__n, __v))
+#define __BITMAP_ZERO(__v)   do { register size_t __i; for (__i = 0; __i < __arraycount(__v->_b); __i++) { (__v)->_b[__i] = 0; } } while (0x0)
+/** This code is needed for the optimized mapping functions */
+#define __tobody(c, f, a, args)   __extension__ ({ int __res; if (sizeof(c) > 1) { if (__builtin_constant_p(c)) { int __c = (c); __res = ((__c < (-128) || __c > 255) ? __c : (a)[__c]); } else { __res = f args; } } else { __res = (a)[(int)(c)]; } __res; })
+/** Macro to make it easier to loop over several blocks */
+#define FOR_BLOCKS(length, dst, src, blocksize)   assert(!((length) % (blocksize))); for (; (length); ((length) -= (blocksize), (dst) += (blocksize), (src) += (blocksize)))
+#ifndef Storeinc
+#   define Storeinc(a, b, c)   (*a++ = ((b) << 16) | ((c) & UINT16_MAX))
+#endif
+#define Sign_Extend(a, b)   if ((b) < 0) { a |= 0xffff0000; }
+#define MEMCCPY_ALIGN   (SIZEOF_SIZE_T - 1)
+#define MEMCCPY_ONES   ((size_t)(-1) / UCHAR_MAX)
+#define HASZERO(x)   ((((x) - MEMCCPY_ONES) & (~(x))) & (MEMCCPY_ONES * ((UCHAR_MAX / 2) + 1)))
+#define HASNTZERO(x)   (!((((x) - MEMCCPY_ONES) & (~(x))) & (MEMCCPY_ONES * ((UCHAR_MAX / 2) + 1))))
+#define HASNOTZERO(x)   HASNTZERO((x))
+#define HASNOZERO(x)   HASNTZERO((x))
+#define BITOP(a, b, op)   ((a)[(size_t)(b) / (NBBY * sizeof(*(a)))] op (size_t)1 << ((size_t)(b) % (NBBY * sizeof(*(a)))))
+/** Byte of the bitstring containing the bit */
+#define bit_byte(bit)   ((bit) >> 3)
+/** Bytes in a bitstring of nbits bits */
+#define bitstr_size(nbits)   (((nbits) + 7) >> 3)
+/** Allocate a bitstring */
+#define bit_alloc(nbits)   (bitstr_t*)calloc((size_t)bitstr_size(nbits), SIZEOF_CHAR)
+/** Allocate a bitstring on the stack */
+#define bit_decl(name, nbits)   ((name)[bitstr_size(nbits)])
+/** Is bit N of bitstring name set? */
+#define bit_test(name, bit)   ((name)[bit_byte(bit)] & (byte_mask(bit)))
+/** Set bit N of bitstring name */
+#define bit_set(name, bit)   ((name)[bit_byte(bit)] |= (byte_mask(bit)))
+/** Clear bit N of bitstring name */
+#define bit_clear(name, bit)   ((name)[bit_byte(bit)] &= (~byte_mask(bit)))
+/** Clear bits start ... stop in bitstring */
+#define bit_nclear(name, start, stop)   do { bitstr_t* _name = name; register int _start = start, _stop = stop; while (_start <= _stop) { bit_clear(_name, _start); ++_start; } } while (0x0)
+/** Set bits from `start` to `stop` in bitstring */
+#define bit_nset(name, start, stop)   do { bitstr_t* _name = name; register int _start = start, _stop = stop; while (_start <= _stop) { bit_set(_name, _start); ++_start; } } while (0x0)
+/** Find first bit clear in name */
+#define bit_ffc(name, nbits, value)   do { bitstr_t* _name = name; register int _bit, _nbits = nbits, _value = -1; for (_bit = 0; _bit < _nbits; ++_bit) { if (!bit_test(_name, _bit)) { _value = _bit; break; } } *(value) = _value; } while (0x0)
+/** Find first bit set in name */
+#define bit_ffs(name, nbits, value)   do { bitstr_t* _name = name; register int _bit, _nbits = nbits, _value = -1; for (_bit = 0; _bit < _nbits; ++_bit) { if (bit_test(_name, _bit)) { _value = _bit; break; } } *(value) = _value; } while (0x0)
+
+
+// LOGIC GATES & BASIC MATH MACROS
+
+#if IS_GNUC
+/** Return the absolute value of an integral value */
+#   define abs(x)   __extension__ ({ (((x) >= 0) ? (x) : (-(x))); })
+/** Return the absolute value of the difference between two integral values */
+#   define absdiff(x, y)   __extension__ ({ const auto_type _x = x; const auto_type _y = y; (_x > _y) ? (_x - _y) : (_y - _x); })
+#   define CONSTRAIN(amount, low, high)   __extension__ ({ const auto_type _amount = (amount); const auto_type _low = (low); const auto_type _high = (high); ((_amount) < (_low) ? (_low) : ((_amount) > (_high) ? (_high) : (_amount)))})
+#   ifndef CLAMP
+/** Computes the value of the first specified argument clamped to a range defined by the second and third specified arguments */
+#      define CLAMP(x, low, high)   __extension__ ({ (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x))); })
+#   endif
+#   define _MAX_INT(x, y)   __extension__ ({ (x ^ ((x ^ y) & -(x < y))); })
+#   define _MIN_INT(x, y)   __extension__ ({ (y ^ ((x ^ y) & -(x < y))); })
+#   define MAX(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x > _y) ? _x : _y; })
+#   define MIN(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x > _y) ? _y : _x; })
+#   define SWAP(x, y)   __extension__ ({ const auto_type __tmp = (x); (x) = (y); (y) = __tmp; })
+#   define AND(x, y)  __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x & _y); })
+#   define AND3(x, y, z)  __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); const auto_type _z = (z); ((_x & _y) & _z); })
+#   define OR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x | _y); })
+#   define NAND(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x & _y); })
+#   define NOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x | _y); })
+#   define XOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x ^ _y); })
+#   define XNOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x ^ _y); })
+#   define NXOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x ^ _y); })
+#   define mix(a, b, c)    __extension__ ({ \
+	auto_type x = (a); auto_type y = (b); auto_type z = (c); \
+	x -= y; x -= z; x ^= (z >> 13); \
+	y -= z; y -= x; y ^= (x << 8); \
+	z -= x; z -= y; z ^= (y >> 13); \
+	x -= y; x -= z; x ^= (z >> 12); \
+	y -= z; y -= x; y ^= (x << 16); \
+	z -= x; z -= y; z ^= (y >> 5); \
+	x -= y; x -= z; x ^= (z >> 3); \
+	y -= z; y -= x; y ^= (x << 10); \
+	z -= x; z -= y; z ^= (y >> 15); \
+	a = x; b = y; c = z; \
+})
+#   ifndef howmany
+/** Macros for counting how many times y fits in x */
+#      define howmany(x, y)   __extension__ ({ (((x) + ((y) - 1)) / (y)); })
+#   endif
+#   ifndef __ispowerof2
+/** Test if the value is a power of two */
+#      define __ispowerof2(n)   __extension__ ({ (!(((n) - 1) & (n))); })
+#   endif
+/** Test if the value is a power of two */
+#   define powerof2(n)   __extension__ ({ (!(((n) - 1) & (n))); })
+#else
+/** Return the absolute value of an integral value */
+#   define abs(x)   (((x) >= 0) ? (x) : (-(x)))
+/** Return the absolute value of the difference between two integral values */
+#   define absdiff(x, y)   (((x) > (y)) ? ((x) - (y)) : ((y) - (x)))
+#   define CONSTRAIN(amount, low, high)   ((amount) < (low) ? (low) : ((amount) > (high) ? (high) : (amount)))
+#   ifndef CLAMP
+/** Computes the value of the first specified argument clamped to a range defined by the second and third specified arguments */
+#      define CLAMP(x, low, high)   (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
+#   endif
+#   define _MAX_INT(x, y)   (x ^ ((x ^ y) & -(x < y)))
+#   define _MIN_INT(x, y)   (y ^ ((x ^ y) & -(x < y)))
+#   define MAX(x, y)   (((y) > (x)) ? (y) : (x))
+#   define MIN(x, y)   (((y) < (x)) ? (y) : (x))
+#   define SWAP(x, y)   ((y) = (x), (x) = (y))
+#   define AND(x, y)   ((x) & (y))
+#   define AND3(x, y, z)   (((x) & (y)) & (z))
+#   define OR(x, y)   ((x) | (y))
+#   define NAND(x, y)   (~((x) & (y)))
+#   define NOR(x, y)   (~((x) | (y)))
+#   define XOR(x, y)   ((x) ^ (y))
+#   define XNOR(x, y)   (~((x) ^ (y)))
+#   define NXOR(x, y)   (~((x) ^ (y)))
+#   define mix(a, b, c)   do { \
+	a -= b; a -= c; a ^= (c >> 13); \
+	b -= c; b -= a; b ^= (a << 8); \
+	c -= a; c -= b; c ^= (b >> 13); \
+	a -= b; a -= c; a ^= (c >> 12); \
+	b -= c; b -= a; b ^= (a << 16); \
+	c -= a; c -= b; c ^= (b >> 5); \
+	a -= b; a -= c; a ^= (c >> 3); \
+	b -= c; b -= a; b ^= (a << 10); \
+	c -= a; c -= b; c ^= (b >> 15); \
+} while (0x0)
+#   ifndef howmany
+/** Macros for counting how many times y fits in x */
+#      define howmany(x, y)   (((x) + ((y) - 1)) / (y))
+#   endif
+#   ifndef __ispowerof2
+/** Test if the value is a power of two */
+#      define __ispowerof2(n)   (!(((n) - 1) & (n)))
+#   endif
+/** Test if the value is a power of two */
+#   define powerof2(n)   (!(((n) - 1) & (n)))
+#endif  // LOGIC GATES, MAX, MIN, ETC. MACROS
+/** Return true if the signs of the two values are opposite */
+#define are_signs_opposite(x, y)   (((x) ^ (y)) < 0)
+#define ORSWAP(x, y)   ((x) |= (y), (x) |= (y), (x) |= (y))
+#define XORSWAP(x, y)   ((x) ^= (y), (x) ^= (y), (x) ^= (y))
+#define MIX(a, b, c)   mix((a), (b), (c))
+/** Return the absolute value of an integral value */
+#define ABS(x)   abs((x), (y))
+#ifndef gnu_abs
+/** Return the absolute value of an integral value */
+#   define gnu_abs(n)    abs((n))
+#endif
+#define constrain(amount, low, high)   CONSTRAIN((amount), (low), (high))
+#define MAXVAL(t, b)    ((t)(((t)1 << ((b) - 1 - TYPE_SIGNED(t))) - 1 + ((t)1 << ((b) - 1 - TYPE_SIGNED(t)))))
+#define MINVAL(t, b)   ((t)(TYPE_SIGNED(t) ? (-(TWOS_COMPLEMENT(b) - MAXVAL(t, b))) : 0))
+#ifndef INT_STRLEN_MAXIMUM
+#   define INT_STRLEN_MAXIMUM(type)   (((TYPE_BIT(type) - TYPE_SIGNED(type)) * 302) / 1000 + 1 + TYPE_SIGNED(type))
+#endif
+/** Round up to the next power-of-2 that is equal-to or less-than the mask */
+#define P2ROUNDUP(x, __mask)   (-(-(x) & (-(__mask))))
+#define P2PHASEUP(x, align, phase)   ((phase) - (((phase) - (x)) & (-(align))))
+#define ROUND_UP_NEXT_128(x)   (((x) + 128) & 128)
+#define ROUND_DOWN_128(x)   ((x) & 128)
+/** Macros to avoid undefined behaviour that can arise if the amount of a shift is exactly equal to the size of the shifted operand */
+#define SAFE_LEFT_SHIFT(op, amt)   (((amt) < (NBBY * sizeof(op))) ? ((op) << (amt)) : 0)
+/** Macros to avoid undefined behaviour that can arise if the amount of a shift is exactly equal to the size of the shifted operand */
+#define SAFE_RIGHT_SHIFT(op, amt)   (((amt) < (NBBY * sizeof(op))) ? ((op) >> (amt)) : 0)
+/** Long zero */
+#define __zerolong()   0L
+/** Long zero */
+#define zerolong()   __zerolong()
+/** Unsigned long zero */
+#define __zeroul()   0UL
+/** Unsigned long zero */
+#define zeroul()   __zeroul()
+/** Long long zero */
+#define __zeroll()   0LL
+/** Long long zero */
+#define zeroll()   __zeroll()
+/** Unsigned long long zero */
+#define __zeroull()   0ULL
+/** Unsigned long long zero */
+#define zeroull()   __zeroull()
+
+/** @} */  // }
+
+
+#endif  // BIT_MACROS_H
+
+
+/* ALIGNMENT (<stdalign.h>) */
+
+
+#if (!(defined(STDALIGN_H) || defined(__STDALIGN_H) || defined(__STDALIGN_H_) || defined(_ALIGNOF_H)))  // https://www.gnu.org/software/gnulib/manual/html_node/stdalign_002eh.html & https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxbd00/stdalign.htm
+#define STDALIGN_H   (1)
+#define _STDALIGN_H   (1)
+#define __STDALIGN_H   (1)
+#define __STDALIGN_H_   (1)
+#define _ALIGNOF_H   (1)
+#define STRUCT_H   (1)
+#define _STRUCT_H   (1)
+#define _STRUCT_H_   (1)
+
+
+#ifdef __BIGGEST_ALIGNMENT__
+#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
+#elif (!LDBL_EQ_DBL)
+#   define __BIGGEST_ALIGNMENT__   (16)
+#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
+#else
+#   define __BIGGEST_ALIGNMENT__   (16)
+#   define BIGGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
+#endif
+#ifndef LARGEST_ALIGNMENT
+#   define LARGEST_ALIGNMENT   __BIGGEST_ALIGNMENT__
+#endif
+#ifndef TCB_ALIGNMENT
+#   define TCB_ALIGNMENT   SIZEOF_DOUBLE
+#endif
+#ifndef IS_BIGGEST_ALIGNMENT_8
+#   define IS_BIGGEST_ALIGNMENT_8   (__BIGGEST_ALIGNMENT__ == 8)
+#endif
+#ifndef IS_BIGGEST_ALIGNMENT_16
+#   define IS_BIGGEST_ALIGNMENT_16   (__BIGGEST_ALIGNMENT__ == 16)
+#endif
+#ifndef IS_BIGGEST_ALIGNMENT_32
+#   define IS_BIGGEST_ALIGNMENT_32   (__BIGGEST_ALIGNMENT__ == 32)
+#endif
+#ifndef IS_BIGGEST_ALIGNMENT_64
+#   define IS_BIGGEST_ALIGNMENT_64   (__BIGGEST_ALIGNMENT__ == 64)
+#endif
+
+/** Align the given pointer */
+#define alignto(ptr, bits)   (((ptr) >> bits) << bits)
+/** Add an aligned increment to the given pointer */
+#define aligntonext(ptr, bits)   alignto(((ptr) + (1 << bits) - 1), bits)
+
+
+// OFFSETOF
+
+#undef offsetof
+#ifndef offsetof
+/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
+#   define offsetof(type, member)   ((size_t)(&((type*)0)->member))  // (__builtin_offsetof(type, member))
+#endif
+#ifndef ioffsetof
+/** Evaluates to the offset (in bytes as int) of a given member within a struct or union */
+#   define ioffsetof(type, member)   ((int)(ssize_t)(&((type*)0)->member))  // (__builtin_offsetof(type, member))
+#endif
+/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
+#define __offsetof(type, member)   offsetof((type), (member))
+/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
+#define OFFSETOF(type, member)   offsetof((type), (member))
+/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
+#define _offsetof(type, member)   offsetof((type), (member))
+/** Evaluates to the offset (in bytes as size_t) of a given member within a struct or union */
+#define __offsetof__(type, member)   offsetof((type), (member))
+
+
+// CONTAINER_OF
+
+#if IS_GNUC
+/** Used to retrieve an enclosing structure from a pointer to a nested element */
+#   define container_of(ptr, type, member)   __extension__ ({ do { const typeof(((type*)0)->member) *__mptr = (ptr); (type*)((char*)__mptr - offsetof(type, member)); } while (0x0) })
+#else
+/** Used to retrieve an enclosing structure from a pointer to a nested element */
+#   define container_of(ptr, type, member)   ((type*)((char*)(1 ? (ptr) : &((type*)0)->member) - offsetof(type, member)))
+#endif  // container_of
+#ifndef SIZEOF
+/** Get the size of any member of a typedef without having to actually declare a variable of that datatype */
+#   define SIZEOF(obj, member)   ((size_t)sizeof(((obj*)0)->member))
+#endif
+
+
+// ALIGNOF
+
+#if (IS_STDC11 && IS_NOT_CPLUSPLUS && IS_NOT_GNUC)
+/** Return the natural alignment (in bytes) for the given type */
+#   define __alignof(_type)   _Alignof(_type)
+#elif IS_GNUC
+/** Return the natural alignment (in bytes) for the given type */
+#   define __alignof(_type)   __alignof__(_type)
+#elif (defined(OSHPUX) || defined(OSAIX))
+/** Work around a HP-UX 10.20 cc bug and AIX 3.2.5 xlc bug with enums constants defined as offsetof values */
+#   define __alignof(_type)   ((sizeof(_type) <= 4) ? 4 : 8)
+#else
+/** Return the natural alignment (in bytes) for the given type */
+#   define __alignof(_type)   (sizeof(struct { char __x; _type __y; }) - sizeof(_type))
+#endif
+#if IS_NOT_CPLUSPLUS
+#   if (IS_STDC_BELOW_C11 && IS_GNUC)
+/** Return the natural alignment (in bytes) for the given type */
+#      define _Alignof(_type)    __alignof(_type)
+#   endif
+#   ifndef alignof
+/** Return the natural alignment (in bytes) for the given type */
+#      define alignof(_type)   __alignof(_type)
+#   endif
+#endif
+/** Return the natural alignment (in bytes) for the given type */
+#define sa_alignof(_type)   _Alignof(_type)
+/** Return the natural alignment (in bytes) for the given type */
+#define alignof_type(_type)   _Alignof(_type)
+#undef __IBM__ALIGNOF__
+/** Return the natural alignment (in bytes) for the given type */
+#define __IBM__ALIGNOF__(_type)   _Alignof(_type)
+/** Return the natural alignment (in bytes) for the given type */
+#define IBM__ALIGNOF(_type)   _Alignof(_type)
+#if IS_NOT_CPLUSPLUS
+/** Return the natural alignment (in bytes) for the given type */
+#   define alignment_of(_type)   _Alignof(_type)
+#endif
+#define __alignof_is_defined   (1)
+
+
+// ALIGNAS
+
+#if IS_NOT_CPLUSPLUS
+#   if IS_STDC_BELOW_C11
+/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
+#      define _Alignas(_type)    aligned(_type)
+#   endif
+#   if (!(defined(alignas) || defined(__alignas_is_defined)))
+/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
+#      define alignas(_type)   _Alignas(_type)
+#   endif
+#endif
+/** Used in declaration syntax as a type specifier to modify the alignment requirement of the object being declared */
+#define sa_alignas(_type)   alignoas(_type)
+#define __alignas_is_defined   (1)
+
+
+// ALIGNOF_SLOT
+
+#if IS_CPLUSPLUS
+	template <class type> struct alignof_helper { char __slot1; type __slot2; };
+/** Determine the alignment of a structure slot (field) of a given type at compile time */
+#   define alignof_slot(type)   offsetof(alignof_helper<type>, __slot2)
+#else
+/** Determine the alignment of a structure slot (field) of a given type at compile time */
+#   define alignof_slot(type)   offsetof(struct { char __slot1; type __slot2; }, __slot2)
+#endif  // alignof_slot
+#define __alignof_slot_is_defined   1
+
+
+// ASSUME_ALIGNED
+
+/** @def assume_aligned
+The object pointed to by the given pointer is x-aligned; a third optional argument indicates the offset */
+/** @def ATTR_ALIGN_TO
+Align the data-structure like the specified object */
+#if IS_GNUC
+#   define assume_aligned(a, ...)   __attribute__((__assume_aligned__(a, ## __VA_ARGS__)))
+#   define ATTR_ALIGN_TO(param)   __attribute__((__aligned__(__alignof__(param))))
+#else
+#   define assume_aligned(a, ...)
+#   define ATTR_ALIGN_TO(param)
+#endif
+
+
+// BASEOF
+
+#define BASEOF(ptr, str_type, field)   ((struct str_type*)((char*)ptr - offsetof(str_type, field)))
+
+
+// FIELD OFFSET
+
+/** Offset of the field in the structure */
+#define fldoff(name, field)   ((int)&(((struct name*)0)->field))
+/** Size of the field in the structure */
+#define fldsiz(name, field)   (sizeof(((struct name*)0)->field))
+/** Address of the structure from a field */
+#define strbase(name, addr, field)   ((struct name*)((char*)addr - fldoff(name, field)))
+
+
+// STRIDEOF
+
+#define strideof(obj)   sizeof(obj)
+
+
+// UNALIGNED
+
+#define UNALIGNED(x, y)   (((unsigned long)x & (SIZEOF_LONG - 1)) ^ ((unsigned long)y & (SIZEOF_LONG - 1)))
+
+
+/** The increment that guarantees room for a magic word must be >= BYTES_PER_INT and a multiple of sa_alignment_max */
+#define sa_increment   (((BYTES_PER_INT + sa_alignment_max - 1) / sa_alignment_max) * sa_alignment_max)
+#ifndef _ALIGNBYTES
+#   ifdef __ALIGNBYTES
+#      define _ALIGNBYTES   __ALIGNBYTES
+#   else
+#      define _ALIGNBYTES   7
+#   endif
+#endif
+#ifndef ALIGNBYTES
+#   define ALIGNBYTES   _ALIGNBYTES
+#endif
+#ifndef _ALIGN
+#   define _ALIGN(p)   (((unsigned long long)(p) + (unsigned long long)(_ALIGNBYTES)) & (unsigned long long)(~(_ALIGNBYTES)))
+#endif
+#ifndef ALIGN
+#   define ALIGN(p)   _ALIGN((p))
+#endif
+#define ALIGNBYTES32   31
+#define ALIGN32(p)   ((size_t)((char*)(size_t)(p) + 31) & 0xffffffe0)
+#define ALIGNBYTES64   63
+#define ALIGN64(p)   ((size_t)((char*)(size_t)(p) + 63) & 0xffffffc0)
+/** Align a value by rounding down to closest size; Using size of 4096, we get this behavior: {4095, 4096, 4097} = {0, 4096, 4096} */
+#define ALIGN_DOWN(base, size)   ((base) & (-((typeof(base))(size))))
+/** Align a value by rounding up to closest size; Using size of 4096, we get this behavior: {4095, 4096, 4097} = {4096, 4096, 8192} */
+#define ALIGN_UP(base, size)   ALIGN_DOWN((base) + (size) - 1, (size))
+/** Same as ALIGN_DOWN(), but automatically casts when base is a pointer */
+#define PTR_ALIGN_DOWN(base, size)   ((typeof(base)) ALIGN_DOWN((uintptr_t)(base), (size)))
+/** Same as ALIGN_UP(), but automatically casts when base is a pointer */
+#define PTR_ALIGN_UP(base, size)   ((typeof(base)) ALIGN_UP((uintptr_t)(base), (size)))
+#ifndef IS_P2ALIGNED
+#   define IS_P2ALIGNED(v, a)   ((((uintptr_t)(v)) & ((uintptr_t)(a) - 1)) == 0)
+#endif
+#ifndef P2ROUNDUP
+#   define P2ROUNDUP(x, align)   (-(-((uintptr_t)(x)) & (-((uintptr_t)align))))
+#endif
+#ifndef P2ROUNDDOWN
+#   define P2ROUNDDOWN(x, align)   (((uintptr_t)(x)) & (~((uintptr_t)(align) - 1)))
+#endif
+
+
+// CLUSTERING OF HARDWARE PAGES
+
+#define RHSDIM   1
+#define BALANCETH   2
+#define RBDIM   8
+#define RBSIZE   64
+#define SLACKNESS   8
+#define BREAKEVEN   4
+#define MINNNZTOPAR   128
+#define BREAKNRB   1
+#define MINNRBTOPAR   32
+#define CLSIZE   64
+#define CLBYTES   (CLSIZE * NBPG)
+/** PGOFSET for clusters */
+#define CLOFSET   (CLSIZE * NBPG - 1)
+#define claligned(x)   ((((int)(x)) & CLOFSET) == 0)
+#define CLOFF   CLOFSET
+#define CLSHIFT   (PGSHIFT + CLSIZELOG2)
+#if (CLSIZE == 1)
+#   define clbase(i)   (i)
+#   define clrnd(i)   (i)
+#else
+/** Give the base virtual address (first of CLSIZE) */
+#   define clbase(i)   ((i) & (~(CLSIZE - 1)))
+/** Round a number of clicks up to a whole cluster */
+#   define clrnd(i)   (((i) + (CLSIZE - 1)) & (~(CLSIZE - 1)))
+#endif
+/** Clist block size; must be a power of 2 */
+#define CBLOCK   64
+/** bytes/cblock */
+#define CBQSIZE   (CBLOCK / NBBY)
+/** Clist rounding */
+#define CROUND   (CBLOCK - 1)
+/** Units of memory less or equal to MAXALLOCSAVE will permanently allocate physical memory; requests for these size pieces of memory are quite fast; Allocations greater than MAXALLOCSAVE must always allocate and free physical memory; requests for these size allocations should be done infrequently as they will be slow */
+#define MAXALLOCSAVE   (2 * CLBYTES)
+
+
+#if (!(defined(_ALIGN_64_BIT_H) || defined(_ALIGN_64_BIT_H_)))  // GET 64-BIT STRUCT ALIGNMENT
+#define ALIGN_64_BIT_H   (1)
+#define _ALIGN_64_BIT_H   (1)
+#define _ALIGN_64_BIT_H_   (1)
+
+
+typedef struct __longlong_aligned { long long x; }   longlong_aligned_t;
+/** Simple macro for getting the 64-bit struct arch alignment */
+#define __ARCH_64BIT_ALIGNMENT__   ATTR_ALIGN_TO(struct __longlong_aligned)
+/** Simple macro for getting the 64-bit struct arch alignment */
+#define ARCH_64BIT_ALIGNMENT   __ARCH_64BIT_ALIGNMENT__
+/** Simple macro for getting the 64-bit struct arch alignment */
+#define _64BIT_ALIGNMENT   __ARCH_64BIT_ALIGNMENT__
+
+
+#endif  // ALIGN_64_BIT_H
+
+
+// MAX_ALIGN_T
+
+#ifndef _GCC_MAX_ALIGN_T
+#   define _GCC_MAX_ALIGN_T   (1)
+#   define __CLANG_MAX_ALIGN_T_DEFINED   (1)
+#   ifdef MICROSOFT_VISUAL  // max_align_t
+/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
+typedef double   max_align_t;
+#   elif (SUPPORTS_LONG_DOUBLE && (defined(__APPLE__) || IS_GNUC))
+/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
+typedef long double   max_align_t;
+#   elif (defined(__BIGGEST_ALIGNMENT__) && (__BIGGEST_ALIGNMENT__ == 8))
+/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
+typedef double   max_align_t;
+#   elif (SUPPORTS_LONG_DOUBLE && defined(__BIGGEST_ALIGNMENT__) && (__BIGGEST_ALIGNMENT__ == BYTES_PER_LONG_DOUBLE))
+/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
+typedef long double   max_align_t;
+#   else
+/** max_align_t is a type whose alignment requirement is at least as strict (as large) as that of every scalar type */
+typedef struct max_align {
+	align_ldbl long long __clang_max_align_nonce1;
+	align_ldbl long double __clang_max_align_nonce2;
+} max_align_t;
+#   endif  // max_align_t
+#endif  // MAX_ALIGN_T
+
+
+/** The macro SAFE_CAST_PTR() casts one type of pointer to another type, making sure the data the pointer is referencing is the same size; If it is not, it will cause a division by zero compiler warning */
+#define __SAFE_CAST_PTR(type, var)   (((type)(var)) + (0 / (sizeof(*var) == sizeof(*type 0) ? 1 : 0)))
+/** The macro SAFE_CAST_PTR() casts one type of pointer to another type, making sure the data the pointer is referencing is the same size; If it is not, it will cause a division by zero compiler warning */
+#define SAFE_CAST_PTR(type, var)   __SAFE_CAST_PTR((type), (var))
+#define __CAST_PTR(type, var)   ((type)(var))
+#define CAST_PTR(type, var)   ((type)(var))
+
+
+#endif  // STDALIGN_H
+
+
+/* STANDARD MACROS */
+
+
+#ifndef STANDARD_MACROS_SEEN
+#define STANDARD_MACROS_SEEN   (1)
+#define _LIBC_NAMESPACE_H_   (1)
+#define _LIBC_SYMBOLS_H   (1)
+#define _LIBC_SYMBOLS_H_   (1)
+#define _ANSIDECL_H   (1)
+#define _ANSIDECL_H_   (1)
+#define __EA_INTERNAL_H   (1)
+#define SYSTEMGNU_H   (1)
+#define _SYSTEMGNU_H_   (1)
+#define _SYS_CDEFS_ELF_H_   (1)
+#define _SYS_CDEFS_H   (1)
+#define _SYS_CDEFS_H_   (1)
+#define _BSD_SYS_CDEFS_H_   (1)
+#define _MACHINE_CDEFS_H_   (1)
+#define _MIPS_CDEFS_H_   (1)
+#define DEFS_H_   (1)
+#define _WINDEF_   (1)
+#define _WINDEF_H_   (1)
+#define _FBSD_COMPAT_H_  (1)
+#define __FBSD_COMPAT__H   (1)
+#define __FBSD_COMPAT__H_   (1)
+#define __NBSD_COMPAT__H   (1)
+#define __NBSD_COMPAT__H_   (1)
+#define __NETBSD_COMPAT_DEFS_H__   (1)
+#define _SHLIB_COMPAT_H   (1)
+#define _KLIBC_EXTERN_H   (1)
+#define _KLIBC_COMPILER_H   (1)
+#define _INC_MINMAX   (1)
+#define _INC_CRTDEFS_MACRO   (1)
+#define _YVALS   (1)
+
+
+// PYBOOSTER LIBRARY INTERFACE MACROS
+
+#ifndef LIB_FUNC
+#   if IS_LINTER
+#      define LIB_FUNC   /*@unused@*/
+#   elif defined(LIB_NO_DYNAMIC)
+#      define LIB_FUNC   UNUSED
+#   else
+#      define LIB_FUNC   static UNUSED
+#   endif
+#endif
+#ifndef DECL_FUNC
+#   if defined(LIB_FUNC)
+#      define DECL_FUNC   LIB_FUNC
+#   else
+#      define DECL_FUNC   static UNUSED
+#   endif
+#endif
+#ifndef MATH_FUNC
+#   if IS_LINTER
+#      define MATH_FUNC
+#   else
+#      define MATH_FUNC   NOLIBCALL ATTR_CF WUR
+#   endif
+#endif
+
+
+// HELPER FUNCTIONS, CONSTANTS, & VARIABLES
+
+DECL_FUNC int not_null_ptr(const void* restrict ptr);
+/** Defeat compiler optimizations that assume function addresses are never NULL */
+LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
+	/*@-usedef@*/
+	const void* restrict q;
+	vasm(";" : "=rm"(q) : "0"(ptr));
+	return (int)(q != 0);
+	/*@=usedef@*/
+}
+
+
+static const UNUSED unsigned char integer_table[264] align512 = {
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
+	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
+	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
+	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU
+};
+static const UNUSED int positive_tens[8] align32 = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
+#ifndef PADSIZE
+/** Pad chunk size */
+#   define PADSIZE   16
+#endif
+static const UNUSED char fcvt_zeros[16] align16 = "000000000000000";
+static const UNUSED char blanks[PADSIZE] align16 = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+static const UNUSED char zeroes[PADSIZE] align16 = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
+static const UNUSED char period[2] align4 = ".";
+#define _ALPHABET   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define _alphabet   "abcdefghijklmnopqrstuvwxyz"
+#define _numbers   "0123456789"
+#define _digits   _numbers
+#define _hexnumbers   "0123456789ABCDEFabcdef"
+#define _hexdigits   _hexnumbers
+static const UNUSED char digits[16] align16 = _digits;
+#define str_digit   digits
+static const UNUSED char hexdigits[32] align32 = _hexnumbers;
+#define xdigits   hexdigits
+static const UNUSED char xdigits_l[32] align32 = "0123456789abcdef";
+static const UNUSED char xdigits_u[32] align32 = "0123456789ABCDEF";
+#define hexdigits_l   xdigits_l
+#define hexdigits_u   xdigits_u
+static const UNUSED char octal_digits[16] align16 = "01234567";
+static const UNUSED char ALPHABET[32] align32 = _ALPHABET;
+static const UNUSED char alphabet[32] align32 = _alphabet;
+static const UNUSED char a64l_digits[65] align128 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+/** Upper-case digits */
+static const UNUSED char _itoa_upper_digits[64] align128 = _numbers _ALPHABET;
+/** Lower-case digits */
+static const UNUSED char _itoa_lower_digits[64] align64 = _numbers _alphabet;
+static const UNUSED char not_available[4] align4 = "\377";
+static const UNUSED char null_indicator[8] align8 = "(NULL)";
+static const UNUSED char empty[2] align2 = "";
+static const UNUSED char null_char[2] align2 = "\0";
+static const UNUSED char NEWLINE[4] align4 = { '\n', '\n', '\0', '\0' };
+/** The set of "direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr */
+static const UNUSED unsigned char direct_tab[16] align16 = {
+	0U, 0x26U, 0U, 0U, 0x81U, 0xf3U, 0xffU, 0x87U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
+};
+/** The set of "direct and optional direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr ! " # $ % & * ; < = > @ [ ] ^ _ ` { | } */
+static const UNUSED unsigned char xdirect_tab[16] align16 = {
+	0U, 0x26U, 0U, 0U, 0xffU, 0xf7U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xefU, 0xffU, 0xffU, 0xffU, 0x3fU
+};
+/** The set of "extended base64 characters": A-Z a-z 0-9 + / - */
+static const UNUSED unsigned char xbase64_tab[16] align16 = {
+	0U, 0U, 0U, 0U, 0U, 0xa8U, 0xffU, 3U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
+};
+static const UNUSED int nibblemap[16] align64 = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
+#define A64L_TABLE_BASE   46
+#define A64L_TABLE_SIZE   77
+static const UNUSED char a64l_table[77] align128 = {
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,
+	0x40, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+	27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 0x40, 0x40, 0x40, 0x40, 0x40,
+	0x40, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52,
+	53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
+};
+
+
+// GLOBAL CODE VARIABLES
+
+UNUSED char** environ = NULL;
+#define __environ   environ
+#define ___environ   environ
+#define _environ   environ
+#define environ   environ
+UNUSED char** __env_map = NULL;
+static atomic volatile UNUSED int exit_counter;
+static volatile UNUSED int progslot;
+static atomic volatile UNUSED int tmlock[2] align8 = { 0, 0 };
+static atomic volatile UNUSED int memlock[2] align8 = { 0, 0 };
+static const UNUSED unsigned int __page_size align8 = (unsigned int)PAGE_SIZE;
+static const UNUSED unsigned int __page_shift align8 = (unsigned int)PAGE_SHIFT;
+#define __getpagesize()   ((unsigned int)__page_size)
+#define getpagesize()   ((unsigned int)__page_size)
+#define __getpageshift()   ((unsigned int)__page_shift)
+#define getpageshift()   ((unsigned int)__page_shift)
+
+
+#endif  // STANDARD_MACROS_SEEN
+
+
 /* ARCHITECTURE MACROS */
 
 
@@ -5981,21 +7742,6 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 
 
 #endif  // MIPS_CDEFS_H
-
-
-// ANDROID MACROS
-
-#if (defined(OSANDROID) && (!defined(ANDROID_API_LEVEL_H)))
-#define ANDROID_API_LEVEL_H   (1)   // <api-level.h>
-
-
-#ifndef __ANDROID_API__
-/** Android API level */
-#   define __ANDROID_API__   10
-#endif
-
-
-#endif  // ANDROID MACROS
 
 
 // APPLE MACROS
@@ -6496,2493 +8242,6 @@ typedef volatile __cpu_simple_lock_nv_t   __cpu_simple_lock_t;
 #endif  // ARCHITECTURE_MACROS_SEEN
 
 
-/* STANDARD MACROS */
-
-
-#ifndef STANDARD_MACROS_SEEN
-#define STANDARD_MACROS_SEEN   (1)
-#define _LIBC_NAMESPACE_H_   (1)
-#define _LIBC_SYMBOLS_H   (1)
-#define _LIBC_SYMBOLS_H_   (1)
-#define _ANSIDECL_H   (1)
-#define _ANSIDECL_H_   (1)
-#define __EA_INTERNAL_H   (1)
-#define SYSTEMGNU_H   (1)
-#define _SYSTEMGNU_H_   (1)
-#define _SYS_CDEFS_ELF_H_   (1)
-#define _SYS_CDEFS_H   (1)
-#define _SYS_CDEFS_H_   (1)
-#define _BSD_SYS_CDEFS_H_   (1)
-#define _MACHINE_CDEFS_H_   (1)
-#define _MIPS_CDEFS_H_   (1)
-#define DEFS_H_   (1)
-#define _WINDEF_   (1)
-#define _WINDEF_H_   (1)
-#define _FBSD_COMPAT_H_  (1)
-#define __FBSD_COMPAT__H   (1)
-#define __FBSD_COMPAT__H_   (1)
-#define __NBSD_COMPAT__H   (1)
-#define __NBSD_COMPAT__H_   (1)
-#define __NETBSD_COMPAT_DEFS_H__   (1)
-#define _SHLIB_COMPAT_H   (1)
-#define _KLIBC_EXTERN_H   (1)
-#define _KLIBC_COMPILER_H   (1)
-#define _INC_MINMAX   (1)
-#define _INC_CRTDEFS_MACRO   (1)
-#define _YVALS   (1)
-
-
-#ifdef COMPILER_GNU_GCC  // Hard-code some optimizations
-#   pragma GCC optimize (3)
-#   pragma GCC optimize ("unroll-loops")
-/** ivdep: Vectorize loops */
-#   define __IVDEP__
-#elif defined(COMPILER_CLANG)
-#   pragma clang optimize on
-#elif defined(COMPILER_INTEL)
-#   pragma intel optimization_level 3
-#endif
-
-
-// C++ MACROS
-
-#undef __P
-#if (defined(__STDC__) || IS_CPLUSPLUS)
-/** Handle function prototypes (ANSI C or K&R C) */
-#   define __P(protos)   protos  // ANSI C prototypes
-#else
-/** Handle function prototypes (ANSI C or K&R C) */
-#   define __P(protos)   ()  // K&R C preprocessor
-#endif
-#ifdef __v810__
-#   define const
-#endif
-// Support ANSI and non-ANSI environments (<_ansi.h>)
-#if _HAVE_STDC
-#   define _PTR   void*
-#   define _AND    ,
-#   define _NOARGS   void
-#   define _CONST   const
-#   define _VOLATILE   volatile
-#   define _SIGNED   signed
-#   define _DOTS   , ...
-#   define _VOID   void
-#   define __const   const
-#   define __signed   signed
-#   ifndef __volatile
-#      define __volatile   volatile
-#   endif
-#   if ((IS_CPLUSPLUS || defined(COMPILER_PCC)) && (!defined(__inline)))
-#      define __inline   inline
-#   elif (IS_NOT_GNUC && (!defined(__inline)))
-#      define __inline
-#   endif
-#   define _DEFUN(name, arglist, args)   name(args)
-#   define _DEFUN_VOID(name)   name(_NOARGS)
-#   define _CAST_VOID   (void)
-#   ifndef _PARAMS
-#      define _PARAMS(paramlist)    paramlist
-#   endif
-#else  // Not _HAVE_STDC
-#   if IS_NOT_GNUC
-#      ifndef __const
-#         define __const
-#      endif
-#      ifndef __inline
-#         define __inline
-#      endif
-#      ifndef __signed
-#         define __signed
-#      endif
-#      ifndef __volatile
-#         define __volatile
-#      endif
-#   elif (!defined(NO_ANSI_KEYWORDS))
-#      define const   __const
-#      define inline   __inline
-#      define signed   __signed
-#      define volatile   __volatile
-#   endif
-#   define _PTR   char*
-#   define _AND   ;
-#   define _NOARGS
-#   define _CONST
-#   define _VOLATILE
-#   define _SIGNED
-#   define _DOTS
-#   define _VOID   void
-#   define _EXFUN(name, proto)   name()
-#   define _EXFUN_NOTHROW(name, proto)   name()
-#   define _DEFUN(name, arglist, args)   name arglist args;
-#   define _DEFUN_VOID(name)   name()
-#   define _CAST_VOID
-#   ifndef _PARAMS
-#      define _PARAMS(paramlist)
-#   endif
-#endif  // ANSI
-#ifndef CONSTANT
-#   define CONSTANT   const
-#endif
-#ifndef CONST
-#   define CONST   const
-#endif
-#ifndef __writeonly
-#   define __writeonly   const
-#endif
-#ifndef __gmp_const
-#   define __gmp_const   const
-#endif
-#define tSCC   static const char
-#define tCC   const char
-#define tSC   static char
-#ifdef LINTER_AUDIT
-/** Used for internal auditing of the NetBSD source tree */
-#   define __aconst   const
-#else
-/** Used for internal auditing of the NetBSD source tree */
-#   define __aconst
-#endif
-#ifndef aconst
-/** Used for internal auditing of the NetBSD source tree */
-#   define aconst   __aconst
-#endif
-#if IS_NOT_CPLUSPLUS
-#   define __static_cast(x, y)   (x)y
-#   define __CAST(__dt, __st)   ((__dt)(__st))
-/** Perform the declaration with C linkage */
-#   define _GL_EXTERN_C
-#   ifndef __BEGIN_DECLS
-#      define __BEGIN_DECLS
-#   endif
-#   ifndef __END_DECLS
-#      define __END_DECLS
-#   endif
-#   ifndef __BEGIN_EXTERN_C
-#      define __BEGIN_EXTERN_C
-#   endif
-#   ifndef __END_EXTERN_C
-#      define __END_EXTERN_C
-#   endif
-#   define __BEGIN_NAMESPACE_STD
-#   define __END_NAMESPACE_STD
-#   define __USING_NAMESPACE_STD(name)
-#   define __BEGIN_NAMESPACE_C99
-#   define __END_NAMESPACE_C99
-#   define __USING_NAMESPACE_C99(name)
-#else  // C++ needs to know that types and declarations are C, not C++
-#   define __static_cast(x, y)   static_cast<x>(y)
-#   define __CAST(__dt, __st)   static_cast<__dt>(__st)
-/** Perform the declaration with C linkage */
-#   define _GL_EXTERN_C   extern "C"
-#   ifndef __BEGIN_DECLS
-#      define __BEGIN_DECLS   extern "C" {
-#   endif
-#   ifndef __END_DECLS
-#      define __END_DECLS   }
-#   endif
-#   ifndef __BEGIN_EXTERN_C
-#      define __BEGIN_EXTERN_C   extern "C" {
-#   endif
-#   ifndef __END_EXTERN_C
-#      define __END_EXTERN_C   }
-#   endif
-#   ifndef __BEGIN_NAMESPACE_STD
-/** C++ standard namespace */
-#      define __BEGIN_NAMESPACE_STD   namespace std {
-/** End of C++ standard namespace */
-#      define __END_NAMESPACE_STD   }
-#      define __USING_NAMESPACE_STD(name)   using std::name;
-#      define __BEGIN_NAMESPACE_C99   namespace __c99 {
-#      define __END_NAMESPACE_C99   }
-#      define __USING_NAMESPACE_C99(name)   using __c99::name;
-#   endif  // __BEGIN_NAMESPACE_STD
-#endif  // IS_NOT_CPLUSPLUS
-#define _EXTERN_C   __BEGIN_DECLS
-#define _END_EXTERN_C   __END_DECLS
-#if (IS_CPLUSPLUS && (!defined(EXPORTED_CONST)))
-#   define EXPORTED_CONST   extern const
-#elif (!defined(EXPORTED_CONST))
-#   define EXPORTED_CONST   const
-#endif
-#ifdef COMPILER_GNU_GCC  // __BEGIN_PUBLIC_DECLS
-#   define __BEGIN_PUBLIC_DECLS   _Pragma("GCC visibility push(default)") __BEGIN_EXTERN_C
-#   define __END_PUBLIC_DECLS   __END_EXTERN_C _Pragma("GCC visibility pop")
-#   define __BEGIN_HIDDEN_DECLS   _Pragma("GCC visibility push(hidden)") __BEGIN_EXTERN_C
-#   define __END_HIDDEN_DECLS   __END_EXTERN_C _Pragma("GCC visibility pop")
-#elif defined(COMPILER_CLANG)
-#   define __BEGIN_PUBLIC_DECLS   _Pragma("clang visibility push(default)") __BEGIN_EXTERN_C
-#   define __END_PUBLIC_DECLS   __END_EXTERN_C _Pragma("clang visibility pop")
-#   define __BEGIN_HIDDEN_DECLS   _Pragma("clang visibility push(hidden)") __BEGIN_EXTERN_C
-#   define __END_HIDDEN_DECLS   __END_EXTERN_C _Pragma("clang visibility pop")
-#else
-#   define __BEGIN_PUBLIC_DECLS   __BEGIN_EXTERN_C
-#   define __END_PUBLIC_DECLS   __END_EXTERN_C
-#   define __BEGIN_HIDDEN_DECLS   __BEGIN_EXTERN_C
-#   define __END_HIDDEN_DECLS   __END_EXTERN_C
-#endif
-#ifndef __CASTV
-#   define __CASTV(__dt, __st)   __CAST(__dt, __CAST(void*, __st))
-#endif
-#ifndef CASTV
-#   define CASTV(__dt, __st)   __CAST(__dt, __CAST(void*, __st))
-#endif
-#ifndef __CASTCV
-#   define __CASTCV(__dt, __st)   __CAST(__dt, __CAST(const void*, __st))
-#endif
-#ifndef CASTCV
-#   define CASTCV(__dt, __st)   __CAST(__dt, __CAST(const void*, __st))
-#endif
-#ifndef __cast__
-#   define __cast__(_to)
-#endif
-#ifndef __CAST_AWAY_QUALIFIER
-/** This macro casts away the qualifier from the variable; Note: Use at your own risk, removing qualifiers can result in catastrophic run-time failures */
-#   define __CAST_AWAY_QUALIFIER(variable, qualifier, type)   type (long)variable
-#endif
-#ifndef CAST_AWAY_QUALIFIER
-/** This macro casts away the qualifier from the variable; Note: Use at your own risk, removing qualifiers can result in catastrophic run-time failures */
-#   define CAST_AWAY_QUALIFIER(variable, qualifier, type)   type (long)variable
-#endif
-#if IS_CPLUSPLUS
-#   define __THROW   throw()
-#   define __THROWNL   throw()
-#   define __NTH(fct)   fct throw()
-#else  // C
-#   define __THROW
-#   define __THROWNL
-#   define __NTH(fct)   fct
-#endif
-#if (IS_CPLUSPLUS && IS_GNUC)  // _NOTHROW
-#   define _NOTHROW   __attribute__((__nothrow__))
-#else
-#   define _NOTHROW
-#endif
-
-
-// LANGUAGE CONSTRUCTS
-
-/** Create a temporary variable for use in macros */
-#define tmpmvar   CONCAT(tmp_macros_var_, __LINE__)
-/** Create a temporary variable for use in macros */
-#define tmp1var   CONCAT(tmp_macros_var1_, __LINE__)
-/** Create a temporary variable for use in macros */
-#define tmp2var   CONCAT(tmp_macros_var2_, __LINE__)
-/** Create a temporary variable for use in macros */
-#define tmp3var   CONCAT(tmp_macros_var3_, __LINE__)
-/** A forever-running while-loop until `break` */
-#define until_break   while (1)
-/** A forever-running for-loop */
-#define loop_forever   for (;;)
-/** Run the for-loop on every value inclusively in the specified range */
-#define for_each(var, array_name, len)   register size_t tmpmvar; for (tmpmvar = 0, var = array_name[0]; ((len > 0) && (tmpmvar < len) && (var = array_name[tmpmvar])); tmpmvar++)
-/** Run the for-loop on every value inclusively in the specified range */
-#define for_range(var, low, high)   for (var = low; ((high > low) && (var <= high)); var++)
-/** Run the for-loop on every value exclusively in the specified range */
-#define for_between(var, low, high)   for (var = (low + 1); ((high > low) && (var < high)); var++)
-/** Run the for-loop on every value inclusively in the specified range counting down from `start` and ending at `stop` */
-#define for_countdown(var, start, stop)   for (var = start; ((start > stop) && (var >= stop)); var--)
-/** Test if `test_val` is inclusively within the specified values */
-#define inrange(test_val, low, high)   ((high > low) && (test_val >= low) && (test_val <= high))
-/** Outputs `typedef struct NAME_s NAME_t;` which will create a datatype based on the named struct */
-#define DECLARE_STRUCT_TYPE(name)   typedef struct name name ## _t
-
-
-// GENERIC KEYWORD
-
-/** @defgroup Generic_Keyword Macros pertaining to the `Generic` keyword
-@{ */  // (FB){
-
-#ifndef Generic
-/** Alias for "_Generic" on systems that lack "Generic" */
-#   define Generic    _Generic
-#endif
-#define IS_CHAR(x)   Generic ((x), signed char: 1, unsigned char: 1, default: 0)
-#define IS_STRING(x)   Generic ((x), const char*: 1, const signed char*: 1, const unsigned char*: 1, char* const: 1, signed char* const: 1, unsigned char* const: 1, const char* const: 1, const signed char* const: 1, const unsigned char* const: 1, char*: 1, signed char*: 1, unsigned char*: 1, default: 0)
-#define IS_SHORT(x)   Generic ((x), short: 1, unsigned short: 1, default: 0)
-#define IS_INT(x)   Generic ((x), int: 1, unsigned int: 1, default: 0)
-#define IS_LONG(x)   Generic ((x), long: 1, unsigned long: 1, default: 0)
-#define IS_LONG_LONG(x)   Generic ((x), long long: 1, unsigned long long: 1, default: 0)
-#if SUPPORTS_FLOAT16
-#   define IS_FLT16(x)   Generic ((x), float16: 1, default: 0)
-#   define _IS_SCALAR_FLOAT16_   float16: 1,
-#   define _TYPENAME_FLOAT16_   float16: "float16",
-#else
-#   define IS_FLT16(x)   0
-#   define _IS_SCALAR_FLOAT16_
-#   define _TYPENAME_FLOAT16_
-#endif
-#define IS_FLT(x)   Generic ((x), float: 1, default: 0)
-#define IS_DBL(x)   Generic ((x), double: 1, default: 0)
-#if SUPPORTS_LONG_DOUBLE
-#   define IS_LDBL(x)   Generic ((x), long double: 1, default: 0)
-#   define _IS_SCALAR_LONG_DOUBLE_   long double: 1,
-#   define _TYPENAME_LONG_DOUBLE_   long double: "long double",
-#else
-#   define IS_LDBL(x)   0
-#   define _IS_SCALAR_LONG_DOUBLE_
-#   define _TYPENAME_LONG_DOUBLE_
-#endif
-#if (SUPPORTS_FLOAT128 && (!LDBL_EQ_FLOAT128))
-#   define IS_FLT128(x)   Generic ((x), float128: 1, default: 0)
-#   define _IS_SCALAR_FLOAT128_   float128: 1,
-#   define _TYPENAME_FLOAT128_   float128: "float128",
-#elif LDBL_EQ_FLOAT128
-#   define IS_FLT128(x)   IS_LDBL(x)
-#   define _IS_SCALAR_FLOAT128_
-#   define _TYPENAME_FLOAT128_
-#else
-#   define IS_FLT128(x)   0
-#   define _IS_SCALAR_FLOAT128_
-#   define _TYPENAME_FLOAT128_
-#endif
-#define IS_BINFLT(x)   (IS_FLT(x) || IS_DBL(x) || IS_LDBL(x) || IS_FLT16(x) || IS_FLT128(x))
-#if SUPPORTS_DECIMAL_FLOATS
-#   define IS_DEC32(x)   Generic ((x), decimal32: 1, default: 0)
-#   define IS_DEC64(x)   Generic ((x), decimal64: 1, default: 0)
-#   define _IS_SCALAR_DECIMAL_FLOAT_   decimal32: 1, decimal64: 1,
-#   define _TYPENAME_DECIMAL_FLOAT_   decimal32: "decimal32", decimal64: "decimal64",
-#else
-#   define _IS_SCALAR_DECIMAL_FLOAT_
-#   define _TYPENAME_DECIMAL_FLOAT_
-#endif
-#if SUPPORTS_DECIMAL128
-#   define IS_DEC128(x)   Generic ((x), decimal128: 1, default: 0)
-#   define IS_DEC(x)   (IS_DEC32(x) || IS_DEC64(x) || IS_DEC128(x))
-#   define IS_REAL(x)   (IS_BINFLT(x) || IS_DEC(x))
-#   define _IS_SCALAR_DECIMAL128_   decimal128: 1,
-#   define _TYPENAME_DECIMAL128_   decimal128: "decimal128",
-#elif SUPPORTS_DECIMAL_FLOATS
-#   define IS_DEC(x)   (IS_DEC32(x) || IS_DEC64(x))
-#   define IS_REAL(x)   (IS_BINFLT(x) || IS_DEC(x))
-#   define _IS_SCALAR_DECIMAL128_
-#   define _TYPENAME_DECIMAL128_
-#else
-#   define IS_REAL(x)   IS_BINFLT(x)
-#   define _IS_SCALAR_DECIMAL128_
-#   define _TYPENAME_DECIMAL128_
-#endif
-#if SUPPORTS_COMPLEX
-#   define IS_CXFLT(x)   Generic ((x), complex_float: 1, default: 0)
-#   define IS_CXDBL(x)   Generic ((x), complex_double: 1, default: 0)
-#   define _IS_SCALAR_COMPLEX_   complex_float: 1, complex_double: 1,
-#   define _TYPENAME_COMPLEX_   complex_float: "complex_float", complex_double: "complex_double",
-#else
-#   define _IS_SCALAR_COMPLEX_
-#   define _TYPENAME_COMPLEX_
-#endif
-#if SUPPORTS_COMPLEX_LDBL
-#   define IS_CXLDBL(x)   Generic ((x), complex_long_double: 1, default: 0)
-#   define IS_CX(x)   (IS_CXFLT(x) || IS_CXDBL(x) || IS_CXLDBL(x))
-#   define IS_CMPLX(x)   IS_CX(x)
-#   define IS_FP(x)   (IS_REAL(x) || IS_CMPLX(x))
-#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_   complex_long_double: 1,
-#   define _TYPENAME_COMPLEX_LONG_DOUBLE_   complex_long_double: "complex_long_double",
-#elif SUPPORTS_COMPLEX
-#   define IS_CX(x)   (IS_CXFLT(x) || IS_CXDBL(x))
-#   define IS_CMPLX(x)   IS_CX(x)
-#   define IS_FP(x)   (IS_REAL(x) || IS_CMPLX(x))
-#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_
-#   define _TYPENAME_COMPLEX_LONG_DOUBLE_
-#else
-#   define IS_FP(x)   IS_REAL(x)
-#   define _IS_SCALAR_COMPLEX_LONG_DOUBLE_
-#   define _TYPENAME_COMPLEX_LONG_DOUBLE_
-#endif
-#if SUPPORTS_STDFIX
-#   define IS_ACCUM(x)   Generic ((x), _Accum: 1, _Sat _Accum: 1, default: 0)
-#   define IS_FRACT(x)   Generic ((x), _Fract: 1, _Sat _Fract: 1, default: 0)
-#   define IS_SAT(x)   Generic ((x), _Sat _Accum: 1, _Sat _Fract: 1, default: 0)
-#   define _IS_ACCUM_   _Accum: 1,
-#   define _IS_FRACT_   _Fract: 1,
-#   define _IS_SAT_   _Sat _Accum: 1, _Sat _Fract: 1,
-#   define _IS_STDFIX_   _IS_ACCUM_ _IS_FRACT_ _IS_SAT_
-#   define _TYPENAME_ACCUM_   _Accum: "_Accum",
-#   define _TYPENAME_FRACT_   _Fract: "_Fract",
-#   define _TYPENAME_SAT_   _Sat _Accum: "_Sat _Accum", _Sat _Fract: "_Sat _Fract",
-#   define _TYPENAME_STDFIX_   _Accum: "_Accum", _Sat _Accum: "_Sat _Accum", _Fract: "_Fract", _Sat _Fract: "_Sat _Fract",
-#else
-#   define IS_ACCUM(x)
-#   define IS_FRACT(x)
-#   define IS_SAT(x)
-#   define _IS_ACCUM_
-#   define _IS_FRACT_
-#   define _IS_SAT_
-#   define _IS_STDFIX_
-#   define _TYPENAME_ACCUM_
-#   define _TYPENAME_FRACT_
-#   define _TYPENAME_SAT_
-#   define _TYPENAME_STDFIX_
-#endif
-#define is_scalar(type)   Generic ((type), \
-	signed char: 1, \
-	unsigned char: 1, \
-	short: 1, \
-	unsigned short: 1, \
-	int: 1, \
-	unsigned int: 1, \
-	long: 1, \
-	unsigned long: 1, \
-	long long: 1, \
-	unsigned long long: 1, \
-	_IS_SCALAR_FLOAT16_ \
-	float: 1, \
-	double: 1, \
-	_IS_SCALAR_LONG_DOUBLE_ \
-	_IS_SCALAR_FLOAT128_ \
-	_IS_SCALAR_DECIMAL_FLOAT_ \
-	_IS_SCALAR_DECIMAL128_ \
-	_IS_SCALAR_COMPLEX_ \
-	_IS_SCALAR_COMPLEX_LONG_DOUBLE_ \
-	_IS_STDFIX_ \
-	default: 0 \
-)
-/** Return the datatype of the given variable */
-#define typename(type)   Generic ((type), \
-	signed char: "signed char", \
-	unsigned char: "unsigned char", \
-	short: "short", \
-	unsigned short: "unsigned short", \
-	int: "int", \
-	unsigned int: "unsigned int", \
-	long: "long", \
-	unsigned long: "unsigned long", \
-	long long: "long long", \
-	unsigned long long: "unsigned long long", \
-	_TYPENAME_FLOAT16_ \
-	float: "float", \
-	double: "double", \
-	_TYPENAME_LONG_DOUBLE_ \
-	_TYPENAME_FLOAT128_ \
-	_TYPENAME_DECIMAL_FLOAT_ \
-	_TYPENAME_DECIMAL128_ \
-	_TYPENAME_COMPLEX_ \
-	_TYPENAME_COMPLEX_LONG_DOUBLE_ \
-	_TYPENAME_STDFIX_ \
-	char*: "pointer to char", \
-	signed char*: "pointer to signed char", \
-	unsigned char*: "pointer to unsigned char", \
-	const char*: "pointer to char const", \
-	const signed char*: "pointer to signed char const", \
-	const unsigned char*: "pointer to unsigned char const", \
-	char* const: "const pointer to char", \
-	signed char* const: "const pointer to signed char", \
-	unsigned char* const: "const pointer to unsigned char", \
-	const char* const: "const pointer to char const", \
-	const signed char* const: "const pointer to signed char const", \
-	const unsigned char* const: "const pointer to unsigned char const", \
-	int*: "pointer to int", \
-	unsigned int*: "pointer to unsigned int", \
-	const int*: "pointer to int const", \
-	const unsigned int*: "pointer to unsigned int const", \
-	int* const: "const pointer to int", \
-	unsigned int* const: "const pointer to unsigned int", \
-	const int* const: "const pointer to int const", \
-	const unsigned int* const: "const pointer to unsigned int const", \
-	void*: "pointer to void", \
-	default: "other" \
-)
-/** Return the datatype of the given variable */
-#define get_type(type)   typename(type)
-
-/** @} */  // }
-
-
-// ASM KEYWORD
-
-/** @defgroup Asm_Keyword Macros pertaining to the `asm` keyword
-@{ */  // (FB){
-
-#if IS_LINTER
-#   define asm    /*@i@*/  //
-#   define __asm__    /*@i@*/  //
-#elif IS_NOT_GNUC
-#   define __asm__    asm
-#elif IS_GNUC
-#   define asm    __asm__
-#endif
-#define __asm    asm
-#if IS_LINTER
-#   define vasm(...)    /*@i@*/  //
-#else
-#   define vasm(...)   asm volatile (__VA_ARGS__)
-#endif
-#ifndef __USER_LABEL_PREFIX__
-#   define __USER_LABEL_PREFIX__   _
-#endif
-#ifndef USER_LABEL_PREFIX
-#   define USER_LABEL_PREFIX   __USER_LABEL_PREFIX__
-#endif
-#ifdef __REGISTER_PREFIX__
-#   define __REG_PREFIX__   __REGISTER_PREFIX__
-#else
-/** Assembly register prefix */
-#   define __REG_PREFIX__   %%
-/** Assembly register prefix */
-#   define __REGISTER_PREFIX__   %%
-#endif
-#ifndef __SYMBOL_PREFIX
-#   define __SYMBOL_PREFIX
-#endif
-#ifndef C_SYMBOL_NAME
-#   define C_SYMBOL_NAME(name)   name
-#endif
-#ifdef HAVE_SECTION_QUOTES
-#   define __sec_comment   "\"\n\t#\""
-#else
-#   define __sec_comment   "\n\t#"
-#endif
-#ifndef MODULE_NAME
-#   define MODULE_NAME   "libc"
-#endif
-/** The symbol used to separate assembly commands */
-#define ASM_LINE_SEP   ;
-#define __CLOBBER_CC   : "cc"
-#define CLOBBER_CC   : "cc"
-#define __AND_CLOBBER_CC   , "cc"
-#define AND_CLOBBER_CC   , "cc"
-#define ASM_GLOBAL_DIRECTIVE   .global
-/** Use the correct prefix for global labels */
-#define SYM(sym)   CONCAT(__USER_LABEL_PREFIX__, sym)
-/** Use the correct prefix for registers */
-#define REG(sym)   CONCAT(__REG_PREFIX__, sym)
-#define __ASMNAME2(prefix, sym)   __STRING(prefix) sym
-#define __ASMNAME(sym)   __ASMNAME2(__USER_LABEL_PREFIX__, sym)
-#define __REDIRECT(sym, proto, aliasname)   sym proto asm (__ASMNAME(#aliasname))
-#if IS_CPLUSPLUS
-#   define __REDIRECT_NTH(sym, proto, aliasname)   sym proto __THROW asm (__ASMNAME(#aliasname))
-#   define __REDIRECT_NTHNL(sym, proto, aliasname)   sym proto __THROWNL asm (__ASMNAME(#aliasname))
-#else
-#   define __REDIRECT_NTH(sym, proto, aliasname)   sym proto asm (__ASMNAME(#aliasname)) __THROW
-#   define __REDIRECT_NTHNL(sym, proto, aliasname)    sym proto asm (__ASMNAME(#aliasname)) __THROWNL
-#endif
-
-/** @} */  // }
-
-
-// SIZEOF KEYWORD & MACROS
-
-/** @defgroup Sizeof_Keyword Macros pertaining to the `sizeof` keyword
-@{ */  // (FB){
-
-/** The type of sizeof may be (unsigned) long on some systems; Use the following macro for getting datatype sizes when expecting sizeof to return an int */
-#define usizeof(datatype)   ((unsigned)sizeof(datatype))
-#define __sizeof__(OBJECT)   sizeof((OBJECT))
-#define __sizeof(OBJECT)   sizeof((OBJECT))
-#define _sizeof(OBJECT)   sizeof((OBJECT))
-/** Return the number of bits used by the given datatype */
-#define _TYPEBITS(datatype)   (sizeof(datatype) * NBBY)
-/** Return the number of bits used by the given datatype */
-#define TYPEBITS(datatype)   _TYPEBITS(datatype)
-/** Return the number of bits used by the given datatype */
-#define TYPE_BIT(datatype)   _TYPEBITS(datatype)
-/** Calculate the minimum signed integer value that can be represented with the given data */
-#define __type_min_s(t)   ((t)((t)1 << ((sizeof(t) * NBBY) - 1)))
-/** Calculate the minimum signed integer value that can be represented with the given data */
-#define type_min_s(t)   __type_min_s(t)
-/** Calculate the maximum signed integer value that can be represented with the given data */
-#define __type_max_s(t)   ((((t)1 << (sizeof(t) * NBBY - 2)) - 1) * 2 + 1)
-/** Calculate the maximum signed integer value that can be represented with the given data */
-#define type_max_s(t)   __type_max_s(t)
-/** Calculate the minimum unsigned integer value that can be represented with the given data */
-#define __type_min_u(t)   (0)
-/** Calculate the minimum unsigned integer value that can be represented with the given data */
-#define type_min_u(t)   (0)
-/** Calculate the maximum unsigned integer value that can be represented with the given data */
-#define __type_max_u(t)   ((t)~(t)0)
-/** Calculate the maximum unsigned integer value that can be represented with the given data */
-#define type_max_u(t)   __type_max_u(t)
-/** Test if the given data is signed */
-#define issigned(t)   (((t) <= 0 && (t) != 0) || ((t) == 0 && ((~(t)) < 8)) || ((-(t)) < ((t) * 0)))
-/** Test if the given datatype is signed */
-#define __type_is_signed(t)   (((t)(-1)) < ((t)4))
-/** Test if the given datatype is signed */
-#define type_is_signed(t)   __type_is_signed(t)
-/** Return true if the datatype is signed */
-#define TYPE_SIGNED(t)   __type_is_signed(t)
-/** Calculate the minimum integer value that can be represented with the given datatype */
-#define __type_min(t)   (__type_is_signed(t) ? __type_min_s(t) : (t)0)
-/** Calculate the minimum integer value that can be represented with the given datatype */
-#define type_min(t)   __type_min(t)
-/** Calculate the maximum integer value that can be represented with the given datatype */
-#define __type_max(t)   (__type_is_signed(t) ? __type_max_s(t) : ((t)~((t)0)))
-/** Calculate the maximum integer value that can be represented with the given datatype */
-#define type_max(t)   __type_max(t)
-/** Test if the given datatype is a native datatype (by size) */
-#define __native_word(t)   (sizeof(t) == SIZEOF_CHAR || sizeof(t) == SIZEOF_SHORT || sizeof(t) == SIZEOF_INT || sizeof(t) == SIZEOF_LONG || sizeof(t) == SIZEOF_LONG_LONG)
-/** Test if the given datatype is a native datatype (by size) */
-#define is_native_word(x)   __native_word(x)
-#define __type_mask(t)   ((sizeof(t) < SIZEOF_INTMAX_T) ? (~((1ULL << (sizeof(t) * NBBY)) - 1)) : 0ULL)
-#define type_mask(t)   __type_mask(t)
-/** Return the length of a constant string */
-#define constant_strlen(x)   (sizeof(x) - sizeof(""))
-/** Return the length of a constant string */
-#define CONSTANT_STRLEN(x)   (sizeof(x) - sizeof(""))
-/** Return the length of a constant wide-string */
-#define constant_wstrlen(x)   (sizeof(x) - sizeof(L""))
-/** Return the length of a constant wide-string */
-#define CONSTANT_WSTRLEN(x)   (sizeof(x) - sizeof(L""))
-/** Return the length of a constant unicode string */
-#define constant_ustrlen(x)   (sizeof(x) - sizeof(U""))
-/** Return the length of a constant unicode string */
-#define CONSTANT_USTRLEN(x)   (sizeof(x) - sizeof(U""))
-
-/** @} */  // }
-
-
-// TYPEOF KEYWORD
-
-/** @defgroup Typeof_Keyword Macros pertaining to the `typeof` keyword
-@{ */  // (FB){
-
-#if SUPPORTS_TYPEOF
-#   define typeof(OBJECT)   __typeof__(OBJECT)
-#   define __typeof(OBJECT)   __typeof__(OBJECT)
-#elif IS_NOT_GNUC
-#   define __typeof__(OBJECT)   typeof(OBJECT)
-#   define __typeof(OBJECT)   typeof(OBJECT)
-#else
-#   define __typeof__(OBJECT)
-#   define __typeof(OBJECT)
-#   define typeof(OBJECT)
-#endif
-#define _typeof(OBJECT)   __typeof(OBJECT)
-/** Alias for "typeof" */
-#define GetType(OBJECT)   typeof(OBJECT)
-/** `1` if 'type' is a pointer type, `0` otherwise */
-#define __pointer_type(type)   (__builtin_classify_type((type)0) == 5)
-/** `1` if 'type' is a pointer type, `0` otherwise */
-#define pointer_type(type)   __pointer_type(type)
-/** `1` if 'data' is a pointer type, `0` otherwise */
-#define is_pointer(data)   (__builtin_classify_type(data) == 5)
-/** `1` if 'data' is an array, `0` otherwise */
-#define is_array(data)   (__builtin_classify_type(data) == array_type_class)
-/** `1` if 'data' is an union, `0` otherwise */
-#define is_union(data)   (__builtin_classify_type(data) == union_type_class)
-/** Test if the value is negative */
-#define __negative_p(x)   ((x) < 0)
-/** Test if the value is negative */
-#define is_negative(x)   ((x) < 0)
-/** Test if the value is positive */
-#define is_positive(x)   ((x) >= 0)
-/** Return true if value 'a' fits in the unsigned type 't' */
-#define __type_fit_u(t, a)   (is_positive(a) && (__UINTMAX_TYPE__)((unsigned long long)(a) + __zeroull()) <= (__UINTMAX_TYPE__)__type_max_u(t))
-/** Return true if value 'a' fits in the signed type 't' */
-#define __type_fit_s(t, a)   (is_negative(a) ? ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)__type_min_s(t)) : ((__INTMAX_TYPE__)((a) + __zeroll()) >= (__INTMAX_TYPE__)0 && (__INTMAX_TYPE__)((a) + __zeroll()) <= (__INTMAX_TYPE__)__type_max_s(t)))
-/** Return true if value 'a' fits in type 't' */
-#define __type_fit(t, a)   (__type_is_signed(t) ? __type_fit_s(t, a) : __type_fit_u(t, a))
-
-/** @} */  // }
-
-
-// POINTER CASTS
-
-/** @defgroup Pointer_Casts Macros used to cast pointers between different pointer attribute type
-@{ */  // (FB){
-
-#undef __UNCONST
-/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define __UNCONST(x)   ((void*)(uintptr_t)(x))
-/** Remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define UNCONST(x)   ((void*)(uintptr_t)(x))
-#undef __UNVOLATILE
-/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
-#define __UNVOLATILE(x)   ((void*)(uintptr_t)(x))
-#ifndef UNVOLATILE
-/** Remove the volatile cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors or warnings */
-#   define UNVOLATILE(x)   ((void*)(uintptr_t)(x))
-#endif
-#ifndef __DECONST
-#   define __DECONST(type, var)   ((type)(uintptr_t)(var))
-#endif
-#ifndef DECONST
-#   define DECONST(type, var)   ((type)(uintptr_t)(var))
-#endif
-#ifndef __DEVOLATILE
-#   define __DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
-#endif
-#ifndef DEVOLATILE
-#   define DEVOLATILE(type, var)   ((type)(uintptr_t)(var))
-#endif
-#ifndef __DEQUALIFY
-#   define __DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
-#endif
-#ifndef DEQUALIFY
-#   define DEQUALIFY(type, var)   ((type)(uintptr_t)(var))
-#endif
-/** The following macro is used to remove const cast-away warnings from `-Wcast-qual`; this should be used with caution because it can hide valid errors */
-#define rk_UNCONST(x)   ((void*)(uintptr_t)(x))
-/** Convert a pointer to an integer */
-#define PTR_TO_INT(PTR)   ((size_t)((char*)(PTR) - NULL_CHAR))
-#define HandleToLong(x)   ((long)(intptr_t)((void*)(x)))
-#define HandleToULong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
-#define HandleToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
-#define IntToPtr(x)   ((void*)(intptr_t)((int)(x)))
-#define LongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
-#define LongToPtr(x)   ((void*)(intptr_t)((long)(x)))
-#define PtrToInt(x)   ((int)(intptr_t)((void*)(x)))
-#define PtrToLong(x)   ((long)(intptr_t)((void*)(x)))
-#define PtrToShort(x)   ((short)(intptr_t)((void*)(x)))
-#define PtrToUint(x)   ((unsigned int)(uintptr_t)((void*)(x)))
-#define PtrToUlong(x)   ((unsigned long)(uintptr_t)((void*)(x)))
-#define PtrToUshort(x)   ((unsigned short)(uintptr_t)((void*)(x)))
-#define UIntToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
-#define UintToPtr(x)   ((void*)(uintptr_t)((unsigned int)(x)))
-#define UlongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
-#define ULongToHandle(x)   ((void*)(uintptr_t)((long)(x)))
-#define UlongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
-#define ULongToPtr(x)   ((void*)(uintptr_t)((unsigned long)(x)))
-/** intptr_t if P is true, or T if P is false */
-#define integer_if_pointer_type_sub(T, P)   typeof(*(0 ? (typeof(0 ? (T*)0 : (void*)(P)))0 : (typeof(0 ? (intptr_t*)0 : (void*)(!(P))))0))
-/** intptr_t if P is true, or T if P is false */
-#define __integer_if_pointer_type_sub(T, P)   integer_if_pointer_type_sub((T), (P))
-/** intptr_t if EXPR has a pointer type, or the type of EXPR otherwise */
-#define integer_if_pointer_type(expr)   __integer_if_pointer_type_sub(typeof((typeof(expr))0), __pointer_type(typeof(expr)))
-/** intptr_t if EXPR has a pointer type, or the type of EXPR otherwise */
-#define __integer_if_pointer_type(expr)   integer_if_pointer_type((expr))
-/** Cast an integer or a pointer VAL to integer with proper type */
-#define cast_to_integer(val)   ((__integer_if_pointer_type(val))(val))
-#define __USE(x)   ((void)(x))
-/** Get the address of the object */
-#define ADDRESS_FUNCTION(x)   &(x)
-/** Get the address of the object */
-#define GET_ADDRESS(x)   &(x)
-/** Get the address of a variable and pass it on as a `void*` */
-#define vp_pack(var)   ((void*)&var)
-/** Get a void pointer and dereferences it to the specified datatype */
-#define vp_unpack(var, type)   (*((type*)var))
-/** Ignore the value of an expression when a cast to void does not suffice (in particular, for a call to a function declared with attribute warn_unused_result) */
-#define ignore_value(x)   __extension__ ({ typeof(x) tmpmvar = (x); (void)tmpmvar; })
-/** Return a pointer (void *const*) to the first element of SET */
-#define symbol_set_first_element(set)   ((void* const*)(&__start_ ## set))
-/** Return true if PTR (a void *const*) has been incremented past the last element in SET */
-#define symbol_set_end_p(set, ptr)   ((ptr) >= (void* const*) &__stop_ ## set)
-
-/** @} */  // }
-
-
-// ARRAY SIZES
-
-#define ARRAYLEN(arrayname)   ((sizeof(arrayname) / sizeof(*arrayname)))
-#define ARRAYITEMSIZE(arrayname)   sizeof(*arrayname)
-/** Return the size of a statically-allocated array */
-#define GETARRAYSIZE(arrayname)   sizeof(arrayname)
-/** Return the number of items in a statically-allocated array */
-#define __arraycount(arrayname)   (sizeof(arrayname) / sizeof(arrayname[0]))
-#ifndef nitems
-/** Return the number of items in a statically-allocated array */
-#   define nitems(arrayname)   __arraycount(arrayname)
-#endif
-/** Return the number of items in a statically-allocated array */
-#define nelem(x)   __arraycount(arrayname)
-
-
-// BYTE & BIT OPERATION MACROS
-
-/** Mask for the specified bit within a byte */
-#define byte_mask(bit)   (1 << ((bit) & 7))
-/** Find least significant bit that is set; For example, a return value of "8" indicates that the LSB is in the bit position that represents a decimal value of eight */
-#define FIND_LOWEST_SET_BIT(data)   ((data) & (-(data)))
-/** Find least significant bit that is not set; For example, a return value of "8" indicates that the LSB unset is in the bit position that represents a decimal value of eight */
-#define FIND_LOWEST_UNSET_BIT(data)   ((~(data)) & ((data) + 1))
-/** Extract the bitfield selected by `__mask` from `x` and right-shift the bits so that the rightmost selected bit is at bit 0 */
-#define SHIFTOUT(x, __mask)   (((x) & (__mask)) / FIND_LOWEST_SET_BIT(__mask))
-/** Left-shift bits `x` into the bitfield defined by `__mask` */
-#define SHIFTIN(x, __mask)   ((x) * FIND_LOWEST_SET_BIT(__mask))
-/** Shift the mask towards the LSB until the specified bit (using the original mask) is the LSB */
-#define SHIFTOUT_MASK(__mask)   ((__mask) / FIND_LOWEST_SET_BIT(__mask))
-/** Find least significant bit that is set; For example, a return value of "4" indicates that the fourth bit (bit position representing a decimal value of eight) is the LSB */
-#define find_lowest_set_bit(data)   __extension__ ({ register uint64_t tmp1var = (uint64_t)FIND_LOWEST_SET_BIT(data), tmp2var = (tmp1var == 0 ? 0 : 1); while (tmp1var >>= 1) { ++tmp2var; } tmp2var; })
-/** Create a number with the specified bit set to 1 (set1bit(0) == 1) */
-#define set1bit(data)   (1 << (data))
-/** Set the specified bit position to one (setbit(x, 0) == x|1) */
-#define setbit(x, bit)   ((x) | set1bit(bit))
-/** Set the specified bits to one based on mask */
-#define SETBITS(x, __mask)   ((x) | (__mask))
-/** Create an uintmax_t with the value of the specified bit set */
-#define __BIT(__n)   (((__UINTMAX_TYPE__)(__n) >= BITS_PER_UINTMAX_T) ? 0 : ((__UINTMAX_TYPE__)1 << (__UINTMAX_TYPE__)((__n) & (BITS_PER_UINTMAX_T - 1))))
-/** Create an uintmax_t with the value of the specified bit range set */
-#define __BITS(__m, __n)   ((__BIT(MAX((__m), (__n)) + 1) - 1) ^ (__BIT(MIN((__m), (__n))) - 1))
-/** Bits x through y are set to "1"; Required: x < y */
-#define setbitfield(x, y)   ((set1bit(MAX((x), (y)) + 1) - 1) ^ (set1bit(MIN((x), (y))) - 1))
-/** Unset the specified bit */
-#define unsetbit(x, bit)   ((x) & ~(set1bit(bit)))
-/** Unset the specified bits based on mask */
-#define UNSETBIT(x, __mask)   ((x) & ~(__mask))
-/** Toggle the specified bit */
-#define togglebit(x, bit)   ((x) ^ (set1bit(bit)))
-/** Toggle the specified bits based on mask */
-#define TOGGLEBIT(x, __mask)   ((x) ^ (__mask))
-/** Clear the lowest set bit */
-#define clr_lowest_set_bit(data)   ((data) & ((data) - 1))
-/** Clear the specified bit */
-#define clrbit(x, bit)   ((x) & (~(set1bit(bit))))
-/** Clear the specified bits based on mask */
-#define CLRBIT(x, __mask)   ((x) & ~(__mask))
-/** Test if the specified bit is set */
-#define isset(x, bit)   (!!((x) & (set1bit(bit))))
-/** Test if the specified bits are set based on mask */
-#define ISSET(x, __mask)   (!!((x) & (__mask)))
-/** Test if the specified bit is not set */
-#define isclr(x, bit)   (!!((x) & ~(set1bit(bit))))
-/** Test if the specified bits are not set based on mask */
-#define ISCLR(x, __mask)   (!!((x) & ~(__mask)))
-/** Turn off LSB (set the right-most 1 bit to 0) */
-#define turnofflsb(x)   ((x) & ((x) - 1))
-/** Isolate LSB (right-most 1 bit) */
-#define isolatelsb(x)   ((x) & (-(x)))
-/** Right propagate the rightmost set-bit */
-#define propagatelsb(x)   ((x) | ((x) - 1))
-/** Isolate the rightmost 0-bit */
-#define isolatelsb0bit(x)   ((~(x)) & ((x) + 1))
-/** Set the rightmost 0-bit */
-#define setlsb0bit(x)   ((x) | ((x) + 1))
-/** Preceded byte by `i` 1's (8-bit values only); set_leading_ones_8bit(2) is 11000000 */
-#define set_leading_ones_8bit(i)   (((1 << ((7 - (i)) + 1)) - 1) ^ 255)
-/** Sign EXtend */
-#define sex(x)   (x >> ((NBBY * sizeof(typeof(x))) - 1))
-/** Get the contrast number */
-#define get_contrast_num(x)   ((~x) + 1)
-/** Return the twos complement of the given data */
-#define COMP2(x)   ((~(x)) + 1)
-/** Return the twos complement of the given data */
-#define TWOS_COMPLEMENT(x)   COMP2(x)
-/** Swap odd and even bits */
-#define swap_odd_and_even_bits(x)   ((((x) >> 1) & 0x55555555) | (((x) & 0x55555555) << 1))
-/** Swap consecutive pairs */
-#define swap_consecutive_pairs(x)   ((((x) >> 2) & 0x33333333) | (((x) & 0x33333333) << 2))
-/** Swap nibbles */
-#define swap_nibbles(x)   ((((x) >> 4) & 0x0f0f0f0f) | (((x) & 0x0f0f0f0f) << 4))
-/** Swap bytes */
-#define swap_bytes(x)   ((((x) >> 8) & 0x00ff00ff) | (((x) & 0x00ff00ff) << 8))
-/** Swap 2-byte-long pairs */
-#define swap_2byte_long_pairs(x)   (((x) >> 16) | ((x) << 16))
-/** Reverse the bits in a byte */
-#define reversebyte(x)   ((((x) * 0x0202020202ULL) & 0x010884422010ULL) % 1023)
-/** Return true if the data contains a NULL byte */
-#define has_nullbyte(x)   (((unsigned long)((x) - 0x01010101UL) & (unsigned long)(~(x)) & 0x80808080UL) != 0)
-/** Return true if the data contains a NULL byte */
-#define hasNulByte(x)   has_nullbyte(x)
-/** Return true if the data contains a NULL byte */
-#define hasZeroByte(x)   has_nullbyte(x)
-/** Return true if the data contains a NULL byte */
-#define haszero(x)   has_nullbyte(x)
-/** Return true if the data contains the specified byte */
-#define hasvalue(x, byte)   (haszero((x) ^ ((~0UL) / 255 * (byte))))
-#define __BITMAP_MASK(__t)   (_TYPEBITS(__t) - 1)
-#define __BITMAP_BIT(__n, __v)    (1 << ((__n) & __BITMAP_MASK(*(__v)->_b)))
-#define __BITMAP_SIZE(__t, __n)    (((__n) + (_TYPEBITS(__t) - 1)) / _TYPEBITS(__t))
-#define __BITMAP_TYPE(__s, __t, __n)   struct __s { __t _b[__BITMAP_SIZE(__t, __n)]; }
-#define __BITMAP_SHIFT(__t)   (ilog2(_TYPEBITS(__t)))
-#define __BITMAP_WORD(__n, __v)   ((__n) >> __BITMAP_SHIFT(*(__v)->_b))
-#define __BITMAP_SET(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] |= __BITMAP_BIT(__n, __v))
-#define __BITMAP_CLR(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] &= ~__BITMAP_BIT(__n, __v))
-#define __BITMAP_ISSET(__n, __v)   ((__v)->_b[__BITMAP_WORD(__n, __v)] & __BITMAP_BIT(__n, __v))
-#define __BITMAP_ZERO(__v)   do { register size_t __i; for (__i = 0; __i < __arraycount(__v->_b); __i++) { (__v)->_b[__i] = 0; } } while (0x0)
-/** This code is needed for the optimized mapping functions */
-#define __tobody(c, f, a, args)   __extension__ ({ int __res; if (sizeof(c) > 1) { if (__builtin_constant_p(c)) { int __c = (c); __res = ((__c < (-128) || __c > 255) ? __c : (a)[__c]); } else { __res = f args; } } else { __res = (a)[(int)(c)]; } __res; })
-/** Macro to make it easier to loop over several blocks */
-#define FOR_BLOCKS(length, dst, src, blocksize)   assert(!((length) % (blocksize))); for (; (length); ((length) -= (blocksize), (dst) += (blocksize), (src) += (blocksize)))
-#ifndef Storeinc
-#   define Storeinc(a, b, c)   (*a++ = ((b) << 16) | ((c) & UINT16_MAX))
-#endif
-#define Sign_Extend(a, b)   if ((b) < 0) { a |= 0xffff0000; }
-#define MEMCCPY_ALIGN   (SIZEOF_SIZE_T - 1)
-#define MEMCCPY_ONES   ((size_t)(-1) / UCHAR_MAX)
-#define HASZERO(x)   ((((x) - MEMCCPY_ONES) & (~(x))) & (MEMCCPY_ONES * ((UCHAR_MAX / 2) + 1)))
-#define HASNTZERO(x)   (!((((x) - MEMCCPY_ONES) & (~(x))) & (MEMCCPY_ONES * ((UCHAR_MAX / 2) + 1))))
-#define HASNOTZERO(x)   HASNTZERO((x))
-#define HASNOZERO(x)   HASNTZERO((x))
-#define BITOP(a, b, op)   ((a)[(size_t)(b) / (NBBY * sizeof(*(a)))] op (size_t)1 << ((size_t)(b) % (NBBY * sizeof(*(a)))))
-/** Byte of the bitstring containing the bit */
-#define bit_byte(bit)   ((bit) >> 3)
-/** Bytes in a bitstring of nbits bits */
-#define bitstr_size(nbits)   (((nbits) + 7) >> 3)
-/** Allocate a bitstring */
-#define bit_alloc(nbits)   (bitstr_t*)calloc((size_t)bitstr_size(nbits), SIZEOF_CHAR)
-/** Allocate a bitstring on the stack */
-#define bit_decl(name, nbits)   ((name)[bitstr_size(nbits)])
-/** Is bit N of bitstring name set? */
-#define bit_test(name, bit)   ((name)[bit_byte(bit)] & (byte_mask(bit)))
-/** Set bit N of bitstring name */
-#define bit_set(name, bit)   ((name)[bit_byte(bit)] |= (byte_mask(bit)))
-/** Clear bit N of bitstring name */
-#define bit_clear(name, bit)   ((name)[bit_byte(bit)] &= (~byte_mask(bit)))
-/** Clear bits start ... stop in bitstring */
-#define bit_nclear(name, start, stop)   do { bitstr_t* _name = name; register int _start = start, _stop = stop; while (_start <= _stop) { bit_clear(_name, _start); ++_start; } } while (0x0)
-/** Set bits from `start` to `stop` in bitstring */
-#define bit_nset(name, start, stop)   do { bitstr_t* _name = name; register int _start = start, _stop = stop; while (_start <= _stop) { bit_set(_name, _start); ++_start; } } while (0x0)
-/** Find first bit clear in name */
-#define bit_ffc(name, nbits, value)   do { bitstr_t* _name = name; register int _bit, _nbits = nbits, _value = -1; for (_bit = 0; _bit < _nbits; ++_bit) { if (!bit_test(_name, _bit)) { _value = _bit; break; } } *(value) = _value; } while (0x0)
-/** Find first bit set in name */
-#define bit_ffs(name, nbits, value)   do { bitstr_t* _name = name; register int _bit, _nbits = nbits, _value = -1; for (_bit = 0; _bit < _nbits; ++_bit) { if (bit_test(_name, _bit)) { _value = _bit; break; } } *(value) = _value; } while (0x0)
-
-
-// LOGIC GATES & BASIC MATH MACROS
-
-#if IS_GNUC
-/** Return the absolute value of an integral value */
-#   define abs(x)   __extension__ ({ (((x) >= 0) ? (x) : (-(x))); })
-/** Return the absolute value of the difference between two integral values */
-#   define absdiff(x, y)   __extension__ ({ const auto_type _x = x; const auto_type _y = y; (_x > _y) ? (_x - _y) : (_y - _x); })
-#   define CONSTRAIN(amount, low, high)   __extension__ ({ const auto_type _amount = (amount); const auto_type _low = (low); const auto_type _high = (high); ((_amount) < (_low) ? (_low) : ((_amount) > (_high) ? (_high) : (_amount)))})
-#   ifndef CLAMP
-/** Computes the value of the first specified argument clamped to a range defined by the second and third specified arguments */
-#      define CLAMP(x, low, high)   __extension__ ({ (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x))); })
-#   endif
-#   define _MAX_INT(x, y)   __extension__ ({ (x ^ ((x ^ y) & -(x < y))); })
-#   define _MIN_INT(x, y)   __extension__ ({ (y ^ ((x ^ y) & -(x < y))); })
-#   define MAX(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x > _y) ? _x : _y; })
-#   define MIN(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x > _y) ? _y : _x; })
-#   define SWAP(x, y)   __extension__ ({ const auto_type __tmp = (x); (x) = (y); (y) = __tmp; })
-#   define AND(x, y)  __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x & _y); })
-#   define AND3(x, y, z)  __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); const auto_type _z = (z); ((_x & _y) & _z); })
-#   define OR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x | _y); })
-#   define NOT(x)   __extension__ ({ const auto_type _x = (x); (~_x); })
-#   define NAND(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x & _y); })
-#   define NOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x | _y); })
-#   define XOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); (_x ^ _y); })
-#   define XNOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x ^ _y); })
-#   define NXOR(x, y)   __extension__ ({ const auto_type _x = (x); const auto_type _y = (y); ~(_x ^ _y); })
-#   define mix(a, b, c)    __extension__ ({ \
-	auto_type x = (a); auto_type y = (b); auto_type z = (c); \
-	x -= y; x -= z; x ^= (z >> 13); \
-	y -= z; y -= x; y ^= (x << 8); \
-	z -= x; z -= y; z ^= (y >> 13); \
-	x -= y; x -= z; x ^= (z >> 12); \
-	y -= z; y -= x; y ^= (x << 16); \
-	z -= x; z -= y; z ^= (y >> 5); \
-	x -= y; x -= z; x ^= (z >> 3); \
-	y -= z; y -= x; y ^= (x << 10); \
-	z -= x; z -= y; z ^= (y >> 15); \
-	a = x; b = y; c = z; \
-})
-#   ifndef howmany
-/** Macros for counting how many times y fits in x */
-#      define howmany(x, y)   __extension__ ({ (((x) + ((y) - 1)) / (y)); })
-#   endif
-#   ifndef __ispowerof2
-/** Test if the value is a power of two */
-#      define __ispowerof2(n)   __extension__ ({ (!(((n) - 1) & (n))); })
-#   endif
-/** Test if the value is a power of two */
-#   define powerof2(n)   __extension__ ({ (!(((n) - 1) & (n))); })
-#else
-/** Return the absolute value of an integral value */
-#   define abs(x)   (((x) >= 0) ? (x) : (-(x)))
-/** Return the absolute value of the difference between two integral values */
-#   define absdiff(x, y)   (((x) > (y)) ? ((x) - (y)) : ((y) - (x)))
-#   define CONSTRAIN(amount, low, high)   ((amount) < (low) ? (low) : ((amount) > (high) ? (high) : (amount)))
-#   ifndef CLAMP
-/** Computes the value of the first specified argument clamped to a range defined by the second and third specified arguments */
-#      define CLAMP(x, low, high)   (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
-#   endif
-#   define _MAX_INT(x, y)   (x ^ ((x ^ y) & -(x < y)))
-#   define _MIN_INT(x, y)   (y ^ ((x ^ y) & -(x < y)))
-#   define MAX(x, y)   (((y) > (x)) ? (y) : (x))
-#   define MIN(x, y)   (((y) < (x)) ? (y) : (x))
-#   define SWAP(x, y)   ((y) = (x), (x) = (y))
-#   define AND(x, y)   ((x) & (y))
-#   define AND3(x, y, z)   (((x) & (y)) & (z))
-#   define OR(x, y)   ((x) | (y))
-#   define NOT(x)   (~(x))
-#   define NAND(x, y)   (~((x) & (y)))
-#   define NOR(x, y)   (~((x) | (y)))
-#   define XOR(x, y)   ((x) ^ (y))
-#   define XNOR(x, y)   (~((x) ^ (y)))
-#   define NXOR(x, y)   (~((x) ^ (y)))
-#   define mix(a, b, c)   do { \
-	a -= b; a -= c; a ^= (c >> 13); \
-	b -= c; b -= a; b ^= (a << 8); \
-	c -= a; c -= b; c ^= (b >> 13); \
-	a -= b; a -= c; a ^= (c >> 12); \
-	b -= c; b -= a; b ^= (a << 16); \
-	c -= a; c -= b; c ^= (b >> 5); \
-	a -= b; a -= c; a ^= (c >> 3); \
-	b -= c; b -= a; b ^= (a << 10); \
-	c -= a; c -= b; c ^= (b >> 15); \
-} while (0x0)
-#   ifndef howmany
-/** Macros for counting how many times y fits in x */
-#      define howmany(x, y)   (((x) + ((y) - 1)) / (y))
-#   endif
-#   ifndef __ispowerof2
-/** Test if the value is a power of two */
-#      define __ispowerof2(n)   (!(((n) - 1) & (n)))
-#   endif
-/** Test if the value is a power of two */
-#   define powerof2(n)   (!(((n) - 1) & (n)))
-#endif  // LOGIC GATES, MAX, MIN, ETC. MACROS
-/** Return true if the signs of the two values are opposite */
-#define are_signs_opposite(x, y)   (((x) ^ (y)) < 0)
-#define ORSWAP(x, y)   ((x) |= (y), (x) |= (y), (x) |= (y))
-#define XORSWAP(x, y)   ((x) ^= (y), (x) ^= (y), (x) ^= (y))
-#define MIX(a, b, c)   mix((a), (b), (c))
-/** Return the absolute value of an integral value */
-#define ABS(x)   abs((x), (y))
-#ifndef gnu_abs
-/** Return the absolute value of an integral value */
-#   define gnu_abs(n)    abs((n))
-#endif
-#define constrain(amount, low, high)   CONSTRAIN((amount), (low), (high))
-#define MAXVAL(t, b)    ((t)(((t)1 << ((b) - 1 - TYPE_SIGNED(t))) - 1 + ((t)1 << ((b) - 1 - TYPE_SIGNED(t)))))
-#define MINVAL(t, b)   ((t)(TYPE_SIGNED(t) ? (-(TWOS_COMPLEMENT(b) - MAXVAL(t, b))) : 0))
-#ifndef INT_STRLEN_MAXIMUM
-#   define INT_STRLEN_MAXIMUM(type)   (((TYPE_BIT(type) - TYPE_SIGNED(type)) * 302) / 1000 + 1 + TYPE_SIGNED(type))
-#endif
-/** Round up to the next power-of-2 that is equal-to or less-than the mask */
-#define P2ROUNDUP(x, __mask)   (-(-(x) & (-(__mask))))
-#define P2PHASEUP(x, align, phase)   ((phase) - (((phase) - (x)) & (-(align))))
-#define ROUND_UP_NEXT_128(x)   (((x) + 128) & 128)
-#define ROUND_DOWN_128(x)   ((x) & 128)
-/** Macros to avoid undefined behaviour that can arise if the amount of a shift is exactly equal to the size of the shifted operand */
-#define SAFE_LEFT_SHIFT(op, amt)   (((amt) < (NBBY * sizeof(op))) ? ((op) << (amt)) : 0)
-/** Macros to avoid undefined behaviour that can arise if the amount of a shift is exactly equal to the size of the shifted operand */
-#define SAFE_RIGHT_SHIFT(op, amt)   (((amt) < (NBBY * sizeof(op))) ? ((op) >> (amt)) : 0)
-/** Long zero */
-#define __zerolong()   0L
-/** Long zero */
-#define zerolong()   __zerolong()
-/** Unsigned long zero */
-#define __zeroul()   0UL
-/** Unsigned long zero */
-#define zeroul()   __zeroul()
-/** Long long zero */
-#define __zeroll()   0LL
-/** Long long zero */
-#define zeroll()   __zeroll()
-/** Unsigned long long zero */
-#define __zeroull()   0ULL
-/** Unsigned long long zero */
-#define zeroull()   __zeroull()
-
-
-// FRAME MACROS
-
-#if (IS_GNUC && (!defined(FIRST_FRAME_POINTER)))
-/** Returns the address of the stack frame (return address) of the current function or its caller */
-#   define FIRST_FRAME_POINTER   __builtin_frame_address(0)
-#endif
-#ifndef CURRENT_STACK_FRAME
-/** Get some notion of the current stack */
-#   define CURRENT_STACK_FRAME   __extension__ ({ do { char __csf = '\0'; &__csf; } while (0x0) })
-#endif
-
-
-// INLINE, FORCEINLINE, EXTERN_INLINE, & RELATED INLINE ATTRIBUTES
-
-#if (defined(OSWINDOWS) && defined(COMPILER_MICROSOFT))  // inline & forceinline
-// As of MSVC 2013, inline and restrict are supported with non-standard keywords
-#   ifndef inline
-#      define inline   __inline
-#   endif
-/** Alias for "inline" on systems that lack "__forceinline" */
-#   define __forceinline    inline
-#else
-#   ifndef __inline
-/** Alias for "inline" on systems that lack "__inline" */
-#      define __inline    inline
-#   endif
-#   ifndef __forceinline
-#      if IS_GNUC
-/** Alias for "inline" on systems that lack "__forceinline" */
-#         define __forceinline    inline __attribute__((__always_inline__))
-#      else
-/** Alias for "inline" on systems that lack "__forceinline" */
-#         define __forceinline    inline
-#      endif  // IS_GNUC
-#   endif  // __forceinline
-#endif  // inline & forceinline
-#ifndef INLINE
-/** Alias for "inline" on systems that lack "INLINE" */
-#   define INLINE   inline
-#endif
-#ifndef __inline__
-/** Alias for "inline" on systems that lack "__inline__" */
-#   define __inline__    inline
-#endif
-#ifndef forceinline
-/** Alias for "__forceinline" on systems that lack "forceinline" */
-#   define forceinline   __forceinline
-#endif
-#ifndef __always_inline
-/** Alias for "__forceinline" on systems that lack "__always_inline" */
-#   define __always_inline   __forceinline
-#endif
-#ifndef __header_always_inline
-/** Alias for "__forceinline" on systems that lack "__header_always_inline" */
-#   define __header_always_inline   __forceinline
-#endif
-#ifndef header_always_inline
-/** Alias for "__forceinline" on systems that lack "header_always_inline" */
-#   define header_always_inline   __forceinline
-#endif
-#ifndef __header_inline
-#   define __header_inline   inline
-#endif
-#if IS_GNUC  // noinline
-/** Do not inline function */
-#   define __noinline   __attribute__((__noinline__))
-#else
-#   define __noinline
-#endif
-#define DECLSPEC_NOINLINE   __noinline
-#define _NOINLINE   __noinline
-#ifndef noinline
-/** Do not inline function */
-#   define noinline   __noinline
-#endif
-/** Do not inline static function */
-#define NOINLINE_STATIC   noinline static
-#if (IS_GNUC && ((defined(__GNUC_STDC_INLINE__) && (__GNUC_STDC_INLINE__ > 0)) || (defined(__GNUC_GNU_INLINE__) && (__GNUC_GNU_INLINE__ > 0))))  // __c99inline
-/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
-#   define __c99inline   extern __attribute__((__gnu_inline__)) inline
-#elif IS_GNUC
-/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
-#   define __c99inline   extern inline
-#elif defined(__STDC_VERSION__)
-/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
-#   define __c99inline   inline
-#else
-/** Non-static C99 inline functions are optional bodies; They do not create global symbols if not used, but can be replaced if desirable */
-#   define __c99inline
-#endif  // __c99inline
-#if IS_GNUC
-#   define __gnu_inline   __attribute__((__gnu_inline__))
-#else
-#   define __gnu_inline
-#endif
-#define __BIONIC_FORTIFY_INLINE   __c99inline
-#ifndef __ATOMIC_INLINE__
-#   define __ATOMIC_INLINE__   static forceinline
-#endif
-/** Alias for "extern inline" */
-#define extern_inline   __c99inline
-/** Similar to "extern inline", but always inline */
-#define extern_always_inline   extern __always_inline
-#ifndef _EXTERN_INLINE
-/** Alias for "extern inline" */
-#   define _EXTERN_INLINE   extern_inline
-#endif
-#define __static_inline   static inline __gnu_inline
-#ifndef static_inline
-#   define static_inline   __static_inline
-#endif
-#if IS_GNUC  // __must_inline
-#   define __must_inline   extern inline __attribute__((__always_inline__))
-#else
-#   define __must_inline   inline
-#endif
-#define must_inline   __must_inline
-#if (IS_GNUC && ((!defined(__GNUC_STDC_INLINE__)) || (__GNUC_STDC_INLINE__ == 0)))  // ELIDABLE_INLINE
-#   define ELIDABLE_INLINE   extern inline __attribute__((__always_inline__))
-#else
-#   define ELIDABLE_INLINE   static inline
-#endif  // ELIDABLE_INLINE
-#if IS_CPLUSPLUS
-#   define __MATH_INLINE   inline
-#else
-#   define __MATH_INLINE   extern inline
-#endif
-
-
-// ATTRIBUTE, BUILTIN, & SPECIFIER MACROS
-
-// PREDICT_LIKELY & PREDICT_UNLIKELY
-#if IS_GNUC
-/** Evaluates to `expression` and hints that the value of `expression` will probably be true; In other words, "if (PREDICT_LIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
-#   define PREDICT_LIKELY(expression)   __builtin_expect((!!(expression)), 1)
-/** Evaluates to `expression` and hints that the value of `expression` will probably be false; In other words, "if (PREDICT_UNLIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
-#   define PREDICT_UNLIKELY(expression)   __builtin_expect((!!(expression)), 0)
-/** Evaluates to `expression` and hints that the value of `expression` will probably be false; In other words, "if (PREDICT_UNLIKELY(foo))" is the same as "if (foo)"; it tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
-#   define UNLIKELY(expression)   __builtin_expect((!!(expression)), 0)
-/** Evaluates to `expression` and hints that the value of `expression` will probably equal `_val` This tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
-#   define LIKELY(expression, _val)   __builtin_expect((expression), (_val))
-/** Evaluates to `expression` and hints that the value of `expression` will probably be false; this tells the compiler that the branch will usually not be taken; This can generate slightly better code with some CPUs */
-#   define LIKELY_FALSE(expression)   __builtin_expect((expression), 0)
-/** Evaluates to `expression` and hints that the value of `expression` will probably equal `_val` This tells the compiler that the branch will be taken most of the time; This can generate slightly better code with some CPUs */
-#   define LIKELY_TRUE(expression)   __builtin_expect((expression), 1)
-#   define builtin_expect(x, y)   __builtin_expect((x), (y))
-#else
-#   define PREDICT_LIKELY(expression)   ((expression))
-#   define PREDICT_UNLIKELY(expression)   ((expression))
-#   define UNLIKELY(expression)   ((expression))
-#   define LIKELY(expression, _val)   ((expression))
-#   define LIKELY_FALSE(expression)
-#   define LIKELY_TRUE(expression)
-#   define builtin_expect(x, y)
-#endif
-// X86 CALLING CONVENTIONS
-#if (defined(ARCHX86) && IS_GNUC)
-/** The specified function is an interrupt handler or an exception handler */
-#   define attr_interrupt   __attribute__((__interrupt__))
-#else
-#   define attr_interrupt
-#endif
-#if (defined(ARCHX86_32) && (!defined(ARCHX86_64)) && IS_GNUC)  // https://en.wikipedia.org/wiki/X86_calling_conventions
-#   ifndef __cdecl
-/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */
-#      define __cdecl   __attribute__((__cdecl__, __regparm__(0)))
-#   endif
-#   ifndef __fastcall
-/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
-#      define __fastcall   __attribute__((__fastcall__))
-#   endif
-#   ifndef __stdcall
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#      define __stdcall   __attribute__((__stdcall__))
-#   endif
-#   ifndef __thiscall
-/** Pass the first argument (if an integral) to the ECX register; The following arguments and arguments of other datatypes are passed to the stack; The called function pops the arguments off the stack; If the number of arguments is variable all arguments are pushed on the stack */
-#      define __thiscall   __attribute__((__thiscall__))
-#   endif
-/** Optional marker for size-optimised MD calling convention */
-#   define compactcall   __attribute__((__regparm__(3)))
-/** On some platforms, internal function calls are a bit faster by using a different calling convention */
-#   define internal_function   __attribute__((__regparm__(3), __stdcall__))
-#   define REGPARM(x)   __attribute__((__regparm__(x)))
-/** (x86-32 targets with SSE support only) Pass up to 3 floating-point arguments in SSE registers instead of on the stack; Functions that take a variable number of arguments continue to pass all of their floating-point arguments on the stack (x86-32 targets with SSE support only) */
-#   define sseregparm   __attribute__((__sseregparm__))
-#else  // Meaningless on non-i386
-#   ifndef __cdecl
-/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */#      define __cdecl
-#   endif
-#   ifndef __fastcall
-#      define __fastcall
-#   endif
-#   ifndef __stdcall
-#      define __stdcall
-#   endif
-#   ifndef __thiscall
-#      define __thiscall
-#   endif
-#   define compactcall
-#   define internal_function
-#   define REGPARM(x)
-#   define sseregparm
-#endif
-#ifndef cdecl
-#   define cdecl   __cdecl
-#endif
-#ifndef crtdecl
-#   define crtdecl   cdecl
-#endif
-#ifndef WINAPIV
-/** cdecl is used when the varadic and non-varadic functions must have the same binary calling convention */#   define WINAPIV   cdecl
-#endif
-#ifndef fastcall
-/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
-#   define fastcall   __fastcall
-#endif
-#ifndef msfastcall
-/** Passes the first two arguments (left to right) that fit into ECX and EDX, and the remaining arguments are pushed onto the stack (from right to left) */
-#   define msfastcall   fastcall
-#endif
-#ifndef stdcall
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#   define stdcall   __stdcall
-#endif
-#ifndef pascal
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#   define pascal   stdcall
-#endif
-#ifndef CALLBACK
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#   define CALLBACK   stdcall
-#endif
-#ifndef WINAPI
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#   define WINAPI   stdcall
-#endif
-#ifndef APIENTRY
-/** Assume that the called function pops off the stack space used to pass arguments, unless it takes a variable number of arguments */
-#   define APIENTRY   stdcall
-#endif
-#ifndef thiscall
-/** Pass the first argument (if an integral) to the ECX register; The following arguments and arguments of other datatypes are passed to the stack; The called function pops the arguments off the stack; If the number of arguments is variable all arguments are pushed on the stack */
-#   define thiscall   __thiscall
-#endif
-#if (IS_GNUC && (defined(OSWINDOWS) || defined(OSSYMBIAN)))
-/** Reference a function or variable via a global pointer to a pointer that is set up by the DLL exporting the symbol; The attribute implies extern; On Microsoft Windows targets, the pointer name is formed by combining _imp__ and the function or variable name */
-#   define dllimport   __attribute__((dllimport))
-/** Provide a global pointer to a pointer in a DLL, so that it can be referenced with the dllimport attribute; On Microsoft Windows targets, the pointer name is formed by combining _imp__ and the function or variable name */
-#   define dllexport   __attribute__((dllexport))
-#elif defined(COMPILER_MICROSOFT)
-#   define dllimport   __declspec(dllimport)
-#   define dllexport   __declspec(dllexport)
-#else
-#   define dllimport
-#   define dllexport
-#endif
-#if (defined(COMPILER_MICROSOFT) && defined(_DLL))
-/** On Windows, variables that may be in a DLL must be marked specially */
-#   define DLL_VARIABLE   dllimport
-#else
-/** On Windows, variables that may be in a DLL must be marked specially */
-#   define DLL_VARIABLE
-#endif
-#if IS_CPLUSPLUS
-#   ifdef OSCYGWIN
-#      define _EXFUN_NOTHROW(name, proto)   cdecl name proto _NOTHROW
-#      define _EXFUN(name, proto)   cdecl name proto
-#      define _EXPARM(name, proto)   (* cdecl name) proto
-#      define _EXFNPTR(name, proto)   (cdecl * name) proto
-#   else  // Not Cygwin
-#      define _EXFUN_NOTHROW(name, proto) name proto _NOTHROW
-#      define _EXFUN(name, proto)   name proto
-#      define _EXPARM(name, proto)   (* name) proto
-#      define _EXFNPTR(name, proto)   (* name) proto
-#   endif  // Cygwin
-#endif  // IS_CPLUSPLUS
-#if IS_GNUC  // EXTERN_API & CALLBACK_API
-#   define EXTERN_API(_type)   dllimport _type cdecl
-#   define EXTERN_API_C(_type)   dllimport _type cdecl
-#   define EXTERN_API_STDCALL(_type)   dllimport _type stdcall
-#   define EXTERN_API_C_STDCALL(_type)   dllimport _type stdcall
-#   define DEFINE_API(_type)   dllexport _type cdecl
-#   define DEFINE_API_C(_type)   dllexport _type cdecl
-#   define DEFINE_API_STDCALL(_type)   dllexport _type stdcall
-#   define DEFINE_API_C_STDCALL(_type)   dllexport _type stdcall
-#   define CALLBACK_API(_type, _name)   _type (cdecl * _name)
-#   define CALLBACK_API_C(_type, _name)   _type (cdecl * _name)
-#   define CALLBACK_API_STDCALL(_type, _name)   _type (stdcall * _name)
-#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (stdcall * _name)
-#elif defined(COMPILER_MICROSOFT)
-#   define EXTERN_API(_type)   __declspec(dllimport) _type cdecl
-#   define EXTERN_API_C(_type)   __declspec(dllimport) _type cdecl
-#   define EXTERN_API_STDCALL(_type)   __declspec(dllimport) _type stdcall
-#   define EXTERN_API_C_STDCALL(_type)   __declspec(dllimport) _type stdcall
-#   define DEFINE_API(_type)   __declspec(dllexport) _type cdecl
-#   define DEFINE_API_C(_type)   __declspec(dllexport) _type cdecl
-#   define DEFINE_API_STDCALL(_type)   __declspec(dllexport) _type stdcall
-#   define DEFINE_API_C_STDCALL(_type)   __declspec(dllexport) _type stdcall
-#   define CALLBACK_API(_type, _name)   _type (cdecl * _name)
-#   define CALLBACK_API_C(_type, _name)   _type (cdecl * _name)
-#   define CALLBACK_API_STDCALL(_type, _name)   _type (stdcall * _name)
-#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (stdcall * _name)
-#else
-#   define EXTERN_API(_type)   extern _type
-#   define EXTERN_API_C(_type)   extern _type
-#   define EXTERN_API_STDCALL(_type)   extern _type
-#   define EXTERN_API_C_STDCALL(_type)   extern _type
-#   define DEFINE_API(_type)   _type
-#   define DEFINE_API_C(_type)   _type
-#   define DEFINE_API_STDCALL(_type)   _type
-#   define DEFINE_API_C_STDCALL(_type)   _type
-#   define CALLBACK_API(_type, _name)   _type (* _name)
-#   define CALLBACK_API_C(_type, _name)   _type (* _name)
-#   define CALLBACK_API_STDCALL(_type, _name)   _type (* _name)
-#   define CALLBACK_API_C_STDCALL(_type, _name)   _type (* _name)
-#endif  // EXTERN_API & CALLBACK_API
-// PACKED, ALIGNED, SECTION, & ALIGNMENT ATTRIBUTES
-#if (defined(COMPILER_MICROSOFT) && IS_NOT_GNUC)
-#   define attr_packed
-#   define attr_mspacked
-#   define attr_gccpacked
-#   define aligned(x)   __declspec(align((x)))
-#   define auto_align
-#   define align1   __declspec(align(1))
-#   define align2   __declspec(align(2))
-#   define align4   __declspec(align(4))
-#   define align8   __declspec(align(8))
-#   define align16   __declspec(align(16))
-#   define align32   __declspec(align(32))
-#   define align64   __declspec(align(64))
-#   define __section(x)
-#elif defined(LINTER_LINT)
-#   define attr_packed
-#   define attr_mspacked
-#   define attr_gccpacked
-#   define aligned(x)
-#   define auto_align
-#   define align1
-#   define align2
-#   define align4
-#   define align8
-#   define align16
-#   define align32
-#   define align64
-#   define __section(x)
-#elif (IS_GNUC || defined(COMPILER_PCC))
-#   define attr_packed   __attribute__((__packed__))
-#   define attr_mspacked   __attribute__((__packed__, __ms_struct__))
-#   define attr_gccpacked   __attribute__((__packed__, __gcc_struct__))
-#   ifndef aligned
-#      define aligned(x)   __attribute__((__aligned__((x))))
-#   endif
-#   define auto_align   __attribute__((__aligned__))
-#   define align1   __attribute__((__aligned__(1)))
-#   define align2   __attribute__((__aligned__(2)))
-#   define align4   __attribute__((__aligned__(4)))
-#   define align8   __attribute__((__aligned__(8)))
-#   define align16   __attribute__((__aligned__(16)))
-#   define align32   __attribute__((__aligned__(32)))
-#   define align64   __attribute__((__aligned__(64)))
-#   define __section(x)   __attribute__((__section__((x))))
-#else
-#   define attr_packed
-#   define attr_mspacked
-#   define attr_gccpacked
-#   define aligned(x)
-#   define auto_align
-#   define align1
-#   define align2
-#   define align4
-#   define align8
-#   define align16
-#   define align32
-#   define align64
-#   define __section(x)
-#endif
-#if IS_GNUC
-#   define assume_aligned(a, ...)   __attribute__((__assume_aligned__(a, ## __VA_ARGS__)))
-#   define ATTR_ALIGN_TO(param)   __attribute__((__aligned__(__alignof__(param))))
-#else
-#   define assume_aligned(a, ...)
-#   define ATTR_ALIGN_TO(param)
-#endif
-#define align_short   aligned(ALIGN_OF_SHORT)
-#define align_int   aligned(ALIGN_OF_INT)
-#define align_int64   aligned(ALIGN_OF_INT64)
-#define align_long   aligned(ALIGN_OF_LONG)
-#define alignSF   aligned(ALIGN_OF_FLOAT)
-#define align_flt   aligned(ALIGN_OF_FLOAT)
-#define alignDF   aligned(ALIGN_OF_DOUBLE)
-#define align_dbl   aligned(ALIGN_OF_DOUBLE)
-#define alignXF   alignDF
-#define alignTF   aligned(ALIGN_OF_DOUBLE * 2)
-#if SUPPORTS_LONG_DOUBLE
-#   define align_ldbl   ATTR_ALIGN_TO(long double)
-#else
-#   define align_ldbl
-#endif
-#define align_ptr   aligned(ALIGN_OF_PTR)
-#ifndef _MM_ALIGN4
-#   define _MM_ALIGN4   align4
-#endif
-#ifndef _MM_ALIGN8
-#   define _MM_ALIGN8   align8
-#endif
-#ifndef _MM_ALIGN16
-#   define _MM_ALIGN16   align16
-#endif
-#ifndef _MM_ALIGN32
-#   define _MM_ALIGN32   align32
-#endif
-#ifndef _MM_ALIGN64
-#   define _MM_ALIGN64   align64
-#endif
-// FORMAT ATTRIBUTES
-#if IS_GNUC
-#   define formatfunc(t, f, a)   __attribute__((__format__(t, f, a)))
-#   define __attribute_format_strfmon__(a, b)   __attribute__((__format__(__strfmon__, (a), (b))))
-#   define __attribute_format_arg__(x)   __attribute__((__format_arg__(x)))
-#   define __scanflike(fmtarg, firstvararg)   __attribute__((__format__(__scanf__, fmtarg, firstvararg)))
-#   define format_arg(fmtarg)    __attribute__((__format_arg__(fmtarg)))
-/** Attribute to make GCC check printf-like arguments */
-#   define ATTR_PRINTF(m, n)   __attribute__((__format__(__printf__, m, n))) ATTR_NONNULL(m)
-#   define NULL_PRINTF(m, n)   __attribute__((__format__(__printf__, m, n)))
-#   define NULL_PRINTF_1   NULL_PRINTF(1, 2)
-#   define NULL_PRINTF_2   NULL_PRINTF(2, 3)
-#   define NULL_PRINTF_3   NULL_PRINTF(3, 4)
-#   define NULL_PRINTF_4   NULL_PRINTF(4, 5)
-#   define NULL_PRINTF_5   NULL_PRINTF(5, 6)
-#else
-#   define formatfunc(t, f, a)
-#   define __attribute_format_strfmon__(a, b)
-#   define __attribute_format_arg__(x)
-#   define __scanflike(fmtarg, firstvararg)   /*@scanflike@*/
-#   define format_arg(fmtarg)
-#   define ATTR_PRINTF(m, n)   /*PRINTFLIKE*/
-#   define NULL_PRINTF(m, n)   /*PRINTFLIKE*/
-#   define NULL_PRINTF_1   /*PRINTFLIKE*/
-#   define NULL_PRINTF_2   /*PRINTFLIKE*/
-#   define NULL_PRINTF_3   /*PRINTFLIKE*/
-#   define NULL_PRINTF_4   /*PRINTFLIKE*/
-#   define NULL_PRINTF_5   /*PRINTFLIKE*/
-#endif  // formatfunc
-// ATTRIBUTE MACROS
-#if IS_GNUC
-#   ifdef COMPILER_CLANG
-/** Do not convert code to calls to a library */
-#      define NOLIBCALL
-#   else
-/** Do not convert code to calls to a library */
-#      define NOLIBCALL   __attribute__((__optimize__("-fno-tree-loop-distribute-patterns")))
-#   endif
-#   define ATTR_CAF   __attribute__((__always_inline__, __const__, __flatten__))
-#   define ATTR_CIF   __attribute__((__const__, __inline__, __flatten__))
-#   define ATTR_CAFN   __attribute__((__always_inline__, __const__, __flatten__, __nonnull__))
-#   define ATTR_MALLOC   __attribute__((__malloc__))
-/** Tell the compiler which arguments to an allocation function indicate the size of the allocation */
-#   define ATTR_ALLOC_SIZE(...)   __attribute__((__alloc_size__(__VA_ARGS__)))
-#   define ATTR_FLATTEN   __attribute__((__flatten__))
-#   define ATTR_CF   __attribute__((__const__, __flatten__))
-#   define ATTR_PF   __attribute__((__pure__, __flatten__))
-/** The function does not have side-effects, only examines its arguments, does not have pointer arguments, and does not call a non-const function */
-#   define ATTR_CONST   __attribute__((__const__))
-/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
-#   define ATTR_PURE   __attribute__((__pure__))
-/** All functions, except those with callbacks or those that synchronize memory, are leaf functions */
-#   define ATTR_LEAF   __attribute__((__leaf__))
-/** Definition to shut the compiler up about unused arguments */
-#   define UNUSED   __attribute__((__unused__))
-/** Warn the developer that the function is deprecated */
-#   define deprecated   __attribute__((__deprecated__))
-/** If using fortification mode, warn about unused results of certain function calls which can lead to problems */
-#   define WUR   __attribute__((__warn_unused_result__))
-/** Fortify support */
-#   define __bos(_ptr)   __builtin_object_size(_ptr, (__USE_FORTIFY_LEVEL > 1))
-/** Fortify support */
-#   define __bos0(_ptr)   __builtin_object_size(_ptr, 0)
-/** Determine the return address */
-#   define RETURN_ADDRESS(nr)   __builtin_extract_return_addr(__builtin_return_address((nr)))
-/** @def attr_fallthrough
-The -Wimplicit-fallthrough warning will not be triggered when a statement that falls through to another case label */
-#   ifdef COMPILER_CLANG
-#      define attr_fallthrough
-#   else
-#      define attr_fallthrough   __attribute__((__fallthrough__));
-#   endif
-/** Specifies that an object or member declaration with type array of char or pointer to char is intended to store character arrays that do not necessarily contain a terminating NUL character */
-#   define attr_nonstring   __attribute__((__nonstring__))
-#   define patchable   __attribute__((__patchable_function_entry__))
-#else
-#   define NOLIBCALL
-#   define ATTR_CAF
-#   define ATTR_CIF
-#   define ATTR_CAFN
-#   define ATTR_FLATTEN
-#   define ATTR_CF
-#   define ATTR_PF
-#   define ATTR_MALLOC
-#   define ATTR_ALLOC_SIZE(...)
-#   define ATTR_CONST
-/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
-#   define ATTR_PURE
-#   define ATTR_LEAF
-#   ifdef LINTER_SPLINT
-#      define UNUSED   /*@unused@*/
-#   else
-#      define UNUSED   /*ARGSUSED*/
-#   endif
-#   define deprecated   /*@warn@*/
-/** If using fortification mode, warn about unused results of certain function calls which can lead to problems */
-#   define WUR   /*@alwaysreturn@*/
-/** Fortify support */
-#   define __bos(_ptr)
-/** Fortify support */
-#   define __bos0(_ptr)
-#   define RETURN_ADDRESS(nr)
-#   define attr_fallthrough   /*FALLTHROUGH*/
-#   define attr_nonstring
-#   define patchable
-#endif
-/** Add the compiler optimization to inhibit loop transformation to library calls; This is used to avoid recursive calls in memset and memmove default implementations */
-#define inhibit_loop_to_libcall   NOLIBCALL
-/** The function is has no side-effects and its return value depends only on the parameters and/or global variables */
-#define __pure   ATTR_PURE
-/** Attribute alias for deprecated */
-#define __dontuse__   deprecated
-/** Attribute alias for deprecated */
-#define __AVAILABILITY_INTERNAL_DEPRECATED   deprecated
-/** Attribute alias for deprecated */
-#define AVAILABILITY_INTERNAL_DEPRECATED   deprecated
-/** Definition to shut the compiler up about unused arguments */
-#define unusedfunc   UNUSED
-#if DEBUG
-/** Used in diagnostic code, but may be unused in non-diagnostic code */
-#   define __diagused
-/** Used in diagnostic code, but may be unused in non-diagnostic code */
-#   define __debugused
-#else
-/** Used in diagnostic code, but may be unused in non-diagnostic code */
-#   define __diagused   UNUSED
-/** Used in diagnostic code, but may be unused in non-diagnostic code */
-#   define __debugused   UNUSED
-#endif
-#if ((!defined(OVERLOAD)) && defined(COMPILER_CLANG))
-#   define OVERLOAD   __attribute__((__overloadable__))
-#   define _TG_ATTRSp   __attribute__((__overloadable__))
-#   define _TG_ATTRS   __attribute__((__always_inline__, __overloadable__))
-#elif (!defined(OVERLOAD))
-#   define OVERLOAD
-#   define _TG_ATTRSp
-#   define _TG_ATTRS   forceinline
-#endif
-// ERRORATTR & WARNATTR
-#if IS_GNUC
-#   ifndef __warnattr
-#      define __warnattr(msg)   __attribute__((__warning__(msg)))
-#   endif
-#   ifndef __errorattr
-#      define __errorattr(name, msg)   __attribute__((__error__(msg)))
-#   endif
-#else
-#   ifndef __warnattr
-#      define __warnattr(msg)
-#   endif
-#   ifndef __errorattr
-#      define __errorattr(name, msg)
-#   endif
-#endif
-// NULL_UNSPECIFIED ATTRIBUTE
-#ifdef COMPILER_CLANG
-/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
-#   define Null_unspecified   _Null_unspecified
-#else
-/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
-#   define Null_unspecified
-/** The input pointer parameter of the function cannot use `NONNULL` nor `Nullable` */
-#   define _Null_unspecified
-#endif
-// NULLABLE ATTRIBUTE
-#ifdef COMPILER_CLANG
-/** The input pointer parameter of the function may be NULL */
-#   define Nullable   _Nullable
-#else
-/** The input pointer parameter of the function may be NULL */
-#   define Nullable
-/** The input pointer parameter of the function may be NULL */
-#   define _Nullable
-#endif
-// NONNULL ATTRIBUTES
-#if IS_GNUC
-/** The functions input parameters are never NULL */
-#   define NONNULL   __attribute__((__nonnull__))
-/** ATTR_NONNULL(n, ..., m) tells the compiler and static analyzer tools that the values passed as the specified arguments must be non-NULL pointers; n = 1 stands for the first argument, n = 2 for the second argument, and so on */
-#   define ATTR_NONNULL(params)   __attribute__((__nonnull__(params)))
-/** The function never returns NULL */
-#   define RETURNS_NONNULL   __attribute__((__returns_nonnull__))
-/** The function does not accept nor return NULL */
-#   define NONNULL_IO   __attribute__((__returns_nonnull__, __nonnull__))
-/** Ensures that a parameter in a function call is an explicit NULL (only valid on variadic functions) */
-#   define ATTR_SENTINEL   __attribute__((__sentinel__))
-#else
-/** The functions input parameters are never NULL */
-#   define NONNULL   /*@notnull@*/
-#   define ATTR_NONNULL(params)   /*@notnull@*/
-/** The function never returns NULL */
-#   define RETURNS_NONNULL   /*@notnull@*/
-/** The function does not accept nor return NULL */
-#   define NONNULL_IO
-#   define ATTR_SENTINEL
-#endif
-// HOT & COLD FUNCTION ATTRIBUTES
-#if IS_GNUC
-#   define COLD   __attribute__((__cold__))
-#   define HOT   __attribute__((__hot__))
-#else
-#   define COLD
-#   define HOT
-#endif
-// UNREACHABLE
-#if IS_LINTER
-/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
-#   define _FP_UNREACHABLE   /*NOTREACHED*/
-/** Indicates unreachable code */
-#   define UNREACHABLE   /*NOTREACHED*/
-#elif IS_GNUC
-/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
-#   define _FP_UNREACHABLE   __builtin_unreachable()
-/** Indicates unreachable code */
-#   define UNREACHABLE   __builtin_unreachable();
-#else
-/** For unreachable default cases in switch statements over bitwise OR of FP_CLS_* values */
-#   define _FP_UNREACHABLE   abort()
-/** Indicates unreachable code */
-#   define UNREACHABLE   abort();
-#endif
-#ifndef FP_UNREACHABLE
-#   define FP_UNREACHABLE   _FP_UNREACHABLE
-#endif
-// DEPRECATED_MSG
-#if IS_GNUC  // deprecated_msg
-#   define __AVAILABILITY_INTERNAL_DEPRECATED_MSG(_msg)   __attribute__((__deprecated__(_msg)))
-#   define DEPRECATED_ATTRIBUTE(_msg)   __attribute__((__deprecated__(_msg)))
-#   define DEPRECATED_MSG_ATTRIBUTE(_msg)   __attribute__((__deprecated__(_msg)))
-#   define deprecated_msg(_msg)   __attribute__((__deprecated__(_msg)))
-#   define deprecated_enum_msg(_msg)   deprecated_msg(_msg)
-#else
-#   define __AVAILABILITY_INTERNAL_DEPRECATED_MSG(_msg)   deprecated
-#   define DEPRECATED_ATTRIBUTE   deprecated
-#   define DEPRECATED_MSG_ATTRIBUTE(_msg)   deprecated
-#   define deprecated_msg(_msg)   deprecated
-#   define deprecated_enum_msg(_msg)
-#endif
-// WEAK_IMPORT & UNAVAILABLE
-#if (IS_GNUC || ((defined(__MWERKS__) && (__MWERKS__ >= 0x3205)) && (defined(MAC_OS_X_VERSION_MIN_REQUIRED) && (MAC_OS_X_VERSION_MIN_REQUIRED >= 1020)) && (!(defined(ARCHX86) || defined(ARCHX86_64)))))
-#   define WEAK_IMPORT_ATTRIBUTE   __attribute__((__weak_import__))
-#   define __AVAILABILITY_INTERNAL_WEAK_IMPORT   __attribute__((__weak_import__))
-#   define __AVAILABILITY_INTERNAL_UNAVAILABLE   __attribute__((__unavailable__))
-#   define __unavailable   __attribute__((__unavailable__))
-#   define UNAVAILABLE_ATTRIBUTE   __attribute__((__unavailable__))
-#else
-#   define WEAK_IMPORT_ATTRIBUTE
-#   define __AVAILABILITY_INTERNAL_WEAK_IMPORT
-#   define __AVAILABILITY_INTERNAL_UNAVAILABLE
-#   define __unavailable
-#   define UNAVAILABLE_ATTRIBUTE
-#endif
-// SPARSE ATTRIBUTES
-#if defined(LINTER_SPARSE)
-#   define __iomem   __attribute__((__address_space__(2), __noderef__))
-#   define __percpu   __attribute__((__address_space__(3), __noderef__))
-#   define __pmem   __attribute__((__address_space__(5), __noderef__))
-#   define __user   __attribute__((__address_space__(1), __noderef__))
-#   define __kernel   __attribute__((__address_space__(0)))
-#   define __safe   __attribute__((__safe__))
-/** Modifies an arithmetic type so that the only arithmetic options permitted are the ones that are strictly bitwise */
-#   define __bitwise   __attribute__((__bitwise__))
-/** Do not dereference */
-#   define __noderef   __attribute__((__noderef__))
-/** Warn if pointers tagged with different address spaces are mixed and if a pointer tagged with "noderef" is dereferenced */
-#   define __address_space(x)  __attribute__((__address_space__(x)))
-/** Issue a warning if a type is implicitly converted unless it is exactly the same type (changes in constness is permitted, presumably changes in volatility should be permitted as well) */
-#   define __nocast   __attribute__((__nocast__))
-#   define __must_hold(x)   __attribute__((__context__(x, 1, 1)))
-#   define __acquires(x)   __attribute__((__context__(x, 0, 1)))
-#   define __releases(x)   __attribute__((__context__(x, 1, 0)))
-#   define __acquire(x)   __attribute__((__context__(x, 1)))
-#   define __release(x)   __attribute__((__context__(x, -1)))
-/** Supports conditional lock (trylock) functions, without requiring special support for them in the compiler */
-#   define __cond_lock(x, c)   ((c) ? ({ __acquire(x); 1; }) : 0)
-#else
-#   define __iomem
-#   define __percpu
-#   define __pmem
-#   define __user
-#   define __kernel
-#   define __safe
-/** Modifies an arithmetic type so that the only arithmetic options permitted are the ones that are strictly bitwise */
-#   define __bitwise
-/** Do not dereference */
-#   define __noderef
-/** Warn if pointers tagged with different address spaces are mixed and if a pointer tagged with "noderef" is dereferenced */
-#   define __address_space(x)
-/** Issue a warning if a type is implicitly converted unless it is exactly the same type (changes in constness is permitted, presumably changes in volatility should be permitted as well) */
-#   define __nocast
-#   define __must_hold(x)
-#   define __acquires(x)
-#   define __releases(x)
-#   define __acquire(x)
-#   define __release(x)
-/** Supports conditional lock (trylock) functions, without requiring special support for them in the compiler */
-#   define __cond_lock(x, c)
-#endif  // Sparse attributes
-// RETURNS_TWICE
-#if IS_GNUC
-/** Informs the compiler that the function returns two or more times (such as setjmp and vfork) */
-#   define returns_twice   __attribute__((__returns_twice__))
-#else
-/** Informs the compiler that the function returns two or more times (such as setjmp and vfork) */
-#   define returns_twice
-#endif
-// ARTIFICIAL ATTRIBUTE
-#if IS_GNUC
-/** Useful for small inline wrappers that should appear during debugging as a unit (if possible) */
-#   define attr_artificial   __attribute__((__artificial__))
-#else
-#   define attr_artificial
-#endif
-#ifndef __fortify_function
-#   define __fortify_function   extern_always_inline attr_artificial
-#endif
-// STORAGE ATTRIBUTES
-#if IS_GNUC
-/** Do place the variable in common storage */
-#   define attr_common   __attribute__((__common__))
-/** Do not place the variable in common storage; instead, allocate space for it directly */
-#   define attr_nocommon   __attribute__((__nocommon__))
-#   define global_tls   __attribute__((__tls_model__("global-dynamic")))
-#   define initial_tls   __attribute__((__tls_model__("initial-exec")))
-#   define local_dynamic_tls   __attribute__((__tls_model__("local-dynamic")))
-#   define local_exec_tls   __attribute__((__tls_model__("local-exec")))
-#else
-/** Do place the variable in common storage */
-#   define attr_common
-/** Do not place the variable in common storage; instead, allocate space for it directly */
-#   define attr_nocommon
-#   define global_tls
-#   define initial_tls
-#   define local_dynamic_tls
-#   define local_exec_tls
-#endif
-// ENABLE OPTIMIZATIONS
-#if IS_GNUC
-#   define attr_optimize(x)   __attribute__((optimize(x)))
-#else
-#   define attr_optimize(x)
-#endif
-// DISABLE OPTIMIZATIONS
-#if IS_GNUC
-/** Prevents a function from being considered for cloning */
-#   define noclone   __attribute__((__noclone__))
-/** Prevents a function from being merged with another semantically equivalent function */
-#   define no_icf   __attribute__((__no_icf__))
-/** Prevents a function orvariable from being reordered */
-#   define no_reorder   __attribute__((__no_reorder__))
-#else
-#   define noclone
-#   define no_icf
-#   define no_reorder
-#endif
-// BOUNDS-CHECKER, PROFILING, & SANITIZER ATTRIBUTES
-#if IS_GNUC
-/** Inform the Pointer-Bounds-Checker that the size of the field should not be computed using static type information */
-#   define bnd_variable_size   __attribute__((__bnd_variable_size__))
-/** Do not add profiling function calls to the function nor instrument the function */
-#   define __noprofile   __attribute__((__bnd_legacy__, __no_instrument_function__, __no_profile_instrument_function__, __no_sanitize__))
-/** Inform the compiler that it should not instrument memory accesses in the function when compiling with the `-fsanitize=address` option */
-#   define NO_SANITIZE_ADDRESS   __attribute__((__no_sanitize_address__))
-/** Inform the compiler that it should not instrument memory accesses in the function when compiling with the `-fsanitize=thread` option */
-#   define NO_SANITIZE_THREAD   __attribute__((__no_sanitize_thread__))
-/** Inform the compiler that it should not check for undefined behavior in the function when compiling with the `-fsanitize=undefined` option */
-#   define NO_SANITIZE_UNDEFINED   __attribute__((__no_sanitize_undefined__))
-#   define stack_protect   __attribute__((__stack_protect__))
-#else
-#   define bnd_variable_size
-#   define __noprofile
-#   define NO_SANITIZE_ADDRESS
-#   define NO_SANITIZE_THREAD
-#   define NO_SANITIZE_UNDEFINED
-#   define stack_protect
-#endif
-
-
-// STRONG & WEAK ALIASES
-
-#if (IS_NOT_ASSEMBLER && IS_GNUC)
-// GCC understands weak symbols and aliases; use this interface where possible, instead of embedded assembly language
-/** Define `aliasname` as a strong alias for `sym` */
-#   define strong_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym)));
-/** Define `aliasname` as a weak alias for `sym`. If weak aliases are not available, this defines a strong alias */
-#   define weak_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym), __weak__));
-/** Declare a function weak; Place between the return type and function name */
-#   define weak_const_function   __attribute__((__const__, __weak__))
-/** Declare `sym` as weak undefined symbol (resolved to 0 if not defined) */
-#   define weak_extern(sym)   _Pragma(#sym)
-/** Declare a function weak; Place between the return type and function name */
-#   define weak_function   __attribute__((__weak__))
-/** Same as `weak_alias`, but mark symbol as hidden */
-#   define weak_hidden_alias(sym, aliasname)   extern typeof(sym) aliasname __attribute__((__alias__(#sym), __visibility__("hidden"), __weak__));
-#elif (IS_ASSEMBLER && IS_GNUC)  // IS_ASSEMBLER
-#   ifdef HAVE_ASM_SET_DIRECTIVE
-#      define strong_alias(sym, aliasname)   .globl C_SYMBOL_NAME(aliasname) ASM_LINE_SEP .set C_SYMBOL_NAME(aliasname), C_SYMBOL_NAME(sym)
-#   else
-#      define strong_alias(sym, aliasname)   .globl C_SYMBOL_NAME(aliasname) ASM_LINE_SEP C_SYMBOL_NAME(aliasname) = C_SYMBOL_NAME(sym)
-#   endif
-#   ifdef HAVE_ASM_WEAKEXT_DIRECTIVE
-#      define weak_alias(sym, aliasname)   .weakext C_SYMBOL_NAME(aliasname), C_SYMBOL_NAME(sym)
-#      define weak_extern(sym)   .weakext C_SYMBOL_NAME(sym)
-#   else
-#      define weak_alias(sym, aliasname)   .weak C_SYMBOL_NAME(aliasname) ASM_LINE_SEP C_SYMBOL_NAME(aliasname) = C_SYMBOL_NAME(sym)
-#      define weak_extern(sym)   .weak C_SYMBOL_NAME(sym)
-#   endif
-#   define weak_const_function
-#   define weak_function
-#   define weak_hidden_alias(sym, aliasname)
-#else
-#   define strong_alias(sym, aliasname)
-#   define weak_alias(sym, aliasname)
-#   define weak_const_function
-#   define weak_extern(sym)
-#   define weak_function
-#   define weak_hidden_alias(sym, aliasname)
-#endif  // Aliases
-#if IS_GNUC  // strict_weak_alias
-#   define strict_weak_alias(sym, aliasname)   static UNUSED typeof(aliasname)* weak_alias_ ## aliasname = &sym; weak_alias(sym, aliasname)
-#else
-#   define strict_weak_alias(sym, aliasname)   weak_alias(sym, aliasname)
-#endif
-#define __alias(x)   __attribute__((__alias__(x), __weak__))
-#define _strong_alias(sym, aliasname)   strong_alias(sym, aliasname)
-#define __strong_alias(sym, aliasname)   strong_alias(sym, aliasname)
-#define __strong_alias__(sym, aliasname)   strong_alias(sym, aliasname)
-#define strong_data_alias(sym, aliasname)   strong_alias(sym, aliasname)
-#define strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
-#define _strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
-#define __strong_reference(sym, aliasname)   strong_alias(sym, aliasname)
-/** Symbols reserved to or specified by ISO C; Defines `sym` as a strong alias for _libc_sym */
-#define DEF_STRONG(sym)   strong_alias(sym, HIDDEN(sym))
-/** Defines _thread_sys_sym as a strong alias for _libc_sym; This should only be needed for syscalls that have C instead of ASM stubs */
-#define DEF_SYS(sym)   strong_alias(_thread_sys_ ## sym, HIDDEN(sym))
-#define _weak_alias(sym, aliasname)   weak_alias(sym, aliasname)
-#define _weak_extern(sym)   weak_extern(sym)
-#define _weak_hidden_alias(sym, aliasname)   weak_hidden_alias(sym, aliasname)
-#define weak_reference(sym)   __attribute__((__weakref__(sym)))
-#define _weak_reference(sym)   __attribute__((__weakref__(sym)))
-#define __weak_reference(sym)   __attribute__((__weakref__(sym)))
-#define _strict_weak_alias(sym, aliasname)   strict_weak_alias(sym, aliasname)
-#define __strict_weak_alias(sym, aliasname)   strict_weak_alias(sym, aliasname)
-/** Symbols that have a cancellation wrapper; Defines `sym` as a weak alias for _libc_sym_cancel */
-#define DEF_CANCEL(sym)   weak_alias(sym, CANCEL(sym))
-/** Symbols used internally and not in ISO C; Defines `sym` as a weak alias for _libc_sym */
-#define DEF_WEAK(sym)   weak_alias(sym, HIDDEN(sym))
-/** Defines `sym` as a weak alias for _libc_sym_wrap */
-#define DEF_WRAP(sym)   weak_alias(sym, WRAP(sym))
-/** Compiler macros to make an alias symbol */
-#define __ALIAS(__t, __f, __p, __a)   __t __f __p __attribute__((__weak__, __alias__(#__a)));
-#define LFS64_2(sym, aliasname)   weak_alias(sym, aliasname)
-#define LFS64(sym)   LFS64_2(sym, sym ## 64)
-/** Export the symbol for both static and dynamic linking */
-#define libc_sunrpc_symbol(name, aliasname, version)   strong_alias(name, aliasname)
-/** No versions to worry about, just make this the global definition */
-#define versioned_symbol(lib, aliasname, sym, version)   weak_alias(sym, aliasname)
-/** No old versions to worry about */
-#define SHLIB_COMPAT(lib, introduced, obsoleted)   0
-
-
-// VISIBILITY
-
-#if (IS_PIC || IS_GNUC)
-/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
-#   define attr_hidden   __attribute__((__visibility__("hidden")))
-#   define __hidden_proto_hiddenattr(...)   __attribute__((__visibility__("hidden"), __VA_ARGS__))
-#   define __dso_hidden   __attribute__((__visibility__("hidden")))
-#   define __dso_protected   __attribute__((__visibility__("protected")))
-#   define __dso_public   __attribute__((__visibility__("default")))
-#else
-#   define attr_hidden
-#   define __hidden_proto_hiddenattr(...)
-#   define __dso_hidden
-#   define __dso_protected
-#   define __dso_public
-#endif
-/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
-#define ATTR_LIBC_VISIBILITY   attr_hidden
-#ifndef __XNU_PRIVATE_EXTERN
-/** Linkage decoration indicating that a symbol can be used from other compilation units, but not other libraries or executables */
-#   define __XNU_PRIVATE_EXTERN   attr_hidden
-#endif
-
-
-// LONG DOUBLE COMPATABILITY
-
-#if (defined(__LONG_DOUBLE_MATH_OPTIONAL) && defined(__NO_LONG_DOUBLE_MATH) && (!(defined(__LDBL_COMPAT) || defined(__LDBL_REDIR1))))
-#   define __LDBL_COMPAT   1
-#   define __LDBL_REDIR1(sym, proto, aliasname)   __REDIRECT(sym, proto, aliasname)
-#   define __LDBL_REDIR(sym, proto)   __LDBL_REDIR1(sym, proto, __nldbl_ ## sym)
-#   define __LDBL_REDIR1_NTH(sym, proto, aliasname)   __REDIRECT_NTH(sym, proto, aliasname)
-#   define __LDBL_REDIR_NTH(sym, proto)   __LDBL_REDIR1_NTH(sym, proto, __nldbl_ ## sym)
-#   define __LDBL_REDIR1_DECL(sym, aliasname)   extern typeof(sym) sym asm (__ASMNAME(#aliasname));
-#   define __LDBL_REDIR_DECL(sym)   extern typeof(sym) sym asm (__ASMNAME("__nldbl_" #sym));
-#   define __REDIRECT_LDBL(sym, proto, aliasname)   __LDBL_REDIR1(sym, proto, __nldbl_ ## aliasname)
-#   define __REDIRECT_NTH_LDBL(sym, proto, aliasname)   __LDBL_REDIR1_NTH(sym, proto, __nldbl_ ## aliasname)
-#elif (!(defined(__LDBL_COMPAT) || defined(__LDBL_REDIR1)))
-#   define __LDBL_REDIR1(sym, proto, aliasname)   sym proto
-#   define __LDBL_REDIR(sym, proto)   sym proto
-#   define __LDBL_REDIR1_NTH(sym, proto, aliasname)   sym proto __THROW
-#   define __LDBL_REDIR_NTH(sym, proto)   sym proto __THROW
-#   define __LDBL_REDIR_DECL(sym)
-#   define __REDIRECT_LDBL(sym, proto, aliasname)   __REDIRECT(sym, proto, aliasname)
-#   define __REDIRECT_NTH_LDBL(sym, proto, aliasname)   __REDIRECT_NTH(sym, proto, aliasname)
-#endif
-
-
-// ARCHITECTURE SPECIFIC ATTRIBUTES & MACROS
-
-#ifdef ARCHMICROBLAZE
-#   ifdef __XMK__  // Xilinx XMK uses Unix98 mutex
-#      define _UNIX98_THREAD_MUTEX_ATTRIBUTES   (1)
-#   endif
-#   ifndef save_volatiles
-/** Indicate that the function is an interrupt handler; All volatile registers (in addition to non-volatile registers) are saved in the function prologue; If the function is a leaf function, only volatiles used by the function are saved; A normal function return is generated instead of a return from interrupt */
-#      define save_volatiles   __attribute__((__save_volatiles__))
-#   endif
-#else
-#   ifndef save_volatiles
-/** Indicate that the function is an interrupt handler; All volatile registers (in addition to non-volatile registers) are saved in the function prologue; If the function is a leaf function, only volatiles used by the function are saved; A normal function return is generated instead of a return from interrupt */
-#      define save_volatiles
-#   endif
-#endif
-#if ((defined(ARCHMIPS) && (!SUPPORTS_RTEMS)) || defined(__frv__) || (defined(ARCHPOWERPC) && defined(_CALL_SYSV)))
-#   define impure_ptr   __attribute__((__section__(".sdata")))
-#elif defined(__v850)
-#   define impure_ptr   __attribute__((__sda__))
-#endif
-
-
-// MISCELLANEOUS MICROSOFT MACROS
-
-#ifdef COMPILER_MICROSOFT  // DECLSPEC_INTRIN_TYPE
-#   define DECLSPEC_INTRIN_TYPE   __declspec(intrin_type)
-#else
-#   define DECLSPEC_INTRIN_TYPE
-#endif
-#if IS_GNUC  // DECLSPEC_HOTPATCH
-/** Define to a function attribute for Microsoft hotpatch assembly prefix */
-#   define DECLSPEC_HOTPATCH   __attribute__((__ms_hook_prologue__))
-#elif defined(COMPILER_MICROSOFT)
-/** Define to a function attribute for Microsoft hotpatch assembly prefix */
-#   define DECLSPEC_HOTPATCH   __declspec(ms_hook_prologue)
-#else
-/** Define to a function attribute for Microsoft hotpatch assembly prefix */
-#   define DECLSPEC_HOTPATCH
-#endif
-
-
-// MISCELLANEOUS GNU-GCC & CLANG MACROS
-
-#if IS_GNUC
-#   define os_constant(x)   __builtin_constant_p((x))
-#else
-#   define os_constant(x)   ((long)0)
-#endif
-#if (IS_GNUC || IS_STDC99)  // __flexarr
-/** Flexible array members */
-#   define __flexarr   []
-#else
-/** Flexible array members */
-#   define __flexarr   [1]
-#endif
-
-
-// MISCELLANEOUS MACROS
-
-#if ((!defined(getprogname)) && defined(PROGRAM_NAME))
-#   define getprogname()   PROGRAM_NAME
-#elif ((!defined(getprogname)) && (!defined(PROGRAM_NAME)))
-#   define getprogname()   "UNAMED_PROGRAM\0"
-#endif
-/*@-readonlytrans@*/
-static const char* __progname = NULL;
-static const UNUSED char* progname = NULL;
-static const UNUSED char* program_name = NULL;
-static const UNUSED char* __progname_full = NULL;
-/*@-readonlytrans@*/
-static const UNUSED char* program_invocation_name = getprogname();
-/*@=readonlytrans@*/
-#define program_invocation_short_name   program_invocation_name
-#define __IDSTRING(name, str)   static const UNUSED char name[] = str
-#ifndef __COPYRIGHT
-#   define __COPYRIGHT(str)   __IDSTRING(copyright, str)
-#endif
-#ifndef __PROJECT_VERSION
-#   define __PROJECT_VERSION(str)   __IDSTRING(__MODULE_VERSION__, str)
-#endif
-#ifndef __FBSDID
-#   define __FBSDID(str)   __IDSTRING(fbsdid, str)
-#endif
-#undef __KERNEL_RCSID
-#if (defined(_KERNEL) && defined(NO_KERNEL_RCSIDS))
-#   define __KERNEL_RCSID(name, str)
-#else
-#   define __KERNEL_RCSID(name, str)   __IDSTRING(name, str)
-#endif
-#ifndef __RCSID
-#   define __RCSID(str)   __IDSTRING(rcsid, str)
-#endif
-#ifndef __SCCSID
-#   define __SCCSID(str)   __IDSTRING(sccsid, str)
-#endif
-#ifndef __func__
-#   if (IS_CPLUSPLUS && IS_GNUC)
-#      define __func__   __PRETTY_FUNCTION__
-#   else
-#      if IS_STDC99
-#         define __func__   __FUNCTION__
-#      elif (IS_GNUC || defined(COMPILER_MICROSOFT))
-#         define __func__   __FUNCTION__
-#      else
-#         define __func__   ((const char*)0)
-#      endif
-#   endif
-#endif
-#if IS_GNUC
-/** String identifier for the current code position */
-#   define CODE_POS   __FILE__ ":" S(__LINE__) ":" __PRETTY_FUNCTION__ "()"
-#   define GNUC_FUNCTION   __FUNCTION__
-#   define GNUC_PRETTY_FUNCTION   __PRETTY_FUNCTION__
-/** Current function identifier */
-#   define FUNC_NAME   ((const char*)(__PRETTY_FUNCTION__))
-#elif IS_STDC11
-/** String identifier for the current code position */
-#   define CODE_POS   __FILE__ ":" S(__LINE__)
-#   define GNUC_FUNCTION   ""
-#   define GNUC_PRETTY_FUNCTION   ""
-/** Current function identifier */
-#   define FUNC_NAME   ((const char*)(__func__))
-#else
-#   error   "This library requires Standard C version 2011 or newer!"
-#endif
-#define WHERESTR   "[file %s, line %d]: "
-#if (defined(__FILE__) && defined(__LINE__))
-#   define WHEREARG   __FILE__, __LINE__
-#   define CODE_LOCATION   __BASE_FILE__ ":" __FILE__ ":" S(__LINE__)
-#endif
-/** Compile Time Assertion */
-#define __CTASSERT1(x, y, z)   typedef char y ## z[(x) ? 1 : (-1)] UNUSED
-/** Compile Time Assertion */
-#define __CTASSERT0(x, y, z)   __CTASSERT1(x, y, z)
-#ifdef __COUNTER__
-/** Compile Time Assertion */
-#   define __CTASSERT(x)   __CTASSERT0(x, __ctassert, __COUNTER__)
-#else
-/** Compile Time Assertion */
-#   define __CTASSERT99(x, y, z)   __CTASSERT0(x, CONCAT_X(__ctassert, y), CONCAT_X(_, z))
-/** Compile Time Assertion */
-#   define __CTASSERT(x)   __CTASSERT99(x, __INCLUDE_LEVEL__, __LINE__)
-#endif
-
-
-// ASSEMBLY MACROS
-
-#define RELOC_HIDE(ptr, off)   do { unsigned long __ptr; vasm(";" : "=r"(__ptr) : "0"(ptr)); (typeof(ptr))(__ptr + (off)); } while (0x0)
-#define OPTIMIZER_HIDE_VAR(var)   asm (";" : "=r"(var) : "0"(var))
-#define asm_volatile_goto(x)   do { asm goto(x); asm (";"); } while (0x0)
-#if IS_GNUC
-#   if IS_NOT_ASSEMBLER  // Move compatibility symbols into a special section
-#      define compat_text_section   __attribute__((__section__(".text.compat")))
-#      define compat_data_section   __attribute__((__section__(".data.compat")))
-#   else
-#      define compat_text_section   .section ".text.compat", "ax";
-#      define compat_data_section   .section ".data.compat", "aw";
-#   endif
-#   ifdef SHARED
-/** When building a shared library, make the set section writable, because it will need to be relocated at run time anyway */
-#      define _elf_set_element(set, symbol)   static const void* __elf_set_ ## set ## _element_ ## symbol ## __ __attribute__((__section__(#set), __used__)) = &(symbol)
-#   else
-/** When building a shared library, make the set section writable, because it will need to be relocated at run time anyway */
-#      define _elf_set_element(set, symbol)   static const void* const __elf_set_ ## set ## _element_ ## symbol ## __ __attribute__((__section__(#set), __used__)) = &(symbol)
-#   endif
-/** Marker used for indirection function symbols */
-#   define libc_ifunc(name, expr)   extern void* name ## _ifunc (void) asm (#name); void* name ## _ifunc (void) { INIT_ARCH (); typeof(name)* res = expr; return res; } asm (".type " #name ", %gnu_indirect_function");
-/** The body of the function is supposed to use __get_cpu_features which will, if necessary, initialize the data first */
-#   define libm_ifunc(name, expr)   extern void* name ## _ifunc (void) asm (#name); void* name ## _ifunc (void) { typeof(name)* res = expr; return res; } asm (".type " #name ", %gnu_indirect_function");
-#   define tls_model_ie   __attribute__((__tls_model__("initial-exec")))
-#   define attr_relro   __attribute__((__section__(".data.rel.ro")))
-/** Make `symbol`, which is in the text segment, an element of `set` */
-#   define text_set_element(set, symbol)   _elf_set_element(set, symbol)
-/** Make `symbol`, which is in the data segment, an element of `set` */
-#   define data_set_element(set, symbol)   _elf_set_element(set, symbol)
-/** Make `symbol`, which is in the bss segment, an element of `set` */
-#   define bss_set_element(set, symbol)   _elf_set_element(set, symbol)
-#else  // Not GNU-GCC
-#   define compat_text_section
-#   define compat_data_section
-#   define _elf_set_element(set, symbol)
-#   define libc_ifunc(name, expr)
-#   define libm_ifunc(name, expr)
-#   define tls_model_ie
-#   define attr_relro
-#   define text_set_element(set, symbol)
-#   define data_set_element(set, symbol)
-#   define bss_set_element(set, symbol)
-#endif
-#if IS_NOT_ASSEMBLER
-#   define link_warning(sym, msg)   asm (".section .gnu.warning." sym "\n\t.string \"" msg "\"\n\t.previous");
-#else
-#   define link_warning(sym, msg)   .section .gnu.warning. ## sym ; .string msg ; .previous
-#endif
-#if (defined(__MINGW_USE_UNDERSCORE_PREFIX) && (__MINGW_USE_UNDERSCORE_PREFIX == 1))
-#   define __MINGW_IMP_SYMBOL(sym)   _imp__ ## sym
-#   define __MINGW_USYMBOL(sym)   _ ## sym
-#   define __MINGW_LSYMBOL(sym)   sym
-#else
-#   define __MINGW_IMP_SYMBOL(sym)   __imp_ ## sym
-#   define __MINGW_USYMBOL(sym)   sym
-#   define __MINGW_LSYMBOL(sym)   _ ## sym
-#endif
-#define HIDDEN(x)   _libc_ ## x
-/** Expands to the internal, hidden name of a cancellation wrapper */
-#define CANCEL(x)   _libc_ ## x ## _cancel
-/** Expands to the internal, hidden name of a non-cancellation wrapper */
-#define WRAP(x)   _libc_ ## x ## _wrap
-#define HIDDEN_STRING(x)   "_libc_" __STRING(x)
-#define WRAP_STRING(x)   "_libc_" __STRING(x) "_wrap"
-/** Symbols used both internally and externally; This makes the compiler convert use of x to use _libc_x instead */
-#define PROTO_NORMAL(x)   __dso_hidden typeof(x) x asm (HIDDEN_STRING(x))
-/** Marks the symbol as deprecated */
-#define PROTO_STD_DEPRECATED(x)   deprecated typeof(x) x
-/** Marks the symbol as both weak and deprecated */
-#define PROTO_DEPRECATED(x)   deprecated weak_function typeof(x) x
-/** Functions that have cancellation wrappers */
-#define PROTO_CANCEL(x)   PROTO_NORMAL(x), CANCEL(x)
-/** Functions that have wrappers */
-#define PROTO_WRAP(x)   PROTO_NORMAL(x), WRAP(x)
-/** Symbols that are exact clones of other symbols */
-#define MAKE_CLONE(dst, src)   __dso_hidden __attribute__((__alias__(HIDDEN_STRING((src))))) typeof(dst) HIDDEN(dst)
-/** Define or declare a datum with TYPE for KEY; CLASS can be `static` for keys used in only one source file, empty for global definitions, or `extern` for global declarations */
-#define __libc_tsd_define(CLASS, TYPE, KEY)   CLASS thread_local TYPE __libc_tsd_ ## KEY tls_model_ie;
-/** Return the `TYPE *` pointing to the current thread's datum for KEY */
-#define __libc_tsd_address(TYPE, KEY)   (&__libc_tsd_ ## KEY)
-/** Return the `TYPE` datum for KEY */
-#define __libc_tsd_get(TYPE, KEY)   (__libc_tsd_ ## KEY)
-/** Set the datum for KEY to VALUE */
-#define __libc_tsd_set(TYPE, KEY, VALUE)   __libc_tsd_ ## KEY = (VALUE)
-#define __libc_once_define(CLASS, NAME)   CLASS int NAME = 0
-#define __libc_once(ONCE_CONTROL, INIT_FUNCTION)   do { if ((ONCE_CONTROL) == 0) { INIT_FUNCTION(); (ONCE_CONTROL) = 1; } } while (0x0)
-#define __libc_once_get(ONCE_CONTROL)   ((ONCE_CONTROL) == 1)
-#if (defined(SHARED) && (!defined(NO_HIDDEN)) && IS_STDC_ABOVE_C99)  // hidden
-#   if IS_NOT_ASSEMBLER
-#      define hidden_proto(name, ...)   __hidden_proto(name, , __GI_ ## name, __VA_ARGS__)
-#      define hidden_tls_proto(name, ...)   __hidden_proto(name, thread_local, __GI_ ## name, __VA_ARGS__)
-#      define __hidden_proto(name, thread, internal, ...)   extern thread typeof(name) name asm (__hidden_asmname(#internal)) __hidden_proto_hiddenattr(attrs);
-#      define __hidden_asmname2(prefix, name)   #prefix name
-#      define __hidden_asmname1(prefix, name)   __hidden_asmname2(prefix, name)
-#      define __hidden_asmname(name)   __hidden_asmname1(__USER_LABEL_PREFIX__, name)
-#      define __hidden_ver1(local, internal, name)   extern typeof(name) __EI_ ## name asm (__hidden_asmname(#internal)); extern typeof(name) __EI_ ## name __attribute__((__alias__(__hidden_asmname(#local))))
-#      define hidden_ver(local, name)   __hidden_ver1(local, __GI_ ## name, name);
-#      define hidden_data_ver(local, name)   hidden_ver(local, name)
-#      define hidden_def(name)   __hidden_ver1(__GI_ ## name, name, name);
-#      define hidden_data_def(name)   hidden_def(name)
-#      define hidden_weak(name)   __hidden_ver1(__GI_ ## name, name, name) weak_function;
-#      define hidden_data_weak(name)   hidden_weak(name)
-#      define __hidden_nolink3(local, internal, vername)   asm (".symver " #internal ", " vername);
-#      define __hidden_nolink2(local, internal, name, version)   extern typeof(name) internal __attribute__((__alias__(#local)));  __hidden_nolink3(local, internal, #name "@" #version)
-#      define __hidden_nolink1(local, internal, name, version)   __hidden_nolink2(local, internal, name, version)
-#      define hidden_nolink(name, lib, version)   __hidden_nolink1(__GI_ ## name, __EI_ ## name, name, VERSION_ ## lib ## _ ## version)
-#      define HIDDEN_JUMPTARGET(name)   __GI_ ## name
-#   else  // IS_ASSEMBLER
-#      define hidden_def(name)   strong_alias(name, __GI_ ## name)
-#      define hidden_weak(name)   hidden_def(name)
-#      define hidden_ver(local, name)   strong_alias(local, __GI_ ## name)
-#      define hidden_data_def(name)   strong_data_alias(name, __GI_ ## name)
-#      define hidden_data_weak(name)   hidden_data_def(name)
-#      define hidden_data_ver(local, name)   strong_data_alias(local, __GI_ ## name)
-#      define HIDDEN_JUMPTARGET(name)   __GI_ ## name
-#   endif
-#else  // (defined(SHARED) && (!defined(NO_HIDDEN)))
-#   if (IS_NOT_ASSEMBLER && IS_STDC_ABOVE_C99)
-#      define hidden_proto(name, ...)
-#      define hidden_tls_proto(name, ...)
-#   else
-#      define HIDDEN_JUMPTARGET(name)   JUMPTARGET(name)
-#   endif
-#   define hidden_weak(name)
-#   define hidden_def(name)
-#   define hidden_ver(local, name)
-#   define hidden_data_weak(name)
-#   define hidden_data_def(name)
-#   define hidden_data_ver(local, name)
-#   define hidden_nolink(name, lib, version)
-#endif  // hidden
-#if IS_ASSEMBLER
-#   define HIDDEN_BUILTIN_JUMPTARGET(name)   HIDDEN_JUMPTARGET(name)
-#else
-#   define HIDDEN_BUILTIN_JUMPTARGET(name)
-#endif
-#ifdef HAVE_ASM_SET_DIRECTIVE
-#   define libc_ifunc_hidden_def1(local, name)   asm (".globl " #local "\n\t" ".hidden " #local "\n\t" ".set " #local ", " #name);
-#else
-#   define libc_ifunc_hidden_def1(local, name)   asm (".globl " #local "\n\t" ".hidden " #local "\n\t" #local " = " #name);
-#endif
-#define libc_ifunc_hidden_def(name)   libc_ifunc_hidden_def1(__GI_ ## name, name)
-#ifdef HAVE_ASM_PREVIOUS_DIRECTIVE
-#   define __make_section_unallocated(section_string)   asm (".section " section_string "\n\t.previous");
-#elif defined(HAVE_ASM_POPSECTION_DIRECTIVE)
-#   define __make_section_unallocated(section_string)   asm (".pushsection " section_string "\n\t.popsection");
-#else
-#   define __make_section_unallocated(section_string)
-#endif
-#if (ARCHX86 && (CPU_AVX || CPU_SSE2AVX))
-#   define MOVD   "vmovd"
-#   define MOVQ   "vmovq"
-#   define STMXCSR   "vstmxcsr"
-#   define LDMXCSR   "vldmxcsr"
-#else
-#   define MOVD   "movd"
-#   define MOVQ   "movq"
-#   define STMXCSR   "stmxcsr"
-#   define LDMXCSR   "ldmxcsr"
-#endif
-#if (defined(ARCHX86) && IS_WORDSIZE_64)
-#   define STOS   "stosq"
-#   define FD_ZERO_STOS   "stosq"
-#elif (defined(ARCHX86) && IS_WORDSIZE_32)
-#   define STOS   "stosl"
-#   define FD_ZERO_STOS   "stosl"
-#endif
-#if (defined(ARCHI386) && defined(_I386MACH_DISABLE_HW_INTERRUPTS))
-#   define __CLI   cli
-#   define __STI   sti
-#else
-#   define __CLI
-#   define __STI
-#endif
-
-
-// LINK SET MACROS
-
-#define __link_set_start(set)   __start_link_set_ ## set
-#define __link_set_end(set)   __stop_link_set_ ## set
-#define __link_set_count(set)   (__link_set_end(set) - __link_set_start(set))
-#define __link_set_make_entry(set, sym)   static void const* const __link_set_ ## set ## _sym_ ## sym __section("link_set_" #set) UNUSED = &sym
-#define __link_set_make_entry2(set, sym, n)   static void const* const __link_set_ ## set ## _sym_ ## sym ## _ ## n __section("link_set_" #set) UNUSED = &sym[n]
-#define __link_set_add_text(set, sym)   __link_set_make_entry(set, sym)
-#define __link_set_add_rodata(set, sym)   __link_set_make_entry(set, sym)
-#define __link_set_add_data(set, sym)   __link_set_make_entry(set, sym)
-#define __link_set_add_bss(set, sym)   __link_set_make_entry(set, sym)
-#define __link_set_add_text2(set, sym, n)   __link_set_make_entry2(set, sym, n)
-#define __link_set_add_rodata2(set, sym, n)   __link_set_make_entry2(set, sym, n)
-#define __link_set_add_data2(set, sym, n)   __link_set_make_entry2(set, sym, n)
-#define __link_set_add_bss2(set, sym, n)   __link_set_make_entry2(set, sym, n)
-#define __link_set_decl(set, ptype)   extern ptype* const __start_link_set_ ## set[]; extern ptype* const __stop_link_set_ ## set[]
-/** Iterate over the link set `set`; Because a link set is an array of pointers, pvar must be declared as `type** pvar`, and the actual entry accessed as `*pvar` */
-#define __link_set_foreach(pvar, set)   for (pvar = __link_set_start(set); pvar < __link_set_end(set); pvar++)
-/** Access the link set entry at index `idx` from set `set` */
-#define __link_set_entry(set, idx)   (__link_set_begin(set)[idx])
-
-
-// SPECIAL HURD PROCESSES
-
-#if (!(defined(HURD_PROCESSES_H) || defined(_HURD_PROCESSES_H) || defined(_HURD_PROCESSES_H_)))
-#define HURD_PROCESSES_H   (1)
-#define _HURD_PROCESSES_H   (1)
-#define _HURD_PROCESSES_H_   (1)
-
-
-enum HURD_PID {
-	HURD_PID_INIT = 1,
-	HURD_PID_STARTUP = 2,
-	HURD_PID_KERNEL = 3,
-	HURD_PID_PROC = 4
-};
-
-
-#endif  // HURD_PROCESSES_H
-
-
-// PYBOOSTER LIBRARY INTERFACE MACROS
-
-#ifndef LIB_FUNC
-#   if IS_LINTER
-#      define LIB_FUNC   /*@unused@*/
-#   elif defined(LIB_NO_DYNAMIC)
-#      define LIB_FUNC   UNUSED
-#   else
-#      define LIB_FUNC   static UNUSED
-#   endif
-#endif
-#ifndef DECL_FUNC
-#   if defined(LIB_FUNC)
-#      define DECL_FUNC   LIB_FUNC
-#   else
-#      define DECL_FUNC   static UNUSED
-#   endif
-#endif
-#ifndef MATH_FUNC
-#   if IS_LINTER
-#      define MATH_FUNC
-#   else
-#      define MATH_FUNC   NOLIBCALL ATTR_CF WUR
-#   endif
-#endif
-
-
-// HELPER FUNCTIONS, CONSTANTS, & VARIABLES
-
-DECL_FUNC int not_null_ptr(const void* restrict ptr);
-/** Defeat compiler optimizations that assume function addresses are never NULL */
-LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
-	/*@-usedef@*/
-	const void* restrict q;
-	vasm(";" : "=rm"(q) : "0"(ptr));
-	return (int)(q != 0);
-	/*@=usedef@*/
-}
-
-
-static const UNUSED unsigned char align64 integer_table[264] = {
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
-	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 10U, 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U,
-	25U, 26U, 27U, 28U, 29U, 30U, 31U, 32U, 33U, 34U, 35U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
-	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU
-};
-static const UNUSED int align64 positive_tens[8] = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
-#ifndef PADSIZE
-/** Pad chunk size */
-#   define PADSIZE   16
-#endif
-static const UNUSED char align64 fcvt_zeros[16] = "000000000000000";
-static const UNUSED char align16 blanks[PADSIZE] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-static const UNUSED char align16 zeroes[PADSIZE] = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
-static const UNUSED char align4 period[2] = ".";
-#define _ALPHABET   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define _alphabet   "abcdefghijklmnopqrstuvwxyz"
-#define _numbers   "0123456789"
-#define _digits   _numbers
-#define _hexnumbers   "0123456789ABCDEFabcdef"
-#define _hexdigits   _hexnumbers
-static const UNUSED char align16 digits[16] = _digits;
-#define str_digit   digits
-static const UNUSED char align32 hexdigits[32] = _hexnumbers;
-#define xdigits   hexdigits
-static const UNUSED char align32 xdigits_l[32] = "0123456789abcdef";
-static const UNUSED char align32 xdigits_u[32] = "0123456789ABCDEF";
-#define hexdigits_l   xdigits_l
-#define hexdigits_u   xdigits_u
-static const UNUSED char align16 octal_digits[16] = "01234567";
-static const UNUSED char align32 ALPHABET[32] = _ALPHABET;
-static const UNUSED char align32 alphabet[32] = _alphabet;
-static const UNUSED char align64 a64l_digits[65] = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-/** Upper-case digits */
-static const UNUSED char align64 _itoa_upper_digits[64] = _numbers _ALPHABET;
-/** Lower-case digits */
-static const UNUSED char align64 _itoa_lower_digits[64] = _numbers _alphabet;
-static const UNUSED char align8 not_available[4] = "\377";
-static const UNUSED char align4 empty[2] = "";
-static const UNUSED char align4 null_char[2] = "\0";
-static const UNUSED char align8 NEWLINE[4] = { '\n', '\n', '\0', '\0' };
-/** The set of "direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr */
-static const UNUSED unsigned char align16 direct_tab[16] = {
-	0U, 0x26U, 0U, 0U, 0x81U, 0xf3U, 0xffU, 0x87U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
-};
-/** The set of "direct and optional direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr ! " # $ % & * ; < = > @ [ ] ^ _ ` { | } */
-static const UNUSED unsigned char align16 xdirect_tab[16] = {
-	0U, 0x26U, 0U, 0U, 0xffU, 0xf7U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xefU, 0xffU, 0xffU, 0xffU, 0x3fU
-};
-/** The set of "extended base64 characters": A-Z a-z 0-9 + / - */
-static const UNUSED unsigned char align16 xbase64_tab[16] = {
-	0U, 0U, 0U, 0U, 0U, 0xa8U, 0xffU, 3U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
-};
-static const UNUSED int align16 nibblemap[16] = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
-#define A64L_TABLE_BASE   46
-#define A64L_TABLE_SIZE   77
-static const UNUSED char align64 a64l_table[77] = {
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,
-	0x40, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-	27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 0x40, 0x40, 0x40, 0x40, 0x40,
-	0x40, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52,
-	53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-};
-
-
-// GLOBAL CODE VARIABLES
-
-UNUSED char** environ = NULL;
-#define __environ   environ
-#define ___environ   environ
-#define _environ   environ
-#define environ   environ
-UNUSED char** __env_map = NULL;
-static atomic volatile UNUSED int exit_counter;
-static volatile UNUSED int progslot;
-static atomic volatile UNUSED int align64 tmlock[2] = { 0, 0 };
-static atomic volatile UNUSED int align64 memlock[2] = { 0, 0 };
-static const UNUSED unsigned int __page_size = (unsigned int)PAGE_SIZE;
-static const UNUSED unsigned int __page_shift = (unsigned int)PAGE_SHIFT;
-#define __getpagesize()   ((unsigned int)__page_size)
-#define getpagesize()   ((unsigned int)__page_size)
-#define __getpageshift()   ((unsigned int)__page_shift)
-#define getpageshift()   ((unsigned int)__page_shift)
-
-
-#endif  // STANDARD_MACROS_SEEN
-
-
 /* MACHINE REGISTERS */
 
 
@@ -9133,9 +8392,9 @@ enum REGISTERS {
 	REG_SEQSTAT = 46
 };
 #elif defined(ARCHITANIUM)
-typedef struct align16 ia64_fpreg {
+typedef struct ia64_fpreg {
 	union __union_ia64_fpreg { unsigned long bits[2]; } u;
-} ia64_fpreg_t;
+} align16   ia64_fpreg_t;
 struct pt_all_user_regs {
 	unsigned long nat, cr_iip, cfm, cr_ipsr, pr;
 	unsigned long gr[32];
@@ -9219,12 +8478,12 @@ typedef double   fpregset_t[NFPREG], elf_fpreg_t, elf_fpregset_t[NFPREG];
 /** Container for Altivec/VMX Vector Status and Control Register; Only 32-bits but can only be copied to/from a 128-bit vector register; So we allocated a whole quadword speedup save/restore */
 typedef struct _libc_vscr { unsigned int __pad[3], vscr_word; }   vscr_t;
 /** Container for Altivec/VMX registers and status; Must to be aligned on a 16-byte boundary */
-typedef struct align16 _libc_vrstate {
+typedef struct _libc_vrstate {
 	unsigned int vrregs[32][4];
 	vscr_t vscr;
 	unsigned int vrsave;
 	unsigned int __pad[3];
-} vrregset_t;
+} align16   vrregset_t;
 typedef struct pt_regs {
 	unsigned long gpr[32], nip, msr, orig_gpr3, ctr, link, xer, ccr, mq;
 	unsigned long trap, dar, dsisr, result;
@@ -9237,7 +8496,7 @@ typedef struct user {
 	unsigned long magic;
 	char u_comm[32];
 } user_t;
-typedef struct __elf_vrreg { unsigned u[4]; } aligned16   elf_vrreg_t, elf_vrregset_t[NVRREG];
+typedef struct __elf_vrreg { unsigned int u[4]; } align16   elf_vrreg_t, elf_vrregset_t[NVRREG];
 #elif defined(ARCHPOWERPC32)
 #   define NGREG   48
 #   define NFPREG   33
@@ -9270,7 +8529,7 @@ typedef struct user {
 	unsigned long magic;
 	char u_comm[32];
 } user_t;
-typedef struct __elf_vrreg { unsigned int u[4]; } aligned16   elf_vrreg_t, elf_vrregset_t[NVRREG];
+typedef struct __elf_vrreg { unsigned int u[4]; } align16   elf_vrreg_t, elf_vrregset_t[NVRREG];
 #elif defined(ARCHSPARC)
 #   define FPU_REGS_TYPE   unsigned int
 #   define FPU_DREGS_TYPE   unsigned long long
@@ -9703,132 +8962,100 @@ typedef greg_t   gregset_t[NGREG];
 #endif  // REGISTERS_H
 
 
-/* NORETURN (<stdnoreturn.h>) */
+/* TIME CONSTANTS MACROS */
 
 
-#if (!(defined(STDNORETURN_H) || defined(__STDNORETURN_H) || defined(__STDNORETURN_H_) || defined(__noreturn_is_defined)))
-#define STDNORETURN_H   (1)
-#define _STDNORETURN_H   (1)
-#define __STDNORETURN_H   (1)
-#define __STDNORETURN_H_   (1)
-#define __noreturn_is_defined   (1)
+#ifndef TIME_CONSTANTS_MACROS
+#define TIME_CONSTANTS_MACROS   (1)
 
 
-/** @defgroup NoReturn Function declaration indicating that the function does not return by executing the return statement or by reaching the end of the function body
-@{ */  // (FB){
+// SECONDS
 
-#if (IS_STDC_BELOW_C11 && IS_GNUC)
-#   define noreturn   __attribute__((__noreturn__))
-#   define _Noreturn   __attribute__((__noreturn__))
-#elif (defined(COMPILER_MICROSOFT) && (defined(_MSC_VER) && (_MSC_VER >= 1200)))
-#   define _Noreturn   __declspec(noreturn)
-#elif (defined(LINTER_CLANG) && __has_extension(attribute_analyzer_noreturn))
-#   define noreturn   __attribute__((analyzer_noreturn))
-#   define _Noreturn   __attribute__((analyzer_noreturn))
-#elif IS_LINTER
-#   define _Noreturn   /*@noreturn@*/
-#   define noreturn   /*@noreturn@*/
-#else
-#   define noreturn   _Noreturn
-#endif  // noreturn
-#define Noreturn   _Noreturn
-#define __noreturn   _Noreturn
-#define DECLSPEC_NORETURN   _Noreturn
-#define PR_PRETEND_NORETURN   _Noreturn
-
-/** @} */  // }
-
-
-#endif  // STDNORETURN_H
-
-
-/* BOOLEAN DATATYPE (<stdbool.h>) */
-
-
-#if (!(defined(__bool_true_false_are_defined) || defined(STDBOOL_H) || defined(__STDBOOL_H) || defined(_BOOL_H) || defined(_DEF_WINBOOL_) || defined(_BOOLEAN_H)))  // http://www.cplusplus.com/reference/cstdbool/ & http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdbool.h.html
-#define __bool_true_false_are_defined   (1)
-#define STDBOOL_H   (1)
-#define __STDBOOL_H   (1)
-#define __STDBOOL_H_   (1)
-#define _BOOL_H   (1)
-#define _BOOLEAN_H   (1)
-#define _DEF_WINBOOL_   (1)
-
-
-/** @def bool
-Boolean Datatype */
-#if IS_LINTER
-#   define _Bool   int
-#   define bool   int
-#elif IS_STDC_BELOW_C99
-#   define _Bool   int
-#   define bool   int
-#elif IS_NOT_CPLUSPLUS
-#   define bool   _Bool
-#endif
-#if (!(defined(BOOL) || IS_OBJ_C))
-/** Support Objective-C-Style "BOOL" datatype */
-#   define BOOL   bool
-/** Objective-C false boolean constant */
-#   define __objc_no   ((bool)0)
-/** Objective-C true boolean constant */
-#   define __objc_yes   ((bool)1)
-#endif
-/** MacOS historic boolean datatype */
-typedef unsigned char   Boolean;
-/** Mach-style boolean datatype */
-#define boolean_t   bool
-#define MACH_MSG_TYPE_BOOLEAN   bool
-/** Windows boolean datatype */
-typedef int   WINBOOL;
-#define PRBool   WINBOOL
-/** Windows boolean pointer datatype */
-typedef WINBOOL*   PBOOL;
-/** Windows boolean pointer datatype */
-typedef WINBOOL*   LPBOOL;
-/** Use PRPackedBool within structs where bitfields are not desirable but minimum and consistant overhead matters */
-typedef unsigned char   PRPackedBool;
-/** Status code used by some routines that have a single point of failure or special status return */
-typedef enum PRStatus_enum { PR_FAILURE = -1, PR_SUCCESS = 0 }   PRStatus;
-typedef enum PRTruth_enum { PR_FALSE = 0, PR_TRUE = 1 }   PRTruth;
-typedef enum truth_enum { Unknown = -1, False = 0, True = 1, Sometimes = 2, Depends = 3 }   truth;
-
-
-#define no   ((bool)0)
-#define NO   no
-#define NOPE   no
-#define yes   ((bool)1)
-#define YES   yes
-#ifndef NOT
-#   define NOT(expr)   (!(expr))
-#endif
-#ifndef false
-#   define false   ((bool)0)
-#endif
-#ifndef FALSE
-#   define FALSE   ((bool)0)
-#endif
-#ifndef _FALSE
-#   define _FALSE   ((bool)0)
-#endif
-#ifndef true
-#   define true   ((bool)1)
-#endif
-#ifndef TRUE
-#   define TRUE   ((bool)1)
-#endif
-#ifndef _TRUE
-#   define _TRUE   ((bool)1)
-#endif
-#ifndef objc_yes
-#   define objc_yes   __objc_yes
-#endif
-#ifndef objc_no
-#   define objc_no   __objc_no
+/** Nanoseconds per microsecond */
+#define NSEC_PER_USEC   1000ULL
+/** Nanoseconds per millisecond */
+#define NSEC_PER_MSEC   1000000ULL
+/** Nanoseconds per second */
+#define NSEC_PER_SEC   1000000000ULL
+/** Microseconds per second */
+#define USEC_PER_SEC   1000000ULL
+/** Number of seconds in a anomalistic month */
+#define SECONDS_IN_ANOMALISTIC_MONTH   2380713.12
+/** Number of seconds in a draconic month */
+#define SECONDS_IN_DRACONIC_MONTH   2351135.808
+/** Number of seconds in a Gregorian month */
+#define SECONDS_IN_GREGORIAN_MONTH   2629746
+/** Number of seconds in a Julian month */
+#define SECONDS_IN_JULIAN_MONTH   2629800
+/** Number of seconds in a sidereal month */
+#define SECONDS_IN_SIDEREAL_MONTH   2360591.6
+/** Number of seconds in a synodic month */
+#define SECONDS_IN_SYNODIC_MONTH   2551442.8
+/** Number of seconds in a tropical month */
+#define SECONDS_IN_TROPICAL_MONTH   2360584.512
+/** Number of seconds in an anomalistic year */
+#define SECONDS_IN_ANOMALISTIC_YEAR   31558432.5504
+/** Number of seconds in a draconic year */
+#define SECONDS_IN_DRACONIC_YEAR   29947974.5563
+/** Number of seconds in a Gregorian year */
+#define SECONDS_IN_GREGORIAN_YEAR   31556952
+/** Number of seconds in a Julian year */
+#define SECONDS_IN_JULIAN_YEAR   31557600
+/** Number of seconds in a lunar year */
+#define SECONDS_IN_LUNAR_YEAR   30617568
+/** Number of seconds in a sidereal year */
+#define SECONDS_IN_SIDEREAL_YEAR   31558149.504
+/** Number of seconds in a tropical year */
+#define SECONDS_IN_TROPICAL_YEAR   31556925.445
+#ifndef AVGSECSPERYEAR
+/** The Gregorian year averages 365.2425 days, which is 31556952 seconds */
+#   define AVGSECSPERYEAR   31556952L
 #endif
 
 
-#endif  // STDBOOL_H
+// DAYS
+
+/** Number of days in a full month */
+#define DAYS_IN_FULL_MONTH   30
+/** Number of days in a hollow month */
+#define DAYS_IN_HOLLOW_MONTH   29
+/** Number of days in a anomalistic month */
+#define DAYS_IN_ANOMALISTIC_MONTH   27.55455
+/** Number of days in a draconic month */
+#define DAYS_IN_DRACONIC_MONTH   27.21222
+/** Number of days in a sidereal month */
+#define DAYS_IN_SIDEREAL_MONTH   27.32166
+/** Number of days in a synodic month */
+#define DAYS_IN_SYNODIC_MONTH   29.53059
+/** Number of days in a tropical month */
+#define DAYS_IN_TROPICAL_MONTH   27.32158
+/** Number of days in 4 years */
+#define DAYS_PER_4Y   1461
+/** Number of days in 100 years */
+#define DAYS_PER_100Y   36524
+/** Number of days in 400 years */
+#define DAYS_PER_400Y   146097
+
+
+// YEARS
+
+#ifndef YEARSPERREPEAT
+/** Years before a Gregorian repeat */
+#   define YEARSPERREPEAT   400
+#endif
+
+
+// MISCELLANEOUS TIME CONSTANTS
+
+#define LEAPOCH   (951868800LL)
+#define CLOCKS_PER_SEC   (1000000L)
+#define CLK_TCK   CLOCKS_PER_SEC
+
+static const UNUSED int days_per_month[16] = { 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 0, 0, 0 };
+static const UNUSED int secs_through_month[16] = { 0, 2678400, 5097600, 7776000, 10368000, 13046400, 15638400, 18316800, 20995200, 23587200, 26265600, 28857600, 0, 0, 0, 0 };
+
+
+#endif  // TIME_CONSTANTS_MACROS
 
 
 /* MATH CONSTANTS */
@@ -9877,19 +9104,19 @@ __extension__ static const UNUSED decimal128 zerodl = 0.0DL;
 #      endif
 #   endif
 #endif
-static const UNUSED float align32 ZEROF[2] = { 0.0F, -0.0F };
-static const UNUSED double align64 ZERO[2] = { 0.0, -0.0 };
+static const UNUSED float ZEROF[2] align16 = { 0.0F, -0.0F };
+static const UNUSED double ZERO[2] align16 = { 0.0, -0.0 };
 #if SUPPORTS_LONG_DOUBLE
-static const UNUSED long double align64 ZEROL[2] = { 0.0L, -0.0L };
+static const UNUSED long double ZEROL[2] align32 = { 0.0L, -0.0L };
 #endif
 #if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
-__extension__ static const UNUSED float128 align64 ZEROQ[2] = { 0.0F128, -0.0F128 };
+__extension__ static const UNUSED float128 ZEROQ[2] align32 = { 0.0F128, -0.0F128 };
 #endif
 #if SUPPORTS_DECIMAL_FLOATS
-__extension__ static const UNUSED decimal32 align32 ZERODF[2] = { 0.0DF, -0.0DF };
-__extension__ static const UNUSED decimal64 align64 ZERODD[2] = { 0.0DD, -0.0DD };
+__extension__ static const UNUSED decimal32 ZERODF[2] align16 = { 0.0DF, -0.0DF };
+__extension__ static const UNUSED decimal64 ZERODD[2] align16 = { 0.0DD, -0.0DD };
 #   if SUPPORTS_DECIMAL128
-__extension__ static const UNUSED decimal128 align64 ZERODL[2] = { 0.0DL, -0.0DL };
+__extension__ static const UNUSED decimal128 ZERODL[2] align32 = { 0.0DL, -0.0DL };
 #   endif
 #endif
 #define NEG_ZERO   (-0.0)
@@ -10023,7 +9250,7 @@ __extension__ static const UNUSED decimal128 align64 ZERODL[2] = { 0.0DL, -0.0DL
 #   define ipio2_items   66
 #endif
 
-static const UNUSED int32_t align32 ipio2[ipio2_items] = {
+static const UNUSED int32_t ipio2[ipio2_items] align32 = {
 	0xa2f983, 0x6e4e44, 0x1529fc, 0x2757d1, 0xf534dd, 0xc0db62,
 	0x95993c, 0x439041, 0xfe5163, 0xabdebb, 0xc561b7, 0x246e3a,
 	0x424dd2, 0xe00649, 0x2eea09, 0xd1921c, 0xfe1deb, 0x1cb129,
@@ -10144,14 +9371,14 @@ static const UNUSED int32_t align32 ipio2[ipio2_items] = {
 };
 
 /** 0x4b000000, 0xcb000000 */
-static const UNUSED float align32 TWO23[2] = { 8.3886080000E+6F, -8.3886080000E+6F };
+static const UNUSED float TWO23[2] align16 = { 8.3886080000E+6F, -8.3886080000E+6F };
 
 /** 0x43300000, 0xc3300000 */
-static const UNUSED double align64 TWO52[2] = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
+static const UNUSED double TWO52[2] align16 = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
 
 #if SUPPORTS_LONG_DOUBLE
 /** 0x406f000000000000, 0xc06f000000000000 */
-static const UNUSED long double align64 TWO112[2] = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
+static const UNUSED long double TWO112[2] align32 = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
 #endif
 
 static const UNUSED double BIGX = 7.09782712893383973096E+2;
@@ -10161,7 +9388,7 @@ static const UNUSED double z_rooteps = 7.4505859692E-9;
 /** This variable is used by `gamma()` and `lgamma()` */
 extern UNUSED int signgam;
 
-static const UNUSED double align64 GAMMA_INTEGRAL[32] = {
+static const UNUSED double GAMMA_INTEGRAL[32] align64 = {
 	1.0, 1.0, 2.0, 6.0,
 	24.0, 120.0, 720.0, 5040.0,
 	40320.0, 362880.0, 3628800.0, 39916800.0,
@@ -10178,7 +9405,7 @@ static const UNUSED double align64 GAMMA_INTEGRAL[32] = {
 	1124000727777607680000.0
 };
 
-static const UNUSED double align64 LANCZOS_DEN_COEFFS[16] = {
+static const UNUSED double LANCZOS_DEN_COEFFS[16] align64 = {
 	0.0, 39916800.0,
 	120543840.0, 150917976.0,
 	105258076.0, 45995730.0,
@@ -10187,7 +9414,7 @@ static const UNUSED double align64 LANCZOS_DEN_COEFFS[16] = {
 	1925.0, 66.0, 1.0
 };
 
-static const UNUSED double align64 LANCZOS_NUM_COEFFS[16] = {
+static const UNUSED double LANCZOS_NUM_COEFFS[16] align64 = {
 	23531376880.410759688572007674451636754734846804940,
 	42919803642.649098768957899047001988850926355848959,
 	35711959237.355668049440185451547166705960488635843,
@@ -10203,19 +9430,19 @@ static const UNUSED double align64 LANCZOS_NUM_COEFFS[16] = {
 	2.5066282746310002701649081771338373386264310793408
 };
 
-static const UNUSED double align64 PIo2[8] = {
+static const UNUSED double PIo2[8] align32 = {
 	1.57079625129699707031, 7.54978941586159635335E-08,
 	5.39030252995776476554E-15, 3.28200341580791294123E-22,
 	1.27065575308067607349E-29, 1.22933308981111328932E-36,
 	2.73370053816464559624E-44, 2.16741683877804819444E-51
 };
 
-static const UNUSED char align32 debruijn32[32] = {
+static const UNUSED char debruijn32[32] align32 = {
 	0, 1, 23, 2, 29, 24, 19, 3, 30, 27, 25, 11, 20, 8, 4, 13,
 	31, 22, 28, 18, 26, 10, 7, 12, 21, 17, 9, 6, 16, 5, 15, 14
 };
 
-static const UNUSED char align64 debruijn64[64] = {
+static const UNUSED char debruijn64[64] align64 = {
 	0, 1, 2, 53, 3, 7, 54, 27, 4, 38, 41, 8, 34, 55, 48, 28, 62, 5,
 	39, 46, 44, 42, 22, 9, 24, 35, 59, 56, 49, 18, 29, 11, 63, 52, 6,
 	26, 37, 40, 33, 47, 61, 45, 43, 21, 23, 58, 17, 10, 51, 25, 36,
@@ -13984,7 +13211,7 @@ typedef union ldshape {
 
 
 /** IEEE2bits for long double; This is used to access various parts of a long double */
-typedef alignXF union IEEEl2bits {
+typedef union IEEEl2bits {
 	long double e;
 	struct IEEEl_bits {
 #   if IS_LITTLE_ENDIAN
@@ -14001,7 +13228,7 @@ typedef alignXF union IEEEl2bits {
 		unsigned int manl:32;
 #   endif
 	} bits;
-} IEEEl2bits;
+} alignXF   IEEEl2bits;
 #   define mask_nbit_l(x)   ((x).bits.manh &= 0x7fffffff)
 #   define LDBL_MANH_SIZE   (32)
 #   define LDBL_MANL_SIZE   (32)
@@ -15144,723 +14371,6 @@ This macro expands to a system-dependent integral expression that signifies that
 
 
 #endif  // SYSEXITS_H
-
-
-/* ANSI SGR CODES */
-
-
-#if (!(defined(ANSI_SGR_CODES_H) || defined(_ANSI_SGR_CODES_H) || defined(_ANSI_SGR_CODES_H_)))
-#define ANSI_SGR_CODES_H   (1)
-#define _ANSI_SGR_CODES_H   (1)
-#define _ANSI_SGR_CODES_H_   (1)
-
-
-/* EFFECTS */
-
-/** @defgroup ANSI_SGR_Effects Macros for various ANSI SGR Effects
-@{ */  // (FB){
-
-#ifndef DISABLE_ANSI_SGR
-/** Reset ANSI SGR (Select Graphic Rendition) Settings */
-#   define ANSI_SGR_RESET   "\x1b[0m"
-/** Reset ANSI SGR (Select Graphic Rendition) Settings */
-#   define ANSI_SGR_END   "\x1b[0m"
-/** ANSI SGR (Select Graphic Rendition): Bold */
-#   define ANSI_SGR_BOLD   "\x1b[1m"
-/** ANSI SGR (Select Graphic Rendition): Bold/Faint Off */
-#   define ANSI_SGR_BOLD_OFF   "\x1b[22m"
-/** ANSI SGR (Select Graphic Rendition): Faint */
-#   define ANSI_SGR_FAINT   "\x1b[2m"
-/** ANSI SGR (Select Graphic Rendition): Italic */
-#   define ANSI_SGR_ITALIC   "\x1b[3m"
-/** ANSI SGR (Select Graphic Rendition): Italic Off */
-#   define ANSI_SGR_ITALIC_OFF   "\x1b[23m"
-/** ANSI SGR (Select Graphic Rendition): Underline */
-#   define ANSI_SGR_UNDERLINE   "\x1b[4m"
-/** ANSI SGR (Select Graphic Rendition): Underline Off */
-#   define ANSI_SGR_UNDERLINE_OFF   "\x1b[24m"
-/** ANSI SGR (Select Graphic Rendition): Conceal */
-#   define ANSI_SGR_CONCEAL   "\x1b[8m"
-/** ANSI SGR (Select Graphic Rendition): Reveal (Conceal Off) */
-#   define ANSI_SGR_REVEAL   "\x1b[28m"
-/** ANSI SGR (Select Graphic Rendition): Crossed-Out */
-#   define ANSI_SGR_CROSSEDOUT   "\x1b[9m"
-/** ANSI SGR (Select Graphic Rendition): Crossed-Out Off */
-#   define ANSI_SGR_CROSSEDOUT_OFF   "\x1b[29m"
-/** ANSI SGR (Select Graphic Rendition): Swap foreground and background */
-#   define ANSI_SGR_SWAP_FG_BG   "\x1b[7m"
-#else
-#   define ANSI_SGR_RESET
-#   define ANSI_SGR_END
-#   define ANSI_SGR_BOLD
-#   define ANSI_SGR_BOLD_OFF
-#   define ANSI_SGR_FAINT
-#   define ANSI_SGR_ITALIC
-#   define ANSI_SGR_ITALIC_OFF
-#   define ANSI_SGR_UNDERLINE
-#   define ANSI_SGR_UNDERLINE_OFF
-#   define ANSI_SGR_CONCEAL
-#   define ANSI_SGR_REVEAL
-#   define ANSI_SGR_CROSSEDOUT
-#   define ANSI_SGR_CROSSEDOUT_OFF
-#   define ANSI_SGR_SWAP_FG_BG
-#endif
-
-/** @} */  // }
-
-
-/* COLORS */
-
-/** @defgroup ANSI_SGR_Colors Macros for various ANSI SGR Colors
-@{ */  // (FB){
-
-#ifndef DISABLE_ANSI_SGR
-/** ANSI SGR (Select Graphic Rendition): Foreground Black */
-#   define ANSI_SGR_FG_BLACK   "\x1b[30m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Red */
-#   define ANSI_SGR_FG_RED   "\x1b[31m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Green */
-#   define ANSI_SGR_FG_GREEN   "\x1b[32m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Yellow */
-#   define ANSI_SGR_FG_YELLOW   "\x1b[33m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Blue */
-#   define ANSI_SGR_FG_BLUE   "\x1b[34m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Magenta */
-#   define ANSI_SGR_FG_MAGENTA   "\x1b[35m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Cyan */
-#   define ANSI_SGR_FG_CYAN   "\x1b[36m"
-/** ANSI SGR (Select Graphic Rendition): Foreground White */
-#   define ANSI_SGR_FG_WHITE   "\x1b[37m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Black & Bold */
-#   define ANSI_SGR_FG_BBLACK   "\x1b[1;30m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Red & Bold */
-#   define ANSI_SGR_FG_BRED   "\x1b[1;31m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Green & Bold */
-#   define ANSI_SGR_FG_BGREEN   "\x1b[1;32m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Yellow & Bold */
-#   define ANSI_SGR_FG_BYELLOW   "\x1b[1;33m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Blue & Bold */
-#   define ANSI_SGR_FG_BBLUE   "\x1b[1;34m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Magenta & Bold */
-#   define ANSI_SGR_FG_BMAGENTA   "\x1b[1;35m"
-/** ANSI SGR (Select Graphic Rendition): Foreground Cyan & Bold */
-#   define ANSI_SGR_FG_BCYAN   "\x1b[1;36m"
-/** ANSI SGR (Select Graphic Rendition): Foreground White & Bold */
-#   define ANSI_SGR_FG_BWHITE   "\x1b[1;37m"
-/** ANSI SGR (Select Graphic Rendition): Background Black */
-#   define ANSI_SGR_BG_BLACK   "\x1b[40m"
-/** ANSI SGR (Select Graphic Rendition): Background Red */
-#   define ANSI_SGR_BG_RED   "\x1b[41m"
-/** ANSI SGR (Select Graphic Rendition): Background Green */
-#   define ANSI_SGR_BG_GREEN   "\x1b[42m"
-/** ANSI SGR (Select Graphic Rendition): Background Yellow */
-#   define ANSI_SGR_BG_YELLOW   "\x1b[43m"
-/** ANSI SGR (Select Graphic Rendition): Background Blue */
-#   define ANSI_SGR_BG_BLUE   "\x1b[44m"
-/** ANSI SGR (Select Graphic Rendition): Background Magenta */
-#   define ANSI_SGR_BG_MAGENTA   "\x1b[45m"
-/** ANSI SGR (Select Graphic Rendition): Background Cyan */
-#   define ANSI_SGR_BG_CYAN   "\x1b[46m"
-/** ANSI SGR (Select Graphic Rendition): Background White */
-#   define ANSI_SGR_BG_WHITE   "\x1b[47m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Black */
-#   define ANSI_SGR_BG_BRIGHT_BLACK   "\x1b[100m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Red */
-#   define ANSI_SGR_BG_BRIGHT_RED   "\x1b[101m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Green */
-#   define ANSI_SGR_BG_BRIGHT_GREEN   "\x1b[102m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Yellow */
-#   define ANSI_SGR_BG_BRIGHT_YELLOW   "\x1b[103m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Blue */
-#   define ANSI_SGR_BG_BRIGHT_BLUE   "\x1b[104m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Magenta */
-#   define ANSI_SGR_BG_BRIGHT_MAGENTA   "\x1b[105m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright Cyan */
-#   define ANSI_SGR_BG_BRIGHT_CYAN   "\x1b[106m"
-/** ANSI SGR (Select Graphic Rendition): Background Bright White */
-#   define ANSI_SGR_BG_BRIGHT_WHITE   "\x1b[107m"
-/** ANSI SGR (Select Graphic Rendition): Select RGB foreground color */
-#   define SET_ANSI_SGR_FG_COLOR(r, g, b)   "\x1b[38;2;" S(r) ";" S(g) ";" S(b) "m"
-/** ANSI SGR (Select Graphic Rendition): Select RGB background color */
-#   define SET_ANSI_SGR_BG_COLOR(r, g, b)   "\x1b[48;2;" S(r) ";" S(g) ";" S(b) "m"
-/** ANSI SGR (Select Graphic Rendition): Move cursor to start-of-line */
-#   define ANSI_SGR_CUR_START   "\x1b[1000D"
-#else
-#   define ANSI_SGR_FG_BLACK
-#   define ANSI_SGR_FG_RED
-#   define ANSI_SGR_FG_GREEN
-#   define ANSI_SGR_FG_YELLOW
-#   define ANSI_SGR_FG_BLUE
-#   define ANSI_SGR_FG_MAGENTA
-#   define ANSI_SGR_FG_CYAN
-#   define ANSI_SGR_FG_WHITE
-#   define ANSI_SGR_FG_BBLACK
-#   define ANSI_SGR_FG_BRED
-#   define ANSI_SGR_FG_BGREEN
-#   define ANSI_SGR_FG_BYELLOW
-#   define ANSI_SGR_FG_BBLUE
-#   define ANSI_SGR_FG_BMAGENTA
-#   define ANSI_SGR_FG_BCYAN
-#   define ANSI_SGR_FG_BWHITE
-#   define ANSI_SGR_BG_BLACK
-#   define ANSI_SGR_BG_RED
-#   define ANSI_SGR_BG_GREEN
-#   define ANSI_SGR_BG_YELLOW
-#   define ANSI_SGR_BG_BLUE
-#   define ANSI_SGR_BG_MAGENTA
-#   define ANSI_SGR_BG_CYAN
-#   define ANSI_SGR_BG_WHITE
-#   define ANSI_SGR_BG_BRIGHT_BLACK
-#   define ANSI_SGR_BG_BRIGHT_RED
-#   define ANSI_SGR_BG_BRIGHT_GREEN
-#   define ANSI_SGR_BG_BRIGHT_YELLOW
-#   define ANSI_SGR_BG_BRIGHT_BLUE
-#   define ANSI_SGR_BG_BRIGHT_MAGENTA
-#   define ANSI_SGR_BG_BRIGHT_CYAN
-#   define ANSI_SGR_BG_BRIGHT_WHITE
-#   define SET_ANSI_SGR_FG_COLOR(r, g, b)
-#   define SET_ANSI_SGR_BG_COLOR(r, g, b)
-#   define ANSI_SGR_CUR_START   "\x1b[1000D"
-#endif
-
-/** @} */  // }
-
-
-/* LENGTH OF ANSI STRINGS */
-
-#ifndef DISABLE_ANSI_SGR
-/** The string length of ANSI reset property */
-#   define ANSI_SGR_END_LEN   4
-/** The string length of ANSI foreground property */
-#   define ANSI_SGR_FG_LEN   5
-/** The string length of ANSI foreground+bold property */
-#   define ANSI_SGR_FG_BOLD_LEN   7
-/** The string length of ANSI cursor-start-of-line property */
-#   define ANSI_SGR_CUR_START_LEN   7
-#else
-#   define ANSI_SGR_END_LEN   0
-#   define ANSI_SGR_FG_LEN   0
-#   define ANSI_SGR_FG_BOLD_LEN   0
-#   define ANSI_SGR_CUR_START_LEN   0
-#endif
-
-
-#endif  // ANSI_SGR_CODES_H
-
-
-/* BEOS BUILD (<BeBuild.h>) */
-
-
-#if ((!(defined(BE_BUILD_H) || defined(_BE_BUILD_H) || defined(_BE_BUILD_H_))) && defined(ALLOW_HEADER_BE_BUILD_H) && (defined(OSBEOS) || defined(OSHAIKU)))
-#define BE_BUILD_H   (1)
-#define _BE_BUILD_H   (1)
-#define _BE_BUILD_H_   (1)
-
-
-// BEOS/HAIKU PLATFORM
-
-#if IS_64
-/** Defined if the system is 64-bit */
-#   define __HAIKU_ARCH_64_BIT   1
-/** Defined if the system is 64-bit */
-#   define HAIKU_ARCH_64_BIT   1
-/** Defined if the system is 64-bit */
-#   define HAIKU_HOST_PLATFORM_64_BIT   1
-#   define B_HAIKU_64_BIT   1
-#else
-/** Defined if the system is 32-bit */
-#   define __HAIKU_ARCH_32_BIT   1
-/** Defined if the system is 32-bit */
-#   define HAIKU_ARCH_32_BIT   1
-/** Defined if the system is 32-bit */
-#   define HAIKU_HOST_PLATFORM_32_BIT   1
-#   define B_HAIKU_32_BIT   1
-#endif
-#if (defined(HAIKU_ARCH_64_BIT) && (!defined(HAIKU_ARCH_BITS)))
-#   define HAIKU_ARCH_BITS   64
-#elif (defined(HAIKU_ARCH_32_BIT) && (!defined(HAIKU_ARCH_BITS)))
-#   define HAIKU_ARCH_BITS   32
-#endif
-#ifndef __HAIKU_ARCH_BITS
-#   define __HAIKU_ARCH_BITS   HAIKU_ARCH_BITS
-#endif
-#ifndef HAIKU_ARCH_PHYSICAL_BITS
-#   define HAIKU_ARCH_PHYSICAL_BITS   HAIKU_ARCH_BITS
-#endif
-#ifndef __HAIKU_ARCH_PHYSICAL_BITS
-#   define __HAIKU_ARCH_PHYSICAL_BITS   HAIKU_ARCH_BITS
-#endif
-#if (HAIKU_ARCH_PHYSICAL_BITS == 32)
-#   define HAIKU_ARCH_PHYSICAL_32_BIT   1
-#   define __HAIKU_ARCH_PHYSICAL_32_BIT   1
-#   define B_HAIKU_PHYSICAL_32_BIT   1
-#   define B_HAIKU_PHYSICAL_BITS   32
-#elif (HAIKU_ARCH_PHYSICAL_BITS == 64)
-#   define HAIKU_ARCH_PHYSICAL_64_BIT   1
-#   define __HAIKU_ARCH_PHYSICAL_64_BIT   1
-#   define B_HAIKU_PHYSICAL_64_BIT   1
-#   define B_HAIKU_PHYSICAL_BITS   64
-#else
-#   error   "Unsupported physical bitness (32-bit or 64-bit only)!"
-#endif
-#if ((!defined(__HAIKU_BIG_ENDIAN)) && (!defined(__HAIKU_LITTLE_ENDIAN)))
-#   if IS_LITTLE_ENDIAN
-#      define HAIKU_LITTLE_ENDIAN   1
-#      define __HAIKU_LITTLE_ENDIAN   1
-#   elif IS_BIG_ENDIAN
-#      define HAIKU_BIG_ENDIAN   1
-#      define __HAIKU_BIG_ENDIAN   1
-#   endif
-#endif
-#ifdef ARCHX86_64
-#   define __HAIKU_ARCH   "x86_64"
-#   define __HAIKU_ARCH_ABI   "x86_64"
-#   define __HAIKU_ARCH_X86_64   1
-#   ifndef HAIKU_ARCH_BITS
-#      define HAIKU_ARCH_BITS   64
-#   endif
-#   ifndef __HAIKU_ARCH_BITS
-#      define __HAIKU_ARCH_BITS   64
-#   endif
-#elif defined(ARCHX86_32)
-#   define __HAIKU_ARCH   "x86"
-#   define __HAIKU_ARCH_ABI   "x86"
-#   define __HAIKU_ARCH_X86   1
-#   define __HAIKU_ARCH_PHYSICAL_BITS   64
-#elif defined(ARCHPOWERPC)
-#   define __HAIKU_ARCH   "ppc"
-#   define __HAIKU_ARCH_ABI   "ppc"
-#   define __HAIKU_ARCH_PPC   1
-#   define __HAIKU_ARCH_PHYSICAL_BITS   64
-#   define __HAIKU_BIG_ENDIAN   1
-#elif defined(ARCHM68K)
-#   define __HAIKU_ARCH   "m68k"
-#   define __HAIKU_ARCH_ABI   "m68k"
-#   define __HAIKU_ARCH_M68K   1
-#   define __HAIKU_BIG_ENDIAN   1
-#elif defined(ARCHMIPS)
-#   define __HAIKU_ARCH   "mipsel"
-#   define __HAIKU_ARCH_ABI   "mipsel"
-#   define __HAIKU_ARCH_MIPSEL   1
-#elif defined(ARCHARM)
-#   define __HAIKU_ARCH   "arm"
-#   define __HAIKU_ARCH_ABI   "arm"
-#   define __HAIKU_ARCH_ARM   1
-#elif defined(__ARMEB__)
-#   define __HAIKU_ARCH   "armeb"
-#   define __HAIKU_ARCH_ABI   "armeb"
-#   define __HAIKU_ARCH_ARM   1
-#   define __HAIKU_BIG_ENDIAN   1
-#else
-#   error   "Unsupported Haiku architecture!"
-#endif
-/** BeOS R5 binary compatibility */
-#define HAIKU_BEOS_COMPATIBLE   0
-/** BeOS R5 binary compatibility */
-#define __HAIKU_BEOS_COMPATIBLE   0
-#ifndef HAIKU_ARCH_64_BIT
-/** BeOS R5 compatible types */
-#   define HAIKU_BEOS_COMPATIBLE_TYPES   1
-/** BeOS R5 compatible types */
-#   define __HAIKU_BEOS_COMPATIBLE_TYPES   1
-#endif
-
-
-// HAIKU & BEOS DATATYPES
-
-#define haiku_std_int8   signed char
-#define haiku_std_uint8   unsigned char
-#define haiku_std_int16   signed short
-#define haiku_std_uint16   unsigned short
-#define __haiku_std_int8   haiku_std_int8
-#define __haiku_std_uint8   haiku_std_uint8
-#define __haiku_std_int16   haiku_std_int16
-#define __haiku_std_uint16   haiku_std_uint16
-#define __haiku_int8   haiku_std_int8
-#define __haiku_uint8   haiku_std_uint8
-#define __haiku_int16   haiku_std_int16
-#define __haiku_uint16   haiku_std_uint16
-#define haiku_int8   haiku_std_int8
-#define haiku_uint8   haiku_std_uint8
-#define haiku_int16   haiku_std_int16
-#define haiku_uint16   haiku_std_uint16
-#define haiku_std_int32   signed int
-#define haiku_std_uint32   unsigned int
-#ifndef __int64_t_defined
-#   define __int64_t_defined   1
-#   define __uint64_t_defined   1
-#   if IS_WORDSIZE_64
-#      define haiku_std_int64   signed long
-#      define haiku_std_uint64   unsigned long
-#   elif IS_WORDSIZE_32
-#      define haiku_std_int64   signed long long
-#      define haiku_std_uint64   unsigned long long
-#   else
-#      error   "WORDSIZE is not `64` or `32`!"
-#   endif
-#endif
-#define __haiku_std_int32   haiku_std_int32
-#define __haiku_std_uint32   haiku_std_uint32
-#define __haiku_std_int64   haiku_std_int64
-#define __haiku_std_uint64   haiku_std_uint64
-#define __haiku_int32   haiku_std_int32
-#define __haiku_uint32   haiku_std_uint32
-#define __haiku_int64   haiku_std_int64
-#define __haiku_uint64   haiku_std_uint64
-#define haiku_int32   haiku_std_int32
-#define haiku_uint32   haiku_std_uint32
-#define haiku_int64   haiku_std_int64
-#define haiku_uint64   haiku_std_uint64
-// Address Datatypes
-typedef signed long   haiku_saddr_t;
-#define __haiku_saddr_t   haiku_saddr_t
-typedef unsigned long   haiku_addr_t;
-#define __haiku_addr_t   haiku_addr_t
-#if IS_64
-typedef haiku_std_int64   haiku_phys_saddr_t;
-typedef haiku_std_uint64   haiku_phys_addr_t;
-#else
-typedef haiku_std_int32   haiku_phys_saddr_t;
-typedef haiku_std_uint32   haiku_phys_addr_t;
-#endif
-#define __haiku_phys_saddr_t   haiku_phys_saddr_t
-#define __haiku_phys_addr_t   haiku_phys_addr_t
-
-
-// HAIKU DATATYPE LIMITS
-
-#if IS_64
-#   define HAIKU_SADDR_MAX   (9223372036854775807LL)
-#   define HAIKU_ADDR_MAX   (18446744073709551615ULL)
-#   define HAIKU_PHYS_SADDR_MAX   (9223372036854775807LL)
-#   define HAIKU_PHYS_ADDR_MAX   (18446744073709551615ULL)
-#else
-#   define HAIKU_SADDR_MAX   (2147483647)
-#   define HAIKU_ADDR_MAX   (4294967295U)
-#   define HAIKU_PHYS_SADDR_MAX   (2147483647)
-#   define HAIKU_PHYS_ADDR_MAX   (4294967295U)
-#endif
-#define __HAIKU_SADDR_MAX   HAIKU_SADDR_MAX
-#define __HAIKU_ADDR_MAX   HAIKU_ADDR_MAX
-#define __HAIKU_PHYS_SADDR_MAX   HAIKU_PHYS_SADDR_MAX
-#define __HAIKU_PHYS_ADDR_MAX   HAIKU_PHYS_ADDR_MAX
-#define HAIKU_SADDR_MIN   ((-HAIKU_SADDR_MAX) - 1)
-#define __HAIKU_SADDR_MIN   HAIKU_SADDR_MIN
-#define HAIKU_PHYS_SADDR_MIN   ((-HAIKU_SADDR_MAX) - 1)
-#define __HAIKU_PHYS_SADDR_MIN   HAIKU_PHYS_SADDR_MIN
-#if (defined(HAIKU_ARCH_BITS) && defined(__HAIKU_ARCH_PHYSICAL_BITS) && (HAIKU_ARCH_BITS >= __HAIKU_ARCH_PHYSICAL_BITS))
-typedef haiku_addr_t   haiku_generic_addr_t;
-#   define HAIKU_GENERIC_ADDR_MAX   __HAIKU_ADDR_MAX
-#   define HAIKU_PRI_PREFIX_GENERIC_ADDR   __HAIKU_PRI_PREFIX_ADDR
-#else
-typedef haiku_phys_addr_t   haiku_generic_addr_t;
-#   define HAIKU_GENERIC_ADDR_MAX   __HAIKU_PHYS_ADDR_MAX
-#   define HAIKU_PRI_PREFIX_GENERIC_ADDR   __HAIKU_PRI_PREFIX_PHYS_ADDR
-#endif
-#define __haiku_generic_addr_t   haiku_generic_addr_t
-#define generic_addr_t   haiku_generic_addr_t
-#define __generic_addr_t   haiku_generic_addr_t
-#define __HAIKU_GENERIC_ADDR_MAX   HAIKU_GENERIC_ADDR_MAX
-#define __HAIKU_PRI_PREFIX_GENERIC_ADDR   HAIKU_PRI_PREFIX_GENERIC_ADDR
-
-
-// HAIKU PRINTF & SCANF MACROS
-
-#define HAIKU_STD_PRI_PREFIX_32   ""
-#define __HAIKU_STD_PRI_PREFIX_32   ""
-#if IS_64
-#   define HAIKU_STD_PRI_PREFIX_64   "l"
-#   define __HAIKU_STD_PRI_PREFIX_64   "l"
-#else
-#   define HAIKU_STD_PRI_PREFIX_64   "ll"
-#   define __HAIKU_STD_PRI_PREFIX_64   "ll"
-#endif
-#ifdef __HAIKU_BEOS_COMPATIBLE_TYPES
-#   define HAIKU_PRI_PREFIX_32   "l"
-#   define __HAIKU_PRI_PREFIX_32   "l"
-#else
-#   define HAIKU_PRI_PREFIX_32   HAIKU_STD_PRI_PREFIX_32
-#   define __HAIKU_PRI_PREFIX_32   __HAIKU_STD_PRI_PREFIX_32
-#endif
-#define HAIKU_PRI_PREFIX_64   __HAIKU_STD_PRI_PREFIX_64
-#define __HAIKU_PRI_PREFIX_64   __HAIKU_STD_PRI_PREFIX_64
-#define HAIKU_PRI_PREFIX_ADDR   "l"
-#define __HAIKU_PRI_PREFIX_ADDR   "l"
-#if IS_64
-#   define HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_64
-#   define __HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_64
-#else
-#   define HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_32
-#   define __HAIKU_PRI_PREFIX_PHYS_ADDR   __HAIKU_PRI_PREFIX_32
-#endif
-
-
-// MISCELLANEOUS HAIKU MACROS
-
-#define HAIKU_ARCH_HEADER(header)   <arch/__HAIKU_ARCH/header>
-#define __HAIKU_ARCH_HEADER(header)   HAIKU_ARCH_HEADER((header))
-#define __HAIKU_ARCH_HEADER(header)   HAIKU_ARCH_HEADER((header))
-#define HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   <subdir/arch/__HAIKU_ARCH/header>
-#define __HAIKU_SUBDIR_ARCH_HEADER(subdir, header)   HAIKU_SUBDIR_ARCH_HEADER((subdir), (header))
-#define B_BEOS_VERSION_4   0x400
-#define B_BEOS_VERSION_4_5   0x450
-#define B_BEOS_VERSION_5   0x500
-#define B_BEOS_VERSION   B_BEOS_VERSION_5
-#define B_BEOS_VERSION_MAUI   B_BEOS_VERSION_5
-#define B_HAIKU_VERSION_BEOS   1
-#define B_HAIKU_VERSION_BONE   2
-#define B_HAIKU_VERSION_DANO   3
-#define B_HAIKU_VERSION_1_ALPHA_1   0x100
-#define B_HAIKU_VERSION_1_PRE_ALPHA_2   0x101
-#define B_HAIKU_VERSION_1_ALPHA_2   0x200
-#define B_HAIKU_VERSION_1_PRE_ALPHA_3   0x201
-#define B_HAIKU_VERSION_1_ALPHA_3   0x300
-#define B_HAIKU_VERSION_1_PRE_ALPHA_4   0x301
-#define B_HAIKU_VERSION_1_ALPHA_4   0x400
-#define B_HAIKU_VERSION_1_PRE_BETA_1   0x401
-#define B_HAIKU_VERSION_1   0x10000
-#define B_HAIKU_VERSION   B_HAIKU_VERSION_1_PRE_ALPHA_4
-#define B_HAIKU_ABI_MAJOR   0xffff0000
-#define B_HAIKU_ABI_GCC_2   0x20000
-#define B_HAIKU_ABI_GCC_4   0x40000
-#define B_HAIKU_ABI_GCC_2_ANCIENT   0x20000
-#define B_HAIKU_ABI_GCC_2_BEOS   0x20001
-#define B_HAIKU_ABI_GCC_2_HAIKU   0x20002
-#define B_HAIKU_ABI_NAME   __HAIKU_ARCH_ABI
-#if AT_LEAST_GCC10
-#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_10
-#elif AT_LEAST_GCC9
-#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_9
-#elif AT_LEAST_GCC8
-#   define B_HAIKU_ABI   B_HAIKU_ABI_GCC_8
-#endif
-#ifndef B_HAIKU_BITS
-#   define B_HAIKU_BITS   HAIKU_ARCH_BITS
-#endif
-#ifndef B_HAIKU_PHYSICAL_BITS
-#   define B_HAIKU_PHYSICAL_BITS   __HAIKU_ARCH_PHYSICAL_BITS
-#endif
-#ifdef __HAIKU_BEOS_COMPATIBLE
-#   define B_HAIKU_BEOS_COMPATIBLE   1
-#endif
-
-
-// HAIKU ENUMS
-
-/** Conversion Flavors */
-typedef enum BEOS_CONVERSION_FLAVORS {
-	B_ISO1_CONVERSION,  //!< ISO 8859-x
-	B_ISO2_CONVERSION,
-	B_ISO3_CONVERSION,
-	B_ISO4_CONVERSION,
-	B_ISO5_CONVERSION,
-	B_ISO6_CONVERSION,
-	B_ISO7_CONVERSION,
-	B_ISO8_CONVERSION,
-	B_ISO9_CONVERSION,
-	B_ISO10_CONVERSION,
-	B_MAC_ROMAN_CONVERSION,  //!< Macintosh Roman
-	B_SJIS_CONVERSION,  //!< Shift-JIS
-	B_EUC_CONVERSION,  //!< EUC Packed Japanese
-	B_JIS_CONVERSION,  //!< JIS X 0208-1990
-	B_MS_WINDOWS_CONVERSION,  //!< Windows Latin-1 Codepage 1252
-	B_UNICODE_CONVERSION,  //!< Unicode 2.0, UCS-2
-	B_KOI8R_CONVERSION,  //!< KOI8-R
-	B_MS_WINDOWS_1251_CONVERSION,  //!< Windows Cyrillic Codepage 1251
-	B_MS_DOS_866_CONVERSION,  //!< MS-DOS Codepage 866
-	B_MS_DOS_CONVERSION,  //!< MS-DOS Codepage 437
-	B_EUC_KR_CONVERSION,  //!< EUC Korean
-	B_ISO13_CONVERSION,
-	B_ISO14_CONVERSION,
-	B_ISO15_CONVERSION,
-	B_BIG5_CONVERSION,  //!< Chinese Big5
-	B_GBK_CONVERSION,  //!< Chinese GB18030
-	B_UTF16_CONVERSION,  //!< Unicode UTF-16
-	B_MS_WINDOWS_1250_CONVERSION  //!< Windows Central European Codepage
-} beos_conversion_flavors_t;
-
-
-typedef enum BEOS_TYPE_CONSTANTS {
-	B_AFFINE_TRANSFORM_TYPE = 0x414d5458,  //!< "AMTX"
-	B_ALIGNMENT_TYPE = 0x414c474e,  //!< "ALGN"
-	B_ANY_TYPE = 0x414e5954,  //!< "ANYT"
-	B_ATOM_TYPE = 0x41544f4d,  //!< "ATOM"
-	B_ATOMREF_TYPE = 0x41544d52,  //!< "ATMR"
-	B_BOOL_TYPE = 0x424f4f4c,  //!< "BOOL"
-	B_CHAR_TYPE = 0x43484152,  //!< "CHAR"
-	B_COLOR_8_BIT_TYPE = 0x434c5242,  //!< "CLRB"
-	B_DOUBLE_TYPE = 0x44424c45,  //!< "DBLE"
-	B_FLOAT_TYPE = 0x464c4f54,  //!< "FLOT"
-	B_GRAYSCALE_8_BIT_TYPE = 0x47525942,  //!< "GRYB"
-	B_INT16_TYPE = 0x53485254,  //!< "SHRT"
-	B_INT32_TYPE = 0x4c4f4e47,  //!< "LONG"
-	B_INT64_TYPE = 0x4c4c4e47,  //!< "LLNG"
-	B_INT8_TYPE = 0x42595445,  //!< "BYTE"
-	B_LARGE_ICON_TYPE = 0x49434f4e,  //!< "ICON"
-	B_MEDIA_PARAMETER_GROUP_TYPE = 0x424d4347,  //!< "BMCG"
-	B_MEDIA_PARAMETER_TYPE = 0x424d4354,  //!< "BMCT"
-	B_MEDIA_PARAMETER_WEB_TYPE = 0x424d4357,  //!< "BMCW"
-	B_MESSAGE_TYPE = 0x4d534747,  //!< "MSGG"
-	B_MESSENGER_TYPE = 0x4d534e47,  //!< "MSNG"
-	B_MIME_TYPE = 0x4d494d45,  //!< "MIME"
-	B_MINI_ICON_TYPE = 0x4d49434e,  //!< "MICN"
-	B_MONOCHROME_1_BIT_TYPE = 0x4d4e4f42,  //!< "MNOB"
-	B_OBJECT_TYPE = 0x4f505452,  //!< "OPTR"
-	B_OFF_T_TYPE = 0x4f464654,  //!< "OFFT"
-	B_PATTERN_TYPE = 0x5041544e,  //!< "PATN"
-	B_POINTER_TYPE = 0x504e5452,  //!< "PNTR"
-	B_POINT_TYPE = 0x42504e54,  //!< "BPNT"
-	B_PROPERTY_INFO_TYPE = 0x53435444,  //!< "SCTD"
-	B_RAW_TYPE = 0x52415754,  //!< "RAWT"
-	B_RECT_TYPE = 0x52454354,  //!< "RECT"
-	B_REF_TYPE = 0x52524546,  //!< "RREF"
-	B_RGB_32_BIT_TYPE = 0x52474242,  //!< "RGBB"
-	B_RGB_COLOR_TYPE = 0x52474243,  //!< "RGBC"
-	B_SIZE_TYPE = 0x53495a45,  //!< "SIZE"
-	B_SIZE_T_TYPE = 0x53495a54,  //!< "SIZT"
-	B_SSIZE_T_TYPE = 0x53535a54,  //!< "SSZT"
-	B_STRING_TYPE = 0x43535452,  //!< "CSTR"
-	B_STRING_LIST_TYPE = 0x5354524c,  //!< "STRL"
-	B_TIME_TYPE = 0x54494d45,  //!< "TIME"
-	B_UINT16_TYPE = 0x55534854,  //!< "USHT"
-	B_UINT32_TYPE = 0x554c4e47,  //!< "ULNG"
-	B_UINT64_TYPE = 0x554c4c47,  //!< "ULLG"
-	B_UINT8_TYPE = 0x55425954,  //!< "UBYT"
-	B_VECTOR_ICON_TYPE = 0x5649434e,  //!< "VICN"
-	B_XATTR_TYPE = 0x58415452,  //!< "XATR"
-	B_NETWORK_ADDRESS_TYPE = 0x4e574144,  //!< "NWAD"
-	B_MIME_STRING_TYPE = 0x4d494d53,  //!< "MIMS"
-	B_ASCII_TYPE = 0x54455854  //!< "TEXT"
-} beos_type_constants_t;
-
-
-#endif  // BE_BUILD_H
-
-
-/* MACHINE DEPENDENT CONSTANTS (<param.h>) */
-
-
-#if (!(defined(_BSD_MACHINE_PARAM_H_) || defined(_BSD_MACHINE_VMPARAM_H_) || defined(_PARAM_H_)))
-#define BSD_MACHINE_PARAM_H_   (1)
-#define _BSD_MACHINE_PARAM_H_   (1)
-#define BSD_MACHINE_VMPARAM_H_   (1)
-#define _BSD_MACHINE_VMPARAM_H_   (1)
-#define PARAM_H   (1)
-#define PARAM_H_   (1)
-#define _PARAM_H_   (1)
-
-
-#if (defined(ARCHX86) && (!(defined(_I386_PARAM_H_) || defined(_BSD_I386_VMPARAM_H_))))
-#define _I386_PARAM_H_   (1)
-#define I386_PARAM_H_   (1)
-#define _BSD_I386_VMPARAM_H_   (1)
-#define BSD_I386_VMPARAM_H_   (1)
-
-
-/** Byte offset into page */
-#define PGOFSET   4095
-/** LOG2(NBPG) */
-#define PGSHIFT   12
-/** log2(DEV_BSIZE) */
-#define DEV_BSHIFT   9
-#define BLKDEV_IOSIZE   2048
-/** Max raw I/O transfer size */
-#define MAXPHYS   131072
-#define CLSIZELOG2   0
-#define RLIM_INFINITY   (~0ULL)
-#define RLIM64_INFINITY   (~0ULL)
-// Virtual memory related constants (in bytes)
-#ifndef DFLDSIZ
-/** Initial data size limit */
-#   define DFLDSIZ   (RLIM_INFINITY)
-#endif
-#ifndef MAXDSIZ
-/** Max data size */
-#   define MAXDSIZ   (RLIM_INFINITY)
-#endif
-#ifndef DFLSSIZ
-/** Initial stack size limit */
-#   define DFLSSIZ   (8388608)
-#endif
-#ifndef MAXSSIZ
-/** Max stack size */
-#   define MAXSSIZ   (67108864)
-#endif
-#ifndef DFLCSIZ
-/** Initial core size limit */
-#   define DFLCSIZ   (0)
-#endif
-#ifndef MAXCSIZ
-/** Max core size */
-#   define MAXCSIZ   (RLIM_INFINITY)
-#endif
-
-
-// Constants related to I/O buffer management
-#define MSIZESHIFT   8
-#define MSIZE   256
-#define MBSHIFT   20
-#define MBSIZE   1048576
-#define MAX_MBUF_POOL   536870912
-#define MCLSHIFT   11
-/** Size of an mbuf cluster */
-#define MCLBYTES   2048
-#define MBIGCLSHIFT   12
-/** Size of a big cluster */
-#define MBIGCLBYTES   4096
-#define M16KCLSHIFT   14
-/** Size of a jumbo cluster */
-#define M16KCLBYTES   16384
-#define MCLOFSET   (MCLBYTES - 1)
-#ifndef NMBCLUSTERS
-/** cl map size: 1MB */
-#   define NMBCLUSTERS   (1048576 / MCLBYTES)
-#endif
-#define AGP_PAGE_SHIFT   12
-#define PAGE_CACHE_SHIFT   PAGE_SHIFT
-#define IOREMAP_MAX_ORDER   (7 + PAGE_SHIFT)
-#define NMBPGSHIFT   (PAGE_SHIFT - MSIZESHIFT)
-#define NCLPGSHIFT   (PAGE_SHIFT - MCLSHIFT)
-#define NBCLPGSHIFT   (PAGE_SHIFT - MBIGCLSHIFT)
-#define NSLABSPMB   (1048576 >> PAGE_SHIFT)
-#define NSLABSP16KB   (M16KCLBYTES >> PAGE_SHIFT)
-
-
-/** Core clicks (NeXT_page_size bytes) to segments */
-#define ctos(x)   (x)
-/** Segments to Core clicks (NeXT_page_size bytes) */
-#define stoc(x)   (x)
-/** Core clicks (4096 bytes) to disk blocks */
-#define ctod(x)   ((x) << (PGSHIFT - DEV_BSHIFT))
-/** Disk blocks to Core clicks (4096 bytes) */
-#define dtoc(x)   ((x) >> (PGSHIFT - DEV_BSHIFT))
-/** Disk blocks to Core clicks (4096 bytes) */
-#define dtob(x)   ((x) << DEV_BSHIFT)
-/** Clicks to bytes */
-#define ctob(x)   ((x) << PGSHIFT)
-/** Bytes to clicks */
-#define btoc(x)   (((unsigned)(x) + (NBPG - 1)) >> PGSHIFT)
-#ifdef __APPLE__
-#   define btodb(bytes, devBlockSize)   ((unsigned)(bytes) / (devBlockSize))
-#   define dbtob(db, devBlockSize)   ((unsigned)(db) * (devBlockSize))
-#else
-#   define btodb(bytes)   ((unsigned)(bytes) >> DEV_BSHIFT)
-#   define dbtob(db)   ((unsigned)(db) << DEV_BSHIFT)
-#endif
-/** Map a `block device block` to a file system block */
-#define bdbtofsb(bn)   ((bn) / (BLKDEV_IOSIZE / DEV_BSIZE))
-
-/** Macros to decode (and encode) processor status word */
-#define STATUS_WORD(rpl, ipl)   (((ipl) << 8) | (rpl))
-#define USERMODE(x)   (((x) & 3) == 3)
-#define BASEPRI(x)   (((x) & 0xff00) == 0)
-#define DELAY(n)   volatile int DELAY_N = (n); while (--DELAY_N > 0)
-
-
-#endif  // I386_PARAM_H
-
-
-#endif  // PARAM_H
 
 
 /* HEADER INCLUDES */
