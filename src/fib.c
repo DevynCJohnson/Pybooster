@@ -4,7 +4,7 @@
 /**
 @brief Fibonacci Number Generator
 @file fib.c
-@version 2019.06.05
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -38,6 +38,6 @@ along with this software.
 
 noreturn int main(rargc, rargv) {
 	TWO_ARGS_REQUIRED_F;
-	putu64((uint64_t)longfib((ulint)atol(argv[1])));
+	putu64((uint64_t)fib((uint64_t)atoull(argv[1])));
 	fast_exit(EXIT_SUCCESS);
 }
