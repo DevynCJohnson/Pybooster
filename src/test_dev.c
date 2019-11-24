@@ -4,7 +4,7 @@
 /**
 @brief Test code used in MACROS*.h
 @file test_dev.c
-@version 2019.10.12
+@version 2019.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -778,6 +778,21 @@ static void test_float_points(void) {
 }
 
 
+/** Test Math Functions */
+static void test_math_functions(void) {
+	puts_no_output(OPEN_TEST_HEADER "MATH TESTS" CLOSE_TEST_HEADER);
+	BOOLEAN_TEST_DBL_RESULTS(sqrt(16.0), 4.0);
+	BOOLEAN_TEST_DBL_RESULTS(sqrt(25.0), 5.0);
+	BOOLEAN_TEST_DBL_RESULTS(sqrt(81.0), 9.0);
+	BOOLEAN_TEST_DBL_RESULTS(pow(2.0, 2.0), 4.0);
+	BOOLEAN_TEST_DBL_RESULTS(pow(2.0, 4.0), 16.0);
+	BOOLEAN_TEST_DBL_RESULTS(exp10(2.0), 100.0);
+	BOOLEAN_TEST_DBL_RESULTS(exp10(4.0), 10000.0);
+	BOOLEAN_TEST_DBL_RESULTS(log10(100.0), 2.0);
+	return;
+}
+
+
 /** List the sizes of various datatypes in bytes */
 static void list_data_sizes(void) {
 	puts_no_output(OPEN_TEST_HEADER "LIST DATATYPE SIZES" CLOSE_TEST_HEADER);
@@ -956,6 +971,7 @@ noreturn void main(mainargs) {
 	DEV_PROMPT_FUNC(test_macros(), "Perform macros tests?");
 	DEV_PROMPT_FUNC(test_generic_macros(), "Perform Generic macros tests?");
 	DEV_PROMPT_FUNC(test_float_points(), "Perform float-point tests?");
+	DEV_PROMPT_FUNC(test_math_functions(), "Perform math tests?");
 	DEV_PROMPT_FUNC(pause_prompt(), "Perform pause test?");
 	DEV_PROMPT_FUNC(wait_progress_indicator(10), "Perform progress indicator test?");
 	DEV_PROMPT_FUNC(wait_progress_bar(10), "Perform progress bar test?");
