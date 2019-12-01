@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shell RC script providing universal aliases for various multimedia commands
 #' @file multimedia_rc.sh
-#' @version 2019.03.28
+#' @version 2019.12.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -478,7 +478,8 @@ rotate_img_ccw() {
 
 #' Repair SVG Files
 fixsvg() {
-    find ./ -type f -name "*.svg" -exec minifyxml --svg --inplace --remove-all-metadata {} \; && find ./ -type f -name "*.svg" -exec xmllint --valid --nowarning --noout {} \;
+    find ./ -type f -name '*.svg' -print0 | xargs -0 -L 1 -P 0 minifyxml --svg --inplace --remove-all-metadata
+    find ./ -type f -name '*.svg' -print0 | xargs -0 -L 1 -P 0 xmllint --valid --nowarning --noout
 }
 
 
