@@ -1,6 +1,8 @@
 2019-12-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* multimedia_rc.sh:  Optimized `fixsvg`
 	* Optimal-Cursors:  Improved the build script & fixed the makefile
+	* Optimal-Cursors:  Optimized the SVG cursors
 
 2019-11-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
