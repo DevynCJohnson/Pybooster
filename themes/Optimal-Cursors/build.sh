@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Build script for the Optimal Cursors
 #' @file build.sh
-#' @version 2019.10.05
+#' @version 2019.12.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -17,37 +17,37 @@ trap 'pkill -P $$; kill $$' INT
 
 #' Generate x1-sized cursors
 create_x1() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1/${0%.svg}.png" -w 32 -h 32 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1/${0%.svg}.png" -w 32 -h 32 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
 #' Generate x1.25-sized cursors
 create_x1_25() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1_25/${0%.svg}.png" -w 40 -h 40 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1_25/${0%.svg}.png" -w 40 -h 40 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
 #' Generate x1.5-sized cursors
 create_x1_5() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1_5/${0%.svg}.png" -w 48 -h 48 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x1_5/${0%.svg}.png" -w 48 -h 48 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
 #' Generate x2-sized cursors
 create_x2() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x2/${0%.svg}.png" -w 64 -h 64 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x2/${0%.svg}.png" -w 64 -h 64 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
 #' Generate x3-sized cursors
 create_x3() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x3/${0%.svg}.png" -w 96 -h 96 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x3/${0%.svg}.png" -w 96 -h 96 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
 #' Generate x4-sized cursors
 create_x4() {
-    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x4/${0%.svg}.png" -w 128 -h 128 $0 > /dev/null' {} \;
+    find . -name "*.svg" -type f -exec sh -c 'inkscape -z -e "../x4/${0%.svg}.png" -w 128 -h 128 $0 2> /dev/null > /dev/null' {} \;
 }
 
 
@@ -108,6 +108,7 @@ generate_x11_cursors() {
     printf 'Generating Cursor Theme\n'
     for cursor_file in config/*.cursor; do
         BASENAME="${cursor_file##*/}"
+        [ ! -f "./config/${BASENAME}" ] && (printf 'ERROR: Failed to find the file %s!\n' "./config/${BASENAME}" >&2; exit 1)
         xcursorgen "$cursor_file" "${output}/${BASENAME%.*}"
     done
     printf 'Finished Generating Cursor Theme\n'

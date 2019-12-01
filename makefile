@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.11.23
+#' @version 2019.12.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -46,6 +46,7 @@ include ./mk/project.mk
 
 # Project Paths
 override ACCDIR::=./accessory
+override BASEDIR::=$(shell pwd)
 override BIN::=./bin
 override DBDIR::=./databases
 override DOCDIR::=./doc
@@ -809,12 +810,14 @@ uninstall_optiview :
 install_optimal_cursors :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Optimal-Cursors ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	([ -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'all' && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'install') || true
+	([ ! -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && [ -f $(THEMEDIR)/Optimal-Cursors/build.sh ] && cd $(THEMEDIR)/Optimal-Cursors && chmod +x ./build.sh && ./build.sh 'uninstall' && ./build.sh 'all' && ./build.sh 'install') || true
+	cd "$(BASEDIR)"
 
 uninstall_optimal_cursors :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Optimal-Cursors ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	([ -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && ./$(SYSTHEMEDIR)/Optimal-Cursors/build.sh 'uninstall') || true
+	([ -d $(SYSTHEMEDIR)/Optimal-Cursors/ ] && [ -f $(THEMEDIR)/Optimal-Cursors/build.sh ] && cd $(THEMEDIR)/Optimal-Cursors && chmod +x ./build.sh && ./build.sh 'uninstall') || true
+	cd "$(BASEDIR)"
 
 install_pyeggs : | rmtmp fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Python Eggs ==='

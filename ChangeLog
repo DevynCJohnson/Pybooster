@@ -1,3 +1,7 @@
+2019-12-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Optimal-Cursors:  Improved the build script & fixed the makefile
+
 2019-11-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* fib.c:  Applied minor tweaks
