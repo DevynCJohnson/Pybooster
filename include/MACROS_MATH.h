@@ -12468,10 +12468,10 @@ LIB_FUNC MATH_FUNC int isprime(const uint64_t num) {
 				return 1;
 			default: break;
 		}
-	} else if (num % 3ULL == 0) || (num % 5ULL == 0) { return 0; }
-	else if (num % 7ULL == 0) || (num % 11ULL == 0) { return 0; }
-	else if (num % 13ULL == 0) || (num % 17ULL == 0) { return 0; }
-	else if (num % 19ULL == 0) || (num % 23ULL == 0) || (num % 29ULL == 0) { return 0; }
+	} else if ((num % 3ULL == 0) || (num % 5ULL == 0)) { return 0; }
+	else if ((num % 7ULL == 0) || (num % 11ULL == 0)) { return 0; }
+	else if ((num % 13ULL == 0) || (num % 17ULL == 0)) { return 0; }
+	else if ((num % 19ULL == 0) || (num % 23ULL == 0) || (num % 29ULL == 0)) { return 0; }
 	for (register uint64_t i = 31ULL; i < num; i += 2ULL) {
 		if (num % i == 0ULL) { return (int)(i == num); }
 	}
