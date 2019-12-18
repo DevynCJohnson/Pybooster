@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2019.07.14
+@version 2019.12.16
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -300,25 +300,25 @@ def expandhome(_pathname: str) -> str:
 
 
 def getfile(_filename: str) -> str:
-    """Get file contents and return as a str."""
+    """Get the file contents and return as a str."""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         return r''.join(_file.readlines()).strip()
 
 
 def getfilehexbytes(_filename: str) -> bytes:
-    """Get file contents as bytes in hex."""
+    """Get the file contents as bytes in hex."""
     with open(_filename, mode=r'rb', encoding=r'utf-8') as _file:
         return hexlify(_file.read())
 
 
 def getfilehexbytesstr(_filename: str) -> str:
-    """Get file contents as a str of bytes in hex."""
+    """Get the file contents as a str of bytes in hex."""
     with open(_filename, mode=r'rb') as _file:
         return str(hexlify(_file.read()), r'utf-8')
 
 
 def getfilehexbytes_spaced(_filename: str) -> str:
-    """Get file contents as a str of bytes in hex with spaces between each byte."""
+    """Get the file contents as a str of bytes in hex with spaces between each byte."""
     with open(_filename, mode=r'rb') as _file:
         _hex = str(hexlify(_file.read()), r'utf-8')
     index = 2
@@ -329,39 +329,39 @@ def getfilehexbytes_spaced(_filename: str) -> str:
 
 
 def getfilebinbytes(_filename: str) -> str:
-    """Get file contents and return binary as str."""
+    """Get the file contents and return binary as str."""
     with open(_filename, mode=r'rb') as _file:
         return bin(int(hexlify(_file.read()), 16))[2:].zfill(8)
 
 
 def getfilebinwords(_filename: str) -> bytes:
-    """Get file contents and return a byte-str of binary words."""
+    """Get the file contents and return a byte-str of binary words."""
     with open(_filename, mode=r'rb') as _file:
         return _file.read()
 
 
 def getfilehexstr(_filename: str) -> str:
-    """Get file contents and return a str of hex."""
+    """Get the file contents and return a str of hex."""
     with open(_filename, mode=r'rb') as _file:
         _hex = b2a_qp(_file.read())
     return r''.join(chr(int(x)) for x in _hex)
 
 
 def getfilehexstr2(_filename: str) -> str:
-    """Get file contents and return a str of hex."""
+    """Get the file contents and return a str of hex."""
     with open(_filename, mode=r'rb') as _file:
         _hex = b2a_qp(_file.read())
     return r''.join(chr(int(x)) for x in _hex).replace(r'=', r'').replace('\n', r'').replace('\t', r'').replace(r' ', r'').replace('\r', r'')
 
 
 def getfileraw_list(_filename: str) -> list:
-    """Get file contents as a list of byte-objects."""
+    """Get the file contents as a list of byte-objects."""
     with open(_filename, mode=r'rb') as _file:
         return _file.readlines()
 
 
 def getfile_list(_filename: str) -> list:
-    """Get file contents and return as a list."""
+    """Get the file contents and return as a list."""
     with open(_filename, mode=r'rt', encoding=r'utf-8') as _file:
         return _file.readlines()
 
@@ -414,7 +414,7 @@ def firstchars(_filepath: str, _numchars: int = 10) -> str:
 
 
 def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
-    """Get file/pipe contents and return as a str."""
+    """Get the file/pipe contents and return as a str."""
     try:
         _out: str = r''
         if _filename:  # Input file specified
@@ -430,7 +430,7 @@ def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
 
 
 def getstdin() -> str:
-    """Get data from stdin."""
+    """Get the data from stdin."""
     return r''.join(stdin.readlines()).strip()
 
 
@@ -438,7 +438,7 @@ def getstdin() -> str:
 
 
 def writedata(_filename: str, _write: str, _encoding: str = r'utf-8') -> None:
-    """Send data to new file, overwrite file, or send to stdout."""
+    """Send data to a new file, overwrite the file, or send to stdout."""
     if _filename:
         if isfile(_filename) and not fileaccess(_filename, W_OK) and not isdir(_filename):
             stderr.write(r'Permission Error: Unable to write to "' + _filename + '"!\n')
@@ -450,7 +450,7 @@ def writedata(_filename: str, _write: str, _encoding: str = r'utf-8') -> None:
 
 
 def append2file(_filename: str, _write: object) -> None:
-    """Send data to new file or append to an existing file."""
+    """Send data to a new file or append to an existing file."""
     with open(_filename, mode=r'at', encoding=r'utf-8') as _file:
         if isinstance(_write, str):
             _file.write(_write)
@@ -459,7 +459,7 @@ def append2file(_filename: str, _write: object) -> None:
 
 
 def write2file(_filename: str, _write: object) -> None:
-    """Send data to new file or overwrite file."""
+    """Send data to a new file or overwrite the file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
         if isinstance(_write, str):
             _file.write(_write)
