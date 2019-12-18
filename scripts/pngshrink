@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shrink the Size of PNG Image Files
 #' @file pngshrink
-#' @version 2019.10.19
+#' @version 2019.12.18
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -49,7 +49,7 @@ for file in "$@"; do
     if [ ! -r "$file" ] || [ -d "$file" ]; then
         errMsg "${file}"
     fi
-    pngcrush -brute -l 9 -rem alla -rem text -rem time -rem gAMA -rem cHRM -rem iCCP -rem sRGB "${file}" "${file%.*}_reduced.png" &
+    pngcrush -brute -l 9 -q -rem alla -rem text -rem time -rem gAMA -rem cHRM -rem iCCP -rem sRGB "${file}" "${file%.*}_reduced.png" &
 done
 
 wait
