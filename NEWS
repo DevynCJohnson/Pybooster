@@ -1,3 +1,29 @@
+2019-12-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* extras_rc.sh:  Added more aliases for moving up several directories
+	* fs.py:  Tweaked some of the function documentation
+	* hosts:  Removed more hostnames
+	* LoginOpticons:  Removed unneeded data from the SVG Icons
+	* Opticons:  Removed unneeded data from the SVG Icons
+	* Optimal-Cursors:  Removed unneeded data from the SVG cursors
+	* OptiView:  Improved the appearance of the theme
+	* OptiView:  Made Inkscape more quiet & migrated `sassc` to `pysassc`
+	* pngshrink:  Made the script more quiet
+	* pyanalysis:  Improved & simplified some of the code
+
+2019-12-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added more attribute keywords for HTML in filetypes.html
+	* hosts:  Removed many hostnames & only kept ones that may be necessary and/or helpful
+	* makefile:  Added many additional Pip packages to `LIST_PIP_DEPS` & changed `apcalc` to `calc` in `LIST_MAIN_DEPS`
+	* MACROS_MATH.h:  Fixed a bug in `isprime()`
+
+2019-12-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* multimedia_rc.sh:  Optimized `fixsvg`
+	* Optimal-Cursors:  Improved the build script & fixed the makefile
+	* Optimal-Cursors:  Optimized the SVG cursors
+
 2019-11-23  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* fib.c:  Applied minor tweaks
@@ -45,7 +71,7 @@
 	* makefile:  Added more documentation packages to `LIST_DEV_DOCS`
 	* makefile:  Fixed some minor bugs
 	* makefile_constants.mk:  Fixed some minor bugs
-	* OptiCons:  Tweaked some of the OptiCons SVG files
+	* Opticons:  Tweaked some of the Opticons SVG files
 	* OptiView:  Fixed some bugs
 	* PyBooster:  Added OptiView
 
