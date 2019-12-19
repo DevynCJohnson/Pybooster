@@ -8,7 +8,7 @@ rm -f ./assets/*.png || true
 
 while read -r filename; do
     if [ -n "${filename}" ] && [ ! -f "assets/${filename}.png" ]; then
-        inkscape --export-id="${filename}" --export-id-only --export-png="assets/${filename}.png" assets.svg >/dev/null &
+        inkscape --export-id="${filename}" --export-id-only --export-png="assets/${filename}.png" assets.svg 2> /dev/null > /dev/null &
     fi
 done < assets.txt
 

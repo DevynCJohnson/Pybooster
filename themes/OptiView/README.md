@@ -5,10 +5,10 @@
 
 Other distros may have named the below packages differently.
 
-* Arch/Manjaro/Antergos - `pacman -S git gtk-engine-murrine gtk-engines meson ninja sassc`
-* Debian/Ubuntu/Mint - `apt install git gtk2-engines-murrine gtk2-engines-pixbuf meson ninja-build sassc`
-* Fedora - `dnf install git gtk-murrine-engine gtk2-engines meson ninja-build sassc`
-* Opensuse - `zypper in git gtk2-engine-murrine gtk2-engines meson ninja sassc`
+* Arch/Manjaro/Antergos - `pacman -S git gtk-engine-murrine gtk-engines meson ninja pysassc`
+* Debian/Ubuntu/Mint - `apt install git gtk2-engines-murrine gtk2-engines-pixbuf meson ninja-build pysassc`
+* Fedora - `dnf install git gtk-murrine-engine gtk2-engines meson ninja-build pysassc`
+* Opensuse - `zypper in git gtk2-engine-murrine gtk2-engines meson ninja pysassc`
 
 Installing the following font packages (using Debian names) is recommended: fonts-emojione fonts-font-awesome fonts-fork-awesome fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-color-emoji fonts-noto-core fonts-noto-extra fonts-noto-hinted fonts-noto-mono fonts-noto-ui-core fonts-noto-ui-extra fonts-octicons fonts-open-sans fonts-opensymbol fonts-roboto-hinted fonts-roboto-slab fonts-roboto-unhinted fonts-symbola fonts-unfonts-core fonts-unfonts-extra
 

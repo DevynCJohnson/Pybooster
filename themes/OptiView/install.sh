@@ -18,7 +18,7 @@ sh ./clean.sh
 [ ! -x "$(command -v meson)" ] && { printf 'ERROR: `meson` not found!\n' >&2; exit 1; }
 [ ! -x "$(command -v ninja)" ] && { printf 'ERROR: `ninja` not found!\n' >&2; exit 1; }
 [ ! -x "$(command -v inkscape)" ] && { printf 'ERROR: `inkscape` not found!\n' >&2; exit 1; }
-[ ! -x "$(command -v sassc)" ] && { printf 'ERROR: `sassc` not found!\n' >&2; exit 1; }
+[ ! -x "$(command -v pysassc)" ] && { printf 'ERROR: `pysassc` not found!\n' >&2; exit 1; }
 [ ! -x "$(command -v pngcrush)" ] && { printf 'WARNING: `pngcrush` is strongly recommended, but not required!\n' >&2; }
 [ ! -x "$(command -v rename)" ] && { printf 'WARNING: `rename` is strongly recommended, but not required!\n' >&2; }
 

@@ -8,19 +8,19 @@ rm -f ./assets/*.png || true
 
 while read -r filename; do
     if [ -n "${filename}" ] && [ ! -f "assets/${filename}.png" ]; then
-        inkscape --export-id="${filename}" --export-dpi=180 --export-id-only --export-png="assets/${filename}.png" assets.svg >/dev/null &
+        inkscape --export-id="${filename}" --export-dpi=180 --export-id-only --export-png="assets/${filename}.png" assets.svg 2> /dev/null > /dev/null &
     fi
     if [ -n "${filename}" ] && [ ! -f "assets/${filename}@2.png" ]; then
-        inkscape --export-id="${filename}" --export-dpi=360 --export-id-only --export-png="assets/${filename}@2.png" assets.svg >/dev/null &
+        inkscape --export-id="${filename}" --export-dpi=360 --export-id-only --export-png="assets/${filename}@2.png" assets.svg 2> /dev/null > /dev/null &
     fi
 done < assets.txt
 
 while read -r filename; do
     if [ -n "${filename}" ] && [ ! -f "assets/${filename}.symbolic.png" ]; then
-        inkscape --export-png="assets/${filename}.symbolic.png" "assets/${filename}.svg" >/dev/null &
+        inkscape --export-png="assets/${filename}.symbolic.png" "assets/${filename}.svg" 2> /dev/null > /dev/null &
     fi
     if [ -n "${filename}" ] && [ ! -f "assets/${filename}@2.symbolic.png" ]; then
-        inkscape --export-dpi=180 --export-png="assets/${filename}@2.symbolic.png" "assets/${filename}.svg" >/dev/null &
+        inkscape --export-dpi=180 --export-png="assets/${filename}@2.symbolic.png" "assets/${filename}.svg" 2> /dev/null > /dev/null &
     fi
 done < files.txt
 

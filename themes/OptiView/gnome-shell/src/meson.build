@@ -19,13 +19,13 @@ styles = [
 
 theme_deps = []
 
-sassc = find_program('sassc')
+pysassc = find_program('pysassc')
 foreach style: styles
   theme_deps += custom_target(
     'style-' + style,
     input: '@0@.scss'.format(style),
     output: '@0@.css'.format(style),
-    command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
+    command: [pysassc, '--omit-sourcemap-url', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
     install: true,
     install_dir: install_dir,
     depend_files: theme_sources

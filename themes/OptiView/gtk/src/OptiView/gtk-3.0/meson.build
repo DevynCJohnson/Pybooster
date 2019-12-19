@@ -86,7 +86,7 @@ foreach f : gtk3_scss_sources
         input: f + '.scss',
         output: f + '.css',
         depend_files: gtk3_scss_dependencies,
-        command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
+        command: [pysassc, '--omit-sourcemap-url', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
         build_by_default: true,
         install: true,
         install_dir: gtk3_dir,

@@ -1,7 +1,7 @@
 ### Summary
 
 * Do not edit the CSS directly, edit the source SCSS files
-* To be able to use the latest/adequate version of sass, install `sassc`
+* To be able to use the latest/adequate version of pysassc, install `pysassc`
 
 ### How to tweak the theme
 
@@ -23,4 +23,3 @@ You can read about SASS at http://sass-lang.com/documentation/. Once you make yo
 ### How to edit the assets
 
 The assets are created in the `assets.svg` file and then rendered with `./render-assets.sh` by fetching the object id name from `assets.txt`. If you're going to edit an image in inkscape make sure the object id is the same when you're saving. If you're going to create a new asset you need to add the object id in assets.txt.
-
