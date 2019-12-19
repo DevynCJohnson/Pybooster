@@ -177,7 +177,7 @@ label {
     color: $insensitive_fg_color;
 
     selection {
-      @extend %selected_items:disabled;
+      @extend %selected_items, :disabled;
     }
 
     &:backdrop {
@@ -231,6 +231,7 @@ statusbar,
 }
 
 // Spinner Animation //
+
 @keyframes spin {
   to {
     -gtk-icon-transform: rotate(1turn);
@@ -253,6 +254,7 @@ spinner {
 }
 
 // Text Entries //
+
 %entry,
 entry {
   %entry_basic, & {
@@ -300,7 +302,7 @@ entry {
     @each $e_type, $e_color in (error, $error_color), (warning, $warning_color) {
       &.#{$e_type} {
         color: $e_color;
-        border-color: entry_focus_border($e_color);
+        border-color: $selected_borders_color;
 
         &:focus {
           @include entry(focus, $e_color);
@@ -368,13 +370,13 @@ entry {
   .linked:not(.vertical) > &:focus + &,
   .linked:not(.vertical) > &:focus + button,
   .linked:not(.vertical) > &:focus + combobox > box > button.combo {
-    border-left-color: entry_focus_border();
+    border-left-color: $selected_borders_color;
   }
 
   .linked:not(.vertical) > &:focus.error + &,
   .linked:not(.vertical) > &:focus.error + button,
   .linked:not(.vertical) > &:focus.error + combobox > box > button.combo {
-    border-left-color: entry_focus_border($error_color);
+    border-left-color: $error_color;
   }
 
   .linked:not(.vertical) > &:drop(active) + &,
@@ -398,12 +400,12 @@ entry {
 
     + %entry:focus:not(:only-child),
     + entry:focus:not(:only-child) {
-      border-top-color: entry_focus_border();
+      border-top-color: $selected_borders_color;
     }
 
     + %entry:focus.error:not(:only-child),
     + entry:focus.error:not(:only-child) {
-      border-top-color: entry_focus_border($error_color);
+      border-top-color: $error_color;
     }
 
     + %entry:drop(active):not(:only-child),
@@ -416,7 +418,7 @@ entry {
       + entry,
       + button,
       + combobox > box > button.combo {
-        border-top-color: entry_focus_border();
+        border-top-color: $selected_borders_color;
       }
     }
 
@@ -425,7 +427,7 @@ entry {
       + entry,
       + button,
       + combobox > box > button.combo {
-        border-top-color: entry_focus_border($error_color);
+        border-top-color: $error_color;
       }
     }
 
@@ -925,15 +927,15 @@ toolbar.inline-toolbar toolbutton {
   }
 
   &:first-child > button.flat {
-    @extend %linked:first-child;
+    @extend %linked, :first-child;
   }
 
   &:last-child > button.flat {
-    @extend %linked:last-child;
+    @extend %linked, :last-child;
   }
 
   &:only-child > button.flat {
-    @extend %linked:only-child;
+    @extend %linked, :only-child;
   }
 }
 
@@ -1081,6 +1083,7 @@ toolbar.inline-toolbar toolbutton {
 }
 
 // Menu Buttons //
+
 modelbutton.flat,
 .menuitem.button.flat {
   min-height: 26px;
@@ -1158,6 +1161,7 @@ button.color {
 }
 
 // Links //
+
 %link,
 *:link {
   color: $link_color;
@@ -1207,7 +1211,7 @@ button:link,
 button:visited {
   @extend %undecorated_button;
 
-  @extend *:link;
+  @extend *, :link;
 
   text-shadow: none;
 
@@ -1227,6 +1231,7 @@ button:visited {
 }
 
 // GtkSpinButton //
+
 spinbutton {
   &:not(.vertical) {
     @extend %entry;
@@ -1390,6 +1395,7 @@ spinbutton {
 }
 
 // ComboBoxes //
+
 combobox {
   arrow {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -1400,11 +1406,11 @@ combobox {
   &.linked {
     button:nth-child(2) {
       &:dir(ltr) {
-        @extend %linked:last-child;
+        @extend %linked, :last-child;
       }
 
       &:dir(rtl) {
-        @extend %linked:first-child;
+        @extend %linked, :first-child;
       }
     }
   }
@@ -1413,9 +1419,14 @@ combobox {
     box-shadow: none;
 
     button.combo {
-      @extend %button_basic:drop(active);
+      @extend %button_basic, :drop(active);
     }
   }
+
+  &:focus {
+      @include button(focus);
+    }
+
 }
 
 .linked > combobox > box > button.combo {
@@ -1426,15 +1437,15 @@ combobox {
 }
 
 .linked:not(.vertical) > combobox:first-child > box > button.combo {
-  @extend %linked:first-child;
+  @extend %linked, :first-child;
 }
 
 .linked:not(.vertical) > combobox:last-child > box > button.combo {
-  @extend %linked:last-child;
+  @extend %linked, :last-child;
 }
 
 .linked:not(.vertical) > combobox:only-child > box > button.combo {
-  @extend %linked:only-child;
+  @extend %linked, :only-child;
 }
 
 .linked.vertical > combobox > box > button.combo {
@@ -1442,18 +1453,19 @@ combobox {
 }
 
 .linked.vertical > combobox:first-child > box > button.combo {
-  @extend %linked_vertical:first-child;
+  @extend %linked_vertical, :first-child;
 }
 
 .linked.vertical > combobox:last-child > box > button.combo {
-  @extend %linked_vertical:last-child;
+  @extend %linked_vertical, :last-child;
 }
 
 .linked.vertical > combobox:only-child > box > button.combo {
-  @extend %linked_vertical:only-child;
+  @extend %linked_vertical, :only-child;
 }
 
 // Toolbars //
+
 %toolbar {
   -GtkWidget-window-dragging: true;
   padding: 4px;
@@ -1527,6 +1539,7 @@ searchbar > revealer > box {
 }
 
 // Header Bars //
+
 %titlebar,
 headerbar {
   padding: 0px 4px;
@@ -1578,7 +1591,7 @@ headerbar {
     }
 
     .subtitle:link {
-      @extend *:link:selected;
+      @extend *, :link, :selected;
     }
 
     button {
@@ -1725,6 +1738,7 @@ headerbar {
 }
 
 // Headerbar Widgets //
+
 %header_widgets {
   color: if($dark_header == "true", $dark_fg_color, $fg_color);
 
@@ -1961,6 +1975,7 @@ filechooser {
 }
 
 // Tree Views //
+
 treeview.view {
   @at-root * {
     -GtkTreeView-horizontal-separator: 4;
@@ -2296,8 +2311,7 @@ menuitem {
     color: gtkalpha(currentColor, 0.55);
   }
 
-  check,
-  radio {
+  check, radio {
     &:checked, &:checked:hover {
       @include check(menuitem-checked);
     }
@@ -2316,6 +2330,7 @@ menuitem {
 }
 
 // Popovers //
+
 popover.background {
   padding: 2px;
   border-radius: $window-radius;
@@ -2366,13 +2381,13 @@ popover.background {
     margin: 0px;
   }
 
-  checkbutton,
-  radiobutton {
-    @extend modelbutton.flat;
+  checkbutton, radiobutton {
+    @extend modelbutton, .flat;
   }
 }
 
 // Notebooks & Tabs //
+
 notebook {
   padding: 0px;
 
@@ -2416,7 +2431,7 @@ notebook {
     > tabs > arrow {
       @extend %button_basic;
 
-      @extend %button_basic.flat;
+      @extend %button_basic, .flat;
 
       min-height: 16px;
       min-width: 16px;
@@ -2579,6 +2594,7 @@ notebook {
 }
 
 // Scrollbars //
+
 scrollbar {
   @at-root * {
     -GtkScrollbar-has-backward-stepper: true;
@@ -2761,6 +2777,7 @@ treeview ~ scrollbar.vertical {
 }
 
 // Switch //
+
 switch {
   transition: background-color $shortest_duration $deceleration_curve, opacity $longer_duration $deceleration_curve;
   margin: 0px;
@@ -2779,8 +2796,6 @@ switch {
   &:disabled {
     opacity: 0.5;
   }
-
-  $slider_hover_shadow: if($variant == "light", 0 0 2px 1px $selected_bg_color, 0 0 2px 1px transparentize(black, 0.1));
 
   slider {
     transition: all $shortest_duration $deceleration_curve, box-shadow $longer_duration $deceleration_curve;
@@ -2826,15 +2841,15 @@ switch {
     }
 
     &:hover slider {
-      box-shadow: 0 0 2px 1px transparentize(lighten($selected_bg_color, 20%), 0.7);
+      box-shadow: $slider_hover_shadow;
     }
 
     &:focus slider {
-      box-shadow: 0 0 2px 1px transparentize(lighten($selected_bg_color, 20%), 0.6);
+      box-shadow: $slider_hover_shadow;
     }
 
     &:focus:hover slider {
-      box-shadow: 0 0 2px 1px transparentize(lighten($selected_bg_color, 20%), 0.5);
+      box-shadow: $slider_hover_shadow;
     }
   }
 
@@ -2882,8 +2897,7 @@ checkbutton.text-button, radiobutton.text-button {
   }
 }
 
-check,
-radio {
+check, radio {
   margin: 0px 4px;
 
   &:only-child {
@@ -2969,8 +2983,7 @@ radio {
   }
 }
 
-%check,
-check {
+%check, check {
   border-radius: $button-radius;
 
   &:checked {
@@ -2982,8 +2995,7 @@ check {
   }
 }
 
-%radio,
-radio {
+%radio, radio {
   border-radius: $circular_radius;
 
   &:checked {
@@ -2995,8 +3007,7 @@ radio {
   }
 }
 
-treeview.view check,
-treeview.view radio {
+treeview.view check, treeview.view radio {
   &:selected {
     &:focus, & {
       color: $selected_fg_color;
@@ -3085,12 +3096,28 @@ treeview.view radio:selected {
 }
 
 scale {
-  $_marks_length: 4px;
+  $_marks_length: 8px;
   $_marks_distance: 1px;
 
   min-height: 16px;
   min-width: 16px;
   padding: 8px;
+
+  &.horizontal {
+    min-height: 16px;
+    min-width: 64px;
+    trough {
+      min-height: 16px;
+    }
+  }
+
+  &.vertical {
+    min-height: 64px;
+    min-width: 16px;
+    trough {
+      min-width: 16px;
+    }
+  }
 
   fill,
   highlight {
@@ -3123,7 +3150,7 @@ scale {
     fill,
     highlight,
     trough {
-      border-radius: 4px;
+      border-radius: 8px;
       -gtk-outline-radius: 8px;
     }
   }
@@ -3132,7 +3159,7 @@ scale {
     @extend %scale_trough;
 
     outline-offset: 2px;
-    -gtk-outline-radius: 4px;
+    -gtk-outline-radius: 8px;
   }
 
   highlight {
@@ -3170,11 +3197,11 @@ scale {
       @include button(hover);
 
       background-color: lighten($bg_color, 18%);
-      box-shadow: 0 0 0 4px if($variant == "light", transparentize($selected_bg_color, 0.7), transparentize(white, 0.96));
+      box-shadow: $standard-box-shadow;
     }
 
     &:active, &:checked {
-      border-color: if($variant == "light", $selected_borders_color, transparentize(black, 0.5));
+      border-color: $selected_borders_color;
       box-shadow: $shadow_hover;
     }
 
@@ -3429,11 +3456,12 @@ scale {
 }
 
 // Progress bars //
+
 progressbar {
   &.horizontal {
     trough,
     progress {
-      min-height: 8px;
+      min-height: 16px;
       border-style: none;
       box-shadow: none;
     }
@@ -3442,7 +3470,7 @@ progressbar {
   &.vertical {
     trough,
     progress {
-      min-height: 8px;
+      min-width: 16px;
       border-style: none;
       box-shadow: none;
     }
@@ -3517,10 +3545,11 @@ progressbar {
 }
 
 // Level Bar //
+
 levelbar {
   &.horizontal {
     block {
-      min-height: 1px;
+      min-height: 16px;
     }
 
     &.discrete block {
@@ -3531,7 +3560,7 @@ levelbar {
 
   &.vertical {
     block {
-      min-width: 1px;
+      min-width: 16px;
     }
 
     &.discrete block {
@@ -3557,7 +3586,7 @@ levelbar {
 
   block {
     border: 1px solid;
-    border-radius: 1px;
+    border-radius: 0px;
 
     &.low {
       border-color: if($variant == "light", darken($warning_color, 20%), $warning_color);
@@ -3599,6 +3628,7 @@ levelbar {
 }
 
 // Print Dialog //
+
 printdialog {
   paper {
     color: $fg_color;
@@ -3614,8 +3644,7 @@ printdialog {
 
 // Frames //
 
-frame > border,
-.frame {
+frame > border, .frame {
   box-shadow: none;
   margin: 0px;
   padding: 0px;
@@ -3685,6 +3714,7 @@ separator {
 }
 
 // Lists //
+
 list {
   color: $text_color;
   background-color: $secondary_bg_color;
@@ -3730,6 +3760,7 @@ row {
 }
 
 // App Notifications //
+
 .app-notification,
 .app-notification.frame {
   @extend %osd;
@@ -3750,6 +3781,7 @@ row {
 }
 
 // Expanders //
+
 expander {
   title > arrow {
     min-width: 16px;
@@ -3779,6 +3811,7 @@ expander {
 }
 
 // Calendar //
+
 calendar {
   color: $text_color;
   border: 1px solid $borders_color;
@@ -3819,7 +3852,7 @@ calendar {
 // Dialogs //
 
 messagedialog {
-  // Message Dialog styling
+  // Message Dialog
   .titlebar {
     min-height: 20px;
     background-image: none;
@@ -4033,9 +4066,9 @@ placessidebar {
     }
 
     @at-root button.sidebar-button {
-      @extend %button_basic.flat;
+      @extend %button_basic, .flat;
 
-      @extend %button_selected.flat;
+      @extend %button_selected, .flat;
 
       min-height: 26px;
       min-width: 26px;
@@ -4102,6 +4135,7 @@ placesview {
 }
 
 // Paned //
+
 paned {
   > separator {
     min-width: 1px;
@@ -4164,6 +4198,7 @@ paned {
 }
 
 // GtkInfoBar //
+
 infobar {
   border-style: none;
 
@@ -4232,6 +4267,7 @@ infobar {
 }
 
 // Tooltips //
+
 tooltip {
   &.background {
     background-color: transparentize(black, 0.2);
@@ -4256,6 +4292,7 @@ tooltip {
 }
 
 // Color Chooser //
+
 colorswatch {
   &, &:drop(active) {
     border-style: none;
@@ -4494,8 +4531,7 @@ decoration {
   }
 }
 
-headerbar,
-.titlebar {
+headerbar, .titlebar {
   &.default-decoration button.titlebutton {
     padding: 0px 2px;
     min-width: 0px;
@@ -4643,6 +4679,7 @@ cursor-handle {
 
 .context-menu {
   font: initial;
+  font-family: Monospace;
 }
 
 .keycap {
@@ -4679,6 +4716,7 @@ stackswitcher button.text-button.circular {
 }
 
 // App Icons //
+
 .lowres-icon {
   -gtk-icon-shadow: 0px -1px rgba(0, 0, 0, 0.05), 1px 0px rgba(0, 0, 0, 0.1), 0px 1px rgba(0, 0, 0, 0.3), -1px 0px rgba(0, 0, 0, 0.1);
 }

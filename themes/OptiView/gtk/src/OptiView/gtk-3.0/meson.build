@@ -12,7 +12,6 @@ gtk3_scss_sources = [
 gtk3_scss_dependencies = [
   '_colors-public.scss',
   '_variables.scss',
-  '_colors.scss',
   '_common.scss',
   '_apps.scss',
   '_drawing.scss',

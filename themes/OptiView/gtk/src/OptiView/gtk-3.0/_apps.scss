@@ -248,7 +248,7 @@ XfceHeading,
 }
 
 .caja-desktop {
-  @extend .nautilus-desktop.nautilus-canvas-item;
+  @extend .nautilus-desktop, .nautilus-canvas-item;
 }
 
 .caja-notebook {

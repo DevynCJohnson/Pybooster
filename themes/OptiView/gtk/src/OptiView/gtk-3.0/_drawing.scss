@@ -1,6 +1,6 @@
-// Drawing Mixins
+// Drawing Mixins //
 
-// Generic Drawing
+// Generic Drawing //
 
 // Outer highlight "used" on most widgets
 @function _widget_edge($c: $borders_edge) {
@@ -25,26 +25,7 @@
   box-shadow: $shadows;
 }
 
-// Entries
-@function entry_focus_border($fc: $selected_bg_color) {
-  @if $variant == "light" {
-    @return $fc;
-  }
-  @else {
-    @return if($fc == $selected_bg_color, $selected_borders_color, darken($fc, 35%));
-  }
-}
-
-@function entry_focus_shadow($fs: $selected_bg_color) {
-  @if $variant == "light" {
-    @return 0 0 0 2px transparentize($fs, 0.85), inset 0 1px transparentize(black, 0.98), inset 0 2px transparentize(black, 0.98);
-  }
-  @else {
-    @return 0 0 0 2px transparentize($fs, 1), inset 0 1px transparentize(black, 0.98), inset 0 2px transparentize(black, 0.98);
-  }
-}
-
-$entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transparentize(black, 0.98);
+// Entries //
 
 // Entries drawing function
 // $t: Entry type; Possible values: normal, focus, insensitive, backdrop, backdrop-insensitive, osd, osd-focus, osd-backdrop
@@ -64,7 +45,8 @@ $entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transp
   }
 
   @if $t == focus {
-    border-color: entry_focus_border($fc);
+    border-color: $selected_borders_color;
+    box-shadow: 0px 0px 4px 2px $fs;
   }
 
   @if $t == insensitive {
@@ -127,7 +109,7 @@ $entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transp
   }
 }
 
-// Buttons
+// Buttons //
 
 // Calculate the color of text shadows
 // $tc: Text color
@@ -176,11 +158,12 @@ $entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transp
     border-color: $b;
   }
   @else if $s == focus {
-    border-color: if($variant == "dark", transparentize($selected_bg_color, 0.5), $selected_bg_color);
+    border-color: if($variant == "dark", lighten($selected_bg_color, 20%), $focus_color);
+    box-shadow: 0px 0px 4px 2px $selected_bg_color;
   }
   @else if $s == focus-dark {
-    border-color: $selected_bg_color;
-    box-shadow: none;
+    border-color: if($variant == "dark", lighten($selected_bg_color, 20%), $selected_bg_color);
+    box-shadow: 0px 0px 4px 2px $selected_bg_color;
   }
   @else if $s == disabled {
     box-shadow: none;
@@ -422,7 +405,6 @@ $entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transp
 }
 
 // Check & Radio Buttons
-
 @mixin check($t, $c: $bg_color, $tc: $fg_color, $dc: $dark_bg_color, $dfc: $dark_fg_color) {
   @if $t == normal {
     color: $tc;
@@ -438,6 +420,7 @@ $entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transp
   @else if $t == hover {
     color: $tc;
     border: 1px solid $selected_bg_color;
+    box-shadow: 0 0 4px 2px $box_shadow_color;
   }
   @else if $t == checked {
     color: if($variant == "light", $selected_bg_color, $selected_fg_color);
