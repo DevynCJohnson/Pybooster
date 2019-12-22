@@ -28,7 +28,7 @@ $fg_color: if($variant == "light", #2C2C2C, $dark_fg_color);
 $base_color: if($variant == "light", #E9E9E9, $dark_base_color);
 $secondary_bg_color: if($variant == "light", lighten($base_color, 40%), $base_color);
 $inset_color: if($variant == "light", mix($borders_color, $bg_color, 35%), $dark_fg_color);
-$menu_bg_color: lighten($base_color, 10%);
+$menu_bg_color: lighten($base_color, 20%);
 $hover_color: transparentize($fg_color, 0.7);
 $borders_edge: if($variant == "light", #FFF, transparentize($fg_color, 0.5));
 $dark_fill: mix($borders_color, $bg_color, 35%);

@@ -361,6 +361,10 @@ window.background.chromium {
   }
 }
 
+.chromium.maximized .titlebar button.titlebutton {
+ padding: 0px;
+}
+
 .gedit-search-slider {
   button, button:hover {
     border: 1px solid $borders_color;
@@ -370,6 +374,16 @@ window.background.chromium {
       border-left: 0px;
     }
   }
+}
+
+
+#MozillaGtkWidget .menubar, #MozillaGtkWidget menubar {
+  background-color: $bg_color;
+}
+
+#MozillaGtkWidget .entry, #MozillaGtkWidget entry {
+  background-color: $secondary_bg_color;
+  color: $text_color;
 }
 
 #MozillaGtkWidget.background {
@@ -421,4 +435,9 @@ list.tweak-categories separator {
 .tweak-categories {
   background-color: $base_color;
   border-color: $secondary_borders_color;
+}
+
+ApDocView, CheeseThumbView, EogScrollView {
+  background-color: $bg_color;
+  -EogScrollView-shadow-type: none;
 }

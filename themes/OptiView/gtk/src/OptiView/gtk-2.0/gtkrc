@@ -2,13 +2,13 @@
 # Theme: OptiView
 # Description: Optimized theme
 
-gtk-color-scheme = "bg_color:#d6d6d6\nselected_bg_color:#4a79c7\nbase_color:#F7F7F7" # Background, base.
-gtk-color-scheme = "fg_color:#2c2c2c\nselected_fg_color:#ffffff\ntext_color:#000000" # Foreground, text.
-gtk-color-scheme = "tooltip_bg_color:#000000\ntooltip_fg_color:#FFFFFF" # Tooltips.
-gtk-color-scheme = "link_color:#2d71b8" # Hyperlinks
+gtk-color-scheme = "bg_color:#D5D5D5\nselected_bg_color:#A4A600\nbase_color:#E9E9E9" # Background, base.
+gtk-color-scheme = "fg_color:#2C2C2C\nselected_fg_color:#FFFFFF\ntext_color:#000000" # Foreground, text.
+gtk-color-scheme = "tooltip_bg_color:#222222\ntooltip_fg_color:#FFFFFF" # Tooltips.
+gtk-color-scheme = "link_color:#2D71B8" # Hyperlinks
 gtk-color-scheme = "panel_bg:#121517" # Panel bg color
 gtk-color-scheme = "fm_color:#F7F7F7" # Color used in Thunar.
-gtk-color-scheme = "bg_color_dark:#2b2e30\ntext_color_dark:#f6f6f7"
+gtk-color-scheme = "bg_color_dark:#3C3B37\ntext_color_dark:#F6F6F7"
 
 gtk-icon-sizes     = "panel-applications-menu=24,24:panel-menu=24,24:panel=16,16:gtk-button=16,16"
 gtk-button-images  = 1 # Disables icons for buttons with text
@@ -335,6 +335,17 @@ style "menubar" = "menu" {
 
   engine "murrine" {
     roundness = 0
+  }
+}
+
+style "menubar" = "dark" {
+  bg[SELECTED] = @bg_color
+  fg[SELECTED] = @fg_color
+  engine "murrine" {
+    textstyle = 1
+    text_shade = 1.23
+    gradient_shades = {1.0, 1.0, 1.0, 1.0}
+    lightborder_shade = 1.0
   }
 }
 
@@ -1251,3 +1262,25 @@ widget_class "*<EelEditableLabel>" style "fg-is-text-color-workaround"
 
 # Panel Theming
 include "xfce-panel.rc"
+
+
+# Miscellaneous
+
+
+style "ff-default" {
+  GtkCheckButton::indicator-size = 14
+  engine "murrine" {
+    reliefstyle = 0
+  }
+}
+
+style "ff-statusbar" {
+}
+
+widget "MozillaGtkWidget*" style "ff-default"
+widget_class "*gtkmm__GtkWindow*" style "performance-fix"
+widget_class "*GimpDisplayShell*" style "performance-fix"
+widget_class "*GimpToolbox*" style "performance-fix"
+widget_class "*GimpMenuDock*" style "performance-fix"
+widget "*OOoFixed*" style "performance-fix"
+widget_class "*MozContainer*" style "performance-fix"

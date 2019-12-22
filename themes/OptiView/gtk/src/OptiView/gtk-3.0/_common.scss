@@ -4,16 +4,25 @@
 
 $asset_suffix: if($variant == "dark", "-dark", "");
 
+
 * {
   padding: 0px;
-  -GtkToolButton-icon-spacing: 4;
-  -GtkTextView-error-underline-color: $error_color;
-  -GtkScrolledWindow-scrollbar-spacing: 0;
-  -GtkToolItemGroup-expander-size: 11;
-  -GtkWidget-text-handle-width: 20;
-  -GtkWidget-text-handle-height: 24;
-  -GtkDialog-button-spacing: 4;
+  -GtkCheckMenuItem-indicator-size: 18;
   -GtkDialog-action-area-border: 0;
+  -GtkDialog-button-spacing: 4;
+  -GtkExpander-expander-size: 16;
+  -GtkHTML-link-color: $link_color;
+  -GtkIMHtml-hyperlink-color: $link_color;
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkStatusbar-shadow-type: none;
+  -GtkTextView-error-underline-color: $error_color;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkToolItemGroup-expander-size: 12;
+  -GtkTreeView-expander-size: 12;
+  -GtkTreeView-horizontal-separator: 4;
+  -GtkWidget-text-handle-height: 24;
+  -GtkWidget-text-handle-width: 20;
+  -WnckTasklist-fade-overlay-rect: 0;
   outline-color: gtkalpha(currentColor, 0.3);
   outline-style: dashed;
   outline-offset: -2px;
@@ -695,7 +704,8 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 
   &:disabled {
     background-color: $menu_bg_color;
-    color: $text_color;
+    border: none;
+    color: $secondary_bg_color;
   }
 }
 
@@ -1166,6 +1176,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 
 .view, iconview, textview {
   background-color: $secondary_bg_color;
+  caret-color: $caret_color;
   color: $text_color;
 
   &:backdrop {
@@ -1191,7 +1202,10 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 
   text {
+    background-color: $selected_bg_color;
+    color: $text_color;
     selection {
+    background-color: $selected_bg_color;
       &:focus, & {
         @extend %selected_items;
       }
@@ -1341,6 +1355,15 @@ calendar {
     color: gtkalpha(currentColor, 0.1);
   }
 }
+
+calendar-view  {
+  -gtk-outline-radius: 0px;
+  outline-color: $selected_bg_color;
+  outline-offset: -4px;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
 
 // Expanders //
 

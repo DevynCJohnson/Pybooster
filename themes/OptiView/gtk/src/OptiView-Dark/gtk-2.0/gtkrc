@@ -1,15 +1,14 @@
-# Author: lassekongo83
-# Theme: OptiView-dark
-# based on "Greybird" and "Bluebird" by Simon Steinbeiß and Pasi Lallinaho
-# Description: As is the original theme, this theme is 100% free and open source.
+# Author: Devyn Collier Johnson
+# Theme: OptiView
+# Description: Optimized theme
 
-gtk-color-scheme = "bg_color:#2b2e30\nselected_bg_color:#4a79c7\nbase_color:#383b3d" # Background, base.
-gtk-color-scheme = "fg_color:#f6f6f7\nselected_fg_color:#ffffff\ntext_color:#ffffff" # Foreground, text.
+gtk-color-scheme = "bg_color:#2B2E30\nselected_bg_color:#4A79C7\nbase_color:#383B3D" # Background, base.
+gtk-color-scheme = "fg_color:#F6F6F7\nselected_fg_color:#FFFFFF\ntext_color:#FFFFFF" # Foreground, text.
 gtk-color-scheme = "tooltip_bg_color:#000000\ntooltip_fg_color:#FFFFFF" # Tooltips.
-gtk-color-scheme = "link_color:#2d71b8" # Hyperlinks
+gtk-color-scheme = "link_color:#2D71B8" # Hyperlinks
 gtk-color-scheme = "panel_bg:#121517" # Panel bg color
-gtk-color-scheme = "fm_color:#2b2e30" # Color used in Thunar.
-gtk-color-scheme = "bg_color_dark:#2b2e30\ntext_color_dark:#f6f6f7"
+gtk-color-scheme = "fm_color:#2B2E30" # Color used in Thunar.
+gtk-color-scheme = "bg_color_dark:#2B2E30\ntext_color_dark:#F6F6F7"
 
 gtk-icon-sizes     = "panel-applications-menu=24,24:panel-menu=24,24:panel=16,16:gtk-button=16,16"
 gtk-button-images  = 1 # Disables icons for buttons with text
@@ -226,14 +225,6 @@ style "button" = "wider" {
   bg[SELECTED]    = shade (0.88, @bg_color)
   bg[INSENSITIVE] = shade (0.88, @bg_color)
 
-  #engine "murrine" {
-  #  highlight_shade = 1.0
-  #  border_shades   = {0.9,0.6}
-  #  shadow_shades   = {0.7,0.2}
-  #  reliefstyle     = 0
-  #  roundness       = 2
-  #}
-
   engine "pixmap"  {
     image {
       function    = BOX
@@ -336,6 +327,17 @@ style "menubar" = "menu" {
 
   engine "murrine" {
     roundness = 0
+  }
+}
+
+style "menubar" = "dark" {
+  bg[SELECTED] = @bg_color
+  fg[SELECTED] = @fg_color
+  engine "murrine" {
+    textstyle = 1
+    text_shade = 1.23
+    gradient_shades = {1.0, 1.0, 1.0, 1.0}
+    lightborder_shade = 1.0
   }
 }
 
@@ -636,7 +638,7 @@ style "comboboxentry" {
 }
 
 style "combo" = "comboboxentry" {
-  bg[ACTIVE] = shade (0.85, @bg_color) # Color for pressed-spinbuttons.
+  bg[ACTIVE] = shade (0.85, @bg_color)
 }
 
 style "spin" = "combo" {
@@ -1148,12 +1150,6 @@ class "GtkHScrollbar" style "scrollbar"
 class "GtkRadio*" style "radio"
 class "GtkCheck*" style "check"
 
-# General matching following, the order is choosen so that the right styles override each other eg. progressbar needs to be more important then the menu match.
-#widget_class "*<GtkNotebook>*<GtkEventBox>"       style "notebook"
-#widget_class "*<GtkNotebook>*<GtkScrolledWindow>" style "notebook"
-#widget_class "*<GtkNotebook>*<GtkDrawingArea>"    style "notebook"
-#widget_class "*<GtkNotebook>*<GtkLayout>"         style "notebook"
-#widget_class "*<GtkNotebook>*<GtkLabel>"          style "notebook-button"
 widget_class "*<GtkNotebook>*<GtkEventBox>"        style "notebook-bg"
 widget_class "*<GtkNotebook>*<GtkDrawingArea>"     style "notebook-bg"
 widget_class "*<GtkNotebook>*<GtkLayout>"          style "notebook-bg"
@@ -1215,23 +1211,12 @@ widget_class "*XfdesktopIconView*"                        style "xfdesktop-icon-
 widget_class "*<OsScrollbar>" style "overlay-scrollbar"
 widget_class "*<OsThumb>"     style "overlay-scrollbar"
 
-# The window of the tooltip is called "gtk-tooltip"
-################################
-# FIXME:
-# This will not work if one embeds eg. a button into the tooltip.
-# As far as I can tell right now we will need to rework the theme
-# quite a bit to get this working correctly.
-# (It will involve setting different priorities, etc.)
-################################
 widget "gtk-tooltip*" style "tooltips"
 
 ###################################################
 # SPECIAL CASES AND WORKAROUNDS
 ###################################################
 
-# Work around for http://bugzilla.gnome.org/show_bug.cgi?id=382646
-# Note that the work around assumes that the combobox is _not_ in appears-as-list mode.
-# This style does not affect GtkComboBoxEntry, it does have an effect on comboboxes in appears-as-list mode though.
 style "text-is-fg-color-workaround" {
   text[NORMAL]      = @fg_color
   text[PRELIGHT]    = @fg_color
@@ -1250,8 +1235,6 @@ style "menuitem-text-is-fg-color-workaround" {
 }
 widget "*.gtk-combobox-popup-menu.*" style "menuitem-text-is-fg-color-workaround"
 
-# Work around the usage of GtkLabel inside GtkListItems to display text.
-# This breaks because the label is shown on a background that is based on the base color set.
 style "fg-is-text-color-workaround" {
   fg[NORMAL]      = @text_color
   fg[PRELIGHT]    = @text_color
@@ -1260,10 +1243,30 @@ style "fg-is-text-color-workaround" {
   fg[INSENSITIVE] = mix (0.4, @text_color, @bg_color)
 }
 widget_class "*<GtkListItem>*"     style "fg-is-text-color-workaround"
-# The same problem also exists for GtkCList and GtkCTree.
-# Only match GtkCList and not the parent widgets, because that would also change the headers.
 widget_class "*<GtkCList>"         style "fg-is-text-color-workaround"
 widget_class "*<EelEditableLabel>" style "fg-is-text-color-workaround"
 
-# panel theming
+# Panel Theming
 include "xfce-panel.rc"
+
+
+# Miscellaneous
+
+
+style "ff-default" {
+  GtkCheckButton::indicator-size = 14
+  engine "murrine" {
+    reliefstyle = 0
+  }
+}
+
+style "ff-statusbar" {
+}
+
+widget "MozillaGtkWidget*" style "ff-default"
+widget_class "*gtkmm__GtkWindow*" style "performance-fix"
+widget_class "*GimpDisplayShell*" style "performance-fix"
+widget_class "*GimpToolbox*" style "performance-fix"
+widget_class "*GimpMenuDock*" style "performance-fix"
+widget "*OOoFixed*" style "performance-fix"
+widget_class "*MozContainer*" style "performance-fix"
