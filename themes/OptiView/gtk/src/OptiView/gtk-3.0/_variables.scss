@@ -1,177 +1,172 @@
 // Color Variables
 
-$dark_bg_color: #222;
-$dark_fg_color: #F6F6F7;
-$dark_borders_color: #333;
-$dark_base_color: #556;
-$dark_btn_color: #568;
 
-$scale_color: if($variant == "light", #3344DD, #22DDCC);
-$base_color: if($variant == "light", #F7F7F7, $dark_base_color);
-$text_color: if($variant == "light", black, white);
-$bg_color: if($variant == "light", #D6D6D6, $dark_bg_color);
-$fg_color: if($variant == "light", #2C2C2C, $dark_fg_color);
-$sep_color: if($variant == "light", #777, #AAA);
-$active_color: #2890FF;
-$select_color: #A4A600;
-$caret_color: if($variant == "light", #000, #FFF);
-$secondary_caret_color: #BF8;
-$focus_color: if($variant == "light", #B5E, #EE7);
-$hover_color: $select_color;
+$active_color: #29F;
+$active_column_color: #7CE;
+$close_button: transparent;
+$close_button_hover: #C75050;
 $column_header_color: #2C2C2C;
-$box_shadow_color: if($variant == "light", #28C, #EE7);
-$active_column_color: #77CCEE;
-$hover_column_color: $hover_color;
+$dark_base_color: #556;
+$dark_bg_color: #222;
+$dark_borders_color: #333;
+$dark_btn_color: #568;
+$dark_fg_color: #F6F6F6;
 $dnd_column_color: #EC3;
-$entry_image_active_color: $active_color;
+$drop_target_color: #4E9A06;
 $entry_image_focus_color: #CCF;
-$entry_image_hover_color: $hover_color;
-
-$shiny: linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%);
-$attention: linear-gradient(rgb(200, 150, 150), rgb(250, 240, 240));
-
+$error_color: #E53935;
+$osd_fg_color: #EEE;
+$secondary_caret_color: #BF8;
+$select_color: #A4A600;
 $selected_fg_color: #FFF;
+$warning_color: #FFCA28;
 $selected_bg_color: $select_color;
-$selected_borders_color: $focus_color;
-$borders_color: if($variant == "light", darken($bg_color, 20%), $dark_borders_color);
-$borders_edge: if($variant == "light", white, transparentize($fg_color, 0.5));
+
+$bg_color: if($variant == "light", #D5D5D5, $dark_bg_color);
+$borders_color: if($variant == "light", darken($bg_color, 24%), $dark_borders_color);
+$fg_color: if($variant == "light", #2C2C2C, $dark_fg_color);
+$base_color: if($variant == "light", #E9E9E9, $dark_base_color);
+$secondary_bg_color: if($variant == "light", lighten($base_color, 40%), $base_color);
+$inset_color: if($variant == "light", mix($borders_color, $bg_color, 35%), $dark_fg_color);
+$menu_bg_color: lighten($base_color, 10%);
+$hover_color: transparentize($fg_color, 0.7);
+$borders_edge: if($variant == "light", #FFF, transparentize($fg_color, 0.5));
+$dark_fill: mix($borders_color, $bg_color, 35%);
+$destructive_color: if($variant == "light", #E55, darken(#E55, 10%));
+$focus_color: if($variant == "light", #B5E, #EE7);
+$header_bg: if($dark_header == "true", $dark_bg_color, $bg_color);
 $link_color: if($variant == "light", darken($selected_bg_color, 10%), lighten($selected_bg_color, 20%));
 $link_visited_color: if($variant == "light", darken($selected_bg_color, 20%), lighten($selected_bg_color, 10%));
-$top_hilight: $borders_edge;
-$_wm_highlight: if($variant == "light", $borders_edge, transparentize(black, 1));
-$dark_fill: mix($borders_color, $bg_color, 35%);
-$popover_bg_color: mix($bg_color, $base_color, 50%);
-$popover_hover_color: lighten($bg_color, 5%);
-
-$scrollbar_bg_color: $base_color;
-$scrollbar_slider_color: mix($fg_color, $bg_color, 50%);
-$scrollbar_slider_hover_color: mix($fg_color, $bg_color, 80%);
-$scrollbar_slider_active_color: if($variant == "light", darken($selected_bg_color, 10%), lighten($selected_bg_color, 10%));
-
-$warning_color: #FFCA28;
-$error_color: #E53935;
-$success_color: if($variant == "light", #9CCC65, darken(#9CCC65, 10%));
-$destructive_color: if($variant == "light", #EF5350, darken(#EF5350, 10%));
-
-$osd_fg_color: #EEE;
-$osd_text_color: white;
 $osd_bg_color: transparentize($dark_bg_color, 0.3);
+$osd_borders_color: rgba(0, 0, 0, 0.7);
 $osd_insensitive_bg_color: transparentize(mix($osd_fg_color, opacify($osd_bg_color, 1), 10%), 0.5);
 $osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 50%);
-$osd_borders_color: transparentize(black, 0.3);
+$popover_bg_color: mix($bg_color, $base_color, 50%);
+$popover_hover_color: lighten($bg_color, 5%);
+$scale_color: if($variant == "light", #34D, #2DC);
+$scrollbar_slider_active_color: if($variant == "light", darken($selected_bg_color, 10%), lighten($selected_bg_color, 10%));
+$scrollbar_slider_color: mix($fg_color, $bg_color, 50%);
+$scrollbar_slider_hover_color: mix($fg_color, $bg_color, 80%);
+$secondary_borders_color: if($variant == "light", darken($base_color, 8%), $borders_color);
+$sep_color: if($variant == "light", #777, #AAA);
+$shadow_color: rgba(0, 0, 0, 0.1);
+$sidebar_bg_color: if($variant == "light", #E4E4E4, $bg_color);
+$success_color: if($variant == "light", #9C6, darken(#9C6, 10%));
+$tabbar_color: if($variant == "light", darken($header_bg, 5%), darken($bg_color, 3%));
+$text_color: if($variant == "light", #000, #FFF);
+$caret_color: $text_color;
+$toolbar_color: if($variant == "light", $tabbar_color, $tabbar_color);
+$tooltip_borders_color: rgba(255, 255, 255, 0.1);
+$_wm_border: if($variant == "light", rgba(0, 0, 0, 0.2), transparentize($borders_color, 0.1));
+$_wm_border_backdrop: if($variant == "light", rgba(0, 0, 0, 0.2), transparentize($borders_color, 0.1));
+$_wm_highlight: if($variant == "light", $borders_edge, rgba(0, 0, 0, 0.1));
 
-$sidebar_bg_color: if($variant == "light", mix($bg_color, $base_color, 50%), $bg_color);
-$base_hover_color: transparentize($fg_color, 0.9);
-
-$tooltip_borders_color: transparentize(white, 0.9);
-$shadow_color: transparentize(black, 0.9);
-
-$drop_target_color: #4E9A06;
+$shiny: linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%);
+$shiny_hover: linear-gradient(#CCCCCC 0%, #E0E0E0 25%, #EFEFEF 50%, #E9E9E9 75%, #CCCCCC 100%);
+$attention: linear-gradient(rgb(200, 150, 150), rgb(250, 240, 240));
 
 // Insensitive State Colors
 
-$insensitive_fg_color: mix($fg_color, $bg_color, 50%);
 $insensitive_bg_color: mix($bg_color, $base_color, 60%);
 $insensitive_borders_color: $borders_color;
+$insensitive_fg_color: mix($fg_color, $bg_color, 50%);
 
 // Colors for the Backdrop State
 
-$backdrop_base_color: $base_color;
-$backdrop_text_color: mix($text_color, $backdrop_base_color, 80%);
-$backdrop_bg_color: $bg_color;
-$backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 50%);
-$backdrop_insensitive_color: if($variant == "light", darken($backdrop_bg_color, 15%), lighten($backdrop_bg_color, 15%));
-$backdrop_selected_fg_color: $selected_fg_color;
 $backdrop_borders_color: mix($borders_color, $bg_color, 90%);
-$backdrop_dark_fill: mix($backdrop_borders_color, $backdrop_bg_color, 35%);
-$backdrop_sidebar_bg_color: mix($backdrop_bg_color, $backdrop_base_color, 50%);
-
-$backdrop_scrollbar_bg_color: darken($backdrop_bg_color, 3%);
-$backdrop_scrollbar_slider_color: mix($backdrop_fg_color, $backdrop_bg_color, 40%);
-
-$backdrop_menu_color: if($variant == "light", $backdrop_base_color, mix($backdrop_bg_color, $backdrop_base_color, 20%));
-
-// Headerbar Color
-
-$header_bg: if($dark_header == "true", #3E4143, $bg_color);
-
-// Secondary Colors for Notebooks & Other Elements
-
-$secondary_bg_color: $base_color;
-$secondary_borders_color: if($variant == "light", darken($secondary_bg_color, 8%), $borders_color);
-
-// Tabbar
-
-$tabbar_color: if($variant == "light", darken($header_bg, 5%), darken($bg_color, 3%));
-
-// Toolbar
-
-$toolbar_color: if($variant == "light", $tabbar_color, $tabbar_color);
+$backdrop_dark_fill: mix($backdrop_borders_color, $bg_color, 35%);
+$backdrop_fg_color: mix($fg_color, $bg_color, 50%);
+$backdrop_insensitive_color: if($variant == "light", darken($bg_color, 15%), lighten($bg_color, 15%));
+$backdrop_menu_color: if($variant == "light", $base_color, mix($bg_color, $base_color, 20%));
+$backdrop_scrollbar_slider_color: mix($backdrop_fg_color, $bg_color, 40%);
+$backdrop_selected_fg_color: $selected_fg_color;
+$backdrop_sidebar_bg_color: mix($bg_color, $base_color, 50%);
+$backdrop_text_color: mix($text_color, $base_color, 80%);
 
 // Light Selection
 
 $light_selection: if($dark_header == "true", lighten($selected_bg_color, 5%), lighten($selected_bg_color, 35%));
 $light_selection_border: if($dark_header == "true", lighten($selected_bg_color, 8%), lighten($selected_bg_color, 25%));
 
-// Title Buttons
-
-$close_button: transparent;
-$close_button_hover: #C75050;
-$close_button_backdrop: $close_button;
-$max_min_hover: $selected_bg_color;
-
-// Titlebutton Sizes
-
-$titlebutton-width: 64px;
-$titlebutton-height: 64px;
-$titlebutton-padding: 8px;
-
-// Scrollbars
-
-$_slider_min_length: 64px;
-$_scrollbar_size: 16px;
-
 // Radius
 
 $button-radius: 0px;
-$window-radius: 0px;
 $circular_radius: 128px;
+$entry-radius: 0px;
 $scale_radius: 32px;
+$window-radius: 0px;
 
-// Duration
+// Sizes
 
-$shortest_duration: 100ms;
-$shorter_duration: 150ms;
-$longer_duration: 250ms;
-
-// Timing Function
-
-$deceleration_curve: cubic-bezier(0, 0, 0.2, 1);
+$_marks_distance: 1px;
+$_marks_length: 8px;
+$_scrollbar_size: 16px;
+$_slider_min_length: 64px;
+$_switch_min_length: 32px;
+$icon_size: 16px;
+$scroller_min_thickness: 16px;
+$titlebutton-height: 64px;
+$titlebutton-padding: 8px;
+$titlebutton-width: 64px;
 
 // Shadows
 
-$entry_inner_shadow: inset 0 1px transparentize(black, 0.98), inset 0 2px transparentize(black, 0.98);
-$standard-box-shadow: 0px 0px 8px 4px $box_shadow_color;
-$shadow-color: transparentize(black, 0.9);
-$shadow-color-hover: transparentize(black, 0.8);
-$shadow_hover: $standard-box-shadow;
-$inset-color: if($variant == "light", transparentize(white, 0.7), transparentize(white, 0.9));
-
-$slider_hover_shadow: 0px 0px 8px 4px $box_shadow_color;
-
-$shadow_normal: 1px 0px $shadow-color, 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+$box_shadow_color: if($variant == "light", #28C, #EE7);
+$shadow_hover: 0px 0px 8px 4px $box_shadow_color;
+$slider_hover_shadow: 0px 0px 8px 4px $select_color;
+$entry_inner_shadow: inset 0 1px rgba(0, 0, 0, 0.1), inset 0 2px rgba(0, 0, 0, 0.1);
+$inset-color: if($variant == "light", rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+$shadow-color-hover: rgba(0, 0, 0, 0.2);
+$shadow-color: rgba(0, 0, 0, 0.1);
 
 $trans_shadow_color: transparentize($box_shadow_color, 0.9);
+
+$_colorswatch_overlay_shadow: if($variant == "light", inset 0 2px 2px -4px rgba(0, 0, 0, 0.7), inset 0 4px 2px -2px rgba(0, 0, 0, 0.5));
 
 $shadow_active: inset 2px 0px $trans_shadow_color, inset 0px 2px $trans_shadow_color, inset -2px 0px $trans_shadow_color, inset 0px -2px $trans_shadow_color;
 
 $shadow_focus: 2px 0px $shadow-color, 0px 2px $shadow-color, -2px 0px $shadow-color, 0px -2px $shadow-color, inset 2px 0px $inset-color, inset 0px 2px $inset-color, inset -2px 0px $inset-color, inset 0px -2px $inset-color;
 
+$shadow_normal: 1px 0px $shadow-color, 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+
 // Linked Button Shadows
 
-$btn-shadow-middle: 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
-$btn-shadow-middle-hover: 0px 1px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
-$btn-shadow-left: 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
 $btn-shadow-left-hover: 0px 1px $shadow-color-hover, -1px 0px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
-$btn-shadow-right: 1px 0px $shadow-color, 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-left: 0px 1px $shadow-color, -1px 0px $shadow-color, 0px -1px $shadow-color, inset 1px 0px $inset-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-middle-hover: 0px 1px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-middle: 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset 0px -1px $inset-color;
 $btn-shadow-right-hover: 1px 0px $shadow-color-hover, 0px 1px $shadow-color-hover, 0px -1px $shadow-color-hover, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+$btn-shadow-right: 1px 0px $shadow-color, 0px 1px $shadow-color, 0px -1px $shadow-color, inset 0px 1px $inset-color, inset -1px 0px $inset-color, inset 0px -1px $inset-color;
+
+// Miscellaneous
+
+$_dot_color: if($variant == "light", $selected_bg_color, lighten($selected_bg_color, 15%));
+$_dot_shadow: if($variant == "light", transparentize(white, 1 - (lightness($bg_color) / 100%) / (lightness($bg_color) / 100% * 1.3)), transparentize(black, lightness($bg_color) / 100% * 0.8));
+$_entry_tag_bg: if($variant == "light", $selected_bg_color, mix($fg_color, $base_color, 50%));
+$_entry_tag_color: if($variant == "light", $selected_fg_color, $base_color);
+$_placesidebar_icons_opacity: 0.7;
+
+// Duration
+
+$checkbox_duration: 0s;
+$longer_duration: 250ms;
+$scroll_duration: 0s;
+$shorter_duration: 150ms;
+$shortest_duration: 100ms;
+
+// Timing Function
+
+$deceleration_curve: cubic-bezier(0, 0, 0.2, 1);
+
+
+// Keyframes
+
+
+@keyframes needs_attention {
+  from { background-image: radial-gradient(farthest-side, $_dot_color 0%, transparentize($_dot_color, 1) 0%); }
+  to { background-image: radial-gradient(farthest-side, $_dot_color 95%, transparentize($_dot_color, 1)); }
+}
+
+@keyframes spin {
+  to { -gtk-icon-transform: rotate(1turn); }
+}

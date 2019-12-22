@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Install the Theme
 #' @file install.sh
-#' @version 2019.11.16
+#' @version 2019.12.21
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -24,18 +24,17 @@ sh ./clean.sh
 
 
 sh -c 'cd ./gtk/src/OptiView/gtk-2.0 && sh ./render-assets.sh' &
-cd ./gtk/src/OptiView/gtk-3.0 && sh ./render-assets.sh
-cd "$TOPDIR" || exit 1
+sh -c 'cd ./gtk/src/OptiView/gtk-3.0 && sh ./render-assets.sh' &
 sh -c 'cd ./unity && sh ./render-assets.sh' &
-cd ./xfwm4/src/OptiView && sh ./render-assets.sh
+sh -c 'cd ./xfwm4/src/OptiView && sh ./render-assets.sh' &
+wait
 cd "$TOPDIR" || exit 1
 sh -c 'cd ./gtk/src/OptiView-Dark/gtk-2.0 && sh ./render-assets.sh' &
-cd ./xfwm4/src/OptiView-Dark && sh ./render-assets.sh
+sh -c 'cd ./xfwm4/src/OptiView-Dark && sh ./render-assets.sh' &
 
 wait
 
 cd "$TOPDIR" || exit 1
 
 sudo rm -f -r /usr/share/themes/OptiView /usr/share/themes/OptiView-Dark /usr/share/themes/OptiView-shell || true
-meson build && sudo ninja -C build install
-sh ./clean.sh
+meson build && sudo ninja -C build install && sh ./clean.sh

@@ -49,12 +49,12 @@ style "default" {
   GtkProgressBar::min-horizontal-bar-height = 10
 
   GtkRange::trough-border   = 2
-  GtkRange::slider-width    = 9
-  GtkRange::stepper-size    = 13
+  GtkRange::slider-width    = 10
+  GtkRange::stepper-size    = 14
   GtkRange::stepper_spacing = 0
 
-  GtkScale::slider-length       = 15
-  GtkScale::slider-width        = 15
+  GtkScale::slider-length       = 16
+  GtkScale::slider-width        = 16
   GtkScale::trough-side-details = 1
 
   GtkScrollbar::min-slider-length    = 48
@@ -78,8 +78,8 @@ style "default" {
   GtkWidget::focus-line-width = 1
   GtkWidget::focus-padding    = 0
 
-  GtkWindow::resize-grip-height = 13
-  GtkWindow::resize-grip-width  = 13
+  GtkWindow::resize-grip-height = 14
+  GtkWindow::resize-grip-width  = 14
 
   xthickness = 1
   ythickness = 1
@@ -1011,7 +1011,7 @@ style "toolbar-separator" {
 
   GtkVSeparator::vertical-padding = 0
   GtkWidget::wide-separators      = 1
-  GtkWidget::separator-width      = 7
+  GtkWidget::separator-width      = 8
   GtkWidget::separator-height     = 1
 
 
@@ -1042,7 +1042,7 @@ style "xfwm-tabwin"
   Xfwm4TabwinWidget::icon-size          = 64
   Xfwm4TabwinWidget::listview-icon-size = 24
   Xfwm4TabwinWidget::preview-size       = 128
-  Xfwm4TabwinWidget::alpha              = 0.8
+  Xfwm4TabwinWidget::alpha              = 1.0
   Xfwm4TabwinWidget::border-radius      = 12
 
   bg[NORMAL]   = shade (0.15, @text_color)
@@ -1077,7 +1077,7 @@ style "xfdesktop-icon-view" {
   XfdesktopIconView::shadow-blur-radius         = 2
   XfdesktopIconView::cell-spacing               = 2
   XfdesktopIconView::cell-padding               = 6
-  XfdesktopIconView::cell-text-width-proportion = 1.9
+  XfdesktopIconView::cell-text-width-proportion = 1.8
 
   fg[NORMAL] = shade (0.9, @selected_fg_color)
   fg[ACTIVE] = @selected_fg_color
@@ -1146,7 +1146,7 @@ class "GtkHScrollbar" style "scrollbar"
 class "GtkRadio*" style "radio"
 class "GtkCheck*" style "check"
 
-# General matching following, the order is choosen so that the right styles override each other eg. progressbar needs to be more important then the menu match.
+# General matching following, the order is choosen so that the right styles override each other e.g. progressbar needs to be more important then the menu match.
 #widget_class "*<GtkNotebook>*<GtkEventBox>"       style "notebook"
 #widget_class "*<GtkNotebook>*<GtkScrolledWindow>" style "notebook"
 #widget_class "*<GtkNotebook>*<GtkDrawingArea>"    style "notebook"
@@ -1214,22 +1214,12 @@ widget_class "*<OsScrollbar>" style "overlay-scrollbar"
 widget_class "*<OsThumb>"     style "overlay-scrollbar"
 
 # The window of the tooltip is called "gtk-tooltip"
-################################
-# FIXME:
-# This will not work if one embeds eg. a button into the tooltip.
-# As far as I can tell right now we will need to rework the theme
-# quite a bit to get this working correctly.
-# (It will involve setting different priorities, etc.)
-################################
 widget "gtk-tooltip*" style "tooltips"
 
 ###################################################
 # SPECIAL CASES AND WORKAROUNDS
 ###################################################
 
-# Work around for http://bugzilla.gnome.org/show_bug.cgi?id=382646
-# Note that the work around assumes that the combobox is _not_ in appears-as-list mode.
-# This style does not affect GtkComboBoxEntry, it does have an effect on comboboxes in appears-as-list mode though.
 style "text-is-fg-color-workaround" {
   text[NORMAL]      = @fg_color
   text[PRELIGHT]    = @fg_color
@@ -1248,8 +1238,6 @@ style "menuitem-text-is-fg-color-workaround" {
 }
 widget "*.gtk-combobox-popup-menu.*" style "menuitem-text-is-fg-color-workaround"
 
-# Work around the usage of GtkLabel inside GtkListItems to display text.
-# This breaks because the label is shown on a background that is based on the base color set.
 style "fg-is-text-color-workaround" {
   fg[NORMAL]      = @text_color
   fg[PRELIGHT]    = @text_color
@@ -1258,10 +1246,8 @@ style "fg-is-text-color-workaround" {
   fg[INSENSITIVE] = mix (0.4, @text_color, @bg_color)
 }
 widget_class "*<GtkListItem>*"     style "fg-is-text-color-workaround"
-# The same problem also exists for GtkCList and GtkCTree.
-# Only match GtkCList and not the parent widgets, because that would also change the headers.
 widget_class "*<GtkCList>"         style "fg-is-text-color-workaround"
 widget_class "*<EelEditableLabel>" style "fg-is-text-color-workaround"
 
-# panel theming
+# Panel Theming
 include "xfce-panel.rc"

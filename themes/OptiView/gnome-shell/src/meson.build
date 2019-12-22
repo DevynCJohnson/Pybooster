@@ -1,7 +1,7 @@
-# Destination Directory
+# Destination directory
 install_dir = join_paths(gnomeshell_theme_dir, 'gnome-shell')
 
-# Generate CSS Files
+# Generate CSS files
 theme_sources = files([
   'gnome-shell-high-contrast.scss',
   'gnome-shell.scss',
@@ -25,14 +25,14 @@ foreach style: styles
     'style-' + style,
     input: '@0@.scss'.format(style),
     output: '@0@.css'.format(style),
-    command: [pysassc, '--omit-sourcemap-url', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
+    command: [pysassc, '--precision=4', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
     install: true,
     install_dir: install_dir,
     depend_files: theme_sources
   )
 endforeach
 
-# Static Files to Copy
+# Static files to copy
 data_sources = [
   'activities-active.svg',
   'activities.svg',
@@ -62,5 +62,5 @@ data_sources = [
   'ws-switch-arrow-up.png',
 ]
 
-# Install Static Data Files
+# Install static data files
 install_data(data_sources, install_dir: install_dir)

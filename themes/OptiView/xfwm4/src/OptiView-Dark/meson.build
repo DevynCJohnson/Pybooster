@@ -1,9 +1,9 @@
 optiview_dark_xfwm4_theme_dir = join_paths(get_option('datadir'), 'themes', meson.project_name()+'-Dark')
 
-# Destination Directory
+# Destination directory
 install_dir = join_paths(optiview_dark_xfwm4_theme_dir , 'xfwm4')
 
-# Files to Copy
+# Files to copy
 data_sources = [
   'bottom-active.png',
   'bottom-inactive.png',
@@ -57,5 +57,5 @@ data_sources = [
   'themerc',
 ]
 
-# Install Files
+# Install files
 install_data(data_sources, install_dir: install_dir)

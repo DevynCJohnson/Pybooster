@@ -116,7 +116,7 @@ class "*SexyIconEntry*"               style:highest "combo"
 widget "*xfce4-verve-plugin*GtkEntry" style:highest "combo"
 widget "*bookmark*GtkEntry"           style "panel-entry"
 
-# Make sure panel text color doesn't change
+# Make sure panel text color does not change
 widget_class "*Panel*MenuBar*"      style "theme-main-menu-text"
 widget_class "*Panel*<GtkMenuBar>*" style "theme-main-menu-text"
 widget "*.clock-applet-button.*"    style "theme-panel-text"

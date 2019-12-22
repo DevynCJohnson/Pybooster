@@ -4,20 +4,20 @@
 // Panel widget at the top
 #panel_window {
   background-color: $dark_bg_color;
-  color: $dark_fg_color;
-  box-shadow: none;
   border-style: none;
+  box-shadow: none;
+  color: $dark_fg_color;
 
   // Menubars/Menus of the panel (i.e. indicators)
   menubar,
   menubar > menuitem {
-    color: $dark_fg_color;
-    box-shadow: none;
     border-style: none;
+    box-shadow: none;
+    color: $dark_fg_color;
 
     &:active, &:checked, &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
       border-style: none;
-      background-color: transparentize(white, 0.8);
     }
   }
 
@@ -35,23 +35,21 @@
 }
 
 // Login window
-#login_window,
-#shutdown_dialog,
-#restart_dialog {
-  font-style: normal;
-  border-style: none;
+#login_window, #restart_dialog, #shutdown_dialog {
   background-color: $bg_color;
+  border-style: none;
   color: $fg_color;
+  font-style: normal;
 }
 
 // Top half of the login-window (i.e. the content)
 #content_frame {
-  padding-bottom: 16px;
   background-color: $bg_color;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border: solid transparentize(black, 0.9);
   border-width: 1px 1px 0px 1px;
+  border: solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 16px;
 }
 
 #content_frame button {
@@ -72,14 +70,14 @@
 
 // Lower half of the login-window (i.e. the buttonbox or action area)
 #buttonbox_frame {
-  padding-top: 16px;
-  padding-bottom: 0px;
-  border-style: none;
   background-color: darken($bg_color, 5%);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border: solid transparentize(black, 0.9);
+  border-bottom-left-radius: $button-radius;
+  border-bottom-right-radius: $button-radius;
+  border-style: none;
   border-width: 1px;
+  border: solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0px;
+  padding-top: 16px;
 }
 
 #buttonbox_frame button {
@@ -108,8 +106,8 @@
 
 // User's avatar box
 #user_image {
+  border-radius: 0px;
   padding: 4px;
-  border-radius: 2px;
 }
 
 // Shutdown button

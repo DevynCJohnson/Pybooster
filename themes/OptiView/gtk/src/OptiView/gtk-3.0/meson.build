@@ -1,6 +1,6 @@
 gtk3_dir = join_paths(theme_dir, 'gtk-3.0')
 
-# theme sources .scss files
+# Theme sources SCSS files
 
 # The files that need to be compiled
 gtk3_scss_sources = [
@@ -77,20 +77,20 @@ gtk3_assets = [
   'assets/titlebutton-unmaximize.png',
 ]
 
-# Generate .css files and install
+# Generate CSS files and install
 gtk3_scss_dependencies = files(gtk3_scss_dependencies)
-#
+
 foreach f : gtk3_scss_sources
-    custom_target('optiview-generate_' + f,
-        input: f + '.scss',
-        output: f + '.css',
-        depend_files: gtk3_scss_dependencies,
-        command: [pysassc, '--omit-sourcemap-url', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
-        build_by_default: true,
-        install: true,
-        install_dir: gtk3_dir,
-    )
+  custom_target('optiview-generate_' + f,
+    input: f + '.scss',
+    output: f + '.css',
+    depend_files: gtk3_scss_dependencies,
+    command: [pysassc, '--precision=4', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
+    build_by_default: true,
+    install: true,
+    install_dir: gtk3_dir,
+  )
 endforeach
 
-# Install asset files to themes/ThemeName/gtk-3.0/assets
+# Install asset files
 install_data(gtk3_assets, install_dir: gtk3_asset_dir)

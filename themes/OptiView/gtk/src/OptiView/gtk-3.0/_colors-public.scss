@@ -14,6 +14,10 @@
 
 // Base background color of selections
 @define-color theme_selected_bg_color #{"" + $selected_bg_color};
+@define-color selected_bg_color #{"" + $selected_bg_color};
+@define-color highlight_text_color #{"" + $selected_bg_color};
+@define-color focus_text_color #{"" + $selected_bg_color};
+@define-color focused_text_color #{"" + $selected_bg_color};
 
 // Text/foreground color of selections
 @define-color theme_selected_fg_color #{"" + $selected_fg_color};
@@ -34,10 +38,10 @@
 @define-color theme_unfocused_text_color #{"" + $text_color};
 
 // Widget base background color on backdrop windows
-@define-color theme_unfocused_bg_color #{"" + $backdrop_bg_color};
+@define-color theme_unfocused_bg_color #{"" + $bg_color};
 
 // Text widgets and the like base background color on backdrop windows
-@define-color theme_unfocused_base_color #{"" + $backdrop_base_color};
+@define-color theme_unfocused_base_color #{"" + $base_color};
 
 // Base background color of selections on backdrop windows
 @define-color theme_unfocused_selected_bg_color #{"" + $selected_bg_color};
@@ -61,6 +65,7 @@
 
 
 // Window-Manager
+
 
 @define-color _wm_highlight #{"" + $_wm_highlight};
 

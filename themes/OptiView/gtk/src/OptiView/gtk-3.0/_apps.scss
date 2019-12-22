@@ -1,48 +1,24 @@
 // Global Panel Button Styles
 
 
-%panelbutton {
-  color: $dark_fg_color;
-  border-radius: 0px;
-  border: none;
-  background-color: transparent;
-  box-shadow: none;
-  transition-duration: $shortest_duration;
-
-  &:hover {
-    color: $dark_fg_color;
-    background-color: transparentize(white, 0.8);
-  }
-
-  &:active, &:checked {
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-
-    &:hover {
-      background-color: darken($selected_bg_color, 4%);
-    }
-  }
-}
-
 XfceHeading,
 .XfceHeading {
+  background-color: $bg_color;
+  background-image: none;
+  border-width: 0px;
+  color: $text_color;
   margin: 0px;
   padding: 0px;
-  border-width: 0px;
-  background-image: none;
-  background-color: $bg_color;
-  color: $text_color;
   text-shadow: none;
 }
 
-.budgie-panel,
-.xfce4-panel {
+.budgie-panel, .xfce4-panel {
+  -gtk-icon-shadow: none;
   background-color: $dark_borders_color;
+  box-shadow: none;
   color: $dark_fg_color;
   font-style: normal;
-  box-shadow: none;
   text-shadow: none;
-  -gtk-icon-shadow: none;
 
   button {
     @extend %panelbutton;
@@ -82,25 +58,18 @@ XfceHeading,
   }
 }
 
-#clock-button, .appmenu-1, #appmenu-1, .xfce4-panel.background, .xfce4-panel button, .xfce4-panel menuitem, .xfce4-panel menubar {
+#appmenu-1, #clock-button, #tasklist-button, #whiskermenu-button, .appmenu-1, .tasklist button, .xfce4-panel button, .xfce4-panel menubar, .xfce4-panel menuitem, .xfce4-panel.background {
   background-color: $dark_bg_color;
   color: $dark_fg_color;
-}
-
-.tasklist button {
-  color: $dark_fg_color;
+  &:hover {
+    background-color: $dark_fg_color;
+    color: $dark_bg_color;
+  }
 }
 
 #whiskermenu-button {
-  padding: 0px;
   margin: 0px;
-}
-
-#whiskermenu-button, .tasklist button, .xfce4-panel button, .xfce4-panel menuitem, .xfce4-panel menubar {
-  &:hover {
-    color: $dark_bg_color;
-    background-color: #BBB;
-  }
+  padding: 0px;
 }
 
 #XfceNotifyWindow {
@@ -151,61 +120,51 @@ XfceHeading,
   }
 
   progressbar {
-    min-height: 8px;
     border-radius: $button-radius;
+    min-height: 8px;
 
     progress {
-      background-image: none;
       background-color: $selected_bg_color;
+      background-image: none;
       border: none;
       box-shadow: none;
     }
 
     trough {
       background-color: lighten($dark_bg_color, 10%);
-      border: none;
       border-radius: $button-radius;
+      border: none;
       padding: 1px 0px;
     }
   }
 }
 
 #xfwm-tabwin {
-  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
   background-image: none;
-  background-color: transparentize(black, 0.2);
-  color: shade($selected_fg_color, 0.65);
-  text-shadow: 0px 1px transparentize(black, 0.2);
-  border-radius: 8px;
+  border-radius: 0px;
+  color: shade($selected_fg_color, 0.7);
+  padding: 8px;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.8);
   -XfwmTabwinWidget-icon-size: 64px;
   -XfwmTabwinWidget-preview-size: 64px;
 
   button {
     background-image: none;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
     color: $selected_fg_color;
     font-weight: bold;
-    text-shadow: 0px 1px transparentize(black, 0.2);
-    border: none;
-    border-radius: 8px;
-    box-shadow: none;
-
-    &:active, &:checked, &:active:hover, &:checked:hover {
-      background-color: $selected_bg_color;
-    }
-
-    &:hover {
-      background-color: $selected_bg_color;
-      transition-duration: $shortest_duration;
-    }
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.8);
   }
 }
 
-#pulseaudio-button, #indicator-button {
+#indicator-button, #pulseaudio-button {
   @extend %panelbutton;
 }
 
-.gnome-panel-menu-bar,
-.mate-panel-menu-bar {
+.gnome-panel-menu-bar, .mate-panel-menu-bar {
   &, menubar {
     background-color: $dark_bg_color;
   }
@@ -220,16 +179,15 @@ XfceHeading,
     @extend %panelbutton;
   }
 
-  button,
-  #tasklist-button {
+  button, #tasklist-button {
     label, image {
       color: inherit;
     }
   }
 
   .wnck-pager {
-    color: mix($dark_fg_color, black, 50%);
     background-color: darken($dark_bg_color, 10%);
+    color: mix($dark_fg_color, black, 50%);
 
     &:hover {
       background-color: lighten($dark_bg_color, 5%);
@@ -243,12 +201,103 @@ XfceHeading,
 
   na-tray-applet {
     -NaTrayApplet-icon-padding: 0px;
-    -NaTrayApplet-icon-size: 16px;
+    -NaTrayApplet-icon-size: $icon_size;
   }
 }
 
-.caja-desktop {
-  @extend .nautilus-desktop, .nautilus-canvas-item;
+.thunar {
+  .standard-view {
+    border-width: 0px;
+  }
+
+  .sidebar .view {
+    background-color: $sidebar_bg_color;
+
+    &:hover {
+      background-color: $hover_color;
+    }
+
+    &:selected {
+      background-color: $selected_bg_color;
+    }
+  }
+
+  toolbar {
+    border-bottom: 1px solid $borders_color;
+
+    entry {
+      margin: 2px;
+    }
+  }
+
+  .shortcuts-pane {
+    border-top: 0px;
+  }
+}
+
+.nemo-window {
+  .nemo-window-pane widget.entry {
+    border: 1px solid;
+    border-radius: $button-radius;
+
+    @include entry(focus);
+
+    &:selected {
+      &:focus, & {
+        @extend %selected_items;
+      }
+    }
+  }
+}
+
+.nautilus-window {
+  searchbar {
+    border-top: 1px solid $borders_color;
+  }
+
+  .searchbar-container {
+    margin-top: -1px;
+  }
+
+  notebook,
+  notebook > stack:not(:only-child) searchbar {
+    background-color: $base_color;
+    color: $text_color;
+
+    &:backdrop {
+      color: $backdrop_text_color;
+      background-color: $base_color;
+      &:disabled {
+        color: $backdrop_insensitive_color;
+      }
+    }
+
+    &:backdrop:hover, &:hover {
+      background-color: $hover_color;
+    }
+
+    &:disabled {
+      color: $insensitive_fg_color;
+      background-color: $insensitive_bg_color;
+    }
+
+    &:selected {
+      border-radius: 0px;
+      @extend %selected_items;
+    }
+
+    text {
+      selection {
+        &:focus, & {
+          @extend %selected_items;
+        }
+      }
+    }
+  }
+
+  .path-bar .dim-label {
+    color: transparent;
+  }
 }
 
 .caja-notebook {
@@ -263,32 +312,13 @@ XfceHeading,
   border-width: 0px 0px 1px;
 }
 
-.caja-desktop .entry, .caja-navigation-window .view .entry {
+.caja-desktop .entry, .caja-navigation-window .view .entry, .nemo-window .entry, .nemo-window entry, .thunar .entry, .thunar entry {
   caret-color: $caret_color;
 }
 
-.nautilus-desktop.nautilus-canvas-item, .nemo-desktop.nemo-canvas-item {
+.caja-desktop, .nautilus-desktop.nautilus-canvas-item, .nemo-desktop.nemo-canvas-item {
   color: white;
-  text-shadow: 1px 1px 2px transparentize(black, 0.2);
-}
-
-.nautilus-window {
-  searchbar {
-    border-top: 1px solid $borders_color;
-  }
-
-  .searchbar-container {
-    margin-top: -1px;
-  }
-
-  notebook,
-  notebook > stack:not(:only-child) searchbar {
-    @extend %view;
-  }
-
-  .path-bar .dim-label {
-    color: transparent;
-  }
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .disk-space-display {
@@ -314,8 +344,8 @@ XfceHeading,
 .table-header {
   @extend %column_header_button;
 
-  padding: 4px 0px 4px 0px;
   min-height: 24px;
+  padding: 4px 0px 4px 0px;
 }
 
 window.background.chromium {
@@ -330,63 +360,10 @@ window.background.chromium {
   }
 }
 
-.thunar {
-  .standard-view {
-    border-width: 0px;
-  }
-
-  .sidebar .view {
-    background-color: $sidebar_bg_color;
-
-    &:hover {
-      background-color: $base_hover_color;
-    }
-
-    &:selected {
-      background-color: $selected_bg_color;
-    }
-  }
-
-  toolbar {
-    border-bottom: 1px solid $borders_color;
-
-    entry {
-      margin: 2px;
-    }
-  }
-
-  .shortcuts-pane {
-    border-top: 0px;
-  }
-
-  .entry, entry {
-    caret-color: $caret_color;
-  }
-}
-
-.nemo-window {
-  .nemo-window-pane widget.entry {
-    border: 1px solid;
-    border-radius: $button-radius;
-
-    @include entry(focus);
-
-    &:selected {
-      &:focus, & {
-        @extend %selected_items;
-      }
-    }
-  }
-
-  .entry, entry {
-    caret-color: $caret_color;
-  }
-}
-
 .gedit-search-slider {
   button, button:hover {
-    box-shadow: none;
     border: 1px solid $borders_color;
+    box-shadow: none;
 
     &:last-child {
       border-left: 0px;
@@ -418,14 +395,6 @@ window.background.chromium {
       color: darken($dark_bg_color, 5%);
     }
   }
-
-  entry, button {
-    border-color: $borders_color;
-
-    &:focus {
-      border-color: $selected_bg_color;
-    }
-  }
 }
 
 normal-button {
@@ -449,6 +418,6 @@ list.tweak-categories separator {
 }
 
 .tweak-categories {
-  background-color: $secondary_bg_color;
+  background-color: $base_color;
   border-color: $secondary_borders_color;
 }

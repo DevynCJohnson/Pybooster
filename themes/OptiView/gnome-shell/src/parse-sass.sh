@@ -9,8 +9,8 @@ fi
 
 printf 'Generating CSS\n'
 
-pysassc --omit-sourcemap-url -t compact gnome-shell.scss gnome-shell.css &
-pysassc --omit-sourcemap-url -t compact gnome-shell-high-contrast.scss gnome-shell-high-contrast.css
+pysassc --precision=4 -t compact gnome-shell.scss gnome-shell.css &
+pysassc --precision=4 -t compact gnome-shell-high-contrast.scss gnome-shell-high-contrast.css
 
 wait
 
