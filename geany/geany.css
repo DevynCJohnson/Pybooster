@@ -58,8 +58,8 @@ notebook>header>tabs{background-image:linear-gradient(#B7B5A9 0%, #C5C1B3 37%, #
 /* Miscellaneous Widgets */
 
 #GeanyMainWindow{transition:0s}
-#GeanyMainWindow menuitem>arrow:disabled{-gtk-icon-effect:unset;background-color:#E9E9E9;border:none;color:#000}
-#GeanyMainWindow menuitem:hover>arrow:disabled{-gtk-icon-effect:unset;background-color:#A4A600;border:none;color:#000}
+#GeanyMainWindow menuitem>arrow:disabled,#GeanyEditMenu menuitem>arrow:disabled{-gtk-icon-effect:unset;background-color:#E9E9E9;border:none;color:#000}
+#GeanyMainWindow menuitem:hover>arrow:disabled,#GeanyEditMenu menuitem:hover>arrow:disabled{-gtk-icon-effect:unset;background-color:#A4A600;border:none;color:#000}
 #GeanyMenubar,menubar#GeanyMenubar>menuitem,#GeanyToolbar{background-image:linear-gradient(#BCBCBC 0%, #D0D0D0 25%, #DFDFDF 50%, #D9D9D9 75%, #BCBCBC 100%)}
 menubar>menuitem>label{border-color:#777;border-style:solid;border-width:0px 2px}
 treeview>header>button{border-color:#777;border-style:solid;border-width:1px;min-width:144px}
