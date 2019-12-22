@@ -54,6 +54,7 @@ $sidebar_bg_color: if($variant == "light", #E4E4E4, $bg_color);
 $success_color: if($variant == "light", #9C6, darken(#9C6, 10%));
 $tabbar_color: if($variant == "light", darken($header_bg, 5%), darken($bg_color, 3%));
 $text_color: if($variant == "light", #000, #FFF);
+$selected_text_color: if($variant == "light", #FFF, #000);
 $caret_color: $text_color;
 $toolbar_color: if($variant == "light", $tabbar_color, $tabbar_color);
 $tooltip_borders_color: rgba(255, 255, 255, 0.1);

@@ -728,6 +728,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 
   &:active, &:focus, &:hover {
     background-color: $selected_bg_color;
+    color: $selected_text_color;
   }
 
   &:backdrop {
@@ -1188,7 +1189,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 
   &:backdrop:hover, &:hover {
-    background-color: $hover_color;
+    background-color: $selected_bg_color;
   }
 
   &:disabled {
@@ -1202,10 +1203,11 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 
   text {
-    background-color: $selected_bg_color;
+    background-color: $secondary_bg_color;
     color: $text_color;
     selection {
-    background-color: $selected_bg_color;
+      background-color: $selected_bg_color;
+      color: $selected_text_color;
       &:focus, & {
         @extend %selected_items;
       }
@@ -1448,6 +1450,7 @@ spinbutton {
       box-shadow: none;
       margin: 0px;
       min-width: 32px;
+      padding: 0px;
     }
 
     button {
@@ -1484,6 +1487,7 @@ spinbutton {
   }
 
   .osd &:not(.vertical) {
+    padding: 0px;
     button {
       @include button(undecorated);
       -gtk-icon-shadow: 0px 1px black;
@@ -1525,6 +1529,10 @@ spinbutton {
   }
 
   &.vertical {
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
     &:disabled {
       color: $insensitive_fg_color;
     }
@@ -1538,7 +1546,10 @@ spinbutton {
       border-radius: $entry-radius;
       min-height: 32px;
       min-width: 32px;
-      padding: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
     }
 
     button {
@@ -1592,7 +1603,6 @@ spinbutton {
       padding: 1px 2px;
     }
   }
-  padding: 0px;
 }
 
 // Links //
@@ -1604,15 +1614,12 @@ spinbutton {
 // Text Entries //
 
 %entry, entry {
-  %entry_basic, & {
+  & {
     border-radius: $entry-radius;
     border: 1px solid #919191;
     caret-color: $caret_color;
     min-height: 24px;
-    padding-bottom: 0px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 0px;
+    padding: 0px;
     transition: 0s;
 
     @include entry(normal);
