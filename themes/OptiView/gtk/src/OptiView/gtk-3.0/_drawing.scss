@@ -140,7 +140,7 @@
     @include edges(normal);
   }
   @else if $t == hover {
-    background-color: lighten($c, 18%);
+    background-color: lighten($c, 20%);
     color: $tc;
     @include edges(hover);
   }

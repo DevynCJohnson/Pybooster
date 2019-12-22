@@ -1278,9 +1278,3 @@ style "ff-statusbar" {
 }
 
 widget "MozillaGtkWidget*" style "ff-default"
-widget_class "*gtkmm__GtkWindow*" style "performance-fix"
-widget_class "*GimpDisplayShell*" style "performance-fix"
-widget_class "*GimpToolbox*" style "performance-fix"
-widget_class "*GimpMenuDock*" style "performance-fix"
-widget "*OOoFixed*" style "performance-fix"
-widget_class "*MozContainer*" style "performance-fix"
