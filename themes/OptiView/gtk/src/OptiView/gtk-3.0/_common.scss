@@ -7,14 +7,11 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 
 * {
   padding: 0px;
-  -GtkCheckMenuItem-indicator-size: 18;
   -GtkDialog-action-area-border: 0;
   -GtkDialog-button-spacing: 4;
-  -GtkExpander-expander-size: 16;
   -GtkHTML-link-color: $link_color;
   -GtkIMHtml-hyperlink-color: $link_color;
   -GtkScrolledWindow-scrollbar-spacing: 0;
-  -GtkStatusbar-shadow-type: none;
   -GtkTextView-error-underline-color: $error_color;
   -GtkToolButton-icon-spacing: 4;
   -GtkToolItemGroup-expander-size: 12;
