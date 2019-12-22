@@ -15,6 +15,7 @@ XfceHeading,
 .budgie-panel, .xfce4-panel {
   -gtk-icon-shadow: none;
   background-color: $dark_borders_color;
+  border: none;
   box-shadow: none;
   color: $dark_fg_color;
   font-style: normal;
