@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning C source code with various syntax checkers
 #' @file canalysis
-#' @version 2019.05.31
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -23,13 +23,103 @@ if [ -n "${2:-}" ] && [ "${2}" = '-k' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
-export FirstLoopPass=0
+
+
+# SETUP COMMANDS #
+
+
+CLINT_EXISTS=0
+if [ -x "$(command -v clint)" ]; then
+    CLINT_EXISTS=1
+else
+    printf 'clint: command not found!\n' >&2
+fi
+
+CPPCHECK_EXISTS=0
+if [ -x "$(command -v cppcheck)" ]; then
+    CPPCHECK_EXISTS=1
+    # Find the CPPCheck configuration file
+    if [ -f ./.cppcheckrc ]; then
+        cppcheck_supressions='--suppressions-list=./.cppcheckrc'
+    elif [ -f ../.cppcheckrc ]; then
+        cppcheck_supressions='--suppressions-list=../.cppcheckrc'
+    elif [ -f ../../.cppcheckrc ]; then
+        cppcheck_supressions='--suppressions-list=../../.cppcheckrc'
+    elif [ -f ../../../.cppcheckrc ]; then
+        cppcheck_supressions='--suppressions-list=../../../.cppcheckrc'
+    elif [ -f "${HOME}/.cppcheckrc" ]; then
+        cppcheck_supressions="--suppressions-list=${HOME}/.cppcheckrc"
+    elif [ -f "${HOME}/.config/cppcheckrc" ]; then
+        cppcheck_supressions="--suppressions-list=${HOME}/.config/cppcheckrc"
+    else
+        cppcheck_supressions=''
+    fi
+else
+    printf 'cppcheck: command not found!\n' >&2
+fi
+
+KWSTYLE_EXISTS=0
+if [ ${ENABLE_KWSTYLE} -eq 1 ] && [ -x "$(command -v KWStyle)" ]; then
+    KWSTYLE_EXISTS=1
+elif [ ${ENABLE_KWSTYLE} -eq 1 ]; then
+    printf 'KWStyle: command not found!\n' >&2
+fi
+
+SPLINT_EXISTS=0
+if [ -x "$(command -v splint)" ]; then
+    SPLINT_EXISTS=1
+else
+    printf 'splint: command not found!\n' >&2
+fi
+
+FLAWFINDER_EXISTS=0
+if [ -x "$(command -v flawfinder)" ]; then
+    FLAWFINDER_EXISTS=1
+else
+    printf 'flawfinder: command not found!\n' >&2
+fi
+
+PMCCABE_EXISTS=0
+if [ -x "$(command -v pmccabe)" ]; then
+    PMCCABE_EXISTS=1
+else
+    printf 'pmccabe: command not found!\n' >&2
+fi
+
+PSCAN_EXISTS=0
+if [ -x "$(command -v pscan)" ]; then
+    PSCAN_EXISTS=1
+else
+    printf 'pscan: command not found!\n' >&2
+fi
+
+CHKTRI_EXISTS=0
+if [ -x "$(command -v chktri)" ]; then
+    CHKTRI_EXISTS=1
+else
+    printf 'chktri: command not found!\n' >&2
+fi
+
+CCCC_EXISTS=0
+if [ -x "$(command -v cccc)" ]; then
+    CCCC_EXISTS=1
+else
+    printf 'cccc: command not found!\n' >&2
+fi
+
+CODE_ANALYSIS_EXISTS=0
+if [ -x "$(command -v code-analysis)" ]; then
+    CODE_ANALYSIS_EXISTS=1
+else
+    printf 'code-analysis: command not found!\n' >&2
+fi
+
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -41,102 +131,143 @@ else
 fi
 
 
+# FUNCTIONS #
+
+
+#' Run CLint
+clint_func() {
+    if [ "$CLINT_EXISTS" -eq 1 ]; then
+        printf '======  *CLINT*  ======\n'
+        clint "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run CPPCheck
+cppcheck_func() {
+    if [ "$CPPCHECK_EXISTS" -eq 1 ]; then
+        printf '======  *CPPCHECK*  ======\n'
+        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "${cppcheck_supressions}" "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run KWStyle
+kwstyle_func() {
+    if [ "$KWSTYLE_EXISTS" -eq 1 ]; then
+        printf '======  *KWSTYLE*  ======\n'
+        KWStyle -qv -gcc "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run Splint
+splint_func() {
+    if [ "$SPLINT_EXISTS" -eq 1 ]; then
+        printf '======  *SPLINT*  ======\n'
+        if grep -q -E '#include <(dirent|libgen|unistd)\.h>' "${1}"; then
+            splint_posix='+posixlib'
+        else
+            splint_posix='-nolib'
+        fi
+        splint -nof -tmpdir /tmp/ -I. -I.. -I../include -I/usr/include -I/usr/local/include -commentchar '@' +trytorecover "${splint_posix}" -checks -booltype _Bool -booltype Bool -booltype bool -booltype Boolean +boolint -boolops +charint +enumint +enumindex -fixedformalarray +ignorequals -initallelements -namechecks -nullassign -preproc +ptrnegate +stats -stringliteralsmaller -warnlintcomments -warnposix "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
+        sleep 1
+    fi
+}
+
+
+#' Run Flawfinder
+flawfinder_func() {
+    if [ "$FLAWFINDER_EXISTS" -eq 1 ]; then
+        printf '======  *FLAWFINDER*  ======\n'
+        flawfinder --minlevel=1 --omittime --quiet --falsepositive --singleline "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Flawfinder version .+$/, ""); gsub(/^Number of rules .+$/, ""); gsub(/^ANALYSIS SUMMARY.+$/, ""); gsub(/^No hits found.+$/, ""); gsub(/^There may be other security vulnerabilities.+$/, ""); gsub(/^.+Programming for Linux and Unix HOWTO.+$/, ""); gsub(/^.+for more information.+$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run PScan
+pmccabe_func() {
+    if [ "$PMCCABE_EXISTS" -eq 1 ]; then
+        printf '======  *PMCCABE (MCCABE COMPLEXITY)*  ======\n'
+        pmccabe -c -f -v "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^\"/, ""); gsub(/\", line /, ":"); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run PScan
+pscan_func() {
+    if [ "$PSCAN_EXISTS" -eq 1 ]; then
+        printf '======  *PORTABILITY SCAN*  ======\n'
+        pscan "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run chktri
+chktri_func() {
+    if [ "$CHKTRI_EXISTS" -eq 1 ]; then
+        printf '======  *TRIGRAPH SCANNER*  ======\n'
+        chktri "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run CCCC-Metrics
+cccc_func() {
+    if [ "$CCCC_EXISTS" -eq 1 ]; then
+        printf '======  *CCCC METRICS*  ======\n'
+        cccc --lang=c --outdir=./metrics "${1}" 1> /dev/null 2> /dev/null
+    fi
+}
+
+
+#' Run Code-Analysis
+code_analysis_func() {
+    if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
+        code-analysis "${1}"
+    fi
+}
+
+
 # MAIN #
 
 
 for file in "$@"; do
     [ ! -r "$file" ] && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
-    if [ -x "$(command -v clint)" ]; then
-        printf '======  *CLINT*  ======\n'
-        clint "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'clint: command not found!\n' >&2
-    fi
+    CLINT_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    CPPCHECK_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    KWSTYLE_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    SPLINT_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    FLAWFINDER_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    PMCCABE_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    PSCAN_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    CHKTRI_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    CCCC_BUFFER="/tmp/$(uuid).canalysis.tmp"
+    CODE_ANALYSIS_BUFFER="/tmp/$(uuid).canalysis.tmp"
 
-    if [ -x "$(command -v cppcheck)" ]; then
-        printf '======  *CPPCHECK*  ======\n'
-        if [ -f ./.cppcheckrc ]; then
-            supressions='--suppressions-list=./.cppcheckrc'
-        elif [ -f ../.cppcheckrc ]; then
-            supressions='--suppressions-list=../.cppcheckrc'
-        elif [ -f ../../.cppcheckrc ]; then
-            supressions='--suppressions-list=../../.cppcheckrc'
-        elif [ -f ../../../.cppcheckrc ]; then
-            supressions='--suppressions-list=../../../.cppcheckrc'
-        elif [ -f "${HOME}/.cppcheckrc" ]; then
-            supressions="--suppressions-list=${HOME}/.cppcheckrc"
-        elif [ -f "${HOME}/.config/cppcheckrc" ]; then
-            supressions="--suppressions-list=${HOME}/.config/cppcheckrc"
-        else
-            supressions=''
-        fi
-        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "${supressions}" "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'cppcheck: command not found!\n' >&2
-    fi
+    clint_func "$file" > "${CLINT_BUFFER}" &
+    cppcheck_func "$file" > "${CPPCHECK_BUFFER}" &
+    kwstyle_func "$file" > "${KWSTYLE_BUFFER}" &
+    splint_func "$file" > "${SPLINT_BUFFER}" &
+    flawfinder_func "$file" > "${FLAWFINDER_BUFFER}" &
+    pmccabe_func "$file" > "${PMCCABE_BUFFER}" &
+    pscan_func "$file" > "${PSCAN_BUFFER}" &
+    chktri_func "$file" > "${CHKTRI_BUFFER}" &
+    cccc_func "$file" > "${CCCC_BUFFER}" &
+    code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
 
-    if [ ${ENABLE_KWSTYLE} -eq 1 ] && [ -x "$(command -v KWStyle)" ]; then
-        printf '======  *KWSTYLE*  ======\n'
-        KWStyle -qv -gcc "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ ${ENABLE_KWSTYLE} -eq 1 ] && [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'KWStyle: command not found!\n' >&2
-    fi
+    wait
 
-    if [ -x "$(command -v splint)" ]; then
-        printf '======  *SPLINT*  ======\n'
-        if grep -q -E '#include <(dirent|libgen|unistd)\.h>' "$file"; then
-            splint_posix='+posixlib'
-        else
-            splint_posix='-nolib'
-        fi
-        splint -nof -tmpdir /tmp/ -I. -I.. -I../include -I/usr/include -I/usr/local/include -commentchar '@' +trytorecover "${splint_posix}" -checks -booltype _Bool -booltype Bool -booltype bool -booltype Boolean +boolint -boolops +charint +enumint +enumindex -fixedformalarray +ignorequals -initallelements -namechecks -nullassign -preproc +ptrnegate +stats -stringliteralsmaller -warnlintcomments -warnposix "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^.*Splint.+$/, ""); gsub(/^.*Finished checking.+$/, ""); if (NF > 0) { print; } }'
-        sleep 1
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'splint: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v flawfinder)" ]; then
-        printf '======  *FLAWFINDER*  ======\n'
-        flawfinder --minlevel=1 --omittime --quiet --falsepositive --singleline "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Flawfinder version .+$/, ""); gsub(/^Number of rules .+$/, ""); gsub(/^ANALYSIS SUMMARY.+$/, ""); gsub(/^No hits found.+$/, ""); gsub(/^There may be other security vulnerabilities.+$/, ""); gsub(/^.+Programming for Linux and Unix HOWTO.+$/, ""); gsub(/^.+for more information.+$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'flawfinder: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v pmccabe)" ]; then
-        printf '======  *PMCCABE (MCCABE COMPLEXITY)*  ======\n'
-        pmccabe -c -f -v "$file" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^\"/, ""); gsub(/\", line /, ":"); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pmccabe: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v pscan)" ]; then
-        printf '======  *PORTABILITY SCAN*  ======\n'
-        pscan "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'pscan: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v chktri)" ]; then
-        printf '======  *TRIGRAPH SCANNER*  ======\n'
-        chktri "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'chktri: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v cccc)" ]; then
-        printf '======  *CCCC METRICS*  ======\n'
-        cccc --lang=c --outdir=./metrics "$file" 1>&2 2> /dev/null
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'cccc: command not found!\n' >&2
-    fi
-
-    if [ -x "$(command -v code-analysis)" ]; then
-        code-analysis "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'code-analysis: command not found!\n' >&2
-    fi
-
-    FirstLoopPass=1
+    printf "%s\\n%s\\n" "$(cat < "${CLINT_BUFFER}")" "$(cat < "${CPPCHECK_BUFFER}")"
+    rm -f "${CLINT_BUFFER}" "${CPPCHECK_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${KWSTYLE_BUFFER}")" "$(cat < "${SPLINT_BUFFER}")"
+    rm -f "${KWSTYLE_BUFFER}" "${SPLINT_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${FLAWFINDER_BUFFER}")" "$(cat < "${PMCCABE_BUFFER}")"
+    rm -f "${FLAWFINDER_BUFFER}" "${PMCCABE_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${PSCAN_BUFFER}")" "$(cat < "${CHKTRI_BUFFER}")"
+    rm -f "${PSCAN_BUFFER}" "${CHKTRI_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${CCCC_BUFFER}")" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${CCCC_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
 
 done
