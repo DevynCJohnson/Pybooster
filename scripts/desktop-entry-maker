@@ -5,7 +5,7 @@
 """@brief Create Desktop Entry Files.
 
 @file desktop-entry-maker
-@version 2019.10.27
+@version 2019.12.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1573,30 +1573,30 @@ class MainWin():
         _hidden: str = r'true' if _check_hidden else r'false'
         _exec: str = r''
         _url: str = r''
-        _entry_keyword = '\nKeywords=' + r';'.join(sorted(list(set(_entry_keyword.casefold().replace(r' ', r'').replace(r';;', r';').split(r';'))), key=str.upper)).strip().replace(r' ', r'').replace(r';;', r';')
+        _entry_keyword = '\nKeywords=' + r';'.join(sorted(set(_entry_keyword.casefold().replace(r' ', r'').replace(r';;', r';').split(r';')), key=str.upper)).strip().replace(r' ', r'').replace(r';;', r';')
         _entry_keyword = _entry_keyword.replace(r'=;', r'=') + r';' if _entry_keyword and not _entry_keyword.endswith(r';') else _entry_keyword.replace(r'=;', r'=')
-        _entry_category = '\nCategories=' + r';'.join(sorted(list(set(_entry_category.replace(r' ', r'').replace(r';;', r';').split(r';'))), key=str.upper)).strip() + r';'
+        _entry_category = '\nCategories=' + r';'.join(sorted(set(_entry_category.replace(r' ', r'').replace(r';;', r';').split(r';')), key=str.upper)).strip() + r';'
         _entry_category = _entry_category.replace(r'=;', r'=') + r';' if _entry_category and not _entry_category.endswith(r';') else _entry_category.replace(r'=;', r'=')
-        _entry_comment = '\nComment=' + _entry_comment if _entry_comment else '\nComment=' + _entry_name
-        _entry_genericname = '\nGenericName=' + _entry_genericname if _entry_genericname else r''
-        _entry_icon = '\nIcon=' + _entry_icon if _entry_icon else r''
-        _combobox_onlyshowin = '\nOnlyShowIn=' + _combobox_onlyshowin if _combobox_onlyshowin else r''
+        _entry_comment = f'\nComment={_entry_comment}' if _entry_comment else f'\nComment={_entry_name}'
+        _entry_genericname = f'\nGenericName={_entry_genericname}' if _entry_genericname else r''
+        _entry_icon = f'\nIcon={_entry_icon}' if _entry_icon else r''
+        _combobox_onlyshowin = f'\nOnlyShowIn={_combobox_onlyshowin}' if _combobox_onlyshowin else r''
         if _combobox_type == r'Link':
             _entry_type = '\nType=Link'
-            _url = '\nURL=' + _entry_execute
+            _url = f'\nURL={_entry_execute}'
         elif _combobox_type == r'Directory':
             _entry_type = '\nType=Directory'
         else:
             _entry_type = '\nType=Application'
-            _exec = '\nExec=' + _entry_execute
+            _exec = f'\nExec={_entry_execute}'
         # Create Data
-        _data: str = str('#!/usr/bin/env xdg-open\n\n' + r'[Desktop Entry]' + _entry_category + _entry_comment + _exec + _entry_genericname + '\nHidden=' + _hidden + _entry_icon + _entry_keyword + '\nName=' + _entry_name + '\nNoDisplay=' + _nodisplay + _combobox_onlyshowin + '\nTerminal=' + _terminal + _entry_type + _url + '\nVersion=' + _combobox_version)
+        _data: str = str(f'#!/usr/bin/env xdg-open\n\n[Desktop Entry]{_entry_category}{_entry_comment}{_exec}{_entry_genericname}\nHidden={_hidden}{_entry_icon}{_entry_keyword}\nName={_entry_name}\nNoDisplay={_nodisplay}{_combobox_onlyshowin}\nTerminal={_terminal}{_entry_type}{_url}\nVersion={_combobox_version}')
         # Select Location
         _filewin = FileChooserWin()
         _path: str = str(_filewin.ezfilech(_select_file=True, _select_dir=False, _multiple=False, _savefile=True, _return_uri=False, _return_dtype=r'str'))
         if _path.lower() in {r'', r'cancel', r'none'}:
             return
-        _path = _path if _path.endswith(r'.desktop') else _path + r'.desktop'
+        _path = _path if _path.endswith(r'.desktop') else fr'{_path}.desktop'
         # Write Data
         try:
             write2file(_path, _data)
