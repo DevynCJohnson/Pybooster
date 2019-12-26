@@ -6,7 +6,7 @@
 
 @file datastruct.py
 @package pybooster.datastruct
-@version 2019.07.14
+@version 2019.12.25
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -36,8 +36,10 @@ from configparser import ConfigParser, RawConfigParser
 from csv import DictReader, DictWriter, QUOTE_MINIMAL, reader as creader, writer as cwriter
 from io import StringIO
 from json import dumps as jdump, loads as jloads, JSONDecodeError
+from os import getpid
 from pickle import dumps, loads  # nosec
 from sys import stderr
+from time import strftime
 from typing import Sequence, Tuple, Union
 from zlib import compress as zcompress, decompress as zdecompress
 
@@ -68,6 +70,7 @@ __all__ = [
     # JSON #
     r'openjsonfile',
     r'write2json',
+    r'write2tmpjson',
     r'writeyaml2json',
     r'write2minijson',
     # TSV #
@@ -182,7 +185,7 @@ def convertinibool(_file: str, _destfile: str) -> None:
     configfile = openinifile(_file)
     for _section in configfile.sections():  # type: ignore
         for _option in configfile.options(_section):  # type: ignore
-            _testval = configfile[_section][_option].lower()  # type: ignore
+            _testval = configfile[_section][_option].casefold()  # type: ignore
             if _testval in FALSE_VALUES:
                 configfile[_section][_option] = r'False'  # type: ignore
             elif _testval in TRUE_VALUES:
@@ -198,7 +201,7 @@ def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequ
     ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
-            return [_row for _row in DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)]  # type: ignore
+            return list(DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar))  # type: ignore
         return list(creader(_file, delimiter=_delimiter, quotechar=_quotechar))
 
 
@@ -209,7 +212,7 @@ def loadcsvstr(_csv: str, _retodict: bool = False, _fieldnames: Union[Sequence[s
     [['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']]
     """
     if _retodict:
-        return [_row for _row in DictReader(StringIO(_csv), fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)]  # type: ignore
+        return DictReader(StringIO(_csv), fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar)  # type: ignore
     return list(creader(StringIO(_csv), delimiter=_delimiter, quotechar=_quotechar))
 
 
@@ -249,10 +252,16 @@ def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = Tr
         raise SystemExit(1)
 
 
-def write2json(_filename: str, _dict: dict, _indent: int = 2, _sort_keys: bool = True) -> None:
+def write2json(_filename: str, _json: Union[dict, list], _sort_keys: bool = True) -> None:
     """Send data to a new JSON file or overwrite an existing JSON file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(jdump(_dict, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys))
+        _file.write(jdump(_json, indent=2, separators=(r', ', r': '), sort_keys=_sort_keys))
+
+
+def write2tmpjson(_json: Union[dict, list], _directory: str = r'/tmp/') -> None:
+    """Send data to a new temporary JSON file or overwrite an existing JSON file."""
+    with open(_directory + strftime(r'%Y_%m_%d_%H_%M_%S') + str(getpid()) + r'.json', mode=r'wt', encoding=r'utf-8') as _file:  # nosec
+        _file.write(jdump(_json, indent=2, separators=(r', ', r': '), sort_keys=True))
 
 
 def writeyaml2json(_filename: str, _yamlfile: str, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> None:
@@ -264,10 +273,10 @@ def writeyaml2json(_filename: str, _yamlfile: str, _indent: int = 2, _sort_keys:
         _file.write(_out)
 
 
-def write2minijson(_filename: str, _dict: dict, _sort_keys: bool = True) -> None:
+def write2minijson(_filename: str, _json: Union[dict, list], _sort_keys: bool = True) -> None:
     """Send minified JSON data to a new JSON file or overwrite an existing JSON file."""
     with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-        _file.write(jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r''))
+        _file.write(jdump(_json, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r''))
 
 
 # TSV #
@@ -278,8 +287,7 @@ def opentsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequ
     ensurefileexists(_filepath)
     with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
         if _retodict:
-            csvreader = DictReader(_file, fieldnames=_fieldnames, delimiter='\t', quotechar=_quotechar)  # type: ignore
-            return [_row for _row in csvreader]
+            return list(DictReader(_file, fieldnames=_fieldnames, delimiter='\t', quotechar=_quotechar))  # type: ignore
         return list(creader(_file, delimiter='\t', quotechar=_quotechar))
 
 
@@ -335,7 +343,7 @@ def csv2dict(_list: list) -> dict:
     >>> csv2dict([['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']])
     {0: ['Val1', 'Val2', 'Val3', 'Val4'], 1: ['1', '2', '3', '4'], 2: ['5', '6', '7', '8'], 3: ['9', '10', '11', '12'], 4: ['13', '14', '15', '16'], 5: ['17', '18', '19', '20'], 6: ['3.14', '6.28', '2.73', '1.57']}
     """
-    return {_key: _row for _key, _row in enumerate(_list)}
+    return dict(enumerate(_list))
 
 
 def csv2json(_list: list, _indent: int = 2, _sort_keys: bool = True, _minify: bool = False) -> str:
@@ -344,7 +352,7 @@ def csv2json(_list: list, _indent: int = 2, _sort_keys: bool = True, _minify: bo
     >>> csv2json([['Val1', 'Val2', 'Val3', 'Val4'], ['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '16'], ['17', '18', '19', '20'], ['3.14', '6.28', '2.73', '1.57']], _sort_keys=True, _minify=True)
     '{"0":["Val1","Val2","Val3","Val4"],"1":["1","2","3","4"],"2":["5","6","7","8"],"3":["9","10","11","12"],"4":["13","14","15","16"],"5":["17","18","19","20"],"6":["3.14","6.28","2.73","1.57"]}'
     """
-    _dict: dict = {_key: _row for _key, _row in enumerate(_list)}
+    _dict: dict = dict(enumerate(_list))
     return jdump(_dict, indent=0, separators=(r',', r':'), sort_keys=_sort_keys).replace('\n', r'') if _minify else jdump(_dict, indent=_indent, separators=(r', ', r': '), sort_keys=_sort_keys)
 
 

@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2019.12.16
+@version 2019.12.25
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -55,7 +55,9 @@ __all__: list = [
     r'GIGABYTE',
     r'GIGIBYTE',
     # VALIDATION #
+    r'doesdirexist',
     r'doesfileexist',
+    r'ensuredirexists',
     r'ensurefileexists',
     # FILE & FILESYSTEM INFO #
     r'lsfiles',
@@ -87,6 +89,7 @@ __all__: list = [
     r'getfiles_list',
     r'printfile',
     r'firstchars',
+    r'head',
     # READ/GET DATA #
     r'getdata',
     r'getstdin',
@@ -96,7 +99,6 @@ __all__: list = [
     r'write2file',
     r'writebin2file',
     r'writestr2binfile',
-    r'head',
     # REMOVE DATA FROM FILESYSTEM #
     r'rmfile',
     r'rmdir'
@@ -113,15 +115,35 @@ GIGIBYTE: int = 1073741824  # Gigibyte (Base 2)
 # VALIDATION #
 
 
+def doesdirexist(_dirname: str) -> bool:
+    """Test that the specified directory exists."""
+    if not (pathexists(_dirname) and isdir(_dirname)) or isfile(_dirname):
+        return False
+    if not fileaccess(_dirname, R_OK):
+        return False
+    return True
+
+
 def doesfileexist(_filename: str) -> bool:
     """Test that the specified file exists."""
-    if not pathexists(_filename) or not isfile(_filename):
-        return False
-    if isdir(_filename):
+    if not (pathexists(_filename) and isfile(_filename)) or isdir(_filename):
         return False
     if not fileaccess(_filename, R_OK):
         return False
     return True
+
+
+def ensuredirexists(_dirname: str) -> None:
+    """Ensure that the specified directory exists; if not, then raise an exception."""
+    if not pathexists(_dirname) or not isdir(_dirname):
+        stderr.write(_dirname + ': The specified directory is non-readable or non-existent!\n')
+    elif isfile(_dirname):
+        stderr.write(_dirname + ': This "directory" is actually a file!\n')
+    elif not fileaccess(_dirname, R_OK):
+        stderr.write(r'Permission Error: Unable to read from "' + _dirname + '"!\n')
+    else:
+        return
+    raise SystemExit(1)
 
 
 def ensurefileexists(_filename: str) -> None:
@@ -131,7 +153,7 @@ def ensurefileexists(_filename: str) -> None:
     elif isdir(_filename):
         stderr.write(_filename + ': This "file" is actually a directory!\n')
     elif not fileaccess(_filename, R_OK):
-        stderr.write(r'Permission Error: Unable to write to "' + _filename + '"!\n')
+        stderr.write(r'Permission Error: Unable to read from "' + _filename + '"!\n')
     else:
         return
     raise SystemExit(1)
@@ -410,6 +432,22 @@ def firstchars(_filepath: str, _numchars: int = 10) -> str:
     return r''.join(r''.join(line.split(r':', 1)[0] for line in open(_filepath, mode=r'rt', encoding=r'utf-8'))[:_numchars])
 
 
+def head(_filepath: str = r'', _numlines: int = 10) -> str:
+    """Emulates the Unix `head` command (without parameters)."""
+    if not _filepath:
+        retstr = r''.join(stdin.readlines()[:_numlines]) + '\n'
+        stdout.write(retstr)
+        return retstr
+    _lines = []
+    _ct = 0
+    for line in open(_filepath, mode=r'rt', encoding=r'utf-8'):
+        _lines.append(line)
+        _ct += 1
+        if _ct == _numlines:
+            return r''.join(_lines)
+    return r''.join(_lines)
+
+
 # READ/GET DATA #
 
 
@@ -479,22 +517,6 @@ def writestr2binfile(_filename: str, _write: str) -> None:
         _file.write(str(_write).encode(r'utf-8'))
 
 
-def head(_filepath: str = r'', _numlines: int = 10) -> str:
-    """Emulates the Unix `head` command (without parameters)."""
-    if not _filepath:
-        retstr = r''.join(stdin.readlines()[:_numlines]) + '\n'
-        stdout.write(retstr)
-        return retstr
-    _lines = []
-    _ct = 0
-    for line in open(_filepath, mode=r'rt', encoding=r'utf-8'):
-        _lines.append(line)
-        _ct += 1
-        if _ct == _numlines:
-            return r''.join(_lines)
-    return r''.join(_lines)
-
-
 # REMOVE DATA FROM FILESYSTEM #
 
 
@@ -504,10 +526,10 @@ def rmfile(_file: str) -> bool:
         try:
             remove(_file)
         except OSError as _err:
-            stderr.write('Error: {} - {}\n'.format(_err.filename, _err.strerror))
+            stderr.write(f'Error: {_err.filename} - {_err.strerror}\n')
             return False
     else:
-        stderr.write('Error: {} file not found\n'.format(_file))
+        stderr.write(f'Error: {_file} file not found\n')
         return False
     return True
 
@@ -518,9 +540,9 @@ def rmdir(_dir: str) -> bool:
         try:
             rmtree(_dir)
         except OSError as _err:
-            stderr.write('Error: {} - {}\n'.format(_err.filename, _err.strerror))
+            stderr.write(f'Error: {_err.filename} - {_err.strerror}\n')
             return False
     else:
-        stderr.write('Error: {} directory not found\n'.format(_dir))
+        stderr.write(f'Error: {_dir} directory not found\n')
         return False
     return True

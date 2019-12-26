@@ -6,7 +6,7 @@
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -30,7 +30,6 @@ along with this software.
 
 
 from datetime import timedelta
-from sys import platform
 import time as pytime
 from typing import Union
 
@@ -201,12 +200,6 @@ def fulltime() -> str:
 
 def sysuptime() -> str:
     """Return the system's uptime."""
-    if platform.startswith(r'win'):
-        try:
-            import win32api
-            return win32api.GetTickCount()
-        except ImportError:
-            return r'Unknown'
     try:
         with open(r'/proc/uptime', mode=r'rt', encoding=r'utf-8') as _file:
             _seconds = float(_file.readline().split()[0])

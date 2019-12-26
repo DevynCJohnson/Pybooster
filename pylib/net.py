@@ -6,7 +6,7 @@
 
 @file net.py
 @package pybooster.net
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -58,7 +58,7 @@ def ints2ipv6(*args: int) -> str:
         for i in args:
             if i >= 65535:
                 raise Exception(r'One of the integers is larger than 65535!')
-        return r':'.join(r'{:02x}'.format(i) for i in args)
+        return r':'.join(fr'{i:02x}' for i in args)
     raise ValueError(r'The data must have eight groups of integers.')
 
 
@@ -68,7 +68,7 @@ def lst2ipv6(_list: list) -> str:
         for i in _list:
             if i >= 65535:
                 raise Exception(r'One of the integers is larger than 65535!')
-        return r':'.join(r'{:02x}'.format(i) for i in _list)
+        return r':'.join(fr'{i:02x}' for i in _list)
     raise ValueError(r'The data must have eight groups of integers.')
 
 

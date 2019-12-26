@@ -6,7 +6,7 @@
 
 @file ymath.py
 @package pybooster.ymath
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 S

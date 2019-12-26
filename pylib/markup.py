@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -703,10 +703,10 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
             if 65 <= ord_c <= 90 or 97 <= ord_c <= 122 or 48 <= ord_c <= 57:
                 amp_buff.append(char)
                 continue
-            elif char == r'#':
+            if char == r'#':
                 state = 2
                 continue
-            elif char == r';':
+            if char == r';':
                 if amp_buff:
                     result.append(r'&amp;')
                     result.extend(amp_buff)
@@ -716,7 +716,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
                 state = 0
                 amp_buff = []
                 continue
-            elif char == r'&':
+            if char == r'&':
                 if amp_buff:
                     result.append(r'&amp;')
                     result.extend(amp_buff)
@@ -734,10 +734,10 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
             if char in {r'x', r'X'}:
                 state = 3
                 continue
-            elif 48 <= ord_c <= 57:
+            if 48 <= ord_c <= 57:
                 amp_buff.append(char)
                 continue
-            elif char == r';':
+            if char == r';':
                 if amp_buff:
                     result.append(r'&amp;#')
                     result.extend(amp_buff)
@@ -747,7 +747,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
                 state = 0
                 amp_buff = []
                 continue
-            elif char == r'&':
+            if char == r'&':
                 if amp_buff:
                     result.append(r'&amp;#')
                     result.extend(amp_buff)
@@ -770,7 +770,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
             if 65 <= ord_c <= 70 or 97 <= ord_c <= 102 or 48 <= ord_c <= 57:
                 amp_buff.append(char)
                 continue
-            elif char == r';':
+            if char == r';':
                 if amp_buff:
                     result.append(r'&amp;#x')
                     result.extend(amp_buff)
@@ -780,7 +780,7 @@ def escape_ambiguous_ampersand(val: str) -> str:  # noqa: C901,R701  # pylint: d
                 state = 0
                 amp_buff = []
                 continue
-            elif char == r'&':
+            if char == r'&':
                 if amp_buff:
                     result.append(r'&amp;#x')
                     result.extend(amp_buff)
@@ -893,8 +893,8 @@ def htmlunescape(_str: str) -> str:
 def int2refnum(_int: int) -> str:
     """Convert an integer to Decimal-NCR/HTML-Entity (&#38;)."""
     if 0 <= _int <= 1114111:
-        return r'&#{0};'.format(_int)
-    raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(1114111))
+        return fr'&#{_int};'
+    raise ValueError(fr'Integer value out of valid Unicode range (0 - {1114111})!')
 
 
 # SVG FUNCTIONS #
@@ -908,7 +908,7 @@ def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901,R
         raise Exception(r'Invalid datatype for `value` in `parse_svg_size()`!')
     parts = SVG_SIZE.match(str(value))
     if not parts:
-        raise Exception(r'Unknown length format: "{}"'.format(value))
+        raise Exception(fr'Unknown length format: "{value}"')
     num = float(parts.group(1))
     units = parts.group(2) or def_units
     if units == r'px':
@@ -925,7 +925,7 @@ def parse_svg_size(value: str, def_units: str = r'px') -> float:  # noqa: C901,R
         return num * 35.43307
     if units == r'%':
         return -num / 100.0
-    raise Exception(r'Unknown length units: "{}"'.format(units))
+    raise Exception(fr'Unknown length units: "{units}"')
 
 
 def svgviewbox2pixels(viewbox: List[Union[float, int, str]]) -> Optional[List[float]]:
@@ -959,8 +959,8 @@ def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901,R7
         else:
             raise Exception(r'The SVG header must contain width and height attributes!')
     else:
-        width = parse_svg_size(svg.get(r'width'))
-        height = parse_svg_size(svg.get(r'height'))
+        width = parse_svg_size(svg.get(r'width'))  # type: ignore
+        height = parse_svg_size(svg.get(r'height'))  # type: ignore
     if width <= 0.0 or height <= 0.0:
         if viewbox and len(viewbox) == 4 and isinstance(viewbox[2], float) and isinstance(viewbox[3], float):
             width = viewbox[2]
@@ -1007,8 +1007,8 @@ def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901,R7
     if not theight:
         theight = (twidth / width) * height
     # Set svg width and height, update viewport for margin
-    svg.set(r'width', r'{}px'.format(twidth + margin * 2.0))
-    svg.set(r'height', r'{}px'.format(theight + margin * 2.0))
+    svg.set(r'width', fr'{twidth + margin * 2.0}px')
+    svg.set(r'height', fr'{theight + margin * 2.0}px')
     offsetx: float = 0.0
     offsety: float = 0.0
     if (twidth / theight) > (viewbox[2] / viewbox[3]):  # Target page is wider than source image
@@ -1020,17 +1020,18 @@ def resize_svg(xmltree: ET.ElementTree, options: dict) -> None:  # noqa: C901,R7
         page_height = viewbox[2] / twidth * theight
         offsety = (page_height - viewbox[3]) / 2.0
     vb_margin: float = page_width / twidth * margin
-    svg.set(r'viewBox', r'{} {} {} {}'.format(viewbox[0] - vb_margin - offsetx, viewbox[1] - vb_margin - offsety, page_width + vb_margin * 2.0, page_height + vb_margin * 2.0))
+    svg.set(r'viewBox', fr'{viewbox[0] - vb_margin - offsetx} {viewbox[1] - vb_margin - offsety} {page_width + vb_margin * 2.0} {page_height + vb_margin * 2.0}')
     # Add frame
     if options[r'frame']:
         layer = ET.SubElement(svg, r'g', nsmap=INKSCAPE_NAMESPACES)  # type: ignore
-        layer.set(r'{{{}}}groupmode'.format(INKSCAPE_NAMESPACES[r'inkscape']), r'layer')
-        layer.set(r'{{{}}}label'.format(INKSCAPE_NAMESPACES[r'inkscape']), r'Frame')
-        layer.set(r'{{{}}}insensitive'.format(INKSCAPE_NAMESPACES[r'sodipodi']), r'true')
+        layer.set(r'{{' + INKSCAPE_NAMESPACES[r'inkscape'] + r'}}groupmode', r'layer')
+        layer.set(r'{{' + INKSCAPE_NAMESPACES[r'inkscape'] + r'}}label', r'Frame')
+        layer.set(r'{{' + INKSCAPE_NAMESPACES[r'sodipodi'] + r'}}insensitive', r'true')
         frame = ET.SubElement(layer, r'path')
         frame.set(r'style', r'fill:#fff;stroke:none')
         bleed: float = min(page_width, page_height) / 100.0
-        frame.set(r'd', r'M {0} {1} v {3} h {2} v -{3} z M {4} {5} h {6} v {7} h -{6} z'.format(-viewbox[0] - vb_margin - offsetx - bleed, -viewbox[1] - vb_margin - offsety - bleed, page_width + (vb_margin + bleed) * 2.0, page_height + (vb_margin + bleed) * 2.0, viewbox[0], viewbox[1], viewbox[2], viewbox[3]))
+        _vtmp: float = page_height + (vb_margin + bleed) * 2.0
+        frame.set(r'd', fr'M {-viewbox[0] - vb_margin - offsetx - bleed} {-viewbox[1] - vb_margin - offsety - bleed} v {_vtmp} h {page_width + (vb_margin + bleed) * 2.0} v -{_vtmp} z M {viewbox[0]} {viewbox[1]} h {viewbox[2]} v {viewbox[3]} h -{viewbox[2]} z')
 
 
 def remove_duplicated_svg_ns(xmldata: str) -> str:
@@ -1240,7 +1241,8 @@ class ParserBase:  # pylint: disable=R0902
     def handle_comment(self, data: str) -> None:
         """Process comments."""
         if not self.remove_comments or (data and (data[0] == r'!' or rgxmatch(r'^\[if\s', data))):
-            self._data_buffer.append(r'<!--{}-->'.format(data[1:] if data[0] == r'!' else data))
+            _tmp = data[1:] if data[0] == r'!' else data
+            self._data_buffer.append(fr'<!--{_tmp}-->')
 
     def handle_decl(self, decl: str) -> None:  # pylint: disable=R0201,W0613
         """Handle declaration (Overridable)."""
@@ -1290,11 +1292,11 @@ class ParserBase:  # pylint: disable=R0902
                 if decltype == r'doctype':
                     j = self._parse_doctype_subset(j + 1, i)
                 elif decltype in {r'attlist', r'element', r'link', r'linktype'}:
-                    self.error(r'Unsupported `[` char in {} declaration'.format(decltype))
+                    self.error(fr'Unsupported `[` char in {decltype} declaration')
                 else:
                     self.error(r'Unexpected `[` char in declaration')
             else:
-                self.error(r'Unexpected {} char in declaration'.format(rawdata[j]))
+                self.error(fr'Unexpected {rawdata[j]} char in declaration')
             if j < 0:
                 return j
         return -1  # Incomplete
@@ -1312,7 +1314,7 @@ class ParserBase:  # pylint: disable=R0902
         elif sectname in {r'if', r'else', r'endif'}:
             _match = MSMARKEDSECTIONCLOSE.search(rawdata, i + 3)  # Look for MS Office ]> ending
         else:
-            self.error(r'Unknown status keyword {} in marked section'.format(rawdata[i + 3:j]))
+            self.error(fr'Unknown status keyword {rawdata[i + 3:j]} in marked section')
         if not _match:
             return -1
         if report:
@@ -1346,7 +1348,7 @@ class ParserBase:  # pylint: disable=R0902
                     return -1
                 if _str != r'<!':
                     self.updatepos(declstartpos, j + 1)
-                    self.error(r'Unexpected char in internal subset (in {})'.format(_str))
+                    self.error(fr'Unexpected char in internal subset (in {_str})')
                 if (j + 2) == length or (j + 4) > length:  # End of buffer; incomplete
                     return -1
                 if rawdata[j:j + 4] == r'<!--':
@@ -1359,7 +1361,7 @@ class ParserBase:  # pylint: disable=R0902
                     return -1
                 if name not in {r'attlist', r'element', r'entity', r'notation'}:
                     self.updatepos(declstartpos, j + 2)
-                    self.error(r'Unknown declaration {} in internal subset'.format(name))
+                    self.error(fr'Unknown declaration {name} in internal subset')
                 # Handle the individual names
                 meth = getattr(self, r'_parse_doctype_' + name)
                 j = meth(j, declstartpos)
@@ -1388,7 +1390,7 @@ class ParserBase:  # pylint: disable=R0902
                 j += 1
             else:
                 self.updatepos(declstartpos, j)
-                self.error(r'Unexpected char {} in internal subset'.format(char))
+                self.error(fr'Unexpected char {char} in internal subset')
         return -1  # End of buffer reached
 
     def _parse_doctype_element(self, i: int, declstartpos: int) -> int:
@@ -1524,7 +1526,7 @@ class ParserBase:  # pylint: disable=R0902
                 return (None, -1)  # End of buffer
             return (name.lower(), _match.end())
         self.updatepos(declstartpos, i)
-        self.error(r'Expected name token at {}'.format(rawdata[declstartpos:declstartpos + 20]))
+        self.error(fr'Expected name token at {rawdata[declstartpos:declstartpos + 20]}')
         return (None, -2)
 
     def unknown_decl(self, data: str) -> None:
@@ -1581,7 +1583,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
     def set_cdata_mode(self, elem: str) -> None:
         """Lowercase HTML element names."""
         self.cdata_elem = elem.lower()
-        self.interesting = rgxcompile(r'</\s*{}\s*>'.format(self.cdata_elem), flags=IGNORECASE)
+        self.interesting = rgxcompile(fr'</\s*{self.cdata_elem}\s*>', flags=IGNORECASE)
 
     def clear_cdata_mode(self) -> None:
         """Clear self.cdata_elem and self.interesting."""
@@ -1659,11 +1661,10 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                         k -= 1
                     i = self.updatepos(i, k)
                     continue
-                else:
-                    if r';' in rawdata[i:]:  # Bail by consuming &#
-                        self.handle_data(rawdata[i:i + 2])
-                        i = self.updatepos(i, i + 2)
-                    break
+                if r';' in rawdata[i:]:  # Bail by consuming &#
+                    self.handle_data(rawdata[i:i + 2])
+                    i = self.updatepos(i, i + 2)
+                break
             elif startswith(r'&', i):
                 _match = ENTITYREF.match(rawdata, i)
                 if _match:
@@ -1682,7 +1683,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                             k = length
                         i = self.updatepos(i, i + 1)
                     break  # Incomplete
-                elif (i + 1) < length:  # Not the end of the buffer
+                if (i + 1) < length:  # Not the end of the buffer
                     self.handle_data(r'&')
                     i = self.updatepos(i, i + 1)
                 else:
@@ -2180,7 +2181,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
             if _tag[0] == tag:
                 break
             # Raise exception if an unknown tag is found
-            elif _tag[0] in {r'body', r'head'}:
+            if _tag[0] in {r'body', r'head'}:
                 raise Exception(r'Unknown tag found!')
         self._tag_stack = self._tag_stack[i + 1:]
         return num_pres
@@ -2192,7 +2193,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 self._data_buffer.append(r' ')
                 self.__title_trailing_whitespace = False
             self._title_newly_opened = False
-        self._data_buffer.append(r'&#{};'.format(name))
+        self._data_buffer.append(fr'&#{name};')
 
     def handle_data(self, data: str) -> None:  # noqa: C901,R701  # pylint: disable=R0912
         """Process arbitrary data (such as <script> and <style>)."""
@@ -2283,7 +2284,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
                 self._data_buffer.append(r' ')
                 self.__title_trailing_whitespace = False
             self._title_newly_opened = False
-        self._data_buffer.append(r'&{};'.format(name))
+        self._data_buffer.append(fr'&{name};')
 
     def handle_pi(self, data: str) -> None:
         """Process the processing instruction tag."""

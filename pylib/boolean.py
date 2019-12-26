@@ -6,7 +6,7 @@
 
 @file boolean.py
 @package pybooster.boolean
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -104,7 +104,7 @@ def rmfalse(_iter: Iterable) -> list:
 
 def evaliter(_iter: Iterable) -> list:
     """Evaluate values in iterable and return evaluated list of booleans."""
-    return [x for x in _iter]
+    return [bool(x) for x in _iter]
 
 
 def eny(_iter: Iterable) -> bool:

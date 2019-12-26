@@ -148,7 +148,7 @@ def md5sum(byte_str: bytes) -> str:
     >>> md5sum(br'This is a test.')
     '120ea8a25e5d487bf68b5f7096440019'
     """
-    return md5(byte_str).hexdigest()
+    return md5(byte_str).hexdigest()  # nosec
 
 
 def get_checksums(_data: object) -> dict:

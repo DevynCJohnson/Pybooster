@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -657,7 +657,7 @@ def showpercent(_portion: Union[float, int], _total: Union[float, int] = 100.0) 
     >>> showpercent(73, 10)
     '730.00%'
     """
-    return r'{:.2%}'.format(float(_portion) / float(_total))
+    return fr'{float(_portion) / float(_total):.2%}'
 
 
 # PROBABILITY #
@@ -749,7 +749,7 @@ def int2many(_int: int) -> str:
     >>> int2many(37)
     'dec: 37;  hex: 25;  oct: 45;  bin: 100101'
     """
-    return r'dec: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}'.format(_int)
+    return fr'dec: {_int:d};  hex: {_int:x};  oct: {_int:o};  bin: {_int:b}'
 
 
 def degrees2radians(_degrees: float) -> float:

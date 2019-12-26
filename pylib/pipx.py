@@ -6,7 +6,7 @@
 
 @file pipx.py
 @package pybooster.pipx
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -53,12 +53,12 @@ __all__: list = [
 
 def install(package: str) -> int:
     """Install PIP package."""
-    return pipmain([r'install', package])
+    return pipmain([r'install', package])  # pylint: disable=E1102
 
 
 def uninstall(package: str) -> int:
     """Uninstall a PIP package."""
-    return pipmain([r'uninstall', package])
+    return pipmain([r'uninstall', package])  # pylint: disable=E1102
 
 
 def listinstalled() -> str:

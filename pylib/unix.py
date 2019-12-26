@@ -6,7 +6,7 @@
 
 @file unix.py
 @package pybooster.unix
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -98,7 +98,7 @@ def thumbnail_cleaner() -> None:
         rmtree(expanduser(r'~/.thumbnails'))
         rmtree(expanduser(r'~/.cache/thumbnails'))
     except OSError as _err:
-        stderr.write('Error: {} - {}\n'.format(_err.filename, _err.strerror))
+        stderr.write(f'Error: {_err.filename} - {_err.strerror}\n')
     except RuntimeError:
         return None
     return None

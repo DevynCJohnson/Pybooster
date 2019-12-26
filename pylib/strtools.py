@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -846,7 +846,8 @@ def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901,R701
         return int(_str.replace(r'\x', r'0x'), 16) <= UPPER_LIMIT_UNICODE
     elif _str.count(r'\x') >= 2 and (len(_str) % 4) == 0:
         try:
-            literal_eval('b\'\\x{0[0]}\\x{0[1]}\\x{0[2]}\'.decode(\'utf8\', \'strict\')'.format(_str.split(r'\x')[1:]))
+            _tmp_char: list = _str.split(r'\x')[1:]
+            literal_eval(f'b\'\\x{_tmp_char[0]}\\x{_tmp_char[1]}\\x{_tmp_char[2]}\'.decode(\'utf8\', \'strict\')')
         except SyntaxError:
             return False
         return True
@@ -1086,7 +1087,7 @@ def noescutf8hex(_hex: str) -> str:
             return literal_eval(_eval_str.format(_hex.split(r'\x')[1:]))
         if _hex.count('\\') == 1:
             _hex = hex(int(_hex.replace(r'\x', r''), 16)).replace(r'0x', r'')[:].zfill(2)
-            return literal_eval('\'\\x{0}\''.format(_hex))
+            return literal_eval(f'\'\\x{_hex}\'')
     if isinstance(_hex, str) and len(_hex) == 1:
         return _hex
     raise ValueError(r'Invalid input passed to noescutf8hex()!')
@@ -1106,10 +1107,10 @@ def noescape(_hex: str) -> str:
     """
     if r'\U' in _hex and len(_hex) == 10:
         _hex = hex(int(_hex.replace(r'\U', r''), 16)).replace('0x', r'')
-        return literal_eval('"\\U{0}"'.format(_hex[:].zfill(8)))
+        return literal_eval(f'"\\U{_hex[:].zfill(8)}"')
     if r'\u' in _hex and len(_hex) == 6:
         _hex = hex(int(_hex.replace(r'\u', r''), 16)).replace('0x', r'')
-        return literal_eval('"\\u{0}"'.format(_hex[:].zfill(4)))
+        return literal_eval(f'"\\u{_hex[:].zfill(4)}"')
     if r'\x' in _hex and (len(_hex) % 4) == 0:
         return noescutf8hex(_hex)
     if isinstance(_hex, str) and len(_hex) == 1:
@@ -1140,7 +1141,7 @@ def char2noeschex(_char: str) -> str:
     >>> char2noeschex('@')
     '40'
     """
-    return r'{:02x}'.format(ord(_char))
+    return fr'{ord(_char):02x}'
 
 
 def str2noeschex(_char: str) -> str:
@@ -1149,7 +1150,7 @@ def str2noeschex(_char: str) -> str:
     >>> str2noeschex('This is a test.')
     '54686973206973206120746573742e'
     """
-    return r''.join(r'{:02x}'.format(ord(i)) for i in _char)
+    return r''.join(fr'{ord(i):02x}' for i in _char)
 
 
 def str2hexcolon(_str: str) -> str:
@@ -1158,7 +1159,7 @@ def str2hexcolon(_str: str) -> str:
     >>> str2hexcolon('This is a test.')
     '54:68:69:73:20:69:73:20:61:20:74:65:73:74:2e'
     """
-    return r':'.join(r'{:02x}'.format(ord(i)) for i in _str)
+    return r':'.join(fr'{ord(i):02x}' for i in _str)
 
 
 # X 2 CHARACTER
@@ -1198,11 +1199,13 @@ def int2char(_int: Union[int, str], _numbase: str = r'10', _escape: bool = True)
             _int = int(_int, 10)
     if isinstance(_int, int):
         if _escape:
-            return r'\U{0}'.format(hex(_int).replace(r'0x', r'')[:].zfill(8))
+            _hex_str: str = hex(_int).replace(r'0x', r'')[:].zfill(8)
+            return fr'\U{_hex_str}'
         if LOWER_LIMIT_ASCII_CTRL <= _int <= UPPER_LIMIT_UTF8:
             return chr(_int)
         if UPPER_LIMIT_UTF8 < _int <= UPPER_LIMIT_UNICODE:
-            return literal_eval('"\\U{0}"'.format(hex(_int).replace(r'0x', r'')[:].zfill(8)))
+            _hex_str = hex(_int).replace(r'0x', r'')[:].zfill(8)
+            return literal_eval(f'"\\U{_hex_str}"')
         raise ValueError(r'An out-of-range integer passed to int2char()!')
     raise TypeError(r'Invalid datatype passed to int2char()!')
 
@@ -1288,7 +1291,7 @@ def name2char(_name: str) -> str:
     'Δ'
     """
     try:
-        return literal_eval('"\\N{1}{0}{2}"'.format(_name.upper(), r'{', r'}'))
+        return literal_eval(f'"\\N{{{_name.upper()}}}"')
     except SyntaxError:
         return r''
 
@@ -1422,7 +1425,7 @@ def str2hexesc(_str: str) -> str:
     """
     if not _str:
         raise ValueError(r'Invalid data passed to str2hexesc()!')
-    return r''.join(r'{0}'.format(hex(ord(i)).replace(r'0x', r'\x')) for i in _str)
+    return r''.join(str(hex(ord(i)).replace(r'0x', r'\x')) for i in _str)
 
 
 def str2uri(_str: str) -> str:
@@ -1439,7 +1442,7 @@ def str2uri(_str: str) -> str:
     """
     if not _str:
         raise ValueError(r'Invalid data passed to str2uri()!')
-    return r''.join(r'{0}'.format(hex(ord(i)).replace(r'0x', r'%')) for i in _str)
+    return r''.join(str(hex(ord(i)).replace(r'0x', r'%')) for i in _str)
 
 
 def str2intstr(_str: str) -> str:
@@ -1458,7 +1461,7 @@ def str2intstr(_str: str) -> str:
     """
     if not _str:
         raise ValueError(r'Invalid data passed to str2intstr()!')
-    return r' '.join(r'{0}'.format(str(ord(i))) for i in _str)
+    return r' '.join(fr'{ord(i)}' for i in _str)
 
 
 def int2utf16(_int: int, _endian: str = r'little') -> str:
@@ -1473,7 +1476,7 @@ def int2utf16(_int: int, _endian: str = r'little') -> str:
         if _endian == r'big':
             return (_int).to_bytes(4, _endian).decode(r'utf-16-be', r'strict')
         return (_int).to_bytes(4, r'little').decode(r'utf-16', r'strict')
-    raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(UPPER_LIMIT_UNICODE))
+    raise ValueError(fr'Integer value out of valid Unicode range (0 - {UPPER_LIMIT_UNICODE})!')
 
 
 def int2utf32(_int: int, _endian: str = r'little') -> str:
@@ -1484,7 +1487,7 @@ def int2utf32(_int: int, _endian: str = r'little') -> str:
     """
     if 0 <= _int <= UPPER_LIMIT_UNICODE:
         return (_int).to_bytes(4, _endian).decode(r'utf-32', r'strict')
-    raise ValueError(r'Integer value out of valid Unicode range (0 - {0})!'.format(UPPER_LIMIT_UNICODE))
+    raise ValueError(fr'Integer value out of valid Unicode range (0 - {UPPER_LIMIT_UNICODE})!')
 
 
 def char2num(_char: str, _upcase: bool = False) -> str:
@@ -1543,7 +1546,7 @@ def str2hexstr(_str: str) -> str:
     """
     if not _str:
         raise ValueError(r'Invalid data passed to str2hexstr()!')
-    return r''.join(r'{0}'.format(hex(ord(i))) for i in _str)
+    return r''.join(str(hex(ord(i))) for i in _str)
 
 
 def hex2unicodehex(_hex: Union[int, str]) -> str:
@@ -1568,9 +1571,9 @@ def hex2unicodehex(_hex: Union[int, str]) -> str:
             _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'').replace(r'\u', r'')
         elif r'\0' in _hex or r'&#x' in _hex:
             _hex = _hex.replace(r'\0', r'').replace(r'&#x', r'').replace(r';', r'')
-        return r'U+{0}'.format(_hex.upper())
+        return fr'U+{_hex.upper()}'
     elif isinstance(_hex, int):
-        return r'U+{0}'.format(hex(_hex).replace(r'0x', r'').upper())
+        return r'U+' + str(hex(_hex).replace(r'0x', r'').upper())
     raise TypeError(r'Invalid datatype passed to hex2unicodehex()!')
 
 
@@ -1597,9 +1600,10 @@ def hex2cssnot(_hex: Union[int, str]) -> str:
             _hex = _hex.replace(r'\u00', r'').replace(r'\u0', r'').replace(r'\u', r'')
         elif r'U+' in _hex or r'&#x' in _hex:
             _hex = _hex.replace(r'U+', r'').replace(r'&#x', r'').replace(r';', r'')
-        return r'\0{0}'.format(_hex.upper())
+        return fr'\0{_hex.upper()}'
     elif isinstance(_hex, int):
-        return r'\0{0}'.format(hex(_hex).replace(r'0x', r'').upper())
+        _hex_str: str = hex(_hex).replace(r'0x', r'').upper()
+        return fr'\0{_hex_str}'
     raise TypeError(r'Invalid datatype passed to hex2cssnot()!')
 
 

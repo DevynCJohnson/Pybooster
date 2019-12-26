@@ -6,7 +6,7 @@
 
 @file neuralnet.py
 @package pybooster.neuralnet
-@version 2019.07.14
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -240,7 +240,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def to_python_function(self, fnname: str = r'nn_run', indent: int = 0) -> str:
         """Convert the neural-network to Python code."""
-        fn: str = r'def {fnname}(i):\n'.format(fnname=fnname)
+        fn: str = fr'def {fnname}(i):\n'
         for _layer in range(1, self.outputlayer + 1):
             fn += '    o = [\n' if _layer < self.outputlayer else '    return [\n'
             size = self.sizes[_layer]
@@ -258,7 +258,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
     def to_java_method(self, fnname: str = r'nn_run', static: bool = False, scope: str = r'protected', indent: int = 4) -> str:
         """Convert the neural-network to Java code."""
-        fn: str = scope + (r' static ' if static else r' ') + r'double[] {fnname}(double[] i)'.format(fnname=fnname) + '{\n'
+        fn: str = scope + (r' static ' if static else r' ') + fr'double[] {fnname}(double[] i){{\n'
         fn += '    double[] o;\n'
         for _layer in range(1, self.outputlayer + 1):
             fn += '    o = new double[]{\n' if _layer < self.outputlayer else '    return new double[]{\n'
@@ -299,7 +299,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
                 if _layer == self.outputlayer:
                     oterms[r'o' + str(_layer) + r'_' + str(n)] = r'o[' + str(n) + r']'
         del k, lterms
-        fn: str = r'void {fnname}(double* i, double* o)'.format(fnname=fnname) + '{\n'
+        fn: str = fr'void {fnname}(double* i, double* o){{\n'
         for _str, v in oterms.items():
             fn += r'    ' + v + r' = ' + terms[_str] + ';\n'
         fn += '}\n'

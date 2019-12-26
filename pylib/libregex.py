@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2019.11.23
+@version 2019.12.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -742,4 +742,4 @@ PRINTF_FMT: str = r'''\
 (?:h|l|ll|w|I|I32|I64)?  # Size
 [cCdiouxXeEfgGaAnpsSZ]   # Type
 ) | (%%))                # Literal "%%"
-'''
+'''  # noqa: N400
