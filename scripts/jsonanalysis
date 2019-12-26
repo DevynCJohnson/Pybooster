@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning JSON files with various syntax checkers
 #' @file jsonanalysis
-#' @version 2019.03.28
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -18,13 +18,45 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
-export FirstLoopPass=0
+
+
+# SETUP COMMANDS #
+
+
+JSONLINT_EXISTS=0
+if [ -n "$(command -v jsonlint-php)" ]; then
+    JSONLINT_EXISTS=1
+else
+    printf 'jsonlint-php: command not found!\n' >&2
+fi
+
+JSON_VERIFY_EXISTS=0
+if [ -n "$(command -v json_verify)" ]; then
+    JSON_VERIFY_EXISTS=1
+else
+    printf 'json_verify: command not found!\n' >&2
+fi
+
+JSONLINT_PY3_EXISTS=0
+if [ -n "$(command -v jsonlint-py3)" ]; then
+    JSONLINT_PY3_EXISTS=1
+else
+    printf 'jsonlint-py3: command not found!\n' >&2
+fi
+
+CODE_ANALYSIS_EXISTS=0
+if [ -x "$(command -v code-analysis)" ]; then
+    CODE_ANALYSIS_EXISTS=1
+else
+    printf 'code-analysis: command not found!\n' >&2
+fi
+
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -36,39 +68,65 @@ else
 fi
 
 
+# FUNCTIONS #
+
+
+#' Run JSON-Lint
+jsonlint_func() {
+    if [ "$JSONLINT_EXISTS" -eq 1 ]; then
+        printf '======  *JSONLINT*  ======\n'
+        jsonlint-php "${1}" | awk_cmd '{ OFS=""; gsub(/^Valid JSON .+$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run JSON-Verify
+json_verify_func() {
+    if [ "$JSON_VERIFY_EXISTS" -eq 1 ]; then
+        printf '======  *JSON_VERIFY*  ======\n'
+        json_verify -c < "${1}" | awk_cmd '{ OFS=""; gsub(/^JSON is valid$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run JSON-Lint-Python3
+jsonlint_py3_func() {
+    if [ "$JSONLINT_PY3_EXISTS" -eq 1 ]; then
+        printf '======  *JSONLINT-PY3*  ======\n'
+        jsonlint-py3 --strict "${1}" | awk_cmd '{ OFS=""; gsub(/^.+: ok$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run Code-Analysis
+code_analysis_func() {
+    if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
+        code-analysis "${1}"
+    fi
+}
+
+
 # MAIN #
 
 
 for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
-    if [ -x "$(command -v jsonlint-php)" ]; then
-        printf '======  *JSONLINT*  ======\n'
-        jsonlint-php "$file" | awk_cmd '{ OFS=""; gsub(/^Valid JSON .+$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'jsonlint-php: command not found!\n' >&2
-    fi
+    JSONLINT_BUFFER="/tmp/$(uuid).jsonanalysis.tmp"
+    JSON_VERIFY_BUFFER="/tmp/$(uuid).jsonanalysis.tmp"
+    JSONLINT_PY3_BUFFER="/tmp/$(uuid).jsonanalysis.tmp"
+    CODE_ANALYSIS_BUFFER="/tmp/$(uuid).jsonanalysis.tmp"
 
-    if [ -x "$(command -v json_verify)" ]; then
-        printf '======  *JSON_VERIFY*  ======\n'
-        json_verify -c < "$file" | awk_cmd '{ OFS=""; gsub(/^JSON is valid$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'json_verify: command not found!\n' >&2
-    fi
+    jsonlint_func "$file" > "${JSONLINT_BUFFER}" &
+    json_verify_func "$file" > "${JSON_VERIFY_BUFFER}" &
+    jsonlint_py3_func "$file" > "${JSONLINT_PY3_BUFFER}" &
+    code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
 
-    if [ -x "$(command -v jsonlint-py3)" ]; then
-        printf '======  *JSONLINT-PY3*  ======\n'
-        jsonlint-py3 --strict "$file" | awk_cmd '{ OFS=""; gsub(/^.+: ok$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'jsonlint-py3: command not found!\n' >&2
-    fi
+    wait
 
-    if [ -x "$(command -v code-analysis)" ]; then
-        code-analysis "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'code-analysis: command not found!\n' >&2
-    fi
-
-    FirstLoopPass=1
+    printf "%s\\n%s\\n" "$(cat < "${JSONLINT_BUFFER}")" "$(cat < "${JSON_VERIFY_BUFFER}")"
+    rm -f "${JSONLINT_BUFFER}" "${JSON_VERIFY_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${JSONLINT_PY3_BUFFER}")" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${JSONLINT_PY3_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
 
 done
