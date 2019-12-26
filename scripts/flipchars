@@ -5,7 +5,7 @@
 """@brief Flip strings upside-down and (optionally) mirror the characters.
 
 @file flipchars
-@version 2019.11.09
+@version 2019.12.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -219,7 +219,7 @@ def do_convert(_str: str, table: dict, reverse: bool = True) -> str:
 def main(args) -> None:
     """Perform the conversion using the provided arguments"""
     table: dict = {}
-    for table_name in [globals()[r'TABLE_' + x.upper()] for x in args.tables.split(r'+')]:
+    for table_name in [globals()[fr'TABLE_{x.upper()}'] for x in args.tables.split(r'+')]:
         table.update(table_name)
     if args:
         stdout.write(do_convert(args.input_text, table, args.reverse) + '\n')

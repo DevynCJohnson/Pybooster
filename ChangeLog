@@ -1,3 +1,24 @@
+2019-12-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* alphabetize_lines:  Removed unneeded `list` commands
+	* canalysis:  Implemented multi-threading & improved performance
+	* code-analysis:  Implemented multi-threading & improved performance
+	* cssanalysis:  Implemented multi-threading & improved performance
+	* Desktop-Entry-Maker:  Changed the string concatenation to F-strings
+	* file-analysis:  Made minor tweaks for improved performance
+	* Geany:  Applied some fixes to the CSS theme & the Glade file
+	* jsanalysis:  Implemented multi-threading & improved performance
+	* jsonanalysis:  Implemented multi-threading & improved performance
+	* makefile:  Added more developer dependencies & rearranged some of the dependency packages
+	* OptiView:  Applied some fixes to the CSS code
+	* PascalCase:  Fixed an import issue & resolved undefined names
+	* pyanalysis:  Made minor tweaks for improved performance
+	* PyBooster:  Fixed various file-permissions (such as the executable-bit) & made small tweaks to some scripts
+	* PyLib:  Fixed some minor bugs, added many improvements, & added some functions
+	* shanalysis:  Implemented multi-threading & improved performance
+	* snippets.conf:  Made some small adjustments to some of the snippets
+	* win2unixlines:  Improved performance & added extra code to convert UTF-16 encoded files
+
 2019-12-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Applied some fixes to the CSS theme
