@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a shell script with various syntax checkers
 #' @file shanalysis
-#' @version 2019.07.14
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -18,13 +18,60 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
 export FirstLoopPass=0
+
+
+# SETUP COMMANDS #
+
+
+BASHATE_EXISTS=0
+if [ -n "$(command -v bashate)" ]; then
+    BASHATE_EXISTS=1
+else
+    printf 'bashate: command not found!\n' >&2
+fi
+
+SHELLCHECK_EXISTS=0
+if [ -n "$(command -v shellcheck)" ]; then
+    SHELLCHECK_EXISTS=1
+else
+    printf 'shellcheck: command not found!\n' >&2
+fi
+
+CHECKBASHISMS_EXISTS=0
+if [ -n "$(command -v checkbashisms)" ]; then
+    CHECKBASHISMS_EXISTS=1
+else
+    printf 'checkbashisms: command not found!\n' >&2
+fi
+
+AWK_EXISTS=0
+if [ -n "$(command -v awk)" ]; then
+    AWK_EXISTS=1
+else
+    printf 'awk: command not found!\n' >&2
+fi
+
+GAWK_EXISTS=0
+if [ -n "$(command -v gawk)" ]; then
+    GAWK_EXISTS=1
+else
+    printf 'gawk: command not found!\n' >&2
+fi
+
+CODE_ANALYSIS_EXISTS=0
+if [ -x "$(command -v code-analysis)" ]; then
+    CODE_ANALYSIS_EXISTS=1
+else
+    printf 'code-analysis: command not found!\n' >&2
+fi
+
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -39,6 +86,77 @@ else
 fi
 
 
+# FUNCTIONS #
+
+
+#' Run Bashate
+bashate_func() {
+    if [ "$BASHATE_EXISTS" -eq 1 ]; then
+        printf '======  *BASHATE*  ======\n'
+        bashate --ignore E006 --verbose "${1}" | sed -E 's| : L([0-9]+)$|:\1:1|g' | awk_cmd '{ OFS=""; gsub(/^Running bashate on .+$/, ""); gsub(/^ \- /, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run ShellCheck
+shellcheck_func() {
+    if [ "$SHELLCHECK_EXISTS" -eq 1 ]; then
+        printf '======  *SHELLCHECK*  ======\n'
+        shellcheck --color=auto --exclude=SC1090,SC1091,SC2181 --external-sources --format=gcc "${1}" | noblanks
+    fi
+}
+
+
+#' Run CheckBashisms
+checkbashisms_func() {
+    if [ "$CHECKBASHISMS_EXISTS" -eq 1 ]; then
+        printf '======  *BASHISMS*  ======\n'
+        checkbashisms --extra --force "${1}" 2>&1 | awk_cmd '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); if (NF > 0) { print; } }' | sed -E 's|^possible bashism in (.+) line ([0-9]+)(.*)$|\1:\2: Possible Bashism - \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;'
+    fi
+}
+
+
+#' Run Shell Checks
+shell_check_func() {
+    if [ -x "$(command -v sh)" ]; then
+        printf '======  *POSIX COMPLIANCE*  ======\n'
+        sh -n "${1}" | noblanks
+    elif [ -x "$(command -v ash)" ]; then
+        printf '======  *POSIX COMPLIANCE (ASH)*  ======\n'
+        ash -n "${1}" | noblanks
+    elif [ -x "$(command -v dash)" ]; then
+        printf '======  *POSIX COMPLIANCE (DASH)*  ======\n'
+        dash -n "${1}" | noblanks
+    fi
+}
+
+
+#' Run Awk Checks
+awk_func() {
+    if [ "$AWK_EXISTS" -eq 1 ]; then
+        printf '======  *AWK CHECK*  ======\n'
+        awk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "${1}" 2>&1 | noblanks
+    fi
+}
+
+
+#' Run Gawk Checks
+gawk_func() {
+    if [ "$GAWK_EXISTS" -eq 1 ]; then
+        printf '======  *GAWK CHECK*  ======\n'
+        gawk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "${1}" 2>&1 | noblanks
+    fi
+}
+
+
+#' Run Code-Analysis
+code_analysis_func() {
+    if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
+        code-analysis "${1}"
+    fi
+}
+
+
 # MAIN #
 
 
@@ -50,69 +168,39 @@ for file in "$@"; do
     head -1 "$file" | grep -E -e '#!/(bin/|bin/env |usr/bin/env )(awk|bwk|gawk|jawk|mawk|nawk).*' > /dev/null && FILE_TYPE='AWK'
 
     if [ "$FILE_TYPE" = 'SHELL' ]; then  # Check shell scripts
+        BASHATE_BUFFER="/tmp/$(uuid).shanalysis.tmp"
+        SHELLCHECK_BUFFER="/tmp/$(uuid).shanalysis.tmp"
+        CHECKBASHISMS_BUFFER="/tmp/$(uuid).shanalysis.tmp"
+        SHELL_CHECKS_BUFFER="/tmp/$(uuid).shanalysis.tmp"
+        CODE_ANALYSIS_BUFFER="/tmp/$(uuid).shanalysis.tmp"
 
-        if [ -x "$(command -v bashate)" ]; then
-            printf '======  *BASHATE*  ======\n'
-            bashate --ignore E006 --verbose "$file" | sed -E 's| : L([0-9]+)$|:\1:1|g' | awk_cmd '{ OFS=""; gsub(/^Running bashate on .+$/, ""); gsub(/^ \- /, ""); if (NF > 0) { print; } }'
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'bashate: command not found!\n' >&2
-        fi
-
-        if [ -x "$(command -v shellcheck)" ]; then
-            printf '======  *SHELLCHECK*  ======\n'
-            shellcheck --color=auto --exclude=SC1090,SC1091,SC2181 --external-sources --format=gcc "$file" | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'shellcheck: command not found!\n' >&2
-        fi
-
-        if [ -x "$(command -v sh)" ]; then
-            printf '======  *POSIX COMPLIANCE*  ======\n'
-            sh -n "$file" | noblanks
-        elif [ -x "$(command -v ash)" ]; then
-            printf '======  *POSIX COMPLIANCE (ASH)*  ======\n'
-            ash -n "$file" | noblanks
-        elif [ -x "$(command -v dash)" ]; then
-            printf '======  *POSIX COMPLIANCE (DASH)*  ======\n'
-            dash -n "$file" | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'sh: command not found!\n' >&2
-        fi
-
-        if [ -x "$(command -v checkbashisms)" ]; then
-            printf '======  *BASHISMS*  ======\n'
-            checkbashisms --extra --force "$file" 2>&1 | awk_cmd '{ gsub(/^could not find any possible bashisms in bash script.*$/, ""); if (NF > 0) { print; } }' | sed -E 's|^possible bashism in (.+) line ([0-9]+)(.*)$|\1:\2: Possible Bashism - \3|; s|^(.+):([0-9])+ at module level:$|\1:\2:1:|;'
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'checkbashisms: command not found!\n' >&2
-        fi
-
+        bashate_func "$file" > "${BASHATE_BUFFER}" &
+        shellcheck_func "$file" > "${SHELLCHECK_BUFFER}" &
+        checkbashisms_func "$file" > "${CHECKBASHISMS_BUFFER}" &
+        shell_check_func "$file" > "${SHELL_CHECKS_BUFFER}" &
+        code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
     elif [ "$FILE_TYPE" = 'AWK' ]; then  # Check AWK scripts
+        AWK_BUFFER="/tmp/$(uuid).shanalysis.tmp"
+        GAWK_BUFFER="/tmp/$(uuid).shanalysis.tmp"
 
-        if [ -x "$(command -v awk)" ]; then
-            printf '======  *AWK CHECK*  ======\n'
-            awk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "$file" 2>&1 | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'awk: command not found!\n' >&2
-        fi
-
-        if [ -x "$(command -v gawk)" ]; then
-            printf '======  *GAWK CHECK*  ======\n'
-            gawk --lint --source 'BEGIN { exit(0) } END { exit(0) }' --file "$file" 2>&1 | noblanks
-        elif [ "$FirstLoopPass" -eq 0 ]; then
-            printf 'gawk: command not found!\n' >&2
-        fi
-
+        awk_func "$file" > "${AWK_BUFFER}" &
+        gawk_func "$file" > "${GAWK_BUFFER}" &
     else  # Unsupported file
-
         printf '%s: The specified file is not a shell script!\n' "$file" >&2 && continue
-
     fi
 
-    if [ -x "$(command -v code-analysis)" ]; then
-        code-analysis "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'code-analysis: command not found!\n' >&2
-    fi
+    wait
 
-    FirstLoopPass=1
+    if [ "$FILE_TYPE" = 'SHELL' ]; then
+        printf "%s\\n%s\\n" "$(cat < "${BASHATE_BUFFER}")" "$(cat < "${SHELLCHECK_BUFFER}")"
+        rm -f "${BASHATE_BUFFER}" "${SHELLCHECK_BUFFER}" || true
+        printf "%s\\n%s\\n" "$(cat < "${CHECKBASHISMS_BUFFER}")" "$(cat < "${SHELL_CHECKS_BUFFER}")"
+        rm -f "${CHECKBASHISMS_BUFFER}" "${SHELL_CHECKS_BUFFER}" || true
+    elif [ "$FILE_TYPE" = 'AWK' ]; then
+        printf "%s\\n%s\\n" "$(cat < "${AWK_BUFFER}")" "$(cat < "${GAWK_BUFFER}")"
+        rm -f "${AWK_BUFFER}" "${GAWK_BUFFER}" || true
+    fi
+    printf "%s\\n" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${CODE_ANALYSIS_BUFFER}" || true
 
 done
