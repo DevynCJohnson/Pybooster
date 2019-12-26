@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning source code and providing statistics and listing some syntax issues or bugs
 #' @file code-analysis
-#' @version 2019.07.24
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -18,7 +18,7 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export NO_AT_BRIDGE=1
@@ -27,17 +27,8 @@ export LC_ALL='C'
 export LC_CTYPE='C'
 export PYTHONIOENCODING='utf8'
 
-# Use a faster alternative if possible
-if [ -x "$(command -v mawk)" ]; then
-    awk_cmd() { mawk "${1}"; }
-    noblanks() { mawk NF; }
-elif [ -x "$(command -v nawk)" ]; then
-    awk_cmd() { nawk "${1}"; }
-    noblanks() { nawk NF; }
-else
-    awk_cmd() { awk "${1}"; }
-    noblanks() { awk NF; }
-fi
+
+# SETUP COMMANDS #
 
 
 LICENSECHECK_EXISTS=0
@@ -122,6 +113,19 @@ if [ -x "$(command -v namecheck)" ]; then
     NAMECHECK_EXISTS=1
 else
     printf 'namecheck: command not found!\n' >&2
+fi
+
+
+# Use a faster alternative if possible
+if [ -x "$(command -v mawk)" ]; then
+    awk_cmd() { mawk "${1}"; }
+    noblanks() { mawk NF; }
+elif [ -x "$(command -v nawk)" ]; then
+    awk_cmd() { nawk "${1}"; }
+    noblanks() { nawk NF; }
+else
+    awk_cmd() { awk "${1}"; }
+    noblanks() { awk NF; }
 fi
 
 
@@ -215,43 +219,38 @@ trap 'rm -f /tmp/*.codeanalysis.tmp || true' INT
 for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
-    LICENSECHECK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    LS_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    ENCODING_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    CLOC_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    WC_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    ISUTF8_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    PATHCHK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    DOSCHK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    NAMECHECK_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    LICENSECHECK_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    LS_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    ENCODING_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    CLOC_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    WC_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    ISUTF8_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    PATHCHK_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    DOSCHK_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
+    NAMECHECK_BUFFER="/tmp/$(uuid).codeanalysis.tmp"
 
-    licensecheck_func "$file" > "${LICENSECHECK_BUFFER}" &
-    ls -a -b -F -h -l "$file" > "${LS_BUFFER}" &
-    file_encoding_func "$file" > "${ENCODING_BUFFER}" &
-    cloc_func "$file" > "${CLOC_BUFFER}" &
     wc_func "$file" > "${WC_BUFFER}" &
+    cloc_func "$file" > "${CLOC_BUFFER}" &
+    licensecheck_func "$file" > "${LICENSECHECK_BUFFER}" &
+    file_encoding_func "$file" > "${ENCODING_BUFFER}" &
     isutf8_func "$file" > "${ISUTF8_BUFFER}" &
     pathchk_func "$file" > "${PATHCHK_BUFFER}" &
     doschk_func "$file" > "${DOSCHK_BUFFER}" &
     namecheck_func "$file" > "${NAMECHECK_BUFFER}" &
+    ls -a -b -F -h -l "$file" > "${LS_BUFFER}" &
 
     wait
 
     printf '======  *STATISTICS & FILE INFO*  ======\n'
-    printf "%s\\n" "$(cat < "${LICENSECHECK_BUFFER}")"
-    printf "%s\\n" "$(cat < "${LS_BUFFER}")"
-    printf "%s\\n" "$(cat < "${ENCODING_BUFFER}")"
-    printf "%s\\n" "$(cat < "${CLOC_BUFFER}")"
-    printf "%s\\n" "$(cat < "${WC_BUFFER}")"
-    printf "%s\\n" "$(cat < "${ISUTF8_BUFFER}")"
-    printf "%s\\n" "$(cat < "${PATHCHK_BUFFER}")"
-    printf "%s\\n" "$(cat < "${DOSCHK_BUFFER}")"
+    printf "%s\\n%s\\n" "$(cat < "${LICENSECHECK_BUFFER}")" "$(cat < "${LS_BUFFER}")"
+    rm -f "${LICENSECHECK_BUFFER}" "${LS_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${ENCODING_BUFFER}")" "$(cat < "${CLOC_BUFFER}")"
+    rm -f "${ENCODING_BUFFER}" "${CLOC_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${WC_BUFFER}")" "$(cat < "${ISUTF8_BUFFER}")"
+    rm -f "${WC_BUFFER}" "${ISUTF8_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${PATHCHK_BUFFER}")" "$(cat < "${DOSCHK_BUFFER}")"
+    rm -f "${PATHCHK_BUFFER}" "${DOSCHK_BUFFER}" || true
     printf "%s\\n" "$(cat < "${NAMECHECK_BUFFER}")"
+    rm -f "${NAMECHECK_BUFFER}" || true
 
 done
-
-
-# CLEANUP #
-
-
-rm -f /tmp/*.codeanalysis.tmp || true
