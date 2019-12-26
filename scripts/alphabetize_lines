@@ -5,7 +5,7 @@
 """@brief Sort lines (or list) in data stream alphabetically.
 
 @file alphabetize_lines
-@version 2019.10.06
+@version 2019.12.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -49,7 +49,7 @@ __all__: list = [
 def charsort_rmdup_codec(data: str, unicode_sort: bool = True) -> str:
     """Sort the characters alphabetically or by unicode value and remove duplicates."""
     _sort_key: Union[Callable, None] = None if unicode_sort else str.lower
-    return r''.join(sorted(list(set(list(data))), key=_sort_key))
+    return r''.join(sorted(set(data), key=_sort_key))
 
 
 def charsort_codec(data: str, unicode_sort: bool = True) -> str:
@@ -62,7 +62,7 @@ def charsort_codec(data: str, unicode_sort: bool = True) -> str:
 
 def alphadupsort_delimiter_codec(data: str, delimiter: str) -> str:
     """Sort the lines alphabetically using the specified delimiter and remove duplicates."""
-    return delimiter.join(sorted(list(set(data.split(delimiter))), key=str.lower)).rstrip()
+    return delimiter.join(sorted(set(data.split(delimiter)), key=str.lower)).rstrip()
 
 
 def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
@@ -87,21 +87,23 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
             return sort_func(_data, pattern)
     # Character sorting
     if sort_func.__name__ == r'alphadupsort_delimiter_codec':
-        return r''.join(sorted(list(set(list(_data))), key=str.lower))
+        return r''.join(sorted(set(_data), key=str.lower))
     _out: List[str] = list(_data)
     _out.sort(key=str.lower)
     return r''.join(_out)
 
 
 if __name__ == '__main__':  # noqa: C901
-    HELP: str = 'Usage\n\talphabetize_lines [-r] "string"\n\tcommand | alphabetize_lines [-r]\n' + \
-        '\nSupported Delimters\n\tTab (U+0009)\n\tNewline (U+000A)\n\tVertical Tab (U+000B)\n\tForm-feed (U+000C)\n\tCarriage return (U+000D)\n\tUnit-separator (U+001F)\n\tSpace (U+0020)\n\tComma (U+002C)\n\t`:` (U+003A)\n\t`;` (U+003B)\n\tcomma+space\n\tspace+forward-slash+space\n\t`|` (U+007C)\n' + \
-        '\nOptional Parameters\n' + \
-        '\t-c, --char: Sort individual characters\n' + \
-        '\t-n, --no-trailing-nl: Do not add a trailing newline at the end of the output\n' + \
-        '\t-p, --read-pipe: Get input data from pipe\n' + \
-        '\t-r, --rm-dup: Remove duplicates in addition to sorting\n' + \
+    HELP: str = (
+        'Usage\n\talphabetize_lines [-r] "string"\n\tcommand | alphabetize_lines [-r]\n'
+        '\nSupported Delimters\n\tTab (U+0009)\n\tNewline (U+000A)\n\tVertical Tab (U+000B)\n\tForm-feed (U+000C)\n\tCarriage return (U+000D)\n\tUnit-separator (U+001F)\n\tSpace (U+0020)\n\tComma (U+002C)\n\t`:` (U+003A)\n\t`;` (U+003B)\n\tcomma+space\n\tspace+forward-slash+space\n\t`|` (U+007C)\n'
+        '\nOptional Parameters\n'
+        '\t-c, --char: Sort individual characters\n'
+        '\t-n, --no-trailing-nl: Do not add a trailing newline at the end of the output\n'
+        '\t-p, --read-pipe: Get input data from pipe\n'
+        '\t-r, --rm-dup: Remove duplicates in addition to sorting\n'
         '\t-u, --unicode: Sort characters by unicode value (not alphabetically)\n'
+    )
     try:
         ARGV_LEN: int = len(argv)
         HAS_ARGS: bool = ARGV_LEN > 1
