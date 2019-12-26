@@ -9,8 +9,7 @@
   color: $dark_fg_color;
 
   // Menubars/Menus of the panel (i.e. indicators)
-  menubar,
-  menubar > menuitem {
+  menubar, menubar > menuitem {
     border-style: none;
     box-shadow: none;
     color: $dark_fg_color;
@@ -23,7 +22,6 @@
 
   menubar menuitem:disabled {
     color: transparentize($dark_fg_color, 0.5);
-
     label {
       color: inherit;
     }
@@ -71,8 +69,8 @@
 // Lower half of the login-window (i.e. the buttonbox or action area)
 #buttonbox_frame {
   background-color: darken($bg_color, 5%);
-  border-bottom-left-radius: $button-radius;
-  border-bottom-right-radius: $button-radius;
+  border-bottom-left-radius: $button_radius;
+  border-bottom-right-radius: $button_radius;
   border-style: none;
   border-width: 1px;
   border: solid rgba(0, 0, 0, 0.1);
@@ -98,7 +96,6 @@
 
 #login_window #user_combobox {
   color: $fg_color;
-
   menu {
     font-style: normal;
   }

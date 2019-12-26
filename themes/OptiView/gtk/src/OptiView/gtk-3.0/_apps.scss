@@ -76,7 +76,7 @@ XfceHeading,
 #XfceNotifyWindow {
   @extend %osd;
 
-  border-radius: $window-radius;
+  border-radius: $window_radius;
 
   buttonbox {
     padding: 0px;
@@ -105,14 +105,14 @@ XfceHeading,
       @include button(osd-insensitive);
     }
 
-    border-radius: $button-radius;
+    border-radius: $button_radius;
     text-shadow: none;
   }
 
   entry {
     @include entry(osd);
 
-    border-radius: $button-radius;
+    border-radius: $button_radius;
     text-shadow: none;
   }
 
@@ -121,7 +121,7 @@ XfceHeading,
   }
 
   progressbar {
-    border-radius: $button-radius;
+    border-radius: $button_radius;
     min-height: 8px;
 
     progress {
@@ -133,7 +133,7 @@ XfceHeading,
 
     trough {
       background-color: lighten($dark_bg_color, 10%);
-      border-radius: $button-radius;
+      border-radius: $button_radius;
       border: none;
       padding: 1px 0px;
     }
@@ -239,7 +239,7 @@ XfceHeading,
 .nemo-window {
   .nemo-window-pane widget.entry {
     border: 1px solid;
-    border-radius: $button-radius;
+    border-radius: $button_radius;
 
     @include entry(focus);
 
