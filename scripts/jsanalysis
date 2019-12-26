@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning JavaScript files with various syntax checkers
 #' @file jsanalysis
-#' @version 2019.03.28
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -19,13 +19,31 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
-export FirstLoopPass=0
+
+
+# SETUP COMMANDS #
+
+
+JSHINT_EXISTS=0
+if [ -n "$(command -v jshint)" ]; then
+    JSHINT_EXISTS=1
+else
+    printf 'jshint: command not found!\n' >&2
+fi
+
+CODE_ANALYSIS_EXISTS=0
+if [ -x "$(command -v code-analysis)" ]; then
+    CODE_ANALYSIS_EXISTS=1
+else
+    printf 'code-analysis: command not found!\n' >&2
+fi
+
 
 # Use a faster alternative if possible
 if [ -x "$(command -v mawk)" ]; then
@@ -37,25 +55,42 @@ else
 fi
 
 
+# FUNCTIONS #
+
+
+#' Run JS-Hint
+jshint_func() {
+    if [ "$JSHINT_EXISTS" -eq 1 ]; then
+        printf '======  *JSHINT*  ======\n'
+        jshint "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
+#' Run Code-Analysis
+code_analysis_func() {
+    if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
+        code-analysis "${1}"
+    fi
+}
+
+
 # MAIN #
 
 
 for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
-    if [ -x "$(command -v jshint)" ]; then
-        printf '======  *JSHINT*  ======\n'
-        jshint "$file" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'jshint: command not found!\n' >&2
-    fi
+    JSHINT_BUFFER="/tmp/$(uuid).jsanalysis.tmp"
+    CODE_ANALYSIS_BUFFER="/tmp/$(uuid).jsanalysis.tmp"
 
-    if [ -x "$(command -v code-analysis)" ]; then
-        code-analysis "$file"
-    elif [ "$FirstLoopPass" -eq 0 ]; then
-        printf 'code-analysis: command not found!\n' >&2
-    fi
+    jshint_func "$file" > "${JSHINT_BUFFER}" &
+    code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
 
-    FirstLoopPass=1
+    wait
+
+    printf "%s\\n%s\\n" "$(cat < "${JSHINT_BUFFER}")" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${JSHINT_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
+
 
 done
