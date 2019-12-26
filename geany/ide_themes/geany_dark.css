@@ -31,7 +31,7 @@ button.flat{background-color:unset}
 
 /* Text Entries */
 
-entry{background-color:#EEE;caret-color:#000;color:#000;font-family:mononoki,monospace}
+entry,spinbutton{background-color:#568;caret-color:#FFF;color:#FFF;font-family:mononoki,monospace}
 entry>image{margin-left:2px;min-height:32px;min-width:32px;padding:2px}
 entry>image:focus{background-color:#CCF}
 entry>image:active,entry>image:active:focus{background-color:#2890FF}
@@ -55,6 +55,7 @@ notebook>header>tabs>tab:active{border-width:1px;color:#FFF;margin:2px;padding:4
 notebook>header>tabs>tab:active:focus,notebook>header>tabs>tab:active:hover,notebook>header>tabs>tab:checked:focus,notebook>header>tabs>tab:checked:hover{color:#FFF;text-shadow:0px 1px #777}
 notebook>header>tabs>tab:checked{background-image:linear-gradient(#944 0%, #2F2F2F 25%, #111 50%, #161616 75%, #944 100%);border-radius:16px;border-width:1px;margin:2px;padding:4px}
 notebook>header>tabs{background-image:linear-gradient(#484A56 0%, #3A3E4C 37%, #3A3E4C 43%, #414555 74%, #24262E 100%);border-color:#CCC;border-radius:0px;border-style:solid;border-width:1px}
+tabs>tab{min-height:16px}
 
 /* Miscellaneous Widgets */
 
