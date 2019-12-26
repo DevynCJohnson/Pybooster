@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.12.17
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -362,42 +362,42 @@ for file in "$@"; do
     FLAKE8_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     PYLINT_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     PYFLAKES_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
+    RADON_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     PYCODESTYLE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     PYDOCTEST_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     DIRECTIVE_CHECKER_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     BANDIT_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     UNCALLED_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     VULTURE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
-    RADON_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     PYDOCSTYLE_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
     CODE_ANALYSIS_BUFFER="/tmp/$(uuid).pyanalysis.tmp"
 
     flake8_func "$file" > "${FLAKE8_BUFFER}" &
     pylint_func "$ispy2" "$file" > "${PYLINT_BUFFER}" &
     pyflakes_func "$ispy2" "$file" > "${PYFLAKES_BUFFER}" &
+    radon_func "$file" > "${RADON_BUFFER}" &
     pycodestyle_func "$file" > "${PYCODESTYLE_BUFFER}" &
     pydoctest_func "$ispy2" "$file" > "${PYDOCTEST_BUFFER}" &
     directive_checker_func "$file" > "${DIRECTIVE_CHECKER_BUFFER}" &
     bandit_func "$file" > "${BANDIT_BUFFER}" &
     uncalled_func "$file" > "${UNCALLED_BUFFER}" &
     vulture_func "$file" > "${VULTURE_BUFFER}" &
-    radon_func "$file" > "${RADON_BUFFER}" &
     pydocstyle_func "$file" > "${PYDOCSTYLE_BUFFER}" &
     code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
 
     wait
 
     printf "%s\\n%s\\n" "$(cat < "${FLAKE8_BUFFER}")" "$(cat < "${PYFLAKES_BUFFER}")"
+    rm -f "${FLAKE8_BUFFER}" "${PYFLAKES_BUFFER}" || true
     printf "%s\\n%s\\n" "$(cat < "${PYCODESTYLE_BUFFER}")" "$(cat < "${PYLINT_BUFFER}")"
+    rm -f "${PYCODESTYLE_BUFFER}" "${PYLINT_BUFFER}" || true
     printf "%s\\n%s\\n" "$(cat < "${DIRECTIVE_CHECKER_BUFFER}")" "$(cat < "${VULTURE_BUFFER}")"
+    rm -f "${DIRECTIVE_CHECKER_BUFFER}" "${VULTURE_BUFFER}" || true
     printf "%s\\n%s\\n" "$(cat < "${UNCALLED_BUFFER}")" "$(cat < "${BANDIT_BUFFER}")"
+    rm -f "${UNCALLED_BUFFER}" "${BANDIT_BUFFER}" || true
     printf "%s\\n%s\\n" "$(cat < "${PYDOCSTYLE_BUFFER}")" "$(cat < "${PYDOCTEST_BUFFER}")"
+    rm -f "${PYDOCSTYLE_BUFFER}" "${PYDOCTEST_BUFFER}" || true
     printf "%s\\n%s\\n" "$(cat < "${RADON_BUFFER}")" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${RADON_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
 
 done
-
-
-# CLEANUP #
-
-
-rm -f /tmp/*.pyanalysis.tmp || true
