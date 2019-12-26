@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning files and providing checksums
 #' @file file-analysis
-#' @version 2019.07.21
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -18,12 +18,15 @@ elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
 fi
 
 
-# SETUP #
+# GLOBALS #
 
 
 export LANG='en_US.UTF-8'
 export LC_ALL='C'
 export LC_CTYPE='C'
+
+
+# SETUP COMMANDS #
 
 
 BASE32_EXISTS=0
@@ -233,21 +236,15 @@ for file in "$@"; do
     wait
 
     printf '======  *FILE CHECKSUMS*  ======\n'
-    printf "%s\\n" "$(cat < "${BASE32_BUFFER}")"
-    printf "%s\\n" "$(cat < "${BASE64_BUFFER}")"
-    printf "%s\\n" "$(cat < "${B2SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${CKSUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${MD5SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${SHA1SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${SHA224SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${SHA256SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${SHA384SUM_BUFFER}")"
-    printf "%s\\n" "$(cat < "${SHA512SUM_BUFFER}")"
+    printf "%s\\n%s\\n" "$(cat < "${BASE32_BUFFER}")" "$(cat < "${BASE64_BUFFER}")"
+    rm -f "${BASE32_BUFFER}" "${BASE64_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${B2SUM_BUFFER}")" "$(cat < "${CKSUM_BUFFER}")"
+    rm -f "${B2SUM_BUFFER}" "${CKSUM_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${MD5SUM_BUFFER}")" "$(cat < "${SHA1SUM_BUFFER}")"
+    rm -f "${MD5SUM_BUFFER}" "${SHA1SUM_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${SHA224SUM_BUFFER}")" "$(cat < "${SHA256SUM_BUFFER}")"
+    rm -f "${SHA224SUM_BUFFER}" "${SHA256SUM_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${SHA384SUM_BUFFER}")" "$(cat < "${SHA512SUM_BUFFER}")"
+    rm -f "${SHA384SUM_BUFFER}" "${SHA512SUM_BUFFER}" || true
 
 done
-
-
-# CLEANUP #
-
-
-rm -f /tmp/*.fileanalysis.tmp || true
