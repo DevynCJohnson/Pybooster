@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Convert Windows newlines (\r\n) to Unix newlines (\n)
 #' @file win2unixlines
-#' @version 2019.03.28
+#' @version 2019.12.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -27,36 +27,6 @@ fi
 
 POSIXLY_CORRECT=1
 exit_status=0
-filename_ext='.tmp'
-filename_template='win2unix_'
-random_file_name=''
-tmp_dir='/tmp/'
-
-
-# FUNCTIONS #
-
-
-#' Create random name (used for temporary files)
-rndfname() { date +%Y%m%u%d%H%M%S%s%N; }
-
-
-#' Convert Windows-line-endings to Unix-line-endings
-convert_win2unix() {
-    for file in "$@"; do
-        { [ -z "${file:-}" ] || [ -r "$file" ]; } && continue
-        file_type_test="$(file "$file" | cut -d ':' -f2 | grep -E -e 'ASCII|CRLF')"
-        [ -z "${file_type_test:-}" ] && continue
-        if [ ! -d "$tmp_dir" ] || [ ! -r "$tmp_dir" ] || [ ! -w "$tmp_dir" ]; then
-            printf 'Unable to write file in "%s"!\n' "$tmp_dir" >&2
-        elif [ -d "$tmp_dir" ] && [ -r "$tmp_dir" ] && [ -w "$tmp_dir" ]; then
-            random_file_name="${tmp_dir}${filename_template}$(rndfname)${filename_ext}"
-            [ -n "$file" ] && [ -r "$file" ] && [ -w "$file" ] && sed -e 's/\r//g' "$file" > "$random_file_name"
-            mv -f "$random_file_name" "$file"
-        else
-            printf 'Unable to convert "%s"!\n' "$file"
-        fi
-    done
-}
 
 
 # MAIN #
@@ -68,25 +38,22 @@ for file in "$@"; do
         printf 'There are no files to convert.\n'
         continue
     elif [ -d "$file" ] && [ -r "$file" ]; then  # Workable directory
-        files="$(find "$file" -empty -prune -o -type f -readable -writable 2> /dev/null)"
-        [ -z "${files:-}" ] && continue
-        files="$(echo "$files" | awk 'NF')"
-        for file2 in $files; do
-            [ -z "${file2:-}" ] && continue
-            convert_win2unix "$file2"
-        done
+        # shellcheck disable=SC2016
+        find "$file" -empty -prune -o -type f -readable -writable -print0 2> /dev/null | xargs -0 -L 1 -P 0 sh -c 'iconv -f utf16 -t utf8 "${1}" -o "${1}.utf8"' _
+        find "$file" -empty -prune -o -type f -readable -writable -name "*.utf8" -print0 2> /dev/null | xargs -0 -L 1 -P 0 sed -i -E -e '1s/\xEF\xBB\xBF//;s/\x00//g;s/\r//g;s/\uFEFF//g;'
+        [ -x "$(command -v rename)" ] && find "$file" -empty -prune -o -type f -readable -writable -name '*.utf8' -print0 | xargs -0 -P 8 rename --force 's/.utf8//'
+    elif [ -f "$file" ] && [ -r "$file" ] && [ -w "$file" ]; then  # Workable file
+        { temp_file="$(mktemp)" && iconv -f utf16 -t utf8 "$file" -o "$temp_file" && sed -e '1s/\xEF\xBB\xBF//;s/\x00//g;s/\r//g;s/\uFEFF//g;' "$temp_file" > "$file" && rm -f "$temp_file"; } &
     elif [ -d "$file" ] && [ ! -r "$file" ]; then  # Unable to open directory
         printf '%s: The specified directory is non-readable or non-existent!\n' "$file" >&2
         exit_status=1
     elif [ ! -r "$file" ] || [ ! -w "$file" ]; then  # Unable to manipulate file
         printf '%s: The specified file is non-readable, non-writable, or non-existent!\n' "$file" >&2
         exit_status=1
-    elif [ -d "$file" ] && [ -r "$file" ] && [ -w "$file" ]; then  # Workable file
-        convert_win2unix "$file"
-    else
-        continue
     fi
 done
 
+
+wait
 
 exit "$exit_status"
