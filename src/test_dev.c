@@ -218,7 +218,7 @@ static void test_code(const long long input_num) {
 	putsnl();
 	// Test isprime()
 	puts_no_output("* Test isprime() & puti(); Expect - `0` or `1` *");
-	const int bool_prime = isprime(input_num);
+	const int bool_prime = isprime((uint64_t)input_num);
 	puti(bool_prime);
 	putsnl();
 	// Test putchar()
@@ -295,7 +295,7 @@ static void test_printf(const long long input_num) {
 	const ptrdiff_t ptrdiff_t_num = (ptrdiff_t)-257;
 	const uintmax_t uintmax_t_num = (uintmax_t)511;
 	const intmax_t intmax_t_num = (intmax_t)-511;
-	const int bool_prime = isprime(input_num);
+	const int bool_prime = isprime((uint64_t)input_num);
 	char test_string[25] = { 'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 'c', 'h', 'a', 'r', '[', ']', ' ', 's', 't', 'r', 'i', 'n', 'g', '.', '\0' };
 	const char* test_const_string = "This is a const char* string.";
 	// Tests
