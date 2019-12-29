@@ -15954,7 +15954,7 @@ LIB_FUNC MATH_FUNC quaternion_long_double qversorl(const quaternion_long_double 
 #define _INTSCAN_H_   (1)
 
 
-LIB_FUNC unsigned long long intscan(FILE* fp, const unsigned int _base, const int pok, const unsigned long long lim) {
+LIB_FUNC unsigned long long intscan(FILE* restrict fp, const unsigned int _base, const int pok, const unsigned long long lim) {
 	if (_base > 36) { set_errno(EINVAL); return 0; }
 	const unsigned char* val = integer_table + 1;
 	int c = 0, neg = 0;
@@ -16029,7 +16029,7 @@ LIB_FUNC unsigned long long intscan(FILE* fp, const unsigned int _base, const in
 #define FLOATSCAN_H_   (1)
 
 
-LIB_FUNC long long scanexp(FILE* f, const int pok) {
+LIB_FUNC long long scanexp(FILE* restrict f, const int pok) {
 	int c = shgetc(f), x = 0, neg = 0;
 	long long y = 0;
 	if (c == '+' || c == '-') {
@@ -16046,7 +16046,7 @@ LIB_FUNC long long scanexp(FILE* f, const int pok) {
 }
 
 
-LIB_FUNC long double decfloat(FILE* f, int c, int bits, const int emin, const int sign, const int pok) {
+LIB_FUNC long double decfloat(FILE* restrict f, int c, int bits, const int emin, const int sign, const int pok) {
 	uint32_t x[KMAX] = { 0 };
 	const uint32_t th[] = { LD_B1B_MAX };
 	int i = 0, j = 0, k = 0, a = 0, z = 0;
@@ -16115,7 +16115,7 @@ LIB_FUNC long double decfloat(FILE* f, int c, int bits, const int emin, const in
 	if (lnz < 9 && lnz <= rp && rp < 18) {
 		if (rp == 9) { return sign * (long double)x[0]; }
 		else if (rp < 9) { return sign * (long double)x[0] / positive_tens[8 - rp]; }
-		int bitlim = bits - 3 * (int)(rp - 9);
+		const int bitlim = bits - 3 * (int)(rp - 9);
 		if (bitlim > 30 || x[0] >> bitlim == 0) { return sign * (long double)x[0] * positive_tens[rp - 10]; }
 	}
 	// Align radix point to B1B digit boundary
@@ -16226,7 +16226,7 @@ LIB_FUNC long double decfloat(FILE* f, int c, int bits, const int emin, const in
 }
 
 
-LIB_FUNC long double hexfloat(FILE* f, int bits, const int emin, const int sign, const int pok) {
+LIB_FUNC long double hexfloat(FILE* restrict f, int bits, const int emin, const int sign, const int pok) {
 	uint32_t x = 0;
 	long double y = 0.0L, scale = 1.0L, bias = 0.0L;
 	int gottail = 0, gotrad = 0, gotdig = 0, d = 0, c = 0;
@@ -16295,7 +16295,7 @@ LIB_FUNC long double hexfloat(FILE* f, int bits, const int emin, const int sign,
 }
 
 
-LIB_FUNC long double __floatscan(FILE* f, const int prec, const int pok) {
+LIB_FUNC long double __floatscan(FILE* restrict f, const int prec, const int pok) {
 	int bits = 0, emin = 0, c = 0;
 	switch (prec) {
 		case 0:

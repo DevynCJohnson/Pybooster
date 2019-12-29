@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Networking Capabilities
 @file MACROS_NET.h
-@version 2019.10.11
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1270,7 +1270,7 @@ LIB_FUNC int getifaddrs(struct ifaddrs** pif) {
 	struct sockaddr* align_ptr sa = NULL;
 	register unsigned short index = 0;
 	struct ifaddrs *ifa = NULL, *ift = NULL;
-	int align64 mib[6] = { CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST, 0 };
+	int mib[6] align32 = { CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST, 0 };
 	until_break {
 		if (sysctl(mib, 6, NULL, &needed, NULL, 0) == -1) {
 			free(buf);

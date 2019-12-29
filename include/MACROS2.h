@@ -6040,8 +6040,8 @@ DECL_FUNC NOLIBCALL void* memchr_nonconst(void* src, const int x, const size_t l
 DECL_FUNC int memcmp(const void* restrict ptr1, const void* restrict ptr2, const size_t _num);
 DECL_FUNC NOLIBCALL NONNULL void* memcpy(void* restrict dest, const void* restrict src, const size_t len);
 DECL_FUNC NOLIBCALL NONNULL void memcpy_no_output(void* restrict dest, const void* restrict src, const size_t len);
-DECL_FUNC NOLIBCALL NONNULL void* memmove(void* dst, const void* src, const size_t len);
-DECL_FUNC NOLIBCALL NONNULL void memmove_no_output(void* dst, const void* src, const size_t len);
+DECL_FUNC NOLIBCALL NONNULL void* memmove(void* restrict dst, const void* restrict src, const size_t len);
+DECL_FUNC NOLIBCALL NONNULL void memmove_no_output(void* restrict dst, const void* restrict src, const size_t len);
 DECL_FUNC NOLIBCALL NONNULL void* mempcpy(void* restrict dest, const void* restrict src, const size_t len);
 DECL_FUNC NOLIBCALL NONNULL void* memset(void* restrict dst, const int c, const size_t len);
 DECL_FUNC NOLIBCALL NONNULL void memset_no_output(void* restrict dst, const int c, const size_t len);
@@ -6094,7 +6094,7 @@ DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* fp, const unsigned char* bu
 DECL_FUNC ATTR_NONNULL(1) size_t __stdio_write_helper(void* fp, const unsigned char* buf, const size_t len);
 DECL_FUNC NONNULL size_t __stdout_write(UNUSED FILE* fp, const unsigned char* restrict buf, const size_t len);
 DECL_FUNC NONNULL size_t __stdout_write_helper(UNUSED void* fp, const unsigned char* restrict buf, const size_t len);
-DECL_FUNC int strcasecmp(const char* s1, const char* s2);
+DECL_FUNC int strcasecmp(const char* restrict s1, const char* restrict s2);
 DECL_FUNC NOLIBCALL ATTR_PF const char* strchr(const char* restrict str, const int chr);
 DECL_FUNC char* strchr2(const char* restrict str, const int chr);
 DECL_FUNC NOLIBCALL ATTR_PF char* strchr_nc(char* restrict str, const int chr);
@@ -6152,11 +6152,11 @@ DECL_FUNC ATTR_PRINTF(2, 0) int vfprintf(FILE* stream, const char* format, va_li
 /*@end@*/
 DECL_FUNC int vsnprintf(char* restrict str, const size_t size, const char* restrict format, va_list args);
 DECL_FUNC pid_t waitpid(const pid_t pid, const int* restrict status, const int options);
-DECL_FUNC size_t wcrtomb(char* restrict s, wchar_t wc, const UNUSED mbstate_t* restrict st);
+DECL_FUNC size_t wcrtomb(char* restrict s, const wchar_t wc, const UNUSED mbstate_t* restrict st);
 DECL_FUNC long long wcstoll(wchar_t* restrict s, const wchar_t** restrict p, const int base);
 DECL_FUNC unsigned long long wcstoull(wchar_t* restrict s, const wchar_t** restrict p, const int base);
 DECL_FUNC unsigned long long wcstox(wchar_t* s, const wchar_t** p, const int base, const unsigned long long lim);
-DECL_FUNC int wctomb(char* s, wchar_t wchar);
+DECL_FUNC int wctomb(char* restrict s, const wchar_t wchar);
 DECL_FUNC NONNULL ATTR_PF long xatol(const char* restrict s);
 DECL_FUNC NONNULL ATTR_PF unsigned long xatoul(const char* restrict s);
 DECL_FUNC uint32_t zi_read32(const unsigned char* z);

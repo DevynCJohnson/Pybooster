@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2019.11.23
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -12933,7 +12933,7 @@ LIB_FUNC void swap_copy(short* restrict dest, const short* restrict src, int c) 
 
 
 /** Encode 16-bits of data in Big-Endian */
-LIB_FUNC void be16enc(void* dest, const uint16_t u) {
+LIB_FUNC void be16enc(void* restrict dest, const uint16_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	p[0] = (unsigned char)((u >> 8) & 0xff);
 	p[1] = (unsigned char)(u & 0xff);
@@ -12941,7 +12941,7 @@ LIB_FUNC void be16enc(void* dest, const uint16_t u) {
 
 
 /** Encode 32-bits of data in Big-Endian */
-LIB_FUNC void be32enc(void* dest, const uint32_t u) {
+LIB_FUNC void be32enc(void* restrict dest, const uint32_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	p[0] = (unsigned char)((u >> 24) & 0xff);
 	p[1] = (unsigned char)((u >> 16) & 0xff);
@@ -12951,7 +12951,7 @@ LIB_FUNC void be32enc(void* dest, const uint32_t u) {
 
 
 /** Encode 64-bits of data in Big-Endian */
-LIB_FUNC void be64enc(void* dest, const uint64_t u) {
+LIB_FUNC void be64enc(void* restrict dest, const uint64_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	be32enc(p, ((uint32_t)(u >> 32)));
 	be32enc((p + 4), ((uint32_t)(u & UINT32_MAX)));
@@ -12959,7 +12959,7 @@ LIB_FUNC void be64enc(void* dest, const uint64_t u) {
 
 
 /** Encode 16-bits of data in Little-Endian */
-LIB_FUNC void le16enc(void* dest, const uint16_t u) {
+LIB_FUNC void le16enc(void* restrict dest, const uint16_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	p[0] = (unsigned char)(u & 0xff);
 	p[1] = (unsigned char)((u >> 8) & 0xff);
@@ -12967,7 +12967,7 @@ LIB_FUNC void le16enc(void* dest, const uint16_t u) {
 
 
 /** Encode 32-bits of data in Little-Endian */
-LIB_FUNC void le32enc(void* dest, const uint32_t u) {
+LIB_FUNC void le32enc(void* restrict dest, const uint32_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	p[0] = (unsigned char)(u & 0xff);
 	p[1] = (unsigned char)((u >> 8) & 0xff);
@@ -12977,7 +12977,7 @@ LIB_FUNC void le32enc(void* dest, const uint32_t u) {
 
 
 /** Encode 64-bits of data in Little-Endian */
-LIB_FUNC void le64enc(void* dest, const uint64_t u) {
+LIB_FUNC void le64enc(void* restrict dest, const uint64_t u) {
 	unsigned char* p = (unsigned char*)dest;
 	le32enc(p, ((uint32_t)(u & UINT32_MAX)));
 	le32enc((p + 4), ((uint32_t)(u >> 32)));
@@ -12985,42 +12985,42 @@ LIB_FUNC void le64enc(void* dest, const uint64_t u) {
 
 
 /** Decode 16-bits of Big-Endian data to Little-Endian */
-LIB_FUNC uint16_t be16dec(const void* dest) {
+LIB_FUNC uint16_t be16dec(const void* restrict dest) {
 	unsigned char const* p = (unsigned char const*)dest;
 	return (uint16_t)((uint16_t)(p[0] << 8) | (uint16_t)p[1]);
 }
 
 
 /** Decode 32-bits of Big-Endian data to Little-Endian */
-LIB_FUNC uint32_t be32dec(const void* dest) {
+LIB_FUNC uint32_t be32dec(const void* restrict dest) {
 	unsigned char const* p = (unsigned char const*)dest;
 	return (uint32_t)((uint32_t)(p[0] << 24) | (uint32_t)(p[1] << 16) | (uint32_t)(p[2] << 8) | (uint32_t)p[3]);
 }
 
 
 /** Decode 64-bits of Big-Endian data to Little-Endian */
-LIB_FUNC uint64_t be64dec(const void* dest) {
+LIB_FUNC uint64_t be64dec(const void* restrict dest) {
 	unsigned char const* p = (unsigned char const*)dest;
 	return (uint64_t)(((uint64_t)be32dec(p) << 32) | (uint64_t)be32dec(p + 4));
 }
 
 
 /** Decode 16-bits of Little-Endian data to Big-Endian */
-LIB_FUNC uint16_t le16dec(const void* buf) {
+LIB_FUNC uint16_t le16dec(const void* restrict buf) {
 	unsigned char const* p = (unsigned char const*)buf;
 	return (uint16_t)((uint16_t)(p[1] << 8) | (uint16_t)p[0]);
 }
 
 
 /** Decode 32-bits of Little-Endian data to Big-Endian */
-LIB_FUNC uint32_t le32dec(const void* buf) {
+LIB_FUNC uint32_t le32dec(const void* restrict buf) {
 	unsigned char const* p = (unsigned char const*)buf;
 	return (uint32_t)((uint32_t)(p[3] << 24) | (uint32_t)(p[2] << 16) | (uint32_t)(p[1] << 8) | (uint32_t)p[0]);
 }
 
 
 /** Decode 64-bits of Little-Endian data to Big-Endian */
-LIB_FUNC uint64_t le64dec(const void* buf) {
+LIB_FUNC uint64_t le64dec(const void* restrict buf) {
 	unsigned char const* p = (unsigned char const*)buf;
 	return (uint64_t)(((uint64_t)le32dec(p + 4) << 32) | (uint64_t)le32dec(p));
 }
@@ -13374,7 +13374,7 @@ LIB_FUNC MATH_FUNC uint64_t interleave32(const uint32_t x, const uint32_t y) {
 #define LE_READ_UINT64(p)   ((((uint64_t)(p)[7]) << 56) | (((uint64_t)(p)[6]) << 48) | (((uint64_t)(p)[5]) << 40) | (((uint64_t)(p)[4]) << 32) | (((uint64_t)(p)[3]) << 24) | (((uint64_t)(p)[2]) << 16) | (((uint64_t)(p)[1]) << 8) | ((uint64_t)(p)[0]))
 
 
-LIB_FUNC uint32_t getle32(void* v) {
+LIB_FUNC uint32_t getle32(void* restrict v) {
 	unsigned char* p = (unsigned char*)v;
 	return ((uint32_t)(p[3] << 24) | (uint32_t)(p[2] << 16) | (uint32_t)(p[1] << 8) | (uint32_t)p[0]);
 }
@@ -13422,7 +13422,7 @@ LIB_FUNC uint64_t OSReadInt64(const volatile void* base, const uintptr_t byteOff
 #define LE_WRITE_UINT64(p, i)   do { (p)[7] = ((i) >> 56) & 0xff; (p)[6] = ((i) >> 48) & 0xff; (p)[5] = ((i) >> 40) & 0xff; (p)[4] = ((i) >> 32) & 0xff; (p)[3] = ((i) >> 24) & 0xff; (p)[2] = ((i) >> 16) & 0xff; (p)[1] = ((i) >> 8) & 0xff; (p)[0] = (i) & 0xff; } while (0x0)
 
 
-LIB_FUNC void putle32(void* v, const uint32_t i) {
+LIB_FUNC void putle32(void* restrict v, const uint32_t i) {
 	unsigned char* p = (unsigned char*)v;
 	p[0] = (unsigned char)i;
 	p[1] = (unsigned char)(i >> 8);
@@ -13933,7 +13933,7 @@ LIB_FUNC int find_first_zero_bit(const void* restrict buf, const unsigned int le
 
 
 #ifdef ARCHX86_64
-LIB_FUNC long find_next_bit(const unsigned long* addr, const long size, const long offset) {
+LIB_FUNC long find_next_bit(const unsigned long* restrict addr, const long size, const long offset) {
 	const unsigned long* p = addr + (offset >> 6);
 	register unsigned long set = 0, res = 0;
 	register unsigned long bit = (unsigned long)((unsigned long)offset & 63);
@@ -13947,7 +13947,7 @@ LIB_FUNC long find_next_bit(const unsigned long* addr, const long size, const lo
 	return offset + (long)set + (long)res;
 }
 #elif defined(ARCHX86_32)
-LIB_FUNC int find_next_bit(const unsigned long* addr, const int size, const int offset) {
+LIB_FUNC int find_next_bit(const unsigned long* restrict addr, const int size, const int offset) {
 	const unsigned long* p = (addr + (offset >> 5));
 	register int set = 0, res = 0;
 	register int bit = offset & 31;
@@ -14010,9 +14010,8 @@ LIB_FUNC unsigned long ext2_swab(const unsigned long y) {
 
 #   if ((!defined(find_next_bit_le)) || (!defined(find_next_zero_bit_le)))
 LIB_FUNC unsigned long find_next_bit_le(const unsigned long* restrict addr, const unsigned long nbits, const unsigned long start, const unsigned long invert) {
-	unsigned long tmp = 0;
 	if ((!nbits) || (start >= nbits)) { return nbits; }
-	tmp = (addr[start / BITS_PER_LONG] ^ invert);
+	unsigned long tmp = (addr[start / BITS_PER_LONG] ^ invert);
 	// Handle 1st word
 	unsigned long startcnt = start;
 	tmp &= ext2_swab(BITMAP_FIRST_WORD_MASK(startcnt));
@@ -14366,7 +14365,7 @@ LIB_FUNC int variable_test_bit(const int nr, volatile void* restrict addr) {
 #define test_bit(nr, addr)   (__builtin_constant_p(nr) ? constant_test_bit((nr), (addr)) : variable_test_bit((nr), (addr)))
 
 
-LIB_FUNC int test_bit_le(const int nr, void* addr) {
+LIB_FUNC int test_bit_le(const int nr, void* restrict addr) {
 	return test_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
@@ -14533,32 +14532,32 @@ LIB_FUNC int __test_and_change_bit(const long nr, volatile unsigned long* restri
 }
 
 
-LIB_FUNC void set_bit_le(const int nr, volatile void* addr) {
+LIB_FUNC void set_bit_le(const int nr, volatile void* restrict addr) {
 	set_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
 
-LIB_FUNC void clear_bit_le(const int nr, volatile void* addr) {
+LIB_FUNC void clear_bit_le(const int nr, volatile void* restrict addr) {
 	clear_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
 
-LIB_FUNC int test_and_set_bit_le(const int nr, volatile void* addr) {
+LIB_FUNC int test_and_set_bit_le(const int nr, volatile void* restrict addr) {
 	return test_and_set_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
 
-LIB_FUNC int test_and_clear_bit_le(const int nr, volatile void* addr) {
+LIB_FUNC int test_and_clear_bit_le(const int nr, volatile void* restrict addr) {
 	return test_and_clear_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
 
-LIB_FUNC int __test_and_set_bit_le(const long nr, volatile void* addr) {
+LIB_FUNC int __test_and_set_bit_le(const long nr, volatile void* restrict addr) {
 	return __test_and_set_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
 
-LIB_FUNC int __test_and_clear_bit_le(const long nr, volatile void* addr) {
+LIB_FUNC int __test_and_clear_bit_le(const long nr, volatile void* restrict addr) {
 	return __test_and_clear_bit((nr ^ BITOP_LE_SWIZZLE), addr);
 }
 
@@ -14912,7 +14911,7 @@ LIB_FUNC void shift64Right(const uint32_t a0, const uint32_t a1, const int16_t c
 
 
 /** Shifts the 64-bit value formed by concatenating `a0` and `a1` right by the number of bits given in `count`; If any nonzero bits are shifted off, they are jammed into the least significant bit of the result by setting the least significant bit to 1; The value of `count` can be arbitrarily large; in particular, if `count` is greater than 64, the result will be either 0 or 1, depending on whether the concatenation of `a0` and `a1` is zero or nonzero; The result is broken into two 32-bit pieces which are stored at the locations pointed to by `z0Ptr` and `z1Ptr` */
-LIB_FUNC void shift64RightJamming(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr) {
+LIB_FUNC void shift64RightJamming(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr) {
 	uint32_t z0 = 0, z1 = 0;
 	const int8_t negCount = (-count) & 31;
 	if (count == 0) {
@@ -14937,7 +14936,7 @@ LIB_FUNC void shift64RightJamming(const uint32_t a0, const uint32_t a1, const in
 
 
 /** Shifts the 96-bit value formed by concatenating `a0`, `a1`, and `a2` right by 32 _plus_ the number of bits given in `count` */
-LIB_FUNC void shift64ExtraRightJamming(const uint32_t a0, const uint32_t a1, uint32_t a2, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr) {
+LIB_FUNC void shift64ExtraRightJamming(const uint32_t a0, const uint32_t a1, uint32_t a2, const int16_t count, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr, uint32_t* restrict z2Ptr) {
 	uint32_t z0 = 0, z1 = 0, z2 = 0;
 	const int8_t negCount = (int8_t)((-count) & 31);
 	if (count == 0) {
@@ -14974,14 +14973,14 @@ LIB_FUNC void shift64ExtraRightJamming(const uint32_t a0, const uint32_t a1, uin
 
 
 /** Shifts the 64-bit value formed by concatenating `a0` and `a1` left by the number of bits given in `count`; Any bits shifted off are lost; The value of `count` must be less than 32; The result is broken into two 32-bit pieces which are stored at the locations pointed to by `z0Ptr` and `z1Ptr` */
-LIB_FUNC void shortShift64Left(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr) {
+LIB_FUNC void shortShift64Left(const uint32_t a0, const uint32_t a1, const int16_t count, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr) {
 	*z1Ptr = a1 << count;
 	*z0Ptr = (count == 0) ? a0 : (a0 << count) | (a1 >> ((-count) & 31));
 }
 
 
 /** Shifts the 96-bit value formed by concatenating `a0`, `a1`, and `a2` left by the number of bits given in `count`; Any bits shifted off are lost; The value of `count` must be less than 32; The result is broken into three 32-bit pieces which are stored at the locations pointed to by `z0Ptr`, `z1Ptr`, and `z2Ptr` */
-LIB_FUNC void shortShift96Left(const uint32_t a0, const uint32_t a1, const uint32_t a2, const int16_t count, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr) {
+LIB_FUNC void shortShift96Left(const uint32_t a0, const uint32_t a1, const uint32_t a2, const int16_t count, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr, uint32_t* restrict z2Ptr) {
 	const uint32_t z2 = a2 << count;
 	uint32_t z1 = a1 << count;
 	uint32_t z0 = a0 << count;
@@ -15057,7 +15056,7 @@ LIB_FUNC MATH_FUNC uint32_t mulhi(const uint32_t a, const uint32_t b) {
 
 
 /** Multiplies `a` by `b` to obtain a 64-bit product; The product is broken into two 32-bit pieces which are stored at the locations pointed to by `z0Ptr` and `z1Ptr` */
-LIB_FUNC void mul32To64(const uint32_t a, const uint32_t b, uint32_t* z0Ptr, uint32_t* z1Ptr) {
+LIB_FUNC void mul32To64(const uint32_t a, const uint32_t b, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr) {
 	const uint16_t aHigh = (uint16_t)(a >> 16);
 	const uint16_t bHigh = (uint16_t)(b >> 16);
 	register uint32_t z1 = ((uint32_t)a) * (uint16_t)b;
@@ -15072,7 +15071,7 @@ LIB_FUNC void mul32To64(const uint32_t a, const uint32_t b, uint32_t* z0Ptr, uin
 
 
 /** Multiplies the 64-bit value formed by concatenating `a0` and `a1` by `b` to obtain a 96-bit product; The product is broken into three 32-bit pieces which are stored at the locations pointed to by `z0Ptr`, `z1Ptr`, and `z2Ptr` */
-LIB_FUNC void mul64By32To96(const uint32_t a0, const uint32_t a1, const uint32_t b, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr ) {
+LIB_FUNC void mul64By32To96(const uint32_t a0, const uint32_t a1, const uint32_t b, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr, uint32_t* restrict z2Ptr ) {
 	uint32_t z0 = 0, z1 = 0, z2 = 0, more1 = 0;
 	mul32To64(a1, b, &z1, &z2);
 	mul32To64(a0, b, &z0, &more1);
@@ -15084,7 +15083,7 @@ LIB_FUNC void mul64By32To96(const uint32_t a0, const uint32_t a1, const uint32_t
 
 
 /** Multiplies the 64-bit value formed by concatenating `a0` and `a1` to the 64-bit value formed by concatenating `b0` and `b1` to obtain a 128-bit product; The product is broken into four 32-bit pieces which are stored at the locations pointed to by `z0Ptr`, `z1Ptr`, `z2Ptr`, and `z3Ptr` */
-LIB_FUNC void mul64To128(const uint32_t a0, const uint32_t a1, const uint32_t b0, const uint32_t b1, uint32_t* z0Ptr, uint32_t* z1Ptr, uint32_t* z2Ptr, uint32_t* z3Ptr) {
+LIB_FUNC void mul64To128(const uint32_t a0, const uint32_t a1, const uint32_t b0, const uint32_t b1, uint32_t* restrict z0Ptr, uint32_t* restrict z1Ptr, uint32_t* restrict z2Ptr, uint32_t* restrict z3Ptr) {
 	uint32_t z1 = 0, z2 = 0, z3 = 0, more2 = 0;
 	mul32To64(a1, b1, &z2, &z3);
 	mul32To64(a1, b0, &z1, &more2);
@@ -15103,14 +15102,14 @@ LIB_FUNC void mul64To128(const uint32_t a0, const uint32_t a1, const uint32_t b0
 
 
 /** Dot Product Algorithm (Array of 32-bit integers) */
-LIB_FUNC void dot_product32(const int32_t* restrict _array1, const int32_t* restrict _array2, int32_t* output_array, const size_t _length) {
+LIB_FUNC void dot_product32(const int32_t* restrict _array1, const int32_t* restrict _array2, int32_t* restrict output_array, const size_t _length) {
 	output_array = 0;
 	for (register uint32_t i = 0; i < _length; i++) { output_array += _array1[i] * _array2[i]; }
 }
 
 
 /** Dot Product Algorithm (Array of 64-bit integers) */
-LIB_FUNC void dot_product64(const int64_t* restrict _array1, const int64_t* restrict _array2, int64_t* output_array, const size_t _length) {
+LIB_FUNC void dot_product64(const int64_t* restrict _array1, const int64_t* restrict _array2, int64_t* restrict output_array, const size_t _length) {
 	output_array = 0;
 	for (register uint64_t i = 0; i < _length; i++) { output_array += _array1[i] * _array2[i]; }
 }
@@ -18241,7 +18240,7 @@ LIB_FUNC void mi_vector_hash(const void* restrict key, size_t len, const uint32_
 	const uint32_t mask[4] = { 0xff, 0xffff, 0xffffff, 0xffffffff };
 	const uint32_t orig_len = (uint32_t)len;
 	register uint32_t a = 0x9e3779b9, b = 0x9e3779b9, c = seed;
-	const uint8_t* k;
+	const uint8_t* k = NULL;
 	if ((uintptr_t)key & 3) {
 		k = key;
 		while (len >= 12) {
@@ -18514,7 +18513,7 @@ LIB_FUNC int memcmp(const void* restrict ptr1, const void* restrict ptr2, const 
 }
 
 
-LIB_FUNC int memcmp16(const unsigned short* ptr1, const unsigned short* ptr2, const size_t n) {
+LIB_FUNC int memcmp16(const unsigned short* restrict ptr1, const unsigned short* restrict ptr2, const size_t n) {
 	register size_t i = 0;
 	for (; i < n; i++) {
 		if (*ptr1 != *ptr2) { return *ptr1 - *ptr2; }
@@ -18565,7 +18564,7 @@ LIB_FUNC int timingsafe_memcmp(const void* b1, const void* b2, const size_t len)
 }
 
 
-LIB_FUNC const char* twobyte_memmem(const unsigned char* h, const size_t len, const unsigned char* restrict n) {
+LIB_FUNC const char* twobyte_memmem(const unsigned char* restrict h, const size_t len, const unsigned char* restrict n) {
 	const uint16_t nw = (uint16_t)(n[0] << 8 | n[1]);
 	register uint16_t hw = (uint16_t)(h[0] << 8 | h[1]);
 	register size_t k = len - 1;
@@ -18574,7 +18573,7 @@ LIB_FUNC const char* twobyte_memmem(const unsigned char* h, const size_t len, co
 }
 
 
-LIB_FUNC const char* threebyte_memmem(const unsigned char* h, const size_t len, const unsigned char* restrict n) {
+LIB_FUNC const char* threebyte_memmem(const unsigned char* restrict h, const size_t len, const unsigned char* restrict n) {
 	const uint32_t nw = (uint32_t)((n[0] << 24) | (n[1] << 16) | (n[2] << 8));
 	register uint32_t hw = (uint32_t)((h[0] << 24) | (h[1] << 16) | (h[2] << 8));
 	register size_t k = len - 2;
@@ -18583,7 +18582,7 @@ LIB_FUNC const char* threebyte_memmem(const unsigned char* h, const size_t len, 
 }
 
 
-LIB_FUNC const char* fourbyte_memmem(const unsigned char* h, const size_t len, const unsigned char* restrict n) {
+LIB_FUNC const char* fourbyte_memmem(const unsigned char* restrict h, const size_t len, const unsigned char* restrict n) {
 	const uint32_t nw = (uint32_t)(n[0] << 24 | n[1] << 16 | n[2] << 8 | n[3]);
 	register uint32_t hw = (uint32_t)(h[0] << 24 | h[1] << 16 | h[2] << 8 | h[3]);
 	register size_t k = len - 3;
@@ -18592,7 +18591,7 @@ LIB_FUNC const char* fourbyte_memmem(const unsigned char* h, const size_t len, c
 }
 
 
-LIB_FUNC const char* twoway_memmem(const unsigned char* h, const unsigned char* z, const unsigned char* n, const size_t l) {
+LIB_FUNC const char* twoway_memmem(const unsigned char* restrict h, const unsigned char* restrict z, const unsigned char* restrict n, const size_t l) {
 	size_t byteset[32 / SIZEOF_SIZE_T] align64 = { 0 };
 	size_t shift[256] align256 = { 0 };
 	register size_t i = 0;
@@ -18677,7 +18676,7 @@ LIB_FUNC const char* twoway_memmem(const unsigned char* h, const unsigned char* 
 }
 
 
-LIB_FUNC const void* memmem(const void* h0, const size_t len, const void* n0, const size_t len2) {
+LIB_FUNC const void* memmem(const void* restrict h0, const size_t len, const void* restrict n0, const size_t len2) {
 	const unsigned char *h = h0, *n = n0;
 	register size_t k = len;
 	if (!len2) { return (const void*)h; }
@@ -18741,7 +18740,7 @@ LIB_FUNC int ustrcmp(const unsigned char* restrict s1, const unsigned char* rest
 
 
 /** Compare two strings case-insensitively; This function starts comparing the first character of each string; If they are equal to each other, it continues with the following pairs until the characters differ or until a terminating null-character is reached. */
-LIB_FUNC int strcasecmp(const char* s1, const char* s2) {
+LIB_FUNC int strcasecmp(const char* restrict s1, const char* restrict s2) {
 	if ((s1 == NULL) || (s2 == NULL)) { return 0; }
 	const unsigned char* us1 = (const unsigned char*)s1;
 	const unsigned char* us2 = (const unsigned char*)s2;
@@ -19079,9 +19078,9 @@ LIB_FUNC void scopyn(const char* restrict from, char* restrict to, register int 
 @{ */  // (FB){
 
 /** Copies the values of `len` bytes from the location pointed by `src` to the memory block pointed by `dst`; Copying takes place as if an intermediate buffer were used, allowing the destination and source to overlap */
-LIB_FUNC NOLIBCALL NONNULL void* memmove(void* dst, const void* src, const size_t len) {
-	const char* p = src;
-	char* q = dst;
+LIB_FUNC NOLIBCALL NONNULL void* memmove(void* restrict dst, const void* restrict src, const size_t len) {
+	const char* p = (const char*)src;
+	char* q = (char*)dst;
 	register size_t n = len;
 #   ifdef ARCHX86
 	if (q < p) {
@@ -19106,9 +19105,9 @@ LIB_FUNC NOLIBCALL NONNULL void* memmove(void* dst, const void* src, const size_
 
 
 /** Copies the values of `len` bytes from the location pointed by `src` to the memory block pointed by `dst`; Copying takes place as if an intermediate buffer were used, allowing the destination and source to overlap */
-LIB_FUNC NOLIBCALL NONNULL void memmove_no_output(void* dst, const void* src, const size_t len) {
-	const char* p = src;
-	char* q = dst;
+LIB_FUNC NOLIBCALL NONNULL void memmove_no_output(void* restrict dst, const void* restrict src, const size_t len) {
+	const char* p = (const char*)src;
+	char* q = (char*)dst;
 	register size_t n = len;
 #   ifdef ARCHX86
 	if (q < p) {
@@ -19129,7 +19128,7 @@ LIB_FUNC NOLIBCALL NONNULL void memmove_no_output(void* dst, const void* src, co
 }
 
 
-LIB_FUNC void* __memmove_chk(void* dst, const void* src, const size_t len, const size_t slen) {
+LIB_FUNC void* __memmove_chk(void* restrict dst, const void* restrict src, const size_t len, const size_t slen) {
 	if (len > slen) { __chk_fail("*** memmove() terminated ***"); }
 	return memmove(dst, src, len);
 }
@@ -19342,7 +19341,7 @@ LIB_FUNC char* strstr_nc(char* restrict s1, const char* restrict s2) {
 }
 
 
-LIB_FUNC const char* twobyte_strstr(const unsigned char* h, const unsigned char* n) {
+LIB_FUNC const char* twobyte_strstr(const unsigned char* restrict h, const unsigned char* restrict n) {
 	const uint16_t nw = (uint16_t)((n[0] << 8) | n[1]);
 	uint16_t hw = (uint16_t)((h[0] << 8) | h[1]);
 	for (h++; *h && hw != nw; hw = (uint16_t)((hw << 8) | *++h));
@@ -19350,7 +19349,7 @@ LIB_FUNC const char* twobyte_strstr(const unsigned char* h, const unsigned char*
 }
 
 
-LIB_FUNC const char* threebyte_strstr(const unsigned char* h, const unsigned char* n) {
+LIB_FUNC const char* threebyte_strstr(const unsigned char* restrict h, const unsigned char* restrict n) {
 	const uint32_t nw = (uint32_t)(n[0] << 24 | n[1] << 16 | n[2] << 8);
 	uint32_t hw = (uint32_t)(h[0] << 24 | h[1] << 16 | h[2] << 8);
 	for (h += 2; *h && hw != nw; hw = (uint32_t)((hw | *++h) << 8));
@@ -19358,7 +19357,7 @@ LIB_FUNC const char* threebyte_strstr(const unsigned char* h, const unsigned cha
 }
 
 
-LIB_FUNC const char* fourbyte_strstr(const unsigned char* h, const unsigned char* n) {
+LIB_FUNC const char* fourbyte_strstr(const unsigned char* restrict h, const unsigned char* restrict n) {
 	const uint32_t nw = (uint32_t)(n[0] << 24 | n[1] << 16 | n[2] << 8 | n[3]);
 	uint32_t hw = (uint32_t)(h[0] << 24 | h[1] << 16 | h[2] << 8 | h[3]);
 	for (h += 3; *h && hw != nw; hw = (uint32_t)((hw << 8) | *++h));
@@ -19550,8 +19549,8 @@ LIB_FUNC size_t strlcat(char* restrict dest, const char* restrict src, const siz
 
 
 LIB_FUNC const char* strchrnul(const char* s, const int x) {
-	const size_t* w;
-	size_t k;
+	const size_t* w = NULL;
+	size_t k = 0ULL;
 	register unsigned char c = (unsigned char)x;
 	if (!c) { return (const char*)(s + strlen(s)); }
 	for (; (uintptr_t)s % SIZEOF_SIZE_T; s++) { if (!*s || *(const unsigned char*)s == c) { return (const char*)s; } }
@@ -19565,7 +19564,7 @@ LIB_FUNC const char* strchrnul(const char* s, const int x) {
 
 /** Span the string `s1` skipping characters that are in `s2` */
 LIB_FUNC NOLIBCALL ATTR_PF size_t strspn(const char* restrict s1, const char* restrict s2) {
-	const char *p = s1, *spanp;
+	const char *p = s1, *spanp = NULL;
 	register char c = 0, sc = 0;
 	until_break {  // Skip any characters in s2, excluding the terminating \0
 		c = *p++;
@@ -32453,7 +32452,7 @@ LIB_FUNC void ultostr(const unsigned long value, char* restrict str_buf, const i
 
 
 /** Convert unsigned long to string */
-LIB_FUNC int __ltostr(char* s, unsigned int size, unsigned long i, const unsigned int base, const int UpCase) {
+LIB_FUNC int __ltostr(char* restrict s, unsigned int size, unsigned long i, const unsigned int base, const int UpCase) {
 	register unsigned int j = 0, _base = base;
 	s[--size] = 0;
 	char* tmp = s + size;
@@ -35560,7 +35559,7 @@ LIB_FUNC size_t wcsxfrm(wchar_t* restrict dst, const wchar_t* restrict src, cons
 }
 
 
-LIB_FUNC size_t wcrtomb(char* restrict s, wchar_t wc, const UNUSED mbstate_t* restrict st) {
+LIB_FUNC size_t wcrtomb(char* restrict s, const wchar_t wc, const UNUSED mbstate_t* restrict st) {
 	if (!s) { return 1; }
 	else if ((unsigned)wc < 0x80) {
 		*s = (char)wc;
@@ -35593,7 +35592,7 @@ LIB_FUNC size_t wcrtomb(char* restrict s, wchar_t wc, const UNUSED mbstate_t* re
 }
 
 
-LIB_FUNC int wctomb(char* s, wchar_t wchar) {
+LIB_FUNC int wctomb(char* restrict s, const wchar_t wchar) {
 	static mbstate_t mbs;
 	register size_t rval;
 	if (s == NULL) {
@@ -36875,7 +36874,7 @@ LIB_FUNC unsigned int get_32(const unsigned char* restrict s, int e) {
 }
 
 
-LIB_FUNC void put_32(unsigned char* s, const unsigned int c, int e) {
+LIB_FUNC void put_32(unsigned char* restrict s, const unsigned int c, int e) {
 	e &= 3;
 	s[e ^ 0] = (unsigned char)(c >> 24);
 	s[e ^ 1] = (unsigned char)(c >> 16);
@@ -36904,7 +36903,7 @@ LIB_FUNC int armscii_8_mbtowc(ucs4_t* restrict pwc, const unsigned char* restric
 }
 
 
-LIB_FUNC int armscii_8_wctomb(unsigned char* r, ucs4_t wc) {
+LIB_FUNC int armscii_8_wctomb(unsigned char* restrict r, ucs4_t wc) {
 	register unsigned char c = 0;
 	if (wc < 0x28) { *r = (unsigned char)wc; return 1; }
 	else if (wc >= 0x28 && wc < 0x30) { c = (unsigned char)armscii_8_page00[wc - 0x28]; }
@@ -36949,7 +36948,7 @@ LIB_FUNC int ascii_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s)
 }
 
 
-LIB_FUNC int ascii_wctomb(unsigned char* r, const ucs4_t wc) {
+LIB_FUNC int ascii_wctomb(unsigned char* restrict r, const ucs4_t wc) {
 	if (wc < 0x80) { *r = (unsigned char)wc; return 1; }
 	return RET_ILUNI;
 }
@@ -36981,7 +36980,7 @@ LIB_FUNC int cns11643_1_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, con
 }
 
 
-LIB_FUNC int cns11643_2_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n) {
+LIB_FUNC int cns11643_2_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, const int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x72)) {
 		if (n >= 2) {
@@ -37000,7 +36999,7 @@ LIB_FUNC int cns11643_2_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n)
 }
 
 
-LIB_FUNC int cns11643_3_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n) {
+LIB_FUNC int cns11643_3_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, const int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x62) || (c1 >= 0x64 && c1 <= 0x67)) {
 		if (n >= 2) {
@@ -37030,7 +37029,7 @@ LIB_FUNC int cns11643_3_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n)
 }
 
 
-LIB_FUNC int cns11643_4_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
+LIB_FUNC int cns11643_4_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x6e)) {
 		if (n >= 2) {
@@ -37056,7 +37055,7 @@ LIB_FUNC int cns11643_4_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
 }
 
 
-LIB_FUNC int cns11643_5_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
+LIB_FUNC int cns11643_5_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x7c)) {
 		if (n >= 2) {
@@ -37079,7 +37078,7 @@ LIB_FUNC int cns11643_5_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
 }
 
 
-LIB_FUNC int cns11643_6_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
+LIB_FUNC int cns11643_6_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x64)) {
 		if (n >= 2) {
@@ -37102,7 +37101,7 @@ LIB_FUNC int cns11643_6_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
 }
 
 
-LIB_FUNC int cns11643_7_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
+LIB_FUNC int cns11643_7_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x66)) {
 		if (n >= 2) {
@@ -37125,7 +37124,7 @@ LIB_FUNC int cns11643_7_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
 }
 
 
-LIB_FUNC int cns11643_15_mbtowc(ucs4_t* pwc, const unsigned char* s, int n) {
+LIB_FUNC int cns11643_15_mbtowc(ucs4_t* restrict pwc, const unsigned char* s, int n) {
 	const unsigned char c1 = s[0];
 	if ((c1 >= 0x21 && c1 <= 0x6d)) {
 		if (n >= 2) {
@@ -37184,7 +37183,7 @@ LIB_FUNC int cns11643_inv_wctomb(unsigned char* r, ucs4_t wc, const int n) {
 #define cns11643_wctomb(r, wc, n)   cns11643_inv_wctomb((r), (wc), (n))
 
 
-LIB_FUNC int java_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n) {
+LIB_FUNC int java_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s, const int n) {
 	unsigned char c = s[0];
 	if (c != '\\') {
 		*pwc = c;
@@ -37228,7 +37227,7 @@ LIB_FUNC int java_mbtowc(ucs4_t* pwc, const unsigned char* s, const int n) {
 }
 
 
-LIB_FUNC int java_wctomb(unsigned char* r, ucs4_t wc, const int n) {
+LIB_FUNC int java_wctomb(unsigned char* restrict r, const ucs4_t wc, const int n) {
 	if (wc < 0x80) {
 		*r = (unsigned char)wc;
 		return 1;
@@ -37279,13 +37278,13 @@ LIB_FUNC int java_wctomb(unsigned char* r, ucs4_t wc, const int n) {
 }
 
 
-LIB_FUNC int nextstep_mbtowc(ucs4_t* pwc, const unsigned char* s) {
-	unsigned char c = *s;
+LIB_FUNC int nextstep_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s) {
+	const unsigned char c = *s;
 	if (c < 0x80) {
 		*pwc = (ucs4_t)c;
 		return 1;
 	} else {
-		unsigned short wc = nextstep_2uni[c - 0x80];
+		const unsigned short wc = nextstep_2uni[c - 0x80];
 		if (wc != 0xfffd) {
 			*pwc = (ucs4_t)wc;
 			return 1;
@@ -37295,7 +37294,7 @@ LIB_FUNC int nextstep_mbtowc(ucs4_t* pwc, const unsigned char* s) {
 }
 
 
-LIB_FUNC int nextstep_wctomb(unsigned char* r, ucs4_t wc) {
+LIB_FUNC int nextstep_wctomb(unsigned char* restrict r, const ucs4_t wc) {
 	unsigned char c = 0;
 	if (wc < 0x80) {
 		*r = (unsigned char)wc;
@@ -37314,12 +37313,12 @@ LIB_FUNC int nextstep_wctomb(unsigned char* r, ucs4_t wc) {
 
 
 /** UTF-16BE (RFC 2781) */
-LIB_FUNC int utf16be_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n) {
+LIB_FUNC int utf16be_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s, const size_t n) {
 	if (n >= 2) {
-		ucs4_t wc = (ucs4_t)((s[0] << 8) + s[1]);
+		const ucs4_t wc = (ucs4_t)((s[0] << 8) + s[1]);
 		if (wc >= 0xd800 && wc < 0xdc00) {
 			if (n >= 4) {
-				ucs4_t wc2 = (ucs4_t)((s[2] << 8) + s[3]);
+				const ucs4_t wc2 = (ucs4_t)((s[2] << 8) + s[3]);
 				if (!(wc2 >= 0xdc00 && wc2 < 0xe000)) { return RET_ILSEQ; }
 				*pwc = 0x10000 + ((wc - 0xd800) << 10) + (wc2 - 0xdc00);
 				return 4;
@@ -37332,7 +37331,7 @@ LIB_FUNC int utf16be_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n)
 
 
 /** UTF-16BE (RFC 2781) */
-LIB_FUNC int utf16be_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
+LIB_FUNC int utf16be_wctomb(unsigned char* restrict r, const ucs4_t wc, const size_t n) {
 	if (!(wc >= 0xd800 && wc < 0xe000)) {
 		if (wc < 0x10000) {
 			if (n >= 2) {
@@ -37342,8 +37341,8 @@ LIB_FUNC int utf16be_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
 			} else { return RET_TOOSMALL; }
 		} else if (wc < 0x110000) {
 			if (n >= 4) {
-				ucs4_t wc1 = (ucs4_t)(0xd800 + ((wc - 0x10000) >> 10));
-				ucs4_t wc2 = (ucs4_t)(0xdc00 + ((wc - 0x10000) & 0x3ff));
+				const ucs4_t wc1 = (ucs4_t)(0xd800 + ((wc - 0x10000) >> 10));
+				const ucs4_t wc2 = (ucs4_t)(0xdc00 + ((wc - 0x10000) & 0x3ff));
 				r[0] = (unsigned char)(wc1 >> 8);
 				r[1] = (unsigned char)wc1;
 				r[2] = (unsigned char)(wc2 >> 8);
@@ -37357,12 +37356,12 @@ LIB_FUNC int utf16be_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
 
 
 /** UTF-16LE (RFC 2781) */
-LIB_FUNC int utf16le_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n) {
+LIB_FUNC int utf16le_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s, const size_t n) {
 	if (n >= 2) {
-		ucs4_t wc = (ucs4_t)(s[0] + (s[1] << 8));
+		const ucs4_t wc = (ucs4_t)(s[0] + (s[1] << 8));
 		if (wc >= 0xd800 && wc < 0xdc00) {
 			if (n >= 4) {
-				ucs4_t wc2 = (ucs4_t)(s[2] + (s[3] << 8));
+				const ucs4_t wc2 = (ucs4_t)(s[2] + (s[3] << 8));
 				if (!(wc2 >= 0xdc00 && wc2 < 0xe000)) { return RET_ILSEQ; }
 				*pwc = 0x10000 + ((wc - 0xd800) << 10) + (wc2 - 0xdc00);
 				return 4;
@@ -37375,7 +37374,7 @@ LIB_FUNC int utf16le_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n)
 
 
 /** UTF-16LE (RFC 2781) */
-LIB_FUNC int utf16le_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
+LIB_FUNC int utf16le_wctomb(unsigned char* restrict r, const ucs4_t wc, const size_t n) {
 	if (!(wc >= 0xd800 && wc < 0xe000)) {
 		if (wc < 0x10000) {
 			if (n >= 2) {
@@ -37385,8 +37384,8 @@ LIB_FUNC int utf16le_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
 			} else { return RET_TOOSMALL; }
 		} else if (wc < 0x110000) {
 			if (n >= 4) {
-				ucs4_t wc1 = (ucs4_t)(0xd800 + ((wc - 0x10000) >> 10));
-				ucs4_t wc2 = (ucs4_t)(0xdc00 + ((wc - 0x10000) & 0x3ff));
+				const ucs4_t wc1 = (ucs4_t)(0xd800 + ((wc - 0x10000) >> 10));
+				const ucs4_t wc2 = (ucs4_t)(0xdc00 + ((wc - 0x10000) & 0x3ff));
 				r[0] = (unsigned char)wc1;
 				r[1] = (unsigned char)(wc1 >> 8);
 				r[2] = (unsigned char)wc2;
@@ -37400,9 +37399,9 @@ LIB_FUNC int utf16le_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
 
 
 /** UTF-32BE (Unicode 3.1 Standard Annex #19) */
-LIB_FUNC int utf32be_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n) {
+LIB_FUNC int utf32be_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s, const size_t n) {
 	if (n >= 4) {
-		ucs4_t wc = (ucs4_t)((s[0] << 24) + (s[1] << 16) + (s[2] << 8) + s[3]);
+		const ucs4_t wc = (ucs4_t)((s[0] << 24) + (s[1] << 16) + (s[2] << 8) + s[3]);
 		if (wc < 0x110000 && !(wc >= 0xd800 && wc < 0xe000)) {
 			*pwc = wc;
 			return 4;
@@ -37413,7 +37412,7 @@ LIB_FUNC int utf32be_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n)
 
 
 /** UTF-32BE (Unicode 3.1 Standard Annex #19) */
-LIB_FUNC int utf32be_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
+LIB_FUNC int utf32be_wctomb(unsigned char* restrict r, const ucs4_t wc, const size_t n) {
 	if (wc < 0x110000 && !(wc >= 0xd800 && wc < 0xe000)) {
 		if (n >= 4) {
 			r[0] = 0;
@@ -37428,9 +37427,9 @@ LIB_FUNC int utf32be_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
 
 
 /** UTF-32LE (Unicode 3.1 Standard Annex #19) */
-LIB_FUNC int utf32le_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n) {
+LIB_FUNC int utf32le_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s, const size_t n) {
 	if (n >= 4) {
-		ucs4_t wc = (ucs4_t)(s[0] + (s[1] << 8) + (s[2] << 16) + (s[3] << 24));
+		const ucs4_t wc = (ucs4_t)(s[0] + (s[1] << 8) + (s[2] << 16) + (s[3] << 24));
 		if (wc < 0x110000 && !(wc >= 0xd800 && wc < 0xe000)) {
 			*pwc = wc;
 			return 4;
@@ -37441,7 +37440,7 @@ LIB_FUNC int utf32le_mbtowc(ucs4_t* pwc, const unsigned char* s, const size_t n)
 
 
 /** UTF-32LE (Unicode 3.1 Standard Annex #19) */
-LIB_FUNC int utf32le_wctomb(unsigned char* r, ucs4_t wc, const size_t n) {
+LIB_FUNC int utf32le_wctomb(unsigned char* restrict r, const ucs4_t wc, const size_t n) {
 	if (wc < 0x110000 && !(wc >= 0xd800 && wc < 0xe000)) {
 		if (n >= 4) {
 			r[0] = (unsigned char)wc;
@@ -37615,7 +37614,7 @@ LIB_FUNC NONNULL size_t utf32toutf8(const ucs4_t* restrict codepoints, unsigned 
 
 
 /** The 32-bit character `c32` is translated to its multibyte equivalent and stored in the array pointed by `pmb`; The function returns the length in bytes of the equivalent multibyte sequence pointed by `pmb` */
-LIB_FUNC size_t c32rtomb(char* restrict pmb, char32_t c32, mbstate_t* restrict ps) {
+LIB_FUNC size_t c32rtomb(char* restrict pmb, char32_t c32, const mbstate_t* restrict ps) {
 	return wcrtomb(pmb, (wchar_t)c32, ps);
 }
 #define _c32rtomb(pmb, c32, ps)   c32rtomb((pmb), (c32), (ps))
@@ -40740,7 +40739,7 @@ LIB_FUNC char* hasmntopt(const struct mntent* mnt, const char* opt) {
 #endif
 
 /** Structure and datatype used as a statvfs/fstatvfs function parameter */
-typedef align32 struct statvfs {
+typedef align64 struct statvfs {
 	unsigned long f_bsize;  //!< File system block size
 	unsigned long f_frsize;  //!< Fundamental file system block size
 #   ifndef USE_FILE_OFFSET64
@@ -40764,7 +40763,7 @@ typedef align32 struct statvfs {
 } statvfs_t;
 
 #if SUPPORTS_LARGEFILE64
-typedef align32 struct statvfs64 {
+typedef align64 struct statvfs64 {
 	unsigned long f_bsize, f_frsize;
 	fsblkcnt64_t f_blocks, f_bfree, f_bavail;
 	fsfilcnt64_t f_files, f_ffree, f_favail;

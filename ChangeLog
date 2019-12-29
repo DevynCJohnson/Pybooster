@@ -1,6 +1,7 @@
 2019-12-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* ./include/*.h:  Removed unneeded alignment attributes
+	* MACROS*.h:  Applied `restrict` & `const` to additional parameters and variables
 
 2019-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

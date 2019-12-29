@@ -4,7 +4,7 @@
 /**
 @brief Return filesystem statistics
 @file statvfs.c
-@version 2019.06.05
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ along with this software.
 
 noreturn int main(rargc, rargv) {
 	register int ret;
-	struct statvfs align64 buf = { 0 };
+	struct statvfs buf = { 0 };
 	if (argc != 2) {
 		puts_err_no_output("Expected one parameter!");
 		fast_exit(EXIT_FAILURE);
