@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Create the CTags files for use by Geany
 #' @file generate_ctags.sh
-#' @version 2019.06.10
+#' @version 2019.12.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @section NOTES
 #'
@@ -24,7 +24,15 @@ fi
 
 
 clang_version=
-if [ -d /usr/include/clang/8/include/ ]; then
+if [ -d /usr/include/clang/12/include/ ]; then
+    clang_version='12'
+elif [ -d /usr/include/clang/11/include/ ]; then
+    clang_version='11'
+elif [ -d /usr/include/clang/10/include/ ]; then
+    clang_version='10'
+elif [ -d /usr/include/clang/9/include/ ]; then
+    clang_version='9'
+elif [ -d /usr/include/clang/8/include/ ]; then
     clang_version='8'
 elif [ -d /usr/include/clang/7/include/ ]; then
     clang_version='7'
@@ -39,12 +47,12 @@ fi
 header_files='/usr/include/stdc-predef.h /usr/include/stdint.h /usr/include/inttypes.h /usr/include/limits.h /usr/include/assert.h /usr/include/math_constants.h /usr/include/ctype.h /usr/include/unistd.h /usr/include/ulimit.h /usr/include/stdlib.h /usr/include/stdio.h /usr/include/builtin_types.h /usr/include/math.h /usr/include/malloc.h /usr/include/wchar.h /usr/include/wctype.h /usr/include/wordexp.h /usr/include/uchar.h /usr/include/time.h /usr/include/tgmath.h /usr/include/sysexits.h /usr/include/syscall.h /usr/include/string.h /usr/include/complex.h /usr/include/cpio.h /usr/include/dirent.h /usr/include/elf.h /usr/include/endian.h /usr/include/errno.h /usr/include/getopt.h /usr/include/libgen.h /usr/include/string.h /usr/include/strings.h /usr/include/syslog.h /usr/include/tar.h /usr/include/monetary.h /usr/include/locale.h /usr/include/aio.h /usr/include/alloca.h'
 
 if [ -n "${clang_version:-}" ]; then
-    export CFLAGS='-I/usr/include/clang/${clang_version}/include -D__x86_64__ -D__MMX__'
-    geany --generate-tags "${TAG_DEST}std.c.tags" /usr/include/clang/${clang_version}/include/iso646.h /usr/include/clang/${clang_version}/include/float.h /usr/include/clang/${clang_version}/include/stdalign.h /usr/include/clang/${clang_version}/include/stdatomic.h ${header_files}
+    export CFLAGS="-I/usr/include/clang/${clang_version}/include -D__x86_64__ -D__MMX__"
+    geany --generate-tags "${TAG_DEST}std.c.tags" "/usr/include/clang/${clang_version}/include/iso646.h" "/usr/include/clang/${clang_version}/include/float.h" "/usr/include/clang/${clang_version}/include/stdalign.h" "/usr/include/clang/${clang_version}/include/stdatomic.h" "${header_files}"
     export CFLAGS=''
-    geany --no-preprocessing --generate-tags "${TAG_DEST}Intel_Intrinsics.c.tags" /usr/include/clang/${clang_version}/include/*intrin.h /usr/include/clang/${clang_version}/include/altivec.h /usr/include/clang/${clang_version}/include/arm64intr.h /usr/include/clang/${clang_version}/include/arm_neon.h /usr/include/clang/${clang_version}/include/cpuid.h /usr/include/clang/${clang_version}/include/mm3dnow.h /usr/include/clang/${clang_version}/include/__wmmintrin_aes.h /usr/include/clang/${clang_version}/include/__wmmintrin_pclmul.h
+    geany --no-preprocessing --generate-tags "${TAG_DEST}Intel_Intrinsics.c.tags" "/usr/include/clang/${clang_version}/include/*intrin.h" "/usr/include/clang/${clang_version}/include/altivec.h" "/usr/include/clang/${clang_version}/include/arm64intr.h" "/usr/include/clang/${clang_version}/include/arm_neon.h" "/usr/include/clang/${clang_version}/include/cpuid.h" "/usr/include/clang/${clang_version}/include/mm3dnow.h" "/usr/include/clang/${clang_version}/include/__wmmintrin_aes.h" "/usr/include/clang/${clang_version}/include/__wmmintrin_pclmul.h"
 else
-    geany --generate-tags "${TAG_DEST}std.c.tags" ${header_files}
+    geany --generate-tags "${TAG_DEST}std.c.tags" "${header_files}"
     # TODO: Remove anonymous enums (anon_enum_*), structs (anon_enum_*), and unions (anon_union_*)
 fi
 
