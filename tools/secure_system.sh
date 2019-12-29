@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Change various system settings to increase the system's security
 #' @file secure_system.sh
-#' @version 2019.03.28
+#' @version 2019.12.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -79,13 +79,36 @@ apply_iptables_rules() {
 }
 
 
+apply_ufw_rules() {
+    ufw logging off
+    sudo ufw deny in 25  # Block incoming SMTP
+    sudo ufw allow in 22/tcp  # Allow incoming SSH TCP
+    sudo ufw deny in 22/udp  # Block incoming UDP SSH
+    sudo ufw deny 6
+    sudo ufw deny 17
+    sudo ufw deny in 20  # Block incoming FTP
+    sudo ufw deny in 21  # Block incoming FTP
+    sudo ufw deny 23  # Block all Telnet
+    sudo ufw deny 132  # Block all SCTP
+    sudo ufw deny 135  # Block all MS-RPC
+    sudo ufw deny 137  # Block all NetBIOS
+    sudo ufw deny 138  # Block all NetBIOS
+    sudo ufw deny 139  # Block all NetBIOS
+    sudo ufw deny 255
+    sudo ufw deny 445  # Block all MS-DS
+    sudo ufw deny 593  # Block all HTTP-RPC-EPMAP
+    sudo ufw deny 873  # Block all RSync
+    sudo ufw deny 1959  # Block all remotepings
+    sudo ufw deny 16385  # Block all RDGS
+}
+
+
 # MAIN #
 
 
 if [ ! "$(id -u)" -eq 0 ]; then
     exec sudo -- "$0"
 else
-    if [ -x "$(command -v iptables)" ]; then
-        apply_iptables_rules
-    fi
+    [ -x "$(command -v iptables)" ] && apply_iptables_rules
+    [ -x "$(command -v ufw)" ] && apply_ufw_rules
 fi
