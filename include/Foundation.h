@@ -7788,7 +7788,11 @@ Compile-time assertion */
 /** @defgroup Restrict_Keyword Macros pertaining to the `restrict` keyword
 @{ */  // (FB){
 
-#if IS_GNUC
+#if NO_RESTRICT
+#   define restrict
+#   define __restrict
+#   define __restrict__
+#elif IS_GNUC
 #   define restrict   __restrict__
 #   define __restrict   __restrict__
 #elif defined(LINTER_LINT)
