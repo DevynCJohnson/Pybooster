@@ -5,7 +5,7 @@
 """@brief Linter and checker for C source code.
 
 @file clint
-@version 2019.07.14
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -618,7 +618,7 @@ def analyze_src(src_file_list: list, filepath: str) -> None:  # noqa: C901,R701 
                 output_info(filepath, line_num, r'', r'MG02', r'Missing Magic-Emacs-Comment `// -*- coding: utf-8-unix; Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-`')
             line_num += 1
             continue
-        elif line_num == 2 + binfmtc_present:  # MG0*: Magic-Vim-Comment
+        if line_num == 2 + binfmtc_present:  # MG0*: Magic-Vim-Comment
             _match = REGEX_VIM.search(line)
             _match2 = REGEX_VIM_VALID.search(line)
             if _match and not _match2:
@@ -629,7 +629,7 @@ def analyze_src(src_file_list: list, filepath: str) -> None:  # noqa: C901,R701 
                 output_info(filepath, line_num, r'', r'MG04', r'Missing Magic-Vim-Comment `// vim: set fileencoding=utf-8 filetype=c syntax=c.doxygen fileformat=unix tabstop=4 :`')
             line_num += 1
             continue
-        elif line_num == 3 + binfmtc_present:  # MG0*: Magic-Kate-Comment
+        if line_num == 3 + binfmtc_present:  # MG0*: Magic-Kate-Comment
             _match = REGEX_KATE.search(line)
             _match2 = REGEX_KATE_VALID.search(line)
             if _match and not _match2:
@@ -654,7 +654,7 @@ def analyze_src(src_file_list: list, filepath: str) -> None:  # noqa: C901,R701 
             inside_multiline_comment = True
             line_num += 1
             continue
-        elif REGEX_COMMENT_MULTILINE_END.search(no_str_line) and r'/*' not in no_str_line:  # End of multiline-comment
+        if REGEX_COMMENT_MULTILINE_END.search(no_str_line) and r'/*' not in no_str_line:  # End of multiline-comment
             inside_multiline_comment = False
             line_num += 1
             continue
