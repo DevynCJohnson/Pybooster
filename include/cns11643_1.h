@@ -4,7 +4,7 @@
 /**
 @brief CNS 11643-1992 (plane 1) character set (Chinese National Standard 11643)
 @file cns11643_1.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,7 +27,7 @@ along with this software.
 */
 
 
-static const UNUSED unsigned short align64 cns11643_1_2uni_page21[500] = {
+static const UNUSED unsigned short cns11643_1_2uni_page21[500] = {
 	0x3000, 0xff0c, 0x3001, 0x3002, 0xff0e, 0x30fb, 0xff1b, 0xff1a,
 	0xff1f, 0xff01, 0xfe30, 0x2026, 0x2025, 0xfe50, 0xfe51, 0xfe52,
 	0x00b7, 0xfe54, 0xfe55, 0xfe56, 0xfe57, 0xfe31, 0x2014, 0xfe32,
@@ -95,7 +95,7 @@ static const UNUSED unsigned short align64 cns11643_1_2uni_page21[500] = {
 };
 
 
-static const UNUSED unsigned short align64 cns11643_1_2uni_page42[34] = {
+static const UNUSED unsigned short cns11643_1_2uni_page42[34] = {
 	0x2400, 0x2401, 0x2402, 0x2403, 0x2404, 0x2405, 0x2406, 0x2407,
 	0x2408, 0x2409, 0x240a, 0x240b, 0x240c, 0x240d, 0x240e, 0x240f,
 	0x2410, 0x2411, 0x2412, 0x2413, 0x2414, 0x2415, 0x2416, 0x2417,
@@ -104,7 +104,7 @@ static const UNUSED unsigned short align64 cns11643_1_2uni_page42[34] = {
 };
 
 
-static const UNUSED unsigned short align64 cns11643_1_2uni_page44[5401] = {
+static const UNUSED unsigned short cns11643_1_2uni_page44[5401] = {
 	0x4e00, 0x4e59, 0x4e01, 0x4e03, 0x4e43, 0x4e5d, 0x4e86, 0x4e8c,
 	0x4eba, 0x513f, 0x5165, 0x516b, 0x51e0, 0x5200, 0x5201, 0x529b,
 	0x5315, 0x5341, 0x535c, 0x53c8, 0x4e09, 0x4e0b, 0x4e08, 0x4e0a,

@@ -4,7 +4,7 @@
 /**
 @brief CJK variants character table
 @file cjk_variants.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -30,7 +30,7 @@ along with this software.
 */
 
 
-static const UNUSED unsigned short align64 cjk_variants[12038] = {
+static const UNUSED unsigned short cjk_variants[12038] = {
 	0x9e44, 0x1e2a, 0x200b, 0xcb87, 0xaf0c, 0x9e0a, 0x9e0b, 0xd42c,
 	0x23c1, 0xaf0e, 0x9e04, 0x9e05, 0xa176, 0xd207, 0x2303, 0xa304,
 	0x1e12, 0x619c, 0xeb57, 0x9e11, 0x2c02, 0xac08, 0x1e17, 0xa34b,
@@ -1539,7 +1539,7 @@ static const UNUSED unsigned short align64 cjk_variants[12038] = {
 };
 
 
-static const UNUSED short align64 cjk_variants_indx[0x5200] = {
+static const UNUSED short cjk_variants_indx[0x5200] = {
 	4, -1, -1, -1, 5, 6, -1, 7,
 	-1, 8, 10, 11, 12, -1, 13, -1,
 	14, 16, 19, 20, -1, -1, 22, 24,

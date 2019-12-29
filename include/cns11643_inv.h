@@ -4,7 +4,7 @@
 /**
 @brief CNS 11643-1992 (planes 1-7 & 15) character set (Chinese National Standard 11643)
 @file cns11643_inv.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,7 +27,7 @@ along with this software.
 */
 
 
-static const UNUSED unsigned char align64 cns11643_inv_2charset[166326] = {
+static const UNUSED unsigned char cns11643_inv_2charset[166326] = {
 	0x1,0x21,0x70, 0x1,0x22,0x78, 0x1,0x22,0x34, 0x1,0x21,0x31,
 	0x1,0x22,0x32, 0x1,0x22,0x33, 0x1,0x25,0x6f, 0x1,0x25,0x6d,
 	0x1,0x25,0x6e, 0x1,0x25,0x70, 0x1,0x25,0x6c, 0x1,0x24,0x75,
@@ -13892,7 +13892,7 @@ static const UNUSED unsigned char align64 cns11643_inv_2charset[166326] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page00[16] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page00[16] = {
 	{ 0, 0x00 }, { 0, 0x00 }, { 0, 0x00 }, { 0, 0x00 },
 	{ 0, 0x00 }, { 0, 0x00 }, { 0, 0x00 }, { 0, 0x00 },
 	{ 0, 0x00 }, { 0, 0x00 }, { 0, 0x80 }, { 1, 0x83 },
@@ -13900,7 +13900,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page00[16] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page02[29] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page02[29] = {
 	{ 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 },
 	{ 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 },
 	{ 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 }, { 6, 0x0000 },
@@ -13912,7 +13912,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page02[29] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page20[44] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page20[44] = {
 	{ 59, 0x0000 }, { 59, 0x3358 }, { 66, 0x0060 }, { 68, 0x4824 },
 	{ 72, 0x0000 }, { 72, 0x0000 }, { 72, 0x0000 }, { 72, 0x0000 },
 	{ 72, 0x0000 }, { 72, 0x0000 }, { 72, 0x1000 }, { 73, 0x0000 },
@@ -13927,7 +13927,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page20[44] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page24[37] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page24[37] = {
 	{ 123, 0xffff }, { 139, 0xffff }, { 155, 0x0002 }, { 156, 0x0000 },
 	{ 156, 0x0000 }, { 156, 0x0000 }, { 156, 0x03ff }, { 166, 0x3ff0 },
 	{ 176, 0x0000 }, { 176, 0x0000 }, { 176, 0x0000 }, { 176, 0x0000 },
@@ -13941,7 +13941,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page24[37] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page30[1787] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page30[1787] = {
 	{ 236, 0xff0f }, { 248, 0x6037 }, { 255, 0x03fe }, { 264, 0x0000 },
 	{ 264, 0x0000 }, { 264, 0x0000 }, { 264, 0x0000 }, { 264, 0x0000 },
 	{ 264, 0x0000 }, { 264, 0x0000 }, { 264, 0x0000 }, { 264, 0x0000 },
@@ -14392,12 +14392,12 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page30[1787] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_pagefa[3] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_pagefa[3] = {
 	{ 24588, 0x0000 }, { 24588, 0x0000 }, { 24588, 0x0100 }
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_pagefe[31] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_pagefe[31] = {
 	{ 24589, 0x0000 }, { 24589, 0x0000 }, { 24589, 0x0000 }, { 24589, 0xffe7 },
 	{ 24603, 0x7e1f }, { 24614, 0xfef7 }, { 24628, 0x0f7f }, { 24639, 0x0000 },
 	{ 24639, 0x0000 }, { 24639, 0x0000 }, { 24639, 0x0000 }, { 24639, 0x0000 },
@@ -14409,7 +14409,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_pagefe[31] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page200[2670] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page200[2670] = {
 	{ 24729, 0x8bbd }, { 24739, 0x0715 }, { 24745, 0x722f }, { 24754, 0x0860 },
 	{ 24757, 0x39ca }, { 24765, 0x08ec }, { 24771, 0xeaf6 }, { 24782, 0xe0d7 },
 	{ 24791, 0xb1fc }, { 24801, 0x5fbc }, { 24812, 0xd33d }, { 24822, 0xf6ff },
@@ -15081,7 +15081,7 @@ static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page200[2670] = {
 };
 
 
-static const UNUSED Summary16 align64 cns11643_inv_uni2indx_page2f8[34] = {
+static const UNUSED Summary16 cns11643_inv_uni2indx_page2f8[34] = {
 	{ 54906, 0xffff }, { 54922, 0xffff }, { 54938, 0xffff }, { 54954, 0xffff },
 	{ 54970, 0xfffe }, { 54985, 0xffff }, { 55001, 0xffff }, { 55017, 0xffff },
 	{ 55033, 0xffff }, { 55049, 0xffef }, { 55064, 0xffff }, { 55080, 0xffff },

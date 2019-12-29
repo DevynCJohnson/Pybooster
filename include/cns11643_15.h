@@ -4,7 +4,7 @@
 /**
 @brief CNS 11643-1992 (plane 15) character set (Chinese National Standard 11643)
 @file cns11643_15.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,7 +27,7 @@ along with this software.
 */
 
 
-static const UNUSED unsigned short align64 cns11643_15_2uni_page21[7169] = {
+static const UNUSED unsigned short cns11643_15_2uni_page21[7169] = {
 	0x5302, 0x538c, 0x53d4, 0x54a5, 0x5392, 0x5393, 0x53d8, 0x53d9,
 	0x54a7, 0x592b, 0x592c, 0x592d, 0x5930, 0x592e, 0x59ab, 0x1a01,
 	0x5c2d, 0x5c6d, 0xfa34, 0x5d0f, 0x52fd, 0x5e9d, 0x64a2, 0x68d4,
@@ -947,7 +947,7 @@ static const UNUSED unsigned short align64 cns11643_15_2uni_page21[7169] = {
 };
 
 
-static const UNUSED ucs4_t align64 cns11643_15_2uni_upages[253] = {
+static const UNUSED ucs4_t cns11643_15_2uni_upages[253] = {
 	0x03400, 0x03500, 0x03600, 0x03700, 0x03800, 0x03900, 0x03a00, 0x03b00,
 	0x03c00, 0x03d00, 0x03e00, 0x03f00, 0x04000, 0x04100, 0x04300, 0x04400,
 	0x04500, 0x04600, 0x04700, 0x04800, 0x04900, 0x04a00, 0x04c00, 0x04f00,

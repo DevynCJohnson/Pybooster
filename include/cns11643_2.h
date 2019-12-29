@@ -4,7 +4,7 @@
 /**
 @brief CNS 11643-1992 (plane 2) character set (Chinese National Standard 11643)
 @file cns11643_2.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,7 +27,7 @@ along with this software.
 */
 
 
-static const UNUSED unsigned short align64 cns11643_2_2uni_page21[7650] = {
+static const UNUSED unsigned short cns11643_2_2uni_page21[7650] = {
 	0x4e42, 0x4e5c, 0x51f5, 0x531a, 0x5382, 0x4e07, 0x4e0c, 0x4e47,
 	0x4e8d, 0x56d7, 0x5c6e, 0x5f73, 0x4e0f, 0x5187, 0x4e0e, 0x4e2e,
 	0x4e93, 0x4ec2, 0x4ec9, 0x4ec8, 0x5198, 0x52fc, 0x536c, 0x53b9,

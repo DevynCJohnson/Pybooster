@@ -1,3 +1,32 @@
+2019-12-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* ./include/*.h:  Removed unneeded alignment attributes
+
+2019-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* build_clang.sh:  Added code for additional versions of Clang
+	* build_clang.sh:  Resolved the `read` Bashism issue
+	* build_package.sh:  Resolved the `read` Bashism issue
+	* clint:  Resolved some unnecessary `elif` statements
+	* color-kit:  Fixed a bug in `conv_yiq()` involving wrong datatype
+	* fix_nvidia.sh:  Made the /`dev/null` code consistent
+	* Foundation.h:  Added the macro `NO_ATOMIC` to disable the use of `atomic` if desired
+	* Foundation.h:  Added the macro `NO_CONST` to disable the use of `const` if desired
+	* Foundation.h:  Added the macro `NO_RESTRICT` to disable the use of `restrict` if desired
+	* generate_ctags.sh:  Added code for additional versions of Clang & fixed some quoting issues
+	* genmathart:  Changed many string-concatenations to F-strings
+	* minifyxml:  Changed many string-concatenations to F-strings
+	* program-analyzer:  Changed many string-concatenations to F-strings & resolved timezone issues
+	* py_directive_checker:  Changed many string-concatenations to F-strings & rearranged the code
+	* PyBooster:  Made the `@LICENSE` section in some Python scripts consistent with the other scripts
+	* pydocgtk:  Changed many string-concatenations to F-strings
+	* secure_system.sh:  Added code for setting up UFW
+	* test_dev.c:  Fixed an undefined name issue
+	* test_dev.c:  Resolved a typing issue
+	* armscii.h:  Removed unneeded alignment attributes
+	* math_tables.h:  Removed unneeded alignment attributes
+	* rune_tables.h:  Removed unneeded alignment attributes
+
 2019-12-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Removed unneeded `list` commands

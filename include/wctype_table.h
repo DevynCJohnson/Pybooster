@@ -4,7 +4,7 @@
 /**
 @brief Wide-char character set
 @file wctype_table.h
-@version 2019.03.28
+@version 2019.12.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -28,7 +28,7 @@ along with this software.
 
 
 /** Unicode CType Table */
-static const UNUSED unsigned short align64 wctype_table[17152] = {
+static const UNUSED unsigned short wctype_table[17152] = {
 	// Offsets
 	0x0100U, 0x0200U, 0x0300U, 0x0400U, 0x0500U, 0x0600U, 0x0700U, 0x0800U,
 	0x0900U, 0x0a00U, 0x0b00U, 0x0c00U, 0x0d00U, 0x0e00U, 0x0f00U, 0x1000U,
