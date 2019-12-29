@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2019.10.27
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -638,17 +638,17 @@ def conv_cmyk(entry_widget: Gtk.Entry) -> None:
 
 def conv_yiq(entry_widget: Gtk.Entry) -> None:
     """Convert YIQ to one of many formats."""
-    _yiq: str = entry_widget.get_text()
-    _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq))
-    _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq))
-    _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq))
+    _yiq_entry: str = entry_widget.get_text()
+    _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq_entry))
+    _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq_entry))
+    _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq_entry))
     # Conversions
     _rgb: tuple = yiq2rgb(_y, _i, _q, False)
     _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
     _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
     _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
     # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+    fillentry(_cmyk, _hsi, _hsv, _rgb, (_y, _i, _q))
 
 
 # MAIN #
