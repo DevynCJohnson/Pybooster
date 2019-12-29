@@ -7789,6 +7789,18 @@ Compile-time assertion */
 /** @} */  // }
 
 
+// CONST KEYWORD
+
+/** @defgroup Const_Keyword Macros pertaining to the `const` keyword
+@{ */  // (FB){
+
+#ifdef NO_CONST
+#   define const
+#endif
+
+/** @} */  // }
+
+
 // RESTRICT TYPE QUALIFIER KEYWORD
 
 /** @defgroup Restrict_Keyword Macros pertaining to the `restrict` keyword
