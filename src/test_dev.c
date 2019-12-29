@@ -4,7 +4,7 @@
 /**
 @brief Test code used in MACROS*.h
 @file test_dev.c
-@version 2019.11.23
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -218,7 +218,7 @@ static void test_code(const long long input_num) {
 	putsnl();
 	// Test isprime()
 	puts_no_output("* Test isprime() & puti(); Expect - `0` or `1` *");
-	const int bool_prime = islonglongprime(input_num);
+	const int bool_prime = isprime(input_num);
 	puti(bool_prime);
 	putsnl();
 	// Test putchar()
