@@ -9,7 +9,13 @@
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
-if [ -x "$(command -v clang-9.0)" ]; then
+if [ -x "$(command -v clang-12)" ]; then
+    CLANG_VERSION=12
+elif [ -x "$(command -v clang-11)" ]; then
+    CLANG_VERSION=11
+elif [ -x "$(command -v clang-10)" ]; then
+    CLANG_VERSION=10
+elif [ -x "$(command -v clang-9.0)" ]; then
     CLANG_VERSION=9.0
 elif [ -x "$(command -v clang-9)" ]; then
     CLANG_VERSION=9
