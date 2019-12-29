@@ -295,12 +295,12 @@ static void test_printf(const long long input_num) {
 	const ptrdiff_t ptrdiff_t_num = (ptrdiff_t)-257;
 	const uintmax_t uintmax_t_num = (uintmax_t)511;
 	const intmax_t intmax_t_num = (intmax_t)-511;
-	const int bool_prime = islonglongprime(input_num);
+	const int bool_prime = isprime(input_num);
 	char test_string[25] = { 'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 'c', 'h', 'a', 'r', '[', ']', ' ', 's', 't', 'r', 'i', 'n', 'g', '.', '\0' };
 	const char* test_const_string = "This is a const char* string.";
 	// Tests
 	puts_no_output("* Test %llu & %d; Expect - `Is argv[1] prime = #` *");
-	printf_status = printf("Is %llu prime = %d\n", (unsigned long long)input_num, bool_prime);
+	printf_status = printf("Is %llu prime = %d\n", (unsigned long long int)input_num, bool_prime);
 	puts_no_output("\t- Printf() exit status (should be between 15 & 17):");
 	puti(printf_status);
 	putsnl();
