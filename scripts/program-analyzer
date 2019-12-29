@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2019.10.27
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,7 @@ along with this software.
 # pylint: disable=C0103,R0912,R0915
 
 
-from datetime import datetime
+from datetime import datetime, timezone
 from multiprocessing import cpu_count, Pool
 from os import R_OK, access as fileaccess, stat
 from os.path import (
@@ -1491,6 +1491,12 @@ STATUS_FINISHED: Tuple[int, str] = (4, r'Finished opening and analyzing')
 STATUS_WRITING: Tuple[int, str] = (5, r'Writing saved data')
 
 
+# TIMEZONE #
+
+
+TIMEZONE = datetime.now(timezone.utc).tzinfo
+
+
 # CLASSES #
 
 
@@ -2096,11 +2102,11 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
     if DataTable.use_ndisasm == -1:
         return STATUS_UNSUPPORTED_FILETYPE
     if _prefix == r'arm':
-        DataTable.nm_cmd = _prefix + r'-linux-gnueabi-nm'
-        DataTable.objdump_cmd = _prefix + r'-linux-gnueabi-objdump'
-        DataTable.readelf_cmd = _prefix + r'-linux-gnueabi-readelf'
-        DataTable.size_cmd = _prefix + r'-linux-gnueabi-size'
-        DataTable.strings_cmd = _prefix + r'-linux-gnueabi-strings'
+        DataTable.nm_cmd = fr'{_prefix}-linux-gnueabi-nm'
+        DataTable.objdump_cmd = fr'{_prefix}-linux-gnueabi-objdump'
+        DataTable.readelf_cmd = fr'{_prefix}-linux-gnueabi-readelf'
+        DataTable.size_cmd = fr'{_prefix}-linux-gnueabi-size'
+        DataTable.strings_cmd = fr'{_prefix}-linux-gnueabi-strings'
         return (37, r'')
     if r'pe32' in _magic or r'windows' in _magic or r'application/x-dosexec' in _magic:
         if _bits == r'64':
@@ -2124,11 +2130,11 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
             DataTable.strings_cmd = r'i686-w64-mingw32-strings'
             return (37, r'')
         return STATUS_UNSUPPORTED_FILETYPE
-    DataTable.nm_cmd = _prefix + r'-linux-gnu-nm'
-    DataTable.objdump_cmd = _prefix + r'-linux-gnu-objdump'
-    DataTable.readelf_cmd = _prefix + r'-linux-gnu-readelf'
-    DataTable.size_cmd = _prefix + r'-linux-gnu-size'
-    DataTable.strings_cmd = _prefix + r'-linux-gnu-strings'
+    DataTable.nm_cmd = fr'{_prefix}-linux-gnu-nm'
+    DataTable.objdump_cmd = fr'{_prefix}-linux-gnu-objdump'
+    DataTable.readelf_cmd = fr'{_prefix}-linux-gnu-readelf'
+    DataTable.size_cmd = fr'{_prefix}-linux-gnu-size'
+    DataTable.strings_cmd = fr'{_prefix}-linux-gnu-strings'
     return (37, r'')
 
 
@@ -2141,23 +2147,23 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
     with Pool(poolsize) as threadpool:
         try:
             outbuf = threadpool.starmap(analyze_binary, [
-                (DataTable.objdump_cmd + r' --line-numbers --special-syms --syms ' + _file, r'OBJDUMP_SYMBOLS'),
-                (DataTable.objdump_cmd + r' --line-numbers --dynamic-syms --special-syms ' + _file, r'OBJDUMP_DYNAMIC_SYMBOLS'),
-                (DataTable.nm_cmd + r' --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic ' + _file, r'NM_SYMBOLS'),
-                (DataTable.objdump_cmd + r' --dynamic-reloc --line-numbers ' + _file, r'OBJDUMP_DYNAMIC_RELOCATION'),
-                (r'ndisasm -b ' + _bits + r' ' + _file, r'OBJDUMP_DISASSEMBLE', DataTable.use_ndisasm),
-                (DataTable.objdump_cmd + r' --disassemble --disassembler-options=intel --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_INTEL'),
-                (DataTable.objdump_cmd + r' --disassemble --disassembler-options=att --show-raw-insn --source ' + _file, r'OBJDUMP_DISASSEMBLE_ATT'),
-                (DataTable.readelf_cmd + r' --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide ' + _file, r'READELF'),
-                (DataTable.objdump_cmd + r' --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide ' + _file, r'OBJDUMP_HEADERS'),
+                (fr'{DataTable.objdump_cmd} --line-numbers --special-syms --syms {_file}', r'OBJDUMP_SYMBOLS'),
+                (fr'{DataTable.objdump_cmd} --line-numbers --dynamic-syms --special-syms {_file}', r'OBJDUMP_DYNAMIC_SYMBOLS'),
+                (fr'{DataTable.nm_cmd} --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic {_file}', r'NM_SYMBOLS'),
+                (fr'{DataTable.objdump_cmd} --dynamic-reloc --line-numbers {_file}', r'OBJDUMP_DYNAMIC_RELOCATION'),
+                (fr'ndisasm -b {_bits} {_file}', r'OBJDUMP_DISASSEMBLE', DataTable.use_ndisasm),
+                (fr'{DataTable.objdump_cmd} --disassemble --disassembler-options=intel --show-raw-insn --source {_file}', r'OBJDUMP_DISASSEMBLE_INTEL'),
+                (fr'{DataTable.objdump_cmd} --disassemble --disassembler-options=att --show-raw-insn --source {_file}', r'OBJDUMP_DISASSEMBLE_ATT'),
+                (fr'{DataTable.readelf_cmd} --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide {_file}', r'READELF'),
+                (fr'{DataTable.objdump_cmd} --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide {_file}', r'OBJDUMP_HEADERS'),
                 (DataTable.ldd_cmd + _file, r'OBJECT_DEPENDENCIES'),
                 (DataTable.ldd_unused_cmd + _file, r'UNUSED_DEPENDENCIES'),
-                (DataTable.strings_cmd + r' --all ' + _file, r'STRINGS'),
-                (DataTable.nm_cmd + r' --debug-syms --defined-only --dynamic --special-syms "' + _file + r'"', r'NM_DEFINED', DataTable),
-                (DataTable.size_cmd + r' --format=Berkeley ' + _file, r'BINSIZE1'),
-                (DataTable.size_cmd + r' --format=SysV ' + _file, r'BINSIZE2'),
-                (_filecmd + r' --preserve-date ' + _file, r'FILE_DATA1'),
-                (_filecmd + r' --mime --preserve-date ' + _file, r'FILE_DATA2'),
+                (fr'{DataTable.strings_cmd} --all {_file}', r'STRINGS'),
+                (fr'{DataTable.nm_cmd} --debug-syms --defined-only --dynamic --special-syms "{_file}"', r'NM_DEFINED', DataTable),
+                (fr'{DataTable.size_cmd} --format=Berkeley {_file}', r'BINSIZE1'),
+                (fr'{DataTable.size_cmd} --format=SysV {_file}', r'BINSIZE2'),
+                (fr'{_filecmd} --preserve-date {_file}', r'FILE_DATA1'),
+                (fr'{_filecmd} --mime --preserve-date {_file}', r'FILE_DATA2'),
                 (DataTable.ldconfig_cmd, r'LDCONFIG')
             ])
             DataTable.objdump_symbols = outbuf[0]
@@ -2169,7 +2175,7 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
             DataTable.objdump_disassemble_att = outbuf[6] + '\n'
             DataTable.readelf_all = outbuf[7] + '\n'
             DataTable.objdump_headers = outbuf[8]
-            DataTable.object_dependencies = outbuf[9] + '\n\n** Unused Dependencies **\n' + outbuf[10]
+            DataTable.object_dependencies = f'{outbuf[9]}\n\n** Unused Dependencies **\n{outbuf[10]}'
             if outbuf[11]:
                 _tmp: list = outbuf[11].split('\n')
                 _tmp.sort()
@@ -2202,28 +2208,28 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
 def file_properties(_file: str) -> str:
     """Gather and display file properties in `File Properties` tab."""
     _stat = stat(_file, follow_symlinks=False)
-    _atime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_atime)))
-    _mtime = datetime.fromtimestamp(int(r'{:.0f}'.format(_stat.st_mtime)))
+    _atime = datetime.fromtimestamp(int(fr'{_stat.st_atime:.0f}'), tz=TIMEZONE)
+    _mtime = datetime.fromtimestamp(int(fr'{_stat.st_mtime:.0f}'), tz=TIMEZONE)
     _perm: str = oct(_stat.st_mode)[-3:]
-    properties_str_buf: str = r'Mimetype: ' + NONE_MAGIC.file(_file) + '\nCharacter Set: ' + MIME_ENCODING.file(_file) + '\nIs link?: ' + str(islink(_file)) + '\nFile size (bytes): ' + str(_stat.st_size) + '\nInode Number: ' + str(_stat.st_ino) + '\nLast accessed: ' + str(_atime) + '\nLast modified: ' + str(_mtime) + '\nOwner UID: ' + str(_stat.st_uid) + '\nOwner GID: ' + str(_stat.st_gid) + '\nPermissions: ' + _perm + '\numask (symbolic): ' + convumask(list(_perm))
+    properties_str_buf: str = f'Mimetype: {NONE_MAGIC.file(_file)}\nCharacter Set: {MIME_ENCODING.file(_file)}\nIs link?: {islink(_file)}\nFile size (bytes): {_stat.st_size}\nInode Number: {_stat.st_ino}\nLast accessed: {_atime}\nLast modified: {_mtime}\nOwner UID: {_stat.st_uid}\nOwner GID: {_stat.st_gid}\nPermissions: {_perm}\numask (symbolic): {convumask(list(_perm))}'
     # Count Assembly Instructions
     if DataTable.is_insn_count_available:
         properties_str_buf += '\n\n\n* INSTRUCTION COUNT *\n\n'
-        properties_str_buf += getoutput(r'insn_count -c ' + _file) + '\n\n\n'
-        properties_str_buf += getoutput(r'insn_count -m ' + _file) + '\n'
+        properties_str_buf += getoutput(fr'insn_count -c {_file}') + '\n\n\n'
+        properties_str_buf += getoutput(fr'insn_count -m {_file}') + '\n'
     # Get Checksums
     properties_str_buf += '\n\n\n* CHECKSUMS *\n\n'
     if DataTable.is_sha256sum_available:
         _tmp: str = getoutput(DataTable.sha256sum_cmd + _file).split(r' = ')[1]
-        properties_str_buf += r'SHA256: ' + _tmp.strip() + '\n'
+        properties_str_buf += f'SHA256: {_tmp.strip()}\n'
     else:
         properties_str_buf += r'Install the command `sha256sum` to support this feature'
     if DataTable.is_sha512sum_available:
         _tmp = getoutput(DataTable.sha512sum_cmd + _file).split(r' = ')[1]
-        properties_str_buf += r'SHA512: ' + _tmp.strip() + '\n'
+        properties_str_buf += f'SHA512: {_tmp.strip()}\n\n'
     else:
-        properties_str_buf += r'Install the command `sha512sum` to support this feature'
-    return properties_str_buf + '\n'
+        properties_str_buf += 'Install the command `sha512sum` to support this feature\n'
+    return properties_str_buf
 
 
 # MAIN #
@@ -2238,7 +2244,7 @@ if __name__ == '__main__':
         DataTable.bin_file = argv[1]
         if DataTable.bin_file == r'' or DataTable.bin_file is None:
             raise Exception(r'NULL PATHNAME GIVEN!')
-        if not pathexists(DataTable.bin_file) or not isfile(DataTable.bin_file):
+        if not (pathexists(DataTable.bin_file) and isfile(DataTable.bin_file)):
             raise FileNotFoundError
         if isdir(DataTable.bin_file):
             raise IsADirectoryError
