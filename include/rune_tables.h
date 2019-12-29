@@ -4,7 +4,7 @@
 /**
 @brief RUNE character set
 @file rune_tables.h
-@version 2019.03.28
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -28,7 +28,7 @@ along with this software.
 
 
 /** Alpha ranges; Only covers ranges not in lower||upper */
-static const UNUSED Rune align64 _alpha2[320] = {
+static const UNUSED Rune _alpha2[320] = {
 	0xd8, 0xf6,  // Ø - ö
 	0xf8, 0x1f5,  // ø - ǵ
 	0x250, 0x2a8,  // ɐ - ʨ
@@ -185,7 +185,7 @@ static const UNUSED Rune align64 _alpha2[320] = {
 
 
 /** Alpha singlets; Only covers ranges not in lower||upper */
-static const UNUSED Rune align64 _alpha1[32] = {
+static const UNUSED Rune _alpha1[32] = {
 	0xaa,  // ª
 	0xb5,  // µ
 	0xba,  // º
@@ -222,7 +222,7 @@ static const UNUSED Rune align64 _alpha1[32] = {
 
 
 /** Space ranges */
-static const UNUSED Rune align64 _space2[16] = {
+static const UNUSED Rune _space2[16] = {
 	9, 0xa,  // tab and newline
 	0x20, 0x20,  // space
 	0xa0, 0xa0,
@@ -234,7 +234,7 @@ static const UNUSED Rune align64 _space2[16] = {
 
 
 /** Lower case ranges; 3rd col is conversion excess 500 */
-static const UNUSED Rune align64 _toupper2[128] = {
+static const UNUSED Rune _toupper2[128] = {
 	0x61, 0x7a, 468,  // a-z A-Z
 	0xe0, 0xf6, 468,  // à-ö À-Ö
 	0xf8, 0xfe, 468,  // ø-þ Ø-Þ
@@ -274,7 +274,7 @@ static const UNUSED Rune align64 _toupper2[128] = {
 
 
 /** Lower case singlets; 2nd col is conversion excess 500 */
-static const UNUSED Rune align64 _toupper1[768] = {
+static const UNUSED Rune _toupper1[768] = {
 	0xff, 621,  // ÿ Ÿ
 	0x101, 499,  // ā Ā
 	0x103, 499,  // ă Ă
@@ -619,7 +619,7 @@ static const UNUSED Rune align64 _toupper1[768] = {
 
 
 /** Upper case ranges; 3rd col is conversion excess 500 */
-static const UNUSED Rune align64 _tolower2[128] = {
+static const UNUSED Rune _tolower2[128] = {
 	0x41, 0x5a, 532,  // A-Z a-z
 	0xc0, 0xd6, 532,  // À-Ö à-ö
 	0xd8, 0xde, 532,  // Ø-Þ ø-þ
@@ -660,7 +660,7 @@ static const UNUSED Rune align64 _tolower2[128] = {
 
 
 /** Upper case singlets; 2nd col is conversion excess 500 */
-static const UNUSED Rune align64 _tolower1[768] = {
+static const UNUSED Rune _tolower1[768] = {
 	0x100, 501,  // Ā ā
 	0x102, 501,  // Ă ă
 	0x104, 501,  // Ą ą
@@ -998,7 +998,7 @@ static const UNUSED Rune align64 _tolower1[768] = {
 
 
 /** Title characters are those between upper and lower case */
-static const UNUSED Rune align64 _totitle1[16] = {
+static const UNUSED Rune _totitle1[16] = {
 	0x1c4, 501,  // Ǆ ǅ
 	0x1c6, 499,  // ǆ ǅ
 	0x1c7, 501,  // Ǉ ǈ

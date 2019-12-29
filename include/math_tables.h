@@ -4,7 +4,7 @@
 /**
 @brief Constant tables for math functions
 @file math_tables.h
-@version 2019.03.28
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -27,7 +27,7 @@ along with this software.
 */
 
 
-static const UNUSED float align64 expf_half[2] = { 0.5F, -0.5F };
+static const UNUSED float expf_half[2] = { 0.5F, -0.5F };
 
 
 static const UNUSED double exp2f_exp2ft[16] = {
@@ -42,7 +42,7 @@ static const UNUSED double exp2f_exp2ft[16] = {
 };
 
 
-static const UNUSED float align64 __exp_deltatable[178] = {
+static const UNUSED float __exp_deltatable[178] = {
 	0.0F * 8.67361738E-19F, 16558714.0F * 8.67361738E-19F, -10672149.0F * 1.73472348E-18F, 1441652.0F * 8.67361738E-19F,
 	-15787963.0F * 2.77555756E-17F, 462888.0F * 8.67361738E-19F, 7291806.0F * 8.67361738E-19F, 1698880.0F * 8.67361738E-19F,
 	-14375103.0F * 3.46944695E-18F, -2021016.0F * 8.67361738E-19F, 728829.0F * 8.67361738E-19F, -3759654.0F * 8.67361738E-19F,
@@ -91,7 +91,7 @@ static const UNUSED float align64 __exp_deltatable[178] = {
 };
 
 
-static const UNUSED float align64 __exp2f_atable[256]  = {
+static const UNUSED float __exp2f_atable[256]  = {
 	0.707106411447F, 0.709024071690F, 0.710945606239F,
 	0.712874472142F, 0.714806139464F, 0.716744661340F,
 	0.718687653549F, 0.720636486992F, 0.722590208040F,
@@ -181,7 +181,7 @@ static const UNUSED float align64 __exp2f_atable[256]  = {
 };
 
 
-static const UNUSED float align64 __exp2f_deltatable[256] = {
+static const UNUSED float __exp2f_deltatable[256] = {
 	-810 * 9.31322575E-10F, 283 * 9.31322575E-10F, -1514 * 9.31322575E-10F, 1304 * 9.31322575E-10F,
 	-1148 * 9.31322575E-10F, -98 * 9.31322575E-10F, -744 * 9.31322575E-10F, -156 * 9.31322575E-10F,
 	-419 * 9.31322575E-10F, -155 * 9.31322575E-10F, 474 * 9.31322575E-10F, 167 * 9.31322575E-10F,
@@ -250,7 +250,7 @@ static const UNUSED float align64 __exp2f_deltatable[256] = {
 
 
 #define SDL   (1.0F / 4503599627370496.0F)
-static const UNUSED float align64 exp2_deltatable[512] = {
+static const UNUSED float exp2_deltatable[512] = {
 	11527 * SDL, -963 * SDL, 884 * SDL, -781 * SDL, -2363 * SDL, -3441 * SDL, 123 * SDL, 526 * SDL,
 	-6 * SDL, 1254 * SDL, -1138 * SDL, 1519 * SDL, 1576 * SDL, -65 * SDL, 1040 * SDL, 793 * SDL,
 	-1662 * SDL, -5063 * SDL, -387 * SDL, 968 * SDL, -941 * SDL, 984 * SDL, -2856 * SDL, -545 * SDL,
@@ -556,7 +556,7 @@ static const UNUSED float qonef_qs2[6] = {
 static const UNUSED double exp_half[2] = { 0.5, -0.5 };
 
 
-static const UNUSED double align64 exp2_tbl[512] = {
+static const UNUSED double exp2_tbl[512] = {
 	0x1.6a09e667f3d5dP-1, 0x1.9880P-44, 0x1.6b052fa751744P-1, 0x1.8000P-50,
 	0x1.6c012750bd9feP-1, -0x1.8780P-45, 0x1.6cfdcddd476bfP-1, 0x1.ec00P-46,
 	0x1.6dfb23c651a29P-1, -0x1.8000P-50, 0x1.6ef9298593ae3P-1, -0x1.c000P-52,
@@ -688,7 +688,7 @@ static const UNUSED double align64 exp2_tbl[512] = {
 };
 
 
-static const UNUSED double align64 __exp_atable[355]  = {
+static const UNUSED double __exp_atable[355]  = {
 	0.707722561055888932371, 0.709106182438804188967,
 	0.710492508843861281234, 0.711881545564593931623,
 	0.713273297897442870573, 0.714667771153751463236,
@@ -870,7 +870,7 @@ static const UNUSED double align64 __exp_atable[355]  = {
 };
 
 
-static const UNUSED double align64 exp2_accuratetable[512] = {
+static const UNUSED double exp2_accuratetable[512] = {
 	0.707106781187802013759, 0.708064712808760599040,
 	0.709023942160304065938, 0.709984470998547667624,
 	0.710946301084324217006, 0.711909434180505784637,
@@ -1407,7 +1407,7 @@ static const UNUSED double gauss_tab3[8] = { 1.0, -1.0, 3.0, -15.0, 105.0, -945.
 #if LDBL_EQ_FLOAT128
 
 
-static const UNUSED long double align64 __expl_table[933] = {
+static const UNUSED long double __expl_table[933] = {
 #   define T_EXPL_ARG1   178
 #   define T_EXPL_ARG2   488
 #   define T_EXPL_RES1   709
@@ -2345,7 +2345,7 @@ static const UNUSED long double align64 __expl_table[933] = {
 };
 
 
-static const UNUSED long double align64 exp2l_tbl[0x80] = {
+static const UNUSED long double exp2l_tbl[0x80] = {
 	0x1.6a09e667f3bcc908b2fb1366dfeaP-1L, 0x1.6c012750bdabeed76a99800f4edeP-1L,
 	0x1.6dfb23c651a2ef220e2cbe1bc0d4P-1L, 0x1.6ff7df9519483cf87e1b4f3e1e98P-1L,
 	0x1.71f75e8ec5f73dd2370f2ef0b148P-1L, 0x1.73f9a48a58173bd5c9a4e68ab074P-1L,
@@ -2413,7 +2413,7 @@ static const UNUSED long double align64 exp2l_tbl[0x80] = {
 };
 
 
-static const UNUSED float align64 exp2l_eps[0x80] = {
+static const UNUSED float exp2l_eps[0x80] = {
 	-0x1.5c50P-101, -0x1.5d00P-106, 0x1.8e90P-102, -0x1.5340P-103,
 	0x1.1bd0P-102, -0x1.4600P-105, -0x1.7a40P-104, 0x1.d590P-102,
 	-0x1.d590P-101, 0x1.b100P-103, -0x1.0d80P-105, 0x1.6b00P-103,
@@ -2652,7 +2652,7 @@ static const UNUSED long double log10l_S[6] = {
 };
 
 
-static const UNUSED long double align64 __sincosl_table[332] = {
+static const UNUSED long double __sincosl_table[332] = {
 	9.89003367927322909016887196069562069E-1L, 2.15663692029265697782289400027743703E-35L,
 	1.47892995873409608580026675734609314E-1L, 9.74950446464233268291647449768590886E-36L,
 	9.87817783816471944100503034363211317E-1L, 4.74271307836705897892468107620526395E-35L,
@@ -3486,7 +3486,7 @@ static const UNUSED long double Y0_2D_y1l[8] = {
 #elif IS_LDBL_X87
 
 
-static const UNUSED double align64 exp2l_tbl[0x100] = {
+static const UNUSED double exp2l_tbl[0x100] = {
 	0x1.6a09e667f3bcdP-1, -0x1.bdd3413b2648P-55,
 	0x1.6c012750bdabfP-1, -0x1.2895667ff0cP-57,
 	0x1.6dfb23c651a2fP-1, -0x1.bbe3a683c88P-58,
@@ -4053,7 +4053,7 @@ static const UNUSED long double qonel_qs2[7] = {
 #if (!LDBL_EQ_DBL)
 
 
-static const UNUSED long double align64 exp10l_p10[32] = {
+static const UNUSED long double exp10l_p10[32] = {
 	1.0E-15L, 1.0E-14L, 1.0E-13L, 1.0E-12L, 1.0E-11L, 1.0E-10L,
 	1.0E-9L, 1.0E-8L, 1.0E-7L, 1.0E-6L, 1.0E-5L, 1.0E-4L, 1.0E-3L, 1.0E-2L, 1.0E-1L,
 	1.0, 1.0E+1, 1.0E+2, 1.0E+3, 1.0E+4, 1.0E+5, 1.0E+6, 1.0E+7, 1.0E+8, 1.0E+9,
