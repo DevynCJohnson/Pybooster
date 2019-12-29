@@ -5,7 +5,7 @@
 """@brief View Python Documentation in a Window.
 
 @file pydocgtk
-@version 2019.07.14
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -97,7 +97,7 @@ class ErrorDuringImport(Exception):
 
     def __str__(self):
         """Initialize the exception string."""
-        return r'Problem in {0} - {1}: {2}'.format(self.filename, repr(self.exc.__name__), self.value)
+        return fr'Problem in {self.filename} - {repr(self.exc.__name__)}: {self.value}'
 
 
 # DATA-RETRIEVING FUNCTIONS #
@@ -108,13 +108,13 @@ def getobjfile(_object: Any) -> str:  # noqa: C901,R701
     if isinstance(_object, ModuleType):
         if hasattr(_object, r'__file__'):
             return _object.__file__
-        raise TypeError(r'{!r} is a built-in module'.format(_object))
+        raise TypeError(fr'{repr(_object)} is a built-in module')
     if isinstance(_object, type):
         if hasattr(_object, r'__module__'):
             _object = modules.get(_object.__module__)
             if hasattr(_object, r'__file__'):
                 return _object.__file__
-        raise TypeError(r'{!r} is a built-in class'.format(_object))
+        raise TypeError(fr'{repr(_object)} is a built-in class')
     if isinstance(_object, MethodType):
         _object = _object.__func__
     if isinstance(_object, FunctionType):
@@ -125,7 +125,7 @@ def getobjfile(_object: Any) -> str:  # noqa: C901,R701
         _object = _object.f_code
     if isinstance(_object, CodeType):
         return _object.co_filename
-    raise TypeError(r'{!r} is not a module, class, method, function, traceback, frame, or code object'.format(_object))
+    raise TypeError(fr'{repr(_object)} is not a module, class, method, function, traceback, frame, or code object')
 
 
 def getabsfile(_object: object, _filename: Optional[str] = None) -> str:
@@ -184,7 +184,7 @@ def getsourcefile(_object: object) -> Optional[str]:
     """Return the filename that can be used to locate an object's source; Return None if the source cannot be found."""
     filename: str = getobjfile(_object)
     if filename.endswith(r'.pyc'):
-        filename = (splitext(filename)[0] + r'.py')
+        filename = fr'{splitext(filename)[0]}.py'
     elif any(filename.endswith(s) for s in EXTENSION_SUFFIXES):
         return None
     if exists(filename):
@@ -513,8 +513,8 @@ if __name__ == '__main__':
     try:
         show_help(getdoc(resolve(INPUT)[0]))
     except ImportError:
-        show_help(r'No Python documentation found for `' + INPUT + r'`.')
+        show_help(fr'No Python documentation found for `{INPUT}`.')
     except BaseException:
-        show_help('An error occurred.\nNo Python documentation found for `' + INPUT + r'`.')
+        show_help(f'An error occurred.\nNo Python documentation found for `{INPUT}`.')
         raise SystemExit(1)
     raise SystemExit(0)
