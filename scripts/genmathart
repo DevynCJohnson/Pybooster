@@ -5,7 +5,7 @@
 """@brief Generate art using math and export as PNG files or math formulas.
 
 @file genmathart
-@version 2019.07.14
+@version 2019.12.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -162,7 +162,7 @@ class Acos:
 
     def __str__(self) -> str:
         """Get string representation of arccosine."""
-        return r'acos(clamp(' + str(self.num) + r'*' + str(self.arg) + r'))'
+        return fr'acos(clamp({self.num}*{self.arg}))'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate arccosine."""
@@ -179,7 +179,7 @@ class Atan:
 
     def __str__(self) -> str:
         """Get string representation of arctangent."""
-        return r'atan(' + str(self.num) + r'*' + str(self.arg) + r')'
+        return fr'atan({self.num}*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate arctangent."""
@@ -195,7 +195,7 @@ class Cos:
 
     def __str__(self) -> str:
         """Get string representation of cosine."""
-        return r'cos(pi*' + str(self.arg) + r')'
+        return fr'cos(pi*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate cosine."""
@@ -211,7 +211,7 @@ class Csc:
 
     def __str__(self) -> str:
         """Get string representation of cosecant."""
-        return r'csc(pi*' + str(self.arg) + r')'
+        return fr'csc(pi*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate cosecant."""
@@ -227,7 +227,7 @@ class Cvc:
 
     def __str__(self) -> str:
         """Get string representation of covercosine."""
-        return r'cvc(pi*' + str(self.arg) + r')'
+        return fr'cvc(pi*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate covercosine."""
@@ -243,7 +243,7 @@ class Hvc:
 
     def __str__(self) -> str:
         """Get string representation of havercosine."""
-        return r'hvc(pi*' + str(self.arg) + r')'
+        return fr'hvc(pi*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate havercosine."""
@@ -261,7 +261,7 @@ class Log1P:
 
     def __str__(self) -> str:
         """Get string representation of log1p."""
-        return r'log1p(max(' + str(self.num) + r'*' + str(self.arg) + r', ' + str(self.num2) + r'))'
+        return fr'log1p(max({self.num}*{self.arg}, {self.num2}))'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate log1p."""
@@ -278,7 +278,7 @@ class Phi:
 
     def __str__(self) -> str:
         """Get string representation of phi."""
-        return r'phi(' + str(self.num) + r'*' + str(self.arg) + r')'
+        return fr'phi({self.num}*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate phi."""
@@ -294,7 +294,7 @@ class Sec:
 
     def __str__(self) -> str:
         """Get string representation of secant."""
-        return r'sec(tau*' + str(self.arg) + r')'
+        return fr'sec(tau*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate secant."""
@@ -310,7 +310,7 @@ class Sin:
 
     def __str__(self) -> str:
         """Get string representation of sine."""
-        return r'sin(pi*' + str(self.arg) + r')'
+        return fr'sin(pi*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate sine."""
@@ -327,7 +327,7 @@ class Tan:
 
     def __str__(self) -> str:
         """Get string representation of tangent."""
-        return r'tan(' + str(self.num) + r'*' + str(self.arg) + r')'
+        return fr'tan({self.num}*{self.arg})'
 
     def eval(self, x_var: float, y_var: float) -> float:  # noqa: A003
         """Evaluate tangent."""
@@ -503,7 +503,7 @@ def calc_image(imgformat: str, imgwidth: int, outdir: str, img_or_math: int) -> 
         image.save(outdir + r'image_' + image_name + imgformatfext(imgformat), format=imgformat)
     # Art formula buffer
     if img_or_math >= 0:
-        return r'[image_' + image_name + ']\nRed=' + str(red) + '\nRedCode=' + datadump(red) + '\nGreen=' + str(green) + '\nGreenCode=' + datadump(green) + '\nBlue=' + str(blue) + '\nBlueCode=' + datadump(blue) + '\n\n'
+        return f'[image_{image_name}]\nRed={red}\nRedCode={datadump(red)}\nGreen={green}\nGreenCode={datadump(green)}\nBlue={blue}\nBlueCode={datadump(blue)}\n\n'
     return r''
 
 
@@ -557,10 +557,10 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
     """Generate one or more random PNG images of psychedelic art."""
     # Error Checking
     if not exists(outdir) or not isdir(outdir):
-        stderr.write(outdir + ': The specified directory is non-readable or non-existent!\n')
+        stderr.write(f'{outdir}: The specified directory is non-readable or non-existent!\n')
         raise SystemExit(1)
     if num_imgs < 1:
-        stderr.write(outdir + ': The specified number of images is less than one!\n')
+        stderr.write(f'{outdir}: The specified number of images is less than one!\n')
         raise SystemExit(1)
     # Create image using parallel processing
     poolsize: int = cpu_count()
@@ -581,7 +581,7 @@ def generate_image(num_imgs: int = 1, imgformat: str = r'PNG', imgwidth: int = 6
             outputbuf += strbuf
         if outputbuf:
             fname = strftime(r'%m%d%H%M%S')
-            with open(outdir + fname + r'.maf', mode=r'wt', encoding=r'utf-8') as maf_file:
+            with open(fr'{outdir}{fname}.maf', mode=r'wt', encoding=r'utf-8') as maf_file:
                 maf_file.write(outputbuf)
 
 
@@ -589,10 +589,10 @@ def generate_fractal(fract_type: int = 0, num_imgs: int = 1, _iters: int = 1024,
     """Generate one or more random fractal images."""
     # Error checking
     if not exists(outdir) or not isdir(outdir):
-        stderr.write(outdir + ': The specified directory is non-readable or non-existent!\n')
+        stderr.write(f'{outdir}: The specified directory is non-readable or non-existent!\n')
         raise SystemExit(1)
     if num_imgs < 1:
-        stderr.write(outdir + ': The specified number of images is less than one!\n')
+        stderr.write(f'{outdir}: The specified number of images is less than one!\n')
         raise SystemExit(1)
     # Create image using parallel processing
     poolsize: int = cpu_count()
@@ -614,7 +614,7 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
         stderr.write(r'The given list is empty!\n')
         raise SystemExit(1)
     if not exists(outdir) or not isdir(outdir):
-        stderr.write(outdir + '{}: The specified directory is non-readable or non-existent!\n')
+        stderr.write(f'{outdir}: The specified directory is non-readable or non-existent!\n')
         raise SystemExit(1)
     for inputfile in input_file:
         # Validate provided input file data
@@ -622,7 +622,7 @@ def generate_from_maf(input_file: list, imgformat: str = r'PNG', imgwidth: int =
             stderr.write('Integers are not accepted as file locations!\n')
             raise SystemExit(1)
         if not exists(inputfile) or not isfile(inputfile):
-            stderr.write(inputfile + '{}: The specified file is non-readable or non-existent!\n')
+            stderr.write(f'{inputfile}: The specified file is non-readable or non-existent!\n')
             raise SystemExit(1)
         # Read MAF File
         maffile = configparser.ConfigParser()
@@ -758,7 +758,7 @@ if __name__ == '__main__':  # noqa: C901
         START = timer()
         generate_fractal(FRACTAL_TYPE, OPTIONS.amount, OPTIONS.iterations, fix_img_format(OPTIONS.itype), OPTIONS.width, OPTIONS.outdir)
         EXE_TIME = timer() - START
-        stdout.write(r'Fractals created in ' + str(EXE_TIME) + ' seconds\n')
+        stdout.write(f'Fractals created in {EXE_TIME} seconds\n')
     elif GEN_FRACTAL and ACCEL == 0:
         stderr.write('Cupy or Numpy is required to create fractals!\n')
     elif OPTIONS.input:
@@ -767,7 +767,7 @@ if __name__ == '__main__':  # noqa: C901
         START = timer()
         generate_image(OPTIONS.amount, fix_img_format(OPTIONS.format), OPTIONS.width, OPTIONS.outdir, IMG_OR_MATH)
         EXE_TIME = timer() - START
-        stdout.write(r'Images created in ' + str(EXE_TIME) + ' seconds\n')
+        stdout.write(f'Images created in {EXE_TIME} seconds\n')
     # Close
     if OPTIONS.amount == 1 and not OPTIONS.input:
         stdout.write('Finished generating image\n')
