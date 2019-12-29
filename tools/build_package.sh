@@ -5,7 +5,7 @@
 #' @brief Automated building and packaging of PyBooster
 #' @file build_package.sh
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-#' @version 2019.03.28
+#' @version 2019.12.28
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
@@ -64,5 +64,4 @@ build_cross_package 'WIN' 'win64' 'WIN64' 'Windows x86-64'
 ## DONE ##
 
 
-printf '\nDONE; Press enter to exit\n'
-read -r
+printf '\nFinished\n'

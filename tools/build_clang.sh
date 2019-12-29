@@ -5,7 +5,7 @@
 #' @brief Automated building using Clang
 #' @file build_clang.sh
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
-#' @version 2019.03.28
+#' @version 2019.12.28
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
@@ -47,5 +47,4 @@ make clean
 make -j8 dcj=1 CLANG="${CLANG_VERSION}" all
 make rmtmp
 
-printf '\nDONE; Press enter to exit\n'
-read -r
+printf '\nFinished\n'
