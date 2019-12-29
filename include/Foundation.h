@@ -7780,6 +7780,12 @@ Compile-time assertion */
 #   define _atomic
 #endif
 
+#ifdef NO_ATOMIC
+#   define Atomic
+#   define atomic
+#   define _atomic
+#endif
+
 /** @} */  // }
 
 
@@ -7788,7 +7794,7 @@ Compile-time assertion */
 /** @defgroup Restrict_Keyword Macros pertaining to the `restrict` keyword
 @{ */  // (FB){
 
-#if NO_RESTRICT
+#ifdef NO_RESTRICT
 #   define restrict
 #   define __restrict
 #   define __restrict__
