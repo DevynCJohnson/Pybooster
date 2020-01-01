@@ -1,3 +1,12 @@
+2020-01-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Added more optional developer dependencies
+	* OptiView:  Applied some fixes to the CSS code
+
+2019-12-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* phpanalysis:  Implemented multi-threading & improved performance
+
 2019-12-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* ./include/*.h:  Removed unneeded alignment attributes

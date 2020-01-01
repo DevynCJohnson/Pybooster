@@ -15,7 +15,6 @@ if [ -z "${1:-}" ]; then
 elif [ "$1" = '--help' ] || [ "$1" = 'help' ] || [ "$1" = '-h' ]; then
     printf 'Specify the pathname of each JavaScript file to scan.\n'
     exit 0
-
 fi
 
 
