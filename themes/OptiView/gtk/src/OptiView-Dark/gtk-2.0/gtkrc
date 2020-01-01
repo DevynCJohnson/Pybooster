@@ -30,7 +30,6 @@ style "default" {
   GtkButton::child-displacement-x = 1
   GtkButton::child-displacement-y = 1
   GtkButton::default-border       = {0,0,0,0}
-  GtkCheckButton::indicator-size  = 15
 
   GtkEntry::honors-transparent-bg-hint = 1
   GtkEntry::progress-border            = {3,3,3,3}
@@ -49,12 +48,12 @@ style "default" {
   GtkProgressBar::min-horizontal-bar-height = 10
 
   GtkRange::trough-border   = 2
-  GtkRange::slider-width    = 9
-  GtkRange::stepper-size    = 13
+  GtkRange::slider-width    = 10
+  GtkRange::stepper-size    = 14
   GtkRange::stepper_spacing = 0
 
-  GtkScale::slider-length       = 15
-  GtkScale::slider-width        = 15
+  GtkScale::slider-length       = 16
+  GtkScale::slider-width        = 16
   GtkScale::trough-side-details = 1
 
   GtkScrollbar::min-slider-length    = 48
@@ -70,7 +69,6 @@ style "default" {
   GtkMenuBar::internal-padding = 0
   GtkMenuBar::window-dragging  = 1
 
-  GtkExpander::expander-size      = 12
   GtkToolbar::internal-padding    = 0
   GtkTreeView::expander-size      = 10
   GtkTreeView::vertical-separator = 0
@@ -78,8 +76,8 @@ style "default" {
   GtkWidget::focus-line-width = 1
   GtkWidget::focus-padding    = 0
 
-  GtkWindow::resize-grip-height = 13
-  GtkWindow::resize-grip-width  = 13
+  GtkWindow::resize-grip-height = 14
+  GtkWindow::resize-grip-width  = 14
 
   xthickness = 1
   ythickness = 1
@@ -1254,7 +1252,6 @@ include "xfce-panel.rc"
 
 
 style "ff-default" {
-  GtkCheckButton::indicator-size = 14
   engine "murrine" {
     reliefstyle = 0
   }

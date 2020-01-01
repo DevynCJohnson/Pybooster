@@ -133,14 +133,14 @@
 // $edge: Set to `none` to not draw the bottom edge or specify a color to use inplace of the default color
 // $dc: Dark color (for headerbars)
 // $dfc: Dark text color
-@mixin button($t, $c: $bg_color, $tc: $fg_color, $edge: $borders_edge, $dc: $dark_bg_color, $dfc: $dark_fg_color) {
+@mixin button($t, $c: $btn_color, $tc: $fg_color, $edge: $borders_edge, $dc: $dark_bg_color, $dfc: $dark_fg_color) {
   @if $t == normal {
-    background-color: if($variant == "light", lighten($c, 10%), $dark_btn_color);
+    background-color: $btn_color;
     color: $tc;
     @include edges(normal);
   }
   @else if $t == hover {
-    background-color: lighten($c, 20%);
+    background-color: lighten($c, 10%);
     color: $tc;
     @include edges(hover);
   }
@@ -149,17 +149,17 @@
     @include edges(focus);
   }
   @else if $t == active {
-    background-color: if($variant == "dark", lighten($c, 30%), darken($c, 12%));
+    background-color: if($variant == "dark", lighten($c, 20%), darken($c, 15%));
     color: $tc;
     @include edges(active);
   }
   @else if $t == hoveractive {
-    background-color: if($variant == "dark", lighten($c, 40%), darken($c, 20%));
+    background-color: if($variant == "dark", lighten($c, 30%), darken($c, 20%));
     box-shadow: $shadow_hover;
     color: $tc;
   }
   @else if $t == insensitive {
-    $_bg: if($c != $bg_color, mix($c, $base_color, 85%), $insensitive_bg_color);
+    $_bg: if($c != $btn_color, mix($c, $base_color, 85%), $insensitive_bg_color);
     color: if($tc != $fg_color, mix($tc, $_bg, 50%), $insensitive_fg_color);
     @include edges(disabled);
     -gtk-icon-shadow: none;
@@ -170,10 +170,10 @@
     }
   }
   @else if $t == insensitive-active {
-    $_bg: if($c != $bg_color, darken(mix($c, $base_color, 85%), 5%), $insensitive_bg_color);
-    $_bc: if($c != $bg_color, darken($c, 25%), $insensitive_borders_color);
+    $_bg: if($c != $btn_color, darken(mix($c, $base_color, 85%), 5%), $insensitive_bg_color);
+    $_bc: if($c != $btn_color, darken($c, 25%), $insensitive_borders_color);
     border-color: $_bc;
-    color: if($c != $bg_color, mix($tc, $_bg, 60%), $insensitive_fg_color);
+    color: if($c != $btn_color, mix($tc, $_bg, 60%), $insensitive_fg_color);
     @include edges(disabled);
     background-color: darken($c, 5%);
     > .label {
@@ -246,7 +246,7 @@
     @include button(disabled);
   }
   @else if $t == osd {
-    $_bg: if($c != $bg_color, transparentize($c, 0.5), $osd_bg_color);
+    $_bg: if($c != $btn_color, transparentize($c, 0.5), $osd_bg_color);
     -gtk-icon-shadow: 0px 1px black;
     background-clip: padding-box;
     background-image: image($_bg);
@@ -256,7 +256,7 @@
     text-shadow: 0px 1px black;
   }
   @else if $t == osd-hover {
-    $_bg: if($c != $bg_color, transparentize($c, 0.3), lighten($osd_bg_color, 12%));
+    $_bg: if($c != $btn_color, transparentize($c, 0.3), lighten($osd_bg_color, 12%));
     -gtk-icon-shadow: 0px 1px black;
     background-clip: padding-box;
     background-image: image($_bg);
@@ -266,7 +266,7 @@
     text-shadow: 0px 1px black;
   }
   @else if $t == osd-active {
-    $_bg: if($c != $bg_color, $c, $osd_borders_color);
+    $_bg: if($c != $btn_color, $c, $osd_borders_color);
     -gtk-icon-shadow: none;
     background-clip: padding-box;
     background-image: image($_bg);

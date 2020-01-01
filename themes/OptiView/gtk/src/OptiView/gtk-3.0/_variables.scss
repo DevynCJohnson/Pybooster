@@ -1,16 +1,12 @@
 // Color Variables
 
 
-$active_color: #29F;
 $active_column_color: #7CE;
 $close_button: transparent;
 $close_button_hover: #C75050;
 $column_header_color: #2C2C2C;
 $dark_base_color: #556;
-$dark_entry_color: #568;
-$dark_bg_color: #222;
-$dark_borders_color: #333;
-$dark_btn_color: #568;
+$dark_bg_color: #223;
 $dark_fg_color: #F6F6F6;
 $dnd_column_color: #EC3;
 $drop_target_color: #4E9A06;
@@ -22,18 +18,19 @@ $selected_bg_color: #A4A600;
 $selected_fg_color: #FFF;
 $warning_color: #FFCA28;
 
+$btn_color: if($variant == "light", #EFEFEF, #568);
 $bg_color: if($variant == "light", #D5D5D5, $dark_bg_color);
-$borders_color: if($variant == "light", darken($bg_color, 24%), $dark_borders_color);
+$borders_color: if($variant == "light", darken($bg_color, 24%), #333);
 $fg_color: if($variant == "light", #2C2C2C, $dark_fg_color);
 $base_color: if($variant == "light", #E9E9E9, $dark_base_color);
-$secondary_bg_color: if($variant == "light", lighten($base_color, 40%), $base_color);
+$secondary_bg_color: if($variant == "light", lighten($base_color, 40%), lighten($base_color, 10%));
 $inset_color: if($variant == "light", mix($borders_color, $bg_color, 35%), $dark_fg_color);
 $menu_bg_color: lighten($base_color, 20%);
 $hover_color: transparentize($fg_color, 0.7);
 $borders_edge: if($variant == "light", #FFF, transparentize($fg_color, 0.5));
 $dark_fill: mix($borders_color, $bg_color, 35%);
 $destructive_color: if($variant == "light", #E55, darken(#E55, 10%));
-$focus_color: if($variant == "light", #B5E, #EE7);
+$focus_color: if($variant == "light", #29F, #EE7);
 $header_bg: if($dark_header == "true", $dark_bg_color, $bg_color);
 $link_color: if($variant == "light", darken($selected_bg_color, 10%), lighten($selected_bg_color, 20%));
 $link_visited_color: if($variant == "light", darken($selected_bg_color, 20%), lighten($selected_bg_color, 10%));
@@ -54,7 +51,7 @@ $sep_color: if($variant == "light", #777, #AAA);
 //$shadow_color_hover: rgba(0, 0, 0, 0.1);
 $shadow_color: #555;
 $shadow_color_hover: #777;
-$sidebar_bg_color: if($variant == "light", #E4E4E4, $bg_color);
+$sidebar_bg_color: if($variant == "light", #E4E4E4, #445);
 $success_color: if($variant == "light", #9C6, darken(#9C6, 10%));
 $tabbar_color: if($variant == "light", darken($header_bg, 5%), darken($bg_color, 3%));
 $text_color: if($variant == "light", #000, #FFF);
@@ -75,6 +72,7 @@ $attention: linear-gradient(rgb(200, 150, 150), rgb(250, 240, 240));
 $insensitive_bg_color: mix($bg_color, $base_color, 60%);
 $insensitive_borders_color: $borders_color;
 $insensitive_fg_color: mix($fg_color, $bg_color, 50%);
+$insensitive_selected_fg_color: mix($selected_fg_color, $selected_bg_color, 50%);
 
 // Colors for the Backdrop State
 
@@ -82,7 +80,7 @@ $backdrop_borders_color: mix($borders_color, $bg_color, 90%);
 $backdrop_dark_fill: mix($backdrop_borders_color, $bg_color, 35%);
 $backdrop_fg_color: mix($fg_color, $bg_color, 50%);
 $backdrop_insensitive_color: if($variant == "light", darken($bg_color, 15%), lighten($bg_color, 15%));
-$backdrop_menu_color: if($variant == "light", $base_color, mix($bg_color, $base_color, 20%));
+$backdrop_menu_color: $menu_bg_color;
 $backdrop_scrollbar_slider_color: mix($backdrop_fg_color, $bg_color, 40%);
 $backdrop_selected_fg_color: $selected_fg_color;
 $backdrop_sidebar_bg_color: mix($bg_color, $base_color, 50%);

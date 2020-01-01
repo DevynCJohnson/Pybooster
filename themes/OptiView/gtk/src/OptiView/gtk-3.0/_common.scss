@@ -646,6 +646,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   background-color: $base_color;
   border: none;
   box-shadow: none;
+  color: $text_color;
   padding: 0px;
   arrow {
     @extend %menu_arrow;
@@ -654,6 +655,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
     background-color: $base_color;
     border: none;
     box-shadow: none;
+    color: $fg_color;
     padding: 2px 8px;
   }
 }
@@ -662,7 +664,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   @extend %undecorated_button;
   background-color: $menu_bg_color;
   border: none;
-  color: $text_color;
+  color: $fg_color;
   min-height: 16px;
   min-width: 16px;
   padding: 4px;
@@ -705,7 +707,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   background-color: $menu_bg_color;
   border: none;
   box-shadow: none;
-  color: if($dark_header == "true" or $variant == "dark", $dark_fg_color, $fg_color);
+  color: $fg_color;
   min-height: 16px;
   min-width: 16px;
   padding: 0px;
@@ -731,7 +733,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 
   accelerator {
-    color: gtkalpha(currentColor, 0.5);
+    color: gtkalpha(currentColor, 0.4);
   }
 
   label {
@@ -816,9 +818,9 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 }
 
 %scale_trough {
-  background-color: $dark_fill;
+  background-color: $secondary_bg_color;
   border-radius: $scale_radius;
-  border: 1px inset darken($dark_fill, 20%);
+  border: 1px inset $borders_color;
   box-shadow: none;
 
   &:disabled {
@@ -852,7 +854,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
     color: $selected_fg_color;
 
     &:disabled {
-      color: mix($selected_fg_color, $selected_bg_color, 50%);
+      color: $insensitive_selected_fg_color;
     }
 
     &:backdrop {
@@ -1269,7 +1271,7 @@ label {
     color: $insensitive_fg_color;
     selection {
       &:disabled {
-        color: mix($selected_fg_color, $selected_bg_color, 50%);
+        color: $insensitive_selected_fg_color;
       }
     }
     &:backdrop {
@@ -1664,7 +1666,7 @@ spinbutton {
       }
 
       &:active, &:active:focus {
-        background-color: $active_color;
+        background-color: $focus_color;
       }
 
       &:hover, &:hover:focus {
@@ -2389,15 +2391,18 @@ treeview.view {
   @extend %menu_appearance;
 }
 
-.context-menu, .csd .context-menu, .csd .menu, .csd menu, .menu, menu {
+.context-menu, .csd .context-menu, .csd .menu, .csd menu, .menu, .popup .context-menu, .popup .menu, .popup menu, menu {
   @extend %menu_appearance;
   background-color: $menu_bg_color;
   &:backdrop {
     background-color: $backdrop_menu_color;
   }
+  > menuitem {
+    @extend %menuitem;
+  }
 }
 
-menuitem {
+.background menuitem, menuitem {
   @extend %menuitem;
 }
 
@@ -2842,16 +2847,16 @@ treeview ~ scrollbar.vertical {
 
 switch {
   background-clip: padding-box;
-  background-color: $dark_fill;
+  background-color: $secondary_bg_color;
   border-radius: $circular_radius;
-  border: 1px inset darken($dark_fill, 20%);
+  border: 1px inset $borders_color;
   font-size: 0px;
   margin: 0px;
   padding: 0px;
   transition: $shortest_duration $deceleration_curve, opacity $longer_duration $deceleration_curve;
 
   &:checked {
-    background-color: if($variant == "light", $selected_bg_color, $dark_fill);
+    background-color: $selected_bg_color;
     border-color: if($variant == "light", $focus_color, $borders_color);
   }
 
@@ -2863,7 +2868,7 @@ switch {
     background-color: if($variant == "dark", lighten($bg_color, 9%), $base_color);
     border-radius: $circular_radius;
     box-shadow: 0 0 2px 1px transparent, $shadow_normal;
-    border: 1px outset darken($dark_fill, 20%);
+    border: 1px outset $borders_color;
     color: $fg_color;
     margin: 2px;
     min-height: $switch_min_length;
@@ -2877,7 +2882,7 @@ switch {
   }
 
   &:checked slider {
-    background-color: if($variant == "light", lighten($bg_color, 12%), $selected_bg_color);
+    background-color: if($variant == "light", lighten($drop_target_color, 20%), $drop_target_color);
     border-radius: $circular_radius;
     color: $fg_color;
   }
@@ -3101,7 +3106,7 @@ levelbar {
   }
 
   block {
-    border: 1px outset darken($dark_fill, 20%);
+    border: 1px outset $borders_color;
     border-radius: 0px;
 
     &.low {
@@ -3157,7 +3162,7 @@ progressbar {
   }
 
   trough {
-    background-color: if($variant == "light", darken($bg_color, 12%), $dark_borders_color);
+    background-color: $borders_color;
     border: 1px inset darken($inset_color, 20%);
   }
 
@@ -3316,7 +3321,7 @@ scale {
     @include button(normal);
 
     border-radius: 100%;
-    border: 1px outset darken($dark_fill, 20%);
+    border: 1px outset $borders_color;
 
     &:hover {
       @include button(hover);

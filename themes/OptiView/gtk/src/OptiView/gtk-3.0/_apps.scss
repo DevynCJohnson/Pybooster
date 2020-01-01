@@ -14,7 +14,7 @@ XfceHeading,
 
 .budgie-panel, .xfce4-panel {
   -gtk-icon-shadow: none;
-  background-color: $dark_borders_color;
+  background-color: $borders_color;
   border: none;
   box-shadow: none;
   color: $dark_fg_color;
@@ -59,12 +59,50 @@ XfceHeading,
   }
 }
 
-#appmenu-1, #clock-button, #tasklist-button, #whiskermenu-button, .appmenu-1, .tasklist button, .xfce4-panel button, .xfce4-panel menubar, .xfce4-panel menuitem, .xfce4-panel.background {
+#appmenu-1, #appmenu-11, #panel_window, .appmenu-1, .appmenu-11, .gnome-panel-menu-bar, .gnome-panel-menu-bar  menubar>menuitem, .gnome-panel-menu-bar menubar, .gnome-panel-menu-bar menuitem, .mate-panel-menu-bar, .mate-panel-menu-bar  menubar>menuitem, .mate-panel-menu-bar menubar, .mate-panel-menu-bar menuitem, .panel menubar, .panel menubar>menuitem, .panel menuitem, .panel.background, .xfce4-panel menubar, .xfce4-panel menubar>menuitem, .xfce4-panel menuitem, .xfce4-panel.background {
   background-color: $dark_bg_color;
   color: $dark_fg_color;
+  menubar {
+    background-color: $dark_bg_color;
+    color: $dark_fg_color;
+    &:hover {
+      background-color: $dark_fg_color;
+      color: $dark_bg_color;
+    }
+  }
   &:hover {
     background-color: $dark_fg_color;
     color: $dark_bg_color;
+  }
+  > arrow {
+    background-color: $dark_bg_color;
+    color: $dark_fg_color;
+  }
+  > arrow:hover {
+    background-color: $dark_fg_color;
+    color: $dark_bg_color;
+  }
+}
+
+#clock-button, #PanelApplet, #tasklist-button, #whiskermenu-button, .gnome-panel-menu-bar button, .mate-panel-menu-bar button, .panel button, .tasklist button, .xfce4-panel button {
+  @extend %panelbutton;
+  label, image {
+    color: inherit;
+  }
+  .wnck-pager {
+    background-color: darken($dark_bg_color, 10%);
+    color: mix($dark_fg_color, black, 50%);
+    &:hover {
+      background-color: lighten($dark_bg_color, 5%);
+    }
+    &:selected {
+      color: lighten($selected_bg_color, 20%);
+      background-color: $selected_bg_color;
+    }
+  }
+  na-tray-applet {
+    -NaTrayApplet-icon-padding: 0px;
+    -NaTrayApplet-icon-size: $icon_size;
   }
 }
 
@@ -163,47 +201,6 @@ XfceHeading,
 
 #indicator-button, #pulseaudio-button {
   @extend %panelbutton;
-}
-
-.gnome-panel-menu-bar, .mate-panel-menu-bar {
-  &, menubar {
-    background-color: $dark_bg_color;
-  }
-
-  menubar,
-  #PanelApplet label,
-  #PanelApplet image {
-    color: $dark_fg_color;
-  }
-
-  button:not(#tasklist-button) {
-    @extend %panelbutton;
-  }
-
-  button, #tasklist-button {
-    label, image {
-      color: inherit;
-    }
-  }
-
-  .wnck-pager {
-    background-color: darken($dark_bg_color, 10%);
-    color: mix($dark_fg_color, black, 50%);
-
-    &:hover {
-      background-color: lighten($dark_bg_color, 5%);
-    }
-
-    &:selected {
-      color: lighten($selected_bg_color, 20%);
-      background-color: $selected_bg_color;
-    }
-  }
-
-  na-tray-applet {
-    -NaTrayApplet-icon-padding: 0px;
-    -NaTrayApplet-icon-size: $icon_size;
-  }
 }
 
 .thunar {
@@ -313,12 +310,12 @@ XfceHeading,
   border-width: 0px 0px 1px;
 }
 
-.caja-desktop .entry, .caja-navigation-window .view .entry, .nemo-window .entry, .nemo-window entry, .thunar .entry, .thunar entry {
+.caja-desktop .entry, .caja-desktop entry, .caja-navigation-window .view .entry, .nemo-window .entry, .nemo-window entry, .thunar .entry, .thunar entry {
   caret-color: $caret_color;
 }
 
 .caja-desktop, .nautilus-desktop.nautilus-canvas-item, .nemo-desktop.nemo-canvas-item {
-  color: white;
+  color: #FFF;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
