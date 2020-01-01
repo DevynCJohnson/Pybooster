@@ -1,3 +1,78 @@
+2020-01-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* makefile:  Added more optional developer dependencies
+	* OptiView:  Applied some fixes to the CSS code
+
+2019-12-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* phpanalysis:  Implemented multi-threading & improved performance
+
+2019-12-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* ./include/*.h:  Removed unneeded alignment attributes
+	* MACROS*.h:  Applied `restrict` & `const` to additional parameters and variables
+
+2019-12-28  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* build_clang.sh:  Added code for additional versions of Clang
+	* build_clang.sh:  Resolved the `read` Bashism issue
+	* build_package.sh:  Resolved the `read` Bashism issue
+	* clint:  Resolved some unnecessary `elif` statements
+	* color-kit:  Fixed a bug in `conv_yiq()` involving wrong datatype
+	* fix_nvidia.sh:  Made the /`dev/null` code consistent
+	* Foundation.h:  Added the macro `NO_ATOMIC` to disable the use of `atomic` if desired
+	* Foundation.h:  Added the macro `NO_CONST` to disable the use of `const` if desired
+	* Foundation.h:  Added the macro `NO_RESTRICT` to disable the use of `restrict` if desired
+	* generate_ctags.sh:  Added code for additional versions of Clang & fixed some quoting issues
+	* genmathart:  Changed many string-concatenations to F-strings
+	* minifyxml:  Changed many string-concatenations to F-strings
+	* program-analyzer:  Changed many string-concatenations to F-strings & resolved timezone issues
+	* py_directive_checker:  Changed many string-concatenations to F-strings & rearranged the code
+	* PyBooster:  Made the `@LICENSE` section in some Python scripts consistent with the other scripts
+	* pydocgtk:  Changed many string-concatenations to F-strings
+	* secure_system.sh:  Added code for setting up UFW
+	* test_dev.c:  Fixed an undefined name issue
+	* test_dev.c:  Resolved a typing issue
+	* armscii.h:  Removed unneeded alignment attributes
+	* math_tables.h:  Removed unneeded alignment attributes
+	* rune_tables.h:  Removed unneeded alignment attributes
+
+2019-12-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* alphabetize_lines:  Removed unneeded `list` commands
+	* canalysis:  Implemented multi-threading & improved performance
+	* code-analysis:  Implemented multi-threading & improved performance
+	* cssanalysis:  Implemented multi-threading & improved performance
+	* Desktop-Entry-Maker:  Changed the string concatenation to F-strings
+	* file-analysis:  Made minor tweaks for improved performance
+	* Geany:  Applied some fixes to the CSS theme & the Glade file
+	* jsanalysis:  Implemented multi-threading & improved performance
+	* jsonanalysis:  Implemented multi-threading & improved performance
+	* makefile:  Added more developer dependencies & rearranged some of the dependency packages
+	* OptiView:  Applied some fixes to the CSS code
+	* PascalCase:  Fixed an import issue & resolved undefined names
+	* pyanalysis:  Made minor tweaks for improved performance
+	* PyBooster:  Fixed various file-permissions (such as the executable-bit) & made small tweaks to some scripts
+	* PyLib:  Fixed some minor bugs, added many improvements, & added some functions
+	* shanalysis:  Implemented multi-threading & improved performance
+	* snippets.conf:  Made some small adjustments to some of the snippets
+	* win2unixlines:  Improved performance & added extra code to convert UTF-16 encoded files
+
+2019-12-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Applied some fixes to the CSS theme
+	* OptiView:  Applied some fixes to the CSS code
+
+2019-12-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Optimized & improved the CSS theme
+	* OptiView:  Optimized & improved the code
+
+2019-12-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Optimized the code
+	* OptiView:  Optimized & fixed the code
+
 2019-12-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* extras_rc.sh:  Added more aliases for moving up several directories
