@@ -1,0 +1,203 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Generate circular graphs as PNG files.
+
+@file cartioid
+@version 2020.01.02
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+import argparse
+from functools import lru_cache, partial
+from multiprocessing import cpu_count, Pool, ProcessError
+from operator import floordiv, mod, mul, or_, pow as power, truediv
+from typing import Generator
+
+from matplotlib import rc
+import matplotlib.pyplot as plt
+import numpy as xp
+
+
+# CONSTANTS #
+
+
+TAU: float = 2 * xp.pi
+
+
+# SETTINGS #
+
+
+FONT_FORMAT: dict = {
+    r'family': r'monospace',
+    r'monospace': r'mononoki',
+    r'size': 18,
+    r'style': r'normal',
+    r'weight': r'normal'
+}
+
+
+# CLASSES #
+
+
+class PlotGraph:
+    """Object representing the graph."""
+
+    def __init__(self, graph_type: str, color: str) -> None:
+        """Initialze the graph and plot the points on the edge."""
+        self.color: str = color
+        self.graph_type: str = graph_type.capitalize()
+        self.fig = plt.figure(num=None, figsize=(32, 32), facecolor=r'k', edgecolor=r'k')
+        self.ax1 = self.fig.add_subplot(111, projection=graph_type)
+        self.ax1.set_xlim(-1, 1)
+        self.ax1.set_ylim(-1, 1)
+        plt.axis(r'off')
+        points_on_edge: tuple = calc_points_on_edge()
+        self.ax1.plot(list(points_on_edge[0]), list(points_on_edge[1]), color=r'black', dash_capstyle=r'round', linewidth=1, markersize=0.5, solid_capstyle=r'round')
+
+    def plot_line(self, theta: float, position: list) -> None:
+        """Plot a line on the figure."""
+        self.ax1.plot([position[0], xp.cos(theta)], [position[1], xp.sin(theta)], color=self.color, dash_capstyle=r'round', linewidth=1, markersize=0.4, solid_capstyle=r'round')
+
+    def create_and_save_figure(self, tab_var: float, num_var: int, mathop: str) -> None:
+        """Create and save the figure after adding text to the figure."""
+        math_func: str = r'Division' if mathop == r'/' else r'Floor_Division' if mathop == r'//' else r'Exponentiation' if mathop == r'**' else r'Modulus' if mathop == r'%' else r'Multiplication'
+        self.ax1.text(0.75, 1, f'Points={num_var}\nTable={tab_var}\nType={self.graph_type}\nMath Operation={math_func}', color=r'w', horizontalalignment=r'left', verticalalignment=r'center', transform=self.ax1.transAxes, fontsize=FONT_FORMAT[r'size'])
+        times_int, times_decimal = str(tab_var).split(r'.')
+        self.fig.savefig(fr'Table_{self.graph_type}_{math_func}_{int(times_int):04d}_{times_decimal}.jpg', facecolor=self.fig.get_facecolor(), edgecolor=r'none')
+        plt.close(self.fig)
+
+
+# FUNCTIONS #
+
+
+def format_for_starmap(headings: list, lst_of_lsts: list) -> list:
+    """Prepend one item from headings to the list of lists; this will create the needed format for starmap."""
+    output: list = []
+    i: int = 0
+    for lst in lst_of_lsts:
+        tmp = lst[:]
+        tmp.insert(0, headings[i])
+        output.append(tuple(tmp))
+        i += 1
+    return output
+
+
+@lru_cache(maxsize=4, typed=True)
+def create_reference_points(num_var: int) -> list:
+    """Create reference points."""
+    position: list = []
+    for idx in range(num_var):
+        theta: float = (TAU * idx) / num_var
+        position.append((xp.cos(theta), xp.sin(theta)))
+    return position
+
+
+@lru_cache(maxsize=1, typed=True)
+def calc_points_on_edge() -> tuple:
+    """Calculate the points on the edge."""
+    points_on_edge = xp.arange(-xp.pi, xp.pi, 0.01)
+    return xp.cos(points_on_edge), xp.sin(points_on_edge)
+
+
+def line_calc(tab_var: float, num_var: int, math_operation) -> Generator:
+    """Calculate the points on the edge."""
+    for idx in range(num_var):
+        multip: int = math_operation(idx, tab_var) % num_var
+        if 0 <= multip < num_var:
+            theta: float = (TAU * multip) / num_var
+            yield idx, theta
+
+
+def circle_calculations(tab_var: float, num_points: int = 1000, color: str = r'#77CC00', graph_type: str = r'rectilinear', mathop: str = r'**'):
+    """Draw a circle math-operator graph using the specified value for the operator (`tab_var`) with the specified number of points (`num_points`)
+    Color: Optional parameter to specify color in hexidecimal notation (i.e. `#112233`)
+
+    """
+    # Setup Figure #
+    graph = PlotGraph(graph_type, color)
+    tab_var = round(tab_var, 2)
+    math_operation = truediv if mathop == r'/' else floordiv if mathop == r'//' else power if mathop == r'**' else mod if mathop == r'%' else mul
+    position: list = create_reference_points(num_points)
+    # Calculate Lines #
+    for idx, theta in line_calc(tab_var, num_points, math_operation):
+        graph.plot_line(theta, position[idx])
+    position = []
+    # Set Figure Text & Save File #
+    graph.create_and_save_figure(tab_var, num_points, mathop)
+
+
+def main(num_points: int, target_num: int, color: str, graph_type: str, mathop: str) -> None:
+    """The main entry-point for the program"""
+    with Pool(cpu_count()) as threadpool:
+        try:
+            threadpool.map(partial(circle_calculations, num_points=num_points, color=color, graph_type=graph_type, mathop=mathop), xp.arange(1, target_num + 0.1, 0.1))
+        except (KeyboardInterrupt, MemoryError, ProcessError):
+            threadpool.close()
+            threadpool.terminate()
+            raise SystemExit(1)
+
+
+if __name__ == '__main__':
+    rc(r'font', **FONT_FORMAT)
+    # Parse Arguments
+    PARSER = argparse.ArgumentParser(
+        prog=r'cartioid',
+        description=r'Generate circular graphs based on the specified mathematical operation',
+        epilog=None,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    PARSER.add_argument(
+        r'-c', r'--color',
+        help=r'Color in hexidecimal notation (i.e. `#112233`)',
+        default=r'#77CC00',
+        type=str
+    )
+    PARSER.add_argument(
+        r'-g', r'--graph',
+        help=r'Type of graph',
+        default=r'rectilinear',
+        type=str
+    )
+    PARSER.add_argument(
+        r'-t', r'--target',
+        help=r'Calculate up to the specified number',
+        default=1000,
+        type=int
+    )
+    PARSER.add_argument(
+        r'-m', r'--mathop',
+        help=r'The mathematical operation to use (i.e. *, /, //, %%, **)',
+        default=r'*',
+        type=str
+    )
+    PARSER.add_argument(
+        r'-n', r'--num',
+        help=r'Number of points',
+        default=1000,
+        type=int
+    )
+    OPTIONS: dict = vars(PARSER.parse_args())
+    del PARSER
+    # Run Program
+    main(OPTIONS[r'num'], OPTIONS[r'target'], OPTIONS[r'color'], OPTIONS[r'graph'], OPTIONS[r'mathop'])
