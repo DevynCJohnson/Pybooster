@@ -28,6 +28,7 @@
   @if $t == normal {
     background-color: $secondary_bg_color;
     border-color: $borders_color;
+    box-shadow: none;
     color: $text_color;
   }
   @if $t == focus {
@@ -92,7 +93,7 @@
 // Buttons borders & shadows
 @mixin edges($s: normal, $c: $bg_color, $b: if($c != $bg_color, darken($c, 25%), darken($borders_color, 12%)), $bi: if($c != $bg_color, darken($c, 25%), $insensitive_borders_color)) {
   @if $s == normal {
-    box-shadow: $shadow_normal;
+    box-shadow: none;
     border-color: $b;
   }
   @else if $s == normal-dark {
@@ -135,7 +136,8 @@
 // $dfc: Dark text color
 @mixin button($t, $c: $btn_color, $tc: $fg_color, $edge: $borders_edge, $dc: $dark_bg_color, $dfc: $dark_fg_color) {
   @if $t == normal {
-    background-color: $btn_color;
+    background-color: $c;
+    box-shadow: none;
     color: $tc;
     @include edges(normal);
   }
@@ -309,7 +311,7 @@
     border: 1px solid if($variant == "light", rgba(0, 0, 0, 0.4), $borders_color);
     color: $tc;
     @if $variant == "light" {
-      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 0px 0px 1px $shadow_color_hover, inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
     }
     transition-duration: 0s;
   }

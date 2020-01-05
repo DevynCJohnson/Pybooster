@@ -1,8 +1,7 @@
 // Global Panel Button Styles
 
 
-XfceHeading,
-.XfceHeading {
+XfceHeading, .XfceHeading {
   background-color: $bg_color;
   background-image: none;
   border-width: 0px;
@@ -20,7 +19,6 @@ XfceHeading,
   color: $dark_fg_color;
   font-style: normal;
   text-shadow: none;
-
   button {
     @extend %panelbutton;
   }
@@ -30,30 +28,24 @@ XfceHeading,
   border-style: none;
 }
 
-.xfce4-panel menu {
+.gnome-panel-menu-bar menu, .mate-panel-menu-bar menu, .xfce4-panel menu {
   -gtk-icon-effect: none;
   text-shadow: none;
-
   button {
     @include button(normal);
-
     &:hover {
       @include button(hover);
     }
-
     &:active, &:checked {
       @include button(active);
     }
-
     &:active:hover, &:checked:hover {
       @include button(hoveractive);
     }
-
     &.default {
       @include button(focus);
     }
-
-    &:disabled {
+    &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
       @include button(insensitive);
     }
   }
@@ -89,6 +81,8 @@ XfceHeading,
   label, image {
     color: inherit;
   }
+  margin: 0px;
+  padding: 0px;
   .wnck-pager {
     background-color: darken($dark_bg_color, 10%);
     color: mix($dark_fg_color, black, 50%);
@@ -106,14 +100,8 @@ XfceHeading,
   }
 }
 
-#whiskermenu-button {
-  margin: 0px;
-  padding: 0px;
-}
-
 #XfceNotifyWindow {
   @extend %osd;
-
   border-radius: $window_radius;
 
   buttonbox {
@@ -139,7 +127,7 @@ XfceHeading,
       @include button(osd-hover);
     }
 
-    &:disabled {
+    &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
       @include button(osd-insensitive);
     }
 
@@ -265,7 +253,7 @@ XfceHeading,
     &:backdrop {
       color: $backdrop_text_color;
       background-color: $base_color;
-      &:disabled {
+      &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
         color: $backdrop_insensitive_color;
       }
     }
@@ -274,14 +262,14 @@ XfceHeading,
       background-color: $hover_color;
     }
 
-    &:disabled {
-      color: $insensitive_fg_color;
-      background-color: $insensitive_bg_color;
-    }
-
     &:selected {
       border-radius: 0px;
       @extend %selected_items;
+    }
+
+    &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
+      color: $insensitive_fg_color;
+      background-color: $insensitive_bg_color;
     }
 
     text {
@@ -373,16 +361,6 @@ window.background.chromium {
   }
 }
 
-
-#MozillaGtkWidget .menubar, #MozillaGtkWidget menubar {
-  background-color: $bg_color;
-}
-
-#MozillaGtkWidget .entry, #MozillaGtkWidget entry {
-  background-color: $secondary_bg_color;
-  color: $text_color;
-}
-
 #MozillaGtkWidget.background {
   &.default-decoration {
     button.titlebutton {
@@ -394,17 +372,6 @@ window.background.chromium {
   headerbar.titlebar {
     button.titlebutton {
       @extend %titlebutton;
-    }
-  }
-
-  > menu > menuitem {
-    border-radius: 0px;
-  }
-
-  > menu, .menu, .context-menu {
-    .separator:not(label),
-    .csd & .separator:not(label) {
-      color: darken($dark_bg_color, 5%);
     }
   }
 }
@@ -420,7 +387,7 @@ normal-button {
     @include button(active);
   }
 
-  &:disabled {
+  &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
     @include button(insensitive);
   }
 }

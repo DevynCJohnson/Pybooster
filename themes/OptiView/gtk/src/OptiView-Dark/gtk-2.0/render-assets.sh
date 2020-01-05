@@ -3,6 +3,8 @@
 
 rm -f ./assets/*.png || true
 
+[ ! -d ./assets ] && mkdir ./assets
+
 [ -x "$(command -v minifyxml)" ] && find ./ -type f -name '*.svg' -print0 | xargs -0 -L 1 -P 0 minifyxml --svg --inplace --remove-all-metadata > /dev/null
 [ -x "$(command -v xmllint)" ] && find ./ -type f -name '*.svg' -exec xmllint --valid --nowarning --noout {} \;
 
