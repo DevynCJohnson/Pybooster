@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2019.12.28
+@version 2020.01.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -139,7 +139,7 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2019.10.27
+                <property name="label" translatable="yes">Version: 2020.01.05
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -510,8 +510,8 @@ NTSC color model
 signal(SIGINT, SIG_DFL)
 
 
-PARSE_TUPLE_OF_3 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+)\)')
-PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+)\)')
+PARSE_TUPLE_OF_3 = rgxcompile(r'\(([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+)\)')
+PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+)\)')
 
 
 # WINDOW FUNCTIONS #
@@ -519,12 +519,7 @@ PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+), ([\-0-9.e]+), ([\-0-9.e]+), ([\-
 
 def rgba_array(_rgba: object) -> list:
     """Create a float array from GDK_RGBA object."""
-    _rgba_array: list = []
-    _rgba_array.append(round(_rgba.red, 6))  # type: ignore
-    _rgba_array.append(round(_rgba.green, 6))  # type: ignore
-    _rgba_array.append(round(_rgba.blue, 6))  # type: ignore
-    _rgba_array.append(round(_rgba.alpha, 6))  # type: ignore
-    return _rgba_array
+    return [round(_rgba.red, 6), round(_rgba.green, 6), round(_rgba.blue, 6), round(_rgba.alpha, 6)]  # type: ignore
 
 
 def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple, update_cc: bool = True) -> None:
@@ -574,6 +569,10 @@ def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
 def conv_rgb(entry_widget: Gtk.Entry) -> None:
     """Convert RGB to one of many formats."""
     _rgb_entry: str = entry_widget.get_text()
+    if not _rgb_entry.startswith(r'('):
+        _rgb_entry = r'(' + _rgb_entry
+    if not _rgb_entry.endswith(r')'):
+        _rgb_entry += r')'
     _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
     _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
     _blue: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\3', _rgb_entry))
@@ -590,6 +589,10 @@ def conv_rgb(entry_widget: Gtk.Entry) -> None:
 def conv_hsi(entry_widget: Gtk.Entry) -> None:
     """Convert HSL to one of many formats."""
     _hsi_entry: str = entry_widget.get_text()
+    if not _hsi_entry.startswith(r'('):
+        _hsi_entry = r'(' + _hsi_entry
+    if not _hsi_entry.endswith(r')'):
+        _hsi_entry += r')'
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsi_entry))
     _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsi_entry))
     _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsi_entry))
@@ -606,6 +609,10 @@ def conv_hsi(entry_widget: Gtk.Entry) -> None:
 def conv_hsv(entry_widget: Gtk.Entry) -> None:
     """Convert HSV to one of many formats."""
     _hsv_entry: str = entry_widget.get_text()
+    if not _hsv_entry.startswith(r'('):
+        _hsv_entry = r'(' + _hsv_entry
+    if not _hsv_entry.endswith(r')'):
+        _hsv_entry += r')'
     _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
     _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
     _value: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsv_entry))
@@ -622,6 +629,10 @@ def conv_hsv(entry_widget: Gtk.Entry) -> None:
 def conv_cmyk(entry_widget: Gtk.Entry) -> None:
     """Convert CMYK to one of many formats."""
     _cmyk_entry: str = entry_widget.get_text()
+    if not _cmyk_entry.startswith(r'('):
+        _cmyk_entry = r'(' + _cmyk_entry
+    if not _cmyk_entry.endswith(r')'):
+        _cmyk_entry += r')'
     _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
     _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
     _yellow: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\3', _cmyk_entry))
@@ -639,6 +650,10 @@ def conv_cmyk(entry_widget: Gtk.Entry) -> None:
 def conv_yiq(entry_widget: Gtk.Entry) -> None:
     """Convert YIQ to one of many formats."""
     _yiq_entry: str = entry_widget.get_text()
+    if not _yiq_entry.startswith(r'('):
+        _yiq_entry = r'(' + _yiq_entry
+    if not _yiq_entry.endswith(r')'):
+        _yiq_entry += r')'
     _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq_entry))
     _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq_entry))
     _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq_entry))
