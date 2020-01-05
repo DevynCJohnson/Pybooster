@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2019.12.28
+@version 2020.01.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1061,7 +1061,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2019.10.27
+Version: 2020.01.05
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1756,7 +1756,7 @@ class MainWindow:  # pylint: disable=R0902
         """Send data to new file or overwrite file."""
         self.status(self.context_id, STATUS_WRITING[1])
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
-            _file.write(str(_write, encoding=r'utf-8'))  # type: ignore
+            _file.write(_write)  # type: ignore
 
     # ANALYSIS
 
