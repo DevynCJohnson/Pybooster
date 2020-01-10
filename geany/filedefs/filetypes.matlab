@@ -1,3 +1,13 @@
+[styling]
+command=command
+comment=comment
+doublequotedstring=doublequotedstring
+identifier=identifier
+keyword=keyword
+number=number
+operator=operator
+string=string
+
 [keywords]
 primary=break case catch classdef continue else elseif end enumeration events for function global if methods otherwise parfor persistent properties return switch try while
 

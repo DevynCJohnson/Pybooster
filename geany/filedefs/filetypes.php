@@ -1,3 +1,5 @@
+[styling=HTML]
+
 [keywords=HTML]
 
 [lexer_properties]

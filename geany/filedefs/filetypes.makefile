@@ -1,3 +1,11 @@
+[styling]
+comment=comment
+identifier=identifier
+ideol=ideol
+operator=operator
+preprocessor=preprocessor
+target=target
+
 [settings]
 extension=mak
 mime_type=text/x-makefile

@@ -1,3 +1,26 @@
+[styling]
+blockquote=blockquote
+code=code
+codebk=codebk
+comment=comment
+emphasis=emphasis
+header1=header1
+header2=header2
+header3=header3
+header4=header4
+header5=header5
+header6=header6
+hrule=hrule
+link=link
+olist_item=olist_item
+option=option
+postproc=postproc
+preproc=preproc
+strikeout=strikeout
+strong=strong
+ulist_item=ulist_item
+underlined=underlined
+
 [keywords]
 primary=includeconf options toc
 

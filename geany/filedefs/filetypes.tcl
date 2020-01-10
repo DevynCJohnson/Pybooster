@@ -1,3 +1,26 @@
+[styling]
+blockcomment=blockcomment
+comment=comment
+commentbox=commentbox
+commentline=commentline
+expand=expand
+identifier=identifier
+inquote=inquote
+modifier=modifier
+number=number
+operator=operator
+subbrace=subbrace
+substitution=substitution
+user2=user2
+user3=user3
+user4=user4
+wordexpand=wordexpand
+wordinquote=wordinquote
+worditcl=worditcl
+wordtcl=wordtcl
+wordtk=wordtk
+wordtkcmds=wordtkcmds
+
 [keywords]
 expand=
 itcl=@scope body class code common component configbody constructor define destructor hull import inherit itcl itk itk_component itk_initialize itk_interior itk_option iwidgets keep method private protected public

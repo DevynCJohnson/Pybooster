@@ -1,3 +1,12 @@
+[styling]
+command=command
+comment=comment
+hide=hide
+identifier=identifier
+label=label
+operator=operator
+word=word
+
 [keywords]
 keywords=break call cd chcp chdir choice cls cmdextversion com con copy country ctty date defined del dir do echo else erase errorlevel exist exit for goto if in loadfix loadhigh lpt md mkdir move not nul path pause prompt rd rem ren rename rmdir set shift time type ver verify vol
 keywords_optional=
