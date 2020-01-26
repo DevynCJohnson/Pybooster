@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Shell RC script providing miscellaneous aliases and functions
 #' @file extras_rc.sh
-#' @version 2019.12.18
+#' @version 2020.01.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -106,7 +106,7 @@ fi
 #' Convert string to lowercase
 alias lowercase="tr '[:upper:]' '[:lower:]'"
 #' Recursively search the specified/current directory for the specified string
-alias rfind='grep -r -F'
+alias rfind='grep -n -r -F'
 #' Recursively search the specified/current directory for the specified string and only lists the filenames containing the string
 alias rfindls='grep -l -r -F'
 #' Remove the first X columns
