@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Makefile compiling header
 #' @file compiling.mk
-#' @version 2019.11.09
+#' @version 2020.01.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -21,6 +21,8 @@ override CLANG_WARN7::=-Wself-assign -Wself-assign-field -Wsuspicious-bzero -Wsu
 override CLANG_WARN8::=-Wimplicit-float-conversion -Wimplicit-int-conversion $(CLANG_WARN7)
 override CLANG_WARN9::=$(CLANG_WARN8)
 override CLANG_WARN10::=-Wbitwise-conditional-parentheses -Wtautological-bitwise-compare -Wtautological-compare -Wtautological-overlap-compare $(CLANG_WARN9)
+override CLANG_WARN11::=$(CLANG_WARN10)
+override CLANG_WARN12::=$(CLANG_WARN10)
 
 ifeq ($(GCC_MAJOR),7)
     override CLANG_WARN::=$(CLANG_WARN) $(CLANG_WARN7)
@@ -30,6 +32,10 @@ else ifeq ($(GCC_MAJOR),9)
     override CLANG_WARN::=$(CLANG_WARN) $(CLANG_WARN9)
 else ifeq ($(GCC_MAJOR),10)
     override CLANG_WARN::=$(CLANG_WARN) $(CLANG_WARN10)
+else ifeq ($(GCC_MAJOR),11)
+    override CLANG_WARN::=$(CLANG_WARN) $(CLANG_WARN11)
+else ifeq ($(GCC_MAJOR),12)
+    override CLANG_WARN::=$(CLANG_WARN) $(CLANG_WARN12)
 endif
 
 
