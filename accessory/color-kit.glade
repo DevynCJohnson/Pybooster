@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -29,7 +29,7 @@ Author: Devyn Collier Johnson
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">700</property>
+    <property name="width_request">800</property>
     <property name="height_request">800</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -52,7 +52,7 @@ Author: Devyn Collier Johnson
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkColorChooserWidget" id="cc">
-            <property name="height_request">400</property>
+            <property name="height_request">630</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">center</property>
@@ -79,8 +79,10 @@ Author: Devyn Collier Johnson
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="margin_left">4</property>
             <property name="margin_right">4</property>
+            <property name="hexpand">True</property>
             <property name="column_spacing">4</property>
             <child>
               <object class="GtkLabel" id="About">
@@ -88,7 +90,7 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2019.10.27
+                <property name="label" translatable="yes">Version: 2020.01.26
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -103,24 +105,7 @@ Created by Devyn Collier Johnson
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_color">
-                <property name="label" translatable="yes">Convert</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Convert selected color</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_left">16</property>
-                <property name="margin_right">8</property>
-                <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="width">2</property>
               </packing>
             </child>
             <child>
@@ -138,8 +123,26 @@ Created by Devyn Collier Johnson
                 </child>
               </object>
               <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_color">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Convert selected color</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_left">16</property>
+                <property name="margin_right">8</property>
+                <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
+              </object>
+              <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>
@@ -150,7 +153,7 @@ Created by Devyn Collier Johnson
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator">
+          <object class="GtkSeparator" id="separator1">
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">False</property>
@@ -158,8 +161,264 @@ Created by Devyn Collier Johnson
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">5</property>
+            <property name="padding">8</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid_related_colors">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="margin_left">16</property>
+            <property name="row_spacing">4</property>
+            <child>
+              <object class="GtkLabel" id="label_complementary">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Complementary:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_complementary-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="ComplementaryColor">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_complementary_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="ComplementaryColor-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_opposite">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Opposite:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_opposite-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="OppositeColor">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_opposite_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="OppositeColor-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_complementary_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_complementary_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_opposite_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_opposite_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Analogous 1:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_1_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_1_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="AnalogousColor1">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_analogous_1_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="AnalogousColor1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Analogous 2:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_2-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="AnalogousColor2">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_analogous_2_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="AnalogousColor2-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_2_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_2_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="grid_related_colors-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">table</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator2">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">8</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
@@ -181,6 +440,11 @@ The values range from 0 to 255.</property>
                 <property name="label" translatable="yes">RGB</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_rgb-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -195,6 +459,11 @@ The values range from 0 to 255.</property>
                 <property name="label" translatable="yes">HSI</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_hsi-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -214,6 +483,11 @@ The values range from 0% to 100%, but the hue values range from 0 degrees to 360
                 <property name="label" translatable="yes">HSV/HSB</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_hsv-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -232,6 +506,11 @@ The values range from 0% to 100%.</property>
                 <property name="label" translatable="yes">CMYK</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_cmyk-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -250,6 +529,11 @@ NTSC color model
                 <property name="label" translatable="yes">YIQ</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_yiq-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -420,7 +704,7 @@ NTSC color model
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">5</property>
           </packing>
         </child>
         <child>
@@ -442,7 +726,7 @@ NTSC color model
             <property name="fill">True</property>
             <property name="padding">2</property>
             <property name="pack_type">end</property>
-            <property name="position">4</property>
+            <property name="position">6</property>
           </packing>
         </child>
       </object>

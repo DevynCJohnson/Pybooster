@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2020.01.05
+@version 2020.01.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,14 +32,30 @@ along with this software.
 
 
 from signal import SIGINT, SIG_DFL, signal
+from typing import Union
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, sub as rgxsub
 except ImportError:
     from re import compile as rgxcompile, sub as rgxsub
 
-from pybooster.color import cmyk2rgb, hsi2rgb, hsv2rgb, rgb2cmyk, rgb2hsi, rgb2hsv, rgb2yiq, yiq2rgb
+from pybooster.color import (
+    analogous_1,
+    analogous_2,
+    cmyk2rgb,
+    complement,
+    hsi2rgb,
+    hsv2rgb,
+    opposite,
+    rgb2cmyk,
+    rgb2hsi,
+    rgb2hsv,
+    rgb2html,
+    rgb2yiq,
+    yiq2rgb
+)
 
+import cairo
 from gi import require_version
 require_version(r'Gdk', r'3.0')
 require_version(r'Gtk', r'3.0')
@@ -49,7 +65,7 @@ from gi.repository import Gdk, Gtk  # noqa: E402  # pylint: disable=C0413
 # GLOBALS #
 
 
-_GCOLOR: str = '''<?xml version="1.0" encoding="UTF-8"?>
+_COLOR_UI: str = '''<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1
 
 Copyright (C) LGPLv3
@@ -80,7 +96,7 @@ Author: Devyn Collier Johnson
   <!-- interface-copyright LGPLv3 -->
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkApplicationWindow" id="ezwin">
-    <property name="width_request">700</property>
+    <property name="width_request">800</property>
     <property name="height_request">800</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -103,7 +119,7 @@ Author: Devyn Collier Johnson
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkColorChooserWidget" id="cc">
-            <property name="height_request">400</property>
+            <property name="height_request">630</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">center</property>
@@ -130,8 +146,10 @@ Author: Devyn Collier Johnson
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="margin_left">4</property>
             <property name="margin_right">4</property>
+            <property name="hexpand">True</property>
             <property name="column_spacing">4</property>
             <child>
               <object class="GtkLabel" id="About">
@@ -139,7 +157,7 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2020.01.05
+                <property name="label" translatable="yes">Version: 2020.01.26
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -154,24 +172,7 @@ Created by Devyn Collier Johnson
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_color">
-                <property name="label" translatable="yes">Convert</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Convert selected color</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_left">16</property>
-                <property name="margin_right">8</property>
-                <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="width">2</property>
               </packing>
             </child>
             <child>
@@ -189,8 +190,26 @@ Created by Devyn Collier Johnson
                 </child>
               </object>
               <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_color">
+                <property name="label" translatable="yes">Convert</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Convert selected color</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_left">16</property>
+                <property name="margin_right">8</property>
+                <signal name="clicked" handler="conv_color" object="cc" swapped="no"/>
+              </object>
+              <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>
@@ -201,7 +220,7 @@ Created by Devyn Collier Johnson
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator">
+          <object class="GtkSeparator" id="separator1">
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">False</property>
@@ -209,8 +228,264 @@ Created by Devyn Collier Johnson
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">5</property>
+            <property name="padding">8</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid_related_colors">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="margin_left">16</property>
+            <property name="row_spacing">4</property>
+            <child>
+              <object class="GtkLabel" id="label_complementary">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Complementary:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_complementary-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="ComplementaryColor">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_complementary_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="ComplementaryColor-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_opposite">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Opposite:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_opposite-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="OppositeColor">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_opposite_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="OppositeColor-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_complementary_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_complementary_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_opposite_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_opposite_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Analogous 1:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_1_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_1_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="AnalogousColor1">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_analogous_1_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="AnalogousColor1-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Analogous 2:</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_2-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="AnalogousColor2">
+                <property name="width_request">500</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <signal name="draw" handler="render_analogous_2_color" object="cc" swapped="no"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="AnalogousColor2-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">image</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_analogous_2_parsed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selectable">True</property>
+                <property name="width_chars">7</property>
+                <property name="max_width_chars">7</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="label_analogous_2_parsed-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="grid_related_colors-atkobject">
+                <property name="AtkObject::accessible-role" translatable="yes">table</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator2">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">8</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
@@ -232,6 +507,11 @@ The values range from 0 to 255.</property>
                 <property name="label" translatable="yes">RGB</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_rgb-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -246,6 +526,11 @@ The values range from 0 to 255.</property>
                 <property name="label" translatable="yes">HSI</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_hsi-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -265,6 +550,11 @@ The values range from 0% to 100%, but the hue values range from 0 degrees to 360
                 <property name="label" translatable="yes">HSV/HSB</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_hsv-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -283,6 +573,11 @@ The values range from 0% to 100%.</property>
                 <property name="label" translatable="yes">CMYK</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_cmyk-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -301,6 +596,11 @@ NTSC color model
                 <property name="label" translatable="yes">YIQ</property>
                 <property name="justify">center</property>
                 <property name="track_visited_links">False</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="l_yiq-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">label</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -471,7 +771,7 @@ NTSC color model
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">5</property>
           </packing>
         </child>
         <child>
@@ -493,7 +793,7 @@ NTSC color model
             <property name="fill">True</property>
             <property name="padding">2</property>
             <property name="pack_type">end</property>
-            <property name="position">4</property>
+            <property name="position">6</property>
           </packing>
         </child>
       </object>
@@ -514,7 +814,7 @@ PARSE_TUPLE_OF_3 = rgxcompile(r'\(([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+)\)
 PARSE_TUPLE_OF_4 = rgxcompile(r'\(([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+),\s*([\-0-9.e]+)\)')
 
 
-# WINDOW FUNCTIONS #
+# GENERAL FUNCTIONS #
 
 
 def rgba_array(_rgba: object) -> list:
@@ -522,178 +822,302 @@ def rgba_array(_rgba: object) -> list:
     return [round(_rgba.red, 6), round(_rgba.green, 6), round(_rgba.blue, 6), round(_rgba.alpha, 6)]  # type: ignore
 
 
-def fillentry(_cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple, update_cc: bool = True) -> None:
-    """Place the values in the entry boxes."""
-    ENTRY_CMYK.set_text(str(_cmyk))
-    ENTRY_HSI.set_text(str(_hsi))
-    ENTRY_HSV.set_text(str(_hsv))
-    ENTRY_RGB.set_text(str(_rgb))
-    ENTRY_YIQ.set_text(str(_yiq))
-    if update_cc:
-        _alpha: float = COLOR_CHOOSER.get_rgba().alpha
-        _red: float = float(_rgb[0]) / 255.0
-        _green: float = float(_rgb[1]) / 255.0
-        _blue: float = float(_rgb[2]) / 255.0
-        COLOR_CHOOSER.set_rgba(Gdk.RGBA(_red, _green, _blue, _alpha))
+# CLASSES #
 
 
-def toggle_editor(cc_widget: Gtk.ColorChooserWidget, toggle_state: bool) -> None:
-    """Toggle between the color-chooser and the color-editor"""
-    _rgba: Gdk.RGBA = cc_widget.get_rgba()
-    cc_widget.set_property(r'show-editor', bool(not toggle_state))
-    cc_widget.set_rgba(_rgba)
+class ColorProcessing:
+    """Class used to manage widgets and track colors."""
 
+    def __init__(self) -> None:
+        """Initialize the color processing object."""
+        # Build GUI
+        user_interface: Gtk.Builder = Gtk.Builder()
+        user_interface.add_from_string(buffer=_COLOR_UI)
+        # Get GTK Objects
+        self.ui_get_object = user_interface.get_object
+        self.color_chooser: Gtk.ColorChooserWidget = self.ui_get_object(r'cc')
+        self.switch_editor: Gtk.Switch = self.ui_get_object(r'switch_editor')
+        self.entry_cmyk: Gtk.Entry = self.ui_get_object(r'entry_cmyk')
+        self.entry_hsi: Gtk.Entry = self.ui_get_object(r'entry_hsi')
+        self.entry_hsv: Gtk.Entry = self.ui_get_object(r'entry_hsv')
+        self.entry_rgb: Gtk.Entry = self.ui_get_object(r'entry_rgb')
+        self.entry_yiq: Gtk.Entry = self.ui_get_object(r'entry_yiq')
+        # Get Drawing Areas
+        self.analogous_1_color: Gtk.DrawingArea = self.ui_get_object(r'AnalogousColor1')
+        self.analogous_2_color: Gtk.DrawingArea = self.ui_get_object(r'AnalogousColor2')
+        self.complementary_color: Gtk.DrawingArea = self.ui_get_object(r'ComplementaryColor')
+        self.opposite_color: Gtk.DrawingArea = self.ui_get_object(r'OppositeColor')
+        # Get Labels
+        self.label_analogous_1_parsed: Gtk.DrawingArea = self.ui_get_object(r'label_analogous_1_parsed')
+        self.label_analogous_2_parsed: Gtk.DrawingArea = self.ui_get_object(r'label_analogous_2_parsed')
+        self.label_complementary_parsed: Gtk.DrawingArea = self.ui_get_object(r'label_complementary_parsed')
+        self.label_opposite_parsed: Gtk.DrawingArea = self.ui_get_object(r'label_opposite_parsed')
+        # Create the Storage Dictionary
+        self.color_storage: dict = {
+            r'Active_Color': self.color_chooser.get_rgba(),
+            r'AnalogousColor1': Gdk.RGBA(0.0, 0.0, 0.0, 1.0),
+            r'AnalogousColor2': Gdk.RGBA(0.0, 0.0, 0.0, 1.0),
+            r'Complementary_Color': Gdk.RGBA(0.0, 0.0, 0.0, 1.0),
+            r'Opposite_Color': Gdk.RGBA(0.0, 0.0, 0.0, 1.0)
+        }
+        # Create the Cairo Objects
+        self.buffer_complementary: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
+        self.surface_complementary_context: cairo.Context = cairo.Context(self.buffer_complementary)
+        self.buffer_opposite: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
+        self.surface_opposite_context: cairo.Context = cairo.Context(self.buffer_opposite)
+        self.buffer_analogous1: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
+        self.surface_analogous1_context: cairo.Context = cairo.Context(self.buffer_analogous1)
+        self.buffer_analogous2: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
+        self.surface_analogous2_context: cairo.Context = cairo.Context(self.buffer_analogous2)
+        # Match signal to function (handler)
+        user_interface.connect_signals({
+            r'_winexit': Gtk.main_quit,
+            r'conv_cmyk': self.conv_cmyk,
+            r'conv_color': self.conv_color,
+            r'conv_hsi': self.conv_hsi,
+            r'conv_hsv': self.conv_hsv,
+            r'conv_rgb': self.conv_rgb,
+            r'conv_yiq': self.conv_yiq,
+            r'correct_editor_switch': self.correct_editor_switch,
+            r'render_analogous_1_color': self.render_analogous_1_color,
+            r'render_analogous_2_color': self.render_analogous_2_color,
+            r'render_complementary_color': self.render_complementary_color,
+            r'render_opposite_color': self.render_opposite_color,
+            r'toggle_editor': self.toggle_editor
+        })
+        # Set Initial Values
+        self.calc_related_colors()
+        # Show Window
+        Gtk.main()
 
-def correct_editor_switch(switch_editor: Gtk.Switch, gtk_signal: Gdk.Event) -> None:
-    """Ensure that the switch for the color-chooser is displaying the correct value"""
-    if COLOR_CHOOSER.get_property(r'show-editor') == switch_editor.get_state() and gtk_signal.type in {Gdk.EventType.FOCUS_CHANGE, Gdk.EventType.MOTION_NOTIFY}:
-        switch_editor.set_state(bool(not COLOR_CHOOSER.get_property(r'show-editor')))
+    # CLASS SIGNALS #
 
+    def toggle_editor(self, cc_widget: Gtk.ColorChooserWidget, toggle_state: bool) -> None:
+        """Toggle between the color-chooser and the color-editor."""
+        self.color_storage[r'Active_Color'] = cc_widget.get_rgba()
+        cc_widget.set_property(r'show-editor', bool(not toggle_state))
+        cc_widget.set_rgba(self.color_storage[r'Active_Color'])
+        self.calc_related_colors()
 
-def conv_color(cc_widget: Gtk.ColorChooserWidget) -> None:
-    """Convert selected color to one of many formats."""
-    _rgba: Gdk.RGBA = cc_widget.get_rgba()
-    _red: int = int(round(float(_rgba.red) * 255.0))
-    _green: int = int(round(float(_rgba.green) * 255.0))
-    _blue: int = int(round(float(_rgba.blue) * 255.0))
-    # Conversions
-    _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
-    _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
-    _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
-    _rgb: tuple = (_red, _green, _blue)
-    _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
-    # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq, False)
+    def correct_editor_switch(self, switch_editor: Gtk.Switch, gtk_signal: Gdk.Event) -> None:
+        """Ensure that the switch for the color-chooser is displaying the correct value."""
+        if self.color_chooser.get_property(r'show-editor') == switch_editor.get_state() and gtk_signal.type in {Gdk.EventType.FOCUS_CHANGE, Gdk.EventType.MOTION_NOTIFY}:
+            switch_editor.set_state(bool(not self.color_chooser.get_property(r'show-editor')))
 
+    def fillentry(self, _cmyk: tuple, _hsi: tuple, _hsv: tuple, _rgb: tuple, _yiq: tuple, update_cc: bool = True) -> None:
+        """Place the values in the entry boxes."""
+        self.entry_cmyk.set_text(str(_cmyk))
+        self.entry_hsi.set_text(str(_hsi))
+        self.entry_hsv.set_text(str(_hsv))
+        self.entry_rgb.set_text(str(_rgb))
+        self.entry_yiq.set_text(str(_yiq))
+        self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+        if update_cc:
+            _alpha: float = self.color_storage[r'Active_Color'].alpha
+            _red: float = float(_rgb[0]) / 255.0
+            _green: float = float(_rgb[1]) / 255.0
+            _blue: float = float(_rgb[2]) / 255.0
+            self.color_chooser.set_rgba(Gdk.RGBA(_red, _green, _blue, _alpha))
+            self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+        self.calc_related_colors()
 
-def conv_rgb(entry_widget: Gtk.Entry) -> None:
-    """Convert RGB to one of many formats."""
-    _rgb_entry: str = entry_widget.get_text()
-    if not _rgb_entry.startswith(r'('):
-        _rgb_entry = r'(' + _rgb_entry
-    if not _rgb_entry.endswith(r')'):
-        _rgb_entry += r')'
-    _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
-    _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
-    _blue: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\3', _rgb_entry))
-    # Conversions
-    _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
-    _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
-    _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
-    _rgb: tuple = (_red, _green, _blue)
-    _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
-    # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+    # CONVERT COLOR VALUES #
 
+    def calc_related_colors(self) -> None:
+        """Calculate the related colors."""
+        self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+        self.render_analogous_1_color(self.analogous_1_color, self.surface_analogous1_context)
+        self.render_analogous_2_color(self.analogous_2_color, self.surface_analogous2_context)
+        self.render_complementary_color(self.complementary_color, self.surface_complementary_context)
+        self.render_opposite_color(self.opposite_color, self.surface_opposite_context)
 
-def conv_hsi(entry_widget: Gtk.Entry) -> None:
-    """Convert HSL to one of many formats."""
-    _hsi_entry: str = entry_widget.get_text()
-    if not _hsi_entry.startswith(r'('):
-        _hsi_entry = r'(' + _hsi_entry
-    if not _hsi_entry.endswith(r')'):
-        _hsi_entry += r')'
-    _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsi_entry))
-    _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsi_entry))
-    _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsi_entry))
-    # Conversions
-    _hls: tuple = (_hue, _light, _sat)
-    _rgb: tuple = hsi2rgb(_hue, _light, _sat, False)
-    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
-    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
-    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
-    # Display
-    fillentry(_cmyk, _hls, _hsv, _rgb, _yiq)
+    def render_analogous_1_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+        """Calculate and render the first analogous color."""
+        if drawing_area is None:
+            drawing_area = self.analogous_1_color
+        if ctx is None:
+            ctx = self.surface_analogous1_context
+        # Calculate Related Color
+        _red, _green, _blue = analogous_1((self.color_storage[r'Active_Color'].red, self.color_storage[r'Active_Color'].green, self.color_storage[r'Active_Color'].blue), True)
+        self.color_storage[r'AnalogousColor1'] = Gdk.RGBA(_red, _green, _blue, 1.0)
+        # Set Color Label
+        self.label_analogous_1_parsed.set_text(rgb2html(_red, _green, _blue, True, True))
+        # Draw/Render Color
+        ctx.rectangle(0, 0, self.buffer_analogous1.get_width(), self.buffer_analogous1.get_height())
+        ctx.set_source_rgb(_red, _green, _blue)
+        ctx.fill()
+        self.buffer_analogous1.flush()
+        drawing_area.queue_draw()
 
+    def render_analogous_2_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+        """Calculate and render the first analogous color."""
+        if drawing_area is None:
+            drawing_area = self.analogous_2_color
+        if ctx is None:
+            ctx = self.surface_analogous2_context
+        # Calculate Related Color
+        _red, _green, _blue = analogous_2((self.color_storage[r'Active_Color'].red, self.color_storage[r'Active_Color'].green, self.color_storage[r'Active_Color'].blue), True)
+        self.color_storage[r'AnalogousColor2'] = Gdk.RGBA(_red, _green, _blue, 1.0)
+        # Set Color Label
+        self.label_analogous_2_parsed.set_text(rgb2html(_red, _green, _blue, True, True))
+        # Draw/Render Color
+        ctx.rectangle(0, 0, self.buffer_analogous2.get_width(), self.buffer_analogous2.get_height())
+        ctx.set_source_rgb(_red, _green, _blue)
+        ctx.fill()
+        self.buffer_analogous2.flush()
+        drawing_area.queue_draw()
 
-def conv_hsv(entry_widget: Gtk.Entry) -> None:
-    """Convert HSV to one of many formats."""
-    _hsv_entry: str = entry_widget.get_text()
-    if not _hsv_entry.startswith(r'('):
-        _hsv_entry = r'(' + _hsv_entry
-    if not _hsv_entry.endswith(r')'):
-        _hsv_entry += r')'
-    _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
-    _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
-    _value: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsv_entry))
-    # Conversions
-    _hsv: tuple = (_hue, _sat, _value)
-    _rgb: tuple = hsv2rgb(_hue, _sat, _value, False)
-    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
-    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
-    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
-    # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+    def render_complementary_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+        """Calculate and render the complementary color."""
+        if drawing_area is None:
+            drawing_area = self.complementary_color
+        if ctx is None:
+            ctx = self.surface_complementary_context
+        # Calculate Related Color
+        _red, _green, _blue = complement((self.color_storage[r'Active_Color'].red, self.color_storage[r'Active_Color'].green, self.color_storage[r'Active_Color'].blue), True)
+        self.color_storage[r'Complementary_Color'] = Gdk.RGBA(_red, _green, _blue, 1.0)
+        # Set Color Label
+        self.label_complementary_parsed.set_text(rgb2html(_red, _green, _blue, True, True))
+        # Draw/Render Color
+        ctx.rectangle(0, 0, self.buffer_complementary.get_width(), self.buffer_complementary.get_height())
+        ctx.set_source_rgb(_red, _green, _blue)
+        ctx.fill()
+        self.buffer_complementary.flush()
+        drawing_area.queue_draw()
 
+    def render_opposite_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+        """Calculate and render the opposite color."""
+        if drawing_area is None:
+            drawing_area = self.opposite_color
+        if ctx is None:
+            ctx = self.surface_opposite_context
+        # Calculate Related Color
+        _red, _green, _blue = opposite((self.color_storage[r'Active_Color'].red, self.color_storage[r'Active_Color'].green, self.color_storage[r'Active_Color'].blue), True)
+        self.color_storage[r'Opposite_Color'] = Gdk.RGBA(_red, _green, _blue, 1.0)
+        # Set Color Label
+        self.label_opposite_parsed.set_text(rgb2html(_red, _green, _blue, True, True))
+        # Draw/Render Color
+        ctx.rectangle(0, 0, self.buffer_opposite.get_width(), self.buffer_opposite.get_height())
+        ctx.set_source_rgb(_red, _green, _blue)
+        ctx.fill()
+        self.buffer_opposite.flush()
+        drawing_area.queue_draw()
 
-def conv_cmyk(entry_widget: Gtk.Entry) -> None:
-    """Convert CMYK to one of many formats."""
-    _cmyk_entry: str = entry_widget.get_text()
-    if not _cmyk_entry.startswith(r'('):
-        _cmyk_entry = r'(' + _cmyk_entry
-    if not _cmyk_entry.endswith(r')'):
-        _cmyk_entry += r')'
-    _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
-    _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
-    _yellow: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\3', _cmyk_entry))
-    _black: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\4', _cmyk_entry))
-    # Conversions
-    _cmyk: tuple = (_cyan, _magenta, _yellow, _black)
-    _rgb: tuple = cmyk2rgb(_cyan, _magenta, _yellow, _black, False)
-    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
-    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
-    _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
-    # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+    def conv_color(self, cc_widget: Gtk.ColorChooserWidget) -> None:
+        """Convert selected color to one of many formats."""
+        self.color_storage[r'Active_Color'] = cc_widget.get_rgba()
+        _red: int = int(round(float(self.color_storage[r'Active_Color'].red) * 255.0))
+        _green: int = int(round(float(self.color_storage[r'Active_Color'].green) * 255.0))
+        _blue: int = int(round(float(self.color_storage[r'Active_Color'].blue) * 255.0))
+        # Conversions
+        _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
+        _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
+        _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
+        _rgb: tuple = (_red, _green, _blue)
+        _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
+        # Display
+        self.fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq, False)
 
+    def conv_rgb(self, entry_widget: Gtk.Entry) -> None:
+        """Convert RGB to one of many formats."""
+        _rgb_entry: str = entry_widget.get_text()
+        if not _rgb_entry.startswith(r'('):
+            _rgb_entry = r'(' + _rgb_entry
+        if not _rgb_entry.endswith(r')'):
+            _rgb_entry += r')'
+        _red: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\1', _rgb_entry))
+        _green: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\2', _rgb_entry))
+        _blue: int = int(rgxsub(PARSE_TUPLE_OF_3, r'\3', _rgb_entry))
+        # Conversions
+        _cmyk: tuple = rgb2cmyk(_red, _green, _blue, False)
+        _hsi: tuple = rgb2hsi(_red, _green, _blue, False)
+        _hsv: tuple = rgb2hsv(_red, _green, _blue, False)
+        _rgb: tuple = (_red, _green, _blue)
+        _yiq: tuple = rgb2yiq(_red, _green, _blue, False)
+        # Display
+        self.fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
 
-def conv_yiq(entry_widget: Gtk.Entry) -> None:
-    """Convert YIQ to one of many formats."""
-    _yiq_entry: str = entry_widget.get_text()
-    if not _yiq_entry.startswith(r'('):
-        _yiq_entry = r'(' + _yiq_entry
-    if not _yiq_entry.endswith(r')'):
-        _yiq_entry += r')'
-    _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq_entry))
-    _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq_entry))
-    _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq_entry))
-    # Conversions
-    _rgb: tuple = yiq2rgb(_y, _i, _q, False)
-    _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
-    _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
-    _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
-    # Display
-    fillentry(_cmyk, _hsi, _hsv, _rgb, (_y, _i, _q))
+    def conv_hsi(self, entry_widget: Gtk.Entry) -> None:
+        """Convert HSL to one of many formats."""
+        _hsi_entry: str = entry_widget.get_text()
+        if not _hsi_entry.startswith(r'('):
+            _hsi_entry = r'(' + _hsi_entry
+        if not _hsi_entry.endswith(r')'):
+            _hsi_entry += r')'
+        _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsi_entry))
+        _light: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsi_entry))
+        _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsi_entry))
+        # Conversions
+        _hls: tuple = (_hue, _light, _sat)
+        _rgb: tuple = hsi2rgb(_hue, _light, _sat, False)
+        _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+        _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+        _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+        # Display
+        self.fillentry(_cmyk, _hls, _hsv, _rgb, _yiq)
+
+    def conv_hsv(self, entry_widget: Gtk.Entry) -> None:
+        """Convert HSV to one of many formats."""
+        _hsv_entry: str = entry_widget.get_text()
+        if not _hsv_entry.startswith(r'('):
+            _hsv_entry = r'(' + _hsv_entry
+        if not _hsv_entry.endswith(r')'):
+            _hsv_entry += r')'
+        _hue: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _hsv_entry))
+        _sat: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _hsv_entry))
+        _value: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _hsv_entry))
+        # Conversions
+        _hsv: tuple = (_hue, _sat, _value)
+        _rgb: tuple = hsv2rgb(_hue, _sat, _value, False)
+        _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+        _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+        _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+        # Display
+        self.fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+    def conv_cmyk(self, entry_widget: Gtk.Entry) -> None:
+        """Convert CMYK to one of many formats."""
+        _cmyk_entry: str = entry_widget.get_text()
+        if not _cmyk_entry.startswith(r'('):
+            _cmyk_entry = r'(' + _cmyk_entry
+        if not _cmyk_entry.endswith(r')'):
+            _cmyk_entry += r')'
+        _cyan: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\1', _cmyk_entry))
+        _magenta: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\2', _cmyk_entry))
+        _yellow: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\3', _cmyk_entry))
+        _black: float = float(rgxsub(PARSE_TUPLE_OF_4, r'\4', _cmyk_entry))
+        # Conversions
+        _cmyk: tuple = (_cyan, _magenta, _yellow, _black)
+        _rgb: tuple = cmyk2rgb(_cyan, _magenta, _yellow, _black, False)
+        _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+        _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+        _yiq: tuple = rgb2yiq(_rgb[0], _rgb[1], _rgb[2], False)
+        # Display
+        self.fillentry(_cmyk, _hsi, _hsv, _rgb, _yiq)
+
+    def conv_yiq(self, entry_widget: Gtk.Entry) -> None:
+        """Convert YIQ to one of many formats."""
+        _yiq_entry: str = entry_widget.get_text()
+        if not _yiq_entry.startswith(r'('):
+            _yiq_entry = r'(' + _yiq_entry
+        if not _yiq_entry.endswith(r')'):
+            _yiq_entry += r')'
+        _y: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\1', _yiq_entry))
+        _i: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\2', _yiq_entry))
+        _q: float = float(rgxsub(PARSE_TUPLE_OF_3, r'\3', _yiq_entry))
+        # Conversions
+        _rgb: tuple = yiq2rgb(_y, _i, _q, False)
+        _cmyk: tuple = rgb2cmyk(_rgb[0], _rgb[1], _rgb[2], False)
+        _hsi: tuple = rgb2hsi(_rgb[0], _rgb[1], _rgb[2], False)
+        _hsv: tuple = rgb2hsv(_rgb[0], _rgb[1], _rgb[2], False)
+        # Display
+        self.fillentry(_cmyk, _hsi, _hsv, _rgb, (_y, _i, _q))
 
 
 # MAIN #
 
 
 if __name__ == '__main__':
-    # Build GUI
-    USER_INTERFACE: Gtk.Builder = Gtk.Builder()
-    USER_INTERFACE.add_from_string(buffer=_GCOLOR)
-    del _GCOLOR
-    # Get GTK Objects
-    UI_GET_OBJECT = USER_INTERFACE.get_object
-    COLOR_CHOOSER = UI_GET_OBJECT(r'cc')
-    ENTRY_CMYK = UI_GET_OBJECT(r'entry_cmyk')
-    ENTRY_HSI = UI_GET_OBJECT(r'entry_hsi')
-    ENTRY_HSV = UI_GET_OBJECT(r'entry_hsv')
-    ENTRY_RGB = UI_GET_OBJECT(r'entry_rgb')
-    ENTRY_YIQ = UI_GET_OBJECT(r'entry_yiq')
-    # Match signal to function (handler)
-    USER_INTERFACE.connect_signals({
-        r'_winexit': Gtk.main_quit,
-        r'conv_cmyk': conv_cmyk,
-        r'conv_color': conv_color,
-        r'conv_hsi': conv_hsi,
-        r'conv_hsv': conv_hsv,
-        r'conv_rgb': conv_rgb,
-        r'conv_yiq': conv_yiq,
-        r'correct_editor_switch': correct_editor_switch,
-        r'toggle_editor': toggle_editor
-    })
-    # Show Window
-    Gtk.main()
+    MAIN_WINDOW = ColorProcessing()
+    del MAIN_WINDOW
     raise SystemExit(0)
