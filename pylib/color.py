@@ -6,7 +6,7 @@
 
 @file color.py
 @package pybooster.color
-@version 2019.08.31
+@version 2020.01.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -40,6 +40,8 @@ __all__: list = [
     r'huefloat2huedegree',
     # COLOR THEORY FUNCTIONS #
     r'analogous',
+    r'analogous_1',
+    r'analogous_2',
     r'complement',
     r'opposite',
     # HTML #
@@ -155,6 +157,26 @@ def analogous(_rgb: tuple, _float_notation: bool = True) -> tuple:
     _hue, _light, _sat = rgb2hls(_rgb[0], _rgb[1], _rgb[2], _float_notation)
     _hue_deg: tuple = ((_hue + 0.0833333333333334) % 1, (_hue - 0.0833333333333334) % 1)
     return hls2rgb(_hue_deg[0], _light, _sat, _float_notation), hls2rgb(_hue_deg[1], _light, _sat, _float_notation)
+
+
+def analogous_1(_rgb: tuple, _float_notation: bool = True) -> tuple:
+    """Calculate the first analogous color.
+
+    >>> analogous_1((98, 182, 17), False)
+    (17, 182, 19)
+    """
+    _hue, _light, _sat = rgb2hls(_rgb[0], _rgb[1], _rgb[2], _float_notation)
+    return hls2rgb((_hue + 0.0833333333333334) % 1, _light, _sat, _float_notation)
+
+
+def analogous_2(_rgb: tuple, _float_notation: bool = True) -> tuple:
+    """Calculate the second analogous color.
+
+    >>> analogous_2((98, 182, 17), False)
+    (181, 182, 17)
+    """
+    _hue, _light, _sat = rgb2hls(_rgb[0], _rgb[1], _rgb[2], _float_notation)
+    return hls2rgb((_hue - 0.0833333333333334) % 1, _light, _sat, _float_notation)
 
 
 def complement(rgba: tuple, _float_notation: bool = True) -> tuple:
