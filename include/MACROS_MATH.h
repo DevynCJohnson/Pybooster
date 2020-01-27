@@ -217,14 +217,14 @@ LIB_FUNC int matherr(struct exception* restrict exc) {
 
 
 #ifdef ARCHX86
-static const UNUSED int flt_rounds_map[4] = {
+static const UNUSED align32 int flt_rounds_map[4] = {
 	1,  //!< Round to nearest
 	3,  //!< Round to zero
 	2,  //!< Round to negative infinity
 	0  //!< Round to positive infinity
 };
 LIB_FUNC int __flt_rounds(void) {
-	int x;
+	int x = 0;
 	asm ("fnstcw %0;" : "=m"(x));  // Assume that the x87 and the SSE unit agree on the rounding mode
 	return (int)(flt_rounds_map[(x >> 10) & 3]);
 }
@@ -6437,10 +6437,10 @@ LIB_FUNC MATH_FUNC long double __invtrigl_R(const long double z) {
 
 
 LIB_FUNC int __rem_pio2_large(double* restrict x, double* restrict y, const int e0, const int nx, const int prec, const int32_t xitems) {
-	const int align8 init_jk[4] align16 = { 3, 4, 4, 6 };
+	const align16 int align8 init_jk[4] = { 3, 4, 4, 6 };
 	aln_double_t f[20] = { 0 }, q[20] = { 0 };
-	const int32_t jk align8 = init_jk[((prec < 0 || prec > 3) ? 3 : prec)];
-	const int32_t jx align8 = (nx - 1);
+	const align8 int32_t jk = init_jk[((prec < 0 || prec > 3) ? 3 : prec)];
+	const align8 int32_t jx = (nx - 1);
 	register int32_t i = 0;
 	register int32_t jv = (int32_t)((e0 - 3) / 24);
 	if (jv < 0) { jv = 0; }
@@ -7881,7 +7881,7 @@ LIB_FUNC MATH_FUNC float cosf(const float x) {
 	ix &= 0x7fffffff;
 	if (ix <= 0x3f490fd8) { return __kernel_cosf(x, 0.0F); }
 	else if (!FLT_UWORD_IS_FINITE(ix)) { return x - x; }
-	double y[2] align16 = { 0 };
+	align16 double y[2] = { 0 };
 	const int32_t n = __rem_pio2((double)x, &y);
 	const float y0 = (float)y[0], y1 = (float)y[1];
 	switch ((n & 3)) {
@@ -7910,7 +7910,7 @@ LIB_FUNC MATH_FUNC double cos(const double x) {
 	if (ix <= 0x3fe921fb) { return __kernel_cos(x, 0.0); }
 	else if (ix >= 0x7ff00000) { return x - x; }
 	else {
-		double y[2] align16 = { 0 };
+		align16 double y[2] = { 0 };
 		const int32_t n = __ieee754_rem_pio2(x, &y);
 		switch ((n & 3)) {
 			case 0:
@@ -8078,7 +8078,7 @@ LIB_FUNC MATH_FUNC float sinf(const float x) {
 	if (ix <= 0x3f490fd8) { return __kernel_sinf(x, 0.0F, 0); }
 	else if (!FLT_UWORD_IS_FINITE(ix)) { return x - x; }
 	else {
-		double y[2] align16 = { 0 };
+		align16 double y[2] = { 0 };
 		const int32_t n = __rem_pio2((double)x, &y);
 		const float y0 = (float)y[0], y1 = (float)y[1];
 		switch (n & 3) {
@@ -8108,7 +8108,7 @@ LIB_FUNC MATH_FUNC double sin(const double x) {
 	if (ix <= 0x3fe921fb) { return __kernel_sin(x, 0.0, 0); }
 	else if (ix >= 0x7ff00000) { return x - x; }
 	else {
-		double y[2] align16 = { 0 };
+		align16 double y[2] = { 0 };
 		const int32_t n = __ieee754_rem_pio2(x, &y);
 		switch (n & 3) {
 			case 0:

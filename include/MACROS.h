@@ -7348,7 +7348,7 @@ LIB_FUNC int not_null_ptr(/*@unused@*/ const void* restrict ptr) {
 }
 
 
-static const UNUSED unsigned char integer_table[264] align512 = {
+static const UNUSED align512 unsigned char integer_table[264] = {
 	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
 	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
 	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
@@ -7366,58 +7366,58 @@ static const UNUSED unsigned char integer_table[264] align512 = {
 	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU,
 	0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU
 };
-static const UNUSED int positive_tens[8] align32 = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
+static const UNUSED align32 int positive_tens[8] = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
 #ifndef PADSIZE
 /** Pad chunk size */
 #   define PADSIZE   16
 #endif
-static const UNUSED char fcvt_zeros[16] align16 = "000000000000000";
-static const UNUSED char blanks[PADSIZE] align16 = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-static const UNUSED char zeroes[PADSIZE] align16 = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
-static const UNUSED char period[2] align4 = ".";
+static const UNUSED align16 char fcvt_zeros[16] = "000000000000000";
+static const UNUSED align16 char blanks[PADSIZE] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+static const UNUSED align16 char zeroes[PADSIZE] = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
+static const UNUSED align4 char period[2] = ".";
 #define _ALPHABET   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define _alphabet   "abcdefghijklmnopqrstuvwxyz"
 #define _numbers   "0123456789"
 #define _digits   _numbers
 #define _hexnumbers   "0123456789ABCDEFabcdef"
 #define _hexdigits   _hexnumbers
-static const UNUSED char digits[16] align16 = _digits;
+static const UNUSED align16 char digits[16] = _digits;
 #define str_digit   digits
-static const UNUSED char hexdigits[32] align32 = _hexnumbers;
+static const UNUSED align32 char hexdigits[32] = _hexnumbers;
 #define xdigits   hexdigits
-static const UNUSED char xdigits_l[32] align32 = "0123456789abcdef";
-static const UNUSED char xdigits_u[32] align32 = "0123456789ABCDEF";
+static const UNUSED align32 char xdigits_l[32] = "0123456789abcdef";
+static const UNUSED align32 char xdigits_u[32] = "0123456789ABCDEF";
 #define hexdigits_l   xdigits_l
 #define hexdigits_u   xdigits_u
-static const UNUSED char octal_digits[16] align16 = "01234567";
-static const UNUSED char ALPHABET[32] align32 = _ALPHABET;
-static const UNUSED char alphabet[32] align32 = _alphabet;
-static const UNUSED char a64l_digits[65] align128 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+static const UNUSED align16 char octal_digits[16] = "01234567";
+static const UNUSED align32 char ALPHABET[32] = _ALPHABET;
+static const UNUSED align32 char alphabet[32] = _alphabet;
+static const UNUSED align128 char a64l_digits[65] = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 /** Upper-case digits */
-static const UNUSED char _itoa_upper_digits[64] align128 = _numbers _ALPHABET;
+static const UNUSED align128 char _itoa_upper_digits[64] = _numbers _ALPHABET;
 /** Lower-case digits */
-static const UNUSED char _itoa_lower_digits[64] align64 = _numbers _alphabet;
-static const UNUSED char not_available[4] align4 = "\377";
-static const UNUSED char null_indicator[8] align8 = "(NULL)";
-static const UNUSED char empty[2] align2 = "";
-static const UNUSED char null_char[2] align2 = "\0";
-static const UNUSED char NEWLINE[4] align4 = { '\n', '\n', '\0', '\0' };
+static const UNUSED align64 char _itoa_lower_digits[64] = _numbers _alphabet;
+static const UNUSED align4 char not_available[4] = "\377";
+static const UNUSED align8 char null_indicator[8] = "(NULL)";
+static const UNUSED align2 char empty[2] = "";
+static const UNUSED align2 char null_char[2] = "\0";
+static const UNUSED align4 char NEWLINE[4] = { '\n', '\n', '\0', '\0' };
 /** The set of "direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr */
-static const UNUSED unsigned char direct_tab[16] align16 = {
+static const UNUSED align16 unsigned char direct_tab[16] = {
 	0U, 0x26U, 0U, 0U, 0x81U, 0xf3U, 0xffU, 0x87U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
 };
 /** The set of "direct and optional direct characters": A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr ! " # $ % & * ; < = > @ [ ] ^ _ ` { | } */
-static const UNUSED unsigned char xdirect_tab[16] align16 = {
+static const UNUSED align16 unsigned char xdirect_tab[16] = {
 	0U, 0x26U, 0U, 0U, 0xffU, 0xf7U, 0xffU, 0xffU, 0xffU, 0xffU, 0xffU, 0xefU, 0xffU, 0xffU, 0xffU, 0x3fU
 };
 /** The set of "extended base64 characters": A-Z a-z 0-9 + / - */
-static const UNUSED unsigned char xbase64_tab[16] align16 = {
+static const UNUSED align16 unsigned char xbase64_tab[16] = {
 	0U, 0U, 0U, 0U, 0U, 0xa8U, 0xffU, 3U, 0xfeU, 0xffU, 0xffU, 7U, 0xfeU, 0xffU, 0xffU, 7U
 };
-static const UNUSED int nibblemap[16] align64 = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
+static const UNUSED align64 int nibblemap[16] = { 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 };
 #define A64L_TABLE_BASE   46
 #define A64L_TABLE_SIZE   77
-static const UNUSED char a64l_table[77] align128 = {
+static const UNUSED align128 char a64l_table[77] = {
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,
 	0x40, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 	27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 0x40, 0x40, 0x40, 0x40, 0x40,
@@ -7436,10 +7436,10 @@ UNUSED char** environ = NULL;
 UNUSED char** __env_map = NULL;
 static atomic volatile UNUSED int exit_counter;
 static volatile UNUSED int progslot;
-static atomic volatile UNUSED int tmlock[2] align8 = { 0, 0 };
-static atomic volatile UNUSED int memlock[2] align8 = { 0, 0 };
-static const UNUSED unsigned int __page_size align8 = (unsigned int)PAGE_SIZE;
-static const UNUSED unsigned int __page_shift align8 = (unsigned int)PAGE_SHIFT;
+static atomic volatile UNUSED align8 int tmlock[2] = { 0, 0 };
+static atomic volatile UNUSED align8 int memlock[2] = { 0, 0 };
+static const UNUSED align8 unsigned int __page_size = (unsigned int)PAGE_SIZE;
+static const UNUSED align8 unsigned int __page_shift = (unsigned int)PAGE_SHIFT;
 #define __getpagesize()   ((unsigned int)__page_size)
 #define getpagesize()   ((unsigned int)__page_size)
 #define __getpageshift()   ((unsigned int)__page_shift)
@@ -9104,19 +9104,19 @@ __extension__ static const UNUSED decimal128 zerodl = 0.0DL;
 #      endif
 #   endif
 #endif
-static const UNUSED float ZEROF[2] align16 = { 0.0F, -0.0F };
-static const UNUSED double ZERO[2] align16 = { 0.0, -0.0 };
+static const UNUSED align16 float ZEROF[2] = { 0.0F, -0.0F };
+static const UNUSED align16 double ZERO[2] = { 0.0, -0.0 };
 #if SUPPORTS_LONG_DOUBLE
-static const UNUSED long double ZEROL[2] align32 = { 0.0L, -0.0L };
+static const UNUSED align32 long double ZEROL[2] = { 0.0L, -0.0L };
 #endif
 #if (SUPPORTS_FLOAT128 && SUPPORTS_F128)
-__extension__ static const UNUSED float128 ZEROQ[2] align32 = { 0.0F128, -0.0F128 };
+__extension__ static const UNUSED align32 float128 ZEROQ[2] = { 0.0F128, -0.0F128 };
 #endif
 #if SUPPORTS_DECIMAL_FLOATS
-__extension__ static const UNUSED decimal32 ZERODF[2] align16 = { 0.0DF, -0.0DF };
-__extension__ static const UNUSED decimal64 ZERODD[2] align16 = { 0.0DD, -0.0DD };
+__extension__ static const UNUSED align16 decimal32 ZERODF[2] = { 0.0DF, -0.0DF };
+__extension__ static const UNUSED align16 decimal64 ZERODD[2] = { 0.0DD, -0.0DD };
 #   if SUPPORTS_DECIMAL128
-__extension__ static const UNUSED decimal128 ZERODL[2] align32 = { 0.0DL, -0.0DL };
+__extension__ static const UNUSED align32 decimal128 ZERODL[2] = { 0.0DL, -0.0DL };
 #   endif
 #endif
 #define NEG_ZERO   (-0.0)
@@ -9250,7 +9250,7 @@ __extension__ static const UNUSED decimal128 ZERODL[2] align32 = { 0.0DL, -0.0DL
 #   define ipio2_items   66
 #endif
 
-static const UNUSED int32_t ipio2[ipio2_items] align32 = {
+static const UNUSED align32 int32_t ipio2[ipio2_items] = {
 	0xa2f983, 0x6e4e44, 0x1529fc, 0x2757d1, 0xf534dd, 0xc0db62,
 	0x95993c, 0x439041, 0xfe5163, 0xabdebb, 0xc561b7, 0x246e3a,
 	0x424dd2, 0xe00649, 0x2eea09, 0xd1921c, 0xfe1deb, 0x1cb129,
@@ -9371,14 +9371,14 @@ static const UNUSED int32_t ipio2[ipio2_items] align32 = {
 };
 
 /** 0x4b000000, 0xcb000000 */
-static const UNUSED float TWO23[2] align16 = { 8.3886080000E+6F, -8.3886080000E+6F };
+static const UNUSED align16 float TWO23[2] = { 8.3886080000E+6F, -8.3886080000E+6F };
 
 /** 0x43300000, 0xc3300000 */
-static const UNUSED double TWO52[2] align16 = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
+static const UNUSED align16 double TWO52[2] = { 4.50359962737049600000E+15, -4.50359962737049600000E+15 };
 
 #if SUPPORTS_LONG_DOUBLE
 /** 0x406f000000000000, 0xc06f000000000000 */
-static const UNUSED long double TWO112[2] align32 = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
+static const UNUSED align32 long double TWO112[2] = { 5.19229685853482762853049632922009600E+33L, -5.19229685853482762853049632922009600E+33L };
 #endif
 
 static const UNUSED double BIGX = 7.09782712893383973096E+2;
@@ -9388,7 +9388,7 @@ static const UNUSED double z_rooteps = 7.4505859692E-9;
 /** This variable is used by `gamma()` and `lgamma()` */
 extern UNUSED int signgam;
 
-static const UNUSED double GAMMA_INTEGRAL[32] align64 = {
+static const UNUSED align64 double GAMMA_INTEGRAL[32] = {
 	1.0, 1.0, 2.0, 6.0,
 	24.0, 120.0, 720.0, 5040.0,
 	40320.0, 362880.0, 3628800.0, 39916800.0,
@@ -9405,7 +9405,7 @@ static const UNUSED double GAMMA_INTEGRAL[32] align64 = {
 	1124000727777607680000.0
 };
 
-static const UNUSED double LANCZOS_DEN_COEFFS[16] align64 = {
+static const UNUSED align64 double LANCZOS_DEN_COEFFS[16] = {
 	0.0, 39916800.0,
 	120543840.0, 150917976.0,
 	105258076.0, 45995730.0,
@@ -9414,7 +9414,7 @@ static const UNUSED double LANCZOS_DEN_COEFFS[16] align64 = {
 	1925.0, 66.0, 1.0
 };
 
-static const UNUSED double LANCZOS_NUM_COEFFS[16] align64 = {
+static const UNUSED align64 double LANCZOS_NUM_COEFFS[16] = {
 	23531376880.410759688572007674451636754734846804940,
 	42919803642.649098768957899047001988850926355848959,
 	35711959237.355668049440185451547166705960488635843,
@@ -9430,19 +9430,19 @@ static const UNUSED double LANCZOS_NUM_COEFFS[16] align64 = {
 	2.5066282746310002701649081771338373386264310793408
 };
 
-static const UNUSED double PIo2[8] align32 = {
+static const UNUSED align32 double PIo2[8] = {
 	1.57079625129699707031, 7.54978941586159635335E-08,
 	5.39030252995776476554E-15, 3.28200341580791294123E-22,
 	1.27065575308067607349E-29, 1.22933308981111328932E-36,
 	2.73370053816464559624E-44, 2.16741683877804819444E-51
 };
 
-static const UNUSED char debruijn32[32] align32 = {
+static const UNUSED align32 char debruijn32[32] = {
 	0, 1, 23, 2, 29, 24, 19, 3, 30, 27, 25, 11, 20, 8, 4, 13,
 	31, 22, 28, 18, 26, 10, 7, 12, 21, 17, 9, 6, 16, 5, 15, 14
 };
 
-static const UNUSED char debruijn64[64] align64 = {
+static const UNUSED align64 char debruijn64[64] = {
 	0, 1, 2, 53, 3, 7, 54, 27, 4, 38, 41, 8, 34, 55, 48, 28, 62, 5,
 	39, 46, 44, 42, 22, 9, 24, 35, 59, 56, 49, 18, 29, 11, 63, 52, 6,
 	26, 37, 40, 33, 47, 61, 45, 43, 21, 23, 58, 17, 10, 51, 25, 36,

@@ -1538,8 +1538,8 @@ static const UNUSED char* const h_errlist[8] = {
 	"\0"
 };
 #define h_nerr   (int)(sizeof(h_errlist) / sizeof(h_errlist[0]))
-static const UNUSED char error_msg[16] align16 = "Resolver error\0";
-static const UNUSED char colon_space[4] align8 = ": \0";
+static const UNUSED align16 char error_msg[16] = "Resolver error\0";
+static const UNUSED align8 char colon_space[4] = ": \0";
 #ifdef _BSD_SOURCE
 /** Use `strerror()` instead */
 static const UNUSED char* const sys_errlist[];
@@ -3208,7 +3208,7 @@ LIB_FUNC char* strerror(const int err) {
 	for (; _mi->msg; _mi++) {
 		if (_mi->errno == err) { return UNCONST(_mi->msg); }
 	}
-	static char tmpbuf[29] align32 = "Unknown Error: code \0\0\0\0\0\0\0\0\0";
+	static align32 char tmpbuf[29] = "Unknown Error: code \0\0\0\0\0\0\0\0\0";
 	char* restrict p = tmpbuf + 20;
 	register int i = err;
 	if (err < 0) { *p++ = '-'; i *= -1; }
@@ -18386,7 +18386,7 @@ Return the alignment of a given string address */
 #define LEN   3
 
 
-static const UNUSED uint8_t next_state[16] align16 = {
+static const UNUSED align16 uint8_t next_state[16] = {
 	S_N, S_I, S_Z,  // S_N
 	S_N, S_I, S_I,  // S_I
 	S_N, S_F, S_F,  // S_F
@@ -18394,7 +18394,7 @@ static const UNUSED uint8_t next_state[16] align16 = {
 };
 
 
-static const UNUSED int8_t result_type[36] align64 = {
+static const UNUSED align64 int8_t result_type[36] = {
 	CMP, CMP, CMP, CMP, LEN, CMP, CMP, CMP, CMP,  // S_N
 	CMP, -1, -1, +1, LEN, LEN, +1, LEN, LEN,  // S_I
 	CMP, CMP, CMP, CMP, CMP, CMP, CMP, CMP, CMP,  // S_F
@@ -18592,8 +18592,8 @@ LIB_FUNC const char* fourbyte_memmem(const unsigned char* restrict h, const size
 
 
 LIB_FUNC const char* twoway_memmem(const unsigned char* restrict h, const unsigned char* restrict z, const unsigned char* restrict n, const size_t l) {
-	size_t byteset[32 / SIZEOF_SIZE_T] align64 = { 0 };
-	size_t shift[256] align256 = { 0 };
+	align64 size_t byteset[32 / SIZEOF_SIZE_T] = { 0 };
+	align256 size_t shift[256] = { 0 };
 	register size_t i = 0;
 	for (; i < l; i++) {
 		((byteset)[(size_t)(n[i]) / (8 * sizeof(*(byteset)))] |= (size_t)1 << ((size_t)(n[i]) % (8 * sizeof(*(byteset)))));
@@ -19366,8 +19366,8 @@ LIB_FUNC const char* fourbyte_strstr(const unsigned char* restrict h, const unsi
 
 
 LIB_FUNC char* twoway_strstr(unsigned char* h, const unsigned char* n) {
-	size_t byteset[32 / SIZEOF_SIZE_T] align64 = { 0 };
-	size_t shift[256] align256 = { 0 };
+	align64 size_t byteset[32 / SIZEOF_SIZE_T] = { 0 };
+	align256 size_t shift[256] = { 0 };
 	register size_t l = 0;
 	for (; n[l] && h[l]; l++) {
 		byteset[(size_t)(n[l]) / (8 * SIZEOF_POINTER)] |= (size_t)1U << ((size_t)(n[l]) % (8 * SIZEOF_POINTER));
@@ -19777,7 +19777,7 @@ LIB_FUNC int fullrune(const char* restrict str, const int n) {
 /** Accumulate ADD into SUM; No attempt is made to be thread-safe */
 #define HP_TIMING_ACCUM_NT(Sum, Diff)   ((Sum) += (Diff))
 /** Write a decimal representation of the timing value into the given string */
-#define HP_TIMING_PRINT(Dest, Len, Val)   do { char __buf[20] align32 = { 0 }; char* __dest = (Dest); const size_t __len = (Len); char* __cp = itoa2((Val), (__buf + sizeof(__buf))); const size_t __cp_len = MIN((__buf + sizeof(__buf) - __cp), __len); memcpy_no_output(__dest, __cp, __cp_len); memcpy_no_output(__dest + __cp_len, " cycles", MIN(__len - __cp_len, 7)); __dest[__len - 1] = '\0'; } while (0x0)
+#define HP_TIMING_PRINT(Dest, Len, Val)   do { align32 char __buf[20] = { 0 }; char* __dest = (Dest); const size_t __len = (Len); char* __cp = itoa2((Val), (__buf + sizeof(__buf))); const size_t __cp_len = MIN((__buf + sizeof(__buf) - __cp), __len); memcpy_no_output(__dest, __cp, __cp_len); memcpy_no_output(__dest + __cp_len, " cycles", MIN(__len - __cp_len, 7)); __dest[__len - 1] = '\0'; } while (0x0)
 
 
 /** @def HP_TIMING_AVAIL
@@ -21458,7 +21458,7 @@ LIB_FUNC int acct(const char* filename) {
 #ifdef SYS_prctl
 /** Control process execution */
 LIB_FUNC int prctl(const int op, ...) {
-	unsigned long x[4] align32 = { 0 };
+	align32 unsigned long x[4] = { 0 };
 	va_list ap;
 	va_start(ap, op);
 	register int i = 0;
@@ -24577,22 +24577,22 @@ locale_t uselocale(locale_t);
 static const UNUSED char c_time[316] = "Sun\0Mon\0Tue\0Wed\0Thu\0Fri\0Sat\0Sunday\0Monday\0Tuesday\0Wednesday\0Thursday\0Friday\0Saturday\0Jan\0Feb\0Mar\0Apr\0May\0Jun\0Jul\0Aug\0Sep\0Oct\0Nov\0Dec\0January\0February\0March\0April\0May\0June\0July\0August\0September\0October\0November\0December\0AM\0PM\0%a %b %e %T %Y\0%m/%d/%y\0%H:%M:%S\0%I:%M:%S %p\0\0\0%m/%d/%y\00123456789\0%a %b %e %T %Y\0%H:%M:%S";
 
 
-static const UNUSED char c_messages[32] align32 = "^[yY]\0" "^[nN]\0" "yes\0" "no";
-static const UNUSED char c_numeric[4] align8 = ".\0" "";
-static const UNUSED char sweekdays[8][4] align32 = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "\0" };
+static const UNUSED align32 char c_messages[32] = "^[yY]\0" "^[nN]\0" "yes\0" "no";
+static const UNUSED align8 char c_numeric[4] = ".\0" "";
+static const UNUSED align32 char sweekdays[8][4] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "\0" };
 
 
-static const UNUSED char weekdays[8][16] align128 = {
+static const UNUSED align128 char weekdays[8][16] = {
 	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "\0"
 };
 
 
-static const UNUSED char smonths[16][4] align64 = {
+static const UNUSED align64 char smonths[16][4] = {
 	"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "\0", "\0", "\0", "\0"
 };
 
 
-static const UNUSED char months[16][16] align256 = {
+static const UNUSED align256 char months[16][16] = {
 	"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "\0", "\0", "\0", "\0"
 };
 
@@ -24707,8 +24707,8 @@ LIB_FUNC const char* nl_langinfo_fast(const nl_item x) {
 #define _XLOCALE_MONETARY_H_   (1)
 
 
-static const UNUSED uint32_t conversion_rate[2] align32 = { 1, 1 };
-static const UNUSED char numempty[2] align16 = { CHAR_MAX, '\0'};
+static const UNUSED align32 uint32_t conversion_rate[2] = { 1, 1 };
+static const UNUSED align16 char numempty[2] = { CHAR_MAX, '\0'};
 
 
 typedef struct lc_monetary_T {
@@ -25309,7 +25309,7 @@ LIB_FUNC NONNULL void out_wchar(FILE* restrict fp, const wchar_t* restrict s, si
 
 LIB_FUNC NONNULL void pad_char(FILE* restrict fp, const char c, const int w, const int len, const int _fl) {
 	if (_fl & (int)(LEFT_ADJ | ZERO_PAD) || len >= w) { return; }
-	char pad[256] align256 = { 0 };
+	align256 char pad[256] = { 0 };
 	register size_t l = (size_t)(w - len);
 	memset_no_output(pad, c, (size_t)(l > sizeof(pad) ? sizeof(pad) : l));
 	for (; l >= sizeof(pad); l -= sizeof(pad)) { out_char(fp, pad, sizeof(pad)); }
@@ -25567,11 +25567,11 @@ Format specifiers follow this layout: %[flags][width][.precision][length]specifi
 LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* restrict fn, const char* format, va_list arg_ptr) {
 	ssize_t len = 0;
 	char buf[PRINTF_BUF_SIZE] = { 0 };
-	char* restrict bufptr align_ptr = buf;
-	ssize_t buf_space_left align_ptr = PRINTF_BUF_SIZE - 1;
+	align_ptr char* restrict bufptr = buf;
+	align_ptr ssize_t buf_space_left = PRINTF_BUF_SIZE - 1;
 	char xbuf[PRINTF_BUF_SIZE] = { 0 };  // Extra buffer
-	UNUSED char* restrict xptr align_ptr = xbuf;
-	int tmpi align_ptr = 0;
+	UNUSED align_ptr char* restrict xptr = xbuf;
+	align_ptr int tmpi = 0;
 	while (*format) {
 		ssize_t fmt_flag_pos = skip_to(format);  // Location of "%" in string
 		// Test if "%" is in the format string
@@ -25867,7 +25867,7 @@ goto_char_printf:
 #   ifndef NO_PRINT_STRINGS  // Prepare string output
 goto_string_printf:
 				{
-					union __union_v_printf_buf { char* str; const char* cstr; } u_str align_ptr = { NULL };
+					align_ptr union __union_v_printf_buf { char* str; const char* cstr; } u_str = { NULL };
 					switch (flag_sign) {
 #      ifndef NO_PRINT_M
 						case 'm':  // Write an error message
@@ -25961,9 +25961,9 @@ goto_inum_printf:
 						unsigned long ulnumber;
 						unsigned long long ullnumber;
 					} pfmtnum = { .ullnumber = 0 };
-					char prefix_buf[4] align_ptr = { 0 };
+					align_ptr char prefix_buf[4] = { 0 };
 					char* restrict prefix_ptr = prefix_buf;
-					char suffix_buf[4] align_ptr = { 0 };
+					align_ptr char suffix_buf[4] = { 0 };
 					char* restrict suffix_ptr = suffix_buf;
 					// Integer length & sign
 					switch (flag_long) {
@@ -27384,7 +27384,7 @@ LIB_FUNC void puts_err_no_output(const char* src) {
 /** Print an integer to stdout as a string */
 LIB_FUNC void puti(const int num) {
 	if (ferror(stdout)) { return; }
-	char puti_tmpbuf[__UIM_BUFLEN_INT + 2] align16 = { 0 };
+	align16 char puti_tmpbuf[__UIM_BUFLEN_INT + 2] = { 0 };
 	char* restrict p = puti_tmpbuf;
 	register int i = num;
 	if (num < 0) { *p++ = '-'; i = -i; }
@@ -27408,7 +27408,7 @@ LIB_FUNC void puti(const int num) {
 /** Print a signed 64-bit integer to stdout as a string */
 LIB_FUNC void puti64(const int64_t num) {
 	if (ferror(stdout)) { return; }
-	char tmpbuf[__UIM_BUFLEN_INT64 + 2] align32 = { 0 };
+	align32 char tmpbuf[__UIM_BUFLEN_INT64 + 2] = { 0 };
 	char* restrict p = tmpbuf;
 	register int64_t i = num;
 	if (num < 0) { *p++ = '-'; i = -i; }
@@ -27432,7 +27432,7 @@ LIB_FUNC void puti64(const int64_t num) {
 /** Print an unsigned 64-bit integer to stdout as a string */
 LIB_FUNC void putu64(const uint64_t num) {
 	if (ferror(stdout)) { return; }
-	char tmpbuf[__UIM_BUFLEN_UINT64 + 2] align64 = { 0 };
+	align64 char tmpbuf[__UIM_BUFLEN_UINT64 + 2] = { 0 };
 	char* restrict p = tmpbuf;
 	register uint64_t i = num;
 	register uint64_t shifter = i;
@@ -27792,7 +27792,7 @@ LIB_FUNC off_t __stdio_seek_helper(void* fp, const off_t off, const int whence) 
 
 
 LIB_FUNC ATTR_NONNULL(2) size_t __stdio_read(FILE* fp, unsigned char* buf, const size_t len) {
-	const struct iovec iov[2] align32 = { { .iov_base = buf, .iov_len = len - (!!(fp->buf_size)) }, { .iov_base = fp->buf, .iov_len = fp->buf_size } };
+	const align32 struct iovec iov[2] = { { .iov_base = buf, .iov_len = len - (!!(fp->buf_size)) }, { .iov_base = fp->buf, .iov_len = fp->buf_size } };
 	register ssize_t cnt = (ssize_t)syscall3(SYS_readv, fp->fd, (long)iov, 2);
 	if (cnt <= 0) { fp->flags |= (unsigned int)(__SEOF ^ ((__SERR ^ __SEOF) & cnt)); return (size_t)cnt; }
 	else if ((size_t)cnt <= iov[0].iov_len) { return (size_t)cnt; }
@@ -27815,7 +27815,7 @@ LIB_FUNC ATTR_NONNULL(2) ssize_t __stdio_readc_helper(const int fd, unsigned cha
 
 
 LIB_FUNC ATTR_NONNULL(1) size_t __stdio_write(FILE* fp, const unsigned char* buf, const size_t len) {
-	struct iovec iovs[2] align32 = { { .iov_base = fp->wbase, .iov_len = (unsigned long)(fp->wpos - fp->wbase) }, { .iov_base = (const void*)buf, .iov_len = len } };
+	struct align32 iovec iovs[2] = { { .iov_base = fp->wbase, .iov_len = (unsigned long)(fp->wpos - fp->wbase) }, { .iov_base = (const void*)buf, .iov_len = len } };
 	struct iovec* iov = iovs;
 	register size_t rem = iov[0].iov_len + iov[1].iov_len;
 	register int iovcnt = 2;
@@ -28026,7 +28026,7 @@ LIB_FUNC const char* trailsl(const char *f) {
 
 
 LIB_FUNC FILE* tmpfile(void) {
-	char s[32] align32 = "/tmp/tmpfile_XXXXXX\0";
+	align32 char s[32] = "/tmp/tmpfile_XXXXXX\0";
 	FILE* f = NULL;
 	for (register int try = 0; try < TMPFILE_MAXTRIES; try++) {
 		(void)randname(s + 13);
@@ -28048,7 +28048,7 @@ LIB_FUNC FILE* tmpfile(void) {
 
 
 LIB_FUNC char* tmpnam(char* restrict buf) {
-	char s[32] align32 = "/tmp/tmpnam_XXXXXX\0";
+	align32 char s[32] = "/tmp/tmpnam_XXXXXX\0";
 	for (register int try = 0; try < TMPFILE_MAXTRIES; try++) {
 		(void)randname(s + 12);
 #   ifdef SYS_lstat
@@ -30622,7 +30622,7 @@ extern __attribute__((__destructor__)) void _fini(void);
 
 extern noreturn void __stack_chk_fail(void);
 noreturn void __stack_chk_fail(void) {
-	const char msg[32] align32 = "*** STACK SMASHING DETECTED ***";
+	const align32 char msg[32] = "*** STACK SMASHING DETECTED ***";
 	puts_err_no_output(msg);
 	abort();
 }
@@ -30919,7 +30919,7 @@ LIB_FUNC NONNULL void decimal64bittostr(const decimal64 dbits, char* restrict ou
 /** Convert a literal byte to a string and print the value */
 LIB_FUNC void printbit8(const uint8_t bits) {
 	register uint8_t k = 0;
-	char outstr[9] align16 = { 0 };
+	align16 char outstr[9] = { 0 };
 	for (register uint8_t i = 8; ((i != 0) && k != 9); i--, k++) {
 		if (test_bit8(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30931,7 +30931,7 @@ LIB_FUNC void printbit8(const uint8_t bits) {
 /** Convert two literal bytes (16-bit value) to a string and print the value */
 LIB_FUNC void printbit16(const uint16_t bits) {
 	register uint8_t k = 0;
-	char outstr[17] align32 = { 0 };
+	align32 char outstr[17] = { 0 };
 	for (register uint8_t i = 16; ((i != 0) && k != 17); i--, k++) {
 		if (test_bit16(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30943,7 +30943,7 @@ LIB_FUNC void printbit16(const uint16_t bits) {
 /** Convert four literal bytes (32-bit value) to a string and print the value */
 LIB_FUNC void printbit32(const uint32_t bits) {
 	register uint8_t k = 0;
-	char outstr[33] align64 = { 0 };
+	align64 char outstr[33] = { 0 };
 	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30955,7 +30955,7 @@ LIB_FUNC void printbit32(const uint32_t bits) {
 /** Convert eight literal bytes (64-bit value) to a string and print the value */
 LIB_FUNC void printbit64(const uint64_t bits) {
 	register uint8_t k = 0;
-	char outstr[65] align128 = { 0 };
+	align128 char outstr[65] = { 0 };
 	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30968,7 +30968,7 @@ LIB_FUNC void printbit64(const uint64_t bits) {
 LIB_FUNC void printfloatbit(const float fbits) {
 	register uint8_t k = 0;
 	register const uint32_t bits = FLT_TO_U32(fbits);
-	char outstr[33] align64 = { 0 };
+	align64 char outstr[33] = { 0 };
 	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30981,7 +30981,7 @@ LIB_FUNC void printfloatbit(const float fbits) {
 LIB_FUNC void printdoublebit(const double dbits) {
 	register uint8_t k = 0;
 	register const uint64_t bits = DBL_TO_U64(dbits);
-	char outstr[65] align128 = { 0 };
+	align128 char outstr[65] = { 0 };
 	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -30995,7 +30995,7 @@ LIB_FUNC void printdoublebit(const double dbits) {
 LIB_FUNC void printcfloatbit(const complex_float cbits) {
 	register uint8_t k = 0;
 	register const uint64_t bits = CFLT_TO_U64(cbits);
-	char outstr[65] align128 = { 0 };
+	align128 char outstr[65] = { 0 };
 	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -31010,7 +31010,7 @@ LIB_FUNC void printcfloatbit(const complex_float cbits) {
 LIB_FUNC void printdecimal32bit(const decimal32 dbits) {
 	register uint8_t k = 0;
 	register const uint32_t bits = (uint32_t)DEC32_TO_U32(dbits);
-	char outstr[33] align64 = { 0 };
+	align64 char outstr[33] = { 0 };
 	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -31025,7 +31025,7 @@ LIB_FUNC void printdecimal32bit(const decimal32 dbits) {
 LIB_FUNC void printdecimal64bit(const decimal64 dbits) {
 	register uint8_t k = 0;
 	register const uint64_t bits = (uint64_t)DEC64_TO_U64(dbits);
-	char outstr[65] align128 = { 0 };
+	align128 char outstr[65] = { 0 };
 	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
@@ -31395,7 +31395,7 @@ LIB_FUNC NONNULL ATTR_PF char* itoa2(int i, char b[]) {
 LIB_FUNC NONNULL char* u32toa(const uint32_t value, char* restrict _string, const int radix) {
 	register int _digit = 0;
 	register uint32_t _value = value;
-	char buffer[33] align64 = { 0 };
+	align64 char buffer[33] = { 0 };
 	char* restrict pos = &buffer[32];
 	do {
 		_digit = (int)((int)_value % radix);
@@ -31416,7 +31416,7 @@ LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const
 		negative = 1;
 		val = (unsigned long long)-value;
 	}
-	char buffer[66] align128 = { 0 };
+	align128 char buffer[66] = { 0 };
 	char* restrict pos = &buffer[65];
 	register int _digit = 0;
 	do {
@@ -31434,7 +31434,7 @@ LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const
 LIB_FUNC NONNULL char* ui64toa(const uint64_t value, char* restrict str, const int radix) {
 	register uint64_t _digit = 0;
 	register uint64_t _value = value;
-	char buffer[65] align128 = { 0 };
+	align128 char buffer[65] = { 0 };
 	char* restrict pos = &buffer[64];
 	do {
 		_digit = (uint64_t)(_value % (uint64_t)radix);
@@ -31471,7 +31471,7 @@ LIB_FUNC NONNULL int l64a(const long value, char* restrict buffer, const int buf
 
 
 LIB_FUNC NONNULL char* l64a_r(const long value) {
-	static char buf[__UIM_BUFLEN_LONG] align64 = { 0 };
+	static align64 char buf[__UIM_BUFLEN_LONG] = { 0 };
 	(void)l64a(value, buf, __UIM_BUFLEN_LONG);
 	return buf;
 }
@@ -31640,7 +31640,7 @@ LIB_FUNC NONNULL void ultodec(const unsigned long num, char* restrict result) {
 
 /** Convert an int8_t to an octal string */
 LIB_FUNC ATTR_PF char* i8tooctstr(const int8_t num) {
-	static char buf[__UIM_BUFLEN_INT8_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_INT8_OCT] = { 0 };
 	char* restrict p = buf;
 	register int8_t i = num;
 	if (i < 0) { *p++ = '-'; i = (int8_t)-i; }
@@ -31678,7 +31678,7 @@ LIB_FUNC NONNULL void i8tooct(const int8_t num, char* restrict result) {
 
 /** Convert an uint8_t to an octal string */
 LIB_FUNC ATTR_PF char* u8tooctstr(const uint8_t num) {
-	static char buf[__UIM_BUFLEN_UINT8_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_UINT8_OCT] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -31714,7 +31714,7 @@ LIB_FUNC NONNULL void u8tooct(const uint8_t num, char* restrict result) {
 
 /** Convert a short integer to an octal string */
 LIB_FUNC ATTR_PF char* htooctstr(const short num) {
-	static char buf[__UIM_BUFLEN_SHRT_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_SHRT_OCT] = { 0 };
 	char* restrict p = buf;
 	register short i = num;
 	if (i < 0) { *p++ = '-'; i = (short)-i; }
@@ -31752,7 +31752,7 @@ LIB_FUNC NONNULL void htooct(const short num, char* restrict result) {
 
 /** Convert an unsigned short integer to an octal string */
 LIB_FUNC ATTR_PF char* uhtooctstr(const unsigned short num) {
-	static char buf[__UIM_BUFLEN_USHRT_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_USHRT_OCT] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -31788,7 +31788,7 @@ LIB_FUNC NONNULL void uhtooct(const unsigned short num, char* restrict result) {
 
 /** Convert an integer to an octal string */
 LIB_FUNC ATTR_PF char* itooctstr(const int num) {
-	static char buf[__UIM_BUFLEN_INT_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_INT_OCT] = { 0 };
 	char* restrict p = buf;
 	register int i = num;
 	if (i < 0) { *p++ = '-'; i *= -1; }
@@ -31826,7 +31826,7 @@ LIB_FUNC NONNULL void itooct(const int num, char* restrict result) {
 
 /** Convert an unsigned integer to an octal string */
 LIB_FUNC ATTR_PF char* utooctstr(const unsigned int num) {
-	static char buf[__UIM_BUFLEN_UINT_OCT] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_UINT_OCT] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -31862,7 +31862,7 @@ LIB_FUNC NONNULL void utooct(const unsigned int num, char* restrict result) {
 
 /** Convert a long long integer to an octal string */
 LIB_FUNC ATTR_PF char* lltooctstr(const long long num) {
-	static char buf[__UIM_BUFLEN_LLONG_OCT] align32 = { 0 };
+	static align32 char buf[__UIM_BUFLEN_LLONG_OCT] = { 0 };
 	char* restrict p = buf;
 	register long long i = num;
 	if (i < 0) { *p++ = '-'; i *= -1; }
@@ -31900,7 +31900,7 @@ LIB_FUNC NONNULL void lltooct(const long long num, char* restrict result) {
 
 /** Convert an unsigned long long integer to an octal string */
 LIB_FUNC ATTR_PF char* ulltooctstr(const unsigned long long num) {
-	static char buf[__UIM_BUFLEN_ULLONG_OCT] align32 = { 0 };
+	static align32 char buf[__UIM_BUFLEN_ULLONG_OCT] = { 0 };
 	char* restrict p = buf;
 	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
@@ -31976,7 +31976,7 @@ LIB_FUNC NONNULL void ultooct(const unsigned long num, char* restrict result) {
 
 /** Convert an int8_t to a hexadecimal string */
 LIB_FUNC ATTR_PF char* i8tohexstr(const int8_t num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_INT8_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_INT8_HEX] = { 0 };
 	char* restrict p = buf;
 	register int8_t i = num;
 	if (i < 0) { *p++ = '-'; i = (int8_t)-i; }
@@ -32028,7 +32028,7 @@ LIB_FUNC NONNULL void i8tohex(const int8_t num, const int use_upper, char* restr
 
 /** Convert an uint8_t to a hexadecimal string */
 LIB_FUNC ATTR_PF char* u8tohexstr(const uint8_t num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_UINT8_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_UINT8_HEX] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -32078,7 +32078,7 @@ LIB_FUNC NONNULL void u8tohex(const uint8_t num, const int use_upper, char* rest
 
 /** Convert a short integer to a hexadecimal string */
 LIB_FUNC ATTR_PF char* htohexstr(const short num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_SHRT_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_SHRT_HEX] = { 0 };
 	char* restrict p = buf;
 	register short i = num;
 	if (i < 0) { *p++ = '-'; i = (short)-i; }
@@ -32130,7 +32130,7 @@ LIB_FUNC NONNULL void htohex(const short num, const int use_upper, char* restric
 
 /** Convert an unsigned short integer to a hexadecimal string */
 LIB_FUNC ATTR_PF char* uhtohexstr(const unsigned short num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_USHRT_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_USHRT_HEX] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -32180,7 +32180,7 @@ LIB_FUNC NONNULL void uhtohex(const unsigned short num, const int use_upper, cha
 
 /** Convert an integer to a hexadecimal string */
 LIB_FUNC ATTR_PF char* itohexstr(const int num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_INT_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_INT_HEX] = { 0 };
 	char* restrict p = buf;
 	register int i = num;
 	if (i < 0) { *p++ = '-'; i *= -1; }
@@ -32232,7 +32232,7 @@ LIB_FUNC NONNULL void itohex(const int num, const int use_upper, char* restrict 
 
 /** Convert an unsigned integer to a hexadecimal string */
 LIB_FUNC ATTR_PF char* utohexstr(const unsigned int num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_UINT_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_UINT_HEX] = { 0 };
 	char* restrict p = buf;
 	register unsigned int shifter = (unsigned int)num;
 	do {  // Move to representation ending
@@ -32282,7 +32282,7 @@ LIB_FUNC NONNULL void utohex(const unsigned int num, const int use_upper, char* 
 
 /** Convert a long long to a hexadecimal string */
 LIB_FUNC ATTR_PF char* lltohexstr(const long long num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_LLONG_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_LLONG_HEX] = { 0 };
 	char* restrict p = buf;
 	register long long i = num;
 	if (i < 0) { *p++ = '-'; i *= -1; }
@@ -32334,7 +32334,7 @@ LIB_FUNC NONNULL void lltohex(const long long num, const int use_upper, char* re
 
 /** Convert an unsigned long long to a hexadecimal string */
 LIB_FUNC ATTR_PF char* ulltohexstr(const unsigned long long num, const int use_upper) {
-	static char buf[__UIM_BUFLEN_ULLONG_HEX] align16 = { 0 };
+	static align16 char buf[__UIM_BUFLEN_ULLONG_HEX] = { 0 };
 	char* restrict p = buf;
 	register unsigned long long shifter = (unsigned long long)num;
 	do {  // Move to representation ending
@@ -32519,7 +32519,7 @@ LIB_FUNC NONNULL int ftoa(const float n, char* restrict res, const int32_t prec)
 	const int32_t afterpoint = (prec < 0 ? 6 : prec);
 	if (afterpoint > 0) {
 		const float fpart = (n_abs - (float)ipart) * iexpf((int)afterpoint);
-		char ftoa_fractbuf[16] align16 = { 0 };
+		align16 char ftoa_fractbuf[16] = { 0 };
 		ulltodec((uint64_t)fpart, ftoa_fractbuf);
 		const uint32_t frctstrlen = (uint32_t)strlen(ftoa_fractbuf);
 		res[i++] = '.';
@@ -32546,7 +32546,7 @@ LIB_FUNC NONNULL int dtoa(const double n, char* restrict res, const int32_t prec
 	const int32_t afterpoint = (prec < 0 ? 6 : prec);
 	if (afterpoint > 0) {
 		const double fpart = (n_abs - (double)ipart) * iexp((int)afterpoint);
-		char dtoa_fractbuf[32] align32 = { 0 };
+		align32 char dtoa_fractbuf[32] = { 0 };
 		ulltodec((uint64_t)fpart, dtoa_fractbuf);
 		const uint32_t frctstrlen = (uint32_t)strlen(dtoa_fractbuf);
 		res[i++] = '.';
@@ -32574,7 +32574,7 @@ LIB_FUNC NONNULL int dtoe(const double n, char* restrict res, const int32_t prec
 	res[i++] = '.';
 	const int32_t afterpoint = (prec < 1 ? (prec == 0 ? 1 : 6) : prec);
 	const double frctpart = (n_abs - (double)ipart) * iexp(afterpoint);
-	char dtoe_buf[32] align32 = { 0 };
+	align32 char dtoe_buf[32] = { 0 };
 	ulltodec((uint64_t)frctpart, dtoe_buf);
 	const uint32_t frctstrlen = (uint32_t)strlen(dtoe_buf);
 	register int32_t plczeros = (int32_t)(afterpoint - (int32_t)frctstrlen);
@@ -32673,8 +32673,8 @@ LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t
 
 /** Convert a floating-point number to a string; similar to using "%e" in printf() */
 LIB_FUNC NONNULL_IO char* ecvt(const double x, int n, int* dp, int* sign) {
-	static char buf[16] align64 = { 0 };
-	char tmp[32] align64 = { 0 };
+	static align64 char buf[16] = { 0 };
+	align64 char tmp[32] = { 0 };
 	register int i, j;
 	if ((n - 1) > 15) { n = 15; }
 	sprintf(tmp, "%.*e", n - 1, x);
@@ -34152,8 +34152,8 @@ LIB_FUNC pid_t vfork(void) {
 
 /** Open a master pseudo terminal and return its file descriptor */
 LIB_FUNC int getpt(void) {
-	char buf[sizeof(_PATH_PTY) + 2] align16 = { 0 };
-	const char *p, *q;
+	align16 char buf[sizeof(_PATH_PTY) + 2] = { 0 };
+	const char *p = NULL, *q = NULL;
 	char* s = mempcpy(buf, _PATH_PTY, (sizeof(_PATH_PTY) - 1));
 	s[2] = '\0';
 	register int fd;
@@ -36861,7 +36861,7 @@ LIB_FUNC unsigned int get_16(const unsigned char* restrict s, int e) {
 }
 
 
-LIB_FUNC void put_16(unsigned char* s, const unsigned int c, int e) {
+LIB_FUNC void put_16(unsigned char* restrict s, const unsigned int c, int e) {
 	e &= 1;
 	s[e] = (unsigned char)(c >> 8);
 	s[1 - e] = (unsigned char)c;
@@ -36903,7 +36903,7 @@ LIB_FUNC int armscii_8_mbtowc(ucs4_t* restrict pwc, const unsigned char* restric
 }
 
 
-LIB_FUNC int armscii_8_wctomb(unsigned char* restrict r, ucs4_t wc) {
+LIB_FUNC int armscii_8_wctomb(unsigned char* restrict r, const ucs4_t wc) {
 	register unsigned char c = 0;
 	if (wc < 0x28) { *r = (unsigned char)wc; return 1; }
 	else if (wc >= 0x28 && wc < 0x30) { c = (unsigned char)armscii_8_page00[wc - 0x28]; }
@@ -36917,7 +36917,7 @@ LIB_FUNC int armscii_8_wctomb(unsigned char* restrict r, ucs4_t wc) {
 
 
 LIB_FUNC int atarist_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s) {
-	unsigned char c = *s;
+	const unsigned char c = *s;
 	if (c < 0x80) { *pwc = (ucs4_t)c; }
 	else { *pwc = (ucs4_t)atarist_2uni[c - 0x80]; }
 	return 1;
@@ -39198,7 +39198,7 @@ LIB_FUNC ATTR_NONNULL(2) int clock_gettime(const clockid_t clk, struct timespec*
 
 
 LIB_FUNC ATTR_NONNULL(1) int gettimeofday(struct timeval* restrict tv, const UNUSED void* restrict tz) {
-	struct timespec ts align64 = { 0 };
+	align64 struct timespec ts = { 0 };
 	syscall2void(SYS_clock_gettime, (long)CLOCK_REALTIME, (long)&ts);  // clock_gettime(CLOCK_REALTIME, &ts);
 	tv->tv_sec = ts.tv_sec;
 	tv->tv_usec = (int)ts.tv_nsec / 1000;
@@ -39207,24 +39207,24 @@ LIB_FUNC ATTR_NONNULL(1) int gettimeofday(struct timeval* restrict tv, const UNU
 
 
 #ifndef GETTIME
-#   define GETTIME(low, high)   do { struct timeval tval align32 = { 0 }; gettimeofday(&tval, NULL); const uint64_t usecs = (uint64_t)tval.tv_usec + (uint64_t)tval.tv_usec * 1000000; low = (uint64_t)(usecs & UINT32_MAX); high = (usecs >> 32); } while (0x0)
+#   define GETTIME(low, high)   do { align32 struct timeval tval = { 0 }; gettimeofday(&tval, NULL); const uint64_t usecs = (uint64_t)tval.tv_usec + (uint64_t)tval.tv_usec * 1000000; low = (uint64_t)(usecs & UINT32_MAX); high = (usecs >> 32); } while (0x0)
 #endif
 
 
 #ifndef START_TIME
 /** Macros used to measure the execution time (in microseconds) of the code between `START_TIME()` and `END_TIME()` */
-#   define START_TIME()   struct timeval __start_time_clock align64 = { 0 }; gettimeofday(&__start_time_clock, NULL)
+#   define START_TIME()   align64 struct timeval __start_time_clock = { 0 }; gettimeofday(&__start_time_clock, NULL)
 #endif
 
 
 #ifndef END_TIME
 /** Macros used to measure the execution time (in microseconds) of the code between `START_TIME()` and `END_TIME()` */
-#   define END_TIME()   struct timeval __end_time_clock align64 = { 0 }; gettimeofday(&__end_time_clock, NULL); const uint64_t __elapsed_time align64 = (uint64_t)(((unsigned long long)((1000000UL * (unsigned long)__end_time_clock.tv_sec) + (unsigned long)__end_time_clock.tv_usec)) - ((unsigned long long)((1000000UL * (unsigned long)__start_time_clock.tv_sec) + (unsigned long)__start_time_clock.tv_usec))); puts2("Microseconds elapsed: "); putu64(__elapsed_time)
+#   define END_TIME()   align64 struct timeval __end_time_clock = { 0 }; gettimeofday(&__end_time_clock, NULL); const align64 uint64_t __elapsed_time = (uint64_t)(((unsigned long long)((1000000UL * (unsigned long)__end_time_clock.tv_sec) + (unsigned long)__end_time_clock.tv_usec)) - ((unsigned long long)((1000000UL * (unsigned long)__start_time_clock.tv_sec) + (unsigned long)__start_time_clock.tv_usec))); puts2("Microseconds elapsed: "); putu64(__elapsed_time)
 #endif
 
 
 LIB_FUNC int clock_getcpuclockid(const pid_t pid, clockid_t* restrict clk) {
-	struct timespec ts align64 = { 0 };
+	align64 struct timespec ts = { 0 };
 	clockid_t _id = (clockid_t)(((unsigned int)((-pid) - 1) * 8U) + 2);
 	register int ret = (int)syscall2(SYS_clock_getres, (long)_id, (long)&ts);
 	if (ret) { return -ret; }
@@ -39371,7 +39371,7 @@ LIB_FUNC void delay(const double sec) {
 LIB_FUNC void wait_progress_indicator(const int sec) {
 	if (chk_ferr(stdout) || sec < 1) { return; }
 	(void)flush_stdout();
-	char indicator_str[ANSI_SGR_CUR_START_LEN + 5] align64 = ANSI_SGR_CUR_START "000%\0";
+	align64 char indicator_str[ANSI_SGR_CUR_START_LEN + 5] = ANSI_SGR_CUR_START "000%\0";
 	(void)__stdio_write(stdout, (const unsigned char*)ANSI_SGR_CUR_START "0%\0", 3 + ANSI_SGR_CUR_START_LEN);
 	register const clock_t endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
 	atomic_int prev_progress = 0;
@@ -39395,7 +39395,7 @@ LIB_FUNC void wait_progress_indicator(const int sec) {
 LIB_FUNC void wait_progress_bar(const int sec) {
 	if (chk_ferr(stdout) || sec < 1) { return; }
 	(void)flush_stdout();
-	char progress_str[ANSI_SGR_CUR_START_LEN + 32] align64 = ANSI_SGR_CUR_START "[                         ]000%\0";
+	align64 char progress_str[ANSI_SGR_CUR_START_LEN + 32] = ANSI_SGR_CUR_START "[                         ]000%\0";
 	(void)__stdio_write(stdout, (const unsigned char*)ANSI_SGR_CUR_START "[                         ]0%\0", 30 + ANSI_SGR_CUR_START_LEN);
 	register const clock_t endwait = clock() + (clock_t)(sec * CLOCKS_PER_SEC);
 	atomic_int prev_progress = 0;
@@ -40219,10 +40219,10 @@ goto_strptime_update:
 
 
 LIB_FUNC struct tm* getdate(const char* s) {
-	static struct tm tmbuf align64 = { 0 };
+	static align64 struct tm tmbuf = { 0 };
 	struct tm* ret = 0;
 	const char* datemsk = getenv("DATEMSK");
-	char fmt[100] align128 = { 0 };
+	align128 char fmt[100] = { 0 };
 	const char* p = NULL;
 	int cs = 0;
 	pthread_setcancelstate(PTHREAD_CANCEL_DEFERRED, &cs);
@@ -40805,11 +40805,11 @@ typedef align64 struct statvfs64 {
 
 
 LIB_FUNC int __statvfs_getflags(const char* restrict name, const int fstype, const int fd) {
-	struct stat64 st align64 = { 0 };
+	align64 struct stat64 st = { 0 };
 	if ((fd < 0 ? stat64(name, &st) : fstat64(fd, &st)) < 0) { return 0; }
-	const char* fsname align64 = NULL;
-	const char* fsname2 align64 = NULL;
-	const char* fsname3 align64 = NULL;
+	const char* fsname = NULL;
+	const char* fsname2 = NULL;
+	const char* fsname3 = NULL;
 	switch (fstype) {
 		case EXT2_SUPER_MAGIC:
 			fsname = "ext4";
@@ -40886,14 +40886,14 @@ LIB_FUNC int __statvfs_getflags(const char* restrict name, const int fstype, con
 	int result = 0;
 	if (mtab != NULL) {
 		bool success = false;
-		struct mntent mntbuf align64 = { 0 };
-		char tmpbuf[1024] align1024 = { 0 };
+		align64 struct mntent mntbuf = { 0 };
+		align1024 char tmpbuf[1024] = { 0 };
 		(void)fsetlocking(mtab, FSETLOCKING_BYCALLER);
 goto___statvfs_getflags_again:
 		while (__getmntent_r(mtab, &mntbuf, tmpbuf, 1024)) {
 			if (name != NULL && strcmp(name, mntbuf.mnt_dir) != 0) { continue; }
 			else if (fsname != NULL && strcmp(fsname, mntbuf.mnt_type) != 0 && (fsname2 == NULL || strcmp(fsname2, mntbuf.mnt_type) != 0) && (fsname3 == NULL || strcmp(fsname3, mntbuf.mnt_type) != 0)) { continue; }
-			struct stat64 fsst align64 = { 0 };
+			align64 struct stat64 fsst = { 0 };
 			if (stat64(mntbuf.mnt_dir, &fsst) >= 0 && st.st_dev == fsst.st_dev) {
 				char* cp = mntbuf.mnt_opts;
 				char* opt;
@@ -40967,7 +40967,7 @@ LIB_FUNC int __fstatfs(const int fd, struct statfs* restrict buf) {
 
 
 LIB_FUNC int fstatvfs(const int fd, struct statvfs* restrict buf) {
-	struct statfs fsbuf align64 = { 0 };
+	align64 struct statfs fsbuf = { 0 };
 	if (__fstatfs(fd, &fsbuf) < 0) { return -1; }
 	__internal_statvfs(NULL, buf, &fsbuf, fd);
 	return 0;
@@ -40978,7 +40978,7 @@ LIB_FUNC int fstatvfs(const int fd, struct statvfs* restrict buf) {
 
 
 LIB_FUNC NONNULL int statvfs(const char* restrict file, struct statvfs* restrict buf) {
-	struct statfs fsbuf align64 = { 0 };
+	align64 struct statfs fsbuf = { 0 };
 	const int sverrno = get_errno();
 	set_errno(__statfs(file, &fsbuf));
 	if (is_errno_neg()) { return -1; }
@@ -41394,9 +41394,9 @@ LIB_FUNC NOLIBCALL align_ptr void* mmap(void* restrict start, const size_t len, 
 		return MAP_FAILED;
 	} else if (PREDICT_UNLIKELY(flags & MAP_FIXED)) { LOCK(memlock); }
 #   ifdef SYS_mmap2
-	const long mmap_ptr align_ptr = (long)syscall6(SYS_mmap2, (long)start, (long)len, prot, flags, fd, (off_t)(off / SYSCALL_MMAP2_UNIT));
+	const align_ptr long mmap_ptr = (long)syscall6(SYS_mmap2, (long)start, (long)len, prot, flags, fd, (off_t)(off / SYSCALL_MMAP2_UNIT));
 #   else
-	const long mmap_ptr align_ptr = (long)syscall6(SYS_mmap, (long)start, (long)len, prot, flags, fd, off);
+	const align_ptr long mmap_ptr = (long)syscall6(SYS_mmap, (long)start, (long)len, prot, flags, fd, off);
 #   endif
 	UNLOCK(memlock);
 	return (align_ptr void*)mmap_ptr;
@@ -41409,13 +41409,13 @@ LIB_FUNC NOLIBCALL align_ptr void* mmap(void* restrict start, const size_t len, 
 
 /** Expand the heap in-place if brk can be used, or otherwise via mmap, using an exponential lower bound on growth by mmap to make fragmentation asymptotically irrelevant */
 LIB_FUNC NOLIBCALL align_ptr void* expand_heap(size_t* restrict pn) {
-	size_t n align_ptr = *pn;
+	align_ptr size_t n = *pn;
 	if (n > ((SIZE_MAX >> 1) - PAGE_SIZE)) {
 		set_errno(ENOMEM);
 		return 0;
 	}
-	static uintptr_t brk align_ptr = 0;
-	static unsigned int mmap_step align_ptr = 0;
+	static align_ptr uintptr_t brk = 0;
+	static align_ptr unsigned int mmap_step = 0;
 	n += (-n & (PAGE_SIZE - 1));
 	if (!brk) {
 		brk = (uintptr_t)syscall1(SYS_brk, 0);
@@ -41426,9 +41426,9 @@ LIB_FUNC NOLIBCALL align_ptr void* expand_heap(size_t* restrict pn) {
 		brk += (uintptr_t)n;
 		return (void*)(brk - n);
 	}
-	const size_t min align_ptr = (size_t)(PAGE_SIZE << (mmap_step >> 1));
+	const align_ptr size_t min = (size_t)(PAGE_SIZE << (mmap_step >> 1));
 	if (n < min) { n = min; }
-	void* area align_ptr = mmap(0, n, (PROT_READ | PROT_WRITE), (MAP_PRIVATE | MAP_ANONYMOUS), -1, 0);
+	align_ptr void* area = mmap(0, n, (PROT_READ | PROT_WRITE), (MAP_PRIVATE | MAP_ANONYMOUS), -1, 0);
 	if (area == MAP_FAILED) { return 0; }
 	*pn = n;
 	++mmap_step;
@@ -41515,7 +41515,7 @@ LIB_FUNC size_t malloc_usable_size(const void* p) {
 
 
 LIB_FUNC char* shm_mapname(const char* restrict name, char* restrict buf) {
-	const char* p align_ptr = NULL;
+	const align_ptr char* p = NULL;
 	while (*name == '/') { name++; }
 	if (*(p = strchrnul(name, '/')) || p == name || (p - name <= 2 && name[0] == '.' && p[-1] == '.')) {
 		set_errno(EINVAL);
@@ -41532,7 +41532,7 @@ LIB_FUNC char* shm_mapname(const char* restrict name, char* restrict buf) {
 
 
 LIB_FUNC int shm_open(const char* restrict name, const int flag, const mode_t mode) {
-	char buf[NAME_MAX + 10] align64 = { 0 };
+	align64 char buf[NAME_MAX + 10] = { 0 };
 	if (!(name = shm_mapname(name, buf))) { return -1; }
 	int cs = 0;
 	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
@@ -41550,7 +41550,7 @@ LIB_FUNC int shm_unlink(const char* restrict name) {
 
 
 LIB_FUNC align_ptr void* memalign(const size_t align, const size_t sz) {
-	unsigned char* mem align_ptr  = NULL;
+	align_ptr unsigned char* mem  = NULL;
 	if ((align & -align) != align) {
 		set_errno(EINVAL);
 		return NULL;
@@ -41561,7 +41561,7 @@ LIB_FUNC align_ptr void* memalign(const size_t align, const size_t sz) {
 		if (!(mem = malloc(sz))) { return NULL; }
 		return mem;
 	} else if (!(mem = malloc(sz + align - 1))) { return NULL; }
-	unsigned char* new align_ptr = (void*)(((size_t)mem + align - 1) & (size_t)(-align));
+	align_ptr unsigned char* new = (void*)(((size_t)mem + align - 1) & (size_t)(-align));
 	if (new == mem) { return mem; }
 	register const size_t _header = ((size_t*)mem)[-1];
 	if (!(_header & 7)) {
@@ -41569,7 +41569,7 @@ LIB_FUNC align_ptr void* memalign(const size_t align, const size_t sz) {
 		((size_t*)new)[-1] = ((size_t*)mem)[-1] - (unsigned long)(new - mem);
 		return new;
 	}
-	unsigned char* end align_ptr = mem + (_header & (size_t)(-8));
+	align_ptr unsigned char* end = mem + (_header & (size_t)(-8));
 	register const size_t footer = ((size_t*)end)[-2];
 	((size_t*)mem)[-1] = ((_header & 7) | (unsigned long)(new - mem));
 	((size_t*)new)[-2] = ((footer & 7) | (unsigned long)(new - mem));
@@ -41586,7 +41586,7 @@ LIB_FUNC align_ptr void* memalign(const size_t align, const size_t sz) {
 
 LIB_FUNC int posix_memalign(void** res, const size_t align, const size_t len) {
 	if (align < SIZEOF_VOID_PTR) { return EINVAL; }
-	void* mem align_ptr = (void*)memalign(align, len);
+	align_ptr void* mem = (void*)memalign(align, len);
 	if (PREDICT_UNLIKELY(!mem)) { return EAGAIN; }
 	*res = mem;
 	return 0;
@@ -41648,7 +41648,7 @@ LIB_FUNC NOLIBCALL align_ptr void* malloc(const size_t len) {
 
 
 LIB_FUNC align_ptr void* zalloc(const size_t size) {
-	void* ptr align_ptr = malloc(size);
+	align_ptr void* ptr = malloc(size);
 	if (ptr) { memset_no_output(ptr, 0, size); }
 	return ptr;
 }
@@ -41656,7 +41656,7 @@ LIB_FUNC align_ptr void* zalloc(const size_t size) {
 
 /** Like malloc, but returns an error when out of space */
 LIB_FUNC align_ptr void* ckmalloc(const size_t nbytes) {
-	void* p align_ptr = malloc(nbytes);
+	align_ptr void* p = malloc(nbytes);
 	if (p == NULL) { exit_on_error("Out of space"); }
 	return p;
 }
@@ -41790,7 +41790,7 @@ LIB_FUNC void* calloc(const size_t num_members, const size_t elem_size) {
 LIB_FUNC void* mm_malloc(const size_t data_size, register size_t alignment) {
 	if (alignment == 1) { return calloc((size_t)1, data_size); }
 	else if (alignment == 2 || (SIZEOF_VOID_PTR == 8 && alignment == 4)) { alignment = SIZEOF_VOID_PTR; }
-	void* ptr align_ptr = NULL;
+	align_ptr void* ptr = NULL;
 	if (posix_memalign(&ptr, alignment, data_size) == 0) { return ptr; }
 	else { return NULL; }
 }
@@ -42342,7 +42342,7 @@ LIB_FUNC info_t get_memnode(void* aligned_ptr) {
 
 /** Allocate a block of memory of SIZE bytes, aligned on a system page boundary; If SIZE is not a multiple of the system page size, it will be rounded up to the next multiple; Return a pointer to the start of the memory block; Upon allocation failure, return NULL and set errno */
 LIB_FUNC ATTR_MALLOC ATTR_ALLOC_SIZE(1) void* pagealign_alloc(const size_t size) {
-	void* ret align_ptr = mmap(NULL, size, (PROT_READ | PROT_WRITE), (MAP_ANONYMOUS | MAP_PRIVATE), -1, 0);
+	align_ptr void* ret = mmap(NULL, size, (PROT_READ | PROT_WRITE), (MAP_ANONYMOUS | MAP_PRIVATE), -1, 0);
 	if (ret == MAP_FAILED) { return NULL; }
 	new_memnode(ret, size);
 	return ret;
@@ -42351,7 +42351,7 @@ LIB_FUNC ATTR_MALLOC ATTR_ALLOC_SIZE(1) void* pagealign_alloc(const size_t size)
 
 /** Like pagealign_alloc, except it exits the program if the allocation fails */
 LIB_FUNC ATTR_MALLOC ATTR_ALLOC_SIZE(1) void* pagealign_xalloc(const size_t size) {
-	void* ret align_ptr = pagealign_alloc(size);
+	align_ptr void* ret = pagealign_alloc(size);
 	if (ret == NULL) { xalloc_die(); }
 	return ret;
 }

@@ -149,9 +149,9 @@ typedef struct attr_packed alpha_operand {
 
 
 extern const UNUSED struct alpha_opcode alpha_opcodes[];
-extern const UNUSED unsigned alpha_num_opcodes;
+extern const UNUSED unsigned int alpha_num_opcodes;
 extern const UNUSED struct alpha_operand alpha_operands[];
-extern const UNUSED unsigned alpha_num_operands;
+extern const UNUSED unsigned int alpha_num_operands;
 
 
 #endif  // OPCODE_ALPHA_H
@@ -206,8 +206,8 @@ typedef uint64_t   Elf32_Xword;
 typedef int64_t   Elf32_Sxword;
 typedef uint64_t   Elf64_Xword;
 typedef int64_t   Elf64_Sxword;
-typedef uint32_t   Elf32_Addr;
-typedef uint64_t   Elf64_Addr;
+#define Elf32_Addr   Elf32_Word
+#define Elf64_Addr   Elf64_Xword
 /** Elf file offset (32-bit Elf) */
 typedef uint32_t   Elf32_Off;
 /** Elf file offset (64-bit Elf) */
@@ -217,11 +217,11 @@ typedef uint16_t   Elf32_Section;
 /** 16-bit section indices in Elf files (64-bit Elf) */
 typedef uint16_t   Elf64_Section;
 /** Elf file version symbol information (32-bit Elf) */
-typedef Elf32_Half   Elf32_Versym;
+typedef uint16_t   Elf32_Versym;
 /** Elf file version symbol information (64-bit Elf) */
-typedef Elf64_Half   Elf64_Versym;
+typedef uint16_t   Elf64_Versym;
 /** Entries found in sections of type SHT_MIPS_CONFLICT */
-typedef Elf32_Addr   Elf32_Conflict;
+typedef uint32_t   Elf32_Conflict;
 
 
 #define EI_NIDENT   (0x10)

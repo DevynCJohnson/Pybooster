@@ -4539,12 +4539,12 @@ struct sigaction {
 #else
 
 /** Structure describing the action to be taken when a signal arrives */
-struct sigaction {
+struct align32 sigaction {
 	__sighandler_t sa_handler;
 	unsigned long sa_flags;
 	void (*sa_restorer)(void);
 	sigset_t sa_mask;
-} align32;
+};
 // Bits in `sa_flags`
 /** Do not send SIGCHLD when children stop */
 #   define SA_NOCLDSTOP   1
@@ -4596,9 +4596,9 @@ struct sigaction {
  - Mips: pc, sp, regs, fp, gp, fpregs
  - SuperH: regs, pc, gbr, fpscr, fpregs
 */
-typedef greg_t   __jmp_buf[8];
+typedef greg_t align_ptr   __jmp_buf[8];
 #   else
-typedef greg_t   __jmp_buf[6];
+typedef greg_t align_ptr   __jmp_buf[6];
 #   endif
 #elif defined(ARCHALPHA)
 typedef long   __jmp_buf[17];
@@ -4606,7 +4606,7 @@ typedef long   __jmp_buf[17];
 typedef int   __jmp_buf[16];
 #elif defined(ARCHARM)
 #   ifdef __ARM_EABI__
-typedef int align8   __jmp_buf[64] align256;
+typedef int align256   __jmp_buf[64];
 #   elif (defined(__MAVERICK__) || defined(__IWMMXT__))
 typedef int   __jmp_buf[34];
 #   else
@@ -4814,6 +4814,10 @@ struct thread_cleanup_t {
 	void (*func)(void*);
 	void* arg;
 };
+struct thread_creation_t {
+	void*(*func)(void* arg);
+	void* arg;
+};
 typedef struct _pthread_fastlock { int __spinlock; }   pthread_fastlock_t;
 #ifdef ARCHPARISC
 #   define PTHREAD_SPIN_LOCKED   0
@@ -4824,24 +4828,32 @@ typedef struct _pthread_fastlock { int __spinlock; }   pthread_fastlock_t;
 #endif
 /** POSIX Thread Descriptor */
 typedef struct _pthread_descr_struct {
+	sigjmp_buf jmp_exit;
 	struct _pthread_descr_struct* next;
 	struct _pthread_descr_struct** prev;
 	void* stack_begin;  //!< Beginning of stack; lowest address
 	void* stack_end;  //!< End of stack
-	pid_t pid;
-	// Thread struct lock
-	struct _pthread_fastlock lock, wlock;
-	int errno;
-	// Thread exit handling
-	sigjmp_buf jmp_exit;
-	void* retval;
-	// Joined threads
-	struct _pthread_descr_struct* jt;
-	struct _pthread_fastlock joined;
-	int pad0;  //!< Padding
 	// Conditional variables
 	struct _pthread_descr_struct* waitnext;
 	struct _pthread_descr_struct** waitprev;
+	// Creation parameter
+	struct thread_creation_t* creation_stack;
+	// Thread exit handling
+	struct thread_cleanup_t* cleanup_stack;  //!< Cleanup stack (modify only with struct lock held)
+	void* retval;
+	// Thread struct locks & joined threads
+	struct _pthread_descr_struct* jt;
+	struct _pthread_fastlock lock, wlock, joined;
+	struct _pthread_fastlock pad0;  //!< Padding
+	// Thread specific data
+	void* tkd[PTHREAD_KEYS_MAX];
+	void* pad1;  //!< Padding
+	unsigned long stack_size;
+	unsigned long guard_size;
+	pid_t ppid;
+	pid_t pid;
+	int errno;
+	int h_errno;
 	// Cancel handling
 	unsigned char cancelstate;
 	volatile unsigned char canceltype;
@@ -4849,19 +4861,7 @@ typedef struct _pthread_descr_struct {
 	volatile char dead;
 	volatile char canceled;
 	char detached, stack_free, p_sig;
-	char pad1;  //!< Padding
-	// Creation parameter
-	void*(*func)(void* arg);
-	void* arg;
-	unsigned long stack_size, guard_size;
-	// Cleanup stack (modify only with struct lock held)
-	struct thread_cleanup_t* cleanup_stack;
-	// Thread specific data
-	void* tkd[PTHREAD_KEYS_MAX];
-#   ifdef PTHREAD_HANDLE_DNS_CORRECT
-	int h_errno;
-	struct res_state __res;
-#   endif
+	char pad2;  //!< Padding
 } pthread_descr_t;
 typedef struct _pthread_descr_struct*   _pthread_descr;
 #define __DEFINED_pthread_mutex_t   (1)
@@ -6648,7 +6648,7 @@ typedef struct xt_addrtype_info {
 
 
 /** Locale object for global C locale */
-static UNUSED locale_t __global_locale align64 = NULL;
+static UNUSED align64 locale_t __global_locale = NULL;
 /** Locale object for global C locale */
 #define _NL_CURRENT_LOCALE   __global_locale
 #define CURRENT_LOCALE   __global_locale
@@ -6663,8 +6663,8 @@ UNUSED _RuneLocale* _CurrentRuneLocale;
 #define NORMALIZE_LOCALE(x)   if ((x) == NULL) { (x) = __global_locale; } else if ((x) == LC_GLOBAL_LOCALE) { (x) = __global_locale; }
 #if SINGLE_THREAD_P
 /** We need to have the error status variable of the resolver accessible in the libc */
-volatile UNUSED locale_t locale_tls align64;
-volatile UNUSED tss_t locale_tss align64;
+volatile UNUSED align64 locale_t locale_tls;
+volatile UNUSED align64 tss_t locale_tss;
 #else
 /** We need to have the error status variable of the resolver accessible in the libc */
 thread_local volatile UNUSED locale_t locale_tls;
@@ -6675,7 +6675,7 @@ thread_local volatile UNUSED tss_t locale_tss;
 
 
 /*@-immediatetrans@*/
-static UNUSED struct lconv C_LOCALE_INITIALIZER align64 = {
+static UNUSED align64 struct lconv C_LOCALE_INITIALIZER = {
 	(const char*)&period, NULL, NULL, NULL, NULL, NULL,  // Decimal_point - mon_decimal_point
 	NULL, NULL, NULL, NULL, 127, 127,  // mon_thousands_sep - frac_digits
 	127, 127, 127, 127, 127, 127,  // p_cs_precedes - n_sign_posn
@@ -6696,9 +6696,9 @@ typedef struct libc_struct {
 } libc_t;
 /*@-immediatetrans@*/
 #if SINGLE_THREAD_P
-static UNUSED libc_t libc align_ptr = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED align_ptr libc_t libc = { 0, 0, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #   else
-static UNUSED libc_t libc align_ptr = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
+static UNUSED align_ptr libc_t libc = { 1, 1, 1, 0, NULL, NULL, 0, 0, 0, (size_t)PAGE_SIZE, (locale_t)(&__global_locale) };
 #endif
 /*@=immediatetrans@*/
 #define _libc   libc
@@ -12931,7 +12931,7 @@ typedef enum CHAR_CLASSIFICATION {
 #define cc_S   ((unsigned short)(cc_nv | cc_sp | cc_bl | cc_pr))
 
 #if (HOST_CHARSET == HOST_CHARSET_ASCII)  // Is this ASCII?
-static const UNUSED unsigned short cc_istable[256] align512 = {
+static const UNUSED align512 unsigned short cc_istable[256] = {
 	cc_Z, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C,  // NUL SOH STX ETX  EOT ENQ ACK BEL
 	cc_C, cc_T, cc_V, cc_M, cc_M, cc_V, cc_C, cc_C,  // BS  HT  LF  VT FF  CR  SO  SI
 	cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C, cc_C,  // DLE DC1 DC2 DC3  DC4 NAK SYN ETB
@@ -12954,7 +12954,7 @@ static const UNUSED unsigned short cc_istable[256] align512 = {
 	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 	0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
 };
-static const UNUSED unsigned char cc_tolower[256] align256 = {
+static const UNUSED align256 unsigned char cc_tolower[256] = {
 	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
 	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
 	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
@@ -12974,7 +12974,7 @@ static const UNUSED unsigned char cc_tolower[256] align256 = {
 	224U, 225U, 226U, 227U, 228U, 229U, 230U, 231U, 232U, 233U, 234U, 235U, 236U, 237U, 238U, 239U,
 	240U, 241U, 242U, 243U, 244U, 245U, 246U, 247U, 248U, 249U, 250U, 251U, 252U, 253U, 254U, 255U
 };
-static const UNUSED unsigned char cc_toupper[256] align256 = {
+static const UNUSED align256 unsigned char cc_toupper[256] = {
 	0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U, 15U,
 	16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U, 26U, 27U, 28U, 29U, 30U, 31U,
 	32U, 33U, 34U, 35U, 36U, 37U, 38U, 39U, 40U, 41U, 42U, 43U, 44U, 45U, 46U, 47U,
@@ -13368,7 +13368,7 @@ static const UNUSED struct wcasemaps wchar_casemaps[] = {
 	{ 0U, 0, 0U }
 };
 
-static const UNUSED wchar_t wempty[2] align8 = L"";
+static const UNUSED align8 wchar_t wempty[2] = L"";
 
 #include "wctype_table.h"
 
@@ -13394,7 +13394,7 @@ static const UNUSED char* const wchar_properties[WC_TYPE_MAX] = {
 };
 /*@=readonlytrans@*/
 
-static const UNUSED char wchar_class_names[128] align128 = "alnum\0" "alpha\0" "blank\0" "cntrl\0" "digit\0" "graph\0" "lower\0" "print\0" "punct\0" "space\0" "upper\0" "xdigit";
+static const UNUSED align128 char wchar_class_names[128] = "alnum\0" "alpha\0" "blank\0" "cntrl\0" "digit\0" "graph\0" "lower\0" "print\0" "punct\0" "space\0" "upper\0" "xdigit";
 
 /** This definition of whitespace is the Unicode White_Space property, minus non-breaking spaces (U+00A0, U+2007, and U+202F) and script-specific characters with non-blank glyphs (U+1680 and U+180E) */
 static const UNUSED wchar_t wchar_spaces[32] = { ' ', '\t', '\n', '\r', 11, 12, 0x85, 0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2008, 0x2009, 0x200a, 0x2028, 0x2029, 0x205f, 0x3000, 0x0 };

@@ -4,7 +4,7 @@
 /**
 @brief Print the size and alignment of each datatype
 @file typesize.c
-@version 2019.11.09
+@version 2020.01.27
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -116,6 +116,7 @@ noreturn int main(void) {
 	// Signal Datatypes
 	(void)puts(DIVIDER);
 	(void)fprintf(stdout, "sighandler_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(sighandler_t), (ulint)alignof(sighandler_t));
+	(void)fprintf(stdout, "sigset_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(sigset_t), (ulint)alignof(sigset_t));
 	(void)fprintf(stdout, "sigval_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(sigval_t), (ulint)alignof(sigval_t));
 	(void)fprintf(stdout, "struct sigaction:\t\t%lu\t%lu\n", (ulint)sizeof(struct sigaction), (ulint)alignof(struct sigaction));
 	(void)fprintf(stdout, "struct sigcontext:\t\t%lu\t%lu\n", (ulint)sizeof(struct sigcontext), (ulint)alignof(struct sigcontext));
