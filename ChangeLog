@@ -1,3 +1,42 @@
+2020-01-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* profile:  Tweaked the `PS1` variable
+	* snippets.conf:  Fixed a bug & added snippets for HTML and JavaScript
+
+2020-01-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h:  Adjusted the alignment of various structures & variables
+
+2020-01-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* color-kit:  Added support for displaying analogous colors, the opposite color, and the complementary color
+	* color.py:  Added `analogous_1()` & `analogous_2()`
+	* compiling.mk:  Added support for Clang versions 11 & 12
+	* extras_rc.sh:  Added the line-number to the output of `rfind`
+
+2020-01-18  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Added syntax coloring for Nginx configuration files
+	* Geany:  Improved the syntax coloring for some of the supported languages
+
+2020-01-10  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* Geany:  Improved the syntax coloring for some of the supported languages
+
+2020-01-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* color-kit:  Improved the code to accept colors as arrays or just the comma-delimited numbers
+	* program-analyzer:  Fixed the issue with saving data to a file
+
+2020-01-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* OptiView:  Applied some fixes to the CSS code
+
+2020-01-02  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added cartioid
+	* snippets.conf:  Fixed some bugs
+
 2020-01-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* makefile:  Added more optional developer dependencies
