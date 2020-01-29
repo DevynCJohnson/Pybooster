@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2019.12.23
+@version 2020.01.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -105,6 +105,8 @@ __all__: list = [
     r'root15',
     # NUMBER THEORY #
     r'factors',
+    r'prime_factors',
+    r'mobius',
     r'phi',
     # STATISTICS #
     r'avgoffset',
@@ -577,14 +579,87 @@ def root15(_num: Union[float, int]) -> float:
 
 
 def factors(_num: int) -> set:
-    """Find prime factors.
+    """Factorize the given number.
 
+    >>> factors(1)
+    {1}
+    >>> factors(2)
+    {1, 2}
+    >>> factors(5)
+    {1, 5}
+    >>> factors(12)
+    {1, 2, 3, 4, 6, 12}
+    >>> factors(15)
+    {1, 3, 5, 15}
+    >>> factors(17)
+    {1, 17}
+    >>> factors(30)
+    {1, 2, 3, 5, 6, 10, 15, 30}
     >>> factors(64)
     {64, 1, 2, 32, 4, 8, 16}
     >>> factors(196)
     {1, 2, 98, 196, 4, 7, 14, 49, 28}
     """
     return {x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup}
+
+
+def prime_factors(_num: int) -> tuple:
+    """Find prime factors.
+
+    >>> prime_factors(1)
+    ()
+    >>> prime_factors(2)
+    (2,)
+    >>> prime_factors(5)
+    (5,)
+    >>> prime_factors(12)
+    (3, 2, 2)
+    >>> prime_factors(15)
+    (5, 3)
+    >>> prime_factors(17)
+    (17,)
+    >>> prime_factors(64)
+    (2, 2, 2, 2, 2, 2)
+    >>> prime_factors(196)
+    (7, 7, 2, 2)
+    """
+    if _num < 2:
+        return ()
+    max_num: int = int(sqrt(_num))
+    divisor: int = 1
+    qnum: int = 3 if _num % 2 else 2
+    while qnum <= max_num and _num % qnum:
+        qnum = 1 + (divisor << 2) - ((divisor >> 1) << 1)
+        divisor += 1
+    if qnum <= max_num:
+        return prime_factors(_num // qnum) + (qnum,)
+    return (_num,)
+
+
+def mobius(_num: int) -> int:
+    """Möbius function from number theory and combinatorics.
+
+    >>> mobius(1)
+    1
+    >>> mobius(2)
+    -1
+    >>> mobius(12)
+    0
+    >>> mobius(15)
+    1
+    >>> mobius(16)
+    0
+    >>> mobius(17)
+    -1
+    >>> mobius(29)
+    -1
+    >>> mobius(30)
+    -1
+    """
+    _factors: tuple = prime_factors(_num)
+    if any(divisor for divisor in _factors if _num % (divisor * divisor) == 0):
+        return 0
+    return -1 if len(_factors) % 2 else 1
 
 
 def phi(_num: float) -> float:
