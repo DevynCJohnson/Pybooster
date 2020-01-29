@@ -72,7 +72,7 @@ export PROFILE_SHELL
 
 if [ -d /usr/lib/bash/ ]; then
     for plugin in /usr/lib/bash/*; do
-        { [ "${plugin}" == '/usr/lib/bash/Makefile.inc' ] || [ "${plugin}" == '/usr/lib/bash/loadables.h' ] || [ ! -x "${plugin}" ] || [ "${plugin}" == '/usr/lib/bash/finfo' ] || [ "${plugin}" == '/usr/lib/bash/mypid' ] || [ "${plugin}" == '/usr/lib/bash/truefalse' ]; } && continue
+        { [ "${plugin}" = '/usr/lib/bash/Makefile.inc' ] || [ "${plugin}" = '/usr/lib/bash/loadables.h' ] || [ ! -x "${plugin}" ] || [ "${plugin}" = '/usr/lib/bash/finfo' ] || [ "${plugin}" = '/usr/lib/bash/mypid' ] || [ "${plugin}" = '/usr/lib/bash/truefalse' ]; } && continue
         enable -f "${plugin}" "${plugin##*/}"
     done
 fi
@@ -665,9 +665,9 @@ PS1=''
 # Enable color support for various commands
 if [ -n "${color_prompt:-}" ] && [ "$color_prompt" = 'yes' ]; then
     if [ "$(id -u)" -eq 0 ]; then
-        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;32m\]\u\[\033[0m\]@\[\033[01;33m\]\h\[\033[0m\]:\[\033[01;34m\]\w\[\033[0m\]# '
+        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;92m\]\u\[\033[0m\]@\[\033[01;93m\]\h\[\033[0m\]:\[\033[01;94m\]\w\[\033[0m\]# '
     else
-        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;32m\]\u\[\033[0m\]@\[\033[01;33m\]\h\[\033[0m\]:\[\033[01;34m\]\w\[\033[0m\]\$ '
+        PS1='\[\033[0m\]${debian_chroot:+($debian_chroot)}\[\033[0m\]\[\033[01;92m\]\u\[\033[0m\]@\[\033[01;93m\]\h\[\033[0m\]:\[\033[01;94m\]\w\[\033[0m\]\$ '
     fi
     alias grep='grep --color=auto'
     alias cgrep='grep --color=always'
@@ -695,6 +695,7 @@ else  # No color support
         PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     fi
 fi
+export PS1
 
 # Enable color support for `ls`
 if [ -x "$(command -v dircolors)" ]; then
