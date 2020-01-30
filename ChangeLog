@@ -3,6 +3,7 @@
 	* profile:  Tweaked the `PS1` variable
 	* snippets.conf:  Fixed a bug & added snippets for HTML and JavaScript
 	* xmath.py:  Added `bernoulli()`, `chebyshev()`, `isprime()`, & `primes_under()`
+	* xmath.py:  Added `integral()` & `derivative()`
 	* xmath.py:  Added `radical()`
 	* xmath.py:  Added `von_mangoldt()`, `generate_primes()`, `gmean()`, & `hmean()`
 	* xmath.py:  Fixed `factors()` & added `mobius()` & `prime_factors()`

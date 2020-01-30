@@ -106,6 +106,9 @@ __all__: list = [
     r'root13',
     r'root14',
     r'root15',
+    # CALCULUS #
+    r'derivative',
+    r'integral',
     # NUMBER THEORY #
     r'bernoulli',
     r'chebyshev',
@@ -585,6 +588,44 @@ def root15(_num: Union[float, int]) -> float:
     1.2721747796233518
     """
     return _num ** 0.0666666666666666666667
+
+
+# CALCULUS #
+
+
+def derivative(_func, _num: Union[float, int], method: str = r'central', step_size: float = 0.01) -> Union[float, int]:
+    """Calculate the derivative of a function at variable `_num` using the choosen difference formula with the given step-size such as `_func'(_num)`.
+
+    The difference formula must be one of "central", "backward", or "forward".
+
+    >>> derivative(lambda x: x ** 4 + 7 * (x ** 3) + 8, 4, r'central')
+    592.0022999999844
+    >>> derivative(lambda x: x ** 4 + 7 * (x ** 3) + 8, 4, r'backward')
+    590.2022989999864
+    >>> derivative(lambda x: x ** 4 + 7 * (x ** 3) + 8, 4, r'forward')
+    593.8023009999824
+    """
+    if method == r'backward':
+        return (_func(_num) - _func(_num - step_size)) / step_size
+    if method == r'forward':
+        return (_func(_num + step_size) - _func(_num)) / step_size
+    return (_func(_num + step_size) - _func(_num - step_size)) / (2.0 * step_size)
+
+
+def integral(_func, _end: int, interval: Tuple[Union[float, int], Union[float, int]]) -> Union[float, int]:
+    """Calculate the integral of the given function in the given interval.
+
+    >>> integral(lambda x: x ** 2 + 8, 7, (2, 4))
+    34.65306122448979
+    >>> integral(lambda x: x ** 2 + 8, 17, (2, 4))
+    34.6643598615917
+    >>> integral(lambda x: x ** 2 + 8, 37, (2, 4))
+    34.66617969320672
+    """
+    value: Union[float, int] = 0
+    for _num in range(1, _end + 1):
+        value += _func(interval[0] + ((_num - (1 / 2)) * ((interval[1] - interval[0]) / _end)))
+    return ((interval[1] - interval[0]) / _end) * value
 
 
 # NUMBER THEORY #
