@@ -32,6 +32,7 @@ along with this software.
 # pylint: disable=C0103
 
 
+from fractions import Fraction
 from math import acos, asin, atan, cos, erf, log, sin, sqrt, tan
 from random import choice
 from typing import Iterable, Tuple, Union
@@ -104,7 +105,11 @@ __all__: list = [
     r'root14',
     r'root15',
     # NUMBER THEORY #
+    r'bernoulli',
+    r'chebyshev',
     r'factors',
+    r'isprime',
+    r'primes_under',
     r'prime_factors',
     r'mobius',
     r'phi',
@@ -579,6 +584,47 @@ def root15(_num: Union[float, int]) -> float:
 # NUMBER THEORY #
 
 
+def bernoulli(_num: int) -> Fraction:
+    """Produce the Bernoulli number for the given number.
+
+    >>> bernoulli(0)
+    Fraction(1, 1)
+    >>> bernoulli(1)
+    Fraction(1, 2)
+    >>> bernoulli(2)
+    Fraction(1, 6)
+    >>> bernoulli(4)
+    Fraction(-1, 30)
+    >>> bernoulli(60)
+    Fraction(-1215233140483755572040304994079820246041491, 56786730)
+    """
+    _num += 1
+    _tmp_array: list = [Fraction(1, 1)] * _num
+    for _num2 in range(_num):
+        _tmp_array[_num2] = Fraction(1, _num2 + 1)
+        for _j in range(_num2, 0, -1):
+            _tmp_array[_j - 1] = _j * (_tmp_array[_j - 1] - _tmp_array[_j])
+    return _tmp_array[0]
+
+
+def chebyshev(_num: int) -> int:
+    """The first Chebyshev function used to sum up all primes equal to or less than the given number.
+
+    >>> chebyshev(1)
+    0
+    >>> chebyshev(2)
+    2
+    >>> chebyshev(3)
+    5
+    >>> chebyshev(4)
+    5
+    """
+    _result: int = 0
+    for _prime in primes_under(_num):
+        _result += _prime
+    return _result
+
+
 def factors(_num: int) -> set:
     """Factorize the given number.
 
@@ -602,6 +648,61 @@ def factors(_num: int) -> set:
     {1, 2, 98, 196, 4, 7, 14, 49, 28}
     """
     return {x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup}
+
+
+def isprime(_num: int) -> bool:
+    """Test if the given number is prime.
+
+    >>> isprime(3)
+    True
+    >>> isprime(4)
+    False
+    >>> isprime(6)
+    False
+    >>> isprime(7)
+    True
+    >>> isprime(37)
+    True
+    >>> isprime(137)
+    True
+    >>> isprime(373)
+    True
+    """
+    if _num == 1:
+        return True
+    if _num % 2 == 0:
+        return False
+    for _num2 in range(3, _num, 2):
+        if _num % _num2 == 0 and _num != _num2:
+            return False
+    return True
+
+
+def primes_under(_num: int) -> set:
+    """Generate a list of the prime numbers equal to or less than the given number.
+
+    >>> primes_under(3)
+    {2, 3}
+    >>> primes_under(4)
+    {2, 3}
+    >>> primes_under(6)
+    {2, 3, 5}
+    >>> primes_under(7)
+    {2, 3, 5, 7}
+    >>> primes_under(37)
+    {2, 3, 5, 37, 7, 11, 13, 17, 19, 23, 29, 31}
+    >>> primes_under(137)
+    {2, 3, 131, 5, 7, 137, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127}
+    >>> primes_under(373)
+    {257, 2, 3, 131, 5, 7, 263, 137, 11, 139, 13, 269, 271, 17, 19, 149, 277, 23, 151, 281, 283, 29, 157, 31, 163, 37, 293, 167, 41, 43, 173, 47, 179, 307, 53, 181, 311, 313, 59, 61, 317, 191, 193, 67, 197, 71, 199, 73, 331, 79, 337, 83, 211, 89, 347, 349, 223, 97, 353, 227, 101, 229, 103, 359, 233, 107, 109, 239, 367, 113, 241, 373, 251, 127}
+    """
+    if _num < 2:
+        return set()
+    if _num == 2:
+        return {2}
+    _primes: set = {_num2 for _num2 in range(3, _num + 1, 2) if _num2 % 2 != 0 and isprime(_num2)}
+    _primes.add(2)
+    return _primes
 
 
 def prime_factors(_num: int) -> tuple:
