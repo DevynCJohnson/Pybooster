@@ -108,6 +108,7 @@ __all__: list = [
     r'prime_factors',
     r'mobius',
     r'phi',
+    r'radical',
     # STATISTICS #
     r'avgoffset',
     r'is_improvement',
@@ -673,6 +674,38 @@ def phi(_num: float) -> float:
     0.8413447460685429
     """
     return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
+
+
+def radical(_num: int) -> int:
+    """Calculate the radical of a number.
+
+    >>> radical(1)
+    1
+    >>> radical(2)
+    2
+    >>> radical(3)
+    3
+    >>> radical(4)
+    2
+    >>> radical(5)
+    5
+    >>> radical(6)
+    6
+    >>> radical(7)
+    7
+    >>> radical(26)
+    26
+    >>> radical(29)
+    29
+    >>> radical(50)
+    10
+    >>> radical(504)
+    42
+    """
+    _result: int = 1
+    for _factor in set(prime_factors(_num)):
+        _result *= _factor
+    return _result
 
 
 # STATISTICS #

@@ -2,6 +2,7 @@
 
 	* profile:  Tweaked the `PS1` variable
 	* snippets.conf:  Fixed a bug & added snippets for HTML and JavaScript
+	* xmath.py:  Added `radical()`
 	* xmath.py:  Fixed `factors()` & added `mobius()` & `prime_factors()`
 
 2020-01-27  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
