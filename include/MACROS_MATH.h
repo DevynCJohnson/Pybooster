@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Math Related-Code
 @file MACROS_MATH.h
-@version 2019.11.23
+@version 2020.01.30
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -12415,7 +12415,7 @@ LIB_FUNC MATH_FUNC int ispoweroftwo(const uint64_t num) {
 
 /** Test if the given number is a Mersenne Number */
 LIB_FUNC MATH_FUNC int ismersennenumber(const uint64_t num) {
-	return (((num + 1ULL) != 0ULL) && !((num + 1ULL) & ((num + 1ULL) - 1ULL)));
+	return (((num + 1ULL) != 0ULL) && !((num + 1ULL) & num));
 }
 
 
