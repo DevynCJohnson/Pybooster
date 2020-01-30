@@ -32,10 +32,12 @@ along with this software.
 # pylint: disable=C0103
 
 
+from functools import reduce
 from fractions import Fraction
 from math import acos, asin, atan, cos, erf, log, sin, sqrt, tan
+from operator import mul
 from random import choice
-from typing import Iterable, Tuple, Union
+from typing import Generator, Iterable, Tuple, Union
 
 
 __all__: list = [
@@ -110,12 +112,16 @@ __all__: list = [
     r'factors',
     r'isprime',
     r'primes_under',
+    r'generate_primes',
     r'prime_factors',
     r'mobius',
     r'phi',
     r'radical',
+    r'von_mangoldt',
     # STATISTICS #
     r'avgoffset',
+    r'gmean',
+    r'hmean',
     r'is_improvement',
     r'is_improvement_meta',
     r'showpercent',
@@ -705,6 +711,23 @@ def primes_under(_num: int) -> set:
     return _primes
 
 
+def generate_primes() -> Generator:
+    """Generate prime numbers in sequential order."""
+    yield 2
+    yield 3
+    yield 5
+    yield 7
+    yield 11
+    yield 13
+    yield 17
+    yield 19
+    _prime: int = 23
+    while True:
+        if isprime(_prime):
+            yield _prime
+        _prime += 2
+
+
 def prime_factors(_num: int) -> tuple:
     """Find prime factors.
 
@@ -809,6 +832,31 @@ def radical(_num: int) -> int:
     return _result
 
 
+def von_mangoldt(_num: int) -> float:
+    """Von Mangoldt function.
+
+    >>> von_mangoldt(1)
+    0.0
+    >>> von_mangoldt(2)
+    0.6931471805599453
+    >>> von_mangoldt(3)
+    1.0986122886681098
+    >>> von_mangoldt(4)
+    0.6931471805599453
+    >>> von_mangoldt(5)
+    1.6094379124341003
+    >>> von_mangoldt(6)
+    0.0
+    >>> von_mangoldt(7)
+    1.9459101490553132
+    """
+    for _prime in primes_under(_num):
+        _test: Union[float, int] = log(_num, _prime)
+        if int(_test) == _test:
+            return log(_prime)
+    return 0.0
+
+
 # STATISTICS #
 
 
@@ -824,6 +872,23 @@ def avgoffset(results_list: Iterable[Union[float, int]], target_list: Iterable[U
     for x, y in zip(results_list, target_list):
         _offset += abs(x - y)  # type: ignore
     return _offset / len(results_list)  # type: ignore
+
+
+def gmean(num_list: Iterable[Union[float, int]]) -> Union[float, int]:
+    """Calculate the geometric mean of the numbers in the given list.
+
+    >>> gmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    4.528728688116765
+    """
+    return reduce(mul, num_list, 1) ** (1 / len(tuple(num_list)))
+
+
+def hmean(num_list: Iterable[Union[float, int]]) -> Union[float, int]:
+    """Calculate the harmonic mean of the numbers in the given list.
+    >>> hmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    3.414171521474055
+    """
+    return len(tuple(num_list)) / sum(1.0 / _num for _num in num_list)  # type: ignore
 
 
 def is_improvement(new_list: Iterable[Union[float, int]], best_list: Iterable[Union[float, int]], target_list: Iterable[Union[float, int]]) -> bool:
@@ -897,37 +962,27 @@ def flipcoin() -> str:
 
 def getdifference(_iter1: Iterable, _iter2: Iterable) -> set:
     """Return the difference set of two iterables."""
-    _set1: set = set(_iter1)
-    _set2: set = set(_iter2)
-    return _set1.difference(_set2)
+    return set(_iter1).difference(set(_iter2))
 
 
 def getintersection(_iter1: Iterable, _iter2: Iterable) -> set:
     """Return the intersection set of two iterables."""
-    _set1: set = set(_iter1)
-    _set2: set = set(_iter2)
-    return _set1.intersection(_set2)
+    return set(_iter1).intersection(set(_iter2))
 
 
 def getsymdiff(_iter1: Iterable, _iter2: Iterable) -> set:
     """Return the symmetric difference set of two iterables."""
-    _set1: set = set(_iter1)
-    _set2: set = set(_iter2)
-    return _set1.symmetric_difference(_set2)
+    return set(_iter1).symmetric_difference(set(_iter2))
 
 
 def getunion(_iter1: Iterable, _iter2: Iterable) -> set:
     """Return the union set of two iterables."""
-    _set1: set = set(_iter1)
-    _set2: set = set(_iter2)
-    return _set1.union(_set2)
+    return set(_iter1).union(set(_iter2))
 
 
 def issubset(_iter1: Iterable, _iter2: Iterable) -> bool:
     """Return True if _iter1 is a subset of _iter2."""
-    _set1: set = set(_iter1)
-    _set2: set = set(_iter2)
-    return _set1.issubset(_set2)
+    return set(_iter1).issubset(set(_iter2))
 
 
 # MISCELLANEOUS #
