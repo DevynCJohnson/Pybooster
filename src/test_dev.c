@@ -4,7 +4,7 @@
 /**
 @brief Test code used in MACROS*.h
 @file test_dev.c
-@version 2019.12.28
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -892,7 +892,7 @@ static void list_data_ranges(void) {
 }
 
 
-#ifdef ARCHX86
+#if (defined(ARCHX86) && defined(CPU_BMI2))
 /** Test x86 Intrinsics */
 static void test_x86_intrinsics(void) {
 	puts_no_output(OPEN_TEST_HEADER "X86 INTRINSICS" CLOSE_TEST_HEADER);
@@ -977,7 +977,7 @@ noreturn void main(mainargs) {
 	DEV_PROMPT_FUNC(wait_progress_bar(10), "Perform progress bar test?");
 	DEV_PROMPT_FUNC(list_data_sizes(), "List datatype sizes (in bytes)?");
 	DEV_PROMPT_FUNC(list_data_ranges(), "List datatype ranges?");
-#   ifdef ARCHX86
+#   if (defined(ARCHX86) && defined(CPU_BMI2))
 	DEV_PROMPT_FUNC(test_x86_intrinsics(), "Perform x86 intrinsic tests?");
 #   endif
 	puts_no_output(ANSI_SGR_FG_BGREEN "TESTS COMPLETE" ANSI_SGR_END "\n\n");
