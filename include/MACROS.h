@@ -1251,49 +1251,344 @@ typedef unsigned _Accum __attribute__((__mode__(__UTA__)))   UTAtype;
 
 /** Vector datatype of four single-byte (8-bit) integers */
 typedef QItype VECTOR4   V4QItype;
+typedef QItype VECTOR4U   V4QItype_u;
 #define V4QI   V4QItype
 #define __V4QI   V4QItype
 #define __v4qi   V4QItype
+#define int8x4_t   V4QItype
+#define v4i8   V4QItype
+#define v4i8_b   V4QItype_u
 /** Vector datatype of eight single-byte (8-bit) integers */
 typedef QItype VECTOR8   V8QItype;
+typedef QItype VECTOR8U   V8QItype_u;
 #define V8QI   V8QItype
 #define __V8QI   V8QItype
 #define __v8qi   V8QItype
+#define int8x8_t   V8QItype
+#define v8i8   V8QItype
+#define v8i8_b   V8QItype_u
 /** Vector datatype of sixteen single-byte (8-bit) integers */
 typedef QItype VECTOR16   V16QItype;
+typedef QItype VECTOR16U   V16QItype_u;
 #define V16QI   V16QItype
 #define __V16QI   V16QItype
 #define __v16qi   V16QItype
+#define int8x16_t   V16QItype
+#define v16i8   V16QItype
+#define v16i8_b   V16QItype_u
+/** Vector datatype of thirty-two single-byte (8-bit) integers */
+typedef QItype VECTOR32   V32QItype;
+typedef QItype VECTOR32U   V32QItype_u;
+#define V32QI   V32QItype
+#define __V32QI   V32QItype
+#define __v32qi   V32QItype
+#define int8x32_t   V32QItype
+#define v32i8   V32QItype
+#define v32i8_b   V32QItype_u
+/** Vector datatype of sixty-four single-byte (8-bit) integers */
+typedef QItype VECTOR64   V64QItype;
+typedef QItype VECTOR64U   V64QItype_u;
+#define V64QI   V64QItype
+#define __V64QI   V64QItype
+#define __v64qi   V64QItype
+#define int8x64_t   V64QItype
+#define v64i8   V64QItype
+#define v64i8_b   V64QItype_u
 /** Vector datatype of two int16_t values */
 typedef HItype VECTOR4   V2HItype;
+typedef HItype VECTOR4U   V2HItype_u;
+typedef HItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(4)))   v2i16_h;
 #define V2HI   V2HItype
 #define __V2HI   V2HItype
 #define __v2hi   V2HItype
+#define v2i16   V2HItype
+#define int16x2_t   V2HItype
 /** Vector datatype of four int16_t values */
 typedef HItype VECTOR8   V4HItype;
+typedef HItype VECTOR8U   V4HItype_u;
+typedef HItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(8)))   v4i16_h;
 #define V4HI   V4HItype
 #define __V4HI   V4HItype
 #define __v4hi   V4HItype
+#define v4i16   V4HItype
+#define int16x4_t   V4HItype
 /** Vector datatype of eight int16_t values */
 typedef HItype VECTOR16   V8HItype;
+typedef HItype VECTOR16U   V8HItype_u;
+typedef HItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(16)))   v8i16_h;
 #define V8HI   V8HItype
 #define __V8HI   V8HItype
 #define __v8hi   V8HItype
+#define v8i16   V8HItype
+#define int16x8_t   V8HItype
+/** Vector datatype of sixteen int16_t values */
+typedef HItype VECTOR32   V16HItype;
+typedef HItype VECTOR32U   V16HItype_u;
+typedef HItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(32)))   v16i16_h;
+#define V16HI   V16HItype
+#define __V16HI   V16HItype
+#define __v16hi   V16HItype
+#define v16i16   V16HItype
+#define int16x16_t   V16HItype
+/** Vector datatype of thirty-two int16_t values */
+typedef HItype VECTOR64   V32HItype;
+typedef HItype VECTOR64U   V32HItype_u;
+typedef HItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(64)))   v32i16_h;
+#define V32HI   V32HItype
+#define __V32HI   V32HItype
+#define __v32hi   V32HItype
+#define v32i16   V32HItype
+#define int16x32_t   V32HItype
 /** Vector datatype of two int32_t values */
 typedef SItype VECTOR8   V2SItype;
+typedef SItype VECTOR8U   V2SItype_u;
+typedef SItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(8)))   v2i32_w;
 #define V2SI   V2SItype
 #define __V2SI   V2SItype
 #define __v2si   V2SItype
+#define v2i32   V2SItype
+#define int32x2_t   V2SItype
 /** Vector datatype of four int32_t values */
 typedef SItype VECTOR16   V4SItype;
+typedef SItype VECTOR16U   V4SItype_u;
+typedef SItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(16)))   v4i32_w;
 #define V4SI   V4SItype
 #define __V4SI   V4SItype
 #define __v4si   V4SItype
-/** Vector datatype of four int32_t values */
+#define v4i32   V4SItype
+#define int32x4_t   V4SItype
+/** Vector datatype of eight int32_t values */
+typedef SItype VECTOR32   V8SItype;
+typedef SItype VECTOR32U   V8SItype_u;
+typedef SItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(32)))   v8i32_w;
+#define V8SI   V8SItype
+#define __V8SI   V8SItype
+#define __v8si   V8SItype
+#define v8i32   V8SItype
+#define int32x8_t   V8SItype
+/** Vector datatype of sixteen int32_t values */
+typedef SItype VECTOR64   V16SItype;
+typedef SItype VECTOR64U   V16SItype_u;
+typedef SItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(64)))   v16i32_w;
+#define V16SI   V16SItype
+#define __V16SI   V16SItype
+#define __v16si   V16SItype
+#define v16i32   V16SItype
+#define int32x16_t   V16SItype
+/** Vector datatype of two int64_t values */
+typedef DItype VECTOR16   V2DItype;
+typedef DItype VECTOR16U   V2DItype_u;
+typedef DItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(16)))   v2i64_d;
+#define V2DI   V2DItype
+#define __V2DI   V2DItype
+#define __v2di   V2DItype
+#define v2i64   V2DItype
+#define int64x2_t   V2DItype
+/** Vector datatype of four int64_t values */
 typedef DItype VECTOR32   V4DItype;
+typedef DItype VECTOR32U   V4DItype_u;
+typedef DItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(32)))   v4i64_d;
 #define V4DI   V4DItype
 #define __V4DI   V4DItype
 #define __v4di   V4DItype
+#define v4i64   V4DItype
+#define int64x4_t   V4DItype
+/** Vector datatype of eight int64_t values */
+typedef DItype VECTOR64   V8DItype;
+typedef DItype VECTOR64U   V8DItype_u;
+typedef DItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(64)))   v8i64_d;
+#define V8DI   V8DItype
+#define __V8DI   V8DItype
+#define __v8di   V8DItype
+#define v8i64   V8DItype
+#define int64x8_t   V8DItype
+/** Vector datatype of four uint8_t values */
+typedef UQItype VECTOR4   V4UQItype;
+typedef UQItype VECTOR4U   V4UQItype_u;
+#define V4QU   V4UQItype
+#define __V4QU   V4UQItype
+#define __v4qu   V4UQItype
+#define uint8x4_t   V4UQItype
+#define v4u8   V4UQItype
+#define v4u8_b   V4UQItype_u
+/** Vector datatype of eight uint8_t values */
+typedef UQItype VECTOR8   V8UQItype;
+typedef UQItype VECTOR8U   V8UQItype_u;
+#define V8QU   V8UQItype
+#define __V8QU   V8UQItype
+#define __v8qu   V8UQItype
+#define uint8x8_t   V8UQItype
+#define v8u8   V8UQItype
+#define v8u8_b   V8UQItype_u
+/** Vector datatype of sixteen uint8_t values */
+typedef UQItype VECTOR16   V16UQItype;
+typedef UQItype VECTOR16U   V16UQItype_u;
+#define V16QU   V16UQItype
+#define __V16QU   V16UQItype
+#define __v16qu   V16UQItype
+#define uint8x16_t   V16UQItype
+#define v16u8   V16UQItype
+#define v16u8_b   V16UQItype_u
+/** Vector datatype of thirty-two uint8_t values */
+typedef UQItype VECTOR32   V32UQItype;
+typedef UQItype VECTOR32U   V32UQItype_u;
+#define V32QU   V32UQItype
+#define __V32QU   V32UQItype
+#define __v32qu   V32UQItype
+#define uint8x32_t   V32UQItype
+#define v32u8   V32UQItype
+#define v32u8_b   V32UQItype_u
+/** Vector datatype of sixty-four uint8_t values */
+typedef UQItype VECTOR64   V64UQItype;
+typedef UQItype VECTOR64U   V64UQItype_u;
+#define V64QU   V64UQItype
+#define __V64QU   V64UQItype
+#define __v64qu   V64UQItype
+#define uint8x64_t   V64UQItype
+#define v64u8   V64UQItype
+#define v64u8_b   V64UQItype_u
+/** Vector datatype of two uint16_t values */
+typedef UHItype VECTOR4   V2UHItype;
+typedef UHItype VECTOR4U   V2UHItype_u;
+typedef UHItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(4)))   v2u16_h;
+#define V2HU   V2UHItype
+#define __V2HU   V2UHItype
+#define __v2hu   V2UHItype
+#define v2u16   V2UHItype
+#define uint16x2_t   V2UHItype
+/** Vector datatype of four uint16_t values */
+typedef UHItype VECTOR8   V4UHItype;
+typedef UHItype VECTOR8U   V4UHItype_u;
+typedef UHItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(8)))   v4u16_h;
+#define V4HU   V4UHItype
+#define __V4HU   V4UHItype
+#define __v4hu   V4UHItype
+#define v4u16   V4UHItype
+#define uint16x4_t   V4UHItype
+/** Vector datatype of eight uint16_t values */
+typedef UHItype VECTOR16   V8UHItype;
+typedef UHItype VECTOR16U   V8UHItype_u;
+typedef UHItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(16)))   v8u16_h;
+#define V8HU   V8UHItype
+#define __V8HU   V8UHItype
+#define __v8hu   V8UHItype
+#define v8u16   V8UHItype
+#define uint16x8_t   V8UHItype
+/** Vector datatype of sixteen uint16_t values */
+typedef UHItype VECTOR32   V16UHItype;
+typedef UHItype VECTOR32U   V16UHItype_u;
+typedef UHItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(32)))   v16u16_h;
+#define V16HU   V16UHItype
+#define __V16HU   V16UHItype
+#define __v16hu   V16UHItype
+#define v16u16   V16UHItype
+#define uint16x16_t   V16UHItype
+/** Vector datatype of thirty-two uint16_t values */
+typedef UHItype VECTOR64   V32UHItype;
+typedef UHItype VECTOR64U   V32UHItype_u;
+typedef UHItype __attribute__((__aligned__(2), __may_alias__, __vector_size__(64)))   v32u16_h;
+#define V32HU   V32UHItype
+#define __V32HU   V32UHItype
+#define __v32hu   V32UHItype
+#define v32u16   V32UHItype
+#define uint16x32_t   V32UHItype
+/** Vector datatype of two uint32_t values */
+typedef USItype VECTOR8   V2USItype;
+typedef USItype VECTOR8U   V2USItype_u;
+typedef USItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(8)))   v2u32_w;
+#define V2SU   V2USItype
+#define __V2SU   V2USItype
+#define __v2su   V2USItype
+#define v2u32   V2USItype
+#define uint32x2_t   V2USItype
+/** Vector datatype of four uint32_t values */
+typedef USItype VECTOR16   V4USItype;
+typedef USItype VECTOR16U   V4USItype_u;
+typedef USItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(16)))   v4u32_w;
+#define V4SU   V4USItype
+#define __V4SU   V4USItype
+#define __v4su   V4USItype
+#define v4u32   V4USItype
+#define uint32x4_t   V4USItype
+/** Vector datatype of eight uint32_t values */
+typedef USItype VECTOR32   V8USItype;
+typedef USItype VECTOR32U   V8USItype_u;
+typedef USItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(32)))   v8u32_w;
+#define V8SU   V8USItype
+#define __V8SU   V8USItype
+#define __v8su   V8USItype
+#define v8u32   V8USItype
+#define uint32x8_t   V8USItype
+/** Vector datatype of sixteen uint32_t values */
+typedef USItype VECTOR64   V16USItype;
+typedef USItype VECTOR64U   V16USItype_u;
+typedef USItype __attribute__((__aligned__(4), __may_alias__, __vector_size__(64)))   v16u32_w;
+#define V16SU   V16USItype
+#define __V16SU   V16USItype
+#define __v16su   V16USItype
+#define v16u32   V16USItype
+#define uint32x16_t   V16USItype
+/** Vector datatype of two uint64_t values */
+typedef UDItype VECTOR16   V2UDItype;
+typedef UDItype VECTOR16U   V2UDItype_u;
+typedef UDItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(16)))   v2u64_d;
+#define V2DU   V2UDItype
+#define __V2DU   V2UDItype
+#define __v2du   V2UDItype
+#define v2u64   V2UDItype
+#define uint64x2_t   V2UDItype
+/** Vector datatype of four uint64_t values */
+typedef UDItype VECTOR32   V4UDItype;
+typedef UDItype VECTOR32U   V4UDItype_u;
+typedef UDItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(32)))   v4u64_d;
+#define V4DU   V4UDItype
+#define __V4DU   V4UDItype
+#define __v4du   V4UDItype
+#define v4u64   V4UDItype
+#define uint64x4_t   V4UDItype
+/** Vector datatype of eight uint64_t values */
+typedef UDItype VECTOR64   V8UDItype;
+typedef UDItype VECTOR64U   V8UDItype_u;
+typedef UDItype __attribute__((__aligned__(8), __may_alias__, __vector_size__(64)))   v8u64_d;
+#define V8DU   V8UDItype
+#define __V8DU   V8UDItype
+#define __v8du   V8UDItype
+#define v8u64   V8UDItype
+#define uint64x8_t   V8UDItype
+// Intrinsic Integer Datatypes
+typedef UQItype POLY_VECTOR4   poly8x4_t;
+typedef UQItype POLY_VECTOR8   poly8x8_t;
+typedef UQItype POLY_VECTOR16   poly8x16_t;
+typedef UQItype POLY_VECTOR32   poly8x32_t;
+typedef UQItype POLY_VECTOR64   poly8x64_t;
+typedef UHItype POLY_VECTOR4   poly16x2_t;
+typedef UHItype POLY_VECTOR8   poly16x4_t;
+typedef UHItype POLY_VECTOR16   poly16x8_t;
+typedef UHItype POLY_VECTOR32   poly16x16_t;
+typedef UHItype POLY_VECTOR64   poly16x32_t;
+typedef USItype POLY_VECTOR8   poly32x2_t;
+typedef USItype POLY_VECTOR16   poly32x4_t;
+typedef USItype POLY_VECTOR32   poly32x8_t;
+typedef USItype POLY_VECTOR64   poly32x16_t;
+typedef UDItype POLY_VECTOR16   poly64x2_t;
+typedef UDItype POLY_VECTOR32   poly64x4_t;
+typedef UDItype POLY_VECTOR64   poly64x8_t;
+typedef HItype VECTOR8   __m64bh;
+typedef HItype VECTOR8U   __m64bh_u;
+typedef HItype VECTOR16   __m128bh;
+typedef HItype VECTOR16U   __m128bh_u;
+typedef HItype VECTOR32   __m256bh;
+typedef HItype VECTOR32U   __m256bh_u;
+typedef HItype VECTOR64   __m512bh;
+typedef HItype VECTOR64U   __m512bh_u;
+typedef DItype VECTOR8   __m64i;
+typedef DItype VECTOR8U   __m64i_u;
+typedef DItype VECTOR16   __m128i;
+typedef DItype VECTOR16U   __m128i_u;
+typedef DItype VECTOR32   __m256i;
+typedef DItype VECTOR32U   __m256i_u;
+typedef DItype VECTOR64   __m512i;
+typedef DItype VECTOR64U   __m512i_u;
 
 /** @} */  // }
 
@@ -1305,32 +1600,79 @@ typedef DItype VECTOR32   V4DItype;
 
 /** Vector datatype of two float32 values */
 typedef SFtype VECTOR8   V2SFtype;
+typedef SFtype VECTOR8U   V2SFtype_u;
+typedef SFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(8)))   v2f32_w;
 #define V2SF   V2SFtype
 #define __V2SF   V2SFtype
 #define __v2sf   V2SFtype
+#define float32x2_t   V2SFtype
 /** Vector datatype of four float32 values */
 typedef SFtype VECTOR16   V4SFtype;
+typedef SFtype VECTOR16U   V4SFtype_u;
+typedef SFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(16)))   v4f32_w;
 #define V4SF   V4SFtype
 #define __V4SF   V4SFtype
 #define __v4sf   V4SFtype
+#define float32x4_t   V4SFtype
 /** Vector datatype of eight float32 values */
 typedef SFtype VECTOR32   V8SFtype;
+typedef SFtype VECTOR32U   V8SFtype_u;
+typedef SFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(32)))   v8f32_w;
 #define V8SF   V8SFtype
 #define __V8SF   V8SFtype
 #define __v8sf   V8SFtype
+#define float32x8_t   V8SFtype
+/** Vector datatype of sixteen float32 values */
+typedef SFtype VECTOR64   V16SFtype;
+typedef SFtype VECTOR64U   V16SFtype_u;
+typedef SFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(64)))   v16f32_w;
+#define V16SF   V16SFtype
+#define __V16SF   V16SFtype
+#define __v16sf   V16SFtype
+#define float32x16_t   V16SFtype
 /** Vector datatype of two float64 values */
 typedef DFtype VECTOR16   V2DFtype;
+typedef DFtype VECTOR16U   V2DFtype_u;
+typedef DFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(16)))   v2f64_d;
 #define V2DF   V2DFtype
 #define __V2DF   V2DFtype
 #define __v2df   V2DFtype
+#define float64x2_t   V2DFtype
 /** Vector datatype of four float64 values */
 typedef DFtype VECTOR32   V4DFtype;
+typedef DFtype VECTOR32U   V4DFtype_u;
+typedef DFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(32)))   v4f64_d;
 #define V4DF   V4DFtype
 #define __V4DF   V4DFtype
 #define __v4df   V4DFtype
+#define float64x4_t   V4DFtype
+/** Vector datatype of eight float64 values */
+typedef DFtype VECTOR64   V8DFtype;
+typedef DFtype VECTOR64U   V8DFtype_u;
+typedef DFtype __attribute__((__aligned__(4), __may_alias__, __vector_size__(64)))   v8f64_d;
+#define V8DF   V8DFtype
+#define __V8DF   V8DFtype
+#define __v8df   V8DFtype
+#define float64x8_t   V8DFtype
 // Intrinsic Float-point Datatypes
-#define __m64   V2SFtype
-#define __m128   V4SFtype
+typedef SFtype VECTOR8   __m64;
+#define __mm_loadl_pi_v2f32   __m64;
+#define __mm_storeh_pi_v2f32   __m64;
+typedef SFtype VECTOR8U   __m64_u;
+typedef SFtype VECTOR16   __m128;
+typedef SFtype VECTOR16U   __m128_u;
+typedef SFtype VECTOR32   __m256;
+typedef SFtype VECTOR32U   __m256_u;
+typedef SFtype VECTOR64   __m512;
+typedef SFtype VECTOR64U   __m512_u;
+typedef DFtype VECTOR8   __m64d;
+typedef DFtype VECTOR8U   __m64d_u;
+typedef DFtype VECTOR16   __m128d;
+typedef DFtype VECTOR16U   __m128d_u;
+typedef DFtype VECTOR32   __m256d;
+typedef DFtype VECTOR32U   __m256d_u;
+typedef DFtype VECTOR64   __m512d;
+typedef DFtype VECTOR64U   __m512d_u;
 
 /** @} */  // }
 
@@ -1629,6 +1971,7 @@ typedef unsigned char   uint8_t;
 #define __u8   uint8_t
 #define UINT8   uint8_t
 #define u8_t   uint8_t
+#define poly8_t   uint8_t
 // 16-bit
 #ifndef __uint16_t_defined
 #   define __uint16_t_defined   1
@@ -1655,6 +1998,7 @@ typedef unsigned short   uint16_t;
 #define __le16   uint16_t
 #define __be16   uint16_t
 #define __sum16   uint16_t
+#define poly16_t   uint16_t
 // 32-bit
 #ifndef __uint32_t_defined
 #   define __uint32_t_defined   1
@@ -1684,6 +2028,7 @@ typedef natural_t   mach_msg_type_number_t;
 #define __le32   uint32_t
 #define __be32   uint32_t
 #define __wsum   uint32_t
+#define poly32_t   uint32_t
 // 64-bit
 #ifndef __uint64_t_defined
 #   define __uint64_t_defined   1
@@ -1712,6 +2057,7 @@ typedef unsigned long long   uint64_t;
 #define u64_t   uint64_t
 #define __le64   uint64_t
 #define __be64   uint64_t
+#define poly64_t   uint64_t
 typedef uint64_t   DWORD64;
 #define DWORDLONG   DWORD64
 

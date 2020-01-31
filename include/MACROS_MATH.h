@@ -12349,10 +12349,10 @@ LIB_FUNC MATH_FUNC uint128_t mersenneprime_u128(const uint128_t num) {
 // NUMBER-TYPE TESTS
 
 /** Test if a number is a perfect square */
-LIB_FUNC MATH_FUNC int issquare(const int64_t num) {
-	if (num < (int64_t)0) { return -1; }
-	long double test = floorl(sqrtl((long double)num) + 0.5L);
-	if ((int64_t)(test * test) == num) { return 1; }
+LIB_FUNC MATH_FUNC int issquare(const uint64_t num) {
+	if (num == 0ULL) { return -1; }
+	const long double test = floorl(sqrtl((long double)num) + 0.5L);
+	if ((test * test) == num) { return 1; }
 	return 0;
 }
 
@@ -12360,48 +12360,32 @@ LIB_FUNC MATH_FUNC int issquare(const int64_t num) {
 /** Test if a double is a perfect square */
 LIB_FUNC MATH_FUNC int issquare_dbl(const double num) {
 	if (num < 0.0) { return -1; }
-	register double test = floor(sqrt(num) + 0.5);
-	if ((test * test) == num) { return 1; }
-	return 0;
-}
-
-
-/** Test if a long double is a perfect square */
-LIB_FUNC MATH_FUNC int issquare_ldbl(const long double num) {
-	if (num < 0.0L) { return -1; }
-	const long double test = floorl(sqrtl(num) + 0.5L);
+	const double test = floor(sqrt(num) + 0.5);
 	if ((test * test) == num) { return 1; }
 	return 0;
 }
 
 
 /** Test if the given number is a Triangular Number */
-LIB_FUNC MATH_FUNC int istriangular(const int64_t num) {
-	if (num < (int64_t)0) { return -1; }
-	return issquare((int64_t)((int64_t)8 * num + (int64_t)1));
-}
-
-
-/** Test if the given number is a Triangular Number */
-LIB_FUNC MATH_FUNC int istriangular_dbl(const double num) {
-	if (num < 0.0) { return -1; }
-	return issquare_dbl(8.0 * num + 1.0);
+LIB_FUNC MATH_FUNC int istriangular(const uint64_t num) {
+	if (num == 0ULL) { return -1; }
+	return issquare((uint64_t)(8ULL * num + 1ULL));
 }
 
 
 /** Test if the given number is a Hexagonal Number */
-LIB_FUNC MATH_FUNC int ishexagonal(const int64_t num) {
-	if (num < (int64_t)0) { return -1; }
-	const long double ans = ((sqrtl((long double)((int64_t)8 * num + (int64_t)1)) + 1.0L) * 0.25L);
+LIB_FUNC MATH_FUNC int ishexagonal(const uint64_t num) {
+	if (num == 0ULL) { return -1; }
+	const long double ans = ((sqrtl((long double)(8ULL * num + 1ULL)) + 1.0L) * 0.25L);
 	if (ans == floorl(ans)) { return 1; }
 	return 0;
 }
 
 
 /** Test if the given number is a Heptagonal Number */
-LIB_FUNC MATH_FUNC int isheptagonal(const int64_t num) {
-	if (num < (int64_t)0) { return -1; }
-	long double ans = ((sqrtl((long double)((int64_t)40 * num + (int64_t)9)) + 3.0L) * 0.1L);
+LIB_FUNC MATH_FUNC int isheptagonal(const uint64_t num) {
+	if (num == 0ULL) { return -1; }
+	const long double ans = ((sqrtl((long double)(40ULL * num + 9U)) + 3.0L) * 0.1L);
 	if (ans == floorl(ans)) { return 1; }
 	return 0;
 }
@@ -12442,7 +12426,7 @@ LIB_FUNC MATH_FUNC int ismersenneprime(const uint64_t num) {
 		case 2305843009213693951ULL:
 			return 1;
 		default: return 0;
-	}  // [3, 7, 31, 127, 2047, 8191, 131071, 524287, 8388607, 536870911, 2147483647, 137438953471, 2199023255551, 8796093022207, 140737488355327, 9007199254740991, 576460752303423487, 2305843009213693951, 147573952589676412927, 2361183241434822606847]
+	}
 	return 0;
 }
 
@@ -12450,7 +12434,7 @@ LIB_FUNC MATH_FUNC int ismersenneprime(const uint64_t num) {
 /** Test if an unsigned long long is prime */
 LIB_FUNC MATH_FUNC int isprime(const uint64_t num) {
 	if (((num & 1ULL) == 0ULL) && (num != 2ULL)) { return 0; }
-	else if (num < 37ULL) {
+	else if (num < 19ULL) {
 		switch (num) {
 			case 1ULL:
 				return 0;
@@ -12461,18 +12445,13 @@ LIB_FUNC MATH_FUNC int isprime(const uint64_t num) {
 			case 11ULL:
 			case 13ULL:
 			case 17ULL:
-			case 19ULL:
-			case 23ULL:
-			case 29ULL:
-			case 31ULL:
 				return 1;
 			default: break;
 		}
 	} else if ((num % 3ULL == 0) || (num % 5ULL == 0)) { return 0; }
 	else if ((num % 7ULL == 0) || (num % 11ULL == 0)) { return 0; }
 	else if ((num % 13ULL == 0) || (num % 17ULL == 0)) { return 0; }
-	else if ((num % 19ULL == 0) || (num % 23ULL == 0) || (num % 29ULL == 0)) { return 0; }
-	for (register uint64_t i = 31ULL; i < num; i += 2ULL) {
+	for (register uint64_t i = 19ULL; i < num; i += 2ULL) {
 		if (num % i == 0ULL) { return (int)(i == num); }
 	}
 	return 1;
@@ -12480,164 +12459,9 @@ LIB_FUNC MATH_FUNC int isprime(const uint64_t num) {
 
 
 /** Test if an int is composite */
-LIB_FUNC MATH_FUNC int iscomposite(const int num) {
-	if (num < 0) { return 0; }
-	else if (((num % 2) == 0) && (num != 2)) { return 1; }
-	else if (num < 20) {
-		switch (num) {
-			case 1:
-			case 2:
-			case 3:
-			case 5:
-			case 7:
-			case 11:
-			case 13:
-			case 17:
-			case 19: return 0;
-			default: return 1;
-		}
-	} else if (num % 3 == 0 || num % 5 == 0 || num % 7 == 0) {
-		return 1;
-	} else if (num % 11 == 0 || num % 13 == 0 || num % 17 == 0 || num % 19 == 0) {
-		return 1;
-	}
-	register int i;
-	for (i = 23; i < num; i += 2) {
-		if (num % i == 0) { return (int)(i != num); }
-	}
-	return 0;
-}
-
-
-/** Test if an unsigned int is composite */
-LIB_FUNC MATH_FUNC int isunsignedcomposite(const unsigned int num) {
-	if (((num % (unsigned int)2) == (unsigned int)0) && (num != (unsigned int)2)) { return 1; }
-	else if (num < (unsigned int)20) {
-		switch (num) {
-			case (unsigned int)1:
-			case (unsigned int)2:
-			case (unsigned int)3:
-			case (unsigned int)5:
-			case (unsigned int)7:
-			case (unsigned int)11:
-			case (unsigned int)13:
-			case (unsigned int)17:
-			case (unsigned int)19: return 0;
-			default: return 1;
-		}
-	} else if (num % (unsigned int)3 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)5 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)7 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)11 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)13 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)17 == (unsigned int)0) { return 1; }
-	else if (num % (unsigned int)19 == (unsigned int)0) { return 1; }
-	register unsigned int i;
-	for (i = (unsigned int)23; i < num; i += (unsigned int)2) {
-		if (num % i == (unsigned int)0) { return (int)(i != num); }
-	}
-	return 0;
-}
-
-
-/** Test if an long is composite */
-LIB_FUNC MATH_FUNC int islongcomposite(const long num) {
-	if (num < (long)0) { return 0; }
-	else if (((num % (long)2) == (long)0) && (num != (long)2)) { return 1; }
-	else if (num < (long)20) {
-		switch (num) {
-			case (long)1:
-			case (long)2:
-			case (long)3:
-			case (long)5:
-			case (long)7:
-			case (long)11:
-			case (long)13:
-			case (long)17:
-			case (long)19: return 0;
-			default: return 1;
-		}
-	} else if (num % (long)3 == (long)0) { return 1; }
-	else if (num % (long)5 == (long)0) { return 1; }
-	else if (num % (long)7 == (long)0) { return 1; }
-	else if (num % (long)11 == (long)0) { return 1; }
-	else if (num % (long)13 == (long)0) { return 1; }
-	else if (num % (long)17 == (long)0) { return 1; }
-	else if (num % (long)19 == (long)0) { return 1; }
-	register long i;
-	for (i = (long)23; i < num; i += (long)2) {
-		if (num % i == (long)0) { return (int)(i != num); }
-	}
-	return 0;
-}
-
-
-/** Test if an long long is composite */
-LIB_FUNC MATH_FUNC int islonglongcomposite(const long long num) {
-	if (num < (long long)0) { return 0; }
-	else if (((num % (long long)2) == (long long)0) && (num != (long long)2)) { return 1; }
-	else if (num < (long long)20) {
-		switch (num) {
-			case (long long)1:
-			case (long long)2:
-			case (long long)3:
-			case (long long)5:
-			case (long long)7:
-			case (long long)11:
-			case (long long)13:
-			case (long long)17:
-			case (long long)19: return 0;
-			default: return 1;
-		}
-	} else if (num % (long long)3 == (long long)0) { return 1; }
-	else if (num % (long long)5 == (long long)0) { return 1; }
-	else if (num % (long long)7 == (long long)0) { return 1; }
-	else if (num % (long long)11 == (long long)0) { return 1; }
-	else if (num % (long long)13 == (long long)0) { return 1; }
-	else if (num % (long long)17 == (long long)0) { return 1; }
-	else if (num % (long long)19 == (long long)0) { return 1; }
-	register long long i;
-	for (i = (long long)23; i < num; i += (long long)2) {
-		if (num % i == (long long)0) { return (int)(i != num); }
-	}
-	return 0;
-}
-
-
-/** Test if an unsigned long is composite */
-LIB_FUNC MATH_FUNC int isulcomposite(const unsigned long num) {
-	if (((num % 2UL) == 0UL) && (num != 2UL)) { return 1; }
-	else if (num < 20UL) {
-		switch (num) {
-			case 1UL:
-			case 2UL:
-			case 3UL:
-			case 5UL:
-			case 7UL:
-			case 11UL:
-			case 13UL:
-			case 17UL:
-			case 19UL: return 0;
-			default: return 1;
-		}
-	} else if (num % 3 == 0) { return 1; }
-	else if (num % 5 == 0) { return 1; }
-	else if (num % 7 == 0) { return 1; }
-	else if (num % 11 == 0) { return 1; }
-	else if (num % 13 == 0) { return 1; }
-	else if (num % 17 == 0) { return 1; }
-	else if (num % 19 == 0) { return 1; }
-	register unsigned long i;
-	for (i = 23UL; i < num; i += 2UL) {
-		if (num % i == 0UL) { return (int)(i != num); }
-	}
-	return 0;
-}
-
-
-/** Test if an unsigned long long is composite */
-LIB_FUNC MATH_FUNC int isullcomposite(const unsigned long long num) {
-	if (((num % 2ULL) == 0ULL) && (num != 2ULL)) { return 1; }
+LIB_FUNC MATH_FUNC int iscomposite(const uint64_t num) {
+	if (num == 0ULL) { return 0; }
+	else if (((num % 2ULL) == 0ULL) && (num != 2ULL)) { return 1; }
 	else if (num < 20ULL) {
 		switch (num) {
 			case 1ULL:
@@ -12651,15 +12475,12 @@ LIB_FUNC MATH_FUNC int isullcomposite(const unsigned long long num) {
 			case 19ULL: return 0;
 			default: return 1;
 		}
-	} else if (num % 3 == 0) { return 1; }
-	else if (num % 5 == 0) { return 1; }
-	else if (num % 7 == 0) { return 1; }
-	else if (num % 11 == 0) { return 1; }
-	else if (num % 13 == 0) { return 1; }
-	else if (num % 17 == 0) { return 1; }
-	else if (num % 19 == 0) { return 1; }
-	register unsigned long long i;
-	for (i = 23ULL; i < num; i += 2ULL) {
+	} else if (num % 3ULL == 0ULL || num % 5ULL == 0ULL || num % 7ULL == 0ULL) {
+		return 1;
+	} else if (num % 11ULL == 0ULL || num % 13ULL == 0ULL || num % 17ULL == 0ULL || num % 19ULL == 0ULL) {
+		return 1;
+	}
+	for (register uint64_t i = 21ULL; i < num; i += 2ULL) {
 		if (num % i == 0ULL) { return (int)(i != num); }
 	}
 	return 0;
@@ -12688,7 +12509,6 @@ LIB_FUNC MATH_FUNC int isfibprime(const uint64_t num) {
 		case (uint64_t)99194853094755497: return (int)1;
 		default: return (int)0;  // False
 	}
-	// [2, 3, 5, 13, 89, 233, 1597, 28657, 514229, 433494437, 2971215073, 99194853094755497, 1066340417491710595814572169, 19134702400093278081449423917, 475420437734698220747368027166749382927701417016557193662268716376935476241]
 }
 
 
@@ -12717,14 +12537,13 @@ LIB_FUNC MATH_FUNC int isfibprime128(const uint128_t num) {
 		case (uint128_t)((uint128_t)(1913470240009327UL * 10000000000000UL) + 8081449423917): return (int)1;  // 19134702400093278081449423917
 		default: return (int)0;  // False
 	}
-	// [2, 3, 5, 13, 89, 233, 1597, 28657, 514229, 433494437, 2971215073, 99194853094755497, 1066340417491710595814572169, 19134702400093278081449423917, 475420437734698220747368027166749382927701417016557193662268716376935476241]
 }
 #endif
 
 
 /** Test if an uint64_t is a Lucas Number */
 LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
-	if (num < 1024) {
+	if (num < 1024ULL) {
 		switch (num) {
 			case (uint64_t)1:
 			case (uint64_t)2:
@@ -12743,7 +12562,7 @@ LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
 			case (uint64_t)843: return 1;
 			default: return 0;
 		}
-	} else if (num > 1024 && num < 1860499ULL) {
+	} else if (num > 1024ULL && num < 1860499ULL) {
 		switch (num) {
 			case (uint64_t)1364:
 			case (uint64_t)2207:
@@ -12776,8 +12595,8 @@ LIB_FUNC MATH_FUNC int islucas(const uint64_t num) {
 			case (uint64_t)141422324: return 1;
 			default: return 0;
 		}
-	} else { return 0; }
-	// [1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843, 1364, 2207, 3571, 5778, 9349, 15127, 24476, 39603, 64079, 103682, 167761, 271443, 439204, 710647, 1149851, 1860498, 3010349, 4870847, 7881196, 12752043, 20633239, 33385282, 54018521, 87403803, 141422324]
+	}
+	return 0;
 }
 
 
@@ -12806,7 +12625,6 @@ LIB_FUNC MATH_FUNC int islucasprime(const uint64_t num) {
 		case (uint64_t)6643838879: return (int)1;
 		default: return (int)0;  // False
 	}
-	// [0, 2, 4, 5, 7, 8, 11, 13, 16, 17, 19, 31, 37, 41, 47, 53, 61, 71, 79, 113, 313, 353, 503, 613, 617, 863, 1097, 1361, 4787, 4793, 5851, 7741, 8467, 10691, 12251, 13963, 14449, 19469, 35449, 36779, 44507, 51169, 56003, 81671, 89849, 94823, 140057, 148091, 159521, 183089, 193201, 202667, 344293, 387433, 443609, 532277, 574219, 616787, 631181, 637751, 651821, 692147, 901657, 1051849]
 }
 
 
@@ -12907,18 +12725,18 @@ LIB_FUNC MATH_FUNC int64_t get_flt_expo(const float x) {
 
 /** Return the exponent(as an int64_t) of the given double */
 LIB_FUNC MATH_FUNC int64_t get_dbl_expo(const double x) {
-	const double tmpdbl = log10(fabs(x));
+	register const double tmpdbl = log10(fabs(x));
 	return (int64_t)tmpdbl;
 }
 
 
 /** Compare absolute values of floating-point values pointed to by `p` and `q` for `qsort()` */
 LIB_FUNC int compare_doubles(const void* p, const void* q) {
-	const double pd = fabs(*(const double*)p);
-	const double qd = fabs(*(const double*)q);
+	register const double pd = fabs(*(const double*)p);
+	register const double qd = fabs(*(const double*)q);
 	if (pd < qd) { return -1; }
 	else if (pd == qd) { return 0; }
-	else { return 1; }
+	return 1;
 }
 
 
@@ -12960,7 +12778,7 @@ LIB_FUNC double __x2y2m1(const double x, const double y) {
 	mul_split_doubles(&vals[3], &vals[2], y, y);
 	vals[4] = -1.0;
 	qsort(vals, 5, SIZEOF_DOUBLE, compare_doubles);
-	for (size_t i = 0; i <= 3; i++) {
+	for (register size_t i = 0; i <= 3; i++) {
 		add_split_doubles(&vals[i + 1], &vals[i], vals[i + 1], vals[i]);
 		qsort((vals + i + 1), 4 - i, SIZEOF_DOUBLE, compare_doubles);
 	}

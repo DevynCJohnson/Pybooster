@@ -12048,20 +12048,38 @@ LIB_FUNC unsigned long long asm_xor_ull(unsigned long long num1, unsigned long l
 }
 
 
+/* INTEL INTRINSICS */
+
+
 // TODO: Add Intel Intrinsics
 // #if (CPU_MMX || CPU_SSE2 || defined(INTEL))
 // #   include <immintrin.h>
 // #endif
+// #include <mm3dnow.h>
+// #include <nmmintrin.h>
+// #include <smmintrin.h>
+// #include <lwpintrin.h>
+// #include <lzcntintrin.h>
+// #include <movdirintrin.h>
+// #include <mwaitxintrin.h>
+// #include <pconfigintrin.h>
+// #include <rdseedintrin.h>
+// #include <xsaveintrin.h>
+// #include <pkuintrin.h>
 
 
-#if CPU_MMX  // __MMINTRIN_H <mmintrin.h>
+#if (CPU_MMX && (!defined(__MMINTRIN_H)))  // <mmintrin.h>
+#define __MMINTRIN_H   1
 
-// TODO: Add <mmintrin.h>
+
+// #include <mmintrin.h>
+
 
 #endif
 
 
-#if CPU_SSE2  // __XMMINTRIN_H <xmmintrin.h>
+#if (CPU_SSE2 && (!defined(__XMMINTRIN_H)))  // <xmmintrin.h>
+#define __XMMINTRIN_H   1
 
 
 #define _MM_SHUFFLE(z, y, x, w)   (((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
@@ -12091,392 +12109,507 @@ LIB_FUNC void _mm_setcsr(unsigned int val) {
 #endif
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_add_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_add_ss(__m128 __a, const __m128 __b) {
 	__a[0] += __b[0];
 	return __a;
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_add_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_add_ps(const __m128 __a, const __m128 __b) {
 	return __a + __b;
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_sub_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_sub_ss(__m128 __a, const __m128 __b) {
 	__a[0] -= __b[0];
 	return __a;
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_sub_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_sub_ps(const __m128 __a, const __m128 __b) {
 	return __a - __b;
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_mul_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_mul_ss(__m128 __a, const __m128 __b) {
 	__a[0] *= __b[0];
 	return __a;
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_mul_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_mul_ps(const __m128 __a, const __m128 __b) {
 	return __a * __b;
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_div_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_div_ss(__m128 __a, const __m128 __b) {
 	__a[0] /= __b[0];
 	return __a;
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_div_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_div_ps(const __m128 __a, const __m128 __b) {
 	return __a / __b;
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_sqrt_ss(__m128 __a) {
+/** Calculate the square-root the low-order bits of each number in the vector */
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_sqrt_ss(const __m128 __a) {
 	const __m128 __c = __builtin_ia32_sqrtss(__a);
 	return (__m128) { __c[0], __a[1], __a[2], __a[3] };
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_sqrt_ps(__m128 __a) {
+/** Calculate the square-root of each number in the vector */
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_sqrt_ps(__m128 __a) {
 	return __builtin_ia32_sqrtps(__a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_rcp_ss(__m128 __a) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_rcp_ss(const __m128 __a) {
 	const __m128 __c = __builtin_ia32_rcpss(__a);
 	return (__m128) { __c[0], __a[1], __a[2], __a[3] };
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_rcp_ps(__m128 __a) {
+/** Calculate the approximate reciprocals of the values */
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_rcp_ps(const __m128 __a) {
 	return __builtin_ia32_rcpps(__a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_rsqrt_ss(__m128 __a) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_rsqrt_ss(const __m128 __a) {
 	const __m128 __c = __builtin_ia32_rsqrtss(__a);
 	return (__m128) { __c[0], __a[1], __a[2], __a[3] };
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_rsqrt_ps(__m128 __a) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_rsqrt_ps(const __m128 __a) {
 	return __builtin_ia32_rsqrtps(__a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_min_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_min_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_minss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_min_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_min_ps(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_minps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_max_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_max_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_maxss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_max_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_max_ps(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_maxps(__a, __b);
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_and_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_and_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)((__v4si)__a & (__v4si)__b);
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_andnot_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_andnot_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)(~(__v4si)__a & (__v4si)__b);
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_or_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_or_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)((__v4si)__a | (__v4si)__b);
 }
 
 
-LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_xor_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_xor_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)((__v4si)__a ^ (__v4si)__b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpeq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpeq_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpeqss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpeq_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpeq_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpeqps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmplt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmplt_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpltss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmplt_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmplt_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpltps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmple_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmple_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpless(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmple_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmple_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpleps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpgt_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpgt_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpltps(__b, __a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpge_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpge_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpleps(__b, __a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpneq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpneq_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpneqss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpneq_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpneq_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpneqps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnlt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnlt_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnltss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnlt_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnlt_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnltps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnle_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnle_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnless(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnle_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnle_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnleps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpngt_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpngt_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnltps(__b, __a);
 }
 
 
 #   ifdef COMPILER_CLANG
-LIB_FUNC __m128 BUILD_SSE _mm_cmpgt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpgt_ss(__m128 __a, const __m128 __b) {
 	return (__m128)__builtin_shufflevector(__a, __builtin_ia32_cmpltss(__b, __a), 4, 1, 2, 3);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpge_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpge_ss(__m128 __a, const __m128 __b) {
 	return (__m128)__builtin_shufflevector(__a, __builtin_ia32_cmpless(__b, __a), 4, 1, 2, 3);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpngt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpngt_ss(__m128 __a, const __m128 __b) {
 	return (__m128)__builtin_shufflevector(__a, __builtin_ia32_cmpnltss(__b, __a), 4, 1, 2, 3);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnge_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnge_ss(__m128 __a, const __m128 __b) {
 	return (__m128)__builtin_shufflevector(__a, __builtin_ia32_cmpnless(__b, __a), 4, 1, 2, 3);
 }
 #   endif
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpnge_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpnge_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpnleps(__b, __a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpord_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpord_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpordss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpord_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpord_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpordps(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpunord_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpunord_ss(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpunordss(__a, __b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cmpunord_ps(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cmpunord_ps(const __m128 __a, const __m128 __b) {
 	return (__m128)__builtin_ia32_cmpunordps(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comieq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comieq_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comieq(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comilt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comilt_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comilt(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comile_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comile_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comile(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comigt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comigt_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comigt(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comige_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comige_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comige(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_comineq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_comineq_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_comineq(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomieq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomieq_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomieq(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomilt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomilt_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomilt(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomile_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomile_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomile(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomigt_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomigt_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomigt(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomige_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomige_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomige(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_ucomineq_ss(__m128 __a, __m128 __b) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_ucomineq_ss(const __m128 __a, const __m128 __b) {
 	return __builtin_ia32_ucomineq(__a, __b);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_cvtss_si32(__m128 __a) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_cvtss_si32(const __m128 __a) {
 	return __builtin_ia32_cvtss2si(__a);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_cvt_ss2si(__m128 __a) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_cvt_ss2si(const __m128 __a) {
 	return _mm_cvtss_si32(__a);
 }
 
 
 #   ifdef ARCHX86_64
-LIB_FUNC long long BUILD_SSE _mm_cvtss_si64(__m128 __a) {
+LIB_FUNC MATH_FUNC long long BUILD_SSE _mm_cvtss_si64(const __m128 __a) {
 	return __builtin_ia32_cvtss2si64(__a);
 }
 #   endif
 
 
-LIB_FUNC __m64 BUILD_SSE _mm_cvtps_pi32(__m128 __a) {
+LIB_FUNC MATH_FUNC __m64 BUILD_SSE _mm_cvtps_pi32(const __m128 __a) {
 	return (__m64)__builtin_ia32_cvtps2pi(__a);
 }
 
 
-LIB_FUNC __m64 BUILD_SSE _mm_cvt_ps2pi(__m128 __a) {
+LIB_FUNC MATH_FUNC __m64 BUILD_SSE _mm_cvt_ps2pi(const __m128 __a) {
 	return _mm_cvtps_pi32(__a);
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_cvttss_si32(__m128 __a) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_cvttss_si32(const __m128 __a) {
 	return (int)__a[0];
 }
 
 
-LIB_FUNC int BUILD_SSE _mm_cvtt_ss2si(__m128 __a) {
+LIB_FUNC MATH_FUNC int BUILD_SSE _mm_cvtt_ss2si(const __m128 __a) {
 	return _mm_cvttss_si32(__a);
 }
 
 
-LIB_FUNC long long BUILD_SSE _mm_cvttss_si64(__m128 __a) {
+LIB_FUNC MATH_FUNC long long BUILD_SSE _mm_cvttss_si64(const __m128 __a) {
 	return (long long)__a[0];
 }
 
 
-LIB_FUNC __m64 BUILD_SSE _mm_cvttps_pi32(__m128 __a) {
+LIB_FUNC MATH_FUNC __m64 BUILD_SSE _mm_cvttps_pi32(const __m128 __a) {
 	return (__m64)__builtin_ia32_cvttps2pi(__a);
 }
 
 
-LIB_FUNC __m64 BUILD_SSE _mm_cvtt_ps2pi(__m128 __a) {
+LIB_FUNC MATH_FUNC __m64 BUILD_SSE _mm_cvtt_ps2pi(const __m128 __a) {
 	return _mm_cvttps_pi32(__a);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cvtsi32_ss(__m128 __a, int __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cvtsi32_ss(__m128 __a, const int __b) {
 	__a[0] = (float)__b;
 	return __a;
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cvt_si2ss(__m128 __a, int __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cvt_si2ss(__m128 __a, const int __b) {
 	return _mm_cvtsi32_ss(__a, __b);
 }
 
 
 #   ifdef ARCHX86_64
-LIB_FUNC __m128 BUILD_SSE _mm_cvtsi64_ss(__m128 __a, long long __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cvtsi64_ss(__m128 __a, const long long __b) {
 	__a[0] = (float)__b;
 	return __a;
 }
 #   endif
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cvtpi32_ps(__m128 __a, __m64 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cvtpi32_ps(__m128 __a, const __m64 __b) {
 	return __builtin_ia32_cvtpi2ps(__a, (__v2si)__b);
 }
 
 
-LIB_FUNC __m128 BUILD_SSE _mm_cvt_pi2ps(__m128 __a, __m64 __b) {
+LIB_FUNC MATH_FUNC __m128 BUILD_SSE _mm_cvt_pi2ps(__m128 __a, const __m64 __b) {
 	return _mm_cvtpi32_ps(__a, __b);
 }
 
 
-LIB_FUNC MATH_FUNC float BUILD_SSE _mm_cvtss_f32(__m128 __a) {
+LIB_FUNC MATH_FUNC float BUILD_SSE _mm_cvtss_f32(const __m128 __a) {
 	return __a[0];
 }
 
 
 #endif  // __XMMINTRIN_H <xmmintrin.h>
+
+
+#ifndef __CLDEMOTEINTRIN_H  // <cldemoteintrin.h>
+#define __CLDEMOTEINTRIN_H   1
+
+
+LIB_FUNC void BUILD_CLDEMOTE _cldemote(const void* restrict __P) {
+	__builtin_ia32_cldemote(__P);
+}
+
+
+#endif
+
+
+#ifndef __CLFLUSHOPTINTRIN_H  // <clflushoptintrin.h>
+#define __CLFLUSHOPTINTRIN_H   1
+
+
+LIB_FUNC void BUILD_CLFLUSHOPT _mm_clflushopt(void const* restrict __m) {
+  __builtin_ia32_clflushopt(__m);
+}
+
+
+#endif
+
+
+#ifndef __CLWBINTRIN_H  // <clwbintrin.h>
+#define __CLWBINTRIN_H   1
+
+
+/** Writes back to memory the cache line (if modified) that contains the linear address specified in `__p` from any level of the cache hierarchy in the cache coherence domain */
+LIB_FUNC void BUILD_CLWB _mm_clwb(void const* restrict __p) {
+	__builtin_ia32_clwb(__p);
+}
+
+
+#endif
+
+
+#if (defined(__CLZERO__) && (!defined(__CLZEROINTRIN_H)))  // <clzerointrin.h>
+#define __CLZEROINTRIN_H   1
+
+
+/** Loads the cacheline address and zeros out the cacheline */
+LIB_FUNC void BUILD_CLZERO _mm_clzero(void* restrict __line) {
+	__builtin_ia32_clzero((void*)__line);
+}
+
+
+#endif
+
+
+#ifndef __VPCLMULQDQINTRIN_H  // <vpclmulqdqintrin.h>
+#define __VPCLMULQDQINTRIN_H   1
+
+
+#define _mm256_clmulepi64_epi128(A, B, X)   (__m256i)__builtin_ia32_pclmulqdq256((__v4di)(__m256i)(A), (__v4di)(__m256i)(B), (char)(X))
+#define _mm512_clmulepi64_epi128(A, B, X)   (__m512i)__builtin_ia32_pclmulqdq512((__v8di)(__m512i)(A), (__v8di)(__m512i)(B), (char)(X))
+
+
+#endif
+
+
+#if (defined(__XSAVEC__) && (!defined(__XSAVECINTRIN_H)))  // <xsavecintrin.h>
+#define __XSAVECINTRIN_H   1
+
+
+LIB_FUNC void BUILD_XSAVEC _xsavec(void* restrict __p, const unsigned long long __m) {
+	__builtin_ia32_xsavec(__p, (long long)__m);
+}
+
+
+#ifdef ARCHX86
+LIB_FUNC void BUILD_XSAVEC _xsavec64(void* restrict __p, const unsigned long long __m) {
+	__builtin_ia32_xsavec64(__p, (long long)__m);
+}
+#endif
+
+
+#endif
+
+
+#if (defined(__XSAVEOPT__) && (!defined(__XSAVEOPTINTRIN_H)))  // <xsaveoptintrin.h>
+#define __XSAVEOPTINTRIN_H   1
+
+
+LIB_FUNC void BUILD_XSAVEOPT _xsaveopt(void* restrict __p, const unsigned long long __m) {
+	__builtin_ia32_xsaveopt(__p, (long long)__m);
+}
+
+
+#ifdef ARCHX86
+LIB_FUNC void BUILD_XSAVEOPT _xsaveopt64(void* restrict __p, const unsigned long long __m) {
+	__builtin_ia32_xsaveopt64(__p, (long long)__m);
+}
+#endif
+
+
+#endif
+
+
+#if (defined(__RTM__) && (!defined(__XTESTINTRIN_H)))  // <xtestintrin.h>
+#define __XTESTINTRIN_H   1
+
+
+/** returns non-zero if the instruction is executed within an RTM or active HLE region */
+LIB_FUNC MATH_FUNC int BUILD_XTEST _xtest(void) {
+	return __builtin_ia32_xtest();
+}
+
+
+#endif
 
 
 #endif  // X86_EXTENSIONS_SEEN

@@ -6007,7 +6007,6 @@ DECL_FUNC off_t ftello(FILE* restrict fp);
 DECL_FUNC int _fwalk(int (*function)(FILE*));
 DECL_FUNC MATH_FUNC int64_t get_dbl_expo(const double x);
 DECL_FUNC const char* getenv(const char* restrict name);
-DECL_FUNC MATH_FUNC int64_t get_flt_expo(const float x);
 DECL_FUNC pid_t getpid(void);
 DECL_FUNC ATTR_NONNULL(1) int gettimeofday(struct timeval* restrict tv, const UNUSED void* restrict tz);
 DECL_FUNC uid_t getuid(void);

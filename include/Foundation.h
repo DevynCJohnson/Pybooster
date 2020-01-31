@@ -9039,16 +9039,83 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 /** @defgroup Vector_Datatype_Attributes Macros for various vector attributes
 @{ */  // (FB){
 
+#ifdef ARCHX86
 /** Used to make a vector datatype that is 4 bytes (32 bits) in length */
-#define VECTOR4   __attribute__((__vector_size__(4)))
+#   define VECTOR4   __attribute__((__may_alias__, __vector_size__(4)))
 /** Used to make a vector datatype that is 8 bytes (64 bits) in length */
-#define VECTOR8   __attribute__((__vector_size__(8)))
+#   define VECTOR8   __attribute__((__may_alias__, __vector_size__(8)))
 /** Used to make a vector datatype that is 16 bytes (128 bits) in length */
-#define VECTOR16   __attribute__((__vector_size__(16)))
+#   define VECTOR16   __attribute__((__may_alias__, __vector_size__(16)))
 /** Used to make a vector datatype that is 32 bytes (256 bits) in length */
-#define VECTOR32   __attribute__((__vector_size__(32)))
+#   define VECTOR32   __attribute__((__may_alias__, __vector_size__(32)))
 /** Used to make a vector datatype that is 64 bytes (512 bits) in length */
-#define VECTOR64   __attribute__((__vector_size__(64)))
+#   define VECTOR64   __attribute__((__may_alias__, __vector_size__(64)))
+/** Used to make an unaligned vector datatype that is 4 bytes (32 bits) in length */
+#   define VECTOR4U   __attribute__((__aligned__(1), __may_alias__, __vector_size__(4)))
+/** Used to make an unaligned vector datatype that is 8 bytes (64 bits) in length */
+#   define VECTOR8U   __attribute__((__aligned__(1), __may_alias__, __vector_size__(8)))
+/** Used to make an unaligned vector datatype that is 16 bytes (128 bits) in length */
+#   define VECTOR16U   __attribute__((__aligned__(1), __may_alias__, __vector_size__(16)))
+/** Used to make an unaligned vector datatype that is 32 bytes (256 bits) in length */
+#   define VECTOR32U   __attribute__((__aligned__(1), __may_alias__, __vector_size__(32)))
+/** Used to make an unaligned vector datatype that is 64 bytes (512 bits) in length */
+#   define VECTOR64U   __attribute__((__aligned__(1), __may_alias__, __vector_size__(64)))
+/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
+#   define POLY_VECTOR4   __attribute__((__may_alias__, __vector_size__(4)))
+/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
+#   define POLY_VECTOR8   __attribute__((__may_alias__, __vector_size__(8)))
+/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
+#   define POLY_VECTOR16   __attribute__((__may_alias__, __vector_size__(16)))
+/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
+#   define POLY_VECTOR32   __attribute__((__may_alias__, __vector_size__(32)))
+/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
+#   define POLY_VECTOR64   __attribute__((__may_alias__, __vector_size__(64)))
+#elif defined(ARCHARM)
+/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
+#   define VECTOR4   __attribute__((__may_alias__, __neon_vector_type__(4)))
+/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
+#   define VECTOR8   __attribute__((__may_alias__, __neon_vector_type__(8)))
+/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
+#   define VECTOR16   __attribute__((__may_alias__, __neon_vector_type__(16)))
+/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
+#   define VECTOR32   __attribute__((__may_alias__, __neon_vector_type__(32)))
+/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
+#   define VECTOR64   __attribute__((__may_alias__, __neon_vector_type__(64)))
+/** Used to make an unaligned vector datatype that is 4 bytes (32 bits) in length */
+#   define VECTOR4U   __attribute__((__aligned__(1), __may_alias__, __neon_vector_type__(4)))
+/** Used to make an unaligned vector datatype that is 8 bytes (64 bits) in length */
+#   define VECTOR8U   __attribute__((__aligned__(1), __may_alias__, __neon_vector_type__(8)))
+/** Used to make an unaligned vector datatype that is 16 bytes (128 bits) in length */
+#   define VECTOR16U   __attribute__((__aligned__(1), __may_alias__, __neon_vector_type__(16)))
+/** Used to make an unaligned vector datatype that is 32 bytes (256 bits) in length */
+#   define VECTOR32U   __attribute__((__aligned__(1), __may_alias__, __neon_vector_type__(32)))
+/** Used to make an unaligned vector datatype that is 64 bytes (512 bits) in length */
+#   define VECTOR64U   __attribute__((__aligned__(1), __may_alias__, __neon_vector_type__(64)))
+#   if defined(COMPILER_CLANG)
+/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
+#      define POLY_VECTOR4   __attribute__((__may_alias__, __neon_polyvector_type__(4)))
+/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
+#      define POLY_VECTOR8   __attribute__((__may_alias__, __neon_polyvector_type__(8)))
+/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
+#      define POLY_VECTOR16   __attribute__((__may_alias__, __neon_polyvector_type__(16)))
+/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
+#      define POLY_VECTOR32   __attribute__((__may_alias__, __neon_polyvector_type__(32)))
+/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
+#      define POLY_VECTOR64   __attribute__((__may_alias__, __neon_polyvector_type__(64)))
+#   else
+/** Used to make a vector datatype that is 4 bytes (32 bits) in length */
+#      define POLY_VECTOR4   __attribute__((__may_alias__, __vector_size__(4)))
+/** Used to make a vector datatype that is 8 bytes (64 bits) in length */
+#      define POLY_VECTOR8   __attribute__((__may_alias__, __vector_size__(8)))
+/** Used to make a vector datatype that is 16 bytes (128 bits) in length */
+#      define POLY_VECTOR16   __attribute__((__may_alias__, __vector_size__(16)))
+/** Used to make a vector datatype that is 32 bytes (256 bits) in length */
+#      define POLY_VECTOR32   __attribute__((__may_alias__, __vector_size__(32)))
+/** Used to make a vector datatype that is 64 bytes (512 bits) in length */
+#      define POLY_VECTOR64   __attribute__((__may_alias__, __vector_size__(64)))
+#   endif
+#endif
+
 #if (defined(ARCHPOWERPC) && IS_GNUC)
 #   define attr_pixel   unsigned short __attribute__((__altivec__(__pixel__)))
 #   define attr_vector   __attribute__((__altivec__(__vector__)))
@@ -9279,7 +9346,9 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 #   define BUILD_SILVERMONT   __attribute__((__target__("arch=silvermont")))
 #   define BUILD_KNL   __attribute__((__target__("arch=knl")))
 /** Build specifically for MMX-supporting processors */
-#   define BUILD_MMX   __attribute__((__target__("mmx")))
+#   define BUILD_MMX   __attribute__((__target__("mmx,sse")))
+/** Build specifically for 3DNOW-supporting processors */
+#   define BUILD_3DNOW   __attribute__((__target__("3dnow")))
 /** Build specifically for SSE-supporting processors */
 #   define BUILD_SSE   __attribute__((__target__("sse")))
 /** Build specifically for SSE3-supporting processors */
@@ -9290,6 +9359,46 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 #   define BUILD_AVX   __attribute__((__target__("avx")))
 /** Build specifically for AVX2-supporting processors */
 #   define BUILD_AVX2   __attribute__((__target__("avx2")))
+/** Build specifically for AVX512F-supporting processors */
+#   define BUILD_AVX512F   __attribute__((__target__("avx512f,vaes")))
+/** Build specifically for CLDEMOTE-supporting processors */
+#   define BUILD_CLDEMOTE   __attribute__((__target__("cldemote")))
+/** Build specifically for CLFLUSHOPT-supporting processors */
+#   define BUILD_CLFLUSHOPT   __attribute__((__target__("clflushopt")))
+/** Build specifically for CLWB-supporting processors */
+#   define BUILD_CLWB   __attribute__((__target__("clwb")))
+/** Build specifically for CLZERO-supporting processors */
+#   define BUILD_CLZERO   __attribute__((__target__("clzero")))
+/** Build specifically for LWP-supporting processors */
+#   define BUILD_LWP   __attribute__((__target__("lwp")))
+/** Build specifically for LZCNT-supporting processors */
+#   define BUILD_LZCNT   __attribute__((__target__("lzcnt")))
+/** Build specifically for MOVDIRI-supporting processors */
+#   define BUILD_MOVDIRI   __attribute__((__target__("movdiri")))
+/** Build specifically for MWAITX-supporting processors */
+#   define BUILD_MWAITX   __attribute__((__target__("mwaitx")))
+/** Build specifically for PCONFIG-supporting processors */
+#   define BUILD_PCONFIG   __attribute__((__target__("pconfig")))
+/** Build specifically for PKU-supporting processors */
+#   define BUILD_PKU   __attribute__((__target__("pku")))
+/** Build specifically for SGX-supporting processors */
+#   define BUILD_SGX   __attribute__((__target__("sgx")))
+/** Build specifically for SHA-supporting processors */
+#   define BUILD_SHA   __attribute__((__target__("sha")))
+/** Build specifically for RDSEED-supporting processors */
+#   define BUILD_RDSEED   __attribute__((__target__("rdseed")))
+/** Build specifically for VAES-supporting processors */
+#   define BUILD_VAES   __attribute__((__target__("vaes")))
+/** Build specifically for WAITPKG-supporting processors */
+#   define BUILD_WAITPKG   __attribute__((__target__("waitpkg")))
+/** Build specifically for XSAVEC-supporting processors */
+#   define BUILD_XSAVEC   __attribute__((__target__("xsavec")))
+/** Build specifically for XSAVEOPT-supporting processors */
+#   define BUILD_XSAVEOPT   __attribute__((__target__("xsaveopt")))
+/** Build specifically for XSAVES-supporting processors */
+#   define BUILD_XSAVES   __attribute__((__target__("xsaves")))
+/** Build specifically for XTEST-supporting processors */
+#   define BUILD_XTEST   __attribute__((__target__("rtm")))
 #else
 // PowerPC
 #   define BUILD_POWER7
@@ -9307,11 +9416,32 @@ The -Wimplicit-fallthrough warning will not be triggered when a statement that f
 #   define BUILD_SILVERMONT
 #   define BUILD_KNL
 #   define BUILD_MMX
+#   define BUILD_3DNOW
 #   define BUILD_SSE
 #   define BUILD_SSE3
 #   define BUILD_SSE4
 #   define BUILD_AVX
 #   define BUILD_AVX2
+#   define BUILD_AVX512F
+#   define BUILD_CLDEMOTE
+#   define BUILD_CLFLUSHOPT
+#   define BUILD_CLWB
+#   define BUILD_CLZERO
+#   define BUILD_LWP
+#   define BUILD_LZCNT
+#   define BUILD_MOVDIRI
+#   define BUILD_MWAITX
+#   define BUILD_PCONFIG
+#   define BUILD_PKU
+#   define BUILD_SGX
+#   define BUILD_SHA
+#   define BUILD_RDSEED
+#   define BUILD_VAES
+#   define BUILD_WAITPKG
+#   define BUILD_XSAVEC
+#   define BUILD_XSAVEOPT
+#   define BUILD_XSAVES
+#   define BUILD_XTEST
 #endif
 
 /** @} */  // }
