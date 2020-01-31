@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Math Related-Code
 @file MACROS_MATH.h
-@version 2020.01.30
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

@@ -1,6 +1,7 @@
 2020-01-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* MACROS*.h:  Added more vector datatypes & functions as well as applied various tweaks
+	* MACROS*.h:  Optimized various functions
 	* test_dev.c:  Fixed BMI2 code that was being permitted on non-BMI2 systems
 
 2020-01-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

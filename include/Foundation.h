@@ -4,7 +4,7 @@
 /**
 @brief Header for simple yet essential macros
 @file Foundation.h
-@version 2019.11.23
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2019.11.23
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -7727,7 +7727,7 @@ static const UNUSED align4 char period[2] = ".";
 #define _digits   _numbers
 #define _hexnumbers   "0123456789ABCDEFabcdef"
 #define _hexdigits   _hexnumbers
-static const UNUSED align16 char digits[16] = _digits;
+static const UNUSED align16 char digits[16] = _numbers;
 #define str_digit   digits
 static const UNUSED align32 char hexdigits[32] = _hexnumbers;
 #define xdigits   hexdigits

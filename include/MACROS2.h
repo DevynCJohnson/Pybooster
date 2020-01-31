@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS2.h
-@version 2019.11.23
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

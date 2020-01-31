@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2019.12.29
+@version 2020.01.31
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -19118,7 +19118,7 @@ LIB_FUNC void strncpy_no_output(char* restrict dest, const char* restrict src, c
 LIB_FUNC char* strecpy(char* restrict to, char* e, const char* restrict from) {
 	if (to >= e) { return to; }
 	to = (char*)memccpy(to, from, '\0', (size_t)(e - to));
-	if (to == nil) {
+	if (!to) {
 		to = (char*)(e - 1);
 		*to = '\0';
 	} else { --to; }
@@ -19128,15 +19128,13 @@ LIB_FUNC char* strecpy(char* restrict to, char* e, const char* restrict from) {
 
 LIB_FUNC size_t strlcpy(char* d, const char* s, const size_t len) {
 	char* d0 = d;
-	size_t* wd = NULL;
-	const size_t* ws = NULL;
 	register size_t n = len;
 	if (!n--) { return (size_t)((size_t)(d - d0) + strlen(s)); }
 	else if (((uintptr_t)s & (SIZEOF_SIZE_T - 1)) == ((uintptr_t)d & (SIZEOF_SIZE_T - 1))) {
 		for (; ((uintptr_t)s & (SIZEOF_SIZE_T - 1)) && n && (*d = *s); --n, ++s, ++d);
 		if (n && *s) {
-			wd = (void*)d;
-			ws = (const void*)s;
+			size_t* wd = (void*)d;
+			const size_t* ws = (const void*)s;
 			for (; n >= SIZEOF_SIZE_T && (!HASZERO(*ws)); n -= SIZEOF_SIZE_T, ws++, wd++) {
 				*wd = *ws;
 			}
@@ -19151,13 +19149,12 @@ LIB_FUNC size_t strlcpy(char* d, const char* s, const size_t len) {
 
 
 LIB_FUNC char* stpcpy(char* restrict d, const char* restrict s) {
-	const size_t* ws = NULL;
 	if (((uintptr_t)s % SIZEOF_SIZE_T) == ((uintptr_t)d % SIZEOF_SIZE_T)) {
 		for (; ((uintptr_t)s % SIZEOF_SIZE_T); s++, d++) {
 			if (!(*d = *s)) { return d; }
 		}
 		size_t* wd = (void*)d;
-		ws = (const void*)s;
+		const size_t* ws = (const void*)s;
 		for (; (!HASZERO(*ws)); *wd++ = *ws++);
 		d = (void*)wd;
 		s = (const void*)ws;
@@ -19169,12 +19166,11 @@ LIB_FUNC char* stpcpy(char* restrict d, const char* restrict s) {
 
 
 LIB_FUNC char* stpncpy(char* restrict d, const char* restrict s, size_t n) {
-	const size_t* ws = NULL;
 	if (((uintptr_t)s & (SIZEOF_SIZE_T - 1)) == ((uintptr_t)d & (SIZEOF_SIZE_T - 1))) {
 		for (; ((uintptr_t)s & (SIZEOF_SIZE_T - 1)) && n && (*d = *s); n--, s++, d++);
 		if (!n || !*s) { return memset(d, 0, n); }
 		size_t* wd = (void*)d;
-		ws = (const void*)s;
+		const size_t* ws = (const void*)s;
 		for (; n >= SIZEOF_SIZE_T && (!HASZERO(*ws)); n -= SIZEOF_SIZE_T, ws++, wd++) { *wd = *ws; }
 		d = (void*)wd;
 		s = (const void*)ws;
@@ -19595,9 +19591,8 @@ LIB_FUNC char* twoway_strstr(unsigned char* h, const unsigned char* n) {
 /** Scans `str` for the first occurrence of any of the characters that are part of `reject`, returning the number of characters of `str` read before this first occurrence */
 LIB_FUNC NOLIBCALL ATTR_PF size_t strcspn(const char* restrict str, const char* restrict reject) {
 	register size_t l = 0;
-	register int i = 0;
 	for (; *str; ++str) {
-		for (i = 0; reject[i]; ++i) { if (*str == reject[i]) { return l; } }
+		for (register int i = 0; reject[i]; ++i) { if (*str == reject[i]) { return l; } }
 		++l;
 	}
 	return l;
@@ -19612,11 +19607,10 @@ LIB_FUNC NOLIBCALL NONNULL_IO const char* strpbrk(const char* restrict s1, const
 
 
 LIB_FUNC NOLIBCALL char* strtok(char* restrict s, const char* restrict sep) {
-	static char* p = NULL;
-	if (!s && !(s = p)) { return NULL; }
+	if (!s && !(s = NULL)) { return NULL; }
 	s += strspn(s, sep);
-	if (!*s) { p = 0; return 0; }
-	p = (s + strcspn(s, sep));
+	if (!*s) { return 0; }
+	char* p = (s + strcspn(s, sep));
 	if (*p) { *p++ = 0; }
 	else { p = 0; }
 	return s;
@@ -25706,7 +25700,7 @@ LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* res
 	UNUSED align_ptr char* restrict xptr = xbuf;
 	align_ptr int tmpi = 0;
 	while (*format) {
-		ssize_t fmt_flag_pos = skip_to(format);  // Location of "%" in string
+		const ssize_t fmt_flag_pos = skip_to(format);  // Location of "%" in string
 		// Test if "%" is in the format string
 		if (fmt_flag_pos) {
 			if (fmt_flag_pos < 1) { return -1; }  // If there is nothing to write, return -1
@@ -26247,9 +26241,9 @@ goto_inum_printf:
 #      ifndef NO_PRINT_WIDTH_PREC
 					register int flag_preci = 0;
 #      endif
-					register size_t prefixlen = strlen(prefix_buf);
-					register size_t suffixlen = strlen(suffix_buf);
-					register size_t numstrlen = strlen(xptr);
+					register const size_t prefixlen = strlen(prefix_buf);
+					register const size_t suffixlen = strlen(suffix_buf);
+					register const size_t numstrlen = strlen(xptr);
 					if (PREDICT_UNLIKELY((numstrlen == 0 || prefixlen > 3 || suffixlen > 2))) { return -1; }
 #      ifndef NO_PRINT_WIDTH_PREC
 					else if (PREDICT_UNLIKELY(flag_dot && (preci == 0))) { flag_preci = 1; }
@@ -27484,7 +27478,7 @@ LIB_FUNC int puts2(const char* restrict src) {
 
 /** Write string to stdout and do not return any value */
 LIB_FUNC void puts_no_output(const char* restrict src) {
-	if (ferror(stdout) || src == NULL) { return; }
+	if (src == NULL || ferror(stdout)) { return; }
 	FLOCK(stdout);
 	(void)__write_stdout(src, strlen(src));
 	(void)__write_stdout((const char*)&stdout->lbf, 1);
@@ -31486,7 +31480,7 @@ LIB_FUNC NONNULL long a64l(const char* restrict s) {
 /** Convert an integer to a string */
 LIB_FUNC NONNULL ATTR_PF char* itoa(int value, char* result, const int base) {
 	if (base < 2 || base > 36) { *result = '\0'; return result; }
-	char *ptr = result, *ptr1 = result, tmp_char;
+	char *ptr = result, *ptr1 = result;
 	register int tmp_value = 0;
 	do {
 		tmp_value = value;
@@ -31497,7 +31491,7 @@ LIB_FUNC NONNULL ATTR_PF char* itoa(int value, char* result, const int base) {
 	if (tmp_value < 0) { *ptr++ = '-'; }
 	*ptr-- = '\0';
 	while (ptr1 < ptr) {
-		tmp_char = *ptr;
+		register char tmp_char = *ptr;
 		*ptr-- = *ptr1;
 		*ptr1++ = tmp_char;
 	}
@@ -31526,12 +31520,11 @@ LIB_FUNC NONNULL ATTR_PF char* itoa2(int i, char b[]) {
 
 /** Convert an unsigned 32-bit integer to a string */
 LIB_FUNC NONNULL char* u32toa(const uint32_t value, char* restrict _string, const int radix) {
-	register int _digit = 0;
 	register uint32_t _value = value;
 	align64 char buffer[33] = { 0 };
 	char* restrict pos = &buffer[32];
 	do {
-		_digit = (int)((int)_value % radix);
+		register int _digit = (int)((int)_value % radix);
 		_value = (uint32_t)((int)_value / radix);
 		if (_digit < 10) { *--pos = (char)('0' + _digit); }
 		else { *--pos = (char)('a' + _digit - 10); }
@@ -31543,18 +31536,17 @@ LIB_FUNC NONNULL char* u32toa(const uint32_t value, char* restrict _string, cons
 
 /** Convert an signed 64-bit integer to a string */
 LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const int radix) {
-	register unsigned long long val = (unsigned long long)value;
 	register int negative = 0;
+	register unsigned long long val = (unsigned long long)value;
 	if (value < 0 && radix == 10) {
 		negative = 1;
 		val = (unsigned long long)-value;
 	}
 	align128 char buffer[66] = { 0 };
 	char* restrict pos = &buffer[65];
-	register int _digit = 0;
 	do {
-		_digit = (int)((int)val % radix);
-		val = val / (unsigned long long)radix;
+		register int _digit = (int)((int)val % radix);
+		val /= (unsigned long long)radix;
 		if (_digit < 10) { *--pos = (char)('0' + _digit); }
 		else { *--pos = (char)('a' + _digit - 10); }
 	} while (val != 0L);
@@ -31565,12 +31557,11 @@ LIB_FUNC NONNULL char* i64toa(const int64_t value, char* restrict _string, const
 
 /** Convert an unsigned 64-bit integer to a string */
 LIB_FUNC NONNULL char* ui64toa(const uint64_t value, char* restrict str, const int radix) {
-	register uint64_t _digit = 0;
 	register uint64_t _value = value;
 	align128 char buffer[65] = { 0 };
 	char* restrict pos = &buffer[64];
 	do {
-		_digit = (uint64_t)(_value % (uint64_t)radix);
+		register uint64_t _digit = (uint64_t)(_value % (uint64_t)radix);
 		_value = (uint64_t)(_value / (uint64_t)radix);
 		if (_digit < 10) { *--pos = (char)('0' + _digit); }
 		else { *--pos = (char)('a' + _digit - 10); }
@@ -31580,24 +31571,23 @@ LIB_FUNC NONNULL char* ui64toa(const uint64_t value, char* restrict str, const i
 
 
 LIB_FUNC NONNULL int l64a(const long value, char* restrict buffer, const int buflen) {
-	char* restrict s = buffer;
+	char* restrict _str = buffer;
 	unsigned long v = (unsigned long)value;
 	_DIAGASSERT(buffer != NULL);
 	if (value == 0UL) {
-		*s = '\0';
+		*_str = '\0';
 		return (v == 0UL ? 0 : -1);
 	}
-	register int _digit = 0;
 	register int len = buflen;
-	for (; v != 0 && len > 1; s++, len--) {
-		_digit = (int)(v & 0x3f);
-		if (_digit < 2) { *s = (char)(_digit + '.'); }
-		else if (_digit < 12) { *s = (char)(_digit + '0' - 2); }
-		else if (_digit < 38) { *s = (char)(_digit + 'A' - 12); }
-		else { *s = (char)(_digit + 'a' - 38); }
+	for (; v != 0 && len > 1; _str++, len--) {
+		register int _digit = (int)(v & 0x3f);
+		if (_digit < 2) { *_str = (char)(_digit + '.'); }
+		else if (_digit < 12) { *_str = (char)(_digit + '0' - 2); }
+		else if (_digit < 38) { *_str = (char)(_digit + 'A' - 12); }
+		else { *_str = (char)(_digit + 'a' - 38); }
 		v >>= 6;
 	}
-	*s = '\0';
+	*_str = '\0';
 	return (v == 0UL ? 0 : -1);
 }
 #define _l64a(value, buffer, buflen)   l64a((value), (buffer), (buflen))
@@ -31623,7 +31613,7 @@ LIB_FUNC NONNULL void i8todec(const int8_t num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31640,7 +31630,7 @@ LIB_FUNC NONNULL void u8todec(const uint8_t num, char* restrict result) {
 	*p = '\0';
 	register uint8_t i = num;
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31658,7 +31648,7 @@ LIB_FUNC NONNULL void htodec(const short num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31675,7 +31665,7 @@ LIB_FUNC NONNULL void uhtodec(const unsigned short num, char* restrict result) {
 	*p = '\0';
 	register unsigned short i = num;
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31693,7 +31683,7 @@ LIB_FUNC NONNULL void itodec(const int num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31710,7 +31700,7 @@ LIB_FUNC NONNULL void utodec(const unsigned int num, char* restrict result) {
 	*p = '\0';
 	register unsigned int i = num;
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31728,7 +31718,7 @@ LIB_FUNC NONNULL void lltodec(const long long num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31745,7 +31735,7 @@ LIB_FUNC NONNULL void ulltodec(const unsigned long long num, char* restrict resu
 	*p = '\0';
 	register unsigned long long i = num;
 	do {  // Move back, inserting digits
-		*--p = str_digit[i % 10];
+		*--p = (char)(48 + (i % 10));
 		i /= 10;
 	} while (i);
 }
@@ -31784,7 +31774,7 @@ LIB_FUNC ATTR_PF char* i8tooctstr(const int8_t num) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31803,7 +31793,7 @@ LIB_FUNC NONNULL void i8tooct(const int8_t num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -31821,7 +31811,7 @@ LIB_FUNC ATTR_PF char* u8tooctstr(const uint8_t num) {
 	*p = '\0';
 	register uint8_t i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31839,7 +31829,7 @@ LIB_FUNC NONNULL void u8tooct(const uint8_t num, char* restrict result) {
 	*p = '\0';
 	register uint8_t i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -31858,7 +31848,7 @@ LIB_FUNC ATTR_PF char* htooctstr(const short num) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31877,7 +31867,7 @@ LIB_FUNC NONNULL void htooct(const short num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -31895,7 +31885,7 @@ LIB_FUNC ATTR_PF char* uhtooctstr(const unsigned short num) {
 	*p = '\0';
 	register unsigned short i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31913,7 +31903,7 @@ LIB_FUNC NONNULL void uhtooct(const unsigned short num, char* restrict result) {
 	*p = '\0';
 	register unsigned short i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -31932,7 +31922,7 @@ LIB_FUNC ATTR_PF char* itooctstr(const int num) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31951,7 +31941,7 @@ LIB_FUNC NONNULL void itooct(const int num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -31969,7 +31959,7 @@ LIB_FUNC ATTR_PF char* utooctstr(const unsigned int num) {
 	*p = '\0';
 	register unsigned int i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -31987,7 +31977,7 @@ LIB_FUNC NONNULL void utooct(const unsigned int num, char* restrict result) {
 	*p = '\0';
 	register unsigned int i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -32006,7 +31996,7 @@ LIB_FUNC ATTR_PF char* lltooctstr(const long long num) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -32025,7 +32015,7 @@ LIB_FUNC NONNULL void lltooct(const long long num, char* restrict result) {
 	} while (shifter);
 	*p = '\0';
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -32043,7 +32033,7 @@ LIB_FUNC ATTR_PF char* ulltooctstr(const unsigned long long num) {
 	*p = '\0';
 	register unsigned long long i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 	return buf;
@@ -32061,7 +32051,7 @@ LIB_FUNC NONNULL void ulltooct(const unsigned long long num, char* restrict resu
 	*p = '\0';
 	register unsigned long long i = num;
 	do {  // Move back, inserting digits
-		*--p = octal_digits[i % 8];
+		*--p = (char)(48 + (i % 8));
 		i /= 8;
 	} while (i);
 }
@@ -32590,19 +32580,17 @@ LIB_FUNC int __ltostr(char* restrict s, unsigned int size, unsigned long i, cons
 	s[--size] = 0;
 	char* tmp = s + size;
 	if ((base == 0) || (base > 36)) { _base = 10; }
-	j = 0;
 	if (!i) {
 		*(--tmp) = '0';
 		j = 1;
 	}
-	register char tmpc;
 	while ((tmp > s) && i) {
 		tmp--;
 		if ((*tmp = (char)(i % (unsigned long)_base + '0')) > '9') {
-			tmpc = (char)((UpCase ? 'A' : 'a') - '9' - (char)1);
+			register char tmpc = (char)((UpCase ? 'A' : 'a') - '9' - (char)1);
 			*tmp = (char)(*tmp + tmpc);
 		}
-		i = i / (unsigned long)_base;
+		i /= (unsigned long)_base;
 		j++;
 	}
 	memmove_no_output(s, tmp, (size_t)(j + 1));
@@ -32621,14 +32609,13 @@ LIB_FUNC int __lltostr(char* s, int size, unsigned long long i, const int base, 
 		*(--tmp) = '0';
 		j = 1;
 	}
-	register char tmpc;
 	while ((tmp > s) && i) {
-		tmp--;
+		--tmp;
 		if ((*tmp = (char)(i % (unsigned long long)_base + '0')) > '9') {
-			tmpc = (char)((UpCase ? 'A' : 'a') - '9' - 1);
+			register char tmpc = (char)((UpCase ? 'A' : 'a') - '9' - 1);
 			*tmp = (char)(*tmp + tmpc);
 		}
-		i = i / (unsigned long long)_base;
+		i /= (unsigned long long)_base;
 		j++;
 	}
 	memmove_no_output(s, tmp, (size_t)(j + 1));
@@ -32660,7 +32647,8 @@ LIB_FUNC NONNULL int ftoa(const float n, char* restrict res, const int32_t prec)
 		while (plczeros > 0) { res[i++] = '0'; --plczeros; }
 		memcpy_no_output(&res[i], ftoa_fractbuf, frctstrlen);
 		return (int)(i + (int)frctstrlen - 1);
-	} else { return i; }
+	}
+	return i;
 }
 
 
@@ -32687,7 +32675,8 @@ LIB_FUNC NONNULL int dtoa(const double n, char* restrict res, const int32_t prec
 		while (plczeros > 0) { res[i++] = '0'; --plczeros; }
 		memcpy_no_output(&res[i], dtoa_fractbuf, frctstrlen);
 		return (int)(i + (int)frctstrlen - 1);
-	} else { return i; }
+	}
+	return i;
 }
 
 
@@ -32766,14 +32755,13 @@ LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t
 	unsigned int j = 0;
 	if (_prec > 0) { for (; j < _prec; j++) { tmp *= 0.1; } }
 	d += tmp;
-	register char _digit;
 	if (e10 > 0) {
 		tmp = 10.0;
 		j = (unsigned int)e10;
 		while (j > 10) { tmp *= 10000000000.0; j -= 10; }
 		while (j > 1) { tmp *= 10; --j; }
 		while (tmp > 0.9) {
-			_digit = (char)(d / tmp);
+			register char _digit = (char)(d / tmp);
 			d -= (_digit * tmp);
 			tmp /= 10.0;
 		}
@@ -32787,7 +32775,7 @@ LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t
 		_width = (cur_len > _width ? 0 : (_width - cur_len));
 		// Add digits and (if needed) trailing zeros
 		while (_prec > 0) {
-			_digit = (char)(d / tmp);
+			register char _digit = (char)(d / tmp);
 			*buf = (char)(_digit + '0');
 			++buf;
 			d -= _digit * tmp;
@@ -32808,11 +32796,11 @@ LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t
 LIB_FUNC NONNULL_IO char* ecvt(const double x, int n, int* dp, int* sign) {
 	static align64 char buf[16] = { 0 };
 	align64 char tmp[32] = { 0 };
-	register int i, j;
 	if ((n - 1) > 15) { n = 15; }
 	sprintf(tmp, "%.*e", n - 1, x);
-	i = *sign = (tmp[0] == '-');
-	for (j = 0; tmp[i] != 'e'; j += (tmp[i++] != '.')) { buf[j] = tmp[i]; }
+	register int i = *sign = (tmp[0] == '-');
+	register int j = 0;
+	for (; tmp[i] != 'e'; j += (tmp[i++] != '.')) { buf[j] = tmp[i]; }
 	buf[j] = 0;
 	*dp = atoi(tmp + i + 1) + 1;
 	return buf;
@@ -32822,10 +32810,10 @@ LIB_FUNC NONNULL_IO char* ecvt(const double x, int n, int* dp, int* sign) {
 /** Convert a floating-point number to a string; similar to using "%f" in printf() */
 LIB_FUNC NONNULL_IO const char* fcvt(const double x, int n, int* dp, int* sign) {
 	char tmp[1500] = { 0 };
-	register int i, lz;
 	if (n > 1400) { n = 1400; }
 	sprintf(tmp, "%.*f", n, x);
-	i = (tmp[0] == '-');
+	register int i = (tmp[0] == '-');
+	register int lz = 0;
 	if (tmp[i] == '0') { lz = (int)strspn((tmp + i + 2), "0"); }
 	else { lz = (int)(-(int)strcspn((tmp + i), ".")); }
 	if (n <= lz) {
