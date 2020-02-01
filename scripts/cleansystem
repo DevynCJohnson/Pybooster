@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Remove cache, logs, and other unneeded files
 #' @file cleansystem
-#' @version 2019.12.23
+#' @version 2020.02.01
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -99,10 +99,7 @@ if [ "$?" != '0' ]; then
 fi
 eval set -- "$GOPT"
 
-apply_fixes=0
-fix_clock=0
 deep_clean=0
-del_docs=0
 del_locales=0
 mem_clean=0
 ssd_clean=0
@@ -115,7 +112,9 @@ while true; do
             exit 0
         ;;
         -c|--clock)  # Fix & adjust the clock (system & hardware)
-            fix_clock=1
+            if [ "$(id -u)" -eq 0 ]; then
+                { [ -x "$(command -v ntpdate)" ] && ntpdate time.nist.gov && ntpdate time.google.com && ntpdate time.google.com && [ -x "$(command -v hwclock)" ] && hwclock --systohc; } &
+            fi
             shift
         ;;
         -D|--deep-clean)  # Perform deep cleaning
@@ -123,11 +122,20 @@ while true; do
             shift
         ;;
         -d|--doc|--docs)  # Delete news, readme, changelog, etc. files under /usr/share/doc/
-            del_docs=1
+            if [ "$(id -u)" -eq 0 ]; then
+                { [ -d /usr/share/doc/util-linux/releases/ ] && rm -f /usr/share/doc/util-linux/releases/*-ReleaseNotes.gz; } &
+                { [ -d /usr/share/doc/ ] && rm -f /usr/share/doc/*/AUTHORS.gz /usr/share/doc/*/BUGS.gz /usr/share/doc/*/changelog.Debian.gz /usr/share/doc/*/copyright /usr/share/doc/*/NEWS.Debian.gz /usr/share/doc/*/NEWS.gz /usr/share/doc/*/README /usr/share/doc/*/README.Debian; } &
+            fi
+            wait
             shift
         ;;
         -f|--fixes)  # Apply various system fixes
-            apply_fixes=1
+            if [ "$(id -u)" -eq 0 ]; then
+                [ -e /dev/rtc0 ] && chmod a+r /dev/rtc0 &
+                [ -e /dev/uinput ] && chmod a+r /dev/uinput &
+                [ -d /usr/lib/systemd/system ] && chmod a-x /usr/lib/systemd/system/*.service &
+                [ -d /usr/lib/systemd/user ] && chmod a-x /usr/lib/systemd/user/*.service &
+            fi
             shift
         ;;
         -l|--locales)  # Delete all locales except American English (en-US)
@@ -253,8 +261,8 @@ if [ -n "${current_user:-}" ]; then
             chmod o+rwx "/home/${current_user}/Public"
         fi
     elif [ "${current_user}" = 'root' ] && [ -d /root ]; then
-        chown -R root:root /root
-        chmod -R o-rwx /root
+        chown -R root:root /root >&2 2> /dev/null
+        chmod -R o-rwx /root >&2 2> /dev/null
         if [ -d /root/Public ]; then
             chmod o+rwx /root/Public
         fi
@@ -346,12 +354,6 @@ if [ "$(id -u)" -eq 0 ]; then
         { [ -d /usr/share/man/ ] && find /usr/share/man/ -name '/usr/share/man/' -prune -o -regextype awk -regex '.*/man[1-8]' -prune -o -type d -regextype awk -regex '/usr/share/man/.+' -exec rm -f -r '{}' + 2> /dev/null; } &
         { [ -d /usr/share/cups/locale/ ] && rm -f -r /usr/share/cups/locale; } &
     fi
-    # Delete Copyright Files, ReleaseNotes, etc.
-    if [ "$del_docs" -eq 1 ]; then
-        { [ -d /usr/share/doc/util-linux/releases/ ] && rm -f /usr/share/doc/util-linux/releases/*-ReleaseNotes.gz; } &
-        { [ -d /usr/share/doc/ ] && rm -f /usr/share/doc/*/AUTHORS.gz /usr/share/doc/*/BUGS.gz /usr/share/doc/*/changelog.Debian.gz /usr/share/doc/*/copyright /usr/share/doc/*/NEWS.Debian.gz /usr/share/doc/*/NEWS.gz /usr/share/doc/*/README /usr/share/doc/*/README.Debian; } &
-    fi
-    wait
     # Deep Clean
     if [ "$deep_clean" -eq 1 ]; then
         rmfiles '.*(\.|_|\-|)history$' / &
@@ -365,20 +367,12 @@ if [ "$(id -u)" -eq 0 ]; then
         rmfiles '[Tt]humbs\.db$' / &
         rmfiles '\.~lock\..*#$' / &
     fi
-    # System Fixes
-    if [ "$apply_fixes" -eq 1 ]; then
-        [ -e /dev/rtc0 ] && chmod a+r /dev/rtc0 &
-        [ -e /dev/uinput ] && chmod a+r /dev/uinput &
-        [ -d /usr/lib/systemd/system ] && chmod a-x /usr/lib/systemd/system/*.service &
-        [ -d /usr/lib/systemd/user ] && chmod a-x /usr/lib/systemd/user/*.service &
-    fi
     # Final Cleanup
     [ -x "$(command -v dmesg)" ] && dmesg -C &
     [ -x "$(command -v mandb)" ] && mandb &
     wait
     [ "$mem_clean" -eq 1 ] && [ -x "$(command -v sync)" ] && (sleep 1 && sync && sleep 2 && echo 3 > /proc/sys/vm/drop_caches)
     { [ "$ssd_clean" -eq 1 ] && [ -x "$(command -v fstrim)" ] && fstrim --all --quiet; } &
-    { [ "$fix_clock" -eq 1 ] && [ -x "$(command -v ntpdate)" ] && ntpdate time.nist.gov && ntpdate time.google.com && ntpdate time.google.com && [ -x "$(command -v hwclock)" ] && hwclock --systohc; } &
 fi
 
 
